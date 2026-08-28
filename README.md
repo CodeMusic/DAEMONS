@@ -10,6 +10,8 @@ Machines evolved into creatures. This is a Game Boy game about what happened nex
 
 A total conversion built on [pret/pokered](https://github.com/pret/pokered), the reverse-engineered disassembly of Pokémon Red. Same engine, same 8-bit constraints, entirely different world.
 
+**Two editions, one source tree.** The slash in the title is literal. `pokered` already builds Red *and* Blue from the same sources via two assembler defines, so **CONTENT** and **CONTEXT** cost three lines of Makefile. The type chart is byte-identical in both — it's the argument, and an argument that changes by cartridge isn't one. What differs is which daemons you meet, and what the Index says about them.
+
 Creatures are **daemons** — background processes that run unattended, and the older sense too: the *daimon*, the voice that speaks to you from somewhere you don't control. They are not robots and nobody in the world calls them AI. They just live there.
 
 ## The idea
@@ -54,11 +56,16 @@ make
 ## Layout
 
 ```
-docs/       design bible, decision log, implementation notes
-patches/    diffs and drop-in files against a clean pokered checkout
-gfx/        original sprite work
-audio/      original music
+docs/       vision.md — the living design bible, incl. the decision log
+            versioned PDF snapshots, type-system build notes
+patches/    drop-in files and diffs against a clean pokered checkout
+gfx/        original sprite work (front/, back/, overworld/, ui/)
+audio/      original music (music/, sfx/)
 ```
+
+The bible is [`docs/vision.md`](docs/vision.md). It is the only document that
+changes; the PDFs are periodic snapshots, kept because the project now has a
+Reversed section and what it used to believe is part of the record.
 
 ## Credits
 

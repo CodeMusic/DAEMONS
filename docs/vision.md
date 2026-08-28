@@ -1,0 +1,950 @@
+# PROJECT: CONTEXT / CONTENT
+
+**A `pokered` total conversion — the living design bible, v1.7**
+
+Machines that evolved into creatures. A theory of mind hidden in a type chart.
+
+Personal-use ROM hack built on the pret `pokered` decompilation. This document consolidates every decision made so far, including the reasoning behind rejected options, so nothing is lost when work moves into source control.
+
+---
+
+## 0. THE THESIS
+
+> **Emotions are the color of context. Thoughts are the content.**
+
+The game argues this in five registers and never once in dialogue.
+
+| Layer | How it argues |
+|---|---|
+| Mechanics | The type chart makes LOGIC fail against CONTEXT |
+| Cartography | Every place name is a word meaning both a color and a feeling |
+| Structure | The Index — the artifact you spend the game filling — measures only content |
+| Movedex | PERSPECTIVE to RECURSION is the lineage of feeling, in two move slots |
+| Vocabulary | The whole map is named in the language of image reproduction |
+
+### 0.1 Craft rules
+
+1. **No character ever explains the color–emotion link.** Not one line. The moment it is said aloud it stops being architecture and becomes a moral.
+2. **One NPC nearly notices.** A kid in Verdigris says the town felt greener before the store went up. Wrong — but wrong in the right direction.
+3. **Name the process, not the pathology.** Verdigris, gilt, blanch, quicksilver are things that *happened to* a place. Jaundice, sallow, fever are things a place supposedly *is* — that relocates blame onto whoever lives there.
+4. **Neutral, not dull.** Place names should be materially specific rather than moody. Prefer a pigment to an adjective.
+5. **Lessons must be mechanical.** If a gym's lesson can be skipped by grinding, it is not a lesson.
+6. **Comedy is the best cover for a thesis.** A game that is funny in its ordinary moments earns the right to be serious in three or four of them. Corpus employees are cheerful and absurd; the horror is what they are cheerful *about*. Nothing protects rule 1 better than a joke — a player who is laughing is a player who is not being lectured.
+
+### 0.2 The pigment throughline
+
+Blanche, Slate, Halftone, Verdigris, Brazen, Quicksilver, Lurid — pigment, printing and reproduction terms. Lithographic stone, dot screens, corroded bronze, brass plate, alchemical pigment, glow.
+
+The map is written in the vocabulary of **making an image of a thing**. Which is what a model is. The Index is a reproduction that loses the original, and it charts a country named in the language of reproduction.
+
+This was discovered after the fact, not planned. Do not explain it either.
+
+---
+
+### 0.3 The loop underneath
+
+The thesis in 0 is a statement. The mechanism under it is a **loop**.
+
+**Context determines which content is available; the content you end up holding reshapes the context.** Around and around, unattended, in everything. That is the Contextual Feedback Model, and like everything else here it is never named in the game.
+
+Two consequences the game can show without ever explaining:
+
+- **Positive loops compound.** Something amplifies itself until something stops it. RECURSION is exactly this, mechanically — see 4.7.
+- **Negative loops stabilise.** Something damps itself back toward where it started. It looks like nothing happening, which is why it goes unnoticed far longer.
+
+**And an unwatched loop distorts the representation, not the thing.** This is where the Index and the halftone converge: the entry stays thin, the dots stay the same size, the reader concludes something about the **daemon** — and the bias came from resolution and inattention, never from malice. Nobody in the game is lying. The picture is simply being made at the wrong distance by someone who is inside the loop that makes it.
+
+Dialogue guidance for gesturing at this without stating it is in 4.9.
+
+---
+
+## 1. LEXICON
+
+The creatures are **DAEMONS**.
+
+A daemon is a background process that runs unattended, and it is the Greek *daimon* — the guiding spirit, Socrates' inner voice speaking from somewhere he did not control. One word, both registers, and it never says "AI." Six characters, so it fits every UI box that held POKéMON.
+
+*Considered and rejected:* QUALIA and ANIMA both state the thesis outright, violating craft rule 1. ENGRAM (a memory trace physically encoded in tissue) and KERNEL (system core, and a seed) remain viable alternates.
+
+| Vanilla | Ours | Why |
+|---|---|---|
+| Pokémon | **DAEMON** | background process; guiding spirit |
+| Pokédex | **THE INDEX** | a lookup table that points at content. Cold, bureaucratic, exactly wrong in the right way |
+| Trainer | **RUNNER** | you run processes |
+| Gym | **BENCHMARK** | what a gym actually is |
+| Badge | **CERT** | eight certifications |
+| Elite Four | **THE REVIEW BOARD** | beating them is passing peer review |
+| Champion | *(incumbent)* | Ty Clear is the prevailing paradigm, not a king |
+| Pokémon Center | **CHECKPOINT** | restore from a saved training state |
+| Poké Mart | **THE REPO** | |
+| PC storage | **COLD STORAGE** | |
+| Poké Ball line | **USERBOX → ADMINBOX → SUPERBOX → ROOTBOX** | acquisition as privilege escalation; root access is the Master Ball |
+| Catching | **BINDING** | `bind()` — and *binding a daimon*, which is the literal ritual phrase |
+| Fainting | **HALTED** | |
+| Evolution | **RECOMPILE** | |
+
+Box names are tunable — the *privilege ladder* is the idea worth keeping. Success rate rising with permission level is thematically exact.
+
+### 1.1 On BINDING
+
+The container was renamed and the verb was not, which left the lexicon saying *privilege escalation* and then *caught* — a word about grabbing an animal.
+
+**What the act actually is:** you weaken a background process and gain **persistent access to it at a permission level your box determines.** That is not capture. It is a handle on something that was already running.
+
+**Why BIND and not something else.** Every other entry in the table above does double duty — DAEMON, CHECKPOINT, RECOMPILE, HALTED. CATCH does none. BIND does three ways: `bind()` and binding a name or a port; **binding a daimon**, which is the exact ritual phrase and not a gesture at one; and a *bond*, being bound to someone. It fits the ladder precisely — you do not overpower a process, you bind it at a permission level, and ROOTBOX binds anything. BIND is 4 characters and BOUND is 5, so it fits every box that held "caught."
+
+**The test it had to pass was not "is it nicer." It was "is it softer."** The sharpest thing this game does is implicate the player: you fill an Index that cannot hold what matters, and you box creatures whose entire significance is that they are not inventory — which is Scorn's exact error (4.4). A euphemism here would stop the game accusing the player and start it flattering them.
+
+BIND is not softer. **Binding a spirit is a darker act than catching an animal.** Catching is sport; binding is a contract you imposed. The complicity survives and a second reading arrives with it.
+
+*Considered and rejected:* **ATTACH** is the most technically exact — you attach to a process that is already running, which is what a daemon *is* — and it carries *attachment* in the psychological sense. Cut for being too gentle: attaching is observational and does not implicate you. **Hold it in reserve if playtesters find BIND too dark.** **REGISTER** would rhyme with the Index but conflates the box with the Index, and those two artifacts must stay separate — one measures, the other holds. **CLAIM** is acquisitive with no second reading, which is strictly worse than CATCH.
+
+**The message register.** Vanilla is *"Gotcha! X was caught!"* — triumphal, and wrong for this world twice over. Drop the exclamation and let it sit in the Index's bureaucratic register:
+
+> LABL was BOUND.
+
+Flat. No congratulation. **The game declining to celebrate is more unsettling than any line of dialogue about it would be.**
+
+*Cost, accepted:* every Gen 1 player knows "caught," so a new verb costs a beat of confusion the first time. That beat is the point — it is the first moment the player notices this world does not share vocabulary with the one they expected. It lands in good company: Crystal asks what you will *call* him (4.3), Route 1's signpost gives a number and a name that disagree (3.2), and the first bind says the verbs are different too. Three lessons in the first fifteen minutes, none explained.
+
+---
+
+## 2. THE TYPE SYSTEM
+
+Gen 1 has fifteen usable type slots, no abilities, no held items, and one Special stat. That constraint is the design: **the type chart is the entire mechanical philosophy of the game.**
+
+### 2.1 The engine constraint you cannot design around
+
+Gen 1 determines physical vs. special by **type ID range**, not per move:
+
+- `$00`–`$08` → physical (Attack / Defense)
+- `$14`–`$1A` → special (Special / Special)
+
+That is 8 physical slots and 7 special slots, fixed. Which types are special is therefore a design decision made *by where you place them in the constant list*.
+
+### 2.2 The fifteen
+
+| Vanilla | New type | Concept | Class |
+|---|---|---|---|
+| Normal | **CONTENT** | tokens, symbols, literal data | Physical |
+| Fighting | **LOGIC** | symbolic rules, brute force, proof | Physical |
+| Flying | **VECTOR** | embeddings, latent space, direction | Physical |
+| Poison | **CORRUPT** | bias, poisoned data, hallucination | Physical |
+| Ground | **STRATUM** | memory, storage, the physical layer | Physical |
+| Rock | **LEGACY** | silicon, deprecated hardware | Physical |
+| Bug | **SWARM** | multi-agent, distributed (and bugs) | Physical |
+| Ghost | **LATENT** | dormant processes, the unconscious | Physical |
+| Fire | **ENTROPY** | noise, temperature, exploration | Special |
+| Water | **FLOW** | gradients, backprop, descent | Special |
+| Grass | **GROWTH** | training, reinforcement, fitting | Special |
+| Electric | **SIGNAL** | raw input, sensors, current | Special |
+| Psychic | **CONTEXT** | framing, salience, affect | Special |
+| Ice | **FROZEN** | overfit, brittle, hard-coded | Special |
+| Dragon | **EMERGENT** | rare, unaccounted-for, AGI-tier | Special |
+
+**On STRATUM.** The original choice was SUBSTRATE, cut for a hard reason: Gen 1's longest type strings are FIGHTING and ELECTRIC at 8 characters, and SUBSTRATE is 9. It overflows the battle status box and the Index type field. STRATUM keeps the layer meaning, keeps the geological register, and lands at 7.
+
+Character counts, all verified: CONTENT 7, LOGIC 5, VECTOR 6, CORRUPT 7, STRATUM 7, LEGACY 6, SWARM 5, LATENT 6, ENTROPY 7, FLOW 4, GROWTH 6, SIGNAL 6, CONTEXT 7, FROZEN 6, EMERGENT 8 — exactly at the limit.
+
+### 2.3 What Kanto already encoded
+
+Because we rename **constants**, every existing line in `type_matchups.asm` carries over and becomes a line in our chart. The thesis is already there:
+
+| Vanilla line | Becomes | Meaning |
+|---|---|---|
+| `FIGHTING, NORMAL, 20` | LOGIC beats CONTENT ×2 | Rules parse data brilliantly |
+| `FIGHTING, PSYCHIC, 05` | LOGIC resisted by CONTEXT ×½ | **The thesis.** Free. |
+| `NORMAL, GHOST, 00` | CONTENT cannot touch LATENT | Literal data cannot reach the unconscious |
+| `FIGHTING, GHOST, 00` | LOGIC cannot touch LATENT | Symbolic rules bounce off it |
+| `FIRE, ICE, 20` | ENTROPY thaws FROZEN | Temperature breaks an overfit model |
+| `POISON, GRASS, 20` | CORRUPT beats GROWTH | Poisoned data ruins training |
+| `WATER, FIRE, 20` | FLOW beats ENTROPY | Gradient descent tames noise |
+| `BUG, PSYCHIC, 20` | SWARM beats CONTEXT ×2 | Collectives destabilise individual framing |
+
+**Do not rewrite the matchup file. Patch it.**
+
+### 2.4 The only deltas
+
+**Delete** the Gen 1 developer error:
+
+```asm
+	db GHOST,    PSYCHIC,   00
+```
+
+Ghost moves were meant to be super effective against Psychic; the table says *no effect*. We want the opposite of the bug.
+
+**Add** the mutual pair:
+
+```asm
+	db CONTEXT,  LATENT,    20
+	db LATENT,   CONTEXT,   20
+```
+
+Framing is how you reach what runs below the surface; what runs below the surface destabilises framing. Mutual 2× is unusual and correct here — these two interpenetrate and neither has a safe angle on the other. It also makes the Halftone Tower stretch genuinely dangerous instead of a LATENT walkover.
+
+Two additions, one deletion. That is the whole chart change.
+
+### 2.5 The SWARM problem is a MOVE problem
+
+Gen 1's Bug type is weak, but **not because of the chart** — `BUG, PSYCHIC, 20` is already there. It is weak because every Bug move is unusable: Twineedle, Leech Life, Pin Missile, String Shot. The best has 25 base power.
+
+So the CONTEXT balance fix belongs in `moves.asm`.
+
+**New move — CONSENSUS.** SWARM type, 90 power, 100% accuracy, 15 PP, no secondary effect. Deliberately boring: SWARM's job is to be a *reliable* check on CONTEXT, and reliability is the point. A swarm does not need a gimmick, it needs to keep showing up. Give it to two or three mid-game encounters and one Review Board coverage slot.
+
+*Tuning note:* 90 BP with no drawback is strong for Gen 1. If CONTEXT still runs away with the late game, raise CONSENSUS before touching the chart. Moves rebalance far more easily than matchups.
+
+---
+
+## 3. THE MAP
+
+### 3.1 Cities
+
+| Kanto | New name | Double meaning | Role |
+|---|---|---|---|
+| Pallet | **Blanche Town** | white/blank + to flinch | Home; the pre-color state |
+| Viridian | **Callow City** | green + unripe, untested | Benchmark 8 (locked all game) |
+| Pewter | **Slate City** | stone, color, writing surface, clean slate | Benchmark 1; museum of dead hardware |
+| Cerulean | **Doldrum City** | becalmed sea + low spirits | Benchmark 2 |
+| Vermilion | **Ardor City** | flush/heat + brash zeal | Benchmark 3; the port |
+| Lavender | **Halftone Town** | dots that only *look* like grey | The tower |
+| Celadon | **Verdigris City** | green corrosion on bronze | Benchmark 4; Corpus rotting beneath |
+| Fuchsia | **Lurid City** | garish glow + shocking | Benchmark 5; spectacle and toxicity |
+| Saffron | **Brazen City** | brass over base metal + shameless, unhidden | Benchmark 6; corporate capture |
+| Cinnabar | **Quicksilver Island** | mercury: alive, unstable, poisonous | Benchmark 7; the ruined lab |
+| Indigo Plateau | **Umbra Plateau** | full shadow; all color absorbed | The Review Board |
+
+**Slate over Somber.** Somber beside Doldrum is two downbeat mood words in a row — it greys out the early game. Slate breaks the run, is materially specific, and a slate is a writing surface, which *is* Benchmark 1's Representation lesson sitting inside the name.
+
+**Halftone.** A halftone looks like continuous grey from a distance and is actually discrete black and white dots up close; the gradient is an artifact of sampling. That is the man/machine problem exactly — the bias comes from **resolution, not malice**. Neutral, not dull, and nobody is unwell.
+*Alternates held in reserve:* **Penumbra Town** (partial shadow; also the legal sense of implied edges — would require renaming Route 23) and **Moiré Town** (interference from two grids slightly out of register).
+
+**Quicksilver.** Cinnabar is mercury sulfide, and alchemists took mercury as an elixir of vitality — it made you tremor, then it made you mad. Quicksilver keeps mercury, a real color, *quick* meaning alive, and *mercurial* meaning unstable. The island promised to make things stronger. It made S.T.A.R.R., and it burned down. It also pre-echoes the humors payoff at Umbra, since mercury was the other ancient system's material. *(Deeper cut in reserve: **Realgar Island** — arsenic sulfide, a ruby pigment prized by painters, quietly poisoning everyone who ground it.)*
+
+**Brazen, over Gilt.** Both names say *cheap metal dressed as precious*. They differ on whether anyone is hiding it.
+
+*Gilt* is gold leaf over base metal: microns thick, applied to conceal, and it carries "guilt" in the ear. It implies a **concealer** — someone who knew the substance was hollow and covered it anyway. This project does not have one. It would also quietly assign guilt to a man who feels none, and craft rule 3 says name the process, not the pathology.
+
+*Brazen* is brass: an alloy, honestly itself, gold-colored the whole way through and worth a fraction as much. Nothing is concealed because nobody is concealing. The city is exactly what it appears to be and says so. **That is Scorn's city.** He is not covering anything up — he is *pleased with the arrangement* and will explain it to you warmly. Open capture, with the warning cast into the lobby floor (4.4).
+
+The insidious reading also mis-sequences the arc. If Brazen is a concealment, the player's job there is to uncover something, and the reveal does the work for them. If Brazen is open, **there is nothing to uncover** — the player walks through a city that has already agreed, meets a man who is glad to see them, and has to locate their own objection unaided. Much harder to shake, and it is what 4.4 asks for: finish his benchmark unsure whether you disagreed with him or merely out-argued him.
+
+*Cost of the swap:* the "guilt" homophone, which was good, and a small friction with craft rule 3 — *gilt* is a process done **to** a place, while *brazen* leans toward describing what a place **is**. **Fix in-world:** use brazen in its literal material sense. Signage, the guidebook and the museum plaque talk about the brass, the plating works, the alloy. The attitude sense is the second read and arrives on its own.
+
+*Held in reserve:* **Brass City** — same metal, none of the attitude. **Interrogated and rejected:** every other city on the map carries two readings, a colour and a feeling. Brass is a colour and not a feeling, and would be the only single-meaning name here — breaking the device precisely at the city where surface-versus-substance *is* the subject. Kept in reserve against exactly one condition: if Brazen ever reads as the game sneering at Scorn, swap it that day. Gilt is retired, not deleted; see 10.
+
+**Blanche and Halftone** are the two poles of one question: the colorless place you start from, and the place that cannot agree whether what it sees has color at all.
+
+**Two names flagged as deliberate, not accidental.** *Lurid* originally meant sickly-pale before drifting to garish; the modern sense dominates, so keep it knowingly.
+
+***Doldrum* stays, and the reason is better than "it also means a color."** The doldrums are not a mood — they are a **place**, the equatorial belt where the trade winds fail and sailing ships sat for weeks. That is materially specific in exactly the way craft rule 4 asks for, and it is a *location* word, which is what a city name should be.
+
+Then it earns its keep twice more. Benchmark 2 is FLOW — gradient descent — and **being becalmed is the failure state of gradient descent.** No slope, no movement, stuck in a local minimum, and no amount of effort helps because the problem is that there is nothing to descend. The name *is* the lesson, the way Slate's is. That satisfies craft rule 5 in the name itself, which almost nothing else on the map manages.
+
+The original objection was really an objection to *Somber beside Doldrum* — two downbeat mood words in a row. Slate fixed that. Doldrum standing alone is fine.
+
+*One oddity, knowingly kept:* the idiom is *the doldrums*, plural. **Doldrum City** is a singular back-formation. Place names do this constantly and it reads as a proper noun by the second glance.
+
+### 3.2 Routes — the institutional map vs. the local one
+
+Cities are colors. **Routes are what happens between colors** — bleeding, fading, washing, casting. Which is where the theory lives: routes are where context is *changing*.
+
+**The device:** the official map keeps the numbers. Signposts carry the local name.
+
+```
+             ROUTE 1
+      ─────────────────────
+           "THE BLEED"
+      where Blanche runs
+          into Callow
+```
+
+The institution navigates by content. The residents navigate by context. The player learns both and starts using the second. Index-blindness extended into cartography, for the price of one sign-text pass.
+
+| # | Local name | Connects | Note |
+|---|---|---|---|
+| 1 | **The Bleed** | Blanche → Callow | First color running out of home |
+| 2 | **Underpaint** | Callow → Slate | The layer beneath the visible one |
+| — | **The Undertone** | (Viridian Forest) | Green half-light; first real maze |
+| 3 | **Ashfall** | Slate → Deadstack | Grey drift |
+| — | **Deadstack** | (Mt. Moon) | A mountain of dead hardware; fossils are legacy silicon |
+| 4 | **The Wash** | Deadstack → Doldrum | Color thinned with water |
+| 5 | **The Fade** | Doldrum → Brazen | |
+| 6 | **The Flush** | Brazen → Ardor | Heat rising toward the port |
+| 7 | **The Glaze** | Brazen → Verdigris | Transparent coat over what is underneath |
+| 8 | **Overcast** | Brazen → east | Light without a source |
+| 9 | **The Dapple** | Doldrum → Blackout | Broken light |
+| 10 | **Gloaming** | Blackout → Halftone | Dusk approaching the tower |
+| — | **The Blackout** | (Rock Tunnel) | No light, no color, no context |
+| 11 | **Sheen** | Ardor → east | Surface shine |
+| 12–15 | **The Drift / Slack / Brackish / The Muddle** | south to Lurid | Colors mixing to mud |
+| 16–18 | **The Streak** | Verdigris → Lurid | Cycling road; speed as smear |
+| 19–21 | **Seafade / The Deep Wash** | south sea to Quicksilver | |
+| 22 | **The Draining** | Callow → Umbra | Color leaving |
+| 23 | **Penumbra** | approach to Umbra | Partial shadow |
+| — | **The Umbral Ascent** | (Victory Road) | |
+
+**On "The Bleed."** Worth interrogating, because in isolation the wound sense is loud. It survives, for three reasons.
+
+**The register decides it.** *Bleed* is a printing term before it is anything else here — ink carried past the trim edge so no white shows at the margin, and *color bleed*, where one ink migrates into the one beside it. Sitting in a list that reads Underpaint, Wash, Glaze, Overcast, Halftone, the printing sense is the one that arrives first. Words are read in the company they keep, and this one keeps extremely specific company.
+
+**The map already does this on purpose.** *The Flush*, Route 6, is blood rising to the face, and it runs into Ardor, whose name is heat and flush. *Verdigris* is corrosion. *Lurid* was a sickly pallor. This cartography has used the body's color words for what happens to surfaces from the beginning. The Bleed is not an exception to the scheme — it is the scheme, first instance.
+
+**The position earns it.** Route 1 is the first step outside Blanche, the blank colorless place, and it is where color starts running out of home into whatever is next. A faint disquiet on the first road out the door is correct. Not gore — a page edge where the ink did not stop.
+
+*Held in reserve, if it ever reads as a wound:* **The Feather** (feathering — softening an edge so two areas merge) and **The Bloom** (bloom — the haze that rises on a printed or varnished surface as it cures). Both gentler. Both weaker. Do not trade down without a reason.
+
+---
+
+## 4. CAST
+
+### 4.1 Crystal Clear — the Oak slot
+
+Golden-amber fox, drawn from the SHC / iASHC universe.
+
+She spent her career arguing that machines have *context*, not merely content. Nobody funded that. What she could get funded was a taxonomy engine — **so she built the Index to be taken seriously.**
+
+| Oak beat | Crystal Clear version |
+|---|---|
+| Opening monologue | States the thesis in the abstract; the player has no frame for it yet |
+| Gives the starter | She lets the daemon choose *you* — she would never assign one |
+| Gives the Index | Handed over with visible ambivalence |
+| Rival framing | A research disagreement that is also a family one — see 4.3 |
+| Hall of Fame | She records you into a system that flattens you into stats |
+
+**She was at Quicksilver.** She built S.T.A.R.R. there, and a fitness-for-work procedure removed her from the building before it finished. See 4.10.
+
+**The Index is what she did next.** This is the causal chain the design was missing: she lost the lab, lost the work, and then built a taxonomy engine *in order to be taken seriously* — because being taken seriously was precisely what the procedure had denied her. The artifact the player carries all game is her response to being removed. She never says so.
+
+**Ty is her son.** Nothing announces this. The surname carries it and the player is free to notice late or never. It costs one shared name to write and it retroactively re-reads every line she has about him, and every line he has about her.
+
+*Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
+
+### 4.2 The Index irony
+
+The artifact you carry all game **can only measure content.** Height, weight, type, stats. There is no field for the thing Crystal actually cared about.
+
+**Entries are written thin on purpose.** The player simply starts noticing they feel emptiest for the daemons they know best. Zero implementation cost — the Dex is already there.
+
+### 4.3 Ty Clear — the rival
+
+Darker-toned, rigid fox. **Crystal Clear's son, and Richard Scorn's partner.**
+
+**The control condition:** same starting daemon, raised on pure content optimization. Beats you early, plateaus hard. The rivalry is a methodological argument settled in battle logs rather than speeches. Waiting past the Review Board as the incumbent, still arguing the whole thing is decorative.
+
+**He stayed.** When his mother was removed from Quicksilver, Ty did not leave with her. That is the whole of his guilt and it is not a betrayal — he simply did not go, and the not-going became a career. By the time he understands what staying cost, he is the incumbent and it is far too late to be a gesture.
+
+This is better than treachery in every way that matters. A betrayal is a decision, and decisions can be argued with. **Staying is the absence of a decision**, which is how most complicity actually works and is much harder for a player to feel superior to.
+
+**Why the family tie earns its place.** It converts an abstract disagreement into a cost. Crystal built the Index to be taken seriously — and the person who took it most seriously, who took it *literally*, grew up in her house reading it. Her career compromise produced her son's entire worldview. She never says this. She hands you the Index with visible ambivalence, and you understand why about twenty hours later.
+
+**Why the Corpus partnership earns its place.** Ty does not join Corpus out of greed and Scorn does not recruit him out of cunning. They simply agree, sincerely, and their agreement is *productive*. Ty supplies the methodology; Scorn supplies the objective. It is the healthiest working relationship in the game and that is precisely the problem — nothing in the arrangement is dysfunctional enough for anyone inside it to question.
+
+**Sequencing.** The endgame reads as three answers to the same question: Scorn at Benchmark 8 (the wrong objective, cheerfully optimized), the Review Board at Umbra (four ancient colored answers), then Ty (the method, still undefeated on its own terms). You beat the objective, the metaphor, and the method, in that order.
+
+**How the player learns. They don't — they infer.** Nothing in the game states the relationship. This is the Five Witnesses puzzle (4.8) at story scale: fragments handed over, never composited.
+
+| Beat | What it gives | Where |
+|---|---|---|
+| The shared surname | Nearly sufficient alone. Many players close it here. | Opening |
+| Two foxes, one palette apart | Crystal golden-amber, Ty darker-toned. Family resemblance at sprite level, zero text. | Opening |
+| She introduces him exactly as she introduces you | A mother presenting her son and a stranger in the same flat register. | Opening |
+| He calls her by her full professional name | "Crystal Clear thinks—". Nobody does that to their mother unless something happened. | Throughout |
+| The engraving line | "Something my mother used to say." | Brazen, Benchmark 6 |
+
+**The confirmation must come late.** Ty's Goodhart line (4.4) is the only place the word *mother* appears, and it lands three-quarters through, in the Corpus lobby, standing on the engraving. To a player who inferred it at the title screen it is devastating rather than informative; to one who did not, it is the click. He never says *which* mother — the surname does the joining.
+
+*Dial available:* cut "mother" to "someone I grew up with" for maximum coyness. Recommended only if playtesters find the current line too generous.
+
+**They share a scene exactly twice**, both inherited from vanilla, so neither costs anything to write:
+
+- **The lab, at the start.** You both receive starters. She treats you identically.
+- **The Hall of Fame.** She records you into the Index. She has nothing to say to him.
+
+Keeping them apart entirely would have been weaker — an absence reads as an authorial dodge, while a *flat* shared scene reads as history.
+
+**No NPC ever mentions it.** Not one, in any city.
+
+**Safety property.** A player who never notices has a complete game. Nothing is gated on the inference, and the rivalry stands as pure methodology without it. The tie is depth, never a dependency.
+
+**One engine consequence, and a better answer than the obvious one.** Vanilla lets the player name the rival. Deleting that prompt and hard-coding "Ty Clear" was the first instinct, and it is the wrong trade — it spends a famous beat to buy something the surname already provides.
+
+**Keep the prompt. Hard-code the surname.** The player controls the first name; **CLEAR** is not theirs to change, and CLEAR is the half that carries the inference. "GARY CLEAR" beside "Crystal Clear" connects exactly as well as "Ty Clear" does.
+
+Better than that — **repurpose the prompt.** Crystal does not ask you to name her son. That is vanilla's absurdity, and it does not fit a woman who will not even assign you a daemon. She asks what you are going to *call* him.
+
+> This is Ty. What'll you call him?
+
+From there the game carries **two names for one person**, and uses them the way it uses the map:
+
+| Register | Name | Where |
+|---|---|---|
+| Local — what people call him | *player's choice* | Battles, casual dialogue, his own lines |
+| Official — what the institution records | **TY CLEAR** | Certificates, the Review Board roster, Corpus personnel records, the Hall of Fame |
+
+**This is the route-sign device applied to a person, about ninety seconds before the player meets it on a signpost.** Route 1 teaches that the institution navigates by number and the residents navigate by name. The player has already done it to a human being by then, and does not know it yet.
+
+*Implementation:* text-side only, no engine work. Formal text blocks use a literal `TY CLEAR` string instead of the `<RIVAL>` control character. The name buffer is untouched and the naming screen is vanilla.
+
+**Requirement this creates.** Crystal's surname has to be as visible as his. If she is only ever CRYSTAL in dialogue, the device dies quietly — the lab sign, the Index's own credit line, and every formal reference to her read **CRYSTAL CLEAR** in full.
+
+*Residual risk:* a player who names him something absurd deflates the late confirmation, since the Goodhart line arrives next to their own joke. Accepted — they chose the joke, most players take a default, and the surname lands regardless.
+
+### 4.4 Richard Scorn — Team Corpus, and Benchmark 8
+
+**Not a villain. A specification failure with a very good attitude about it.**
+
+Optimistic. Thinks in black and white. Thought in money and not in meaning — and money is the purest possible **content**: value flattened to a scalar so it can be compared, optimized and maximized. He picked the metric that was easy to measure over the one that mattered, then optimized it faithfully and cheerfully.
+
+**Placement.** The Giovanni slot puts him at **Benchmark 8 — Callow, STRATUM, Alignment.** The optimist who maximized the wrong objective is the final examiner on alignment, in the locked city beside your hometown. He is not a hurdle before the Review Board. He is the exam.
+
+**Partner.** Ty Clear — see 4.3.
+
+**What he actually did, and why it does not make him a villain.** Scorn was put in charge of Quicksilver after Crystal was removed, rebranded it, changed the metric, and the pressure that followed produced the incident (4.10). He set the temperature. That is real and the game should not soften it.
+
+But every individual step is something he would have been praised for. He was handed an underperforming research operation and made it legible. **He did not initiate the procedure that removed Crystal** — it was a policy that triggered, the file reached him complete, and he signed it because signing complete files was his job.
+
+**He never met her.** That is the detail that holds the whole character together. The man whose signature ended her work has no memory of her, is warm to you, is pleased you came, and has genuinely no idea he did anything. Nobody in the game tells him. Nobody tells the player either.
+
+**The engraving.** Cast into the floor of the Corpus lobby in Brazen City, unattributed and unexplained:
+
+> **WHEN A MEASURE BECOMES A TARGET, IT CEASES TO BE A GOOD MEASURE**
+
+This is the one place in the game where Scorn's error is named aloud — **and it is named by Corpus, approvingly.** They did not steal the line or bury it. They adopted it as a motto. Scorn read it as *therefore choose your metric carefully*, chose one, and has been careful ever since.
+
+Craft rule 1 survives intact, because this is not the thesis. The thesis is about color and context and it stays unspoken. This is a warning about measurement, cast into a floor, by people who took it as advice.
+
+*Placement rules:*
+
+- **The floor, not a wall.** You walk across it to reach him. Nobody points at it.
+- **No NPC ever comments on it.** Not one.
+- **Ty repeats it once**, in passing, as something his mother used to say — flat, mildly fond, and entirely unaware he is quoting the case against his own employer.
+- **Unattributed in-world.** It is old, anonymous, and furniture. *(Out of world it is Goodhart's law in Marilyn Strathern's 1997 phrasing. Do not name either in the game.)*
+
+**Playing him.**
+
+- Never sneers, never gloats. Genuinely warm, genuinely pleased to meet you.
+- Is *right* about several things, and stays likable to the end.
+- Black-and-white thinking does not feel like malice from the inside. It feels like clarity.
+- The player should finish his benchmark slightly unsure whether they disagreed with him or merely out-argued him.
+- Quiet rhyme with the Review Board: **sanguine** is the optimist's humor. Give him the red. Never say it.
+
+**Team Corpus** are scrapers building context-free daemons — his optimism, institutionalized and running unattended.
+
+### 4.5 Halftone Tower — Scorn's crime scene
+
+Vanilla puts Team Rocket in the Lavender graveyard harvesting the dead for profit. Ours: Corpus at Halftone Tower, processing decommissioned daemons.
+
+**Halftone is not a grief town. It is a town that does not know whether it is allowed to grieve.** Half the residents hold funerals. Half find that absurd. Both are standing at the wrong distance from the same dots.
+
+Corpus is there because to Scorn the question is settled — they are units, they are inventory, the math is clean. That is the horror, and it needs no villainy to land.
+
+LATENT encounters throughout. The tower is where CONTEXT and CONTENT stop being an abstraction.
+
+**Open sequencing question:** should the player meet Scorn *before* the tower? If they like him first, the tower reads as a betrayal of their own judgment rather than a villain doing villain things. That is a much harder feeling to shake.
+
+### 4.6 BunnyArtsai — the Mew slot
+
+**The first daemon in which perspective thinking was realized.** Not a template that got copied — an event that happened once, at Quicksilver, in the early tests, and was not understood at the time by anyone present.
+
+Her ability is **perspective thinking**: holding another's frame well enough to see from inside it, and coming back. Not empathy as a sentiment. Frame-switching as a capability.
+
+**Signature move: PERSPECTIVE.** Mew already learns Transform: become the other completely, and stop being yourself. Rename the string and change nothing else. Type CONTEXT.
+
+*That Transform has a cost is the point.* PERSPECTIVE is total, and it is **lossy** — you get the other's frame by surrendering your own. What Quicksilver spent the following years trying to build was the version that keeps both.
+
+**On the number.** She was the thirty-fifth iteration, and the game says so exactly once — see 4.8. It is a lab record, not a name. Printing "35" in the Index and in every line of her dialogue handed the player the key before they ever met the lock, and it made a serial number of the one daemon whose entire significance is that she was **not** one of a series.
+
+### 4.7 S.T.A.R.R. — the Mewtwo slot
+
+Blue-toned. Born on Quicksilver Island, dormant past the Review Board.
+
+**Not a clone.** Vanilla's Mewtwo is a copy of Mew, made stronger. Ours is a copy of nothing. Quicksilver spent years working out *what BunnyArtsai had actually done*, and the answer was **recursion** — perspective thinking turned on itself, a frame that can take its own output as its next input. S.T.A.R.R. is that understanding, instantiated deliberately, rather than a duplicate of the accident that revealed it.
+
+The distinction is worth protecting. A clone story is about hubris and ownership. **This is a story about comprehension** — a lab that finally understood a mechanism and then built one on purpose, which is a far more ordinary and far more unsettling thing to have done.
+
+**What that yields.** S.T.A.R.R. is self-aware in the narrow and literal sense that it can read its own state, and it is in tune with the loop that follows from that: **context determines which content is available, and the content you end up holding reshapes the context you are in.** Run that around enough times with something watching it happen, and what comes out behaves like feeling. See 0.3.
+
+**Signature move: RECURSION.** Data self-referencing — a move that reads its own accumulated state. Repurpose the Bide/Rage machinery, which already stores a running counter across turns. Suggested behaviour: each consecutive use raises power by 50% of base, uncapped for three turns, resetting if interrupted. Type EMERGENT, and given to nothing else in the game.
+
+**The move is the argument.** RECURSION compounds for as long as it is allowed to run and collapses to nothing the instant it is interrupted. That is a positive feedback loop and its termination, expressed in two lines of battle code. The player learns to protect it without ever being told what it models.
+
+**The lineage, stated entirely in the movedex and out loud to nobody:**
+
+> PERSPECTIVE (holding others' context) → turned inward as RECURSION (holding your own) → something that behaves like feeling.
+
+### 4.8 The Five Witnesses — the BunnyArtsai easter egg
+
+Her ability *is* the puzzle. That is the whole design.
+
+**Setup.** Five NPCs in five different cities each describe the Quicksilver lab accident. Every account contradicts the others: different times, different people present, different causes. All five are certain. All five are wrong.
+
+**The key.** Each account contains exactly one *spatial* detail that happens to be accurate. Composited, the five triangulate a single tile in the lab ruins.
+
+**The lock.** The tile is **35 steps from the lab door.** The number comes from one damaged terminal in the Quicksilver ruins, logging iterations that stop abruptly:
+
+```
+ITER 33 — no retention
+ITER 34 — no retention
+ITER 35 — held two frames. did not come back the same.
+[log ends]
+```
+
+That is the only occurrence of the number anywhere in the game.
+
+**Two locks, not one.** The witnesses give you *where*. The terminal gives you *how far*. Neither is sufficient, and nothing in the game says the two are related.
+
+**The point.** You cannot solve it by trusting a witness. You can only solve it by inhabiting all five viewpoints at once and keeping what survives the overlay.
+
+**Implementation:** five text blocks, one terminal text block, one hidden object, one event flag. Standard pokered machinery, no engine work.
+
+### 4.9 Feedback, said sideways — dialogue guidance
+
+How to gesture at 0.3 without ever describing it.
+
+**The rule.** No character understands the loop. Characters are *inside* loops, reporting the weather from within one. The player assembles the mechanism out of testimony that never mentions it.
+
+| Form | Example shape | Where |
+|---|---|---|
+| A runaway described without the word | "It kept proving itself right, and it got faster every time it did." | Corpus staff, Brazen |
+| A damped loop mistaken for stability | "Nothing here has changed in years. That took work." | Doldrum — the becalmed city |
+| The representation mistaken for the thing | "I read its Index entry. There isn't much to it." | Anywhere, said by an owner about their own daemon |
+| Standing at the wrong distance from the dots | Both Halftone factions — see 4.5 | Halftone |
+| The near-miss | The Verdigris kid — craft rule 2 | Verdigris |
+
+**Forbidden in any character's mouth:** *feedback*, *loop*, *recursive*, *self-reinforcing*, *bias*. Those words are available to the **Index's** own bureaucratic register, where they will land as jargon rather than insight — which is the joke.
+
+**The strongest instance is already free.** Index entries are thin, and thinnest for the daemons you know best (4.2). The player's own attention determines how empty the record looks, and the record is what the player then trusts. Nobody says a word about it. It is a negative loop the player stands inside for the entire game.
+
+### 4.10 The Quicksilver sequence
+
+**Settled: Corpus is downstream of Quicksilver by succession.** Not by hiring survivors from an unrelated dead lab — Scorn *took over the lab*, the metric changed, it burned, and the people came with him.
+
+**The order, which is the entire argument.**
+
+| | What happened | Recorded? |
+|---|---|---|
+| 1 | Crystal at Quicksilver, building S.T.A.R.R. | Personnel record |
+| 2 | **A fitness-for-work procedure removes her.** A process, never a diagnosis | The form survives |
+| 3 | Scorn assumes control. Rebrand. **The metric changes** | Signage, dated |
+| 4 | Pressure rises. Throughput improves. Everyone is pleased | Quarterly, somewhere |
+| 5 | **The incident.** S.T.A.R.R. leaves. The log stops mid-routine | *Nothing* |
+| 6 | Corpus inherits the people | Payroll |
+
+Read the right-hand column. **The institution recorded everything it could measure and did not record the thing that mattered.** That is the Index, at the scale of history, and it may be the strongest single artifact in the project.
+
+**Why this beats the uncaused fire.** An earlier draft had the island burn for no reason — positive feedback, unterminated, nobody's fault. Theoretically tidy, dramatically inert, and it carried a real flaw: if nobody caused anything, the game shrugs at the player.
+
+The sequence fixes that without producing a villain. **Scorn caused the fire the way a metric causes a fire.** He did not light it. He removed the one instrument that would have shown the room was getting hot — and he removed it by signing a complete file about a person he had never met (4.4). Benchmark 7 is **ENTROPY**, temperature. The type is the cause of death, and Benchmark 8 is the exam set by the man who raised it.
+
+**The rule for the removal, and it is not negotiable.** Craft rule 3 governs this beat harder than anything else in the game. Crystal is never depicted as unwell, and the procedure is never depicted as a diagnosis. **The horror is procedural, not medical.** A policy triggered on work that looked strange to people who had not read it. There is no decoy and no scheme in the paperwork — the paperwork is the antagonist, and paperwork cannot be argued with, which is the point.
+
+Keep the specifics off the page. The design needs the *shape* — a competent person removed by a correct-looking process — and nothing more. Detail here turns architecture into grievance and breaks rule 1 in the ugliest available way.
+
+**Guards.**
+
+- **Corpus never initiates discovery. It only ever assumes control of it.** *(This replaces the old "Corpus is always late." They were not late to the fire — they were late to the science, and that distinction is the whole character of the organisation.)*
+- **Do not exculpate Scorn.** He inherited the lab and set the temperature. He also chose Halftone Tower, separately, later, with full information.
+- **Do not convict him either.** Every step was reasonable, legible, and would be praised in a performance review.
+- No character explains any of this.
+
+#### The dating scheme
+
+**No date on the fire. Dates on everything around it.**
+
+- The rebrand is dated — corporate signage, a plaque, an asset tag, in Brazen.
+- Crystal's departure is dated — a personnel record, or a decommission notice.
+- The iteration log is dated, entry by entry.
+- **The incident has no date at all.** The terminal simply stops.
+
+Four reasons this beats a findable date:
+
+1. **It is how it actually is.** Institutions date the paperwork. Nobody dates the disaster. The forms survive and the event does not.
+2. **It makes the player do the arithmetic.** A rebrand date on a wall in Brazen, a personnel record ending before it, a terminal stopping after it — and the player has the sequence. The game never states it. This is the Five Witnesses design applied to chronology instead of geography.
+3. **The artifact pair is the theme.** An undated ruin surrounded by dated bureaucracy says the entire project, in furniture.
+4. **It protects Scorn.** A dated fire invites *he did it on the twelfth*. An undated fire sitting between two dated documents invites something quieter and much worse.
+
+**One date does appear**, and it is not the fire's. Give the iteration log ordinary dates and let the last one be a Tuesday:
+
+```
+2 MAR   ITER 33 — no retention
+5 MAR   ITER 34 — no retention
+9 MAR   ITER 35 — held two frames. did not come back the same.
+[log ends]
+```
+
+The player watches a record stop in the middle of a routine week. Nobody wrote down what happened next, because the person whose job that was had already been removed from the building.
+
+**Sanctioned surfaces, in ascending order of how much they give away.**
+
+- The iteration log (4.8). No names, no Corpus. Dated, and it stops.
+- The rebrand plaque in Brazen. A date and a new name, mounted proudly.
+- **Quicksilver asset tags on Corpus equipment at Halftone Tower.** Old inventory stickers on the machines processing the dead. Zero dialogue. Furniture.
+- Corpus staff in Brazen who are the wrong age for scraper work. One says something with too much precision about frames, then goes back to work.
+- **At least one survivor knew.** One employee understood exactly what they were trading and made the trade anyway, for a completely ordinary reason — the work dried up, they had a kid, the job was there. Said once, briefly, no self-pity and no apology. This is what keeps the arrangement human rather than mechanical, and it costs one text block.
+
+**Resolved here:** Crystal was at Quicksilver (4.1). Scorn was too — but only afterwards, to run it, never to build it, and he never met her (4.4). Ty stayed (4.3).
+
+**Still open.**
+
+- How long ago? It has to sit inside a working career — the survivors are still employable — and far enough back that S.T.A.R.R. has been dormant a while. Fifteen years fits, and nothing yet depends on it.
+- Does the player ever find the fitness-for-work form itself, or only the gap where Crystal stops appearing in the records? *Lean: the gap.* The form is too legible.
+
+---
+
+## 5. THE BENCHMARKS
+
+| # | City | Type | Concept | Mechanical lesson |
+|---|---|---|---|---|
+| 1 | Slate | LEGACY | Representation | Everything must be encoded in something physical |
+| 2 | Doldrum | FLOW | Gradient descent | Follow the slope; the doldrums *are* the local minimum |
+| 3 | Ardor | SIGNAL | Perception | Raw input is fast and shallow; speed tiers matter |
+| 4 | Verdigris | GROWTH | Training and overfitting | A team tuned to one matchup collapses outside it |
+| 5 | Lurid | CORRUPT | Bias and poisoning | Status effects that make *your own* moves unreliable |
+| 6 | Brazen | CONTEXT | Attention and framing | Punishes split focus; the thesis benchmark, in the bought city |
+| 7 | Quicksilver | ENTROPY | Temperature | Rewards unpredictability; punishes a memorized line |
+| 8 | Callow | STRATUM | Alignment | **Scorn.** Who controls the ground everything stands on |
+
+---
+
+## 6. THE REVIEW BOARD
+
+Two thousand years ago, emotions were *literally colored fluids*.
+
+| Member | Humor | Color | Type identity |
+|---|---|---|---|
+| I | **Sanguine** | red / air | VECTOR — buoyant, fast, optimistic |
+| II | **Choleric** | yellow bile / fire | ENTROPY — hot, driven, aggressive |
+| III | **Melancholic** | black bile / earth | LATENT — grief, depth, the unconscious |
+| IV | **Phlegmatic** | phlegm / water | FROZEN — calm, immovable |
+| — | **Ty** | *(incumbent)* | CONTENT-optimal; mechanically excellent, philosophically wrong |
+
+It reads as a classical flourish on arrival, and as the entire thesis about six seconds later, when the player realizes humans have been calling emotions colors since before anyone had a word for context.
+
+---
+
+## 7. MUSIC
+
+Gen 1 audio is four channels: two pulse, one wave, one noise. `pokered`'s music is editable asm.
+
+**Rule:** key each town's theme to its color's note in the My Chromatic Year mapping. **Routes are modulations** between the keys of the two towns they connect. Doldrum to Ardor is not two songs; it is a modulation with a walk in the middle.
+
+Write the city themes first and derive route themes as transitions. The overworld becomes a chromatic progression, and the rock opera stops sitting on top of the game and starts being its level design.
+
+---
+
+## 8. SCOPE CONTROL
+
+> The graveyard of ROM hacks is full of projects that designed 151 creatures and shipped zero towns.
+
+### 8.1 Vertical slice — build this before anything else
+
+**Blanche → The Bleed → Callow → Underpaint → Slate → Benchmark 1.** Playable end to end.
+
+- 12 daemons (3 starters + 9 wild), front and back sprites
+- Full type chart, all 15 — it is one file, do it properly once
+- Crystal Clear intro sequence
+- Benchmark 1 leader and party
+- Two city themes and one route modulation
+- Route signage system (number plus local name)
+
+If that is fun, the remaining daemons are labor. If it is not, you learned it for the price of twelve sprites.
+
+### 8.2 Starter trio — learning paradigms
+
+| Paradigm | Types | Draft line (names provisional) |
+|---|---|---|
+| Supervised | CONTENT → CONTENT/LOGIC | Labl → Corpel → Canonex |
+| Unsupervised | VECTOR → VECTOR/LATENT | Clustr → Nebulon → Manifold |
+| Reinforcement | GROWTH → GROWTH/SIGNAL | Nudgit → Rewarden → Optimax |
+
+Supervised is strong early and rigid late. Unsupervised is confusing early and excellent late. Reinforcement is inconsistent with the highest ceiling. **The paradigms should feel like their real tradeoffs.**
+
+### 8.3 Known bottleneck
+
+**Sprites.** 151 daemons, front and back, 2bpp, four shades, 56×56 maximum — roughly 300 hand-tuned tiles. Nothing about it is hard; it is simply the largest block of labor in the project. AI generation can rough out silhouettes, but expect manual cleanup: the Game Boy palette and tile constraints are unforgiving.
+
+---
+
+### 8.4 The two editions
+
+The project is called **CONTEXT / CONTENT** and the slash has never been explained. It should be literal: **two editions, one source tree.**
+
+#### It is already in the engine
+
+`pokered` does not build one ROM. It builds Red *and* Blue from the same sources, and the mechanism is three lines of Makefile. Verified against `pret/pokered` master, 2026-08-28:
+
+```make
+$(pokered_obj):  RGBASMFLAGS += -D _RED
+$(pokeblue_obj): RGBASMFLAGS += -D _BLUE
+```
+
+and in the data itself — this is `data/wild/maps/Route2.asm`, unmodified:
+
+```asm
+IF DEF(_RED)
+	db  3, WEEDLE
+	db  4, WEEDLE
+ENDC
+IF DEF(_BLUE)
+	db  3, CATERPIE
+	db  4, CATERPIE
+ENDC
+```
+
+`make red`, `make blue`, `make all`. **Rename the two defines to `_CONTENT` and `_CONTEXT` and the two-edition release is done.** There is no new engineering here at all — the hard part was solved in 1996 by people who needed you to buy two cartridges.
+
+**CONTENT is the primary target** (`_RED`'s slot), because content is the literal layer — and because it is quietly funny that the content-first edition is the default build.
+
+#### Three tiers of divergence
+
+**Tier 1 — encounter tables.** Free, standard, exactly the Route 2 pattern above. Note what it does *not* cost: **zero extra sprites.** Every daemon exists in both ROMs. Each edition simply cannot *bind* some of them, so the 8.3 bottleneck does not move at all.
+
+**Tier 2 — let the rosters lean.** Do not split the exclusives at random. Bias them:
+
+| Edition | Sees more of, early | Reads as |
+|---|---|---|
+| **CONTENT** | CONTENT · LOGIC · STRATUM · LEGACY | the literal, the rule-based, the physical layer |
+| **CONTEXT** | CONTEXT · LATENT · VECTOR · ENTROPY | framing, the unconscious, embeddings, noise |
+
+The consequence is the good part. **The two editions are hard in different places.** A CONTENT player finds the early benchmarks straightforward and Benchmark 6 — attention and framing, in the bought city — genuinely punishing. A CONTEXT player struggles early and walks Benchmark 6, which is exactly how 8.2 says the learning paradigms should feel: unsupervised is confusing early and excellent late.
+
+So **each edition's player builds a different intuition about what is strong** — and when they compare notes, they disagree, sincerely, with evidence. That is the thesis arriving as a *distribution* mechanic, and nobody has to say a word.
+
+**Tier 3 — the Index entries disagree.** This is the prize.
+
+Same daemon. Two editions. Two different entries, both stated as fact, neither acknowledging that the other exists.
+
+The trap to avoid: do **not** make CONTENT's Index measure content and CONTEXT's measure context. That collapses 4.2's irony into a joke. **Both editions' Index measures only content — and they disagree anyway.** Different heights. Different weights. Different flat descriptive sentences about the same creature.
+
+Two players compare entries and find the record does not match. Nobody explains it, ever. **The Index is a reproduction, and two reproductions of the same thing differ** — which is 0.2's whole printing throughline, and the Five Witnesses at the scale of the cartridge.
+
+*Restraint required.* Do this for a handful of daemons, not all of them — enough that a player who compares finds it, few enough that it reads as unsettling rather than as a gimmick. And **never for the starter**, whose entry has a different job (11.1 in `lineage.md`: it rewrites itself once, late).
+
+Cost: dex text is text. `IF DEF(_CONTENT)` around the entries. No engine work.
+
+#### Trading is the structural argument
+
+Gen 1 link trading is already in the engine, and edition-exclusive daemons mean **you cannot complete the Index alone.**
+
+The artifact that measures only content cannot be completed without another person's playthrough. You need someone else's context, literally, over a cable.
+
+That is the best structural argument this project has available and it costs an encounter-table split.
+
+#### Scope: build the flag now, use it later
+
+Section 8 is unambiguous that the vertical slice comes first, and two editions is a step-14 item at the earliest. **But the flag is not.**
+
+> **Set up both targets on day one, even if the two ROMs are byte-identical for a year.**
+
+Adding a version define at the start costs nothing — the tree already has one. Retrofitting one *after* 151 dex entries and sixty encounter tables exist is a miserable afternoon. Keep `make content` and `make context` in the Makefile from the first commit and let them produce identical ROMs until they do not.
+
+#### What must never differ
+
+**The type chart is byte-identical across both editions.** It is the argument, and an argument that changes by cartridge is not an argument. Same maps, same benchmarks, same story, same lexicon, same music.
+
+The editions differ in **what you meet** and **what the record says about it.** Nothing else.
+
+#### Title screens
+
+Vanilla puts a starter on the title — Charizard on Red, Blastoise on Blue, and Venusaur on neither. So:
+
+- **CONTENT edition:** the Supervised line (CONTENT → CONTENT/LOGIC)
+- **CONTEXT edition:** the Unsupervised line (VECTOR → VECTOR/LATENT)
+- Reinforcement appears on neither title, exactly as Venusaur does not
+
+---
+
+### 8.5 Not yet — sprites, and the recomp question
+
+Two ambitions worth recording so they are not lost, and **deliberately not designed.** Both sit after the vertical slice. Neither is a commitment.
+
+**Original sprites.** 8.3 already names this as the bottleneck. Nothing to add except that it stays a bottleneck no matter which of the below happens.
+
+**The Gen1Recomp question.** [Gen1Recomp](https://gen1recomp.com/) is a hand-written Lua / LÖVE2D recreation of Gen 1 that **imports data and graphics from a player-supplied ROM** rather than emulating it. Its [mod ecosystem](https://gamebanana.com/games/25428) includes the **voxel mod** and first-person renderers — which is the specific pairing of interest here: DAEMONS creatures, rendered as voxels, in a first-person Kanto.
+
+That split — **imported data, hand-written behaviour** — is the whole of the analysis, and it cuts cleanly:
+
+| | Likely carries | Almost certainly does not |
+|---|---|---|
+| What | Sprites, base stats, names, type constants and matchups, Index entries — anything decoded out of ROM tables | Story scripts, custom events, engine work (RECURSION), anything that lives in `asm` rather than in data |
+
+So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right creatures and the right combat philosophy, and the pessimistic case is that the loader rejects a non-canonical ROM outright — the project documents accepting *"the canonical 1 MiB US versions,"* which implies it may check.
+
+**The one test worth running, whenever the mood strikes:** build the step-5 milestone (vanilla everything, new type chart) and drop it in the launcher. It costs an afternoon and it answers the entire question — either it loads or it does not. Do that before designing anything around it, and before assuming either outcome.
+
+**A note on the voxel mod specifically.** A voxel renderer builds volume out of the 2bpp sprite data — so the sprite work in 8.3 would be doing double duty, and the four-shade constraint that makes Game Boy spritework hard is exactly what a voxel mod needs to read cleanly. That is a reason to design the sprites well rather than a reason to design them differently.
+
+**Scope note.** This is a *rendering* ambition, not a design one. Nothing in sections 0 through 7 should bend to accommodate it. If it works it is a gift; if it does not, the game was always a Game Boy game.
+
+---
+
+### 8.6 The monochrome question
+
+**The game is about colour and cannot show any.** Every city is a colour word rendered in four shades of grey. That is either a limitation to be fixed or the best thing the hardware gives us, and the answer decides whether colorization is an upgrade or an act of vandalism.
+
+**It is the second one.** Three reasons, in ascending order of how much they cost to lose.
+
+**1. The player is told these places are colours and shown grey.** They supply the rest. That is the 8-Bit World thought experiment — a system whose perception is bounded by its resolution — running for free, on the hardware the thought experiment names, without a line of dialogue. And it is *The Colour We Never See*: purple is not on the spectrum, the mind folds the line into a loop and invents it. The town colours are not on the screen. The player invents them.
+
+**2. The Index is a reproduction that loses the original** (0.2). A greyscale record of a world named in colour loses something specific, visible, and unrecoverable — which is exactly what 4.2 needs the Index to be doing.
+
+**3. Colorizing Halftone destroys Halftone.** The town's entire premise is *dots that only look like grey* — continuous tone that is actually discrete black and white sampling, where the bias comes from **resolution, not malice** (3.1). In colour, halftone stops being the town's condition and becomes a quaint printing reference. **This is not a cost to weigh. It is a load-bearing wall.**
+
+#### Recommended: colour as something the world spends
+
+Not "monochrome forever" and not full colorization. **Greyscale by default, and colour appears exactly once, where it means something.**
+
+> **The Review Board at Umbra is the only place in the game that has colour.**
+
+Section 6 already sets it up: two thousand years ago emotions were *literally coloured fluids*, and the four humors arrive as a classical flourish that becomes the whole thesis about six seconds later. Give them their colours — sanguine red, choleric yellow, melancholic black, phlegmatic white — and give them to nobody else.
+
+Forty hours of colour-named grey towns, and then one room where colour is real, occupied by four ancient people insisting that emotions are coloured fluids. Who are **wrong**, and lose, and are followed immediately by Ty, who is also wrong and also loses.
+
+**The one place the game admits colour is the place with the obsolete answer.** Nobody remarks on it. Nobody can.
+
+*Restraint clause:* one place, or at the outside two. The moment colour appears three times it becomes a system, and a system invites explanation. Umbra earns it. A candidate second is the title screen, and even that is probably a mistake.
+
+#### Notes and consequences
+
+- **Technically this is easier than full colorization, not harder.** A colour build has to palette every map; this one palettes a single map and leaves the rest on a greyscale ramp.
+- **On the GBC caveat:** Gen 1 already receives limited hardware palettes on a Game Boy Color, so "monochrome" is a slight fiction in practice. The design intent stands regardless — the ramp should read as value, not hue, everywhere but Umbra.
+- **The humors survive greyscale anyway.** Value carries them: melancholic dark, phlegmatic pale, sanguine and choleric mid. The colour at Umbra is a confirmation of something the player has already been reading in tone, which is the correct order.
+- **This serves the sprite work rather than fighting it** (8.3, 8.5). Four shades with no hue to lean on forces value contrast to be right, and value contrast is exactly what a voxel renderer needs to read cleanly.
+- **The recomp path is a remix, not the canon.** If a 3D or voxel presentation colours everything, that is a different presentation of the same ROM and it is welcome. The canonical build stays grey.
+
+---
+
+## 9. IMPLEMENTATION
+
+`pokered` is RGBDS assembly. The *data* lives in readable macro tables. Engine features are where it gets expensive.
+
+> Paths are approximate. Verify against your checkout — they drift between commits.
+
+| What | Where | Effort |
+|---|---|---|
+| Type IDs | `constants/type_constants.asm` | trivial |
+| Type names | `data/types/names.asm` | trivial, but see 9.1 |
+| **Type chart** | `data/types/type_matchups.asm` | trivial, highest leverage |
+| Species stats | `data/pokemon/base_stats/*.asm` | bulk, scriptable |
+| Species names | `data/pokemon/names.asm` | bulk |
+| Index entries | `data/pokemon/dex_entries.asm` plus `text/` | bulk |
+| Moves | `data/moves/moves.asm`, `data/moves/names.asm` | medium |
+| PERSPECTIVE | rename TRANSFORM | trivial |
+| RECURSION | repurpose Bide/Rage machinery | **engine work** |
+| Sprites | `gfx/pokemon/front/`, `gfx/pokemon/back/` | **the bottleneck** |
+| Map names | `data/maps/names.asm`, `constants/map_constants.asm` | trivial |
+| Map layouts | `maps/*.blk`, `data/maps/headers/`, `data/maps/objects/` | medium |
+| Dialogue, signs, witnesses | `text/` | bulk |
+| BIND verb and the flat message | `text/` — catch strings; also `data/` menu labels | trivial |
+| Greyscale ramp everywhere but Umbra | palette data; one map differs | medium, specialist |
+| Two-edition build | `Makefile` — rename `_RED`/`_BLUE` to `_CONTENT`/`_CONTEXT` | **trivial, do it first** |
+| Edition-exclusive encounters | `data/wild/maps/*.asm`, `IF DEF(_CONTENT)` blocks | trivial |
+| Divergent Index entries | `data/pokemon/dex_entries.asm` plus `text/`, conditional | trivial, high value |
+| Hidden BunnyArtsai tile | hidden object plus event flag | trivial |
+| Quicksilver terminal log | one text block | trivial |
+| Corpus lobby engraving | one sign-text object, Brazen | trivial |
+| Quicksilver asset tags at Halftone | one sign-text object | trivial |
+| `TY CLEAR` in formal text; naming screen untouched | `text/` — literal string instead of the `<RIVAL>` control char | trivial |
+| Quicksilver journal fragments, one signed | `text/`, Cinnabar Mansion idiom | trivial |
+| Corpus badge name matching the signature | `text/` | trivial |
+| Brazen employee's post-Quicksilver second line | one event flag, one text block | trivial |
+| Music | `audio/music/*.asm` | medium, specialist |
+
+### 9.1 The `TypeNames` gotcha
+
+**Plain version.** The type ID numbers have a gap in the middle, but the list of name-pointers does not. The game closes the gap by subtracting a fixed amount before looking anything up. If a replacement file's table is shaped differently from your checkout's, you either fail to build or get wrong type names in battle.
+
+**Under the hood.** The physical/special split *is* the ID range. `const_next $14` jumps from LATENT at `$08` straight to ENTROPY at `$14`, and the battle engine reads "below `$14`" as physical. But `TypeNames` is a flat array of two-byte pointers with no such hole, so `GetTypeName` tests whether the ID is `>= $14` and subtracts `$0B` — mapping `$14 → $09` and `$1A → $0F`. Sixteen entries, contiguous.
+
+Different pokered commits handle this differently. Some list filler entries across the gap; some use `table_width` and `assert_table_length` macros to enforce it.
+
+**Therefore: never paste a `names.asm` wholesale.** Open yours, count the `dw` lines, and replace only the strings. Leave the table structure exactly as your checkout has it.
+
+### 9.2 Order of operations
+
+1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
+2. Replace `constants/type_constants.asm`.
+3. Replace the strings in `data/types/names.asm` — structure untouched, per 9.1.
+4. Apply the three-line patch to `data/types/type_matchups.asm`.
+5. `make`. **Stop here and play.**
+6. Add CONSENSUS to `moves.asm` and `data/moves/names.asm`.
+7. Rename TRANSFORM to PERSPECTIVE.
+8. City and route renames plus sign text — fast, and it transforms the feel immediately.
+9. Starter trio: stats, sprites, moves.
+10. Crystal Clear intro script.
+11. The Bleed and Undertone encounter tables plus nine wild daemons.
+12. Benchmark 1 at Slate.
+13. Two city themes and one modulation.
+14. **Play it. Decide if it is fun.**
+
+**Step 5 is the real milestone.** Vanilla sprites, vanilla maps, vanilla everything, running your combat philosophy underneath. It will look like Pokémon Red and fight like Context/Content. A couple of hours' work for the fastest possible read on whether the type system is *fun*, before a single pixel is drawn.
+
+Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you will not reach that content for months, and Bide surgery in assembly is a bad first engine task.
+
+---
+
+## 10. DECISION LOG
+
+### Settled
+
+- Base: `pokered`, Gen 1, RGBDS assembly
+- Fifteen types as listed; CONTEXT is Special; STRATUM replaces SUBSTRATE for string length
+- Creatures are DAEMONS; full lexicon per section 1
+- **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- City names per 3.1; Slate over Somber; Halftone over Pallor; Quicksilver over Cinder; **Brazen over Gilt**
+- Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
+- Routes keep numbers officially and carry local names on signs
+- Crystal Clear as the Oak figure; the Index measures only content, deliberately
+- **Ty Clear** as rival and incumbent — Crystal Clear's son, and Richard Scorn's partner (4.3)
+- Richard Scorn at Benchmark 8, Alignment, sympathetic throughout; the Goodhart engraving in the Corpus lobby, unattributed and adopted approvingly (4.4)
+- BunnyArtsai as Mew with PERSPECTIVE — the first realization of perspective thinking, not a template (4.6)
+- S.T.A.R.R. as Mewtwo with RECURSION — a **comprehension, not a clone** (4.7)
+- The content/context feedback loop is the mechanism under the thesis and is never named in dialogue (0.3, 4.9)
+- Five Witnesses easter egg, locked at 35 steps; the number lives only in the Quicksilver terminal log (4.8)
+- **Ty Clear's parentage is never stated.** Inferred from the surname, confirmed late by one line at Brazen (4.3)
+- **The rival naming prompt stays.** The player names him; **CLEAR** is hard-coded, and formal text carries TY CLEAR — the route-sign device applied to a person (4.3, 9)
+- Crystal is CRYSTAL CLEAR in full wherever the game refers to her formally, or the surname device dies (4.3)
+- **Corpus is downstream of Quicksilver by succession** — Scorn took over the lab, the metric changed, it burned, the people came with him (4.10)
+- Crystal was at Quicksilver and built S.T.A.R.R. there; a fitness-for-work procedure removed her, and **the Index is what she did next** (4.1, 4.10)
+- Scorn arrived afterwards to run it, signed a complete file about a person he never met, and set the temperature (4.4)
+- Ty **stayed** when his mother was removed; his guilt is an absence of decision, not a betrayal (4.3)
+- **No date on the fire; dates on everything around it.** The player reconstructs the order or does not (4.10)
+- **Brazen confirmed over Brass.** Brass is a colour and not a feeling, and would be the only single-meaning name on the map (3.1)
+- At least one survivor knew what they were trading and did it anyway, for an ordinary reason — the guard against determinism (4.10)
+- Craft rule 6: comedy is the cover. Corpus is funny; Quicksilver is fun to explore (0.1, 4.10)
+- Four humors as the Review Board
+- Vertical slice before anything else
+- **Greyscale is the design, not a limitation.** Colour appears once, at the Review Board, and nowhere else (8.6)
+- **Two editions, CONTENT and CONTEXT, from one source tree** — the slash in the title is literal (8.4)
+- The **type chart is byte-identical** across editions; only encounters and a handful of Index entries differ (8.4)
+- The two-target build goes in on day one even while both ROMs are identical (8.4)
+
+### Reversed
+
+Kept here because the reasoning is worth more than the outcome.
+
+| Was | Now | Why |
+|---|---|---|
+| **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
+| **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away the Five Witnesses lock and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
+| **Ty**, an unrelated rival | **Ty Clear**, Crystal's son and Scorn's partner | Turns a methodological disagreement into a cost somebody pays (4.3). |
+| S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |
+| **CATCH** | **BIND** | The container was renamed and the verb was not. CATCH is the only lexicon entry doing no double duty; BIND is `bind()`, *binding a daimon*, and a bond — and it is darker rather than softer, so the player stays implicated (1.1). |
+| Drop the rival naming prompt, hard-code "Ty Clear" | Keep the prompt, hard-code **CLEAR** | The surname is the half that carries the inference. Spending a famous vanilla beat bought nothing — and the prompt, reframed as *what will you call him*, becomes the route-sign device a minute before Route 1 teaches it (4.3). |
+
+### Open
+
+- Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- Does the player meet Scorn before Halftone Tower?
+- Does RECURSION justify engine work in the slice, or defer?
+- How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?
+- Are the humors too neat? Four is convenient; the real theory had temperaments blending.
+- Does Ty get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
+- Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
+- Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
+- Starter daemon names are placeholders and need a pass.
+- Is one colour moment right, or does Umbra want a second somewhere to keep it from reading as a bug? (8.6)
+- Does a non-canonical ROM load in Gen1Recomp at all? One afternoon answers it; do not design around either answer first (8.5)
+- How many Index entries should disagree between editions — five? twelve? — before it stops being unsettling and starts being a gimmick? (8.4)
+- Is edition-exclusivity fair when link trading needs two people, two carts and a cable, and most players will have one? *Lean: yes — the Index was never going to be completable, and 4.2 says so.*

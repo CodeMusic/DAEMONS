@@ -73,7 +73,7 @@ Deliberately boring. SWARM's job is to be a *reliable check* on CONTEXT, and rel
 
 ## Signature moves
 
-### PERSPECTIVE — BunnyArtsai35
+### PERSPECTIVE — BunnyArtsai
 
 **Rename `TRANSFORM`.** That's the whole implementation.
 
