@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.4**
+**A `pokered` total conversion — the living design bible, v3.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -213,12 +213,30 @@ The gyms were already BENCHMARKS, so a battle was already a **run** — you put 
 | `Go! <nick>` | **`RUN, <nick>`** |
 | `<TRAINER> wants to fight!` | `<USER> wants to BENCHMARK!` *(pending the trainer pass)* |
 | `#MON are pets. Others use them for fights.` | **`DAEMONS are companions. Others BENCHMARK them.`** |
+| `Enemy <nick> fainted!` | **`Remote <nick> HALTED!`** |
+| `Enemy <nick> ran!` | **`Remote <nick> DETACHED.`** |
+| `The enemy's weak!` | **`The remote's weak!`** |
+| `<PLAYER> defeated <TRAINER>!` | **`<PLAYER> outscored <USER>!`** |
 
 *On pets, and the precedent that decided it.* Crystal's opening speech drew a contrast — kept for affection, or used for gain — and vanilla's affection word was **pets**. 1.5 rejected *caught* for being "a word about grabbing an animal"; **pets** is a word about keeping one, and fails the same test for the same reason. **companions** keeps the register without the menagerie.
 
 *Why not **assistants**.* Tempting, and the contemporary word — but it collapses the sentence. Vanilla's line only works because its two halves oppose each other, and an assistant is *already* being used, so "assistants… others use them" stops being a contrast at all. It is also the nearest the first minute could come to saying the thesis out loud (craft rule 1), and it pins the game to one year's discourse. **Held in reserve**: if it is ever taken, the second half has to change with it.
 
 *And **fights** becomes **BENCHMARK**,* which is what this world calls the thing. Vanilla teaches "fights" in the first minute; we teach the real verb in the same breath, three lessons before the player needs it.
+
+*On **enemy**, replaced by **REMOTE**.* Nothing in this world is anyone's enemy — the opposing daemon is a process bound to somebody else, and *enemy* imports a hostility the lexicon never claims. **REMOTE** is the exact technical word for a process you have no handle on, it sits on the same axis as DETACH, and it is attested as a bare noun in precisely this register (*the remote is down*). It is one character longer than *enemy* and the nickname occupies its own line, so nothing rewrapped.
+
+*And it caught a live collision.* `Enemy <nick> ran!` was still using **ran** — the word 1.4 went to some trouble to free. It is now **`Remote <nick> DETACHED.`**, which also quietly teaches that detaching is something either side can do.
+
+*On **defeated**, replaced by **outscored**.* A trainer battle is a BENCHMARK, and a benchmark yields a **score**. *Defeated* is the language of combat; *outscored* is the language of evaluation, which is what the Review Board will later do to the player. **outran** was considered and rejected — it reaches for the racing sense of RUN, and 1.4 spent real effort making RUN mean *execute*.
+
+#### Three that were interrogated and kept
+
+**`RUN, <nick>` keeps its comma.** A colon would make it a command echo, which is tempting — but this string has three siblings, `Do it! @`, `Get'm! @` and `The remote's weak! Get'm! @`, which vanilla selects between by situation. The slot is **the player's voice**, not the system's. Colon-ing one of four would leave a command echo standing next to two shouts, and that reads as an error rather than a choice. *If the colon is ever taken, all four have to flatten together — and vanilla's variety goes with them.*
+
+**EXP stays EXP, and it is not a compromise.** 4.3 says context forms from **experience** and nowhere else — that is the argument the whole rival plot turns on. The quantity the game already accumulates is called experience. **The best resonance in the system is the one vanilla handed us**, and renaming it would be the only change in this document that made the game say less.
+
+**LEVEL stays LEVEL**, for two reasons. It already does the double duty 1 asks for: 1.5 has you gaining access *"at a **permission level** your box determines"*, so the word is simultaneously the RPG stat and the privilege tier — you escalate. And practically, the HUD does not spell it: `<LV>` is **a single tile**, `$6e`, drawing `:L`. Any replacement needs new art before it needs a decision.
 
 *On punctuation:* `LABL was BOUND.` is flat because **the game declines to congratulate the player for acquiring something.** `UNBOUND RATTATA appeared!` is alarm, not congratulation — the rule is about refusing to celebrate, not refusing to punctuate.
 
@@ -1403,6 +1421,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **`enemy` → `REMOTE`** — nothing here is anyone's enemy; a REMOTE is a process you have no handle on, and it pairs with DETACH. `Enemy X ran!` → **`Remote X DETACHED.`**, killing a live `ran` collision (1.4)
+- **`defeated` → `outscored`** — a BENCHMARK yields a score; *outran* rejected for reaching back at RUN (1.4)
+- **Kept after interrogation: `RUN,` (comma), `EXP`, `LEVEL`** — EXP because 4.3's whole argument is that context forms from *experience*; LEVEL because it already means *permission level* and `<LV>` is a single tile (1.4)
 - **Crystal is female and the text had not caught up** — `Gramps` → **`Gran`** (she is Al's grandmother, 4.3), `His order` → `Her order`, and Agatha's block repronouned. **`handsome` deliberately kept** — it is attested for women and keeps Crystal tough rather than pretty (4.3)
 - **Starter dialogue named vanilla types** — *fire/water/plant* → **ENTROPY/FLOW/GROWTH**; 19 more remain in gyms, held for 5 (1.2)
 - **Crystal's opening speech**: six `#MON` marked plural; **pets → companions** (1.5's animal-word test), **fights → BENCHMARK**. *assistants* considered and held in reserve — it collapses vanilla's contrast (1.4)
