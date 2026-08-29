@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.6**
+**A `pokered` total conversion — the living design bible, v3.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -125,7 +125,9 @@ Flat, factual, and it claims nothing. Placeholder-grade wording that should get 
 
 **Why the intro said #MON and not DAEMONS, and no longer does.** `#` is a control character that expands to *POKé*, and the species word has not been renamed yet — that is a bulk pass over the charmap and every string (9.2, step 8). Writing DAEMONS in one line while the other several hundred still say POKéMON would be worse than waiting. **The line became "I study DAEMONS." the day the species rename landed**, and nothing else about it changed. *(Done 2026-08-29 — it needed the plural mark, per 1.2.)*
 
-*The cost, recorded:* every touched line needed rewrapping. Both replacements are longer (`OAK:` → `CRYSTAL:` is +4, `PROF.OAK` → `CRYSTAL CLEAR` is +5) and Gen 1 text is hand-wrapped. Twenty-one blocks were rewrapped to stay inside the box. Vanilla's own widest line is 19 characters, which is the practical ceiling — not 18.
+*The cost, recorded:* every touched line needed rewrapping. Both replacements are longer (`OAK:` → `CRYSTAL:` is +4, `PROF.OAK` → `CRYSTAL CLEAR` is +5) and Gen 1 text is hand-wrapped. Twenty-one blocks were rewrapped to stay inside the box.
+
+**The ceiling, measured properly 2026-08-29 — and the earlier figure here was wrong.** The message box is declared `MESSAGE_BOX, 0, 12, 19, 17`, so its borders sit at x0 and x19 and text starts at x1: **the interior is 18 columns.** Vanilla reaches 19 exactly four times (*"It's very accurate,"*, *"That's odd, MR.FUJI"*, *"You can't use items"*, and one trailing space) — and each of those **overwrites the right border tile**. So the honest rule is **18 is clean, 19 is vanilla-grade jank**, not "19 is the ceiling". A control token like `<COLON>` or `<PK>` is **one tile**, which is what made the earlier count wrong.
 
 *Code identifiers were left alone.* `OaksLab`, `OAKS_LAB`, `ProfOakName` and roughly 267 similar symbols are internal and invisible to the player, in the same category as the `_RED`/`_BLUE` defines (8.4). Renaming them is cosmetic and deferred.
 
@@ -224,6 +226,10 @@ The gyms were already BENCHMARKS, so a battle was already a **run** — you put 
 
 *And **fights** becomes **BENCHMARK**,* which is what this world calls the thing. Vanilla teaches "fights" in the first minute; we teach the real verb in the same breath, three lessons before the player needs it.
 
+*The prefix was the one that mattered, and the first pass missed it.* Two standalone strings said *Enemy*; the **third** is `home/text.asm`'s `EnemyText:: db "Enemy @"`, which is what every `<USER>` and `<TARGET>` expands to for the opposing side — so it appears in far more messages than the other two combined. Now `Remote @`.
+
+**And it sets a naming budget.** Thirty-two strings put text straight after `<USER>` on the same line, the worst being `<USER>'s`. Vanilla fits exactly: `Enemy ` + a 10-character name + `'s` = **18**. *Remote* is one longer, so the same line is **19** — over the clean edge. **Species names should therefore be capped at 9 characters** (9 gives 18 and fits). This costs us nothing we were not already choosing: 9 renames the bestiary anyway, and vanilla's own longest are 10. A player who *types* a 10-character nickname will push one character over the border in some messages — self-inflicted, self-healing, and no worse than what vanilla does four times on its own.
+
 *On **enemy**, replaced by **REMOTE**.* Nothing in this world is anyone's enemy — the opposing daemon is a process bound to somebody else, and *enemy* imports a hostility the lexicon never claims. **REMOTE** is the exact technical word for a process you have no handle on, it sits on the same axis as DETACH, and it is attested as a bare noun in precisely this register (*the remote is down*). It is one character longer than *enemy* and the nickname occupies its own line, so nothing rewrapped.
 
 *And it caught a live collision.* `Enemy <nick> ran!` was still using **ran** — the word 1.4 went to some trouble to free. It is now **`Remote <nick> DETACHED.`**, which also quietly teaches that detaching is something either side can do.
@@ -252,6 +258,8 @@ BattleMenuText:
 	next "ITEM  RUN@"
 ```
 
+*Measured exactly:* the left cursor is at x9 and its text runs **x10–x14, five characters**; the right cursor is at x15 and its text runs **x16–x18, three characters**. So `FIGHT` and `RUN` both fit their slots precisely, and **nothing longer does** — not `DETACH` (6), not `INVOKE` (6). Widening means moving the cursor writes *and* the box origin.
+
 **FIGHT is a word we replaced, and RUN there means *flee*** — which is precisely the collision 1.4 renamed RUNNER → USER to remove. It is also the single most-seen string in the game.
 
 *Why it is not a text edit.* The box is declared `BATTLE_MENU_TEMPLATE, 8, 12, 19, 17, BattleMenuText, 10, 14` — spanning x8–19 with text at x10, so there are **nine columns**, split into a **5-character left column** and a **3-character right column** at x16–18. **DETACH is six characters and physically cannot go where RUN is.** Moving the split means rewriting the `wTopMenuItemX` values at four sites in `engine/battle/core.asm` plus the 2×2 cursor logic. That is a real change, correctly sized, and it should be made deliberately rather than folded into a text pass.
@@ -260,7 +268,12 @@ BattleMenuText:
 
 **`RUN, <nick>` keeps its comma.** A colon would make it a command echo, which is tempting — but this string has three siblings, `Do it! @`, `Get'm! @` and `The remote's weak! Get'm! @`, which vanilla selects between by situation. The slot is **the player's voice**, not the system's. Colon-ing one of four would leave a command echo standing next to two shouts, and that reads as an error rather than a choice. *If the colon is ever taken, all four have to flatten together — and vanilla's variety goes with them.*
 
-**`used` stays**, and for the same reason EXP does. 1.4 made **use** a morally loaded word on purpose — *a user is someone who uses people* — so every time a daemon *uses* a move, the game repeats the word that names what the player is doing to the daemon. Trading that for a merely technical verb would be a downgrade in the one place this game is trying to implicate someone. *And the tempting alternative does not fit:* **INVOKED** would have been the exact partner to BIND — you `bind()` a daimon and you *invoke* it, both idioms true twice over — but the longest move name is 12 characters and `invoked ` + 12 = **20**, past vanilla's 19-character ceiling. `called` fits at exactly 19 and is technical-only. Measured, not guessed.
+**`used` stays**, and for the same reason EXP does. 1.4 made **use** a morally loaded word on purpose — *a user is someone who uses people* — so every time a daemon *uses* a move, the game repeats the word that names what the player is doing to the daemon. Trading that for a merely technical verb would be a downgrade in the one place this game is trying to implicate someone. *And the tempting alternative does not fit — measured twice, in both places it could have lived.* **INVOKED** would have been the exact partner to BIND: you `bind()` a daimon and you *invoke* it, both idioms true twice over.
+
+- **As the verb.** The message is `used <MOVE>!` and the longest move name is 12, so vanilla sits at `5 + 12 + 1` = **18**, exactly the box. `invoked ` gives **21**, and `called ` gives **20**. Both past even the jank line.
+- **As the battle menu's `FIGHT`.** The left column runs x10–x14 — **five characters** — because the right column's cursor is drawn at x15 (`ldcoord_a 15, 14`). `INVOKE` is six, so it would sit under the cursor.
+
+The word is genuinely better than `used`. It simply has nowhere to go that does not cost either a clobbered border or an engine change, and `used` is carrying real weight already.
 
 **ATTACK stays too**, as a *stat*. It is a magnitude rather than a narrative word, it belongs to a fixed set (HEALTH / ATTACK / DEFENSE / SPEED / SPECIAL) that would have to move together, and the stat screen's columns are fixed-width. The word that actually needs work is **FIGHT**, and it is in the battle menu, above.
 
@@ -1451,6 +1464,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **`EnemyText` was the third `Enemy`** — the prefix behind every `<USER>`/`<TARGET>`, missed by the first REMOTE pass. Now `Remote @`, which **caps species names at 9 characters** (1.4)
+- **The text ceiling is 18, not 19** — the earlier figure counted `<COLON>` as seven characters. Vanilla's four 19-char lines overwrite the right border (1.2)
+- **INVOKED rejected on measurement, not taste** — 21 as the verb, 6 in a 5-char menu slot (1.4)
 - **Currency is CACHE** — a hoard, a memory cache, and *cash*, all at once; the word is almost never on screen, so this is one prose line and a naming decision. **¥ kept**, logged as optional art (1.4)
 - **The battle menu still says FIGHT and RUN** — a live collision in the most-seen string in the game. Not a text edit: the right column is 3 characters, so DETACH cannot fit, and moving the split is `wTopMenuItemX` surgery at four sites (1.4)
 - **Kept: `used`** (1.4 made *use* morally loaded on purpose; INVOKED measured at 20 chars, over the ceiling) **and `ATTACK`** as a stat (1.4)
