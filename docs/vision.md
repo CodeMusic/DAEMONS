@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.4**
+**A `pokered` total conversion — the living design bible, v4.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1080,23 +1080,69 @@ Gen 1 audio is four channels: two pulse, one wave, one noise. `pokered`'s music 
 
 Write the city themes first and derive route themes as transitions. The overworld becomes a chromatic progression, and the rock opera stops sitting on top of the game and starts being its level design.
 
-### 7.1 The mapping is not in this repository
+### 7.1 The mapping, recovered
 
-**Recorded as a gap, 2026-08-29.** *My Chromatic Year* is the input to the rule above and it exists only outside these documents. Everything below is **derived** and should be replaced the moment the real mapping is to hand.
+**Found 2026-08-29** on [soundcloud.com/codemusai](https://soundcloud.com/codemusai) — *My Chromatic Year (2023)*, twelve tracks:
 
-*The derivation used, so it can be checked:* hue angle to pitch class at **30° per semitone**, red at 0° as C. That gives green 120° → **E**, cyan 180° → **F#**, blue 240° → **G#**, magenta 300° → **A#**.
+| | | | | | |
+|---|---|---|---|---|---|
+| Jan **C** | Feb **C#** | Mar **D** | Apr **D#** | May **E** | Jun **F** |
+| Jul **F#** | Aug **G** | Sep **G#** | Oct **A** | Nov **A#** | Dec **B** |
 
-### 7.2 Five towns have no hue, and that is the interesting part
+**It maps months, not colours** — twelve months as the twelve semitones, ascending. 7's rule said *"its colour's note in the My Chromatic Year mapping"*, and strictly there is no colour in it. **Except in two tracks, and those two are the whole key:**
 
-The derivation breaks immediately, and it breaks usefully. **Blanche is white, Slate and Halftone are greys, Quicksilver is silver, and Umbra is black.** None of them has a hue angle, so none of them has a note.
+- *7. July — **Green:Blue** — F#*
+- *8. August — **Blue** — G*
 
-**That is not a flaw in the mapping — it is 8.6 showing up in the soundtrack.** The game is greyscale and colour appears exactly once. The achromatic towns are the ones the player spends the most time in, and the map's own vocabulary (0.2's pigment throughline) is about *reproduction*, which is what a greyscale image is.
+### 7.2 What those two anchors prove
 
-**Proposal, not settled:** hue sets the **key**; value sets the **register and density**. White is high and open, the greys are middle and filling in, black is low. Umbra is then the bottom of a descent the player has been making all game without noticing — and it is where colour arrives.
+Two colours, one semitone apart, with **green-blue below blue**. That rules out a hue-wheel mapping (which puts them 60° apart) and points at the physical one: **take the light's frequency and fold it into an octave.**
 
-### 7.3 Blanche Town, implemented
+    semitones above C  =  12 · log₂( f / f_red ),  red = 700nm
 
-**Key of C**, because white is not a colour — it is what colour is measured against. Blanche is the reference key everything else modulates away from, which is also what 3.1 calls it: *the pre-color state*.
+| | | |
+|---|---|---|
+| red 700nm | 0.00 | **C** |
+| orange 620nm | 2.10 | **D** |
+| yellow 580nm | 3.26 | **D#** |
+| yellow-green 550nm | 4.18 | **E** |
+| green 530nm | 4.82 | **F** |
+| **green-blue 500nm** | **5.83** | **F#** ← anchor |
+| **blue 470nm** | **6.90** | **G** ← anchor |
+| indigo 445nm | 7.84 | **G#** |
+| violet 420nm | 8.84 | **A** |
+
+**Both anchors land exactly.** The mapping is not asserted; it is derived from two data points and confirmed by physics.
+
+### 7.3 The spectrum does not close the octave, and that is the point
+
+Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is no light that is magenta — purple is the colour the mind invents by folding the spectrum's two ends into a loop that the physics does not contain.
+
+**So the two missing semitones are the invented colour**, and the chromatic scale closes B → C in exactly the place the colour wheel closes violet → red through a magenta that does not exist.
+
+*And the map already knew.* Vanilla's **Lavender** — purple — became **Halftone**, the town of dots that only *look* like grey, the tower, the place whose whole lesson is that the gradient is an artifact of sampling. **The town that replaced the purple one sits on the two notes that have no colour.** Per 0.2: discovered after the fact, not planned, and never to be explained.
+
+### 7.4 Town keys, derived
+
+| Town | Colour | Key |
+|---|---|---|
+| **Ardor** | flush, red heat | **C** |
+| **Brazen** | brass, yellow-gold | **D#** |
+| **Lurid** | garish yellow-green glow | **E** |
+| **Callow** | green, unripe | **F** |
+| **Verdigris** | blue-green corrosion | **F#** |
+| **Doldrum** | becalmed sea, blue | **G** |
+| **Blanche, Slate, Halftone, Quicksilver, Umbra** | achromatic | *see below* |
+
+**Five towns still have no hue**, and 7.2 explains rather than excuses it. White is *every* wavelength, black is none, grey is all of them evenly. They cannot take a pitch from the spectrum because they are not on it.
+
+**Proposal, unchanged and now better founded:** hue sets the **key**; value sets **register and density**. White high and open, greys middle and filling in, black at the bottom. Umbra is then the floor of a descent the player has been making all game — and it is where colour arrives.
+
+### 7.5 Blanche Town, implemented
+
+**Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
+
+*Open, and it is yours:* whether Blanche should be in C at all, given C now belongs to Ardor. The pentatonic argument holds in any key.
 
 **The melody is C major pentatonic — C D E G A, no F and no B.** A pentatonic scale contains no semitone and no tritone, so it can form neither a leading tone nor a dissonance. **It has nothing to resolve.** That is blankness written as an interval set rather than described as a mood, and it is the whole idea of the town in one constraint. All three channels hold to it; 128 units each, verified.
 
@@ -1655,8 +1701,10 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
 - **Blanche Town's theme written** — C major **pentatonic**, no F and no B, so it can form neither a leading tone nor a dissonance and has nothing to resolve (7.3)
-- **The *My Chromatic Year* mapping is not in this repo** and 7's rule depends on it; the keys below are derived and marked as such (7.1)
-- **Five towns have no hue** — Blanche, Slate, Halftone, Quicksilver, Umbra. Proposal: hue sets key, **value sets register**, and Umbra is the bottom of a descent the player has been making all game (7.2)
+- **The *My Chromatic Year* mapping is recovered** — it maps **months** to semitones, not colours, but two tracks name colours (*Green:Blue F#*, *Blue G*) and those two anchor everything (7.1)
+- **The colour rule is the octave-folded visible spectrum**, red as C — both anchors land exactly, so it is derived rather than asserted (7.2)
+- **A# and B have no wavelength.** They are magenta, which is not in light. The scale closes B→C where the colour wheel closes through an invented colour — and **Halftone, which replaced purple Lavender, sits on those two notes** (7.3)
+- **Five towns have no hue** — and 7.2 explains it: white is every wavelength, black is none. Hue sets key, **value sets register** (7.4)
 - **LEAF STONE → REWARD**, closing the item set: reason from / search with / feel with / learn from. MOON STONE left for the town pass (8.2)
 - **Corpus stays, `Corpel` moves** — three readings versus a placeholder in a provisional table; and it is only a document collision, since Charmander's line is untouched in the ROM (8.2)
 - **MUSAI and ROVER implemented** — MUSAI/CODEMUSAI/SEEKMUSAI/CAREMUSAI and ROVERCUB/ROVERSEER/ROVERBYTE, with AXIOM/EMBEDDING/AFFECT and the three branch types, verified in the ROM (8.2)

@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The Chromatic Year mapping, recovered — and what it turned out to be
+
+- **Found on SoundCloud.** *My Chromatic Year (2023)* maps **months to semitones**, January C through December B — not colours, which is what section 7 had assumed
+- **Two tracks name colours, and they are the whole key:** *July — Green:Blue — F#* and *August — Blue — G*
+- **Those two prove the rule is the octave-folded visible spectrum**, red as C: `semitones = 12·log₂(f/f_red)`. Green-blue at 500nm gives 5.83 → F#; blue at 470nm gives 6.90 → G. **Both land exactly** — derived, not asserted
+- **A# and B have no wavelength.** Visible light spans only C to about A. Magenta is not in light; it is what the mind invents by folding the spectrum's ends into a loop. So the scale closes B→C precisely where the colour wheel closes through a colour that does not exist
+- **And Halftone sits on those two notes.** Vanilla's purple Lavender became the town of dots that only *look* like grey. Per 0.2 — discovered after the fact, never explained
+- **Town keys derived:** Ardor C, Brazen D#, Lurid E, Callow F, Verdigris F#, Doldrum G. The five achromatic towns take register from value instead of pitch from hue
+- **Consequence for Blanche:** C is *red* — Ardor's note, not Blanche's. What survives the correction is stronger than the original reason: the melody spans C to A, which is exactly the range the visible spectrum occupies. White is every wavelength; the theme is that whole span sampled at five points with all tension removed
+
 ### Music — Blanche Town, and a gap in section 7
 
 - **Blanche Town's theme written and building.** Key of C, because white is not a colour — it is what colour is measured against
