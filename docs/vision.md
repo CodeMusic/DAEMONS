@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v2.8**
+**A `pokered` total conversion — the living design bible, v2.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1127,7 +1127,27 @@ db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@"
 
 *Built to spec, not generated.* Clean `e`, `o`, `n`, `i`, `d` letterforms were extracted from the vanilla graphic; `C`, `E`, `t`, `x` were drawn to match its 2px stems; the words were composited centred in an 80×8 canvas and written as **1-bit greyscale PNGs**. No image model produces that format — `rgbgfx --colors dmg` rejects anything with anti-aliasing or a colour outside the palette.
 
+#### The splash line — and why it changed
+
+`GAME FREAK inc.` is now **CODEMUSIC**, and the year is gone.
+
+**This is more honest, not less.** The vanilla line asserts that Game Freak made this build. They did not. Leaving it would be a false attribution on modified work, and replacing it with a CodeMusic copyright *and a year* would assert a claim over an engine that is pret's disassembly of Nintendo's game.
+
+So the line shows the wordmark and nothing else. **Trademark acknowledgment stays in `README.md`**, where it belongs and where it is unambiguous.
+
+*How it was assembled.* The vanilla line is 16 tile indices — year tiles `$41`–`$45` (shared with the boot splash) plus a 9-tile wordmark at `$46`–`$4E`:
+
+```asm
+db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E
+```
+
+`gamefreak_inc.png` is 72×8, 2bpp, exactly those 9 tiles — so CODEMUSIC is a direct swap with no VRAM changes. The string now prints `$46`–`$4E` only, recentred at column 6.
+
+*Deferred:* a year would be lovely — **'11.'26** encodes the whole lineage, and vanilla's own multi-year format invites it. But the digits need glyphs that do not exist in the current tile set, and the year tiles are shared with the boot splash. It wants a slightly wider wordmark graphic, which is 8.5 work.
+
 **Still vanilla:** the **Super Game Boy border** (`gfx/sgb/red_border.png`, `blue_border.png`) still reads RED and BLUE at the top of the screen. That is a full decorative frame rather than a word, and it is its own art job — 8.5's territory, alongside the DAEMONS logo (`gfx/title/pokemon_logo.png`, 128×56, 2bpp).
+
+**And it is harder than it looks.** `red_border.png` is not a picture of a border. It is **128×48 — a bank of 96 unique 8×8 tiles** — plus a separate `.tilemap` arranging them across the 256×224 frame, plus SGB palette entries (`RGB 30,29,29`) that colour the 2bpp greys at runtime. So the pipeline is *design the frame → deduplicate to at most 96 unique tiles → build the tilemap → choose palettes*. An image alone cannot be dropped in.
 
 #### Which daemon appears
 
