@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The repositories, read as a bestiary
+
+- **New `docs/codemusic-repos.md`** — all 47 repos surveyed for what they give the game
+- **Dexter is 4.2's Index, built for real** — *"writes a dex entry in a flat robotic voice… logs it as entry #004."* The critique in 4.2 is the author's own tool seen from the other side. Recommendation: take nothing, name no daemon Dexter, leave the resonance where it is
+- **SafetyScribe is 4.10 with the missing instrument** — a push-to-talk *witness* that preserves an account when a procedure will not. **Caution recorded:** *witness* is load-bearing elsewhere and carries a puzzle; use the concept, avoid the word
+- **`ROVERCUB` becomes the Reinforcement base** — a real repository, exactly 9 characters, reads as a young animal. Every stage of ROVERCUB → ROVERSEER → ROVERBYTE is now a system that exists
+- **PENPHIN runs on a 64×64 RGB LED matrix** — the one thing in the author's built world that is literally a colour pixel display, which argues for it sitting near 8.6's single colour moment
+- **Evolution items are AXIOM / EMBEDDING / AFFECT**, not stones. The mechanic is exposure, not mineralogy, so they are named for kinds of input. **KERNEL** was better on paper — OS core, ML kernel method, *and* the thing inside a stone fruit's stone — but `CONTEXT KERNEL` is 14 characters
+- **Logged as an open idea:** `excuseGPT` carries a five-state affect model (MAD/SAD/AFRAID/GLAD/BASE) and Gen 1 has exactly five status conditions
+
 ### MUSAI and ROVER are in — and they take different shapes
 
 - **MUSAI is the Eevee slot.** Eevee is NORMAL, which is **CONTENT** — a mind that has not specialised, becoming what it is exposed to. Branches: **CodeMusai/LOGIC**, **SearchMusai/VECTOR**, **TherapyMusai/CONTEXT**

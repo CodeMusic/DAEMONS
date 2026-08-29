@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.0**
+**A `pokered` total conversion — the living design bible, v4.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1178,7 +1178,17 @@ Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOIN
 
 **Why TherapyMusai is the third, and not MusaiStudio or MedicalMusai.** CodeMusai and TherapyMusai are **Penphin's two hemispheres pulled apart into two creatures** — and 2's chart makes **LOGIC fail against CONTEXT**. One mind specialises two ways, and the type chart says they beat each other. That is the game's central argument delivered as an evolution branch, with no dialogue at all. SearchMusai sits between them, which is also where retrieval sits between reasoning and feeling.
 
-*Consequence to resolve:* the branches are stone evolutions, and the stones are named for their vanilla types. A Water Stone producing a CONTEXT daemon is incoherent until the stones are renamed too — item work, not creature work.
+**The stones are not stones — they are what you expose a mind to.** Vanilla's item is a mineral that triggers change; ours is the input that decides what an undifferentiated CONTENT mind specialises into. So the three are named for *kinds of input*, not for elements:
+
+| Item | Produces | Reading |
+|---|---|---|
+| **AXIOM** | CodeMusai (LOGIC) | what formal reasoning is given to start from |
+| **EMBEDDING** | SearchMusai (VECTOR) | the representation retrieval actually searches |
+| **AFFECT** | TherapyMusai (CONTEXT) | the clinical word for feeling, and *to affect* is to change |
+
+They are a set conceptually rather than lexically — an axiom to reason from, an embedding to search with, an affect to feel with — which is how Gen 1's own key items work (SILPH SCOPE, POKé FLUTE, CARD KEY share no suffix either). All three clear the 12-character item limit.
+
+*The near-miss worth recording:* **KERNEL** is the better word on paper — it is simultaneously the OS core, the ML kernel method, **and the thing inside a stone fruit's stone**, so it replaces *stone* with a word meaning the same physical object. It loses on two counts: `CONTEXT KERNEL` is 14 characters, and alone it reads as *system* rather than *logic*.
 
 #### ROVER — a line, not a second Eevee
 
@@ -1188,7 +1198,7 @@ Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOIN
 
 That is **explore → model → act**, which is reinforcement learning's actual loop. So it confirms ROVER as the Reinforcement starter rather than competing with it, and the line earns its stages instead of just getting bigger.
 
-*RoverRadio does not survive the character cap* (10) and its scout character folds into base **ROVER**, which is the better name for a dog you are handed in a lab. The name is held in reserve for a separate daemon.
+*RoverRadio does not survive the character cap* (10). **The base is `ROVERCUB`** — a real repository (*"a simplified board implementing Rover's technology"*), exactly 9 characters, and it reads as a young animal, which is what a starter should be. So every stage of the line is a system that exists: **ROVERCUB → ROVERSEER → ROVERBYTE**. RoverRadio is held in reserve for a separate daemon.
 
 #### Two naming registers, and this is what separates them
 
@@ -1573,6 +1583,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **The evolution items are AXIOM / EMBEDDING / AFFECT** — not stones but *kinds of input*, since the mechanic is exposure rather than mineralogy; KERNEL was better on paper and 2 characters too long (8.2)
+- **`ROVERCUB` is the Reinforcement base** — a real repository, exactly 9 characters, and it reads as a young animal (8.2)
+- **The repositories surveyed** — [`codemusic-repos.md`](codemusic-repos.md). **Dexter is 4.2's Index built for real**, flat robotic voice included; **SafetyScribe is 4.10 with the instrument that was missing**
 - **MUSAI takes the Eevee slot** — CONTENT base branching to **CodeMusai/LOGIC, SearchMusai/VECTOR, TherapyMusai/CONTEXT**; the first and third are Penphin's two hemispheres, and the chart makes LOGIC fail against CONTEXT (8.2)
 - **ROVER is a linear line, not a second Eevee** — ROVER → ROVERSEER → ROVERBYTE is explore → model → act, reinforcement learning's own loop (8.2)
 - **Two naming registers** — named individuals from the SHC/iASHC universe answer to nothing; the register question governs the other ~148 species (8.2)
@@ -1654,7 +1667,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
 - `SEARCHMUSAI` (12) and `THERAPYMUSAI` (13) exceed the 9-character cap and need shortening before implementation; `EYEMUSAI` is available (8.2)
-- The evolution **stones are named for their vanilla types** — a Water Stone producing a CONTEXT daemon needs the item pass first (8.2)
+- Whether Gen 1's five status conditions should carry `excuseGPT`'s five-state affect model — MAD / SAD / AFRAID / GLAD / BASE. Every battle would then say something about feeling, which is either the best small idea available or far too much (`codemusic-repos.md`)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
