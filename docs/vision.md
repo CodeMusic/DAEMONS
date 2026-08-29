@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.1**
+**A `pokered` total conversion — the living design bible, v4.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1200,11 +1200,37 @@ That is **explore → model → act**, which is reinforcement learning's actual 
 
 *RoverRadio does not survive the character cap* (10). **The base is `ROVERCUB`** — a real repository (*"a simplified board implementing Rover's technology"*), exactly 9 characters, and it reads as a young animal, which is what a starter should be. So every stage of the line is a system that exists: **ROVERCUB → ROVERSEER → ROVERBYTE**. RoverRadio is held in reserve for a separate daemon.
 
+#### The affect model, and why it stays out of the status bar
+
+`excuseGPT` carries a five-state model — **BASE, MAD, SAD, AFRAID, GLAD** — and Gen 1 has exactly five status conditions. **Rejected**, and by 0.1's own rule 3: *name the process, not the pathology.* A status sits in the HUD as a thing a creature **is**. Renaming them to affect makes the game announce *your daemon is SAD* every battle, in the loudest and most repeated place there is — rule 3's forbidden move, performed on a creature instead of a town.
+
+Three further failures. Statuses are **inflicted by moves**, so THUNDER WAVE would make a target AFRAID — cruelty as mechanic, a claim this design does not make. **GLAD has no slot**, and forcing one asserts that being happy is a debuff. And PSN maps to none of the five, so the set does not close.
+
+*The elegant part, recorded because it is genuinely good:* **BASE would have been "no status"** — a mind with no affect is a mind at rest. Not enough to buy the rest.
+
+**Where it belongs instead:** four *daemons*, not five conditions. As creatures they are non-diagnostic and nothing is afflicted with them. 7's music is the other candidate — a soundtrack carries affect without ever naming it, which is exactly what rule 1 asks for.
+
 #### Two naming registers, and this is what separates them
 
 **MUSAI, ROVER, Penphin, BunnyArtsai and S.T.A.R.R. are named individuals from the SHC / iASHC universe.** They are proper nouns and they do not answer to the bestiary convention. **The register question above governs the other ~148**, which are species rather than characters.
 
 That distinction is what makes both answerable: the generic daemons can take true names without the cast having to, and the cast can carry names from outside the game without setting a precedent 148 creatures then have to follow.
+
+**Implemented 2026-08-29, verified in the ROM.** The two long branches shortened to a set — a four-letter stem plus MUSAI, all exactly nine characters:
+
+| Was | Is | Item | Type |
+|---|---|---|---|
+| Eevee | **MUSAI** | — | CONTENT |
+| Flareon | **CODEMUSAI** | AXIOM | LOGIC |
+| Jolteon | **SEEKMUSAI** | EMBEDDING | VECTOR |
+| Vaporeon | **CAREMUSAI** | AFFECT | CONTEXT |
+| Bulbasaur | **ROVERCUB** | — | GROWTH |
+| Ivysaur | **ROVERSEER** | — | GROWTH |
+| Venusaur | **ROVERBYTE** | — | GROWTH/SIGNAL |
+
+CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeveelutions are.
+
+*One consequence, accepted.* Item names are global, so **six other daemons now evolve by AXIOM, EMBEDDING or AFFECT** — Vulpix and Growlithe by AXIOM, Pikachu by EMBEDDING, Poliwhirl, Shellder and Staryu by AFFECT. This is coherent rather than awkward: the mechanic was never *mineral*, it is exposure, and every one of those is a mind being given something. LEAF STONE is untouched and still wants a name.
 
 **The 9-character cap bites here first.** `SEARCHMUSAI` is 12, `THERAPYMUSAI` is 13, `ROVERRADIO` is 10. Surviving as-is: `MUSAI` (5), `CODEMUSAI` (9), `ROVERSEER` (9), `ROVERBYTE` (9). `EYEMUSAI` (8) is available and is a real module name. **The two long branches need shortening before implementation** — that is the only open work in this section.
 
@@ -1583,6 +1609,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **MUSAI and ROVER implemented** — MUSAI/CODEMUSAI/SEEKMUSAI/CAREMUSAI and ROVERCUB/ROVERSEER/ROVERBYTE, with AXIOM/EMBEDDING/AFFECT and the three branch types, verified in the ROM (8.2)
+- **The affect model stays out of the status bar** — rule 3 forbids it: a status is a thing a creature *is*. Four daemons, not five conditions (8.2)
 - **The evolution items are AXIOM / EMBEDDING / AFFECT** — not stones but *kinds of input*, since the mechanic is exposure rather than mineralogy; KERNEL was better on paper and 2 characters too long (8.2)
 - **`ROVERCUB` is the Reinforcement base** — a real repository, exactly 9 characters, and it reads as a young animal (8.2)
 - **The repositories surveyed** — [`codemusic-repos.md`](codemusic-repos.md). **Dexter is 4.2's Index built for real**, flat robotic voice included; **SafetyScribe is 4.10 with the instrument that was missing**
@@ -1666,8 +1694,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
-- `SEARCHMUSAI` (12) and `THERAPYMUSAI` (13) exceed the 9-character cap and need shortening before implementation; `EYEMUSAI` is available (8.2)
-- Whether Gen 1's five status conditions should carry `excuseGPT`'s five-state affect model — MAD / SAD / AFRAID / GLAD / BASE. Every battle would then say something about feeling, which is either the best small idea available or far too much (`codemusic-repos.md`)
+- **LEAF STONE still wants a name** — the fourth evolution item, untouched by the AXIOM/EMBEDDING/AFFECT pass (8.2)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*

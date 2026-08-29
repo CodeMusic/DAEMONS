@@ -17,6 +17,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### MUSAI and ROVER implemented
+
+- **MUSAI / CODEMUSAI / SEEKMUSAI / CAREMUSAI** and **ROVERCUB / ROVERSEER / ROVERBYTE**, verified by reading the name table and base stats back out of the ROM
+- The two over-long branches shortened to a set: **a four-letter stem plus MUSAI**, all exactly nine characters — CODE / SEEK / CARE
+- **AXIOM / EMBEDDING / AFFECT** replace FIRE STONE / THUNDERSTONE / WATER STONE; branch types are pure LOGIC / VECTOR / CONTEXT, as vanilla's eeveelutions are pure singles
+- **Consequence accepted:** item names are global, so six other daemons now evolve by AXIOM, EMBEDDING or AFFECT. Coherent — the mechanic was never mineral, it is exposure. LEAF STONE still wants a name
+
+### The affect model — rejected, with the reason
+
+- `excuseGPT`'s five states (BASE/MAD/SAD/AFRAID/GLAD) against Gen 1's five status conditions. **Rejected by craft rule 3** — *name the process, not the pathology.* A status is a thing a creature **is**; renaming them to affect announces *your daemon is SAD* every battle
+- Also: statuses are inflicted by moves (THUNDER WAVE would make a target AFRAID), GLAD has no slot without claiming happiness is a debuff, and PSN maps to none of the five
+- **BASE = no status** was the genuinely elegant part and is recorded as such
+- Better home: four *daemons*, not five conditions — as creatures they are non-diagnostic. Or section 7's music, which carries affect without naming it
+
 ### The repositories, read as a bestiary
 
 - **New `docs/codemusic-repos.md`** — all 47 repos surveyed for what they give the game
