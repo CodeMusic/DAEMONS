@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The box, built
+
+- **`tools/genbox.py`** replaces `gfx/sprites/poke_ball.png` (16×16) and `gfx/battle/balls.png` (32×8). Dimensions match vanilla exactly, so no engine code moved
+- **A small server, not a crate and not a cube.** Both say *container*, which is the reading 1.3 replaced — the wrong silhouette would quietly undo the rename. Hard corners, a bevel, two vents, one indicator light, feet
+- **The throw stays one object**: closed with a seam → struck solid → pulled apart → dispersed. Vanilla turns a ball into a burst; ours opens a machine
+- **USERBOX → ROOTBOX is a parameter** — `overworld(tier)` raises the vent count, so privilege reads as density rather than as four separate drawings
+- Generated rather than drawn, same argument as the SGB borders: at 16×16 and 8×8 this is geometry, and downsampled illustration is mush
+
 ### The Chromatic Year mapping, recovered — and what it turned out to be
 
 - **Found on SoundCloud.** *My Chromatic Year (2023)* maps **months to semitones**, January C through December B — not colours, which is what section 7 had assumed

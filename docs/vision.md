@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.5**
+**A `pokered` total conversion — the living design bible, v4.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -296,6 +296,16 @@ The trainer *class* names — YOUNGSTER, BUG CATCHER, LASS — are untouched. Th
 The container was renamed and the verb was not, which left the lexicon saying *privilege escalation* and then *caught* — a word about grabbing an animal.
 
 **What the act actually is:** you weaken a background process and gain **persistent access to it at a permission level your box determines.** That is not capture. It is a handle on something that was already running.
+
+**The object, built 2026-08-29.** [`tools/genbox.py`](../tools/genbox.py) replaces the two ball sprites — `gfx/sprites/poke_ball.png` (16×16, the box on the ground) and `gfx/battle/balls.png` (32×8, four throw frames). Dimensions match vanilla exactly, so no engine code moved.
+
+**It is a small server, not a crate and not a cube.** Both of those say *container*, which is the reading this section replaced — a container shape would quietly undo the rename. So: hard corners against the ball's circle, a bevel so it reads solid, two vents, one indicator light, and feet. Something you would `ssh` into.
+
+**The throw stays one object.** Closed with a visible seam → struck solid → **pulled apart**, the two halves separating rather than a new shape appearing → dispersed. Vanilla's sequence turns a ball into a burst; ours opens a machine.
+
+**And the ladder is a parameter.** `overworld(tier)` raises the vent count, so USERBOX → ROOTBOX is one argument rather than four drawings. Privilege reads as density.
+
+*Generated rather than drawn*, for the reason `sprite-prompts.md` gives: at 16×16 and 8×8 this is geometry, and downsampling a generated illustration to that size produces mush. Same argument as the SGB borders, same outcome.
 
 **Why BIND and not something else.** Every other entry in the table above does double duty — DAEMON, CHECKPOINT, RECOMPILE, HALTED. CATCH does none. BIND does three ways: `bind()` and binding a name or a port; **binding a daimon**, which is the exact ritual phrase and not a gesture at one; and a *bond*, being bound to someone. It fits the ladder precisely — you do not overpower a process, you bind it at a permission level, and ROOTBOX binds anything. BIND is 4 characters and BOUND is 5, so it fits every box that held "caught."
 
@@ -1700,6 +1710,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
 - **Blanche Town's theme written** — C major **pentatonic**, no F and no B, so it can form neither a leading tone nor a dissonance and has nothing to resolve (7.3)
 - **The *My Chromatic Year* mapping is recovered** — it maps **months** to semitones, not colours, but two tracks name colours (*Green:Blue F#*, *Blue G*) and those two anchor everything (7.1)
 - **The colour rule is the octave-folded visible spectrum**, red as C — both anchors land exactly, so it is derived rather than asserted (7.2)
