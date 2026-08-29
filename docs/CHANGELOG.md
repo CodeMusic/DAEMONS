@@ -203,6 +203,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   thirsty - the corporate checkpoint yields to a beverage. Inertia, not security
 - 379 "trainer" occurrences deferred to the step-8 text pass
 
+### v2.7 - step 7 and step 8 (part one)
+- **Step 7: TRANSFORM -> PERSPECTIVE.** One string. Every Ditto in the game now
+  runs the signature move of the theory
+- **Step 8: the world renamed.** 14 map names, 143 references swept through
+  dialogue, only 2 lines needed rewrapping - most new names are SHORTER than
+  the old ones, the opposite of the OAK job
+- Landmarks came too: VIRIDIAN FOREST -> THE UNDERTONE, ROCK TUNNEL -> THE
+  BLACKOUT, VICTORY ROAD -> UMBRAL ASCENT, CINNABAR ISLAND -> QUICKSILVER IS.
+- Routes deliberately untouched: the official map keeps its numbers (3.2). The
+  local names are signpost content, which is new writing rather than a rename
+- **Title subtitles built programmatically**: extracted clean e/o/n from the
+  vanilla "Version" graphic, drew C/t/x to match its 2px stems, emitted valid
+  1-bit greyscale PNGs at the exact canvas sizes. The title screen now reads
+  Content / Context. No image model can produce these formats
+- Still open in this pass: 379 "trainer" -> USER, and the route signposts
+
 ---
 
 ## Infrastructure

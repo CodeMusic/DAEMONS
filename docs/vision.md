@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v2.6**
+**A `pokered` total conversion — the living design bible, v2.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -425,6 +425,37 @@ The institution navigates by content. The residents navigate by context. The pla
 **The position earns it.** Route 1 is the first step outside Blanche, the blank colorless place, and it is where color starts running out of home into whatever is next. A faint disquiet on the first road out the door is correct. Not gore — a page edge where the ink did not stop.
 
 *Held in reserve, if it ever reads as a wound:* **The Feather** (feathering — softening an edge so two areas merge) and **The Bloom** (bloom — the haze that rises on a printed or varnished surface as it cures). Both gentler. Both weaker. Do not trade down without a reason.
+
+---
+
+### 3.3 The rename, as built
+
+*Implemented 2026-08-29. Both editions build; zero overflows; no vanilla place name remains in any text file.*
+
+**Fourteen names in `data/maps/names.asm`, and 143 references swept through dialogue.** Only two lines needed rewrapping — because **most of the new names are shorter than the old ones**:
+
+| | Δ |
+|---|---|
+| VERMILION → ARDOR | −4 |
+| CINNABAR → QUICKSILVER | **+3** |
+| CELADON → VERDIGRIS | **+2** |
+| PALLET → BLANCHE | **+1** |
+| everything else | 0 or shorter |
+
+Three names grew, and only VERDIGRIS actually broke a line. That is the opposite of the OAK job (1.1), where every replacement was longer and twenty-one blocks needed rewrapping.
+
+**The landmarks came too**, since they carry the same vocabulary:
+
+| | |
+|---|---|
+| VIRIDIAN FOREST | **THE UNDERTONE** |
+| ROCK TUNNEL | **THE BLACKOUT** |
+| VICTORY ROAD | **UMBRAL ASCENT** |
+| CINNABAR ISLAND | **QUICKSILVER IS.** — 15 characters, exactly what CINNABAR ISLAND was, so the location banner is proven to fit |
+
+**Routes were deliberately not touched.** 3.2's device is that *the official map keeps its numbers* — `ROUTE 1` stays `ROUTE 1`. The Bleed, Underpaint, Ashfall and the rest are **signpost content**, which is new writing rather than a rename, and it is the part that actually teaches the player the institution navigates by number and the residents do not.
+
+**Still to do in this pass:** 379 occurrences of *trainer* → USER (1.4), and the route signposts themselves.
 
 ---
 
