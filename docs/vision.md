@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.0**
+**A `pokered` total conversion — the living design bible, v3.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -325,6 +325,14 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 **New move — CONSENSUS.** SWARM type, 90 power, 100% accuracy, 15 PP, no secondary effect. Deliberately boring: SWARM's job is to be a *reliable* check on CONTEXT, and reliability is the point. A swarm does not need a gimmick, it needs to keep showing up. Give it to two or three mid-game encounters and one Review Board coverage slot.
 
 *Tuning note:* 90 BP with no drawback is strong for Gen 1. If CONTEXT still runs away with the late game, raise CONSENSUS before touching the chart. Moves rebalance far more easily than matchups.
+
+**Built 2026-08-29.** CONSENSUS is move `$A5`, 90 power, SWARM, 100%, 15 PP, `NO_ADDITIONAL_EFFECT` — verified by reading it back out of the ROM.
+
+*Where it had to go, and why.* `engine/battle/core.asm` asserts `NUM_ATTACKS == STRUGGLE`, because the AI treats any random number above STRUGGLE as "not a move". So a new move cannot be appended; it has to be **inserted immediately before STRUGGLE**. CONSENSUS therefore takes `$A5` and STRUGGLE shifts to `$A6`. Every other move ID is untouched, which is what makes this safe.
+
+*Five tables, not two.* 9.2 step 6 says `moves.asm` and `names.asm`; the build needs three more, each `assert_table_length NUM_ATTACKS` — `constants/move_constants.asm`, `data/moves/animations.asm` and `data/moves/sfx.asm`. CONSENSUS borrows PIN_MISSILE's animation and sound: converging projectiles, which is the right picture for a swarm agreeing. Note that `moves.asm` still names the type `BUG` — per invariant 6, only the *string* is SWARM.
+
+**Not yet learnable.** Nothing in the game can use CONSENSUS until a learnset entry exists. That is deliberate: assigning it means naming species, which is 9 and 11's work. The move is in the ROM and correct; it is waiting on the encounter design, not on more engine work.
 
 ---
 
@@ -1337,7 +1345,7 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 3. Replace the strings in `data/types/names.asm` — structure untouched, per 9.1.
 4. Apply the three-line patch to `data/types/type_matchups.asm`.
 5. `make`. **Stop here and play.**
-6. Add CONSENSUS to `moves.asm` and `data/moves/names.asm`.
+6. Add CONSENSUS to `moves.asm` and `data/moves/names.asm`. **Done** — and to `move_constants.asm`, `animations.asm` and `sfx.asm`, which the length asserts require (2.5).
 7. Rename TRANSFORM to PERSPECTIVE.
 8. City and route renames plus sign text — fast, and it transforms the feel immediately.
 9. Starter trio: stats, sprites, moves.
@@ -1366,6 +1374,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **CONSENSUS built** — move `$A5`, SWARM, 90/100/15, no secondary effect; inserted before STRUGGLE because `NUM_ATTACKS == STRUGGLE` is asserted. Not yet learnable by anything (2.5)
 - **SGB borders generated, not drawn** (`tools/genborder.py`) — CONTENT is one dot grid, CONTEXT is the same cell interfering with itself; 12 tiles each against a 96 budget (8.4)
 - City names per 3.1; Slate over Somber; Halftone over Pallor; Quicksilver over Cinder; **Brazen over Gilt**
 - Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
