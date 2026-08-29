@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.3**
+**A `pokered` total conversion — the living design bible, v3.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -83,6 +83,8 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 | Poké Mart | **THE REPO** | |
 | PC storage | **COLD STORAGE** | |
 | PROF.OAK | **CRYSTAL** / **CRYSTAL CLEAR** | **no title.** See below |
+
+*One escaped, and a gender sweep found it.* `ViridianMart` still said **PROF. CRYSTAL** — the clerk with the PACKAGE. Fixed 2026-08-29 to `CRYSTAL CLEAR`. Worth noting how it was caught: not by looking for titles, but while checking every gendered reference to her. **Passes find each other's misses.**
 | OAK's PARCEL | **PACKAGE** | a repo distributes packages. Also forced — `CRYSTAL's PARCEL` is 16 and items cap at 12 |
 | Poké Ball line | **USERBOX → ADMINBOX → SUPERBOX → ROOTBOX** | acquisition as privilege escalation; root access is the Master Ball |
 | Catching | **BINDING** | `bind()` — and *binding a daimon*, which is the literal ritual phrase |
@@ -170,6 +172,8 @@ Singular gains a character, plural is identical. **Nothing needed rewrapping.**
 *Two heuristic passes were needed.* The first over-marked: it read `looks`, `is`, `was` as evidence but also caught `will` and `can`, which are number-neutral. *My DAEMON looks stronger* is singular; *all DAEMONS will have weak points* is not. A corrector reverted eight, four of them wrongly, and a quantifier rule (`all`, `some`, `up to 6` plus a modal) restored those.
 
 **The intro got its human read first, 2026-08-29** — on screenshots, which is the only reliable way to catch these. Six in Crystal's opening speech were reading singular and should not have been: *world of DAEMONS*, *I study DAEMONS* (twice), *creatures called DAEMONS*, and *adventures with DAEMONS*. All six are the same class of miss — vanilla wrote the singular because POKéMON is a mass noun, and DAEMON is not. Marking them `#MONS` was the whole fix; the longest result is 17 characters and nothing needed rewrapping.
+
+**A second class, found the same way, 2026-08-29.** Dialogue names types in lowercase — *the fire #MON, CHARMANDER* — and those words were never renamed with the chart. The starters are fixed (**ENTROPY**, **FLOW**, **GROWTH**, since vanilla says *plant*, not *grass*). **Nineteen more remain, nearly all inside gyms**: *electric #MON*, *Psychic #MON*, *rock-type #MON*, *fighting #MON*. They are deliberately left — a Benchmark's type is 5's design work, and renaming the dialogue before the leaders are settled would just be done twice. Separately, **42 occurrences of *fight*** want the same human read; some are the verb we replaced, some are people (*not a fighter*, *a fighting game*).
 
 **Still open:** roughly 154 occurrences carry no strong evidence either way and currently read singular. Most are attributive and correct as they stand, but the set wants the same treatment — read on screen, not in the source.
 
@@ -533,6 +537,10 @@ So the family runs three deep, and the argument runs down it.
 Your age. Your peer. Same starting daemon, raised on pure content optimization, beats you early, plateaus hard. Waiting past the Review Board as the incumbent, still arguing the whole thing is decorative.
 
 **He is not a brat and he is not a villain. He is doing exactly what he was taught, faithfully.**
+
+*So he calls her **Gran**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer without losing the family: **Gran** is familiar, faintly impatient, and not contemptuous. It is also two characters shorter, so nothing needed rewrapping. His sister says **Gran's lab** for the same reason.
+
+*Which pronouns are already right.* The intro's *"This is my grandson. **He's** been your rival"* and *"**His** name is `<RIVAL>`"* are Crystal talking about **Al**, and correct as they stand. They sit two lines from her own name, so they read like misses and are not — recorded here so nobody fixes them.
 
 #### The transmission failure — why he loses
 
@@ -1395,6 +1403,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **Crystal is female and the text had not caught up** — `Gramps` → **`Gran`** (she is Al's grandmother, 4.3), `His order` → `Her order`, and Agatha's block repronouned. **`handsome` deliberately kept** — it is attested for women and keeps Crystal tough rather than pretty (4.3)
+- **Starter dialogue named vanilla types** — *fire/water/plant* → **ENTROPY/FLOW/GROWTH**; 19 more remain in gyms, held for 5 (1.2)
 - **Crystal's opening speech**: six `#MON` marked plural; **pets → companions** (1.5's animal-word test), **fights → BENCHMARK**. *assistants* considered and held in reserve — it collapses vanilla's contrast (1.4)
 - **PERSPECTIVE built** — move `$90`, and the battle message becomes *`<USER>` took the frame of `<NAME>`!*; **Index categories are capped at 10 characters**, so MOCK's cannot be PERSPECTIVE (4.6)
 - **CONSENSUS built** — move `$A5`, SWARM, 90/100/15, no secondary effect; inserted before STRUGGLE because `NUM_ATTACKS == STRUGGLE` is asserted. Not yet learnable by anything (2.5)
@@ -1457,6 +1467,8 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
+- Nineteen `type word + DAEMON` dialogue lines still name vanilla types, nearly all in gyms — held until 5 settles the Benchmark leaders (1.2)
+- Forty-two `fight` occurrences want a human read; some are the replaced verb, some are people (1.2)
 - Roughly 154 `#MON` occurrences read singular by default and want a human read at step 8 — on screen, not in the source (1.2)
 - Does a non-canonical ROM load in Gen1Recomp at all? One afternoon answers it; do not design around either answer first (8.5)
 - How many Index entries should disagree between editions — five? twelve? — before it stops being unsettling and starts being a gimmick? (8.4)
