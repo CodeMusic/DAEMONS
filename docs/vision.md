@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.2**
+**A `pokered` total conversion — the living design bible, v3.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -121,7 +121,7 @@ There is no honest rename of that, because the second sentence *is* the rank. It
 
 Flat, factual, and it claims nothing. Placeholder-grade wording that should get a proper pass at step 8 — but the shape is correct: **where Oak asserts a title, she states an occupation.**
 
-**Why the intro still says #MON and not DAEMONS.** `#` is a control character that expands to *POKé*, and the species word has not been renamed yet — that is a bulk pass over the charmap and every string (9.2, step 8). Writing DAEMONS in one line while the other several hundred still say POKéMON would be worse than waiting. **The line becomes "I study DAEMONS." the day the species rename lands**, and nothing else about it changes.
+**Why the intro said #MON and not DAEMONS, and no longer does.** `#` is a control character that expands to *POKé*, and the species word has not been renamed yet — that is a bulk pass over the charmap and every string (9.2, step 8). Writing DAEMONS in one line while the other several hundred still say POKéMON would be worse than waiting. **The line became "I study DAEMONS." the day the species rename landed**, and nothing else about it changed. *(Done 2026-08-29 — it needed the plural mark, per 1.2.)*
 
 *The cost, recorded:* every touched line needed rewrapping. Both replacements are longer (`OAK:` → `CRYSTAL:` is +4, `PROF.OAK` → `CRYSTAL CLEAR` is +5) and Gen 1 text is hand-wrapped. Twenty-one blocks were rewrapped to stay inside the box. Vanilla's own widest line is 19 characters, which is the practical ceiling — not 18.
 
@@ -169,7 +169,9 @@ Singular gains a character, plural is identical. **Nothing needed rewrapping.**
 
 *Two heuristic passes were needed.* The first over-marked: it read `looks`, `is`, `was` as evidence but also caught `will` and `can`, which are number-neutral. *My DAEMON looks stronger* is singular; *all DAEMONS will have weak points* is not. A corrector reverted eight, four of them wrongly, and a quantifier rule (`all`, `some`, `up to 6` plus a modal) restored those.
 
-**Still open:** roughly 160 occurrences carry no strong evidence either way and currently read singular. Most are attributive and correct as they stand, but the set wants a human read during the step-8 text pass.
+**The intro got its human read first, 2026-08-29** — on screenshots, which is the only reliable way to catch these. Six in Crystal's opening speech were reading singular and should not have been: *world of DAEMONS*, *I study DAEMONS* (twice), *creatures called DAEMONS*, and *adventures with DAEMONS*. All six are the same class of miss — vanilla wrote the singular because POKéMON is a mass noun, and DAEMON is not. Marking them `#MONS` was the whole fix; the longest result is 17 characters and nothing needed rewrapping.
+
+**Still open:** roughly 154 occurrences carry no strong evidence either way and currently read singular. Most are attributive and correct as they stand, but the set wants the same treatment — read on screen, not in the source.
 
 ### 1.3 On the boxes, and what binding actually is
 
@@ -206,6 +208,13 @@ The gyms were already BENCHMARKS, so a battle was already a **run** — you put 
 | `No! There's no running from a trainer battle!` | **`No! You can't DETACH from a USER's run!`** |
 | `Go! <nick>` | **`RUN, <nick>`** |
 | `<TRAINER> wants to fight!` | `<USER> wants to BENCHMARK!` *(pending the trainer pass)* |
+| `#MON are pets. Others use them for fights.` | **`DAEMONS are companions. Others BENCHMARK them.`** |
+
+*On pets, and the precedent that decided it.* Crystal's opening speech drew a contrast — kept for affection, or used for gain — and vanilla's affection word was **pets**. 1.5 rejected *caught* for being "a word about grabbing an animal"; **pets** is a word about keeping one, and fails the same test for the same reason. **companions** keeps the register without the menagerie.
+
+*Why not **assistants**.* Tempting, and the contemporary word — but it collapses the sentence. Vanilla's line only works because its two halves oppose each other, and an assistant is *already* being used, so "assistants… others use them" stops being a contrast at all. It is also the nearest the first minute could come to saying the thesis out loud (craft rule 1), and it pins the game to one year's discourse. **Held in reserve**: if it is ever taken, the second half has to change with it.
+
+*And **fights** becomes **BENCHMARK**,* which is what this world calls the thing. Vanilla teaches "fights" in the first minute; we teach the real verb in the same breath, three lessons before the player needs it.
 
 *On punctuation:* `LABL was BOUND.` is flat because **the game declines to congratulate the player for acquiring something.** `UNBOUND RATTATA appeared!` is alarm, not congratulation — the rule is about refusing to celebrate, not refusing to punctuate.
 
@@ -1386,6 +1395,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **Crystal's opening speech**: six `#MON` marked plural; **pets → companions** (1.5's animal-word test), **fights → BENCHMARK**. *assistants* considered and held in reserve — it collapses vanilla's contrast (1.4)
 - **PERSPECTIVE built** — move `$90`, and the battle message becomes *`<USER>` took the frame of `<NAME>`!*; **Index categories are capped at 10 characters**, so MOCK's cannot be PERSPECTIVE (4.6)
 - **CONSENSUS built** — move `$A5`, SWARM, 90/100/15, no secondary effect; inserted before STRUGGLE because `NUM_ATTACKS == STRUGGLE` is asserted. Not yet learnable by anything (2.5)
 - **SGB borders generated, not drawn** (`tools/genborder.py`) — CONTENT is one dot grid, CONTEXT is the same cell interfering with itself; 12 tiles each against a 96 budget (8.4)
@@ -1447,7 +1457,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
-- Roughly 160 `#MON` occurrences read singular by default and want a human read at step 8 (1.2)
+- Roughly 154 `#MON` occurrences read singular by default and want a human read at step 8 — on screen, not in the source (1.2)
 - Does a non-canonical ROM load in Gen1Recomp at all? One afternoon answers it; do not design around either answer first (8.5)
 - How many Index entries should disagree between editions — five? twelve? — before it stops being unsettling and starts being a gimmick? (8.4)
 - Is edition-exclusivity fair when link trading needs two people, two carts and a cable, and most players will have one? *Lean: yes — the Index was never going to be completable, and 4.2 says so.*
