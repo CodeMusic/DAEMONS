@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.3**
+**A `pokered` total conversion — the living design bible, v4.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1080,6 +1080,32 @@ Gen 1 audio is four channels: two pulse, one wave, one noise. `pokered`'s music 
 
 Write the city themes first and derive route themes as transitions. The overworld becomes a chromatic progression, and the rock opera stops sitting on top of the game and starts being its level design.
 
+### 7.1 The mapping is not in this repository
+
+**Recorded as a gap, 2026-08-29.** *My Chromatic Year* is the input to the rule above and it exists only outside these documents. Everything below is **derived** and should be replaced the moment the real mapping is to hand.
+
+*The derivation used, so it can be checked:* hue angle to pitch class at **30° per semitone**, red at 0° as C. That gives green 120° → **E**, cyan 180° → **F#**, blue 240° → **G#**, magenta 300° → **A#**.
+
+### 7.2 Five towns have no hue, and that is the interesting part
+
+The derivation breaks immediately, and it breaks usefully. **Blanche is white, Slate and Halftone are greys, Quicksilver is silver, and Umbra is black.** None of them has a hue angle, so none of them has a note.
+
+**That is not a flaw in the mapping — it is 8.6 showing up in the soundtrack.** The game is greyscale and colour appears exactly once. The achromatic towns are the ones the player spends the most time in, and the map's own vocabulary (0.2's pigment throughline) is about *reproduction*, which is what a greyscale image is.
+
+**Proposal, not settled:** hue sets the **key**; value sets the **register and density**. White is high and open, the greys are middle and filling in, black is low. Umbra is then the bottom of a descent the player has been making all game without noticing — and it is where colour arrives.
+
+### 7.3 Blanche Town, implemented
+
+**Key of C**, because white is not a colour — it is what colour is measured against. Blanche is the reference key everything else modulates away from, which is also what 3.1 calls it: *the pre-color state*.
+
+**The melody is C major pentatonic — C D E G A, no F and no B.** A pentatonic scale contains no semitone and no tritone, so it can form neither a leading tone nor a dissonance. **It has nothing to resolve.** That is blankness written as an interval set rather than described as a mood, and it is the whole idea of the town in one constraint. All three channels hold to it; 128 units each, verified.
+
+Slower than vanilla — 152 against 160 — with more rest. Home should read as open and slightly unfinished rather than nostalgic.
+
+*The symbol stays `Music_PalletTown`.* Identifiers are not renamed.
+
+**A wiring finding that shapes the rest of 8.1.** Only Blanche has a dedicated track. **Callow shares `Music_Cities1`** with several other cities and **The Bleed shares `Music_Routes1`** with Route 2 — so the vertical slice's *"two city themes and one modulation"* cannot be done by editing in place. Either those maps get new songs added to `songs.asm`, or the themes land on every map that shares them. That is a decision to make before writing the second theme, not after.
+
 ---
 
 ## 8. SCOPE CONTROL
@@ -1628,6 +1654,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **Blanche Town's theme written** — C major **pentatonic**, no F and no B, so it can form neither a leading tone nor a dissonance and has nothing to resolve (7.3)
+- **The *My Chromatic Year* mapping is not in this repo** and 7's rule depends on it; the keys below are derived and marked as such (7.1)
+- **Five towns have no hue** — Blanche, Slate, Halftone, Quicksilver, Umbra. Proposal: hue sets key, **value sets register**, and Umbra is the bottom of a descent the player has been making all game (7.2)
 - **LEAF STONE → REWARD**, closing the item set: reason from / search with / feel with / learn from. MOON STONE left for the town pass (8.2)
 - **Corpus stays, `Corpel` moves** — three readings versus a placeholder in a provisional table; and it is only a document collision, since Charmander's line is untouched in the ROM (8.2)
 - **MUSAI and ROVER implemented** — MUSAI/CODEMUSAI/SEEKMUSAI/CAREMUSAI and ROVERCUB/ROVERSEER/ROVERBYTE, with AXIOM/EMBEDDING/AFFECT and the three branch types, verified in the ROM (8.2)
@@ -1715,6 +1744,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
+- **Callow and The Bleed share their music** with other maps, so 8.1's second theme needs new `songs.asm` entries first (7.3)
 - **MOON STONE still wants a name** — tied to a place rather than a paradigm, so it belongs with the town pass (8.2)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.

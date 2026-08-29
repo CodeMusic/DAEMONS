@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Music — Blanche Town, and a gap in section 7
+
+- **Blanche Town's theme written and building.** Key of C, because white is not a colour — it is what colour is measured against
+- **The melody is C major pentatonic** — C D E G A, no F and no B. No semitone and no tritone, so it can form neither a leading tone nor a dissonance: it has nothing to resolve. Blankness as an interval set rather than as a mood. All three channels hold to it, 128 units each, verified mechanically
+- 152 tempo against vanilla's 160, with more rest. `Music_PalletTown` keeps its name — identifiers are not renamed
+- **Gap recorded: *My Chromatic Year* is not in this repository**, and section 7's whole rule depends on it. The keys are derived (hue angle → pitch class at 30°/semitone) and marked as provisional
+- **Five towns have no hue** — Blanche, Slate, Halftone, Quicksilver, Umbra. That is 8.6 surfacing in the soundtrack rather than a flaw. Proposal: hue sets key, **value sets register and density**, making Umbra the bottom of a descent the player has been making all game
+- **Wiring finding:** only Blanche has a dedicated track. Callow shares `Music_Cities1` and The Bleed shares `Music_Routes1`, so 8.1's second theme needs new `songs.asm` entries or it lands on every map that shares them
+
 ### REWARD closes the item set, and Corpus stays
 
 - **LEAF STONE → REWARD.** GROWTH is the reinforcement type, so a reward signal producing growth is the mechanic saying its own name. The four now read: reason from / search with / feel with / learn from
