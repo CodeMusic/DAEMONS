@@ -163,6 +163,25 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - A mock object has the full interface and none of the behaviour - which rhymes
   with Al Clear receiving the form of his father's lesson, hollow
 
+### v2.5 - the species rename, and colour settled
+- POKeMON -> DAEMON / DAEMONS. Achieved by repointing ONE string:
+  home/text.asm PlacePOKeText from "POKe@" to "DAE@", so all 650 #MON
+  occurrences moved with no source edits and no rewrapping
+- Widths cooperate: DAEMON is 6 rendered where POKeMON was 7, DAEMONS is 7.
+  Singular gains room, plural is identical
+- 54 non-species uses became literals first: #DEX -> INDEX (26),
+  bare # -> POKe (23, all item prefixes split across a line break),
+  #MANIAC -> POKeMANIAC (5)
+- Grammatical number was the real job. 106 compounds are lexicon renames,
+  123 marked plural, the rest read singular and needed no edit. English keeps
+  attributive nouns singular, so the free default is also the correct one
+- ~160 occurrences carry no strong evidence and want a human read at step 8
+- **Colour settled at two sources**: Umbra (an obsolete answer, held still) and
+  PERSPECTIVE (a glimpse, lost). MOCK makes the second reachable in ordinary
+  play; BunnyArtsai is its most loaded firing, not a third source
+- Verified: MEW appears in no wild encounter table in vanilla. There was never a
+  designed way to reach it, which is why player culture invented one
+
 ---
 
 ## Infrastructure

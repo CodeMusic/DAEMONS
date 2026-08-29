@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v2.4**
+**A `pokered` total conversion — the living design bible, v2.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -123,7 +123,51 @@ Flat, factual, and it claims nothing. Placeholder-grade wording that should get 
 
 *Code identifiers were left alone.* `OaksLab`, `OAKS_LAB`, `ProfOakName` and roughly 267 similar symbols are internal and invisible to the player, in the same category as the `_RED`/`_BLUE` defines (8.4). Renaming them is cosmetic and deferred.
 
-### 1.2 On BINDING
+### 1.2 On the species rename — and the trick that made it free
+
+*Implemented 2026-08-29. Both editions build; zero overflows.*
+
+**`#` is one byte.** `constants/charmap.asm` maps it to `$54`, and the text engine expands it from a single string:
+
+```asm
+home/text.asm:183    PlacePOKeText::   db "POKé@"
+```
+
+So `#MON` is four bytes rendering seven characters. **Change that one string to `db "DAE@"` and all 650 occurrences become DAEMON** — no source edits, no rewrapping.
+
+The widths cooperate, which is the opposite of the 1.1 job:
+
+| | rendered |
+|---|---|
+| POKéMON | 7 |
+| **DAEMON** | **6** |
+| **DAEMONS** | 7 |
+
+Singular gains a character, plural is identical. **Nothing needed rewrapping.**
+
+**What did need doing.** Fifty-four occurrences were not the species and had to become literals first, or they would have rendered as DAE-nonsense:
+
+| | Count | Became |
+|---|---|---|
+| `#DEX` | 26 | literal **INDEX** — 7 chars to 5, so it also gains room |
+| bare `#` | 23 | literal `POKé`. **All 23 are item prefixes split across a line break** — `# BALL`, `# DOLL`, `# FLUTE` — not species, so the trick was safe |
+| `#MANIAC` | 5 | literal `POKéMANIAC`, pending the trainer-class pass |
+
+**The real work was grammatical number.** POKéMON was both singular and plural. DAEMON is not. Of the 650:
+
+| | Count | |
+|---|---|---|
+| **Compound** | 106 | `#MON CENTER`, `GYM`, `LEAGUE`, `MART` — not number questions. The lexicon renames these outright |
+| **Plural** | **123** | marked `#MONS` |
+| **Singular / attributive** | the rest | **no edit required** |
+
+**The default is free, and that is why this was tractable.** English keeps attributive nouns singular — *DAEMON magazines*, *DAEMON trainers*, *DAEMON fights* — and singular is what `#MON` already renders. Only plurals needed touching, so **an error of omission reads as a mild singular rather than as breakage.**
+
+*Two heuristic passes were needed.* The first over-marked: it read `looks`, `is`, `was` as evidence but also caught `will` and `can`, which are number-neutral. *My DAEMON looks stronger* is singular; *all DAEMONS will have weak points* is not. A corrector reverted eight, four of them wrongly, and a quantifier rule (`all`, `some`, `up to 6` plus a modal) restored those.
+
+**Still open:** roughly 160 occurrences carry no strong evidence either way and currently read singular. Most are attributive and correct as they stand, but the set wants a human read during the step-8 text pass.
+
+### 1.3 On BINDING
 
 The container was renamed and the verb was not, which left the lexicon saying *privilege escalation* and then *caught* — a word about grabbing an animal.
 
@@ -1020,7 +1064,22 @@ Forty hours of colour-named grey towns, and then one room where colour is real, 
 
 **The one place the game admits colour is the place with the obsolete answer.** Nobody remarks on it. Nobody can.
 
-*Restraint clause:* one place, or at the outside two. The moment colour appears three times it becomes a system, and a system invites explanation. Umbra earns it. A candidate second is the title screen, and even that is probably a mistake.
+#### Settled: two sources, one of them earned
+
+The open question — *is one colour moment right?* — resolves at **two, different in kind.**
+
+| | What colour is | Who sees it |
+|---|---|---|
+| **Umbra** | an obsolete answer, held still and examined | everyone who finishes |
+| **PERSPECTIVE** | a glimpse of another's frame, immediately lost | most players, via MOCK |
+
+**MOCK settles it.** 4.6 establishes that Ditto is CONTENT/CONTENT and learns PERSPECTIVE, so the flash is reachable in ordinary play rather than gated behind a puzzle almost nobody solves.
+
+**BunnyArtsai is not a third source.** She is the most loaded firing of the first — the same few frames, from the one creature that could not come back — and only for a player who solved the Five Witnesses (4.8).
+
+*Why this is the right pair.* Vanilla had **no designed way to reach Mew at all** — verified: it appears in no wild encounter table, only in `names.asm` and `palettes.asm`. The famous routes were an unintended glitch and event distribution, and player culture filled the vacuum with rumour. **If colour lived only with BunnyArtsai it would be a secret nobody could confirm.** MOCK makes it something players can compare notes about, which is the condition under which Umbra lands rather than passing unnoticed.
+
+*Restraint clause holds at two.* A third source makes it a system, and a system invites explanation.
 
 #### Notes and consequences
 
@@ -1143,6 +1202,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **MOCK** (Ditto) is CONTENT/CONTENT and also learns PERSPECTIVE — the capability was always in the wild; Quicksilver only noticed it (4.6)
 - **ORPHAN** at Halftone Tower — CORRUPT/LATENT, the one daemon with a genuinely blank Index entry; an orphaned process is how a daemon is made (4.5)
 - **Silph Scope → RESOLVER** — it exists because the Index is insufficient (1, 4.5)
+- **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
+- The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
 - City names per 3.1; Slate over Somber; Halftone over Pallor; Quicksilver over Cinder; **Brazen over Gilt**
 - Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
@@ -1202,7 +1263,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
-- Is one colour moment right, or does Umbra want a second somewhere to keep it from reading as a bug? (8.6)
+- Roughly 160 `#MON` occurrences read singular by default and want a human read at step 8 (1.2)
 - Does a non-canonical ROM load in Gen1Recomp at all? One afternoon answers it; do not design around either answer first (8.5)
 - How many Index entries should disagree between editions — five? twelve? — before it stops being unsettling and starts being a gimmick? (8.4)
 - Is edition-exclusivity fair when link trading needs two people, two carts and a cable, and most players will have one? *Lean: yes — the Index was never going to be completable, and 4.2 says so.*
