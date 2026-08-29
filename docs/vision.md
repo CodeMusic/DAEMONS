@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.7**
+**A `pokered` total conversion — the living design bible, v3.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1279,7 +1279,15 @@ Vanilla puts a starter on the title — Charizard on Red, Blastoise on Blue, and
 
 Two ambitions worth recording so they are not lost, and **deliberately not designed.** Both sit after the vertical slice. Neither is a commitment.
 
-**Original sprites.** 8.3 already names this as the bottleneck. Nothing to add except that it stays a bottleneck no matter which of the below happens.
+**Original sprites.** 8.3 already names this as the bottleneck. Nothing to add except that it stays a bottleneck no matter which of the below happens. *Prompts and specs for the first pass now live in [`sprite-prompts.md`](sprite-prompts.md).*
+
+**How far the foxes spread — decided 2026-08-29.** 4.1 makes Crystal a fox and 4.3 makes the resemblance an inference beat. The open question was whether *everyone* is animal-like.
+
+**They are not, and the reason is resolution rather than lore.** At 16×16 a character has about three pixels of head, so the entire animal vocabulary is **ears, a tail, and a shade** — the bible says as much already. Making the whole cast anthropomorphic costs something like a hundred sprite sets and buys almost nothing, because at that size a badger and a bear are the same eight pixels. So: **the Clears get ears, tail and value; nobody else changes; and the game never says anyone is a fox.** It reads as family resemblance rather than as a species claim, which is exactly the job 4.3 gives it.
+
+*The failure mode, and the cheap escape.* If three tailed characters among an untailed cast reads as *otherness* rather than *lineage*, the fix is not to convert everyone — it is to give light animal features to a handful of **recurring** characters (Scorn, two or three Benchmark leaders) so that fox becomes one species among several. Eight sprites, not a hundred. Decide it on playtest, not now.
+
+*And the resemblance is carried by value, not hue.* 8.6 means the player sees four greys, so *golden-amber*, *darker* and *between* have to be **light-to-mid, dark, and between** — with identical ear and muzzle geometry doing the family work. Colour words will not survive the conversion and should never be relied on in a prompt.
 
 **The Gen1Recomp question.** [Gen1Recomp](https://gen1recomp.com/) is a hand-written Lua / LÖVE2D recreation of Gen 1 that **imports data and graphics from a player-supplied ROM** rather than emulating it. Its [mod ecosystem](https://gamebanana.com/games/25428) includes the **voxel mod** and first-person renderers — which is the specific pairing of interest here: DAEMONS creatures, rendered as voxels, in a first-person Kanto.
 
@@ -1464,6 +1472,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **The foxes stop at the Clears** — ears, tail and *value*, nobody else converted; the cast stays as it is because at 16×16 the animal vocabulary is three pixels wide and a full conversion costs ~100 sprite sets for almost no signal (8.5)
 - **`EnemyText` was the third `Enemy`** — the prefix behind every `<USER>`/`<TARGET>`, missed by the first REMOTE pass. Now `Remote @`, which **caps species names at 9 characters** (1.4)
 - **The text ceiling is 18, not 19** — the earlier figure counted `<COLON>` as seven characters. Vanilla's four 19-char lines overwrite the right border (1.2)
 - **INVOKED rejected on measurement, not taste** — 21 as the verb, 6 in a 5-char menu slot (1.4)
