@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v2.9**
+**A `pokered` total conversion — the living design bible, v3.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -209,7 +209,13 @@ The gyms were already BENCHMARKS, so a battle was already a **run** — you put 
 
 *On punctuation:* `LABL was BOUND.` is flat because **the game declines to congratulate the player for acquiring something.** `UNBOUND RATTATA appeared!` is alarm, not congratulation — the rule is about refusing to celebrate, not refusing to punctuate.
 
-*Deferred:* **379** occurrences of *trainer* in player-visible text. A step-8 pass, not a surgical edit.
+*Done 2026-08-29.* The 379 figure counted code identifiers; **in player-visible strings it was 93**, across six casings (`trainer`, `trainers`, `TRAINER`, `Trainer`, `Trainers`, `TRAINERS`). All became **USER** / **USERS**, and since USER is *shorter* than trainer nothing needed rewrapping.
+
+```
+USER TIPS          are all USERS!          for USERS!
+```
+
+The trainer *class* names — YOUNGSTER, BUG CATCHER, LASS — are untouched. They are occupations, not the general term, and they belong to the bestiary-adjacent pass.
 
 ### 1.5 On BINDING
 
@@ -1146,6 +1152,8 @@ db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E
 *Deferred:* a year would be lovely — **'11.'26** encodes the whole lineage, and vanilla's own multi-year format invites it. But the digits need glyphs that do not exist in the current tile set, and the year tiles are shared with the boot splash. It wants a slightly wider wordmark graphic, which is 8.5 work.
 
 **Still vanilla:** the **Super Game Boy border** (`gfx/sgb/red_border.png`, `blue_border.png`) still reads RED and BLUE at the top of the screen. That is a full decorative frame rather than a word, and it is its own art job — 8.5's territory, alongside the DAEMONS logo (`gfx/title/pokemon_logo.png`, 128×56, 2bpp).
+
+**A tool exists for it now:** [`tools/mkborder.py`](../tools/mkborder.py) takes a 256×224 design, forces the centre window blank, quantises to the four Game Boy values, deduplicates to unique 8×8 tiles, and emits both the `_border.png` bank and the `.tilemap` — or refuses, with advice, if the design exceeds 96 unique tiles.
 
 **And it is harder than it looks.** `red_border.png` is not a picture of a border. It is **128×48 — a bank of 96 unique 8×8 tiles** — plus a separate `.tilemap` arranging them across the 256×224 frame, plus SGB palette entries (`RGB 30,29,29`) that colour the 2bpp greys at runtime. So the pipeline is *design the frame → deduplicate to at most 96 unique tiles → build the tilemap → choose palettes*. An image alone cannot be dropped in.
 

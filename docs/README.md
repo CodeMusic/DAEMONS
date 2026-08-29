@@ -2,10 +2,10 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v2.9, working |
-| [`CONTEXT-CONTENT-design-bible-v2.9.pdf`](CONTEXT-CONTENT-design-bible-v2.9.pdf) | Typeset **snapshot** at v2.9. Current. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v3.0, working |
+| [`CONTEXT-CONTENT-design-bible-v3.0.pdf`](CONTEXT-CONTENT-design-bible-v3.0.pdf) | Typeset **snapshot** at v3.0. Current. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
-| [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.0` | — |
+| [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
 | [`CHANGELOG.md`](CHANGELOG.md) | Version-by-version record of what moved and why. | current |
 | [`two-repo-pattern.md`](two-repo-pattern.md) | Why this is two repos joined by a symlink — tradeoffs, alternatives, the gotchas we hit, and how to apply it elsewhere. | current |
 | [`lineage.md`](lineage.md) | **How the theory evolved, 2011 → 2026.** A full reading of all three blogs — Neural Crossroads (2011–12), PsychologyCode (2013–14), Seeing Sharp (2021–26) — against the design bible. What the game inherits, what it has gone past, where it diverges from the iASHC rock opera, and an article-by-article map of all three sites onto the modern concept. | current |
@@ -19,7 +19,7 @@
 **Do not edit the PDFs.** Regenerate from the markdown:
 
 ```sh
-./docs/build-pdf.sh 3.0
+./docs/build-pdf.sh 3.1
 ```
 
 Bump the version line at the top of `vision.md` first, so the document and its
