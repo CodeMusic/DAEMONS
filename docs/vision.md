@@ -1151,11 +1151,21 @@ db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E
 
 *Deferred:* a year would be lovely — **'11.'26** encodes the whole lineage, and vanilla's own multi-year format invites it. But the digits need glyphs that do not exist in the current tile set, and the year tiles are shared with the boot splash. It wants a slightly wider wordmark graphic, which is 8.5 work.
 
-**Still vanilla:** the **Super Game Boy border** (`gfx/sgb/red_border.png`, `blue_border.png`) still reads RED and BLUE at the top of the screen. That is a full decorative frame rather than a word, and it is its own art job — 8.5's territory, alongside the DAEMONS logo (`gfx/title/pokemon_logo.png`, 128×56, 2bpp).
+**The Super Game Boy border, done.** `red_border` / `blue_border` are now `content_border` / `context_border`, and they no longer read RED and BLUE.
 
-**A tool exists for it now:** [`tools/mkborder.py`](../tools/mkborder.py) takes a 256×224 design, forces the centre window blank, quantises to the four Game Boy values, deduplicates to unique 8×8 tiles, and emits both the `_border.png` bank and the `.tilemap` — or refuses, with advice, if the design exceeds 96 unique tiles.
+**And it is harder than it looks.** A border file is not a picture of a border. It is **128×48 — a bank of 96 unique 8×8 tiles** — plus a separate `.tilemap` of 896 `(tile, attribute)` pairs arranging them across the 256×224 frame, plus SGB palette entries that colour the 2bpp greys at runtime. Four facts had to be measured against vanilla rather than assumed:
 
-**And it is harder than it looks.** `red_border.png` is not a picture of a border. It is **128×48 — a bank of 96 unique 8×8 tiles** — plus a separate `.tilemap` arranging them across the 256×224 frame, plus SGB palette entries (`RGB 30,29,29`) that colour the 2bpp greys at runtime. So the pipeline is *design the frame → deduplicate to at most 96 unique tiles → build the tilemap → choose palettes*. An image alone cannot be dropped in.
+- **`rgbgfx` inverts greyscale.** PNG level 3 becomes colour index 0. So in the source PNG *higher value is lighter on screen*, and level 3 is the light ground.
+- **The attribute byte carries the palette:** `(attr >> 2) & 7`. Vanilla uses palettes 4/5/6 (`PAL_SGB1`–`3`) and `$40` for X-flip. Ours uses palette 4 throughout, so every border entry is `$10`.
+- **Tile `$00` is reserved and flat.** The centre 160×144 is covered by the Game Boy screen; vanilla fills it with tile `$00`, attribute `$00`.
+- **Colour index 0 is not transparent here.** Vanilla's art uses it as the *lightest* value, not as a hole.
+
+**They are generated, not drawn.** [`tools/genborder.py`](../tools/genborder.py) builds each border from a repeating cell. This was not the first plan — three illustrated versions were commissioned and measured with [`tools/mkborder.py`](../tools/mkborder.py), which takes a 256×224 design, quantises, deduplicates and reports the tile count. They came in at **496 and 523 unique tiles against a budget of 96**. The lesson is that a halftone frame is *geometry, not illustration*: generated from a cell it lands every dot on the grid, and both editions now cost **12 tiles**. `mkborder.py` remains the measuring tool for any supplied art.
+
+**And the two borders argue the same thing the editions do:**
+
+- **CONTENT** — one dot grid. The thing itself, repeating, self-identical. Dots shrink toward the screen, so the image resolves as you approach it.
+- **CONTEXT** — the *same* cell, laid over itself at an offset. Nothing new is drawn; the pattern is entirely the relationship between the two. True moiré is definitionally non-repeating and therefore cannot be tiled at all — so this is a repeating unit that *reads* as interference. That constraint is not a compromise; it is the argument in miniature.
 
 #### Which daemon appears
 
@@ -1356,6 +1366,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **SGB borders generated, not drawn** (`tools/genborder.py`) — CONTENT is one dot grid, CONTEXT is the same cell interfering with itself; 12 tiles each against a 96 budget (8.4)
 - City names per 3.1; Slate over Somber; Halftone over Pallor; Quicksilver over Cinder; **Brazen over Gilt**
 - Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
 - Routes keep numbers officially and carry local names on signs

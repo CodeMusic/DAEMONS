@@ -5,6 +5,33 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## Session — 2026-08-29
+
+### Title screen and SGB borders
+
+- **DAEMONS logo** — `gfx/title/pokemon_logo.png` replaced, 128×56 2bpp, dimensions identical to vanilla so no title-screen code changed
+- **CODEMUSIC** replaces GAME FREAK INC. on the title line; the year is deferred (needs glyphs that do not exist yet)
+- **Version subtitles** — both editions ship at the same 10-tile width so the title code's contiguous tile run prints the whole word. The earlier 8-tile version rendered as "Con"
+- **SGB borders generated, not drawn.** `red_border`/`blue_border` → `content_border`/`context_border`; `green_border` dropped. Three commissioned illustrations measured at **496 and 523 unique tiles against a budget of 96**; the generated versions cost **12 tiles** each
+  - CONTENT — one dot grid, dots shrinking toward the screen
+  - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
+- Border palettes rewritten: index 0 is the light ground, index 3 the ink
+
+### Tools
+
+- `tools/gbimg.py` — shared PNG helpers (`read_png`, `resample`, `quantise`, `write_png`) for any colour type and bit depth
+- `tools/genborder.py` — generates a border from a repeating cell, asserts the tile budget and the 896-entry tilemap
+- `tools/mkborder.py` — rewritten on `gbimg`; now the *measuring* tool for supplied art
+
+### Format facts established against vanilla
+
+- `rgbgfx` **inverts** greyscale: PNG level 3 → colour index 0, so higher PNG value is lighter on screen
+- Tilemap entries are `(tile, attribute)`; palette is `(attr >> 2) & 7`, `$40` is X-flip
+- Tile `$00` is reserved and flat — the centre 160×144 is covered by the Game Boy screen
+- Colour index 0 is not transparent in a border; vanilla uses it as its lightest value
+
+---
+
 ## Session — 2026-08-27 → 28
 
 ### Repository structure
