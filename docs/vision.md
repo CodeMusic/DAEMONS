@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.2**
+**A `pokered` total conversion — the living design bible, v4.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1200,6 +1200,14 @@ That is **explore → model → act**, which is reinforcement learning's actual 
 
 *RoverRadio does not survive the character cap* (10). **The base is `ROVERCUB`** — a real repository (*"a simplified board implementing Rover's technology"*), exactly 9 characters, and it reads as a young animal, which is what a starter should be. So every stage of the line is a system that exists: **ROVERCUB → ROVERSEER → ROVERBYTE**. RoverRadio is held in reserve for a separate daemon.
 
+#### Corpel, Corpus, and which one moves
+
+`Corpel` (supervised, stage 2) collides with **Team Corpus**. **Corpus stays.** It carries three readings at once — a **body of text** you train on, a **corporate body**, and a **corpse** — which is the standard the rest of the lexicon meets, and 4.4 plus the lobby engraving are built on it. `Corpel` sits in a table marked *provisional*, inside the line diagnosed above as single-duty. **The placeholder moves, not the term that earned its place.**
+
+*It is also only a document problem.* Charmander's line is untouched in the ROM, so nothing in the game is broken by it, and the register decision will likely replace the whole supervised line regardless.
+
+*Considered, if the org ever does need to move:* **INGEST** (data ingestion, and consuming) and **SCRAPE** (web scraping, and taking without asking). Both good; neither has three readings.
+
 #### The affect model, and why it stays out of the status bar
 
 `excuseGPT` carries a five-state model — **BASE, MAD, SAD, AFRAID, GLAD** — and Gen 1 has exactly five status conditions. **Rejected**, and by 0.1's own rule 3: *name the process, not the pathology.* A status sits in the HUD as a thing a creature **is**. Renaming them to affect makes the game announce *your daemon is SAD* every battle, in the loudest and most repeated place there is — rule 3's forbidden move, performed on a creature instead of a town.
@@ -1230,7 +1238,18 @@ That distinction is what makes both answerable: the generic daemons can take tru
 
 CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeveelutions are.
 
-*One consequence, accepted.* Item names are global, so **six other daemons now evolve by AXIOM, EMBEDDING or AFFECT** — Vulpix and Growlithe by AXIOM, Pikachu by EMBEDDING, Poliwhirl, Shellder and Staryu by AFFECT. This is coherent rather than awkward: the mechanic was never *mineral*, it is exposure, and every one of those is a mind being given something. LEAF STONE is untouched and still wants a name.
+*One consequence, accepted.* Item names are global, so **six other daemons now evolve by AXIOM, EMBEDDING or AFFECT** — Vulpix and Growlithe by AXIOM, Pikachu by EMBEDDING, Poliwhirl, Shellder and Staryu by AFFECT. This is coherent rather than awkward: the mechanic was never *mineral*, it is exposure, and every one of those is a mind being given something.
+
+**LEAF STONE became REWARD, and it closes the set.** GROWTH *is* the reinforcement type, so a reward signal producing growth is the mechanic saying its own name:
+
+| Item | What it is |
+|---|---|
+| **AXIOM** | what you reason from |
+| **EMBEDDING** | what you search with |
+| **AFFECT** | what you feel with |
+| **REWARD** | what you learn from |
+
+*MOON STONE is the fifth and is deliberately left.* It is tied to a place on the map rather than to a paradigm, so it belongs with the town pass, not this one.
 
 **The 9-character cap bites here first.** `SEARCHMUSAI` is 12, `THERAPYMUSAI` is 13, `ROVERRADIO` is 10. Surviving as-is: `MUSAI` (5), `CODEMUSAI` (9), `ROVERSEER` (9), `ROVERBYTE` (9). `EYEMUSAI` (8) is available and is a real module name. **The two long branches need shortening before implementation** — that is the only open work in this section.
 
@@ -1609,6 +1628,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **LEAF STONE → REWARD**, closing the item set: reason from / search with / feel with / learn from. MOON STONE left for the town pass (8.2)
+- **Corpus stays, `Corpel` moves** — three readings versus a placeholder in a provisional table; and it is only a document collision, since Charmander's line is untouched in the ROM (8.2)
 - **MUSAI and ROVER implemented** — MUSAI/CODEMUSAI/SEEKMUSAI/CAREMUSAI and ROVERCUB/ROVERSEER/ROVERBYTE, with AXIOM/EMBEDDING/AFFECT and the three branch types, verified in the ROM (8.2)
 - **The affect model stays out of the status bar** — rule 3 forbids it: a status is a thing a creature *is*. Four daemons, not five conditions (8.2)
 - **The evolution items are AXIOM / EMBEDDING / AFFECT** — not stones but *kinds of input*, since the mechanic is exposure rather than mineralogy; KERNEL was better on paper and 2 characters too long (8.2)
@@ -1694,7 +1715,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
-- **LEAF STONE still wants a name** — the fourth evolution item, untouched by the AXIOM/EMBEDDING/AFFECT pass (8.2)
+- **MOON STONE still wants a name** — tied to a place rather than a paradigm, so it belongs with the town pass (8.2)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*

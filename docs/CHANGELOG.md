@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### REWARD closes the item set, and Corpus stays
+
+- **LEAF STONE → REWARD.** GROWTH is the reinforcement type, so a reward signal producing growth is the mechanic saying its own name. The four now read: reason from / search with / feel with / learn from
+- **MOON STONE deliberately left** — tied to a place on the map rather than to a paradigm, so it belongs with the town pass
+- **`Corpel` moves, not Team Corpus.** Corpus carries three readings — a body of text, a corporate body, and a corpse — and 4.4 plus the lobby engraving are built on it. `Corpel` is a placeholder in a table marked provisional. It is also only a document collision: Charmander's line is untouched in the ROM
+- Considered if the org ever must move: **INGEST** and **SCRAPE**. Both good, neither has three readings
+
 ### MUSAI and ROVER implemented
 
 - **MUSAI / CODEMUSAI / SEEKMUSAI / CAREMUSAI** and **ROVERCUB / ROVERSEER / ROVERBYTE**, verified by reading the name table and base stats back out of the ROM
