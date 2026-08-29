@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.5**
+**A `pokered` total conversion — the living design bible, v3.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -230,9 +230,39 @@ The gyms were already BENCHMARKS, so a battle was already a **run** — you put 
 
 *On **defeated**, replaced by **outscored**.* A trainer battle is a BENCHMARK, and a benchmark yields a **score**. *Defeated* is the language of combat; *outscored* is the language of evaluation, which is what the Review Board will later do to the player. **outran** was considered and rejected — it reaches for the racing sense of RUN, and 1.4 spent real effort making RUN mean *execute*.
 
+#### On money — **CACHE**, and how little of it is visible
+
+**The word *money* is never shown to the player.** It appears only as labels and variable names; on screen there is the **¥** glyph and digits, nothing else. The single prose instance in the whole game is Team Rocket in Mt Moon — *"revive and sell them for cash!"* — which is now **CACHE**, and is exactly the right mouth to put it in.
+
+**CACHE, because it is not only a pun.** A cache is, in plain English, a hidden store of valuables — *a cache of gold* — before it is anything to do with computers. So it carries three readings at once: the hoard, the fast local memory, and *cash*, which it is pronounced as. That is one more than 1 asks of any term, and unusually it needs no beat of confusion: a player reads it as money immediately.
+
+*Considered:* **CYCLES** — compute time as the scarce resource, with a bonus nod to the loops in 0.3. Genuinely good, and rejected only because CACHE reads instantly and CYCLES needs a beat, in a slot where the player is doing arithmetic rather than reading.
+
+**The ¥ glyph stays**, and the divergence is smaller than it looks. `¥` is one tile — `charmap "¥", $f0` — and vanilla was *already* using it as a stand-in for an invented currency. Redrawing it is an afternoon that buys almost nothing, because the mark is read as *currency* whatever it looks like and the word does the work everywhere it appears. **Logged as optional art, not as a rename.**
+
+*Untouched, deliberately:* the Game Corner's **coins** are a second currency and stay coins.
+
+#### The battle menu is a live collision, and it is engine work
+
+`data/text_boxes.asm` still reads:
+
+```
+BattleMenuText:
+	db   "FIGHT <PK><MN>"
+	next "ITEM  RUN@"
+```
+
+**FIGHT is a word we replaced, and RUN there means *flee*** — which is precisely the collision 1.4 renamed RUNNER → USER to remove. It is also the single most-seen string in the game.
+
+*Why it is not a text edit.* The box is declared `BATTLE_MENU_TEMPLATE, 8, 12, 19, 17, BattleMenuText, 10, 14` — spanning x8–19 with text at x10, so there are **nine columns**, split into a **5-character left column** and a **3-character right column** at x16–18. **DETACH is six characters and physically cannot go where RUN is.** Moving the split means rewriting the `wTopMenuItemX` values at four sites in `engine/battle/core.asm` plus the 2×2 cursor logic. That is a real change, correctly sized, and it should be made deliberately rather than folded into a text pass.
+
 #### Three that were interrogated and kept
 
 **`RUN, <nick>` keeps its comma.** A colon would make it a command echo, which is tempting — but this string has three siblings, `Do it! @`, `Get'm! @` and `The remote's weak! Get'm! @`, which vanilla selects between by situation. The slot is **the player's voice**, not the system's. Colon-ing one of four would leave a command echo standing next to two shouts, and that reads as an error rather than a choice. *If the colon is ever taken, all four have to flatten together — and vanilla's variety goes with them.*
+
+**`used` stays**, and for the same reason EXP does. 1.4 made **use** a morally loaded word on purpose — *a user is someone who uses people* — so every time a daemon *uses* a move, the game repeats the word that names what the player is doing to the daemon. Trading that for a merely technical verb would be a downgrade in the one place this game is trying to implicate someone. *And the tempting alternative does not fit:* **INVOKED** would have been the exact partner to BIND — you `bind()` a daimon and you *invoke* it, both idioms true twice over — but the longest move name is 12 characters and `invoked ` + 12 = **20**, past vanilla's 19-character ceiling. `called` fits at exactly 19 and is technical-only. Measured, not guessed.
+
+**ATTACK stays too**, as a *stat*. It is a magnitude rather than a narrative word, it belongs to a fixed set (HEALTH / ATTACK / DEFENSE / SPEED / SPECIAL) that would have to move together, and the stat screen's columns are fixed-width. The word that actually needs work is **FIGHT**, and it is in the battle menu, above.
 
 **EXP stays EXP, and it is not a compromise.** 4.3 says context forms from **experience** and nowhere else — that is the argument the whole rival plot turns on. The quantity the game already accumulates is called experience. **The best resonance in the system is the one vanilla handed us**, and renaming it would be the only change in this document that made the game say less.
 
@@ -1421,6 +1451,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **Currency is CACHE** — a hoard, a memory cache, and *cash*, all at once; the word is almost never on screen, so this is one prose line and a naming decision. **¥ kept**, logged as optional art (1.4)
+- **The battle menu still says FIGHT and RUN** — a live collision in the most-seen string in the game. Not a text edit: the right column is 3 characters, so DETACH cannot fit, and moving the split is `wTopMenuItemX` surgery at four sites (1.4)
+- **Kept: `used`** (1.4 made *use* morally loaded on purpose; INVOKED measured at 20 chars, over the ceiling) **and `ATTACK`** as a stat (1.4)
 - **`enemy` → `REMOTE`** — nothing here is anyone's enemy; a REMOTE is a process you have no handle on, and it pairs with DETACH. `Enemy X ran!` → **`Remote X DETACHED.`**, killing a live `ran` collision (1.4)
 - **`defeated` → `outscored`** — a BENCHMARK yields a score; *outran* rejected for reaching back at RUN (1.4)
 - **Kept after interrogation: `RUN,` (comma), `EXP`, `LEVEL`** — EXP because 4.3's whole argument is that context forms from *experience*; LEVEL because it already means *permission level* and `<LV>` is a single tile (1.4)
