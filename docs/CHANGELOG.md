@@ -17,6 +17,23 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Starter types implemented (9.2 step 9, partial)
+
+- **CONTENT → CONTENT/LOGIC**, **VECTOR → VECTOR/LATENT**, **GROWTH → GROWTH/SIGNAL**, across all nine base-stat files. Verified by reading the base-stat table back out of the ROM
+- **Secondary type appears at the final stage only**, as vanilla's Charizard gains FLYING. Bulbasaur's CORRUPT secondary dropped
+- **Lab dialogue moved with them** — *CONTENT / VECTOR / GROWTH DAEMON*. Second and final rewrite of those three lines; 1.2 predicted it, which is why the other 19 type-words are held for section 5
+- **Movesets are the blocker.** Gen 1 has **6 FLYING moves total** — the entire VECTOR pool. FIRE has 5, so vanilla's fire starter is thinner still, but VECTOR/LATENT compounds it since GHOST is nearly empty. 2.5's CONSENSUS is the precedent: when a type is unusable, the fix belongs in `moves.asm`
+- **Names deliberately not changed** — they are gated on two open questions: the register (technical vs true names) and the supervised slot, which is the user's pick
+
+### The starter names, and a backlog recovered from conversation
+
+**A process failure, recorded because it should not repeat.** MUSAI/ROVER as starters, the `Corpel` ↔ Team Corpus collision, CODEX, OPTIMAX → Corpus, Penphin as a trade evolution and PERSPECTIVE as the second colour moment were **all designed around v1.7, offered as a cut, and never written down.** The bible reached v3.8 with them sitting in a transcript. The procedure did not fire because each proposal ended in *"say which parts you want"* and no answer came. **Record proposals as open items immediately rather than holding them pending a yes.**
+
+- **8.2 gains a diagnosis of its own names.** They are *single-duty* — `Labl` says label and stops, where every other term in the lexicon pays for itself two or three times — and the dropped vowel is a 2010s branding tic, not a cryptic one. Grimoire names are vowel-rich and Latinate; Gen 1's are portmanteaus of whole words
+- **The register question, sharpened.** Not *literal or mystic* — the house style is both, which is why BIND was chosen. The question is which is on the surface. **True names** invert the lexicon and make 4.2's Index irony visible for free: the artifact can only measure content and cannot reach what the creature is called
+- **Penphin is a trade evolution.** The dual mind requires two minds, so it cannot be obtained alone. Gen 1 already supports trade evolution, *and* permits two species evolving into one — so a penguin line and a dolphin line can both terminate in Penphin, neither half complete
+- **MUSAI / ROVER / Penphin are not the legendaries.** ROVER as Reinforcement is the strongest fit in the section — a dog is the canonical reward learner. The bird slots would waste all three: a starter is raised for forty hours, a legendary is a trophy
+
 ### Sprites — prompts, and how far the foxes spread
 
 - **New `docs/sprite-prompts.md`** — generation prompts for the step-9 art pass with the specs that constrain them, plus proposed designs for the 8.2 starter trio (Labl / Clustr / Nudgit)

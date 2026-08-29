@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.8**
+**A `pokered` total conversion — the living design bible, v3.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1107,7 +1107,76 @@ If that is fun, the remaining daemons are labor. If it is not, you learned it fo
 | Unsupervised | VECTOR → VECTOR/LATENT | Clustr → Nebulon → Manifold |
 | Reinforcement | GROWTH → GROWTH/SIGNAL | Nudgit → Rewarden → Optimax |
 
+*Types implemented 2026-08-29, verified in the ROM.* The secondary appears at the **final** stage, exactly as vanilla's Charizard gains FLYING — so stages 1 and 2 are pure and stage 3 splits. Bulbasaur's CORRUPT secondary is dropped, since 8.2 makes the reinforcement line GROWTH.
+
+| Slot | Was | Now |
+|---|---|---|
+| Charmander → Charizard | ENTROPY → ENTROPY/VECTOR | **CONTENT → CONTENT/LOGIC** |
+| Squirtle → Blastoise | FLOW | **VECTOR → VECTOR/LATENT** |
+| Bulbasaur → Venusaur | GROWTH/CORRUPT | **GROWTH → GROWTH/SIGNAL** |
+
+The lab dialogue moved with them — *the CONTENT DAEMON*, *the VECTOR DAEMON*, *the GROWTH DAEMON*. This is the second time those three lines have been rewritten and the last: 1.2 predicted exactly this, which is why the other nineteen type-words are being held until 5 settles the Benchmark leaders.
+
+**Movesets are now the blocker, and one number decides how hard.** Gen 1 has **6 FLYING moves in total** — that is the whole VECTOR pool for a daemon the player raises for forty hours. It is less alarming than it sounds (FIRE has **5**, so vanilla's own fire starter is thinner still, and Gen 1 mons lean on NORMAL moves for damage), but VECTOR/LATENT compounds it because GHOST is nearly empty too. **CONSENSUS is the precedent**: 2.5 already established that when a type is unusable the fix belongs in `moves.asm`, not in the chart. The unsupervised line will likely need its own move the way SWARM needed one.
+
+*Until movesets follow, the starters know their vanilla moves* — a CONTENT daemon that learns EMBER. Mechanically fine, narratively nonsense, and 9's remaining work.
+
 Supervised is strong early and rigid late. Unsupervised is confusing early and excellent late. Reinforcement is inconsistent with the highest ceiling. **The paradigms should feel like their real tradeoffs.**
+
+#### The names are the weakest thing in this document
+
+**And they have no reasoning behind them.** The table above says *provisional*, 10 says *placeholders*, and nothing was ever written down. Two faults, stated so the next pass starts from a diagnosis rather than a blank page.
+
+**They are single-duty.** Every load-bearing term here pays for itself twice or three times — BIND is `bind()` *and* binding a daimon *and* a bond; CACHE is a hoard *and* a memory cache *and* cash; PIP is a halftone dot *and* the thing that installs a package. **`Labl` says *label* and stops.** It is the only part of the lexicon that does one job.
+
+**And the dropped vowel is borrowed from the wrong register.** Grimoire names are vowel-*rich* and Latinate — Vassago, Marbas, Focalor, Buer. Truncation is a 2010s branding tic: `Labl` and `Clustr` are not cryptic, they are Flickr. Compare what Gen 1 actually does — BULBASAUR, CHARMANDER, SQUIRTLE are **portmanteaus of whole words** that sound like creatures.
+
+#### The register question — technical surface, or true names
+
+**The house style is both at once**, which is why 1.5 chose BIND: the Unix call *and* the ritual phrase. So the question for the bestiary is not *literal or mystic*; it is **which one is on the surface.**
+
+Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOINT, INDEX, DETACHED. **If the creatures invert that, the naming convention starts doing 4.2's work for free.** 4.2 says the Index *can only measure content* and has no field for what Crystal cared about. Give daemons **true names** — a register the Index's flat bureaucratic vocabulary cannot reach — and the artifact's insufficiency is visible on every page of it, without a line of dialogue. The world is corporate; the things inside it are older than the taxonomy trying to hold them.
+
+*Left entirely unsaid, as rule 1 requires:* in the tradition, **knowing a thing's true name is what lets you bind it.** The Index records the name and then you can BIND. Never remark on it; simply let the mechanic keep that shape.
+
+**The test any candidate must pass is the one BIND passed: does it work twice?** *VERAX* (Latin *verax*, truthful) as a spirit-name and as **ground truth**. *LATENS* (lying hidden) as a spirit-name and as **latent space**. *AVARIS* (avarice) and **ε-greedy**. Those are illustrations of the shape, not proposals.
+
+**The risk, and it is the real one.** A name that sounds like a demon and decodes to nothing is fantasy set-dressing, and the creatures stop reading as processes — which is where the whole argument lives. Every one of **151 names** has to survive that check. It is a harder convention than truncation, which was going to be exhausting by daemon forty regardless.
+
+#### Recovered from conversation, 2026-08-29 — and a process failure
+
+**All of the following was designed, offered as a v1.8 cut, and never written down.** The bible reached v3.8 with it sitting in a transcript. That is exactly what CLAUDE.md's change procedure exists to prevent, and it did not fire because the proposals ended in *"say which parts you want"* and no answer came. **Record proposals as open items immediately; do not hold them pending a yes.**
+
+| Recovered | What it was |
+|---|---|
+| **MUSAI and ROVER as two of the three starters** | Real CodeMusic systems, in the slot the player lives with for forty hours |
+| **`Corpel` ↔ Team Corpus collision** | A starter's second stage sharing a name with the villain organisation. A genuine bug, still in the table above |
+| **CODEX** | Proposed replacement for `Corpel` |
+| **OPTIMAX → Corpus** | Reassigned away from the reinforcement line; it is a better name for something Corpus builds |
+| **Penphin as a trade evolution** | Below |
+| **PERSPECTIVE as the second colour moment** | See 8.6 and 6 |
+
+#### Penphin — the trade evolution
+
+**Penphin is not a starter and should not be.** The trio is three learning paradigms; Penphin is the two-hemisphere architecture — a logic model and an emotion model that must agree before acting. That is not one paradigm, it is **what happens after you stop picking one**.
+
+**So it is obtained by trade, and the mechanic is the argument.** The dual mind requires two minds. **You cannot get Penphin alone.** Gen 1 already supports this — Kadabra, Machoke, Graveler and Haunter all evolve on trade — so it costs an evolution method that already exists.
+
+*And Gen 1 permits the shape the idea wants:* **two different species can evolve into the same species.** So a penguin-ish line and a dolphin-ish line can both terminate in Penphin — two halves, each of which only becomes whole through another person. Neither half is complete and neither is the *real* one.
+
+*Its name is already correct.* PENPHIN is penguin + dolphin, which is precisely the Gen 1 convention the starters are currently missing — a portmanteau of whole words that sounds like a creature.
+
+#### Are MUSAI, ROVER and Penphin the three legendaries?
+
+**Recommendation: no, and scattering them is the point.** They read as a trio because they are one in the world outside the game, but each earns more in a different slot.
+
+- **ROVER as the Reinforcement starter** is the strongest single fit in this section. A dog is the canonical image of learning by reward, and the paradigm is *inconsistent with the highest ceiling*, which is also a dog.
+- **MUSAI as Unsupervised** — generative, finds its own structure, confusing early and excellent late.
+- **Penphin as the trade evolution**, because that placement is a *mechanic* and legendaries are only rare encounters.
+
+**The legendary slots would waste them.** Vanilla's birds carry almost no story; they are trophies caught near the end and rarely used. A starter is raised for forty hours. If these three systems matter to the project, the starter and trade slots honour them and the bird slots do not.
+
+*Which leaves the three bird slots genuinely open* — and they should be filled by whatever the map needs, not by what is available.
 
 ### 8.3 Known bottleneck
 
@@ -1472,6 +1541,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **Starter types implemented** — CONTENT/VECTOR/GROWTH with the secondary at final stage; lab dialogue moved with them. **Movesets are the blocker**: FLYING has 6 moves in all of Gen 1, so VECTOR may need its own CONSENSUS (8.2)
+- **Penphin is a trade evolution, not a starter** — the dual mind requires two minds, so it cannot be obtained alone; recovered from conversation after going unrecorded from v1.7 to v3.8 (8.2)
+- **MUSAI as Unsupervised, ROVER as Reinforcement**; **not** legendaries — a starter is raised for forty hours and a legendary is a trophy (8.2)
 - **The foxes stop at the Clears** — ears, tail and *value*, nobody else converted; the cast stays as it is because at 16×16 the animal vocabulary is three pixels wide and a full conversion costs ~100 sprite sets for almost no signal (8.5)
 - **`EnemyText` was the third `Enemy`** — the prefix behind every `<USER>`/`<TARGET>`, missed by the first REMOTE pass. Now `Remote @`, which **caps species names at 9 characters** (1.4)
 - **The text ceiling is 18, not 19** — the earlier figure counted `<COLON>` as seven characters. Vanilla's four 19-char lines overwrite the right border (1.2)
@@ -1544,6 +1616,9 @@ Kept here because the reasoning is worth more than the outcome.
 - Ty is absent from the endgame by design. Does that read as a statement or as a loose thread?
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
+- **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
+- The supervised starter slot is **yours to pick** (8.2)
+- `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
 - Nineteen `type word + DAEMON` dialogue lines still name vanilla types, nearly all in gyms — held until 5 settles the Benchmark leaders (1.2)
