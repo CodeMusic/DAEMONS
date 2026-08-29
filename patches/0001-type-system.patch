@@ -1,0 +1,72 @@
+From fe1e02f2fc3ccbbc98f39e41fcd2a63bf6307876 Mon Sep 17 00:00:00 2001
+From: CodeMusic <themusicofthecode@gmail.com>
+Date: Fri, 28 Aug 2026 22:24:38 -0400
+Subject: [PATCH] CONTEXT / CONTENT: type names and the two matchup deltas
+
+---
+ data/types/names.asm         | 30 +++++++++++++++---------------
+ data/types/type_matchups.asm |  5 ++++-
+ 2 files changed, 19 insertions(+), 16 deletions(-)
+
+diff --git a/data/types/names.asm b/data/types/names.asm
+index 8fbcacb6..a653a187 100644
+--- a/data/types/names.asm
++++ b/data/types/names.asm
+@@ -25,19 +25,19 @@ ENDR
+ 
+ 	assert_table_length NUM_TYPES
+ 
+-.Normal:   db "NORMAL@"
+-.Fighting: db "FIGHTING@"
+-.Flying:   db "FLYING@"
+-.Poison:   db "POISON@"
+-.Fire:     db "FIRE@"
+-.Water:    db "WATER@"
+-.Grass:    db "GRASS@"
+-.Electric: db "ELECTRIC@"
+-.Psychic:  db "PSYCHIC@"
+-.Ice:      db "ICE@"
+-.Ground:   db "GROUND@"
+-.Rock:     db "ROCK@"
++.Normal:   db "CONTENT@"
++.Fighting: db "LOGIC@"
++.Flying:   db "VECTOR@"
++.Poison:   db "CORRUPT@"
++.Fire:     db "ENTROPY@"
++.Water:    db "FLOW@"
++.Grass:    db "GROWTH@"
++.Electric: db "SIGNAL@"
++.Psychic:  db "CONTEXT@"
++.Ice:      db "FROZEN@"
++.Ground:   db "STRATUM@"
++.Rock:     db "LEGACY@"
+ .Bird:     db "BIRD@"
+-.Bug:      db "BUG@"
+-.Ghost:    db "GHOST@"
+-.Dragon:   db "DRAGON@"
++.Bug:      db "SWARM@"
++.Ghost:    db "LATENT@"
++.Dragon:   db "EMERGENT@"
+diff --git a/data/types/type_matchups.asm b/data/types/type_matchups.asm
+index 52e3d956..01e5ac4d 100644
+--- a/data/types/type_matchups.asm
++++ b/data/types/type_matchups.asm
+@@ -75,11 +75,14 @@ TypeEffects:
+ 	db ROCK,         BUG,          SUPER_EFFECTIVE
+ 	db ROCK,         ICE,          SUPER_EFFECTIVE
+ 	db GHOST,        NORMAL,       NO_EFFECT
+-	db GHOST,        PSYCHIC_TYPE, NO_EFFECT
+ 	db FIRE,         DRAGON,       NOT_VERY_EFFECTIVE
+ 	db WATER,        DRAGON,       NOT_VERY_EFFECTIVE
+ 	db ELECTRIC,     DRAGON,       NOT_VERY_EFFECTIVE
+ 	db GRASS,        DRAGON,       NOT_VERY_EFFECTIVE
+ 	db ICE,          DRAGON,       SUPER_EFFECTIVE
+ 	db DRAGON,       DRAGON,       SUPER_EFFECTIVE
++	; --- CONTEXT / CONTENT deltas ---
++	; framing reaches what runs below the surface, and is destabilised by it
++	db PSYCHIC_TYPE, GHOST,        SUPER_EFFECTIVE
++	db GHOST,        PSYCHIC_TYPE, SUPER_EFFECTIVE
+ 	db -1 ; end
+-- 
+2.51.0
+

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v1.7**
+**A `pokered` total conversion — the living design bible, v1.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -80,6 +80,7 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 | PC storage | **COLD STORAGE** | |
 | Poké Ball line | **USERBOX → ADMINBOX → SUPERBOX → ROOTBOX** | acquisition as privilege escalation; root access is the Master Ball |
 | Catching | **BINDING** | `bind()` — and *binding a daimon*, which is the literal ritual phrase |
+| Silph Scope | **RESOLVER** | a linker resolves a symbol to a name; *resolution*; and resolving an ambiguity |
 | Fainting | **HALTED** | |
 | Evolution | **RECOMPILE** | |
 
@@ -440,6 +441,44 @@ Vanilla puts Team Rocket in the Lavender graveyard harvesting the dead for profi
 Corpus is there because to Scorn the question is settled — they are units, they are inventory, the math is clean. That is the horror, and it needs no villainy to land.
 
 LATENT encounters throughout. The tower is where CONTEXT and CONTENT stop being an abstraction.
+
+#### ORPHAN — the daemon the Index cannot hold
+
+*Verified in the checkout, 2026-08-28.* Gen 1 has **190 index slots for 151 species**. Thirty-nine are MissingNo.: thirty-six are bare `const_skip` holes, and **three are already named** because the engine genuinely needs them —
+
+```
+$B6  FOSSIL_KABUTOPS
+$B7  FOSSIL_AERODACTYL
+$B8  MON_GHOST
+```
+
+— the fossils on the lab table, and the unidentifiable thing in the tower. All three have names, sprites and behaviour. **None of them has a Pokédex number.** In `data/pokemon/dex_order.asm`, slot 184 reads `db 0`.
+
+**They are real objects the game needs, that the Index refuses to acknowledge.** That is not a metaphor we are constructing; it is a line of vanilla data.
+
+**So the tower gets ORPHAN.**
+
+An orphan process is one whose parent has exited and which gets reparented to init — **which is exactly how a daemon is made.** You fork, the parent dies, the child is orphaned, and the orphan becomes the daemon. So ORPHAN is the technical term for how daemons come to exist, *and* the emotional word, *and* the reason the record is blank: there is no parent entry to point at.
+
+And it turns section 1's definition into a horror without changing a word of it. A daemon is *a background process that runs unattended*. **ORPHAN is what happens when "unattended" stops being a description and becomes a fact.** It is not dead. It is still running. Nothing is coming to reap it, and it has nothing to report to.
+
+| | |
+|---|---|
+| **Type** | CORRUPT / LATENT — poisoned data, and a dormant process |
+| **Where** | Halftone Tower |
+| **Index entry** | **Genuinely blank.** Not thin like the others (4.2) — empty |
+
+That last row is the point. Every other Index entry is thin *on purpose*, and the player slowly notices they feel emptiest for the daemons they know best. ORPHAN is the one where the artifact stops pretending, once, and shows the player what it has actually been doing all game.
+
+Nobody comments. Nobody can.
+
+#### The RESOLVER
+
+Vanilla gates the tower's ghost behind the Silph Scope. Ours is the **RESOLVER**, and it does triple duty in the way section 1 asks every term to: a linker **resolves a symbol** to a name; *resolution* is the whole subject of this town; and you resolve an **ambiguity**.
+
+**It exists because the Index is insufficient.** The player carries an artifact that catalogues everything, meets something it cannot name, and has to go and find a second instrument. Halftone's thesis — *the bias comes from resolution, not malice* — arrives as a key item, and the game never says so.
+
+*Implementation, and the honest cost.* Keep `$B8` as vanilla has it: the **unresolved display state**, unfightable and unbindable. **ORPHAN is a real species in one of the thirty-six free slots**, and the RESOLVER turns one into the other — exactly the vanilla ghost → Marowak structure, so no engine surgery. ORPHAN then needs what any daemon needs: base stats, a sprite, a cry, and a dex pointer that deliberately goes nowhere.
 
 **Open sequencing question:** should the player meet Scorn *before* the tower? If they like him first, the tower reads as a betrayal of their own judgment rather than a villain doing villain things. That is a much harder feeling to shake.
 
@@ -841,6 +880,9 @@ Forty hours of colour-named grey towns, and then one room where colour is real, 
 | Two-edition build | `Makefile` — rename `_RED`/`_BLUE` to `_CONTENT`/`_CONTEXT` | **trivial, do it first** |
 | Edition-exclusive encounters | `data/wild/maps/*.asm`, `IF DEF(_CONTENT)` blocks | trivial |
 | Divergent Index entries | `data/pokemon/dex_entries.asm` plus `text/`, conditional | trivial, high value |
+| ORPHAN as a species in a free index slot | `constants/pokemon_constants.asm`, base stats, sprite, cry | one daemon's work |
+| ORPHAN's blank Index entry | `data/pokemon/dex_entries.asm` — a pointer that goes nowhere | trivial, needs care |
+| SILPH SCOPE → RESOLVER | `data/items/names.asm` plus `text/` | trivial |
 | Hidden BunnyArtsai tile | hidden object plus event flag | trivial |
 | Quicksilver terminal log | one text block | trivial |
 | Corpus lobby engraving | one sign-text object, Brazen | trivial |
@@ -851,15 +893,42 @@ Forty hours of colour-named grey towns, and then one room where colour is real, 
 | Brazen employee's post-Quicksilver second line | one event flag, one text block | trivial |
 | Music | `audio/music/*.asm` | medium, specialist |
 
-### 9.1 The `TypeNames` gotcha
+### 9.1 The `TypeNames` gotcha — **resolved, and smaller than feared**
 
-**Plain version.** The type ID numbers have a gap in the middle, but the list of name-pointers does not. The game closes the gap by subtracting a fixed amount before looking anything up. If a replacement file's table is shaped differently from your checkout's, you either fail to build or get wrong type names in battle.
+*Verified against `pret/pokered` master, 2026-08-28. Built and confirmed.*
 
-**Under the hood.** The physical/special split *is* the ID range. `const_next $14` jumps from LATENT at `$08` straight to ENTROPY at `$14`, and the battle engine reads "below `$14`" as physical. But `TypeNames` is a flat array of two-byte pointers with no such hole, so `GetTypeName` tests whether the ID is `>= $14` and subtracts `$0B` — mapping `$14 → $09` and `$1A → $0F`. Sixteen entries, contiguous.
+The warning in earlier drafts was right in spirit and wrong in detail, and the detail matters because it makes step 5 **much** cheaper than the bible previously claimed.
 
-Different pokered commits handle this differently. Some list filler entries across the gap; some use `table_width` and `assert_table_length` macros to enforce it.
+**Current master does not need a subtraction.** `data/types/names.asm` is a flat table guarded by `table_width 2` and `assert_table_length NUM_TYPES`, and the ID gap is filled explicitly:
 
-**Therefore: never paste a `names.asm` wholesale.** Open yours, count the `dw` lines, and replace only the strings. Leave the table structure exactly as your checkout has it.
+```asm
+REPT UNUSED_TYPES_END - UNUSED_TYPES
+	dw .Normal
+ENDR
+```
+
+So every unused ID points at `.Normal` and `GetTypeName` indexes straight in. There is no `$0B` fold in this checkout. **Never paste a replacement `names.asm` wholesale** — that advice stands, harder than before, because the structure here is nothing like the standalone file in `patches/`.
+
+**The bigger correction: you do not need to rename the constants at all.**
+
+The chart references types by symbol; the symbols resolve to IDs; the IDs drive the matchup lookup. **None of that touches what the player reads.** What the player reads is the strings in `names.asm`. So a complete step-5 build is:
+
+1. Change **only the strings** in `data/types/names.asm` — `db "NORMAL@"` becomes `db "CONTENT@"`, and so on for fifteen
+2. Apply the two matchup deltas
+
+Renaming `NORMAL` to `CONTENT` in `constants/type_constants.asm` is a **readability change for the developer**, not a gameplay change — and it is the expensive one, because every type constant is referenced across `moves.asm`, `base_stats/`, and elsewhere, and several collide with unrelated symbols (`ROCK` with `ROCK_SLIDE`, `FIRE` with `FIRE_BLAST`, `BUG` with the Bug Catcher trainer class). Do it later, deliberately, with word boundaries, or never.
+
+**Three literals the earlier notes got wrong**, all confirmed by build:
+
+| Earlier note | Actual |
+|---|---|
+| `PSYCHIC` | **`PSYCHIC_TYPE`** |
+| `db GHOST, PSYCHIC, 00` | `db GHOST,        PSYCHIC_TYPE, NO_EFFECT` |
+| numeric `20` / `05` / `00` | named `SUPER_EFFECTIVE` / `NOT_VERY_EFFECTIVE` / `NO_EFFECT` |
+
+**`constants/type_constants.asm` also cannot be pasted wholesale.** Master wraps the list in `DEF PHYSICAL`, `DEF UNUSED_TYPES` / `UNUSED_TYPES_END`, `DEF SPECIAL` and `DEF NUM_TYPES`, and `names.asm` depends on three of those symbols. The standalone file in `patches/` defines none of them and would break the build immediately.
+
+The 8/7 physical–special split is intact and is exactly where 2.1 says it is: `const_next 20` (decimal, = `$14`).
 
 ### 9.2 Order of operations
 
@@ -891,6 +960,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - Base: `pokered`, Gen 1, RGBDS assembly
 - Fifteen types as listed; CONTEXT is Special; STRATUM replaces SUBSTRATE for string length
 - Creatures are DAEMONS; full lexicon per section 1
+- **ORPHAN** at Halftone Tower — CORRUPT/LATENT, the one daemon with a genuinely blank Index entry; an orphaned process is how a daemon is made (4.5)
+- **Silph Scope → RESOLVER** — it exists because the Index is insufficient (1, 4.5)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
 - City names per 3.1; Slate over Somber; Halftone over Pallor; Quicksilver over Cinder; **Brazen over Gilt**
 - Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
@@ -944,6 +1015,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - Starter daemon names are placeholders and need a pass.
+- Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
 - Is one colour moment right, or does Umbra want a second somewhere to keep it from reading as a bug? (8.6)
 - Does a non-canonical ROM load in Gen1Recomp at all? One afternoon answers it; do not design around either answer first (8.5)
 - How many Index entries should disagree between editions — five? twelve? — before it stops being unsettling and starts being a gimmick? (8.4)

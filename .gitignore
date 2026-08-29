@@ -1,2 +1,5 @@
 .DS_Store
 **/.DS_Store
+
+# engine/ -> ../pokered-daemons (the fork). Sibling repo, never vendored.
+engine

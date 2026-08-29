@@ -77,6 +77,47 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   people insist emotions are coloured fluids and are wrong
 - Easier than full colorization: palette one map, greyscale ramp elsewhere
 
+### v1.7 - the monochrome question
+- Add 8.6. Greyscale is the design, not a limitation
+- Colorizing Halftone destroys Halftone - a load-bearing wall
+- Colour appears exactly once, at the Review Board
+
+### v1.8 - step 5 shipped
+- **A byte-matching vanilla build was verified, then patched, and it runs.**
+  `engine/pokered.gbc` carries the fifteen type names and the two matchup deltas
+- Correct 9.1: current master fills the ID gap with a `REPT` block, so there is
+  no `$0B` fold. And the constants do not need renaming at all - only the
+  strings in `data/types/names.asm` affect what the player reads
+- Literals corrected by build: `PSYCHIC_TYPE`, not `PSYCHIC`; effects are named
+  constants, not numbers
+- Reclassify both files in `patches/` as reference-only; either would break the
+  build if pasted
+- Add `patches/0001-type-system.patch`, applied and building
+
+### v1.9 - ORPHAN, and the RESOLVER
+- Verified: 190 index slots, 151 species, **39 MissingNo.** - 36 bare
+  `const_skip` holes and 3 already named (`FOSSIL_KABUTOPS`,
+  `FOSSIL_AERODACTYL`, `MON_GHOST`), none with a dex number
+- Add **ORPHAN** at Halftone Tower. CORRUPT/LATENT. The one daemon with a
+  genuinely blank Index entry. An orphaned process is how a daemon is made,
+  so the name is the mechanism
+- Add the **RESOLVER** (Silph Scope): a linker resolves a symbol to a name;
+  resolution is the town's subject. It exists because the Index is insufficient
+- Keep `$B8` as the unresolved display state; ORPHAN is a real species in a free
+  slot, so no engine surgery
+
+---
+
+## Infrastructure
+
+- `engine/` symlinks to `../pokered`, a fork kept separate because
+  `pokered/gfx/` holds Nintendo-derived sprites and this repo promises not to
+  distribute copyrighted material. Gitignored
+- `CLAUDE.md` is the shared contract: read-first order, six invariants, the
+  spoiler list, and the procedure for changing the design. One session root
+  means one memory store and no design/implementation desync
+- Top-level `Makefile` shim: `make red`, `make blue`, `make vanilla-check`
+
 ---
 
 ## Research

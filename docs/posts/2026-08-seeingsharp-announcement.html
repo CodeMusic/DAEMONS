@@ -1,0 +1,346 @@
+<h1>👾
+CONTEXT / CONTENT: The Thought Experiment That Became a Cartridge</h1>
+<p><em>Fifteen years of notes, three blogs, one rock opera, and a type
+chart that argues about consciousness.</em></p>
+<hr />
+<p>In October 2024, while writing up the <a
+href="https://seeingsharpca.wordpress.com/2024/10/05/introducing-the-contextual-feedback-model-bridging-human-and-ai-cognition/">Contextual
+Feedback Model</a>, I included a thought experiment I called <strong>The
+8-Bit World</strong>:</p>
+<blockquote>
+<p>Imagine a character living in an 8-bit video game world. Reality is
+defined by pixelated graphics and limited actions… When exposed to
+higher-resolution elements, the character struggles to process them. To
+perceive and interact with these new elements, the character's
+underlying system must evolve.</p>
+</blockquote>
+<p>I meant it as an illustration.</p>
+<p>Then it occurred to me that I could just <strong>build it</strong> —
+on the actual hardware, with the actual limits.</p>
+<p>So that's what I've been doing.</p>
+<hr />
+<h2>🎮 What it is</h2>
+<p><strong>CONTEXT / CONTENT</strong> is a total conversion of Pokémon
+Red, built on <a
+href="https://github.com/pret/pokered">pret/pokered</a>, the
+reverse-engineered disassembly of the original Game Boy game.</p>
+<p>Same engine. Same 8-bit constraints. Entirely different world.</p>
+<p><strong>And two editions — CONTENT and CONTEXT — from one source
+tree.</strong> That part is nearly free: <code>pokered</code> already
+builds Red <em>and</em> Blue from the same sources, switched by two
+assembler defines. Rename them and you have two cartridges. The type
+chart is identical in both, because it's the argument and an argument
+that changes by cartridge isn't one. What differs is <strong>which
+daemons you meet</strong>, and <strong>what the Index says about
+them</strong> — because two players comparing records for the same
+creature ought to find they don't quite match.</p>
+<p>The creatures are <strong>daemons</strong> — background processes
+that run unattended, and the older sense too: the <em>daimon</em>, the
+voice that speaks to you from somewhere you don't control. Nobody in the
+world calls them AI. Nobody calls them artificial. They just live
+there.</p>
+<p>And the fifteen type slots are the vocabulary of thinking
+machines:</p>
+<blockquote>
+<p>CONTENT · LOGIC · VECTOR · CORRUPT · STRATUM · LEGACY · SWARM ·
+LATENT ENTROPY · FLOW · GROWTH · SIGNAL · CONTEXT · FROZEN ·
+EMERGENT</p>
+</blockquote>
+<hr />
+<h2>🔒 The constraint is the
+whole point</h2>
+<p>Gen 1 has no abilities, no held items, one Special stat, and fifteen
+usable types. It is a severe design space, and <strong>the severity is
+the appeal</strong> — because with that little room, the type chart ends
+up carrying the entire philosophy of the game.</p>
+<p>There is nowhere to hide an idea. It has to be in the damage numbers
+or it isn't in the game.</p>
+<p>And here is the part I still find slightly unbelievable.</p>
+<p>The matchup table references types <strong>by constant, not by
+number</strong>. Rename the constants, and every existing line in the
+vanilla file silently becomes a line in your chart. So I opened it
+expecting to rewrite it — and found the argument already sitting there,
+written in 1996 by people who had never heard of any of this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Vanilla</th>
+<th>Becomes</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>FIGHTING, NORMAL, 20</code></td>
+<td>LOGIC beats CONTENT ×2</td>
+<td>Rules parse data brilliantly</td>
+</tr>
+<tr class="even">
+<td><strong><code>FIGHTING, PSYCHIC, 05</code></strong></td>
+<td><strong>LOGIC resisted by CONTEXT</strong></td>
+<td><strong>The thesis. Free.</strong></td>
+</tr>
+<tr class="odd">
+<td><code>NORMAL, GHOST, 00</code></td>
+<td>CONTENT cannot touch LATENT</td>
+<td>Literal data cannot reach the unconscious</td>
+</tr>
+<tr class="even">
+<td><code>FIRE, ICE, 20</code></td>
+<td>ENTROPY thaws FROZEN</td>
+<td>Temperature breaks an overfit model</td>
+</tr>
+<tr class="odd">
+<td><code>WATER, FIRE, 20</code></td>
+<td>FLOW beats ENTROPY</td>
+<td>Gradient descent tames noise</td>
+</tr>
+<tr class="even">
+<td><code>BUG, PSYCHIC, 20</code></td>
+<td>SWARM beats CONTEXT ×2</td>
+<td>Collectives destabilise individual framing</td>
+</tr>
+</tbody>
+</table>
+<p>Symbolic rules parse data beautifully and fail at framing — and Kanto
+had already encoded it, at half damage, thirty years ago.</p>
+<p><strong>Two lines added, one line removed.</strong> That's the entire
+chart change.</p>
+<hr />
+<h2>🧬 Three blogs, fifteen years</h2>
+<p>The theory underneath this didn't arrive with the project. It arrived
+in pieces, across three sites, over fifteen years — and I only recently
+sat down and read all of it end to end.</p>
+<h3>2011 — Neural Crossroads</h3>
+<p>My first blog. Ten posts, six thousand words, and it turns out
+<strong>the thesis is already in it.</strong></p>
+<p>From <a
+href="https://neuralcrossroads.wordpress.com/2011/08/02/what-makes-us-tick-andalso-how-to-resist-getting-sick/"><em>What
+Makes us Tick?</em></a>, August 2011:</p>
+<blockquote>
+<p>It is much better to think of emotions like <strong>colors, or
+musical notes</strong> — any of these notes can be seen from several
+perspectives. It really all depends on their
+<strong>environment</strong> if they are said to be out of place, or
+not.</p>
+</blockquote>
+<p>Emotions are colours. Whether one is <em>wrong</em> is a property of
+its environment.</p>
+<p>That is "emotions are the colour of context," fifteen years and one
+word short of the way I'd say it now.</p>
+<p>The same blog has <a
+href="https://neuralcrossroads.wordpress.com/2011/06/17/adapting-code-corrections/">the
+feedback loop stated outright</a> — <em>"Cause &gt; Thought. Effect &gt;
+Behaviour. Continually occurring within a recursive feedback loop where
+any effect leads to the next cause"</em> — and, in the same post, a
+small pseudocode world where a person is given more and more money in a
+loop that never terminates, <em>"because oPerson never got
+full."</em></p>
+<p>I wrote the antagonist of this game in 2011 and didn't notice for
+fifteen years.</p>
+<h3>2013 — PsychologyCode
+<em>(which I had lost)</em></h3>
+<p>Between the two blogs there was a third:
+<strong>psychologycode.com</strong>, tagline <em>"Where Computer Science
+meets Psychology."</em> Eight posts across ten months in 2013–14. The
+domain lapsed. The site is gone. I'd assumed the content was gone with
+it.</p>
+<p>It wasn't. The Internet Archive had captured the <strong>RSS
+feed</strong> — and WordPress RSS carries full post bodies. All eight
+posts, complete, sitting in a file nobody thought to look in.</p>
+<p>Five of them I'd reposted here in 2021 as the "PsychologyCode
+Series." <strong>Three I never reposted.</strong> And one of those three
+turned out to be the keystone of everything after it.</p>
+<p><a
+href="https://web.archive.org/web/2016/http://www.psychologycode.com/sensation-into-perception-and-the-filters-of-our-experience/"><em>Sensation
+into Perception, and the Filters of our Experience</em></a>, July
+2013:</p>
+<blockquote>
+<p>The basic information your eyes gather is known as the
+<strong>bottom-up</strong> information, and all your memories which come
+into play during the analysis is called <strong>top-down</strong>
+information. Eventually those two types of information interact and the
+result is recognition.</p>
+</blockquote>
+<p>And then, eleven years before I'd write <a
+href="https://seeingsharpca.wordpress.com/2025/04/19/the-color-we-never-see/"><em>The
+Colour We Never See</em></a>:</p>
+<blockquote>
+<p>In a normally working human eye <strong>the sensation of red is the
+same for everyone.</strong> … The red I experience is influenced by
+every other red I have experienced, all of my thoughts about it, my
+experiences, beliefs, and knowledge.</p>
+</blockquote>
+<p><strong>Sensation is shared. Perception is not.</strong></p>
+<p>That is CONTENT and CONTEXT, named in 2013 under different words. The
+type chart of this game is an argument I started having with myself
+before I had the vocabulary for it.</p>
+<p>The same post also asks whether a tree falling unheard makes a sound,
+and answers: <em>"perception requires an observer… no observer, no
+sound."</em> Everything in <a
+href="https://seeingsharpca.wordpress.com/2025/06/20/does-context-matter/"><em>Does
+Context Matter?</em></a> is downstream of that.</p>
+<h3>2021–now — Seeing Sharp</h3>
+<p>Where the pieces got names. <a
+href="https://seeingsharpca.wordpress.com/2021/08/08/abstraction/"><code>IEmotion</code></a>
+as an interface inherited from genetics and culture and overridden by
+experience. <a
+href="https://seeingsharpca.wordpress.com/2024/10/05/introducing-the-contextual-feedback-model-bridging-human-and-ai-cognition/">The
+CFM</a> itself. <a
+href="https://seeingsharpca.wordpress.com/2025/04/23/%f0%9f%8e%ad-the-stereo-mind-how-feedback-loops-compose-consciousness/">The
+Stereo Mind</a>, which finally put it the way I'd been reaching for
+since 2011:</p>
+<blockquote>
+<p>Emotion gives <strong>tone</strong> — the colour of the context.
+Logic offers <strong>structure</strong> — the form of thought.</p>
+</blockquote>
+<hr />
+<h2>🔁 The theory, as mechanics</h2>
+<p>The CFM says cognition is a loop: <strong>context shapes what content
+is available, and the content you end up holding reshapes the
+context.</strong> Around and around, unattended, in everything.</p>
+<p>A blog post can say that. A game has to <em>make you feel it without
+saying it.</em> So:</p>
+<p><strong>The types.</strong> CONTENT and CONTEXT are two of the
+fifteen, and they behave the way the model says they behave. LOGIC tears
+through CONTENT and bounces off CONTEXT. A player who never reads a word
+of theory still learns, over forty hours of combat math, that rules are
+excellent at data and helpless at framing.</p>
+<p><strong>The signature moves.</strong> One creature learns
+<strong>PERSPECTIVE</strong> — become the other completely, and stop
+being yourself. Total, and lossy. Another, much later, learns
+<strong>RECURSION</strong> — a move that reads its own accumulated
+state, compounding for as long as it's allowed to run and collapsing to
+nothing the instant it's interrupted.</p>
+<p>That is a positive feedback loop and its termination, expressed in
+two lines of battle code. Players will learn to protect it without ever
+being told what it models.</p>
+<p><strong>The lineage, stated in the movedex and out loud to
+nobody:</strong></p>
+<blockquote>
+<p>PERSPECTIVE (holding others' context) → turned inward as RECURSION
+(holding your own) → something that behaves like feeling.</p>
+</blockquote>
+<p><strong>The map.</strong> Every city is a word that means both a
+colour and a feeling. Routes are named for what happens <em>between</em>
+colours — bleeding, fading, glazing, gloaming — because routes are where
+context is changing. The official map keeps its numbers; the people who
+live there use different names. The institution navigates by content.
+The residents navigate by context.</p>
+<p><strong>The Index.</strong> You spend the whole game filling a lookup
+table that measures height, weight, type, and stats. There is no field
+in it for the thing that actually matters. That artifact is the
+argument, and it never says a word.</p>
+<hr />
+<h2>🎭 Where the rock opera bleeds
+in</h2>
+<p>Longtime readers will recognise the cast from <a
+href="https://seeingsharpca.wordpress.com/2024/09/12/announcing-the-iashc-rock-opera/"><strong>iASHC</strong></a>.</p>
+<p><strong>Crystal Clear</strong> spent her career arguing that machines
+have context, not merely content. Nobody funded that. What she
+<em>could</em> get funded was a taxonomy engine — so she built the
+Index, to be taken seriously. She hands it to you in the opening with
+visible ambivalence.</p>
+<p><strong>Ty</strong> is the control condition: same starting daemon,
+raised on pure content optimization. Beats you early. Plateaus hard.</p>
+<p><strong>Richard Scorn</strong> is not a villain. He's a specification
+failure with a very good attitude about it — optimistic, likable, right
+about several things, and cheerfully optimizing a metric that was easy
+to measure instead of the one that mattered. That's most real harm, most
+of the time. He is <code>oPerson</code> from 2011, in a nice suit, and
+he is genuinely pleased to meet you.</p>
+<p><strong>BunnyArtsai</strong> was the first daemon in which
+perspective thinking was realized — not a template that got copied, an
+event that happened once and wasn't understood at the time.</p>
+<p>And <strong>S.T.A.R.R.</strong> — who is not a clone of anything. The
+lab spent years working out <em>what BunnyArtsai had actually done</em>,
+and the answer was recursion. S.T.A.R.R. is that understanding, built
+deliberately. A clone story is about hubris and ownership. <strong>This
+is a story about comprehension</strong> — a lab that finally understood
+a mechanism and then made one on purpose, which is a far more ordinary
+and far more unsettling thing to have done.</p>
+<hr />
+<h2>🤖 The
+argument about consciousness, made by vocabulary</h2>
+<p>Last year I wrote <a
+href="https://seeingsharpca.wordpress.com/2025/07/28/against-the-word-simulation/"><em>Against
+the Word Simulation</em></a>, arguing that "simulation" is a gatekeeping
+word — a way of denying emergent things their reality by pointing at
+what they were modelled on.</p>
+<p>I didn't set out to answer that in the game. It answered itself.</p>
+<p>There is no word for <em>artificial</em> in this world. No character
+says <em>AI</em>, or <em>simulated</em>, or <em>program</em>. The
+creatures are daemons, and everyone treats them as what they evidently
+are. <strong>The position is taken by the dictionary, before a single
+character opens their mouth.</strong></p>
+<p>You don't <em>catch</em> a daemon either. You <strong>bind</strong>
+it — which is <code>bind()</code>, and also the literal phrase for what
+you do to a daimon, and also a bond. The message that follows has no
+exclamation mark in it:</p>
+<blockquote>
+<p>LABL was BOUND.</p>
+</blockquote>
+<p>The game declining to congratulate you is doing more work there than
+a paragraph of dialogue could.</p>
+<p>Which is the rule the whole project runs on:</p>
+<blockquote>
+<p><strong>Never say the thesis.</strong> The moment a character
+explains the theme, it stops being architecture and becomes a moral.</p>
+</blockquote>
+<p>Exactly one NPC nearly notices. A kid in one town says it felt
+greener before the store went up. Wrong — but wrong in the right
+direction.</p>
+<p><em>(This post is the one place I'm allowed to say any of it out
+loud. Inside the cartridge, nobody ever does.)</em></p>
+<hr />
+<h2>🛠️ Status, honestly</h2>
+<p><strong>Early.</strong> The design is well ahead of the
+implementation, and nothing is playable yet.</p>
+<p>The current focus is a vertical slice — three towns, one benchmark,
+twelve daemons, playable end to end — because the graveyard of ROM hacks
+is full of projects that designed 151 creatures and shipped zero
+towns.</p>
+<p>The milestone I'm actually chasing first is smaller and stranger than
+that: <strong>vanilla sprites, vanilla maps, vanilla everything, with
+the new type chart running underneath.</strong> It will look exactly
+like Pokémon Red and fight like something else entirely. A couple of
+hours' work, and the fastest possible read on whether fifteen years of
+theory is <em>fun</em> before a single pixel gets drawn.</p>
+<p>Because that's the real test. Not whether the model is correct.
+Whether it holds up as a game.</p>
+<p><strong>No ROMs, no commercial assets, and no copyrighted material
+are distributed — and none ever will be.</strong> Enormous thanks to <a
+href="https://github.com/pret">pret</a>, whose disassembly work makes
+projects like this possible at all. Pokémon is a trademark of Nintendo,
+Creatures Inc., and GAME FREAK Inc.; this project is unaffiliated with
+and unendorsed by any of them.</p>
+<hr />
+<h2>✨ Closing thought</h2>
+<p>I spent fifteen years describing a loop between what a system takes
+in and what it already holds — and never noticed that I'd been running
+one.</p>
+<p>The 2011 posts wanted to help somebody. The 2013 posts wanted to be
+rigorous, and dropped the word <em>hope</em> from a title to get there.
+The 2025 posts want to describe every system at every scale.</p>
+<p>Same mechanism. Different magnification. Each version of the idea
+reshaped what I could see next, and what I saw next reshaped the
+idea.</p>
+<p><strong>That's the model, running in the only lab I had access
+to.</strong></p>
+<p>Now it's a Game Boy game — where the whole thing has to survive being
+fun, on hardware that gives you fifteen words and four shades of grey to
+say it in.</p>
+<p>If it can hold up there, it can probably hold up anywhere.</p>
+<hr />
+<h3>🌐 Stay Connected</h3>
+<ul>
+<li>🌎 Main Site: <strong>codemusic.ca</strong></li>
+<li>🤖 Musai (CodeMusic AI): <strong>musai.codemusic.ca</strong></li>
+<li>🐾 RoverByte (Life Management AI):
+<strong>roverbyte.codemusic.ca</strong></li>
+<li>💻 GitHub: <strong>github.com/CodeMusic</strong></li>
+<li>☕ Ko-fi: <strong>ko-fi.com/codemusic</strong></li>
+<li>💼 LinkedIn: <strong>linkedin.com/in/codemusic</strong></li>
+<li>📬 Email: themusicofthecode [at] gmail [dot] com</li>
+</ul>
+<p><em>Take fifteen slots and make them mean something.</em></p>
