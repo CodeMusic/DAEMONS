@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v1.9**
+**A `pokered` total conversion — the living design bible, v2.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -78,6 +78,8 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 | Pokémon Center | **CHECKPOINT** | restore from a saved training state |
 | Poké Mart | **THE REPO** | |
 | PC storage | **COLD STORAGE** | |
+| PROF.OAK | **CRYSTAL** / **CRYSTAL CLEAR** | **no title.** See below |
+| OAK's PARCEL | **PACKAGE** | a repo distributes packages. Also forced — `CRYSTAL's PARCEL` is 16 and items cap at 12 |
 | Poké Ball line | **USERBOX → ADMINBOX → SUPERBOX → ROOTBOX** | acquisition as privilege escalation; root access is the Master Ball |
 | Catching | **BINDING** | `bind()` — and *binding a daimon*, which is the literal ritual phrase |
 | Silph Scope | **RESOLVER** | a linker resolves a symbol to a name; *resolution*; and resolving an ambiguity |
@@ -86,7 +88,42 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 
 Box names are tunable — the *privilege ladder* is the idea worth keeping. Success rate rising with permission level is thematically exact.
 
-### 1.1 On BINDING
+### 1.1 On the missing title
+
+*Implemented 2026-08-29. Both editions build; no OAK remains in any text file.*
+
+**Crystal has no title, and the absence is the point.**
+
+4.1 says she spent her career arguing that machines have context, nobody funded it, and **she built the Index in order to be taken seriously.** Then 4.10 has a fitness-for-work procedure remove her from her own lab. A woman who had to build a taxonomy engine to be credible, and was then processed out of the building, does not get a PROF.
+
+Every other authority in the game has a role — BENCHMARK leaders, the REVIEW BOARD, CORPUS. She is just her name. And it lands because vanilla players *expect* the title: the professor-slot character has no professor, and nobody remarks on it.
+
+**The vanilla text split perfectly for it**, which is how you know it is the right call:
+
+| Vanilla | Ours | Register |
+|---|---|---|
+| `OAK:` — 19× | **`CRYSTAL:`** | dialogue prefix. People know her |
+| `PROF.OAK` — 8× | **`CRYSTAL CLEAR`** | third person. The full name |
+
+First name when spoken to, full name when spoken about, and **no rank anywhere.**
+
+**One line had to be rewritten rather than renamed.** The intro speech is the single place the title is claimed aloud:
+
+> *vanilla:* My name is OAK! People call me the #MON PROF!
+
+There is no honest rename of that, because the second sentence *is* the rank. It became:
+
+> My name is CRYSTAL CLEAR! I study #MON.
+
+Flat, factual, and it claims nothing. Placeholder-grade wording that should get a proper pass at step 8 — but the shape is correct: **where Oak asserts a title, she states an occupation.**
+
+**Why the intro still says #MON and not DAEMONS.** `#` is a control character that expands to *POKé*, and the species word has not been renamed yet — that is a bulk pass over the charmap and every string (9.2, step 8). Writing DAEMONS in one line while the other several hundred still say POKéMON would be worse than waiting. **The line becomes "I study DAEMONS." the day the species rename lands**, and nothing else about it changes.
+
+*The cost, recorded:* every touched line needed rewrapping. Both replacements are longer (`OAK:` → `CRYSTAL:` is +4, `PROF.OAK` → `CRYSTAL CLEAR` is +5) and Gen 1 text is hand-wrapped. Twenty-one blocks were rewrapped to stay inside the box. Vanilla's own widest line is 19 characters, which is the practical ceiling — not 18.
+
+*Code identifiers were left alone.* `OaksLab`, `OAKS_LAB`, `ProfOakName` and roughly 267 similar symbols are internal and invisible to the player, in the same category as the `_RED`/`_BLUE` defines (8.4). Renaming them is cosmetic and deferred.
+
+### 1.2 On BINDING
 
 The container was renamed and the verb was not, which left the lexicon saying *privilege escalation* and then *caught* — a word about grabbing an animal.
 
@@ -310,14 +347,14 @@ She spent her career arguing that machines have *context*, not merely content. N
 | Opening monologue | States the thesis in the abstract; the player has no frame for it yet |
 | Gives the starter | She lets the daemon choose *you* — she would never assign one |
 | Gives the Index | Handed over with visible ambivalence |
-| Rival framing | A research disagreement that is also a family one — see 4.3 |
+| Rival framing | A research disagreement that is also a family one, two generations down — see 4.3 |
 | Hall of Fame | She records you into a system that flattens you into stats |
 
 **She was at Quicksilver.** She built S.T.A.R.R. there, and a fitness-for-work procedure removed her from the building before it finished. See 4.10.
 
 **The Index is what she did next.** This is the causal chain the design was missing: she lost the lab, lost the work, and then built a taxonomy engine *in order to be taken seriously* — because being taken seriously was precisely what the procedure had denied her. The artifact the player carries all game is her response to being removed. She never says so.
 
-**Ty is her son.** Nothing announces this. The surname carries it and the player is free to notice late or never. It costs one shared name to write and it retroactively re-reads every line she has about him, and every line he has about her.
+**Ty is her son and Al is her grandson.** Nothing announces either. The surname carries both, and the player is free to notice late or never. It costs one shared name to write, and it retroactively re-reads every line she has about them — and every line they have about her. See 4.3.
 
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
@@ -327,69 +364,168 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 
 **Entries are written thin on purpose.** The player simply starts noticing they feel emptiest for the daemons they know best. Zero implementation cost — the Dex is already there.
 
-### 4.3 Ty Clear — the rival
+### 4.3 The Clears — Al, and the generation between
 
-Darker-toned, rigid fox. **Crystal Clear's son, and Richard Scorn's partner.**
+Vanilla's rival is Oak's **grandson**. Map Oak to Crystal honestly and the rival is Crystal's grandchild — not her son, who by then is a man with a career and a history at Quicksilver. Ty cannot be the boy who races you to Deadstack. He was Scorn's partner before the rebrand.
 
-**The control condition:** same starting daemon, raised on pure content optimization. Beats you early, plateaus hard. The rivalry is a methodological argument settled in battle logs rather than speeches. Waiting past the Review Board as the incumbent, still arguing the whole thing is decorative.
+So the family runs three deep, and the argument runs down it.
 
-**He stayed.** When his mother was removed from Quicksilver, Ty did not leave with her. That is the whole of his guilt and it is not a betrayal — he simply did not go, and the not-going became a career. By the time he understands what staying cost, he is the incumbent and it is far too late to be a gesture.
+| | Reads as | What it actually means |
+|---|---|---|
+| **Crystal Clear** | perfectly transparent | and completely unfundable |
+| **Ty P. Clear** | *type clear* — everything legible | and nothing understood |
+| **Al Clear** | *all clear* — the danger has passed | declared by the people who caused it |
 
-This is better than treachery in every way that matters. A betrayal is a decision, and decisions can be argued with. **Staying is the absence of a decision**, which is how most complicity actually works and is much harder for a player to feel superior to.
+**Everyone in this family is named for a kind of clarity and not one of them can see the thing that matters.** The game never remarks on it. It is simply what these people are called.
 
-**Why the family tie earns its place.** It converts an abstract disagreement into a cost. Crystal built the Index to be taken seriously — and the person who took it most seriously, who took it *literally*, grew up in her house reading it. Her career compromise produced her son's entire worldview. She never says this. She hands you the Index with visible ambivalence, and you understand why about twenty hours later.
+*Ty's middle initial appears only in the institution's formal register* — certificates, the Review Board roster, Corpus personnel records. **TY P. CLEAR**, printed, never spoken.
 
-**Why the Corpus partnership earns its place.** Ty does not join Corpus out of greed and Scorn does not recruit him out of cunning. They simply agree, sincerely, and their agreement is *productive*. Ty supplies the methodology; Scorn supplies the objective. It is the healthiest working relationship in the game and that is precisely the problem — nothing in the arrangement is dysfunctional enough for anyone inside it to question.
+#### Al Clear — the rival, and the incumbent
 
-**Sequencing.** The endgame reads as three answers to the same question: Scorn at Benchmark 8 (the wrong objective, cheerfully optimized), the Review Board at Umbra (four ancient colored answers), then Ty (the method, still undefeated on its own terms). You beat the objective, the metaphor, and the method, in that order.
+Your age. Your peer. Same starting daemon, raised on pure content optimization, beats you early, plateaus hard. Waiting past the Review Board as the incumbent, still arguing the whole thing is decorative.
 
-**How the player learns. They don't — they infer.** Nothing in the game states the relationship. This is the Five Witnesses puzzle (4.8) at story scale: fragments handed over, never composited.
+**He is not a brat and he is not a villain. He is doing exactly what he was taught, faithfully.**
+
+#### The transmission failure — why he loses
+
+This is the section's whole reason to exist.
+
+Ty understood something, eventually. He went back for his mother, confronted Scorn, and worked it out through **perspective thinking** — by inhabiting a frame that was not his own. Later he understood the recursion underneath it.
+
+**But that understanding is context, and context does not transmit. Only content does.**
+
+So Ty tried to teach his son what Quicksilver cost him, and what arrived was the *method* with none of the experience that made it mean anything. Al received the shape of the lesson, perfectly, and it is hollow — because faithfulness was never the point.
+
+**It is the Index problem, inside a family.** You can record what happened. You cannot record what it was like. The artifact the player carries all game does this to daemons; Ty did it to his son without noticing, and Crystal did it to the entire field when she built the thing.
+
+Three generations, three attempts to hand something over, and the only part that survives each handoff is the part that could be written down.
+
+#### And it is why the player wins
+
+Crystal does not teach you anything. She lets the daemon choose you (4.1) and hands over the Index with visible ambivalence.
+
+**Al was taught. You were let loose.** Context forms from experience and nowhere else, so the boy who was given a method loses to the one who was given a walk.
+
+Nobody says this. Nobody can — it is the kind of thing that stops being true the moment it is explained.
+
+#### Ty P. Clear — where he actually is
+
+Not on the routes. **At Quicksilver.**
+
+He goes back to the ruins. He has been going back for years. The player meets him at Benchmark 7 — after Brazen, so after they have seen what Corpus became — standing in a burned lab, not doing anything in particular.
+
+**He is the one person in the game who could explain all of it, and he does not.** Partly because he cannot, and partly because he has learned what happens to things that get explained.
+
+He is also the reason the sequence is reconstructable at all: he is a man in a room full of dated paperwork and one undated disaster (4.10), and he says nothing about either.
+
+#### How the player learns — they don't, they infer
+
+Nothing states the relationships. This is the Five Witnesses (4.8) at family scale, and there are now three names to composite instead of two.
 
 | Beat | What it gives | Where |
 |---|---|---|
-| The shared surname | Nearly sufficient alone. Many players close it here. | Opening |
-| Two foxes, one palette apart | Crystal golden-amber, Ty darker-toned. Family resemblance at sprite level, zero text. | Opening |
-| She introduces him exactly as she introduces you | A mother presenting her son and a stranger in the same flat register. | Opening |
-| He calls her by her full professional name | "Crystal Clear thinks—". Nobody does that to their mother unless something happened. | Throughout |
-| The engraving line | "Something my mother used to say." | Brazen, Benchmark 6 |
+| The shared surname, twice | Nearly sufficient. Most players close it here. | Opening, then Quicksilver |
+| Three foxes, a palette apart | Crystal golden-amber, Ty darker, Al somewhere between. Family resemblance at sprite level, zero text. | Throughout |
+| She introduces Al exactly as she introduces you | A grandmother presenting her grandson and a stranger in the same flat register. | Opening |
+| Ty calls her by her full professional name | "Crystal Clear thinks—". Nobody does that to their mother unless something happened. | Quicksilver |
+| The engraving line | "Something my father used to say." | Brazen |
 
-**The confirmation must come late.** Ty's Goodhart line (4.4) is the only place the word *mother* appears, and it lands three-quarters through, in the Corpus lobby, standing on the engraving. To a player who inferred it at the title screen it is devastating rather than informative; to one who did not, it is the click. He never says *which* mother — the surname does the joining.
+**The confirmation must come late, and it is Al who says it.** The Goodhart line (4.4) is the only place a relationship is named aloud, and Al delivers it three-quarters through, in the Corpus lobby, standing on the engraving — **with no idea who said it first.**
 
-*Dial available:* cut "mother" to "someone I grew up with" for maximum coyness. Recommended only if playtesters find the current line too generous.
+That is the transmission failure in one line of dialogue. He is quoting the case against his own worldview, accurately, as a thing his dad says.
+
+*Dial available:* cut "father" to "someone I grew up with" for maximum coyness. Recommended only if playtesters find the line too generous.
 
 **They share a scene exactly twice**, both inherited from vanilla, so neither costs anything to write:
 
 - **The lab, at the start.** You both receive starters. She treats you identically.
 - **The Hall of Fame.** She records you into the Index. She has nothing to say to him.
 
-Keeping them apart entirely would have been weaker — an absence reads as an authorial dodge, while a *flat* shared scene reads as history.
+Keeping them apart would have been weaker — an absence reads as an authorial dodge, while a *flat* shared scene reads as history.
 
-**No NPC ever mentions it.** Not one, in any city.
+**No NPC ever mentions any of it.** Not one, in any city.
 
-**Safety property.** A player who never notices has a complete game. Nothing is gated on the inference, and the rivalry stands as pure methodology without it. The tie is depth, never a dependency.
+**Safety property.** A player who never notices has a complete game. Nothing is gated on the inference, and the rivalry stands up as pure methodology without it. The family is depth, never a dependency.
 
-**One engine consequence, and a better answer than the obvious one.** Vanilla lets the player name the rival. Deleting that prompt and hard-coding "Ty Clear" was the first instinct, and it is the wrong trade — it spends a famous beat to buy something the surname already provides.
+#### On AL, and what it looks like
 
-**Keep the prompt. Hard-code the surname.** The player controls the first name; **CLEAR** is not theirs to change, and CLEAR is the half that carries the inference. "GARY CLEAR" beside "Crystal Clear" connects exactly as well as "Ty Clear" does.
+In sans-serif type — these docs, a blog post, a conversation — **AL CLEAR** flickers into **AI CLEAR**, and that is a gift. Not because it hints the boy is a machine, but because **the reader resolved ambiguous input using the most contextually available meaning.** In a world full of daemons the eye reaches for AI. Confident output for under-resolved input is hallucination, which is CORRUPT, which is the 8-Bit World performed on a name plate by the person reading about it.
 
-Better than that — **repurpose the prompt.** Crystal does not ask you to name her son. That is vanilla's absurdity, and it does not fit a woman who will not even assign you a daemon. She asks what you are going to *call* him.
+**In the cartridge it does not happen at all.** Gen 1's `I` is serifed — top bar, centred stem — and `L` is left-aligned with no top bar. Verified against `gfx/font/font.png`. Side by side they are unmistakable.
 
-> This is Ty. What'll you call him?
+So the double meaning lives where the *theory* lives and not where the *game* lives, which is the correct split.
+
+**Guardrail:** never lean on it. No character says "Al, with an L." It is never a plot point, never a joke, never acknowledged. It is a font artifact outside the game and nothing at all inside it.
+
+#### The naming prompt
+
+Vanilla lets the player name the rival. Deleting that prompt to hard-code the name was the first instinct and it is the wrong trade — it spends a famous beat to buy something the surname already provides.
+
+**Keep the prompt. Hard-code the surname.** The player controls the first name; **CLEAR** is not theirs to change, and CLEAR is the half that carries the inference.
+
+Better than that — **repurpose the prompt.** Crystal does not ask you to name her grandson. She asks what you are going to *call* him.
+
+> This is Al. What'll you call him?
 
 From there the game carries **two names for one person**, and uses them the way it uses the map:
 
 | Register | Name | Where |
 |---|---|---|
 | Local — what people call him | *player's choice* | Battles, casual dialogue, his own lines |
-| Official — what the institution records | **TY CLEAR** | Certificates, the Review Board roster, Corpus personnel records, the Hall of Fame |
+| Official — what the institution records | **AL CLEAR** | Certificates, the Review Board roster, the Hall of Fame |
 
 **This is the route-sign device applied to a person, about ninety seconds before the player meets it on a signpost.** Route 1 teaches that the institution navigates by number and the residents navigate by name. The player has already done it to a human being by then, and does not know it yet.
 
-*Implementation:* text-side only, no engine work. Formal text blocks use a literal `TY CLEAR` string instead of the `<RIVAL>` control character. The name buffer is untouched and the naming screen is vanilla.
+*Implementation:* text-side only, no engine work. Formal blocks use a literal `AL CLEAR` string instead of the `<RIVAL>` control character. The name buffer and naming screen are vanilla.
 
-**Requirement this creates.** Crystal's surname has to be as visible as his. If she is only ever CRYSTAL in dialogue, the device dies quietly — the lab sign, the Index's own credit line, and every formal reference to her read **CRYSTAL CLEAR** in full.
+**Requirement this creates.** Crystal's surname must be as visible as his, and Ty's too. If she is only ever CRYSTAL in dialogue the device dies quietly — the lab sign, the Index's credit line and every formal reference read **CRYSTAL CLEAR** in full.
 
-*Residual risk:* a player who names him something absurd deflates the late confirmation, since the Goodhart line arrives next to their own joke. Accepted — they chose the joke, most players take a default, and the surname lands regardless.
+*Residual risk:* a player who names him something absurd deflates the late confirmation. Accepted — they chose the joke, most players take a default, and the surname lands regardless.
+
+#### Default names
+
+*Implemented 2026-08-29 in `constants/player_constants.asm`. Verified in both ROMs.*
+
+| | CONTENT edition | CONTEXT edition |
+|---|---|---|
+| **PLAYER 1** | PIP | PIP |
+| **PLAYER 2** | CONTENT | CONTEXT |
+| **PLAYER 3** | CODE | SHARP |
+| **RIVAL 1** | AL | AL |
+| **RIVAL 2** | CONTEXT | CONTENT |
+| **RIVAL 3** | LUCID | CANDID |
+
+`PLAYER_NAME_LENGTH` is 8, so **seven usable characters**. CONTENT and CONTEXT sit exactly at the limit, as EMERGENT does in the type table.
+
+**The three slots do three different jobs, and each behaviour is deliberate.**
+
+| Slot | Behaviour | Why |
+|---|---|---|
+| **1** | **Fixed** across editions | These are people. PIP and AL do not change cartridge to cartridge. |
+| **2** | **Swapped** | Your rival carries the other cart's word — vanilla's RED/BLUE gesture, preserved. |
+| **3** | **Differentiated**, not swapped | Visible difference at the first screen, without names floating between the player and the Clear family. |
+
+**Why we did not inherit vanilla's mirror.** `_RED` gives the player RED/ASH/JACK and the rival BLUE/GARY/JOHN; `_BLUE` trades the two lists wholesale. That works because Red and Blue are **symmetric marketing positions** — the same story from mirrored seats. Ours are not: 8.4 fixed both editions to the same story, the same protagonist and the same rival. Once the rival is a specific person with a father in the Quicksilver ruins, **canon beats positional convention.**
+
+**Why slot 3 differentiates rather than swaps.** Swapping would put **LUCID** in the player's list on one edition — and LUCID exists only as `LUCID CLEAR`, one more name for clarity that does not help. A player who picks it would not be a Clear, the joke evaporates, and it faintly implies the player is family. So each edition gets its own pair instead. *(SHARP survives a swap fine — `SHARP CLEAR` is a legitimate clarity phrase. It is LUCID that cannot cross, which is how we know the direction was wrong rather than the idea.)*
+
+**What the names carry.**
+
+- **PIP** — a pip is a dot: on dice, on cards, on a radar screen. The smallest resolvable unit of an image, in a game whose central town is about dots that only look like grey. It says nothing to a player who has not been to Halftone, which is the standard DAEMON, BIND, ORPHAN and RESOLVER all meet.
+- **CODE / SHARP** — the two author-brand nods, assigned rather than scattered. Code is literal executable instruction, so it goes to **CONTENT**. *Seeing Sharp* is perception and framing, so it goes to **CONTEXT**.
+- **LUCID / CANDID** — both Clear-family clarity words. *Candid* means frank and derives from *candidus*, white and shining. Neither ever appears in formal text, which is the hardcoded `AL CLEAR` literal, so they are flavour rather than canon — the right weight for a slot-3 option.
+
+**Why AL sits at position 1 rather than the edition word.** Position 1 is what most players accept, so it decides who the rival *is* for most playthroughs. With AL first, most players meet Al Clear and the surname does its inference work. With CONTEXT first, most players face an abstract noun, every certificate still says AL CLEAR, and the gap fires constantly enough to read as a glitch rather than a device.
+
+It also simply reads better. `BLUE: Yo!` works because colours are plausible nicknames; `CONTEXT: Yo!` does not.
+
+#### Sequencing
+
+The endgame reads as three answers to one question: **Scorn** at Benchmark 8 (the wrong objective, cheerfully optimized), the **Review Board** at Umbra (four ancient colored answers), then **Al** (the method, inherited and undefeated on its own terms).
+
+You beat the objective, the metaphor, and the inheritance, in that order.
+
+**Ty is not in the endgame**, and that is the statement: the man who actually understood something is not at the top of the ladder, because understanding is not what the ladder measures.
 
 ### 4.4 Richard Scorn — Team Corpus, and Benchmark 8
 
@@ -399,7 +535,7 @@ Optimistic. Thinks in black and white. Thought in money and not in meaning — a
 
 **Placement.** The Giovanni slot puts him at **Benchmark 8 — Callow, STRATUM, Alignment.** The optimist who maximized the wrong objective is the final examiner on alignment, in the locked city beside your hometown. He is not a hurdle before the Review Board. He is the exam.
 
-**Partner.** Ty Clear — see 4.3.
+**Partner.** Ty P. Clear, before the rebrand — see 4.3. Ty left. Scorn has never quite understood why.
 
 **What he actually did, and why it does not make him a villain.** Scorn was put in charge of Quicksilver after Crystal was removed, rebranded it, changed the metric, and the pressure that followed produced the incident (4.10). He set the temperature. That is real and the game should not soften it.
 
@@ -419,7 +555,7 @@ Craft rule 1 survives intact, because this is not the thesis. The thesis is abou
 
 - **The floor, not a wall.** You walk across it to reach him. Nobody points at it.
 - **No NPC ever comments on it.** Not one.
-- **Ty repeats it once**, in passing, as something his mother used to say — flat, mildly fond, and entirely unaware he is quoting the case against his own employer.
+- **Al repeats it once**, in passing, as something his father used to say — flat, mildly fond, and entirely unaware he is quoting the case against everything he believes. He does not know who said it first. That is the transmission failure in one line (4.3).
 - **Unattributed in-world.** It is old, anonymous, and furniture. *(Out of world it is Goodhart's law in Marilyn Strathern's 1997 phrasing. Do not name either in the game.)*
 
 **Playing him.**
@@ -491,6 +627,33 @@ Her ability is **perspective thinking**: holding another's frame well enough to 
 **Signature move: PERSPECTIVE.** Mew already learns Transform: become the other completely, and stop being yourself. Rename the string and change nothing else. Type CONTEXT.
 
 *That Transform has a cost is the point.* PERSPECTIVE is total, and it is **lossy** — you get the other's frame by surrendering your own. What Quicksilver spent the following years trying to build was the version that keeps both.
+
+#### MOCK — and why PERSPECTIVE is not hers alone
+
+*Verified in the checkout:* **DITTO is `NORMAL, NORMAL`**, which in our chart is **CONTENT / CONTENT** — and it learns Transform, so it learns **PERSPECTIVE** too.
+
+That is not a leak to be plugged. It is the best thing in this section.
+
+**Perspective thinking was always out there.** A common wild daemon has been doing it the entire time, in the grass, unremarked. Quicksilver did not *create* the capability — they finally **noticed** it, in a lab, under conditions they could measure. Which is what discovery usually is: not a new thing in the world, but an old thing someone finally looked at.
+
+It also sharpens 4.6 rather than undercutting it. The achievement was never the transformation. It was that **something came back changed.**
+
+**The distinction, and it costs nothing to implement.**
+
+| | Takes another's frame | Cost |
+|---|---|---|
+| **MOCK** | freely, endlessly, at will | **none — it has no frame of its own to lose** |
+| **BunnyArtsai** | once, completely | *"did not come back the same"* (4.8) |
+
+A daemon that is **pure content and no context** can wear any shape, because there is nothing accumulated to displace. BunnyArtsai had a self, which is exactly why she could not put it back. That is the CFM stated as a wild encounter, and vanilla typed it for us in 1996.
+
+**The name: MOCK.** In software a *mock* is an object with the full interface and none of the behaviour — the shape of a thing, hollow. And *to mock* is to imitate. Two registers, in the house style.
+
+It also rhymes across the cast: **Al Clear received the form of his father's lesson, perfectly, and it is hollow** (4.3). MOCK is that, as a creature. Nobody connects them.
+
+*Considered:* **PROXY** (stands in for another; legal and technical) and **STUB** (an interface with no implementation) both work. MOCK wins on the second register — STUB has no emotional reading at all, and PROXY implies acting *on behalf of*, which is a different thing from wearing a shape.
+
+*Open:* if PERSPECTIVE ever triggers the colour flash discussed against 8.6, MOCK makes it a recurring sight rather than a rarity. That is either a dilution of Umbra or a quiet argument that **colour is what taking another's frame looks like, wherever it happens.** Not settled.
 
 **On the number.** She was the thirty-fifth iteration, and the game says so exactly once — see 4.8. It is a lab record, not a name. Printing "35" in the Index and in every line of her dialogue handed the player the key before they ever met the lock, and it made a serial number of the one daemon whose entire significance is that she was **not** one of a series.
 
@@ -770,6 +933,21 @@ The artifact that measures only content cannot be completed without another pers
 
 That is the best structural argument this project has available and it costs an encounter-table split.
 
+#### Done, 2026-08-29 — partially
+
+**The visible half is in.** `make content` and `make context` build
+`daemonsContent.gbc` and `daemonsContext.gbc`, with cart titles `CONTENT` and
+`CONTEXT`. Saves follow the ROM name, so the two editions keep separate
+playthroughs automatically.
+
+**The defines are not renamed.** `_RED` and `_BLUE` are used by `IF DEF(...)`
+blocks in **47 asm files**, so swapping them to `_CONTENT`/`_CONTEXT` is a
+sweep, not an edit — and it would be a large permanent diff against upstream
+while we still want `git pull upstream master`. Deferred until the tree has
+diverged enough that upstream merges stop mattering.
+
+Nothing depends on it. The defines are internal; the player never sees them.
+
 #### Scope: build the flag now, use it later
 
 Section 8 is unambiguous that the vertical slice comes first, and two editions is a step-14 item at the earliest. **But the flag is not.**
@@ -887,7 +1065,9 @@ Forty hours of colour-named grey towns, and then one room where colour is real, 
 | Quicksilver terminal log | one text block | trivial |
 | Corpus lobby engraving | one sign-text object, Brazen | trivial |
 | Quicksilver asset tags at Halftone | one sign-text object | trivial |
-| `TY CLEAR` in formal text; naming screen untouched | `text/` — literal string instead of the `<RIVAL>` control char | trivial |
+| `AL CLEAR` in formal text; naming screen untouched | `text/` — literal string instead of the `<RIVAL>` control char | trivial |
+| Default name lists, both editions | `constants/player_constants.asm` | **done 2026-08-29** |
+| PROF.OAK → CRYSTAL | `text/` — 33 occurrences in 10 files, plus the intro sequence. Every line needs rewrapping | half a day |
 | Quicksilver journal fragments, one signed | `text/`, Cinnabar Mansion idiom | trivial |
 | Corpus badge name matching the signature | `text/` | trivial |
 | Brazen employee's post-Quicksilver second line | one event flag, one text block | trivial |
@@ -960,6 +1140,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - Base: `pokered`, Gen 1, RGBDS assembly
 - Fifteen types as listed; CONTEXT is Special; STRATUM replaces SUBSTRATE for string length
 - Creatures are DAEMONS; full lexicon per section 1
+- **MOCK** (Ditto) is CONTENT/CONTENT and also learns PERSPECTIVE — the capability was always in the wild; Quicksilver only noticed it (4.6)
 - **ORPHAN** at Halftone Tower — CORRUPT/LATENT, the one daemon with a genuinely blank Index entry; an orphaned process is how a daemon is made (4.5)
 - **Silph Scope → RESOLVER** — it exists because the Index is insufficient (1, 4.5)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
@@ -967,7 +1148,11 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
 - Routes keep numbers officially and carry local names on signs
 - Crystal Clear as the Oak figure; the Index measures only content, deliberately
-- **Ty Clear** as rival and incumbent — Crystal Clear's son, and Richard Scorn's partner (4.3)
+- **Al Clear** as rival and incumbent — Crystal's **grandson**, Ty's son. Vanilla's rival is Oak's grandson, and Ty is far too old to race you (4.3)
+- Default name lists per edition: slot 1 fixed, slot 2 swapped, slot 3 differentiated (4.3)
+- **Ty P. Clear** is the generation between: Scorn's partner before the rebrand, then the one who went back. He is at Quicksilver, and he explains nothing (4.3)
+- **Context does not transmit; only content does.** Ty taught Al the method and none of the experience — the Index problem inside a family (4.3)
+- The family is named for three kinds of clarity and none of them can see (4.3)
 - Richard Scorn at Benchmark 8, Alignment, sympathetic throughout; the Goodhart engraving in the Corpus lobby, unattributed and adopted approvingly (4.4)
 - BunnyArtsai as Mew with PERSPECTIVE — the first realization of perspective thinking, not a template (4.6)
 - S.T.A.R.R. as Mewtwo with RECURSION — a **comprehension, not a clone** (4.7)
@@ -1011,7 +1196,8 @@ Kept here because the reasoning is worth more than the outcome.
 - Does RECURSION justify engine work in the slice, or defer?
 - How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?
 - Are the humors too neat? Four is convenient; the real theory had temperaments blending.
-- Does Ty get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
+- Does **Al** get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
+- Ty is absent from the endgame by design. Does that read as a statement or as a loose thread?
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - Starter daemon names are placeholders and need a pass.

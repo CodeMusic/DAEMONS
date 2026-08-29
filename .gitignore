@@ -3,3 +3,7 @@
 
 # engine/ -> ../pokered-daemons (the fork). Sibling repo, never vendored.
 engine
+
+# built ROMs and their debug artefacts
+engine/*.gbc
+engine/*.sav

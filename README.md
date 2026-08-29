@@ -48,8 +48,19 @@ Current focus is a vertical slice: three towns, one gym, twelve daemons, playabl
 You'll need [RGBDS](https://rgbds.gbdev.io/) and a copy of `pokered`. Follow pret's [install guide](https://github.com/pret/pokered/blob/master/INSTALL.md) first and **confirm you can produce a byte-matching vanilla build before applying anything here.** If the checksum matches, your toolchain is sound and every later break is yours.
 
 ```sh
-make
+git clone https://github.com/CodeMusic/DAEMONS.git
+cd DAEMONS && ./setup.sh
+make content
 ```
+
+`setup.sh` clones the engine beside this repo, wires `upstream` to pret, and
+creates the gitignored `engine/` symlink — because **a symlink does not survive
+`git clone`**. It is idempotent; run it again whenever something looks off.
+
+The engine is a **fork** of pokered, kept as a sibling repo rather than merged
+in, so no Nintendo-derived asset ever enters this repository. The pattern, its
+tradeoffs and the alternatives are written up in
+[`docs/two-repo-pattern.md`](docs/two-repo-pattern.md).
 
 **No ROMs, no commercial assets, and no copyrighted material are distributed in this repository, and none ever will be.** This is a personal project. Bring your own legally-obtained cartridge dump if you want something to compare against.
 

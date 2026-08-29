@@ -1,14 +1,18 @@
 # CONTEXT / CONTENT — convenience shim.
-# The real build lives in engine/ (a symlink to the pokered fork).
-# See CLAUDE.md and docs/vision.md 9.2.
+# The real build lives in engine/ (a symlink to the pokered-daemons fork).
+# See CLAUDE.md and docs/vision.md 8.4 and 9.2.
 
 ENGINE  := engine
 VANILLA := /tmp/pokered-vanilla
 
-.PHONY: all red blue clean vanilla-check bible
+.PHONY: all content context clean play vanilla-check bible
 
-all red blue clean:
+all content context clean:
 	$(MAKE) -C $(ENGINE) $@
+
+## play — build the CONTENT edition and launch it
+play: content
+	./bindDaemons.sh
 
 ## vanilla-check — prove the toolchain, without disturbing your work.
 ## Builds pristine upstream in a throwaway worktree and checks the hashes.

@@ -22,6 +22,9 @@ DAEMONS/            <- ALWAYS root sessions here (memory lives here)
   engine/  ------>  symlink to ../pokered-daemons  (gitignored, never vendored)
 ```
 
+**After a fresh clone, run `./setup.sh`** — the symlink is gitignored and does
+not survive cloning. The script is idempotent.
+
 `engine/` is **CodeMusic/pokered-daemons**, a fork of pret/pokered. `origin` is the
 fork, `upstream` is pret — so `git pull upstream master` brings in their fixes.
 It is kept out of this repo because `pokered/gfx/`
@@ -33,11 +36,16 @@ copyrighted material. Work in it freely; just don't merge it in here.
 From the repo root (a shim forwards into `engine/`):
 
 ```sh
-make red            # -> engine/pokered.gbc
-make blue           # -> engine/pokeblue.gbc
-make                # all targets
+make content        # -> engine/daemonsContent.gbc
+make context        # -> engine/daemonsContext.gbc
+make play           # build CONTENT and launch it
 make vanilla-check  # prove the toolchain
+./bindDaemons.sh [content|context] [--clean]
 ```
+
+`red` and `blue` still work in `engine/` as aliases. The `_RED`/`_BLUE`
+assembler defines are **unchanged** — renaming those touches 47 asm files and
+is deferred. Only the output names, make targets and cart titles moved.
 
 **Before diagnosing any build break:** `make vanilla-check` from the repo root.
 It builds pristine `upstream/master` in a throwaway git worktree and checks the

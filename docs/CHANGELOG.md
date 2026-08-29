@@ -106,6 +106,63 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - Keep `$B8` as the unresolved display state; ORPHAN is a real species in a free
   slot, so no engine surgery
 
+### v2.1 - the Clears
+- Vanilla's rival is Oak's *grandson*, and Ty was Scorn's partner before the
+  rebrand - an adult with a career. He cannot be the boy who races you
+- **Al Clear** becomes the rival and incumbent: Crystal's grandson, Ty's son
+- **The transmission failure.** Ty understood through perspective thinking, but
+  that understanding is context, and context does not transmit - only content
+  does. Al received the method with none of the experience. The Index problem,
+  inside a family
+- It is also why the player wins: Al was taught, you were let loose
+- **Ty P. Clear** relocates to the Quicksilver ruins. He could explain all of
+  it and does not
+- The Goodhart line moves to Al - "something my father used to say", delivered
+  with no idea who said it first
+- The family is named for three kinds of clarity: Crystal Clear (transparent,
+  unfundable), Ty P. Clear (*type clear*, legible, understood by nobody),
+  Al Clear (*all clear*, declared by the people who caused it)
+- AL reads as AI in sans-serif type but not in the cartridge - Gen 1's I is
+  serifed and L is not, verified against gfx/font/font.png. The double meaning
+  lives where the theory lives, not where the game lives. Never lean on it
+
+### v2.2 - default names
+- Implemented per-edition name lists in constants/player_constants.asm,
+  verified by decoding both ROMs
+- Slot 1 **fixed** (PIP, AL - these are people), slot 2 **swapped** (the vanilla
+  RED/BLUE gesture), slot 3 **differentiated** (so LUCID never floats out of the
+  Clear family and into the player's list)
+- Vanilla's wholesale mirror is not inherited: Red and Blue are symmetric
+  positions, ours are not
+- PIP is a dot, the smallest resolvable unit. CODE goes to CONTENT (literal
+  instruction), SHARP to CONTEXT (perception). LUCID and CANDID are Clear-family
+  clarity words
+
+### v2.3 - PROF.OAK becomes CRYSTAL, with no title
+- Crystal has no rank, deliberately. She built the Index to be taken seriously
+  and was then processed out of her own lab; every other authority in the game
+  has a role and she is just her name
+- Vanilla split perfectly for it: OAK: (19x) -> CRYSTAL:, PROF.OAK (8x) ->
+  CRYSTAL CLEAR. First name when spoken to, full name when spoken about
+- One line had to be rewritten rather than renamed - the intro claims the title
+  aloud, so "People call me the #MON PROF!" became "I study #MON."
+- 43 player-visible strings changed, 21 blocks rewrapped. Vanilla's own widest
+  line is 19 characters, which is the real ceiling
+- ~267 code identifiers (OaksLab, OAKS_LAB, ProfOakName) left alone - internal,
+  same category as the _RED/_BLUE defines
+
+### v2.4 - MOCK, and PACKAGE
+- OAK's PARCEL -> **PACKAGE**. A repo distributes packages, and CRYSTAL's PARCEL
+  is 16 characters against a 12-character item limit
+- **MOCK** (Ditto) is NORMAL/NORMAL, so CONTENT/CONTENT, and it learns Transform
+  - therefore PERSPECTIVE. Perspective thinking was always in the wild;
+  Quicksilver only noticed it
+- The distinction costs nothing: MOCK takes another's frame freely because it has
+  no frame of its own to lose. BunnyArtsai had a self, which is why she did not
+  come back the same
+- A mock object has the full interface and none of the behaviour - which rhymes
+  with Al Clear receiving the form of his father's lesson, hollow
+
 ---
 
 ## Infrastructure
