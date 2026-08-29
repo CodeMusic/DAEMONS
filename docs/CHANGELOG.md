@@ -182,6 +182,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - Verified: MEW appears in no wild encounter table in vanilla. There was never a
   designed way to reach it, which is why player culture invented one
 
+### v2.6 - battle vocabulary, the boxes, the sleep cluster
+- **RUNNER -> USER.** RUN was colliding with itself; vanilla's own text says
+  "There's no running from a trainer battle" while the player is a RUNNER.
+  USER is user-level privilege (and the first box is a USERBOX), someone who
+  uses people (oPerson, 2011), and it frees RUN. Nothing lost - the verb moves:
+  you are a USER, and you RUN daemons
+- **WILD -> UNBOUND**, the exact antonym of BIND. The vocabulary now teaches
+  itself: UNBOUND appears, you BIND it, it is BOUND
+- Fainting -> **HALTED**. Fleeing -> **DETACHED**, which has no inverse on
+  purpose: the process is still running, you stopped observing it
+- Trainer battles are BENCHMARKS too - a scale distinction, as in ML. You
+  benchmark constantly; THE BENCHMARKS are the eight that issue CERTs
+- **A box is a machine** - sysadmin vernacular. You are not throwing a cage,
+  you are offering a host. Catch rate by permission level becomes literal
+- **The sleep cluster**: SNORLAX -> DEADLOCK, POKé FLUTE -> INTERRUPT,
+  JIGGLYPUFF -> SUSPEND, WIGGLYTUFF -> HIBERNATE, SLEEP unchanged. INTERRUPT
+  keeps the music: a tune is an abstract command that evokes a state
+- The Underground Path is already a TUNNEL (networking), and the guard stays
+  thirsty - the corporate checkpoint yields to a beverage. Inertia, not security
+- 379 "trainer" occurrences deferred to the step-8 text pass
+
 ---
 
 ## Infrastructure

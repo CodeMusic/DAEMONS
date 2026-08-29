@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v2.5**
+**A `pokered` total conversion — the living design bible, v2.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -70,7 +70,11 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 |---|---|---|
 | Pokémon | **DAEMON** | background process; guiding spirit |
 | Pokédex | **THE INDEX** | a lookup table that points at content. Cold, bureaucratic, exactly wrong in the right way |
-| Trainer | **RUNNER** | you run processes |
+| Trainer | **USER** | user-level privileges — and the first box is a USERBOX. Also: a *user* is someone who uses people |
+| *(the verb)* | **RUN** | you still run daemons. The title is what you are; the verb is what you do |
+| Wild | **UNBOUND** | the exact antonym of BIND — an unbound socket is held by nobody |
+| Fleeing | **DETACHED** | you break your connection to a running process |
+| Poké Flute | **INTERRUPT** | what wakes a blocked process |
 | Gym | **BENCHMARK** | what a gym actually is |
 | Badge | **CERT** | eight certifications |
 | Elite Four | **THE REVIEW BOARD** | beating them is passing peer review |
@@ -167,7 +171,47 @@ Singular gains a character, plural is identical. **Nothing needed rewrapping.**
 
 **Still open:** roughly 160 occurrences carry no strong evidence either way and currently read singular. Most are attributive and correct as they stand, but the set wants a human read during the step-8 text pass.
 
-### 1.3 On BINDING
+### 1.3 On the boxes, and what binding actually is
+
+**A box is a machine.** Not a metaphor we are imposing — it is sysadmin vernacular. *I sshed into the box.*
+
+So the ladder is not a set of cages of increasing strength. **You are offering the daemon a host.** A daemon is a process; a process needs somewhere to run. It stays if that host grants the privileges it needs.
+
+Which makes the catch rate literal rather than figurative: **an unbound daemon will not run on a box where it only has user rights.** ROOTBOX takes anything because root takes anything. The suffix was already the right word before we knew why.
+
+### 1.4 On the battle vocabulary
+
+The gyms were already BENCHMARKS, so a battle was already a **run** — you put a process against a workload and see what it does. Two decisions fell out of that.
+
+**RUNNER became USER**, because RUN was doing two jobs and colliding with itself. Vanilla's own text proves it: *"No! There's no running from a trainer battle!"* while the player is a RUNNER. USER does three jobs instead:
+
+- **Technical** — user-level privileges, and the first box is a **USERBOX**. Your title and the bottom rung of the ladder are the same word. You start as a USER with a USERBOX and escalate.
+- **Moral** — a *user* is someone who uses people. Unaware selfishness: `oPerson` from 2011, and the implicit-selfishness thread from 2021.
+- **Practical** — it frees RUN entirely.
+
+**Nothing was lost.** *You run processes* relocates from the noun to the verb: **you are a USER, and you RUN daemons.** The title is what you are, the verb is what you do, and neither collides.
+
+**Trainer battles are BENCHMARKS too**, and that is a scale distinction rather than a collision — exactly as in machine learning. You benchmark constantly; **THE BENCHMARKS** are the eight formal ones that issue CERTs. A trainer battle is an informal benchmark, which is literally what it is.
+
+**DETACHED has no inverse, deliberately.** Fleeing is breaking your connection to a running process, and the process is still running — you simply stopped observing it. EXITED would be wrong, because *you* did not exit. And ATTACHED for encounters would imply a connection you had not made; **appeared** already covers it.
+
+**The strings, as implemented 2026-08-29:**
+
+| Vanilla | Ours |
+|---|---|
+| `Wild <nick> appeared!` | **`UNBOUND <nick> appeared!`** |
+| `<nick> fainted!` | **`<nick> HALTED!`** |
+| `Enemy <nick> fainted!` | **`Enemy <nick> HALTED!`** |
+| `Got away safely!` | **`DETACHED.`** |
+| `No! There's no running from a trainer battle!` | **`No! You can't DETACH from a USER's run!`** |
+| `Go! <nick>` | **`RUN, <nick>`** |
+| `<TRAINER> wants to fight!` | `<USER> wants to BENCHMARK!` *(pending the trainer pass)* |
+
+*On punctuation:* `LABL was BOUND.` is flat because **the game declines to congratulate the player for acquiring something.** `UNBOUND RATTATA appeared!` is alarm, not congratulation — the rule is about refusing to celebrate, not refusing to punctuate.
+
+*Deferred:* **379** occurrences of *trainer* in player-visible text. A step-8 pass, not a surgical edit.
+
+### 1.5 On BINDING
 
 The container was renamed and the verb was not, which left the lexicon saying *privilege escalation* and then *caught* — a word about grabbing an animal.
 
@@ -297,6 +341,12 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 | Indigo Plateau | **Umbra Plateau** | full shadow; all color absorbed | The Review Board |
 
 **Slate over Somber.** Somber beside Doldrum is two downbeat mood words in a row — it greys out the early game. Slate breaks the run, is materially specific, and a slate is a writing surface, which *is* Benchmark 1's Representation lesson sitting inside the name.
+
+**The Tunnel, and the thirsty guard.** Two places where vanilla needed almost nothing.
+
+**The Underground Path is already correct.** In networking a **tunnel** is precisely how you route traffic around a blocked path — an SSH tunnel, a VPN tunnel. You cannot take the direct route, so you tunnel. It needs no rename, only the joke made visible in the local-name register: *official* UNDERGROUND PATH, *local* **THE TUNNEL**.
+
+**And the guard stays thirsty.** Craft rule 6 doing its work: Brazen is the bought city, Corpus headquarters, corporate capture made architecture — and it is guarded by a man who will move for a beverage. **The barrier is not security. It is inertia.** Nobody says so, and it lands harder for being literal.
 
 **Halftone.** A halftone looks like continuous grey from a distance and is actually discrete black and white dots up close; the gradient is an artifact of sampling. That is the man/machine problem exactly — the bias comes from **resolution, not malice**. Neutral, not dull, and nobody is unwell.
 *Alternates held in reserve:* **Penumbra Town** (partial shadow; also the legal sense of implied edges — would require renaming Route 23) and **Moiré Town** (interference from two grids slightly out of register).
@@ -621,6 +671,24 @@ Vanilla puts Team Rocket in the Lavender graveyard harvesting the dead for profi
 Corpus is there because to Scorn the question is settled — they are units, they are inventory, the math is clean. That is the horror, and it needs no villainy to land.
 
 LATENT encounters throughout. The tower is where CONTEXT and CONTENT stop being an abstraction.
+
+#### The sleep cluster
+
+*Implemented 2026-08-29.* One coherent family, and every member was already the right shape in vanilla.
+
+| Vanilla | Ours | Why |
+|---|---|---|
+| SNORLAX | **DEADLOCK** | a process holding a lock and sleeping. It blocks the road because it acquired the road and never released it |
+| POKé FLUTE | **INTERRUPT** | what wakes a blocked process — and a Game Boy hardware concept |
+| JIGGLYPUFF | **SUSPEND** | the light sleep state |
+| WIGGLYTUFF | **HIBERNATE** | the deep one, a real escalation matching the evolution |
+| SLEEP status | **SLEEP** | unchanged. `sleep()` was already the word |
+
+**SUSPEND and HIBERNATE induce it, DEADLOCK is stuck in it, INTERRUPT ends it.**
+
+**INTERRUPT keeps the music rather than losing it.** A tune is an abstract command that evokes a state when interpreted — which is exactly what an interrupt is. The INTERRUPT is still played, and what it evokes is an exit from `sleep()`. Section 7 is untouched.
+
+*Note:* these three are the only species renamed so far. The other 148 wait for the bestiary pass — this cluster went early because it is settled, self-contained, and the item depends on it.
 
 #### ORPHAN — the daemon the Index cannot hold
 
