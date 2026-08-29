@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.1**
+**A `pokered` total conversion — the living design bible, v3.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -785,6 +785,18 @@ Her ability is **perspective thinking**: holding another's frame well enough to 
 
 *That Transform has a cost is the point.* PERSPECTIVE is total, and it is **lossy** — you get the other's frame by surrendering your own. What Quicksilver spent the following years trying to build was the version that keeps both.
 
+**Built 2026-08-29 — and "rename the string" was very nearly right.** Move `$90` reads PERSPECTIVE. One more string had to move with it: the move's own battle message, which still said *transformed into*.
+
+> `<USER>` **took the frame of** `<NAME>`!
+
+**Frame**, because 6 already calls PERSPECTIVE *"a glimpse of another's frame, immediately lost"* — the word was the bible's before it was the game's. It does the double duty 1 asks of every term: a frame of reference, and a **stack frame** — which is exactly what one process takes from another. At 17 characters it clears the 19-char wrap without rewrapping anything. The exclamation stays, per 1.4: the rule refuses to *celebrate*, not to punctuate, and this is no more a congratulation than `HALTED!` is.
+
+*The label stayed `_TransformedText`.* It is an identifier, and the `fainted → HALTED` pass already taught this project what happens when a rename crosses from strings into symbols.
+
+**One dangling TRANSFORM remains, deliberately.** Ditto's Index entry — category `TRANSFORM`, prose *"transform itself into a duplicate"* — is untouched, for three reasons. It is **MOCK's** entry and this section owns it; the species is still called DITTO until 9; and the prose is built on *"copying an enemy's genetic code"*, which is wrong for a daemon regardless of what the move is called. That is a rewrite, not a word swap.
+
+*A constraint discovered on the way, which 9 will need.* **Index categories cannot exceed 10 characters.** The category prints at `hlcoord 9, 4` and the box border sits at column 19, leaving columns 9–18; vanilla's longest categories are exactly 10 and that is not a coincidence. So MOCK's category **cannot be PERSPECTIVE** (11). **FRAME** is the obvious candidate — it matches the battle message and is five characters — but it is 9's call, with the rest of the entry.
+
 #### MOCK — and why PERSPECTIVE is not hers alone
 
 *Verified in the checkout:* **DITTO is `NORMAL, NORMAL`**, which in our chart is **CONTENT / CONTENT** — and it learns Transform, so it learns **PERSPECTIVE** too.
@@ -1346,7 +1358,7 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 4. Apply the three-line patch to `data/types/type_matchups.asm`.
 5. `make`. **Stop here and play.**
 6. Add CONSENSUS to `moves.asm` and `data/moves/names.asm`. **Done** — and to `move_constants.asm`, `animations.asm` and `sfx.asm`, which the length asserts require (2.5).
-7. Rename TRANSFORM to PERSPECTIVE.
+7. Rename TRANSFORM to PERSPECTIVE. **Done** — the move name and its battle message (*took the frame of*). MOCK's Index entry still says TRANSFORM and is left for 9 (4.6).
 8. City and route renames plus sign text — fast, and it transforms the feel immediately.
 9. Starter trio: stats, sprites, moves.
 10. Crystal Clear intro script.
@@ -1374,6 +1386,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **PERSPECTIVE built** — move `$90`, and the battle message becomes *`<USER>` took the frame of `<NAME>`!*; **Index categories are capped at 10 characters**, so MOCK's cannot be PERSPECTIVE (4.6)
 - **CONSENSUS built** — move `$A5`, SWARM, 90/100/15, no secondary effect; inserted before STRUGGLE because `NUM_ATTACKS == STRUGGLE` is asserted. Not yet learnable by anything (2.5)
 - **SGB borders generated, not drawn** (`tools/genborder.py`) — CONTENT is one dot grid, CONTEXT is the same cell interfering with itself; 12 tiles each against a 96 budget (8.4)
 - City names per 3.1; Slate over Somber; Halftone over Pallor; Quicksilver over Cinder; **Brazen over Gilt**
