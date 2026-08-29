@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v2.7**
+**A `pokered` total conversion — the living design bible, v2.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1105,7 +1105,31 @@ Adding a version define at the start costs nothing — the tree already has one.
 
 The editions differ in **what you meet** and **what the record says about it.** Nothing else.
 
-#### Title screens
+#### Title screens — as built
+
+*Implemented 2026-08-29.* The subtitle reads **Content Edition** / **Context Edition**, matching vanilla's *Red Version* pattern.
+
+**The version subtitle is not a blitted image, and that matters.** The graphic is loaded into VRAM as tiles, and then a string of *tile indices* is printed:
+
+```asm
+db $60,$61,$7F,$65,$66,$67,$68,$69,"@"   ; vanilla "Red Version"
+```
+
+Tiles 0, 1, a blank, then 5–9 — **tiles 2, 3 and 4 are never displayed.** Vanilla did this because "Red" and "Blue" are different lengths and the two versions share one VRAM window, right-aligned by a size calculation at load time.
+
+A first attempt at this rename put the word in tiles 0–4 and rendered as **"Con"**.
+
+**Our fix simplifies it.** Both editions ship the same 10-tile canvas, so both load at `$60` and both print the full contiguous run — no per-edition string, no skipped tiles, no `IF DEF` at all:
+
+```asm
+db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@"
+```
+
+*Built to spec, not generated.* Clean `e`, `o`, `n`, `i`, `d` letterforms were extracted from the vanilla graphic; `C`, `E`, `t`, `x` were drawn to match its 2px stems; the words were composited centred in an 80×8 canvas and written as **1-bit greyscale PNGs**. No image model produces that format — `rgbgfx --colors dmg` rejects anything with anti-aliasing or a colour outside the palette.
+
+**Still vanilla:** the **Super Game Boy border** (`gfx/sgb/red_border.png`, `blue_border.png`) still reads RED and BLUE at the top of the screen. That is a full decorative frame rather than a word, and it is its own art job — 8.5's territory, alongside the DAEMONS logo (`gfx/title/pokemon_logo.png`, 128×56, 2bpp).
+
+#### Which daemon appears
 
 Vanilla puts a starter on the title — Charizard on Red, Blastoise on Blue, and Venusaur on neither. So:
 
