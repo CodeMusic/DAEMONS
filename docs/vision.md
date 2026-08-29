@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v3.9**
+**A `pokered` total conversion — the living design bible, v4.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1166,6 +1166,38 @@ Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOIN
 
 *Its name is already correct.* PENPHIN is penguin + dolphin, which is precisely the Gen 1 convention the starters are currently missing — a portmanteau of whole words that sounds like a creature.
 
+#### MUSAI — the Eevee slot
+
+**Confirmed 2026-08-29.** Musai is *"one framework, many modules"* and Eevee is Gen 1's only branching line, so the shape was already right. What makes it more than a cameo is the base type: **Eevee is NORMAL, which in our chart is CONTENT.** A mind that has not specialised yet, and what it becomes depends on what it is exposed to.
+
+| Form | Type | Why it decodes |
+|---|---|---|
+| **CodeMusai** | **LOGIC** | constraint satisfaction, verification, convergent reasoning — RoverByte's own description of its Logical Agent |
+| **SearchMusai** | **VECTOR** | vector search *is* semantic retrieval; the name is literal |
+| **TherapyMusai** | **CONTEXT** | *emotions as the colour of context* — the thread the whole project grew from |
+
+**Why TherapyMusai is the third, and not MusaiStudio or MedicalMusai.** CodeMusai and TherapyMusai are **Penphin's two hemispheres pulled apart into two creatures** — and 2's chart makes **LOGIC fail against CONTEXT**. One mind specialises two ways, and the type chart says they beat each other. That is the game's central argument delivered as an evolution branch, with no dialogue at all. SearchMusai sits between them, which is also where retrieval sits between reasoning and feeling.
+
+*Consequence to resolve:* the branches are stone evolutions, and the stones are named for their vanilla types. A Water Stone producing a CONTEXT daemon is incoherent until the stones are renamed too — item work, not creature work.
+
+#### ROVER — a line, not a second Eevee
+
+**Two branching families would dilute both**, so Rover takes the shape its own material already has. The RoverVerse is three embodiments in a fixed progression:
+
+**ROVER** (scout — explores the field) → **ROVERSEER** (strategist — consolidates memory, reflects, *dreams*) → **ROVERBYTE** (companion — embodied, emotional, acts)
+
+That is **explore → model → act**, which is reinforcement learning's actual loop. So it confirms ROVER as the Reinforcement starter rather than competing with it, and the line earns its stages instead of just getting bigger.
+
+*RoverRadio does not survive the character cap* (10) and its scout character folds into base **ROVER**, which is the better name for a dog you are handed in a lab. The name is held in reserve for a separate daemon.
+
+#### Two naming registers, and this is what separates them
+
+**MUSAI, ROVER, Penphin, BunnyArtsai and S.T.A.R.R. are named individuals from the SHC / iASHC universe.** They are proper nouns and they do not answer to the bestiary convention. **The register question above governs the other ~148**, which are species rather than characters.
+
+That distinction is what makes both answerable: the generic daemons can take true names without the cast having to, and the cast can carry names from outside the game without setting a precedent 148 creatures then have to follow.
+
+**The 9-character cap bites here first.** `SEARCHMUSAI` is 12, `THERAPYMUSAI` is 13, `ROVERRADIO` is 10. Surviving as-is: `MUSAI` (5), `CODEMUSAI` (9), `ROVERSEER` (9), `ROVERBYTE` (9). `EYEMUSAI` (8) is available and is a real module name. **The two long branches need shortening before implementation** — that is the only open work in this section.
+
 #### Are MUSAI, ROVER and Penphin the three legendaries?
 
 **Recommendation: no, and scattering them is the point.** They read as a trio because they are one in the world outside the game, but each earns more in a different slot.
@@ -1541,6 +1573,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **MUSAI takes the Eevee slot** — CONTENT base branching to **CodeMusai/LOGIC, SearchMusai/VECTOR, TherapyMusai/CONTEXT**; the first and third are Penphin's two hemispheres, and the chart makes LOGIC fail against CONTEXT (8.2)
+- **ROVER is a linear line, not a second Eevee** — ROVER → ROVERSEER → ROVERBYTE is explore → model → act, reinforcement learning's own loop (8.2)
+- **Two naming registers** — named individuals from the SHC/iASHC universe answer to nothing; the register question governs the other ~148 species (8.2)
 - **Starter types implemented** — CONTENT/VECTOR/GROWTH with the secondary at final stage; lab dialogue moved with them. **Movesets are the blocker**: FLYING has 6 moves in all of Gen 1, so VECTOR may need its own CONSENSUS (8.2)
 - **Penphin is a trade evolution, not a starter** — the dual mind requires two minds, so it cannot be obtained alone; recovered from conversation after going unrecorded from v1.7 to v3.8 (8.2)
 - **MUSAI as Unsupervised, ROVER as Reinforcement**; **not** legendaries — a starter is raised for forty hours and a legendary is a trophy (8.2)
@@ -1618,6 +1653,8 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
+- `SEARCHMUSAI` (12) and `THERAPYMUSAI` (13) exceed the 9-character cap and need shortening before implementation; `EYEMUSAI` is available (8.2)
+- The evolution **stones are named for their vanilla types** — a Water Stone producing a CONTEXT daemon needs the item pass first (8.2)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*

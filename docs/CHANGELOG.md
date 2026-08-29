@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### MUSAI and ROVER are in — and they take different shapes
+
+- **MUSAI is the Eevee slot.** Eevee is NORMAL, which is **CONTENT** — a mind that has not specialised, becoming what it is exposed to. Branches: **CodeMusai/LOGIC**, **SearchMusai/VECTOR**, **TherapyMusai/CONTEXT**
+- **The third branch is TherapyMusai for a structural reason.** It and CodeMusai are Penphin's two hemispheres pulled into two creatures, and section 2's chart makes **LOGIC fail against CONTEXT** — the central argument delivered as an evolution branch with no dialogue
+- **ROVER is a linear line, not a second Eevee.** Two branching families dilute both. **ROVER → ROVERSEER → ROVERBYTE** is explore → model → act, reinforcement learning's own loop, which confirms ROVER as the Reinforcement starter
+- **Two naming registers, and it resolves the open question.** MUSAI, ROVER, Penphin, BunnyArtsai and S.T.A.R.R. are named individuals from the SHC/iASHC universe and answer to no convention. The register question governs the other ~148 species
+- **Blocked on the 9-char cap:** `SEARCHMUSAI` (12) and `THERAPYMUSAI` (13). `EYEMUSAI` (8) available. Also the evolution stones are named for vanilla types, so a Water Stone producing a CONTEXT daemon needs the item pass first
+
 ### Starter types implemented (9.2 step 9, partial)
 
 - **CONTENT → CONTENT/LOGIC**, **VECTOR → VECTOR/LATENT**, **GROWTH → GROWTH/SIGNAL**, across all nine base-stat files. Verified by reading the base-stat table back out of the ROM
