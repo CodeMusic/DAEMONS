@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The routes get their local names
+
+- **Thirteen signs, every route that has one** — 1, 2, 3, 4, 9, 12–19. 3.2's device built exactly as specified: **the official plate untouched, the local name arriving underneath as `Painted beneath:`**
+- **The institution's name is cast into the sign; the residents' name is added to it.** That is the difference 3.2 is about, made physical for free
+- **The Bleed, Underpaint, Ashfall, The Wash, The Dapple, The Drift, Slack, Brackish, The Muddle, The Streak, Seafade.** Routes 16–18 all read **THE STREAK** — one cycling road, three signs
+- This clears a line item from **8.1's vertical slice**
+
 ### v9.6 — the rumour that shaped a schedule
 
 - **New 7.15, the space audit.** Every earlier claim that the music banks were full was **estimated, carried forward, and never measured.** Measured now: **901 bytes free before this session, 3792 after — having added six tracks**

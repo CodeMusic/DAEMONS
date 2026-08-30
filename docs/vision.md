@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.6**
+**A `pokered` total conversion — the living design bible, v9.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -502,6 +502,10 @@ Cities are colors. **Routes are what happens between colors** — bleeding, fadi
 ```
 
 The institution navigates by content. The residents navigate by context. The player learns both and starts using the second. Index-blindness extended into cartography, for the price of one sign-text pass.
+
+**Built 2026-08-30 — thirteen signs, every route that has one.** The official plate is untouched; the local name arrives underneath it as **`Painted beneath:`**. **The institution's name is cast into the sign and the residents' name is added to it**, which is the difference the section is about, made physical for free.
+
+*Routes 16–18 all read* **THE STREAK** *and that is not an error* — it is one cycling road with three signs on it.
 
 | # | Local name | Connects | Note |
 |---|---|---|---|
@@ -2659,6 +2663,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | Sprites | `gfx/pokemon/front/`, `gfx/pokemon/back/` | **the bottleneck** |
 | Map names | `data/maps/names.asm`, `constants/map_constants.asm` | trivial |
 | Map layouts | `maps/*.blk`, `data/maps/headers/`, `data/maps/objects/` | medium |
+| Route signage, number plus local name | `text/Route*.asm` | **done 2026-08-30** |
 | Dialogue, signs, witnesses | `text/` | bulk |
 | BIND verb and the flat message | `text/` — catch strings; also `data/` menu labels | trivial |
 | Greyscale ramp everywhere but Umbra | palette data; one map differs | medium, specialist |
