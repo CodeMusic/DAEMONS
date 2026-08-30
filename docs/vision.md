@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.1**
+**A `pokered` total conversion — the living design bible, v6.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -657,6 +657,16 @@ So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen
 **The player blames an organisation for most of the game and then meets a procedure.** That is the fall and the rise, in the order vanilla already puts them, using structure that exists.
 
 *Which also explains something about Al.* 4.3 insists he is not a brat and not a villain — that is **Act 2's reading of him**, applied from the first hour. It is correct and it may be why he reads thin early. He does not need to become a brat; he needs Corpus to be loud enough around him that his ordinariness registers as a choice.
+
+#### Corpus exists now — implemented 2026-08-30
+
+**Act 1 needed an organisation worth blaming, and it was not in the game.** 67 player-visible strings across 36 files still said ROCKET, including the trainer class name.
+
+**ROCKET and CORPUS are both six characters**, so the whole rename cost nothing — not one line rewrapped, and labels are mixed-case and prefixed so `\bROCKET\b` could not reach them.
+
+**Two lines needed more than a swap, and the fix was the register.** Vanilla's *"a ROCKET"* works because Rocket is a team name; **"a CORPUS" does not, because corpus is a mass noun.** Dropping the article fixes the grammar and lands the voice at once: a corporation does not say someone is *a* Corpus, it says they **are Corpus**. Craft rule 6 arriving through a bug.
+
+**Still to do: the register pass.** The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
 
 #### The two accounts, kept
 

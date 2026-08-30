@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### CORPUS exists
+
+- **TEAM ROCKET → CORPUS.** 67 player-visible strings across 36 files, including the trainer class name. Act 1 needs an organisation worth blaming and it was not in the game
+- **Free rename** — both words are six characters, so nothing rewrapped and no line moved. Labels untouched
+- **Two lines needed the register, not a swap.** *"a ROCKET"* works because Rocket is a team name; *"a CORPUS"* does not, because corpus is a mass noun. Dropping the article fixes grammar and voice together: a corporation says you **are** Corpus
+- **Next: the register pass.** Corpus exists but still talks like thugs. Rule 6 wants *cheerful and absurd* — which is how Act 1 gets loud without getting menacing, and the best cover rule 1 has
+
 ### Two acts — the fork was never a fork
 
 - **The opera is *The Fall of Blind Ambition* then *The Rise of Perspective Thinking*.** Blame resolves in Act 2, so the scheming Scorn is Act 1's Scorn rather than the verdict. The source already treats blame as a stage, which is 4.10's move
