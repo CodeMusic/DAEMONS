@@ -70,6 +70,28 @@ def main():
     if 'NO AUDIO' in txt.upper():
         sys.exit("answer says NO AUDIO -- the file did not reach Gemini. Nothing to convert.")
 
+    # A model that cannot hear the file will sometimes hand back an earlier
+    # answer instead of refusing. Track 06 came back as track 08's hook with
+    # one note appended, in the same key. Neither the NO AUDIO gate nor a
+    # width check catches that; only comparing against what we already have.
+    KNOWN = {
+        "Crystal / Lament":       "A4 E5 D5 C5 B4 C5 D5",
+        "Scorn / Fit for Work":   "D4 D4 F4 F4 G4 G4 A4",
+        "Scorn / Solution":       "G4 C5 E5 D5 C5 B4",
+        "S.T.A.R.R. / Slumber":   "C#5 F#5 E5 D5 C#5 B4 A4",
+        "Ty / Fox in Shadows":    "G#4 G#4 A4 B4 G#4 F#4 E4",
+        "the reprise":            "D4 D4 F4 A4 G4 F4 D4",
+        "Echoes of the Algorithm":"F4 G4 Ab4 Bb4 C5 C5",
+    }
+    hk = (field('HOOK') or '').split()
+    for name, prev in KNOWN.items():
+        pv = prev.split()
+        n = sum(1 for a, b in zip(hk, pv) if a == b)
+        if n >= 4 and n >= min(len(hk), len(pv)) - 1:
+            print("  !! this hook matches %s in its first %d notes." % (name, n))
+            print("     A model that cannot hear the file may return an earlier")
+            print("     answer. Re-run with the audio attached before using it.")
+
     key, tempo, hook, bass = field('KEY'), field('TEMPO'), field('HOOK'), field('BASS')
     if not hook: sys.exit("no HOOK field found")
     for label, val in (('KEY', key), ('TEMPO', tempo)):
