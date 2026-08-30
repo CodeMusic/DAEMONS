@@ -37,11 +37,13 @@ A few rules the project holds itself to, in case they're useful to anyone buildi
 
 ## Status
 
-**Early.** Design is well ahead of implementation. Nothing is playable yet.
+**Design is still ahead of implementation, but the slice is walkable.**
+
+You can play **Blanche Town → The Bleed → Callow → The Undertone → Underpaint → Slate → Benchmark 1** end to end. The type chart is in and complete, the routes carry both their names, several towns have their own music, and the story's documents are where they belong — a requisition, a set of minutes, a carving, an engraving, none of them signed and none of them explained.
+
+**What is not done:** the creatures still have their Kanto names, and their sprites are the real bottleneck. The bestiary is twelve daemons, not 151 — enough ROM hacks have died designing a full roster before shipping a single town.
 
 See [`docs/`](docs/) for the design bible, which is the honest picture of where this stands — including the decisions that were reversed and why.
-
-Current focus is a vertical slice: three towns, one gym, twelve daemons, playable end to end. The 151-creature bestiary comes after that or not at all. Enough ROM hacks have died designing a full roster before shipping a single town.
 
 ## Building
 
@@ -52,6 +54,37 @@ git clone https://github.com/CodeMusic/DAEMONS.git
 cd DAEMONS && ./setup.sh
 make content
 ```
+
+| Command | What it does |
+|---|---|
+| `make content` / `make context` | build an edition |
+| `make play` | build CONTENT and launch it in an emulator |
+| `make play-debug` | the same, with debug mode compiled in |
+| `make vanilla-check` | prove the toolchain against pristine upstream |
+| `./bindDaemons.sh [content\|context] [--clean] [--debug]` | what the play targets call |
+
+**When a build breaks, run `make vanilla-check` first.** It builds pristine
+`upstream/master` in a throwaway worktree and checks the hashes without touching
+your branch. If vanilla matches, the toolchain is fine and the break is ours.
+
+### Debug mode
+
+`pokered` has always carried a full debug mode behind its `_DEBUG` define, and
+upstream only ever wired it to a Blue build. Both editions can now use it:
+
+```sh
+./bindDaemons.sh content --debug
+```
+
+- **SELECT on the title screen** opens the debug menu — start a game with a
+  party in hand and fly-anywhere enabled
+- **Hold B** to skip trainer battles, the Safari step counter, and some NPC
+  scripts
+
+It builds a **separate ROM with its own save** (`daemonsContentDebug.gbc`), so a
+debug run never touches a real playthrough, and it is deliberately not part of
+`make all`. Its starting party is upstream's, so expect Kanto names in it — it
+is for reaching places quickly, not for judging how the game feels.
 
 `setup.sh` clones the engine beside this repo, wires `upstream` to pret, and
 creates the gitignored `engine/` symlink — because **a symlink does not survive
