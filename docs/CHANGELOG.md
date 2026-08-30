@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The box ladder, implemented — it never had been
+
+- **`USERBOX / ADMINBOX / SUPERBOX / ROOTBOX`** replace POKé/GREAT/ULTRA/MASTER BALL. 1.1 settled this ladder early and **nothing had implemented it**: 36 player-visible strings across 19 files still said *ball*
+- Found by a playtest walking up to a lab table and being told *"Those are POKé BALLs."*
+- **SAFARI BALL → GUESTBOX.** The ladder implies it and nobody had written it down: the Safari Zone is restricted, temporary, expiring access. A guest account
+- **One line was arguing against 1.3.** *"They contain #MON!"* — a box does not contain, it hosts. Now **"Those are BOXes. DAEMONS run on them."** Same fix for *"They are inside the POKé BALLs"* → *"They are running on the BOXes."*
+- **"Wild #MONS live in tall grass!" → "UNBOUND DAEMONS run loose out here!"** — 1.1 defines a daemon as a process that *runs unattended*, so *live* was the wrong verb twice over
+- Three `catch` instances swept in the same lines; **57 remain** — 1.5's BIND verb was only ever applied to the battle messages
+- **Also fixed: `CRYSTAL: Hey! Wait!` was 19 characters** and overwrote the right border. A miss from the PROF.OAK → CRYSTAL pass, caught by measuring the touched files
+
 ### The box, built
 
 - **`tools/genbox.py`** replaces `gfx/sprites/poke_ball.png` (16×16) and `gfx/battle/balls.png` (32×8). Dimensions match vanilla exactly, so no engine code moved

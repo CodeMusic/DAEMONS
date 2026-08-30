@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.6**
+**A `pokered` total conversion — the living design bible, v4.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -296,6 +296,18 @@ The trainer *class* names — YOUNGSTER, BUG CATCHER, LASS — are untouched. Th
 The container was renamed and the verb was not, which left the lexicon saying *privilege escalation* and then *caught* — a word about grabbing an animal.
 
 **What the act actually is:** you weaken a background process and gain **persistent access to it at a permission level your box determines.** That is not capture. It is a handle on something that was already running.
+
+**The ladder was built 2026-08-29, and it had never been built at all.** 1.1 settled `USERBOX → ADMINBOX → SUPERBOX → ROOTBOX` early and nothing implemented it — the items were still POKé BALL, GREAT BALL, ULTRA BALL and MASTER BALL, and **36 player-visible strings still said *ball***, across 19 files. Found because a playtest walked up to a lab table and was told *"Those are POKé BALLs."*
+
+**SAFARI BALL became GUESTBOX**, which the ladder implies and nobody had written down: the Safari Zone is where you are given restricted, temporary, expiring access. A guest account.
+
+**And one line was actively arguing against this section.** *"Those are POKé BALLs. They contain #MON!"* — but a box does not **contain**. It hosts. So:
+
+> Those are BOXes. DAEMONS run on them.
+
+That is 1.3 delivered at the player's first sight of the object, in nine words, explaining nothing. The same fix applies to *"They are inside the POKé BALLs"* → **"They are running on the BOXes."**
+
+*Three `catch` instances were swept in the same lines* (1.5's verb), and **57 remain** — that pass was never done outside the battle messages.
 
 **The object, built 2026-08-29.** [`tools/genbox.py`](../tools/genbox.py) replaces the two ball sprites — `gfx/sprites/poke_ball.png` (16×16, the box on the ground) and `gfx/battle/balls.png` (32×8, four throw frames). Dimensions match vanilla exactly, so no engine code moved.
 
@@ -1710,6 +1722,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Species renamed: POKéMON → DAEMON / DAEMONS**, by repointing one string (`PlacePOKeText`), so 650 occurrences moved for free (1.2)
 - The Pokédex text token becomes literal **INDEX**; item prefixes become literal `POKé` pending their own renames (1.2)
 - **Catching is BINDING** — `bind()` and *binding a daimon*; the flat, uncongratulatory message register goes with it (1.1)
+- **The box ladder implemented** — USERBOX / ADMINBOX / SUPERBOX / ROOTBOX, plus **GUESTBOX** for the Safari Zone's restricted temporary access; 36 strings across 19 files, none of which had ever been touched (1.3)
+- **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
+- **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
 - **Blanche Town's theme written** — C major **pentatonic**, no F and no B, so it can form neither a leading tone nor a dissonance and has nothing to resolve (7.3)
 - **The *My Chromatic Year* mapping is recovered** — it maps **months** to semitones, not colours, but two tracks name colours (*Green:Blue F#*, *Blue G*) and those two anchor everything (7.1)
@@ -1804,6 +1819,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
 - **Callow and The Bleed share their music** with other maps, so 8.1's second theme needs new `songs.asm` entries first (7.3)
+- **57 `catch` / `caught` instances remain in dialogue** — 1.5's BIND verb was only ever applied to the battle messages (1.5)
 - **MOON STONE still wants a name** — tied to a place rather than a paradigm, so it belongs with the town pass (8.2)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
