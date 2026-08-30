@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Lines in the Sand — the music says it is an argument
+
+- **C minor, 125 BPM**, hook `C5 G4 Eb4 G4 C5 G4 Eb4 F4`
+- **It reverses direction three times.** Every other hook turns once or not at all; Crystal's Lament turns twice. The one song that *is* an argument is the only one that keeps changing direction — and turns is countable, not interpretive
+- **Two near-identical halves ending differently** — `C5 G4 Eb4 G4` then `C5 G4 Eb4 F4`. The same exchange repeated, landing somewhere else the second time
+- **Recorded, not placed.** 4.10 forbids staging this scene, so the motif has nowhere to go. It stands as evidence the structure was in the source all along
+
 ### The rumour, and a fabricated answer caught
 
 - **C# minor, 160 BPM**, hook `G#4 G#4 G#4 G#4 A4 G#4 F#4 E4` — on the *second* attempt

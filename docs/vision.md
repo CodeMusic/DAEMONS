@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.1**
+**A `pokered` total conversion — the living design bible, v7.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -706,6 +706,16 @@ The song runs the cat as a **classifier**: if a system predicts the state accura
 **4. She stops being *mom* and becomes *Crystal*.** He switches to the professional register mid-argument and she insists on the relationship. **4.3 already has Ty calling her by her full professional name at Quicksilver — this is where it starts.** The beat existed; now it has an origin.
 
 **5. Ty loses his colour.** She describes him greying — and 8.6 makes greyscale the whole design. **The one character described as losing colour is the one who stops being able to hold another frame.** Take the image, leave the sentence.
+
+#### The music says it is an argument
+
+**Transcribed 2026-08-30. C minor, 125 BPM**, hook `C5 G4 Eb4 G4 C5 G4 Eb4 F4`.
+
+**It reverses direction three times** — `-5 -4 +4 +5 -5 -4 +2`. Every other hook in the set turns once or not at all; Crystal's Lament turns twice. **The one song that is an argument is the only hook that keeps changing direction**, and *turns* is a countable property rather than a reading.
+
+**And it is built as two near-identical halves.** `C5 G4 Eb4 G4`, then `C5 G4 Eb4 F4` — **the same figure said twice, ending differently the second time.** That is what an argument is: the same exchange repeated, and the second pass lands somewhere else.
+
+*Recorded, not placed.* This is the song 4.10 forbids staging, so the motif has nowhere it could go without dramatising the scene. **It exists as evidence that the structure was always in the source**, which is the useful part.
 
 #### What it becomes in the game
 
