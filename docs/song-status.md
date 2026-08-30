@@ -34,9 +34,11 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 19 | Crystal's Reply ³ | A major | 128 | ✅ | ✅ | — |
 | 20 | Betrayal's Sting ³ | D minor | 128 | ✅ | ✅ | — |
 | 21 | Empire of Scorn ³ ⁴ | C minor | 135 | ✅ | ✅ | — |
-| — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | **The Undertone** |
+| — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | — ⁶ |
 | — | Whispers in the Wires ³ ⁵ | A minor | 128 | ✅ | ✅ | *never* — 4.21 |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
+
+⁶ *the **carving** is in The Undertone (4.20). The **music** is not.*
 
 ⁵ *cut from the opera, kept for what it carries — 4.20, 4.21.*
 
@@ -99,3 +101,35 @@ Fourteen hooks, and the properties that survived checking:
 **Four readings were retracted along the way**, three of them because a single
 transcription turned out to be wrong. *The lesson is in `vision.md` 7.11:* a
 control cannot rescue bad input.
+
+---
+
+## What is actually audible — the whole audio picture
+
+**Four music files differ from vanilla. Nothing else in the audio has been touched.**
+
+| Track | File | Plays at | Reached |
+|---|---|---|---|
+| **Blanche Town** + Crystal's motif (01) | `pallettown.asm` | Pallet Town, Red's/Blue's house, Hall of Fame | **from minute one** |
+| **The dark places** (05) | `dungeon3.asm` | **Mt. Moon** 1F/B1F/B2F, Rock Tunnel, Victory Road | just after Slate |
+| **Brazen** (07) | `brazen.asm` | Saffron City | mid-late |
+| **Quicksilver** + S.T.A.R.R. (08) + Ty (02) | `cinnabar.asm` | Cinnabar Island, the Lab and every room, the Mart | late |
+
+**Consequence for playtesting:** between Blanche and Slate there is **exactly one** new track,
+because Route 1, Viridian, Route 2, The Undertone and Slate are all still vanilla.
+**Mt. Moon is the second one.**
+
+### Untouched — every one of these is stock Gen 1
+
+| | |
+|---|---|
+| **Title / splash music** | `Music_TitleScreen`, vanilla |
+| **All 173 sound effects** | item, key item, heal, level-up, capture, save, denied, collision, PC, evolution — none altered |
+| **Battle themes** | wild, trainer, gym leader, champion, final battle |
+| **Everything else** | Centre, Mart, gym, every route and city not listed above |
+
+### Not yet placed
+
+- **Blocked on bank space** — 06, 10, and the Owl. Both music banks are full (7.x)
+- **Never, by decision** — 04 *Lines in the Sand* (4.10), *Whispers in the Wires* (4.21)
+- **Reviewed, no home assigned** — 03, 09, 11, 12, 14, 14.25, 14.5, 15, 16, 17, 18, 19, 20, and *Poly and Fields*
