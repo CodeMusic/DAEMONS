@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.6**
+**A `pokered` total conversion — the living design bible, v5.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1338,7 +1338,27 @@ Not a transposition, and not near one. **A confident, unprompted musical asserti
 
 **The format's other fields survived because they can be checked against each other.** Keep it that way: ask for measurements, derive relationships here, and treat any volunteered interpretation as a hypothesis with a test attached.
 
-### 7.13 Blanche Town, implemented
+### 7.13 The motifs, as woven in
+
+**Two are in the ROM as of 2026-08-29.** The rule for placement is *containment*: a motif may only go into a track whose maps all belong to it.
+
+| Motif | Track | Maps it touches | Status |
+|---|---|---|---|
+| **Crystal** | `Music_PalletTown` | Blanche, the houses, Hall of Fame | **in** |
+| **S.T.A.R.R.** | `Music_Cinnabar` | 7 maps, all Quicksilver | **in** |
+| Ty | `Music_Cinnabar` | same | next |
+| Halftone | `Music_Lavender` | 3 maps | free, no motif yet |
+| **Scorn / the procedure** | `MUSIC_CITIES1` | **37 maps** | **blocked** |
+
+**Blanche.** Crystal's hook enters as a B-section. A minor is C's relative minor, so it needs no modulation — and the audible event is that **the B-section brings `B`**, the one note the A-section's pentatonic never contains. 7.6's *reading* of that was retracted; the fact was not.
+
+**Quicksilver.** The motif is left on a held E and two bars of silence rather than resolved, because the thing is asleep. **Tempo dropped 144 → 110**, which is S.T.A.R.R.'s own: being unable to share the others' 128 was one of the three axes that separated it in 7.9, so keeping 144 would have discarded the finding to preserve a vanilla number. *That change also slows the existing melody in that track, which has not been replaced yet — a real side effect, and one for the ear rather than the arithmetic.*
+
+**Brazen is blocked, and it is the interesting problem.** Scorn's procedure motif — the only hook of seven that never descends — wants Brazen, the bought city. But Brazen shares `MUSIC_CITIES1` with **36 other maps**, so putting it there drops it under a third of the game. **It needs its own song**: a new constant, a header entry, a file, and one line in `songs.asm`. Small, but a decision rather than an edit, and the first time this project adds a track rather than replacing one.
+
+*Checking note, learned the hard way:* channel totals must count **`rest` lines too**, which carry no note name. The first verification of Blanche reported a 20-unit drift that did not exist.
+
+### 7.14 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 

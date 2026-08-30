@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The motifs go in
+
+- **Crystal into Blanche** (`Music_PalletTown`) as a B-section. A minor is C's relative minor so it needs no modulation; the audible event is that the B-section brings `B`, the note the pentatonic never had
+- **S.T.A.R.R. into Quicksilver** (`Music_Cinnabar` — 7 maps, all Quicksilver). Left on a held E and two bars of silence rather than resolved, because it is asleep
+- **Tempo 144 → 110** there, S.T.A.R.R.'s own. Being unable to share the others' 128 was one of the three axes separating it in 7.9. Side effect flagged: it also slows that track's existing melody
+- **Placement rule: containment.** A motif only enters a track whose maps all belong to it
+- **Brazen is blocked.** Scorn's procedure wants the bought city, but `MUSIC_CITIES1` covers **37 maps**. It needs its own song entry — the first track added rather than replaced
+- **Checking note:** channel totals must count `rest` lines, which carry no note name. The first Blanche check reported a 20-unit drift that did not exist
+
 ### The reprise — a stated claim fails, an unstated one holds
 
 - **D minor, 120 BPM**, hook `D4 D4 F4 A4 G4 F4 D4`, track 11
