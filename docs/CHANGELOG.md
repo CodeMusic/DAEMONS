@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### ScornSolutions Blues — Act 1 closes
+
+- **Re-scanned: E minor, 118 BPM**, hook `E4 G4 A4 B4 G4 A4 E4`, superseding the first scan. **Three direction changes**, tying *Lines in the Sand* for the most in the act — a pleasing accident, not a pattern. The only shuffle in the set
+- **The rebrand is named** — iASHC becomes Scorn Solutions, which is 4.10's step 3 with a name on it
+- **It exposes the smallest open item in the project.** The gilt sign says the old name shows under the gold leaf, **but this design has never named the lab.** It needs one — and iASHC should not be imported, since it carries nothing here
+- **BunnyArtsai travels by frame, not by place.** That confirms 4.6: vanilla had no designed route to Mew, and **a creature that moves through perspectives cannot be reached by walking** — the absence is correct, not a hole
+- **Act 2 is set up inside Act 1's last song** — the machine goes to find the man who could not hold a frame
+- **Act 1 complete: twelve tracks, twelve hooks, twelve readings**
+
 ### Crystal's Stand — the file, itemised
 
 - **Re-scanned: D minor, 128 BPM**, hook `D4 F4 G4 A4 F4 E4 D4`. Supersedes the first scan — the one that came with a false transposition claim, already suspect

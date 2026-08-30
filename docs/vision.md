@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.7**
+**A `pokered` total conversion — the living design bible, v7.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -680,6 +680,32 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **3. She understood, and it did not count.** *Crystal smiles, knowing what they found.* 4.6 says the event *was not understood at the time by anyone present* — and that survives, because **she was the only one present, and she had just been made unhearable.** The removal's real cost is not her career. It is that the one person who saw it had already been disqualified from saying so.
 
 *Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
+
+#### *ScornSolutions Blues* — Act 1 closes, and Act 2 is set up inside it
+
+**Re-scanned 2026-08-30. E minor, 118 BPM**, hook `E4 G4 A4 B4 G4 A4 E4`. **Supersedes the first scan**, which gave a different melody at 120.
+
+**It reverses direction three times** — tying *Lines in the Sand* for the most in the act. **The argument and the rebrand are Act 1's two most-reversing hooks**, which is a pleasing accident and nothing more; two data points is not a pattern. It is also the only hook described as a **shuffle**.
+
+#### The rebrand is named, and it exposes a gap
+
+**iASHC becomes Scorn Solutions.** That is 4.10's step 3 — *Scorn assumes control. Rebrand. The metric changes* — with the name attached.
+
+**And the game cannot render its own version of that yet.** The gilt sign at Quicksilver says the old name is visible under the gold leaf, **but the lab has never been named in this design.** The opera has iASHC; the game has an unnamed lab and an org called CORPUS. **The sign needs something underneath it**, and that is now the smallest open item in the project.
+
+*Do not simply import iASHC.* It is an acronym from another work and carries nothing in this one — 1's rule is that every term pays for itself twice. **The old name should be Crystal's**, and it should read as a research lab that had not yet learned to sell anything.
+
+#### BunnyArtsai moves through frames, not places
+
+The bridge and outro put her hopping between **perspectives** rather than locations — through what is unseen rather than through geography.
+
+**That confirms 4.6's strangest decision.** Vanilla had *no designed way to reach Mew at all*; the routes were a glitch and rumour filled the gap. **A creature that travels by frame cannot be reached by walking**, so the absence of a route to her is correct rather than a hole to be patched.
+
+#### And Act 2 is set up inside Act 1's last song
+
+S.T.A.R.R. free and looking for Ty; Ty in hiding; the two of them going back for Crystal. **The Rise of Perspective Thinking begins with the machine going to find the man who could not hold a frame** — which is the transmission failure being answered by the thing that inherited the capability instead.
+
+*Act 1 is now fully transcribed and read: twelve tracks, twelve hooks, twelve readings.*
 
 #### *Crystal's Stand* — the file, itemised
 
