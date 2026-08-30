@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### S.T.A.R.R.'s Revelation — the machine carries what could not pass
+
+- **C major, 120 BPM**, hook `E4 C5 B4 G4`. **Transcription flagged as thin** — 4 notes against a set of 6–8, one chord against four, and a `DOUBT` hedging on ballad phrasing rather than naming what it heard. No duplicate match, so not a reuse; wants a second pass. Nothing rests on it
+- **It finds Ty by inference**, not search — it works out where a man in his condition would go. Perspective-taking applied to a problem rather than argued about
+- **It completes 4.3 in the other direction.** 4.11 showed the machine *receiving* what Ty could not. This shows it *delivering* what she could not. **Neither passed directly; both pass through the thing she built**
+- **Not a reconciliation scene.** Ty is not forgiven and does not ask to be — he is told something true and acts on it. **The repair is a fact delivered, not a feeling exchanged**, which is the only version 4.3 allows
+
 ### Awakening S.T.A.R.R., and the Owl's slot settled
 
 - **F# minor, 128 BPM.** **It returns to 08's key at 10's tempo** — it wakes in the key it slept in, at the speed of the break, and is the only one of the three that rises in the middle rather than only falling from a leap

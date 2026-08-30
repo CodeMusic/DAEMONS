@@ -28,7 +28,10 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 14.25 | Desperate Shadows | F minor | 128 | ✅ | ✅ | — |
 | 14.5 | Quantum Translations | C major | 115 | ✅ | ✅ | — |
 | 15 | Awakening S.T.A.R.R. | F# minor | 128 | ✅ | ✅ | — |
+| 16 | S.T.A.R.R.'s Revelation | C major | 120 | ⚠ thin | ✅ | — |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
+
+⚠ *transcription is an outlier — 4 notes and one chord where the set runs 6–8 notes and four chords. Wants a second pass.*
 
 ² *re-scanned; the first transcription was superseded.* Three tracks needed a
 second pass, and two of those first answers were caught by the duplicate check

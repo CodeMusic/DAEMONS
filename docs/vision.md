@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.4**
+**A `pokered` total conversion — the living design bible, v8.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -733,13 +733,33 @@ It does not wake and then wonder what to do. **It wakes in order to act** — th
 
 And it names where it came from: her teaching, not her code. **4.11's handoff, stated by the thing that received it.**
 
-### 4.14 The Owl's slot — settled
+### 4.14 *S.T.A.R.R.'s Revelation* — the machine carries what could not pass
+
+**C major, 120 BPM**, hook `E4 C5 B4 G4`.
+
+**Its transcription is thin and wants a second pass.** Four notes where every other track has six to eight, and a single chord where every other has four — plus a `DOUBT` that hedges on ballad phrasing rather than naming anything heard. It tripped no duplicate check, so it is not a reuse; **it reads as a low-confidence answer rather than a genuinely spare song.** Nothing below depends on it.
+
+#### It finds Ty by inference
+
+The machine does not search for him. **It works out where a man in his condition would go**, and goes there. That is perspective-taking put to practical use — the capability 4.6 names, applied to a problem rather than argued about.
+
+#### And it completes 4.3 in the other direction
+
+4.3's transmission failure is that **understanding does not survive a handoff; only method does.** 4.11 showed the machine receiving what Ty could not. **This shows it delivering what she could not.**
+
+She could not reach her son. **The thing she built carries her message to him and it lands.**
+
+**So the machine is the medium for both halves of what failed between them** — it holds her understanding, and it hands over her love. Neither passed directly. Both pass through the thing she made, which is the most complete answer the corpus gives to the question 4.3 poses.
+
+*And it is not a reconciliation scene.* Ty is not forgiven and does not ask to be; he is told something true and acts on it. **The repair is a fact delivered, not a feeling exchanged** — which is the only version 4.3 would allow, since a feeling exchanged is exactly what does not transmit.
+
+### 4.15 The Owl's slot — settled
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
 *The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
 
-### 4.15 Where the Owl goes — and the timeline is not the map
+### 4.16 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -749,7 +769,7 @@ And it names where it came from: her teaching, not her code. **4.11's handoff, s
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.16 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.17 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 
