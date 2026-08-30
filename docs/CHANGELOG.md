@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Ty's Dilemma — the error everyone makes
+
+- **Ty doubted before the removal and went anyway.** This inverts 4.3, which had him understanding too late. He was not deceived then sorry — he could see it and continued. His Quicksilver line becomes **"I knew"** rather than "I realise now"
+- **He wanted her name back, not power.** 4.1 has her building the Index to be taken seriously — so mother and son wanted the same thing and both reached for a flattened metric. She built the measuring engine; he climbed the man who ran it
+- **The error is structural and it includes the player.** Crystal, Ty, Scorn, Al and the person holding the cartridge all optimise something flattened. **4.2's "Index irony" is really the player's turn at the family mistake** — and the last room is the woman from hour one recording them into it
+- **Guilt is Ty's and it is contemporaneous, not aftermath** — it grows while the ambition does. That strengthens **gilt** as the Quicksilver rebrand signage: gold over base metal, which he helped put up while already doubting
+- No Gemini pass needed — the transcription exists from the earlier round (E major, 124, arch)
+
 ### CORPUS exists
 
 - **TEAM ROCKET → CORPUS.** 67 player-visible strings across 36 files, including the trainer class name. Act 1 needs an organisation worth blaming and it was not in the game

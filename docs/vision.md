@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.2**
+**A `pokered` total conversion — the living design bible, v6.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -636,6 +636,30 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **2. Scorn's method on Ty is *data poisoning*, and 5 already teaches it.** Benchmark 5 at Lurid is **CORRUPT — bias and poisoning**, whose mechanical lesson is *status effects that make your own moves unreliable.* **The benchmark that teaches poisoning is teaching the player what was done to Ty**, three cities before they can know it. Free, already built, and nobody says a word.
 
 **3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
+
+#### *Ty's Dilemma*, and the error everyone makes
+
+**Reviewed 2026-08-30.** Act 1 is *The Fall of Blind Ambition*, and the song's own account of the fall is that **nobody in it is bad** — they optimised for a flattened metric. That is Goodhart, which is already cast into the Corpus lobby floor, and it turns out to describe the entire cast rather than the organisation.
+
+**1. Ty doubted before the removal, and went anyway.** This inverts 4.3. The design had him understanding *eventually* and returning too late; the song has the doubt arriving **before** Scorn takes over and before she is removed. So he was not deceived and then sorry — **he could see it and continued.** That is what blind ambition means: not blindness, but declining to look.
+
+*Consequence for his scene:* his line at Quicksilver is **"I knew"**, not "I realise now." Much harder, and it costs nothing to write.
+
+**2. He was trying to get her name back.** Not power for himself. **4.1 says she built the Index in order to be taken seriously** — being credible is precisely what she lacked. **Mother and son wanted the same thing and both reached for a flattened metric to get it.** She built the measuring engine; he climbed the man who ran it.
+
+**3. So the error is the structure, not a character trait — and it includes the player.**
+
+| | Wanted | Reached for |
+|---|---|---|
+| **Crystal** | to be taken seriously | a taxonomy engine that measures only content |
+| **Ty** | to restore her name | the ladder of the man who flattened the metric |
+| **Scorn** | throughput, legibly | a number that went up |
+| **Al** | to be right | the method, faithfully, with nothing inside it |
+| **The player** | to complete it | **an Index that cannot hold what matters** |
+
+**Four people and the person holding the cartridge make the same mistake in five forms.** 4.2 called the Index's insufficiency an irony; it is not an irony, it is **the player's turn at the family error**. Nobody says so, and the last room of the game is the woman from hour one recording them into it.
+
+**4. Guilt is his, and it is contemporaneous — not aftermath.** The word is in the source and it grows *while* the ambition does. That strengthens **gilt** as the Quicksilver rebrand signage rather than as a city: gold laid over base metal, which he helped put up while already doubting.
 
 #### The opera is in two acts, and that dissolves the fork
 
