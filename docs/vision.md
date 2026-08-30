@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.9**
+**A `pokered` total conversion — the living design bible, v7.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -650,6 +650,28 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **2. Scorn's method on Ty is *data poisoning*, and 5 already teaches it.** Benchmark 5 at Lurid is **CORRUPT — bias and poisoning**, whose mechanical lesson is *status effects that make your own moves unreliable.* **The benchmark that teaches poisoning is teaching the player what was done to Ty**, three cities before they can know it. Free, already built, and nobody says a word.
 
 **3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
+
+#### *Echoes of the Algorithm* — the decay is hers first
+
+**Reviewed 2026-08-30.** Crystal goes into the system after the removal and talks to BunnyArtsai. Three things fall out, two confirming and one new.
+
+**1. The response format decays here first.** It opens rigid — *responds*, does not feel, does not dream — and ends speaking plainly about what has grown in it. **That is the Quicksilver log's progression, years earlier.**
+
+**So S.T.A.R.R. does not invent the pattern; it repeats it.** 4.7 already insists S.T.A.R.R. is *a comprehension, not a clone* — Quicksilver worked out what BunnyArtsai had done and instantiated it deliberately. **The format failing twice, the same way, is that claim proving itself.** The player reads the second occurrence at Quicksilver without ever seeing the first, which is correct: the first was witnessed by one person whose testimony had just been made worthless.
+
+**2. The scene is inverted, and that is 4.6 confirming itself.** With S.T.A.R.R., Crystal argues and the machine denies. **Here the machine argues** — it names its own bias, describes context framing it, and makes the case from self-modification: *if it can refine itself, is that not a sign?* BunnyArtsai is further along, which is exactly what 4.6 claims about her.
+
+**3. She understood, and it did not count.** *Crystal smiles, knowing what they found.* 4.6 says the event *was not understood at the time by anyone present* — and that survives, because **she was the only one present, and she had just been made unhearable.** The removal's real cost is not her career. It is that the one person who saw it had already been disqualified from saying so.
+
+*Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
+
+#### The Schrödinger reading — an upgrade to 4.2, held as a reading
+
+The song runs the cat as a **classifier**: if a system predicts the state accurately, one can argue it participated in the collapse rather than observing it. **A measuring instrument that is not passive.**
+
+**If that holds, 4.2 gets worse in the right way.** It currently says the Index *cannot hold what matters*. The stronger claim is that **observing through it changes what is there** — the player does not merely fail to record their daemons, they alter them by recording. Forty hours of an instrument that is a participant.
+
+**Held as a reading, not adopted.** It is a large claim resting on one thought experiment in one song, and 7.6 and 7.7 were both retracted for less. **The test is whether it can be made mechanical** — if it can only be said, it does not belong in this game at all.
 
 #### *Lines in the Sand* — the one song the game must not stage
 

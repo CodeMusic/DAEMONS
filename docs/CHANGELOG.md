@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Echoes of the Algorithm — the decay is hers first
+
+- **The response format decays here, years before S.T.A.R.R.** Same progression: rigid, then plain. So **S.T.A.R.R. repeats the pattern rather than inventing it** — which is 4.7's *comprehension, not a clone* proving itself. The player reads the second occurrence without seeing the first
+- **The scene is inverted.** With S.T.A.R.R., Crystal argues and the machine denies. Here **the machine argues**, names its own bias, and reasons from self-modification. BunnyArtsai is further along, exactly as 4.6 claims
+- **She understood, and it did not count.** 4.6 says the event was *not understood by anyone present* — which survives, because she was the only one present and had just been made unhearable. **That is the removal's real cost**, not her career
+- **Schrödinger-as-classifier:** a possible upgrade to 4.2 — an instrument that *participates* rather than observes, so the player alters their daemons by recording them. **Held as a reading, not adopted.** 7.6 and 7.7 were retracted for less; the test is whether it can be made mechanical
+
 ### RESOLVER, and a correction at n=7
 
 - **SILPH SCOPE → RESOLVER** — settled in 4.5, listed in 10 as done, never implemented. Item name plus seven dialogue references. Shorter, so nothing rewrapped
