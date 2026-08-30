@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.0**
+**A `pokered` total conversion — the living design bible, v6.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -637,7 +637,28 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
 
-#### The fork: the song's Scorn schemes, and this design refuses to let him
+#### The opera is in two acts, and that dissolves the fork
+
+**Act 1 is *The Fall of Blind Ambition*. Act 2 is *The Rise of Perspective Thinking*, and it is where the blame resolves.**
+
+So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen through blame.** The source already treats blame as a stage to be passed through rather than a conclusion, which is exactly the move 4.10 makes and the reason the two never actually conflicted.
+
+**The game's whole arc is Act 2's title.** The player begins with a villain and arrives at a process. That *is* the rise of perspective thinking — and 4.6 names the capability. **Performed by the player rather than narrated at them**, which is the only way it lands.
+
+#### The risk this creates, and the fix is already in vanilla
+
+**A rise needs a fall first.** If the game presents 4.10's careful, unconvictable Scorn from the beginning, the player has **nothing to let go of** — no blame to release, so no release. Perspective thinking with nothing to switch away from is just a flat account.
+
+**Divide it between the organisation and the man.**
+
+- **Corpus carries Act 1.** It inherits vanilla's Rocket structure — grunts, a tower, a tower's worth of grievance. Let it read as villainous for seven benchmarks. The player should *want* someone to blame, and be given somewhere to put it.
+- **Scorn carries Act 2.** At the end, behind the door from hour one, the villain turns out to be a man whose every step would be praised in a performance review, and a form he signed about a person he never met.
+
+**The player blames an organisation for most of the game and then meets a procedure.** That is the fall and the rise, in the order vanilla already puts them, using structure that exists.
+
+*Which also explains something about Al.* 4.3 insists he is not a brat and not a villain — that is **Act 2's reading of him**, applied from the first hour. It is correct and it may be why he reads thin early. He does not need to become a brat; he needs Corpus to be loud enough around him that his ordinariness registers as a choice.
+
+#### The two accounts, kept
 
 The lament gives Scorn cunning, whispered lies and deceit. **4.10 is emphatic in the other direction** — no scheme, the paperwork is the antagonist, every step legible and praiseworthy in review.
 

@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Two acts — the fork was never a fork
+
+- **The opera is *The Fall of Blind Ambition* then *The Rise of Perspective Thinking*.** Blame resolves in Act 2, so the scheming Scorn is Act 1's Scorn rather than the verdict. The source already treats blame as a stage, which is 4.10's move
+- **The game's arc is Act 2's title.** The player starts with a villain and arrives at a process — perspective thinking performed rather than narrated
+- **The risk: a rise needs a fall.** Presenting 4.10's careful Scorn from hour one leaves the player nothing to release
+- **The fix is already in vanilla.** **Corpus carries Act 1** — it inherits the Rocket structure, and should read as villainous for seven benchmarks. **Scorn carries Act 2** — behind the door from hour one, a man whose every step would be praised, and a form he signed about someone he never met
+- **It also explains Al.** 4.3's "not a brat, not a villain" is Act 2's reading applied from the first hour. He does not need to become a brat; Corpus needs to be loud enough around him that his ordinariness registers as a choice
+
 ### Crystal's Lament, read against the design
 
 - **They led together first.** Crystal and Ty ran the lab side by side before Scorn — so Ty *had* the understanding and lost it. The transmission failure becomes a loss rather than an absence
