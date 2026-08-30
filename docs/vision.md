@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.5**
+**A `pokered` total conversion — the living design bible, v6.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -728,7 +728,25 @@ So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen
 
 **Two lines needed more than a swap, and the fix was the register.** Vanilla's *"a ROCKET"* works because Rocket is a team name; **"a CORPUS" does not, because corpus is a mass noun.** Dropping the article fixes the grammar and lands the voice at once: a corporation does not say someone is *a* Corpus, it says they **are Corpus**. Craft rule 6 arriving through a bug.
 
-**Still to do: the register pass.** The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
+**Done 2026-08-30: the register pass.** Mt Moon and all eleven floors of Brazen — roughly 70 rewritten lines. **The consistent move is that hostility becomes procedure**, because a player discounts menace and does not discount politeness.
+
+| Was | Is |
+|---|---|
+| *Stop right there! Don't you move!* | **Please wait here. Someone will be with you shortly.** |
+| *I'll call for backup!* | **I will have to raise a ticket.** |
+| *My brothers will avenge me!* | **My colleagues will follow up.** |
+| *You made me mad! We'll blacklist you!* | **I've flagged you internally. CORPUS has a process for this.** |
+| *We are #MON gangsters!* | **CORPUS is a people-first organisation! The DAEMONS are inventory.** |
+
+**Two land harder than the rest, and neither needed inventing.** On 9F a grunt observes that your daemons seem *engaged*, and adds that theirs are **resources** — 4.4's error stated by someone who does not know it is one. And on 11F the last man before the boardroom says the BOSS **sets a high bar**, which is true in the way he does not mean it: 5 makes Benchmark 8 Scorn, and he set the bar the player has been measured against all game.
+
+**The gameplay hints survive as workplace chatter.** Teleport tiles are transport pads Facilities installed; the CARD KEY is something to ask your manager for.
+
+**Two lines kept unchanged, deliberately.** Mt Moon's fourth grunt still says daemons lived there long before people — craft rule 2's *one NPC nearly notices* — though now in the company's words. And the grunt on 11F who says *"Don't... Please!"* is **the only one who breaks register**, at the top of the building, in front of the door. Everyone else stays in the voice.
+
+*Still to do:* the Game Corner basement, Halftone Tower, and Brazen's street-level dialogue.
+
+**Still open: the evaluation record.** The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
 
 #### The two accounts, kept
 

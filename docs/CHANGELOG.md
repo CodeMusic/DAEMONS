@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The register pass — Mt Moon and all of Brazen
+
+- **~70 lines rewritten** across Mt Moon and eleven floors of Silph Co. Corpus held its headquarters and still talked like Team Rocket
+- **The move: hostility becomes procedure.** *"Stop right there!"* → *"Please wait here. Someone will be with you shortly."* *"I'll call for backup"* → *"I will have to raise a ticket."* *"My brothers will avenge me"* → *"My colleagues will follow up"*
+- **Two land hardest and neither was invented.** 9F: your daemons seem *engaged*, theirs are **resources** — 4.4's error from someone who doesn't know it is one. 11F: the BOSS **sets a high bar** — true in the way he doesn't mean, since Benchmark 8 is Scorn
+- **Hints survive as workplace chatter** — transport pads Facilities installed, a CARD KEY to ask your manager for
+- **Two lines kept unchanged.** Mt Moon's fourth grunt still notices daemons were there first (rule 2), and 11F's *"Don't... Please!"* is the only break in register, in front of the boardroom door
+
 ### Scorn's Solution — he announces it
 
 - **Act 1's Scorn conceals nothing.** The chorus is him naming his method, in a major key. The song was already measured as *bouncy, driving, major* — it is a confession nobody hears as one
