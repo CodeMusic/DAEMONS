@@ -17,6 +17,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Poly is polymath — the removal mechanism, found
+
+*Corrects v9.1's reading. **Poly** is polymath and **fields** are disciplines, and that is the reason Crystal was pushed out — the piece that had been missing since the question was first raised.*
+
+- **Crystal moves between disciplines mid-argument** because to her they are one continuous surface. **Ty and Richard hold one field each**, and from inside one field, fluent movement between several is indistinguishable from incoherence. ***I cannot follow this* is identical to *this does not follow* unless you hold the second discipline.** Nobody lied, nobody was stupid, nobody conspired
+- **The observation was true. Only the inference was wrong.** *Moves between unrelated fields without completing an argument* is accurate — **the wrong word is "unrelated"**, and only a second field tells you so
+- **Which makes it the same crime as the CC-7 requisition, twice.** *IMPROVE RESPONSE CONSISTENCY* is also technically accurate. **One form describes damage in the vocabulary of an improvement; the other describes competence in the vocabulary of a symptom.** This is what 4.10 means by the paperwork being in order
+- **It settles the standing problem with no clinical word at all.** The process is *field-switching*; the game never reaches for anything else
+- **The Clarifier is a polymath in hardware.** She built the one instrument that would not file minutes about her — and **Scorn then performed on it the exact operation that had been performed on her: reduce many fields to one.** The form he filed asks it for *consistency*, the property whose absence got her removed. So **4.13's awakening is the machine becoming polymathic again**
+- **Built.** The Meeting Room door at Quicksilver is now the minutes: *Item 4… Two present could not follow. Recorded as unable to hold a single thread.* **Two doors, two honest documents** — R-and-D holds the requisition, the Meeting Room holds the assessment. **Neither sentence makes the argument; the gap between them does**
+
 ### Poly and Fields — where the chart comes from
 
 *Cut from the opera, and it carries the one thing the corpus was missing: an origin that is not corporate.*

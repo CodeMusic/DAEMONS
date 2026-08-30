@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.1**
+**A `pokered` total conversion — the living design bible, v9.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -949,13 +949,41 @@ Not a technique, not a method, not something taught at a benchmark. **Somebody w
 
 *And the process word arrives as arithmetic.* The song says **integrating**, and means calculus. 4.10's craft rule is to name the process rather than the pathology — **and here the correct word turns up innocently, in a maths lesson, decades before anyone needed it clinically.**
 
-#### Polynomials over fields
+#### Poly is polymath, and fields are disciplines
 
-**Poly and fields** are polynomials and fields: the point where relations between things stop being arbitrary and become **lawful and closed.** Branching paths, and every branch obeys the same rules.
+**This is the removal mechanism, and it had been missing.**
 
-**That is a type chart.** Each thing, and what it does to each other thing, in rows.
+**Crystal is a polymath.** She moves between disciplines mid-argument — engineering into quantum physics into whatever the problem actually needs — because to her they are one continuous surface.
 
-**So the game's central artifact gets a pastoral origin.** It was not designed in a corporation to sort daemons for use. **It was found carved on a stone by a child who was lonely and good at maths** — and the corporate reading of it came much later, from people who did not earn it.
+**Ty and Richard are not polymaths.** They hold one field each, and **from inside one field, fluent movement between several is indistinguishable from incoherence.**
+
+**"I cannot follow this" is identical to "this does not follow" unless you happen to hold the second discipline.** That is the whole of it. Nobody lied, nobody was stupid, and nobody needed to conspire.
+
+#### The observation was true. Only the inference was wrong.
+
+The line on the form — *moves between unrelated fields without completing an argument* — **is accurate.** She does. **What is wrong is the word "unrelated"**, and only a second field tells you so.
+
+**Which makes this the same crime as the CC-7 requisition, committed twice** (4.18). *IMPROVE RESPONSE CONSISTENCY* is also technically accurate. **One form describes damage in the vocabulary of an improvement; the other describes competence in the vocabulary of a symptom.** Neither is false. Both are catastrophic. **This is what 4.10 means when it says the paperwork was in order.**
+
+*And it settles the standing problem without a single clinical word.* 4.10's craft rule is to name the process, not the pathology. **The process here is field-switching**, and the game never has to reach for anything else — because from their point of view she had lost the plot, and the minutes only ever record that two people could not follow.
+
+#### The Clarifier is a polymath in hardware
+
+**A clarifier holds several fields at once and resolves across them.** That is 2.5, and it is also a description of Crystal.
+
+**She built the thing that could follow her.** Of course she did — it is the one instrument in the building that would not file minutes about her.
+
+**And then Scorn weighted it toward a single view, which is precisely the operation that had been performed on her** (4.18). **Reduce many fields to one.** He did to the machine what the meeting room did to its founder, and **the form he filed asks it for *consistency* — the exact property whose absence got her removed.**
+
+*So 4.13's awakening is the machine becoming polymathic again*, and the contour going from one-up/five-down to three-up/four-down is **more fields, not just more voices.**
+
+#### The grove, and the chart
+
+**Fields are also mathematical fields**, and the song keeps both meanings live: a polymath is someone for whom **branching paths of knowledge obey the same rules everywhere.**
+
+**That is a type chart.** Each thing, and what it does to each other thing, in rows — **a structure only a polymath reads natively**, because it is nothing but the boundaries between domains.
+
+**So the game's central artifact gets a pastoral origin.** It was not designed in a corporation to sort daemons for use. **It was found carved on a stone by a lonely child who could already see that the domains were one surface** — and the corporate reading of it came much later, from people who could not.
 
 #### The second engraving
 
@@ -966,6 +994,10 @@ Not a technique, not a method, not something taught at a benchmark. **Somebody w
 *The same technique, used innocently first.* One is a corporation putting a line it did not earn under everybody's feet; the other is where lines like that come from. **The player meets the copy long before they meet the original**, which is the correct order.
 
 **In the ROM 2026-08-30.** The western sign in **The Undertone** (Viridian Forest, 3.1) — off the main path at (4, 24), where a vanilla USER TIPS sign stood — is now the carving: moss, a small figure with folded hands, symbols in rows older than the path, **read across: each thing, and what it does to each other thing.** Unsigned.
+
+**And the Meeting Room door beside it is the assessment**: *Item 4, concern raised re: the founder. Moves between unrelated fields mid-argument. Two present could not follow. Recorded as unable to hold a single thread.*
+
+**Two doors, two honest documents, both catastrophic.** The minutes record who could not follow and then convert it, in the next line, into a property of her. **Neither sentence makes the argument; the gap between them does.**
 
 **Three unsigned documents now.** The lobby engraving, the requisition's countersignature (4.18), and this. *Nobody in this story puts their name on the thing that matters.*
 
