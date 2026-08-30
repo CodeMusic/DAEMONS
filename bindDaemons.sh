@@ -1,26 +1,61 @@
 #!/usr/bin/env bash
 # Build an edition if needed, then run it.
 #
-#   ./bindDaemons.sh              CONTENT edition (default)
-#   ./bindDaemons.sh context      CONTEXT edition
+#   ./bindDaemons.sh                      CONTENT edition (default)
+#   ./bindDaemons.sh context              CONTEXT edition
 #   ./bindDaemons.sh content --clean
+#   ./bindDaemons.sh content --debug      with upstream's debug mode
+#
+# --debug builds a separate ROM (daemonsContentDebug.gbc) with its own save,
+# so a debug run never touches a real playthrough. In it:
+#
+#   SELECT on the title screen   debug menu -- start a game with a party,
+#                                fly anywhere, all the usual test hooks
+#   hold B                       skip trainer battles, the Safari step
+#                                counter, and some NPC scripts
+#
+# It is a testing build and not the game: it is not part of `make all`, and
+# nothing in it is balanced or intended to be experienced.
 #
 # Saves live beside the ROM as daemonsContent.sav / daemonsContext.sav and
 # survive rebuilds, so a playthrough is not lost when you change a line.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-EDITION="${1:-content}"
-case "$EDITION" in
-  content) ROM=daemonsContent.gbc ;;
-  context) ROM=daemonsContext.gbc ;;
-  *) echo "usage: ./bindDaemons.sh [content|context] [--clean]" >&2; exit 1 ;;
-esac
+EDITION=content
+CLEAN=0
+DEBUG=0
+for arg in "$@"; do
+  case "$arg" in
+    content|context) EDITION="$arg" ;;
+    --clean)         CLEAN=1 ;;
+    --debug)         DEBUG=1 ;;
+    *) echo "usage: ./bindDaemons.sh [content|context] [--clean] [--debug]" >&2; exit 1 ;;
+  esac
+done
 
-[[ "${2:-}" == "--clean" ]] && make -C engine clean >/dev/null
+if [[ $DEBUG -eq 1 ]]; then
+  TARGET="${EDITION}-debug"
+  case "$EDITION" in
+    content) ROM=daemonsContentDebug.gbc ;;
+    context) ROM=daemonsContextDebug.gbc ;;
+  esac
+else
+  TARGET="$EDITION"
+  case "$EDITION" in
+    content) ROM=daemonsContent.gbc ;;
+    context) ROM=daemonsContext.gbc ;;
+  esac
+fi
 
-echo "building ${EDITION}…"
-make -C engine "$EDITION" >/dev/null
+[[ $CLEAN -eq 1 ]] && make -C engine clean >/dev/null
+
+echo "building ${TARGET}…"
+make -C engine "$TARGET" >/dev/null
+
+if [[ $DEBUG -eq 1 ]]; then
+  echo "  debug build: SELECT on the title screen opens the menu; hold B to skip battles."
+fi
 
 EMU=""
 for app in SameBoy mGBA OpenEmu RetroArch; do
@@ -33,5 +68,5 @@ if [[ -z "$EMU" ]]; then
   exit 1
 fi
 
-echo "binding ${EDITION} → ${EMU}"
+echo "binding ${TARGET} → ${EMU}"
 open -a "$EMU" "engine/$ROM"

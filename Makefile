@@ -5,14 +5,19 @@
 ENGINE  := engine
 VANILLA := /tmp/pokered-vanilla
 
-.PHONY: all content context clean play vanilla-check bible
+.PHONY: all content context content-debug context-debug clean play play-debug vanilla-check bible
 
-all content context clean:
+all content context content-debug context-debug clean:
 	$(MAKE) -C $(ENGINE) $@
 
 ## play — build the CONTENT edition and launch it
 play: content
 	./bindDaemons.sh
+
+## play-debug — the CONTENT edition with upstream's debug mode compiled in.
+## SELECT on the title screen opens the debug menu; hold B to skip battles.
+play-debug:
+	./bindDaemons.sh content --debug
 
 ## vanilla-check — prove the toolchain, without disturbing your work.
 ## Builds pristine upstream in a throwaway worktree and checks the hashes.
