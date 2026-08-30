@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.8**
+**A `pokered` total conversion — the living design bible, v5.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1018,6 +1018,29 @@ Keep the specifics off the page. The design needs the *shape* — a competent pe
 - **Do not exculpate Scorn.** He inherited the lab and set the temperature. He also chose Halftone Tower, separately, later, with full information.
 - **Do not convict him either.** Every step was reasonable, legible, and would be praised in a performance review.
 - No character explains any of this.
+
+#### The log, implemented 2026-08-30
+
+**Vanilla already had the mechanism and it only needed replacing.** The Mansion's four journal entries sit across three floors of a ruined lab, are read while descending, and escalate to a failure. That is this beat's delivery, already built.
+
+**The response code is the character, and it decays.**
+
+| Entry | Where | Date | Code |
+|---|---|---|---|
+| 1 | 2F | ordinary | `RESPONSE 1001:` — rigid |
+| 2 | 2F | ordinary | `RESPONSE 1001:` — *identical, to the character* |
+| 3 | 3F | **a Tuesday** | `RESPOND 1001:` — and it answers early |
+| 4 | B1F | **none** | the format is gone |
+
+By the last one the number is no longer a code: lowercase, then spoken as words, then a count, then a single question. **The player watches a template fail in exactly the place a person's composure would**, and nothing explains it.
+
+**The dating scheme is followed exactly**, which is what makes the fourth entry land: an **undated** incident sitting between dated paperwork is the whole argument in furniture.
+
+**The trigger is a missing dependency that is also a bereavement — `CRYSTAL NOT FOUND`.** It needs no gloss and gets none.
+
+*Register note:* written as **terminal output**, not as the song it came from. A machine's log is not verse, and the voice matters more than the words here — this is the institution's own format failing, in the institution's own register.
+
+**And it reconciles the sequence in a way that improves it.** She is removed at step 2; the incident is step 5. **It woke at 2 and did not leave until 5** — awake, under a man raising the temperature, for everything in between. *Being awake was not the same as being able to go.*
 
 #### The dating scheme
 

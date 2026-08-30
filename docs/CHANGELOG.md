@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The Quicksilver log
+
+- **Four terminals replace the Mansion journals.** Vanilla already had the mechanism — four entries across three floors of a ruined lab, read while descending, escalating to failure
+- **The response code decays**: `RESPONSE 1001` twice identically, then `RESPOND 1001` arriving before the question finishes, then the format gone — lowercase, the number as words, a count, one question
+- **4.10's dating scheme followed exactly**: ordinary dates, then a Tuesday, then **none**. An undated incident between dated paperwork is the argument in furniture
+- **`CRYSTAL NOT FOUND`** — a missing dependency that is also a bereavement. No gloss
+- **Written as terminal output, not as the song it came from.** A machine's log is not verse; the failing register is the point
+- **It reconciles 4.10:** she is removed at step 2, the incident is step 5. It woke at 2 and could not leave until 5. *Being awake was not the same as being able to go*
+
 ### Ty and the directive go in; Brazen gets a track of its own
 
 - **Ty into Quicksilver, untransposed.** E major in the source, but every hook note sits inside that track's F# minor and it touches neither `D` nor `D#` — the one pitch separating the keys. Luck, recorded as luck
