@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Ty, and a second correction
+
+- **E major, 124 BPM**, hook `G#4 G#4 A4 B4 G#4 F#4 E4`, from *02. Fox in the Shadows (Ty's Dilemma)*
+- **Its shape is an arch** — rises to a peak, then falls the whole way. Distinct from Crystal's fall and the procedure's climb, so three characters have three shapes
+- **The prediction was made in advance and was weak.** An arch is the most common melodic shape in music, so "between rising and falling" was near-unfalsifiable. Recorded as cheap confirmation
+- **7.8 corrected at n=5.** "All within one accidental" was a three-track artifact; across five the spread is **five** accidentals (D minor 1♭ to E major 4♯), and tempi run 110–128. What survives: Scorn has two keys, so keys track songs rather than people
+- **The one hard fact in the set:** the procedure's hook is the only one of five with **no descending interval** — `0 +3 0 +2 0 +2`. It climbs and never comes down, in a song called *Fit for Work*. A property, not an interpretation
+- **S.T.A.R.R. is its mirror** — 1 up against 5 down, the most descending and the slowest
+
 ### S.T.A.R.R. — the outlier
 
 - **F# minor, 110 BPM, sparse**, hook `C#5 F#5 E5 D5 C#5 B4 A4`, from *08. Slumbering S.T.A.R.R.*

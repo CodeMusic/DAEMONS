@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.3**
+**A `pokered` total conversion — the living design bible, v5.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1225,7 +1225,9 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 | Scorn | Fit for Work | D minor | 1♭ | minor, **climbing in stepped pairs** |
 | Scorn | Solution | C major | 0 | **major, bouncy** |
 
-**All three sit within one accidental of each other**, which is what a songwriting session normally does — and **Scorn has two different keys**, so there is no character key to find. Two readings built on that assumption are struck out above. **The correcting evidence arrived one track later, which is the argument for transcribing the control before building on the pattern.**
+**~~All three sit within one accidental of each other, which is what a songwriting session normally does.~~ Corrected at n=5.** Across five songs the spread is **five accidentals** (D minor 1♭ to E major 4♯) and the tempi run 110–128. The narrow band was an artifact of the first three tracks, stated too confidently.
+
+**What survives is narrower and still holds: Scorn has two different keys across two songs**, so keys track *songs*, not people, and cannot be character labels. Two readings built on the discarded premise are struck out above. **The correcting evidence arrived one track later, which is the argument for transcribing a control before building on a pattern — and the same thing happened again at track five.**
 
 **What does separate them is mode and contour**, and both are audible on a Game Boy where a key change is nearly invisible:
 
@@ -1256,7 +1258,31 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 *Recorded as untested, deliberately.* 7.2 reads F# as **green-blue**, and 7.4 assigns F# to **Verdigris** — where 3.1 has *Corpus rotting beneath*. So S.T.A.R.R.'s motif would sit natively in that city's key. That is either a placement worth taking or a coincidence, and **after 7.6 it does not get promoted to a finding on one data point.** Quicksilver, where S.T.A.R.R. actually is, is achromatic and has no spectrum key at all — so there is nothing for F# to clash with either way.
 
-### 7.10 Blanche Town, implemented
+### 7.10 Ty, and the one hard fact in the set
+
+**Transcribed 2026-08-29** from *02. Fox in the Shadows (Ty's Dilemma)* — **E major, 124 BPM**, hook `G#4 G#4 A4 B4 G#4 F#4 E4`.
+
+**Its shape is an arch:** it rises to a peak and then falls the whole way down. That is distinct from Crystal's fall and from the procedure's climb, so **three characters have three shapes**.
+
+*It was predicted before the transcription arrived, and the prediction was weak.* 7.8 said Ty should sit between the other two, because 4.3 has him understanding something and failing to pass it on. He does. But **an arch is the most common melodic shape in music**, so "between rising and falling" was close to unfalsifiable. Confirmation, and cheap confirmation. Recorded as such.
+
+#### The fact worth keeping
+
+Across all five hooks, **the procedure's is the only one with no descending interval at all** — `0 +3 0 +2 0 +2`. It repeats and climbs and never comes down. Every other hook, including Scorn's own, falls somewhere.
+
+**That is a property, not a reading.** A directive that only goes up, in a song called *Fit for Work*. It needs no interpretation and no defence, and it is worth more than the three arches-and-laments observations put together.
+
+| | Up / down | Shape |
+|---|---|---|
+| Crystal | 3 / 3 | leap, then fall with a turn back |
+| **The procedure** | **3 / 0** | **climbs, never descends** |
+| Scorn himself | 2 / 3 | big leap up, then down |
+| S.T.A.R.R. | 1 / 5 | reaches once, falls furthest |
+| Ty | 2 / 3 | arch — up to a peak, then all the way down |
+
+**S.T.A.R.R. is the mirror of it** — 1 up against 5 down, the most descending of the five, and the slowest. The thing that cannot join the people also moves the opposite way to the thing that processes them.
+
+### 7.11 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1822,6 +1848,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **The procedure's hook is the only one of five with no descending interval** — it climbs and never comes down. A property, not a reading, and worth more than the shape observations around it (7.10)
+- **7.8's "within one accidental" corrected at n=5** — the real spread is five accidentals; the narrow band was a three-track artifact. Scorn's two keys still rule out keys as character labels (7.8)
 - **S.T.A.R.R. is the outlier on three axes at once** — F# minor against a one-accidental band, 110 against three at 128, sparse against three driving. **It cannot be layered with the human motifs**, which is a mechanical fact rather than a reading (7.9)
 - **Keys will not separate characters** — three transcriptions sit within one accidental, and Scorn has two keys. **Mode and contour** carry character; **keys belong to towns**, as 7 always said (7.8)
 - **Two readings retracted** — Crystal's `B` is generic to the key, not particular to her, and the B♭ opposition rested on it. The correction arrived one track later (7.6, 7.7)
