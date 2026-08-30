@@ -689,13 +689,15 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **Her objection here is about standing, not health.** He is not her doctor. It is not his call. Concern was blurred into diagnosis by someone with no authority to make it. **That is a governance complaint**, and it can be written down in full without a single medical word.
 
-#### The counter-file
+#### Her file on him
 
-**Nine breaches is a document** — a countable list of procedural violations, which is exactly 4.10's register turned around.
+**The nine breaches are hers.** She is the one keeping the record, and what it records is **Ty's oversteps** — each occasion he crossed from concern into a judgement he had no standing to make.
 
-**He holds a complete file about her. She holds a complete file about him. Both are accurate. Only one of them counts.**
+**So she did the correct procedural thing.** Faced with someone exceeding their authority, she documented it: a countable list, in the institution's own register, entirely accurate.
 
-That is the whole asymmetry in one object, and it needs no dialogue. *An artifact worth building*, and the first thing in the corpus that gives her something in the record rather than only a removal from it.
+**And it did not save her.** The file she kept about him was answered by a file kept about her, and only the second one had an institution behind it. **Both documents are accurate. One of them ends a career.**
+
+That is the asymmetry in one object, and it needs no dialogue. *An artifact worth building* — and the first thing in the corpus that puts her into the record rather than only removing her from it.
 
 **One caution.** 4.8 already asks the player to count something, and a second numbered device competes with the first — two counting puzzles dilute each other. **If the nine ever appears as a list to be tallied, 4.8's number must stay the only one the player is asked to reconstruct.** Safer as a stated count on a document than as nine findable things.
 
