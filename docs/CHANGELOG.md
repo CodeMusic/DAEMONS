@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Five tracks assigned, and the space grew
+
+- **Ardor ← *Scorn's Solution*** (C major). 7.4 derives Ardor's key from red heat as **C** — **a lookup, not a choice**
+- **Verdigris ← *Awakening S.T.A.R.R.*** (F# minor). 7.4 gives corrosion **F#**
+- **Halftone ← *Love Persists*** (D minor). Achromatic, so no derived key; it takes D minor from the story. **The most falling hook in the corpus, in the town with the tower**
+- **The Corpus building ← *Nine Scars, Nine Breaches*** (D minor, the crowded address). **The player walks in over the engraving and hears the breaches.** Nothing says so
+- **The ruined lab ← *1001 Fatal Error*** (B♭ minor) — **it plays in the building whose terminals carry the log**
+- All five went onto **dedicated slots**, so no other map changed. Three headers dropped from 4 channels to 3
+- **The space grew.** 901 bytes free at session start, **3792 now, with six more tracks in the ROM.** Replacing bloated vanilla bodies with compact ones frees more than it spends — room for roughly **eighteen** more at ~200 bytes each
+
 ### The splash is Echoes, and the bank-full claim was wrong
 
 - **`Music_TitleScreen` now points at `Music_Dungeon3_Ch1/2/3`** — *Echoes of the Algorithm*, **the same body Mt. Moon plays**, in the same bank. **Repointed rather than duplicated: zero new bytes, and 916 freed** by dropping the vanilla title music. The game opens on the track it uses for its dark places

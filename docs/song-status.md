@@ -9,14 +9,14 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 |---|---|---|---|---|---|---|
 | 01 | Crystal's Lament | A minor | 128 | ✅ | ✅ | **Blanche** |
 | 02 | Fox in the Shadows *(Ty's Dilemma)* | E major | 124 | ✅ | ✅ | **Quicksilver** |
-| 03 | Scorn's Solution | C major | 128 | ✅ | ✅ | — |
+| 03 | Scorn's Solution | C major | 128 | ✅ | ✅ | **Ardor** |
 | 04 | Lines in the Sand | C minor | 125 | ✅ | ✅ | *never* — 4.10 |
 | 05 | Echoes of the Algorithm | F minor | 128 | ✅ | ✅ | **the dark places** |
 | 06 | Crystal Clear or Crystal Crazy | C# minor | 160 | ✅ | ✅ | pending |
 | 07 | Fit for Work *(Scorn's Directive)* | D minor | 128 | ✅ ² | ✅ | **Brazen** |
 | 08 | Slumbering S.T.A.R.R. | F# minor | 110 | ✅ | ✅ | **Quicksilver** |
-| 09 | Nine Scars, Nine Breaches | D minor | 128 | ✅ | ✅ | — |
-| 10 | 1001 Fatal Error | B♭ minor | 128 | ✅ | ✅ | pending |
+| 09 | Nine Scars, Nine Breaches | D minor | 128 | ✅ | ✅ | **the Corpus building** |
+| 10 | 1001 Fatal Error | B♭ minor | 128 | ✅ | ✅ | **the ruined lab** |
 | 11 | Crystal's Stand | D minor | 128 | ✅ ² | ✅ | — |
 | 12 | ScornSolutions Blues | E minor | 118 | ✅ ² | ✅ | — |
 
@@ -24,10 +24,10 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 
 | # | Track | Key | BPM | Music | Story | In the ROM |
 |---|---|---|---|---|---|---|
-| 14 | Love Persists | D minor | 128 | ✅ | ✅ | — |
+| 14 | Love Persists | D minor | 128 | ✅ | ✅ | **Halftone** |
 | 14.25 | Desperate Shadows | F minor | 128 | ✅ | ✅ | — |
 | 14.5 | Quantum Translations | C major | 115 | ✅ | ✅ | — |
-| 15 | Awakening S.T.A.R.R. | F# minor | 128 | ✅ | ✅ | — |
+| 15 | Awakening S.T.A.R.R. | F# minor | 128 | ✅ | ✅ | **Verdigris** |
 | 16 | S.T.A.R.R.'s Revelation | C major | 120 | ⚠ thin | ✅ | — |
 | 17 | Ty's Redemption, Part 1 ³ | C major | **74** | ✅ | ✅ | — |
 | 18 | Ty's Redemption, Part 2 ³ | C major | 120 | ✅ | ✅ | — |
@@ -140,11 +140,15 @@ because Route 1, Viridian, Route 2, The Undertone and Slate are all still vanill
 
 **Measured 2026-08-30 from the linker map, not estimated.**
 
-| Bank | Holds | Free |
-|---|---|---|
-| `$02` | Music 1 | **8 bytes** — effectively closed |
-| `$08` | Music 2 | **175 bytes** |
-| `$1f` | Music 3 | **1634 bytes** (718 before the splash swap) |
+| Bank | Holds | Free at session start | **Free now** |
+|---|---|---|---|
+| `$02` | Music 1 | 8 bytes | **803** |
+| `$08` | Music 2 | 175 bytes | **176** |
+| `$1f` | Music 3 | 718 bytes | **2813** |
+
+**901 bytes free at the start; 3792 now — after adding six tracks.** Replacing bloated
+vanilla bodies with compact ones **frees more than it spends**, which is the whole
+answer to "will they fit": at ~200 bytes each there is room for roughly **eighteen** more.
 
 **Our tracks are small.** Brazen **104** bytes, the dark places **89**, Blanche **129**, Quicksilver **478** — against a **median vanilla track of 427** across 47 tracks.
 
@@ -162,3 +166,28 @@ because Route 1, Viridian, Route 2, The Undertone and Slate are all still vanill
 **Those four alone free 3833 bytes** — and each is a track we intend to replace anyway.
 
 **The splash, done 2026-08-30.** `Music_TitleScreen` was 967 bytes in `$1f`. It now **points at `Music_Dungeon3_Ch1/2/3`** — *Echoes of the Algorithm*, the same body Mt. Moon plays, in the same bank. **Repointed, not duplicated: zero new bytes, 916 freed**, and the game opens on the track it uses for its dark places.
+
+---
+
+## Assigned 2026-08-30 — the second batch
+
+**Five tracks, all onto dedicated slots, so no other map changed.**
+
+| Track | Slot replaced | Plays at | Why there |
+|---|---|---|---|
+| **03** *Scorn's Solution* | `Music_Vermilion` | **Ardor City** | 7.4: red heat is **C**, and the track is C major. A lookup, not a choice |
+| **15** *Awakening S.T.A.R.R.* | `Music_Celadon` | **Verdigris City** | 7.4: corrosion is **F#**, and the track is F# minor |
+| **14** *Love Persists* | `Music_Lavender` | **Halftone Town** and the tower | Achromatic, so no derived key; it takes D minor from the story. Most falling hook in the corpus (4.11) |
+| **09** *Nine Scars, Nine Breaches* | `Music_SilphCo` | **the Corpus building** | D minor, the crowded address (4.18). The player walks in over the engraving and hears the breaches |
+| **10** *1001 Fatal Error* | `Music_CinnabarMansion` | **the ruined lab** | Plays in the building whose terminals carry the log. Highest hook in the corpus (4.9) |
+
+**Three headers were 4-channel and are now 3** — Vermilion, Lavender, CinnabarMansion.
+
+### Still unassigned
+
+**11** *Crystal's Stand*, **12** *ScornSolutions Blues*, **14.25** *Desperate Shadows*, **14.5** *Quantum Translations*, **16** *S.T.A.R.R.'s Revelation*, **17**/**18** *Ty's Redemption*, **19** *Crystal's Reply*, **20** *Betrayal's Sting*, **06**, the Owl, and *Poly and Fields*.
+
+**Callow, Doldrum and Lurid share `Cities1`/`Cities2` with other maps**, so giving them
+their derived keys (F, G, E) means repointing individual maps in `data/maps/songs.asm`
+rather than replacing a body. That is the next batch, and it is not blocked — just
+a different edit.
