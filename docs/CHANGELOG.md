@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The splash is Echoes, and the bank-full claim was wrong
+
+- **`Music_TitleScreen` now points at `Music_Dungeon3_Ch1/2/3`** — *Echoes of the Algorithm*, **the same body Mt. Moon plays**, in the same bank. **Repointed rather than duplicated: zero new bytes, and 916 freed** by dropping the vanilla title music. The game opens on the track it uses for its dark places
+- **The "bank full" claim was wrong and is retracted.** Measured from the linker map: `$02` has 8 bytes, `$08` has 175, `$1f` now has **1634**. **Our tracks run 89–478 bytes against a median vanilla track of 427**, so the 1817 free right now hold **roughly eight more tracks with nothing culled**
+- **It was only ever true of appending without displacing.** The real budget is culling: `SilphCo` (1114), `Credits` (986), `Routes4` (902) and `Cities1` (831) **free 3833 bytes between them**, and every one is a track a total conversion intends to replace
+- 06, 10 and the Owl are re-marked **pending**, not blocked
+
 ### The Corpus lobby engraving is in the ROM
 
 - **`bg_event 11, 16` on SilphCo1F — the tile directly inside the lobby door**, so the player is standing on it the moment they arrive in Brazen. *Cast into the floor, worn smooth*, then the line, then nothing

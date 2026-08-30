@@ -12,11 +12,11 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 03 | Scorn's Solution | C major | 128 | ✅ | ✅ | — |
 | 04 | Lines in the Sand | C minor | 125 | ✅ | ✅ | *never* — 4.10 |
 | 05 | Echoes of the Algorithm | F minor | 128 | ✅ | ✅ | **the dark places** |
-| 06 | Crystal Clear or Crystal Crazy | C# minor | 160 | ✅ | ✅ | blocked — bank full |
+| 06 | Crystal Clear or Crystal Crazy | C# minor | 160 | ✅ | ✅ | pending |
 | 07 | Fit for Work *(Scorn's Directive)* | D minor | 128 | ✅ ² | ✅ | **Brazen** |
 | 08 | Slumbering S.T.A.R.R. | F# minor | 110 | ✅ | ✅ | **Quicksilver** |
 | 09 | Nine Scars, Nine Breaches | D minor | 128 | ✅ | ✅ | — |
-| 10 | 1001 Fatal Error | B♭ minor | 128 | ✅ | ✅ | blocked — bank full |
+| 10 | 1001 Fatal Error | B♭ minor | 128 | ✅ | ✅ | pending |
 | 11 | Crystal's Stand | D minor | 128 | ✅ ² | ✅ | — |
 | 12 | ScornSolutions Blues | E minor | 118 | ✅ ² | ✅ | — |
 
@@ -36,7 +36,7 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 21 | Empire of Scorn ³ ⁴ | C minor | 135 | ✅ | ✅ | — |
 | — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | — ⁶ |
 | — | Whispers in the Wires ³ ⁵ | A minor | 128 | ✅ | ✅ | *never* — 4.21 |
-| — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
+| — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music pending |
 
 ⁶ *the **carving** is in The Undertone (4.20). The **music** is not.*
 
@@ -130,6 +130,35 @@ because Route 1, Viridian, Route 2, The Undertone and Slate are all still vanill
 
 ### Not yet placed
 
-- **Blocked on bank space** — 06, 10, and the Owl. Both music banks are full (7.x)
+- **Not blocked.** See the space audit below — the earlier *bank full* claim was wrong
 - **Never, by decision** — 04 *Lines in the Sand* (4.10), *Whispers in the Wires* (4.21)
 - **Reviewed, no home assigned** — 03, 09, 11, 12, 14, 14.25, 14.5, 15, 16, 17, 18, 19, 20, and *Poly and Fields*
+
+---
+
+## Space — the audit that corrected the record
+
+**Measured 2026-08-30 from the linker map, not estimated.**
+
+| Bank | Holds | Free |
+|---|---|---|
+| `$02` | Music 1 | **8 bytes** — effectively closed |
+| `$08` | Music 2 | **175 bytes** |
+| `$1f` | Music 3 | **1634 bytes** (718 before the splash swap) |
+
+**Our tracks are small.** Brazen **104** bytes, the dark places **89**, Blanche **129**, Quicksilver **478** — against a **median vanilla track of 427** across 47 tracks.
+
+**So the standing "bank full" claim was wrong.** It was true only of *appending without displacing*. At ~200 bytes each, **the 1817 bytes free right now hold roughly eight more tracks** with nothing culled at all.
+
+**And culling is the real budget.** A total conversion has no reason to keep Kanto's soundtrack:
+
+| Vanilla track | Bank | Bytes |
+|---|---|---|
+| `SilphCo` | `$1f` | 1114 |
+| `Credits` | `$1f` | 986 |
+| `Routes4` | `$02` | 902 |
+| `Cities1` | `$02` | 831 |
+
+**Those four alone free 3833 bytes** — and each is a track we intend to replace anyway.
+
+**The splash, done 2026-08-30.** `Music_TitleScreen` was 967 bytes in `$1f`. It now **points at `Music_Dungeon3_Ch1/2/3`** — *Echoes of the Algorithm*, the same body Mt. Moon plays, in the same bank. **Repointed, not duplicated: zero new bytes, 916 freed**, and the game opens on the track it uses for its dark places.
