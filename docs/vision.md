@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.7**
+**A `pokered` total conversion — the living design bible, v5.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1346,15 +1346,28 @@ Not a transposition, and not near one. **A confident, unprompted musical asserti
 |---|---|---|---|
 | **Crystal** | `Music_PalletTown` | Blanche, the houses, Hall of Fame | **in** |
 | **S.T.A.R.R.** | `Music_Cinnabar` | 7 maps, all Quicksilver | **in** |
-| Ty | `Music_Cinnabar` | same | next |
 | Halftone | `Music_Lavender` | 3 maps | free, no motif yet |
-| **Scorn / the procedure** | `MUSIC_CITIES1` | **37 maps** | **blocked** |
+| **Ty** | `Music_Cinnabar` | same 7 | **in** |
+| **Scorn / the procedure** | **`Music_Brazen`** — new | Brazen only | **in** |
+| Halftone | `Music_Lavender` | 3 maps | free, no motif yet |
 
 **Blanche.** Crystal's hook enters as a B-section. A minor is C's relative minor, so it needs no modulation — and the audible event is that **the B-section brings `B`**, the one note the A-section's pentatonic never contains. 7.6's *reading* of that was retracted; the fact was not.
 
 **Quicksilver.** The motif is left on a held E and two bars of silence rather than resolved, because the thing is asleep. **Tempo dropped 144 → 110**, which is S.T.A.R.R.'s own: being unable to share the others' 128 was one of the three axes that separated it in 7.9, so keeping 144 would have discarded the finding to preserve a vanilla number. *That change also slows the existing melody in that track, which has not been replaced yet — a real side effect, and one for the ear rather than the arithmetic.*
 
-**Brazen is blocked, and it is the interesting problem.** Scorn's procedure motif — the only hook of seven that never descends — wants Brazen, the bought city. But Brazen shares `MUSIC_CITIES1` with **36 other maps**, so putting it there drops it under a third of the game. **It needs its own song**: a new constant, a header entry, a file, and one line in `songs.asm`. Small, but a decision rather than an edit, and the first time this project adds a track rather than replacing one.
+**Ty joined S.T.A.R.R. at Quicksilver**, and untransposed. His hook is E major in the source, but every note of it sits inside that track's F# minor and it touches neither `D` nor `D#` — the one pitch separating the two keys. Luck rather than design, and recorded as luck. Both men who went to Quicksilver are now in its music and neither resolves: Ty falls back to where he started, S.T.A.R.R. never finishes at all.
+
+**Brazen has its own track now, and getting it there taught the audio layout.** Scorn's procedure — the only hook of seven that never descends — wanted Brazen, the bought city. But Brazen shared `MUSIC_CITIES1` with **36 other maps**. It now has **`Music_Brazen`**: a constant, a header, a file, one line in `songs.asm`. **The first track this project adds rather than replaces**, and only the Saffron entry moved.
+
+*The theme is 3.1's gloss made literal.* 7.4 gives Brazen **D#**, from brass and yellow-gold; the procedure is **D minor**, a semitone under. **"Brass over base metal, shameless, unhidden"** is exactly a theme whose second half drops a semitone out from under its first. The A-section is the city — bright, marching, certain. The B-section climbs, never descends, never resolves, and never returns to the city's key.
+
+#### What two failed placements taught
+
+**The audio sections are pinned in `layout.link` beside their engine copies**, so a song cannot simply move to a bank with room — pokered carries three copies of the audio engine, and data must sit with its own.
+
+**And the constant's position decides the group**, because `music_constants.asm` is blocked by `AUDIO_1` / `AUDIO_2` / `AUDIO_3`. Appending after `MUSIC_MEET_MALE_TRAINER` silently put Brazen in group 3, where **Music 3 overflowed by 117 bytes**. **Music 1 overflowed by 2.** Moving the constant to the end of the `AUDIO_1` block and trading sixteen eighth-notes for eight sixteenths in the harmony channel was the whole fix.
+
+**Both banks are within ~100 bytes of full.** Any further new track needs something removed, or needs to be very small.
 
 *Checking note, learned the hard way:* channel totals must count **`rest` lines too**, which carry no note name. The first verification of Blanche reported a 20-unit drift that did not exist.
 

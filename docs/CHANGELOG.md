@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Ty and the directive go in; Brazen gets a track of its own
+
+- **Ty into Quicksilver, untransposed.** E major in the source, but every hook note sits inside that track's F# minor and it touches neither `D` nor `D#` — the one pitch separating the keys. Luck, recorded as luck
+- **Brazen gets `Music_Brazen`** — the first track this project adds rather than replaces. Saffron was sharing `MUSIC_CITIES1` with 36 other maps
+- **Its theme is 3.1's gloss made literal.** City in **D#** (7.4, brass/yellow-gold), directive in **D minor** a semitone under — *"brass over base metal, shameless, unhidden"* is a theme whose second half drops out from under its first. The B-section climbs, never descends, never resolves, never returns to the city's key
+- **Two failed placements first, and both were instructive.** Audio sections are pinned in `layout.link` beside their engine copies, so a song cannot move to a free bank. And the *constant's* block (`AUDIO_1/2/3`) decides the group: appending after `MUSIC_MEET_MALE_TRAINER` put it in group 3, where Music 3 overflowed by **117 bytes**. Music 1 overflowed by **2** — so the constant moved to the AUDIO_1 block and the harmony channel traded sixteen eighths for eight sixteenths
+- **Both banks are within ~100 bytes of full.** Any further new track needs something removed
+
 ### The motifs go in
 
 - **Crystal into Blanche** (`Music_PalletTown`) as a B-section. A minor is C's relative minor so it needs no modulation; the audible event is that the B-section brings `B`, the note the pentatonic never had
