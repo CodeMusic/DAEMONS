@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Crystal's Stand — the file, itemised
+
+- **Re-scanned: D minor, 128 BPM**, hook `D4 F4 G4 A4 F4 E4 D4`. Supersedes the first scan — the one that came with a false transposition claim, already suspect
+- **The nine breaches are an itemised schedule.** Each carries **a date and the named instrument it violated**. Not a grievance — a document, in the institution's own register, used correctly and used first
+- **The source's dates agree across songs.** An entry about unpaid leave on the 3rd matches *Fit for Work*'s stated September 3rd deadline — the date already on the Quicksilver plate. **Dates lifted from the source will not contradict each other**
+- **One line must not transfer:** it states the thesis outright, connecting the code that built the machine to the protections that defend people. Act 1 may say it; craft rule 1 forbids the game
+- 4.8's caution stands: a stated count, not nine findable things
+
 ### 1001 Fatal Error — the awakening is at the top of the range
 
 - **Bb minor, 128 BPM**, hook `F5 Bb5 Db6 C6 Bb5 Ab5 F5` — the last of Act 1 to be measured

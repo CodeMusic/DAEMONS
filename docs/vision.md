@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.6**
+**A `pokered` total conversion — the living design bible, v7.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -680,6 +680,28 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **3. She understood, and it did not count.** *Crystal smiles, knowing what they found.* 4.6 says the event *was not understood at the time by anyone present* — and that survives, because **she was the only one present, and she had just been made unhearable.** The removal's real cost is not her career. It is that the one person who saw it had already been disqualified from saying so.
 
 *Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
+
+#### *Crystal's Stand* — the file, itemised
+
+**Re-scanned 2026-08-30. D minor, 128 BPM**, hook `D4 F4 G4 A4 F4 E4 D4` — up the scale, then back to where it started. **This supersedes the first scan**, which was the one where a false transposition claim was volunteered (7.12) and was already suspect.
+
+**And the lyric turns the nine breaches into a real document.** Each one carries **a date and a named instrument** — a specific day, and the specific safeguard it violated. Not a grievance; **an itemised schedule**.
+
+**That makes her file the most structured artifact in the corpus**, and it settles the shape 7.5 was reaching for. Nine entries, each dated, each citing the rule it breaks. It is exactly the register 4.10 gives the institution — *and she is using it against them, correctly, first.*
+
+#### The dates are consistent across songs
+
+**One of her entries concerns an unpaid-leave threat on the 3rd**, and *Fit for Work* states its deadline as **September 3rd**, with unpaid leave for non-reply. **The two songs agree**, independently, on a date the game has already put on the Quicksilver plate.
+
+**That is worth more than it looks.** It means the source's chronology is internally consistent, so dates lifted from it will not contradict each other. 7.4 found a fault the moment one date went in; this says the well is clean.
+
+#### What must not transfer
+
+**One line states the thesis outright** — connecting the code that built the machine to the protections that defend people. **Act 1 is allowed to say that. The game is not.** Craft rule 1: *the moment it is said aloud it stops being architecture and becomes a moral.*
+
+The nine breaches themselves transfer completely. **The sentence explaining why they matter must not.**
+
+*And 4.8's caution still holds:* a stated count on a document, not nine findable things.
 
 #### *1001 Fatal Error* — the awakening is at the top of the range
 
