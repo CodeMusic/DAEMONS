@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.0**
+**A `pokered` total conversion — the living design bible, v5.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1203,7 +1203,25 @@ The hook's pitch classes are `A B C D E`. 7.6 built Blanche as C major pentatoni
 
 *Still open:* Gemini's `DOUBT` flagged the vocal pitches as estimated by ear. The contour is plausible and the key is almost certainly right — but if the motif ever sounds wrong against Blanche, the hook is the thing to re-check, not the key.
 
-### 7.7 Blanche Town, implemented
+### 7.7 Scorn's motif, and the note between them
+
+**Transcribed 2026-08-29** from *07. Fit for Work (Scorn's Directive)*. **D minor, 128 BPM, 4/4**, hook `D4 D4 F4 F4 G4 G4 A4`.
+
+**A minor and D minor differ by exactly one pitch class: `B` against `B♭`.** And `B` is the note in Crystal's hook that falls outside Blanche's pentatonic — the one that wants resolution. **Scorn's key is Crystal's with her single note of tension flattened away.**
+
+**How much that is worth, stated honestly.** A minor to D minor is the most ordinary relationship in music: adjacent keys on the circle of fifths differ by exactly one note *by definition*, so the fact itself is arithmetic. What makes it usable is that `B`'s significance was established **independently**, from Blanche's pentatonic in 7.6. This is a strong *reading* of ordinary material, not a discovery, and it should be described that way if it is ever described at all.
+
+**What is solid, and useful immediately:**
+
+- **The contours oppose.** Crystal's hook descends and turns; Scorn's climbs in stepped repeated pairs. A lament falls, a directive marches. Audible, free, and nothing had to be arranged for it.
+- **Both are 128 BPM**, so the two can be juxtaposed or layered with no tempo change.
+- **Both hooks run 8 beats over a 16-beat progression** — the same structural shape, which makes them interchangeable inside a theme.
+
+*An option, recorded rather than taken.* 7.2 reads D as **orange**, and no town is orange — town keys run Ardor C, Brazen D#, Lurid E, Callow F, Verdigris F#, Doldrum G. So Scorn's motif sits **a semitone below Brazen**, the city Corpus owns. A motif that is a semitone under the place it controls would sound wrong in a specific and deliberate way. Worth trying; not yet a decision.
+
+*The same two format faults recurred* — `Dm3` and `Am3`, chord names in the note field. Expect it every time and correct to the root. `hook2asm.py` refuses rather than guessing, so nothing silent gets through.
+
+### 7.8 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1769,6 +1787,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **Scorn's motif transcribed** — D minor, and **A minor and D minor differ by exactly one note: B against B♭**, which is Crystal's note of tension flattened away. Marked as a *reading* of ordinary material, since adjacent keys differ by one note by definition (7.7)
+- **Their contours oppose** — Crystal's hook descends, Scorn's climbs; both 128 BPM and both 8 beats over 16, so they are interchangeable and layerable (7.7)
 - **Crystal's motif transcribed** — A minor, the **relative minor of Blanche's C**, so it needs no modulation; and **exactly one of its notes falls outside Blanche's pentatonic: B, the leading tone.** Her motif is Blanche's scale plus the one note that wants something (7.6)
 - **The pipeline caught two real errors on its first run** — a chord name in a note field, and a hook half the length of its progression (7.6)
 - **The rock opera is character music, not place music** — Act 1's tracklist is the cast, so the hooks become **leitmotifs** inside town themes rather than town themes themselves (7.5)

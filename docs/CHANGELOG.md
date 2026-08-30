@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Scorn's motif — and the note between the two
+
+- **D minor, 128 BPM, 4/4**, hook `D4 D4 F4 F4 G4 G4 A4`, from *07. Fit for Work (Scorn's Directive)*
+- **A minor and D minor differ by exactly one pitch class: `B` against `B♭`** — and `B` is Crystal's note of tension, the one falling outside Blanche's pentatonic. Scorn's key is hers with that note flattened away
+- **Marked as a reading, not a discovery.** Adjacent keys on the circle of fifths differ by one note *by definition*, so the fact is arithmetic. It is usable only because `B`'s significance was established independently in 7.6
+- **Solid and immediately useful:** the contours oppose (Crystal descends, Scorn climbs in stepped pairs); both are 128 BPM; both hooks are 8 beats over a 16-beat progression — so they are layerable and interchangeable
+- **Recorded as an option:** D is orange in 7.2 and no town is orange. Scorn sits a semitone below Brazen, the city Corpus owns — a motif slightly under the place it controls
+- Same two format faults recurred: `Dm3`, `Am3` — chord names in the note field. Expect them; correct to the root
+
 ### Crystal's motif — the first transcription
 
 - **A minor, 128 BPM, 4/4**, hook `A4 E5 D5 C5 B4 C5 D5`, from *01. Crystal's Lament*
