@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.0**
+**A `pokered` total conversion — the living design bible, v9.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -927,13 +927,57 @@ The draft's premise is that Scorn installed a modification in Crystal's **Cognit
 
 **The lyric confirms the mirror independently.** It says S.T.A.R.R. whispers what he fears, and that he has been fooled — **written before there was a reading to fit.** A clarifier weighted toward Scorn returns Scorn's own view, so the thing it whispers is his, and the one who fooled him is himself (4.18).
 
-### 4.19 The Owl's slot — settled
+### 4.20 *Poly and Fields* — where the chart comes from
+
+**G major, 110 BPM**, hook `D4 B4 A4 G4 E4 G4 D4`, chords **G | Em | C | D**.
+
+**Cut from the opera, and it carries the one thing the corpus was missing: an origin that is not corporate.**
+
+#### It shares its progression with exactly one other song
+
+**G | Em | C | D is I–vi–IV–V.** Of every progression recorded in this document, **the only other I–vi–IV–V is *Crystal's Reply*** (A | F#m | D | E). Same shape, transposed.
+
+**A child alone in the trees and a mother's answer are built on the same four chords.** That is the reading this song most invites — that the person in the grove is the one who later founded the lab — and the harmony is the whole of the evidence, so it is offered and not asserted.
+
+*And 110 BPM is shared with one track only:* **Slumbering S.T.A.R.R.** The two quietest places in the corpus are **a machine asleep and a child in a grove.**
+
+#### "A stranger in familiar views"
+
+**This is where perspective thinking starts, and it starts as an accident.**
+
+Not a technique, not a method, not something taught at a benchmark. **Somebody who could not see what their own family saw**, and who went looking for a place where that was not a defect. Everything the game later argues for begins as a child's failure to fit.
+
+*And the process word arrives as arithmetic.* The song says **integrating**, and means calculus. 4.10's craft rule is to name the process rather than the pathology — **and here the correct word turns up innocently, in a maths lesson, decades before anyone needed it clinically.**
+
+#### Polynomials over fields
+
+**Poly and fields** are polynomials and fields: the point where relations between things stop being arbitrary and become **lawful and closed.** Branching paths, and every branch obeys the same rules.
+
+**That is a type chart.** Each thing, and what it does to each other thing, in rows.
+
+**So the game's central artifact gets a pastoral origin.** It was not designed in a corporation to sort daemons for use. **It was found carved on a stone by a child who was lonely and good at maths** — and the corporate reading of it came much later, from people who did not earn it.
+
+#### The second engraving
+
+**The Corpus lobby engraving is cast into a floor in Brazen, unattributed, adopted approvingly by a company that did not write it** (4.4).
+
+**This one is carved in stone in a forest, and nobody signed it either.**
+
+*The same technique, used innocently first.* One is a corporation putting a line it did not earn under everybody's feet; the other is where lines like that come from. **The player meets the copy long before they meet the original**, which is the correct order.
+
+**In the ROM 2026-08-30.** The western sign in **The Undertone** (Viridian Forest, 3.1) — off the main path at (4, 24), where a vanilla USER TIPS sign stood — is now the carving: moss, a small figure with folded hands, symbols in rows older than the path, **read across: each thing, and what it does to each other thing.** Unsigned.
+
+**Three unsigned documents now.** The lobby engraving, the requisition's countersignature (4.18), and this. *Nobody in this story puts their name on the thing that matters.*
+
+*Craft note:* the player finds it **in the first real maze**, lost. The place that explains how relations form a lawful structure is the place where they cannot find their way.
+
+### 4.21 The Owl's slot — settled
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
 *The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
 
-### 4.20 Where the Owl goes — and the timeline is not the map
+### 4.22 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -943,7 +987,7 @@ The draft's premise is that Scorn installed a modification in Crystal's **Cognit
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.21 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.23 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 

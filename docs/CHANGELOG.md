@@ -17,6 +17,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Poly and Fields — where the chart comes from
+
+*Cut from the opera, and it carries the one thing the corpus was missing: an origin that is not corporate.*
+
+- **G | Em | C | D is I–vi–IV–V, and the only other one recorded is *Crystal's Reply*.** A child alone in the trees and a mother's answer, same four chords, transposed. That the person in the grove is the one who founded the lab is **offered, not asserted** — the harmony is the whole of the evidence
+- **110 BPM is shared with one track only.** The two quietest places in the corpus are **a machine asleep and a child in a grove**
+- **Perspective thinking starts as an accident.** Not a technique or a benchmark — somebody who could not see what their own family saw. Everything the game argues for begins as a child's failure to fit. **And the process word arrives as arithmetic**: the song says *integrating* and means calculus, decades before anyone needed it clinically
+- **The type chart gets a pastoral origin.** Polynomials over fields is where relations stop being arbitrary and become lawful and closed — **each thing, and what it does to each other thing, in rows.** It was not designed in a corporation to sort daemons for use; **it was found carved on a stone by a lonely child who was good at maths**, and the corporate reading came later, from people who did not earn it
+- **A second engraving.** The lobby one is cast into a floor, unattributed, adopted approvingly (4.4); this one is carved in a forest and unsigned too. **The same technique, used innocently first** — and the player meets the copy long before the original
+- **Built.** The western sign in The Undertone at (4, 24), formerly a USER TIPS sign: moss, a small figure with folded hands, symbols in rows older than the path, *read across*. **Three unsigned documents now** — the engraving, the countersignature, and this. *Nobody puts their name on the thing that matters*
+- *Craft note:* the player finds it **in the first real maze, lost.** The place explaining how relations form a lawful structure is the place they cannot find their way through
+
 ### The Cognitive Clarifier is in the ROM
 
 - **The chip is reinstated. What is declined is the smuggling.** The previous pass cut the part outright and that was the wrong cut — **a hidden component is a smoking gun, and a smoking gun leaves the player nothing to work out.** So the module is *authorised*: part number, catalogue entry, requisition, signed and countersigned. **Nothing was smuggled; something was ordered**

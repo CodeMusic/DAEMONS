@@ -34,7 +34,10 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 19 | Crystal's Reply ³ | A major | 128 | ✅ | ✅ | — |
 | 20 | Betrayal's Sting ³ | D minor | 128 | ✅ | ✅ | — |
 | 21 | Empire of Scorn ³ ⁴ | C minor | 135 | ✅ | ✅ | — |
+| — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | **The Undertone** |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
+
+⁵ *cut from the opera. Carries the chart's origin — 4.20.*
 
 ⁴ *superseded — an earlier draft of 20, and an Act 1 finale. Kept for what it
 confirms, not to be recorded.*
