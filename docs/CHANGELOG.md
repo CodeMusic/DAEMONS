@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Betrayal's Sting — the chip, declined and kept
+
+- **The literal chip is declined.** 4.10 rests on Crystal being right about the effect and wrong about the mechanism; the gap between her account and the flat dated paperwork is what the player closes. **Hardware sabotage makes her right about the mechanism too**, and the argument collapses into a bad man with a component
+- **The Cognitive Clarifier is kept, and the sabotage with it, one layer down.** A clarifier is many frames polled and resolved — that is 2.5 — and **bias is not a part you add, it is a weight you set.** Scorn never opened the machine; he raised one vote above the others, and the record of it is as ordinary as the record of her removal. **The player finds it and it looks boring**, which is the point
+- **It worked, which is why it failed.** A clarifier weighted toward Scorn returns Scorn's own view — he destroyed the only instrument that could contradict him. *Do I control it or does it control me* answers itself: **he built a mirror and called it an oracle**
+- **It explains the sleep for free**, and 4.13's awakening — same key, contour from 1-up/5-down to 3-up/4-down, **more voices going up** — is the un-weighting, recorded before there was a reason for it
+- **D minor/128 is now five tracks**: the directive, the nine breaches, her stand, the mother waiting, his doubt. **The order and the refusal share an address**
+- **Dm | B♭ | C | Am has no dominant and cannot cadence.** *Crystal's Reply* has a real V and lands — **her harmony can resolve and his cannot**
+- **my → our, and the fear stays "me".** He pluralises the ownership and not the dread; then he says the blame line and splits it with something that cannot answer
+
 ### Crystal's Reply — the same address, in the major
 
 *Tracks 17–19 are drafts and the chart now says so. Nothing in the design rests on them alone.*

@@ -32,9 +32,10 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 17 | Ty's Redemption, Part 1 ³ | C major | **74** | ✅ | ✅ | — |
 | 18 | Ty's Redemption, Part 2 ³ | C major | 120 | ✅ | ✅ | — |
 | 19 | Crystal's Reply ³ | A major | 128 | ✅ | ✅ | — |
+| 20 | Betrayal's Sting ³ | D minor | 128 | ✅ | ✅ | — |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
 
-³ *17–19 are **drafts**, not finished recordings. Read for what fits; nothing
+³ *17–20 are **drafts**, not finished recordings. Read for what fits; nothing
 in the design leans on them alone.*
 
 ⚠ *transcription is an outlier — 4 notes and one chord where the set runs 6–8 notes and four chords. Wants a second pass.*
@@ -81,7 +82,9 @@ Fourteen hooks, and the properties that survived checking:
 - **Slowest by 36 BPM** — 17, Ty's apology, at 74 against a set spanning 110–160
 - **Crystal opens and closes on the same address** — 01 is A minor/128, 19 is
   A major/128. Mode flipped, nothing else moved
-- **Home tempo: 128, on twelve tracks.** Only 74 and 160 leave the 110–128 body;
+- **The crowded address: D minor/128, five tracks** — Scorn's directive, the nine
+  breaches, Crystal's stand, the mother waiting, and Scorn's doubt
+- **Home tempo: 128, on thirteen tracks.** Only 74 and 160 leave the 110–128 body;
   18 returns to 120, inside the room and eight short of home
 
 **Four readings were retracted along the way**, three of them because a single
