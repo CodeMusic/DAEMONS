@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.0**
+**A `pokered` total conversion — the living design bible, v7.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -650,6 +650,22 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **2. Scorn's method on Ty is *data poisoning*, and 5 already teaches it.** Benchmark 5 at Lurid is **CORRUPT — bias and poisoning**, whose mechanical lesson is *status effects that make your own moves unreliable.* **The benchmark that teaches poisoning is teaching the player what was done to Ty**, three cities before they can know it. Free, already built, and nobody says a word.
 
 **3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
+
+#### *Crystal Clear or Crystal Crazy* — and a fabricated answer caught
+
+**Transcribed 2026-08-30, on the second attempt.** **C# minor, 160 BPM**, hook `G#4 G#4 G#4 G#4 A4 G#4 F#4 E4`.
+
+**The first attempt was not from the audio.** It came back as *Slumbering S.T.A.R.R.*'s hook with one note appended, in the same key — and its own `DOUBT` field admitted the transcription was *a guess without direct audio analysis*. **The `NO AUDIO` gate did not fire**, because a model that cannot hear does not always refuse; sometimes it hands back an earlier answer.
+
+*Two defences worked and one was added.* `DOUBT` caught it, for the second time — the first being the reprise's false transposition claim. And `hook2asm.py` now compares every incoming hook against all known ones, distinguishing an exact match (*already recorded*) from a near-match (*this is X with one note changed — re-run with the audio attached*).
+
+**The real answer has a shape nothing else in the set has.** It is **the only hook that repeats a note four times** — `0 0 0 +1 -1 -2 -2`. Hammered insistence, one small lift, then a fall. **That is what a rumour sounds like:** the same thing said over and over until it drops.
+
+**And it is the fastest in the set by a wide margin** — 160 against everything else's 110–128. The word travels quicker than anything else in this story.
+
+*One observation, held loosely.* C# minor is **Ty's key signature** — E major and C# minor are relatives. But three of the eight songs pair off by signature (A minor/C major, and both D minor tracks), so **sharing one is not rare here** and this does not get promoted. Recorded because it is checkable, not because it is evidence.
+
+*Placement is open.* A rumour is not a place, and this is the first motif with no obvious home. It wants the story context before it is put anywhere.
 
 #### *Echoes of the Algorithm* — the decay is hers first
 

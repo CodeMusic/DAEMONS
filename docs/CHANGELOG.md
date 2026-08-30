@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The rumour, and a fabricated answer caught
+
+- **C# minor, 160 BPM**, hook `G#4 G#4 G#4 G#4 A4 G#4 F#4 E4` — on the *second* attempt
+- **The first attempt was not from the audio.** It returned *Slumbering S.T.A.R.R.*'s hook with one note appended, same key, and its own `DOUBT` admitted *a guess without direct audio analysis*. **The `NO AUDIO` gate did not fire** — a model that cannot hear does not always refuse, it sometimes reuses
+- **`DOUBT` caught it**, for the second time. And **`hook2asm.py` now detects it mechanically**, separating an exact match (*already recorded*) from a near-match (*X with one note changed — re-run with the audio*)
+- **The real hook has a shape nothing else has** — the only one repeating a note four times, then lifting once and falling. What a rumour sounds like
+- **Fastest in the set at 160**, against 110–128 for everything else
+- Held loosely: C# minor is Ty's key signature, but three of eight songs pair off by signature, so it is not evidence
+- **Placement open** — a rumour is not a place, and this is the first motif with no obvious home
+
 ### Echoes of the Algorithm — the decay is hers first
 
 - **The response format decays here, years before S.T.A.R.R.** Same progression: rigid, then plain. So **S.T.A.R.R. repeats the pattern rather than inventing it** — which is 4.7's *comprehension, not a clone* proving itself. The player reads the second occurrence without seeing the first
