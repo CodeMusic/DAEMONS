@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### v9.6 — the rumour that shaped a schedule
+
+- **New 7.15, the space audit.** Every earlier claim that the music banks were full was **estimated, carried forward, and never measured.** Measured now: **901 bytes free before this session, 3792 after — having added six tracks**
+- **The arithmetic that dissolves it:** our tracks run 89–478 bytes against a **median vanilla track of 427**, so **replacing a vanilla body frees more than it spends, every time.** The claim was true only of *appending without displacing*, which is not what a total conversion does — **every vanilla track is a slot, and there are 47**
+- **4.23's Owl is unblocked.** His music was recorded as waiting on bank space; it never was. He shares `MUSIC_CITIES1` with 37 maps, so he needs **a constant and one repointed line in `songs.asm`** — the same edit Lurid, Callow and Doldrum need. **The scene and the tune are no longer on different timescales**
+- *The lesson is 0.2's, turned on the project rather than the source:* **a number nobody measured is not a constraint, it is a rumour** — and this one shaped scheduling for days
+
 ### v9.5 — the bible catches up to the ROM
 
 *The PDF was current for `vision.md`; `vision.md` had fallen behind the cartridge.*

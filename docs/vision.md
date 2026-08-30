@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.5**
+**A `pokered` total conversion — the living design bible, v9.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1047,7 +1047,7 @@ The line on the form — *moves between unrelated fields without completing an a
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
-*The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
+*The scene can be written now.* That house is on `MUSIC_CITIES1`, shared with 37 maps — **so the Owl needs a repoint in `songs.asm`, not bank space.** See below.
 
 ### 4.23 Where the Owl goes — and the timeline is not the map
 
@@ -1057,7 +1057,11 @@ The line on the form — *moves between unrelated fields without completing an a
 
 *The most interesting available slot is Mr. Psychic's house in Brazen* — a lone scholar keeping his own counsel **inside the bought city**. A peer reviewer living in the building Corpus owns is a better placement than a neutral one, and it costs nothing: the house already exists and already has a visitor.
 
-**Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
+**Its music was recorded as blocked, and that was wrong.** The claim rested on the bank being full; **it is not** — 7.15 measured 3792 bytes free after six tracks went in, and the space *grew* over the session.
+
+**The real obstacle is smaller and entirely solvable.** That house shares `MUSIC_CITIES1` with 37 other maps, so giving the Owl his own tune means **adding a constant and repointing one line of `data/maps/songs.asm`** — not finding room. The same edit Lurid, Callow and Doldrum need (7.4).
+
+*So the scene and the tune are no longer on different timescales.* **Both are one small edit away**, and neither is waiting on the other.
 
 ### 4.24 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
@@ -2182,6 +2186,26 @@ Slower than vanilla — 152 against 160 — with more rest. Home should read as 
 **A wiring finding that shapes the rest of 8.1.** Only Blanche has a dedicated track. **Callow shares `Music_Cities1`** with several other cities and **The Bleed shares `Music_Routes1`** with Route 2 — so the vertical slice's *"two city themes and one modulation"* cannot be done by editing in place. Either those maps get new songs added to `songs.asm`, or the themes land on every map that shares them. That is a decision to make before writing the second theme, not after.
 
 ---
+
+### 7.15 The space audit — a claim I repeated for days and never measured
+
+**Measured 2026-08-30 from the linker map.** Every earlier statement that the music banks were full was **estimated, carried forward, and wrong.**
+
+| Bank | Holds | At session start | After six tracks went in |
+|---|---|---|---|
+| `$02` | Music 1 | 8 bytes | **803** |
+| `$08` | Music 2 | 175 bytes | **176** |
+| `$1f` | Music 3 | 718 bytes | **2813** |
+
+**901 bytes free before. 3792 after — having *added* six tracks.**
+
+**The arithmetic that dissolves the problem:** our tracks are small — Brazen **104** bytes, the dark places **89**, Blanche **129**, Quicksilver **478** — against a **median vanilla track of 427** across 47. **Replacing a vanilla body with one of ours frees more than it spends**, every time.
+
+**So the claim was true only of appending without displacing**, which is not what a total conversion does. Kanto's soundtrack is not an asset here; **every vanilla track is a slot**, and there are 47 of them.
+
+*The residual constraint is real but different.* Some maps share a music slot — `MUSIC_CITIES1` covers 37 — so giving one map its own tune means **adding a constant and repointing a line of `data/maps/songs.asm`**. That is an edit, not a budget.
+
+**The lesson is the one 0.2 already states**, and it caught the project out rather than the source: *a number nobody measured is not a constraint, it is a rumour.* This one shaped scheduling for days — the Owl's scene was recorded as unwritable-for-now on the strength of it (4.23).
 
 ## 8. SCOPE CONTROL
 
