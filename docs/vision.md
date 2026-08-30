@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.2**
+**A `pokered` total conversion — the living design bible, v5.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1237,7 +1237,26 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 *So the revised plan:* motifs are distinguished by **mode, contour and rhythm**, and keys are chosen to fit the **town** they appear in — which is what 7 always said keys were for. Character and place stop competing for the same parameter.
 
-### 7.9 Blanche Town, implemented
+### 7.9 S.T.A.R.R. is the outlier, on three axes at once
+
+**Transcribed 2026-08-29** from *08. Slumbering S.T.A.R.R.* — **F# minor, 110 BPM**, hook `C#5 F#5 E5 D5 C#5 B4 A4`, described as *sparse, reflective*.
+
+| | Key | Accidentals | Tempo | Texture |
+|---|---|---|---|---|
+| Crystal | A minor | 0 | 128 | driving, descending |
+| Scorn — the procedure | D minor | 1♭ | 128 | driving, climbing |
+| Scorn — his own song | C major | 0 | 128 | driving, **major**, bouncy |
+| **S.T.A.R.R.** | **F# minor** | **3♯** | **110** | **sparse, reflective** |
+
+**Three independent axes separate it, and that is a different quality of evidence from 7.6's retracted single note.** The three human songs span **one** accidental between them; S.T.A.R.R. is **three** from the nearest. It is the only one not at 128. It is the only one that is not driving. Any one of those alone would be noise. Together they are a decision somebody made without needing to be asked.
+
+**And the consequence is mechanical, not interpretive.** The three human motifs share a tempo, so they interleave and layer freely. **S.T.A.R.R. cannot join them without a tempo change.** The thing in 4.7 that is not a person is the one motif that cannot be played alongside the people. Nothing had to be arranged for that; it is a property of the source.
+
+*Its shape:* a leap **up a fifth**, then six steps **down** — it reaches once and then descends the whole way. Crystal descends too, but from a turn rather than a leap. **Sleeping, not grieving.**
+
+*Recorded as untested, deliberately.* 7.2 reads F# as **green-blue**, and 7.4 assigns F# to **Verdigris** — where 3.1 has *Corpus rotting beneath*. So S.T.A.R.R.'s motif would sit natively in that city's key. That is either a placement worth taking or a coincidence, and **after 7.6 it does not get promoted to a finding on one data point.** Quicksilver, where S.T.A.R.R. actually is, is achromatic and has no spectrum key at all — so there is nothing for F# to clash with either way.
+
+### 7.10 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1803,6 +1822,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **S.T.A.R.R. is the outlier on three axes at once** — F# minor against a one-accidental band, 110 against three at 128, sparse against three driving. **It cannot be layered with the human motifs**, which is a mechanical fact rather than a reading (7.9)
 - **Keys will not separate characters** — three transcriptions sit within one accidental, and Scorn has two keys. **Mode and contour** carry character; **keys belong to towns**, as 7 always said (7.8)
 - **Two readings retracted** — Crystal's `B` is generic to the key, not particular to her, and the B♭ opposition rested on it. The correction arrived one track later (7.6, 7.7)
 - **Craft rule 6 is already in the source** — Scorn's own song is major and bouncy; the villain is cheerful, written years before the rule (7.8)

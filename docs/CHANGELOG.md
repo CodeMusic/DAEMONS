@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### S.T.A.R.R. — the outlier
+
+- **F# minor, 110 BPM, sparse**, hook `C#5 F#5 E5 D5 C#5 B4 A4`, from *08. Slumbering S.T.A.R.R.*
+- **Three independent axes separate it** from the three human songs: three sharps against a band spanning one accidental, 110 against three at 128, sparse against three driving. Any one alone would be noise; together they are a decision
+- **The consequence is mechanical.** The human motifs share a tempo and interleave freely; **S.T.A.R.R. cannot be layered with them.** The one thing in 4.7 that is not a person is the one motif that cannot play alongside the people — a property of the source, not an arrangement
+- Shape: a leap **up a fifth**, then six steps **down**. Crystal descends from a turn; this descends from a reach. Sleeping, not grieving
+- **Recorded as untested:** F# is Verdigris's key in 7.4, where Corpus rots beneath. After 7.6's retraction, that does not get promoted on one data point
+
 ### The control track, and two retractions
 
 - ***03. Scorn's Solution* is C major** — so Scorn has two keys across two songs, and there is no character key to find
