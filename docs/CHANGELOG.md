@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### RESOLVER, and a correction at n=7
+
+- **SILPH SCOPE → RESOLVER** — settled in 4.5, listed in 10 as done, never implemented. Item name plus seven dialogue references. Shorter, so nothing rewrapped
+- **7.10 corrected.** *Echoes of the Algorithm* (`+2 +1 +2 +2 0`) also never descends, so the procedure is **one of two** rather than unique. The claim was written stronger than the evidence
+- **What survives is the controlled comparison** — Scorn's two own songs arch at 2/3 independently while his directive climbs. That never depended on uniqueness
+- **And the second one earns it:** Crystal goes into the system and does not come back down either
+- **Rock Tunnel is blocked.** A dedicated track needs bank space and there is none — a minimal 2-channel song overflows Music 1 by 37 bytes and Music 3 by 46. Brazen took the last of it
+
 ### Two documents implemented
 
 - **Brazen posts its review scores** — three at 30/100, one at 94/100, and a congratulation. No names, no commentary. *Scorn's Solution* has him designing the evaluations so rivals fail; this is the published result, and the cheerfulness is the point

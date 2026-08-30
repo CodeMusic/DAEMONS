@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.8**
+**A `pokered` total conversion — the living design bible, v6.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1456,7 +1456,13 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 #### The fact worth keeping
 
-Across all five hooks, **the procedure's is the only one with no descending interval at all** — `0 +3 0 +2 0 +2`. It repeats and climbs and never comes down. Every other hook, including Scorn's own, falls somewhere.
+Across the first six hooks, **the procedure's was the only one with no descending interval at all** — `0 +3 0 +2 0 +2`. It repeats and climbs and never comes down.
+
+**Corrected at n=7.** *Echoes of the Algorithm* is `+2 +1 +2 +2 0` — **also never descends.** So the property is one of two rather than unique, and the claim above is weaker than it was written.
+
+**What survives is the controlled comparison, which is the part that had a control:** Scorn's two *own* songs both arch at 2/3, independently, while his *directive* climbs. Same character, same writer, three keys. That does not depend on the property being unique to one hook.
+
+*And the second one earns it.* Crystal goes into the system and does not come back down either — a different thing that also does not return.
 
 **That is a property, not a reading.** A directive that only goes up, in a song called *Fit for Work*. It needs no interpretation and no defence, and it is worth more than the three arches-and-laments observations put together.
 
