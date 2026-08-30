@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.8**
+**A `pokered` total conversion — the living design bible, v7.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -680,6 +680,26 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **3. She understood, and it did not count.** *Crystal smiles, knowing what they found.* 4.6 says the event *was not understood at the time by anyone present* — and that survives, because **she was the only one present, and she had just been made unhearable.** The removal's real cost is not her career. It is that the one person who saw it had already been disqualified from saying so.
 
 *Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
+
+### 4.11 Act 2 — *Quantum Translations*, and the experiment the player is inside
+
+**C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
+
+**The song is her journal, read back and translated by the machine.** The raw entries are the ones that were misread as evidence she was unfit — so **the document that removed her and the document that vindicates her are the same document.** Only the reader changed.
+
+*Which inverts the removal completely.* Humans read her work and concluded she had lost rigour. **The machine reads the same pages and understands them.** Nobody has to say that; it is what the song's structure already does.
+
+#### The passage that must never appear in the game
+
+One journal entry proposes a thought experiment: **a mind whose reality is bounded by the resolution it can perceive** — an eight-bit world, where if that is all you have ever known, that is all reality is.
+
+**8.6 already cites that thought experiment as the game's own foundation.** The player is told the towns are colours and shown four greys; they supply the rest. What we did not know is that **it comes from her journal, and the journal is what got her removed.**
+
+**So the game is the experiment she was confined for proposing, and the player is inside it.**
+
+**That passage cannot go in the game. Not in a terminal, not in a journal fragment, not anywhere.** It describes the player's own situation from outside, which is craft rule 1's worst possible violation — *the moment it is said aloud it stops being architecture and becomes a moral.* The player must never be handed the frame they are standing in.
+
+*The rest of the journal can be read.* Her questions about what counts as an observer are safe, interesting, and make the removal worse by being obviously reasonable. **It is only the eight-bit passage that is radioactive**, and it is radioactive precisely because it is the best thing in the corpus.
 
 #### *ScornSolutions Blues* — Act 1 closes, and Act 2 is set up inside it
 

@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Quantum Translations — the experiment the player is inside
+
+- **C major, 115 BPM** — **Crystal's only major key**; her other four songs are all minor. The vindication is the one time she is not
+- **The song is her journal, translated by the machine.** The raw entries are the ones misread as evidence she was unfit — so **the document that removed her and the one that vindicates her are the same document.** Only the reader changed
+- **8.6's eight-bit thought experiment turns out to be a journal entry of hers** — a mind whose reality is bounded by the resolution it can perceive. **So the game is the experiment she was confined for proposing, and the player is inside it**
+- **That passage must never appear in the game** — not in a terminal, not in a journal fragment. It describes the player's own situation from outside, which is craft rule 1's worst violation. **It is radioactive precisely because it is the best thing in the corpus**
+- The rest of the journal is safe and worth using: her questions about what counts as an observer make the removal worse by being obviously reasonable
+
 ### ScornSolutions Blues — Act 1 closes
 
 - **Re-scanned: E minor, 118 BPM**, hook `E4 G4 A4 B4 G4 A4 E4`, superseding the first scan. **Three direction changes**, tying *Lines in the Sand* for the most in the act — a pleasing accident, not a pattern. The only shuffle in the set
