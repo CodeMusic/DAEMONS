@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.3**
+**A `pokered` total conversion — the living design bible, v9.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1532,6 +1532,8 @@ This is the one place in the game where Scorn's error is named aloud — **and i
 
 Craft rule 1 survives intact, because this is not the thesis. The thesis is about color and context and it stays unspoken. This is a warning about measurement, cast into a floor, by people who took it as advice.
 
+**In the ROM 2026-08-30.** `bg_event 11, 16` on SilphCo1F — **the tile directly inside the lobby door**, so the player is standing on it the moment they arrive. *Cast into the floor, worn smooth*, then the line, then nothing. **No attribution, no comment, no NPC.**
+
 *Placement rules:*
 
 - **The floor, not a wall.** You walk across it to reach him. Nobody points at it.
@@ -2621,7 +2623,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | SILPH SCOPE → RESOLVER | `data/items/names.asm` plus `text/` | trivial |
 | Hidden BunnyArtsai tile | hidden object plus event flag | trivial |
 | Quicksilver terminal log | one text block | trivial |
-| Corpus lobby engraving | one sign-text object, Brazen | trivial |
+| Corpus lobby engraving | one sign-text object, Brazen | **done 2026-08-30** |
 | Quicksilver asset tags at Halftone | one sign-text object | trivial |
 | `AL CLEAR` in formal text; naming screen untouched | `text/` — literal string instead of the `<RIVAL>` control char | trivial |
 | Default name lists, both editions | `constants/player_constants.asm` | **done 2026-08-29** |

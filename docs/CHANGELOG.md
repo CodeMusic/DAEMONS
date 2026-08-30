@@ -17,6 +17,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The Corpus lobby engraving is in the ROM
+
+- **`bg_event 11, 16` on SilphCo1F — the tile directly inside the lobby door**, so the player is standing on it the moment they arrive in Brazen. *Cast into the floor, worn smooth*, then the line, then nothing
+- **No attribution, no comment, no NPC** — 4.4's placement rules kept exactly. It is furniture
+- **This completes the unsigned trio in the ROM**: the engraving, the CC-7 countersignature, and the forest carving (4.20)
+
 ### Whispers in the Wires — cut for the right reason, and it is still hers
 
 *Cut from Act 1 for making Ty and Richard look aware they were doing wrong. The instinct is correct — knowing conspirators collapse the polymath mechanism (4.20). **But the song is not narration. It is her.***
