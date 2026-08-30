@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Per-song prompts, with the real track URLs
+
+- **Seven ready-to-paste prompts** appended to `music-prompts.md`, each with its verified SoundCloud URL, in the order the tracks should be done
+- **All twelve Act 1 URLs recovered** from the album page
+- **A gate added to every prompt.** Gemini cannot stream from SoundCloud — given a link alone it reads the *page* and can return a confident, invented transcription. Fabricated notes are indistinguishable from real ones once they are text. So each prompt now opens: *if you have not been given an audio file, reply `NO AUDIO` and stop*
+- **Track 11 included for a different reason** — listed as *Crystal's Stand*, slugged *reprise*. If it reprises track 1, the source is already doing leitmotif work, and comparing the two hooks says whether Crystal's motif transforms or merely returns between Blanche and the Review Board
+
 ### The rock opera, and how the songs actually get in
 
 - **New `docs/music-prompts.md`** — the Gemini transcription prompt, its output format, what gets verified on the way back, and the order to do the tracks in

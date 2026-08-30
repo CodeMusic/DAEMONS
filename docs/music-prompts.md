@@ -110,3 +110,119 @@ writing once. Suno and ACE-Step do not export it; a DAW would.
 
 **ACE-Step is the wrong tool for this job.** It generates music, it does not
 analyse it. It cannot tell you what is in a track you already have.
+
+---
+
+# The prompts, one per song
+
+**Attach the audio file.** Gemini cannot stream from SoundCloud — given only a
+link it will read the *page* and can produce a confident, wholly invented
+transcription. That is the worst failure available here, because fabricated
+notes are indistinguishable from real ones once they are text. Every prompt
+below therefore opens with a gate that forces Gemini to declare whether it can
+actually hear anything.
+
+The links are for finding and downloading the track, not for Gemini to fetch.
+
+Paste one at a time and bring the answers back.
+
+---
+
+## 1 — Crystal's Lament → CRYSTAL's motif
+
+`https://soundcloud.com/codemusai/01-crystals-lament`
+
+> Before anything else: if you have not been given an audio file you can
+> actually listen to, reply exactly `NO AUDIO` and stop. Do not describe, infer
+> or reconstruct this song from its title, description, lyrics or any web page.
+>
+> You are transcribing a song so it can be rearranged for the Game Boy sound
+> chip — two square-wave voices, one bass voice, no chords per voice.
+>
+> I need **only the single most recognisable hook**: the four to eight notes a
+> listener would hum back. Not the whole song, not the full vocal line, not a
+> section-by-section breakdown.
+>
+> Answer in exactly this format and nothing else:
+>
+> ```
+> KEY:    <e.g. D minor>
+> TEMPO:  <BPM, a number>
+> METER:  <e.g. 4/4>
+> HOOK:   <note><octave>/<beats> … space separated, 4-8 notes
+>         example -> D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+> BASS:   same format, one note per chord change under that hook
+> CHORDS: e.g. Dm | Dm | Bb | A
+> FEEL:   one line — sparse or dense, driving or still, major or minor
+> DOUBT:  what you are least sure of; say plainly if the key or hook is a guess
+> ```
+>
+> If you cannot hear something clearly, write `unsure` in that field. **Do not
+> fill a field by inference.** A wrong key is worse than a blank one — it will
+> be checked against a colour-to-pitch mapping and would quietly corrupt it.
+
+## 2 — Fit for Work (Scorn's Directive) → the procedure
+
+`https://soundcloud.com/codemusai/07-fit-for-work-scorns`
+
+> *(same prompt as above)*
+
+## 3 — Scorn's Solution → SCORN, and Corpus
+
+`https://soundcloud.com/codemusai/03-scorns-solution`
+
+> *(same prompt as above)*
+
+## 4 — Slumbering S.T.A.R.R. → the thing in the ruins
+
+`https://soundcloud.com/codemusai/08-slumbering-s-t-a-r-r`
+
+> *(same prompt as above)*
+
+## 5 — Fox in the Shadows (Ty's Dilemma) → TY
+
+`https://soundcloud.com/codemusai/02-fox-in-the-shadows-tys`
+
+> *(same prompt as above)*
+
+## 6 — ScornSolutions Blues → Corpus, later
+
+`https://soundcloud.com/codemusai/12-scornsolutions-blues`
+
+> *(same prompt as above)*
+
+## 7 — track 11, the reprise → worth doing for a different reason
+
+`https://soundcloud.com/codemusai/11-reprise-final-extension`
+
+Listed as *Crystal's Stand*; the URL says *reprise*. **If it reprises track 1,
+the source material is already doing leitmotif work** — and comparing the two
+hooks tells us whether Crystal's motif transforms or merely returns. That
+difference decides how it should behave between Blanche and the Review Board.
+
+> *(same prompt as above — and additionally: if this hook is a variation of
+> another song's hook, say which, and describe how it differs: transposed,
+> slower, mode changed, inverted.)*
+
+---
+
+## The remaining five
+
+Not needed yet, listed so the set is complete: `04-lines-in-the-sand`,
+`05-echoes-of-the-algorithm`, `06-crystal-clear-or-crystal`,
+`09-nine-scars-nine-breaches`, `10-1001-fatal-error`.
+
+`05. Echoes of the Algorithm` may belong to the Index rather than to a person,
+and `10. 1001 - Fatal Error` shares its number with *A Painted Christmas* —
+both worth a look once the six above are in.
+
+---
+
+## Bringing the answers back
+
+Paste them raw, all together or one at a time. Each gets checked before a note
+is written — key against 7.2's spectrum mapping, hook against the pitch set of
+whichever town it has to appear in, then all channels verified to equal length.
+
+**If any answer comes back `NO AUDIO`, that is the system working.** It means
+the file did not reach Gemini, not that the track is untranscribable.

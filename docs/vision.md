@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.8**
+**A `pokered` total conversion — the living design bible, v4.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1179,6 +1179,8 @@ Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is
 It is also the only version the hardware permits. Four channels cannot hold an arrangement with vocals. They hold an eight-note motif exactly.
 
 *How the notes get here:* Claude cannot hear audio, so **Gemini is the ear** — the same division of labour `sprite-prompts.md` uses for images. Prompt, output format and the order to do them in are in [`music-prompts.md`](music-prompts.md). The short version: **ask for the hook, not the song**, because a hook is the part a model transcribes reliably *and* the part a human can hum back to check.
+
+*One failure mode is worth naming here rather than only in the prompt file.* **Gemini cannot stream from SoundCloud.** Given a link alone it will read the *page* — title, description, comments — and can return a confident, wholly invented transcription. Fabricated notes are indistinguishable from real ones once they are text, and nobody downstream can hear the difference. So every prompt opens with a gate: **if you have not been given an audio file, reply `NO AUDIO` and stop.**
 
 ### 7.6 Blanche Town, implemented
 
