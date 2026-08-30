@@ -414,11 +414,54 @@ changed, inverted, or re-harmonised.
 
 ---
 
-## The remaining five
+## 8 — Echoes of the Algorithm
+
+`https://soundcloud.com/codemusai/05-echoes-of-the-algorithm`
+
+**The one that may show the decay predates the machine.** If this starts
+mechanical and turns natural, it is the *same* progression as the Quicksilver
+log — which would mean the pattern is Crystal's first and S.T.A.R.R. only
+inherits it. Worth transcribing for that alone.
+
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## The remaining four
 
 Not needed yet, listed so the set is complete: `04-lines-in-the-sand`,
-`05-echoes-of-the-algorithm`, `06-crystal-clear-or-crystal`,
-`09-nine-scars-nine-breaches`, `10-1001-fatal-error`.
+`06-crystal-clear-or-crystal`, `09-nine-scars-nine-breaches`,
+`10-1001-fatal-error`.
 
 `05. Echoes of the Algorithm` may belong to the Index rather than to a person,
 and `10. 1001 - Fatal Error` shares its number with *A Painted Christmas* —
