@@ -17,6 +17,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The Cognitive Clarifier is in the ROM
+
+- **The chip is reinstated. What is declined is the smuggling.** The previous pass cut the part outright and that was the wrong cut — **a hidden component is a smoking gun, and a smoking gun leaves the player nothing to work out.** So the module is *authorised*: part number, catalogue entry, requisition, signed and countersigned. **Nothing was smuggled; something was ordered**
+- **The horror is that he filled out a form and it was approved** — the same argument as Crystal's removal, where the paperwork was also in order. **The lie is one line in the justification field, not the object**
+- **And a module can be found on a table where a config value cannot.** Since 4.13's awakening is the un-weighting, it is also something a player can *pull* — a mechanic rather than lore
+- **Built.** The R-and-D door at Quicksilver is now a requisitions board: **CC-7 CLARIFIER MODULE, x1**, reason given **IMPROVE RESPONSE CONSISTENCY**, signed, countersigned, filed. **The justification is the whole crime and it is technically accurate** — weighting a clarifier does improve consistency, and consistency is exactly what bias produces. No name is given for the countersignature
+
+### Empire of Scorn — the draft that already knew
+
+*Superseded: an earlier draft of Betrayal's Sting, and an Act 1 finale. Three things in it survive.*
+
+- **135 BPM is unique in the corpus**, second only to 160. **His empire runs above the story's pulse; his doubt drops to 128 and joins it** — he is faster than the thing he is in, and only while winning
+- **This one has a dominant and the later one does not.** Cm | A♭ | Fm | G resolves; Dm | B♭ | C | Am cannot. **As the doubt arrives, the way out closes**
+- **Both Scorn hooks return to their opening note** — he always ends where he started. *Crystal's Reply* is the one that leaves
+- **The lyric confirms the mirror independently**, written before there was a reading to fit: S.T.A.R.R. whispers what he fears, and he has been fooled. **The thing it whispers is his, and the one who fooled him is himself**
+
 ### Betrayal's Sting — the chip, declined and kept
 
 - **The literal chip is declined.** 4.10 rests on Crystal being right about the effect and wrong about the mechanism; the gap between her account and the flat dated paperwork is what the player closes. **Hardware sabotage makes her right about the mechanism too**, and the argument collapses into a bad man with a component

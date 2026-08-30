@@ -33,9 +33,13 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 18 | Ty's Redemption, Part 2 ³ | C major | 120 | ✅ | ✅ | — |
 | 19 | Crystal's Reply ³ | A major | 128 | ✅ | ✅ | — |
 | 20 | Betrayal's Sting ³ | D minor | 128 | ✅ | ✅ | — |
+| 21 | Empire of Scorn ³ ⁴ | C minor | 135 | ✅ | ✅ | — |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
 
-³ *17–20 are **drafts**, not finished recordings. Read for what fits; nothing
+⁴ *superseded — an earlier draft of 20, and an Act 1 finale. Kept for what it
+confirms, not to be recorded.*
+
+³ *17–21 are **drafts**, not finished recordings. Read for what fits; nothing
 in the design leans on them alone.*
 
 ⚠ *transcription is an outlier — 4 notes and one chord where the set runs 6–8 notes and four chords. Wants a second pass.*

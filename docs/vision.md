@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.9**
+**A `pokered` total conversion — the living design bible, v9.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -887,9 +887,17 @@ And **he says the blame line**: in the end they are *both* to blame. **Scorn ass
 
 The draft's premise is that Scorn installed a modification in Crystal's **Cognitive Clarifier** to make S.T.A.R.R. serve his bias instead of clarity.
 
-**The literal chip is declined.** 4.10 rests on Crystal being *right about the effect and wrong about the mechanism* — the gap between her account of deceit and the flat, dated paperwork is what the player closes, and it is the thesis. **Hardware sabotage makes her right about the mechanism too**, and the argument collapses into a bad man with a component.
+**The chip is kept. What is declined is the smuggling.**
 
-**The Cognitive Clarifier is kept, and the sabotage with it, one layer down.**
+*A first pass rejected the part outright*, on the grounds that hardware sabotage would make Crystal right about the mechanism and collapse 4.10. **That was the wrong cut.** What breaks the thesis is not a component; it is a component *hidden* — a part taped inside a machine is a smoking gun, and a smoking gun leaves the player nothing to work out.
+
+**So the module is authorised.** It has a part number and a catalogue entry. There is a requisition for it, it is signed, and it is countersigned. **Nothing was smuggled; something was ordered.**
+
+**The horror is not that he snuck it in. It is that he filled out a form and it was approved** — the same argument as her removal, where the paperwork was also in order. **The lie is not the object. It is one line in the justification field.**
+
+*And the part earns its keep in a way a config value could not.* **A weight in a file is not something a player can find on a table.** A module is — and since 4.13's awakening is the un-weighting, **it is something a player can pull.** That is a mechanic rather than lore.
+
+**The sabotage stays one layer down, in what the module does.**
 
 **A clarifier is many frames polled and resolved.** That is 2.5. **Bias is not a part you add to it — it is a weight you set.** Scorn never opened the machine. He raised one perspective's vote above the others, the way anyone tunes a system, and the record of it is as ordinary as the record of Crystal's removal.
 
@@ -899,7 +907,25 @@ The draft's premise is that Scorn installed a modification in Crystal's **Cognit
 
 **It also explains the sleep, for free.** A clarifier that can only agree has nothing left to say. And 4.13 already records that S.T.A.R.R. **wakes in the key it slept in**, with the contour moving from one-up/five-down to three-up/four-down — **more voices going up.** The awakening is the un-weighting, and that was recorded before there was a reason for it.
 
-*Craft note:* none of this is ever said. The player finds a tuning record with a changed value and a signature, and works out what a clarifier is for.
+**In the ROM 2026-08-30.** The R-and-D room door at Quicksilver is now a requisitions board: **CC-7 CLARIFIER MODULE, x1**, reason given **IMPROVE RESPONSE CONSISTENCY**, signed, countersigned, filed.
+
+**The justification is the whole crime and it is technically accurate.** Weighting a clarifier does improve response consistency. **Consistency is exactly what bias produces**, and a clarifier's job — many frames, polled — is to be *inconsistent* on purpose. The form is not lying. It is describing the damage in the vocabulary of an improvement.
+
+*Craft note:* none of this is ever said. **No name is given for the countersignature.** The player reads a parts requisition and works out what a clarifier is for.
+
+### 4.19 *Empire of Scorn* — the draft that already knew
+
+**C minor, 135 BPM**, hook `C5 E♭5 D5 C5 G4 B♭4 C5`, chords **Cm | A♭ | Fm | G**.
+
+**An earlier draft of *Betrayal's Sting***, sharing its chorus nearly whole, and **an Act 1 finale rather than an Act 2 anything.** As a song it is superseded. Three things in it are not.
+
+**135 BPM is unique in the corpus** and second only to 160. **His empire runs above the story's pulse; his doubt drops to 128 and joins it.** Scorn is the one character who is faster than the thing he is in, and only while he is winning.
+
+**And this one has a dominant.** Cm | A♭ | Fm | G resolves; *Betrayal's Sting*'s Dm | B♭ | C | Am cannot (4.18). **The earlier song can cadence and the later one loses the ability** — as the doubt arrives, the way out closes.
+
+*Both Scorn hooks return to their opening note* — `C5 … C5` here, `D4 … D4` there. **He always ends where he started.** *Crystal's Reply* is the one that leaves: `E4 … F#4`.
+
+**The lyric confirms the mirror independently.** It says S.T.A.R.R. whispers what he fears, and that he has been fooled — **written before there was a reading to fit.** A clarifier weighted toward Scorn returns Scorn's own view, so the thing it whispers is his, and the one who fooled him is himself (4.18).
 
 ### 4.19 The Owl's slot — settled
 
