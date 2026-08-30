@@ -118,91 +118,299 @@ analyse it. It cannot tell you what is in a track you already have.
 **Attach the audio file.** Gemini cannot stream from SoundCloud — given only a
 link it will read the *page* and can produce a confident, wholly invented
 transcription. That is the worst failure available here, because fabricated
-notes are indistinguishable from real ones once they are text. Every prompt
-below therefore opens with a gate that forces Gemini to declare whether it can
-actually hear anything.
+notes are indistinguishable from real ones once they are text. The links below
+are for finding and downloading the track, not for Gemini to fetch.
 
-The links are for finding and downloading the track, not for Gemini to fetch.
+**The prompt is deliberately identical for every track, and never names the
+song.** That is not laziness — a title is precisely the material a model would
+use to fabricate a transcription it cannot actually hear, so withholding it is
+what makes the `NO AUDIO` gate mean something. Copy the whole block as-is.
 
-Paste one at a time and bring the answers back.
+Do them one at a time and bring the answers back raw.
 
 ---
 
-## 1 — Crystal's Lament → CRYSTAL's motif
+## 1 — Crystal's Lament
 
 `https://soundcloud.com/codemusai/01-crystals-lament`
 
-> Before anything else: if you have not been given an audio file you can
-> actually listen to, reply exactly `NO AUDIO` and stop. Do not describe, infer
-> or reconstruct this song from its title, description, lyrics or any web page.
->
-> You are transcribing a song so it can be rearranged for the Game Boy sound
-> chip — two square-wave voices, one bass voice, no chords per voice.
->
-> I need **only the single most recognisable hook**: the four to eight notes a
-> listener would hum back. Not the whole song, not the full vocal line, not a
-> section-by-section breakdown.
->
-> Answer in exactly this format and nothing else:
->
-> ```
-> KEY:    <e.g. D minor>
-> TEMPO:  <BPM, a number>
-> METER:  <e.g. 4/4>
-> HOOK:   <note><octave>/<beats> … space separated, 4-8 notes
->         example -> D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
-> BASS:   same format, one note per chord change under that hook
-> CHORDS: e.g. Dm | Dm | Bb | A
-> FEEL:   one line — sparse or dense, driving or still, major or minor
-> DOUBT:  what you are least sure of; say plainly if the key or hook is a guess
-> ```
->
-> If you cannot hear something clearly, write `unsure` in that field. **Do not
-> fill a field by inference.** A wrong key is worse than a blank one — it will
-> be checked against a colour-to-pitch mapping and would quietly corrupt it.
+**CRYSTAL's motif.** Her theme has three homes for one transcription: the lab, Blanche Town, and the Review Board where she records you into the Index.
 
-## 2 — Fit for Work (Scorn's Directive) → the procedure
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## 2 — Fit for Work (Scorn's Directive)
 
 `https://soundcloud.com/codemusai/07-fit-for-work-scorns`
 
-> *(same prompt as above)*
+**The procedure** — 4.10 by name, and the Quicksilver material.
 
-## 3 — Scorn's Solution → SCORN, and Corpus
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## 3 — Scorn's Solution
 
 `https://soundcloud.com/codemusai/03-scorns-solution`
 
-> *(same prompt as above)*
+**SCORN, and Corpus.** Belongs under Brazen and the lobby.
 
-## 4 — Slumbering S.T.A.R.R. → the thing in the ruins
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## 4 — Slumbering S.T.A.R.R.
 
 `https://soundcloud.com/codemusai/08-slumbering-s-t-a-r-r`
 
-> *(same prompt as above)*
+**4.7** — the thing in the ruins.
 
-## 5 — Fox in the Shadows (Ty's Dilemma) → TY
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## 5 — Fox in the Shadows (Ty's Dilemma)
 
 `https://soundcloud.com/codemusai/02-fox-in-the-shadows-tys`
 
-> *(same prompt as above)*
+**TY** — buried in the Quicksilver ruins.
 
-## 6 — ScornSolutions Blues → Corpus, later
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## 6 — ScornSolutions Blues
 
 `https://soundcloud.com/codemusai/12-scornsolutions-blues`
 
-> *(same prompt as above)*
+**Corpus, later.** Compare against track 3: if they share a hook, Scorn's motif is already transforming across the act.
 
-## 7 — track 11, the reprise → worth doing for a different reason
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+```
+
+---
+
+## 7 — track 11 — listed as Crystal's Stand, slugged *reprise*
 
 `https://soundcloud.com/codemusai/11-reprise-final-extension`
 
-Listed as *Crystal's Stand*; the URL says *reprise*. **If it reprises track 1,
-the source material is already doing leitmotif work** — and comparing the two
-hooks tells us whether Crystal's motif transforms or merely returns. That
-difference decides how it should behave between Blanche and the Review Board.
+**Worth doing for a different reason.** If it reprises track 1, the source material is already doing leitmotif work — and comparing the two hooks says whether Crystal's motif *transforms* or merely *returns*. That decides how it behaves between Blanche and the Review Board.
 
-> *(same prompt as above — and additionally: if this hook is a variation of
-> another song's hook, say which, and describe how it differs: transposed,
-> slower, mode changed, inverted.)*
+```
+Before anything else: if you have not been given an audio file that you can
+actually listen to, reply with exactly NO AUDIO and stop. Do not describe,
+infer, or reconstruct this song from a title, a description, lyrics, an artist
+page, or anything you may have read. Only transcribe what you can hear.
+
+You are transcribing a song so it can be rearranged for the Game Boy sound
+chip: two square-wave voices, one bass voice, and no chords within a voice.
+
+I need ONLY the single most recognisable hook -- the four to eight notes a
+listener would hum back afterwards. Not the whole song, not the complete vocal
+line, and not a section-by-section breakdown.
+
+Reply in exactly this format and nothing else:
+
+    KEY:    (e.g. D minor)
+    TEMPO:  (BPM, a number)
+    METER:  (e.g. 4/4)
+    HOOK:   note+octave/beats, space separated, 4 to 8 notes
+            for example:  D4/1 F4/1 A4/2 G4/1 F4/1 D4/2
+    BASS:   same format, one note per chord change underneath that hook
+    CHORDS: e.g.  Dm | Dm | Bb | A
+    FEEL:   one line -- sparse or dense, driving or still, major or minor
+    DOUBT:  what you are least sure of. Say plainly if the key or the hook
+            is a guess.
+
+If you cannot hear something clearly, write "unsure" in that field. Do not
+fill a field by inference. A wrong key is worse than a blank one, because it
+will be checked against a colour-to-pitch mapping and would quietly corrupt
+it.
+
+One extra question for this track only: if this hook is a variation of another
+song's hook, say so, and describe how it differs -- transposed, slower, mode
+changed, inverted, or re-harmonised.
+```
 
 ---
 
@@ -220,9 +428,12 @@ both worth a look once the six above are in.
 
 ## Bringing the answers back
 
-Paste them raw, all together or one at a time. Each gets checked before a note
-is written — key against 7.2's spectrum mapping, hook against the pitch set of
-whichever town it has to appear in, then all channels verified to equal length.
+Paste them raw. [`tools/hook2asm.py`](../tools/hook2asm.py) turns each one into
+music asm and checks it rather than trusting it — it refuses on an unparseable
+hook, stops on `NO AUDIO`, flags an `unsure` key or tempo, prints what 7.2's
+spectrum mapping reads the key as, and compares total channel lengths.
 
-**If any answer comes back `NO AUDIO`, that is the system working.** It means
-the file did not reach Gemini, not that the track is untranscribable.
+    python3 tools/hook2asm.py answer.txt --label Music_CrystalMotif
+
+**If an answer comes back `NO AUDIO`, that is the system working.** It means
+the file did not reach Gemini — not that the track is untranscribable.
