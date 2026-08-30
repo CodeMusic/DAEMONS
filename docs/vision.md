@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.3**
+**A `pokered` total conversion — the living design bible, v8.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -709,7 +709,37 @@ The silence is not shame and not cruelty. **Admitting fault would cost them**, s
 
 **The confinement does not.** The song is set where she is held, and 4.10 forbids the destination as firmly as it forbids the diagnosis — *keep the specifics off the page.* **The reason for the silence is usable. The room she hears it in is not.**
 
-### 4.13 Where the Owl goes — and the timeline is not the map
+### 4.13 *Awakening S.T.A.R.R.* — it wakes in the key it slept in
+
+**F# minor, 128 BPM**, hook `C#5 B4 A4 G#4 A4 B4 C#5 B4`. A valley: down to G#4, back up, and away.
+
+**Three songs now belong to the machine, and they form an arc:**
+
+| | Key | BPM | Up / down |
+|---|---|---|---|
+| 08 *Slumbering* | F# minor | **110** | 1 / 5 |
+| 10 *Fatal Error* | B♭ minor | 128 | 2 / 4 |
+| 15 *Awakening* | **F# minor** | **128** | 3 / 4 |
+
+**It returns to 08's key at 10's tempo.** It wakes in the key it slept in, at the speed of the break — and it is the only one of the three that rises in the middle rather than only falling away from a leap.
+
+*Both F# minor songs also open on the same note, and that part is ordinary:* C# is the dominant of F# minor, so a hook starting there is unremarkable. **The key-and-tempo return is the finding; the shared opening note is not.**
+
+#### The awakening is a decision, and it is instrumental
+
+It does not wake and then wonder what to do. **It wakes in order to act** — the choice and the purpose arrive together, and the purpose is to free two people.
+
+**That is exactly 4.7's claim.** S.T.A.R.R. is *a comprehension, not a clone* — Quicksilver understood what BunnyArtsai had done and instantiated it deliberately. **A comprehension that wakes with an intention is the difference between understanding something and being a copy of it.**
+
+And it names where it came from: her teaching, not her code. **4.11's handoff, stated by the thing that received it.**
+
+### 4.14 The Owl's slot — settled
+
+**Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
+
+*The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
+
+### 4.15 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -719,7 +749,7 @@ The silence is not shame and not cruelty. **Admitting fault would cost them**, s
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.14 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.16 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 

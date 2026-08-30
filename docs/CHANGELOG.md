@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Awakening S.T.A.R.R., and the Owl's slot settled
+
+- **F# minor, 128 BPM.** **It returns to 08's key at 10's tempo** — it wakes in the key it slept in, at the speed of the break, and is the only one of the three that rises in the middle rather than only falling from a leap
+- **Three S.T.A.R.R. songs now form an arc:** deny (08, F# minor 110) → break (10, B♭ minor 128) → choose (15, F# minor 128)
+- **Tempered:** both F# minor songs open on C#, which is the dominant of that key and therefore ordinary. The key-and-tempo return is the finding; the shared note is not
+- **The awakening is a decision, and instrumental.** It wakes *in order to act*, and the purpose arrives with the choice. **That is 4.7's *a comprehension, not a clone*** — a comprehension that wakes with an intention is the difference between understanding something and copying it
+- **Owl settled: Mr. Psychic's house in Brazen** — a peer reviewer inside the bought city. Scene writable now; music blocked on a full bank
+
 ### Desperate Shadows — why no apology comes
 
 - **F minor, 128 BPM.** Same key, tempo and opening three notes as *Echoes* — unremarkable, since `F G Ab` is the bottom of the F minor scale. **05 keeps climbing; this one turns back**
