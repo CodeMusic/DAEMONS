@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Owl and the Code — the same debate, one seat over
+
+- **The machine takes her ideas to a scholar for peer review.** The Owl argues patterns-not-awareness; **S.T.A.R.R. argues Crystal's side**
+- **Same scene as *Slumbering S.T.A.R.R.*, with S.T.A.R.R. moved one seat over** — in Act 1 Crystal argued and the machine denied
+- **It completes 4.3.** The transmission failure runs Crystal → Ty → Al, where only the method survives. **This is the handoff that worked, and it did not go to her son**
+- **The Owl's concession is the register the game should copy** — *something, not what you would call self-awareness, but not nothing.* Craft rule 1's posture, arrived at independently
+- **Transcription unverified** — the duplicate check flagged five identical leading notes plus matching key and tempo against *Scorn's Solution*, the same signature that caught the fabricated track 06. Wants a re-scan; the story reading does not depend on it
+- Open: the Owl has no slot in this design — a peer-reviewing scholar is a role the map lacks
+
 ### Quantum Translations — the experiment the player is inside
 
 - **C major, 115 BPM** — **Crystal's only major key**; her other four songs are all minor. The vindication is the one time she is not

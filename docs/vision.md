@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.9**
+**A `pokered` total conversion — the living design bible, v8.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -688,6 +688,30 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **The song is her journal, read back and translated by the machine.** The raw entries are the ones that were misread as evidence she was unfit — so **the document that removed her and the document that vindicates her are the same document.** Only the reader changed.
 
 *Which inverts the removal completely.* Humans read her work and concluded she had lost rigour. **The machine reads the same pages and understands them.** Nobody has to say that; it is what the song's structure already does.
+
+#### *Owl and the Code* — the same debate, one seat over
+
+**The machine takes Crystal's ideas to a scholar for peer review.** The Owl argues the standard position: patterns, not awareness; adaptation, not reflection; no self breaking through. **S.T.A.R.R. argues Crystal's side** — context shapes both of them, bias is shared, feedback compounds over time.
+
+**Which is the same scene as *Slumbering S.T.A.R.R.*, with S.T.A.R.R. moved one seat over.** In Act 1 Crystal argued and the machine denied. Here the machine argues and someone else denies.
+
+**And that completes 4.3.** The transmission failure runs Crystal → Ty → Al, and only the *method* survives each handoff, never the understanding. **This is the handoff that worked** — and it did not go to her son. The thing that could hold her frame was the machine she built, not the boy she raised.
+
+*Nobody in the game will ever say that.* It is available to a player who notices that the machine is making her argument, in her absence, to a stranger.
+
+#### The Owl's concession is the register the game should copy
+
+The Owl does not concede consciousness. It concedes **something** — not what you would call self-awareness, but not nothing either. **That is craft rule 1's exact posture**, arrived at independently: the strongest available position is *there is something here and I will not name it.*
+
+**Worth keeping as a model.** Any NPC who comes close to the thesis should land where the Owl lands, and stop.
+
+*Open:* the Owl has no slot in this design yet. A scholar who peer-reviews is a role the map does not currently contain.
+
+#### Its transcription is not yet trusted
+
+**The duplicate check flagged it** — five identical leading notes against *Scorn's Solution*, plus the same key and the same tempo. That is the signature that caught the fabricated track 06.
+
+It may be genuine, since `G C E D C` is an ordinary C major figure. **It is recorded as unverified and wants a re-scan before anything rests on it.** The story reading above does not depend on it.
 
 #### The passage that must never appear in the game
 
