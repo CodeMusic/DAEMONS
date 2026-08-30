@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.2**
+**A `pokered` total conversion — the living design bible, v8.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -689,7 +689,27 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **Which is 4.3's transmission failure seen from the other end.** That section describes what does not survive a handoff: the method arrives, the understanding does not. **Here she keeps offering it anyway**, to a son who has stopped receiving. The rise does not begin with her being right; it begins with her still trying.
 
-### 4.12 Where the Owl goes — and the timeline is not the map
+### 4.12 *Desperate Shadows* — why no apology comes
+
+**F minor, 128 BPM**, hook `F4 G4 Ab4 F4 Eb4 F4`. **Same key, same tempo, same opening three notes as *Echoes of the Algorithm*** — which is unremarkable, since `F G Ab` is the bottom of the F minor scale. What differs is where they go: **05 keeps climbing and never descends; this one turns back.**
+
+**It answers a question the corpus had left open.** Track 09 is subtitled *Apology Required* — she demands one, at length, itemised. **Nothing else explains why none ever arrives.**
+
+#### The answer is liability, not malice
+
+The silence is not shame and not cruelty. **Admitting fault would cost them**, so not admitting it is the correct institutional move. **A refusal to apologise is a legal position.**
+
+**That is 4.10's argument extended past the removal.** The section insists every step Scorn took was *reasonable, legible, and would be praised in a performance review.* **So is the silence.** Nobody decides to be cruel; somebody decides not to create a liability, and the effect is identical. The institution does not need a villain to keep hurting her — it only needs a policy on admissions.
+
+**And it closes the loop with her own file.** She documented nine breaches correctly, in the institution's register. The institution's answer is not to dispute them — **it is to say nothing, because saying anything would concede them.** Her being right is precisely why she gets silence.
+
+#### What transfers, and what must not
+
+**The silence transfers completely** and needs no scene: an NPC or a document explaining that no admission is forthcoming, in flat procedural language, is pure 4.10.
+
+**The confinement does not.** The song is set where she is held, and 4.10 forbids the destination as firmly as it forbids the diagnosis — *keep the specifics off the page.* **The reason for the silence is usable. The room she hears it in is not.**
+
+### 4.13 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -699,7 +719,7 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.13 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.14 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 

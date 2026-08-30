@@ -25,6 +25,7 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | # | Track | Key | BPM | Music | Story | In the ROM |
 |---|---|---|---|---|---|---|
 | 14 | Love Persists | D minor | 128 | ✅ | ✅ | — |
+| 14.25 | Desperate Shadows | F minor | 128 | ✅ | ✅ | — |
 | 14.5 | Quantum Translations | C major | 115 | ✅ | ✅ | — |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | no slot yet |
 

@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Desperate Shadows — why no apology comes
+
+- **F minor, 128 BPM.** Same key, tempo and opening three notes as *Echoes* — unremarkable, since `F G Ab` is the bottom of the F minor scale. **05 keeps climbing; this one turns back**
+- **It answers a question the corpus had left open.** Track 09 is subtitled *Apology Required*; nothing else explained why none arrives
+- **The answer is liability, not malice.** Admitting fault would cost them, so silence is the correct institutional move. **That is 4.10 extended past the removal** — the silence is as reasonable and praiseworthy as every other step. The institution needs no villain to keep hurting her, only a policy on admissions
+- **Her being right is why she gets silence.** The nine breaches cannot be disputed, so they are not answered
+- **The confinement does not transfer.** 4.10 forbids the destination as firmly as the diagnosis. The reason for the silence is usable; the room she hears it in is not
+
 ### Love Persists opens Act 2, and the Owl gets a slot
 
 - **D minor, 128 BPM** — **one up, five down**, tied with *Slumbering S.T.A.R.R.* as the most falling hook in the corpus. A mother waiting and a machine asleep share a shape
