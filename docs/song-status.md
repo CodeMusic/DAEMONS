@@ -30,6 +30,7 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 15 | Awakening S.T.A.R.R. | F# minor | 128 | ✅ | ✅ | — |
 | 16 | S.T.A.R.R.'s Revelation | C major | 120 | ⚠ thin | ✅ | — |
 | 17 | Ty's Redemption, Part 1 | C major | **74** | ✅ | ✅ | — |
+| 18 | Ty's Redemption, Part 2 | C major | 120 | ✅ | ✅ | — |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
 
 ⚠ *transcription is an outlier — 4 notes and one chord where the set runs 6–8 notes and four chords. Wants a second pass.*
@@ -74,6 +75,8 @@ Fourteen hooks, and the properties that survived checking:
 - **Most falling (1 up / 5 down), tied** — 08 and 14: a machine asleep, and a
   mother waiting
 - **Slowest by 36 BPM** — 17, Ty's apology, at 74 against a set spanning 110–160
+- **Home tempo: 128, on eleven tracks.** Only 74 and 160 leave the 110–128 body;
+  18 returns to 120, inside the room and eight short of home
 
 **Four readings were retracted along the way**, three of them because a single
 transcription turned out to be wrong. *The lesson is in `vision.md` 7.11:* a

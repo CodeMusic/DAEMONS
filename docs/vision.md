@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.6**
+**A `pokered` total conversion — the living design bible, v8.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -775,13 +775,50 @@ He states what he did, says plainly that he cannot undo it, and hopes rather tha
 
 iASHC becoming Scorn Solutions appears here as it did in *ScornSolutions Blues* — **two independent songs, the same event.** 4.10's step 3 is the best-corroborated moment in the whole sequence, which is worth knowing given the gilt sign still needs an old name under the gold leaf (4.16).
 
-### 4.16 The Owl's slot — settled
+### 4.16 *Ty's Redemption, Part 2* — he rejoins, eight short
+
+**C major, 120 BPM**, hook `E4 E4 F4 G4 E4`, chords **C | F | C | G**.
+
+**Eleven tracks in this corpus sit at exactly 128 BPM.** That is its home pulse. Part 1's 74 is the only departure below it; 160 the only departure above.
+
+**Part 2 is 120 — back inside the room, and still eight short of home.**
+
+That is the whole arc in two numbers. **He stopped, and then he rejoined — but not all the way back.** The corpus does not hand him its own heartbeat, and the restraint is more convincing than a return to 128 would have been.
+
+#### The chords forgive him before the sound does
+
+**C | F | C | G** is I–IV–I–V — **the plainest progression in the corpus**, all major, no borrowed chord, nothing withheld. And the feel is still logged as *minor-tinted*.
+
+**The harmony has resolved and the texture has not.** Nothing in the chart is unresolved; it simply does not yet sound forgiven. That is the correct description of a man who has been told it is fine and does not believe it.
+
+#### Both hooks open on E
+
+Part 1: `E4 G4 C5 B4 A4 G4` — up to the octave, then all the way back down.
+Part 2: `E4 E4 F4 G4 E4` — a step up and home.
+
+**The same starting note, the third of the key, twice.** Part 1 goes out and falls back; **Part 2 stays close and lifts.** Neither leaves E for long.
+
+#### He asks her to hold the frame
+
+The line that matters is that he waits **for her voice to guide them**. He does not propose the repair, and he does not ask her to accept one.
+
+**The man who could not hold a frame asks the removed perspective to hold it for him.** That is not remorse; **that is 2.5.** CONSENSUS is the move where you stop supplying the answer and let another view carry it, and Ty arrives at the game's central mechanic by way of an apology to his mother.
+
+**And it is addressed to someone who was removed and may never answer.** He waits anyway.
+
+#### It ends unfinished
+
+The closing refrain **drops its last line.** The song stops on the open heart, mid-thought, with no fourth line to close the rhyme.
+
+**Part 2 does not end; it is still waiting when it stops.** For a two-part redemption in a story whose thesis is that resolution comes from another frame and not your own, **that is the only honest ending available** — the answer is not his to write.
+
+### 4.17 The Owl's slot — settled
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
 *The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
 
-### 4.17 Where the Owl goes — and the timeline is not the map
+### 4.18 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -791,7 +828,7 @@ iASHC becoming Scorn Solutions appears here as it did in *ScornSolutions Blues* 
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.18 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.19 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 

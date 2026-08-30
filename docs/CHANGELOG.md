@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Ty's Redemption Part 2 — he rejoins, eight short
+
+- **Eleven tracks sit at exactly 128 BPM.** The corpus has a home pulse, and Part 1's 74 and one 160 are its only departures
+- **The arc is two numbers: 74 → 120.** He stopped, then rejoined — and the corpus **does not hand him its own heartbeat.** More convincing than a return to 128
+- **C | F | C | G is I–IV–I–V, the plainest progression in the set, and the feel is still minor-tinted.** The harmony resolves before the texture does — the right description of a man told it is fine who does not believe it
+- **Both hooks open on E**, the third: Part 1 goes to the octave and falls all the way back, Part 2 steps up and comes home
+- **He asks his mother's voice to guide them.** The man who could not hold a frame asks the removed perspective to hold it — **he arrives at 2.5 by way of an apology.** And she may never answer; he waits anyway
+- **It ends mid-refrain, a line short.** Part 2 does not end, it is still waiting when it stops — the only honest ending for a story whose thesis is that resolution comes from another frame
+
 ### Ty's Redemption — the one place the music stops
 
 - **C major, 74 BPM.** The corpus otherwise runs 110–160, so this is **36 BPM below anything else** — the largest single-axis outlier in the set. **Everything in this story drives; Ty's apology stops.** Arithmetic, not interpretation
