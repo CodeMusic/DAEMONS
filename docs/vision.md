@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.1**
+**A `pokered` total conversion — the living design bible, v5.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1188,11 +1188,7 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 **A minor is the relative minor of C major — Blanche's key signature exactly.** So the motif sits inside Blanche's theme with **no modulation at all**. Nothing has to bend to accommodate it.
 
-**And one note in it falls outside Blanche's pentatonic. One.**
-
-The hook's pitch classes are `A B C D E`. 7.6 built Blanche as C major pentatonic — C D E G A — precisely because it contains no semitone and no tritone, so **it has nothing to resolve**. The intruder is **B**: the leading tone, the one note in the scale that creates tension and demands resolution.
-
-**Crystal's motif is Blanche's own scale plus the single note that wants something.** The person who noticed something in a blank town, written as one interval, with nobody saying anything. Per 0.2 — found, not planned, and never to be explained.
+**~~And one note in it falls outside Blanche's pentatonic — B, the leading tone, the one note that wants resolution.~~ Retracted 2026-08-29, see 7.8.** The third transcription has the same property, so it is not a fact about Crystal. It is a fact about the key: `B` is the leading tone of C major and A minor, and any tonal melody in those keys reaches for it. A reading that a single further data point overturns was never a finding.
 
 *Suggestive but weak, and flagged as such:* A is **violet** in 7.2 — the last visible wavelength before A# and B, which have none. Her lament sitting at the edge of the visible, one step from the invented colour, is a lovely reading and **probably a coincidence**: A minor is the most common key in popular music. The C-major relationship above is structural and holds regardless; this one should not be leaned on.
 
@@ -1207,9 +1203,7 @@ The hook's pitch classes are `A B C D E`. 7.6 built Blanche as C major pentatoni
 
 **Transcribed 2026-08-29** from *07. Fit for Work (Scorn's Directive)*. **D minor, 128 BPM, 4/4**, hook `D4 D4 F4 F4 G4 G4 A4`.
 
-**A minor and D minor differ by exactly one pitch class: `B` against `B♭`.** And `B` is the note in Crystal's hook that falls outside Blanche's pentatonic — the one that wants resolution. **Scorn's key is Crystal's with her single note of tension flattened away.**
-
-**How much that is worth, stated honestly.** A minor to D minor is the most ordinary relationship in music: adjacent keys on the circle of fifths differ by exactly one note *by definition*, so the fact itself is arithmetic. What makes it usable is that `B`'s significance was established **independently**, from Blanche's pentatonic in 7.6. This is a strong *reading* of ordinary material, not a discovery, and it should be described that way if it is ever described at all.
+**~~Scorn's key is Crystal's with her single note of tension flattened away.~~ Withdrawn 2026-08-29.** It rested on `B` meaning something, and on Scorn having a key. **Neither survived.** *03. Scorn's Solution* is **C major**, so he has two keys across two songs, and 7.6's `B` turned out to be generic to the key rather than particular to Crystal. See 7.8.
 
 **What is solid, and useful immediately:**
 
@@ -1221,7 +1215,29 @@ The hook's pitch classes are `A B C D E`. 7.6 built Blanche as C major pentatoni
 
 *The same two format faults recurred* — `Dm3` and `Am3`, chord names in the note field. Expect it every time and correct to the root. `hook2asm.py` refuses rather than guessing, so nothing silent gets through.
 
-### 7.8 Blanche Town, implemented
+### 7.8 Keys will not separate the characters — mode and contour will
+
+**Three transcriptions in, the per-character key plan does not survive the source material.**
+
+| | Song | Key | Signature | Mode & contour |
+|---|---|---|---|---|
+| Crystal | Lament | A minor | 0 | minor, **descending** |
+| Scorn | Fit for Work | D minor | 1♭ | minor, **climbing in stepped pairs** |
+| Scorn | Solution | C major | 0 | **major, bouncy** |
+
+**All three sit within one accidental of each other**, which is what a songwriting session normally does — and **Scorn has two different keys**, so there is no character key to find. Two readings built on that assumption are struck out above. **The correcting evidence arrived one track later, which is the argument for transcribing the control before building on the pattern.**
+
+**What does separate them is mode and contour**, and both are audible on a Game Boy where a key change is nearly invisible:
+
+- **Crystal descends.** A lament falls.
+- **The procedure climbs** in repeated stepped pairs — mechanical, insistent, going up whether or not you agree.
+- **Scorn's own song is major and bouncy.**
+
+**That last one is craft rule 6, already in the source.** 0.1: *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* The villain introduces himself in upbeat major synth-pop, written years before the rule was set down for this game. **Nothing needs to be composed to get that; it only needs to be kept.**
+
+*So the revised plan:* motifs are distinguished by **mode, contour and rhythm**, and keys are chosen to fit the **town** they appear in — which is what 7 always said keys were for. Character and place stop competing for the same parameter.
+
+### 7.9 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1787,6 +1803,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **Keys will not separate characters** — three transcriptions sit within one accidental, and Scorn has two keys. **Mode and contour** carry character; **keys belong to towns**, as 7 always said (7.8)
+- **Two readings retracted** — Crystal's `B` is generic to the key, not particular to her, and the B♭ opposition rested on it. The correction arrived one track later (7.6, 7.7)
+- **Craft rule 6 is already in the source** — Scorn's own song is major and bouncy; the villain is cheerful, written years before the rule (7.8)
 - **Scorn's motif transcribed** — D minor, and **A minor and D minor differ by exactly one note: B against B♭**, which is Crystal's note of tension flattened away. Marked as a *reading* of ordinary material, since adjacent keys differ by one note by definition (7.7)
 - **Their contours oppose** — Crystal's hook descends, Scorn's climbs; both 128 BPM and both 8 beats over 16, so they are interchangeable and layerable (7.7)
 - **Crystal's motif transcribed** — A minor, the **relative minor of Blanche's C**, so it needs no modulation; and **exactly one of its notes falls outside Blanche's pentatonic: B, the leading tone.** Her motif is Blanche's scale plus the one note that wants something (7.6)

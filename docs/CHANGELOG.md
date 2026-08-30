@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The control track, and two retractions
+
+- ***03. Scorn's Solution* is C major** — so Scorn has two keys across two songs, and there is no character key to find
+- **Retracted from 7.6:** Crystal's `B` outside Blanche's pentatonic is **not** a fact about Crystal. Scorn's Solution has the same property. `B` is the leading tone of C major and A minor, and any tonal melody in those keys reaches for it
+- **Withdrawn from 7.7:** the `B` against `B♭` opposition rested on both of the above, and neither survived
+- **The correcting evidence arrived one track later** — which is the argument for transcribing a control before building on a pattern
+- **New 7.8: keys will not separate characters.** All three sit within one accidental. **Mode and contour** carry character; **keys belong to towns**, which is what section 7 always said they were for. The two stop competing for one parameter
+- **Craft rule 6 is already in the source.** Scorn's own song is *major and bouncy* while the procedure song is minor and driving — *"the horror is what they are cheerful about"*, written years before the rule was set down. Nothing needs composing; it needs keeping
+
 ### Scorn's motif — and the note between the two
 
 - **D minor, 128 BPM, 4/4**, hook `D4 D4 F4 F4 G4 G4 A4`, from *07. Fit for Work (Scorn's Directive)*
