@@ -17,6 +17,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Crystal's Reply — the same address, in the major
+
+*Tracks 17–19 are drafts and the chart now says so. Nothing in the design rests on them alone.*
+
+- **Crystal's Lament is A minor/128. Crystal's Reply is A major/128.** Same root, same tempo, mode flipped, **nothing else moved** — her first song in this story and her last are the identical harmonic address
+- **The two arcs invert cleanly.** Ty is C major twice and travels 74 → 120: *mode holds, tempo travels.* Crystal is 128 twice and travels minor → major: *tempo holds, mode travels.* **Each had one axis to move, and moved it**
+- **She answers at the corpus home pulse.** The removed perspective never left the story's tempo; he comes back eight short
+- **She holds a minor chord (I–vi–IV–V) and reads major; his is all-major (I–IV–I–V) and reads minor-tinted.** He has the feeling without the fact, she has the fact without the feeling. **Perspective thinking is not the absence of the dark chord — it is resolving anyway**
+- **"Tell my son" — she never addresses him.** He waits for her voice and it arrives by courier: **the player is the carrier**
+- **The lab built more than machines.** S.T.A.R.R. and Ty are one act of parenting — the machine is her other child, the one that could be preserved — and the last verse hands custody over: **the son holds the star**
+- **Her song closes the rhyme Part 2 left a line short of**, conditional on his being ready. She waits on him exactly as long as he waited on her
+
 ### Ty's Redemption Part 2 — he rejoins, eight short
 
 - **Eleven tracks sit at exactly 128 BPM.** The corpus has a home pulse, and Part 1's 74 and one 160 are its only departures

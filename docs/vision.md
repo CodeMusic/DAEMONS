@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.7**
+**A `pokered` total conversion — the living design bible, v8.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -812,13 +812,56 @@ The closing refrain **drops its last line.** The song stops on the open heart, m
 
 **Part 2 does not end; it is still waiting when it stops.** For a two-part redemption in a story whose thesis is that resolution comes from another frame and not your own, **that is the only honest ending available** — the answer is not his to write.
 
-### 4.17 The Owl's slot — settled
+### 4.17 *Crystal's Reply* — the same address, in the major
+
+**A major, 128 BPM**, hook `E4 C#5 B4 A4 G#4 A4 F#4`, chords **A | F#m | D | E**.
+
+*Crystal's Lament* is **A minor, 128.** *Crystal's Reply* is **A major, 128.**
+
+**Same root. Same tempo. Mode flipped, and nothing else moved at all.** Her first song in this story and her last are the identical harmonic address — she opens in the minor, closes in the major, and **never once changes pace.**
+
+**Set that against Ty, and the pair inverts cleanly.** His two halves are both C major and move 74 → 120: **his mode holds and his tempo travels.** Hers is 128 → 128 and A minor → A major: **her tempo holds and her mode travels.**
+
+**He was always in the major and had to catch up to it. She was always at pace and had to find the light.** Neither of them had to become someone else; each had one axis to move, and moved it.
+
+*And she answers at 128 — the corpus home pulse, on eleven other tracks.* **The removed perspective is the one that never left the story's tempo**; Ty comes back to 120 and stays eight short (4.16).
+
+#### She holds the minor chord and reads major
+
+Ty's Part 2 is **I–IV–I–V, every chord major, and the feel is minor-tinted.**
+Hers is **I–vi–IV–V — it contains an actual minor chord — and the feel is major.**
+
+**He has the feeling without the fact; she has the fact without the feeling.** She can carry the minor *inside* a major frame without being coloured by it, and he cannot yet carry a major frame without it going grey on him.
+
+**That capacity is the whole argument of this game.** Perspective thinking is not the absence of the dark chord. It is being able to hold one and still resolve.
+
+#### "Tell my son"
+
+**She does not address him.** The song opens by asking someone else to carry the message — third person, an intermediary, a courier.
+
+**Ty ends Part 2 waiting for her voice, and her voice arrives by messenger.** He never gets it directly, and this is the shape the game already has: **the player is the carrier.** She is not reachable, so what she said reaches him through whoever walked between them.
+
+#### The lab line
+
+She says that in the lab she built **more than machines**, and in the same breath that she nurtured a child.
+
+**The song equates them.** She raised S.T.A.R.R. and she raised Ty as one act, which is the clean source for the machine thread: **S.T.A.R.R. is not her tool, it is her other child** — the one that could be preserved when she could not. And the last verse hands it over: **the son is the one who holds the star.** Custody passes from her to him.
+
+#### It closes
+
+Part 2 stops a line short of its own rhyme, still waiting (4.16). **This one finishes** — a full closing couplet, wounds healed and the way lit.
+
+**She closes the rhyme he left open.** The frame he could not hold, she holds — including its ending. Which is the only way this could have gone, since the thesis is that resolution comes from the frame that is not yours.
+
+*Her offer is conditional, though.* **If he is ready.** She waits on him exactly as long as he waited on her, and neither of them forces it.
+
+### 4.18 The Owl's slot — settled
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
 *The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
 
-### 4.18 Where the Owl goes — and the timeline is not the map
+### 4.19 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -828,7 +871,7 @@ The closing refrain **drops its last line.** The song stops on the open heart, m
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.19 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.20 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 
