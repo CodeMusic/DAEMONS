@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.4**
+**A `pokered` total conversion — the living design bible, v5.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1282,7 +1282,33 @@ Across all five hooks, **the procedure's is the only one with no descending inte
 
 **S.T.A.R.R. is the mirror of it** — 1 up against 5 down, the most descending of the five, and the slowest. The thing that cannot join the people also moves the opposite way to the thing that processes them.
 
-### 7.11 Blanche Town, implemented
+### 7.11 The controlled comparison — a man and the thing he sets in motion
+
+**Sixth transcription, 2026-08-29:** *12. ScornSolutions Blues* — **E minor, 120 BPM**, hook `E4 G4 B4 A4 G4 E4`.
+
+**Scorn now has three keys across three songs** — C major, E minor, D minor. That settles 7.8 completely: keys track *songs*, never people.
+
+**But the contour does something keys do not, and this is the only comparison in the set with a control built into it.**
+
+| Scorn song | What it is | Contour | Up / down |
+|---|---|---|---|
+| Solution | **the man** | arch | 2 / 3 |
+| Blues | **the man** | arch | 2 / 3 |
+| Fit for Work | **his directive** | **climb** | **3 / 0** |
+
+Same character, same writer, same album, three keys and three tempos. **The only variable that tracks the contour is whether the song is the man or the procedure he issues** — and the two songs that are *him* arch identically, twice, independently.
+
+**And the baseline is what makes it sharp: five of the six hooks arch.** Arching is the default shape, so the arch was never the signal. **The single exception is** — and the exception is precisely the thing that processes people.
+
+*Why this one is worth more than everything struck out above.* 7.6's note and 7.7's opposition had no control: one observation, one interpretation, no way to be wrong. Here the same character supplies both arms of the comparison, and the difference replicates. **It could have come back an arch and did not.**
+
+#### What it buys, mechanically
+
+The procedure's motif **rises and never comes down**, in a soundtrack where everything else returns. Under Brazen — the bought city, Corpus headquarters — that is audible on four channels without a word of dialogue, and it does not depend on the player knowing why.
+
+**S.T.A.R.R. remains its mirror** at 1 up against 5 down: the most falling, the slowest, and the only motif that cannot share the others' tempo.
+
+### 7.12 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1848,7 +1874,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
-- **The procedure's hook is the only one of five with no descending interval** — it climbs and never comes down. A property, not a reading, and worth more than the shape observations around it (7.10)
+- **A controlled comparison, and the best evidence in the set** — Scorn's two *own* songs both arch at 2/3, independently; his *directive* is the only hook in six that never descends. Same character, same writer, three keys: the contour tracks **man versus procedure** (7.11)
+- **Five of six hooks arch**, so arching is the baseline and the single exception is the signal (7.11)
+- **The procedure's hook is the only one of six with no descending interval** — it climbs and never comes down. A property, not a reading, and worth more than the shape observations around it (7.10)
 - **7.8's "within one accidental" corrected at n=5** — the real spread is five accidentals; the narrow band was a three-track artifact. Scorn's two keys still rule out keys as character labels (7.8)
 - **S.T.A.R.R. is the outlier on three axes at once** — F# minor against a one-accidental band, 110 against three at 128, sparse against three driving. **It cannot be layered with the human motifs**, which is a mechanical fact rather than a reading (7.9)
 - **Keys will not separate characters** — three transcriptions sit within one accidental, and Scorn has two keys. **Mode and contour** carry character; **keys belong to towns**, as 7 always said (7.8)

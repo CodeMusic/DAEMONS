@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The controlled comparison
+
+- **E minor, 120 BPM**, hook `E4 G4 B4 A4 G4 E4`, from *12. ScornSolutions Blues*
+- **Scorn now has three keys across three songs** (C major, E minor, D minor) — 7.8 settled: keys track songs, never people
+- **But the contour tracks something keys do not.** Both songs that are *Scorn the man* arch at 2 up / 3 down, independently. The one that is *his directive* is the only hook in six that never descends
+- **Same character, same writer, same album, three different keys and tempos** — the only variable that moves with the contour is man versus procedure. **It could have come back an arch and did not**
+- **Five of six hooks arch**, so the arch is the baseline and the exception is the signal
+- **Why this outweighs the retracted readings:** 7.6 and 7.7 had no control — one observation, one interpretation, no way to be wrong. Here the same character supplies both arms and the difference replicates
+- **Mechanically:** the procedure's motif rises and never returns, under Brazen, on four channels, with no dialogue. S.T.A.R.R. remains its mirror at 1 up / 5 down
+
 ### Ty, and a second correction
 
 - **E major, 124 BPM**, hook `G#4 G#4 A4 B4 G#4 F#4 E4`, from *02. Fox in the Shadows (Ty's Dilemma)*
