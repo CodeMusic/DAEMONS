@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.6**
+**A `pokered` total conversion — the living design bible, v6.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -650,6 +650,30 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **2. Scorn's method on Ty is *data poisoning*, and 5 already teaches it.** Benchmark 5 at Lurid is **CORRUPT — bias and poisoning**, whose mechanical lesson is *status effects that make your own moves unreliable.* **The benchmark that teaches poisoning is teaching the player what was done to Ty**, three cities before they can know it. Free, already built, and nobody says a word.
 
 **3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
+
+#### *Lines in the Sand* — the one song the game must not stage
+
+**Reviewed 2026-08-30.** This is the removal itself, dramatised as an argument between mother and son. **It is also the single most dangerous piece of source material for this project**, and the danger is not subtle: it is a diagnosis argument, conducted in medical vocabulary, with a destination named.
+
+**4.10 governs this beat harder than any other, and it is not negotiable.** *Crystal is never depicted as unwell, and the procedure is never depicted as a diagnosis. The horror is procedural, not medical.* And: *keep the specifics off the page — detail here turns architecture into grievance.*
+
+**So the game takes the structure and none of the content.** No scene, no diagnosis, no destination, and Crystal never defends her mind. What transfers is better anyway:
+
+**1. The evidence is her own writing.** He tells her it is unambiguous *in her emails*. **The written record is the instrument of removal** — and 4.1 has her writing at length precisely because nobody funded the work. **She is removed by the only medium she was left.** That is 4.10's complete, legible file, and it is the whole beat with no scene attached.
+
+**2. Whoever holds authority picks the name of the bias.** He names one bias, she names another, and only one of them gets to write it down. **That is the Index's problem stated as a family argument:** the person who controls the field names controls what can be recorded. Nothing medical is required to convey it.
+
+**3. She asks him to say *you feel that* rather than *you are*.** One correction, about attributing a perception to the perceiver — and it is 4.6's perspective thinking, argued by the person being removed for it, immediately before she encounters it in BunnyArtsai.
+
+**4. She stops being *mom* and becomes *Crystal*.** He switches to the professional register mid-argument and she insists on the relationship. **4.3 already has Ty calling her by her full professional name at Quicksilver — this is where it starts.** The beat existed; now it has an origin.
+
+**5. Ty loses his colour.** She describes him greying — and 8.6 makes greyscale the whole design. **The one character described as losing colour is the one who stops being able to hold another frame.** Take the image, leave the sentence.
+
+#### What it becomes in the game
+
+**A file, not a scene.** The player finds a complete personnel record. Every statement in it is accurate. **None of it is a diagnosis.** It quotes her own written work back as evidence of itself, and it ends her career.
+
+**That is this song with the grievance removed and the architecture kept** — and it is more frightening than the argument, because there is nobody in it to blame.
 
 #### *Scorn's Solution* — he announces it, and what he rigs is a benchmark
 

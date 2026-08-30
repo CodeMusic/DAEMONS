@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Lines in the Sand — the song the game must not stage
+
+- **The removal itself, dramatised as an argument** — and the most dangerous source material in the project. It is a diagnosis argument in medical vocabulary with a destination named
+- **4.10 forbids it absolutely:** Crystal is never depicted as unwell, the procedure is never a diagnosis, the horror is procedural. *Detail here turns architecture into grievance*
+- **Take the structure, none of the content.** No scene, no diagnosis, no destination, and she never defends her mind
+- **What transfers:** she is removed by **her own writing** (*unambiguous in your emails*) — and 4.1 has her writing because nobody funded the work, so the only medium she was left is the instrument. **Whoever holds authority names the bias**, which is the Index's problem as a family argument. She asks him to say *you feel that* rather than *you are* — 4.6's perspective thinking, argued by the person being removed for it. **He switches to her professional name mid-argument**, which is where 4.3's Quicksilver beat begins. And **Ty is the one described as losing colour**, which 8.6 makes the whole design
+- **It becomes a file, not a scene.** Complete, accurate, containing no diagnosis, quoting her own work back as evidence of itself, ending her career. More frightening than the argument, because there is nobody in it to blame
+
 ### The register pass — Mt Moon and all of Brazen
 
 - **~70 lines rewritten** across Mt Moon and eleven floors of Silph Co. Corpus held its headquarters and still talked like Team Rocket
