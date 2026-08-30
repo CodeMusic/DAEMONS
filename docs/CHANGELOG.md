@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Track 07 re-scanned, and three findings struck
+
+- **A second transcription of *Fit for Work* replaced the first.** Same key and tempo, different melody: `D5 E5 F5 E5 D5 A4 C5 D5` against the recorded `D4 D4 F4 F4 G4 G4 A4`
+- **The second is kept** — dotted rhythms and a `DOUBT` naming the exact vocal phrase, where the first was perfectly uniform (repeated pairs, whole beats, a regular climb — the shape an approximation takes)
+- **Struck: "the directive never descends" (7.10).** The real hook is 4 up / 3 down
+- **Struck: "the man arches, his directive climbs" (7.11)** — this document's best-defended claim. **All three of Scorn's songs arch.** The distinction existed in a bad transcription, not in the music
+- **Struck: the reprise shares the directive's opening three notes (7.12).** That rested on `D4 D4 F4`
+- **The lesson recorded:** the control was sound — same character, both arms, and it *could* have come back an arch. It did. **A control cannot rescue bad input; only re-measuring can.** And two hooks looking alike may mean they were approximated the same wrong way
+- **One hook still never descends, and is now the only one:** *Echoes of the Algorithm* — Crystal going into the system. Recorded as a fact, deliberately not built into a claim
+
 ### Lines in the Sand — the music says it is an argument
 
 - **C minor, 125 BPM**, hook `C5 G4 Eb4 G4 C5 G4 Eb4 F4`

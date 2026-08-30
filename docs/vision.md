@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.2**
+**A `pokered` total conversion — the living design bible, v7.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1437,7 +1437,11 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 ### 7.7 Scorn's motif, and the note between them
 
-**Transcribed 2026-08-29** from *07. Fit for Work (Scorn's Directive)*. **D minor, 128 BPM, 4/4**, hook `D4 D4 F4 F4 G4 G4 A4`.
+**Transcribed twice, and the second answer replaced the first.** *07. Fit for Work (Scorn's Directive)* — **D minor, 128 BPM, 4/4**, hook `D5 E5 F5 E5 D5 A4 C5 D5`.
+
+**~~D4 D4 F4 F4 G4 G4 A4~~** was recorded on 2026-08-29 and used for three findings. A re-scan on 2026-08-30 returned a different melody in the same key and tempo. **The second is the one kept**: it carries dotted rhythms and a `DOUBT` naming the exact vocal phrase transcribed, where the first was perfectly uniform — repeated pairs, whole beats, a regular climb, which is the shape an approximation takes.
+
+**Everything the first version supported is struck out below.** Three findings, one of which this document called its best.
 
 **~~Scorn's key is Crystal's with her single note of tension flattened away.~~ Withdrawn 2026-08-29.** It rested on `B` meaning something, and on Scorn having a key. **Neither survived.** *03. Scorn's Solution* is **C major**, so he has two keys across two songs, and 7.6's `B` turned out to be generic to the key rather than particular to Crystal. See 7.8.
 
@@ -1504,13 +1508,9 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 #### The fact worth keeping
 
-Across the first six hooks, **the procedure's was the only one with no descending interval at all** — `0 +3 0 +2 0 +2`. It repeats and climbs and never comes down.
+**~~The procedure's is the only hook with no descending interval.~~ Retracted 2026-08-30.** It rested on a transcription that a re-scan replaced. The real hook is `D5 E5 F5 E5 D5 A4 C5 D5` — **4 up, 3 down, two turns.** It descends like most of the set.
 
-**Corrected at n=7.** *Echoes of the Algorithm* is `+2 +1 +2 +2 0` — **also never descends.** So the property is one of two rather than unique, and the claim above is weaker than it was written.
-
-**What survives is the controlled comparison, which is the part that had a control:** Scorn's two *own* songs both arch at 2/3, independently, while his *directive* climbs. Same character, same writer, three keys. That does not depend on the property being unique to one hook.
-
-*And the second one earns it.* Crystal goes into the system and does not come back down either — a different thing that also does not return.
+**One hook does still never descend, and it is now the only one:** *Echoes of the Algorithm*, `+2 +1 +2 +2 0`. **Crystal going into the system, not Scorn's directive.** Recorded as a fact about the set, and deliberately not built into a claim — that is exactly what went wrong the last three times.
 
 **That is a property, not a reading.** A directive that only goes up, in a song called *Fit for Work*. It needs no interpretation and no defence, and it is worth more than the three arches-and-laments observations put together.
 
@@ -1532,17 +1532,17 @@ Across the first six hooks, **the procedure's was the only one with no descendin
 
 **But the contour does something keys do not, and this is the only comparison in the set with a control built into it.**
 
-| Scorn song | What it is | Contour | Up / down |
-|---|---|---|---|
-| Solution | **the man** | arch | 2 / 3 |
-| Blues | **the man** | arch | 2 / 3 |
-| Fit for Work | **his directive** | **climb** | **3 / 0** |
+**~~The man arches; his directive climbs.~~ Retracted 2026-08-30, and it was this document's best-defended claim.**
 
-Same character, same writer, same album, three keys and three tempos. **The only variable that tracks the contour is whether the song is the man or the procedure he issues** — and the two songs that are *him* arch identically, twice, independently.
+| Scorn song | Contour | Up / down |
+|---|---|---|
+| Solution | arch | 2 / 3 |
+| Blues | arch | 2 / 3 |
+| Fit for Work — **re-scanned** | arch, two turns | **4 / 3** |
 
-**And the baseline is what makes it sharp: five of the six hooks arch.** Arching is the default shape, so the arch was never the signal. **The single exception is** — and the exception is precisely the thing that processes people.
+**All three of Scorn's songs arch.** The distinction between the man and the procedure he issues does not exist in the music; it existed in a bad transcription.
 
-*Why this one is worth more than everything struck out above.* 7.6's note and 7.7's opposition had no control: one observation, one interpretation, no way to be wrong. Here the same character supplies both arms of the comparison, and the difference replicates. **It could have come back an arch and did not.**
+**The lesson is not that controls do not work — it is that a control cannot rescue bad data.** The comparison was sound: same character, same writer, both arms present, and it could have come back an arch. **It did come back an arch.** The control was fine and the input was wrong, which is a failure mode no amount of experimental design catches. Only re-measuring does.
 
 #### What it buys, mechanically
 
@@ -1563,7 +1563,7 @@ The procedure's motif **rises and never comes down**, in a soundtrack where ever
 
 Not a transposition, and not near one. **A confident, unprompted musical assertion, contradicted by the same answer's own data** — caught by arithmetic, which is the only thing in this pipeline that can catch it, because nobody downstream can hear the source.
 
-**And a relationship it did not claim is present.** Track 11 shares its **key and its first three notes** — `D4 D4 F4` — with **track 07, the procedure**. They then diverge on exactly the axis 7.11 isolated:
+**~~And a relationship it did not claim is present.~~ Withdrawn 2026-08-30.** It rested on track 07 opening `D4 D4 F4`, which the re-scan replaced. The two share a key and nothing else. *The original point stands only as a warning:* the shared opening was an artifact of two hooks being approximated the same loose way, which is a failure mode worth naming — **similar-looking transcriptions can be similar because they are wrong in the same direction.**
 
 - **07 continues `0 +2 0 +2`** and never descends.
 - **11 continues `+4 −2 −2 −3`** and comes back down.
@@ -2182,6 +2182,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Gemini asserted the reprise was Crystal's Lament transposed; its own notes refute it** — transposition preserves intervals and these differ entirely. Caught by arithmetic, the only check available (7.12)
 - **An unclaimed relationship is in the data instead** — track 11 shares key and first three notes with the *procedure*, then descends where the procedure never does. **Held as unconfirmed**, being one observation of an ordinary figure (7.12)
 - **Method:** ask models for measurements, derive relationships here. The one field that invited inference is the one that was wrong (7.12)
+- **The best-defended claim in this document is retracted (7.11)** — all three of Scorn's songs arch; the man/directive distinction was a bad transcription, not a finding. A control cannot rescue bad input
+- **Track 07 re-scanned** — `D5 E5 F5 E5 D5 A4 C5 D5`, 4 up / 3 down. Three findings struck (7.7, 7.10, 7.11, 7.12)
 - **A controlled comparison, and the best evidence in the set** — Scorn's two *own* songs both arch at 2/3, independently; his *directive* is the only hook in six that never descends. Same character, same writer, three keys: the contour tracks **man versus procedure** (7.11)
 - **Five of six hooks arch**, so arching is the baseline and the single exception is the signal (7.11)
 - **The procedure's hook is the only one of six with no descending interval** — it climbs and never comes down. A property, not a reading, and worth more than the shape observations around it (7.10)
