@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Crystal's motif — the first transcription
+
+- **A minor, 128 BPM, 4/4**, hook `A4 E5 D5 C5 B4 C5 D5`, from *01. Crystal's Lament*
+- **A minor is the relative minor of C major** — Blanche's key signature exactly, so the motif needs **no modulation** to sit inside her theme
+- **Exactly one of its notes falls outside Blanche's pentatonic: B.** 7.6 chose that pentatonic because it has no semitone and nothing to resolve; **B is the leading tone**, the one note that creates tension. Crystal's motif is Blanche's own scale plus the single note that wants something
+- *Flagged as probably coincidence:* A reads as **violet** in 7.2, the last visible wavelength before the two that have none. A lovely reading, but A minor is the most common key in popular music — the C-major relationship is the structural one
+- **The pipeline caught two real errors on its first run.** `Am3/4` — a chord name leaked into a note field, refused rather than guessed. And an 8-beat hook against a 16-beat progression: it plays twice per cycle. Both would have been silent wrong notes
+
 ### Per-song prompts, with the real track URLs
 
 - **Seven ready-to-paste prompts** appended to `music-prompts.md`, each with its verified SoundCloud URL, in the order the tracks should be done

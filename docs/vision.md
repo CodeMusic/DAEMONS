@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.9**
+**A `pokered` total conversion — the living design bible, v5.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1182,7 +1182,28 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 *One failure mode is worth naming here rather than only in the prompt file.* **Gemini cannot stream from SoundCloud.** Given a link alone it will read the *page* — title, description, comments — and can return a confident, wholly invented transcription. Fabricated notes are indistinguishable from real ones once they are text, and nobody downstream can hear the difference. So every prompt opens with a gate: **if you have not been given an audio file, reply `NO AUDIO` and stop.**
 
-### 7.6 Blanche Town, implemented
+### 7.6 Crystal's motif — the first transcription, and what it turned out to be
+
+**Transcribed 2026-08-29** from *01. Crystal's Lament* via the `music-prompts.md` pipeline. **A minor, 128 BPM, 4/4**, hook `A4 E5 D5 C5 B4 C5 D5`.
+
+**A minor is the relative minor of C major — Blanche's key signature exactly.** So the motif sits inside Blanche's theme with **no modulation at all**. Nothing has to bend to accommodate it.
+
+**And one note in it falls outside Blanche's pentatonic. One.**
+
+The hook's pitch classes are `A B C D E`. 7.6 built Blanche as C major pentatonic — C D E G A — precisely because it contains no semitone and no tritone, so **it has nothing to resolve**. The intruder is **B**: the leading tone, the one note in the scale that creates tension and demands resolution.
+
+**Crystal's motif is Blanche's own scale plus the single note that wants something.** The person who noticed something in a blank town, written as one interval, with nobody saying anything. Per 0.2 — found, not planned, and never to be explained.
+
+*Suggestive but weak, and flagged as such:* A is **violet** in 7.2 — the last visible wavelength before A# and B, which have none. Her lament sitting at the edge of the visible, one step from the invented colour, is a lovely reading and **probably a coincidence**: A minor is the most common key in popular music. The C-major relationship above is structural and holds regardless; this one should not be leaned on.
+
+**Two corrections the checker caught**, both of which would otherwise have become silent wrong notes:
+
+- `BASS: ... Am3/4` — a **chord name leaked into a note field**. The root is `A3`. `hook2asm.py` refused rather than guessing.
+- **The hook is 8 beats and the progression is 16.** It covers two bars of a four-bar loop, so it plays **twice per cycle**. Inaudible as an error in source, obvious in play.
+
+*Still open:* Gemini's `DOUBT` flagged the vocal pitches as estimated by ear. The contour is plausible and the key is almost certainly right — but if the motif ever sounds wrong against Blanche, the hook is the thing to re-check, not the key.
+
+### 7.7 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1748,6 +1769,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **Crystal's motif transcribed** — A minor, the **relative minor of Blanche's C**, so it needs no modulation; and **exactly one of its notes falls outside Blanche's pentatonic: B, the leading tone.** Her motif is Blanche's scale plus the one note that wants something (7.6)
+- **The pipeline caught two real errors on its first run** — a chord name in a note field, and a hook half the length of its progression (7.6)
 - **The rock opera is character music, not place music** — Act 1's tracklist is the cast, so the hooks become **leitmotifs** inside town themes rather than town themes themselves (7.5)
 - **Gemini is the ear** — Claude cannot hear audio; prompts and format in [`music-prompts.md`](music-prompts.md). Ask for the hook, not the song (7.5)
 - **Blanche Town's theme written** — C major **pentatonic**, no F and no B, so it can form neither a leading tone nor a dissonance and has nothing to resolve (7.3)
