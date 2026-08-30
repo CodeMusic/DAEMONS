@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.9**
+**A `pokered` total conversion — the living design bible, v6.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -624,6 +624,28 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 *So he calls her **Gran**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer without losing the family: **Gran** is familiar, faintly impatient, and not contemptuous. It is also two characters shorter, so nothing needed rewrapping. His sister says **Gran's lab** for the same reason.
 
 *Which pronouns are already right.* The intro's *"This is my grandson. **He's** been your rival"* and *"**His** name is `<RIVAL>`"* are Crystal talking about **Al**, and correct as they stand. They sit two lines from her own name, so they read like misses and are not — recorded here so nobody fixes them.
+
+#### What *Crystal's Lament* adds, and the one thing it contradicts
+
+**Reviewed 2026-08-30.** Three gifts and one fork.
+
+**1. They led together first.** The song has Crystal and Ty running the lab side by side before Scorn — a partnership, not a parent and a subordinate. **That makes the transmission failure worse in the right way.** It is not that Ty never had it; he *had* it, lost it, and got it back too late. The chain becomes:
+
+> Crystal built it → **Ty held it and was turned** → Al received the method with nothing inside it.
+
+**2. Scorn's method on Ty is *data poisoning*, and 5 already teaches it.** Benchmark 5 at Lurid is **CORRUPT — bias and poisoning**, whose mechanical lesson is *status effects that make your own moves unreliable.* **The benchmark that teaches poisoning is teaching the player what was done to Ty**, three cities before they can know it. Free, already built, and nobody says a word.
+
+**3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
+
+#### The fork: the song's Scorn schemes, and this design refuses to let him
+
+The lament gives Scorn cunning, whispered lies and deceit. **4.10 is emphatic in the other direction** — no scheme, the paperwork is the antagonist, every step legible and praiseworthy in review.
+
+**Resolved by frame, not by choosing.** The song is *Crystal's Lament*: it is **her point of view**, and a mother watching her son turned against her would experience procedure as scheming — **right about the effect, wrong about the mechanism.** That is not a contradiction in the canon; it is the canon's own subject. Context determines what you see.
+
+**So the game carries both and never reconciles them.** The player reads flat, dated, procedural paperwork at Quicksilver, and separately encounters a mother's account of deceit. The gap between the two *is* the thesis, and the player closes it or does not.
+
+*Why the design's version has to stay the game's:* a Scorn who deceives lets the player off — he becomes a bad man, and bad men are somebody else. A Scorn whose every step would be praised in a performance review leaves the player holding an Index they have been filling all game. **4.3 also needs it**, because Al only works if his grandfather-in-argument is not a cartoon.
 
 #### The transmission failure — why he loses
 

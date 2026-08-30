@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Crystal's Lament, read against the design
+
+- **They led together first.** Crystal and Ty ran the lab side by side before Scorn — so Ty *had* the understanding and lost it. The transmission failure becomes a loss rather than an absence
+- **Scorn's method on Ty is data poisoning — and Benchmark 5 already teaches it.** Lurid is CORRUPT, *status effects that make your own moves unreliable*. The player is taught what was done to Ty three cities before they can know it
+- **Ty stopped speaking to her directly.** 4.3 already had the consequence (*he calls her by her full professional name*); the song is its cause
+- **The fork: the song's Scorn schemes; 4.10 refuses to let him.** Resolved by frame rather than by choosing — it is *Crystal's Lament*, her point of view, right about the effect and wrong about the mechanism. The game carries both accounts and never reconciles them; the gap is the thesis
+- **Why the design's version stays the game's:** a deceiving Scorn lets the player off, because bad men are somebody else. A Scorn whose every step would be praised leaves the player holding the Index they have been filling all game
+
 ### The Quicksilver log
 
 - **Four terminals replace the Mansion journals.** Vanilla already had the mechanism — four entries across three floors of a ruined lab, read while descending, escalating to failure
