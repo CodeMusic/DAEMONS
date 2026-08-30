@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.3**
+**A `pokered` total conversion — the living design bible, v7.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -826,7 +826,19 @@ So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen
 
 *And the reason she was removed is now settled, without a word of it appearing.* Not a diagnosis — **a technical judgement.** Her claims about recursive feedback loops looked unrigorous to people who had not read the work, which is exactly 4.10's *policy triggered on work that looked strange.* The file can be entirely accurate and entirely fatal, and that is worse than malice.
 
-**The arithmetic is now complete across two cities:** a dated notice and a dated plate in Brazen, a personnel record with two dates at Quicksilver, and a terminal that stops with no date at all. The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
+**The arithmetic is now complete, and dated 2026-08-30.** The departure carries a real date, taken from the deadline stated in *Fit for Work* — the only specific date the source gives:
+
+| | |
+|---|---|
+| **Mar 4** | log entry: the code rigid |
+| **Apr 19** | log entry: the same answer, *logged as a result anyway* |
+| **Tue Aug 12** | log entry: the code slipping |
+| **SEPT 3** | the plate. *The file is complete.* |
+| **no date** | the terminal stops. `CRYSTAL NOT FOUND` |
+
+**Three dated documents around one undated event**, in two cities, with nobody stating the order.
+
+*Dating it caught a contradiction.* The log's last entry was Tue **Nov** 12 — written in her voice, two months after she had gone. It moves to **August**, so the log closes before the plate opens. **A date is a constraint, not a decoration**, and this one immediately found something wrong. The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
 
 #### The two accounts, kept
 

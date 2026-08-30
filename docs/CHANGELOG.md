@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The departure gets a date
+
+- **SEPT 3 on the Quicksilver plate**, from the deadline stated in *Fit for Work* — the only specific date the source gives. The file is still complete
+- **It caught a contradiction.** The log ran Mar 4, Apr 19, **Tue Nov 12**, all in her voice — but a November entry is written by someone who left in September. The Tuesday moves to **August**, so the log closes before the plate opens
+- **The sequence, with nobody stating it:** Mar 4 rigid → Apr 19 logged as a result anyway → Tue Aug 12 slipping → SEPT 3 file complete → *no date*, the terminal stops
+- Three dated documents around one undated event, in two cities. **A date is a constraint, not a decoration** — this one found a fault the moment it went in
+
 ### Track 07 re-scanned, and three findings struck
 
 - **A second transcription of *Fit for Work* replaced the first.** Same key and tempo, different melody: `D5 E5 F5 E5 D5 A4 C5 D5` against the recorded `D4 D4 F4 F4 G4 G4 A4`
