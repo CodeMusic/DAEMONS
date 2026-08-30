@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Owl re-scanned — the only mirror in the set
+
+- **C major, 128 BPM**, hook `G4 C5 E5 G5 E5 C5 G4`, superseding the flagged first answer
+- **The duplicate check worked.** It flagged the first answer for sharing five leading notes, key and tempo with *Scorn's Solution*; the re-scan came back entirely different, so the flagged one was the unreliable one
+- **Its interval sequence is a perfect mirror** — `+5 +4 +3 −3 −4 −5`, the second half the exact inverse of the first. **The only one of fourteen hooks**
+- **Recorded as a fact, not a finding.** The symmetry has an ordinary cause: a triad arpeggio out and back is symmetrical by construction. A palindrome in the one two-sided debate is pleasing and proves nothing
+
 ### Owl and the Code — the same debate, one seat over
 
 - **The machine takes her ideas to a scholar for peer review.** The Owl argues patterns-not-awareness; **S.T.A.R.R. argues Crystal's side**

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.0**
+**A `pokered` total conversion — the living design bible, v8.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -707,11 +707,13 @@ The Owl does not concede consciousness. It concedes **something** — not what y
 
 *Open:* the Owl has no slot in this design yet. A scholar who peer-reviews is a role the map does not currently contain.
 
-#### Its transcription is not yet trusted
+#### Re-scanned, and it is the only mirror in the set
 
-**The duplicate check flagged it** — five identical leading notes against *Scorn's Solution*, plus the same key and the same tempo. That is the signature that caught the fabricated track 06.
+**C major, 128 BPM**, hook `G4 C5 E5 G5 E5 C5 G4`. **The re-scan supersedes the first answer**, which the duplicate check had flagged for sharing five leading notes, a key and a tempo with *Scorn's Solution*. The two answers are entirely different, so the flagged one was the unreliable one — **the check did its job.**
 
-It may be genuine, since `G C E D C` is an ordinary C major figure. **It is recorded as unverified and wants a re-scan before anything rests on it.** The story reading above does not depend on it.
+**Its interval sequence is a perfect mirror:** `+5 +4 +3 −3 −4 −5`. The second half is the exact inverse of the first, read backwards. **Of fourteen hooks it is the only one**, and that is a measured property rather than a reading.
+
+*What it is not evidence of.* The symmetry has an ordinary cause — it is a triad arpeggio out and back, which is symmetrical by construction. **A palindrome in the one song that is a two-sided debate is a pleasing fact and not a finding**, and it is recorded on that footing. Fourteen retractable readings have taught this document the difference.
 
 #### The passage that must never appear in the game
 
