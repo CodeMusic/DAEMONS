@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.3**
+**A `pokered` total conversion — the living design bible, v6.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -593,11 +593,25 @@ She spent her career arguing that machines have *context*, not merely content. N
 
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
-### 4.2 The Index irony
+### 4.2 The Index — the player's turn at the family error
 
 The artifact you carry all game **can only measure content.** Height, weight, type, stats. There is no field for the thing Crystal actually cared about.
 
 **Entries are written thin on purpose.** The player simply starts noticing they feel emptiest for the daemons they know best. Zero implementation cost — the Dex is already there.
+
+**This section used to call that an irony. It is not.** *Ty's Dilemma* establishes that the whole cast makes one mistake — **optimising for a flattened metric** — and the player is inside the set, not observing it:
+
+| | Wanted | Reached for |
+|---|---|---|
+| **Crystal** | to be taken seriously | a taxonomy engine that measures only content |
+| **Ty** | to restore her name | the ladder of the man who flattened the metric |
+| **Scorn** | throughput, legibly | a number that went up |
+| **Al** | to be right | the method, faithfully, with nothing inside it |
+| **The player** | to complete it | **an Index that cannot hold what matters** |
+
+**The player spends forty hours doing what Crystal did, for her reason.** She built the thing to be taken seriously; they fill it to finish the game. Neither can put the thing that matters in it.
+
+**And the last room is her recording them into it.** Nobody remarks on any of this — the arrangement is the argument, and stating it would convert an accusation into a moral.
 
 ### 4.3 The Clears — Al, and the generation between
 

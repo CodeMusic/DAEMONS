@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Implemented: the Index reframe, Quicksilver's sign, and the gilt
+
+- **4.2 rewritten.** The Index's insufficiency was called an *irony*; it is the **player's turn at the family error**. They spend forty hours doing what Crystal did, for her reason, and cannot put the thing that matters in it either. The last room is her recording them into it
+- **Quicksilver's town sign** — vanilla's *Fiery Town of Burning Desire* becomes **The Metal That Will Not Set**. Mercury does not solidify; Benchmark 7 is ENTROPY, temperature. Materially specific rather than moody, per craft rule 4
+- **The gilt is in the game.** Rejected as a city name because it implies a concealer and Scorn conceals nothing — but **Ty** conceals something, and his guilt runs alongside the ambition rather than after it. Gilt is gold over base metal, which is what a rebrand plate is: the sign on the burned lab, gold leaf, **dated**, old name visible underneath
+- 4.10 dates the rebrand and leaves the incident undated. This is the dated half, and an NPC points at it without saying what it means
+
 ### Ty's Dilemma — the error everyone makes
 
 - **Ty doubted before the removal and went anyway.** This inverts 4.3, which had him understanding too late. He was not deceived then sorry — he could see it and continued. His Quicksilver line becomes **"I knew"** rather than "I realise now"
