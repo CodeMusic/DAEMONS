@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### v9.5 — the bible catches up to the ROM
+
+*The PDF was current for `vision.md`; `vision.md` had fallen behind the cartridge.*
+
+- **7.4 gains a build table.** Three of six coloured towns are in — Ardor, Brazen, Verdigris. **The other three are not blocked**: Lurid, Callow and Doldrum share a music slot with maps that are not towns, so they need a repoint in `songs.asm` rather than a body swap
+- **7.9's untested placement was taken, and is still not a finding.** *Awakening S.T.A.R.R.* now plays in Verdigris — **because 7.4's rule assigns F# to that town and the track is F#**, which is the rule working, not evidence for the coincidence. **The one data point has not become two**
+- **New 7.9a: the splash.** The title screen points at the body Mt. Moon plays, so it costs no bytes and freed 916. **The game opens on the track it uses for its dark places** — heard before the player has anywhere to put it, met again underground, unmarked
+- Achromatic towns recorded as taking value, not hue. **Slate and Umbra are still unwritten**
+
 ### Five tracks assigned, and the space grew
 
 - **Ardor ← *Scorn's Solution*** (C major). 7.4 derives Ardor's key from red heat as **C** — **a lookup, not a choice**

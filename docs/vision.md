@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.4**
+**A `pokered` total conversion — the living design bible, v9.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1923,6 +1923,21 @@ Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is
 | **Doldrum** | becalmed sea, blue | **G** |
 | **Blanche, Slate, Halftone, Quicksilver, Umbra** | achromatic | *see below* |
 
+**Built against this table, 2026-08-30:**
+
+| Town | Key | Track | In the ROM |
+|---|---|---|---|
+| **Ardor** | C | 03 *Scorn's Solution* | ✅ |
+| **Brazen** | D# | 07 *Fit for Work* | ✅ |
+| **Verdigris** | F# | 15 *Awakening S.T.A.R.R.* | ✅ |
+| **Lurid** | E | 12 *ScornSolutions Blues* | shares `Cities2` |
+| **Callow** | F | 14.25 *Desperate Shadows* | shares `Cities1` |
+| **Doldrum** | G | *Poly and Fields* | shares `Cities2` |
+
+**Three of the six are in.** The other three are not blocked — **they share a music slot with maps that are not towns**, so they need a repoint in `data/maps/songs.asm` rather than a body swap. A different edit, not a harder one.
+
+*And the achromatic towns take value instead:* **Blanche** is C pentatonic, high and open; **Halftone** takes D minor from the story, not the spectrum; **Quicksilver** keeps its own. **Slate and Umbra are still unwritten.**
+
 **Five towns still have no hue**, and 7.2 explains rather than excuses it. White is *every* wavelength, black is none, grey is all of them evenly. They cannot take a pitch from the spectrum because they are not on it.
 
 **Proposal, unchanged and now better founded:** hue sets the **key**; value sets **register and density**. White high and open, greys middle and filling in, black at the bottom. Umbra is then the floor of a descent the player has been making all game — and it is where colour arrives.
@@ -2028,6 +2043,14 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 *Its shape:* a leap **up a fifth**, then six steps **down** — it reaches once and then descends the whole way. Crystal descends too, but from a turn rather than a leap. **Sleeping, not grieving.**
 
 *Recorded as untested, deliberately.* 7.2 reads F# as **green-blue**, and 7.4 assigns F# to **Verdigris** — where 3.1 has *Corpus rotting beneath*. So S.T.A.R.R.'s motif would sit natively in that city's key. That is either a placement worth taking or a coincidence, and **after 7.6 it does not get promoted to a finding on one data point.** Quicksilver, where S.T.A.R.R. actually is, is achromatic and has no spectrum key at all — so there is nothing for F# to clash with either way.
+
+**The placement was taken, 2026-08-30.** *Awakening S.T.A.R.R.* now plays in Verdigris. **It is still not a finding** — it was taken because 7.4's rule assigns F# to that town and the track is in F#, which is the rule working, not evidence for the coincidence. **The one data point has not become two.**
+
+### 7.9a The splash
+
+**The title screen is *Echoes of the Algorithm*, 2026-08-30** — and it is not a copy. `Music_TitleScreen` **points at the body Mt. Moon plays**, in the same bank, so the splash costs **no bytes at all** and dropping the vanilla title music **freed 916**.
+
+**The game opens on the track it uses for its dark places.** The player hears it before they have anywhere to put it, and meets it again underground. Nothing marks the return.
 
 ### 7.10 Ty, and the one hard fact in the set
 
