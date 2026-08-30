@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.7**
+**A `pokered` total conversion — the living design bible, v9.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1850,6 +1850,22 @@ The player watches a record stop in the middle of a routine week. Nobody wrote d
 | 6 | Brazen | CONTEXT | Attention and framing | Punishes split focus; the thesis benchmark, in the bought city |
 | 7 | Quicksilver | ENTROPY | Temperature | Rewards unpredictability; punishes a memorized line |
 | 8 | Callow | STRATUM | Alignment | **Scorn.** Who controls the ground everything stands on |
+
+### 5.1 Benchmark 1 — **CAIRN**, built 2026-08-30
+
+**A cairn is a heap of stones that physically encodes something** — a path, a boundary, a grave. It is *everything must be encoded in something physical*, standing in a field, and it is a rock. The name arrived already meaning the lesson.
+
+**His creed, said plainly and sympathetically:** everything you know is sitting in something — stone, bone, tape, silicon — and **if it is not written down, it did not happen.** His daemons are LEGACY: old formats, still readable.
+
+**He is right, and that is the point.** Representation is a real position and he holds it well; nothing in the gym undercuts him.
+
+*And the player will meet that sentence again.* **The Meeting Room minutes at Quicksilver are that creed applied to a person** (4.20) — a woman who could not be followed, and therefore was recorded as not making sense. **Benchmark 1 teaches it as sound practice at hour two. Hour forty shows the cost.** Nothing connects them, ever.
+
+**How he loses.** He does not concede the argument — he says the player encoded something he **could not read**, and calls that *a format I do not have* rather than a defeat. **He reframes his own loss as a limit in his reading**, which is perspective thinking in embryo, performed by a man with no idea that is what he just did.
+
+**The gym trainer keeps the theme.** *You have not written down enough yet* before the fight; **CAIRN keeps a record of every match in here. Every one.** after it.
+
+**BOULDERBADGE → SLATE MARK.** A mark *on* a slate is physical encoding; a mark *as a grade* is what a benchmark issues. **The other seven badges are still vanilla and should be renamed as a set** — `X MARK` scales, but naming eight certifications is one decision, not seven, and the slice only ever shows this one.
 
 ---
 

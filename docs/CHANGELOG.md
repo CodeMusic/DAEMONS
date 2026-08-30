@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Benchmark 1 — CAIRN
+
+- **A cairn is a heap of stones that physically encodes something** — a path, a boundary, a grave. **It is 5's lesson standing in a field, and it is a rock.** The name arrived already meaning it
+- **His creed:** everything you know is sitting in something, and **if it is not written down, it did not happen.** LEGACY daemons — old formats, still readable. **He is right, and nothing in the gym undercuts him**
+- ***And the player meets that sentence again.*** The Meeting Room minutes are that creed applied to a person (4.20). **Benchmark 1 teaches it as sound practice at hour two; hour forty shows the cost.** Nothing connects them
+- **How he loses:** the player encoded something he **could not read**, which he calls *a format I do not have* rather than a defeat. **He reframes his loss as a limit in his own reading** — perspective thinking in embryo, from a man who does not know that is what he did
+- The gym trainer keeps it: *you have not written down enough yet*, then **CAIRN keeps a record of every match in here. Every one.**
+- **BOULDERBADGE → SLATE MARK** — a mark on a slate is encoding; a mark as a grade is what a benchmark issues. Route 22's gate updated to match. **The other seven are still vanilla and want renaming as a set**
+- This clears the last writing item in **8.1's vertical slice**. What remains there is the twelve daemons and Slate's theme
+
 ### The routes get their local names
 
 - **Thirteen signs, every route that has one** — 1, 2, 3, 4, 9, 12–19. 3.2's device built exactly as specified: **the official plate untouched, the local name arriving underneath as `Painted beneath:`**
