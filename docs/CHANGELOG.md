@@ -17,6 +17,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Whispers in the Wires — cut for the right reason, and it is still hers
+
+*Cut from Act 1 for making Ty and Richard look aware they were doing wrong. The instinct is correct — knowing conspirators collapse the polymath mechanism (4.20). **But the song is not narration. It is her.***
+
+- ***Plot and scheme* is what two men conferring quietly and filing minutes you are not in the room for looks like from inside her frame.** It is exactly what a conspiracy looks like — **and the horror is that it is not one.** 4.10's principle at full strength
+- **The corpus marks it as hers unprompted: A minor/128 is *Crystal's Lament*'s exact address**
+- **She never changes tempo.** Lament (A minor), Whispers (A minor), Reply (A major) — **three songs, 128 throughout the whole opera.** Everyone else speeds up or stops; she does not
+- **Her suspicion and her answer are the same four-chord loop, rotated.** Am | F | C | G is vi–IV–I–V; *Crystal's Reply* is I–vi–IV–V. **Where you start decides whether it resolves** — the thesis in harmony, and nobody arranged it
+- **No dominant, so it cannot cadence.** It joins *Betrayal's Sting*: **the two songs that cannot resolve are Scorn's doubt and Crystal's suspicion** — sealed inside a frame with no exit, **for the same reason, that neither holds the other's field**
+- **Disposition: kept as her frame, never as narration.** No sign, log or minute ever says the two of them schemed. **Not implemented, and that is the decision, not a backlog item**
+
 ### Poly is polymath — the removal mechanism, found
 
 *Corrects v9.1's reading. **Poly** is polymath and **fields** are disciplines, and that is the reason Crystal was pushed out — the piece that had been missing since the question was first raised.*

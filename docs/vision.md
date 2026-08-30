@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.2**
+**A `pokered` total conversion — the living design bible, v9.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1003,13 +1003,53 @@ The line on the form — *moves between unrelated fields without completing an a
 
 *Craft note:* the player finds it **in the first real maze**, lost. The place that explains how relations form a lawful structure is the place where they cannot find their way.
 
-### 4.21 The Owl's slot — settled
+### 4.21 *Whispers in the Wires* — cut for the right reason, and it is still hers
+
+**A minor, 128 BPM**, hook `A4 C5 E5 D5 C5 B4 A4`, chords **Am | F | C | G**.
+
+**Cut from Act 1 because it made Ty and Richard look aware they were doing wrong.** That instinct is correct: if the two of them knowingly plot, the polymath mechanism collapses (4.20) and they become conspirators rather than men who could not follow.
+
+**But the song is not narration. It is her.**
+
+*Plot and scheme* is exactly what **two men conferring quietly and filing minutes you are not in the room for** looks like from inside her frame. It is precisely what a conspiracy looks like. **And the horror is that it is not one.**
+
+**This is 4.10's principle at full strength** — right about the effect, wrong about the mechanism — and the corpus marks it as hers without being asked: **A minor at 128 is *Crystal's Lament*'s exact address.**
+
+#### She never changes tempo
+
+| | | |
+|---|---|---|
+| 01 *Crystal's Lament* | A minor | **128** |
+| — *Whispers in the Wires* | A minor | **128** |
+| 19 *Crystal's Reply* | A major | **128** |
+
+**Three songs, one tempo, across the whole opera.** Two in the minor and one in the major, and **the pace never moves once** (4.17). Everyone else in this story speeds up or stops; she does not.
+
+#### The same loop, entered from the other end
+
+**Am | F | C | G is vi–IV–I–V.** *Crystal's Reply* is **I–vi–IV–V.**
+
+**Those are the same four-chord cycle, rotated.** Her suspicion enters the loop on the minor; her answer enters the identical loop on the major, and **nothing else about it changes.**
+
+**Where you start decides whether it resolves.** That is the thesis in harmony, and nobody arranged it.
+
+*Mechanically:* **there is no dominant here** — G is the subtonic, not E — so **this one cannot cadence.** It joins *Betrayal's Sting* (4.18).
+
+**The two songs in this corpus that cannot resolve are Scorn's doubt and Crystal's suspicion.** Two people sealed inside a frame with no exit, **for the same reason: neither holds the other's field.**
+
+#### Disposition
+
+**Kept as her frame. Never as narration.** Nothing in this song becomes a fact the game asserts, and no sign, log or minute ever says the two of them schemed. **The player meets her account and the paperwork separately and closes the gap or does not** (4.10).
+
+*It is not implemented, and that is the decision, not a backlog item.*
+
+### 4.22 The Owl's slot — settled
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
 *The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
 
-### 4.22 Where the Owl goes — and the timeline is not the map
+### 4.23 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -1019,7 +1059,7 @@ The line on the form — *moves between unrelated fields without completing an a
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.23 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.24 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 

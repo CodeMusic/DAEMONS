@@ -35,9 +35,10 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 20 | Betrayal's Sting ³ | D minor | 128 | ✅ | ✅ | — |
 | 21 | Empire of Scorn ³ ⁴ | C minor | 135 | ✅ | ✅ | — |
 | — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | **The Undertone** |
+| — | Whispers in the Wires ³ ⁵ | A minor | 128 | ✅ | ✅ | *never* — 4.21 |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music blocked |
 
-⁵ *cut from the opera. Carries the chart's origin — 4.20.*
+⁵ *cut from the opera, kept for what it carries — 4.20, 4.21.*
 
 ⁴ *superseded — an earlier draft of 20, and an Act 1 finale. Kept for what it
 confirms, not to be recorded.*
@@ -87,6 +88,7 @@ Fourteen hooks, and the properties that survived checking:
 - **Most falling (1 up / 5 down), tied** — 08 and 14: a machine asleep, and a
   mother waiting
 - **Slowest by 36 BPM** — 17, Ty's apology, at 74 against a set spanning 110–160
+- **Crystal never changes tempo** — 128 in all three of her songs
 - **Crystal opens and closes on the same address** — 01 is A minor/128, 19 is
   A major/128. Mode flipped, nothing else moved
 - **The crowded address: D minor/128, five tracks** — Scorn's directive, the nine
