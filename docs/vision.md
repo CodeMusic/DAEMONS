@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.4**
+**A `pokered` total conversion — the living design bible, v7.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -680,6 +680,26 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **3. She understood, and it did not count.** *Crystal smiles, knowing what they found.* 4.6 says the event *was not understood at the time by anyone present* — and that survives, because **she was the only one present, and she had just been made unhearable.** The removal's real cost is not her career. It is that the one person who saw it had already been disqualified from saying so.
 
 *Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
+
+#### *Nine Scars, Nine Breaches* — her objection, and it is procedural
+
+**Transcribed and read 2026-08-30. D minor, 128 BPM**, hook `D4 F4 A4 D5 C5 A4 F4` — rising through the triad across an octave, then stepping back down. **The same key and tempo as the re-scanned *Fit for Work***, which is right, since it is the reply to it.
+
+**It solves the hardest constraint in 4.10.** That section forbids depicting Crystal as unwell or the procedure as a diagnosis — which left her, in the design, with no way to object at all. Any objection risked becoming a defence of her sanity, which is the one thing that must never appear.
+
+**Her objection here is about standing, not health.** He is not her doctor. It is not his call. Concern was blurred into diagnosis by someone with no authority to make it. **That is a governance complaint**, and it can be written down in full without a single medical word.
+
+#### The counter-file
+
+**Nine breaches is a document** — a countable list of procedural violations, which is exactly 4.10's register turned around.
+
+**He holds a complete file about her. She holds a complete file about him. Both are accurate. Only one of them counts.**
+
+That is the whole asymmetry in one object, and it needs no dialogue. *An artifact worth building*, and the first thing in the corpus that gives her something in the record rather than only a removal from it.
+
+**One caution.** 4.8 already asks the player to count something, and a second numbered device competes with the first — two counting puzzles dilute each other. **If the nine ever appears as a list to be tallied, 4.8's number must stay the only one the player is asked to reconstruct.** Safer as a stated count on a document than as nine findable things.
+
+*Observed, deliberately not built on:* **1001 in binary is 9**, and the response code is 1001. Nine recurs across the wider corpus. Recorded because it is checkable, and left alone because four readings have already been retracted for less.
 
 #### The Schrödinger reading — an upgrade to 4.2, held as a reading
 

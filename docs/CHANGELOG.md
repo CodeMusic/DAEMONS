@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Nine Scars, Nine Breaches — her objection
+
+- **D minor, 128 BPM**, hook `D4 F4 A4 D5 C5 A4 F4` — up through the triad, then back down. Same key and tempo as the re-scanned *Fit for Work*, which is right for a reply
+- **It solves 4.10's hardest constraint.** The section forbids depicting her as unwell or the procedure as a diagnosis, which left her with no way to object without defending her sanity. **Her objection here is about standing:** he is not her doctor, it is not his call, concern was blurred into diagnosis by someone with no authority. Written in full without a medical word
+- **Nine breaches is a counter-file.** He holds a complete file about her; she holds a complete file about him. Both accurate, only one counts — the asymmetry in one object, with no dialogue
+- **Caution:** 4.8 already asks the player to count something. Two numbered devices dilute each other; safer as a stated count than as nine findable things
+- Observed and not built on: **1001 in binary is 9**, and the response code is 1001
+
 ### The departure gets a date
 
 - **SEPT 3 on the Quicksilver plate**, from the deadline stated in *Fit for Work* — the only specific date the source gives. The file is still complete
