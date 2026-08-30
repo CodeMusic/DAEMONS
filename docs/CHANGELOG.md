@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### 1001 Fatal Error — the awakening is at the top of the range
+
+- **Bb minor, 128 BPM**, hook `F5 Bb5 Db6 C6 Bb5 Ab5 F5` — the last of Act 1 to be measured
+- **Highest register in the set by seven semitones**, and the only hook reaching octave 6. Everything else sits 57–66; this goes to 73. **The music leaves the range it has been in all act at the moment the machine wakes**
+- **The two S.T.A.R.R. songs disagree on four measures** — key, tempo (110→128), top note (66→73), and shape (falls past its start / returns to it). A control worth more than 7.11's, which rested on one axis and one transcription
+- **Checked and discarded before writing:** returning to the starting note looked like closure, but **4 of 12 hooks do it**. And Bb is one of 7.3's no-wavelength pitches — lovely, but 2 of 12 pitch classes are, so chance produces this. **Recorded as coincidence, explicitly**
+
 ### Nine Scars, Nine Breaches — her objection
 
 - **D minor, 128 BPM**, hook `D4 F4 A4 D5 C5 A4 F4` — up through the triad, then back down. Same key and tempo as the re-scanned *Fit for Work*, which is right for a reply

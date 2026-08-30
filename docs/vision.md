@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v7.5**
+**A `pokered` total conversion — the living design bible, v7.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -680,6 +680,29 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **3. She understood, and it did not count.** *Crystal smiles, knowing what they found.* 4.6 says the event *was not understood at the time by anyone present* — and that survives, because **she was the only one present, and she had just been made unhearable.** The removal's real cost is not her career. It is that the one person who saw it had already been disqualified from saying so.
 
 *Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
+
+#### *1001 Fatal Error* — the awakening is at the top of the range
+
+**Transcribed 2026-08-30. Bb minor, 128 BPM**, hook `F5 Bb5 Db6 C6 Bb5 Ab5 F5`. **The last of Act 1 to be measured.**
+
+**Its top note is the highest in the set by a wide margin** — seven semitones above the next, and the only hook that reaches octave 6. Everything else lives between 57 and 66; this goes to 73. **The moment the machine wakes is the moment the music leaves the register it has been in all act.**
+
+**And the two S.T.A.R.R. songs differ on every axis at once.** Same entity, before and after one event:
+
+| | *Slumbering* | *Fatal Error* |
+|---|---|---|
+| key | F# minor | Bb minor |
+| tempo | **110** — the slowest | **128** |
+| top note | 66 | **73** |
+| shape | leaps once, falls **past** where it began | leaps, and returns |
+
+*A control worth trusting more than 7.11's was:* both arms were transcribed independently, months apart in the album and days apart here, and they disagree on four measures rather than one. **7.11 collapsed because a single axis rested on a single transcription.**
+
+#### Two things checked and discarded
+
+**Returning to the starting note is not distinctive.** It looked like closure — the machine coming back to itself. **Four of the twelve hooks do it.** Checked before it was written down rather than after.
+
+**And Bb is one of 7.3's two no-wavelength pitches** — the invented colour, magenta, which is not in light. It is a lovely reading and **the arithmetic does not support it**: two of twelve pitch classes have no wavelength, so across ten transcribed tracks roughly two landing there is what chance produces. **Recorded as coincidence, explicitly.** Four retractions have earned that caution.
 
 #### *Nine Scars, Nine Breaches* — her objection, and it is procedural
 
