@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Two documents implemented
+
+- **Brazen posts its review scores** — three at 30/100, one at 94/100, and a congratulation. No names, no commentary. *Scorn's Solution* has him designing the evaluations so rivals fail; this is the published result, and the cheerfulness is the point
+- **Quicksilver keeps a photograph of the lab's founder.** Two dates, a file number, and the line that matters: **the file is complete** — 4.10's own phrase. No diagnosis, no reason given, nothing medical
+- **The removal reason is settled without appearing:** a *technical* judgement, not a medical one. Claims about recursive feedback loops looked unrigorous to people who had not read the work — 4.10's *policy triggered on work that looked strange*. Accurate and fatal is worse than malice
+- **The arithmetic now spans two cities** — a dated notice and plate in Brazen, a dated personnel record at Quicksilver, and a terminal that stops with no date at all
+- No `%` in the charmap, so scores are fractions, which reads more like a document anyway
+
 ### Lines in the Sand — the song the game must not stage
 
 - **The removal itself, dramatised as an argument** — and the most dangerous source material in the project. It is a diagnosis argument in medical vocabulary with a destination named

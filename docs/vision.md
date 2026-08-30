@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.7**
+**A `pokered` total conversion — the living design bible, v6.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -770,7 +770,15 @@ So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen
 
 *Still to do:* the Game Corner basement, Halftone Tower, and Brazen's street-level dialogue.
 
-**Still open: the evaluation record.** The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
+**Both documents are in the game, 2026-08-30.**
+
+**Brazen posts its review scores** — three at 30/100, one at 94/100, and a congratulation. No names, no commentary, nobody beside it to explain. *Scorn's Solution* has him designing the evaluations so rivals fail; this is the published result. **The cheerfulness is the point.**
+
+**Quicksilver keeps a photograph of the lab's founder.** The plate under it carries two dates and a file number, and the last thing it says is that **the file is complete** — 4.10's own phrase for how he removed her. No diagnosis, no reason, nothing medical. **The horror is that the paperwork is in order.**
+
+*And the reason she was removed is now settled, without a word of it appearing.* Not a diagnosis — **a technical judgement.** Her claims about recursive feedback loops looked unrigorous to people who had not read the work, which is exactly 4.10's *policy triggered on work that looked strange.* The file can be entirely accurate and entirely fatal, and that is worse than malice.
+
+**The arithmetic is now complete across two cities:** a dated notice and a dated plate in Brazen, a personnel record with two dates at Quicksilver, and a terminal that stops with no date at all. The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
 
 #### The two accounts, kept
 
