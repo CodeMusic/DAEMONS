@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v5.5**
+**A `pokered` total conversion — the living design bible, v5.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1308,7 +1308,37 @@ The procedure's motif **rises and never comes down**, in a soundtrack where ever
 
 **S.T.A.R.R. remains its mirror** at 1 up against 5 down: the most falling, the slowest, and the only motif that cannot share the others' tempo.
 
-### 7.12 Blanche Town, implemented
+### 7.12 The reprise — where a stated claim failed and an unstated one held
+
+**Seventh transcription, 2026-08-29:** track 11 — **D minor, 120 BPM**, hook `D4 D4 F4 A4 G4 F4 D4`. Gemini volunteered that it is *Crystal's Lament* transposed from A minor to D minor.
+
+**That claim is refuted by the notes Gemini itself supplied.** Transposition preserves intervals exactly:
+
+| | Intervals |
+|---|---|
+| 01 Crystal's Lament | `+7 −2 −2 −1 +1 +2` |
+| 11 the reprise | `0 +3 +4 −2 −2 −3` |
+
+Not a transposition, and not near one. **A confident, unprompted musical assertion, contradicted by the same answer's own data** — caught by arithmetic, which is the only thing in this pipeline that can catch it, because nobody downstream can hear the source.
+
+**And a relationship it did not claim is present.** Track 11 shares its **key and its first three notes** — `D4 D4 F4` — with **track 07, the procedure**. They then diverge on exactly the axis 7.11 isolated:
+
+- **07 continues `0 +2 0 +2`** and never descends.
+- **11 continues `+4 −2 −2 −3`** and comes back down.
+
+**The reprise takes the procedure's opening figure and completes the descent the procedure never makes.** If that is real it is the best thing in the album for this game, because it is the transmission failure and its answer in one phrase.
+
+**Held as unconfirmed, and here is why.** `D–D–F` in D minor is an ordinary opening and two songs on one album may share it by chance. Gemini heard the audio and this project only has its transcription, so a genuine relationship to track 01 may exist in the music and be absent from the notes — its own `DOUBT` flagged rhythmic variation. And **it is one observation, which is the exact shape of the two readings already struck out.**
+
+*To settle it,* ask specifically: play 01 and 11 together and ask whether 11's melody is derived from 01, from 07, or from neither — and require the interval sequence for each, not a description.
+
+#### The methodology note worth keeping
+
+**The `VARIATION` field is the first place a model asserted something rather than reporting it, and it was wrong.** Every other field is an observation. That one was an inference, offered unprompted and stated with confidence.
+
+**The format's other fields survived because they can be checked against each other.** Keep it that way: ask for measurements, derive relationships here, and treat any volunteered interpretation as a hypothesis with a test attached.
+
+### 7.13 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1874,6 +1904,9 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **Gemini asserted the reprise was Crystal's Lament transposed; its own notes refute it** — transposition preserves intervals and these differ entirely. Caught by arithmetic, the only check available (7.12)
+- **An unclaimed relationship is in the data instead** — track 11 shares key and first three notes with the *procedure*, then descends where the procedure never does. **Held as unconfirmed**, being one observation of an ordinary figure (7.12)
+- **Method:** ask models for measurements, derive relationships here. The one field that invited inference is the one that was wrong (7.12)
 - **A controlled comparison, and the best evidence in the set** — Scorn's two *own* songs both arch at 2/3, independently; his *directive* is the only hook in six that never descends. Same character, same writer, three keys: the contour tracks **man versus procedure** (7.11)
 - **Five of six hooks arch**, so arching is the baseline and the single exception is the signal (7.11)
 - **The procedure's hook is the only one of six with no descending interval** — it climbs and never comes down. A property, not a reading, and worth more than the shape observations around it (7.10)

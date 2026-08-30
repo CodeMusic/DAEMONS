@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The reprise — a stated claim fails, an unstated one holds
+
+- **D minor, 120 BPM**, hook `D4 D4 F4 A4 G4 F4 D4`, track 11
+- **Gemini volunteered that this is Crystal's Lament transposed. Its own notes refute it** — transposition preserves intervals exactly, and `+7 −2 −2 −1 +1 +2` is nothing like `0 +3 +4 −2 −2 −3`. A confident unprompted assertion contradicted by the same answer's data, caught by arithmetic
+- **A relationship it did not claim is present:** track 11 shares its key *and first three notes* (`D4 D4 F4`) with **track 07, the procedure** — then diverges on exactly 7.11's axis. 07 continues `0 +2 0 +2` and never descends; 11 continues `+4 −2 −2 −3` and comes down
+- **The reprise completes the descent the procedure never makes.** If real, the best thing in the album for this game
+- **Held as unconfirmed:** `D–D–F` in D minor is ordinary, Gemini heard audio this project cannot, and it is one observation — the same shape as the two readings already struck out. A specific re-ask is recorded to settle it
+- **Method note:** `VARIATION` is the only field that invited inference rather than measurement, and it is the only one that was wrong. Ask for measurements; derive relationships here
+
 ### The controlled comparison
 
 - **E minor, 120 BPM**, hook `E4 G4 B4 A4 G4 E4`, from *12. ScornSolutions Blues*
