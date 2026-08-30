@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v4.7**
+**A `pokered` total conversion — the living design bible, v4.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1160,7 +1160,27 @@ Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is
 
 **Proposal, unchanged and now better founded:** hue sets the **key**; value sets **register and density**. White high and open, greys middle and filling in, black at the bottom. Umbra is then the floor of a descent the player has been making all game — and it is where colour arrives.
 
-### 7.5 Blanche Town, implemented
+### 7.5 The rock opera is character music, not place music
+
+**Act 1's tracklist is this game's cast**, and its own description is 4.10 stated plainly: *"Crystal makes a discovery, but instead she is cast as having psychosis and locked away."*
+
+| Track | Already in the design |
+|---|---|
+| 01. Crystal's Lament | 4.1 |
+| 02. Fox in the Shadows (Ty's Dilemma) | 4.3 |
+| 03. Scorn's Solution · 12. ScornSolutions Blues | 4.4 |
+| **07. Fit for Work (Scorn's Directive)** | **4.10 — the procedure, by name** |
+| 08. Slumbering S.T.A.R.R. | 4.7 |
+
+**So they are not town themes and must not be treated as them.** 7 keys towns to colour, which is *place* music. These are *people*. Converting whole songs into town themes would put the two systems in each other's way.
+
+**Take the hook as a leitmotif instead.** Four to eight notes per character, surfacing inside whichever town theme they belong to — Crystal inside Blanche and again at the Review Board, Scorn under Brazen, Ty buried in the Quicksilver ruins. **That is 7's stated goal reached from the other direction:** *the rock opera stops sitting on top of the game and starts being its level design.*
+
+It is also the only version the hardware permits. Four channels cannot hold an arrangement with vocals. They hold an eight-note motif exactly.
+
+*How the notes get here:* Claude cannot hear audio, so **Gemini is the ear** — the same division of labour `sprite-prompts.md` uses for images. Prompt, output format and the order to do them in are in [`music-prompts.md`](music-prompts.md). The short version: **ask for the hook, not the song**, because a hook is the part a model transcribes reliably *and* the part a human can hum back to check.
+
+### 7.6 Blanche Town, implemented
 
 **Key of C — and 7.1 arrived after it was written, so the reason has changed.** C is *red* in the recovered mapping, which is Ardor's, not Blanche's. What survives is better than what was intended: the melody is **C D E G A**, which spans C to A — **exactly the range the visible spectrum occupies.** White is every wavelength at once; the theme is that whole span, sampled at five points, with every semitone and tritone removed.
 
@@ -1726,6 +1746,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **"They contain DAEMONS" → "DAEMONS run on them"** — a box hosts, it does not contain, and the vanilla line argued against 1.3 at the player's first sight of the object (1.3)
 - **"Wild DAEMONS live in tall grass" → "UNBOUND DAEMONS run loose out here"** — 1.1 defines a daemon as a process that *runs unattended* (1.4)
 - **The box exists as an object** — `tools/genbox.py` replaces both ball sprites; a small server with vents and an indicator, not a crate or a cube, since either would undo the rename. The throw opens rather than bursts, and the USERBOX→ROOTBOX ladder is a parameter (1.3)
+- **The rock opera is character music, not place music** — Act 1's tracklist is the cast, so the hooks become **leitmotifs** inside town themes rather than town themes themselves (7.5)
+- **Gemini is the ear** — Claude cannot hear audio; prompts and format in [`music-prompts.md`](music-prompts.md). Ask for the hook, not the song (7.5)
 - **Blanche Town's theme written** — C major **pentatonic**, no F and no B, so it can form neither a leading tone nor a dissonance and has nothing to resolve (7.3)
 - **The *My Chromatic Year* mapping is recovered** — it maps **months** to semitones, not colours, but two tracks name colours (*Green:Blue F#*, *Blue G*) and those two anchor everything (7.1)
 - **The colour rule is the octave-folded visible spectrum**, red as C — both anchors land exactly, so it is derived rather than asserted (7.2)

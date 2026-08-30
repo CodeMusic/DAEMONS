@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The rock opera, and how the songs actually get in
+
+- **New `docs/music-prompts.md`** — the Gemini transcription prompt, its output format, what gets verified on the way back, and the order to do the tracks in
+- **Act 1's tracklist is the game's cast**, and its description is 4.10 stated plainly. `07. Fit for Work (Scorn's Directive)` is the procedure by name
+- **They are character music, not place music.** 7 keys towns to colour; these are people. So the hooks become **leitmotifs inside** town themes — Crystal in Blanche and again at the Review Board, Scorn under Brazen — which is 7's own stated goal reached from the other side
+- **Ask for the hook, not the song.** Eight notes is the part a model transcribes reliably *and* the part a human can hum back to check. A full transcription is where these models invent, in a form nobody downstream can catch
+- **Gemini is the ear** — Claude cannot hear audio. ACE-Step generates music and cannot analyse it, so it is the wrong tool for this
+- The prompt's `DOUBT` field is the only error detection in the loop, since nobody downstream can hear the source either
+
 ### The box ladder, implemented — it never had been
 
 - **`USERBOX / ADMINBOX / SUPERBOX / ROOTBOX`** replace POKé/GREAT/ULTRA/MASTER BALL. 1.1 settled this ladder early and **nothing had implemented it**: 36 player-visible strings across 19 files still said *ball*
