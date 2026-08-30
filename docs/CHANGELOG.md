@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Ty's Redemption — the one place the music stops
+
+- **C major, 74 BPM.** The corpus otherwise runs 110–160, so this is **36 BPM below anything else** — the largest single-axis outlier in the set. **Everything in this story drives; Ty's apology stops.** Arithmetic, not interpretation
+- **Its texture is shared with one track only** — *sparse and still* describes this and *Slumbering S.T.A.R.R.* **A machine asleep and a man apologising**, alone at the quiet end
+- **It asks for nothing.** He states what he did, says he cannot undo it, and hopes rather than requests. **The only shape 4.3 permits** — he was not fooled, he looked away, and says so. An apology expecting absolution would make him a dupe
+- **Redemption is Part 1**, which is its own claim: a man who could not hold a frame does not recover it in one song
+- **The rebrand is named a second time** — iASHC → Scorn Solutions, independently corroborated with *ScornSolutions Blues*. 4.10's step 3 is now the best-attested moment in the sequence
+
 ### S.T.A.R.R.'s Revelation — the machine carries what could not pass
 
 - **C major, 120 BPM**, hook `E4 C5 B4 G4`. **Transcription flagged as thin** — 4 notes against a set of 6–8, one chord against four, and a `DOUBT` hedging on ballad phrasing rather than naming what it heard. No duplicate match, so not a reuse; wants a second pass. Nothing rests on it

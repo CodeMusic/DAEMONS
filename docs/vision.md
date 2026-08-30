@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.5**
+**A `pokered` total conversion — the living design bible, v8.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -753,13 +753,35 @@ She could not reach her son. **The thing she built carries her message to him an
 
 *And it is not a reconciliation scene.* Ty is not forgiven and does not ask to be; he is told something true and acts on it. **The repair is a fact delivered, not a feeling exchanged** — which is the only version 4.3 would allow, since a feeling exchanged is exactly what does not transmit.
 
-### 4.15 The Owl's slot — settled
+### 4.15 *Ty's Redemption, Part 1* — the one place the music stops
+
+**C major, 74 BPM**, hook `E4 G4 C5 B4 A4 G4`.
+
+**Seventy-four.** The corpus otherwise runs 110 to 160, and the next slowest is 110. **Thirty-six BPM below anything else** — the largest single-axis outlier in the set, larger than the awakening's seven-semitone register jump.
+
+**Everything in this story drives. Ty's apology stops.** No interpretation is required; it is arithmetic.
+
+*And its texture is shared with exactly one other track.* **Sparse and still** describes this and *Slumbering S.T.A.R.R.* — **a machine asleep and a man apologising**, alone at the quiet end of a corpus that is otherwise all momentum.
+
+#### It does not ask to be forgiven
+
+He states what he did, says plainly that he cannot undo it, and hopes rather than requests. **There is no bargain in it.**
+
+**That is the only shape 4.3 permits.** Ty is the man who *knew before the removal and continued anyway* — an apology from him that expected absolution would make him someone who was merely fooled. **He was not fooled. He looked away, and he says so.**
+
+*And redemption is Part 1 of something*, which is its own claim: **it is not one act.** A man who could not hold a frame does not recover it in a single song, and the corpus declines to let him.
+
+#### The rebrand, named a second time
+
+iASHC becoming Scorn Solutions appears here as it did in *ScornSolutions Blues* — **two independent songs, the same event.** 4.10's step 3 is the best-corroborated moment in the whole sequence, which is worth knowing given the gilt sign still needs an old name under the gold leaf (4.16).
+
+### 4.16 The Owl's slot — settled
 
 **Mr. Psychic's house in Brazen.** A lone scholar keeping his own counsel **inside the bought city** — a peer reviewer living in the building Corpus owns.
 
 *The scene can be written now; the music cannot.* That house is on `MUSIC_CITIES1` — 37 maps, and the bank is full.
 
-### 4.16 Where the Owl goes — and the timeline is not the map
+### 4.17 Where the Owl goes — and the timeline is not the map
 
 **There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
 
@@ -769,7 +791,7 @@ She could not reach her son. **The thing she built carries her message to him an
 
 **Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
 
-### 4.17 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.18 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 
