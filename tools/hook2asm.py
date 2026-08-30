@@ -83,14 +83,16 @@ def main():
         "the reprise":            "D4 D4 F4 A4 G4 F4 D4",
         "Echoes of the Algorithm":"F4 G4 Ab4 Bb4 C5 C5",
     }
-    hk = (field('HOOK') or '').split()
+    hk = [t.split('/')[0] for t in (field('HOOK') or '').split()]  # drop durations
     for name, prev in KNOWN.items():
         pv = prev.split()
         n = sum(1 for a, b in zip(hk, pv) if a == b)
-        if n >= 4 and n >= min(len(hk), len(pv)) - 1:
-            print("  !! this hook matches %s in its first %d notes." % (name, n))
-            print("     A model that cannot hear the file may return an earlier")
-            print("     answer. Re-run with the audio attached before using it.")
+        if hk == pv:
+            print("  -- identical to %s. Already recorded; nothing new here." % name)
+        elif n >= 4 and n >= min(len(hk), len(pv)) - 1:
+            print("  !! this hook is %s with %d note(s) changed." % (name, abs(len(hk)-len(pv)) or 1))
+            print("     A model that cannot hear the file may hand back an earlier")
+            print("     answer instead of refusing. Re-run with the audio attached.")
 
     key, tempo, hook, bass = field('KEY'), field('TEMPO'), field('HOOK'), field('BASS')
     if not hook: sys.exit("no HOOK field found")
