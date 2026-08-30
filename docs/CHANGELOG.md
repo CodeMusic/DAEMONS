@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Love Persists opens Act 2, and the Owl gets a slot
+
+- **D minor, 128 BPM** — **one up, five down**, tied with *Slumbering S.T.A.R.R.* as the most falling hook in the corpus. A mother waiting and a machine asleep share a shape
+- **Act 2 is called *The Rise of Perspective Thinking* and opens with waiting**, not action. That is 4.3's transmission failure from the other end: she keeps offering it to a son who has stopped receiving. **The rise begins with her still trying**
+- **The Owl: there is no interior between Quicksilver and Callow.** The path is Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building
+- **But the game's order is not the opera's.** 4.10 already has the player reconstructing events out of sequence from dated paperwork. He needs to be *findable*, not chronological
+- **Proposed: Mr. Psychic's house in Brazen** — a lone scholar keeping his own counsel inside the bought city. Better than a neutral slot, and the house already exists
+- **His music is a separate problem** — that house is on `MUSIC_CITIES1`, 37 maps and a full bank. The scene can be written long before the tune can play
+- **New `docs/song-status.md`** — every track, key, tempo, music, story, and where each motif sits
+
 ### Owl re-scanned — the only mirror in the set
 
 - **C major, 128 BPM**, hook `G4 C5 E5 G5 E5 C5 G4`, superseding the flagged first answer

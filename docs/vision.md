@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v8.1**
+**A `pokered` total conversion — the living design bible, v8.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -681,7 +681,25 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 *Ty is named as having missed it*, having walked away first. The two men who could have corroborated her were the ones who removed her.
 
-### 4.11 Act 2 — *Quantum Translations*, and the experiment the player is inside
+### 4.11 Act 2 — *Love Persists*, and what opens the rise
+
+**D minor, 128 BPM**, hook `D5 A4 F4 A4 G4 F4 E4`. **One up, five down — tied with *Slumbering S.T.A.R.R.* as the most falling hook in the corpus.** A mother waiting and a machine asleep have the same shape, which is a fact about the set and left at that.
+
+**Act 2 is called *The Rise of Perspective Thinking*, and it opens with someone waiting.** Not action, not rescue — the removed person holding a bond that the other side has already broken.
+
+**Which is 4.3's transmission failure seen from the other end.** That section describes what does not survive a handoff: the method arrives, the understanding does not. **Here she keeps offering it anyway**, to a son who has stopped receiving. The rise does not begin with her being right; it begins with her still trying.
+
+### 4.12 Where the Owl goes — and the timeline is not the map
+
+**There is no interior between Quicksilver and Callow.** The player's path runs Quicksilver → Route 21 → Blanche → Route 1 → Callow, and only Blanche has a building — which already carries Crystal's motif.
+
+**But the game's order is not the opera's order, and it never was.** 4.10 is built on the player reconstructing events they did not witness, from dated paperwork encountered out of sequence. **The Owl does not need to sit where the story puts him; he needs to be findable.**
+
+*The most interesting available slot is Mr. Psychic's house in Brazen* — a lone scholar keeping his own counsel **inside the bought city**. A peer reviewer living in the building Corpus owns is a better placement than a neutral one, and it costs nothing: the house already exists and already has a visitor.
+
+**Its music is a separate problem.** That house is on `MUSIC_CITIES1`, which is 37 maps and a full bank. **The Owl's scene can be written long before his tune can play.**
+
+### 4.13 Act 2 — *Quantum Translations*, and the experiment the player is inside
 
 **C major, 115 BPM**, hook `C5 E5 G5 E5 C5 E5 G5`. **Crystal's only major key** — her other four songs are A minor, F minor, C# minor and D minor. *The vindication is the one time she is not in a minor key.* (Its notes sit inside Blanche's pentatonic, which is true and unremarkable: it is the C major triad.)
 
