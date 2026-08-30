@@ -12,6 +12,7 @@
 | [`archive/psychologycode/`](archive/psychologycode/) | **Recovered.** All eight posts from the lost `psychologycode.com` (2013–14), pulled from the Internet Archive's capture of its RSS feed. Three were never reposted anywhere. | recovered 2026-08-28 |
 | [`codemusic-repos.md`](codemusic-repos.md) | **All 47 CodeMusic repositories read as a bestiary.** What they give the game, what to leave alone, and the two that turn out to be the game's own argument already built. | current |
 | [`story-readthrough.md`](story-readthrough.md) | **The story in the order a player meets it**, with what they can know at each point and what they cannot yet. Internal — carries the 4.10 order and the inference beats. | current |
+| [`song-status.md`](song-status.md) | **Every track, what we have and what is playing.** Key, tempo, music, story, and where each motif sits in the ROM. | current |
 | [`music-prompts.md`](music-prompts.md) | **Getting the songs into the game.** Why it is transcription rather than conversion, the Gemini prompt and output format, what gets checked on the way back, and which tracks to do first. | current |
 | [`sprite-prompts.md`](sprite-prompts.md) | **Generation prompts for the step-9 art pass** — starters, Crystal, the ball→box redesign. Carries the specs that constrain them, and which assets are too small to generate at all. | current |
 | [`step2-type-system-notes.md`](step2-type-system-notes.md) | Build-order notes for the type system — sections 2 and 9.2 of the bible, expanded into instructions you can work from at the keyboard. | current |
