@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v6.4**
+**A `pokered` total conversion — the living design bible, v6.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -650,6 +650,30 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 **2. Scorn's method on Ty is *data poisoning*, and 5 already teaches it.** Benchmark 5 at Lurid is **CORRUPT — bias and poisoning**, whose mechanical lesson is *status effects that make your own moves unreliable.* **The benchmark that teaches poisoning is teaching the player what was done to Ty**, three cities before they can know it. Free, already built, and nobody says a word.
 
 **3. Ty stopped speaking to her directly.** His words become mediated — filtered, cold, at a remove. **4.3 already has the consequence and this is its cause:** *Ty calls her by her full professional name.* The beat was written first and the song explains it.
+
+#### *Scorn's Solution* — he announces it, and what he rigs is a benchmark
+
+**Reviewed 2026-08-30.** Act 1's Scorn is a deliberate saboteur: he designs the standardised evaluations, sets them so that rivals fail, and takes the credit. Three developers score thirty per cent while his own rise looks providential.
+
+**And he says so, out loud, in the chorus.** The transcription had already measured that song as **major, bouncy, driving** — 7.11 filed it as craft rule 6 arriving in the source. **Now it is clearer than that: the cheerful song is a confession nobody hears as one.**
+
+**Which means Act 1 and 4.10 were never opposed.** 4.10 insists every step he took was *reasonable, legible, and would be praised in a performance review* — **legible is exactly what the chorus is.** He conceals nothing. The horror is not that he hid it; it is that **being visible was not enough**. Ty hears the method announced and files it as ambition.
+
+*This also confirms the gilt decision.* Gilt implies a concealer. **Scorn conceals nothing and Ty conceals something**, which is why the gold leaf belongs on the lab sign and not on a city of his.
+
+#### The benchmarks are his instrument
+
+**The thing he rigs is a standardised test.** 5 makes the game eight of them, and **Benchmark 8 is Scorn**.
+
+**So the player spends the entire game being evaluated by instruments belonging to the man who designs instruments to make people fail — and the last one is him.** That is not an interpretation laid over the design; it is two things already written meeting each other.
+
+*And it leaves a question the game should never answer.* The player passes all eight. Either they are good, or the test was built for them to pass. **Nothing in the game resolves that**, and the Review Board at 6 measures them one more time immediately afterwards.
+
+#### The document it wants
+
+4.10's method is **paperwork that states a fact and nothing else**, and this supplies another one: an evaluation record. Names, scores, a date. Three at thirty per cent, one much higher.
+
+**No commentary, no accusation, no one standing beside it to explain.** The player either does the arithmetic or does not — the same device as the dated rebrand and the undated incident, and it belongs in Brazen with the other legible things.
 
 #### *Ty's Dilemma*, and the error everyone makes
 

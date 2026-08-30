@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Scorn's Solution — he announces it
+
+- **Act 1's Scorn conceals nothing.** The chorus is him naming his method, in a major key. The song was already measured as *bouncy, driving, major* — it is a confession nobody hears as one
+- **So Act 1 and 4.10 were never opposed.** 4.10 says every step was *legible and would be praised*; legible is exactly what the chorus is. The horror is not concealment, it is that visibility was not enough. Ty hears the method and files it as ambition
+- **Confirms the gilt decision** — gilt implies a concealer. Scorn conceals nothing; Ty conceals something
+- **What he rigs is a standardised test.** Section 5 makes the game eight of them, and **Benchmark 8 is Scorn**. The player is evaluated all game by instruments belonging to a man who designs instruments to make people fail — and the last one is him
+- **A question the game must never answer:** the player passes all eight. Either they are good, or the test was built for them to pass
+- **New document type:** an evaluation record. Names, scores, a date, no commentary. Same device as the dated rebrand and the undated incident; belongs in Brazen
+
 ### Implemented: the Index reframe, Quicksilver's sign, and the gilt
 
 - **4.2 rewritten.** The Index's insufficiency was called an *irony*; it is the **player's turn at the family error**. They spend forty hours doing what Crystal did, for her reason, and cannot put the thing that matters in it either. The last room is her recording them into it
