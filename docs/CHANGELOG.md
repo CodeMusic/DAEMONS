@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### POKéMANIAC → ARCHIVIST
+
+- ***Maniac* is a pathology word**, and craft rule 3 says name the process, not the pathology. **A game whose central injustice is a woman recorded as unwell cannot have a trainer class called a maniac.** `DAEMANIAC` was considered and fails for the same reason
+- **`ARCHIVIST` pays twice**, which is 1's standard: an archivist keeps **records**, and an **archive is stored compressed data** — exactly what a box does to a daemon
+- **And it is precisely right for HOLT**, who built the storage and was then inside it (4.20a). Four dialogue references and the class name; the `POKEMANIAC` symbol is untouched
+- **ARTSAI and S.T.A.R.R. have no dialogue anywhere** — verified, zero references to either in any text file. The rename was complete on arrival, and **the Five Witnesses, the ITER 35 terminal and the lab encounter are the largest unwritten block in the design.** All text plus one hidden object; no engine work
+
 ### v10.1 — ARTSAI's three forms, and the name device
 
 - **She was not always what the player meets.** Reference art gives three states: **vivid purple and faceted**, the **split** with a seam of colour, and a **real white rabbit** with the faceting only where the light catches

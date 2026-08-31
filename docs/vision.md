@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.1**
+**A `pokered` total conversion — the living design bible, v10.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -159,7 +159,7 @@ Singular gains a character, plural is identical. **Nothing needed rewrapping.**
 |---|---|---|
 | `#DEX` | 26 | literal **INDEX** — 7 chars to 5, so it also gains room |
 | bare `#` | 23 | literal `POKé`. **All 23 are item prefixes split across a line break** — `# BALL`, `# DOLL`, `# FLUTE` — not species, so the trick was safe |
-| `#MANIAC` | 5 | literal `POKéMANIAC`, pending the trainer-class pass |
+| `#MANIAC` | 5 | **`ARCHIVIST`, done 2026-08-31.** *Maniac* is a pathology word and craft rule 3 says name the process — a game whose central injustice is a woman recorded as unwell cannot have a trainer class called a maniac. **`ARCHIVIST` pays twice** (1): an archivist keeps **records**, and an **archive** is stored compressed data, which is exactly what a box does to a daemon. It is also precisely right for HOLT, who built the storage and was then inside it (4.20a) |
 
 **The real work was grammatical number.** POKéMON was both singular and plural. DAEMON is not. Of the 650:
 
