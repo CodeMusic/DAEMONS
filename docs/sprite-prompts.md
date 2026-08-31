@@ -4,6 +4,13 @@ Generation prompts for the step-9 art pass, with the specs that actually
 constrain them. Companion to `vision.md` 8.2 (starter trio), 4.1/4.3 (the
 Clears) and 1.3 (what a box is).
 
+**Sprites are outlined line-art, not soft shapes.** Verified in the checkout
+2026-08-31: vanilla front sprites are **2-bit greyscale PNGs**, four levels, and
+**level 0 is a hard black outline** — Mew is 207 outline pixels against a
+1144-pixel white background. **Every prompt must ask for that outline.** An
+earlier revision of this document said *no outline*, which is backwards, and
+would have made a white creature disappear into a white background.
+
 **Workflow, proven.** Gemini generates large and clean; `tools/gbimg.py`
 quantises and downsamples to the Game Boy target. This is how the DAEMONS
 title logo was made and it worked first time. Do **not** ask Gemini for
