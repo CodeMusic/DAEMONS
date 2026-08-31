@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.8**
+**A `pokered` total conversion — the living design bible, v9.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1006,6 +1006,50 @@ The line on the form — *moves between unrelated fields without completing an a
 **Three unsigned documents now.** The lobby engraving, the requisition's countersignature (4.18), and this. *Nobody in this story puts their name on the thing that matters.*
 
 *Craft note:* the player finds it **in the first real maze**, lost. The place that explains how relations form a lawful structure is the place where they cannot find their way.
+
+### 4.20a HOLT — the man who was the thing in the box
+
+**Built 2026-08-30.** Vanilla's Bill is a scientist who merged with a creature and needs splitting. **That premise cannot be imported as-is**, and the reason is precise: if a person can *become* a daemon, then daemon-ness is a costume — a state you enter and leave — which makes the category arbitrary and forces the game to assert that people are a different kind of thing. **It has carefully never said that.**
+
+**So he was not transformed. He was suspended.**
+
+#### The storage is the invention; the accident is what it cost
+
+**What the box system does is hold a running process without running it.** Not halted, not executing. **A stored daemon has no state until it is withdrawn** — and that is not a metaphor, it is how the game already works.
+
+**That is the only superposition this project can honestly claim, and it earns the idea without ever using the word.** *Quantum* said aloud would be borrowed authority and the exact explaining craft rule 1 forbids. **The box behaves that way; nobody remarks on it.**
+
+**Two of them went into the store, and both were processes.** When the system tried to return one it **could not determine which was the observer**, because there was no fact about it the machine could see. **The SEPARATION SYSTEM does not split a hybrid — it forces a read that the store deliberately defers.**
+
+**Which puts the failure in the system, not in what people are.** Nothing anywhere says he was not a daemon. **Two perspectives occupied one address and there was no rule for choosing.**
+
+#### The machine-side twin of the removal
+
+**Crystal held several fields and was recorded as incoherent because the people watching could not resolve her** (4.20). **HOLT held two perspectives and the machine could not resolve him.**
+
+**Both are resolution failures.** The difference is that **you can ask a machine to try again**, and that is the whole of why one of them is a fetch quest and the other is the spine of the story.
+
+#### What he says, and what he does not know he is saying
+
+> **I am not sure it chose correctly. I am sure it chose.**
+>
+> **Those are not the same thing, and I built the machine that cannot tell them apart.**
+
+**He is describing every institution in this game** — the minutes, the requisition, the benchmark that certifies. **He thinks he is describing a bug in his own equipment.**
+
+*And he built the system the player will use for the next forty hours.* **He is the only person in this world who has been the thing in the box**, and the storage he invented is where every daemon the player owns will wait. **Nothing points at it, ever.**
+
+#### PERSPECTIVE has a place now
+
+**The move is already named PERSPECTIVE** (9.2 step 7): become another thing for a while. **HOLT's accident is PERSPECTIVE with no return path** — which gives the move somewhere its cost is visible, without a line of dialogue connecting them.
+
+#### The name
+
+**A holt is a den — a place a creature is kept** — and it is one letter from *hold*, which is the storage verb. **BILL → HOLT** throughout: 12 references across five files, the PC menu, and the access message.
+
+*WARD was considered and rejected.* "Held in care" is tempting and the hospital register is exactly what 4.10 spends its energy avoiding.
+
+**Not implemented, deliberately:** *multiple outcomes.* The engine cannot branch and the story is not about branching. **Multiple readings is the real subject** — same document, different reader (4.24).
 
 ### 4.21 *Whispers in the Wires* — cut for the right reason, and it is still hers
 

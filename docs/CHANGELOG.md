@@ -17,6 +17,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### HOLT — the man who was the thing in the box
+
+*Vanilla's Bill merged with a creature. **That premise cannot be imported**: if a person can become a daemon then daemon-ness is a costume, the category goes arbitrary, and the game is forced to assert that people are a different kind of thing. It has carefully never said that.*
+
+- **He was not transformed. He was suspended.** The box system holds a running process without running it — **a stored daemon has no state until it is withdrawn**, which is how the game already works
+- **That is the only superposition the project can honestly claim, and it earns the idea without the word.** *Quantum* said aloud is borrowed authority and the exact explaining craft rule 1 forbids
+- **Two went into the store and both were processes.** The system could not determine which was the observer, because there was no fact about it it could see. **The SEPARATION SYSTEM forces a read the store deliberately defers** — so the failure sits in the system, not in what people are
+- **It is the machine-side twin of the removal.** Crystal held several fields and was recorded as incoherent; HOLT held two perspectives and the machine could not resolve him. **Both are resolution failures — but you can ask a machine to try again**
+- **His line:** *I am not sure it chose correctly. I am sure it chose. Those are not the same thing, and I built the machine that cannot tell them apart.* **He is describing every institution in this game and thinks he is describing a bug**
+- **He built the storage the player uses for forty hours**, and is the only person who has been inside it. Nothing points at it
+- **PERSPECTIVE gets a place** — his accident is the move with no return path
+- **BILL → HOLT**: a holt is a den, and it is one letter from *hold*. 12 references, the PC menu, the access message. *WARD rejected — the hospital register is what 4.10 avoids*
+- ***Multiple outcomes* deliberately not built.** The engine cannot branch and the story is not about branching; **multiple readings is the real subject**
+
 ### Benchmark 1 — CAIRN
 
 - **A cairn is a heap of stones that physically encodes something** — a path, a boundary, a grave. **It is 5's lesson standing in a field, and it is a rock.** The name arrived already meaning it
