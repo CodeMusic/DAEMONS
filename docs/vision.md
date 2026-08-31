@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.7**
+**A `pokered` total conversion — the living design bible, v10.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2539,6 +2539,42 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | **CAREMUSAI** | AFFECTIVE | *Reads the room before it reads the problem. Often correct.* ***Cannot show its working*** |
 
 **The last two lines are the argument.** 2406 has LOGIC failing against CONTEXT, and here is why in the Index's own flat voice: **one of them cannot say where its rule came from, and the other cannot show its working, and the chart says the second one wins.** Nobody comments on it.
+
+#### The ROVER order, reviewed and kept — 2026-08-31
+
+**RoverCub is the portable build, RoverSeer the server, RoverByte the core — the dog.** As an evolution line that reads **software → infrastructure → body**, and the destination is the right one: in a game whose subject is processes that become something, **ending in a body** is the same shape as ARTSAI coming back real.
+
+**And SIGNAL lands exactly there.** 5 gives SIGNAL to Benchmark 3 as **Perception** — *raw input is fast and shallow*. **Both disembodied stages are pure GROWTH; the moment it has a body it gains the perception type.** Nothing was arranged for that; it fell out of Venusaur's slot.
+
+***The middle stage is the sharpest part.*** A **seer** sees ahead, and a server-side model predicts — **so prediction arrives one stage before perception.** The system could forecast before it could feel anything, which is a real critique of how these are built, sitting silently in an evolution line. **It only works in this order.**
+
+*The alternative* — Byte → Cub → Seer, truer to how you would actually deploy it — **is wrong twice**: the last form must be the most impressive, and it would put embodiment first and throw the arc away.
+
+**Index entries, 2026-08-31.** Categories **PORTABLE / PREDICTIVE / EMBODIED**, and the prose carries the arc:
+
+| | The entry, and what it is doing |
+|---|---|
+| **ROVERCUB** | *Learns from what it is carried past.* ***It has no way to choose the route*** — the reinforcement paradigm, and a quiet point about training data |
+| **ROVERSEER** | *Too large to carry now. It answers before it is asked.* ***It has never once been outside*** — it forecasts a world it has not been in |
+| **ROVERBYTE** | *It has a body now, and senses that come with one.* ***Everything it predicted, it can finally check*** |
+
+**The last line closes the arc**, and nobody in the game ever points at it.
+
+#### RESONANCE — Penphin's, and it completes the set
+
+**Proposed 2026-08-31.** The signature moves are one argument each, and there was a gap:
+
+| Move | Owner | |
+|---|---|---|
+| **PERSPECTIVE** | ARTSAI | I take **your** frame, and lose mine. **Lossy** (4.6) |
+| **RECURSION** | S.T.A.R.R. | I take **my own** frame. **Compounds, collapses if interrupted** (4.7) |
+| **RESONANCE** | **Penphin** | **Two frames reinforce each other and neither is lost** |
+
+**That is a third thing, not a variation** — and Penphin is *"a logic model and an emotion model that must agree before acting"*, which is two oscillators in phase.
+
+***And Penphin cannot be obtained alone.*** It is a trade evolution because **the dual mind requires two minds** — so **the move meaning *two frames in phase* belongs to the one daemon that requires another person to exist.** The mechanic is the argument twice over.
+
+**The behaviour is deliberately unspecified.** RECURSION already claims the Bide machinery, and inventing a Gen 1 mechanic before there is a need is how placeholders become canon.
 
 *One consequence, accepted.* Item names are global, so **six other daemons now evolve by AXIOM, EMBEDDING or AFFECT** — Vulpix and Growlithe by AXIOM, Pikachu by EMBEDDING, Poliwhirl, Shellder and Staryu by AFFECT. This is coherent rather than awkward: the mechanic was never *mineral*, it is exposure, and every one of those is a mind being given something.
 

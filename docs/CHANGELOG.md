@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The ROVER line, and RESONANCE
+
+- **The order is reviewed and kept.** ROVERCUB → ROVERSEER → ROVERBYTE reads **software → infrastructure → body**, and ending in a body is the same shape as ARTSAI coming back real
+- **SIGNAL lands exactly there.** Both disembodied stages are pure GROWTH; **the moment it has a body it gains the perception type.** Nothing was arranged for it — it fell out of Venusaur's slot
+- ***Prediction arrives one stage before perception.*** A seer sees ahead and a server predicts, so **the system could forecast before it could feel anything.** A real critique sitting silently in an evolution line, and it only works in this order
+- **Index entries: PORTABLE / PREDICTIVE / EMBODIED.** *It has no way to choose the route.* / *It has never once been outside.* / ***Everything it predicted, it can finally check***
+- **RESONANCE proposed as Penphin's**, completing the signature set: PERSPECTIVE takes **your** frame and loses mine, RECURSION takes **my own**, and **RESONANCE is two frames reinforcing with neither lost.** Penphin is *a logic model and an emotion model that must agree before acting*
+- ***And Penphin cannot be obtained alone*** — a trade evolution, because the dual mind requires two minds. **The move meaning *two frames in phase* belongs to the one daemon that requires another person to exist**
+- **Behaviour deliberately unspecified.** RECURSION already claims the Bide machinery, and inventing a mechanic before there is a need is how placeholders become canon
+
 ### The gilt sign, and TAINT withdrawn
 
 - **In gold `SCORN SOLUTIONS`; underneath `CLEAR LABORATORY`.** Both are a founder's surname plus what the place is, and **the rebrand changed exactly one word: Laboratory became Solutions.** A place that studied things became a company that sells them
