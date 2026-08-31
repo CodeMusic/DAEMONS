@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The badges become MARKS
+
+- **City names do not scale** — `VERDIGRIS MARK` is 14 and `QUICKSILVER MARK` is 16, over the 12-char item cap. So each is named from its **concept**
+- **SLATE / SLOPE / SENSE / FIT / TAINT / FRAME / HEAT / TRUE**, each paying twice: the gradient and the terrain, fitness and *over*fit, poison and a tainted judgement, framing and a frame of reference, heat and sampling temperature
+- **TRUE MARK earns its place.** Benchmark 8 is Alignment, run by **the man who aligned perfectly to the wrong metric**, and the mark he hands you asks whether *aligned* and *true* are the same word. **They are not, and nothing says so**
+- **Three places carried badge strings, not one**: the item names, fourteen gym dialogue lines, and **a second hardcoded list in `scripts/Route23.asm`** for the gate guards. **`BADGE` now occurs zero times in the cartridge**, verified by decoding — the generic plurals and the trainer card's `BADGES` label included
+- *Found on the way:* `_CannotUseItemsHereText` was **19 columns**, one of vanilla's four border-clobbering lines. Fixed
+
 ### Two events, and what separates them
 
 - **The ARTSAI event and the fire are not the same incident**, and the gap is **not a number of years.** The ROM already fixes it more precisely than a number could
