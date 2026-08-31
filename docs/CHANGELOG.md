@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### v10.0 — the title order, explained at last
+
+*Noticed from the outside: the build maps **RED → CONTENT** and **BLUE → CONTEXT**, and the title runs the other way. The mapping was always right; the order was accidental.*
+
+- **It stays, and 8.4 now says why.** Everyone says *content is king* — putting **CONTEXT first is the thesis in two words**, before the player has read a line, and **the title refuses to let the original decide its order.** The correct posture for a conversion whose subject is that the frame decides what you are looking at
+- **The two orders answer different questions.** *The title is the argument* (context is prior to content); *the mapping is the inheritance* (Red came first and is the default build). Both are right
+- ***Flagged per 0.2:*** **this is a justification for a choice already made, not something found.** The rule against promoting coincidence to finding applies to the project's own decisions too — filed as a decision, and evidence of nothing
+
 ### HOLT — the man who was the thing in the box
 
 *Vanilla's Bill merged with a creature. **That premise cannot be imported**: if a person can become a daemon then daemon-ness is a costume, the category goes arbitrary, and the game is forced to assert that people are a different kind of thing. It has carefully never said that.*

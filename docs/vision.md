@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v9.9**
+**A `pokered` total conversion — the living design bible, v10.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2464,6 +2464,18 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 The project is called **CONTEXT / CONTENT** and the slash has never been explained. It should be literal: **two editions, one source tree.**
 
+#### And the order is a decision, recorded 2026-08-31
+
+**The mapping runs RED → CONTENT and BLUE → CONTEXT**, in the Makefile, the cart titles and 9's cost table. **The title runs the other way.** That inconsistency was noticed from the outside, and it was accidental until now.
+
+**It stays, and here is the reason, stated as a choice rather than a discovery.**
+
+**Everyone says content is king.** Putting **CONTEXT first** is the thesis in two words, before the player has read a line of anything — and it means **the title refuses to let the original decide its order**, which is the correct posture for a conversion whose entire subject is that the frame decides what you are looking at.
+
+**The two orders answer different questions and both are right.** *The title is the argument*: context is prior to content. *The mapping is the inheritance*: Red came first and Red is the default build.
+
+*Flagged honestly, per 0.2.* **This is a justification for a choice already made, not something found.** The rule against promoting coincidence to finding applies to the project's own decisions as readily as to the source material — so it is filed as a decision, and it is not evidence of anything.
+
 #### It is already in the engine
 
 `pokered` does not build one ROM. It builds Red *and* Blue from the same sources, and the mechanism is three lines of Makefile. Verified against `pret/pokered` master, 2026-08-28:
@@ -2904,6 +2916,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - Vertical slice before anything else
 - **Greyscale is the design, not a limitation.** Colour appears once, at the Review Board, and nowhere else (8.6)
 - **Two editions, CONTENT and CONTEXT, from one source tree** — the slash in the title is literal (8.4)
+- **The title order is CONTEXT-first by decision, not by accident.** Everyone says content is king; the title refuses to let the original decide its order. **The title is the argument, the RED→CONTENT mapping is the inheritance** — and this is filed as a choice, not a finding (8.4)
 - The **type chart is byte-identical** across editions; only encounters and a handful of Index entries differ (8.4)
 - The two-target build goes in on day one even while both ROMs are identical (8.4)
 
