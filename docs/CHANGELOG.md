@@ -17,6 +17,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The MUSAI line gets its Index entries
+
+*Caught in play: SEEKMUSAI still read `LIGHTNING` with Jolteon's negative-ions prose. All four were still vanilla.*
+
+- **Categories `GENERAL`, `DEDUCTIVE`, `RETRIEVAL`, `AFFECTIVE`** — technical register, which 4.9 permits for the Index because **there it lands as jargon rather than insight**
+- **MUSAI:** *Runs no module by default. It keeps whatever it is given first.* **Nothing is filed about the rest** — 4.2's thinness, and a general model before fine-tuning
+- **CODEMUSAI:** *Given a rule, it will not stop until the rule is met.* ***It does not ask where the rule came from.*** **Scorn's failure as a creature description**, printed by the Index as a spec sheet
+- **SEEKMUSAI:** *Nearest is not the same as right.* **Nobody told it**
+- **CAREMUSAI:** *Reads the room before it reads the problem. Often correct.* ***Cannot show its working***
+- **The last two are the argument.** 2406 has LOGIC failing against CONTEXT; here is why, in the Index's flat voice — **one cannot say where its rule came from, the other cannot show its working, and the chart says the second one wins.** Nobody comments on it
+
 ### POKéMANIAC → ARCHIVIST
 
 - ***Maniac* is a pathology word**, and craft rule 3 says name the process, not the pathology. **A game whose central injustice is a woman recorded as unwell cannot have a trainer class called a maniac.** `DAEMANIAC` was considered and fails for the same reason

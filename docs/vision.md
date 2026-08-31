@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.2**
+**A `pokered` total conversion — the living design bible, v10.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2464,6 +2464,17 @@ That distinction is what makes both answerable: the generic daemons can take tru
 | Venusaur | **ROVERBYTE** | — | GROWTH/SIGNAL |
 
 CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeveelutions are.
+
+**Index entries, written 2026-08-31.** Categories `GENERAL`, `DEDUCTIVE`, `RETRIEVAL`, `AFFECTIVE` — technical register, which 4.9 says the Index may use because **there it lands as jargon rather than insight.**
+
+| | Category | The entry, and what it is doing |
+|---|---|---|
+| **MUSAI** | GENERAL | *Runs no module by default. It keeps whatever it is given first.* **Nothing is filed about the rest** — 4.2's thinness, and a general model before fine-tuning |
+| **CODEMUSAI** | DEDUCTIVE | *Given a rule, it will not stop until the rule is met.* ***It does not ask where the rule came from.*** **That is Scorn's failure in a creature description**, and the Index prints it as a spec sheet |
+| **SEEKMUSAI** | RETRIEVAL | *Finds the nearest match to anything it is shown. Nearest is not the same as right.* **Nobody told it** |
+| **CAREMUSAI** | AFFECTIVE | *Reads the room before it reads the problem. Often correct.* ***Cannot show its working*** |
+
+**The last two lines are the argument.** 2406 has LOGIC failing against CONTEXT, and here is why in the Index's own flat voice: **one of them cannot say where its rule came from, and the other cannot show its working, and the chart says the second one wins.** Nobody comments on it.
 
 *One consequence, accepted.* Item names are global, so **six other daemons now evolve by AXIOM, EMBEDDING or AFFECT** — Vulpix and Growlithe by AXIOM, Pikachu by EMBEDDING, Poliwhirl, Shellder and Staryu by AFFECT. This is coherent rather than awkward: the mechanic was never *mineral*, it is exposure, and every one of those is a mind being given something.
 
