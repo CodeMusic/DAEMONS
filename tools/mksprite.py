@@ -68,7 +68,43 @@ def main():
     # cell bloats a one-pixel outline into a blob -- the first attempt gave 306
     # pixels of level 0 and an unreadable rabbit. So require the cell to be
     # meaningfully dark, not merely touched by dark.
-    OUTLINE, COVER = 55, 0.34
+    # The outline threshold cannot be a constant, and it cannot be a percentile
+    # either. ARTSAI's art is 2.8% true black, so a fixed 55 caught it exactly;
+    # S.T.A.R.R.'s art has no black at all -- its outline is grey at 112-127 and
+    # its fill grey at 144-175 -- so 55 never fired once and the body came out a
+    # slab with no edge. A percentile then landed in the empty space below both.
+    #
+    # But line work is always a *separate cluster*, darker than the fill with a
+    # gap after it. So find the widest empty stretch in the ink histogram and cut
+    # there. ARTSAI's gap is 16-159 and S.T.A.R.R.'s is 128-143; both give the
+    # right answer for the right reason.
+    hist = [0]*256
+    for y in range(0, side, 2):
+        for x in range(0, side, 2):
+            v = padded(sx+x, sy+y)
+            if v < PAPER: hist[v] += 1
+    ink_n = sum(hist)
+    floor_n = max(1, ink_n // 400)          # ignore stray anti-aliasing
+    # Start at the darkest ink there actually is. S.T.A.R.R.'s art has nothing
+    # below 112, so searching from zero finds 111 bins of nothing and cuts
+    # there -- a gap under the outline rather than the gap after it.
+    first = next((v for v in range(256) if hist[v] > floor_n), 0)
+    best = (0, 55)
+    run = None
+    for v in range(first+1, 256):
+        if hist[v] <= floor_n:
+            if run is None: run = v
+        else:
+            if run is not None and v-run > best[0]:
+                best = (v-run, (run+v)//2)
+            run = None
+    OUTLINE, COVER = best[1], 0.34
+    # ...and when the art simply has no line work to find -- a generator that
+    # was asked for a black outline and returned a grey one -- the gap search
+    # has nothing to lock onto. An explicit override beats a cleverer guess.
+    for a in sys.argv[4:]:
+        if a.startswith("--outline="): OUTLINE = int(a.split("=")[1])
+    print("  outline threshold %d (gap search said %d)" % (OUTLINE, best[1]))
     step = side / size
     for dy in range(size):
         for dx in range(size):
