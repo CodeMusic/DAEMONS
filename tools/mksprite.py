@@ -51,23 +51,20 @@ def main():
     # So: hold the paper at 3, then spread whatever ink remains across 0-2 by
     # its own range. Vanilla Mew uses all four; so should we.
     PAPER = 238
-    ink = [v for row in grid for v in row if v < PAPER]
-    lo, hi = (min(ink), max(ink)) if ink else (0, 255)
-    span = max(1, hi - lo)
-    q = [[3 if v >= PAPER else min(2, 3 * (v - lo) // span) for v in row]
+    ink = sorted(v for row in grid for v in row if v < PAPER)
+    if ink:
+        # Spreading the ink linearly over its range assumes the tones are evenly
+        # distributed, and bold-outlined art is not: SEEKMUSAI's thick black
+        # lines drag so many averaged cells low that 25% of the sprite came out
+        # level 0 and level 1 was used 19 times. Cut at the ink's own thirds
+        # instead, so all four tones carry roughly equal weight whatever the art
+        # happens to look like.
+        c1, c2 = ink[len(ink)//3], ink[2*len(ink)//3]
+    else:
+        c1 = c2 = 0
+    q = [[3 if v >= PAPER else (0 if v <= c1 else 1 if v <= c2 else 2) for v in row]
          for row in grid]
 
-    # Box-averaging dissolves a one-pixel black outline into mid grey. Vanilla
-    # Mew is 207 pixels of level 0 against a 1144-pixel ground; a straight
-    # average of this art gave 13. So the outline is carried separately: if a
-    # genuinely black source pixel falls in an output cell, that cell is black.
-    # Darkest-wins, the way a hand pixel artist would do it -- and without it a
-    # white creature has no edge against white paper at all.
-    # ...but darkest-wins is only safe at gentle reductions. At 25:1 an output
-    # cell holds 625 source pixels, and letting a single black one blacken the
-    # cell bloats a one-pixel outline into a blob -- the first attempt gave 306
-    # pixels of level 0 and an unreadable rabbit. So require the cell to be
-    # meaningfully dark, not merely touched by dark.
     # The outline threshold cannot be a constant, and it cannot be a percentile
     # either. ARTSAI's art is 2.8% true black, so a fixed 55 caught it exactly;
     # S.T.A.R.R.'s art has no black at all -- its outline is grey at 112-127 and
@@ -104,6 +101,11 @@ def main():
     # has nothing to lock onto. An explicit override beats a cleverer guess.
     for a in sys.argv[4:]:
         if a.startswith("--outline="): OUTLINE = int(a.split("=")[1])
+        # Bold-outlined art needs a higher bar. A 10px line at 24:1 covers less
+        # than half a cell, so 0.34 catches every cell the line merely grazes
+        # and doubles its width -- SEEKMUSAI came out 25% black with level 1
+        # used six times. Raise it and only cells sitting on the line go black.
+        if a.startswith("--cover="): COVER = float(a.split("=")[1])
     print("  outline threshold %d (gap search said %d)" % (OUTLINE, best[1]))
     step = side / size
     for dy in range(size):
