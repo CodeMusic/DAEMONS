@@ -305,3 +305,99 @@ Backs go to `back/mewb.png` and `back/mewtwob.png`. Then `make content`.
 **Check it on screen before believing it.** `rgbgfx` inverts: PNG level 3
 becomes colour index 0, so lighter in the file is lighter in the game. Every
 greyscale asset in this project has had to be checked, not assumed.
+
+---
+
+# The MUSAI line
+
+Four creatures, eight sprites. `vision.md` 8.3 has the types and the items.
+
+| | Front | Back | Type | Item |
+|---|---|---|---|---|
+| **MUSAI** | 40×40 | 32×32 | CONTENT | — |
+| **CODEMUSAI** | 48×48 | 32×32 | LOGIC | AXIOM |
+| **SEEKMUSAI** | 48×48 | 32×32 | VECTOR | EMBEDDING |
+| **CAREMUSAI** | 48×48 | 32×32 | CONTEXT | AFFECT |
+
+## The rule that governs all eight
+
+**The body never changes.** 2398 calls Musai *"one framework, many modules"*, and
+that is a sprite instruction, not a slogan: **the same small rounded robot, the
+same two ball-tipped antennae, in all four.** The antennae are the family mark
+the way ears are ARTSAI's.
+
+**Only the head-gear changes, and it changes the silhouette.** At 40–48 pixels
+the outline is the whole of what a player reads, so a module that does not alter
+the profile does not exist. **One change each, at the head, big enough to see:**
+
+| | Silhouette change | Why that one |
+|---|---|---|
+| **MUSAI** | **nothing** — bare round head | It has not specialised. That is the character |
+| **CODEMUSAI** | a **flat horizontal visor** across the eyes | A hard straight edge among all those curves. Formal reasoning, and it turns a face into an instrument |
+| **SEEKMUSAI** | a **wide-brimmed explorer helmet** | Straight from the reference art, and a brim is the strongest silhouette available |
+| **CAREMUSAI** | **large over-ear cups** | Listening. The small ear-discs in the reference, grown into the defining feature |
+
+*Deliberately not used:* held props, furniture, terminals, screens. **A sprite has
+no scene.** The magnifying glass in the SeekMusai reference is the one prop worth
+attempting, and only if the helmet alone proves too weak in the game.
+
+## Front — the shared body
+
+Use this stem for all four and append the module line.
+
+> A small rounded robot sitting upright, three-quarter view, facing slightly
+> left and looking at the viewer. A large smooth dome head, a dark oval face
+> panel with two big round eyes, a compact rounded body, short simple arms and
+> two stubby legs. **Two thin antennae rise from the top of the head, each
+> ending in a small ball.** Draw it as flat illustration with a **hard pure
+> black (#000000) outline, 6–8 pixels thick, around the entire robot and around
+> both antennae**. Inside, exactly four flat tones — **pure black, dark grey,
+> light grey, pure white** — hard edges, no gradients, no anti-aliasing, no
+> glow, no colour. The body is mostly white; the face panel is solid black with
+> the eyes left white. Plain pure-white background, no ground shadow, no
+> objects, no scenery.
+
+**Append one line:**
+
+- **MUSAI** — > Nothing on its head but the two antennae. No helmet, no visor, no headphones.
+- **CODEMUSAI** — > It wears a **flat horizontal visor band across its eyes**, a hard straight rectangle spanning the full width of the head.
+- **SEEKMUSAI** — > It wears a **wide-brimmed explorer helmet**, the brim projecting well past the head on both sides in a clean horizontal line.
+- **CAREMUSAI** — > It wears **large round over-ear cups** on both sides of the head, each about a third the width of the head, joined by a band over the top between the antennae.
+
+## Back — all four
+
+> The same robot seen **directly from behind**, sitting upright and facing away.
+> You see the back of the dome head, the two antennae rising with their balls,
+> the rounded back, and the legs to either side. **No face is visible.** [Then
+> the module line — the visor band, the helmet brim, or the ear cups seen from
+> behind.] Same style exactly: **hard pure black outline**, four flat tones,
+> hard edges, no gradients, no colour. Simple and chunky; this is seen very
+> small.
+
+## Then
+
+```sh
+python3 tools/mksprite.py gfx/front/musai.png engine/gfx/pokemon/front/eevee.png 40
+python3 tools/mksprite.py gfx/front/codemusai.png engine/gfx/pokemon/front/flareon.png 48
+python3 tools/mksprite.py gfx/front/seekmusai.png engine/gfx/pokemon/front/jolteon.png 48
+python3 tools/mksprite.py gfx/front/caremusai.png engine/gfx/pokemon/front/vaporeon.png 48
+```
+
+Backs go to `back/eeveeb.png`, `flareonb.png`, `jolteonb.png`, `vaporeonb.png`,
+all at 32. **Vanilla filenames throughout** — they are identifiers.
+
+**Check the true-black percentage before converting.** S.T.A.R.R.'s first front
+had 1.0% and produced a slab with no edge; his second had 3.6% and worked.
+**Anything under about 2% will not convert**, and the tool cannot invent an
+outline that was never drawn:
+
+```sh
+python3 - <<'EOF'
+import sys; sys.path.insert(0,'tools')
+from gbimg import read_png
+w,h,lum = read_png('gfx/front/musai.png')
+n = sum(1 for y in range(0,h,3) for x in range(0,w,3) if lum(x,y) < 64)
+t = len(range(0,h,3))*len(range(0,w,3))
+print("true black: %.1f%%" % (100*n/t))
+EOF
+```
