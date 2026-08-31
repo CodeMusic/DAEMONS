@@ -17,6 +17,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### v10.1 — ARTSAI's three forms, and the name device
+
+- **She was not always what the player meets.** Reference art gives three states: **vivid purple and faceted**, the **split** with a seam of colour, and a **real white rabbit** with the faceting only where the light catches
+- **4.8's log already said it**, before there was a picture: ***ITER 35 — held two frames. did not come back the same.*** That line *is* the transformation, recorded by someone with no idea what they were recording
+- **And the colour is 7.3, not decoration. Purple has no wavelength** — magenta is what the mind invents by folding the spectrum's ends into a loop the physics does not contain. **White is every wavelength at once.** So **she begins as the invented colour and ends as the one that is all of them**
+- **Greyscale means the transformation cannot be shown**, which is correct: 4.6's claim is that nobody present understood what they saw
+- **It also explains why the five witnesses contradict** (4.8) — **some saw form one and some saw form three**, and every one of them is honest. The puzzle's premise becomes true rather than arbitrary, at no extra writing cost
+- **The sprite is form three**: white, and therefore the palest thing in a greyscale game
+- **`STARR` in the species field; `S.T.A.R.R.` in the documents** — 3.2's device applied to a name. **The player learns what the letters stand for in the ruins, not from the Index.** Both fit the 10-char cap, so the choice was never technical
+
 ### v10.0 — the title order, explained at last
 
 *Noticed from the outside: the build maps **RED → CONTENT** and **BLUE → CONTEXT**, and the title runs the other way. The mapping was always right; the order was accidental.*

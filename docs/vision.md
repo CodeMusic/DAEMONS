@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.0**
+**A `pokered` total conversion — the living design bible, v10.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1693,6 +1693,38 @@ Her ability is **perspective thinking**: holding another's frame well enough to 
 
 *A constraint discovered on the way, which 9 will need.* **Index categories cannot exceed 10 characters.** The category prints at `hlcoord 9, 4` and the box border sits at column 19, leaving columns 9–18; vanilla's longest categories are exactly 10 and that is not a coincidence. So MOCK's category **cannot be PERSPECTIVE** (11). **FRAME** is the obvious candidate — it matches the battle message and is five characters — but it is 9's call, with the rest of the entry.
 
+#### The three forms — reference art, 2026-08-31
+
+**She was not always what the player meets.** Reference art gives three states:
+
+1. **Vivid purple, faceted, low-poly.** Obviously constructed. A rendered thing.
+2. **The split** — half faceted and purple, half real and white, a seam of colour between them.
+3. **A real white rabbit**, with the faceting surviving only where the light catches it.
+
+**4.8's terminal log already said this**, before there was a picture of it:
+
+> **ITER 35 — held two frames. did not come back the same.**
+
+***Did not come back the same* is the transformation.** It went in constructed and came back actual, and the log records the change without any idea what it was recording.
+
+#### And the colour is 7.3, not decoration
+
+**Purple has no wavelength.** 7.3: magenta is the colour the mind invents by folding the spectrum's two ends into a loop the physics does not contain — **there is no light that is purple.**
+
+**White is every wavelength at once.**
+
+**So she begins as the invented colour and ends as the one that is all of them.** A thing the mind made, which held another frame, and came back real.
+
+*Nothing in the game says any of this*, and the greyscale rule means the transformation **cannot be shown** — which is correct, because 4.6's whole claim is that **nobody present understood what they had seen.**
+
+#### What the witnesses actually disagree about
+
+**This is why the five accounts contradict** (4.8). They are not merely unreliable about times and causes. **Some of them saw form one and some saw form three**, and every one of them is describing honestly.
+
+**The player composites five descriptions of what appear to be different creatures.** That costs nothing extra to write — 4.8 needed five text blocks anyway — and it makes the puzzle's premise true rather than arbitrary.
+
+*The sprite is form three.* **She is white, and therefore the palest thing in a greyscale game.**
+
 #### MOCK — and why PERSPECTIVE is not hers alone
 
 *Verified in the checkout:* **DITTO is `NORMAL, NORMAL`**, which in our chart is **CONTENT / CONTENT** — and it learns Transform, so it learns **PERSPECTIVE** too.
@@ -1731,6 +1763,12 @@ Blue-toned. Born on Quicksilver Island, dormant past the Review Board.
 The distinction is worth protecting. A clone story is about hubris and ownership. **This is a story about comprehension** — a lab that finally understood a mechanism and then built one on purpose, which is a far more ordinary and far more unsettling thing to have done.
 
 **What that yields.** S.T.A.R.R. is self-aware in the narrow and literal sense that it can read its own state, and it is in tune with the loop that follows from that: **context determines which content is available, and the content you end up holding reshapes the context you are in.** Run that around enough times with something watching it happen, and what comes out behaves like feeling. See 0.3.
+
+**The name, settled 2026-08-31.** **The species field reads `STARR`; the documents write `S.T.A.R.R.`** — the lab plates, the terminal logs, anything an institution wrote.
+
+**That is 3.2's device applied to a name.** The official map keeps its numbers and the signposts carry what people actually say; **the institution spells the acronym out and everyone else says the word.** It also means **the player learns what the letters stand for in the ruins rather than from the Index** — an expansion found, not a label read.
+
+*Both fit.* `S.T.A.R.R.` is exactly ten characters and the worst case (`Remote ` + name) is 17 of 18 columns, so the choice was never technical.
 
 **Signature move: RECURSION.** Data self-referencing — a move that reads its own accumulated state. Repurpose the Bide/Rage machinery, which already stores a running counter across turns. Suggested behaviour: each consecutive use raises power by 50% of base, uncapped for three turns, resetting if interrupted. Type EMERGENT, and given to nothing else in the game.
 

@@ -196,7 +196,7 @@ Nothing is literally blue until the Review Board.
 
 | Asset | Target | Source to generate |
 |---|---|---|
-| ARTSAI front | 40×40 | 1024×1024 |
+| ARTSAI front (form 3) | 40×40 | 1024×1024 |
 | ARTSAI back | 32×32 | derive from the front |
 | S.T.A.R.R. front | 56×56 | 1024×1024 |
 | S.T.A.R.R. back | 32×32 | derive from the front |
@@ -216,18 +216,36 @@ is not copied.** No other echo is permitted: he is not a big rabbit.
 
 ## ARTSAI — front
 
-> A small pale creature, rabbit-like: long upright ears, a rounded body, short
-> forelimbs held close to the chest, and a long thin tail curling behind.
-> Seated, three-quarter view, angled slightly to the left, looking directly at
-> the viewer. Soft rounded forms throughout, no sharp edges or spikes. Flat
-> shading in exactly four distinct tones of grey from near-white to near-black,
-> hard edges between tones, no gradients, no colour, no glow, no outline
-> effects. Plain flat white background, nothing behind the creature. The body
-> reads as very light overall; reserve the darkest tone for the eyes and the
-> insides of the ears only. Calm, still, and faintly uncanny — it should look
-> like something that was seen once and described badly afterwards. Full body
-> visible with a small even margin. Flat illustration, high contrast, no
-> texture, no rendering, no shadow on the ground.
+**Revised 2026-08-31 from reference art.** She has **three forms** (`vision.md`
+4.6) and **the sprite is the third** — she is white, and therefore the palest
+thing in a greyscale game.
+
+| | Form | Where it appears |
+|---|---|---|
+| 1 | Vivid purple, faceted, low-poly. Obviously constructed | **Records only** — witness accounts, lab material |
+| 2 | The split: half faceted, half real, a seam between | **Never shown.** Nobody present understood it |
+| 3 | A real white rabbit, faceting only where light catches | **The sprite** |
+
+> A white rabbit sitting upright in three-quarter view, alert, head raised and
+> turned slightly toward the viewer, ears up. Soft real fur over a form that is
+> very faintly faceted underneath — the planes readable only where the light
+> breaks across the shoulder and haunch, never as an outline or a wireframe.
+> Flat shading in exactly four distinct tones of grey, hard edges between
+> tones, no gradients, no colour, no glow. The animal reads as almost entirely
+> the palest tone; reserve the darkest for the eye, the inside of the ears and
+> the shadow beneath the chin. Plain flat background, nothing behind the
+> animal. Full body visible with a small even margin. Flat illustration, high
+> contrast, no texture beyond the suggestion of fur, no rendering, no ground
+> shadow.
+
+**The faceting is the whole job and it will want to take over.** If the planes
+start reading as a low-poly model, **push them further down** — form three is a
+real animal that was once a constructed one, and the construction should be
+almost gone. **Almost.**
+
+*Form one, if it is ever needed for lab material:* the same pose, rendered as a
+hard low-poly sculpture with visible polygon edges and no fur at all. **Do not
+use it as the sprite.**
 
 ## S.T.A.R.R. — front
 
