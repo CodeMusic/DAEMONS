@@ -202,11 +202,17 @@ Nothing is literally blue until the Review Board.
 | S.T.A.R.R. back | 32×32 | derive from the front |
 | Overworld sprite for the lab encounter | 16×96 | **No — hand-pixel** |
 
-**The one shared motif, and why it is the only one.** 4.7 insists S.T.A.R.R. is
-*a copy of nothing*, so **he must not echo her silhouette** — no ears, no
-rabbit. The single permitted echo is **a long trailing appendage**: her tail,
-his cable. **Convergent function, not copied form.** The lab built the
-mechanism and the mechanism has a shape.
+**The shared motif, revised 2026-08-31 from reference art.** **ARTSAI has ears.
+S.T.A.R.R. has antlers.** Both rise from the same place on the skull — and
+**ears point outward to receive another's frame, while antlers branch from the
+same root and turn back on themselves.**
+
+**That is 4.7's lineage line stated in silhouette:** *PERSPECTIVE (holding
+others' context) → turned inward as RECURSION (holding your own).*
+
+**It does not violate *a copy of nothing*.** Antlers are not bigger ears — a
+different structure in the same position. **The mechanism is visible; the form
+is not copied.** No other echo is permitted: he is not a big rabbit.
 
 ## ARTSAI — front
 
@@ -225,18 +231,28 @@ mechanism and the mechanism has a shape.
 
 ## S.T.A.R.R. — front
 
-> A tall constructed figure, upright and humanoid, clearly assembled rather
-> than grown: a smooth elongated head with no mouth, a slender neck, a narrow
-> torso, and long limbs with visible articulated joints at the shoulder, elbow
-> and knee. Standing, three-quarter view, angled slightly to the right, head
-> turned toward the viewer. A single long cable descends from the base of the
-> skull and trails behind. Flat shading in exactly four distinct tones of grey,
-> hard edges between tones, no gradients, no colour, no glow. Pale overall,
-> sitting at the light end of the range; reserve the darkest tone for the joint
-> seams and the single visible eye. Plain flat white background. It should read
-> as deliberate and unhurried — designed rather than born, and not a copy of
-> any animal. Full body visible with a small even margin. Flat illustration,
-> high contrast, no texture, no rendering, no shadow on the ground.
+**Superseded the humanoid-construct prompt, 2026-08-31.** Reference art:
+a stag rendered as blue energy, standing on a chip. **The antlers are the
+recursion** — a branching structure whose branches branch again — and they
+are the most legible thing about him at 56×56.
+
+> A standing stag seen in three-quarter view, alert, head turned slightly
+> toward the viewer, one forefoot placed forward. Its whole body is a fine open
+> lattice — a wireframe mesh of thin bright lines with the background showing
+> through between them, not a solid filled shape. Large antlers rise from the
+> head, branching, and each branch branches again into finer tines; the antlers
+> are the most detailed and most readable part of the figure. Flat shading in
+> exactly four distinct tones of grey, hard edges between tones, no gradients,
+> no colour, no glow, no bloom. The body reads as pale line-work; reserve the
+> palest tone for the brightest lattice lines and the antler tips. Plain flat
+> background with nothing behind the animal. Full body visible with a small
+> even margin. Flat illustration, hard-edged, high contrast, no texture, no
+> rendering, no shadow on the ground.
+
+**Expect the lattice to fail first.** At 56×56 a wireframe body will collapse
+into noise long before the antlers do. **If it does, keep the antlers and let
+the body go solid pale with dark seams** — the silhouette is what carries this
+one, and the mesh is a nice-to-have.
 
 ## Back sprites
 
