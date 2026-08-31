@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.6**
+**A `pokered` total conversion — the living design bible, v10.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1168,6 +1168,21 @@ One journal entry proposes a thought experiment: **a mind whose reality is bound
 **iASHC becomes Scorn Solutions.** That is 4.10's step 3 — *Scorn assumes control. Rebrand. The metric changes* — with the name attached.
 
 **And the game cannot render its own version of that yet.** The gilt sign at Quicksilver says the old name is visible under the gold leaf, **but the lab has never been named in this design.** The opera has iASHC; the game has an unnamed lab and an org called CORPUS. **The sign needs something underneath it**, and that is now the smallest open item in the project.
+
+#### Settled and built 2026-08-31
+
+> **In gold: `SCORN SOLUTIONS`**
+> **Underneath: `CLEAR LABORATORY`**
+
+**Both are a founder's surname plus what the place is**, and the rebrand changed exactly one word: **Laboratory became Solutions.** A place that studied things became a company that sells them, and the whole takeover is legible off one sign with nothing explained.
+
+***CLEAR* is already load-bearing** — Crystal Clear, Ty Clear, Al Clear, and the Cognitive **Clarifier** (4.18). Her surname ties the founder, the family and the machine into one word, **and it is the word that got painted over.**
+
+**The acronym is dropped, the name is kept.** iASHC pays nothing here — a player cannot unpack it and it teaches them nothing — but ***Scorn Solutions* is a name, not an initialism**, and it pays twice: the surname, and the contempt.
+
+**In the ROM:** the Quicksilver lab sign, which read `#MON LAB`. *Gold leaf, laid over something. Where it has lifted, the older letters show.* **The player has to look.**
+
+*Which building carries it.* The **lab is intact** and holds the paperwork — the requisition, the minutes, the photo plate. The **Mansion is the ruin** and holds the machine's own words. **A campus, not a building**: the sign stands on the half that survived.
 
 *Do not simply import iASHC.* It is an acronym from another work and carries nothing in this one — 1's rule is that every term pays for itself twice. **The old name should be Crystal's**, and it should read as a research lab that had not yet learned to sell anything.
 

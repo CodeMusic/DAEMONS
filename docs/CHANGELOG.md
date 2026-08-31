@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The gilt sign, and TAINT withdrawn
+
+- **In gold `SCORN SOLUTIONS`; underneath `CLEAR LABORATORY`.** Both are a founder's surname plus what the place is, and **the rebrand changed exactly one word: Laboratory became Solutions.** A place that studied things became a company that sells them
+- ***CLEAR* is already load-bearing** — Crystal, Ty, Al, and the Cognitive **Clarifier**. Her surname ties founder, family and machine into one word, **and it is the word that got painted over**
+- **The acronym is dropped, the name is kept.** iASHC pays nothing — a player cannot unpack it — but *Scorn Solutions* is a name, and it pays twice: the surname and the contempt
+- **Built** onto the Quicksilver lab sign, which read `#MON LAB`. *Gold leaf, laid over something. Where it has lifted, the older letters show.* **The player has to look**
+- ***TAINT MARK withdrawn.*** It covered Benchmark 5 exactly — contamination and a tainted judgement — and it has a **well-known vulgar reading** that would land as a joke in a game where you *receive* one. **A second meaning the design did not choose is not a second meaning; it is a leak.** **SKEW MARK** pays the same twice and does not: *skew a measurement, hold a skewed view* — and **a weighting is a skew**, the exact operation Scorn performed on the Clarifier
+
 ### The badges become MARKS
 
 - **City names do not scale** — `VERDIGRIS MARK` is 14 and `QUICKSILVER MARK` is 16, over the 12-char item cap. So each is named from its **concept**
