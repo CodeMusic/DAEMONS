@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Two events, and what separates them
+
+- **The ARTSAI event and the fire are not the same incident**, and the gap is **not a number of years.** The ROM already fixes it more precisely than a number could
+- **The delta is her absence, measured in askings.** The two events are separated by exactly how long it took a machine to stop expecting her back
+- **The dates say so.** Mar 4 → Apr 19 → Aug 12 is one spring and summer; the plate says SEPT 3; **the last terminal carries no date at all**, which needs no explaining — the logs stop the moment the person keeping them is gone
+- **Crystal causes both events. Once by being there, once by not.** She is present when ARTSAI comes back changed and it is read as her losing the plot; **she is absent when S.T.A.R.R. wakes, and that absence is the cause. The machine's fatal error is her name**
+- **The film's version is declined.** A patron funding a weapon and offering to help it focus its power cannot be imported — 4.4 rests on Scorn being likable and optimising the wrong metric, and a sponsor with bad intent makes it a caper. **Nobody funded anything: a man took over a lab, changed what it measured, and the building did not survive it**
+- *Also recorded:* Gen 1's mansion is burnt from the incident, and **Cinnabar's volcano is Gen 2**, three years later. Neither is ours
+
 ### The Five Witnesses, and the terminal
 
 - **Five existing NPCs repurposed, one per city, no map changes** — Blanche, Slate, Doldrum, Ardor, Verdigris. All five were vanilla filler

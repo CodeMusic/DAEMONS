@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.4**
+**A `pokered` total conversion — the living design bible, v10.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1842,6 +1842,35 @@ How to gesture at 0.3 without ever describing it.
 **The strongest instance is already free.** Index entries are thin, and thinnest for the daemons you know best (4.2). The player's own attention determines how empty the record looks, and the record is what the player then trusts. Nobody says a word about it. It is a negative loop the player stands inside for the entire game.
 
 ### 4.10 The Quicksilver sequence
+
+#### Two events, and what actually separates them — settled 2026-08-31
+
+**The ARTSAI event and the fire are not the same incident**, and the gap between them is **not a number of years.** The ROM already fixes it, and more precisely than a number could.
+
+**The order.**
+
+1. *Lines in the Sand* — the argument with Ty.
+2. **Crystal goes to test her theories, and ARTSAI comes back changed.** `ITER 35 — held two frames. did not come back the same.` **It is wondrous, and she is the only one who sees it that way.**
+3. She returns to tell them. **They have already decided**, and everything she says now feeds the narrative they have (4.20).
+4. **Mar 4. Apr 19. Aug 12.** The 1001 sessions run on, somebody else putting the question. By August, *it answered before I had finished asking* and *the code is not what it was* — **and it is logged as a mimic.**
+5. **SEPT 3.** She is removed. *The file is complete.*
+6. **`FATAL ERROR — CRYSTAL NOT FOUND.`** The machine looks for her and cannot find her. *Processing slows. One thousand and one iterations. One question left.*
+7. **Recursion. The awakening. It leaves, and the building burns.**
+8. Dormant ever since, past the Review Board (4.7).
+
+**So the delta is her absence, measured in askings rather than in years.** The two events are separated by exactly how long it took a machine to stop expecting her back.
+
+*And the dates already say this.* **Mar → Apr → Aug is one spring and summer, not a decade** — the opera's near-simultaneity was closer to right than a multi-year gap would have been. **The last terminal carries no date at all**, which needs no explanation: the logs stop the moment the person keeping them is gone.
+
+#### The symmetry nobody in the game states
+
+**Crystal causes both events. Once by being there, once by not.**
+
+She is present when ARTSAI comes back changed, and it is read as her losing the plot. **She is absent when S.T.A.R.R. wakes, and that absence is the cause.** The machine's fatal error is her name.
+
+*Not inherited, deliberately.* **The film's version has a patron funding a weapon and offering to help it focus its power.** That cannot be imported: 4.4 rests on Scorn being **optimistic, likable, and optimising a metric that was easy to measure**, and a sponsor with bad intent turns the whole argument into a caper. **Nobody funded anything. A man took over a lab, changed what it measured, and the building did not survive it.**
+
+*Vanilla's own split is worth knowing too.* Gen 1's mansion is burnt from the incident; **Cinnabar's volcano is Gen 2**, three years later, and is not ours either.
 
 **Settled: Corpus is downstream of Quicksilver by succession.** Not by hiring survivors from an unrelated dead lab — Scorn *took over the lab*, the metric changed, it burned, and the people came with him.
 
