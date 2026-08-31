@@ -180,3 +180,87 @@ already produces that convention.
 
 Front sprites are compressed into `.pic` at build time, so keep interiors flat
 — large single-value regions compress well and busy dithering does not.
+
+---
+
+# ARTSAI and S.T.A.R.R.
+
+The two legendaries, renamed and retyped 2026-08-31 (`vision.md` 4.6, 4.7).
+**ARTSAI is pure CONTEXT; S.T.A.R.R. is CONTEXT/EMERGENT** — she is the
+mechanism, he is her mechanism with something added on purpose.
+
+**One conflict to settle before drawing.** 4.7 calls S.T.A.R.R. *blue-toned*,
+written before invariant 5 fixed greyscale as the design. **Read it as value,
+not hue:** he sits at the cool, pale, low-contrast end of the four-tone ramp.
+Nothing is literally blue until the Review Board.
+
+| Asset | Target | Source to generate |
+|---|---|---|
+| ARTSAI front | 40×40 | 1024×1024 |
+| ARTSAI back | 32×32 | derive from the front |
+| S.T.A.R.R. front | 56×56 | 1024×1024 |
+| S.T.A.R.R. back | 32×32 | derive from the front |
+| Overworld sprite for the lab encounter | 16×96 | **No — hand-pixel** |
+
+**The one shared motif, and why it is the only one.** 4.7 insists S.T.A.R.R. is
+*a copy of nothing*, so **he must not echo her silhouette** — no ears, no
+rabbit. The single permitted echo is **a long trailing appendage**: her tail,
+his cable. **Convergent function, not copied form.** The lab built the
+mechanism and the mechanism has a shape.
+
+## ARTSAI — front
+
+> A small pale creature, rabbit-like: long upright ears, a rounded body, short
+> forelimbs held close to the chest, and a long thin tail curling behind.
+> Seated, three-quarter view, angled slightly to the left, looking directly at
+> the viewer. Soft rounded forms throughout, no sharp edges or spikes. Flat
+> shading in exactly four distinct tones of grey from near-white to near-black,
+> hard edges between tones, no gradients, no colour, no glow, no outline
+> effects. Plain flat white background, nothing behind the creature. The body
+> reads as very light overall; reserve the darkest tone for the eyes and the
+> insides of the ears only. Calm, still, and faintly uncanny — it should look
+> like something that was seen once and described badly afterwards. Full body
+> visible with a small even margin. Flat illustration, high contrast, no
+> texture, no rendering, no shadow on the ground.
+
+## S.T.A.R.R. — front
+
+> A tall constructed figure, upright and humanoid, clearly assembled rather
+> than grown: a smooth elongated head with no mouth, a slender neck, a narrow
+> torso, and long limbs with visible articulated joints at the shoulder, elbow
+> and knee. Standing, three-quarter view, angled slightly to the right, head
+> turned toward the viewer. A single long cable descends from the base of the
+> skull and trails behind. Flat shading in exactly four distinct tones of grey,
+> hard edges between tones, no gradients, no colour, no glow. Pale overall,
+> sitting at the light end of the range; reserve the darkest tone for the joint
+> seams and the single visible eye. Plain flat white background. It should read
+> as deliberate and unhurried — designed rather than born, and not a copy of
+> any animal. Full body visible with a small even margin. Flat illustration,
+> high contrast, no texture, no rendering, no shadow on the ground.
+
+## Back sprites
+
+**Do not generate these.** Ask for a rear view of the *same* creature in the
+same prompt style, or redraw from the front — a back sprite is 32×32 and any
+independently generated image will not match.
+
+> The same creature seen directly from behind, standing centred and facing
+> away. [ARTSAI: the ears and the long tail are the readable silhouette.]
+> [S.T.A.R.R.: the trailing cable and the shoulder seams are the readable
+> silhouette.] Same four-tone flat grey shading, same plain white background,
+> no colour, no gradients.
+
+## Then
+
+```sh
+python3 tools/gbimg.py <source.png> <out.png> --size 40x40   # or 56x56 / 32x32
+```
+
+Drop the result at `engine/gfx/pokemon/front/mew.png` (ARTSAI) or
+`mewtwo.png` (S.T.A.R.R.) — **the filenames are still vanilla and that is
+correct**, they are identifiers, and the `fainted → HALTED` lesson applies.
+Backs go to `back/mewb.png` and `back/mewtwob.png`. Then `make content`.
+
+**Check it on screen before believing it.** `rgbgfx` inverts: PNG level 3
+becomes colour index 0, so lighter in the file is lighter in the game. Every
+greyscale asset in this project has had to be checked, not assumed.
