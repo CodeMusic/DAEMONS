@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.8**
+**A `pokered` total conversion — the living design bible, v10.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2394,9 +2394,30 @@ If that is fun, the remaining daemons are labor. If it is not, you learned it fo
 
 | Paradigm | Types | Draft line (names provisional) |
 |---|---|---|
-| Supervised | CONTENT → CONTENT/LOGIC | Labl → Corpel → Canonex |
-| Unsupervised | VECTOR → VECTOR/LATENT | Clustr → Nebulon → Manifold |
-| Reinforcement | GROWTH → GROWTH/SIGNAL | Nudgit → Rewarden → Optimax |
+| Supervised | CONTENT → CONTENT/LOGIC | **LABL → RUBRIC → CANON** |
+| Unsupervised | VECTOR → VECTOR/LATENT | **CLUSTR → LOCUS → MANIFOLD** |
+| Reinforcement | GROWTH → GROWTH/SIGNAL | **ROVERCUB → ROVERSEER → ROVERBYTE** |
+
+**All nine built 2026-08-31, and no vanilla starter name remains in the cartridge.**
+
+**`Corpel` collided with Corpus and `Canonex`'s `-EX` earned nothing** — it reads as *ex-* or Latin *out of*, neither of which belongs at the top of a supervised line. **`LABL → RUBRIC → CANON`** fixes both, and gains something: **the names get more formal as the creature gets more authoritative.** *Labl* is barely a word, *rubric* is a technical term, *canon* is an institution. **A rubric is also the marking scheme**, which is what a world of benchmarks and marks runs on.
+
+**`Nebulon` was not vague, it was backwards.** A nebula is **diffuse — less structured than a cluster** — so the line ran grouped → scattered → structured and lost ground in the middle. **`LOCUS` escalates properly:** a cluster is points that *happen* to be near, a locus is points that share a *rule*, a manifold is the *surface* they lie on. **Proximity → rule → shape.**
+
+#### The Index entries, and the argument they carry
+
+| | Category | The entry |
+|---|---|---|
+| **LABL** | EXAMPLE | *Holds one example and the answer that came with it.* ***Someone else decided what it means*** |
+| **RUBRIC** | CRITERION | *It no longer needs answers. It has the rule that made them.* ***Nothing checks the rule*** |
+| **CANON** | SETTLED | *Every case it meets is decided by cases it has already met.* ***New things are filed as errors*** |
+| **CLUSTR** | GROUPING | *Puts near things with near things.* ***Nobody told it which things matter. It has guessed*** |
+| **LOCUS** | CONDITION | *It found a rule the points obey.* ***It cannot say what the rule is for, only that it holds*** |
+| **MANIFOLD** | SURFACE | *The scattered points were on a surface all along.* ***It can show you the shape, not a name*** |
+
+**The two final stages are the paradigms' failures, side by side.** **CANON is accurate and files novelty as error. MANIFOLD finds real structure it cannot name.** One is certain and wrong at the edges; the other is right and mute.
+
+***And CANON's line is the Meeting Room minutes.*** *New things are filed as errors* is what happened to a woman who moved between fields (4.20) — **printed in an Index entry, two hundred slots away from the building it describes.**
 
 *Types implemented 2026-08-29, verified in the ROM.* The secondary appears at the **final** stage, exactly as vanilla's Charizard gains FLYING — so stages 1 and 2 are pure and stage 3 splits. Bulbasaur's CORRUPT secondary is dropped, since 8.2 makes the reinforcement line GROWTH.
 

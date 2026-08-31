@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The starters are named — all nine
+
+- **`LABL → RUBRIC → CANON`** and **`CLUSTR → LOCUS → MANIFOLD`**, joining the ROVER line. **No vanilla starter name remains in the cartridge**
+- ***Corpel* collided with Corpus, and *Canonex*'s `-EX` earned nothing** — it reads as *ex-* or Latin *out of*. The fix gains something: **the names get more formal as the creature gets more authoritative.** *Labl* is barely a word, *rubric* is a technical term, *canon* is an institution — **and a rubric is the marking scheme**, in a world of benchmarks and marks
+- ***Nebulon* was not vague, it was backwards.** A nebula is **diffuse, less structured than a cluster**, so the line ran grouped → scattered → structured. **`LOCUS` escalates properly**: points that *happen* to be near → points that share a *rule* → the *surface* they lie on
+- **Index entries for all six.** *Someone else decided what it means.* / *Nothing checks the rule.* / ***New things are filed as errors.*** / *Nobody told it which things matter. It has guessed.* / *It cannot say what the rule is for.* / ***It can show you the shape, not a name***
+- **The two final stages are the paradigms' failures side by side.** **CANON is accurate and files novelty as error; MANIFOLD finds real structure it cannot name.** One certain and wrong at the edges, the other right and mute
+- ***And CANON's line is the Meeting Room minutes*** — *new things are filed as errors* is what happened to a woman who moved between fields, printed in an Index entry two hundred slots from the building it describes
+
 ### The ROVER line, and RESONANCE
 
 - **The order is reviewed and kept.** ROVERCUB → ROVERSEER → ROVERBYTE reads **software → infrastructure → body**, and ending in a body is the same shape as ARTSAI coming back real
