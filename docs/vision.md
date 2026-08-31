@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.3**
+**A `pokered` total conversion — the living design bible, v10.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1802,6 +1802,26 @@ That is the only occurrence of the number anywhere in the game.
 **The point.** You cannot solve it by trusting a witness. You can only solve it by inhabiting all five viewpoints at once and keeping what survives the overlay.
 
 **Implementation:** five text blocks, one terminal text block, one hidden object, one event flag. Standard pokered machinery, no engine work.
+
+#### Built 2026-08-31 — the accounts and the terminal
+
+**Five existing NPCs repurposed, one per city, no map changes.** All five were vanilla filler:
+
+| City | Who | Time | Present | Cause | Saw | **The accurate detail** |
+|---|---|---|---|---|---|---|
+| **Blanche** | the girl raising daemons | night | two | a surge | **form 3**, white, *like an ordinary hare* | **far room, past the stairs** |
+| **Slate** | the Clefairy-rumour woman | morning | six signed in | coolant | **form 1**, purple, *all flat faces, like cut glass* | **west side** |
+| **Doldrum** | the girl who wants a bicycle | three days earlier | nobody | a scheduled test | — | **against the outer wall** |
+| **Ardor** | the pollution-conscious woman | afternoon | one, alone | a door left open | **form 3**, *sat there after. Just sat* | **below where the roof went in** |
+| **Verdigris** | the girl with the Quicksilver daemon | winter | four | an outside firm | ***the change itself*** — her uncle says it changed while he was looking | **the room with no window** |
+
+**Every one of them is honest**, and the contradictions now have a cause rather than being arbitrary: **two describe the creature before, one describes it after, and one saw it change** (4.6). Only the fifth is telling the truth about what happened, and she is quoting an uncle.
+
+**The terminal is on Mansion 1F**, `bg_event 17, 16` — deliberately not one of the four that carry the 1001 log, so the two threads never touch. It reads as damaged hardware, gives the three iterations, and stops.
+
+***`ITER 35` occurs exactly once in the ROM*** — verified by decoding the cartridge.
+
+**Still to build: the hidden object and its event flag.** The five accounts compose to one room and the terminal gives the distance; **nothing yet rewards standing there.**
 
 ### 4.9 Feedback, said sideways — dialogue guidance
 

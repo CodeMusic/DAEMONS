@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The Five Witnesses, and the terminal
+
+- **Five existing NPCs repurposed, one per city, no map changes** — Blanche, Slate, Doldrum, Ardor, Verdigris. All five were vanilla filler
+- **They contradict on time, on who was present, and on cause**, and every one of them is certain
+- **The contradictions now have a cause rather than being arbitrary.** Two describe **form 1** (*purple, all flat faces, like cut glass*), two describe **form 3** (*white, like an ordinary hare*), and one describes ***the change itself*** — her uncle says it changed while he was looking. **Only she is telling the truth about what happened, and she is quoting an uncle** (4.6)
+- **Each carries exactly one accurate spatial detail**: far room past the stairs / west side / against the outer wall / below where the roof went in / the room with no window. **Composited they are one room**
+- **The terminal is on Mansion 1F**, deliberately not one of the four carrying the 1001 log, so the threads never touch. ***`ITER 35` occurs exactly once in the ROM***, verified by decoding the cartridge
+- **Still to build: the hidden object and its event flag.** The accounts give the where and the terminal gives the how far; **nothing yet rewards standing there**
+
 ### The MUSAI line gets its Index entries
 
 *Caught in play: SEEKMUSAI still read `LIGHTNING` with Jolteon's negative-ions prose. All four were still vanilla.*
