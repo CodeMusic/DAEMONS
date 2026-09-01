@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Slate and The Bleed — 8.1's music
+
+- **Slate is achromatic**, so 7.4 gives it value rather than hue. ***Blanche is C pentatonic — no F, no B — and Slate is that scale with both gaps filled.*** **The first town has holes in it and the first benchmark closes them:** Representation as a key signature, and CAIRN's creed in the scale he stands in
+- ***And F is the note Blanche does not have** — which is exactly the key 7.4 derives for Callow.* So **The Bleed is the road where the missing note becomes the key**: A-section in C, B-section a fourth up in F
+- **Which is what the name already meant.** A *bleed* is one colour carried past its own edge into the next, and a modulation is a key doing that. **The name was the mechanic before anyone noticed**
+- **156 bytes for both.** Each needed a new constant and one repointed line, since Slate shared `Cities1` with 37 maps — **an edit, not a budget**
+- **8.1's "two city themes and one route modulation" is now done**
+
 ### v11.1 — external review, taken and answered
 
 *Read against v11.0 by a second model. Its sharpest finding is about this document: **the bible is outrunning the slice.** Sixteen version bumps in one session and 8.1 is still not beaten on hardware. **Recorded as binding — the next milestone is that, not another section.***

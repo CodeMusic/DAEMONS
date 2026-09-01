@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.1**
+**A `pokered` total conversion — the living design bible, v11.2**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2353,6 +2353,26 @@ Slower than vanilla — 152 against 160 — with more rest. Home should read as 
 
 ---
 
+### 7.14a Slate, and The Bleed — 8.1's music, built 2026-08-31
+
+**Slate is achromatic**, so 7.4 gives it no key from the spectrum and value decides instead: *greys middle and filling in.*
+
+***Blanche is C pentatonic — C D E G A, no F and no B. Slate is that scale with both gaps filled.***
+
+**The first town has holes in it and the first benchmark closes them.** That is Representation stated as a key signature — *everything must be written down, nothing left out* — and it is CAIRN's creed in the scale he stands in. Middle register where Blanche is high, and 132 against Blanche's 152: **measured, not hurried.**
+
+#### And the missing note is where the road goes
+
+**7.4 derives Callow as F**, from green and unripe. ***F is the note Blanche's pentatonic does not have.***
+
+So **The Bleed** — Route 1, Blanche → Callow — **is the road where the missing note becomes the key.** A-section in C, B-section the same phrase a fourth up in F.
+
+**Which is what the name already meant.** A *bleed* is a printing term (3.2): **one colour carried past its own edge into the next**, and a modulation is a key doing exactly that. **The name was the mechanic before anyone noticed.**
+
+*The player walks it before they have heard Callow*, so the arrival is a resolution to something they have not been told about. Nothing says so.
+
+**Cost: 156 bytes for both.** Each needed a new constant and one repointed line in `songs.asm`, because Slate shared `Cities1` with 37 maps and Route 1 shared `Routes1` — **the edit 7.15 describes, and it is an edit rather than a budget.**
+
 ### 7.15 The space audit — a claim I repeated for days and never measured
 
 **Measured 2026-08-30 from the linker map.** Every earlier statement that the music banks were full was **estimated, carried forward, and wrong.**
@@ -2950,7 +2970,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | Map names | `data/maps/names.asm`, `constants/map_constants.asm` | trivial |
 | Map layouts | `maps/*.blk`, `data/maps/headers/`, `data/maps/objects/` | medium |
 | Route signage, number plus local name | `text/Route*.asm` | **done 2026-08-30** |
-| Dialogue, signs, witnesses | `text/` | bulk |
+| Dialogue, signs, witnesses | `text/` | bulk — **witnesses done** (4.8), the rest ongoing |
 | BIND verb and the flat message | `text/` — catch strings; also `data/` menu labels | trivial |
 | Greyscale ramp everywhere but Umbra | palette data; one map differs | medium, specialist |
 | Two-edition build | `Makefile` — rename `_RED`/`_BLUE` to `_CONTENT`/`_CONTEXT` | **trivial, do it first** |
@@ -2958,9 +2978,9 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | Divergent Index entries | `data/pokemon/dex_entries.asm` plus `text/`, conditional | trivial, high value |
 | ORPHAN as a species in a free index slot | `constants/pokemon_constants.asm`, base stats, sprite, cry | one daemon's work |
 | ORPHAN's blank Index entry | `data/pokemon/dex_entries.asm` — a pointer that goes nowhere | trivial, needs care |
-| SILPH SCOPE → RESOLVER | `data/items/names.asm` plus `text/` | trivial |
-| Hidden BunnyArtsai tile | hidden object plus event flag | trivial |
-| Quicksilver terminal log | one text block | trivial |
+| SILPH SCOPE → RESOLVER | `data/items/names.asm` plus `text/` | **done** — and Scorn hands it over with its QS-LAB tag (8.6) |
+| Hidden BunnyArtsai tile | hidden object plus event flag | **the Five Witnesses' missing payoff** — accounts and terminal built, nothing rewards standing there |
+| Quicksilver terminal log | one text block | **done** — the 1001 sequence, plus ITER 35 on Mansion 1F (4.8) |
 | Corpus lobby engraving | one sign-text object, Brazen | **done 2026-08-30** |
 | Quicksilver asset tags at Halftone | one sign-text object | trivial |
 | `AL CLEAR` in formal text; naming screen untouched | `text/` — literal string instead of the `<RIVAL>` control char | trivial |

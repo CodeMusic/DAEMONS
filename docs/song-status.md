@@ -111,6 +111,8 @@ control cannot rescue bad input.
 | Track | File | Plays at | Reached |
 |---|---|---|---|
 | **Blanche Town** + Crystal's motif (01) | `pallettown.asm` | Pallet Town, Red's/Blue's house, Hall of Fame | **from minute one** |
+| **The Bleed** — C→F modulation | `thebleed.asm` | **Route 1** | minute five |
+| **Slate City** — C pentatonic, filled in | `slatecity.asm` | **Slate City** | before Benchmark 1 |
 | **The dark places** (05) | `dungeon3.asm` | **Mt. Moon** 1F/B1F/B2F, Rock Tunnel, Victory Road | just after Slate |
 | **Brazen** (07) | `brazen.asm` | Saffron City | mid-late |
 | **Quicksilver** + S.T.A.R.R. (08) + Ty (02) | `cinnabar.asm` | Cinnabar Island, the Lab and every room, the Mart | late |
