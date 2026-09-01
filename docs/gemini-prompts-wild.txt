@@ -1,0 +1,98 @@
+GEMINI PROMPTS - the nine wild daemons
+======================================================================
+
+All nine are 40x40 fronts and 32x32 backs.
+
+Paste one front at a time. Ask for a large flat image, never pixel art.
+Then ask for the back IN THE SAME CONVERSATION, using the follow-up below -
+a separate conversation invents a different creature.
+
+Save to gfx/front/<name>.png and gfx/back/<name>-back.png, lowercase.
+
+----------------------------------------------------------------------
+NIBBLE  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small rodent, low to the ground and quick-looking, three-quarter view from the side, standing alert with its head turned toward the viewer. Along its back are four small square plates in a row, evenly spaced and clearly separate. Two large front teeth, small round ears, and a thin bare tail. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+PACKET  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small round bird perched upright, three-quarter view, head turned toward the viewer. Clutched against its chest is a small sealed rectangular envelope with a visible flap. Short blunt wings folded at its sides, stubby legs, a rounded head with one simple round eye visible. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+PING  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small sharp bird leaning forward, three-quarter view, alert and about to move. Its beak is long, straight and needle-thin, noticeably longer than its head. Narrow swept-back wings held tight to the body, and one stiff crest feather standing straight up. Thin legs, gripping. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CRAWLER  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A segmented caterpillar-like creature seen from the side, walking. Its body is made of eight rounded segments of the same size, with many small legs beneath. Two simple round eyes at the front of a slightly larger head segment. A single thin thread trails from its rear along the ground behind it. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+PENDING  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A sealed upright pupa, smooth and hard-shelled, resting on the ground and completely still. Its shape is a rounded capsule, wider at the base. Two simple closed eye-slits near the top, just curved lines. One small round indicator dot low on its front. No legs, no mouth. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+SCRAPER  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A segmented grub-like creature seen from the side, walking. Similar in build to a caterpillar, eight rounded segments with many small legs, but with a single sharp curved hook on its head angled forward like a claw. Two simple round eyes. It is dragging a small shapeless bundle behind it. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+BUFFER  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A sealed upright pupa, hard-shelled, resting on the ground - but visibly overfull. Its shell bulges outward at the middle and is strained, with one hairline split running down the side. Two simple closed eye-slits near the top. No legs, no mouth. It should look like it is holding more than it was built for. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+SPIKE  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small round-cheeked rodent standing upright on its hind legs, three-quarter view, alert, with its front paws held up in front of its chest. Two large round ears. Its tail is a single straight sharp zigzag rising to one high point, like a line on a chart rather than an animal's tail. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+SUSPEND  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small round balloon-like creature, almost a perfect sphere, standing on two tiny feet, three-quarter view. Two large round eyes, both half-closed and heavy-lidded. A single curl of hair on top of its head. Soft, inflated and slightly drowsy-looking. Two very small stubby arms. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+
+======================================================================
+THE BACK FOLLOW-UP
+======================================================================
+
+Ask this straight after the front, in the same conversation:
+
+  Now draw the exact same creature seen directly from behind, facing away
+  from the viewer. Same style, same outline weight, same four flat tones,
+  same plain pure-white background, no ground shadow. Keep it simpler and
+  chunkier than the front - this one will be seen very small. What should
+  read clearly from behind is [X].
+
+and [X] per creature:
+
+  NIBBLE     the four square plates down its back, the ears, and the thin tail
+  PACKET     the folded wings and rounded back - the envelope is hidden in front of it
+  PING       the swept-back wings, the single upright crest feather, and the tail
+  CRAWLER    the eight body segments and the thin thread trailing away behind it
+  PENDING    the smooth blank back of the capsule, unmarked
+  SCRAPER    the eight segments and the bundle it is dragging - the hook is hidden in front
+  BUFFER     the bulging strained shell and the hairline split running down it
+  SPIKE      the two large ears and the zigzag tail, which is the whole silhouette
+  SUSPEND    the round back, the two tiny feet, and the single curl of hair on top
+
+Two notes.
+
+SPIKE's zigzag tail is the whole silhouette - if the generator softens it
+into a curve, say so and ask again. A curve is not a spike.
+
+PENDING and BUFFER are the same object twice, one intact and one strained.
+Generate PENDING first and attach it when asking for BUFFER, so the shell
+matches and only the bulge differs.
