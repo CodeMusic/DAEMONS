@@ -1,0 +1,118 @@
+GEMINI PROMPTS - the three starter lines
+=========================================
+
+Paste one at a time. Ask for a large flat image, never for pixel art.
+Save fronts to gfx/front/<name>.png and backs to gfx/back/<name>-back.png
+
+----------------------------------------------------------------------
+ROVERCUB  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small four-legged robot, three-quarter view from the side, standing, head turned toward the viewer. It is a bare exposed chassis: visible servo blocks at the shoulders and hips, thin limbs, and no fur or covering of any kind. Two small round sensor lenses for eyes. It should look compact enough to pick up and carry. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+ROVERSEER  (front, becomes 48x48)
+----------------------------------------------------------------------
+
+A four-legged robot, three-quarter view from the side, standing heavily, head turned toward the viewer. Larger and boxier than a small robot and clearly not portable: flat panelled sides, a row of horizontal vent slots along the body, thick planted legs, and a small dish antenna on top of its head. Still bare metal with no fur. It should look like it does not move often. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+ROVERBYTE  (front, becomes 56x56)
+----------------------------------------------------------------------
+
+A four-legged robot dog covered in soft white fur, three-quarter view from the side, standing, head turned toward the viewer. The machine shows through the fur at the shoulders and hips. Its face has two large round sensor lenses side by side for eyes, a small square camera module for a nose, and a simple stitched curved smile. Two triangular ears. It should read as warm and animal, not as equipment. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+LABL  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+A small creature made of paper and card, standing upright, three-quarter view, facing slightly left. Its body is mostly a single luggage tag: a rounded rectangular card with a punched hole at the top and a short string through it. One line of ruled writing across the card, too small to read. Two simple round eyes and no mouth. Small stubby arms and legs. It should look light and flimsy. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+RUBRIC  (front, becomes 48x48)
+----------------------------------------------------------------------
+
+A creature made of card, standing upright on short legs, three-quarter view, facing slightly left. Its whole front face is a ruled grid: a table of empty boxes divided by hard straight lines. Stiffer and squarer than a flimsy tag. Two simple round eyes near the top and no mouth. The grid should be the most readable thing about it. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CANON  (front, becomes 56x56)
+----------------------------------------------------------------------
+
+A heavy closed book standing upright on two short stubby legs, three-quarter view, facing slightly left. Thick with many pages, a solid dark spine, and a visible metal clasp holding it shut across the front edge. Two simple round eyes on the cover and no mouth. Broad, squat and immovable. It should look like it settles arguments. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CLUSTR  (front, becomes 40x40)
+----------------------------------------------------------------------
+
+An abstract floating shape made of about twenty round dots of varying size, some solid black and some light grey, drifting close together with no order to them. Roughly ball-shaped overall, but clearly a loose scatter rather than a solid object. No face, no eyes, no limbs. Use large clear dots rather than fine specks. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+LOCUS  (front, becomes 48x48)
+----------------------------------------------------------------------
+
+An abstract floating shape: one bold unbroken curved line forming a closed loop, with about fifteen round dots sitting on the line like beads on a wire. The line is thick and clearly drawn; the dots are large and evenly placed along it. No face, no eyes, no limbs. Order has appeared where before there was a scatter. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+MANIFOLD  (front, becomes 56x56)
+----------------------------------------------------------------------
+
+An abstract floating shape: a single sheet bent into a smooth wave or saddle curve, seen at an angle, like a piece of stiff paper folded once and warped. About fifteen round dots are embedded in its surface and follow its curve. The sheet is the subject and the dots merely lie on it. No face, no eyes, no limbs. It should be hard to say what it is. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+
+======================================================================
+BACKS - all nine, becomes 32x32
+======================================================================
+
+----------------------------------------------------------------------
+ROVERCUB  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the bare chassis, the thin limbs, the small dish-less head. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+ROVERSEER  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the panelled boxy body, the vent slots, the dish antenna on top of the head. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+ROVERBYTE  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the white fur, the two triangular ears, and the machine showing at the shoulders and hips. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+LABL  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the tag hanging from its string, seen from behind. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+RUBRIC  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the flat back of the card, blank, with the grid lines faintly showing through. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+CANON  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the solid dark spine of the book, which is the whole silhouette. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+CLUSTR  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the same loose scatter of dots - a scatter looks the same from behind. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+LOCUS  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the same looped line and its beads, seen from the other side. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
+
+----------------------------------------------------------------------
+MANIFOLD  (back, becomes 32x32)
+----------------------------------------------------------------------
+
+The same creature seen directly from behind, facing away from the viewer, in the same style. What you see is the same folded sheet, seen from behind, its curve reversed. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin. Keep it simple and chunky - this will be seen very small.
