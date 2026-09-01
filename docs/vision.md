@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v10.9**
+**A `pokered` total conversion — the living design bible, v11.0**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 

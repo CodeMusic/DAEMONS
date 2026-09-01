@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### v11.0 — CHANCE and INTENT
+
+*Caught in review: the legendaries' Index categories read `ACCIDENT` / `DELIBERATE`, and both halves were wrong.*
+
+- **Mismatched** — one a noun, one an adjective, so the pair never scanned as a set
+- ***And `ACCIDENT` mis-framed the event.*** ARTSAI's was **wondrous**; Crystal came back to tell them what she had seen. **Accident frames it as damage** — the institution's reading, not the truth. There is an argument for printing the institution's reading deliberately, since flattening is what the Index does — **but a flattening only works if the player can see it is one**, and at one word in a taxonomy slot they cannot
+- **`CHANCE` / `INTENT`.** Both abstract nouns, exact opposites, **neither implying damage**. `INTENT` is the bible's own word for *a comprehension that wakes with an intention*, and **a chance is also an opportunity**
+- *The field was never the problem.* Vanilla puts **`NEW SPECIE`** and **`GENETIC`** in exactly these two slots — **origin-as-category is already the convention for the legendary pair**
+
 ### The starters are named — all nine
 
 - **`LABL → RUBRIC → CANON`** and **`CLUSTR → LOCUS → MANIFOLD`**, joining the ROVER line. **No vanilla starter name remains in the cartridge**
