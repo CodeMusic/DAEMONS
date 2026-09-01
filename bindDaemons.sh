@@ -68,5 +68,19 @@ if [[ -z "$EMU" ]]; then
   exit 1
 fi
 
+# macOS `open` against an already-running emulator holding this exact path
+# just focuses the window -- it does not reload the file. So a rebuilt ROM
+# silently does nothing and you sit there listening to the old one, which is
+# exactly what happened with Route 1. Quit it first; SameBoy flushes SRAM on
+# a graceful quit, so nothing is lost.
+if pgrep -x "$EMU" >/dev/null 2>&1; then
+  echo "  ${EMU} is already running -- quitting it so the new ROM actually loads"
+  osascript -e "quit app \"$EMU\"" >/dev/null 2>&1 || true
+  for _ in 1 2 3 4 5 6 7 8 9 10; do
+    pgrep -x "$EMU" >/dev/null 2>&1 || break
+    /bin/sleep 0.3
+  done
+fi
+
 echo "binding ${TARGET} → ${EMU}"
 open -a "$EMU" "engine/$ROM"
