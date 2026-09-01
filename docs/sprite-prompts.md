@@ -471,6 +471,35 @@ physically heavy.**
 - **LOCUS** (48) — > The same dots, but now **strung along a single clear curved line** that loops through all of them — a closed ring or arc. **The line is bold and unbroken**; the dots sit on it like beads. Order has appeared.
 - **MANIFOLD** (56) — > A **folded sheet**, like a piece of paper bent into a smooth wave or saddle, floating. **The dots are embedded in its surface**, following its curve. The sheet is the subject; the dots merely lie on it. **It should be hard to say what it is.**
 
+## What each one needed — measured 2026-08-31
+
+**`--cover` is not one number. Pick it from the art's own ink.**
+
+| Sprite | True black | cover |
+|---|---|---|
+| LABL front / back | 3.0% / 2.9% | **0.90** |
+| RUBRIC front / back | 7.0% / 4.7% | 0.60 / 0.75 |
+| CANON front / back | 10.2% / 4.7% | 0.50 / 0.75 |
+| **CLUSTR front / back** | **13.8%** | **none — see below** |
+| LOCUS front / back | 5.6% | 0.75 |
+| MANIFOLD front / back | 8.4% / 7.3% | 0.60 |
+
+**Thin art wants a *higher* bar, not a lower one.** Less ink means the
+darkest-wins pass fires on cells the line merely grazes, and raising the bar
+stops the outline eating the midtones. ROVERCUB's back taught this: 3.4% black
+at cover 0.6 gave 182/53/94, and 0.9 gave 130/105/94.
+
+***And art that is made of ink wants no outline pass at all.*** CLUSTR is a
+field of black dots — **the dots are the subject, not an outline** — so the pass
+blackened everything it touched: **level 1 was used five times on the front and
+zero times on the back**, a four-tone sprite reduced to three. **`--cover=1.01`
+disables the pass**, and the tone-thirds spread alone gives **340/345/329**.
+*When the art has no line work to protect, protecting it is the bug.*
+
+*One accepted compromise.* MANIFOLD's ink box is **1254×612** — genuinely 2:1 —
+so squaring it centres a wide band with white above and below. **That is honest
+for a folded sheet** and it simply will not fill the frame.
+
 ## The check, before converting any of these
 
 **Under about 2% true black will not convert.** S.T.A.R.R.'s first front had 1.0%
