@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.2**
+**A `pokered` total conversion — the living design bible, v11.3**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2409,6 +2409,33 @@ So **The Bleed** — Route 1, Blanche → Callow — **is the road where the mis
 - Route signage system (number plus local name)
 
 If that is fun, the remaining daemons are labor. If it is not, you learned it for the price of twelve sprites.
+
+### 8.1a The nine wild daemons — built 2026-08-31
+
+**The starters are paradigms. These are substrate.** The player walks through grass full of the primitives a system is made of, **carrying one way of learning** — which teaches without repeating 8.2's lesson.
+
+| Vanilla | Ours | Type | Pays twice |
+|---|---|---|---|
+| RATTATA → RATICATE | **NIBBLE → OVERFLOW** | CONTENT | four bits, and what a rat does; then four bits past their bounds |
+| PIDGEY → PIDGEOTTO → PIDGEOT | **PACKET → RELAY → BROADCAST** | CONTENT/VECTOR | **content that moves, which is the typing** |
+| SPEAROW → FEAROW | **PING → FLOOD** | CONTENT/VECTOR | one packet demanding a reply; then the attack |
+| CATERPIE → METAPOD → BUTTERFREE | **CRAWLER → PENDING → INDEXER** | SWARM | **crawl, queue, index — a real pipeline** |
+| WEEDLE → KAKUNA → BEEDRILL | **SCRAPER → BUFFER → INJECTOR** | SWARM/**CORRUPT** | the same shape, gone wrong |
+| PIKACHU → RAICHU | **SPIKE → SURGE** | SIGNAL | a neuron firing; then one that never stops |
+
+#### The pair the set is built around
+
+***CRAWLER and SCRAPER.*** Two swarms, the same shape, met in the same forest. **One follows every link it finds. The other takes the same things by the same method, and nobody gave it permission.**
+
+**The type chart says which is which by making the second CORRUPT**, and nothing else has to. **That is 2.5's SWARM doing for data collection what the starters do for paradigms** — an argument delivered as a matchup.
+
+*And the lines evolve along processes rather than just getting bigger.* **CRAWLER → PENDING → INDEXER** is crawl, queue, index; *what it cannot file, it drops.* **SCRAPER → BUFFER → INJECTOR** is the identical pipeline with permission removed at every step.
+
+#### Two names were already better than the ones drafted here
+
+**JIGGLYPUFF and WIGGLYTUFF were already `SUSPEND` and `HIBERNATE`** from an earlier pass. The draft proposed `LULL → BLOCK`; **the existing pair wins.** They are the two real power states, they escalate correctly — suspend holds in memory, hibernate writes to disk — and **they rhyme with 4.20a, where a man was suspended by a machine.** 4.6's MOCK precedent again: **the capability was always out there in the grass.**
+
+*Kept, and the drafts discarded.* **Check before renaming.**
 
 ### 8.2 Starter trio — learning paradigms
 

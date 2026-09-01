@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The nine wild daemons
+
+- **The starters are paradigms; these are substrate** — the primitives a system is made of, walked through while carrying one way of learning
+- **NIBBLE → OVERFLOW**, **PACKET → RELAY → BROADCAST**, **PING → FLOOD**, **CRAWLER → PENDING → INDEXER**, **SCRAPER → BUFFER → INJECTOR**, **SPIKE → SURGE**. Fifteen species, with categories and entries
+- ***The pair the set is built around is CRAWLER and SCRAPER.*** Two swarms, the same shape, the same forest — **one follows every link it finds; the other takes the same things by the same method, and nobody gave it permission.** The chart says which is which by making the second CORRUPT, and nothing else has to
+- **The lines evolve along processes.** Crawl, queue, index — *what it cannot file, it drops.* The poisoned line is the identical pipeline with permission removed at every step
+- ***Two names were already better than the drafts.*** JIGGLYPUFF and WIGGLYTUFF were already **SUSPEND** and **HIBERNATE** — the two real power states, escalating correctly, **rhyming with the man a machine suspended.** `LULL → BLOCK` discarded. **Check before renaming**
+- **Zero vanilla wild names remain in the cartridge**, verified by decoding — including one hiding in another creature's Index entry, which the dialogue sweep did not cover
+
 ### Slate and The Bleed — 8.1's music
 
 - **Slate is achromatic**, so 7.4 gives it value rather than hue. ***Blanche is C pentatonic — no F, no B — and Slate is that scale with both gaps filled.*** **The first town has holes in it and the first benchmark closes them:** Representation as a key signature, and CAIRN's creed in the scale he stands in
