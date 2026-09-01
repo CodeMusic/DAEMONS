@@ -515,6 +515,18 @@ python3 tools/sprite.py --list         # every renamed daemon and the slot it oc
 
 **It also carries the per-daemon `--cover`** measured below. Without that it silently degraded ROVERCUB the first time it ran — 355/94/224 against a tuned 227/222/224, and a back that lost level 1 entirely.
 
+## JPEG art wants no outline pass
+
+**The nine wild daemons arrived as `.jpeg`.** `sprite.py` converts them via `sips` into a temp file, so the original art stays exactly as delivered — **but the format changes what the conversion should do.**
+
+***Lossy compression already blurs a hard outline into intermediate values.*** So the darkest-wins pass fires on the **compression halo** rather than the line, and blackens whatever it touches. **Six of the nine came out with no level 1 at all** — CRAWLER's front was 223 / **0** / 84, PENDING's 609 / **0** / 197.
+
+**Disabling the pass fixes it**, and the numbers are not close: CRAWLER goes to **104 / 101 / 102**, SPIKE from 533 / 15 / 246 to **267 / 263 / 264**.
+
+**Measured by sweeping cover and keeping the flattest ink distribution**, not guessed. The values are in `sprite.py`'s `COVER` table.
+
+*One exception worth knowing.* **SUSPEND stays lopsided at any setting** — 338 / 436 / 151 — and that is honest: a round white balloon has almost no midtones to find.
+
 ## The check, before converting any of these
 
 **Under about 2% true black will not convert.** S.T.A.R.R.'s first front had 1.0%

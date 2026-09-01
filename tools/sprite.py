@@ -16,7 +16,7 @@ data/pokemon/names.asm (internal index -> our name). It cannot go stale.
 
     python3 tools/sprite.py --list        every renamed daemon and its slot
 """
-import sys, os, re, subprocess
+import sys, os, re, subprocess, tempfile, glob as _glob
 
 # Per-daemon --cover, measured rather than guessed. Thin art wants a HIGHER
 # bar: less ink means the darkest-wins pass fires on cells the outline merely
@@ -39,6 +39,20 @@ COVER = {
     "SEEKMUSAI": 0.7,
     "CAREMUSAI": 0.7,
     "STARR":     (0.34, 0.7),
+    # The nine wild daemons arrived as JPEG, and lossy compression already
+    # blurs a hard outline into intermediate values -- so darkest-wins fires on
+    # the compression halo and blackens whatever it touches. Six of the nine
+    # want the pass disabled entirely. Measured by sweeping cover and keeping
+    # the flattest ink distribution, not guessed.
+    "NIBBLE":    (0.6, 0.34),
+    "PACKET":    0.6,
+    "PING":      1.01,
+    "CRAWLER":   1.01,
+    "PENDING":   (1.01, 0.6),
+    "SCRAPER":   (1.01, 0.6),
+    "BUFFER":    0.6,
+    "SPIKE":     1.01,
+    "SUSPEND":   0.34,
 }
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -110,18 +124,30 @@ def main():
     print("  %s -> %s  (front %sx%s, back %sx%s)" % (key, const, fs, fs, bs, bs))
     given = [a for a in sys.argv[2:] if a.startswith("--")]
     tuned = COVER.get(key)
+    def find(pattern):
+        # Generators hand back .jpeg as readily as .png. Take whatever is there.
+        hits = _glob.glob(os.path.join(ROOT, pattern))
+        return hits[0] if hits else None
     for which, (src, dst, sz) in enumerate(
-                        ((os.path.join(ROOT, "gfx/front/%s.png" % name.lower()),
+                        ((find("gfx/front/%s.*" % name.lower()),
                           os.path.join(ENG, f), fs),
-                         (os.path.join(ROOT, "gfx/back/%s-back.png" % name.lower()),
+                         (find("gfx/back/%s-back.*" % name.lower()),
                           os.path.join(ENG, b), bs))):
         extra = list(given)
         if tuned is not None and not any(a.startswith("--cover") for a in extra):
             c = tuned[which] if isinstance(tuned, tuple) else tuned
             extra.append("--cover=%.2f" % c)
-        if not os.path.exists(src):
-            print("     skipped, no %s" % os.path.relpath(src, ROOT))
+        if not src or not os.path.exists(src):
+            print("     skipped, no source")
             continue
+        if not src.lower().endswith(".png"):
+            # mksprite reads PNG only. Convert losslessly to a temp file rather
+            # than rewriting the source, so the original art stays as delivered.
+            tmp = os.path.join(tempfile.gettempdir(),
+                               os.path.basename(src).rsplit(".", 1)[0] + ".png")
+            subprocess.run(["sips", "-s", "format", "png", src, "--out", tmp],
+                           capture_output=True)
+            src = tmp
         r = subprocess.run([sys.executable, os.path.join(ROOT, "tools/mksprite.py"),
                             src, dst, str(sz)] + extra, capture_output=True, text=True)
         print("     " + (r.stdout.strip().splitlines() or ["failed: " + r.stderr.strip()])[-1].strip())
