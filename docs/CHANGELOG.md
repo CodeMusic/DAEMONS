@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The slice is built
+
+- **The eight evolutions are in** — OVERFLOW, RELAY, BROADCAST, FLOOD, INDEXER, INJECTOR, SURGE, HIBERNATE. **Thirty-two daemons now carry original front and back art**
+- **Covers swept per sprite again**, and the spread is wider than the wild batch — **0.34 through 1.01 across sixteen files** — which is why this is measured per sprite rather than set per format. All sixteen came back with three even ink levels
+- ***8.1's vertical slice is complete.*** Type chart, intro, route signage, CAIRN, Slate's theme and The Bleed's modulation, and every creature between Blanche and Slate named, drawn and filed
+- ***The next milestone is 8.6's: Benchmark 1 beaten on hardware.*** Not another section
+
 ### The nine wild daemons
 
 - **The starters are paradigms; these are substrate** — the primitives a system is made of, walked through while carrying one way of learning

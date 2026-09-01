@@ -53,6 +53,17 @@ COVER = {
     "BUFFER":    0.6,
     "SPIKE":     1.01,
     "SUSPEND":   0.34,
+    # The eight evolutions, swept the same way. All JPEG again, and the spread
+    # is wider than the wild batch -- 0.34 through 1.01 across sixteen files --
+    # which is why this is measured per sprite rather than set per format.
+    "BROADCAST":  (0.75, 0.60),
+    "FLOOD":      (1.01, 0.60),
+    "HIBERNATE":  (0.50, 0.34),
+    "INDEXER":    (1.01, 1.01),
+    "INJECTOR":   (0.60, 0.50),
+    "OVERFLOW":   (0.75, 0.75),
+    "RELAY":      (0.60, 0.60),
+    "SURGE":      (0.60, 0.50),
 }
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

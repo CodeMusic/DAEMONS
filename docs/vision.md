@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.3**
+**A `pokered` total conversion — the living design bible, v11.4**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2409,6 +2409,10 @@ So **The Bleed** — Route 1, Blanche → Callow — **is the road where the mis
 - Route signage system (number plus local name)
 
 If that is fun, the remaining daemons are labor. If it is not, you learned it for the price of twelve sprites.
+
+**The slice is built, 2026-08-31.** Type chart, intro, route signage, CAIRN at Benchmark 1, **Slate's theme and The Bleed's modulation** (7.14a), and **every creature the player meets between Blanche and Slate named, drawn and filed** (8.1a). **Thirty-two daemons now carry original front and back art** — the three starter lines, the six wild lines, the four MUSAI, ARTSAI and S.T.A.R.R.
+
+***The next milestone is the one 8.6 named: Benchmark 1 beaten on hardware.*** Not another section.
 
 ### 8.1a The nine wild daemons — built 2026-08-31
 
