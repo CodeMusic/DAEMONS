@@ -17,6 +17,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### Route 1's silence, and two sounds
+
+- ***Song ids are computed from header position*** and a 3-channel header eats three. AUDIO_1's table ended at **253**, so appending two songs put them at **256 and 259**; `db` truncated them and **Route 1 pointed at garbage**
+- ***The build had been saying so the whole time*** — `Value $103 is not 8-bit` — **and my build checks filtered warnings out.** 7.15 one layer down: measured, printed, and discarded unread
+- **Reusing headers costs zero ids and freed two.** The Bleed took `Music_Routes1` (Route 1 and Route 2 — The Bleed and Underpaint); Slate took `Music_MuseumGuy`, which **no map used at all**
+- **DAEDEX was a charmap accident** — `#` is `$54` = *DAE*, so `#DEX` rendered DAEDEX. Now `INDEX`, and the diploma had it too
+- **The binding sound inverts vanilla's fanfare** — same rhythm, descending, settling on a low held note. *A thing closing, not a prize won*
+- **And an unbound daemon has its own cue**, branched on `wIsInBattle` in three instructions. It reuses `SFX_BATTLE_16`, one of two spare headers, and is **noise-channel only** — *a process nobody owns arrives as static, not a melody.* **It rises and stops where the binding sound settles**
+
 ### The BIND verb, finally applied
 
 *Caught in play: the capture message still read **PACKET was caught!**. 1.5 settled BIND months ago and 9 had been tracking 57 stragglers.*

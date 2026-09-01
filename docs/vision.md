@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.5**
+**A `pokered` total conversion — the living design bible, v11.6**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2378,6 +2378,31 @@ So **The Bleed** — Route 1, Blanche → Callow — **is the road where the mis
 *The player walks it before they have heard Callow*, so the arrival is a resolution to something they have not been told about. Nothing says so.
 
 **Cost: 156 bytes for both.** Each needed a new constant and one repointed line in `songs.asm`, because Slate shared `Cities1` with 37 maps and Route 1 shared `Routes1` — **the edit 7.15 describes, and it is an edit rather than a budget.**
+
+### 7.14b Two sounds, and the id space that nearly stopped them
+
+**Caught in play 2026-09-01: Route 1 was silent.** The cause was not the track.
+
+***Song ids are computed from header position*** — `(Music_X - SFX_Headers_1) / 3` — **and a three-channel header eats three ids.** AUDIO_1's table already ended at **253**, so appending Slate City and The Bleed put them at **256 and 259**. `songs.asm` stores the id with `db`, which truncated them, and **Route 1 pointed at whatever lived at the low byte.**
+
+***The build had been saying so the whole time*** — `Value $103 is not 8-bit, at data/maps/songs.asm(15)` — **and the build checks filtered warnings out.** 7.15's lesson repeating itself one layer down: *a number nobody measured is not a constraint, it is a rumour* — **except this one was measured, printed, and discarded unread.**
+
+**Reusing existing headers costs zero ids and freed two**, because both candidates were four channels and ours are three:
+
+- **The Bleed took `Music_Routes1`** — Route 1 and Route 2, *The Bleed and Underpaint*, the two roads out of the first towns. **One modulation across both is honest for the slice**
+- **Slate City took `Music_MuseumGuy`**, which **no map used at all**. Its two scripted references now play Slate's own theme during the museum scene, which happens in Slate
+
+#### BOUND, and UNBOUND
+
+**Vanilla's capture jingle rises** — E F# G# B C# D# to a held E — **congratulating the player for imposing a contract** (1.5). **Ours keeps the rhythm and inverts the contour: it descends and settles on a low held note.** A thing closing, not a prize won.
+
+**And an unbound daemon now has its own cue.** Vanilla plays one sound for wild daemons and trainers alike; `PrintBeginningBattleText` already branches on `wIsInBattle`, so the cue does too — **three instructions.**
+
+*It reuses `SFX_BATTLE_16`, one of exactly two spare SFX headers in the cartridge*, because **adding one costs ids and ids are what silenced Route 1.** It is **noise-channel only**, and that is the right instrument rather than a compromise: **a process nobody owns arrives as a burst of static, not a melody.**
+
+***It rises and stops. The binding sound descends and settles.*** A question and its answer, and **only one of them resolves.** Nothing says so.
+
+*Both are written blind and want tuning by ear.*
 
 ### 7.15 The space audit — a claim I repeated for days and never measured
 
