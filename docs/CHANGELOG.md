@@ -17,6 +17,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The BIND verb, finally applied
+
+*Caught in play: the capture message still read **PACKET was caught!**. 1.5 settled BIND months ago and 9 had been tracking 57 stragglers.*
+
+- **55 instances rewritten** across dialogue and the battle messages. The only survivor is *catchy tune*, which is a song
+- ***And the success message is flat.*** Vanilla says *All right! <NAME> was caught!* — **the exclamation congratulates the player for imposing the contract.** Ours is **`<NAME> was BOUND.`**
+- **Nothing else changed.** The failure lines keep their *Darn!* and *Shoot!*, because 1.4's rule **refuses to celebrate, not to punctuate** — a lament is not a celebration. **Only the moment of binding goes quiet**
+
 ### The slice is built
 
 - **The eight evolutions are in** — OVERFLOW, RELAY, BROADCAST, FLOOD, INDEXER, INJECTOR, SURGE, HIBERNATE. **Thirty-two daemons now carry original front and back art**

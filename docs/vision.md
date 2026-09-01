@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.4**
+**A `pokered` total conversion — the living design bible, v11.5**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -324,6 +324,12 @@ That is 1.3 delivered at the player's first sight of the object, in nine words, 
 **The test it had to pass was not "is it nicer." It was "is it softer."** The sharpest thing this game does is implicate the player: you fill an Index that cannot hold what matters, and you box creatures whose entire significance is that they are not inventory — which is Scorn's exact error (4.4). A euphemism here would stop the game accusing the player and start it flattering them.
 
 BIND is not softer. **Binding a spirit is a darker act than catching an animal.** Catching is sport; binding is a contract you imposed. The complicity survives and a second reading arrives with it.
+
+**And the success message is flat, 2026-08-31.** Vanilla says *All right! <NAME> was caught!* — **the exclamation congratulates the player for imposing the contract.** Ours reads:
+
+> `<NAME>` **was BOUND.**
+
+*Nothing else changed.* The failure lines keep their *Darn!* and their *Shoot!*, because 1.4's rule **refuses to celebrate, not to punctuate** — a lament is not a celebration. **Only the moment of binding goes quiet.**
 
 *Considered and rejected:* **ATTACH** is the most technically exact — you attach to a process that is already running, which is what a daemon *is* — and it carries *attachment* in the psychological sense. Cut for being too gentle: attaching is observational and does not implicate you. **Hold it in reserve if playtesters find BIND too dark.** **REGISTER** would rhyme with the Index but conflates the box with the Index, and those two artifacts must stay separate — one measures, the other holds. **CLAIM** is acquisitive with no second reading, which is strictly worse than CATCH.
 
@@ -3002,7 +3008,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | Map layouts | `maps/*.blk`, `data/maps/headers/`, `data/maps/objects/` | medium |
 | Route signage, number plus local name | `text/Route*.asm` | **done 2026-08-30** |
 | Dialogue, signs, witnesses | `text/` | bulk — **witnesses done** (4.8), the rest ongoing |
-| BIND verb and the flat message | `text/` — catch strings; also `data/` menu labels | trivial |
+| BIND verb and the flat message | `text/` — catch strings; also `data/` menu labels | **done 2026-08-31** — 55 instances, and the success message flattened (1.5) |
 | Greyscale ramp everywhere but Umbra | palette data; one map differs | medium, specialist |
 | Two-edition build | `Makefile` — rename `_RED`/`_BLUE` to `_CONTENT`/`_CONTEXT` | **trivial, do it first** |
 | Edition-exclusive encounters | `data/wild/maps/*.asm`, `IF DEF(_CONTENT)` blocks | trivial |
@@ -3212,7 +3218,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
 - The supervised starter slot is **yours to pick** (8.2)
 - **Callow and The Bleed share their music** with other maps, so 8.1's second theme needs new `songs.asm` entries first (7.3)
-- **57 `catch` / `caught` instances remain in dialogue** — 1.5's BIND verb was only ever applied to the battle messages (1.5)
+- ~~57 `catch` / `caught` instances remain in dialogue~~ **Done 2026-08-31**, caught in play: the capture message still read *PACKET was caught!*. **55 instances rewritten.** The only survivor is *catchy tune*, which is a song
 - **MOON STONE still wants a name** — tied to a place rather than a paradigm, so it belongs with the town pass (8.2)
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
 - Starter daemon names are placeholders and need a pass.
