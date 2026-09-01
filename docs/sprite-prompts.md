@@ -401,3 +401,88 @@ t = len(range(0,h,3))*len(range(0,w,3))
 print("true black: %.1f%%" % (100*n/t))
 EOF
 ```
+
+---
+
+# The three starter lines
+
+Eighteen sprites. **Fronts run 40 → 48 → 56; every back is 32.**
+
+## One visual family per paradigm
+
+**The player should be able to tell the paradigm at a glance, before reading a
+word.** So the three lines are three kinds of thing:
+
+| Line | Family | Why |
+|---|---|---|
+| **ROVER** (reinforcement) | **machines that become an animal** | The arc is software → infrastructure → body |
+| **LABL** (supervised) | **documents** | The game is already made of them — the Index, the minutes, the requisition, the engraving |
+| **CLUSTR** (unsupervised) | **geometry** | VECTOR/LATENT is flying and ghost: abstract, airborne, unnameable |
+
+## ROVER — and the fur arrives last
+
+**Reference: a white furry robot dog**, ultrasonic sensors for eyes, a camera
+for a nose, a stitched smile, servos and boards showing through.
+
+***That is the final form only.*** 8.2's arc is software → infrastructure →
+body, so **the first two stages are machines and the third is an animal.**
+**The fur is the body** — and it arrives on the same stage that gains **SIGNAL**,
+the perception type. *A surface you feel through.*
+
+> **Shared stem.** A four-legged robot, side-on three-quarter view, standing,
+> head turned toward the viewer. Flat illustration with a **hard pure black
+> (#000000) outline, 6–8 pixels thick, around the whole creature**. Inside,
+> exactly four flat tones — **pure black, dark grey, light grey, pure white** —
+> hard edges, no gradients, no glow, no colour. Plain pure-white background, no
+> ground shadow. Full body with a small even margin.
+
+- **ROVERCUB** (40) — > Small and bare: an **exposed chassis with visible servo blocks and joints, no covering of any kind.** Two small round sensor lenses for eyes. Compact enough to carry.
+- **ROVERSEER** (48) — > Larger, boxier and **clearly not portable**: flat panelled sides, a stack of horizontal slots along the body, and **a small dish or antenna on the head.** Still bare metal, no fur. Standing but heavy, as if it does not move often.
+- **ROVERBYTE** (56) — > **Covered in white fur**, soft and slightly shaggy, with the machine showing through at the shoulders and hips. **Two large round sensor lenses side by side for eyes, a small square camera module for a nose, and a simple stitched curved smile.** Two triangular ears. Warm and animal, where the earlier stages were equipment.
+
+## LABL → RUBRIC → CANON — documents
+
+**CONTENT → CONTENT/LOGIC.** The final form should read **authoritative and
+physically heavy.**
+
+> **Shared stem.** A small creature made of paper and card, upright, three-quarter
+> view, facing slightly left. It has two simple round eyes and no mouth. Flat
+> illustration with a **hard pure black outline, 6–8 pixels thick**. Exactly four
+> flat tones — **pure black, dark grey, light grey, pure white** — hard edges, no
+> gradients, no colour. Plain pure-white background, no ground shadow.
+
+- **LABL** (40) — > Mostly **a single luggage tag**: a rounded rectangular card with a punched hole and a short string through it, with small stubby limbs. **One line of ruled writing across it**, too small to read. Light and flimsy.
+- **RUBRIC** (48) — > A **ruled grid**: a card whose whole face is divided into a table of empty boxes by hard straight lines. Stiffer and squarer than the first stage, standing on short legs. **The grid is the most readable thing about it.**
+- **CANON** (56) — > A **heavy bound volume**, thick and closed, standing upright on short legs. **A visible clasp or seal holding it shut**, and a solid dark spine. Broad and immovable. It should look like it settles arguments.
+
+## CLUSTR → LOCUS → MANIFOLD — geometry
+
+**VECTOR → VECTOR/LATENT.** Airborne, abstract, and the last one should be
+**hard to name**, which is its Index entry's whole point.
+
+> **Shared stem.** An abstract floating form made of small dots and thin lines,
+> hovering, seen straight on. **No face, no limbs, no eyes.** Flat illustration
+> with a **hard pure black outline, 6–8 pixels thick, around every solid part**.
+> Exactly four flat tones — **pure black, dark grey, light grey, pure white** —
+> hard edges, no gradients, no glow, no colour. Plain pure-white background, no
+> ground shadow.
+
+- **CLUSTR** (40) — > A **loose cloud of round dots**, some dark and some light, drifting close together with no order to them. Roughly ball-shaped overall but clearly a scatter, not a solid.
+- **LOCUS** (48) — > The same dots, but now **strung along a single clear curved line** that loops through all of them — a closed ring or arc. **The line is bold and unbroken**; the dots sit on it like beads. Order has appeared.
+- **MANIFOLD** (56) — > A **folded sheet**, like a piece of paper bent into a smooth wave or saddle, floating. **The dots are embedded in its surface**, following its curve. The sheet is the subject; the dots merely lie on it. **It should be hard to say what it is.**
+
+## The check, before converting any of these
+
+**Under about 2% true black will not convert.** S.T.A.R.R.'s first front had 1.0%
+and produced a slab with no edge:
+
+```sh
+python3 - <<'EOF'
+import sys; sys.path.insert(0,'tools')
+from gbimg import read_png
+w,h,lum = read_png('gfx/front/rovercub.png')
+n = sum(1 for y in range(0,h,3) for x in range(0,w,3) if lum(x,y) < 64)
+t = len(range(0,h,3))*len(range(0,w,3))
+print("true black: %.1f%%" % (100*n/t))
+EOF
+```
