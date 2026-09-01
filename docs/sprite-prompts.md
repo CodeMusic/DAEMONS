@@ -500,6 +500,21 @@ disables the pass**, and the tone-thirds spread alone gives **340/345/329**.
 so squaring it centres a wide band with white above and below. **That is honest
 for a folded sheet** and it simply will not fill the frame.
 
+## Convert by our name, not theirs
+
+**`tools/sprite.py` resolves the slot itself.** You never type a vanilla filename:
+
+```sh
+python3 tools/sprite.py crawler        # gfx/front/crawler.png -> caterpie, at the right size
+python3 tools/sprite.py --list         # every renamed daemon and the slot it occupies
+```
+
+**The engine keeps pret's filenames deliberately** — they are identifiers, and renaming them would make `git pull upstream master` conflict on every gfx rule forever. **So the mapping is derived rather than written down**, from `pokemon_constants.asm` and `names.asm`. It cannot go stale.
+
+*Two traps it had to be taught, and both were caught by checking a known answer.* **`const_def` starts at 0 and the first entry is `NO_MON`**, so RHYDON is 1. **And the file uses `const_skip` for the MissingNo slots**, which still occupy an index and still have a `dname` — counting only the named consts maps every daemon past the first gap to a neighbour's sprite. *Which is exactly what the tool exists to prevent, so it did it first.*
+
+**It also carries the per-daemon `--cover`** measured below. Without that it silently degraded ROVERCUB the first time it ran — 355/94/224 against a tuned 227/222/224, and a back that lost level 1 entirely.
+
 ## The check, before converting any of these
 
 **Under about 2% true black will not convert.** S.T.A.R.R.'s first front had 1.0%
