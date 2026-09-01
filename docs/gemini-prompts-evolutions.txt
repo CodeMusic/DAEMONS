@@ -1,0 +1,94 @@
+GEMINI PROMPTS - the eight evolutions
+======================================================================
+
+These complete the six wild lines. Sizes differ - each block says which.
+
+IMPORTANT: attach the earlier stage's image with each of these. Every one is
+a grown form of something already drawn, and a fresh conversation invents an
+unrelated creature.
+
+Save to gfx/front/<name>.png and gfx/back/<name>-back.png, lowercase.
+
+----------------------------------------------------------------------
+OVERFLOW  (front, becomes 48x48)   -- attach NIBBLE
+----------------------------------------------------------------------
+
+A larger, heavier rodent, three-quarter view from the side, standing squarely with its head turned toward the viewer. It is the grown form of a smaller rodent that had four square plates along its back - now there are far too many, crowded and overlapping, spilling past its shoulders and down its flanks in a jumble. Big front teeth, small round ears, a thick tail. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+RELAY  (front, becomes 48x48)   -- attach PACKET
+----------------------------------------------------------------------
+
+A medium bird standing upright, three-quarter view, head turned toward the viewer. It is the grown form of a small bird that carried one sealed envelope; this one has three, stacked and held against its chest by one wing. Longer wings than a small bird, a slight crest, thin strong legs. Poised as if about to hand them on. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+BROADCAST  (front, becomes 56x56)   -- attach RELAY
+----------------------------------------------------------------------
+
+A large bird with its wings spread wide and open, seen from the front and slightly to one side, head raised. It carries nothing at all - its wings are empty and thrown out to both sides. A long swept crest trails back from its head. Broad tail feathers fanned. It should look like it is sending in every direction at once. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+FLOOD  (front, becomes 56x56)   -- attach PING
+----------------------------------------------------------------------
+
+A large sharp bird leaning forward aggressively, three-quarter view, wings half-raised. Its beak is long, straight and needle-thin, much longer than its head. A ragged crest, narrow swept-back wings, and long grasping talons. It should look like the grown form of something that asked one question and is now asking many. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+INDEXER  (front, becomes 56x56)   -- attach CRAWLER
+----------------------------------------------------------------------
+
+A large winged insect creature seen from the front and slightly to one side, standing with its wings held out flat and open. Its four broad wings are each divided into a neat grid of small rectangular panels, like a filled-in table. A compact body, two large round eyes, thin legs. Ordered and precise, where a caterpillar was not. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+INJECTOR  (front, becomes 56x56)   -- attach SCRAPER
+----------------------------------------------------------------------
+
+A large winged insect creature, three-quarter view, hovering low with its wings a blur of two flat shapes. Its two forelimbs end in long straight hollow needles held forward and level. A narrow segmented body, two large round eyes, a sharp tail spike. Poised to push something in. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+SURGE  (front, becomes 56x56)   -- attach SPIKE
+----------------------------------------------------------------------
+
+A large round-cheeked rodent standing upright on its hind legs, three-quarter view, heavier and broader than a small one. Two large round ears. Its tail is a long unbroken zigzag that rises and falls repeatedly without ever settling, like a line on a chart that never returns to rest. Front paws held out and open. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+HIBERNATE  (front, becomes 48x48)   -- attach SUSPEND
+----------------------------------------------------------------------
+
+A large round balloon-like creature standing on two small feet, three-quarter view, much bigger and softer than a small one. Two large round eyes, both fully closed into gentle curved lines. Long droopy ears. A single curl of hair on top of its head. Two small stubby arms hanging at its sides. Deeply, heavily asleep. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+
+======================================================================
+THE BACK FOLLOW-UP
+======================================================================
+
+Ask straight after the front, in the same conversation:
+
+  Now draw the exact same creature seen directly from behind, facing away
+  from the viewer. Same style, same outline weight, same four flat tones,
+  same plain pure-white background, no ground shadow. Keep it simpler and
+  chunkier than the front - this one will be seen very small. What should
+  read clearly from behind is [X].
+
+and [X] per creature:
+
+  OVERFLOW    the crowded overlapping plates spilling down its back, and the thick tail
+  RELAY       the folded longer wings and the crest - the envelopes are hidden in front
+  BROADCAST   the wings spread wide from behind, the fanned tail, and the swept crest
+  FLOOD       the half-raised swept-back wings, the ragged crest, and the talons
+  INDEXER     the four grid-panelled wings, which are the whole silhouette
+  INJECTOR    the blurred wings and the tail spike - the needles are hidden in front
+  SURGE       the two large ears and the long rising-and-falling zigzag tail
+  HIBERNATE   the round back, the long droopy ears, and the curl of hair on top
+
+Three notes.
+
+INDEXER and INJECTOR are the same body twice - one ordered, one armed. Draw
+INDEXER first and attach it when asking for INJECTOR, so only the forelimbs
+and the bearing differ. That contrast is the CORRUPT typing.
+
+SURGE's tail must never return to rest. SPIKE's rises to one point and stops;
+SURGE's keeps going. If it comes back as a single peak, ask again.
+
+BROADCAST carries nothing. PACKET held one envelope and RELAY holds three -
+the joke is that the last one has let go of all of them.
