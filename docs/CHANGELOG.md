@@ -17,6 +17,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### v11.1 — external review, taken and answered
+
+*Read against v11.0 by a second model. Its sharpest finding is about this document: **the bible is outrunning the slice.** Sixteen version bumps in one session and 8.1 is still not beaten on hardware. **Recorded as binding — the next milestone is that, not another section.***
+
+- **One constraint the review did not have: Gen 1 has no item descriptions.** Three proposals put their payload in one. **CC-7's moved into the item name**, which is stronger — the player *carries* the number rather than reading about it; **the RESOLVER's tag moved into Scorn's mouth**; the AXIOM/EMBEDDING/AFFECT documents are deferred until they have a speaker
+- **Built: `PACKAGE → CC-7`.** *Crystal Clear's order came in. A CC-7.* / *Ah. The module. Thank you.* **Thirty hours later the same part number is on a door at Quicksilver, with its reason field.** Replaces a custom USERBOX — the wrong gift twice, since a box is 1.3's argument and it copied vanilla's custom ball
+- **Built: Scorn at the bottom of the Verdigris basement**, settling 4.5 — the player likes him *before* the tower, so Halftone betrays their own judgment. He hands over the RESOLVER as inventory and dismisses its tag: ***QS-LAB, I think. Before my time.*** Then wishes them luck at the tower
+- **Built: his Benchmark 8 accounting**, split with something that cannot answer — ***It has never said otherwise***
+- **Built: the catching tutorial** — *you offer it a box. It goes in on its own, or it does not go in*
+- **Adopted, not built: Ty is not in the ROM at all.** The post-game triangle is new content rather than edits. Also pending: Penphin as **the architecture that cannot be weighted**, ORPHAN as a Quicksilver process nobody reaped, THE HOLDOUT and the TOKEN garble
+- **Declined: moving ROVER out of the starter slot.** The diagnosis was right — 2450 said individuals are not species and 8.2 then made one a starter — but the cure costs two surnames in a Gen 1 bestiary and discards an arc that pays. **2450 is amended instead: a starter may be a named individual**
+
 ### v11.0 — CHANCE and INTENT
 
 *Caught in review: the legendaries' Index categories read `ACCIDENT` / `DELIBERATE`, and both halves were wrong.*

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.0**
+**A `pokered` total conversion — the living design bible, v11.1**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2532,7 +2532,9 @@ Three further failures. Statuses are **inflicted by moves**, so THUNDER WAVE wou
 
 #### Two naming registers, and this is what separates them
 
-**MUSAI, ROVER, Penphin, BunnyArtsai and S.T.A.R.R. are named individuals from the SHC / iASHC universe.** They are proper nouns and they do not answer to the bestiary convention. **The register question above governs the other ~148**, which are species rather than characters.
+**MUSAI, ROVER, Penphin, BunnyArtsai and S.T.A.R.R. are named individuals from the SHC / iASHC universe.** They are proper nouns and they do not answer to the bestiary convention.
+
+*Amended 2026-08-31, under external review.* **A starter may be a named individual.** The rule as first written implied it could not, and 8.2 then put ROVER in a row with two abstractions — a real inconsistency, correctly caught. **The resolution is to amend the rule, not the ROM.** The mismatch was never the *giving* — a starter is given, and so is MUSAI — it was the **row of three**, and the cure proposed (a `BANDIT / MARKOV / BELLMAN` line) costs **two surnames in a Gen 1 bestiary** and discards an arc that already pays: *software → infrastructure → body*, with **SIGNAL arriving exactly where the body does.** **ROVER stays.** **The register question above governs the other ~148**, which are species rather than characters.
 
 That distinction is what makes both answerable: the generic daemons can take true names without the cast having to, and the cast can carry names from outside the game without setting a precedent 148 creatures then have to follow.
 
@@ -2884,6 +2886,48 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 - **The recomp path is a remix, not the canon.** If a 3D or voxel presentation colours everything, that is a different presentation of the same ROM and it is welcome. The canonical build stays grey.
 
 ---
+
+### 8.6 External review, 2026-08-31 — what was taken and what was not
+
+**Read against v11.0 by a second model.** Its sharpest finding is about this document:
+
+> **The bible is outrunning the slice.**
+
+**It is right, and it is recorded here as binding.** Sixteen version bumps in one session, and 8.1's slice is still not beaten on hardware — **the next milestone worth recording is that, not another section.**
+
+#### One constraint the review did not have
+
+***Gen 1 has no item descriptions.*** There is no descriptions file in `data/items/` — names, prices and use-handlers only. **Three of the review's proposals put their payload in one**, and had to move:
+
+| Proposal | Where it went instead |
+|---|---|
+| CC-7's *"A sealed module. Part no. CC-7."* | **Into the item name.** The bag reads `CC-7`, which is stronger — the player *carries* the number rather than reading about it |
+| The RESOLVER's asset tag | **Into Scorn's mouth**, as he hands it over and dismisses it |
+| AXIOM / EMBEDDING / AFFECT as documents | **Nowhere yet.** Deferred until it has a speaker |
+
+#### Built
+
+**PACKAGE → `CC-7`.** The clerk: *Crystal Clear's order came in. A CC-7. Will you run it out?* Her receipt: *Ah. The module. Thank you.* **Thirty hours later the player reads a requisition for the same part on a door at Quicksilver** (4.18), with its reason field. **The player has carried the crime-scene's part number since minute fifteen**, and nothing points at it. *This replaced a custom USERBOX — the wrong gift twice: a box is 1.3's argument, not a present, and it copied vanilla's custom ball.*
+
+**Scorn at the bottom of the Verdigris basement**, where Giovanni stood — cheerful, unbothered, interested in the measurement. **This settles 4.5's open question**: the player likes him *before* the tower, so Halftone becomes a betrayal of their own judgment. He hands over the RESOLVER as inventory equipment and dismisses its tag — *QS-LAB, I think. Before my time.* **He owns the instrument Crystal's lab built and has no idea what it was for.** Then he wishes the player luck at the tower.
+
+**Scorn's Benchmark 8 line is his one accounting, and he splits it with something that cannot answer:** *The machine chose what I weighted it to choose. We are both to blame, I suppose. It has never said otherwise.* **4.18's finding, made audible.**
+
+**The catching tutorial teaches 1.3 before the player owns a box:** *Watch. You weaken it, then you offer it a box. It goes in on its own, or it does not go in.*
+
+#### Adopted, not yet built
+
+**Ty is not in the ROM at all.** The bible places him at Quicksilver; no NPC has been written. **So his line and the post-game triangle are new content, not edits** — a larger job than the review implies.
+
+- **The post-game triangle** — S.T.A.R.R. → Ty → Crystal, three text blocks and three party checks. **And *S.T.A.R.R. inferred correctly and could not go*:** a machine that reads its own state cannot walk back into that building, so it went to the nearest place and stopped — **the becalmed city, the local minimum.** RECURSION collapses when interrupted; her leaving was the interruption
+- **Penphin cannot be weighted.** The Clarifier failed *because* one vote could be raised; **Penphin is two frames that must agree, so there is nothing to raise.** What she would build after learning what was done to the first one — and **HOLT is the failed Penphin**, two perspectives with no rule for choosing. Halves in Doldrum's waters, one per edition
+- **ORPHAN is a Quicksilver process nobody reaped** — the parent exited when the lab burned, and Corpus inherited it by succession
+- **THE HOLDOUT**, and the warden's speech garbled until the TOKEN is returned
+- **RESONANCE = RECURSION that does not collapse when interrupted** — one branch removed. Deferred until RECURSION exists, since it is a diff against it
+
+#### Declined
+
+**Moving ROVER out of the starter slot** — see 8.5's amendment. The diagnosis was right and the cure cost more than the flaw.
 
 ## 9. IMPLEMENTATION
 
