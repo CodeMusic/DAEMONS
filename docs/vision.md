@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.23**
+**A total conversion — the living design bible, v11.24**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3425,6 +3425,30 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 **`tools/gbastr.py`** is the GBA counterpart of `verify-sprites`: **Gen 3 encodes text with its own charmap exactly as Gen 1 does**, so grepping a `.gba` for ASCII finds nothing and proves nothing. *It caught two stale ROMs on its first run.*
 
 ***`TYPE_STEEL` and `TYPE_DARK` are left vanilla on purpose***, so a build that reaches them is **obviously unfinished rather than quietly wrong.** **They are the open decision above and they belong in this document before they belong in a header.**
+
+#### What is in the GBA ROMs, 2026-09-02
+
+| | |
+|---|---|
+| **The chart's vocabulary** | all fifteen, plus `HARDENED` and `OPAQUE` |
+| **33 daemon names** | every rename carried across |
+| **12 item names** | the box ladder, the four inputs, `INTERRUPT`, `RESOLVER`, `CC-7` |
+| **12 item descriptions** | ***new writing. Gen 1 had nowhere to put them*** |
+
+***`OPAQUE` and `HARDENED` were named by reading the vanilla chart rather than by inventing a concept and hoping the numbers agreed.***
+
+**DARK is immune to PSYCHIC**, strong against PSYCHIC and GHOST, cracked by FIGHTING and BUG. *In our vocabulary:* **a black box is immune to perspective-taking, beats perspective-taking and the unconscious, and is opened by reasoning and by collectives.** The chart already said it; we only named it.
+
+**STEEL resists nearly everything and falls to FIRE, FIGHTING and GROUND** — *ours: to randomness, to reasoning, and to whoever owns the ground.* **Which is what happens to safety hardening.**
+
+##### The descriptions are the first thing the port bought
+
+**`tools/port_names.py` carries a rename; `tools/port_item_text.py` writes something that never existed.** *Three lines, about 35 characters.* **Two rules held throughout:** *craft rule 1 — none of them explains the thesis, they describe an object and stop;* **craft rule 6 — the joke sits underneath and is never pointed at.** ***The boxes are a privilege ladder and not one description says so:***
+
+> **USERBOX** — *A host offered at user level. A steady daemon will run on it. A stubborn one will not.*
+> **ROOTBOX** — *A host with unrestricted rights. No daemon can decline to run on it. Nothing is refused root.*
+
+**1.x already made the catch rate literal** — *"an unbound daemon will not run on a box where it only has user rights"* — **and until now there was no surface on which to say it.**
 
 #### Built 2026-09-02
 

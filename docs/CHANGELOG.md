@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.24 — 2026-09-02
+
+### The port continues
+
+- **`HARDENED` and `OPAQUE`** name Gen 3's two extra types, both read off the vanilla chart rather than invented: DARK is immune to PSYCHIC, so a black box is immune to perspective-taking; STEEL falls to fire, fighting and ground, which is what happens to safety hardening
+- **33 daemon names and 12 item names ported** via `tools/port_names.py`, which learns `{vanilla -> ours}` by diffing our table against upstream's and substitutes on the vanilla string — no index arithmetic between two very different data layouts
+- **12 item descriptions written** (`tools/port_item_text.py`) — new writing, not a port, because Gen 1 stores none. The box ladder never explains itself
+- **Two encoding traps recorded** — the JSON stores `POKé` as `POK\u00e9`, and Gen 3 capitalises `OAK'S PARCEL` where Gen 1 wrote `OAK's`
+
+---
+
 ## v11.23 — 2026-09-02
 
 ### The port begins, and corrects §9.3 twice
