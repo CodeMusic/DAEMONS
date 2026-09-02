@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.17**
+**A `pokered` total conversion — the living design bible, v11.18**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2603,6 +2603,12 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 **So `--fill` maps the subject's own box onto the frame and scales the axes independently.** *It makes the figure stockier, and that is correct:* **every Game Boy sprite of a person is stockier than a person.**
 
 *The generous-hem sample was tried too and is worse* — **at 0.93 aspect `--fill` squeezes rather than stretches**, and the flare collapses into a grey triangle with a person balanced on it. **The one to generate is the plain standing pose.**
+
+##### A one-pixel hole on an outer edge is a bite
+
+***The outline pass blacks a cell only when the source line covers enough of it*** — `COVER`, default **0.34**. *A cell the line merely grazes stays grey.* **In the middle of a figure that is invisible. On the outer edge it is a hole**, and the eye does not read it as a hole: **it reads it as a piece missing from the coat.**
+
+**The shoulder had exactly one such pixel**, and it was spotted on a screenshot at native size before any of the tooling noticed it. ***`--cover=0.26` closed it.*** *Lower it until the edge is continuous and no further* — **0.22 closed every hole in the figure and cost 10% more black**, which thickens everything.
 
 **Two other non-square bugs fell out of the same pass:** the outline pass ran `range(size)` on both axes, so **it was only covering 40 of the 56 rows**, and the cropped-too-tight warning divided by `size²`. *Neither could show up while every target was square.*
 

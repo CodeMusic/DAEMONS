@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.18 — 2026-09-02
+
+- **The title figure's shoulder had a bite out of it** — one light pixel in the middle of the black shoulder line, a cell the outline pass grazed but did not cover. `--cover=0.26` closes it; 0.22 closes everything and costs 10% more black across the figure
+- **A one-pixel hole on an outer edge does not read as a hole**, it reads as a piece missing. Noted in the prompts file as a thing to check
+
+---
+
 ## v11.17 — 2026-09-02
 
 - **`--fill` added to `tools/mksprite.py`, and the title figure reconverted.** Keeping the subject's proportions filled 57% of the slot's width where vanilla's fills 100% — a standing person is 0.43 wide-to-tall and the slot is 0.714, so 43% of forty columns was going to margin. That margin was the missing detail
