@@ -43,9 +43,19 @@ def main():
     print("  ink box %dx%d at (%d,%d) in a %dx%d image" % (bw, bh, x0, y0, w, h))
 
     # Box it about the subject's centre at the target's aspect, then breathe.
+    #
+    # --fill instead maps the subject's own box onto the frame, scaling the two
+    # axes independently. Keeping the aspect is right for a daemon, whose art is
+    # drawn roughly square; it is wrong for a standing person dropped into a
+    # 40x56 slot. Vanilla's title figure fills 100% of the width. A 0.43-aspect
+    # figure kept honest fills 57%, and the 43% it gives away is resolution,
+    # not margin -- at forty columns there is none to spare.
     aspect = size_w / size_h
-    side_h = int(max(bh, bw / aspect) * 1.08)
-    side_w = int(round(side_h * aspect))
+    if "--fill" in sys.argv:
+        side_w, side_h = int(bw * 1.06), int(bh * 1.06)
+    else:
+        side_h = int(max(bh, bw / aspect) * 1.08)
+        side_w = int(round(side_h * aspect))
     cx, cy = (x0 + x1) // 2, (y0 + y1) // 2
     sx, sy = cx - side_w // 2, cy - side_h // 2
     side = side_h

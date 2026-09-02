@@ -15,7 +15,7 @@ downsample that works fine at 40-56px. See tools/genplayer.py.
 
   DONE   gfx/sprites/red.png            16x96   six walking frames
   DONE   gfx/sprites/red_bike.png       16x96   the same six, provisional
-  DONE   gfx/title/player.png           40x56   generated, converted --solid
+  DONE   gfx/title/player.png           40x56   generated, --solid --fill
   todo   gfx/overworld/red_fish_*.png   16x8    three fishing half-frames
 
 The fishing frames are hand-drawn too when their time comes, and are not
@@ -104,7 +104,7 @@ The hand-drawn 40x56 in the ROM is a placeholder and looks it. Replace it.
 Ask for THREE variations in one conversation so there is something to choose
 between, then convert the one that reads best:
 
-    python3 tools/mksprite.py <saved>.png engine/gfx/title/player.png 40x56
+    python3 tools/mksprite.py <saved>.png engine/gfx/title/player.png 40x56 --solid --fill
     make content && make context
 
 mksprite now takes WxH as well as a single number. A daemon slot is square and
@@ -123,9 +123,24 @@ Then, in the same conversation:
   background. One with the brim tilted so a little more of the face shows.
   One with the coat fuller and the hem wider at the ground.
 
+USE --fill, AND KNOW WHY
+
+A standing person is about 0.43 wide-to-tall. The slot is 0.714. Keeping the
+subject's honest proportions therefore fills 57% of the width and throws the
+other 43% away as margin -- and at forty columns that 43% is resolution, not
+whitespace. It is the difference between a readable strap and a grey smudge.
+
+Vanilla's title figure fills 100% of the width, because it was drawn for the
+slot. Ours is not, so --fill maps the subject's box onto the frame and scales
+the axes independently. It makes the figure stockier. That is correct: every
+Game Boy sprite of a person is stockier than a person.
+
 WHAT MAKES A GOOD ONE
 
 The hat brim and the hem are the two shapes that survive the shrink to 40x56.
-Pick the sample where those two are widest and cleanest. Faces do not survive
+Pick the sample where those two are widest and cleanest. Do NOT pick the one
+with the most dramatically flared coat -- a very wide hem (0.93 aspect) gets
+squeezed by --fill instead of stretched, and the flare turns into a grey
+triangle with a person balanced on top of it. Faces do not survive
 - do not choose on the face. If the unit in the hand turns into a grey blob at
 this size that is fine; the strap and the brim are what carry the character.

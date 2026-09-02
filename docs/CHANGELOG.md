@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.17 — 2026-09-02
+
+- **`--fill` added to `tools/mksprite.py`, and the title figure reconverted.** Keeping the subject's proportions filled 57% of the slot's width where vanilla's fills 100% — a standing person is 0.43 wide-to-tall and the slot is 0.714, so 43% of forty columns was going to margin. That margin was the missing detail
+- **The flared-coat sample was tested and rejected** — at 0.93 aspect `--fill` squeezes instead of stretching, and the coat becomes a grey triangle
+
+---
+
 ## v11.16 — 2026-09-02
 
 ### The title figure is generated art now

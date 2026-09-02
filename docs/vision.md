@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.16**
+**A `pokered` total conversion — the living design bible, v11.17**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2593,6 +2593,16 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 ***A daemon sprite is drawn to the background layer; the title figure is drawn as OAM.*** **On OAM the lightest level is transparent** — so **a white lab coat renders as a hole**, and the figure comes back as a ghost: hat, strap, boots, and nothing between them.
 
 **`--solid` is the fix, and where it floods is the whole trick.** *A flood run on the finished 40×56 finds nothing* — **at that size the outline is one pixel and full of gaps, so the background leaks straight into the coat.** ***Run it on the source instead***, where the outline is still six to eight pixels thick and closed, **and whatever paper the flood cannot reach is interior.** *In this figure that was 234 pixels that would have been see-through.*
+
+##### And the margin was eating the detail
+
+***The first conversion looked thin and empty, and the measurement says why.*** **Vanilla's title figure fills 100% of the width of its 40×56 slot** — *it was drawn for the slot.* **Ours filled 57%.**
+
+*A standing person is about **0.43** wide-to-tall; the slot is **0.714**.* **Keeping the subject's honest proportions letterboxes it**, and ***the 43% it gives away is resolution, not whitespace*** — at forty columns there is none to spare, and it is the difference between a readable strap and a grey smudge.
+
+**So `--fill` maps the subject's own box onto the frame and scales the axes independently.** *It makes the figure stockier, and that is correct:* **every Game Boy sprite of a person is stockier than a person.**
+
+*The generous-hem sample was tried too and is worse* — **at 0.93 aspect `--fill` squeezes rather than stretches**, and the flare collapses into a grey triangle with a person balanced on it. **The one to generate is the plain standing pose.**
 
 **Two other non-square bugs fell out of the same pass:** the outline pass ran `range(size)` on both axes, so **it was only covering 40 of the 56 rows**, and the cropped-too-tight warning divided by `size²`. *Neither could show up while every target was square.*
 
