@@ -11,7 +11,8 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 - **`©'11-'26 CODEMUSIC` / `SeeingSharp` / `Psychology/Code`** replace the three vanilla lines
 - **`tools/gencopyright.py`** — draws the strip from the vanilla copyright font, recovered pixel-for-pixel, plus twelve glyphs it never had (`S P h l g p y / 0 1 2 -`)
-- **31 tiles exactly** (`$60`–`$7E`). CODEMUSIC drops 9 → 7 tiles by losing its padding, which is what lets `Psychology/Code` fit
+- **31 tiles exactly** (`$60`–`$7E`), all in `copyright.png`. The copy now stops at a new `NintendoCopyrightLogoGraphicsEnd` label instead of spanning into `gamefreak_inc.2bpp` — that asset is printed as a fixed nine-tile run by the title screen and the splash too, and shortening it made the title read `CODEMUSIC AB`
+- **`r` re-cut** — it had been split one column late out of the vanilla `re` ligature and kept a sliver of the `e`
 - **The title-screen year is no longer blocked** — the 2026-08-29 entry deferred it for want of digit glyphs
 
 ### The intro face-off

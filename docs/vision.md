@@ -2464,7 +2464,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 | | Tiles | |
 |---|---|---|
-| `©'11-'26  CODEMUSIC` | 5 + 7 | the top line, where the platform holder's name used to be |
+| `©'11-'26  CODEMUSIC` | 7 | the top line, where the platform holder's name used to be |
 | `©'11-'26  SeeingSharp` | 8 | |
 | `©'11-'26  Psychology/Code` | 11 | |
 
@@ -2474,9 +2474,15 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 **The typeface is vanilla's copyright font, lifted pixel-for-pixel out of the strip it replaces** — 2px strokes, caps on rows 1–5, x-height on 2–5, descenders to row 6. It carried only what `Nintendo Creatures inc. ©'95.'96.'98` needed.
 
-**`S P h l g p y / 0 1 2 -` are drawn here**, in `tools/gencopyright.py`, in the same idiom. *This also retires the note in the 2026-08-29 entry that the title-screen year was deferred for want of digits* — **`1` and `2` now exist.**
+**`S P h l g p y / 0 1 2 -` are drawn here**, in `tools/gencopyright.py`, in the same idiom, **plus the caps `O D E M U I`** that CODEMUSIC needs. *This also retires the note in the 2026-08-29 entry that the title-screen year was deferred for want of digits* — **`1` and `2` now exist.**
 
-**CODEMUSIC keeps the bolder splash face** from `gensplash.py` and drops from 9 tiles to 7 by losing its padding. *It is the top line and should carry the weight;* the two tiles it gives back are what let `Psychology/Code` fit at all.
+#### The asset that is printed by three screens
+
+***A first version borrowed CODEMUSIC from `gfx/title/gamefreak_inc.2bpp`***, which sits immediately after `copyright.2bpp` so a single `CopyVideoData` spans both — that is why vanilla's copy length is `GameFreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics`. **Trimming that asset from 9 tiles to 7 bought the two tiles `Psychology/Code` needed.**
+
+**It also broke two other screens.** *The title screen and the shooting-star splash print the same file as a fixed nine-tile run* — so both printed seven correct tiles and then two of whatever VRAM happened to hold. **The title screen read `CODEMUSIC AB`.**
+
+***The lesson is the same one the string sweeps kept teaching:*** an asset's size is a contract with **every** caller, and this one had three. **So the copy stops at `NintendoCopyrightLogoGraphicsEnd` now** — a label this design adds — and the bank is self-contained. *CODEMUSIC is set here in the same face as the other two lines*, which it should have been from the start; **the bolder splash face still carries the title screen and the splash**, where it is the only thing on the line.
 
 #### On removing the vanilla lines
 

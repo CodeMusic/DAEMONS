@@ -111,7 +111,7 @@ def strip(text, w, h=8):
 JOBS = [("gfx/splash/falling_star.png",      grid(NOTE8)),
         ("gfx/splash/gamefreak_logo.png",    grid(MARK)),
         ("gfx/splash/gamefreak_presents.png", strip("CODEMUSIC PRESENTS", 104)),
-        ("gfx/title/gamefreak_inc.png",      strip("CODEMUSIC", 56))]
+        ("gfx/title/gamefreak_inc.png",      strip("CODEMUSIC", 72))]
 
 for path, g in JOBS:
     write_png(os.path.join(ENG, path), g, 2)
