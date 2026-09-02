@@ -527,6 +527,16 @@ python3 tools/sprite.py --list         # every renamed daemon and the slot it oc
 
 *One exception worth knowing.* **SUSPEND stays lopsided at any setting** — 338 / 436 / 151 — and that is honest: a round white balloon has almost no midtones to find.
 
+## Tone-thirds is for art that has tones
+
+**Spreading the ink across its own thirds is the right default** — it is what fixed the wild batch, where the alternative left level 1 used five times.
+
+***It is wrong for flat-shaded art, and the failure looks like a hardware fault.*** The intro frames are broad flat areas with a hard outline. Forcing equal thirds onto them **manufactures dither** — speckle scattered through every surface — and **at 56 pixels through a colour palette that is indistinguishable from VRAM corruption.**
+
+**It cost an entire debugging session.** The bank was verified, the tilemaps matched the ROM byte-for-byte, `vChars2` fit with 160 bytes spare, and every check passed **because nothing was broken.** The art was just noisy.
+
+**So: count the source's real tones before choosing.** Flat-shaded art wants **three levels** — outline, one fill, paper — and reads as a clean silhouette. Art with genuine tonal range wants four.
+
 ## The check, before converting any of these
 
 **Under about 2% true black will not convert.** S.T.A.R.R.'s first front had 1.0%
