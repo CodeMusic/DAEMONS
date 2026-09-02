@@ -5,7 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-## v11.18 — 2026-09-02
+## v11.20 — 2026-09-02
+
+### Craft rule 6 governs the art
+
+- **"Is it a dark game?" — no**, and §0.1 rule 6 says so: funny in its ordinary moments, serious in three or four. Scorn is *genuinely warm*, CAIRN *is right*, the silence is *not cruelty*. The design has no villain, and greyscale is a spending decision, not a mood
+- **The player prompts had been arguing the opposite.** They asked for "still, composed" and "confident" and never once for warmth, then asked for a wide brim — which shadows a face by construction. All three samples came back faceless
+- **A mandatory tone paragraph** on every character prompt: the face must be *one of the lightest areas of the figure, never the darkest*. At 40×56 a face is six pixels; if they are black, the character is a silhouette
+- **New title art needed** — the current one cannot be salvaged, the face is a void
+
+---
+
+## v11.18 – v11.19 — 2026-09-02
 
 - **The title figure's shoulder had a bite out of it** — one light pixel in the middle of the black shoulder line, a cell the outline pass grazed but did not cover. **A one-pixel hole on an outer edge does not read as a hole; it reads as a piece missing**
 - **`--close` added to `tools/mksprite.py`** — fills one-pixel gaps in the outline, but only where they touch the background. Lowering `--cover` also closes them and thickens every line in the figure to do it; `--close` used *less* black and left zero holes
