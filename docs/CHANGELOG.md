@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.16 — 2026-09-02
+
+### The title figure is generated art now
+
+- **`gfx/title/player.png`** converted from a generated illustration through `tools/mksprite.py`, replacing the hand-drawn placeholder
+- **`--solid`** added: the title sprite is OAM, where the lightest level is transparent, so a white lab coat renders as a hole. The flood must run at **source** resolution — on the finished 40×56 the outline is one pixel and leaks. 234 pixels of coat would have been see-through
+- **Two non-square bugs fixed in the same pass** — the outline pass ran `range(size)` on both axes and covered only 40 of 56 rows; the cropped-too-tight warning divided by `size²`
+
+---
+
 ## v11.15 — 2026-09-02
 
 - **The player has feet.** The coat reached the floor, so the hem swung but nothing read as a step and the figure slid like a blob. It now stops one row short, with shoes below — together standing, apart walking, one hiding the other in profile

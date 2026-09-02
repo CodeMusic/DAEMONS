@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.15**
+**A `pokered` total conversion — the living design bible, v11.16**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2556,7 +2556,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 | `gfx/sprites/red_bike.png` | 16×96 | **provisional** — the same character; the bicycle itself is under review |
 | `gfx/overworld/red_fish_*.png` | 16×8 | three fishing half-frames |
 | `gfx/player/red.png` | 56×56 | the *this is you* screen, and the Hall of Fame |
-| `gfx/title/player.png` | 40×56 | **first pass, drawn** — the title screen, where the daemons cycle past |
+| `gfx/title/player.png` | 40×56 | **generated** — the title screen, where the daemons cycle past |
 | `gfx/player/redb.png` | 32×32 | **every battle in the game** |
 | `gfx/player/shrink1/2.png` | 56×56 | the naming-screen animation |
 
@@ -2586,7 +2586,15 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 **The title screen is the one place with room for it.** *The 16×16 sprite can only imply the box through the strap;* **`gfx/title/player.png` has 40×56 and can draw the thing itself** — a vent line, an indicator, a port, and **no seam anywhere that would let it open.** *1.3 calls it a machine you offer a daemon as a host,* **so it must not look like a container.**
 
-***This one is a hand-drawn first pass and should be replaced.*** **40–56px is exactly the range `tools/sprite.py` is proven at**, and this is *the second thing anyone sees.* The drawn version exists so the title screen stops showing vanilla's trainer beside our own overworld figure — **a placeholder that is the right character beats a finished one that is the wrong character.**
+*The hand-drawn first pass was replaced by generated art the same day,* **and it exposed a rule the daemon pipeline had never had to obey.**
+
+##### White is transparent, and the coat is white
+
+***A daemon sprite is drawn to the background layer; the title figure is drawn as OAM.*** **On OAM the lightest level is transparent** — so **a white lab coat renders as a hole**, and the figure comes back as a ghost: hat, strap, boots, and nothing between them.
+
+**`--solid` is the fix, and where it floods is the whole trick.** *A flood run on the finished 40×56 finds nothing* — **at that size the outline is one pixel and full of gaps, so the background leaks straight into the coat.** ***Run it on the source instead***, where the outline is still six to eight pixels thick and closed, **and whatever paper the flood cannot reach is interior.** *In this figure that was 234 pixels that would have been see-through.*
+
+**Two other non-square bugs fell out of the same pass:** the outline pass ran `range(size)` on both axes, so **it was only covering 40 of the 56 rows**, and the cropped-too-tight warning divided by `size²`. *Neither could show up while every target was square.*
 
 ##### The hem swings, but a hem alone slides
 

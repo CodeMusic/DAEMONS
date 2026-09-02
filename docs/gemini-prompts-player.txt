@@ -15,7 +15,7 @@ downsample that works fine at 40-56px. See tools/genplayer.py.
 
   DONE   gfx/sprites/red.png            16x96   six walking frames
   DONE   gfx/sprites/red_bike.png       16x96   the same six, provisional
-  DONE   gfx/title/player.png           40x56   FIRST PASS, drawn -- replace it
+  DONE   gfx/title/player.png           40x56   generated, converted --solid
   todo   gfx/overworld/red_fish_*.png   16x8    three fishing half-frames
 
 The fishing frames are hand-drawn too when their time comes, and are not
@@ -32,9 +32,12 @@ He sits between a scientist, a magician and a wizard, and the coat is what
 does that: a lab coat and a wizard's robe are the same silhouette, so the hat
 carries the third on its own. Not a cap. Not a pointed wizard hat.
 
-The title screen already has a first pass, drawn by hand at 40x56, and it is
-blocky -- replace it with generated art through tools/sprite.py, which is
-proven at this size. It is the second thing anyone sees.
+The title figure is done and came from this pipeline. Note the --solid flag:
+the title sprite is drawn as OAM, where the LIGHTEST level is transparent, so a
+white lab coat renders as a hole. --solid floods the background at SOURCE
+resolution -- where the outline is still six pixels thick and closed -- and
+lifts any paper the flood cannot reach. Without it, 234 pixels of that coat
+were see-through.
 
 Do number 1 first and ATTACH IT to the two after. They are all the same
 person, and a fresh conversation invents a different one.

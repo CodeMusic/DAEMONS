@@ -121,11 +121,11 @@ def main():
         # used six times. Raise it and only cells sitting on the line go black.
         if a.startswith("--cover="): COVER = float(a.split("=")[1])
     print("  outline threshold %d (gap search said %d)" % (OUTLINE, best[1]))
-    step = side_h / size_h
-    for dy in range(size):
-        for dx in range(size):
-            x0i, x1i = int(dx*step), max(int(dx*step)+1, int((dx+1)*step))
-            y0i, y1i = int(dy*step), max(int(dy*step)+1, int((dy+1)*step))
+    stepx, stepy = side_w / size_w, side_h / size_h
+    for dy in range(size_h):
+        for dx in range(size_w):
+            x0i, x1i = int(dx*stepx), max(int(dx*stepx)+1, int((dx+1)*stepx))
+            y0i, y1i = int(dy*stepy), max(int(dy*stepy)+1, int((dy+1)*stepy))
             dark = tot = 0
             for yy in range(y0i, y1i):
                 for xx in range(x0i, x1i):
@@ -134,14 +134,43 @@ def main():
             if tot and dark >= tot * COVER:
                 q[dy][dx] = 0
 
+    if "--solid" in sys.argv:
+        # OAM sprites make the LIGHTEST level transparent, so paper inside the
+        # outline is a hole -- a white lab coat vanishes and leaves a ghost.
+        #
+        # The flood has to run on the SOURCE, not on the 40x56 result. At the
+        # target size the outline is one pixel and full of gaps, so a flood
+        # started there leaks straight into the coat and finds nothing. At
+        # source resolution the outline is six to eight pixels thick and closed.
+        from collections import deque
+        PAPER_LV, BG = 3, 240
+        outside = bytearray(w * h)
+        todo = deque([(x, y) for x in range(w) for y in (0, h - 1)] +
+                     [(x, y) for y in range(h) for x in (0, w - 1)])
+        while todo:
+            x, y = todo.popleft()
+            if not (0 <= x < w and 0 <= y < h) or outside[y * w + x]: continue
+            if lum(x, y) < BG: continue
+            outside[y * w + x] = 1
+            todo.extend(((x+1, y), (x-1, y), (x, y+1), (x, y-1)))
+        lifted = 0
+        for gy in range(size_h):
+            for gx in range(size_w):
+                if q[gy][gx] != PAPER_LV: continue
+                px_ = sx + int((gx + 0.5) * stepx)
+                py_ = sy + int((gy + 0.5) * stepy)
+                if 0 <= px_ < w and 0 <= py_ < h and not outside[py_ * w + px_]:
+                    q[gy][gx] = 2; lifted += 1
+        print("  solid: %d interior paper pixels lifted off transparent" % lifted)
+
     write_png(dst, q, 2)
 
     from collections import Counter
     c = Counter(v for row in q for v in row)
     print("  wrote %s at %dx%d" % (dst, size_w, size_h))
     print("  levels: " + "  ".join("%d:%d" % (k, c[k]) for k in sorted(c)))
-    if c[3] < size * size * 0.25:
+    if c[3] < size_w * size_h * 0.25:
         print("  !! background is only %d%% -- the subject may be cropped too tight."
-              % (100 * c[3] // (size * size)))
+              % (100 * c[3] // (size_w * size_h)))
 
 main()
