@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.21 — 2026-09-02
+
+### The title screen, in both media
+
+- **`audio/music/titletheme.asm`** — the title screen had been repointed at `Music_Dungeon3`, *Echoes of the Algorithm*, F minor, the track where Crystal goes into the system after the removal. Correct for the cave, wrong for the front door. Now its own theme: C major, I–vi–IV–V, 150 — and C because §7.4 gives Blanche C pentatonic, so the door is in the key of the town you leave from. 96 bytes in bank `$1f`
+- **`tools/titleface.py`** — lights the title figure's face after conversion. A wide brim shadows a face by construction and at 40×56 that collapsed to a void. The hat leaves the head three rows, so it is one pixel per eye and two for the mouth; two-pixel eyes read as a visor and rounding the corners put the visor back
+- **Both media had drifted dark independently** — a prompt that never asked for warmth, and a repoint that was free
+
+---
+
 ## v11.20 — 2026-09-02
 
 ### Craft rule 6 governs the art

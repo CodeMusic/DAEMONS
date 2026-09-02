@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.20**
+**A `pokered` total conversion — the living design bible, v11.21**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2545,6 +2545,28 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 **This deletes `Nintendo` and `Creatures inc.` from the built ROM.** *That is a different act from renaming a town* — the engine is still pret's disassembly of their work, and the notice is a legal one rather than a decoration.
 
 **It is done because the ROM is not what this project distributes.** `patches/` is; `gfx/` here contains nothing Nintendo-derived; and **both READMEs credit pret and Nintendo directly.** *A total conversion that ships no copyrighted content still owes the attribution — it just does not owe it on this screen.*
+
+#### 7.14g The front door was in F minor
+
+***The same complaint, in the other medium, in the same message:*** **"the music feels dark (as does the current user image on that screen)."**
+
+**The title screen had been repointed at `Music_Dungeon3`** — *"Echoes of the Algorithm", F minor, **the track where Crystal goes into the system after the removal***, carrying the doubt her son handed her. **7.14c called that repoint "same bank, zero extra bytes",** and it was: *a saving of ninety-six bytes and a mistake of tone.*
+
+***The cave music is correct for the cave.*** **On the title screen it told the player this is a grim game before a single line of dialogue could say otherwise** — and 4.6's whole point is that she does not come back down. **That is not the note to open on.**
+
+##### C, and not an arbitrary bright key
+
+**`audio/music/titletheme.asm`** — *C major, **I–vi–IV–V**, the most open progression there is, twice through*, at 150.
+
+***7.4 gives Blanche C pentatonic — high and open — and Slate is that same scale with both gaps filled.*** **So the title screen is in the key of the town you leave from.** *Nobody notices; it just feels like somewhere you have been.*
+
+**`Music_Dungeon3` keeps its own body**, and Mt. Moon, Rock Tunnel and Victory Road are untouched. *The saving was never worth what it cost.*
+
+##### The lesson is that both media drifted the same way, unprompted
+
+***Nobody decided the game should be dark.*** **The art drifted there because a prompt asked for a wide brim and never asked for warmth; the music drifted there because a repoint was free.** *Two independent cheap decisions, each defensible on its own, arriving at the same wrong tone* — **and it took a player looking at the title screen to notice.**
+
+**Craft rule 6 is not only about dialogue.**
 
 #### 7.14f Craft rule 6 governs the art, and the art had stopped obeying it
 
