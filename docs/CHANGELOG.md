@@ -5,6 +5,21 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.9 — 2026-09-01
+
+### The copyright screen
+
+- **`©'11-'26 CODEMUSIC` / `SeeingSharp` / `Psychology/Code`** replace the three vanilla lines
+- **`tools/gencopyright.py`** — draws the strip from the vanilla copyright font, recovered pixel-for-pixel, plus twelve glyphs it never had (`S P h l g p y / 0 1 2 -`)
+- **31 tiles exactly** (`$60`–`$7E`). CODEMUSIC drops 9 → 7 tiles by losing its padding, which is what lets `Psychology/Code` fit
+- **The title-screen year is no longer blocked** — the 2026-08-29 entry deferred it for want of digit glyphs
+
+### The intro face-off
+
+- **CAREMUSAI un-mirrored** — the pair now face each other
+
+---
+
 ## Session — 2026-08-29
 
 ### Title screen and SGB borders

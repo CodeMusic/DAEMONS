@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.8**
+**A `pokered` total conversion — the living design bible, v11.9**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2455,6 +2455,34 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 *The argument for it was real* — a splash is the publisher's mark rather than the world, a colophon rather than a scene. **But binary and notation are line and shape, and lose nothing without hue.**
 
 *Drawn, not generated.* **8×8 is one tile**, and the sprite doc already rules out generating anything under 16×16. `tools/gensplash.py` draws all four to the vanilla convention: **background at level 3, ink at level 1** — these render through a palette, so level 0 is never used.
+
+#### 7.14d The copyright screen — three names and one span
+
+**Built 2026-09-01.** The screen under the falling note is **not drawn with the game font.** `LoadCopyrightTiles` copies a raw tile bank into `vChars2 tile $60` and `PlaceString` walks a list of tile IDs — so the words are pictures, and *the budget is the constraint that shapes the design.*
+
+**Thirty-one tiles.** `$60`–`$7E`; `$7F` has to stay the blank the text-box tiles left there, because the string uses it as a space. **All three lines share one bank**, so the stamp is drawn once and re-used.
+
+| | Tiles | |
+|---|---|---|
+| `©'11-'26  CODEMUSIC` | 5 + 7 | the top line, where the platform holder's name used to be |
+| `©'11-'26  SeeingSharp` | 8 | |
+| `©'11-'26  Psychology/Code` | 11 | |
+
+***The stamp is the lineage, compressed.*** `docs/lineage.md` dates the work from Neural Crossroads in 2011; the cart is 2026. **`'11-'26` is fifteen years stated as a span** rather than three revision dates, which is what vanilla's `'95.'96.'98` actually was — *three companies each stamping their own year.* **One author cannot honestly do that**, so the shape changes to a span even though it costs the same five tiles.
+
+#### Twelve glyphs the font never had
+
+**The typeface is vanilla's copyright font, lifted pixel-for-pixel out of the strip it replaces** — 2px strokes, caps on rows 1–5, x-height on 2–5, descenders to row 6. It carried only what `Nintendo Creatures inc. ©'95.'96.'98` needed.
+
+**`S P h l g p y / 0 1 2 -` are drawn here**, in `tools/gencopyright.py`, in the same idiom. *This also retires the note in the 2026-08-29 entry that the title-screen year was deferred for want of digits* — **`1` and `2` now exist.**
+
+**CODEMUSIC keeps the bolder splash face** from `gensplash.py` and drops from 9 tiles to 7 by losing its padding. *It is the top line and should carry the weight;* the two tiles it gives back are what let `Psychology/Code` fit at all.
+
+#### On removing the vanilla lines
+
+**This deletes `Nintendo` and `Creatures inc.` from the built ROM.** *That is a different act from renaming a town* — the engine is still pret's disassembly of their work, and the notice is a legal one rather than a decoration.
+
+**It is done because the ROM is not what this project distributes.** `patches/` is; `gfx/` here contains nothing Nintendo-derived; and **both READMEs credit pret and Nintendo directly.** *A total conversion that ships no copyrighted content still owes the attribution — it just does not owe it on this screen.*
 
 ### 7.15 The space audit — a claim I repeated for days and never measured
 
