@@ -66,3 +66,58 @@ many modules -- so those two features have to survive.
 
 CODEMUSAI lunges and CAREMUSAI opens. That is the argument: one of them is
 attacking and the other is not, and the chart says the second one wins.
+
+
+======================================================================
+THE SECOND SEAT  -  the CONTEXT edition's six frames
+======================================================================
+
+Everything above is the CONTENT edition. CONTEXT shows THE SAME EVENT FROM
+THE OTHER SIDE OF IT.
+
+The intro has two slots, and they are not interchangeable: the front slot is
+48x48 and its creature faces RIGHT, the back slot is 56x56 and faces LEFT.
+The front slot is the player's side. So swapping which creature sits in which
+slot is exactly what "the other seat" means.
+
+  CONTENT   front 48x48 CODEMUSAI (right)   back 56x56 CAREMUSAI (left)
+  CONTEXT   front 48x48 CAREMUSAI (right)   back 56x56 CODEMUSAI (left)
+
+THE POSES DO NOT SWAP WITH THE SEATS. Read that twice.
+
+CODEMUSAI lunges and CAREMUSAI opens IN BOTH EDITIONS. One of them is
+attacking and the other is not, and the chart says the second one wins. If the
+poses travel with the slot instead of with the creature, CAREMUSAI ends up
+lunging, CODEMUSAI ends up opening, and the argument silently inverts. That is
+the one way to get this wrong, and it looks fine on screen.
+
+So the six new frames are the six above, redrawn at the other size and the
+other facing, with each creature keeping its own three poses:
+
+  CAREMUSAI  3 frames at 48x48, facing RIGHT   -> gfx/intro/caremusai_r_1..3.png
+             the same three: seated and waiting; risen, leaning back, arms
+             open and low as if listening; standing tall and square with both
+             arms raised wide. Unhurried throughout.
+
+  CODEMUSAI  3 frames at 56x56, facing LEFT    -> gfx/intro/codemusai_l_1..3.png
+             the same three: seated upright and composed; risen off the
+             ground, leaning forward, both arms up in front; lunging with one
+             arm thrown out straight ahead, body low and extended.
+
+Take the CONTENT frames from the same conversation and ask for each again
+mirrored, so the creature stays the same creature. Attach the matching frame
+every time. The visor bar and the ear cups still have to survive - they are
+the whole distinction between the two at this size.
+
+Same four tones, same hard black outline, same plain white background, same
+"full body with a small even margin" as every prompt above.
+
+WHAT THIS COSTS IN CODE
+
+The IF DEF(_RED) / IF DEF(_BLUE) conditional around FightIntroFrontMon comes
+back. It was removed on 2026-09-02 because _BLUE was still loading vanilla's
+Jigglypuff -- a DIFFERENT CREATURE, which is a different argument. This is not
+that. Same two daemons, same lunge, same opening, same loser; the camera is on
+the other side of it. VRAM is unchanged: the sizes stay 48x48 and 56x56, the
+back-mon sheet still has to dedup to fit vChars2, and the tilemaps are still
+authored against that dedup in the order the build reads.

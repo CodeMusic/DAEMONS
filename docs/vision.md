@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.11**
+**A `pokered` total conversion — the living design bible, v11.12**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2484,6 +2484,33 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 *The argument for it was real* — a splash is the publisher's mark rather than the world, a colophon rather than a scene. **But binary and notation are line and shape, and lose nothing without hue.**
 
 *Drawn, not generated.* **8×8 is one tile**, and the sprite doc already rules out generating anything under 16×16. `tools/gensplash.py` draws all four to the vanilla convention: **background at level 3, ink at level 1** — these render through a palette, so level 0 is never used.
+
+#### The second seat — what the editions are actually for
+
+**Adopted 2026-09-02, art not yet drawn.** *Removing the `_BLUE` conditional fixed a bug and left a question standing:* **if both editions open on the same scene, what is the edition for?**
+
+***The answer is the seat, not the scene.*** The intro has **two slots that are not interchangeable** — the front slot is **48×48 facing right**, the back slot **56×56 facing left**, and ***the front slot is the player's side.***
+
+| | Front (yours) | Back |
+|---|---|---|
+| **CONTENT** | CODEMUSAI | CAREMUSAI |
+| **CONTEXT** | CAREMUSAI | CODEMUSAI |
+
+**Same two daemons. Same lunge, same opening, same loser.** *The camera is on the other side of it.*
+
+***In CONTENT you sit behind the one that attacks, and watch your own side lose.*** **In CONTEXT you sit behind the one that does not, and watch it come at you and fail.** *Neither cartridge says a word, and a player with one of them never knows the other exists.*
+
+**This is the difference the two editions were always for** — and it is *unsayable*, which is the only way craft rule 1 lets the game hold it.
+
+##### The trap, written down because it looks fine on screen
+
+***The poses must not travel with the slots.*** **CODEMUSAI lunges and CAREMUSAI opens in both editions.** *If the slot contents are swapped wholesale* — the obvious implementation — **CAREMUSAI ends up lunging and CODEMUSAI ends up opening, and 2's chart now reads backwards.** *Nothing breaks. It just quietly argues the opposite thing.*
+
+**So it is six new drawings, not a re-crop:** CAREMUSAI at 48×48 facing right in *its own* three poses, CODEMUSAI at 56×56 facing left in *its own*.
+
+##### And invariant 3 is not in tension with this
+
+*The removal on the same day was correct and this is not a reversal of it.* **`_BLUE` was loading a different creature** — Jigglypuff — ***and a different creature is a different argument.*** **A different seat is the same argument, witnessed from the place the other edition is named after.**
 
 #### 7.14d The copyright screen — three names and one span
 

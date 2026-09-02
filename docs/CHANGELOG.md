@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.12 — 2026-09-02
+
+### The second seat — adopted, not yet drawn
+
+- **The editions differ by seat, not by scene.** The intro's front slot is the player's side; CONTENT sits behind CODEMUSAI, CONTEXT behind CAREMUSAI. Same two daemons, same lunge, same loser
+- **The poses do not travel with the slots** — swapping slot contents wholesale would make CAREMUSAI lunge and silently invert the chart. Six new drawings, not a re-crop
+- **`docs/gemini-prompts-intro.txt`** extended with the six CONTEXT frames and that warning
+- **The `_RED`/`_BLUE` conditional will come back** — its removal earlier today was for a different creature, which is a different argument
+
+---
+
 ## v11.11 — 2026-09-02
 
 ### The player
