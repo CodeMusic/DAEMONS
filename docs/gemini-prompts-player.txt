@@ -105,7 +105,7 @@ Ask for THREE variations in one conversation so there is something to choose
 between, then convert the one that reads best:
 
     python3 tools/mksprite.py <saved>.png engine/gfx/title/player.png 40x56 \\
-        --solid --fill --cover=0.26
+        --solid --fill --close
     make content && make context
 
 mksprite now takes WxH as well as a single number. A daemon slot is square and
@@ -132,9 +132,11 @@ middle of a figure, a visible BITE when it happens on the outer edge. The
 shoulder of the first conversion had exactly that: one light pixel in the
 middle of the black shoulder line, and it read as a clip taken out of the coat.
 
---cover=0.26 closed it here. Lower it until the edge is continuous, and no
-further; 0.22 closed everything and cost 10% more black across the whole
-figure, which thickens it.
+--close fixes it, and is the flag to reach for. Lowering --cover also closes
+them, but globally -- it thickens every line in the figure to repair an edge.
+--close fills only the gaps, and only where they touch the background, which is
+the only place they show. On this figure it filled 8 and used LESS black than
+--cover=0.26 did.
 
 USE --fill, AND KNOW WHY
 

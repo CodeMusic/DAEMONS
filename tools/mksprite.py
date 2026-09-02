@@ -144,6 +144,30 @@ def main():
             if tot and dark >= tot * COVER:
                 q[dy][dx] = 0
 
+    if "--close" in sys.argv:
+        # A cell the source line merely grazes stays grey. In the middle of a
+        # figure that is invisible; on the outer edge it is a gap in the
+        # outline -- and the eye does not read a one-pixel gap as a gap. It
+        # reads it as a BITE taken out of the coat. One such pixel on a
+        # shoulder was spotted on a screenshot at native size.
+        #
+        # Lowering --cover closes them, but globally: it thickens every line in
+        # the figure to fix an edge. This closes only the gaps, and only where
+        # they touch the background, which is the only place they show.
+        BGL = 3
+        fix = []
+        for y in range(size_h):
+            for x in range(size_w):
+                if q[y][x] not in (1, 2): continue
+                h_ = x > 0 and x < size_w-1 and q[y][x-1] == 0 and q[y][x+1] == 0
+                v_ = y > 0 and y < size_h-1 and q[y-1][x] == 0 and q[y+1][x] == 0
+                if not (h_ or v_): continue
+                if any(0 <= x+dx < size_w and 0 <= y+dy < size_h and q[y+dy][x+dx] == BGL
+                       for dx, dy in ((1,0),(-1,0),(0,1),(0,-1))):
+                    fix.append((x, y))
+        for x, y in fix: q[y][x] = 0
+        print("  close: %d one-pixel gaps in the outline filled" % len(fix))
+
     if "--solid" in sys.argv:
         # OAM sprites make the LIGHTEST level transparent, so paper inside the
         # outline is a hole -- a white lab coat vanishes and leaves a ghost.

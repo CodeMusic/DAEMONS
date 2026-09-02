@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.18**
+**A `pokered` total conversion — the living design bible, v11.19**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2608,7 +2608,11 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 ***The outline pass blacks a cell only when the source line covers enough of it*** — `COVER`, default **0.34**. *A cell the line merely grazes stays grey.* **In the middle of a figure that is invisible. On the outer edge it is a hole**, and the eye does not read it as a hole: **it reads it as a piece missing from the coat.**
 
-**The shoulder had exactly one such pixel**, and it was spotted on a screenshot at native size before any of the tooling noticed it. ***`--cover=0.26` closed it.*** *Lower it until the edge is continuous and no further* — **0.22 closed every hole in the figure and cost 10% more black**, which thickens everything.
+**The shoulder had exactly one such pixel**, and it was spotted on a screenshot at native size before any of the tooling noticed it.
+
+***The first fix was to lower `COVER` until the edge closed, and it was the wrong instrument*** — **it thickens every line in the figure to repair one edge**, and it still left a hole under the other cuff. **`--close` fills only the gaps, and only where they touch the background, which is the only place they show.** *Eight pixels on this figure, zero holes left, and **less** total black than the threshold tweak used.*
+
+**A threshold is a global answer to a local problem.**
 
 **Two other non-square bugs fell out of the same pass:** the outline pass ran `range(size)` on both axes, so **it was only covering 40 of the 56 rows**, and the cropped-too-tight warning divided by `size²`. *Neither could show up while every target was square.*
 

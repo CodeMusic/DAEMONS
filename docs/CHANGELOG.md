@@ -7,8 +7,8 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.18 — 2026-09-02
 
-- **The title figure's shoulder had a bite out of it** — one light pixel in the middle of the black shoulder line, a cell the outline pass grazed but did not cover. `--cover=0.26` closes it; 0.22 closes everything and costs 10% more black across the figure
-- **A one-pixel hole on an outer edge does not read as a hole**, it reads as a piece missing. Noted in the prompts file as a thing to check
+- **The title figure's shoulder had a bite out of it** — one light pixel in the middle of the black shoulder line, a cell the outline pass grazed but did not cover. **A one-pixel hole on an outer edge does not read as a hole; it reads as a piece missing**
+- **`--close` added to `tools/mksprite.py`** — fills one-pixel gaps in the outline, but only where they touch the background. Lowering `--cover` also closes them and thickens every line in the figure to do it; `--close` used *less* black and left zero holes
 
 ---
 
