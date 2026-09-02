@@ -2432,13 +2432,21 @@ So **The Bleed** — Route 1, Blanche → Callow — **is the road where the mis
 
 **Six frames** — CODEMUSAI three at 48×48, CAREMUSAI three at 56×56 composed into the 168×56 sheet.
 
-#### The dedup had to go, and that made the tilemaps trivial
+#### The dedup is a VRAM requirement, not an optimisation
 
-**The sheet is not three pictures; it is a deduplicated tile bank**, and its three 49-byte tilemaps were authored against that exact dedup. **Replacing the art without regenerating them produces garbage.**
+**The sheet is not three pictures; it is a deduplicated tile bank**, and its three 49-byte tilemaps are authored against that exact dedup.
 
-***But the build reads it with `--columns`***, which takes tiles down each 8-pixel column before moving right — **so three side-by-side 56×56 frames are three contiguous runs of 49 tiles.** Dropping `--remove-duplicates` makes the tilemaps **`0-48`, `49-97`, `98-146`** and nothing has to be recomputed.
+***A first attempt dropped the dedup*** on the grounds that `--columns` makes three side-by-side frames three contiguous 49-tile runs, so the tilemaps become `0-48 / 49-97 / 98-146` and nothing needs recomputing. **That is true, and it corrupted the whole intro.**
 
-*It costs 2352 bytes where the deduped bank was smaller.* **Paid, because the alternative is reimplementing a dedup mapping to save under a kilobyte in a bank that had room.**
+**The intro loads the back-mon sheet at `vChars2` and then loads the GameFreak graphics immediately after it:**
+
+```
+ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
+```
+
+***147 tiles overflows that block***, so everything loaded afterwards lands in the wrong place — **the splash filled with garbage as well as the face-off.** The saving was never the point: **the dedup is what makes the sheet fit VRAM at all.**
+
+**So the dedup is done properly instead**, in the same column-major order the build reads, and the three tilemaps are generated from it. **147 tiles collapse to 97** — 1552 bytes — because the three poses share most of their background and body.
 
 #### Monochrome, deliberately
 
