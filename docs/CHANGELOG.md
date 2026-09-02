@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.15 — 2026-09-02
+
+- **The player has feet.** The coat reached the floor, so the hem swung but nothing read as a step and the figure slid like a blob. It now stops one row short, with shoes below — together standing, apart walking, one hiding the other in profile
+- **`tools/mksprite.py` takes `WxH`** as well as a single size. A daemon slot is square; the 40×56 title figure was being squashed by a square crop
+- **A prompt for the title figure** added to `docs/gemini-prompts-player.txt` — three variations, and what to judge them on (the brim and the hem survive the shrink; the face does not)
+
+---
+
 ## v11.14 — 2026-09-02
 
 ### The title screen figure

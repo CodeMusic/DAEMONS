@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.14**
+**A `pokered` total conversion — the living design bible, v11.15**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2588,9 +2588,13 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 ***This one is a hand-drawn first pass and should be replaced.*** **40–56px is exactly the range `tools/sprite.py` is proven at**, and this is *the second thing anyone sees.* The drawn version exists so the title screen stops showing vanilla's trainer beside our own overworld figure — **a placeholder that is the right character beats a finished one that is the wrong character.**
 
-##### There are no legs
+##### The hem swings, but a hem alone slides
 
-**The coat reaches the ground.** *So the walk cycle is the hem swinging side to side*, which is what a long coat does — **and it costs three rows instead of redrawing a leg pair per frame.**
+**The coat reaches the ground, so the walk is the hem swinging side to side** — which is what a long coat does, and costs three rows instead of a leg pair per frame.
+
+***On its own it was not enough.*** **With nothing at the floor to read a step against, the figure moved like a blob being dragged** — the hem changed shape but nothing said *foot*. **So the coat stops one row short and two shoes show beneath it:** *together when standing, apart when walking, and in profile one hides the other.*
+
+**One row of pixels**, and it is the whole difference between walking and gliding.
 
 *The bicycle sheet is the same six frames from the waist up*, with a bike below the rail. **Vanilla animates the whole bicycle sideways**, which at 16px reads as *the rider lurching* — **so ours moves the wheels instead and flickers their tone**, which is what spokes actually do.
 

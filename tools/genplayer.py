@@ -53,8 +53,12 @@ LV = {"#": 0, ":": 1, ".": 2, " ": 3}          # 3 is transparent for OBJ tiles
 # at level 1, and the satchel strap a level 0 diagonal that cannot be confused
 # with either.
 #
-# There are no legs. The coat reaches the ground, so the walk is the hem swinging
-# from side to side, which is what a long coat does.
+# The coat is long, so the walk is the hem swinging -- but a hem alone slides.
+# Without something to read a step against, the figure reads as a blob moving,
+# which is exactly what it did. So the coat stops one row short of the floor and
+# the shoes below it carry the stride: together when standing, apart when
+# walking. One row of pixels, and it is the difference between walking and
+# gliding.
 
 HAT       = ["      ####      ", "     #::::#     ", "     #::::#     ",
              "################", "   ##########   "]
@@ -66,25 +70,31 @@ PROFILE   = ["   #.#.....#    ", "   #.......#    ", "    #######     "]
 
 # Sleeves light, torso mid, strap black. The strap runs shoulder to opposite hip.
 FRONT = ["  #..::::#:..#  ", "  #..:::#::..#  ", "  #..::#:::..#  ",
-         "  #..:#::::..#  ", "  #..::::::..#  "]
+         "  #..:#::::..#  "]
 # From behind it is the satchel itself, not the strap.
 BACK  = ["  #..::::::..#  ", "  #..:####:..#  ", "  #..:#..#:..#  ",
-         "  #..:####:..#  ", "  #..::::::..#  "]
+         "  #..:####:..#  "]
 # In profile the figure is narrower and only the near sleeve shows.
 PROF  = ["   #..::::#:#   ", "   #..:::#::#   ", "   #..::#:::#   ",
-         "   #..:#::::#   ", "   #..::::::#   "]
+         "   #..:#::::#   "]
 
 HEM        = ["  #::::::::::#  ", " #::::::::::::# ", " ############## "]
 HEM_LEFT   = [" #::::::::::#   ", "#::::::::::::#  ", "##############  "]
 HEM_RIGHT  = ["   #::::::::::# ", "  #::::::::::::#", "  ##############"]
 HEM_TRAIL  = ["   #:::::::::#  ", "  #::::::::::::#", "  ##############"]
 
-DOWN      = HAT      + FACE    + FRONT + HEM
-DOWN_WALK = HAT      + FACE    + FRONT + HEM_LEFT
-UP        = HAT      + NAPE    + BACK  + HEM
-UP_WALK   = HAT      + NAPE    + BACK  + HEM_RIGHT
-SIDE      = HAT_SIDE + PROFILE + PROF  + HEM_TRAIL
-SIDE_WALK = HAT_SIDE + PROFILE + PROF  + HEM_LEFT
+FEET       = ["    ###  ###    "]   # both down
+FEET_STEP  = ["   ###    ##    "]   # one out, one trailing
+FEET_BACK  = ["    ##  ###     "]
+FEET_PROF  = ["   ######       "]   # in profile, one shoe hides the other
+FEET_STRIDE= ["  ###   ###     "]
+
+DOWN      = HAT      + FACE    + FRONT + HEM       + FEET
+DOWN_WALK = HAT      + FACE    + FRONT + HEM_LEFT  + FEET_STEP
+UP        = HAT      + NAPE    + BACK  + HEM       + FEET
+UP_WALK   = HAT      + NAPE    + BACK  + HEM_RIGHT + FEET_BACK
+SIDE      = HAT_SIDE + PROFILE + PROF  + HEM_TRAIL + FEET_PROF
+SIDE_WALK = HAT_SIDE + PROFILE + PROF  + HEM_LEFT  + FEET_STRIDE
 
 # Provisional -- the bicycle itself is under review. Same head and same coat, so
 # whatever replaces it inherits a character that already matches.

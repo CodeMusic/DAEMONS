@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Crop a generated sprite to its subject, square it, and write a Game Boy PNG.
+"""Crop a generated sprite to its subject, box it, and write a Game Boy PNG.
+
+    python3 tools/mksprite.py in.png out.png 56          # square, a daemon slot
+    python3 tools/mksprite.py in.png out.png 40x56       # the title figure
 
     python3 tools/mksprite.py gfx/front/artsai.png engine/gfx/pokemon/front/mew.png 40
 
@@ -19,7 +22,14 @@ from gbimg import read_png, resample, write_png
 def main():
     if len(sys.argv) < 4:
         sys.exit(__doc__)
-    src, dst, size = sys.argv[1], sys.argv[2], int(sys.argv[3])
+    src, dst, spec = sys.argv[1], sys.argv[2], sys.argv[3]
+    # A daemon slot is square; the title figure is 40x56. "WxH" keeps the
+    # subject's proportions instead of squashing a standing person into a box.
+    if "x" in spec:
+        size_w, size_h = (int(v) for v in spec.lower().split("x"))
+    else:
+        size_w = size_h = int(spec)
+    size = size_w
     w, h, lum = read_png(src)
 
     # Ink is anything meaningfully darker than the paper.
@@ -32,10 +42,13 @@ def main():
     bw, bh = x1 - x0 + 1, y1 - y0 + 1
     print("  ink box %dx%d at (%d,%d) in a %dx%d image" % (bw, bh, x0, y0, w, h))
 
-    # Square it about the subject's centre, then breathe.
-    side = int(max(bw, bh) * 1.08)
+    # Box it about the subject's centre at the target's aspect, then breathe.
+    aspect = size_w / size_h
+    side_h = int(max(bh, bw / aspect) * 1.08)
+    side_w = int(round(side_h * aspect))
     cx, cy = (x0 + x1) // 2, (y0 + y1) // 2
-    sx, sy = cx - side // 2, cy - side // 2
+    sx, sy = cx - side_w // 2, cy - side_h // 2
+    side = side_h
 
     def padded(x, y):
         # Outside the source is paper, not black.
@@ -43,7 +56,8 @@ def main():
             return lum(x, y)
         return 255
 
-    grid = resample(side, side, lambda x, y: padded(sx + x, sy + y), size, size)
+    grid = resample(side_w, side_h, lambda x, y: padded(sx + x, sy + y),
+                    size_w, size_h)
 
     # Even thresholds waste a shade. Generated art puts the paper and the
     # creature's lightest fur in the same bucket, and the mid greys land on one
@@ -76,8 +90,8 @@ def main():
     # there. ARTSAI's gap is 16-159 and S.T.A.R.R.'s is 128-143; both give the
     # right answer for the right reason.
     hist = [0]*256
-    for y in range(0, side, 2):
-        for x in range(0, side, 2):
+    for y in range(0, side_h, 2):
+        for x in range(0, side_w, 2):
             v = padded(sx+x, sy+y)
             if v < PAPER: hist[v] += 1
     ink_n = sum(hist)
@@ -107,7 +121,7 @@ def main():
         # used six times. Raise it and only cells sitting on the line go black.
         if a.startswith("--cover="): COVER = float(a.split("=")[1])
     print("  outline threshold %d (gap search said %d)" % (OUTLINE, best[1]))
-    step = side / size
+    step = side_h / size_h
     for dy in range(size):
         for dx in range(size):
             x0i, x1i = int(dx*step), max(int(dx*step)+1, int((dx+1)*step))
@@ -124,7 +138,7 @@ def main():
 
     from collections import Counter
     c = Counter(v for row in q for v in row)
-    print("  wrote %s at %dx%d" % (dst, size, size))
+    print("  wrote %s at %dx%d" % (dst, size_w, size_h))
     print("  levels: " + "  ".join("%d:%d" % (k, c[k]) for k in sorted(c)))
     if c[3] < size * size * 0.25:
         print("  !! background is only %d%% -- the subject may be cropped too tight."

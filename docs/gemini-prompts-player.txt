@@ -90,3 +90,39 @@ wrong, and following it would overwrite the intro.
 The back view (number 3) is the one that matters most - it is on screen for
 every battle in the game, at 32x32. Favour the silhouette of the cap and the
 satchel over any detail; detail at that size becomes grey mush.
+
+
+======================================================================
+THE TITLE FIGURE  -  ask for samples, then convert
+======================================================================
+
+The hand-drawn 40x56 in the ROM is a placeholder and looks it. Replace it.
+
+Ask for THREE variations in one conversation so there is something to choose
+between, then convert the one that reads best:
+
+    python3 tools/mksprite.py <saved>.png engine/gfx/title/player.png 40x56
+    make content && make context
+
+mksprite now takes WxH as well as a single number. A daemon slot is square and
+gets one number; the title figure is 40x56 and would be squashed by a square
+crop, so give it the pair.
+
+----------------------------------------------------------------------
+THE PROMPT
+----------------------------------------------------------------------
+
+A standing figure seen from the front, taller than wide, filling the frame from head to foot. They wear a WIDE FLAT-BRIMMED HAT - the brim is the widest thing in the picture, clearly wider than their shoulders, flat and level, not pointed and not a cowboy hat. Below it a LONG COAT that reaches the ground, sleeved, hanging straight, with no legs visible - only the toes of two boots showing at the very bottom. A satchel strap crosses the chest diagonally from one shoulder to the opposite hip. In the hand on one side, held down at their side, is a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side - a machine you would ssh into, a little server. It must not look like it opens: no seam around the middle, no lid, no button, no clasp. The figure reads as a scientist, a magician and a wizard at the same time, and the coat is what does that - it is a lab coat and a robe at once. Still, composed, facing the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Whole figure visible with a small even margin.
+
+Then, in the same conversation:
+
+  Now two more of the same figure, same style, same four tones, same white
+  background. One with the brim tilted so a little more of the face shows.
+  One with the coat fuller and the hem wider at the ground.
+
+WHAT MAKES A GOOD ONE
+
+The hat brim and the hem are the two shapes that survive the shrink to 40x56.
+Pick the sample where those two are widest and cleanest. Faces do not survive
+- do not choose on the face. If the unit in the hand turns into a grey blob at
+this size that is fine; the strap and the brim are what carry the character.
