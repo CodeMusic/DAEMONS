@@ -14,10 +14,10 @@ figure loses its face, its silhouette and its walk cycle in the same
 downsample that works fine at 40-56px. See tools/genplayer.py.
 
   DONE   gfx/sprites/red.png            16x96   six walking frames
-  todo   gfx/sprites/red_bike.png       16x96   the same six, on the bicycle
+  DONE   gfx/sprites/red_bike.png       16x96   the same six, on the bicycle
   todo   gfx/overworld/red_fish_*.png   16x8    three fishing half-frames
 
-Those three are also hand-drawn when their time comes, and none of them is
+The fishing frames are hand-drawn too when their time comes, and are not
 reachable in the slice. Do not ask Gemini for them.
 
 THE THREE BELOW ARE THE ONES THAT NEED ART.

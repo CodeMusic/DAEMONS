@@ -2553,7 +2553,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 | | | |
 |---|---|---|
 | `gfx/sprites/red.png` | 16×96 | **drawn** — down, up, side, and a walk frame for each |
-| `gfx/sprites/red_bike.png` | 16×96 | the same six, on the bicycle |
+| `gfx/sprites/red_bike.png` | 16×96 | **drawn** — the same six, on the bicycle |
 | `gfx/overworld/red_fish_*.png` | 16×8 | three fishing half-frames |
 | `gfx/player/red.png` | 56×56 | the *this is you* screen, and the Hall of Fame |
 | `gfx/title/player.png` | 40×56 | the title screen |
@@ -2570,6 +2570,8 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 | **A light strap crosses the chest** | and the satchel it carries **shows on the back** in the frames where the player walks away from you |
 
 ***The strap is the one detail that survives this size, so it is the right one to spend.*** **1.3 says the box is a machine you offer a daemon as a host** — and the player is carrying one, on a strap, in every frame that could show it.
+
+*The bicycle sheet is the same six frames from the waist up*, with a bike below the rail. **Vanilla animates the whole bicycle sideways**, which at 16px reads as *the rider lurching* — **so ours moves the wheels instead and flickers their tone**, which is what spokes actually do.
 
 #### The intro face-off was only in one edition
 

@@ -144,8 +144,86 @@ SIDE_WALK = [
     " ###    ###     ",
 ]
 
+BIKE_DOWN = [
+    "     ######     ",
+    "    #::::::#    ",
+    "   #::::::::#   ",
+    "  ############  ",
+    "   #.#....#.#   ",
+    "   #........#   ",
+    "  ############  ",
+    "  ##:::::..:##  ",
+    " ###::..::::### ",
+    " #:#:..:::::#:# ",
+    " #:##::::::##:# ",
+    "  ############  ",
+    "  #::#::::#::#  ",
+    "     #::::#     ",
+    "     #:..:#     ",
+    "      ####      ",
+]
+BIKE_UP = [
+    "     ######     ",
+    "    #::::::#    ",
+    "   #::::::::#   ",
+    "   #:::..:::#   ",
+    "   ##::::::##   ",
+    "  ############  ",
+    "  ##:#....#:##  ",
+    "  ##:#....#:##  ",
+    " ###::####::### ",
+    " #:#::::::::#:# ",
+    " #:##::::::##:# ",
+    "  ############  ",
+    "  #::#::::#::#  ",
+    "     #::::#     ",
+    "     #:..:#     ",
+    "      ####      ",
+]
+BIKE_SIDE = [
+    "      ######    ",
+    "     #::::::#   ",
+    "    #::::::::#  ",
+    "  ###########   ",
+    "   #.#.....##   ",
+    "   #.......##   ",
+    "   ##########   ",
+    "   ##:::..:##   ",
+    "  ###::..:####  ",
+    "  #:#:..:::::#  ",
+    "  ##::::::###   ",
+    "  #::::::#      ",
+    " ###::::####    ",
+    "#::#######::#   ",
+    "#::#     #::#   ",
+    " ##       ##    ",
+]
+
+def wheel(art, dx, spin):
+    """The bike frames differ only below the frame rail: the wheels move.
+
+    Vanilla animates the whole bicycle sideways. At 16px that reads as the rider
+    lurching, so this shifts the wheels instead and flickers their tone -- which
+    is what spokes actually do."""
+    out = []
+    for y, row in enumerate(art):
+        if y < 11:
+            out.append(row); continue
+        r = (" " * dx + row)[:16] if dx > 0 else (row[-dx:] + " " * -dx)
+        if spin: r = r.replace(":", "\x00").replace(".", ":").replace("\x00", ".")
+        out.append(r)
+    return out
+
+BIKE_DOWN_WALK = wheel(BIKE_DOWN, -1, True)
+BIKE_UP_WALK = wheel(BIKE_UP, 1, True)
+BIKE_SIDE_WALK = wheel(BIKE_SIDE, 0, True)
+
 FRAMES = [("down", DOWN), ("up", UP), ("side", SIDE),
           ("down walk", DOWN_WALK), ("up walk", UP_WALK), ("side walk", SIDE_WALK)]
+
+BIKE = [("down", BIKE_DOWN), ("up", BIKE_UP), ("side", BIKE_SIDE),
+        ("down pedal", BIKE_DOWN_WALK), ("up pedal", BIKE_UP_WALK),
+        ("side pedal", BIKE_SIDE_WALK)]
 
 rows = []
 for name, art in FRAMES:
@@ -154,6 +232,14 @@ for name, art in FRAMES:
     rows += [[LV[c] for c in r] for r in art]
 write_png(os.path.join(ENG, "gfx/sprites/red.png"), rows, 2)
 print("  gfx/sprites/red.png 16x%d -- %s" % (len(rows), ", ".join(n for n, _ in FRAMES)))
+
+rows = []
+for name, art in BIKE:
+    if len(art) != 16 or any(len(r) != 16 for r in art):
+        sys.exit("bike %s is not 16x16" % name)
+    rows += [[LV[c] for c in r] for r in art]
+write_png(os.path.join(ENG, "gfx/sprites/red_bike.png"), rows, 2)
+print("  gfx/sprites/red_bike.png 16x%d" % len(rows))
 
 if "--show" in sys.argv:
     for name, art in FRAMES:

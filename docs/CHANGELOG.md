@@ -23,7 +23,8 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - **`gfx/sprites/red.png` redrawn** — six 16×16 frames, hand-drawn via `tools/genplayer.py`. Cap brim-forward, a light strap across the chest, the satchel visible on the back when walking away
 - **Vanilla's idiom kept deliberately** — the player stands next to thirty NPC sprites that are still vanilla's
 - **`docs/gemini-prompts-player.txt` rewritten** — it had asked for a throwing pose at `gfx/intro/red_nidorino_1.png`, which is CODEMUSAI; following it would have overwritten the intro. Now three prompts (front 56×56, title 40×56, back 32×32) plus the two shrink frames, and the hand-drawn slots marked as such
-- **Still vanilla**: `red_bike.png`, the three fishing frames, and the three generated pics
+- **`gfx/sprites/red_bike.png` redrawn** — the same six frames from the waist up, with a bike below the rail; the wheels move and their tone flickers rather than the whole bicycle sliding
+- **Still vanilla**: the three fishing frames (16×8) and the three generated pics
 
 ### The intro face-off was only in one edition
 
