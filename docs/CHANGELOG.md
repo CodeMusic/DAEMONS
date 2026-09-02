@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The splash is CodeMusic
+
+- **Four tiny assets, no code change.** The falling star becomes **a falling note**; the mark becomes **`{ ♪ }`** — braces are unambiguously code, a note unambiguously music; the strips read **CODEMUSIC**
+- ***The sound was already right.*** `SFX_SHOOTING_STAR` opens with `pitch_sweep 2, -7`, a downward sweep — **it was always a glissando and simply had no note attached.** Left alone: the swap makes the existing sound *mean* something
+- **Monochrome, deliberately.** Invariant 5 spends colour once, at the Review Board, and **a colourful splash before forty hours of grey reads as a limitation rather than a choice.** Binary and notation are line and shape, and lose nothing without hue
+- **Drawn, not generated** — 8×8 is one tile. `tools/gensplash.py`, to the vanilla convention: background level 3, ink level 1
+
 ### Route 1's silence, and two sounds
 
 - ***Song ids are computed from header position*** and a 3-channel header eats three. AUDIO_1's table ended at **253**, so appending two songs put them at **256 and 259**; `db` truncated them and **Route 1 pointed at garbage**

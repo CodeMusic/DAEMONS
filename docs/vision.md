@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.6**
+**A `pokered` total conversion — the living design bible, v11.7**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2403,6 +2403,30 @@ So **The Bleed** — Route 1, Blanche → Callow — **is the road where the mis
 ***It rises and stops. The binding sound descends and settles.*** A question and its answer, and **only one of them resolves.** Nothing says so.
 
 *Both are written blind and want tuning by ear.*
+
+### 7.14c The splash — a falling note, and a mark in braces
+
+**Built 2026-09-01.** The GAME FREAK intro is four tiny assets and no code: an 8×8 falling star, a 16×24 mark, and two text strips at 104×8 and 72×8. **All four are replaced; nothing in `splash.asm` changed.**
+
+| | |
+|---|---|
+| **The falling star becomes a falling note** | a quaver fits 8×8 almost exactly |
+| **The mark becomes `{ ♪ }`** | **braces are unambiguously code and a note unambiguously music**, and neither needs explaining |
+| **The strips read CODEMUSIC** | *presents*, and the title credit |
+
+#### The sound was already right
+
+`SFX_SHOOTING_STAR` opens with **`pitch_sweep 2, -7`** — a **downward sweep**. ***It was always a glissando; it simply had no note attached to it.***
+
+**So it is left alone.** The animation already flings the tile diagonally across the screen, and swapping the star for a note **makes the existing sound mean something** rather than requiring a new one. *Changing it would have been change for its own sake.*
+
+#### Monochrome, deliberately
+
+**Colour was considered and declined.** Invariant 5 spends colour **once**, at the Review Board, and **a colourful splash before forty hours of grey reads as a limitation rather than a choice** — it would also spend that moment before the game starts.
+
+*The argument for it was real* — a splash is the publisher's mark rather than the world, a colophon rather than a scene. **But binary and notation are line and shape, and lose nothing without hue.**
+
+*Drawn, not generated.* **8×8 is one tile**, and the sprite doc already rules out generating anything under 16×16. `tools/gensplash.py` draws all four to the vanilla convention: **background at level 3, ink at level 1** — these render through a palette, so level 0 is never used.
 
 ### 7.15 The space audit — a claim I repeated for days and never measured
 
