@@ -12,36 +12,75 @@ is an argument about consciousness. **Design is well ahead of implementation.**
 - **`docs/lineage.md`** is where the ideas came from — three blogs, 2011–2026.
   Read it before writing anything about the theory.
 
-## Layout — one session root, two repos
+## Layout — one session root, three repos
 
 ```
-DAEMONS/            <- ALWAYS root sessions here (memory lives here)
-  docs/             design bible, lineage, changelog, blog drafts
-  patches/          published diffs against a clean pokered checkout
-  gfx/ audio/       original assets
-  engine/  ------>  symlink to ../pokered-daemons  (gitignored, never vendored)
+DAEMONS/             <- ALWAYS root sessions here (memory lives here)
+  docs/              design bible, lineage, changelog, blog drafts
+  patches/           published diffs against a clean pokered checkout
+  gfx/ audio/        original assets
+  engine/    ----->  symlink to ../pokered-daemons       (Game Boy)
+  engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, under evaluation)
 ```
 
-**After a fresh clone, run `./setup.sh`** — the symlink is gitignored and does
-not survive cloning. The script is idempotent.
+Both symlinks are gitignored and neither fork is ever vendored: both carry
+Nintendo-derived graphics and this repo promises not to distribute copyrighted
+material. Work in them freely; just don't merge either one in here.
 
-`engine/` is **CodeMusic/pokered-daemons**, a fork of pret/pokered. `origin` is the
-fork, `upstream` is pret — so `git pull upstream master` brings in their fixes.
-It is kept out of this repo because `pokered/gfx/`
-contains Nintendo-derived sprites and this repo promises not to distribute
-copyrighted material. Work in it freely; just don't merge it in here.
+**After a fresh clone, run `./setup.sh`** — it clones both forks, sets their
+`upstream` remotes, remakes the symlinks, and builds `agbcc` (which installs
+*into* `engineGba/tools/` and so does not survive a fresh clone either). It is
+idempotent.
+
+### Two engines, and which one is real
+
+`engine/` is **CodeMusic/pokered-daemons** and it is where the vertical slice
+actually is — Benchmark 1, the type chart, 64 sprites, the music.
+
+`engineGba/` is **CodeMusic/pokefirered-daemons**, forked 2026-09-02, and it is
+a **spike, not a decision.** It exists to answer one question: are abilities,
+item descriptions and a real scripting language worth rebuilding 334 files for?
+See `docs/vision.md` 9.3. Until that is answered, **do not port work into it
+and do not port work out of it.** Nothing about the design changes either way —
+`docs/` is engine-independent and always has been.
+
+The edition split survives the port unchanged, which is the first good sign:
+
+| | CONTENT | CONTEXT |
+|---|---|---|
+| `engine/` | `_RED` | `_BLUE` |
+| `engineGba/` | `firered` | `leafgreen` |
 
 ## Build
 
-From the repo root (a shim forwards into `engine/`):
+`bindDaemons.sh` builds an edition and launches it. **It defaults to the GBA
+spike, so `--classic` is how you reach the build that has a game in it.**
+
+```sh
+./bindDaemons.sh                    # CONTENT, GBA      -> mGBA
+./bindDaemons.sh context            # CONTEXT, GBA
+./bindDaemons.sh --classic          # CONTENT, Game Boy -> SameBoy
+./bindDaemons.sh context --classic  # CONTEXT, Game Boy
+./bindDaemons.sh --classic --debug  # Game Boy only; pokefirered has no debug target
+```
+
+The `make` shim still forwards into `engine/` only — it is the classic build:
 
 ```sh
 make content        # -> engine/daemonsContent.gbc
 make context        # -> engine/daemonsContext.gbc
-make play           # build CONTENT and launch it
-make vanilla-check  # prove the toolchain
-./bindDaemons.sh [content|context] [--clean]
+make verify-sprites # prove the ROMs contain the art in gfx/
+make vanilla-check  # prove the classic toolchain against pristine upstream
 ```
+
+For the GBA build, `make -C engineGba firered` (or `leafgreen`). Its equivalent
+of `vanilla-check` is `shasum -c firered.sha1` — a pristine build matches the
+retail ROM byte for byte, and did on 2026-09-02.
+
+**GBA toolchain.** `arm-none-eabi-gcc` from Homebrew (no sudo), plus `agbcc`
+built from source into `engineGba/tools/agbcc`. Homebrew's ARM gcc ships no
+libc, so `MODERN=1` fails on `string.h`; agbcc brings its own headers and is
+the path that works here.
 
 `red` and `blue` still work in `engine/` as aliases. The `_RED`/`_BLUE`
 assembler defines are **unchanged** — renaming those touches 47 asm files and

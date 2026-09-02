@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.22 — 2026-09-02
+
+### The GBA spike
+
+- **`CodeMusic/pokefirered-daemons` forked**, branch `context-content`. Both editions build and match the retail hashes byte for byte
+- **`engineGba/` symlink** alongside `engine/`. Neither vendored, both gitignored
+- **`bindDaemons.sh` now defaults to the GBA build**; `--classic` reaches the Game Boy one, which is where the slice is. `--debug` is Game Boy only
+- **`setup.sh` clones and wires both**, and builds `agbcc` — which installs *into* the fork and so does not survive a clone
+- **`vision.md` §9.3** records the case: 334 files of implementation against 5,343 lines of design; abilities and item descriptions are the real argument, not colour; invariant 5 stops being a constraint and the chart goes 15 → 17 types. **A spike, not a decision**
+
+---
+
 ## v11.21 — 2026-09-02
 
 ### The title screen, in both media

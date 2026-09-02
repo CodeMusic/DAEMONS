@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.21**
+**A total conversion — the living design bible, v11.22**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3364,6 +3364,57 @@ Renaming `NORMAL` to `CONTENT` in `constants/type_constants.asm` is a **readabil
 **`constants/type_constants.asm` also cannot be pasted wholesale.** Master wraps the list in `DEF PHYSICAL`, `DEF UNUSED_TYPES` / `UNUSED_TYPES_END`, `DEF SPECIAL` and `DEF NUM_TYPES`, and `names.asm` depends on three of those symbols. The standalone file in `patches/` defines none of them and would break the build immediately.
 
 The 8/7 physical–special split is intact and is exactly where 2.1 says it is: `const_next 20` (decimal, = `$14`).
+
+### 9.3 The GBA question — a spike, opened 2026-09-02
+
+**pret also disassembled FireRed.** *The question raised was whether the GBA lets this design express itself more appropriately*, and it is a real question rather than a tempting one.
+
+#### What would transfer, measured
+
+| | Size | Survives |
+|---|---|---|
+| `docs/` | **5,343 lines** | **All of it.** The design has never been engine-specific |
+| The generated source illustrations | ~30 files | **Yes** — high-res; only the downsampler is Game Boy-specific |
+| `tools/` | 1,630 lines | Partly. Crop and quantise port; 2bpp tile output does not |
+| 64 sprite PNGs | 4-shade, 40–56px | No — redraw from the sources |
+| 16 music files | GB channel data | **No.** GBA is a software mixer; total rewrite |
+| 236 asm/data edits | chart, names, scripts, maps | No |
+
+***334 files of implementation against 5,343 lines of design.*** **The expensive half is the half that ports.**
+
+#### The case for, and it is not colour
+
+| | |
+|---|---|
+| **Abilities** | *Gen 3 gives every species a passive.* **2.5 invented CONSENSUS because the chart needed a move to be legible** — an ability is a second axis for exactly that work, and Gen 1 does not have one |
+| **Item descriptions** | ***Gen 1 has none at all.*** **The eight MARKS, the boxes, 8.x's stones-that-are-inputs — every one currently gets a name and silence.** A writing-led project on the one generation with nowhere to write |
+| **A scripting language** | instead of asm for every sign and guard |
+
+#### What breaks, and one of it is an invariant
+
+***Invariant 5 stops being a constraint and becomes a preference.*** **On a DMG the machine and the meaning agree** — the player sees grey because that is what the hardware *is*, so the Review Board's colour feels **impossible**. *On GBA it is a saturation choice, and the rupture becomes a stylistic decision.* **It can still be good. It cannot be the same idea.**
+
+*Stated honestly: it is already softer than the invariant claims* — SGB palettes already put a blue logo and a tan coat on screen. **But colour arriving through a palette is not the same as colour being free.**
+
+***And the chart goes from 15 types to 17.*** **2 calls the fifteen names "exactly at the limit"** of the character count, and they were chosen as a *complete* argument. **Invariant 3 says the chart is the argument** — so two filler types is a worse chart. *Two good ones would be better than what exists.* **That is a design problem to solve before porting, not after.**
+
+#### Why it is a spike and not a decision
+
+***8's rule is the deciding one:*** **"the graveyard of ROM hacks is full of projects that designed 151 creatures and shipped zero towns."** *The vertical slice is **done**.* **A port resets implementation to zero while the design keeps galloping** — which is precisely the failure mode 8 exists to prevent, *arriving dressed as an upgrade.*
+
+**And the port is cheaper later, not dearer.** *The docs are fully portable, the art sources are portable, and a design that has been **played** de-risks the rewrite enormously.*
+
+**So both engines stay.** `engine/` keeps the slice; `engineGba/` answers one question — ***is the expressive gain real enough to pay for 334 files?*** — by building **one daemon with an ability and one MARK with a description**, and nothing else.
+
+#### Built 2026-09-02
+
+**`CodeMusic/pokefirered-daemons`**, branch `context-content`, `upstream` → pret. **Both editions build and both match the retail hashes byte for byte** — `pokefirered.gba: OK`, `pokeleafgreen.gba: OK`.
+
+***The edition split survives the port unchanged***, which is the first good sign: **`firered`/`leafgreen` maps onto `_RED`/`_BLUE`** with no design work at all. *Both disassemblies ship the same game twice and differ by a build flag.*
+
+**Toolchain note.** Homebrew's `arm-none-eabi-gcc` installs without sudo but **ships no libc**, so `MODERN=1` dies on `string.h`. **`agbcc` brings its own headers** and is the path that works — built from source into `engineGba/tools/agbcc`, which is why `setup.sh` now builds it.
+
+---
 
 ### 9.2 Order of operations
 

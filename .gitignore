@@ -1,9 +1,14 @@
 .DS_Store
 **/.DS_Store
 
-# engine/ -> ../pokered-daemons (the fork). Sibling repo, never vendored.
+# engine/    -> ../pokered-daemons      (Game Boy, the classic build)
+# engineGba/ -> ../pokefirered-daemons  (GBA, under evaluation)
+# Sibling repos, never vendored: both carry Nintendo-derived graphics.
 engine
+engineGba
 
 # built ROMs and their debug artefacts
 engine/*.gbc
 engine/*.sav
+engineGba/*.gba
+engineGba/*.sav
