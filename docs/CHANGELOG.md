@@ -17,6 +17,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
 
+### The intro face-off, and the wordmark corrected
+
+- **The intro squares up CODEMUSAI and CAREMUSAI** — *Penphin's two hemispheres pulled apart*, and the chart makes **LOGIC fail against CONTEXT.** The game opens on its own central argument before the player can read it, and **the one that loses is the one everybody expects to win.** CODEMUSAI lunges; CAREMUSAI opens
+- ***The dedup had to go, and that made the tilemaps trivial.*** The sheet is a deduplicated tile bank whose three tilemaps were authored against that exact dedup. **But the build reads it with `--columns`**, so three side-by-side 56×56 frames are three contiguous 49-tile runs — dropping `--remove-duplicates` makes the tilemaps `0-48 / 49-97 / 98-146`. Costs 2352 bytes; cheaper than reimplementing a dedup mapping
+- ***The wordmark was a shade too light, and the cause was mechanical.*** The vanilla splash uses **two ink conventions** — level 1 for the star and mark, **level 0 for every text strip** — and I applied one to all four. **`gamefreak_inc` is now pixel-identical to the version it replaced**
+- **The bold font is recovered rather than redrawn** — two-pixel strokes over five rows, proportional, with `P R N T` added to match. The splash strip reads **CODEMUSIC PRESENTS** in the same weight
+
 ### The splash is CodeMusic
 
 - **Four tiny assets, no code change.** The falling star becomes **a falling note**; the mark becomes **`{ ♪ }`** — braces are unambiguously code, a note unambiguously music; the strips read **CODEMUSIC**

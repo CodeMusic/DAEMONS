@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.7**
+**A `pokered` total conversion — the living design bible, v11.8**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2419,6 +2419,26 @@ So **The Bleed** — Route 1, Blanche → Callow — **is the road where the mis
 `SFX_SHOOTING_STAR` opens with **`pitch_sweep 2, -7`** — a **downward sweep**. ***It was always a glissando; it simply had no note attached to it.***
 
 **So it is left alone.** The animation already flings the tile diagonally across the screen, and swapping the star for a note **makes the existing sound mean something** rather than requiring a new one. *Changing it would have been change for its own sake.*
+
+#### The face-off — CODEMUSAI against CAREMUSAI
+
+**Built 2026-09-01.** Vanilla's intro squares up Nidorino and Gengar. **Ours opens on its own central argument.**
+
+**8.3 calls CODEMUSAI and CAREMUSAI *Penphin's two hemispheres pulled apart into two creatures*, and 2's chart makes LOGIC fail against CONTEXT** — *"the game's central argument delivered as an evolution branch, with no dialogue at all."*
+
+***An intro is dialogue-free by nature.*** So the game opens on the matchup, before the player can possibly read it, **and the one that loses is the one everybody expects to win.**
+
+*The staging carries it.* **CODEMUSAI lunges. CAREMUSAI opens.** One of them is attacking and the other is not.
+
+**Six frames** — CODEMUSAI three at 48×48, CAREMUSAI three at 56×56 composed into the 168×56 sheet.
+
+#### The dedup had to go, and that made the tilemaps trivial
+
+**The sheet is not three pictures; it is a deduplicated tile bank**, and its three 49-byte tilemaps were authored against that exact dedup. **Replacing the art without regenerating them produces garbage.**
+
+***But the build reads it with `--columns`***, which takes tiles down each 8-pixel column before moving right — **so three side-by-side 56×56 frames are three contiguous runs of 49 tiles.** Dropping `--remove-duplicates` makes the tilemaps **`0-48`, `49-97`, `98-146`** and nothing has to be recomputed.
+
+*It costs 2352 bytes where the deduped bank was smaller.* **Paid, because the alternative is reimplementing a dedup mapping to save under a kilobyte in a bank that had room.**
 
 #### Monochrome, deliberately
 
