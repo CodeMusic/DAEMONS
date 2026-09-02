@@ -5,6 +5,21 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.11 — 2026-09-02
+
+### The player
+
+- **`gfx/sprites/red.png` redrawn** — six 16×16 frames, hand-drawn via `tools/genplayer.py`. Cap brim-forward, a light strap across the chest, the satchel visible on the back when walking away
+- **Vanilla's idiom kept deliberately** — the player stands next to thirty NPC sprites that are still vanilla's
+- **`docs/gemini-prompts-player.txt` rewritten** — it had asked for a throwing pose at `gfx/intro/red_nidorino_1.png`, which is CODEMUSAI; following it would have overwritten the intro. Now three prompts (front 56×56, title 40×56, back 32×32) plus the two shrink frames, and the hand-drawn slots marked as such
+- **Still vanilla**: `red_bike.png`, the three fishing frames, and the three generated pics
+
+### The intro face-off was only in one edition
+
+- **`_BLUE` still included `blue_jigglypuff_*`** — CONTEXT was opening on Jigglypuff. The conditional is removed; both editions share CODEMUSAI, per 8.4 and invariant 3
+
+---
+
 ## v11.10 — 2026-09-02
 
 ### The eight MARKS have icons

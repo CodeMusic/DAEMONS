@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.10**
+**A `pokered` total conversion — the living design bible, v11.11**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2518,6 +2518,37 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 **This deletes `Nintendo` and `Creatures inc.` from the built ROM.** *That is a different act from renaming a town* — the engine is still pret's disassembly of their work, and the notice is a legal one rather than a decoration.
 
 **It is done because the ROM is not what this project distributes.** `patches/` is; `gfx/` here contains nothing Nintendo-derived; and **both READMEs credit pret and Nintendo directly.** *A total conversion that ships no copyrighted content still owes the attribution — it just does not owe it on this screen.*
+
+#### 7.14e The player — the figure you look at all game
+
+**Built 2026-09-02.** The player exists in nine files across four sizes, and *only one of them is the one the question is actually about:* **`gfx/sprites/red.png`, six 16×16 frames.** Facing right is the side frame with OAM's x-flip, so there is no fourth direction.
+
+| | | |
+|---|---|---|
+| `gfx/sprites/red.png` | 16×96 | **drawn** — down, up, side, and a walk frame for each |
+| `gfx/sprites/red_bike.png` | 16×96 | the same six, on the bicycle |
+| `gfx/overworld/red_fish_*.png` | 16×8 | three fishing half-frames |
+| `gfx/player/red.png` | 56×56 | the *this is you* screen, and the Hall of Fame |
+| `gfx/title/player.png` | 40×56 | the title screen |
+| `gfx/player/redb.png` | 32×32 | **every battle in the game** |
+| `gfx/player/shrink1/2.png` | 56×56 | the naming-screen animation |
+
+***The overworld sprite had to be hand-drawn, and that is not a preference.*** Every other art pipeline here **resamples a large illustration down**, which is proven at 40–56px and **fails at 16** — a generated figure loses its face, its silhouette and its walk cycle in the same downsample. *8's sprite doc already ruled out generating anything under 16×16;* this is that rule meeting the asset it was written for.
+
+**It is drawn in vanilla's idiom on purpose** — same height, same head-to-body ratio, same two-tone shading, same outline weight. **The player stands next to thirty NPC sprites that are still vanilla's**, and *a figure drawn to a different set of rules would read as a mistake rather than as a person.* **What changes is who it is:**
+
+| | |
+|---|---|
+| **The cap sits brim-forward** | vanilla's is turned back; this is the cheapest possible silhouette change and it works at 16px |
+| **A light strap crosses the chest** | and the satchel it carries **shows on the back** in the frames where the player walks away from you |
+
+***The strap is the one detail that survives this size, so it is the right one to spend.*** **1.3 says the box is a machine you offer a daemon as a host** — and the player is carrying one, on a strap, in every frame that could show it.
+
+#### The intro face-off was only in one edition
+
+***Found while auditing the above.*** **Vanilla gives each edition its own front mon** — `IF DEF(_RED)` takes `red_nidorino_*`, `IF DEF(_BLUE)` takes `blue_jigglypuff_*` — and *only the `_RED` path had been replaced.* **CONTEXT was still opening on Jigglypuff.**
+
+**The conditional is gone.** *8.4 fixed both editions to the same story, and the face-off **is** that story* — CODEMUSAI against CAREMUSAI, **LOGIC failing against CONTEXT.** ***An argument that changes by cartridge is not one*** (invariant 3, arriving somewhere it was not written for), so both editions now include the same three frames and `blue_jigglypuff_*.png` falls out of the build.
 
 ### 7.15 The space audit — a claim I repeated for days and never measured
 

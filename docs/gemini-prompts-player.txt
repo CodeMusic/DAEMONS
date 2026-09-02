@@ -1,63 +1,80 @@
 GEMINI PROMPTS - the player
 ======================================================================
 
-Five figures, eight files. Vanilla's player holds a Pokeball; ours holds a box,
-and 1.3 is unambiguous about what a box is: a machine you offer a daemon as a
-host, not a container you shut it in.
+Vanilla's player holds a Pokeball; ours holds a box, and 1.3 is unambiguous
+about what a box is: a machine you offer a daemon as a host, not a container
+you shut it in.
 
-Do number 1 first and ATTACH IT to every one after. They are all the same
+WHAT IS ALREADY DRAWN, AND WHAT IS NOT
+----------------------------------------------------------------------
+
+The overworld sprite - the figure you look at all game - is DONE, and was
+hand-drawn rather than generated. Sixteen pixels is one tile; a generated
+figure loses its face, its silhouette and its walk cycle in the same
+downsample that works fine at 40-56px. See tools/genplayer.py.
+
+  DONE   gfx/sprites/red.png            16x96   six walking frames
+  todo   gfx/sprites/red_bike.png       16x96   the same six, on the bicycle
+  todo   gfx/overworld/red_fish_*.png   16x8    three fishing half-frames
+
+Those three are also hand-drawn when their time comes, and none of them is
+reachable in the slice. Do not ask Gemini for them.
+
+THE THREE BELOW ARE THE ONES THAT NEED ART.
+The character is already fixed by the overworld sprite: a cap worn brim
+forward, a short jacket, and a satchel on a strap across the chest. Match it.
+
+Do number 1 first and ATTACH IT to the two after. They are all the same
 person, and a fresh conversation invents a different one.
 
-Save each to the path named in its block, as .png or .jpeg either way.
+Save each to the path named in its block, as .png or .jpeg either way, then
+run `python3 tools/sprite.py` on it.
 
 ----------------------------------------------------------------------
-1. THE PLAYER, intro portrait  ->  gfx/player/red.png  (56x56)
+1. THE PLAYER, front portrait  ->  gfx/player/red.png  (56x56)
+   Crystal's "this is you" screen, and the Hall of Fame.
 ----------------------------------------------------------------------
 
-A young trainer standing three-quarters to the viewer, wearing a cap and a short jacket, one arm raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident, still, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+A young trainer standing three-quarters to the viewer, wearing a cap with the brim forward and a short jacket, with a satchel hanging at the hip on a strap that crosses the chest diagonally. One arm is raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident, still, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
 
 ----------------------------------------------------------------------
 2. THE PLAYER, title screen  ->  gfx/title/player.png  (40x56)
-   attach: the intro portrait
+   attach: the front portrait
 ----------------------------------------------------------------------
 
-The same trainer and the same unit, framed for a title screen: full body, standing straight on, the unit held down at the side rather than raised. Taller than wide. Same cap, same jacket, same face. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+The same trainer, the same cap, jacket, satchel and unit, framed for a title screen: full body, standing straight on, the unit held down at the side rather than raised. Taller than wide. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
 
 ----------------------------------------------------------------------
 3. THE PLAYER, back view  ->  gfx/player/redb.png  (32x32)
-   attach: the intro portrait
+   attach: the front portrait
 ----------------------------------------------------------------------
 
-The same trainer seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The back of the cap is the most readable shape. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
-
-----------------------------------------------------------------------
-4. THE PLAYER, intro animation  ->  gfx/intro/red_nidorino_1.png  (48x48)
-   attach: the intro portrait
-----------------------------------------------------------------------
-
-The same trainer in a side view, facing right, standing squarely with feet apart and the unit held ready at the hip, about to throw. Whole figure, from the side, tightly framed. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
-
+The same trainer seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The back of the cap and the satchel sitting between the shoulder blades are the two readable shapes. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
 
 ======================================================================
-THE FOUR REMAINING FRAMES
+THE TWO SHRINK FRAMES
 ======================================================================
 
-Ask each of these in the same conversation as number 4, attaching it:
+Ask these in the same conversation as number 1, attaching it:
 
   Now draw the same figure again, in the same style, same outline weight,
   same four flat tones, same plain white background. This time: [X].
 
-  gfx/intro/red_nidorino_2.png       the same side view, arm drawn back further behind the shoulder, weight shifted onto the back foot
-  gfx/intro/red_nidorino_3.png       the same side view at the end of the throw, arm extended forward and empty, weight on the front foot
-  gfx/player/shrink1.png             the same intro portrait, drawn noticeably smaller and narrower within the same frame, as if seen from further away
-  gfx/player/shrink2.png             the same intro portrait, smaller again - about half the height of the original, centred in the frame
+  gfx/player/shrink1.png   the same portrait, drawn noticeably smaller and narrower within the same frame, as if seen from further away
+  gfx/player/shrink2.png   the same portrait, smaller again - about half the height of the original, centred in the frame
 
-Two notes.
+Both are 56x56, and they play as an animation on the naming screen, so the
+figure must stay centred and lose height evenly.
+
+======================================================================
+NOT THE PLAYER
+======================================================================
+
+gfx/intro/red_nidorino_1..3.png are CODEMUSAI, not the trainer - the intro
+face-off is CODEMUSAI against CAREMUSAI and the player is not in it. An
+earlier version of this file asked for a throwing pose at that path; it was
+wrong, and following it would overwrite the intro.
 
 The back view (number 3) is the one that matters most - it is on screen for
 every battle in the game, at 32x32. Favour the silhouette of the cap and the
-shoulders over any detail; detail at that size becomes grey mush.
-
-The unit is the whole ball-to-box redesign in one object. The failure mode is
-a cardboard box or a dice-like cube: both say container, which is the reading
-1.3 replaced.
+satchel over any detail; detail at that size becomes grey mush.
