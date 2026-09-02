@@ -20,7 +20,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from gbimg import write_png
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
+# The vanilla splash does not use one convention: the star and the mark ink at
+# level 1, while every text strip inks at level 0. They render through
+# different palettes. Applying one value to all four made the wordmark a shade
+# too light, which is what "a bit thin" looked like.
 INK, PAPER = 1, 3
+TEXT_INK = 0
 
 def grid(art):
     return [[INK if c == '#' else (2 if c == '+' else PAPER) for c in row] for row in art]
@@ -67,42 +72,45 @@ MARK = [
     "...##.......##..",
 ]
 
+# Recovered from the earlier CODEMUSIC wordmark (engine 9a12df41) rather than
+# redrawn. The 5x7 one-pixel font written first was too thin at this size --
+# these are two-pixel strokes over five rows, proportional, and they hold.
+# P R N T did not exist in the original nine letters and are drawn to match.
 F = {
- 'C':[".###.","#...#","#....","#....","#....","#...#",".###."],
- 'O':[".###.","#...#","#...#","#...#","#...#","#...#",".###."],
- 'D':["###..","#..#.","#...#","#...#","#...#","#..#.","###.."],
- 'E':["#####","#....","#....","####.","#....","#....","#####"],
- 'M':["#...#","##.##","#.#.#","#...#","#...#","#...#","#...#"],
- 'U':["#...#","#...#","#...#","#...#","#...#","#...#",".###."],
- 'S':[".####","#....","#....",".###.","....#","....#","####."],
- 'I':["#####","..#..","..#..","..#..","..#..","..#..","#####"],
- 'p':[".....",".....","####.","#...#","####.","#....","#...."],
- 'r':[".....",".....","#.###","##...","#....","#....","#...."],
- 'e':[".....",".....",".###.","#...#","#####","#....",".###."],
- 's':[".....",".....",".####","#....",".###.","....#","####."],
- 'n':[".....",".....","#.##.","##..#","#...#","#...#","#...#"],
- 't':["..#..","..#..","#####","..#..","..#..","..#.#","...#."],
- ' ':["....."]*7,
+ 'C':[".####","##...","##...","##...",".####"],
+ 'O':[".###.","##.##","##.##","##.##",".###."],
+ 'D':["####.","##.##","##.##","##.##","####."],
+ 'E':["####","##..","###.","##..","####"],
+ 'M':["##...##","###.###","##.#.##","##...##","##...##"],
+ 'U':["##.##","##.##","##.##","##.##",".###."],
+ 'S':[".####","##...",".###.","...##","####."],
+ 'I':["##","##","##","##","##"],
+ 'P':["####.","##.##","####.","##...","##..."],
+ 'R':["####.","##.##","####.","##.##","##.##"],
+ 'N':["##..##","###.##","##.###","##.###","##..##"],
+ 'T':["######","..##..","..##..","..##..","..##.."],
+ ' ':["","","","",""],
 }
 
 def strip(text, w, h=8):
-    adv = {c: (3 if c == ' ' else 6) for c in set(text)}
-    width = sum(adv[c] for c in text) - 1
+    glyphs = [F[c] for c in text]
+    widths = [(4 if c == ' ' else len(F[c][0])) for c in text]
+    width = sum(widths) + len(text) - 1
     if width > w:
         sys.exit("'%s' is %d px, will not fit %d" % (text, width, w))
     g = [[PAPER]*w for _ in range(h)]
     x = (w - width)//2
-    for c in text:
+    for c, gw in zip(text, widths):
         for r, row in enumerate(F[c]):
-            for i, p in enumerate(row):
-                if p == '#':
-                    g[r][x+i] = INK
-        x += adv[c]
+            for i, px in enumerate(row):
+                if px == '#':
+                    g[r+1][x+i] = TEXT_INK
+        x += gw + 1
     return g
 
 JOBS = [("gfx/splash/falling_star.png",      grid(NOTE8)),
         ("gfx/splash/gamefreak_logo.png",    grid(MARK)),
-        ("gfx/splash/gamefreak_presents.png", strip("CODEMUSIC presents", 104)),
+        ("gfx/splash/gamefreak_presents.png", strip("CODEMUSIC PRESENTS", 104)),
         ("gfx/title/gamefreak_inc.png",      strip("CODEMUSIC", 72))]
 
 for path, g in JOBS:

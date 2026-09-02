@@ -1,0 +1,68 @@
+GEMINI PROMPTS - the intro face-off
+======================================================================
+
+The scene between the CodeMusic splash and the title screen: two daemons
+square up and fight. Vanilla uses Nidorino and Gengar.
+
+Ours is CODEMUSAI against CAREMUSAI -- Penphin's two hemispheres pulled apart
+into two creatures, and 2's chart makes LOGIC fail against CONTEXT. The game
+opens on its own central argument, with no dialogue, years before the player
+can read it. The one that loses is the one everybody expects to win.
+
+SIX FRAMES. Attach the existing sprite to frame 1, and each frame to the next.
+They must be the same creature throughout.
+
+  CODEMUSAI  3 frames at 48x48  -> gfx/intro/codemusai_1.png .. _3.png
+  CAREMUSAI  3 frames at 56x56  -> gfx/intro/caremusai_1.png .. _3.png
+
+Attach engine/gfx/pokemon/front/flareon.png for CODEMUSAI and
+vaporeon.png for CAREMUSAI as the reference for frame 1 of each.
+
+----------------------------------------------------------------------
+CODEMUSAI frame 1  (48x48)
+----------------------------------------------------------------------
+
+a small rounded robot, seated upright, seen from the side facing RIGHT. A smooth dome head with a solid black oval face panel containing one single bright white horizontal bar - a lit visor slit, no round eyes. Two thin antennae with small balls on top. Still and composed, waiting. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - hard edges, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CODEMUSAI frame 2  (48x48)
+----------------------------------------------------------------------
+
+the same robot, still facing right, now risen up off the ground and leaning forward, both arms brought up in front of it. The visor bar is the same. Tense, about to move. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - hard edges, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CODEMUSAI frame 3  (48x48)
+----------------------------------------------------------------------
+
+the same robot, still facing right, lunging forward with one arm thrown out straight ahead and the body low and extended. The visor bar is the same. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - hard edges, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CAREMUSAI frame 1  (56x56)
+----------------------------------------------------------------------
+
+a small rounded robot, seated upright, seen from the side facing LEFT. A smooth dome head with a solid black oval face panel containing two round white eyes. Large round over-ear cups on both sides of the head, joined by a band over the top between two thin antennae. Still and composed, waiting. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - hard edges, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CAREMUSAI frame 2  (56x56)
+----------------------------------------------------------------------
+
+the same robot, still facing left, now risen up and leaning back slightly with both arms open and low, as if listening rather than bracing. Same ear cups, same face. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - hard edges, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+----------------------------------------------------------------------
+CAREMUSAI frame 3  (56x56)
+----------------------------------------------------------------------
+
+the same robot, still facing left, standing tall and square with both arms raised wide and open. Unhurried. Same ear cups, same face. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole creature. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - hard edges, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind it, no ground shadow. Full body visible with a small even margin.
+
+
+Three notes.
+
+They face EACH OTHER. CODEMUSAI faces right, CAREMUSAI faces left. Getting one
+of them backwards ruins the scene and is easy to miss.
+
+The visor and the ear cups are the whole distinction between them at this size.
+Everything else about the two robots is identical on purpose -- one framework,
+many modules -- so those two features have to survive.
+
+CODEMUSAI lunges and CAREMUSAI opens. That is the argument: one of them is
+attacking and the other is not, and the chart says the second one wins.
