@@ -5,7 +5,7 @@
 ENGINE  := engine
 VANILLA := /tmp/pokered-vanilla
 
-.PHONY: all content context content-debug context-debug clean play play-debug vanilla-check bible
+.PHONY: all content context content-debug context-debug clean play play-debug vanilla-check verify-sprites bible
 
 all content context content-debug context-debug clean:
 	$(MAKE) -C $(ENGINE) $@
@@ -32,6 +32,12 @@ vanilla-check:
 	@cd $(VANILLA) && grep gbc roms.sha1 | shasum -c -
 	@git -C $(ENGINE) worktree remove --force $(VANILLA)
 	@echo "toolchain sound — any break is ours"
+
+## verify-sprites — prove the built ROMs contain the art in gfx/.
+## A .pic is an intermediate: make deletes it after linking, so a .pic left
+## with a newer timestamp than its .png ships vanilla art in silence.
+verify-sprites:
+	@python3 tools/verify_sprites.py
 
 ## bible — cut a PDF snapshot, e.g. make bible V=2.0
 bible:

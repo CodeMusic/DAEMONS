@@ -15,6 +15,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - **`r` re-cut** — it had been split one column late out of the vanilla `re` ligature and kept a sliver of the `e`
 - **The title-screen year is no longer blocked** — the 2026-08-29 entry deferred it for want of digit glyphs
 
+### A stale intermediate shipped vanilla sprites
+
+- **NIBBLE appeared in battle as vanilla Rattata.** `gfx/pokemon/front/rattata.pic` carried a timestamp newer than the `.png` it is built from, so make called it up to date and every ROM linked after that point embedded it
+- **A `.pic` is an intermediate** — make deletes it after linking, so the offending file was gone before it could be inspected, and rebuilding it from the art on disk gives a different size (157 bytes, not 215): it was never built from our sprite
+- **`make verify-sprites`** — rebuilds all 64 daemon pics and searches each ROM for their exact bytes. Compiling is not evidence; this is the same reasoning as decoding the ROM with the charmap to check strings
+- **`context-debug` had never been built this session** — three of four ROMs were being rebuilt
+
 ### The intro face-off
 
 - **CAREMUSAI un-mirrored** — the pair now face each other
@@ -32,6 +39,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   - CONTENT — one dot grid, dots shrinking toward the screen
   - CONTEXT — the same cell over itself at an offset: the pattern is the relationship, not the marks
 - Border palettes rewritten: index 0 is the light ground, index 3 the ink
+
+### A stale intermediate shipped vanilla sprites
+
+- **NIBBLE appeared in battle as vanilla Rattata.** `gfx/pokemon/front/rattata.pic` carried a timestamp newer than the `.png` it is built from, so make called it up to date and every ROM linked after that point embedded it
+- **A `.pic` is an intermediate** — make deletes it after linking, so the offending file was gone before it could be inspected, and rebuilding it from the art on disk gives a different size (157 bytes, not 215): it was never built from our sprite
+- **`make verify-sprites`** — rebuilds all 64 daemon pics and searches each ROM for their exact bytes. Compiling is not evidence; this is the same reasoning as decoding the ROM with the charmap to check strings
+- **`context-debug` had never been built this session** — three of four ROMs were being rebuilt
 
 ### The intro face-off, and the wordmark corrected
 
