@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.19**
+**A `pokered` total conversion — the living design bible, v11.20**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2545,6 +2545,31 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 **This deletes `Nintendo` and `Creatures inc.` from the built ROM.** *That is a different act from renaming a town* — the engine is still pret's disassembly of their work, and the notice is a legal one rather than a decoration.
 
 **It is done because the ROM is not what this project distributes.** `patches/` is; `gfx/` here contains nothing Nintendo-derived; and **both READMEs credit pret and Nintendo directly.** *A total conversion that ships no copyrighted content still owes the attribution — it just does not owe it on this screen.*
+
+#### 7.14f Craft rule 6 governs the art, and the art had stopped obeying it
+
+***Raised 2026-09-02, from a screenshot:*** **"our is in the shadows and doesn't have a face... is it a dark game? because if so, that is not what I want to make."**
+
+**It is not, and this document says so in its own words.** *Craft rule 6:* **"A game that is funny in its ordinary moments earns the right to be serious in three or four of them. Corpus employees are cheerful and absurd; the horror is what they are cheerful *about*."**
+
+*And the rest of the bible holds the same line everywhere it matters:*
+
+| | |
+|---|---|
+| **Scorn** (7.x) | *"Never sneers, never gloats. **Genuinely warm**, genuinely pleased to meet you."* |
+| **CAIRN** (5.1) | *"His creed, said plainly and **sympathetically**... **He is right, and that is the point.**"* |
+| **The institution** (4.x) | *"The silence is **not shame and not cruelty**... **Nobody decides to be cruel.**"* |
+| **Craft rule 3** | pathology words are refused outright — `#MANIAC` → `ARCHIVIST`, `TAINT` → `SKEW` |
+
+***This design has no villain.*** **Its central move is refusing to make anyone a monster**, and the greyscale is *invariant 5's spending decision about where colour is used*, **not a mood.**
+
+##### The art was arguing the opposite
+
+**Every player prompt in `docs/gemini-prompts-player.txt` was written asking for a figure who is *"still, composed"* and *"confident"* — and not one of them asked for warmth.** *Then it asked for a wide flat brim*, which ***shadows a face by construction.*** **All three generated samples came back with the face in darkness and one had no face at all.** *That was a fault in the prompt, not the generator.*
+
+**The comparison is the proof.** Vanilla's title figure spends its head region on **light** — hair, a lit face, open shapes. Ours spent it on **a black void with three light pixels in it.**
+
+***So the tone paragraph is now mandatory on every character prompt***, and it says the face must be **one of the lightest areas of the figure, never the darkest.** *At 40×56 a face is six pixels across;* **if those six pixels are black, the character is a silhouette, and the art is arguing against the writing.**
 
 #### 7.14e The player — the figure you look at all game
 

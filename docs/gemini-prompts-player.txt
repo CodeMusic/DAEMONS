@@ -50,21 +50,21 @@ run `python3 tools/sprite.py` on it.
    Crystal's "this is you" screen, and the Hall of Fame.
 ----------------------------------------------------------------------
 
-A figure standing three-quarters to the viewer in a long coat that reaches the ground, sleeved, with no legs visible below it, and a wide flat-brimmed hat whose brim is clearly wider than their shoulders. A satchel hangs at the hip on a strap that crosses the chest diagonally. They read as a scientist, a magician and a wizard at once - the coat is both a lab coat and a robe, and the hat is an alchemist's, not a pointed wizard's. One arm is raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident, still, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+A figure standing three-quarters to the viewer in a long coat that reaches the ground, sleeved, with no legs visible below it, and a wide flat-brimmed hat whose brim is clearly wider than their shoulders. A satchel hangs at the hip on a strap that crosses the chest diagonally. They read as a scientist, a magician and a wizard at once - the coat is both a lab coat and a robe, and the hat is an alchemist's, not a pointed wizard's. One arm is raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident and good-humoured, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
 
 ----------------------------------------------------------------------
 2. THE PLAYER, title screen  ->  gfx/title/player.png  (40x56)
    attach: the front portrait
 ----------------------------------------------------------------------
 
-The same figure, the same wide-brimmed hat, long coat, satchel strap and unit, framed for a title screen: full body, standing straight on and facing the viewer, the unit held down at one side rather than raised. Taller than wide, and the brim still the widest thing in the picture. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+The same figure, the same wide-brimmed hat, long coat, satchel strap and unit, framed for a title screen: full body, standing straight on and facing the viewer, the unit held down at one side rather than raised. Taller than wide, and the brim still the widest thing in the picture. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
 
 ----------------------------------------------------------------------
 3. THE PLAYER, back view  ->  gfx/player/redb.png  (32x32)
    attach: the front portrait
 ----------------------------------------------------------------------
 
-The same figure seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The underside of the hat brim and the satchel sitting between the shoulder blades are the two readable shapes. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+The same figure seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The underside of the hat brim and the satchel sitting between the shoulder blades are the two readable shapes. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
 
 ======================================================================
 THE TWO SHRINK FRAMES
@@ -95,6 +95,35 @@ every battle in the game, at 32x32. Favour the silhouette of the cap and the
 satchel over any detail; detail at that size becomes grey mush.
 
 
+
+======================================================================
+BEFORE ANY OF THESE: THE FACE IS LIT
+======================================================================
+
+Craft rule 6: the game is funny in its ordinary moments and serious in three
+or four of them. Corpus employees are cheerful. Scorn is genuinely warm and
+never sneers. CAIRN is right and nothing undercuts him. Nobody in this design
+is a monster, and the player is not a shadow.
+
+Every prompt below therefore ends with the same paragraph, and it is not
+optional:
+
+  The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly
+  up and casts NO shadow across the eyes. The face must be one of the
+  LIGHTEST areas of the whole figure, never the darkest. The expression is
+  open, alert and good-humoured - someone pleased to be here. Not grim, not
+  stern, not brooding, not mysterious, not a silhouette, not noir. Eyes
+  clearly drawn and clearly readable.
+
+A wide flat brim shadows a face by construction, and a generator asked for one
+will put the face in darkness every time unless told not to. The first three
+samples all came back shadowed and one had no face at all. That was a fault in
+the prompt, not in the generator.
+
+Check it after conversion: at 40x56 the face is about six pixels across. If
+those six pixels are black, the character is a silhouette and it is wrong.
+
+
 ======================================================================
 THE TITLE FIGURE  -  ask for samples, then convert
 ======================================================================
@@ -116,7 +145,7 @@ crop, so give it the pair.
 THE PROMPT
 ----------------------------------------------------------------------
 
-A standing figure seen from the front, taller than wide, filling the frame from head to foot. They wear a WIDE FLAT-BRIMMED HAT - the brim is the widest thing in the picture, clearly wider than their shoulders, flat and level, not pointed and not a cowboy hat. Below it a LONG COAT that reaches the ground, sleeved, hanging straight, with no legs visible - only the toes of two boots showing at the very bottom. A satchel strap crosses the chest diagonally from one shoulder to the opposite hip. In the hand on one side, held down at their side, is a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side - a machine you would ssh into, a little server. It must not look like it opens: no seam around the middle, no lid, no button, no clasp. The figure reads as a scientist, a magician and a wizard at the same time, and the coat is what does that - it is a lab coat and a robe at once. Still, composed, facing the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Whole figure visible with a small even margin.
+A standing figure seen from the front, taller than wide, filling the frame from head to foot. They wear a WIDE FLAT-BRIMMED HAT - the brim is the widest thing in the picture, clearly wider than their shoulders, flat and level, not pointed and not a cowboy hat. Below it a LONG COAT that reaches the ground, sleeved, hanging straight, with no legs visible - only the toes of two boots showing at the very bottom. A satchel strap crosses the chest diagonally from one shoulder to the opposite hip. In the hand on one side, held down at their side, is a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side - a machine you would ssh into, a little server. It must not look like it opens: no seam around the middle, no lid, no button, no clasp. The figure reads as a scientist, a magician and a wizard at the same time, and the coat is what does that - it is a lab coat and a robe at once. Facing the viewer, relaxed and unhurried. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Whole figure visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
 
 Then, in the same conversation:
 
