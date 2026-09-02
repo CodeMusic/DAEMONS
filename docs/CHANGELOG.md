@@ -13,6 +13,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - **`engineGba/` symlink** alongside `engine/`. Neither vendored, both gitignored
 - **`bindDaemons.sh` now defaults to the GBA build**; `--classic` reaches the Game Boy one, which is where the slice is. `--debug` is Game Boy only
 - **`setup.sh` clones and wires both**, and builds `agbcc` — which installs *into* the fork and so does not survive a clone
+- **A debug build for the GBA** — pokefirered ships none, so `firered_debug` is ours: its own ROM and save, a party picked for abilities, one of each kind of item so the description window can be read, all badges, and hold-B to avoid grass. With `DAEMONS_DEBUG=0` the retail builds still match their `.sha1` byte for byte
 - **`vision.md` §9.3** records the case: 334 files of implementation against 5,343 lines of design; abilities and item descriptions are the real argument, not colour; invariant 5 stops being a constraint and the chart goes 15 → 17 types. **A spike, not a decision**
 
 ---

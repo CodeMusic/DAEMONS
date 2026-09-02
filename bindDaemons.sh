@@ -5,8 +5,9 @@
 #   ./bindDaemons.sh context              CONTEXT edition, GBA
 #   ./bindDaemons.sh --classic            CONTENT edition, Game Boy
 #   ./bindDaemons.sh context --classic    CONTEXT edition, Game Boy
+#   ./bindDaemons.sh --debug              GBA testing build
+#   ./bindDaemons.sh --classic --debug    Game Boy testing build
 #   ./bindDaemons.sh --clean
-#   ./bindDaemons.sh --classic --debug    with upstream's debug mode
 #
 # TWO ENGINES, ON PURPOSE.
 #
@@ -23,13 +24,24 @@
 # both disassemblies ship the same game twice and differ by a build flag.
 #
 # --debug builds a separate ROM with its own save, so a debug run never touches
-# a real playthrough. It is Game Boy only -- pokefirered has no equivalent
-# target -- and in it:
+# a real playthrough. Both engines have one, but they are not the same thing:
 #
-#   SELECT on the title screen   debug menu -- start a game with a party,
-#                                fly anywhere, all the usual test hooks
-#   hold B                       skip trainer battles, the Safari step
-#                                counter, and some NPC scripts
+#   --classic --debug   upstream's own debug mode.
+#                       SELECT on the title screen opens the menu -- start with
+#                       a party, fly anywhere, the usual hooks.
+#                       hold B skips trainer battles and some NPC scripts.
+#
+#   --debug             ours. pokefirered ships no debug build at all, so this
+#                       is one we added: a new game starts with six daemons
+#                       picked for their ABILITIES, one of each KIND of item so
+#                       the description window can be read, all eight badges and
+#                       999999.
+#                       hold B walks through grass unmolested.
+#
+# The GBA one is scaffolding for the 9.3 spike rather than a general debug menu:
+# it exists to put abilities and item descriptions in front of you quickly,
+# because those are the two things being evaluated. With DAEMONS_DEBUG=0 the
+# retail builds still match their .sha1 byte for byte.
 #
 # Saves live beside the ROM and survive rebuilds, so a playthrough is not lost
 # when you change a line.
@@ -69,16 +81,17 @@ if [[ $CLASSIC -eq 1 ]]; then
   fi
   command -v rgbasm >/dev/null || { echo "rgbds missing — run: brew install rgbds" >&2; exit 1; }
 else
-  [[ $DEBUG -eq 1 ]] && {
-    echo "--debug is Game Boy only; pokefirered has no debug target." >&2
-    echo "Did you mean: ./bindDaemons.sh $EDITION --classic --debug" >&2; exit 1; }
   DIR=engineGba
   EMU=mGBA
   EMU_HINT="brew install --cask mgba"
   case "$EDITION" in
-    content) TARGET=firered;   ROM=pokefirered.gba ;;
-    context) TARGET=leafgreen; ROM=pokeleafgreen.gba ;;
+    content) TARGET=firered ;;
+    context) TARGET=leafgreen ;;
   esac
+  [[ $DEBUG -eq 1 ]] && TARGET="${TARGET}_debug"
+  # pokefirered names the ROM after the build, so the debug build gets its own
+  # file and therefore its own .sav.
+  ROM="poke${TARGET}.gba"
   # agbcc lives inside the engine checkout; the ARM binutils it calls do not.
   export PATH="/opt/homebrew/bin:$PATH"
   command -v arm-none-eabi-as >/dev/null || {
@@ -95,7 +108,13 @@ fi
 echo "building ${TARGET} (${DIR})…"
 make -C "$DIR" "$TARGET" -j8 >/dev/null
 
-[[ $DEBUG -eq 1 ]] && echo "  debug build: SELECT on the title screen opens the menu; hold B to skip battles."
+if [[ $DEBUG -eq 1 ]]; then
+  if [[ $CLASSIC -eq 1 ]]; then
+    echo "  debug build: SELECT on the title screen opens the menu; hold B to skip battles."
+  else
+    echo "  debug build: a new game starts with a party, a bag, all badges and 999999; hold B to avoid grass."
+  fi
+fi
 
 if [[ ! -d "/Applications/$EMU.app" ]]; then
   echo "No $EMU found. Try: $EMU_HINT" >&2

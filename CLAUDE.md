@@ -61,7 +61,8 @@ spike, so `--classic` is how you reach the build that has a game in it.**
 ./bindDaemons.sh context            # CONTEXT, GBA
 ./bindDaemons.sh --classic          # CONTENT, Game Boy -> SameBoy
 ./bindDaemons.sh context --classic  # CONTEXT, Game Boy
-./bindDaemons.sh --classic --debug  # Game Boy only; pokefirered has no debug target
+./bindDaemons.sh --debug            # GBA testing build (ours)
+./bindDaemons.sh --classic --debug  # Game Boy testing build (upstream's)
 ```
 
 The `make` shim still forwards into `engine/` only — it is the classic build:
@@ -73,9 +74,18 @@ make verify-sprites # prove the ROMs contain the art in gfx/
 make vanilla-check  # prove the classic toolchain against pristine upstream
 ```
 
-For the GBA build, `make -C engineGba firered` (or `leafgreen`). Its equivalent
-of `vanilla-check` is `shasum -c firered.sha1` — a pristine build matches the
-retail ROM byte for byte, and did on 2026-09-02.
+For the GBA build, `make -C engineGba firered` (or `leafgreen`, or
+`firered_debug`). Its equivalent of `vanilla-check` is `shasum -c firered.sha1`
+— a pristine build matches the retail ROM byte for byte, and still did after
+the debug scaffolding went in, which is the check that matters.
+
+**pokefirered ships no debug build**, unlike pokeemerald, so `firered_debug`
+is ours: `DAEMONS_DEBUG=1` suffixes `BUILD_NAME`, so it gets its own ROM file
+and therefore its own save. A new game starts with six daemons picked for their
+**abilities**, one of each **kind** of item so the description window can be
+read, all eight badges and 999999; hold B to walk through grass. It is
+scaffolding for the §9.3 spike rather than a general debug menu — those are the
+two things being evaluated.
 
 **GBA toolchain.** `arm-none-eabi-gcc` from Homebrew (no sudo), plus `agbcc`
 built from source into `engineGba/tools/agbcc`. Homebrew's ARM gcc ships no

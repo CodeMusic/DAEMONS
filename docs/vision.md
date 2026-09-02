@@ -3412,6 +3412,10 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 ***The edition split survives the port unchanged***, which is the first good sign: **`firered`/`leafgreen` maps onto `_RED`/`_BLUE`** with no design work at all. *Both disassemblies ship the same game twice and differ by a build flag.*
 
+**And it needed a debug build, which it does not have.** *Unlike pokeemerald, pokefirered ships no debug menu to port* — so `firered_debug` is ours, and **it is scaffolding for this question rather than a general one.** *A new game starts with six daemons chosen for their **abilities** and one of each **kind** of item* — a ball, a medicine, a berry, a held item, a TM — **because the thing being evaluated is the description window, which Gen 1 does not have at all.** *Hold B to walk through grass, the same gesture the Game Boy build uses.*
+
+**With `DAEMONS_DEBUG=0` both retail builds still match their `.sha1` byte for byte**, which is the check that matters: *the scaffolding is inert when it is off.*
+
 **Toolchain note.** Homebrew's `arm-none-eabi-gcc` installs without sudo but **ships no libc**, so `MODERN=1` dies on `string.h`. **`agbcc` brings its own headers** and is the path that works — built from source into `engineGba/tools/agbcc`, which is why `setup.sh` now builds it.
 
 ---
