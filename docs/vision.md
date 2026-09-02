@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.22**
+**A total conversion — the living design bible, v11.23**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3405,6 +3405,26 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 **And the port is cheaper later, not dearer.** *The docs are fully portable, the art sources are portable, and a design that has been **played** de-risks the rewrite enormously.*
 
 **So both engines stay.** `engine/` keeps the slice; `engineGba/` answers one question — ***is the expressive gain real enough to pay for 334 files?*** — by building **one daemon with an ability and one MARK with a description**, and nothing else.
+
+#### Two corrections, found by porting rather than by arguing
+
+***The case above got one benefit wrong and missed one cost.*** **Both surfaced within an hour of touching the code**, which is the argument for spiking rather than deciding on paper.
+
+**Wrong: the MARKS were never going to get descriptions.** *9.3 said "the eight MARKS, the boxes and the stones-that-are-inputs each get a name and silence."* **In Gen 3 badges are not items at all** — `items.h` contains the string `BADGE` **zero times.** They are flags plus a Trainer Card display, exactly as in Gen 1. *The description win is real* — **`items.json` carries a `description_english` field with real multi-line text** — **but it applies to the boxes, the stones, medicines and TMs. Not to the MARKS.**
+
+**Missed: type names get *shorter*, not longer.** ***`TYPE_NAME_LENGTH` is 6 on GBA*** — which is why vanilla ships **FIGHT**, **ELECTR** and **PSYCHC**. **Six of our fifteen do not fit**: CONTENT, CORRUPT, STRATUM, ENTROPY and CONTEXT at seven, EMERGENT at eight.
+
+*We assumed the newer machine gives more room everywhere. For the one field that carries the argument, it gives less.*
+
+**It turned out cheap** — the 6 is the array's stride and nothing else reads it, and `B_WIN_MOVE_TYPE` is eight tiles of proportional font. **Widened to 8.** ***But it was found by building, not by reading***, and **abbreviating CONTENT and CONTEXT was never going to be acceptable**: they are the edition names and they are the thesis.
+
+#### The port, begun 2026-09-02
+
+***The chart's vocabulary is in.*** **All fifteen names ported from `data/types/names.asm` unchanged** — *the port does not get to renegotiate a set that 2 calls complete* — and verified in all three ROMs by encoding through `charmap.txt` and searching for the bytes.
+
+**`tools/gbastr.py`** is the GBA counterpart of `verify-sprites`: **Gen 3 encodes text with its own charmap exactly as Gen 1 does**, so grepping a `.gba` for ASCII finds nothing and proves nothing. *It caught two stale ROMs on its first run.*
+
+***`TYPE_STEEL` and `TYPE_DARK` are left vanilla on purpose***, so a build that reaches them is **obviously unfinished rather than quietly wrong.** **They are the open decision above and they belong in this document before they belong in a header.**
 
 #### Built 2026-09-02
 

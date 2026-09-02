@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.23 — 2026-09-02
+
+### The port begins, and corrects §9.3 twice
+
+- **All fifteen type names ported** to `gTypeNames`, unchanged from `data/types/names.asm`. The chart is the argument; the port does not renegotiate it
+- **`TYPE_NAME_LENGTH` widened 6 → 8.** Vanilla's 6 is why it ships FIGHT/ELECTR/PSYCHC — **six of our fifteen do not fit it.** We assumed the newer machine gives more room everywhere; for the one field carrying the argument it gives less. Cheap to fix, but found by building rather than by reading
+- **The MARKS were never getting descriptions** — in Gen 3 badges are not items at all (`items.h` contains `BADGE` zero times). The description win is real, but it belongs to the boxes, the stones, medicines and TMs
+- **`tools/gbastr.py`** — searches a `.gba` through the game's own charmap, the GBA counterpart of `verify-sprites`. Caught two stale ROMs on its first run
+- **`TYPE_STEEL` and `TYPE_DARK` left vanilla deliberately** — the two extra type names are a bible decision, not a header one
+
+---
+
 ## v11.22 — 2026-09-02
 
 ### The GBA spike
