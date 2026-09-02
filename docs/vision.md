@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.12**
+**A `pokered` total conversion — the living design bible, v11.13**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2553,7 +2553,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 | | | |
 |---|---|---|
 | `gfx/sprites/red.png` | 16×96 | **drawn** — down, up, side, and a walk frame for each |
-| `gfx/sprites/red_bike.png` | 16×96 | **drawn** — the same six, on the bicycle |
+| `gfx/sprites/red_bike.png` | 16×96 | **provisional** — the same character; the bicycle itself is under review |
 | `gfx/overworld/red_fish_*.png` | 16×8 | three fishing half-frames |
 | `gfx/player/red.png` | 56×56 | the *this is you* screen, and the Hall of Fame |
 | `gfx/title/player.png` | 40×56 | the title screen |
@@ -2562,14 +2562,29 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 ***The overworld sprite had to be hand-drawn, and that is not a preference.*** Every other art pipeline here **resamples a large illustration down**, which is proven at 40–56px and **fails at 16** — a generated figure loses its face, its silhouette and its walk cycle in the same downsample. *8's sprite doc already ruled out generating anything under 16×16;* this is that rule meeting the asset it was written for.
 
-**It is drawn in vanilla's idiom on purpose** — same height, same head-to-body ratio, same two-tone shading, same outline weight. **The player stands next to thirty NPC sprites that are still vanilla's**, and *a figure drawn to a different set of rules would read as a mistake rather than as a person.* **What changes is who it is:**
+**It is drawn in vanilla's idiom on purpose** — same height, same 16×16 footprint, same two-tone shading, same outline weight. **The player stands next to thirty NPC sprites that are still vanilla's**, and *a figure drawn to a different set of rules would read as a mistake rather than as a person.* **What changes is who it is.**
 
-| | |
+##### Between a scientist, a magician and a wizard
+
+***A first version was a cap and a strap*** — *Ash with a satchel*, and correctly rejected. **The brief that replaced it was to sit the player between three archetypes**, and the resolution is that **one of them costs nothing**:
+
+> ***A lab coat and a wizard's robe are the same silhouette.***
+
+**So the coat carries two of the three for free** — long, sleeved, reaching the ground — *and the hat only has to carry the third.* **A flat brim, wider than the shoulders**, is the widest shape on the figure and the one thing **no vanilla NPC has.** *The overhang is what makes it a hat;* **a brim the same width as the shoulders stacks into a mailbox**, which is exactly what the first attempt at it did.
+
+##### The arms took three tries, and the failure is worth keeping
+
+| Attempt | What it read as |
 |---|---|
-| **The cap sits brim-forward** | vanilla's is turned back; this is the cheapest possible silhouette change and it works at 16px |
-| **A light strap crosses the chest** | and the satchel it carries **shows on the back** in the frames where the player walks away from you |
+| Black columns **flush** against the torso | **outline.** *The figure had no arms at all* — and that is what was noticed |
+| Separated by a **transparent** column | **a hole punched through the armpit** — the limbs floated |
+| **Inside the silhouette, separated by tone** | *arms* |
 
-***The strap is the one detail that survives this size, so it is the right one to spend.*** **1.3 says the box is a machine you offer a daemon as a host** — and the player is carrying one, on a strap, in every frame that could show it.
+***Sleeves at level 2, torso at level 1, strap at level 0.*** **Sixteen pixels has no room for a gap, so the separation has to be tonal** — and once it is, **the black strap cannot be confused with either**, which is what makes 1.3's box readable at this size. *The player is carrying one, on a strap, in every frame that could show it;* **from behind it is the satchel itself.**
+
+##### There are no legs
+
+**The coat reaches the ground.** *So the walk cycle is the hem swinging side to side*, which is what a long coat does — **and it costs three rows instead of redrawing a leg pair per frame.**
 
 *The bicycle sheet is the same six frames from the waist up*, with a bike below the rail. **Vanilla animates the whole bicycle sideways**, which at 16px reads as *the rider lurching* — **so ours moves the wheels instead and flickers their tone**, which is what spokes actually do.
 

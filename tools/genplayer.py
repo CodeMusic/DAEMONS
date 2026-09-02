@@ -35,188 +35,77 @@ from gbimg import write_png
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 LV = {"#": 0, ":": 1, ".": 2, " ": 3}          # 3 is transparent for OBJ tiles
 
-DOWN = [
-    "     ######     ",
-    "    #::::::#    ",
-    "   #::::::::#   ",
-    "   #::::::::#   ",
-    "  ############  ",
-    "   #.#....#.#   ",
-    "   #........#   ",
-    "  ############  ",
-    "  ##:::::..:##  ",
-    "  ##:::..:::##  ",
-    "  ##:..:::::##  ",
-    "  ##..::::::##  ",
-    "   ##::::::##   ",
-    "   #:##::##:#   ",
-    "   #::#  #::#   ",
-    "    ##    ##    ",
-]
-UP = [
-    "     ######     ",
-    "    #::::::#    ",
-    "   #::::::::#   ",
-    "   #::::::::#   ",
-    "   #:::..:::#   ",
-    "   #::::::::#   ",
-    "   ##::::::##   ",
-    "  ############  ",
-    "  ##:#....#:##  ",
-    "  ##:#....#:##  ",
-    "  ##:#....#:##  ",
-    "  ##::####::##  ",
-    "   ##::::::##   ",
-    "   #:##::##:#   ",
-    "   #::#  #::#   ",
-    "    ##    ##    ",
-]
-SIDE = [
-    "      ######    ",
-    "     #::::::#   ",
-    "    #::::::::#  ",
-    "   ##::::::::#  ",
-    "  ###########   ",
-    "   #.#.....##   ",
-    "   #.......##   ",
-    "   ##########   ",
-    "   ##:::..:##   ",
-    "   ##::..:###   ",
-    "   ##:..::##    ",
-    "   #::::::##    ",
-    "   #:::::##     ",
-    "   #:##::#      ",
-    "   #:# #::#     ",
-    "   ###  ###     ",
-]
-DOWN_WALK = [
-    "                ",
-    "     ######     ",
-    "    #::::::#    ",
-    "   #::::::::#   ",
-    "   #::::::::#   ",
-    "  ############  ",
-    "   #.#....#.#   ",
-    "   #........#   ",
-    "  ############  ",
-    "  ##:::::..:##  ",
-    "  ##:::..:::##  ",
-    "  ##:..:::::##  ",
-    "   ##::::::##   ",
-    "    #::##::#    ",
-    "    ###  #::#   ",
-    "         ###    ",
-]
-UP_WALK = [
-    "                ",
-    "     ######     ",
-    "    #::::::#    ",
-    "   #::::::::#   ",
-    "   #::::::::#   ",
-    "   #:::..:::#   ",
-    "   ##::::::##   ",
-    "  ############  ",
-    "  ##:#....#:##  ",
-    "  ##:#....#:##  ",
-    "  ##::####::##  ",
-    "   ##::::::##   ",
-    "    #::##::#    ",
-    "   #::#  ###    ",
-    "    ###         ",
-    "                ",
-]
-SIDE_WALK = [
-    "                ",
-    "      ######    ",
-    "     #::::::#   ",
-    "    #::::::::#  ",
-    "   ##::::::::#  ",
-    "  ###########   ",
-    "   #.#.....##   ",
-    "   #.......##   ",
-    "   ##########   ",
-    "   ##:::..:##   ",
-    "   ##::..:###   ",
-    "   ##:..::##    ",
-    "   #::::::#     ",
-    "  #::#::::#     ",
-    " #::#  #::#     ",
-    " ###    ###     ",
-]
+# Written out frame by frame rather than composed from parts. A first version
+# built them from a shared head and a coat() helper, and the helper quietly made
+# the side view the front view with a different face -- walking left looked like
+# walking towards you. Art is not the place to be clever about repetition.
+#
+# The coat carries two of the three archetypes on its own: a lab coat and a
+# wizard's robe are the same silhouette. So the hat only has to carry the third,
+# and a flat brim WIDER THAN THE SHOULDERS is the widest shape on the figure and
+# the one thing no vanilla NPC has. Brim the same width as the shoulders stacks
+# into a mailbox; the overhang is what makes it a hat.
+#
+# The arms took three tries. Flush black columns read as outline -- the first
+# version had no arms at all. Separating them from the torso with a transparent
+# column read as a hole punched through the armpit. What works is keeping them
+# INSIDE the silhouette and separating them by TONE: sleeves at level 2, torso
+# at level 1, and the satchel strap a level 0 diagonal that cannot be confused
+# with either.
+#
+# There are no legs. The coat reaches the ground, so the walk is the hem swinging
+# from side to side, which is what a long coat does.
 
-BIKE_DOWN = [
-    "     ######     ",
-    "    #::::::#    ",
-    "   #::::::::#   ",
-    "  ############  ",
-    "   #.#....#.#   ",
-    "   #........#   ",
-    "  ############  ",
-    "  ##:::::..:##  ",
-    " ###::..::::### ",
-    " #:#:..:::::#:# ",
-    " #:##::::::##:# ",
-    "  ############  ",
-    "  #::#::::#::#  ",
-    "     #::::#     ",
-    "     #:..:#     ",
-    "      ####      ",
-]
-BIKE_UP = [
-    "     ######     ",
-    "    #::::::#    ",
-    "   #::::::::#   ",
-    "   #:::..:::#   ",
-    "   ##::::::##   ",
-    "  ############  ",
-    "  ##:#....#:##  ",
-    "  ##:#....#:##  ",
-    " ###::####::### ",
-    " #:#::::::::#:# ",
-    " #:##::::::##:# ",
-    "  ############  ",
-    "  #::#::::#::#  ",
-    "     #::::#     ",
-    "     #:..:#     ",
-    "      ####      ",
-]
-BIKE_SIDE = [
-    "      ######    ",
-    "     #::::::#   ",
-    "    #::::::::#  ",
-    "  ###########   ",
-    "   #.#.....##   ",
-    "   #.......##   ",
-    "   ##########   ",
-    "   ##:::..:##   ",
-    "  ###::..:####  ",
-    "  #:#:..:::::#  ",
-    "  ##::::::###   ",
-    "  #::::::#      ",
-    " ###::::####    ",
-    "#::#######::#   ",
-    "#::#     #::#   ",
-    " ##       ##    ",
-]
+HAT       = ["      ####      ", "     #::::#     ", "     #::::#     ",
+             "################", "   ##########   "]
+HAT_SIDE  = ["     ####       ", "    #::::#      ", "    #::::#      ",
+             "##############  ", "   #########    "]
+FACE      = ["   #.#....#.#   ", "   #........#   ", "    ########    "]
+NAPE      = ["   #::::::::#   ", "   #:::..:::#   ", "    ########    "]
+PROFILE   = ["   #.#.....#    ", "   #.......#    ", "    #######     "]
 
-def wheel(art, dx, spin):
-    """The bike frames differ only below the frame rail: the wheels move.
+# Sleeves light, torso mid, strap black. The strap runs shoulder to opposite hip.
+FRONT = ["  #..::::#:..#  ", "  #..:::#::..#  ", "  #..::#:::..#  ",
+         "  #..:#::::..#  ", "  #..::::::..#  "]
+# From behind it is the satchel itself, not the strap.
+BACK  = ["  #..::::::..#  ", "  #..:####:..#  ", "  #..:#..#:..#  ",
+         "  #..:####:..#  ", "  #..::::::..#  "]
+# In profile the figure is narrower and only the near sleeve shows.
+PROF  = ["   #..::::#:#   ", "   #..:::#::#   ", "   #..::#:::#   ",
+         "   #..:#::::#   ", "   #..::::::#   "]
 
-    Vanilla animates the whole bicycle sideways. At 16px that reads as the rider
-    lurching, so this shifts the wheels instead and flickers their tone -- which
-    is what spokes actually do."""
-    out = []
-    for y, row in enumerate(art):
-        if y < 11:
-            out.append(row); continue
-        r = (" " * dx + row)[:16] if dx > 0 else (row[-dx:] + " " * -dx)
-        if spin: r = r.replace(":", "\x00").replace(".", ":").replace("\x00", ".")
-        out.append(r)
-    return out
+HEM        = ["  #::::::::::#  ", " #::::::::::::# ", " ############## "]
+HEM_LEFT   = [" #::::::::::#   ", "#::::::::::::#  ", "##############  "]
+HEM_RIGHT  = ["   #::::::::::# ", "  #::::::::::::#", "  ##############"]
+HEM_TRAIL  = ["   #:::::::::#  ", "  #::::::::::::#", "  ##############"]
 
-BIKE_DOWN_WALK = wheel(BIKE_DOWN, -1, True)
-BIKE_UP_WALK = wheel(BIKE_UP, 1, True)
-BIKE_SIDE_WALK = wheel(BIKE_SIDE, 0, True)
+DOWN      = HAT      + FACE    + FRONT + HEM
+DOWN_WALK = HAT      + FACE    + FRONT + HEM_LEFT
+UP        = HAT      + NAPE    + BACK  + HEM
+UP_WALK   = HAT      + NAPE    + BACK  + HEM_RIGHT
+SIDE      = HAT_SIDE + PROFILE + PROF  + HEM_TRAIL
+SIDE_WALK = HAT_SIDE + PROFILE + PROF  + HEM_LEFT
+
+# Provisional -- the bicycle itself is under review. Same head and same coat, so
+# whatever replaces it inherits a character that already matches.
+WHEEL = ["  ############  ", "  #::#::::#::#  ", "     #::::#     ",
+         "     #:..:#     ", "      ####      "]
+BIKE_DOWN = HAT      + FACE    + FRONT[:3] + WHEEL
+BIKE_UP   = HAT      + NAPE    + BACK[:3]  + WHEEL
+BIKE_SIDE = HAT_SIDE + PROFILE + PROF[:3]  + [
+    "   #::::::::#   ", " ###::::::####  ", "#::#######::#   ",
+    "#::#     #::#   ", " ##       ##    "]
+
+def pedal(art):
+    """The pedalling frame. Vanilla slides the whole bicycle sideways, which at
+    16px reads as the rider lurching; this moves the wheels and swaps their tone,
+    which is what spokes actually do."""
+    return art[:12] + [r.replace(":", "\x00").replace(".", ":").replace("\x00", ".")
+                       for r in art[12:]]
+
+BIKE_DOWN_WALK = pedal(BIKE_DOWN)
+BIKE_UP_WALK = pedal(BIKE_UP)
+BIKE_SIDE_WALK = pedal(BIKE_SIDE)
 
 FRAMES = [("down", DOWN), ("up", UP), ("side", SIDE),
           ("down walk", DOWN_WALK), ("up walk", UP_WALK), ("side walk", SIDE_WALK)]

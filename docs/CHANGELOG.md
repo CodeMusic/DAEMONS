@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.13 — 2026-09-02
+
+### The player, redesigned
+
+- **A cap and a strap was Ash with a satchel.** Replaced: the player now sits between a scientist, a magician and a wizard
+- **A lab coat and a wizard's robe are the same silhouette** — so the coat carries two archetypes for free and the hat only has to carry the third. A flat brim *wider than the shoulders*; equal width stacks into a mailbox
+- **The arms took three tries** — flush black columns read as outline (the figure had none, which is what was noticed), a transparent gap read as a hole through the armpit. Sleeves at level 2 against a torso at level 1 read as arms
+- **No legs** — the coat reaches the ground, so the walk is the hem swinging
+- **The side view is a real profile now.** A `coat()` helper had quietly made it the front view with a different face, so walking left looked like walking towards you. The frames are written out one by one
+
+---
+
 ## v11.12 — 2026-09-02
 
 ### The second seat — adopted, not yet drawn
