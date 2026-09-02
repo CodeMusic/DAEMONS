@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.9**
+**A `pokered` total conversion — the living design bible, v11.10**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2017,7 +2017,36 @@ The player watches a record stop in the middle of a routine week. Nobody wrote d
 
 **The gym trainer keeps the theme.** *You have not written down enough yet* before the fight; **CAIRN keeps a record of every match in here. Every one.** after it.
 
-**BOULDERBADGE → SLATE MARK.** A mark *on* a slate is physical encoding; a mark *as a grade* is what a benchmark issues. **The other seven badges are still vanilla and should be renamed as a set** — `X MARK` scales, but naming eight certifications is one decision, not seven, and the slice only ever shows this one.
+**BOULDERBADGE → SLATE MARK.** A mark *on* a slate is physical encoding; a mark *as a grade* is what a benchmark issues. *The other seven followed as a set* — naming eight certifications was one decision, not seven.
+
+### 5.2 The eight MARKS, and the toolkit they make
+
+**Built 2026-09-02.** The table above already assigns each benchmark **exactly one concept**, so the marks were never a naming exercise — *they were already named, by the column they sit in.*
+
+| # | Concept | Mark | The icon |
+|---|---|---|---|
+| 1 | Representation | **SLATE** | a slab with the record cut into it |
+| 2 | Gradient descent | **SLOPE** | a hillside, and something already partway down it |
+| 3 | Perception | **SENSE** | wavefronts arriving at a receptor |
+| 4 | Training and overfitting | **FIT** | scatter, and the line drawn through it |
+| 5 | Bias and poisoning | **SKEW** | a distribution whose peak misses the centre tick |
+| 6 | Attention and framing | **FRAME** | brackets holding some of the field and not the rest |
+| 7 | Temperature | **HEAT** | a thermometer |
+| 8 | Alignment | **TRUE** | a plumb bob, hanging exactly on centre |
+
+***Every one is an instrument or a plot.*** **Read as a set they are a bench of measuring tools** — which is precisely what an institution that issues marks against benchmarks would hand out. *And three of them are also ordinary workshop instruments:* **a slate, a thermometer, a plumb bob.** This world's technical vocabulary sits on physical objects, and **5.1's CAIRN would recognise all three.**
+
+*TRUE is the one that had to be found rather than chosen.* **Alignment is a word this project cannot use plainly** — it is the thesis wearing a lab coat. **But *true* is what a carpenter calls a thing that is plumb**, and a plumb bob is the tool that decides it. *The eighth certification is a builder's word for straight,* handed out by the gym that controls the ground everything stands on.
+
+#### The unearned state is the same tool, unmade
+
+**Vanilla puts the gym leader's portrait in the slot until you win** — `DrawBadges` holds a face and a badge for each of the eight, and swaps one for the other. **Ours holds the mark twice: once as an outline, once filled.**
+
+***So the whole toolkit is visible from hour one*** and fills in as the player is certified. **The eight concepts exist whether or not you hold the certificate for them** — which is 4.2's complaint about the Index, stated in furniture rather than dialogue.
+
+*The mechanism is one line of the generator.* **The ghost keeps level 0 and drops level 1**, so structure survives and fill does not — and **HEAT's unearned state is therefore a thermometer reading nothing**, which is the right picture and was not designed, only noticed.
+
+**No glyphs, no letters.** *Craft rule 1 holds on the status screen too.*
 
 ---
 

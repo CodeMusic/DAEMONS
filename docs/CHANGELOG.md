@@ -5,6 +5,21 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.10 — 2026-09-02
+
+### The eight MARKS have icons
+
+- **`tools/genmarks.py`** draws all sixteen 16×16 blocks of `gfx/trainer_card/badges.png`
+- **SLATE / SLOPE / SENSE / FIT / SKEW / FRAME / HEAT / TRUE** — one per benchmark, each the concept §5's table already assigned it; every icon is an instrument or a plot, and the set reads as a bench of measuring tools
+- **The unearned state is the same tool as an outline**, not a gym leader's portrait — the toolkit is visible from hour one and fills in
+- **`vision.md` §5.2** records the set and why TRUE is a plumb bob
+
+### Cleanup
+
+- **`engine/pokered.gbc` and `engine/pokeblue_debug.gbc` removed** — vanilla-named leftovers containing none of our sprites
+
+---
+
 ## v11.9 — 2026-09-01
 
 ### The copyright screen
