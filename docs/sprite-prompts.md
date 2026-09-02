@@ -527,6 +527,17 @@ python3 tools/sprite.py --list         # every renamed daemon and the slot it oc
 
 *One exception worth knowing.* **SUSPEND stays lopsided at any setting** — 338 / 436 / 151 — and that is honest: a round white balloon has almost no midtones to find.
 
+## The bank and the tilemap are not in the same order
+
+**The intro sheet has two orders, and they are different.**
+
+- **The tile bank is column-major**, because the build passes `--columns` to rgbgfx
+- **The tilemap is row-major**, because `CopyTileIDs` fills left to right along each row before stepping down
+
+***Conflating them produces a scrambled creature that passes every data check***, because the bank is right, the tilemap is right, and only their relationship is wrong. It survived a byte-for-byte comparison against the ROM and a reconstruction that used the same wrong order to verify itself.
+
+*Also worth knowing:* `CopyTileIDs` adds **`hBaseTileID`** to every entry. It is zero for the intro, so the tilemap holds absolute indices into the sheet — but it is not required to be.
+
 ## Tone-thirds is for art that has tones
 
 **Spreading the ink across its own thirds is the right default** — it is what fixed the wild batch, where the alternative left level 1 used five times.
