@@ -14,15 +14,27 @@ figure loses its face, its silhouette and its walk cycle in the same
 downsample that works fine at 40-56px. See tools/genplayer.py.
 
   DONE   gfx/sprites/red.png            16x96   six walking frames
-  DONE   gfx/sprites/red_bike.png       16x96   the same six, on the bicycle
+  DONE   gfx/sprites/red_bike.png       16x96   the same six, provisional
+  DONE   gfx/title/player.png           40x56   FIRST PASS, drawn -- replace it
   todo   gfx/overworld/red_fish_*.png   16x8    three fishing half-frames
 
 The fishing frames are hand-drawn too when their time comes, and are not
 reachable in the slice. Do not ask Gemini for them.
 
-THE THREE BELOW ARE THE ONES THAT NEED ART.
-The character is already fixed by the overworld sprite: a cap worn brim
-forward, a short jacket, and a satchel on a strap across the chest. Match it.
+THE CHARACTER, fixed by the overworld sprite. Every prompt below must match it:
+
+  a WIDE FLAT-BRIMMED HAT, the brim clearly wider than the shoulders
+  a LONG COAT that reaches the ground, sleeved, no legs visible
+  a SATCHEL on a strap crossing the chest diagonally
+  and the unit it carries
+
+He sits between a scientist, a magician and a wizard, and the coat is what
+does that: a lab coat and a wizard's robe are the same silhouette, so the hat
+carries the third on its own. Not a cap. Not a pointed wizard hat.
+
+The title screen already has a first pass, drawn by hand at 40x56, and it is
+blocky -- replace it with generated art through tools/sprite.py, which is
+proven at this size. It is the second thing anyone sees.
 
 Do number 1 first and ATTACH IT to the two after. They are all the same
 person, and a fresh conversation invents a different one.
@@ -35,21 +47,21 @@ run `python3 tools/sprite.py` on it.
    Crystal's "this is you" screen, and the Hall of Fame.
 ----------------------------------------------------------------------
 
-A young trainer standing three-quarters to the viewer, wearing a cap with the brim forward and a short jacket, with a satchel hanging at the hip on a strap that crosses the chest diagonally. One arm is raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident, still, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+A figure standing three-quarters to the viewer in a long coat that reaches the ground, sleeved, with no legs visible below it, and a wide flat-brimmed hat whose brim is clearly wider than their shoulders. A satchel hangs at the hip on a strap that crosses the chest diagonally. They read as a scientist, a magician and a wizard at once - the coat is both a lab coat and a robe, and the hat is an alchemist's, not a pointed wizard's. One arm is raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident, still, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
 
 ----------------------------------------------------------------------
 2. THE PLAYER, title screen  ->  gfx/title/player.png  (40x56)
    attach: the front portrait
 ----------------------------------------------------------------------
 
-The same trainer, the same cap, jacket, satchel and unit, framed for a title screen: full body, standing straight on, the unit held down at the side rather than raised. Taller than wide. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+The same figure, the same wide-brimmed hat, long coat, satchel strap and unit, framed for a title screen: full body, standing straight on and facing the viewer, the unit held down at one side rather than raised. Taller than wide, and the brim still the widest thing in the picture. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
 
 ----------------------------------------------------------------------
 3. THE PLAYER, back view  ->  gfx/player/redb.png  (32x32)
    attach: the front portrait
 ----------------------------------------------------------------------
 
-The same trainer seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The back of the cap and the satchel sitting between the shoulder blades are the two readable shapes. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
+The same figure seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The underside of the hat brim and the satchel sitting between the shoulder blades are the two readable shapes. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin.
 
 ======================================================================
 THE TWO SHRINK FRAMES

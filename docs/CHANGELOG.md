@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.14 — 2026-09-02
+
+### The title screen figure
+
+- **`gfx/title/player.png` drawn** at 40×56 via `tools/gentitle.py` — same character, and the first place with room to draw the unit itself. **A first pass; replace it with generated art**, which is proven at this size
+- **All three player prompts rewritten** — they still described a cap and a short jacket and would have regenerated the rejected character
+
+---
+
 ## v11.13 — 2026-09-02
 
 ### The player, redesigned

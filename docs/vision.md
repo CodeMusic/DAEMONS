@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A `pokered` total conversion — the living design bible, v11.13**
+**A `pokered` total conversion — the living design bible, v11.14**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2556,7 +2556,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 | `gfx/sprites/red_bike.png` | 16×96 | **provisional** — the same character; the bicycle itself is under review |
 | `gfx/overworld/red_fish_*.png` | 16×8 | three fishing half-frames |
 | `gfx/player/red.png` | 56×56 | the *this is you* screen, and the Hall of Fame |
-| `gfx/title/player.png` | 40×56 | the title screen |
+| `gfx/title/player.png` | 40×56 | **first pass, drawn** — the title screen, where the daemons cycle past |
 | `gfx/player/redb.png` | 32×32 | **every battle in the game** |
 | `gfx/player/shrink1/2.png` | 56×56 | the naming-screen animation |
 
@@ -2581,6 +2581,12 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 | **Inside the silhouette, separated by tone** | *arms* |
 
 ***Sleeves at level 2, torso at level 1, strap at level 0.*** **Sixteen pixels has no room for a gap, so the separation has to be tonal** — and once it is, **the black strap cannot be confused with either**, which is what makes 1.3's box readable at this size. *The player is carrying one, on a strap, in every frame that could show it;* **from behind it is the satchel itself.**
+
+##### At 40×56 the unit finally fits
+
+**The title screen is the one place with room for it.** *The 16×16 sprite can only imply the box through the strap;* **`gfx/title/player.png` has 40×56 and can draw the thing itself** — a vent line, an indicator, a port, and **no seam anywhere that would let it open.** *1.3 calls it a machine you offer a daemon as a host,* **so it must not look like a container.**
+
+***This one is a hand-drawn first pass and should be replaced.*** **40–56px is exactly the range `tools/sprite.py` is proven at**, and this is *the second thing anyone sees.* The drawn version exists so the title screen stops showing vanilla's trainer beside our own overworld figure — **a placeholder that is the right character beats a finished one that is the wrong character.**
 
 ##### There are no legs
 
