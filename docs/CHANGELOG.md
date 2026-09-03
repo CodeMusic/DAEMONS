@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.35 — 2026-09-03
+
+### The type badges
+
+- **All 17 redrawn** (`tools/gbatypes.py`) — 32×12 pixel art at tile offsets from `sMenuInfoIcons`, indexed by type + 1. These are what the summary screen and the Index draw; `gTypeNames` only feeds the move-select window
+- **Six characters is a hard limit** — the face is 4px wide on a 5px pitch, measured off vanilla's own NORMAL/GROUND/DRAGON at exactly 30px of ink. So the long names drop a vowel exactly as vanilla's PSYCHC does: **CONTNT, CORRPT, STRATM, ENTRPY, CONTXT, EMRGNT, HARDND**
+- **`CONTNT` and `CONTXT` differ in the middle**, not the end — the pair that most needs to stay apart
+- **Only the text is redrawn.** Backgrounds and rounded corners are untouched, because colour is how a type is recognised before the word is read
+- **W was drawn twice.** At 4px a W with a middle bar *is* an H, and GROWTH came out GROHTH. Only looking at it catches that
+
+---
+
 ## v11.34 — 2026-09-03
 
 ### The black screen was a missing string

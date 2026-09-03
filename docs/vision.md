@@ -3658,6 +3658,33 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 **The high sixteen bits stay random on purpose.** *They are never displayed, and they are half of what decides whether a daemon is shiny* — **deriving those from a name would quietly make shininess a function of what you typed.**
 
+### 9.12 The type badges, and why they say CONTNT
+
+**Built 2026-09-03.** ***The chart's vocabulary lives in two places and only one of them is a string.*** **`gTypeNames` feeds the move-select window; the badges are pixel art** — 32×12 each, at a tile offset given by `sMenuInfoIcons`, indexed by *the type constant plus one*.
+
+#### Six characters, and it is not a choice
+
+**The face is four pixels wide on a five-pixel pitch**, so *six letters fill the badge edge to edge* — **measured off vanilla's own NORMAL, GROUND and DRAGON, each exactly thirty pixels of ink.** *Seven would need thirty-five.*
+
+***Which is why vanilla ships FIGHT, ELECTR and PSYCHC.*** **It truncates, and it drops a vowel** — so we do the same:
+
+| | | | |
+|---|---|---|---|
+| CONTENT → **CONTNT** | CORRUPT → **CORRPT** | STRATUM → **STRATM** | ENTROPY → **ENTRPY** |
+| CONTEXT → **CONTXT** | EMERGENT → **EMRGNT** | HARDENED → **HARDND** | |
+
+***`CONTNT` and `CONTXT` still differ in the middle rather than at the end***, which is the pair that most needs to stay apart at a glance.
+
+**This is the third time this design has met a width limit and the third different answer.** *`TYPE_NAME_LENGTH` was a `#define` and we widened it. The Index reflowed. This one cannot move* — **the badge is a fixed rectangle in a fixed sheet** — *so the words give way, in the way vanilla itself established.*
+
+#### Only the text is redrawn
+
+**Each badge keeps its own background colour and its rounded corners.** *The colour is how a type is recognised before the word is read*, and **9.4 already spent colour on meaning.**
+
+**And the shadow is generated rather than drawn** — one pixel down and right — *which is what keeps white legible on eight different backgrounds.*
+
+***W had to be redrawn twice.*** **At four pixels a W with its bar in the middle is an H**, and GROWTH came out as *GROHTH*. **The bar dropped to the bottom and the letter tapers.** *H, M, N and W all live within one pixel of each other at this size, and only looking at it catches that.*
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
