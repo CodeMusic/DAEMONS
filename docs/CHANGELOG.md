@@ -31,6 +31,18 @@ from that.
 
 ---
 
+## v11.25 — 2026-09-02
+
+### 66 sprites, in colour, and invariant 5 gets its answer
+
+- **`tools/gbasprite.py`** — 33 daemons, front and back, into 64×64 4bpp with a 16-colour palette each
+- **Nothing is upscaled.** 40 → 64 is a 1.6× resample of hand-tuned pixel art; each sprite is centred at native size instead, which is how Gen 3 treats small species anyway
+- **Colour is by TYPE**, so it carries the argument rather than decorating it — the answer §9.3 said had to be made in the bible. Four anchors come straight from §6's humours (sanguine/VECTOR, choleric/ENTROPY, melancholic/LATENT, phlegmatic/FROZEN); the other eleven are new claims
+- **The outline stays near-black** — an outline that takes the hue stops reading as an outline
+- Palettes are written CRLF, as `.gitattributes` requires, or git rewrites all 66 on every checkout
+
+---
+
 ## v11.24 — 2026-09-02
 
 ### The port continues

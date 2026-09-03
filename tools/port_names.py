@@ -14,7 +14,7 @@ exact and needs no arithmetic.
 Only names we actually changed are touched. Everything still vanilla stays
 vanilla, so a half-ported table is obvious rather than silently mixed.
 """
-import json, os, re, subprocess, sys
+import difflib, json, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
@@ -36,27 +36,49 @@ KNOWN_MISSING = {
 
 TABLES = [
     # gb source, gb macro, gba file, name limit, format
-    ("data/pokemon/names.asm", "dname", "src/data/text/species_names.h", 10, "c"),
-    ("data/items/names.asm",   "li",    "src/data/items.json",           14, "json"),
+    ("data/pokemon/names.asm",   "dname", "src/data/text/species_names.h",            10, "c"),
+    ("data/items/names.asm",     "li",    "src/data/items.json",                      14, "json"),
+    ("data/moves/names.asm",     "li",    "src/data/text/move_names.h",               12, "c"),
+    # Town names live in the region map on GBA rather than in a flat table, but
+    # the rename is still the same fact, so the same trick works.
+    ("data/maps/names.asm",      "db",    "src/data/region_map/region_map_entry_strings.h", 16, "c"),
 ]
 
+def _strip(v):
+    return v[:-1] if v.endswith("@") else v      # Gen 1 string terminator
+
 def gb_list(path, macro):
-    return [m.group(1) for m in
+    return [_strip(m.group(1)) for m in
             re.finditer(r'%s\s+"([^"]*)"' % macro, open(os.path.join(GB, path)).read())]
 
 def upstream_list(path, macro):
     txt = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
                          capture_output=True, text=True).stdout
-    return [m.group(1) for m in re.finditer(r'%s\s+"([^"]*)"' % macro, txt)]
+    return [_strip(m.group(1)) for m in re.finditer(r'%s\s+"([^"]*)"' % macro, txt)]
 
 rc = 0
 for src, macro, dst, limit, fmt in TABLES:
     ours, van = gb_list(src, macro), upstream_list(src, macro)
-    if len(ours) != len(van):
-        sys.exit("%s: %d entries here, %d upstream -- tables are out of step" % (src, len(ours), len(van)))
-    renames = {v: o for v, o in zip(van, ours) if v != o}
+    # Diff the two sequences properly rather than zipping them. A table can be
+    # longer than upstream's because we ADDED something -- 2.5 added the move
+    # CONSENSUS at slot 165 -- and a positional zip reads that insertion as
+    # "STRUGGLE was renamed to CONSENSUS", which is false and would rename
+    # Gen 3's Struggle. difflib tells an insert from a replace; zip cannot.
+    renames, added = {}, []
+    sm = difflib.SequenceMatcher(a=van, b=ours, autojunk=False)
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == "replace" and (i2 - i1) == (j2 - j1):
+            renames.update(dict(zip(van[i1:i2], ours[j1:j2])))
+        elif tag == "insert":
+            added += ours[j1:j2]
+        elif tag == "replace":
+            print("  !! %s: %d entries became %d -- cannot pair them"
+                  % (src, i2 - i1, j2 - j1)); rc = 1
     print("%s -> %s" % (src, dst))
     print("  %d renamed of %d" % (len(renames), len(ours)))
+    if added:
+        print("  %d added, not renamed -- needs its own slot on GBA: %s"
+              % (len(added), " ".join(added)))
 
     too_long = {v: o for v, o in renames.items() if len(o) > limit}
     for v, o in sorted(too_long.items()):
@@ -68,7 +90,7 @@ for src, macro, dst, limit, fmt in TABLES:
     done, missing, skipped = 0, [], []
     for v, o in sorted(renames.items()):
         if fmt == "c":
-            pat, rep = r'(= _\(")%s("\),)' % re.escape(v), r'\g<1>%s\g<2>' % o
+            pat, rep = r'(_\(")%s("\))' % re.escape(v), r'\g<1>%s\g<2>' % o
             already = '_("%s")' % o
         else:
             # The file stores non-ASCII escaped -- POKé is POK\\u00e9 on disk --

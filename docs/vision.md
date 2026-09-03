@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.24**
+**A total conversion — the living design bible, v11.25**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3463,6 +3463,37 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 **Toolchain note.** Homebrew's `arm-none-eabi-gcc` installs without sudo but **ships no libc**, so `MODERN=1` dies on `string.h`. **`agbcc` brings its own headers** and is the path that works — built from source into `engineGba/tools/agbcc`, which is why `setup.sh` now builds it.
 
 ---
+
+### 9.4 The sprites, and the answer to invariant 5
+
+**Built 2026-09-02.** *9.3 said two things had to be decided in this document before they were decided in code. This is the second of them.*
+
+#### The art is not upscaled
+
+**Our sprites are 40, 48 or 56 pixels square; Gen 3's frame is 64.** *Upscaling 40 to 64 is a 1.6× resample of hand-tuned pixel art* — **it would soften every edge 7.14 spent weeks getting right**, and the whole reason those sprites work is that nothing in them is accidental.
+
+***So each sprite is centred in the frame at its native size.*** **Gen 3 does not require a creature to fill its box either**; small species simply do not. *Nothing is resampled and nothing is lost.*
+
+#### Colour is by type, which makes it information
+
+***Invariant 5 says greyscale is the design and colour appears once, at the Review Board.*** **On a DMG the machine and the meaning agreed** — the player saw grey because that is what the hardware *was.* **On GBA they do not**, and 9.3 named that as the thing the port breaks.
+
+**This is the answer: a daemon is coloured by what it *is*.** *The palette becomes another way of reading the chart rather than a coat of paint over it* — **colour carries the argument instead of decorating it**, which is the only form of it invariant 5 was ever protecting.
+
+***Four of the anchors are not invented.*** **6 gives the Review Board its humours, and each humour already carries a type:**
+
+| Humour | Colour | Element | Type |
+|---|---|---|---|
+| **Sanguine** | red | air | **VECTOR** |
+| **Choleric** | yellow | fire | **ENTROPY** |
+| **Melancholic** | black bile | earth | **LATENT** |
+| **Phlegmatic** | water | calm | **FROZEN** |
+
+*The other eleven are extended from those, and **every one of them is a claim this document is making rather than a fact it inherited.*** **CONTENT is bone — the undifferentiated one. LOGIC is cold steel blue. CONTEXT is magenta.** *So CODEMUSAI and CAREMUSAI, who are the same chassis, now differ by hue as well as by ear cups* — **and the hue is the matchup.**
+
+#### The outline keeps its own colour
+
+**Our four tones map to four palette entries:** *paper becomes index 0, which Gen 3 treats as transparent,* **and the three inks become a light, a mid and a dark of the type's hue.** ***Level 0 stays nearly black:*** **an outline that takes the hue stops reading as an outline**, which is the same lesson the 16×16 player sprite taught three times over.
 
 ### 9.2 Order of operations
 
