@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.26 — 2026-09-02
+
+### Music
+
+- **`tools/port_music.py`** — parses our GB channel data and writes MIDI, because pokefirered builds music from `.mid` through `mid2agb`. Nothing can be copied between a hardware sequencer and a software mixer; the notes are re-emitted
+- **`titletheme` → `mus_title`, `slatecity` → `mus_pewter`, `thebleed` → `mus_route1`** — each replaces an existing slot, so no constant, table row or index moves
+- **Three conversions**: 8 GB ticks = a quarter note and GB octave N = MIDI octave N are both structural; **GB tempo used as BPM is a guess** and the thing most likely to need tuning by ear
+- **`brazen` has nowhere to go** — FireRed ships no `mus_saffron`. Reported rather than guessed at
+
+---
+
 ## v11.25 — 2026-09-02
 
 ### setup.sh had never actually been exercised on a fresh clone

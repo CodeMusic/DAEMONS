@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.25**
+**A total conversion — the living design bible, v11.26**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3494,6 +3494,34 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 #### The outline keeps its own colour
 
 **Our four tones map to four palette entries:** *paper becomes index 0, which Gen 3 treats as transparent,* **and the three inks become a light, a mid and a dark of the type's hue.** ***Level 0 stays nearly black:*** **an outline that takes the hue stops reading as an outline**, which is the same lesson the 16×16 player sprite taught three times over.
+
+### 9.5 The music, re-emitted rather than carried
+
+**Built 2026-09-02.** ***The two engines could not be less alike.*** **The Game Boy build IS the sequencer** — `note C_, 8` writes a frequency into a hardware channel. **The GBA has a software mixer**, and pokefirered builds its music from `.mid` files through `mid2agb`. *So nothing can be copied.* **The notes have to be re-emitted in another format** — which is fine, because **the notes are the part worth keeping.**
+
+`tools/port_music.py` parses our GB channel data and writes MIDI directly.
+
+| | | |
+|---|---|---|
+| `titletheme` | → `mus_title` | the front door |
+| `slatecity` | → `mus_pewter` | **Pewter *is* Slate City** |
+| `thebleed` | → `mus_route1` | Routes 1 and 2 |
+
+***Each one replaces a slot that already exists rather than claiming a new one.*** **Adding a song means a new constant, a new `song_table` row, and every index after it moving.** *Replacing means none of that* — and the slots were chosen so **the map that plays them is the map the track was written for.**
+
+#### Three conversions, and one of them is a guess
+
+| | |
+|---|---|
+| **Eight GB ticks is one quarter note** | *structural* — our own tracks are built in bars of 32 as four notes of eight, so this is what we wrote them to mean |
+| **GB octave N becomes MIDI octave N** | *structural* — `octave 4 / note C_` is middle C, and a bass at `octave 2` lands where a bass belongs |
+| **The GB `tempo` value is used as BPM** | ***a guess***, and the most likely thing to want tuning by ear |
+
+#### Brazen has nowhere to go
+
+***FireRed ships no `mus_saffron`.*** **Saffron shares a theme with other cities**, so giving Brazen a slot means either **taking one that belongs to a city we have also renamed**, or **adding a song and moving every index after it.**
+
+**That is a decision rather than a lookup, and the tool does not make it.** *It reports it.*
 
 ### 9.2 Order of operations
 
