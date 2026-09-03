@@ -114,6 +114,19 @@ read, all eight badges and 999999; hold B to walk through grass. It is
 scaffolding for the §9.3 spike rather than a general debug menu — those are the
 two things being evaluated.
 
+**Never filter a build for `error:`.** agbcc prints its diagnostics as
+`warning:` lines and then fails with a bare `Error 1`, so `make … | grep -i
+"error:"` reports a clean build while the ROM silently keeps the previous
+binary. This has now caused two bugs in this project — the Route 1 music on the
+Game Boy side and a stale debug ROM here. **Check the exit code**:
+
+```sh
+make -C engineGba firered_debug -j8 >/dev/null 2>&1; echo "exit=$?"
+```
+
+`bindDaemons.sh` gets this right already: it runs under `set -euo pipefail`, so
+a failed build aborts the script rather than launching a stale ROM.
+
 **GBA toolchain.** `arm-none-eabi-gcc` from Homebrew (no sudo), plus `agbcc`
 built from source into `engineGba/tools/agbcc`. Homebrew's ARM gcc ships no
 libc, so `MODERN=1` fails on `string.h`; agbcc brings its own headers and is

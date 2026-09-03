@@ -1,14 +1,25 @@
 # CONTEXT / CONTENT
 
-**A Pokémon Red total conversion where the creatures are AI daemons and the type chart is an argument about consciousness.**
+**A total conversion where the creatures are AI daemons and the type chart is an argument about consciousness.**
 
-Machines evolved into creatures. This is a Game Boy game about what happened next, and it makes its argument in damage numbers rather than dialogue.
+Machines evolved into creatures. This is a game about what happened next, and it makes its argument in damage numbers rather than dialogue.
 
 ---
 
 ## What this is
 
-A total conversion built on [pret/pokered](https://github.com/pret/pokered), the reverse-engineered disassembly of Pokémon Red. Same engine, same 8-bit constraints, entirely different world.
+A total conversion. It was built first on [pret/pokered](https://github.com/pret/pokered) — the Game Boy — and **ported to the GBA on 2026-09-03**, onto [pret/pokefirered](https://github.com/pret/pokefirered).
+
+| | |
+|---|---|
+| [**CodeMusic/pokefirered-daemons**](https://github.com/CodeMusic/pokefirered-daemons) | the engine — **this is where the work is** |
+| [**CodeMusic/pokered-daemons**](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, where the vertical slice was made. Kept as a reference, not updated further |
+
+**Why the move.** A spike was run to answer one question — are abilities, item descriptions and a real scripting language worth rebuilding 334 files for? Gen 1 stores **no item descriptions at all**, which is a writing-led project running on the one generation with nowhere to write. Abilities give the chart a second axis. The Index went from six lines of eighteen characters to three of forty-two.
+
+**What it cost.** Greyscale stops being a constraint: on a DMG the machine and the meaning agreed. The answer is in `docs/vision.md` §9.4 — colour is now **by type**, so it carries the argument instead of decorating it.
+
+**This repository is neither engine.** It is the design: the bible, the changelog, the lineage, and every tool that did the porting. `docs/` has never been engine-specific and that is the whole reason the move was affordable.
 
 **Two editions, one source tree.** The slash in the title is literal. `pokered` already builds Red *and* Blue from the same sources via two assembler defines, so **CONTENT** and **CONTEXT** cost three lines of Makefile. The type chart is byte-identical in both — it's the argument, and an argument that changes by cartridge isn't one. What differs is which daemons you meet, and what the Index says about them.
 
@@ -16,7 +27,9 @@ Creatures are **daemons** — background processes that run unattended, and the 
 
 ## The idea
 
-Gen 1 has no abilities, no held items, one Special stat, and fifteen type slots. That's a severe design space, and severity is the appeal: **the type chart ends up carrying the entire philosophy of the game.**
+Gen 1 had no abilities, no held items, one Special stat, and fifteen type slots. That severity is where the design came from: **the type chart carries the entire philosophy of the game**, because on that machine nothing else could.
+
+That remains true on the GBA. The chart is still the argument — §2's *only* change to the matchup table, `CONTEXT ↔ LATENT` at mutual 2×, was finally built there. What the newer machine adds is room to *say* things: descriptions, longer entries, and abilities as a second axis alongside the chart rather than a replacement for it.
 
 So the fifteen types are the vocabulary of thinking machines — CONTENT and CONTEXT, LOGIC and LATENT, ENTROPY, FLOW, GROWTH, SWARM. The matchups between them aren't decorative. Rules parse data brilliantly and fail at framing, and the combat math says so in every battle, without a single line of dialogue explaining it.
 
