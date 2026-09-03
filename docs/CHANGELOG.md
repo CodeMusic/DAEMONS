@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.34 — 2026-09-03
+
+### The black screen was a missing string
+
+- **`sStartMenuDescPointers` is indexed by the same enum as the action table**, and `STARTMENU_DEBUG` was added to one and not the other — so the menu read off the end of the array. That was the garbage description **and** the black screen: printing an unterminated string into the help window. One omission, two symptoms
+- **The Index's habitat pages are where a process runs**, not where an animal lives — `WHERE THEY RUN`, and *Userland / Branching / Boundary / Stream / Kernel / Stack / Fragmented / Network / Unindexed*. Each is a real place in a computer and still reads as a place
+- **START menu reads `DAEMONS` and `INDEX`**
+- **Three text fixes** — S.T.A.R.R.'s *no longer **just** information*; ARTSAI's last line rewritten to be readable; Crystal now asks the rival's name *again* rather than *now*
+- **The type badges are still vanilla.** They are pixel art in a 128×128 tile sheet, not strings; scoped, not attempted
+
+---
+
 ## v11.33 — 2026-09-03
 
 ### The Index finished, and a DEBUG entry in the START menu

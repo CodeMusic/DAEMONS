@@ -65,9 +65,9 @@ TEXT = {
     "DEADLOCK":  ("Snorlax",    "Two of them are each waiting for the other to move first. Neither will. Nothing outside is coming."),
     # Recursion, and what a feedback loop starts to resemble once it is deep
     # enough. Craft rule 1: the last sentence stops exactly before saying it.
-    "STARR":     ("Mewtwo",     "It reads its own output, then reads that. Nothing tells it to stop. What comes back is no longer information."),
+    "STARR":     ("Mewtwo",     "It reads its own output, then reads that. Nothing tells it to stop. What comes back is no longer just information."),
     # Its move is PERSPECTIVE. This is what the move is for.
-    "ARTSAI":    ("Mew",        "It can stand where you are standing and see what you see. What it brings back was in neither of you before."),
+    "ARTSAI":    ("Mew",        "It can stand where you are standing and see what you see. It comes back with something neither of you had."),
 }
 
 # Categories live in pokedex_entries.h rather than in the text files, and two of
