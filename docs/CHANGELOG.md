@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.38 — 2026-09-03
+
+### SONG played nothing
+
+- **`PlayNewMapMusic` does not play anything.** It sets `sCurrentMapMusic` and arms the map-music state machine, which next runs on a **map transition** — so from inside a menu, or from a field hotkey, it changes nothing you can hear. SFX worked because `PlaySE` starts immediately
+- **`PlayBGM` is the one that starts a track**, and it leaves the map's own music state untouched — which is what lets BACK simply play the map song again rather than having to restore anything
+- Both the submenu and the SELECT hotkeys had the same bug
+
+---
+
 ## v11.37 — 2026-09-03
 
 ### A real DEBUG submenu, and a type port that was missed
