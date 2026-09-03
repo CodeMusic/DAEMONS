@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.27 — 2026-09-02
+
+### The chart change, built for the first time
+
+- **§2's only matchup change had never been implemented on either engine** — `git diff` on `data/types/matchups.asm` is empty and always was. The one place invariant 3 says the argument lives was still vanilla
+- **`CONTEXT ↔ LATENT` mutual 2× is now in `gTypeEffectiveness`** — and it cost **one line instead of three**, because Gen 3 already fixed the Gen 1 `GHOST → PSYCHIC = 0` bug the design was working around, and already ships `GHOST → PSYCHIC` at 2×
+- Array bumped 336 → 339; Gen 3 declares the size rather than relying on the sentinel
+
+---
+
 ## v11.26 — 2026-09-02
 
 ### Music

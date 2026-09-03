@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.26**
+**A total conversion — the living design bible, v11.27**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3522,6 +3522,24 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 ***FireRed ships no `mus_saffron`.*** **Saffron shares a theme with other cities**, so giving Brazen a slot means either **taking one that belongs to a city we have also renamed**, or **adding a song and moving every index after it.**
 
 **That is a decision rather than a lookup, and the tool does not make it.** *It reports it.*
+
+### 9.6 The chart change, finally built — and cheaper than it was
+
+***2 specifies exactly one change to the matchup table*** — **delete Gen 1's `GHOST, PSYCHIC, 00` bug, then add the mutual pair `CONTEXT ↔ LATENT` at 2×.** *"Two additions, one deletion. That is the whole chart change."*
+
+***It had never been built.*** **`git diff` against upstream on `data/types/matchups.asm` is empty**, and has been the whole time. *The one place invariant 3 says the argument actually lives was still vanilla on the Game Boy.*
+
+#### And the port makes it cheaper
+
+| | Game Boy | GBA |
+|---|---|---|
+| `GHOST, PSYCHIC, 00` — the Gen 1 bug | **delete it** | *Gen 3 fixed it; nothing to do* |
+| `LATENT → CONTEXT` ×2 | **add it** | *already there* |
+| `CONTEXT → LATENT` ×2 | **add it** | **add it** |
+
+***Three edits become one.*** **Gen 3 had already fixed the bug the design was working around**, and already ships the half of the pair that follows from the fix. **So the entire chart argument is now one line in `gTypeEffectiveness`** — *plus bumping the array from 336 to 339, because Gen 3 declares its size rather than terminating on the sentinel alone.*
+
+**Framing is how you reach what runs below the surface; what runs below the surface destabilises framing.** *Mutual 2× is unusual and correct here:* **these two interpenetrate and neither has a safe angle on the other.**
 
 ### 9.2 Order of operations
 
