@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.36 — 2026-09-03
+
+### The black screen, actually fixed
+
+- **`StartMenu_FadeScreenIfLeavingOverworld` fades to black for every callback except SAVE, EXIT and RETIRE** — because those are the only three that *stay* in the overworld. DEBUG stays too, and being absent from that list is what blacked out the screen: it faded out and there was no new screen to fade back in
+- **The missing description string was a real bug and a different one.** Fixing it fixed the gibberish and nothing else; the diagnosis that it also explained the crash was wrong
+- **The debug kit persists across Continue.** `load_save.c` copies `gPlayerParty` into the save block like any other party — the kit only *runs* at New Game, which is not the same as its results being temporary
+
+---
+
 ## v11.35 — 2026-09-03
 
 ### The type badges
