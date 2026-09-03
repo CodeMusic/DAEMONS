@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.30**
+**A total conversion — the living design bible, v11.31**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3595,6 +3595,24 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 ***Gen 3 gives a species one palette and both sprites share it.*** **So the back must not compute its own** — doing that would **recolour the front sprite already in the ROM.** *The front defines the palette; the back maps into it,* and the tool refuses to do it the other way round.
 
 **And the rule from 9.4 survives the upgrade:** *colour is still by type.* **`docs/gemini-prompts-gba-sprites.txt` is generated rather than written**, so every prompt names the hue that daemon's type was actually assigned — *a prompt naming the wrong colour is worse than no prompt.*
+
+### 9.9 The copyright screen, again — and what a tilemap buys
+
+**Built 2026-09-03.** ***The Game Boy version of this screen was a 31-tile budget*** (7.14d) — *a raw bank walked by `PlaceString`, where `$7F` had to stay blank because the string used it as a space, and the whole design fell out of the arithmetic.*
+
+**The GBA version is a bank *and a tilemap*.** `graphics/intro/copyright.png` is a **deduplicated atlas**; `copyright.bin` is a **32×32 map of indices into it.** *More work, and far more freedom:* **the text can sit anywhere on the 30×20 screen** instead of on three consecutive rows of a font table.
+
+*Both decompress to the start of their VRAM blocks*, so **indices are 0-based into our own atlas and nothing needs offsetting.** ***Tile 0 must be blank***, because every cell the map does not name is 0.
+
+**70 unique tiles from 600 cells.** *Vanilla used 39 — ours costs more because it says more, and a char block holds 512.*
+
+#### The same face, on purpose
+
+***The typeface is the one the Game Boy screen uses*** — **vanilla's copyright font, lifted pixel-for-pixel, plus the glyphs it never had** (7.14d). *Reused rather than redrawn, so the two editions of this screen are recognisably the same object* even though **nothing about how they are built is shared.**
+
+*One addition the Game Boy could not afford:* **a one-pixel drop shadow.** **Five-pixel glyphs vanish on a GBA screen**, and the second palette entry was free.
+
+`tools/gencopyright.py` is importable now — its work sits behind a `__main__` guard so `tools/gbacopyright.py` can borrow the font without generating a Game Boy asset as a side effect.
 
 ### 9.2 Order of operations
 

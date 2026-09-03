@@ -74,32 +74,33 @@ N = {
 }
 F = {k: v.split('/') for d in (V, N) for k, v in d.items()}
 
-def strip(text, tiles):
+def strip(text, tiles, ink=None):
     """Set `text` left-aligned in a `tiles`-wide canvas, 1px between glyphs."""
     w = tiles * 8
-    g = [[PAPER] * w for _ in range(8)]
+    g = [[PAPER if ink is None else 0] * w for _ in range(8)]
     x = 0
     for ch in text:
         rows = F['(c)' if ch == '@' else ch]
         for r, row in enumerate(rows):
             for i, px in enumerate(row):
                 if px == '#':
-                    g[r][x + i] = INK
+                    g[r][x + i] = INK if ink is None else ink
         x += len(rows[0]) + 1
     if x - 1 > w:
         sys.exit("'%s' is %d px, will not fit %d tiles" % (text, x - 1, tiles))
     return g
 
-# One canvas, because the three runs have to land on tile boundaries in the
-# order the tile IDs are numbered.
-LINES = [("@'11-'26", 5), ("SeeingSharp", 8), ("Psychology/Code", 11),
-         ("CODEMUSIC", 7)]
-out = [[] for _ in range(8)]
-base = 0x60
-for text, tiles in LINES:
-    print("  $%02X-$%02X  %s" % (base, base + tiles - 1, text))
-    base += tiles
-    for r, row in enumerate(strip(text, tiles)):
-        out[r] += row
-write_png(os.path.join(ENG, "gfx/splash/copyright.png"), out, 2)
-print("  gfx/splash/copyright.png %dx8" % len(out[0]))
+if __name__ == "__main__":
+    # One canvas, because the three runs have to land on tile boundaries in the
+    # order the tile IDs are numbered.
+    LINES = [("@'11-'26", 5), ("SeeingSharp", 8), ("Psychology/Code", 11),
+             ("CODEMUSIC", 7)]
+    out = [[] for _ in range(8)]
+    base = 0x60
+    for text, tiles in LINES:
+        print("  $%02X-$%02X  %s" % (base, base + tiles - 1, text))
+        base += tiles
+        for r, row in enumerate(strip(text, tiles)):
+            out[r] += row
+    write_png(os.path.join(ENG, "gfx/splash/copyright.png"), out, 2)
+    print("  gfx/splash/copyright.png %dx8" % len(out[0]))

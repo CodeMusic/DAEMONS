@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.31 — 2026-09-03
+
+### The copyright screen, and debug hotkeys that answer
+
+- **`tools/gbacopyright.py`** — three lines on the GBA copyright screen, in the same font as the Game Boy one. A tile atlas plus a 32×32 tilemap rather than a 31-tile budget, so the text can sit anywhere; 70 unique tiles from 600 cells. A drop shadow the Game Boy could not afford
+- **`tools/gencopyright.py` is importable** — its work moved behind a `__main__` guard so the font can be borrowed without generating a Game Boy asset
+- **Every debug hotkey now answers** — the POKéCENTER jingle and a message for healing, the item fanfare for restocking, the song number on screen. A tool that changes hidden state silently is indistinguishable from one that did not run
+- **`L + B` restores the map's own song**, and the song hotkeys moved to `A`/`B`: holding L does not stop the avatar walking, so `UP`/`DOWN` would have marched you into a wall while browsing
+
+---
+
 ## v11.30 — 2026-09-03
 
 ### The Index expanded, and prompts for full-colour sprites
