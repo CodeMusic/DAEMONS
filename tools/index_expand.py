@@ -56,6 +56,25 @@ TEXT = {
     "ROVERBYTE": ("Venusaur",   "It has a body now, and senses that come with one. Everything it predicted, it can finally check. Some was wrong."),
     "LOCUS":     ("Wartortle",  "It found a rule the points obey. It cannot say what the rule is for, only that it holds. So far it has held."),
     "SCRAPER":   ("Weedle",     "Takes the same things a CRAWLER takes, by the same method. Nobody gave it permission. Nobody asked for it back."),
+
+    # Four the Game Boy build never wrote. MUSAI and DEADLOCK were renamed and
+    # then left with upstream's text; 150 and 151 had entries that described
+    # only how they came to exist, which tells a player nothing about what they
+    # are for. These say what they DO.
+    "MUSAI":     ("Eevee",      "Nothing about it is decided yet. What it becomes depends on what it is shown first. It has not been shown anything."),
+    "DEADLOCK":  ("Snorlax",    "Two of them are each waiting for the other to move first. Neither will. Nothing outside is coming."),
+    # Recursion, and what a feedback loop starts to resemble once it is deep
+    # enough. Craft rule 1: the last sentence stops exactly before saying it.
+    "STARR":     ("Mewtwo",     "It reads its own output, then reads that. Nothing tells it to stop. What comes back is no longer information."),
+    # Its move is PERSPECTIVE. This is what the move is for.
+    "ARTSAI":    ("Mew",        "It can stand where you are standing and see what you see. What it brings back was in neither of you before."),
+}
+
+# Categories live in pokedex_entries.h rather than in the text files, and two of
+# these species were renamed without ever being recategorised.
+CATEGORY = {
+    "Eevee":   "UNSET",        # a variable with no value assigned
+    "Snorlax": "BLOCKED",      # SUSPEND and HIBERNATE induce it; INTERRUPT ends it
 }
 
 import textwrap
@@ -80,6 +99,21 @@ for fname in ("pokedex_text_fr.h", "pokedex_text_lg.h"):
     print("  %s: %d/%d" % (fname, placed, len(TEXT)))
     if WRITE and rc == 0:
         open(path, "w").write(text)
+# --- categories -------------------------------------------------------------
+path = os.path.join(GBA, "src/data/pokemon/pokedex_entries.h")
+text = open(path).read()
+placed = 0
+for label, cat in sorted(CATEGORY.items()):
+    key = "NATIONAL_DEX_" + label.upper()
+    pat = re.compile(r'(\[%s\]\s*=\s*\{\s*\.categoryName = _\(")[^"]*("\))' % re.escape(key))
+    text, n = pat.subn(r'\g<1>%s\g<2>' % cat, text)
+    if n: placed += 1
+    else:
+        print("  !! category: no %s" % key); rc = 1
+print("  categories: %d/%d" % (placed, len(CATEGORY)))
+if WRITE and rc == 0:
+    open(path, "w").write(text)
+
 if WRITE:
     print("  written" if rc == 0 else "  NOT written")
 sys.exit(rc)

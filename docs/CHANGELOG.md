@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.33 — 2026-09-03
+
+### The Index finished, and a DEBUG entry in the START menu
+
+- **`THE INDEX`** replaces `POKéMON LIST`, and the category line reads `CHANCE DAEMON` rather than `CHANCE POKéMON`
+- **Four entries the Game Boy build never wrote.** MUSAI and DEADLOCK were renamed and left with upstream's text; **150 and 151 described only how they came to exist**, which tells a player nothing about what they are for. They say what they *do* now — S.T.A.R.R. reads its own output until what returns is no longer information, and ARTSAI stands where you are standing and brings back what was in neither of you
+- **Two categories** — MUSAI is `UNSET`, a variable with no value assigned; DEADLOCK is `BLOCKED`
+- **A `DEBUG` entry in the START menu** — full restore and a full bag, findable without being told. The nested MUSIC/SFX browsers are deliberately *not* here: they need another window, another task and a 348-song list, and that is worth building with someone testing it
+- **`grep "error:"` hid a broken build.** agbcc prints warnings and then `Error 1` without that word, so a filtered build looked clean while the debug ROM silently kept a stale binary. Same class as the Route 1 music bug; check exit codes
+
+---
+
 ## v11.32 — 2026-09-03
 
 ### The project pivots to the GBA

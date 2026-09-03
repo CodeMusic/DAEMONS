@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.32**
+**A total conversion — the living design bible, v11.33**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3635,6 +3635,18 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 **The two figures are the same person's two ways of arriving at an answer**, which is why they are ***deliberately not a matched pair of opposites.*** *Neither is the careful one. Neither is the wild one.* **They are two people, and the player picks the one they would rather be.**
 
 *And it costs nothing to be careful here:* **nothing in the game refers to either with a pronoun.**
+
+### 9.10a The two legendaries were describing their own paperwork
+
+***150 and 151's entries said only how they came to exist.*** *Assembled from a study of a single prior event. Observed once, at a facility, by five people.* **True, and useless to someone holding one** — *the provenance is the Quicksilver plot, and the Index is where a player looks to find out what a thing is **for**.*
+
+**They say what they do now.**
+
+> **S.T.A.R.R.** — *It reads its own output, then reads that. Nothing tells it to stop.* **What comes back is no longer information.**
+>
+> **ARTSAI** — *It can stand where you are standing and see what you see.* **What it brings back was in neither of you before.**
+
+***Both stop one sentence early, which is the whole of craft rule 1.*** *The first describes a loop deep enough to become something else and does not name what.* **The second describes its own move — PERSPECTIVE — and lets the last clause do the work.**
 
 ### 9.11 The ID number is a record of what you chose
 
