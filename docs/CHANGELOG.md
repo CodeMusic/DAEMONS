@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.28 — 2026-09-03
+
+### Brazen gets its own slot, and a wrong claim is corrected
+
+- **Saffron shares `MUS_PEWTER` with Pewter and Viridian**, so putting Slate City in that slot silently gave Brazen the wrong theme. Found by asking the map, not the tool
+- **"Adding a song moves every index after it" was false.** The table is positional; a row *appended* shifts nothing. `MUS_BRAZEN` is 347, four lines of registration
+- **`ld_script.ld` names every song object explicitly** — a song built but not listed there fails to link as "defined in discarded section". Loud, at least
+- `SaffronCity/map.json` → `MUS_BRAZEN`; Viridian keeps `MUS_PEWTER`, which §7.4 says is right
+
+---
+
 ## v11.27 — 2026-09-02
 
 ### The chart change, built for the first time

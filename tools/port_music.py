@@ -36,12 +36,12 @@ WRITE = "--write" in sys.argv
 TPQ, TICKS_PER_QUARTER = 480, 8          # MIDI resolution, GB ticks per quarter
 
 TRACKS = [("titletheme", "mus_title"), ("slatecity", "mus_pewter"),
-          ("thebleed", "mus_route1")]
-# brazen.asm has nowhere to go yet. FireRed ships no mus_saffron -- Saffron
-# shares a theme with other cities -- so giving Brazen a slot means either
-# taking one that belongs to a city we have also renamed, or adding a song and
-# moving every index after it. That is a decision, not a lookup, and it is not
-# made here.
+          ("thebleed", "mus_route1"), ("brazen", "mus_brazen")]
+# brazen needed a slot of its own, and getting one was cheaper than first
+# thought. Saffron shares MUS_PEWTER with Pewter and Viridian in Gen 1, so
+# putting Slate City into that slot handed Brazen the wrong theme as well.
+# The song table is POSITIONAL -- mus_title is row 278 and MUS_TITLE is 278 --
+# so a row APPENDED at the end shifts nothing. Only an insertion would.
 
 SEMI = {"C_": 0, "C#": 1, "D_": 2, "D#": 3, "E_": 4, "F_": 5,
         "F#": 6, "G_": 7, "G#": 8, "A_": 9, "A#": 10, "B_": 11}
@@ -105,7 +105,11 @@ for name, slot in TRACKS:
     if not os.path.exists(src):
         print("  !! no %s" % src); rc = 1; continue
     if not os.path.exists(dst):
-        print("  !! no slot %s.mid to replace" % slot); rc = 1; continue
+        # A slot we added ourselves has no .mid yet; one we invented has no
+        # song_table row either, and that is the error worth catching.
+        table = open(os.path.join(GBA, "sound/song_table.inc")).read()
+        if ("song %s," % slot) not in table:
+            print("  !! %s is not in song_table.inc" % slot); rc = 1; continue
     tempo, chans = parse(src)
     notes = sum(1 for c in chans for n, _ in c if n is not None)
     print("  %-11s -> %-14s %d channels, %d notes, tempo %d"

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.27**
+**A total conversion — the living design bible, v11.28**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3517,11 +3517,24 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 | **GB octave N becomes MIDI octave N** | *structural* — `octave 4 / note C_` is middle C, and a bass at `octave 2` lands where a bass belongs |
 | **The GB `tempo` value is used as BPM** | ***a guess***, and the most likely thing to want tuning by ear |
 
-#### Brazen has nowhere to go
+#### Brazen, and a claim that was wrong
 
-***FireRed ships no `mus_saffron`.*** **Saffron shares a theme with other cities**, so giving Brazen a slot means either **taking one that belongs to a city we have also renamed**, or **adding a song and moving every index after it.**
+***The first version of this section said adding a song "moves every index after it." That is false, and the mistake had already caused a bug.***
 
-**That is a decision rather than a lookup, and the tool does not make it.** *It reports it.*
+**Saffron shares `MUS_PEWTER` with Pewter and Viridian** — Gen 1 gave all three *Cities 1*. So putting Slate City into that slot **also handed Brazen the wrong theme**, silently, in a build that reported success.
+
+***The song table is positional and nothing more.*** **`mus_title` is row 278 and `MUS_TITLE` is 278**, so a row **appended at the end** shifts nothing; only an *insertion* would. **Adding a song costs four lines** and it is the correct fix, not the expensive one:
+
+| | |
+|---|---|
+| `sound/song_table.inc` | one row, at the end |
+| `include/constants/songs.h` | `MUS_BRAZEN 347` |
+| `sound/songs/midi/midi.cfg` | the mid2agb arguments |
+| **`ld_script.ld`** | ***and this one is the trap*** |
+
+***The linker script names every song object explicitly.*** **A song that is built but not listed there links as "defined in discarded section" and the ROM fails to link** — which is a good failure, because it is loud. *Nothing about the song table or the constants would have caught it.*
+
+**`SaffronCity/map.json` now plays `MUS_BRAZEN`.** *Viridian keeps `MUS_PEWTER`, which is correct:* **7.4 has Callow sharing Cities 1 with Slate in the Game Boy build too.**
 
 ### 9.6 The chart change, finally built — and cheaper than it was
 
