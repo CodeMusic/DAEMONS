@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.39 — 2026-09-03
+
+### The badge alphabet is the game's now, not ours
+
+- **Three hand-drawn glyphs were each one pixel wrong**, and only words showed it: a two-pixel **T** stem read as `I`, a tapering **W** read as `V`, a blunt **V** read as `U` — so `FLOW` rendered *FLOV*, `GROWTH` rendered *GROVTH*, `VECTOR` rendered *VECIOR*
+- **`tools/gbatypes.py` now lifts A–Z out of `graphics/fonts/latin_small.png`** — `FONT_SMALL`, the game's own half-width face, *already four pixels of ink on a five-pixel pitch*, which is the metric the badge was built to. 8×16 cells, thirty-two per row, indexed by the charmap byte (`A` = `0xBB`)
+- The sheet's own shadow is discarded and regenerated, because the badge sits on **eight different grounds**
+- The tool's PNG reader learned sub-byte bit depths — the font sheet is **2bpp**, `menu_info.png` is 8
+- **Verified in the ROM, not in the PNG**: the `FLOW` badge's four tiles, encoded `& 0xF` the way `gbagfx` does, are present in all three `.gba` files
+- *The tell was on screen the whole time* — the species names beside the badges were clear and the badges were not. Same screen, same size, two different alphabets
+- `docs/vision.md` **9.12** rewritten; bible now **v11.39**
+
 ## v11.38 — 2026-09-03
 
 ### SONG played nothing

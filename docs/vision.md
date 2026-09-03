@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.33**
+**A total conversion — the living design bible, v11.39**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3683,7 +3683,21 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 **And the shadow is generated rather than drawn** — one pixel down and right — *which is what keeps white legible on eight different backgrounds.*
 
-***W had to be redrawn twice.*** **At four pixels a W with its bar in the middle is an H**, and GROWTH came out as *GROHTH*. **The bar dropped to the bottom and the letter tapers.** *H, M, N and W all live within one pixel of each other at this size, and only looking at it catches that.*
+#### The face is the game's, and drawing our own was the mistake
+
+**The first version of this hand-drew an alphabet at four by seven.** *It looked right letter by letter and wrong in words.* **Three glyphs failed, and each failed by exactly one pixel:**
+
+| | ours | the game's | read as |
+|---|---|---|---|
+| **T** | two-pixel stem | *one-pixel stem* | `I` — GROWTH, LATENT |
+| **W** | tapers to a point | *legs, a solid row, legs again* | `V` — FLOW, SWARM, GROWTH |
+| **V** | blunt foot | *comes to a point* | `U` — VECTOR |
+
+***The fix was not a better hand.*** **`graphics/fonts/latin_small.png` is `FONT_SMALL`, the game's own half-width face, and it is already four pixels of ink on a five-pixel pitch** — *the exact metric the badge was built to.* **`tools/gbatypes.py` now lifts A–Z out of that sheet** — 8×16 cells, thirty-two to a row, indexed by the charmap byte, so `A` is `0xBB` — **and discards the sheet's own shadow, because ours has to survive eight different grounds.**
+
+***The lesson generalises past this badge.*** **A face that has shipped to millions of players has had every one-pixel ambiguity argued out of it already.** *When the pitch matches, take the font rather than approximate it.*
+
+*The tell was in the player's own eye, not in the diff:* **the species names beside the badges were clear and the badges were not** — same screen, same size, two different alphabets.
 
 ### 9.2 Order of operations
 

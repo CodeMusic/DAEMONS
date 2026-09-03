@@ -13,6 +13,18 @@ five-pixel pitch, so six letters fill the badge edge to edge -- measured off
 vanilla's own NORMAL, GROUND and DRAGON, all of which are exactly thirty
 pixels of ink. Seven would need thirty-five.
 
+THE FACE IS NOT DRAWN HERE. It is lifted out of graphics/fonts/latin_small.png,
+which is FONT_SMALL -- the game's own half-width face, and already exactly four
+pixels of ink on a five-pixel pitch. An earlier version of this tool drew its
+own alphabet at that size and got three letters wrong in ways that only show up
+in a word: a two-pixel stem made T read as I, and a W that tapered read as V,
+so GROWTH came out GROHTH and FLOW came out FLOV. The shipped font solves all
+three -- T has a one-pixel stem, V comes to a point, W does not.
+
+Glyph cells are 8x16, thirty-two to a row, indexed by the charmap byte, so 'A'
+is 0xBB. Colour 1 is the ink; the sheet's own shadow (colour 2) is discarded
+and regenerated here, because the badge needs it on eight different grounds.
+
 Which is why vanilla ships FIGHT, ELECTR and PSYCHC. It truncates, and it drops
 a vowel, and we do the same for the seven- and eight-letter names:
 
@@ -46,24 +58,11 @@ BADGES = [
     ("OPAQUE", 0x8C),
 ]
 
-# 4 wide, 7 tall. The shadow is generated, not drawn: one pixel down and right,
-# which is what the vanilla face does and what keeps white legible on eight
-# different background colours.
-F = {
- "A": ".##./#..#/#..#/####/#..#/#..#/#..#", "B": "###./#..#/###./#..#/#..#/#..#/###.",
- "C": ".###/#.../#.../#.../#.../#.../.###", "D": "###./#..#/#..#/#..#/#..#/#..#/###.",
- "E": "####/#.../#.../###./#.../#.../####", "F": "####/#.../#.../###./#.../#.../#...",
- "G": ".###/#.../#.../#.##/#..#/#..#/.###", "H": "#..#/#..#/#..#/####/#..#/#..#/#..#",
- "I": "###./.#../.#../.#../.#../.#../###.", "J": "..##/...#/...#/...#/#..#/#..#/.##.",
- "K": "#..#/#.#./##../##../#.#./#..#/#..#", "L": "#.../#.../#.../#.../#.../#.../####",
- "M": "#..#/####/####/#..#/#..#/#..#/#..#", "N": "#..#/##.#/##.#/#.##/#.##/#..#/#..#",
- "O": ".##./#..#/#..#/#..#/#..#/#..#/.##.", "P": "###./#..#/#..#/###./#.../#.../#...",
- "Q": ".##./#..#/#..#/#..#/#.##/#.#./.###", "R": "###./#..#/#..#/###./#.#./#..#/#..#",
- "S": ".###/#.../#.../.##./...#/...#/###.", "T": "####/.##./.##./.##./.##./.##./.##.",
- "U": "#..#/#..#/#..#/#..#/#..#/#..#/.##.", "V": "#..#/#..#/#..#/#..#/#..#/.##./.##.",
- "W": "#..#/#..#/#..#/#..#/####/####/.##.", "X": "#..#/#..#/.##./.##./.##./#..#/#..#",
- "Y": "#..#/#..#/#..#/.##./.##./.##./.##.", "Z": "####/...#/..#./.#../#.../#.../####",
-}
+FONT = os.path.join(GBA, "graphics/fonts/latin_small.png")
+CELL_W, CELL_H, CELLS_PER_ROW = 8, 16, 32
+GLYPH_TOP, GLYPH_ROWS, INK = 4, 8, 1   # 7 rows of cap plus Q's tail
+CHAR_A = 0xBB                          # charmap.txt: 'A'
+
 
 def load(p):
     d = open(p, "rb").read(); i = 8; idat = b""; hdr = None; plte = None
@@ -88,7 +87,12 @@ def load(p):
                 pp = a + b - c2; pa, pb, pc = abs(pp-a), abs(pp-b), abs(pp-c2)
                 line[x] = (line[x] + (a if pa <= pb and pa <= pc else b if pb <= pc else c2)) & 255
         out += line; prev = line
-    return w, h, plte, [[out[y*stride + x] for x in range(w)] for y in range(h)]
+    if bd == 8:
+        return w, h, plte, [[out[y*stride + x] for x in range(w)] for y in range(h)]
+    # sub-byte depths pack several pixels per byte, high bits first
+    per, mask = 8 // bd, (1 << bd) - 1
+    return w, h, plte, [[(out[y*stride + x // per] >> (8 - bd - bd * (x % per))) & mask
+                         for x in range(w)] for y in range(h)]
 
 def save(p, w, h, plte, px):
     raw = b"".join(b"\x00" + bytes(row) for row in px)
@@ -99,6 +103,21 @@ def save(p, w, h, plte, px):
         + ch(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 3, 0, 0, 0))
         + ch(b"PLTE", plte) + ch(b"IDAT", zlib.compress(raw)) + ch(b"IEND", b""))
 
+def readface():
+    """Lift A-Z out of FONT_SMALL as ink masks, 4 wide and 8 tall."""
+    fw, fh, _, fpx = load(FONT)
+    face = {}
+    for i in range(26):
+        idx = CHAR_A + i
+        cx = (idx % CELLS_PER_ROW) * CELL_W
+        cy = (idx // CELLS_PER_ROW) * CELL_H + GLYPH_TOP
+        rows = ["".join("#" if fpx[cy + r][cx + c] == INK else "."
+                        for c in range(4)) for r in range(GLYPH_ROWS)]
+        assert any("#" in r for r in rows), "no ink in cell %#x" % idx
+        face[chr(ord("A") + i)] = rows
+    return face
+
+F = readface()
 w, h, plte, px = load(PNG)
 rc = 0
 for name, off in BADGES:
@@ -114,7 +133,7 @@ for name, off in BADGES:
     span = len(name) * PITCH
     ox = x0 + START_X + (30 - span) // 2
     for n, chx in enumerate(name):
-        rows = F[chx].split("/")
+        rows = F[chx]
         gx = ox + n * PITCH
         for r, row in enumerate(rows):
             for c, v in enumerate(row):
