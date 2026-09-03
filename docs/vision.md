@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.31**
+**A total conversion — the living design bible, v11.32**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3398,7 +3398,13 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 ***And the chart goes from 15 types to 17.*** **2 calls the fifteen names "exactly at the limit"** of the character count, and they were chosen as a *complete* argument. **Invariant 3 says the chart is the argument** — so two filler types is a worse chart. *Two good ones would be better than what exists.* **That is a design problem to solve before porting, not after.**
 
-#### Why it is a spike and not a decision
+#### Decided 2026-09-03 — the project moved
+
+***The spike answered its question in a day and the project pivoted.*** **`engine/` is a reference now**; it still compiles and still runs the slice, and it is not updated further.
+
+*What follows is the reasoning as it stood before the answer, kept because it is the argument the decision was made against.*
+
+#### Why it was a spike and not a decision
 
 ***8's rule is the deciding one:*** **"the graveyard of ROM hacks is full of projects that designed 151 creatures and shipped zero towns."** *The vertical slice is **done**.* **A port resets implementation to zero while the design keeps galloping** — which is precisely the failure mode 8 exists to prevent, *arriving dressed as an upgrade.*
 
@@ -3613,6 +3619,32 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 *One addition the Game Boy could not afford:* **a one-pixel drop shadow.** **Five-pixel glyphs vanish on a GBA screen**, and the second palette entry was free.
 
 `tools/gencopyright.py` is importable now — its work sits behind a `__main__` guard so `tools/gbacopyright.py` can borrow the font without generating a Game Boy asset as a side effect.
+
+### 9.10 What the gender question was actually asking
+
+***FireRed asks "are you a boy or a girl?" and uses the answer for almost nothing.*** **The flag is read 102 times** in the source and **all but one of them picks a graphic or a palette** — a trainer back pic, a sprite template, a palette table.
+
+**The single exception called you someone's *son* or *daughter*.** *It says **child** now,* and with that gone **`playerGender` is purely a sprite selector.**
+
+***So the question was doing no work, and it has been replaced with one that does:***
+
+> **Now tell me. When the two disagree, which do you follow?**
+>
+> **LOGIC**    **INTUITION**
+
+**The two figures are the same person's two ways of arriving at an answer**, which is why they are ***deliberately not a matched pair of opposites.*** *Neither is the careful one. Neither is the wild one.* **They are two people, and the player picks the one they would rather be.**
+
+*And it costs nothing to be careful here:* **nothing in the game refers to either with a pronoun.**
+
+### 9.11 The ID number is a record of what you chose
+
+**Vanilla rolls 32 random bits and shows you the low sixteen** — *a number that means nothing.*
+
+***Ours derives the visible half from the choices actually made at the front of the game*** — **your name, your rival's name, which edition this is, and whether it is a testing build** — folded through an FNV hash into eleven bits, **and leaves the last five to chance.**
+
+*So two players who chose the same things land within 32 of each other, and everyone else lands somewhere else entirely.* **The number tells you what was chosen; the last two digits do not.** ***Nobody is told this and nothing in the game remarks on it.***
+
+**The high sixteen bits stay random on purpose.** *They are never displayed, and they are half of what decides whether a daemon is shiny* — **deriving those from a name would quietly make shininess a function of what you typed.**
 
 ### 9.2 Order of operations
 

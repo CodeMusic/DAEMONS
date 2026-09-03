@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.32 — 2026-09-03
+
+### The project pivots to the GBA
+
+- **`pokefirered-daemons` is the engine now.** `pokered-daemons` is kept as a reference and is not updated further; both READMEs say so, with the reasoning and the cost
+- **The gender question is gone.** `playerGender` is read 102 times and all but one picks a graphic — the exception called you someone's *son* or *daughter* and now says *child*. Replaced with **"When the two disagree, which do you follow?" — LOGIC / INTUITION**
+- **The ID number is derived**, not rolled: an FNV hash of your name, your rival's name, the edition and whether it is a debug build fills eleven bits, and five are chance. The high sixteen stay random because they decide shininess
+- **The intro rewritten** — Crystal has no title, because the professor-slot character having no professor is the device; DAEMONS are *companions*, others *BENCHMARK* them; the rival is a grandchild referred to as *they*
+- **`docs/gemini-prompts-gba-player.txt`** — the two figures, front and back, with the overworld sheets explicitly excluded and the three arm lessons from the Game Boy build written down
+
+---
+
 ## v11.31 — 2026-09-03
 
 ### The copyright screen, and debug hotkeys that answer

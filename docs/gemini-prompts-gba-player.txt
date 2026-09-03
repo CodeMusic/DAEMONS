@@ -1,0 +1,82 @@
+GEMINI PROMPTS - the two player figures
+======================================================================
+
+FireRed asks "are you a boy or a girl?" and uses the answer for almost nothing
+but a sprite. We checked: the flag is read 102 times in the source and all but
+ONE of them picks a graphic or a palette. The single exception was a line that
+called you someone's son or daughter, and it now says child.
+
+So the question was doing no work, and it has been replaced with one that does:
+
+    Now tell me. When the two disagree, which do you follow?
+
+        LOGIC        INTUITION
+
+Both figures are the same person's two ways of arriving at an answer, so they
+are DELIBERATELY NOT a matched pair of opposites. Neither is the careful one.
+Neither is the wild one. They are simply two people, and the player picks the
+one they would rather be.
+
+Nothing in the game ever refers to either with a pronoun.
+
+WHAT EACH ONE NEEDS
+
+  gfx: graphics/trainer_front/ and graphics/trainer_back/ per figure, plus
+  the overworld sheet. Do the FRONT first and attach it to every prompt after
+  -- a fresh conversation invents a different person.
+
+  Conversion goes through tools/gbacolour.py once the target paths are wired;
+  ask for it when you have the art and it will be added.
+
+THE STYLE PARAGRAPH, on every prompt
+------------------------------------
+Draw it as a flat illustration with a hard pure black (#000000) outline around the whole figure. Use AT MOST 15 flat colours plus a pure white background, hard edges between them, no gradients, no anti-aliasing, no glow, no texture. The outline must stay pure black and must not take the body colour. Plain pure-white background, nothing behind the figure, no ground shadow. Whole figure visible with a small even margin.
+
+======================================================================
+LOGIC - front
+======================================================================
+
+A young person standing squarely and facing the viewer, feet planted, weight even on both. They wear a long coat that reaches mid-calf, buttoned, with the collar turned up, over plain trousers and flat boots. A satchel hangs at one hip on a strap crossing the chest. In one hand, held down at their side, is a small hard-edged electronic unit, roughly a cube, with a narrow horizontal vent across the front, one small round indicator light and a port on the side - a machine you would ssh into, not a container: no seam around the middle, no lid, no clasp. Their hair is short and tidy. The expression is calm, attentive and unhurried - someone who is listening and has not decided yet. NOT stern, NOT cold, NOT smug. The face is fully visible and clearly lit, and must be one of the lightest areas of the figure, never the darkest. Eyes clearly drawn. Build the colour scheme around cold steel blue as the dominant colour, with warm off-white for the shirt beneath the coat.
+
+======================================================================
+INTUITION - front
+======================================================================
+
+A young person standing with their weight on one leg, shoulders slightly turned, mid-step rather than posed. They wear the same long coat as the other figure but open and loose, sleeves pushed up, over plain trousers and flat boots. A satchel hangs at one hip on a strap crossing the chest. In one hand, held down at their side, is a small hard-edged electronic unit, roughly a cube, with a narrow horizontal vent across the front, one small round indicator light and a port on the side - a machine you would ssh into, not a container: no seam around the middle, no lid, no clasp. Their hair is longer and unruly. The expression is warm, quick and amused - someone who has already decided and is waiting for you to catch up. NOT wild, NOT scatty, NOT mocking. The face is fully visible and clearly lit, and must be one of the lightest areas of the figure, never the darkest. Eyes clearly drawn. Build the colour scheme around deep magenta as the dominant colour, with warm off-white for the shirt beneath the coat.
+
+======================================================================
+THE BACK SPRITES
+======================================================================
+
+Ask in the same conversation as the matching front, attaching it:
+
+  Now draw the same figure from directly behind, same proportions, same
+  colours, same coat, same satchel, same style, same four rules about
+  outline and background. Head, shoulders and upper back only, cropped at
+  roughly the waist, as if standing just behind their shoulder. No face is
+  visible. The satchel between the shoulder blades and the shape of the
+  hair are the two things that have to read.
+
+======================================================================
+THE OVERWORLD SHEETS
+======================================================================
+
+Do NOT ask Gemini for these. They are 16x16, six frames each, and a generated
+figure loses its face, its silhouette and its walk cycle in the same downsample
+that works fine at 64px. The Game Boy build learned this the hard way; see
+tools/genplayer.py, which draws them.
+
+Two things that took three attempts there and should not be relearnt:
+
+  Arms flush against the torso read as OUTLINE, not as arms. Separating them
+  with a transparent column reads as a HOLE. What works is keeping them inside
+  the silhouette and separating them by TONE.
+
+  A coat that reaches the floor slides rather than walks. It has to stop one
+  row short so shoes can carry the step.
+
+WHAT MAKES A GOOD ONE
+
+The coat and the satchel are what survive the shrink. Pick the sample where
+those read most clearly. Do not pick on the face - at sprite size the face is
+about ten pixels and will be redrawn by hand either way.
