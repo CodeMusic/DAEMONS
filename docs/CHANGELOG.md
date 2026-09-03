@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.29 — 2026-09-03
+
+### The MARKS land after all, and the debug build grows hotkeys
+
+- **The eight MARKS ported** into `src/strings.c`, where Gen 3 keeps badge names as individual symbols. §9.3 had recorded them as unportable — badges have no bag slot and no description, which is true, but **"not an item" is not the same as "has no name"**
+- **Four debug field hotkeys**, all held with L: **R** heals the party, **SELECT** restocks balls, medicine, the four inputs and money, **UP/DOWN** walks the song table and plays it. Hotkeys rather than a menu: a submenu is window templates, a task, a callback and a tilemap — a day of UI for tools that exist to save time
+- **Two link traps recorded** — an initialised mutable static lands in `.data`, which `ld_script.ld` discards for that object; and a new song object must be named in the linker script or it links as "defined in discarded section"
+
+---
+
 ## v11.28 — 2026-09-03
 
 ### Brazen gets its own slot, and a wrong claim is corrected

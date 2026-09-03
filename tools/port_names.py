@@ -28,11 +28,25 @@ WRITE = "--write" in sys.argv
 # silently dropped: they are named, with the reason.
 KNOWN_MISSING = {
     "src/data/items.json": (
-        "badges are not items in Gen 3; the MARKS are flags plus a card",
+        "badges are not items in Gen 3 -- no bag slot, no description -- but "
+        "they do have NAMES; see BADGE_STRINGS below",
         {"BOULDERBADGE", "CASCADEBADGE", "THUNDERBADGE", "RAINBOWBADGE",
          "SOULBADGE", "MARSHBADGE", "VOLCANOBADGE", "EARTHBADGE"},
     ),
 }
+
+# The MARKS do land after all, just not in the item table. Gen 3 keeps the eight
+# badge names as individual symbols in src/strings.c rather than as rows of
+# anything, so there is no sequence to diff -- the pairing is written out.
+# An earlier version of this file recorded the MARKS as unportable, which was
+# wrong: "not an item" is not the same as "has no name".
+BADGE_STRINGS = "src/strings.c"
+BADGES = [
+    ("gText_BoulderBadge", "BOULDERBADGE"), ("gText_CascadeBadge", "CASCADEBADGE"),
+    ("gText_ThunderBadge", "THUNDERBADGE"), ("gText_RainbowBadge", "RAINBOWBADGE"),
+    ("gText_SoulBadge", "SOULBADGE"),       ("gText_MarshBadge", "MARSHBADGE"),
+    ("gText_VolcanoBadge", "VOLCANOBADGE"), ("gText_EarthBadge", "EARTHBADGE"),
+]
 
 TABLES = [
     # gb source, gb macro, gba file, name limit, format
@@ -116,4 +130,31 @@ for src, macro, dst, limit, fmt in TABLES:
     if WRITE and not missing and not too_long:
         open(path, "w").write(text)
         print("  written")
+
+# --- the MARKS ---------------------------------------------------------------
+items_gb = gb_list("data/items/names.asm", "li")
+items_van = upstream_list("data/items/names.asm", "li")
+badge_names = {}
+sm = difflib.SequenceMatcher(a=items_van, b=items_gb, autojunk=False)
+for tag, i1, i2, j1, j2 in sm.get_opcodes():
+    if tag == "replace" and (i2 - i1) == (j2 - j1):
+        badge_names.update(dict(zip(items_van[i1:i2], items_gb[j1:j2])))
+path = os.path.join(GBA, BADGE_STRINGS)
+text = open(path).read()
+print("%s -> %s" % ("the MARKS", BADGE_STRINGS))
+placed = 0
+for sym, vanilla in BADGES:
+    ours = badge_names.get(vanilla)
+    if not ours:
+        print("  !! %s has no rename" % vanilla); rc = 1; continue
+    pat = r'(const u8 %s\[\] = _\(")[^"]*("\);)' % re.escape(sym)
+    text, n = re.subn(pat, r'\g<1>%s\g<2>' % ours, text)
+    if n or ('_("%s")' % ours) in text:
+        placed += 1
+    else:
+        print("  !! no %s in %s" % (sym, BADGE_STRINGS)); rc = 1
+print("  %d/%d placed" % (placed, len(BADGES)))
+if WRITE and placed == len(BADGES):
+    open(path, "w").write(text)
+    print("  written")
 sys.exit(rc)

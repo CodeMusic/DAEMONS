@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.28**
+**A total conversion — the living design bible, v11.29**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3441,7 +3441,15 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 **STEEL resists nearly everything and falls to FIRE, FIGHTING and GROUND** — *ours: to randomness, to reasoning, and to whoever owns the ground.* **Which is what happens to safety hardening.**
 
-##### The descriptions are the first thing the port bought
+##### The MARKS do land, and the earlier claim was wrong
+
+***9.3 recorded that the MARKS could not be ported*** — *"badges are not items in Gen 3, so the eight of them have no slot."* **The first half is true and the conclusion does not follow.**
+
+**Gen 3 keeps the eight badge names as individual symbols in `src/strings.c`** — `gText_BoulderBadge`, `gText_CascadeBadge`, and so on — *shown wherever a badge is named rather than drawn.* **They have no bag slot and no description**, which is a real loss; **they have names, which is most of what the rename was.**
+
+***"Not an item" is not the same as "has no name."*** *The check that would have caught it was one grep, and the claim went into the bible without it.*
+
+#### The descriptions are the first thing the port bought
 
 **`tools/port_names.py` carries a rename; `tools/port_item_text.py` writes something that never existed.** *Three lines, about 35 characters.* **Two rules held throughout:** *craft rule 1 — none of them explains the thesis, they describe an object and stop;* **craft rule 6 — the joke sits underneath and is never pointed at.** ***The boxes are a privilege ladder and not one description says so:***
 
