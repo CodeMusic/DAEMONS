@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.40 — 2026-09-03
+
+### SONG was walking the sound effects
+
+- **The song table is not interleaved, and I had the halves backwards.** `SE_USE_ITEM` is **1** and `SE_POKE_JUMP_FAILURE` is **255**; music opens at **`MUS_HEAL` = 256** and ours close it at **`MUS_BRAZEN` = 347**
+- `DbgSongCallback` wrapped to **1**, so SONG was pushing *sound effects* through the BGM player — **255 presses from the first actual track.** SFX worked because 1..255 is exactly the effect range
+- SONG now walks **256..347**, SFX walks **1..255**, and neither wraps into the other
+
+### Fly opened the map and could not land
+
+- **Every destination gates on `FLAG_WORLD_MAP_*`.** `region_map.c` returns `MAPSECTYPE_NOT_VISITED` for any mapsec whose flag is clear, and the cursor will not settle on one
+- The debug kit granted badges and HMs but no visited flags — *the map drew, and nothing on it was selectable.* The block is contiguous (`PALLET_TOWN` … `BIRTH_ISLAND`, 51 flags), so the kit now sets all of it
+
+### Text
+
+- **"When the two disagree"** → **"When these disagree"**
+
+### Six characters is measured, not assumed
+
+- Packed as tightly as the face allows — real ink extents, one pixel between letters — **`CONTENT` is 32px, `ENTROPY` 32, `CORRUPT` 33, `EMERGENT` 38.** The badge interior is **30**. *Nothing seven letters long fits, at any spacing*
+
 ## v11.39 — 2026-09-03
 
 ### The badge alphabet is the game's now, not ours

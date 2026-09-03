@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.39**
+**A total conversion — the living design bible, v11.40**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3674,6 +3674,8 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 | CONTEXT → **CONTXT** | EMERGENT → **EMRGNT** | HARDENED → **HARDND** | |
 
 ***`CONTNT` and `CONTXT` still differ in the middle rather than at the end***, which is the pair that most needs to stay apart at a glance.
+
+***And thirty is measured, not assumed.*** **Packed as tightly as the face allows** — real ink extents, one pixel between letters — **`CONTENT` is 32 pixels, `ENTROPY` 32, `CORRUPT` 33, `EMERGENT` 38.** *The badge interior is 30.* **Nothing seven letters long fits, at any spacing.**
 
 **This is the third time this design has met a width limit and the third different answer.** *`TYPE_NAME_LENGTH` was a `#define` and we widened it. The Index reflowed. This one cannot move* — **the badge is a fixed rectangle in a fixed sheet** — *so the words give way, in the way vanilla itself established.*
 
