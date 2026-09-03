@@ -1,0 +1,562 @@
+GEMINI PROMPTS - full-colour GBA sprites
+======================================================================
+
+The GBA gives each creature SIXTEEN colours. What is in the ROM now is the
+Game Boy art with a palette laid over it: three shades of one hue plus an
+outline, four colours of the sixteen. This is how to spend the rest.
+
+ONE RULE SURVIVES THE UPGRADE. Colour is by TYPE (vision.md 9.4), so it
+carries the argument rather than decorating it. Each prompt below names the
+hue that daemon's type was assigned, and the art must be built around it -
+accents and secondary colours are welcome, a different dominant hue is not.
+
+HOW TO USE THIS FILE
+
+  1. Attach the CURRENT sprite named in the block. It is the silhouette we
+     already tuned; the new art should be recognisably the same creature.
+  2. Paste the prompt.
+  3. Save what comes back anywhere, then convert:
+
+         python3 tools/gbacolour.py <saved>.png <daemon> front
+         python3 tools/gbacolour.py <saved>.png <daemon> back
+
+  4. When a few are in: make -C engineGba firered
+
+DO THE FRONT FIRST. Twice over.
+
+In the conversation, because a fresh one invents a different creature and a
+back sprite that does not match its front is worse than none -- so attach the
+finished front to the back prompt.
+
+And in the conversion, because Gen 3 gives a species ONE palette shared by both
+sprites. gbacolour.py builds it from the front and maps the back into it. Run
+them the other way round and the back would recolour the front.
+
+----------------------------------------------------------------------
+ARTSAI - front sprite
+  type    CONTEXT (magenta)
+  attach  engine/gfx/pokemon/front/mew.png
+  convert python3 tools/gbacolour.py <saved>.png ARTSAI front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ARTSAI. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around magenta as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ARTSAI - back sprite
+  type    CONTEXT (magenta)
+  attach  engine/gfx/pokemon/back/mewb.png
+  convert python3 tools/gbacolour.py <saved>.png ARTSAI back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ARTSAI. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around magenta as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+BROADCAST - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/pidgeot.png
+  convert python3 tools/gbacolour.py <saved>.png BROADCAST front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called BROADCAST. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+BROADCAST - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/pidgeotb.png
+  convert python3 tools/gbacolour.py <saved>.png BROADCAST back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called BROADCAST. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+BUFFER - front sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/front/kakuna.png
+  convert python3 tools/gbacolour.py <saved>.png BUFFER front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called BUFFER. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+BUFFER - back sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/back/kakunab.png
+  convert python3 tools/gbacolour.py <saved>.png BUFFER back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called BUFFER. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CANON - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/charizard.png
+  convert python3 tools/gbacolour.py <saved>.png CANON front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CANON. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CANON - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/charizardb.png
+  convert python3 tools/gbacolour.py <saved>.png CANON back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CANON. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CAREMUSAI - front sprite
+  type    CONTEXT (magenta)
+  attach  engine/gfx/pokemon/front/vaporeon.png
+  convert python3 tools/gbacolour.py <saved>.png CAREMUSAI front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CAREMUSAI. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around magenta as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CAREMUSAI - back sprite
+  type    CONTEXT (magenta)
+  attach  engine/gfx/pokemon/back/vaporeonb.png
+  convert python3 tools/gbacolour.py <saved>.png CAREMUSAI back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CAREMUSAI. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around magenta as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CLUSTR - front sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/front/squirtle.png
+  convert python3 tools/gbacolour.py <saved>.png CLUSTR front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CLUSTR. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CLUSTR - back sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/back/squirtleb.png
+  convert python3 tools/gbacolour.py <saved>.png CLUSTR back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CLUSTR. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CODEMUSAI - front sprite
+  type    LOGIC (cold steel blue)
+  attach  engine/gfx/pokemon/front/flareon.png
+  convert python3 tools/gbacolour.py <saved>.png CODEMUSAI front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CODEMUSAI. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around cold steel blue as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CODEMUSAI - back sprite
+  type    LOGIC (cold steel blue)
+  attach  engine/gfx/pokemon/back/flareonb.png
+  convert python3 tools/gbacolour.py <saved>.png CODEMUSAI back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CODEMUSAI. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around cold steel blue as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CRAWLER - front sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/front/caterpie.png
+  convert python3 tools/gbacolour.py <saved>.png CRAWLER front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CRAWLER. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CRAWLER - back sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/back/caterpieb.png
+  convert python3 tools/gbacolour.py <saved>.png CRAWLER back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called CRAWLER. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+DEADLOCK - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/snorlax.png
+  convert python3 tools/gbacolour.py <saved>.png DEADLOCK front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called DEADLOCK. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+DEADLOCK - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/snorlaxb.png
+  convert python3 tools/gbacolour.py <saved>.png DEADLOCK back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called DEADLOCK. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+FLOOD - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/fearow.png
+  convert python3 tools/gbacolour.py <saved>.png FLOOD front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called FLOOD. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+FLOOD - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/fearowb.png
+  convert python3 tools/gbacolour.py <saved>.png FLOOD back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called FLOOD. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+HIBERNATE - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/wigglytuff.png
+  convert python3 tools/gbacolour.py <saved>.png HIBERNATE front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called HIBERNATE. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+HIBERNATE - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/wigglytuffb.png
+  convert python3 tools/gbacolour.py <saved>.png HIBERNATE back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called HIBERNATE. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+INDEXER - front sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/front/butterfree.png
+  convert python3 tools/gbacolour.py <saved>.png INDEXER front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called INDEXER. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+INDEXER - back sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/back/butterfreeb.png
+  convert python3 tools/gbacolour.py <saved>.png INDEXER back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called INDEXER. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+INJECTOR - front sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/front/beedrill.png
+  convert python3 tools/gbacolour.py <saved>.png INJECTOR front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called INJECTOR. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+INJECTOR - back sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/back/beedrillb.png
+  convert python3 tools/gbacolour.py <saved>.png INJECTOR back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called INJECTOR. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+LABL - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/charmander.png
+  convert python3 tools/gbacolour.py <saved>.png LABL front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called LABL. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+LABL - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/charmanderb.png
+  convert python3 tools/gbacolour.py <saved>.png LABL back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called LABL. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+LOCUS - front sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/front/wartortle.png
+  convert python3 tools/gbacolour.py <saved>.png LOCUS front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called LOCUS. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+LOCUS - back sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/back/wartortleb.png
+  convert python3 tools/gbacolour.py <saved>.png LOCUS back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called LOCUS. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+MANIFOLD - front sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/front/blastoise.png
+  convert python3 tools/gbacolour.py <saved>.png MANIFOLD front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called MANIFOLD. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+MANIFOLD - back sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/back/blastoiseb.png
+  convert python3 tools/gbacolour.py <saved>.png MANIFOLD back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called MANIFOLD. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+MUSAI - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/eevee.png
+  convert python3 tools/gbacolour.py <saved>.png MUSAI front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called MUSAI. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+MUSAI - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/eeveeb.png
+  convert python3 tools/gbacolour.py <saved>.png MUSAI back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called MUSAI. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+NIBBLE - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/rattata.png
+  convert python3 tools/gbacolour.py <saved>.png NIBBLE front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called NIBBLE. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+NIBBLE - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/rattatab.png
+  convert python3 tools/gbacolour.py <saved>.png NIBBLE back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called NIBBLE. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+OVERFLOW - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/raticate.png
+  convert python3 tools/gbacolour.py <saved>.png OVERFLOW front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called OVERFLOW. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+OVERFLOW - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/raticateb.png
+  convert python3 tools/gbacolour.py <saved>.png OVERFLOW back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called OVERFLOW. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+PACKET - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/pidgey.png
+  convert python3 tools/gbacolour.py <saved>.png PACKET front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called PACKET. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+PACKET - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/pidgeyb.png
+  convert python3 tools/gbacolour.py <saved>.png PACKET back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called PACKET. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+PENDING - front sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/front/metapod.png
+  convert python3 tools/gbacolour.py <saved>.png PENDING front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called PENDING. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+PENDING - back sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/back/metapodb.png
+  convert python3 tools/gbacolour.py <saved>.png PENDING back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called PENDING. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+PING - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/spearow.png
+  convert python3 tools/gbacolour.py <saved>.png PING front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called PING. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+PING - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/spearowb.png
+  convert python3 tools/gbacolour.py <saved>.png PING back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called PING. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+RELAY - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/pidgeotto.png
+  convert python3 tools/gbacolour.py <saved>.png RELAY front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called RELAY. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+RELAY - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/pidgeottob.png
+  convert python3 tools/gbacolour.py <saved>.png RELAY back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called RELAY. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ROVERBYTE - front sprite
+  type    GROWTH (green)
+  attach  engine/gfx/pokemon/front/venusaur.png
+  convert python3 tools/gbacolour.py <saved>.png ROVERBYTE front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ROVERBYTE. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ROVERBYTE - back sprite
+  type    GROWTH (green)
+  attach  engine/gfx/pokemon/back/venusaurb.png
+  convert python3 tools/gbacolour.py <saved>.png ROVERBYTE back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ROVERBYTE. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ROVERCUB - front sprite
+  type    GROWTH (green)
+  attach  engine/gfx/pokemon/front/bulbasaur.png
+  convert python3 tools/gbacolour.py <saved>.png ROVERCUB front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ROVERCUB. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ROVERCUB - back sprite
+  type    GROWTH (green)
+  attach  engine/gfx/pokemon/back/bulbasaurb.png
+  convert python3 tools/gbacolour.py <saved>.png ROVERCUB back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ROVERCUB. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ROVERSEER - front sprite
+  type    GROWTH (green)
+  attach  engine/gfx/pokemon/front/ivysaur.png
+  convert python3 tools/gbacolour.py <saved>.png ROVERSEER front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ROVERSEER. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+ROVERSEER - back sprite
+  type    GROWTH (green)
+  attach  engine/gfx/pokemon/back/ivysaurb.png
+  convert python3 tools/gbacolour.py <saved>.png ROVERSEER back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called ROVERSEER. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+RUBRIC - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/charmeleon.png
+  convert python3 tools/gbacolour.py <saved>.png RUBRIC front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called RUBRIC. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+RUBRIC - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/charmeleonb.png
+  convert python3 tools/gbacolour.py <saved>.png RUBRIC back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called RUBRIC. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SCRAPER - front sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/front/weedle.png
+  convert python3 tools/gbacolour.py <saved>.png SCRAPER front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SCRAPER. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SCRAPER - back sprite
+  type    SWARM (olive green)
+  attach  engine/gfx/pokemon/back/weedleb.png
+  convert python3 tools/gbacolour.py <saved>.png SCRAPER back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SCRAPER. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around olive green as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SEEKMUSAI - front sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/front/jolteon.png
+  convert python3 tools/gbacolour.py <saved>.png SEEKMUSAI front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SEEKMUSAI. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SEEKMUSAI - back sprite
+  type    VECTOR (red)
+  attach  engine/gfx/pokemon/back/jolteonb.png
+  convert python3 tools/gbacolour.py <saved>.png SEEKMUSAI back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SEEKMUSAI. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around red as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SPIKE - front sprite
+  type    SIGNAL (cyan)
+  attach  engine/gfx/pokemon/front/pikachu.png
+  convert python3 tools/gbacolour.py <saved>.png SPIKE front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SPIKE. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around cyan as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SPIKE - back sprite
+  type    SIGNAL (cyan)
+  attach  engine/gfx/pokemon/back/pikachub.png
+  convert python3 tools/gbacolour.py <saved>.png SPIKE back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SPIKE. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around cyan as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+STARR - front sprite
+  type    CONTEXT (magenta)
+  attach  engine/gfx/pokemon/front/mewtwo.png
+  convert python3 tools/gbacolour.py <saved>.png STARR front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called STARR. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around magenta as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+STARR - back sprite
+  type    CONTEXT (magenta)
+  attach  engine/gfx/pokemon/back/mewtwob.png
+  convert python3 tools/gbacolour.py <saved>.png STARR back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called STARR. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around magenta as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SURGE - front sprite
+  type    SIGNAL (cyan)
+  attach  engine/gfx/pokemon/front/raichu.png
+  convert python3 tools/gbacolour.py <saved>.png SURGE front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SURGE. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around cyan as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SURGE - back sprite
+  type    SIGNAL (cyan)
+  attach  engine/gfx/pokemon/back/raichub.png
+  convert python3 tools/gbacolour.py <saved>.png SURGE back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SURGE. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around cyan as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SUSPEND - front sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/front/jigglypuff.png
+  convert python3 tools/gbacolour.py <saved>.png SUSPEND front
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SUSPEND. Redraw it at higher fidelity in full colour, facing the viewer, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+SUSPEND - back sprite
+  type    CONTENT (bone / warm off-white)
+  attach  engine/gfx/pokemon/back/jigglypuffb.png
+  convert python3 tools/gbacolour.py <saved>.png SUSPEND back
+----------------------------------------------------------------------
+The attached image is a small monochrome sprite of a creature called SUSPEND. Redraw it at higher fidelity in full colour, seen from directly behind, keeping the same pose, the same silhouette and the same readable features so it is unmistakably the same creature. This is the same creature as the attached front sprite, from behind: same proportions, same colours, same markings. No face is visible. Build the colour scheme around bone / warm off-white as the dominant colour. Draw it as a flat illustration with a hard pure black (#000000) outline around the whole creature. Use AT MOST 15 flat colours plus a pure white background, with hard edges between them and no gradients, no anti-aliasing, no glow, no texture and no shading ramps longer than three steps. The outline must stay pure black - it must not take the body colour. Plain pure-white background, nothing behind the creature, no ground shadow. Whole creature visible with a small even margin, filling the frame.
+

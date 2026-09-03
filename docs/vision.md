@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.29**
+**A total conversion — the living design bible, v11.30**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3561,6 +3561,40 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 ***Three edits become one.*** **Gen 3 had already fixed the bug the design was working around**, and already ships the half of the pair that follows from the fix. **So the entire chart argument is now one line in `gTypeEffectiveness`** — *plus bumping the array from 336 to 339, because Gen 3 declares its size rather than terminating on the sentinel alone.*
 
 **Framing is how you reach what runs below the surface; what runs below the surface destabilises framing.** *Mutual 2× is unusual and correct here:* **these two interpenetrate and neither has a safe angle on the other.**
+
+### 9.7 The Index, expanded — and what the room is actually worth
+
+**Built 2026-09-03.** ***The gain is smaller than 9.3 implied and worth having anyway.***
+
+| | |
+|---|---|
+| Gen 1 | six lines of ~18 — about **108** characters |
+| Gen 3 | three lines of ~42 — about **126** |
+
+**Our entries ran 82 to 99.** *So the room is roughly **one more short sentence** each, not a new canvas* — and **it is spent as one more beat rather than on adjectives.** The entries have a shape: *a fact, a consequence, an unmarked absence.* **The extra line extends the shape.**
+
+> **CLUSTR** — *Puts near things with near things. Nobody told it which things matter. It has guessed.* **Nobody checked the guess.**
+> **OVERFLOW** — *It kept counting past the space it was given. Nothing stopped it. Nothing was watching.* **It is counting still.**
+
+***Nothing added says anything the short version did not already imply.*** **Craft rule 1 holds throughout: not one of them explains what it is about.**
+
+#### The one place the two engines deliberately differ
+
+***The Game Boy build keeps the short entries.*** **It has to — 126 characters do not fit in 108.** *So this is a fork in the writing*, and it is worth being exact about what kind: **the two engines differ by *length*, not by *meaning*.** 8.4's rule is about the two **editions** telling the same story, and they still do — **CONTENT and CONTEXT are identical on both machines.**
+
+### 9.8 Full-colour sprites — the other twelve of the sixteen
+
+***9.4 spent four colours of the sixteen***: three shades of a type hue plus an outline, laid over Game Boy art. **`tools/gbacolour.py` spends the rest**, taking art that was drawn in colour and quantising it down.
+
+**Index 0 is the background** — Gen 3 treats it as transparent — *so the subject gets fifteen*, chosen by **median cut over the pixels actually in the sprite.** Quantising the white surround too would **waste a slot on a colour nothing draws.**
+
+***The outline is protected.*** **Generated art puts a great many nearly-black pixels on an edge, and a median cut will merge them into the darkest body colour** and leave the creature with no outline at all. *Anything below the outline luminance is forced to pure black before the cut runs on everything else.*
+
+#### One palette, two sprites
+
+***Gen 3 gives a species one palette and both sprites share it.*** **So the back must not compute its own** — doing that would **recolour the front sprite already in the ROM.** *The front defines the palette; the back maps into it,* and the tool refuses to do it the other way round.
+
+**And the rule from 9.4 survives the upgrade:** *colour is still by type.* **`docs/gemini-prompts-gba-sprites.txt` is generated rather than written**, so every prompt names the hue that daemon's type was actually assigned — *a prompt naming the wrong colour is worse than no prompt.*
 
 ### 9.2 Order of operations
 

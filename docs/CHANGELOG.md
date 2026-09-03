@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.30 — 2026-09-03
+
+### The Index expanded, and prompts for full-colour sprites
+
+- **29 Index entries expanded** (`tools/index_expand.py`) — Gen 1 gives ~108 characters, Gen 3 ~126, so the room is one more short sentence each. Spent as one more **beat**, never on adjectives
+- **The Game Boy build keeps the short entries** — 126 does not fit in 108. The two engines now differ by *length*, not by meaning; §8.4's rule is about editions, and CONTENT/CONTEXT are still identical on both
+- **`tools/gbacolour.py`** — quantises full-colour art to 15 colours plus transparency. The outline is forced to black before the median cut, or it merges into the darkest body colour and the creature loses its edge
+- **One palette per species, shared by front and back** — the front defines it, the back maps into it. The other order would recolour the front
+- **`docs/gemini-prompts-gba-sprites.txt`** — 66 blocks, generated from the same type/hue data the sprite tool uses so no prompt can name the wrong colour
+
+---
+
 ## v11.29 — 2026-09-03
 
 ### The MARKS land after all, and the debug build grows hotkeys
