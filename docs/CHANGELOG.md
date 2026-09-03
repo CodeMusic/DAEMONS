@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.25 — 2026-09-02
+
+### setup.sh had never actually been exercised on a fresh clone
+
+A re-clone put `pokefirered-daemons` on `master` with agbcc gone, and recovering
+from that turned up three bugs in the one script whose entire job is recovering
+from that.
+
+- **The branch was only set when cloning.** An existing checkout was left on
+  whatever branch it happened to be on — which is exactly what a re-clone gives
+  you: `master`, none of the work, and no sign anything is wrong. It now always
+  ensures the branch, and says so when it switches
+- **agbcc was installed into `/tmp/agbcc/engineGba`.** `install.sh` takes a
+  path, and `$PWD` was evaluated *inside* a subshell that had already `cd`'d to
+  `/tmp/agbcc`. It then printed "built and installed". The destination is
+  resolved before the `cd` now, and the script checks the compiler actually
+  landed rather than trusting an exit code
+- **`$(basename ...)` came back empty** in one shell here, collapsing the target
+  to `..` and making git try to clone over the parent directory. Replaced with
+  parameter expansion
+- **agbcc's build noise is logged, not printed** — it is a 1998 compiler built
+  by a 2026 one and the wall of deprecated-prototype warnings looked like a
+  failure
+
+---
+
 ## v11.24 — 2026-09-02
 
 ### The port continues
