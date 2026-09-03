@@ -51,6 +51,33 @@ The edition split survives the port unchanged, which is the first good sign:
 | `engine/` | `_RED` | `_BLUE` |
 | `engineGba/` | `firered` | `leafgreen` |
 
+## Porting to the GBA build
+
+Everything carried across so far went through a tool, and each one lives in
+`tools/`. **Run them from the repo root; each takes `--write` and reports
+without it.**
+
+```sh
+python3 tools/port_names.py --write      # species, items, moves, town names
+python3 tools/port_index.py --write       # Index categories and entries
+python3 tools/port_item_text.py --write   # item descriptions (new writing)
+python3 tools/gbasprite.py --write        # 66 sprites, coloured by type
+python3 tools/port_music.py --write       # our tracks, re-emitted as MIDI
+python3 tools/gbastr.py CONTEXT USERBOX   # search a .gba through the charmap
+```
+
+Two habits worth keeping:
+
+**`port_names.py` diffs, it does not zip.** It learns `{vanilla -> ours}` by
+diffing our table against upstream's with `difflib`, which is the only way to
+tell an **addition** from a **rename** — a positional zip read §2.5's added move
+`CONSENSUS` as *"STRUGGLE was renamed to CONSENSUS"*, which would have renamed
+Gen 3's Struggle.
+
+**`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its
+own `charmap.txt` exactly as Gen 1 does, so grepping a `.gba` for ASCII finds
+nothing and proves nothing. Compiling is not evidence on this machine either.
+
 ## Build
 
 `bindDaemons.sh` builds an edition and launches it. **It defaults to the GBA
