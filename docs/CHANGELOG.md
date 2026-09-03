@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.37 — 2026-09-03
+
+### A real DEBUG submenu, and a type port that was missed
+
+- **ROVERCUB was reading GROWTH / CORRUPT.** The GBA still had vanilla Bulbasaur's GRASS/POISON while the Game Boy build has had it as single-type GROWTH all along — **renaming a type does not retype a species**, and only one of those two tables had been ported. `tools/port_types.py` carries all 13
+- **`START → DEBUG` is a submenu now** — HEAL, MART, SONG *n*, SFX *n*, BACK. Built out of the start menu rather than beside it: `DoDrawStartMenu` calls `SetUpStartMenu` on every redraw, so a flag swapping which items get appended gives a submenu with the cursor, input, descriptions and frame already working
+- **The song and SFX numbers live in the menu labels** — `PrintStartMenuItems` runs every entry through `StringExpandPlaceholders`, so `{STR_VAR_1}` shows the current track with no second window
+- **Crystal asked twice.** "But first, tell me a little about yourself" was followed by "Now tell me…". The second is just the question now
+- **`shasum -c firered.sha1` fails by design** and the docs said otherwise. It proved the toolchain while the fork was pristine; the ROM now carries our content
+
+---
+
 ## v11.36 — 2026-09-03
 
 ### The black screen, actually fixed

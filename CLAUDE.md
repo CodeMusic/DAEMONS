@@ -102,9 +102,10 @@ make vanilla-check  # prove the classic toolchain against pristine upstream
 ```
 
 For the GBA build, `make -C engineGba firered` (or `leafgreen`, or
-`firered_debug`). Its equivalent of `vanilla-check` is `shasum -c firered.sha1`
-— a pristine build matches the retail ROM byte for byte, and still did after
-the debug scaffolding went in, which is the check that matters.
+`firered_debug`). **`shasum -c firered.sha1` now fails by design** — the ROM
+carries our content. It proves the *toolchain* on a pristine `pret/pokefirered`
+checkout, and it did still pass after the debug scaffolding went in, which was
+the point at the time. It is not a regression check for this fork.
 
 **pokefirered ships no debug build**, unlike pokeemerald, so `firered_debug`
 is ours: `DAEMONS_DEBUG=1` suffixes `BUILD_NAME`, so it gets its own ROM file
