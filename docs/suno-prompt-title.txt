@@ -1,35 +1,47 @@
 SUNO PROMPT - the front door
 ======================================================================
 
-7.14g decided this one already, and it decided it by getting it wrong first.
-The title screen used to be repointed at Music_Dungeon3 -- F minor, the track
-where Crystal goes into the system after the removal -- and it told the player
-this is a grim game before a line of dialogue could say otherwise.
+    C# major. I-vi-IV-V. 150 BPM. A fanfare that opens.
 
-    C major. I-vi-IV-V. 150 BPM. Twice through.
+WHY C SHARP, AND NOT THE KEY OF THE TOWN YOU LEAVE FROM
 
-That is not an arbitrary bright key. 7.4 gives Blanche C pentatonic, high and
-open, and Slate is the same scale with both gaps filled -- so the title screen
-is in the key of the town you leave from. Nobody notices; it just feels like
-somewhere you have been.
+7.14g first put this in C, because 7.4 gives Blanche C pentatonic and the
+title screen was in the key of the town you leave from.
 
-THE OTHER CONSTRAINT IS THE ENGINE
+9.14 then established that THE FRONT DOOR IS NOT IN THE WORLD. That is why
+colour could be spent there without breaking invariant 5 -- the title screen
+is outside the fiction, so it obeys the author rather than the map. Which
+frees the key to carry the other signature: SeeingSharp, the language, and
+the pitch are the same word three times.
 
-This gets transcribed to MIDI and played back on THREE CHANNELS. A dense mix
-does not survive that -- it arrives as mud. So the arrangement has to be
-legible as three lines: a melody, a bass, and one voice in between.
+The cost is real and small. The door no longer sits in Blanche's C, so it
+stops feeling like somewhere you have been -- and instead sits A SEMITONE
+ABOVE everywhere you are about to go, which is what a door should promise.
 
-Everything in AVOID below is there because it breaks the transcription, not
-because it would sound bad.
+WHAT WENT WRONG LAST TIME
+
+The first attempt was correct and boring. It asked for "sparse, unhurried,
+dry" and got exactly that, which is a lullaby, not a door.
+
+7.14g's finding was that the tone was wrong -- and TONE IS NOT KEY ALONE. The
+harmony was never the problem. The lift has to come from the arrangement.
+
+THE OTHER CONSTRAINT IS STILL THE ENGINE
+
+This gets transcribed to MIDI and played on THREE CHANNELS. Excitement has to
+come from the writing -- register, rhythm, the shape of the line -- and not
+from production, because production does not survive transcription.
+
+A fanfare arranged for three voices is a real thing. A wall of sound is not.
 
 ----------------------------------------------------------------------
 THE STYLE BOX
 ----------------------------------------------------------------------
-instrumental game title theme, C major, 150 BPM, chord progression C - Am - F
-- G repeating, bright warm and open, hopeful and unhurried, sparse trio
-arrangement: one clear bell-like lead melody, one warm round bass, one simple
-arpeggio between them, clean note attacks, steady tempo throughout, dry mix,
-minimal reverb, no vocals
+instrumental video game title fanfare, C# major, 150 BPM, chord progression
+C# - A#m - F# - G#, triumphant and inspiring, bold synth-brass lead with
+bright bell doubling, driving eighth-note bass, energetic and uplifting,
+late-90s handheld RPG main theme, adventurous, clean note attacks, steady
+tempo, dry punchy mix, no vocals
 
 ----------------------------------------------------------------------
 LYRICS BOX
@@ -37,48 +49,57 @@ LYRICS BOX
 [Instrumental]
 
 ----------------------------------------------------------------------
+THE ALLUSION, AND WHERE THE LINE IS
+----------------------------------------------------------------------
+Ask for the CONVENTION, never the tune. The genre has a well-known shape and
+that shape is not anyone's property:
+
+    a held opening note that announces itself
+    an ascending call
+    an answer that goes HIGHER than the call did
+    a cadence that lands on the tonic and immediately wants to go again
+
+Do not name another game, franchise or composer in the prompt, and do not ask
+it to sound "like" a specific theme. If what comes back is recognisably
+somebody's melody, throw it away -- that is not a legal worry so much as the
+whole point: this game has its own front door.
+
+----------------------------------------------------------------------
 AVOID
 ----------------------------------------------------------------------
 no vocals or vocal chops       - there is no channel for them
 no pads or ambient wash        - a sustained pad transcribes as one wrong note
 no heavy reverb or delay       - tails smear the note onsets
-no drum kit beyond a light     - percussion is the noise channel and gets
-  pulse, or none at all          dropped; it should not carry the groove
-no key change, no rubato,      - the transcriber assumes one key and one tempo
-  no ritardando
-no cinematic build or          - 7.14g: this is a door, not a trailer
-  orchestral swell
-not dark, not epic, not tense  - craft rule 6, and the whole reason this
-                                 track exists
+no big drum kit                - percussion is the noise channel and gets
+                                 dropped; the DRIVE must be in the bass line,
+                                 so that when the drums vanish it still moves
+no key change, no rubato       - the transcriber assumes one key, one tempo
+no slow cinematic build        - a door does not have a first act
 
 ----------------------------------------------------------------------
 THE SHAPE TO ASK FOR
 ----------------------------------------------------------------------
-Short and loopable -- sixty to ninety seconds. One eight-bar hook, stated,
-then stated again with the arpeggio moving. It should end where it began so
-the loop point does not announce itself.
+Sixty to ninety seconds. Fanfare, then the eight-bar hook, then the hook again
+with the bass moving underneath it. End where it began so the loop point does
+not announce itself.
 
-The melody it is replacing goes:
+The melody it replaces goes:
 
     C  E  G  B  |  C5 A  A  G  |  F  A  G  D  |  E  G  C  B
 
-Rising, then turning back, then rising again. Worth keeping that shape even if
-every note changes: it is a phrase that opens rather than resolves, which is
-what a front door should do.
+Rising, turning back, rising again -- a phrase that OPENS rather than
+resolves. Keep that shape and let every note change. In C# it starts on C#.
 
 ----------------------------------------------------------------------
 WHEN IT COMES BACK
 ----------------------------------------------------------------------
-Check three things before it goes anywhere near the MIDI step:
+  1. Is it C# major at 150? Suno drifts, and this key is the whole pun.
+  2. Can you hear THREE lines? Close your eyes and count. If you cannot
+     separate the bass from the middle voice, the transcription will not.
+  3. Mute the drums in your head. Does it still drive? If not, the groove is
+     in the kit and the kit is the channel we do not have.
+  4. Does the last bar want the first one back?
 
-  1. Is it actually C major at 150? Suno drifts, and a track in D at 138 is
-     a different decision about the town you leave from.
-  2. Can you hear THREE lines? Close your eyes and count them. If you cannot
-     separate a bass from the middle voice, the transcription will not either.
-  3. Does the last bar want to be followed by the first? If it lands, it is
-     an ending, and a title screen does not end.
-
-Then run it through the transcription prompt with the NO AUDIO gate. 4.9
-records what happens when a model that cannot hear is asked to transcribe:
-it hands back an earlier answer and admits, in its own DOUBT field, that the
-transcription was a guess.
+Then the transcription prompt, NO AUDIO gate first. 4.9 records what happens
+otherwise: a model that could not hear handed back an earlier answer and
+admitted in its own DOUBT field that it was a guess.

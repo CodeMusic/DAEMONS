@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.54**
+**A total conversion — the living design bible, v11.55**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2562,6 +2562,29 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 ***7.4 gives Blanche C pentatonic — high and open — and Slate is that same scale with both gaps filled.*** **So the title screen is in the key of the town you leave from.** *Nobody notices; it just feels like somewhere you have been.*
 
 **`Music_Dungeon3` keeps its own body**, and Mt. Moon, Rock Tunnel and Victory Road are untouched. *The saving was never worth what it cost.*
+
+##### Revised 2026-09-04 — **C#**, because the door is not a room
+
+***7.4's key system is a fact about the WORLD***, and 9.14 has already
+established that **the title screen is not in it.** *That is why colour could be
+spent there without breaking invariant 5* — the front door is outside the
+fiction, so it obeys the author rather than the map.
+
+**Which frees the key to carry the other signature.** `SeeingSharp` is the
+second of the two author brands, 1570 spends it on **CONTEXT** — *perception
+and framing* — and **C sharp is the same word a third time**: the language, the
+brand, and the pitch.
+
+*The cost is named rather than waved away.* **The title no longer sits in
+Blanche's C**, so the "somewhere you have been" effect from the paragraph above
+is gone. **It was worth about one unnoticed feeling**, and what replaces it is
+the door being *a semitone above everywhere you will go* — which is what a door
+should promise.
+
+**I–vi–IV–V and 150 are unchanged.** *The lift has to come from the
+arrangement*, not from the harmony: a held opening, an ascending call, an answer
+that goes higher than the call did. **7.14g's real finding still stands — the
+mistake was tone, and tone is not key alone.**
 
 ##### The lesson is that both media drifted the same way, unprompted
 
