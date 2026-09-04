@@ -35,6 +35,9 @@ GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
 TPQ, TICKS_PER_QUARTER = 480, 8          # MIDI resolution, GB ticks per quarter
 
+#  Slots that must NOT loop.
+JINGLES = {"mus_caught_intro"}
+
 TRACKS = [
     ("titletheme",      "mus_title"),        # the front door
     ("slatecity",       "mus_pewter"),       # Pewter IS Slate City
@@ -96,10 +99,14 @@ def vlq(n):
         out.insert(0, (n & 0x7F) | 0x80); n >>= 7
     return bytes(out)
 
-def track(events, chan, repeats=2):
+def track(events, chan, loop=True):
+    # The body was written TWICE to fake a loop, which cost double the ROM and
+    # still stopped after two passes. mid2agb builds a real GOTO out of a MIDI
+    # text meta-event -- "[" for the loop start, "]" for the jump back -- so
+    # the body is written once and repeats forever.
     data = bytearray()
     data += b"\x00" + bytes([0xC0 | chan, 0])          # program change
-    for _ in range(repeats):
+    for _ in range(1):
         rest = 0
         for note, ticks in events:
             dur = ticks * TPQ // TICKS_PER_QUARTER
@@ -111,13 +118,19 @@ def track(events, chan, repeats=2):
     data += b"\x00\xFF\x2F\x00"
     return b"MTrk" + struct.pack(">I", len(data)) + bytes(data)
 
-def midi(tempo, chans):
+def midi(tempo, chans, loop=True):
     head = bytearray(b"\x00\xFF\x51\x03") + struct.pack(">I", 60000000 // tempo)[1:]
+    if loop:
+        # The markers go on the TEMPO track. mid2agb reads text meta-events
+        # only in ReadSeqEvents(), which is the first MIDI track, and merges
+        # them into every AGB track afterwards.
+        end = max(sum(t * TPQ // TICKS_PER_QUARTER for _, t in ev) for ev in chans)
+        head += b"\x00\xFF\x01\x01[" + vlq(end) + b"\xFF\x01\x01]"
     head += b"\x00\xFF\x2F\x00"
     out = b"MThd" + struct.pack(">IHHH", 6, 1, len(chans) + 1, TPQ)
     out += b"MTrk" + struct.pack(">I", len(head)) + bytes(head)
     for i, ev in enumerate(chans):
-        out += track(ev, i)
+        out += track(ev, i, loop)
     return out
 
 rc = 0
@@ -142,7 +155,9 @@ for name, slot in TRACKS:
     if not chans:
         print("  !! parsed no channels"); rc = 1; continue
     if WRITE:
-        open(dst, "wb").write(midi(tempo, chans))
+        # The binding sound is a jingle: it plays once and hands the screen
+        # back. Everything else here is ambient and has to repeat.
+        open(dst, "wb").write(midi(tempo, chans, loop=slot not in JINGLES))
 if WRITE and rc == 0:
     print("  written")
 sys.exit(rc)

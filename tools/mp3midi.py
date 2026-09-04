@@ -88,7 +88,12 @@ def merge(cells):
         i = j + 1
     return notes
 
-def midi_bytes(tempo, parts):
+#  mid2agb turns a MIDI TEXT META-EVENT of "[" into a loop start and "]" into
+#  the GOTO that jumps back to it. Without them a song ends on FINE and STOPS
+#  -- which is what every song in this project did: the title theme played its
+#  42 seconds once and left the screen silent. Vanilla's ambient tracks all
+#  carry a GOTO; only its jingles do not.
+def midi_bytes(tempo, parts, loop=True):
     """parts is (program, velocity, notes). The program change is not optional:
     mid2agb emits a VOICE byte only where the MIDI carries one."""
     TPQ = 48
@@ -100,6 +105,15 @@ def midi_bytes(tempo, parts):
     def chunk(tag, data):
         return tag + struct.pack(">I", len(data)) + data
     head = bytearray(b"\x00\xFF\x51\x03") + struct.pack(">I", 60000000 // int(tempo))[1:]
+    if loop:
+        # ON THE TEMPO TRACK, NOT THE NOTE TRACKS. ReadMidiTracks() reads the
+        # first MIDI track with ReadSeqEvents() and merges what it finds into
+        # every AGB track; ReadTrackEvent(), which reads the rest, does not
+        # look at text meta-events at all. Markers on a note track are read by
+        # nothing and silently do nothing, which is how they were written the
+        # first time.
+        end = max(sum(c for _, c in notes) for _, _, notes in parts) * (TPQ // DIV)
+        head += b"\x00\xFF\x01\x01[" + var(end) + b"\xFF\x01\x01]"
     head += b"\x00\xFF\x2F\x00"
     out = chunk(b"MThd", struct.pack(">HHH", 1, len(parts) + 1, TPQ))
     out += chunk(b"MTrk", bytes(head))

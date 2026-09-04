@@ -5,6 +5,23 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.59 — 2026-09-04
+
+### None of the music looped
+
+- ***Twelve songs ended on `FINE` and stopped.*** The title theme played its 42 seconds once and left the screen silent; every town theme played through and quit
+- **mid2agb builds the `GOTO` out of a MIDI text meta-event** — `[` for the loop start, `]` for the jump back. Nothing was emitting them
+- ***And the markers only count on the FIRST midi track.*** `ReadMidiTracks()` reads it with `ReadSeqEvents()` and merges what it finds into every AGB track; `ReadTrackEvent()`, which reads the rest, **does not look at text meta-events at all.** Markers on a note track are read by nothing and fail silently — which is exactly how they were written the first time
+- **`port_music.py` was writing each song's body TWICE to fake a loop**, at double the ROM cost, and it still stopped after two passes. One body and a real `GOTO` now
+- `mus_caught_intro` is the one that must not loop: *it is the binding sound, and it hands the screen back*
+
+### `tools/gbasongs.py` — the audio `verify-sprites`
+
+- **Three audio bugs reached a play-test, and every one compiled cleanly**: no program change (silence), `VOICE 0` onto a keysplit (Game Boy squares), no loop marker (songs that stop). *Each needed a person to sit and listen*
+- It reads the generated assembly and says **what will come out of the speaker** — the bank, the instrument behind every program number, the track count, and whether it repeats
+- **Two things it had to learn to be honest.** mid2agb *compresses*, so a repeated bar becomes a `PATT` and its notes are written once; and it **omits the length prefix on a note whose length repeats**, so most note lines are a bare `.byte  Cn3` — counting `N24` found **4 notes in a song that has 32**
+- **The twelve ported songs are flagged, not condemned.** PSG is a legitimate texture and these are Game Boy compositions. *It is flagged because it should be a decision, and it was previously the accident of writing no program change at all*
+
 ## v11.58 — 2026-09-04
 
 ### Stems, and a transcriber that no longer guesses
