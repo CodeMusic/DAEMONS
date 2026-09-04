@@ -1,0 +1,139 @@
+GEMINI PROMPTS - the front door
+======================================================================
+
+Two scenes the player sees before the world starts: the CODEMUSIC presents
+scene, and the title face-off. vision.md 9.14 designs both.
+
+WHAT GEMINI IS FOR, AND WHAT IT IS NOT
+
+Gemini draws the two things that need an ARTIST: the face-off figures and the
+CODEMUSIC wordmark. It does NOT draw the particles.
+
+A musical note at sixteen pixels square is nine lit pixels, and no image model
+places nine pixels. The particles, the 0 and the 1, and the bloom frames are
+drawn procedurally by tools/gbatitle.py, the way the MARKS and the Index box
+were - pixel-exact, in the palette, first time. Do not prompt for them.
+
+THE ONE RULE, AGAIN
+
+Colour is by TYPE (9.4), and 9.14 sanctions its third and last spend: colour
+is what arrives when two things that disagree connect. CODEMUSAI is LOGIC and
+its hue is COLD STEEL BLUE. CAREMUSAI is CONTEXT and its hue is MAGENTA.
+These are the same hues their battle sprites were assigned. Do not change them
+for the title - the title is where the player learns them.
+
+POSE IS NOT SIDE
+
+2.4, and it survives into 9.14: CODEMUSAI LUNGES, CAREMUSAI OPENS. One of
+them is attacking and the other is not, and that IS the chart. The editions
+swap which side each stands on, and the engine does that with a hardware flip,
+so each creature is drawn ONCE, facing right. Never redraw one "facing the
+other way" - the flip is free and the pose must not change with the side.
+
+HOW TO USE THIS FILE
+
+  1. Attach the reference named in the block.
+  2. Paste the prompt.
+  3. Save what comes back anywhere, then convert:
+
+         python3 tools/gbatitle.py <saved>.png <asset>
+
+  4. Then: make -C engineGba firered
+
+DO THE TWO FIGURES IN ONE CONVERSATION, CODEMUSAI FIRST. They have to look
+like they belong on the same screen, and a fresh conversation will not match
+the light or the line weight of the first.
+
+----------------------------------------------------------------------
+CODEMUSAI - title figure
+  hue     LOGIC (cold steel blue)
+  attach  gfx/front/codemusai.png
+  target  64x64 sprite, 15 colours + transparent
+  convert python3 tools/gbatitle.py <saved>.png codemusai
+----------------------------------------------------------------------
+The attached image is our creature CODEMUSAI. Redraw it at higher fidelity in
+full colour, in three-quarter view facing RIGHT, mid-LUNGE - weight forward,
+committed to a movement it has already begun, reaching toward something off
+the right edge. It is not angry and it is not a monster; it is certain. Keep
+the same silhouette and the same readable features so it is unmistakably the
+same creature. Build the colour scheme around cold steel blue as the dominant
+colour. Draw it as a flat illustration with a hard pure black (#000000)
+outline around the whole creature. Use AT MOST 15 flat colours plus a pure
+white background, with hard edges between them and no gradients, no
+anti-aliasing, no glow, no texture and no shading ramps longer than three
+steps. The outline must stay pure black - it must not take the body colour.
+Plain pure-white background, nothing behind the creature, no ground shadow.
+Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CAREMUSAI - title figure
+  hue     CONTEXT (magenta)
+  attach  gfx/front/caremusai.png  AND the finished CODEMUSAI above
+  target  64x64 sprite, 15 colours + transparent
+  convert python3 tools/gbatitle.py <saved>.png caremusai
+----------------------------------------------------------------------
+The attached image is our creature CAREMUSAI. Redraw it at higher fidelity in
+full colour, in three-quarter view facing RIGHT, OPEN - weight settled, head
+lifted, posture wide and receiving rather than reaching. It is not afraid and
+it is not submitting; it is waiting to understand. It must read as the exact
+opposite KIND of action to the lunging creature in the other attached image,
+while sitting on the same screen as it: same line weight, same light, same
+level of detail. Keep the same silhouette and the same readable features as
+the reference so it is unmistakably the same creature. Build the colour scheme
+around magenta as the dominant colour. Draw it as a flat illustration with a
+hard pure black (#000000) outline around the whole creature. Use AT MOST 15
+flat colours plus a pure white background, with hard edges between them and no
+gradients, no anti-aliasing, no glow, no texture and no shading ramps longer
+than three steps. The outline must stay pure black - it must not take the body
+colour. Plain pure-white background, nothing behind the creature, no ground
+shadow. Whole creature visible with a small even margin, filling the frame.
+
+----------------------------------------------------------------------
+CODEMUSIC - the wordmark
+  attach  engine/gfx/title/gamefreak_inc.png   (our Game Boy CODEMUSIC, 72x8)
+  target  144x16, ONE BIT - black on white, no grey at all
+  convert python3 tools/gbatitle.py <saved>.png wordmark
+----------------------------------------------------------------------
+The attached image is the CODEMUSIC wordmark from our Game Boy build, at
+seventy-two pixels wide. Redraw the same word at higher fidelity for a wider
+strip, keeping its letterforms recognisable: same geometric capitals, same
+even weight, same proportions. Black on a pure white background. Wide and short: the whole word fits a strip nine times as wide as
+it is tall. Clean geometric capitals with even stroke weight, no serifs, no
+outline, no shadow, no gradient, no texture, no background shapes and no
+decoration of any kind. PURE BLACK AND PURE WHITE ONLY - not one grey pixel,
+no anti-aliasing on any edge. Letters evenly spaced, sitting on one baseline,
+none touching. Nothing else in the image.
+
+----------------------------------------------------------------------
+THE TITLE LOGO - CONTENT and CONTEXT
+  attach  engine/gfx/title/pokemon_logo.png   (our Game Boy DAEMONS, 128x56)
+          plus engine/gfx/title/red_version.png and blue_version.png
+  target  256x64, 8bpp so colour is not the constraint here
+  convert python3 tools/gbatitle.py <saved>.png logo-content
+          python3 tools/gbatitle.py <saved>.png logo-context
+----------------------------------------------------------------------
+The attached images are our Game Boy title logo -- the word DAEMONS at
+128x56 -- and the two edition words. Redraw DAEMONS at higher fidelity and
+larger, KEEPING ITS LETTERFORMS: the same heavy squared capitals, the same
+proportions, the same hard drop shadow to the lower right. Put the edition
+word CONTENT beneath it [then a second image, identical treatment, reading
+CONTEXT]. Pure white background. DAEMONS is the large word; the edition word is
+smaller and sits under it. Heavy geometric capitals with a hard pure black
+outline, flat fills, no gradients, no glow, no bevel, no texture and no
+anti-aliasing. The two images must be identical in every respect except the
+edition word, because the player will see one and hear about the other. Wide
+and short - twice as wide as it is tall. Plain pure-white background, nothing
+behind the letters.
+
+======================================================================
+WHAT COMES BACK, AND WHAT HAPPENS TO IT
+
+Save at whatever size Gemini gives you - big is good, the downsampler wants
+the detail. tools/gbatitle.py crops to the content, scales to the target,
+quantises to the palette and writes the indexed PNG the build needs.
+
+It will REFUSE work rather than guess: more than 15 colours after quantising,
+a grey pixel in the one-bit wordmark, or an outline that is not pure black are
+all reported instead of silently rounded. That is the same discipline as
+3118 - rgbgfx rejects anti-aliasing, and finding out at build time is worse
+than finding out here.

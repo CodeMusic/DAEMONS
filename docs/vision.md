@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.46**
+**A total conversion — the living design bible, v11.47**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3736,6 +3736,38 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 | **two signs** | placed by *reading the map blockdata* — a Gen 1 coordinate means nothing on a Gen 3 layout |
 
 ***And a SMOKE BALL is not a box.*** The box line is about acquisition, so BALL → BOX is right for the eleven capture devices — but **SMOKE BALL and LIGHT BALL are hold items**, and a SMOKE BOX would be a box that helps you leave.
+
+### 9.14 The front door — the face-off, and the third time colour is spent
+
+**Designed 2026-09-04.** *The title screen and the presents scene are the two places the player looks before the world starts, and neither has been ours yet.*
+
+#### Colour, sanctioned
+
+**2586 says the greyscale is invariant 5's *spending decision about where colour is used*, not a mood.** It has been spent twice: **once in the world**, at the Review Board, and **once on the GBA sprites**, where 9.4 made it carry TYPE. *This is the third and last.*
+
+***Both these scenes sit outside the fiction.*** They are the front door, not a room — so colour there breaks no rule about the world. **What it must not do is decorate.** So it is spent on one claim, stated twice:
+
+> **Colour is what arrives when two things that disagree connect.**
+
+*In the presents scene that is code becoming music.* **On the title it is LOGIC meeting CONTEXT.** Both are the Review Board's colour arriving early, as a promise rather than a reward — and neither says so.
+
+#### The face-off is the one 2.4 already designed
+
+**CODEMUSAI against CAREMUSAI** — *Penphin's two hemispheres pulled apart into two creatures*, and 2's chart makes **LOGIC fail against CONTEXT**. It was drawn for the intro; the title is the same argument at the door.
+
+***And 2.4's warning carries over unchanged.*** **CODEMUSAI lunges. CAREMUSAI opens.** *One of them is attacking and the other is not.* The **sides** swap between editions and **the poses do not** — if the slot contents are swapped wholesale, CAREMUSAI ends up lunging and the chart quietly argues the opposite thing.
+
+*Which is free here, because the swap is a hardware flip.* **One drawing each**, mirrored by OAM for the edition that puts it on the right. The creature still lunges; only the direction changes.
+
+#### The frame, measured
+
+**`box_art_mon` is a background block — 96×96 on one 16-colour palette** — and two creatures do not fit in it. **They become OAM sprites instead**, 64×64 each, which is exactly the frame 9.4 refused to upscale into: *CODEMUSAI is 48 and CAREMUSAI is 56, and both sit inside 64 untouched.*
+
+**The connection is the particle system that is already there.** FireRed rises flames from the floor on a spawner and a per-sprite callback; ours emits from **each** creature toward the centre. Every particle already runs **ten frames** over its life — *frames nought to five carry it inward flat, six to nine are the bloom where they meet.* **No new sprite slots, no new tasks, and the bloom stays abstract** — it alludes, and craft rule 1 keeps it from explaining.
+
+#### The presents scene
+
+**The sparkle field is tunable already** — speed, spawn rate, gravity, flicker and destroy timers are all variables. So the particles begin as **0 and 1 in flat green and blue** and become **musical notes in colour**, and *the transformation happens mid-flight in each particle's own animation.* **The existing timers stagger their lifetimes, so the field converts gradually rather than all at once** — which is the effect, and it costs nothing.
 
 ### 9.2 Order of operations
 

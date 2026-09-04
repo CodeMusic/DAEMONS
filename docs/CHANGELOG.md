@@ -5,6 +5,26 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.47 — 2026-09-04
+
+### PP reads as MP
+
+- **`{PP}` is not two letters** — it is one compressed glyph, `F9 06`, which the text engine resolves to **cell 0x106** of the latin font sheet. The summary screen draws it at x=36 and the number at x=46, so the whole label lives in **ten pixels**; MANA is twenty-four and would run over the number
+- **MP is the same two characters**, so every literal changes width by nothing and only the glyph's left half had to be drawn. The font's own M is six wide where the glyph allows five, so it uses the **four-pixel M from `latin_small`**, which was designed for that width. `latin_small`'s own copy packs each P into three and is **declined rather than mangled** — `{PP}` is drawn once, in FONT_NORMAL
+- ***And the pane rule learned two things.*** `fit_to` searched upward from a string's own widest line, which called GRUDGE a fit at **178px in a pane that holds 108**; it searches the whole range now, narrow to wide, checking width *and* line count. And the rule only holds **where a file feeds one pane** — `battle_message.c` does not, so a file-wide bound there measured a two-line string against a twelve-line ceiling
+
+### 9.14 — the front door
+
+- **Colour is sanctioned a third and last time**, and 2586 is the reason it can be: the greyscale is a *spending decision*, not a mood. It has gone to the Review Board and to TYPE; this is the rest. Both scenes sit **outside the fiction**, so the spend is on one claim, stated twice — ***colour is what arrives when two things that disagree connect***
+- **The face-off is the one 2.4 already designed**: CODEMUSAI against CAREMUSAI, LOGIC failing against CONTEXT. *And its warning carries over* — **CODEMUSAI lunges, CAREMUSAI opens**, the sides swap between editions and **the poses do not**. Free here, because the swap is a hardware flip: one drawing each
+- **`box_art_mon` is a 96×96 background block on one palette and two creatures do not fit**, so they become **OAM sprites at 64×64** — the frame 9.4 refused to upscale into, and both sit inside it untouched at 48 and 56
+- **The connection is the particle system that is already there.** Ten frames per particle: *nought to five carry it inward, six to nine are the bloom.* No new sprite slots, no new tasks, and the bloom stays **abstract**
+- The presents scene reuses the sparkle field's own tunables, so **0 and 1 become notes mid-flight** and the staggered lifetimes convert the field gradually rather than all at once
+
+### `docs/gemini-prompts-title.txt`
+
+- **Gemini draws the two things that need an artist** — the face-off figures and the wordmarks — *and not the particles.* A musical note at sixteen pixels square is nine lit pixels, and no image model places nine pixels; those are drawn procedurally, as the MARKS and the Index box were
+
 ## v11.46 — 2026-09-04
 
 ### Found by playing it

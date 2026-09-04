@@ -119,6 +119,11 @@ VOCAB = {
     # 5.1: the leader says "I'm CAIRN" in our gym dialogue and the trainer
     # entry now agrees, so the twenty-six other mentions have to as well.
     "BROCK": "CAIRN",
+    # PP is not two letters -- it is one compressed glyph, redrawn as MP by
+    # tools/gbamana.py. MP is the same two characters, so "PP ", "PP was
+    # restored." and the items PP UP and PP MAX change width by nothing. Full
+    # MANA is 24px where the summary screen allows 10.
+    "PP": "MP",
     # The eight MARKS have UI strings (gText_BoulderBadge = "SLATE MARK") but
     # dialogue spells the old names out, and a badge is not an item in Gen 3 so
     # port_names had no table to learn them from. 5.2 names them.
@@ -292,6 +297,16 @@ def reflowable(body):
 # --------------------------------------------------------------- the files
 # The name tables are where the renames were LEARNED. Running the map back over
 # them would be a no-op at best and a double rename at worst.
+# The pane rule -- one width, one line count, both demonstrated by vanilla --
+# only holds where a FILE FEEDS ONE PANE. battle_message.c does not: its
+# strings go to the message box, the action window and the ANNOUNCER, so a
+# file-wide bound there is meaningless and "repaired" a two-line string
+# against a twelve-line ceiling.
+PANE_FILES = {"src/move_descriptions.c",
+              "src/data/pokemon/pokedex_text_fr.h",
+              "src/data/pokemon/pokedex_text_lg.h",
+              "src/data/decoration/description.h"}
+
 SKIP_SRC = {"src/data/text/species_names.h", "src/data/text/move_names.h",
                         # generated from JSON and gitignored -- edit the source, not the artifact
             "src/data/items.h", "src/data/items.json",
@@ -365,24 +380,23 @@ def own_budget(body):
     return max(w, 1)
 
 def fit_to(body, converted, ceiling, cap=None):
-    """Reflow without gaining a LINE.
+    """Reflow so that it fits the pane in BOTH directions.
 
-    own_budget is the widest line the string itself uses, which is a lower
-    bound on the pane, not the pane. "foe" became "remote" -- three characters
-    -- and that pushed 119 move descriptions and 8 item descriptions onto a
-    fourth or fifth line of a pane that shows three or four. So widen the
-    budget, in steps, up to the widest line the WHOLE FILE already uses (which
-    the pane demonstrably holds, because vanilla shipped it), and stop as soon
-    as the line count is back where it started. If nothing fits, leave the
-    original wrap alone and say so."""
-    want = min(linecount(body), cap) if cap else linecount(body)
-    start = own_budget(body)
-    # ...and try the ceiling itself. Stepping by four skipped it by one pixel
-    # on RAZOR WIND, whose vanilla wrap needs exactly the widest line the file
-    # uses and nothing narrower.
-    for budget in list(range(start, max(start, ceiling), 4)) + [max(start, ceiling)]:
+    The pane has a width and a line count, and both are demonstrated by
+    vanilla rather than declared. Searching upward from the string's own
+    widest line was wrong twice over: "foe" became "remote" and pushed 115
+    move descriptions onto a fifth line, and an earlier pass had already
+    reflowed GRUDGE to 178px in a pane that holds 108, which a search
+    starting there would happily call a fit.
+
+    So search the whole range, narrow to wide, and take the first width where
+    the line count is back inside the budget."""
+    cap = cap or linecount(body)
+    for budget in list(range(40, max(41, ceiling), 4)) + [ceiling]:
         out = rewrap(converted, budget)
-        if linecount(out) <= want:
+        lines = [l for l in BREAK.split(out.rstrip('$')) if l]
+        if len(lines) <= cap and all(
+                textwidth(l.replace('{PAUSE_UNTIL_PRESS}', '')) <= ceiling for l in lines):
             return out, True
     return None, False
 
@@ -417,7 +431,10 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
                 # Already converted -- but a past run may have pushed it onto a
                 # line the pane cannot show. Repairing that is this tool's job
                 # too, or the fix only lands on text that happens to change.
-                if BREAK.search(body) and linecount(body) > cap_lines and reflowable(body):
+                too_wide = any(textwidth(l) > ceiling
+                               for l in BREAK.split(body.rstrip('$')) if l)
+                if rel in PANE_FILES and BREAK.search(body) and reflowable(body) \
+                        and (linecount(body) > cap_lines or too_wide):
                     flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)), ceiling, cap_lines)
                     if ok and flowed != body:
                         n[0] += 1; reflowed.append((rel, linecount(body), cap_lines))
@@ -426,14 +443,16 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
             n[0] += 1
             if BREAK.search(body):
                 if reflowable(body):
-                    flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)), ceiling, cap_lines)
+                    flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)),
+                                        ceiling if rel in PANE_FILES else own_budget(body),
+                                        cap_lines if rel in PANE_FILES else None)
                     if ok:
                         new = flowed
                     else:
                         outgrew.append((rel, body[:52]))
                 for ln in BREAK.split(new.rstrip('$')):
                     w = textwidth(ln.replace('{PAUSE_UNTIL_PRESS}', ''))
-                    if w > ceiling:
+                    if rel in PANE_FILES and w > ceiling:
                         over.append((rel, w, ln))
                 if len(pieces) > 1:      # keep the multi-line shape it had
                     return _emit(m, pieces, new)
@@ -499,7 +518,10 @@ for rel, keys in JSON_TARGETS.items():
         body = unesc(val)
         new = convert(body)
         if new == body:
-            if BREAK.search(body) and linecount(body) > j_cap and reflowable(body):
+            j_wide = any(textwidth(l) > j_ceiling
+                         for l in BREAK.split(body.rstrip('$')) if l)
+            if BREAK.search(body) and reflowable(body) \
+                    and (linecount(body) > j_cap or j_wide):
                 flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)), j_ceiling, j_cap)
                 if ok and flowed != body:
                     n[0] += 1; reflowed.append((rel, linecount(body), j_cap))
