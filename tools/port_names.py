@@ -55,7 +55,13 @@ TABLES = [
     ("data/moves/names.asm",     "li",    "src/data/text/move_names.h",               12, "c"),
     # Town names live in the region map on GBA rather than in a flat table, but
     # the rename is still the same fact, so the same trick works.
-    ("data/maps/names.asm",      "db",    "src/data/region_map/region_map_entry_strings.h", 16, "c"),
+    #
+    # IT MUST BE THE JSON. region_map_entry_strings.h is generated from
+    # region_map_sections.json and is GITIGNORED -- an earlier version of this
+    # table wrote the header, so all sixteen town names lived only in one
+    # working build and a fresh clone would have built vanilla. The renames were
+    # in nobody's repository.
+    ("data/maps/names.asm",      "db",    "src/data/region_map/region_map_sections.json",  16, "json:name"),
 ]
 
 def _strip(v):
@@ -91,8 +97,17 @@ for src, macro, dst, limit, fmt in TABLES:
     print("%s -> %s" % (src, dst))
     print("  %d renamed of %d" % (len(renames), len(ours)))
     if added:
-        print("  %d added, not renamed -- needs its own slot on GBA: %s"
-              % (len(added), " ".join(added)))
+        # An ADDED name is not a rename and has no vanilla string to substitute
+        # for, so it needs a slot of its own -- but once that slot exists,
+        # saying it is missing every run is just noise.
+        have = open(os.path.join(GBA, dst)).read()
+        placed = [a for a in added if a in have]
+        want = [a for a in added if a not in have]
+        if placed:
+            print("  %d added, and already has a slot: %s" % (len(placed), " ".join(placed)))
+        if want:
+            print("  %d added, not renamed -- needs its own slot on GBA: %s"
+                  % (len(want), " ".join(want)))
 
     too_long = {v: o for v, o in renames.items() if len(o) > limit}
     for v, o in sorted(too_long.items()):
@@ -111,11 +126,12 @@ for src, macro, dst, limit, fmt in TABLES:
             # so match the way it is spelled there, not the way we read it. And
             # match case-insensitively: Gen 1 wrote OAK's PARCEL, Gen 3 writes
             # OAK'S PARCEL, and that is the same item.
+            key = fmt.split(":")[1] if ":" in fmt else "english"
             esc = json.dumps(v)[1:-1]
-            pat = r'("english": ")%s(")' % re.escape(esc)
+            pat = r'("%s": ")%s(")' % (key, re.escape(esc))
             rep = r'\g<1>%s\g<2>' % json.dumps(o)[1:-1]
-            already = '"english": "%s"' % json.dumps(o)[1:-1]
-        flags = re.IGNORECASE if fmt == "json" else 0
+            already = '"%s": "%s"' % (key, json.dumps(o)[1:-1])
+        flags = re.IGNORECASE if fmt.startswith("json") else 0
         text, n = re.subn(pat, rep, text, flags=flags)
         if n: done += n
         elif already in text: done += 1                # already ported
@@ -130,6 +146,26 @@ for src, macro, dst, limit, fmt in TABLES:
     if WRITE and not missing and not too_long:
         open(path, "w").write(text)
         print("  written")
+
+    # The region-map generator builds its C symbol names OUT OF THE NAME
+    # STRING -- "ROCK TUNNEL" becomes sMapsecName_ROCK_TUNNEL, "QUICKSILVER IS."
+    # becomes sMapsecName_QUICKSILVER_IS_ -- so renaming a town silently renames
+    # a symbol that hand-written code refers to by hand. region_map.c stopped
+    # compiling the first time this ran against the JSON.
+    if fmt.startswith("json") and "region_map" in dst:
+        # The generator works on BYTES, not characters: é is two bytes in UTF-8 and
+        # becomes TWO underscores, so POKéMON MANSION is sMapsecName_POK__MON_MANSION.
+        sym = lambda x: re.sub(r'[^A-Za-z0-9]', '_', x.encode('utf-8').decode('latin-1'))
+        rmc = os.path.join(GBA, "src/region_map.c")
+        body = open(rmc).read()
+        fixed = 0
+        for v, o in renames.items():
+            a, b = "sMapsecName_%s" % sym(v), "sMapsecName_%s" % sym(o)
+            if a != b and a in body:
+                body = re.sub(r'\b%s\b' % re.escape(a), b, body); fixed += 1
+        print("  %d symbol reference(s) in region_map.c follow the rename" % fixed)
+        if WRITE and fixed:
+            open(rmc, "w").write(body)
 
 # --- the MARKS ---------------------------------------------------------------
 items_gb = gb_list("data/items/names.asm", "li")

@@ -35,8 +35,24 @@ GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
 TPQ, TICKS_PER_QUARTER = 480, 8          # MIDI resolution, GB ticks per quarter
 
-TRACKS = [("titletheme", "mus_title"), ("slatecity", "mus_pewter"),
-          ("thebleed", "mus_route1"), ("brazen", "mus_brazen")]
+TRACKS = [
+    ("titletheme",      "mus_title"),        # the front door
+    ("slatecity",       "mus_pewter"),       # Pewter IS Slate City
+    ("thebleed",        "mus_route1"),       # Routes 1 and 2
+    ("brazen",          "mus_brazen"),       # Saffron is BRAZEN; the one added slot
+    # Eight more that were written on the Game Boy and had never been carried.
+    # Each lands where its town landed: the rename already decided the slot.
+    ("pallettown",      "mus_pallet"),       # Pallet is BLANCHE
+    ("celadon",         "mus_celadon"),      # Celadon is VERDIGRIS
+    ("cinnabar",        "mus_cinnabar"),     # Cinnabar is QUICKSILVER
+    ("lavender",        "mus_lavender"),     # Lavender is HALFTONE
+    ("vermilion",       "mus_vermillion"),   # Vermilion is ARDOR -- FireRed spells it with two Ls
+    ("silphco",         "mus_silph"),
+    ("cinnabarmansion", "mus_poke_mansion"),
+    # pokered's dungeon3 is Mt Moon and Rock Tunnel; Gen 3 splits them and
+    # mt_moon is the one the track was written against.
+    ("dungeon3",        "mus_mt_moon"),
+]
 # brazen needed a slot of its own, and getting one was cheaper than first
 # thought. Saffron shares MUS_PEWTER with Pewter and Viridian in Gen 1, so
 # putting Slate City into that slot handed Brazen the wrong theme as well.

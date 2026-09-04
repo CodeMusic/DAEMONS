@@ -1,12 +1,10 @@
 # Game Boy dialogue with no confident Gen 3 home
 
-81 blocks. Either FireRed rewrote the line past recognition, or two Gen 3
-blocks fit it equally well and guessing would put our writing in the wrong
-mouth. Regenerate with `python3 tools/port_dialogue.py`.
+62 blocks. FireRed rewrote the line past recognition, or two Gen 3 blocks
+fit it equally well and guessing would put our writing in the wrong mouth.
 
-## BillsHouse
-- `BillsHouseBillImNotAPokemonText` best 0.94
-- `BillsHouseBillThankYouText` best 0.98
+Regenerate with `python3 tools/port_dialogue.py`. The score is the best
+vanilla-to-vanilla similarity found; the threshold is 0.48.
 
 ## BrunosRoom
 - `BrunoBeforeBattleText` best 0.82
@@ -18,10 +16,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 - `CeladonMansion3FGameDesignerCompletedDexText` best 0.33
 - `CeladonMansion3FGameDesignerText` best 0.22
 
-## CeladonMart4F
-- `CeladonMart4FSuperNerdText` best 0.50
-- `CeladonMart4FYoungsterText` best 0.51
-
 ## CeruleanBadgeHouse
 - `CeruleanBadgeHouseBoulderBadgeText` best 0.37
 - `CeruleanBadgeHouseEarthBadgeText` best 0.33
@@ -31,7 +25,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 - `CeruleanBadgeHouseThunderBadgeText` best 0.36
 
 ## CeruleanCity
-- `CeruleanCitySuperNerd3Text` best 0.51
 - `CeruleanCityTrainerTipsText` best 0.43
 
 ## CeruleanTrashedHouse
@@ -42,14 +35,8 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 ## FuchsiaGym_2
 - `FuchsiaGymRocker6EndBattleText` best 0.36
 
-## LancesRoom
-- `LancesRoomLanceBeforeBattleText` best 0.93
-
 ## MrFujisHouse
 - `MrFujisHouseMrFujiIThinkThisMayHelpYourQuestText` best 0.42
-
-## MtMoonPokecenter
-- `MtMoonPokecenterYoungsterText` best 0.54
 
 ## OaksLab
 - `OaksLabOak1HowIsYourPokedexComingText` best 0.46
@@ -63,9 +50,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 - `PewterGymBrockBoulderBadgeInfoText` best 0.37
 - `PewterGymBrockReceivedBoulderBadgeText` best 0.43
 
-## PewterSpeechHouse
-- `PewterSpeechHouseYoungsterText` best 0.50
-
 ## PokemonMansion1F
 - `PokemonMansion1FIterLogText` best 0.00
 
@@ -74,15 +58,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 
 ## Route11
 - `Route11Youngster2EndBattleText` best 0.45
-
-## Route11Gate2F
-- `Route11Gate2FRightBinocularsText` best 0.54
-
-## Route12Gate2F
-- `Route12Gate2FBrunetteGirlYouCanHaveThisText` best 0.92
-
-## Route12SuperRodHouse
-- `Route12SuperRodHouseFishingGuruTryFishingText` best 0.51
 
 ## Route14
 - `Route14CooltrainerM4AfterBattleText` best 0.52
@@ -93,10 +68,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 
 ## Route16
 - `Route16Biker4AfterBattleText` best 0.40
-- `Route16Biker5AfterBattleText` best 0.48
-
-## Route20
-- `Route20Swimmer9AfterBattleText` best 0.52
 
 ## Route22
 - `Route22Rival1VictoryText` best 0.39
@@ -104,9 +75,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 ## Route22Gate
 - `Route22GateGuardGoRightAheadText` best 0.34
 - `Route22GateGuardNoBoulderbadgeText` best 0.34
-
-## Route25
-- `Route25Hiker2AfterBattleText` best 0.50
 
 ## SSAnne1FRooms
 - `SSAnne1FRoomsCooltrainerFBattleText` best 0.39
@@ -147,9 +115,6 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 ## SilphCo1F
 - `SilphCo1FEngravingText` best 0.00
 
-## SilphCo5F_2
-- `SilphCo5FPokemonReport3Text` best 0.54
-
 ## UndergroundPathRoute7
 - `UndergroundPathRoute7MiddleAgedManText` best 0.28
 
@@ -163,14 +128,8 @@ mouth. Regenerate with `python3 tools/port_dialogue.py`.
 - `UndergroundPathRoute8GirlText` best 0.27
 
 ## ViridianCity
-- `ViridianCityOldManKnowHowToCatchPokemonText` best 0.49
 - `ViridianCityOldManYouNeedToWeakenTheTargetText` best 0.46
 
 ## ViridianForest
 - `ViridianForestTrainerTips3Text` best 0.47
 - `ViridianForestYoungster5Text` best 0.48
-
-## pokedex_ratings
-- `DexCompletionText` no map
-- `DexRatingText_Own150To151` no map
-- `DexRatingText_Own20To29` no map

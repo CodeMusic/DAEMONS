@@ -214,7 +214,10 @@ def do_asm(path):
                 break
             run.append(mm.group(2)); j += 1
         body = ''.join(run)
-        if HAS_OAK.search(body):
+        # Test the FLATTENED body: "PROF.\\nOAK" puts an n against the O and
+        # \\b finds no boundary, so the wrapped form hides the name from its
+        # own detector. Two fame checker blocks survived every pass this way.
+        if HAS_OAK.search(UNWRAP.sub(' ', body)):
             if body not in OVERRIDES and reflowable(body):
                 new = rewrap(rename(UNWRAP.sub(' ', body)), budget_for(path))
             else:
@@ -234,7 +237,7 @@ def do_c(path):
     hit = [False]
     def sub(m):
         body = m.group(1)
-        if not HAS_OAK.search(body):
+        if not HAS_OAK.search(UNWRAP.sub(' ', body)):
             return m.group(0)
         if body not in OVERRIDES and reflowable(body):
             new = rewrap(rename(UNWRAP.sub(' ', body)), budget_for(path))

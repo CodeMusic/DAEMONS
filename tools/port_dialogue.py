@@ -27,12 +27,13 @@ import difflib, os, re, subprocess, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
-MIN = 0.55
+MIN = 0.48
 if "--min" in sys.argv:
     MIN = float(sys.argv[sys.argv.index("--min") + 1])
 ONLY = [a for a in sys.argv[1:] if not a.startswith("-") and not re.match(r'^[\d.]+$', a)]
 BUDGET = 196
 MARGIN = 0.04   # the winner must beat the runner-up by this much
+SURE   = 0.85   # ...unless it is this good, when a tie is between twins
 
 # ------------------------------------------------------------------ the font
 def _font():
@@ -229,11 +230,17 @@ ALIAS = {
     "UndergroundPathEntranceRoute7": "UndergroundPath_WestEntrance",
     "UndergroundPathEntranceRoute8": "UndergroundPath_EastEntrance",
 }
+# Not every pokered text file is a map. These live in data/text/ on both sides.
+NONMAP = {"pokedex_ratings": "data/text/pokedex_rating.inc",
+          "oakspeech":       "data/text/new_game_intro.inc"}
+
 # a few Gen 1 rooms have several plausible Gen 3 homes; let the scoring choose
 MULTI = {"FuchsiaBillsGrandpasHouse": ["FuchsiaCity_House1", "FuchsiaCity_House2",
                                        "FuchsiaCity_House3"]}
 
 def candidates(gbname):
+    if gbname in NONMAP:
+        return [NONMAP[gbname]]
     if gbname in MULTI:
         return MULTI[gbname]
     if gbname in ALIAS:
@@ -266,11 +273,11 @@ for rel in gb_files:
     if not maps:
         nomap += [(name, k) for k in changed]
         continue
-    pool = []   # (mapdir, label, vanilla_flat)
+    pool = []   # (path, label, vanilla_flat)
     for d in maps:
-        p = "data/maps/%s/text.inc" % d
+        p = d if d.endswith(".inc") else "data/maps/%s/text.inc" % d
         for lbl, body in gba_blocks(show(GBA, p)).items():
-            pool.append((d, lbl, flat(body)))
+            pool.append((p, lbl, flat(body)))
     for lbl, pages in changed.items():
         want = flat(' '.join(' '.join(pg) for pg in base.get(lbl, [])))
         if not want:
@@ -282,7 +289,12 @@ for rel in gb_files:
         # A near-tie means two Gen 3 lines fit the Gen 1 line equally well, and
         # putting our writing in the wrong NPC's mouth is worse than not
         # porting it. MARGIN is what stops that; the threshold alone does not.
-        if best and score >= MIN and score - second >= MARGIN:
+        # The margin guards against a COIN FLIP, not against a strong match.
+        # Bill's two lines scored 0.94 and 0.98 and were thrown out for being
+        # near-ties -- but at that similarity the vanilla sentences are the same
+        # sentence, and the worst case is porting to one of two twins rather
+        # than putting our writing in a stranger's mouth.
+        if best and score >= MIN and (score - second >= MARGIN or score >= SURE):
             matched.append((name, lbl, best[0], best[1], score))
             shaped = keep_shape if "Sign" in lbl else rewrap
             edits.setdefault(best[0], {})[best[1]] = shaped(pages, BUDGET)
@@ -298,7 +310,7 @@ if nomap:
 if WRITE:
     files = 0
     for d, subs in edits.items():
-        p = os.path.join(GBA, "data/maps/%s/text.inc" % d)
+        p = os.path.join(GBA, d if d.endswith(".inc") else "data/maps/%s/text.inc" % d)
         lines = open(p, encoding="utf-8").read().split('\n')
         out, i, hit = [], 0, False
         while i < len(lines):

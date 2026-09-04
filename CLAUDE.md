@@ -61,7 +61,11 @@ without it.**
 python3 tools/port_names.py --write      # species, items, moves, town names
 python3 tools/port_index.py --write       # Index categories and entries
 python3 tools/port_item_text.py --write   # item descriptions (new writing)
+python3 tools/port_oak.py --write         # OAK -> CRYSTAL CLEAR, and her pronouns
+python3 tools/port_vocab.py --write       # POKéMON -> DAEMON, and the rest of it
+python3 tools/port_dialogue.py --write    # our WRITING, matched vanilla to vanilla
 python3 tools/gbasprite.py --write        # 66 sprites, coloured by type
+python3 tools/gbamarks.py --write         # the eight MARKS onto the trainer card
 python3 tools/port_music.py --write       # our tracks, re-emitted as MIDI
 python3 tools/gbastr.py CONTEXT USERBOX   # search a .gba through the charmap
 ```
@@ -73,6 +77,22 @@ diffing our table against upstream's with `difflib`, which is the only way to
 tell an **addition** from a **rename** — a positional zip read §2.5's added move
 `CONSENSUS` as *"STRUGGLE was renamed to CONSENSUS"*, which would have renamed
 Gen 3's Struggle.
+
+**Edit the source, never the artifact.** `json_data_rules.mk` generates seven
+headers — `items.h`, `region_map_entry_strings.h`, `region_map_entries.h`,
+`wild_encounters.h`, `heal_locations.h` and two constants files — and every one
+of them is **gitignored**. `port_names.py` wrote the sixteen town names into
+`region_map_entry_strings.h` and they existed only in one working build: a
+fresh clone would have built vanilla Kanto. Write the `.json`. And note that
+renaming a mapsec renames a generated C symbol `src/region_map.c` refers to by
+hand — the generator works on **bytes**, so `é` is two underscores and POKéMON
+MANSION is `sMapsecName_POK__MON_MANSION`.
+
+**An escape is two characters and the first is a letter.** In `\nPOKéMON` the
+`n` sits against the `P`, so `\b` finds **no word boundary** and every word at
+the start of a line is invisible to a pattern looking for it. This has now hidden
+substitutions in three separate tools. Flatten before you match, and **re-run
+every tool until it reports nothing** — that is what caught all three.
 
 **`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its
 own `charmap.txt` exactly as Gen 1 does, so grepping a `.gba` for ASCII finds

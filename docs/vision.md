@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.43**
+**A total conversion — the living design bible, v11.44**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3702,6 +3702,40 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 ***The lesson generalises past this badge.*** **A face that has shipped to millions of players has had every one-pixel ambiguity argued out of it already.** *When the pitch matches, take the font rather than approximate it.*
 
 *The tell was in the player's own eye, not in the diff:* **the species names beside the badges were clear and the badges were not** — same screen, same size, two different alphabets.
+
+### 9.13 The catch-up sweep, and the word the Game Boy got for free
+
+**Built 2026-09-03/04.** ***The port tools all reported success and the game still said POKéMON.*** That is the whole finding, and it has one cause: **`pokered` writes the core noun as the charmap glyph `#`**, so a single line — `charmap "#", $54` — renamed it everywhere at once. **`pokefirered` spells the word out in every string.** The Game Boy build got its entire vocabulary from one character; the GBA build had inherited *none* of it.
+
+#### What a rename is, and where it has to live
+
+**`tools/port_vocab.py` derives its map rather than declaring it.** Species, moves and items are diffed out of *our own GBA tables* against upstream — **if the Index says PACKET, the NPC who mentions one has to say PACKET** — and the vocabulary itself is lifted from the Game Boy diff. *1595 blocks, 242 files.*
+
+***And the town names were in nobody's repository.*** `port_names.py` wrote them into `region_map_entry_strings.h`, which is **generated from `region_map_sections.json` and gitignored.** All sixteen existed only in one working build; **a fresh clone would have built vanilla Kanto.** *The header is an artifact; the JSON is the source.* Renaming a mapsec also renames a generated C symbol that `region_map.c` refers to by hand — and the generator works on **bytes**, so `é` is two of them and POKéMON MANSION is `sMapsecName_POK__MON_MANSION`.
+
+#### Singular and plural cannot be derived, so it was measured
+
+`pokered` had **two spellings**, `#MON` and `#MONS`, and the Game Boy pass chose between them **by hand 586 times**. *"your" is plural 7 times and singular 25.* No rule recovers that. The heuristic here **agrees with those 586 decisions 93.7% of the time** — scored against them — and recovers **115 of 121** plurals.
+
+#### One bug, in three tools
+
+***An escape is two literal characters and the first is a letter.*** So in `\nPOKéMON` the `n` sits against the `P` and **`\b` finds no boundary**: every word at the start of a line was invisible. It hid **104 substitutions** in `port_vocab`, a name **wrapped mid-word** (`PROF.\nOAK's POKéMON SEMINAR`) in `port_dialogue`, and **two fame checker blocks** in `port_oak`. *Each was found by re-running a tool that had already reported clean.*
+
+#### Measuring a line means knowing what a control code draws
+
+**A code either draws nothing, draws one glyph, or expands to a word**, and treating the third kind as zero made `own_budget` wrap strings to a width they never had. Three more of the same shape: **a control code can contain spaces** (`{CLEAR_TO 56}`), so splitting on whitespace tore the Safari menu in half; **a string that positions its own text is a layout, not prose**; and **`\l` scrolls** — a dex entry, a move description and a quest log line are drawn into a pane that shows every line at once, and rewrapping had introduced **355 scroll breaks** into files that had never contained one.
+
+#### What else came across
+
+| | |
+|---|---|
+| **507 dialogue blocks** | matched on *vanilla against vanilla*, the winner having to beat the runner-up |
+| **CONSENSUS** | appends at 355 — Gen 3 makes no `NUM_ATTACKS == STRUGGLE` assertion, so nothing shifts |
+| **the eight MARKS** | Gen 3's badge palette already carries a grey ramp, so invariant 5 costs nothing |
+| **eight more tracks** | only four of twelve had ever been carried; each lands where its town landed |
+| **two signs** | placed by *reading the map blockdata* — a Gen 1 coordinate means nothing on a Gen 3 layout |
+
+***And a SMOKE BALL is not a box.*** The box line is about acquisition, so BALL → BOX is right for the eleven capture devices — but **SMOKE BALL and LIGHT BALL are hold items**, and a SMOKE BOX would be a box that helps you leave.
 
 ### 9.2 Order of operations
 

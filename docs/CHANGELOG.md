@@ -5,6 +5,52 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.44 — 2026-09-04
+
+### The catch-up sweep
+
+***The port tools all reported success and the game still said POKéMON.*** `pokered` writes the core noun as the charmap glyph `#`, so one line renamed it everywhere; `pokefirered` spells it out in every string. **The Game Boy build got its whole vocabulary from one character and the GBA build had inherited none of it.**
+
+- **`tools/port_vocab.py`** — 1595 blocks in 242 files, plus 300 single-line and 121 multi-line `src` literals and every tracked JSON. The map is **derived**: species, moves and items diffed out of our own GBA tables against upstream; the vocabulary lifted from the Game Boy diff
+- **Singular and plural is not derivable.** `pokered` had `#MON` and `#MONS` and the Game Boy pass chose by hand **586 times** — *"your" is plural 7 times and singular 25.* The heuristic **agrees with those decisions 93.7%** of the time, scored against them
+- **Trainer classes**, the **Remote** prefix and **DETACHED** (1.4, vision 212–235), the **box line** including two-word names, and **`{PKMN}`** — a control code that renders the noun, so it expands *before* the plural decision
+
+### The town names were in nobody's repository
+
+- `port_names.py` wrote them into **`region_map_entry_strings.h`**, which is *generated* from `region_map_sections.json` and **gitignored**. All sixteen existed only in one working build; **a fresh clone would have built vanilla Kanto**
+- Renaming a mapsec renames a generated C symbol `region_map.c` refers to by hand — and the generator works on **bytes**, so `é` is two underscores
+
+### One bug, in three tools
+
+- **An escape is two literal characters and the first is a letter**, so in `\nPOKéMON` the `n` sits against the `P` and **`\b` finds no boundary**. Every word at the start of a line was invisible: **104 substitutions** in `port_vocab`, a name wrapped mid-word in `port_dialogue`, **two fame checker blocks** in `port_oak`
+- *Each was found by re-running a tool that had already reported clean*
+
+### Measuring a line
+
+- A control code **draws nothing, draws one glyph, or expands to a word** — counting the third as zero wrapped strings to widths they never had, and counting `{CIRCLE_2}` as a name made `help_system.inc` measure 80px too wide
+- **A control code can contain spaces**: splitting on whitespace tore `{CLEAR_TO 56}` in half and the Safari menu came back as `{PALETTE` / `5}{COLOR_HIGHLIGHT_SHADOW`
+- **A string that positions its own text is a layout**, not prose
+- **`\l` scrolls.** A dex entry, a move description and a quest log line show every line at once; rewrapping had introduced **355 scroll breaks** into files that never had one
+
+### Also ported
+
+- **507 dialogue blocks** (from 488) — the tie-break no longer rejects twins, and the threshold moved to 0.48 after sampling
+- **CONSENSUS** at move 355 — Gen 3 makes no `NUM_ATTACKS == STRUGGLE` assertion, so it appends and nothing shifts. Five tables, PIN_MISSILE's animation, `TYPE_BUG` per invariant 6
+- **The eight MARKS** on the trainer card — Gen 3's badge palette already carries a grey ramp
+- **Eight more music tracks** — only four of twelve had ever been carried
+- **Two signs** the Game Boy added, placed by *reading the map blockdata* for a wall with floor below it
+- **A SMOKE BALL is not a box** — hold items, not capture devices
+
+### Where the GBA build stands
+
+| | |
+|---|---|
+| vanilla vocabulary left in `src/` and `data/` | **0** (one source comment) |
+| dialogue blocks ported / listed | **507 / 62** |
+| music tracks | **12 / 12** |
+| Index entries | **30 / 30** both editions |
+| still open | the 62 blocks, two custom SFX, the intro and title art |
+
 ## v11.43 — 2026-09-03
 
 ### The dialogue port — 488 blocks of our own writing, carried across
