@@ -202,9 +202,27 @@ WORD = re.compile(r"[A-Za-zé']+")
 # be hidden from it, the same way the escapes are.
 KEEP_BALL = ["SMOKE BALL", "LIGHT BALL"]
 KEEP_RE = re.compile('|'.join(re.escape(k) for k in KEEP_BALL))
+# The rename table never ruled on "battle", and there are two of them. The
+# CHALLENGE is an event -- "would like to battle" -- and 237's whole move is
+# away from combat language: outscored not defeated, HALTED not fainted,
+# DETACHED not ran. ENGAGE is that word, and it is six letters like the one it
+# replaces, so not a line has to be rewrapped.
+#
+# The STATE is different -- "in battle", "outside of battle", ninety-two of
+# them -- and ENGAGE does not substitute for a context. Those are left alone
+# until there is a decision about them.
+ENGAGE = [("would like to battle", "would like to engage"),
+          ("wants to battle",      "wants to engage"),
+          ("want to battle",       "want to engage"),
+          ("Want to battle",       "Want to engage"),
+          ("ready to battle",      "ready to engage"),
+          ("challenges you to\\nbattle", "challenges you to\\nengage"),
+          ("accept the battle",    "accept the engagement"),
+          ("Perfect for a battle", "Perfect for an engagement")]
+
 PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   [("SAFARI BALLS", "GUESTBOXES"), ("SAFARI BALL", "GUESTBOX")] +
-                  []),
+                  ENGAGE),
                  key=lambda kv: -len(kv[0]))
 PHRASE_RE = re.compile('|'.join(re.escape(k) for k, _ in PHRASES)) if PHRASES else None
 PHRASE_MAP = dict(PHRASES)
@@ -528,9 +546,16 @@ for rel, keys in JSON_TARGETS.items():
                     return '"%s": "%s"' % (key, reesc(flowed))
             return m.group(0)
         if BREAK.search(body):
-            budget = own_budget(body)
+            # The same bound the repair uses. Without it a string that CHANGED
+            # could gain a line the pane cannot show, which is how VS SEEKER
+            # came back four lines deep in a three-line window.
             if reflowable(body):
-                new = rewrap(convert(UNWRAP.sub(' ', body)), budget)
+                flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)),
+                                    j_ceiling, j_cap)
+                if ok:
+                    new = flowed
+                else:
+                    outgrew.append((rel, body[:52]))
         elif textwidth(new) > textwidth(body):
             grew.append((rel, textwidth(body), textwidth(new), body, new))
         if "region_map" in rel:

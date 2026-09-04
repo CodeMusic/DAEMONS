@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.50 — 2026-09-04
+
+### The word the rename table never ruled on
+
+- ***"RIVAL AL would like to battle!"*** — and **battle is not in the table.** 237's whole move is away from combat language (*outscored* not defeated, *HALTED* not fainted, *DETACHED* not ran), and this was the last of it left in plain sight
+- **There are two of them.** The **challenge** is an event — twenty occurrences, *"would like to battle", "want to battle"* — and it is now **ENGAGE**. The **state** is a context — *"in battle", "outside of battle"*, ninety-two of them — and **engage does not substitute for a context**, so those are left until there is a decision
+- *Six letters for six*, so **not a line had to be rewrapped**
+
+### And a hole in the pane rule
+
+- The repair caught strings that had *already* gained a line, but the JSON **conversion** path still used the old budget — so a string that **changed** could gain one. VS SEEKER came back **four lines deep in a three-line window**
+- Both paths use the same bound now
+
 ## v11.49 — 2026-09-04
 
 ### The front door has art

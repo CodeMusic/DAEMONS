@@ -186,31 +186,104 @@ def split_stacked(im):
     return [im.crop((0, a, w, b)) for a, b in bands]
 
 def indexed(src, size, dst):
+    """The logo is not an image, it is THREE files.
+
+    game_title_logo is a 32x12 tile area of the screen -- 256x96, not the
+    256x64 the atlas PNG happens to be -- drawn from a DEDUPLICATED atlas
+    through a tilemap, at 8bpp, with its palette loaded across thirteen banks
+    (`13 * PLTT_SIZE_4BPP`, so 208 colours and banks 13 and 14 belong to the
+    box art and the background). Replacing only the atlas leaves the map
+    pointing at tiles that have moved and the palette coming from the old
+    .pal -- which is exactly what garbled the whole background.
+
+    So: compose, quantise, deduplicate, and write the atlas, the map and the
+    palette together."""
     art = load(src)
     warn_edges(art, "logo")
+    SCREEN_W, SCREEN_H, ROWS = 256, 96, 12
     blocks = split_stacked(crop_to_subject(art))
+    canvas = Image.new("RGB", (SCREEN_W, SCREEN_H), (255, 255, 255))
     if blocks:
         big, small = sorted(blocks, key=lambda b: -b.height)
-        tw, th = size
-        gap, m = 8, 2
-        bh = th - 2 * m
-        bw = min(int(big.width * bh / big.height), int(tw * 0.68))
-        bh2 = int(big.height * bw / big.width)
-        sw = tw - bw - gap - 2 * m
-        sh = min(int(small.height * sw / small.width), bh)
-        sw = int(small.width * sh / small.height)
-        out = Image.new("RGB", size, (255, 255, 255))
-        out.paste(big.resize((bw, bh2), Image.LANCZOS), (m, (th - bh2) // 2))
-        out.paste(small.resize((sw, sh), Image.LANCZOS), (tw - m - sw, (th - sh) // 2))
-        im = out
-        print("  recomposed side by side: %dx%d and %dx%d" % (bw, bh2, sw, sh))
+        bw = int(SCREEN_W * 0.80)
+        bh = int(big.height * bw / big.width)
+        sw = int(SCREEN_W * 0.34)
+        sh = int(small.height * sw / small.width)
+        top = (SCREEN_H - bh - sh - 6) // 2
+        canvas.paste(big.resize((bw, bh), Image.LANCZOS), ((SCREEN_W - bw) // 2, top))
+        canvas.paste(small.resize((sw, sh), Image.LANCZOS),
+                     ((SCREEN_W - sw) // 2, top + bh + 6))
+        print("  composed 256x96: word %dx%d over edition %dx%d" % (bw, bh, sw, sh))
     else:
-        im = fit(crop_to_subject(art), size)
-    q = im.quantize(colors=200, method=Image.MEDIANCUT, dither=Image.NONE)
-    q.save(dst)
-    used = len(set(q.getdata()))
-    print("  %s  %dx%d, %d colours (8bpp allows 256)"
-          % (os.path.relpath(dst, ROOT), size[0], size[1], used))
+        canvas.paste(fit(crop_to_subject(art), (SCREEN_W, SCREEN_H)), (0, 0))
+
+    # Fewer colours means more tiles repeat. Vanilla spends 208 because its
+    # logo is a gradient; ours is flat black on white with a drop shadow, and
+    # at 200 colours the resample's soft edges made every tile unique. Step
+    # down until the atlas fits, and say what it cost.
+    for ncolours in (200, 64, 32, 16, 8, 4):
+        q = canvas.quantize(colors=ncolours, method=Image.MEDIANCUT, dither=Image.NONE)
+        px = q.load()
+        seen = set()
+        for ty in range(ROWS):
+            for tx in range(32):
+                seen.add(tuple(px[tx * 8 + x, ty * 8 + y]
+                               for y in range(8) for x in range(8)))
+        if len(seen) < 256:
+            break
+    else:
+        sys.exit("  !! more than 256 unique tiles even at 4 colours")
+    # Index 0 is TRANSPARENT on a Gen 3 background, and the surround has to be
+    # it -- otherwise the logo arrives as a white rectangle over the title's
+    # own backdrop. Quantise puts the colours wherever it likes, so find the
+    # one in the corner and swap it to 0.
+    qp = q.load()
+    corner = qp[0, 0]
+    if corner != 0:
+        data = list(q.getdata())
+        data = [0 if v == corner else (corner if v == 0 else v) for v in data]
+        q.putdata(data)
+        pal = q.getpalette()
+        pal[0:3], pal[corner*3:corner*3+3] = pal[corner*3:corner*3+3], pal[0:3]
+        q.putpalette(pal)
+    px = q.load()
+    # tile 0 must be blank: every screen position the map does not name is 0
+    blank = tuple([0] * 64)
+    atlas, index = [blank], {blank: 0}
+    tmap = [0] * (32 * 20)
+    for ty in range(ROWS):
+        for tx in range(32):
+            tile = tuple(px[tx * 8 + x, ty * 8 + y] for y in range(8) for x in range(8))
+            if tile not in index:
+                if len(atlas) >= 256:
+                    sys.exit("  !! more than 256 unique tiles after dedup -- "
+                             "the art has too much detail for one BG")
+                index[tile] = len(atlas); atlas.append(tile)
+            tmap[ty * 32 + tx] = index[tile]
+
+    out = Image.new("P", (256, 64), 0)
+    op = out.load()
+    for i, tile in enumerate(atlas):
+        bx, by = (i % 32) * 8, (i // 32) * 8
+        for k, v in enumerate(tile):
+            op[bx + k % 8, by + k // 8] = v
+    pal = q.getpalette()[:256 * 3]
+    pal += [0] * (768 - len(pal))
+    out.putpalette(pal)
+    out.save(dst)
+
+    base = os.path.splitext(dst)[0]
+    with open(base + ".bin", "wb") as f:
+        for v in tmap:
+            f.write(bytes((v & 0xFF, (v >> 8) & 0xFF)))
+    # the .gbapal rule prefers .pal over .png, so the palette has to be written
+    # HERE or the tiles and their colours come from different centuries
+    with open(base + ".pal", "w") as f:
+        f.write("JASC-PAL\n0100\n256\n")
+        for i in range(256):
+            f.write("%d %d %d\n" % tuple(pal[i * 3:i * 3 + 3]))
+    print("  %s  %d unique tiles at %d colours (208 available)"
+          % (os.path.relpath(dst, ROOT), len(atlas), ncolours))
 
 def main():
     if len(sys.argv) < 3 or sys.argv[2] not in ASSETS:

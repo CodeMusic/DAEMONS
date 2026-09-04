@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.49**
+**A total conversion — the living design bible, v11.50**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -76,6 +76,7 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 | Fleeing | **DETACHED** | you break your connection to a running process |
 | Poké Flute | **INTERRUPT** | what wakes a blocked process |
 | Gym | **BENCHMARK** | what a gym actually is |
+| Battle *(the challenge)* | **ENGAGE** | added 2026-09-04. *The table never ruled on this one*, and 237's move is away from combat language — outscored not defeated, HALTED not fainted, DETACHED not ran. **"Would like to battle" was the last of it left in plain sight.** Six letters for six, so nothing rewrapped |
 | Badge | **CERT** | eight certifications |
 | Elite Four | **THE REVIEW BOARD** | beating them is passing peer review |
 | Champion | *(incumbent)* | Ty Clear is the prevailing paradigm, not a king |
