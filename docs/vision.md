@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.62**
+**A total conversion — the living design bible, v11.63**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2623,6 +2623,60 @@ the downbeat** — which is the part that makes it a theme rather than a melody.
 
 **`engine/` is untouched and stays at three.** *That constraint is real there,
 and 7.4 is still correct about it.*
+
+##### SEEKMUSAI takes the Pikachu slot, and the slot is three sprites
+
+***Chosen over S.T.A.R.R., which was the instinct and the wrong answer.*** 4.7
+puts S.T.A.R.R. **dormant past the Review Board** — *a creature asleep for the
+whole game cannot be the one that welcomes you into it.* And the Pikachu slot
+is a fact about the anime's marketing, not about FireRed's fiction; the
+creature there has nothing to do with the briefing beside it.
+
+**What the briefing actually is: an INDEX that starts out empty, "almost
+everything here is written down somewhere", and it closes on *"Some of them
+disagree."*** That is a screen about finding and reconciling records —
+**so it is narrated by the daemon whose item is EMBEDDING**, which is the thing
+that makes an index searchable. *Not a pun; the actual relationship.*
+
+**It is also the sibling not already on the title screen**, so the family reads
+across both without repeating a drawing. `TYPE_FLYING` fixes it at VECTOR —
+**sanguine red, not Jolteon's yellow.**
+
+##### The rig is body, ANTENNAE and VISOR
+
+`oak_speech.c` draws the creature as three sprites with two frames each: a
+breath, a twitch and a blink. For a MUSAI those are the body, the antennae and
+the faceplate, ***so SEEKMUSAI blinks by its scanner cycling*** — which is the
+right verb for this one and cost nothing to arrange.
+
+**Only the body is drawn art.** All three layers were generated and *the two
+overlays did not seam* — the antennae sat on a plain dome while the body has a
+swept crest, and the visor was a different faceplate shape. **Overlaid, the
+helmet would have changed shape every time it twitched or blinked.** So
+`tools/gbaseek.py` builds the overlays **from the body**: the antennae layer is
+its own top sixteen rows with stalks drawn on, the visor its own faceplate with
+a line drawn across. *The seam is exact by construction, because the
+surrounding pixels are the same pixels.*
+
+##### The breath is one pixel, and that is not a style choice
+
+***`SpriteCB_Pikachu` is three lines and it governs the whole rig:***
+
+> `sprite->y2 = gSprites[sprite->sBodySpriteId].animCmdIndex;`
+
+**Each overlay's vertical offset is the body's frame number — 0 or 1.** So the
+antennae and the visor follow the body by **exactly one pixel**, and a body
+that moves further tears away from its own overlays. *The generated second
+frame was a full crouch*, and composited it doubled the helmet.
+
+**So frame B is synthesised: frame A dropped one pixel, with the shadow left
+where it is.** That is what vanilla does — its own two frames are a one-pixel
+settle with 33 pixels of hand touch-up. **The generated crouch is unused.**
+
+*One coordinate moved.* The visor sprite was at `(24, 13)`, which is where
+Pikachu's eyes are; solving the layout against that box forced the creature
+down to **sixteen pixels wide**, so it moved to `(24, 17)` instead. **Four
+pixels of sprite position was cheaper than shrinking the character.**
 
 ##### The controls guide, and the one screen that knows it is a game
 

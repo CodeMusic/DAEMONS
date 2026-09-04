@@ -5,6 +5,28 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.63 — 2026-09-04
+
+### SEEKMUSAI takes the Pikachu slot
+
+- ***S.T.A.R.R. was the instinct and the wrong answer***: 4.7 puts it **dormant past the Review Board**, and *a creature asleep for the whole game cannot be the one that welcomes you into it*
+- **The Pikachu slot is a fact about the anime's marketing**, not about FireRed's fiction — the creature there has nothing to do with the briefing beside it
+- ***The briefing is about records***: an INDEX that starts out empty, everything written down somewhere, closing on **"Some of them disagree."** So it is narrated by the daemon whose item is **EMBEDDING** — the thing that makes an index searchable
+- `TYPE_FLYING` fixes it at VECTOR: **sanguine red, not Jolteon's yellow**. And it is the sibling *not* already on the title screen
+
+### `tools/gbaseek.py` — only the body is drawn art
+
+- All three layers were generated and **the two overlays did not seam**: the antennae sat on a plain dome while the body has a swept crest, and the visor was a different faceplate shape. *The helmet would have changed shape every time it twitched or blinked*
+- **The overlays are built FROM the body** — its own top sixteen rows with stalks drawn on, its own faceplate with a line across. *The seam is exact by construction*
+- The tool also has to skip the **"A" and "B" Gemini burns into the corner** — taken as the largest connected component, which a bounding box would have swallowed
+
+### The breath is one pixel, and it is not a style choice
+
+- ***`SpriteCB_Pikachu` is three lines and governs the rig***: `sprite->y2 = gSprites[sprite->sBodySpriteId].animCmdIndex`
+- **Each overlay's offset is the body's frame number, 0 or 1** — so a body that moves more than one pixel tears away from its own overlays. The generated frame B was a full crouch and **doubled the helmet**
+- **Frame B is synthesised**: frame A dropped one pixel, shadow left in place. *Vanilla's own frames are a one-pixel settle with 33 pixels of touch-up.* The generated crouch is unused
+- **The visor sprite moves `(24,13)` → `(24,17)`.** Solving the layout against Pikachu's eye position forced the creature to **sixteen pixels wide**; four pixels of sprite position was cheaper than shrinking the character
+
 ## v11.62 — 2026-09-04
 
 ### The controls guide winks, and survives reaching real hardware
