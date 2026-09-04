@@ -1,8 +1,23 @@
 #!/usr/bin/env python3
-"""Author voicegroup191 -- the DAEMONS orchestral bank.
+"""Author this project's two voicegroups.
 
     python3 tools/gbavoices.py            # report
     python3 tools/gbavoices.py --write
+
+TWO BANKS, BECAUSE THERE ARE TWO KINDS OF MUSIC HERE.
+
+  voicegroup191  the orchestral bank. The title theme, which 9.14 places
+                 OUTSIDE the fiction -- so it is allowed the sample ROM.
+  voicegroup192  the Game Boy bank. Every track carried over from engine/ was
+                 written for four hardware channels, and keeping that texture
+                 is a decision (2026-09-04) rather than an inheritance.
+
+WHY 192 IS NOT JUST "LEAVE THEM ALONE". Left alone they played VOICE 0, and
+slot 0 of the banks they happened to point at is a KEYSPLIT -- a drum-kit key
+map -- in ten cases out of eleven. That is not chiptune, it is an accident that
+sounds like one. And the PSG slots do not agree across those banks either:
+slot 87 is a programmable wave in three of eleven and a filler square in the
+rest, so the same wave part would change instrument from town to town.
 
 WHY THIS EXISTS. mus_title played through voicegroup137, whose slot 0 is a
 keysplit and whose slots 1-3 are voice_square_1 -- PSG square waves. That is
@@ -27,7 +42,23 @@ import os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INC = os.path.join(ROOT, "engineGba/sound/voice_groups.inc")
-GROUP = "voicegroup191"
+GROUP    = "voicegroup191"
+GB_GROUP = "voicegroup192"
+
+#  The Game Boy bank. GM 80 and 81 are "Lead 1 (square)" and "Lead 2 (sawtooth)"
+#  and Gen 3 puts its PSG voices exactly there, which is the same General MIDI
+#  agreement the orchestral bank relies on. pokered channels arrive in
+#  declaration order -- Pulse 1, Pulse 2, Wave, Noise -- so these four slots are
+#  the Game Boy's own four channels, in order.
+GB = {
+    80:  ("voice_square_1_alt 60, 0, 0, 1, 1, 2, 3, 1",            "pulse 1"),
+    81:  ("voice_square_2_alt 60, 0, 1, 1, 2, 3, 1",               "pulse 2"),
+    87:  ("voice_programmable_wave_alt 60, 0, ProgrammableWaveData_6, 0, 7, 15, 2",
+                                                                   "wave"),
+    126: ("voice_noise_alt 60, 0, 0, 0, 2, 4, 0",                  "noise"),
+}
+#  A stray program stays in the family: chiptune here, an instrument in 191.
+GB_FILL = ("voice_square_1_alt 60, 0, 0, 1, 1, 2, 3, 1", "pulse 1")
 
 #  GM program (0-indexed) -> sample, attack, decay, sustain, release.
 #  Envelopes are lifted from vanilla's own use of each sample, not invented.
@@ -53,10 +84,21 @@ BANK = {
 }
 FILL = BANK[0]
 SIZE = max(BANK) + 1
+GB_SIZE = max(GB) + 1
 
 def voice(spec):
     s, a, d, su, r, _ = spec
     return "\tvoice_directsound 60, 0, DirectSoundWaveData_%s, %d, %d, %d, %d" % (s, a, d, su, r)
+
+def emit(group, table, fill, size):
+    block = "\n\t.align 2\n%s::\n" % group
+    block += "\n".join("\t" + (table.get(i, fill))[0] for i in range(size)) + "\n"
+    return block
+
+def replace(body, group, block):
+    if re.search(r"^%s::" % group, body, re.M):
+        body = re.sub(r"\n\t\.align 2\n%s::\n(?:\t\w+.*\n)+" % group, "", body)
+    return body.rstrip("\n") + "\n" + block
 
 def main():
     body = open(INC).read()
@@ -65,21 +107,25 @@ def main():
     if missing:
         sys.exit("  !! sample not in this ROM: %s" % ", ".join(missing))
 
-    block = "\n\t.align 2\n%s::\n" % GROUP
-    block += "\n".join(voice(BANK.get(i, FILL)) for i in range(SIZE)) + "\n"
+    orch = {i: (voice(v).lstrip("\t"), v[5]) for i, v in BANK.items()}
+    ofill = (voice(FILL).lstrip("\t"), FILL[5])
 
-    print("  %s -- %d slots, every one sampled" % (GROUP, SIZE))
+    print("  %s -- the orchestral bank, %d slots, every one sampled" % (GROUP, SIZE))
     for i in sorted(BANK):
         print("    %3d  %s" % (i, BANK[i][5]))
     print("    %3d  filler slots hold the piano" % (SIZE - len(BANK)))
 
+    print("\n  %s -- the Game Boy bank, %d slots, every one PSG" % (GB_GROUP, GB_SIZE))
+    for i in sorted(GB):
+        print("    %3d  %s" % (i, GB[i][1]))
+    print("    %3d  filler slots hold pulse 1" % (GB_SIZE - len(GB)))
+
     if "--write" not in sys.argv:
         print("\n  (report only; pass --write)")
         return
-    if re.search(r"^%s::" % GROUP, body, re.M):
-        body = re.sub(r"\n\t\.align 2\n%s::\n(?:\tvoice_\w+.*\n)+" % GROUP, "", body)
-        print("  replaced the existing %s" % GROUP)
-    open(INC, "w").write(body.rstrip("\n") + "\n" + block)
+    body = replace(body, GROUP, emit(GROUP, orch, ofill, SIZE))
+    body = replace(body, GB_GROUP, emit(GB_GROUP, GB, GB_FILL, GB_SIZE))
+    open(INC, "w").write(body)
     print("\n  written    sound/voice_groups.inc")
 
 main()

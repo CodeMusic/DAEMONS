@@ -27,6 +27,12 @@ GBA = os.path.join(ROOT, "engineGba")
 ASM = os.path.join(GBA, "sound/songs/midi")
 
 #  What this project wrote. Everything else is upstream's and not our problem.
+#  Chiptune is a DECISION (2026-09-04): the tracks carried over from engine/
+#  keep the texture they were written for. It is only intended on OUR Game Boy
+#  bank at the four slots that are its four hardware channels -- a square
+#  anywhere else, and a keysplit anywhere at all, is still the old accident.
+CHIP_BANK, CHIP_SLOTS = "voicegroup192", {80, 81, 87, 126}
+
 OURS = ["mus_title", "mus_pallet", "mus_pewter", "mus_route1", "mus_brazen",
         "mus_celadon", "mus_cinnabar", "mus_lavender", "mus_vermillion",
         "mus_silph", "mus_poke_mansion", "mus_mt_moon", "mus_caught_intro"]
@@ -68,12 +74,14 @@ def songs(names):
 
         played = [(v, bank.get(grp, [])[v] if v < len(bank.get(grp, [])) else "?")
                   for v in voices]
-        psg = [v for v, s in played if s in ("PSG", "keysplit")]
+        chip = grp == CHIP_BANK
+        psg = [v for v, s in played
+               if s == "keysplit" or (s == "PSG" and not (chip and v in CHIP_SLOTS))]
         want_loop = n not in JINGLES
         ok = len(voices) == tracks and not psg and (loops > 0) == want_loop
         bad += not ok
-        print("  %-18s %-14s %2d tracks %5d notes %4d patt  %s%s"
-              % (n, grp, tracks, notes, patts,
+        print("  %-18s %-14s %2d tracks %5d notes %4d patt  %s%s%s"
+              % (n, grp, tracks, notes, patts, "chiptune, " if chip else "",
                  "loops" if loops else ("jingle" if not want_loop else "DOES NOT LOOP"),
                  "" if ok else "   <-- check"))
         print("       %s" % ", ".join("%d=%s" % (v, s) for v, s in played))

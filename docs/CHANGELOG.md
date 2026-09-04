@@ -5,6 +5,26 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.61 — 2026-09-04
+
+### Ruled: the world is chiptune, the front door is not
+
+- ***"chiptune I think is good"*** — the twelve tracks from `engine/` keep the texture they were written for. **9.14 already put the title outside the fiction**, so the front door gets the sample ROM and the world does not
+- ***"Leave them alone" was not on the table, because they were not left alone.*** They played `VOICE 0`, and slot 0 of the banks they pointed at is a **keysplit — a drum-kit key map — in ten cases out of eleven**
+- **The PSG slots do not agree between those banks either**: slot 87 is a programmable wave in three of eleven and a filler square in the rest, so *the same wave part changed instrument from town to town*
+
+### `voicegroup192` — the Game Boy bank
+
+- **GM 80 and 81 are "Lead 1 (square)" and "Lead 2 (sawtooth)"** and Gen 3 puts its PSG voices exactly there — the same GM agreement `voicegroup191` relies on
+- `pokered` declares channels in order and `port_music.py` keeps it, **so the channel index is the hardware channel**: 80 pulse 1, 81 pulse 2, 87 wave, 126 noise
+- **Filler slots hold pulse 1**, as 191's hold the piano — *a stray program stays in the family*
+
+### The tool that owns the notes owns the bank
+
+- ***`port_music.py` still had `mus_title` in its list and overwrote the stems transcription*** the first time it ran after the bank change, repointing it off `voicegroup191`. **Caught because midi.cfg reported 13 songs when there are 12**
+- It keeps `midi.cfg` in step now, and `SUPERSEDED` keeps its hands off the track it no longer owns
+- **`gbasongs.py` knows chiptune is a decision**: PSG on our bank at its four slots is clean; a square anywhere else, or a keysplit anywhere at all, still reports. *All 13 songs clean*
+
 ## v11.60 — 2026-09-04
 
 ### The battle menu had lost a newline, and it had been lost for weeks

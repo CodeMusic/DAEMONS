@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.60**
+**A total conversion — the living design bible, v11.61**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2623,6 +2623,44 @@ the downbeat** — which is the part that makes it a theme rather than a melody.
 
 **`engine/` is untouched and stays at three.** *That constraint is real there,
 and 7.4 is still correct about it.*
+
+##### Ruled 2026-09-04 — **the world is chiptune and the front door is not**
+
+***Asked directly, and answered directly: "chiptune I think is good."*** The
+twelve tracks carried over from `engine/` were written for four hardware
+channels and they keep that texture. **9.14 already put the title screen
+outside the fiction**, which is what lets the front door have the sample ROM
+while the world it opens onto does not — *the same split that let colour be
+spent there without breaking invariant 5.*
+
+***But "leave them alone" was not available, because they were not left
+alone.*** They played `VOICE 0`, and slot 0 of the banks they happened to
+point at is a **keysplit — a drum-kit key map — in ten cases out of eleven.**
+That is not chiptune. It is an accident that sounds a bit like one.
+
+**And the PSG slots do not agree between those banks either.** Slot 87 is a
+programmable wave in three of the eleven and a filler square in the rest, so
+the same wave part would have changed instrument between one town and the
+next. *A texture that varies by location is not a texture.*
+
+##### `voicegroup192`, and the Game Boy's four channels are four programs
+
+**GM 80 and 81 are "Lead 1 (square)" and "Lead 2 (sawtooth)", and Gen 3 puts
+its PSG voices exactly there** — the same General MIDI agreement the
+orchestral bank relies on. `pokered` declares its channels in order, Pulse 1,
+Pulse 2, Wave, Noise, and `port_music.py` keeps that order, **so the channel
+index *is* the hardware channel** and four programs name its four voices.
+
+*A stray program stays in the family:* filler slots hold pulse 1 here and the
+piano in 191, so a mistake in either bank is still the right kind of sound.
+
+##### And the tool that owns the notes owns the bank
+
+***`port_music.py` had `mus_title` in its list and quietly overwrote it*** —
+the stems transcription, and its `-G191` — the first time it ran after the
+bank change. **A song's notes and its voicegroup are one decision**, so the
+tool that writes the MIDI now also keeps `midi.cfg` pointed at the right bank,
+and `SUPERSEDED` keeps its hands off the one track it no longer owns.
 
 ##### Revised a third time — **stems, and the end of guessing**
 

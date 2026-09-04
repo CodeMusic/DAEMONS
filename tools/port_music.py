@@ -38,8 +38,15 @@ TPQ, TICKS_PER_QUARTER = 480, 8          # MIDI resolution, GB ticks per quarter
 #  Slots that must NOT loop.
 JINGLES = {"mus_caught_intro"}
 
+# mus_title is NOT ours any more. 7.14g replaced the Game Boy theme with a
+# transcription of the rendered one (tools/stems2midi.py) on voicegroup191, and
+# leaving it in the list here meant this tool silently overwrote that file and
+# repointed its bank on every run. The entry stays as a record of where the
+# track came from; SUPERSEDED keeps the tool's hands off it.
+SUPERSEDED = {"mus_title"}
+
 TRACKS = [
-    ("titletheme",      "mus_title"),        # the front door
+    ("titletheme",      "mus_title"),        # the front door -- SUPERSEDED
     ("slatecity",       "mus_pewter"),       # Pewter IS Slate City
     ("thebleed",        "mus_route1"),       # Routes 1 and 2
     ("brazen",          "mus_brazen"),       # Saffron is BRAZEN; the one added slot
@@ -99,13 +106,24 @@ def vlq(n):
         out.insert(0, (n & 0x7F) | 0x80); n >>= 7
     return bytes(out)
 
+# The Game Boy bank, tools/gbavoices.py. pokered declares its channels in order
+# -- Pulse 1, Pulse 2, Wave, Noise -- and parse() keeps that order, so channel
+# index IS the hardware channel and these four programs are its four voices.
+#
+# Writing no program change at all was what made these songs play VOICE 0, and
+# slot 0 of the banks they pointed at is a KEYSPLIT in ten cases out of eleven.
+# Keeping the chiptune texture is a decision; playing a drum-kit key map was not.
+GB_GROUP = 192
+GB_PROGRAMS = [80, 81, 87, 126]
+
 def track(events, chan, loop=True):
     # The body was written TWICE to fake a loop, which cost double the ROM and
     # still stopped after two passes. mid2agb builds a real GOTO out of a MIDI
     # text meta-event -- "[" for the loop start, "]" for the jump back -- so
     # the body is written once and repeats forever.
     data = bytearray()
-    data += b"\x00" + bytes([0xC0 | chan, 0])          # program change
+    program = GB_PROGRAMS[chan] if chan < len(GB_PROGRAMS) else GB_PROGRAMS[-1]
+    data += b"\x00" + bytes([0xC0 | chan, program])   # program change
     for _ in range(1):
         rest = 0
         for note, ticks in events:
@@ -135,6 +153,8 @@ def midi(tempo, chans, loop=True):
 
 rc = 0
 for name, slot in TRACKS:
+    if slot in SUPERSEDED:
+        continue
     # SFX live in audio/sfx/, and one of ours is ordinary tone data rather than
     # noise, so the same parser carries it. A name with a slash says where.
     rel = name if "/" in name else "music/" + name
@@ -159,5 +179,27 @@ for name, slot in TRACKS:
         # back. Everything else here is ambient and has to repeat.
         open(dst, "wb").write(midi(tempo, chans, loop=slot not in JINGLES))
 if WRITE and rc == 0:
+    # midi.cfg carries mid2agb's -G, and a song whose MIDI says program 80
+    # while its .cfg still names a bank without a square there is a silent
+    # instrument change. The tool that owns the notes owns the bank too.
+    cfg = os.path.join(GBA, "sound/songs/midi/midi.cfg")
+    text = open(cfg).read()
+    hits = 0
+    for _, slot in TRACKS:
+        if slot in SUPERSEDED:
+            continue
+        def point(m):
+            global hits
+            if m.group(2) == str(GB_GROUP):
+                return m.group(0)
+            hits += 1
+            return "%s%d" % (m.group(1), GB_GROUP)
+        text, n = re.subn(r"(^%s\.mid:.*?-G)(\d+)" % re.escape(slot),
+                          point, text, flags=re.M)
+        if not n:
+            print("  !! %s has no midi.cfg line" % slot); rc = 1
+    if hits:
+        open(cfg, "w").write(text)
+    print("  midi.cfg: %d song(s) pointed at voicegroup%d" % (hits, GB_GROUP))
     print("  written")
 sys.exit(rc)
