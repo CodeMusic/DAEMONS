@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.61**
+**A total conversion — the living design bible, v11.62**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2623,6 +2623,35 @@ the downbeat** — which is the part that makes it a theme rather than a melody.
 
 **`engine/` is untouched and stays at three.** *That constraint is real there,
 and 7.4 is still correct about it.*
+
+##### The controls guide, and the one screen that knows it is a game
+
+***"one day I'd like to put it on real GBA hardware, but for either case..."***
+— the controls guide names six buttons, and **on an emulator not one of those
+names is where it says it is.**
+
+**This is the only screen in the game that addresses the player as a player**,
+so it is the one place a wink costs nothing. *Craft rule 6 licenses it
+directly:* a game that is funny in its ordinary moments earns the right to be
+serious in three or four of them, and a button legend is as ordinary as a
+moment gets.
+
+| | |
+|---|---|
+| was | *"The various buttons will be explained in the order of their importance."* |
+| is | **"The buttons, in the order they matter. Names, not places. Check your bindings."** |
+
+***It had to be a rewrite rather than an addition.*** The page 1 window is
+**30 tiles by 4** — 240px wide and **two lines tall**, and vanilla already used
+both. 212px and 217px against a 236px budget; vanilla's own widest line here is
+221.
+
+**"Bindings" is not a loanword from emulator settings — it is already ours.**
+7.2 replaced *catch* with **bind**, the build script is `bindDaemons.sh`, and
+the binding sound is a jingle with its own entry in the song table. *On a real
+cartridge the line still parses* — those buttons are bound to a shell — **so
+the joke does not expire the day the ROM reaches hardware.** That was the
+condition, and it is the reason the line does not say "emulator".
 
 ##### Ruled 2026-09-04 — **the world is chiptune and the front door is not**
 

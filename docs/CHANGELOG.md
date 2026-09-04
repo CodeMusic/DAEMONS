@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.62 — 2026-09-04
+
+### The controls guide winks, and survives reaching real hardware
+
+- ***The one screen in the game that addresses the player as a player***, and on an emulator **not one of the six button names is where it says it is**
+- **was** — *"The various buttons will be explained in the order of their importance."*
+- **is** — ***"The buttons, in the order they matter. Names, not places. Check your bindings."***
+- ***"Bindings" is not borrowed from emulator settings — it is already this project's word.*** 7.2 replaced *catch* with **bind**, the build script is `bindDaemons.sh`. **On a real cartridge the line still parses**, because those buttons are bound to a shell — *so it does not expire the day the ROM reaches hardware*, which was the condition
+- **A rewrite, not an addition**: page 1's window is 30x4 tiles — 240px wide and **two lines tall**, and vanilla used both. 212px and 217px against 236; vanilla's own widest here is 221
+- *Craft rule 6 licenses it* — a game that is funny in its ordinary moments earns the right to be serious in three or four of them
+
 ## v11.61 — 2026-09-04
 
 ### Ruled: the world is chiptune, the front door is not
