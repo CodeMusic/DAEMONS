@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.40**
+**A total conversion — the living design bible, v11.41**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3323,6 +3323,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | `AL CLEAR` in formal text; naming screen untouched | `text/` — literal string instead of the `<RIVAL>` control char | trivial |
 | Default name lists, both editions | `constants/player_constants.asm` | **done 2026-08-29** |
 | PROF.OAK → CRYSTAL | `text/` — 33 occurrences in 10 files, plus the intro sequence. Every line needs rewrapping | half a day |
+
+***Done on the GBA side 2026-09-03, and it was 84 blocks in 25 files, not 33 in 10.*** **`tools/port_oak.py` measures the rewrap** against FONT_NORMAL's own advance widths rather than counting characters. *Three things the Game Boy pass did not have to face:* **a name vanilla wraps mid-line** (`PROF.\nOAK's`), which only the tool's second run found; **four fixed-width fields** where `CRYSTAL CLEAR` does not fit, of which only the trainer nameplate had to give; and **fourteen masculine pronouns**, applied only inside blocks that name her — *`VermilionCity`'s "he" is the other AIDE, and a blanket sweep would have changed him too.*
 | Quicksilver journal fragments, one signed | `text/`, Cinnabar Mansion idiom | trivial |
 | Corpus badge name matching the signature | `text/` | trivial |
 | Brazen employee's post-Quicksilver second line | one event flag, one text block | trivial |

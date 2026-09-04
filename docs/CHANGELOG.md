@@ -5,6 +5,38 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.41 — 2026-09-03
+
+### OAK is gone from the GBA build — 84 blocks in 25 files
+
+- **`tools/port_oak.py`** applies the table `vision.md` settled once on the Game Boy side: `OAK:` → **`CRYSTAL:`**, `PROF. OAK` → **`CRYSTAL CLEAR`** *with no title*, `OAK'S PARCEL` → **the PACKAGE**. Reports without `--write`, like every other port tool
+- **The rewrap is measured, not counted.** `src/text.c` carries FONT_NORMAL's advance widths and `charmap.txt` maps character to glyph, so a line's width is arithmetic. Budget **196px** — the widest line vanilla ships in any map `text.inc`, and 26 tiles is every standard message window. The intro and help system get **220px**, which is what *their* wider windows hold
+- *Identifiers are not text.* `PalletTown_ProfessorOaksLab` is a directory, `gOakSpeech_` a label, `B_WIN_OAK_OLD_MAN` an enum. **`ROAK` stays** — it is a rival name you can pick
+
+### A name split across a line break
+
+- Vanilla wraps **`PROF.\nOAK's POKéMON SEMINAR`** *mid-name*, so the pattern never saw it. **Two blocks survived the first pass and only the second run of the tool found them** — a reflowable block is now flattened *before* it is renamed. *The tool being idempotent is what caught this*
+
+### The gender sweep, again
+
+- **She is not a he**, and 4.3 has been caught by this once already. Fourteen pronoun repairs, applied **only inside blocks that name her** — which is why `VermilionCity` survives untouched: its *"he"* is the **other AIDE**
+- Agatha remembered her as *"tough and handsome"* → **"tough and striking"**
+- `TRAINER_PKMN_PROF_PROF_OAK` was `TRAINER_ENCOUNTER_MUSIC_MALE`; the fame checker's (unused) gender table had her `MALE`. Both flipped
+
+### Four fields where CRYSTAL CLEAR does not fit
+
+| field | cap | resolution |
+|---|---|---|
+| `struct Trainer` name | **12 bytes** | **`CRYSTAL`** — the battle nameplate takes the short form |
+| quest log location | 144px observed | **`CRYSTAL CLEAR'S LAB`** (108px) |
+| PC menu option | 104px | **`CRYSTAL CLEAR's PC`** — 101px, *fits* |
+| fame checker name | message box | **`CRYSTAL CLEAR`** — 78px, fits |
+
+- The wrapper never breaks **CRYSTAL CLEAR** across a line. *The surname is the device; splitting it is losing it*
+- The intro's self-introduction is **`My name is CRYSTAL CLEAR.`** in full, per 4.3
+
+- **Verified in the ROM, not the source**: `PROF. OAK`, `OAK:` and `OAK RESEARCH` are absent from all three `.gba` files through the charmap; `CRYSTAL CLEAR` and `CRYSTAL:` are present
+
 ## v11.40 — 2026-09-03
 
 ### SONG was walking the sound effects
