@@ -34,17 +34,21 @@ idempotent.
 
 ### Two engines, and which one is real
 
-`engine/` is **CodeMusic/pokered-daemons** and it is where the vertical slice
-actually is — Benchmark 1, the type chart, 64 sprites, the music.
-
 `engineGba/` is **CodeMusic/pokefirered-daemons**, forked 2026-09-02, and it is
-a **spike, not a decision.** It exists to answer one question: are abilities,
-item descriptions and a real scripting language worth rebuilding 334 files for?
-See `docs/vision.md` 9.3. Until that is answered, **do not port work into it
-and do not port work out of it.** Nothing about the design changes either way —
-`docs/` is engine-independent and always has been.
+**where the work happens.** It was opened as a spike — are abilities, item
+descriptions and a real scripting language worth rebuilding 334 files for? —
+and `docs/vision.md` 9.3 records that the spike **answered its question in a
+day and the project pivoted.**
 
-The edition split survives the port unchanged, which is the first good sign:
+`engine/` is **CodeMusic/pokered-daemons**. It is a **reference now**: it still
+compiles and still runs the slice, and it is **not updated further.** It is
+also where the writing, the music and the design decisions were originally
+made, so it stays the source the port tools read from.
+
+*Nothing about the design changed either way* — `docs/` is engine-independent
+and always has been.
+
+The edition split survived the port unchanged, which was the first good sign:
 
 | | CONTENT | CONTEXT |
 |---|---|---|
