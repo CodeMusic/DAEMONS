@@ -652,8 +652,44 @@ if over:
     print("  !! %d line(s) over budget:" % len(over))
     for f, w, l in over[:10]:
         print("     %3dpx %-30s %s" % (w, f, l[:60]))
+# ------------------------------------------------- the layout guard, after
+# reflowable() exists, damage done BEFORE it existed stays done: convert() is a
+# no-op on an already-converted string, so a rerun never revisits it. The
+# battle menu lost the \\n out of "BAG\\nPOKéMON" that way and all four options
+# ran onto one line, with DAEMON and RUN off the right edge of a 96px window --
+# and it survived every later run of this tool.
+# A LAYOUT STRING POSITIONS ITS OWN TEXT, so its breaks must match upstream's
+# exactly. That is checkable, so check it every time rather than trusting that
+# the guard was always there.
+def is_layout(b):
+    return ('{CLEAR' in b or '\\n\\n' in b or '\\n ' in b
+            or b.startswith(' ') or '\\p ' in b)
+
+mangled = []
+for root, _, fs in os.walk(os.path.join(GBA, "src")):
+    for f in sorted(fs):
+        if not f.endswith(('.c', '.h')):
+            continue
+        rel = os.path.relpath(os.path.join(root, f), GBA)
+        up = git_show(rel)
+        if not up:
+            continue
+        cur = touched.get(os.path.join(root, f)) or open(os.path.join(root, f),
+                                                         encoding="utf-8").read()
+        U = [''.join(PIECE.findall(m.group(1))) for m in C_LIT.finditer(up)]
+        O = [''.join(PIECE.findall(m.group(1))) for m in C_LIT.finditer(cur)]
+        if len(U) != len(O):
+            continue                     # structure moved; index pairing is meaningless
+        for u, o in zip(U, O):
+            if u != o and is_layout(u) and len(BREAK.findall(u)) != len(BREAK.findall(o)):
+                mangled.append((rel, u, o))
+if mangled:
+    print("  !! %d layout string(s) lost or gained a line break:" % len(mangled))
+    for rel, u, o in mangled[:8]:
+        print("     %s\n       was %s\n       now %s" % (rel, u[:88], o[:88]))
+
 if WRITE:
     for p, t in touched.items():
         open(p, "w", encoding="utf-8").write(t)
     print("  written: %d files" % len(touched))
-sys.exit(1 if over else 0)
+sys.exit(1 if over or mangled else 0)

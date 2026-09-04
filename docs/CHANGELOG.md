@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.60 — 2026-09-04
+
+### The battle menu had lost a newline, and it had been lost for weeks
+
+- ***"menu is weird"*** — and it read **`FIGHT  BAG DAE`**, with DAEMON and RUN off the right edge of a 96px window
+- Vanilla is `BAG\nPOKéMON`. **Ours was `BAG DAEMON`** — the line break replaced by a space, so all four options ran onto one line
+- ***`reflowable()` already refuses to touch a string containing `{CLEAR_TO}`***, because a string that positions its own text is a layout. **The damage predates that guard**, and `convert()` is a no-op on an already-converted string — *so every later run of the tool walked straight past it*
+
+### A guard, because "we fixed the tool" does not fix what it already broke
+
+- `port_vocab.py` now diffs every **layout** string against upstream and reports any whose line-break count changed. **Verified by reintroducing the bug and watching it fire**
+- ***The audit found exactly one casualty in the whole tree.*** The guard was right; it just arrived after this one
+
+### DETACH reaches the menu it belonged in
+
+- **7.2 has said `DETACHED` since the type table**, every battle message uses it, and the menus still said **RUN**. The window is 12 tiles — **96px, with the second column at 56, so 40px** — and `DETACH` measures **36**. *It fits with four to spare*
+- `Got away safely!` → **`DETACHED.`** — 4.10's table specified this and nothing had ever implemented it
+
+| | was | is |
+|---|---|---|
+| action menu | `FIGHT / BAG DAEMON / RUN` on one line | **`FIGHT · BAG` over `DAEMON · DETACH`** |
+| Safari menu | `ROCK{CLEAR_TO}RUN` | `ROCK{CLEAR_TO}` **DETACH** |
+| escaping a wild daemon | `Got away safely!` | **`DETACHED.`** |
+| escaping a USER | `No! There's no running from a USER battle!` | **`No! You cannot DETACH from a USER engagement!`** |
+| CRYSTAL's version | `...no running away from a USER DAEMON battle!` | **`CRYSTAL: No! You cannot DETACH from a USER engagement!`** — 176px, exactly vanilla's own widest line |
+
 ## v11.59 — 2026-09-04
 
 ### None of the music looped
