@@ -5,6 +5,44 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.58 — 2026-09-04
+
+### Stems, and a transcriber that no longer guesses
+
+- **AIVA's new front end is an audio model** (*Powered by Minimax Music 3*) and has no notes inside it to export; the symbolic composer is the 1.0 app, and its chord-progression flow **capped the description field mid-sentence**. Four services in, the answer was to stop using services
+- ***Suno exports stems***, and that changes the problem completely
+
+### What mp3midi.py was actually doing
+
+- **A mix is one signal**, so it split melody from bass with a filter at 250Hz and **inferred the middle voice from a chroma profile** — because `pyin` is monophonic and *cannot hear two notes at once*
+- **Both were approximations of an instrument list we now simply have**
+
+### `tools/bpextract.py` + `tools/stems2midi.py`
+
+- **Basic Pitch is polyphonic**, so chords come back as chords. *Nothing in the output is inferred: every note was heard in a file containing one instrument*
+- **It runs in its own Python 3.11 venv** — a dependency still imports `imp` (gone in 3.12) and another `pkg_resources` (gone in setuptools 81). On macOS it runs on **CoreML and pulls no TensorFlow at all**
+- ***The stems are time-aligned at zero.*** They are shorter than the mix and each other because the export trims where an instrument stops — **five of seven stems' loudness contours correlate best against the mix at exactly lag 0**, and a separator emits aligned stems by construction
+
+### Taking the top note of a chord is wrong
+
+- The first reduction took the highest note per cell and **brass came back reaching G#6, keyboard F7** — *upper partials, which Basic Pitch correctly reports as notes*
+- It takes the **loudest** now, and where two are within a hair it takes the one **nearest what it was already playing** — the assumption a musician transcribing by ear makes without noticing. **Brass F#3-F#5, keyboard C#3-C#6**
+- A **register window** per stem (3rd to 90th percentile of its own pitches) drops the sparse high tail. *Measured per stem, because these are five different instruments*
+
+### The theme, at six tracks
+
+| stem | voice | heard | cells | out of key |
+|---|---|---|---|---|
+| Brass | trumpet | 52 | 149 | 13 |
+| Synth | **harp** — 233 cells is an arpeggio, and a glockenspiel across that many at 152 BPM is a smoke alarm | 293 | 233 | 16 |
+| Strings | string ensemble | 91 | 113 | 2 |
+| Keyboard | piano | 176 | 239 | 18 |
+| Bass | fingered bass | 68 | 154 | 17 |
+| Drums | timpani, one stroke a bar | — | 11 | — |
+
+- **Sixteenths, not eighths** — Basic Pitch's timing earns the resolution
+- ***Strings came back with two notes out of key in a hundred and thirteen.*** The old tool snapped 10% of a melody it was much less sure of
+
 ## v11.57 — 2026-09-04
 
 ### The title screen was unreadable because of one lost nibble

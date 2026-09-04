@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.57**
+**A total conversion — the living design bible, v11.58**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2623,6 +2623,47 @@ the downbeat** — which is the part that makes it a theme rather than a melody.
 
 **`engine/` is untouched and stays at three.** *That constraint is real there,
 and 7.4 is still correct about it.*
+
+##### Revised a third time — **stems, and the end of guessing**
+
+***4.9's gate fired again, in a new shape.*** AIVA's current front end is an
+**audio** model and has no notes in it to export; its symbolic composer is a
+separate legacy app whose chord-progression field **cut the description off
+mid-sentence**. Four services in, *the answer was the same as it was for
+Gemini: stop asking a service and do the work.*
+
+**What `mp3midi.py` was actually doing is worth stating plainly, because it
+sounded like a transcription and was partly a construction.** A mix is one
+signal. It split melody from bass with a filter at 250Hz, and it **inferred the
+middle voice from a chroma profile** — not because that is a good way to hear
+an inner voice, but because `pyin` is monophonic and *cannot hear two notes at
+once.* Both were approximations of an instrument list.
+
+***Suno exports stems.*** Eight files, one instrument each, and **Basic Pitch
+is polyphonic** — so chords come back as chords. Nothing in the output is
+inferred any more: **every note was heard in a file that contained one
+instrument.**
+
+##### Two findings worth keeping
+
+***The stems are time-aligned at zero.*** They are shorter than the mix and
+than each other, which looks like offsets and is not: the export trims where an
+instrument stops. **Five of seven stems' loudness contours correlate best
+against the mix at exactly lag 0**, and a separator emits aligned stems by
+construction. *Waveform correlation said otherwise and was wrong* — separation
+re-renders, so the samples no longer match even where the music does.
+
+***Taking the top note of a chord is wrong.*** The first reduction took the
+highest note in each cell and the brass came back reaching **G#6**, the
+keyboard **F7** — upper partials, which Basic Pitch correctly reports as notes,
+and which made the line leap an octave and back. It takes the **loudest** now,
+and where two are within a hair of each other **the one nearest what it was
+already playing** — which is the assumption a musician transcribing by ear
+makes without noticing they have made it.
+
+**The measure of it:** the string part came back with **two notes out of key in
+a hundred and thirteen.** The old tool snapped 10% of a melody it was far less
+sure of.
 
 ##### The title screen could not be read, and it was one lost nibble
 

@@ -225,4 +225,5 @@ def main():
             print("             VOICE %-3d  %d events, velocity %d"
                   % (program, sum(1 for n, _ in notes if n is not None), vel))
 
-main()
+if __name__ == "__main__":
+    main()
