@@ -217,37 +217,87 @@ def indexed(src, size, dst):
     else:
         canvas.paste(fit(crop_to_subject(art), (SCREEN_W, SCREEN_H)), (0, 0))
 
-    # Fewer colours means more tiles repeat. Vanilla spends 208 because its
-    # logo is a gradient; ours is flat black on white with a drop shadow, and
-    # at 200 colours the resample's soft edges made every tile unique. Step
-    # down until the atlas fits, and say what it cost.
-    for ncolours in (200, 64, 32, 16, 8, 4):
-        q = canvas.quantize(colors=ncolours, method=Image.MEDIANCUT, dither=Image.NONE)
+    # WHICH WHITE. A global "swap the corner colour to index 0" made every white
+    # transparent, including the ones INSIDE the letters -- 39 pixels of teal
+    # showing through the middle of DAEMONS. The counters of D, A and O must go
+    # transparent and the speckle must not, and the difference between them is
+    # SIZE: a counter is a large enclosed region, an artefact is two pixels.
+    cpx = canvas.load()
+    lum = [[(cpx[x, y][0] * 299 + cpx[x, y][1] * 587 + cpx[x, y][2] * 114) // 1000
+            for x in range(SCREEN_W)] for y in range(SCREEN_H)]
+    white = [[lum[y][x] > 200 for x in range(SCREEN_W)] for y in range(SCREEN_H)]
+    seen = [[False] * SCREEN_W for _ in range(SCREEN_H)]
+    clear = [[False] * SCREEN_W for _ in range(SCREEN_H)]
+    for sy in range(SCREEN_H):
+        for sx in range(SCREEN_W):
+            if not white[sy][sx] or seen[sy][sx]:
+                continue
+            blob, edge, border = [], [(sx, sy)], False
+            seen[sy][sx] = True
+            while edge:
+                x, y = edge.pop()
+                blob.append((x, y))
+                if x in (0, SCREEN_W - 1) or y in (0, SCREEN_H - 1):
+                    border = True
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nx, ny = x + dx, y + dy
+                    inside = 0 <= nx < SCREEN_W and 0 <= ny < SCREEN_H
+                    if inside and white[ny][nx] and not seen[ny][nx]:
+                        seen[ny][nx] = True
+                        edge.append((nx, ny))
+            if border or len(blob) > 6:
+                for x, y in blob:
+                    clear[y][x] = True
+
+    # 9.14 sanctioned the colour and this is where it is spent. CONTENT is cold
+    # and ordered; CONTEXT is the whole spectrum. The editions differ by what
+    # they think the world is made of, and the logo can say that without a word.
+    warm = "leafgreen" in dst
+
+    def ramp(t):
+        if warm:
+            # The whole spectrum EXCEPT the band the title's own background
+            # sits in. A teal letter on a teal ground is a hole, not a colour,
+            # so the ramp runs red to green and then jumps to blue and violet.
+            import colorsys
+            h = t * 0.33 if t < 0.5 else 0.60 + (t - 0.5) * 0.46
+            r, g, b = colorsys.hsv_to_rgb(h, 0.92, 1.0)
+            return (int(r * 248), int(g * 248), int(b * 248))
+        a, b_ = (40, 88, 152), (168, 232, 248)
+        return tuple(int(a[i] + (b_[i] - a[i]) * t) for i in range(3))
+
+    TRANS = (255, 0, 255)
+    shaded = Image.new("RGB", (SCREEN_W, SCREEN_H), TRANS)
+    spx = shaded.load()
+    for y in range(SCREEN_H):
+        for x in range(SCREEN_W):
+            if clear[y][x]:
+                continue
+            c = ramp(x / (SCREEN_W - 1))
+            spx[x, y] = c if lum[y][x] < 100 else tuple(v // 4 for v in c)
+
+    for ncolours in (64, 48, 32, 16, 8):
+        q = shaded.quantize(colors=ncolours, method=Image.MEDIANCUT, dither=Image.NONE)
         px = q.load()
-        seen = set()
+        uniq = set()
         for ty in range(ROWS):
             for tx in range(32):
-                seen.add(tuple(px[tx * 8 + x, ty * 8 + y]
+                uniq.add(tuple(px[tx * 8 + x, ty * 8 + y]
                                for y in range(8) for x in range(8)))
-        if len(seen) < 256:
+        if len(uniq) < 256:
             break
     else:
-        sys.exit("  !! more than 256 unique tiles even at 4 colours")
-    # Index 0 is TRANSPARENT on a Gen 3 background, and the surround has to be
-    # it -- otherwise the logo arrives as a white rectangle over the title's
-    # own backdrop. Quantise puts the colours wherever it likes, so find the
-    # one in the corner and swap it to 0.
-    qp = q.load()
-    corner = qp[0, 0]
-    if corner != 0:
-        data = list(q.getdata())
-        data = [0 if v == corner else (corner if v == 0 else v) for v in data]
-        q.putdata(data)
-        pal = q.getpalette()
-        pal[0:3], pal[corner*3:corner*3+3] = pal[corner*3:corner*3+3], pal[0:3]
+        sys.exit("  !! more than 256 unique tiles even at 8 colours")
+
+    pal = q.getpalette()
+    ti = min(range(ncolours), key=lambda i: sum(
+        (pal[i * 3 + k] - TRANS[k]) ** 2 for k in range(3)))
+    if ti != 0:
+        q.putdata([0 if v == ti else (ti if v == 0 else v) for v in q.getdata()])
+        pal[0:3], pal[ti * 3:ti * 3 + 3] = pal[ti * 3:ti * 3 + 3], pal[0:3]
         q.putpalette(pal)
     px = q.load()
-    # tile 0 must be blank: every screen position the map does not name is 0
+
     blank = tuple([0] * 64)
     atlas, index = [blank], {blank: 0}
     tmap = [0] * (32 * 20)
@@ -255,10 +305,8 @@ def indexed(src, size, dst):
         for tx in range(32):
             tile = tuple(px[tx * 8 + x, ty * 8 + y] for y in range(8) for x in range(8))
             if tile not in index:
-                if len(atlas) >= 256:
-                    sys.exit("  !! more than 256 unique tiles after dedup -- "
-                             "the art has too much detail for one BG")
-                index[tile] = len(atlas); atlas.append(tile)
+                index[tile] = len(atlas)
+                atlas.append(tile)
             tmap[ty * 32 + tx] = index[tile]
 
     out = Image.new("P", (256, 64), 0)
