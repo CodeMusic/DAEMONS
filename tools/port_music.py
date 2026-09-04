@@ -52,6 +52,10 @@ TRACKS = [
     # pokered's dungeon3 is Mt Moon and Rock Tunnel; Gen 3 splits them and
     # mt_moon is the one the track was written against.
     ("dungeon3",        "mus_mt_moon"),
+    # The binding sound. It is tone data, not noise -- a descending figure that
+    # settles -- so it ports like a track. Gen 3 splits the capture jingle into
+    # an intro and a fanfare; the intro is the moment the box closes.
+    ("sfx/caught_mon",  "mus_caught_intro"),
 ]
 # brazen needed a slot of its own, and getting one was cheaper than first
 # thought. Saffron shares MUS_PEWTER with Pewter and Viridian in Gen 1, so
@@ -67,7 +71,9 @@ def parse(path):
     text = open(path).read()
     tempo = int(re.search(r'tempo (\d+)', text).group(1))
     chans = []
-    for body in re.split(r'^Music_\w+_Ch\d+::', text, flags=re.M)[1:]:
+    # Music channels are declared `Music_X_Ch1::` and SFX channels
+    # `SFX_X_Ch5:` -- one colon, different prefix, same body.
+    for body in re.split(r'^(?:Music|SFX)_\w+_Ch\d+::?', text, flags=re.M)[1:]:
         octave, events = 4, []
         for line in body.splitlines():
             line = line.split(";")[0].strip()
@@ -116,7 +122,10 @@ def midi(tempo, chans):
 
 rc = 0
 for name, slot in TRACKS:
-    src = os.path.join(GB, "audio/music/%s.asm" % name)
+    # SFX live in audio/sfx/, and one of ours is ordinary tone data rather than
+    # noise, so the same parser carries it. A name with a slash says where.
+    rel = name if "/" in name else "music/" + name
+    src = os.path.join(GB, "audio/%s.asm" % rel)
     dst = os.path.join(GBA, "sound/songs/midi/%s.mid" % slot)
     if not os.path.exists(src):
         print("  !! no %s" % src); rc = 1; continue
@@ -128,7 +137,7 @@ for name, slot in TRACKS:
             print("  !! %s is not in song_table.inc" % slot); rc = 1; continue
     tempo, chans = parse(src)
     notes = sum(1 for c in chans for n, _ in c if n is not None)
-    print("  %-11s -> %-14s %d channels, %d notes, tempo %d"
+    print("  %-16s -> %-16s %d channels, %d notes, tempo %d"
           % (name, slot, len(chans), notes, tempo))
     if not chans:
         print("  !! parsed no channels"); rc = 1; continue

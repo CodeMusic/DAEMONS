@@ -229,7 +229,18 @@ ALIAS = {
     "UndergroundPathEntranceRoute6": "UndergroundPath_SouthEntrance",
     "UndergroundPathEntranceRoute7": "UndergroundPath_WestEntrance",
     "UndergroundPathEntranceRoute8": "UndergroundPath_EastEntrance",
+    "CeruleanBadgeHouse": "CeruleanCity_House1",     # "MARKS have amazing secrets"
+    "CeruleanTrashedHouse": "CeruleanCity_House2",   # the one CORPUS broke into
+    "SafariZoneGate": "FuchsiaCity_SafariZone_Entrance",
+    "SafariZoneEntranceMatt": "FuchsiaCity_SafariZone_Entrance",
+    "PewterGym_2": "PewterCity_Gym",
+    "ViridianGym_2": "ViridianCity_Gym",
+    "SaffronPokecenter": "SaffronCity_PokemonCenter_1F",
 }
+
+# pokered calls it <Town>Pokecenter; pokefirered calls it <Town>City_PokemonCenter_1F.
+# Nineteen maps follow that rule, so state the rule rather than nineteen aliases.
+POKECENTER = re.compile(r'^(\w+?)Pokecenter$')
 # Not every pokered text file is a map. These live in data/text/ on both sides.
 NONMAP = {"pokedex_ratings": "data/text/pokedex_rating.inc",
           "oakspeech":       "data/text/new_game_intro.inc"}
@@ -239,6 +250,13 @@ MULTI = {"FuchsiaBillsGrandpasHouse": ["FuchsiaCity_House1", "FuchsiaCity_House2
                                        "FuchsiaCity_House3"]}
 
 def candidates(gbname):
+    pc = POKECENTER.match(gbname)
+    if pc and gbname not in ALIAS:
+        town = norm(pc.group(1))
+        hit = [d for d in GBA_MAPS
+               if GBA_NORM[d].startswith(town) and GBA_NORM[d].endswith("pokemoncenter1f")]
+        if hit:
+            return hit
     if gbname in NONMAP:
         return [NONMAP[gbname]]
     if gbname in MULTI:

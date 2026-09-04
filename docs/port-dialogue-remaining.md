@@ -1,7 +1,9 @@
 # Game Boy dialogue with no confident Gen 3 home
 
-62 blocks. FireRed rewrote the line past recognition, or two Gen 3 blocks
-fit it equally well and guessing would put our writing in the wrong mouth.
+48 blocks in 30 maps. FireRed rewrote the line past recognition, or two
+Gen 3 blocks fit it equally well and guessing would put our writing in the
+wrong mouth -- Bruno's pre-battle line scores 0.82 against both his intro
+AND his rematch intro, and only one of those is right.
 
 Regenerate with `python3 tools/port_dialogue.py`. The score is the best
 vanilla-to-vanilla similarity found; the threshold is 0.48.
@@ -16,21 +18,8 @@ vanilla-to-vanilla similarity found; the threshold is 0.48.
 - `CeladonMansion3FGameDesignerCompletedDexText` best 0.33
 - `CeladonMansion3FGameDesignerText` best 0.22
 
-## CeruleanBadgeHouse
-- `CeruleanBadgeHouseBoulderBadgeText` best 0.37
-- `CeruleanBadgeHouseEarthBadgeText` best 0.33
-- `CeruleanBadgeHouseMiddleAgedManText` best 0.37
-- `CeruleanBadgeHouseMiddleAgedManWhichBadgeText` best 0.39
-- `CeruleanBadgeHouseSoulBadgeText` best 0.35
-- `CeruleanBadgeHouseThunderBadgeText` best 0.36
-
 ## CeruleanCity
 - `CeruleanCityTrainerTipsText` best 0.43
-
-## CeruleanTrashedHouse
-- `CeruleanTrashedHouseFishingGuruTheyStoleATMText` best 0.35
-- `CeruleanTrashedHouseGirlText` best 0.41
-- `CeruleanTrashedHouseWallHoleText` best 0.37
 
 ## FuchsiaGym_2
 - `FuchsiaGymRocker6EndBattleText` best 0.36
@@ -92,13 +81,6 @@ vanilla-to-vanilla similarity found; the threshold is 0.48.
 ## SSAnneB1FRooms
 - `SSAnneB1FRoomsFisherBattleText` best 0.30
 - `SSAnneB1FRoomsSailor3AfterBattleText` best 0.39
-
-## SafariZoneGate
-- `SafariZoneGateSafariZoneWorker1CallYouOnThePAText` best 0.35
-- `SafariZoneGateSafariZoneWorker1ReturnSafariBallsText` best 0.40
-- `SafariZoneGateSafariZoneWorker1ThatllBe500PleaseText` best 0.27
-- `SafariZoneGateSafariZoneWorker1WouldYouLikeToJoinText` best 0.33
-- `SafariZoneGateSafariZoneWorker2SafariZoneExplanationText` best 0.32
 
 ## SafariZoneWestRestHouse
 - `SafariZoneWestRestHouseCooltrainerMText` best 0.58

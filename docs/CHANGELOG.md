@@ -34,7 +34,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ### Also ported
 
-- **507 dialogue blocks** (from 488) — the tie-break no longer rejects twins, and the threshold moved to 0.48 after sampling
+- **521 dialogue blocks** (from 488) — the tie-break no longer rejects twins, the threshold moved to 0.48 after sampling, and fourteen more maps found their Gen 3 name. *pokered calls it `<Town>Pokecenter` and pokefirered calls it `<Town>City_PokemonCenter_1F`, so the tool states the rule rather than nineteen aliases*
+- **The twins threshold stayed at 0.85 after testing 0.80**: it gained exactly one block — Bruno's pre-battle line — and put it on his **rematch** intro rather than his intro. *The margin was right to flag it*
+- **An escort plays the theme of the place it happens in** (2422). Gen 3 spends that cue as `MUS_FOLLOW_ME`; Pewter's three and Pallet's one now play their own town's theme. Pallet's is the first escort the player sees, and a jaunty vanilla tune over the opening walk would undo the front door
+- **The binding sound.** Our `caught_mon` is *tone* data, not noise, so the music parser carries it — the only difference was the label, `SFX_X_Ch5:` against `Music_X_Ch1::`. Its pair, **UNBOUND, stays unported**: it is noise-channel only, the GBA reaches PSG noise through a voicegroup rather than a note, and guessing at that without hearing it is worse than leaving it
 - **CONSENSUS** at move 355 — Gen 3 makes no `NUM_ATTACKS == STRUGGLE` assertion, so it appends and nothing shifts. Five tables, PIN_MISSILE's animation, `TYPE_BUG` per invariant 6
 - **The eight MARKS** on the trainer card — Gen 3's badge palette already carries a grey ramp
 - **Eight more music tracks** — only four of twelve had ever been carried
@@ -46,10 +49,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 | | |
 |---|---|
 | vanilla vocabulary left in `src/` and `data/` | **0** (one source comment) |
-| dialogue blocks ported / listed | **507 / 62** |
-| music tracks | **12 / 12** |
+| dialogue blocks ported / listed | **521 / 48** |
+| music tracks | **12 / 12**, plus the binding sound |
 | Index entries | **30 / 30** both editions |
-| still open | the 62 blocks, two custom SFX, the intro and title art |
+| still open | the 48 blocks, the UNBOUND noise cue, the intro and title art |
 
 ## v11.43 — 2026-09-03
 
