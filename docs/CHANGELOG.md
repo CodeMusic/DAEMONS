@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.43 — 2026-09-03
+
+### The dialogue port — 488 blocks of our own writing, carried across
+
+- **`tools/port_vocab.py` made the GBA say DAEMON. It did not carry one sentence we wrote.** That lived in `engine/text/` — 165 files — and now **488 blocks of it are in the GBA build**: the Quicksilver signs, SCORN SOLUTIONS over CLEAR LABORATORY, Holt's house, the gyms
+
+#### Nothing is matched on our own text, because our own text is the thing that differs
+
+- The pairing is done on **vanilla**: Gen 1's original line against Gen 3's original line, each taken from its own fork's `upstream/master`. Where those agree, the Gen 3 block is *the same NPC saying the same thing*
+- **Labels are no help** — `_CinnabarIslandSignText` on one side, `CinnabarIsland_Text_IslandSign` on the other — *but the words survived the generation*
+- Checked against known ground truth: all five Quicksilver blocks landed on the right label, including one scoring only **0.57**
+
+#### A threshold alone is not enough
+
+- ***The winner has to beat the runner-up.*** A near-tie means two Gen 3 lines fit equally well, and **putting our writing in the wrong NPC's mouth is worse than not porting it**. The margin caught five bad matches an absolute cutoff had accepted — among them a Viridian Forest gate line that had landed on a bug catcher
+- Thirty-one map aliases, because pokered names rooms nothing in pokefirered is called: `CeladonMart1F` → `CeladonCity_DepartmentStore_1F`, `MrFujisHouse` → `LavenderTown_VolunteerPokemonHouse`, `BluesHouse` → `PalletTown_RivalsHouse`
+
+#### A sign is not prose
+
+- pokered breaks **QUICKSILVER / The Metal That / Will Not Set** across three lines *on purpose*, and reflowing it to fill a wider Gen 3 box destroys the thing it is doing — vanilla keeps its own signs broken the same way. **`...SignText` blocks keep their shape**; only lines that cannot fit are split
+
+#### What is left, named rather than dropped
+
+- **81 blocks in 45 maps** have no confident Gen 3 home — FireRed rewrote them past recognition, or two blocks fit equally well. Listed in **`docs/port-dialogue-remaining.md`**, regenerable from the tool
+- *An unported line we know about is worth more than a line dropped into the wrong mouth*
+
 ## v11.42 — 2026-09-03
 
 ### The vocabulary pass — 1595 blocks in 242 files
