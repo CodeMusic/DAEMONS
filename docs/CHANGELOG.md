@@ -5,6 +5,28 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.42 — 2026-09-03
+
+### The vocabulary pass — 1595 blocks in 242 files
+
+- ***The Game Boy got this almost for free and the GBA cannot.*** `pokered` writes the core noun as the charmap glyph `#`, so **one line** — `charmap "#", $54` — renamed POKéMON everywhere at once. `pokefirered` **spells the word out in every string**, so the same rename is a few thousand substitutions with every touched line rewrapped
+- **`tools/port_vocab.py`** derives its map rather than declaring it: species, moves and items are diffed out of *our own GBA tables* against upstream (43 renames) — **if the Index says PACKET, the NPC has to say PACKET** — and the rest is lifted from the Game Boy diff (`ROCKET`→`CORPUS`, `TRAINER`→`USER`, `catch`→`bind`, `BADGE`→`MARK`, `fainted`→`HALTED`, and eleven town names)
+
+#### Singular and plural is not derivable, so it was measured
+
+- `pokered` had **two spellings**, `#MON` and `#MONS`, and the Game Boy pass chose between them **by hand 586 times**. *"your" is plural 7 times and singular 25* — no rule recovers it
+- The heuristic here (quantifier before, plural verb after, and the verbs you actually used — *catch, raise, trade*) **agrees with those 586 decisions 93.7% of the time**, scored against them. It recovers **115 of 121** plurals. *The remaining ~6% will read singular where you wrote plural*
+
+#### A boundary bug that hid 104 substitutions
+
+- An escape is **two literal characters and the first is a letter**, so in `\nPOKéMON` the `n` sits against the `P` and **`\b` finds no boundary**. *Every word at the start of a line was invisible to the tool.* Escapes are now stashed behind a non-word sentinel first
+- *Caught by re-running the tool*, which reported clean and left 104 in place
+
+### Also ported
+
+- **Trainer classes**: `POKéMANIAC` → **ARCHIVIST** (both entries), `TEAM ROCKET` → **TEAM CORPUS**
+- **The parcel says what it is.** Game Boy capped item names at 12 and it was `CC-7`; GBA allows 14 but no shipped name exceeds 12, so the item is **`CLARIFIER`** and the dialogue now reads **the COGNITIVE CLARIFIER** in full
+
 ## v11.41 — 2026-09-03
 
 ### OAK is gone from the GBA build — 84 blocks in 25 files
