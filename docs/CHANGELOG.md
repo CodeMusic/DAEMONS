@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.49 — 2026-09-04
+
+### The front door has art
+
+- **Five assets through `tools/gbatitle.py`.** The wordmark and both edition logos are **in the ROM**, verified against the compressed intermediates rather than the PNGs. The two face-off figures convert clean — **14 and 15 of 16 colours**
+- ***And the face-off is on screen.*** Two **64×64 OAM sprites** replace the box-art creature, which is now blank: *Charizard behind our two daemons was never the plan*
+- **The sides swap between editions and the poses do not.** Each creature is drawn once facing right; whichever stands on the right is **flipped**, so both face the gap and *the one that lunges is still the one that lunges.* **2.4 warned that a wholesale slot swap makes CAREMUSAI lunge and the chart argue the opposite thing** — a hardware flip cannot do that
+- **64×64 is the frame 9.4 refused to upscale into, and neither is upscaled**: CODEMUSAI is 48, CAREMUSAI is 56, each sits inside it untouched
+
+### What real Gemini output taught the tool
+
+- **It came back as RGBA**, and PIL's default composite for a dropped alpha is **black** — which would make the whole surround read as subject
+- **It came back as JPEG**, and a codec puts a ramp on every hard edge by construction, so the anti-aliasing check *cannot tell the artist's from the codec's.* Say so and threshold anyway rather than refuse a good drawing
+- **Ink on a border means the crop went through a letter** — the CODEMUSIC wordmark's final C is cut, and that is reported rather than silently accepted
+- ***Vanilla's 256×64 logo is side by side***, the big word left and the edition stacked right, while ours came back **stacked at 1.87:1 into a 4:1 slot**. Letterboxing would have wasted half the strip, so the tool finds the blank band between the two words and **recomposes**
+- **The palette must be exactly sixteen entries.** Padding to 256 made gbagfx emit a *4bpp sprite carrying an 8bpp palette*
+
+### `docs/vocabulary-candidates.md`
+
+- The 114 keywords, checked against every name already spent, kept as a **standing shortlist** to draw from when naming reaches daemons and items
+
 ## v11.48 — 2026-09-04
 
 ### `tools/gbatitle.py`

@@ -45,6 +45,33 @@ def lum(c):
         return c
     return (c[0] * 299 + c[1] * 587 + c[2] * 114) // 1000
 
+def load(src):
+    """Flatten to RGB on WHITE. Gemini hands back RGBA as often as not, and
+    PIL's default composite for a dropped alpha channel is black -- which would
+    make the whole surround read as subject."""
+    im = Image.open(src)
+    if im.mode in ("RGBA", "LA") or "transparency" in im.info:
+        im = im.convert("RGBA")
+        flat = Image.new("RGB", im.size, (255, 255, 255))
+        flat.paste(im, mask=im.split()[-1])
+        return flat
+    return im.convert("RGB")
+
+def lossy(src):
+    return os.path.splitext(src)[1].lower() in (".jpg", ".jpeg")
+
+def warn_edges(im, what):
+    """Ink on the border means the art was cropped through a letter."""
+    px = im.load(); w, h = im.size
+    sides = {"left":  sum(1 for y in range(h) if lum(px[0, y]) < 128),
+             "right": sum(1 for y in range(h) if lum(px[w-1, y]) < 128),
+             "top":   sum(1 for x in range(w) if lum(px[x, 0]) < 128),
+             "bottom":sum(1 for x in range(w) if lum(px[x, h-1]) < 128)}
+    hit = [k for k, v in sides.items() if v > h // 40]
+    if hit:
+        print("  ** %s: ink runs off the %s edge -- something is cropped through"
+              % (what, " and ".join(hit)))
+
 def crop_to_subject(im):
     """Trim the white surround. Everything downstream assumes the art fills
     the frame, and Gemini leaves a different margin every time."""
@@ -69,7 +96,9 @@ def fit(im, size, pad=0.02):
     return out
 
 def figure(src, size, dst):
-    im = fit(crop_to_subject(Image.open(src).convert("RGB")), size)
+    art = load(src)
+    warn_edges(art, "figure")
+    im = fit(crop_to_subject(art), size)
     px = im.load()
     w, h = im.size
     ground = [(x, y) for y in range(h) for x in range(w) if lum(px[x, y]) >= BG_CUT]
@@ -83,9 +112,11 @@ def figure(src, size, dst):
     q = body.convert("RGB").quantize(colors=13, method=Image.MEDIANCUT, dither=Image.NONE)
     qpal = q.getpalette()[:13 * 3]
     out = Image.new("P", size, 0)
+    # EXACTLY sixteen entries. Padding to 256 makes gbagfx emit a 256-colour
+    # .gbapal, which is a 4bpp sprite carrying an 8bpp palette.
     pal = [255, 0, 255,  0, 0, 0] + qpal          # 0 transparent, 1 outline
-    pal += [0] * (768 - len(pal))
-    out.putpalette(pal)
+    pal += [0, 0, 0] * (16 - len(pal) // 3)
+    out.putpalette(pal[:48])
     op, qp = out.load(), q.load()
     for y in range(h):
         for x in range(w):
@@ -107,14 +138,23 @@ def shades(src, size, dst):
     # intermediate values by definition, so checking afterwards would reject
     # even vanilla's own art fed back through. Anti-aliasing is a property of
     # what Gemini drew.
-    art = crop_to_subject(Image.open(src).convert("L"))
+    warn_edges(load(src), "wordmark")
+    art = crop_to_subject(load(src).convert("L"))
     ap = art.load()
     aw, ah = art.size
     mid = sum(1 for y in range(ah) for x in range(aw) if 64 < ap[x, y] < 192)
     if mid > (aw * ah) // 20:
-        sys.exit("  !! %d of %d source pixels are mid-grey -- that is "
-                 "anti-aliasing, and the converter rejects it. Ask again for "
-                 "hard edges and no anti-aliasing." % (mid, aw * ah))
+        if lossy(src):
+            # JPEG puts a ramp on every hard edge by construction, so the
+            # measurement cannot tell the artist's anti-aliasing from the
+            # codec's. Say so and carry on rather than refuse a good drawing.
+            print("  ** %d of %d source pixels are mid-grey, but this is a "
+                  "JPEG and ringing accounts for that. Thresholding anyway."
+                  % (mid, aw * ah))
+        else:
+            sys.exit("  !! %d of %d source pixels are mid-grey -- that is "
+                     "anti-aliasing, and the converter rejects it. Ask again "
+                     "for hard edges." % (mid, aw * ah))
     im = fit(art, size).convert("L")
     px = im.load()
     w, h = im.size
@@ -128,8 +168,44 @@ def shades(src, size, dst):
     print("  %s  %dx%d, source had %d mid-grey pixels of %d"
           % (os.path.relpath(dst, ROOT), w, h, mid, aw * ah))
 
+def split_stacked(im):
+    """Vanilla's 256x64 logo is SIDE BY SIDE -- the big word left, the edition
+    stacked right -- and ours came back stacked, at 1.87:1 into a 4:1 slot.
+    Letterboxing it would waste half the strip, so find the blank band between
+    the two words and recompose."""
+    px = im.load(); w, h = im.size
+    rows = [any(lum(px[x, y]) < 200 for x in range(w)) for y in range(h)]
+    bands, run = [], None
+    for y, on in enumerate(rows + [False]):
+        if on and run is None:
+            run = y
+        elif not on and run is not None:
+            bands.append((run, y)); run = None
+    if len(bands) != 2:
+        return None
+    return [im.crop((0, a, w, b)) for a, b in bands]
+
 def indexed(src, size, dst):
-    im = fit(crop_to_subject(Image.open(src).convert("RGB")), size)
+    art = load(src)
+    warn_edges(art, "logo")
+    blocks = split_stacked(crop_to_subject(art))
+    if blocks:
+        big, small = sorted(blocks, key=lambda b: -b.height)
+        tw, th = size
+        gap, m = 8, 2
+        bh = th - 2 * m
+        bw = min(int(big.width * bh / big.height), int(tw * 0.68))
+        bh2 = int(big.height * bw / big.width)
+        sw = tw - bw - gap - 2 * m
+        sh = min(int(small.height * sw / small.width), bh)
+        sw = int(small.width * sh / small.height)
+        out = Image.new("RGB", size, (255, 255, 255))
+        out.paste(big.resize((bw, bh2), Image.LANCZOS), (m, (th - bh2) // 2))
+        out.paste(small.resize((sw, sh), Image.LANCZOS), (tw - m - sw, (th - sh) // 2))
+        im = out
+        print("  recomposed side by side: %dx%d and %dx%d" % (bw, bh2, sw, sh))
+    else:
+        im = fit(crop_to_subject(art), size)
     q = im.quantize(colors=200, method=Image.MEDIANCUT, dither=Image.NONE)
     q.save(dst)
     used = len(set(q.getdata()))
