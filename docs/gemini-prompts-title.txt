@@ -91,7 +91,9 @@ shadow. Whole creature visible with a small even margin, filling the frame.
 ----------------------------------------------------------------------
 CODEMUSIC - the wordmark
   attach  engine/gfx/title/gamefreak_inc.png   (our Game Boy CODEMUSIC, 72x8)
-  target  144x16, ONE BIT - black on white, no grey at all
+  target  144x16, L mode. Vanilla uses FOUR values -- 0 for the letters,
+          255 for the ground, and two shades between. Draw it black on
+          white with hard edges; the converter does the rest.
   convert python3 tools/gbatitle.py <saved>.png wordmark
 ----------------------------------------------------------------------
 The attached image is the CODEMUSIC wordmark from our Game Boy build, at
@@ -100,15 +102,17 @@ strip, keeping its letterforms recognisable: same geometric capitals, same
 even weight, same proportions. Black on a pure white background. Wide and short: the whole word fits a strip nine times as wide as
 it is tall. Clean geometric capitals with even stroke weight, no serifs, no
 outline, no shadow, no gradient, no texture, no background shapes and no
-decoration of any kind. PURE BLACK AND PURE WHITE ONLY - not one grey pixel,
-no anti-aliasing on any edge. Letters evenly spaced, sitting on one baseline,
+decoration of any kind. PURE BLACK AND PURE WHITE, with no
+anti-aliasing on any edge -- the converter counts mid-grey pixels in what you
+send and refuses the file if more than one in twenty is a soft edge. Letters evenly spaced, sitting on one baseline,
 none touching. Nothing else in the image.
 
 ----------------------------------------------------------------------
 THE TITLE LOGO - CONTENT and CONTEXT
   attach  engine/gfx/title/pokemon_logo.png   (our Game Boy DAEMONS, 128x56)
           plus engine/gfx/title/red_version.png and blue_version.png
-  target  256x64, 8bpp so colour is not the constraint here
+  target  256x64, 8bpp -- up to 256 colours, so colour is not the
+          constraint here. Size is.
   convert python3 tools/gbatitle.py <saved>.png logo-content
           python3 tools/gbatitle.py <saved>.png logo-context
 ----------------------------------------------------------------------
