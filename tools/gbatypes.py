@@ -56,6 +56,10 @@ BADGES = [
     ("HARDND", 0x88), ("ENTRPY", 0x24), ("FLOW",   0x28), ("GROWTH", 0x2C),
     ("SIGNAL", 0x40), ("CONTXT", 0x84), ("FROZEN", 0x4C), ("EMRGNT", 0xA0),
     ("OPAQUE", 0x8C),
+    # The unused sixteenth. In computing an ORACLE is a black box that
+    # returns correct answers without showing how, which is 4.6 stated as a
+    # data structure -- and six characters, so it loses no vowel.
+    ("ORACLE", 0xA4),
 ]
 
 FONT = os.path.join(GBA, "graphics/fonts/latin_small.png")

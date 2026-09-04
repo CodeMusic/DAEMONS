@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.53 — 2026-09-04
+
+### The unused sixteenth type is **ORACLE**
+
+- **Gen 1 calls the slot `BIRD` and Gen 3 calls it `???`**; both mean the same unused type. *In computing an oracle is a black box that returns correct answers **without showing how**,* which is 4.6 stated as a data structure — and it is **six characters**, so 9.12's badge drops no vowel
+- Named on both engines and drawn onto the badge sheet. **Nothing carries the type yet**, so it is invisible until something does
+- *PRIVILEGE was the other candidate* and was rejected for saying the argument too loudly: invariant 1, and a type badge is somewhere the player cannot avoid reading
+
+### The three birds
+
+- **ZAPDOS → ASCLEPIUS**, and the mapping is *literal rather than thematic*: **Asclepius was killed by Zeus's thunderbolt**, and ZAPDOS is the electric one
+- **MOLTRES → PROMETHEUS** — gave mortals fire *and every craft with it*. **ARTICUNO → ORPHEUS** — went below for someone and **lost her by looking back**
+- ***All three were punished by the authority that granted them the gift***, for being good enough at it that a line got crossed. **Orpheus is 4.10 exactly**: the one thing he was told not to do was check
+- *Health, craft, feeling* — **HP, MP, and no stat at all**, because there is not one for the third. Which is psychology, code and music. **A reason to use them and never a line to write down**
+
+### The intro goes CODEMUSIC, then the door
+
+- Scenes 1 to 3 are the Gen 3 intro — *a creature running through grass, then two facing off, then a fight* — and they were **the one place left showing vanilla creatures**
+- ***Filling them is sixteen drawings, twelve of them matched animation frames*** — and matched frames are the thing image models are worst at, because consistency across a sequence is exactly what they do not hold
+- **2.4's face-off is our version of that scene and it is on the title now**, where it costs **two** drawings instead of sixteen. *One line to put back, and every asset is still in the tree*
+
 ## v11.52 — 2026-09-04
 
 ### The title's copyright strip
