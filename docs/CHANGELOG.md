@@ -5,6 +5,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.52 — 2026-09-04
+
+### The title's copyright strip
+
+- It still read **©2004 GAME FREAK inc.** It now reads **(c)'11-'26  CODEMUSIC**, in *the same typeface the boot screen uses*, so the two copyright lines in this game are visibly the same object saying the same thing
+- ***It cannot be edited as a picture.*** `copyright_press_start` is a **64-tile atlas, a 32×20 tilemap and one palette bank**, shared with PRESS START — and **PRESS START blinks by toggling palette entries one to five.** The copyright uses 6 to 14, so it does not blink; *anything drawn there has to stay out of 1–5 or it starts flashing too.* Verified after the fact: the new line uses only 10 and 12
+- **The old line straddles the band's top edge** — white letters with a **black** outline, upper half on the black above and lower half on the red — and that black is *the same index as the plain black above the band*, so it could not be erased everywhere
+
+### One bug worth naming
+
+- ***The band is its first and last row, not the rows that happen to be mostly red.*** Testing membership in a sparse list said **row 153 was not in the band** — because the old text covered enough of it to fail the count — so **exactly the rows with text on them were the rows that did not get cleared.** The ghost of GAME FREAK survived two attempts that way
+
+### ASCLEPIUS
+
+- Recorded in the shortlist. *The pun is Arceus/Asclepius and on its own it is worth nothing.* **What is worth a slot is that Asclepius was struck by lightning for raising the dead** — not for failing and not for malice, but for being good enough at it that a line got crossed, destroyed by the thing that had authorised him. **That is 4.6 and 4.10 in one word**, and the three birds are the only unnamed legendaries
+
 ## v11.51 — 2026-09-04
 
 ### `defeated` → **outscored**, at last
