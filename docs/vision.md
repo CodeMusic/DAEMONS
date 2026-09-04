@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.55**
+**A total conversion — the living design bible, v11.56**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2585,6 +2585,44 @@ should promise.
 arrangement*, not from the harmony: a held opening, an ascending call, an answer
 that goes higher than the call did. **7.14g's real finding still stands — the
 mistake was tone, and tone is not key alone.**
+
+##### Revised again — **the arrangement had no instruments**
+
+***The transcription was right and it still sounded like a Game Boy.*** C#
+major, 152 BPM, 68 melody notes, the key confirmed at **0.88 against 0.70** —
+and the report back was **"it sounds like the past gameboy like music."**
+
+**`mid2agb` emits a `VOICE` byte only where the MIDI carries a program change,**
+and `tools/mp3midi.py` emitted none. Every track therefore played on **slot 0 of
+`voicegroup137`, which is a keysplit, with `voice_square_1` behind it at 1–3** —
+*PSG square waves, on hardware that carries a sample ROM.* **The theme was being
+rendered by the machine we ported away from.**
+
+***Gen 3's banks are General MIDI.*** `voicegroup149` puts glockenspiel at 9,
+tubular bell at 14, harp at 46, timpani at 47, oboe at 68 and flute at 73 — **GM
+10, 15, 47, 48, 69 and 74, zero-indexed, exactly.** So a bank is addressable by
+ordinary program number, and *the samples were never the problem*: a Steinway,
+an SC-88 string ensemble, trumpets, french horns, a choir and timpani are
+**already in the ROM**, scattered across banks that no one song draws on.
+
+**`tools/gbavoices.py` writes `voicegroup191`** — one bank, GM-mapped, every
+slot sampled, and unused slots holding the piano so that *a program number we
+did not intend still arrives as an instrument.* **The failure mode that started
+this was silence and then a square wave; it should not be reachable twice.**
+
+##### And three channels was never the GBA's number
+
+***7.4's three-channel arrangements are a fact about the Game Boy***, and I
+carried the constraint across a port that does not have it. **Vanilla's
+`mus_vs_trainer`, `mus_vs_gym_leader` and `mus_vs_deoxys` all run ten tracks.**
+
+*So the lift the revision above asked for goes where it always belonged.* The
+theme is now **five**: a trumpet carrying the call, a glockenspiel doubling it,
+the string ensemble underneath, a fingered bass on the drive, and **a timpani on
+the downbeat** — which is the part that makes it a theme rather than a melody.
+
+**`engine/` is untouched and stays at three.** *That constraint is real there,
+and 7.4 is still correct about it.*
 
 ##### The lesson is that both media drifted the same way, unprompted
 

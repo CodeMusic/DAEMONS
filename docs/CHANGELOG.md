@@ -5,6 +5,33 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.56 — 2026-09-04
+
+### The theme had the right notes and the wrong machine
+
+- ***C# major, 152 BPM, 68 melody notes, key confirmed at 0.88 — and it came back as*** **"it sounds like the past gameboy like music"**
+- **`mid2agb` emits a `VOICE` byte only where the MIDI carries a program change**, and `tools/mp3midi.py` emitted none. Every track played **slot 0 of `voicegroup137` — a keysplit, with `voice_square_1` at 1–3.** *PSG square waves, on hardware that carries a sample ROM*
+- **The transcription was never the problem.** 11.55 fixed silence by adding a program change and stopped there; **`VOICE, 0` is not a neutral default, it is a specific and wrong instrument**
+
+### `tools/gbavoices.py` — Gen 3's banks are General MIDI
+
+- ***`voicegroup149` puts glockenspiel at 9, tubular bell at 14, harp at 46, timpani at 47, oboe at 68 and flute at 73*** — **GM 10, 15, 47, 48, 69 and 74, zero-indexed, exactly.** So a bank is addressable by ordinary program number
+- **A Steinway, an SC-88 string ensemble, trumpets, french horns, a choir and timpani are already in the ROM**, scattered across banks that no single song draws on. *`voicegroup191` collects them into one GM-mapped bank*
+- **Unused slots hold the piano, not vanilla's square-wave filler** — *a program number we did not intend should still arrive as an instrument.* The failure mode that started this was silence and then a square wave
+
+### Three channels was the Game Boy's number and I ported it anyway
+
+- **Vanilla's `mus_vs_trainer`, `mus_vs_gym_leader` and `mus_vs_deoxys` all run ten tracks.** 7.14g asked for the lift to come *from the arrangement* — and the arrangement had been capped at a limit that belongs to the other engine
+- `mus_title` is now **five**: trumpet, glockenspiel doubling it, string ensemble, fingered bass, and **timpani on the downbeat**
+- **`engine/` is untouched and stays at three.** *That constraint is real there*
+
+| | |
+|---|---|
+| `mus_title` bank | `voicegroup137` → **`voicegroup191`** |
+| tracks | 3 → **5** |
+| programs emitted | `0, 0, 0` → **`56, 9, 48, 33, 47`** |
+| the other twelve ported songs | **still `VOICE 0`** — they are Game Boy compositions, and that is a decision, not an oversight |
+
 ## v11.55 — 2026-09-04
 
 ### The front door moves to **C#**

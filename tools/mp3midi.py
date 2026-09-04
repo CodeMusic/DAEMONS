@@ -13,9 +13,20 @@ So this does the work. librosa gives a beat grid, a chroma profile and two
 pitch tracks; Krumhansl-Schmuckler gives the key by correlating the chroma
 against twenty-four profiles. Nothing here is an opinion.
 
-THREE VOICES, because the engine has three. The melody is pyin over everything
-above 250Hz, the bass is pyin under 300Hz, and the middle voice is the strongest
-chord tone per beat that is neither of them -- which is what an arpeggio is.
+THREE VOICES ARE HEARD. The melody is pyin over everything above 250Hz, the
+bass is pyin under 300Hz, and the middle voice is the strongest chord tone per
+beat that is neither of them -- which is what an arpeggio is.
+
+FIVE TRACKS ARE WRITTEN, and the other two are derived from those three. Three
+was the Game Boy's limit and I carried it into a machine that does not have it:
+vanilla's mus_vs_trainer runs ten.
+
+EVERY TRACK OPENS WITH A GENERAL MIDI PROGRAM CHANGE. Without one mid2agb emits
+no VOICE byte and the track plays on slot 0 of its bank -- which in the bank the
+title used to point at is a square wave, so a transcription with the right notes,
+the right tempo and the right key came back sounding like a Game Boy. The
+programs below address voicegroup191 (see tools/gbavoices.py); they are ordinary
+GM numbers because Gen 3's banks are GM-mapped.
 
 QUANTISING IS THE LOSSY STEP AND IT IS DELIBERATE. Every cell of the beat grid
 takes the median pitch of its voiced frames, and cells that are mostly unvoiced
@@ -34,6 +45,10 @@ NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 MAJOR = np.array([6.35,2.23,3.48,2.33,4.38,4.09,2.52,5.19,2.39,3.66,2.29,2.88])
 MINOR = np.array([6.33,2.68,3.52,5.38,2.60,3.53,2.54,4.75,3.98,2.69,3.34,3.17])
 HOP, DIV = 512, 2                 # DIV grid cells per beat -- eighth notes
+CELLS_PER_BAR = DIV * 4           # assumed 4/4, which every theme here is
+
+#  The arrangement. GM programs into voicegroup191; see tools/gbavoices.py.
+TRUMPET, GLOCKENSPIEL, STRINGS, BASS, TIMPANI = 56, 9, 48, 33, 47
 
 def key_of(chroma):
     prof = chroma.mean(axis=1)
@@ -73,7 +88,9 @@ def merge(cells):
         i = j + 1
     return notes
 
-def midi_bytes(tempo, tracks):
+def midi_bytes(tempo, parts):
+    """parts is (program, velocity, notes). The program change is not optional:
+    mid2agb emits a VOICE byte only where the MIDI carries one."""
     TPQ = 48
     def var(n):
         out = [n & 0x7F]; n >>= 7
@@ -84,23 +101,38 @@ def midi_bytes(tempo, tracks):
         return tag + struct.pack(">I", len(data)) + data
     head = bytearray(b"\x00\xFF\x51\x03") + struct.pack(">I", 60000000 // int(tempo))[1:]
     head += b"\x00\xFF\x2F\x00"
-    out = chunk(b"MThd", struct.pack(">HHH", 1, len(tracks) + 1, TPQ))
+    out = chunk(b"MThd", struct.pack(">HHH", 1, len(parts) + 1, TPQ))
     out += chunk(b"MTrk", bytes(head))
-    for ch, notes in enumerate(tracks):
-        # A PROGRAM CHANGE, without which mid2agb emits no VOICE byte and the
-        # track plays on whatever instrument slot happens to be current --
-        # which is silence. Every song that works starts its tracks with
-        # VOICE, 0; that is what this is.
-        ev, rest = bytearray(b"\x00" + bytes((0xC0 | ch, 0))), 0
+    for ch, (program, vel, notes) in enumerate(parts):
+        ev, rest = bytearray(b"\x00" + bytes((0xC0 | ch, program))), 0
         for pitch, cells in notes:
             ticks = cells * (TPQ // DIV)
             if pitch is None:
                 rest += ticks; continue
-            ev += var(rest) + bytes((0x90 | ch, max(0, min(127, pitch)), 90))
-            ev += var(ticks) + bytes((0x80 | ch, max(0, min(127, pitch)), 0))
+            pitch = max(0, min(127, pitch))
+            ev += var(rest) + bytes((0x90 | ch, pitch, vel))
+            ev += var(ticks) + bytes((0x80 | ch, pitch, 0))
             rest = 0
         ev += var(rest) + b"\xFF\x2F\x00"
         out += chunk(b"MTrk", bytes(ev))
+    return out
+
+def octave_up(cells):
+    """A glockenspiel doubling the trumpet. Notes already near the top of the
+    sample's useful range stay where they are rather than turning to whistle."""
+    return [None if n is None else (n + 12 if n + 12 <= 96 else n) for n in cells]
+
+def downbeats(cells):
+    """One timpani stroke a bar, on the bass note that bar actually lands on.
+    This is the part that makes it sound like a theme rather than a melody."""
+    out = []
+    for start in range(0, len(cells), CELLS_PER_BAR):
+        bar = cells[start:start + CELLS_PER_BAR]
+        hit = next((n for n in bar if n is not None), None)
+        while hit is not None and hit < 36:      # timpani, not a floor rumble
+            hit += 12
+        out.append((hit, 2))
+        out.append((None, len(bar) - 2))
     return out
 
 def main():
@@ -182,7 +214,15 @@ def main():
         dst = os.path.join(GBA, "sound/songs/midi/%s.mid" % slot)
         if not os.path.isfile(dst):
             sys.exit("  !! no slot called %s" % slot)
-        open(dst, "wb").write(midi_bytes(tempo, [mel, mid, bass]))
-        print("  written    sound/songs/midi/%s.mid  (3 tracks)" % slot)
+        parts = [(TRUMPET,      100, mel),
+                 (GLOCKENSPIEL,  52, merge(octave_up(mel_cells))),
+                 (STRINGS,        70, mid),
+                 (BASS,           96, bass),
+                 (TIMPANI,        88, downbeats(bass_cells))]
+        open(dst, "wb").write(midi_bytes(tempo, parts))
+        print("  written    sound/songs/midi/%s.mid" % slot)
+        for program, vel, notes in parts:
+            print("             VOICE %-3d  %d events, velocity %d"
+                  % (program, sum(1 for n, _ in notes if n is not None), vel))
 
 main()
