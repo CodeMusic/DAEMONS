@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.45 — 2026-09-04
+
+### Every Game Boy dialogue block is now accounted for
+
+**569 blocks: 536 matched, 4 handled elsewhere, 29 vocabulary-only, 0 without a home.**
+
+- ***Half the remaining list was never work.*** A block whose only edit was a rename has nothing to carry — `port_vocab.py` and `port_oak.py` already made that change on the Gen 3 side, independently and everywhere. **29 of the 48 were that**, and counting them as unported made the backlog look twice its size
+- **`#DEX` was detokenising to `DAEDEX`**, which neither tool knew. It reads as vanilla `POKéDEX` now, so Gen 1's line looks like Gen 3's line for matching and `port_vocab` turns it into INDEX afterwards — which is where that rename lives
+- **`CeladonMansion` is the apartment block in Celadon, not the Pokémon Mansion on Cinnabar**, and a fuzzy name match reached for the wrong one. *The threshold refused to place them, which is the system working* — nothing wrong was written. Audited every pairing: the only ones whose names share no token are the four deliberate aliases
+- **Nine placed by hand** where the scoring could not decide and a person could — Bruno's first meeting (the tie the margin correctly refused to break), the three starter prompts, Scorn's introduction, the binding tutorial, the carved stone in the forest
+- **Two merged.** Gen 1 splits CAIRN's award and its explanation across two blocks; Gen 3 says both in one, wrapped around the badge fanfare, so that block is written out with its control codes intact
+
+### The nameplate said BROCK while he said "I'm CAIRN"
+
+- 5.1 names him CAIRN and the gym dialogue has said so since 2026-08-30, but **neither engine ever renamed the trainer** — at hour two of the slice he introduces himself as CAIRN and the battle nameplate read BROCK. Five characters; the field holds twelve
+- **His party needed nothing.** GEODUDE and ONIX are ROCK, and `[TYPE_ROCK]` is LEGACY, so *"his daemons are LEGACY — old formats, still readable"* was already true. The species names are still vanilla, but that is the bestiary's work
+- He is the only leader with this gap: **the other seven have not been written yet**
+- **The eight MARKS reached dialogue too.** They have UI strings, but a badge is not an item in Gen 3, so `port_names` had no table to learn them from and the prose still said BOULDERBADGE — twelve literals, plus twenty-six mentions of BROCK
+
+### CLAUDE.md said the GBA spike was still open
+
+- vision **3405** records that the spike answered its question in a day and the project pivoted; CLAUDE.md still said *"do not port work into it and do not port work out of it."* **A future session would have read the wrong instruction** and hesitated over work that is now the main line
+
 ## v11.44 — 2026-09-04
 
 ### The catch-up sweep

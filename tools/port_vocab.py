@@ -116,6 +116,16 @@ VOCAB = {
     "Catch": "Bind", "Caught": "Bound",
     "fainted": "HALTED", "faint": "HALT", "faints": "HALTS",
     "Gramps": "Gran", "BILL": "HOLT", "BILL's": "HOLT's",
+    # 5.1: the leader says "I'm CAIRN" in our gym dialogue and the trainer
+    # entry now agrees, so the twenty-six other mentions have to as well.
+    "BROCK": "CAIRN",
+    # The eight MARKS have UI strings (gText_BoulderBadge = "SLATE MARK") but
+    # dialogue spells the old names out, and a badge is not an item in Gen 3 so
+    # port_names had no table to learn them from. 5.2 names them.
+    "BOULDERBADGE": "SLATE MARK", "CASCADEBADGE": "SLOPE MARK",
+    "THUNDERBADGE": "SENSE MARK", "RAINBOWBADGE": "FIT MARK",
+    "SOULBADGE": "SKEW MARK", "MARSHBADGE": "FRAME MARK",
+    "VOLCANOBADGE": "HEAT MARK", "EARTHBADGE": "TRUE MARK",
     "PALLET": "BLANCHE", "VIRIDIAN": "CALLOW", "PEWTER": "SLATE",
     "CERULEAN": "DOLDRUM", "VERMILION": "ARDOR", "LAVENDER": "HALFTONE",
     "CELADON": "VERDIGRIS", "FUCHSIA": "LURID", "SAFFRON": "BRAZEN",

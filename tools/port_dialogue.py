@@ -112,7 +112,12 @@ def rewrap(pages, budget=BUDGET):
 
 # --------------------------------------------------- Gen 1 text -> Gen 3 text
 # pokered's tokens are few, and every one has an exact Gen 3 spelling.
-TOKENS = [("#MONS", "DAEMONS"), ("#MON", "DAEMON"), ("#", "DAE"),
+# #DEX must come first, and it becomes POKéDEX rather than DAEDEX: pokered's #
+# is the glyph the Game Boy build repointed at DAE, but for MATCHING we want
+# Gen 1's vanilla line to read like Gen 3's vanilla line. port_vocab.py turns
+# POKéDEX into INDEX afterwards, everywhere, which is where that rename lives.
+TOKENS = [("#DEX", "POKéDEX"),
+          ("#MONS", "DAEMONS"), ("#MON", "DAEMON"), ("#", "DAE"),
           ("<PLAYER>", "{PLAYER}"), ("<RIVAL>", "{RIVAL}"),
           ("<TARGET>", "{STR_VAR_1}"), ("<USER>", "{STR_VAR_2}"),
           ("<COLON>", ":"), ("<DOT>", "."), ("¥", "¥")]
@@ -236,6 +241,17 @@ ALIAS = {
     "PewterGym_2": "PewterCity_Gym",
     "ViridianGym_2": "ViridianCity_Gym",
     "SaffronPokecenter": "SaffronCity_PokemonCenter_1F",
+    # pokered's Celadon MANSION is the apartment block in Celadon, where the
+    # game designer lives. It is NOT the Pokemon Mansion on Cinnabar, which is
+    # what a fuzzy name match reaches for -- and did.
+    "CeladonMansion1F": "CeladonCity_Condominiums_1F",
+    "CeladonMansion2F": "CeladonCity_Condominiums_2F",
+    "CeladonMansion3F": "CeladonCity_Condominiums_3F",
+    "CeladonMansionRoof": "CeladonCity_Condominiums_Roof",
+    "Route22Gate": "Route22_NorthEntrance",
+    "UndergroundPathRoute6": "UndergroundPath_SouthEntrance",
+    "UndergroundPathRoute7": "UndergroundPath_WestEntrance",
+    "UndergroundPathRoute8": "UndergroundPath_EastEntrance",
 }
 
 # pokered calls it <Town>Pokecenter; pokefirered calls it <Town>City_PokemonCenter_1F.
@@ -273,10 +289,105 @@ def candidates(gbname):
     close = difflib.get_close_matches(n, list(GBA_NORM.values()), n=3, cutoff=0.72)
     return [d for d, v in GBA_NORM.items() if v in close]
 
+
+# Where the scoring could not decide and a person could. Gen 1 and Gen 3 say
+# these things in different words, so vanilla-against-vanilla finds nothing --
+# but the NPC is the same NPC and the line is doing the same job.
+MANUAL = {
+    "BrunosRoom": {
+        # Gen 3 has an intro AND a rematch intro, near-identical; ours is the
+        # first meeting. This is the tie the margin correctly refused to break.
+        "BrunoBeforeBattleText": ("PokemonLeague_BrunosRoom", "PokemonLeague_BrunosRoom_Text_Intro"),
+    },
+    "OaksLab": {
+        "OaksLabOak1WhichPokemonDoYouWantText":
+            ("PalletTown_ProfessorOaksLab", "PalletTown_ProfessorOaksLab_Text_OakWhichOneWillYouChoose"),
+        "OaksLabYouWantBulbasaurText":
+            ("PalletTown_ProfessorOaksLab", "PalletTown_ProfessorOaksLab_Text_OakChoosingBulbasaur"),
+        "OaksLabYouWantCharmanderText":
+            ("PalletTown_ProfessorOaksLab", "PalletTown_ProfessorOaksLab_Text_OakChoosingCharmander"),
+        "OaksLabYouWantSquirtleText":
+            ("PalletTown_ProfessorOaksLab", "PalletTown_ProfessorOaksLab_Text_OakChoosingSquirtle"),
+    },
+    "RocketHideoutB4F": {
+        "RocketHideoutB4FGiovanniImpressedYouGotHereText":
+            ("RocketHideout_B4F", "RocketHideout_B4F_Text_GiovanniIntro"),
+    },
+    "ViridianCity": {
+        "ViridianCityOldManYouNeedToWeakenTheTargetText":
+            ("ViridianCity", "ViridianCity_Text_WeakenMonsFirstToCatch"),
+    },
+    "ViridianForest": {
+        # the type chart, cut into a stone older than the path
+        "ViridianForestTrainerTips3Text":
+            ("ViridianForest", "ViridianForest_Text_CantCatchOwnedMons"),
+        "ViridianForestYoungster5Text":
+            ("ViridianForest", "ViridianForest_Text_RanOutOfPokeBalls"),
+    },
+}
+
+# Gen 1 splits the award and the explanation across two blocks; Gen 3 says both
+# in one, wrapped around the fanfare. Two into one cannot be done by pairing, and
+# the control codes are the badge jingle, so this block is written out.
+MANUAL_TEXT = {
+    ("PewterCity_Gym", "PewterCity_Gym_Text_BrockDefeat"):
+        r"I took you for granted, and so I\nlost.\p"
+        r"Proof, then. Something you can\nhold.\p"
+        r"{FONT_NORMAL}{PLAYER} received the SLATE MARK\nfrom CAIRN!"
+        r"{PAUSE_MUSIC}{PLAY_BGM}{MUS_OBTAIN_BADGE}{PAUSE 0xFE}{PAUSE 0x56}{RESUME_MUSIC}\p"
+        r"{FONT_MALE}An official mark from BENCHMARK 1.\p"
+        r"Its bearer's daemons become more\npowerful.\p"
+        r"FLASH can now be used any time.\p"
+        r"Of course, a daemon must know the\nmove FLASH to use it.$",
+}
+
+# In the game, but not by pairing. Two are ours outright and were placed as new
+# bg_events -- they replace no vanilla line, so there is nothing to match them
+# against. Two more were MERGED: Gen 1 splits the award and the explanation and
+# Gen 3 says both in one block, so they live in MANUAL_TEXT above. Listing them
+# keeps them out of the "still needs a home" report without pretending they
+# were paired.
+HANDLED = {("PokemonMansion1F", "PokemonMansion1FIterLogText"),
+           ("SilphCo1F", "SilphCo1FEngravingText"),
+           ("PewterGym_2", "PewterGymBrockBoulderBadgeInfoText"),
+           ("PewterGym_2", "PewterGymBrockReceivedBoulderBadgeText")}
+
 # ----------------------------------------------------------------- the port
+# A block whose only edit was VOCABULARY has nothing to port: port_vocab.py
+# already made that change on the Gen 3 side, independently and everywhere.
+# Without this, "TRAINER TIPS" -> "USER TIPS" reads as unported writing and the
+# remaining list is twice as long as the actual work.
+def _tool(name):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        name, os.path.join(ROOT, "tools/%s.py" % name))
+    mod = importlib.util.module_from_spec(spec)
+    out, sys.stdout = sys.stdout, open(os.devnull, "w")
+    try:
+        spec.loader.exec_module(mod)
+    except SystemExit:
+        pass
+    finally:
+        sys.stdout.close(); sys.stdout = out
+    return mod
+
+VOCAB = _tool("port_vocab")
+# port_oak owns OAK -> CRYSTAL CLEAR and her pronouns; without it every line
+# whose only edit was the professor's name reads as unported writing.
+OAK = _tool("port_oak")
+
+def vocabulary_only(vanilla_pages, our_pages):
+    """Is our edit nothing but the rename the GBA already has?"""
+    j = lambda ps: ' '.join(' '.join(p) for p in ps)
+    van, our = j(vanilla_pages), j(our_pages)
+    if not van:
+        return False
+    a, b = flat(VOCAB.convert(OAK.rename(van))), flat(our)
+    return a == b or difflib.SequenceMatcher(None, a, b, autojunk=False).ratio() > 0.97
+
 gb_files = subprocess.run(["git", "-C", GB, "diff", "--name-only", "upstream/master", "--", "text/"],
                           capture_output=True, text=True).stdout.split()
-matched, unmatched, nomap, edits = [], [], [], {}
+matched, unmatched, nomap, vocab_only, handled, edits = [], [], [], [], [], {}
 
 for rel in gb_files:
     name = os.path.basename(rel)[:-4]
@@ -297,6 +408,14 @@ for rel in gb_files:
         for lbl, body in gba_blocks(show(GBA, p)).items():
             pool.append((p, lbl, flat(body)))
     for lbl, pages in changed.items():
+        if (name, lbl) in HANDLED:
+            handled.append((name, lbl)); continue
+        hand = MANUAL.get(name, {}).get(lbl)
+        if hand:
+            matched.append((name, lbl, hand[0], hand[1], 1.0))
+            shaped = keep_shape if "Sign" in lbl else rewrap
+            edits.setdefault(hand[0], {})[hand[1]] = shaped(pages, BUDGET)
+            continue
         want = flat(' '.join(' '.join(pg) for pg in base.get(lbl, [])))
         if not want:
             unmatched.append((name, lbl, 0.0)); continue
@@ -316,14 +435,21 @@ for rel in gb_files:
             matched.append((name, lbl, best[0], best[1], score))
             shaped = keep_shape if "Sign" in lbl else rewrap
             edits.setdefault(best[0], {})[best[1]] = shaped(pages, BUDGET)
+        elif vocabulary_only(base.get(lbl, []), pages):
+            vocab_only.append((name, lbl))
         else:
             unmatched.append((name, lbl, score))
 
 print("  matched   %d" % len(matched))
-print("  unmatched %d   (no Gen 3 counterpart above %.2f)" % (len(unmatched), MIN))
+print("  handled elsewhere %d   (new signs, and two merged into one Gen 3 block)" % len(handled))
+print("  vocabulary only %d   (already done by port_vocab; nothing to carry)" % len(vocab_only))
+print("  unmatched %d   (real writing, no Gen 3 counterpart above %.2f)" % (len(unmatched), MIN))
 print("  no map    %d" % len(nomap))
 if nomap:
     print("    ", ", ".join(sorted({n for n, _ in nomap})[:12]))
+
+for (d, glbl), body in MANUAL_TEXT.items():
+    edits.setdefault(d, {})[glbl] = body
 
 if WRITE:
     files = 0
