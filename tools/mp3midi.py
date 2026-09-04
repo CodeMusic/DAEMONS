@@ -87,7 +87,11 @@ def midi_bytes(tempo, tracks):
     out = chunk(b"MThd", struct.pack(">HHH", 1, len(tracks) + 1, TPQ))
     out += chunk(b"MTrk", bytes(head))
     for ch, notes in enumerate(tracks):
-        ev, rest = bytearray(), 0
+        # A PROGRAM CHANGE, without which mid2agb emits no VOICE byte and the
+        # track plays on whatever instrument slot happens to be current --
+        # which is silence. Every song that works starts its tracks with
+        # VOICE, 0; that is what this is.
+        ev, rest = bytearray(b"\x00" + bytes((0xC0 | ch, 0))), 0
         for pitch, cells in notes:
             ticks = cells * (TPQ // DIV)
             if pitch is None:
