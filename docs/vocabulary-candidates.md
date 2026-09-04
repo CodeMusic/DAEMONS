@@ -12,14 +12,29 @@ from, not a queue to work through.
 
 ## Already spent — do not reuse
 
-Ten are live game names, and two are types:
-
 | word | where |
 |---|---|
 | **MANIFOLD**, **PING**, **DEADLOCK**, **BROADCAST**, **CANON**, **BUFFER** | species |
+| **LABEL** → `LABL`, **CLUSTER** → `CLUSTR` | species, **respelled** |
 | **BIND**, **SLEEP** | moves |
 | **EMBEDDING**, **RESOLVER** | items |
 | **ENTROPY**, **EMERGENT** | **types** — so *Emergence* is spoken for |
+
+***Corrected 2026-09-04, second pass.*** The first version of this table said
+six species and it was checked **word for word**, which is the wrong check:
+**LABEL ships as `LABL` and CLUSTER as `CLUSTR`**, so both read as free and
+neither is. *A name that has been shortened to fit a nine-character field is
+still spent.* Any future pass over this list has to normalise before it
+compares — the same lesson `port_names.py` learned when a positional zip read
+an addition as a rename.
+
+**The ROM now carries 33 names of ours**, not the six this table was measured
+against:
+
+> ARTSAI, BROADCAST, BUFFER, CANON, CAREMUSAI, CLUSTR, CODEMUSAI, CRAWLER,
+> DEADLOCK, FLOOD, HIBERNATE, INDEXER, INJECTOR, LABL, LOCUS, MANIFOLD, MUSAI,
+> NIBBLE, OVERFLOW, PACKET, PENDING, RELAY, ROVERBYTE, ROVERCUB, ROVERSEER,
+> RUBRIC, SCRAPER, SEEKMUSAI, SPIKE, STARR, SURGE, SUSPEND
 
 The other forty-odd that matched only appear in the bible's *prose*. That is
 not a claim; **HEURISTIC**, **ATTENTION**, **DECAY** and the rest are free.
@@ -104,6 +119,29 @@ they do not, and either way the game has not claimed anything.
 
 *Best home:* a daemon that observes and does not attack — or the thing at
 Quicksilver that was recording.
+
+### Revised, once 0.4 existed
+
+***0.4 makes SENTINEL the best noun on this list, and it was not obvious
+before.*** The 2013 article's answer to the falling tree is **no observer, no
+sound** — perception *requires* someone watching, and a thing that only watches
+is therefore the thing that makes anything reportable at all.
+
+**So a daemon called SENTINEL that never attacks is 0.4 as a creature.** It
+does nothing, and nothing can be said to have happened without it. *Craft rule
+1 holds perfectly*: the game states none of that, and a player simply meets
+something that will not fight.
+
+**And it is the sharpest pair the two-account Index will ever get** — the same
+creature, one record of what it watches, one of why there is a record:
+
+| | |
+|---|---|
+| CONTENT | *what it observes* — mechanism, plain |
+| CONTEXT | *that it is the reason there is anything to observe* |
+
+**Do not write those yet.** The entry above still stands: this is a shortlist,
+not a queue, and 8's scope rule outranks a good idea.
 
 ---
 

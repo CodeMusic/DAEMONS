@@ -5,6 +5,21 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.65 — 2026-09-04
+
+### The keyword list, checked again — and the check was wrong the first time
+
+- **The list is the same 114 terms reviewed on 4 September**; `vocabulary-candidates.md` already held the whole shortlist, SENTINEL included
+- ***But its "already spent" table was checked word for word, which is the wrong check.*** **LABEL ships as `LABL` and CLUSTER as `CLUSTR`** — both read as free and neither is. *A name shortened to fit a nine-character field is still spent*
+- **The ROM carries 33 of our names now, not the six that table was measured against.** Any future pass has to normalise before it compares — the same lesson `port_names.py` learned when a positional zip read an addition as a rename
+
+### SENTINEL, revised now that 0.4 exists
+
+- ***0.4 makes it the best noun on the list, and that was not visible before.*** The article's answer to the falling tree is **no observer, no sound** — so a thing that only watches is what makes anything reportable at all
+- **A daemon called SENTINEL that never attacks is 0.4 as a creature.** It does nothing, and nothing can be said to have happened without it
+- **And it is the sharpest pair the two-account Index will get**: one record of what it observes, one of why there is a record
+- *Still not queued.* 8's scope rule outranks a good idea
+
 ## v11.64 — 2026-09-04
 
 ### 0.4 — the keystone article is in the bible now
