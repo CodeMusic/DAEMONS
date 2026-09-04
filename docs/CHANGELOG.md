@@ -5,6 +5,35 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.64 — 2026-09-04
+
+### 0.4 — the keystone article is in the bible now
+
+- ***Sensation into Perception, and the Filters of our Experience*** (PsychologyCode, 15 July 2013) — the longest post on the site, nearly a third of it, and **the one never reposted.** `lineage.md` 2.2 had the archaeology; **`vision.md` did not carry the idea at all**
+- **It names both halves eleven years early**, under different words: *"the basic information your eyes gathers is known as the **bottom-up** information, and all your memories which come into play during the analysis is called **top-down** information"*
+- ***"Sensation is shared. Perception is not."*** One line doing three jobs — **the edition split** (two stages of one act of recognition, not two products), **the type chart** (top-down completes bottom-up, never the reverse), and **the colour cartography** (8.6 spends the greyscale so the player supplies the hue — *which is the article, played*)
+
+### Three places it was already in the game, none of them on purpose
+
+- **`DETACHED`** — 7.2 defines fleeing as *breaking your connection to a running process; the process is still running, you simply stopped observing it.* **That is the falling tree, sitting in a battle message**, written before anyone joined them up
+- **"Some of them disagree."** The briefing already warns the records will not match
+- **The Five Witnesses.** 4.8's lock is that sentence built into a puzzle
+
+### Ruled — the two Indexes disagree on purpose
+
+- ***Gen 3 ships a separate Index text file per edition.*** Vanilla uses it for flavour and **451 of ours still carry that variation, inherited** — but ***every entry this project wrote was written once and copied into both***, throwing away **the one instrument in the ROM shaped exactly like the thesis**
+- **The entries are a pair now**: CONTENT reports *what it does*; CONTEXT reports *what follows from it — who framed it, who chose, who is not in the record*
+- ***Neither reports a feeling***, so 0's table still holds exactly — the Index measures only content. **What differs is what the observer attended to**, and two honest records of one creature still fail to match
+- **Written first for the four MUSAI**, the family that already is the argument
+
+| | SEEKMUSAI |
+|---|---|
+| CONTENT | *"Finds the nearest match to anything it is shown. Nearest is not the same as right. Nobody told it. Nobody will."* |
+| CONTEXT | *"Every answer it gives is the closest thing it has already seen. What it has seen was chosen by someone else."* |
+
+- **Proved at the byte level**: `gbastr` finds *"chosen by someone else"* in `pokeleafgreen.gba` and **in neither CONTENT ROM**
+- **Craft rule 1 unbreached.** A player with one cartridge learns a creature; a player with both learns that **a record has an author**. *They are never told which is true, because the question is malformed*
+
 ## v11.63 — 2026-09-04
 
 ### SEEKMUSAI takes the Pikachu slot

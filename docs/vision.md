@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.63**
+**A total conversion — the living design bible, v11.64**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -55,6 +55,97 @@ Two consequences the game can show without ever explaining:
 **And an unwatched loop distorts the representation, not the thing.** This is where the Index and the halftone converge: the entry stays thin, the dots stay the same size, the reader concludes something about the **daemon** — and the bias came from resolution and inattention, never from malice. Nobody in the game is lying. The picture is simply being made at the wrong distance by someone who is inside the loop that makes it.
 
 Dialogue guidance for gesturing at this without stating it is in 4.9.
+
+---
+
+### 0.4 Sensation and perception — where CONTENT and CONTEXT came from
+
+**The split is not a design invention.** It was worked out in 2013, in
+*Sensation into Perception, and the Filters of our Experience* — the longest
+post on PsychologyCode, nearly a third of the site, and **the one that was
+never reposted.** `lineage.md` 2.2 has the archaeology. This section is what
+the game owes it.
+
+It names both halves, under different words:
+
+> The basic information your eyes (or any other sense organ) gathers is known
+> as the **bottom-up** information, and all your memories which come into play
+> during the analysis is called **top-down** information. Eventually those two
+> types of information interact and the result is recognition.
+
+**Bottom-up is CONTENT. Top-down is CONTEXT.** Eleven years before either had
+its name here.
+
+#### The sentence the whole game rests on
+
+> In a normally working human eye **the sensation of red is the same for
+> everyone.** … The red I experience is influenced by every other red I have
+> experienced, all of my thoughts about it, my experiences, beliefs, and
+> knowledge all influence how the red appears to me.
+
+***Sensation is shared. Perception is not.*** One line, doing three jobs:
+
+- **It is the edition split.** CONTENT and CONTEXT are not two versions of a
+  product. They are the two stages of a single act of recognition — which is
+  why 8.4 fixed both cartridges to the same story. *Sensation and perception
+  are not two tales; they are one told twice.*
+- **It is the type chart.** LOGIC fails against CONTEXT because top-down
+  information is what *completes* bottom-up information, never the reverse.
+- **It is the colour cartography.** Every town is named for something that is
+  both a colour and a feeling, and 8.6 spends the greyscale so that the player
+  supplies the hue. **The player supplying the hue is this article, played.**
+
+#### Three places it is already in the game, none of them put there on purpose
+
+***1. `DETACHED`.*** 7.2 defines fleeing as *breaking your connection to a
+running process — the process is still running, you simply stopped observing
+it.* **That is the falling tree, sitting in a battle message**, written before
+anyone joined the two up:
+
+> Since sound is a perception and perception requires an observer then the
+> answer is no. … no observer, no sound.
+
+***2. "Some of them disagree."*** The briefing already warns the player that
+the records will not match, which is the article's own conclusion: *two people
+looking at the same thing may receive the same information through their eyes,
+but their experience of that information will be vastly different.*
+
+***3. The Five Witnesses.*** 4.8's lock is that sentence built into a puzzle.
+
+#### Ruled 2026-09-04 — the two Indexes disagree on purpose
+
+***Gen 3 ships a separate Index text file per edition***, and vanilla uses it
+for flavour: **451 of ours still carry that variation, inherited.** But every
+entry *this project has written* was written once and copied into both — which
+quietly threw away **the one instrument in the ROM shaped exactly like the
+thesis.**
+
+**So the entries are a pair, and the pair is the argument.** One daemon, two
+records, neither wrong:
+
+| | |
+|---|---|
+| **CONTENT** | what it does — mechanism, procedure, the thing itself |
+| **CONTEXT** | what follows from it — who framed it, who chose, who is not in the record |
+
+***Neither entry reports a feeling***, so 0's table still holds exactly: **the
+Index measures only content.** What differs is **what the observer attended
+to** — and two honest records of one creature still fail to match. *That is the
+article, inside the artifact the player spends the game filling.*
+
+**Written first for the four MUSAI**, because that family already is the
+argument. SEEKMUSAI's pair is the clearest, and it is about EMBEDDING both
+times:
+
+| | |
+|---|---|
+| CONTENT | *"Finds the nearest match to anything it is shown. Nearest is not the same as right. Nobody told it. Nobody will."* |
+| CONTEXT | *"Every answer it gives is the closest thing it has already seen. What it has seen was chosen by someone else."* |
+
+**Craft rule 1 is unbreached.** Nothing here is said in the game. A player with
+one cartridge learns a creature; a player with both learns that **a record has
+an author**. *They are never told which entry is true, because the question is
+malformed* — which is the point of the article, and the point of the pair.
 
 ---
 
