@@ -5,6 +5,24 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.54 — 2026-09-04
+
+### The presents scene is code becoming music
+
+- ***The engine already did all of it.*** `sparkles_small` is an **8×8 sprite with a four-frame loop** and `sparkles_big` is **32×32 with four more**, both on one shared palette — so 9.14's transformation is **four drawings and a palette, and not one line of new code**
+- **0, then 1, then a note, then a note lit** — and because the field's lifetimes are already staggered by the existing timers, *it converts gradually rather than all at once*
+- **The palette is two ramps in one bank**: 2–5 is the code, flat and cold; 6–13 are the note colours. ***Nothing fades between them.*** A particle stops being one thing and starts being the other
+
+### The mark behind the words
+
+- The slot held GAME FREAK's gold flame. **Ours is two rings crossing — a feedback loop stood upright.** The lower one is code and the upper one is music, *each semi-monochrome in its own cold or warm ramp so neither is more than one colour of thing*
+- ***Where they overlap, and only there, the palette gets bright.*** That is 9.14's sanctioned spend **stated as a shape** — colour is what arrives when two things that disagree connect — and the scene then spends the next few seconds proving it with the particles. **Nothing says so**
+- Shading is by **angle** rather than by a light source, which at 32×64 reads as roundness without costing a ramp
+
+### Not prompted for
+
+- **A quaver at eight pixels square is about a dozen lit pixels, and no image model places a dozen pixels.** Both sheets and the mark are drawn procedurally, in palette, the way the MARKS and the Index box were
+
 ## v11.53 — 2026-09-04
 
 ### The unused sixteenth type is **ORACLE**
