@@ -160,3 +160,66 @@ language, only one the places already speak.
 ***And it must never be explained.*** Same rule as **SENTINEL** above: put the
 name on something, let it do what it does, and say nothing. A player who knows
 the myth gets the whole of 4.10 for free; a player who does not loses nothing.
+
+---
+
+## The trio, and why it is one decision
+
+**5.2 settled that naming eight MARKS was *one decision, not seven*.** The birds
+are the same: they are always read together, so ASCLEPIUS is a choice about all
+three.
+
+*And one detail decides which bird he is.* **Asclepius was killed by Zeus's
+thunderbolt.** ZAPDOS is the electric one — **SIGNAL/VECTOR** — so the mapping
+is not thematic, it is literal.
+
+| | type | name | why |
+|---|---|---|---|
+| ZAPDOS | SIGNAL/VECTOR | **ASCLEPIUS** | *struck by the thunderbolt*, for healing past the line he was given |
+| MOLTRES | ENTROPY/VECTOR | **PROMETHEUS** | gave mortals **fire, and every craft with it** — and was punished without end |
+| ARTICUNO | FROZEN/VECTOR | **ORPHEUS** | went below for someone, and **lost her by looking back** — by needing to check |
+
+#### The shape they share
+
+***All three were punished by the authority that had granted them the gift.***
+Not for failing. **For being good enough at it that a line got crossed.** That
+is 4.6 and 4.10's spine, standing in a field, three times.
+
+*And ORPHEUS is 4.10 exactly* — **he lost her by turning round to verify.** The
+one thing he was told not to do was check, and checking is what a person does
+when they cannot take an inner state on trust. **Nothing in the game will say
+so.**
+
+#### The other thing they are
+
+Your own framing — *health, craft, fulfilment* — lands on them cleanly:
+
+| | | |
+|---|---|---|
+| **ASCLEPIUS** | health | **HP** |
+| **PROMETHEUS** | craft, ability | **MP** |
+| **ORPHEUS** | feeling | *no stat, and there is no stat for it* |
+
+***Which is psychology, code and music.*** The project's own name, split three
+ways, arrived at from the other direction entirely. **That is a reason to use
+them and never a line to write down.**
+
+---
+
+## The BIRD type
+
+**Gen 1 ships a sixteenth type literally called `BIRD`, and it does nothing** —
+nothing carries it, no matchup names it. So a name there is **invisible until
+something uses it**, which makes it cheap to choose and cheap to change.
+
+*If the trio takes it*, the type wants to mean what the three of them have in
+common: **reaching past the level you were granted.**
+
+| candidate | for | against |
+|---|---|---|
+| **ORACLE** | Greek, and in computing *an oracle is a black box that returns correct answers without showing how* — **which is the consciousness question stated as a data structure.** Six characters, so the badge needs no vowel dropped | it is a *thing*, where the other types are mostly *properties* |
+| **PRIVILEGE** | privilege escalation, and 3.1's box line is **already** USERBOX to ROOTBOX — *acquisition as escalation* | nine characters; the badge would read `PRIVLG` |
+
+***ORACLE is the recommendation***, on the six-character fit and on the fact
+that it says the argument without saying it. **PRIVILEGE says it too loudly** —
+invariant 1, and 9.12's badge is a place the player cannot avoid reading.
