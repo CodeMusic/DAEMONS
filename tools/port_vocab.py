@@ -135,7 +135,13 @@ VOCAB = {
     # {B_ATK_NAME_WITH_PREFIX} expands to for the opposing side. It is also what
     # caps species names at nine characters -- "Remote " plus a 10-character
     # name plus "'s" is 19 columns and the line holds 18.
-    "Foe": "Remote", "foe": "remote", "foe's": "remote's",
+    # ONLY the capitalised prefix. vision 229 is precise about what Remote
+    # replaces: the thing every {B_ATK_NAME_WITH_PREFIX} expands to before a
+    # NAME. Vanilla writes that as "Foe" and uses it four times; lowercase
+    # "foe" is the common noun and appears 308 times in prose. Renaming the
+    # noun too pushed 115 move descriptions onto a fifth line of a four-line
+    # pane, and "the remote is attacked with a sharp chop" was never the design.
+    "Foe": "Remote",
     # the ball line is a box line (vision 89), and the Game Boy renamed the
     # Safari BALL to GUESTBOX and its window label from "BALL×" to "BOX×"
     "BALL": "BOX", "BALLS": "BOXES", "ball": "box", "balls": "boxes",
@@ -340,7 +346,16 @@ for path in sorted(sum([[os.path.join(d, f) for f in fs if f.endswith(('.inc', '
 # occurrences the first src pass walked straight past.
 C_LIT = re.compile(r'_\(\s*((?:"(?:[^"\\]|\\.)*"\s*)+)\)')
 PIECE = re.compile(r'"((?:[^"\\]|\\.)*)"')
-grew, capped, scroll_fixed, src_changed = [], [], [], 0
+grew, capped, scroll_fixed, outgrew, reflowed, src_changed = [], [], [], [], [], 0
+
+def _emit(m, pieces, body):
+    if len(pieces) > 1:
+        parts = [x for x in re.split(r'(?<=\\[nlp])', body) if x]
+        return '_(\n' + '\n'.join('        "%s"' % x for x in parts) + ')'
+    return '_("%s")' % body
+
+def linecount(body):
+    return len([l for l in BREAK.split(body.rstrip('$')) if l])
 
 def own_budget(body):
     """The widest line this string ALREADY uses. Whatever window it is drawn
@@ -348,6 +363,28 @@ def own_budget(body):
     lines = [l for l in BREAK.split(body.rstrip('$')) if l]
     w = max((textwidth(l.replace('{PAUSE_UNTIL_PRESS}', '')) for l in lines), default=0)
     return max(w, 1)
+
+def fit_to(body, converted, ceiling, cap=None):
+    """Reflow without gaining a LINE.
+
+    own_budget is the widest line the string itself uses, which is a lower
+    bound on the pane, not the pane. "foe" became "remote" -- three characters
+    -- and that pushed 119 move descriptions and 8 item descriptions onto a
+    fourth or fifth line of a pane that shows three or four. So widen the
+    budget, in steps, up to the widest line the WHOLE FILE already uses (which
+    the pane demonstrably holds, because vanilla shipped it), and stop as soon
+    as the line count is back where it started. If nothing fits, leave the
+    original wrap alone and say so."""
+    want = min(linecount(body), cap) if cap else linecount(body)
+    start = own_budget(body)
+    # ...and try the ceiling itself. Stepping by four skipped it by one pixel
+    # on RAZOR WIND, whose vanilla wrap needs exactly the widest line the file
+    # uses and nothing narrower.
+    for budget in list(range(start, max(start, ceiling), 4)) + [max(start, ceiling)]:
+        out = rewrap(converted, budget)
+        if linecount(out) <= want:
+            return out, True
+    return None, False
 
 for root, _, fs in os.walk(os.path.join(GBA, "src")):
     for f in sorted(fs):
@@ -362,6 +399,13 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
         # [][13], so a name has twelve characters and a terminator -- DAEMON
         # BREEDER is fifteen and agbcc reports it as "excess elements in array
         # initializer", which is not an obvious way to be told a string is long.
+        # What the pane holds, demonstrated rather than declared: vanilla never
+        # overflows its own window, so the widest line and the most lines it
+        # ever uses in this file are both safe bounds.
+        up = git_show(rel)
+        bodies = [''.join(PIECE.findall(mm.group(1))) for mm in C_LIT.finditer(up)]
+        ceiling = max([own_budget(b) for b in bodies] or [BUDGET])
+        cap_lines = max([linecount(b) for b in bodies] or [99])
         decl = re.findall(r'\[\]\[(\d+)\]', src)
         cap = int(decl[0]) - 1 if len(set(decl)) == 1 and decl else None
         n = [0]
@@ -370,19 +414,29 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
             body = ''.join(pieces)
             new = convert(body)
             if new == body:
+                # Already converted -- but a past run may have pushed it onto a
+                # line the pane cannot show. Repairing that is this tool's job
+                # too, or the fix only lands on text that happens to change.
+                if BREAK.search(body) and linecount(body) > cap_lines and reflowable(body):
+                    flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)), ceiling, cap_lines)
+                    if ok and flowed != body:
+                        n[0] += 1; reflowed.append((rel, linecount(body), cap_lines))
+                        return _emit(m, pieces, flowed)
                 return m.group(0)
             n[0] += 1
             if BREAK.search(body):
-                budget = own_budget(body)
                 if reflowable(body):
-                    new = rewrap(convert(UNWRAP.sub(' ', body)), budget)
+                    flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)), ceiling, cap_lines)
+                    if ok:
+                        new = flowed
+                    else:
+                        outgrew.append((rel, body[:52]))
                 for ln in BREAK.split(new.rstrip('$')):
                     w = textwidth(ln.replace('{PAUSE_UNTIL_PRESS}', ''))
-                    if w > budget:
+                    if w > ceiling:
                         over.append((rel, w, ln))
                 if len(pieces) > 1:      # keep the multi-line shape it had
-                    parts = [x for x in re.split(r'(?<=\\[nlp])', new) if x]
-                    return '_(\n' + '\n'.join('        "%s"' % x for x in parts) + ')'
+                    return _emit(m, pieces, new)
             elif cap and len(new) > cap:
                 # Dropping the prefix is the honest fallback: an RS breeder is
                 # still a BREEDER, and a name that does not fit is not a name.
@@ -432,12 +486,24 @@ json_changed, mapsec_renames = 0, {}
 for rel, keys in JSON_TARGETS.items():
     path = os.path.join(GBA, rel)
     raw = open(path, encoding="utf-8").read()
+    # Same bounds, demonstrated the same way: vanilla never overflows its own
+    # pane, so its widest line and its most lines are both safe.
+    up_raw = git_show(rel)
+    up_bodies = [unesc(x) for _, x in
+                 re.findall(r'"(%s)": "((?:[^"\\]|\\.)*)"' % "|".join(keys), up_raw)]
+    j_ceiling = max([own_budget(b) for b in up_bodies] or [BUDGET])
+    j_cap = max([linecount(b) for b in up_bodies] or [99])
     n = [0]
     def sub(m):
         key, val = m.group(1), m.group(2)
         body = unesc(val)
         new = convert(body)
         if new == body:
+            if BREAK.search(body) and linecount(body) > j_cap and reflowable(body):
+                flowed, ok = fit_to(body, convert(UNWRAP.sub(' ', body)), j_ceiling, j_cap)
+                if ok and flowed != body:
+                    n[0] += 1; reflowed.append((rel, linecount(body), j_cap))
+                    return '"%s": "%s"' % (key, reesc(flowed))
             return m.group(0)
         if BREAK.search(body):
             budget = own_budget(body)
@@ -450,6 +516,17 @@ for rel, keys in JSON_TARGETS.items():
         n[0] += 1
         return '"%s": "%s"' % (key, reesc(new))
     raw = re.sub(r'"(%s)": "((?:[^"\\]|\\.)*)"' % "|".join(keys), sub, raw)
+    # An item description is drawn into a pane that shows every line at once,
+    # and items.json has never contained a scroll break. Rewrapping put one
+    # into 158 of them, which is why LEFTOVERS stopped mid-sentence and waited.
+    # Same rule as the src pass; the JSON handler simply never got it.
+    if '\\\\l' not in git_show(rel):
+        fixed = raw.replace('\\\\l', '\\\\n')
+        if fixed != raw:
+            raw = fixed
+            if not n[0]:
+                n[0] = 1
+            scroll_fixed.append(rel)
     if n[0]:
         touched[path] = raw; json_changed += n[0]
 
@@ -495,6 +572,14 @@ print("  blocks changed: %d dialogue, %d src literals, %d json, in %d files"
 if scroll_fixed:
     print("  %d file(s) had a scroll break they never had: %s"
           % (len(scroll_fixed), ", ".join(f.split('/')[-1] for f in scroll_fixed)))
+if reflowed:
+    print("  %d string(s) had more lines than the pane shows, reflowed:" % len(reflowed))
+    for r, was, cap in reflowed[:6]:
+        print("     %-30s %d lines -> %d" % (r.split('/')[-1], was, cap))
+if outgrew:
+    print("  %d string(s) could not be reflowed without gaining a line:" % len(outgrew))
+    for r, b in outgrew[:8]:
+        print("     %-30s %s" % (r.split('/')[-1], b))
 if capped:
     print("  %d label(s) hit their array's own limit:" % len(capped))
     for r, want, got in capped:

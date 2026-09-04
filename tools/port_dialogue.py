@@ -75,6 +75,15 @@ def textwidth(s):
 # Set" across three lines on purpose, and reflowing it to fill a wider Gen 3 box
 # destroys the thing it is doing -- vanilla keeps its own signs broken the same
 # way. pokered names these blocks ...SignText, so the intent is in the label.
+def panel(lbl, pages):
+    """A PANEL keeps its shape; PROSE ON A SIGN does not.
+
+    QUICKSILVER / The Metal That / Will Not Set is one panel and its three
+    lines are the design. The Quicksilver requisitions board is five pages of
+    sentences that merely happen to be mounted on a wall, and keeping Gen 1's
+    eighteen-character wrap there just wastes a box twice as wide."""
+    return "Sign" in lbl and len(pages) <= 2
+
 def keep_shape(pages, budget):
     out = []
     for page in pages:
@@ -92,10 +101,26 @@ def keep_shape(pages, budget):
                                       for i, x in enumerate(fixed[1:])))
     return '\\p'.join(out) + '$'
 
+def join(lines):
+    """Gen 1 hyphenates across its narrow lines -- "Counter-" / "signed." --
+    and joining those with a space gives "Counter- signed".
+
+    But a route sign reads "BLANCHE TOWN -" / "CALLOW CITY", where the dash is
+    punctuation and the space belongs. The two are told apart by what sits
+    BEFORE the hyphen: attached to a letter it is a broken word, after a space
+    it is a dash."""
+    text = ""
+    for l in lines:
+        if text.endswith('-') and len(text) > 1 and text[-2] != ' ':
+            text = text[:-1] + l.lstrip()
+        else:
+            text = (text + ' ' + l).strip() if text else l
+    return text
+
 def rewrap(pages, budget=BUDGET):
     out = []
     for page in pages:
-        words = ' '.join(page).split()
+        words = join(page).split()
         if not words:
             out.append(''); continue
         lines, cur = [], words[0]
@@ -413,7 +438,7 @@ for rel in gb_files:
         hand = MANUAL.get(name, {}).get(lbl)
         if hand:
             matched.append((name, lbl, hand[0], hand[1], 1.0))
-            shaped = keep_shape if "Sign" in lbl else rewrap
+            shaped = keep_shape if panel(lbl, pages) else rewrap
             edits.setdefault(hand[0], {})[hand[1]] = shaped(pages, BUDGET)
             continue
         want = flat(' '.join(' '.join(pg) for pg in base.get(lbl, [])))
@@ -433,7 +458,7 @@ for rel in gb_files:
         # than putting our writing in a stranger's mouth.
         if best and score >= MIN and (score - second >= MARGIN or score >= SURE):
             matched.append((name, lbl, best[0], best[1], score))
-            shaped = keep_shape if "Sign" in lbl else rewrap
+            shaped = keep_shape if panel(lbl, pages) else rewrap
             edits.setdefault(best[0], {})[best[1]] = shaped(pages, BUDGET)
         elif vocabulary_only(base.get(lbl, []), pages):
             vocab_only.append((name, lbl))

@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.46 — 2026-09-04
+
+### Found by playing it
+
+- **LEFTOVERS stopped mid-sentence and waited.** Rewrapping had put a scroll break into **158 item descriptions** — the JSON handler never got the rule the src pass has, and a description pane shows every line at once
+- ***And the line count itself had moved.*** `own_budget` is the widest line a string uses, which is a lower bound on the pane, not the pane. The rewrap now widens up to the widest line the **whole file** uses — which the pane demonstrably holds, because vanilla shipped it — and stops as soon as the count is back where it started
+- **The cause was mine.** 229 is precise that *Remote* replaces what every name-prefix expands to before a **NAME**. Vanilla writes that as capital `Foe` and uses it **four times**; lowercase `foe` is the common noun and appears **308 times** in prose. Renaming the noun too pushed **115 move descriptions** onto a fifth line of a four-line pane, and *"the remote is attacked with a sharp chop"* was never the design
+- ***The word-boundary bug caught me a fourth time***, in my own repair script: an escape is two characters and the first is a letter, so **59 line-initial occurrences were invisible**. Stash the escapes. Every time
+
+### Corrections
+
+| | |
+|---|---|
+| the lab sign | **CRYSTAL CLEAR RESEARCH LAB** — 1535 wants her surname on anything formal |
+| the Meeting Room minutes | **"The two present could not follow."** |
+| the requisitions board | **CC-7 COGNITIVE CLARIFIER MODULE** — Gen 3's box has room for the word |
+| the Index's caught marker | **a box, not a POKé BALL** — the one place the old noun survived as a *picture* |
+| MOM, and the Silph president | **nobody is a boy or a girl** |
+
+- ***A multi-page sign is prose on a sign, not a panel.*** QUICKSILVER / The Metal That / Will Not Set is three lines by design; the requisitions board is five pages of sentences that merely hang on a wall, and Gen 1's eighteen-character wrap wasted a box twice as wide
+- **Gen 1 hyphenates across those narrow lines**, so `Counter-` + `signed.` joined as *"Counter- signed"*. A route sign reads `BLANCHE TOWN -` / `CALLOW CITY` though — **what sits before the hyphen tells them apart**
+- **The player is LOGIC or INTUITION, not a gender.** Gen 3 branches MOM's line on the gender flag, which in our game *is* that choice, so she said *"All boys leave home"* or *"All girls dream of traveling"* depending on which you follow. Both say **Everyone** now. *The other gendered branches are not address*: Route 12's two variants are identical, and the Copycat's differ in manner of speaking, which under LOGIC and INTUITION is apt rather than wrong
+
 ## v11.45 — 2026-09-04
 
 ### Every Game Boy dialogue block is now accounted for
