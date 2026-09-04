@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.55 — 2026-09-04
+
+### The front door moves to **C#**
+
+- 7.14g first put it in C because *the title was in the key of the town you leave from* — Blanche is C pentatonic. **9.14 then established that the front door is not in the world**, which is why colour could be spent there without breaking invariant 5, *so it obeys the author rather than the map*
+- **`SeeingSharp`, the language and the pitch are the same word three times.** The cost is named: the door stops feeling like somewhere you have been, and instead sits **a semitone above everywhere you are about to go**
+- **The first Suno prompt was correct and boring.** It asked for *sparse, unhurried, dry* and got a lullaby. 7.14g's finding was that the **tone** was wrong, and *tone is not key alone* — the lift belongs in the arrangement, and it has to survive three channels, so **the drive goes in the bass line** rather than in a kit that gets dropped
+
+### `tools/mp3midi.py` — the transcription is DSP, not a prompt
+
+- ***Gemini answered `NO AUDIO`, and that is the gate working.*** 4.9 records what happens without it: a model that cannot hear hands back an earlier answer and admits in its own `DOUBT` field that it guessed. **When the gate fires, the answer is not a better prompt — it is to stop asking**
+- **librosa was already on the machine.** Beat tracking gives the grid, Krumhansl-Schmuckler gives the key by correlating the chroma against twenty-four profiles, and `pyin` gives two pitch tracks. *Nothing in it is an opinion*
+- **Three voices, because the engine has three**: melody above 250Hz, bass below 300Hz, and a middle voice that is the strongest chord tone per beat which is **neither of the other two** — which is what an arpeggio is
+- ***The pitch track slips and the chroma does not.*** The key reads at **0.88 correlation** while any single note is far less certain, so notes outside the scale are moved to the nearest degree **and the count is reported** — if that count were large, the key would be wrong
+
+### The first track through it
+
+| | |
+|---|---|
+| asked for | **C# major, 150 BPM** |
+| came back | **C# major, 152 BPM** — runner-up G# at 0.70 against 0.88 |
+| melody | 68 notes, C♯3–A♯4, opening on **C♯** |
+| snapped | 16 melody notes, **10%** |
+| motion | 33 up, 28 down |
+
 ## v11.54 — 2026-09-04
 
 ### The presents scene is code becoming music
