@@ -132,3 +132,31 @@ purpose of.**
 found in Silph and at Quicksilver** — requisition forms, meeting minutes, the
 lobby's own signage — far more than on a bag item. **The requisitions board
 already proved the form works.**
+
+---
+
+## ASCLEPIUS
+
+**Added 2026-09-04, from the Arceus chronicles.**
+
+*The surface echo is the pun* — **Arceus, Asclepius** — and on its own that would be
+worth nothing. **What makes it worth a slot is what the name actually carries.**
+
+***Asclepius was struck by lightning for raising the dead.*** Not for failing, and
+not for malice: **for being good enough at it that a line got crossed.** He healed
+past the point anyone had agreed he should, and was destroyed for it by the thing
+that had authorised him in the first place.
+
+*That is 4.6 and 4.10 in one word*, and it arrives without the game explaining
+anything — **which is the only way it is allowed to arrive.**
+
+**Where it fits.** The only unnamed legendaries are the **three birds**: MEW is
+ARTSAI and MEWTWO is S.T.A.R.R., and ARTICUNO, ZAPDOS and MOLTRES are still
+vanilla. *A trio invites a set*, so naming one of them classically is a decision
+about all three — the alchemical thread is already in the map (**Quicksilver**,
+**Umbra**, and §6's humours), so a classical register there would not be a new
+language, only one the places already speak.
+
+***And it must never be explained.*** Same rule as **SENTINEL** above: put the
+name on something, let it do what it does, and say nothing. A player who knows
+the myth gets the whole of 4.10 for free; a player who does not loses nothing.
