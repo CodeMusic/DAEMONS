@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.56**
+**A total conversion — the living design bible, v11.57**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2623,6 +2623,77 @@ the downbeat** — which is the part that makes it a theme rather than a melody.
 
 **`engine/` is untouched and stays at three.** *That constraint is real there,
 and 7.4 is still correct about it.*
+
+##### The title screen could not be read, and it was one lost nibble
+
+***Raised from a screenshot:*** **"the intro screen for both editions are hard
+to read the text..... and the PRESS START is hidden under caremusai's sprite."**
+
+**`tools/gbastrip.py` rebuilt this layer's tilemap from tile indices alone.**
+A map entry's high nibble is its palette bank, vanilla writes **15** on all six
+hundred and forty tiles, and the rebuild wrote **0**. *Bank 15 is the background
+palette and bank 0 is the wordmark's*, so PRESS START, the copyright line and
+all four screen fills quietly started taking their colours **from the ramp that
+draws DAEMONS** — yellow text on a yellow band, orange on orange, and the
+"stripes" nobody chose were the wordmark's own gradient leaking out behind it.
+**The blink stopped working too**, because `Task_TitleScreen_BlinkPressStart`
+writes entries 1-5 of bank 15 and nothing was reading bank 15 any more.
+
+***One nibble, four symptoms, and every one of them looked like a taste
+problem.*** That is the argument for 8.5's rule in a form the eye cannot
+supply: **a screenshot shows you the result and never the cause.**
+
+##### `tools/gbatitleview.py` — compositing it offline, because squinting failed
+
+**The layout was being fixed by looking at emulator screenshots and guessing at
+coordinates**, which is how the sprites came to stand on the words in the first
+place. *So the screen is now composited outside the machine* — the real tiles,
+maps and palettes, at the real coordinates, following the GBA's own priority
+rule that **an OBJ draws above a BG of equal priority**. It reports every
+layer's ink box, and a collision is arithmetic:
+
+| | |
+|---|---|
+| DAEMONS | x 26-228, y 7-66 |
+| the edition's name | x 100-153, y 76-88 |
+| PRESS START | 89px wide — **was** x 43-131, y 129-135 |
+| a 64x64 creature | about **31px either side** of its centre |
+
+***The two creatures were at 76 and 164***, which put their art at x 44-107 and
+132-195 — **on the subtitle at one end and on PRESS START at the other.** They
+are at **50 and 190** now, PRESS START moved down one tile row and right four
+(both whole rows and whole tiles, so no glyph was redrawn), and the copyright
+line is centred on the 240 the GBA shows rather than the 256 the tilemap is
+wide. *Nothing is drawn on top of anything.*
+
+##### The ground goes dark, and the palette's indices are written down
+
+**`tools/gbatitlepal.py` owns bank 15 now**, and its whole value is the comment:
+*index 6 is the two bands **and** the blink's off-colour, so it must be the
+colour behind the text; 11 is the stage the creatures stand on; 1-5 are the
+letters; 10, 12 and 15 the copyright and the strips.* **None of that is written
+down anywhere in `pokefirered`** — it was recovered by rendering each index on
+its own, and it would have been lost again.
+
+***A bright wordmark, two lit creatures and a bloom in the middle all want the
+same thing***, which is somewhere dark to happen. Each edition's ground is its
+own wordmark's hue several stops down — **cold slate under CONTENT, deep violet
+under CONTEXT** — so the letters read as lit rather than as pasted on.
+
+##### And they were holding still
+
+*They stood perfectly motionless through a reveal that takes several seconds*,
+which reads as artwork rather than as two creatures about to do something.
+**A slow breath, a quarter cycle apart** — in lockstep it reads as one
+animation played twice.
+
+##### The sixteen-frame scene is deferred, not abandoned
+
+**9.14 cut vanilla's sixteen-drawing intro** because 2.4's face-off does the
+same job on the title for two drawings. ***It is wanted back*** — as our
+sixteen frames, which is what `docs/intro-sequence.md` sketches. **It is not
+back yet because the screen it would hand over to could not be read**, and an
+intro that leads into an unreadable screen is the wrong order to build in.
 
 ##### The lesson is that both media drifted the same way, unprompted
 

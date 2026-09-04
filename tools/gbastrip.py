@@ -35,6 +35,15 @@ PNG = os.path.join(GBA, "graphics/title_screen/copyright_press_start.png")
 BIN = os.path.join(GBA, "graphics/title_screen/copyright_press_start.bin")
 TEXT = "@'11-'26  CODEMUSIC"
 BAND = 12                         # the dark red the line sits on
+# EVERY TILE ON THIS LAYER IS PALETTE BANK 15, and the high nibble of a map
+# entry is where that lives. The first version of this tool rebuilt the map
+# from tile indices alone and wrote bank 0, which is a silent, total change of
+# meaning: bank 15 is the BACKGROUND palette and bank 0 is the LOGO's, so
+# PRESS START, the copyright line and the band fills all started taking their
+# colours from the wordmark's ramp -- yellow text on a yellow band -- and the
+# blink stopped working, because Task_TitleScreen_BlinkPressStart writes
+# entries 1-5 of bank 15 and nothing was reading them any more.
+PALBANK = 15
 # The old line is WHITE with a BLACK OUTLINE, and that black is index 6 -- the
 # same index as the plain black above the band. Erasing 6 everywhere would take
 # the black band with it, so the erase is confined to the rows the red owns.
@@ -58,6 +67,32 @@ for ty in range(20):
             for x in range(8):
                 scr[ty * 8 + y][tx * 8 + x] = apx[bx + x, by + y]
 
+# --- PRESS START moves down one tile row ----------------------------------
+# It sat at y 129-135 and the face-off sprites reach y 135, so whichever
+# creature stands on the left stood on the words. One tile row down clears the
+# sprites with two pixels to spare and still leaves seven before the copyright
+# band. It is a whole tile row, so nothing has to be redrawn -- the row is
+# copied and the one it left is refilled with the band it was sitting on.
+# It was also 33px left of the copyright's centre, because vanilla centred it
+# under box art that is not there any more. Its ink is x 43-131, 89 wide, and
+# (240-89)/2 is 75 -- a shift of exactly four tiles, so this stays tile-aligned
+# and no glyph has to be redrawn.
+# This tool rebuilds the screen from its own output, so the move has to be
+# idempotent or a second run shifts PRESS START off the row it already moved
+# to and erases it. The rows it occupies are the test: entries 1-5 are the
+# text and nothing else on this layer uses them.
+PS_FROM, PS_TO, PS_DX, BAND_IDX = 16, 17, 32, 6
+PS_INK = {1, 2, 3, 4, 5}
+if not any(v in PS_INK for y in range(8) for v in scr[PS_FROM * 8 + y]):
+    print("  PRESS START is already on tile row %d -- left alone" % PS_TO)
+else:
+  for y in range(8):
+      row = scr[PS_FROM * 8 + y]
+      scr[PS_TO * 8 + y] = [BAND_IDX] * PS_DX + row[:256 - PS_DX]
+      scr[PS_FROM * 8 + y] = [BAND_IDX] * 256
+  print("  PRESS START moved to tile row %d (y %d-%d), %d px right"
+        % (PS_TO, PS_TO * 8, PS_TO * 8 + 7, PS_DX))
+
 # --- erase the old line, keeping the band it sits on ----------------------
 # The old line STRADDLES the band's top edge -- its upper half sits on the
 # black above it and its lower half on the red -- so erasing only the red rows
@@ -79,7 +114,10 @@ print("  the red band is rows %d-%d; cleared from %d" % (band[0], band[-1], band
 
 # --- draw ours, centred on the band ---------------------------------------
 width = sum(4 if glyph(c) is None else len(glyph(c)[0]) + 1 for c in TEXT)
-x0 = (256 - width) // 2
+# Centred on the 240 the GBA shows, not on the 256 the tilemap is wide -- the
+# extra sixteen columns are off the right edge, and centring on them pushed the
+# line eight pixels right of centre.
+x0 = (240 - width) // 2
 y0 = band[0] + (len(band) - 8) // 2
 x = x0
 for ch in TEXT:
@@ -102,7 +140,7 @@ for ty in range(20):
             if len(tiles) >= MAXTILES:
                 sys.exit("  !! more than %d tiles -- the atlas cannot hold it" % MAXTILES)
             index[t] = len(tiles); tiles.append(t)
-        newmap[ty * 32 + tx] = index[t]
+        newmap[ty * 32 + tx] = index[t] | (PALBANK << 12)
 print("  %d of %d atlas tiles used" % (len(tiles), MAXTILES))
 
 if WRITE:

@@ -5,6 +5,37 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.57 — 2026-09-04
+
+### The title screen was unreadable because of one lost nibble
+
+- ***"the intro screen for both editions are hard to read the text..... and the PRESS START is hidden under caremusai's sprite"***
+- **A tilemap entry's high nibble is its palette bank.** Vanilla writes **15** on all 640 tiles of `copyright_press_start`; `tools/gbastrip.py` rebuilt the map from tile indices alone and wrote **0**
+- **Bank 15 is the background palette. Bank 0 is the wordmark's.** So PRESS START, the copyright line and all four screen fills started taking their colours *from the ramp that draws DAEMONS* — **yellow text on a yellow band** — and the "stripes" nobody chose were the wordmark's own gradient leaking out behind it
+- **The blink died in the same nibble**: `Task_TitleScreen_BlinkPressStart` writes entries 1-5 of bank 15, and nothing was reading bank 15
+- ***One nibble, four symptoms, and every one of them looked like a taste problem***
+
+### `tools/gbatitleview.py` — the screen, composited outside the machine
+
+- **The layout was being fixed by squinting at emulator screenshots**, which is how the creatures came to stand on the words. This composites the real tiles, maps and palettes at the real coordinates, following the GBA's own rule that **an OBJ draws above a BG of equal priority**, and reports every layer's ink box
+- **A collision is now arithmetic**: DAEMONS x 26-228, the edition name x 100-153, PRESS START 89px wide, a 64x64 creature about **31px either side** of its centre
+
+### The layout, and it is all whole tiles
+
+| | was | is |
+|---|---|---|
+| the two creatures | 76 and 164 | **50 and 190** |
+| PRESS START | y 129-135, x 43-131 | **y 137-143, x 75-163** — one tile row down, four tiles right |
+| the copyright line | centred on 256 | **centred on 240**, which is what the GBA shows |
+| the ground | the wordmark's ramp | **`tools/gbatitlepal.py`** — cold slate under CONTENT, deep violet under CONTEXT |
+
+- **`gbastrip.py` is idempotent now.** It rebuilds the screen from its own output, so a second run shifted PRESS START off the row it had just moved to and erased it — *caught by running it twice, which is the house rule anyway*
+- **The creatures breathe**, a quarter cycle apart. In lockstep it reads as one animation played twice
+
+### Kept on the books
+
+- **The sixteen-frame intro is deferred, not abandoned** — as *our* sixteen frames, sketched in `docs/intro-sequence.md`. It is not back yet because the screen it hands over to could not be read, and *that is the wrong order to build in*
+
 ## v11.56 — 2026-09-04
 
 ### The theme had the right notes and the wrong machine
