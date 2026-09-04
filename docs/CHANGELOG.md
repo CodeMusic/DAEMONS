@@ -5,6 +5,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.48 — 2026-09-04
+
+### `tools/gbatitle.py`
+
+- **Four assets, three formats, and none of them is "a PNG."** The two figures are 64×64 4bpp with index 0 transparent and index 1 a **protected outline** — generated art puts hundreds of nearly-black pixels on an edge and a median cut will merge them into the darkest body colour, leaving the creature with none. The logo is 8bpp, so only size binds
+- ***The CODEMUSIC wordmark is not one bit***, which the brief claimed. It is L mode carrying **4bpp indices times seventeen** — 0 for the letters, 255 for the ground, two shades between — verified by round-tripping vanilla's own art back through and getting `[0, 17, 34, 255]` out
+- **It refuses rather than guesses**, and the anti-aliasing check reads the **source**, not the resample: LANCZOS creates intermediate values by definition, so checking afterwards rejected vanilla itself
+
+### `docs/vocabulary-candidates.md`
+
+- **114 terms checked against every name already spent.** Ten are live game names — MANIFOLD, PING, DEADLOCK, BROADCAST, CANON, BUFFER, BIND, SLEEP, EMBEDDING, RESOLVER — and **ENTROPY and EMERGENT are types**, so *Emergence* is spoken for. The forty-odd that matched only the bible's prose are free
+- **2789 already named the hole**: six FLYING moves is the whole VECTOR pool, LATENT is thinner, and *CONSENSUS is the precedent that the fix belongs in `moves.asm`.* Moves are also the cheapest thing here to be wrong about — five tables to add, one string to rename
+- **SENTINEL is free**, and *the echo is the whole argument in one word*: a sentinel watches and does not act, a sentient thing is one there is something it is like to be, and **the two are unrelated and sound as though they must be**. Which is why it must never be explained
+- ***And nine of them are the thesis with its coat on.*** ALIGNMENT, AUTONOMY, AGENCY and the rest — **an item called ALIGNMENT says it on a menu screen the player cannot avoid.** Spend those on paperwork nobody explains, or not at all
+- *Nothing implemented.* Naming is the author's, and **8.6's binding finding is that the bible is outrunning the slice**
+
 ## v11.47 — 2026-09-04
 
 ### PP reads as MP

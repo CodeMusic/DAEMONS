@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.47, working |
-| [`CONTEXT-CONTENT-design-bible-v11.1.pdf`](CONTEXT-CONTENT-design-bible-v11.1.pdf) | Typeset **snapshot** at v11.1. Superseded — cut a new one with `./docs/build-pdf.sh 11.47`. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.48, working |
+| [`CONTEXT-CONTENT-design-bible-v11.1.pdf`](CONTEXT-CONTENT-design-bible-v11.1.pdf) | Typeset **snapshot** at v11.1. Superseded — cut a new one with `./docs/build-pdf.sh 11.48`. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
 | [`CHANGELOG.md`](CHANGELOG.md) | Version-by-version record of what moved and why. | current |
