@@ -119,6 +119,13 @@ VOCAB = {
     # 5.1: the leader says "I'm CAIRN" in our gym dialogue and the trainer
     # entry now agrees, so the twenty-six other mentions have to as well.
     "BROCK": "CAIRN",
+    # 237, finally applied to the GBA: a trainer battle is a BENCHMARK and a
+    # benchmark yields a SCORE. Defeated is the language of combat; outscored
+    # is the language of evaluation, which is what the Review Board will do to
+    # the player.
+    "defeated": "outscored", "Defeated": "Outscored", "DEFEATED": "OUTSCORED",
+    "defeat": "outscore", "Defeat": "Outscore", "defeats": "outscores",
+    "defeating": "outscoring", "Defeating": "Outscoring",
     # PP is not two letters -- it is one compressed glyph, redrawn as MP by
     # tools/gbamana.py. MP is the same two characters, so "PP ", "PP was
     # restored." and the items PP UP and PP MAX change width by nothing. Full
@@ -200,7 +207,12 @@ WORD = re.compile(r"[A-Za-zé']+")
 # Mapping these to themselves is not enough: the phrase pass would leave them
 # unchanged and the WORD pass would then turn BALL into BOX anyway. They have to
 # be hidden from it, the same way the escapes are.
-KEEP_BALL = ["SMOKE BALL", "LIGHT BALL"]
+# CAIRN says "That is not a defeat. It is a format I do not have." 5.1 is
+# explicit that he reframes his own loss as a limit in his reading, and the
+# word DEFEAT is what he is refusing. Renaming it would delete the line's
+# whole move. Erika concedes a score rather than a defeat, which is 237 read
+# forwards instead of substituted into.
+KEEP_BALL = ["SMOKE BALL", "LIGHT BALL", "not a defeat"]
 KEEP_RE = re.compile('|'.join(re.escape(k) for k in KEEP_BALL))
 # The rename table never ruled on "battle", and there are two of them. The
 # CHALLENGE is an event -- "would like to battle" -- and 237's whole move is
@@ -218,7 +230,8 @@ ENGAGE = [("would like to battle", "would like to engage"),
           ("ready to battle",      "ready to engage"),
           ("challenges you to\\nbattle", "challenges you to\\nengage"),
           ("accept the battle",    "accept the engagement"),
-          ("Perfect for a battle", "Perfect for an engagement")]
+          ("Perfect for a battle", "Perfect for an engagement"),
+          ("I concede defeat",     "I concede the score")]
 
 PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   [("SAFARI BALLS", "GUESTBOXES"), ("SAFARI BALL", "GUESTBOX")] +

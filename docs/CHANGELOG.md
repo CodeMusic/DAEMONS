@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.51 — 2026-09-04
+
+### `defeated` → **outscored**, at last
+
+- **237 decided this in August and the GBA never got it.** *A trainer battle is a BENCHMARK and a benchmark yields a **score**; defeated is the language of combat, outscored is the language of evaluation* — which is what the Review Board will later do to the player. Eighteen occurrences
+- ***One of them had to survive untouched.*** CAIRN says **"That is not a defeat. It is a format I do not have."** — and 5.1 is explicit that he *reframes his own loss as a limit in his reading.* **The word DEFEAT is the thing he is refusing**, so renaming it would delete the line's whole move. It is protected by name
+- **Erika concedes *the score*** rather than a defeat — 237 read forwards instead of substituted into
+
 ## v11.50 — 2026-09-04
 
 ### The word the rename table never ruled on
