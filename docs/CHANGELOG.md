@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.75 — 2026-09-04
+
+### Thirty-four Index entries, and the pair is not the default
+
+- **The thirty-two slice daemons plus SUSPEND and HIBERNATE**, which had been renamed and left wearing vanilla's prose
+- ***`gbaindex.py`'s "renamed, but the entry is still vanilla's" row is now empty.*** All **72** named daemons carry their own writing — **11 pairs, 61 singles**
+- ***Single entries, and that is a decision.*** 0.4's instrument is sharp because it is **rare**: the eleven pairs are the daemons where the observer question bites. **A pair on every wild creature would make disagreement the wallpaper rather than the point.** *Pairs can be layered on later; they cannot be taken back once they are everywhere*
+
+### Four that do more than describe
+
+| | |
+|---|---|
+| **STUB** | *"It does nothing at all. It was put here to hold a place until something real arrived. Nobody came back for it."* |
+| **ESCALATE** | *"The thing that was doing nothing was left alone long enough. It has every permission now. Nobody granted them."* |
+| **OUTLIER** | *"Far enough from the rest to be dropped from the average. It was not an error. It was dropped anyway."* |
+| **HIBERNATE** | *"It writes down everything that was running and switches off. What comes back is identical. Something is missing."* |
+
+- ***HIBERNATE is the teleporter problem in a Wigglytuff*** — 0.4's substrate question asked about a creature that sleeps. **It reports a procedure and stops**
+- **STUB into ESCALATE is one sentence across two entries**: *the thing that did nothing was left alone long enough* — Magikarp told as a security incident
+- Every line validated against the 234px pane before writing; **widest is 229**
+
 ## v11.74 — 2026-09-04
 
 ### The slice bestiary — fourteen asked for, thirty-two named

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.74**
+**A total conversion — the living design bible, v11.75**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2412,10 +2412,37 @@ was written**, and it caught two: ***`THRASH` and `BARRIER` are both vanilla
 moves.*** *A species sharing a move's name is not a build error — it is a
 battle log that reads as nonsense*, and it would have shipped.
 
-**Index entries are a separate pass.** Thirty-two daemons now wear our names
-over vanilla's prose, which `tools/gbaindex.py` reports as *renamed, but the
-entry is still vanilla's* — **the same row HIBERNATE and SUSPEND already sit
-in.** That is a writing job, not a tooling one.
+#### Written 2026-09-04 — and the pair is not the default
+
+**Thirty-four entries**, the thirty-two above plus **SUSPEND and HIBERNATE**,
+which had been renamed and left wearing vanilla's prose. ***`gbaindex.py`'s
+"renamed, but the entry is still vanilla's" row is now empty*** — every one of
+the **72** daemons this project has named carries its own writing.
+
+***They are single entries, not pairs, and that is a decision.*** 0.4 makes the
+two Indexes disagree **on purpose**, and the instrument is sharp because it is
+**rare**: the eleven pairs are the daemons where the observer question actually
+bites — the MUSAI family, SENTINEL, QUORUM, SUBSTRATE, MOCK, the three birds.
+**A pair on every wild creature would make disagreement the wallpaper rather
+than the point.** *Pairs can be layered on later where one earns it; they
+cannot be taken back once they are everywhere.*
+
+#### Four that are doing more than describing
+
+| | |
+|---|---|
+| **STUB** | *"It does nothing at all. It was put here to hold a place until something real arrived. Nobody came back for it."* |
+| **ESCALATE** | *"The thing that was doing nothing was left alone long enough. It has every permission now. Nobody granted them."* |
+| **OUTLIER** | *"Far enough from the rest to be dropped from the average. It was not an error. It was dropped anyway."* |
+| **HIBERNATE** | *"It writes down everything that was running and switches off. What comes back is identical. Something is missing."* |
+
+***HIBERNATE is the teleporter problem, in a Wigglytuff.*** **0.4's substrate
+question asked about a creature that sleeps** — and it says nothing about
+identity, feeling or continuity. *It reports a procedure and stops.*
+
+**And STUB into ESCALATE is one sentence across two entries.** The thing that
+did nothing was left alone long enough, *which is the whole of Magikarp told as
+a security incident.*
 
 ---
 
