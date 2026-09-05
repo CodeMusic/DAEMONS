@@ -212,7 +212,13 @@ WORD = re.compile(r"[A-Za-zé']+")
 # word DEFEAT is what he is refusing. Renaming it would delete the line's
 # whole move. Erika concedes a score rather than a defeat, which is 237 read
 # forwards instead of substituted into.
-KEEP_BALL = ["SMOKE BALL", "LIGHT BALL", "not a defeat"]
+# PORYGON2 is NOT ours yet. The rename table learns PORYGON -> SENTINEL by
+# diffing our species names against upstream's, and a substring pass then finds
+# PORYGON inside PORYGON2 and offers SENTINEL2 -- a nickname that would not
+# match the species it belongs to, because SPECIES_PORYGON2 is still vanilla.
+# Naming an evolution is the author's call (see docs/vocabulary-candidates.md),
+# so hold it until there is one.
+KEEP_BALL = ["SMOKE BALL", "LIGHT BALL", "not a defeat", "PORYGON2"]
 KEEP_RE = re.compile('|'.join(re.escape(k) for k in KEEP_BALL))
 # The rename table never ruled on "battle", and there are two of them. The
 # CHALLENGE is an event -- "would like to battle" -- and 237's whole move is

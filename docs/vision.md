@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.64**
+**A total conversion — the living design bible, v11.66**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2079,6 +2079,86 @@ The player watches a record stop in the middle of a routine week. Nobody wrote d
 
 - How long ago? It has to sit inside a working career — the survivors are still employable — and far enough back that S.T.A.R.R. has been dormant a while. Fifteen years fits, and nothing yet depends on it.
 - Does the player ever find the fitness-for-work form itself, or only the gap where Crystal stops appearing in the records? *Lean: the gap.* The form is too legible.
+
+---
+
+### 4.25 SENTINEL — the daemon that never attacks
+
+**The Porygon slot, NORMAL — which is CONTENT, "the undifferentiated one".**
+*The vessel was chosen for what it already is:* a made thing, a creature of
+code, built in a laboratory, which is Quicksilver's whole business.
+
+***Why this creature is 0.4 as a creature.*** The 2013 article's answer to the
+falling tree is **no observer, no sound** — so a thing that only watches is
+what makes anything reportable at all. **SENTINEL does nothing, and nothing
+can be said to have happened without it.**
+
+**The echo is left strictly alone.** A *sentinel* watches; a *sentient* thing
+is one there is something it is like to be. **The words are unrelated and
+sound as though they must be** — 4.10's problem exactly, a resemblance doing no
+work and a reader who cannot stop hearing it. *Craft rule 1 does the rest:*
+name it, let it watch, say nothing.
+
+#### It cannot attack, and the numbers say so rather than a rule
+
+| | vanilla | SENTINEL |
+|---|---|---|
+| Attack | 60 | **5** |
+| Sp. Attack | 85 | **5** |
+| HP / Def / Sp. Def | 65 / 70 / 75 | **110 / 110 / 130** |
+| Speed | 40 | 35 |
+| **total** | 395 | **395** |
+
+***The budget is unchanged.*** Everything it had for hurting things was moved
+into staying present.
+
+**And the learnset has no damaging move left in it.** Four out, four in, each
+replacement the same idea:
+
+| out | in | |
+|---|---|---|
+| TACKLE | **FORESIGHT** | it sees what is hidden |
+| PSYBEAM | **MEAN LOOK** | *you cannot DETACH while it is watching* |
+| TRI ATTACK | **REFLECT** | it interposes rather than strikes |
+| ZAP CANNON | **LIGHT SCREEN** | so does this |
+
+***MEAN LOOK is the one that matters.*** 7.2 defines `DETACHED` as breaking
+your connection to a running process, and 0.4 has perception requiring an
+observer — **so a daemon that stops you detaching is the observer refusing to
+let the connection close.** *The player is never told this. They simply cannot
+leave.*
+
+**SHARPEN stays, and it is a joke.** It raises an Attack stat of **five**. *It
+prepares to act and never does* — craft rule 6, costing nothing.
+
+**Ability: INSOMNIA, not TRACE.** The watcher cannot be put to `SLEEP`, and
+`SLEEP` is one of ours. The move fails; nothing explains why.
+
+**Category: `OBSERVER`** — eight of the ten characters the field allows.
+
+#### The pair, and it is 0.4's sharpest
+
+| | |
+|---|---|
+| **CONTENT** | *"It has never attacked anything. It stays where it can see, and it does not look away. That is the whole of it."* |
+| **CONTEXT** | *"Everything it saw is on record. It is not in the record. Nobody thought to write down who was watching."* |
+
+***The CONTEXT account is the article, said about a creature.*** Perception
+requires an observer, the observer completes it, and the account that results
+does not mention them. **Neither entry says a word about feeling**, so 0's
+table still holds exactly: the Index measures only content.
+
+#### PORYGON2 is deliberately still PORYGON2
+
+`port_vocab.py` learns renames by diffing our tables against upstream's, and a
+substring pass then found PORYGON inside PORYGON2 and offered **`SENTINEL2`** —
+*a nickname that would not have matched the species it belongs to*, since
+`SPECIES_PORYGON2` is untouched. **Naming an evolution is a decision, not a
+substitution**, so it sits in the tool's keep list until there is one.
+
+***And the question is real.*** An evolution of a thing that never attacks
+either **stops watching** or **gets better at it**, and those are two different
+games.
 
 ---
 

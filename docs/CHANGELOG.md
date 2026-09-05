@@ -5,6 +5,41 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.66 — 2026-09-04
+
+### 4.25 SENTINEL — the daemon that never attacks
+
+- **The Porygon slot, NORMAL — which is CONTENT.** *The vessel was chosen for what it already is*: a made thing, a creature of code, built in a laboratory
+- ***0.4 as a creature.*** The article's answer to the falling tree is **no observer, no sound**, so a thing that only watches is what makes anything reportable at all
+- **The echo is left alone.** A *sentinel* watches; a *sentient* thing is one there is something it is like to be. Unrelated, and they sound as though they must be
+
+### It cannot attack, and the numbers say so rather than a rule
+
+| | vanilla | SENTINEL |
+|---|---|---|
+| Attack / Sp. Attack | 60 / 85 | **5 / 5** |
+| HP / Def / Sp. Def | 65 / 70 / 75 | **110 / 110 / 130** |
+| total | 395 | **395** — *the budget is unchanged* |
+
+- **No damaging move left in the learnset.** TACKLE → **FORESIGHT**, PSYBEAM → **MEAN LOOK**, TRI ATTACK → **REFLECT**, ZAP CANNON → **LIGHT SCREEN**
+- ***MEAN LOOK is the one that matters.*** `DETACHED` is breaking your connection to a running process, and 0.4 has perception requiring an observer — **so a daemon that stops you detaching is the observer refusing to let the connection close.** *The player is never told. They simply cannot leave*
+- **SHARPEN stays, and it is a joke**: it raises an Attack stat of **five**. *It prepares to act and never does*
+- **INSOMNIA, not TRACE** — the watcher cannot be put to `SLEEP`, and `SLEEP` is one of ours. Category **`OBSERVER`**
+
+### The pair, and it is 0.4's sharpest
+
+| | |
+|---|---|
+| CONTENT | *"It has never attacked anything. It stays where it can see, and it does not look away. That is the whole of it."* |
+| CONTEXT | *"Everything it saw is on record. It is not in the record. Nobody thought to write down who was watching."* |
+
+- **Verified per ROM**: the CONTENT account is in `pokefirered.gba` and not `pokeleafgreen.gba`; the CONTEXT account the other way round
+
+### And a rename that had to be stopped
+
+- ***`port_vocab.py` found PORYGON inside PORYGON2 and offered `SENTINEL2`*** — a nickname that would not have matched its own species, since `SPECIES_PORYGON2` is untouched
+- **Naming an evolution is a decision, not a substitution.** Held in the keep list until there is one — *and the question is real: an evolution of a thing that never attacks either stops watching or gets better at it*
+
 ## v11.65 — 2026-09-04
 
 ### The keyword list, checked again — and the check was wrong the first time
