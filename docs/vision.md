@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.70**
+**A total conversion — the living design bible, v11.71**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2277,6 +2277,36 @@ PLANT"** — a sentence that is funnier and sadder than it was.
 *Renaming a mapsec renames a generated C symbol that `region_map.c` names by
 hand, and the generator works on bytes*, so the space became an underscore:
 `sMapsecName_KEEPALIVE_PLANT`.
+
+##### PLANT stays, for its second meaning
+
+**VICTORY ROAD became UMBRAL ASCENT**, so swapping the generic noun is
+precedent and `WORKS` was on the table — *the works still works*. **It is not
+taken**, because `PLANT` already carries two: **an industrial plant, and a
+living thing.** *A building that is still growing with nobody tending it is the
+quieter joke and the better one.*
+
+##### And every daemon in it is SIGNAL
+
+***The encounter table did not have to change and it should not.*** All five
+species in the plant are `TYPE_ELECTRIC`, and 2 glosses that as **SIGNAL — *a
+carrier, not a spark***.
+
+| | | |
+|---|---|---|
+| MAGNEMITE | **SENTINEL** | SIGNAL/HARDENED |
+| MAGNETON | **QUORUM** | SIGNAL/HARDENED |
+| PIKACHU | **SPIKE** | SIGNAL |
+| VOLTORB | *unnamed* | SIGNAL |
+| ELECTABUZZ | *unnamed* | SIGNAL |
+
+***So the building is full of carriers, still carrying, with nobody
+receiving.*** **Nothing in the table moved; the name moved, and the table
+changed meaning underneath it.** *That is the cheapest kind of design there is.*
+
+**And SPIKE was already right.** In a building whose whole business is a
+keepalive — *a flat, regular signal that means only "still here"* — **a spike is
+the anomaly.** It was named before the building was.
 
 ---
 

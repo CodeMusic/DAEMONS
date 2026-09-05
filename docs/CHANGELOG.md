@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.71 — 2026-09-04
+
+### PLANT stays, and the table underneath it changed meaning for free
+
+- **`WORKS` was on the table** — *the works still works*, and UMBRAL ASCENT is precedent for swapping the generic noun. **Not taken**: `PLANT` already carries two meanings, **an industrial plant and a living thing**, and *a building still growing with nobody tending it is the quieter joke*
+- ***All five species in the plant are `TYPE_ELECTRIC`***, which 2 glosses as **SIGNAL — a carrier, not a spark**
+
+| | | |
+|---|---|---|
+| MAGNEMITE | **SENTINEL** | SIGNAL/HARDENED |
+| MAGNETON | **QUORUM** | SIGNAL/HARDENED |
+| PIKACHU | **SPIKE** | SIGNAL |
+| VOLTORB / ELECTABUZZ | *unnamed* | SIGNAL |
+
+- ***The building is full of carriers, still carrying, with nobody receiving.*** **Nothing in the encounter table moved — the name moved, and the table changed meaning underneath it**
+- **And SPIKE was already right**: in a building whose business is a keepalive — *a flat regular signal meaning only "still here"* — **a spike is the anomaly.** It was named before the building was
+
+### Repo descriptions, so the two read as one
+
+- `CodeMusic/DAEMONS` was still describing itself as *"a Pokémon Red total conversion"* — **stale, and a near-duplicate of the engine repo's**
+- Now: ***"The argument, and where it came from."*** Design bible, lineage and tooling; fifteen years traced from three blogs into a type chart, a rock opera and two cartridges
+- **The engine repo says what the game *is*; this one says what the argument is and where it came from**
+
 ## v11.70 — 2026-09-04
 
 ### The three birds, and vanilla had already placed them
