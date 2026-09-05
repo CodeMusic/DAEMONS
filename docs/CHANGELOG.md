@@ -5,6 +5,38 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.78 — 2026-09-04
+
+### The rival's house — 0 ours to 16, and the slice hits 22%
+
+- ***The room had a scene in it nobody had noticed.*** **Crystal reads daemons with an instrument. DAISY just looks at them**
+
+> **DAISY:** *"Gran reads them with an instrument. I just look. May I see your first one?"*
+
+- **That is 0.4 inside one family** — two accounts of the same creature, both correct, arrived at completely differently — **and vanilla shipped it as a grooming minigame**
+
+### The friendship ladder is observation, not sentiment
+
+- Vanilla runs *"it loves you"* down to *"why does it hate you"*. **Ours are readings**
+
+| | |
+|---|---|
+| highest | *"This one would not leave if you opened the box."* |
+| | *"It is settled. It has stopped watching the door."* |
+| | *"It stays near you without being told. That is most of it."* |
+| lowest | *"…I would rather not say this. It would be anywhere else if it could. What have you been asking of it?"* |
+
+- ***Nothing there says a daemon feels anything.*** Every rung reports **where it puts itself and what it does unasked** — and the bottom rung is worse for being flat. **Craft rule 1 is not strained: nobody claims to know what is inside it**
+
+### Four lines doing other work
+
+- **on AL** — *"He has not mentioned the result. So I know the result."*
+- **on the TOWN MAP** — *"It shows where you are and what the places are called. The two do not always agree."* — 3.2's device, ninety seconds early
+- **on the bookshelf** — *"Shelves of books about daemons. None of them by Gran."* — which pays off the lab's *"Everyone says so. Very few of them have read her."* **Neither explains the other**
+- **on an EGG** — *"I cannot do anything with an EGG. There is nothing running in it yet."*
+
+- *Open:* **DAISY is not renamed** — a Clear, and the last vanilla name in the family. One vocabulary entry when it is decided
+
 ## v11.77 — 2026-09-04
 
 ### The lab, written — 7 blocks to 34

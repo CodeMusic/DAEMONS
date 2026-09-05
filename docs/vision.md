@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.77**
+**A total conversion — the living design bible, v11.78**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2542,6 +2542,55 @@ and `\n` inside a pattern that also escapes quotes matched **only the
 single-line blocks** and silently skipped every multi-line one — *3 of 40, with
 no error.* **Walking the lines and consuming while they start with `.string`
 is four lines long and cannot be wrong.**
+
+### 4.29 The rival's house — the other way of reading a daemon
+
+**0 ours to 16**, and the slice is **22%**. *But the reason to write this room
+before the gyms is that it had a scene in it nobody had noticed.*
+
+***Crystal reads daemons with an instrument. DAISY just looks at them.***
+
+> **DAISY:** *"Gran reads them with an instrument. I just look. May I see your
+> first one?"*
+
+**That is 0.4 inside one family** — two accounts of the same creature, both
+correct, arrived at completely differently — **and it is a grooming minigame.**
+*Vanilla put a friendship checker in the rival's house and never noticed what
+it was.*
+
+#### The ladder is observation, not sentiment
+
+Vanilla's seven friendship tiers are *"it loves you"* down to *"why does it
+hate you"*. **Ours are readings**, and the register never softens:
+
+| | |
+|---|---|
+| highest | *"This one would not leave if you opened the box. I have not seen many like that."* |
+| | *"It is settled. It has stopped watching the door."* |
+| | *"It stays near you without being told. That is most of it."* |
+| | *"Not yet. It does what you ask and nothing more. They all start there."* |
+| lowest | *"…I would rather not say this. It would be anywhere else if it could. What have you been asking of it?"* |
+
+***Nothing there says a daemon feels anything.*** Every rung reports **where it
+puts itself and what it does unasked** — *and the bottom rung is worse for
+being stated flatly.* **Craft rule 1 is not strained**, because nobody claims
+to know what is happening inside it.
+
+#### Four lines that are doing other work
+
+| | |
+|---|---|
+| **on AL** | *"He has not mentioned the result. So I know the result."* |
+| **on the TOWN MAP** | *"It shows where you are and what the places are called. The two do not always agree."* — 3.2's device, ninety seconds early |
+| **on the bookshelf** | *"Shelves of books about daemons. None of them by Gran."* |
+| **on an EGG** | *"I cannot do anything with an EGG. There is nothing running in it yet."* |
+
+***"None of them by Gran" pays off a line in the lab*** — *"Everyone says so.
+Very few of them have read her."* **Neither explains the other.**
+
+*Open:* **DAISY is not renamed.** She is a Clear — *Crystal's granddaughter and
+AL's sister* — and hers is the last vanilla name in the family. **That is a
+decision, and it is one vocabulary entry when it is made.**
 
 ## 5. THE BENCHMARKS
 
