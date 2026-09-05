@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.73 — 2026-09-04
+
+### The debug kit had the ticket and still could not board
+
+- ***The item is not the permission.*** `ITEM_SS_TICKET` went into the bag last time and the ship was still shut, because the sailor at Ardor runs
+
+> `goto_if_unset FLAG_GOT_SS_TICKET, ...DontHaveSSTicket`
+
+- **He checks a FLAG and never looks in the bag at all.** A debug save with the ticket in hand was turned away at the gangway
+- **Both are set now, deliberately**: *the flag is what opens the ship; the item is what the player can read a description of*, which is what 9.3 is here to evaluate
+- ***Worth remembering as a class, not an incident.*** A test kit that grants objects grants nothing the game gates on state — and **every one of those failures looks like the kit did not run**
+
 ## v11.72 — 2026-09-04
 
 ### GLAUCOUS ISLES
