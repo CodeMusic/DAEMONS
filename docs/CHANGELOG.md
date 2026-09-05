@@ -5,6 +5,28 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.69 — 2026-09-04
+
+### KEEPALIVE PLANT
+
+- ***The Power Plant was the last place in Kanto carrying its vanilla name.*** The other two landmarks did not need one — **ember** and **seafoam** are both colour words and already obey 0.2
+- **A keepalive is a signal whose only purpose is to stop a connection from closing.** The building is still running with nobody connected, and its resident is SENTINEL, whose one move stops you `DETACH`ing. ***The place is its own resident's move at building scale***
+- **Two things vanilla had already arranged**: Rock Tunnel next door is **THE BLACKOUT**, so Route 10 signposts *the blackout and the thing still running*; and Route 17 now reads ***"I got my VOLTORB at the abandoned KEEPALIVE PLANT."***
+- *The generated `region_map.c` symbol followed by hand, byte-wise*: `sMapsecName_KEEPALIVE_PLANT`
+
+### `tools/gbaindex.py` — which entries to read in which cartridge
+
+- **Two tests that do not work, both tried.** *"Does it differ between editions?"* is useless because **vanilla already varies nearly all of its own entries** — 224 of them. And *"were they identical in vanilla?"* fails too: **every entry this project has paired was one vanilla had already varied**
+- **So the test is similarity to upstream**, which is what `port_dialogue.py` uses for the same reason: *a vocabulary substitution leaves most of a sentence standing and an entry we wrote does not*
+
+| | |
+|---|---|
+| **written as a pair — read both cartridges** | **7**: MUSAI, CODEMUSAI, SEEKMUSAI, CAREMUSAI, SUBSTRATE, SENTINEL, QUORUM |
+| ours, one entry copied into both | 27 |
+| renamed, but the entry is still vanilla's | **2 — HIBERNATE and SUSPEND** |
+
+- *That last row is a genuine to-do the tool found on its first run*
+
 ## v11.68 — 2026-09-04
 
 ### SENTINEL was on the wrong slot, and the reason is a rule

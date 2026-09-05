@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.68**
+**A total conversion — the living design bible, v11.69**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2221,10 +2221,33 @@ vanilla's encounter table, and it was already true.
 - **PORYGON2 is still PORYGON2.** It is `EVO_TRADE_ITEM` with UP-GRADE, so in a
   single-player cartridge it is effectively unreachable; naming it is a
   decision and there is no pressure behind it.
-- ***The Power Plant is the last place in Kanto still carrying its vanilla
-  name.*** Every other location has been renamed into the pigment or process
-  register. **A building that is still running with nobody in it wants a word**
-  — and it is now the home of the daemon that is still watching it.
+- ***The three legendary birds are still vanilla-named.*** Each one already
+  sits on its own myth and vanilla put it there: **PROMETHEUS** on Mt. Ember's
+  summit (*fire given as craft, and he was bound to a rock on a mountain*),
+  **ASCLEPIUS** in the plant (*he raised the dead and Zeus killed him with a
+  thunderbolt*), and **ORPHEUS** four floors down in Seafoam (*he went down,
+  and lost her by looking back* — **the observer destroyed by observing**,
+  which is 0.4 with a knife in it). *Awaiting the author's word.*
+
+#### Named 2026-09-04 — **KEEPALIVE PLANT**
+
+***The Power Plant was the last place in Kanto still carrying its vanilla
+name.*** The other two landmarks did not need one: **ember** and **seafoam**
+are both colour words and already obey 0.2. This one was not.
+
+**A keepalive is a signal whose only purpose is to stop a connection from
+closing.** The building is still running with nobody connected to it — and the
+daemon that lives there is SENTINEL, whose one move is `MEAN LOOK`, which stops
+you `DETACH`ing. ***The place is its own resident's move at building scale.***
+
+*Two things vanilla had already arranged.* **Rock Tunnel next door is THE
+BLACKOUT**, so Route 10 now signposts *the blackout and the thing still
+running*. And Route 17 says **"I got my VOLTORB at the abandoned KEEPALIVE
+PLANT"** — a sentence that is funnier and sadder than it was.
+
+*Renaming a mapsec renames a generated C symbol that `region_map.c` names by
+hand, and the generator works on bytes*, so the space became an underscore:
+`sMapsecName_KEEPALIVE_PLANT`.
 
 ---
 
