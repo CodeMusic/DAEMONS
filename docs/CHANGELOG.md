@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.81 — 2026-09-04
+
+### The fox ruling rested on a resolution the port moved
+
+- **2026-08-29 decided it and the reasoning was explicit**: *"at 16x16 a character has about three pixels of head, so the entire animal vocabulary is ears, a tail, and a shade"* — **so the Clears get ears, tail and value, nobody else changes, and the game never says anyone is a fox**
+- ***That is a Game Boy fact. The GBA intro portrait is 64x96.*** At that size **a fox is a fox** — ears, muzzle, brush, fully legible, on **the first character the player meets**, while every other portrait is a person
+- ***The named failure mode is no longer a risk to watch for on playtest. It is the default***
+
+### So the cheap escape stops being contingent
+
+- The ruling already specified the fix — *give light animal features to a handful of recurring characters so fox becomes one species among several* — and named **Scorn** first
+- **He now arrives with her rather than after her**, because *the deferral assumed a size at which the problem would not show, and that size is gone*
+- **The opera already has him: a red snake.** A species, not a shade — which is exactly what makes fox read as one kind among several
+
+### What does not change
+
+- ***The game never says anyone is a fox.*** **Link's Awakening is the model** — an island of animal-people, unremarked by anybody in it. *A world, not a claim.* **It becomes a statement the moment a character notices, and none does**
+- **The daemon-confusion worry is answered by context**: portraits and battle sprites never share a screen. *A fox in a lab coat at 64x96 is a person in a room; MUSAI at 64x64 on a platform is a creature in a fight.* **The player is never asked to tell them apart**
+- **The overworld ruling stands** — 16x32 is still three pixels of head
+- `docs/gemini-prompts-crystal.txt` carries both briefs
+
 ## v11.80 — 2026-09-04
 
 ### Callow gym — 3 ours to 26, slice at 34%

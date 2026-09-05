@@ -1,0 +1,68 @@
+CRYSTAL CLEAR — the intro portrait, and SCORN
+=============================================
+
+Target: graphics/oak_speech/oak/pic.png, 64x96, indexed.
+The vanilla sprite it replaces is the FRLG professor: a full-body figure,
+hand extended, standing on a pale ellipse, thick dark outline, flat cel
+shading, no gradients and no anti-aliasing.
+
+Attach as reference: the vanilla professor sprite (that exact style is the
+target), plus your opera art of the character.
+
+Do not ask for a specific pixel size. Gemini will not hit it and it does not
+need to; the reduction is done here. What must be right is the POSE, the
+CROP and the STYLE.
+
+--------------------------------------------------------------------------
+1. CRYSTAL CLEAR
+--------------------------------------------------------------------------
+Full-body character portrait in the style of a Game Boy Advance RPG
+sprite. Flat cel shading, thick dark outline, no gradients, no
+anti-aliasing, no background detail.
+
+Subject: an anthropomorphic golden-amber fox, standing, facing the
+viewer and turned slightly to her right. She wears an open white
+laboratory coat over a plain darker top, and plain trousers. One hand
+is extended in front of her at waist height, palm up, offering
+something. The other rests at her side.
+
+She is a scientist, not a mascot: the posture is composed and still,
+the expression level and unsmiling, the eyes direct. She is older —
+this is a researcher near the end of a long career.
+
+Fox features are structural, not decorative: upright ears, a narrow
+muzzle, a full brush tail hanging behind her. The coat and trousers
+are ordinary human clothing and fit properly.
+
+Colour: golden amber fur, light on the muzzle and chest, darker at
+the ears and legs. White coat. Keep the total number of distinct
+colours low — under about fifteen.
+
+Plain flat background, one colour, no scenery. Full body, feet
+included, standing on a pale flat ellipse of shadow.
+
+--------------------------------------------------------------------------
+2. SCORN
+--------------------------------------------------------------------------
+Same style, same framing, same instruction set. Then:
+
+Subject: an anthropomorphic red cobra in a well-cut grey three-piece
+business suit, white shirt, red tie. Standing squarely, facing the
+viewer, hands at his sides or one in a pocket. The hood is up and
+open behind his head. The expression is pleasant.
+
+He is not menacing and must not be drawn as a villain. He is a
+senior executive who is having a perfectly good day.
+
+Colour: deep red hood and scales, pale underside at the throat, grey
+suit, red tie. Under about fifteen distinct colours.
+
+--------------------------------------------------------------------------
+WHY BOTH, AND WHY NOW
+--------------------------------------------------------------------------
+vision.md 10 (amended 2026-09-04): three tailed characters among an untailed
+cast reads as OTHERNESS rather than LINEAGE. The fix is not to convert
+everyone -- it is to make fox one species among several. Scorn is the first
+of that handful, and he has to arrive with her, not after her.
+
+The game never says anyone is a fox. Nobody notices, ever.

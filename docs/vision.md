@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.80**
+**A total conversion — the living design bible, v11.81**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4175,6 +4175,42 @@ Two ambitions worth recording so they are not lost, and **deliberately not desig
 **They are not, and the reason is resolution rather than lore.** At 16×16 a character has about three pixels of head, so the entire animal vocabulary is **ears, a tail, and a shade** — the bible says as much already. Making the whole cast anthropomorphic costs something like a hundred sprite sets and buys almost nothing, because at that size a badger and a bear are the same eight pixels. So: **the Clears get ears, tail and value; nobody else changes; and the game never says anyone is a fox.** It reads as family resemblance rather than as a species claim, which is exactly the job 4.3 gives it.
 
 *The failure mode, and the cheap escape.* If three tailed characters among an untailed cast reads as *otherness* rather than *lineage*, the fix is not to convert everyone — it is to give light animal features to a handful of **recurring** characters (Scorn, two or three Benchmark leaders) so that fox becomes one species among several. Eight sprites, not a hundred. Decide it on playtest, not now.
+
+##### Amended 2026-09-04 — **the port moved the resolution the ruling rested on**
+
+***The reasoning above is a Game Boy fact.*** *"At 16x16 a character has about
+three pixels of head, so the entire animal vocabulary is ears, a tail, and a
+shade"* — **and the intro portrait on GBA is 64x96.**
+
+**At that size a fox is a fox.** Ears, muzzle, brush, all fully legible, on the
+**first character the player meets**, while every other portrait in the game is
+a person. ***The named failure mode is no longer a risk to watch for on
+playtest; it is the default.***
+
+**So the cheap escape stops being contingent.** *Scorn gets his animal at the
+same time Crystal gets hers*, not after — **because the deferral assumed a size
+at which the problem would not show, and that size is gone.** The opera already
+has him: **a red snake**, which is a species and not a shade, and that is
+precisely what makes fox read as *one kind among several* rather than as
+*other*.
+
+**What does not change**, and is the reason the whole thing holds:
+
+> ***The game never says anyone is a fox.***
+
+*Link's Awakening is the model and the user named it* — **an island of
+animal-people, unremarked by anybody in it.** A world, not a claim. **It only
+becomes a statement the moment a character notices**, and no character does.
+
+*And the daemon-confusion worry is answered by context, not by design.*
+**Portraits and battle sprites never share a screen**: a fox in a lab coat at
+64x96 is read as a person in a room, and MUSAI at 64x64 on a platform is read
+as a creature in a fight. **The player is never asked to tell them apart,
+because they are never side by side.**
+
+*The overworld ruling above stands unchanged* — 16x32 is still three pixels of
+head, and **the Clears still get ears, tail and value out there and nothing
+else.**
 
 *And the resemblance is carried by value, not hue.* 8.6 means the player sees four greys, so *golden-amber*, *darker* and *between* have to be **light-to-mid, dark, and between** — with identical ear and muzzle geometry doing the family work. Colour words will not survive the conversion and should never be relied on in a prompt.
 
