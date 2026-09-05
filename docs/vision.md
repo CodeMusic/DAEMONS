@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.75**
+**A total conversion — the living design bible, v11.76**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2445,6 +2445,53 @@ did nothing was left alone long enough, *which is the whole of Magikarp told as
 a security incident.*
 
 ---
+
+### 4.27 The slice, measured — 9% of it is ours
+
+***`tools/gbaslice.py` audits Blanche to Slate against upstream***, block by
+block, using the same similarity test `gbaindex.py` uses and for the same
+reason: **the vocabulary pass rewrites POKéMON and USER everywhere**, so *"did
+it change?"* says yes to almost everything and means nothing. **Below 0.5 the
+sentence was rewritten. Above it, vanilla is still doing the talking with our
+nouns in its mouth.**
+
+| | |
+|---|---|
+| blocks in the slice | **314** |
+| **ours** | **29 — 9%** |
+| vanilla, reworded | 161 |
+| vanilla, untouched | 124 |
+
+#### This is not a port regression, and saying so matters
+
+***`port_dialogue.py` carried everything there was.*** Its own tally is **569
+blocks, 536 matched, 0 without a home.** Nothing was lost crossing engines.
+
+**The writing simply went somewhere else.** *507 of those 536 blocks are not in
+the slice* — they are in Halftone, at Quicksilver, inside Corpus, at the Review
+Board. **The effort went to the places that carry the story, and the first hour
+was left as Kanto with the labels changed.**
+
+***That is the honest shape of the problem, and it is worse than a bug.*** A bug
+is found by playing. **This is found by counting**, because reading it feels
+fine — every noun is right, every place name is ours, and the sentences
+underneath are somebody else's.
+
+#### Where it is worst, and where it is worth fixing first
+
+| | ours | vanilla |
+|---|---|---|
+| **CRYSTAL CLEAR's lab** | 7 | **45** |
+| the rival's house | 0 | 11 |
+| Callow gym | 3 | 11 |
+| The Undertone | 2 | 13 |
+| Callow school | 0 | 9 |
+| Slate museum | 0 | 9 |
+
+***The lab is the first ten minutes of the game and it is 7 blocks to 45.***
+**Slate's gym is the only room in the slice that is mostly ours** — 8 to 5 —
+because 5.1 wrote CAIRN's award, *and the difference is audible the moment you
+walk in.*
 
 ## 5. THE BENCHMARKS
 

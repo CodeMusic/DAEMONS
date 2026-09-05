@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.76 — 2026-09-04
+
+### `tools/gbaslice.py` — the slice, measured
+
+- **314 blocks between Blanche and Slate. 29 are ours. Nine percent.** 161 are vanilla reworded, 124 untouched
+- **The test is similarity to upstream**, as in `gbaindex.py`: *the vocabulary pass rewrites POKéMON and USER everywhere*, so *"did it change?"* means nothing. **Below 0.5 the sentence was rewritten; above it, vanilla is still talking with our nouns in its mouth**
+
+### It is not a port regression, and saying so matters
+
+- ***`port_dialogue.py` carried everything there was*** — its own tally is **569 blocks, 536 matched, 0 without a home.** Nothing was lost crossing engines
+- **507 of those 536 are not in the slice.** They are in Halftone, Quicksilver, Corpus, the Review Board. *The effort went to the places that carry the story, and the first hour was left as Kanto with the labels changed*
+- ***Worse than a bug, because a bug is found by playing.*** This is found by **counting** — reading it feels fine, every noun is right, and the sentences underneath are somebody else's
+
+| | ours | vanilla |
+|---|---|---|
+| **CRYSTAL CLEAR's lab** | 7 | **45** |
+| the rival's house | 0 | 11 |
+| Callow gym | 3 | 11 |
+| The Undertone | 2 | 13 |
+
+- ***The lab is the first ten minutes of the game, at 7 blocks to 45.*** **Slate's gym is the only room in the slice that is mostly ours** (8 to 5) because 5.1 wrote CAIRN's award
+
+### A false alarm, recorded
+
+- **A `sed` range printed two non-adjacent blocks together** and I read the join as a spliced message. **It was not.** A duplicate-block detector across every map found **one** collapsed pair in the whole game — *"dear boy" and "dear girl" onto "dear friend"*, which is the degendering pass working
+
 ## v11.75 — 2026-09-04
 
 ### Thirty-four Index entries, and the pair is not the default
