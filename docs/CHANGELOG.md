@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.67 — 2026-09-04
+
+### The debug kit could not board the ship
+
+- **`ITEM_SS_TICKET` was not in the test bag**, so a debug save could not reach the ship at Ardor — *or HM01, or anything behind it*
+- It also fits the kit's own logic: **a KEY item is its own pocket and its own description pane**, which is what 9.3's spike is evaluating
+
+### A printer in Halftone argues about the primaries
+
+- ***"I said red, yellow, blue. He said red, green, blue. He works in light, so he adds. I work in ink, so I take away. He called me negative for a year."***
+- ***"Take everything from him and he is sitting in the dark. Take everything from me and I have a clean sheet. We were both right. He still will not have it."***
+
+**It is not arbitrary. Three things hold it in place:**
+
+1. **0.2** — the map is named in pigment and printing, so **this world is subtractive by construction**, while the player holds an **additive** screen. *The argument is about a split the player is sitting inside*
+2. **0.4** — both men are right; **the disagreement is not error, it is two frames.** The article, in a form a player can check
+3. **8.6** — the world is grey and the player supplies the colour, so the game is **neither** system. *It declines to mix and lets the observer finish it*
+
+- **Halftone was the only possible town.** Its name is the dot screen, and its sign already reads **"The Noble Purple Town"** — in a game that records **purple is not on the spectrum** and the mind invents it
+- **Craft rule 2 is not spent.** The Verdigris kid keeps the one *near-notice*; **the printer never mentions feeling** — he is talking about ink, and he is right
+- ***The joke inverts on purpose***: the brother calls him **negative**, and the subtractive one is the one holding the **clean sheet** while the additive one sits in the dark. **The pessimist gets the blank page**
+- *Cost*: the weakest of that shop's three hints, where to buy X ATTACK
+
 ## v11.66 — 2026-09-04
 
 ### 4.25 SENTINEL — the daemon that never attacks

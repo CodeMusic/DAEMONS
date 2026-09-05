@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.66**
+**A total conversion — the living design bible, v11.67**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -146,6 +146,51 @@ times:
 one cartridge learns a creature; a player with both learns that **a record has
 an author**. *They are never told which entry is true, because the question is
 malformed* — which is the point of the article, and the point of the pair.
+
+---
+
+#### And one man in Halftone argues about paint
+
+**The balding man in the Halftone Mart is a printer, and his brother works in
+light:**
+
+> *"My brother and I did not speak for a year over the primaries. I said red,
+> yellow, blue. He said red, green, blue. He works in light, so he adds. I work
+> in ink, so I take away. He called me negative for a year. Take everything from
+> him and he is sitting in the dark. Take everything from me and I have a clean
+> sheet. We were both right. He still will not have it."*
+
+***It is not arbitrary and it is not the thesis.*** Three things hold it in place:
+
+1. **0.2.** The map is named in the vocabulary of pigment and printing —
+   Blanche, Halftone, Verdigris, Quicksilver, Brazen. **This world is
+   subtractive by construction.** Meanwhile the player is holding a **GBA
+   screen, which is additive.** *The argument is about a split the player is
+   physically sitting inside.*
+2. **0.4.** Both men are right. RGB is correct for light and RYB for ink, and
+   **the disagreement is not an error — it is two frames.** *This is the
+   article in a form a player can go and check for themselves.*
+3. **8.6.** The world is grey and the player supplies the colour, so the game
+   is **neither** system. *It declines to mix at all, and lets the observer
+   finish it.*
+
+**Halftone was the only possible town.** Its name is the dot screen — *the
+process that makes a colour out of inks that are not that colour* — and its own
+sign already reads **"The Noble Purple Town"**, in a game where 8.6 records
+that **purple is not on the spectrum**, that the mind folds the line into a
+loop and invents it. *A man arguing about which primaries are real, under a
+sign naming the colour that is not one.*
+
+**It does not spend craft rule 2.** That rule allows exactly one NPC to *nearly
+notice* the colour-emotion link and the Verdigris kid has it. **The printer
+never mentions feeling.** He is talking about ink, and he is simply right.
+
+***The joke inverts on purpose.*** The brother calls him **negative** — and the
+subtractive one is the one who ends up holding the **clean sheet**, white, while
+the additive one is left in the dark. **The pessimist gets the blank page.**
+
+*Cost:* the balding man used to ask where to buy X ATTACK. **That was the
+weakest of the three hints in that shop**, and the shop keeps the other two.
 
 ---
 
