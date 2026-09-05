@@ -5,6 +5,30 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.77 — 2026-09-04
+
+### The lab, written — 7 blocks to 34
+
+- ***The first ten minutes of the game were 7 ours against 45 vanilla's.*** Now **34 against 23**, and the slice moved from **9% to 17%**
+- **Vanilla's professor is genial and grand. Ours is a researcher** whom 4.10 has already had removed from a building
+
+| | |
+|---|---|
+| on why she called them | *"I forget why I ask people things, and then it turns out I was right."* |
+| on the three she has left | *"I used to keep a great many more. Three is what I have now."* |
+| on choosing | *"Choose. Not carefully. You cannot know enough yet to choose carefully."* |
+| on the INDEX | *"It writes down what a daemon does… It is very good at what it records."* |
+| on her own project | *"I will not finish it. That is not modesty, it is arithmetic."* |
+
+- ***"It is very good at what it records" is 0.2 in seven words*** — the reproduction that loses the original, said as a compliment by the person who built it
+- **The send-off is inverted**: *"POKéMON around the world wait for you"* becomes ***"They are out there running. None of them is waiting for you."***
+
+### Three findings from doing it
+
+- ***The aides were the easiest to get wrong.*** *"I study DAEMON as CRYSTAL's AIDE"* is vanilla's idea of a scientist; *"I read daemons here. CRYSTAL signs the work."* is a person
+- ***`catch → bind` reached a place it should not.*** HANDLER's entry read *"It **catches** what stopped"* — **the exception sense, which is the whole point of a fault handler** — and the pass rewrote it to *"binds"*. The rule is right and the collision is real, so the word became *intercepts*. **A vocabulary that owns a common verb keeps finding the other meaning of it**
+- ***A block regex is the wrong tool for a `.string` run.*** Escaping `\\p` and `\\n` in a pattern that also escapes quotes matched **only single-line blocks** and skipped every multi-line one — **3 of 40, with no error.** Walking the lines and consuming while they start with `.string` is four lines and cannot be wrong
+
 ## v11.76 — 2026-09-04
 
 ### `tools/gbaslice.py` — the slice, measured

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.76**
+**A total conversion — the living design bible, v11.77**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2492,6 +2492,56 @@ underneath are somebody else's.
 **Slate's gym is the only room in the slice that is mostly ours** — 8 to 5 —
 because 5.1 wrote CAIRN's award, *and the difference is audible the moment you
 walk in.*
+
+### 4.28 The lab, written — 7 blocks to 34
+
+***The first ten minutes of the game were 7 blocks ours against 45 vanilla's.***
+They are **34 against 23** now, and the slice as a whole moved from **9% to
+17%.**
+
+#### What changed about CRYSTAL
+
+**Vanilla's professor is genial and forgetful and slightly grand.** *Ours is a
+researcher*, and 4.10 has already had her removed from a building by a
+fitness-for-work procedure — **so the register is precise, dry, and unmoved.**
+
+| | |
+|---|---|
+| on why she called them | *"I forget why I ask people things, and then it turns out I was right."* |
+| on the three she has left | *"I used to keep a great many more. Three is what I have now."* |
+| on choosing | *"Choose. Not carefully. You cannot know enough yet to choose carefully."* |
+| on the INDEX | *"It writes down what a daemon does. It does that by itself, and it does not ask the daemon. It is very good at what it records."* |
+| on her own project | *"I will not finish it. That is not modesty, it is arithmetic."* |
+| on an empty INDEX | *"…It is empty. That is a result as well."* |
+
+***"It is very good at what it records" is the whole of 0.2 in seven words***
+— **the reproduction that loses the original**, said as a compliment, by the
+person who built it. *Craft rule 1 is untouched: she is describing an
+instrument.*
+
+**And the line vanilla ends on is inverted.** *"POKéMON around the world wait
+for you"* becomes ***"They are out there running. None of them is waiting for
+you."*** — which is 0.4's falling tree, in the send-off, and it is funnier.
+
+#### Three findings from doing it
+
+***The lab is not one voice, it is three.*** Crystal, AL, and the aides —
+**and the aides were the easiest to get wrong**, because a line like *"I study
+DAEMON as CRYSTAL's AIDE"* is vanilla's idea of a scientist. *"I read daemons
+here. CRYSTAL signs the work."* is a person.
+
+***`catch → bind` reached a place it should not.*** HANDLER's entry read *"It
+**catches** what stopped"* — the exception sense, which is the entire point of
+a fault handler — and the vocabulary pass rewrote it to **"binds"**. **The rule
+is right and the collision is real**, so the fix was to choose a word the tool
+cannot misread: *intercepts*. **A vocabulary that owns a common verb will keep
+finding the other meaning of it.**
+
+***And a block regex is the wrong tool for a `.string` run.*** Escaping `\p`
+and `\n` inside a pattern that also escapes quotes matched **only the
+single-line blocks** and silently skipped every multi-line one — *3 of 40, with
+no error.* **Walking the lines and consuming while they start with `.string`
+is four lines long and cannot be wrong.**
 
 ## 5. THE BENCHMARKS
 
