@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.72 — 2026-09-04
+
+### GLAUCOUS ISLES
+
+- ***My "keep it, it is already a colour word" argument was wrong***, and being asked twice is what caught it: **FUCHSIA is also a colour and it became LURID.** Cerulean, Viridian and Celadon likewise. **The test was never *is it a colour* — it is *is it ours***, and SEAFOAM was the last major place still wearing vanilla's word
+- **Glaucous is a real pigment** — the dull blue-green bloom on a plum — so it names a **surface**, which is the joke: *ORPHEUS is four floors under it*
+- **The rename lives in `port_vocab.py` with the towns**, not in hand edits, and `ISLANDS → ISLES` is a phrase entry so every other island keeps its word
+
+### MOCK, and a constraint that was never a constraint here
+
+- ***4.6 ruled out `PERSPECTIVE` as the category*** because the Game Boy caps it at **ten** characters and proposed `FRAME` instead. **Gen 3's cap is eleven** — vanilla ships `TINY TURTLE` and `HUMAN SHAPE`. *So the category is `PERSPECTIVE`, spelled out*
+- **The entry was a rewrite, not a word swap**, as 4.6 required — vanilla's prose is *"recombine its own cellular structure"*
+- CONTENT: *"It becomes whatever it is looking at, completely. While it is doing that there is nothing of it left over."*
+- CONTEXT: ***"It has been every daemon in this record and appears in none of them under its own name."*** — 0.4's observer problem inverted
+- **The battle message is 4.6's verbatim**: `<USER>` **took the frame of** `<NAME>`!
+
+### The animation — colour, because the colour means something
+
+- ***9.4 settles it***: on the GBA a daemon is coloured by its **type**, so the palette is information, not decoration
+- ***And the mechanic was already saying it.*** Gen 3's transform copies the target's sprite **and palette** — so **PERSPECTIVE already ends with the attacker wearing the target's type.** Nobody arranged that
+- **What vanilla did not show is the cost.** 4.6 insists the move is *total and lossy*. **Its own hue now drains to grey before the swap and the new one arrives after**
+- ***Grey is not a colour spent***: 8.6 makes grey the ground this game already stands on, so the surrender is a return to it and invariant 5 pays nothing
+
 ## v11.71 — 2026-09-04
 
 ### PLANT stays, and the table underneath it changed meaning for free

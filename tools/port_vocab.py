@@ -142,6 +142,10 @@ VOCAB = {
     "CERULEAN": "DOLDRUM", "VERMILION": "ARDOR", "LAVENDER": "HALFTONE",
     "CELADON": "VERDIGRIS", "FUCHSIA": "LURID", "SAFFRON": "BRAZEN",
     "CINNABAR": "QUICKSILVER", "INDIGO": "UMBRA",
+    # A landmark rather than a town, and the last place still wearing vanilla's
+    # word. Glaucous is a real pigment -- the dull blue-green bloom on a plum --
+    # so it names a SURFACE, which is the joke: ORPHEUS is four floors under it.
+    "SEAFOAM": "GLAUCOUS",
     # 1.4, and vision 212-235. Gen 1 said Enemy where Gen 3 says Foe, and the
     # prefix matters more than the two standalone strings: it is what every
     # {B_ATK_NAME_WITH_PREFIX} expands to for the opposing side. It is also what
@@ -241,6 +245,9 @@ ENGAGE = [("would like to battle", "would like to engage"),
 
 PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   [("SAFARI BALLS", "GUESTBOXES"), ("SAFARI BALL", "GUESTBOX")] +
+                  # ISLANDS only becomes ISLES behind this one name -- every
+                  # other island in the game keeps the word it had.
+                  [("SEAFOAM ISLANDS", "GLAUCOUS ISLES")] +
                   ENGAGE),
                  key=lambda kv: -len(kv[0]))
 PHRASE_RE = re.compile('|'.join(re.escape(k) for k, _ in PHRASES)) if PHRASES else None

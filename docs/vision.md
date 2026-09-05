@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.71**
+**A total conversion — the living design bible, v11.72**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1850,6 +1850,58 @@ Her ability is **perspective thinking**: holding another's frame well enough to 
 **One dangling TRANSFORM remains, deliberately.** Ditto's Index entry — category `TRANSFORM`, prose *"transform itself into a duplicate"* — is untouched, for three reasons. It is **MOCK's** entry and this section owns it; the species is still called DITTO until 9; and the prose is built on *"copying an enemy's genetic code"*, which is wrong for a daemon regardless of what the move is called. That is a rewrite, not a word swap.
 
 *A constraint discovered on the way, which 9 will need.* **Index categories cannot exceed 10 characters.** The category prints at `hlcoord 9, 4` and the box border sits at column 19, leaving columns 9–18; vanilla's longest categories are exactly 10 and that is not a coincidence. So MOCK's category **cannot be PERSPECTIVE** (11). **FRAME** is the obvious candidate — it matches the battle message and is five characters — but it is 9's call, with the rest of the entry.
+
+#### Implemented 2026-09-04 — MOCK, and the ten-character rule was a Game Boy fact
+
+***4.6 held the Ditto slot back for 9, and warned about one thing that turns
+out not to apply here.*** The Game Boy caps an Index category at **ten**
+characters — the category prints at `hlcoord 9, 4` and the border sits at
+column 19 — so `PERSPECTIVE` (11) was ruled out and `FRAME` proposed instead.
+
+**Gen 3's cap is eleven.** Vanilla ships `TINY TURTLE`, `HUMAN SHAPE` and
+`TRIPLE BIRD`. *So the category is `PERSPECTIVE`, spelled out, and the
+constraint that forced the compromise was never a constraint on this machine.*
+
+**And the entry needed a rewrite rather than a word swap**, exactly as 4.6
+said: vanilla's prose is built on *"recombine its own cellular structure"*,
+which is wrong for a daemon however the move is named.
+
+| | |
+|---|---|
+| **CONTENT** | *"It becomes whatever it is looking at, completely. While it is doing that there is nothing of it left over."* |
+| **CONTEXT** | *"It has been every daemon in this record and appears in none of them under its own name."* |
+
+***The CONTEXT account is the lossiness, said about the Index itself.*** MOCK
+has been everything in the book and is in it under no name of its own — which
+is 0.4's observer problem inverted: **not the watcher missing from the record,
+but the thing that was every entry.**
+
+**The battle message is 4.6's, verbatim**: `<USER>` **took the frame of**
+`<NAME>`! *And MOCK shares PERSPECTIVE with ARTSAI and with nothing else.*
+
+#### The animation, and why colour is allowed in it
+
+***9.4 is the rule that settles this.*** Invariant 5 spends colour once, but
+**on the GBA a daemon is coloured by its TYPE, which makes the palette
+information rather than decoration.** So the question is not *may this move use
+colour* — it is *does the colour mean something.*
+
+***And the mechanic was already saying it.*** Gen 3's transform copies the
+target's sprite **and its palette**, and our palettes are type colours — **so
+PERSPECTIVE already ends with the attacker wearing the target's type.** Nobody
+arranged that; it fell out of 9.4 meeting a vanilla mechanic.
+
+**What vanilla did not show is the cost.** 4.6 insists PERSPECTIVE is *total
+and lossy — you get the other's frame by surrendering your own* — and the
+animation went straight to the new shape without ever leaving the old one.
+
+> **Its own hue now drains to grey before the swap, and the new one arrives
+> after it.**
+
+***Grey is not a colour spent here.*** **8.6 makes grey the ground this game
+already stands on**, so the surrender is drawn as a return to it and costs
+invariant 5 nothing. *Three lines of animation script, and the move argues its
+own definition.*
 
 #### The three forms — reference art, 2026-08-31
 
