@@ -5,6 +5,34 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.80 — 2026-09-04
+
+### Callow gym — 3 ours to 26, slice at 34%
+
+- ***Written for what was already in it, not for where it comes.*** **The boss's final line was ours** — *"I optimised what I could measure. That is the job. The machine chose what I weighted it to choose."* — **and his first line was vanilla cackling**: *"Fwahahaha! This is my hideout!"*
+- ***The same man, ninety seconds apart, in two different games.*** He opens cold now and the two ends match
+
+### The MARK is not a reward
+
+| | |
+|---|---|
+| vanilla | *"It is evidence of your mastery as a POKéMON trainer!"* |
+| ours | ***"It is not a reward. It is a record that you were assessed."*** |
+
+- **That is what a MARK has been since 5**, and it had never been said by the person who hands them out
+- His TM is dated without explanation: ***"I wrote it when I ran this GYM. That was before the other thing."***
+
+### The staff, per craft rule 6
+
+- **0.1 says it outright**: *Corpus employees are cheerful and absurd; the horror is what they are cheerful about.* **Seven karate masters became seven employees**
+- *"My daemons and I are very aligned. It is in my review."* · *"If my daemons performed the way I do in meetings…"* · *"Conditions were not typical."* · *"This will be raised with me."*
+- ***Nobody in the building knows who runs it.*** The guide at the door has been asking: **"I have asked. They smile."**
+
+### Open, and the writing has half-answered it
+
+- ***GIOVANNI is not renamed.*** But 4.18 gives **SCORN** as the surname that painted over `CLEAR LABORATORY`, and the man in this gym already says *"the machine chose what I weighted it to choose"* — **which is Scorn's crime, stated by him, in the ROM**
+- **Either the man in the gym is Scorn, or two different people weighted the same machine.** One vocabulary entry when it is decided
+
 ## v11.79 — 2026-09-04
 
 ### The Undertone — 2 ours to 15, slice at 27%

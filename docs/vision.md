@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.79**
+**A total conversion — the living design bible, v11.80**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2638,6 +2638,66 @@ the same rule.* **The lab now reads "one that is not tired".**
 
 *Writing a second room found an error in the first.* **That is an argument for
 doing them in a run rather than one at a time.**
+
+### 4.31 Callow gym — the scene was at war with itself
+
+**3 ours to 26**, and the slice is **34%.** *This room was not written because
+it comes early — it comes last — but because of what was already in it.*
+
+***The boss's final line was ours and it is the best thing in the building:***
+
+> *"Well measured. I optimised what I could measure. That is the job. The
+> machine chose what I weighted it to choose. We are both to blame, I suppose.
+> It has never said otherwise."*
+
+**And his first line was vanilla, cackling:** *"Fwahahaha! This is my hideout!"*
+***The same man, ninety seconds apart, in two different games.*** A player who
+met the second could not be expected to hear the first.
+
+He opens cold now, and the two ends match:
+
+> *"So. You found this one too. It was going to start again here. I ran this
+> GYM once, before any of the rest of it. I am running it now. Nothing held
+> back."*
+
+#### The MARK is not a reward
+
+| | |
+|---|---|
+| vanilla | *"It is evidence of your mastery as a POKéMON trainer!"* |
+| ours | ***"It is not a reward. It is a record that you were assessed."*** |
+
+**That is what a MARK has been since 5**, and it had never been said by the
+person who hands them out. *And his TM is dated without explanation:* **"I wrote
+it when I ran this GYM. That was before the other thing."**
+
+#### The staff, per craft rule 6
+
+**0.1 says it outright** — *"Corpus employees are cheerful and absurd; the
+horror is what they are cheerful about."* **The gym was seven karate masters.
+It is seven employees.**
+
+| | |
+|---|---|
+| | *"My daemons and I are very aligned. It is in my review."* |
+| | *"If my daemons performed the way I do in meetings…"* |
+| | *"There is a correct way to do this, and I am doing it."* — losing: *"That was not the correct way."* |
+| | *"Conditions were not typical."* |
+| | *"This will be raised with me."* |
+| | *"Do you know who runs this building? Neither do most of us."* |
+
+***Nobody in the building knows who runs it***, and the guide at the door has
+been asking: **"I have asked. They smile."**
+
+#### Open — and the writing has half-answered it
+
+***GIOVANNI is not renamed.*** But 4.18 gives **SCORN** as the surname that
+painted over `CLEAR LABORATORY`, and the man in this gym already says **"the
+machine chose what I weighted it to choose"** — *which is Scorn's crime,
+stated by him, in the ROM, today.*
+
+**Either the man in the gym is Scorn, or two different people weighted the same
+machine.** *That is a decision, and it is one vocabulary entry.*
 
 ## 5. THE BENCHMARKS
 
