@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.72**
+**A total conversion — the living design bible, v11.74**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2359,6 +2359,63 @@ changed meaning underneath it.** *That is the cheapest kind of design there is.*
 **And SPIKE was already right.** In a building whose whole business is a
 keepalive — *a flat, regular signal that means only "still here"* — **a spike is
 the anomaly.** It was named before the building was.
+
+---
+
+### 4.26 The slice bestiary — fourteen asked for, thirty-two named
+
+***8's rule is why this is bounded.*** The bestiary is not the priority and 151
+names is the failure mode that section exists to prevent — **so the set is the
+daemons the player meets before the first MARK**, and nothing else. Nine of the
+slice's species were already ours; **fourteen were not.**
+
+**Fourteen became thirty-two, because a half-renamed line is the PORYGON2
+problem again.** SLOWPOKE without SLOWBRO is a daemon that evolves into
+vanilla. *Every line was taken whole.*
+
+| | | |
+|---|---|---|
+| ZUBAT · GOLBAT · CROBAT | **ECHO · TRACER · MULTICAST** | *a blind thing that navigates by reply* |
+| GEODUDE · GRAVELER · GOLEM | **HEAP · STACK · MONOLITH** | *the two memory regions, and a binary that is one piece* |
+| MAGIKARP · GYARADOS | **STUB · ESCALATE** | *a placeholder that does nothing, until it does* |
+| MANKEY · PRIMEAPE | **PREEMPT · LIVELOCK** | *forcible interruption, then everything interrupting everything* |
+| PSYDUCK · GOLDUCK | **FAULT · HANDLER** | *the thing it needs is not loaded; and the thing that catches that* |
+| SLOWPOKE · SLOWBRO / SLOWKING | **LATENCY · SHELL / KERNEL** | *see below* |
+| CLEFFA · CLEFAIRY · CLEFABLE | **NOISE · ANOMALY · OUTLIER** | *statistics as an evolution line* |
+| PARAS · PARASECT | **PAYLOAD · ROOTKIT** | *the thing carried inside, and the thing that won* |
+| NIDORAN♀ · NIDORINA · NIDOQUEEN | **FORK · THREAD · SCHEDULER** | process management |
+| NIDORAN♂ · NIDORINO · NIDOKING | **BRANCH · PREDICTOR · PIPELINE** | speculative execution |
+| POLIWAG · POLIWHIRL · POLIWRATH / POLITOED | **LOOP · SPINLOCK · MUTEX / SEMAPHORE** | *see below* |
+| GOLDEEN · SEAKING | **SPAWN · UPSTREAM** | *where a thing is started, and where it goes to start others* |
+
+#### Three that are doing more than naming
+
+***SLOWPOKE branches into SHELL and KERNEL***, which is the pair. A Shellder
+bites its tail and it stands up — **a process with a shell wrapped round it** —
+or bites its head and it becomes wise, which is the other half of the same
+word. *8.3 calls the CODEMUSAI branch "the central argument delivered as an
+evolution branch"; this is the same device on a joke.*
+
+***POLIWRATH and POLITOED are MUTEX and SEMAPHORE***, the canonical pair of
+synchronisation primitives, arriving as the two branches of one creature. **It
+is better than what it replaced** — `BARRIER` was the first choice and it
+collided with a vanilla move.
+
+***The two NIDORAN lines are the same idea told twice***, which is what they
+are: **one root, two divergent lines**, named for the two ways a machine makes
+many out of one.
+
+#### The check that earned its keep
+
+**Every name was validated against species, move and type tables before a byte
+was written**, and it caught two: ***`THRASH` and `BARRIER` are both vanilla
+moves.*** *A species sharing a move's name is not a build error — it is a
+battle log that reads as nonsense*, and it would have shipped.
+
+**Index entries are a separate pass.** Thirty-two daemons now wear our names
+over vanilla's prose, which `tools/gbaindex.py` reports as *renamed, but the
+entry is still vanilla's* — **the same row HIBERNATE and SUSPEND already sit
+in.** That is a writing job, not a tooling one.
 
 ---
 

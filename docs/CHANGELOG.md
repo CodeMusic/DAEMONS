@@ -5,6 +5,37 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.74 — 2026-09-04
+
+### The slice bestiary — fourteen asked for, thirty-two named
+
+- ***8's rule keeps it bounded***: the set is **the daemons the player meets before the first MARK**, not 151. Nine were already ours; fourteen were not
+- **Fourteen became thirty-two, because a half-renamed line is the PORYGON2 problem again.** *SLOWPOKE without SLOWBRO is a daemon that evolves into vanilla.* Every line taken whole — **72 species named now**
+
+| | |
+|---|---|
+| ZUBAT · GOLBAT · CROBAT | **ECHO · TRACER · MULTICAST** |
+| GEODUDE · GRAVELER · GOLEM | **HEAP · STACK · MONOLITH** |
+| MAGIKARP · GYARADOS | **STUB · ESCALATE** |
+| MANKEY · PRIMEAPE | **PREEMPT · LIVELOCK** |
+| PSYDUCK · GOLDUCK | **FAULT · HANDLER** |
+| SLOWPOKE · SLOWBRO / SLOWKING | **LATENCY · SHELL / KERNEL** |
+| CLEFFA · CLEFAIRY · CLEFABLE | **NOISE · ANOMALY · OUTLIER** |
+| PARAS · PARASECT | **PAYLOAD · ROOTKIT** |
+| NIDORAN♀ line | **FORK · THREAD · SCHEDULER** |
+| NIDORAN♂ line | **BRANCH · PREDICTOR · PIPELINE** |
+| POLIWAG · POLIWHIRL · POLIWRATH / POLITOED | **LOOP · SPINLOCK · MUTEX / SEMAPHORE** |
+| GOLDEEN · SEAKING | **SPAWN · UPSTREAM** |
+
+- ***SLOWPOKE branches into SHELL and KERNEL***, which is the pair — a Shellder on the tail is a process with a shell round it, on the head it is the other half of the same word
+- ***POLIWRATH and POLITOED are MUTEX and SEMAPHORE***, the canonical pair, as the two branches of one creature
+
+### The check that earned its keep
+
+- **Every name was validated against the species, move and type tables before a byte was written**, and it caught two: ***`THRASH` and `BARRIER` are both vanilla moves***
+- *A species sharing a move's name is not a build error — it is a battle log that reads as nonsense*, and it would have shipped. **`MUTEX` is better than the `BARRIER` it replaced**
+- **Index entries are a separate pass**: thirty-two daemons now wear our names over vanilla's prose, which `gbaindex.py` reports in the same row as HIBERNATE and SUSPEND
+
 ## v11.73 — 2026-09-04
 
 ### The debug kit had the ticket and still could not board
