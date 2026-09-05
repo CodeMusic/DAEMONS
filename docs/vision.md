@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.67**
+**A total conversion — the living design bible, v11.68**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2127,83 +2127,104 @@ The player watches a record stop in the middle of a routine week. Nobody wrote d
 
 ---
 
-### 4.25 SENTINEL — the daemon that never attacks
+### 4.25 SUBSTRATE, SENTINEL and QUORUM
 
-**The Porygon slot, NORMAL — which is CONTENT, "the undifferentiated one".**
-*The vessel was chosen for what it already is:* a made thing, a creature of
-code, built in a laboratory, which is Quicksilver's whole business.
+***SENTINEL was put on Porygon first, and that was the wrong slot.*** The
+reasoning is worth keeping because it is a rule, not an incident.
 
-***Why this creature is 0.4 as a creature.*** The 2013 article's answer to the
-falling tree is **no observer, no sound** — so a thing that only watches is
-what makes anything reportable at all. **SENTINEL does nothing, and nothing
-can be said to have happened without it.**
+**In vanilla, Porygon's entire identity is *the artificial one*** — a creature
+of code among creatures of flesh. **In this game every creature is a daemon: a
+process.** So "made of code" is the *default*, and Porygon's distinction
+evaporates on contact with the fiction. *Spending that slot on a watcher wastes
+the one place in the game where the inversion is available.*
 
-**The echo is left strictly alone.** A *sentinel* watches; a *sentient* thing
-is one there is something it is like to be. **The words are unrelated and
-sound as though they must be** — 4.10's problem exactly, a resemblance doing no
-work and a reader who cannot stop hearing it. *Craft rule 1 does the rest:*
-name it, let it watch, say nothing.
+> **In a world where everything is code, the anomaly is the thing made of
+> matter.**
 
-#### It cannot attack, and the numbers say so rather than a rule
+**Which is the move 4.7 already makes.** Vanilla's Mewtwo is a copy made
+stronger; ours is *a comprehension, not a clone*. **Invert the vanilla premise
+rather than dress it.**
 
-| | vanilla | SENTINEL |
-|---|---|---|
-| Attack | 60 | **5** |
-| Sp. Attack | 85 | **5** |
-| HP / Def / Sp. Def | 65 / 70 / 75 | **110 / 110 / 130** |
-| Speed | 40 | 35 |
-| **total** | 395 | **395** |
+#### SUBSTRATE — the Porygon slot
 
-***The budget is unchanged.*** Everything it had for hurting things was moved
-into staying present.
-
-**And the learnset has no damaging move left in it.** Four out, four in, each
-replacement the same idea:
-
-| out | in | |
-|---|---|---|
-| TACKLE | **FORESIGHT** | it sees what is hidden |
-| PSYBEAM | **MEAN LOOK** | *you cannot DETACH while it is watching* |
-| TRI ATTACK | **REFLECT** | it interposes rather than strikes |
-| ZAP CANNON | **LIGHT SCREEN** | so does this |
-
-***MEAN LOOK is the one that matters.*** 7.2 defines `DETACHED` as breaking
-your connection to a running process, and 0.4 has perception requiring an
-observer — **so a daemon that stops you detaching is the observer refusing to
-let the connection close.** *The player is never told this. They simply cannot
-leave.*
-
-**SHARPEN stays, and it is a joke.** It raises an Attack stat of **five**. *It
-prepares to act and never does* — craft rule 6, costing nothing.
-
-**Ability: INSOMNIA, not TRACE.** The watcher cannot be put to `SLEEP`, and
-`SLEEP` is one of ours. The move fails; nothing explains why.
-
-**Category: `OBSERVER`** — eight of the ten characters the field allows.
-
-#### The pair, and it is 0.4's sharpest
+**The name was already ours and had already been given up.** 3 records that
+SUBSTRATE was the original choice for the STRATUM type and was cut on a hard
+constraint: *type strings cap at eight characters and SUBSTRATE is nine.*
+**Species names allow ten.** It fits here, and it is the exact term for the
+argument the daemon carries.
 
 | | |
 |---|---|
-| **CONTENT** | *"It has never attacked anything. It stays where it can see, and it does not look away. That is the whole of it."* |
-| **CONTEXT** | *"Everything it saw is on record. It is not in the record. Nobody thought to write down who was watching."* |
+| **CONTENT** | *"Every other daemon is a process. This one has a mass, a temperature, and somewhere that it is."* |
+| **CONTEXT** | *"They call it the material one. Nobody has shown that being material is different from running."* |
 
-***The CONTEXT account is the article, said about a creature.*** Perception
-requires an observer, the observer completes it, and the account that results
-does not mention them. **Neither entry says a word about feeling**, so 0's
-table still holds exactly: the Index measures only content.
+***That is substrate independence, and it is 0.4 one level down*** — the same
+phenomenon, two frames, and the disagreement is not error. **CONTENT reports
+what it is made of. CONTEXT reports that *"made of"* is a claim somebody
+made.** Category `MATERIAL`. Stats, ability and learnset are vanilla's,
+untouched.
 
-#### PORYGON2 is deliberately still PORYGON2
+**And where you get it already meant something.** SUBSTRATE is a **Game Corner
+prize, bought with tokens** — *the material daemon, sold for counters, by the
+concern whose hideout is under the floor.* Nothing needed changing.
 
-`port_vocab.py` learns renames by diffing our tables against upstream's, and a
-substring pass then found PORYGON inside PORYGON2 and offered **`SENTINEL2`** —
-*a nickname that would not have matched the species it belongs to*, since
-`SPECIES_PORYGON2` is untouched. **Naming an evolution is a decision, not a
-substitution**, so it sits in the tool's keep list until there is one.
+#### SENTINEL — the Magnemite slot
 
-***And the question is real.*** An evolution of a thing that never attacks
-either **stops watching** or **gets better at it**, and those are two different
-games.
+**A single unblinking floating eye**, and the types were already right:
+**SIGNAL / HARDENED** — *a carrier, not a spark*, and a system secured against
+interference. **A thing that receives and cannot be got at.**
+
+*It cannot attack, and the numbers say so rather than a rule.* Attack and Sp.
+Attack drop to **5**, the freed points go to HP, Defence and Sp. Defence, and
+**the base stat total is unchanged.** The learnset keeps only what does not
+damage — METAL SOUND, SUPERSONIC, THUNDER WAVE, LOCK-ON, SCREECH — and the six
+that hit become **FORESIGHT, MEAN LOOK, REFLECT, LIGHT SCREEN, SAFEGUARD,
+PROTECT.** Ability **INSOMNIA**: *the watcher cannot be put to `SLEEP`.*
+
+##### There is no scene, and that is the scene
+
+***You are not given SENTINEL.*** It is a wild encounter, and **the only place
+in the game it occurs is the Power Plant** — a facility with no operators,
+where the machines are still running and something is still watching them.
+**The falling tree, as a room you can walk into.**
+
+**And the encounter carries it without a word.** SENTINEL will not attack you.
+*But it learns `MEAN LOOK` at level six* — and 7.2 defines `DETACHED` as
+breaking your connection to a running process. **So the thing that never
+attacks is also the thing you cannot walk away from.** It does nothing, and
+you cannot leave.
+
+*The Power Plant has no NPCs and no signs with text*, which is the right amount
+of dialogue for this. **Nothing explains it.**
+
+#### QUORUM — the Magneton slot
+
+**Three of them, fused.** ***A quorum is the minimum number of observers
+required for a decision to count*** — so the evolution is not the watcher
+learning to act, it is **more observers and one account.**
+
+| | |
+|---|---|
+| **CONTENT** | *"Three of them, and they do not act either. What one of them saw, three of them saw."* |
+| **CONTEXT** | *"Three accounts of one thing. They agree, which is not the same as being right."* |
+
+**That last line is 4.8 and 0.4 in the same breath**, and it is the reason this
+evolution was worth having. Category `THRESHOLD`. Disarmed identically, total
+unchanged.
+
+***And QUORUM also lives in DOLDRUM CAVE***, which is where S.T.A.R.R. sleeps.
+**Three witnesses in the room with the thing**, arranged by nobody — that is
+vanilla's encounter table, and it was already true.
+
+#### Two things left open
+
+- **PORYGON2 is still PORYGON2.** It is `EVO_TRADE_ITEM` with UP-GRADE, so in a
+  single-player cartridge it is effectively unreachable; naming it is a
+  decision and there is no pressure behind it.
+- ***The Power Plant is the last place in Kanto still carrying its vanilla
+  name.*** Every other location has been renamed into the pigment or process
+  register. **A building that is still running with nobody in it wants a word**
+  — and it is now the home of the daemon that is still watching it.
 
 ---
 

@@ -5,6 +5,41 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.68 — 2026-09-04
+
+### SENTINEL was on the wrong slot, and the reason is a rule
+
+- ***In vanilla, Porygon's whole identity is "the artificial one"*** — a creature of code among creatures of flesh. **In this game every creature is a process**, so *"made of code" is the default* and the distinction evaporates
+- > **In a world where everything is code, the anomaly is the thing made of matter.**
+- **Which is 4.7's move already**: vanilla's Mewtwo is a copy made stronger, ours is *a comprehension, not a clone*. **Invert the vanilla premise rather than dress it**
+
+### SUBSTRATE — the Porygon slot
+
+- **The name was ours and had already been given up.** SUBSTRATE was the original STRATUM, cut because *type strings cap at eight characters and it is nine.* **Species names allow ten**
+- CONTENT: *"Every other daemon is a process. This one has a mass, a temperature, and somewhere that it is."*
+- CONTEXT: *"They call it the material one. Nobody has shown that being material is different from running."*
+- ***Substrate independence, which is 0.4 one level down.*** Category `MATERIAL`; stats, ability and learnset restored to vanilla
+- **Where you get it already meant something**: a Game Corner prize, **bought with tokens, by the concern whose hideout is under the floor**
+
+### SENTINEL — the Magnemite slot
+
+- **A single unblinking floating eye**, and the types were already right: **SIGNAL / HARDENED** — *a carrier, not a spark*, and a system secured against interference
+- Attack and Sp. Attack to **5**, freed points to HP/Def/Sp.Def, **base stat total unchanged**. Six damaging moves out for **FORESIGHT, MEAN LOOK, REFLECT, LIGHT SCREEN, SAFEGUARD, PROTECT**. Ability **INSOMNIA**
+- ***There is no scene, and that is the scene.*** You are not given it — **the only place in the game it occurs is the Power Plant**, a facility with no operators where something is still watching. *The falling tree as a room you can walk into*
+- ***It learns `MEAN LOOK` at level six.*** `DETACHED` is breaking your connection to a running process — **so the thing that never attacks is the thing you cannot walk away from.** The Power Plant has no NPCs and no signs with text, which is the right amount of dialogue for it
+
+### QUORUM — the Magneton slot
+
+- **Three of them, fused.** *A quorum is the minimum number of observers for a decision to count*, so the evolution is **more observers and one account**, not the watcher learning to act
+- CONTENT: *"Three of them, and they do not act either. What one of them saw, three of them saw."*
+- CONTEXT: ***"Three accounts of one thing. They agree, which is not the same as being right."*** — 4.8 and 0.4 in one breath
+- ***QUORUM also lives in DOLDRUM CAVE***, where S.T.A.R.R. sleeps. **Three witnesses in the room with the thing** — vanilla's own encounter table, already true
+
+### Left open
+
+- **PORYGON2 stays PORYGON2** — trade-evolution, effectively unreachable, no pressure
+- ***The Power Plant is the last place in Kanto still carrying its vanilla name***, and it is now the home of the daemon still watching it
+
 ## v11.67 — 2026-09-04
 
 ### The debug kit could not board the ship
