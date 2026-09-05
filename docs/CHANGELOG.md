@@ -5,6 +5,26 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.70 — 2026-09-04
+
+### The three birds, and vanilla had already placed them
+
+| | where it is | | category |
+|---|---|---|---|
+| Moltres | Mt. Ember, the summit | **PROMETHEUS** | `CRAFT` |
+| Zapdos | the plant | **ASCLEPIUS** | `RECOVERY` |
+| Articuno | Seafoam, four floors down | **ORPHEUS** | `LAMENT` |
+
+- **PROMETHEUS gave fire away as craft and was bound to a rock on a mountain.** *The CONTEXT entry is the punishment, unstated*: **"It is still up here, and it is not going anywhere."**
+- **ASCLEPIUS raised the dead and Zeus killed him with a thunderbolt** — the thunderbird, in the building still running. *CONTENT: nothing it restarted has stopped again. CONTEXT: nobody asked the thing that stopped whether it wanted to be running*
+- ***ORPHEUS is the sharpest.*** He went down and lost her **by looking back** — **the observer destroyed by observing**. His CONTEXT entry: **"It has not said what it saw when it turned around."**
+- **Ten written pairs now**, verified per cartridge
+
+### The other two landmarks keep their names
+
+- ***Mt. Ember and Seafoam already obey 0.2*** — **ember** and **seafoam** are both colour words. Renaming them for a systems pun would break the register **KEEPALIVE was the exception to**: POWER PLANT was neither a pigment nor a state, which is why it was the one that had to move
+- **And SEAFOAM is already working**: the place is named for its *surface* and the thing that matters is four floors under it. ***An account that describes only what is visible***
+
 ## v11.69 — 2026-09-04
 
 ### KEEPALIVE PLANT

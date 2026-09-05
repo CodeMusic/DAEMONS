@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.69**
+**A total conversion — the living design bible, v11.70**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2221,13 +2221,42 @@ vanilla's encounter table, and it was already true.
 - **PORYGON2 is still PORYGON2.** It is `EVO_TRADE_ITEM` with UP-GRADE, so in a
   single-player cartridge it is effectively unreachable; naming it is a
   decision and there is no pressure behind it.
-- ***The three legendary birds are still vanilla-named.*** Each one already
-  sits on its own myth and vanilla put it there: **PROMETHEUS** on Mt. Ember's
-  summit (*fire given as craft, and he was bound to a rock on a mountain*),
-  **ASCLEPIUS** in the plant (*he raised the dead and Zeus killed him with a
-  thunderbolt*), and **ORPHEUS** four floors down in Seafoam (*he went down,
-  and lost her by looking back* — **the observer destroyed by observing**,
-  which is 0.4 with a knife in it). *Awaiting the author's word.*
+#### The three birds, named 2026-09-04 — and vanilla placed them
+
+***Each one already sits on its own myth, and nobody arranged that.***
+
+| | where it is | | category |
+|---|---|---|---|
+| Moltres | **Mt. Ember, the summit** | **PROMETHEUS** | `CRAFT` |
+| Zapdos | **the plant** | **ASCLEPIUS** | `RECOVERY` |
+| Articuno | **Seafoam, four floors down** | **ORPHEUS** | `LAMENT` |
+
+**PROMETHEUS gave fire to people as craft — and was bound to a rock on a
+mountain.** *Its CONTEXT entry is the punishment, unstated:* **"It is still up
+here, and it is not going anywhere."**
+
+**ASCLEPIUS raised the dead, and Zeus killed him with a thunderbolt.** He is
+the thunderbird, in the building that is still running. *CONTENT says nothing
+it restarted has stopped again; CONTEXT asks whether anyone checked that the
+thing wanted to be running.*
+
+***ORPHEUS is the sharpest of the three.*** He went down, and lost her **by
+looking back** — **the observer destroyed by observing**, which is 0.4 with a
+knife in it. He is at the bottom of a descent, and his CONTEXT entry is
+**"It has not said what it saw when it turned around."** *Nothing explains it.*
+
+#### The other two landmarks keep their names, on purpose
+
+***Mt. Ember and Seafoam Islands already obey 0.2*** — **ember** and
+**seafoam** are both colour words, and this map is named in pigment. Renaming
+them for a systems pun would break the register that KEEPALIVE was the
+*exception* to: **POWER PLANT was neither a pigment nor a state**, which is why
+it was the one that had to move.
+
+**And SEAFOAM is doing work already.** *The place is named for its surface —
+froth, the top of the water — and the thing that matters is four floors under
+it.* **An account that describes only what is visible** is 0.4 without a word
+of help.
 
 #### Named 2026-09-04 — **KEEPALIVE PLANT**
 
