@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.79 — 2026-09-04
+
+### The Undertone — 2 ours to 15, slice at 27%
+
+- ***The room was written around one block nobody needed to touch***: the carved stone, **the type chart as an artefact older than the path** — *"Read across: each thing, and what it does to each other thing. Nobody signed it."*
+- **Everything else had to sit under it**, which is what the name asks for: *an undertone is the colour beneath the colour, and the thing meant but not said*
+
+### Two signposts doing the falling tree
+
+| | |
+|---|---|
+| **USER TIPS** | *"Nothing will announce itself if you stay off the grass."* — **"It is still there."** |
+| a bug catcher out of boxes | *"I have no USERBOXes left. **Everything I meet now, I just meet.**"* |
+
+- ***The second is the best line in the room and it belongs to a throwaway NPC.*** 0.4 needs an observer and the INDEX only holds what is bound — **so a USER with no boxes can see and cannot record.** *He does not know that is what he said*
+- **The first is 0.4 on a signpost**, and it is still a correct game hint. That is the trick
+
+### A wrong mechanic, caught by writing a second room
+
+- ***The lab claimed "a daemon with MANA left has somewhere better to be."*** **MANA is PP.** What keeps a creature out of a box is its condition, not whether it has moves in hand
+- *The forest's weakening tip is where it became obvious*, because two lines were saying different things about one rule. **The lab now reads "one that is not tired"**
+- ***Writing a second room found an error in the first*** — an argument for doing them in a run rather than one at a time
+
 ## v11.78 — 2026-09-04
 
 ### The rival's house — 0 ours to 16, and the slice hits 22%

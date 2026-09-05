@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.78**
+**A total conversion — the living design bible, v11.79**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2591,6 +2591,53 @@ Very few of them have read her."* **Neither explains the other.**
 *Open:* **DAISY is not renamed.** She is a Clear — *Crystal's granddaughter and
 AL's sister* — and hers is the last vanilla name in the family. **That is a
 decision, and it is one vocabulary entry when it is made.**
+
+### 4.30 The Undertone — written around the stone that was already there
+
+**2 ours to 15**, and the slice is **27%.** *The room was written around one
+block nobody needed to touch* — the carved stone, which is **the type chart as
+an artefact older than the path**:
+
+> *"Read across: each thing, and what it does to each other thing.*
+> *Nobody signed it."*
+
+**Everything else in the forest had to sit under that**, which is what the
+town's name asks for: *an undertone is the colour beneath the colour, and the
+thing meant but not said.*
+
+#### Two signposts doing the falling tree
+
+| | |
+|---|---|
+| **USER TIPS** | *"Nothing will announce itself if you stay off the grass."* — **"It is still there."** |
+| a bug catcher, out of boxes | *"I have no USERBOXes left. **Everything I meet now, I just meet.**"* |
+
+***That second one is the best line in the room and it is a throwaway NPC.***
+0.4 says perception requires an observer and the INDEX only holds what is
+bound — **so a USER with no boxes is a person who can see and cannot
+record.** *He does not know that is what he said.*
+
+**And the first is 0.4 on a signpost.** *"It is still there"* — **the forest
+does not stop when you stay off the grass.** The tip is still a correct game
+hint, which is the whole trick.
+
+#### The rest is comedy, because craft rule 6 says it has to be
+
+**SWARM multiplies and the collectors cannot say why**: *"There is always more
+of it than there was last week."* **A boy who dropped something**: *"If you
+find something, it was probably mine."* **And on evolution**: *"SWARM evolves
+faster than anything else. You barely get to know one."*
+
+#### A wrong mechanic, caught by writing a second one
+
+***The lab claimed "a daemon with MANA left has somewhere better to be."***
+**MANA is PP.** What keeps a creature out of a box is its condition, not
+whether it has moves in hand — *and the forest tip about weakening one is where
+that became obvious, because the two lines were saying different things about
+the same rule.* **The lab now reads "one that is not tired".**
+
+*Writing a second room found an error in the first.* **That is an argument for
+doing them in a run rather than one at a time.**
 
 ## 5. THE BENCHMARKS
 
