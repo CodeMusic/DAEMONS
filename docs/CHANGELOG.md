@@ -5,6 +5,25 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.101 — 2026-09-06
+
+### The slice metric measures prose now, and it is at 74%
+
+- **`gbaslice` exempts functional blocks.** Receipts, capacity refusals, route signs,
+  cries, and anything under 45 characters — **106 of the 314**. Their shape is fixed by the
+  job they do, and forcing them under the 0.5 threshold would mean writing them *worse* to
+  satisfy a number.
+- **The number it reports is honest now:** `208 prose blocks: 155 ours (74%), 47 vanilla
+  reworded, 6 untouched`. The old headline said 62% and implied 100 blocks of unwritten
+  prose; there are **47**.
+- **The tool's own claim was the giveaway.** Its docstring says *"above it, vanilla is still
+  doing the talking with our nouns in its mouth"* — true of dialogue, false of
+  `{PLAYER} received the POTION`. It found the school's rewritten status explainers guilty
+  because a status explainer must say what the condition does, that it persists, and what
+  cures it, in that order.
+
+---
+
 ## v11.100 — 2026-09-06
 
 ### 62%, and what the remaining number actually measures

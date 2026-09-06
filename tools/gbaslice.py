@@ -40,6 +40,33 @@ def upstream(rel):
     return subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
                           capture_output=True, text=True).stdout
 
+# ---------------------------------------------------------------- exemptions
+#
+# THE 0.5 TEST IS STRUCTURAL, NOT AUTHORIAL, AND FOR SOME BLOCKS THAT IS WRONG.
+# "A sleeping daemon does not act" shares almost no wording with "A POKéMON
+# can't attack if it's asleep" and still scores above 0.5 -- because a status
+# explainer has to say what the condition does, that it persists and what cures
+# it, IN THAT ORDER. Any correct rewrite scores high. So do receipts, capacity
+# refusals, route signs and cries: their shape is fixed by the job they do, and
+# forcing them under the threshold means writing them WORSE to satisfy a number.
+#
+# Those are counted separately as FUNCTIONAL rather than as vanilla, and the
+# percentage is taken over the prose that is left. Judged on UPSTREAM's text,
+# which does not move.
+FUNCTIONAL = [
+    r'\{(PLAYER|RIVAL)\} (received|got|put|switched|obtained)',
+    r"(don't|do not) have (enough money|room|space)",
+    r'^ROUTE \d',
+    r'GYM.{0,4}LEADER:|WINNING TRAINERS',
+    r'^[A-Z][A-Za-z]*: [A-Za-z]+ ?[a-z]*[!.]',      # a cry, not a line
+]
+FUNC_RE = [re.compile(x) for x in FUNCTIONAL]
+SHORT = 45      # below this a block cannot diverge enough for the test to mean
+                # anything -- "Come again!" against "Come again." scores 0.95
+
+def functional(up):
+    return len(up) < SHORT or any(r.search(up) for r in FUNC_RE)
+
 def blocks(text):
     """Consecutive .string lines are one block, which is how a message is stored."""
     out, cur = [], []
@@ -55,8 +82,9 @@ def blocks(text):
 
 def main():
     show = "--vanilla" in sys.argv
-    tot_ours = tot_van = tot_same = 0
-    print("  %-16s %-28s %5s %5s %5s" % ("", "map", "ours", "van", "same"))
+    tot_ours = tot_van = tot_same = tot_fn = 0
+    print("  %-16s %-28s %5s %5s %5s %5s"
+          % ("", "map", "ours", "van", "same", "fn"))
     for town, maps in SLICE:
         first = True
         for m in maps:
@@ -69,21 +97,27 @@ def main():
                 print("  %-16s %-28s  block count moved (%d vs %d)"
                       % (town if first else "", m, len(mine), len(up))); first = False
                 continue
-            ours = van = same = 0
+            ours = van = same = fn = 0
             for a, b in zip(mine, up):
-                if a == b:
+                if functional(b):
+                    fn += 1
+                elif a == b:
                     same += 1
                 elif difflib.SequenceMatcher(None, a, b).ratio() < 0.5:
                     ours += 1
                 else:
                     van += 1
-                    if show and len(b) > 40:
+                    if show:
                         print("      %-24s %s" % (m, b[:88]))
-            tot_ours += ours; tot_van += van; tot_same += same
-            print("  %-16s %-28s %5d %5d %5d" % (town if first else "", m, ours, van, same))
+            tot_ours += ours; tot_van += van; tot_same += same; tot_fn += fn
+            print("  %-16s %-28s %5d %5d %5d %5d"
+                  % (town if first else "", m, ours, van, same, fn))
             first = False
     n = tot_ours + tot_van + tot_same
-    print("\n  %d blocks in the slice: %d ours (%d%%), %d vanilla reworded, %d untouched"
+    print("\n  %d prose blocks: %d ours (%d%%), %d vanilla reworded, %d untouched"
           % (n, tot_ours, 100 * tot_ours // max(1, n), tot_van, tot_same))
+    print("  %d functional blocks exempt -- receipts, refusals, signs, cries, and"
+          % tot_fn)
+    print("  anything under %d characters, where the shape is the job." % SHORT)
 
 main()
