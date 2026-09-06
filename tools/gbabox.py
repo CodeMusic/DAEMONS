@@ -173,6 +173,63 @@ def marker(lit):
     g[3:6, 2:6] = PIP if lit else GLASS
     return g
 
+# ------------------------------------------------- the boxes drawn IN PLACE
+#
+# THREE FILES CARRY INDICES ONLY. party_menu's two and the battle transition's
+# take their colours from palettes loaded elsewhere, so a box here has to be
+# written in each file's OWN index vocabulary or it renders as confetti -- the
+# same trap the overworld box fell into against npc_white. All three palettes
+# already carry a dark, a mid and a pale, so the machine needs no new colour.
+
+def box_in(w, h, ink, body, bevel, glass, foot, inset=2):
+    """A chassis in somebody else's palette. Same object, borrowed colours."""
+    g = [[0] * w for _ in range(h)]
+    x0, x1 = inset, w - 1 - inset
+    y0, y1 = inset, h - 3 - inset
+    for y in range(y0, y1 + 1):
+        for x in range(x0, x1 + 1):
+            g[y][x] = body
+    for x in range(x0, x1 + 1):
+        g[y0][x] = g[y1][x] = ink
+    for y in range(y0, y1 + 1):
+        g[y][x0] = g[y][x1] = ink
+    for x in range(x0 + 1, x1):
+        g[y0 + 1][x] = bevel
+    sy0 = y0 + 2 + (y1 - y0) // 8
+    sy1 = sy0 + max(2, (y1 - y0) // 4)          # small, and set high
+    side = 2 if (x1 - x0) < 16 else 4
+    for y in range(sy0, min(sy1 + 1, y1 - 1)):
+        for x in range(x0 + side, x1 - side + 1):
+            g[y][x] = glass
+    for x in (x0 + 1, x0 + 2, x1 - 2, x1 - 1):
+        if y1 + 1 < h:
+            g[y1 + 1][x] = foot
+    return g
+
+def party_small():
+    """16x96 -- six 16x16 slots. Frame 0 is the one you see six of."""
+    g = blank(16, 96)
+    a = np.array(box_in(16, 16, ink=0xF, body=0xD, bevel=0xA, glass=0x6, foot=0xF))
+    g[0:16] = a
+    b = np.array(box_in(16, 16, ink=0x6, body=0x8, bevel=0x8, glass=0x6, foot=0x6))
+    g[16:32] = b
+    return g
+
+def party_big():
+    """32x64 -- two 32x32."""
+    g = blank(32, 64)
+    a = np.array(box_in(32, 32, ink=0xF, body=0xD, bevel=0xA, glass=0x6, foot=0xF, inset=5))
+    g[0:32] = a
+    g[32:64] = np.array(box_in(32, 32, ink=0x6, body=0x8, bevel=0x8, glass=0x6, foot=0x6, inset=5))
+    return g
+
+def transition():
+    """32x32 -- the thing that slides across before a trainer battle.
+
+    Its tilemap indexes 4x4 tiles and the redraw keeps that grid, so the .bin
+    needs no change. The reds go unused: a host is grey."""
+    return np.array(box_in(32, 32, ink=0xF, body=0xA, bevel=0x4, glass=0xF, foot=0xF, inset=3))
+
 def png(path, g, pal=PAL):
     im = Image.new("P", (g.shape[1], g.shape[0]))
     im.putdata(g.flatten().tolist())
@@ -219,6 +276,18 @@ def main():
         if WRITE:
             png(None, g).save(os.path.join(GBA, rel))
             if pal: jasc(os.path.join(GBA, pal), PAL)
+
+    # These three keep their own palettes; only the indices change.
+    for rel, grid in (("graphics/party_menu/pokeball_small.png", party_small()),
+                      ("graphics/party_menu/pokeball.png", party_big()),
+                      ("graphics/battle_transitions/sliding_pokeball.png", transition())):
+        src = Image.open(os.path.join(GBA, rel))
+        print("  %-52s %dx%d (its own palette, indices only)"
+              % (rel, grid.shape[1], grid.shape[0]))
+        if WRITE:
+            im = Image.new("P", (grid.shape[1], grid.shape[0]))
+            im.putdata(grid.astype(np.uint8).flatten().tolist())
+            im.putpalette(src.getpalette()); im.save(os.path.join(GBA, rel))
 
     # THE OVERWORLD BOX SHARES A PALETTE WITH EVERY NPC. Its graphics_info
     # gives paletteTag = OBJ_EVENT_PAL_TAG_NPC_WHITE, so the colours come from
