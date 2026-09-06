@@ -17,6 +17,17 @@ Generate CRYSTAL first. Then attach her result as the reference for AL, so
 the family resemblance 1619 asks for survives: three foxes a palette apart,
 readable as family with no text.
 
+TWO THINGS THE LAST ROUND GOT WRONG, WORTH NOT REPEATING:
+
+  * CRYSTAL IS A WOMAN IN HER SIXTIES. Two earlier generations came back as a
+    young man. Her being a woman is load-bearing -- 4.20's injustice is a
+    WOMAN recorded as incoherent -- so if the result reads male, regenerate.
+  * DO NOT LET TWO LARGE AREAS SHARE A VALUE. The player's first pass put a
+    cream hat on a cream coat at identical luminance and the brim, which is
+    the one shape that identifies the character, dissolved into the garment.
+    Crystal is golden-amber under a WHITE coat, which is a wide gap; keep it
+    that way.
+
 ==========================================================================
 CRYSTAL CLEAR -- the intro portrait.  Save as crystal_speech.jpeg
 ==========================================================================
@@ -74,11 +85,14 @@ Shared opening for all four -- paste it, then one pose block:
     a shoulder bag against his side. Weight on one leg. Calm, not mid-action.
 
 --- al_early.jpeg -- square frame
-    Leaning forward, up on the balls of his feet, holding a small grey MACHINE
-    out in one hand as though about to throw it: a cube about the size of his
-    palm with four short feet, a dark inset SCREEN set high on its front face
-    with one small glowing dot, and a seam across the lower half. No buttons.
-    Not a ball, not a crate -- a little computer.
+    ALSO ATTACH gfx/characters/box_reference.png FOR THIS ONE.
+
+    Leaning forward, up on the balls of his feet, holding out in one hand --
+    as though about to throw it -- the exact object in the box reference,
+    scaled to about the size of his palm. COPY THAT OBJECT; do not interpret
+    it. Two earlier attempts described it in words and both produced a
+    handheld game console, because "a small grey machine with a screen" is a
+    Game Boy to anything that has seen one.
 
 --- al_late.jpeg -- square frame
     Standing tall and square to the viewer, one arm raised above his head,
