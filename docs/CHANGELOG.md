@@ -5,6 +5,30 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.84 — 2026-09-04
+
+### Ty needs no sprite, and that is the point
+
+- **4.3**: ***"TY P. CLEAR, printed, never spoken."*** He is in the institution's register, buried in the Quicksilver ruins as a leitmotif, and **confirmed by one line at Brazen** — *never in a room*
+- ***Giving him a face would spend the device.*** He is the man who is in the record and not in the room, which is SENTINEL's CONTEXT entry inverted
+
+### Al needs four, in two formats
+
+| | | |
+|---|---|---|
+| `oak_speech/rival/pic.png` | **64x96** | the intro portrait |
+| `rival_early_front_pic` | 64x64 | first battles |
+| `rival_late_front_pic` | 64x64 | later battles |
+| `champion_rival_front_pic` | 64x64 | the last fight |
+
+- **The brief keeps his clothes**: dark olive-grey shirt, purple-mauve trousers, spiky orange-blond head fur. ***Crystal's sprite worked because it kept the professor's purple shirt and extended hand*** — the swap read as *the same shot of a different person*, and Al gets the same treatment
+- **10 puts him between**: Crystal golden-amber, Ty darker, **Al somewhere between** — so a mid-amber fox with *Crystal's ear and muzzle geometry*, because **the family resemblance is what has to read, not the species**
+- `docs/gemini-prompts-al.txt`
+
+### A stale line in the decision log
+
+- ***It said the rival's formal name is TY CLEAR.*** **Ty is a different person** — Crystal's son and Al's father — and 4.3's detailed ruling is explicit: *"This is Al. What'll you call him?"* **Corrected**
+
 ## v11.83 — 2026-09-04
 
 ### `tools/gbachar.py` — both characters in, and the formats do not resemble each other

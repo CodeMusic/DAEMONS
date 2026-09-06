@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.83**
+**A total conversion — the living design bible, v11.84**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4988,7 +4988,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - The content/context feedback loop is the mechanism under the thesis and is never named in dialogue (0.3, 4.9)
 - Five Witnesses easter egg, locked at 35 steps; the number lives only in the Quicksilver terminal log (4.8)
 - **Ty Clear's parentage is never stated.** Inferred from the surname, confirmed late by one line at Brazen (4.3)
-- **The rival naming prompt stays.** The player names him; **CLEAR** is hard-coded, and formal text carries TY CLEAR — the route-sign device applied to a person (4.3, 9)
+- **The rival naming prompt stays.** The player names him; **CLEAR** is hard-coded, and formal text carries **AL CLEAR** — the route-sign device applied to a person (4.3, 9). *Corrected 2026-09-04: this line read TY CLEAR, which is a different person — **Ty is Crystal's son and Al's father**, and 4.3's ruling is explicit that the rival is Al*
 - Crystal is CRYSTAL CLEAR in full wherever the game refers to her formally, or the surname device dies (4.3)
 - **Corpus is downstream of Quicksilver by succession** — Scorn took over the lab, the metric changed, it burned, the people came with him (4.10)
 - Crystal was at Quicksilver and built S.T.A.R.R. there; a fitness-for-work procedure removed her, and **the Index is what she did next** (4.1, 4.10)

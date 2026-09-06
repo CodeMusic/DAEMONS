@@ -1,0 +1,73 @@
+AL CLEAR — four sprites
+=======================
+
+Ty needs none. vision 4.3: "TY P. CLEAR, printed, never spoken." He exists in
+the register, the Quicksilver ruins and a leitmotif, and never in a room. That
+is the device; giving him a face would spend it.
+
+Al needs four, and they are two different formats:
+
+    graphics/oak_speech/rival/pic.png                64x96  intro portrait
+    graphics/trainers/front_pics/rival_early_...     64x64  first battles
+    graphics/trainers/front_pics/rival_late_...      64x64  later battles
+    graphics/trainers/front_pics/champion_rival_...  64x64  the last fight
+
+Do not ask for pixel sizes; the reduction is done by tools/gbachar.py. What
+must be right is POSE, CROP and STYLE.
+
+KEEP HIS CLOTHES. Vanilla Al wears a dark olive-grey shirt and purple-mauve
+trousers, and his hair is spiky orange-blond. Crystal's sprite worked because
+it kept the professor's purple shirt and extended hand -- the swap read as the
+same shot of a different person. Do the same here: same palette, same clothes,
+same attitude, and a fox instead of a boy.
+
+HE IS BETWEEN. vision 10: Crystal golden-amber, Ty darker, Al somewhere
+between. So a mid-amber fox -- warmer and darker than hers, and it is the
+FAMILY RESEMBLANCE that has to read, not the species. Same ear shape and
+muzzle geometry as Crystal.
+
+Shared instruction for all four:
+
+    Full-body character in the style of a Game Boy Advance RPG sprite. Flat
+    cel shading, thick dark outline, no gradients, no anti-aliasing. Plain
+    flat green background, no scenery, no shadow under the feet.
+
+    Subject: an anthropomorphic mid-amber fox, a confident young man. Spiky
+    orange-blond head fur. Dark olive-grey short-sleeved shirt, purple-mauve
+    trousers, a belt. Upright ears, narrow muzzle, full brush tail. Ordinary
+    human clothing that fits properly.
+
+    He is cocky rather than cruel -- the expression is a half-smile, chin up,
+    entirely sure of himself. Under about fifteen distinct colours.
+
+--------------------------------------------------------------------------
+1. INTRO PORTRAIT (tall, 2:3)
+--------------------------------------------------------------------------
+    ...standing at ease, turned slightly to his left, one hand resting on his
+    hip and the other holding a bag tucked against his side. Full body, feet
+    included. Weight on one leg.
+
+--------------------------------------------------------------------------
+2. EARLY BATTLE (square)
+--------------------------------------------------------------------------
+    ...leaning forward, holding a small round container out in front of him
+    in one hand, about to throw it. Eager, up on the balls of his feet.
+    Full body inside a square frame.
+
+--------------------------------------------------------------------------
+3. LATE BATTLE (square)
+--------------------------------------------------------------------------
+    ...standing tall and square to the viewer, one arm raised above his head
+    with the hand open. Less eager than before and more certain. Full body
+    inside a square frame.
+
+--------------------------------------------------------------------------
+4. CHAMPION (square)
+--------------------------------------------------------------------------
+    ...mid-motion with one arm thrown forward toward the viewer, the other
+    back for balance, leaning in. The largest, most committed pose of the
+    four. Full body inside a square frame.
+
+--------------------------------------------------------------------------
+Save into gfx/characters/ as al_speech.jpeg, al_early.jpeg, al_late.jpeg,
+al_champion.jpeg.
