@@ -15,9 +15,15 @@ produces a screenful of confetti rather than an error.
      palette and come out as noise. The 32-colour .pal is bank 6, meaning its
      entry k is RAM 96+k.
 
-  SCORN -> graphics/trainers/front_pics/leader_giovanni_front_pic.png,
-     64x64, FOUR bits per pixel, sixteen colours, index 0 transparent. The
-     ordinary case.
+  SCORN and AL's three battle pics -> graphics/trainers/front_pics/*.png,
+     64x64, FOUR bits per pixel, sixteen colours, index 0 transparent.
+
+     AND THE PNG DOES NOT CARRY THE COLOURS. trainers.h takes the picture
+     from <name>_front_pic.4bpp.lz and the palette from a SEPARATE file,
+     palettes/<name>.gbapal.lz, built from palettes/<name>.pal. Writing the
+     PNG alone leaves the new indices addressing the OLD trainer's colours --
+     Scorn shipped that way and rendered with Giovanni's palette, in which
+     index 5 is magenta. Every 4bpp job writes its .pal.
 
 AND NEITHER SPRITE CARRIES ITS OWN SHADOW. The generated art stands on a pale
 ellipse, but oak_speech draws platform.png separately underneath and the
@@ -33,13 +39,30 @@ GBA = os.path.join(ROOT, "engineGba")
 KEY = (115, 197, 164)          # what vanilla puts in the transparent slot
 
 JOBS = {
-    "crystal": dict(src="gfx/characters/crystal_speech.jpeg",
-                    dst="engineGba/graphics/oak_speech/oak/pic.png",
-                    pal="engineGba/graphics/oak_speech/oak/pal.pal",
-                    size=(64, 96), colours=25, base=97, palsize=32),
-    "scorn":   dict(src="gfx/characters/scorn.jpeg",
-                    dst="engineGba/graphics/trainers/front_pics/leader_giovanni_front_pic.png",
-                    pal=None, size=(64, 64), colours=15, base=1, palsize=16),
+    "crystal":     dict(src="gfx/characters/crystal_speech.jpeg",
+                        dst="engineGba/graphics/oak_speech/oak/pic.png",
+                        pal="engineGba/graphics/oak_speech/oak/pal.pal",
+                        size=(64, 96), colours=25, base=97, palsize=32),
+    "al_speech":   dict(src="gfx/characters/al_speech.jpeg",
+                        dst="engineGba/graphics/oak_speech/rival/pic.png",
+                        pal="engineGba/graphics/oak_speech/rival/pal.pal",
+                        size=(64, 96), colours=25, base=97, palsize=32),
+    "scorn":       dict(src="gfx/characters/scorn.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/leader_giovanni_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_giovanni.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16),
+    "al_early":    dict(src="gfx/characters/al_early.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/rival_early_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rival_early.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16),
+    "al_late":     dict(src="gfx/characters/al_late.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/rival_late_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rival_late.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16),
+    "al_champion": dict(src="gfx/characters/al_champion.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/champion_rival_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/champion_rival.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16),
 }
 
 def silhouette(a):
@@ -90,7 +113,7 @@ def index(cell, hold, job):
     return out, table
 
 def main():
-    prev, x = Image.new("RGB", (64 * 6 * 2 + 40, 96 * 6), (18, 18, 24)), 0
+    prev, x = Image.new("RGB", ((64 * 6 + 40) * len(JOBS), 96 * 6), (18, 18, 24)), 0
     for name, job in JOBS.items():
         cell, hold = cut(job)
         out, table = index(cell, hold, job)
@@ -104,8 +127,8 @@ def main():
                 with open(os.path.join(ROOT, job["pal"]), "w") as f:
                     f.write("JASC-PAL\n0100\n%d\n" % job["palsize"])
                     rows = [KEY] + [(0, 0, 0)] * (job["palsize"] - 1)
-                    for i, c in enumerate(table):          # .pal entry k is RAM 96+k
-                        rows[job["base"] - 96 + i] = c
+                    for i, c in enumerate(table):          # entry 0 is the key; ours start at 1
+                        rows[1 + i] = c
                     for c in rows:
                         f.write("%d %d %d\n" % c)
             print("           written")
