@@ -57,7 +57,9 @@ outlines, no gloss, no muscle definition. Flat solid colour with simple cel
 shading, the way a newspaper cartoon animal is drawn.
 
 Clothes: a hard-wearing dark canvas work apron over a plain shirt, sleeves
-rolled, sturdy boots. A pencil behind one ear.
+rolled, sturdy boots. NOTHING behind his ear -- a first version put a pencil
+there and at 64x64 four pixels of pencil read as a bow. The chalk in his hand
+already says he is a man who writes things down.
 
 Pose: standing square and settled, weight even on both feet, holding a
 SLATE -- a flat dark writing tablet -- against his chest in one hand, a piece
