@@ -363,6 +363,59 @@ def _big_transition_unused():
     flat = b"".join(struct.pack("<H", m[r][c]) for r in range(20) for c in range(30))
     return sheet, flat
 
+def party_balls():
+    """Four 8x8 icons at tile 66 of battle_interface/healthbox_elements.png --
+    the row of slots along the bottom of every battle.
+
+    NOT one 16x16 sprite: they are four separate states, which is why the
+    screen shows five empty rings and one full one. 5 is the dark slate, 3 the
+    pale face, 1 the near-black glass, 6 a green and 4 a grey -- the states
+    keep whichever colour they had."""
+    def one(body, glass):
+        g = [[0]*8 for _ in range(8)]
+        for y in range(1, 6):
+            for x in range(1, 7):
+                g[y][x] = body
+        for x in range(1, 7):
+            g[1][x] = g[5][x] = 0x5
+        for y in range(1, 6):
+            g[y][1] = g[y][6] = 0x5
+        if glass is not None:
+            for x in range(2, 6):
+                g[3][x] = glass
+        g[6][2] = g[6][5] = 0x5
+        return g
+    return [one(0x3, 0x1), one(0, None), one(0x6, 0x1), one(0x4, 0x1)]
+
+def dex_caught():
+    """12x12 at (0,0) in interface/menu_info.png -- the icon beside every
+    caught entry in the Index list.
+
+    NOT pokedex/caught_marker.png, which is the CATEGORY view. The list calls
+    BlitMenuInfoIcon(MENU_INFO_ICON_CAUGHT), which reads the same sheet the
+    type badges come from -- so the box that went into the marker never
+    appeared where the player actually looks.
+
+    Its palette holds three neutrals and four reds: 1 white, 3 pale, 4 tan.
+    The box is built from those, and the reds go unused."""
+    INK, BODY, BEVEL = 0x4, 0x3, 0x1
+    g = [[0]*12 for _ in range(12)]
+    for y in range(1, 10):
+        for x in range(1, 11):
+            g[y][x] = BODY
+    for x in range(1, 11):
+        g[1][x] = g[9][x] = INK
+    for y in range(1, 10):
+        g[y][1] = g[y][10] = INK
+    for x in range(2, 10):
+        g[2][x] = BEVEL
+    for y in range(4, 6):
+        for x in range(3, 9):
+            g[y][x] = INK
+    for x in (2, 3, 8, 9):
+        g[10][x] = INK
+    return np.array(g)
+
 def fame():
     """32x32 -- the Fame Checker's spinner. Its .gbapal is built from this PNG,
     so unlike the three above it takes OUR palette rather than borrowing one."""
@@ -408,6 +461,30 @@ def main():
     # NOT this one -- see the remap below.
     jobs.append(("graphics/trade/pokeball.png", spin(), None))
     jobs.append(("graphics/fame_checker/spinning_pokeball.png", fame(), None))
+
+    # the four battle party slots, in place inside the healthbox sheet
+    hb = os.path.join(GBA, "graphics/battle_interface/healthbox_elements.png")
+    src_hb = Image.open(hb)
+    a_hb = np.asarray(src_hb).copy()
+    for i, tile in enumerate(party_balls()):
+        n = 66 + i
+        oy, ox = (n // 40) * 8, (n % 40) * 8
+        a_hb[oy:oy+8, ox:ox+8] = np.array(tile)
+    print("  %-52s four 8x8 slots at tile 66"
+          % "graphics/battle_interface/healthbox_elements.png")
+    if WRITE:
+        im = Image.new("P", src_hb.size); im.putdata(a_hb.flatten().tolist())
+        im.putpalette(src_hb.getpalette()); im.save(hb)
+
+    # the Index list icon, blitted from the type-badge sheet
+    mi = os.path.join(GBA, "graphics/interface/menu_info.png")
+    src_mi = Image.open(mi)
+    a_mi = np.asarray(src_mi).copy()
+    a_mi[0:12, 0:12] = dex_caught()
+    print("  %-52s the 12x12 caught icon only" % "graphics/interface/menu_info.png")
+    if WRITE:
+        im = Image.new("P", src_mi.size); im.putdata(a_mi.flatten().tolist())
+        im.putpalette(src_mi.getpalette()); im.save(mi)
 
     # the one that is a tileset AND a tilemap
     sheet, tmap = big_transition()
