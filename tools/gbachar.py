@@ -95,7 +95,12 @@ def cut(job):
     return cell, hold
 
 def index(cell, hold, job):
-    q = cell.convert("P", palette=Image.ADAPTIVE, colors=job["colours"], dither=Image.NONE)
+    # Quantize the SUBJECT ONLY. Quantizing the whole cell hands one of the
+    # scarce slots to the transparent key, which is then zeroed out again --
+    # 15 colours become 14, on a sprite that has 15 to spend.
+    subj = np.asarray(cell)[np.asarray(hold) > 0].reshape(1, -1, 3).astype(np.uint8)
+    q = Image.fromarray(subj).convert("P", palette=Image.ADAPTIVE,
+                                      colors=job["colours"], dither=Image.NONE)
     pal = q.getpalette()[:job["colours"] * 3]
     table = [tuple(pal[i * 3:i * 3 + 3]) for i in range(job["colours"])]
     a = np.asarray(cell).astype(int)
