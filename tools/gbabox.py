@@ -230,6 +230,14 @@ def transition():
     needs no change. The reds go unused: a host is grey."""
     return np.array(box_in(32, 32, ink=0xF, body=0xA, bevel=0x4, glass=0xF, foot=0xF, inset=3))
 
+def battle_anim():
+    """16x16 -- the object thrown in every capture, drawn by the battle anims.
+
+    Its palette carries a full grey ramp beside the reds, so the machine costs
+    nothing: 5 is the dark slate, 3 the pale face, 6 the white bevel. The reds
+    go unused."""
+    return np.array(box_in(16, 16, ink=0x5, body=0x3, bevel=0x6, glass=0x5, foot=0x5, inset=1))
+
 def png(path, g, pal=PAL):
     im = Image.new("P", (g.shape[1], g.shape[0]))
     im.putdata(g.flatten().tolist())
@@ -280,7 +288,8 @@ def main():
     # These three keep their own palettes; only the indices change.
     for rel, grid in (("graphics/party_menu/pokeball_small.png", party_small()),
                       ("graphics/party_menu/pokeball.png", party_big()),
-                      ("graphics/battle_transitions/sliding_pokeball.png", transition())):
+                      ("graphics/battle_transitions/sliding_pokeball.png", transition()),
+                      ("graphics/battle_anims/sprites/pokeball.png", battle_anim())):
         src = Image.open(os.path.join(GBA, rel))
         print("  %-52s %dx%d (its own palette, indices only)"
               % (rel, grid.shape[1], grid.shape[0]))
