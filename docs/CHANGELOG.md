@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.96 — 2026-09-06
+
+### Deadstack had never been named, and the shops got written
+
+- **Mt. Moon was still called Mt. Moon.** 3.2 named it **Deadstack** — *a mountain of dead
+  hardware; fossils are legacy silicon* — and nothing implemented it. Every other landmark
+  had been done: `VIRIDIAN_FOREST → THE UNDERTONE`, `SEAFOAM_ISLANDS → GLAUCOUS ISLES`,
+  `POWER_PLANT → KEEPALIVE PLANT`, `VICTORY_ROAD → UMBRAL ASCENT`. This one was missed, and
+  `port_names` could never have caught it, because it learns renames by **diffing our table
+  against upstream** and this entry had never differed.
+  *Found because the museum plaques written this morning say "recovered from Deadstack".*
+- **Both spellings were in the ROM** — `MT. MOON` and `MT.MOON` — so `port_vocab` carries
+  four forms and propagated to 11 files. Zero left.
+- **The five remaining slice rooms written**, 16 blocks. **The slice reaches 53%.**
+- **The trade-disobedience line was 1.3 waiting to be noticed.** Vanilla: an outsider
+  *"may ignore an unskilled USER."* Ours: *"A traded daemon was bound by somebody else. It
+  runs. Just not at your level."* That is the privilege ladder, in a house in Slate, said
+  by someone complaining about their pet.
+- **And the DAEMON CENTER got the line it needed.** *"A DAEMON CENTER restarts anything
+  that HALTED. It comes back the way it went in."* Nobody remarks on it, and 4.20a is the
+  man who **was** the thing in storage.
+- **`NIDORAN♂` was still `NIDORAN♂`** in Slate's house — the ♂ had hidden it from the
+  species rename. It is BRANCH.
+
+---
+
 ## v11.95 — 2026-09-06
 
 ### The school teaches the chart, and does not understand it

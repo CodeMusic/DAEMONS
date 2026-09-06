@@ -266,6 +266,11 @@ PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   # the one room with colour in it. The trainer class agreed
                   # before the dialogue did.
                   [("ELITE FOUR", "REVIEW BOARD")] +
+                  # 3.2 named it DEADSTACK and nothing implemented it -- the
+                  # mapsec still read MT. MOON while every other landmark had
+                  # been renamed. Both spellings appear in dialogue.
+                  [("MT. MOON", "DEADSTACK"), ("MT.MOON", "DEADSTACK"),
+                   ("Mt. Moon", "Deadstack"), ("Mt.Moon", "Deadstack")] +
                   ENGAGE),
                  key=lambda kv: -len(kv[0]))
 PHRASE_RE = re.compile('|'.join(re.escape(k) for k, _ in PHRASES)) if PHRASES else None
