@@ -7,6 +7,18 @@
 TWO SPRITES, TWO COMPLETELY DIFFERENT FORMATS, and getting either wrong
 produces a screenful of confetti rather than an error.
 
+  THE PLAYER -> graphics/oak_speech/{red,leaf}/pic.png, 64x96, 8bpp -- and a
+     DIFFERENT palette bank from everyone else here. oak_speech.c loads the
+     two player pics with LoadPalette(..., BG_PLTT_ID(4)) and the professor
+     and rival with BG_PLTT_ID(6), so player indices start at 65 where the
+     others start at 97. Vanilla's red/pic.png uses 0..95 and oak/pic.png
+     uses 0..121, which is the same fact seen from the file. Wrong base is a
+     screenful of confetti, not an error.
+
+     9.10 made playerGender a pure sprite selector, so MALE_PLAYER_PIC is
+     LOGIC and FEMALE_PLAYER_PIC is INTUITION -- the order the question
+     offers them in.
+
   CRYSTAL -> graphics/oak_speech/oak/pic.png, 64x96, EIGHT bits per pixel.
      oak_speech.c loads its palette with LoadPalette(..., BG_PLTT_ID(6)),
      which is palette RAM 96 -- so the pixel values in the file are not 1..25,
@@ -61,6 +73,14 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/rival_late_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/rival_late.pal",
                         size=(64, 64), colours=15, base=1, palsize=16),
+    "logic":       dict(src="gfx/characters/player_logic.jpeg",
+                        dst="engineGba/graphics/oak_speech/red/pic.png",
+                        pal="engineGba/graphics/oak_speech/red/pal.pal",
+                        size=(64, 96), colours=31, base=65, palsize=32),
+    "intuition":   dict(src="gfx/characters/player_intuition.jpeg",
+                        dst="engineGba/graphics/oak_speech/leaf/pic.png",
+                        pal="engineGba/graphics/oak_speech/leaf/pal.pal",
+                        size=(64, 96), colours=31, base=65, palsize=32),
     "al_champion": dict(src="gfx/characters/al_champion.jpeg",
                         dst="engineGba/graphics/trainers/front_pics/champion_rival_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/champion_rival.pal",
