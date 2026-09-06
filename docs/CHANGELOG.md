@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.98 — 2026-09-06
+
+### The routes, the rival's two battles, and Slate's gym finished
+
+- 17 blocks. **The slice reaches 58%**, and only 19 blocks are untouched.
+- **Al's two Route 22 battles rewritten**, and the pair now reads as one person a year
+  apart. Early, beaten: *"That was luck. It was."* — he says it twice because saying it
+  once did not settle it. Late, beaten: *"No. I was not paying attention."* He has stopped
+  blaming luck and started blaming himself, which is worse.
+- **Route 1's ledges say something true about the shape of the game.** *"You can drop down
+  them. You cannot climb back up. It is quicker going home than it is coming out."*
+- **Slate's gym guide stopped being a hype man.** *"I do not battle. I watch. I can tell
+  you how it goes."* — which is what that character has always actually been.
+
+### Still open, and the writing has now half-answered it twice
+
+- **GIOVANNI is not renamed** (2712), and Callow's gym statue says so in the ROM — under a
+  sprite that has been **Scorn's face since this morning**. The gym guide already says
+  *"Nobody will tell me who runs this GYM. I have asked. They smile."* and the leader
+  already says *"the machine chose what I weighted it to choose"*, **which is Scorn's crime
+  stated by him.** The two remaining untouched blocks in that room cannot be written until
+  it is decided: either the man in the gym is Scorn, or two people weighted the same machine.
+
+---
+
 ## v11.97 — 2026-09-06
 
 ### Blanche Town, and DRUM CORE
