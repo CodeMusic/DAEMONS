@@ -285,6 +285,11 @@ PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   # rather than two shapes and an age. HELIX stays: helical
                   # scan is how VCRs and DAT drives wrote to tape.
                   [("DOME CORE", "DRUM CORE")] +
+                  # The device records what you were TOLD about people, which
+                  # is 0.2's reproduction that loses the original as an item.
+                  # HEARSAY is what it holds and what the word means: testimony
+                  # that is not firsthand. And it checks nothing.
+                  [("FAME CHECKER", "HEARSAY"), ("Fame Checker", "Hearsay")] +
                   [("MT. MOON", "DEADSTACK"), ("MT.MOON", "DEADSTACK"),
                    ("Mt. Moon", "Deadstack"), ("Mt.Moon", "Deadstack")] +
                   ENGAGE),
