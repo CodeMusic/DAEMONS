@@ -1,0 +1,111 @@
+SUNO PROMPT - the intro, where Crystal is standing
+======================================================================
+
+    A minor. 128 BPM. Built on her own hook, before the game has started.
+
+WHY A MINOR, AND WHY IT IS NOT A CHOICE
+
+7.6 transcribed Crystal's motif from *01. Crystal's Lament*: A minor, 128 BPM,
+4/4, hook
+
+    A4  E5  D5  C5  B4  C5  D5
+
+and recorded the structural fact that matters here -- A MINOR IS THE RELATIVE
+MINOR OF C MAJOR, which 7.4 gives Blanche. Her motif already sits inside
+Blanche's theme with no modulation at all.
+
+So the first music in the game is HER, and the first town's theme is the same
+material in the major. The player hears the town later and it is familiar
+without being a quotation. NOBODY SAYS THIS, and nothing in the game marks it.
+
+That is also why this cue must not be written as sad. A minor is doing the
+work already. Write it WARM: a scientist introducing a world to a child, in
+the room where she has done this many times before. The wistfulness is in the
+key, not in the performance.
+
+WHAT THIS CUE IS
+
+MUS_NEW_GAME_INTRO, behind the CRYSTAL CLEAR speech -- the portrait, the box
+in her hand, the daemon that comes out of it. Sixty to ninety seconds, looping
+under dialogue the player is reading at their own pace. It has to bear being
+heard three times without becoming an event.
+
+Two shorter cues sit either side of it (MUS_NEW_GAME_INSTRUCT and
+MUS_NEW_GAME_EXIT) and are NOT in scope. One track.
+
+THE CONSTRAINT IS STILL THE ENGINE
+
+This gets transcribed to MIDI and played on THREE CHANNELS. Everything has to
+come from the writing -- register, rhythm, the shape of the line -- because
+production does not survive transcription.
+
+----------------------------------------------------------------------
+THE STYLE BOX
+----------------------------------------------------------------------
+instrumental video game intro theme, A minor, 128 BPM, chord progression
+Am - F - C - G, warm and curious, gentle music-box lead over a soft
+arpeggiated accompaniment, walking bass in quarter notes, unhurried, late-90s
+handheld RPG opening narration, thoughtful and welcoming, clean note attacks,
+steady tempo, dry mix, no vocals
+
+----------------------------------------------------------------------
+LYRICS BOX
+----------------------------------------------------------------------
+[Instrumental]
+
+----------------------------------------------------------------------
+THE HOOK IT IS BUILT ON
+----------------------------------------------------------------------
+This is the one prompt in the set where the melody is NOT free. Ask for a
+lead line that follows this contour:
+
+    A  E  D  C  B  C  D
+
+Up a fifth, then a slow descent, then a turn at the bottom that goes back up
+two steps and stops. It does not resolve to A. That is the whole shape --
+a phrase that asks and then waits.
+
+Let the harmony resolve underneath it. The melody should not.
+
+If Suno gives you something that lands hard on the tonic at the end of every
+phrase, it has misread the brief -- the descent must hang.
+
+----------------------------------------------------------------------
+AVOID
+----------------------------------------------------------------------
+no vocals or vocal chops       - there is no channel for them
+no pads or ambient wash        - a sustained pad transcribes as one wrong note
+no heavy reverb or delay       - tails smear the note onsets
+no drum kit                    - percussion is the noise channel and gets
+                                 dropped; the motion must be in the bass so
+                                 it survives their absence
+no key change, no rubato       - the transcriber assumes one key, one tempo
+no swell, no cinematic build   - this plays under text, three times
+NOT SAD                        - no minor-key lament, no strings, no rubato
+                                 piano. It is warm. She is pleased to see you.
+
+----------------------------------------------------------------------
+THE SHAPE TO ASK FOR
+----------------------------------------------------------------------
+Eight bars of the hook. Eight more with the bass moving underneath and the
+accompaniment filling in. Then back to the top. End where it began so the
+loop point does not announce itself.
+
+Nothing should peak. This is the only track in the game that plays before the
+player has done anything, and it should sound like a room rather than an
+opening.
+
+----------------------------------------------------------------------
+WHEN IT COMES BACK
+----------------------------------------------------------------------
+  1. Is it A minor at 128? 7.6's key is the whole structural point -- if it
+     drifts to C or to D minor, the relationship to Blanche is gone.
+  2. Can you hear THREE lines? Close your eyes and count. If the bass and the
+     middle voice blur, the transcription will lose one.
+  3. Does the melody REFUSE to land? Hum the last note of a phrase. If it
+     feels finished, it is wrong.
+  4. Play it three times without skipping. Does it wear?
+
+Then the stems, then the transcription prompt with the NO AUDIO gate first.
+4.9 records what happens otherwise: a model that could not hear handed back an
+earlier answer and admitted in its own DOUBT field that it was a guess.
