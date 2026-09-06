@@ -78,6 +78,37 @@ def rich_src(ours, kind):
             if not f.endswith(".txt")]
     return hits[0] if hits else None
 
+def deringe(a):
+    """Undo JPEG on generated pixel art by sampling the grid it was drawn on.
+
+    Gemini renders at about 100 logical pixels and upscales to 1024, so every
+    logical pixel is a ~10px block -- and JPEG ringing lives at BLOCK EDGES.
+    Taking the median of each block's centre never reads the ringing at all,
+    which matters because there is no PNG export: the tolerance band between
+    body grey and marking colour was a workaround for damage we can simply
+    decline to sample.
+
+    Falls through unchanged if no regular grid is found -- hand-drawn or
+    already-clean art is not on one."""
+    d = np.abs(np.diff(a, axis=1)).sum(axis=(0, 2)).astype(float)
+    d -= d.mean()
+    lags = [(float((d[:-l] * d[l:]).sum()), l) for l in range(4, 40)]
+    score, pitch = max(lags)
+    if score <= 0:
+        return a
+    h, w = a.shape[:2]
+    ny, nx = h // pitch, w // pitch
+    if ny < 24 or nx < 24:                       # not a grid we can trust
+        return a
+    out = np.zeros((ny, nx, 3), dtype=int)
+    k = max(1, pitch // 4)                       # the inner half of each block
+    for j in range(ny):
+        for i in range(nx):
+            cy, cx = j * pitch + pitch // 2, i * pitch + pitch // 2
+            blk = a[max(0, cy-k):cy+k+1, max(0, cx-k):cx+k+1].reshape(-1, 3)
+            out[j, i] = np.median(blk, axis=0)
+    return out
+
 def place_rich(path, type_rgb):
     """Redrawn art -> a 64x64 index grid and its palette.
 
@@ -85,8 +116,8 @@ def place_rich(path, type_rgb):
     markings and keep their own colour. JPEG ringing puts a band of weakly
     coloured pixels between the two, so anything in that band is treated as
     body -- a fringe is not a marking."""
-    im = Image.open(path).convert("RGB")
-    a = np.asarray(im).astype(int)
+    a = deringe(np.asarray(Image.open(path).convert("RGB")).astype(int))
+    im = Image.fromarray(a.astype(np.uint8))
     sat = a.max(2) - a.min(2)
     subj = ~((a.min(2) > 232) & (sat < 24))              # not the flat paper
 
