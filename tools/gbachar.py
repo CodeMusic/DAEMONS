@@ -56,7 +56,7 @@ JOBS = {
     "crystal":     dict(src="gfx/characters/crystal_speech.jpeg",
                         dst="engineGba/graphics/oak_speech/oak/pic.png",
                         pal="engineGba/graphics/oak_speech/oak/pal.pal",
-                        size=(64, 96), colours=25, base=97, palsize=32),
+                        size=(64, 96), colours=25, base=97, palsize=32, flip=True),
     "al_speech":   dict(src="gfx/characters/al_speech.jpeg",
                         dst="engineGba/graphics/oak_speech/rival/pic.png",
                         pal="engineGba/graphics/oak_speech/rival/pal.pal",
@@ -107,6 +107,15 @@ def cut(job):
     box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
     im = Image.fromarray(a.astype(np.uint8)).crop(box)
     mask = Image.fromarray((ink[box[1]:box[3], box[0]:box[2]] * 255).astype(np.uint8))
+
+    if job.get("flip"):
+        # oak_speech spawns the box at x=100 and the daemon at x=96, both left
+        # of centre because that is where OAK's hand was. Crystal reaches to
+        # the right, so the box appeared beside the wrong hand. Mirroring the
+        # art keeps vanilla's tested composition; moving the two coordinates
+        # instead would push a 64-wide daemon into her at this size.
+        im = im.transpose(Image.FLIP_LEFT_RIGHT)
+        mask = mask.transpose(Image.FLIP_LEFT_RIGHT)
 
     W, H = job["size"]
     scale = min(W / im.width, H / im.height)
