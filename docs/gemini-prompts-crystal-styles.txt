@@ -1,0 +1,67 @@
+CRYSTAL CLEAR — three treatments of the same character
+======================================================
+
+The point is to see them together and decide, so everything except the
+treatment is held fixed: same person, same pose, same clothes, same framing.
+Generate B and C; A is gfx/characters/crystal_speech.jpeg, already made.
+
+The pose is fixed as her intro portrait -- standing, turned slightly, one
+hand extended in a welcoming gesture, the other holding a notebook or tablet
+against her side. Full body, tall frame.
+
+Save as gfx/characters/style_b.jpeg and style_c.jpeg.
+
+--------------------------------------------------------------------------
+A -- ANTHRO, BODY-FORWARD  (already generated, for reference)
+--------------------------------------------------------------------------
+What we have: a golden fox woman, visible fur on face and arms, a full brush
+tail, upright ears, a muzzle. The fur and the tail are prominent.
+
+This is the version most likely to be read as a furry game -- not because
+she is a fox, but because the BODY is the animal. Star Fox is anthropomorphic
+too and is rarely read that way, because its characters are faces in
+cockpits: a head, a flight suit, a job.
+
+==========================================================================
+B -- HUMAN, WITH THE FABLE IN THE PRESENTATION
+==========================================================================
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
+
+Subject: a HUMAN woman in her sixties, a senior research scientist. She is
+entirely human -- no fur, no ears, no tail, no muzzle.
+
+But everything about her presentation says FOX, without her being one:
+golden-amber hair going silver at the temples, swept back to a point. A
+sharp, narrow face with quick eyes. A long white lab coat worn open over a
+purple shirt, with a high russet-red collar turned up. Lean, alert, poised
+on the balls of her feet as though about to move. Warm, clever, and slightly
+ahead of you.
+
+Pose: standing, turned slightly to her right, one hand extended toward the
+viewer in a welcoming gesture, the other holding a notebook against her
+side. Full body, feet included, in a TALL frame. Under about twenty colours.
+
+==========================================================================
+C -- ANTHRO, STAR FOX RESTRAINT
+==========================================================================
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
+
+Subject: an anthropomorphic fox, a senior research scientist in her sixties.
+Golden-amber, with silver at the temples.
+
+IMPORTANT -- the animal is the FACE, not the body. Only the head reads as a
+fox: a narrow muzzle, upright ears, sharp eyes. Everything below the neck is
+COVERED. A long white lab coat over a purple shirt, sleeves to the wrist,
+trousers to the ankle, proper shoes. NO visible fur anywhere on the body, no
+bare arms, NO TAIL VISIBLE -- it is behind her or under the coat. Her build
+is an ordinary human build under the clothes.
+
+She reads as a scientist who happens to be a fox, not as a fox creature.
+
+Pose: standing, turned slightly to her right, one hand extended toward the
+viewer in a welcoming gesture, the other holding a notebook against her
+side. Full body, feet included, in a TALL frame. Under about twenty colours.
