@@ -37,7 +37,7 @@ gbagfx builds their .gbapal from the PNG itself.
           graphics/interface/ball_open.png                                16x16
           graphics/pokedex/caught_marker.png                              8x8
 """
-import os, sys, math
+import os, sys, math, struct
 import numpy as np
 from PIL import Image
 
@@ -59,7 +59,19 @@ PAL = {
 }
 
 # USERBOX -> ADMINBOX -> SUPERBOX -> ROOTBOX, plus the Safari Zone's GUESTBOX.
-TIERS = {"poke": 1, "great": 2, "ultra": 3, "master": 4, "safari": 0}
+#
+# The seven Gen 3 boxes ride along at one pip. They are all USER-level hosts --
+# NET, DIVE, NEST, REPEAT, TIMER, LUXURY and PREMIER differ by BEHAVIOUR, not
+# by privilege, so they are the same object and the name is what tells them
+# apart. Colouring them would be decoration, which 8.6 does not allow.
+TIERS = {"poke": 1, "great": 2, "ultra": 3, "master": 4, "safari": 0,
+         "net": 1, "dive": 1, "nest": 1, "repeat": 1, "timer": 1,
+         "luxury": 1, "premier": 1}
+
+# ...but their icon palettes are SHARED: timer reads repeat's and premier reads
+# luxury's, so writing a .pal for those two would be writing the same file
+# twice under a name nothing reads.
+ICON_PAL = {"timer": None, "premier": None}
 
 def blank(w, h): return np.zeros((h, w), dtype=np.uint8)
 
@@ -230,6 +242,71 @@ def transition():
     needs no change. The reds go unused: a host is grey."""
     return np.array(box_in(32, 32, ink=0xF, body=0xA, bevel=0x4, glass=0xF, foot=0xF, inset=3))
 
+def big_transition():
+    """B_TRANSITION_BIG_POKEBALL -- a full-screen weave, and the only ball in
+    the game that is a TILESET plus a 30x20 TILEMAP rather than a picture.
+
+    44 tiles are assembled into a circle by big_pokeball_tilemap.bin, so
+    redrawing the tiles alone would produce garbage: the tilemap holds the
+    geometry. A box needs far fewer pieces than a circle, though -- eight,
+    with the h/v flip bits doing the other corners -- so both are generated.
+
+    Colours come from sliding_pokeball.gbapal, which this transition loads:
+    f black, a mid grey, 5 pale. Its reds go unused.
+    """
+    INK, BODY, BEVEL, GLASS = 0xF, 0xA, 0x5, 0xF
+    T = [[[0]*8 for _ in range(8)] for _ in range(8)]
+    for y in range(8):
+        for x in range(8):
+            T[1][y][x] = BODY                    # 1 body
+            T[2][y][x] = INK if y == 0 else BODY  # 2 top edge
+            T[3][y][x] = INK if x == 0 else BODY  # 3 left edge
+            T[4][y][x] = INK if (y == 0 or x == 0) else BODY   # 4 corner
+            T[5][y][x] = GLASS                   # 5 glass
+            T[6][y][x] = BEVEL if y < 2 else BODY # 6 bevel band
+            T[7][y][x] = INK if y < 4 else 0      # 7 foot
+
+    sheet = blank(32, 88)
+    for n in range(8):
+        oy, ox = (n // 4) * 8, (n % 4) * 8
+        for y in range(8):
+            for x in range(8):
+                sheet[oy + y][ox + x] = T[n][y][x]
+
+    HF, VF = 0x400, 0x800
+    m = [[0] * 30 for _ in range(20)]
+    L, R, TOP, BOT = 7, 22, 4, 15
+    for r in range(TOP, BOT + 1):
+        for c in range(L, R + 1):
+            top, bot = r == TOP, r == BOT
+            lf, rt = c == L, c == R
+            if (top or bot) and (lf or rt):
+                t = 4 | (HF if rt else 0) | (VF if bot else 0)
+            elif top or bot:
+                t = 2 | (VF if bot else 0)
+            elif lf or rt:
+                t = 3 | (HF if rt else 0)
+            elif r == TOP + 1:
+                t = 6
+            else:
+                t = 1
+            m[r][c] = t
+    for r in range(TOP + 3, TOP + 7):          # the glass, inset and high
+        for c in range(L + 3, R - 2):
+            m[r][c] = 5
+    for c in (L + 1, L + 2, R - 2, R - 1):     # feet
+        m[BOT + 1][c] = 7
+    flat = b"".join(struct.pack("<H", m[r][c]) for r in range(20) for c in range(30))
+    return sheet, flat
+
+def fame():
+    """32x32 -- the Fame Checker's spinner. Its .gbapal is built from this PNG,
+    so unlike the three above it takes OUR palette rather than borrowing one."""
+    g = blank(32, 32)
+    box(g, 4, 3, 27, 26, pips=1, sw=12, sh=6, vent=17)
+    feet(g, 4, 27, 27)
+    return g
+
 def battle_anim():
     """16x16 -- the object thrown in every capture, drawn by the battle anims.
 
@@ -261,11 +338,24 @@ def show(g, label):
 def main():
     jobs = []
     for name, tier in TIERS.items():
-        jobs.append(("graphics/items/icons/%s_ball.png" % name, icon(tier),
-                     "graphics/items/icon_palettes/%s_ball.pal" % name))
+        pal = None if name in ICON_PAL else "graphics/items/icon_palettes/%s_ball.pal" % name
+        jobs.append(("graphics/items/icons/%s_ball.png" % name, icon(tier), pal))
         jobs.append(("graphics/interface/ball/%s.png" % name, throw(tier), None))
     # NOT this one -- see the remap below.
     jobs.append(("graphics/trade/pokeball.png", spin(), None))
+    jobs.append(("graphics/fame_checker/spinning_pokeball.png", fame(), None))
+
+    # the one that is a tileset AND a tilemap
+    sheet, tmap = big_transition()
+    print("  %-52s 32x88 + a regenerated 30x20 tilemap"
+          % "graphics/battle_transitions/big_pokeball.png")
+    if WRITE:
+        bp = os.path.join(GBA, "graphics/battle_transitions/big_pokeball.png")
+        src = Image.open(bp)
+        im = Image.new("P", (32, 88)); im.putdata(sheet.flatten().tolist())
+        im.putpalette(src.getpalette()); im.save(bp)
+        open(os.path.join(GBA, "graphics/battle_transitions/big_pokeball_tilemap.bin"),
+             "wb").write(tmap)
     jobs.append(("graphics/interface/ball_open.png", opened(), None))
 
     show(icon(1), "USERBOX 24x24 bag icon")
