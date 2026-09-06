@@ -134,6 +134,11 @@ VOCAB = {
     # face, and he already says "the machine chose what I weighted it to
     # choose", which 4.18 makes Scorn's crime stated by him. Settled 2026-09-06.
     "GIOVANNI": "SCORN", "GIOVANNI's": "SCORN's", "Giovanni": "Scorn",
+    # 2609: the last vanilla name in the family. The Clears are all kinds of
+    # CLEAR -- crystal clear, all clear, type clear -- and hers is VERY clear,
+    # which is 2569's whole point: Crystal reads them with an instrument and
+    # Vera just looks. Settled 2026-09-06.
+    "DAISY": "VERA", "DAISY's": "VERA's", "Daisy": "Vera",
     # 5.1: the leader says "I'm CAIRN" in our gym dialogue and the trainer
     # entry now agrees, so the twenty-six other mentions have to as well.
     "BROCK": "CAIRN",

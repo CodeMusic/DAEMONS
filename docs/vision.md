@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.101**
+**A total conversion — the living design bible, v11.102**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2606,9 +2606,20 @@ to know what is happening inside it.
 ***"None of them by Gran" pays off a line in the lab*** — *"Everyone says so.
 Very few of them have read her."* **Neither explains the other.**
 
-*Open:* **DAISY is not renamed.** She is a Clear — *Crystal's granddaughter and
-AL's sister* — and hers is the last vanilla name in the family. **That is a
-decision, and it is one vocabulary entry when it is made.**
+*Settled 2026-09-06:* **DAISY is `VERA CLEAR`.**
+
+***The Clears are all kinds of clear*** — **crystal** clear, **all** clear (AL), **type**
+clear (TY P.) — *and hers is **very** clear.* **Which is the point of the paragraph above
+it:** *Crystal reads them with an instrument. Vera just looks, and sees.*
+
+**Interrogated and rejected.** `IRIS CLEAR` was thematically the prettiest — *Crystal is a
+lens, Iris is an aperture; the grandmother is the instrument and the granddaughter is the
+eye* — but **it is not a pun and the other three are**, so it breaks the device at the
+fourth member. `CASH CLEAR` was the exact pun (*cache clear*) and points at **storage**,
+which is the one thing she is not about.
+
+*Cost, recorded:* **CRYSTAL and VERA read a generation older than AL and TY**, which is
+backwards, since Vera is the youngest of the four.
 
 ### 4.30 The Undertone — written around the stone that was already there
 

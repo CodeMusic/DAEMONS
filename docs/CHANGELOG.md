@@ -5,6 +5,24 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.102 — 2026-09-06
+
+### DAISY is VERA CLEAR
+
+- **2609 settled**, the last vanilla name in the family. One vocabulary entry, 22 dialogue
+  blocks, 8 files.
+- **The Clears are all kinds of clear** — *crystal* clear, *all* clear, *type* clear — and
+  hers is **very** clear. Which is 2569's whole point: *"Gran reads them with an
+  instrument. I just look."* Crystal needs equipment; Vera does not.
+- **`IRIS CLEAR` was the prettiest and was rejected.** Crystal is a lens and an iris is an
+  aperture — grandmother the instrument, granddaughter the eye — but it is not a pun and
+  the other three are, so it breaks the device at the fourth member. **`CASH CLEAR`** was
+  the exact pun and points at *storage*, the one thing she is not about.
+- *Cost recorded:* CRYSTAL and VERA read a generation older than AL and TY, which is
+  backwards.
+
+---
+
 ## v11.101 — 2026-09-06
 
 ### The slice metric measures prose now, and it is at 74%
