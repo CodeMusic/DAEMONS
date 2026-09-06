@@ -180,8 +180,12 @@ checksums "fail" correctly.
 4. **Never paste `patches/type_constants.asm` or `type_names.asm` wholesale.**
    They are design documents, not drop-ins — master's structure is different and
    pasting either breaks the build. See 9.1.
-5. **Greyscale is the design, not a limitation.** Colour appears once, at the
-   Review Board. See 8.6.
+5. **Colour must carry the argument, never decorate it.** That is the live rule
+   (9.4): a daemon is coloured by its *type*, the Clears by *family*. **8.6's
+   "colour appears once, at the Review Board" is OPEN, not settled** — grey was
+   the medium on a DMG and would be a visible filter on GBA, and the build has
+   character sprites in colour. Read 8.6's *Open, deliberately* before acting on
+   either reading. Do not start a greyscale pass without an explicit decision.
 6. **Renaming type constants is optional and expensive.** Only the *strings* in
    `data/types/names.asm` affect what the player reads. `ROCK` collides with
    `ROCK_SLIDE`, `FIRE` with `FIRE_BLAST`, `BUG` with the Bug Catcher class.
