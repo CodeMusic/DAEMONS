@@ -51,9 +51,15 @@ other character has. A brim the same width as the shoulders stacks into a
 mailbox, which is what the first attempt produced.
 
 The design already exists as art: engine/gfx/title/player.png, 40x56, enlarged
-to gfx/characters/player_reference.png. ATTACH IT -- BUT FOR SILHOUETTE ONLY.
+to gfx/characters/player_reference.png. ATTACH IT -- BUT FOR CLOTHES ONLY.
 Coat, brim, the strap across the body and the BOX at the hip come from there.
 NOTHING ELSE DOES.
+
+    THE FIGURE IN THE REFERENCE IS A HUMAN, AND THAT IS OUT OF DATE. It was
+    drawn for the Game Boy build, before 9.4 settled that the cast are drawn
+    as a fable. The character is an anthropomorphic PRIMATE as described
+    above -- animal head, paw hands, tail, all of it. Take the coat, the hat,
+    the strap and the box; take nothing about the species.
 
     THE REFERENCE IS TOO DARK, AND THAT IS HALF OF WHY THIS ENGINE CHANGED.
     Four grey tones gave that figure no way to light a face under a wide
