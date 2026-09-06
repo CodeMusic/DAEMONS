@@ -1,0 +1,68 @@
+CAIRN — Benchmark 1
+===================
+
+WHO HE IS, because the sprite has to carry it. 5.1:
+
+    A cairn is a heap of stones that physically encodes something -- a path, a
+    boundary, a grave. His creed, said plainly and sympathetically: everything
+    you know is sitting in something, stone, bone, tape, silicon, and if it is
+    not written down, it did not happen.
+
+    HE IS RIGHT, AND THAT IS THE POINT. Representation is a real position and
+    he holds it well; nothing in the gym undercuts him.
+
+So he is NOT a tough guy with his eyes shut. He is a man of record -- his own
+trainer says CAIRN keeps a record of every match in here, every one -- and
+when he loses he does not concede, he says the player encoded something he
+could not read and calls it a format he does not have.
+
+THE SPECIES IS A TORTOISE, and it is the same reasoning the Clears are foxes.
+His type is LEGACY: old formats, still readable. A tortoise is long-lived,
+hard-shelled, patient, and carries its own record on its back -- the growth
+rings of a shell are a physical encoding of the years, which is his creed
+standing in a field.
+
+Drawn under the fable rule, vision 9.4:
+
+  1. INTEGRATED, never grafted -- the animal is the whole body, not a head.
+  2. DRAWN PLAINLY -- flat colour, cel shading, no scale texture, no gloss,
+     no musculature.
+  3. HEAD-TO-BODY RATIO CARRIES AGE. He is a man in his forties: a SMALL head
+     in proportion to the body. Left unstated everyone comes out cute.
+
+Save as gfx/characters/cairn.jpeg.
+
+--------------------------------------------------------------------------
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
+background, no scenery, no shadow under the feet.
+
+Subject: an adult male TORTOISE, a records keeper in his forties, drawn in
+the classic cartoon funny-animal tradition -- animals through and through,
+built from simple confident shapes, the style of Carl Barks or Disney's ROBIN
+HOOD.
+
+HE IS NOT CUTE, NOT COMIC AND NOT A VILLAIN. Adult proportions: a head SMALL
+in proportion to his body. Calm, level, unhurried eyes. Patient and entirely
+certain. He is the most careful person you will meet and he knows the value
+of that.
+
+He is a tortoise ALL OVER, not a man in a tortoise head. Warm grey-green,
+with a low domed shell across his back and shoulders, its plates marked with
+faint concentric growth rings. Simple rounded CLAW hands, three thick
+fingers. A short thick tail. Heavy, planted, slow.
+
+DRAWN PLAINLY. No scale texture, no individual scutes beyond the plate
+outlines, no gloss, no muscle definition. Flat solid colour with simple cel
+shading, the way a newspaper cartoon animal is drawn.
+
+Clothes: a hard-wearing dark canvas work apron over a plain shirt, sleeves
+rolled, sturdy boots. A pencil behind one ear.
+
+Pose: standing square and settled, weight even on both feet, holding a
+SLATE -- a flat dark writing tablet -- against his chest in one hand, a piece
+of chalk in the other, as though he has just written something down and is
+waiting to write the next thing. Looking directly at the viewer, level and
+unhurried.
+
+Full body, feet included, in a square frame. Under about fifteen colours.
