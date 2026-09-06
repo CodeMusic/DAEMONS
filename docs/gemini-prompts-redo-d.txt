@@ -69,7 +69,20 @@ Shared opening for all four -- paste it, then one pose block:
     GRANDSON. Same drawing tradition, same flat plain rendering, same plain
     green background.
 
-    He is a fox all over -- russet, a shade darker than hers, no silver.
+    He is a fox all over -- MID-RUSSET, no silver. NOT DARK.
+
+    THE FIRST REDO CAME BACK TOO DARK TO SEE. Measured against the intro
+    background, his brightest colour was darker than Crystal's AVERAGE one --
+    every value in the sprite sat in the bottom half of the range, so he read
+    as a silhouette with no internal contrast. "A shade darker than hers" was
+    taken as an instruction to darken everything.
+
+    4287 is explicit that the three foxes are LIGHT-TO-MID, DARK and BETWEEN:
+    Crystal light-to-mid, TY dark, and Al BETWEEN them. He is not the dark
+    one. Give him a bright warm russet with clear light and mid values, and
+    make sure something on him is genuinely PALE -- a cream shirt, a light
+    chest, a bright highlight on the fur. If the whole figure is mid-tone or
+    below, it is wrong.
     Rounded PAW hands, a fox tail held close, not a large brush. A head
     slightly LARGER in proportion than hers, because he is a child.
 
