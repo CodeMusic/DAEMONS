@@ -41,24 +41,28 @@ Save results in gfx/daemons/ as <name>_front.png and <name>_back.png.
 PING — front. ATTACH gfx/daemons/ping_reference.png (LEFT image)
 ==========================================================================
 Redraw the creature on the LEFT of the attached image as pixel art, larger
-and with more detail, keeping its shape and pose exactly.
+and with more detail. THE SILHOUETTE MUST MATCH THE REFERENCE.
 
-It is a lean, swept-back bird built like a dart or an arrow -- narrow body,
-long thin wings swept back hard, a sharp pointed beak, streamlined, caught
-mid-flight moving to the viewer's left. Nothing about it is soft or round.
+Read the shape carefully before drawing. It is NOT a normal bird and NOT a
+hummingbird. It is a DART: a long narrow body with the wings raked hard BACK
+along it, like the fletching of an arrow or the wings of a fighter jet. The
+whole creature forms a single narrow wedge pointing forward and to the
+viewer's left. Wings swept BACK, never spread up or outward. A short sharp
+beak, not a long bill. A straight tapering tail, NOT forked. It is a thrown
+object in flight, moving fast in one direction.
 
 Draw the BODY in NEUTRAL GREYSCALE ONLY -- about five values from a near-
 white highlight down to a near-black outline. No colour cast anywhere in the
 body, no gradients, no anti-aliasing, hard pixel edges. Flat background.
 
-Then give it AT MOST THREE small SATURATED ACCENTS: a coloured eye, the beak,
-and one marking. These must be strongly coloured and unmistakably not grey.
-Everything else stays neutral.
+Give it EXACTLY TWO small accents, BOTH THE SAME COLOUR: the eye, and one
+short stripe along the leading edge of the wing. Nothing else is coloured.
+Keep them small -- together they should be a few percent of the creature. Do
+NOT colour the beak, and do not add a third colour anywhere.
 
-Make it FILL the square frame -- it should be substantially larger relative
-to the canvas than the reference is, using the extra room for feather
-separation, a defined eye, and structure in the wings. Same creature, same
-silhouette, more resolution.
+Make it FILL the square frame, using the extra room for feather separation
+and structure in the swept wings. Same creature, same silhouette, more
+resolution.
 
 ==========================================================================
 PING — back. ATTACH gfx/daemons/ping_reference.png (RIGHT image)
@@ -66,18 +70,19 @@ PING — back. ATTACH gfx/daemons/ping_reference.png (RIGHT image)
 Redraw the creature on the RIGHT of the attached image as pixel art, larger
 and with more detail, keeping its shape and pose exactly.
 
-This is the same dart-like bird seen FROM BEHIND and slightly above, as a
-trainer would see their own creature: a compact vertical shape, pointed at
-the top, wings folded back along the body, tail below. It is flying away
-from the viewer.
+THE SILHOUETTE MUST MATCH THE REFERENCE. This is the same DART seen FROM
+BEHIND and slightly above, as a trainer would see their own creature: a
+narrow vertical wedge, pointed at the top, wings raked back tight against
+the body, tail tapering below. It is flying directly away from the viewer.
+Not a hummingbird, not a bird with spread wings -- a thrown object receding.
 
 Draw the BODY in NEUTRAL GREYSCALE ONLY -- about five values from a near-
 white highlight down to a near-black outline. No colour cast anywhere in the
 body, no gradients, no anti-aliasing, hard pixel edges. Flat background.
 
-Then give it AT MOST TWO small SATURATED ACCENTS, matching the front view --
-a marking on the wings, say. Strongly coloured, unmistakably not grey. From
-behind there is no eye and no beak, so the back carries fewer.
+Give it ONE small accent in the SAME COLOUR the front view uses -- the same
+stripe along the leading edge of each swept wing, seen from behind. Nothing
+else is coloured. From behind there is no eye and no beak.
 
 Make it FILL the square frame, using the extra room for feather separation
 and structure along the back and wings. Same creature, same silhouette,
