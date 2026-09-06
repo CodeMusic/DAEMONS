@@ -1,0 +1,62 @@
+DAEMON SPRITES — the Game Boy art, redrawn for the GBA
+======================================================
+
+WHY THESE NEED REDOING. The 33 species we drew were drawn for a 40x40 or
+48x48 Game Boy frame in FOUR TONES. Gen 3's frame is 64x64, and vision 9.4
+refuses to upscale -- 40 to 64 is a 1.6x resample that softens every edge
+7.14 spent weeks on -- so gbasprite.py centres each sprite at native size.
+Correct, and the cost shows: PING occupies 19% of its frame, against 25% for
+the vanilla creature it replaced.
+
+So each one is REDRAWN at the larger size rather than resampled.
+
+TWO RULES THAT ARE NOT NEGOTIABLE.
+
+  * FOUR TONES, still. 9.4 maps them to palette entries -- index 0 is
+    transparent, and the three inks become a light, a mid and a dark of the
+    TYPE's hue, with the outline held at near-black so it does not take the
+    hue and stop reading as an outline. Colour is how the player reads the
+    chart. A sixteen-colour sprite breaks that.
+  * THE SILHOUETTE IS THE DESIGN. Attach the reference and keep the shape.
+    These are not concept art; they are existing creatures being redrawn at a
+    size that can hold more detail.
+
+Save results in gfx/daemons/ as <name>_front.png and <name>_back.png.
+
+==========================================================================
+PING — front. ATTACH gfx/daemons/ping_reference.png (LEFT image)
+==========================================================================
+Redraw the creature on the LEFT of the attached image as pixel art, larger
+and with more detail, keeping its shape and pose exactly.
+
+It is a lean, swept-back bird built like a dart or an arrow -- narrow body,
+long thin wings swept back hard, a sharp pointed beak, streamlined, caught
+mid-flight moving to the viewer's left. Nothing about it is soft or round.
+
+Draw it in FOUR TONES ONLY: a flat background, plus a light, a mid and a
+near-black. Greyscale. No gradients, no anti-aliasing, no extra colours.
+Hard pixel edges. The near-black is the outline and the darkest details.
+
+Make it FILL the square frame -- it should be substantially larger relative
+to the canvas than the reference is, using the extra room for feather
+separation, a defined eye, and structure in the wings. Same creature, same
+silhouette, more resolution.
+
+==========================================================================
+PING — back. ATTACH gfx/daemons/ping_reference.png (RIGHT image)
+==========================================================================
+Redraw the creature on the RIGHT of the attached image as pixel art, larger
+and with more detail, keeping its shape and pose exactly.
+
+This is the same dart-like bird seen FROM BEHIND and slightly above, as a
+trainer would see their own creature: a compact vertical shape, pointed at
+the top, wings folded back along the body, tail below. It is flying away
+from the viewer.
+
+Draw it in FOUR TONES ONLY: a flat background, plus a light, a mid and a
+near-black. Greyscale. No gradients, no anti-aliasing, no extra colours.
+Hard pixel edges.
+
+Make it FILL the square frame, using the extra room for feather separation
+and structure along the back and wings. Same creature, same silhouette,
+more resolution.
