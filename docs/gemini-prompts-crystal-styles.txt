@@ -165,3 +165,59 @@ shorts, sandals, a small blue satchel.
 Pose: braced with feet apart, one arm raised high holding a butterfly net
 above his head, leaning slightly forward, grinning. Full body, feet included,
 in a square frame. Under about fifteen colours.
+
+==========================================================================
+D -- TESTED ON SCORN, which is the tone test rather than the join test
+==========================================================================
+The bug catcher proved D closes the join: paw hands, a head proportioned to
+the body, a small tail, all drawn plainly. What it did NOT prove is that D
+can carry an adult, because D came back CUTE -- Barks and ROBIN HOOD are the
+priors and they pull that way hard.
+
+Scorn is where that matters. 4.4 needs him genuinely persuasive: he is not
+concealing anything, he is PLEASED with the arrangement and will explain it
+to you warmly, and the player has to finish his benchmark unsure whether they
+disagreed with him or merely out-argued him. A cuddly Scorn breaks that, and
+so does a sneering one -- 3.1 keeps Brass City in reserve against exactly the
+day Brazen starts reading as the game sneering at him.
+
+And the tradition's most famous snake is SIR HISS, a sniveling comic sidekick,
+which is precisely the failure to avoid.
+
+The existing gfx/characters/scorn.jpeg is style C done well -- a cobra head on
+a fully suited body, saved by the suit hiding every join and the hands being
+red. D changes three things and holds the rest.
+Save as gfx/characters/style_d_scorn.jpeg.
+
+--------------------------------------------------------------------------
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
+
+Subject: an adult MALE COBRA, a senior executive in his fifties, drawn in the
+classic cartoon funny-animal tradition -- animals through and through, built
+from simple confident shapes.
+
+HE IS NOT CUTE AND HE IS NOT COMIC. This is not a sniveling cartoon snake.
+Draw him with ADULT proportions: a head SMALL in proportion to his body, not
+large. Narrow, level, intelligent eyes -- not big round ones. Angular rather
+than soft. He is composed, warm and completely at ease. He is the most
+reasonable person in the room and he knows it. A faint, genuine, friendly
+half-smile -- not a smirk, not a leer, nothing sinister.
+
+He is a cobra ALL OVER, not a man in a snake head. Deep red, with a broad
+cobra hood framing his face and a pale cream throat. His hands are simple,
+rounded, three-fingered CLAWS, not human hands. A thick red tail emerges
+below his jacket, resting on the ground behind him.
+
+DRAWN PLAINLY. No scale texture, no individual scales, no glossy highlights,
+no muscle definition. Flat solid colour with simple cel shading, the way a
+newspaper cartoon animal is drawn.
+
+Clothes: an immaculate grey three-piece suit, white shirt, red tie, polished
+brown shoes. Expensive and understated.
+
+Pose: standing straight and relaxed, one hand in his trouser pocket, the
+other open in a small welcoming gesture, as though mid-sentence explaining
+something reasonable. Full body, feet included, in a tall frame. Under about
+eighteen colours.
