@@ -5,6 +5,34 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.97 — 2026-09-06
+
+### Blanche Town, and DRUM CORE
+
+- **`DOME CORE → DRUM CORE`.** *Dome* had no hardware meaning — it was purely the shell
+  vanilla drew. A **magnetic drum** is real storage and properly obsolete, so the three are
+  now three technologies rather than two shapes and an age. **`HELIX` stays**, and it is
+  better than it looks: **helical scan** is how VCRs and DAT drives wrote to tape.
+  *`HEX` was considered and held* — it reads as **curse** before hexadecimal, which is the
+  register `REVERSER` was just moved away from, and that reading is already spent.
+- **The museum clerk stopped pricing children.** Vanilla said *"¥50 for a child's ticket"*;
+  the rewrite trimmed the noun doing the disambiguating. It says **"¥50 to go in"**, which
+  sidesteps the player's age rather than fixing a number to something the game keeps open.
+- **Blanche Town written**, 17 blocks. **The slice reaches 55%.**
+- **The sign pairs with Slate's.** `BLANCHE TOWN / Nothing Written Here Yet` against
+  `SLATE CITY / A Surface That Takes A Mark` — the blank and the surface, two towns apart,
+  and neither says why.
+- **The grass is dangerous for a reason the game never repeats.** *"There are unbound
+  daemons in the grass. A process will run wherever it can. Do not go out with nothing of
+  your own."* That is 1.3 as a warning from someone who is only trying to be careful.
+- **And the PC gets 4.20a's question thirty seconds into the game.** *"The PC holds them
+  without running them. I have never worked out what that is like from the inside."*
+  Crystal asks it once, idly, and nobody answers her. HOLT is the man who found out.
+- **Crystal's late line is the one that costs.** *"You will go further than I did. I mean
+  that kindly."* 4.20 is why she did not.
+
+---
+
 ## v11.96 — 2026-09-06
 
 ### Deadstack had never been named, and the shops got written

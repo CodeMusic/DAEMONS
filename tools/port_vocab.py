@@ -269,6 +269,12 @@ PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   # 3.2 named it DEADSTACK and nothing implemented it -- the
                   # mapsec still read MT. MOON while every other landmark had
                   # been renamed. Both spellings appear in dialogue.
+                  # DOME had no hardware meaning -- it was purely vanilla's
+                  # shell shape. A magnetic DRUM is real storage and properly
+                  # obsolete, which makes the three CORES three technologies
+                  # rather than two shapes and an age. HELIX stays: helical
+                  # scan is how VCRs and DAT drives wrote to tape.
+                  [("DOME CORE", "DRUM CORE")] +
                   [("MT. MOON", "DEADSTACK"), ("MT.MOON", "DEADSTACK"),
                    ("Mt. Moon", "Deadstack"), ("Mt.Moon", "Deadstack")] +
                   ENGAGE),
