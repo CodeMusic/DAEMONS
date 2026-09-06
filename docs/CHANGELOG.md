@@ -5,6 +5,25 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.99 — 2026-09-06
+
+### The man in the gym is Scorn
+
+- **2712 settled.** `GIOVANNI → SCORN`, one vocabulary entry, propagated to five files.
+- **The writing half-answered it and the art answered it again.** He already said *"the
+  machine chose what I weighted it to choose"* — 4.18's crime, stated by him — and since
+  this morning's fable pass the sprite in that slot is **Scorn's face**. The ROM was
+  carrying his face, his confession, and another man's name on the statue.
+- **The alternative was two different people weighting the same machine the same way**, a
+  coincidence the story would have had to earn, and nothing earned it.
+- **Callow's gym closes properly now.** Before: *"Nobody will tell me who runs this GYM. I
+  have asked. They smile."* After: *"SCORN. He was running the GYM the whole time. I asked
+  so many people."* The statue reads `LEADER: ?` until you beat him.
+- **The trainer symbols stay** — `TRAINER_BOSS_GIOVANNI`, `TRAINER_PIC_LEADER_GIOVANNI`.
+  Invariant 6: renaming constants is optional and expensive, and none of them is displayed.
+
+---
+
 ## v11.98 — 2026-09-06
 
 ### The routes, the rival's two battles, and Slate's gym finished

@@ -129,6 +129,11 @@ VOCAB = {
     # HOLD is applied first and wins, so the idioms survive the substitution.
     "fainted": "HALTED", "faint": "HALT", "faints": "HALTS",
     "Gramps": "Gran", "BILL": "HOLT", "BILL's": "HOLT's",
+    # 2712 left this open: either the man in Callow's gym is Scorn, or two
+    # people weighted the same machine the same way. He already wears Scorn's
+    # face, and he already says "the machine chose what I weighted it to
+    # choose", which 4.18 makes Scorn's crime stated by him. Settled 2026-09-06.
+    "GIOVANNI": "SCORN", "GIOVANNI's": "SCORN's", "Giovanni": "Scorn",
     # 5.1: the leader says "I'm CAIRN" in our gym dialogue and the trainer
     # entry now agrees, so the twenty-six other mentions have to as well.
     "BROCK": "CAIRN",

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.98**
+**A total conversion — the living design bible, v11.99**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2709,13 +2709,20 @@ been asking: **"I have asked. They smile."**
 
 #### Open — and the writing has half-answered it
 
-***GIOVANNI is not renamed.*** But 4.18 gives **SCORN** as the surname that
-painted over `CLEAR LABORATORY`, and the man in this gym already says **"the
-machine chose what I weighted it to choose"** — *which is Scorn's crime,
-stated by him, in the ROM, today.*
+#### Settled 2026-09-06: the man in the gym is Scorn
 
-**Either the man in the gym is Scorn, or two different people weighted the same
-machine.** *That is a decision, and it is one vocabulary entry.*
+***GIOVANNI is renamed.*** 4.18 gives **SCORN** as the surname that painted over
+`CLEAR LABORATORY`, and the man in this gym already said **"the machine chose what I
+weighted it to choose"** — *which is Scorn's crime, stated by him.*
+
+**The writing had half-answered it and then the art answered it again:** the sprite in
+that slot has been **Scorn's face** since 9.4's fable pass, so the ROM carried his face,
+his confession, and another man's name on the statue.
+
+***The alternative was that two different people weighted the same machine the same way.***
+**That is a coincidence the story would have to earn, and nothing earns it.** *One
+vocabulary entry, and it propagated to five files* — Callow's gym, Umbral Ascent, the
+Corpus rooms, and the trainer table.
 
 ## 5. THE BENCHMARKS
 
