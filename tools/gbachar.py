@@ -89,6 +89,12 @@ JOBS = {
                         dst="engineGba/graphics/fame_checker/prof_oak.png",
                         pal=None, size=(64, 64), colours=15, base=1, palsize=16,
                         flip=True),
+    "holt":        dict(src="gfx/characters/holt.jpeg",
+                        dst="engineGba/graphics/fame_checker/bill.png",
+                        pal=None, size=(64, 64), colours=15, base=1, palsize=16),
+    "vera":        dict(src="gfx/characters/vera_clear.jpeg",
+                        dst="engineGba/graphics/fame_checker/daisy.png",
+                        pal=None, size=(64, 64), colours=15, base=1, palsize=16),
     "cairn":       dict(src="gfx/characters/cairn.jpeg",
                         dst="engineGba/graphics/trainers/front_pics/leader_brock_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_brock.pal",
@@ -104,9 +110,23 @@ def silhouette(a):
 
     The ellipse is the background blended toward white, so it keeps the green
     bias; the lab coat is neutral and the suit is blue-grey, and neither does.
-    Two comparisons separate them and nothing else in either picture is green."""
+
+    BUT THE HUE RULE ALONE IS TOO BRITTLE. Holt's backdrop came back a pale
+    olive at (171,181,128) -- g-r = 10, two points under the threshold -- so
+    none of it keyed out, the bounding box became the whole canvas, and he was
+    cut at half the size of everyone else. A missed key does not look like a
+    missed key; it looks like a framing bug.
+
+    So the four corners are keyed as well, when they agree with each other.
+    The hue rule still runs, because it is what removes the ellipse."""
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
-    return ~((g - r > 12) & (g - b > 4))
+    greenish = (g - r > 12) & (g - b > 4)
+    corners = np.stack([a[2, 2], a[2, -3], a[-3, 2], a[-3, -3]])
+    spread = corners.max(axis=0) - corners.min(axis=0)
+    if spread.max() < 24:                       # a real flat backdrop
+        key = np.median(corners, axis=0)
+        greenish = greenish | (((a - key) ** 2).sum(axis=2) < 45 ** 2)
+    return ~greenish
 
 def cut(job):
     # Sampled on the grid it was drawn on: these are pixel drawings upscaled
