@@ -5,6 +5,26 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.91 — 2026-09-06
+
+### The box has no seam, which 8 had already settled
+
+- **A seam says container and 1.3 says host.** Section 8 stated it plainly of the carried
+  box — *"no seam anywhere that would let it open"* — and the box art built two days ago
+  contradicted it: a seam on the bag icons, a throw that parted, and an open state that
+  spilled light from the gap. The seam was justified as *"where the battle frames part"*,
+  which is exactly the container reading 1.3 exists to prevent.
+- **Found by asking a production question.** The player carries the box on a strap, and
+  *"how do they throw it?"* has no answer while the box is a thing that opens. It has an
+  obvious one once it is not: **you throw a host at a daemon and it either runs there or
+  it does not.** That is 1.3's catch rate, literal rather than figurative.
+- **The open frame now wakes rather than parts.** Nothing opens, so the screen lights —
+  a process starting on a host, which is the only event that was ever happening.
+- **A vent line takes the seam's place** on the lower face: it says machine where the seam
+  said lid, and still keeps the face from being a blank slab.
+
+---
+
 ## v11.90 — 2026-09-06
 
 ### The people are drawn as a fable, and the rule has three clauses

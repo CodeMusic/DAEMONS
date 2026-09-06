@@ -63,19 +63,24 @@ TIERS = {"poke": 1, "great": 2, "ultra": 3, "master": 4, "safari": 0}
 
 def blank(w, h): return np.zeros((h, w), dtype=np.uint8)
 
-def box(g, x0, y0, x1, y1, pips, sw=None, sh=None, seam=None, dim=False):
-    """A chassis with a bevelled top, a small screen set HIGH, and a seam.
+def box(g, x0, y0, x1, y1, pips, sw=None, sh=None, vent=None, dim=False):
+    """A chassis with a bevelled top and a small screen set HIGH.
 
-    The seam is where the battle frames part, so it earns its line -- and it
-    stops the lower face being a blank slab, which is what a console's button
-    area would be."""
+    NO SEAM, and that is section 8 rather than a preference: the carried box
+    has "no seam anywhere that would let it open", because 1.3 calls it a
+    machine you offer a daemon as a host and a seam says CONTAINER. A daemon
+    does not come out of the box -- it RUNS on it.
+
+    A vent line takes the seam's place on the lower face. It says machine
+    where the seam said lid, and it still stops the face being a blank slab."""
     g[y0:y1+1, x0:x1+1] = FACE
     g[y0:y0+2, x0+1:x1] = LIT                          # bevel -> reads solid
     g[y1-1, x0+1:x1] = DARK                            # shaded underside
     g[y0, x0:x1+1] = g[y1, x0:x1+1] = INK              # outline
     g[y0:y1+1, x0] = g[y0:y1+1, x1] = INK
-    if seam is not None:
-        g[y0+seam, x0+1:x1] = DARK
+    if vent is not None:
+        for i in (0, 2):
+            g[y0+vent+i, x0+2:x1-1] = DARK
     if sw is None:
         return
     sx0 = x0 + (x1 - x0 + 1 - sw) // 2                 # centred horizontally
@@ -93,14 +98,14 @@ def feet(g, x0, x1, y):
 def icon(tier):
     """24x24 bag icon -- the size that teaches the player what the object is."""
     g = blank(24, 24)
-    box(g, 4, 4, 19, 20, pips=tier, sw=10, sh=5, seam=12, dim=(tier == 0))
+    box(g, 4, 4, 19, 20, pips=tier, sw=10, sh=5, vent=12, dim=(tier == 0))
     feet(g, 4, 19, 21)
     return g
 
 def overworld():
     """16x16, the box waiting on the ground. No pips -- nothing is running."""
     g = blank(16, 16)
-    box(g, 3, 4, 12, 13, pips=0, sw=6, sh=3, seam=7)
+    box(g, 3, 4, 12, 13, pips=0, sw=6, sh=3, vent=7)
     feet(g, 3, 12, 14)
     return g
 
@@ -112,8 +117,8 @@ def throw(tier):
     same height. Keeping the size identical is what sells it as one object
     turning rather than two objects; only the screen goes away."""
     g = blank(16, 48)
-    box(g[0:16], 3, 3, 12, 12, pips=tier, sw=6, sh=4, seam=7, dim=(tier == 0))
-    box(g[16:32], 4, 3, 11, 12, pips=0, seam=7)          # side: no glass
+    box(g[0:16], 3, 3, 12, 12, pips=tier, sw=6, sh=4, vent=7, dim=(tier == 0))
+    box(g[16:32], 4, 3, 11, 12, pips=0, vent=7)          # side: no glass
     return g
 
 def opened():
@@ -129,7 +134,7 @@ def opened():
     forced. The screen is lit here because this is the frame where something
     starts running."""
     g = blank(16, 16)
-    box(g, 3, 1, 12, 14, pips=1, sw=6, sh=3, seam=None)
+    box(g, 3, 1, 12, 14, pips=1, sw=6, sh=3, vent=None)
     g[8:10, 4:12] = PIP                                # the gap, spilling
     g[10, 4:12] = LIT
     feet(g, 3, 12, 15)
@@ -155,7 +160,7 @@ def spin():
         f = g[i*16:(i+1)*16]
         sw = max(2, w - 4) if (c > 0.35 and w >= 6) else None
         box(f, x0, 4, x0 + w - 1, 15, pips=1,
-            sw=sw, sh=3 if sw else None, seam=8)
+            sw=sw, sh=3 if sw else None, vent=8)
     return g
 
 def marker(lit):

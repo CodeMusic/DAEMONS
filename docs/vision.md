@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.90**
+**A total conversion — the living design bible, v11.91**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -333,6 +333,12 @@ Which makes the catch rate literal rather than figurative: **an unbound daemon w
 **Privilege is pips on the glass.** USERBOX one, ROOTBOX four, and GUESTBOX a single dim one, because restricted temporary access is not no access. This replaced a vent-density ladder that had never worked — `overworld()` broke its loop before the third vent, so all four tiers rendered byte-identical while the docs claimed the ladder was "a parameter, not four drawings."
 
 **Then the Index marker stops being a symbol.** Vanilla marks a caught creature with a picture of the thing that caught it. Ours lights the screen. A bound daemon is not a trophy in a container — it is a process running on a host you offered it, and the marker now says exactly that with no text at all.
+
+**And nothing opens, which 8 settled first and 1.3 explains.** *The box has* ***no seam anywhere that would let it open*** *— because a seam says **container**, and 1.3 says you are offering a **host**.* **A daemon does not come out of a box. It runs on one.**
+
+*So the throw is an **offer***: you put a host in front of a daemon and it either runs there or it does not, which is why **1.3's catch rate is literal rather than figurative.** ***And the open frame has nothing to open*** — **the screen wakes.** *That is the only event that was ever happening*, and it is a better animation than a lid.
+
+*A vent line takes the seam's place on the lower face.* **It says machine where the seam said lid.**
 
 **On the handheld reading, which is a real risk and is answered elsewhere.** A grey object with a dark screen, at 16×16, in a game descended from this one, can read as a console. Four features hold it off deliberately: **feet**, a **small screen set high** rather than a large centred one, **no buttons**, and roughly **cubic proportions**. The rhyme is worth having and the wink is not — so it lands in **Slate's museum of dead hardware instead**, where the exhibits include dead boxes. The player works out unaided that the thing in their hand is the same class of object as the things behind the glass. Deadstack already says fossils are legacy silicon; the museum saying *boxes* finishes the thought. Nobody says it, per craft rule 1.
 
