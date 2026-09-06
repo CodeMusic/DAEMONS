@@ -5,6 +5,30 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.94 — 2026-09-06
+
+### Callow City, where the first gym you reach is the last one you open
+
+- **19 blocks, 2 ours → 13, and nothing untouched.** The slice moves 44% → **47%**.
+- **The sign carries both readings 3.1 asks for:** `CALLOW CITY / Evergreen And Unripe` —
+  the colour and the feeling, in four words. Vanilla's *Eternally Green Paradise* was
+  ironic; ours is literal, which is harder to shrug off.
+- **CRAWLER and SCRAPER stopped being about poison.** *"CRAWLER only reads. SCRAPER takes
+  what it finds."* Those are what the two words mean, and the distinction was sitting in
+  the names untranslated.
+- **The locked gym says the right thing.** *"This GYM has never once been open. Nobody here
+  can tell me who holds it."* — **holds**, which is what a lock is for, and 5 makes
+  Benchmark 8 Scorn: he set the bar the player is measured against all game and the door
+  in front of it never opens.
+- **The boxes get noticed once, plainly.** *"USERBOXes at your waist. So you have something
+  running."* — 1.3 without saying 1.3. And *"People forget it was ever hard"*, which is
+  HOLT's invention being taken for granted by a stranger who will never know his name.
+- **Two more leftovers cleared.** `"a INDEX"` had been ungrammatical since the rename, and
+  `POWER POINTs` was still the vanilla expansion of an abbreviation that now reads **MP** —
+  it says **MANA** now, which is what the lab already called it.
+
+---
+
 ## v11.93 — 2026-09-06
 
 ### Slate City, and two idioms `catch → bind` had broken
