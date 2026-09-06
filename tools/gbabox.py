@@ -33,9 +33,10 @@ gbagfx builds their .gbapal from the PNG itself.
           graphics/items/icon_palettes/<same>.pal
           graphics/interface/ball/{poke,great,ultra,master,safari}.png    16x48
           graphics/object_events/pics/misc/item_ball.png                  16x16
+          graphics/trade/pokeball.png                                     16x192
           graphics/pokedex/caught_marker.png                              8x8
 """
-import os, sys
+import os, sys, math
 import numpy as np
 from PIL import Image
 
@@ -114,6 +115,29 @@ def throw(tier):
     box(g[16:32], 4, 3, 11, 12, pips=0, seam=7)          # side: no glass
     return g
 
+def spin():
+    """16x192: twelve 16x16 frames, the bouncing box in the intro.
+
+    src/oak_speech.c calls CreateTradePokeballSprite, so the object in
+    Crystal's hand is the TRADE ball -- a separate graphic from the throw
+    sprites, and one that spins through a full turn.
+
+    A ball looks the same from every angle and a box does not, which makes
+    this honest rather than harder: the front face narrows to an edge as it
+    turns, then the BACK comes round with no screen on it. Height never
+    changes, because a cube turning about a vertical axis does not get
+    taller."""
+    g = blank(16, 192)
+    for i in range(12):
+        c = math.cos(i * math.pi / 6)
+        w = max(2, int(round(11 * abs(c))))
+        x0 = 8 - w // 2
+        f = g[i*16:(i+1)*16]
+        sw = max(2, w - 4) if (c > 0.35 and w >= 6) else None
+        box(f, x0, 4, x0 + w - 1, 15, pips=1,
+            sw=sw, sh=3 if sw else None, seam=8)
+    return g
+
 def marker(lit):
     """8x8 Index marker. Bound = the screen is LIT, which is not a symbol for
     'caught' -- it is the daemon running on the host you gave it."""
@@ -151,6 +175,7 @@ def main():
                      "graphics/items/icon_palettes/%s_ball.pal" % name))
         jobs.append(("graphics/interface/ball/%s.png" % name, throw(tier), None))
     jobs.append(("graphics/object_events/pics/misc/item_ball.png", overworld(), None))
+    jobs.append(("graphics/trade/pokeball.png", spin(), None))
 
     show(icon(1), "USERBOX 24x24 bag icon")
     show(icon(4), "ROOTBOX 24x24 bag icon")
