@@ -242,6 +242,66 @@ def transition():
     needs no change. The reds go unused: a host is grey."""
     return np.array(box_in(32, 32, ink=0xF, body=0xA, bevel=0x4, glass=0xF, foot=0xF, inset=3))
 
+def tiled_box(sheet_w, sheet_h, per_row, scr_w, scr_h, rect, ink, body, bevel, glass):
+    """A box as a TILESET plus a TILEMAP, for the two places a ball is built
+    that way rather than drawn.
+
+    A circle needs a unique tile per position; a box needs EIGHT, because its
+    edges repeat and the h/v flip bits give you the far corners for nothing.
+    That is why regenerating the map is tractable at all."""
+    T = [[[0]*8 for _ in range(8)] for _ in range(8)]
+    for y in range(8):
+        for x in range(8):
+            T[1][y][x] = body
+            T[2][y][x] = ink if y == 0 else body
+            T[3][y][x] = ink if x == 0 else body
+            T[4][y][x] = ink if (y == 0 or x == 0) else body
+            T[5][y][x] = glass
+            T[6][y][x] = bevel if y < 2 else body
+            T[7][y][x] = ink if y < 4 else 0
+    sheet = blank(sheet_w, sheet_h)
+    for n in range(8):
+        oy, ox = (n // per_row) * 8, (n % per_row) * 8
+        for y in range(8):
+            for x in range(8):
+                sheet[oy + y][ox + x] = T[n][y][x]
+
+    HF, VF = 0x400, 0x800
+    L, R, TOP, BOT = rect
+    m = [[0] * scr_w for _ in range(scr_h)]
+    for r in range(TOP, BOT + 1):
+        for c in range(L, R + 1):
+            top, bot, lf, rt = r == TOP, r == BOT, c == L, c == R
+            if (top or bot) and (lf or rt):
+                t = 4 | (HF if rt else 0) | (VF if bot else 0)
+            elif top or bot:
+                t = 2 | (VF if bot else 0)
+            elif lf or rt:
+                t = 3 | (HF if rt else 0)
+            elif r == TOP + 1:
+                t = 6
+            else:
+                t = 1
+            m[r][c] = t
+    gh = max(3, (BOT - TOP) // 4)
+    for r in range(TOP + 3, TOP + 3 + gh):
+        for c in range(L + 3, R - 2):
+            m[r][c] = 5
+    for c in (L + 1, L + 2, R - 2, R - 1):
+        if BOT + 1 < scr_h:
+            m[BOT + 1][c] = 7
+    return sheet, b"".join(struct.pack("<H", m[r][c])
+                           for r in range(scr_h) for c in range(scr_w))
+
+def credits_box():
+    """128x128 tileset, 32x20 map. Four palettes recolour it, one per starter,
+    and each is a light-to-dark ramp in a single hue -- so the box takes 6 as
+    its outline, 3 as the face, 1 as the bevel, and comes out as a machine in
+    four colours across the roll. The credits are outside the fiction; 8.6's
+    rule is about the world."""
+    return tiled_box(128, 128, 16, 32, 20, (7, 24, 3, 16),
+                     ink=0x6, body=0x3, bevel=0x1, glass=0x6)
+
 def big_transition():
     """B_TRANSITION_BIG_POKEBALL -- a full-screen weave, and the only ball in
     the game that is a TILESET plus a 30x20 TILEMAP rather than a picture.
@@ -254,6 +314,10 @@ def big_transition():
     Colours come from sliding_pokeball.gbapal, which this transition loads:
     f black, a mid grey, 5 pale. Its reds go unused.
     """
+    return tiled_box(32, 88, 4, 30, 20, (7, 22, 4, 15),
+                     ink=0xF, body=0xA, bevel=0x5, glass=0xF)
+
+def _big_transition_unused():
     INK, BODY, BEVEL, GLASS = 0xF, 0xA, 0x5, 0xF
     T = [[[0]*8 for _ in range(8)] for _ in range(8)]
     for y in range(8):
@@ -356,6 +420,16 @@ def main():
         im.putpalette(src.getpalette()); im.save(bp)
         open(os.path.join(GBA, "graphics/battle_transitions/big_pokeball_tilemap.bin"),
              "wb").write(tmap)
+
+    csheet, cmap = credits_box()
+    print("  %-52s 128x128 + a regenerated 32x20 tilemap"
+          % "graphics/credits/pokeball.png")
+    if WRITE:
+        cp = os.path.join(GBA, "graphics/credits/pokeball.png")
+        src = Image.open(cp)
+        im = Image.new("P", (128, 128)); im.putdata(csheet.flatten().tolist())
+        im.putpalette(src.getpalette()); im.save(cp)
+        open(os.path.join(GBA, "graphics/credits/pokeball.bin"), "wb").write(cmap)
     jobs.append(("graphics/interface/ball_open.png", opened(), None))
 
     show(icon(1), "USERBOX 24x24 bag icon")
