@@ -10,8 +10,16 @@ vision.md 1.3 is unambiguous about what this object is:
     vernacular. I sshed into the box. ... You are offering the daemon a host.
 
 So it is a small server unit you would ssh into: hard corners, a vent, an
-indicator light. NOT a crate and NOT a cube -- both of those say *container*,
-which is the reading 1.3 replaced. A container shape would undo the rename.
+indicator light. NOT a crate -- that says *container*, which is the reading
+1.3 replaced.
+
+SUPERSEDED ON THE GBA SIDE by tools/gbabox.py, which draws the box with a
+SCREEN. The cube this file bans was banned for saying *container*; a screen
+says *running*, which dissolves the objection rather than overruling it, and
+it also gives the privilege ladder somewhere to live. The vent ladder below
+never worked anyway -- overworld() breaks at y >= 11 before the third vent,
+so every tier renders identically. Left as it is: engine/ is a reference now
+and is not updated further.
 
 Generated rather than drawn, for the same reason the SGB borders were: at
 16x16 and 8x8 this is geometry, and downsampling a generated illustration to

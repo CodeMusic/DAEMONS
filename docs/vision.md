@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.84**
+**A total conversion — the living design bible, v11.86**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -323,6 +323,14 @@ Singular gains a character, plural is identical. **Nothing needed rewrapping.**
 So the ladder is not a set of cages of increasing strength. **You are offering the daemon a host.** A daemon is a process; a process needs somewhere to run. It stays if that host grants the privileges it needs.
 
 Which makes the catch rate literal rather than figurative: **an unbound daemon will not run on a box where it only has user rights.** ROOTBOX takes anything because root takes anything. The suffix was already the right word before we knew why.
+
+**And the box has a screen, which is the whole argument.** A container says the daemon is *inside*. A screen says the daemon is **running**. That is the difference the rename exists to make, and it is why the crate was wrong twice over — `genbox.py` had already banned cubes for saying *container*, and glass is precisely what dissolves that objection. The object is a compute unit: hard corners, a small screen, feet.
+
+**Privilege is pips on the glass.** USERBOX one, ROOTBOX four, and GUESTBOX a single dim one, because restricted temporary access is not no access. This replaced a vent-density ladder that had never worked — `overworld()` broke its loop before the third vent, so all four tiers rendered byte-identical while the docs claimed the ladder was "a parameter, not four drawings."
+
+**Then the Index marker stops being a symbol.** Vanilla marks a caught creature with a picture of the thing that caught it. Ours lights the screen. A bound daemon is not a trophy in a container — it is a process running on a host you offered it, and the marker now says exactly that with no text at all.
+
+**On the handheld reading, which is a real risk and is answered elsewhere.** A grey object with a dark screen, at 16×16, in a game descended from this one, can read as a console. Four features hold it off deliberately: **feet**, a **small screen set high** rather than a large centred one, **no buttons**, and roughly **cubic proportions**. The rhyme is worth having and the wink is not — so it lands in **Slate's museum of dead hardware instead**, where the exhibits include dead boxes. The player works out unaided that the thing in their hand is the same class of object as the things behind the glass. Deadstack already says fossils are legacy silicon; the museum saying *boxes* finishes the thought. Nobody says it, per craft rule 1.
 
 ### 1.4 On the battle vocabulary
 
@@ -5017,6 +5025,7 @@ Kept here because the reasoning is worth more than the outcome.
 | **Ty**, an unrelated rival | **Ty Clear**, Crystal's son and Scorn's partner | Turns a methodological disagreement into a cost somebody pays (4.3). |
 | S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |
 | **CATCH** | **BIND** | The container was renamed and the verb was not. CATCH is the only lexicon entry doing no double duty; BIND is `bind()`, *binding a daimon*, and a bond — and it is darker rather than softer, so the player stays implicated (1.1). |
+| A vented server, cubes explicitly banned | A **cube with a screen**, pips for privilege | The ban existed because a cube says *container*. A screen says *running*, which is the reading 1.3 wanted — so the objection dissolves rather than being overruled. Vents also never shipped: the ladder loop broke before the third vent (1.3). |
 | Drop the rival naming prompt, hard-code "Ty Clear" | Keep the prompt, hard-code **CLEAR** | The surname is the half that carries the inference. Spending a famous vanilla beat bought nothing — and the prompt, reframed as *what will you call him*, becomes the route-sign device a minute before Route 1 teaches it (4.3). |
 
 ### Open

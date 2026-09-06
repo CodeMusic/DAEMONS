@@ -5,6 +5,34 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.86 — 2026-09-05
+
+### The box got a screen, and the ladder started working
+
+- **A container says the daemon is inside; a screen says it is running.** That is the
+  distinction 1.3's rename exists to make, and nothing in the art had been carrying it.
+  The box is now a compute unit with a small screen — and the crate that Gemini drew
+  into Al's hand was wrong twice, since `genbox.py` had already banned cubes for saying
+  *container*. Glass dissolves that objection rather than overruling it.
+- **Privilege is pips on the glass** — USERBOX one, ROOTBOX four, GUESTBOX one dim.
+  It replaces a vent-density ladder that **had never worked**: `overworld()` broke its
+  loop at `y >= 11` before the third vent, so all four tiers rendered byte-identical
+  while the decision log claimed the ladder was "a parameter, not four drawings."
+- **The Index marker stops being a symbol.** Vanilla marks a caught creature with a
+  picture of the thing that caught it. Ours lights the screen — a bound daemon is a
+  process running on a host, and the marker now says that with no text.
+- **The handheld reading, settled.** A grey box with a dark screen can read as a
+  console. Feet, a small screen set high, no buttons and cubic proportions hold it off;
+  the rhyme lands in **Slate's museum of dead hardware** instead, whose exhibits include
+  dead boxes. The museum is 0 of 9 blocks written, so nothing had to be undone.
+- **`tools/gbabox.py`** now draws all of it: five 24×24 bag icons with their palettes,
+  five 16×48 throw sprites, the 16×16 box on the ground, and the 8×8 Index marker.
+- **A second separate-palette trap, same shape as the trainers'.** Item icons take their
+  colours from `graphics/items/icon_palettes/<name>.pal`, not from the PNG. Writing the
+  picture alone leaves the new art wearing the old object's palette.
+
+---
+
 ## v11.85 — 2026-09-04
 
 ### The thing in his hand is not a ball, and the prompt had to say so
