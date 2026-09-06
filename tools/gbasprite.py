@@ -41,7 +41,104 @@ from gbimg import read_png
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
+import colorsys, glob
+from PIL import Image
+import numpy as np
+
 SIZE = 64
+
+RICH = "gfx/daemons"       # redrawn art, 9.4 as amended: hue ramp + accents
+BODY_LEVELS = 5            # palette 1..5
+MAX_ACCENTS = 5            # palette 6..10
+SAT_ACCENT = 60            # a pixel this saturated is a marking, not body
+SAT_BODY = 30              # this neutral is body; between the two is fringing
+
+def ramp5(r, g, b):
+    """Five steps of one hue: highlight, light, mid, dark, near-black outline.
+
+    The outline keeps only a trace of the hue -- 9.4: an outline that takes
+    the hue stops reading as an outline."""
+    up = lambda t: tuple(min(255, int(c + (255 - c) * t)) for c in (r, g, b))
+    dn = lambda t: tuple(max(0, int(c * t)) for c in (r, g, b))
+    return [up(0.70), up(0.38), (r, g, b), dn(0.52), tuple(v + 10 for v in dn(0.16))]
+
+def shift_off(accent, type_rgb):
+    """A red eye on a VECTOR daemon is no eye. If an accent sits within 40
+    degrees of the type's own hue, rotate it to the far side of the wheel."""
+    ah = colorsys.rgb_to_hsv(*[c / 255 for c in accent])[0]
+    th = colorsys.rgb_to_hsv(*[c / 255 for c in type_rgb])[0]
+    d = abs(ah - th); d = min(d, 1 - d)
+    if d >= 40 / 360:
+        return accent
+    h, sv, v = colorsys.rgb_to_hsv(*[c / 255 for c in accent])
+    return tuple(int(c * 255) for c in colorsys.hsv_to_rgb((th + 0.5) % 1.0, sv, v))
+
+def rich_src(ours, kind):
+    hits = [f for f in glob.glob(os.path.join(ROOT, RICH, "%s_%s.*" % (ours.lower(), kind)))
+            if not f.endswith(".txt")]
+    return hits[0] if hits else None
+
+def place_rich(path, type_rgb):
+    """Redrawn art -> a 64x64 index grid and its palette.
+
+    The body is neutral grey and becomes the type ramp; saturated pixels are
+    markings and keep their own colour. JPEG ringing puts a band of weakly
+    coloured pixels between the two, so anything in that band is treated as
+    body -- a fringe is not a marking."""
+    im = Image.open(path).convert("RGB")
+    a = np.asarray(im).astype(int)
+    sat = a.max(2) - a.min(2)
+    subj = ~((a.min(2) > 232) & (sat < 24))              # not the flat paper
+
+    ys, xs = np.where(subj)
+    box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
+    im = im.crop(box)
+    mask = Image.fromarray((subj[box[1]:box[3], box[0]:box[2]] * 255).astype(np.uint8))
+    sc = min(SIZE / im.width, SIZE / im.height)
+    w, h = max(1, round(im.width * sc)), max(1, round(im.height * sc))
+    im = im.resize((w, h), Image.LANCZOS)
+    mask = mask.resize((w, h), Image.LANCZOS).point(lambda v: 255 if v > 128 else 0)
+
+    a = np.asarray(im).astype(int)
+    m = np.asarray(mask) > 0
+    sat = a.max(2) - a.min(2)
+    acc = m & (sat >= SAT_ACCENT)
+
+    pal = [BG] + ramp5(*type_rgb)
+    grid = [[0] * SIZE for _ in range(SIZE)]
+    ox, oy = (SIZE - w) // 2, (SIZE - h) // 2
+
+    lum = (a[..., 0] * 299 + a[..., 1] * 587 + a[..., 2] * 114) // 1000
+    body = m & ~acc
+    if body.any():                                        # spread over 5 steps
+        lo, hi = lum[body].min(), lum[body].max()
+        span = max(1, hi - lo)
+        lvl = np.clip((lum - lo) * BODY_LEVELS // span, 0, BODY_LEVELS - 1)
+    else:
+        lvl = np.zeros_like(lum)
+
+    accents = []
+    if acc.any():
+        px = Image.fromarray(a[acc].reshape(1, -1, 3).astype(np.uint8))
+        n = min(MAX_ACCENTS, len(np.unique(a[acc].reshape(-1, 3), axis=0)))
+        q = px.convert("P", palette=Image.ADAPTIVE, colors=n, dither=Image.NONE)
+        t = q.getpalette()[:n * 3]
+        cand = [shift_off(tuple(t[i*3:i*3+3]), type_rgb) for i in range(n)]
+        for c in cand:      # JPEG turns one stripe into a gradient; five shades
+            if all(sum((c[k]-e[k])**2 for k in range(3)) > 45*45 for e in accents):
+                accents.append(c)                     # of blue look like one blue
+    pal += accents
+
+    for y in range(h):
+        for x in range(w):
+            if not m[y, x]:
+                continue
+            if acc[y, x] and accents:
+                d = [sum((a[y, x, k] - c[k]) ** 2 for k in range(3)) for c in accents]
+                grid[oy + y][ox + x] = 6 + d.index(min(d))
+            else:
+                grid[oy + y][ox + x] = BODY_LEVELS - lvl[y, x]   # light->1, dark->5
+    return grid, pal
 
 # hue anchors: (light, mid, dark)
 def ramp(r, g, b):
@@ -149,19 +246,26 @@ for vanilla, ours in sorted(pairs.items()):
     t = primary_type(d)
     if t not in TYPE_COLOR:
         skipped.append("%s (type %s)" % (ours, t)); continue
-    palette = [BG] + ramp(*TYPE_COLOR[t])
+    legacy = [BG] + ramp(*TYPE_COLOR[t])
+    palette, note = legacy, ""
     for kind, src in (("front", "gfx/pokemon/front/%s.png" % d.replace("_", "")),
                       ("back",  "gfx/pokemon/back/%sb.png" % d.replace("_", ""))):
-        s = os.path.join(GB, src)
-        if not os.path.exists(s):
-            skipped.append("%s %s (%s)" % (ours, kind, src)); continue
+        rich = rich_src(ours, kind)
+        if rich:
+            grid, palette = place_rich(rich, TYPE_COLOR[t])
+            note = "  redrawn (%d colours)" % len(palette)
+        else:
+            s = os.path.join(GB, src)
+            if not os.path.exists(s):
+                skipped.append("%s %s (%s)" % (ours, kind, src)); continue
+            grid = place(s, legacy)
         if WRITE:
-            write_png4(os.path.join(outdir, kind + ".png"), place(s, palette), palette)
+            write_png4(os.path.join(outdir, kind + ".png"), grid, palette)
         done += 1
     if WRITE:
         write_pal(os.path.join(outdir, "normal.pal"), palette)
         write_pal(os.path.join(outdir, "shiny.pal"), palette)
-    print("  %-11s %-12s %-9s %s" % (ours, d, t, "written" if WRITE else "ready"))
+    print("  %-11s %-12s %-9s %s%s" % (ours, d, t, "written" if WRITE else "ready", note))
 print("  %d sprites, %d skipped" % (done, len(skipped)))
 for s in skipped:
     print("     skip %s" % s)
