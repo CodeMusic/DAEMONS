@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.85 — 2026-09-04
+
+### The thing in his hand is not a ball, and the prompt had to say so
+
+- ***Gemini put a Poke Ball in Al's hand***, because everything it has ever seen in that pose is holding one. **The brief did not say otherwise, so it filled the gap with the most available meaning** — which is 0.4's own argument, performed by the tool
+- **This project has BOXES.** 3.1's line is **USERBOX → ADMINBOX → SUPERBOX → ROOTBOX**, and `tools/gbabox.py` already drew one: *a pale cream crate with a dark rim and two bands across its face*, in `graphics/pokedex/caught_marker.png`
+- The brief now describes it explicitly and says **"NOT a ball, NOT round, no button"** — *a negative instruction, because the positive one alone loses to the prior*
+
+### And the picture is behind the word almost everywhere
+
+- `gbabox.py`'s docstring called the Index marker *"the one place the old noun survives as a PICTURE rather than a word."* **It is not one place.** There are **36 ball graphics still in the tree** — every item icon, the party menu, two battle transitions, the trade and credits screens, `interface/ball_open.png`
+- ***The vocabulary pass can only reach words.*** **BOX is written everywhere and drawn almost nowhere**, and a player is told BOX while being shown a ball for forty hours
+
 ## v11.84 — 2026-09-04
 
 ### Ty needs no sprite, and that is the point

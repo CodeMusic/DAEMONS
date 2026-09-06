@@ -48,11 +48,26 @@ Shared instruction for all four:
     included. Weight on one leg.
 
 --------------------------------------------------------------------------
+THE THING IN HIS HAND IS NOT A BALL
+--------------------------------------------------------------------------
+This project does not have Poke Balls. It has BOXES -- 3.1's line is
+USERBOX -> ADMINBOX -> SUPERBOX -> ROOTBOX -- and the Index already draws one
+(tools/gbabox.py, graphics/pokedex/caught_marker.png). Say so explicitly or
+the model will reach for a ball every time, because everything it has ever
+seen in this pose is holding one.
+
+    ...holding a small BOX: a pale cream cube about the size of his palm,
+    with a dark wooden rim around its edges and two darker bands running
+    across its face. Flat-sided and square. It is a small crate, NOT a ball,
+    NOT round, and it has no button on it.
+
+--------------------------------------------------------------------------
 2. EARLY BATTLE (square)
 --------------------------------------------------------------------------
-    ...leaning forward, holding a small round container out in front of him
-    in one hand, about to throw it. Eager, up on the balls of his feet.
-    Full body inside a square frame.
+    ...leaning forward, holding a small BOX out in front of him in one hand,
+    about to throw it -- a pale cream cube with a dark rim and two bands
+    across its face, flat-sided and square, not a ball. Eager, up on the
+    balls of his feet. Full body inside a square frame.
 
 --------------------------------------------------------------------------
 3. LATE BATTLE (square)
