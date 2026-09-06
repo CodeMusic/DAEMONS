@@ -35,6 +35,21 @@ TWO RULES THAT ARE NOT NEGOTIABLE.
     These are not concept art; they are existing creatures being redrawn at a
     size that can hold more detail.
 
+ONE MORE THING, AND IT IS ABOUT ARITHMETIC. gbasprite samples the grid the
+drawing was made on -- these come back as JPEG and the ringing sits at block
+edges, so it is never read -- and then reduces that grid to the 64x64 frame.
+
+THE REDUCTION RATIO IS WHAT DECIDES HOW CRISP IT LANDS. PING came back at
+102 logical pixels, which reduces by 0.79x, and that is the worst case:
+barely shrinking puts source pixels on fractional output positions and
+softens every edge. Clean ratios are 1.0 and 0.5. So ask for a chunky grid:
+
+    "Draw it as blocky pixel art about 128 pixels across, so each pixel is a
+     large visible square."
+
+128 halves cleanly to 64. 64 would be better still -- no resampling at all --
+but only if the creature fills the canvas, since nothing is ever upscaled.
+
 Save results in gfx/daemons/ as <name>_front.png and <name>_back.png.
 
 ==========================================================================

@@ -97,9 +97,17 @@ def place_rich(path, type_rgb):
     im = im.crop(box)
     mask = Image.fromarray((subj[box[1]:box[3], box[0]:box[2]] * 255).astype(np.uint8))
     sc = min(SIZE / im.width, SIZE / im.height)
+    # 9.4 refuses to upscale, and grid sampling can now hand us art already at
+    # or below target -- so clamp, and centre it small the way legacy art is.
+    sc = min(sc, 1.0)
+    # A ratio near 1 is the WORST case: barely shrinking lands source pixels on
+    # fractional output positions and softens every edge. Snap it to 1:1.
+    if sc > 0.92:
+        sc = 1.0
     w, h = max(1, round(im.width * sc)), max(1, round(im.height * sc))
-    im = im.resize((w, h), Image.LANCZOS)
-    mask = mask.resize((w, h), Image.LANCZOS).point(lambda v: 255 if v > 128 else 0)
+    if sc != 1.0:
+        im = im.resize((w, h), Image.LANCZOS)
+        mask = mask.resize((w, h), Image.LANCZOS).point(lambda v: 255 if v > 128 else 0)
 
     a = np.asarray(im).astype(int)
     m = np.asarray(mask) > 0
