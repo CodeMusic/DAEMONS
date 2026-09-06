@@ -102,16 +102,29 @@ no skirt, no visible chest, no gendered styling of any kind. Just a kid.
 DRAWN PLAINLY: no fur texture, no individual hairs, no tufts, no fluff, no
 muscle definition. Flat solid colour with simple cel shading.
 
-Clothes, from the attached reference: a WIDE FLAT-BRIMMED HAT, the brim
-clearly wider than the shoulders and level all the way round -- the widest
-shape on the figure. A LONG PALE COAT, sleeved, open at the front, falling
+Clothes, from the attached reference: a WIDE FLAT-BRIMMED HAT in TAN LEATHER,
+clearly DARKER than the coat, the brim wider than the shoulders and level all
+the way round -- the widest shape on the figure.
+
+    THE HAT MUST NOT BE THE SAME COLOUR AS THE COAT. A first attempt made
+    both cream and they measured at identical luminance, so the brim -- the
+    one shape no other character has, and what makes the player findable at
+    16x32 -- dissolved into the coat. Tan hat, cream coat, clearly different
+    values. A LONG PALE COAT, sleeved, open at the front, falling
 nearly to the ankles, so that it reads as a lab coat and a wizard's robe at
 the same time. Dark clothes beneath it, dark boots. A dark STRAP running
-diagonally across the chest, and hanging at the hip a small grey MACHINE: a
-cube with a dark inset screen set high on its face and a seam across the
-lower half. Not a ball, not a bag -- a little computer carried on a strap.
+diagonally across the chest, and hanging at the hip a small grey MACHINE.
+
+    THE MACHINE IS NOT A HANDHELD GAME CONSOLE, AND A FIRST ATTEMPT DREW ONE.
+    It is a CUBE, as wide as it is tall, with FOUR SHORT FEET on the bottom.
+    Its screen is SMALL and set HIGH on the front face, not large and not
+    centred. A seam runs across the lower half. It has NO BUTTONS, NO D-PAD,
+    NO CONTROLS OF ANY KIND on it anywhere. It is a tiny computer you would
+    set down on a desk -- a server, not something you hold and play.
 
 Worn and practical, not ceremonial, and NOT SINISTER. The coat is pale cream
+-- cream rather than white, because the professor wears the white lab coat and
+this character is not a scientist, only dressed in the silhouette of one --
 and the clothes beneath it are warm mid-tones, never black. The face beneath
 the brim is fully lit and open -- no shadow over the eyes, nothing obscured.
 The overall impression is BRIGHT and curious. This is a child dressed in a
