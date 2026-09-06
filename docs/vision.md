@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.103**
+**A total conversion — the living design bible, v11.104**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -30,6 +30,8 @@ The game argues this in five registers and never once in dialogue.
 4. **Neutral, not dull.** Place names should be materially specific rather than moody. Prefer a pigment to an adjective.
 5. **Lessons must be mechanical.** If a gym's lesson can be skipped by grinding, it is not a lesson.
 6. **Comedy is the best cover for a thesis.** A game that is funny in its ordinary moments earns the right to be serious in three or four of them. Corpus employees are cheerful and absurd; the horror is what they are cheerful *about*. Nothing protects rule 1 better than a joke — a player who is laughing is a player who is not being lectured.
+
+***And the form has a name.*** **A fable ends with the moral** — *story, then the sentence.* **Craft rule 1 is the refusal of that sentence.** *So the shape of this game is* ***a fable with its last line removed***, and that is what every craft rule below is **for**. Nobody says the moral because the form is defined by withholding it. *(Named by the second external review, 2026-09-06.)*
 
 ### 0.2 The pigment throughline
 
@@ -1207,6 +1209,8 @@ The line on the form — *moves between unrelated fields without completing an a
 #### The name
 
 **A holt is a den — a place a creature is kept** — and it is one letter from *hold*, which is the storage verb. **BILL → HOLT** throughout: 12 references across five files, the PC menu, and the access message.
+
+***And a holt is specifically an **otter's** den, so the name chose his species before anyone asked.*** **An otter is at home in two elements** — which is the man who held two frames in one address. *Found twice independently, which is how you know it was already there.*
 
 *WARD was considered and rejected.* "Held in care" is tempting and the hospital register is exactly what 4.10 spends its energy avoiding.
 
@@ -4022,6 +4026,16 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 *Which leaves the three bird slots genuinely open* — and they should be filled by whatever the map needs, not by what is available.
 
+### 8.2a The Sevii Islands — deferred, and unnamed until decided
+
+**Built 2026-09-06 as a deferral, which is the point.** *FireRed adds seven islands, a post-game arc and a Corpus-remnant plot over Gen 1, and it gates Doldrum Cave behind them.* **That is the largest canvas the port opened and the largest scope trap in it** — the second external review named both in the same paragraph.
+
+***It is existing content, not content to build.*** **Cutting means leaving it vanilla and unreferenced.** *Keeping it means Act 2 has a place instead of a triangle* — seven islands with no pigment names yet, and Lorelei's house, which in our Review Board is the **Phlegmatic** member at home.
+
+**Deferred rather than cut, and the condition is exact: name nothing there.** *The moment an island is named the decision has been made by accident.* **One live dependency exists already** — 4.14 puts Scorn's fourth encounter at `CORPUS WAREHOUSE, Five Island` — *and that line is the whole cost of waiting.*
+
+***Reopen only if the post-game triangle proves too thin in play.*** **Not before.** *Section 8 exists because the graveyard is full of projects that designed 151 creatures and shipped zero towns;* **seven islands is that scale.**
+
 ### 8.3 Known bottleneck
 
 **Sprites.** 151 daemons, front and back, 2bpp, four shades, 56×56 maximum — roughly 300 hand-tuned tiles. Nothing about it is hard; it is simply the largest block of labor in the project. AI generation can rough out silhouettes, but expect manual cleanup: the Game Boy palette and tile constraints are unforgiving.
@@ -4389,24 +4403,38 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 - **This serves the sprite work rather than fighting it** (8.3, 8.5). Four shades with no hue to lean on forces value contrast to be right, and value contrast is exactly what a voxel renderer needs to read cleanly.
 - **The recomp path is a remix, not the canon.** If a 3D or voxel presentation colours everything, that is a different presentation of the same ROM and it is welcome. The canonical build stays grey.
 
-#### Open, deliberately: grey was a medium and would now be a filter
+#### Settled 2026-09-06: colour is context
 
-**Reopened 2026-09-05, and left open on purpose.** 9.4 already made one exception — a daemon is coloured by its type, because *colour carrying the argument* is the only form of colour invariant 5 was ever protecting. The character art then followed: Crystal, Scorn and Al are in colour, and 1619's *three foxes, a palette apart* is hue doing real work. So the build and this section have disagreed for three days.
+**Reopened 2026-09-05 and closed by the second external review.** *The argument above stands* — grey was **the medium** on a DMG and would be a visible **filter** on GBA — **but it was being argued as art direction, and it is a palette flag.**
 
-**The disagreement is not an oversight, and porting 8.6 literally would not fix it.** On a DMG grey was **the medium** — nothing was *in* greyscale, that was simply what the world looked like, and the player registered no absence. That invisibility is what argument 1 above runs on: *told colour, shown grey, they supply the rest.* **Desaturate a machine that can do colour and grey stops being invisible.** It becomes art direction the player notices, and once noticed they attribute it to the game being stylised rather than to their own perception filling a gap. The device does not survive the port; only its appearance does.
+***What the engine already has,*** *checked in `pret/pokefirered`:* **`gGlobalFieldTintMode`** in `fieldmap.c`, with `QL_TINT_GRAYSCALE` and `QL_TINT_SEPIA`, applied to **tilesets** by `ApplyGlobalTintToPaletteEntries` and to **object palettes** by `ApplyGlobalFieldPaletteTint`. *It exists because FireRed's Quest Log replays in sepia:* **the game's own record of what you did, rendered without its colour.** `palette.c` carries `TintPalette_GrayScale`, `_SepiaTone` and `_CustomTone`.
 
-**There is an inversion available, and the GBA can do something the Game Boy could not.** On a DMG, *"grey means something was lost"* was unsayable — there was no contrast to say it with. In colour there is:
+***Three consequences, and they cost nothing.*** **A GBA sprite is indices; colour is a 32-byte table** — so grey, part-grey and full colour are *the same art*. **A grey town is a flag, not an asset.** **A grey Index is a call, not a second sprite.**
 
-- **Halftone as the one grey town in a coloured world.** *Dots that only look like grey* stops being a description of the hardware and becomes the town's visible condition. The load-bearing wall gets **stronger**, not weaker.
-- **The Index rendered grey inside a colour world.** 0.2 says it is a reproduction that loses the original; now the player can see both and find the loss.
+> ***COLOUR IS CONTEXT. The world has it. Records do not. A daemon has as much of it as it has accumulated.***
 
-**Under the inversion, colour is the default and grey is what the game spends.**
+| Surface | Colour | Why |
+|---|---|---|
+| **People, towns, overworld** | full | argument 1 died with the DMG; three foxes and Scorn's red are load-bearing |
+| **The achromatic towns** | a **value ladder**, not five greys | Blanche warm white → Slate blue-grey → **Halftone true grey** → Quicksilver ash → Umbra near-black. *7.4 already does this for music:* **hue sets key, value sets register.** **Two grey towns halves Halftone**, so only Halftone is drained; the rest are *graded* |
+| **The Index, the Quest Log, the Trainer Card** | grey / sepia, always | *a reproduction that loses the original* — **now visible, because there is a colour world to lose it against** |
+| **Daemons** | the 9.4 ramp, **its saturation scaled by friendship** | below |
+| **Umbra** | the value floor | the four humours are **the four type anchors** — red VECTOR, yellow ENTROPY, black LATENT, white FROZEN. *The player has read those hues on daemons for forty hours and meets them as people, in the dark.* **Colour arrives by contrast with darkness instead of with grey** |
 
-***And it costs three things, none of them small.*** **Umbra's colour moment** depends on forty hours without any, and in a colour world that beat is simply gone — *richer or more saturated colour there is a candidate replacement and is not the same instrument.* **PERSPECTIVE's flash** goes the same way. And **argument 1 dies outright** rather than transferring.
+#### Saturation is friendship, and that is the thesis made mechanical
 
-**Held open because it gets easier with more game and harder in the abstract.** Nothing is blocked on it: the character art works as built, the boxes work, the slice is written. Section 8's own warning applies — resolve the aesthetics, ship no towns. **Revisit when Umbra is a room you can stand in.**
+***A daemon at low friendship is nearly grey with a hint of its type; at maximum it is the full ramp.*** *One hook at sprite-palette load, keyed off `MON_DATA_FRIENDSHIP`.*
 
----
+**Not evolution stage.** *"More colour on the final form" says **power = colour**, which is a different game's thesis* — and 8.2's final stages are **the paradigms' failures.** Making them the most colourful argues the opposite of section 8.2.
+
+***What it buys, none of it stated aloud:***
+- **Corpus daemons are grey.** *Trainer parties are built at species base friendship;* **set the Corpus classes to 0** and every daemon they field is visibly context-free. **The people stay in colour** — a grey workforce is the same sneer 3.1 guards against, and the sharper picture is *ordinary staff carrying inventory.*
+- ***The Index shows a daemon grey either way.*** **The player can see what the record cannot.**
+- **A bound daemon is grey. A bonded one is not.** *Nobody is told.*
+
+#### Rejected: the post-game item that colours the world
+
+**Three reasons, each sufficient.** *It converts colour from an argument into a **reward**, and a reward is a metric* — **Scorn's kind of thing.** *It is a **Cognitive Clarifier for the player***, an instrument that changes what they perceive, which is craft rule 1's worst violation. **And friendship-saturation already does it, per daemon, earned** — a player who bonded finishes in colour and one who did not, does not.
 
 ### 8.6 External review, 2026-08-31 — what was taken and what was not
 
@@ -4837,7 +4865,9 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 > **Now tell me. When the two disagree, which do you follow?**
 >
-> **LOGIC**    **INTUITION**
+> **REASON**    **INSTINCT**
+
+*Amended 2026-09-06.* **The first pair was `LOGIC` / `INTUITION`, and `LOGIC` is the FIGHTING rename.** *2.3 calls `LOGIC resisted by CONTEXT` the thesis, free* — **so naming one option after a column of the chart told the player they had chosen the side that loses**, which is precisely what *"neither is the careful one"* forbids. **Neither of these is a type.**
 
 **The two figures are the same person's two ways of arriving at an answer**, which is why they are ***deliberately not a matched pair of opposites.*** *Neither is the careful one. Neither is the wild one.* **They are two people, and the player picks the one they would rather be.**
 

@@ -5,6 +5,43 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.104 — 2026-09-06
+
+### The second external review, decided
+
+- **8.6 closes: `COLOUR IS CONTEXT.`** *The world has it. Records do not. A daemon has as
+  much of it as it has accumulated.* The question had been argued as art direction for two
+  days; **it is a palette flag.** `gGlobalFieldTintMode` already exists in the engine — it
+  is how FireRed's Quest Log replays in sepia — and it tints tilesets *and* object palettes.
+  **A GBA sprite is indices; colour is a 32-byte table.** Grey town, grey Index and full
+  colour are the same art. **The whole system costs no new art.**
+- **A value ladder, not five greys.** Blanche warm white → Slate blue-grey → **Halftone true
+  grey** → Quicksilver ash → Umbra near-black. *7.4 already does this for music: hue sets
+  key, value sets register.* **Two grey towns halves Halftone**, so only Halftone is drained
+  and the rest are graded — grass stays grass.
+- **Saturation is friendship.** A daemon at low friendship is nearly grey with a hint of its
+  type; at maximum it is the full 9.4 ramp. **Not evolution stage** — *"more colour on the
+  final form" says power = colour*, and 8.2's final stages are the paradigms' **failures**.
+  **Corpus classes get friendship 0**, so every daemon they field is visibly context-free —
+  and **the people stay in colour**, because a grey workforce is the sneer 3.1 guards
+  against. *The Index shows a daemon grey either way: the player can see what the record
+  cannot.*
+- **The post-game colour item is rejected.** It makes colour a reward, and a reward is a
+  metric — Scorn's kind of thing. It is also **a Cognitive Clarifier for the player**.
+- **`LOGIC / INTUITION` → `REASON / INSTINCT`.** `LOGIC` is the FIGHTING rename, and 2.3
+  calls *"LOGIC resisted by CONTEXT"* the thesis — so one option was named after a column of
+  the chart that **the chart says loses**, which is what 9.10's *"neither is the careful
+  one"* forbids.
+- **HOLT is an otter.** A holt is specifically an otter's den, so the name chose the species
+  before anyone asked — and an otter is at home in two elements, which is the man who held
+  two frames in one address. Found independently twice.
+- **0.1 gains the form: *a fable with its last line removed*.** A fable ends with the moral;
+  craft rule 1 is the refusal of that sentence. That is what every craft rule is **for**.
+- **8.2a defers the Sevii Islands**, with an exact condition: **name nothing there.** The
+  moment an island is named the decision is made by accident.
+
+---
+
 ## v11.103 — 2026-09-06
 
 ### The slice is at 91%
