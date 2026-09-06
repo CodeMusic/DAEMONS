@@ -5,6 +5,24 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.83 — 2026-09-04
+
+### `tools/gbachar.py` — both characters in, and the formats do not resemble each other
+
+| | | |
+|---|---|---|
+| **CRYSTAL** | `oak_speech/oak/pic.png` | **64x96, EIGHT bits per pixel** |
+| **SCORN** | `trainers/front_pics/leader_giovanni_front_pic.png` | **64x64, four bits, sixteen colours** |
+
+- ***Crystal's pixel values are 97 to 121, not 1 to 25.*** `oak_speech.c` loads her palette at **`BG_PLTT_ID(6)`** — palette RAM 96 — and **an 8bpp background indexes palette RAM directly.** *An image written with ordinary low indices would read the wrong end of the palette and arrive as noise*, with a clean build and no warning
+- **Neither sprite carries its own shadow.** `oak_speech` draws `platform.png` underneath and the battle screen draws its own, so the art's ellipse had to come off — **removed by hue, not position**: *the ellipse is the background blended toward white and keeps its green bias; the lab coat is neutral and the suit blue-grey, and neither does*
+
+### Where Scorn is actually seen
+
+- ***Not an intro portrait — a battle sprite***, which is why his is square and hers is not
+- **CORPUS HIDEOUT B4F**, **SILPH CO. 11F**, **CALLOW GYM** (4.31), and the **CORPUS WAREHOUSE** on Five Island. *Four encounters, and the player fights him in all four*
+- **His overworld sprite is still vanilla and still a man** — the smallest remaining piece of the fox decision
+
 ## v11.82 — 2026-09-04
 
 ### Scorn is the bright red, and the reason is not the obvious one

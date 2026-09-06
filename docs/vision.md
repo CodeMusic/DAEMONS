@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.82**
+**A total conversion — the living design bible, v11.83**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4193,6 +4193,46 @@ at which the problem would not show, and that size is gone.** The opera already
 has him: **a red snake**, which is a species and not a shade, and that is
 precisely what makes fox read as *one kind among several* rather than as
 *other*.
+
+##### Built 2026-09-04 — `tools/gbachar.py`, and two formats that do not resemble each other
+
+**The two sprites are loaded completely differently, and getting either wrong
+produces confetti rather than an error.**
+
+| | | |
+|---|---|---|
+| **CRYSTAL** | `oak_speech/oak/pic.png` | **64x96, EIGHT bits per pixel** |
+| **SCORN** | `trainers/front_pics/leader_giovanni_front_pic.png` | **64x64, four bits, sixteen colours** |
+
+***Crystal's pixel values are 97 to 121, not 1 to 25.*** `oak_speech.c` loads
+her palette with **`LoadPalette(..., BG_PLTT_ID(6))`** — palette RAM **96** —
+and an 8bpp background indexes palette RAM **directly**. *An image written with
+ordinary low indices would read the wrong end of the palette and arrive as
+noise*, with a clean build and no warning. **The 32-colour `.pal` is bank 6, so
+its entry k is RAM 96+k.**
+
+**And neither sprite carries its own shadow.** The generated art stands on a
+pale ellipse; **`oak_speech` draws `platform.png` separately underneath and the
+battle screen draws its own**, so the ellipse had to come off or the character
+stands on two. *It is removed by hue rather than by position*: the ellipse is
+the background blended toward white and keeps its green bias, **while the lab
+coat is neutral and the suit is blue-grey and neither does.**
+
+#### Where Scorn is actually seen
+
+***He is not an intro portrait — he is a battle sprite***, which is why his is
+square and hers is not:
+
+| | |
+|---|---|
+| **CORPUS HIDEOUT B4F** | the first meeting |
+| **SILPH CO. 11F** | the takeover |
+| **CALLOW GYM** | 4.31, the last MARK |
+| **CORPUS WAREHOUSE**, Five Island | after |
+
+**Four encounters, and the player fights him in all of them.** *He also walks
+those maps as an overworld sprite, which is still vanilla and still a man* —
+**the smallest remaining piece of the fox decision.**
 
 ##### Scorn is the BRIGHT red, and it costs something measurable
 

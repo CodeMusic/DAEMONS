@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Cut the character art down to the sprites the engine actually loads.
+
+    python3 tools/gbachar.py            # report + /tmp/char.png
+    python3 tools/gbachar.py --write
+
+TWO SPRITES, TWO COMPLETELY DIFFERENT FORMATS, and getting either wrong
+produces a screenful of confetti rather than an error.
+
+  CRYSTAL -> graphics/oak_speech/oak/pic.png, 64x96, EIGHT bits per pixel.
+     oak_speech.c loads its palette with LoadPalette(..., BG_PLTT_ID(6)),
+     which is palette RAM 96 -- so the pixel values in the file are not 1..25,
+     they are 97..121. An 8bpp background indexes palette RAM directly, so an
+     image written with ordinary low indices would read the wrong end of the
+     palette and come out as noise. The 32-colour .pal is bank 6, meaning its
+     entry k is RAM 96+k.
+
+  SCORN -> graphics/trainers/front_pics/leader_giovanni_front_pic.png,
+     64x64, FOUR bits per pixel, sixteen colours, index 0 transparent. The
+     ordinary case.
+
+AND NEITHER SPRITE CARRIES ITS OWN SHADOW. The generated art stands on a pale
+ellipse, but oak_speech draws platform.png separately underneath and the
+battle screen draws its own -- so the ellipse has to come off or the character
+stands on two of them.
+"""
+import os, sys
+import numpy as np
+from PIL import Image
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GBA = os.path.join(ROOT, "engineGba")
+KEY = (115, 197, 164)          # what vanilla puts in the transparent slot
+
+JOBS = {
+    "crystal": dict(src="gfx/characters/crystal_speech.jpeg",
+                    dst="engineGba/graphics/oak_speech/oak/pic.png",
+                    pal="engineGba/graphics/oak_speech/oak/pal.pal",
+                    size=(64, 96), colours=25, base=97, palsize=32),
+    "scorn":   dict(src="gfx/characters/scorn.jpeg",
+                    dst="engineGba/graphics/trainers/front_pics/leader_giovanni_front_pic.png",
+                    pal=None, size=(64, 64), colours=15, base=1, palsize=16),
+}
+
+def silhouette(a):
+    """Background AND the shadow ellipse, which are both GREENISH.
+
+    The ellipse is the background blended toward white, so it keeps the green
+    bias; the lab coat is neutral and the suit is blue-grey, and neither does.
+    Two comparisons separate them and nothing else in either picture is green."""
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    return ~((g - r > 12) & (g - b > 4))
+
+def cut(job):
+    a = np.asarray(Image.open(os.path.join(ROOT, job["src"])).convert("RGB")).astype(int)
+    ink = silhouette(a)
+    ys, xs = np.where(ink)
+    box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
+    im = Image.open(os.path.join(ROOT, job["src"])).convert("RGB").crop(box)
+    mask = Image.fromarray((ink[box[1]:box[3], box[0]:box[2]] * 255).astype(np.uint8))
+
+    W, H = job["size"]
+    scale = min(W / im.width, H / im.height)
+    w, h = max(1, round(im.width * scale)), max(1, round(im.height * scale))
+    im = im.resize((w, h), Image.LANCZOS)
+    mask = mask.resize((w, h), Image.LANCZOS).point(lambda v: 255 if v > 140 else 0)
+
+    cell = Image.new("RGB", (W, H), KEY)
+    cell.paste(im, ((W - w) // 2, H - h), mask)      # feet on the floor, centred
+    hold = Image.new("L", (W, H), 0)
+    hold.paste(mask, ((W - w) // 2, H - h))
+    return cell, hold
+
+def index(cell, hold, job):
+    q = cell.convert("P", palette=Image.ADAPTIVE, colors=job["colours"], dither=Image.NONE)
+    pal = q.getpalette()[:job["colours"] * 3]
+    table = [tuple(pal[i * 3:i * 3 + 3]) for i in range(job["colours"])]
+    a = np.asarray(cell).astype(int)
+    d = ((a[:, :, None, :] - np.array(table)[None, None, :, :]) ** 2).sum(axis=3)
+    flat = (d.argmin(axis=2) + job["base"]).astype(np.uint8)
+    flat[np.asarray(hold) == 0] = 0
+    out = Image.new("P", cell.size)
+    out.putdata(flat.flatten().tolist())
+    full = [0] * 768
+    full[0:3] = list(KEY)
+    for i, c in enumerate(table):
+        j = (job["base"] + i) * 3
+        full[j:j + 3] = list(c)
+    out.putpalette(full)
+    return out, table
+
+def main():
+    prev, x = Image.new("RGB", (64 * 6 * 2 + 40, 96 * 6), (18, 18, 24)), 0
+    for name, job in JOBS.items():
+        cell, hold = cut(job)
+        out, table = index(cell, hold, job)
+        print("  %-8s %-52s %dx%d, %d colours at index %d+"
+              % (name, job["dst"].split("engineGba/")[-1], *job["size"], len(table), job["base"]))
+        prev.paste(out.convert("RGB").resize((64 * 6, job["size"][1] * 6), Image.NEAREST), (x, 0))
+        x += 64 * 6 + 40
+        if "--write" in sys.argv:
+            out.save(os.path.join(ROOT, job["dst"]))
+            if job["pal"]:
+                with open(os.path.join(ROOT, job["pal"]), "w") as f:
+                    f.write("JASC-PAL\n0100\n%d\n" % job["palsize"])
+                    rows = [KEY] + [(0, 0, 0)] * (job["palsize"] - 1)
+                    for i, c in enumerate(table):          # .pal entry k is RAM 96+k
+                        rows[job["base"] - 96 + i] = c
+                    for c in rows:
+                        f.write("%d %d %d\n" % c)
+            print("           written")
+    prev.save("/tmp/char.png")
+    print("  preview   /tmp/char.png")
+
+main()
