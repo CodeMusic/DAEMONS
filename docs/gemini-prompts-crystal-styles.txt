@@ -115,3 +115,53 @@ shorts, sandals, a small blue satchel.
 Pose: braced with feet apart, one arm raised high holding a butterfly net
 above his head, leaning slightly forward, grinning. Full body, feet included,
 in a square frame. Under about fifteen colours.
+
+==========================================================================
+D -- THE FUNNY-ANIMAL TRADITION, tested on the same BUG CATCHER
+==========================================================================
+C failed here and the failure was structural: an animal head on a human body
+is a MASK, and no amount of colour-matching fixes the join. The Star Fox
+argument does not survive either -- when those characters appear full length
+they have tails, digitigrade legs, fur and paw-like hands. What is true of
+Star Fox is true of its PORTRAITS.
+
+The tradition that does full-body animals without reading as furry is the
+FUNNY-ANIMAL one: Carl Barks' ducks, Disney's Robin Hood (1973), Redwall.
+
+    the animality is INTEGRATED, not grafted -- paw-shaped hands, a small
+    tail, a head proportioned to the body -- but drawn PLAINLY: no fur
+    texture, no pelt, no physique, no fluff.
+
+That is the difference from A, which had fur rendering and a big brush tail,
+and from C, which had no animal below the neck at all. Same subject, same
+pose, same clothes. Save as gfx/characters/style_d_bug.jpeg.
+
+--------------------------------------------------------------------------
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
+
+Subject: a young MOUSE boy of about twelve, drawn in the classic cartoon
+funny-animal tradition -- the style of Carl Barks' comics or Disney's ROBIN
+HOOD, where the characters are animals through and through and are drawn with
+simple confident shapes.
+
+He is a mouse ALL OVER, not a boy wearing a mouse head. The same warm tan-
+brown runs from his face down his arms, his hands, his legs and his feet,
+because it is all one creature. Rounded ears, a short blunt muzzle, bright
+eyes, a head slightly larger in proportion than a human child's. His hands
+are simple rounded PAWS with thick fingers, not human hands. A thin mouse
+tail, SHORT and unobtrusive.
+
+DRAWN PLAINLY. No fur texture, no individual hairs, no tufts, no fluff at the
+wrists or ankles, no pelt markings. No visible muscle definition. Simple
+solid shapes with flat cel shading, the way a newspaper cartoon animal is
+drawn. He should look like a character in a FABLE, not a realistic animal
+and not a mascot costume.
+
+Clothes: a straw sun hat with a blue band, a white sleeveless top, blue
+shorts, sandals, a small blue satchel.
+
+Pose: braced with feet apart, one arm raised high holding a butterfly net
+above his head, leaning slightly forward, grinning. Full body, feet included,
+in a square frame. Under about fifteen colours.
