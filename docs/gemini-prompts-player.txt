@@ -36,6 +36,24 @@ mirror test sits quietly under a game about whether there is someone there.
     has no place on the most-seen sprite in the game, and describing the
     animal directly avoids it entirely.
 
+ON THE CLOTHES -- THIS IS ALREADY SETTLED AND WAS NEARLY GOT WRONG TWICE.
+Section 8 rejected a first version that was "a cap and a strap -- Ash with a
+satchel", and the brief that replaced it sits the player between three
+archetypes: a scientist, a magician and a wizard. The resolution is that one
+of them is free:
+
+    A LAB COAT AND A WIZARD'S ROBE ARE THE SAME SILHOUETTE.
+
+So the coat carries two of the three -- long, sleeved, reaching nearly to the
+ground -- and the HAT only has to carry the third. A FLAT BRIM, WIDER THAN
+THE SHOULDERS: it is the widest shape on the figure and the one thing no
+other character has. A brim the same width as the shoulders stacks into a
+mailbox, which is what the first attempt produced.
+
+The design already exists as art: engine/gfx/title/player.png, 40x56, enlarged
+to gfx/characters/player_reference.png. ATTACH IT. Coat, brim, the strap
+across the body and the BOX at the hip all come from there.
+
 Save as gfx/characters/player_logic.jpeg and player_intuition.jpeg.
 Generate LOGIC first, then ATTACH IT for INTUITION so the body matches.
 
@@ -66,9 +84,17 @@ no skirt, no visible chest, no gendered styling of any kind. Just a kid.
 DRAWN PLAINLY: no fur texture, no individual hairs, no tufts, no fluff, no
 muscle definition. Flat solid colour with simple cel shading.
 
-Clothes: a plain dark red cap, a sleeveless olive travelling jacket over a
-plain cream shirt, dark blue trousers, sturdy boots, and a small satchel on a
-strap across the body. Practical, worn, unremarkable.
+Clothes, from the attached reference: a WIDE FLAT-BRIMMED HAT, the brim
+clearly wider than the shoulders and level all the way round -- the widest
+shape on the figure. A LONG PALE COAT, sleeved, open at the front, falling
+nearly to the ankles, so that it reads as a lab coat and a wizard's robe at
+the same time. Dark clothes beneath it, dark boots. A dark STRAP running
+diagonally across the chest, and hanging at the hip a small grey MACHINE: a
+cube with a dark inset screen set high on its face and a seam across the
+lower half. Not a ball, not a bag -- a little computer carried on a strap.
+
+Worn and practical, not ceremonial. This is a child dressed in a working
+coat, not a costume.
 
 Full body, feet included, in a TALL frame. Under about eighteen colours.
 
