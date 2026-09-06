@@ -5,6 +5,34 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.100 — 2026-09-06
+
+### 62%, and what the remaining number actually measures
+
+- **18 blocks rewritten** — Al's short lab lines, Crystal's two, and the Callow and Slate
+  blocks where the first sentence had been rewritten and vanilla's second sentence had
+  survived. **The slice reaches 62%.**
+- **Al's opening scene got shorter and colder.** *"Oh. It is you. She is not here."* /
+  *"Gran. I have been standing here."* / *"Gran. And me."* — two words where vanilla had
+  an exclamation. He is not louder than vanilla's rival; he is **more clipped**, which is
+  the same character the Route 22 rewrite gave: someone who does not concede and does not
+  elaborate.
+- **Crystal counts.** *"There is one for you as well, {RIVAL}. I counted."*
+
+### The metric is structural, not authorial, and that matters
+
+- **`gbaslice` scored the school's status explainers as vanilla after they were rewritten.**
+  *"A sleeping daemon does not act"* shares almost no wording with *"A POKéMON can't attack
+  if it's asleep"*, and still lands above 0.5 — because a status explainer must say what the
+  condition does, that it persists, and what cures it, **in that order**. Any correct version
+  scores high.
+- **So the remaining 100 is not 100 blocks of unwritten prose.** Roughly half is functional:
+  receipts, plaques, route signs, and mechanical explainers whose structure is fixed by what
+  they have to convey. The tool's docstring says *"above it, vanilla is still doing the
+  talking with our nouns in its mouth"* — true of dialogue, **not true of a receipt**.
+
+---
+
 ## v11.99 — 2026-09-06
 
 ### The man in the gym is Scorn
