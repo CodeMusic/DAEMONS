@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.81**
+**A total conversion — the living design bible, v11.82**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4193,6 +4193,38 @@ at which the problem would not show, and that size is gone.** The opera already
 has him: **a red snake**, which is a species and not a shade, and that is
 precisely what makes fox read as *one kind among several* rather than as
 *other*.
+
+##### Scorn is the BRIGHT red, and it costs something measurable
+
+***The first pass was a dark red and the repo version is brighter.*** **Bright
+wins, and not for the reason it first appears to.**
+
+**3589 is the deciding line:** ***"This design has no villain. Its central move
+is refusing to make anyone a monster."*** *A dark red cobra in a suit is
+villain-coded* — the player files him as the antagonist in half a second, and
+**that is the one thing this design will not do.** 4.6 already states the
+horror precisely: *"to Scorn the question is settled — they are units, they are
+inventory, the math is clean. That is the horror, and it needs no villainy to
+land."*
+
+**Bright red reads as a man having a good day.** *Which is worse, and true.*
+
+***And it is paid for, rather than free.*** Measured off the art:
+
+| | head | suit | separation |
+|---|---|---|---|
+| **bright, as shipped** | 82.8 | 109.6 | **26.8** |
+| darkened to 60% | 49.7 | 109.6 | 59.9 |
+
+***Darkening the head more than doubles the value separation***, because the
+suit is a mid-grey and moving the head down moves it away. **So the dark
+version is the technically stronger sprite and the weaker character**, and the
+character wins — *26.8 is workable behind a thick outline and a silhouette as
+distinctive as a hood.*
+
+**If it ever needs more, lighten the SUIT, not the head:** at ×1.30 the
+separation is **59.7** with the charisma intact. *The cost is known and the
+escape is known, which is the only reason to accept the cost.*
 
 **What does not change**, and is the reason the whole thing holds:
 

@@ -5,6 +5,28 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.82 — 2026-09-04
+
+### Scorn is the bright red, and the reason is not the obvious one
+
+- **3589 decides it**: ***"This design has no villain. Its central move is refusing to make anyone a monster."*** *A dark red cobra in a suit is villain-coded* — the player files him as the antagonist in half a second
+- **4.6 states the horror precisely**: *"to Scorn the question is settled — they are units, they are inventory, the math is clean. That is the horror, and it needs no villainy to land."* **Bright red reads as a man having a good day**, which is worse and true
+
+### And it is paid for, not free
+
+| | head | suit | separation |
+|---|---|---|---|
+| **bright, as shipped** | 82.8 | 109.6 | **26.8** |
+| darkened to 60% | 49.7 | 109.6 | 59.9 |
+
+- ***I argued the opposite first and the measurement corrected it.*** **Darkening the head more than doubles the value separation**, because the suit is a mid-grey and moving the head down moves it away
+- **So the dark version is the technically stronger sprite and the weaker character** — and the character wins. *26.8 is workable behind a thick outline and a hood silhouette*
+- **If it ever needs more, lighten the SUIT rather than the head**: ×1.30 gives **59.7** with the charisma intact
+
+### Art in
+
+- `gfx/characters/crystal_speech.jpeg` and `gfx/characters/scorn.jpeg`. **Crystal keeps the vanilla sprite's purple shirt, extended hand and pale ellipse**, which makes the swap read as the same shot of a different person
+
 ## v11.81 — 2026-09-04
 
 ### The fox ruling rested on a resolution the port moved
