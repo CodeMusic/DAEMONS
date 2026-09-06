@@ -51,8 +51,20 @@ other character has. A brim the same width as the shoulders stacks into a
 mailbox, which is what the first attempt produced.
 
 The design already exists as art: engine/gfx/title/player.png, 40x56, enlarged
-to gfx/characters/player_reference.png. ATTACH IT. Coat, brim, the strap
-across the body and the BOX at the hip all come from there.
+to gfx/characters/player_reference.png. ATTACH IT -- BUT FOR SILHOUETTE ONLY.
+Coat, brim, the strap across the body and the BOX at the hip come from there.
+NOTHING ELSE DOES.
+
+    THE REFERENCE IS TOO DARK, AND THAT IS HALF OF WHY THIS ENGINE CHANGED.
+    Four grey tones gave that figure no way to light a face under a wide
+    brim, so it came out shadowed -- a plague doctor, a gunslinger, a witch
+    hunter. The GBA pivot bought colour and a wider design space, and the
+    player is the sprite that most needed both.
+
+So: same shapes, opposite tone. The coat is PALE CREAM, not black. The face
+under the brim is FULLY LIT AND CLEARLY VISIBLE -- warm fur, bright eyes, no
+shadow across the eyes, nothing hidden. This is a curious child in a working
+coat, and they should look like someone you would be glad to be.
 
 Save as gfx/characters/player_logic.jpeg and player_intuition.jpeg.
 Generate LOGIC first, then ATTACH IT for INTUITION so the body matches.
@@ -93,8 +105,11 @@ diagonally across the chest, and hanging at the hip a small grey MACHINE: a
 cube with a dark inset screen set high on its face and a seam across the
 lower half. Not a ball, not a bag -- a little computer carried on a strap.
 
-Worn and practical, not ceremonial. This is a child dressed in a working
-coat, not a costume.
+Worn and practical, not ceremonial, and NOT SINISTER. The coat is pale cream
+and the clothes beneath it are warm mid-tones, never black. The face beneath
+the brim is fully lit and open -- no shadow over the eyes, nothing obscured.
+The overall impression is BRIGHT and curious. This is a child dressed in a
+working coat, not a plague doctor and not a costume.
 
 Full body, feet included, in a TALL frame. Under about eighteen colours.
 
