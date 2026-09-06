@@ -1,108 +1,99 @@
 AL CLEAR — four sprites
 =======================
 
-FOUR PROMPTS. Each block below is COMPLETE — copy one whole block, paste it,
-generate, then come back for the next. Nothing has to be joined together.
+ONE image is generated from text. The other THREE are generated from THAT
+image plus a short pose note. Four separate text prompts would give four
+different foxes; only the reference keeps him one character.
 
 Ty needs none. vision 4.3: "TY P. CLEAR, printed, never spoken." He exists in
 the register, the Quicksilver ruins and a leitmotif, never in a room. That is
 the device; giving him a face would spend it.
 
-Targets, for reference only — do not put sizes in the prompt, the reduction is
-done by tools/gbachar.py:
-
-    graphics/oak_speech/rival/pic.png                64x96  intro portrait
-    graphics/trainers/front_pics/rival_early_...     64x64  first battles
-    graphics/trainers/front_pics/rival_late_...      64x64  later battles
-    graphics/trainers/front_pics/champion_rival_...  64x64  the last fight
-
 Save the results in gfx/characters/ as al_speech.jpeg, al_early.jpeg,
-al_late.jpeg, al_champion.jpeg.
+al_late.jpeg, al_champion.jpeg. tools/gbachar.py does the reduction -- do not
+put pixel sizes in any prompt.
 
-Two notes on WHY the wording is what it is, so it is not edited away:
-
-  * KEEP HIS CLOTHES. Crystal's sprite worked because it kept the professor's
-    purple shirt and extended hand -- the swap read as the same shot of a
-    different person rather than a new asset. Same trick here.
-  * THE BOX IS NOT A BALL, and prompt 2 says so twice. This project has no
-    Poke Balls; 3.1's line is USERBOX -> ADMINBOX -> SUPERBOX -> ROOTBOX and
-    tools/gbabox.py already draws one. The model reaches for a ball unless
-    told not to, because everything it has seen in that pose holds one.
+    al_early     -> graphics/trainers/front_pics/rival_early    64x64
+    al_late      -> graphics/trainers/front_pics/rival_late     64x64
+    al_champion  -> graphics/trainers/front_pics/champion_rival 64x64
+    al_speech    -> graphics/oak_speech/rival/pic.png           64x96
 
 ==========================================================================
-PROMPT 1 of 4 — the intro portrait
+THE REFERENCE — al_early — GENERATED, keep it
 ==========================================================================
-Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
-shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
-background, no scenery, no shadow under the feet.
+This is the one that came from text, and it is now the source for the other
+three. Two things about it are load-bearing:
 
-Subject: an anthropomorphic mid-amber fox, a confident young man. Spiky
-orange-blond head fur. Dark olive-grey short-sleeved shirt, purple-mauve
-trousers, a belt. Upright ears, a narrow muzzle, a full brush tail. Ordinary
-human clothing that fits properly. He is cocky rather than cruel: a half
-smile, chin up, entirely sure of himself. Under about fifteen distinct
-colours.
+  * The BOX. This project has no Poke Balls; 3.1's line is USERBOX ->
+    ADMINBOX -> SUPERBOX -> ROOTBOX, and tools/gbabox.py draws the same crate
+    as the Index's caught marker -- dark rim, pale face, two bands. The model
+    reaches for a ball unless told not to, twice.
+  * The CLOTHES. Crystal's sprite worked because it kept the professor's
+    purple shirt and extended hand; the swap read as the same shot of a
+    different person. Olive-grey shirt, purple-mauve trousers, brown belt,
+    brown boots -- keep them in all four.
 
-Pose: standing at ease, turned slightly to his left, one hand resting on his
-hip and the other holding a bag tucked against his side. Weight on one leg.
-Full body, feet included, in a tall frame.
+The text that produced it, for regeneration only:
 
-==========================================================================
-PROMPT 2 of 4 — the early battle sprite
-==========================================================================
-Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
-shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
-background, no scenery, no shadow under the feet.
+    Full-body character in the style of a Game Boy Advance RPG sprite. Flat
+    cel shading, thick dark outline, no gradients, no anti-aliasing. Plain
+    flat green background, no scenery, no shadow under the feet.
 
-Subject: an anthropomorphic mid-amber fox, a confident young man. Spiky
-orange-blond head fur. Dark olive-grey short-sleeved shirt, purple-mauve
-trousers, a belt. Upright ears, a narrow muzzle, a full brush tail. Ordinary
-human clothing that fits properly. He is cocky rather than cruel: a half
-smile, chin up, entirely sure of himself. Under about fifteen distinct
-colours.
+    Subject: an anthropomorphic mid-amber fox, a confident young man. Spiky
+    orange-blond head fur. Dark olive-grey short-sleeved shirt, purple-mauve
+    trousers, a belt. Upright ears, a narrow muzzle, a full brush tail.
+    Ordinary human clothing that fits properly. He is cocky rather than
+    cruel: a half smile, chin up, entirely sure of himself. Under about
+    fifteen distinct colours.
 
-Pose: leaning forward, up on the balls of his feet, holding a small BOX out
-in front of him in one hand as though about to throw it.
+    Pose: leaning forward, up on the balls of his feet, holding a small BOX
+    out in front of him in one hand as though about to throw it.
 
-The BOX is a pale cream cube about the size of his palm, with a dark wooden
-rim around its edges and two darker bands running across its face.
-Flat-sided and square. It is a small crate. It is NOT a ball, NOT round, and
-it has no button on it.
+    The BOX is a pale cream cube about the size of his palm, with a dark
+    wooden rim around its edges and two darker bands running across its face.
+    Flat-sided and square. It is a small crate. It is NOT a ball, NOT round,
+    and it has no button on it.
 
-Full body, feet included, in a square frame.
+    Full body, feet included, in a square frame.
 
 ==========================================================================
-PROMPT 3 of 4 — the later battle sprite
+THE OTHER THREE — attach al_early, then paste one of these
 ==========================================================================
-Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
-shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
-background, no scenery, no shadow under the feet.
+Every one of them opens the same way. ATTACH THE REFERENCE IMAGE FIRST.
 
-Subject: an anthropomorphic mid-amber fox, a confident young man. Spiky
-orange-blond head fur. Dark olive-grey short-sleeved shirt, purple-mauve
-trousers, a belt. Upright ears, a narrow muzzle, a full brush tail. Ordinary
-human clothing that fits properly. He is cocky rather than cruel: a half
-smile, chin up, entirely sure of himself. Under about fifteen distinct
-colours.
+The shared opening:
 
-Pose: standing tall and square to the viewer, one arm raised above his head
-with the hand open. Less eager than before and more certain. Full body, feet
-included, in a square frame.
+    Using the attached image as the character reference, draw the SAME fox
+    character in a new pose. Identical face, fur colour, spiky orange-blond
+    head fur, olive-grey short-sleeved shirt, purple-mauve trousers, brown
+    belt, brown boots. Same flat cel shading, same thick dark outline, same
+    plain flat green background, same limited palette.
 
-==========================================================================
-PROMPT 4 of 4 — the champion sprite
-==========================================================================
-Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
-shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
-background, no scenery, no shadow under the feet.
+    Keep him COMPACT in the frame: the tail curved close behind his legs
+    rather than swept out sideways, arms inside the width of his shoulders
+    where the pose allows. He should fill a square frame from head to feet
+    without long horizontal reach.
 
-Subject: an anthropomorphic mid-amber fox, a confident young man. Spiky
-orange-blond head fur. Dark olive-grey short-sleeved shirt, purple-mauve
-trousers, a belt. Upright ears, a narrow muzzle, a full brush tail. Ordinary
-human clothing that fits properly. He is cocky rather than cruel: a half
-smile, chin up, entirely sure of himself. Under about fifteen distinct
-colours.
+--------------------------------------------------------------------------
+al_late — the later battles
+--------------------------------------------------------------------------
+    New pose: standing tall and square to the viewer, one arm raised above
+    his head with the hand open, empty. No box. Less eager than the
+    reference and more certain -- he has stopped leaning in.
 
-Pose: mid-motion with one arm thrown forward toward the viewer, the other
-back for balance, leaning in. The largest and most committed pose of the
-four. Full body, feet included, in a square frame.
+--------------------------------------------------------------------------
+al_champion — the last fight
+--------------------------------------------------------------------------
+    New pose: mid-motion, one arm thrown forward toward the viewer, the
+    other back for balance, leaning in. Empty hands, no box. The largest and
+    most committed pose of the three.
+
+--------------------------------------------------------------------------
+al_speech — the intro portrait (TALL frame, not square)
+--------------------------------------------------------------------------
+    New pose: standing at ease, turned slightly to his left, one hand resting
+    on his hip and the other holding a bag tucked against his side. Weight on
+    one leg. Calm, not mid-action.
+
+    Draw this one in a TALL frame rather than a square one -- taller than it
+    is wide, with him filling the height.
