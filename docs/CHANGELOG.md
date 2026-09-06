@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.103 — 2026-09-06
+
+### The slice is at 91%
+
+- **37 blocks across two passes.** `208 prose blocks: 191 ours (91%), 11 vanilla reworded,
+  6 untouched`. It was **9%** two days ago.
+- **The status explainers finally moved**, and the fix was to use our own vocabulary rather
+  than paraphrase vanilla's. *"Asleep, nothing runs. The battle ending does not wake it.
+  AWAKENING is the interrupt."* — `INTERRUPT` is what 1.4 already renamed the Poké Flute to,
+  so the item and the state now share a word. The other four end on the same line, **"Carried
+  out of the battle with it,"** which is what a status condition *is*.
+- **The spam e-mail became a summons.** Vanilla's is an advert; ours is the REVIEW BOARD
+  sitting again, and one line at the bottom: *"CRYSTAL CLEAR: your attendance is again
+  requested."* **Again.** She has not gone, and 4.20 is why.
+- **Al's complaint got shorter and worse.** *"I have bound more. I was faster. Give me one
+  job. One."* — no exclamation anywhere in it.
+- **MOM stopped quoting the television.** *"You have that look."* And the two variants split
+  on what CRYSTAL did rather than on the player: *she waited a while* / *she did not wait
+  long*, which is 9.10's LOGIC and INTUITION seen from the doorway.
+- **Callow's sign stopped rhyming with vanilla's.** *Evergreen And Unripe* scored high
+  against *The Eternally Green Paradise* — the same joke, differently worded. It reads
+  **"Green All Year. Untried All Year."** now.
+
+---
+
 ## v11.102 — 2026-09-06
 
 ### DAISY is VERA CLEAR
