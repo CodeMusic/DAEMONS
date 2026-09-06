@@ -1,190 +1,97 @@
-GEMINI PROMPTS - the player
-======================================================================
+THE PLAYER — LOGIC and INTUITION
+================================
 
-Vanilla's player holds a Pokeball; ours holds a box, and 1.3 is unambiguous
-about what a box is: a machine you offer a daemon as a host, not a container
-you shut it in.
+9.10 replaced the gender question with one that does work:
 
-WHAT IS ALREADY DRAWN, AND WHAT IS NOT
-----------------------------------------------------------------------
+    Now tell me. When the two disagree, which do you follow?
+    LOGIC    INTUITION
 
-The overworld sprite - the figure you look at all game - is DONE, and was
-hand-drawn rather than generated. Sixteen pixels is one tile; a generated
-figure loses its face, its silhouette and its walk cycle in the same
-downsample that works fine at 40-56px. See tools/genplayer.py.
+    "The two figures are the same person's two ways of arriving at an answer,
+     which is why they are deliberately not a matched pair of opposites.
+     Neither is the careful one. Neither is the wild one. They are two
+     people, and the player picks the one they would rather be."
 
-  DONE   gfx/sprites/red.png            16x96   six walking frames
-  DONE   gfx/sprites/red_bike.png       16x96   the same six, provisional
-  DONE   gfx/title/player.png           40x56   generated, --solid --fill
-  todo   gfx/overworld/red_fish_*.png   16x8    three fishing half-frames
+SO THE TRAP IS THE OBVIOUS VERSION. Glasses-and-neat against messy-and-wild
+makes one of them the boring choice and rebuilds the gender split with new
+labels. Both must be competent, both appealing.
 
-The fishing frames are hand-drawn too when their time comes, and are not
-reachable in the slice. Do not ask Gemini for them.
+EVERYTHING IS HELD IDENTICAL EXCEPT STANCE AND GAZE. Same body, same build,
+same clothes, same species, same age. One is ATTENDING, the other is
+ANTICIPATING -- two ways of arriving, not two temperaments.
 
-THE CHARACTER, fixed by the overworld sprite. Every prompt below must match it:
+    LOGIC     gathered, weight even, looking AT what is in front of them
+    INTUITION already moving, weight forward, looking slightly OFF-FRAME
 
-  a WIDE FLAT-BRIMMED HAT, the brim clearly wider than the shoulders
-  a LONG COAT that reaches the ground, sleeved, no legs visible
-  a SATCHEL on a strap crossing the chest diagonally
-  and the unit it carries
+Identical silhouette matters more than it sounds: nothing in the game refers
+to either with a pronoun, and at 16x32 in the overworld stance is nearly all
+the information there is.
 
-He sits between a scientist, a magician and a wizard, and the coat is what
-does that: a lab coat and a wizard's robe are the same silhouette, so the hat
-carries the third on its own. Not a cap. Not a pointed wizard hat.
+ON THE SPECIES. Nothing in the game ever names it and nothing should. The
+sprite is the whole statement. It is a primate -- upright, bright, hands --
+because curiosity and working things out unaided is the job, and because the
+mirror test sits quietly under a game about whether there is someone there.
 
-The title figure is done and came from this pipeline. Note the --solid flag:
-the title sprite is drawn as OAM, where the LIGHTEST level is transparent, so a
-white lab coat renders as a hole. --solid floods the background at SOURCE
-resolution -- where the outline is still six pixels thick and closed -- and
-lifts any paper the flood cannot reach. Without it, 234 pixels of that coat
-were see-through.
+    Write the FEATURES, never the species. Do not use the words monkey, ape,
+    chimp or gorilla in the prompt: those words carry a caricature prior that
+    has no place on the most-seen sprite in the game, and describing the
+    animal directly avoids it entirely.
 
-Do number 1 first and ATTACH IT to the two after. They are all the same
-person, and a fresh conversation invents a different one.
+Save as gfx/characters/player_logic.jpeg and player_intuition.jpeg.
+Generate LOGIC first, then ATTACH IT for INTUITION so the body matches.
 
-Save each to the path named in its block, as .png or .jpeg either way, then
-run `python3 tools/sprite.py` on it.
+==========================================================================
+SHARED — this text is identical in both. Only the final block changes.
+==========================================================================
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
 
-----------------------------------------------------------------------
-1. THE PLAYER, front portrait  ->  gfx/player/red.png  (56x56)
-   Crystal's "this is you" screen, and the Hall of Fame.
-----------------------------------------------------------------------
+Subject: a young anthropomorphic PRIMATE of about eleven, drawn in the
+classic cartoon funny-animal tradition -- animals through and through, built
+from simple confident shapes, the style of Carl Barks or Disney's ROBIN HOOD.
 
-A figure standing three-quarters to the viewer in a long coat that reaches the ground, sleeved, with no legs visible below it, and a wide flat-brimmed hat whose brim is clearly wider than their shoulders. A satchel hangs at the hip on a strap that crosses the chest diagonally. They read as a scientist, a magician and a wizard at once - the coat is both a lab coat and a robe, and the hat is an alchemist's, not a pointed wizard's. One arm is raised holding a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side. It is a machine, not a container - no seam around the middle, no button, nothing that looks like it opens. It should read as something you would ssh into: a little server, not a crate and not a dice-like cube. Confident and good-humoured, looking at the viewer. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
+Features: soft warm-grey fur, a rounded head with a gently domed brow, LARGE
+bright curious eyes, small neat ears set close, a short flat face with NO
+protruding muzzle and NO exaggerated jaw or lips. Slim, upright, standing
+fully erect on two legs. Long expressive PAW hands with slender fingers. A
+slim tail held in a relaxed curve.
 
-----------------------------------------------------------------------
-2. THE PLAYER, title screen  ->  gfx/title/player.png  (40x56)
-   attach: the front portrait
-----------------------------------------------------------------------
+Draw the face naturalistically and kindly, with honest proportions. Bright
+and thoughtful, not comic, not goofy, not a caricature.
 
-The same figure, the same wide-brimmed hat, long coat, satchel strap and unit, framed for a title screen: full body, standing straight on and facing the viewer, the unit held down at one side rather than raised. Taller than wide, and the brim still the widest thing in the picture. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
+The character is DELIBERATELY AMBIGUOUS IN GENDER -- it should not be
+possible to say whether this is a boy or a girl. No long hair, no eyelashes,
+no skirt, no visible chest, no gendered styling of any kind. Just a kid.
 
-----------------------------------------------------------------------
-3. THE PLAYER, back view  ->  gfx/player/redb.png  (32x32)
-   attach: the front portrait
-----------------------------------------------------------------------
+DRAWN PLAINLY: no fur texture, no individual hairs, no tufts, no fluff, no
+muscle definition. Flat solid colour with simple cel shading.
 
-The same figure seen from behind and slightly below, as if standing just behind their shoulder - head, shoulders and upper back only, cropped at roughly the waist. The underside of the hat brim and the satchel sitting between the shoulder blades are the two readable shapes. One arm is drawn back at the side. Simpler and chunkier than the front view; this is seen small and constantly. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Full body visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
+Clothes: a plain dark red cap, a sleeveless olive travelling jacket over a
+plain cream shirt, dark blue trousers, sturdy boots, and a small satchel on a
+strap across the body. Practical, worn, unremarkable.
 
-======================================================================
-THE TWO SHRINK FRAMES
-======================================================================
+Full body, feet included, in a TALL frame. Under about eighteen colours.
 
-Ask these in the same conversation as number 1, attaching it:
+--------------------------------------------------------------------------
+LOGIC -- append this block
+--------------------------------------------------------------------------
+Pose: standing gathered and settled, weight even on both feet, squared to the
+viewer. One hand rests on the strap of the satchel; the other holds a small
+folded map, half-open, at their side. They are looking DIRECTLY AT the
+viewer, level and unhurried, attending to what is in front of them.
 
-  Now draw the same figure again, in the same style, same outline weight,
-  same four flat tones, same plain white background. This time: [X].
+Composed and certain. Not stiff, not timid, not studious -- simply present.
 
-  gfx/player/shrink1.png   the same portrait, drawn noticeably smaller and narrower within the same frame, as if seen from further away
-  gfx/player/shrink2.png   the same portrait, smaller again - about half the height of the original, centred in the frame
+--------------------------------------------------------------------------
+INTUITION -- append this block. ATTACH THE LOGIC IMAGE FIRST.
+--------------------------------------------------------------------------
+Using the attached image as the reference, draw the SAME character -- same
+face, same fur, same cap, same jacket, same trousers, same boots, same
+satchel, same build, same age -- in a different pose.
 
-Both are 56x56, and they play as an animation on the naming screen, so the
-figure must stay centred and lose height evenly.
+Pose: caught already moving, weight forward on the front foot, the back heel
+lifting, body turned slightly. One hand loose and open at their side, the
+other holding the satchel strap. They are looking slightly OFF to one side
+and past the viewer, at something not in the frame.
 
-======================================================================
-NOT THE PLAYER
-======================================================================
-
-gfx/intro/red_nidorino_1..3.png are CODEMUSAI, not the trainer - the intro
-face-off is CODEMUSAI against CAREMUSAI and the player is not in it. An
-earlier version of this file asked for a throwing pose at that path; it was
-wrong, and following it would overwrite the intro.
-
-The back view (number 3) is the one that matters most - it is on screen for
-every battle in the game, at 32x32. Favour the silhouette of the cap and the
-satchel over any detail; detail at that size becomes grey mush.
-
-
-
-======================================================================
-BEFORE ANY OF THESE: THE FACE IS LIT
-======================================================================
-
-Craft rule 6: the game is funny in its ordinary moments and serious in three
-or four of them. Corpus employees are cheerful. Scorn is genuinely warm and
-never sneers. CAIRN is right and nothing undercuts him. Nobody in this design
-is a monster, and the player is not a shadow.
-
-Every prompt below therefore ends with the same paragraph, and it is not
-optional:
-
-  The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly
-  up and casts NO shadow across the eyes. The face must be one of the
-  LIGHTEST areas of the whole figure, never the darkest. The expression is
-  open, alert and good-humoured - someone pleased to be here. Not grim, not
-  stern, not brooding, not mysterious, not a silhouette, not noir. Eyes
-  clearly drawn and clearly readable.
-
-A wide flat brim shadows a face by construction, and a generator asked for one
-will put the face in darkness every time unless told not to. The first three
-samples all came back shadowed and one had no face at all. That was a fault in
-the prompt, not in the generator.
-
-Check it after conversion: at 40x56 the face is about six pixels across. If
-those six pixels are black, the character is a silhouette and it is wrong.
-
-
-======================================================================
-THE TITLE FIGURE  -  ask for samples, then convert
-======================================================================
-
-The hand-drawn 40x56 in the ROM is a placeholder and looks it. Replace it.
-
-Ask for THREE variations in one conversation so there is something to choose
-between, then convert the one that reads best:
-
-    python3 tools/mksprite.py <saved>.png engine/gfx/title/player.png 40x56 \\
-        --solid --fill --close
-    make content && make context
-
-mksprite now takes WxH as well as a single number. A daemon slot is square and
-gets one number; the title figure is 40x56 and would be squashed by a square
-crop, so give it the pair.
-
-----------------------------------------------------------------------
-THE PROMPT
-----------------------------------------------------------------------
-
-A standing figure seen from the front, taller than wide, filling the frame from head to foot. They wear a WIDE FLAT-BRIMMED HAT - the brim is the widest thing in the picture, clearly wider than their shoulders, flat and level, not pointed and not a cowboy hat. Below it a LONG COAT that reaches the ground, sleeved, hanging straight, with no legs visible - only the toes of two boots showing at the very bottom. A satchel strap crosses the chest diagonally from one shoulder to the opposite hip. In the hand on one side, held down at their side, is a small hard-edged electronic unit, roughly a cube and slightly wider than tall, with a narrow horizontal vent line across the front, one small round indicator light in a corner, and a port on the side - a machine you would ssh into, a little server. It must not look like it opens: no seam around the middle, no lid, no button, no clasp. The figure reads as a scientist, a magician and a wizard at the same time, and the coat is what does that - it is a lab coat and a robe at once. Facing the viewer, relaxed and unhurried. Draw it as flat illustration with a hard pure black (#000000) outline, 6 to 8 pixels thick, around the whole figure. Inside the outline use exactly four flat tones - pure black, dark grey, light grey, pure white - with hard edges between them, no gradients, no anti-aliasing, no glow, no colour, no texture. Plain pure-white background, nothing behind the figure, no ground shadow. Whole figure visible with a small even margin. The face is FULLY VISIBLE and clearly lit. The hat brim is tilted slightly up and casts NO shadow across the eyes. The face must be one of the LIGHTEST areas of the whole figure, never the darkest. The expression is open, alert and good-humoured - someone pleased to be here. Not grim, not stern, not brooding, not mysterious, not a silhouette, not noir. Eyes clearly drawn and clearly readable.
-
-Then, in the same conversation:
-
-  Now two more of the same figure, same style, same four tones, same white
-  background. One with the brim tilted so a little more of the face shows.
-  One with the coat fuller and the hem wider at the ground.
-
-AND CHECK THE SILHOUETTE FOR HOLES
-
-The outline pass blacks a cell only when the source line covers enough of it.
-At the default 0.34 a cell the line merely grazes stays grey -- fine in the
-middle of a figure, a visible BITE when it happens on the outer edge. The
-shoulder of the first conversion had exactly that: one light pixel in the
-middle of the black shoulder line, and it read as a clip taken out of the coat.
-
---close fixes it, and is the flag to reach for. Lowering --cover also closes
-them, but globally -- it thickens every line in the figure to repair an edge.
---close fills only the gaps, and only where they touch the background, which is
-the only place they show. On this figure it filled 8 and used LESS black than
---cover=0.26 did.
-
-USE --fill, AND KNOW WHY
-
-A standing person is about 0.43 wide-to-tall. The slot is 0.714. Keeping the
-subject's honest proportions therefore fills 57% of the width and throws the
-other 43% away as margin -- and at forty columns that 43% is resolution, not
-whitespace. It is the difference between a readable strap and a grey smudge.
-
-Vanilla's title figure fills 100% of the width, because it was drawn for the
-slot. Ours is not, so --fill maps the subject's box onto the frame and scales
-the axes independently. It makes the figure stockier. That is correct: every
-Game Boy sprite of a person is stockier than a person.
-
-WHAT MAKES A GOOD ONE
-
-The hat brim and the hem are the two shapes that survive the shrink to 40x56.
-Pick the sample where those two are widest and cleanest. Do NOT pick the one
-with the most dramatically flared coat -- a very wide hem (0.93 aspect) gets
-squeezed by --fill instead of stretched, and the flare turns into a grey
-triangle with a person balanced on top of it. Faces do not survive
-- do not choose on the face. If the unit in the hand turns into a grey blob at
-this size that is fine; the strap and the brim are what carry the character.
+Alert and quick. Not wild, not reckless, not scatty -- simply ahead of you.
