@@ -5,6 +5,28 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.90 — 2026-09-06
+
+### The people are drawn as a fable, and the rule has three clauses
+
+- **The cast had drifted anthropomorphic without anyone choosing it** — the first Crystal
+  prompt asked for visible fur and a full brush tail, and everything followed. Four
+  treatments of the same character, generated and compared rather than argued.
+- **The worry was never that they are animals.** Furry and fable are different traditions:
+  in one the species is what the character *is*, in the other it is a **role**. Aesop's fox
+  is a fox because the story needs cunning.
+- **B failed informatively.** Fully human, Crystal became Professor Oak — at 64×96 the face
+  is twelve pixels, a fox head reads there and "sharp-featured and russet-collared" does
+  not. It also loses 1619's three foxes readable as family with zero text.
+- **C is a mask.** Animal head on a human body survived on Crystal because a lab coat hides
+  the join, and failed on a bug catcher in shorts. The Star Fox argument behind it was
+  about *portraits* — full length that character has a tail, fur and paw hands.
+- **D holds:** integrated animality, drawn plainly, head-to-body ratio carrying age. The
+  third clause is the one that nearly broke Scorn — left unstated it defaults to Barks and
+  everyone comes out cute, which 4.4 cannot afford.
+
+---
+
 ## v11.89 — 2026-09-06
 
 ### FORAGER, and the last three pathology words

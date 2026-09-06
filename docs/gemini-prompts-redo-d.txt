@@ -1,0 +1,90 @@
+CRYSTAL AND AL, REDRAWN UNDER THE FABLE RULE (vision 9.4)
+=========================================================
+
+Scorn is done -- gfx/characters/style_d_scorn.jpeg IS the new sprite. These
+five are what remain.
+
+THE RULE, and it is worth reading before each one:
+
+  1. INTEGRATED, never grafted -- paw hands, a tail, a head proportioned to
+     the body. Never an animal head on a human body.
+  2. DRAWN PLAINLY -- flat colour, cel shading, NO fur texture, no gloss, no
+     musculature, no fluff. This is what separates fable from furry.
+  3. HEAD-TO-BODY RATIO CARRIES AGE -- large head for children, SMALL for
+     adults. Left unstated everyone comes out cute.
+
+Generate CRYSTAL first. Then attach her result as the reference for AL, so
+the family resemblance 1619 asks for survives: three foxes a palette apart,
+readable as family with no text.
+
+==========================================================================
+CRYSTAL CLEAR -- the intro portrait.  Save as crystal_speech.jpeg
+==========================================================================
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
+
+Subject: an adult female FOX, a senior research scientist in her SIXTIES,
+drawn in the classic cartoon funny-animal tradition -- animals through and
+through, built from simple confident shapes, the style of Carl Barks or
+Disney's ROBIN HOOD.
+
+SHE IS AN OLDER WOMAN AND SHE IS NOT CUTE. Adult proportions: a head SMALL in
+proportion to her body. Narrow, level, intelligent eyes. Golden-amber fur with
+SILVER at the muzzle and temples. Warm, quick, and a step ahead of you.
+
+She is a fox ALL OVER. The same golden-amber runs from her face to her hands
+and feet. Her hands are simple rounded PAWS. A fox tail, held low and
+unobtrusive, NOT a large showy brush.
+
+DRAWN PLAINLY: no fur texture, no individual hairs, no tufts, no fluff, no
+muscle definition. Flat solid colour, the way a newspaper cartoon animal is
+drawn.
+
+Clothes: a long white lab coat worn open over a purple shirt, dark trousers,
+plain shoes. A small tablet held against her side.
+
+Pose: standing, turned slightly to her right, one hand extended toward the
+viewer in a welcoming gesture. Full body, feet included, TALL frame. Under
+about twenty colours.
+
+==========================================================================
+AL CLEAR -- four sprites.  ATTACH CRYSTAL'S RESULT to every one of them.
+==========================================================================
+Shared opening for all four -- paste it, then one pose block:
+
+    Using the attached image as the family reference, draw a DIFFERENT
+    character in the same style: a young male FOX of about eleven, her
+    GRANDSON. Same drawing tradition, same flat plain rendering, same plain
+    green background.
+
+    He is a fox all over -- russet, a shade darker than hers, no silver.
+    Rounded PAW hands, a fox tail held close, not a large brush. A head
+    slightly LARGER in proportion than hers, because he is a child.
+
+    Clothes: a dark olive-grey short-sleeved shirt, purple-mauve trousers, a
+    brown belt, brown boots. Cocky rather than cruel -- a half smile, chin
+    up, entirely sure of himself.
+
+    DRAWN PLAINLY: no fur texture, no individual hairs, no fluff, no muscle
+    definition. Flat solid colour with simple cel shading.
+
+--- al_speech.jpeg -- TALL frame
+    Standing at ease, turned slightly, one hand on his hip, the other holding
+    a shoulder bag against his side. Weight on one leg. Calm, not mid-action.
+
+--- al_early.jpeg -- square frame
+    Leaning forward, up on the balls of his feet, holding a small grey MACHINE
+    out in one hand as though about to throw it: a cube about the size of his
+    palm with four short feet, a dark inset SCREEN set high on its front face
+    with one small glowing dot, and a seam across the lower half. No buttons.
+    Not a ball, not a crate -- a little computer.
+
+--- al_late.jpeg -- square frame
+    Standing tall and square to the viewer, one arm raised above his head,
+    hand open and EMPTY. Less eager than before and more certain.
+
+--- al_champion.jpeg -- square frame
+    Both feet planted, one arm thrown forward toward the viewer with the hand
+    open, the other bent back at his side. Not jumping. Weight forward,
+    leaning in, brow furrowed.

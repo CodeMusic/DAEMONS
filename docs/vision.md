@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.89**
+**A total conversion — the living design bible, v11.90**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4668,6 +4668,29 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 **The dominant hue is still the type**, so the palette still reads as the chart — *which is what this section actually argued for.* **Colour carries the argument; it just no longer has to do it alone.** The accents buy an eye, a beak, a marking.
 
 ***And the art stays type-agnostic.*** **The body is drawn in neutral greys and the accents in saturated colour**, so one drawing is correct whatever the type is — the ramp stays a parameter rather than becoming 151 hand-coloured pictures. *A red eye on a VECTOR daemon would vanish, so an accent that lands too near the type's hue is shifted away from it.* **The near-black outline rule above is unchanged and is why the ramp ends where it does.**
+
+#### The people are drawn as a fable, and the rule has three clauses
+
+**Settled 2026-09-06, by generating four treatments of the same character and looking at them.** *The cast had drifted anthropomorphic without anyone choosing it* — the first Crystal prompt asked for visible fur and a full brush tail, and everything followed from that.
+
+**The worry was never that the characters are animals. It was that they read as a furry game rather than a fable**, and those are different traditions: *in furry work the species is what the character is; in a fable the species is a **role**.* **Aesop's fox is not a character who happens to be a fox** — he is a fox because the story needs cunning, and the animal *is* the argument. Crystal is a golden fox for that reason. She never needed a muzzle for it to read.
+
+***Four treatments, and what each one proved:***
+
+| | what it was | what it showed |
+|---|---|---|
+| **A** | anthro with fur texture, bare arms, a full brush tail | The problem is not the animal, it is the **rendering** |
+| **B** | fully human, the fable carried by hair, colour and cut | **She became Professor Oak.** At 64×96 the face is twelve pixels — a fox head reads there and *"sharp-featured and russet-collared"* does not. It also loses 1619, which wants three foxes readable as family *at sprite level, zero text* |
+| **C** | animal head, human body, everything else ordinary | **Structurally a mask.** It survived on Crystal because a lab coat hides the join and failed on a bug catcher in shorts. *The Star Fox argument that produced it was about **portraits** — full length, that character has a tail, digitigrade legs, fur and paw hands* |
+| **D** | the funny-animal tradition — Barks, Disney's *Robin Hood*, Redwall | **This one.** Held on a twelve-year-old and on Scorn |
+
+***THE RULE, three clauses:***
+
+1. **The animality is INTEGRATED, never grafted.** Paw or claw hands, a tail, a head proportioned to the body. *Never an animal head on a human body* — C proved that is a mask no colour-matching repairs.
+2. **Drawn PLAINLY.** Flat colour, cel shading, **no fur or scale texture, no gloss, no musculature, no fluff.** *This is the clause that separates fable from furry*, and it is the one A got wrong.
+3. **Head-to-body ratio carries age.** *Large head for children, small for adults.* **Left unstated it defaults to the Barks prior and everyone comes out cute** — which is what nearly broke Scorn, since 4.4 needs him genuinely persuasive and 3.1 holds Brass City in reserve against the day Brazen reads as the game sneering at him.
+
+*Scorn was the tone test rather than the join test, and the tradition's most famous snake is **Sir Hiss**, a sniveling comic sidekick — precisely the failure to avoid.* **He came back composed, level-eyed and warm**, which is 4.4's *pleased with the arrangement* arriving in a sprite.
 
 ### 9.5 The music, re-emitted rather than carried
 
