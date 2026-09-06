@@ -5,6 +5,37 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.92 — 2026-09-06
+
+### Slate's museum, which was a one-line concept and 0 of 9 blocks
+
+- **A natural history museum for manufactured things.** The curators talk about dead
+  hardware the way palaeontologists talk about bones — as ancient life that *evolved* —
+  and nobody ever says these things were made. 3.2 already had Deadstack as a mountain
+  of dead hardware whose fossils are legacy silicon; this is where that gets presented
+  as science.
+- **The three revival items become one family.** `OLD AMBER → OLD CORE`,
+  `HELIX FOSSIL → HELIX CORE`, `DOME FOSSIL → DOME CORE`. **Core memory is literally
+  dead hardware** — ferrite rings threaded by hand on a wire grid — and a **core dump**
+  preserves a process at the moment it stopped, which is precisely what amber does to an
+  insect. *Resurrect a daemon from amber* becomes **restore a process from a dump**, an
+  operation that actually exists. Vanilla had one amber and two unrelated fossils; ours
+  has three preserved images, which is what they always were.
+- **The man with the secret is the room.** Vanilla's crank thinks his amber holds DNA and
+  his colleagues ignore him. Ours: *"This CORE is not empty. There is still something in
+  it. I have said so for eleven years. My colleagues write it down and file it. They are
+  very polite."* That is 4.20's shape — a person recorded rather than heard — and 4.20a is
+  the man who **was** the thing in the box. Nothing points at it.
+- **And the USERBOX is on exhibit**, in one line, in a list of three things:
+  *"And a USERBOX, in the case by the stairs. Donated last year."* v11.86 said the rhyme
+  should land on the exhibits rather than on the object in the player's hand. It does, and
+  the player is wearing one.
+- **The old man worked on one.** *"Though I worked on one of these. It is strange to see
+  it labelled."* Obsolescence pointed at a person rather than at a machine.
+- 18 blocks written, every line inside the 196px budget. **The slice moves 34% → 40%.**
+
+---
+
 ## v11.91 — 2026-09-06
 
 ### The box has no seam, which 8 had already settled
