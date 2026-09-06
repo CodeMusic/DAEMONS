@@ -5,6 +5,30 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.89 — 2026-09-06
+
+### FORAGER, and the last three pathology words
+
+- **`BUG CATCHER` → `FORAGER`.** *Information Foraging Theory* (Pirolli & Card, 1999) is a
+  real named result — people seek information the way animals forage for food, following
+  **information scent** toward richer patches. It pays three times: a bug catcher
+  literally forages, the theory is about cognition rather than insects, and the player
+  meets this class on Route 2 with no map and no knowledge, **foraging**.
+- **The three remaining maniacs.** `#MANIAC → ARCHIVIST` was decided for a reason that
+  applied identically to the others and they were left standing: **a game whose central
+  injustice is a woman recorded as unwell cannot have a trainer class called a maniac.**
+  `BUG MANIAC → APIARIST` (keeps a colony where a FORAGER chases individuals, and bees
+  are what the swarm literature is written about), `RUIN MANIAC → SALVAGER` (salvage is
+  physical *and* data salvage, which is what this world's ruins are), `HEX MANIAC →
+  REVERSER` (*hex* was hexadecimal waiting to be noticed, and reverse engineering reads
+  intent back out of a compiled artifact — LATENT exactly).
+- **REVERSER pays a third time.** It stops a class of young women being marked as occult
+  and strange, which is craft rule 3 applied to the thing 4.20 is about.
+- **Two dialogue lines said the class out loud** — Slate City and the Fame Checker both
+  have Brock's line about hobbyists — and were carried with it.
+
+---
+
 ## v11.88 — 2026-09-05
 
 ### Four tones was the Game Boy's answer, not ours

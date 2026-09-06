@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.88**
+**A total conversion — the living design bible, v11.89**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -297,6 +297,10 @@ Singular gains a character, plural is identical. **Nothing needed rewrapping.**
 | `#DEX` | 26 | literal **INDEX** — 7 chars to 5, so it also gains room |
 | bare `#` | 23 | literal `POKé`. **All 23 are item prefixes split across a line break** — `# BALL`, `# DOLL`, `# FLUTE` — not species, so the trick was safe |
 | `#MANIAC` | 5 | **`ARCHIVIST`, done 2026-08-31.** *Maniac* is a pathology word and craft rule 3 says name the process — a game whose central injustice is a woman recorded as unwell cannot have a trainer class called a maniac. **`ARCHIVIST` pays twice** (1): an archivist keeps **records**, and an **archive** is stored compressed data, which is exactly what a box does to a daemon. It is also precisely right for HOLT, who built the storage and was then inside it (4.20a) |
+| `BUG CATCHER` | 2 | **`FORAGER`, done 2026-09-06.** *Information Foraging Theory* (Pirolli & Card, 1999) is a real named result: people seek information the way animals forage for food, following **information scent** toward richer patches and leaving one when the scent thins. **That is this game's subject stated in the literature.** It pays three times — a bug catcher literally forages, the theory is cognitive rather than merely biological, and *the player meets this class on Route 2 with no map and no knowledge, foraging.* **The name describes them as much as the trainer.** *Held in reserve:* **`SCOUT`**, from Seeley's honeybee democracy — more native to SWARM itself and it would tie to §2.5's `CONSENSUS`, but its theory is about collective decision where FORAGER's is about cognition |
+| `BUG MANIAC` | 1 | **`APIARIST`, done 2026-09-06.** A progression rather than a synonym: a FORAGER chases individuals, an **APIARIST keeps a colony** — and bees are the organism the swarm-intelligence literature is actually written about |
+| `RUIN MANIAC` | 2 | **`SALVAGER`, done 2026-09-06.** Salvage is physical *and* it is **data salvage**, which is what this world's ruins are — Deadstack's fossils are legacy silicon and Slate's museum is dead hardware |
+| `HEX MANIAC` | 1 | **`REVERSER`, done 2026-09-06.** *Hex* was already hexadecimal waiting to be noticed, and **reverse engineering reads intent back out of a compiled artifact** — which is LATENT exactly. It also stops a class of young women being marked as occult and strange, *in a game whose central injustice is a woman recorded as unwell* (4.20). **Craft rule 3 twice over** |
 
 **The real work was grammatical number.** POKéMON was both singular and plural. DAEMON is not. Of the 650:
 
