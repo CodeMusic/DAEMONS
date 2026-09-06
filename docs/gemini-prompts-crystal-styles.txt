@@ -76,8 +76,13 @@ shorts, sandals. Bare arms, bare legs, bare shoulders, and no coat.
 So C's rule cannot be "the body is covered", because this class cannot be.
 The rule is about HOW THE BODY IS DRAWN:
 
-    the animal is the HEAD. The body is flat, undetailed and ordinary --
-    no fur texture, no pelt, no tail, human proportions.
+    the animal is the HEAD. The body is the SAME COLOUR as the head and
+    drawn FLAT -- no fur texture, no pelt, no tail, human proportions.
+
+The colour continues; only the TEXTURE stops. Getting this wrong produces the
+uncanny result we got first time: a fur-coloured head on human-skin-coloured
+arms reads as a MASK on a boy, not as a character. Star Fox does not do that
+-- Fox McCloud's hands are fox-coloured, they are simply drawn flat.
 
 If that holds here it is a style. If it only worked on Crystal it was a
 lucky costume. Save as gfx/characters/style_c_bug.jpeg.
@@ -92,11 +97,17 @@ BEETLE-hunting kid whose HEAD is a mouse -- rounded ears, a short blunt
 muzzle, bright eyes. Everything below the neck is an ORDINARY HUMAN BODY in
 ordinary proportions.
 
-CRITICAL: his bare arms and legs are drawn as FLAT SOLID COLOUR with simple
-cel shading, exactly the way skin is drawn on a human sprite. NO fur
-texture, NO individual hairs, NO tufts, NO pelt markings, NO visible fluff at
-the wrists or ankles. NO TAIL. He is not a furry creature -- he is a boy with
-an animal's head, the way a character in a fable is drawn.
+CRITICAL, AND THE FIRST ATTEMPT GOT THIS WRONG: his bare arms and legs are
+THE SAME TAN-BROWN COLOUR AS HIS FACE. NOT human skin colour. NOT pink. The
+colour of his face continues unbroken down his arms, his hands, his legs and
+his feet, because it is all the same creature.
+
+That colour is laid down FLAT, with simple cel shading and nothing else: NO
+fur texture, NO individual hairs, NO tufts, NO pelt markings, NO fluff at the
+wrists or ankles. NO TAIL. The colour continues and only the texture stops.
+
+He is a boy with an animal's head and an animal's colouring, drawn plainly --
+not a costume, and not a furry creature.
 
 Clothes: a straw sun hat with a blue band, a white sleeveless top, blue
 shorts, sandals, a small blue satchel.
