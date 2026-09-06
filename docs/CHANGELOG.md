@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.88 — 2026-09-05
+
+### Four tones was the Game Boy's answer, not ours
+
+- **9.4 amended: type hue dominant, with a few accents.** Index 0 transparent, 1–5 the
+  type ramp, 6–10 up to five accents at their own colour. The dominant hue is still the
+  type, so the palette still reads as the chart — which is what 9.4 argued for. Colour
+  carries the argument; it no longer has to do it alone.
+- **The build showed the cost.** `gbasprite.py` touched only the 33 species we had drawn
+  and left the other 118 as vanilla art at twelve colours — so pointing the intro at one
+  of *ours* made it **poorer**, a four-tone bird beside a full-colour professor. Two art
+  systems side by side, which nobody designed.
+- **This one could not wait on 8.6.** The vanilla sprites are Nintendo's and every one of
+  the 151 has to become ours; the redraw is the first instalment of that answer, so the
+  answer had to exist first.
+- **The art stays type-agnostic** — body in neutral greys, accents saturated — so one
+  drawing is right whatever the type is. An accent landing too near the type's own hue
+  gets shifted off it, because a red eye on a VECTOR daemon is no eye at all.
+
+---
+
 ## v11.87 — 2026-09-05
 
 ### Grey was a medium; it would now be a filter

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.87**
+**A total conversion — the living design bible, v11.88**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4646,6 +4646,24 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 #### The outline keeps its own colour
 
 **Our four tones map to four palette entries:** *paper becomes index 0, which Gen 3 treats as transparent,* **and the three inks become a light, a mid and a dark of the type's hue.** ***Level 0 stays nearly black:*** **an outline that takes the hue stops reading as an outline**, which is the same lesson the 16×16 player sprite taught three times over.
+
+#### Amended 2026-09-05: type hue dominant, with a few accents
+
+**Four tones was what the Game Boy had, not what the design chose**, and the port carried the constraint across as though it were a decision. Gen 3 gives a sprite sixteen colours.
+
+**The build made the cost visible.** `gbasprite.py` touched only the 33 species we had drawn; the other 118 still carry vanilla art at twelve colours. So the intro, which released a vanilla creature, got *poorer* when it was pointed at one of ours — **a four-tone bird beside a full-colour professor.** Nobody designed that; it is where the port stopped. And it resolves itself sooner than 8.6 does, because the vanilla sprites are Nintendo's and all 151 have to become ours regardless.
+
+***The palette is now:***
+
+| index | what |
+|---|---|
+| 0 | transparent |
+| 1–5 | the **type ramp** — highlight, light, mid, dark, near-black |
+| 6–10 | up to five **accents**, keeping their own colour |
+
+**The dominant hue is still the type**, so the palette still reads as the chart — *which is what this section actually argued for.* **Colour carries the argument; it just no longer has to do it alone.** The accents buy an eye, a beak, a marking.
+
+***And the art stays type-agnostic.*** **The body is drawn in neutral greys and the accents in saturated colour**, so one drawing is correct whatever the type is — the ramp stays a parameter rather than becoming 151 hand-coloured pictures. *A red eye on a VECTOR daemon would vanish, so an accent that lands too near the type's hue is shifted away from it.* **The near-black outline rule above is unchanged and is why the ramp ends where it does.**
 
 ### 9.5 The music, re-emitted rather than carried
 

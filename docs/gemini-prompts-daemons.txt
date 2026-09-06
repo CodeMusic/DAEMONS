@@ -10,13 +10,27 @@ the vanilla creature it replaced.
 
 So each one is REDRAWN at the larger size rather than resampled.
 
+THE PALETTE, AND WHY IT IS SHAPED LIKE THIS. Gen 3 gives a sprite sixteen
+colours where the Game Boy gave four, and 9.4 chose four because four was
+what existed -- not because four was right. The scheme now is TYPE HUE
+DOMINANT WITH A FEW ACCENTS:
+
+    index 0        transparent
+    indices 1-5    the TYPE ramp: highlight, light, mid, dark, near-black
+    indices 6-10   up to five ACCENTS, keeping their own colour
+
+The dominant hue is still the type, so the palette still reads as the chart
+-- which is 9.4's actual argument, that colour carries the argument rather
+than decorating it. The accents buy an eye, a beak, a marking.
+
 TWO RULES THAT ARE NOT NEGOTIABLE.
 
-  * FOUR TONES, still. 9.4 maps them to palette entries -- index 0 is
-    transparent, and the three inks become a light, a mid and a dark of the
-    TYPE's hue, with the outline held at near-black so it does not take the
-    hue and stop reading as an outline. Colour is how the player reads the
-    chart. A sixteen-colour sprite breaks that.
+  * THE BODY IS GREY, THE ACCENTS ARE SATURATED. gbasprite.py replaces every
+    grey with the type's hue at that value, and leaves saturated pixels
+    alone. So the body must be neutral greyscale with NO colour cast, and an
+    accent must be strongly, obviously coloured -- anything in between reads
+    as neither and comes out wrong. This keeps ONE drawing correct for any
+    type, which is the whole point of the ramp being a parameter.
   * THE SILHOUETTE IS THE DESIGN. Attach the reference and keep the shape.
     These are not concept art; they are existing creatures being redrawn at a
     size that can hold more detail.
@@ -33,9 +47,13 @@ It is a lean, swept-back bird built like a dart or an arrow -- narrow body,
 long thin wings swept back hard, a sharp pointed beak, streamlined, caught
 mid-flight moving to the viewer's left. Nothing about it is soft or round.
 
-Draw it in FOUR TONES ONLY: a flat background, plus a light, a mid and a
-near-black. Greyscale. No gradients, no anti-aliasing, no extra colours.
-Hard pixel edges. The near-black is the outline and the darkest details.
+Draw the BODY in NEUTRAL GREYSCALE ONLY -- about five values from a near-
+white highlight down to a near-black outline. No colour cast anywhere in the
+body, no gradients, no anti-aliasing, hard pixel edges. Flat background.
+
+Then give it AT MOST THREE small SATURATED ACCENTS: a coloured eye, the beak,
+and one marking. These must be strongly coloured and unmistakably not grey.
+Everything else stays neutral.
 
 Make it FILL the square frame -- it should be substantially larger relative
 to the canvas than the reference is, using the extra room for feather
@@ -53,9 +71,13 @@ trainer would see their own creature: a compact vertical shape, pointed at
 the top, wings folded back along the body, tail below. It is flying away
 from the viewer.
 
-Draw it in FOUR TONES ONLY: a flat background, plus a light, a mid and a
-near-black. Greyscale. No gradients, no anti-aliasing, no extra colours.
-Hard pixel edges.
+Draw the BODY in NEUTRAL GREYSCALE ONLY -- about five values from a near-
+white highlight down to a near-black outline. No colour cast anywhere in the
+body, no gradients, no anti-aliasing, hard pixel edges. Flat background.
+
+Then give it AT MOST TWO small SATURATED ACCENTS, matching the front view --
+a marking on the wings, say. Strongly coloured, unmistakably not grey. From
+behind there is no eye and no beak, so the back carries fewer.
 
 Make it FILL the square frame, using the extra room for feather separation
 and structure along the back and wings. Same creature, same silhouette,
