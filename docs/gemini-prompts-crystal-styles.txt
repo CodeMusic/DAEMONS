@@ -65,3 +65,42 @@ She reads as a scientist who happens to be a fox, not as a fox creature.
 Pose: standing, turned slightly to her right, one hand extended toward the
 viewer in a welcoming gesture, the other holding a notebook against her
 side. Full body, feet included, in a TALL frame. Under about twenty colours.
+
+==========================================================================
+THE BUG CATCHER TEST -- does C survive a character with nothing to hide behind
+==========================================================================
+Crystal is the easy case: a lab coat covers everything, so of course C works.
+The vanilla BUG CATCHER is the hard one -- straw hat, white tank top, blue
+shorts, sandals. Bare arms, bare legs, bare shoulders, and no coat.
+
+So C's rule cannot be "the body is covered", because this class cannot be.
+The rule is about HOW THE BODY IS DRAWN:
+
+    the animal is the HEAD. The body is flat, undetailed and ordinary --
+    no fur texture, no pelt, no tail, human proportions.
+
+If that holds here it is a style. If it only worked on Crystal it was a
+lucky costume. Save as gfx/characters/style_c_bug.jpeg.
+
+--------------------------------------------------------------------------
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat
+green background, no scenery, no shadow under the feet.
+
+Subject: a young BUG CATCHER, a boy of about twelve. He is an anthropomorphic
+BEETLE-hunting kid whose HEAD is a mouse -- rounded ears, a short blunt
+muzzle, bright eyes. Everything below the neck is an ORDINARY HUMAN BODY in
+ordinary proportions.
+
+CRITICAL: his bare arms and legs are drawn as FLAT SOLID COLOUR with simple
+cel shading, exactly the way skin is drawn on a human sprite. NO fur
+texture, NO individual hairs, NO tufts, NO pelt markings, NO visible fluff at
+the wrists or ankles. NO TAIL. He is not a furry creature -- he is a boy with
+an animal's head, the way a character in a fable is drawn.
+
+Clothes: a straw sun hat with a blue band, a white sleeveless top, blue
+shorts, sandals, a small blue satchel.
+
+Pose: braced with feet apart, one arm raised high holding a butterfly net
+above his head, leaning slightly forward, grinning. Full body, feet included,
+in a square frame. Under about fifteen colours.
