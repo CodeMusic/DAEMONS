@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.86**
+**A total conversion — the living design bible, v11.87**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4360,6 +4360,23 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 - **The humors survive greyscale anyway.** Value carries them: melancholic dark, phlegmatic pale, sanguine and choleric mid. The colour at Umbra is a confirmation of something the player has already been reading in tone, which is the correct order.
 - **This serves the sprite work rather than fighting it** (8.3, 8.5). Four shades with no hue to lean on forces value contrast to be right, and value contrast is exactly what a voxel renderer needs to read cleanly.
 - **The recomp path is a remix, not the canon.** If a 3D or voxel presentation colours everything, that is a different presentation of the same ROM and it is welcome. The canonical build stays grey.
+
+#### Open, deliberately: grey was a medium and would now be a filter
+
+**Reopened 2026-09-05, and left open on purpose.** 9.4 already made one exception — a daemon is coloured by its type, because *colour carrying the argument* is the only form of colour invariant 5 was ever protecting. The character art then followed: Crystal, Scorn and Al are in colour, and 1619's *three foxes, a palette apart* is hue doing real work. So the build and this section have disagreed for three days.
+
+**The disagreement is not an oversight, and porting 8.6 literally would not fix it.** On a DMG grey was **the medium** — nothing was *in* greyscale, that was simply what the world looked like, and the player registered no absence. That invisibility is what argument 1 above runs on: *told colour, shown grey, they supply the rest.* **Desaturate a machine that can do colour and grey stops being invisible.** It becomes art direction the player notices, and once noticed they attribute it to the game being stylised rather than to their own perception filling a gap. The device does not survive the port; only its appearance does.
+
+**There is an inversion available, and the GBA can do something the Game Boy could not.** On a DMG, *"grey means something was lost"* was unsayable — there was no contrast to say it with. In colour there is:
+
+- **Halftone as the one grey town in a coloured world.** *Dots that only look like grey* stops being a description of the hardware and becomes the town's visible condition. The load-bearing wall gets **stronger**, not weaker.
+- **The Index rendered grey inside a colour world.** 0.2 says it is a reproduction that loses the original; now the player can see both and find the loss.
+
+**Under the inversion, colour is the default and grey is what the game spends.**
+
+***And it costs three things, none of them small.*** **Umbra's colour moment** depends on forty hours without any, and in a colour world that beat is simply gone — *richer or more saturated colour there is a candidate replacement and is not the same instrument.* **PERSPECTIVE's flash** goes the same way. And **argument 1 dies outright** rather than transferring.
+
+**Held open because it gets easier with more game and harder in the abstract.** Nothing is blocked on it: the character art works as built, the boxes work, the slice is written. Section 8's own warning applies — resolve the aesthetics, ship no towns. **Revisit when Umbra is a room you can stand in.**
 
 ---
 

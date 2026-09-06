@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.87 — 2026-09-05
+
+### Grey was a medium; it would now be a filter
+
+- **8.6 and the build have disagreed for three days, and it is not an oversight.** 9.4
+  already excepted the daemons — colour carries the argument — and the character art
+  followed. The section now says so, and says why porting 8.6 literally would not fix
+  it: on a DMG grey was *the medium* and the player registered no absence, which is
+  exactly what argument 1 runs on. Desaturating a machine that can do colour makes grey
+  **conspicuous**, and a player who notices attributes it to style rather than to their
+  own perception filling a gap.
+- **The inversion is recorded and not taken.** Colour as default, grey as what the game
+  spends: Halftone becomes the one grey town in a coloured world and the Index shows its
+  own loss — both *stronger* than the current reading. It costs Umbra's colour moment,
+  PERSPECTIVE's flash, and argument 1 outright. **Left open on purpose**, to be settled
+  when Umbra is a room you can stand in rather than in the abstract.
+- **The last three balls in the opening.** `src/oak_speech.c` uses two different sprites
+  and `pokeball.c` a third: `CreatePokeballSpriteToReleaseMon` takes the interface
+  sheet, `CreateTradePokeballSprite` takes a separate 12-frame trade graphic, and
+  `gOpenPokeballGfx` is the opened state. All three are boxes now.
+- **A ball looks the same from every angle and a box does not**, which made the trade
+  spin honest rather than harder: the front face narrows to an edge, the back comes
+  round with no screen, and the height never changes.
+
+---
+
 ## v11.86 — 2026-09-05
 
 ### The box got a screen, and the ladder started working

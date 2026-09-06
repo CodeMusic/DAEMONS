@@ -34,6 +34,7 @@ gbagfx builds their .gbapal from the PNG itself.
           graphics/interface/ball/{poke,great,ultra,master,safari}.png    16x48
           graphics/object_events/pics/misc/item_ball.png                  16x16
           graphics/trade/pokeball.png                                     16x192
+          graphics/interface/ball_open.png                                16x16
           graphics/pokedex/caught_marker.png                              8x8
 """
 import os, sys, math
@@ -115,6 +116,25 @@ def throw(tier):
     box(g[16:32], 4, 3, 11, 12, pips=0, seam=7)          # side: no glass
     return g
 
+def opened():
+    """16x16, graphics/interface/ball_open.png -- the box OPEN.
+
+    pokeball.c decompresses this straight into VRAM behind whatever ball
+    palette is already loaded, so its indices have to be ours: it inherits
+    interface/ball/poke.gbapal, which gbagfx builds from the PNG this tool
+    writes. Same table, or it renders as confetti.
+
+    The silhouette is unchanged and the SEAM is what opens -- the light comes
+    from the gap, not the glass, which is the rule the 8x8 throw frames
+    forced. The screen is lit here because this is the frame where something
+    starts running."""
+    g = blank(16, 16)
+    box(g, 3, 1, 12, 14, pips=1, sw=6, sh=3, seam=None)
+    g[8:10, 4:12] = PIP                                # the gap, spilling
+    g[10, 4:12] = LIT
+    feet(g, 3, 12, 15)
+    return g
+
 def spin():
     """16x192: twelve 16x16 frames, the bouncing box in the intro.
 
@@ -176,6 +196,7 @@ def main():
         jobs.append(("graphics/interface/ball/%s.png" % name, throw(tier), None))
     jobs.append(("graphics/object_events/pics/misc/item_ball.png", overworld(), None))
     jobs.append(("graphics/trade/pokeball.png", spin(), None))
+    jobs.append(("graphics/interface/ball_open.png", opened(), None))
 
     show(icon(1), "USERBOX 24x24 bag icon")
     show(icon(4), "ROOTBOX 24x24 bag icon")
