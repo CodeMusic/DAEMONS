@@ -33,6 +33,8 @@ stands on two of them.
 import os, sys
 import numpy as np
 from PIL import Image
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from gridsample import deringe
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
@@ -75,11 +77,15 @@ def silhouette(a):
     return ~((g - r > 12) & (g - b > 4))
 
 def cut(job):
-    a = np.asarray(Image.open(os.path.join(ROOT, job["src"])).convert("RGB")).astype(int)
+    # Sampled on the grid it was drawn on: these are pixel drawings upscaled
+    # to 1024 and exported as JPEG, so the ringing sits at block edges and
+    # never has to be read. Matters less here than for the daemons -- a 2.7x
+    # reduction averages most of it away -- but one pipeline, one behaviour.
+    a = deringe(np.asarray(Image.open(os.path.join(ROOT, job["src"])).convert("RGB")).astype(int))
     ink = silhouette(a)
     ys, xs = np.where(ink)
     box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
-    im = Image.open(os.path.join(ROOT, job["src"])).convert("RGB").crop(box)
+    im = Image.fromarray(a.astype(np.uint8)).crop(box)
     mask = Image.fromarray((ink[box[1]:box[3], box[0]:box[2]] * 255).astype(np.uint8))
 
     W, H = job["size"]
