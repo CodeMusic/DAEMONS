@@ -199,7 +199,7 @@ def main():
         jobs.append(("graphics/items/icons/%s_ball.png" % name, icon(tier),
                      "graphics/items/icon_palettes/%s_ball.pal" % name))
         jobs.append(("graphics/interface/ball/%s.png" % name, throw(tier), None))
-    jobs.append(("graphics/object_events/pics/misc/item_ball.png", overworld(), None))
+    # NOT this one -- see the remap below.
     jobs.append(("graphics/trade/pokeball.png", spin(), None))
     jobs.append(("graphics/interface/ball_open.png", opened(), None))
 
@@ -219,6 +219,22 @@ def main():
         if WRITE:
             png(None, g).save(os.path.join(GBA, rel))
             if pal: jasc(os.path.join(GBA, pal), PAL)
+
+    # THE OVERWORLD BOX SHARES A PALETTE WITH EVERY NPC. Its graphics_info
+    # gives paletteTag = OBJ_EVENT_PAL_TAG_NPC_WHITE, so the colours come from
+    # object_events/palettes/npc_white.gbapal and our indices 1..5 landed on
+    # skin tones -- the lab tables came out tan boxes with rust lids. That
+    # palette does carry greys further along, so the box is remapped into
+    # them: 15 black, 13 dark, 12 mid, 11 light, 14 white.
+    ow = os.path.join(GBA, "graphics/object_events/pics/misc/item_ball.png")
+    src_ow = Image.open(ow)
+    NPC = {KEY: 0, INK: 15, DARK: 13, FACE: 12, LIT: 11, GLASS: 15, PIP: 14}
+    g = np.vectorize(lambda v: NPC.get(v, 12))(overworld()).astype(np.uint8)
+    print("  %-52s 16x16 (npc_white, indices only)"
+          % "graphics/object_events/pics/misc/item_ball.png")
+    if WRITE:
+        im = Image.new("P", (16, 16)); im.putdata(g.flatten().tolist())
+        im.putpalette(src_ow.getpalette()); im.save(ow)
 
     # the caught marker keeps the Index's OWN palette -- indices only
     mp = os.path.join(GBA, "graphics/pokedex/caught_marker.png")
