@@ -5,6 +5,37 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.95 — 2026-09-06
+
+### The school teaches the chart, and does not understand it
+
+- **The last of the four unwritten slice rooms.** 15 blocks, 0 ours → 9.
+  **The slice reaches 50%.**
+- **A school that explained the chart well would say the thesis.** 2.3 calls
+  `LOGIC resisted by CONTEXT ×½` *"The thesis. Free."* — so a teacher who explains *why*
+  framing resists rules hands the player the argument in the second town. **So the school
+  teaches the table flat, with the reasons omitted.** That is what schools do with a
+  table; it characterises the institution the way the minutes and the requisition do; and
+  it *is* Callow, where nothing has been tested.
+- **Vanilla gave us the first line for free.** *"I'm trying to memorize all my notes"*
+  becomes *"I have to have the table by Friday. I do not have to understand it. I have to
+  have it."* She names the distinction the whole game runs on and does not hear herself.
+- **The notebook's four pages are the chart.** Fifteen kinds; some land twice as hard;
+  some **cannot reach at all** — *"CONTENT cannot touch LATENT. Neither can LOGIC. Nothing
+  either one does will register."* And then page four: *"The eight benchmarks test whether
+  you know the table… That is the whole of the path."*
+- **"Learn the table. It does not change."** True — 8.4 makes the chart byte-identical
+  across editions. And quietly not the whole truth, because 4058 has each edition's player
+  building a **different intuition** about what is strong from the encounter tables.
+- **The blackboard keeps the status conditions**, reworded. Five slots, and a player
+  actually needs to know what a burn does.
+- **`ELITE FOUR → REVIEW BOARD`.** 8.6 has called them that since it was written — four
+  ancient people insisting emotions are coloured fluids, in the one room with colour. The
+  notebook had to name them, so `port_vocab` now carries the phrase and it propagated to
+  every League room and the quest log.
+
+---
+
 ## v11.94 — 2026-09-06
 
 ### Callow City, where the first gym you reach is the last one you open

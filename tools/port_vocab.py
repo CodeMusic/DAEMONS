@@ -261,6 +261,11 @@ PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   # ISLANDS only becomes ISLES behind this one name -- every
                   # other island in the game keeps the word it had.
                   [("SEAFOAM ISLANDS", "GLAUCOUS ISLES")] +
+                  # 8.6 has already called them the REVIEW BOARD -- four
+                  # ancient people insisting emotions are coloured fluids, in
+                  # the one room with colour in it. The trainer class agreed
+                  # before the dialogue did.
+                  [("ELITE FOUR", "REVIEW BOARD")] +
                   ENGAGE),
                  key=lambda kv: -len(kv[0]))
 PHRASE_RE = re.compile('|'.join(re.escape(k) for k, _ in PHRASES)) if PHRASES else None
