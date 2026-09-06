@@ -61,7 +61,7 @@ JOBS = {
                         dst="engineGba/graphics/oak_speech/rival/pic.png",
                         pal="engineGba/graphics/oak_speech/rival/pal.pal",
                         size=(64, 96), colours=25, base=97, palsize=32),
-    "scorn":       dict(src="gfx/characters/scorn.jpeg",
+    "scorn":       dict(src="gfx/characters/style_d_scorn.jpeg",
                         dst="engineGba/graphics/trainers/front_pics/leader_giovanni_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_giovanni.pal",
                         size=(64, 64), colours=15, base=1, palsize=16),
