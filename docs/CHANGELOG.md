@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.93 — 2026-09-06
+
+### Slate City, and two idioms `catch → bind` had broken
+
+- **Slate City written**, 26 blocks, 1 ours → 14. **The slice moves 40% → 44%.**
+- **The signs carry 3.1's own reading of the name.** `SLATE CITY / A Surface That Takes A
+  Mark` — a slate is a writing surface, which is Benchmark 1's Representation lesson
+  sitting inside the town name. And `MUSEUM OF SCIENCE → MUSEUM OF RECORD`, which is 0.2's
+  reproduction throughline without saying it.
+- **CAIRN's gym sign says what a cairn is for:** *He Stacks Stones So The Next One Finds
+  The Way.* ROCK is LEGACY, and that is what a legacy is.
+- **The DREAM EATER tutor stopped being about a dream.** *"I dreamt something was reading
+  me while I slept. It took what it found."* Then, once it is handed over: **"Someone else
+  can hold it."**
+- **`catch → bind` had broken two idioms and nobody had looked.** 1.1 renamed the capture
+  verb; the substitution does not know the difference between capturing and *catching up*.
+  `"we can bind up later"` and `"grass bound up in my spokes"` were both in the ROM. Fixed,
+  and `port_vocab.py` now holds a list of phrases where *catch* is not the capture verb and
+  substitutes them to themselves before the word map runs.
+- **The item rename propagated itself.** `port_vocab` learned `OLD CORE` / `HELIX CORE` /
+  `DOME CORE` from `items.json` and found three more places they are spelled out — the
+  fossil-choice UI in `src/strings.c`, which the museum work had not touched.
+
+---
+
 ## v11.92 — 2026-09-06
 
 ### Slate's museum, which was a one-line concept and 0 of 9 blocks

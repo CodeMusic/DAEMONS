@@ -107,6 +107,15 @@ NAMES = {k: v for k, v in NAMES.items()
          if k.isupper() and len(k) > 3 and k not in ("NONE", "????????")}
 
 # ------------------------------------------------------ vocabulary, from GB
+# Phrases where "catch" is not the capture verb. Substituted to themselves
+# BEFORE the word map runs, so the word map never sees the "catch" inside.
+IDIOM_HOLD = ("catch up", "Catch up", "caught up", "Caught up",
+              "catch on", "caught on", "catch my breath", "caught my breath",
+              "catch a cold", "caught a cold", "catch fire", "caught fire",
+              "catch sight", "caught sight", "catching up")
+
+IDIOM_RE = re.compile("|".join(re.escape(x) for x in IDIOM_HOLD))
+
 VOCAB = {
     "POKéDEX": "INDEX", "POKéDEXES": "INDEXES",
     "TRAINER": "USER", "TRAINERS": "USERS", "trainer": "USER", "trainers": "USERS",
@@ -114,6 +123,10 @@ VOCAB = {
     "BADGE": "MARK", "BADGES": "MARKS", "badge": "MARK", "badges": "MARKS",
     "catch": "bind", "catches": "binds", "catching": "binding", "caught": "bound",
     "Catch": "Bind", "Caught": "Bound",
+    # ...but CATCH IS ALSO AN IDIOM, and 1.1 only renamed the capture verb.
+    # "catch up later" became "bind up later" and "grass caught up in my
+    # spokes" became "grass bound up in my spokes" -- neither is English.
+    # HOLD is applied first and wins, so the idioms survive the substitution.
     "fainted": "HALTED", "faint": "HALT", "faints": "HALTS",
     "Gramps": "Gran", "BILL": "HOLT", "BILL's": "HOLT's",
     # 5.1: the leader says "I'm CAIRN" in our gym dialogue and the trainer
@@ -268,6 +281,10 @@ def convert(body):
     def hold(mm):
         kept.append(mm.group(0)); return '\x03'
     body = KEEP_RE.sub(hold, body)
+    idioms = []
+    def hold_idiom(mm):
+        idioms.append(mm.group(0)); return '\x04'
+    body = IDIOM_RE.sub(hold_idiom, body)
     if PHRASE_RE:
         body = PHRASE_RE.sub(lambda mm: PHRASE_MAP[mm.group(0)], body)
     stash = []
@@ -296,6 +313,8 @@ def convert(body):
     out.append(WORD.sub(one, body[last:]))
     it = iter(stash)
     res = re.sub('\x01', lambda _: next(it), ''.join(out))
+    ii = iter(idioms)
+    res = re.sub('\x04', lambda _: next(ii), res)
     ik = iter(kept)
     return re.sub('\x03', lambda _: next(ik), res)
 
