@@ -81,6 +81,14 @@ JOBS = {
                         dst="engineGba/graphics/oak_speech/leaf/pic.png",
                         pal="engineGba/graphics/oak_speech/leaf/pal.pal",
                         size=(64, 96), colours=31, base=65, palsize=32),
+    # HEARSAY's portraits are 64x64 full-body figures with their own palettes,
+    # the same shape as a trainer front pic. Crystal needs no new art: the
+    # intro portrait fits a square frame, flipped to match how she stands
+    # there.
+    "crystal_fame": dict(src="gfx/characters/crystal_speech.jpeg",
+                        dst="engineGba/graphics/fame_checker/prof_oak.png",
+                        pal=None, size=(64, 64), colours=15, base=1, palsize=16,
+                        flip=True),
     "cairn":       dict(src="gfx/characters/cairn.jpeg",
                         dst="engineGba/graphics/trainers/front_pics/leader_brock_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_brock.pal",

@@ -1,0 +1,92 @@
+HOLT and VERA — the HEARSAY portraits
+=====================================
+
+64x64 full-body figures, the same shape as a trainer front pic: the whole
+person, filling the height of a square frame, on flat green. Crystal's is
+already cut from her intro art and needs nothing.
+
+Save as gfx/characters/holt.jpeg and vera.jpeg. tools/gbachar.py does the
+reduction -- no sizes in the prompt.
+
+THE FABLE RULE, vision 9.4, applies as it does to the rest of the cast:
+
+  1. INTEGRATED, never grafted -- paw hands, a tail, a head proportioned to
+     the body. Never an animal head on a human body.
+  2. DRAWN PLAINLY -- flat colour, cel shading, NO fur texture, no gloss, no
+     musculature. This is what separates fable from furry.
+  3. HEAD-TO-BODY RATIO CARRIES AGE. Left unstated everyone comes out cute.
+
+==========================================================================
+HOLT -- an otter, and the name chose that before anyone asked
+==========================================================================
+4.20a: a holt is a den, one letter from HOLD, which is the storage verb. And
+a holt is specifically an OTTER's den -- so the species was in the name from
+the start. An otter is at home in two elements, which is the man who held two
+perspectives in one address and could not be resolved back out.
+
+He built the box system. Everything the player ever stores is inside
+something he made, and he is the only person in the world who has been the
+thing in the box. He does not brood about it. He is cheerful, precise, and
+slightly too pleased to have a visitor.
+
+--------------------------------------------------------------------------
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
+background, no scenery, no shadow under the feet.
+
+Subject: an adult male OTTER, an engineer in his thirties, drawn in the
+classic cartoon funny-animal tradition -- animals through and through, built
+from simple confident shapes, the style of Carl Barks or Disney's ROBIN HOOD.
+
+Adult proportions: a head of ordinary size relative to his body, not large.
+Warm dark brown, with a paler throat and muzzle. A blunt friendly face,
+small round ears set low, bright attentive eyes. Simple rounded PAW hands. A
+thick flat otter tail.
+
+He is cheerful and slightly rumpled -- a man who has been working alone for
+a long time and is genuinely glad someone came. Not sad, not haunted.
+
+DRAWN PLAINLY. No fur texture, no individual hairs, no tufts, no gloss, no
+muscle definition. Flat solid colour with simple cel shading.
+
+Clothes: a practical dark jumpsuit with the sleeves pushed up, a many-pocketed
+utility belt, soft indoor shoes.
+
+Pose: standing, weight on one leg, one hand raised in a small greeting, the
+other holding a coil of cable against his hip. Full body, feet included, in a
+SQUARE frame. Under about fifteen colours.
+
+==========================================================================
+VERA CLEAR -- a fox, and the third of the three
+==========================================================================
+2569: "Gran reads them with an instrument. I just look." She is CRYSTAL's
+granddaughter and AL's sister, and her whole character is unmediated
+looking -- she can tell how a daemon feels about you by watching it.
+
+ATTACH gfx/characters/crystal_speech.jpeg AS THE FAMILY REFERENCE. 1619 wants
+three foxes a palette apart, readable as family with no text: Crystal is
+light-to-mid and silvered, AL is russet and between, and VERA is the one who
+has not weathered yet.
+
+--------------------------------------------------------------------------
+Using the attached image as the family reference, draw a DIFFERENT character
+in the same style and tradition: a young female FOX of about eighteen, her
+GRANDDAUGHTER. Same flat plain rendering, same plain green background.
+
+She is a fox all over -- warm gold, lighter than the reference, no silver.
+Rounded PAW hands, a fox tail held close rather than a large brush. An adult
+head-to-body ratio, not a child's. The same ear and muzzle geometry as the
+reference, because they are family.
+
+Calm, unhurried, and looking directly at the viewer -- she is the one who
+watches things properly. Not shy, not perky.
+
+DRAWN PLAINLY. No fur texture, no individual hairs, no fluff, no muscle
+definition. Flat solid colour with simple cel shading.
+
+Clothes: a plain long apron over a simple shirt, sleeves rolled, comfortable
+shoes. Working clothes, well kept.
+
+Pose: standing at ease, hands loosely together in front of her, head slightly
+tilted as though she has been looking at something for a while. Full body,
+feet included, in a SQUARE frame. Under about fifteen colours.
