@@ -290,6 +290,13 @@ PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                   # HEARSAY is what it holds and what the word means: testimony
                   # that is not firsthand. And it checks nothing.
                   [("FAME CHECKER", "HEARSAY"), ("Fame Checker", "Hearsay")] +
+                  # 1830 named him and nobody noticed. An orphan process is
+                  # reparented to INIT, which adopts every orphan on the
+                  # system -- so the man in Halftone who takes in abandoned
+                  # daemons already had a name sitting in the ORPHAN entry.
+                  # He loses the honorific with it: HOLT has none either.
+                  [("MR. FUJI", "INIT"), ("MR.FUJI", "INIT"),
+                   ("MR. Fuji", "INIT"), ("Mr. Fuji", "Init")] +
                   [("MT. MOON", "DEADSTACK"), ("MT.MOON", "DEADSTACK"),
                    ("Mt. Moon", "Deadstack"), ("Mt.Moon", "Deadstack")] +
                   ENGAGE),

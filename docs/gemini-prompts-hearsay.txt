@@ -90,3 +90,61 @@ shoes. Working clothes, well kept.
 Pose: standing at ease, hands loosely together in front of her, head slightly
 tilted as though she has been looking at something for a while. Full body,
 feet included, in a SQUARE frame. Under about fifteen colours.
+
+==========================================================================
+INIT -- the man everything orphaned is reparented to
+==========================================================================
+MR. FUJI was renamed 2026-09-06, and 1830 had already named him:
+
+    An orphan process is one whose parent has exited and which gets
+    reparented to INIT -- which is exactly how a daemon is made.
+
+In Unix, init is PID 1: the first process, the one that never exits, and the
+one every orphan on the system is handed to. The man in Halftone who takes in
+abandoned daemons IS init. He loses the honorific with the name, the way HOLT
+did -- nobody in this world is a MR.
+
+He is old. He lives in the town about dots that only look like grey, and
+ORPHAN is in his tower (1814-1850) -- a daemon whose Index record is blank
+because there is no parent entry to point at. He is the warm thing in the
+coldest place in the game.
+
+THE SPECIES IS AN OLD DOG, and it is the plainest reading in the cast. A dog
+takes in strays; that is what everyone already knows about dogs. Where CAIRN
+carries his record on his back and HOLT is at home in two elements, INIT is
+simply the one who stays. init never exits.
+
+Drawn under the fable rule, vision 9.4: integrated not grafted, drawn plainly
+with no fur texture, and HEAD-TO-BODY RATIO CARRYING AGE -- he is the oldest
+person in the cast, so a SMALL head on a settled body.
+
+Save as gfx/characters/init.jpeg.
+
+--------------------------------------------------------------------------
+Full-body character in the style of a Game Boy Advance RPG sprite. Flat cel
+shading, thick dark outline, no gradients, no anti-aliasing. Plain flat green
+background, no scenery, no shadow under the feet.
+
+Subject: a very old male DOG, a caretaker in his seventies, drawn in the
+classic cartoon funny-animal tradition -- animals through and through, built
+from simple confident shapes, the style of Carl Barks or Disney's ROBIN HOOD.
+
+He is a plain old working dog, not a breed anybody would name. Warm mid-brown
+going grey at the muzzle and brows. Long soft ears hanging down, a broad
+blunt face, heavy-lidded kind eyes. Simple rounded PAW hands. A low tail,
+hanging, not wagging.
+
+ADULT PROPORTIONS, AND OLD: a SMALL head in proportion to a settled, slightly
+stooped body. He is not frail and he is not cuddly. He is patient, and he has
+been doing this a long time.
+
+DRAWN PLAINLY. No fur texture, no individual hairs, no tufts, no gloss, no
+muscle definition. Flat solid colour with simple cel shading.
+
+Clothes: a plain long robe or smock in a muted colour, worn soft, with a
+simple cord at the waist. Ordinary sandals. Nothing ceremonial and nothing
+priestly -- he is a caretaker, not a monk.
+
+Pose: standing still and square, weight even, both hands resting quietly in
+front of him, looking directly at the viewer without hurrying. Full body,
+feet included, in a SQUARE frame. Under about fifteen colours.
