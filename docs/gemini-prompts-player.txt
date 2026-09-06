@@ -115,12 +115,18 @@ nearly to the ankles, so that it reads as a lab coat and a wizard's robe at
 the same time. Dark clothes beneath it, dark boots. A dark STRAP running
 diagonally across the chest, and hanging at the hip a small grey MACHINE.
 
-    THE MACHINE IS NOT A HANDHELD GAME CONSOLE, AND A FIRST ATTEMPT DREW ONE.
-    It is a CUBE, as wide as it is tall, with FOUR SHORT FEET on the bottom.
-    Its screen is SMALL and set HIGH on the front face, not large and not
-    centred. A seam runs across the lower half. It has NO BUTTONS, NO D-PAD,
-    NO CONTROLS OF ANY KIND on it anywhere. It is a tiny computer you would
-    set down on a desk -- a server, not something you hold and play.
+    ATTACH gfx/characters/box_reference.png AND COPY THAT OBJECT EXACTLY.
+
+    Do not describe it from words -- two attempts did and both came back as a
+    handheld game console, because "a small grey machine with a screen on a
+    strap" IS a Game Boy to anything that has seen one. Listing what it is not
+    only keeps the console in mind. The reference is the object as the game
+    already draws it.
+
+    What the reference shows: a CUBE, as wide as it is tall, standing on FOUR
+    SHORT FEET. A dark inset panel high on the front. A seam across the lower
+    half. No buttons, no controls, nothing to press. It is a tiny desktop
+    computer -- something you set DOWN, never something you hold.
 
 Worn and practical, not ceremonial, and NOT SINISTER. The coat is pale cream
 -- cream rather than white, because the professor wears the white lab coat and
