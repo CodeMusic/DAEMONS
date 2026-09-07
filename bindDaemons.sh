@@ -283,34 +283,30 @@ if [[ $AI -eq 1 ]]; then
   # ModuleNotFoundError: requests, and the only visible symptom was the agent
   # logging ECONNREFUSED against :8000 forever -- which reads as "the bridge is
   # not up yet" rather than "the bridge crashed on line 11".
-  # NAME THE INTERPRETER. This machine has four python3s -- pyenv, conda base,
-  # Homebrew and /usr/bin -- and which one `python3` resolves to depends on the
-  # shell that launched this. Reporting "dependencies missing" without saying
-  # WHICH python is missing them sent a fix at the wrong interpreter twice.
-  PYBIN="$(command -v python3)"
-  MISSING=""
-  python3 - <<'PYCHK' || MISSING="python"
-# importlib.util is a SUBMODULE: `import importlib` alone leaves .util
-# unbound, so this check crashed and its own crash was read as "deps missing"
-# -- a false alarm that pointed at the user's environment instead of at itself.
-import importlib.util, sys
-missing = [m for m in ("fastapi", "uvicorn", "pydantic", "dotenv", "requests")
-           if importlib.util.find_spec(m) is None]
-if missing:
-    print("  missing: " + ", ".join(missing), file=sys.stderr)
-sys.exit(1 if missing else 0)
-PYCHK
-  [[ -z "$MISSING" ]] || {
-    echo "bridge dependencies missing for $PYBIN" >&2
-    echo "  ($("$PYBIN" -c 'import sys;print(sys.version.split()[0])' 2>/dev/null)) — run:" >&2
-    echo "    \"$PYBIN\" -m pip install -r $HARNESS/requirements.txt" >&2
-    echo "  other interpreters on this machine:" >&2
-    for p in "$HOME/miniconda3/bin/python3" "$HOME/.pyenv/shims/python3" \
-             /opt/homebrew/bin/python3 /usr/bin/python3; do
-      [[ -x "$p" && "$p" != "$PYBIN" ]] &&
-        echo "    $p  ($("$p" -c 'import sys;print(sys.version.split()[0])' 2>/dev/null))" >&2
-    done
-    exit 1; }
+  # A VENV, BECAUSE PATH IS NOT A DEPENDENCY MANAGER. This machine has four
+  # python3s, and THIS SCRIPT chooses one of them: the GBA branch above puts
+  # /opt/homebrew/bin first so agbcc can find the ARM binutils, which also puts
+  # Homebrew's python3 ahead of conda's. So the interpreter the bridge runs on
+  # is a side effect of the toolchain fix, and "pip install" typed in any shell
+  # aims somewhere else. Two rounds of installing into the wrong Python.
+  #
+  # bpvenv already set the precedent for exactly this problem. Same answer.
+  BRIDGE_VENV="ai/bridgevenv"
+  if [[ ! -x "$BRIDGE_VENV/bin/python" ]]; then
+    echo "creating the bridge venv (once)…"
+    # Homebrew's 3.13 is externally managed, so it can build a venv but cannot
+    # be pip-installed into directly. The venv sidesteps that too.
+    python3 -m venv "$BRIDGE_VENV" || {
+      echo "could not create $BRIDGE_VENV with $(command -v python3)" >&2; exit 1; }
+  fi
+  PYBIN="$PWD/$BRIDGE_VENV/bin/python"
+  "$PYBIN" -c 'import importlib.util as u,sys
+sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","dotenv","requests")) else 1)' 2>/dev/null || {
+    echo "installing bridge dependencies into $BRIDGE_VENV…"
+    "$PYBIN" -m pip install -q --upgrade pip >/dev/null 2>&1
+    "$PYBIN" -m pip install -q -r "$HARNESS/requirements.txt" || {
+      echo "pip install failed — see above" >&2; exit 1; }
+  }
   [[ -d "$HARNESS/server/node_modules" ]] || {
     echo "agent dependencies missing — run:" >&2
     echo "    (cd $HARNESS/server && npm ci)" >&2; exit 1; }
@@ -326,7 +322,7 @@ PYCHK
   mkdir -p ai/logs
   echo "starting bridge and agent…"
   echo "  python    $PYBIN"
-  ( cd "$HARNESS" && python3 firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &
+  ( cd "$HARNESS" && "$PYBIN" firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &
   echo "  bridge  pid $!  -> ai/logs/bridge.log"
   ( cd "$HARNESS/server" && npm start ) >ai/logs/agent.log 2>&1 &
   echo "  agent   pid $!  -> ai/logs/agent.log"

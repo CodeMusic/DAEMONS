@@ -69,6 +69,22 @@ harness already separates `OPENAI_MODEL_PATHFINDING`, which concedes the point
 — navigation is A* over a tile map, not an LLM problem, and every token spent
 on *press up, press up* is waste.
 
+## The bridge has its own venv, and why
+
+`ai/bridgevenv/` — created on first `--ai`, gitignored, rebuilt if deleted.
+
+**Not fussiness.** This machine has four `python3`s (pyenv 3.12.2, conda base
+3.12.9, Homebrew 3.13.5, `/usr/bin` 3.9.6) and *this script picks one of them
+as a side effect*: the GBA branch puts `/opt/homebrew/bin` first so agbcc can
+find the ARM binutils, which also puts Homebrew's Python ahead of conda's. So
+the interpreter the bridge runs on is decided by a toolchain fix, and
+`pip install` typed in any shell aims somewhere else. *Two rounds of installing
+into the wrong Python before that was visible.*
+
+Homebrew's 3.13 is also externally managed, so it cannot be pip-installed into
+directly at all. The venv answers both. `bpvenv` set the precedent for exactly
+this problem.
+
 ## When the agent logs ECONNREFUSED on :8000
 
 **It is not always the Lua step.** Three different failures look identical from

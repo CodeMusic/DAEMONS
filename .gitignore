@@ -33,3 +33,6 @@ ai/logs/
 
 # engineAi/ -> ../gpt-play-pokemon-firered-daemons  (the AI-play harness)
 engineAi
+
+# the bridge venv -- rebuilt by ./bindDaemons.sh --ai when absent
+ai/bridgevenv/
