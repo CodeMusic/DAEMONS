@@ -428,6 +428,28 @@ def main():
         dst = os.path.join(GBA, "sound/songs/midi/%s.mid" % slot)
         if not os.path.isfile(dst):
             sys.exit("  !! no slot called %s" % slot)
+
+        #  WHICH BANK DOES THIS SLOT PLAY THROUGH? Everything above emits
+        #  General MIDI program numbers, and only voicegroups 191 and 192 are
+        #  addressable that way -- gbavoices.py authored them for exactly this.
+        #  Vanilla's other banks answer the same numbers with whatever happens
+        #  to sit in the slot, and the failure is silent: the intro theme spent
+        #  three rounds of tuning on -G182, where program 0 is a DRUM KEYSPLIT
+        #  and 33 and 46 are both the same square wave. The transcription was
+        #  fine. It was being played by a drum kit.
+        cfg = os.path.join(GBA, "sound/songs/midi/midi.cfg")
+        line = next((l for l in open(cfg) if l.startswith(slot + ".mid:")), "")
+        grp = re.search(r"-G(\d+)", line)
+        grp = int(grp.group(1)) if grp else None
+        if grp not in (191, 192):
+            sys.exit("  !! %s plays through voicegroup%s, which does not answer\n"
+                     "     General MIDI -- every program number above would be\n"
+                     "     whatever happens to sit in that slot. Point it at the\n"
+                     "     orchestral bank first, in sound/songs/midi/midi.cfg:\n\n"
+                     "       %s.mid: ... -G191 ...\n" % (slot, grp, slot))
+        if grp == 192:
+            print("  !! voicegroup192 is the Game Boy bank -- only programs 80,\n"
+                  "     81, 87 and 126 mean anything there.")
         open(dst, "wb").write(mm.midi_bytes(tempo, parts))
         print("  written    sound/songs/midi/%s.mid, %d tracks" % (slot, len(parts)))
     else:
