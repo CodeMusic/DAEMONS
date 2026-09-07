@@ -156,6 +156,25 @@ model_list:
   # does not exist -- but that is not the harness's actual input, so it is a
   # hint, not a verdict. The real test is a run.
   #
+  # PREFILL. Every turn re-reads the whole prompt: ~42k tokens at ~2000 tok/s
+  # is ~21s of a ~25s turn, and the harness reports cached_tokens: 0.
+  #
+  # mlx-vlm ships automatic prefix caching (apc.py and friends) and it is OFF:
+  # apc.py reads os.environ.get("APC_ENABLED", "0"), and there is no CLI flag,
+  # so it can only be turned on in the environment. Add APC_ENABLED=1 to the
+  # server's launch line below to enable it.
+  #
+  # How much that can win is bounded, and measured rather than assumed. Two
+  # consecutive real request payloads share an identical prefix of 145,897 of
+  # 463,486 chars -- 31.5%. The other 68.5% is not cacheable because
+  # historyProcessor.js recomputes slice(-N) every turn, so an older message
+  # loses its <visible_area>, minimap or images as it falls out of the window.
+  # The divergence lands exactly there: one payload still carries the game area
+  # in that message, the next has stripped it. That is by design, and it is
+  # also why most of the prompt is new every turn.
+  #
+  # So APC is worth turning on and is not a fix on its own.
+  #
   # Start the server before using this model:
   #   ~/.vllm-venv/bin/python -m mlx_vlm.server \
   #     --model ~/.lmstudio/models/mlx-community/MiniCPM-V-4.6-4bit --port 8101
