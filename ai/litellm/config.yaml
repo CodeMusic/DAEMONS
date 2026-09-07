@@ -13,11 +13,24 @@
 # per model and silence here looks exactly like success until the first call.
 
 model_list:
-  # The decision model. Point api_base at whatever is actually serving:
-  # LM Studio's default is 1234, llama.cpp's server is usually 8080.
+  # The decision model. IT MUST TAKE IMAGES.
+  #
+  # The harness attaches a screenshot to every decision alongside the RAM
+  # state -- "no vision anywhere, it reads RAM" was wrong, and the symptom was
+  # a 400 from the model server itself: "The provided input contains images,
+  # but ternary-bonsai-8b-mlx does not support image inputs."
+  #
+  # minicpm-v-4.6 first because it is quick, with qwen3-vl-8b behind it as a
+  # LiteLLM FALLBACK rather than a manual swap -- the earlier 400 said
+  # "Available Model Group Fallbacks=None", which was LiteLLM naming the
+  # feature it wanted. If minicpm errors on a call, the same call is retried
+  # against qwen without the run stopping.
+  #
+  # Point api_base at whatever is actually serving: LM Studio's default is
+  # 1234, llama.cpp's server is usually 8080.
   - model_name: daemons
     litellm_params:
-      model: openai/ternary-bonsai-8b-mlx  # `openai/` = OpenAI-compatible, not OpenAI
+      model: openai/minicpm-v-4.6-abliterated-and-disinhibited   # openai/ = OpenAI-compatible
       # 127.0.0.1, NOT roverbyteseer.local. LM Studio binds to loopback only
       # -- `LM Studio 127.0.0.1:1234 (LISTEN)` -- so the LAN name resolves to an
       # address nothing is listening on. LiteLLM runs on this same box, so
@@ -31,8 +44,9 @@ model_list:
   - model_name: daemons-pathfinding
     litellm_params:
       # Smaller and faster on purpose: navigation is the call that happens
-      # hundreds of times a run and needs the least thinking.
-      model: openai/qwen3.5-0.8b
+      # hundreds of times a run and needs the least thinking. Still a VLM,
+      # because the harness attaches a screenshot to these calls too.
+      model: openai/qwen/qwen3-vl-4b
       api_base: http://127.0.0.1:1234/v1
       api_key: none
       use_chat_completions_api: true
@@ -50,6 +64,8 @@ model_list:
       use_chat_completions_api: true
 
 litellm_settings:
+  # Retry a failed daemons call against the bigger VLM instead of stopping.
+  fallbacks: [{"daemons": ["daemons-qwen"]}]
   # The harness sends service_tier, store and reasoning.summary. OpenAI accepts
   # them; a local server 400s. Dropping beats patching four call sites and then
   # re-patching them on every upstream change.
