@@ -60,6 +60,25 @@ the exposure rather than authenticating it.
 `flush_interval -1` is not optional. Caddy buffers proxied responses by
 default, which reintroduces exactly the problem n8n has.
 
+## Installing it
+
+`install.sh` does the whole thing and is idempotent:
+
+```
+scp -r ai/litellm roverbyte@10.0.0.136:~/daemons-litellm
+ssh roverbyte@10.0.0.136 'bash ~/daemons-litellm/install.sh'
+```
+
+It picks the newest Python >= 3.9, makes a venv at `~/.litellm-venv`, installs
+`litellm[proxy]` — **the `[proxy]` extra matters; plain `litellm` is the SDK
+only and serves no `/v1/responses` at all** — then probes the text and vision
+backends and prints the model ids they actually report.
+
+*That last step is not padding.* The config says `openai/local-model`, and LM
+Studio and llama.cpp each name their loaded model differently. A mismatch is a
+404 that reads exactly like a bridge failure, so the installer shows you the
+real ids before you go looking in the wrong place.
+
 ## Running it
 
 On `roverbyteseer`, beside the models:
