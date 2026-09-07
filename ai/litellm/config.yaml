@@ -138,11 +138,18 @@ model_list:
   # server wearing the name, with no tool-parser options at all, and real
   # vLLM's --tool-call-parser minicpm5 needs CUDA.
   #
-  # NOT YET USABLE BY THE HARNESS, and the reason is narrow: non-streaming
-  # returns the tool call cleanly, streaming returns response.completed with
-  # ZERO tool calls. The harness streams at all four call sites, so it sees
-  # nothing. Making it non-streaming is the change that unlocks this, and it is
-  # now worth the work: 5.7s and the right key, against qwen's minutes.
+  # Streaming works. An earlier note here said it did not -- that was a bug in
+  # my test, which counted only tool_calls deltas; LiteLLM emits no
+  # function_call_arguments.delta for this backend, only .done, and puts the
+  # finished call in response.completed, which is exactly where the harness
+  # reads it (gameLoop.js finalResponse.output). Measured through the proxy
+  # with the REAL schema, both tool shapes, enum and enum-stripped: 20/20 tool
+  # calls, call_id present.
+  #
+  # What is NOT settled is which key it picks. On a bare one-line prompt with
+  # no screenshot it reached for face_up, up, and a "right" action type that
+  # does not exist -- but that is not the harness's actual input, so it is a
+  # hint, not a verdict. The real test is a run.
   #
   # Start the server before using this model:
   #   ~/.vllm-venv/bin/python -m mlx_vlm.server \
