@@ -4747,7 +4747,9 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 **`tools/gbastr.py`** is the GBA counterpart of `verify-sprites`: **Gen 3 encodes text with its own charmap exactly as Gen 1 does**, so grepping a `.gba` for ASCII finds nothing and proves nothing. *It caught two stale ROMs on its first run.*
 
-***`TYPE_STEEL` and `TYPE_DARK` are left vanilla on purpose***, so a build that reaches them is **obviously unfinished rather than quietly wrong.** **They are the open decision above and they belong in this document before they belong in a header.**
+***`TYPE_STEEL` and `TYPE_DARK` were left vanilla at first***, so a build that reached them would be **obviously unfinished rather than quietly wrong.** ***Superseded the same day*** by the subsection below, which names them **`HARDENED`** and **`OPAQUE`** — *and names them by reading the vanilla chart rather than by inventing a concept and hoping the numbers agreed.* **The header has carried both since 2026-09-02.**
+
+*Corrected 2026-09-07.* **This paragraph and the table under it disagreed for five days**, and the stale half is the one a reader hits first. **There are seventeen usable types, not fifteen**, and the two extra carry **20 moves** between them — which matters the moment move names are designed, because a register has to exist for every type that can appear on a move.
 
 #### What is in the GBA ROMs, 2026-09-02
 
