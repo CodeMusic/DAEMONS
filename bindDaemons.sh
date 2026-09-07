@@ -415,6 +415,14 @@ if [[ $AI -eq 1 ]]; then
   # instead, which is the same content.
   : "${DAEMONS_EXTEND_TOOL_OUTPUT:=0}"
   export DAEMONS_EXTEND_TOOL_OUTPUT
+  # path_to_location is the one upstream tool that CANNOT be pointed at a
+  # local model: it runs on OpenAI's Code Interpreter, at container URLs
+  # hardcoded to api.openai.com. Without a key it fails five times per call and
+  # stalls the run. We solve it in-process with a BFS over the collision grid
+  # the frame already carries. DAEMONS_PATHFINDER=openai restores upstream's,
+  # and needs a real OPENAI_API_KEY to be worth anything.
+  : "${DAEMONS_PATHFINDER:=local}"
+  export DAEMONS_PATHFINDER
   : "${DAEMONS_DUMP_INPUT:=$PWD/ai/logs/last-input.json}"
   export DAEMONS_DUMP_INPUT
   export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL

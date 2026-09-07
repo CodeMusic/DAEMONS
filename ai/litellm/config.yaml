@@ -95,6 +95,11 @@ model_list:
 
   # Same server, named separately so the harness's pathfinding model can be
   # pointed somewhere smaller and faster without touching the decision model.
+  #
+  # UNUSED on the default path since path_to_location became a local BFS --
+  # pathfinding makes no model call at all now. Kept for
+  # DAEMONS_PATHFINDER=openai, which restores upstream's Code Interpreter
+  # route and does use this entry.
   - model_name: daemons-pathfinding
     litellm_params:
       # Smaller and faster on purpose: navigation is the call that happens
