@@ -382,6 +382,13 @@ if [[ $AI -eq 1 ]]; then
   export OPENAI_TOKEN_LIMIT
   DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
   export DAEMONS_SCHEMA
+  # LiteLLM's /responses bridge rejects a function_call_output whose `output`
+  # is an array -- the harness's way of attaching a screenshot to a tool
+  # result. Verified against the proxy: string passes, list is a flat 400
+  # "Invalid type for 'input'". Left off; the images go in a user message
+  # instead, which is the same content.
+  : "${DAEMONS_EXTEND_TOOL_OUTPUT:=0}"
+  export DAEMONS_EXTEND_TOOL_OUTPUT
   export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes
