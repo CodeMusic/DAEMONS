@@ -79,6 +79,7 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
+  --stop         stop a running --ai: bridge, agent, dashboard and mGBA
   --clean        make clean first
   --help         this
 
@@ -107,6 +108,41 @@ USAGE
 }
 for arg in "$@"; do
   case "$arg" in -h|--help|help) usage; exit 0 ;; esac
+done
+
+# The processes --ai starts. One list, used to stop a previous run before
+# starting and by --stop, so the two can never disagree about what to kill.
+AI_PROCS=("firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server" "http.server 5173")
+ai_stop() {
+  local found=0 pat n
+  for pat in "${AI_PROCS[@]}"; do
+    pgrep -f "$pat" >/dev/null 2>&1 || continue
+    found=1
+    pkill -f "$pat" 2>/dev/null || true
+  done
+  pgrep -x mGBA >/dev/null 2>&1 && { osascript -e 'quit app "mGBA"' >/dev/null 2>&1; found=1; }
+  [[ $found -eq 1 ]] || { echo "nothing was running"; return 0; }
+
+  # WAIT, THEN SAY. SIGTERM is asynchronous: checking straight after pkill sees
+  # a process mid-shutdown and reports a failure that is not one -- or, worse,
+  # reports success while something is still holding :8000 and the next --ai
+  # dies on bind. So this waits for them to actually go, and escalates only
+  # what refuses.
+  for n in 1 2 3 4 5 6 7 8 9 10; do
+    still_running() { for pat in "${AI_PROCS[@]}"; do pgrep -f "$pat" >/dev/null 2>&1 && return 0; done; return 1; }
+    still_running || break
+    sleep 1
+  done
+  for pat in "${AI_PROCS[@]}"; do
+    pgrep -f "$pat" >/dev/null 2>&1 && { echo "  $pat ignored SIGTERM — sending SIGKILL"; pkill -9 -f "$pat" 2>/dev/null || true; }
+  done
+  sleep 1
+  local left=0
+  for pat in "${AI_PROCS[@]}"; do pgrep -f "$pat" >/dev/null 2>&1 && left=1; done
+  [[ $left -eq 0 ]] && echo "stopped the AI run" || echo "some processes are still alive — check: pgrep -fl firered_mgba_bridge"
+}
+for arg in "$@"; do
+  case "$arg" in --stop|--ai-stop) ai_stop; exit 0 ;; esac
 done
 
 EDITION=content
@@ -315,9 +351,7 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
   # agent, and mGBA is relaunched above regardless -- so without this a second
   # run leaves the first bridge holding the port, the new one dies on bind, and
   # the agent talks to a bridge pointed at an emulator that no longer exists.
-  for pat in "firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server"; do
-    pkill -f "$pat" 2>/dev/null || true
-  done
+  for pat in "${AI_PROCS[@]}"; do pkill -f "$pat" 2>/dev/null || true; done
 
   mkdir -p ai/logs
   echo "starting bridge and agent…"
@@ -340,7 +374,12 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
 
       dofile("$LUA_PATH")
 
-  Then the dashboard:  cd $HARNESS/frontend && python3 -m http.server 5173
-  Stop everything:     kill %1 %2
+  Dashboard (optional): (cd $HARNESS/frontend && python3 -m http.server 5173)
+                        then http://localhost:5173
+
+  STOP EVERYTHING:      ./bindDaemons.sh --stop
+
+  Ctrl+C only stops whatever is in the foreground -- the bridge and the agent
+  are started by this script and outlive it, so they need the line above.
 AIEOF
 fi
