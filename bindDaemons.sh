@@ -79,11 +79,12 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
-  --nested-tools one execute_action tool wrapping a union of actions, the way
-                 upstream does it. Default is flat: one tool per action, which
-                 is what local models emit unprompted -- minicpm called
-                 key_press directly and LM Studio rejected it as an invalid
-                 tool name, and qwen emitted the same wrapped call 27 times.
+  --nested-tools upstream's single execute_action wrapping a union of actions.
+                 Default is flat, one tool per action, because qwen emits 27
+                 duplicate calls through the union and exactly one when the
+                 actions are separate tools. Note minicpm cannot tool-call
+                 through LM Studio at all -- its XML dialect needs SGLang or
+                 vLLM's parser -- so this flag is for another serving layer.
   --fresh        start with an empty history. The agent PERSISTS its history
                  to engineAi/server/gpt_data/history.json and reloads it on
                  every start, so a restart is a resume, not a new run -- one
@@ -403,10 +404,8 @@ if [[ $AI -eq 1 ]]; then
   export OPENAI_TOKEN_LIMIT
   DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
   export DAEMONS_SCHEMA
-  # Each action as its own tool, which is the shape the models actually emit --
-  # minicpm called key_press directly and had it rejected as an invalid tool
-  # name, qwen emitted the same wrapped call 27 times. --nested-tools restores
-  # the single execute_action with its union.
+  # Flat by default: the shape that works for qwen, which is the model that
+  # works. minicpm cannot tool-call through LM Studio in any shape.
   DAEMONS_TOOLS=$([[ $NESTED_TOOLS -eq 1 ]] && echo nested || echo flat)
   export DAEMONS_TOOLS
   # LiteLLM's /responses bridge rejects a function_call_output whose `output`
