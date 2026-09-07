@@ -33,6 +33,32 @@ heard three times without becoming an event.
 Two shorter cues sit either side of it (MUS_NEW_GAME_INSTRUCT and
 MUS_NEW_GAME_EXIT) and are NOT in scope. One track.
 
+WHAT WENT WRONG THE FIRST TIME, 2026-09-06
+
+The first take separated into four stems and two of them were unusable: the
+SYNTH stem came back at peak 0.0009, which is silence, and the BASS was
+active in 13% of its frames. Everything audible had collapsed into OTHER,
+whose extracted notes span MIDI 29 to 65 with a median of 57 -- ONE MID BAND,
+no lead above it. Energy above 800Hz but no notes there: harmonics, not a
+melody.
+
+7.14g had already recorded this failure in the other direction. That prompt
+asked for "sparse, unhurried, dry" and got a lullaby instead of a door. This
+one asked for GENTLE, SOFT and UNHURRIED and got one soft texture with
+nothing to separate.
+
+THE FIX IS REGISTER, NOT VOLUME. Three lines that share an octave are one
+line as far as a stem separator is concerned, and as far as this pipeline is
+concerned after it. The parts have to be told where to sit:
+
+    LEAD          two octaves above middle C -- a bell, and bells are high
+    ACCOMPANIMENT the octave around middle C
+    BASS          two octaves below, and PLAYING THROUGHOUT, not in fills
+
+"Gentle" survives all of that. It is an instruction about dynamics and this
+is an instruction about pitch; they were never in conflict, and only one of
+them was in the prompt.
+
 THE CONSTRAINT IS STILL THE ENGINE
 
 This gets transcribed to MIDI and played on THREE CHANNELS. Everything has to
@@ -43,10 +69,12 @@ production does not survive transcription.
 THE STYLE BOX
 ----------------------------------------------------------------------
 instrumental video game intro theme, A minor, 128 BPM, chord progression
-Am - F - C - G, warm and curious, gentle music-box lead over a soft
-arpeggiated accompaniment, walking bass in quarter notes, unhurried, late-90s
-handheld RPG opening narration, thoughtful and welcoming, clean note attacks,
-steady tempo, dry mix, no vocals
+Am - F - C - G, warm and curious, HIGH bright glockenspiel melody in the top
+octave, separate mid-register electric piano arpeggio underneath, deep
+plucked bass two octaves below playing steady quarter notes all the way
+through, three clearly separated registers, unhurried, late-90s handheld RPG
+opening narration, thoughtful and welcoming, clean note attacks, steady
+tempo, dry mix, no vocals
 
 ----------------------------------------------------------------------
 LYRICS BOX
@@ -100,8 +128,12 @@ WHEN IT COMES BACK
 ----------------------------------------------------------------------
   1. Is it A minor at 128? 7.6's key is the whole structural point -- if it
      drifts to C or to D minor, the relationship to Blanche is gone.
-  2. Can you hear THREE lines? Close your eyes and count. If the bass and the
-     middle voice blur, the transcription will lose one.
+  2. Can you hear THREE lines IN THREE OCTAVES? Close your eyes and count.
+     The first take failed here: one mid-register texture, MIDI 29 to 65, and
+     a silent synth stem. If the lead is not clearly ABOVE the accompaniment,
+     stop -- neither the separator nor the transcriber can recover it.
+  2b. Does the BASS play all the way through? The first take's bass was
+     active in 13% of its frames, which is a fill, not a part.
   3. Does the melody REFUSE to land? Hum the last note of a phrase. If it
      feels finished, it is wrong.
   4. Play it three times without skipping. Does it wear?

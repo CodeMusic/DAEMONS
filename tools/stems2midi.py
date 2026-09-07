@@ -29,7 +29,7 @@ because the export trims where an instrument stops, not because they are
 offset: five of seven stems' loudness contours correlate best against the mix
 at exactly lag zero, and a separator emits aligned stems by construction.
 """
-import importlib.util, json, os, sys, warnings
+import importlib.util, json, os, re, sys, warnings
 warnings.filterwarnings("ignore")
 import numpy as np
 import librosa
@@ -48,17 +48,54 @@ mm.DIV = DIV               # midi_bytes does its tick maths off this; keep them 
 #  GM programs into voicegroup191 -- see tools/gbavoices.py.
 PIANO, HARP, BASS, TIMPANI, STRINGS, TRUMPET = 0, 46, 33, 47, 48, 56
 
-#  stem file -> (label, program, velocity, which voice of a chord to keep)
-STEMS = [
-    ("7 Brass",    "brass",   TRUMPET, 100, "high"),
-    #  the synth stem is the busiest line in the track -- 233 of 400 cells --
-    #  which is an arpeggio, and an arpeggio is what a harp is for. A
+#  the word in a stem's filename -> (label, program, velocity, chord voice)
+#
+#  KEYED ON THE WORD, NOT THE NUMBER. Suno numbers stems by track order and
+#  that order differs per song: the title theme's synth arrived as "5 Synth"
+#  and the intro's as "2 Synth". A table of literal filenames matched the one
+#  song it was written for and silently skipped every stem of the next.
+ROLES = {
+    "brass":      ("brass",   TRUMPET, 100, "high"),
+    #  the synth stem was the busiest line in the title theme -- 233 of 400
+    #  cells -- which is an arpeggio, and an arpeggio is what a harp is for. A
     #  glockenspiel across that many cells at 152 BPM is a smoke alarm.
-    ("5 Synth",    "synth",   HARP,     64, "high"),
-    ("4 Strings",  "strings", STRINGS,  78, "high"),
-    ("2 Keyboard", "keys",    PIANO,    58, "high"),
-    ("1 Bass",     "bass",    BASS,     96, "low"),
-]
+    "synth":      ("synth",   HARP,     64, "high"),
+    "strings":    ("strings", STRINGS,  78, "high"),
+    "keyboard":   ("keys",    PIANO,    58, "high"),
+    "piano":      ("keys",    PIANO,    58, "high"),
+    "bass":       ("bass",    BASS,     96, "low"),
+    #  "Other" is the separator's remainder, not an instrument. It is taken as
+    #  a keyboard part because that is the safest thing an unknown mid-register
+    #  line can be -- but see the warning main() prints when it dominates.
+    "other":      ("other",   PIANO,    70, "high"),
+    "drums":      None,        # percussion comes from the voicegroup, not here
+    "percussion": None,
+    "vocals":     None,        # nothing in this game sings
+}
+
+#  loudest first: which line survives when the GBA runs out of tracks
+ORDER = ["brass", "synth", "strings", "keys", "other", "bass"]
+
+def stems_in(d):
+    """Discover the stem set from the directory. Returns the STEMS list the
+    rest of this tool expects, ordered as ORDER, with unknown words reported
+    rather than dropped -- a stem this table has never seen is a thing to look
+    at, not a thing to skip quietly."""
+    found, unknown = {}, []
+    for f in sorted(os.listdir(d)):
+        stem, ext = os.path.splitext(f)
+        if ext.lower() not in (".mp3", ".wav", ".flac") or f.startswith("."):
+            continue
+        word = re.sub(r"^[\d\s_-]+", "", stem).strip().lower()
+        if word not in ROLES:
+            unknown.append(stem); continue
+        if ROLES[word] is None:
+            continue
+        found[stem] = ROLES[word]
+    for u in unknown:
+        print("  %-12s -- unrecognised stem, skipped (add it to ROLES)" % u[:12])
+    return [(f,) + found[f] for f in
+            sorted(found, key=lambda f: ORDER.index(found[f][0]))]
 
 def register(notes):
     """The band a stem actually plays in. Basic Pitch reports upper partials as
@@ -139,7 +176,23 @@ def main():
     global NOTES
     if "--notes" in sys.argv:
         NOTES = os.path.expanduser(sys.argv[sys.argv.index("--notes") + 1])
-    mix_path = os.path.join(os.path.dirname(d.rstrip("/")), "Star Key Ascend.mp3")
+    #  Suno names the folder after the song and adds " Stems", so the mix sits
+    #  beside it under the bare name. Hardcoding one song's title here was the
+    #  same mistake as hardcoding its stem filenames.
+    if "--mix" in sys.argv:
+        mix_path = os.path.expanduser(sys.argv[sys.argv.index("--mix") + 1])
+    else:
+        base = os.path.basename(d.rstrip("/"))
+        mix_path = os.path.join(os.path.dirname(d.rstrip("/")),
+                                re.sub(r"\s*Stems$", "", base) + ".mp3")
+    if not os.path.isfile(mix_path):
+        sys.exit("no mix at %s -- pass --mix <file>. The mix is what the beat\n"
+                 "grid and the key are read from; the stems only supply notes."
+                 % mix_path)
+
+    STEMS = stems_in(d)
+    if not STEMS:
+        sys.exit("no recognised stems in %s" % d)
 
     y, sr = librosa.load(mix_path, sr=22050, mono=True)
     tempo, beats = librosa.beat.beat_track(y=y, sr=sr)
@@ -161,10 +214,14 @@ def main():
     degrees = [0, 2, 4, 5, 7, 9, 11] if m1 == "major" else [0, 2, 3, 5, 7, 8, 10]
     scale = {(root + x) % 12 for x in degrees}
 
-    parts, bass_cells = [], None
+    parts, bass_cells, span = [], None, {}
     for fname, label, program, vel, keep in STEMS:
-        jf = os.path.join(NOTES, fname + ".json")
-        if not os.path.isfile(jf):
+        #  bpextract is run by hand and gets named either way round: the title
+        #  theme's notes landed as "1 Bass.json", the intro's as "bass.json".
+        jf = next((c for c in (os.path.join(NOTES, fname + ".json"),
+                               os.path.join(NOTES, label + ".json"))
+                   if os.path.isfile(c)), None)
+        if jf is None:
             print("  %-10s -- no notes file, skipped" % label); continue
         raw = json.load(open(jf))
         cells = cells_from(raw, grid, times, keep)
@@ -177,8 +234,38 @@ def main():
                  librosa.midi_to_note(min(sounded)), librosa.midi_to_note(max(sounded)),
                  moved))
         parts.append((program, vel, mm.merge(cells)))
+        span[label] = (min(sounded), max(sounded), len(sounded))
 
-    drums, _ = librosa.load(os.path.join(d, "0 Drums.mp3"), sr=sr, mono=True)
+    #  DOES THIS ARRANGEMENT HAVE PARTS, OR ONE TEXTURE? Asked here because the
+    #  intro theme's first take did not, and nothing upstream of this noticed:
+    #  its synth stem exported as digital silence and the whole arrangement
+    #  collapsed into "other", whose notes spanned MIDI 29..65 -- straight
+    #  through the bass's own 28..57. Three lines sharing a register are one
+    #  line, and every transcription below this point was wasted on it.
+    #  Cheap to check, and it is the difference between a fixable prompt and a
+    #  day of tuning extraction thresholds against a track that has no parts.
+    if len(span) > 1:
+        worst = max(((a, b) for a in span for b in span if a < b),
+                    key=lambda ab: min(span[ab[0]][1], span[ab[1]][1])
+                                 - max(span[ab[0]][0], span[ab[1]][0]))
+        a, b = worst
+        overlap = min(span[a][1], span[b][1]) - max(span[a][0], span[b][0])
+        if overlap > 12:
+            print("  !! %s and %s overlap by %d semitones -- these are not\n"
+                  "     separate registers, and the mix will read as one voice."
+                  % (a, b, overlap))
+    if span:
+        big, total = max(span, key=lambda k: span[k][2]), sum(v[2] for v in span.values())
+        if span[big][2] > total * 0.6:
+            print("  !! %s carries %d%% of all sounded cells -- the separation\n"
+                  "     did not work, or the arrangement has only one part."
+                  % (big, round(100 * span[big][2] / total)))
+
+    perc = next((f for f in sorted(os.listdir(d))
+                 if re.sub(r"^[\d\s_-]+", "", os.path.splitext(f)[0]).strip().lower()
+                 in ("drums", "percussion")), None)
+    drums = np.zeros(1) if perc is None else librosa.load(
+        os.path.join(d, perc), sr=sr, mono=True)[0]
     if bass_cells:
         t = timpani(drums, sr, times, bass_cells)
         parts.append((TIMPANI, 88, t))
@@ -194,4 +281,5 @@ def main():
     else:
         print("\n  (report only; pass --write <slot>)")
 
-main()
+if __name__ == "__main__":
+    main()

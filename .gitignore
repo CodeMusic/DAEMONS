@@ -12,3 +12,17 @@ engine/*.gbc
 engine/*.sav
 engineGba/*.gba
 engineGba/*.sav
+
+# audio working files -- the venv, the stems and the transcriptions
+# basic-pitch needs Python 3.11 and pulls ~3.4M lines including a 123MB
+# llvmlite dylib, which GitHub rejects outright. tools/bpextract.py rebuilds it.
+bpvenv/
+notes/
+notes-*/
+audio/music/**/*.mp3
+audio/music/**/*.wav
+.DS_Store
+
+# python scratch
+__pycache__/
+*.pyc
