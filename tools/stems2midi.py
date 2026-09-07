@@ -3,6 +3,7 @@
 
     ./bpvenv/bin/python tools/bpextract.py "<dir>/1 Bass.mp3" notes/bass.json 30 400
     python3 tools/stems2midi.py <dir> --notes notes --write mus_title
+    python3 tools/stems2midi.py <dir> --notes notes --split other --write mus_intro
 
 The first step needs its own interpreter; see tools/bpextract.py. The second
 runs on the machine's own Python, so nothing here is pinned to basic-pitch.
@@ -47,6 +48,7 @@ mm.DIV = DIV               # midi_bytes does its tick maths off this; keep them 
 
 #  GM programs into voicegroup191 -- see tools/gbavoices.py.
 PIANO, HARP, BASS, TIMPANI, STRINGS, TRUMPET = 0, 46, 33, 47, 48, 56
+GLOCK = 9        # the intro theme's lead, once it is split out of "other"
 
 #  the word in a stem's filename -> (label, program, velocity, chord voice)
 #
@@ -96,6 +98,31 @@ def stems_in(d):
         print("  %-12s -- unrecognised stem, skipped (add it to ROLES)" % u[:12])
     return [(f,) + found[f] for f in
             sorted(found, key=lambda f: ORDER.index(found[f][0]))]
+
+def valley(notes, lo=60, hi=80):
+    """Where two voices sharing a stem part company, measured rather than set.
+
+    ONLY FOR A STEM THAT HOLDS TWO INSTRUMENTS. The separator gave the intro
+    theme three stems -- drums, bass, and everything else -- so the
+    glockenspiel and the electric piano arrived in one file, and one file is
+    one line as far as cells_from is concerned.
+
+    Splitting a mix by pitch is exactly the guess this tool was written to
+    stop making, so it is not done quietly and it is not done on faith: the
+    histogram has to actually show two modes. The cut is the emptiest bin
+    between them, and if that bin is not meaningfully emptier than the peaks
+    on either side there are no two voices to separate and this returns None.
+    Anything it does split is INFERRED, and main() says so in its output."""
+    p = np.array([n[2] for n in notes])
+    h = np.array([((p >= x) & (p < x + 3)).sum() for x in range(lo, hi, 3)])
+    if len(h) < 3:
+        return None
+    i = int(np.argmin(h[1:-1])) + 1
+    left, right = h[:i].max(), h[i + 1:].max()
+    if h[i] > 0.75 * min(left, right):        # a dip, not a valley
+        return None
+    return lo + i * 3 + 1, h[i], min(left, right)
+
 
 def register(notes):
     """The band a stem actually plays in. Basic Pitch reports upper partials as
@@ -185,10 +212,35 @@ def main():
         base = os.path.basename(d.rstrip("/"))
         mix_path = os.path.join(os.path.dirname(d.rstrip("/")),
                                 re.sub(r"\s*Stems$", "", base) + ".mp3")
+    #  NO MIX IS RECOVERABLE, because the mix was only ever two measurements.
+    #  Summing the stems reconstructs it well enough for both: a separator's
+    #  output adds back up, which is what makes it a separation. Beat tracking
+    #  actually prefers this -- it reads a bare percussion stem more cleanly
+    #  than a full mix -- while key detection is slightly worse off, so the
+    #  tool says which one it used and prints its runner-up either way.
     if not os.path.isfile(mix_path):
-        sys.exit("no mix at %s -- pass --mix <file>. The mix is what the beat\n"
-                 "grid and the key are read from; the stems only supply notes."
-                 % mix_path)
+        srcs = [os.path.join(d, f) for f in sorted(os.listdir(d))
+                if os.path.splitext(f)[1].lower() in (".mp3", ".wav", ".flac")
+                and not f.startswith(".")]
+        if not srcs:
+            sys.exit("no mix at %s and no stems to rebuild one from" % mix_path)
+        print("  no mix at %s\n  rebuilding it from %d stems"
+              % (os.path.basename(mix_path), len(srcs)))
+        acc = None
+        for f in srcs:
+            y1, sr = librosa.load(f, sr=22050, mono=True)
+            acc = y1 if acc is None else (
+                np.pad(acc, (0, max(0, len(y1) - len(acc))))
+                + np.pad(y1, (0, max(0, len(acc) - len(y1)))))
+        mix_path = os.path.join(NOTES, "_rebuilt_mix.wav")
+        os.makedirs(NOTES, exist_ok=True)
+        import soundfile as sf
+        sf.write(mix_path, acc / max(1e-9, np.abs(acc).max()), sr)
+
+    split_words = set()
+    if "--split" in sys.argv:
+        split_words = {w.strip().lower()
+                       for w in sys.argv[sys.argv.index("--split") + 1].split(",")}
 
     STEMS = stems_in(d)
     if not STEMS:
@@ -224,6 +276,26 @@ def main():
         if jf is None:
             print("  %-10s -- no notes file, skipped" % label); continue
         raw = json.load(open(jf))
+        if label in split_words:
+            v = valley(raw)
+            if v is None:
+                print("  %-10s -- asked to split, but its histogram shows one\n"
+                      "               voice, not two. Left whole." % label)
+            else:
+                cut, floor, peak = v
+                print("  %-10s split at MIDI %d (%d notes there against %d at\n"
+                      "               the modes) -- the upper line is INFERRED,\n"
+                      "               not heard on its own." % (label, cut, floor, peak))
+                lead = [n for n in raw if n[2] >= cut]
+                raw = [n for n in raw if n[2] < cut]
+                lc = cells_from(lead, grid, times, "high")
+                lc, lm = snap(lc, scale)
+                sl = [n for n in lc if n is not None]
+                print("  %-10s %4d heard, %4d cells, %s..%s, %d snapped"
+                      % (label + "-lead", len(lead), len(sl),
+                         librosa.midi_to_note(min(sl)), librosa.midi_to_note(max(sl)), lm))
+                parts.append((GLOCK, 82, mm.merge(lc)))
+                span[label + "-lead"] = (np.percentile(sl, 3), np.percentile(sl, 90), len(sl))
         cells = cells_from(raw, grid, times, keep)
         cells, moved = snap(cells, scale)
         if label == "bass":
@@ -234,7 +306,12 @@ def main():
                  librosa.midi_to_note(min(sounded)), librosa.midi_to_note(max(sounded)),
                  moved))
         parts.append((program, vel, mm.merge(cells)))
-        span[label] = (min(sounded), max(sounded), len(sounded))
+        #  the SAME band cells_from works in. Measured with min/max first,
+        #  which reported 21 semitones of overlap on an arrangement whose
+        #  working registers overlap by 10 -- one stray harmonic at either
+        #  end is enough to make two separate parts look like one.
+        span[label] = (np.percentile(sounded, 3), np.percentile(sounded, 90),
+                       len(sounded))
 
     #  DOES THIS ARRANGEMENT HAVE PARTS, OR ONE TEXTURE? Asked here because the
     #  intro theme's first take did not, and nothing upstream of this noticed:

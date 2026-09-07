@@ -59,6 +59,28 @@ concerned after it. The parts have to be told where to sit:
 is an instruction about pitch; they were never in conflict, and only one of
 them was in the prompt.
 
+THE SECOND TAKE, 2026-09-06, AND WHAT THE REGISTER FIX BOUGHT
+
+                        first take        second take
+    Other's notes       MIDI 29..65       MIDI 38..96
+    above C5            none              91 of 352
+    bass active         13% of frames     38%, 89% of it under 200Hz
+    silent stems        one               none
+
+Suno separated it into three stems rather than four -- drums, bass, and
+everything else -- so the glockenspiel and the piano still arrived in one
+file. But they arrived SEPARABLE, which is the whole difference: the pitch
+histogram has two modes with a real valley at MIDI 67, and splitting there
+gives a lead at G4..E6 over an accompaniment at F2..E4 over a bass at F1..G3.
+Three registers, as asked for.
+
+129.2 BPM against the 128 requested, and every extracted note was already
+diatonic -- nothing snapped, across all three parts. The key detector prefers
+C major over A minor 0.92 to 0.78, which is a coin flip it cannot win: they
+are relative keys, an Am-F-C-G loop has identical chroma either way, and the
+snap set is the same set of notes. It says nothing about whether the take is
+in the right key, and the arrangement decides that anyway.
+
 THE CONSTRAINT IS STILL THE ENGINE
 
 This gets transcribed to MIDI and played on THREE CHANNELS. Everything has to
