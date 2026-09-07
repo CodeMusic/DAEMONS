@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.104**
+**A total conversion — the living design bible, v11.105**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -592,6 +592,73 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 *Five tables, not two.* 9.2 step 6 says `moves.asm` and `names.asm`; the build needs three more, each `assert_table_length NUM_ATTACKS` — `constants/move_constants.asm`, `data/moves/animations.asm` and `data/moves/sfx.asm`. CONSENSUS borrows PIN_MISSILE's animation and sound: converging projectiles, which is the right picture for a swarm agreeing. Note that `moves.asm` still names the type `BUG` — per invariant 6, only the *string* is SWARM.
 
 **Not yet learnable.** Nothing in the game can use CONSENSUS until a learnset entry exists. That is deliberate: assigning it means naming species, which is 9 and 11's work. The move is in the ROM and correct; it is waiting on the encounter design, not on more engine work.
+
+### 2.6 The one-clause test — can a player generalise, or only remember?
+
+*Asked 2026-09-07, because a chart that has to be memorised is a chart nobody argues with.*
+
+**Vanilla's sprites do two jobs at once.** They *label* the type — leaves mean Grass — and they *import a causal model*: plants burn, plants drink, plants grow. **The second job is the one that lets a player generalise**, and it is why someone who has never played predicts fire beats grass. *Our creatures are named from computing and psychology.* **A player who knows neither has the label and not the model.**
+
+***9.4 already does the labelling, and better than vanilla does it*** — hue **is** the type, systematically, where vanilla is inconsistent enough that Golbat is Poison/Flying and looks like neither. **What was never checked is whether the fifteen names carry a model.**
+
+#### The instrument
+
+> **For each type, write ONE clause a non-specialist understands. Then walk every
+> relation that type is in — attacking and defending — and mark whether the clause
+> PREDICTS it, is SILENT on it, or predicts the OPPOSITE. A type passes on three
+> predictions and no net contradictions.**
+
+*It sits beside BIND's **does it work twice?*** — **an instrument, not a verdict.** A type that fails it has a **naming** problem, not a chart-position problem, *because the chart is 2.3's inheritance and is not up for renegotiation.*
+
+**A contradicting clause is worse than a silent one.** *Silence costs a lookup. A contradiction costs trust in the chart* — and the chart is the argument.
+
+#### The run, against all 83 relations
+
+| type | one clause | predicts | |
+|---|---|---|---|
+| **CONTEXT** | *the frame you read a thing in — what makes the same thing mean differently* | **8 / 8** | strongest in the game |
+| **EMERGENT** | *the behaviour nobody designed and nobody can account for* | **7 / 7** | one clause covers all four resistances |
+| **ENTROPY** | *noise and heat; disorder that spreads* | 9 / 14 | |
+| **FLOW** | *everything running downhill to the lowest point* | 8 / 11 | |
+| **LOGIC** | *formal rules applied step by step; proof, not intuition* | 7 / 12 | |
+| **LATENT** | *running below the surface, unobserved* | 6 / 9 | |
+| **FROZEN** | *locked to what it already saw, unable to move* | 7 / 11 | |
+| **STRATUM** | *the physical layer everything else runs on* | 7 / 13 | |
+| **GROWTH** | *training: fitting to whatever it is fed* | 8 / 18 | **the heaviest load in the game** |
+| **CORRUPT** | *data that has been tampered with* | 6 / 11 | |
+| **SIGNAL** | *raw current, before anything interprets it* | 4 / 9 | |
+| **SWARM** | *many small agents; no single one matters* | 4 / 13 | weak |
+| **CONTENT** | *the thing itself, with nothing read into it* | 3 / 4 | passes on a small hand |
+| **LEGACY** | *deprecated hardware still running* | **0 / 14** | **FAILS** |
+| **VECTOR** | *direction in a space of meanings* | **1 / 12**, one contradicted | **FAILS** |
+
+#### Three things the run found
+
+***The thesis is safe.*** **CONTEXT scores 8 / 8 and LOGIC 7 / 12.** *The single most important relation in the game — rules bounce off framing — is also one of the most self-explaining.* **That was not guaranteed**, and it is the reason none of what follows threatens 0.
+
+***The failures are not "the abstract types".*** **CONTEXT and EMERGENT are the two most abstract concepts in the set and they score perfectly.** *The two that fail are the two whose vanilla names were the most **physical** — ROCK and FLYING — and whose renames are the most abstract.* **Every other rename kept enough folk connotation to carry its share.** This is two words, not a systemic fault.
+
+***VECTOR does not merely fail; it misleads.*** **STRATUM hits it for ×0**, and *nothing about "direction in a space" explains why the ground cannot touch it.* **FLYING made that immunity free. VECTOR makes it look like a bug.**
+
+**And LEGACY is 0 for 14.** *It sits in more relations than any type but GROWTH and ENTROPY and predicts none of them.* **ROCK bought smothering fire, blocking ice, swatting things out of the air, being eroded by water and split by roots** — *LEGACY spends all of that and returns nothing.*
+
+#### What it costs to fix, which is almost nothing
+
+***`gTypeNames` in `battle_main.c` is a plain string table at `TYPE_NAME_LENGTH 8`.*** **Invariant 6's expensive half — renaming constants — does not apply.** *What the player reads is one line each.*
+
+#### Open, and deliberately
+
+**Neither rename is made here.** *The names in 2.2 were chosen as a complete set and this section is not entitled to overrule two of them on its own evidence* — **it is entitled to say which two are not working, and it does.**
+
+- **LEGACY** wants its mineral hardness back while keeping old-silicon. `SILICON` is literally both, *but may blur against STRATUM, which already owns "the physical layer."* `RUST` is the other direction — **corroded metal, decayed hardware, and a language** — *and being eaten by water is **why rust exists**, which would turn LEGACY's ×2 weakness to FLOW from opaque into obvious.*
+- **VECTOR** needs its not-groundedness back. `ABSTRACT` is 8 exactly and **recovers the immunity in one step** — *the physical layer cannot reach the abstract* — while keeping the embedding reading.
+
+**SWARM passes at 4 / 13**, *and 2.5 already records it as mechanically weak for entirely unrelated reasons.* **Two independent problems pointing at one type is worth a look.**
+
+#### What the test does not answer
+
+***It measures the NAMES.*** **It says nothing about whether a player can tell a daemon's type by looking at it** — 9.4's hue makes that a *label*, reliably, and a label is not a model. *The channel that actually teaches is the one repeated every turn:* **move names**, which a player reads hundreds of times to a sprite's handful. **Nobody learns water-beats-fire by looking at Squirtle; they learn it by using Bubble and reading the result.** That work belongs with 2.5 and with the nineteen gym lines still held for 5.
+
 
 ---
 

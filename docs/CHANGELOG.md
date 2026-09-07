@@ -5,6 +5,44 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.105 — 2026-09-07
+
+### The one-clause test, and the two names that fail it
+
+- **2.6 adds an instrument, not a verdict.** *For each type, write ONE clause a
+  non-specialist understands; walk every relation it is in, attacking and defending;
+  mark PREDICTS, SILENT or OPPOSITE.* **Three predictions and no net contradictions is
+  a pass.** It sits beside BIND's *does it work twice?* — and a type that fails it has a
+  **naming** problem, not a chart-position problem, since 2.3's chart is inherited and
+  not up for renegotiation.
+- **Run against all 83 relations: thirteen pass, two fail.** The question behind it was
+  whether a player can *generalise* the chart or only memorise it — vanilla's sprites
+  label the type **and** import a causal model, and 9.4's hue only does the first.
+- **The thesis is safe.** **CONTEXT scores 8 / 8, LOGIC 7 / 12.** *The most important
+  relation in the game — rules bounce off framing — is also one of the most
+  self-explaining.* That was not guaranteed.
+- **The failures are not the abstract types.** *CONTEXT and EMERGENT are the two most
+  abstract concepts in the set and score perfectly.* **The two that fail are the two whose
+  vanilla names were the most physical — ROCK and FLYING.** Two words, not a systemic fault.
+- **`LEGACY` is 0 / 14** — in more relations than any type but GROWTH and ENTROPY, and
+  predicts none. *ROCK bought smothering fire, blocking ice, swatting things from the air,
+  erosion and roots; LEGACY spends all of it and returns nothing.*
+- **`VECTOR` is 1 / 12 and contradicts one.** STRATUM hits it ×0 and *nothing about
+  "direction in a space" explains why the ground cannot reach it.* **FLYING made that
+  immunity free; VECTOR makes it look like a bug.** A silent clause costs a lookup; a
+  contradicting one costs trust in the chart.
+- **The fix is a string change.** `gTypeNames` is a plain table at `TYPE_NAME_LENGTH 8`,
+  so **invariant 6's expensive half does not apply.** Candidates recorded and left **open**:
+  `SILICON` or `RUST` for LEGACY, `ABSTRACT` for VECTOR. *2.2's names were chosen as a
+  complete set and 2.6 is not entitled to overrule two of them on its own evidence.*
+- **SWARM passes at 4 / 13**, and 2.5 already records it as mechanically weak for unrelated
+  reasons. *Two independent problems pointing at one type.*
+- **What the test does not answer, stated in the section:** it measures the **names**. The
+  channel that actually teaches is **move names**, read hundreds of times to a sprite's
+  handful — held with 2.5 and the nineteen gym lines waiting on 5.
+
+---
+
 ## v11.104 — 2026-09-06
 
 ### The second external review, decided
