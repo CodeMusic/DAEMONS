@@ -91,12 +91,44 @@ looked like a broken bridge:
 - LM Studio listens on `127.0.0.1:1234`, so `roverbyteseer.local:1234` resolves
   to an address nothing answers on. LiteLLM runs on the same box, so loopback
   is right — and it is the *proxy* that gets exposed, never LM Studio.
-- **Nothing is serving port 8890.** The dex workflows' `MLX_VLM_URL` default
-  points at a vision server that is not running; vision is in LM Studio with
-  everything else.
+- **Corrected 2026-09-07:** an earlier note here claimed the dex workflows
+  pointed at a vision server that was not running. **They do not.** The n8n
+  container sets `MLX_VLM_URL=http://host.docker.internal:1234`, so the `8890`
+  in the workflow is a fallback that never fires and `dex/identify` resolves to
+  LM Studio like everything else. The claim came from reading the workflow
+  default instead of the environment that overrides it — `docker exec n8n env`
+  is the thing to check, and it also confirms
+  `DEX_VISION_MODEL=minicpm-v-4.6-abliterated-and-disinhibited`.
 - The real model ids are `ternary-bonsai-8b-mlx`, `qwen3.5-0.8b` and
   `minicpm-v-4.6-abliterated-and-disinhibited`. `qwen/qwen3-vl-8b` is loaded
   too, if MiniCPM disappoints on menu text.
+
+## Running as a service
+
+Installed as a launchd agent, `ca.codemusic.daemons.litellm`, so it survives a
+reboot:
+
+| | |
+|---|---|
+| agent | `~/Library/LaunchAgents/ca.codemusic.daemons.litellm.plist` |
+| wrapper | `~/bin-litellm.sh` |
+| key | `~/.litellm.env`, mode 0600 |
+| log | `~/Library/Logs/daemons-litellm.log` |
+| config | `~/daemons-litellm-config.yaml` |
+
+**The key is in a file rather than in the plist** because a plist is
+world-readable and gets backed up. The wrapper sources it and execs the proxy,
+so the secret never reaches a command line or a process list.
+
+*Auth, as it actually behaves:* the master key succeeds, no key returns 401,
+and any **other** bearer returns 400 `No connected db.` — LiteLLM treats an
+unknown bearer as a virtual key needing a database it does not have. Ugly
+error, correct outcome: nothing but the master key gets a completion.
+
+```
+launchctl unload ~/Library/LaunchAgents/ca.codemusic.daemons.litellm.plist
+launchctl load   ~/Library/LaunchAgents/ca.codemusic.daemons.litellm.plist
+```
 
 ## Installing it
 

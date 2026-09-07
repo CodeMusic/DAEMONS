@@ -37,9 +37,10 @@ model_list:
       api_key: none
       use_chat_completions_api: true
 
-  # Vision, for daemon/look. NOTE THE PORT: nothing is serving 8890 on this
-  # machine -- the dex workflows' MLX_VLM_URL default points at a server that
-  # is not running. Vision is in LM Studio alongside the text models.
+  # Vision lives in LM Studio with the text models, not on 8890. The n8n
+  # container sets MLX_VLM_URL=http://host.docker.internal:1234, so the 8890 in
+  # the workflows is a fallback that never fires -- checked with
+  # `docker exec n8n env`, which is the source of truth over any default.
   # qwen/qwen3-vl-8b is loaded too if MiniCPM disappoints on menu text.
   - model_name: daemons-vision
     litellm_params:
