@@ -74,7 +74,14 @@ make content
 | `make play` | build CONTENT and launch it in an emulator |
 | `make play-debug` | the same, with debug mode compiled in |
 | `make vanilla-check` | prove the toolchain against pristine upstream |
-| `./bindDaemons.sh [content\|context] [--clean] [--debug]` | what the play targets call |
+| `./bindDaemons.sh` | build an edition and run it — **`--help` is the full list** |
+| `./bindDaemons.sh --classic` | the Game Boy build; the GBA one is the default |
+| `./bindDaemons.sh --ai` | a model plays it, through `engineAi` — see [`ai/README.md`](ai/README.md) |
+
+*The table above is the short version on purpose.* **`./bindDaemons.sh --help`
+is the source of truth** and works with nothing checked out and no toolchain
+installed — which is when someone needs to read it. This README used to list
+the flags itself and went stale twice.
 
 **When a build breaks, run `make vanilla-check` first.** It builds pristine
 `upstream/master` in a throwaway worktree and checks the hashes without touching
@@ -82,12 +89,20 @@ your branch. If vanilla matches, the toolchain is fine and the break is ours.
 
 ### Debug mode
 
-`pokered` has always carried a full debug mode behind its `_DEBUG` define, and
-upstream only ever wired it to a Blue build. Both editions can now use it:
+Both engines have one, and they are **not the same thing**.
 
 ```sh
-./bindDaemons.sh content --debug
+./bindDaemons.sh --debug              # GBA — ours
+./bindDaemons.sh --classic --debug    # Game Boy — upstream's
 ```
+
+`pokefirered` ships no debug build at all, so the GBA one is ours: a new game
+starts with six daemons picked for their **abilities**, one of each *kind* of
+item so the description window can be read, all eight MARKS and 999999, and
+**hold B** walks through grass.
+
+The Game Boy one is upstream's, which `pokered` has always carried behind its
+`_DEBUG` define and only ever wired to a Blue build:
 
 - **SELECT on the title screen** opens the debug menu — start a game with a
   party in hand and fly-anywhere enabled

@@ -49,6 +49,52 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
+# --help before anything else, so it works with no engines checked out and no
+# toolchain installed -- which is exactly when someone needs to read it.
+usage() {
+  cat <<'USAGE'
+bindDaemons.sh — build an edition of CONTEXT / CONTENT and run it.
+
+  ./bindDaemons.sh                     CONTENT, GBA        -> mGBA
+  ./bindDaemons.sh context             CONTEXT, GBA
+  ./bindDaemons.sh --classic           CONTENT, Game Boy   -> SameBoy
+  ./bindDaemons.sh context --classic   CONTEXT, Game Boy
+
+EDITIONS
+  content        the default. firered on GBA, _RED on the Game Boy
+  context        leafgreen on GBA, _BLUE on the Game Boy
+                 The two differ by a build flag and share a byte-identical
+                 type chart -- an argument that changed by cartridge would
+                 not be one.
+
+FLAGS
+  --classic      the Game Boy build (pokered). The GBA build is the one being
+                 worked on; --classic is how you reach the older one.
+  --debug        a separate ROM with its own save, so a debug run never
+                 touches a playthrough.
+                   GBA      a party picked for their ABILITIES, one of each
+                            KIND of item, all eight MARKS, 999999.
+                            Hold B to walk through grass.
+                   --classic  upstream's own debug menu on SELECT.
+                            Hold B to skip battles.
+  --ai           GBA only. A model plays it, through engineAi and a LiteLLM
+                 proxy on the tailnet. Loading the Lua bridge in mGBA is still
+                 manual on 0.10.5; the script prints the path. See ai/README.md
+  --clean        make clean first
+  --help         this
+
+WHEN IT BREAKS
+  make vanilla-check     builds pristine upstream in a throwaway worktree and
+                         checks the hashes. If vanilla matches, the toolchain
+                         is fine and the break is ours.
+  ./setup.sh             re-clones the three engines, fixes their branches, and
+                         reports what is missing.
+USAGE
+}
+for arg in "$@"; do
+  case "$arg" in -h|--help|help) usage; exit 0 ;; esac
+done
+
 EDITION=content
 CLEAN=0
 DEBUG=0
@@ -61,7 +107,7 @@ for arg in "$@"; do
     --clean)         CLEAN=1 ;;
     --debug)         DEBUG=1 ;;
     --ai)            AI=1 ;;
-    *) echo "usage: ./bindDaemons.sh [content|context] [--classic] [--clean] [--debug] [--ai]" >&2; exit 1 ;;
+    *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
 done
 
