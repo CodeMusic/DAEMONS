@@ -79,6 +79,12 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
+  --fresh        start with an empty history. The agent PERSISTS its history
+                 to engineAi/server/gpt_data/history.json and reloads it on
+                 every start, so a restart is a resume, not a new run -- one
+                 file reached 1.08 MB and 93 items, and both models kept
+                 replaying a sentence from hours earlier because it was still
+                 in there. The old files are moved aside, never deleted.
   --model NAME   use a specific model instead of the "daemons" group. Names
                  come from tools/ai_models.py, which reads them out of LM
                  Studio -- e.g. qwen3-vl-8b, minicpm-v-4-6.
@@ -200,6 +206,7 @@ DEBUG=0
 CLASSIC=0
 AI=0
 FULL_SCHEMA=0
+FRESH=0
 WANT_MODEL=""
 for arg in "$@"; do
   if [[ "$WANT_MODEL" == "__next__" ]]; then WANT_MODEL="$arg"; continue; fi
@@ -210,6 +217,7 @@ for arg in "$@"; do
     --debug)         DEBUG=1 ;;
     --ai)            AI=1 ;;
     --full-schema)   FULL_SCHEMA=1 ;;
+    --fresh)         FRESH=1 ;;
     --model)         WANT_MODEL="__next__" ;;
     *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
@@ -446,6 +454,20 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
      pgrep -f "http.server $DASH_PORT" >/dev/null 2>&1; then
     echo "a previous --ai is still running; stopping it first…"
     ai_stop keep-emulator
+  fi
+
+  # THE HARNESS RESUMES BY DEFAULT, AND THAT IS INVISIBLE. Say how much history
+  # is being loaded, because a 1 MB history.json is the difference between an
+  # agent thinking and an agent replaying a transcript of its worst turns.
+  GPT_DATA="$HARNESS/server/gpt_data"
+  if [[ $FRESH -eq 1 && -d "$GPT_DATA" ]]; then
+    ARCHIVE="$GPT_DATA/../gpt_data_$(date +%Y%m%d-%H%M%S)"
+    mv "$GPT_DATA" "$ARCHIVE"
+    echo "  history   cleared (previous run archived to $(basename "$ARCHIVE"))"
+  elif [[ -f "$GPT_DATA/history.json" ]]; then
+    H=$(python3 -c "import json,sys;print(len(json.load(open(sys.argv[1]))))" "$GPT_DATA/history.json" 2>/dev/null || echo "?")
+    K=$(( $(wc -c < "$GPT_DATA/history.json") / 1024 ))
+    echo "  history   RESUMING ${H} items, ${K} KB — pass --fresh to start clean"
   fi
 
   mkdir -p ai/logs
