@@ -71,11 +71,19 @@ on *press up, press up* is waste.
 
 ## The one manual step
 
-mGBA 0.10.5 has no `--script`; that arrived in 0.11. So after `--ai` launches
-the emulator:
+mGBA 0.10.5 has no `--script`; that arrived in 0.11.
 
-**Tools → Scripting → File → Load script**, and choose
-`engineAi/mgba/scripts/FireRedBridgeSocketServer.lua`
+**Tools → Scripting** opens a window whose only obvious control is a text box
+and a **Run** button — and *that box is a Lua REPL, not a file picker.* A path
+typed into it fails with `unexpected symbol near '~'`. Paste this instead
+(absolute: Lua does not expand `~`):
+
+```lua
+dofile("/ABSOLUTE/PATH/TO/mgba/scripts/FireRedBridgeSocketServer.lua")
+```
+
+`--ai` prints the exact line. The menu route also works — **File → Load
+script…**, in the macOS menu bar with the Scripting window focused.
 
 ## An open question worth keeping
 

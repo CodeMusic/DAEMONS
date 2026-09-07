@@ -262,6 +262,9 @@ if [[ $AI -eq 1 ]]; then
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes
 
+  # Resolved through the symlink and made absolute, because Lua does not
+  # expand ~ and the REPL is where this path actually gets pasted.
+  LUA_PATH="$(cd "$HARNESS/mgba/scripts" && pwd -P)/FireRedBridgeSocketServer.lua"
   mkdir -p ai/logs
   echo "starting bridge and agent…"
   ( cd "$HARNESS" && python3 firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &
@@ -276,9 +279,11 @@ if [[ $AI -eq 1 ]]; then
   symbols   ai/pokefirered.sym (this build)
 
   ONE STEP IS STILL YOURS. mGBA 0.10.5 has no --script; that landed in 0.11.
-  In mGBA: Tools -> Scripting -> File -> Load script, and choose
+  Tools -> Scripting opens a box with a Run button -- that box is a Lua REPL,
+  not a file picker, and a bare path fails with "unexpected symbol near '~'".
+  Paste this and press Run:
 
-      $PWD/$HARNESS/mgba/scripts/FireRedBridgeSocketServer.lua
+      dofile("$LUA_PATH")
 
   Then the dashboard:  cd $HARNESS/frontend && python3 -m http.server 5173
   Stop everything:     kill %1 %2
