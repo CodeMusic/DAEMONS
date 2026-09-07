@@ -111,12 +111,18 @@ Verified both ways: with the Scripting window closed mGBA still held 8888 and
 So it is **once per emulator launch** — and `--ai` quits and relaunches mGBA
 every time, so once per `--ai`:
 
-1. `./bindDaemons.sh --ai`
+1. `./bindDaemons.sh --ai` — builds, regenerates symbols, starts the bridge,
+   the agent **and the dashboard** on <http://localhost:5173>
 2. **Tools → Scripting**, paste the `dofile(...)` line it printed, press Run
 3. **Close the window.** Nothing stops.
 
-Re-running `--ai` stops the previous bridge and agent before starting new ones,
-so runs do not pile up on :8000.
+`./bindDaemons.sh --stop` ends the run. **Ctrl+C does not** — it stops whatever
+is in the foreground, and the bridge and agent are started by the script and
+outlive it, so a leftover bridge keeps holding :8000.
+
+*You do not have to remember that.* `--ai` detects a run that is still up and
+stops it properly first — waiting for the port to be released rather than
+firing a `pkill` and moving on, which would leave the new bridge dying on bind.
 
 ## The one manual step
 

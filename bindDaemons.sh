@@ -79,7 +79,10 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
-  --stop         stop a running --ai: bridge, agent, dashboard and mGBA
+  --stop         stop a running --ai: bridge, agent, dashboard and mGBA.
+                 Ctrl+C only stops the foreground, so this is the one that
+                 actually ends a run. --ai calls it for you if a previous run
+                 is still up.
   --clean        make clean first
   --help         this
 
@@ -112,7 +115,8 @@ done
 
 # The processes --ai starts. One list, used to stop a previous run before
 # starting and by --stop, so the two can never disagree about what to kill.
-AI_PROCS=("firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server" "http.server 5173")
+DASH_PORT="${DAEMONS_DASH_PORT:-5173}"
+AI_PROCS=("firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server" "http.server $DASH_PORT")
 ai_stop() {
   local found=0 pat n
   for pat in "${AI_PROCS[@]}"; do
@@ -347,11 +351,17 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
     echo "agent dependencies missing — run:" >&2
     echo "    (cd $HARNESS/server && npm ci)" >&2; exit 1; }
 
-  # STOP THE PREVIOUS RUN FIRST. Each --ai starts a bridge on :8000 and an
-  # agent, and mGBA is relaunched above regardless -- so without this a second
-  # run leaves the first bridge holding the port, the new one dies on bind, and
-  # the agent talks to a bridge pointed at an emulator that no longer exists.
-  for pat in "${AI_PROCS[@]}"; do pkill -f "$pat" 2>/dev/null || true; done
+  # STOP THE PREVIOUS RUN FIRST, AND WAIT FOR IT. Ctrl+C only stops whatever is
+  # in the foreground, so a previous run's bridge is usually still holding
+  # :8000 -- and a bare pkill here would move on before it let go, so the new
+  # bridge would die on bind and the agent would talk to nothing. ai_stop is
+  # the same function --stop uses: it waits, escalates, and verifies.
+  if pgrep -f "firered_mgba_bridge.py" >/dev/null 2>&1 ||
+     pgrep -f "gpt-play-pokemon-firered-daemons/server" >/dev/null 2>&1 ||
+     pgrep -f "http.server $DASH_PORT" >/dev/null 2>&1; then
+    echo "a previous --ai is still running; stopping it first…"
+    ai_stop
+  fi
 
   mkdir -p ai/logs
   echo "starting bridge and agent…"
@@ -360,6 +370,15 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
   echo "  bridge  pid $!  -> ai/logs/bridge.log"
   ( cd "$HARNESS/server" && npm start ) >ai/logs/agent.log 2>&1 &
   echo "  agent   pid $!  -> ai/logs/agent.log"
+  # The dashboard is part of the run rather than a line to copy afterwards --
+  # and being in AI_PROCS means --stop takes it down with everything else.
+  if lsof -nP -iTCP:"$DASH_PORT" -sTCP:LISTEN >/dev/null 2>&1; then
+    echo "  dash    :$DASH_PORT already in use — left alone"
+  else
+    ( cd "$HARNESS/frontend" && python3 -m http.server "$DASH_PORT" ) \
+      >ai/logs/dashboard.log 2>&1 &
+    echo "  dash    pid $!  -> http://localhost:$DASH_PORT"
+  fi
 
   cat <<AIEOF
 
@@ -374,8 +393,7 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
 
       dofile("$LUA_PATH")
 
-  Dashboard (optional): (cd $HARNESS/frontend && python3 -m http.server 5173)
-                        then http://localhost:5173
+  Dashboard:            http://localhost:$DASH_PORT  (already started)
 
   STOP EVERYTHING:      ./bindDaemons.sh --stop
 
