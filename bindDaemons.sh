@@ -431,7 +431,16 @@ if [[ $AI -eq 1 ]]; then
   # mlx-vlm's own request log, so we know it is honoured. The effort setting is
   # sent too, but whether this serving layer acts on it is unverified -- so it
   # is the belt, and the cap is the braces.
-  : "${DAEMONS_MAX_OUTPUT_TOKENS:=2048}"
+  # 2048 was too tight and I have the numbers to prove it: finish_reason=tool
+  # went from 37 an hour to 3, and finish_reason=length from 0 to 13. The cap
+  # was cutting turns off mid-reasoning, before they ever reached the tool
+  # call, so it traded a rare 5-minute runaway for a routine wasted turn.
+  #
+  # 4096 clears every legitimate output observed (longest ~2010) and still caps
+  # a runaway near 60s rather than 457s. The precise instrument for the actual
+  # problem -- reasoning that will not stop -- is mlx-vlm's --thinking-budget,
+  # which bounds the thinking block and leaves room for the call after it.
+  : "${DAEMONS_MAX_OUTPUT_TOKENS:=4096}"
   : "${OPENAI_REASONING_EFFORT:=medium}"
   : "${OPENAI_REASONING_EFFORT_BATTLE:=medium}"
   : "${OPENAI_REASONING_EFFORT_DIALOG:=medium}"
