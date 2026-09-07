@@ -48,7 +48,15 @@ mm.DIV = DIV               # midi_bytes does its tick maths off this; keep them 
 
 #  GM programs into voicegroup191 -- see tools/gbavoices.py.
 PIANO, HARP, BASS, TIMPANI, STRINGS, TRUMPET = 0, 46, 33, 47, 48, 56
-GLOCK = 9        # the intro theme's lead, once it is split out of "other"
+#  The intro theme's lead, once it is split out of "other". Glockenspiel (9)
+#  first, and it read as hard rather than delicate: attack 255 against sustain
+#  51 is a struck bell, and this line sits between G4 and C6 where that is all
+#  edge. The harp's slow decay (242 falling to a sustain of 0) blooms and fades
+#  instead, and it sits under the piano's own attack rather than on top of it.
+#  Tubular bell (14) is the other way to go if the bell itself is wanted back.
+GLOCK = 9
+LEAD, LEAD_VEL = HARP, 66        # was GLOCK at 82, which was louder than the
+                                 # accompaniment it was supposed to float over
 
 #  the word in a stem's filename -> (label, program, velocity, chord voice)
 #
@@ -361,7 +369,7 @@ def main():
                 print("  %-10s %4d heard, %4d cells, %s..%s, %d snapped"
                       % (label + "-lead", len(lead), len(sl),
                          librosa.midi_to_note(min(sl)), librosa.midi_to_note(max(sl)), lm))
-                parts.append(voiced(GLOCK, 82, mm.merge(lc)))
+                parts.append(voiced(LEAD, LEAD_VEL, mm.merge(lc)))
                 span[label + "-lead"] = (np.percentile(sl, 3), np.percentile(sl, 90), len(sl))
         cells = cells_from(raw, grid, times, keep)
         cells, moved = snap(cells, scale)
