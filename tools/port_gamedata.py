@@ -42,6 +42,44 @@ PLACES = [
 ]
 
 
+#  The dashboard's PROGRESS panel. Labels only -- id and trigger are matched
+#  against game flags and must not move.
+PROGRESS_LABELS = {
+    "Starter Pokémon": "Starter DAEMON",   "Get Pokédex": "Get the INDEX",
+    "Boulder Badge": "SLATE MARK",         "Cascade Badge": "SLOPE MARK",
+    "Thunder Badge": "SENSE MARK",         "Rainbow Badge": "FIT MARK",
+    "Soul Badge": "SKEW MARK",             "Marsh Badge": "FRAME MARK",
+    "Volcano Badge": "HEAT MARK",          "Earth Badge": "TRUE MARK",
+    "Mt. Moon": "DEADSTACK",               "Rock Tunnel": "THE BLACKOUT",
+    "Victory Road": "UMBRAL ASCENT",       "Elite Four": "THE REVIEW BOARD",
+    "Pokémon Tower": "HALFTONE TOWER",     "Pokémon Mansion": "DAEMON MANSION",
+    "Rocket Hideout": "CORPUS HIDEOUT",
+}
+
+
+def port_progress():
+    """Rewrite the milestone labels. Both copies -- server/progress_steps.json
+    and the gpt_data mirror -- or the dashboard and the agent disagree."""
+    total = 0
+    for rel in ("engineAi/server/progress_steps.json",
+                "engineAi/server/gpt_data/progress_steps.json"):
+        f = os.path.join(ROOT, rel)
+        if not os.path.isfile(f):
+            continue
+        doc = json.load(open(f, encoding="utf-8"))
+        steps = doc if isinstance(doc, list) else doc.get("steps", [])
+        n = 0
+        for e in steps:
+            lab = e.get("label")
+            if lab in PROGRESS_LABELS:
+                e["label"] = PROGRESS_LABELS[lab]; n += 1
+        print("  %-40s %2d of %d labels" % (os.path.basename(rel), n, len(steps)))
+        total += n
+        if WRITE:
+            json.dump(doc, open(f, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+    return total
+
+
 def upstream_header(path):
     """Vanilla's copy of the same file, from the fork's upstream remote."""
     import subprocess
@@ -126,6 +164,8 @@ def main():
             if new != name:
                 maps[num] = new; changed += 1
     report.append(("MAP_NAME_TABLE", changed, "%d maps" % sum(len(m) for m in raw["MAP_NAME_TABLE"].values())))
+
+    port_progress()
 
     for k, n, note in report:
         print("  %-18s %4d renamed   (%s)" % (k, n, note))
