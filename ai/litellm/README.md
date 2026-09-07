@@ -28,47 +28,28 @@ after the model has finished, and the SDK — which is doing
 `for await (const event of stream)` — cannot parse that. It is not a tuning
 problem, it is the wrong instrument.
 
-## Tailscale — state as of 2026-09-07
+## Tailscale — up, 2026-09-07
 
-| | |
+| machine | tailnet IP |
 |---|---|
-| roverbyteseer | `Tailscale.app` **installed**, `Logged out` — needs a login |
-| laptop | **not installed** |
+| roverbyteseer | `100.67.234.4` |
+| christophers-m2-pro-macbook-pro | `100.73.126.30` |
+
+MagicDNS resolves `roverbyteseer` to `roverbyteseer.taile54412.ts.net`, and the
+proxy answers on it. Verified laptop → tailnet → LiteLLM → Bonsai end to end,
+with the key read over ssh by the tailnet name.
+
+`bindDaemons.sh --ai` picks `roverbyteseer` on its first probe, so **the same
+command now works at home and away with nothing to change.**
 
 The CLI is inside the bundle rather than on `PATH`:
-`/Applications/Tailscale.app/Contents/MacOS/Tailscale`. Add an alias or call it
-by full path.
+`/Applications/Tailscale.app/Contents/MacOS/Tailscale`. That is why
+`command -v tailscale` finds nothing on a machine that has it.
 
-Both remaining steps are browser logins against your account, so they are
-yours to do:
-
-**On roverbyteseer** — open Tailscale.app and sign in, or headless with a key
-you generate at `login.tailscale.com/admin/settings/keys`:
-
-```
-/Applications/Tailscale.app/Contents/MacOS/Tailscale up --authkey=tskey-...
-```
-
-**On the laptop** — install, then sign in:
-
-```
-brew install --cask tailscale
-```
-
-**Turn MagicDNS on** in the admin console, or `roverbyteseer` will only be
-reachable by its `100.x` address and the whole point — one hostname that works
-everywhere — is lost.
-
-Then `bindDaemons.sh`'s default becomes the tailnet name and stops changing
-between home and away:
-
-```
-OPENAI_BASE_URL=http://roverbyteseer:4000/v1
-```
-
-Until then the LAN name works and is what the script defaults to:
-`http://roverbyteseer.local:4000/v1` — verified resolving to 10.0.0.136 and
-answering.
+*To add a third machine:* install Tailscale, sign in with **the same identity
+provider** — a different one makes a second tailnet, and the symptom is
+confusing because both machines report connected while `roverbyteseer` resolves
+to nothing — then `./setup.sh`, which reports what is missing.
 
 ## Why Tailscale, and the question disappears
 
