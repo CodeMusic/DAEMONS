@@ -178,7 +178,15 @@ model_list:
   # Start the server before using this model:
   #   APC_ENABLED=1 ~/.vllm-venv/bin/python -m mlx_vlm.server \
   #     --model ~/.lmstudio/models/mlx-community/MiniCPM-V-4.6-4bit --port 8101
-  # Confirm it took: curl -s http://127.0.0.1:8101/ | python3 -m json.tool | grep -A2 apc
+  # Confirm it took -- and note the endpoint, because "/" is a 404 whose body
+  # parses as JSON and answers null to every key, which reads exactly like
+  # "APC is off":
+  #   curl -s http://127.0.0.1:8101/v1/settings   -> current.apc_enabled: true
+  #   curl -s http://127.0.0.1:8101/v1/cache/stats -> token_hit_rate after a run
+  #
+  # Capacity is block_size 16 x num_blocks 2048 = 32,768 tokens, against a
+  # shared prefix measured at ~31.5% of a ~42k-token prompt (~13k tokens), so
+  # it fits. APC_NUM_BLOCKS raises it if that stops being true.
   - model_name: minicpm-mlxvlm
     litellm_params:
       model: openai//Users/roverbyte/.lmstudio/models/mlx-community/MiniCPM-V-4.6-4bit
