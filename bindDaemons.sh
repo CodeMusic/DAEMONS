@@ -389,6 +389,8 @@ if [[ $AI -eq 1 ]]; then
   # instead, which is the same content.
   : "${DAEMONS_EXTEND_TOOL_OUTPUT:=0}"
   export DAEMONS_EXTEND_TOOL_OUTPUT
+  : "${DAEMONS_DUMP_INPUT:=$PWD/ai/logs/last-input.json}"
+  export DAEMONS_DUMP_INPUT
   export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes
