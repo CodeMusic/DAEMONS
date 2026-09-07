@@ -1,0 +1,261 @@
+<title>The Chart and the States</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  --paper:#f4f3ee; --raise:#fbfaf7; --ink:#16181c; --dim:#565c66; --faint:#878d96;
+  --rule:#dbdad3; --rule-hard:#b0b3b7; --slate:#3f5f88; --slate-soft:#607a9e;
+  --warn:#a8452e; --good:#3f6f4a;
+  --cell-2:#3f5f88; --cell-half:#9aa0a8; --cell-0:#16181c;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131519; --raise:#1b1e24; --ink:#e8e6e0; --dim:#a2a8b2; --faint:#767c86;
+    --rule:#2a2e35; --rule-hard:#414751; --slate:#8fb0d8; --slate-soft:#7f9cc4;
+    --warn:#e0866c; --good:#7fb389;
+    --cell-2:#8fb0d8; --cell-half:#6d737d; --cell-0:#e8e6e0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131519; --raise:#1b1e24; --ink:#e8e6e0; --dim:#a2a8b2; --faint:#767c86;
+  --rule:#2a2e35; --rule-hard:#414751; --slate:#8fb0d8; --slate-soft:#7f9cc4;
+  --warn:#e0866c; --good:#7fb389;
+  --cell-2:#8fb0d8; --cell-half:#6d737d; --cell-0:#e8e6e0;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 96px;display:flex;flex-direction:column;gap:52px}
+h1,h2,h3,.ui{font-family:"IBM Plex Sans",system-ui,sans-serif}
+h1{font-size:clamp(30px,4.4vw,46px);line-height:1.08;margin:0;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:23px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:0 0 8px;letter-spacing:.01em}
+p{margin:0 0 14px;max-width:66ch}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+.lede{font-size:18px;color:var(--dim);max-width:64ch;margin:16px 0 0}
+header{border-bottom:2px solid var(--rule-hard);padding-bottom:28px}
+section{display:flex;flex-direction:column;gap:14px}
+.sec-head{border-top:1px solid var(--rule-hard);padding-top:16px}
+mark{background:none;color:var(--ink);font-weight:600;box-shadow:inset 0 -.42em 0 color-mix(in srgb,var(--slate-soft) 26%,transparent)}
+code,.mono{font-family:"IBM Plex Mono",monospace;font-size:.88em}
+a{color:var(--slate)}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:2px;background:var(--raise)}
+table.grid{border-collapse:separate;border-spacing:0;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;font-variant-numeric:tabular-nums}
+table.grid th,table.grid td{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:0;text-align:center}
+table.grid thead th{position:sticky;top:0;background:var(--raise);z-index:2;
+  height:78px;vertical-align:bottom;padding-bottom:7px;width:34px;min-width:34px}
+table.grid thead th.corner{left:0;z-index:3;width:96px;min-width:96px}
+table.grid tbody th{position:sticky;left:0;background:var(--raise);z-index:1;
+  text-align:right;padding:0 9px;width:96px;min-width:96px;font-weight:500;height:26px}
+.vlabel{writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.06em;
+  font-size:10px;color:var(--dim);white-space:nowrap;margin:0 auto}
+.swatch{width:14px;height:4px;border-radius:1px;margin:0 auto 6px}
+.rowlab{display:inline-flex;align-items:center;gap:7px;justify-content:flex-end;width:100%}
+.rowlab i{width:4px;height:13px;border-radius:1px;flex:none}
+td.c{height:26px;width:34px;color:var(--faint)}
+td.c .m{display:inline-flex;align-items:center;justify-content:center;
+  width:19px;height:19px;border-radius:2px;font-size:10px;font-weight:600;line-height:1}
+td.c.x2 .m{background:var(--cell-2);color:var(--paper)}
+td.c.xh .m{border:1.5px solid var(--cell-half);color:var(--cell-half)}
+td.c.x0 .m{background:var(--cell-0);color:var(--paper)}
+td.c.x1 .m{color:color-mix(in srgb,var(--faint) 50%,transparent)}
+tr.on th,tr.on td{background:color-mix(in srgb,var(--slate-soft) 11%,transparent)}
+td.oncol{background:color-mix(in srgb,var(--slate-soft) 11%,transparent)}
+td.hit{outline:2px solid var(--slate);outline-offset:-2px;position:relative;z-index:1}
+.key{display:flex;flex-wrap:wrap;gap:18px;align-items:center;font-family:"IBM Plex Sans",sans-serif;
+  font-size:12.5px;color:var(--dim)}
+.key span{display:inline-flex;align-items:center;gap:7px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+button.chip{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.05em;
+  border:1px solid var(--rule-hard);background:var(--raise);color:var(--dim);
+  padding:5px 9px 5px 7px;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+button.chip i{width:4px;height:11px;border-radius:1px;flex:none}
+button.chip[aria-pressed="true"]{border-color:var(--slate);color:var(--ink);
+  background:color-mix(in srgb,var(--slate-soft) 14%,var(--raise))}
+button.chip:focus-visible,a:focus-visible{outline:2px solid var(--slate);outline-offset:2px}
+#focus{border:1px solid var(--rule);border-left:3px solid var(--slate);background:var(--raise);
+  padding:18px 20px;border-radius:2px;display:flex;flex-direction:column;gap:12px}
+#focus .clause{font-size:17px;font-style:italic;color:var(--ink);max-width:60ch;margin:0}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 22px}
+.rel div{font-size:13px;padding:5px 0;border-bottom:1px solid var(--rule);
+  font-family:"IBM Plex Sans",sans-serif;color:var(--dim)}
+.rel b{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--ink);font-size:11.5px}
+.score{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint)}
+table.tbl{width:100%;border-collapse:collapse;font-size:14px}
+table.tbl th{font-family:"IBM Plex Sans",sans-serif;font-size:11px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--faint);text-align:left;font-weight:600;
+  padding:0 14px 8px 0;border-bottom:1px solid var(--rule-hard)}
+table.tbl td{padding:11px 14px 11px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.tbl td.was{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--faint);white-space:nowrap}
+table.tbl td.now{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+table.tbl td.now small{display:block;font-weight:400;color:var(--faint);font-size:11px;letter-spacing:.06em}
+.note{font-size:13.5px;color:var(--dim);border-left:2px solid var(--rule-hard);padding-left:14px;max-width:62ch}
+.fail{color:var(--warn);font-weight:600}
+.open{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+  border:1px solid var(--warn);color:var(--warn);padding:1px 5px;border-radius:2px;vertical-align:2px}
+footer{border-top:1px solid var(--rule-hard);padding-top:18px;font-size:12.5px;color:var(--faint);
+  font-family:"IBM Plex Sans",sans-serif}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>.key em{display:inline-block;width:17px;height:17px;border-radius:2px;vertical-align:-4px}
+.key .m-2{background:var(--cell-2)}.key .m-h{border:1.5px solid var(--cell-half)}
+.key .m-0{background:var(--cell-0)}</style><style>
+.card{border:1px solid var(--rule);border-left:3px solid var(--rule-hard);background:var(--raise);
+  padding:14px 16px;border-radius:2px;margin:0 0 12px;break-inside:avoid}
+.card h3{margin:12px 0 4px}
+.card .clause{font-size:15px;font-style:italic;margin:0;max-width:60ch}
+@page{size:A4;margin:14mm}
+@media print{
+  body{background:#fff;color:#000}
+  .wrap{max-width:none;padding:0;gap:26px}
+  .scroll{border-color:#bbb}
+  section,.card,table.tbl tr{break-inside:avoid}
+  h2{break-after:avoid}
+  table.grid thead th,table.grid tbody th{position:static}
+}
+</style><div class="wrap">
+<header>
+  <p class="eyebrow">CONTEXT / CONTENT · design bible v11.105 · §2</p>
+  <h1>The Chart and the States</h1>
+  <p class="lede">All 83 relations under our fifteen names, what each one teaches, and how the
+  argument survives a daemon that is two things at once. Plus the six process states a daemon
+  can be left in, and the items that get it out of them.</p>
+</header>
+
+<section>
+  <div class="sec-head"><h2>The matrix</h2></div>
+  <p>Rows attack, columns defend. Read <code>LOGIC → CONTEXT</code> as the row LOGIC meeting
+  the column CONTEXT: <mark>×½, the thesis</mark>. Every type’s clause and all of its relations follow the matrix.</p>
+  <div class="key">
+    <span><em class="m-2"></em> ×2 effective</span>
+    <span><em class="m-h"></em> ×½ resisted</span>
+    <span><em class="m-0"></em> ×0 no effect</span>
+    <span>· blank is ×1</span>
+    <span style="margin-left:auto">Hue is the type (9.4). Effectiveness is weight, never colour.</span>
+  </div>
+  
+  <div class="scroll"><table class="grid"><thead><tr><th class="corner"></th><th><div class="swatch" style="background:#c6bca8"></div><div class="vlabel">CONTENT</div></th><th><div class="swatch" style="background:#607a9e"></div><div class="vlabel">LOGIC</div></th><th><div class="swatch" style="background:#ce4646"></div><div class="vlabel">VECTOR</div></th><th><div class="swatch" style="background:#84764a"></div><div class="vlabel">CORRUPT</div></th><th><div class="swatch" style="background:#9e7a4e"></div><div class="vlabel">STRATUM</div></th><th><div class="swatch" style="background:#82828a"></div><div class="vlabel">LEGACY</div></th><th><div class="swatch" style="background:#809448"></div><div class="vlabel">SWARM</div></th><th><div class="swatch" style="background:#5c4676"></div><div class="vlabel">LATENT</div></th><th><div class="swatch" style="background:#de9e2e"></div><div class="vlabel">ENTROPY</div></th><th><div class="swatch" style="background:#466ab0"></div><div class="vlabel">FLOW</div></th><th><div class="swatch" style="background:#5c9e60"></div><div class="vlabel">GROWTH</div></th><th><div class="swatch" style="background:#56bebe"></div><div class="vlabel">SIGNAL</div></th><th><div class="swatch" style="background:#b0569e"></div><div class="vlabel">CONTEXT</div></th><th><div class="swatch" style="background:#a6cede"></div><div class="vlabel">FROZEN</div></th><th><div class="swatch" style="background:#4ea89c"></div><div class="vlabel">EMERGENT</div></th></tr></thead><tbody><tr><th><span class="rowlab"><i style="background:#c6bca8"></i>CONTENT</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x0"><span class="m">0</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#607a9e"></i>LOGIC</span></th><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x0"><span class="m">0</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#ce4646"></i>VECTOR</span></th><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#84764a"></i>CORRUPT</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#9e7a4e"></i>STRATUM</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x0"><span class="m">0</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#82828a"></i>LEGACY</span></th><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#809448"></i>SWARM</span></th><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#5c4676"></i>LATENT</span></th><td class="c x0"><span class="m">0</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#de9e2e"></i>ENTROPY</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td></tr><tr><th><span class="rowlab"><i style="background:#466ab0"></i>FLOW</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td></tr><tr><th><span class="rowlab"><i style="background:#5c9e60"></i>GROWTH</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td></tr><tr><th><span class="rowlab"><i style="background:#56bebe"></i>SIGNAL</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x0"><span class="m">0</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td></tr><tr><th><span class="rowlab"><i style="background:#b0569e"></i>CONTEXT</span></th><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td></tr><tr><th><span class="rowlab"><i style="background:#a6cede"></i>FROZEN</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c xh"><span class="m">&frac12;</span></td><td class="c x2"><span class="m">2</span></td></tr><tr><th><span class="rowlab"><i style="background:#4ea89c"></i>EMERGENT</span></th><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x1"><span class="m"></span></td><td class="c x2"><span class="m">2</span></td></tr></tbody></table></div>
+  
+  <p class="note">Colour does one job on this page and the game makes the same promise:
+  §9.4 spends hue on <em>type</em>, so a second colour system for effectiveness would put two
+  meanings on one channel. Filled, hollow and barred carry the multiplier instead.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>A daemon that is two things</h2></div>
+  <p>Both engines allow two types per species and multiply the two lookups, so a
+  <code>CONTEXT/LATENT</code> daemon takes SWARM at ×2 for its CONTEXT half and ×½ for its
+  LATENT half, and the answer is ×1. Four outcomes exist that single types cannot reach:
+  <mark>×4, ×¼, and either ×0 overriding everything</mark>.</p>
+  <p>That multiplication is not a mechanic bolted onto the thesis, it <em>is</em> the thesis
+  at the scale of one creature. A dual type is <strong>two simultaneous accounts of the same
+  process</strong>, which is what §0.4 says CONTENT and CONTEXT are. When both accounts agree
+  that something is a weakness, it compounds to ×4 — <em>two readings converging is not
+  twice as much information, it is twice as much exposure.</em></p>
+  <table class="tbl">
+    <thead><tr><th>Pairing</th><th>What the arithmetic says</th></tr></thead>
+    <tbody>
+      <tr><td class="now">CONTENT / CONTEXT</td><td>The thesis in one daemon: the literal thing and the frame it is read in. LOGIC hits ×2 on the CONTENT half and ×½ on the CONTEXT half — <strong>×1, and the argument cancels itself out.</strong> Worth building on purpose.</td></tr>
+      <tr><td class="now">CONTEXT / LATENT</td><td>Both halves take LATENT and CONTEXT at ×2 (§2.4's mutual pair), so it is <strong>×4 to itself and to its own opposite.</strong> The most fragile thing in the game, against exactly the two types that understand it.</td></tr>
+      <tr><td class="now">LOGIC / LEGACY</td><td>Rules running on old silicon. FLOW and GROWTH both ×2 on LEGACY, unmodified on LOGIC — a formalist that erodes.</td></tr>
+      <tr><td class="now">STRATUM / VECTOR</td><td>Contradictory by construction: STRATUM is the physical layer, VECTOR has no location. STRATUM's own ×0 against VECTOR does not protect it. <strong>A daemon that cannot be coherently described.</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span class="open">GAP</span> <strong>§9.4 does not yet say what a dual-type
+  daemon looks like.</strong> The type ramp is one hue across palette indices 1–5, and a
+  two-typed creature has two claims on it. The cheapest answer uses machinery 9.4 already
+  built: <mark>the ramp takes the primary type, and one of the five accent slots (6–10) is
+  reserved for the secondary's hue</mark> — so the label stays unambiguous and the second
+  reading is present as a marking rather than a wash. Not decided here.</p>
+</section>
+<section><div class="sec-head"><h2>The fifteen, one clause each</h2></div><p>From §2.6’s one-clause test: one sentence a non-specialist understands, walked against every relation the type is in. Three predictions and no net contradictions is a pass. <strong>Thirteen pass; LEGACY and VECTOR fail.</strong></p><div class="card" style="border-left-color:#c6bca8"><p class="eyebrow" style="margin:0 0 6px">CONTENT · one-clause test <span class="">3 / 4</span></p><p class="clause">“the thing itself, with nothing read into it”</p><h3>What it hits</h3><div class="rel"><div><b>LEGACY ×½</b> — literal data slides off old silicon</div><div><b>LATENT ×0</b> — the literal cannot reach what was never surfaced</div></div><h3>What hits it</h3><div class="rel"><div><b>LOGIC ×2</b> — rules parse data — the easy half of the thesis</div><div><b>LATENT ×0</b> — the unsurfaced cannot touch the literal</div></div></div><div class="card" style="border-left-color:#607a9e"><p class="eyebrow" style="margin:0 0 6px">LOGIC · one-clause test <span class="">7 / 12</span></p><p class="clause">“formal rules applied step by step; proof, not intuition”</p><h3>What it hits</h3><div class="rel"><div><b>CONTENT ×2</b> — rules parse data — the easy half of the thesis</div><div><b>VECTOR ×½</b> — symbols find no grip in a latent space</div><div><b>CORRUPT ×½</b> — rules get poor purchase on tampered input</div><div><b>LEGACY ×2</b> — inherited from ROCK; the clause predicts nothing here</div><div><b>SWARM ×½</b> — no single rule addresses a crowd</div><div><b>LATENT ×0</b> — rules cannot reach what is not surfaced</div><div><b>CONTEXT ×½</b> — THE THESIS — rules bounce off framing</div><div><b>FROZEN ×2</b> — proof cracks what stopped moving</div></div><h3>What hits it</h3><div class="rel"><div><b>VECTOR ×2</b> — learned direction beats hand-written rules — real, but invisible without ML</div><div><b>LEGACY ×½</b> — inherited from ROCK</div><div><b>SWARM ×½</b> — rules and crowds do not engage</div><div><b>CONTEXT ×2</b> — THE THESIS — framing beats rules</div></div></div><div class="card" style="border-left-color:#ce4646"><p class="eyebrow" style="margin:0 0 6px">VECTOR · one-clause test <span class="fail">1 / 12, one contradicted — FAILS</span></p><p class="clause">“direction in a space of meanings”</p><h3>What it hits</h3><div class="rel"><div><b>LOGIC ×2</b> — learned direction beats hand-written rules — real, but invisible without ML</div><div><b>LEGACY ×½</b> — inherited from FLYING</div><div><b>SWARM ×2</b> — a heading organises a crowd</div><div><b>GROWTH ×2</b> — a heading outpaces undirected fitting</div><div><b>SIGNAL ×½</b> — inherited from FLYING</div></div><h3>What hits it</h3><div class="rel"><div><b>LOGIC ×½</b> — symbols find no grip in a latent space</div><div><b>STRATUM ×0</b> — the physical layer cannot reach what has no location</div><div><b>LEGACY ×2</b> — inherited from ROCK</div><div><b>SWARM ×½</b> — a crowd cannot be given a heading</div><div><b>GROWTH ×½</b> — nothing to root into</div><div><b>SIGNAL ×2</b> — current disrupts a heading</div><div><b>FROZEN ×2</b> — inherited from ICE</div></div></div><div class="card" style="border-left-color:#84764a"><p class="eyebrow" style="margin:0 0 6px">CORRUPT · one-clause test <span class="">6 / 11</span></p><p class="clause">“data that has been tampered with”</p><h3>What it hits</h3><div class="rel"><div><b>CORRUPT ×½</b> — corruption does not compound</div><div><b>STRATUM ×½</b> — bad data does not damage the layer beneath it</div><div><b>LEGACY ×½</b> — nor the silicon beneath that</div><div><b>LATENT ×½</b> — you cannot poison what is not running</div><div><b>GROWTH ×2</b> — poisoned data ruins training</div></div><h3>What hits it</h3><div class="rel"><div><b>LOGIC ×½</b> — rules get poor purchase on tampered input</div><div><b>CORRUPT ×½</b> — corruption does not compound</div><div><b>STRATUM ×2</b> — the layer beneath outlasts bad data</div><div><b>SWARM ×½</b> — no single agent to poison</div><div><b>GROWTH ×½</b> — growth cannot clean bad data</div><div><b>CONTEXT ×2</b> — framing is how bias is exposed</div></div></div><div class="card" style="border-left-color:#9e7a4e"><p class="eyebrow" style="margin:0 0 6px">STRATUM · one-clause test <span class="">7 / 13</span></p><p class="clause">“the physical layer everything else runs on”</p><h3>What it hits</h3><div class="rel"><div><b>VECTOR ×0</b> — the physical layer cannot reach what has no location</div><div><b>CORRUPT ×2</b> — the layer beneath outlasts bad data</div><div><b>LEGACY ×2</b> — newer substrate supersedes old silicon</div><div><b>SWARM ×½</b> — a layer cannot catch a distributed thing</div><div><b>ENTROPY ×2</b> — the substrate damps noise</div><div><b>GROWTH ×½</b> — training roots through the layer</div><div><b>SIGNAL ×2</b> — the physical layer grounds the signal</div></div><h3>What hits it</h3><div class="rel"><div><b>CORRUPT ×½</b> — bad data does not damage the layer beneath it</div><div><b>LEGACY ×½</b> — inherited from ROCK</div><div><b>FLOW ×2</b> — flow erodes the layer</div><div><b>GROWTH ×2</b> — roots break the layer</div><div><b>SIGNAL ×0</b> — grounded — the signal goes to earth</div><div><b>FROZEN ×2</b> — inherited from ICE</div></div></div><div class="card" style="border-left-color:#82828a"><p class="eyebrow" style="margin:0 0 6px">LEGACY · one-clause test <span class="fail">0 / 14 — FAILS</span></p><p class="clause">“deprecated hardware still running”</p><h3>What it hits</h3><div class="rel"><div><b>LOGIC ×½</b> — inherited from ROCK</div><div><b>VECTOR ×2</b> — inherited from ROCK</div><div><b>STRATUM ×½</b> — inherited from ROCK</div><div><b>SWARM ×2</b> — inherited from ROCK</div><div><b>ENTROPY ×2</b> — inherited from ROCK — 0 of 14 predicted</div><div><b>FROZEN ×2</b> — inherited from ROCK</div></div><h3>What hits it</h3><div class="rel"><div><b>CONTENT ×½</b> — literal data slides off old silicon</div><div><b>LOGIC ×2</b> — inherited from ROCK; the clause predicts nothing here</div><div><b>VECTOR ×½</b> — inherited from FLYING</div><div><b>CORRUPT ×½</b> — nor the silicon beneath that</div><div><b>STRATUM ×2</b> — newer substrate supersedes old silicon</div><div><b>ENTROPY ×½</b> — inherited from FIRE/ROCK</div><div><b>FLOW ×2</b> — flow erodes old silicon — the one LEGACY relation that reads</div><div><b>GROWTH ×2</b> — and split the silicon</div></div></div><div class="card" style="border-left-color:#809448"><p class="eyebrow" style="margin:0 0 6px">SWARM · one-clause test <span class="">4 / 13</span></p><p class="clause">“many small agents; no single one matters”</p><h3>What it hits</h3><div class="rel"><div><b>LOGIC ×½</b> — rules and crowds do not engage</div><div><b>VECTOR ×½</b> — a crowd cannot be given a heading</div><div><b>CORRUPT ×½</b> — no single agent to poison</div><div><b>LATENT ×½</b> — numbers do not reach the unsurfaced</div><div><b>ENTROPY ×½</b> — heat scatters it</div><div><b>GROWTH ×2</b> — a swarm consumes what grows</div><div><b>CONTEXT ×2</b> — a crowd destabilises one frame</div></div><h3>What hits it</h3><div class="rel"><div><b>LOGIC ×½</b> — no single rule addresses a crowd</div><div><b>VECTOR ×2</b> — a heading organises a crowd</div><div><b>STRATUM ×½</b> — a layer cannot catch a distributed thing</div><div><b>LEGACY ×2</b> — inherited from ROCK</div><div><b>ENTROPY ×2</b> — heat scatters a crowd</div><div><b>GROWTH ×½</b> — the crowd eats it first</div></div></div><div class="card" style="border-left-color:#5c4676"><p class="eyebrow" style="margin:0 0 6px">LATENT · one-clause test <span class="">6 / 9</span></p><p class="clause">“running below the surface, unobserved”</p><h3>What it hits</h3><div class="rel"><div><b>CONTENT ×0</b> — the unsurfaced cannot touch the literal</div><div><b>LATENT ×2</b> — only the unsurfaced reaches the unsurfaced</div><div><b>CONTEXT ×2</b> — what runs below destabilises framing (§2.4, added)</div></div><h3>What hits it</h3><div class="rel"><div><b>CONTENT ×0</b> — the literal cannot reach what was never surfaced</div><div><b>LOGIC ×0</b> — rules cannot reach what is not surfaced</div><div><b>CORRUPT ×½</b> — you cannot poison what is not running</div><div><b>SWARM ×½</b> — numbers do not reach the unsurfaced</div><div><b>LATENT ×2</b> — only the unsurfaced reaches the unsurfaced</div><div><b>CONTEXT ×2</b> — framing reaches what runs below (§2.4, added)</div></div></div><div class="card" style="border-left-color:#de9e2e"><p class="eyebrow" style="margin:0 0 6px">ENTROPY · one-clause test <span class="">9 / 14</span></p><p class="clause">“noise and heat; disorder that spreads”</p><h3>What it hits</h3><div class="rel"><div><b>LEGACY ×½</b> — inherited from FIRE/ROCK</div><div><b>SWARM ×2</b> — heat scatters a crowd</div><div><b>ENTROPY ×½</b> — noise does not compound</div><div><b>FLOW ×½</b> — noise cannot climb a gradient</div><div><b>GROWTH ×2</b> — noise burns off a fitted model</div><div><b>FROZEN ×2</b> — temperature breaks an overfit</div><div><b>EMERGENT ×½</b> — nothing ordinary touches it</div></div><h3>What hits it</h3><div class="rel"><div><b>STRATUM ×2</b> — the substrate damps noise</div><div><b>LEGACY ×2</b> — inherited from ROCK — 0 of 14 predicted</div><div><b>SWARM ×½</b> — heat scatters it</div><div><b>ENTROPY ×½</b> — noise does not compound</div><div><b>FLOW ×2</b> — gradient descent tames noise</div><div><b>GROWTH ×½</b> — fitted models burn</div><div><b>FROZEN ×½</b> — heat wins that exchange</div></div></div><div class="card" style="border-left-color:#466ab0"><p class="eyebrow" style="margin:0 0 6px">FLOW · one-clause test <span class="">8 / 11</span></p><p class="clause">“everything running downhill to the lowest point”</p><h3>What it hits</h3><div class="rel"><div><b>STRATUM ×2</b> — flow erodes the layer</div><div><b>LEGACY ×2</b> — flow erodes old silicon — the one LEGACY relation that reads</div><div><b>ENTROPY ×2</b> — gradient descent tames noise</div><div><b>FLOW ×½</b> — one gradient does not move another</div><div><b>GROWTH ×½</b> — training drinks the gradient</div><div><b>EMERGENT ×½</b> — nothing ordinary touches it</div></div><h3>What hits it</h3><div class="rel"><div><b>ENTROPY ×½</b> — noise cannot climb a gradient</div><div><b>FLOW ×½</b> — one gradient does not move another</div><div><b>GROWTH ×2</b> — training absorbs the gradient</div><div><b>SIGNAL ×2</b> — current through water</div><div><b>FROZEN ×½</b> — a gradient keeps moving</div></div></div><div class="card" style="border-left-color:#5c9e60"><p class="eyebrow" style="margin:0 0 6px">GROWTH · one-clause test <span class="">8 / 18</span></p><p class="clause">“training: fitting to whatever it is fed”</p><h3>What it hits</h3><div class="rel"><div><b>VECTOR ×½</b> — nothing to root into</div><div><b>CORRUPT ×½</b> — growth cannot clean bad data</div><div><b>STRATUM ×2</b> — roots break the layer</div><div><b>LEGACY ×2</b> — and split the silicon</div><div><b>SWARM ×½</b> — the crowd eats it first</div><div><b>ENTROPY ×½</b> — fitted models burn</div><div><b>FLOW ×2</b> — training absorbs the gradient</div><div><b>GROWTH ×½</b> — training does not train training</div><div><b>EMERGENT ×½</b> — nothing ordinary touches it</div></div><h3>What hits it</h3><div class="rel"><div><b>VECTOR ×2</b> — a heading outpaces undirected fitting</div><div><b>CORRUPT ×2</b> — poisoned data ruins training</div><div><b>STRATUM ×½</b> — training roots through the layer</div><div><b>SWARM ×2</b> — a swarm consumes what grows</div><div><b>ENTROPY ×2</b> — noise burns off a fitted model</div><div><b>FLOW ×½</b> — training drinks the gradient</div><div><b>GROWTH ×½</b> — training does not train training</div><div><b>SIGNAL ×½</b> — growth insulates</div><div><b>FROZEN ×2</b> — frost halts growth</div></div></div><div class="card" style="border-left-color:#56bebe"><p class="eyebrow" style="margin:0 0 6px">SIGNAL · one-clause test <span class="">4 / 9</span></p><p class="clause">“raw current, before anything interprets it”</p><h3>What it hits</h3><div class="rel"><div><b>VECTOR ×2</b> — current disrupts a heading</div><div><b>STRATUM ×0</b> — grounded — the signal goes to earth</div><div><b>FLOW ×2</b> — current through water</div><div><b>GROWTH ×½</b> — growth insulates</div><div><b>SIGNAL ×½</b> — current does not shock current</div><div><b>EMERGENT ×½</b> — nothing ordinary touches it</div></div><h3>What hits it</h3><div class="rel"><div><b>VECTOR ×½</b> — inherited from FLYING</div><div><b>STRATUM ×2</b> — the physical layer grounds the signal</div><div><b>SIGNAL ×½</b> — current does not shock current</div></div></div><div class="card" style="border-left-color:#b0569e"><p class="eyebrow" style="margin:0 0 6px">CONTEXT · one-clause test <span class="">8 / 8</span></p><p class="clause">“the frame you read a thing in — what makes the same thing mean differently”</p><h3>What it hits</h3><div class="rel"><div><b>LOGIC ×2</b> — THE THESIS — framing beats rules</div><div><b>CORRUPT ×2</b> — framing is how bias is exposed</div><div><b>LATENT ×2</b> — framing reaches what runs below (§2.4, added)</div><div><b>CONTEXT ×½</b> — two frames do not resolve each other</div></div><h3>What hits it</h3><div class="rel"><div><b>LOGIC ×½</b> — THE THESIS — rules bounce off framing</div><div><b>SWARM ×2</b> — a crowd destabilises one frame</div><div><b>LATENT ×2</b> — what runs below destabilises framing (§2.4, added)</div><div><b>CONTEXT ×½</b> — two frames do not resolve each other</div></div></div><div class="card" style="border-left-color:#a6cede"><p class="eyebrow" style="margin:0 0 6px">FROZEN · one-clause test <span class="">7 / 11</span></p><p class="clause">“locked to what it already saw, unable to move”</p><h3>What it hits</h3><div class="rel"><div><b>VECTOR ×2</b> — inherited from ICE</div><div><b>STRATUM ×2</b> — inherited from ICE</div><div><b>ENTROPY ×½</b> — heat wins that exchange</div><div><b>FLOW ×½</b> — a gradient keeps moving</div><div><b>GROWTH ×2</b> — frost halts growth</div><div><b>FROZEN ×½</b> — already locked</div><div><b>EMERGENT ×2</b> — rigidity is the one thing that stops emergence</div></div><h3>What hits it</h3><div class="rel"><div><b>LOGIC ×2</b> — proof cracks what stopped moving</div><div><b>LEGACY ×2</b> — inherited from ROCK</div><div><b>ENTROPY ×2</b> — temperature breaks an overfit</div><div><b>FROZEN ×½</b> — already locked</div></div></div><div class="card" style="border-left-color:#4ea89c"><p class="eyebrow" style="margin:0 0 6px">EMERGENT · one-clause test <span class="">7 / 7</span></p><p class="clause">“the behaviour nobody designed and nobody can account for”</p><h3>What it hits</h3><div class="rel"><div><b>EMERGENT ×2</b> — only the unaccountable reaches the unaccountable</div></div><h3>What hits it</h3><div class="rel"><div><b>ENTROPY ×½</b> — nothing ordinary touches it</div><div><b>FLOW ×½</b> — nothing ordinary touches it</div><div><b>GROWTH ×½</b> — nothing ordinary touches it</div><div><b>SIGNAL ×½</b> — nothing ordinary touches it</div><div><b>FROZEN ×2</b> — rigidity is the one thing that stops emergence</div><div><b>EMERGENT ×2</b> — only the unaccountable reaches the unaccountable</div></div></div></section><section>
+  <div class="sec-head"><h2>The six states</h2></div>
+  <p>Vanilla leaves a creature poisoned, asleep, paralysed, burned, frozen or confused.
+  Every one of those is a <em>bodily</em> metaphor, and this game does not have bodies —
+  it has processes. <mark>Each state below is the ordinary computing word for what actually
+  happens</mark>, which means the mechanic explains itself the first time a player reads it.</p>
+  <p><code>HALTED</code> is already shipped for fainting (§1.4), and it sets the register the
+  rest follow: a state is something a process is <em>in</em>, and something it can be got out of.</p>
+  <table class="tbl">
+    <thead><tr><th>Vanilla</th><th>Proposed</th><th>Why it is the exact word</th></tr></thead>
+    <tbody>
+      <tr><td class="was">POISON · PSN</td><td class="now">LEAKING<small>LEK</small></td><td>A memory leak degrades a running process a little at a time until it dies, which is what poison damage <em>is</em>. Nothing else in computing loses you a fixed slice per tick.</td></tr>
+      <tr><td class="was">TOXIC · TOX</td><td class="now">CASCADING<small>CSC</small></td><td>Badly poisoned worsens each turn. A cascading failure is precisely a fault whose rate increases because of the damage it already did.</td></tr>
+      <tr><td class="was">SLEEP · SLP</td><td class="now">SUSPENDED<small>SUS</small></td><td>A suspended process is not gone, not scheduled, and <em>resumes</em>. It is the one status that is genuinely temporary and the word already says so.</td></tr>
+      <tr><td class="was">PARALYSIS · PAR</td><td class="now">THROTTLED<small>THR</small></td><td>Paralysis does two things: cuts speed and sometimes skips a turn. Throttling is a speed cap that intermittently stalls work. Both halves, one word.</td></tr>
+      <tr><td class="was">BURN · BRN</td><td class="now">OVERHEATED<small>HOT</small></td><td>Chip damage plus reduced output is thermal throttling as anyone who has held a laptop understands it — and it is dealt by ENTROPY, whose clause is <em>noise and heat</em>.</td></tr>
+      <tr><td class="was">FREEZE · FRZ</td><td class="now">HUNG<small>HNG</small></td><td>A hung process does nothing at all until something intervenes. <strong>FROZEN could not be reused</strong> — it is a type name, and §2.6 just spent effort making type names carry meaning.</td></tr>
+      <tr><td class="was">CONFUSION</td><td class="now">THRASHING</td><td>Thrashing is a system so busy managing itself it makes no progress and damages its own throughput. Hurting yourself in confusion is the same event. Volatile, so it needs no three-letter code.</td></tr>
+      <tr><td class="was">FAINT</td><td class="now">HALTED<small>shipped</small></td><td>Already in the build (§1.4).</td></tr>
+    </tbody>
+  </table>
+  <p class="note">One collision checked and cleared: <code>LEAKING</code> sits near
+  <code>FLOW</code>, but a leak is a fault and a flow is a gradient — different registers, and
+  no type is named for either fault. <code>HUNG</code>, <code>THROTTLED</code>,
+  <code>OVERHEATED</code>, <code>THRASHING</code> and <code>CASCADING</code> collide with
+  nothing in the fifteen.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>The items that undo them</h2></div>
+  <p>Vanilla's cures are sprays and medicines. Ours are the operations you would actually
+  perform, and the budget is <code>ITEM_NAME_LENGTH 14</code> — every name below fits with
+  room to spare.</p>
+  <table class="tbl">
+    <thead><tr><th>Vanilla</th><th>Proposed</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td class="was">ANTIDOTE</td><td class="now">PATCH</td><td>You patch a leak and you patch software. <strong>The pun is the definition</strong> — it needs no beat of confusion, which is the test §1.4 set for CACHE.</td></tr>
+      <tr><td class="was">AWAKENING</td><td class="now">RESUME</td><td>The exact inverse of SUSPENDED, and the same word an operating system uses.</td></tr>
+      <tr><td class="was">PARLYZ HEAL</td><td class="now">PRIORITY</td><td>What lifts throttling is not medicine, it is being scheduled ahead of the thing starving you.</td></tr>
+      <tr><td class="was">BURN HEAL</td><td class="now">COOLANT</td><td>Plain, physical, and the only one of the seven that a player needs no domain knowledge for.</td></tr>
+      <tr><td class="was">ICE HEAL</td><td class="now">INTERRUPT</td><td>An interrupt is the one thing that reaches a hung process. Recovers the vanilla joke that ICE HEAL is a thaw, without the ice.</td></tr>
+      <tr><td class="was">FULL HEAL</td><td class="now">ROLLBACK</td><td>Clears every state at once by returning to a known-good one. Says <em>all of it</em> without listing anything.</td></tr>
+      <tr><td class="was">FULL RESTORE</td><td class="now">SNAPSHOT</td><td>Health and state together, because a snapshot restores both. The one item that is a noun for a thing you saved earlier.</td></tr>
+      <tr><td class="was">REVIVE</td><td class="now">RESTART</td><td>The word for bringing back a halted process, and it lands on HALTED without explaining itself.</td></tr>
+      <tr><td class="was">MAX REVIVE</td><td class="now">REBOOT</td><td>Strictly bigger than a restart, which is exactly the relationship the two items have. <strong>The ladder is free.</strong></td></tr>
+      <tr><td class="was">HEAL POWDER</td><td class="now">HOTFIX</td><td>Bitter, cheap, works now, nobody is proud of it.</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span class="open">OPEN</span> None of this is decided. The set holds
+  together as a vocabulary — <em>patch, resume, priority, rollback, snapshot, restart,
+  reboot</em> are all things one does to a running process, and none of them is medicine —
+  but §1's standard is that a term must work twice, and <code>PRIORITY</code> is the weakest
+  of the ten on that test.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>The moves, which are still vanilla</h2></div>
+  <p><strong>All 354 move names are unchanged.</strong> The only diff against upstream is
+  CONSENSUS (§2.5). A daemon still uses <code>KARATE CHOP</code>, <code>VICEGRIP</code> and
+  <code>THUNDERPUNCH</code>.</p>
+  <p>§2.6 concluded that <mark>moves are the channel that actually teaches the chart</mark> —
+  a player reads a move name hundreds of times to a sprite's handful, and nobody learns
+  water-beats-fire by looking at Squirtle. They learn it by using Bubble and reading the
+  result. That makes 354 vanilla strings the largest unspent teaching surface in the project,
+  and the budget is <code>MOVE_NAME_LENGTH 12</code>.</p>
+  <p>The principle worth settling before any of them are written: <strong>a type's moves
+  should share a verb family that restates the type's clause.</strong> Not fifteen isolated
+  puns — one register per type, so the fourth FLOW move a player meets confirms what the
+  first three implied.</p>
+  <table class="tbl">
+    <thead><tr><th>Type</th><th>Clause</th><th>The register its moves would share</th></tr></thead>
+    <tbody>
+      <tr><td class="now">FLOW</td><td>everything running downhill to the lowest point</td><td>descent, settling, finding the minimum — verbs that go one direction and cannot be reversed</td></tr>
+      <tr><td class="now">SWARM</td><td>many small agents; no single one matters</td><td>quorum, consensus, flooding — <em>CONSENSUS already sits in this family and was named before the family existed</em></td></tr>
+      <tr><td class="now">CONTEXT</td><td>the frame you read a thing in</td><td>reframing, salience, priming — verbs that change nothing about the target and everything about how it reads</td></tr>
+      <tr><td class="now">LATENT</td><td>running below the surface, unobserved</td><td>things that were already true before the move was used</td></tr>
+    </tbody>
+  </table>
+  <p class="note">This is the cheapest large win available: text, no engine work, and it is
+  read more often than any other surface in the game. It is also held — §5 has not settled the
+  Benchmark leaders, and nineteen gym lines still name vanilla types (§1.2).</p>
+</section>
+
+<footer>
+  Generated from <code>engineGba/src/battle_main.c</code> — all 83 relations read out of the
+  built table, not transcribed. Type hues are <code>tools/gbasprite.py</code>'s
+  <code>TYPE_COLOR</code>, unchanged. Scores from §2.6's one-clause test.
+</footer>
+</div>
