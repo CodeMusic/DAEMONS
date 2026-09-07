@@ -79,6 +79,9 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
+  --model NAME   use a specific model instead of the "daemons" group. Names
+                 come from tools/ai_models.py, which reads them out of LM
+                 Studio -- e.g. qwen3-vl-8b, minicpm-v-4-6.
   --full-schema  give the agent all eight action variants. Default is lean:
                  the three that only annotate (add_marker, delete_marker,
                  restart_console) are dropped. Measured warm, lean and full are
@@ -197,7 +200,9 @@ DEBUG=0
 CLASSIC=0
 AI=0
 FULL_SCHEMA=0
+WANT_MODEL=""
 for arg in "$@"; do
+  if [[ "$WANT_MODEL" == "__next__" ]]; then WANT_MODEL="$arg"; continue; fi
   case "$arg" in
     content|context) EDITION="$arg" ;;
     --classic)       CLASSIC=1 ;;
@@ -205,6 +210,7 @@ for arg in "$@"; do
     --debug)         DEBUG=1 ;;
     --ai)            AI=1 ;;
     --full-schema)   FULL_SCHEMA=1 ;;
+    --model)         WANT_MODEL="__next__" ;;
     *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
 done
@@ -364,7 +370,7 @@ if [[ $AI -eq 1 ]]; then
     echo "could not read the LiteLLM key from roverbyte@$LLM_HOST" >&2
     echo "  set up the key once:  ssh-copy-id roverbyte@$LLM_HOST" >&2
     exit 1; }
-  : "${OPENAI_MODEL:=daemons}"
+  : "${OPENAI_MODEL:=${WANT_MODEL:-daemons}}"
   : "${OPENAI_MODEL_PATHFINDING:=daemons-pathfinding}"
   export OPENAI_MODEL_PATHFINDING
 
