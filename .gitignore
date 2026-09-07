@@ -30,3 +30,6 @@ __pycache__/
 # generated from the ELF by tools/gbasym.py -- rebuilt every --ai run
 ai/pokefirered.sym
 ai/logs/
+
+# engineAi/ -> ../gpt-play-pokemon-firered-daemons  (the AI-play harness)
+engineAi

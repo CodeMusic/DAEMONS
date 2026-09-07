@@ -3,11 +3,18 @@
 `./bindDaemons.sh --ai` builds the CONTENT edition, regenerates the symbol
 table from that build, and starts the bridge and the agent.
 
-The harness is [Clad3815/gpt-play-pokemon-firered][h], cloned as a sibling by
-`setup.sh` and left third-party: no upstream remote, no branch of ours, one
-patch.
+The harness is **our fork** of [Clad3815/gpt-play-pokemon-firered][h] —
+[CodeMusic/gpt-play-pokemon-firered-daemons][f], symlinked as `engineAi/` and
+set up by `setup.sh` exactly like `engine/` and `engineGba/`: our fork as
+`origin`, Clad3815 as `upstream`, on the `context-content` branch.
+
+*It was a read-only clone at first, with our one change as a loose patch file.*
+That is fine until the second change — **and there will be a second one**,
+because this drives our ROM and reads our symbols. `patches/ai-local-model.patch`
+is kept as the readable statement of what we changed and why.
 
 [h]: https://github.com/Clad3815/gpt-play-pokemon-firered
+[f]: https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons
 
 ## It reads RAM, not the screen
 
@@ -68,7 +75,7 @@ mGBA 0.10.5 has no `--script`; that arrived in 0.11. So after `--ai` launches
 the emulator:
 
 **Tools → Scripting → File → Load script**, and choose
-`../gpt-play-pokemon-firered/mgba/scripts/FireRedBridgeSocketServer.lua`
+`engineAi/mgba/scripts/FireRedBridgeSocketServer.lua`
 
 ## An open question worth keeping
 

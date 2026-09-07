@@ -3,7 +3,8 @@
 
     python3 tools/gbasym.py [--write] [--out <path>]
 
-WHY THIS EXISTS. Clad3815/gpt-play-pokemon-firered drives mGBA over a Lua
+WHY THIS EXISTS. engineAi, our fork of Clad3815/gpt-play-pokemon-firered,
+drives mGBA over a Lua
 socket and reads the game out of RAM -- no screenshots anywhere, which is what
 makes a small local model viable for it at all. It finds the game state by
 NAME, through a pokefirered.sym shipped for the retail ROM, and its loader

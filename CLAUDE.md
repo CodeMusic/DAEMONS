@@ -21,9 +21,16 @@ DAEMONS/             <- ALWAYS root sessions here (memory lives here)
   gfx/ audio/        original assets
   engine/    ----->  symlink to ../pokered-daemons       (Game Boy)
   engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, under evaluation)
+  engineAi/  ----->  symlink to ../gpt-play-pokemon-firered-daemons
 ```
 
-Both symlinks are gitignored and neither fork is ever vendored: both carry
+`engineAi/` is a fork of Clad3815/gpt-play-pokemon-firered: it drives mGBA over
+a Lua socket and reads the game out of RAM, so a model can play the build. Same
+treatment as the other two -- our fork as `origin`, theirs as `upstream`, the
+`context-content` branch -- and the same rule: **never vendored in here.**
+`ai/` holds what is ours (n8n workflows, the LiteLLM config, `ai/README.md`).
+
+All three symlinks are gitignored and no fork is ever vendored: both carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted
 material. Work in them freely; just don't merge either one in here.
 

@@ -95,34 +95,24 @@ for pair in "SameBoy:sameboy" "mGBA:mgba"; do
   else echo "     $app MISSING — brew install --cask $cask" >&2; fi
 done
 
-# ---- 4/4 the AI harness --------------------------------------------------
+# ---- 4/5 the AI harness --------------------------------------------------
 #
-# THIRD-PARTY AND TREATED AS SUCH. This is not one of ours: no upstream remote,
-# no branch of ours, and it is cloned shallow. It drives mGBA over a Lua socket
-# and reads the game out of RAM -- no screenshots anywhere, which is the fact
-# that makes a small local model viable for it at all.
+# A FORK, LIKE THE OTHER TWO. It was cloned read-only at first and our one
+# change lived as a loose patch file, which is fine until the second change --
+# and there will be a second one, because this drives OUR ROM and reads OUR
+# symbols. So it goes through the same engine() helper as the engines: our fork
+# as origin, Clad3815 as upstream, the context-content branch, and a symlink.
 #
-# ONE PATCH, AND IT IS INERT WITHOUT THE ENV VAR. The client is constructed as
-# `new OpenAI({ apiKey })` with no baseURL, so it can only ever reach OpenAI.
-# patches/ai-local-model.patch adds `baseURL: process.env.OPENAI_BASE_URL ||
-# undefined`, which falls back to api.openai.com exactly as before when unset.
+# The change itself is still inert without the env var: the client was
+# `new OpenAI({ apiKey })` with no baseURL and could only ever reach OpenAI.
+# patches/ai-local-model.patch is kept as the readable statement of it.
 say "4/5  ai harness"
-AI_DIR="../gpt-play-pokemon-firered"
-if [[ -d "$AI_DIR/.git" ]]; then
-  echo "     present  $AI_DIR"
+engine "ai" engineAi "https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons.git" \
+                     "https://github.com/Clad3815/gpt-play-pokemon-firered.git"
+if [[ -d engineAi/server/node_modules ]]; then
+  echo "     deps     present"
 else
-  git clone --quiet --depth 1 \
-    https://github.com/Clad3815/gpt-play-pokemon-firered.git "$AI_DIR" \
-    && echo "     cloned   $AI_DIR" || echo "     clone FAILED — --ai will not work" >&2
-fi
-if [[ -d "$AI_DIR/.git" ]]; then
-  if grep -q "OPENAI_BASE_URL" "$AI_DIR/server/src/core/openaiClient.js" 2>/dev/null; then
-    echo "     patched  local-model endpoint already applied"
-  elif git -C "$AI_DIR" apply "$PWD/patches/ai-local-model.patch" 2>/dev/null; then
-    echo "     patched  local-model endpoint"
-  else
-    echo "     patch did not apply — see patches/ai-local-model.patch" >&2
-  fi
+  echo "     deps     missing — run: (cd engineAi/server && npm ci)" >&2
 fi
 
 # ---- 5/5 the model proxy ------------------------------------------------

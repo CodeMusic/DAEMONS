@@ -149,7 +149,8 @@ open -a "$EMU" "$DIR/$ROM"
 
 # ---------------------------------------------------------------- --ai -----
 #
-# WHAT THIS MODE IS. Clad3815/gpt-play-pokemon-firered drives mGBA over a Lua
+# WHAT THIS MODE IS. engineAi -- our fork of Clad3815/gpt-play-pokemon-firered
+# -- drives mGBA over a Lua
 # socket and reads the game out of RAM -- no screenshots anywhere, which is the
 # fact that makes a small local model viable at all. It resolves game state by
 # SYMBOL NAME out of a pokefirered.sym, and its loader honours FIRERED_SYM_PATH.
@@ -165,9 +166,9 @@ open -a "$EMU" "$DIR/$ROM"
 # the worst failure available -- it looks like it is working. tools/gbasym.py
 # emits ours from the ELF, so it cannot drift.
 if [[ $AI -eq 1 ]]; then
-  HARNESS="../gpt-play-pokemon-firered"
+  HARNESS="engineAi"
   [[ -d "$HARNESS" ]] || {
-    echo "AI harness missing at $HARNESS -- run ./setup.sh" >&2; exit 1; }
+    echo "AI harness missing at ./$HARNESS -- run ./setup.sh" >&2; exit 1; }
 
   echo
   echo "generating symbols from this build…"
