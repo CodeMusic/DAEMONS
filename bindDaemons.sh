@@ -336,12 +336,23 @@ if [[ $AI -eq 1 ]]; then
 
   # THE KEY IS FETCHED, NEVER STORED HERE. It lives in ~/.litellm.env on the
   # proxy host at mode 0600. Copying it into this repo, a dotfile or a shell
-  # history is how it ends up somewhere it should not be -- and it already
-  # reached a chat log once and had to be rotated.
-  if [[ -z "${OPENAI_API_KEY:-}" ]]; then
-    OPENAI_API_KEY="$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=6 \
-      "roverbyte@$LLM_HOST" 'sed -n "s/^LITELLM_MASTER_KEY=//p" ~/.litellm.env' 2>/dev/null || true)"
+  # history is how it ends up somewhere it should not be.
+  #
+  # AND IT OVERRIDES ANY OPENAI_API_KEY ALREADY IN THE ENVIRONMENT. Respecting
+  # a pre-set value is the usual courtesy and exactly wrong here: a real
+  # `sk-proj-...` exported from ~/.zshrc was sent to LiteLLM, which answered
+  # `400 No connected db.` -- its way of saying "unknown bearer", since it
+  # treats anything that is not the master key as a virtual key needing a
+  # database. An hour reads like a proxy fault when it is the wrong key.
+  #
+  # Worse than confusing: it points a real OpenAI credential at a local proxy
+  # that never needed one. When OPENAI_BASE_URL is ours, the key must be ours.
+  if [[ -n "${OPENAI_API_KEY:-}" && "${OPENAI_API_KEY}" != sk-daemons-* ]]; then
+    echo "  note      ignoring the OPENAI_API_KEY in your environment;"
+    echo "            --ai talks to LiteLLM, which wants its own key"
   fi
+  OPENAI_API_KEY="$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=6 \
+    "roverbyte@$LLM_HOST" 'sed -n "s/^LITELLM_MASTER_KEY=//p" ~/.litellm.env' 2>/dev/null || true)"
   [[ -n "$OPENAI_API_KEY" ]] || {
     echo "could not read the LiteLLM key from roverbyte@$LLM_HOST" >&2
     echo "  set up the key once:  ssh-copy-id roverbyte@$LLM_HOST" >&2
