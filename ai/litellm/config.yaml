@@ -20,17 +20,21 @@ model_list:
   # a 400 from the model server itself: "The provided input contains images,
   # but ternary-bonsai-8b-mlx does not support image inputs."
   #
-  # minicpm-v-4.6 first because it is quick, with qwen3-vl-8b behind it as a
-  # LiteLLM FALLBACK rather than a manual swap -- the earlier 400 said
-  # "Available Model Group Fallbacks=None", which was LiteLLM naming the
-  # feature it wanted. If minicpm errors on a call, the same call is retried
-  # against qwen without the run stopping.
+  # qwen3-vl-8b, after minicpm-v-4.6 was tried first and could not hold the
+  # tool-call schema: the harness logged "Executing Action 1/2: undefined" --
+  # calls arriving with no readable action name -- then empty calls, then a
+  # malformed request built from them. minicpm answers a single vision question
+  # in 3 seconds and is excellent at that; a long agentic loop that must emit
+  # well-formed tool calls every turn is a different demand.
+  #
+  # Slower and correct beats fast and unusable. minicpm keeps the fallback seat
+  # and the whole of daemons-vision, where one careful description is the job.
   #
   # Point api_base at whatever is actually serving: LM Studio's default is
   # 1234, llama.cpp's server is usually 8080.
   - model_name: daemons
     litellm_params:
-      model: openai/minicpm-v-4.6-abliterated-and-disinhibited   # openai/ = OpenAI-compatible
+      model: openai/qwen/qwen3-vl-8b       # openai/ = OpenAI-compatible, not OpenAI
       # 127.0.0.1, NOT roverbyteseer.local. LM Studio binds to loopback only
       # -- `LM Studio 127.0.0.1:1234 (LISTEN)` -- so the LAN name resolves to an
       # address nothing is listening on. LiteLLM runs on this same box, so
@@ -47,6 +51,14 @@ model_list:
       # hundreds of times a run and needs the least thinking. Still a VLM,
       # because the harness attaches a screenshot to these calls too.
       model: openai/qwen/qwen3-vl-4b
+      api_base: http://127.0.0.1:1234/v1
+      api_key: none
+      use_chat_completions_api: true
+
+  # The fallback seat: reached only when daemons errors.
+  - model_name: daemons-qwen
+    litellm_params:
+      model: openai/minicpm-v-4.6-abliterated-and-disinhibited
       api_base: http://127.0.0.1:1234/v1
       api_key: none
       use_chat_completions_api: true
