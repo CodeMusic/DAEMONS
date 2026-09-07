@@ -39,10 +39,15 @@ def lmstudio_models():
 
 
 def short(mid):
-    """A stable short name for --model: the last path segment, cleaned."""
-    s = mid.split("/")[-1].lower()
-    s = re.sub(r"-(abliterated.*|and-disinhibited)$", "", s)
-    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+    """A stable name for --model: the last path segment, slugified.
+
+    NOTHING IS STRIPPED. An earlier version removed "-abliterated-and-
+    disinhibited" to tidy the name, which collapsed two different models onto
+    one entry -- and LiteLLM then served whichever it resolved first, so
+    --model minicpm-v-4-6 loaded the abliterated GGUF instead of the stock MLX
+    build. A name that is not unique is not a name.
+    """
+    return re.sub(r"[^a-z0-9]+", "-", mid.split("/")[-1].lower()).strip("-")
 
 
 def main():
@@ -64,7 +69,12 @@ def main():
       use_chat_completions_api: true
 """ % (short(i), i))
 
-    print("\n  would define: %s" % ", ".join(short(i) for i, _, _ in vis))
+    names = [short(i) for i, _, _ in vis]
+    dupes = {n for n in names if names.count(n) > 1}
+    if dupes:
+        sys.exit("  !! duplicate model names: %s -- refusing to write a config "
+                 "where --model is ambiguous" % ", ".join(sorted(dupes)))
+    print("\n  would define: %s" % ", ".join(names))
     if not WRITE:
         print("\n  (report only; pass --write)")
         return
