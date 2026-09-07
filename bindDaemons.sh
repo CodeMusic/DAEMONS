@@ -285,9 +285,14 @@ if [[ $AI -eq 1 ]]; then
   # not up yet" rather than "the bridge crashed on line 11".
   MISSING=""
   python3 - <<'PYCHK' || MISSING="python"
-import importlib, sys
-missing = [m for m in ("fastapi","uvicorn","pydantic","dotenv","requests")
-           if not importlib.util.find_spec(m)]
+# importlib.util is a SUBMODULE: `import importlib` alone leaves .util
+# unbound, so this check crashed and its own crash was read as "deps missing"
+# -- a false alarm that pointed at the user's environment instead of at itself.
+import importlib.util, sys
+missing = [m for m in ("fastapi", "uvicorn", "pydantic", "dotenv", "requests")
+           if importlib.util.find_spec(m) is None]
+if missing:
+    print("  missing: " + ", ".join(missing), file=sys.stderr)
 sys.exit(1 if missing else 0)
 PYCHK
   [[ -z "$MISSING" ]] || {
