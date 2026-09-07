@@ -250,8 +250,21 @@ model_list:
 # ---- end generated ----
 
 litellm_settings:
-  # Retry a failed daemons call against the bigger VLM instead of stopping.
-  fallbacks: [{"daemons": ["daemons-qwen"]}]
+  # NO FALLBACK between two models on the same LM Studio. It reads as
+  # resilience and behaves as a self-inflicted outage: a struggling `daemons`
+  # (qwen3-vl-8b) call falls back to `daemons-qwen` (qwen3-vl-4b), LM Studio
+  # JIT-loads the 4b, that EVICTS the 8b, and the in-flight request dies with
+  #
+  #   Caused By: Error: Model unloaded.
+  #   Failed to load model "qwen/qwen3-vl-4b". Error: Operation canceled.
+  #
+  # which reaches the harness as a bare 500. That is the whole reason a qwen
+  # run produced no commands: not slowness, an error.
+  #
+  # A fallback is only safe across models that do not evict each other. If one
+  # is wanted again, point it at a DIFFERENT server -- minicpm-mlxvlm on 8101
+  # or qwen-mlxvlm on 8102 -- never at a second LM Studio slot.
+  # fallbacks: [{"daemons": ["minicpm-mlxvlm"]}]
   # The harness sends service_tier, store and reasoning.summary. OpenAI accepts
   # them; a local server 400s. Dropping beats patching four call sites and then
   # re-patching them on every upstream change.
