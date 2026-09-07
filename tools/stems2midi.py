@@ -64,20 +64,25 @@ LEAD, LEAD_VEL = HARP, 66        # was GLOCK at 82, which was louder than the
 #  that order differs per song: the title theme's synth arrived as "5 Synth"
 #  and the intro's as "2 Synth". A table of literal filenames matched the one
 #  song it was written for and silently skipped every stem of the next.
+#  The last field is how many notes of a chord this part may sound at once.
+#  Measured against the 347 songs in this repo: no vanilla track exceeds three,
+#  and no song exceeds ten tracks. A melody and a bass stay lines -- thickening
+#  those is how a transcription starts sounding like an organ -- and the parts
+#  that were written as harmony get to be harmony.
 ROLES = {
-    "brass":      ("brass",   TRUMPET, 100, "high"),
+    "brass":      ("brass",   TRUMPET, 100, "high", 2),
     #  the synth stem was the busiest line in the title theme -- 233 of 400
     #  cells -- which is an arpeggio, and an arpeggio is what a harp is for. A
     #  glockenspiel across that many cells at 152 BPM is a smoke alarm.
-    "synth":      ("synth",   HARP,     64, "high"),
-    "strings":    ("strings", STRINGS,  78, "high"),
-    "keyboard":   ("keys",    PIANO,    58, "high"),
-    "piano":      ("keys",    PIANO,    58, "high"),
-    "bass":       ("bass",    BASS,     96, "low"),
+    "synth":      ("synth",   HARP,     64, "high", 1),
+    "strings":    ("strings", STRINGS,  78, "high", 3),
+    "keyboard":   ("keys",    PIANO,    58, "high", 3),
+    "piano":      ("keys",    PIANO,    58, "high", 3),
+    "bass":       ("bass",    BASS,     96, "low",  1),
     #  "Other" is the separator's remainder, not an instrument. It is taken as
     #  a keyboard part because that is the safest thing an unknown mid-register
     #  line can be -- but see the warning main() prints when it dominates.
-    "other":      ("other",   PIANO,    70, "high"),
+    "other":      ("other",   PIANO,    70, "high", 3),
     "drums":      None,        # percussion comes from the voicegroup, not here
     "percussion": None,
     "vocals":     None,        # nothing in this game sings
@@ -193,6 +198,16 @@ def voiced(program, velocity, notes):
     return (program, velocity, detach(notes) if program in STRUCK else notes)
 
 
+def flat(cells):
+    """Every pitch in a cell list, chords opened out. The reports and the
+    register warning both measure pitch, and a cell is now sometimes a tuple."""
+    out = []
+    for c in cells:
+        if c is None: continue
+        out.extend((c,) if isinstance(c, int) else c)
+    return out
+
+
 def register(notes):
     """The band a stem actually plays in. Basic Pitch reports upper partials as
     real notes -- the brass came back reaching G#6 and the keyboard F7 -- and a
@@ -203,7 +218,7 @@ def register(notes):
     hi = p[int(len(p) * 0.90)]
     return lo, hi
 
-def cells_from(notes, grid, times, keep):
+def cells_from(notes, grid, times, keep, voices=1):
     """One pitch per grid cell -- the GBA plays one note per track, so a chord
     has to become a line. A note occupies every cell it sounds through, so a
     held note repeats and merge() joins it back up.
@@ -232,18 +247,35 @@ def cells_from(notes, grid, times, keep):
             near = [n for n in live if n[3] >= top - 0.08]
             pick = (min(near, key=lambda n: abs(n[2] - prev)) if prev is not None
                     else max(near, key=lambda n: n[3]))
-        out[i] = prev = pick[2]
+        prev = pick[2]
+        if voices <= 1:
+            out[i] = prev
+            continue
+        #  The rest of the chord, loudest first. The primary is still chosen
+        #  by the line-following rule above, so adding voices thickens the
+        #  part without moving the melody it was already tracking.
+        extra = sorted((n for n in live if n[2] != prev),
+                       key=lambda n: -n[3])[:voices - 1]
+        out[i] = tuple(sorted({prev, *(n[2] for n in extra)}))
     return out
 
 def snap(cells, scale):
+    def one(n):
+        if n % 12 in scale:
+            return n, 0
+        return min((abs(c), n + c) for c in (-1, 1, -2, 2)
+                   if (n + c) % 12 in scale)[1], 1
     moved = 0
     out = []
     for n in cells:
-        if n is None or n % 12 in scale:
+        if n is None:
             out.append(n); continue
-        out.append(min((abs(c), n + c) for c in (-1, 1, -2, 2)
-                       if (n + c) % 12 in scale)[1])
-        moved += 1
+        if isinstance(n, int):
+            v, m = one(n); out.append(v); moved += m; continue
+        vs = []
+        for x in n:                       # a chord snaps note by note
+            v, m = one(x); vs.append(v); moved += m
+        out.append(tuple(sorted(set(vs))))
     return out, moved
 
 def timpani(drums, sr, times, bass_cells):
@@ -336,7 +368,7 @@ def main():
     scale = {(root + x) % 12 for x in degrees}
 
     parts, bass_cells, span = [], None, {}
-    for fname, label, program, vel, keep in STEMS:
+    for fname, label, program, vel, keep, voices in STEMS:
         #  bpextract is run by hand and gets named either way round: the title
         #  theme's notes landed as "1 Bass.json", the intro's as "bass.json".
         jf = next((c for c in (os.path.join(NOTES, fname + ".json"),
@@ -365,28 +397,30 @@ def main():
                 lead = keep_lead
                 lc = cells_from(lead, grid, times, "high")
                 lc, lm = snap(lc, scale)
-                sl = [n for n in lc if n is not None]
+                sl = flat(lc)
                 print("  %-10s %4d heard, %4d cells, %s..%s, %d snapped"
-                      % (label + "-lead", len(lead), len(sl),
+                      % (label + "-lead", len(lead), sum(1 for c in lc if c is not None),
                          librosa.midi_to_note(min(sl)), librosa.midi_to_note(max(sl)), lm))
                 parts.append(voiced(LEAD, LEAD_VEL, mm.merge(lc)))
-                span[label + "-lead"] = (np.percentile(sl, 3), np.percentile(sl, 90), len(sl))
-        cells = cells_from(raw, grid, times, keep)
+                span[label + "-lead"] = (np.percentile(sl, 3), np.percentile(sl, 90),
+                                         sum(1 for c in lc if c is not None))
+        cells = cells_from(raw, grid, times, keep, voices)
         cells, moved = snap(cells, scale)
         if label == "bass":
             bass_cells = cells
-        sounded = [n for n in cells if n is not None]
-        print("  %-10s %4d heard, %4d cells, %s..%s, %d snapped"
-              % (label, len(raw), len(sounded),
+        sounded = flat(cells)
+        occ = sum(1 for c in cells if c is not None)
+        chord = " (%.1f notes a cell)" % (len(sounded) / occ) if len(sounded) > occ else ""
+        print("  %-10s %4d heard, %4d cells, %s..%s, %d snapped%s"
+              % (label, len(raw), occ,
                  librosa.midi_to_note(min(sounded)), librosa.midi_to_note(max(sounded)),
-                 moved))
+                 moved, chord))
         parts.append(voiced(program, vel, mm.merge(cells)))
         #  the SAME band cells_from works in. Measured with min/max first,
         #  which reported 21 semitones of overlap on an arrangement whose
         #  working registers overlap by 10 -- one stray harmonic at either
         #  end is enough to make two separate parts look like one.
-        span[label] = (np.percentile(sounded, 3), np.percentile(sounded, 90),
-                       len(sounded))
+        span[label] = (np.percentile(sounded, 3), np.percentile(sounded, 90), occ)
 
     #  DOES THIS ARRANGEMENT HAVE PARTS, OR ONE TEXTURE? Asked here because the
     #  intro theme's first take did not, and nothing upstream of this noticed:

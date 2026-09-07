@@ -123,9 +123,20 @@ def midi_bytes(tempo, parts, loop=True):
             ticks = cells * (TPQ // DIV)
             if pitch is None:
                 rest += ticks; continue
-            pitch = max(0, min(127, pitch))
-            ev += var(rest) + bytes((0x90 | ch, pitch, vel))
-            ev += var(ticks) + bytes((0x80 | ch, pitch, 0))
+            #  A CELL MAY HOLD A CHORD. mplay allocates channels per track and
+            #  vanilla leans on that -- mus_oak sounds two notes on one track
+            #  and three appear elsewhere in the 347 songs here -- so reducing
+            #  every cell to a single pitch was throwing away notes the
+            #  hardware would have played. An int still means one note, which
+            #  is what every caller wrote before this.
+            ps = (pitch,) if isinstance(pitch, int) else tuple(pitch)
+            ps = [max(0, min(127, x)) for x in ps]
+            ev += var(rest) + bytes((0x90 | ch, ps[0], vel))
+            for x in ps[1:]:
+                ev += b"\x00" + bytes((0x90 | ch, x, vel))
+            ev += var(ticks) + bytes((0x80 | ch, ps[0], 0))
+            for x in ps[1:]:
+                ev += b"\x00" + bytes((0x80 | ch, x, 0))
             rest = 0
         ev += var(rest) + b"\xFF\x2F\x00"
         out += chunk(b"MTrk", bytes(ev))
