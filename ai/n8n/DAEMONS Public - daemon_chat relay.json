@@ -1,0 +1,131 @@
+{
+  "name": "DAEMONS Public \u2014 daemon/chat relay",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/v1/chat/completions",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "r1",
+      "name": "Public Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "pub-daemon-chat"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://10.0.0.136:5678/webhook/daemon/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "x-dex-secret",
+              "value": "={{ $json.headers['x-dex-secret'] || '' }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "r2",
+      "name": "Relay to Internal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// A relay failure must still look like OpenAI, or the harness throws instead of\n// backing off. An empty choices array is a valid completion with nothing in it.\nconst j = ($input.first() || {}).json || {};\nif (j.choices) return [{ json: j }];\nreturn [{ json: {\n  id: 'daemons-relay-error', object: 'chat.completion',\n  created: Math.floor(Date.now()/1000), model: 'unreachable',\n  choices: [{ index: 0, message: { role: 'assistant', content: '' },\n              finish_reason: 'stop' }],\n  daemons: { thought: null, error: 'backend_unreachable' },\n} }];"
+      },
+      "id": "r3",
+      "name": "Shape Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "r4",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        672,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Public Webhook": {
+      "main": [
+        [
+          {
+            "node": "Relay to Internal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Relay to Internal": {
+      "main": [
+        [
+          {
+            "node": "Shape Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "00000000-0000-4000-8000-000000000003",
+  "meta": {
+    "instanceId": ""
+  },
+  "id": "daemons-decide-public",
+  "tags": []
+}

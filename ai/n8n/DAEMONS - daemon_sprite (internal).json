@@ -1,0 +1,147 @@
+{
+  "name": "DAEMONS \u2014 daemon/sprite (Bonsai)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/sprite",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "s1",
+      "name": "Webhook /daemon/sprite",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "daemon-sprite"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Draft a daemon sprite with the local image model.\n//\n// 9.4 IS THE WHOLE PROMPT. Our sprites are drawn in NEUTRAL GREYS with a few\n// saturated accents, and coloured at build time from the type ramp -- \"the art\n// stays type-agnostic, so one drawing is correct whatever the type is.\" Asking\n// this model for a colourful creature would produce something gbasprite.py\n// cannot use, because the ramp is a parameter and not paint.\n//\n// This is for DRAFTS. 9.4 also says nothing in a finished sprite is accidental,\n// and a 4-step 384px generation is not that -- it is a way to see a hundred\n// creature ideas quickly without spending a hundred Gemini prompts.\nconst req=$input.first().json, headers=req.headers||{}, body=req.body||{};\nconst expected=$env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret']!==expected) throw new Error('Unauthorized: bad or missing x-dex-secret');\nconst name=String(body.name||'creature');\nconst idea=String(body.idea||'');\nconst accent=String(body.accent||'');\nconst prompt=[\n `pixel art sprite of ${name}${idea ? ', ' + idea : ''}`,\n `drawn in NEUTRAL GREYS only -- light grey, mid grey, dark grey, near-black outline`,\n accent ? `with a single small ${accent} as the only colour` : `with no colour anywhere`,\n `front-facing, centred, full body, thick near-black outline, flat shading, no gradients`,\n `plain white background, no text, no border, no shadow on the ground`,\n].join(', ');\nreturn [{ json: { bonsaiBody: { prompt, steps:4, guidance:1.0, width:384, height:384 } } }];"
+      },
+      "id": "s2",
+      "name": "Validate + Build Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.BONSAI_URL || 'http://host.docker.internal:8000') + '/generate' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.bonsaiBody) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 300000
+        }
+      },
+      "id": "s3",
+      "name": "Bonsai Generate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        0
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Bonsai returns raw PNG bytes; base64 for the caller, like the dex icon flow.\nlet spriteBase64=null;\ntry { const buf=await this.helpers.getBinaryDataBuffer(0,'data');\n      if (buf && buf.length) spriteBase64=buf.toString('base64'); } catch(e) {}\nreturn [{ json: { spriteBase64, spriteMime: spriteBase64 ? 'image/png' : null,\n                  error: spriteBase64 ? null : 'generation_failed' } }];"
+      },
+      "id": "s4",
+      "name": "Assemble Sprite",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "s5",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        896,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook /daemon/sprite": {
+      "main": [
+        [
+          {
+            "node": "Validate + Build Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate + Build Prompt": {
+      "main": [
+        [
+          {
+            "node": "Bonsai Generate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bonsai Generate": {
+      "main": [
+        [
+          {
+            "node": "Assemble Sprite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Sprite": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "00000000-0000-4000-8000-000000000002",
+  "meta": {
+    "instanceId": ""
+  },
+  "id": "daemons-sprite-internal",
+  "tags": []
+}

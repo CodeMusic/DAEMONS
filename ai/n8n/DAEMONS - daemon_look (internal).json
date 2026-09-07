@@ -1,0 +1,140 @@
+{
+  "name": "DAEMONS \u2014 daemon/look (screen)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/look",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "l1",
+      "name": "Webhook /daemon/look",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "daemon-look"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Describe the screen, on request only.\n//\n// The harness reads RAM, so it already knows the party, the position and the\n// battle state exactly -- better than a player does. This exists for the cases\n// RAM does NOT answer: an unexpected cutscene, a menu it does not recognise, a\n// sprite on screen it has no symbol for. Calling it every turn would be slower\n// and worse than the reads it already has.\nconst req=$input.first().json, headers=req.headers||{}, body=req.body||{};\nconst expected=$env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret']!==expected) throw new Error('Unauthorized: bad or missing x-dex-secret');\nconst image=body.image; if(!image) throw new Error('Missing image');\nconst question=String(body.question||'').trim();\nconst prompt=[\n `You are looking at a screenshot from a Game Boy Advance role-playing game.`,\n `Describe ONLY what is actually on screen. Do not guess at story, do not name`,\n `creatures you cannot read, and do not invent menu options that are not visible.`,\n question ? `The agent asked: ${question}` : `Say what is on screen and what the player can do next.`,\n `Answer in 1 to 3 short sentences. If a text box is open, quote its text exactly.`,\n].join('\\n');\nreturn [{ json: { visionBody: {\n  model: $env.DAEMONS_VISION_MODEL || $env.DEX_VISION_MODEL || 'default',\n  messages:[{role:'user',content:[\n    {type:'text',text:prompt},\n    {type:'image_url',image_url:{url:`data:image/png;base64,${image}`}}]}],\n  max_tokens:300, temperature:0.2, stream:false } } }];"
+      },
+      "id": "l2",
+      "name": "Validate + Build",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.DAEMONS_VISION_URL || $env.MLX_VLM_URL || 'http://host.docker.internal:8890') + '/v1/chat/completions' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.visionBody) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "l3",
+      "name": "Local Vision",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r=$input.first().json;\nconst raw=r?.choices?.[0]?.message?.content ?? r?.message?.content ?? '';\nconst description=String(raw).trim();\nreturn [{ json: { description: description || null,\n                  error: description ? null : 'no_description' } }];"
+      },
+      "id": "l4",
+      "name": "Parse Description",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "l5",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        896,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook /daemon/look": {
+      "main": [
+        [
+          {
+            "node": "Validate + Build",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate + Build": {
+      "main": [
+        [
+          {
+            "node": "Local Vision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local Vision": {
+      "main": [
+        [
+          {
+            "node": "Parse Description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Description": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "00000000-0000-4000-8000-000000000002",
+  "meta": {
+    "instanceId": ""
+  },
+  "id": "daemons-look-internal",
+  "tags": []
+}

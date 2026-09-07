@@ -1,0 +1,264 @@
+{
+  "name": "DAEMONS \u2014 daemon/chat (OpenAI chat-completions)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/v1/chat/completions",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d1",
+      "name": "Webhook /daemon/v1/chat/completions",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "daemon-chat"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Transparent OpenAI-compatible shim for the DAEMONS AI-play harness.\n//\n// The harness (Clad3815/gpt-play-pokemon-firered, patched to honour\n// OPENAI_BASE_URL) posts a normal /v1/chat/completions body here. This does NOT\n// rewrite its prompts -- it forwards them and gets out of the way -- because\n// duplicating the agent's prompting means maintaining two brains and this one\n// would silently drift from theirs on every upstream change.\n//\n// What it DOES add: the shared-secret check, a model default, and a marker so\n// the reasoning line can be lifted out downstream for the console and the voice.\nconst req = $input.first().json;\nconst headers = req.headers || {};\nconst body = req.body || {};\nconst expected = $env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret'] !== expected) {\n  throw new Error('Unauthorized: bad or missing x-dex-secret');\n}\nconst messages = Array.isArray(body.messages) ? body.messages : [];\nif (!messages.length) throw new Error('Missing messages');\n\n// Does this call carry a screenshot? The harness reads RAM, so images are the\n// exception -- an explicit \"look at the screen\" rather than every turn.\nconst hasImage = messages.some(m => Array.isArray(m.content)\n  && m.content.some(c => c && c.type === 'image_url'));\n\nconst completionBody = {\n  model: body.model || (hasImage ? ($env.DAEMONS_VISION_MODEL || 'default')\n                                 : ($env.DAEMONS_LLM_MODEL || 'default')),\n  messages,\n  max_tokens: body.max_tokens || 600,\n  temperature: body.temperature ?? 0.4,\n  stream: false,\n};\n// reasoning_effort / reasoning_summary are OpenAI-only. Lenient servers ignore\n// them, strict ones return 400 -- so they are dropped rather than forwarded.\nreturn [{ json: { completionBody, hasImage, speak: body.speak === true,\n                  voice: body.voice || 'index' } }];"
+      },
+      "id": "d2",
+      "name": "Validate + Build",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($json.hasImage ? ($env.DAEMONS_VISION_URL || $env.MLX_VLM_URL || 'http://host.docker.internal:8890') : ($env.DAEMONS_LLM_URL || $env.DEX_LLM_URL || 'http://host.docker.internal:1234')) + '/v1/chat/completions' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.completionBody) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "d3",
+      "name": "Local LLM (chat)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// OpenAI-compatible in, OpenAI-compatible out. The harness parses this the\n// same way it parses api.openai.com, so the shim stays invisible to it.\nconst r = $input.first().json;\nconst content = r?.choices?.[0]?.message?.content ?? r?.message?.content ?? '';\nconst text = String(content).trim();\n\n// THE THOUGHT, FOR THE CONSOLE. The interesting thing in these runs is not the\n// button, it is the one line of reasoning before it -- so it is pulled out here\n// rather than left buried in the payload. Two shapes are tried: a labelled\n// line, then the first sentence. Never invented if absent.\nlet thought = null;\nconst m = text.match(/^\\s*(?:thought|reasoning|thinking|plan)\\s*[:\\-]\\s*(.+)$/im);\nif (m) thought = m[1].trim();\nelse {\n  const first = text.split(/\\n/).map(s => s.trim()).filter(Boolean)[0] || '';\n  if (first && first.length <= 240 && !first.startsWith('{')) thought = first;\n}\nif (thought) thought = thought.slice(0, 240);\n\nreturn [{ json: { text, thought, upstream: r,\n                  speak: $('Validate + Build').first().json.speak,\n                  voice: $('Validate + Build').first().json.voice } }];"
+      },
+      "id": "d4",
+      "name": "Parse + Extract Thought",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.speak }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d5",
+      "name": "Speak it?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        896,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DEXTER_TTS_URL || 'http://host.docker.internal:8880/tts' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Dex-Key",
+              "value": "={{ $env.DEX_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.thought, voice: $json.voice || 'index' }) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 90000
+        }
+      },
+      "id": "d6",
+      "name": "Index TTS (local)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        -112
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Rebuild the OpenAI response the harness expects, and hang our extras off it.\n// Anything OpenAI would not have sent lives under `daemons` so a future\n// upstream change cannot collide with it.\nconst p = $('Parse + Extract Thought').first().json;\nlet audioBase64 = null;\ntry {\n  const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n  if (buf && buf.length) audioBase64 = buf.toString('base64');\n} catch (e) { /* no TTS this turn -- the console line still prints */ }\nconst up = p.upstream || {};\nreturn [{ json: {\n  id: up.id || 'daemons-shim',\n  object: 'chat.completion',\n  created: Math.floor(Date.now() / 1000),\n  model: up.model || 'local',\n  choices: [{ index: 0, message: { role: 'assistant', content: p.text },\n              finish_reason: (up.choices && up.choices[0] && up.choices[0].finish_reason) || 'stop' }],\n  usage: up.usage || {},\n  daemons: { thought: p.thought, audioBase64,\n             audioMime: audioBase64 ? 'audio/mpeg' : null },\n} }];"
+      },
+      "id": "d7",
+      "name": "Assemble (OpenAI shape)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "d8",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1568,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook /daemon/v1/chat/completions": {
+      "main": [
+        [
+          {
+            "node": "Validate + Build",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate + Build": {
+      "main": [
+        [
+          {
+            "node": "Local LLM (chat)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local LLM (chat)": {
+      "main": [
+        [
+          {
+            "node": "Parse + Extract Thought",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse + Extract Thought": {
+      "main": [
+        [
+          {
+            "node": "Speak it?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Speak it?": {
+      "main": [
+        [
+          {
+            "node": "Index TTS (local)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Assemble (OpenAI shape)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Index TTS (local)": {
+      "main": [
+        [
+          {
+            "node": "Assemble (OpenAI shape)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble (OpenAI shape)": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "00000000-0000-4000-8000-000000000001",
+  "meta": {
+    "instanceId": ""
+  },
+  "id": "daemons-decide-internal",
+  "tags": []
+}

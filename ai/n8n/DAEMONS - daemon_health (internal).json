@@ -1,0 +1,85 @@
+{
+  "name": "DAEMONS \u2014 daemon/health",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "daemon/health",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "h1",
+      "name": "Webhook /daemon/health",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "daemon-health"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Is the stack actually ready, or is only n8n awake?\n//\n// A health check that returns ok:true because the webhook fired tells you\n// nothing you needed to know. Everything that can be down here is a separate\n// process on a separate port, and the failure that matters is starting a long\n// unattended run against a model server that is not loaded.\nconst targets = [\n  ['text',   ($env.DAEMONS_LLM_URL    || $env.DEX_LLM_URL || 'http://host.docker.internal:1234') + '/v1/models'],\n  ['vision', ($env.DAEMONS_VISION_URL || $env.MLX_VLM_URL || 'http://host.docker.internal:8890') + '/v1/models'],\n  ['image',  ($env.BONSAI_URL || 'http://host.docker.internal:8000') + '/'],\n  ['tts',    ($env.DEXTER_TTS_URL || 'http://host.docker.internal:8880/tts').replace(/\\/tts$/, '/')],\n];\nconst services = {};\nfor (const [name, url] of targets) {\n  const t0 = Date.now();\n  try {\n    await this.helpers.httpRequest({ method: 'GET', url, timeout: 4000,\n                                     json: false, returnFullResponse: true });\n    services[name] = { up: true, ms: Date.now() - t0 };\n  } catch (e) {\n    // A 4xx still proves something is listening; only a transport error is down.\n    const code = e && (e.statusCode || (e.response && e.response.status));\n    services[name] = code ? { up: true, ms: Date.now() - t0, status: code }\n                          : { up: false, ms: Date.now() - t0,\n                              error: String((e && e.message) || e).slice(0, 120) };\n  }\n}\nconst down = Object.keys(services).filter(k => !services[k].up);\nreturn [{ json: {\n  ok: down.length === 0,\n  // The decide path needs text; look needs vision; sprite needs image. Saying\n  // which of those is usable is more actionable than one boolean.\n  ready: { decide: services.text.up, look: services.vision.up,\n           sprite: services.image.up, speak: services.tts.up },\n  services, down, checkedAt: new Date().toISOString(),\n} }];"
+      },
+      "id": "h2",
+      "name": "Probe Backends",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "h3",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook /daemon/health": {
+      "main": [
+        [
+          {
+            "node": "Probe Backends",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Probe Backends": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "00000000-0000-4000-8000-000000000004",
+  "meta": {
+    "instanceId": ""
+  },
+  "id": "daemons-health-internal",
+  "tags": []
+}

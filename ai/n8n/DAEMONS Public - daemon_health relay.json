@@ -1,0 +1,115 @@
+{
+  "name": "DAEMONS Public \u2014 daemon/health relay",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "daemon/health",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "p1",
+      "name": "Public Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "pub-daemon-health"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://10.0.0.136:5678/webhook/daemon/health",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "p2",
+      "name": "Relay to Internal Health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Mirrors the dex/health relay: pass through, or say plainly that the inner\n// network could not be reached -- which from outside is itself the answer.\nconst item = $input.first();\nconst j = (item && item.json) || {};\nif (j && typeof j.ok === 'boolean') return [{ json: { ...j, via: 'public-relay' } }];\nreturn [{ json: { ok: false, via: 'public-relay', error: 'backend_unreachable',\n                  ready: { decide: false, look: false, sprite: false, speak: false } } }];"
+      },
+      "id": "p3",
+      "name": "Shape Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "p4",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        672,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Public Webhook": {
+      "main": [
+        [
+          {
+            "node": "Relay to Internal Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Relay to Internal Health": {
+      "main": [
+        [
+          {
+            "node": "Shape Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "00000000-0000-4000-8000-000000000005",
+  "meta": {
+    "instanceId": ""
+  },
+  "id": "daemons-health-public",
+  "tags": []
+}
