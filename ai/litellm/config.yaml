@@ -176,8 +176,9 @@ model_list:
   # So APC is worth turning on and is not a fix on its own.
   #
   # Start the server before using this model:
-  #   ~/.vllm-venv/bin/python -m mlx_vlm.server \
+  #   APC_ENABLED=1 ~/.vllm-venv/bin/python -m mlx_vlm.server \
   #     --model ~/.lmstudio/models/mlx-community/MiniCPM-V-4.6-4bit --port 8101
+  # Confirm it took: curl -s http://127.0.0.1:8101/ | python3 -m json.tool | grep -A2 apc
   - model_name: minicpm-mlxvlm
     litellm_params:
       model: openai//Users/roverbyte/.lmstudio/models/mlx-community/MiniCPM-V-4.6-4bit
