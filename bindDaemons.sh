@@ -116,7 +116,16 @@ done
 # The processes --ai starts. One list, used to stop a previous run before
 # starting and by --stop, so the two can never disagree about what to kill.
 DASH_PORT="${DAEMONS_DASH_PORT:-5173}"
-AI_PROCS=("firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server" "http.server $DASH_PORT")
+AI_PIDFILE="ai/logs/run.pids"
+
+# PIDS, NOT PATTERNS. "gpt-play-pokemon-firered-daemons/server" matched nothing:
+# pkill -f matches the COMMAND LINE, and the agent's is `npm start` and
+# `node index.js` -- neither contains a directory. So the agent survived every
+# --stop and every --ai, and an instance from before the repo was renamed went
+# on running with a stale __dirname, reading prompts from a path that no longer
+# existed. Recording the pids we actually start is exact, and cannot hit an
+# unrelated node.
+AI_PROCS=("firered_mgba_bridge.py" "http.server $DASH_PORT")
 # ai_stop [keep-emulator]
 #
 # THE EMULATOR IS THE ODD ONE OUT. --stop should take mGBA down; the cleanup at
@@ -125,7 +134,18 @@ AI_PROCS=("firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server" "ht
 # to use, and the symptom would be an agent that never connects to a socket
 # nobody is holding.
 ai_stop() {
-  local found=0 pat n keep="${1:-}"
+  local found=0 pat n keep="${1:-}" pid
+  # the pids this script recorded, plus their children -- npm start forks node,
+  # and killing only npm leaves the agent orphaned and still running
+  if [[ -f "$AI_PIDFILE" ]]; then
+    while read -r pid; do
+      [[ -n "$pid" ]] || continue
+      kill -0 "$pid" 2>/dev/null || continue
+      found=1
+      pkill -P "$pid" 2>/dev/null || true
+      kill "$pid" 2>/dev/null || true
+    done < "$AI_PIDFILE"
+  fi
   for pat in "${AI_PROCS[@]}"; do
     pgrep -f "$pat" >/dev/null 2>&1 || continue
     found=1
@@ -142,7 +162,13 @@ ai_stop() {
   # dies on bind. So this waits for them to actually go, and escalates only
   # what refuses.
   for n in 1 2 3 4 5 6 7 8 9 10; do
-    still_running() { for pat in "${AI_PROCS[@]}"; do pgrep -f "$pat" >/dev/null 2>&1 && return 0; done; return 1; }
+    still_running() {
+      for pat in "${AI_PROCS[@]}"; do pgrep -f "$pat" >/dev/null 2>&1 && return 0; done
+      [[ -f "$AI_PIDFILE" ]] && while read -r pid; do
+        [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null && return 0
+      done < "$AI_PIDFILE"
+      return 1
+    }
     still_running || break
     sleep 1
   done
@@ -152,7 +178,9 @@ ai_stop() {
   sleep 1
   local left=0
   for pat in "${AI_PROCS[@]}"; do pgrep -f "$pat" >/dev/null 2>&1 && left=1; done
-  [[ $left -eq 0 ]] && echo "stopped the AI run" || echo "some processes are still alive — check: pgrep -fl firered_mgba_bridge"
+  for pid in $(cat "$AI_PIDFILE" 2>/dev/null); do kill -0 "$pid" 2>/dev/null && left=1; done
+  rm -f "$AI_PIDFILE"
+  [[ $left -eq 0 ]] && echo "stopped the AI run" || echo "some processes are still alive — check: pgrep -fl 'node index.js'"
 }
 for arg in "$@"; do
   case "$arg" in --stop|--ai-stop) ai_stop; exit 0 ;; esac
@@ -373,12 +401,13 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
   fi
 
   mkdir -p ai/logs
+  : > "$AI_PIDFILE"
   echo "starting bridge and agent…"
   echo "  python    $PYBIN"
   ( cd "$HARNESS" && "$PYBIN" firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &
-  echo "  bridge  pid $!  -> ai/logs/bridge.log"
+  echo $! >> "$AI_PIDFILE"; echo "  bridge  pid $!  -> ai/logs/bridge.log"
   ( cd "$HARNESS/server" && npm start ) >ai/logs/agent.log 2>&1 &
-  echo "  agent   pid $!  -> ai/logs/agent.log"
+  echo $! >> "$AI_PIDFILE"; echo "  agent   pid $!  -> ai/logs/agent.log"
   # The dashboard is part of the run rather than a line to copy afterwards --
   # and being in AI_PROCS means --stop takes it down with everything else.
   if lsof -nP -iTCP:"$DASH_PORT" -sTCP:LISTEN >/dev/null 2>&1; then
@@ -386,7 +415,7 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
   else
     ( cd "$HARNESS/frontend" && python3 -m http.server "$DASH_PORT" ) \
       >ai/logs/dashboard.log 2>&1 &
-    echo "  dash    pid $!  -> http://localhost:$DASH_PORT"
+    echo $! >> "$AI_PIDFILE"; echo "  dash    pid $!  -> http://localhost:$DASH_PORT"
   fi
 
   cat <<AIEOF
