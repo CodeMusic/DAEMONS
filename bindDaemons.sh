@@ -78,8 +78,7 @@ FLAGS
                    --classic  upstream's own debug menu on SELECT.
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
-                 proxy on the tailnet. Loading the Lua bridge in mGBA is still
-                 manual on 0.10.5; the script prints the path. See ai/README.md
+                 proxy on the tailnet. See ai/README.md
   --clean        make clean first
   --help         this
 
@@ -89,6 +88,21 @@ WHEN IT BREAKS
                          is fine and the break is ours.
   ./setup.sh             re-clones the three engines, fixes their branches, and
                          reports what is missing.
+USAGE
+  # Last, because it is the one thing that has to be typed by hand -- and
+  # printed with the path THIS machine has, resolved through the symlink:
+  # Lua does not expand ~, and mGBA's scripting box is a REPL, not a picker.
+  local lua=""
+  [[ -d engineAi/mgba/scripts ]] &&
+    lua="$(cd engineAi/mgba/scripts && pwd -P)/FireRedBridgeSocketServer.lua"
+  cat <<USAGE
+
+THE --ai MANUAL STEP
+  mGBA 0.10.5 has no --script (that landed in 0.11), so once per emulator
+  launch: Tools -> Scripting, paste this in, press Run. Then close the window
+  -- the script lives as long as the EMULATOR, not the window.
+
+      dofile("${lua:-<run ./setup.sh first>}")
 USAGE
 }
 for arg in "$@"; do
