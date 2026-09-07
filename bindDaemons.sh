@@ -79,6 +79,11 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
+  --nested-tools one execute_action tool wrapping a union of actions, the way
+                 upstream does it. Default is flat: one tool per action, which
+                 is what local models emit unprompted -- minicpm called
+                 key_press directly and LM Studio rejected it as an invalid
+                 tool name, and qwen emitted the same wrapped call 27 times.
   --fresh        start with an empty history. The agent PERSISTS its history
                  to engineAi/server/gpt_data/history.json and reloads it on
                  every start, so a restart is a resume, not a new run -- one
@@ -207,6 +212,7 @@ CLASSIC=0
 AI=0
 FULL_SCHEMA=0
 FRESH=0
+NESTED_TOOLS=0
 WANT_MODEL=""
 for arg in "$@"; do
   if [[ "$WANT_MODEL" == "__next__" ]]; then WANT_MODEL="$arg"; continue; fi
@@ -218,6 +224,7 @@ for arg in "$@"; do
     --ai)            AI=1 ;;
     --full-schema)   FULL_SCHEMA=1 ;;
     --fresh)         FRESH=1 ;;
+    --nested-tools)  NESTED_TOOLS=1 ;;
     --model)         WANT_MODEL="__next__" ;;
     *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
@@ -396,6 +403,12 @@ if [[ $AI -eq 1 ]]; then
   export OPENAI_TOKEN_LIMIT
   DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
   export DAEMONS_SCHEMA
+  # Each action as its own tool, which is the shape the models actually emit --
+  # minicpm called key_press directly and had it rejected as an invalid tool
+  # name, qwen emitted the same wrapped call 27 times. --nested-tools restores
+  # the single execute_action with its union.
+  DAEMONS_TOOLS=$([[ $NESTED_TOOLS -eq 1 ]] && echo nested || echo flat)
+  export DAEMONS_TOOLS
   # LiteLLM's /responses bridge rejects a function_call_output whose `output`
   # is an array -- the harness's way of attaching a screenshot to a tool
   # result. Verified against the proxy: string passes, list is a flat 400
