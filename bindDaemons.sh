@@ -446,6 +446,12 @@ if [[ $AI -eq 1 ]]; then
   : "${OPENAI_REASONING_EFFORT_DIALOG:=medium}"
   export DAEMONS_MAX_OUTPUT_TOKENS OPENAI_REASONING_EFFORT \
          OPENAI_REASONING_EFFORT_BATTLE OPENAI_REASONING_EFFORT_DIALOG
+  # No SDK retries against a local model. A retry does not replace the first
+  # call here, it runs beside it: mlx-vlm never cancels the abandoned
+  # generation. We watched in_flight reach 3 with decode at 17 tok/s instead of
+  # 100, and an orphan still decoding 256s after its client had gone.
+  : "${OPENAI_MAX_RETRIES:=0}"
+  export OPENAI_MAX_RETRIES
   : "${DAEMONS_PATHFINDER:=local}"
   export DAEMONS_PATHFINDER
   : "${DAEMONS_DUMP_INPUT:=$PWD/ai/logs/last-input.json}"
