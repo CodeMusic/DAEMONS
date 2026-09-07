@@ -46,13 +46,13 @@ engine() { # name  link  repo  upstream
   echo "     $link -> $dir  ($(git -C "$dir" branch --show-current), upstream ${up##*/})"
 }
 
-say "1/3  engines"
+say "1/4  engines"
 engine "classic" engine    "https://github.com/CodeMusic/pokered-daemons.git" \
                            "https://github.com/pret/pokered.git"
 engine "gba"     engineGba "https://github.com/CodeMusic/pokefirered-daemons.git" \
                            "https://github.com/pret/pokefirered.git"
 
-say "2/3  toolchains"
+say "2/4  toolchains"
 if command -v rgbasm >/dev/null; then
   echo "     rgbds    $(rgbasm --version 2>&1 | head -1)"
 else
@@ -88,17 +88,48 @@ else
   echo "     agbcc    built and installed"
 fi
 
-say "3/3  emulators"
+say "3/4  emulators"
 for pair in "SameBoy:sameboy" "mGBA:mgba"; do
   app="${pair%%:*}"; cask="${pair##*:}"
   if [[ -d "/Applications/$app.app" ]]; then echo "     $app"
   else echo "     $app MISSING — brew install --cask $cask" >&2; fi
 done
 
+# ---- 4/4 the AI harness --------------------------------------------------
+#
+# THIRD-PARTY AND TREATED AS SUCH. This is not one of ours: no upstream remote,
+# no branch of ours, and it is cloned shallow. It drives mGBA over a Lua socket
+# and reads the game out of RAM -- no screenshots anywhere, which is the fact
+# that makes a small local model viable for it at all.
+#
+# ONE PATCH, AND IT IS INERT WITHOUT THE ENV VAR. The client is constructed as
+# `new OpenAI({ apiKey })` with no baseURL, so it can only ever reach OpenAI.
+# patches/ai-local-model.patch adds `baseURL: process.env.OPENAI_BASE_URL ||
+# undefined`, which falls back to api.openai.com exactly as before when unset.
+say "4/4  ai harness"
+AI_DIR="../gpt-play-pokemon-firered"
+if [[ -d "$AI_DIR/.git" ]]; then
+  echo "     present  $AI_DIR"
+else
+  git clone --quiet --depth 1 \
+    https://github.com/Clad3815/gpt-play-pokemon-firered.git "$AI_DIR" \
+    && echo "     cloned   $AI_DIR" || echo "     clone FAILED — --ai will not work" >&2
+fi
+if [[ -d "$AI_DIR/.git" ]]; then
+  if grep -q "OPENAI_BASE_URL" "$AI_DIR/server/src/core/openaiClient.js" 2>/dev/null; then
+    echo "     patched  local-model endpoint already applied"
+  elif git -C "$AI_DIR" apply "$PWD/patches/ai-local-model.patch" 2>/dev/null; then
+    echo "     patched  local-model endpoint"
+  else
+    echo "     patch did not apply — see patches/ai-local-model.patch" >&2
+  fi
+fi
+
 say "ready"
 cat <<'EOS'
      ./bindDaemons.sh              CONTENT on GBA
      ./bindDaemons.sh --classic    CONTENT on Game Boy (this is where the slice is)
      make content                  classic build only
+     ./bindDaemons.sh --ai         CONTENT on GBA, played by a model
      make vanilla-check            prove the classic toolchain
 EOS

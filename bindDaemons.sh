@@ -7,6 +7,7 @@
 #   ./bindDaemons.sh context --classic    CONTEXT edition, Game Boy
 #   ./bindDaemons.sh --debug              GBA testing build
 #   ./bindDaemons.sh --classic --debug    Game Boy testing build
+#   ./bindDaemons.sh --ai                 CONTENT edition, GBA, played by a model
 #   ./bindDaemons.sh --clean
 #
 # TWO ENGINES, ON PURPOSE.
@@ -52,15 +53,22 @@ EDITION=content
 CLEAN=0
 DEBUG=0
 CLASSIC=0
+AI=0
 for arg in "$@"; do
   case "$arg" in
     content|context) EDITION="$arg" ;;
     --classic)       CLASSIC=1 ;;
     --clean)         CLEAN=1 ;;
     --debug)         DEBUG=1 ;;
-    *) echo "usage: ./bindDaemons.sh [content|context] [--classic] [--clean] [--debug]" >&2; exit 1 ;;
+    --ai)            AI=1 ;;
+    *) echo "usage: ./bindDaemons.sh [content|context] [--classic] [--clean] [--debug] [--ai]" >&2; exit 1 ;;
   esac
 done
+
+if [[ $AI -eq 1 && $CLASSIC -eq 1 ]]; then
+  echo "--ai is GBA only: the harness reads pokefirered's RAM by symbol name." >&2
+  exit 1
+fi
 
 if [[ $CLASSIC -eq 1 ]]; then
   DIR=engine
@@ -138,3 +146,58 @@ fi
 
 echo "binding ${TARGET} → ${EMU}"
 open -a "$EMU" "$DIR/$ROM"
+
+# ---------------------------------------------------------------- --ai -----
+#
+# WHAT THIS MODE IS. Clad3815/gpt-play-pokemon-firered drives mGBA over a Lua
+# socket and reads the game out of RAM -- no screenshots anywhere, which is the
+# fact that makes a small local model viable at all. It resolves game state by
+# SYMBOL NAME out of a pokefirered.sym, and its loader honours FIRERED_SYM_PATH.
+#
+# WHY THE SYMBOLS ARE REGENERATED EVERY RUN, AND WHY IT MATTERS MORE THAN IT
+# LOOKS. Their .sym describes retail FireRed. Measured against ours:
+#
+#     EWRAM + IWRAM (live state)     892 symbols,  99.3% agree
+#     ROM           (static data)  48804 symbols,   3.8% agree
+#
+# So their file against our ROM reads party, position and battle state
+# CORRECTLY, and move names, item names and THE TYPE CHART as garbage. That is
+# the worst failure available -- it looks like it is working. tools/gbasym.py
+# emits ours from the ELF, so it cannot drift.
+if [[ $AI -eq 1 ]]; then
+  HARNESS="../gpt-play-pokemon-firered"
+  [[ -d "$HARNESS" ]] || {
+    echo "AI harness missing at $HARNESS -- run ./setup.sh" >&2; exit 1; }
+
+  echo
+  echo "generating symbols from this build…"
+  python3 tools/gbasym.py --write
+
+  : "${OPENAI_BASE_URL:=http://127.0.0.1:8080/v1}"
+  : "${OPENAI_API_KEY:=local}"
+  : "${OPENAI_MODEL:=ternary-bonsai-8b}"
+  export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
+  export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
+  export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes
+
+  mkdir -p ai/logs
+  echo "starting bridge and agent…"
+  ( cd "$HARNESS" && python3 firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &
+  echo "  bridge  pid $!  -> ai/logs/bridge.log"
+  ( cd "$HARNESS/server" && npm start ) >ai/logs/agent.log 2>&1 &
+  echo "  agent   pid $!  -> ai/logs/agent.log"
+
+  cat <<AIEOF
+
+  model     $OPENAI_MODEL via $OPENAI_BASE_URL
+  symbols   ai/pokefirered.sym (this build)
+
+  ONE STEP IS STILL YOURS. mGBA 0.10.5 has no --script; that landed in 0.11.
+  In mGBA: Tools -> Scripting -> File -> Load script, and choose
+
+      $PWD/$HARNESS/mgba/scripts/FireRedBridgeSocketServer.lua
+
+  Then the dashboard:  cd $HARNESS/frontend && python3 -m http.server 5173
+  Stop everything:     kill %1 %2
+AIEOF
+fi

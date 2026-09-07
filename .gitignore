@@ -26,3 +26,7 @@ audio/music/**/*.wav
 # python scratch
 __pycache__/
 *.pyc
+
+# generated from the ELF by tools/gbasym.py -- rebuilt every --ai run
+ai/pokefirered.sym
+ai/logs/
