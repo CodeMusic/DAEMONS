@@ -1,0 +1,54 @@
+# LiteLLM proxy — the translation layer between the harness and a local model.
+#
+# WHY THIS EXISTS. gameLoop.js calls openai.responses.create() at four sites:
+# the RESPONSES API, with `input:` rather than `messages:`, plus reasoning
+# effort and summary, service_tier, store:true and stream:true consumed as
+# typed events. LM Studio, llama.cpp and Ollama implement /v1/chat/completions
+# and NOT /v1/responses, so the harness 404s on its first call no matter what
+# OPENAI_BASE_URL points at.
+#
+# THE ONE SETTING THAT MATTERS IS use_chat_completions_api. With a custom
+# api_base LiteLLM's DEFAULT is to forward /v1/responses through unchanged --
+# straight into the 404 this whole file exists to avoid. The bridge is opt-in
+# per model and silence here looks exactly like success until the first call.
+
+model_list:
+  # The decision model. Point api_base at whatever is actually serving:
+  # LM Studio's default is 1234, llama.cpp's server is usually 8080.
+  - model_name: daemons
+    litellm_params:
+      model: openai/local-model            # `openai/` = OpenAI-compatible, not OpenAI
+      api_base: http://roverbyteseer.local:1234/v1
+      api_key: none                        # local servers do not check it
+      use_chat_completions_api: true       # THE BRIDGE. Not optional here.
+
+  # Same server, named separately so the harness's pathfinding model can be
+  # pointed somewhere smaller and faster without touching the decision model.
+  - model_name: daemons-pathfinding
+    litellm_params:
+      model: openai/local-model
+      api_base: http://roverbyteseer.local:1234/v1
+      api_key: none
+      use_chat_completions_api: true
+
+  # Vision, for daemon/look. MiniCPM answers chat-completions with image_url
+  # content, so the same bridge applies.
+  - model_name: daemons-vision
+    litellm_params:
+      model: openai/local-vision
+      api_base: http://roverbyteseer.local:8890/v1
+      api_key: none
+      use_chat_completions_api: true
+
+litellm_settings:
+  # The harness sends service_tier, store and reasoning.summary. OpenAI accepts
+  # them; a local server 400s. Dropping beats patching four call sites and then
+  # re-patching them on every upstream change.
+  drop_params: true
+  request_timeout: 600
+
+general_settings:
+  # This is the auth. Set LITELLM_MASTER_KEY in the environment and give the
+  # same value to the harness as OPENAI_API_KEY -- which means if this ever is
+  # exposed through the iMac, it is already authenticated and needs nothing new.
+  master_key: os.environ/LITELLM_MASTER_KEY

@@ -173,9 +173,16 @@ if [[ $AI -eq 1 ]]; then
   echo "generating symbols from this build…"
   python3 tools/gbasym.py --write
 
-  : "${OPENAI_BASE_URL:=http://127.0.0.1:8080/v1}"
-  : "${OPENAI_API_KEY:=local}"
-  : "${OPENAI_MODEL:=ternary-bonsai-8b}"
+  # LiteLLM, not the model server directly: the harness calls /v1/responses and
+  # local servers only speak /v1/chat/completions. See ai/litellm/README.md --
+  # and note the bridge is opt-in per model, so a config without
+  # use_chat_completions_api 404s on the first call and looks like a network
+  # fault rather than a setting.
+  : "${OPENAI_BASE_URL:=http://roverbyteseer.local:4000/v1}"
+  : "${OPENAI_API_KEY:=${LITELLM_MASTER_KEY:-local}}"
+  : "${OPENAI_MODEL:=daemons}"
+  : "${OPENAI_MODEL_PATHFINDING:=daemons-pathfinding}"
+  export OPENAI_MODEL_PATHFINDING
   export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes

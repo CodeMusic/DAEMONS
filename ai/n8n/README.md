@@ -17,6 +17,10 @@ Reuses `DEX_SHARED_SECRET`, `DEX_KEY`, `MLX_VLM_URL`, `DEX_LLM_URL`,
 `BONSAI_URL` and `DEXTER_TTS_URL`, with `DAEMONS_*` overrides where a separate
 model is wanted. No new configuration is required to import them.
 
+**The decision loop does not come through here.** It streams, and n8n cannot
+relay a stream — see [`../litellm/README.md`](../litellm/README.md) for the
+transport split and why Tailscale removes the home/away question entirely.
+
 ## Why `daemon/chat` is inactive
 
 **The harness does not speak chat-completions.** `server/src/core/gameLoop.js`
