@@ -421,6 +421,22 @@ if [[ $AI -eq 1 ]]; then
   # stalls the run. We solve it in-process with a BFS over the collision grid
   # the frame already carries. DAEMONS_PATHFINDER=openai restores upstream's,
   # and needs a real OPENAI_API_KEY to be worth anything.
+  # A local model needs a ceiling the hosted default never did. Upstream sends
+  # max_output_tokens 32000 at every call site; at MiniCPM's ~70 tok/s that is
+  # 457 seconds for ONE turn, and we watched a turn spend 290s emitting 21,190
+  # tokens -- 623 consecutive reasoning deltas, thinking in circles, no tool
+  # call at the end of it. Real turns here emit 180-1120.
+  #
+  # The token cap is the lever that is PROVEN to work: max_tokens shows up in
+  # mlx-vlm's own request log, so we know it is honoured. The effort setting is
+  # sent too, but whether this serving layer acts on it is unverified -- so it
+  # is the belt, and the cap is the braces.
+  : "${DAEMONS_MAX_OUTPUT_TOKENS:=2048}"
+  : "${OPENAI_REASONING_EFFORT:=medium}"
+  : "${OPENAI_REASONING_EFFORT_BATTLE:=medium}"
+  : "${OPENAI_REASONING_EFFORT_DIALOG:=medium}"
+  export DAEMONS_MAX_OUTPUT_TOKENS OPENAI_REASONING_EFFORT \
+         OPENAI_REASONING_EFFORT_BATTLE OPENAI_REASONING_EFFORT_DIALOG
   : "${DAEMONS_PATHFINDER:=local}"
   export DAEMONS_PATHFINDER
   : "${DAEMONS_DUMP_INPUT:=$PWD/ai/logs/last-input.json}"
