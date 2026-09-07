@@ -117,14 +117,23 @@ done
 # starting and by --stop, so the two can never disagree about what to kill.
 DASH_PORT="${DAEMONS_DASH_PORT:-5173}"
 AI_PROCS=("firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server" "http.server $DASH_PORT")
+# ai_stop [keep-emulator]
+#
+# THE EMULATOR IS THE ODD ONE OUT. --stop should take mGBA down; the cleanup at
+# the start of a run must NOT, because by then this script has already
+# relaunched it -- quitting it there would kill the emulator the run is about
+# to use, and the symptom would be an agent that never connects to a socket
+# nobody is holding.
 ai_stop() {
-  local found=0 pat n
+  local found=0 pat n keep="${1:-}"
   for pat in "${AI_PROCS[@]}"; do
     pgrep -f "$pat" >/dev/null 2>&1 || continue
     found=1
     pkill -f "$pat" 2>/dev/null || true
   done
-  pgrep -x mGBA >/dev/null 2>&1 && { osascript -e 'quit app "mGBA"' >/dev/null 2>&1; found=1; }
+  if [[ "$keep" != "keep-emulator" ]] && pgrep -x mGBA >/dev/null 2>&1; then
+    osascript -e 'quit app "mGBA"' >/dev/null 2>&1; found=1
+  fi
   [[ $found -eq 1 ]] || { echo "nothing was running"; return 0; }
 
   # WAIT, THEN SAY. SIGTERM is asynchronous: checking straight after pkill sees
@@ -360,7 +369,7 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
      pgrep -f "gpt-play-pokemon-firered-daemons/server" >/dev/null 2>&1 ||
      pgrep -f "http.server $DASH_PORT" >/dev/null 2>&1; then
     echo "a previous --ai is still running; stopping it first…"
-    ai_stop
+    ai_stop keep-emulator
   fi
 
   mkdir -p ai/logs
