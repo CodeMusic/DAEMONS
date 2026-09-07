@@ -46,13 +46,13 @@ engine() { # name  link  repo  upstream
   echo "     $link -> $dir  ($(git -C "$dir" branch --show-current), upstream ${up##*/})"
 }
 
-say "1/4  engines"
+say "1/5  engines"
 engine "classic" engine    "https://github.com/CodeMusic/pokered-daemons.git" \
                            "https://github.com/pret/pokered.git"
 engine "gba"     engineGba "https://github.com/CodeMusic/pokefirered-daemons.git" \
                            "https://github.com/pret/pokefirered.git"
 
-say "2/4  toolchains"
+say "2/5  toolchains"
 if command -v rgbasm >/dev/null; then
   echo "     rgbds    $(rgbasm --version 2>&1 | head -1)"
 else
@@ -88,7 +88,7 @@ else
   echo "     agbcc    built and installed"
 fi
 
-say "3/4  emulators"
+say "3/5  emulators"
 for pair in "SameBoy:sameboy" "mGBA:mgba"; do
   app="${pair%%:*}"; cask="${pair##*:}"
   if [[ -d "/Applications/$app.app" ]]; then echo "     $app"
@@ -106,7 +106,7 @@ done
 # `new OpenAI({ apiKey })` with no baseURL, so it can only ever reach OpenAI.
 # patches/ai-local-model.patch adds `baseURL: process.env.OPENAI_BASE_URL ||
 # undefined`, which falls back to api.openai.com exactly as before when unset.
-say "4/4  ai harness"
+say "4/5  ai harness"
 AI_DIR="../gpt-play-pokemon-firered"
 if [[ -d "$AI_DIR/.git" ]]; then
   echo "     present  $AI_DIR"
@@ -123,6 +123,44 @@ if [[ -d "$AI_DIR/.git" ]]; then
   else
     echo "     patch did not apply — see patches/ai-local-model.patch" >&2
   fi
+fi
+
+# ---- 5/5 the model proxy ------------------------------------------------
+#
+# Nothing here is installed by this script: LiteLLM lives on roverbyteseer, and
+# Tailscale needs a browser login against an account this script cannot have.
+# What it CAN do is say which of the three steps is missing, in order, so a new
+# machine does not have to remember any of it. See ai/litellm/README.md.
+say "5/5  model proxy"
+TS_APP="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+if [[ -x "$TS_APP" ]]; then
+  # The CLI is inside the bundle, not on PATH -- `command -v tailscale` finds
+  # nothing on a machine that has it, which is confusing enough to say once.
+  if "$TS_APP" status >/dev/null 2>&1; then
+    echo "     tailscale  up ($("$TS_APP" status --json 2>/dev/null | grep -o '"DNSName":"[^"]*"' | head -1 | cut -d'"' -f4))"
+  else
+    echo "     tailscale  installed but LOGGED OUT — run: $TS_APP up" >&2
+  fi
+else
+  echo "     tailscale  MISSING — brew install --cask tailscale, then: $TS_APP up" >&2
+fi
+
+LLM_HOST=""
+for h in roverbyteseer roverbyteseer.local 10.0.0.136; do
+  if curl -fsS --max-time 3 "http://$h:4000/health/liveliness" >/dev/null 2>&1; then
+    LLM_HOST="$h"; break
+  fi
+done
+if [[ -n "$LLM_HOST" ]]; then
+  echo "     litellm    up at http://$LLM_HOST:4000"
+  if ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=5 "roverbyte@$LLM_HOST" \
+       'test -f ~/.litellm.env' 2>/dev/null; then
+    echo "     key        readable over ssh (never copied into this repo)"
+  else
+    echo "     key        NOT readable — run: ssh-copy-id roverbyte@$LLM_HOST" >&2
+  fi
+else
+  echo "     litellm    unreachable on :4000 — only needed for ./bindDaemons.sh --ai" >&2
 fi
 
 say "ready"

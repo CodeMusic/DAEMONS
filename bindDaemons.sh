@@ -178,8 +178,36 @@ if [[ $AI -eq 1 ]]; then
   # and note the bridge is opt-in per model, so a config without
   # use_chat_completions_api 404s on the first call and looks like a network
   # fault rather than a setting.
-  : "${OPENAI_BASE_URL:=http://roverbyteseer.local:4000/v1}"
-  : "${OPENAI_API_KEY:=${LITELLM_MASTER_KEY:-local}}"
+  #
+  # FIND THE PROXY. The tailnet name first, because it is the one that works
+  # from anywhere; the .local name second for a LAN with no tailnet; the IP
+  # last. Whichever answers /health/liveliness wins.
+  LLM_HOST="${DAEMONS_LLM_HOST:-}"
+  if [[ -z "$LLM_HOST" ]]; then
+    for h in roverbyteseer roverbyteseer.local 10.0.0.136; do
+      if curl -fsS --max-time 3 "http://$h:4000/health/liveliness" >/dev/null 2>&1; then
+        LLM_HOST="$h"; break
+      fi
+    done
+  fi
+  [[ -n "$LLM_HOST" ]] || {
+    echo "no LiteLLM proxy on roverbyteseer / .local / 10.0.0.136:4000" >&2
+    echo "  is it running?  ssh roverbyte@10.0.0.136 'launchctl list | grep litellm'" >&2
+    exit 1; }
+  : "${OPENAI_BASE_URL:=http://$LLM_HOST:4000/v1}"
+
+  # THE KEY IS FETCHED, NEVER STORED HERE. It lives in ~/.litellm.env on the
+  # proxy host at mode 0600. Copying it into this repo, a dotfile or a shell
+  # history is how it ends up somewhere it should not be -- and it already
+  # reached a chat log once and had to be rotated.
+  if [[ -z "${OPENAI_API_KEY:-}" ]]; then
+    OPENAI_API_KEY="$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=6 \
+      "roverbyte@$LLM_HOST" 'sed -n "s/^LITELLM_MASTER_KEY=//p" ~/.litellm.env' 2>/dev/null || true)"
+  fi
+  [[ -n "$OPENAI_API_KEY" ]] || {
+    echo "could not read the LiteLLM key from roverbyte@$LLM_HOST" >&2
+    echo "  set up the key once:  ssh-copy-id roverbyte@$LLM_HOST" >&2
+    exit 1; }
   : "${OPENAI_MODEL:=daemons}"
   : "${OPENAI_MODEL_PATHFINDING:=daemons-pathfinding}"
   export OPENAI_MODEL_PATHFINDING
@@ -197,6 +225,7 @@ if [[ $AI -eq 1 ]]; then
   cat <<AIEOF
 
   model     $OPENAI_MODEL via $OPENAI_BASE_URL
+  key       read from roverbyte@$LLM_HOST:~/.litellm.env
   symbols   ai/pokefirered.sym (this build)
 
   ONE STEP IS STILL YOURS. mGBA 0.10.5 has no --script; that landed in 0.11.
