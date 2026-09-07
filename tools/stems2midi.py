@@ -124,6 +124,67 @@ def valley(notes, lo=60, hi=80):
     return lo + i * 3 + 1, h[i], min(left, right)
 
 
+def drop_partials(lead, low):
+    """Remove upper notes that are an octave partial of a note below them.
+
+    A SPLIT DOES NOT SEPARATE INSTRUMENTS, IT SEPARATES PITCHES, and a
+    polyphonic transcriber reports a strong overtone as a real note. So the
+    upper half of a split arrives holding some of the lower half's harmonics,
+    and playing those on a second voice sounds the same note twice with two
+    timbres, one cell apart. That is not a doubling, it is a beat -- and it is
+    what made the intro theme's first build abrasive: 57 of 187 notes.
+
+    A partial starts WITH its fundamental and is no louder. A melody note that
+    happens to be an octave up starts on its own. That is the whole test, and
+    it is safe in the ambiguous case: where a lead really does double the
+    accompaniment at the octave, the lower voice still plays the note."""
+    out = []
+    for n in lead:
+        twin = [m for m in low
+                if m[0] < n[1] and m[1] > n[0] and (n[2] - m[2]) % 12 == 0
+                and abs(m[0] - n[0]) < 0.03 and n[3] <= m[3] * 1.2]
+        if not twin:
+            out.append(n)
+    return out
+
+
+#  Samples that decay on their own. Everything here is struck, plucked or
+#  hammered; strings, choir and the winds are not, and hold as written.
+STRUCK = {0, 9, 13, 14, 24, 33, 38, 45, 46, 47}
+GATE   = 6              # no struck note holds longer than a dotted eighth
+
+
+def detach(notes):
+    """Give a struck note its decay back by ending it before the next attack.
+
+    WHAT MADE THE FIRST BUILD ABRASIVE. cells_from marks every cell a note
+    sounds through, and a transcriber hears a bell's ring-out as duration --
+    so each note ran right up to the next one's onset: 82% of the
+    glockenspiel and 92% of the piano began the instant the previous ended.
+    A GBA track plays one note, so every one of those chopped the last off at
+    full amplitude. A chain of hard attacks with no decay between them is not
+    a bell part, and no amount of re-transcribing fixes it, because the notes
+    were correct -- the durations were describing the wrong thing.
+
+    On this hardware the ENVELOPE makes the ring: note-off starts a release
+    that outlasts the gap. So the note is gated short and the sample is left
+    to sound. Everything here keeps its onset and its pitch; only the note
+    length changes, which is the one thing that was never heard in the audio."""
+    out = []
+    for pitch, length in notes:
+        if pitch is None or length < 2:
+            out.append((pitch, length)); continue
+        keep = max(1, min(length - 1, GATE))
+        out.append((pitch, keep))
+        if length - keep:
+            out.append((None, length - keep))
+    return out
+
+
+def voiced(program, velocity, notes):
+    return (program, velocity, detach(notes) if program in STRUCK else notes)
+
+
 def register(notes):
     """The band a stem actually plays in. Basic Pitch reports upper partials as
     real notes -- the brass came back reaching G#6 and the keyboard F7 -- and a
@@ -288,13 +349,19 @@ def main():
                       "               not heard on its own." % (label, cut, floor, peak))
                 lead = [n for n in raw if n[2] >= cut]
                 raw = [n for n in raw if n[2] < cut]
+                keep_lead = drop_partials(lead, raw)
+                if len(keep_lead) < len(lead):
+                    print("  %-10s dropped %d of %d upper notes as octave\n"
+                          "               partials of the line below them."
+                          % (label, len(lead) - len(keep_lead), len(lead)))
+                lead = keep_lead
                 lc = cells_from(lead, grid, times, "high")
                 lc, lm = snap(lc, scale)
                 sl = [n for n in lc if n is not None]
                 print("  %-10s %4d heard, %4d cells, %s..%s, %d snapped"
                       % (label + "-lead", len(lead), len(sl),
                          librosa.midi_to_note(min(sl)), librosa.midi_to_note(max(sl)), lm))
-                parts.append((GLOCK, 82, mm.merge(lc)))
+                parts.append(voiced(GLOCK, 82, mm.merge(lc)))
                 span[label + "-lead"] = (np.percentile(sl, 3), np.percentile(sl, 90), len(sl))
         cells = cells_from(raw, grid, times, keep)
         cells, moved = snap(cells, scale)
@@ -305,7 +372,7 @@ def main():
               % (label, len(raw), len(sounded),
                  librosa.midi_to_note(min(sounded)), librosa.midi_to_note(max(sounded)),
                  moved))
-        parts.append((program, vel, mm.merge(cells)))
+        parts.append(voiced(program, vel, mm.merge(cells)))
         #  the SAME band cells_from works in. Measured with min/max first,
         #  which reported 21 semitones of overlap on an arrangement whose
         #  working registers overlap by 10 -- one stray harmonic at either
