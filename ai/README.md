@@ -69,6 +69,23 @@ harness already separates `OPENAI_MODEL_PATHFINDING`, which concedes the point
 — navigation is A* over a tile map, not an LLM problem, and every token spent
 on *press up, press up* is waste.
 
+## When the agent logs ECONNREFUSED on :8000
+
+**It is not always the Lua step.** Three different failures look identical from
+the agent's log, and the order to check them in is:
+
+1. **The bridge crashed on import.** `tail ai/logs/bridge.log`. A missing
+   Python module kills it at line 11 and the agent just sees a dead port.
+   `bindDaemons.sh --ai` now checks the imports before starting anything.
+2. **mGBA is not running**, or the Lua script was never loaded. The bridge then
+   falls back from the socket to mGBA's HTTP interface on :5000 and reports
+   **`403 Forbidden`** — which looks like a permissions problem and is really
+   *nothing is listening*.
+3. **The Lua script is not loaded** but mGBA is up — same 403.
+
+`lsof -nP -iTCP:8888 -sTCP:LISTEN` answers 2 and 3 in one line: if mGBA holds
+8888 and 8889, the script is loaded and running.
+
 ## The one manual step
 
 mGBA 0.10.5 has no `--script`; that arrived in 0.11.

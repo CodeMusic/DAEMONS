@@ -265,6 +265,24 @@ if [[ $AI -eq 1 ]]; then
   # Resolved through the symlink and made absolute, because Lua does not
   # expand ~ and the REPL is where this path actually gets pasted.
   LUA_PATH="$(cd "$HARNESS/mgba/scripts" && pwd -P)/FireRedBridgeSocketServer.lua"
+  # DEPENDENCIES, CHECKED RATHER THAN ASSUMED. The bridge died on import with
+  # ModuleNotFoundError: requests, and the only visible symptom was the agent
+  # logging ECONNREFUSED against :8000 forever -- which reads as "the bridge is
+  # not up yet" rather than "the bridge crashed on line 11".
+  MISSING=""
+  python3 - <<'PYCHK' || MISSING="python"
+import importlib, sys
+missing = [m for m in ("fastapi","uvicorn","pydantic","dotenv","requests")
+           if not importlib.util.find_spec(m)]
+sys.exit(1 if missing else 0)
+PYCHK
+  [[ -z "$MISSING" ]] || {
+    echo "bridge dependencies missing — run:" >&2
+    echo "    python3 -m pip install -r $HARNESS/requirements.txt" >&2; exit 1; }
+  [[ -d "$HARNESS/server/node_modules" ]] || {
+    echo "agent dependencies missing — run:" >&2
+    echo "    (cd $HARNESS/server && npm ci)" >&2; exit 1; }
+
   mkdir -p ai/logs
   echo "starting bridge and agent…"
   ( cd "$HARNESS" && python3 firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &
