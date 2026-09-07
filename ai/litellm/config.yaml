@@ -30,14 +30,23 @@ model_list:
   # Slower and correct beats fast and unusable. minicpm keeps the fallback seat
   # and the whole of daemons-vision, where one careful description is the job.
   #
-  # MEASURED, same vision request through the proxy:
-  #     qwen3-vl-8b   6.6s      this seat
-  #     minicpm-v-4.6 2.5s      cannot hold the tool schema
-  #     qwen3-vl-4b   5.2s      the middle option, untried
-  # On a 1-pixel image. Real calls carry ~114k input tokens, so the absolute
-  # gap is wider and prompt processing dominates. If 8b is too slow in the
-  # loop, try 4b here before giving up speed: same family, so probably the same
-  # schema discipline, and it is one line.
+  # MEASURED THREE WAYS, and only the third one meant anything.
+  #
+  #                     1 tool    plain vision   the HARNESS's union
+  #   qwen3-vl-8b        6.1s        6.6s          9.3s   correct
+  #   qwen3-vl-4b        4.7s        5.2s         11.6s   correct, SLOWER
+  #   minicpm-v-4.6      1.9s        2.5s         300s+   TIMED OUT
+  #
+  # The first two columns say minicpm is two to three times faster and every
+  # model emits valid tool_calls. Both are true and neither predicts anything:
+  # execute_action takes an array of a UNION of eight variants, each keyed by a
+  # literal "type", and on that schema minicpm does not answer at all. The
+  # harness's "Executing Action 1/2: undefined" was degenerate output from a
+  # model lost in the union, not a parser problem and not a speed problem.
+  #
+  # 4b is slower than 8b on the real schema -- the smaller model reasons longer
+  # on the hard shape -- so "drop a size for speed" is not available here. The
+  # bottleneck is schema complexity, not parameter count.
   #
   # Point api_base at whatever is actually serving: LM Studio's default is
   # 1234, llama.cpp's server is usually 8080.
@@ -64,10 +73,11 @@ model_list:
       api_key: none
       use_chat_completions_api: true
 
-  # The fallback seat: reached only when daemons errors.
+  # The fallback seat. NOT minicpm: a fallback that times out is worse than no
+  # fallback, because the run stalls for five minutes before failing anyway.
   - model_name: daemons-qwen
     litellm_params:
-      model: openai/minicpm-v-4.6-abliterated-and-disinhibited
+      model: openai/qwen/qwen3-vl-4b
       api_base: http://127.0.0.1:1234/v1
       api_key: none
       use_chat_completions_api: true
