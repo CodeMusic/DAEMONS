@@ -17,8 +17,12 @@ model_list:
   # LM Studio's default is 1234, llama.cpp's server is usually 8080.
   - model_name: daemons
     litellm_params:
-      model: openai/local-model            # `openai/` = OpenAI-compatible, not OpenAI
-      api_base: http://roverbyteseer.local:1234/v1
+      model: openai/ternary-bonsai-8b-mlx  # `openai/` = OpenAI-compatible, not OpenAI
+      # 127.0.0.1, NOT roverbyteseer.local. LM Studio binds to loopback only
+      # -- `LM Studio 127.0.0.1:1234 (LISTEN)` -- so the LAN name resolves to an
+      # address nothing is listening on. LiteLLM runs on this same box, so
+      # loopback is right; it is the PROXY that gets exposed, never LM Studio.
+      api_base: http://127.0.0.1:1234/v1
       api_key: none                        # local servers do not check it
       use_chat_completions_api: true       # THE BRIDGE. Not optional here.
 
@@ -26,17 +30,21 @@ model_list:
   # pointed somewhere smaller and faster without touching the decision model.
   - model_name: daemons-pathfinding
     litellm_params:
-      model: openai/local-model
-      api_base: http://roverbyteseer.local:1234/v1
+      # Smaller and faster on purpose: navigation is the call that happens
+      # hundreds of times a run and needs the least thinking.
+      model: openai/qwen3.5-0.8b
+      api_base: http://127.0.0.1:1234/v1
       api_key: none
       use_chat_completions_api: true
 
-  # Vision, for daemon/look. MiniCPM answers chat-completions with image_url
-  # content, so the same bridge applies.
+  # Vision, for daemon/look. NOTE THE PORT: nothing is serving 8890 on this
+  # machine -- the dex workflows' MLX_VLM_URL default points at a server that
+  # is not running. Vision is in LM Studio alongside the text models.
+  # qwen/qwen3-vl-8b is loaded too if MiniCPM disappoints on menu text.
   - model_name: daemons-vision
     litellm_params:
-      model: openai/local-vision
-      api_base: http://roverbyteseer.local:8890/v1
+      model: openai/minicpm-v-4.6-abliterated-and-disinhibited
+      api_base: http://127.0.0.1:1234/v1
       api_key: none
       use_chat_completions_api: true
 

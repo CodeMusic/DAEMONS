@@ -1,5 +1,18 @@
 # Home and away
 
+**LiteLLM does not make this work remotely. It makes it work at all.**
+
+Two separate problems, and conflating them is what makes this confusing:
+
+| problem | solved by | status |
+|---|---|---|
+| the harness speaks `/v1/responses`, the model speaks `/v1/chat/completions` | **LiteLLM** | done, verified on roverbyteseer |
+| reaching roverbyteseer from a hotel | **transport** — Tailscale, or the iMac proxy | **not done** |
+
+LiteLLM listens on `roverbyteseer:4000` and is reachable from anything on the
+LAN. From outside the house it is reachable from nothing at all. It is the
+translator, never the tunnel.
+
 The AI-play mode has **two kinds of traffic**, and trying to push both down one
 pipe is what makes this feel harder than it is.
 
@@ -59,6 +72,31 @@ the exposure rather than authenticating it.
 
 `flush_interval -1` is not optional. Caddy buffers proxied responses by
 default, which reintroduces exactly the problem n8n has.
+
+## Verified 2026-09-07, on the machine
+
+Installed to `~/.litellm-venv` (litellm 1.83.9, system Python 3.9.6 — the
+guardrail plugin logs two load errors on 3.9 and the proxy serves regardless).
+
+- `/v1/responses` non-streaming returns a proper Responses object
+- `/v1/responses` with `stream: true` emits the full event sequence the harness
+  consumes: `response.created`, `in_progress`, `output_item.added`,
+  `content_part.added`, `output_text`, `content_part.done`, `response.completed`
+- reachable from the laptop at `http://10.0.0.136:4000` — it binds `*:4000`,
+  unlike LM Studio, which binds loopback only
+
+**Three things the machine corrected in this config**, all of which would have
+looked like a broken bridge:
+
+- LM Studio listens on `127.0.0.1:1234`, so `roverbyteseer.local:1234` resolves
+  to an address nothing answers on. LiteLLM runs on the same box, so loopback
+  is right — and it is the *proxy* that gets exposed, never LM Studio.
+- **Nothing is serving port 8890.** The dex workflows' `MLX_VLM_URL` default
+  points at a vision server that is not running; vision is in LM Studio with
+  everything else.
+- The real model ids are `ternary-bonsai-8b-mlx`, `qwen3.5-0.8b` and
+  `minicpm-v-4.6-abliterated-and-disinhibited`. `qwen/qwen3-vl-8b` is loaded
+  too, if MiniCPM disappoints on menu text.
 
 ## Installing it
 
