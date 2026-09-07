@@ -283,6 +283,14 @@ PYCHK
     echo "agent dependencies missing — run:" >&2
     echo "    (cd $HARNESS/server && npm ci)" >&2; exit 1; }
 
+  # STOP THE PREVIOUS RUN FIRST. Each --ai starts a bridge on :8000 and an
+  # agent, and mGBA is relaunched above regardless -- so without this a second
+  # run leaves the first bridge holding the port, the new one dies on bind, and
+  # the agent talks to a bridge pointed at an emulator that no longer exists.
+  for pat in "firered_mgba_bridge.py" "gpt-play-pokemon-firered-daemons/server"; do
+    pkill -f "$pat" 2>/dev/null || true
+  done
+
   mkdir -p ai/logs
   echo "starting bridge and agent…"
   ( cd "$HARNESS" && python3 firered_mgba_bridge.py ) >ai/logs/bridge.log 2>&1 &

@@ -86,6 +86,22 @@ the agent's log, and the order to check them in is:
 `lsof -nP -iTCP:8888 -sTCP:LISTEN` answers 2 and 3 in one line: if mGBA holds
 8888 and 8889, the script is loaded and running.
 
+## The loop, once you are running
+
+**The Lua script lives as long as the emulator does, not as long as the window.**
+Verified both ways: with the Scripting window closed mGBA still held 8888 and
+8889; when mGBA quit, both ports went.
+
+So it is **once per emulator launch** — and `--ai` quits and relaunches mGBA
+every time, so once per `--ai`:
+
+1. `./bindDaemons.sh --ai`
+2. **Tools → Scripting**, paste the `dofile(...)` line it printed, press Run
+3. **Close the window.** Nothing stops.
+
+Re-running `--ai` stops the previous bridge and agent before starting new ones,
+so runs do not pile up on :8000.
+
 ## The one manual step
 
 mGBA 0.10.5 has no `--script`; that arrived in 0.11.
