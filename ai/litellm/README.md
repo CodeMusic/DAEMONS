@@ -28,7 +28,49 @@ after the model has finished, and the SDK — which is doing
 `for await (const event of stream)` — cannot parse that. It is not a tuning
 problem, it is the wrong instrument.
 
-## Recommended: Tailscale, and the question disappears
+## Tailscale — state as of 2026-09-07
+
+| | |
+|---|---|
+| roverbyteseer | `Tailscale.app` **installed**, `Logged out` — needs a login |
+| laptop | **not installed** |
+
+The CLI is inside the bundle rather than on `PATH`:
+`/Applications/Tailscale.app/Contents/MacOS/Tailscale`. Add an alias or call it
+by full path.
+
+Both remaining steps are browser logins against your account, so they are
+yours to do:
+
+**On roverbyteseer** — open Tailscale.app and sign in, or headless with a key
+you generate at `login.tailscale.com/admin/settings/keys`:
+
+```
+/Applications/Tailscale.app/Contents/MacOS/Tailscale up --authkey=tskey-...
+```
+
+**On the laptop** — install, then sign in:
+
+```
+brew install --cask tailscale
+```
+
+**Turn MagicDNS on** in the admin console, or `roverbyteseer` will only be
+reachable by its `100.x` address and the whole point — one hostname that works
+everywhere — is lost.
+
+Then `bindDaemons.sh`'s default becomes the tailnet name and stops changing
+between home and away:
+
+```
+OPENAI_BASE_URL=http://roverbyteseer:4000/v1
+```
+
+Until then the LAN name works and is what the script defaults to:
+`http://roverbyteseer.local:4000/v1` — verified resolving to 10.0.0.136 and
+answering.
+
+## Why Tailscale, and the question disappears
 
 Put the laptop and `roverbyteseer` on the same tailnet. Then:
 
