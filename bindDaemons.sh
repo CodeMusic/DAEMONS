@@ -79,6 +79,11 @@ FLAGS
                             Hold B to skip battles.
   --ai           GBA only. A model plays it, through engineAi and a LiteLLM
                  proxy on the tailnet. See ai/README.md
+  --full-schema  give the agent all eight action variants. Default is lean:
+                 the three that only annotate (add_marker, delete_marker,
+                 restart_console) are dropped. Measured warm, lean and full are
+                 the same speed -- 3.7s against 3.8s -- so this is about giving
+                 a small model three fewer branches to confuse, not latency.
   --stop         stop a running --ai: bridge, agent, dashboard and mGBA.
                  Ctrl+C only stops the foreground, so this is the one that
                  actually ends a run. --ai calls it for you if a previous run
@@ -191,6 +196,7 @@ CLEAN=0
 DEBUG=0
 CLASSIC=0
 AI=0
+FULL_SCHEMA=0
 for arg in "$@"; do
   case "$arg" in
     content|context) EDITION="$arg" ;;
@@ -198,6 +204,7 @@ for arg in "$@"; do
     --clean)         CLEAN=1 ;;
     --debug)         DEBUG=1 ;;
     --ai)            AI=1 ;;
+    --full-schema)   FULL_SCHEMA=1 ;;
     *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
 done
@@ -373,6 +380,8 @@ if [[ $AI -eq 1 ]]; then
   # breaking rather than the limit being wrong for it.
   : "${OPENAI_TOKEN_LIMIT:=200000}"
   export OPENAI_TOKEN_LIMIT
+  DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
+  export DAEMONS_SCHEMA
   export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes

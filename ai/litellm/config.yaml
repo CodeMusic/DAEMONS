@@ -53,8 +53,15 @@ model_list:
   #     gemma-3-4b      10.0s   correct     but one action where two were asked
   #     qwen3-vl-4b     11.6s   correct
   #     minicpm-v-4.6   300s+   no answer
-  # The three that work are within 2.3s of each other, so there is no fast
-  # option being left on the table -- the floor is the schema, not the model.
+  #
+  # THOSE THREE NUMBERS ARE COLD STARTS AND SHOULD NOT BE COMPARED. LM Studio
+  # reported the models as not-loaded, so each first call paid a model load.
+  # Warmed, qwen3-vl-8b answers the same union in ~3.7s. The ranking survives
+  # -- minicpm still never answers -- but "the floor is the schema" did not:
+  # trimming the union to five variants changed nothing (3.7s vs 3.8s).
+  #
+  # So the real cost per decision is prompt size, not variant count, and the
+  # lever that would matter is the ~114k tokens the harness sends.
   #
   # UNTESTED AND WORTH TESTING: stock MiniCPM-V 4.6. The one here is
   # "abliterated-and-disinhibited", and abliteration ablates the refusal
