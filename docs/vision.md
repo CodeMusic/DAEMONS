@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.105**
+**A total conversion — the living design bible, v11.106**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -497,6 +497,62 @@ BIND is not softer. **Binding a spirit is a darker act than catching an animal.*
 Flat. No congratulation. **The game declining to celebrate is more unsettling than any line of dialogue about it would be.**
 
 *Cost, accepted:* every Gen 1 player knows "caught," so a new verb costs a beat of confusion the first time. That beat is the point — it is the first moment the player notices this world does not share vocabulary with the one they expected. It lands in good company: Crystal asks what you will *call* him (4.3), Route 1's signpost gives a number and a name that disagree (3.2), and the first bind says the verbs are different too. Three lessons in the first fifteen minutes, none explained.
+
+### 1.6 The six states, and the items that undo them
+
+**Built 2026-09-07.** *1.4 shipped `HALTED` for fainting and then stopped, which left the game with one process word and six bodily ones.*
+
+**Vanilla leaves a creature poisoned, asleep, paralysed, burned, frozen or confused.** *Every one of those is a metaphor about a body,* **and this world does not have bodies — it has processes.** HALTED had already set the register: ***a state is something a process is IN, and something it can be got out of.***
+
+#### The states
+
+| Vanilla | Ours | Why it is the exact word |
+|---|---|---|
+| POISON · PSN | **LEAKING** | *A memory leak degrades a running process a little at a time until it dies.* **Nothing else in computing loses you a fixed slice per tick.** |
+| TOXIC · TOX | **CASCADING** | Badly poisoned worsens each turn, and **a cascading failure is precisely a fault whose rate rises because of the damage it already did.** |
+| SLEEP · SLP | **SUSPENDED** | *Not gone, not scheduled, and it **resumes**.* The one status that is genuinely temporary, and the word says so. |
+| PARALYSIS · PAR | **THROTTLED** | Paralysis does two things — cuts speed, sometimes skips a turn. **Throttling is a speed cap that intermittently stalls work.** *Both halves, one word.* |
+| BURN · BRN | **OVERHEATED** | Chip damage plus reduced output, **dealt by ENTROPY**, whose 2.6 clause is *noise and heat*. |
+| FREEZE · FRZ | **HUNG** | A hung process does nothing until something intervenes. ***FROZEN could not be reused*** — **it is a type name**, and 2.6 had just spent real effort establishing that type names carry meaning. |
+| CONFUSION | **THRASHING** | *A system so busy managing itself it makes no progress and damages its own throughput.* Hurting yourself in confusion is the same event. Volatile, so it needs no three-letter code. |
+
+#### The items are operations, not medicine
+
+| Vanilla | Ours | |
+|---|---|---|
+| ANTIDOTE | **PATCH** | *You patch a leak and you patch software.* **The pun is the definition** — it needs no beat of confusion, which is the standard CACHE was held to. |
+| AWAKENING | **RESUME** | The exact inverse of SUSPENDED, and the word an operating system uses. |
+| PARLYZ HEAL | **PRIORITY** | *What lifts throttling is not medicine, it is being scheduled ahead of the thing starving you.* **The weakest of the ten on the works-twice test.** |
+| BURN HEAL | **COOLANT** | The only one needing no domain knowledge at all. |
+| ICE HEAL | **INTERRUPT** | **An interrupt is the one thing that reaches a hung process.** |
+| FULL HEAL | **ROLLBACK** | Clears every state by returning to a known-good one. *Says "all of it" without listing anything.* |
+| FULL RESTORE | **SNAPSHOT** | Health and state together, because that is what a snapshot restores. |
+| REVIVE | **RESTART** | The word for bringing back a halted process — **and it lands on HALTED without explaining itself.** |
+| MAX REVIVE | **REBOOT** | *Strictly bigger than a restart, which is exactly the relationship the two items have.* **The ladder is free.** |
+| HEAL POWDER | **HOTFIX** | Bitter, cheap, works now, nobody is proud of it. |
+
+#### INVOKE, which the port unlocked
+
+***1.4 wanted this word and measured it away.*** **"You `bind()` a daimon and you *invoke* it, both idioms true twice over"** — *refused because the Game Boy's battle-menu left column runs x10–x14, five characters, and INVOKE is six.*
+
+**The GBA menu is pixel-addressed.** `gText_BattleMenu` reads `FIGHT{CLEAR_TO 56}BAG\nDAEMON{CLEAR_TO 56}DETACH` — **so DETACH already shipped**, the Game Boy's constraint never applied here, and **INVOKE measures 36px, which is exactly DAEMON's width in the same column.** *The objection was hardware, and the hardware changed.*
+
+#### And moves become ROUTINES
+
+***A routine is a subroutine and a habit***, and a daemon's moves are both — which is 1's double duty, and it ties the list to 4.29's ladder, where a daemon is read by **what it does unasked.** *METHOD was the runner-up and is the more thematic word* — **rejected because this one is a plain label read a thousand times**, and the game has other surfaces for arguing about methodology.
+
+**The rename is one string.** *Eleven player-visible strings contain `MOVE` and most are the **verb*** — `MOVE ITEMS`, `MOVE TO BAG`, `{DPAD_ANY}MOVE` all mean *relocate* and stay. **Same trap as *catchy tune*.** `KNOWN MOVES` becomes `KNOWN ROUTINES`: `POKESUM_WIN_PAGE_NAME` is 13 tiles with the printer at x=4, so the budget is 100px and it measures **84**.
+
+***Deliberately not done:*** **`move` → `routine` inside prose.** *"moves on own" and "can't move" are verbs while "move type" is a noun*, and separating them is the move pass's job, not this one's.
+
+#### Two habits this pass confirmed
+
+**Order is the whole trick.** *`POISON` is a **type** and `poisoned` is a **state***, so item names substitute first, then type words, then bare states — **reversing that turns the CORRUPT type back into a LEAKING type.**
+
+**And an escape is two characters whose first is a letter.** In `\nPoisoned` the `n` sits against the `P`, so `\b` finds **no word boundary** and every word at the start of a line is invisible. *That has now hidden substitutions in four tools in this project*, so `port_states.py` matches a **flattened** copy and applies by offset.
+
+*Two help-system lines the word pass pushed past the 196px box — 210 and 220 — are **rewritten rather than truncated**, both measured.*
+
 
 ---
 

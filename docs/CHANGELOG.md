@@ -5,6 +5,45 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.106 — 2026-09-07
+
+### The six states, the items that undo them, and two menu words
+
+- **1.6 replaces the last bodily metaphors in the game.** 1.4 shipped `HALTED` for fainting
+  and stopped, leaving one process word and six about bodies. Each state is now the ordinary
+  computing word for what the mechanic does: **LEAKING** (a memory leak is the only thing in
+  computing that costs a fixed slice per tick), **CASCADING**, **SUSPENDED**, **THROTTLED**
+  (a speed cap that intermittently stalls — both halves of paralysis in one word),
+  **OVERHEATED**, **HUNG**, **THRASHING**.
+- **FROZEN could not be reused for freeze** — it is a type name, and 2.6 had just spent effort
+  establishing that type names carry meaning.
+- **The items are operations rather than medicine.** PATCH, RESUME, PRIORITY, COOLANT,
+  INTERRUPT, ROLLBACK, SNAPSHOT, **RESTART / REBOOT**. *The last pair arrives with its ladder
+  already built: the bigger item is the bigger operation, which is exactly what REVIVE and
+  MAX REVIVE are.* `PRIORITY` is the weakest of the ten on the works-twice test.
+- **INVOKE, and the port unlocked it.** 1.4 wanted the word — *"you `bind()` a daimon and you
+  invoke it"* — and refused it on width: six characters where the Game Boy's left column fits
+  five. **The GBA menu is pixel-addressed and already ships DAEMON in that column; INVOKE
+  measures 36px, exactly DAEMON's width.** The objection was hardware and the hardware changed.
+- **Moves become ROUTINES** — a subroutine and a habit, which ties the list to 4.29's ladder,
+  where a daemon is read by *what it does unasked*. METHOD was the runner-up and lost for being
+  the more thematic word in a slot that is a plain label read a thousand times.
+- **The rename is one string.** Eleven player-visible strings contain `MOVE` and most are the
+  **verb** — `MOVE ITEMS`, `MOVE TO BAG`, `{DPAD_ANY}MOVE`. *Same trap as “catchy tune.”*
+  `KNOWN MOVES` → `KNOWN ROUTINES`, measured at 84px against a 100px window.
+- **Order is the whole trick, and it is recorded.** `POISON` is a **type**, `poisoned` is a
+  **state**, so items substitute first, then type words, then bare states — reversing it turns
+  the CORRUPT type back into a LEAKING type. And **an escape is two characters whose first is a
+  letter**: `\nPoisoned` hides from `\b`, which has now caught four tools here, so
+  `port_states.py` matches a flattened copy.
+- **Built and verified**: 51 battle messages, 55 move descriptions, 13 help-system lines, 7 in
+  teachy_tv, 10 items. Two lines pushed past the 196px box were rewritten rather than truncated.
+  Read back out of the ROM through `gbastr`; the tool reports nothing on a second run.
+- *Deliberately not done:* **`move` → `routine` inside prose** — "moves on own" and "can't move"
+  are verbs while "move type" is a noun, and that separation is the move pass's job.
+
+---
+
 ## v11.105 — 2026-09-07
 
 ### The one-clause test, and the two names that fail it
