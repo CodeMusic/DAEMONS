@@ -360,6 +360,19 @@ if [[ $AI -eq 1 ]]; then
   : "${OPENAI_MODEL:=daemons}"
   : "${OPENAI_MODEL_PATHFINDING:=daemons-pathfinding}"
   export OPENAI_MODEL_PATHFINDING
+
+  # CONTEXT GROWS UNTIL THE HARNESS FOLDS IT. It summarises when the running
+  # total passes OPENAI_TOKEN_LIMIT, so cost per step climbs to that ceiling,
+  # drops, and climbs again -- one run was already at 114,627 tokens after a
+  # handful of steps, 95,075 of them cached.
+  #
+  # The harness defaults to 250,000, which is a hair under qwen3-vl-8b's
+  # 262,144 and leaves no room for the summary call itself. And it is DOUBLE
+  # what gemma-3-4b can hold (131,072), so that model would overflow and fail
+  # before ever reaching the summariser -- the crash would look like the model
+  # breaking rather than the limit being wrong for it.
+  : "${OPENAI_TOKEN_LIMIT:=200000}"
+  export OPENAI_TOKEN_LIMIT
   export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes

@@ -62,6 +62,14 @@ model_list:
   # eight-way union needs. It is a plausible reason this model alone stalls,
   # and the test is one download.
   #
+  # CONTEXT WINDOWS, which decide this as much as speed does:
+  #     qwen3-vl-8b / 4b / minicpm-v-4.6   262144
+  #     gemma-3-4b                         131072
+  # The harness summarises at OPENAI_TOKEN_LIMIT and defaults to 250000 --
+  # under qwen's ceiling with nothing to spare, and DOUBLE what gemma can hold.
+  # bindDaemons.sh sets 200000, which fits every model here with headroom for
+  # the summary call itself. Raise it only for a model that can take it.
+  #
   # RULED OUT: MiniCPM5-1B and -2B. Text only, no native multimodal input, and
   # every decision here carries a screenshot.
   #
