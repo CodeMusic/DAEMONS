@@ -48,6 +48,23 @@ model_list:
   # on the hard shape -- so "drop a size for speed" is not available here. The
   # bottleneck is schema complexity, not parameter count.
   #
+  # EVERY VISION MODEL ON THE MACHINE, ON THE UNION:
+  #     qwen3-vl-8b      9.3s   correct     <- this seat
+  #     gemma-3-4b      10.0s   correct     but one action where two were asked
+  #     qwen3-vl-4b     11.6s   correct
+  #     minicpm-v-4.6   300s+   no answer
+  # The three that work are within 2.3s of each other, so there is no fast
+  # option being left on the table -- the floor is the schema, not the model.
+  #
+  # UNTESTED AND WORTH TESTING: stock MiniCPM-V 4.6. The one here is
+  # "abliterated-and-disinhibited", and abliteration ablates the refusal
+  # direction at the cost of instruction-following -- the exact capability an
+  # eight-way union needs. It is a plausible reason this model alone stalls,
+  # and the test is one download.
+  #
+  # RULED OUT: MiniCPM5-1B and -2B. Text only, no native multimodal input, and
+  # every decision here carries a screenshot.
+  #
   # Point api_base at whatever is actually serving: LM Studio's default is
   # 1234, llama.cpp's server is usually 8080.
   - model_name: daemons
