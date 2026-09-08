@@ -57,6 +57,23 @@ PLACES = [
     #  longest-first so POKEMON_CENTER is consumed before CENTER is reached.
     ("POKEMON_CENTER", "CHECKPOINT"), ("DAEMON_CENTER", "CHECKPOINT"),
     ("CENTER", "CHECKPOINT"), ("MART", "REPO"),
+    #  Her lab. port_oak.py renames every OAK the PLAYER reads and this table
+    #  was never given the same treatment, so the agent read
+    #  BLANCHE_TOWN_PROFESSOR_OAKS_LAB as the lab door's destination on every
+    #  single turn -- and then wrote "I hope this NPC is Professor Oak" into
+    #  its own inner voice. It was not recalling vanilla; it was reading ours.
+    #
+    #  NO TITLE, per the lexicon: she is CRYSTAL CLEAR, never PROF. So
+    #  PROFESSOR_OAKS_LAB becomes CRYSTALS_LAB rather than PROFESSOR_CRYSTALS.
+    ("PROFESSOR_OAKS_LAB", "CRYSTALS_LAB"), ("PROFESSOR_OAK", "CRYSTAL_CLEAR"),
+    ("OAKS_LAB", "CRYSTALS_LAB"), ("PROF_OAK", "CRYSTAL_CLEAR"),
+    ("OAK", "CRYSTAL_CLEAR"),
+    #  Lexicon words that reach these tables too. TRAINER -> USER and
+    #  POKEDEX -> INDEX are settled everywhere else in the game and were
+    #  simply never applied to the agent's copies.
+    ("COOLTRAINER", "COOLUSER"), ("TRAINER_TOWER", "USER_TOWER"),
+    ("TRAINER_TIPS", "USER_TIPS"), ("TRAINER", "USER"),
+    ("POKEDEX", "INDEX"),
     ("POKEMON", "DAEMON"),          # last: anything else that still says it
 ]
 
@@ -184,6 +201,24 @@ def main():
                 maps[num] = new; changed += 1
     report.append(("MAP_NAME_TABLE", changed, "%d maps" % sum(len(m) for m in raw["MAP_NAME_TABLE"].values())))
 
+    #  EVENT_OBJECT_NAME is how the agent is told WHO IT IS LOOKING AT -- the
+    #  NPC entries in the prompt come from here. It still held PROF_OAK, so the
+    #  sprite standing in her lab announced itself as Oak on every turn the
+    #  agent could see her, and the inner voice duly read "I hope this NPC is
+    #  Professor Oak". No tool had ever touched this table.
+    if isinstance(raw.get("EVENT_OBJECT_NAME"), dict):
+        objs = raw["EVENT_OBJECT_NAME"]
+        nchanged = 0
+        for k, name in list(objs.items()):
+            if not isinstance(name, str):
+                continue
+            new_name = name
+            for old_w, rep in sorted(PLACES, key=lambda p: -len(p[0])):
+                new_name = new_name.replace(old_w, rep)
+            if new_name != name:
+                objs[k] = new_name; nchanged += 1
+        report.append(("EVENT_OBJECT_NAME", nchanged, "%d objects" % len(objs)))
+
     port_progress()
 
     for k, n, note in report:
@@ -198,7 +233,7 @@ def main():
     #  PLACES and forgetting the guard is no longer possible.
     VANILLA = ["POKEMON", "PALLET", "VIRIDIAN", "PEWTER", "CERULEAN",
                "VERMILION", "LAVENDER", "CELADON", "FUCHSIA", "SAFFRON",
-               "CINNABAR", "INDIGO", "SEAFOAM", "MART", "CENTER"]
+               "CINNABAR", "INDIGO", "SEAFOAM", "MART", "CENTER", "OAK"]
     left = [n for m in raw["MAP_NAME_TABLE"].values() for n in m.values()
             if re.search("|".join(VANILLA), n)]
     print("  vanilla place names left: %s" % (", ".join(sorted(set(left))[:4]) if left else "none"))
