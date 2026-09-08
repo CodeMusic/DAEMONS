@@ -3074,3 +3074,24 @@ from that.
 ## Drafts
 
 - [`posts/2026-08-seeingsharp-announcement.md`](posts/2026-08-seeingsharp-announcement.md) — project announcement, ~2,300 words, **not published**
+
+## MIDI pipeline, tested 2026-09-07
+
+`stems2midi.py` runs end to end on the intro stem set and its diagnostics work.
+The mix rebuild fires (`no mix at intro-stems.mp3 / rebuilding it from 3
+stems`), key detection reports its runner-up (C major 0.92 against A minor
+0.78), and the overlap warning is correct rather than noisy:
+
+    !! other carries 65% of all sounded cells -- the separation
+       did not work, or the arrangement has only one part.
+
+Suno returned three stems — Drums, Bass, Other — with no separate melody stem,
+so `Other` genuinely holds melody and harmony together. The warning is
+describing the input, not a bug.
+
+**Regenerating was NOT committed.** The output differs materially from the
+tuned file: 4 tracks and ~425 note-ons against the committed 5 and ~309.
+Fewer parts, more notes. The committed version is the one tuned by ear when the
+accompaniment got its chords back, and replacing it on the strength of a
+byte-count comparison would be swapping something judged for something merely
+newer. It needs an A/B by ear.
