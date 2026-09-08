@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.106**
+**A total conversion — the living design bible, v11.107**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4845,6 +4845,42 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 **The dominant hue is still the type**, so the palette still reads as the chart — *which is what this section actually argued for.* **Colour carries the argument; it just no longer has to do it alone.** The accents buy an eye, a beak, a marking.
 
 ***And the art stays type-agnostic.*** **The body is drawn in neutral greys and the accents in saturated colour**, so one drawing is correct whatever the type is — the ramp stays a parameter rather than becoming 151 hand-coloured pictures. *A red eye on a VECTOR daemon would vanish, so an accent that lands too near the type's hue is shifted away from it.* **The near-black outline rule above is unchanged and is why the ramp ends where it does.**
+
+#### Two hues moved, 2026-09-08, and the reason generalises
+
+***Colour is only information if the colours are distinguishable.*** **Four pairs sat closer
+than ~20 in CIE76 measured on the ramp's mid tone** — which is most of a sprite's area, and
+roughly where two colours stop being separable at 56 pixels. *At that distance the chart is
+being stated and not read.*
+
+**They collided because their METAPHORS are adjacent.** CORRUPT and STRATUM were both earth;
+SIGNAL and EMERGENT both electric-teal. *Adjacent ideas produce adjacent colours* — which is
+the system working exactly as designed, right up to the point where it stops being legible.
+
+| | was | now | distance |
+|---|---|---|---|
+| **CORRUPT** | `#84764a` soil | `#545c34` **mould** | 10.8 → 25.9 from STRATUM |
+| **EMERGENT** | `#4ea89c` teal | `#357d6e` **deeper jade** | 10.6 → 26.0 from SIGNAL |
+
+***Each moved WITHIN its metaphor, and only one of each pair moved.*** **CORRUPT goes from
+soil to mould** — darker, greener, properly gone off rather than merely brown, which is
+*closer* to "data that has been tampered with" than the original was. **EMERGENT goes deeper
+and less lit rather than to a new hue**: the strangeness is the point, and a brighter jade
+would have read as a second SIGNAL. *STRATUM keeps the ground and SIGNAL keeps its current —
+of each pair, the more literal claim is the one that should not budge.*
+
+**An optimiser was tried and rejected.** *Maximising distance alone proposed `#79d930` for
+CORRUPT* — a bright lime that separates beautifully and is not *something gone off*.
+**Distance is a constraint here, not the design.**
+
+***Left alone:*** `LOGIC / LEGACY` at 18.5 and `SWARM / GROWTH` at 18.9. **Separating those
+means weakening a metaphor to buy two points of distance**, and that is a worse trade than
+the ambiguity.
+
+*One thing this exposed:* **white text fails on eleven of the fifteen base hues** — FROZEN is
+1.7:1 and CONTENT 1.9:1. ***On the ramp's dark step the worst case is 5.6:1 and all fifteen
+pass***, so type badges take the dark step as their ground. `ramp5` already produces it.
+**`graphics/interface/pokemon_types.pal` is still vanilla** — <span>OPEN</span>.
 
 #### The people are drawn as a fable, and the rule has three clauses
 

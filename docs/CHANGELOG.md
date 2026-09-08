@@ -3095,3 +3095,21 @@ Fewer parts, more notes. The committed version is the one tuned by ear when the
 accompaniment got its chords back, and replacing it on the strength of a
 byte-count comparison would be swapping something judged for something merely
 newer. It needs an A/B by ear.
+
+## v11.107 — 2026-09-08
+
+**Two type hues moved, for legibility rather than taste.** Four pairs sat closer than ~20 in
+CIE76 on the ramp's mid tone, which is most of a sprite's area and roughly where two colours
+stop being separable at 56px. `CORRUPT` 10.8 → 25.9 from STRATUM (soil → mould);
+`EMERGENT` 10.6 → 26.0 from SIGNAL (teal → deeper jade). Each moved within its own
+metaphor, and only one of each pair moved.
+
+`LOGIC / LEGACY` (18.5) and `SWARM / GROWTH` (18.9) left as they are — separating them would
+weaken a metaphor to buy two points of distance.
+
+**§9.4 gains the reasoning**, and `type-chart.html` gains a *Why each colour* section: all
+fifteen, with the four that §6 fixes marked as inherited rather than chosen.
+
+**Recorded as open:** white text fails on eleven of the fifteen base hues; the ramp's dark
+step passes all fifteen at 5.6:1 or better, so badges should use it.
+`graphics/interface/pokemon_types.pal` is still vanilla.
