@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.108 — 2026-09-08
+
+### The IVs, and the move that reads them
+
+- **2.3 gains a third thing Kanto already encoded** — this one in arithmetic rather than a
+  matchup, and found in the GBA engine rather than the chart. Gen 3 rolls six **IVs** per
+  daemon, 0–31, once, never changing and never shown. *An IV is definitionally the part of a
+  creature that is not content* — no field, no entry, nothing to fill in — which is **4.2's
+  complaint about the Index expressed as a data type the engine already ships**, and 6's
+  humors as arithmetic.
+- **`HIDDEN POWER` derives its type from the IVs, and its pool excludes `TYPE_NORMAL`.**
+  Verified in `battle_script_commands.c`: *the latent power in every daemon is never
+  **CONTENT***. The type comes from the **lowest bit** of each IV and the power from the
+  second — so what kind of hidden power a daemon has is set by the noise floor of its innate
+  variation. Nobody designed that.
+- **Renamed `PRIOR`.** A Bayesian prior is what a system believes before it has seen any
+  evidence; it also just means what came before. **Works twice**, which is BIND's test.
+  Description rewritten to name the mechanic and not the thesis.
+- **The IVs stay invisible, deliberately.** FireRed ships no IV judge and none gets added:
+  a readout of the one quantity the Index cannot hold would undo 4.2.
+
+---
+
 ## v11.106 — 2026-09-07
 
 ### The six states, the items that undo them, and two menu words

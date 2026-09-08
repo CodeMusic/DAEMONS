@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.107**
+**A total conversion — the living design bible, v11.108**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -609,6 +609,46 @@ Because we rename **constants**, every existing line in `type_matchups.asm` carr
 | `BUG, PSYCHIC, 20` | SWARM beats CONTEXT ×2 | Collectives destabilise individual framing |
 
 **Do not rewrite the matchup file. Patch it.**
+
+#### And the GBA build encodes one more, in arithmetic rather than a matchup
+
+**Found 2026-09-08, reading `battle_script_commands.c`.** *Gen 1 had DVs — four
+stats, 0–15, and HP not even independent.* **Gen 3 has IVs: six stats, 0–31,
+rolled once when a daemon is generated, never changing and never shown.**
+
+***An IV is, definitionally, the part of a creature that is not content.***
+There is no field for it, no entry, nothing to fill in — **which is 4.2's
+complaint about the Index expressed as a data type the engine already ships.**
+It is 6's humors as arithmetic: an innate constitution nobody can read off
+anyone.
+
+**And one move reads them.** Vanilla `HIDDEN POWER` derives its type and its
+power from the IVs — and the pool it draws from **excludes `TYPE_NORMAL`.**
+Verbatim, from the engine:
+
+```c
+// Subtract 3 instead of 1 below because 2 types are excluded (TYPE_NORMAL and TYPE_MYSTERY)
+gBattleStruct->dynamicMoveType = ((NUMBER_OF_MON_TYPES - 3) * typeBits) / 63 + 1;
+```
+
+> ***The latent power in every daemon is never CONTENT.***
+
+*Which is the thesis, in a formula, written by somebody who had never heard
+it.* **And it goes one further:** `typeBits` reads **the lowest bit of each
+IV** while `powerBits` reads the second — so *what kind of hidden power a
+daemon has is decided by the noise floor of its innate variation.*
+
+**Renamed `PRIOR`** (2026-09-08). A Bayesian prior is the belief a system holds
+*before it has seen any evidence* — innate, invisible, colouring everything
+computed after it. It also just means *what came before*, so it **works
+twice**, which is BIND's test. The description names the mechanic and not the
+thesis: *"Its type and force are set by traits the user was made with, never
+shown."*
+
+***The IVs stay invisible.*** **Gen 3 FireRed ships no IV judge and none gets
+added.** Handing the player a readout of the one quantity the Index
+structurally cannot hold would undo 4.2 — *the point is that it cannot be
+seen, and the game is the only place that silence means anything.*
 
 ### 2.4 The only deltas
 
