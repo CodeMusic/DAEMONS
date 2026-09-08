@@ -206,8 +206,11 @@ def primary_type(slot_dir):
     t = m.group(1)
     return t[:-5] if t.endswith("_TYPE") else t
 
-def write_png4(path, grid, palette):
-    """64x64, 4bpp, indexed -- the shape Gen 3 wants."""
+def write_png4(path, grid, palette, w=None, h=None):
+    """4bpp indexed -- the shape Gen 3 wants. 64x64 for battle sprites; the
+    derived assets pass their own size (32x32 overworld, 32x64 icon)."""
+    w = w or SIZE
+    h = h or SIZE
     plte = b"".join(bytes(c) for c in palette) + b"\x00\x00\x00" * (16 - len(palette))
     raw = b""
     for row in grid:
@@ -219,11 +222,96 @@ def write_png4(path, grid, palette):
         c = tag + data
         return struct.pack(">I", len(data)) + c + struct.pack(">I", zlib.crc32(c))
     png = (b"\x89PNG\r\n\x1a\n"
-           + chunk(b"IHDR", struct.pack(">IIBBBBB", SIZE, SIZE, 4, 3, 0, 0, 0))
+           + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 4, 3, 0, 0, 0))
            + chunk(b"PLTE", plte)
            + chunk(b"IDAT", zlib.compress(raw))
            + chunk(b"IEND", b""))
     open(path, "wb").write(png)
+
+#  DERIVED ASSETS. The overworld object and the party icon are not generated
+#  separately -- they are REDUCED FROM THE FRONT SPRITE, so the creature in the
+#  grass, the creature in the menu and the creature in battle are the same
+#  drawing by construction rather than by luck. Three generations of the same
+#  daemon would drift, and you would not notice until they sat side by side.
+def _subject(grid, palette):
+    """The front grid cropped to its drawn pixels, as RGB, square."""
+    pts = [(x, y) for y in range(len(grid)) for x in range(len(grid[0])) if grid[y][x]]
+    if not pts:
+        return None
+    xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
+    x0, x1, y0, y1 = min(xs), max(xs) + 1, min(ys), max(ys) + 1
+    w, h = x1 - x0, y1 - y0
+    n = max(w, h)
+    im = Image.new("RGB", (n, n), palette[0])
+    for y in range(y0, y1):
+        for x in range(x0, x1):
+            im.putpixel((x - x0 + (n - w) // 2, y - y0 + (n - h) // 2), tuple(palette[grid[y][x]]))
+    return im
+
+def derive_overworld(grid, palette):
+    """32x32, one frame. Snorlax-class objects are static obstacles, so there
+    is no walk cycle to keep consistent -- which is what makes a walking NPC
+    hopeless and this straightforward."""
+    im = _subject(grid, palette)
+    if im is None:
+        return None
+    small = im.resize((32, 32), Image.NEAREST)
+    idx = {tuple(c): i for i, c in enumerate(palette)}
+    out = [[0] * 32 for _ in range(32)]
+    for y in range(32):
+        for x in range(32):
+            out[y][x] = idx.get(small.getpixel((x, y)), 0)
+    return out
+
+def icon_palettes():
+    out = []
+    for i in range(3):
+        f = os.path.join(GBA, "graphics/pokemon/icon_palettes/icon_palette_%d.pal" % i)
+        cols = [tuple(int(v) for v in l.split())
+                for l in open(f).read().split("\n")[3:] if l.strip()][:16]
+        out.append(cols)
+    return out
+
+def derive_icon(grid, palette):
+    """32x64 -- two 32x32 frames, the idle bob.
+
+    Icons CANNOT carry the type ramp: gMonIconPaletteIndices picks one of three
+    palettes shared by every species, and none of them holds the bone of NORMAL
+    or most of the other ramps. So colour stops being information here and the
+    silhouette carries it instead. 9.4 answers invariant 5 for front and back;
+    the party menu is outside that answer, and this is where it shows.
+
+    Mapped PER SOURCE COLOUR, not per pixel. Per-pixel nearest-colour on an
+    antialiased reduction sends neighbouring body pixels to different entries
+    and the result speckles. And the body is mapped among entries 1..15 only:
+    entry 0 is transparent, and letting the body land there erases it."""
+    im = _subject(grid, palette)
+    if im is None:
+        return None, None
+    small = im.resize((30, 30), Image.NEAREST)
+    bg = tuple(palette[0])
+    src = [c for _, c in small.getcolors(4096)]
+    best = None
+    for pi, pal in enumerate(icon_palettes()):
+        body = pal[1:]
+        m, err, n = {}, 0.0, 0
+        for c in src:
+            if c == bg:
+                m[c] = 0; continue
+            j = min(range(len(body)), key=lambda k: sum((a - b) ** 2 for a, b in zip(c, body[k])))
+            m[c] = j + 1
+            err += sum((a - b) ** 2 for a, b in zip(c, body[j])) ** 0.5; n += 1
+        err /= max(n, 1)
+        if best is None or err < best[0]:
+            best = (err, pi, m)
+    err, pi, m = best
+    out = [[0] * 32 for _ in range(64)]
+    for y in range(30):
+        for x in range(30):
+            v = m[small.getpixel((x, y))]
+            out[y + 1][x + 1] = v          # frame 1
+            out[y + 33][x + 1] = v         # frame 2, the bob
+    return out, (pi, err)
 
 def write_pal(path, palette):
     lines = ["JASC-PAL", "0100", "16"]
@@ -258,6 +346,7 @@ for vanilla, ours in sorted(pairs.items()):
         skipped.append("%s (type %s)" % (ours, t)); continue
     legacy = [BG] + ramp(*TYPE_COLOR[t])
     palette, note = legacy, ""
+    front_grid, front_pal = None, None
     for kind, src in (("front", "gfx/pokemon/front/%s.png" % d.replace("_", "")),
                       ("back",  "gfx/pokemon/back/%sb.png" % d.replace("_", ""))):
         rich = rich_src(ours, kind)
@@ -272,10 +361,34 @@ for vanilla, ours in sorted(pairs.items()):
         if WRITE:
             write_png4(os.path.join(outdir, kind + ".png"), grid, palette)
         done += 1
+        #  Both derived assets come off the FRONT, which is the only view that
+        #  shows the whole creature.
+        if kind == "front":
+            front_grid, front_pal = grid, palette
     if WRITE:
         write_pal(os.path.join(outdir, "normal.pal"), palette)
         write_pal(os.path.join(outdir, "shiny.pal"), palette)
-    print("  %-11s %-12s %-9s %s%s" % (ours, d, t, "written" if WRITE else "ready", note))
+
+    #  Derived assets, only for daemons whose art we actually redrew -- a
+    #  vanilla-sourced sprite has a vanilla icon and object already.
+    extra = ""
+    if front_grid is not None and note:
+        ow = derive_overworld(front_grid, front_pal)
+        owp = os.path.join(GBA, "graphics/object_events/pics/pokemon/%s.png" % d)
+        if ow and os.path.exists(owp):
+            if WRITE:
+                write_png4(owp, ow, front_pal, 32, 32)
+            extra += "  +overworld"
+        ic, info = derive_icon(front_grid, front_pal)
+        if ic:
+            if WRITE:
+                write_png4(os.path.join(outdir, "icon.png"), ic, icon_palettes()[info[0]], 32, 64)
+            #  The palette index is a per-species field, so say which one fits.
+            #  It is NOT written here: gMonIconPaletteIndices is C, and editing
+            #  it belongs to whoever is reading the diff.
+            extra += "  +icon(pal %d, err %.0f)" % info
+
+    print("  %-11s %-12s %-9s %s%s%s" % (ours, d, t, "written" if WRITE else "ready", note, extra))
 print("  %d sprites, %d skipped" % (done, len(skipped)))
 for s in skipped:
     print("     skip %s" % s)
