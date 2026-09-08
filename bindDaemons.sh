@@ -452,6 +452,19 @@ if [[ $AI -eq 1 ]]; then
   # 100, and an orphan still decoding 256s after its client had gone.
   : "${OPENAI_MAX_RETRIES:=0}"
   export OPENAI_MAX_RETRIES
+  # OpenRouter refuses `store: true` outright -- invalid_value on path
+  # ["store"], "expected false" -- and LiteLLM's drop_params cannot help,
+  # because store is a legitimate Responses parameter rather than an
+  # unsupported one. Nothing in the harness depends on retention: it reads the
+  # final response out of the stream, not by fetching it back.
+  #
+  # Keyed off the model name because that is what actually determines it, and
+  # the or- prefix is this file's own convention for OpenRouter entries.
+  case "${WANT_MODEL:-}" in
+    or-*) : "${DAEMONS_STORE:=0}" ;;
+    *)    : "${DAEMONS_STORE:=1}" ;;
+  esac
+  export DAEMONS_STORE
   : "${DAEMONS_PATHFINDER:=local}"
   export DAEMONS_PATHFINDER
   : "${DAEMONS_DUMP_INPUT:=$PWD/ai/logs/last-input.json}"
