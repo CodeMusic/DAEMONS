@@ -167,7 +167,13 @@ TYPE_COLOR = {
     # Extended from them.
     "NORMAL":   (198, 188, 168),   # CONTENT  -- bone; the undifferentiated one
     "FIGHTING": ( 96, 122, 158),   # LOGIC    -- cold steel blue
-    "POISON":   (132, 118,  74),   # CORRUPT  -- something gone off
+    #  CORRUPT moved 2026-09-08. At (132,118,74) it sat 10.8 from STRATUM in
+    #  CIE76 on the mid tone, and under ~20 is not separable at 56px -- so two
+    #  types read as one and colour stopped being information. They collided
+    #  because their METAPHORS are adjacent: both were earth. Moved toward
+    #  MOULD and away from soil, darker and greener and properly gone off
+    #  rather than merely brown. Now 25.9 from STRATUM.
+    "POISON":   ( 84,  92,  52),   # CORRUPT  -- something gone off; mould, not soil
     "GROUND":   (158, 122,  78),   # STRATUM  -- the ground itself
     "ROCK":     (130, 130, 138),   # LEGACY   -- slate, and 5.1's cairn
     "BUG":      (128, 148,  72),   # SWARM    -- olive
@@ -175,7 +181,11 @@ TYPE_COLOR = {
     "GRASS":    ( 92, 158,  96),   # GROWTH
     "ELECTRIC": ( 86, 190, 190),   # SIGNAL   -- a carrier, not a spark
     "PSYCHIC":  (176,  86, 158),   # CONTEXT  -- the thesis half
-    "DRAGON":   ( 78, 168, 156),   # EMERGENT -- iridescent
+    #  EMERGENT moved 2026-09-08, same reason: 10.6 from SIGNAL, both in the
+    #  electric-teal band. Deeper and less lit rather than a different colour
+    #  -- the strangeness is the point, and a brighter jade would simply have
+    #  read as a second SIGNAL. Now 26.0 from SIGNAL.
+    "DRAGON":   ( 53, 125, 110),   # EMERGENT -- jade, deeper than SIGNAL's current
 }
 BG = (205, 205, 172)               # what Gen 3 puts in index 0
 
