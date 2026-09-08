@@ -90,7 +90,10 @@ FLAGS
                  every start, so a restart is a resume, not a new run -- one
                  file reached 1.08 MB and 93 items, and both models kept
                  replaying a sentence from hours earlier because it was still
-                 in there. The old files are moved aside, never deleted.
+                 in there. The old files are moved aside, never deleted --
+                 and the archive is swept to the most recent 5 runs, since
+                 --fresh is what creates them. DAEMONS_KEEP_RUNS changes the
+                 number; 0 keeps everything.
   --model NAME   use a specific model instead of the "daemons" group. Names
                  come from tools/ai_models.py, which reads them out of LM
                  Studio -- e.g. qwen3-vl-8b, minicpm-v-4-6.
@@ -555,6 +558,51 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
     ARCHIVE="$GPT_DATA/../gpt_data_$(date +%Y%m%d-%H%M%S)"
     mv "$GPT_DATA" "$ARCHIVE"
     echo "  history   cleared (previous run archived to $(basename "$ARCHIVE"))"
+
+    # --fresh ARCHIVES, so --fresh is what accumulates: 33 directories and
+    # 55 MB had built up without anyone deciding to keep them, the largest a
+    # single 17 MB history. Sweeping here rather than on every launch means
+    # the tidy-up happens at the moment you already said "start clean", and
+    # never deletes anything while a run might still want it.
+    #
+    # KEEP the most recent few. A run you want to look at is a run from
+    # today; beyond that they are just the shape of a history that was
+    # already replaced. DAEMONS_KEEP_RUNS=0 disables the sweep entirely.
+    #
+    # NO mapfile HERE. This script's shebang is `env bash`, and /bin/bash on
+    # macOS is still 3.2, which has no mapfile -- it would fail, the `|| true`
+    # would swallow it, and the sweep would silently prune nothing while
+    # printing nothing. That is the exact "looks like it worked" failure this
+    # project keeps getting bitten by. `ls -dt | tail -n +N` into a plain
+    # while-read is portable to 3.2 and does the same job.
+    KEEP_RUNS="${DAEMONS_KEEP_RUNS:-5}"
+    if [[ "$KEEP_RUNS" -gt 0 ]]; then
+      RUN_ROOT="$(cd "$GPT_DATA/.." && pwd)"
+      PRUNED=0
+      FREED=$( cd "$RUN_ROOT" && du -ck $(ls -dt gpt_data_* 2>/dev/null | tail -n +$((KEEP_RUNS + 1))) 2>/dev/null | tail -1 | cut -f1 )
+      # ls -dt is newest-first, so tail -n +N is everything past the Nth.
+      while IFS= read -r OLD; do
+        [[ -n "$OLD" ]] || continue
+        rm -rf "$RUN_ROOT/$OLD"
+        PRUNED=$((PRUNED + 1))
+      done < <( cd "$RUN_ROOT" && ls -dt gpt_data_* 2>/dev/null | tail -n +$((KEEP_RUNS + 1)) )
+      if [[ $PRUNED -gt 0 ]]; then
+        echo "  archives  pruned $PRUNED old run(s), $(( ${FREED:-0} / 1024 )) MB freed (keeping $KEEP_RUNS)"
+      fi
+      # The mechanical history fold writes multi-MB backups every time the
+      # summariser fails, which is the one that grows fastest when something
+      # is wrong -- exactly when you are least likely to be watching disk.
+      BK="$HARNESS/server/backup"
+      if [[ -d "$BK" ]]; then
+        PRUNED_BK=0
+        while IFS= read -r OLD; do
+          [[ -n "$OLD" ]] || continue
+          rm -f "$BK/$OLD"
+          PRUNED_BK=$((PRUNED_BK + 1))
+        done < <( ls -t "$BK" 2>/dev/null | tail -n +$((KEEP_RUNS + 1)) )
+        [[ $PRUNED_BK -gt 0 ]] && echo "  backups   pruned $PRUNED_BK old history backup(s)"
+      fi
+    fi
   elif [[ -f "$GPT_DATA/history.json" ]]; then
     H=$(python3 -c "import json,sys;print(len(json.load(open(sys.argv[1]))))" "$GPT_DATA/history.json" 2>/dev/null || echo "?")
     K=$(( $(wc -c < "$GPT_DATA/history.json") / 1024 ))
