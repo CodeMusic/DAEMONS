@@ -32,9 +32,17 @@ WRITE = "--write" in sys.argv
 
 #  3.3's town renames, and the places 3.1 renamed outright. Applied to internal
 #  identifiers, so they are the SCREAMING_SNAKE forms.
+#  ALL SIXTEEN, not the four that happened to get typed. This list had
+#  PALLET, VERMILION, CINNABAR and CELADON and stopped -- so the agent read
+#  BLANCHE for its home town and VIRIDIAN_CITY for the next one along, and
+#  wrote "head toward Viridian City" into its own objectives. Kept in step with
+#  port_vocab.py's table, which is the one that has always been complete.
 PLACES = [
     ("PALLET", "BLANCHE"), ("VERMILION", "ARDOR"), ("CINNABAR", "QUICKSILVER"),
     ("CELADON", "VERDIGRIS"), ("VIRIDIAN_FOREST", "THE_UNDERTONE"),
+    ("VIRIDIAN", "CALLOW"), ("PEWTER", "SLATE"), ("CERULEAN", "DOLDRUM"),
+    ("LAVENDER", "HALFTONE"), ("FUCHSIA", "LURID"), ("SAFFRON", "BRAZEN"),
+    ("INDIGO", "UMBRA"), ("SEAFOAM", "GLAUCOUS"),
     ("ROCK_TUNNEL", "THE_BLACKOUT"), ("VICTORY_ROAD", "UMBRAL_ASCENT"),
     ("POKEMON_TOWER", "HALFTONE_TOWER"), ("POKEMON_MANSION", "DAEMON_MANSION"),
     ("POKEMON_LEAGUE", "REVIEW_BOARD"), ("MT_MOON", "DEADSTACK"),
@@ -170,8 +178,18 @@ def main():
     for k, n, note in report:
         print("  %-18s %4d renamed   (%s)" % (k, n, note))
 
+    #  The leftover check used to look for POKEMON|PALLET|CINNABAR|CELADON|
+    #  VERMILION -- which is to say, only the names the list already handled.
+    #  It printed "vanilla place names left: none" while VIRIDIAN_CITY,
+    #  PEWTER_CITY and six others sat untouched in the table it had just
+    #  written. A check that can only find what you already fixed is not a
+    #  check. Derived from the full vanilla set now, so adding a town to
+    #  PLACES and forgetting the guard is no longer possible.
+    VANILLA = ["POKEMON", "PALLET", "VIRIDIAN", "PEWTER", "CERULEAN",
+               "VERMILION", "LAVENDER", "CELADON", "FUCHSIA", "SAFFRON",
+               "CINNABAR", "INDIGO", "SEAFOAM"]
     left = [n for m in raw["MAP_NAME_TABLE"].values() for n in m.values()
-            if re.search(r"POKEMON|PALLET|CINNABAR|CELADON|VERMILION", n)]
+            if re.search("|".join(VANILLA), n)]
     print("  vanilla place names left: %s" % (", ".join(sorted(set(left))[:4]) if left else "none"))
 
     if not WRITE:
