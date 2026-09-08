@@ -94,11 +94,15 @@ FLAGS
   --model NAME   use a specific model instead of the "daemons" group. Names
                  come from tools/ai_models.py, which reads them out of LM
                  Studio -- e.g. qwen3-vl-8b, minicpm-v-4-6.
-  --full-schema  give the agent all eight action variants. Default is lean:
-                 the three that only annotate (add_marker, delete_marker,
-                 restart_console) are dropped. Measured warm, lean and full are
-                 the same speed -- 3.7s against 3.8s -- so this is about giving
-                 a small model three fewer branches to confuse, not latency.
+  --simple-schema  drop the three action variants that only annotate
+                 (add_marker, delete_marker, restart_console), leaving five.
+                 Full is now the default: markers are what draw doors and
+                 stairs onto the dashboard map, and a run without them is
+                 harder for a watching human to follow than it is for the
+                 agent to produce. Measured warm, the two are the same speed
+                 -- 3.7s against 3.8s -- so this only ever bought a small
+                 model three fewer branches to confuse, never latency.
+                 --full-schema is still accepted and is now a no-op.
   --stop         stop a running --ai: bridge, agent, dashboard and mGBA.
                  Ctrl+C only stops the foreground, so this is the one that
                  actually ends a run. --ai calls it for you if a previous run
@@ -211,7 +215,7 @@ CLEAN=0
 DEBUG=0
 CLASSIC=0
 AI=0
-FULL_SCHEMA=0
+FULL_SCHEMA=1   # full is the default now; --simple-schema opts out
 FRESH=0
 NESTED_TOOLS=0
 WANT_MODEL=""
@@ -223,7 +227,9 @@ for arg in "$@"; do
     --clean)         CLEAN=1 ;;
     --debug)         DEBUG=1 ;;
     --ai)            AI=1 ;;
-    --full-schema)   FULL_SCHEMA=1 ;;
+    --full-schema)   FULL_SCHEMA=1 ;;   # kept: it is in shell history
+    --simple-schema) FULL_SCHEMA=0 ;;
+    --lean-schema)   FULL_SCHEMA=0 ;;
     --fresh)         FRESH=1 ;;
     --nested-tools)  NESTED_TOOLS=1 ;;
     --model)         WANT_MODEL="__next__" ;;
