@@ -414,6 +414,17 @@ for vanilla, ours in sorted(pairs.items()):
 
     print("  %-11s %-12s %-9s %s%s%s" % (ours, d, t, "written" if WRITE else "ready", note, extra))
 print("  %d sprites, %d skipped" % (done, len(skipped)))
+#  Only report what is actually OUTSTANDING. A checklist that keeps naming
+#  finished work is one people learn to skim, and then it stops carrying the
+#  one entry that matters.
+def ow_wired(d):
+    f = os.path.join(GBA, "src/data/object_events/object_event_graphics_info.h")
+    try:
+        return ("OBJ_EVENT_PAL_TAG_DAEMON_%s," % d.upper()) in open(f).read()
+    except OSError:
+        return False
+
+ow_todo = [(o, d) for o, d in ow_todo if not ow_wired(d)]
 if ow_todo:
     print("\n  OVERWORLD PALETTES WRITTEN -- these need three C edits each,")
     print("  or the object renders through a generic NPC palette and comes out wrong:")
