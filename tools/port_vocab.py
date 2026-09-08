@@ -299,6 +299,41 @@ PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
                    ("MR. Fuji", "INIT"), ("Mr. Fuji", "Init")] +
                   [("MT. MOON", "DEADSTACK"), ("MT.MOON", "DEADSTACK"),
                    ("Mt. Moon", "Deadstack"), ("Mt.Moon", "Deadstack")] +
+                  #  The lexicon settled both and the port applied neither: the
+                  #  earlier sweep turned POKEMON into DAEMON and stopped,
+                  #  which left the build saying DAEMON MART and DAEMON CENTER
+                  #  -- half a rename, and the half carrying no meaning. A repo
+                  #  is where you fetch a PACKAGE from, which is what the errand
+                  #  in 4622 delivers; a checkpoint is a saved training state
+                  #  you restore to, which is what the building does.
+                  #
+                  #  These are PHRASES and not VOCAB: VOCAB is looked up one
+                  #  word at a time (VOCAB.get(w)), so a two-word key there is
+                  #  silently inert -- which is exactly what the first draft of
+                  #  this was, and the dry run's suspiciously small block count
+                  #  is what gave it away.
+                  #
+                  #  PHRASES sorts longest-first, so "DAEMON CENTER" is matched
+                  #  before any shorter rule can reach CENTER on its own -- and
+                  #  so the determiner forms below beat the bare one.
+                  #
+                  #  THE REPO CARRIES ITS ARTICLE, which the first pass forgot:
+                  #  vanilla writes "Went to the DAEMON MART", and a bare
+                  #  substitution produced "Went to the THE REPO". Eleven of the
+                  #  twenty-one occurrences already have a determiner in front
+                  #  ("the", "a", "any", "this"), so those take REPO alone and
+                  #  only the standing-alone case takes the full name.
+                  #
+                  #  CHECKPOINT needs none of this: it has no article to double.
+                  [("the DAEMON MART", "the REPO"), ("The DAEMON MART", "The REPO"),
+                   ("a DAEMON MART", "a REPO"),     ("A DAEMON MART", "A REPO"),
+                   ("any DAEMON MART", "any REPO"), ("this DAEMON MART", "this REPO"),
+                   ("DAEMON MARTS", "REPOS"),
+                   ("DAEMON MART", "THE REPO"),
+                   ("DAEMON CENTERS", "CHECKPOINTS"),
+                   ("DAEMON CENTER", "CHECKPOINT"),
+                   ("DAEMON_CENTER", "CHECKPOINT"), ("DAEMON_MART", "THE_REPO"),
+                   ("Daemon Center", "Checkpoint"), ("Daemon Mart", "the Repo")] +
                   ENGAGE),
                  key=lambda kv: -len(kv[0]))
 PHRASE_RE = re.compile('|'.join(re.escape(k) for k, _ in PHRASES)) if PHRASES else None

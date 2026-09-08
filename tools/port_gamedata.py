@@ -46,6 +46,17 @@ PLACES = [
     ("ROCK_TUNNEL", "THE_BLACKOUT"), ("VICTORY_ROAD", "UMBRAL_ASCENT"),
     ("POKEMON_TOWER", "HALFTONE_TOWER"), ("POKEMON_MANSION", "DAEMON_MANSION"),
     ("POKEMON_LEAGUE", "REVIEW_BOARD"), ("MT_MOON", "DEADSTACK"),
+    #  The two buildings the lexicon renamed and the port kept calling
+    #  DAEMON MART / DAEMON CENTER. These are the AGENT's copy of the map
+    #  names, so leaving them vanilla means the agent reasons about a Mart
+    #  while the game shows it a REPO -- and it then writes "Pokemon Mart"
+    #  into its own markers, which persist and teach it again next turn.
+    #
+    #  Safe as bare words here: checked against all 427 map names, MART and
+    #  CENTER never appear inside a longer word, and the substitution runs
+    #  longest-first so POKEMON_CENTER is consumed before CENTER is reached.
+    ("POKEMON_CENTER", "CHECKPOINT"), ("DAEMON_CENTER", "CHECKPOINT"),
+    ("CENTER", "CHECKPOINT"), ("MART", "REPO"),
     ("POKEMON", "DAEMON"),          # last: anything else that still says it
 ]
 
@@ -187,7 +198,7 @@ def main():
     #  PLACES and forgetting the guard is no longer possible.
     VANILLA = ["POKEMON", "PALLET", "VIRIDIAN", "PEWTER", "CERULEAN",
                "VERMILION", "LAVENDER", "CELADON", "FUCHSIA", "SAFFRON",
-               "CINNABAR", "INDIGO", "SEAFOAM"]
+               "CINNABAR", "INDIGO", "SEAFOAM", "MART", "CENTER"]
     left = [n for m in raw["MAP_NAME_TABLE"].values() for n in m.values()
             if re.search("|".join(VANILLA), n)]
     print("  vanilla place names left: %s" % (", ".join(sorted(set(left))[:4]) if left else "none"))
