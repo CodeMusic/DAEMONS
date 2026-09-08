@@ -288,7 +288,12 @@ def derive_icon(grid, palette):
     im = _subject(grid, palette)
     if im is None:
         return None, None
-    small = im.resize((30, 30), Image.NEAREST)
+    #  Vanilla icons do NOT fill their cell. Measured: pikachu occupies x 6-25,
+    #  y 10-29 and bulbasaur x 6-25, y 12-28 -- roughly 20x20, sitting LOW with
+    #  headroom above. Filling all 30x30 made DEADLOCK overflow into the party
+    #  row above it, which is what the party menu actually showed.
+    ICON_W, ICON_X, ICON_BOTTOM = 20, 6, 30
+    small = im.resize((ICON_W, ICON_W), Image.NEAREST)
     bg = tuple(palette[0])
     src = [c for _, c in small.getcolors(4096)]
     best = None
@@ -306,11 +311,12 @@ def derive_icon(grid, palette):
             best = (err, pi, m)
     err, pi, m = best
     out = [[0] * 32 for _ in range(64)]
-    for y in range(30):
-        for x in range(30):
+    oy = ICON_BOTTOM - ICON_W              # bottom-aligned, like the vanilla ones
+    for y in range(ICON_W):
+        for x in range(ICON_W):
             v = m[small.getpixel((x, y))]
-            out[y + 1][x + 1] = v          # frame 1
-            out[y + 33][x + 1] = v         # frame 2, the bob
+            out[oy + y][ICON_X + x] = v            # frame 1
+            out[32 + oy + y][ICON_X + x] = v       # frame 2, the bob
     return out, (pi, err)
 
 def write_pal(path, palette):
