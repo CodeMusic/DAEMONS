@@ -12,7 +12,10 @@
       "name": "Webhook /daemon/voice",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [-880, 0],
+      "position": [
+        -880,
+        0
+      ],
       "webhookId": "daemon-voice"
     },
     {
@@ -23,7 +26,11 @@
       "name": "Validate + Normalise",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-660, 0]
+      "position": [
+        -660,
+        0
+      ],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -32,15 +39,25 @@
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
-            { "name": "X-Dex-Key", "value": "={{ $env.DEX_KEY }}" },
-            { "name": "Content-Type", "value": "application/json" }
+            {
+              "name": "X-Dex-Key",
+              "value": "={{ $env.DEX_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
           ]
         },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({ text: $json.text, voice: $json.voice, exaggeration: $json.exaggeration, cfg_weight: $json.cfg_weight, raw: $json.raw }) }}",
         "options": {
-          "response": { "response": { "responseFormat": "file" } },
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
           "timeout": 90000
         }
       },
@@ -48,18 +65,25 @@
       "name": "Index TTS (local)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-440, 0],
+      "position": [
+        -440,
+        0
+      ],
       "continueOnFail": true
     },
     {
       "parameters": {
-        "jsCode": "// mp3 -> base64, and say plainly when there is no audio.\n//\n// A silent play button that looks like it worked is worse than one that says\n// the voice is down: the first sends you looking at your speakers.\nconst v = $('Validate + Normalise').first().json;\nlet audioBase64 = null;\nlet error = null;\ntry {\n  const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n  if (buf && buf.length) audioBase64 = buf.toString('base64');\n} catch (e) {\n  error = 'tts_unavailable';\n}\nif (!audioBase64 && !error) error = 'tts_empty';\nreturn [{ json: {\n  audioBase64,\n  audioMime: audioBase64 ? 'audio/mpeg' : null,\n  voice: v.voice,\n  text: v.text,\n  truncated: v.truncated || false,\n  error,\n} }];"
+        "jsCode": "// mp3 -> base64, and say plainly when there is no audio.\n//\n// A silent play button that looks like it worked is worse than one that says\n// the voice is down: the first sends you looking at your speakers.\n//\n// This must not throw. Under responseMode:responseNode a thrown Code node\n// never reaches Respond, so the CALLER GETS NOTHING -- measured as a 120s\n// hang with an empty body while the TTS server's log showed no request had\n// ever arrived. A hang is the least diagnosable failure there is.\nlet v = {};\ntry { v = $('Validate + Normalise').first().json || {}; } catch (e) { v = {}; }\nlet audioBase64 = null;\nlet error = null;\ntry {\n  const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n  if (buf && buf.length) audioBase64 = buf.toString('base64');\n} catch (e) {\n  error = 'tts_unavailable';\n}\nif (!audioBase64 && !error) {\n  // An upstream node that failed with continueOnFail passes its error along.\n  let upstream = null;\n  try { upstream = ($input.first() || {}).json || null; } catch (e) {}\n  error = (upstream && (upstream.error && (upstream.error.message || upstream.error))) || 'tts_empty';\n  error = String(error).slice(0, 200);\n}\nreturn [{ json: {\n  audioBase64,\n  audioMime: audioBase64 ? 'audio/mpeg' : null,\n  voice: v.voice || null,\n  text: v.text || null,\n  truncated: v.truncated || false,\n  error,\n} }];"
       },
       "id": "v4",
       "name": "Assemble Audio",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-220, 0]
+      "position": [
+        -220,
+        0
+      ],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -71,20 +95,68 @@
       "name": "Respond Audio",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
-      "position": [0, 0]
+      "position": [
+        0,
+        0
+      ]
     }
   ],
   "pinData": {},
   "connections": {
-    "Webhook /daemon/voice": { "main": [[{ "node": "Validate + Normalise", "type": "main", "index": 0 }]] },
-    "Validate + Normalise": { "main": [[{ "node": "Index TTS (local)", "type": "main", "index": 0 }]] },
-    "Index TTS (local)": { "main": [[{ "node": "Assemble Audio", "type": "main", "index": 0 }]] },
-    "Assemble Audio": { "main": [[{ "node": "Respond Audio", "type": "main", "index": 0 }]] }
+    "Webhook /daemon/voice": {
+      "main": [
+        [
+          {
+            "node": "Validate + Normalise",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate + Normalise": {
+      "main": [
+        [
+          {
+            "node": "Index TTS (local)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Index TTS (local)": {
+      "main": [
+        [
+          {
+            "node": "Assemble Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble Audio": {
+      "main": [
+        [
+          {
+            "node": "Respond Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
   "active": true,
-  "settings": { "executionOrder": "v1", "binaryMode": "separate" },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
   "versionId": "00000000-0000-4000-8000-000000000006",
-  "meta": { "instanceId": "" },
+  "meta": {
+    "instanceId": ""
+  },
   "id": "daemons-voice-internal",
   "tags": []
 }
