@@ -417,17 +417,19 @@ if [[ $AI -eq 1 ]]; then
   export OPENAI_TOKEN_LIMIT
   DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
   export DAEMONS_SCHEMA
-  # Clicking a line of inner voice speaks it. This DEFAULTS to the internal
-  # workflow rather than needing an export, because the machine that runs the
-  # harness is the machine that reaches it: measured from here 2026-09-08,
-  # 10.0.0.136:5678 answers in 60ms and the TTS behind it reports the `index`
-  # voice ready. Requiring a manual export to reach a host one hop away is
-  # configuration for its own sake.
+  # Clicking a line of inner voice speaks it. n8n runs on the SAME HOST as the
+  # proxy, so it reuses $LLM_HOST -- which the probe above already resolved,
+  # already proved reachable, and already ordered tailnet-name first.
   #
-  # Set it yourself to go through the public relay from away:
+  # THAT ORDERING IS THE WHOLE POINT AND I MISSED IT. The first version of this
+  # line hardcoded 10.0.0.136, which is a LAN address: correct on this network,
+  # dead on any other, while the proxy two lines up would have carried on
+  # working over the tailnet. One service reachable from anywhere and one
+  # pinned to the living room is not a configuration, it is a trap.
+  #
+  # Set it yourself to force the public relay, or to "" to turn the button off:
   #   export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice
-  # or to "" to turn the play button off entirely.
-  : "${DAEMONS_VOICE_URL=http://10.0.0.136:5678/webhook/daemon/voice}"
+  : "${DAEMONS_VOICE_URL=http://$LLM_HOST:5678/webhook/daemon/voice}"
   export DAEMONS_VOICE_URL
   # Not currently set on the n8n side -- every internal workflow guards with
   # `if (expected && ...)`, so an unset secret means the check is skipped, and
