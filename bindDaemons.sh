@@ -105,8 +105,9 @@ FLAGS
                  --full-schema is still accepted and is now a no-op.
   --stop         stop a running --ai: bridge, agent, dashboard and mGBA.
 
-Set DAEMONS_VOICE_URL to a daemon/voice webhook to make each line of inner
-voice clickable in the dashboard -- it speaks in the INDEX voice.
+Each line of inner voice is clickable in the dashboard and speaks in the INDEX
+voice. It goes to the internal n8n by default; set DAEMONS_VOICE_URL to the
+public relay to reach it from away, or to "" to turn it off.
                  Ctrl+C only stops the foreground, so this is the one that
                  actually ends a run. --ai calls it for you if a previous run
                  is still up.
@@ -413,18 +414,22 @@ if [[ $AI -eq 1 ]]; then
   export OPENAI_TOKEN_LIMIT
   DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
   export DAEMONS_SCHEMA
-  # Clicking a line of inner voice speaks it, if there is somewhere to send it.
-  # Two tiers, same as every other DAEMONS n8n endpoint: the public relay
-  # reaches home from away, the internal one is a hop shorter on the LAN.
-  # Left UNSET the play button reports the feature as off, which is the honest
-  # answer -- a button that fails at a connection looks like a bug.
+  # Clicking a line of inner voice speaks it. This DEFAULTS to the internal
+  # workflow rather than needing an export, because the machine that runs the
+  # harness is the machine that reaches it: measured from here 2026-09-08,
+  # 10.0.0.136:5678 answers in 60ms and the TTS behind it reports the `index`
+  # voice ready. Requiring a manual export to reach a host one hop away is
+  # configuration for its own sake.
+  #
+  # Set it yourself to go through the public relay from away:
   #   export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice
-  #   export DAEMONS_VOICE_URL=http://10.0.0.136:5678/webhook/daemon/voice
-  # Unconditional: unset exports as empty, and the server's `if (!url)` already
-  # reads empty as "not configured". (`[[ -n .. ]] && export` would also be
-  # safe here -- bash's set -e exempts the left side of an && list, measured --
-  # but only because this is not the last statement in the function.)
-  export DAEMONS_VOICE_URL="${DAEMONS_VOICE_URL:-}"
+  # or to "" to turn the play button off entirely.
+  : "${DAEMONS_VOICE_URL=http://10.0.0.136:5678/webhook/daemon/voice}"
+  export DAEMONS_VOICE_URL
+  # Not currently set on the n8n side -- every internal workflow guards with
+  # `if (expected && ...)`, so an unset secret means the check is skipped, and
+  # a probe of daemon/health with no header returned 200. Forwarded anyway so
+  # that turning it on there is the only change needed.
   export DEX_SHARED_SECRET="${DEX_SHARED_SECRET:-}"
   # Flat by default: the shape that works for qwen, which is the model that
   # works. minicpm cannot tool-call through LM Studio in any shape.

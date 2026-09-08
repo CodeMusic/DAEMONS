@@ -80,15 +80,25 @@ relay, and the page would need `x-dex-secret` **in its JavaScript**, where
 anyone with the dashboard open can read it. A shared secret that ships to the
 browser is not a shared secret. `POST /speak` on the harness server holds it.
 
-Point `DAEMONS_VOICE_URL` at either tier:
+**Nothing to export at home.** `bindDaemons.sh` defaults `DAEMONS_VOICE_URL`
+to the internal workflow, because the machine that runs the harness is the
+machine that reaches it — measured 2026-09-08, `10.0.0.136:5678` answers this
+Mac in 60ms. Set it only to change tier, or to `""` to turn the button off:
 
 ```sh
 export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice  # away
-export DAEMONS_VOICE_URL=http://10.0.0.136:5678/webhook/daemon/voice    # home
+export DAEMONS_VOICE_URL=""                                            # off
 ```
 
-Unset, the play button reports the feature as off. That is deliberate: a
-button that fails at a connection looks like a bug in the button.
+The export belongs on **whichever machine runs the harness**, not on the n8n
+host — `/speak` is a route on the dashboard's own server, and it is that
+process that makes the outbound call.
+
+`DEX_SHARED_SECRET` **is not currently set on the n8n side.** Every internal
+workflow guards with `if (expected && ...)`, so an unset secret skips the
+check; a probe of `daemon/health` with no header returns 200. The harness
+forwards the header regardless, so turning the secret on in n8n is the only
+change that would be needed.
 
 **Cached twice, on the text both times.** The browser keeps an object URL per
 line (60, then it evicts and revokes — an unrevoked blob is a leak that grows
