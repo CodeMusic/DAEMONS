@@ -1,5 +1,5 @@
 {
-  "name": "DAEMONS Public \u2014 daemon/sprite relay",
+  "name": "DAEMONS Public — daemon/sprite relay",
   "nodes": [
     {
       "parameters": {
@@ -54,7 +54,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const j=($input.first()||{}).json||{};\nif (!j.spriteBase64) return [{ json: { spriteBase64: null, error: 'backend_unreachable' } }];\nreturn [{ json: j }];"
+        "jsCode": "// The request body is relayed wholesale, so `kind` reaches the internal\n// workflow without this node doing anything. What it DID drop was the kind\n// coming back -- and a caller that cannot tell whether it got the greys rule\n// or the fable rule cannot tell a correct sprite from a wrong one, since both\n// look deliberate. It is passed through now.\nconst j = ($input.first() || {}).json || {};\nif (!j.spriteBase64) return [{ json: { kind: j.kind || null, spriteBase64: null, error: 'backend_unreachable' } }];\nreturn [{ json: j }];"
       },
       "id": "r3",
       "name": "Shape Response",
