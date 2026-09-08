@@ -1,5 +1,5 @@
 {
-  "name": "DAEMONS — daemon/sprite (Bonsai)",
+  "name": "DAEMONS — daemon/sprite",
   "nodes": [
     {
       "parameters": {
@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Draft a sprite with the local image model.\n//\n// TWO RULES, and using the wrong one produces a confidently wrong picture.\n//\n// DAEMONS (kind: \"creature\", the default) follow 9.4: drawn in NEUTRAL GREYS\n// with a few saturated accents, coloured at build time from the type ramp --\n// \"the art stays type-agnostic, so one drawing is correct whatever the type\n// is.\" Asking for a colourful creature yields something gbasprite.py cannot\n// use, because the ramp is a parameter and not paint.\n//\n// PEOPLE (kind: \"character\" or \"overworld\") follow 9.4's other half, settled\n// 2026-09-06 by generating four treatments and looking at them. The Clears are\n// coloured by FAMILY, not by type, so the greys rule is exactly wrong for them\n// -- Crystal is a golden fox. THE RULE has three clauses, and each one is a\n// treatment that failed:\n//\n//   1. Animality INTEGRATED, never grafted -- paw hands, a tail, a head\n//      proportioned to the body. Never an animal head on a human body; C\n//      proved that is a mask no colour-matching repairs.\n//   2. Drawn PLAINLY -- flat colour, cel shading, no fur or scale texture, no\n//      gloss, no musculature, no fluff. This is the clause that separates\n//      fable from furry, and the one A got wrong.\n//   3. Head-to-body ratio carries AGE -- large head for children, small for\n//      adults. Left unstated everyone comes out cute, which nearly broke\n//      Scorn.\n//\n// \"overworld\" adds the framing an overworld frame needs. It still returns a\n// 384px illustration: a real frame is 16x32 and a sheet is 144x32 for nine of\n// them, so this is REFERENCE TO DRAW FROM, never a shippable sprite.\nconst req = $input.first().json, headers = req.headers || {}, body = req.body || {};\nconst expected = $env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret'] !== expected) throw new Error('Unauthorized: bad or missing x-dex-secret');\n\nconst kind = String(body.kind || 'creature').toLowerCase();\nif (!['creature', 'character', 'overworld'].includes(kind)) {\n  throw new Error(`Unknown kind '${kind}'. Use creature, character or overworld.`);\n}\n\nconst name = String(body.name || (kind === 'creature' ? 'creature' : 'person'));\nconst idea = String(body.idea || '');\nlet prompt;\n\nif (kind === 'creature') {\n  const accent = String(body.accent || '');\n  prompt = [\n    `pixel art sprite of ${name}${idea ? ', ' + idea : ''}`,\n    `drawn in NEUTRAL GREYS only -- light grey, mid grey, dark grey, near-black outline`,\n    accent ? `with a single small ${accent} as the only colour` : `with no colour anywhere`,\n    `front-facing, centred, full body, thick near-black outline, flat shading, no gradients`,\n    `plain white background, no text, no border, no shadow on the ground`,\n  ].join(', ');\n} else {\n  // species is the ROLE, not decoration: \"Aesop's fox is not a character who\n  // happens to be a fox -- he is a fox because the story needs cunning.\"\n  const species = String(body.species || 'fox');\n  const wearing = String(body.wearing || '');\n  const age = String(body.age || 'adult').toLowerCase();\n  const ratio = age === 'child' || age === 'young'\n    ? 'child proportions, large head relative to the body'\n    : 'adult proportions, small head relative to the body';\n  const framing = kind === 'overworld'\n    ? 'overworld game sprite, standing and facing the viewer straight on, full body, feet visible, symmetrical stance'\n    : 'full body character reference, facing the viewer, relaxed stance';\n\n  prompt = [\n    `${ratio} ${species} character named ${name}${idea ? ', ' + idea : ''}`,\n    wearing ? `wearing ${wearing}` : '',\n    `funny-animal fable style in the tradition of Carl Barks, Disney's Robin Hood and Redwall`,\n    `animality INTEGRATED not grafted: ${species} head proportioned to the body, paw hands, a tail`,\n    `NOT an animal head on a human body, NOT a mask, NOT a costume`,\n    `drawn PLAINLY: flat colour, cel shading, thick dark outline`,\n    `NO fur texture, NO scale texture, no gloss, no highlights, no musculature, no fluff`,\n    framing,\n    `plain white background, no text, no border`,\n  ].filter(Boolean).join(', ');\n}\n\nreturn [{ json: { kind, bonsaiBody: { prompt, steps: 4, guidance: 1.0, width: 384, height: 384 } } }];"
+        "jsCode": "// Draft a sprite. TWO RULES for the prompt, TWO BACKENDS for the drawing.\n//\n// THE RULES (unchanged, and using the wrong one produces a confidently wrong\n// picture):\n//\n// DAEMONS (kind: \"creature\", the default) follow 9.4: NEUTRAL GREYS with a few\n// saturated accents, coloured at build time from the type ramp -- \"the art\n// stays type-agnostic, so one drawing is correct whatever the type is.\"\n// gbasprite.py reads body from accent BY SATURATION, so a colourful creature\n// is not merely off-style, it is unusable.\n//\n// PEOPLE (kind: \"character\" | \"overworld\") follow 9.4's other half, settled\n// 2026-09-06 by generating four treatments and looking at them. The Clears are\n// coloured by FAMILY, not type -- Crystal is a golden fox. Three clauses, each\n// one a treatment that failed:\n//   1. Animality INTEGRATED, never grafted. Never an animal head on a human\n//      body; C proved that is a mask no colour-matching repairs.\n//   2. Drawn PLAINLY. No fur or scale texture, no gloss, no musculature, no\n//      fluff. The clause that separates fable from furry; A got it wrong.\n//   3. Head-to-body ratio carries AGE. Unstated, everyone comes out cute,\n//      which nearly broke Scorn.\n//\n// THE BACKENDS:\n//\n//   backend: \"local\" (default)  the Bonsai model on this network. Free,\n//                               private, ~18s, and text-to-image only.\n//   backend: \"openrouter\"       a hosted image model. Costs a fraction of a\n//                               cent, and crucially does IMG2IMG.\n//\n// img2img is the reason this parameter exists rather than a second endpoint.\n// A back view generated independently DRIFTS from its front -- DEADLOCK's\n// paired only because it is a featureless round mass, and anything with\n// asymmetry or markings would not have. Passing the front as `baseline` asks\n// for the same creature from another angle instead of a similar one.\n//\n// Either way this returns a 384px illustration. A real overworld frame is\n// 16x32 and a sheet is 144x32 for nine of them: REFERENCE TO DRAW FROM.\nconst req = $input.first().json, headers = req.headers || {}, body = req.body || {};\nconst expected = $env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret'] !== expected) throw new Error('Unauthorized: bad or missing x-dex-secret');\n\nconst kind = String(body.kind || 'creature').toLowerCase();\nif (!['creature', 'character', 'overworld'].includes(kind)) {\n  throw new Error(`Unknown kind '${kind}'. Use creature, character or overworld.`);\n}\nconst backend = String(body.backend || 'local').toLowerCase();\nif (!['local', 'openrouter'].includes(backend)) {\n  throw new Error(`Unknown backend '${backend}'. Use local or openrouter.`);\n}\n\nconst name = String(body.name || (kind === 'creature' ? 'creature' : 'person'));\nconst idea = String(body.idea || '');\nlet prompt;\n\nif (kind === 'creature') {\n  const accent = String(body.accent || '');\n  prompt = [\n    `pixel art sprite of ${name}${idea ? ', ' + idea : ''}`,\n    `drawn in NEUTRAL GREYS only -- light grey, mid grey, dark grey, near-black outline`,\n    accent ? `with a single small ${accent} as the only colour` : `with no colour anywhere`,\n    `front-facing, centred, full body, thick near-black outline, flat shading, no gradients`,\n    `plain white background, no text, no border, no shadow on the ground`,\n  ].join(', ');\n} else {\n  const species = String(body.species || 'fox');\n  const wearing = String(body.wearing || '');\n  const age = String(body.age || 'adult').toLowerCase();\n  const ratio = (age === 'child' || age === 'young')\n    ? 'child proportions, large head relative to the body'\n    : 'adult proportions, small head relative to the body';\n  const framing = kind === 'overworld'\n    ? 'overworld game sprite, standing and facing the viewer straight on, full body, feet visible, symmetrical stance'\n    : 'full body character reference, facing the viewer, relaxed stance';\n  prompt = [\n    `${ratio} ${species} character named ${name}${idea ? ', ' + idea : ''}`,\n    wearing ? `wearing ${wearing}` : '',\n    `funny-animal fable style in the tradition of Carl Barks, Disney's Robin Hood and Redwall`,\n    `animality INTEGRATED not grafted: ${species} head proportioned to the body, paw hands, a tail`,\n    `NOT an animal head on a human body, NOT a mask, NOT a costume`,\n    `drawn PLAINLY: flat colour, cel shading, thick dark outline`,\n    `NO fur texture, NO scale texture, no gloss, no highlights, no musculature, no fluff`,\n    framing,\n    `plain white background, no text, no border`,\n  ].filter(Boolean).join(', ');\n}\n\n// A baseline turns \"draw this\" into \"draw THIS ONE, from here\". Only the\n// hosted backend can use it; saying so is better than ignoring it silently.\nconst baseline = typeof body.baseline === 'string' && body.baseline.length > 100 ? body.baseline : null;\nif (baseline && backend !== 'openrouter') {\n  throw new Error('baseline requires backend \"openrouter\" -- the local model is text-to-image only.');\n}\nif (baseline) {\n  prompt = `Redraw the creature in the supplied image, keeping its EXACT shape, proportions and markings. `\n         + `Change only the viewpoint and pose. ${prompt}`;\n}\n\n// gemini-3.1-flash-lite-image is the default: cheapest of the eleven, and this\n// is a DRAFTING endpoint. Override with `model` when a draft is worth more.\nconst orModel = String(body.model || 'google/gemini-3.1-flash-lite-image');\n\nconst content = [{ type: 'text', text: prompt }];\nif (baseline) {\n  content.push({ type: 'image_url', image_url: { url: `data:image/png;base64,${baseline}` } });\n}\n\nreturn [{\n  json: {\n    kind,\n    backend,\n    model: backend === 'openrouter' ? orModel : 'bonsai-local',\n    usedBaseline: Boolean(baseline),\n    bonsaiBody: { prompt, steps: 4, guidance: 1.0, width: 384, height: 384 },\n    orBody: { model: orModel, modalities: ['image', 'text'], messages: [{ role: 'user', content }] },\n  },\n}];"
       },
       "id": "s2",
       "name": "Validate + Build Prompt",
@@ -28,6 +28,38 @@
       "typeVersion": 2,
       "position": [
         224,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.backend }}",
+              "rightValue": "local",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "s3",
+      "name": "Which backend?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        448,
         0
       ]
     },
@@ -47,26 +79,68 @@
           "timeout": 300000
         }
       },
-      "id": "s3",
+      "id": "s4",
       "name": "Bonsai Generate",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        448,
-        0
+        672,
+        -120
       ],
       "continueOnFail": true
     },
     {
       "parameters": {
-        "jsCode": "// Bonsai returns raw PNG bytes; base64 for the caller, like the dex icon flow.\n// `kind` is echoed so the caller can tell WHICH rule drew it -- a creature in\n// greys and a character in colour are both correct, and confusing them is the\n// mistake this parameter exists to prevent.\nconst kind = ($('Validate + Build Prompt').first().json || {}).kind || null;\nlet spriteBase64 = null;\ntry { const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n      if (buf && buf.length) spriteBase64 = buf.toString('base64'); } catch (e) {}\nreturn [{ json: { kind, spriteBase64, spriteMime: spriteBase64 ? 'image/png' : null,\n                  error: spriteBase64 ? null : 'generation_failed' } }];"
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.OPENROUTER_API_KEY }}"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://github.com/CodeMusic"
+            },
+            {
+              "name": "X-Title",
+              "value": "DAEMONS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.orBody) }}",
+        "options": {
+          "timeout": 300000
+        }
       },
-      "id": "s4",
+      "id": "s5",
+      "name": "OpenRouter Generate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        120
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Both backends land here, and they return the drawing differently: Bonsai\n// hands back raw PNG bytes, OpenRouter a data URI inside a chat completion.\n// Normalising here means the caller sees one shape whichever drew it.\n//\n// `kind`, `backend` and `model` are echoed. A caller that cannot tell WHICH\n// rule and WHICH model produced a sprite cannot tell a correct one from a\n// wrong one, because both look deliberate -- that is the whole reason these\n// parameters exist.\nconst meta = $('Validate + Build Prompt').first().json || {};\nlet spriteBase64 = null;\n\nif (meta.backend === 'openrouter') {\n  const r = $input.first().json || {};\n  const msg = ((r.choices || [])[0] || {}).message || {};\n  const img = (msg.images || [])[0];\n  const url = img && (img.image_url ? img.image_url.url : img.url);\n  if (typeof url === 'string') {\n    const comma = url.indexOf(',');\n    spriteBase64 = comma >= 0 ? url.slice(comma + 1) : url;\n  }\n} else {\n  try {\n    const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n    if (buf && buf.length) spriteBase64 = buf.toString('base64');\n  } catch (e) { /* generation failed -> the caller gets a null and a reason */ }\n}\n\nreturn [{\n  json: {\n    kind: meta.kind || null,\n    backend: meta.backend || null,\n    model: meta.model || null,\n    usedBaseline: Boolean(meta.usedBaseline),\n    spriteBase64,\n    spriteMime: spriteBase64 ? 'image/png' : null,\n    error: spriteBase64 ? null : 'generation_failed',\n  },\n}];"
+      },
+      "id": "s6",
       "name": "Assemble Sprite",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        672,
+        896,
         0
       ]
     },
@@ -76,12 +150,12 @@
         "responseBody": "={{ JSON.stringify($json) }}",
         "options": {}
       },
-      "id": "s5",
+      "id": "s7",
       "name": "Respond",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
       "position": [
-        896,
+        1120,
         0
       ]
     }
@@ -103,7 +177,25 @@
       "main": [
         [
           {
+            "node": "Which backend?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Which backend?": {
+      "main": [
+        [
+          {
             "node": "Bonsai Generate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenRouter Generate",
             "type": "main",
             "index": 0
           }
@@ -111,6 +203,17 @@
       ]
     },
     "Bonsai Generate": {
+      "main": [
+        [
+          {
+            "node": "Assemble Sprite",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Generate": {
       "main": [
         [
           {
@@ -138,7 +241,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "00000000-0000-4000-8000-000000000002",
+  "versionId": "00000000-0000-4000-8000-000000000004",
   "meta": {
     "instanceId": ""
   },

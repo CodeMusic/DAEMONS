@@ -39,7 +39,7 @@
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {
-          "timeout": 300000
+          "timeout": 600000
         }
       },
       "id": "r2",
@@ -54,7 +54,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// The request body is relayed wholesale, so `kind` reaches the internal\n// workflow without this node doing anything. What it DID drop was the kind\n// coming back -- and a caller that cannot tell whether it got the greys rule\n// or the fable rule cannot tell a correct sprite from a wrong one, since both\n// look deliberate. It is passed through now.\nconst j = ($input.first() || {}).json || {};\nif (!j.spriteBase64) return [{ json: { kind: j.kind || null, spriteBase64: null, error: 'backend_unreachable' } }];\nreturn [{ json: j }];"
+        "jsCode": "// The request body is relayed wholesale, so `kind`, `backend`, `model` and\n// `baseline` all reach the internal workflow without this node doing anything.\n// What it must not do is DROP the metadata coming back.\n//\n// A caller that cannot tell which rule drew a sprite, which backend drew it,\n// or whether a baseline was honoured, cannot tell a correct sprite from a\n// wrong one -- all three look equally deliberate. That is the whole reason\n// those parameters exist, and a relay that swallows them undoes it.\nconst j = ($input.first() || {}).json || {};\nif (!j.spriteBase64) {\n  return [{ json: {\n    kind: j.kind || null,\n    backend: j.backend || null,\n    model: j.model || null,\n    spriteBase64: null,\n    error: j.error || 'backend_unreachable',\n  } }];\n}\nreturn [{ json: j }];"
       },
       "id": "r3",
       "name": "Shape Response",
@@ -122,7 +122,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "00000000-0000-4000-8000-000000000003",
+  "versionId": "00000000-0000-4000-8000-000000000005",
   "meta": {
     "instanceId": ""
   },
