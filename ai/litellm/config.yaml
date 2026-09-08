@@ -287,35 +287,56 @@ model_list:
       api_base: http://127.0.0.1:8104/v1
       api_key: none
 
-  # OPENROUTER -- for surveying models we cannot host yet.
+  # OPENROUTER -- surveying models the tinybox could actually run.
   #
-  # Everything else here is local, which is the point of the setup. These are
-  # not: they are a way to find out WHICH open models are worth running before
-  # the hardware to run them exists, so the tinybox arrives with a shortlist
-  # rather than a survey still to do.
+  # The filter is 120B, because that is the box. It is easy to forget: I first
+  # put qwen3-vl-235b-a22b here as "the strongest open vision model" and it is
+  # 235B -- twice the ceiling. Dropped. A model that cannot land on the
+  # hardware is not a candidate however well it plays.
   #
-  # The key lives in ~/.litellm.env beside the master key, mode 0600, and never
-  # in this repo. Add it there and reload:
-  #     echo 'OPENROUTER_API_KEY=sk-or-...' >> ~/.litellm.env && chmod 600 ~/.litellm.env
-  #
-  # These cost money per token, unlike every other entry in this file. The
-  # harness sends ~30k-token prompts every turn, so a long run is not free --
-  # that is a reason to use them for SHORTLISTING, not for playing through.
-  - model_name: or-qwen3-vl-235b
+  # The key lives in ~/.litellm.env beside the master key, mode 0600, never in
+  # this repo. These cost per token, unlike everything else in this file, and
+  # the harness sends ~30k-token prompts every turn -- so they are for
+  # SHORTLISTING, not for playing through. A 100-turn run is the unit of
+  # comparison and the costs below are for that.
+
+  # 1. FREE, 30B-A3B, omnimodal, Mamba-hybrid. The best-case local answer:
+  #    fits the box with room to spare, and the hybrid architecture attacks
+  #    prefill, which dominated every measurement so far. $0.00 / 100 turns.
+  - model_name: or-nemotron-omni
     litellm_params:
-      model: openrouter/qwen/qwen3-vl-235b-a22b-instruct
+      model: openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
       api_key: os.environ/OPENROUTER_API_KEY
-  - model_name: or-llama4-maverick
+
+  # 2. 30B with vision, same size class as nemotron, different lineage.
+  #    The direct comparison. $0.95 / 100 turns.
+  - model_name: or-muse-glimmer
     litellm_params:
-      model: openrouter/meta-llama/llama-4-maverick
+      model: openrouter/meta/muse-glimmer-30b
       api_key: os.environ/OPENROUTER_API_KEY
+
+  # 3. Frontier, omnimodal, 1M context, at 3% of Sonnet. CHECK THE DATA TERMS
+  #    BEFORE USING: "contributor" is a 12x discount off the same model's
+  #    standard price, and discounts that size are usually paid for in training
+  #    data. Our prompts carry game dialogue, map layouts and the agent's
+  #    reasoning about the design. $0.31 / 100 turns.
+  - model_name: or-muse-spark
+    litellm_params:
+      model: openrouter/meta/muse-spark-1.3-contributor
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # 4. 27B, vision, cheapest paid option. The floor of the size class.
+  #    $0.26 / 100 turns.
   - model_name: or-gemma3-27b
     litellm_params:
       model: openrouter/google/gemma-3-27b-it
       api_key: os.environ/OPENROUTER_API_KEY
-  # A frontier model, as the CONTROL. Every "the harness is fine, the model is
-  # not" claim yesterday was inference. One run with a model known to be
-  # capable settles it, and gives every local model a bar to clear.
+
+  # THE CONTROL, and it is not a candidate -- closed weights, never local.
+  # Every claim that "the harness is fine, the model is not" has been
+  # inference. One run with a model known to be capable settles it and gives
+  # the others a bar. Sonnet answers that question for $9.75; gpt-6-astra
+  # answers the same question for $32.50, so it is not here.
   - model_name: or-control
     litellm_params:
       model: openrouter/anthropic/claude-sonnet-4.5
