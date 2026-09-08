@@ -339,7 +339,7 @@ def place(src, palette):
     return g
 
 pairs = renamed()
-done, skipped = 0, []
+done, skipped, ow_todo = 0, [], []
 for vanilla, ours in sorted(pairs.items()):
     d = DIR_FIX.get(vanilla, vanilla.lower().replace(" ", "_").replace(".", ""))
     if d is None:
@@ -382,9 +382,27 @@ for vanilla, ours in sorted(pairs.items()):
         ow = derive_overworld(front_grid, front_pal)
         owp = os.path.join(GBA, "graphics/object_events/pics/pokemon/%s.png" % d)
         if ow and os.path.exists(owp):
+            #  The object's PNG carries INDICES; the game supplies the colours
+            #  at runtime from whatever OBJ_EVENT_PAL_TAG its graphics info
+            #  names. Vanilla points every creature at a generic NPC palette --
+            #  NPC_BLUE for Snorlax -- and picks whichever is closest. Ours
+            #  cannot do that: the indices are a type ramp, and rendering them
+            #  through npc_blue is what turned DEADLOCK peach and yellow in the
+            #  overworld.
+            #
+            #  So the ramp is written out as a palette beside the art. Per
+            #  DAEMON rather than per type, because two daemons of one type can
+            #  carry different accents and the palette has to match the indices
+            #  exactly.
+            palp = os.path.join(GBA, "graphics/object_events/palettes/daemon_%s.pal" % d)
             if WRITE:
                 write_png4(owp, ow, front_pal, 32, 32)
+                write_pal(palp, front_pal)
             extra += "  +overworld"
+            #  The C side is NOT written here. A palette tag, a table entry and
+            #  a graphics-info field are engine data, and they should appear in
+            #  a diff somebody reads.
+            ow_todo.append((ours, d))
         ic, info = derive_icon(front_grid, front_pal)
         if ic:
             if WRITE:
@@ -396,5 +414,16 @@ for vanilla, ours in sorted(pairs.items()):
 
     print("  %-11s %-12s %-9s %s%s%s" % (ours, d, t, "written" if WRITE else "ready", note, extra))
 print("  %d sprites, %d skipped" % (done, len(skipped)))
+if ow_todo:
+    print("\n  OVERWORLD PALETTES WRITTEN -- these need three C edits each,")
+    print("  or the object renders through a generic NPC palette and comes out wrong:")
+    for ours, d in ow_todo:
+        cap = "".join(w.capitalize() for w in d.split("_"))
+        print("    %s (%s):" % (ours, d))
+        print("      event_object_movement.c   #define OBJ_EVENT_PAL_TAG_DAEMON_%s  0x11xx" % d.upper())
+        print("                                {gObjectEventPal_Daemon%s, OBJ_EVENT_PAL_TAG_DAEMON_%s}," % (cap, d.upper()))
+        print("      object_event_graphics.h   const u16 gObjectEventPal_Daemon%s[] =" % cap)
+        print("                                  INCBIN_U16(\"graphics/object_events/palettes/daemon_%s.gbapal\");" % d)
+        print("      ..._graphics_info.h       .paletteTag = OBJ_EVENT_PAL_TAG_DAEMON_%s," % d.upper())
 for s in skipped:
     print("     skip %s" % s)
