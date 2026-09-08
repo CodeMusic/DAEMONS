@@ -554,8 +554,13 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
   # is being loaded, because a 1 MB history.json is the difference between an
   # agent thinking and an agent replaying a transcript of its worst turns.
   GPT_DATA="$HARNESS/server/gpt_data"
+  # Resolved BEFORE the mv below, because after it $GPT_DATA does not exist and
+  # `cd "$GPT_DATA/.."` fails -- which is exactly how the first version of the
+  # sweep aborted the whole launch under `set -e`. I tested the pruning block
+  # in isolation and never once ran it after the move it depends on.
+  RUN_ROOT="$(cd "$HARNESS/server" && pwd)"
   if [[ $FRESH -eq 1 && -d "$GPT_DATA" ]]; then
-    ARCHIVE="$GPT_DATA/../gpt_data_$(date +%Y%m%d-%H%M%S)"
+    ARCHIVE="$RUN_ROOT/gpt_data_$(date +%Y%m%d-%H%M%S)"
     mv "$GPT_DATA" "$ARCHIVE"
     echo "  history   cleared (previous run archived to $(basename "$ARCHIVE"))"
 
@@ -577,7 +582,6 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
     # while-read is portable to 3.2 and does the same job.
     KEEP_RUNS="${DAEMONS_KEEP_RUNS:-5}"
     if [[ "$KEEP_RUNS" -gt 0 ]]; then
-      RUN_ROOT="$(cd "$GPT_DATA/.." && pwd)"
       PRUNED=0
       FREED=$( cd "$RUN_ROOT" && du -ck $(ls -dt gpt_data_* 2>/dev/null | tail -n +$((KEEP_RUNS + 1))) 2>/dev/null | tail -1 | cut -f1 )
       # ls -dt is newest-first, so tail -n +N is everything past the Nth.
