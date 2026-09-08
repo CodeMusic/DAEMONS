@@ -427,9 +427,20 @@ if [[ $AI -eq 1 ]]; then
   # working over the tailnet. One service reachable from anywhere and one
   # pinned to the living room is not a configuration, it is a trap.
   #
-  # Set it yourself to force the public relay, or to "" to turn the button off:
-  #   export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice
-  : "${DAEMONS_VOICE_URL=http://$LLM_HOST:5678/webhook/daemon/voice}"
+  # AND THE PUBLIC RELAY IS THE FALLBACK, which is what it was built for. The
+  # tailnet path is direct and private and wants Tailscale up; the relay wants
+  # only an internet connection. Probed the same way the proxy is, and with the
+  # cheap GET -- daemon/health on the same host -- because probing daemon/voice
+  # would generate a clip of speech nobody asked to hear.
+  #
+  # Set it yourself to force one, or to "" to turn the button off entirely.
+  if [[ -z "${DAEMONS_VOICE_URL+x}" ]]; then
+    if curl -fsS --max-time 3 "http://$LLM_HOST:5678/webhook/daemon/health" >/dev/null 2>&1; then
+      DAEMONS_VOICE_URL="http://$LLM_HOST:5678/webhook/daemon/voice"
+    else
+      DAEMONS_VOICE_URL="https://n8n.codemusic.ca/webhook/daemon/voice"
+    fi
+  fi
   export DAEMONS_VOICE_URL
   # Not currently set on the n8n side -- every internal workflow guards with
   # `if (expected && ...)`, so an unset secret means the check is skipped, and

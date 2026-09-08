@@ -80,14 +80,26 @@ relay, and the page would need `x-dex-secret` **in its JavaScript**, where
 anyone with the dashboard open can read it. A shared secret that ships to the
 browser is not a shared secret. `POST /speak` on the harness server holds it.
 
-**Nothing to export at home.** `bindDaemons.sh` defaults `DAEMONS_VOICE_URL`
-to the internal workflow, because the machine that runs the harness is the
-machine that reaches it — measured 2026-09-08, `10.0.0.136:5678` answers this
-Mac in 60ms. Set it only to change tier, or to `""` to turn the button off:
+**Nothing to export, anywhere.** `bindDaemons.sh` picks the tier for you, the
+same way it already picks the LiteLLM host:
+
+| | reached as | when |
+|---|---|---|
+| internal | `roverbyteseer:5678` | whenever it answers — **including off the LAN, over Tailscale** |
+| public relay | `n8n.codemusic.ca` | when it does not |
+
+The tailnet name is the point. `roverbyteseer` resolves to `100.67.234.4`
+from anywhere Tailscale is up, so the internal workflow is not a home-only
+path — measured from the tailnet rather than the LAN, it answers in 116ms.
+`roverbyteseer.local` is the LAN-only name and is *not* what this uses.
+
+The relay is the fallback for a machine with internet but no tailnet. Probed
+with `daemon/health` rather than `daemon/voice`, because probing the voice
+would generate a clip of speech nobody asked to hear.
 
 ```sh
-export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice  # away
-export DAEMONS_VOICE_URL=""                                            # off
+export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice  # force the relay
+export DAEMONS_VOICE_URL=""                                            # button off
 ```
 
 The export belongs on **whichever machine runs the harness**, not on the n8n
