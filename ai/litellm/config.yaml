@@ -276,14 +276,14 @@ model_list:
   # has repeatedly punished reasoning from specs instead of runs.
   #
   #   APC_ENABLED=1 ~/.vllm-venv/bin/python -m mlx_vlm.server \
-  #     --model ~/.lmstudio/models/lmstudio-community/Qwen3.5-4B-MLX-4bit \
+  #     --model ~/.lmstudio/models/mlx-community/Qwen3.5-4B-MLX-4bit \
   #     --port 8104
   #
   # openai/ is right here, unlike bonsai: mlx_vlm implements /v1/responses
   # natively, so no chat bridge is needed.
   - model_name: qwen35-4b
     litellm_params:
-      model: openai//Users/roverbyte/.lmstudio/models/lmstudio-community/Qwen3.5-4B-MLX-4bit
+      model: openai//Users/roverbyte/.lmstudio/models/mlx-community/Qwen3.5-4B-MLX-4bit
       api_base: http://127.0.0.1:8104/v1
       api_key: none
 
