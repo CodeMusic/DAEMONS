@@ -1,0 +1,90 @@
+{
+  "name": "DAEMONS — daemon/voice (inner voice → audio)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/voice",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "v1",
+      "name": "Webhook /daemon/voice",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-880, 0],
+      "webhookId": "daemon-voice"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Validate the secret and normalise one line of inner voice into a TTS request.\n//\n// This endpoint says ONE thing that daemon/chat does not: it speaks text the\n// caller already has. No model runs here. The dashboard has the aside on\n// screen already -- it wants a voice for it, not a second opinion about it.\nconst req = $input.first().json;\nconst headers = req.headers || {};\nconst body = req.body || {};\nconst expected = $env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret'] !== expected) {\n  throw new Error('Unauthorized: bad or missing x-dex-secret');\n}\n\nconst raw = String(body.text || '').trim();\nif (!raw) throw new Error('Missing text');\n\n// The TTS server caps at 600 characters and returns a 422 past it. An aside\n// is one or two sentences by construction, so hitting this means something\n// upstream is wrong -- clip at a sentence end rather than mid-word, and say\n// in the response that we did.\nconst MAX = 600;\nlet text = raw;\nlet truncated = false;\nif (text.length > MAX) {\n  const cut = text.slice(0, MAX);\n  const lastStop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));\n  text = (lastStop > MAX * 0.5 ? cut.slice(0, lastStop + 1) : cut).trim();\n  truncated = true;\n}\n\n// `index` is the blended voice -- nostalgia, logic, emotion -- and the INDEX\n// is what this game calls its record of daemons (§4.2). Its own inner voice\n// should sound like its own narrator. `dexter` is still reachable by asking.\nconst voice = String(body.voice || 'index');\n\n// Slightly flatter than Dexter's default: this is a thought, not an\n// announcement. The caller can override both.\nconst exaggeration = Number.isFinite(Number(body.exaggeration)) ? Number(body.exaggeration) : 0.35;\nconst cfg_weight = Number.isFinite(Number(body.cfg_weight)) ? Number(body.cfg_weight) : 0.5;\nconst rawAudio = body.raw === true;\n\nreturn [{ json: { text, voice, exaggeration, cfg_weight, raw: rawAudio, truncated } }];"
+      },
+      "id": "v2",
+      "name": "Validate + Normalise",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-660, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DEXTER_TTS_URL || 'http://host.docker.internal:8880/tts' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-Dex-Key", "value": "={{ $env.DEX_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.text, voice: $json.voice, exaggeration: $json.exaggeration, cfg_weight: $json.cfg_weight, raw: $json.raw }) }}",
+        "options": {
+          "response": { "response": { "responseFormat": "file" } },
+          "timeout": 90000
+        }
+      },
+      "id": "v3",
+      "name": "Index TTS (local)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-440, 0],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// mp3 -> base64, and say plainly when there is no audio.\n//\n// A silent play button that looks like it worked is worse than one that says\n// the voice is down: the first sends you looking at your speakers.\nconst v = $('Validate + Normalise').first().json;\nlet audioBase64 = null;\nlet error = null;\ntry {\n  const buf = await this.helpers.getBinaryDataBuffer(0, 'data');\n  if (buf && buf.length) audioBase64 = buf.toString('base64');\n} catch (e) {\n  error = 'tts_unavailable';\n}\nif (!audioBase64 && !error) error = 'tts_empty';\nreturn [{ json: {\n  audioBase64,\n  audioMime: audioBase64 ? 'audio/mpeg' : null,\n  voice: v.voice,\n  text: v.text,\n  truncated: v.truncated || false,\n  error,\n} }];"
+      },
+      "id": "v4",
+      "name": "Assemble Audio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-220, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "v5",
+      "name": "Respond Audio",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [0, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook /daemon/voice": { "main": [[{ "node": "Validate + Normalise", "type": "main", "index": 0 }]] },
+    "Validate + Normalise": { "main": [[{ "node": "Index TTS (local)", "type": "main", "index": 0 }]] },
+    "Index TTS (local)": { "main": [[{ "node": "Assemble Audio", "type": "main", "index": 0 }]] },
+    "Assemble Audio": { "main": [[{ "node": "Respond Audio", "type": "main", "index": 0 }]] }
+  },
+  "active": true,
+  "settings": { "executionOrder": "v1", "binaryMode": "separate" },
+  "versionId": "00000000-0000-4000-8000-000000000006",
+  "meta": { "instanceId": "" },
+  "id": "daemons-voice-internal",
+  "tags": []
+}

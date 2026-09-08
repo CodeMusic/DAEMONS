@@ -104,6 +104,9 @@ FLAGS
                  model three fewer branches to confuse, never latency.
                  --full-schema is still accepted and is now a no-op.
   --stop         stop a running --ai: bridge, agent, dashboard and mGBA.
+
+Set DAEMONS_VOICE_URL to a daemon/voice webhook to make each line of inner
+voice clickable in the dashboard -- it speaks in the INDEX voice.
                  Ctrl+C only stops the foreground, so this is the one that
                  actually ends a run. --ai calls it for you if a previous run
                  is still up.
@@ -410,6 +413,19 @@ if [[ $AI -eq 1 ]]; then
   export OPENAI_TOKEN_LIMIT
   DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
   export DAEMONS_SCHEMA
+  # Clicking a line of inner voice speaks it, if there is somewhere to send it.
+  # Two tiers, same as every other DAEMONS n8n endpoint: the public relay
+  # reaches home from away, the internal one is a hop shorter on the LAN.
+  # Left UNSET the play button reports the feature as off, which is the honest
+  # answer -- a button that fails at a connection looks like a bug.
+  #   export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice
+  #   export DAEMONS_VOICE_URL=http://10.0.0.136:5678/webhook/daemon/voice
+  # Unconditional: unset exports as empty, and the server's `if (!url)` already
+  # reads empty as "not configured". (`[[ -n .. ]] && export` would also be
+  # safe here -- bash's set -e exempts the left side of an && list, measured --
+  # but only because this is not the last statement in the function.)
+  export DAEMONS_VOICE_URL="${DAEMONS_VOICE_URL:-}"
+  export DEX_SHARED_SECRET="${DEX_SHARED_SECRET:-}"
   # Flat by default: the shape that works for qwen, which is the model that
   # works. minicpm cannot tool-call through LM Studio in any shape.
   DAEMONS_TOOLS=$([[ $NESTED_TOOLS -eq 1 ]] && echo nested || echo flat)

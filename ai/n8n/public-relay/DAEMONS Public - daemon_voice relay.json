@@ -1,0 +1,76 @@
+{
+  "name": "DAEMONS Public — daemon/voice relay",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/voice",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "pv1",
+      "name": "Public Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "pub-daemon-voice"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://10.0.0.136:5678/webhook/daemon/voice",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "x-dex-secret", "value": "={{ $json.headers['x-dex-secret'] || '' }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": { "timeout": 120000 }
+      },
+      "id": "pv2",
+      "name": "Relay to Internal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [224, 0],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Keep the metadata coming back, the same reason the sprite relay does: a\n// caller that cannot tell which voice spoke, or whether the line was clipped,\n// cannot tell a correct clip from a wrong one -- both play.\n//\n// And a failure must arrive as a NAMED absence rather than a 500. The\n// dashboard's play button has to be able to say \"the voice is down\" without\n// the whole dashboard treating it as an error.\nconst j = ($input.first() || {}).json || {};\nif (!j.audioBase64) {\n  return [{ json: {\n    audioBase64: null,\n    audioMime: null,\n    voice: j.voice || null,\n    text: j.text || null,\n    truncated: j.truncated || false,\n    error: j.error || 'backend_unreachable',\n  } }];\n}\nreturn [{ json: j }];"
+      },
+      "id": "pv3",
+      "name": "Shape Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [448, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "pv4",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [672, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Public Webhook": { "main": [[{ "node": "Relay to Internal", "type": "main", "index": 0 }]] },
+    "Relay to Internal": { "main": [[{ "node": "Shape Response", "type": "main", "index": 0 }]] },
+    "Shape Response": { "main": [[{ "node": "Respond", "type": "main", "index": 0 }]] }
+  },
+  "active": true,
+  "settings": { "executionOrder": "v1", "availableInMCP": false },
+  "versionId": "00000000-0000-4000-8000-000000000007",
+  "meta": { "instanceId": "" },
+  "id": "daemons-voice-public",
+  "tags": []
+}
