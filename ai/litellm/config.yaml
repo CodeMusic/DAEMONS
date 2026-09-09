@@ -322,20 +322,20 @@ model_list:
   #    a day measuring one model's behaviour, a silent swap makes yesterday's
   #    measurement about a different thing.
   #
-  #    Left UNPINNED on purpose: four providers is four chances the run
-  #    survives one being down, and an unattended run values that more than a
-  #    controlled comparison does. Pin it when the question is "is this model
-  #    better than that one", where a provider changing underneath the answer
-  #    would be the answer:
-  #
-  #      extra_body:
-  #        provider:
-  #          order: ["DeepInfra"]      # the one that says what it serves
-  #          allow_fallbacks: false
+  #    PINNED to DeepInfra, 2026-09-09. It is the only one of the four that
+  #    says what it serves, and this project's whole method is measurement --
+  #    a provider moving underneath a comparison makes the comparison about
+  #    the provider. allow_fallbacks:false is the point: falling back is
+  #    exactly the silent swap being prevented, so a DeepInfra outage should
+  #    stop the run loudly rather than continue it quietly on other weights.
   - model_name: or-muse-glimmer
     litellm_params:
       model: openrouter/meta/muse-glimmer-30b
       api_key: os.environ/OPENROUTER_API_KEY
+      extra_body:
+        provider:
+          order: ["DeepInfra"]
+          allow_fallbacks: false
 
   # 3. Frontier, omnimodal, 1M context, at 3% of Sonnet. CHECK THE DATA TERMS
   #    BEFORE USING: "contributor" is a 12x discount off the same model's
