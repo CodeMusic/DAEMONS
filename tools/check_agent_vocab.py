@@ -152,6 +152,11 @@ def derived_table_check():
             if want and got.get(i) != want:
                 bad.append(("bridge POKEMON_TYPE_MAP", got.get(i, "?"), want,
                             "type %d -- the agent is told this is what it is holding" % i))
+    #  A step's trigger is matched against the badge id the bridge REPORTS, so
+    #  the two files are a contract. Renaming BADGES broke it in silence: the
+    #  card drew the SLATE MARK and the step stayed unticked, because the step
+    #  was still waiting for BOULDER. It took a screenshot to find, which is
+    #  exactly the loop this tool exists to close.
     bt = re.search(r"BADGES = \[(.*?)\n\]", src, re.S)
     if bt:
         MARKS = ["SLATE","SLOPE","SENSE","FIT","SKEW","FRAME","HEAT","TRUE"]
@@ -159,6 +164,24 @@ def derived_table_check():
         for i, want in enumerate(MARKS):
             if i < len(got) and got[i] != want:
                 bad.append(("bridge BADGES", got[i], want, "benchmark %d, per 5.2" % (i + 1)))
+    #  and the progress steps must trigger on ids the bridge can actually emit
+    ids = set()
+    if bt:
+        ids = set(m[0] for m in re.findall(r'\(\s*"([^"]+)"\s*,\s*"([^"]*)"', bt.group(1)))
+    for rel in ("server/progress_steps.json", "server/gpt_data/progress_steps.json"):
+        f = os.path.join(AI, rel)
+        if not (ids and os.path.exists(f)):
+            continue
+        try:
+            doc = json.load(open(f, encoding="utf-8"))
+        except Exception:
+            continue
+        for e in (doc if isinstance(doc, list) else doc.get("steps", [])):
+            if e.get("type") == "badge" and e.get("trigger") not in ids:
+                bad.append(("progress_steps %s" % os.path.basename(os.path.dirname(f) or rel),
+                            e.get("trigger", "?"), "one of " + "/".join(sorted(ids)),
+                            "step %s never ticks -- the bridge cannot emit that id"
+                            % e.get("id", "?")))
     return bad
 
 

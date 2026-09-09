@@ -93,9 +93,36 @@ PROGRESS_LABELS = {
 }
 
 
+# Gen 3's badge order, which is fixed and is the only thing here that never
+# changes. The bridge's BADGES table is read for what WE call each one, so the
+# rename lives in exactly one place.
+VANILLA_BADGES = ["BOULDER", "CASCADE", "THUNDER", "RAINBOW",
+                  "SOUL", "MARSH", "VOLCANO", "EARTH"]
+
+
+def our_badge_ids():
+    """The eight MARK ids, read out of the bridge rather than typed here."""
+    f = os.path.join(ROOT, "engineAi/firered_bridge/constants/addresses.py")
+    if not os.path.isfile(f):
+        return {}
+    m = re.search(r"BADGES = \[(.*?)\n\]", open(f, encoding="utf-8").read(), re.S)
+    if not m:
+        return {}
+    ids = [x[0] for x in re.findall(r'\(\s*"([^"]+)"\s*,\s*"([^"]*)"', m.group(1))]
+    return dict(zip(VANILLA_BADGES, ids))
+
+
 def port_progress():
-    """Rewrite the milestone labels. Both copies -- server/progress_steps.json
-    and the gpt_data mirror -- or the dashboard and the agent disagree."""
+    """Rewrite the milestone labels AND the badge triggers. Both copies --
+    server/progress_steps.json and the gpt_data mirror -- or the dashboard and
+    the agent disagree.
+
+    The trigger is a CONTRACT with the bridge: gameLoop matches a step's
+    trigger against the badge id the bridge reports. Renaming BADGES to the
+    eight MARKS broke it silently -- the card showed the SLATE MARK and the
+    step stayed unticked, because the step was still waiting for BOULDER.
+    Nothing errored, which is why it took a screenshot to find."""
+    badges = our_badge_ids()
     total = 0
     for rel in ("engineAi/server/progress_steps.json",
                 "engineAi/server/gpt_data/progress_steps.json"):
@@ -105,11 +132,15 @@ def port_progress():
         doc = json.load(open(f, encoding="utf-8"))
         steps = doc if isinstance(doc, list) else doc.get("steps", [])
         n = 0
+        t = 0
         for e in steps:
             lab = e.get("label")
             if lab in PROGRESS_LABELS:
                 e["label"] = PROGRESS_LABELS[lab]; n += 1
-        print("  %-40s %2d of %d labels" % (os.path.basename(rel), n, len(steps)))
+            if e.get("type") == "badge" and e.get("trigger") in badges:
+                e["trigger"] = badges[e["trigger"]]; t += 1
+        print("  %-40s %2d of %d labels, %d badge trigger(s)"
+              % (os.path.basename(rel), n, len(steps), t))
         total += n
         if WRITE:
             json.dump(doc, open(f, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
