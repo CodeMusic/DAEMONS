@@ -14,6 +14,7 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 |---|---|
 | [**CodeMusic/pokefirered-daemons**](https://github.com/CodeMusic/pokefirered-daemons) | the engine — **this is where the work is** |
 | [**CodeMusic/pokered-daemons**](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, where the vertical slice was made. Kept as a reference, not updated further |
+| [**CodeMusic/gpt-play-pokemon-firered-daemons**](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a **model play it** — fork of [Clad3815](https://github.com/Clad3815/gpt-play-pokemon-firered) |
 
 **Why the move.** A spike was run to answer one question — are abilities, item descriptions and a real scripting language worth rebuilding 334 files for? Gen 1 stores **no item descriptions at all**, which is a writing-led project running on the one generation with nowhere to write. Abilities give the chart a second axis. The Index went from six lines of eighteen characters to three of forty-two.
 
@@ -21,7 +22,11 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 
 **This repository is neither engine.** It is the design: the bible, the changelog, the lineage, and every tool that did the porting. `docs/` has never been engine-specific and that is the whole reason the move was affordable.
 
-**Two editions, one source tree.** The slash in the title is literal. `pokered` already builds Red *and* Blue from the same sources via two assembler defines, so **CONTENT** and **CONTEXT** cost three lines of Makefile. The type chart is byte-identical in both — it's the argument, and an argument that changes by cartridge isn't one. What differs is which daemons you meet, and what the Index says about them.
+**Two editions, one source tree.** The slash in the title is literal. Both
+upstreams already build a paired game from one set of sources — Red and Blue,
+FireRed and LeafGreen — so **CONTENT** and **CONTEXT** cost three lines of
+Makefile, and the split survived the port unchanged, which was the first good
+sign the move was affordable. The type chart is byte-identical in both — it's the argument, and an argument that changes by cartridge isn't one. What differs is which daemons you meet, and what the Index says about them.
 
 Creatures are **daemons** — background processes that run unattended, and the older sense too: the *daimon*, the voice that speaks to you from somewhere you don't control. They are not robots and nobody in the world calls them AI. They just live there.
 
@@ -54,23 +59,51 @@ A few rules the project holds itself to, in case they're useful to anyone buildi
 
 You can play **Blanche Town → The Bleed → Callow → The Undertone → Underpaint → Slate → Benchmark 1** end to end. The type chart is in and complete, the routes carry both their names, several towns have their own music, and the story's documents are where they belong — a requisition, a set of minutes, a carving, an engraving, none of them signed and none of them explained.
 
-**What is not done:** the creatures still have their Kanto names, and their sprites are the real bottleneck. The bestiary is twelve daemons, not 151 — enough ROM hacks have died designing a full roster before shipping a single town.
+**The slice has a cast now.** Thirty-two daemons carry our names, our art and an Index entry — the three starter lines, the six wild lines, and the MUSAI, ARTSAI and S.T.A.R.R. Every creature the player meets in the slice is drawn.
+
+**And a model plays it.** [`engineAi/`](ai/README.md) drives mGBA over a Lua socket, reads the game out of RAM by symbol name, and decides. It keeps a self-model, four humor axes derived from what happens to it, and dreams at every summary fold — and any of it can be spoken aloud.
+
+**What is not done:** the bestiary is thirty-two, not 151. Enough ROM hacks have died designing a full roster before shipping a single town.
 
 See [`docs/`](docs/) for the design bible, which is the honest picture of where this stands — including the decisions that were reversed and why.
 
 ## Building
 
-You'll need [RGBDS](https://rgbds.gbdev.io/) and a copy of `pokered`. Follow pret's [install guide](https://github.com/pret/pokered/blob/master/INSTALL.md) first and **confirm you can produce a byte-matching vanilla build before applying anything here.** If the checksum matches, your toolchain is sound and every later break is yours.
+**Two engines, and the GBA one is where the work happens.** §9.3 opened
+`pokefirered` as a spike — are abilities, item descriptions and a real
+scripting language worth rebuilding 334 files for? — and the spike answered in
+a day. `engine/` still compiles and still runs the slice; it is a **reference**
+now, and the source the port tools read from.
 
 ```sh
 git clone https://github.com/CodeMusic/DAEMONS.git
-cd DAEMONS && ./setup.sh
-make content
+cd DAEMONS && ./setup.sh          # clones both forks, builds agbcc, remakes the symlinks
+./bindDaemons.sh                  # CONTENT on the GBA
 ```
+
+`setup.sh` is idempotent and does the awkward part: **agbcc** installs *into*
+`engineGba/tools/`, so it does not survive a fresh clone and has to be built
+rather than fetched.
+
+| you want | you need |
+|---|---|
+| **the GBA build** (default) | `arm-none-eabi-gcc` from Homebrew, plus `agbcc` — `setup.sh` builds it |
+| **the Game Boy build** (`--classic`) | [RGBDS](https://rgbds.gbdev.io/) |
+
+Homebrew's ARM gcc ships no libc, so `MODERN=1` fails on `string.h`. agbcc
+brings its own headers and is the path that works here.
+
+**Before blaming anything, prove the toolchain.** `make vanilla-check` builds
+pristine upstream in a throwaway worktree and checks the hashes without
+touching your branch. If vanilla matches, the break is ours.
+
+*`shasum -c firered.sha1` fails by design* — the ROM carries our content. It
+proves the toolchain on a pristine `pret/pokefirered` checkout and is not a
+regression check for this fork.
 
 | Command | What it does |
 |---|---|
-| `make content` / `make context` | build an edition |
+| `make content` / `make context` | build a **Game Boy** edition — the `make` shim only reaches `engine/` |
 | `make play` | build CONTENT and launch it in an emulator |
 | `make play-debug` | the same, with debug mode compiled in |
 | `make vanilla-check` | prove the toolchain against pristine upstream |
@@ -114,12 +147,13 @@ debug run never touches a real playthrough, and it is deliberately not part of
 `make all`. Its starting party is upstream's, so expect Kanto names in it — it
 is for reaching places quickly, not for judging how the game feels.
 
-`setup.sh` clones the engine beside this repo, wires `upstream` to pret, and
-creates the gitignored `engine/` symlink — because **a symlink does not survive
-`git clone`**. It is idempotent; run it again whenever something looks off.
+`setup.sh` clones **all three** repos beside this one, wires each `upstream` to
+its source, remakes the gitignored symlinks — because **a symlink does not
+survive `git clone`** — and builds agbcc. It is idempotent; run it again
+whenever something looks off.
 
-The engine is a **fork** of pokered, kept as a sibling repo rather than merged
-in, so no Nintendo-derived asset ever enters this repository. The pattern, its
+The engines are **forks**, kept as sibling repos rather than merged in, so no
+Nintendo-derived asset ever enters this repository. The pattern, its
 tradeoffs and the alternatives are written up in
 [`docs/two-repo-pattern.md`](docs/two-repo-pattern.md).
 
@@ -130,10 +164,19 @@ tradeoffs and the alternatives are written up in
 ```
 docs/       vision.md — the living design bible, incl. the decision log
             versioned PDF snapshots, type-system build notes
-patches/    drop-in files and diffs against a clean pokered checkout
+tools/      the port tools — every rename crossed to the GBA through one
+ai/         n8n workflows, the LiteLLM config, and how a model plays it
+patches/    drop-in files and diffs against a clean upstream checkout
 gfx/        original sprite work (front/, back/, overworld/, ui/)
 audio/      original music (music/, sfx/)
+
+engine/     -> pokered-daemons        Game Boy, reference
+engineGba/  -> pokefirered-daemons    GBA, where the work happens
+engineAi/   -> gpt-play-...-daemons   the harness that lets a model play it
 ```
+
+The three `engine*` entries are **gitignored symlinks**. Nothing is ever
+vendored in here.
 
 The bible is [`docs/vision.md`](docs/vision.md). It is the only document that
 changes; the PDFs are periodic snapshots, kept because the project now has a
