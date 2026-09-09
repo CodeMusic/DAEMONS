@@ -16,14 +16,28 @@ is kept as the readable statement of what we changed and why.
 [h]: https://github.com/Clad3815/gpt-play-pokemon-firered
 [f]: https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons
 
-## It reads RAM, not the screen
+## It reads RAM first, and the screen second
 
-There is no vision model anywhere in this. mGBA exposes a Lua socket, a Python
-bridge reads memory and sends buttons, and the agent decides. The model's job
-is *given this game state, pick a button* — text in, button out.
+**The state comes out of memory, by symbol name.** mGBA exposes a Lua socket, a
+Python bridge reads the party, position, battle and flags out of RAM, and the
+agent decides. It knows the exact HP of every daemon and the tile it is
+standing on, because it read them — not because it looked.
 
-That is the whole reason a local model is plausible here, and it is also why
-the frontier-API cost most of these projects report does not apply.
+**Screenshots go along with it**, two turns' worth by default
+(`DAEMONS_KEEP_IMAGES`). *This section used to say there was no vision anywhere
+in this, and that was wrong* — one run recorded `num_media_prompt: 4` against
+OpenRouter, which is what corrected it. The images cover what RAM does not
+say: an unexpected cutscene, a menu with no symbol behind it, whether the thing
+in front of you looks like a door.
+
+**Why it still matters that the state is read rather than seen.** A model
+squinting at 240×160 to count HP will get it wrong sometimes and be confidently
+wrong when it does. Reading it is exact, and it is why a small local model is
+plausible here at all — the vision is a supplement, not the interface.
+
+*Cost note:* images are the expensive half of the prompt, which is why the
+default is two turns and not ten. `DAEMONS_KEEP_IMAGES=0` turns them off
+entirely and the loop still plays.
 
 ## Why the symbols are regenerated every run
 
