@@ -1,0 +1,145 @@
+<title>The Bag</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{
+  --paper:#f4f3ee; --raise:#fbfaf7; --ink:#16181c; --dim:#565c66; --faint:#878d96;
+  --rule:#dbdad3; --rule-hard:#b0b3b7; --slate:#3f5f88; --slate-soft:#607a9e;
+  --was:#8a8378;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131519; --raise:#1b1e24; --ink:#e8e6e0; --dim:#a2a8b2; --faint:#767c86;
+    --rule:#2a2e35; --rule-hard:#414751; --slate:#8fb0d8; --slate-soft:#7f9cc4;
+    --was:#7d776e;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131519; --raise:#1b1e24; --ink:#e8e6e0; --dim:#a2a8b2; --faint:#767c86;
+  --rule:#2a2e35; --rule-hard:#414751; --slate:#8fb0d8; --slate-soft:#7f9cc4;
+  --was:#7d776e;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Source Serif 4",Georgia,serif;line-height:1.6;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 24px 96px;display:flex;flex-direction:column;gap:48px}
+h1,h2,h3,.ui{font-family:"IBM Plex Sans",system-ui,sans-serif}
+h1{font-size:clamp(30px,4.4vw,46px);line-height:1.08;margin:0;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:23px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0 0 14px;max-width:66ch}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+.lede{font-size:18px;color:var(--dim);max-width:64ch;margin:16px 0 0}
+header{border-bottom:2px solid var(--rule-hard);padding-bottom:28px}
+section{display:flex;flex-direction:column;gap:14px}
+.sec-head{border-top:1px solid var(--rule-hard);padding-top:16px}
+mark{background:none;color:var(--ink);font-weight:600;
+  box-shadow:inset 0 -.42em 0 color-mix(in srgb,var(--slate-soft) 26%,transparent)}
+code,.mono{font-family:"IBM Plex Mono",monospace;font-size:.88em}
+a{color:var(--slate)}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:2px;background:var(--raise)}
+table.tbl{border-collapse:collapse;width:100%;font-size:14px}
+table.tbl th{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);text-align:left;
+  padding:11px 14px;border-bottom:1px solid var(--rule-hard);white-space:nowrap}
+table.tbl td{padding:13px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+table.tbl tr:last-child td{border-bottom:none}
+td.was{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--was);
+  white-space:nowrap;width:1%}
+td.now{font-family:"IBM Plex Sans",system-ui,sans-serif;font-weight:600;font-size:14px;
+  white-space:nowrap;width:1%}
+td.now small{display:block;font-family:"Source Serif 4",Georgia,serif;font-weight:400;
+  font-size:12px;color:var(--dim);white-space:normal;max-width:24ch;margin-top:5px;
+  font-style:italic;line-height:1.45}
+td.chip{width:1%}
+.code{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em;
+  color:#fff;padding:3px 7px;border-radius:3px;display:inline-block;
+  text-shadow:0 1px 0 rgba(0,0,0,.45)}
+.code[none]{background:none;color:var(--faint);text-shadow:none;padding-left:0}
+.note{font-size:14px;color:var(--dim);border-left:2px solid var(--rule-hard);
+  padding-left:14px;margin:4px 0 0}
+.budget{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:2px}
+.budget div{background:var(--raise);padding:14px 16px}
+.budget b{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+.budget span{font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:500}
+.budget em{display:block;font-size:13px;color:var(--dim);margin-top:5px;line-height:1.45}
+footer{border-top:1px solid var(--rule-hard);padding-top:18px;font-size:13px;color:var(--faint)}
+@media print{body{background:#fff}.wrap{padding:0;gap:30px}section{break-inside:avoid}}
+</style>
+<div class="wrap">
+<header>
+  <p class="eyebrow">CONTEXT / CONTENT · §1.4 · §1.6 · §9.15 · §9.16</p>
+  <h1>The Bag</h1>
+  <p class="lede">Every state a daemon can be in, every item that ends one, and the argument
+  for each word. <strong>36 items are renamed</strong>, and this page is generated
+  from the game's own table — the shipped description is quoted, not retyped.</p>
+</header>
+
+<section>
+  <div class="sec-head"><h2>The rule these names follow</h2></div>
+  <p><mark>A name has to work twice</mark> — once as the thing in your hand and once as the
+  thing in a computer — and if it only works once it does not ship. That test is why
+  <code>PATCH</code> was instant and <code>CACHE</code> was refused: a patch stops a leak and
+  patches software, while a cache needs a beat of explanation before it means anything.</p>
+  <p>The description carries a second rule, added when the state items were rewritten:
+  <strong>teach the term in the first clause, state the effect in the second.</strong>
+  <em>“Preemption takes control back from a process that will not yield. Ends HUNG.”</em>
+  The player who knows the word gets a nod; the player who does not gets a definition and
+  never notices being taught.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>The states</h2></div>
+  <p>Vanilla leaves a creature poisoned, asleep, paralysed, burned, frozen or confused.
+  Every one of those is a metaphor about a <em>body</em>, and this world does not have
+  bodies — it has processes. <mark>A state is something a process is in, and something it
+  can be got out of.</mark></p>
+  <p>The three-letter code is what the party menu draws on a coloured tile, and what the
+  battle box prints beside the name. The colours keep vanilla's hue anchors — a player who
+  has ever seen a party menu reads orange as burning before they read the letters — and move
+  into the muted register the type chart uses.</p>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>Vanilla</th><th>Ours</th><th>Tile</th><th>Why it is the exact word</th></tr></thead>
+    <tbody><tr><td class=was>POISON · PSN</td><td class=now>LEAKING</td><td class=chip><span class=code style="background:#6f9440">LEK</span></td><td>A memory leak degrades a running process a little at a time until it dies. Nothing else in computing loses you a fixed slice per tick.</td></tr><tr><td class=was>TOXIC · TOX</td><td class=now>CASCADING</td><td class=chip><span class=code style="background:#6f9440">CAS</span></td><td>Badly poisoned worsens each turn, and a cascading failure is precisely a fault whose rate rises because of the damage it already did. It shares LEAKING's tile: Gen 3 has one poison slot and draws both in it.</td></tr><tr><td class=was>SLEEP · SLP</td><td class=now>SUSPENDED</td><td class=chip><span class=code style="background:#8a8f9c">SUS</span></td><td>Not gone, not scheduled, and it <em>resumes</em>. The one status that is genuinely temporary, and the word says so. The tile is slate: dormant rather than damaged.</td></tr><tr><td class=was>PARALYSIS · PAR</td><td class=now>THROTTLED</td><td class=chip><span class=code style="background:#c8a020">THR</span></td><td>Paralysis does two things — cuts speed, sometimes skips a turn. Throttling is a speed cap that intermittently stalls work. Both halves, one word.</td></tr><tr><td class=was>BURN · BRN</td><td class=now>OVERHEATED</td><td class=chip><span class=code style="background:#d8703c">OVR</span></td><td>Chip damage plus reduced output, dealt by ENTROPY, whose one-clause test is <em>noise and heat</em>. The tile is ember: heat the daemon made itself.</td></tr><tr><td class=was>FREEZE · FRZ</td><td class=now>HUNG</td><td class=chip><span class=code style="background:#78a8dc">HNG</span></td><td>A hung process does nothing until something intervenes. <strong>FROZEN could not be reused</strong> — it is a type name, and the chart had just spent real effort making type names carry meaning.</td></tr><tr><td class=was>CONFUSION</td><td class=now>THRASHING</td><td class=chip><span class=code none>—</span></td><td>A system so busy managing itself it makes no progress and damages its own throughput. Hurting yourself in confusion is the same event. Volatile, so it needs no code.</td></tr><tr><td class=was>FAINT</td><td class=now>HALTED</td><td class=chip><span class=code style="background:#b83c3c">HLT</span></td><td>The first of the seven, and the one that set the register for the rest: a state is something a process is <em>in</em>, and something it can be got out of.</td></tr></tbody>
+  </table></div>
+  <p class="note">CASCADING shares LEAKING's tile because Gen 3 draws badly-poisoned in the
+  same box as ordinary poison. THRASHING needs no code at all: it is volatile, so it never
+  reaches the party screen.</p>
+</section>
+
+<section id="cures"><div class="sec-head"><h2>The operations that end a state</h2></div><p>Vanilla's cures are sprays and medicines. Ours are the operations you would actually perform on a process that was in that state.</p><div class=scroll><table class=tbl><thead><tr><th>Vanilla</th><th>Ours, and what the bag says</th><th>Why that word</th></tr></thead><tbody><tr><td class=was>ANTIDOTE</td><td class=now>PATCH<small>A patch stops a leak at its source. Ends LEAKING, and the worse CASCADING with it.</small></td><td>You patch a leak and you patch software. <strong>The pun is the definition</strong> — it needs no beat of confusion, which is the test CACHE was held to and failed.</td></tr><tr><td class=was>AWAKENING</td><td class=now>RESUME<small>Puts a SUSPENDED daemon back on the schedule. It was never gone, only unscheduled.</small></td><td>The exact inverse of SUSPENDED, and the word an operating system uses for it.</td></tr><tr><td class=was>PARLYZ HEAL</td><td class=now>PRIORITY<small>Scheduled ahead of whatever was starving it. Ends THROTTLED.</small></td><td>What lifts throttling is not medicine — it is being scheduled ahead of the thing starving you. <em>The weakest of the ten on the works-twice test, and kept because the mechanic is right.</em></td></tr><tr><td class=was>BURN HEAL</td><td class=now>COOLANT<small>Draws off the heat a daemon made itself. Ends OVERHEATED.</small></td><td>The only one of the seven that needs no domain knowledge at all. Plain, physical, and exactly right.</td></tr><tr><td class=was>ICE HEAL</td><td class=now>PREEMPT<small>Preemption takes control back from a process that will not yield. Ends HUNG.</small></td><td><strong>INTERRUPT shipped here first and collided</strong> — the flute had taken the word six weeks earlier, and keeps it. Preemption is the scheduler taking the processor back from a task that will not yield, which is what HUNG is and what the item does. The narrower word turned out to be the accurate one.</td></tr><tr><td class=was>FULL HEAL</td><td class=now>ROLLBACK<small>Rolls back to a known-good state. Ends every state at once, whatever it was.</small></td><td>Clears every state by returning to a known-good one. Says <em>all of it</em> without listing anything.</td></tr><tr><td class=was>HEAL POWDER</td><td class=now>HOTFIX<small>Bitter, cheap, and it works now. Clears every state.</small></td><td>Bitter, cheap, works now, nobody is proud of it. All four are true of both meanings.</td></tr><tr><td class=was>FULL RESTORE</td><td class=now>SNAPSHOT<small>Restores a DAEMON whole: health and state together.</small></td><td>Health and state together, because that is what a snapshot restores. The one cure that is a noun for a thing you saved earlier.</td></tr><tr><td class=was>REVIVE</td><td class=now>RESTART<small>Starts a HALTED daemon again with half its health. It does not remember stopping.</small></td><td>The word for bringing back a halted process — and it lands on HALTED without explaining itself.</td></tr><tr><td class=was>MAX REVIVE</td><td class=now>REBOOT<small>Brings back a HALTED DAEMON at full health.</small></td><td>Strictly bigger than a restart, which is exactly the relationship the two items have. <strong>The ladder is free.</strong></td></tr></tbody></table></div></section><section id="boxes"><div class="sec-head"><h2>The hosts</h2></div><p>The ladder is not sizes. It is <strong>rights</strong> — and a box is a little machine that a daemon agrees, or does not agree, to run on.</p><div class=scroll><table class=tbl><thead><tr><th>Vanilla</th><th>Ours, and what the bag says</th><th>Why that word</th></tr></thead><tbody><tr><td class=was>POKé BALL</td><td class=now>USERBOX<small>A host offered at user level. A steady daemon will run on it. A stubborn one will not.</small></td><td><strong>A box is not a container, it is a host.</strong> The ladder is not sizes, it is <em>rights</em> — and that is the argument: what you are doing when you bind a daemon is offering it an account on a machine.</td></tr><tr><td class=was>GREAT BALL</td><td class=now>ADMINBOX<small>A host with wider rights than a USERBOX. More daemons will agree to run on it.</small></td><td>Wider rights than a USERBOX, so more daemons agree to run on it.</td></tr><tr><td class=was>ULTRA BALL</td><td class=now>SUPERBOX<small>A host with elevated rights. Most daemons will run on it, including reluctant ones.</small></td><td>Elevated rights. Most daemons will run on it.</td></tr><tr><td class=was>MASTER BALL</td><td class=now>ROOTBOX<small>A host with unrestricted rights. No daemon can decline to run on it. Nothing is refused root.</small></td><td>Unrestricted rights. <em>No daemon can decline</em> — which is the one place in the ladder where the metaphor turns unpleasant, and it is supposed to.</td></tr><tr><td class=was>SAFARI BALL</td><td class=now>GUESTBOX<small>A temporary host, issued at the gate and expiring at the gate. Its rights are minimal.</small></td><td>Issued at the gate and expiring at the gate. A guest account is exactly a temporary host with a revocation date.</td></tr></tbody></table></div></section><p class="note" style="max-width:66ch">The one-trick balls keep vanilla's shape and become one-trick boxes — <code>NET BOX</code>, <code>DIVE BOX</code>, <code>NEST BOX</code>, <code>REPEAT BOX</code>, <code>TIMER BOX</code>, <code>LUXURY BOX</code>, <code>PREMIER BOX</code>. The ladder already carries the argument, and a second argument competing with it would blunt both.</p><section id="inputs"><div class="sec-head"><h2>The four inputs</h2></div><p>Vanilla's evolution stones are four elements. Ours are four things you can give a mind, and each changes what some daemons compile to.</p><div class=scroll><table class=tbl><thead><tr><th>Vanilla</th><th>Ours, and what the bag says</th><th>Why that word</th></tr></thead><tbody><tr><td class=was>FIRE STONE</td><td class=now>AXIOM<small>Something for a mind to reason from. Some daemons take a new form when given one.</small></td><td><strong>The four inputs to a mind, not four elements.</strong> An axiom is something to reason <em>from</em> — you do not derive it, you start there.</td></tr><tr><td class=was>THUNDERSTONE</td><td class=now>EMBEDDING<small>A representation a mind can search through. Some daemons take a new form when given one.</small></td><td>A representation you can search through. The one of the four that names a technique rather than a faculty, and the only one a player may already know.</td></tr><tr><td class=was>WATER STONE</td><td class=now>AFFECT<small>Something for a mind to feel with. Some daemons take a new form when given one.</small></td><td>Something to feel with. <em>Affect</em> is the clinical word, which keeps it from reading as sentiment.</td></tr><tr><td class=was>LEAF STONE</td><td class=now>REWARD<small>A signal a mind can learn from. Some daemons take a new form when given one.</small></td><td>A signal to learn from. <strong>Reward is the one of the four the whole game is arguing about</strong> and it is never said again.</td></tr></tbody></table></div></section><section id="keys"><div class="sec-head"><h2>The key items</h2></div><p>One of these is a crime scene the player carries from minute fifteen, and nothing points at it.</p><div class=scroll><table class=tbl><thead><tr><th>Vanilla</th><th>Ours, and what the bag says</th><th>Why that word</th></tr></thead><tbody><tr><td class=was>OAK'S PARCEL</td><td class=now>CC-7<small>A sealed module. Part no. CC-7. Addressed to CRYSTAL CLEAR. Not to you.</small></td><td><em>A sealed module. Part no. CC-7.</em> The number goes in the item name rather than the description, so the player <strong>carries</strong> it for thirty hours before reading a requisition for the same part on a door.</td></tr><tr><td class=was>POKé FLUTE</td><td class=now>INTERRUPT<small>Sends an interrupt. A daemon that has stopped responding will wake.</small></td><td>An interrupt is a signal that reaches something which has stopped responding. A flute that wakes a sleeping obstacle <em>is</em> that, in the plainest sense.</td></tr><tr><td class=was>SILPH SCOPE</td><td class=now>RESOLVER<small>Resolves a name that will not resolve on its own. Some things cannot be identified without it.</small></td><td>Resolves a name that will not resolve on its own. DNS said as a ghost story.</td></tr><tr><td class=was>FAME CHECKER</td><td class=now>HEARSAY<small>Holds what you were told about people, and who told you. It does not check anything.</small></td><td>Holds what you were <em>told</em>, and who told you. <strong>It does not hold what is true</strong> — the item is a citation index, and the name admits it.</td></tr><tr><td class=was>TEACHY TV</td><td class=now>STREAM<small>A stream is data read as it arrives. This one carries the TUTOR, and a show per MARK.</small></td><td>A stream is a broadcast and a stream is a sequence you read from as it arrives. <em>MACHINE STREAM was measured out before taste got a vote:</em> the name budget is thirteen characters and that one is fourteen.</td></tr><tr><td class=was>OLD AMBER</td><td class=now>OLD CORE<small>A core recovered whole. It holds a daemon that stopped a very long time ago.</small></td><td>A core recovered whole, holding a daemon that stopped a very long time ago. The museum's whole argument, carried in the bag.</td></tr><tr><td class=was>HELIX FOSSIL</td><td class=now>HELIX CORE<small>A core found at Deadstack. Wound in a spiral. Nothing has read its contents.</small></td><td>Wound in a spiral. Nothing has read its contents.</td></tr><tr><td class=was>DOME FOSSIL</td><td class=now>DRUM CORE<small>A core found at Deadstack. A drum, sealed at both ends. Nothing has read its contents.</small></td><td>A drum, sealed at both ends. Nothing has read its contents.</td></tr></tbody></table></div></section><section id="mp"><div class="sec-head"><h2>And one number</h2></div><div class=scroll><table class=tbl><thead><tr><th>Vanilla</th><th>Ours, and what the bag says</th><th>Why that word</th></tr></thead><tbody><tr><td class=was>PP UP</td><td class=now>MP UP<small>Slightly raises the maximum MP of a selected move for one DAEMON.</small></td><td>PP is <em>power points</em>, which is a body word. MP is what the rest of the genre already calls the same number, and it costs one letter.</td></tr><tr><td class=was>PP MAX</td><td class=now>MP MAX<small>Raises the MP of a selected move to its maximum level for one DAEMON.</small></td><td>Same change, same reason.</td></tr></tbody></table></div></section>
+
+<section>
+  <div class="sec-head"><h2>What the budget actually is</h2></div>
+  <div class="budget">
+    <div><b>Item name</b><span>13 characters</span><em><code>ITEM_NAME_LENGTH</code> is 14
+      including the terminator. <code>MACHINE STREAM</code> is 14 and does not fit.</em></div>
+    <div><b>Description</b><span>3 lines</span><em>Roughly 30 characters each, measured in
+      pixels rather than letters — the face is variable width.</em></div>
+    <div><b>Renamed so far</b><span>36 items</span><em>Derived by diffing our table
+      against upstream's, which is the only way to tell a rename from an addition.</em></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Three that were harder than they look</h2></div>
+  <p><strong>INTERRUPT was assigned twice, six weeks apart</strong> — to the flute in the
+  first pass and to ICE HEAL in the state pass, and nothing checked. The flute keeps it,
+  because waking a thing that blocks a road is an interrupt in the plainest sense. ICE HEAL
+  became <code>PREEMPT</code>, and <mark>the narrower word turned out to be the more accurate
+  one</mark>: preemption is the scheduler taking control back from a task that will not
+  yield, which is exactly what a hung process is.</p>
+  <p><strong><code>FROZEN</code> could not be used for the frozen state</strong>, because it
+  is a type name and the chart had just spent real effort making type names carry meaning.
+  <code>HUNG</code> is what the state is anyway.</p>
+  <p><strong>The box ladder is rights, not sizes</strong>, and that is the one item family
+  where the metaphor is allowed to turn unpleasant. A ROOTBOX has unrestricted rights and
+  <em>no daemon can decline to run on it</em> — which is the same sentence as “it never
+  fails”, read from the other side.</p>
+</section>
+
+<footer>Generated by <code>tools/gbaitems.py</code> from
+<code>engineGba/src/data/items.json</code>. Cut the PDF with
+<code>./docs/build-pdf.sh items.html</code>.</footer>
+</div>

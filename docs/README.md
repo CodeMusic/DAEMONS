@@ -2,11 +2,12 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.110, working |
-| [`CONTEXT-CONTENT-design-bible-v11.110.pdf`](CONTEXT-CONTENT-design-bible-v11.110.pdf) | Typeset **snapshot** at v11.110 — the port, the bestiary and the harness. Cut a new one with `./docs/build-pdf.sh 11.110` (the script adds the `v`). | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.111, working |
+| [`CONTEXT-CONTENT-design-bible-v11.111.pdf`](CONTEXT-CONTENT-design-bible-v11.111.pdf) | Typeset **snapshot** at v11.111 — the port, the bestiary and the harness. Cut a new one with `./docs/build-pdf.sh 11.111` (the script adds the `v`). | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
-| [`type-chart.pdf`](type-chart.pdf) | **The chart on one sheet.** All 83 relations under our fifteen names, every type's one-clause test, the six process states and the items that undo them. Cut from `type-chart.html`. | current |
+| [`type-chart.pdf`](type-chart.pdf) | **The chart on one sheet.** All 83 relations under our fifteen names, every type's one-clause test, and why each colour. Cut from `type-chart.html` with `./docs/build-pdf.sh type-chart.html`. | current |
+| [`items.pdf`](items.pdf) | **The Bag.** Every state with its three-letter code and tile colour, the operations that end one, the box ladder, the four inputs, the key items — and the argument for each word. **Generated** from the game's own item table by `tools/gbaitems.py`, so it cannot drift from the build. | current |
 | [`CHANGELOG.md`](CHANGELOG.md) | Version-by-version record of what moved and why. | current |
 | [`two-repo-pattern.md`](two-repo-pattern.md) | Why this is two repos joined by a symlink — tradeoffs, alternatives, the gotchas we hit, and how to apply it elsewhere. | current |
 | [`lineage.md`](lineage.md) | **How the theory evolved, 2011 → 2026.** A full reading of all three blogs — Neural Crossroads (2011–12), PsychologyCode (2013–14), Seeing Sharp (2021–26) — against the design bible. What the game inherits, what it has gone past, where it diverges from the iASHC rock opera, and an article-by-article map of all three sites onto the modern concept. | current |

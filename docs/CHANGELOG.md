@@ -5,6 +5,47 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.111 — 2026-09-09
+
+### `docs/items.html` — *The Bag*, and a document that cannot drift
+
+- **A new sheet, generated rather than written.** `tools/gbaitems.py` **diffs our
+  `items.json` against upstream's**, exactly as `port_names.py` does, so the rename list is
+  *derived* — **36 items** — and a name invented in the tool cannot exist. **The shipped
+  description is quoted out of the same json**, and the three-letter codes are read back out
+  of `strings.c` and **asserted** against the page's own table.
+- **What it holds:** the eight states with their codes and tile colours, the ten operations
+  that end one, the box ladder, the four inputs, the key items, the name budget — and
+  **the argument for each word**, which is the one part that is not derivable and lives in
+  the tool keyed by `itemId`. *An item renamed without an entry is reported, not rendered
+  blank.*
+- **`build-pdf.sh` grew an html branch.** `./docs/build-pdf.sh items.html` prints a styled
+  page as-is, no pandoc — which is how `type-chart.pdf` was always cut, and it was not
+  written down.
+
+### The type chart stopped carrying two tables it kept getting wrong
+
+- ***It still said `CSC`, `HOT` and `INTERRUPT`*** long after the build shipped **`CAS`,
+  `OVR` and `PREEMPT`** — a second copy of data that changes, maintained by hand.
+  **Both sections now point at *The Bag*.**
+- **What stayed is the one thing that is genuinely about the chart**: OVERHEATED is dealt by
+  ENTROPY, whose clause is *noise and heat*; and **FROZEN could not be reused for the frozen
+  state because it is a type name** — the constraint that produced `HUNG`.
+
+### The STREAM, written down in the two places it was missing
+
+- **9.16 gained a schedule** — every show, shipped and queued, each with its gate. *Seven
+  vanilla-derived, nine ours, seven more written down for later*: the INDEX (4.2's complaint
+  said as a tutorial), what a CHECKPOINT costs, the four inputs, MP, held items, **why a
+  traded daemon disobeys** (obedience is keyed to the MARKS you hold, which is 5's argument
+  arriving as a mechanic), and what the REPO is for. ***The gates are the discipline*** — a
+  show offered before the thing it explains is a show about nothing.
+- **The harness was told.** `game.txt` gained the item row and a paragraph: the STREAM is a
+  menu of lessons, *the list grows one show per MARK*, and the early ones cover things the
+  prompt does not.
+
+---
+
 ## v11.110 — 2026-09-09
 
 ### The STREAM — 9.16, and what a lesson actually costs

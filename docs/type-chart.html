@@ -1,4 +1,4 @@
-<title>The Chart and the States</title>
+<title>The Chart</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <style>
 :root{
@@ -117,7 +117,7 @@ footer{border-top:1px solid var(--rule-hard);padding-top:18px;font-size:12.5px;c
 }
 </style><div class="wrap">
 <header>
-  <p class="eyebrow">CONTEXT / CONTENT · design bible v11.107 · §2</p>
+  <p class="eyebrow">CONTEXT / CONTENT · design bible v11.111 · §2</p>
   <h1>The Chart and the States</h1>
   <p class="lede">All 83 relations under our fifteen names, what each one teaches, and how the
   argument survives a daemon that is two things at once. Plus the six process states a daemon
@@ -215,58 +215,16 @@ footer{border-top:1px solid var(--rule-hard);padding-top:18px;font-size:12.5px;c
 </section>
 
 <section>
-  <div class="sec-head"><h2>The six states</h2></div>
-  <p>Vanilla leaves a creature poisoned, asleep, paralysed, burned, frozen or confused.
-  Every one of those is a <em>bodily</em> metaphor, and this game does not have bodies —
-  it has processes. <mark>Each state below is the ordinary computing word for what actually
-  happens</mark>, which means the mechanic explains itself the first time a player reads it.</p>
-  <p><code>HALTED</code> is already shipped for fainting (§1.4), and it sets the register the
-  rest follow: a state is something a process is <em>in</em>, and something it can be got out of.</p>
-  <table class="tbl">
-    <thead><tr><th>Vanilla</th><th>Proposed</th><th>Why it is the exact word</th></tr></thead>
-    <tbody>
-      <tr><td class="was">POISON · PSN</td><td class="now">LEAKING<small>LEK</small></td><td>A memory leak degrades a running process a little at a time until it dies, which is what poison damage <em>is</em>. Nothing else in computing loses you a fixed slice per tick.</td></tr>
-      <tr><td class="was">TOXIC · TOX</td><td class="now">CASCADING<small>CSC</small></td><td>Badly poisoned worsens each turn. A cascading failure is precisely a fault whose rate increases because of the damage it already did.</td></tr>
-      <tr><td class="was">SLEEP · SLP</td><td class="now">SUSPENDED<small>SUS</small></td><td>A suspended process is not gone, not scheduled, and <em>resumes</em>. It is the one status that is genuinely temporary and the word already says so.</td></tr>
-      <tr><td class="was">PARALYSIS · PAR</td><td class="now">THROTTLED<small>THR</small></td><td>Paralysis does two things: cuts speed and sometimes skips a turn. Throttling is a speed cap that intermittently stalls work. Both halves, one word.</td></tr>
-      <tr><td class="was">BURN · BRN</td><td class="now">OVERHEATED<small>HOT</small></td><td>Chip damage plus reduced output is thermal throttling as anyone who has held a laptop understands it — and it is dealt by ENTROPY, whose clause is <em>noise and heat</em>.</td></tr>
-      <tr><td class="was">FREEZE · FRZ</td><td class="now">HUNG<small>HNG</small></td><td>A hung process does nothing at all until something intervenes. <strong>FROZEN could not be reused</strong> — it is a type name, and §2.6 just spent effort making type names carry meaning.</td></tr>
-      <tr><td class="was">CONFUSION</td><td class="now">THRASHING</td><td>Thrashing is a system so busy managing itself it makes no progress and damages its own throughput. Hurting yourself in confusion is the same event. Volatile, so it needs no three-letter code.</td></tr>
-      <tr><td class="was">FAINT</td><td class="now">HALTED<small>shipped</small></td><td>Already in the build (§1.4).</td></tr>
-    </tbody>
-  </table>
-  <p class="note">One collision checked and cleared: <code>LEAKING</code> sits near
-  <code>FLOW</code>, but a leak is a fault and a flow is a gradient — different registers, and
-  no type is named for either fault. <code>HUNG</code>, <code>THROTTLED</code>,
-  <code>OVERHEATED</code>, <code>THRASHING</code> and <code>CASCADING</code> collide with
-  nothing in the fifteen.</p>
-</section>
-
-<section>
-  <div class="sec-head"><h2>The items that undo them</h2></div>
-  <p>Vanilla's cures are sprays and medicines. Ours are the operations you would actually
-  perform, and the budget is <code>ITEM_NAME_LENGTH 14</code> — every name below fits with
-  room to spare.</p>
-  <table class="tbl">
-    <thead><tr><th>Vanilla</th><th>Proposed</th><th>What it says</th></tr></thead>
-    <tbody>
-      <tr><td class="was">ANTIDOTE</td><td class="now">PATCH</td><td>You patch a leak and you patch software. <strong>The pun is the definition</strong> — it needs no beat of confusion, which is the test §1.4 set for CACHE.</td></tr>
-      <tr><td class="was">AWAKENING</td><td class="now">RESUME</td><td>The exact inverse of SUSPENDED, and the same word an operating system uses.</td></tr>
-      <tr><td class="was">PARLYZ HEAL</td><td class="now">PRIORITY</td><td>What lifts throttling is not medicine, it is being scheduled ahead of the thing starving you.</td></tr>
-      <tr><td class="was">BURN HEAL</td><td class="now">COOLANT</td><td>Plain, physical, and the only one of the seven that a player needs no domain knowledge for.</td></tr>
-      <tr><td class="was">ICE HEAL</td><td class="now">INTERRUPT</td><td>An interrupt is the one thing that reaches a hung process. Recovers the vanilla joke that ICE HEAL is a thaw, without the ice.</td></tr>
-      <tr><td class="was">FULL HEAL</td><td class="now">ROLLBACK</td><td>Clears every state at once by returning to a known-good one. Says <em>all of it</em> without listing anything.</td></tr>
-      <tr><td class="was">FULL RESTORE</td><td class="now">SNAPSHOT</td><td>Health and state together, because a snapshot restores both. The one item that is a noun for a thing you saved earlier.</td></tr>
-      <tr><td class="was">REVIVE</td><td class="now">RESTART</td><td>The word for bringing back a halted process, and it lands on HALTED without explaining itself.</td></tr>
-      <tr><td class="was">MAX REVIVE</td><td class="now">REBOOT</td><td>Strictly bigger than a restart, which is exactly the relationship the two items have. <strong>The ladder is free.</strong></td></tr>
-      <tr><td class="was">HEAL POWDER</td><td class="now">HOTFIX</td><td>Bitter, cheap, works now, nobody is proud of it.</td></tr>
-    </tbody>
-  </table>
-  <p class="note"><span class="open">OPEN</span> None of this is decided. The set holds
-  together as a vocabulary — <em>patch, resume, priority, rollback, snapshot, restart,
-  reboot</em> are all things one does to a running process, and none of them is medicine —
-  but §1's standard is that a term must work twice, and <code>PRIORITY</code> is the weakest
-  of the ten on that test.</p>
+  <div class="sec-head"><h2>The states and the items</h2></div>
+  <p>These used to be printed here, and they drifted &mdash; this page still said
+  <code>CSC</code>, <code>HOT</code> and <code>INTERRUPT</code> long after the build had
+  shipped <code>CAS</code>, <code>OVR</code> and <code>PREEMPT</code>. <mark>They now live in
+  <a href="items.html">The Bag</a></mark>, which is generated from
+  <code>engineGba/src/data/items.json</code> and cannot drift from it.</p>
+  <p>What belongs here is only the one relation that ties them to the chart:
+  <strong>OVERHEATED is dealt by ENTROPY</strong>, whose one-clause test is <em>noise and
+  heat</em>, and <strong>FROZEN could not be reused for the frozen state</strong> because it
+  is a type name &mdash; which is the constraint that produced <code>HUNG</code>.</p>
 </section>
 
 <section>

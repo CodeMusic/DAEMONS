@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.110**
+**A total conversion — the living design bible, v11.111**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5459,6 +5459,30 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 #### The unread marker, and where it stops
 
 **Nine vanilla flags, `0x4A7`–`0x4AF`, are declared and referenced nowhere.** *Nine is exactly what this needed:* **one per talk show.** The flag is set the moment a show is chosen, **so the host's greeting reports only the *other* shows still unseen** — pick the new one and he says nothing; pick an old one while a new one waits and he says *"The TUTOR has a NEW SHOW for you today, and it is on the list!"*
+
+#### The schedule — what is on, and what is written down for later
+
+***A list, kept here, because a lesson is now cheap enough that the limit is knowing what to say.*** **Shipped is in the ROM; the rest is a queue, and each row carries its own gate.**
+
+| show | gate | teaches |
+|---|---|---|
+| **Teach me how to battle.** | always | *shipped, vanilla, ported* |
+| **What is a status problem?** | always | *shipped, vanilla, ported* |
+| **How do I read a matchup?** | always | *shipped, vanilla, ported* |
+| **I want to bind DAEMONS.** | always | *shipped, vanilla, ported* |
+| **Where do my daemons go?** | always | **shipped, ours** — bind with a BOX, the BOX hosts |
+| **Teach me about TMs.** | TM CASE | *shipped, vanilla, ported* |
+| **How do I register an item?** | TM CASE | *shipped, vanilla, ported* |
+| **About the SLATE MARK.** … **TRUE** | that MARK | **shipped, ours** — eight, one per certification |
+| *What is the INDEX for?* | the INDEX | **4.2's complaint, said as a tutorial** — an entry is what somebody wrote down, and a daemon is not its entry |
+| *What does a CHECKPOINT cost?* | first CHECKPOINT | healing is free and *time* is not; the walk back is the price |
+| *What are the four inputs?* | holding an AXIOM | AXIOM, EMBEDDING, AFFECT, REWARD — and that a daemon *compiles to* something new |
+| *What is MP?* | first TM | a ROUTINE has a budget, and the budget is the plan |
+| *What is a held item?* | first held item | the one slot a daemon carries into a fight without being told |
+| *Why did it not obey?* | first traded daemon | **obedience is keyed to the MARKS you hold**, which is 5's argument arriving as a mechanic |
+| *What is the REPO for?* | first purchase | *a repository is where you fetch from and push to* — and the shop does both |
+
+***The gates are the discipline, not the content.*** **A show offered before the thing it explains is a show about nothing**, and every row above is unlocked by the player already holding the thing.
 
 ***What this does not do is reach the player in the overworld.*** **That wants a map object with a script**, and the description line carries the rule instead — *a show per MARK*, read in the bag, where a key item is looked at anyway. <span>OPEN</span>.
 
