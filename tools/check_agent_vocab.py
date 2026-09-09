@@ -52,6 +52,16 @@ BANNED = [
     (r"\bVERMILION\b",    "ARDOR"),
     (r"DAEMON MART",      "THE REPO"),
     (r"DAEMON CENTER",    "CHECKPOINT"),
+    #  1.6's six states. The bridge was handing the model the RAM's vanilla
+    #  word while the screen said LEAKING, and this checker did not look --
+    #  it knew about places and people and not about what a daemon IS.
+    #  Lowercase too: the leak that got noticed was the agent thinking
+    #  "Poison is ticking down", which no SCREAMING_SNAKE pattern would find.
+    (r"(?i)\bpoison(ed|ing)?\b",   "LEAKING (or CASCADING if badly)"),
+    (r"(?i)\bparaly[sz]ed?\b",     "THROTTLED"),
+    (r"(?i)\bfaint(ed|ing|s)?\b",  "HALTED"),
+    (r"(?i)\bconfus(ed|ion)\b",    "THRASHING"),
+    (r"(?i)\bburned\b",            "OVERHEATED"),
 ]
 
 #  The orientation table in game.txt QUOTES the vanilla names in order to
@@ -65,11 +75,27 @@ BANNED = [
 #  replacement a short distance later, with a pipe between them.
 EXEMPT = re.compile(r"\|[^|]{0,40}\*\*[A-Z]")
 
+#  Words that are also ordinary English. "navigation confusion" is not a status
+#  condition and "the poison type" in a sentence about the chart is not either.
+#  A checker that cries about these gets muted, and a muted checker finds
+#  nothing at all -- which is worse than the leak it was built for.
+INNOCENT = re.compile(
+    r"(?i)(navigation|avoid\w*|any|the)\s+confusion"
+    r"|confusion\s+(later|about|between)"
+)
+
 def scan(label, text):
     found = []
     for pat, want in BANNED:
         for m in re.finditer(pat, text):
             if EXEMPT.search(text[m.end():m.end() + 60]):
+                continue
+            #  Also exempt where the row's own explanation repeats the word it
+            #  is forbidding: "| Poisoned | **LEAKING** -- and badly poisoned
+            #  is **CASCADING** |" is one table row, not two offences.
+            if EXEMPT.search(text[max(0, m.start() - 90):m.start()]):
+                continue
+            if INNOCENT.search(text[max(0, m.start() - 20):m.end() + 20]):
                 continue
             a, b = max(0, m.start() - 45), min(len(text), m.end() + 45)
             found.append((label, m.group(0), want,
