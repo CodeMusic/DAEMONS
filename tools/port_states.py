@@ -179,16 +179,43 @@ LEFTOVERS = re.compile(
 #  start of a line is invisible to a pattern looking for it. That has hidden
 #  substitutions in three tools in this project already, so these patterns are
 #  matched against a FLATTENED copy and applied by offset.
-PASS2_FILES = [
-    "src/move_descriptions.c",
-    "src/data/text/teachy_tv.h",
-    "data/text/help_system.inc",
+#  This was a list of THREE FILES and it should never have been. The battle
+#  messages were clean, so the tool reported clean, and 107 state strings sat
+#  untouched in map dialogue, item descriptions and strings.c -- including
+#  "was cured of paralysis", which is what the agent read aloud on the
+#  dashboard. A sweep that only sweeps where you already looked is a report,
+#  not a sweep.
+PASS2_DIRS = ["src", "data"]
+PASS2_EXT  = (".c", ".inc")
+PASS2_ALSO = ["src/data/text/teachy_tv.h", "src/data/text/abilities.h"]
+#  Owned by other passes, or not English: move names are the ROUTINES pass,
+#  pokedex entries are species classifications, easy chat is a word list.
+PASS2_SKIP = ("move_names.h", "pokedex_entries.h", "easy_chat", "species_info",
+              "pokedex_text_", "/build/", "battle_message.c")
+
+#  A word is not always a state. These literals are checked FIRST and put back
+#  untouched -- idiom, flavour, and the two trainer defeat lines that are jokes.
+EXEMPT = [
+    "Crash and burn!", "Burned out!", "Burned again!", "That burned some time.",
+    "I need to burn some time.", "That burns me up, man. I'll take it",
+    "These islands are confusing", "cause confusion in our ranks",
+    "burned-out", "burned-down", "burned down", "burning ambition",
+    "burned out building", "burned out", "burn some time", "burns me up",
+    "DAEMONS are sleeping", "said to sleep", "eats and sleeps",
+    "DAEMON sleep like this one", "when…sleeping…warm",
+    "Faintly", "faintly", "POISON BARB", "POISON STING", "POISONPOWDER",
+    "SLEEP POWDER", "SLEEP TALK", "POISON GAS", "POISON FANG", "POISON TAIL",
+    "POISON POWDER", "FAINT ATTACK", "BLAST BURN", "POISON POINT",
 ]
 
 ITEM_WORDS = [
     ("FULL RESTORE", "SNAPSHOT"), ("FULL HEAL", "ROLLBACK"),
     ("PARLYZ HEAL", "PRIORITY"),  ("BURN HEAL", "COOLANT"),
-    ("ICE HEAL", "INTERRUPT"),    ("HEAL POWDER", "HOTFIX"),
+    ("ICE HEAL", "PREEMPT"),      ("HEAL POWDER", "HOTFIX"),
+    #  The flute took INTERRUPT on 2026-08-29 and the item table was
+    #  renamed; eight dialogue strings still said POKé FLUTE, because an
+    #  accented prefix has no word boundary in front of it.
+    ("POKé FLUTE", "INTERRUPT"), ("POK\u00e9 FLUTE", "INTERRUPT"),
     ("MAX REVIVE", "REBOOT"),     ("ANTIDOTES", "PATCHES"),
     ("ANTIDOTE", "PATCH"),        ("AWAKENINGS", "RESUMES"),
     ("AWAKENING", "RESUME"),      ("REVIVES", "RESTARTS"),
@@ -207,6 +234,15 @@ STATE_WORDS = [
     ("poisoning", "leaking"),  ("Poisoning", "Leaking"),
     ("poisoned", "leaking"),   ("Poisoned", "Leaking"),
     ("paralyzed", "throttled"),("Paralyzed", "Throttled"),
+    #  British spellings. "Paralysed, it is slower" sat in OUR OWN writing at
+    #  the Callow school for a month because the table only had the z.
+    ("paralysed", "throttled"),("Paralysed", "Throttled"),
+    ("Paralyzing", "Throttling"),("paralyzing", "throttling"),
+    ("Paralysing", "Throttling"),("paralysing", "throttling"),
+    #  The move descriptions are four lines of about eighteen characters, so
+    #  the verb has to stay a verb -- "may leave it THRASHING" does not fit.
+    ("confuses", "thrashes"),  ("Confuses", "Thrashes"),
+    ("confuse", "thrash"),     ("Confuse", "Thrash"),
     ("paralysis", "throttling"),("Paralysis", "Throttling"),
     ("paralyze", "throttle"),  ("Paralyze", "Throttle"),
     ("asleep", "suspended"),   ("Asleep", "Suspended"),
@@ -233,6 +269,34 @@ STATE_WORDS = [
 OVERRIDES = [
     ("weaken it with throttling or suspension", "throttle it or suspend it"),
     ("Overheating: HP loss and lowers ATTACK.", "Overheating: HP loss, less ATTACK."),
+
+    #  Bare "poison", "sleep" and "burn" stay out of STATE_WORDS because they
+    #  are as often the TYPE or the ordinary verb. Where the sentence settles
+    #  it, it is settled here -- and where the replacement is longer than the
+    #  box, the line is REWRITTEN rather than truncated. Every one below was
+    #  measured with port_vocab.textwidth against the 196px message box.
+    (r"was cured of\nparalysis.", r"is no longer\nthrottled."),
+    (r"'s burn was healed.", r" is no longer\noverheated."),
+    (r"The INTERRUPT awakened sleeping\nDAEMON.",
+     r"The INTERRUPT resumed a\nsuspended DAEMON."),
+    ("Poison: Causes steady HP loss.", "LEAKING: steady HP loss."),
+
+    #  ViridianCity_School is OUR writing and it still used the body words.
+    ("Burned, it hits softer and loses HP", "Overheated, it hits softer and"),
+    ("each turn.", "loses HP each turn."),
+
+    #  Lurid gym, two literals of one sentence.
+    ("Poison brings steady doom. Sleep", "LEAKING brings steady doom."),
+    ("renders foe helpless.", "SUSPENSION renders it helpless."),
+    ("I like poison and sleep techniques,", "I like leaks and suspensions,"),
+
+    #  The help system's own list of the states.
+    ("foe's attack. These include burns,", "foe's attack. These include"),
+    ("freezing. These can be healed by", "overheating and hanging. Heal"),
+    ("visiting a CHECKPOINT or using the", "them at a CHECKPOINT or with the"),
+
+    ("A big DAEMON is asleep on a road!", "A DAEMON is SUSPENDED\\non the road!"),
+    ("Upon hearing INTERRUPT, sleeping", "Upon hearing INTERRUPT, suspended"),
 ]
 
 
@@ -240,23 +304,75 @@ def flatten(t):
     """Escapes become two spaces so \\b works and every offset is preserved."""
     return re.sub(r"\\[a-zA-Z]", "  ", t)
 
+def pass2_files():
+    out = []
+    for d in PASS2_DIRS:
+        for root, dirs, files in os.walk(os.path.join(GBA, d)):
+            for f in files:
+                p = os.path.join(root, f)
+                if not p.endswith(PASS2_EXT):
+                    continue
+                if any(k in p for k in PASS2_SKIP):
+                    continue
+                out.append(os.path.relpath(p, GBA))
+    out += [r for r in PASS2_ALSO if os.path.isfile(os.path.join(GBA, r))]
+    return sorted(set(out))
+
+
 def pass2(report):
     total = 0
-    for rel in PASS2_FILES:
+    for rel in pass2_files():
         f = os.path.join(GBA, rel)
         if not os.path.isfile(f):
             print("  %-30s missing" % rel); continue
         t = load(f); n = 0
-        for old, new in ITEM_WORDS + TYPE_WORDS + STATE_WORDS:
-            pat = re.compile(r"\b%s\b" % re.escape(old))
-            flat = flatten(t)
-            spans = [m.span() for m in pat.finditer(flat)]
-            for a, b in reversed(spans):
-                t = t[:a] + new + t[b:]
-                n += 1
-        for old, new in OVERRIDES:
-            if old in t:
-                t = t.replace(old, new); n += 1
+        #  ONLY inside player-visible literals. The first widening of this
+        #  sweep ran over whole files and lit up battle_util.c, pokemon.c and
+        #  event_object_movement.c -- which is STATUS1_PARALYSIS and comments,
+        #  not text. Renaming a symbol because it contains a state word is how
+        #  a vocabulary pass breaks a build.
+        LIT = re.compile(r'\.string\s+"((?:[^"\\]|\\.)*)"' if rel.endswith(".inc")
+                         else r'_\("((?:[^"\\]|\\.)*)"')
+        pieces, last, keep = [], 0, []
+        for m in LIT.finditer(t):
+            pieces.append(t[last:m.start(1)]); keep.append(m.group(1)); last = m.end(1)
+        pieces.append(t[last:])
+        if not keep:
+            continue
+        body = "\x02".join(keep)
+        holds = []
+        for i, lit in enumerate(EXEMPT):
+            if lit in body:
+                key = "\x01EX%03d\x01" % i
+                body = body.replace(lit, key); holds.append((key, lit))
+        t = body
+        def words(table):
+            nonlocal t, n
+            for o, w in table:
+                pat = re.compile(r"\b%s\b" % re.escape(o))
+                flat = flatten(t)
+                for a, b in reversed([m.span() for m in pat.finditer(flat)]):
+                    t = t[:a] + w + t[b:]; n += 1
+
+        #  ORDER IS THE WHOLE TRICK, and it has one more step than it looks.
+        #  Item and type words first, so an override can name the NEW word.
+        #  Then the overrides, which rewrite whole sentences -- they have to
+        #  run BEFORE the bare state words, or they are looking for a phrase
+        #  the word pass has already half-eaten. Four lines overflowed the
+        #  message box the first time this ran in the other order.
+        words(ITEM_WORDS)
+        words(TYPE_WORDS)
+        for o, w in OVERRIDES:
+            if o in t:
+                t = t.replace(o, w); n += 1
+        words(STATE_WORDS)
+        for key, lit in holds:
+            t = t.replace(key, lit)
+        #  stitch the literals back into the file they came from
+        parts = t.split("\x02")
+        if len(parts) != len(keep):
+            print("  !! %-28s literal count changed, skipped" % rel); continue
+        t = "".join(a + b for a, b in zip(pieces, parts)) + pieces[-1]
         if n:
             print("  %-30s %3d" % (rel, n))
             report.append((f, t))
