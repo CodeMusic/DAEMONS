@@ -19,6 +19,13 @@ WHAT IT CHECKS. Three surfaces, which together are everything:
     the developer prompt      prompts/game.txt, rendered
     the user prompt           the last one actually sent, from the run dir
     the name tables           mappings.json -- maps, NPCs, species, items, moves
+    the bridge's own tables   compared against the C they read, not word-scanned
+
+That fourth surface was added after POKEMON_TYPE_MAP shipped vanilla type names
+for weeks. Nothing here caught it, because GROUND and ROCK were never listed as
+banned WORDS -- they arrived as DATA, from a table nobody thought of as text.
+The lesson generalises: a word scan finds what you already knew to forbid, and
+a derived comparison finds what you did not.
 
 A JS identifier like `current_pokemon_data` is NOT a finding: it is a contract
 with the Python bridge and the model never sees it. Only rendered output counts,
@@ -28,6 +35,7 @@ import json, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AI   = os.path.join(ROOT, "engineAi")
+GBA  = os.path.join(ROOT, "engineGba")
 
 #  The lexicon, as what must never appear. Value is what it should have been,
 #  so a failure tells you the fix rather than just the fault.
@@ -110,8 +118,53 @@ def render_developer_prompt():
                          cwd=os.path.join(AI, "server"))
     return out.stdout
 
+def derived_table_check():
+    """Compare the BRIDGE's own lookup tables against the game they read.
+
+    This is the failure this tool did not have: POKEMON_TYPE_MAP shipped
+    vanilla type names for weeks, so the agent was handed a type chart in one
+    vocabulary and its own party's types in another and could not use its own
+    chart. Nothing in the forbidding table caught it, because GROUND and ROCK
+    were never listed as words -- they arrived as data.
+
+    So this does not scan for words. It reads gTypeNames out of the C and
+    compares, which cannot drift and cannot be argued with.
+    """
+    bad = []
+    c = os.path.join(GBA, "src", "battle_main.c")
+    a = os.path.join(AI, "firered_bridge", "constants", "addresses.py")
+    if not (os.path.exists(c) and os.path.exists(a)):
+        return bad
+    body = re.search(r"const u8 gTypeNames\[.*?\{(.*?)\n\};",
+                     open(c, encoding="utf-8").read(), re.S)
+    if not body:
+        return bad
+    ours = dict(re.findall(r'\[TYPE_(\w+)\]\s*=\s*_\("(\w+)"\)', body.group(1)))
+    src = open(a, encoding="utf-8").read()
+    tm = re.search(r"POKEMON_TYPE_MAP = \{(.*?)\n\}", src, re.S)
+    if tm:
+        VAN = ["NORMAL","FIGHTING","FLYING","POISON","GROUND","ROCK","BUG","GHOST",
+               "STEEL","MYSTERY","FIRE","WATER","GRASS","ELECTRIC","PSYCHIC","ICE",
+               "DRAGON","DARK"]
+        got = dict((int(k), v) for k, v in re.findall(r'(\d+)\s*:\s*"([^"]+)"', tm.group(1)))
+        for i, v in enumerate(VAN):
+            want = ours.get(v)
+            if want and got.get(i) != want:
+                bad.append(("bridge POKEMON_TYPE_MAP", got.get(i, "?"), want,
+                            "type %d -- the agent is told this is what it is holding" % i))
+    bt = re.search(r"BADGES = \[(.*?)\n\]", src, re.S)
+    if bt:
+        MARKS = ["SLATE","SLOPE","SENSE","FIT","SKEW","FRAME","HEAT","TRUE"]
+        got = [m[0] for m in re.findall(r'\(\s*"([^"]+)"\s*,\s*"([^"]*)"', bt.group(1))]
+        for i, want in enumerate(MARKS):
+            if i < len(got) and got[i] != want:
+                bad.append(("bridge BADGES", got[i], want, "benchmark %d, per 5.2" % (i + 1)))
+    return bad
+
+
 def main():
     hits = []
+    hits += derived_table_check()
     hits += scan("developer prompt", render_developer_prompt())
 
     #  The last prompt actually sent -- from the LIVE run dir, which is plain
