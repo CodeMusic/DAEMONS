@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.108, working |
-| [`CONTEXT-CONTENT-design-bible-v11.108.pdf`](CONTEXT-CONTENT-design-bible-v11.108.pdf) | Typeset **snapshot** at v11.108 — the port, the bestiary and the harness. Cut a new one with `./docs/build-pdf.sh 11.108` (the script adds the `v`). | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.109, working |
+| [`CONTEXT-CONTENT-design-bible-v11.109.pdf`](CONTEXT-CONTENT-design-bible-v11.109.pdf) | Typeset **snapshot** at v11.109 — the port, the bestiary and the harness. Cut a new one with `./docs/build-pdf.sh 11.109` (the script adds the `v`). | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
 | [`type-chart.pdf`](type-chart.pdf) | **The chart on one sheet.** All 83 relations under our fifteen names, every type's one-clause test, the six process states and the items that undo them. Cut from `type-chart.html`. | current |

@@ -5,6 +5,83 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.109 — 2026-09-09
+
+### The badges got their colour, the states got a tile, and the museum got a name
+
+- **9.15 is new.** `graphics/interface/pokemon_types.pal` had been vanilla since the port —
+  the Index drew `CONTNT` on Normal's tan and `VECTOR` on Flying's pale cyan, so **9.4's
+  colours had never once reached the screen where the player reads a type as a word.**
+  The sheet has **thirteen usable entries for eighteen types**, so the badges were
+  *re-indexed* rather than recoloured, and **five rare types borrow a slot from a common one
+  — chosen so that no daemon in the game has both.** Magnemite, Articuno, Kingdra, Jynx and
+  Paras were each checked by hand.
+- **9.4's dark-step rule is narrowed, not reversed.** It measured white text on the base
+  hues and found eleven of fifteen fail. **The badge glyph is white text *with a generated
+  shadow*** (9.12), which measures 5.5:1 on the worst plate — *and thirteen dark steps are
+  not thirteen distinguishable colours.* The rule stands everywhere the glyph has no shadow.
+- **The six states have a tile.** `status_icons.png` still said PSN, PAR, SLP, FRZ, BRN;
+  it now says **LEK THR SUS OVR HNG**, plus **HLT** for fainting, each on a colour that
+  keeps vanilla's hue anchor and moves into 9.4's register. **Six letters had to be drawn**
+  — the sheet's own face had no `E H U G O V`.
+- **PKRS moved off LEAKING's palette slot.** It shared PSN's in vanilla, so it would have
+  inherited the leak colour — *a beneficial condition wearing the leak colour is a lie the
+  tile tells for free.* Its **name** is still vanilla and is now logged Open.
+- **`gText_Toxic` holds `CAS`.** Vanilla's own unreferenced string was the one place a
+  CASCADING code could go without adding a symbol to a build whose compiler reports failure
+  as a warning and then a bare `Error 1`.
+
+### The Cognitive Clarifier, written down
+
+- **4.18a is new**, at the request of the person who built one. 4.18 leans on *"many frames
+  polled and resolved"* for a whole crime and never unpacks it. **Two threads — reason and
+  feeling, the second weighted by the system's own affective state — resolved by a short
+  perspective pass that knows who it is for; then reception produces a BELIEF, which is
+  stored, can be read, can be challenged, and is fed back in.**
+- **The token budget is lopsided on purpose**: the threads are allowed to be long, the
+  resolution is deliberately short. *Concision is a courtesy, not a compression.*
+- **It makes Scorn's crime worse.** He touched neither thread — **he weighted the one stage
+  whose only job is to hold two things in tension**, so the machine kept generating the
+  contradiction and stopped being able to resolve it honestly. **"IMPROVE RESPONSE
+  CONSISTENCY" is exactly true**, and the sleep explains itself: *a clarifier whose beliefs
+  all confirm each other has no reception signal left to learn from.*
+
+### The ERRATA — 4.32, and the proposal that needed one turn
+
+- **`SLATE MUSEUM OF RECORD` → `SLATE MUSEUM OF ERRATA`.** *An erratum is a published list of
+  what an edition got wrong* — **a museum of dead hardware, a legacy mind, and the thesis, in
+  one word nobody has to explain.** One word on one sign.
+- **The museum was not emptied, because three exhibits were already teaching distortions and
+  nobody had noticed** — *"most of what was built is gone"*, *"I do not see how"*, *"we all
+  saw the same picture at the same moment."* **So the change is labels, not contents**, and
+  the OLD CORE handoff is untouched.
+- **The upstairs exhibit is named for the first time: `KNOWN FAULTS`.** Cards take a fixed
+  shape — **object, provenance, `KNOWN FAULT:` and the error described as an engineering
+  failure.** *The fault is always the machine's and never the reader's*, which is craft rule
+  3 doing the work. **No distortion is ever named.**
+- **CC-7 is alluded to and not explained.** The exhibit scientist: *a researcher from
+  Blanche wrote the cards, and she is collecting them — "into a module, she said. As though a
+  fault were a part."* **The player has carried a `CC-7` since minute fifteen.**
+
+### 1.6 amended, and 1.7 is new
+
+- **ICE HEAL is `PREEMPT`, not `INTERRUPT`.** *The word was assigned twice, six weeks apart*
+  — POKé FLUTE keeps it. **Preemption is the scheduler taking control back from a task that
+  will not yield**, which is HUNG exactly. **The narrower word was the more accurate one.**
+- **Item descriptions now teach the term and state the effect**, in that order, seven of them
+  rewritten. *The player who knows the word gets a nod; the player who does not gets a
+  definition and never notices being taught.*
+- **1.7 answers PORT / TERMINAL / SSH.** **TERMINAL is backwards** — a terminal is the client,
+  and a box is the far end. **`PC` → `PORT` is right and is logged Open**, because a
+  half-rename is the failure this project has already had twice. **SSH is declined** as the
+  first product initialism in the lexicon; *the idea it names is kept as prose.*
+- **Security vocabulary: yes, narrowly.** **AUTHORISED, SIGNED, COUNTERSIGNED, REVOKED, KEY**
+  are already the game's words and already on-thesis, because **4.18's crime is an
+  access-control story told in paperwork.** **EXPLOIT, PAYLOAD, INJECTION, BREACH are
+  declined** — *they would make Scorn a hacker, and the horror is that he filled out a form.*
+
+---
+
 ## v11.108 — 2026-09-08
 
 ### The IVs, and the move that reads them

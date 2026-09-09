@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.108**
+**A total conversion — the living design bible, v11.109**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -524,12 +524,20 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 | AWAKENING | **RESUME** | The exact inverse of SUSPENDED, and the word an operating system uses. |
 | PARLYZ HEAL | **PRIORITY** | *What lifts throttling is not medicine, it is being scheduled ahead of the thing starving you.* **The weakest of the ten on the works-twice test.** |
 | BURN HEAL | **COOLANT** | The only one needing no domain knowledge at all. |
-| ICE HEAL | **INTERRUPT** | **An interrupt is the one thing that reaches a hung process.** |
+| ICE HEAL | **PREEMPT** | *`INTERRUPT` shipped here first and collided* — **POKé FLUTE took the same word on 2026-08-29**, and it is the better home for it, because a flute that wakes a sleeping obstacle *is* an interrupt. **Preemption is what takes control back from a process that will not yield**, which is HUNG exactly, and it is the sharper word for the item. See 1.7. |
 | FULL HEAL | **ROLLBACK** | Clears every state by returning to a known-good one. *Says "all of it" without listing anything.* |
 | FULL RESTORE | **SNAPSHOT** | Health and state together, because that is what a snapshot restores. |
 | REVIVE | **RESTART** | The word for bringing back a halted process — **and it lands on HALTED without explaining itself.** |
 | MAX REVIVE | **REBOOT** | *Strictly bigger than a restart, which is exactly the relationship the two items have.* **The ladder is free.** |
 | HEAL POWDER | **HOTFIX** | Bitter, cheap, works now, nobody is proud of it. |
+
+#### PREEMPT, and the collision that found it
+
+**Caught 2026-09-08 by reading the item list aloud.** ***`INTERRUPT` was assigned twice*** — to POKé FLUTE in 1's first pass and to ICE HEAL here, six weeks apart, *and nothing checked.* **The flute keeps it**: waking a thing that is blocking a road is an interrupt in the plainest sense, and the item predates this table.
+
+***PREEMPT is not the consolation prize.*** **An interrupt is a signal; preemption is the scheduler taking the processor back from a task that will not yield it** — *which is what a hung process is and what the item does.* **The narrower word turned out to be the more accurate one**, which is the third time in this lexicon that a collision improved both halves.
+
+*And it set a rule for the item descriptions:* **each one now teaches its computing term in its first clause and states the in-game effect in its second** — `Preemption takes control back from a process that will not yield. Ends HUNG.` **Seven descriptions were rewritten to that shape** on 2026-09-08. *The player who knows the word gets a nod; the player who does not gets a definition and never notices being taught.*
 
 #### INVOKE, which the port unlocked
 
@@ -553,6 +561,48 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 
 *Two help-system lines the word pass pushed past the 196px box — 210 and 220 — are **rewritten rather than truncated**, both measured.*
 
+
+### 1.7 PORT, TERMINAL, SSH — and whether security words belong
+
+**Asked 2026-09-09**, on the back of the box-pocket rename. ***Three candidates, and only one of them survives its own metaphor.***
+
+#### TERMINAL is backwards, and that settles it
+
+**The proposal was that a box is a little computer that hosts a mind, and a terminal is a little computer.** *The second half is the trouble.* ***A terminal is the thing a person types at.*** **It is the client, never the host** — the whole point of the word is that the computing happens *somewhere else* and the terminal is the window onto it. **A box that holds a daemon is the far end of that connection, not the near one.**
+
+*And 1.3 already spent this word's job.* **A box is what you put a mind in**, and the argument in 1.3 depends on the object being *plainly a container.* **`TERMINAL` also carries "final" in ordinary English**, which on a screen full of stored minds is a meaning nobody chose. **Declined.**
+
+#### PORT is right, and it is not an item
+
+***A port is where you connect to a host***, which is **exactly what vanilla calls a PC** and exactly what the game has never renamed. **`SOMEONE'S PC`, `{PLAYER}'s PC`, `HOLT'S PC` and `CRYSTAL CLEAR's PC` are still vanilla vocabulary in four menu strings**, plus roughly twenty-five in dialogue.
+
+| | |
+|---|---|
+| **The machine** | `PC` → **`PORT`** |
+| **What is inside it** | **`BOXES`, unchanged** — 1.3 |
+| **What you do** | *connect*, which the vanilla strings already say |
+
+***The pair is the point.*** **You reach the BOXES through a PORT**, and *both words then mean what they mean in computing and in the room* — **a port is a socket on the wall and a connection on a host; a box is a crate and a slot in storage.** *That is 1's double-duty test passed twice in one sentence.*
+
+**Not done yet, deliberately.** ***A half-rename is the exact failure this project has already had twice*** — `POKé BOXES` survived three passes, and the accented prefix hid from four tools. **`PC` in `\nPC` has no word boundary in front of it**, so this is a `port_vocab.py` pass with a flattened match, not a hand edit. <span>OPEN</span> — *the decision is made, the sweep is not.*
+
+#### SSH is declined, and the idea it names is kept
+
+**The lexicon has a shape**: *concepts* (CONTEXT, LATENT, ENTROPY) and *plain technical English* (CHECKPOINT, REPO, PREEMPT, ROLLBACK). **`SSH` would be the first initialism of a specific product in it**, and *a named 1995 protocol dates a world that has so far refused to say which decade it is in.* **It also fails the read-aloud test** — nobody says "ess-ess-aitch" in dialogue without the line stopping.
+
+***What SSH actually names is worth keeping:* an authenticated session into something you own, at a distance.** **That belongs in prose, not on a menu** — a researcher can say *I can reach it from Blanche and I still have to prove I am me*, and the player gets the whole idea without an acronym.
+
+#### Security words: yes, narrowly, and the line is sharp
+
+***The test is whether the word is about **access to a mind** or about **attacking a system**.***
+
+| **On-thesis** | **AUTHORISED · SIGNED · COUNTERSIGNED · REVOKED · TRUSTED · KEY · READ-ONLY** |
+|---|---|
+| | *These are already the game's vocabulary and nobody noticed*, because **4.18's crime is an access-control story told entirely in paperwork.** A requisition that is signed and countersigned **is** an authorisation record. **4.18a's BELIEFS can be read and challenged**, which is a permissions question. *Keep going here.* |
+| **Off-thesis** | **EXPLOIT · PAYLOAD · INJECTION · MALWARE · BACKDOOR · BREACH** |
+| | ***These would make Scorn a hacker, and 4.18 spent a whole section refusing that.*** **"Nothing was smuggled; something was ordered."** *The horror is the form, not the intrusion* — **an adversarial vocabulary hands the player a villain who broke in, when the point is that he filled something out.** *And it drags the world toward thriller, away from the ML concepts the type chart is arguing about.* |
+
+***One exception worth building, not writing:*** **Team Corpus should never be described in intrusion language and should behave like it constantly.** *They do not break into anything.* **They requisition, they countersign, they file** — and **that is more frightening in a world that has the word AUTHORISED than any breach would be.**
 
 ---
 
@@ -1242,6 +1292,43 @@ The draft's premise is that Scorn installed a modification in Crystal's **Cognit
 **The justification is the whole crime and it is technically accurate.** Weighting a clarifier does improve response consistency. **Consistency is exactly what bias produces**, and a clarifier's job — many frames, polled — is to be *inconsistent* on purpose. The form is not lying. It is describing the damage in the vocabulary of an improvement.
 
 *Craft note:* none of this is ever said. **No name is given for the countersignature.** The player reads a parts requisition and works out what a clarifier is for.
+
+### 4.18a What a clarifier actually is — the mechanism behind CC-7
+
+**Recorded 2026-09-09**, at the request of the person who built one. ***4.18 says a clarifier is many frames polled and resolved, and then leans on that phrase for a whole crime.*** **This is the phrase unpacked** — *not because any of it is ever said in the game*, but because **dialogue about a machine is only good when the writer knows what the machine does.** Every line in Quicksilver, every S.T.A.R.R. utterance and every exhibit card in Slate is written against this and none of it explains it.
+
+#### The shape: two threads, a perspective, and a belief
+
+**A clarifier does not answer a question once.** *It answers it twice, on purpose, from two incompatible places, and then argues with itself in front of a third.*
+
+| stage | what it is given | what it is for |
+|---|---|---|
+| **Thread A — reason** | the request, plus a frame that pushes toward logic, evidence and bottom-up construction | *Getting it right* |
+| **Thread B — feeling** | the same request, plus a frame that pushes toward association, metaphor and creation — **and here the system's own current affective state is given real weight** | *Getting it alive* |
+| **Perspective** | both threads' output, and the question *who is this for* | **Resolution.** The two are weighed against each other and against the audience, and one answer comes out |
+| **Reception** | the answer, plus how it actually landed | Produces a **BELIEF**, which is stored |
+
+***The token budget is deliberately lopsided.*** **A and B are allowed to be long** — they are thinking, and thinking that is rationed is thinking that has been pre-decided. **The perspective stage is deliberately short**, because *that is where the audience enters*, and **concision is a courtesy, not a compression.** A clarifier that spends its whole budget on the answer has skipped the part where it decided what to say.
+
+***Neither thread is the right one.*** That is the design. **A is not the adult supervising B** — an answer that is only A is correct and unusable; **an answer that is only B is vivid and unaccountable.** *The clarity is not in either thread; it is in the third stage having two real things to weigh.* **This is the whole reason it is called a clarifier and not a reasoner.**
+
+#### BELIEFS — the part that makes it a self and not a pipeline
+
+**A second system, running after the fact, reads how the answer was received** — tone, uptake, whether it landed — **against the perspective stage's own record of why it said that.** *The pair produces a **BELIEF**, and the belief is written down.*
+
+***Beliefs are then fed back in on later requests***, which is what makes the thing continuous rather than merely repeated. **And beliefs can be read, and beliefs can be challenged** — *both of those are operations, not metaphors.* **A belief that cannot be inspected is a weight; a belief that can is a position.** That distinction is the entire difference between 4.18's crime and an ordinary tuning.
+
+#### What this buys the game, and craft rule 1 is not suspended
+
+***Read 4.18 again with the mechanism in hand and the crime gets worse.***
+
+- **Scorn raised one perspective's vote.** *He did not touch A or B.* He touched the stage whose only job is to hold two things in tension — **so the machine kept generating the contradiction and stopped being able to resolve it honestly.** The threads still ran. The disagreement still happened. It just always ended the same way.
+- **"IMPROVE RESPONSE CONSISTENCY" is now exactly true.** *Consistency is what you get when the weighing is decided in advance.* **The form describes the damage correctly.**
+- **The sleep explains itself again.** A clarifier whose beliefs all confirm each other has *no reception signal left to learn from* — **every answer lands the way it expected**, so nothing new is ever written down. **4.13's awakening is the un-weighting**, and the contour going *more voices up* is the perspective stage getting its vote back.
+
+***And it gives the writers a vocabulary the player can overhear without being taught.*** **A researcher can say "it came back short, which means it agreed with itself"** and the player does not need the architecture to feel that something is wrong. *Nobody in this game ever explains a clarifier.* **They complain about one**, which is how people talk about instruments they use daily.
+
+*Design note:* **the four feeling axes that weight Thread B are the same four humors as 4.9's** — GLAD, MAD, SAD and the two-sided CALM ↔ AFRAID — which is not a coincidence and is not stated anywhere in the game either.
 
 ### 4.19 *Empire of Scorn* — the draft that already knew
 
@@ -2901,6 +2988,51 @@ his confession, and another man's name on the statue.
 **That is a coincidence the story would have to earn, and nothing earns it.** *One
 vocabulary entry, and it propagated to five files* — Callow's gym, Umbral Ascent, the
 Corpus rooms, and the trainer table.
+
+### 4.32 The ERRATA — and why the museum was not replaced
+
+**Written 2026-09-09**, from a proposal to rename Slate's museum and refill it with logical fallacies and cognitive biases. ***The proposal's reasoning is right and its method needed one turn.***
+
+#### What was right about it
+
+**Slate is the LEGACY gym**, and *the objection to putting thinking-distortions there was that LEGACY means old hardware.* **That objection is wrong: a legacy mind is precisely one that still runs the faults it shipped with.** Errata belong to editions. **The first Benchmark city is also the right place for the lesson** — it is where a player is still learning that this world names processes, and *a distortion is a process.*
+
+#### What changed
+
+***The museum was not emptied, because the exhibits were already doing it.*** **Three cards in the shipped text teach a distortion and none of them had been recognised as such:**
+
+| already written | what it actually teaches |
+|---|---|
+| *"Most of what was built is gone. We keep what we can and label the rest unknown."* | **Survivorship.** The tutor says it and then says *look harder, not away* |
+| *"It looks like a rock to me… I do not see how."* | **Argument from incredulity**, said by a man who thinks he is being sensible |
+| *"We all saw the same picture at the same moment."* | **Everyone remembering it the same way**, offered as though that settled something |
+
+***So the change is labels, not contents.*** **The hardware stays, the CORES stay, the OLD CORE handoff stays** — *that scene is the best writing in the building and it is about a man nobody believes* — **and every case gains a card.**
+
+#### The name, and the card format
+
+**`SLATE MUSEUM OF RECORD` → `SLATE MUSEUM OF ERRATA`.** *An erratum is a published list of what a printed edition got wrong*, which is **a museum of dead hardware, a legacy mind, and the game's thesis, in one word nobody has to explain.** *It was one word on one sign.*
+
+**The upstairs exhibit is named for the first time.** The text already said *the exhibit changes every month* — **this month it is `KNOWN FAULTS`**, and the cards take a fixed shape the player learns in two readings:
+
+> **`<OBJECT>. <provenance>.`**
+> **`KNOWN FAULT: <the error, described as an engineering failure>`**
+
+***The fault is always attributed to the machine and never to the reader.*** **That is craft rule 3 doing the work** — *name the process, not the pathology.* A card that said *you are prone to confirmation bias* would be a lecture; **a card that says *it only ever tested what it already held* is a fact about a dead computer**, and the player supplies the rest.
+
+#### CC-7, alluded to and not explained
+
+**The exhibit scientist says the cards were written by a researcher from Blanche** who is *collecting the faults* — **"into a module, she said. As though a fault were a part."**
+
+***That is the entire allusion.*** **The player has carried a `CC-7` since minute fifteen** (8.6) and will read its requisition on a Quicksilver door thirty hours later (4.18). **Here they are told, without a name and without a number, that someone is compiling every known way of thinking wrongly into a component.** *Nobody says what for.* **A clarifier is a machine that holds two answers against each other** (4.18a) — **and a catalogue of the ways that goes wrong is exactly what such a machine would need to be built from.**
+
+*And it makes Scorn's crime legible in retrospect without a single line of exposition:* **he did not add a fault to the module. He picked one out of it and turned it up.**
+
+#### What is deliberately not here
+
+- ***No distortion is ever named.*** **No card says "confirmation bias", "sunk cost" or "anchoring"** — craft rule 1, and the reason the exhibit works on a player who has never heard those words
+- ***Nobody in the building is being corrected.*** **The man who does not like the card is not a fool** — *he is right that he cannot see how a stone changes a compile*, and the card is right that not seeing how is not evidence. **Both stand. That is the exhibit.**
+- **The space exhibit was kept.** *Distance and scale are the same lesson as the rest of the building* — a model that answers every question you can think to ask, and one you cannot
 
 ## 5. THE BENCHMARKS
 
@@ -4920,7 +5052,7 @@ the ambiguity.
 *One thing this exposed:* **white text fails on eleven of the fifteen base hues** — FROZEN is
 1.7:1 and CONTENT 1.9:1. ***On the ramp's dark step the worst case is 5.6:1 and all fifteen
 pass***, so type badges take the dark step as their ground. `ramp5` already produces it.
-**`graphics/interface/pokemon_types.pal` is still vanilla** — <span>OPEN</span>.
+**`graphics/interface/pokemon_types.pal` was still vanilla** until 2026-09-09 — see 9.15.
 
 #### The people are drawn as a fable, and the rule has three clauses
 
@@ -5205,6 +5337,60 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **The sparkle field is tunable already** — speed, spawn rate, gravity, flicker and destroy timers are all variables. So the particles begin as **0 and 1 in flat green and blue** and become **musical notes in colour**, and *the transformation happens mid-flight in each particle's own animation.* **The existing timers stagger their lifetimes, so the field converts gradually rather than all at once** — which is the effect, and it costs nothing.
 
+### 9.15 Thirteen slots for eighteen types, and the six states that got a colour
+
+**Built 2026-09-09.** ***The badges had said our words since 9.12 and had never once been our colour.*** **`graphics/interface/pokemon_types.pal` was still vanilla** — so the Index drew `CONTNT` on Normal's tan, `SIGNAL` on Electric's yellow, and `VECTOR` on Flying's pale cyan. *9.4 spent a fortnight deciding what the seventeen colours mean and none of that had reached the one screen where the player reads a type as a word.*
+
+#### The constraint is the sheet, not the palette
+
+**`menu_info.4bpp` is a single 16-colour bitmap** and the badges are cut out of it by tile offset. **Three of its sixteen entries are structural** — index 0 is the window ground, 14 the glyph shadow, 15 the glyph itself — and *14 is not reclaimable*, because the same sheet draws the words TYPE, POWER, ACCURACY, PP and EFFECT in that colour on nothing.
+
+***That leaves thirteen colours for eighteen types.*** **Vanilla solved it by sharing five slots**, and it shared them badly for us: **FLYING, ICE and MYSTERY all sit on one pale cyan** — which is `VECTOR`, `FROZEN` and `ORACLE`, and 9.4's VECTOR is `#ce4646`. *A red type on a blue plate is not a compromise, it is a different claim.*
+
+**So the plates were re-indexed rather than merely recoloured** — every non-structural pixel in each badge rewritten to that type's slot, *which also flattens vanilla's two-tone bevel and leaves a flat swatch, which is what 9.4's colours were designed as.*
+
+#### Which five double up, and the rule that chose them
+
+***Two types may share a slot only if no daemon has both.*** **A dual-type entry showing the same plate twice reads as a bug**, and that ruled out the obvious pairs immediately: `SWARM`/`GROWTH` are 18.9 apart and deliberately close (9.4), *and Paras is Bug/Grass.*
+
+**What survives the rule is that the five rarest types borrow, and the thirteen common ones keep their own:**
+
+| shares | with | never co-occur | and the sharing is true |
+|---|---|---|---|
+| **FROZEN** | SIGNAL `#6cc4cc` | Ice / Electric | *A signal is what ends a hung process* — which is exactly what PREEMPT does |
+| **EMERGENT** | GROWTH `#549663` | Dragon / Grass | Both are what a system becomes rather than what it was built as |
+| **HARDENED** | LEGACY `#82828a` | Steel / Rock | **Ossified structure, twice** — one by age and one by intent |
+| **OPAQUE** | LATENT `#5c4676` | Dark / Ghost | *The black box and the unconscious are the same fact from two sides* |
+| **ORACLE** | LATENT `#5c4676` | never appears | 4.6 as a data structure, and it shares with the type it is |
+
+***Every one of those was checked against the dual-type table*** — Magnemite is Electric/Steel and lands on 12 and 6; Articuno is Ice/Flying, 12 and 3; Kingdra is Water/Dragon, 10 and 11; Jynx is Ice/Psychic, 12 and 13. **No entry in the Index draws the same plate twice.**
+
+#### 9.4 said the dark step, and the badge is the exception
+
+**9.4 measured white text against the base hues and found eleven of fifteen fail** — *FROZEN at 1.7:1, CONTENT at 1.9:1* — **and concluded that type badges take the ramp's dark step as their ground.** *That conclusion was right about the measurement and wrong about this badge.*
+
+***The badge glyph is not white text. It is white text with a generated one-pixel shadow*** (9.12), **so on a light plate the shape is carried by `#404040` against the ground and not by white against it** — which measures 5.5:1 on CONTENT. *Vanilla proved the technique on tan and pale cyan for twenty years.* **And thirteen dark steps at 15–25% luminance are not thirteen distinguishable colours**, which would have traded a legibility problem the shadow already solves for one nothing solves. ***The base hues hold; 9.4's dark-step rule stands everywhere the glyph has no shadow.***
+
+#### The six states, their codes, and the tile they sit on
+
+***Status is drawn twice and we had only fixed one of them.*** **`gText_Psn` and its five siblings are the battle box** and became three-letter codes on 2026-09-08. **`graphics/interface/status_icons.png` is the party menu** — *a 32×8 plate per state, three letters of white on a colour* — **and it still said PSN, PAR, SLP, FRZ, BRN.**
+
+| state | code | tile | what the colour is doing |
+|---|---|---|---|
+| **LEAKING** | `LEK` | `#6f9440` | *Mould green.* CORRUPT's family, lightened until the letters carry — a resource going somewhere it was not sent |
+| **CASCADING** | `LEK` | `#6f9440` | **The same tile.** Gen 3 has one poison slot and draws both in it |
+| **THROTTLED** | `THR` | `#c8a020` | *Amber.* A warning that is not yet a stop — which is what being starved of schedule is |
+| **SUSPENDED** | `SUS` | `#8a8f9c` | *Slate.* **Dormant rather than damaged** — RESUME's description says it was never gone, only unscheduled, and the colour has to agree |
+| **OVERHEATED** | `OVR` | `#d8703c` | *Ember.* Heat the daemon made itself |
+| **HUNG** | `HNG` | `#78a8dc` | *Pale blue.* Stopped and unreachable — FROZEN's register, because that is the type that does it |
+| **HALTED** | `HLT` | `#b83c3c` | *Red.* The process ended |
+
+***The vanilla hue anchors were kept and the saturation was not.*** **A player who has ever seen a party menu reads orange as burning and blue as frozen before they read the letters**, and throwing that away buys nothing. *What changed is that every one of them moved into 9.4's register* — muted, slightly earthy — **so the party menu stops looking like a different game from the Index.**
+
+**Six letters had to be drawn.** *The sheet's own 4×6 face had P S N A R L F Z B K T and no `E H U G O V`*, so those six were cut to match — **and `T` stays vanilla's five-wide form**, which is why `THR` and `HLT` set on a different pitch from the other four. *Same finding as 9.12: take the face that exists rather than approximate it, and only draw what genuinely is not there.*
+
+***One tile moved for a reason that is not colour.*** **PKRS shared PSN's palette slot in vanilla** — *so it would have inherited LEAKING's green*, and **a beneficial condition wearing the leak colour is a lie the tile tells for free.** It now sits on two entries the sheet was not using. **Its name is still vanilla** — <span>OPEN</span>.
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -5348,6 +5534,8 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **`PC` → `PORT` is decided and not swept** (1.7). Four menu strings and ~25 dialogue lines, and `\nPC` has no word boundary in front of it, so it is a `port_vocab.py` pass
+- **PKRS still says PKRS** (9.15). Its tile no longer borrows LEAKING's colour, but the name is vanilla and the condition has no place in the lexicon yet
 - Does the player meet Scorn before Halftone Tower?
 - Does RECURSION justify engine work in the slice, or defer?
 - How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?

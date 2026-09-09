@@ -39,6 +39,15 @@ the pair that most needs to stay apart at a glance.
 Only the text is redrawn. Each badge keeps its own background colour and its
 rounded corners, because the colour is how a type is recognised before the word
 is read -- and 9.4 already spent that colour on meaning.
+
+Those grounds became ours on 2026-09-09 (9.15). The sheet has thirteen usable
+palette entries for eighteen types -- 0 is the window ground, 14 the glyph
+shadow and 15 the glyph -- so five rare types borrow a common type's slot, and
+the pairs were chosen so that no daemon in the game has both. Each badge is now
+FLAT: vanilla's two-tone bevel was flattened into the type's own colour, which
+is what 9.4's colours were designed as. This tool reads whatever fills a badge's
+interior and puts it back, so it stays correct across that change and any later
+one -- do not hard-code a palette index here.
 """
 import os, struct, sys, zlib
 
