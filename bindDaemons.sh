@@ -576,6 +576,11 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
     ARCHIVE="$RUN_ROOT/gpt_data_$(date +%Y%m%d-%H%M%S)"
     mv "$GPT_DATA" "$ARCHIVE"
     echo "  history   cleared (previous run archived to $(basename "$ARCHIVE"))"
+    # --fresh clears the AGENT, not the SAVE. Worth saying out loud: the two
+    # come apart, and an agent with no notes standing in the middle of a run
+    # will happily set "leave the first town" as its objective.
+    echo "  note      the game SAVE is untouched -- if the ROM is mid-run, the"
+    echo "            agent wakes there with no notes. It is told so."
 
     # --fresh ARCHIVES, so --fresh is what accumulates: 33 directories and
     # 55 MB had built up without anyone deciding to keep them, the largest a
