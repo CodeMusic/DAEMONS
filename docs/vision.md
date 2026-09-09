@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.109**
+**A total conversion — the living design bible, v11.110**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5391,6 +5391,77 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***One tile moved for a reason that is not colour.*** **PKRS shared PSN's palette slot in vanilla** — *so it would have inherited LEAKING's green*, and **a beneficial condition wearing the leak colour is a lie the tile tells for free.** It now sits on two entries the sheet was not using. **Its name is still vanilla** — <span>OPEN</span>.
 
+### 9.16 The STREAM — what a lesson actually costs, and what an animation actually is
+
+**Built 2026-09-09.** ***TEACHY TV is the one system in this game that exists to explain the game***, which makes it the one place where explaining is not a craft-rule-1 violation — **and it had been left almost entirely vanilla.**
+
+#### The name, decided by a measurement
+
+**`ITEM_NAME_LENGTH` is 14, so an item name is thirteen characters.** ***`MACHINE STREAM` is fourteen.*** *That settled it before taste got a vote.*
+
+**`TEACHY TV` → `STREAM`.** ***A stream is a broadcast and a stream is a sequence you read from as it arrives***, which is BIND's works-twice test passed on the first try — **and it is six characters, so it fits anywhere.** *`TUTOR STREAM` is twelve and remains available if the short form ever reads as too generic.* **The presenter was already the TUTOR**, so the pair needed no further work.
+
+*The description follows 1.6's rule — teach the term, then state the effect:* **`A stream is data read as it arrives. This one carries the TUTOR, and a show per MARK.`** ***The second sentence is also the notification***, sitting where a player reads it.
+
+#### The animation is not art, and that is the whole finding
+
+***There are no frames anywhere in this system.*** **A show is three things and none of them is a picture:**
+
+| | what it is | where it lives |
+|---|---|---|
+| **The cutscene** | **nineteen function pointers** — host walks on, talks, walks into the grass, hands off, walks back | `sBattleScript` and friends |
+| **The demonstration** | ***a scripted hand.*** `PokedudeInputScript` is `{cursorPos, delay}` — the game plays a **real battle** while something moves the cursor for you | `battle_controller_pokedude.c` |
+| **The voiceover** | text keyed to **battle controller events** — `CONTROLLER_CHOOSEACTION`, `CONTROLLER_PRINTSTRING` plus a `stringid`, `CONTROLLER_OPENBAG` | `PokedudeTextScriptHeader` |
+
+***And all four battle shows run the byte-identical nineteen commands.*** **BATTLE, STATUS, MATCHUPS and CATCHING differ only in two strings, one party table and where the fake cursor goes.** *The two bag shows are the same list with the battle hand-off swapped for a bag hand-off.* **Nobody ever authored a second animation, and the system does not have a way to.**
+
+***So the answer to "could a lesson be a slideshow" is yes, and it is the expensive option.*** **A still image here is a full 256×160 background** — a tilemap plus tiles plus a palette, and the screen already spends BG0–BG3 on the window, the end graphic, the host and the scrolling backdrop. **A new cutscene command is roughly twelve lines of C**; a new picture is an asset pipeline. *The cheap axis is the one vanilla already built: **cursor, delay, and text hooked to an event**.*
+
+#### The talk show, which is the cheap lesson
+
+***`sTalkScript` is the vanilla cutscene with the hand-off deleted.*** **Fifteen commands instead of nineteen: the host walks on, says the first half, says the second half, and walks off.** *No battle, no bag, no party table, no scripted hand.*
+
+**A talk show therefore costs two strings and a table row** — ***under a kilobyte*** — and that is the unit the nine new lessons are built from. **A concept is not a button press**, and a fake cursor demonstrating *representation* would be a lie about what the lesson is.
+
+#### The budget, measured rather than assumed
+
+| | |
+|---|---|
+| **ROM** | **7.27 MB free** in two runs — 6,075 KB at `0x71131C` and 1,368 KB at the tail. *Used: 15,376,372 of the 16 MB image.* |
+| **A lesson** | **600–950 bytes of text.** All six vanilla shows plus the greeting are **4,913 bytes together** |
+| **So** | ***ROM is not the constraint and will not become one.*** Thousands of lessons would fit |
+| **EWRAM** | **99.58% full — 1,104 bytes left.** *This* is the constraint. The menu is built into `sResources`, which is **heap**, so it costs nothing here |
+| **IWRAM** | 91% — 2,944 bytes left |
+| **A menu label** | **168px.** The window is 22 tiles at `item_X = 8`; *vanilla's longest is 146px* |
+| **How many shows** | `whichScript` is a `u8`, so **255** by type. **Sixteen** is what the heap array is sized for, and the list scrolls six at a time |
+
+#### The nine shows we added, and the gate
+
+***One is the answer to a question the game had never answered:*** **`Where do my daemons go?`** — *you **bind** a daemon with a **BOX**, and the box **hosts** it.* **"A hosted DAEMON is running. It is just not running here."** 1.3's argument, said out loud by the one character allowed to say things out loud.
+
+***The other eight are one per MARK, and each teaches its own mark's concept as a thing to DO:***
+
+| | teaches | as |
+|---|---|---|
+| **SLATE** | representation | *read the summary page — two daemons that look alike are not alike* |
+| **SLOPE** | gradient descent | *there is no big fight; there are two hundred small ones* |
+| **SENSE** | perception | *name three things on the battle screen before you press anything* |
+| **FIT** | overfitting | *the TUTOR trained one daemon against one opponent and lost to a child* |
+| **SKEW** | bias | *"Every DAEMON you outscore leaves a little of itself in yours"* — which is EVs, and is true |
+| **FRAME** | attention | *the menu you opened decided what you were allowed to think of. DETACH is right there* |
+| **HEAT** | temperature | *damage wobbles; a plan that only works on the best roll is not a plan* |
+| **TRUE** | alignment | *a THRASHING daemon still obeys — it obeys in the wrong direction* |
+
+***Not one of them names its concept.*** **The menu says `About the SKEW MARK.`, never "bias"** — *the marks were named in 5.2 precisely so the concept would not have to be*, and this is the first system to spend that.
+
+**The gate is the mark itself.** `FlagGet(FLAG_BADGE01_GET + n)` — ***so the list grows as the player is certified***, and a show they could not follow is never offered. *Vanilla already did exactly this with the two bag shows and the TM CASE*, so the filter replaced both rules with one.
+
+#### The unread marker, and where it stops
+
+**Nine vanilla flags, `0x4A7`–`0x4AF`, are declared and referenced nowhere.** *Nine is exactly what this needed:* **one per talk show.** The flag is set the moment a show is chosen, **so the host's greeting reports only the *other* shows still unseen** — pick the new one and he says nothing; pick an old one while a new one waits and he says *"The TUTOR has a NEW SHOW for you today, and it is on the list!"*
+
+***What this does not do is reach the player in the overworld.*** **That wants a map object with a script**, and the description line carries the rule instead — *a show per MARK*, read in the bag, where a key item is looked at anyway. <span>OPEN</span>.
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -5534,6 +5605,7 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object
 - **`PC` → `PORT` is decided and not swept** (1.7). Four menu strings and ~25 dialogue lines, and `\nPC` has no word boundary in front of it, so it is a `port_vocab.py` pass
 - **PKRS still says PKRS** (9.15). Its tile no longer borrows LEAKING's colour, but the name is vanilla and the condition has no place in the lexicon yet
 - Does the player meet Scorn before Halftone Tower?

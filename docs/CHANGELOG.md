@@ -5,6 +5,65 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.110 — 2026-09-09
+
+### The STREAM — 9.16, and what a lesson actually costs
+
+- **`TEACHY TV` → `STREAM`.** *A stream is a broadcast and a stream is a sequence you read
+  from as it arrives* — works twice, first try. **`MACHINE STREAM` was measured out of the
+  running before taste got a vote**: `ITEM_NAME_LENGTH` is 14, so an item name is thirteen
+  characters, and that name is fourteen. `TUTOR STREAM` fits and stays available.
+- **The animation is not art, and that is the finding.** *There are no frames anywhere in
+  this system.* A show is a **nineteen-command cutscene**, a **scripted hand**
+  (`{cursorPos, delay}` moving the cursor through a **real battle**), and **voiceover text
+  hooked to battle-controller events**. ***All four battle shows run the byte-identical
+  nineteen commands*** — they differ in two strings, one party table and where the fake
+  cursor goes. **Nobody ever authored a second animation and the system has no way to.**
+- **So a slideshow is possible and is the expensive axis.** A still is a full 256×160
+  background, and BG0–BG3 are already spent. *A new cutscene command is twelve lines of C.*
+- **`sTalkScript` is the vanilla cutscene with the hand-off deleted** — fifteen commands, no
+  battle, no bag, no party table. **A talk show costs two strings and a table row, under a
+  kilobyte**, which is the unit the new lessons are built from. *A concept is not a button
+  press, and a fake cursor demonstrating **representation** would be a lie about the lesson.*
+- **The budget, measured:** **7.27 MB of ROM free** in two runs; a lesson is 600–950 bytes;
+  all six vanilla shows together are 4,913. ***ROM is not the constraint.*** **EWRAM is —
+  99.58% full, 1,104 bytes left** — so the menu is built into the heap block and costs
+  nothing there. A menu label has 168px; vanilla's longest is 146.
+
+### Nine new shows, and the mark is the gate
+
+- **`Where do my daemons go?`** answers a question the game had never answered: *you **bind**
+  a daemon with a **BOX**, and the box **hosts** it.* **"A hosted DAEMON is running. It is
+  just not running here."**
+- **Eight more, one per MARK**, each teaching its mark's concept **as a thing to do**:
+  read the summary page (SLATE), there is no big fight (SLOPE), name three things before you
+  press anything (SENSE), the TUTOR lost to a child on a route he had never walked (FIT),
+  *"every DAEMON you outscore leaves a little of itself in yours"* (SKEW), the menu you
+  opened decided what you were allowed to think of (FRAME), a plan that only works on the
+  best roll is not a plan (HEAT), a THRASHING daemon obeys in the wrong direction (TRUE).
+- ***Not one names its concept.*** The menu says `About the SKEW MARK.`, never "bias" —
+  **5.2 named the marks precisely so the concept would not have to be**, and this is the
+  first system to spend that.
+- **The gate is `FlagGet(FLAG_BADGE01_GET + n)`**, so the list grows as the player is
+  certified. *Vanilla already gated its two bag shows on the TM CASE*, so one filter
+  replaced both rules.
+- **Nine vanilla flags, `0x4A7`–`0x4AF`, are declared and referenced nowhere** — exactly one
+  per talk show. The flag is set when a show is chosen, so the host reports only the *other*
+  unseen shows. **The overworld marker is Open.**
+
+### The vocabulary the shows were still using
+
+- **`POKé BOX` → `USERBOX`.** *The accented prefix again* — fifth tool it has hidden from.
+- **`move` → `ROUTINE`** in six lesson lines, `TEACHY TV` → `STREAM` in three, and two menu
+  labels reworded.
+- **The harness had two stale item names.** `mappings.json` said **`INTERRUPT`** for ICE HEAL
+  and **`CLARIFIER`** for item 349; both were renamed in the game and never re-ported.
+  `game.txt` said the same two, in the orientation table and three times in the opening
+  sequence — ***so the agent has been told to look for an item that no longer exists.***
+  Regenerated, and the table gained a row for the three-letter status tiles.
+
+---
+
 ## v11.109 — 2026-09-09
 
 ### The badges got their colour, the states got a tile, and the museum got a name
