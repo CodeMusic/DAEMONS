@@ -928,6 +928,105 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***Forty-five percent of the reachable routines are CONTENT***, whose one-clause test is **"the thing itself, with nothing read into it."** *Every other type hands you a verb.* **CONTENT hands you the absence of one, and it has to yield seventy-nine distinct names in twelve characters.** <span>OPEN</span> — **and it is the register to settle first**, because the other ninety-six will be written against whatever it establishes.
 
 
+### 2.7 One lexicon, four surfaces — what owns a state, and what a routine is named for
+
+**Settled 2026-09-09**, before a single move was renamed, because 175 separate judgement calls with no rule is not a pass — it is 175 arguments.
+
+***A type, a state, a routine and an item are the same vocabulary seen from four sides.*** **A type is what a daemon IS. A routine is what it DOES. A state is what it is IN. An item is the operation that ENDS one.** *Nothing had ever checked whether those four agree, so this measured it.*
+
+#### Four of the seven already close, and nobody arranged that
+
+***Counting which type inflicts which state, across all 356 moves:***
+
+| what inflicts it | the state | what ends it | the sentence, never said in game |
+|---|---|---|---|
+| **CORRUPT** ×8, and nothing else | **LEAKING** | PATCH | *tampered data makes it leak; you patch a leak* |
+| **CORRUPT** ×1 | **CASCADING** | PATCH · ROLLBACK | *the leak that feeds on its own damage* |
+| **ENTROPY** ×5, and nothing else | **OVERHEATED** | COOLANT | **2.6's clause for ENTROPY is literally *noise and heat*** |
+| **FROZEN** ×4, and nothing else | **HUNG** | PREEMPT | *it stopped moving; take the processor back* |
+
+***Four complete sentences spanning a type, a state, a tile colour and an item*** — **and the game says none of them.** *That is craft rule 1 working at the level of the whole system rather than a line of dialogue.*
+
+**And the tightest of the four was forced.** ***HUNG exists only because FROZEN was already a type name*** (1.6) — **being unable to reuse the obvious word is what made the vocabulary precise**, and the pairing that came out of the constraint is the strongest one in the table.
+
+#### THROTTLED has an owner with leakage, and that is fine
+
+**SIGNAL ×6**, then CONTENT ×2, GROWTH ×1, LATENT ×1, EMERGENT ×1. ***SIGNAL owns it*** — *raw current, before anything interprets it, arriving faster than you can serve it* — **and the strays are ordinary coverage rather than a design fault.**
+
+#### SUSPENDED is CONTEXT — decided, with the cost stated
+
+***It had no owner at all:*** CONTENT ×3, GROWTH ×3, CONTEXT ×1, which is a tie and not an argument.
+
+**CONTEXT takes it.** ***Being suspended is being framed out of the running set*** — *not damaged, not gone, simply not in the frame the scheduler is reading* — **which is CONTEXT's clause exactly**, and RESUME's description already says *it was never gone, only unscheduled.* *GROWTH's three are the powders, and "training a thing into dormancy" is the weaker claim by some distance.*
+
+***The decision is about OWNERSHIP, and retyping the moves is a second decision with a price.*** **Moving the three GROWTH powders and the three CONTENT songs onto CONTEXT would take the sleep move away from GROWTH entirely and hand CONTEXT six** — *a real balance change in a chart that 8.4 says is byte-identical across editions and is the argument.* <span>OPEN</span>: **the concept is CONTEXT's; whether the moves follow is a balance question, and 2.5's rule applies — rebalance moves before touching matchups.**
+
+#### THRASHING is ownerless, and the ENGINE already says so
+
+***Six types inflict it*** — CONTENT ×3, CONTEXT ×2, LATENT, LOGIC, SWARM, FLOW — **and the temptation was to tidy that up.** *Reading what the damage actually is settled it the other way.*
+
+**`battle_util.c` deals confusion damage as:**
+
+> `CalculateBaseDamage(&gBattleMons[attacker], &gBattleMons[attacker], MOVE_POUND, 0, 40, 0, attacker, attacker)`
+
+***The attacker and the defender are the same battler.*** **The type argument is zero. Abilities are suppressed.** *Every other state is something a kind of thing does TO you, and has a type because the thing that did it has one.* ***THRASHING is the only one where the damage is dealt by the sufferer***, so **there is nobody whose type it could be.**
+
+**That is why it has no three-letter code and no item.** *It was already the odd one out on both counts and nobody had said why.* ***It is ownerless because a system thrashing is not being attacked. It is failing at managing itself.***
+
+#### The rule for naming a routine
+
+***A daemon is named for what it IS. A routine is named for what its TYPE DOES. A routine is never named for a creature.***
+
+**The temptation is the opposite** — *PACKET should do packet things* — **and the measurement says the temptation is already satisfied without being chased.** `WING ATTACK` is VECTOR and eight of ours learn it: **BROADCAST, ECHO, MULTICAST, PACKET, RELAY, TRACER, PROMETHEUS** — *seven of the eight are things that carry something to somewhere*, **and nobody arranged that either.** ***The chart did the filtering***, because VECTOR was defined as *direction in a space of meanings* and those daemons were typed from what they are.
+
+**The rule is what makes the shared names possible at all.** `TACKLE` is learned by **twenty-five of the seventy-two** — *a packet, a heap, a kernel, a bat, a fish and a cat.* **No creature-derived name survives that. A type-derived one does not have to.**
+
+#### CONTENT routines are the only ones allowed to be ordinary English
+
+***Of the 175 routines reachable by the daemons we have named, 79 are CONTENT*** — **forty-five percent**, belonging to the type whose one-clause test is *"the thing itself, with nothing read into it."*
+
+**That is not a problem to solve. It is the answer.** ***If every routine were technical, the plainest type would stop being plain*** — **so CONTENT is the one type whose routines may be ordinary words**, and the technical register belongs to the other seventeen. *A player who meets forty ordinary verbs and then a `CONSENSUS` has been told which one is the claim.*
+
+*Budget:* **`MOVE_NAME_LENGTH` is 12**, and vanilla spends all twelve — `WEATHER BALL`, `THUNDER WAVE`.
+
+#### The seam, measured — and it is exactly where the design overrode the chart
+
+***Thirteen of the seventy-two renamed daemons were also RETYPED***, and they are not a random thirteen:
+
+| | | |
+|---|---|---|
+| **LABL · RUBRIC · CANON** | CONTENT → CONTENT/LOGIC | *supervised learning* — the chart would have said ENTROPY/VECTOR |
+| **CLUSTR · LOCUS · MANIFOLD** | VECTOR → VECTOR/LATENT | *unsupervised* — the chart would have said FLOW |
+| **ROVERCUB · ROVERSEER · ROVERBYTE** | GROWTH → GROWTH/SIGNAL | *reinforcement* — the reward signal is in the second type |
+| **CODEMUSAI · CAREMUSAI · SEEKMUSAI** | LOGIC · CONTEXT · VECTOR | 8.2's branch, which is the central argument |
+| **STARR** | CONTEXT/EMERGENT | 4.7 |
+
+***Every one of them was retyped to carry an argument. The other fifty-nine kept vanilla's typing.***
+
+**And the seam is measurable:**
+
+| | off-type damaging routines |
+|---|---|
+| the **59** left on vanilla's typing | **126 of 277 — 45%** |
+| the **13** retyped | **66 of 85 — 78%** |
+
+***Forty-five percent is not a fault; it is what coverage is.*** **Seventy-eight percent is.** *CANON is CONTENT/LOGIC and its learnset is `HEAT WAVE`, `EMBER`, `FLAMETHROWER`, `FIRE SPIN` — **the supervised-learning line fights entirely by heat**, and its highest routine is the one furthest from what it is.*
+
+***Off-type is already a statement the engine makes.*** **Same-type attack bonus means a routine of your own type hits harder because it *is* you** — so **an off-type routine is a daemon reaching outside its own nature and being worse at it**, which is 4.29's ladder said in numbers. ***A statement made seventy-eight percent of the time is not a statement. It is a mismatch.***
+
+**Three levers, and the cheapest is the right one:**
+
+| | cost | verdict |
+|---|---|---|
+| retype the **daemon** back | undoes the argument | **no** — the argument is why it was retyped |
+| retype the **move** | changes the chart for everyone | **no** — 8.4, and 2.5's rule |
+| curate the **learnset** | data we already own, zero chart impact | ***yes*** |
+
+***So the seam gets closed in the learnset, and closed only partway.*** **Bring the thirteen down toward the 45% baseline and keep the residual deliberately** — *a few routines each that the daemon is visibly worse at, because they are not what it is.*
+
+***And there is a thing the learnset could do that nothing currently does.*** **The three starters ARE the three learning paradigms**, and **vanilla's fire/water/grass movesets say nothing about any of them.** *A supervised line should fight by comparing against a known answer; an unsupervised one by finding structure it was not given; a reinforcement one by acting on a signal.* **The paradigm is currently carried by the name and the type and abandoned by everything the creature actually does** — which is the one place in this design where the argument stops at the surface. <span>OPEN</span>.
+
+
 ---
 
 ## 3. THE MAP
@@ -5751,6 +5850,9 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
+- **The three starters are the three learning paradigms and their learnsets say nothing about it** (2.7). The one place the argument stops at the surface
+- **The thirteen retyped daemons are 78% off-type against a 45% baseline** (2.7). Closed in the learnset, partway, keeping a deliberate residual
 - **The CONTENT register for ROUTINES** (2.7). Seventy-nine of the 175 reachable moves are the type whose clause is *nothing read into it*, in a twelve-character name. Settle this before the other ninety-six
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question

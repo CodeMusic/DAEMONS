@@ -109,6 +109,63 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.112 — 2026-09-09
+
+### 2.7 — one lexicon, four surfaces, and the rule the move pass needed first
+
+- **A type is what a daemon IS, a routine is what it DOES, a state is what it is IN, an item is
+  what ENDS one.** Nothing had ever checked whether the four agree. Counting across all 356
+  moves: **four of the seven states are inflicted by exactly one type and nothing else** —
+  CORRUPT→LEAKING→PATCH, CORRUPT→CASCADING, ENTROPY→OVERHEATED→COOLANT (2.6's clause for
+  ENTROPY is literally *noise and heat*), FROZEN→HUNG→PREEMPT. **Four complete sentences
+  spanning a type, a state, a tile colour and an item, and the game says none of them.**
+- **The tightest pairing was forced.** HUNG exists only because FROZEN was already a type
+  name — *being unable to reuse the obvious word is what made the vocabulary precise.*
+- **SUSPENDED is CONTEXT.** It had no owner — CONTENT ×3, GROWTH ×3, CONTEXT ×1, a tie and
+  not an argument. *Being suspended is being framed out of the running set*, which is
+  CONTEXT's clause, and RESUME's description already says it. **Retyping the six sleep moves
+  is a separate decision with a real price** and is logged Open.
+- **THRASHING is ownerless, and the engine says so.** `battle_util.c` deals confusion damage
+  with **the attacker and the defender as the same battler**, type argument zero, abilities
+  suppressed. *Every other state is something a kind of thing does to you and has a type
+  because that thing has one.* **THRASHING is the only one where the sufferer deals the
+  damage, so there is nobody whose type it could be** — which is finally why it has no
+  three-letter code and no item.
+
+### The rule for naming 175 routines
+
+- ***A daemon is named for what it IS. A routine is named for what its TYPE DOES. A routine is
+  never named for a creature.*** The temptation is the opposite, and the measurement shows the
+  temptation is **already satisfied without being chased**: `WING ATTACK` is VECTOR, and seven
+  of the eight daemons that learn it are things that carry something somewhere. **The chart
+  did the filtering.** It is also the only rule under which `TACKLE` — learned by **25 of the
+  72** — can have a name at all.
+- **CONTENT routines are the only ones allowed to be ordinary English.** Of the 175 routines
+  our named daemons can reach, **79 are CONTENT — 45%** — belonging to the type whose clause
+  is *"the thing itself, with nothing read into it."* ***That is not a problem to solve, it is
+  the answer***: if every routine were technical the plainest type would stop being plain.
+
+### The seam, measured
+
+- **Thirteen of the seventy-two were also RETYPED**, and they are not a random thirteen: the
+  three starters, the Musai branch and STARR — **every one retyped to carry an argument.**
+- **Off-type damaging routines: the 59 left on vanilla's typing are 45%. The thirteen are
+  78%.** *CANON is CONTENT/LOGIC and fights entirely by heat.*
+- **Off-type is already a statement the engine makes** — same-type attack bonus means a
+  routine of your own type hits harder *because it is you*, so an off-type routine is a daemon
+  reaching outside its nature and being worse at it. ***A statement made 78% of the time is
+  not a statement.***
+- **Three levers, and the cheapest is right:** retyping the daemon undoes the argument;
+  retyping the move changes the chart for everyone (8.4, 2.5); **curating the learnset is data
+  we already own and costs the chart nothing.** Close it partway and keep a deliberate
+  residual.
+- **And the thing nothing currently does:** the three starters *are* the three learning
+  paradigms, and vanilla's fire/water/grass movesets say nothing about any of them. **The
+  paradigm is carried by the name and the type and abandoned by everything the creature
+  actually does** — the one place in this design where the argument stops at the surface.
+
+---
+
 ## v11.111 — 2026-09-09
 
 ### `docs/items.html` — *The Bag*, and a document that cannot drift
