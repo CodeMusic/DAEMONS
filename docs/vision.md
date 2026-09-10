@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.121**
+**A total conversion — the living design bible, v11.122**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1203,9 +1203,27 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***And fifty-eight descriptions had to move with their names***, because a description that still describes the old one is worse than no rename at all: *`OCCLUDE` cannot say "bites with vicious fangs".* **Every line measured against the 170px box; the widest is 126.**
 
-#### What is left, and it is not the same job
+#### And then the other two routes, the same day
 
-***The remaining 175 are moves no daemon in this game learns by level.*** **Trainers reach some of them and TMs teach others**, so they are not unreachable — *they are unreachable by the route this pass followed.* **The next pass is the trainer parties and the TM list**, and it is smaller than 175. <span>OPEN</span>.
+***The pass followed level-up learnsets and stopped, which was one route out of three.*** **The TM list is 58 moves and the trainer parties use 225** — *and 89 of those were still vanilla*, because no daemon in the game learns them by level and nothing had gone looking down the other two roads.
+
+**They are named now.** ***Every TM, every HM and every routine any trainer in the game will use is ours*** — **269 of 356** — *with one deliberate exception:* **`OVERHEAT`, kept because an ENTROPY routine agreeing with ENTROPY's own state is the point** (2.8).
+
+***The best of the eighty-nine are the ones where the mechanic and the register said the same thing:***
+
+| | | |
+|---|---|---|
+| `PETAL DANCE` → **`OVERTRAIN`** | GROWTH | **locks you in for two or three turns and ends in THRASHING** — *which is what overtraining is* |
+| `BULLET SEED` → **`MINIBATCH`** | GROWTH | *two to five small passes rather than one large one.* **That is the definition** |
+| `DYNAMICPUNCH` → **`NON SEQUITUR`** | LOGIC | **confuses, and misses half the time.** *A step that does not follow* |
+| `SANDSTORM` → **`BIT ROT`** | LEGACY | *everything degrades a little each turn, and some things resist it* |
+| `POISON GAS` → **`LEAK`** · `TOXIC` → **`COMPOUND`** | CORRUPT | **the state's own verb, and the thing the worse state does** |
+| `GUILLOTINE` → **`KILL`** | CONTENT | *a one-hit removal, named for the command that does it* |
+| `SIGNAL BEAM` → **`GOSSIP`** | SWARM | **held since 2.8 and released by 2.9** — *a gossip protocol is 2.6's clause for SWARM, word for word* |
+
+**`BIND` had to move for a reason none of the others did.** ***It is 1.5's word*** — *what you do to a daemon* — **and a trapping routine wearing it would have put BIND in the battle log meaning something else entirely.** → **`LATCH`.**
+
+***What is left is genuinely unreachable.*** **The 87 remaining are learned by no daemon in this game, taught by no TM and used by no trainer** — *they belong to species the bestiary has not reached.* <span>OPEN</span>, **and it waits on 8.2 rather than on a decision.**
 
 
 ---
@@ -6246,7 +6264,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
 - ~~`THRASH` and `HARDEN`~~ **Cleared (2.8).** `SIGNAL BEAM` is now unblocked by 2.9's SWARM register — **`GOSSIP`** — and waits only on the SWARM batch
-- ~~23 routines renamed, 152 to go~~ **The reachable set is done, 2026-09-10 (2.10): 181 of 356.** *The 175 remaining are moves no daemon in the game learns by level* — **trainers and TMs reach some of them, and that is the next pass**
+- ~~The ROUTINES pass~~ **Done 2026-09-10 (2.10): 269 of 356, and every routine the player can meet.** *The 87 left are reachable by nothing in this game* — **they wait on the bestiary, not on a decision**
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
 - **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object

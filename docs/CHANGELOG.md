@@ -5,6 +5,35 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.122 — 2026-09-10
+
+### The other two routes — every routine the player can meet is ours
+
+- ***2.10's pass followed level-up learnsets and stopped, which was one route out of three.***
+  **The TM list is 58 moves and the trainer parties use 225**, and **89 of those were still
+  vanilla** because no daemon learns them by level and nothing had looked down the other two
+  roads.
+- **269 of 356 now** — ***every TM, every HM, and every routine any trainer in the game will
+  use***, with one deliberate exception: **`OVERHEAT`, kept because an ENTROPY routine
+  agreeing with ENTROPY's own state is the point.**
+- ***The best of the eighty-nine are where the mechanic and the register said the same
+  thing.*** **`PETAL DANCE` → `OVERTRAIN`** *(locks you in for two or three turns and ends in
+  THRASHING — which is what overtraining is)*. **`BULLET SEED` → `MINIBATCH`** *(two to five
+  small passes rather than one large one; that is the definition)*. **`DYNAMICPUNCH` → `NON
+  SEQUITUR`** *(confuses, and misses half the time)*. **`SANDSTORM` → `BIT ROT`**.
+  **`GUILLOTINE` → `KILL`**. **`POISON GAS` → `LEAK`**.
+- ***`SIGNAL BEAM` → `GOSSIP`*** — **held since 2.8 and released by 2.9**, because a gossip
+  protocol is 2.6's clause for SWARM word for word.
+- ***`BIND` had to move for a reason none of the others did.*** **It is 1.5's word — what you
+  do to a daemon** — and a trapping routine wearing it would have put BIND in the battle log
+  meaning something else entirely. → **`LATCH`**.
+- **28 more descriptions rewritten**, every line measured; widest 121px of 170.
+- ***What is left is genuinely unreachable.*** The 87 remaining are learned by no daemon,
+  taught by no TM and used by no trainer — **they belong to species the bestiary has not
+  reached, so they wait on 8.2 rather than on a decision.**
+
+---
+
 ## v11.121 — 2026-09-10
 
 ### 2.10 — the ROUTINES pass, done to the reachable edge
