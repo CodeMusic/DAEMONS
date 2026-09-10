@@ -238,6 +238,15 @@ VOCAB = {
     # Six literals: the dex screen's mode label, its NUMERICAL MODE line, the
     # diploma, the rating, and two lines of dialogue.
     "NATIONAL": "GLOBAL",
+    # 1.7: a PORT is where you connect to a host, which is exactly what vanilla
+    # calls a PC and exactly what this project had never renamed. The pair is
+    # the point -- you reach the BOXES through a PORT -- and both words then
+    # mean what they mean in computing and in the room.
+    #
+    # Two letters, so it can only be done as a WORD: "PC" inside a symbol or a
+    # filename must not move, and only string literals are swept anyway. The
+    # possessive comes free from the stem loop below: PC's -> PORT's.
+    "PC": "PORT",
     # PP is not two letters -- it is one compressed glyph, redrawn as MP by
     # tools/gbamana.py. MP is the same two characters, so "PP ", "PP was
     # restored." and the items PP UP and PP MAX change width by nothing. Full
