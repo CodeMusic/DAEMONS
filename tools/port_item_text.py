@@ -169,6 +169,174 @@ TEXT = {
                           "Clears every state."],
 }
 
+
+#  ---------------------------------------------------------------------------
+#  THE HELD ITEMS -- 1.6c. Names AND descriptions, because unlike the ten
+#  medicines these have no Game Boy source to port: Gen 1 has no held items at
+#  all. 1.6 ruled that an item is an OPERATION; a held item is not one. It is a
+#  CONFIGURATION -- a setting attached to a process from outside, in force
+#  while it runs, and removable, which is exactly what 2.11 says an ability is
+#  NOT.
+#
+#  The seventeen type boosters are a rack. Vanilla's are seventeen unrelated
+#  trinkets -- a spoon, a magnet, a lump of charcoal -- and ours are seventeen
+#  labelled controls on one desk: GAIN on a channel, TRIM for the small one,
+#  HEADROOM for the margin, DITHER for the noise, MUTE for the channel you do
+#  not want to hear. Five words from one instrument, and the Bag becomes a
+#  glossary of the type chart, which is 8.7's second teaching surface spent.
+#
+#  Each gain's first clause is 2.6's own one-line test for that type, verbatim
+#  where it fits. The player who reads all seventeen has read the chart.
+NAMED = {
+    # The rack.
+    "ITEM_SILK_SCARF":     ("CONTENT GAIN",  ["The thing itself, with nothing",
+                                              "read into it. Gain lifts one",
+                                              "channel: this one is CONTENT."]),
+    "ITEM_BLACK_BELT":     ("LOGIC GAIN",    ["Rules applied step by step, not",
+                                              "intuition. Gain lifts one",
+                                              "channel: this one is LOGIC."]),
+    "ITEM_SHARP_BEAK":     ("VECTOR GAIN",   ["A direction in a space of",
+                                              "meanings. Gain lifts one",
+                                              "channel: this one is VECTOR."]),
+    "ITEM_POISON_BARB":    ("CORRUPT GAIN",  ["Data that has been tampered",
+                                              "with. Gain lifts one channel:",
+                                              "this one is CORRUPT."]),
+    "ITEM_SOFT_SAND":      ("STRATUM GAIN",  ["The layer everything else runs",
+                                              "on. Gain lifts one channel:",
+                                              "this one is STRATUM."]),
+    "ITEM_HARD_STONE":     ("LEGACY GAIN",   ["Deprecated hardware, still",
+                                              "running. Gain lifts one channel:",
+                                              "this one is LEGACY."]),
+    "ITEM_SILVER_POWDER":  ("SWARM GAIN",    ["Many small agents; no single one",
+                                              "matters. Gain lifts one channel:",
+                                              "this one is SWARM."]),
+    "ITEM_SPELL_TAG":      ("LATENT GAIN",   ["Running below the surface,",
+                                              "unobserved. Gain lifts one",
+                                              "channel: this one is LATENT."]),
+    "ITEM_CHARCOAL":       ("ENTROPY GAIN",  ["Noise and heat; disorder that",
+                                              "spreads. Gain lifts one channel:",
+                                              "this one is ENTROPY."]),
+    "ITEM_MYSTIC_WATER":   ("FLOW GAIN",     ["Everything running downhill to",
+                                              "the lowest point. Gain lifts one",
+                                              "channel: this one is FLOW."]),
+    "ITEM_MIRACLE_SEED":   ("GROWTH GAIN",   ["Training: fitting to whatever it",
+                                              "is fed. Gain lifts one channel:",
+                                              "this one is GROWTH."]),
+    "ITEM_MAGNET":         ("SIGNAL GAIN",   ["Raw current, before anything",
+                                              "interprets it. Gain lifts one",
+                                              "channel: this one is SIGNAL."]),
+    "ITEM_TWISTED_SPOON":  ("CONTEXT GAIN",  ["The frame you read a thing in.",
+                                              "Gain lifts one channel: this one",
+                                              "is CONTEXT."]),
+    "ITEM_NEVER_MELT_ICE": ("FROZEN GAIN",   ["Locked to what it already saw.",
+                                              "Gain lifts one channel: this one",
+                                              "is FROZEN."]),
+    "ITEM_DRAGON_FANG":    ("EMERGENT GAIN", ["Behaviour nobody designed and",
+                                              "nobody can account for. Gain",
+                                              "lifts the EMERGENT channel."]),
+    "ITEM_METAL_COAT":     ("HARDENED GAIN", ["Hardened against whatever anyone",
+                                              "tries. Gain lifts one channel:",
+                                              "this one is HARDENED."]),
+    "ITEM_BLACK_GLASSES":  ("OPAQUE GAIN",   ["The black box, from outside.",
+                                              "Gain lifts one channel: this one",
+                                              "is OPAQUE."]),
+    "ITEM_SEA_INCENSE":    ("FLOW TRIM",     ["A trim is a small gain. This one",
+                                              "lifts the FLOW channel a little."]),
+
+    # The rest of the desk.
+    "ITEM_BRIGHT_POWDER":  ("DITHER",        ["Noise added on purpose, so that",
+                                              "nothing can be pinned exactly.",
+                                              "The foe's aim slips."]),
+    "ITEM_LAX_INCENSE":    ("DITHER TRIM",   ["Dither, at a lower setting.",
+                                              "The foe's aim slips a little."]),
+    "ITEM_LEFTOVERS":      ("HEADROOM",      ["The margin left before anything",
+                                              "clips. The holder recovers a",
+                                              "little each turn."]),
+    "ITEM_CLEANSE_TAG":    ("MUTE",          ["Mutes the channel wild daemons",
+                                              "listen on. Carried in front,",
+                                              "fewer of them approach."]),
+
+    # Configurations.
+    "ITEM_WHITE_HERB":     ("REVERT",        ["Puts a value back the way it",
+                                              "was. Restores a lowered stat,",
+                                              "once."]),
+    "ITEM_MENTAL_HERB":    ("UNPAIR",        ["Drops a binding that was formed",
+                                              "without being asked for. Works",
+                                              "once."]),
+    "ITEM_MACHO_BRACE":    ("DEBUG BUILD",   ["Every step is instrumented, so",
+                                              "it learns faster and runs",
+                                              "slower. SPEED falls."]),
+    "ITEM_EXP_SHARE":      ("WEIGHT SHARE",  ["Two things trained as one: what",
+                                              "teaches the first teaches the",
+                                              "second. Shares EXP. POINTS."]),
+    "ITEM_QUICK_CLAW":     ("QUEUE JUMP",    ["Sometimes the scheduler takes",
+                                              "you out of turn. The holder may",
+                                              "move first."]),
+    "ITEM_SOOTHE_BELL":    ("AFFINITY",      ["Affinity binds a process to one",
+                                              "host. The holder grows attached",
+                                              "faster."]),
+    "ITEM_SMOKE_BALL":     ("ESCAPE HATCH",  ["A way out that is always open.",
+                                              "The holder can DETACH from any",
+                                              "wild daemon."]),
+    "ITEM_EVERSTONE":      ("VERSION LOCK",  ["Pins a thing to the version it",
+                                              "is at. The holder will not",
+                                              "evolve."]),
+    "ITEM_FOCUS_BAND":     ("FAILSAFE",      ["What stops the fall when",
+                                              "everything else already has.",
+                                              "The holder may survive on 1 HP."]),
+    "ITEM_LUCKY_EGG":      ("LEARNING RATE", ["How large a step each lesson",
+                                              "takes. Turned up: the holder",
+                                              "earns more EXP. POINTS."]),
+    "ITEM_SCOPE_LENS":     ("LONG TAIL",     ["The far end of a distribution,",
+                                              "where the rare large values are.",
+                                              "Raises the critical-hit ratio."]),
+    "ITEM_SHELL_BELL":     ("RECLAIM",       ["Takes back what is no longer in",
+                                              "use. The holder recovers HP on",
+                                              "striking."]),
+    "ITEM_KINGS_ROCK":     ("BUBBLE",        ["A gap pushed into a pipeline",
+                                              "where nothing issues. The foe",
+                                              "may flinch."]),
+    "ITEM_CHOICE_BAND":    ("HARD CODED",    ["One value, written in, with no",
+                                              "way to pass another. Powers up",
+                                              "one routine and allows no other."]),
+    "ITEM_AMULET_COIN":    ("SURCHARGE",     ["Charged on top of the agreed",
+                                              "rate. Doubles prize money if",
+                                              "the holder took part."]),
+    "ITEM_UP_GRADE":       ("SERVICE PACK",  ["Everything that was fixed since",
+                                              "the release, in one bundle.",
+                                              "Made by SILPH CO."]),
+    "ITEM_DRAGON_SCALE":   ("SCALING LAW",   ["What happens to a thing when",
+                                              "you only make it bigger.",
+                                              "A JETSTREAM may be holding it."]),
+
+    # The ones that only work on one host. A device that fits nothing else is
+    # still a configuration -- it just has a very short compatibility list.
+    "ITEM_DEEP_SEA_TOOTH": ("DEEP FEATURE",  ["A representation learned far",
+                                              "from the surface. It raises the",
+                                              "SP. ATK stat."]),
+    "ITEM_DEEP_SEA_SCALE": ("DEEP LAYER",    ["The layers nothing outside gets",
+                                              "at directly. It raises the",
+                                              "SP. DEF stat."]),
+    "ITEM_SOUL_DEW":       ("INNER STATE",   ["An orb for a LATIOS or LATIAS.",
+                                              "What it holds, nothing outside",
+                                              "can read. Raises both SP. stats."]),
+    "ITEM_LIGHT_BALL":     ("SUPPLY RAIL",   ["The line every other part draws",
+                                              "from. Held by a SPIKE, it raises",
+                                              "the SP. ATK stat."]),
+    "ITEM_LUCKY_PUNCH":    ("FLUKE",         ["A result nothing predicted and",
+                                              "nothing repeats. It raises",
+                                              "UPTIME's critical-hit ratio."]),
+    "ITEM_METAL_POWDER":   ("STRICT MODE",   ["Refuses anything it was not",
+                                              "promised. It raises MOCK's",
+                                              "DEFENSE stat."]),
+    "ITEM_THICK_CLUB":     ("BARE METAL",    ["Nothing at all between you and",
+                                              "the hardware. It raises RELIC's",
+                                              "and CAIRNLING's ATTACK stat."]),
+    "ITEM_STICK":          ("OFF BY ONE",    ["The error at the edge that",
+                                              "everything else survives. Raises",
+                                              "EDGECASE's critical-hit ratio."]),
+}
+
 #  WIDTH was a character count, which is a proxy for the thing that actually
 #  matters. The face is variable width, so the real ceiling is PIXELS -- and
 #  vanilla's own widest description line, measured across all 375 of them, is
@@ -194,6 +362,8 @@ def _pixels():
 BUDGET = 198
 textwidth = _pixels()
 
+TEXT.update({k: v[1] for k, v in NAMED.items()})
+
 raw = open(PATH).read()
 rc = 0
 widest = 0
@@ -212,7 +382,20 @@ for item_id, lines in TEXT.items():
     raw, n = pat.subn(lambda m: m.group(1) + body + m.group(3), raw, count=1)
     if not n:
         print("  !! %s not found" % item_id); rc = 1
+#  Names are thirteen characters -- ITEM_NAME_LENGTH is 14 and the terminator
+#  takes one. check_lexicon.py owns the collision half; this owns the budget.
+NAME_MAX = 13
+for item_id, (name, _lines) in NAMED.items():
+    if len(name) > NAME_MAX:
+        print("  !! %s: name %d chars > %d -- %s" % (item_id, len(name), NAME_MAX, name)); rc = 1
+        continue
+    pat = re.compile(r'("english": ")([^"]*)("(?:[^{}]*?)"itemId": "%s")' % re.escape(item_id))
+    raw, n = pat.subn(lambda m: m.group(1) + name + m.group(3), raw, count=1)
+    if not n:
+        print("  !! %s name anchor not found" % item_id); rc = 1
+
 print("  %d descriptions, widest %dpx of %d" % (len(TEXT), widest, BUDGET))
+print("  %d held items named" % len(NAMED))
 if "--write" in sys.argv and rc == 0:
     open(PATH, "w").write(raw); print("  written")
 sys.exit(rc)

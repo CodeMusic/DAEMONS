@@ -89,7 +89,40 @@ WHY = {
  "ITEM_DOME_FOSSIL":  "A drum, sealed at both ends. Nothing has read its contents.",
  "ITEM_PP_UP":        "PP is <em>power points</em>, which is a body word. MP is what the rest of the genre already calls the same number, and it costs one letter.",
  "ITEM_PP_MAX":       "Same change, same reason.",
+
+ # 1.6c -- the configurations. The rack needs no per-item WHY: seventeen
+ # identical controls with different labels is the argument, and the group
+ # blurb carries it.
+ "ITEM_WHITE_HERB":   "You revert a value to what it was. <em>Restores a lowered stat, once</em> — and the word is the operation, not a medicine.",
+ "ITEM_MENTAL_HERB":  "A binding formed without being asked for is the thing the item drops. <strong>UNPAIR is the undo of the routine that caused it</strong>, and both are one word.",
+ "ITEM_MACHO_BRACE":  "<strong>The best of the twenty-five.</strong> A debug build is instrumented at every step, so it <em>learns faster and runs slower</em> — which is both halves of the item, in a phrase every programmer already owns.",
+ "ITEM_EXP_SHARE":    "Weight sharing is two models trained as one: what teaches the first teaches the second. <em>Vanilla's item is a mystery; ours is a technique.</em>",
+ "ITEM_QUICK_CLAW":   "Priority is scheduling, and sometimes the scheduler takes you out of turn. Sits beside PRIORITY and GAUGE's whole benchmark without pointing at either.",
+ "ITEM_SOOTHE_BELL":  "Processor affinity binds a process to one host and keeps it there. <strong>Affinity is also plain fondness</strong>, which is the double duty this lexicon is built on.",
+ "ITEM_SMOKE_BALL":   "A way out that is always open. <em>It stopped being a BALL, which freed it from the guard that had been holding the name.</em>",
+ "ITEM_EVERSTONE":    "You pin a dependency to a version so it never moves. The holder does not evolve, and nothing about the name is a metaphor.",
+ "ITEM_FOCUS_BAND":   "The thing that catches you when everything else already failed. One HP is exactly what a failsafe leaves you.",
+ "ITEM_LUCKY_EGG":    "<strong>The learning rate is how large a step each lesson takes.</strong> Turned up, you learn faster from the same experience — which is the item, stated as the hyperparameter it is.",
+ "ITEM_SCOPE_LENS":   "A critical hit is the far end of the distribution. <em>The long tail is where the rare large values live</em>, and raising the crit ratio is reaching further into it.",
+ "ITEM_SHELL_BELL":   "Reclaiming is taking back what is no longer in use. The holder recovers on striking, and the word is the garbage collector's.",
+ "ITEM_KINGS_ROCK":   "A pipeline bubble is a gap pushed in where nothing issues. <strong>A flinch is a turn in which nothing issued</strong> — and PIPELINE is a species, so the word already lives here.",
+ "ITEM_CHOICE_BAND":  "One value, written in, with no way to pass another. <em>Faster, and no longer negotiable</em>, which is the trade the item makes.",
+ "ITEM_AMULET_COIN":  "Charged on top of the agreed rate. The one item in the set whose register is the institution's rather than the machine's.",
+ "ITEM_UP_GRADE":     "Everything fixed since the release, in one bundle — and it is <em>made by SILPH CO.</em>, which is the joke sitting under it.",
+ "ITEM_DRAGON_SCALE": "<strong>Scaling laws are what happens to a thing when you only make it bigger</strong>, and EMERGENT is the type this evolution item belongs to. <em>The argument and the mechanic said the same word.</em>",
+ "ITEM_DEEP_SEA_TOOTH": "A deep feature is a representation learned far from the surface. Raises SP. ATK, and the pun keeps the sea.",
+ "ITEM_DEEP_SEA_SCALE": "The layers nothing outside gets at directly. Raises SP. DEF, and pairs with DEEP FEATURE the way the two vanilla items pair.",
+ "ITEM_SOUL_DEW":     "What a process holds that nothing outside can read. The two special stats are the mind stats, and this is the item that says so.",
+ "ITEM_LIGHT_BALL":   "The supply rail is the line every other part draws from. <em>Held by a SPIKE</em>, which is what a rail carries.",
+ "ITEM_LUCKY_PUNCH":  "A result nothing predicted and nothing repeats. <strong>Held by UPTIME</strong>, which is the daemon whose whole name is the opposite of a fluke.",
+ "ITEM_METAL_POWDER": "Strict mode refuses anything it was not promised. <strong>Held by MOCK</strong> — and a mock object that checks its contract is exactly what the pair means.",
+ "ITEM_THICK_CLUB":   "Bare metal is nothing at all between you and the hardware. Held by RELIC and CAIRNLING, whose register is old machinery still running.",
+ "ITEM_STICK":        "<strong>An off-by-one is the error at the edge that everything else survives.</strong> Held by EDGECASE, which is the same joke told twice and never explained.",
 }
+
+# Groups whose members are a SET rather than twenty-two separate decisions.
+# The blurb is the reasoning and a per-item note would only repeat it.
+SET_GROUPS = {"rack"}
 
 # Vanilla's one-trick balls keep vanilla's shape: the ladder already carries the
 # argument and a second one competing with it would blunt both.
@@ -118,6 +151,25 @@ GROUPS = [
    "ITEM_TEACHY_TV","ITEM_OLD_AMBER","ITEM_HELIX_FOSSIL","ITEM_DOME_FOSSIL"]),
  ("And one number", "mp",
   "", ["ITEM_PP_UP","ITEM_PP_MAX"]),
+ ("The rack", "rack",
+  "Vanilla's seventeen type boosters are seventeen unrelated trinkets \u2014 a spoon, a magnet, "
+  "a lump of charcoal. Ours are seventeen labelled controls on one desk, and each one\u2019s "
+  "first clause is 2.6\u2019s own test for that type. Read the rack and you have read the chart.",
+  ["ITEM_SILK_SCARF","ITEM_BLACK_BELT","ITEM_SHARP_BEAK","ITEM_POISON_BARB","ITEM_SOFT_SAND",
+   "ITEM_HARD_STONE","ITEM_SILVER_POWDER","ITEM_SPELL_TAG","ITEM_CHARCOAL","ITEM_MYSTIC_WATER",
+   "ITEM_MIRACLE_SEED","ITEM_MAGNET","ITEM_TWISTED_SPOON","ITEM_NEVER_MELT_ICE",
+   "ITEM_DRAGON_FANG","ITEM_METAL_COAT","ITEM_BLACK_GLASSES","ITEM_SEA_INCENSE",
+   "ITEM_BRIGHT_POWDER","ITEM_LAX_INCENSE","ITEM_LEFTOVERS","ITEM_CLEANSE_TAG"]),
+ ("The configurations", "held",
+  "An item is an operation. A <strong>held</strong> item is not one \u2014 it is a setting "
+  "attached to a process from outside, in force while it runs, and removable, which is exactly "
+  "what an ability is not.",
+  ["ITEM_WHITE_HERB","ITEM_MENTAL_HERB","ITEM_MACHO_BRACE","ITEM_EXP_SHARE","ITEM_QUICK_CLAW",
+   "ITEM_SOOTHE_BELL","ITEM_SMOKE_BALL","ITEM_EVERSTONE","ITEM_FOCUS_BAND","ITEM_LUCKY_EGG",
+   "ITEM_SCOPE_LENS","ITEM_SHELL_BELL","ITEM_KINGS_ROCK","ITEM_CHOICE_BAND","ITEM_AMULET_COIN",
+   "ITEM_UP_GRADE","ITEM_DRAGON_SCALE","ITEM_DEEP_SEA_TOOTH","ITEM_DEEP_SEA_SCALE",
+   "ITEM_SOUL_DEW","ITEM_LIGHT_BALL","ITEM_LUCKY_PUNCH","ITEM_METAL_POWDER","ITEM_THICK_CLUB",
+   "ITEM_STICK"]),
 ]
 
 
@@ -137,11 +189,12 @@ def main():
     print("  %d renamed items, derived from the diff against upstream" % len(renamed))
 
     grouped = {k for _, _, _, ids in GROUPS for k in ids} | set(SPECIALTY)
+    _set_members = {k for _, slug, _, ids in GROUPS if slug in SET_GROUPS for k in ids}
     for k in sorted(renamed):
         if k not in grouped:
             print("  ..  %-20s %-14s not in any group (rendered under Others)"
                   % (k, renamed[k][1]))
-        elif k not in WHY and k not in SPECIALTY:
+        elif k not in WHY and k not in SPECIALTY and k not in _set_members:
             print("  !!  %-20s %-14s has no WHY entry" % (k, renamed[k][1]))
 
     # the three-letter codes, read back out of the build rather than trusted

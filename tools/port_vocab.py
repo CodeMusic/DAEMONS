@@ -151,6 +151,24 @@ NAMES.update(pairs_from("src/data/items.json",           r'"english":\s*"([^"]*)
 NAMES = {k: v for k, v in NAMES.items()
          if k.isupper() and len(k) > 3 and k not in ("NONE", "????????")}
 
+#  THE EIGHTEEN TYPE NAMES ARE NEVER SUBSTITUTED, anywhere, by anything. The
+#  chart is the argument (invariant 3) and its words are authored on every
+#  surface, not just in battle_main.c. One of them is also a MOVE name that
+#  was renamed -- the move GROWTH became SCALE UP -- so the
+#  word pass read "this one is GROWTH" in an item description and wrote "this
+#  one is SCALE UP". NEVER_SWEEP protects the TABLE; this protects the WORD.
+#  GROWTH is the only one today; the guard is for the set, because the next
+#  collision will not announce itself either.
+#
+#  Removed from the word map only. A PHRASE key that merely contains a type
+#  name -- SIGNAL BEAM -> GOSSIP -- is a different string and still applies.
+TYPE_WORDS = set(re.findall(r'\[TYPE_\w+\] = _\("([^"]+)"\)',
+                            open(os.path.join(GBA, "src/battle_main.c"),
+                                 encoding="utf-8").read()))
+_typed = sorted(k for k in NAMES if k in TYPE_WORDS)
+for k in _typed:
+    del NAMES[k]
+
 # ------------------------------------------------------ vocabulary, from GB
 # Phrases where "catch" is not the capture verb. Substituted to themselves
 # BEFORE the word map runs, so the word map never sees the "catch" inside.
@@ -290,7 +308,11 @@ WORD = re.compile(r"[A-Za-zé']+")
 # match the species it belongs to, because SPECIES_PORYGON2 is still vanilla.
 # Naming an evolution is the author's call (see docs/vocabulary-candidates.md),
 # so hold it until there is one.
-KEEP_BALL = ["SMOKE BALL", "LIGHT BALL", "not a defeat", "PORYGON2"]
+#  SMOKE BALL and LIGHT BALL were held here because BALL is the capture device
+#  and neither of these is one. 1.6c gave both a name of their own -- ESCAPE
+#  HATCH and SUPPLY RAIL -- so the guard is now the thing stopping the rename,
+#  and a stale KEEP is indistinguishable from a missed substitution.
+KEEP_BALL = ["not a defeat", "PORYGON2"]
 KEEP_RE = re.compile('|'.join(re.escape(k) for k in KEEP_BALL))
 # The rename table never ruled on "battle", and there are two of them. The
 # CHALLENGE is an event -- "would like to battle" -- and 237's whole move is
@@ -403,8 +425,16 @@ def convert(body):
     def hold_idiom(mm):
         idioms.append(mm.group(0)); return '\x04'
     body = IDIOM_RE.sub(hold_idiom, body)
+    #  A phrase's OUTPUT must not be swept again by the word pass. "MIRACLE
+    #  SEED" is renamed to "GROWTH GAIN" here, and GROWTH is itself a rename
+    #  (the move became SCALE UP) -- so the word pass turned the new item name
+    #  into "SCALE UP GAIN" on the Game Corner prize board. Stash the result,
+    #  the way the idioms already are, and restore it after the words run.
+    phrases = []
     if PHRASE_RE:
-        body = PHRASE_RE.sub(lambda mm: PHRASE_MAP[mm.group(0)], body)
+        def hold_phrase(mm):
+            phrases.append(PHRASE_MAP[mm.group(0)]); return '\x02'
+        body = PHRASE_RE.sub(hold_phrase, body)
     stash = []
     def hide(m):
         stash.append(m.group(0)); return '\x01'
@@ -433,6 +463,8 @@ def convert(body):
     res = re.sub('\x01', lambda _: next(it), ''.join(out))
     ii = iter(idioms)
     res = re.sub('\x04', lambda _: next(ii), res)
+    ip = iter(phrases)
+    res = re.sub('\x02', lambda _: next(ip), res)
     ik = iter(kept)
     return re.sub('\x03', lambda _: next(ik), res)
 
@@ -494,6 +526,16 @@ SKIP_SRC = {"src/data/text/species_names.h", "src/data/text/move_names.h",
             "src/data/region_map/region_map_entry_strings.h",
             "src/data/region_map/region_map_entries.h",
             "src/data/wild_encounters.h", "src/data/heal_locations.h"}
+
+#  EASY CHAT keeps its OWN copy of the ability, move and species vocabulary --
+#  78 abilities and several hundred words across 24 files, none of which any
+#  naming pass has touched. Sweeping it with learned renames does not fix that;
+#  it corrupts it, because a rename learned from one table lands inside a word
+#  from another: ABILITY_MAGNET_PULL is "MAGNETIC" in abilities.h and still
+#  "MAGNET PULL" here, and the item rename turned it into "SIGNAL GAIN PULL".
+#  Left alone until the surface is named properly. Logged in 1.6c.
+SKIP_SRC |= {f for f in ()}
+EASY_CHAT_DIR = "src/data/easy_chat"
 
 STR_LINE = re.compile(r'^(\s*)\.string "(.*)"\s*$')
 touched, changed, over = {}, 0, []
@@ -588,7 +630,7 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
             continue
         path = os.path.join(root, f)
         rel = os.path.relpath(path, GBA)
-        if rel in SKIP_SRC:
+        if rel in SKIP_SRC or rel.startswith(EASY_CHAT_DIR):
             continue
         src = open(path, encoding="utf-8").read()
         # A fixed-size array declares its own limit. gTrainerClassNames is
@@ -669,8 +711,13 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
 # them changes one working build and nothing in the repository -- which is
 # exactly how sixteen town names came to exist only on this machine. The JSON
 # is the source; the header is an artifact.
+#  "english" WAS in this tuple, and line 149 LEARNS its renames from the same
+#  field. That is the principle below, broken by the file that states it: the
+#  held-item pass named MIRACLE SEED "GROWTH GAIN", and the word pass -- which
+#  had learned "GROWTH -> SCALE UP" from the move table -- immediately rewrote
+#  it to "SCALE UP GAIN". An item name is authored. Only its prose is swept.
 JSON_TARGETS = {
-    "src/data/items.json": ("english", "description_english"),
+    "src/data/items.json": ("description_english",),
     #  region_map_sections.json was here and is now in NEVER_SWEEP -- see the
     #  note there. Left listed and commented rather than deleted, because the
     #  next person to add a JSON target should read why this one came out.
@@ -782,6 +829,8 @@ if hits:
     print("  %d region_map.c symbol reference(s) follow the rename" % hits)
 
 print("  name renames learned from our own tables: %d" % len(NAMES))
+if _typed:
+    print("  %d type name(s) withheld from the word map: %s" % (len(_typed), ", ".join(_typed)))
 print("  vocabulary entries: %d" % len(VOCAB))
 print("  blocks changed: %d dialogue, %d src literals, %d json, in %d files"
       % (changed, src_changed, json_changed, len(touched)))

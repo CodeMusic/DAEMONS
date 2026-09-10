@@ -5,6 +5,66 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.131 — 2026-09-10
+
+### The held items are a rack, and the Bag became the chart
+
+- ***Forty-seven named, and the register is the one 1.6 and 2.11 both leave open.*** **An item is an
+  operation; an ability is a standing property.** *A held item is neither:* **it is a CONFIGURATION —
+  a setting attached to a process from outside, in force while it runs, and removable.**
+- ***Vanilla's seventeen type boosters are seventeen unrelated trinkets. Ours are one desk.***
+  **`<TYPE> GAIN` ×17, `FLOW TRIM` for the small one, `HEADROOM` for the margin, `DITHER` for the
+  noise, `MUTE` for the channel you do not want to hear** — *five words from one instrument.* **Each
+  gain's first clause is 2.6's own one-line test for that type**, so the Bag now teaches the chart.
+- **`RIGOUR` is reversed to `LOGIC GAIN`** and filed with its reasoning. *A rack of eighteen where one
+  is a poem is a bug, not a flourish.*
+- **The four best of the other twenty-five:** ***DEBUG BUILD*** (instrumented, so it learns faster and
+  runs slower), ***LEARNING RATE***, ***SCALING LAW*** (an EMERGENT evolution item — *the argument and
+  the mechanic said the same word*), and ***OFF BY ONE***, held by **EDGECASE**.
+- ***Five collisions caught by the checker*** — BRUTE FORCE, OVERCOMMIT, OVERVOLT, YIELD and OVERCLOCK
+  were all taken. **`BUBBLE` is better than what it replaced:** *a pipeline bubble is a gap where
+  nothing issues*, which is a flinch, **and PIPELINE is already a species.**
+- **Two broken descriptions repaired on the way past** — a scale that shone *"a HALT pink"* and a spoon
+  that boosted *"CONSTRUE-type moves"*. **Both found by rewriting the file rather than reading the diff.**
+
+### And four guards the tools should already have had
+
+- ***`items.json`'s `english` field was both learned from AND swept.*** **MIRACLE SEED became GROWTH
+  GAIN and the word pass immediately made it SCALE UP GAIN** on the Game Corner prize board.
+- ***A phrase's output was swept again by the word pass*** — the same bug from the other side.
+- ***The eighteen TYPE NAMES are now withheld from the word map entirely.*** **NEVER_SWEEP protected
+  the type table and nothing protected the type word.**
+- ***And one guard had gone stale and become the bug.*** SMOKE BALL and LIGHT BALL were fenced off
+  because BALL is the capture device; once they had names of their own the fence was the only thing
+  stopping the rename. **A stale KEEP is indistinguishable from a missed substitution.**
+- **Three registers logged OPEN, all for the same reason:** *berries* (43 names, a pocket, a second
+  name table), *usable items*, and **`src/data/easy_chat/`** — **twenty-four files holding a second,
+  independent copy of the ability, move and species vocabulary that no naming pass has ever touched.**
+
+### 8.9 — MISSINGNO, the one daemon the Index does not hold
+
+- ***An homage that turned into the cleanest statement of 4.2's complaint in the game.*** **Gen 1's
+  MissingNo. is not a creature: it is the absence of a record, rendered** — and this project has spent
+  eleven versions arguing that a mind is what somebody wrote down about it.
+- **It lives in `SPECIES_OLD_UNOWN_B`**, one of twenty-five slots Gen 3 left over from a scrapped
+  feature, *already carrying a footprint, an icon and a `DoubleQuestionMark` sprite.* **No new art.**
+- ***Three numbers are the argument and none of them says it.*** **catchRate 255** — *nothing recorded
+  it agreeing or refusing, so there are no rights to check.* **expYield 0** — *nothing recorded the
+  encounter.* **Its dex number is 387 and `NATIONAL_DEX_COUNT` is 386**, so ***every list in the Index
+  is bounded one short of it*** and not one line of new code was written.
+- ***The seen and caught bits ARE set***, into a real byte of the save that nothing reads back. **The
+  record exists and is not counted.**
+- **Type is CORRUPT / ORACLE.** *Vanilla's MissingNo. is the unused BIRD type and 2.2 named that slot
+  ORACLE* — **and the chart has no rows for it, so nothing about the fight changes.**
+- **Surfing off the east shore of QUICKSILVER**, the one-percent slot of a rate-one water table, at
+  level 80, with Gen 1's own stat line — ***33 / 136 / 0 / 29 / 6 / 6.*** **BALLISTIC is a two-turn
+  routine, so the thing with 136 base ATTACK spends its first turn charging** and the encounter is
+  survivable by accident. *The only way to lose it is to hit it.*
+- **The old man on the shore is how you hear**, and folklore is how anyone found the original:
+  *"Don't bother telling anybody. It's not on any list, so as far as they're concerned it didn't happen."*
+
+---
+
 ## v11.130 — 2026-09-10
 
 ### The seven benchmark designs are mechanics now

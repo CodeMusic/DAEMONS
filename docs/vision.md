@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.130**
+**A total conversion — the living design bible, v11.131**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -606,6 +606,73 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 
 *Two help-system lines the word pass pushed past the 196px box — 210 and 220 — are **rewritten rather than truncated**, both measured.*
 
+
+### 1.6c The held items — a rack, and the Bag becomes the chart
+
+***Built 2026-09-10.*** **5.3b logged held items as a whole register nobody had swept, because benchmark 2 put LEFTOVERS on BASIN's ace and made it the first one a player would ever read.** *Forty-seven of them are named now.* **Only `BLACK BELT` had ever moved, and only because it collided with a trainer class.**
+
+#### The register is the one thing 1.6 and 2.11 both leave open
+
+***1.6 rules that an item is an OPERATION. 2.11 rules that an ability is a STANDING PROPERTY*** — *what is true of a daemon while it is doing nothing.* **A held item is neither, and it sits exactly between them:**
+
+> ***A held item is a CONFIGURATION*** — **a setting attached to a process from outside, in force while it runs, and removable.** *An ability is what it is. A held item is how it was set up.*
+
+#### The seventeen type boosters are one instrument
+
+***Vanilla's are seventeen unrelated trinkets*** — **a spoon, a magnet, a lump of charcoal, a sumptuous scarf.** *There is no set there; there are seventeen separate charms that happen to do the same thing.*
+
+**Ours are seventeen labelled controls on one desk.**
+
+| | |
+|---|---|
+| **`<TYPE> GAIN`** ×17 | gain is amplification on one channel, and that is what the item does |
+| **`FLOW TRIM`** | *a trim is a small gain* — and SEA INCENSE is the small one. **The two words differ by exactly the amount the two items differ by** |
+| **`DITHER`** · **`DITHER TRIM`** | noise added on purpose so nothing can be pinned exactly. *Which is evasion, said properly* |
+| **`HEADROOM`** | the margin left before anything clips. **LEFTOVERS, and the joke survives the rename** |
+| **`MUTE`** | mutes the channel wild daemons listen on |
+
+***Five words from one instrument***, and *8.7 called abilities the second teaching surface the project paid for and never spent* — **this is a third one, and it was sitting in the Bag.** **Each gain's first clause is 2.6's own one-line test for that type, verbatim where it fits**, so *`SWARM GAIN` reads "Many small agents; no single one matters"* and **a player who reads the rack has read the chart.**
+
+***`RIGOUR` is reversed.*** **1.6a named BLACK BELT *"held to argue harder from"* and it was a good name** — *and a rack of eighteen where one is a poem is a bug, not a flourish.* **`LOGIC GAIN`.** *Filed in the Reversed table with its reasoning, because the reasoning was sound and only the set changed.*
+
+#### The other twenty-five, and the four best
+
+| | |
+|---|---|
+| `MACHO BRACE` → **`DEBUG BUILD`** | ***instrumented at every step, so it learns faster and runs slower.*** **Both halves of the item, in a phrase every programmer already owns** |
+| `LUCKY EGG` → **`LEARNING RATE`** | **how large a step each lesson takes.** *The item, stated as the hyperparameter it is* |
+| `DRAGON SCALE` → **`SCALING LAW`** | *what happens to a thing when you only make it bigger* — **and it is an EMERGENT evolution item.** ***The argument and the mechanic said the same word*** |
+| `STICK` → **`OFF BY ONE`** | **the error at the edge that everything else survives**, held by **EDGECASE**. *The same joke told twice and never explained* |
+
+**And `EVERSTONE` → `VERSION LOCK`** — *you pin a dependency so it never moves, and the holder does not evolve.* **Nothing about that one is a metaphor.**
+
+#### Six collisions in one run, and two repairs nobody had noticed
+
+***`BRUTE FORCE`, `OVERCOMMIT`, `OVERVOLT`, `YIELD` and `OVERCLOCK` were all proposed and all already taken*** — **four by moves and one by an ability.** *Re-cut as `BARE METAL`, `HARD CODED`, `SUPPLY RAIL`, `BUBBLE` and, for LIGHT BALL, `SUPPLY RAIL` again.* **`BUBBLE` is better than what it replaced**: *a pipeline bubble is a gap pushed in where nothing issues*, which is a flinch, **and `PIPELINE` is already a species.**
+
+***And two descriptions were quietly broken before this pass started.*** **DEEPSEASCALE described "a scale that shines a HALT pink"** — *the state sweep reached `HEAL` inside a colour* — **and TWISTEDSPOON boosted "CONSTRUE-type moves"**, *the trainer-class rename reaching a type name.* **Both were found by rewriting the file rather than by reading the diff**, which is 2.10's rule about measuring the whole table.
+
+#### What this pass did to the tools, which is the part that matters
+
+***Three separate guards, and every one of them was a rule this project had already written down and not enforced.***
+
+| | |
+|---|---|
+| **`items.json`'s `english` field was both LEARNED FROM and SWEPT** | *the held pass named MIRACLE SEED `GROWTH GAIN`, and the word pass — which had learned `GROWTH -> SCALE UP` from the move table — rewrote it to `SCALE UP GAIN` on the Game Corner prize board.* **A name table is authored. Only its prose is swept** |
+| **A phrase's OUTPUT was swept again by the word pass** | *the same bug from the other side, and the fix is the stash the idioms already had* |
+| **The eighteen TYPE NAMES are now withheld from the word map entirely** | **`NEVER_SWEEP` protected the type TABLE and nothing protected the type WORD.** *An item description reading "this one is GROWTH" became "this one is SCALE UP"* |
+
+***And one guard had gone stale and become the bug.*** **`SMOKE BALL` and `LIGHT BALL` were held out of the sweep because BALL is the capture device and neither of these is one** — *and once they had names of their own the guard was the only thing stopping the rename.* **A stale KEEP is indistinguishable from a missed substitution.**
+
+#### Two registers stay open, and the reason is the same one
+
+***BERRIES are not held items in this sense.*** **Forty-three of them, plus a bag pocket, plus the category word, plus a second name table in `src/data/berries.h`** — *and renaming the item strings alone would leave three surfaces disagreeing*, **which is 1.7's half-rename failure exactly.** *The register is derivable — a berry is a HANDLER, a one-shot that fires on a condition — and the pass is its own.* <span>OPEN</span>.
+
+***And the USABLE items are still vanilla*** — **`REPEL`, `ESCAPE ROPE`, `POKé DOLL`, the vitamins.** *1.6 named the ten that undo a state and stopped there.* <span>OPEN</span>.
+
+#### And EASY CHAT keeps its own copy of everything
+
+***Found by the sweep trying to corrupt it.*** **`src/data/easy_chat/` holds a second, independent copy of the ability, move and species vocabulary across twenty-four files** — *`ABILITY_CACOPHONY` is `NO CHANNEL` in `abilities.h` and still `MAGNET PULL` here* — **and no naming pass has ever touched it.** *The word pass turned that one into `SIGNAL GAIN PULL` before it was fenced off.* **Excluded from `port_vocab` until it is named properly**, because a partial sweep of a name table is worse than none. <span>OPEN</span>.
 
 ### 1.6a The trainer classes — an occupation, and nothing else
 
@@ -5147,6 +5214,57 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 *One thing the sweep almost missed:* **four daemons — MULTICAST, NOISE, SEMAPHORE and KERNEL — fell outside the meetable set** because *their pre-evolutions are met and they are not.* **Checking "does any renamed daemon still have a vanilla one" caught them where the scope query did not** — ***the question you check afterwards is not the question you scoped with.***
 
+### 8.9 MISSINGNO — the one daemon the Index does not hold
+
+***Built 2026-09-10, as an homage, and it turned into the cleanest statement of 4.2's complaint in the game.***
+
+**Gen 1's most famous creature is not a creature.** *Index numbers 0x1F, 0x20 and 0x32 point at no species, so the game reads a name and a sprite out of whatever bytes are sitting at that offset.* ***MissingNo. is the absence of a record, rendered*** — and this project has spent eleven versions arguing that a mind is what somebody wrote down about it.
+
+#### Everything it needed was already in the ROM
+
+***Gen 3 left twenty-five species slots over from a scrapped feature.*** **`SPECIES_OLD_UNOWN_B` through `_Z` have base stats, a learnset pointer, a footprint, an icon and a front sprite, and no species uses any of them.** *The sprite is `gMonFrontPic_DoubleQuestionMark`.* ***A creature living in a leftover index slot, drawn as two question marks, is the whole joke arriving by itself***, and not one byte of new art was needed.
+
+#### Three numbers are the argument and none of them says it
+
+| | |
+|---|---|
+| **`catchRate = 255`** | ***it does not resist being bound.*** *1.1 rules that acquisition is privilege escalation — "an unbound daemon will not run on a box where it only has user rights."* **Nothing recorded this one agreeing or refusing, so there are no rights to check** |
+| **`expYield = 0`** | ***it is worth no experience***, because **nothing recorded the encounter** |
+| **`NATIONAL_DEX_OLD_UNOWN_B` is 387 and `NATIONAL_DEX_COUNT` is 386** | ***every list in the Index is bounded one short of it*** — the numbered pages, the A-to-Z, the type, weight and height sorts, and the counter. **Vanilla's own bound does all of it and not one line of new code was written** |
+
+***The seen and caught bits ARE set.*** **They land in a real byte of the save that nothing ever reads back.** *The record exists and is not counted*, **which is 4.4's crime described as a bit offset**, and nobody says so.
+
+#### The one path that needed anything
+
+***`Cmd_trysetcaughtmondexflags` shows the new-entry screen on capture***, and that reads `gPokedexEntries[387]` — **one past the end.** *So the entry was added, and it is the only reason it exists:* **the player reads it once, at the moment of binding, and can never look it up again.**
+
+#### The pair, and the type
+
+***0.4's rule holds: CONTENT is the mechanism and CONTEXT is the consequence.***
+
+| | |
+|---|---|
+| **CONTENT** | *"No record of this daemon was ever written. What you are reading was assembled from the entries either side."* |
+| **CONTEXT** | *"It is not rare. It is uncounted. The list that would hold it stops one short, and nobody has ever noticed."* |
+
+**Category: `UNRECORDED`.** *8.2d's register is the condition it is in.*
+
+***The type is CORRUPT / ORACLE, and the second half is the exact homage.*** **Vanilla's MissingNo. is the unused BIRD type, and 2.2 named that slot ORACLE** — *"a black box that returns correct answers without showing how."* **The chart has no rows for ORACLE**, so every matchup through it is even and nothing about the fight changes. ***2.9 called ORACLE "one routine, never seen." It is now also one daemon, barely seen.***
+
+***And it has no colour.*** **9.4 rules that a daemon is coloured by its type; this one shares a placeholder sprite and is left grey.** *A daemon the palette has no entry for* — **which is invariant 5 obeyed rather than broken, and it was not designed, only noticed.**
+
+#### Where it is, and how you are told
+
+***Surfing off the east shore of QUICKSILVER, in the one-percent slot of a water table whose own encounter rate is one.*** **That is where Gen 1's tile glitch put it** — *and 4.10 puts Crystal's lab on the same shore.* **Level 80, both ends.**
+
+***The stat line is Gen 1's, read out of the garbage, unchanged:*** **33 / 136 / 0 / 29 / 6 / 6.** *Base DEFENCE of zero is safe — the stat calculation floors a defence at five and nothing divides by the base* — **and the thing with 136 base ATTACK spends its first turn charging, because `BALLISTIC` is a two-turn routine.** ***So the encounter is survivable by accident***, and the only way to lose it is to hit it.
+
+**The old man on the shore is how you hear.** *He already notices what nobody else does — the gold leaf on the new sign, and the old name under it* — **and he adds three sentences, of which the last is the whole section:**
+
+> *"Don't bother telling anybody. It's not on any list, so as far as they're concerned it didn't happen."*
+
+***Which is folklore, and folklore is how anyone ever found the original.***
+
 ### 8.3 Known bottleneck
 
 **Sprites.** 151 daemons, front and back, 2bpp, four shades, 56×56 maximum — roughly 300 hand-tuned tiles. Nothing about it is hard; it is simply the largest block of labor in the project. AI generation can rough out silhouettes, but expect manual cleanup: the Game Boy palette and tile constraints are unforgiving.
@@ -6502,6 +6620,7 @@ Kept here because the reasoning is worth more than the outcome.
 | S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |
 | **CATCH** | **BIND** | The container was renamed and the verb was not. CATCH is the only lexicon entry doing no double duty; BIND is `bind()`, *binding a daimon*, and a bond — and it is darker rather than softer, so the player stays implicated (1.1). |
 | A vented server, cubes explicitly banned | A **cube with a screen**, pips for privilege | The ban existed because a cube says *container*. A screen says *running*, which is the reading 1.3 wanted — so the objection dissolves rather than being overruled. Vents also never shipped: the ladder loop broke before the third vent (1.3). |
+| **RIGOUR**, for the item BLACK BELT | **LOGIC GAIN** | *"Held to argue harder from"* was a good name and its reasoning was sound. 1.6c then made the other sixteen type boosters a rack of labelled controls, and a set of eighteen where one is a poem is a bug, not a flourish. **Only the set changed; the name did nothing wrong.** |
 | Drop the rival naming prompt, hard-code "Ty Clear" | Keep the prompt, hard-code **CLEAR** | The surname is the half that carries the inference. Spending a famous vanilla beat bought nothing — and the prompt, reframed as *what will you call him*, becomes the route-sign device a minute before Route 1 teaches it (4.3). |
 
 ### Open
