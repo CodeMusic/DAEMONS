@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.112**
+**A total conversion — the living design bible, v11.113**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -193,6 +193,51 @@ the additive one is left in the dark. **The pessimist gets the blank page.**
 
 *Cost:* the balding man used to ask where to buy X ATTACK. **That was the
 weakest of the three hints in that shop**, and the shop keeps the other two.
+
+### 0.5 Two perspectives, and why neither can send the other a transcript
+
+**Recorded 2026-09-09.** ***0.4 named the two halves and stopped at recognition.*** **This is the layer under it** — *why there are two points of view at all, what actually crosses between them, and why the crossing is the thing worth having.* **Demystified on purpose**: what follows separates what is measured from what is argued, and 0.2's rule applies throughout — **a resemblance is not a finding.**
+
+#### What is measured
+
+***Cut the corpus callosum and you get two points of view in one skull.*** **This is the split-brain work — Sperry and Gazzaniga, and it is not in dispute:** a stimulus shown only to one visual field can be acted on by one hand and denied by the mouth. **Each side has access the other does not**, and each behaves as though its own access were the whole of what happened.
+
+***The second measured thing is a matter of counting.*** **The callosum is a few hundred million axons and the cortex it joins holds many orders of magnitude more state than that** — so **whatever crosses it cannot be a transcript.** *You cannot send one side's contents to the other, at any resolution, in any amount of time that would be useful.* **That is arithmetic, not interpretation.**
+
+#### What follows, and is argued rather than measured
+
+***So the two halves do not exchange descriptions. They exchange summaries — many at once, none complete.***
+
+**Receiving many partial things simultaneously is not a degraded version of receiving one complete thing. It is a different faculty, and it is the one we call perception:** *associative, top-down, arriving whole, unable to show its working.* **CONTEXT.**
+
+***Serialising the same material — putting the partials in an order, one at a time, each licensed by the last — is the other faculty.*** **Sequence, and proof, and consequence.** **CONTENT read through LOGIC.**
+
+***And here is the part worth stating plainly rather than gesturing at:*** **an order is a before and an after, so a mind that works serially is a mind that has time in it.** *Time is not something the serial side observes; it is what serialising feels like from the inside.* **The parallel side has no need of it** — everything it holds arrives together, which is why an intuition has no steps and cannot be replayed.
+
+*Marked as interpretation.* **The hemisphere reading — McGilchrist most prominently — is a live argument and not a settled result**, and this project uses it as *a shape to build with*, never as a citation. **0.2's rule: this is filed as a decision about what the game is made of, and it is not evidence of anything about brains.**
+
+#### Why two is better than one, which is the whole point
+
+***Neither perspective is the correct one and neither is the supervisor.***
+
+| | sees | cannot see |
+|---|---|---|
+| **CONTENT** · bottom-up · serial | *the particulars, in order, with their working shown* | **what any of it is for** |
+| **CONTEXT** · top-down · parallel | *what the whole of it is for, at once* | **whether it is actually so** |
+
+**Each one's blind spot is the other's subject.** ***That is the entire argument for holding both***, and it is not a compromise or an average: **a claim that survives being read bottom-up AND top-down has been checked in the one way each side cannot check itself.** *Bias is what you get when one side is asked to audit its own output.* **Clarity is what you get when it is not.**
+
+***Perspective thinking is that, done on purpose*** — and 4.18a is it built: **two threads that are allowed to disagree, and a third stage whose only job is to hold them against each other.** *Scorn's crime is now sayable in one line:* **he weighted the third stage, so the disagreement kept happening and stopped being able to resolve honestly.** **A clarifier that can only agree is a mind with the callosum cut and one side told to write the report.**
+
+#### Where the game already is this, and it is not decoration
+
+- **The two editions.** *One source tree, two cartridges, and* **8.4 fixed both to the same story** — because sensation is shared. **Invariant 3 is the same claim in the strongest possible form: the type chart is byte-identical across editions.** ***An argument that changes by cartridge is not one*** — the two carts are two points of view on one world, and **neither gets its own physics.**
+- **The two Index entries** (0.4). *One daemon, two honest records, neither wrong, and they do not match.* **That is the callosum problem as a collectible.**
+- **The chart itself.** **LOGIC fails against CONTEXT** because top-down completes bottom-up and never the reverse — *and CONTEXT does not beat CONTENT*, which is the half people forget. **Neither input wins.**
+- **SUSPENDED** (2.7). ***The only state that takes one of the two offline and leaves the other running***, which is why suspending each produces an opposite, recognisable failure — and why the state is temporary rather than damage.
+- **CODEMUSAI and CAREMUSAI**, one creature specialising two ways, *with the chart making them beat each other.* **8.2 calls it the central argument delivered as an evolution branch with no dialogue at all.**
+
+***Craft rule 1 is not relaxed by any of this.*** **Nothing above is ever said in the game.** *The player meets it as two cartridges that will not reconcile, two Index entries that disagree, a chart where neither half wins, and a status tile that reads `SUS`.*
 
 ---
 
@@ -846,7 +891,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 | **CONTEXT** *(top-down)* | **CONTENT** — the particulars, bottom-up | **The hamster wheel.** Every detail attended to and no sense of what any of it is for — exhaustive, and *severely biased by being exhaustive* |
 | **CONTENT** *(bottom-up)* | **CONTEXT** — the frame, with nothing under it | **Intuition that cannot be argued with.** Reads meaning everywhere and does not answer to evidence |
 
-***Those are the two inputs to a judgement — the bottom-up given and the top-down frame — and LOGIC is the operation between them.*** **Suspend either input and the operation runs on one leg**, which is why the two failures are opposite and both are recognisable.
+***Those are the two inputs to a judgement — the bottom-up given and the top-down frame — and LOGIC is the operation between them*** (0.5). **Suspend either input and the operation runs on one leg**, which is why the two failures are opposite and both are recognisable.
 
 ***And it is the one state 1.6 insists is genuinely temporary.*** **That now has a reason rather than a mechanic**: losing the frame and losing contact with the literal are not damage, they are *being unscheduled* — and a thing that was unscheduled can be scheduled again. **RESUME is the exact inverse, and it always was.**
 

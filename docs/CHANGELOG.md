@@ -5,6 +5,60 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.113 — 2026-09-09
+
+### 0.5 — two perspectives, and why neither can send the other a transcript
+
+- **0.4 named the two halves and stopped at recognition.** This is the layer under it: *why
+  there are two points of view at all, what actually crosses between them, and why the
+  crossing is the thing worth having.* **Demystified on purpose** — what is measured is kept
+  apart from what is argued, and 0.2's rule holds throughout.
+- **Measured:** cut the callosum and you get two points of view in one skull that each
+  behave as though their own access were the whole of what happened. **And the callosum is a
+  few hundred million axons joining a cortex holding orders of magnitude more state — so
+  whatever crosses cannot be a transcript.** *That is arithmetic, not interpretation.*
+- **Argued:** so the halves exchange **many partial summaries at once, none complete**. And
+  ***receiving many partial things simultaneously is not a degraded version of receiving one
+  complete thing — it is a different faculty***, and it is the one we call perception:
+  associative, arriving whole, unable to show its working. **CONTEXT.** *Serialising the same
+  material — one at a time, each licensed by the last — is* **CONTENT read through LOGIC.**
+- ***And the part worth stating rather than gesturing at:*** **an order is a before and an
+  after, so a mind that works serially is a mind that has time in it.** *Time is not
+  something the serial side observes; it is what serialising feels like from the inside.*
+  **The parallel side has no need of it**, which is why an intuition has no steps and cannot
+  be replayed.
+- **The hemisphere reading is marked as interpretation, not citation.** It is a live argument
+  and the project uses it as *a shape to build with* — filed as a decision about what the
+  game is made of, and **not evidence of anything about brains.**
+
+### Why two beats one, which is the whole point
+
+- **Neither perspective is correct and neither supervises.** CONTENT sees the particulars in
+  order with its working shown, and cannot see what any of it is for; CONTEXT sees what the
+  whole is for, at once, and cannot see whether it is so. ***Each one's blind spot is the
+  other's subject.***
+- **Not a compromise and not an average**: a claim that survives being read both ways has
+  been checked in the one way each side cannot check itself. ***Bias is what you get when one
+  side audits its own output.***
+- **4.18a is this built**, and Scorn's crime becomes sayable in one line: **he weighted the
+  stage whose only job is to hold the two against each other**, so the disagreement kept
+  happening and stopped being able to resolve. *A clarifier that can only agree is a mind
+  with the callosum cut and one side told to write the report.*
+
+### Where the game already is this
+
+- **Invariant 3 restated as the strongest form of the claim**: the chart is byte-identical
+  across editions, so **the two carts are two points of view on one world and neither gets
+  its own physics.**
+- The **two Index entries** — one daemon, two honest records, no match: *the callosum problem
+  as a collectible.* **LOGIC fails against CONTEXT and CONTEXT does not beat CONTENT** —
+  neither input wins, which is the half people forget. **SUSPENDED** is the only state that
+  takes one half offline and leaves the other running. **CODEMUSAI against CAREMUSAI.**
+- ***None of it is ever said.*** The player meets two cartridges that will not reconcile, two
+  entries that disagree, a chart where neither half wins, and a tile that reads `SUS`.
+
+---
+
 ## v11.112 — 2026-09-09
 
 ### 2.7 — the ROUTINES pass, written down before a single name is proposed
