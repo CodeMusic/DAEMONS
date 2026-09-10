@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.120**
+**A total conversion — the living design bible, v11.121**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1172,6 +1172,40 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***And the failure messages are where these are actually taught***, because a player meets them far more often than a description: **`There is nothing to PRUNE.`** · **`You cannot TRAVERSE here.`** *One line, at the moment of trying.*
 
 *Recorded, because it was misremembered once:* **`ROCK SMASH` does not exist on the Game Boy.** `engine/data/moves/names.asm` has **STRENGTH and no ROCK SMASH** — *it is a Gen 2 addition that arrived with the port*, which is why DISPLACE (push it aside) and CRACK (break it open) do not overlap. **It belongs in 9.3's list of what the spike bought.**
+
+
+### 2.10 The ROUTINES pass, done to the reachable edge
+
+**Finished 2026-09-10.** ***181 of 356 move names are ours*** — **every routine any daemon in this game learns by level, plus the eight HMs and the two that were already renamed.**
+
+#### What settling the registers first actually bought
+
+***Every one of the 157 came out of 2.9's table rather than out of taste***, and the four best names in the pass are the ones where the register did the work and the writer did none:
+
+| | | |
+|---|---|---|
+| `AERIAL ACE` → **`HOMING`** | VECTOR | *a never-miss move, in a register about heading* |
+| `MUD SPORT` → **`GROUND`** | STRATUM | ***grounding a signal is the literal engineering answer***, and the move literally halves SIGNAL routines |
+| `MIST` → **`READONLY`** | FROZEN | *blocks stat changes* — **weights that do not update, said as a file permission** |
+| `BRICK BREAK` → **`FALSIFY`** | LOGIC | **it breaks LIGHT SCREEN and REFLECT** — *and those are now `STEELMAN` and `PARAPHRASE`.* ***LOGIC falsifying CONTEXT's framings is 2.2's thesis relation, arriving as a move interaction nobody wrote*** |
+
+**Two more the chart wrote for us.** ***`SEISMIC TOSS` → `EQUATE`*** — *its damage equals your level, so the name is the formula.* ***`LOW KICK` → `WEIGH`*** — its power is the target's weight.
+
+#### The checker caught six thefts in one run
+
+**`CLAMP`, `PREEMPT`, `BUFFER`, `ESCALATE`, `ASSIST` and `FORK` were all proposed and all already taken** — *four by species, one by an unrenamed move, one by an item.* **Re-cut as `BROWNOUT`, `FAST PATH`, `PRELOAD`, `ACCUMULATE`, `DELEGATE` and `INSTANCE`.**
+
+***`BROWNOUT` is better than what it replaced***: **a brownout is a voltage sag that makes everything run slow and unreliable**, which is THROTTLED stated electrically, and it is what THUNDER WAVE does.
+
+#### Thirteen kept, and fifty-eight descriptions rewritten
+
+**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK`, `MIMIC`, `MINIMIZE`, `RECOVER`, `ENDURE`, `CONVERSION` and `CONVERSION 2` were left alone** — *2.8's rule that the pass which renames what already lands makes the game worse.*
+
+***And fifty-eight descriptions had to move with their names***, because a description that still describes the old one is worse than no rename at all: *`OCCLUDE` cannot say "bites with vicious fangs".* **Every line measured against the 170px box; the widest is 126.**
+
+#### What is left, and it is not the same job
+
+***The remaining 175 are moves no daemon in this game learns by level.*** **Trainers reach some of them and TMs teach others**, so they are not unreachable — *they are unreachable by the route this pass followed.* **The next pass is the trainer parties and the TM list**, and it is smaller than 175. <span>OPEN</span>.
 
 
 ---
@@ -6212,7 +6246,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
 - ~~`THRASH` and `HARDEN`~~ **Cleared (2.8).** `SIGNAL BEAM` is now unblocked by 2.9's SWARM register — **`GOSSIP`** — and waits only on the SWARM batch
-- **23 routines renamed, 152 to go** (2.9). All seventeen registers are settled, so the remainder is a naming job rather than a series of decisions
+- ~~23 routines renamed, 152 to go~~ **The reachable set is done, 2026-09-10 (2.10): 181 of 356.** *The 175 remaining are moves no daemon in the game learns by level* — **trainers and TMs reach some of them, and that is the next pass**
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
 - **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object

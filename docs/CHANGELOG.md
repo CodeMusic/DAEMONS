@@ -5,6 +5,47 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.121 — 2026-09-10
+
+### 2.10 — the ROUTINES pass, done to the reachable edge
+
+- ***181 of 356 move names are ours*** — **every routine any daemon in this game learns by
+  level**, plus the eight HMs and the two already renamed. **157 in one pass.**
+- ***Every one came out of 2.9's table rather than out of taste***, and the best names are
+  the ones where the register did the work:
+  **`AERIAL ACE` → `HOMING`** *(a never-miss move, in a register about heading)*;
+  **`MUD SPORT` → `GROUND`** *(grounding a signal is the literal engineering answer, and the
+  move halves SIGNAL routines)*; **`MIST` → `READONLY`** *(blocks stat changes — weights that
+  do not update, said as a file permission)*.
+- ***And one the chart wrote for us.*** **`BRICK BREAK` → `FALSIFY` breaks LIGHT SCREEN and
+  REFLECT — which are now `STEELMAN` and `PARAPHRASE`.** *LOGIC falsifying CONTEXT's framings
+  is 2.2's thesis relation, arriving as a move interaction nobody designed.*
+- **`SEISMIC TOSS` → `EQUATE`**, because its damage equals your level and the name is the
+  formula. **`LOW KICK` → `WEIGH`**, because its power is the target's weight.
+
+### The checker caught six thefts in one run
+
+- **`CLAMP`, `PREEMPT`, `BUFFER`, `ESCALATE`, `ASSIST` and `FORK`** were all proposed and all
+  already taken — *four by species, one by an unrenamed move, one by an item.* Re-cut as
+  **`BROWNOUT`, `FAST PATH`, `PRELOAD`, `ACCUMULATE`, `DELEGATE`, `INSTANCE`.**
+- ***`BROWNOUT` is better than what it replaced***: a brownout is a voltage sag that makes
+  everything run slow and unreliable — **THROTTLED, stated electrically**, which is what
+  THUNDER WAVE does.
+
+### Thirteen kept, fifty-eight descriptions rewritten
+
+- **`DISABLE` `PROTECT` `SAFEGUARD` `LOCK-ON` `METRONOME` `RECYCLE` `BLOCK` `MIMIC`
+  `MINIMIZE` `RECOVER` `ENDURE` `CONVERSION` `CONVERSION 2`** left alone — *2.8's rule that
+  the pass which renames what already lands makes the game worse.*
+- ***Fifty-eight descriptions had to move with their names***, because one that still
+  describes the old move is worse than no rename: *`OCCLUDE` cannot say "bites with vicious
+  fangs".* **Every line measured; the widest is 126px of 170.**
+- **What is left is not the same job.** The remaining 175 are moves *no daemon learns by
+  level* — **trainers reach some and TMs teach others**, so the next pass is the trainer
+  parties and the TM list, and it is smaller than 175.
+
+---
+
 ## v11.120 — 2026-09-10
 
 ### 2.9 — the other seventeen registers, and the rule that was a sequence
