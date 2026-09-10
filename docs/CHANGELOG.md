@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.119 — 2026-09-10
+
+### `BUSY WAIT` and `PIN` — and the first one was hiding a better move
+
+- **`THRASH` is `EFFECT_RAMPAGE`**: ninety power, locked in for two or three turns, no
+  switching and no choosing, **and it ends by leaving the user THRASHING.** *Its own
+  description read "rampages about… then becomes thrashing", which after 1.6 read as a typo
+  rather than a joke.*
+- ***That is a busy-wait, exactly and completely*** — **a loop that will not yield the
+  processor, runs flat out for as long as it holds it, and leaves the system thrashing when
+  it is done.** → **`BUSY WAIT`**. *The vanilla move was already describing the thing;
+  nobody had noticed because it was wearing a body word.*
+- **`HARDEN` → `PIN`**, per 2.8's own worked example: *pinned memory cannot be moved or
+  swapped out*, which is DEFENSE-up stated as an operation. **Its description was a body word
+  too** — *"stiffens all the muscles in its body"* — **in a world 1.6 established has no
+  bodies.**
+- ***Two moves now wear another word's name and one is deliberate.*** **`OVERHEAT` is
+  kept** — an ENTROPY move agreeing with ENTROPY's own state is the point. **`SIGNAL BEAM`
+  is Open and held on purpose**: *2.8 settled the CONTENT register and no other*, so naming
+  a SWARM routine now would pre-empt the decision 2.8 exists to make first. **`GOSSIP` is
+  the proposal** — a gossip protocol is nodes passing state around until they agree, which is
+  2.6's clause for SWARM word for word, and the rider leaves the target THRASHING.
+
+---
+
 ## v11.118 — 2026-09-10
 
 ### The last two collisions, and the pair was free
