@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.134**
+**A total conversion — the living design bible, v11.136**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3633,6 +3633,16 @@ Corpus rooms, and the trainer table.
 
 *And the edition names sit inside step 6 without being pointed at.* **A particle's inner state is its CONTEXT; what it does next is its CONTENT.** Nobody says this.
 
+#### It is not invented, and that changes what the rule is for
+
+***Written 2026-09-10 as a character's position. Cited the same day, by accident.*** **`lineage.md` 3b surfaced *The Painted Mirror*, a seven-episode audio drama from November 2022**, and step 3 is in it as verse:
+
+> ***"The source is consciousness, and thoughts are the code, and while matter… it's a process, an ongoing ode."***
+
+**Matter as process, four years before this section existed.** *So the doctrine is not a strange idea given to a strange man.* ***It is the author's own long-held position, handed to a character who then takes it further than the author would.***
+
+**That makes NEVER ADJUDICATE stricter, not looser.** *A game that confirms this doctrine is an author agreeing with himself in his own work* — **which is the one thing craft rule 1 exists to prevent**, and it is much easier to do by accident when you happen to believe the thing. *The scientist overshoots a real position. The overshoot is what makes him safe to write, and the silence is what keeps him honest.*
+
 #### The rule: he OVERSHOOTS, and the game NEVER ADJUDICATES
 
 ***He must go further than the game's own thesis, on purpose.*** **The game asks what counts as a mind. He answers: everything, trivially, all the way down.** *If he is right, the question the whole game is built on dissolves* — and a game that lets its central question dissolve in a side room has been careless.
@@ -5006,6 +5016,8 @@ Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOIN
 *And Gen 1 permits the shape the idea wants:* **two different species can evolve into the same species.** So a penguin-ish line and a dolphin-ish line can both terminate in Penphin — two halves, each of which only becomes whole through another person. Neither half is complete and neither is the *real* one.
 
 *Its name is already correct.* PENPHIN is penguin + dolphin, which is precisely the Gen 1 convention the starters are currently missing — a portmanteau of whole words that sounds like a creature.
+
+***And the two animals are not arbitrary — they are cited.*** **`lineage.md` 3b records the source**: *The Painted Mirror*, a seven-episode audio drama from **November 2022**, where **the dolphin is the logical self** — *"vocalized, confident, and accomplished… yet very time-focused, mechanical, and sometimes cold"* — and **the penguin is the creative one**, *"quiet, organized, spiritual, and feeling."* **The trade requirement is in there too**: *"Alone, neither mirror image of the self will hear clearly."* ***This creature is a memoir, and the bible had been quoting it from memory for weeks without knowing it.***
 
 #### MUSAI — the Eevee slot
 
