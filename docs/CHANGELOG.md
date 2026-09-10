@@ -5,6 +5,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.118 — 2026-09-10
+
+### The last two collisions, and the pair was free
+
+- ***`GROWTH` was a CONTENT move wearing the GRASS type's name.*** ***`SWARM` was vanilla's
+  Bug ability wearing the BUG type's*** — **found by `check_lexicon` on its first run**,
+  which is the whole point of a check that reads every surface rather than the ones that
+  existed when it was written.
+- **Both are the same operation seen from two sides, and the field already had the words:**
+  **`GROWTH` → `SCALE UP`** *(one instance given more)* and **`SWARM` → `SCALE OUT`**
+  *(more instances)*. ***That is the real distinction in the field and it lands on exactly
+  the right two things*** — the CONTENT move makes one thing bigger, the SWARM ability makes
+  more of them and only when pressed. **Neither name had to be invented and the pair was not
+  planned.**
+- **Six ability descriptions still named vanilla types and went with it** — *Ups BUG moves,
+  Ups GRASS moves, Ups FIRE moves, Ups WATER moves, Not hit by GROUND attacks, Traps
+  STEEL-type DAEMON.* **The ability NAMES are still vanilla** — WATER ABSORB, FLASH FIRE,
+  ROCK HEAD — *and belong to 8.7's ability pass, not to this one.*
+- ***`check_lexicon` now reports clean: 1,152 names across abilities, items, moves, species,
+  states and types, and no word means two things.***
+
+---
+
 ## v11.117 — 2026-09-10
 
 ### 5.3 — the other seven benchmarks, and what a grinder runs into

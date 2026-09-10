@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.117**
+**A total conversion — the living design bible, v11.118**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1074,9 +1074,24 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***The move table has been colliding with our own lexicon since the renames started, and nothing checked, because the move pass never began.*** **Same class as `INTERRUPT` being assigned twice** (1.6).
 
+#### Cleared 2026-09-10, and the pair was free
+
+***`GROWTH` was a CONTENT move wearing the GRASS type's name, and `SWARM` was vanilla's Bug ability wearing the BUG type's*** — **the second found by `check_lexicon` on its first run** (8.7), which is the point of a check that reads every surface rather than the ones that existed when it was written.
+
+**Both are the same operation seen from two sides, and the field already has the words:**
+
+| | | |
+|---|---|---|
+| **`GROWTH`** move → **`SCALE UP`** | *raises one stat* | **scaling up is one instance given more** |
+| **`SWARM`** ability → **`SCALE OUT`** | *powers up SWARM routines in a pinch* | **scaling out is more instances** |
+
+***That is the real distinction in the field, and it lands on exactly the right two things*** — **the CONTENT move makes one thing bigger; the SWARM ability makes more of them, and only when pressed.** *Neither name had to be invented and the pair was not planned.*
+
+**Five ability descriptions still named vanilla types and went with it** — *"Ups BUG moves", "Ups GRASS moves", "Ups FIRE moves", "Ups WATER moves", "Not hit by GROUND attacks"* — **and `Traps STEEL-type DAEMON` made six.** ***The ability names themselves are still vanilla*** — WATER ABSORB, FLASH FIRE, ROCK HEAD — **and belong to 8.7's ability pass, not to this one.**
+
 | | collides with | |
 |---|---|---|
-| **`GROWTH`** move | the **GROWTH** type | ***Must move.*** A CONTENT move wearing the GRASS type's name |
+| ~~**`GROWTH`** move~~ | the **GROWTH** type | ***Moved 2026-09-10 → `SCALE UP`.*** Scaling **up** gives one instance more; scaling **out** gives more instances — *and the ability that collided the same day took the other half* |
 | **`THRASH`** move | the **THRASHING** state | ***Must move*** — and it is a candidate for 2.7's open question about who owns THRASHING |
 | **`HARDEN`** move | the **HARDENED** type | Must move |
 | `SIGNAL BEAM` | the **SIGNAL** type | A SWARM move wearing SIGNAL's name |
@@ -6114,7 +6129,7 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
-- **`SWARM` is our BUG type and vanilla's Bug ability** (8.7), found by check_lexicon on its first run. With `GROWTH` (move + type), two words still mean two things
+- ~~`SWARM` and `GROWTH` each mean two things~~ **Cleared 2026-09-10 (2.8): `SCALE OUT` and `SCALE UP`.** *check_lexicon reports 1,152 names and no word meaning two things*
 - **The Chart publishes fifteen types and the ROM runs seventeen** (8.7). Re-score the one-clause test at 17 — CONTEXT's 8/8 was scored without OPAQUE, which is immune to it
 - **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
 - ~~Craft rule 5 is unpaid for benchmarks 2–8~~ **Designed 2026-09-10 (5.3).** *Seven leaders, each with the thing an overlevelled player still runs into* — **now it is a build task rather than a design one**
@@ -6122,7 +6137,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
-- **Ten move names collide with our own lexicon** (2.8) — `GROWTH`, `THRASH` and `HARDEN` must move, and nothing has checked because the move pass never started
+- **`THRASH` and `HARDEN` still wear a state's and a type's name** (2.8). `GROWTH` is cleared; these two wait on the ROUTINES pass, and neither is an exact collision so check_lexicon does not catch them
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
 - **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object
