@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.129**
+**A total conversion — the living design bible, v11.130**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3563,6 +3563,48 @@ Corpus rooms, and the trainer table.
 
 **BOULDERBADGE → SLATE MARK.** A mark *on* a slate is physical encoding; a mark *as a grade* is what a benchmark issues. *The other seven followed as a set* — naming eight certifications was one decision, not seven.
 
+### 5.3b The seven designs are mechanics now, and GROWTH could not do what was asked
+
+***Built 2026-09-10.*** **5.3 named four levers that ignore level — priority, status, party composition and the room — and every leader now has one in the ROM.** *Six parties were rewritten, two mechanics are C, and one is a gym script.*
+
+| # | Leader | The lever | Where it lives |
+|---|---|---|---|
+| 1 | **CAIRN** | party composition | *nothing was written* — the line already has DURABLE |
+| 2 | **BASIN** | the room | `CeruleanCity_Gym/scripts.inc` + LEFTOVERS on the ace |
+| 3 | **GAUGE** | priority | every party member knows **FAST PATH** |
+| 4 | **TRELLIS** | party composition | four members, four shut-downs |
+| 5 | **TILT** | status | **TRACER** joins, carrying **ORPHAN** |
+| 6 | **MATTE** | status | **REPLAY** on MIME, **SILENCE** and **DISABLE** on the ace |
+| 7 | **ANNEAL** | party composition | 22 lines in `CreateNPCTrainerParty` |
+| 8 | **SCORN** | the damage calculation | one flag, read in three places |
+
+#### GROWTH has no coverage, and the design had to change shape rather than be dropped
+
+***4's brief said "each member answers one of the four things a player brings to a GROWTH gym", and the engine does not allow it.*** **Gen 3 gives grass-types no typed answer to fire, flying, ice or bug** — *there is no legal routine on TARPIT, BADSEED, SPAGHETTI or ENSEMBLE that hits any of the four for extra damage.* **The wish was written before anyone checked the movepool**, which is 5.3's own complaint about *"punishes split focus"* arriving one level down.
+
+**So "answers" moved from damage to what each member takes away**, and it is a better gym for it:
+
+- **SPAGHETTI** answers **speed** — SATURATE, and a fast sweeper does not get to be fast
+- **BADSEED** answers **the attacker** — STARVE, which halves it and costs it turns
+- **TARPIT** answers **the CORRUPT switch-in** — DUMP, the one typed answer grass does get
+- **ENSEMBLE** answers **the special attacker** — **STEELMAN**, and in Gen 3 *fire is special*, so the starter everyone brings to a GROWTH gym is answered by a screen rather than by a type
+
+***Every one of those is level-proof, which was the actual test.*** **A screen halves the damage at level 60 exactly as it does at level 30**, and 4's line — *"most people bring their best"* — now describes a fight the player has had.
+
+#### The three things the build corrected
+
+***BASIN is "she" and 5.3 said "his" four times.*** **The ROM has said `She won't lose to someone like you!` since the port** — *the design document was arguing with dialogue that was already written.* **Corrected in 5.3, not in the game.** *2.8's rule again, from the other direction: when the prose and the table disagree, the table is what shipped.*
+
+***ANNEAL's shuffle happens after the party is created, not during.*** **`CreateNPCTrainerParty` accumulates a name hash into the personality value**, so shuffling inside the loop would have changed every stat on every member every fight — **a randomised party and a randomised opponent are different designs**, and only one of them is 7's.
+
+***SCORN's flag is scoped to the benchmark, not to the character.*** **`TRAINER_LEADER_GIOVANNI` only** — his two earlier appearances still roll. *5.3 filed the mechanic under benchmark 8 and the build did what the design said*, but **whether a man who does not roll should be rolling at Rocket Hideout is a real question** and it is <span>OPEN</span>.
+
+#### And one register is now visible that was not
+
+***BASIN's ace holds LEFTOVERS, and held items have never been swept.*** **Seventy-odd of them still read as Gen 3 wrote them** — *BRIGHTPOWDER, QUICK CLAW, SCOPE LENS* — **and benchmark 2 is the first place in the game a player reads one.** *Only `BLACK BELT` was ever renamed, and only because it collided with `FORMALIST`.*
+
+**Naming just this one would be exactly what 8.7 rules against**: *a ruling nobody swept is a draft.* **The register is logged whole, and LEFTOVERS ships as LEFTOVERS until it is done properly.**
+
 ### 5.3a The names reached the ROM, and 743 trainers did not need renaming
 
 ***Built 2026-09-10.*** **The seven benchmark leaders were designed in 5.3 and the trainer table still said MISTY.** *Six of them are in now* — **BASIN, GAUGE, TRELLIS, TILT, MATTE, ANNEAL** — beside CAIRN and SCORN, who were already there. ***And 127 lines of dialogue moved with them***, because a leader who introduces herself by a name the battle screen does not use is worse than one who was never renamed.
@@ -3607,17 +3649,17 @@ Corpus rooms, and the trainer table.
 
 ***A basin is a bowl that holds water, and a basin of attraction is the region an optimiser falls into and cannot climb out of.*** The name is both, and the town was already named for the failure state.
 
-**His creed:** *you get better by going downhill. Keep going down and you arrive.*
+**Her creed:** *you get better by going downhill. Keep going down and you arrive.*
 
-***THE GYM HAS NO GRADIENT, and this is the design.*** **No wild encounters, and his trainers heal your party after they lose.** *You leave with exactly what you walked in with.* **The one gym in the game you cannot grind inside**, and nobody says why.
+***THE GYM HAS NO GRADIENT, and this is the design.*** **No wild encounters, and her trainers heal your party after they lose.** *You leave with exactly what you walked in with.* **The one gym in the game you cannot grind inside**, and nobody says why.
 
-***THE MECHANIC.*** **His ace holds LEFTOVERS and knows RECOVER. High Defence, ordinary HP.** *A player who attacks at a steady rate never gets anywhere* — **the healing is per-turn and so is the damage, so the fight is a draw forever.** ***More power does not break a loop; it just makes a bigger loop.***
+***THE MECHANIC.*** **Her ace holds LEFTOVERS and knows RECOVER. High Defence, ordinary HP.** *A player who attacks at a steady rate never gets anywhere* — **the healing is per-turn and so is the damage, so the fight is a draw forever.** ***More power does not break a loop; it just makes a bigger loop.***
 
 **What breaks it is anything that is not more of the same** — a stat drop, a status, a critical. ***You have to change the shape of what you are doing, which is what escaping a local minimum is.***
 
 ***THE GRINDER RUNS INTO:*** **a draw.** *The one benchmark where being stronger genuinely does not help*, and the player discovers it by trying.
 
-**How he loses.** He congratulates you for finding a way down he had not. *He does not notice that is the entire lesson.*
+**How she loses.** She congratulates you for finding a way down she had not. *She does not notice that is the entire lesson.*
 
 ---
 

@@ -5,6 +5,43 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.130 — 2026-09-10
+
+### The seven benchmark designs are mechanics now
+
+- ***Six leader parties rewritten, two mechanics in C, one gym script.*** **5.3 named four
+  levers that ignore level — priority, status, party composition and the room — and every
+  leader now has one in the ROM.** *CAIRN needed nothing: his line already has DURABLE.*
+- **BASIN.** *The GYM has no gradient.* **No wild encounters, both trainers put your party
+  back the way it was after they lose**, and the ace holds LEFTOVERS beside RESTORE and PIN,
+  so a steady attacker draws forever. **Nobody says why.**
+- **GAUGE** gives **FAST PATH** to all three; **TILT** gains **TRACER**, who carries
+  **ORPHAN**; **MATTE** gets **REPLAY** on MIME and **SILENCE** with **DISABLE** on the ace —
+  *three routines, all of them about what you are permitted to consider.*
+- **ANNEAL's party order is shuffled**, in 22 lines of `CreateNPCTrainerParty` — **after the
+  party is created, so the name hash and therefore every stat is untouched.** *A randomised
+  party and a randomised opponent are different designs.*
+- **SCORN does not roll.** ***Maximum damage every time, never a critical, secondary effects
+  never proc*** — one flag read in `ApplyRandomDmgMultiplier`, `Cmd_critcalc` and
+  `Cmd_seteffectwithchance`. **Scoped to `TRAINER_LEADER_GIOVANNI`**; his two earlier fights
+  still roll, and whether they should is <span>OPEN</span>.
+
+### Two things the build found
+
+- ***GROWTH has no coverage and 5.3 asked for it anyway.*** **Gen 3 gives grass-types no
+  legal routine that hits fire, flying, ice or bug for extra damage** — *the wish was written
+  before anyone read the movepool.* **So "answers" moved from damage to what each member
+  takes away**: SATURATE answers speed, STARVE answers the attacker, DUMP answers the CORRUPT
+  switch-in, and **STEELMAN answers the special attacker — which in Gen 3 is the fire starter
+  everybody brings.** *All four hold at level 60.*
+- ***BASIN is "she" and 5.3 said "his" four times.*** **The ROM has said `She won't lose to
+  someone like you!` since the port.** *Corrected in the document, not in the game.*
+- **And one register became visible.** **Held items have never been swept** — *BRIGHTPOWDER,
+  QUICK CLAW, SCOPE LENS* — **and benchmark 2 is the first place a player reads one.** Naming
+  only LEFTOVERS would be the draft 8.7 rules against, **so the register is logged whole.**
+
+---
+
 ## v11.129 — 2026-09-10
 
 ### The Review Board is named, and 6's table had two stale rows
