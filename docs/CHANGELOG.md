@@ -5,6 +5,90 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.134 — 2026-09-10
+
+### 4.33 — the one daemon, recorded before it was lost
+
+- **A doctrine carried in conversation and nowhere else**, written down in full at the
+  request of the person holding it. **The world is one daemon; every entity is a sub-process
+  of it; material is a sub-process too** — *a rock has moving parts that hold it stable, and
+  something is running in there keeping it a rock.* **Every process carries a spark of the
+  whole system's awareness — a proto-experience, not a mind.** *Complexity is a swarm and
+  never a unit, so every material thing is more a crowd than an individual.*
+- **And the elementary things have an inner state.** A particle interacts, the interaction
+  changes that state — *an atom becomes charged* — and the changed state changes how it
+  interacts next. ***That feedback loop of processes exchanging information is a neural
+  network. Not like one.*** **So we are processes of a great daemon, and what we see is what
+  a neural network looks like from the inside.**
+- **Why it is dangerous rather than merely odd:** ***step 6 is already in the bible at a
+  different scale.*** 4.7 says of S.T.A.R.R. that *context determines which content is
+  available, and the content you end up holding reshapes the context you are in.* **The
+  scientist says the same sentence about an atom.** *It adds no mechanism — it takes the
+  game's own mechanism and removes the size requirement.*
+- **It is also a claim about the chart**, which is the best kind this project can host:
+  STRATUM is *the physical layer everything else runs on*, LATENT is *running below the
+  surface, unobserved* — **he says those are one type, and the ground is running.**
+- ***THE RULE: he OVERSHOOTS, and the game NEVER ADJUDICATES.*** The game asks what counts as
+  a mind; he answers *everything, trivially, all the way down*. **If he is right the question
+  the whole game is built on dissolves**, so he is a pressure test rather than a mouthpiece.
+  **No character confirms him and none debunks him. No event proves him and none embarrasses
+  him.** *The temptation will be one line somewhere that nods — and that line is the moral,
+  which the form is defined by withholding.*
+- **What it buys: Crystal becomes the moderate.** *A thesis with nobody to its left reads as
+  the author's pet.* And the observer question — **a plant, a rock with moving parts, a
+  plan** — finally has a room to be asked in.
+- **Not the Owl** (4.23 has him arguing the standard position from the bought city) and **not
+  a Corpus employee** (0.1's rule 6 is a different joke). <span>OPEN</span>: placement, his
+  name, and whether the doctrine has a name. **Not after a type** — `SWARM` is step 5's own
+  word and `check_lexicon.py` would catch it.
+
+### 8.2a — reopened, and the islands are Act 2
+
+- **The deferral held for four days and did its job**: the islands are still `ONE ISLAND`
+  through `SEVEN ISLAND` while Kanto is Blanche, Callow, Slate and Doldrum. *It was reopened
+  for the opposite reason to the one written* — **not because the post-game proved thin, but
+  because the opera already contained Act 2 and the game had nowhere to stage it.**
+- ***4.14 is a scene that has never been staged.*** **The machine finds Ty** — not by
+  searching, *"it works out where a man in his condition would go, and goes there"* — and
+  delivers Crystal's message, and it lands. **The open log has been asking whether Ty's
+  absence from the endgame reads as a statement or a loose thread. It reads as a thread.**
+- **Measured: 136 maps, 2,043 strings, ~9,500 words — 25% of the game's map dialogue**, and
+  **121 `DAEMON` against 0 `POKéMON`**, so the vocabulary pass already reached it and only
+  the plot is stale. **Zero new gym leaders.** `PHLEGMATIC` is *already* in Icefall Cave.
+- **The spine is vanilla's own**: a machine that needs two halves to link two worlds, which
+  is the edition split made literal (8.4). **And the islands already gate Doldrum Cave**, so
+  ***S.T.A.R.R. is not what you bring to Act 2 — it is what Act 2 is for.***
+- **The tone rule, which is the whole reason the islands differ.** *Kanto is where you are
+  assessed; the islands are where you are seen from somewhere else.* **The mainland declares,
+  instructs and assesses; the islands ask, or offer a second reading.** ***Kanto tells you
+  what things are. The islands tell you how they look from where the speaker is standing.***
+  — checkable on a single line, which is the only kind of rule that survives 9,500 words.
+- **The ending.** Both men are in the warehouse and **Scorn does not recognise him**; they
+  worked the same operation from opposite ends and were never in a room. **Ty gives you the
+  package and Ty does not come home** — 4.14 is exact that *the repair is a fact delivered,
+  not a feeling exchanged*, and a son at the door would undo it. **She reads it. That is the
+  last scene.**
+- **Tiers 0 and 1 are done. Tier 3 — naming 35 places and rewriting 9,500 words — stays
+  deferred on the same condition:** *not until the rest is in play.*
+
+### And four scenes in the ROM
+
+- **Scorn's breakthrough was already in his Callow speech.** He splits the blame with a
+  machine and says *"it has never said otherwise"* — 4.18 already logs that as his flaw.
+  ***The breakthrough is him hearing the sentence he just said***: one beat, an ellipsis, and
+  **"It could not have."** He does not understand it yet.
+- **Ty is the scientist at Dotted Hole.** *Strip the cackle and the argument underneath is a
+  businessman's.* **He tells you where he is taking it** — which is why you know to go to the
+  Warehouse, and why he is still there. *He was not hiding. He was trading.*
+- **The staff do not say disbanded.** *"He has CHANGED? People do not change. They get
+  promoted."* And on seeing his MARK on a child: ***"…Is it true, what they say? That he
+  stopped in the middle of a sentence?"***
+- **`TEAM CORPUS` → `CORPUS STAFF`** as the trainer class. *0.1's rule 6 has called them
+  employees since the first draft.* `CORPUS EMPLOYEE` is fifteen characters against a
+  twelve-character budget; **`CORPUS STAFF` is exactly twelve.**
+
+---
+
 ## v11.133 — 2026-09-10
 
 ### The ENCOUNTER page, and one berth serving two ships
