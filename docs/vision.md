@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.132**
+**A total conversion — the living design bible, v11.133**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6520,6 +6520,44 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***Rejected, and worth recording:*** **`CODEX`** — *prettier, and it does no double duty in computing.* **`NEXUS`, `MATRIX`, `VERTEX`** — *sci-fi flavour, and this project's furniture is deliberately duller than that.* **`INDEX-II`** — *a version number on a thing 4.2 wants the player to distrust is the wrong kind of joke.*
 
 ***And the GLOBAL INDEX is still one short.*** **8.9 put MISSINGNO at 387 and the complete list stops at 386.** *Nobody says so.*
+
+### 9.18 The ENCOUNTER page, and one berth serving two ships
+
+***Built 2026-09-10, and the best thing in it was found by a question rather than by the build.***
+
+#### The S.S. ANNE and the ferry are the same sailor
+
+***`VermilionCity_EventScript_FerrySailor` branches on one variable.*** **Below scene 3 he says *"Welcome to the S.S. ANNE"*; at scene 3 he is the SEAGALLOP sailor** — *one object, one dock, and the scene number is the ship having left.*
+
+**Which means 9.17's `ISLANDS` entry sails the S.S. ANNE by setting a variable**, and *the debug kit grants the S.S. TICKET specifically so that ship can be boarded* — **so the button quietly closed the thing another part of the same scaffolding exists to open.** ***The confirm box now says so***, in the two lines it takes: *the berth is shared, and a new file is how you board her.*
+
+**Not silently guarded, and that is the choice.** *A debug jump that refuses to do the thing you asked is worse than one that tells you what it costs.*
+
+#### And RECORD is not enough on its own, which is why both are there
+
+***Beating the REVIEW BOARD opens nothing by itself.*** **9.17's table is the derivation**; the short version is that **the ISLANDS need a ferry that needs CELIO's quest that needs HOLT to have taken you to ONE ISLAND** — *main-story, and untouched by the HALL OF FAME.* **`RECORD` gets you the GLOBAL INDEX. `ISLANDS` gets you the boat.** *Neither implies the other, and a debug save has neither.*
+
+#### The ENCOUNTER page — a second submenu, by the same trick as the first
+
+***9.3's submenu is a flag that changes which items `SetUpStartMenu` appends.*** **The moment there were two submenus that flag became a page number and nothing else changed** — *the cursor, the input handling, the descriptions and the frame are all still the start menu's own.*
+
+| | |
+|---|---|
+| **`DAEMON`** | ***the row prints the species NAME and nothing else.*** **LEFT and RIGHT step by one and repeat when held; L and R step by ten** |
+| **`LEVEL`** | *same stepper, 1 to 100* |
+| **`INVOKE`** | **1.6 spent this word already** — *"you bind() a daemon and you INVOKE it"* — **and what this row does is bring one up.** *The same verb, used literally* |
+
+***The list runs over NATIONAL DEX NUMBERS rather than species ids***, which buys two things for free: **the twenty-five dummy slots Gen 3 left between CELEBI and TREECKO are not in it**, and *1..151 is the KANTO INDEX exactly.* **With the GLOBAL INDEX it runs to 387** — ***one past the end of the complete list***, because 8.9 put MISSINGNO there. **This menu is the only place in the game that list is not one short.**
+
+#### Two things the build had to be told rather than guessed
+
+***The start menu is seven tiles wide and its rows print at x=8, so a row has 48 pixels.*** **The widest of the 412 species names is 60, and sixty-seven of them would have clipped.** *Nine tiles gives 64 and clears every one* — **measured across the whole table, not sampled**, and the width is set only while a debug page is open so the ordinary menu is untouched.
+
+***And an initialised static in `new_menu_helpers.c` does not link.*** **The link script discards that file's `.data`**, and what you get is *"defined in discarded section"* — **a message that names neither the variable nor the reason.** *Zero means "the vanilla width", which is also the state every other path is already in.*
+
+#### The battle is started by a script, and that is not decoration
+
+**`dowildbattle` stops the script context and hands the resume to the battle's saved callback**, so ***it needs a script to come back to.*** *A menu callback has none.* **So the daemon is built in C — `CreateScriptedWildMon` is safe from anywhere — and a four-line script does the rest**, which is the same handover `RECORD` uses and the same one a signpost uses.
 
 ### 9.2 Order of operations
 

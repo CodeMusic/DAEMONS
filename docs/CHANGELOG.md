@@ -5,6 +5,42 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.133 — 2026-09-10
+
+### The ENCOUNTER page, and one berth serving two ships
+
+- ***The S.S. ANNE and the SEVII ferry are the same sailor.*** **`VermilionCity_EventScript_FerrySailor`
+  branches on one variable** — below scene 3 he welcomes you aboard the ANNE, at scene 3 he is the
+  SEAGALLOP sailor. ***So 9.17's `ISLANDS` entry sails the ANNE***, and the debug kit grants the
+  S.S. TICKET specifically so that ship can be boarded. **The confirm box now says so.** *A debug jump
+  that refuses to do the thing you asked is worse than one that tells you what it costs.*
+- **`RECORD` gets you the GLOBAL INDEX. `ISLANDS` gets you the boat.** ***Neither implies the other***
+  — the islands need a ferry that needs CELIO's quest that needs HOLT to have taken you to ONE ISLAND,
+  which is main-story and untouched by the HALL OF FAME.
+- ***A second submenu, by the same trick as the first.*** **The flag that chose which items
+  `SetUpStartMenu` appends became a page number and nothing else changed.**
+- **`DAEMON`** prints the species name on the row; **LEFT/RIGHT step by one and repeat when held, L and
+  R step by ten.** **`LEVEL`** is the same stepper. **`INVOKE`** starts it — *1.6 spent that word
+  already, "you bind() a daemon and you INVOKE it", and this row brings one up.*
+- ***The list runs over national dex numbers, not species ids***, so the twenty-five dummy slots are
+  not in it and **1..151 is the KANTO INDEX exactly.** **With the GLOBAL INDEX it runs to 387** —
+  *one past the end of the complete list*, because 8.9 put MISSINGNO there. ***The only place in the
+  game that list is not one short.***
+
+### Two things the build had to be told
+
+- ***A menu row has 48 pixels and the widest of the 412 species names is 60.*** **Sixty-seven would
+  have clipped.** *Nine tiles gives 64 and clears every one* — measured across the whole table, and
+  applied only while a debug page is open.
+- ***An initialised static in `new_menu_helpers.c` does not link*** — the link script discards that
+  file's `.data`, and the error names neither the variable nor the reason. **Zero means the vanilla
+  width, which is what every other path is already in.**
+- **`dowildbattle` stops the script context and hands the resume to the battle's saved callback**, so
+  ***it needs a script to come back to*** and a menu callback has none. The daemon is built in C and a
+  four-line script does the rest — *the same handover `RECORD` uses, and the same one a signpost uses.*
+
+---
+
 ## v11.132 — 2026-09-10
 
 ### The GLOBAL INDEX, and two debug entries that leave the menu
