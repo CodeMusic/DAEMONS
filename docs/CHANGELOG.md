@@ -5,6 +5,46 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.148 — 2026-09-10
+
+### T-23 — the island names, and the reading that halved the job
+
+- ***The ticket said "35 places" and the reading said three kinds of place.*** **Counting them was most
+  of the work:**
+  - **A place that carries its island's number is a place nobody named** — `THREE ISLE PORT`,
+    `FIVE ISLE MEADOW`, `SEVII ISLE 6`–`24`. ***That is 8.2a's grace note itself***, so they keep the
+    number.
+  - **`TANOBY` and the seven chambers are transliterations of an alphabet 4.24 says nobody reads.**
+    *Renaming them would be translating the one thing whose whole point is that you cannot.*
+  - **2.10 leaves `NAVEL ROCK` and `BIRTH ISLAND`** — no player of this game reaches either.
+- **Which left twenty-one**, and a register that is not island-flavoured Kanto: ***Kanto's names are
+  tones and institutions; the islands' names are what one person called a place once, and it stuck.***
+  `MT. SMOULDER` · `FINDERS BEACH` · `THE OVERLOOK` · `SOMEONE'S STONE` · `THE WRONG WAY` ·
+  `WHAT REMAINS` · `NOBODY'S ISLE` · `THE WAY IN`.
+- ***`tools/port_sevii.py` owns the table***, which is the point of it: **overruling any one name is
+  one edit and a re-run**, and the JSON, the C symbols and the dialogue all follow.
+- **It caught both things this was going to break.** ***Seven hand-written `sMapsecName_*` symbols in
+  `region_map.c`*** — the trap that broke the build three times during the species sweep, and the one
+  the tool was written around. **And one swept line pushed past the 196px box** because `STILLFALL` is
+  two characters longer than `ICEFALL`.
+- ***Two caps, neither declared anywhere in the engine, both read out of the code:*** **18 characters**
+  from `u8 mapName[19]`, and **112 pixels** from the name popup centring with `(maxWidth - width) / 2`
+  on ***unsigned*** values — *wider than that underflows a u32 and the popup draws the name off the
+  window instead of clipping it.* **All twenty-one fit inside vanilla's own widest, 96px.**
+- **Tier 3 is now 3a (done) and 3b (T-26, the ~9,500 words).** *The names were the cheap half and
+  saying so is the honest version.*
+
+### The debug kit is already told about the STREAM
+
+- ***Granting all eight MARKS in one frame unlocks nine shows in one frame***, and T-12's per-step hook
+  then announced them **one at a time, eight message boxes into a new debug save.** *The hook was
+  right; the save was not.*
+- **Fixed in the kit rather than the hook.** ***Gating the notification on `DAEMONS_DEBUG` would have
+  made the debug build the one build where the notification cannot be tested*** — and only what is
+  **unlocked** is marked told, so anything unlocking later in a debug save still announces itself once.
+
+---
+
 ## v11.147 — 2026-09-10
 
 ### T-09 — the two KNOWN FAULT cards, and the case nobody had labelled

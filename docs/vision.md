@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.147**
+**A total conversion — the living design bible, v11.148**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5328,6 +5328,48 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 **She reads it. That is the last scene.** *What is in it is not written here and may never need to be.*
 
+#### The naming rule, which fell out of counting the places — 2026-09-10
+
+***Tier 3 is two jobs wearing one line, and the smaller one is done.*** **Reading the 35 places rather than listing them splits them three ways, and the split is most of the work:**
+
+| | | |
+|---|---|---|
+| **numbered** | `THREE ISLE PORT` · `THREE ISLE PATH` · `FIVE ISLE MEADOW` · `SEVII ISLE 6`–`24` | ***A place that carries its island's number is a place nobody named.*** **That is the grace note itself**, so they keep the number |
+| **transliterated** | `TANOBY RUINS` · `TANOBY KEY` · `TANOBY CHAMBERS` · the seven chambers | **4.24 makes these an alphabet nobody reads** — *so the names are transliterations, not translations,* ***and renaming them would be translating the one thing whose point is that you cannot*** |
+| **named** | **the twenty-one below** | *somebody arrived, and what they called it says where they were standing* |
+
+**`NAVEL ROCK` and `BIRTH ISLAND` are left by 2.10** — *no player of this game reaches either.*
+
+***So the register is not "island-flavoured Kanto".*** **Kanto's names are tones and institutions** — BLANCHE, DOLDRUM, VERDIGRIS, FOUNDRY CO. **The islands' names are what one person called a place, once, and it stuck**: *plain, provisional, occasionally about the arriver instead of the place.*
+
+| | ours | *and where the namer was standing* |
+|---|---|---|
+| `KINDLE ROAD` | **`SMOKE ROAD`** | *you walk it looking at the mountain, which is smoking* |
+| `TREASURE BEACH` | **`FINDERS BEACH`** | *somebody found something here once and the name kept the promise* |
+| `MT. EMBER` | **`MT. SMOULDER`** | *burning without flame is what it does and what it looks like from the sea* |
+| `EMBER SPA` | **`KETTLE SPRING`** | *named for the only hot thing the namer had a word for* |
+| `CAPE BRINK` | **`THE OVERLOOK`** | *a cape is a place you look **from** — and the other meaning sits underneath, never pointed at* |
+| `BOND BRIDGE` | **`LONGCROSS`** | *it is long and you cross it; nobody was feeling poetic* |
+| `BERRY FOREST` | **`DENSE WOOD`** | *what it is like to be in, said by someone who had been in it* |
+| `WATER LABYRINTH` | **`TANGLEWATER`** | *the water is the maze, which is not obvious until you are in it* |
+| `ICEFALL CAVE` | **`STILLFALL CAVE`** | *a waterfall that stopped — and PHLEGMATIC is in it, slow, which nobody says* |
+| `RESORT GORGEOUS` | **`RESORT SUBLIME`** | *somebody named their own resort, and slightly overdid it* |
+| `MEMORIAL PILLAR` | **`SOMEONE'S STONE`** | *a stone someone put up. **Not knowing whose is the point of it*** |
+| `OUTCAST ISLAND` | **`NOBODY'S ISLE`** | *the grace note said an island nobody named, so one of them says so* |
+| `LOST CAVE` | **`THE WRONG WAY`** | *named by somebody who took it* |
+| `GREEN PATH` | **`SLOW WALK`** | *and 4.33's man takes eight visits to get through it* |
+| `WATER PATH` | **`LONG WADE`** | *what it takes, rather than what it is* |
+| `RUIN VALLEY` | **`WHAT REMAINS`** | *the islands offer a second reading; this one offers it in the name* |
+| `PATTERN BUSH` | **`THE SAME BUSH`** | *a maze where every corner looks like the last one, described honestly* |
+| `DOTTED HOLE` | **`THE DOTS`** | *said by somebody who could see them and could not read them* |
+| `ALTERING CAVE` | **`OTHER CAVE`** | *it never holds the same thing twice, so the label never settled either* |
+| `CANYON ENTRANCE` | **`THE WAY IN`** | *the plainest label on the islands, and nobody improved on it* |
+| `SEVAULT CANYON` | **`LONG DROP`** | *a canyon said from the top of it* |
+
+***`tools/port_sevii.py` owns that table*** — **which is what makes any one of these cheap to overrule:** *change the line, re-run, and the JSON, the seven hand-written C symbols and the thirty references in dialogue all follow.*
+
+**It also carries two caps neither of which is declared anywhere in the engine**, both read out of the code rather than remembered: **18 characters**, from `u8 mapName[19]` in `region_map.c`; and **112 pixels**, from the name popup centring with `(maxWidth - width) / 2` on ***unsigned*** values — ***a name wider than that underflows a u32 and the popup draws it off the window rather than clipping it.*** *All twenty-one fit inside vanilla's own widest name, 96px.*
+
 #### Scope, in tiers — because 8 is still 8
 
 | | | cost |
@@ -5335,7 +5377,8 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | **0** | The Act 2 shape, this section, the tone rule | ***done*** |
 | **1** | `CORPUS STAFF` · Scorn's one beat · Ty's reframe at Dotted Hole · the Warehouse scene | ***done 2026-09-10*** |
 | **2** | `RUBY`/`SAPPHIRE` renamed · Celio and the machine · the Tanoby chambers as 4.24's translations · the doctrine's room (4.33) | ***done 2026-09-10*** |
-| **3** | Naming 35 places and rewriting 9,500 words to the tone rule | ***the trap the deferral was written about*** |
+| **3a** | **Naming the places** | ***done 2026-09-10*** — *21 named, 14 kept by rule* |
+| **3b** | Rewriting ~9,500 words to the tone rule | ***the trap the deferral was written about*** |
 
 ***Tier 3's condition is met, and that is the finding rather than a milestone.*** **The deferral said "not until the rest is in play", and the rest is in play** — *Act 2's six scenes are in the ROM, both gems are named, the machine points at DOLDRUM, and the doctrine has a room.*
 
