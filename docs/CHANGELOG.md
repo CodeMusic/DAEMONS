@@ -5,6 +5,56 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.112 — 2026-09-09
+
+### 2.7 — the ROUTINES pass, written down before a single name is proposed
+
+- **72 species carry our names and 0 of 356 moves do.** *The largest unstarted surface in the
+  project* — and the reason to write this first is that **half the decisions turn out to have
+  been made already, by the chart.**
+- **The loop closes four times and nobody planned it.** Mapping every state-inflicting move
+  onto its type: **CORRUPT owns LEAKING and CASCADING, ENTROPY owns OVERHEATED, FROZEN owns
+  HUNG**, and nothing else inflicts those four. *Vanilla built poison, burn and freeze as
+  single-type states and 1.6's renames landed on the same alignment* — **the type, the state
+  and the item were already one vocabulary closing on itself**, and nobody had noticed.
+  ENTROPY → OVERHEATED is 2.6's clause for ENTROPY word for word.
+
+### SUSPENDED wants two owners, and that is the finding
+
+- **The question asked was which type owns it. Two do**, and *suspending each produces a
+  different, nameable failure.* **Suspend CONTEXT and the literal keeps running: the hamster
+  wheel — every particular attended to, nothing read for what it is for.** **Suspend CONTENT
+  and the frame keeps running with nothing under it: intuition that cannot be argued with.**
+- ***Those are the two inputs to a judgement — the thing as given, and the frame it is read
+  in — and LOGIC is the operation between them.*** Suspend either and the operation runs on
+  one leg, which is why the failures are opposite and both are recognisable.
+- **It also explains why SUSPENDED is the one state 1.6 insists is temporary.** *Losing the
+  frame and losing contact with the literal are not damage, they are being unscheduled* —
+  and **RESUME is the exact inverse, which it always was.**
+- **Same claim the project has already made twice**: Penphin's two hemispheres, and
+  CODEMUSAI against CAREMUSAI as an evolution branch. **4.18a's clarifier is the chronic
+  form** — *Scorn did not suspend the frame, he weighted the stage that holds the two
+  against each other.* A CONTEXT suspension is the acute version.
+- ***None of it is ever said.*** In the game a suspended daemon is `SUS` on a slate tile.
+  **The player meets the two failures as two matchups and is never told they are a pair.**
+
+### The naming rule, and what the pass costs
+
+- ***"PACKET should do a move a packet would do" is right, and naming the move after the
+  creature is not how you get there.*** `TACKLE` is learned by **25** of our 72. But
+  **WING ATTACK's eight learners are all things that deliver something somewhere** — the
+  learner set is coherent *because the chart was built from meaning.*
+- **So: name a ROUTINE for the operation its TYPE performs, never for what any creature is.**
+  The resonance is a consequence, and **a name that only works on its most famous learner is
+  wrong.**
+- **175 of 356 moves are reachable** by the renamed daemons — the pass is half the size it
+  looked. The budget is **12 characters**, which vanilla already runs to.
+- ***Forty-five percent of them are CONTENT*** — 79 of 175 — **the one type whose clause is
+  "the thing itself, with nothing read into it."** *Every other type hands you a verb.*
+  Logged Open, and it is **the register to settle first.**
+
+---
+
 ## v11.111 — 2026-09-09
 
 ### `docs/items.html` — *The Bag*, and a document that cannot drift

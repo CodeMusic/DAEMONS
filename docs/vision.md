@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.111**
+**A total conversion — the living design bible, v11.112**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -804,6 +804,83 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 #### What the test does not answer
 
 ***It measures the NAMES.*** **It says nothing about whether a player can tell a daemon's type by looking at it** — 9.4's hue makes that a *label*, reliably, and a label is not a model. *The channel that actually teaches is the one repeated every turn:* **move names**, which a player reads hundreds of times to a sprite's handful. **Nobody learns water-beats-fire by looking at Squirtle; they learn it by using Bubble and reading the result.** That work belongs with 2.5 and with the nineteen gym lines still held for 5.
+
+
+### 2.7 The ROUTINES pass — what the chart already decided, and what it did not
+
+***Opened 2026-09-09, and not one move is renamed yet.*** **72 species carry our names and 0 of 356 moves do**, which makes this the largest unstarted surface in the project — and the reason to write this before naming anything is that **half the decisions turn out to have been made already, by the chart.**
+
+#### The loop closes four times, and nobody planned it
+
+***Every move that inflicts a state was mapped onto its own type.*** **Four of the seven states have exactly one owning type:**
+
+| the type that inflicts | the state | the item that ends it | read as one sentence |
+|---|---|---|---|
+| **CORRUPT** ×8 | **LEAKING** | PATCH | *tampered data leaves you leaking; a patch stops it at the source* |
+| **CORRUPT** ×1 | **CASCADING** | PATCH · ROLLBACK | *the same fault, compounding* |
+| **ENTROPY** ×5 | **OVERHEATED** | COOLANT | ***noise and heat*** — 2.6's clause for ENTROPY, word for word |
+| **FROZEN** ×4 | **HUNG** | PREEMPT | *locked to what it already saw; preemption takes control back* |
+
+***Nothing else inflicts those four.*** **That is not luck and it is not design either** — vanilla built poison, burn and freeze as single-type states, and 1.6's renames landed on the same alignment *because both were derived from the same meanings.* **The type, the state and the item were already one vocabulary closing on itself**, and nobody had noticed.
+
+#### Three do not close, and each fails differently
+
+```
+THROTTLED    SIGNAL×6   CONTENT×2  GROWTH×1  LATENT×1  EMERGENT×1
+SUSPENDED    CONTENT×3  GROWTH×3   CONTEXT×1
+THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
+```
+
+**THROTTLED has an owner with strays** — SIGNAL by six to five. *Fixable at the margin, and the strays are the question, not the owner.*
+
+**THRASHING is spread over six types and has no item at all**, which is consistent — 1.6 gave it no three-letter code because it is volatile — **but it leaves THRASHING a thing that happens to you rather than a thing a type does.** <span>OPEN</span>: *does it want LOGIC — a system so busy reasoning about itself that it makes no progress — or is "the state no type owns" the point?*
+
+#### SUSPENDED wants two owners, and that is the finding
+
+***The question asked was which type owns it. The answer is that two do, and suspending each one produces a different, nameable failure.***
+
+***State the axis before the table, because everything below depends on which way round it runs:*** **CONTENT is BOTTOM-UP** — *the thing as given, assembled from its particulars.* **CONTEXT is TOP-DOWN** — *the frame brought to it, which decides what the particulars are for.* **LOGIC is neither; it is the operation that runs between them.**
+
+| suspend | what is left running | what that looks like |
+|---|---|---|
+| **CONTEXT** *(top-down)* | **CONTENT** — the particulars, bottom-up | **The hamster wheel.** Every detail attended to and no sense of what any of it is for — exhaustive, and *severely biased by being exhaustive* |
+| **CONTENT** *(bottom-up)* | **CONTEXT** — the frame, with nothing under it | **Intuition that cannot be argued with.** Reads meaning everywhere and does not answer to evidence |
+
+***Those are the two inputs to a judgement — the bottom-up given and the top-down frame — and LOGIC is the operation between them.*** **Suspend either input and the operation runs on one leg**, which is why the two failures are opposite and both are recognisable.
+
+***And it is the one state 1.6 insists is genuinely temporary.*** **That now has a reason rather than a mechanic**: losing the frame and losing contact with the literal are not damage, they are *being unscheduled* — and a thing that was unscheduled can be scheduled again. **RESUME is the exact inverse, and it always was.**
+
+*This is the same claim the project has already made twice in other media* — **Penphin's two hemispheres, and CODEMUSAI against CAREMUSAI as an evolution branch** (8.2) — **and 4.18a's clarifier is the chronic version of it**: *Scorn did not suspend the frame, he weighted the stage that holds the two against each other.* **A CONTEXT suspension is the acute form of the same failure.**
+
+***Craft rule 1 is not suspended by any of this.*** **In the game a suspended daemon is `SUS` on a slate tile and nothing else.** *Nobody says hemisphere. Nobody says bias. The player meets the two failures as two matchups and is never told they are a pair.*
+
+*The residue is honest:* **GROWTH's three — the powders — have the weakest claim of the three routes** and are the ones to re-type if the chart ever moves. <span>OPEN</span>.
+
+#### The rule for naming a routine
+
+***"PACKET should do a move a packet would do" is right, and you do not get there by naming the move after the creature.***
+
+**`TACKLE` is learned by 25 of our 72.** *Any name for it has to work on a packet, a heap, a kernel, a bat and a fish.* **But the type has already done the selecting:**
+
+| | learners, all of ours |
+|---|---|
+| **WING ATTACK** · VECTOR | BROADCAST · ECHO · MULTICAST · PACKET · PROMETHEUS · RELAY · TRACER · CANON |
+| **SUPERSONIC** · CONTENT | ECHO · INDEXER · MULTICAST · QUORUM · SENTINEL · SPAWN · TRACER · UPSTREAM |
+
+***Every one of WING ATTACK's eight is a thing that delivers something somewhere.*** **The learner set is coherent because the chart was built from meaning and each daemon's type was chosen from what it is** — so a VECTOR routine named for *delivery with a heading* lands correctly on a packet, a bat and a firebird **without being about any of them.**
+
+> ***Name a ROUTINE for the operation its TYPE performs, never for what any creature is.***
+> **The creature resonance is a consequence, not a target** — and a name that only works on its most famous learner is wrong.
+
+#### What the pass actually costs
+
+| | |
+|---|---|
+| **Moves reachable** by the 72 renamed daemons | **175** of 356 — *the pass is half the size it looked* |
+| **Name budget** | **12 characters.** `MOVE_NAME_LENGTH` is 12 and vanilla already runs to it — `THUNDERSHOCK`, `WEATHER BALL` |
+| **The shape of the difficulty** | `CONTENT×79 CONTEXT×12 GROWTH×11 VECTOR×9 LOGIC×8 FROZEN×7 FLOW×7 SWARM×6 SIGNAL×6 CORRUPT×5` |
+
+***Forty-five percent of the reachable routines are CONTENT***, whose one-clause test is **"the thing itself, with nothing read into it."** *Every other type hands you a verb.* **CONTENT hands you the absence of one, and it has to yield seventy-nine distinct names in twelve characters.** <span>OPEN</span> — **and it is the register to settle first**, because the other ninety-six will be written against whatever it establishes.
 
 
 ---
@@ -5629,6 +5706,9 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **The CONTENT register for ROUTINES** (2.7). Seventy-nine of the 175 reachable moves are the type whose clause is *nothing read into it*, in a twelve-character name. Settle this before the other ninety-six
+- **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
+- **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
 - **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object
 - **`PC` → `PORT` is decided and not swept** (1.7). Four menu strings and ~25 dialogue lines, and `\nPC` has no word boundary in front of it, so it is a `port_vocab.py` pass
 - **PKRS still says PKRS** (9.15). Its tile no longer borrows LEAKING's colour, but the name is vanilla and the condition has no place in the lexicon yet
