@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.123**
+**A total conversion — the living design bible, v11.124**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4931,6 +4931,50 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 ***Reopen only if the post-game triangle proves too thin in play.*** **Not before.** *Section 8 exists because the graveyard is full of projects that designed 151 creatures and shipped zero towns;* **seven islands is that scale.**
 
+### 8.2b The bestiary register was already decided — 79 names, 2026-09-10
+
+***The open log said the register was undecided and gated 151 names.*** **It was not undecided. It had been decided in practice by 4.26 and nobody had written it down** — *which is 8.7's rule about unswept rulings, applied to a fork rather than to a fact.*
+
+#### Three registers, read off the seventy-two that shipped
+
+| | | |
+|---|---|---|
+| **Technical surface** | *the bestiary* | HEAP · STACK · FORK · THREAD · PAYLOAD · ECHO · PACKET · LATENCY — **the register the rest of the lexicon speaks** |
+| **Myth** | *the legendaries* | **ASCLEPIUS · ORPHEUS · PROMETHEUS** — ***these ARE "true names the Index cannot reach"***, which is the fork's other half, spent on exactly the six creatures the Index was never going to hold |
+| **The project's own** | *MUSAI and ROVER* | **characters rather than creatures**, and 8.2 already treats them that way |
+
+***So the fork was never either/or. It was a distribution***, and the log had recorded a decision as an open question for five weeks.
+
+#### The bound is 8.2a's, not a new one
+
+**386 species exist and 207 are meetable.** ***Of those, 79 are Kanto and 69 are beyond it — and every one of the 69 is reached through the Sevii Islands.*** **8.2a's ruling is exact and it applies without amendment: *name nothing there.*** *The Kanto 79 are the Index the player fills; the rest wait on a decision that has already been deferred once, deliberately.*
+
+**151 of 386 species names are ours.**
+
+#### Four that the type did the work for
+
+**`BELLSPROUT` → `SNARE` → `HONEYPOT` → `TARPIT`.** *A GROWTH/CORRUPT line that catches things and holds them* — **and a honeypot and a tarpit are exactly that, in order of how long they hold you.**
+
+**`DIGLETT` → `TAPPOINT`, `DUGTRIO` → `WIRETAP`.** *Three of them, listening.* **`VENOMOTH` → `SPYWARE`** — SWARM/CORRUPT, *a thing that sits on you quietly.* **`FARFETCH'D` → `EDGECASE`**, which needs no explanation at all.
+
+**`TANGELA` → `SPAGHETTI`.** *Craft rule 6: the joke is allowed to sit underneath and is never pointed at.*
+
+#### And the sweep found a principle the tools had been missing
+
+***Renaming 79 species left 65 places in dialogue naming the old ones***, and `port_vocab` swept 103 files to fix it. **It also broke the build three times, each in the same way, and the third would have been serious:**
+
+| | what it reached | |
+|---|---|---|
+| `DIGLETT` → `TAPPOINT` | **`DIGLETT'S CAVE`**, a place | *and took a hand-written C symbol with it* |
+| `EMBER` → `JITTER` | **`MT. EMBER` and `EMBER SPA`** | ***both on the Sevii Islands, where 8.2a says name nothing*** |
+| `MOONLIGHT` → `NIGHT REPAIR` | **a dex CATEGORY** | twelve characters into an eleven-character array |
+| `GROWTH` → `SCALE UP` | ***the GROWTH TYPE NAME*** | **only the array's own width stopped it** |
+
+> ***NAME TABLES ARE AUTHORED. PROSE IS SWEPT.***
+> **A pass that rewrites prose must never reach a table it also learns from**, or a rename on one surface silently rewrites another. ***Places, dex categories and type names are all names.***
+
+**`port_vocab` now refuses rather than truncates** — it checks every fixed-width surface before it writes anything, *and names the offender.* **The four it protects are recorded in the tool, each with the failure that put it there.**
+
 ### 8.3 Known bottleneck
 
 **Sprites.** 151 daemons, front and back, 2bpp, four shades, 56×56 maximum — roughly 300 hand-tuned tiles. Nothing about it is hard; it is simply the largest block of labor in the project. AI generation can rough out silhouettes, but expect manual cleanup: the Game Boy palette and tile constraints are unforgiving.
@@ -6314,7 +6358,8 @@ Kept here because the reasoning is worth more than the outcome.
 - Ty is absent from the endgame by design. Does that read as a statement or as a loose thread?
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
-- **The bestiary naming register is undecided, and it gates 151 names** (8.2). Technical surface like the rest of the lexicon, or **true names** the Index cannot reach — the second does 4.2's work for free. Every candidate must pass BIND's test: does it work twice?
+- ~~The bestiary naming register is undecided~~ **It had been decided in practice and never written down** (8.2b). *The 72 that shipped run three registers at once* — **technical surface for the bestiary, myth for the legendaries, the project's own names for the MUSAI and ROVER families** — and the fork in the log was answered by 4.26 without anyone noticing
+- **69 species beyond Kanto are meetable and unnamed** (8.2b), all of them reached through the Sevii Islands. **8.2a's ruling holds: name nothing there**
 - The supervised starter slot is **yours to pick** (8.2)
 - **Callow and The Bleed share their music** with other maps, so 8.1's second theme needs new `songs.asm` entries first (7.3)
 - ~~57 `catch` / `caught` instances remain in dialogue~~ **Done 2026-08-31**, caught in play: the capture message still read *PACKET was caught!*. **55 instances rewritten.** The only survivor is *catchy tune*, which is a song

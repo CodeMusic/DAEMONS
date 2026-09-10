@@ -5,6 +5,45 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.124 — 2026-09-10
+
+### 8.2b — the bestiary register was already decided
+
+- ***The open log said the register was undecided and gated 151 names. It was not.*** It had
+  been decided in practice by 4.26 and nobody wrote it down — **8.7's rule about unswept
+  rulings, applied to a fork rather than to a fact.**
+- **Three registers, read off the seventy-two that shipped:** *technical surface* for the
+  bestiary (HEAP, FORK, PACKET, LATENCY); ***myth for the legendaries*** — **ASCLEPIUS,
+  ORPHEUS, PROMETHEUS ARE the "true names the Index cannot reach"** that the fork's other
+  half proposed, spent on exactly the creatures the Index was never going to hold; and *the
+  project's own names* for MUSAI and ROVER, who are characters rather than creatures.
+  ***The fork was never either/or. It was a distribution.***
+- **The bound is 8.2a's, not a new one.** 386 species exist, 207 are meetable, **79 are Kanto
+  and 69 are beyond it — every one of the 69 reached through the Sevii Islands**, where
+  8.2a's ruling already says *name nothing there.* **151 of 386 species names are ours.**
+- **`BELLSPROUT` → `SNARE` → `HONEYPOT` → `TARPIT`** — a GROWTH/CORRUPT line that catches
+  things and holds them, *in order of how long it holds you.* `DIGLETT`/`DUGTRIO` →
+  **`TAPPOINT`/`WIRETAP`**. `VENOMOTH` → **`SPYWARE`**. `FARFETCH'D` → **`EDGECASE`**.
+  `TANGELA` → **`SPAGHETTI`**, and craft rule 6 says nobody points at it.
+
+### The sweep found a principle the tools had been missing
+
+- **79 renames left 65 places in dialogue naming the old species**, so `port_vocab` swept 103
+  files — **and broke the build three times, the same way each time.**
+- `DIGLETT` → `TAPPOINT` reached **`DIGLETT'S CAVE`** and took a hand-written C symbol with
+  it. `EMBER` → `JITTER` produced **`MT. JITTER` and `JITTER SPA`** — ***both on the Sevii
+  Islands, where 8.2a says name nothing.*** `MOONLIGHT` → `NIGHT REPAIR` put twelve
+  characters in an eleven-character **dex category**. And `GROWTH` → `SCALE UP` went for
+  ***the GROWTH TYPE NAME*** — **only the array's own width stopped it.**
+- > ***NAME TABLES ARE AUTHORED. PROSE IS SWEPT.*** A pass that rewrites prose must never
+  > reach a table it also learns from, or a rename on one surface silently rewrites another.
+  > **Places, dex categories and type names are all names.**
+- **`port_vocab` refuses rather than truncates now** — it checks every fixed-width surface
+  before writing anything and names the offender. *Twice in this session a constant was added
+  as a comment and not wired in; both are enforced.*
+
+---
+
 ## v11.123 — 2026-09-10
 
 ### 2.11 — the abilities, and a register that is not a verb

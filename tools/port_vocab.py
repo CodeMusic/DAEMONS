@@ -29,6 +29,47 @@ import difflib, json, os, re, subprocess, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
+#  Fixed-width arrays the sweep can overflow. The compiler catches these as
+#  "excess elements in array initializer", which is a link-time surprise from a
+#  text pass -- and agbcc reports it as a warning, which this project's build
+#  turns into a bare Error 1. Checked here instead, where the fault is legible.
+#  region_map_sections.json is NOT swept, and the reason is two-sided.
+#
+#  Mechanically: renaming a mapsec renames a generated C symbol that
+#  src/region_map.c refers to BY HAND, so the sweep breaks the build at a
+#  point far from the edit. It did: DIGLETT -> TAPPOINT turned DIGLETT'S CAVE
+#  into TAPPOINT'S CAVE and took sMapsecName_DIGLETT_S_CAVE with it.
+#
+#  And by design: a place is not a creature. EMBER -> JITTER also produced
+#  MT. JITTER and JITTER SPA -- both on the Sevii Islands, where 8.2a's ruling
+#  is exact and is "name nothing there". A vocabulary pass must not make a
+#  naming decision that a section of the bible has deferred.
+NEVER_SWEEP = (
+    "region_map_sections.json",
+    #  Nothing here is prose: 387 dex CATEGORIES and nothing else. A category
+    #  is authored per species, and letting the word pass rewrite one produced
+    #  a twelve-character NIGHT REPAIR in an eleven-character array, because a
+    #  MOVE rename reached a SPECIES descriptor. Same class as the map file.
+    "pokedex_entries.h",
+    #  gTypeNames lives here, and the move GROWTH became SCALE UP -- so the
+    #  word pass learned "GROWTH -> SCALE UP" and went for the TYPE. Only the
+    #  array's own width stopped it. A type name is the argument (invariant 3);
+    #  it is authored, never substituted.
+    "battle_main.c",
+)
+
+#  THE PRINCIPLE, since this is the third file to need it: NAME TABLES ARE
+#  AUTHORED AND PROSE IS SWEPT. A pass that rewrites prose must never reach a
+#  table it also learns from, or a rename in one surface silently rewrites
+#  another. Places, dex categories and type names are all names.
+
+FIXED = {
+    r'\[ABILITY_\w+\] = _\("([^"]+)"\)':                  ("ability name", 12),
+    r'\[MOVE_\w+\]\s*=\s*_\("([^"]+)"\)':                ("move name", 12),
+    r'\[SPECIES_\w+\]\s*=\s*_\("([^"]+)"\)':             ("species name", 10),
+    r'\.categoryName = _\("([^"]+)"\)':                   ("dex category", 11),
+}
+
 BUDGET, WIDE = 196, {"data/text/help_system.inc": 220,
                      "data/text/new_game_intro.inc": 220}
 
@@ -537,6 +578,7 @@ def fit_to(body, converted, ceiling, cap=None):
     return None, False
 
 for root, _, fs in os.walk(os.path.join(GBA, "src")):
+    fs = [f for f in fs if f not in NEVER_SWEEP]
     for f in sorted(fs):
         if not f.endswith(('.c', '.h')):
             continue
@@ -625,8 +667,13 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
 # is the source; the header is an artifact.
 JSON_TARGETS = {
     "src/data/items.json": ("english", "description_english"),
-    "src/data/region_map/region_map_sections.json": ("name",),
+    #  region_map_sections.json was here and is now in NEVER_SWEEP -- see the
+    #  note there. Left listed and commented rather than deleted, because the
+    #  next person to add a JSON target should read why this one came out.
+    # "src/data/region_map/region_map_sections.json": ("name",),
 }
+JSON_TARGETS = {k: v for k, v in JSON_TARGETS.items()
+                if os.path.basename(k) not in NEVER_SWEEP}
 # The JSON spells the LITERAL two-character marker \n as \\n, and é as \u00e9.
 # Hand-rolling that decode ate the wrong half of \\n and produced a backslash
 # followed by a space, which is not valid JSON and stopped the build. Let the
@@ -772,6 +819,7 @@ def is_layout(b):
 
 mangled = []
 for root, _, fs in os.walk(os.path.join(GBA, "src")):
+    fs = [f for f in fs if f not in NEVER_SWEEP]
     for f in sorted(fs):
         if not f.endswith(('.c', '.h')):
             continue
@@ -792,6 +840,28 @@ if mangled:
     print("  !! %d layout string(s) lost or gained a line break:" % len(mangled))
     for rel, u, o in mangled[:8]:
         print("     %s\n       was %s\n       now %s" % (rel, u[:88], o[:88]))
+
+#  FIXED is checked HERE rather than trusted as a comment. A sweep that
+#  overflows one of these arrays fails at COMPILE time -- and agbcc reports it
+#  as a warning, which this build turns into a bare Error 1, far from the edit.
+#  Twice in one session: TOXIC READ became COMPOUND READ (13 of 12) and
+#  MOONLIGHT became NIGHT REPAIR in a dex category (12 of 11).
+#
+#  A name is not prose. If a rename lands inside one of these it is refused,
+#  because the fix belongs in whoever chose the name, not in a truncation here.
+oversize = []
+for path, text in touched.items():
+    rel = os.path.relpath(path, GBA)
+    for pat, (what, cap) in FIXED.items():
+        for m in re.finditer(pat, text):
+            if len(m.group(1)) > cap:
+                oversize.append((rel, what, cap, m.group(1)))
+if oversize:
+    print("\n  %d name(s) would overflow a fixed-width array:\n" % len(oversize))
+    for rel, what, cap, got in oversize[:12]:
+        print("   %-42s %s is %d of %d -- %s" % (rel, what, len(got), cap, got))
+    print("\n  nothing written. Shorten the name, or exclude the surface.")
+    sys.exit(1)
 
 if WRITE:
     for p, t in touched.items():
