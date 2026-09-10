@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.124**
+**A total conversion — the living design bible, v11.125**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4974,6 +4974,39 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 > **A pass that rewrites prose must never reach a table it also learns from**, or a rename on one surface silently rewrites another. ***Places, dex categories and type names are all names.***
 
 **`port_vocab` now refuses rather than truncates** — it checks every fixed-width surface before it writes anything, *and names the offender.* **The four it protects are recorded in the tool, each with the failure that put it there.**
+
+### 8.2c The Index caught up with the names — 122 entries, 2026-09-10
+
+***Renaming seventy-nine species left seventy-nine Index entries describing the old ones.*** **A daemon called `TARPIT` with an entry about a carnivorous plant is worse than one still called VICTREEBEL**, because the name now promises something the record does not deliver.
+
+**Sixty-one of them were in the meetable Kanto set. Each needed two entries, not one.**
+
+#### 0.4's ruling, applied at scale for the first time
+
+***"The entries are a pair, and the pair is the argument."*** **CONTENT says what it does; CONTEXT says what follows from it** — and until now that had been written for four daemons.
+
+| | |
+|---|---|
+| **VILEPLUME → `BADSEED`, CONTENT** | *"Releases a dust that settles on whatever is learning nearby. The dust is indistinguishable from pollen."* |
+| **the same daemon, CONTEXT** | *"What it fed on is in what it became. Nobody kept a record of the feeding."* |
+
+***Neither is wrong and they do not meet.*** **One is a mechanism and the other is a consequence**, and *the player who owns one cartridge never learns there was a second sentence.*
+
+#### Where the pair did the most work
+
+- **`CLUSTER`** — *"Six of them, and none is in charge. Each one votes. The vote is the behaviour."* / **"One of the six is usually wrong. No record says which."**
+- **`GENGAR` → `HAUNTPROC`** — *"Runs with no parent, no terminal, and no entry in any list."* / **"Something started it. That something has since exited."**
+- **`DIGLETT` → `TAPPOINT`** — *"Sits under the route everything takes and reads what goes past."* / **"It is not in anyone's diagram. It has been there the whole time."**
+- **`CHANSEY` → `UPTIME`** — *"Has never stopped, and hands out what it has to whatever is failing."* / **"It is kept running because stopping it has never been costed."**
+- **`MEOWTH` → `COOKIE`** — *"Small, left behind, and picked up again later by whoever set it down."* / **"It remembers everywhere it has been. You did not agree to that."**
+
+***Craft rule 1 holds in all of them.*** **No entry explains anything.** *`SPYWARE`'s CONTEXT line is "It is not hiding. Nobody was watching that closely", and it is about a moth.*
+
+#### Two things worth recording about the count
+
+***The number of entries that differ between the editions did not move***, and that is not a bug. **Vanilla FireRed and LeafGreen already ship different text for many species** — 0.4 records the inheritance — *so these sixty-one were already counted as differing.* **What changed is that they now differ on purpose.**
+
+**196 CONTENT entries and 189 CONTEXT entries are ours**, and ***no renamed daemon carries a vanilla record any more.***
 
 ### 8.3 Known bottleneck
 

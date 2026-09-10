@@ -5,6 +5,34 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.125 — 2026-09-10
+
+### 8.2c — the Index caught up with the names
+
+- ***Renaming seventy-nine species left seventy-nine Index entries describing the old
+  ones.*** **A daemon called `TARPIT` with an entry about a carnivorous plant is worse than
+  one still called VICTREEBEL** — the name now promises something the record does not
+  deliver. **Sixty-one were in the meetable Kanto set, and each needed two entries.**
+- ***0.4's ruling applied at scale for the first time.*** **CONTENT says what it does;
+  CONTEXT says what follows from it** — written for four daemons until today, now for
+  sixty-five. **`BADSEED`:** *"Releases a dust that settles on whatever is learning nearby.
+  The dust is indistinguishable from pollen."* against **"What it fed on is in what it
+  became. Nobody kept a record of the feeding."** *Neither is wrong and they do not meet.*
+- **Where the pair did most:** `CLUSTER` *(six of them, none in charge / one is usually wrong
+  and no record says which)*; `HAUNTPROC` *(no parent, no terminal, no entry in any list /
+  something started it, and that something has exited)*; `TAPPOINT` *(sits under the route
+  and reads what goes past / it is not in anyone's diagram)*; `UPTIME` *(has never stopped /
+  it is kept running because stopping it has never been costed)*; `COOKIE` *(picked up again
+  later by whoever set it down / it remembers everywhere it has been, and you did not agree)*.
+- ***The count of entries differing between editions did not move, and that is not a bug.***
+  **Vanilla already ships different text for many species** — 0.4 records the inheritance —
+  so these sixty-one were already counted. **What changed is that they now differ on
+  purpose.**
+- **196 CONTENT and 189 CONTEXT entries are ours**, and ***no renamed daemon carries a
+  vanilla record any more.***
+
+---
+
 ## v11.124 — 2026-09-10
 
 ### 8.2b — the bestiary register was already decided
