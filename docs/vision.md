@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.127**
+**A total conversion — the living design bible, v11.128**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3563,6 +3563,30 @@ Corpus rooms, and the trainer table.
 
 **BOULDERBADGE → SLATE MARK.** A mark *on* a slate is physical encoding; a mark *as a grade* is what a benchmark issues. *The other seven followed as a set* — naming eight certifications was one decision, not seven.
 
+### 5.3a The names reached the ROM, and 743 trainers did not need renaming
+
+***Built 2026-09-10.*** **The seven benchmark leaders were designed in 5.3 and the trainer table still said MISTY.** *Six of them are in now* — **BASIN, GAUGE, TRELLIS, TILT, MATTE, ANNEAL** — beside CAIRN and SCORN, who were already there. ***And 127 lines of dialogue moved with them***, because a leader who introduces herself by a name the battle screen does not use is worse than one who was never renamed.
+
+#### Two corrections the bible had already made and the table had not
+
+***`TERRY` × 27.*** **Vanilla's default rival name, on every rival and champion battle in the game** — and **4.3 named him `AL` weeks ago.** *The bible had a rival called Al Clear and the ROM had one called Terry.*
+
+***`GRUNT` × 51.*** **1.7 rules that Corpus is never described in intrusion language, and craft rule 6 has them cheerful and absurd** — *"my daemons and I are very aligned, it is in my review."* **A grunt is a thug. `STAFF` is what the same person is called by the organisation that employs them**, and it is quietly worse.
+
+#### And the other 637 are people, which is the finding
+
+***743 trainers, and only six had names we had changed.*** **The rest are JOEY, BEN, TIMMY, CHAD — ordinary first names, and they stay.**
+
+**2.8's rule, for the fifth time**: *the pass that renames what already lands makes the game worse.* ***A world where every passer-by is a computing pun is a world with nobody in it***, and 1.6a has already put the argument on the trainer's other line — **the CLASS says what they do, and the NAME is just their name.**
+
+*Practical note, and it is why trainer names were not added to `port_vocab`'s learning:* **`AL` is two characters.** A sweep that learns it would match inside anything, and the six leaders were distinctive enough to sweep by hand with a word boundary instead.
+
+#### The Review Board is deliberately not named
+
+***6 numbers its members — I, II, III, IV — and gives each a humor and a type.*** **The four types it assigns are VECTOR, ENTROPY, LATENT and FROZEN. The four the Elite Four actually use are FROZEN, LOGIC, LATENT and EMERGENT.** *Two of the four match.*
+
+**So naming them now would quietly settle whether 6's humors move or the Elite Four's types do** — *and that is a chart decision, not a naming one.* <span>OPEN</span>. **The class already reads `REVIEW BOARD`, which is the half that was decided.**
+
 ### 5.3 The other seven — and what a grinder runs into
 
 ***Written 2026-09-10, because the third review was right that this was the largest prose-to-ROM gap in the project.*** **Seven leaders had a concept, a one-line mechanical lesson and no mechanics** — and *"punishes split focus" is a wish, not a design.*
@@ -6434,7 +6458,8 @@ Kept here because the reasoning is worth more than the outcome.
 - **The Chart publishes fifteen types and the ROM runs seventeen** (8.7). Re-score the one-clause test at 17 — CONTEXT's 8/8 was scored without OPAQUE, which is immune to it
 - **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
 - ~~Craft rule 5 is unpaid for benchmarks 2–8~~ **Designed 2026-09-10 (5.3).** *Seven leaders, each with the thing an overlevelled player still runs into* — **now it is a build task rather than a design one**
-- **The six new leader names are unbuilt** (5.3): BASIN, GAUGE, TRELLIS, TILT, MATTE, ANNEAL. Trainer classes, parties and the two scripted rooms — Doldrum's healing trainers and Scorn's fixed roll
+- ~~The six new leader names are unbuilt~~ **In the ROM 2026-09-10 (5.3a), with 127 lines of dialogue swept to match.** *What is still unbuilt is the mechanics* — the parties, Doldrum's healing trainers and Scorn's fixed roll
+- **The Review Board has no names** (5.3a). 6 numbers its members and gives each a humor and a TYPE — **and the four types do not match the four the Elite Four actually use.** *Naming them would settle that by accident*
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*

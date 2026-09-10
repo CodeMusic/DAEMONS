@@ -5,6 +5,39 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.128 — 2026-09-10
+
+### 5.3a — the leaders reached the ROM, and 637 trainers did not need touching
+
+- **5.3 designed seven benchmark leaders and the trainer table still said MISTY.** Six are in
+  now — **BASIN, GAUGE, TRELLIS, TILT, MATTE, ANNEAL** — beside CAIRN and SCORN, ***and 127
+  lines of dialogue moved with them***, because a leader who introduces herself by a name the
+  battle screen does not use is worse than one never renamed.
+- ***Two corrections the bible had already made and the table had not.*** **`TERRY` × 27** —
+  vanilla's default rival, on every rival and champion battle, **and 4.3 named him `AL` weeks
+  ago**: the bible had a rival called Al Clear and the ROM had one called Terry. **`GRUNT` ×
+  51** — *1.7 rules Corpus is never described in intrusion language and craft rule 6 has them
+  cheerful and absurd.* **A grunt is a thug; `STAFF` is what the organisation calls the same
+  person**, and it is quietly worse.
+- ***743 trainers, and only six had names we had changed. The other 637 are people.***
+  JOEY, BEN, TIMMY, CHAD — ordinary first names, and they stay. **2.8's rule for the fifth
+  time**, and *a world where every passer-by is a computing pun is a world with nobody in
+  it.* **1.6a already put the argument on the other line: the CLASS says what they do, the
+  NAME is just their name.**
+- *Why trainer names are not in `port_vocab`'s learning:* **`AL` is two characters** and would
+  match inside anything. The six leaders were swept by hand with a word boundary.
+
+### The Review Board is deliberately not named
+
+- **6 numbers its members and gives each a humor and a TYPE** — VECTOR, ENTROPY, LATENT,
+  FROZEN. ***The Elite Four actually use FROZEN, LOGIC, LATENT and EMERGENT. Two of four
+  match.***
+- **Naming them now would quietly settle whether 6's humors move or the Elite Four's types
+  do**, and that is a chart decision rather than a naming one. **Logged Open.** *The class
+  already reads `REVIEW BOARD`, which is the half that was decided.*
+
+---
+
 ## v11.127 — 2026-09-10
 
 ### 1.6a — the trainer classes
