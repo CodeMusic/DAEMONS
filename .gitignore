@@ -36,3 +36,10 @@ engineAi
 
 # the bridge venv -- rebuilt by ./bindDaemons.sh --ai when absent
 ai/bridgevenv/
+
+# Claude Code worktrees. These live INSIDE the repo, so without this line the
+# main checkout reports every worktree as untracked and a `git add -A` from
+# another session would commit one. .claude/settings.json IS tracked, on
+# purpose -- see CLAUDE.md.
+.claude/worktrees/
+.claude/settings.local.json

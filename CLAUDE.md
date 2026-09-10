@@ -39,6 +39,35 @@ material. Work in them freely; just don't merge either one in here.
 *into* `engineGba/tools/` and so does not survive a fresh clone either). It is
 idempotent.
 
+### Worktrees, and the two things that bite
+
+**Run parallel agents in worktrees.** Two sessions sharing one checkout means
+whoever runs `git add -A` first takes the other's uncommitted work — that
+happened three times in one day, in both directions, and every time the work
+survived under the wrong commit message. `EnterWorktree` is the fix. Worktrees
+land in `.claude/worktrees/` and are gitignored.
+
+**`worktree.baseRef` is `head` in `.claude/settings.json`, deliberately.** The
+default is `fresh`, which branches from `origin/main` — and local `main` here is
+routinely several commits ahead of the remote, so `fresh` would silently drop
+them.
+
+**A worktree has NO ENGINE SYMLINKS, and nothing warns you.** `engine`,
+`engineGba` and `engineAi` are gitignored, so a worktree checkout simply does
+not have them, and every build and every `tools/` script fails on a missing
+path. Remake them **absolutely** — the committed ones are relative (`../…`),
+which resolves to `.claude/worktrees/` from inside a worktree and is wrong:
+
+```sh
+ln -sfn "$HOME/Projects/pokered-daemons"                   engine
+ln -sfn "$HOME/Projects/pokefirered-daemons"               engineGba
+ln -sfn "$HOME/Projects/gpt-play-pokemon-firered-daemons"  engineAi
+```
+
+*They point at the same three repos the main checkout uses, which is correct —
+the isolation wanted here is for **this** repo's `docs/` and `tools/`. The
+engine forks have their own history and both sessions should share them.*
+
 ### Two engines, and which one is real
 
 `engineGba/` is **CodeMusic/pokefirered-daemons**, forked 2026-09-02, and it is
