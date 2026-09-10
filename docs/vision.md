@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.136**
+**A total conversion — the living design bible, v11.137**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3660,6 +3660,28 @@ Corpus rooms, and the trainer table.
 ***NEVER ADJUDICATE is the strict half and it has no exceptions.*** **No character confirms him. No character debunks him. No event proves him and no event embarrasses him.** *S.T.A.R.R. does not settle it. The Owl does not settle it. Crystal never hears it.* **He is left standing, exactly as convincing as he was when you walked in.**
 
 *The temptation will be a wink — one line somewhere that nods.* **That line is the moral, and the form is defined by withholding it.**
+
+#### How it is presented, and how to tell when it has been broken
+
+***A craft rule that cannot be checked is a wish***, so this is the scene and then the prohibitions.
+
+**He is one NPC in one room, already talking when you walk in, and he does not stop for you.** *He works up through the eight steps.* **He never asks whether you agree, there is no dialogue choice, and you can leave mid-sentence.** *Come back and he has continued without you* — **which is the rule expressed as a mechanic: the game is not waiting for your assent, because your assent is not part of it.**
+
+***THE PROHIBITIONS. Each one is a way the game could quietly agree with him.***
+
+| | |
+|---|---|
+| **No NPC refers to him** | *not "that old crank", not "he may be onto something"* — **both are verdicts** |
+| **S.T.A.R.R. never comments** | it is the one voice a player would take as authoritative, **which is why it stays out** |
+| **No flag, item, Index entry or MARK acknowledges him** | *nothing in the bag proves he was there* |
+| **No event confirms him** | nothing wakes up; no rock moves |
+| **No event embarrasses him** | **he is never shown to be foolish and nothing he predicts fails** — *debunking is adjudicating* |
+| **He is not in the ERRATA** | 4.32's cards name thinking distortions. ***A card that happens to match his reasoning is the game calling him wrong by filing***, and it is the easiest of these to do by accident |
+
+> ***THE TEST. Delete him from the game. Does anything else change?***
+> **If yes, the game adjudicated.**
+
+***And one clarification, because it inverts what people expect of craft rule 1.*** **He is allowed to state the whole doctrine at length, and that is not a violation.** *Rule 1 withholds THE GAME's last line* — **he supplies a different one, loudly, and being the wrong size is what makes that safe.** ***The danger was never that he talks. It is that something in the game agrees with him.***
 
 #### Where he is not
 

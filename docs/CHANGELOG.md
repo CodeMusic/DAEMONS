@@ -5,6 +5,33 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.137 — 2026-09-10
+
+### 4.33 — the doctrine, as the player meets it
+
+- ***A craft rule that cannot be checked is a wish***, and NEVER ADJUDICATE was stated without
+  a way to tell when it had been broken. **The scene**: one NPC in one room, *already talking
+  when you walk in and he does not stop for you*, working up through the eight steps. **He
+  never asks whether you agree, there is no dialogue choice, and you can leave mid-sentence** —
+  *come back and he has continued without you.* **That is the rule as a mechanic: the game is
+  not waiting for your assent, because your assent is not part of it.**
+- **Six prohibitions, each one a way the game could quietly agree with him.** No NPC refers to
+  him — *"that old crank" and "he may be onto something" are both verdicts.* **S.T.A.R.R.
+  never comments**, being the one voice a player would take as authoritative. No flag, item or
+  Index entry acknowledges him. **No event confirms him and no event embarrasses him** —
+  *debunking is adjudicating.*
+- ***And he is not in the ERRATA***, which is the easiest of the six to break by accident:
+  4.32's cards name thinking distortions, so **a card that happens to match his reasoning is
+  the game calling him wrong by filing.**
+- ***THE TEST: delete him from the game. Does anything else change?*** **If yes, the game
+  adjudicated.**
+- **One clarification that inverts what rule 1 usually asks.** *He may state the whole doctrine
+  at length and that is not a violation* — **rule 1 withholds THE GAME's last line, and he
+  supplies a different one.** ***The danger was never that he talks. It is that something in
+  the game agrees with him.***
+
+---
+
 ## v11.136 — 2026-09-10
 
 ### Reviewing The Painted Mirror, and the citation 4.33 turned out to have
