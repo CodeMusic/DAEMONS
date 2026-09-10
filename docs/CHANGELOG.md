@@ -5,68 +5,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-## v11.115 — 2026-09-09
-
-### 2.7a — the three starters, curated to their paradigms
-
-- **`tools/port_starters.py`. Off-type damaging routines across the three lines: 74% → 31%.**
-  ***No type moved*** — the chart is untouched (8.4), no matchup moved (2.5), only which
-  routines a daemon reaches for, which is the cheapest of the three levers and the only one
-  that costs the argument nothing.
-- **SUPERVISED — LABL · RUBRIC · CANON.** *A supervised learner is the least entropic thing
-  in the set — it has ground truth — so a line that fought entirely by heat was the sharpest
-  seam of the three.* **FORESIGHT** identifies the target, which is what a label *is*;
-  **MIMIC** copies the answer it was shown; **SWIFT** cannot miss; **TRI ATTACK** is
-  classification into three outcomes and, with STAB, hits harder than the FLAMETHROWER it
-  replaces; **LOCK-ON** cannot miss *because you have the ground truth*. CANON's second type
-  brings **COUNTER**, which returns exactly the error it was given.
-- **UNSUPERVISED — CLUSTR · LOCUS · MANIFOLD. The FLOW spine stays, and that is a finding.**
-  *k-means descends a distance objective, and FLOW's clause is "everything running downhill
-  to the lowest point"* — the water is the algorithm, not a leftover. **It is also
-  load-bearing: FLOW ×2 against LEGACY is the one LEGACY relation that reads, and Slate is
-  Benchmark 1** — stripping it would have broken the first gym to make a point the chart was
-  already making. What was missing is that **a VECTOR line knew no VECTOR routines at all**:
-  GUST, AIR CUTTER (*a separating surface*), DRILL PECK, and **SHADOW BALL on MANIFOLD,
-  because the manifold *is* the latent space.**
-- **REINFORCEMENT — ROVERCUB · ROVERSEER · ROVERBYTE**, which needed the least, and that is
-  worth saying: ***LEECH SEED is the best-fitting routine in the whole set and nobody
-  arranged it*** — a return that accrues every turn from a thing you did once. **SOLARBEAM
-  charges a turn before it pays, which is delayed reward, in the engine, since 1996.** Two
-  changes: MEGA DRAIN for POISONPOWDER, and **SHOCK WAVE on ROVERBYTE, which gained SIGNAL as
-  a second type and had never learned a single SIGNAL routine.**
-- **The residual is chosen, not left over.** **DRAGON RAGE** stays on the supervised line
-  because EMERGENT is *behaviour nobody can account for*; **BITE** stays on the unsupervised
-  one because OPAQUE is the black box and unsupervised methods are the least interpretable
-  thing in the field. ***It landed at 31%, below the 45% baseline rather than at it*** —
-  defensible for the three daemons a player carries all game, but not the number aimed at,
-  and recorded rather than rounded off.
-
-### 2.7's two open questions, one of them closed by the engine
-
-- **THRASHING is ownerless, and it is not ownerless by omission.** `battle_util.c` deals the
-  confusion hit with **the attacker and the defender as the same battler**, type argument
-  zero, abilities suppressed. *Every other state is something a kind of thing does to you and
-  carries a type because that thing has one.* **This is the only one where the sufferer deals
-  the damage, so there is nobody whose type it could be** — which finally gives a reason for
-  the missing code and the missing item rather than just a record of them.
-- **The seam is measurable and confined.** **Thirteen of the seventy-two were also retyped**,
-  and they are the three starters, the Musai branch and STARR — *every one retyped to carry an
-  argument.* **The fifty-nine left on vanilla's typing are 45% off-type; the thirteen were
-  78%.** Off-type is already a statement the engine makes — same-type attack bonus means a
-  routine of your own type hits harder *because it is you* — but **a statement made 78% of the
-  time is not a statement.** Nine of the thirteen are now done; **the Musai branch and STARR
-  are still owed.**
-
-### Housekeeping
-
-- **Two sessions wrote §2.7 on the same day from the same conversation** and both claimed
-  v11.112. The ROUTINES-pass version is canonical; the duplicate section and its changelog
-  entry are removed, and the two findings it alone carried — the engine's word on THRASHING,
-  and the retyped-thirteen measurement — are merged into it.
-
----
-
-## v11.115 — 2026-09-10
+## v11.116 — 2026-09-10
 
 ### 8.7 — the third review, with every ruling recorded so this one gets swept
 
@@ -126,6 +65,67 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - ***And the thing the review is most right about:*** **craft rule 5 is unpaid for benchmarks
   2 through 8.** Seven leaders with a concept, a one-line lesson and no mechanics.
   **The largest prose-to-ROM gap in the project, sitting on the spine of the fun.**
+
+---
+
+## v11.115 — 2026-09-09
+
+### 2.7a — the three starters, curated to their paradigms
+
+- **`tools/port_starters.py`. Off-type damaging routines across the three lines: 74% → 31%.**
+  ***No type moved*** — the chart is untouched (8.4), no matchup moved (2.5), only which
+  routines a daemon reaches for, which is the cheapest of the three levers and the only one
+  that costs the argument nothing.
+- **SUPERVISED — LABL · RUBRIC · CANON.** *A supervised learner is the least entropic thing
+  in the set — it has ground truth — so a line that fought entirely by heat was the sharpest
+  seam of the three.* **FORESIGHT** identifies the target, which is what a label *is*;
+  **MIMIC** copies the answer it was shown; **SWIFT** cannot miss; **TRI ATTACK** is
+  classification into three outcomes and, with STAB, hits harder than the FLAMETHROWER it
+  replaces; **LOCK-ON** cannot miss *because you have the ground truth*. CANON's second type
+  brings **COUNTER**, which returns exactly the error it was given.
+- **UNSUPERVISED — CLUSTR · LOCUS · MANIFOLD. The FLOW spine stays, and that is a finding.**
+  *k-means descends a distance objective, and FLOW's clause is "everything running downhill
+  to the lowest point"* — the water is the algorithm, not a leftover. **It is also
+  load-bearing: FLOW ×2 against LEGACY is the one LEGACY relation that reads, and Slate is
+  Benchmark 1** — stripping it would have broken the first gym to make a point the chart was
+  already making. What was missing is that **a VECTOR line knew no VECTOR routines at all**:
+  GUST, AIR CUTTER (*a separating surface*), DRILL PECK, and **SHADOW BALL on MANIFOLD,
+  because the manifold *is* the latent space.**
+- **REINFORCEMENT — ROVERCUB · ROVERSEER · ROVERBYTE**, which needed the least, and that is
+  worth saying: ***LEECH SEED is the best-fitting routine in the whole set and nobody
+  arranged it*** — a return that accrues every turn from a thing you did once. **SOLARBEAM
+  charges a turn before it pays, which is delayed reward, in the engine, since 1996.** Two
+  changes: MEGA DRAIN for POISONPOWDER, and **SHOCK WAVE on ROVERBYTE, which gained SIGNAL as
+  a second type and had never learned a single SIGNAL routine.**
+- **The residual is chosen, not left over.** **DRAGON RAGE** stays on the supervised line
+  because EMERGENT is *behaviour nobody can account for*; **BITE** stays on the unsupervised
+  one because OPAQUE is the black box and unsupervised methods are the least interpretable
+  thing in the field. ***It landed at 31%, below the 45% baseline rather than at it*** —
+  defensible for the three daemons a player carries all game, but not the number aimed at,
+  and recorded rather than rounded off.
+
+### 2.7's two open questions, one of them closed by the engine
+
+- **THRASHING is ownerless, and it is not ownerless by omission.** `battle_util.c` deals the
+  confusion hit with **the attacker and the defender as the same battler**, type argument
+  zero, abilities suppressed. *Every other state is something a kind of thing does to you and
+  carries a type because that thing has one.* **This is the only one where the sufferer deals
+  the damage, so there is nobody whose type it could be** — which finally gives a reason for
+  the missing code and the missing item rather than just a record of them.
+- **The seam is measurable and confined.** **Thirteen of the seventy-two were also retyped**,
+  and they are the three starters, the Musai branch and STARR — *every one retyped to carry an
+  argument.* **The fifty-nine left on vanilla's typing are 45% off-type; the thirteen were
+  78%.** Off-type is already a statement the engine makes — same-type attack bonus means a
+  routine of your own type hits harder *because it is you* — but **a statement made 78% of the
+  time is not a statement.** Nine of the thirteen are now done; **the Musai branch and STARR
+  are still owed.**
+
+### Housekeeping
+
+- **Two sessions wrote §2.7 on the same day from the same conversation** and both claimed
+  v11.112. The ROUTINES-pass version is canonical; the duplicate section and its changelog
+  entry are removed, and the two findings it alone carried — the engine's word on THRASHING,
+  and the retyped-thirteen measurement — are merged into it.
 
 ---
 
