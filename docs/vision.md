@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.113**
+**A total conversion — the living design bible, v11.114**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1025,6 +1025,75 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***So the seam gets closed in the learnset, and closed only partway.*** **Bring the thirteen down toward the 45% baseline and keep the residual deliberately** — *a few routines each that the daemon is visibly worse at, because they are not what it is.*
 
 ***And there is a thing the learnset could do that nothing currently does.*** **The three starters ARE the three learning paradigms**, and **vanilla's fire/water/grass movesets say nothing about any of them.** *A supervised line should fight by comparing against a known answer; an unsupervised one by finding structure it was not given; a reinforcement one by acting on a signal.* **The paradigm is currently carried by the name and the type and abandoned by everything the creature actually does** — which is the one place in this design where the argument stops at the surface. <span>OPEN</span>.
+
+
+### 2.8 The CONTENT register — settled 2026-09-09
+
+***2.7 logged this as the thing to settle first, because the other ninety-six routines will be written against whatever it establishes.*** **Seventy-nine of the 175 reachable moves are CONTENT**, whose one-clause test is *"the thing itself, with nothing read into it"* — **the only type that hands you no verb.**
+
+#### The number was frightening and the shape is not
+
+***Grouped by what they actually do, the seventy-nine are not seventy-nine ways of hitting:***
+
+| | | |
+|---|---|---|
+| **damage, plain** | **7** | TACKLE(25) · SCRATCH(12) · POUND · HORN ATTACK · SLAM · MEGA PUNCH · HYPER VOICE |
+| **damage + rider** | **25** | QUICK ATTACK(11) · DOUBLESLAP(8) · FURY ATTACK(7) · BODY SLAM(5) · … |
+| **lowers theirs** | **8** | TAIL WHIP(18) · GROWL(16) · SCREECH(8) · LEER(8) · SCARY FACE(4) · … |
+| **raises ours** | **6** | PSYCH UP(6) · GROWTH(5) · HARDEN · SHARPEN · DOUBLE TEAM · CONVERSION |
+| **status / control** | **33** | SUPERSONIC(8) · DISABLE(8) · HELPING HAND(8) · FOCUS ENERGY(7) · PROTECT(5) · … |
+
+***Only seven are plain damage. CONTENT is mostly CONTROL***, which is why the type that hands you no verb turned out to be the one with the most verbs available.
+
+#### The register is the instruction set
+
+***The primitive operations*** — `WRITE`, `CLEAR`, `COPY`, `SHIFT`, `FLUSH`. **An instruction has no semantics beyond what it does**, and *that is "nothing read into it" stated as a part of speech* rather than as an absence.
+
+**It is also the register the project already speaks.** ROUTINES are subroutines (1.6); the items are operations, not medicines; **and 0.5 says CONTENT is the serial half — the one that shows its working.** *An instruction is exactly a step whose working is the whole of it.*
+
+> ***THE TEST.*** **Say the name. If you then have to say what it does, it is not CONTENT.**
+>
+> ***THE COUNTER-TEST, which stops the register eating the game.*** **CONTENT does not decide, weigh, frame or infer.** *If the word implies a judgement it belongs to CONTEXT, LOGIC or LATENT* — and the seventy-nine must not annex vocabulary the other sixteen types need.
+
+#### Five sub-registers, one per family
+
+| family | the operation it names | worked |
+|---|---|---|
+| **plain damage** | *the primitive write* | **`TACKLE` → `WRITE`** |
+| **damage + rider** | *a write with a side effect* | `DOUBLE-EDGE` → **CLOBBER** · `EXPLOSION` → **CORE DUMP** · `SUPER FANG` → **TRUNCATE** |
+| **lowers theirs** | *reducing another process's standing* | `GROWL` → **DEPRECATE** · `SCREECH` → **DEMOTE** · `TAIL WHIP` → **UNPIN** |
+| **raises ours** | *reserving your own* | `HARDEN` → **PIN** · `SHARPEN` → **INLINE** · `FOCUS ENERGY` → **PREFETCH** |
+| **status / control** | *the richest seam, and where the instruction set already lives* | `DISABLE`, `BLOCK`, `PROTECT` need no work at all |
+
+***`TACKLE` is the one that sets the tone*** — **twenty-five of the seventy-two learn it** and for most it is the first routine they know. **`WRITE` is the plainest operation there is and every daemon can do it**; *damage in this world is putting your data where theirs was.*
+
+***And the perfect answer is unusable, which is worth recording so nobody proposes it again.*** **`POKE` is the BASIC instruction that writes one byte to an address** — it works twice, it is four characters, and it is **unusable in a game that has spent five separate passes deleting `POKé`.** *A pun that survives the read-aloud test and not the search-and-replace test is still a no.*
+
+#### Thirteen already work, and are not to be touched
+
+**`DISABLE` · `BLOCK` · `PROTECT` · `RECOVER` · `ENDURE` · `LOCK-ON` · `SAFEGUARD` · `MIMIC` · `MINIMIZE` · `METRONOME` · `RECYCLE` · `CONVERSION` · `CONVERSION 2`**
+
+***A metronome is a clock, recycling is garbage collection, and a type conversion is a type conversion.*** **Same finding as *catchy tune* and `MOVE ITEMS`** (1.6): *the pass that renames what already lands is a pass that makes the game worse.* **`SWIFT`, `FORESIGHT` and `ENCORE` are marginal and get a second look, not a rename by default.**
+
+#### PERSPECTIVE stays, as the deliberate exception
+
+***`MOVE_TRANSFORM` → `PERSPECTIVE` was already in the table and nobody had flagged it.*** **It looks like it breaks the register** — *perspective is the most CONTEXT word in the lexicon* — **and it is kept, because of what it sits on.**
+
+**MOCK is CONTENT, and MOCK is the daemon with no content of its own.** *Its whole nature is becoming whatever it is shown.* ***So the one CONTENT routine that is about taking a point of view is carried by the one daemon that has none*** — **which does not weaken the rule, it is the only place the rule could be broken without cost.** *Nobody says any of this.*
+
+#### Ten collisions the pass has to fix, and they are older than the pass
+
+***The move table has been colliding with our own lexicon since the renames started, and nothing checked, because the move pass never began.*** **Same class as `INTERRUPT` being assigned twice** (1.6).
+
+| | collides with | |
+|---|---|---|
+| **`GROWTH`** move | the **GROWTH** type | ***Must move.*** A CONTENT move wearing the GRASS type's name |
+| **`THRASH`** move | the **THRASHING** state | ***Must move*** — and it is a candidate for 2.7's open question about who owns THRASHING |
+| **`HARDEN`** move | the **HARDENED** type | Must move |
+| `SIGNAL BEAM` | the **SIGNAL** type | A SWARM move wearing SIGNAL's name |
+| `PRIOR` *(ours)* | the **PRIORITY** item | Both ours, and uncomfortably close |
+| `OVERHEAT` | the **OVERHEATED** state | ***Keep.*** A fire move, ENTROPY owns the state, and the two agreeing is the point |
+| `REST` · `DIVE` · `IRON TAIL` · `IRON DEFENSE` | RESTART · DIVE BOX · IRON items | Mild; noted, not urgent |
 
 
 ---
@@ -5853,7 +5922,8 @@ Kept here because the reasoning is worth more than the outcome.
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
 - **The three starters are the three learning paradigms and their learnsets say nothing about it** (2.7). The one place the argument stops at the surface
 - **The thirteen retyped daemons are 78% off-type against a 45% baseline** (2.7). Closed in the learnset, partway, keeping a deliberate residual
-- **The CONTENT register for ROUTINES** (2.7). Seventy-nine of the 175 reachable moves are the type whose clause is *nothing read into it*, in a twelve-character name. Settle this before the other ninety-six
+- ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
+- **Ten move names collide with our own lexicon** (2.8) — `GROWTH`, `THRASH` and `HARDEN` must move, and nothing has checked because the move pass never started
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
 - **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object

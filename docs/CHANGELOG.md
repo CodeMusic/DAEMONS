@@ -5,6 +5,51 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.114 — 2026-09-09
+
+### 2.8 — the CONTENT register, settled
+
+- **The number was frightening and the shape is not.** Grouped by what they do, the
+  seventy-nine CONTENT routines are **7 plain damage, 25 damage-with-a-rider, 8 that lower
+  theirs, 6 that raise ours and 33 status/control.** ***Only seven are plain damage*** —
+  **CONTENT is mostly CONTROL**, which is why the type that hands you no verb turned out to
+  have the most verbs available.
+- **The register is the instruction set** — `WRITE`, `CLEAR`, `COPY`, `SHIFT`, `FLUSH`.
+  ***An instruction has no semantics beyond what it does***, which is *"nothing read into
+  it"* stated as a part of speech rather than as an absence. It is also the register the
+  project already speaks: ROUTINES are subroutines, the items are operations, and **0.5 says
+  CONTENT is the serial half — the one that shows its working.**
+- **THE TEST:** *say the name; if you then have to say what it does, it is not CONTENT.*
+  **THE COUNTER-TEST**, which stops the register eating the game: *CONTENT does not decide,
+  weigh, frame or infer* — a word implying judgement belongs to CONTEXT, LOGIC or LATENT.
+- **`TACKLE` → `WRITE`.** Twenty-five of the seventy-two learn it and for most it is the
+  first routine they know, so it sets the tone. *Damage in this world is putting your data
+  where theirs was.*
+- ***And the perfect answer is unusable, recorded so nobody proposes it again.*** **`POKE` is
+  the BASIC instruction that writes one byte to an address** — works twice, four characters,
+  and **unusable in a game that has spent five passes deleting `POKé`.** *A pun that survives
+  the read-aloud test and not the search-and-replace test is still a no.*
+
+### Thirteen already work, PERSPECTIVE stays, and ten things collide
+
+- **Not to be touched:** `DISABLE` `BLOCK` `PROTECT` `RECOVER` `ENDURE` `LOCK-ON` `SAFEGUARD`
+  `MIMIC` `MINIMIZE` `METRONOME` `RECYCLE` `CONVERSION` `CONVERSION 2`. *A metronome is a
+  clock, recycling is garbage collection, and a type conversion is a type conversion.*
+  **Same finding as *catchy tune*: the pass that renames what already lands makes the game
+  worse.**
+- **`PERSPECTIVE` is kept as the deliberate exception.** It was already in the table and
+  nobody had flagged it. *It looks like it breaks the register — perspective is the most
+  CONTEXT word in the lexicon* — **and it sits on MOCK, the daemon with no content of its
+  own, whose whole nature is becoming whatever it is shown.** ***The one CONTENT routine
+  about taking a point of view is carried by the one daemon that has none.***
+- **Ten move names collide with our own lexicon**, and nothing had checked because the move
+  pass never started — *the same class as `INTERRUPT` being assigned twice.* **`GROWTH` wears
+  the GRASS type's name, `THRASH` wears the confusion state's, `HARDEN` wears STEEL's** —
+  all three must move. **`OVERHEAT` is kept**: a fire move and ENTROPY's own state agreeing
+  is the point.
+
+---
+
 ## v11.113 — 2026-09-09
 
 ### 0.5 — two perspectives, and why neither can send the other a transcript
