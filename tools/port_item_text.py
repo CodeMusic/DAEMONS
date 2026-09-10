@@ -356,8 +356,8 @@ USABLE = {
     # The repair ladder. HP is how much of the process is still running.
     "ITEM_POTION":       ("RECOVER",      ["Puts back a little of what was",
                                            "lost. Restores 20 HP."]),
-    "ITEM_SUPER_POTION": ("DEEP RECOVER", ["Goes further in than a RECOVER",
-                                           "does. Restores 50 HP."]),
+    "ITEM_SUPER_POTION": ("DEEP RECOVER", ["Goes further in than the first",
+                                           "one does. Restores 50 HP."]),
     "ITEM_HYPER_POTION": ("FULL RECOVER", ["Everything reachable, put back.",
                                            "Restores 200 HP."]),
     "ITEM_MAX_POTION":   ("REBUILD",      ["From nothing, rather than from",
@@ -454,6 +454,15 @@ USABLE = {
     "ITEM_COIN_CASE":    ("TOKEN CASE",   ["Holds the tokens the GAME CORNER",
                                            "deals in. It holds up to 9,999."]),
 
+    #  T-19. The package Ty hands you in the Warehouse, and 8.2a is exact that
+    #  what is in it "is not written here and may never need to be" -- so the
+    #  name must not describe the contents. A PAYLOAD is what a message
+    #  actually carries as opposed to what routes it, which says the shape and
+    #  nothing else. Repurposed from ITEM_LETTER: a Hoenn key item, referenced
+    #  by nothing in this game, and already a letter.
+    "ITEM_LETTER":       ("PAYLOAD",      ["Sealed. It is addressed, and it",
+                                           "is not addressed to you."]),
+
     # T-20. 8.2a calls these the two halves of a bridge between systems built
     # apart, and a KEY PAIR is that, exactly and as a term of art: two halves
     # made together, useless singly, and one of them is the half you are
@@ -504,8 +513,8 @@ BERRIES = {
     # The six states, each with the handler that catches it. 1.6 named the
     # items that undo one on purpose; these are the same undo, armed.
     "ITEM_CHERI_BERRY":  ("THROTTLE TRAP",["Armed against one condition and",
-                                           "spent catching it. Ends",
-                                           "THROTTLED, once."]),
+                                           "spent on it. Ends THROTTLED,",
+                                           "once."]),
     "ITEM_CHESTO_BERRY": ("SUSPEND TRAP", ["Fires the moment the daemon stops",
                                            "being scheduled. Ends SUSPENDED,",
                                            "once."]),

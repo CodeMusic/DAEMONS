@@ -6,6 +6,53 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.144 — 2026-09-10
+
+### Act 2 is in the ROM
+
+- **T-19 — the Warehouse, both ends.** *The package exists:* **`PAYLOAD`, out of `ITEM_LETTER`** — a
+  Hoenn key item nothing in this game referenced, and already a letter. 8.2a is exact that what is in
+  it *"is not written here and may never need to be"*, so the name says the shape and nothing else.
+- ***Both men are in the room and Scorn is facing him.*** They worked the same operation from opposite
+  ends and were never in a room; now they are, and nothing happens. **Ty is rewritten to 8.2a's
+  reading** — strip the cackle and the argument underneath is a businessman's — *and he crosses the
+  room to you, because that is what a man stating terms does.*
+- **Scorn gets 8.2a's one beat, and it is not new dialogue**: it is him hearing the sentence he already
+  said at Callow. *"It is a correct sentence. I have checked it four times. I cannot tell you why I
+  keep checking it."* **He has noticed and he has not understood**, and nothing in the room explains it.
+- ***The last scene.*** Crystal turns the package over once and does not open it. She asks one word.
+  She crosses the room and opens it facing away — **and the script ends with her still facing away.**
+  *Craft rule 1's hardest case so far: the loudest available last line is whatever is on that paper.*
+- **T-21 — seven chambers, seven accounts of one event, and the event is never named.** *I SIGNED WHAT
+  I WAS GIVEN. I WROTE DOWN WHAT I SAW. I CARRIED IT, I DID NOT READ IT. …NOBODY ASKED ME. IT IS STILL
+  HERE.* **Nobody in them is lying and nobody is wrong, and it happened anyway.**
+- **T-22 — the doctrine's room.** *4.33's eight steps, on SIX ISLAND's GREEN PATH, one per visit, and
+  the ninth clears the flags so he begins again.* ***Every prohibition is an absence***, so the script
+  carries the list of what is deliberately not there. **Delete him and nothing else changes.**
+
+### And T-02 — the central argument fights with its own routines
+
+- ***All nineteen of the MUSAI branch's damaging routines were off-type.*** **CODEMUSAI is LOGIC and
+  fought by heat; CAREMUSAI is CONTEXT and fought by water; SEEKMUSAI is VECTOR and fought by
+  electricity.** *Now 37%, under 2.7's 45% baseline, with two deliberate residuals a line.*
+- **`FALSIFY` on CODEMUSAI is the pass.** *It breaks STEELMAN and PARAPHRASE, and CODEMUSAI exists to
+  be LOGIC against CONTEXT* — **so 2.2's thesis relation arrives as a routine used on the sibling.**
+- ***S.T.A.R.R. was already at 25%***: the ticket's 78% was the thirteen's average carried onto a name
+  that did not deserve it.
+
+### Two tools, and one of engine.md's traps caught its author
+
+- **`tools/gbamaptiles.py`** reads a map's collision out of its own `map.bin` — *two bits per tile* —
+  so where an NPC can stand or a sign can hang is a lookup rather than a playtest. **T-09 had been
+  blocked on that exact sentence.**
+- **`tools/port_musai.py`** refuses to write if a level loses its move, which is 2.7a's first rule
+  checked rather than trusted.
+- ***And `LOCALID_WAREHOUSE_GIDEON` went into a generated header.*** **`map_event_ids.h` is built from
+  the map JSONs and gitignored**, so the edit survived exactly one build before the linker asked where
+  the symbol had gone. *engine.md trap 4, on the person who wrote it down.*
+
+---
+
 ## v11.143 — 2026-09-10
 
 ### Two more tickets, and two traps that were mine
