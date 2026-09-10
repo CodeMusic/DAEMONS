@@ -212,6 +212,15 @@ VOCAB = {
     "defeated": "outscored", "Defeated": "Outscored", "DEFEATED": "OUTSCORED",
     "defeat": "outscore", "Defeat": "Outscore", "defeats": "outscores",
     "defeating": "outscoring", "Defeating": "Outscoring",
+    # 4.2's INDEX is the local list. What CRYSTAL CLEAR upgrades it to is the
+    # complete one -- and a LOCAL index covers one partition while a GLOBAL
+    # index covers the whole table, which is the distinction exactly, in a term
+    # of art nobody has to be taught. NATIONAL is a word about countries and
+    # this world has none; KANTO stays, because that is a place.
+    #
+    # Six literals: the dex screen's mode label, its NUMERICAL MODE line, the
+    # diploma, the rating, and two lines of dialogue.
+    "NATIONAL": "GLOBAL",
     # PP is not two letters -- it is one compressed glyph, redrawn as MP by
     # tools/gbamana.py. MP is the same two characters, so "PP ", "PP was
     # restored." and the items PP UP and PP MAX change width by nothing. Full

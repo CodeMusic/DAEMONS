@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.131**
+**A total conversion — the living design bible, v11.132**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6481,6 +6481,45 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***The gates are the discipline, not the content.*** **A show offered before the thing it explains is a show about nothing**, and every row above is unlocked by the player already holding the thing.
 
 ***What this does not do is reach the player in the overworld.*** **That wants a map object with a script**, and the description line carries the rule instead — *a show per MARK*, read in the bag, where a key item is looked at anyway. <span>OPEN</span>.
+
+### 9.17 The GLOBAL INDEX, and two debug entries that leave the menu
+
+***Built 2026-09-10, off a question: how do you reach the SEVII ISLANDS in a debug save.*** **The answer, derived from the scripts rather than assumed, is that you cannot** — *and the chain that gates them turned out to be four separate things, only one of which is the REVIEW BOARD.*
+
+#### What actually gates the islands
+
+| | |
+|---|---|
+| **Islands 1–3** | ***not gated on the REVIEW BOARD at all.*** **The ferry at ARDOR PORT runs once the S.S. ANNE has sailed and CELIO's quest has started** — *and CELIO only starts it after HOLT takes you to ONE ISLAND from the QUICKSILVER shore, which is main-story* |
+| **Islands 4–7** | **CELIO asks for the RUBY only when `IsNationalPokedexEnabled` is TRUE**, and the RAINBOW PASS comes at the end of that errand |
+| **The upgraded INDEX** | **`FLAG_SYS_GAME_CLEAR`, *sixty daemons owned*, and *having been to ONE ISLAND*** — three conditions, and the last two are the ones nobody remembers |
+
+***So beating the REVIEW BOARD is necessary and nowhere near sufficient***, and a debug save fails on every clause: six daemons, no ferry, and **CRYSTAL CLEAR is not even in her own lab** — `FLAG_HIDE_OAK_IN_HIS_LAB` is set at new game and only cleared by the starter scene, *so the room a debug player walks into is empty.*
+
+#### Two entries, and they are the first in the submenu that leave it
+
+**Everything in 9.3's DEBUG submenu so far is one C call and a redraw** — heal, restock, play a track. ***These two are not.*** *One wants a yes/no box and one wants a warp*, **and the script engine already does both properly**, so the callback's whole job is to shut the menu down cleanly and hand over. *That is the same handover a signpost does.*
+
+| | |
+|---|---|
+| **`RECORD`** | ***warps to the HALL and lets that map's own script do all of it.*** **CRYSTAL congratulates you, `FLDEFF_HALL_OF_FAME_RECORD` puts your name in, `EventScript_SetDefeatedEliteFourFlagsVars` sets the flag, the respawn moves to BLANCHE, and `EnterHallOfFame` runs the credits and wakes you at home.** *Not one line of that is reimplemented* |
+| **`ISLANDS`** | **both map flags, both passes, the ARDOR ferry, and CELIO advanced to the point the RAINBOW PASS is handed over** — *and deliberately no further.* **Recovering the SAPPHIRE is real content, and a debug jump that skips content is a debug jump that stops you testing it** |
+
+***And the sixty-daemon gate is fenced out of the debug build***, so the handover scene can actually fire there. **Both preconditions are real and both stay in the shipping ROM.**
+
+#### The mechanism, which is worth more than either entry
+
+***`DAEMONS_DEBUG` reached the C preprocessor and not the assembler***, so a *script* could not be fenced the way a *function* could. **One `--defsym` in `ASFLAGS` fixes that**, and `.if DAEMONS_DEBUG == 0` now works in any `.inc`. ***Checked by grepping the ROMs rather than by reading the Makefile:*** **the release build contains none of the debug text and the debug build contains all of it.**
+
+#### And the upgraded INDEX is the GLOBAL INDEX
+
+***4.2's INDEX is the LOCAL list.*** **What CRYSTAL upgrades it to is the complete one** — *and a **local index** covers one partition while a **global index** covers the whole table.* **That is the distinction exactly, in a term of art nobody has to be taught**, and it is the register this lexicon has used since PORT and BOX: *plain infrastructure English, doing double duty.*
+
+**`NATIONAL` is a word about countries and this world has none.** *`KANTO` stays, because that is a place.* **Six literals moved** — the dex screen's mode label, its `NUMERICAL MODE` line, the diploma, the rating, and two lines of dialogue — **and GLOBAL is two characters narrower than what it replaced, so nothing needed measuring.**
+
+***Rejected, and worth recording:*** **`CODEX`** — *prettier, and it does no double duty in computing.* **`NEXUS`, `MATRIX`, `VERTEX`** — *sci-fi flavour, and this project's furniture is deliberately duller than that.* **`INDEX-II`** — *a version number on a thing 4.2 wants the player to distrust is the wrong kind of joke.*
+
+***And the GLOBAL INDEX is still one short.*** **8.9 put MISSINGNO at 387 and the complete list stops at 386.** *Nobody says so.*
 
 ### 9.2 Order of operations
 

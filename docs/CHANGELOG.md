@@ -5,6 +5,39 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.132 — 2026-09-10
+
+### The GLOBAL INDEX, and two debug entries that leave the menu
+
+- ***The SEVII ISLANDS are gated on four things and only one of them is the REVIEW BOARD.***
+  **Islands 1–3 are not gated on it at all** — the ARDOR ferry runs once the S.S. ANNE has sailed
+  and CELIO's quest has started. **Islands 4–7 need the upgraded INDEX**, which itself needs
+  `FLAG_SYS_GAME_CLEAR`, ***sixty daemons owned***, and ***having been to ONE ISLAND***.
+- ***And a debug save fails every clause*** — six daemons, no ferry, and **CRYSTAL CLEAR is not even
+  in her own lab**: `FLAG_HIDE_OAK_IN_HIS_LAB` is set at new game and only the starter scene clears it.
+- **`RECORD`** warps to the HALL and lets that map's own script do all of it — *the congratulation, the
+  name going in, the flag, the respawn, the credits, waking at home.* **Not one line reimplemented.**
+- **`ISLANDS`** sets both map flags, both passes, the ARDOR ferry and CELIO's quest to the point the
+  RAINBOW PASS is handed over — ***and deliberately no further.*** *Recovering the SAPPHIRE is real
+  content, and a debug jump that skips content is a debug jump that stops you testing it.*
+- ***`DAEMONS_DEBUG` reached the C preprocessor and not the assembler***, so a script could not be
+  fenced the way a function could. **One `--defsym` in `ASFLAGS`**, and `.if DAEMONS_DEBUG == 0` now
+  works in any `.inc`. **Checked by grepping the ROMs: the release build carries none of it.**
+
+### NATIONAL → GLOBAL
+
+- ***4.2's INDEX is the LOCAL list; what CRYSTAL upgrades it to is the complete one.*** **A local index
+  covers one partition and a global index covers the whole table** — *the distinction exactly, in a
+  term of art nobody has to be taught.* **NATIONAL is a word about countries and this world has none.**
+  *KANTO stays, because that is a place.*
+- **Six literals**, all narrower than what they replaced. *Rejected: `CODEX` (pretty, no double duty),
+  `NEXUS` / `MATRIX` / `VERTEX` (sci-fi, and this project's furniture is duller than that), `INDEX-II`
+  (a version number on a thing 4.2 wants the player to distrust).*
+- ***And the GLOBAL INDEX is still one short.*** **8.9 put MISSINGNO at 387 and the complete list stops
+  at 386.** *Nobody says so.*
+
+---
+
 ## v11.131 — 2026-09-10
 
 ### The held items are a rack, and the Bag became the chart
