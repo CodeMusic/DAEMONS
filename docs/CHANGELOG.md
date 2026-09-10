@@ -6,6 +6,26 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.141 — 2026-09-10
+
+### check_lexicon reads TODO.md's ticket ids
+
+- ***One id, one job*** — the same rule as the lexicon, one level up again. **Two sessions
+  issued T-13 through T-17 within the hour**, in a file whose own first rule is that **ids are
+  permanent**, and nothing read it back.
+- ***A GAP IS A FAULT HERE, and that is where tickets differ from versions.*** **Versions jump
+  on purpose** — 1.0 → 11.8 → 11.108 — *so a gap there means nothing.* **TODO.md says a
+  finished ticket is struck through and never deleted**, so a missing number means one *was*
+  deleted, which is the thing that rule exists to prevent.
+- **Verified against both faults**: the real collision reproduced by issuing T-13 twice, and a
+  deletion by removing T-05. *Each fires with the reason attached.*
+- ***That is the third contract this tool now holds*** — a word that means two things, a
+  version that means two releases, and an id that means two jobs. **All three are agreements
+  between places with no compiler in between**, which appears to be the shape this project
+  produces faults in.
+
+---
+
 ## v11.140 — 2026-09-10
 
 ### TODO.md caught up, and T-06 closed

@@ -35,6 +35,12 @@ the compiler.
 Gaps are NOT a fault. The project has jumped 1.0 -> 11.8 -> 11.108 on purpose.
 Duplicates, disagreement between the four places, and a newest entry that is
 not at the top are.
+
+AND IT CHECKS TODO.md's TICKET IDS, which is the same rule again one level up.
+Two sessions issued T-13 through T-17 within the hour in a file whose own first
+line is that ids are permanent. Here a GAP IS a fault, unlike the version: that
+file says a finished ticket is struck through and never deleted, so a missing
+number means one was.
 """
 import json, os, re, sys
 
@@ -139,6 +145,36 @@ def check_version():
     return bad, seen
 
 
+def check_tickets():
+    """One id, one job -- the same rule as the lexicon, one level up again.
+
+    Two sessions issued T-13 through T-17 within the hour in a file whose own
+    first rule is that IDS ARE PERMANENT. Nothing read it back.
+
+    A GAP IS A FAULT HERE, and this is where tickets differ from versions.
+    Versions jump on purpose -- 1.0 to 11.8 to 11.108 -- so a gap there means
+    nothing. TODO.md says a finished ticket is struck through and never
+    deleted, so a missing number means one WAS deleted, which is the thing
+    that rule exists to prevent.
+    """
+    bad = []
+    f = os.path.join(DOCS, "TODO.md")
+    if not os.path.isfile(f):
+        return bad
+    ids = re.findall(r"\|\s*\*\*(T-(\d+))\*\*", open(f, encoding="utf-8").read())
+    if not ids:
+        return [("TODO.md", "no ticket rows matched -- the format moved, or the file is empty")]
+    nums = [int(n) for _, n in ids]
+    for n in sorted(set(nums)):
+        if nums.count(n) > 1:
+            bad.append(("T-%02d" % n, "%d rows share it -- ids are permanent" % nums.count(n)))
+    missing = [n for n in range(1, max(nums) + 1) if n not in nums]
+    if missing:
+        bad.append(("TODO.md", "no row for %s -- a finished ticket is struck through, "
+                    "never deleted" % ", ".join("T-%02d" % n for n in missing)))
+    return bad
+
+
 def read(rel, pat):
     f = os.path.join(GBA, rel)
     if not os.path.isfile(f):
@@ -183,6 +219,7 @@ def main():
     bad = [(w, sorted(v)) for w, v in seen.items()
            if len(v) > 1 and w not in ALLOWED]
     vbad, seen_versions = check_version()
+    tbad = check_tickets()
     print("  %d names across %s" % (len(seen), ", ".join(sorted(surfaces))))
     for w, reason in sorted(ALLOWED.items()):
         if w in seen and len(seen[w]) > 1:
@@ -203,7 +240,14 @@ def main():
         print("\n  %d version disagreement(s):\n" % len(vbad))
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad) else 0
+
+    if not tbad:
+        print("  every ticket id is used once.")
+    else:
+        print("\n  %d ticket id problem(s):\n" % len(tbad))
+        for what, why in tbad:
+            print("   %-16s %s" % (what, why))
+    return 1 if (bad or vbad or tbad) else 0
 
 
 if __name__ == "__main__":
