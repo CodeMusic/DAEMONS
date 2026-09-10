@@ -6,6 +6,33 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.143 — 2026-09-10
+
+### Two more tickets, and two traps that were mine
+
+- **T-25 — the `FIGHTING DOJO` is the `PROOF HALL`.** *The one BUILDING carrying a vanilla type word,
+  and it is the rival gym, so it was the one place the old chart vocabulary sat on a signpost.* **A
+  dojo is where a discipline is practised and a PROOF is what LOGIC produces**, and the class inside
+  has been FORMALIST since 1.6a — *the room and its people finally agree.*
+- **T-08 — `DAEMON` is not its own plural.** POKéMON is, like sheep; **DAEMON is an ordinary English
+  noun**, so every line vanilla wrote as *"all sleeping POKéMON"* had been reading as broken English
+  since 1.1. ***Twenty-five sentences force the plural and were read one at a time***; the rest are
+  genuinely singular, or attributive — *"rare DAEMON fossils" is a compound noun the way "sheep dog" is.*
+
+### engine.md gains traps 8 and 9, both self-inflicted
+
+- ***A substitution that grows every time you run it.*** **`"to get rare DAEMON"` → `"to get rare
+  DAEMONS"` matches itself on the next run**, and this project's own instruction is *re-run every tool
+  until it reports nothing* — **so a non-idempotent rule is not a warning, it is a corruption engine
+  with a crank on it.** *It produced `DAEMONSSSSSSS` in seven files.* **`port_vocab` refuses any pair
+  where the key is inside the value now**, rather than warning.
+- ***A file that empties itself.*** `open(P,'w').write(open(P).read()...)` **destroys `P`** — Python
+  creates the `'w'` handle, which truncates, before the read on the right ever runs. *It had emptied
+  `docs/README.md` three times in two days*, quietly, because that file is in no build. **T-06's fix
+  to `check_lexicon` is what caught it**: a check that agrees with an absent row agrees with anything.
+
+---
+
 ## v11.142 — 2026-09-10
 
 ### 1.6d — the rest of the bag, and the half of it that stays vanilla

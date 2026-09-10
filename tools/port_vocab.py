@@ -394,7 +394,53 @@ TYPE_TALK = [(vanilla + suffix, ours + suffix)
                                    ("DARK", "OPAQUE"))
              for suffix in ("-type", " type", "-TYPE", " TYPE")]
 TYPE_TALK += [("BUG/FLYING-type", "SWARM/VECTOR-type"),
-              ("BUG- or FIRE-type", "SWARM- or ENTROPY-type")]
+              ("BUG- or FIRE-type", "SWARM- or ENTROPY-type"),
+              #  T-25. The one BUILDING carrying a vanilla type word, and it is
+              #  the rival gym -- so it is the one place the chart's old
+              #  vocabulary was on a signpost. A dojo is where a discipline is
+              #  practised and a PROOF is what LOGIC produces, so PROOF HALL
+              #  is the same building said in our words. It is also narrower
+              #  than what it replaces, which nothing else here has been.
+              ("FIGHTING DOJO", "PROOF HALL")]
+
+#  T-08. POKeMON is its own plural, like sheep. DAEMON is not -- it is an
+#  ordinary English noun and its plural is DAEMONS -- so every line vanilla
+#  wrote as "all sleeping POKeMON" now reads as broken English.
+#
+#  The ticket said this wants a human read and it was right: "which DAEMON
+#  wants to come with me" is singular and "all the DAEMON in your party" is
+#  not, and no pattern separates them. These are the ones where the sentence
+#  forces it, read one at a time. Attributive uses stay singular -- "rare
+#  DAEMON fossils" is a compound noun, the way "sheep dog" is.
+PLURALS = [
+    ("Both are DAEMON!",              "Both are DAEMONS!"),
+    ("rare DAEMON that can be",       "rare DAEMONS that can be"),
+    ("all your DAEMON rise",          "all your DAEMONS rise"),
+    ("get rare DAEMON!",              "get rare DAEMONS!"),
+    ("other people's DAEMON.",        "other people's DAEMONS."),
+    ("bring us rare DAEMON\n",        "bring us rare DAEMONS\n"),
+    ("DAEMON appear to have",         "DAEMONS appear to have"),
+    ("rare DAEMON breed",             "rare DAEMONS breed"),
+    ("all sleeping DAEMON.",          "all sleeping DAEMONS."),
+    ("for powerful DAEMON!",          "for powerful DAEMONS!"),
+    ("all over for DAEMON.",          "all over for DAEMONS."),
+    ("more rare DAEMON at home",      "more rare DAEMONS at home"),
+    ("effect on bird DAEMON.",        "effect on bird DAEMONS."),
+    ("many cute DAEMON.",             "many cute DAEMONS."),
+    ("bound all our DAEMON while",    "bound all our DAEMONS while"),
+    ("other mystic DAEMON?",          "other mystic DAEMONS?"),
+    ("no rare DAEMON around",         "no rare DAEMONS around"),
+    ("all the DAEMON by hanging",     "all the DAEMONS by hanging"),
+    ("two of your DAEMON.",           "two of your DAEMONS."),
+    ("Where do DAEMON appear",        "Where do DAEMONS appear"),
+    ("If all the DAEMON in your",     "If all the DAEMONS in your"),
+    ("no wild DAEMON or USERS",       "no wild DAEMONS or USERS"),
+    ("When wild DAEMON appear",       "When wild DAEMONS appear"),
+    ("no more room for DAEMON!",      "no more room for DAEMONS!"),
+    ("good-looking DAEMON.",          "good-looking DAEMONS."),
+]
+
+TYPE_TALK += PLURALS
 
 PHRASES = sorted((TYPE_TALK +
                   [(k, v) for k, v in NAMES.items() if ' ' in k] +
@@ -467,6 +513,19 @@ PHRASES = sorted((TYPE_TALK +
                    ("Daemon Center", "Checkpoint"), ("Daemon Mart", "the Repo")] +
                   ENGAGE),
                  key=lambda kv: -len(kv[0]))
+#  A PHRASE WHOSE OUTPUT STILL CONTAINS ITS OWN KEY GROWS ON EVERY RUN.
+#  The stash below protects one pass; it cannot protect the NEXT run, because
+#  by then the output is the file's own text. "to get rare DAEMON" ->
+#  "to get rare DAEMONS" matched itself and produced DAEMONSSSSSSS in seven
+#  files before anyone looked. Refused rather than warned: this tool is run
+#  until it reports nothing, so a non-idempotent rule is a corruption engine.
+_grows = [(k, v) for k, v in PHRASES if k in v and k != v]
+if _grows:
+    print("  !! %d phrase(s) would match their own output and grow every run:" % len(_grows))
+    for k, v in _grows[:6]:
+        print("     %-38s -> %s" % (k, v))
+    sys.exit(1)
+
 PHRASE_RE = re.compile('|'.join(re.escape(k) for k, _ in PHRASES)) if PHRASES else None
 PHRASE_MAP = dict(PHRASES)
 

@@ -161,7 +161,15 @@ python3 tools/gbastr.py "some debug string"
 
 **`SMOKE BALL` and `LIGHT BALL` were held out of the sweep because `BALL` is the capture device and neither of these is one.** *Once both had names of their own, the guard was the only thing stopping the rename.* ***A stale exception is indistinguishable from a missed substitution***, so exceptions get a comment naming what would have to change for them to be removed.
 
-### 8. A file that empties itself
+### 8. A substitution that grows every time you run it
+
+***Symptom:*** *`DAEMONSSSSSSS`.*
+
+**A rename whose OUTPUT still contains its KEY matches itself on the next run**, and this project's own instruction is *re-run every tool until it reports nothing* — so a non-idempotent rule is not a warning, it is a corruption engine with a crank on it. `"to get rare DAEMON"` → `"to get rare DAEMONS"` added one letter per run across seven files.
+
+**Stashing the output protects ONE pass and cannot protect the next**, because by then the output is the file's own text. ***`port_vocab` refuses any pair where `key in value` now***, rather than warning.
+
+### 9. A file that empties itself
 
 ***Symptom:*** *a file is zero bytes and nothing errored.*
 
@@ -173,7 +181,7 @@ open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
 
 ***Read into a variable, assert it is not empty, then open for writing.*** *And the check that watches that surface has to fail on an absent row rather than agree with it — an empty file agrees with everything.*
 
-### 9. Believing the `.gba` file size
+### 10. Believing the `.gba` file size
 
 ***Symptom:*** *ROM usage that never moves.*
 
