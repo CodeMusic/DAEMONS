@@ -5,6 +5,60 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.117 — 2026-09-10
+
+### 5.3 — the other seven benchmarks, and what a grinder runs into
+
+- **8.7 called this the largest prose-to-ROM gap in the project.** Seven leaders with a
+  concept, a one-line lesson and no mechanics — *"punishes split focus" is a wish.*
+- ***Craft rule 5, restated as a test each design must pass:*** **name the thing an
+  overlevelled player still runs into.** *If more levels solve it, it is not a lesson — it is
+  a wall with a lesson written on it.*
+- **Four engine levers ignore level entirely**, and every design is built from them:
+  **priority** (moves before speed), **status** (a THRASHING daemon at 80 still hits itself),
+  **party composition** (no single daemon sweeps a spread), and **the room** (a puzzle cannot
+  be ground). *Everything else is stats, and stats are what grinding buys.*
+
+### The seven
+
+- **2 · `BASIN`** — Doldrum · FLOW · SLOPE. *A bowl that holds water; and the basin of
+  attraction an optimiser cannot climb out of.* **No wild encounters, and his trainers heal
+  you after they lose** — the one gym you cannot grind inside. **His ace holds LEFTOVERS and
+  knows RECOVER**, so steady damage is a draw forever: ***more power does not break a loop,
+  it makes a bigger loop.***
+- **3 · `GAUGE`** — Ardor · SIGNAL · SENSE. *An instrument that senses; and to gauge is to
+  perceive.* **Keep vanilla's switch puzzle — it is already a perception test.** Everything
+  he has knows a **priority** routine, and *priority ignores speed, the one stat
+  overlevelling does not settle.* **He says you were quicker. You were ready.**
+- **4 · `TRELLIS`** — Verdigris · GROWTH · FIT. *The frame you train a plant to; it grows
+  that shape and no other.* **The party is built by coverage, not strength** — one daemon at
+  60 loses to the fourth member; four at 30 do not. ***Grinding is precisely the failure the
+  gym is about.***
+- **5 · `TILT`** — Lurid · CORRUPT · SKEW. *A distribution tilts; and to be on tilt is to be
+  made unreliable by your own state.* **THRASHING and OBFUSCATE, in the invisible-wall
+  maze** — the cleanest grind-proof design of the seven, *and 4.10's echo finally has a
+  mechanic:* **the benchmark that teaches poisoning teaches what was done to Ty, three cities
+  early.**
+- **6 · `MATTE`** — Brazen · CONTEXT · FRAME. *The mount around a picture, and the film term
+  for what is masked out* — 0.2's register exactly. ***ENCORE is the mechanic***: locked into
+  your last routine, and the answer is to **back out one menu.** *9.16's FRAME show, played.*
+- **7 · `ANNEAL`** — Quicksilver · ENTROPY · HEAT. *Controlled heat that lets a material
+  settle — and the optimiser that uses temperature to escape a local minimum.* ***So
+  Benchmark 2 traps you in a basin and Benchmark 7 is the heat that gets you out***, five
+  cities apart, each named for its own lesson before the pair was noticed. **Filed under 0.2
+  as a coincidence kept, not a plan.**
+- **8 · `SCORN`** — Callow · STRATUM · TRUE. **Always maximum, never critical, no secondary
+  effects.** ***The only fight that cannot be won on a good roll*** — and **that is
+  alignment**: flawless execution of a specification nobody checked.
+
+### And CAIRN already had one
+
+- ***HEAP, STACK and MONOLITH all have STURDY***, so **they cannot be knocked out in one blow
+  at any level** — *"everything must be encoded in something physical", as a rule in the
+  damage calculation.* **Vanilla put it there and 5.1 never mentioned it.**
+
+---
+
 ## v11.116 — 2026-09-10
 
 ### 8.7 — the third review, with every ruling recorded so this one gets swept

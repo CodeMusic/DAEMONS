@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.116**
+**A total conversion — the living design bible, v11.117**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3358,6 +3358,134 @@ Corpus rooms, and the trainer table.
 
 **BOULDERBADGE → SLATE MARK.** A mark *on* a slate is physical encoding; a mark *as a grade* is what a benchmark issues. *The other seven followed as a set* — naming eight certifications was one decision, not seven.
 
+### 5.3 The other seven — and what a grinder runs into
+
+***Written 2026-09-10, because the third review was right that this was the largest prose-to-ROM gap in the project.*** **Seven leaders had a concept, a one-line mechanical lesson and no mechanics** — and *"punishes split focus" is a wish, not a design.*
+
+***The discipline is craft rule 5, stated as a test each design has to pass:*** **name the thing an overlevelled player still runs into.** *If more levels solve it, it is not a lesson — it is a wall with a lesson written on it.*
+
+**The engine gives four levers that ignore level entirely**, and every design below is built from them: ***priority*** (moves before speed), ***status*** (a THRASHING daemon at level 80 still hits itself), ***party composition*** (no single daemon sweeps a spread), and ***the room*** (a puzzle cannot be ground). **Everything else is stats, and stats are what grinding buys.**
+
+*And the names follow 5.1's rule* — **CAIRN arrived already meaning its lesson**, so each of these is an object or a word that means the lesson before anyone explains it. **All six checked clear against species, moves, abilities, types and items.**
+
+#### CAIRN already had a mechanic and nobody claimed it
+
+***His whole line has STURDY.*** **HEAP, STACK and MONOLITH cannot be knocked out in one blow, at any level** — and *that is "everything must be encoded in something physical" as a rule in the damage calculation.* **A record does not go down to one hit.** *Vanilla put it there and 5.1 never mentioned it.*
+
+---
+
+#### 2 · **BASIN** — Doldrum · FLOW · SLOPE
+
+***A basin is a bowl that holds water, and a basin of attraction is the region an optimiser falls into and cannot climb out of.*** The name is both, and the town was already named for the failure state.
+
+**His creed:** *you get better by going downhill. Keep going down and you arrive.*
+
+***THE GYM HAS NO GRADIENT, and this is the design.*** **No wild encounters, and his trainers heal your party after they lose.** *You leave with exactly what you walked in with.* **The one gym in the game you cannot grind inside**, and nobody says why.
+
+***THE MECHANIC.*** **His ace holds LEFTOVERS and knows RECOVER. High Defence, ordinary HP.** *A player who attacks at a steady rate never gets anywhere* — **the healing is per-turn and so is the damage, so the fight is a draw forever.** ***More power does not break a loop; it just makes a bigger loop.***
+
+**What breaks it is anything that is not more of the same** — a stat drop, a status, a critical. ***You have to change the shape of what you are doing, which is what escaping a local minimum is.***
+
+***THE GRINDER RUNS INTO:*** **a draw.** *The one benchmark where being stronger genuinely does not help*, and the player discovers it by trying.
+
+**How he loses.** He congratulates you for finding a way down he had not. *He does not notice that is the entire lesson.*
+
+---
+
+#### 3 · **GAUGE** — Ardor · SIGNAL · SENSE
+
+***A gauge is a physical instrument that senses and reads out.*** *To gauge is to perceive.* Both, first time.
+
+**His creed:** *raw input is fast and shallow — and reacting first works more often than careful people admit.*
+
+***THE ROOM IS ALREADY A PERCEPTION TEST.*** **Keep vanilla's switch puzzle whole**: two hidden switches among the containers, information sitting in the room, and *you have to look.* **Reframed as unlabelled ports with one live** — the puzzle does not change, only what it is called.
+
+***THE MECHANIC.*** **Every daemon he has knows a priority routine.** *Priority ignores speed, and speed is the one stat overlevelling does not settle* — **so he moves first in every fight you will ever have with him, at any level.** THROTTLED on top of it.
+
+***THE GRINDER RUNS INTO:*** **losing the first turn, forever.** *You will win the damage race and still be answering rather than acting* — **and the lesson is that the first turn was information you did not read.**
+
+**How he loses.** He says you were quicker. ***You were not. You were ready***, and those are different, and he does not have the second word.
+
+---
+
+#### 4 · **TRELLIS** — Verdigris · GROWTH · FIT
+
+***A trellis is the frame you train a plant to.*** **It grows exactly that shape and no other shape at all.** *That is overfitting, standing in a garden.*
+
+**Her creed:** *train the thing on the shape you want. It is not complicated.*
+
+***THE MECHANIC IS THE PARTY, and it is built by coverage rather than by strength.*** **Each member answers one of the four things a player brings to a GROWTH gym.** *No single daemon sweeps it* — **the player who trained one to level 60 loses to the fourth member, and the player who trained four to level 30 does not.**
+
+***THE GRINDER RUNS INTO: exactly the failure the gym is about.*** **Levels are the wrong axis, and the room is built to say so** *without anyone saying it.*
+
+**Her trainers teach the shape before she does.** *Each one runs a mono-type team that beats the previous trainer's* — ***they all lose to one thing, and she does not.***
+
+**How she loses.** *"You brought more than one kind."* **A pause.** *"Most people bring their best."*
+
+---
+
+#### 5 · **TILT** — Lurid · CORRUPT · SKEW
+
+***A distribution tilts.*** **And to be *on tilt* is to be made unreliable by your own state**, which is the lesson said twice before the fight starts.
+
+**His creed:** *he does not need to beat you.*
+
+***THE ROOM IS ALREADY THE ARGUMENT.*** **Keep vanilla's invisible-wall maze**: *you cannot trust what you can see, and there is no trick to it but patience.*
+
+***THE MECHANIC.*** **Status that turns your own routines against you** — THRASHING first, OBFUSCATE second. ***A THRASHING daemon at level 80 still hits itself.*** **Status is the one thing in the engine that ignores level completely**, which makes this the cleanest grind-proof design of the seven *and* the lesson stated exactly: **you were not outfought. Your outputs were made unreliable.**
+
+***THE GRINDER RUNS INTO: nothing that helps.*** *Level does not enter the calculation at any point.*
+
+***THE ECHO, and it was already recorded before it had a mechanic.*** **Scorn's method on Ty is data poisoning, and the benchmark that teaches poisoning teaches the player what was done to him three cities before they can know it** (4.10). *Nobody joins them up.*
+
+**How he loses.** *"Nothing I did was to you."* ***Which is true.***
+
+---
+
+#### 6 · **MATTE** — Brazen · CONTEXT · FRAME
+
+***A matte is the mount around a picture and the film term for what is masked out of a shot.*** **It is 0.2's register — pigment, printing, reproduction** — and it names *what is shown and what is not* in one word.
+
+***THE ROOM DECIDES WHERE YOU ARE LOOKING.*** **Keep vanilla's teleport-tile maze intact.** *You do not walk through that gym; it puts you places.*
+
+***THE MECHANIC IS ENCORE, and it is the best fit in the set.*** **It locks you into the routine you used last.** *A strong attacker locked into a resisted routine does nothing, forever, at any level* — **and the answer is to back out one menu**: switch, or use the thing you would not have chosen. ***That is 9.16's FRAME show, played rather than watched:*** *the menu you opened decided what you were allowed to think of.*
+
+**TAUNT removes your non-damaging options and REFLECT changes what damage means.** *Three routines, all of them about what you are permitted to consider.*
+
+***THE GRINDER RUNS INTO: the punishment aimed precisely at them.*** **Power is what ENCORE is for.**
+
+**How she loses, and she is the only one who does it knowingly.** ***She is the single leader who understands what just happened to her***, and says so plainly, and that is why this is the thesis benchmark and why it sits in the bought city.
+
+---
+
+#### 7 · **ANNEAL** — Quicksilver · ENTROPY · HEAT
+
+***Annealing is controlled heat that lets a material settle into a better structure.*** **And *simulated annealing* is the optimiser that uses temperature to escape a local minimum.**
+
+***Which makes a callback nobody will be told about.*** **Benchmark 2 traps you in a basin. Benchmark 7 is the heat that gets you out of one.** *Five cities apart, and each name was chosen for its own lesson before the pair was noticed.* **0.2's rule applies: it is filed as a coincidence that was kept, not a plan.**
+
+***THE ROOM IS A QUIZ AND A QUIZ CANNOT BE GROUND.*** **Keep vanilla's whole.**
+
+***THE MECHANIC.*** **His party order is not fixed and his routines are the high-variance ones** — wide damage rolls, high critical rates, effects that may or may not land. ***A memorised line fails because it is not the same fight twice.***
+
+***THE GRINDER RUNS INTO:*** **a win they cannot repeat.** *You can beat him at a high level. You cannot beat him the same way twice* — **and that is the lesson, delivered as an inconvenience.**
+
+***THE ECHO.*** **Quicksilver is Crystal's lab, and the quiz is still running on her machine.** *The examiner does not know whose questions those are.* **Nobody says so.**
+
+---
+
+#### 8 · **SCORN** — Callow · STRATUM · TRUE
+
+**The character is 4.4. The mechanic came from the third review and is taken whole.**
+
+***HIS DAEMONS ALWAYS ROLL MAXIMUM DAMAGE, NEVER CRITICAL, AND THEIR SECONDARY EFFECTS NEVER PROC.*** **He does not roll.** *One flag in the damage calculation.*
+
+***THE GRINDER RUNS INTO: the only fight in the game that cannot be won on a good roll.*** **Everywhere else variance can save you.** *Here the number is the number, and it is the highest one, every time.*
+
+***And that IS alignment, which is the concept this benchmark was assigned.*** **He is perfectly aligned — to the wrong objective.** *The fight is flawless execution of a specification nobody checked*, and **a player who has watched the HEAT show — "damage wobbles" — will feel the fight that does not, and will not be told why.**
+
+**The CC-7 pull at Quicksilver is the un-weighting.** ***S.T.A.R.R. gets its variance back***, and 4.13's awakening becomes a thing the player can see in a damage number.
+
 ### 5.2 The eight MARKS, and the toolkit they make
 
 **Built 2026-09-02.** The table above already assigns each benchmark **exactly one concept**, so the marks were never a naming exercise — *they were already named, by the column they sit in.*
@@ -5989,7 +6117,8 @@ Kept here because the reasoning is worth more than the outcome.
 - **`SWARM` is our BUG type and vanilla's Bug ability** (8.7), found by check_lexicon on its first run. With `GROWTH` (move + type), two words still mean two things
 - **The Chart publishes fifteen types and the ROM runs seventeen** (8.7). Re-score the one-clause test at 17 — CONTEXT's 8/8 was scored without OPAQUE, which is immune to it
 - **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
-- **Craft rule 5 is unpaid for benchmarks 2–8** (8.7). Seven leaders with a concept, a one-line lesson and no mechanics. **The largest prose-to-ROM gap in the project**
+- ~~Craft rule 5 is unpaid for benchmarks 2–8~~ **Designed 2026-09-10 (5.3).** *Seven leaders, each with the thing an overlevelled player still runs into* — **now it is a build task rather than a design one**
+- **The six new leader names are unbuilt** (5.3): BASIN, GAUGE, TRELLIS, TILT, MATTE, ANNEAL. Trainer classes, parties and the two scripted rooms — Doldrum's healing trainers and Scorn's fixed roll
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
