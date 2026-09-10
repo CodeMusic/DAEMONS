@@ -5,6 +5,130 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.115 — 2026-09-09
+
+### 2.7a — the three starters, curated to their paradigms
+
+- **`tools/port_starters.py`. Off-type damaging routines across the three lines: 74% → 31%.**
+  ***No type moved*** — the chart is untouched (8.4), no matchup moved (2.5), only which
+  routines a daemon reaches for, which is the cheapest of the three levers and the only one
+  that costs the argument nothing.
+- **SUPERVISED — LABL · RUBRIC · CANON.** *A supervised learner is the least entropic thing
+  in the set — it has ground truth — so a line that fought entirely by heat was the sharpest
+  seam of the three.* **FORESIGHT** identifies the target, which is what a label *is*;
+  **MIMIC** copies the answer it was shown; **SWIFT** cannot miss; **TRI ATTACK** is
+  classification into three outcomes and, with STAB, hits harder than the FLAMETHROWER it
+  replaces; **LOCK-ON** cannot miss *because you have the ground truth*. CANON's second type
+  brings **COUNTER**, which returns exactly the error it was given.
+- **UNSUPERVISED — CLUSTR · LOCUS · MANIFOLD. The FLOW spine stays, and that is a finding.**
+  *k-means descends a distance objective, and FLOW's clause is "everything running downhill
+  to the lowest point"* — the water is the algorithm, not a leftover. **It is also
+  load-bearing: FLOW ×2 against LEGACY is the one LEGACY relation that reads, and Slate is
+  Benchmark 1** — stripping it would have broken the first gym to make a point the chart was
+  already making. What was missing is that **a VECTOR line knew no VECTOR routines at all**:
+  GUST, AIR CUTTER (*a separating surface*), DRILL PECK, and **SHADOW BALL on MANIFOLD,
+  because the manifold *is* the latent space.**
+- **REINFORCEMENT — ROVERCUB · ROVERSEER · ROVERBYTE**, which needed the least, and that is
+  worth saying: ***LEECH SEED is the best-fitting routine in the whole set and nobody
+  arranged it*** — a return that accrues every turn from a thing you did once. **SOLARBEAM
+  charges a turn before it pays, which is delayed reward, in the engine, since 1996.** Two
+  changes: MEGA DRAIN for POISONPOWDER, and **SHOCK WAVE on ROVERBYTE, which gained SIGNAL as
+  a second type and had never learned a single SIGNAL routine.**
+- **The residual is chosen, not left over.** **DRAGON RAGE** stays on the supervised line
+  because EMERGENT is *behaviour nobody can account for*; **BITE** stays on the unsupervised
+  one because OPAQUE is the black box and unsupervised methods are the least interpretable
+  thing in the field. ***It landed at 31%, below the 45% baseline rather than at it*** —
+  defensible for the three daemons a player carries all game, but not the number aimed at,
+  and recorded rather than rounded off.
+
+### 2.7's two open questions, one of them closed by the engine
+
+- **THRASHING is ownerless, and it is not ownerless by omission.** `battle_util.c` deals the
+  confusion hit with **the attacker and the defender as the same battler**, type argument
+  zero, abilities suppressed. *Every other state is something a kind of thing does to you and
+  carries a type because that thing has one.* **This is the only one where the sufferer deals
+  the damage, so there is nobody whose type it could be** — which finally gives a reason for
+  the missing code and the missing item rather than just a record of them.
+- **The seam is measurable and confined.** **Thirteen of the seventy-two were also retyped**,
+  and they are the three starters, the Musai branch and STARR — *every one retyped to carry an
+  argument.* **The fifty-nine left on vanilla's typing are 45% off-type; the thirteen were
+  78%.** Off-type is already a statement the engine makes — same-type attack bonus means a
+  routine of your own type hits harder *because it is you* — but **a statement made 78% of the
+  time is not a statement.** Nine of the thirteen are now done; **the Musai branch and STARR
+  are still owed.**
+
+### Housekeeping
+
+- **Two sessions wrote §2.7 on the same day from the same conversation** and both claimed
+  v11.112. The ROUTINES-pass version is canonical; the duplicate section and its changelog
+  entry are removed, and the two findings it alone carried — the engine's word on THRASHING,
+  and the retyped-thirteen measurement — are merged into it.
+
+---
+
+## v11.115 — 2026-09-10
+
+### 8.7 — the third review, with every ruling recorded so this one gets swept
+
+- **Its sharpest line is about the document**, and is filed as binding beside 8.6's:
+  ***"A ruling nobody swept is not a decision, it is a draft."*** So 8.7 records **every**
+  item with a verdict, refusals included, and the open ones carry the tag.
+
+### Scorn met Crystal — "he never met her" is retracted
+
+- **It could not coexist with 07's directive addressed to her, 4.20's minutes with two
+  present, and 4.21's two men conferring** — and *met her* is a fact, not a frame.
+- **New canon:** the company is founded with **Ty as CEO**; ***Scorn's Solution* is the
+  hiring**; he designs the standardised evaluations **and rigs them, so rivals fail**;
+  he becomes valuable, and **Ty introduces him to Crystal.**
+- ***The horror is better than the one it replaces.*** It was never that he had no memory of
+  a stranger — **it is that her son brought him to her, in her own building, and the
+  signature still left no mark.** It makes 4.31's gym line exact: *he knows precisely what he
+  weighted and has no idea whose lab he weighted it in.*
+- ***And Crystal gains the one thing she lacked: standing to notice.*** **She is the only
+  person in the story who saw Ty before Scorn and after** — not a mother's complaint about a
+  colleague, a researcher's observation of a change she can date. **She never says it.**
+
+### PREEMPT, and the check that was scoped to the day it was written
+
+- **ICE HEAL → `WATCHDOG`.** It collided with MANKEY, named four days earlier — *and the
+  review found the fault under the collision:* **preempting a hung task hands the processor
+  to somebody else and the hung one stays hung.** A watchdog is the timer whose whole job is
+  to notice something stopped answering and reset it. **The actual cure, still works twice.**
+- **`tools/check_lexicon.py` is new.** 4.26 *did* run a collision check — against species,
+  moves and types, **not items, because the item pass had not happened yet.** *Complete for
+  the day it was written and incomplete by the following week.* The new one **reads every
+  surface out of the build on each run.**
+- ***It found a third collision on its first run that neither the review nor the project had
+  seen:*** **`SWARM` is our BUG type and vanilla's Bug ability.**
+- **1.7's security rule is amended.** It would have condemned `PAYLOAD`, `ROOTKIT` and
+  `INJECTOR` — three species that shipped five days before it. ***Intrusion words belong to
+  CREATURES; they never belong to the INSTITUTION.*** Sharper than the line it corrected.
+
+### Taken, held, and refused
+
+- **Free wins taken:** HOTFIX already costs colour; the Index completion line is already
+  written; FROZEN's concept line gains *weights that are not updated*; **LOGIC → OPAQUE →
+  CONTEXT → LOGIC is a cycle** — the interpretability gap as a triangle, out of Game Freak's
+  own table. **Vera is Ainsworth and Halftone is Doka, both written without the clinical
+  word — do not touch either.**
+- **Ideas taken:** *"IMPROVE RESPONSE CONSISTENCY" becomes a mechanic* — **Scorn's daemons
+  always roll maximum and never crit**, and the CC-7 pull gives S.T.A.R.R. its variance back.
+  The ability pass. `CONVICTION` for Choice Band. The Five Witnesses differing by edition.
+  Al's party desaturating. **And the Index sprite keeping the saturation it was recorded at
+  and never updating** — 4.2 as a mechanic, one byte per species.
+- **Held:** `SUS`→`ZZZ`/`HLD` *(a playtest decides it, not an argument)*; **`LEGACY`→`RUST`
+  and `VECTOR`→`FLOAT`, the two best proposals in the review** and both type renames;
+  `PRIORITY`→`BURST`; `MP`→`CYCLES`.
+- **Refused:** CONSENSUS scaling with the quorum. **2.5 made it boring on purpose** — *a
+  swarm does not need a gimmick, it needs to keep showing up* — and the proposal is better
+  writing and worse balance.
+- ***And the thing the review is most right about:*** **craft rule 5 is unpaid for benchmarks
+  2 through 8.** Seven leaders with a concept, a one-line lesson and no mechanics.
+  **The largest prose-to-ROM gap in the project, sitting on the spine of the fun.**
+
+---
+
 ## v11.114 — 2026-09-09
 
 ### 2.8 — the CONTENT register, settled
@@ -151,63 +275,6 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - ***Forty-five percent of them are CONTENT*** — 79 of 175 — **the one type whose clause is
   "the thing itself, with nothing read into it."** *Every other type hands you a verb.*
   Logged Open, and it is **the register to settle first.**
-
----
-
-## v11.112 — 2026-09-09
-
-### 2.7 — one lexicon, four surfaces, and the rule the move pass needed first
-
-- **A type is what a daemon IS, a routine is what it DOES, a state is what it is IN, an item is
-  what ENDS one.** Nothing had ever checked whether the four agree. Counting across all 356
-  moves: **four of the seven states are inflicted by exactly one type and nothing else** —
-  CORRUPT→LEAKING→PATCH, CORRUPT→CASCADING, ENTROPY→OVERHEATED→COOLANT (2.6's clause for
-  ENTROPY is literally *noise and heat*), FROZEN→HUNG→PREEMPT. **Four complete sentences
-  spanning a type, a state, a tile colour and an item, and the game says none of them.**
-- **The tightest pairing was forced.** HUNG exists only because FROZEN was already a type
-  name — *being unable to reuse the obvious word is what made the vocabulary precise.*
-- **SUSPENDED is CONTEXT.** It had no owner — CONTENT ×3, GROWTH ×3, CONTEXT ×1, a tie and
-  not an argument. *Being suspended is being framed out of the running set*, which is
-  CONTEXT's clause, and RESUME's description already says it. **Retyping the six sleep moves
-  is a separate decision with a real price** and is logged Open.
-- **THRASHING is ownerless, and the engine says so.** `battle_util.c` deals confusion damage
-  with **the attacker and the defender as the same battler**, type argument zero, abilities
-  suppressed. *Every other state is something a kind of thing does to you and has a type
-  because that thing has one.* **THRASHING is the only one where the sufferer deals the
-  damage, so there is nobody whose type it could be** — which is finally why it has no
-  three-letter code and no item.
-
-### The rule for naming 175 routines
-
-- ***A daemon is named for what it IS. A routine is named for what its TYPE DOES. A routine is
-  never named for a creature.*** The temptation is the opposite, and the measurement shows the
-  temptation is **already satisfied without being chased**: `WING ATTACK` is VECTOR, and seven
-  of the eight daemons that learn it are things that carry something somewhere. **The chart
-  did the filtering.** It is also the only rule under which `TACKLE` — learned by **25 of the
-  72** — can have a name at all.
-- **CONTENT routines are the only ones allowed to be ordinary English.** Of the 175 routines
-  our named daemons can reach, **79 are CONTENT — 45%** — belonging to the type whose clause
-  is *"the thing itself, with nothing read into it."* ***That is not a problem to solve, it is
-  the answer***: if every routine were technical the plainest type would stop being plain.
-
-### The seam, measured
-
-- **Thirteen of the seventy-two were also RETYPED**, and they are not a random thirteen: the
-  three starters, the Musai branch and STARR — **every one retyped to carry an argument.**
-- **Off-type damaging routines: the 59 left on vanilla's typing are 45%. The thirteen are
-  78%.** *CANON is CONTENT/LOGIC and fights entirely by heat.*
-- **Off-type is already a statement the engine makes** — same-type attack bonus means a
-  routine of your own type hits harder *because it is you*, so an off-type routine is a daemon
-  reaching outside its nature and being worse at it. ***A statement made 78% of the time is
-  not a statement.***
-- **Three levers, and the cheapest is right:** retyping the daemon undoes the argument;
-  retyping the move changes the chart for everyone (8.4, 2.5); **curating the learnset is data
-  we already own and costs the chart nothing.** Close it partway and keep a deliberate
-  residual.
-- **And the thing nothing currently does:** the three starters *are* the three learning
-  paradigms, and vanilla's fire/water/grass movesets say nothing about any of them. **The
-  paradigm is carried by the name and the type and abandoned by everything the creature
-  actually does** — the one place in this design where the argument stops at the surface.
 
 ---
 

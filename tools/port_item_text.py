@@ -75,6 +75,19 @@ TEXT = {
                           "Addressed to CRYSTAL CLEAR.",
                           "Not to you."],
 
+    #  Ruled 2026-09-10. PREEMPT collided with MANKEY -- a species named four
+    #  days before the item -- and the third review found the deeper fault
+    #  underneath the collision: preempting a hung task hands the processor to
+    #  somebody else and the hung one stays hung. A WATCHDOG is the timer whose
+    #  whole job is to notice something has stopped answering and reset it. The
+    #  actual cure, and it still works twice.
+    #
+    #  This description lived directly in items.json and the tool did not own
+    #  it, which is the same drift that nearly reverted CC-7. It owns it now.
+    "ITEM_ICE_HEAL":     ["A watchdog notices a process",
+                          "that stopped answering, and",
+                          "resets it. Ends HUNG."],
+
     # ---------------------------------------------------------------- states
     #  1.6 renamed the seven states and 9.15 gave them tiles, and twenty-one
     #  descriptions went on saying paralysis, poison, burn and confusion --

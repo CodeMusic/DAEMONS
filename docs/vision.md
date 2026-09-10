@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.114**
+**A total conversion — the living design bible, v11.115**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -644,10 +644,20 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 | **On-thesis** | **AUTHORISED · SIGNED · COUNTERSIGNED · REVOKED · TRUSTED · KEY · READ-ONLY** |
 |---|---|
 | | *These are already the game's vocabulary and nobody noticed*, because **4.18's crime is an access-control story told entirely in paperwork.** A requisition that is signed and countersigned **is** an authorisation record. **4.18a's BELIEFS can be read and challenged**, which is a permissions question. *Keep going here.* |
-| **Off-thesis** | **EXPLOIT · PAYLOAD · INJECTION · MALWARE · BACKDOOR · BREACH** |
+| **Off-thesis, for PEOPLE** | **EXPLOIT · PAYLOAD · INJECTION · MALWARE · BACKDOOR · BREACH** |
 | | ***These would make Scorn a hacker, and 4.18 spent a whole section refusing that.*** **"Nothing was smuggled; something was ordered."** *The horror is the form, not the intrusion* — **an adversarial vocabulary hands the player a villain who broke in, when the point is that he filled something out.** *And it drags the world toward thriller, away from the ML concepts the type chart is arguing about.* |
 
 ***One exception worth building, not writing:*** **Team Corpus should never be described in intrusion language and should behave like it constantly.** *They do not break into anything.* **They requisition, they countersign, they file** — and **that is more frightening in a world that has the word AUTHORISED than any breach would be.**
+
+#### Amended 2026-09-10 — the line is institutions, not vocabulary
+
+***The rule as first written would have condemned three species it had no quarrel with.*** **PARAS and PARASECT are `PAYLOAD` and `ROOTKIT`; WEEDLE's line ends in `INJECTOR`** — all shipped five days before 1.7, and *a parasite is the one thing in the world that genuinely is a payload.*
+
+**So the line is redrawn where it actually falls:**
+
+> ***Intrusion words belong to CREATURES. They never belong to the INSTITUTION.***
+
+**A wild thing may be a payload, a rootkit or an injector** — *that is what it is, and nothing about it is a thriller.* **Corpus may not be any of them**, because the moment Scorn breaks in he stops being the more frightening thing: **a man who filled out a form.** *The third review found this and its version of the line is sharper than the one it corrected.*
 
 ---
 
@@ -878,7 +888,11 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 **THROTTLED has an owner with strays** — SIGNAL by six to five. *Fixable at the margin, and the strays are the question, not the owner.*
 
-**THRASHING is spread over six types and has no item at all**, which is consistent — 1.6 gave it no three-letter code because it is volatile — **but it leaves THRASHING a thing that happens to you rather than a thing a type does.** <span>OPEN</span>: *does it want LOGIC — a system so busy reasoning about itself that it makes no progress — or is "the state no type owns" the point?*
+**THRASHING is spread over six types and has no item at all**, which is consistent — 1.6 gave it no three-letter code because it is volatile — **but it leaves THRASHING a thing that happens to you rather than a thing a type does.** *That was logged Open, asking whether it wanted LOGIC or whether ownerless was the point.* ***The engine had already answered.***
+
+**`battle_util.c` deals the confusion hit as** `CalculateBaseDamage(&gBattleMons[attacker], &gBattleMons[attacker], MOVE_POUND, 0, 40, 0, attacker, attacker)` — ***the attacker and the defender are the same battler***, **the type argument is zero, and abilities are suppressed.**
+
+***Every other state is something a kind of thing does TO you, and carries a type because the thing that did it has one.*** **THRASHING is the only one where the sufferer deals the damage**, so **there is nobody whose type it could be.** *It is not ownerless by omission.* **A system thrashing is not being attacked — it is failing at managing itself**, and that is finally the reason it has no code and no item rather than just the record that it hasn't.
 
 #### SUSPENDED wants two owners, and that is the finding
 
@@ -928,67 +942,6 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***Forty-five percent of the reachable routines are CONTENT***, whose one-clause test is **"the thing itself, with nothing read into it."** *Every other type hands you a verb.* **CONTENT hands you the absence of one, and it has to yield seventy-nine distinct names in twelve characters.** <span>OPEN</span> — **and it is the register to settle first**, because the other ninety-six will be written against whatever it establishes.
 
 
-### 2.7 One lexicon, four surfaces — what owns a state, and what a routine is named for
-
-**Settled 2026-09-09**, before a single move was renamed, because 175 separate judgement calls with no rule is not a pass — it is 175 arguments.
-
-***A type, a state, a routine and an item are the same vocabulary seen from four sides.*** **A type is what a daemon IS. A routine is what it DOES. A state is what it is IN. An item is the operation that ENDS one.** *Nothing had ever checked whether those four agree, so this measured it.*
-
-#### Four of the seven already close, and nobody arranged that
-
-***Counting which type inflicts which state, across all 356 moves:***
-
-| what inflicts it | the state | what ends it | the sentence, never said in game |
-|---|---|---|---|
-| **CORRUPT** ×8, and nothing else | **LEAKING** | PATCH | *tampered data makes it leak; you patch a leak* |
-| **CORRUPT** ×1 | **CASCADING** | PATCH · ROLLBACK | *the leak that feeds on its own damage* |
-| **ENTROPY** ×5, and nothing else | **OVERHEATED** | COOLANT | **2.6's clause for ENTROPY is literally *noise and heat*** |
-| **FROZEN** ×4, and nothing else | **HUNG** | PREEMPT | *it stopped moving; take the processor back* |
-
-***Four complete sentences spanning a type, a state, a tile colour and an item*** — **and the game says none of them.** *That is craft rule 1 working at the level of the whole system rather than a line of dialogue.*
-
-**And the tightest of the four was forced.** ***HUNG exists only because FROZEN was already a type name*** (1.6) — **being unable to reuse the obvious word is what made the vocabulary precise**, and the pairing that came out of the constraint is the strongest one in the table.
-
-#### THROTTLED has an owner with leakage, and that is fine
-
-**SIGNAL ×6**, then CONTENT ×2, GROWTH ×1, LATENT ×1, EMERGENT ×1. ***SIGNAL owns it*** — *raw current, before anything interprets it, arriving faster than you can serve it* — **and the strays are ordinary coverage rather than a design fault.**
-
-#### SUSPENDED is CONTEXT — decided, with the cost stated
-
-***It had no owner at all:*** CONTENT ×3, GROWTH ×3, CONTEXT ×1, which is a tie and not an argument.
-
-**CONTEXT takes it.** ***Being suspended is being framed out of the running set*** — *not damaged, not gone, simply not in the frame the scheduler is reading* — **which is CONTEXT's clause exactly**, and RESUME's description already says *it was never gone, only unscheduled.* *GROWTH's three are the powders, and "training a thing into dormancy" is the weaker claim by some distance.*
-
-***The decision is about OWNERSHIP, and retyping the moves is a second decision with a price.*** **Moving the three GROWTH powders and the three CONTENT songs onto CONTEXT would take the sleep move away from GROWTH entirely and hand CONTEXT six** — *a real balance change in a chart that 8.4 says is byte-identical across editions and is the argument.* <span>OPEN</span>: **the concept is CONTEXT's; whether the moves follow is a balance question, and 2.5's rule applies — rebalance moves before touching matchups.**
-
-#### THRASHING is ownerless, and the ENGINE already says so
-
-***Six types inflict it*** — CONTENT ×3, CONTEXT ×2, LATENT, LOGIC, SWARM, FLOW — **and the temptation was to tidy that up.** *Reading what the damage actually is settled it the other way.*
-
-**`battle_util.c` deals confusion damage as:**
-
-> `CalculateBaseDamage(&gBattleMons[attacker], &gBattleMons[attacker], MOVE_POUND, 0, 40, 0, attacker, attacker)`
-
-***The attacker and the defender are the same battler.*** **The type argument is zero. Abilities are suppressed.** *Every other state is something a kind of thing does TO you, and has a type because the thing that did it has one.* ***THRASHING is the only one where the damage is dealt by the sufferer***, so **there is nobody whose type it could be.**
-
-**That is why it has no three-letter code and no item.** *It was already the odd one out on both counts and nobody had said why.* ***It is ownerless because a system thrashing is not being attacked. It is failing at managing itself.***
-
-#### The rule for naming a routine
-
-***A daemon is named for what it IS. A routine is named for what its TYPE DOES. A routine is never named for a creature.***
-
-**The temptation is the opposite** — *PACKET should do packet things* — **and the measurement says the temptation is already satisfied without being chased.** `WING ATTACK` is VECTOR and eight of ours learn it: **BROADCAST, ECHO, MULTICAST, PACKET, RELAY, TRACER, PROMETHEUS** — *seven of the eight are things that carry something to somewhere*, **and nobody arranged that either.** ***The chart did the filtering***, because VECTOR was defined as *direction in a space of meanings* and those daemons were typed from what they are.
-
-**The rule is what makes the shared names possible at all.** `TACKLE` is learned by **twenty-five of the seventy-two** — *a packet, a heap, a kernel, a bat, a fish and a cat.* **No creature-derived name survives that. A type-derived one does not have to.**
-
-#### CONTENT routines are the only ones allowed to be ordinary English
-
-***Of the 175 routines reachable by the daemons we have named, 79 are CONTENT*** — **forty-five percent**, belonging to the type whose one-clause test is *"the thing itself, with nothing read into it."*
-
-**That is not a problem to solve. It is the answer.** ***If every routine were technical, the plainest type would stop being plain*** — **so CONTENT is the one type whose routines may be ordinary words**, and the technical register belongs to the other seventeen. *A player who meets forty ordinary verbs and then a `CONSENSUS` has been told which one is the claim.*
-
-*Budget:* **`MOVE_NAME_LENGTH` is 12**, and vanilla spends all twelve — `WEATHER BALL`, `THUNDER WAVE`.
-
 #### The seam, measured — and it is exactly where the design overrode the chart
 
 ***Thirteen of the seventy-two renamed daemons were also RETYPED***, and they are not a random thirteen:
@@ -1024,7 +977,43 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***So the seam gets closed in the learnset, and closed only partway.*** **Bring the thirteen down toward the 45% baseline and keep the residual deliberately** — *a few routines each that the daemon is visibly worse at, because they are not what it is.*
 
-***And there is a thing the learnset could do that nothing currently does.*** **The three starters ARE the three learning paradigms**, and **vanilla's fire/water/grass movesets say nothing about any of them.** *A supervised line should fight by comparing against a known answer; an unsupervised one by finding structure it was not given; a reinforcement one by acting on a signal.* **The paradigm is currently carried by the name and the type and abandoned by everything the creature actually does** — which is the one place in this design where the argument stops at the surface. <span>OPEN</span>.
+***And there is a thing the learnset could do that nothing currently does.*** **The three starters ARE the three learning paradigms**, and **vanilla's fire/water/grass movesets said nothing about any of them.** *The paradigm was carried by the name and the type and abandoned by everything the creature actually did* — **the one place in this design where the argument stopped at the surface.** 
+
+#### 2.7a The three starters, curated to their paradigms
+
+**Built 2026-09-09.** ***No type moved.*** The chart is untouched (8.4) and no matchup moved (2.5) — **only which routines a daemon reaches for**, which is the cheapest of the three levers and the only one that costs the argument nothing.
+
+***SUPERVISED — LABL · RUBRIC · CANON.*** **You hold the answer key: you compare, you score, you correct.** *A supervised learner is the least entropic thing in the set — it has ground truth — so a line that fought entirely by heat was the sharpest of the three seams.*
+
+| | |
+|---|---|
+| **FORESIGHT** | *identify the target*, which is what a label **is** |
+| **MIMIC** | copy the answer you were shown |
+| **SWIFT** | `ALWAYS_HIT` — **an answer that cannot miss**, and on-type |
+| **TRI ATTACK** | ***classification into three outcomes.*** 80 with STAB beats FLAMETHROWER's 95 without it |
+| **LOCK-ON** | the next one cannot miss, *because you have the ground truth* |
+| **COUNTER** · **BRICK BREAK** · **KARATE CHOP** | CANON's second type arrives and LOGIC arrives with it — **COUNTER returns exactly the error it was given** |
+
+***UNSUPERVISED — CLUSTR · LOCUS · MANIFOLD.*** **The FLOW spine stays, and that is a finding rather than a compromise.** *k-means descends a distance objective, and FLOW's clause is **everything running downhill to the lowest point*** — **an unsupervised learner that operates by FLOW is not off-model, it is the algorithm.** *It is also load-bearing:* **FLOW ×2 against LEGACY is the one LEGACY relation that reads** (2.6), and Slate is Benchmark 1. ***Stripping the water would have broken the first gym to make a point the chart was already making.***
+
+**What was actually missing is that a VECTOR line knew no VECTOR routines at all.** `GUST` at 7 for the first STAB, `AIR CUTTER` at 23 — *cutting the space, a separating surface* — `DRILL PECK` as the finisher it never had, and **`SHADOW BALL` on MANIFOLD, because the manifold *is* the latent space** and that is the stage where LATENT arrives.
+
+***REINFORCEMENT — ROVERCUB · ROVERSEER · ROVERBYTE.*** **This line was already nearly right and needed the least**, which is worth saying: **`LEECH SEED` is the best-fitting routine in the whole set and nobody arranged it** — *a return that accrues every turn from a thing you did once.* `SYNTHESIS` recovers from what you gathered, `GROWTH` gets stronger by doing, and **`SOLARBEAM` charges a turn before it pays, which is delayed reward, in the engine, since 1996.**
+
+**Two changes.** `MEGA DRAIN` replaces `POISONPOWDER` — *taking return from the environment*, and it drops the line's only CORRUPT routine. And **`SHOCK WAVE` arrives on ROVERBYTE**, which gained SIGNAL as a second type and **had never learned a single SIGNAL routine**: *the reward signal arrives on evolution, and it never misses.*
+
+#### The residual is chosen, not left over
+
+***The target was never zero.*** **45% is what coverage is**, and each line keeps one routine it is *visibly worse at*, picked because being worse at that particular thing is true of the paradigm:
+
+| | | |
+|---|---|---|
+| **DRAGON RAGE** | supervised | **EMERGENT is *behaviour nobody designed and nobody can account for***, and a labelled learner producing exactly one of those is the entire modern story |
+| **BITE** | unsupervised | **OPAQUE is the black box**, and unsupervised methods are the least interpretable thing in the field. *The line is worse at being a black box, which is the joke and also the truth* |
+| **SLEEP POWDER** | reinforcement | kept, and **marked** — it is the one routine here whose *type* is 2.7's live question: GROWTH's powders have the weakest of the three claims on SUSPENDED |
+
+***It landed at 31%, below the 45% baseline rather than at it.*** **That is defensible for the three daemons a player carries for the whole game** — *the creatures that most need to be what they say they are* — but it was not the number aimed at, and it is recorded rather than rounded off.
+
 
 
 ### 2.8 The CONTENT register — settled 2026-09-09
@@ -2294,7 +2283,23 @@ Optimistic. Thinks in black and white. Thought in money and not in meaning — a
 
 But every individual step is something he would have been praised for. He was handed an underperforming research operation and made it legible. **He did not initiate the procedure that removed Crystal** — it was a policy that triggered, the file reached him complete, and he signed it because signing complete files was his job.
 
-**He never met her.** That is the detail that holds the whole character together. The man whose signature ended her work has no memory of her, is warm to you, is pleased you came, and has genuinely no idea he did anything. Nobody in the game tells him. Nobody tells the player either.
+#### He met her, and it left no mark — ruled 2026-09-10
+
+***"He never met her" was the load-bearing sentence and it is retracted.*** **The third review found it could not coexist with 07's directive addressed to her, 4.20's minutes with two present, and 4.21's two men conferring** — and the resolution is not a frame, because *met her* is a fact and not a reading. **The sequence is now canon:**
+
+| | |
+|---|---|
+| **The company is founded and Ty is made CEO.** | *Not Scorn. Ty.* The Clear name is what the operation is sold on |
+| ***Scorn's Solution* is the hiring.** | He arrives as a solution to a problem Ty has, and he is impressed with — 7's track is the moment, not a summary of it |
+| **He designs the standardised evaluations.** | **And rigs them, so rivals fail.** Brazen's published scores — three at 30/100, one at 94/100, with a congratulation — are the output of that machine, cheerful and unattributed |
+| **He becomes valuable, and Ty introduces him to Crystal.** | ***Her son brings him to her.*** |
+| **Crystal is removed. Scorn signs.** | The file reaches him complete, per above |
+
+***The horror is better than the one it replaces.*** **It was never that he had no memory of a stranger.** *It is that he was introduced to her, by her son, in her own building — and the signature still left no mark on him.* **A man who has met you and still only ever filed** is worse than a man who never did, and it makes 4.31's gym line exact: *he knows precisely what he weighted, and has no idea whose lab he weighted it in.*
+
+***And it gives Crystal the one thing she did not have: standing to notice.*** **She is the only person in the story who saw Ty before Scorn and after.** *Not a mother's complaint about a colleague — a researcher's observation of a change she can date.* **She never says it. It is why she watches you the way she does**, and 4.17's not-visiting stops being confinement and becomes what the review said it had to be: **a choice on both sides.**
+
+*Craft rule 1 and 4.10's rule are untouched.* **Nobody in the game tells him. Nobody tells the player either.**
 
 **The engraving.** Cast into the floor of the Corpus lobby in Brazen City, unattributed and unexplained:
 
@@ -4939,6 +4944,68 @@ So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right cre
 
 ---
 
+### 8.7 The third review, 2026-09-10 — every ruling, so this one gets swept
+
+***Read against v11.111, The Bag and The Chart, by a third model.*** **Its sharpest line is about the document rather than the game, and it is filed as binding alongside 8.6's:**
+
+> **A ruling nobody swept is not a decision, it is a draft.**
+
+***That is the failure mode this section exists to break.*** **8.6 recorded what was taken and the sweep still lagged** — so this one records **every** item with a verdict, including the refusals, and the open ones carry the tag.
+
+#### Settled the same day
+
+| | ruling |
+|---|---|
+| **Scorn met Crystal** | ***Retracted "he never met her."*** New canon in 4.4: the company is founded with **Ty as CEO**, *Scorn's Solution* is the **hiring**, he designs and **rigs** the standardised evaluations, becomes valuable, and **Ty introduces him to Crystal.** *The horror improves* — a man who was brought to her by her son and still only ever filed. **And Crystal gains standing to notice**: she is the only person who saw Ty before Scorn and after |
+| **PREEMPT was an item and a species** | ***Renamed.*** ICE HEAL → **`WATCHDOG`**, and the review found the fault under the collision: **preempting a hung task hands the processor to somebody else and the hung one stays hung.** *A watchdog is the timer whose whole job is to notice something stopped answering and reset it* — **the actual cure, and it still works twice** |
+| **The collision check was scoped to the day it was written** | ***`tools/check_lexicon.py` is new.*** 4.26's check validated species against species, moves and types — **not items, because the item pass had not happened yet.** The new one **reads every surface out of the build on each run**, so a surface added later is covered without anyone remembering |
+| **1.7's security rule condemned three of our own species** | ***Amended.*** `PAYLOAD`, `ROOTKIT` and `INJECTOR` shipped five days before the rule that forbade them. **The line is redrawn where it falls: *intrusion words belong to CREATURES; they never belong to the INSTITUTION.*** The review's version is sharper than the one it corrected |
+
+***And the new checker found a third collision on its first run that neither the review nor the project had seen:*** **`SWARM` is our BUG type and vanilla's Bug ability.** *A daemon whose type and whose ability both read SWARM.* **`GROWTH` (move + type) is the other**, already logged in 2.8. <span>OPEN</span> — *both are renames, not rulings.*
+
+#### Accepted, and queued as sweeps rather than decisions
+
+***Each of these is a ruling that already happened and never travelled.*** **They are listed so the sweep is a checklist rather than an archaeology.**
+
+- **The colour sweep.** 8.6 settled a full-colour world and five passages still describe a grey one — 6, 7.14c, 4.6, 8.4's title daemons, and the decision log. *And the review is right that **4.6's three-form ARTSAI can now be shown**: a legendary that desaturates magenta → white is the best colour moment in the game and nobody has claimed it*
+- **The tempo sweep.** 7.9's three-axis S.T.A.R.R. outlier was built on *Slumbering* alone; **two of its three songs are at 128, the corpus pulse.** *The better finding is the one the data already had — **it joins the people's tempo when it wakes***, and 7.13's Quicksilver drop to 110 now protects nothing
+- **The SLEEP sweep.** 4.5 and 4.25 still say SLEEP after 1.6 renamed it. **And `SUSPEND` is a species (JIGGLYPUFF), so *SUSPEND was SUSPENDED* will occur** — <span>OPEN</span>, and the review's `LULL` now has the reason 8.1a lacked
+- **Brazen's B-section was composed on a retracted transcription.** 7.11 retracts *"the procedure never descends"* and 7.13 still builds the motif from it. ***Re-source it or own it as a composition choice*** — the music may still be right; it is no longer derived
+- **The dates in 4.10**, Vera's birth order, Ty's key, 4.14's inversion, and Crystal's reachability. *Small, and all of them are the same fault*
+
+#### Free wins, taken
+
+- **`HOTFIX` already costs colour.** Heal Powder lowers friendship in Gen 3 and 8.6 keyed saturation to friendship — ***"nobody is proud of it" became a mechanic the day 8.6 was settled***, and nothing has to be written
+- **The Index completion line is already written.** Crystal on an empty Index: *"…It is empty. That is a result as well."* **On a full one, change one word.** *Forty hours between them, and vanilla's diploma becomes a shrug*
+- **FROZEN's concept line is missing its commonest ML sense** — *weights that are not updated.* **Add it and two inherited relations stop being inherited**: FROZEN ×2 GROWTH becomes literal, and FROZEN ×2 VECTOR gets a reading
+- **Seventeen types close a loop the fifteen could not.** ***LOGIC → OPAQUE → CONTEXT → LOGIC***: rules open black boxes, black boxes shrug off framing, framing beats rules. **That is the interpretability gap as a triangle and it arrived from Game Freak's own table.** *The Chart publishes fifteen and the ROM runs seventeen* — <span>OPEN</span>, and the one-clause test wants re-scoring at seventeen, **because CONTEXT's 8/8 was scored without the type that is immune to it**
+- **Three relations have names in the literature** — STRATUM ×0 VECTOR is Marr's levels, VECTOR ×2 LOGIC is the Bitter Lesson, SWARM ×2 CONTEXT is Asch on one side and ensembling on the other. *None go in the game; all belong in the chart page's why column*
+- **Vera's ladder is Ainsworth's Strange Situation** and **Halftone is Doka's disenfranchised grief.** ***Both were written without the clinical word, which is craft rule 3 performed on a research literature. Do not touch either***
+
+#### Ideas taken
+
+- ***"IMPROVE RESPONSE CONSISTENCY" becomes a mechanic.*** **Scorn's daemons always roll maximum damage, never crit, and their secondary effects never proc.** *A player who has watched the HEAT show — "damage wobbles" — will notice the fight that does not, and nobody says why.* **The CC-7 pull is then the un-weighting: S.T.A.R.R. gets its variance back.** The bias–variance tradeoff as a boss fight, one flag in the damage calculation
+- ***The ability pass.*** **77 passives, every one still vanilla, and 9.3 named them as a reason to port.** *Vanilla already wrote half the argument*: **SYNCHRONIZE** passes your status to whoever inflicted it — **PERSPECTIVE as a passive, and ARTSAI already has it**; **TRACE** copies the opponent's ability, which is SUBSTRATE's Index entry as a mechanic, already on the right species; **LEVITATE** is *no location*
+- **`CONVICTION`** — FireRed's Choice Band: +50% attack, locked into one routine. ***A weight raised and the alternatives discarded — CC-7 in miniature, holdable.*** Give one to a Corpus grunt and nothing else needs saying
+- **The Five Witnesses differ by edition.** *Keep the one accurate detail identical; let the wrong ones differ.* **You need someone else's context, over a cable, to see the room**
+- **Al's party desaturates** across the rival fights — ***the transmission failure, visible, with no sneer.*** The colour was there and he optimised it away
+- ***The Index sprite keeps the saturation it was recorded at, and never updates.*** **Your daemon at full friendship is in colour in the party and grey in its own entry.** *A reproduction that loses the original, per daemon, drifting for forty hours* — **which is 4.2 as a mechanic and it costs one byte per species**
+
+#### Refused, or held
+
+- **`SUS` → `ZZZ`/`HLD`.** ***Held.*** *The Among Us reading is real and it is also a joke that lands beside a daemon that has stopped responding.* **`HLD` loses the whole word; `ZZZ` says asleep, which is precisely what 1.6 spent a section refusing.** <span>OPEN</span> — *a playtest decides this, not an argument*
+- **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`.** ***Held, and they are the two best proposals in the review.*** **LEGACY scores 0/14 on the one-clause test and `RUST` recovers two relations for one word**; `FLOAT` recovers VECTOR's immunity honestly. ***Both are type renames*** — invariant 3 territory, a gym, a museum and a badge each — **and they are not decided in the same hour as everything else**
+- **`PRIORITY` → `BURST` and `MP` → `CYCLES`.** *Both better than what they replace.* **`CYCLES` especially** — 4.30 still says MANA, *The Bag* ships MP, and **MANA is the lexicon's one fantasy noun.** <span>OPEN</span>
+- **`PKRS` → `VIRAL`** and **MOON STONE → `TIMEOUT`.** *Taken in principle*, and both wait on their own passes
+- **CONSENSUS scaling with the quorum.** ***Refused for now.*** 2.5 made it boring **on purpose** — *"a swarm does not need a gimmick, it needs to keep showing up"* — and the review's version is better writing and worse balance. **Revisit if SWARM underperforms in play, which is the condition 2.5 already set**
+- **Penphin's hemispheres and "the sensation of red is the same for everyone".** ***0.5 already handles the first*** — the reading is marked as interpretation, not citation, and the game never says the word. **The second is a fair correction and the accurate version is better for us**: *sensation varies and perception is normalised by context.* <span>OPEN</span> — 0.4 quotes a 2013 article verbatim and **the quote does not get edited; the gloss under it does**
+
+#### The one thing the review is most right about
+
+***Craft rule 5 is unpaid for benchmarks 2 through 8.*** **CAIRN is built. The other seven have a concept, a one-line mechanical lesson, and no mechanics** — *"punishes split focus" is a wish.* **This is the largest prose-to-ROM gap in the project and it sits on the spine of the fun.**
+
+*The review even supplies the first one, from the name:* **Doldrum is a FLOW leader whose gym has no wild encounters and whose trainers heal you.** ***No slope.*** <span>OPEN</span>, and it is the real work.
+
 ### 8.6 The monochrome question
 
 **The game is about colour and cannot show any.** Every city is a colour word rendered in four shades of grey. That is either a limitation to be fixed or the best thing the hardware gives us, and the answer decides whether colorization is an upgrade or an act of vandalism.
@@ -5919,9 +5986,12 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **`SWARM` is our BUG type and vanilla's Bug ability** (8.7), found by check_lexicon on its first run. With `GROWTH` (move + type), two words still mean two things
+- **The Chart publishes fifteen types and the ROM runs seventeen** (8.7). Re-score the one-clause test at 17 — CONTEXT's 8/8 was scored without OPAQUE, which is immune to it
+- **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
+- **Craft rule 5 is unpaid for benchmarks 2–8** (8.7). Seven leaders with a concept, a one-line lesson and no mechanics. **The largest prose-to-ROM gap in the project**
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
-- **The three starters are the three learning paradigms and their learnsets say nothing about it** (2.7). The one place the argument stops at the surface
-- **The thirteen retyped daemons are 78% off-type against a 45% baseline** (2.7). Closed in the learnset, partway, keeping a deliberate residual
+- **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
 - **Ten move names collide with our own lexicon** (2.8) — `GROWTH`, `THRASH` and `HARDEN` must move, and nothing has checked because the move pass never started
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress

@@ -45,7 +45,7 @@ STATES = [
     ("FREEZE · FRZ",    "HUNG",       "HNG", "#78a8dc",
      "A hung process does nothing until something intervenes. <strong>FROZEN could not be "
      "reused</strong> — it is a type name, and the chart had just spent real effort making "
-     "type names carry meaning."),
+     "type names carry meaning. WATCHDOG is what ends it."),
     ("CONFUSION",       "THRASHING",  None,  None,
      "A system so busy managing itself it makes no progress and damages its own throughput. "
      "Hurting yourself in confusion is the same event. Volatile, so it needs no code."),
@@ -58,7 +58,7 @@ STATES = [
 WHY = {
  "ITEM_ANTIDOTE":     "You patch a leak and you patch software. <strong>The pun is the definition</strong> — it needs no beat of confusion, which is the test CACHE was held to and failed.",
  "ITEM_BURN_HEAL":    "The only one of the seven that needs no domain knowledge at all. Plain, physical, and exactly right.",
- "ITEM_ICE_HEAL":     "<strong>INTERRUPT shipped here first and collided</strong> — the flute had taken the word six weeks earlier, and keeps it. Preemption is the scheduler taking the processor back from a task that will not yield, which is what HUNG is and what the item does. The narrower word turned out to be the accurate one.",
+ "ITEM_ICE_HEAL":     "<strong>Renamed twice, and the second time was the one that mattered.</strong> <code>INTERRUPT</code> shipped here and collided with the flute, which had taken the word six weeks earlier and keeps it. <code>PREEMPT</code> replaced it and collided with MANKEY, named four days before. <em>Under both collisions was a plainer fault: preempting a hung task hands the processor to somebody else and the hung one stays hung.</em> <strong>A watchdog is the timer whose whole job is to notice a process has stopped answering and reset it</strong> — the actual cure, and it still works twice.",
  "ITEM_AWAKENING":    "The exact inverse of SUSPENDED, and the word an operating system uses for it.",
  "ITEM_PARALYZE_HEAL":  "What lifts throttling is not medicine — it is being scheduled ahead of the thing starving you. <em>The weakest of the ten on the works-twice test, and kept because the mechanic is right.</em>",
  "ITEM_FULL_HEAL":    "Clears every state by returning to a known-good one. Says <em>all of it</em> without listing anything.",
@@ -321,12 +321,18 @@ footer{border-top:1px solid var(--rule-hard);padding-top:18px;font-size:13px;col
 
 <section>
   <div class="sec-head"><h2>Three that were harder than they look</h2></div>
-  <p><strong>INTERRUPT was assigned twice, six weeks apart</strong> — to the flute in the
-  first pass and to ICE HEAL in the state pass, and nothing checked. The flute keeps it,
-  because waking a thing that blocks a road is an interrupt in the plainest sense. ICE HEAL
-  became <code>PREEMPT</code>, and <mark>the narrower word turned out to be the more accurate
-  one</mark>: preemption is the scheduler taking control back from a task that will not
-  yield, which is exactly what a hung process is.</p>
+  <p><strong>One item was named three times, and each collision hid the next.</strong>
+  <code>INTERRUPT</code> was assigned twice six weeks apart — to the flute, and to ICE HEAL
+  in the state pass. The flute keeps it, because waking a thing that blocks a road is an
+  interrupt in the plainest sense. ICE HEAL became <code>PREEMPT</code>, which collided with
+  MANKEY, named four days earlier.</p>
+  <p><mark>Under both collisions was a plainer fault that nobody had looked for</mark>:
+  <strong>preempting a hung task hands the processor to somebody else and the hung one stays
+  hung.</strong> A <strong>watchdog</strong> is the timer whose only job is to notice that
+  something has stopped answering, and reset it. That is the cure, it still works twice, and
+  it took a third reader to find — which is why the collision check now reads
+  <em>every</em> surface out of the build rather than the ones that existed the day it was
+  written.</p>
   <p><strong><code>FROZEN</code> could not be used for the frozen state</strong>, because it
   is a type name and the chart had just spent real effort making type names carry meaning.
   <code>HUNG</code> is what the state is anyway.</p>
