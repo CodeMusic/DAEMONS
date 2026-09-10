@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.133**
+**A total conversion — the living design bible, v11.134**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4944,6 +4944,8 @@ Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOIN
 *And Gen 1 permits the shape the idea wants:* **two different species can evolve into the same species.** So a penguin-ish line and a dolphin-ish line can both terminate in Penphin — two halves, each of which only becomes whole through another person. Neither half is complete and neither is the *real* one.
 
 *Its name is already correct.* PENPHIN is penguin + dolphin, which is precisely the Gen 1 convention the starters are currently missing — a portmanteau of whole words that sounds like a creature.
+
+***And the two animals are not arbitrary — they are cited.*** **`lineage.md` 3b records the source**: *The Painted Mirror*, a seven-episode audio drama from **November 2022**, where **the dolphin is the logical self** — *"vocalized, confident, and accomplished… yet very time-focused, mechanical, and sometimes cold"* — and **the penguin is the creative one**, *"quiet, organized, spiritual, and feeling."* **The trade requirement is in there too**: *"Alone, neither mirror image of the self will hear clearly."* ***This creature is a memoir, and the bible had been quoting it from memory for weeks without knowing it.***
 
 #### MUSAI — the Eevee slot
 

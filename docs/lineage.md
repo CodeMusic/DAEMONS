@@ -33,6 +33,7 @@ Channel tagline, 2013:
 
 - **codemusic.construction** (2014–17) — the sister site named in the sign-off post. Shipped two iOS games: **Tap Attack!** (Mar 2014) and **ColorShift** (May 2014), *"a beautiful and musically enchanting puzzle game… match colors of three or more blocks… be transformed in the process."*
 - **blog.codemusic.ca** and **seeingsharp.ca** — self-hosted mirrors of the Seeing Sharp posts at identical dates. Same body of work, different front doors.
+- ***The Painted Mirror*** (Nov–Dec 2022) — **a seven-episode audio drama, not a blog post, and not in the original survey.** It is the origin of PENPHIN and of the Musai branch, and it fills the one gap the three sites leave. **See 3b**, added 2026-09-10 when the file surfaced.
 
 ## 1. 2011–2012 — EVERYTHING IS ALREADY THERE, UNNAMED
 
@@ -216,6 +217,51 @@ That is the Contextual Feedback Model, complete, filed under a syntax tutorial.
 ### 3.3 Perspective thinking arrives as an ethic
 
 [*Distraction: Source or Symptom?*](https://seeingsharpca.wordpress.com/2021/08/18/distraction-source-or-symptom/) reverses its own predecessor's conclusion. The image it lands on is worth keeping: conversation as improv, **good faith as accepting what your partner has built and suspending your own desired outcome.** Perspective thinking, four years before it becomes a capability and five before it becomes a move.
+
+---
+
+## 3b. 2022 — THE ALLEGORY, AND THE TWO ANIMALS
+
+*Numbered `3b` rather than renumbering everything below it. The sections after this one carry cross-references from the design bible, and shifting them to make room would be tidier for exactly one reading.*
+
+**Added 2026-09-10.** ***This document is not a blog post and it was not in the first survey.*** *[The Painted Mirror](../docs/archive/)* is a **seven-episode audio drama, roughly 8,200 words, written and performed in November–December 2022** — an allegory about being trapped in a Nexus between universes and finding the way home. It sits in the one gap the three blogs leave: **between the 2021 architecture posts and the 2024 rock opera.**
+
+**It is a primary source, and the bible had been quoting it from memory for weeks.**
+
+### 3b.1 The two animals, and where they went
+
+***Episode 5 is the origin of PENPHIN and of the Musai branch***, and neither had a citation until now:
+
+> **"The sphere of *us* contains mirroring hemispheres — each expressing a similar, yet unique, mind. Many times in life, one part of us can become dominant, while the other gets suppressed. Order *does* require leaders… but not controllers."**
+
+| in the drama | in the design |
+|---|---|
+| **the dolphin** — *"vocalized, confident, and accomplished… yet very time-focused, mechanical, and sometimes cold"* | **CodeMusai**, LOGIC |
+| **the penguin** — *"quiet, organized, spiritual, and feeling… though sometimes appearing to act impulsive, scattered, or squirrelly — at least from a logical's perspective"* | **TherapyMusai**, CONTEXT |
+| *"Alone, neither mirror image of the self will hear clearly… but together, they bring balance and harmony"* | **Penphin is trade-only.** *The dual mind requires two minds* — 8.2 |
+| **"When I only knew *one*, I really knew *none*. But through perspective thinking, I could now understand what felt like a new dimension of mind."** | 0.5, and the reason LOGIC and CONTEXT beat each other in the chart |
+
+***The order of discovery matters here.*** **The blogs give perspective thinking as an ethic** (3.3) *and as a capability* (4.x). **This gives it as an experience** — a man who had put the logical half in charge, and who did not become himself until the other half was let back in. **The design's most load-bearing creature is a memoir.**
+
+### 3b.2 Five things it has that the blogs do not
+
+***The blogs argue. This one stages*** — so the material is scenes rather than claims, and four of the five have no equivalent anywhere else in the corpus.
+
+- **THE MISSING KEY SIGNATURE.** A tree sings a song whose notes wear flat symbols. They are not flat; **the key signature is missing**, and once it is written the notes lift. ***"Those notes were never flat — they were just misunderstood. You have given them the key."*** **That is 2.6's one-clause test for CONTEXT — *the frame you read a thing in, what makes the same thing mean differently* — as a puzzle rather than a definition.** The single most usable thing in the document.
+- **THRASHING, four years before it was named.** ***"by allowing my thoughts to loop and recurse without consideration of time, I was effectively paralyzing myself."*** 2.7 concludes THRASHING is the one state no type owns because the sufferer deals the damage; **this is that state described from inside it.**
+- **A DOOR THAT DE-RENDERS UNDER PRESSURE.** *"the harder I tried to open the door, the less real it became… until it changed back into mere dots and lines — now, just a simple drawing."* **Representation collapsing when it is leaned on** — Benchmark 1's lesson as an event.
+- **A PATTERN MISREAD FOR A ROLE.** The Guardian is called *Hunter* on the evidence of a plaid shirt. *"I was wrong to assume."* **A label applied from the outside, and wrong** — and the Guardian's answer is worth keeping whole: ***"Don't let walls be placed where doors should be formed."***
+- **THE INVERSION AT THE CENTRE OF SCORN.** *"anchoring the power of love to anything or anyone… unchecked, it rapidly devolves into a power of love… rather, a love of power… which negates everything that one stood for."* ***4.18 is a man who weighted an instrument toward himself and destroyed the only thing that could contradict him.*** **This is the same failure written from the inside, by someone who caught it in time** — which is a register the character does not currently have anywhere.
+
+*And one that the 2025 posts do have, arriving here first as verse:* **"The source is consciousness, and thoughts are the code, and while matter… it's a process, an ongoing ode."** *Matter as process* — 5.2's substrate flip, sung.
+
+### 3b.3 What is deliberately not mined
+
+**Episode 7 is a dedication to real people, and says so** — *"For privacy purposes, I will present these acknowledgements in a fabled form."* The Tiger, the Deer, the Bastet, the Mole, the Eagle, the Wolves, the Lioness. ***Those are not creature designs and this document does not treat them as any.*** *The animals inside the narrative — the wolf who carries the mirror, the deer whose light reveals the wolves were friends, the phoenix silhouette of the people the author could not reach — are story and are fair.*
+
+***The drama is also personal in places the design has no business quoting***, and the passages above were chosen because they carry an idea, not because they carry a confession. **That line is drawn on purpose and should stay drawn.**
+
+*One constraint worth stating, since it will come up:* **`DOLPHIN` and `PENGUIN` cannot be species names.** 8.2b settled the bestiary register as technical, and **PENPHIN already carries both of them** — which is the correct amount of this document to have in the creature table.
 
 ---
 

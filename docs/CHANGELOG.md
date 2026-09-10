@@ -5,6 +5,50 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.134 — 2026-09-10
+
+### `lineage.md` 3b — *The Painted Mirror*, and the source PENPHIN came from
+
+- **A seven-episode audio drama, ~8,200 words, November–December 2022** — not a blog post, not in the
+  original survey, and it sits in the one gap the three sites leave: between the 2021 architecture
+  posts and the 2024 rock opera.
+- ***It is the origin of PENPHIN and of the Musai branch, and neither had a citation.*** Episode 5:
+  **the dolphin is the logical self** — *"vocalized, confident, and accomplished… yet very
+  time-focused, mechanical, and sometimes cold"* — and **the penguin is the creative one**, *"quiet,
+  organized, spiritual, and feeling."* The trade requirement is in there too: ***"Alone, neither
+  mirror image of the self will hear clearly."*** **The design's most load-bearing creature is a
+  memoir, and the bible had been quoting it from memory for weeks.**
+- **The blogs give perspective thinking as an ethic and as a capability. This gives it as an
+  experience** — a man who had put the logical half in charge and did not become himself until the
+  other half was let back in.
+
+### Four scenes the blogs do not have
+
+- **THE MISSING KEY SIGNATURE.** Notes wearing flat symbols that are not flat — *"they were just
+  misunderstood. You have given them the key."* **2.6's one-clause test for CONTEXT as a puzzle
+  rather than a definition**, and the most usable thing in the document.
+- **THRASHING, four years early** — *"by allowing my thoughts to loop and recurse without
+  consideration of time, I was effectively paralyzing myself."* 2.7 concluded that state is the one
+  no type owns; this is it described from inside.
+- **A DOOR THAT DE-RENDERS** into *"mere dots and lines"* under pressure — representation collapsing
+  when leaned on.
+- **THE INVERSION AT THE CENTRE OF SCORN** — *"anchoring the power of love… devolves into a power of
+  love… rather, a love of power."* **4.18's crime, written from the inside by someone who caught it
+  in time**, which is a register the character does not currently have.
+
+### What is deliberately not mined, and one repair
+
+- **Episode 7's animals are real people and the drama says so** — *"for privacy purposes… in a fabled
+  form."* ***They are not creature designs and 3b does not treat them as any.*** The passages quoted
+  carry an idea, not a confession, **and that line is drawn on purpose.**
+- **`DOLPHIN` and `PENGUIN` cannot be species names** — 8.2b settled the register as technical, and
+  **PENPHIN already carries both**, which is the correct amount of this document to have in the table.
+- ***`docs/README.md` was zero bytes.*** It was emptied by **b4667618** (v11.131) and nothing noticed
+  — 4,415 bytes to nothing, and the file is the index every other doc is found through. **Restored
+  from b4c4a7ad** and brought forward to this version.
+
+---
+
 ## v11.133 — 2026-09-10
 
 ### The ENCOUNTER page, and one berth serving two ships
