@@ -5,6 +5,43 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.129 — 2026-09-10
+
+### The Review Board is named, and 6's table had two stale rows
+
+- **`PHLEGMATIC` · `CHOLERIC` · `MELANCHOLIC` · `SANGUINE`.** *6 says the humor scheme "reads
+  as a classical flourish on arrival, and as the entire thesis about six seconds later"* —
+  **so it has to be visible on arrival**, and the trainer names are where it is visible.
+  **77 lines of dialogue swept with them.**
+- ***Two of the four types were wrong and only two had ever matched.*** The table assigned
+  **VECTOR** and **ENTROPY** to members I and II; the Elite Four seats they occupy are
+  **EMERGENT** and **LOGIC**. **The humors are the argument and the types were an
+  illustration**, so the illustration moved — and both improved. ***Choleric is LOGIC***:
+  hot, driven, and reasoning by force is what a choleric fighter is. ***Sanguine is
+  EMERGENT***: the one who is *pleased* by behaviour nobody designed — **a different optimism
+  from 4.4's, and not to be confused with it.** *Scorn optimises a metric; this one welcomes
+  what escapes it.*
+- **And "Ty (incumbent)" was stale in two tables.** The decision log settled **Al Clear** as
+  rival and incumbent — *Crystal's grandson, Ty's son* — **and both 1 and 6 were still naming
+  his father, three weeks on.**
+- ***The seats are not the order you meet them in.*** **You fight IV, II, III, I** — an
+  institution's internal seniority is not the order it presents itself to you, and nobody
+  remarks on it.
+
+### What the long names cost, and what paid it
+
+- **The humor words are twice the length of the vanilla names**, and 33 lines outgrew the
+  message box. ***`port_vocab`'s own `fit_to` reflowed twenty of them***, because the pane's
+  width and line count are demonstrated by vanilla rather than declared.
+- **Eleven were introductions with no slack** — *"I am MELANCHOLIC of the REVIEW BOARD!"* is
+  220px in a 196px box — **so they now say which seat they hold**: *"I am MELANCHOLIC. Third
+  of the REVIEW BOARD."* **Which is better, and is where the numbering became audible.**
+- ***And the reflow ate fourteen labels.*** It merged `Text_RematchIntro::` onto the line
+  below and the assembler said only *"junk at end of line"*. **Repaired, and worth recording:
+  a text pass that rewrites blocks must not assume a block begins at the start of a line.**
+
+---
+
 ## v11.128 — 2026-09-10
 
 ### 5.3a — the leaders reached the ROM, and 637 trainers did not need touching

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.128**
+**A total conversion — the living design bible, v11.129**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -262,7 +262,7 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 | Battle *(the challenge)* | **ENGAGE** | added 2026-09-04. *The table never ruled on this one*, and 237's move is away from combat language — outscored not defeated, HALTED not fainted, DETACHED not ran. **"Would like to battle" was the last of it left in plain sight.** Six letters for six, so nothing rewrapped |
 | Badge | **CERT** | eight certifications |
 | Elite Four | **THE REVIEW BOARD** | beating them is passing peer review |
-| Champion | *(incumbent)* | Ty Clear is the prevailing paradigm, not a king |
+| Champion | *(incumbent)* | **Al Clear** is the prevailing paradigm, not a king. *Corrected 2026-09-10: this row and 6's both still named his father, three weeks after the decision log settled Al* |
 | Pokémon Center | **CHECKPOINT** | restore from a saved training state |
 | Poké Mart | **THE REPO** | |
 | PC storage | **COLD STORAGE** | |
@@ -3750,13 +3750,24 @@ Corpus rooms, and the trainer table.
 
 Two thousand years ago, emotions were *literally colored fluids*.
 
-| Member | Humor | Color | Type identity |
-|---|---|---|---|
-| I | **Sanguine** | red / air | VECTOR — buoyant, fast, optimistic |
-| II | **Choleric** | yellow bile / fire | ENTROPY — hot, driven, aggressive |
-| III | **Melancholic** | black bile / earth | LATENT — grief, depth, the unconscious |
-| IV | **Phlegmatic** | phlegm / water | FROZEN — calm, immovable |
-| — | **Ty** | *(incumbent)* | CONTENT-optimal; mechanically excellent, philosophically wrong |
+| Member | Humor | Color | Type identity | met as |
+|---|---|---|---|---|
+| I | **Sanguine** | red / air | **EMERGENT** — buoyant, optimistic, *delighted by what nobody planned* | fourth |
+| II | **Choleric** | yellow bile / fire | **LOGIC** — hot, driven, and reasons by force | second |
+| III | **Melancholic** | black bile / earth | LATENT — grief, depth, the unconscious | third |
+| IV | **Phlegmatic** | phlegm / water | FROZEN — calm, immovable | first |
+| — | **Al Clear** | *(incumbent)* | CONTENT-optimal; mechanically excellent, philosophically wrong |
+
+***Two of the four types were corrected on 2026-09-10, and the incumbent with them.***
+
+**The table assigned VECTOR and ENTROPY to members I and II. The Elite Four seats they occupy are EMERGENT and LOGIC**, and *only two of the four ever matched.* **The humors are the argument and the types were an illustration**, so the illustration moved:
+
+- ***Choleric is LOGIC***, and it is better than what it replaced — **hot, driven, and reasoning by force is what a choleric fighter is.**
+- ***Sanguine is EMERGENT*** — **the one who is pleased by behaviour nobody designed**, which is a different optimism from 4.4's and is not to be confused with it. *Scorn optimises a metric; this one welcomes what escapes it.*
+
+**And "Ty (incumbent)" was stale.** *1's table said it too.* **The decision log settled Al Clear as rival and incumbent** — *Crystal's grandson, Ty's son, because vanilla's rival is Oak's grandson and Ty is far too old to race you* (4.3) — **and two tables were still naming his father.**
+
+***The seats are not the order you meet them in.*** **You fight IV, II, III, I** — *an institution's internal seniority is not the order it presents itself to you*, and nobody remarks on it.
 
 It reads as a classical flourish on arrival, and as the entire thesis about six seconds later, when the player realizes humans have been calling emotions colors since before anyone had a word for context.
 
@@ -6459,7 +6470,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
 - ~~Craft rule 5 is unpaid for benchmarks 2–8~~ **Designed 2026-09-10 (5.3).** *Seven leaders, each with the thing an overlevelled player still runs into* — **now it is a build task rather than a design one**
 - ~~The six new leader names are unbuilt~~ **In the ROM 2026-09-10 (5.3a), with 127 lines of dialogue swept to match.** *What is still unbuilt is the mechanics* — the parties, Doldrum's healing trainers and Scorn's fixed roll
-- **The Review Board has no names** (5.3a). 6 numbers its members and gives each a humor and a TYPE — **and the four types do not match the four the Elite Four actually use.** *Naming them would settle that by accident*
+- ~~The Review Board has no names~~ **Named 2026-09-10 (6): PHLEGMATIC, CHOLERIC, MELANCHOLIC, SANGUINE**, and the two mismatched types corrected with them — *Choleric is LOGIC and Sanguine is EMERGENT*
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
