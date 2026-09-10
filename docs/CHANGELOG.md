@@ -5,7 +5,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-## v11.134 — 2026-09-10
+## v11.135 — 2026-09-10
 
 ### `lineage.md` 3b — *The Painted Mirror*, and the source PENPHIN came from
 

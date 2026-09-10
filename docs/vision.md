@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.134**
+**A total conversion — the living design bible, v11.135**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
