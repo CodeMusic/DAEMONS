@@ -63,12 +63,29 @@ NEVER_SWEEP = (
 #  table it also learns from, or a rename in one surface silently rewrites
 #  another. Places, dex categories and type names are all names.
 
+#  FIXED is BOTH halves of the rule now, and it was only ever one.
+#
+#  It was a WIDTH CHECK wearing a name-protection label: it refused a rename
+#  that overflowed the array and accepted one that fitted. So the ability
+#  OWN TEMPO, authored NO THRASH, became NO BUSY WAIT when the move THRASH was
+#  renamed -- twelve characters of twelve, no warning, and it shipped. Three
+#  more went the same way, and one of them was the line in the SCHOOL whose
+#  whole job is teaching the type chart.
+#
+#  A span matching any of these is AUTHORED and is skipped entirely, whatever
+#  file it is in. That is the difference between protecting a FILE, which stops
+#  its prose being swept too, and protecting a LINE, which is what the rule
+#  actually says. The width check stays underneath as belt and braces.
 FIXED = {
     r'\[ABILITY_\w+\] = _\("([^"]+)"\)':                  ("ability name", 12),
     r'\[MOVE_\w+\]\s*=\s*_\("([^"]+)"\)':                ("move name", 12),
     r'\[SPECIES_\w+\]\s*=\s*_\("([^"]+)"\)':             ("species name", 10),
     r'\.categoryName = _\("([^"]+)"\)':                   ("dex category", 11),
+    r'\[TRAINER_CLASS_\w+\]\s*=\s*_\("([^"]+)"\)':       ("trainer class", 12),
+    r'\.trainerName = _\("([^"]+)"\)':                    ("trainer name", 11),
+    r'\[TYPE_\w+\] = _\("([^"]+)"\)':                     ("type name", 7),
 }
+FIXED_RE = [re.compile(p) for p in FIXED]
 
 BUDGET, WIDE = 196, {"data/text/help_system.inc": 220,
                      "data/text/new_game_intro.inc": 220}
@@ -642,6 +659,9 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
         if rel in SKIP_SRC or rel.startswith(EASY_CHAT_DIR):
             continue
         src = open(path, encoding="utf-8").read()
+        # Every authored name in this file, as a span. Prose around them is
+        # still swept; they are not.
+        authored = [(mm.start(), mm.end()) for r in FIXED_RE for mm in r.finditer(src)]
         # A fixed-size array declares its own limit. gTrainerClassNames is
         # [][13], so a name has twelve characters and a terminator -- DAEMON
         # BREEDER is fifteen and agbcc reports it as "excess elements in array
@@ -657,6 +677,9 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
         cap = int(decl[0]) - 1 if len(set(decl)) == 1 and decl else None
         n = [0]
         def sub(m):
+            for lo, hi in authored:
+                if lo <= m.start() < hi:
+                    return m.group(0)
             pieces = PIECE.findall(m.group(1))
             body = ''.join(pieces)
             new = convert(body)

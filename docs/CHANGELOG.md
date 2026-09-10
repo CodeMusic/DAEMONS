@@ -5,6 +5,46 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.136 — 2026-09-10
+
+### docs/engine.md — the hardware, written down
+
+- ***`vision.md` is engine-independent on purpose, so the hardware had nowhere to live*** and was
+  accumulating in commit messages. **`engine.md` is that half:** the three memory budgets and which
+  one people mean by "storage"; **where a variable actually lands**, which is the single most useful
+  fact in it; every fixed width with what we ship in it; and **eight traps listed by symptom**,
+  because the symptom is what you will be looking at.
+- ***Every number in it is written by `tools/gbabudget.py --write`*** — the memory out of the linker
+  map, the name caps out of the **array declarations** rather than the constants beside them (the two
+  families disagree), and the pane widths out of **vanilla's own widest line**, which is a
+  demonstrated safe width rather than a declared one.
+- **All eight name budgets are used to the last character.** *`CONJECTURE` at 10, `THUNDERPUNCH` at 12,
+  `REVIEW BOARD` at 12, `LEARNING RATE` at 13.*
+
+### 9.19 — four names the sweep had quietly changed
+
+- ***The tool's first run printed the widest ability name in the game and it was `NO BUSY WAIT`***,
+  which nobody wrote. **`OWN TEMPO` was authored `NO THRASH`; renaming the move `THRASH` to
+  `BUSY WAIT` rewrote the ability.** *Twelve characters of twelve, so nothing complained.*
+- **Three more in the same commit:** `ABSORBS HEAT` became `INGEST HEAT`; Overgrow's description and
+  CRYSTAL's starter line both had the **type** `GROWTH` replaced by the move name; and ***the SCHOOL's
+  chart lesson read "CORRUPT on SCALE UP"*** — **the one room whose entire job is teaching the chart.**
+  *All four repaired.*
+- ***The rule was written down and half-enforced, which is worse than not written.*** **`port_vocab`
+  has carried *"name tables are authored and prose is swept"* for weeks, and `FIXED` — the thing
+  meant to enforce it — was a WIDTH check wearing a name-protection label.** *It refused a rename that
+  overflowed and accepted one that fitted. Every one of these four fitted.*
+- **A `FIXED` span is now skipped entirely, whatever file it is in** — *protecting the LINE rather than
+  the FILE, which is what the rule actually said.* **Trainer classes, trainer names and type names
+  joined the list**, all three exposed and none of them noticed.
+
+### And the S.S. ANNE warning only fires when she is still in
+
+- **`ISLANDS` warned about the ship even after she had gone**, which is when the warning is meaningless.
+  *A warning that is wrong half the time teaches the reader to skip the box.*
+
+---
+
 ## v11.135 — 2026-09-10
 
 ### `lineage.md` 3b — *The Painted Mirror*, and the source PENPHIN came from

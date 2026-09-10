@@ -11,6 +11,11 @@ is an argument about consciousness. **Design is well ahead of implementation.**
 - **`docs/CHANGELOG.md`** is what moved and when.
 - **`docs/lineage.md`** is where the ideas came from — three blogs, 2011–2026.
   Read it before writing anything about the theory.
+- **`docs/engine.md`** is the hardware, not the design: the three memory
+  budgets, where a variable actually lands, every fixed width, and the eight
+  traps that have already cost this project time. **Read it before adding a
+  static, a name, or a line of text to a pane.** Its numbers are written by
+  `tools/gbabudget.py --write` rather than typed.
 
 ## Layout — one session root, three repos
 
