@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.122**
+**A total conversion — the living design bible, v11.123**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1224,6 +1224,42 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 **`BIND` had to move for a reason none of the others did.** ***It is 1.5's word*** — *what you do to a daemon* — **and a trapping routine wearing it would have put BIND in the battle log meaning something else entirely.** → **`LATCH`.**
 
 ***What is left is genuinely unreachable.*** **The 87 remaining are learned by no daemon in this game, taught by no TM and used by no trainer** — *they belong to species the bestiary has not reached.* <span>OPEN</span>, **and it waits on 8.2 rather than on a decision.**
+
+
+### 2.11 The abilities — a register that is not a verb
+
+***Built 2026-09-10.*** **9.3 named abilities as a reason to port and 8.7 called them the second teaching surface the project paid for and never spent.** *Seventy-seven of seventy-eight are ours now* — **the seventy-eighth is vanilla's own blank slot.**
+
+#### They are not routines, and the register has to say so
+
+***A ROUTINE is an operation. An ability is a standing property*** — **what is true of a daemon while it is doing nothing**, and *4.29 already reads a daemon by exactly that: **what it does unasked.***
+
+> ***THE REGISTER: a flag set on the process.*** **File permissions, compile flags, process attributes, hardware properties** — *the things that are true before it runs and are never chosen per turn.*
+>
+> ***THE TEST:*** **an ability is true of a daemon while it is doing nothing.** *If the name describes an action, it is a routine and belongs in 2.9's table.*
+
+**That is why almost none of the seventy-seven is a verb** — `IMMUTABLE`, `SANDBOXED`, `NO ADDRESS`, `NARROW BAND`, `HIGH RES`. *The grammar is the whole distinction*, and it is what stops the two surfaces from colliding as they grow.
+
+#### Vanilla wrote four of them for us, and 8.7 spotted three
+
+| | | |
+|---|---|---|
+| `LEVITATE` → **`NO ADDRESS`** | *not hit by STRATUM* | ***2.6's own clause, verbatim***: "the physical layer cannot reach what has no location" |
+| `TRACE` → **`INHERITS`** | *copies the foe's ability* | **it is on SUBSTRATE** — *the substrate takes on whatever runs on it*, which is that daemon's Index entry as a mechanic |
+| `SYNCHRONIZE` → **`MUTUAL`** | *passes your state to whoever inflicted it* | **ARTSAI already has it.** *Perspective-taking as a passive* |
+| `STURDY` → **`DURABLE`** | *negates one-hit knockouts* | **5.3 leans on this**: HEAP, STACK and MONOLITH cannot go down to one hit, ***which is Benchmark 1's creed as a rule in the damage calculation*** |
+
+#### The ones where the flag was already the joke
+
+**`OVERGROW` → `OVERFIT`** — *a GROWTH daemon that gets stronger the closer it is to failing.* **`HUSTLE` → `UNSAFE OPT`** — *trades accuracy for power, which is what the flag does.* **`WONDER GUARD` → `NARROW BAND`** — *only super-effective hits land.* **`NATURAL CURE` → `CLEAN EXIT`** — *heals on switching out.* **`TRUANT` → `HALF DUTY`** — *acts every second turn, which is a duty cycle.*
+
+***And two that were a pair and had never been read as one:*** **`PLUS` and `MINUS` are `SOURCE` and `SINK`** — *a current source and a current sink, which is what the two abilities do to each other.*
+
+#### Thirty-one descriptions had to move
+
+***An ability line is thirty-two characters and most of them described a body.*** *"Heals the body by shedding", "Hurts to touch", "Turns electricity into HP"* — **rewritten to what the flag actually is**: `Clears its own state.` · `Costs whatever touches it.` · `Takes SIGNAL in as HP.` **Longest is thirty-one.**
+
+*Two more came free from work already done*: **`Prevents self-destruction` is now `Nothing here may PANIC`**, and **`Prevents fleeing` is `The foe cannot DETACH`** — *because 2.10 renamed SELFDESTRUCT and 1.4 had already renamed fleeing.* **The surfaces had drifted apart and nobody had joined them up.**
 
 
 ---

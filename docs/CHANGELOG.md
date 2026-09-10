@@ -5,6 +5,36 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.123 — 2026-09-10
+
+### 2.11 — the abilities, and a register that is not a verb
+
+- **9.3 named abilities as a reason to port; 8.7 called them the second teaching surface the
+  project paid for and never spent.** ***77 of 78 are ours now*** — the last is vanilla's
+  blank slot.
+- ***A ROUTINE is an operation; an ability is a standing property*** — **what is true of a
+  daemon while it is doing nothing**, which is what 4.29 already reads a daemon by.
+  **The register is a flag set on the process**: file permissions, compile flags, hardware
+  properties. ***The test: if the name describes an action it is a routine.*** That grammar
+  is what stops the two surfaces colliding as they grow.
+- **Vanilla wrote four for us.** `LEVITATE` → **`NO ADDRESS`**, which is *2.6's clause for
+  STRATUM ×0 VECTOR verbatim*. `TRACE` → **`INHERITS`**, on SUBSTRATE — *the substrate takes
+  on whatever runs on it*, that daemon's Index entry as a mechanic. `SYNCHRONIZE` →
+  **`MUTUAL`**, which ARTSAI already has. `STURDY` → **`DURABLE`**, which **5.3 leans on**:
+  HEAP, STACK and MONOLITH cannot go down to one hit — *Benchmark 1's creed as a rule in the
+  damage calculation.*
+- **Where the flag was already the joke:** `OVERGROW` → **`OVERFIT`** *(stronger the closer it
+  is to failing)*; `HUSTLE` → **`UNSAFE OPT`**; `WONDER GUARD` → **`NARROW BAND`**;
+  `NATURAL CURE` → **`CLEAN EXIT`**; `TRUANT` → **`HALF DUTY`** *(a duty cycle)*.
+- ***And a pair nobody had read as one:*** **`PLUS` and `MINUS` are `SOURCE` and `SINK`** — a
+  current source and a current sink, which is exactly what they do to each other.
+- **31 descriptions rewritten** in a 32-character box, most of them describing a body.
+  *Two came free from work already done*: **`Prevents self-destruction` is now `Nothing here
+  may PANIC`** and **`Prevents fleeing` is `The foe cannot DETACH`** — because 2.10 renamed
+  SELFDESTRUCT and 1.4 had already renamed fleeing, **and the surfaces had drifted apart.**
+
+---
+
 ## v11.122 — 2026-09-10
 
 ### The other two routes — every routine the player can meet is ours
