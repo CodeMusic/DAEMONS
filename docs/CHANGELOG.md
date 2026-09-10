@@ -6,6 +6,29 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.140 — 2026-09-10
+
+### TODO.md caught up, and T-06 closed
+
+- **T-06 is done.** ***`check_lexicon` reported "the version agrees in all four places" while
+  testing two of them.*** The README's living row and its snapshot row are two of the four,
+  and **an empty file disagrees with nothing** — so the check went quiet at exactly the moment
+  the surface it watches had been destroyed. **An absent row is a fault now.** *Verified by
+  emptying the file, watching it fail, and restoring.*
+- **Five tickets added from the Act 2 work**, which is written into 8.2a and 4.33 and only
+  partly in the ROM. **T-13** the Warehouse, both ends — *Scorn and Ty in one room, the
+  package handed over, and Crystal reading it*; **T-14** `RUBY` and `SAPPHIRE`, still vanilla
+  and still the post-game's two MacGuffins; **T-15** the Tanoby chambers as 4.24's
+  translations, *whose vehicle is already built, because Braille is text you cannot read until
+  you hold the key*; **T-16** the doctrine's room and its six prohibitions.
+- **T-17 is blocked on 8.2a's own condition** — *tier 3 is 35 place names and ~9,500 words,
+  and it waits until tiers 1 and 2 are in play.* **That is the same condition the original
+  deferral used**, and it is the reason 8 exists.
+- **One Open question added**: the doctrine's placement and name. ***Not after a type*** —
+  `SWARM` is its own step 5's word.
+
+---
+
 ## v11.139 — 2026-09-10
 
 ### docs/README.md was emptied, and nothing said so

@@ -113,6 +113,16 @@ def check_version():
         for line in open(rd, encoding="utf-8"):
             if "working" in line or "snapshot** at v" in line:
                 rv |= set(re.findall(r"v(\d+(?:\.\d+)+)", line))
+        #  AN ABSENT ROW IS A FAULT, NOT AGREEMENT. docs/README.md was left at
+        #  zero bytes twice in two days, and both times this reported that the
+        #  version agreed in all four places -- because a file with no rows
+        #  disagrees with nothing. A check that cannot fail on a missing input
+        #  is not checking that input, and it goes quiet exactly when the
+        #  surface it watches has been destroyed.
+        if not rv:
+            bad.append(("README.md", "carries no version row at all -- the "
+                        "living row and the snapshot row are two of the four "
+                        "places, and an empty file agrees with everything"))
         off = {v for v in rv if v != top_v}
         if off:
             bad.append(("README.md", "row says v%s, CHANGELOG's newest is v%s"
