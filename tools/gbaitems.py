@@ -184,7 +184,8 @@ GROUPS = [
    "ITEM_MAX_REPEL","ITEM_ESCAPE_ROPE","ITEM_POKE_DOLL","ITEM_SUN_STONE","ITEM_MOON_STONE",
    "ITEM_OLD_ROD","ITEM_GOOD_ROD","ITEM_SUPER_ROD","ITEM_ITEMFINDER","ITEM_TOWN_MAP",
    "ITEM_VS_SEEKER","ITEM_COIN_CASE","ITEM_BLUE_FLUTE","ITEM_YELLOW_FLUTE","ITEM_RED_FLUTE",
-   "ITEM_BLACK_FLUTE","ITEM_WHITE_FLUTE"]),
+   "ITEM_BLACK_FLUTE","ITEM_WHITE_FLUTE","ITEM_REVIVAL_HERB","ITEM_SACRED_ASH",
+   "ITEM_ENERGY_POWDER","ITEM_ENERGY_ROOT"]),
  ("The configurations", "held",
   "An item is an operation. A <strong>held</strong> item is not one \u2014 it is a setting "
   "attached to a process from outside, in force while it runs, and removable, which is exactly "

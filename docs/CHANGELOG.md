@@ -6,6 +6,48 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.145 — 2026-09-10
+
+### SILPH is the FOUNDRY, and the bible had been citing the wrong decomp
+
+- ***The opening line said `pokered` and has since 1.0.*** **9.3 records the day the project pivoted to
+  `pokefirered` and the line never moved with it.** *Corrected, with the pivot named rather than erased.*
+- **`SILPH` → `FOUNDRY`.** *SILPH is vanilla's silicon pun — sylph, silicon — and a **foundry is where
+  silicon is actually made**, so the joke survives being translated.* It is also a real place that
+  casts metal, which is 1's double-duty test, and **a company that makes the BOXES and the RESOLVER
+  should be named for what it fabricates.** 35 lines, two item descriptions, the quest log, the sign
+  and the region map.
+- ***The mapsec was edited by hand***, because `region_map_sections.json` is in `NEVER_SWEEP` — place
+  names are authored. **Checked first that `sMapsecName_SILPH_CO` is not one of the twenty mapsec
+  symbols `region_map.c` names by hand.** It is not.
+
+### The gap at the end of Act 2
+
+- ***8.2a's spine ends "machine completes, DOLDRUM CAVE opens — S.T.A.R.R.", and nothing said so.***
+  The flag that removes the cave guard is set four lines into Celio's scene: **the player finished an
+  errand about gemstones and the world quietly changed in a city five islands away.**
+- **So Celio reads his own log and does not understand it.** *Two ends, one handshake, exactly as
+  designed — and a third thing on the line he did not put there, which by the log has been listening a
+  very long time and is not on any of these islands.* **It gives one word. DOLDRUM.**
+- *4.14 has the machine work out where a man in his condition would go, and go there.* **This is the
+  same move run backwards, by the player.**
+
+### Four items that fell between 1.6 and 1.6d
+
+- **`COLD START` · `RESTART ALL` · `FIELD PATCH` · `WORKAROUND`** — *medicine in vanilla's reading and
+  operations in ours.* **The line 1.6 already drew decides them**: HEAL POWDER is HOTFIX, so the bitter
+  powder and the bitter root are the same joke at two sizes. ***A workaround is not the fix; it is the
+  thing you do instead of the fix, and it works.***
+- **The drinks stay drinks.** *Nobody buys a bitter medicinal root for pleasure and everybody buys a
+  LEMONADE*, which is the whole of the distinction 2.8 has been making all week.
+- ***And `PAYLOAD` was already a species.*** `check_lexicon` refused it — **PARAS is PAYLOAD**, which is
+  the better home for the word: *a thing that carries something else and did not choose to.* The
+  package is **`ENVELOPE`**. **Worth recording how close it came: the check reported it on the run that
+  introduced it, and the output had been piped through `tail -3`.** *The tool was right and the reader
+  was lazy.*
+
+---
+
 ## v11.144 — 2026-09-10
 
 ### Act 2 is in the ROM

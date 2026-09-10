@@ -454,13 +454,40 @@ USABLE = {
     "ITEM_COIN_CASE":    ("TOKEN CASE",   ["Holds the tokens the GAME CORNER",
                                            "deals in. It holds up to 9,999."]),
 
+    #  1.6 named the ten items that undo a STATE and stopped, and 1.6d named
+    #  what is used ON A DAEMON. These four fell between the two passes: they
+    #  are medicine in vanilla's reading and operations in ours, and the line
+    #  1.6 already drew is the one that decides them. HEAL POWDER is HOTFIX --
+    #  "bitter, cheap, works now, nobody is proud of it" -- so the bitter
+    #  powder and the bitter root are the same joke at a different size, and
+    #  the two that restart a HALTED daemon belong beside RESTART and REBOOT.
+    #
+    #  The drinks stay drinks. Nobody buys a bitter medicinal root for
+    #  pleasure and everybody buys a LEMONADE, which is the whole difference.
+    "ITEM_REVIVAL_HERB": ("COLD START",   ["Brought up from nothing rather",
+                                           "than resumed. Restarts a HALTED",
+                                           "daemon at full health."]),
+    "ITEM_SACRED_ASH":   ("RESTART ALL",  ["Every halted daemon at once, and",
+                                           "all of them whole."]),
+    "ITEM_ENERGY_POWDER":("FIELD PATCH",  ["Applied where it broke, by",
+                                           "whoever was standing there.",
+                                           "Restores 50 HP."]),
+    "ITEM_ENERGY_ROOT":  ("WORKAROUND",   ["Not the fix. The thing you do",
+                                           "instead of the fix, and it works.",
+                                           "Restores 200 HP."]),
+
     #  T-19. The package Ty hands you in the Warehouse, and 8.2a is exact that
     #  what is in it "is not written here and may never need to be" -- so the
     #  name must not describe the contents. A PAYLOAD is what a message
     #  actually carries as opposed to what routes it, which says the shape and
     #  nothing else. Repurposed from ITEM_LETTER: a Hoenn key item, referenced
     #  by nothing in this game, and already a letter.
-    "ITEM_LETTER":       ("PAYLOAD",      ["Sealed. It is addressed, and it",
+    #
+    #  PAYLOAD was the first answer and check_lexicon refused it: PARAS is
+    #  already PAYLOAD, which is a better home for the word -- a thing that
+    #  carries something else and did not choose to. An ENVELOPE wraps a
+    #  message without being it, which is the same statement about shape.
+    "ITEM_LETTER":       ("ENVELOPE",     ["Sealed. It is addressed, and it",
                                            "is not addressed to you."]),
 
     # T-20. 8.2a calls these the two halves of a bridge between systems built

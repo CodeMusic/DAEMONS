@@ -253,6 +253,7 @@ VOCAB = {
     # Two letters, so it can only be done as a WORD: "PC" inside a symbol or a
     # filename must not move, and only string literals are swept anyway. The
     # possessive comes free from the stem loop below: PC's -> PORT's.
+    "SILPH": "FOUNDRY",
     "PC": "PORT",
     # PP is not two letters -- it is one compressed glyph, redrawn as MP by
     # tools/gbamana.py. MP is the same two characters, so "PP ", "PP was
@@ -401,7 +402,18 @@ TYPE_TALK += [("BUG/FLYING-type", "SWARM/VECTOR-type"),
               #  practised and a PROOF is what LOGIC produces, so PROOF HALL
               #  is the same building said in our words. It is also narrower
               #  than what it replaces, which nothing else here has been.
-              ("FIGHTING DOJO", "PROOF HALL")]
+              ("FIGHTING DOJO", "PROOF HALL"),
+              #  SILPH is vanilla's silicon pun -- sylph, silicon -- and a
+              #  FOUNDRY is where silicon is actually made, so the joke
+              #  survives being translated. It is also a real place that casts
+              #  metal, which is 1's double-duty test, and a company that
+              #  makes the BOXES and the RESOLVER should be named for what it
+              #  fabricates rather than for a spirit of the air.
+              #
+              #  Two entries because both forms are in the dialogue: the
+              #  phrase runs BEFORE the word map, so "SILPH CO." is taken
+              #  first and its output is stashed out of the word pass's reach.
+              ("SILPH CO.", "FOUNDRY CO.")]
 
 #  T-08. POKeMON is its own plural, like sheep. DAEMON is not -- it is an
 #  ordinary English noun and its plural is DAEMONS -- so every line vanilla

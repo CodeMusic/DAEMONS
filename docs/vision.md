@@ -1,10 +1,10 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.144**
+**A total conversion — the living design bible, v11.145**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
-Personal-use ROM hack built on the pret `pokered` decompilation. This document consolidates every decision made so far, including the reasoning behind rejected options, so nothing is lost when work moves into source control.
+Personal-use ROM hack built on the pret `pokefirered` decompilation. *It began on `pokered` and 9.3 records the day it pivoted; the Game Boy build is a reference now.* This document consolidates every decision made so far, including the reasoning behind rejected options, so nothing is lost when work moves into source control.
 
 ---
 
