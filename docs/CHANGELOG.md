@@ -6,6 +6,50 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.142 — 2026-09-10
+
+### 1.6d — the rest of the bag, and the half of it that stays vanilla
+
+- ***The ruling that matters is the one about what NOT to touch.*** **Is it used ON A DAEMON, or is it
+  a thing a person owns?** *2.8's rule applied to a whole surface at once takes out more than half the
+  bag:* the drinks, the treasure, the mail, the bicycle, the tickets, the keys. ***A world where every
+  item is a computing pun is 5.3a's world with nobody in it.***
+- **Forty-one operations.** The potion ladder is `RECOVER`; MP is a `CHARGE`; the six vitamins are
+  **six parts of a machine's spec, one per stat**, which is vanilla's six-nutrients joke in the other
+  domain; the X items are `TUNE`. **`ITEMFINDER`, `TOWN MAP` and `VS SEEKER` had been waiting for the
+  obvious word: `GREP`, `SITEMAP`, `ROLL CALL`.**
+- ***The berries are a TRAP TABLE and the container named itself.*** A berry fires once on a condition
+  and is gone, which is a **handler**; the kind installed against a machine condition is a **trap**;
+  and a **trap table** is the array of them a system installs. **`CATCH ALL` is the one that takes
+  whatever arrives**, `LOW MARK` and `HIGH MARK` are watermarks, and the seven pinch berries are
+  **`AUTO`** — *the X items' `TUNE`, firing without you.*
+- **`RUBY` and `SAPPHIRE` are `PUBLIC KEY` and `PRIVATE KEY`**, and *the plot decided which*: **Corpus
+  steals the SAPPHIRE, and stealing a private key is a crime.**
+- ***Two things left alone on 2.10's rule***: the 22 berries with no effect and no way to get one, and
+  `src/berry.c`, whose name field holds six characters and whose only readers are content this game
+  cannot reach.
+
+### 9.20 — the room that teaches the chart was teaching a different one
+
+- ***A ticket about the word "fight" turned up the whole type chart.*** **`help_system.inc` carries 68
+  blocks of it** — every type's matchups in both directions — **and every entry was still in Gen 3's
+  names.** *T-04's pass could not see them because they are bare comma lists with no construction, and
+  a bare `ROCK` is indistinguishable from a rock.*
+- ***And `PSYCHIC` in those lists read `CONSTRUE`***: an earlier sweep had put the MOVE name where the
+  TYPE name belonged. **The room whose entire job is explaining the chart was explaining a different
+  one, in a vocabulary that was itself half-corrupted.**
+- **16 lines re-wrapped at a comma, against a 248px ceiling** — *vanilla's own widest line in this
+  exact layout, demonstrated rather than declared.*
+- ***Five name bugs this week, all the same shape, and not one found by reading a diff.***
+
+### And eight tickets closed
+
+- **T-04** the type talk · **T-07** the fight read · **T-12** the STREAM notification · **T-13** the
+  berries · **T-14** the usable items · **T-15** easy chat · **T-20** the key pair · **T-24** the
+  A-to-Z picker, which had been bucketing every word by its *vanilla* spelling.
+
+---
+
 ## v11.141 — 2026-09-10
 
 ### check_lexicon reads TODO.md's ticket ids

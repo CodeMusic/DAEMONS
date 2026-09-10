@@ -337,6 +337,251 @@ NAMED = {
                                               "EDGECASE's critical-hit ratio."]),
 }
 
+
+#  ---------------------------------------------------------------------------
+#  THE USABLE ITEMS -- T-14. 1.6 named the ten that undo a STATE and stopped
+#  there, which left the rest of the bag reading as Gen 3 wrote it. Same rule
+#  as 1.6's: AN ITEM IS AN OPERATION, not medicine -- the thing you would
+#  actually do to a process in that condition.
+#
+#  What is DELIBERATELY not here is the finding. 2.8's rule -- the pass that
+#  renames what already lands makes the game worse -- takes out more than half
+#  the bag: FRESH WATER, SODA POP and LEMONADE are drinks that ordinary people
+#  buy from a machine; NUGGET, PEARL, STARDUST and the mushrooms are things you
+#  sell; the MAIL, the BICYCLE, the TEA, the tickets and the keys are objects.
+#  A world where every item is a computing pun is 5.3a's world with nobody in
+#  it. The ones below are the ones you USE ON A DAEMON, and those are machine
+#  operations in any reading.
+USABLE = {
+    # The repair ladder. HP is how much of the process is still running.
+    "ITEM_POTION":       ("RECOVER",      ["Puts back a little of what was",
+                                           "lost. Restores 20 HP."]),
+    "ITEM_SUPER_POTION": ("DEEP RECOVER", ["Goes further in than a RECOVER",
+                                           "does. Restores 50 HP."]),
+    "ITEM_HYPER_POTION": ("FULL RECOVER", ["Everything reachable, put back.",
+                                           "Restores 200 HP."]),
+    "ITEM_MAX_POTION":   ("REBUILD",      ["From nothing, rather than from",
+                                           "where it got to. Restores all HP."]),
+
+    # MP is a budget for running a routine, so putting it back is a charge.
+    "ITEM_ETHER":        ("CHARGE",       ["Puts the budget back for one",
+                                           "routine. Restores 10 MP."]),
+    "ITEM_MAX_ETHER":    ("FULL CHARGE",  ["One routine, all of its budget.",
+                                           "Restores that routine's MP."]),
+    "ITEM_ELIXIR":       ("CHARGE ALL",   ["Every routine at once, a little",
+                                           "each. Restores 10 MP to all."]),
+    "ITEM_MAX_ELIXIR":   ("FULL RECHARGE",["Every routine, all of it.",
+                                           "Restores the MP of every one."]),
+
+    # The vitamins are six parts of a machine's spec, one per stat -- which is
+    # the same joke vanilla tells with six nutrients, in the other domain.
+    "ITEM_HP_UP":        ("MEMORY",       ["How much a daemon can hold before",
+                                           "it stops. Raises base HP."]),
+    "ITEM_PROTEIN":      ("WATTAGE",      ["How hard it can drive something.",
+                                           "Raises base ATTACK."]),
+    "ITEM_IRON":         ("SHIELDING",    ["What sits between it and what is",
+                                           "arriving. Raises base DEFENSE."]),
+    "ITEM_CARBOS":       ("CLOCK RATE",   ["How many times a second it gets",
+                                           "to act. Raises base SPEED."]),
+    "ITEM_CALCIUM":      ("BANDWIDTH",    ["How much it can push down one",
+                                           "channel. Raises base SP. ATK."]),
+    "ITEM_ZINC":         ("INSULATION",   ["What keeps the outside out.",
+                                           "Raises base SP. DEF."]),
+    "ITEM_RARE_CANDY":   ("INCREMENT",    ["Adds exactly one, which is what",
+                                           "the word means. Raises the level."]),
+
+    # Tuning is what you do to a parameter for one run and then undo.
+    "ITEM_X_ATTACK":     ("TUNE ATTACK",  ["Turned up for this engagement",
+                                           "only. Raises ATTACK in battle."]),
+    "ITEM_X_DEFEND":     ("TUNE DEFENSE", ["Turned up for this engagement",
+                                           "only. Raises DEFENSE in battle."]),
+    "ITEM_X_SPEED":      ("TUNE SPEED",   ["Turned up for this engagement",
+                                           "only. Raises SPEED in battle."]),
+    "ITEM_X_ACCURACY":   ("TUNE AIM",     ["Turned up for this engagement",
+                                           "only. Raises accuracy in battle."]),
+    "ITEM_X_SPECIAL":    ("TUNE SP. ATK", ["Turned up for this engagement",
+                                           "only. Raises SP. ATK in battle."]),
+    "ITEM_DIRE_HIT":     ("TUNE CRIT",    ["Reaches further into the tail of",
+                                           "the distribution. Raises the",
+                                           "critical-hit ratio in battle."]),
+    "ITEM_GUARD_SPEC":   ("LOCK STATS",   ["Nothing outside gets to change",
+                                           "them. Blocks stat reduction for",
+                                           "five turns."]),
+
+    # Suppressing a signal is exactly what a REPEL does, and MUTE is already
+    # the held item that does it permanently -- 1.6c.
+    "ITEM_REPEL":        ("SUPPRESS",     ["Holds the channel quiet. Weak",
+                                           "wild daemons stay away for 100",
+                                           "steps."]),
+    "ITEM_SUPER_REPEL":  ("LONG SUPPRESS",["The same, held longer. 200",
+                                           "steps."]),
+    "ITEM_MAX_REPEL":    ("MAX SUPPRESS", ["The same, held longest. 250",
+                                           "steps."]),
+    "ITEM_ESCAPE_ROPE":  ("EJECT",        ["Out, now, from wherever you are.",
+                                           "Returns you to the last",
+                                           "CHECKPOINT you used."]),
+    "ITEM_POKE_DOLL":    ("DECOY",        ["Something else to attend to.",
+                                           "Lets you DETACH from any wild",
+                                           "daemon."]),
+
+    # The four inputs were named in 1.x -- something to reason from, to search
+    # through, to feel with, to learn from. These are the fifth and sixth.
+    "ITEM_SUN_STONE":    ("EXPOSURE",     ["Simply being left in front of",
+                                           "something, for long enough. Some",
+                                           "daemons take a new form."]),
+    "ITEM_MOON_STONE":   ("REFLECTION",   ["Light that came back, and the",
+                                           "other meaning. Some daemons take",
+                                           "a new form when given one."]),
+
+    # A rod pulls something out of a store you cannot see into.
+    "ITEM_OLD_ROD":      ("QUERY",        ["Asks a body of water what is in",
+                                           "it. The answers are shallow."]),
+    "ITEM_GOOD_ROD":     ("DEEP QUERY",   ["Asks the same question further",
+                                           "down."]),
+    "ITEM_SUPER_ROD":    ("FULL SCAN",    ["Reads the whole of it rather than",
+                                           "asking. Slow, and it finds",
+                                           "everything."]),
+
+    # The three that were waiting for the obvious word.
+    "ITEM_ITEMFINDER":   ("GREP",         ["Finds the thing that is there and",
+                                           "not shown. Reports a hidden item",
+                                           "nearby."]),
+    "ITEM_TOWN_MAP":     ("SITEMAP",      ["Everywhere there is, and how they",
+                                           "join. Viewable at any time."]),
+    "ITEM_VS_SEEKER":    ("ROLL CALL",    ["Asks who is listening. USERS who",
+                                           "want to engage answer. The",
+                                           "battery charges as you walk."]),
+    "ITEM_COIN_CASE":    ("TOKEN CASE",   ["Holds the tokens the GAME CORNER",
+                                           "deals in. It holds up to 9,999."]),
+
+    # T-20. 8.2a calls these the two halves of a bridge between systems built
+    # apart, and a KEY PAIR is that, exactly and as a term of art: two halves
+    # made together, useless singly, and one of them is the half you are
+    # allowed to hand out. CELIO's machine wants both before it will talk to
+    # anywhere else, which is what a handshake is.
+    #
+    # Which is which was decided by the plot rather than by taste. CORPUS
+    # steals the SAPPHIRE -- so the SAPPHIRE is the private one, because
+    # stealing a private key is a crime and stealing a public one is not.
+    "ITEM_RUBY":         ("PUBLIC KEY",   ["One half of a pair made together.",
+                                           "This is the half you are allowed",
+                                           "to hand out."]),
+    "ITEM_SAPPHIRE":     ("PRIVATE KEY",  ["The other half, and the one that",
+                                           "matters. Nothing works any more",
+                                           "once somebody else has it."]),
+
+    # POKe FLUTE is INTERRUPT (1.6). These are the same idea, carried.
+    "ITEM_BLUE_FLUTE":   ("WAKE TONE",    ["A tone that reaches something",
+                                           "not scheduled. Ends SUSPENDED."]),
+    "ITEM_YELLOW_FLUTE": ("CALM TONE",    ["A tone steady enough to work",
+                                           "against. Ends THRASHING."]),
+    "ITEM_RED_FLUTE":    ("CLEAR TONE",   ["A tone that cuts through a",
+                                           "binding made without asking."]),
+    "ITEM_BLACK_FLUTE":  ("LOW TONE",     ["Pitched under what wild daemons",
+                                           "answer to. Fewer appear."]),
+    "ITEM_WHITE_FLUTE":  ("HIGH TONE",    ["Pitched where wild daemons",
+                                           "answer. More appear."]),
+}
+NAMED.update(USABLE)
+
+
+#  ---------------------------------------------------------------------------
+#  THE BERRIES -- T-13, and 1.6c derived the register without spending it: a
+#  berry sits there doing nothing, fires ONCE when a condition is met, and is
+#  gone. That is a HANDLER, and the word for the kind installed against a
+#  machine condition is a TRAP -- which is also a physical thing that catches
+#  something, so it does the double duty CHERI and PECHA never did.
+#
+#  Which makes the pouch a TRAP TABLE, and that is the term for the array of
+#  handlers a system installs, so the container names itself.
+#
+#  T-14's rule decides the scope here too. A berry is USED ON A DAEMON, so
+#  unlike the drinks it is not a thing a person owns -- it is an operation
+#  waiting to happen. The twenty-two that only "can be ground up into a powder
+#  as an ingredient for medicine" have no effect, no use in this game and no
+#  way to obtain one; they are left alone, which is 2.10's reachability rule.
+BERRIES = {
+    # The six states, each with the handler that catches it. 1.6 named the
+    # items that undo one on purpose; these are the same undo, armed.
+    "ITEM_CHERI_BERRY":  ("THROTTLE TRAP",["Armed against one condition and",
+                                           "spent catching it. Ends",
+                                           "THROTTLED, once."]),
+    "ITEM_CHESTO_BERRY": ("SUSPEND TRAP", ["Fires the moment the daemon stops",
+                                           "being scheduled. Ends SUSPENDED,",
+                                           "once."]),
+    "ITEM_PECHA_BERRY":  ("LEAK TRAP",    ["Catches a slow loss before it",
+                                           "compounds. Ends LEAKING, once."]),
+    "ITEM_RAWST_BERRY":  ("HEAT TRAP",    ["Fires on heat the daemon made",
+                                           "itself. Ends OVERHEATED, once."]),
+    "ITEM_ASPEAR_BERRY": ("HANG TRAP",    ["Fires when nothing else will.",
+                                           "Ends HUNG, once."]),
+    "ITEM_PERSIM_BERRY": ("THRASH TRAP",  ["Catches a daemon making no",
+                                           "progress against itself. Ends",
+                                           "THRASHING, once."]),
+    "ITEM_LUM_BERRY":    ("CATCH ALL",    ["The handler that takes whatever",
+                                           "arrives. Ends any state, once."]),
+    "ITEM_LEPPA_BERRY":  ("EXHAUST TRAP", ["Fires when a routine runs out of",
+                                           "budget. Restores 10 MP, once."]),
+
+    # A watermark is the level at which a handler fires, which is exactly what
+    # these do -- and the two of them are the two marks.
+    "ITEM_ORAN_BERRY":   ("LOW MARK",     ["The level at which something is",
+                                           "done about it. Restores 10 HP",
+                                           "when health falls, once."]),
+    "ITEM_SITRUS_BERRY": ("HIGH MARK",    ["The same idea, set higher and",
+                                           "worth more. Restores 30 HP when",
+                                           "health falls, once."]),
+    "ITEM_BERRY_JUICE":  ("RESERVE",      ["Held back for the moment it is",
+                                           "needed. Restores 20 HP."]),
+
+    # The five that fix it and may make something else worse. Flavour is the
+    # mechanic -- each upsets a different nature -- so the flavour stays.
+    "ITEM_FIGY_BERRY":   ("SPICY TRAP",   ["Restores health, and may leave a",
+                                           "daemon THRASHING. Which is which",
+                                           "depends on the daemon."]),
+    "ITEM_WIKI_BERRY":   ("DRY TRAP",     ["Restores health, and may leave a",
+                                           "daemon THRASHING. Which is which",
+                                           "depends on the daemon."]),
+    "ITEM_MAGO_BERRY":   ("SWEET TRAP",   ["Restores health, and may leave a",
+                                           "daemon THRASHING. Which is which",
+                                           "depends on the daemon."]),
+    "ITEM_AGUAV_BERRY":  ("BITTER TRAP",  ["Restores health, and may leave a",
+                                           "daemon THRASHING. Which is which",
+                                           "depends on the daemon."]),
+    "ITEM_IAPAPA_BERRY": ("SOUR TRAP",    ["Restores health, and may leave a",
+                                           "daemon THRASHING. Which is which",
+                                           "depends on the daemon."]),
+
+    # AUTO is TUNE that fires without you, which is the whole of the
+    # difference between an item you use and an item you hold.
+    "ITEM_LIECHI_BERRY": ("AUTO ATTACK",  ["Turns itself up when there is",
+                                           "little left. Raises ATTACK in a",
+                                           "pinch."]),
+    "ITEM_GANLON_BERRY": ("AUTO DEFENSE", ["Turns itself up when there is",
+                                           "little left. Raises DEFENSE in a",
+                                           "pinch."]),
+    "ITEM_SALAC_BERRY":  ("AUTO SPEED",   ["Turns itself up when there is",
+                                           "little left. Raises SPEED in a",
+                                           "pinch."]),
+    "ITEM_PETAYA_BERRY": ("AUTO SP. ATK", ["Turns itself up when there is",
+                                           "little left. Raises SP. ATK in a",
+                                           "pinch."]),
+    "ITEM_APICOT_BERRY": ("AUTO SP. DEF", ["Turns itself up when there is",
+                                           "little left. Raises SP. DEF in a",
+                                           "pinch."]),
+    "ITEM_LANSAT_BERRY": ("AUTO CRIT",    ["Reaches further into the tail",
+                                           "when there is little left. Raises",
+                                           "the critical-hit ratio."]),
+    "ITEM_STARF_BERRY":  ("AUTO ANY",     ["Turns one of them sharply up, and",
+                                           "does not say which. Raises a",
+                                           "random stat in a pinch."]),
+
+    "ITEM_BERRY_POUCH":  ("TRAP TABLE",   ["Where the handlers are installed.",
+                                           "It attaches to the BAG's pocket",
+                                           "for important items."]),
+}
+NAMED.update(BERRIES)
+
 #  WIDTH was a character count, which is a proxy for the thing that actually
 #  matters. The face is variable width, so the real ceiling is PIXELS -- and
 #  vanilla's own widest description line, measured across all 375 of them, is

@@ -84,6 +84,13 @@ FIXED = {
     r'\[TRAINER_CLASS_\w+\]\s*=\s*_\("([^"]+)"\)':       ("trainer class", 12),
     r'\.trainerName = _\("([^"]+)"\)':                    ("trainer name", 11),
     r'\[TYPE_\w+\] = _\("([^"]+)"\)':                     ("type name", 7),
+    #  gExpandedPlaceholder_* is the table behind the {RUBY}, {SAPPHIRE},
+    #  {AQUA}, {RED} control codes -- the GAME's names and the other version's
+    #  characters, not ours. Renaming the ITEM ruby to PUBLIC KEY reached this
+    #  table and would have made the code {RUBY} expand to "PUBLIC KEY" in
+    #  link and trade text. Same class as the ability names: a name table a
+    #  prose pass had no business in.
+    r'gExpandedPlaceholder_\w+\[\] = _\("([^"]*)"\)':      ("placeholder", 16),
 }
 FIXED_RE = [re.compile(p) for p in FIXED]
 
@@ -368,7 +375,29 @@ ENGAGE = [("would like to battle", "would like to engage"),
           ("Perfect for a battle", "Perfect for an engagement"),
           ("I concede defeat",     "I concede the score")]
 
-PHRASES = sorted(([(k, v) for k, v in NAMES.items() if ' ' in k] +
+#  T-04. Twenty-eight lines still say "a GRASS-type DAEMON", and the type
+#  names cannot be swept as WORDS -- 2.6's whole set is ordinary English and
+#  half of it is scenery, so GRASS is grass and WATER is water almost
+#  everywhere it appears. What is unambiguous is the CONSTRUCTION: "X-type",
+#  "X type" and the two compounds below are talking about the chart and about
+#  nothing else. So the phrase is the unit, which also buys the reflow and the
+#  width check that a hand edit of 28 lines would not have.
+TYPE_TALK = [(vanilla + suffix, ours + suffix)
+             for vanilla, ours in (("NORMAL", "CONTENT"), ("FIGHTING", "LOGIC"),
+                                   ("FLYING", "VECTOR"),  ("POISON", "CORRUPT"),
+                                   ("GROUND", "STRATUM"), ("ROCK", "LEGACY"),
+                                   ("BUG", "SWARM"),      ("GHOST", "LATENT"),
+                                   ("FIRE", "ENTROPY"),   ("WATER", "FLOW"),
+                                   ("GRASS", "GROWTH"),   ("ELECTRIC", "SIGNAL"),
+                                   ("PSYCHIC", "CONTEXT"),("ICE", "FROZEN"),
+                                   ("DRAGON", "EMERGENT"),("STEEL", "HARDENED"),
+                                   ("DARK", "OPAQUE"))
+             for suffix in ("-type", " type", "-TYPE", " TYPE")]
+TYPE_TALK += [("BUG/FLYING-type", "SWARM/VECTOR-type"),
+              ("BUG- or FIRE-type", "SWARM- or ENTROPY-type")]
+
+PHRASES = sorted((TYPE_TALK +
+                  [(k, v) for k, v in NAMES.items() if ' ' in k] +
                   [("SAFARI BALLS", "GUESTBOXES"), ("SAFARI BALL", "GUESTBOX")] +
                   # ISLANDS only becomes ISLES behind this one name -- every
                   # other island in the game keeps the word it had.

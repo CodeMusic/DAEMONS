@@ -122,7 +122,7 @@ WHY = {
 
 # Groups whose members are a SET rather than twenty-two separate decisions.
 # The blurb is the reasoning and a per-item note would only repeat it.
-SET_GROUPS = {"rack"}
+SET_GROUPS = {"rack", "usable", "traps"}
 
 # Vanilla's one-trick balls keep vanilla's shape: the ladder already carries the
 # argument and a second one competing with it would blunt both.
@@ -160,6 +160,31 @@ GROUPS = [
    "ITEM_MIRACLE_SEED","ITEM_MAGNET","ITEM_TWISTED_SPOON","ITEM_NEVER_MELT_ICE",
    "ITEM_DRAGON_FANG","ITEM_METAL_COAT","ITEM_BLACK_GLASSES","ITEM_SEA_INCENSE",
    "ITEM_BRIGHT_POWDER","ITEM_LAX_INCENSE","ITEM_LEFTOVERS","ITEM_CLEANSE_TAG"]),
+ ("The trap table", "traps",
+  "A berry sits there doing nothing, fires <strong>once</strong> when a condition is met, and is "
+  "gone. That is a <strong>handler</strong>, and the kind installed against a machine condition "
+  "is a <strong>trap</strong> \u2014 which is also a physical thing that catches something, so it does "
+  "the double duty CHERI and PECHA never did. Which makes the pouch a TRAP TABLE, and that is "
+  "the term for the array of handlers a system installs.",
+  ["ITEM_CHERI_BERRY","ITEM_CHESTO_BERRY","ITEM_PECHA_BERRY","ITEM_RAWST_BERRY",
+   "ITEM_ASPEAR_BERRY","ITEM_PERSIM_BERRY","ITEM_LUM_BERRY","ITEM_LEPPA_BERRY",
+   "ITEM_ORAN_BERRY","ITEM_SITRUS_BERRY","ITEM_BERRY_JUICE","ITEM_FIGY_BERRY",
+   "ITEM_WIKI_BERRY","ITEM_MAGO_BERRY","ITEM_AGUAV_BERRY","ITEM_IAPAPA_BERRY",
+   "ITEM_LIECHI_BERRY","ITEM_GANLON_BERRY","ITEM_SALAC_BERRY","ITEM_PETAYA_BERRY",
+   "ITEM_APICOT_BERRY","ITEM_LANSAT_BERRY","ITEM_STARF_BERRY","ITEM_BERRY_POUCH"]),
+ ("What you do to a running daemon", "usable",
+  "1.6 named the ten items that undo a <strong>state</strong> and stopped there. These are the "
+  "rest of the same rule: an item is an <strong>operation</strong>, and the question is what you "
+  "would actually do to a process in that condition.",
+  ["ITEM_POTION","ITEM_SUPER_POTION","ITEM_HYPER_POTION","ITEM_MAX_POTION",
+   "ITEM_ETHER","ITEM_MAX_ETHER","ITEM_ELIXIR","ITEM_MAX_ELIXIR",
+   "ITEM_HP_UP","ITEM_PROTEIN","ITEM_IRON","ITEM_CARBOS","ITEM_CALCIUM","ITEM_ZINC",
+   "ITEM_RARE_CANDY","ITEM_X_ATTACK","ITEM_X_DEFEND","ITEM_X_SPEED","ITEM_X_ACCURACY",
+   "ITEM_X_SPECIAL","ITEM_DIRE_HIT","ITEM_GUARD_SPEC","ITEM_REPEL","ITEM_SUPER_REPEL",
+   "ITEM_MAX_REPEL","ITEM_ESCAPE_ROPE","ITEM_POKE_DOLL","ITEM_SUN_STONE","ITEM_MOON_STONE",
+   "ITEM_OLD_ROD","ITEM_GOOD_ROD","ITEM_SUPER_ROD","ITEM_ITEMFINDER","ITEM_TOWN_MAP",
+   "ITEM_VS_SEEKER","ITEM_COIN_CASE","ITEM_BLUE_FLUTE","ITEM_YELLOW_FLUTE","ITEM_RED_FLUTE",
+   "ITEM_BLACK_FLUTE","ITEM_WHITE_FLUTE"]),
  ("The configurations", "held",
   "An item is an operation. A <strong>held</strong> item is not one \u2014 it is a setting "
   "attached to a process from outside, in force while it runs, and removable, which is exactly "

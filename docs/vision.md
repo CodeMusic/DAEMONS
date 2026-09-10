@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.141**
+**A total conversion — the living design bible, v11.142**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -673,6 +673,51 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 #### And EASY CHAT keeps its own copy of everything
 
 ***Found by the sweep trying to corrupt it.*** **`src/data/easy_chat/` holds a second, independent copy of the ability, move and species vocabulary across twenty-four files** — *`ABILITY_CACOPHONY` is `NO CHANNEL` in `abilities.h` and still `MAGNET PULL` here* — **and no naming pass has ever touched it.** *The word pass turned that one into `SIGNAL GAIN PULL` before it was fenced off.* **Excluded from `port_vocab` until it is named properly**, because a partial sweep of a name table is worse than none. <span>OPEN</span>.
+
+### 1.6d The rest of the bag — and the half of it that stays vanilla
+
+***Built 2026-09-10.*** **1.6 named the ten items that undo a state and stopped there; 1.6c named the held items.** *That left the largest surface in the game still reading as Gen 3 wrote it* — **and the ruling that matters here is the one about what NOT to touch.**
+
+#### The test that decides the scope
+
+> ***Is it used ON A DAEMON, or is it a thing a person owns?***
+
+**2.8's rule has been quoted five times in this document and never applied to a whole surface at once.** *Applied here it takes out more than half the bag:* **FRESH WATER, SODA POP and LEMONADE are drinks bought from a machine; NUGGET, PEARL, STARDUST and the mushrooms are things you sell; the MAIL, the BICYCLE, the TEA, the tickets and the keys are objects.** ***A world where every item is a computing pun is 5.3a's world with nobody in it.***
+
+**What is left is what you use on a daemon, and those are machine operations in any reading.**
+
+#### Forty-one operations, and four that named themselves
+
+| | | |
+|---|---|---|
+| the POTION ladder | **`RECOVER` · `DEEP RECOVER` · `FULL RECOVER` · `REBUILD`** | *HP is how much of the process is still running* |
+| the MP ladder | **`CHARGE` · `FULL CHARGE` · `CHARGE ALL` · `FULL RECHARGE`** | *MP is a budget for running a routine* |
+| the six vitamins | **`MEMORY` · `WATTAGE` · `SHIELDING` · `CLOCK RATE` · `BANDWIDTH` · `INSULATION`** | ***six parts of a machine's spec, one per stat*** — which is the same joke vanilla tells with six nutrients, in the other domain |
+| the X items | **`TUNE ATTACK`**, and so on | *tuning is what you do to a parameter for one run and then undo* |
+| `REPEL` | **`SUPPRESS`** | *beside `MUTE`, which does it permanently* |
+| `ITEMFINDER` · `TOWN MAP` · `VS SEEKER` | **`GREP` · `SITEMAP` · `ROLL CALL`** | ***these three had been waiting for the obvious word*** |
+
+#### The berries are a trap table, and the container named itself
+
+***1.6c derived the register and never spent it.*** **A berry sits there doing nothing, fires ONCE when a condition is met, and is gone** — *that is a **handler**, and the word for the kind installed against a machine condition is a **TRAP**.* **Which is also a physical thing that catches something**, so it does the double duty CHERI and PECHA never did.
+
+***And a TRAP TABLE is the term for the array of handlers a system installs***, so `BERRY POUCH` did not need a decision.
+
+**Six of them are the six states with the handler that catches each** — `THROTTLE TRAP`, `SUSPEND TRAP`, `LEAK TRAP`, `HEAT TRAP`, `HANG TRAP`, `THRASH TRAP` — *beside **`CATCH ALL`**, which is the handler that takes whatever arrives.* **ORAN and SITRUS are `LOW MARK` and `HIGH MARK`**, because *a watermark is the level at which a handler fires.*
+
+***And the seven pinch berries are `AUTO`***, which is the X items' `TUNE` firing without you: **that is the whole of the difference between an item you use and an item you hold.**
+
+#### RUBY and SAPPHIRE are a key pair, and the plot decided which is which
+
+**8.2a calls them the two halves of a bridge between systems built apart**, and ***a key pair is that exactly and as a term of art***: *two halves made together, useless singly, and one of them is the half you are allowed to hand out.* **Celio's machine wants both before it will talk to anywhere else, which is what a handshake is.**
+
+***CORPUS steals the SAPPHIRE.*** **So the SAPPHIRE is the private one** — *stealing a private key is a crime and stealing a public one is not.*
+
+#### Two things left alone, and the reason is 2.10's
+
+***The twenty-two berries that only "can be ground up into a powder"*** have no effect, no use in this game and no way to obtain one.
+
+***And `src/berry.c` IS the second name table 1.6c warned about*** — **but `BERRY_NAME_LENGTH` is six, so nothing there can hold `THROTTLE TRAP`.** *`CopyItemName` reads the item table for every berry except ENIGMA, which cannot be obtained, and its only other reader is BERRY CRUSH, a link minigame.* **Forty-three six-letter abbreviations nobody can see is worse than a table that is honestly out of scope**, and the file says so now.
 
 ### 1.6a The trainer classes — an occupation, and nothing else
 
@@ -6767,6 +6812,38 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***Three separate guards went in this week and each one was a rule this project had already written and not enforced*** — **the type names withheld from the word map, a phrase's output stashed from the word pass, and now `FIXED` protecting the line rather than the width.** *All three were found by something that read the whole table rather than the diff.*
 
 **`docs/engine.md` is where that class of knowledge lives now.** *It is not design — `vision.md` is engine-independent on purpose — and it was going in here for want of anywhere better.* **The three memory budgets, where a variable actually lands, every fixed width and every trap, with the numbers generated so they cannot go stale.**
+
+### 9.20 The room that teaches the chart was teaching a different one
+
+***Found 2026-09-10, doing a ticket about the word "fight".*** **T-07 asked for a human read of forty-two occurrences.** *The read was worth doing* — **four were the type said in lower case, eleven were 1.2's replaced verb, and the rest are people** — *but the count was hiding something much larger.*
+
+#### Sixty-eight blocks of it
+
+***`data/text/help_system.inc` carries the WHOLE TYPE CHART.*** **Every type's matchups in both directions, as bare comma lists** — `{CIRCLE_DOT}: FIRE, ICE, FLYING, BUG` — **and every entry was still in Gen 3's names three months after 2.2 renamed them.**
+
+**T-04's pass could not see it**, and that is the interesting part: *T-04 works on the CONSTRUCTION `X-type`, which is what makes it safe*, and **these lists have no construction at all.** *A bare `ROCK` in a comma list is indistinguishable from a rock.*
+
+***Worse, `PSYCHIC` in those lists read `CONSTRUE`.*** **An earlier sweep had put the MOVE name where the TYPE name belonged** — the same class of bug as `NO THRASH` becoming `NO BUSY WAIT` two days ago — *and it had been shipping.* **The room whose entire job is explaining the chart was explaining a different one, in a vocabulary that was itself half-corrupted.**
+
+#### And the ceiling was demonstrated rather than declared
+
+**Sixteen lines outgrew the pane once the names were ours.** *They are re-wrapped at a comma, which is how vanilla already wraps its own long ones* — **and the ceiling used is 248px, because that is vanilla's widest line in this exact layout.** *Not a number anybody chose; a number the file already proved.*
+
+***Also in vanilla's names: the two stat definitions*** that list which move types are physical and which are special.
+
+#### The pattern, now that there are five of them
+
+**Every one of this week's five name bugs is the same shape** — *a table that a prose pass reached, or a prose pass that a table's rename reached* — **and not one of them was found by reading a diff.**
+
+| | found by |
+|---|---|
+| `NO THRASH` → `NO BUSY WAIT` | a tool built to measure something else |
+| `Ups GROWTH moves` → `SCALE UP` | the same tool, same run |
+| the SCHOOL's chart lesson | the same tool, same run |
+| `{RUBY}` about to expand to `PUBLIC KEY` | the sweep's own width warning |
+| the help system's whole chart | a ticket about the word "fight" |
+
+***The rule this yields is in `engine.md` and it is short: measure the whole table, not the diff.***
 
 ### 9.2 Order of operations
 

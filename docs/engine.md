@@ -53,7 +53,7 @@ The biggest tenants after it:
 | trainer class | **12** | `REVIEW BOARD` (12) | 0 |
 | dex category | **11** | `SPECULATIVE` (11) | 0 |
 | trainer name | **11** | `MELANCHOLIC` (11) | 0 |
-| item | **13** | `LEARNING RATE` (13) | 0 |
+| item | **13** | `FULL RECHARGE` (13) | 0 |
 
 *Character counts, not pixels: these are arrays, and agbcc reports an overflow as "excess elements in array initializer", which never names the string.*
 
@@ -161,7 +161,19 @@ python3 tools/gbastr.py "some debug string"
 
 **`SMOKE BALL` and `LIGHT BALL` were held out of the sweep because `BALL` is the capture device and neither of these is one.** *Once both had names of their own, the guard was the only thing stopping the rename.* ***A stale exception is indistinguishable from a missed substitution***, so exceptions get a comment naming what would have to change for them to be removed.
 
-### 8. Believing the `.gba` file size
+### 8. A file that empties itself
+
+***Symptom:*** *a file is zero bytes and nothing errored.*
+
+```python
+open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
+```
+
+**Python evaluates the object before the argument**, so the `'w'` handle is created — *and truncates the file* — **before the read on the right-hand side ever runs.** *It then writes the empty string it just read.* **This has emptied `docs/README.md` three times in two days**, and each time it was quiet: the file is not in any build, so nothing breaks until somebody looks.
+
+***Read into a variable, assert it is not empty, then open for writing.*** *And the check that watches that surface has to fail on an absent row rather than agree with it — an empty file agrees with everything.*
+
+### 9. Believing the `.gba` file size
 
 ***Symptom:*** *ROM usage that never moves.*
 
