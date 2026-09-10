@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.137**
+**A total conversion — the living design bible, v11.139**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6736,6 +6736,37 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 #### The battle is started by a script, and that is not decoration
 
 **`dowildbattle` stops the script context and hands the resume to the battle's saved callback**, so ***it needs a script to come back to.*** *A menu callback has none.* **So the daemon is built in C — `CreateScriptedWildMon` is safe from anywhere — and a four-line script does the rest**, which is the same handover `RECORD` uses and the same one a signpost uses.
+
+### 9.19 Four names the sweep had quietly changed, and the guard that let it
+
+***Found 2026-09-10 by a tool built for something else.*** **`gbabudget.py` was written to put the hardware budgets in `engine.md` and cannot drift**; the first thing it printed was the widest ability name in the game, and it was **`NO BUSY WAIT`**, which nobody wrote.
+
+#### What had happened
+
+**`OWN TEMPO` was authored `NO THRASH`** — *it prevents THRASHING, and THRASHING is 1.6's state.* **Then 2.10 renamed the move `THRASH` to `BUSY WAIT`, and the word pass applied that rename to the ability name.** ***Twelve characters of twelve, so nothing complained, and it shipped.***
+
+**Three more went the same way in the same commit:**
+
+| | was | became |
+|---|---|---|
+| `FLASH FIRE` | **`ABSORBS HEAT`** | `INGEST HEAT` — *the move `ABSORB` is `INGEST`* |
+| Overgrow's description | ***"Ups GROWTH moves"*** | "Ups SCALE UP moves" — **the TYPE, hit by the move rename** |
+| CRYSTAL offering the starter | ***"The GROWTH one, ROVERCUB?"*** | "The SCALE UP one" |
+| ***the SCHOOL's chart lesson*** | ***"ENTROPY. CORRUPT on GROWTH."*** | **"CORRUPT on SCALE UP"** |
+
+***The last one is the worst by a distance.*** **That room's entire job is teaching the type chart**, and the word it was teaching had been replaced with a move name. *9.x already carries a commit called "the school teaches the chart, and does not understand it." It was more literally true than intended.*
+
+#### The rule was written down and half-enforced, which is worse than not written
+
+**`port_vocab` has carried this sentence for weeks: *name tables are authored and prose is swept.*** *And `FIXED`, the thing that was supposed to enforce it, was a **width check wearing a name-protection label*** — **it refused a rename that overflowed the array and accepted one that fitted.** ***Every one of these four fitted.***
+
+**A span matching any `FIXED` pattern is now skipped entirely, whatever file it is in** — *which is the difference between protecting a FILE, which stops its prose being swept too, and protecting a LINE, which is what the rule actually said.* **The width check stays underneath.** *Trainer classes, trainer names and type names joined the list, because all three were exposed and nobody had noticed.*
+
+#### And the finding is really about tools
+
+***Three separate guards went in this week and each one was a rule this project had already written and not enforced*** — **the type names withheld from the word map, a phrase's output stashed from the word pass, and now `FIXED` protecting the line rather than the width.** *All three were found by something that read the whole table rather than the diff.*
+
+**`docs/engine.md` is where that class of knowledge lives now.** *It is not design — `vision.md` is engine-independent on purpose — and it was going in here for want of anywhere better.* **The three memory budgets, where a variable actually lands, every fixed width and every trap, with the numbers generated so they cannot go stale.**
 
 ### 9.2 Order of operations
 
