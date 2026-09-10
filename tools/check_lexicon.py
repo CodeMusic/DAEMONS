@@ -146,6 +146,11 @@ def main():
                         r'\[TYPE_\w+\]\s*=\s*_\("(\w+)"\)'),
         "ability": read("src/data/text/abilities.h",
                         r'\[ABILITY_\w+\]\s*=\s*_\("([^"]+)"\)'),
+        #  Added after PSYCHIC -> CONSTRUE was chosen twice: once for the
+        #  trainer class and once, weeks later, for the CONTEXT routine.
+        #  Neither pass could see the other because this table was not read.
+        "class":   read("src/data/text/trainer_class_names.h",
+                        r'\[TRAINER_CLASS_\w+\]\s*=\s*_\("([^"]+)"\)'),
         "state":   STATES,
     }
     f = os.path.join(GBA, "src/data/items.json")

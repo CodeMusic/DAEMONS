@@ -5,6 +5,41 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.127 — 2026-09-10
+
+### 1.6a — the trainer classes
+
+- **Twenty-three were already ours and the register was legible from them.** ***A trainer
+  class is an OCCUPATION*** — what this person does, by trade or by disposition, in twelve
+  characters.
+- ***The test is what does NOT change.*** **FISHERMAN, SCIENTIST, ENGINEER, PAINTER, SAILOR,
+  GENTLEMAN, EXPERT and LEADER are occupations in any world and were left alone** — 2.8's
+  rule, for the fourth time. **Forty-five moved**, each failing in one of three ways: it
+  **named a creature** (BIRD KEEPER → **DISPATCHER**, DRAGON TAMER → **WRANGLER**), it was
+  **era slang** (COOLTRAINER → **OPERATOR**, SUPER NERD → **TINKERER**, CHANNELER →
+  **MEDIUM**), or it was **a child or a gender role** (LASS → **APPRENTICE**, CRUSH GIRL →
+  **GRAPPLER**, RICH BOY → **HEIR**).
+- ***`MEDIUM` works hardest***: a medium speaks for the dead **and** a medium is what a signal
+  travels through — *and she is standing in Halftone Tower.*
+- **The `RS_` twins moved with them**, because they exist so a link battle reads the same as
+  a local one.
+
+### Two collisions, one of them three weeks old
+
+- ***`PSYCHIC` became `CONSTRUE` twice*** — once as this trainer class, and once weeks later
+  as the CONTEXT routine in 2.9. **Neither pass could see the other, because `check_lexicon`
+  was not reading the trainer table.** The routine keeps CONSTRUE; the class is
+  **`INTERPRETER`**, which is the better word for a person.
+- **`BLACK BELT` was a class and a held item**, vanilla's own collision inherited. The class
+  is **`FORMALIST`**; the item is **`RIGOUR`** — *what you hold to argue harder from* — and
+  **its description had said FIGHTING-type since before 2.2 renamed that to LOGIC.**
+- ***Both surfaces are watched now.*** `check_lexicon` reads the trainer table and
+  `port_vocab` learns renames from it — **which immediately found four lines of dialogue
+  still saying `POKéMANIAC`, three weeks after it became ARCHIVIST.** *The accented prefix,
+  for the sixth time.*
+
+---
+
 ## v11.126 — 2026-09-10
 
 ### 8.2d — the dex categories, and the register that was already on the shelf

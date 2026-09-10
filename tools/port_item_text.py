@@ -88,6 +88,13 @@ TEXT = {
                           "that stopped answering, and",
                           "resets it. Ends HUNG."],
 
+    #  BLACK BELT collided with the trainer class the moment that class became
+    #  FORMALIST -- and its description still said FIGHTING-type, which has
+    #  been LOGIC since 2.2. Rigour is what you hold to argue harder from.
+    "ITEM_BLACK_BELT":   ["Held to argue harder from.",
+                          "Raises the power of LOGIC",
+                          "routines."],
+
     # ---------------------------------------------------------------- states
     #  1.6 renamed the seven states and 9.15 gave them tiles, and twenty-one
     #  descriptions went on saying paralysis, poison, burn and confusion --

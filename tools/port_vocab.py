@@ -141,6 +141,10 @@ def pairs_from(path, pattern):
 
 NAMES = {}
 NAMES.update(pairs_from("src/data/text/species_names.h", r'_\("([^"]*)"\)'))
+#  Trainer classes are a rename surface like any other, and were not being
+#  learned from. POKéMANIAC became ARCHIVIST weeks ago and four lines of
+#  dialogue still said POKéMANIAC -- the accented prefix, for the sixth time.
+NAMES.update(pairs_from("src/data/text/trainer_class_names.h", r'_\("([^"]*)"\)'))
 NAMES.update(pairs_from("src/data/text/move_names.h",    r'_\("([^"]*)"\)'))
 NAMES.update(pairs_from("src/data/items.json",           r'"english":\s*"([^"]*)"'))
 # a rename is only safe to apply inside prose if the vanilla name is a word

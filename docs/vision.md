@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.126**
+**A total conversion — the living design bible, v11.127**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -606,6 +606,34 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 
 *Two help-system lines the word pass pushed past the 196px box — 210 and 220 — are **rewritten rather than truncated**, both measured.*
 
+
+### 1.6a The trainer classes — an occupation, and nothing else
+
+***Built 2026-09-10.*** **Twenty-three were already ours and the register was legible from them**: FORAGER, APIARIST, ARCHIVIST, SALVAGER, ENTHUSIAST, BREEDER, RANGER, REVIEW BOARD.
+
+> ***A trainer class is an OCCUPATION*** — **what this person does, by trade or by disposition.** *Twelve characters.*
+
+#### The test is what does NOT change
+
+***Vanilla already gets most of them right.*** **FISHERMAN, SCIENTIST, ENGINEER, PAINTER, SAILOR, GENTLEMAN, EXPERT, LEADER are occupations in any world and were left alone** — 2.8's rule, for the fourth time. **Forty-five moved, and each failed the test in one of three ways:**
+
+| | | |
+|---|---|---|
+| **names a creature** | BIRD KEEPER · DRAGON TAMER · TAMER | → **DISPATCHER · WRANGLER · BINDER** |
+| **is era slang** | COOLTRAINER · SUPER NERD · BIKER · ROCKER · GAMER · BURGLAR · CHANNELER | → **OPERATOR · TINKERER · COURIER · SOUNDMAN · SPECULATOR · LOOTER · MEDIUM** |
+| **is a child or a gender role** | YOUNGSTER · LASS · SCHOOL KID · CRUSH GIRL · RICH BOY · AROMA LADY | → **NOVICE · APPRENTICE · STUDENT · GRAPPLER · HEIR · PERFUMER** |
+
+***`MEDIUM` is the one that works hardest*** — **a medium speaks for the dead and a medium is what a signal travels through**, and she is standing in Halftone Tower.
+
+**The `RS_` twins move with them.** *They exist so a link battle reads the same as a local one*, and leaving them behind gives one person two names depending on who met them.
+
+#### Two collisions, and one of them was three weeks old
+
+***`PSYCHIC` became `CONSTRUE` twice*** — **once as this trainer class, and once, weeks later, as the CONTEXT routine in 2.9.** *Neither pass could see the other, because `check_lexicon` was not reading the trainer table.* **The routine keeps CONSTRUE; the class is `INTERPRETER`, which is the better word for a person anyway.**
+
+**`BLACK BELT` was a class and a held item** — vanilla's own collision, inherited. ***The class is `FORMALIST`; the item is `RIGOUR`*** — *what you hold to argue harder from* — **and its description had been saying FIGHTING-type since before 2.2 renamed that to LOGIC.**
+
+***Both surfaces are watched now.*** **`check_lexicon` reads the trainer table, and `port_vocab` learns renames from it** — *which immediately turned up four lines of dialogue still saying `POKéMANIAC`, three weeks after it became ARCHIVIST.* **The accented prefix with no word boundary in front of it, for the sixth time.**
 
 ### 1.7 PORT, TERMINAL, SSH — and whether security words belong
 
