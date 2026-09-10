@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.119**
+**A total conversion — the living design bible, v11.120**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1111,6 +1111,67 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 | `PRIOR` *(ours)* | the **PRIORITY** item | Both ours, and uncomfortably close |
 | `OVERHEAT` | the **OVERHEATED** state | ***Keep.*** A fire move, ENTROPY owns the state, and the two agreeing is the point |
 | `REST` · `DIVE` · `IRON TAIL` · `IRON DEFENSE` | RESTART · DIVE BOX · IRON items | Mild; noted, not urgent |
+
+
+### 2.9 The other seventeen registers — settled 2026-09-10
+
+***2.8 settled CONTENT and then this project treated that as a rule instead of a sequence.*** **CONTENT went first because it was seventy-nine of the 175 reachable routines and would set the tone** — *that is an argument about ORDER*, and it was then applied twice as though it were an argument about **method**, holding `SIGNAL BEAM` and five HMs for a decision nobody was actually waiting on.
+
+***A register is not invented. It is 2.6's clause turned into a part of speech.*** **Every one of these existed already**, and the whole of this section is the derivation written down.
+
+| type | 2.6's clause | the register | worked |
+|---|---|---|---|
+| **LOGIC** | *rules applied step by step; proof, not intuition* | **derivation** — what establishes a thing by steps | ASSERT · REDUCE · ENTAIL · **CRACK** |
+| **VECTOR** | *direction in a space of meanings* | **delivery with a heading** | DISPATCH · ROUTE · STEER · **GOTO** |
+| **CORRUPT** | *data that has been tampered with* | **tampering and decay** | TAINT · FALSIFY · SPOIL · SEED |
+| **STRATUM** | *the physical layer everything else runs on* | **substrate and ground** | GROUND · ANCHOR · SEAT · SUBSIDE |
+| **LEGACY** | *deprecated hardware still running* | ***the old instruction set*** — operations that still work because nobody removed them | NOP · ROTATE · PARITY · DEPRECATE |
+| **SWARM** | *many small agents; no single one matters* | **distributed protocols** | **GOSSIP** · FANOUT · ELECT · HEARTBEAT |
+| **LATENT** | *running below the surface, unobserved* | **background and detached** | DAEMONIZE · ORPHAN · SHADOW |
+| **ENTROPY** | *noise and heat; disorder that spreads* | **noise, heat, decay** | JITTER · DITHER · SCRAMBLE |
+| **FLOW** | *everything running downhill to the lowest point* | **gradient and current** | **TRAVERSE · ASCEND · DESCEND** · SPILL |
+| **GROWTH** | *training: fitting to whatever it is fed* | **training and fitting** | CONVERGE · SATURATE · EPOCH · ROOT |
+| **SIGNAL** | *raw current, before anything interprets it* | **the raw edge** | PULSE · STROBE · TRIGGER · CARRIER |
+| **CONTEXT** | *the frame you read a thing in* | **framing and reinterpretation** | REFRAME · SCOPE · PREMISE · LENS |
+| **FROZEN** | *locked to what it already saw* | ***weights that do not update*** | CONST · SEAL · IMMUTABLE · LOCK |
+| **EMERGENT** | *behaviour nobody designed and nobody can account for* | **emergence** | PHASE · ATTRACTOR · BLOOM |
+| **HARDENED** | safety hardening | **armouring and attestation** | SANDBOX · ATTEST · GUARD |
+| **OPAQUE** | the black box from outside | **opacity** | OBFUSCATE · OCCLUDE · REDACT · MASK |
+| **ORACLE** | the black box that answers | **consultation** | CONSULT · ANSWER — *one routine, never seen* |
+
+#### Settling them all at once caught four thefts
+
+***2.8's counter-test said the seventy-nine "must not annex vocabulary the other sixteen types need", and then batch one annexed four words anyway*** — **because there was nothing to check against.** *A rule with no table behind it is a hope.*
+
+| proposed for a CONTENT routine | belongs to | re-cut as |
+|---|---|---|
+| `DEPRECATE` | **LEGACY** — it is the whole register, not a stat drop | **`DERATE`** — *running a component below its rated capacity* |
+| `OBFUSCATE` | **OPAQUE** — it is that type's name said as a verb | **`BLUR`** |
+| `REVOKE` | *access-control, which 1.7 rules is INSTITUTION vocabulary* | **`DOWNCLOCK`** |
+| `PIN` | contested with **FROZEN**, and kept — *pinning is about not being moved, freezing is about not being updated* | **`PIN`**, unchanged |
+
+***That is the argument for settling registers before names, made by breaking it.***
+
+#### The HMs are the access model, on the map
+
+***An HM only works in the field once you hold the MARK.*** **That is not flavour, it is the gate** — and it makes an HM **a capability you have been certified to exercise**, which is exactly the access-control reading 1.7 rules *on-thesis* because it is about access to a mind.
+
+**So the MARKS are a keyring as well as 5.2's bench of instruments** — *and the game already runs the same model somewhere else.* **The box ladder is rights escalation applied to daemons; the HMs are rights escalation applied to the map.** ***Two implementations of one idea, and nothing connects them.*** *Nothing should — the player has both in hand by hour three.*
+
+| | | |
+|---|---|---|
+| `CUT` → **`PRUNE`** | CONTENT | *you prune a tree and you prune a branch* — the obstacle is literally a tree |
+| `FLY` → **`GOTO`** | VECTOR | **an unconditional transfer to a known address** — *and you can only reach a CHECKPOINT you have already been to*, which is what "known" means. `JUMP` was rejected: its first read is a hop |
+| `SURF` → **`TRAVERSE`** | FLOW | across |
+| `WATERFALL` → **`ASCEND`** | FLOW | up |
+| `DIVE` → **`DESCEND`** | FLOW | down — ***three directions on one medium, which is exactly what the three moves do*** |
+| `STRENGTH` → **`DISPLACE`** | CONTENT | to displace is to push a thing out of the place it was in |
+| `FLASH` → **`VERBOSE`** | CONTENT | ***the best of the eight***: `-v` turns on the output nobody could see, **and floods the channel so nothing can be found** — the field effect and the battle effect in one word |
+| `ROCK SMASH` → **`CRACK`** | LOGIC | you crack a rock and you crack a problem |
+
+***And the failure messages are where these are actually taught***, because a player meets them far more often than a description: **`There is nothing to PRUNE.`** · **`You cannot TRAVERSE here.`** *One line, at the moment of trying.*
+
+*Recorded, because it was misremembered once:* **`ROCK SMASH` does not exist on the Game Boy.** `engine/data/moves/names.asm` has **STRENGTH and no ROCK SMASH** — *it is a Gen 2 addition that arrived with the port*, which is why DISPLACE (push it aside) and CRACK (break it open) do not overlap. **It belongs in 9.3's list of what the spike bought.**
 
 
 ---
@@ -6150,7 +6211,8 @@ Kept here because the reasoning is worth more than the outcome.
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
 - **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
-- ~~`THRASH` and `HARDEN` wear a state's and a type's name~~ **Cleared 2026-09-10 (2.8): `BUSY WAIT` and `PIN`.** *One near-collision is left and is held on purpose* — **`SIGNAL BEAM` is a SWARM move wearing SIGNAL's name, and 2.8 has settled only the CONTENT register**
+- ~~`THRASH` and `HARDEN`~~ **Cleared (2.8).** `SIGNAL BEAM` is now unblocked by 2.9's SWARM register — **`GOSSIP`** — and waits only on the SWARM batch
+- **23 routines renamed, 152 to go** (2.9). All seventeen registers are settled, so the remainder is a naming job rather than a series of decisions
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
 - **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object

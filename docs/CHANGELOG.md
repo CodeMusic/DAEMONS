@@ -5,6 +5,63 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.120 — 2026-09-10
+
+### 2.9 — the other seventeen registers, and the rule that was a sequence
+
+- ***2.8 settled CONTENT and this project then treated that as a rule instead of a
+  sequence.*** CONTENT went first because it was 79 of the 175 reachable routines and would
+  set the tone — **an argument about ORDER**, applied twice as though it were an argument
+  about **method**, holding `SIGNAL BEAM` and five HMs for a decision nobody was waiting on.
+- ***A register is not invented. It is 2.6's clause turned into a part of speech.***
+  **LOGIC** is derivation, **VECTOR** is delivery with a heading, **LEGACY** is the old
+  instruction set, **SWARM** is the distributed protocols, **FROZEN** is weights that do not
+  update, **OPAQUE** is opacity. *All seventeen existed already; the section is the
+  derivation written down.*
+
+### Settling them all at once caught four thefts
+
+- **2.8's counter-test said the seventy-nine must not annex vocabulary the other types need,
+  and then batch one annexed four words anyway** — *because there was nothing to check
+  against.* **A rule with no table behind it is a hope.**
+- `DEPRECATE` → **LEGACY's whole register**, re-cut as **`DERATE`** *(running a component
+  below its rated capacity)*. `OBFUSCATE` → **OPAQUE's name said as a verb**, re-cut as
+  **`BLUR`**. `REVOKE` → *access-control, which 1.7 rules is institution vocabulary*, re-cut
+  as **`DOWNCLOCK`**. **`PIN` contested with FROZEN and was kept** — *pinning is about not
+  being moved; freezing is about not being updated.*
+
+### The HMs are the access model, on the map
+
+- ***An HM only works in the field once you hold the MARK.*** That is the gate, which makes
+  an HM **a capability you have been certified to exercise** — exactly the access-control
+  reading 1.7 rules on-thesis. **So the MARKS are a keyring as well as 5.2's bench of
+  instruments**, and **the box ladder is the same model applied to daemons.** *Two
+  implementations of one idea, and nothing connects them.*
+- `CUT`→**PRUNE** · `FLY`→**GOTO** · `SURF`→**TRAVERSE** · `WATERFALL`→**ASCEND** ·
+  `DIVE`→**DESCEND** · `STRENGTH`→**DISPLACE** · `FLASH`→**VERBOSE** · `ROCK SMASH`→**CRACK**.
+  ***TRAVERSE, ASCEND and DESCEND are across, up and down — three directions on one medium,
+  which is exactly what the three moves do.*** **`GOTO` beat `JUMP`** because a jump's first
+  read is a hop, and *you can only reach a CHECKPOINT you have already been to, which is what
+  "known address" means.*
+- **`VERBOSE` is the best of the eight**: `-v` turns on the output nobody could see **and
+  floods the channel so nothing can be found** — the field effect and the battle effect in
+  one word.
+- ***And the failure messages are where these are actually taught***, because a player meets
+  them far more often than a description: **`There is nothing to PRUNE.`** and **`You cannot
+  TRAVERSE here.`**
+- *Recorded because it was misremembered once:* **`ROCK SMASH` does not exist on the Game
+  Boy** — it is a Gen 2 addition that arrived with the port, which is why DISPLACE and CRACK
+  do not overlap. **It belongs in 9.3's list of what the spike bought.**
+
+### 23 routines renamed
+
+- The CONTENT batch — **WRITE · FLIP · PUSH · INSERT · OVERWRITE · COMMIT · EMIT · DERATE ·
+  DOWNCLOCK · EXPOSE · INSPECT · STRIP · DEMOTE · BLUR · ADVERTISE** — plus the eight HMs.
+  **All 23 checked clear against species, moves, abilities, types and items**, all inside the
+  12-character budget, and every description rewritten and measured against the 170px box.
+
+---
+
 ## v11.119 — 2026-09-10
 
 ### `BUSY WAIT` and `PIN` — and the first one was hiding a better move
