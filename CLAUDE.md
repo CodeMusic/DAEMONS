@@ -9,6 +9,12 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   before proposing anything. It carries a version (currently v1.8) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
+- **`docs/TODO.md`** is work that has been **decided and not done.** The rule
+  that keeps it from duplicating the bible's Open log: *the Open log holds a
+  **question**, TODO holds a **job***, and an item moves across the moment it
+  stops being a decision. **Put a request here the moment it would otherwise
+  live only in a conversation** — that is what the file is for. Ids are
+  permanent; a closed ticket is struck through with its commit, never deleted.
 - **`docs/lineage.md`** is where the ideas came from — three blogs, 2011–2026.
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
