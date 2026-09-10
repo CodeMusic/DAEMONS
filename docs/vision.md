@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.146**
+**A total conversion — the living design bible, v11.147**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3631,6 +3631,19 @@ Corpus rooms, and the trainer table.
 > **`KNOWN FAULT: <the error, described as an engineering failure>`**
 
 ***The fault is always attributed to the machine and never to the reader.*** **That is craft rule 3 doing the work** — *name the process, not the pathology.* A card that said *you are prone to confirmation bias* would be a lecture; **a card that says *it only ever tested what it already held* is a fact about a dead computer**, and the player supplies the rest.
+
+#### The two cards the museum was missing, added 2026-09-10
+
+***The exhibit had three faults in it by accident and none on purpose.*** **The two from `lineage.md` 3b are the ones the room was short of**, and both are Benchmark 1's own subject — *a mind trained on a picture of the world, reporting on the world.*
+
+| the card | where it comes from | what it teaches |
+|---|---|---|
+| **`DISPLAY UNIT`** — *the harder an operator worked at a thing on it, the less of a thing it drew. It ended as dots and lines, which is all it had ever been* | 3b: **"the harder I tried to open the door, the less real it became… until it changed back into mere dots and lines"** | **A representation taken for the thing** — and the taking surviving right up to the moment it is leaned on |
+| **`SORTING FRAME`** — *shown a marking it had seen before, it assigned the purpose it had seen beside it. It was right often enough that nobody checked the markings* | 3b: **the Guardian called *Hunter* on the evidence of a plaid shirt — "I was wrong to assume"** | **A label applied from outside on a correlation**, and the hit rate that stops anyone checking |
+
+**Both take the format and neither names anything.** *The DISPLAY UNIT's fault is a drawing fault and the SORTING FRAME's is a filing fault* — **and the second card's last line is the point of it:** the machine was not wrong often enough to get caught.
+
+***They went on the one exhibit case on that floor that had no card at all.*** **It is wide enough for two, and they are read from opposite sides** — one met coming in, one met going out. *Placed by reading the layout's own collision, not by counting tiles on a screenshot.*
 
 #### CC-7, alluded to and not explained
 

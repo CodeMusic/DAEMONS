@@ -5,7 +5,41 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-<<<<<<< HEAD
+## v11.147 — 2026-09-10
+
+### T-09 — the two KNOWN FAULT cards, and the case nobody had labelled
+
+- ***The ticket said the only thing left was choosing a display case, and that the choice was a
+  reading of the room rather than a fact about it.*** **It turned out to be a fact about it.** *Every
+  blocked block on that floor already carried a `bg_event` except one* — **so the room had been
+  telling anyone who counted which case was empty**, and `tools/gbamaptiles.py` gave the approach
+  tiles out of the layout's own `map.bin`.
+- **The case takes two cards and they are read from opposite sides**, which is better than one wall
+  with both: *one is met coming in and one going out.*
+- **`DISPLAY UNIT`** — *the harder an operator worked at a thing on it, the less of a thing it drew.*
+  From `lineage.md` 3b's door, **which stopped being a door under pressure and went back to dots and
+  lines, which is all it had ever been.**
+- **`SORTING FRAME`** — *shown a marking it had seen before, it assigned the purpose it had seen
+  beside it.* From 3b's Guardian, **called *Hunter* on the evidence of a plaid shirt.** ***The last
+  line is the card:*** *it was right often enough that nobody checked the markings.*
+- **Both obey 4.32's format and neither names a distortion**, per craft rule 1 — *the DISPLAY UNIT's
+  fault is a drawing fault and the SORTING FRAME's is a filing fault, and both are the machine's.*
+- ***The words were right on the first pass and the line breaks were not.*** **Three of the nine
+  lines ran past the 196px box by three to six pixels** — *re-broken, not rewritten*, and the check
+  that caught it is `engine.md`'s own number rather than a guess about how wide a box is.
+
+### A merge conflict had been committed into this file
+
+- ***`docs/CHANGELOG.md` carried `<<<<<<< HEAD`, `=======` and `>>>>>>> main` in the tree*** — a
+  merge resolved by committing the markers, unnoticed because **both sides were pure appends and the
+  file still read correctly to a human**: v11.146 down to v11.137 above the seam, v11.136 below it,
+  and v11.135 after that. *Already in the right order.*
+- **The resolution was to delete three lines.** ***The lesson is the one the rest of this project
+  keeps relearning:*** a diff showed nothing wrong because each side's text was fine; **it took
+  something reading the whole file to find the three lines that belonged to neither.**
+
+---
+
 ## v11.146 — 2026-09-10
 
 ### 8.2a's tiers 1 and 2 are done, which is a finding rather than a milestone
@@ -301,7 +335,6 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   honest.**
 - **Merge housekeeping:** both v11.134 and v11.135 kept, theirs above mine by date; the
   version line resolved to 11.135; **one current snapshot on disk**, per the check.
-=======
 ## v11.136 — 2026-09-10
 
 ### docs/engine.md — the hardware, written down
@@ -339,7 +372,6 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 - **`ISLANDS` warned about the ship even after she had gone**, which is when the warning is meaningless.
   *A warning that is wrong half the time teaches the reader to skip the box.*
->>>>>>> main
 
 ---
 
