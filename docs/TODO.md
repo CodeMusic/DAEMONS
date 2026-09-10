@@ -29,6 +29,8 @@ conversation.** That is what this file is for.
 
 | | what | where | from |
 |---|---|---|---|
+| **T-09** | **Two ERRATA cards from *The Painted Mirror*** — *a door that stopped being a door and went back to being lines*, and *a pattern read as a purpose*. Both are Benchmark 1's subject and both fit the `KNOWN FAULT:` format already in the room. ***Unblocked 2026-09-10***: `tools/gbamaptiles.py` reads collision out of a layout's own `map.bin`, so a `bg_event` is a lookup. **What is left is choosing which display case**, which is a reading of the room rather than a fact about it | `engineGba`, Slate museum | lineage 3b |
+| **T-23** | **Sevii tier 3** — 35 place names and ~9,500 words rewritten to 8.2a's tone rule: *Kanto tells you what things are; the islands tell you how they look from where the speaker is standing.* ***Its condition is now met*** — 8.2a said *"not until the rest is in play"* and tiers 1 and 2 both closed on 2026-09-10. **This is the largest single job in this file and the one 8 was written about**: it is not a naming pass, it is a rewrite of a quarter of the game's map dialogue. *The brake came off; the work did not get smaller* | `engineGba/data/maps/`, 35 mapsecs | 8.2a |
 | **T-16** | **Per-gym battle backdrops.** Eight benchmarks, eight rooms, one backdrop, and it is the one place decoration IS the argument: 5.3 gives each gym a lever and the backdrop can be the room you met it in. ***Costed wrong when it was proposed** — "ROM-only, cheap" is true of the BYTES and false of the work.* **Gen 3 keys the backdrop off ten TERRAIN types, each a full tileset, tilemap and palette in `graphics/battle_terrain/`** — so reassigning an existing one per gym is a data change, and eight gym-specific ones is **eight new tilesets**. *Decide which of the two before starting* | `graphics/battle_terrain/`, `src/battle_bg.c` | 5.3, 9.4 |
 
 ---
@@ -38,11 +40,9 @@ conversation.** That is what this file is for.
 | | what | blocked on | from |
 |---|---|---|---|
 | **T-05** | **Callow and The Bleed share their music.** *8.1's second theme cannot be given to either until they have a slot of their own* | **A track that does not exist yet.** *Re-read 2026-09-10 and the ticket was aimed at the wrong repo:* `data/maps/songs.asm` is the **Game Boy** build, which CLAUDE.md says is a reference and not updated further. **On the GBA it is one field in a map's `.json`** — so the plumbing is not the blocker at all. `song-status.md` lists eleven compositions still unassigned, and this wants one of them | 7.3, 8.1 |
-| **T-09** | **Two ERRATA cards from *The Painted Mirror*** — *a door that stopped being a door and went back to being lines*, and *a pattern read as a purpose*. Both are Benchmark 1's subject and both fit the `KNOWN FAULT:` format already in the room | ***No longer blocked on knowing which tiles are display cases.*** `tools/gbamaptiles.py` reads collision out of a layout's own `map.bin` — two bits per tile — so a `bg_event` is a lookup. **What is left is choosing which case**, which is a reading of the room | lineage 3b |
 | **T-10** | **The missing key signature as a puzzle** — notes reading flat because the key is absent, and giving them the key lifts them. **2.6's one-clause test for CONTEXT as a room rather than a definition**, and 5.3 names *the room* as one of four levers a grinder cannot grind | Wants **Brazen gym**, which is T-03's territory. Sequence it after | lineage 3b, 5.3 |
 | **T-11** | **The 87 unreachable routines.** 2.10 renamed 269 of 356 — every routine the player can meet in this game | The rest wait on **the bestiary**, not on a decision | 2.10 |
 
-| **T-23** | **Sevii tier 3** — 35 place names, and ~9,500 words rewritten to 8.2a's tone rule: *Kanto tells you what things are; the islands tell you how they look from where the speaker is standing* | **Tiers 1 and 2 being in play.** 8.2a's own condition, and the same one the original deferral used — *8 exists because the graveyard is full of projects that designed 151 creatures and shipped zero towns* | 8.2a |
 
 ---
 
@@ -55,7 +55,7 @@ conversation.** That is what this file is for.
 - **SUSPENDED's six sleep moves** — CONTEXT owns the concept; retyping the moves is a balance question (2.7)
 - **`PKRS` still says PKRS** — the condition has no place in the lexicon yet (9.15)
 - **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** — a gym, a museum and a badge each (8.7)
-- **The doctrine's placement, his name, and whether the doctrine has a name** — *not after a type*; `SWARM` is its own step 5's word and `check_lexicon` would catch it (4.33)
+- **Whether the doctrine has a name, and whether he has one** — *placement settled by T-22: SIX ISLAND's GREEN PATH, somewhere with nobody to check him.* **Both names were left off on purpose and that may be the answer**: naming the doctrine gives the game a thing to hold, and 4.33's whole rule is that it holds nothing (4.33)
 - **Re-score the one-clause test at 17 types** — CONTEXT's 8/8 was scored without OPAQUE (8.7)
 
 ---

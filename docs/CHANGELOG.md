@@ -6,6 +6,30 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ---
 
 <<<<<<< HEAD
+## v11.146 — 2026-09-10
+
+### 8.2a's tiers 1 and 2 are done, which is a finding rather than a milestone
+
+- ***The deferral said "not until the rest is in play", and the rest is in play.*** **Act 2's six
+  scenes are in the ROM, both gems are named, the machine points at DOLDRUM, and the doctrine has a
+  room.**
+- **Which makes tier 3 the largest single job left in the project and the one 8 was written about.**
+  *35 place names and ~9,500 words is not a naming pass; it is a rewrite of a quarter of the game's
+  map dialogue to a tone rule.* ***The honest reading of "the condition is met" is that the brake came
+  off, not that the work got smaller.***
+
+### And TODO caught up with what actually shipped
+
+- **T-09 moves to Ready.** *It had been blocked on "needs knowing which tiles are display cases" and
+  `gbamaptiles.py` answers that* — **what is left is choosing which case, which is a reading of the
+  room rather than a fact about it.**
+- **T-23 moves to Ready** with its condition marked met, and marked as the file's largest job.
+- ***The doctrine's open question is half-settled.*** Placement went in with T-22; **his name and the
+  doctrine's name were left off on purpose, and that may be the answer** — *naming the doctrine gives
+  the game a thing to hold, and 4.33's whole rule is that it holds nothing.*
+
+---
+
 ## v11.145 — 2026-09-10
 
 ### SILPH is the FOUNDRY, and the bible had been citing the wrong decomp

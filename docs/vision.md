@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.145**
+**A total conversion — the living design bible, v11.146**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5320,11 +5320,13 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | | | cost |
 |---|---|---|
 | **0** | The Act 2 shape, this section, the tone rule | ***done*** |
-| **1** | `CORPUS STAFF` · Scorn's one beat · Ty's reframe at Dotted Hole · the Warehouse scene | **~6 scenes** |
-| **2** | `RUBY`/`SAPPHIRE` renamed · Celio and the machine · the Tanoby chambers as 4.24's translations · the doctrine's room (4.33) | **~10 names, 4 scenes** |
+| **1** | `CORPUS STAFF` · Scorn's one beat · Ty's reframe at Dotted Hole · the Warehouse scene | ***done 2026-09-10*** |
+| **2** | `RUBY`/`SAPPHIRE` renamed · Celio and the machine · the Tanoby chambers as 4.24's translations · the doctrine's room (4.33) | ***done 2026-09-10*** |
 | **3** | Naming 35 places and rewriting 9,500 words to the tone rule | ***the trap the deferral was written about*** |
 
-***Tier 3 stays deferred, and the condition is the same one:*** **not until the rest is in play.**
+***Tier 3's condition is met, and that is the finding rather than a milestone.*** **The deferral said "not until the rest is in play", and the rest is in play** — *Act 2's six scenes are in the ROM, both gems are named, the machine points at DOLDRUM, and the doctrine has a room.*
+
+**Which makes tier 3 the largest single job left in the project and the one 8 was written about.** *35 place names and ~9,500 words is not a naming pass; it is a rewrite of a quarter of the game's map dialogue to a tone rule* — **and the honest reading of "the condition is met" is that the brake came off, not that the work got smaller.**
 
 ### 8.2b The bestiary register was already decided — 79 names, 2026-09-10
 
