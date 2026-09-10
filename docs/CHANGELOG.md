@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.126 — 2026-09-10
+
+### 8.2d — the dex categories, and the register that was already on the shelf
+
+- ***A vanilla category is a kind of ANIMAL*** — MOUSE, BAT, FLOWER, TADPOLE, WILD BULL — **a
+  taxonomy of creatures, which this game does not have.**
+- **Forty-four were already ours and nobody had written down what they were doing.** *Read
+  together they are unmistakable*: PACKET is **IN TRANSIT**, PENDING is **QUEUED**, DEADLOCK
+  is **BLOCKED**, QUORUM is **THRESHOLD**, INJECTOR is **UNCHECKED**, MUSAI is **UNSET**.
+  ***The register is the condition it is in, or the role it plays — one abstract word, never
+  a species of animal***, in eleven characters.
+- ***That is the third register found already-decided and unrecorded*** — after 8.2b's
+  bestiary fork and 2.9's move tables. **Worth naming as a pattern: this document is better
+  at making decisions than at noticing it has made them.**
+- **111 written.** `HAUNTPROC` is the **UNPARENTED** daemon — the whole Index entry in two
+  words. `STUB` is the **PLACEHOLDER** and evolves into `ESCALATE`, the **RAISED** one.
+  `LIVELOCK` is **NO PROGRESS**, which is the definition and also the joke. `WEED` is the
+  **VOLUNTEER**, which is the gardener's word for a plant nobody sowed.
+- **155 of 387 are ours, and no renamed daemon carries a vanilla category.**
+- ***One thing the sweep almost missed***: MULTICAST, NOISE, SEMAPHORE and KERNEL fell
+  outside the meetable set, because *their pre-evolutions are met and they are not.* Checking
+  **"does any renamed daemon still have a vanilla one"** caught them where the scope query
+  did not — **the question you check afterwards is not the question you scoped with.**
+
+---
+
 ## v11.125 — 2026-09-10
 
 ### 8.2c — the Index caught up with the names

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.125**
+**A total conversion — the living design bible, v11.126**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5007,6 +5007,40 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 ***The number of entries that differ between the editions did not move***, and that is not a bug. **Vanilla FireRed and LeafGreen already ship different text for many species** — 0.4 records the inheritance — *so these sixty-one were already counted as differing.* **What changed is that they now differ on purpose.**
 
 **196 CONTENT entries and 189 CONTEXT entries are ours**, and ***no renamed daemon carries a vanilla record any more.***
+
+### 8.2d The categories — 111 of them, and the register was on the shelf
+
+***A vanilla dex category is a kind of ANIMAL.*** **MOUSE, BAT, FLOWER, TADPOLE, WILD BULL** — *a taxonomy of creatures, which this game does not have.*
+
+**Forty-four were already ours and nobody had written down what they were doing.** ***Read together they are unmistakable:***
+
+| | |
+|---|---|
+| PACKET | **IN TRANSIT** |
+| PENDING | **QUEUED** |
+| DEADLOCK | **BLOCKED** |
+| QUORUM | **THRESHOLD** |
+| INJECTOR | **UNCHECKED** |
+| OVERFLOW | **EXCEEDED** |
+| MUSAI | **UNSET** |
+
+> ***THE REGISTER: the condition it is in, or the role it plays.*** **One abstract word, never a species of animal** — *and eleven characters, because a twelfth overflows `categoryName[12]` and fails at compile.*
+
+***That is the third register this project has found already decided and unrecorded*** — after 8.2b's bestiary fork and 2.9's move tables. **The pattern is worth naming: this document is better at making decisions than at noticing it has made them.**
+
+#### Where the category does work the entry cannot
+
+**A category is read on the same screen as the name**, so the pair has to hold on its own:
+
+- **`HAUNTPROC`, the `UNPARENTED` daemon** — *the whole Index entry compressed into two words*
+- **`STUB`, the `PLACEHOLDER` daemon** — **and it evolves into `ESCALATE`, the `RAISED` one**
+- **`LIVELOCK`, the `NO PROGRESS` daemon** — *which is the definition, and is also a joke*
+- **`DRAGONAIR` → `EMERGENCE`, the `UNACCOUNTED` daemon**, beside `DRATINI` → `SEEDLING`, **`NASCENT`**
+- **`ODDISH` → `WEED`, the `VOLUNTEER` daemon** — *a volunteer is the gardener's word for a plant nobody sowed*
+
+**155 of 387 are ours, and no renamed daemon carries a vanilla category.**
+
+*One thing the sweep almost missed:* **four daemons — MULTICAST, NOISE, SEMAPHORE and KERNEL — fell outside the meetable set** because *their pre-evolutions are met and they are not.* **Checking "does any renamed daemon still have a vanilla one" caught them where the scope query did not** — ***the question you check afterwards is not the question you scoped with.***
 
 ### 8.3 Known bottleneck
 
