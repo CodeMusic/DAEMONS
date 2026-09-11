@@ -5,6 +5,57 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.154 — 2026-09-10
+
+### 1.6 — the verb reaches the log, and three surfaces that had not
+
+- ***The menu said INVOKE and the battle log said "used."*** `sText_AttackerUsedX` read
+  `{B_ATK_NAME_WITH_PREFIX} used\n{B_BUFF2}` — **the verb the player presses and the verb the
+  game reports, disagreeing on the single most-read line in the game.** A routine is a
+  subroutine and a subroutine is the thing you invoke; the word was already right on the
+  button and had simply never been carried to the sentence the button produces.
+  **`ECHO invoked REFLECT!`**
+- ***THE RULE, now recorded:*** **a ROUTINE is INVOKED, an ITEM is USED.** *You use a thing
+  and you invoke a procedure*, and **collapsing the two verbs would cost more than the
+  inconsistency ever did** — `{B_PLAYER_NAME} used {B_LAST_ITEM}` stays, and so does every
+  other item frame.
+- **Measured before it changed**, because it is the line a player reads ten thousand times:
+  **145px worst case** — `Remote ` plus a ten-character nickname plus `invoked` — against the
+  196px box. *Fifty-one to spare, so no name can overflow it.*
+
+### The three that were still about bodies
+
+- **`defrosted`, three times, for a state called HUNG.** SUSPENDED's recovery already read
+  *"resumed!"*, so this is its pair: **a hung process that comes back has RESPONDED**, and one
+  a move brings back is **RESET** — *the word WATCHDOG's own description uses.*
+- ***`cured its {B_BUFF1} problem` could not survive the rename, and had been broken since it
+  happened.*** `B_BUFF1` fills from `gText_Paralysis` and its siblings, and 1.6 turned those
+  into **adjectives** — so the line rendered ***"cured its throttled problem!"***. Four of six
+  are adjectives and two are gerunds, so **no frame holds the word inline**; it drops out, and
+  the noun is `state`, which is what 1.6 calls it.
+- **Three of the six bag cures had been left behind by their own siblings.** THROTTLED and
+  OVERHEATED already read *"is no longer X"*; LEAKING was still *"cured of"* and SUSPENDED and
+  HUNG were still *"woke up"* and *"thawed out"*. ***They now match the battle log word for
+  word*** — a player meets both lines for the same event minutes apart, and **a vocabulary
+  that only holds in one of them is not a vocabulary.**
+- *Ten strings, every one measured inside the box, zero over. All four ROMs built and verified
+  through the charmap.* **`engineGba` 91a5801.**
+
+### Two tickets
+
+- **T-36, the daemon × type × routine coherence sweep.** 2.7a did three lines of seventy-two
+  by hand. *The question is no longer off-type percentage — that is measurable and mostly
+  fine* — but **whether a daemon's routines read as things THAT daemon would do.** ECHO
+  invoking REFLECT works because ECHO navigates by reply; **nothing has checked whether HEAP,
+  MUTEX or STUB are as lucky.** Wants a tool that prints and flags, then a human read.
+- **T-37, the rest of the game has not heard the rule.** ***Counted: 20 dialogue strings pair
+  a use-verb with `move`/`ROUTINE`*** — *"it can still use moves like CUT"*, *"lets you use
+  the move ROCK SMASH"*. **Most also still say `move` where 1.6 says ROUTINE, so this and the
+  prose pass are one read done once.** The trap is that `use` is correct constantly — you use
+  an item, a BOX, the PORT — **so it is a human read, not a substitution.**
+
+---
+
 ## v11.153 — 2026-09-10
 
 ### T-32, and a bug class the read turned up on the way
