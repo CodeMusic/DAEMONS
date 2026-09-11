@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.154, working |
-| [`CONTEXT-CONTENT-design-bible-v11.154.pdf`](CONTEXT-CONTENT-design-bible-v11.154.pdf) | Typeset **snapshot** at v11.154 — the port, the bestiary and the harness. Cut a new one with `./docs/build-pdf.sh 11.154` (the script adds the `v`). | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.155, working |
+| [`CONTEXT-CONTENT-design-bible-v11.155.pdf`](CONTEXT-CONTENT-design-bible-v11.155.pdf) | Typeset **snapshot** at v11.155 — the port, the bestiary and the harness. Cut a new one with `./docs/build-pdf.sh 11.155` (the script adds the `v`). | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
 | [`type-chart.pdf`](type-chart.pdf) | **The chart on one sheet.** All 83 relations under our fifteen names, every type's one-clause test, and why each colour. Cut from `type-chart.html` with `./docs/build-pdf.sh type-chart.html`. | current |
@@ -15,6 +15,7 @@
 | [`lineage.md`](lineage.md) | **How the theory evolved, 2011 → 2026.** A full reading of all three blogs — Neural Crossroads (2011–12), PsychologyCode (2013–14), Seeing Sharp (2021–26) — plus *The Painted Mirror* (2022), the audio drama PENPHIN came from, against the design bible. What the game inherits, what it has gone past, where it diverges from the iASHC rock opera, and an article-by-article map of all three sites onto the modern concept. | current |
 | [`archive/psychologycode/`](archive/psychologycode/) | **Recovered.** All eight posts from the lost `psychologycode.com` (2013–14), pulled from the Internet Archive's capture of its RSS feed. Three were never reposted anywhere. | recovered 2026-08-28 |
 | [`codemusic-repos.md`](codemusic-repos.md) | **All 47 CodeMusic repositories read as a bestiary.** What they give the game, what to leave alone, and the two that turn out to be the game's own argument already built. | current |
+| [`story.md`](story.md) | **The story in the order it happened**, which is an order no player is ever given — Crystal, Ty, Scorn and S.T.A.R.R., both acts and the ending, on one page. Internal: it carries the 4.10 sequence and Ty's parentage. | current |
 | [`story-readthrough.md`](story-readthrough.md) | **The story in the order a player meets it**, with what they can know at each point and what they cannot yet. Internal — carries the 4.10 order and the inference beats. | current |
 | [`song-status.md`](song-status.md) | **Every track, what we have and what is playing.** Key, tempo, music, story, and where each motif sits in the ROM. | current |
 | [`music-prompts.md`](music-prompts.md) | **Getting the songs into the game.** Why it is transcription rather than conversion, the Gemini prompt and output format, what gets checked on the way back, and which tracks to do first. | current |

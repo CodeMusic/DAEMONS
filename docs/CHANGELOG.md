@@ -5,6 +5,45 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.155 — 2026-09-11
+
+### docs/story.md — the story in the order it happened
+
+- ***It existed only in a conversation and had to be found by grepping a transcript.*** **The
+  project has a file for what a player meets and a file for where the ideas came from, and had
+  none for the story** — so the one document a person reaches for to remember what happens was
+  the one place nothing was written down.
+- **One page**: before the game, Act 1, Act 2, the ending. *Crystal, Ty, Scorn and S.T.A.R.R.
+  in causal order, which is an order no player is ever given.* **Internal** — it carries the
+  4.10 sequence and Ty's parentage.
+- **A pointer table at the foot** says where each beat is actually argued, *so the page stays
+  a shape and never becomes a second home for the reasoning.*
+- ***And a rule at the end that the form requires:*** **no moral.** 0's shape is *a fable with
+  its last line removed*, and **a synopsis is exactly where that last line tries to reattach
+  itself.**
+
+### story-readthrough.md, eleven days and one act behind
+
+- **It had one commit, from 2026-08-30**, and the project had moved through the GBA pivot, the
+  ERRATA, Scorn's crack and the whole of Act 2 since.
+- **Sections 14–22 added**: the islands and the register change, the machine that needs two
+  halves, PHLEGMATIC met again with nobody scoring anything, the gem under text you cannot
+  read, **both men in one room with Scorn not recognising him**, the seven chambers, Doldrum
+  Cave, the Owl, and she reads it.
+- **Three corrections in the existing thirteen.** Slate is the `MUSEUM OF ERRATA` with `KNOWN
+  FAULTS` upstairs. Callow gains the beat where **he hears the sentence he just said**. And
+  Callow's gloss that Scorn *"had never met her"* was retracted in 4.4 — *he was introduced to
+  her by her son, in her own building, and it left no mark*, which is worse.
+- ***And a claim that had quietly become false.*** Umbra said it was **the only place in the
+  game where colour appears**. `CLAUDE.md` invariant 5 is explicit that 8.6 is **OPEN, not
+  settled**, and the GBA build already ships 66 type-coloured daemons. *Corrected, with the
+  invariant named, so the page cannot be read as authority for a greyscale pass.*
+- **T-38**: both story files go stale silently. **Every other surface has a tool or a check;
+  these two are prose, so the check cannot be a diff** — a *last reconciled against vX* line
+  would at least make the staleness visible.
+
+---
+
 ## v11.154 — 2026-09-10
 
 ### 1.6 — the verb reaches the log, and three surfaces that had not
