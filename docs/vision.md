@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.175**
+**A total conversion — the living design bible, v11.176**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -238,6 +238,79 @@ weakest of the three hints in that shop**, and the shop keeps the other two.
 - **CODEMUSAI and CAREMUSAI**, one creature specialising two ways, *with the chart making them beat each other.* **8.2 calls it the central argument delivered as an evolution branch with no dialogue at all.**
 
 ***Craft rule 1 is not relaxed by any of this.*** **Nothing above is ever said in the game.** *The player meets it as two cartridges that will not reconcile, two Index entries that disagree, a chart where neither half wins, and a status tile that reads `SUS`.*
+
+---
+
+### 0.6 The bridge, and the direction it runs — settled 2026-09-11
+
+***This was the intent before the first line was written and it was never written down.*** **Which is why it kept arriving in pieces** — *8.2b found it in the bestiary, 8.2a found it in the tone rule, 4.32 built a whole room out of it* — **and no section ever stated the thing all three are instances of.**
+
+> ***KANTO teaches machine learning by reaching for the reader's own mind.***
+> ***THE ISLANDS teach the mind by reaching for machine learning.***
+> **The name is the subject. The unsaid half is the bridge. And the bridge reverses at the ferry.**
+
+#### Why it has to reverse
+
+**You explain an unfamiliar thing with a familiar one, and *which one is familiar changes during the game.***
+
+*In Act 1 the only vocabulary the player owns is their own experience* — **so a HEAP, a THREAD and a PACKET are explained to a person.** **By Act 2 that is no longer true.** *Forty hours of Index entries, eighteen type clauses, a rack of labelled gains and eight benchmarks have installed a second vocabulary*, **and it is now the fluent one.** *So Act 2 hands the player a mind and describes it in the language they were taught on the way here.*
+
+***The player is what got carried across, and nobody says so.***
+
+#### The rule is about the unsaid half, NOT a word in every entry
+
+**The wrong reading of this is a quota** — *a psychology term bolted onto each Kanto entry and an ML term bolted onto each island one.* **That would wreck the writing and break craft rule 1 in the same stroke**, *because a gloss that names both halves has stated the connection.*
+
+> **An entry obeys the rule by choosing which of its two readings to leave unsaid.**
+
+***NIBBLE already obeys it and contains no psychology at all:***
+
+> *Four bits. The smallest piece the Index will file on its own. There are a great many. No two are filed together.*
+
+**Every clause there is about a filing system, and any person who has been one of many recognises the second half on sight.** *The machine is the subject; the recognition is the reader's and is never claimed.* **That is the Kanto direction, working, in an entry written before this section existed.**
+
+***RUMINATE is the same move, mirrored:***
+
+> *It eats a mountain to get out of the mountain. It is still eating.*
+
+**The name is a mind's word and the entry never explains it** — *it describes a loop that does not converge, and an Act 2 player has the word for that.*
+
+#### Three things already built that this is the rule for
+
+| | |
+|---|---|
+| **8.2b** | **Kanto's creatures are machinery, the islands' are mind.** *That is the SUBJECT half, measured off 30 island-only species* |
+| **8.2a** | **Kanto tells the player what things are; the islands tell them how things look from where the speaker is standing.** *That is the TONE half, and it is the same reversal said as grammar* |
+| **4.32** | **The ERRATA museum is the Kanto direction built as a room.** *Every card names a machine and a fault in the thinking that built it, and* ***no card ever names the distortion*** — **the reader supplies it, which is the entire mechanism of this section** |
+
+***So the register work already done is not disturbed by this.*** **T-45 named the island bestiary in a psychology register and that is correct and stays.** *What is new is the second half:* **the gloss reaches across, and it reaches the other way after the ferry.**
+
+#### The two constraints it runs under
+
+***Craft rule 1 is not relaxed.*** **Nothing in the game ever says that the machine is a mind or that the mind is a machine.** *The whole device is that both readings are available and neither is asserted* — **and an entry that asserts one has stopped being this game.**
+
+***Craft rule 3 binds twice as hard on the island side.*** **Psychology has a pathology register sitting right next to its process register**, *and the islands are full of people the mainland's measurement threw out.* **Name the process. `RUMINATE` is a thing a mind does; the diagnosis it sits next to is not a name this game gets to use.**
+
+#### What it costs
+
+**The subject half is done.** *The gloss half is a READ, not a rewrite* — **the same shape as T-07 and T-08**: *walk the Index entries, ask of each which half it leaves unsaid, and change only the ones that leave neither.* **Most already pass**, and the two examples above are evidence rather than hope.
+
+#### And it renames both regions
+
+***The regions are the last two vanilla place names in the game.*** **`KANTO` and `SEVII` survived every naming pass** — *3.1 renamed eleven cities, 8.2a named twenty-one island places, and the two containers were never touched.* **Player-visible cost, measured:** `KANTO` is **3 strings and 12 dialogue lines**; `SEVII` is **`SEVII ISLANDS`, 14 `SEVII ISLE n` mapsecs and a handful of lines.** *Neither is expensive; both were simply never asked.*
+
+***And the pair should be named the way this section works, which is crosswise:***
+
+| | **proposed** | |
+|---|---|---|
+| **Kanto** | **GAMUT** | ***the complete range a system can reproduce*** — **a colour-science word, and the famous fact about a gamut is that no device covers what an eye can see.** *0.2's image-making vocabulary, 0.4's sensation-and-perception split, and the Index's own limit, in one word.* **Its towns are each one colour; the region is the set of them, and the set is bounded** |
+| **The islands** | **THE HOLDOUTS** | ***the holdout set is the data deliberately kept OUT, so you can find out whether the model generalises*** — **which is what Act 2 is**, structurally, *and what every person on those islands is.* **A holdout is also somebody who would not come along.** *Craft rule 3 exactly: it names what was done to them, not what they are* |
+
+***The point of the pair is that each region is named in the OTHER one's language.*** **`GAMUT` is a word about human perception, worn by the region where machines are the subject. `THE HOLDOUTS` is a word from statistics, worn by the region where people are.** *The two names perform the bridge, and neither is ever explained.*
+
+***Checked against the lexicon before proposing, and this is why there are not four proposals:*** **`OUTLIER` and `PROOF` — the two obvious first choices — are both already species**, *and `TAIL` and `PLATE` are taken too.* **`GAMUT` and `HOLDOUT` are clean.**
+
+<span>OPEN</span> — ***the rule above is settled; the two names are a recommendation and the pick is not this section's to make.*** *Alternates held: **SPECTRA** and **IMPRESSION** for the mainland; **THE FRINGE** and **THE MARGINS** for the islands.* **Tickets T-47 and T-48.**
 
 ---
 

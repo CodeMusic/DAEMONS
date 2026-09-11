@@ -5,6 +5,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.176 — 2026-09-11
+
+### 0.6 — the bridge, and the direction it runs
+
+- ***The intent was there before the first line was written and it had never been written down***, which is why it kept arriving in pieces: **8.2b found it in the bestiary, 8.2a found it in the tone rule, and 4.32 built a whole room out of it.**
+- > **KANTO teaches machine learning by reaching for the reader's own mind.**
+  > **THE ISLANDS teach the mind by reaching for machine learning.**
+  > ***The name is the subject. The unsaid half is the bridge. And the bridge reverses at the ferry.***
+- **Why it has to reverse:** *you explain an unfamiliar thing with a familiar one, and which one is familiar changes during the game.* **By Act 2 the player is fluent in a vocabulary they did not have in Blanche Town**, ***so Act 2 hands them a mind and describes it in the language they were taught on the way here.*** *The player is what got carried across, and nobody says so.*
+- ***The rule is about the unsaid half, not a word in every entry.*** **A quota would wreck the writing and break craft rule 1 in one stroke**, *because a gloss that names both halves has stated the connection.* **`NIBBLE` already obeys it with no psychology in it at all, and `RUMINATE` is the same move mirrored** — both are entries written before the section existed.
+- **So T-45's island register stands**; *what is new is the second half.* **The pass is a READ, the shape of T-07 and T-08** — **T-47**.
+- ***And it renames the last two vanilla place names in the game.*** **`KANTO` is 3 strings and 12 dialogue lines; `SEVII` is one string, 14 mapsecs and a handful of lines** — *measured, and neither is expensive; they were simply never asked.* **Recommended: `GAMUT` for the mainland** — *the complete range a system can reproduce, and no device covers what an eye can see* — **and `THE HOLDOUTS` for the islands** — *the data deliberately kept out so you can find out whether the model generalises.* ***Each region is named in the other one's language, and neither name is ever explained.*** **The pick is not 0.6's to make — T-48.**
+- ***`OUTLIER` and `PROOF` were the two obvious first choices and both are already species***, which is why there are two proposals rather than four.
+
+---
+
 ## v11.175 — 2026-09-11
 
 ### 2.6 — the clause was the fault, not the name. Both type renames declined
