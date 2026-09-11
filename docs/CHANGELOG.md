@@ -5,6 +5,51 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.163 — 2026-09-11
+
+### T-26 — tier 3b was a read, not a rewrite
+
+- ***Eighteen blocks of roughly seven hundred and fifty, across all seven islands.*** **8.2a's rule
+  held exactly as written** — *checkable on a single line, without thinking about the thesis* — **and
+  its estimate was wrong by an order of magnitude.**
+- ***The shape of the eighteen is the finding, not the number.*** **Eight are island SIGNS, three are
+  public NOTICES, four are SHOPKEEPERS, and three are the REVIEW BOARD's own leader** carrying
+  mainland authority onto the island she was born on. ***Not one is an ordinary islander.***
+- **Because vanilla already wrote its Sevii NPCs as people who happen to be somewhere**, which is what
+  8.2a asks for and what it never checked. ***The tone rule did not need applying to the islands. It
+  needed applying to the institutions standing on them*** — a population you can search for, which is
+  why the last four islands took an afternoon between them.
+- ***Every remaining island sign was doing two things at once.*** *It delivered a verdict* — `Where
+  Time Goes`, `Island of Family Bonding`, `Island of Infinity` — **and it asserted a SECOND VANILLA
+  NAME for an island the map calls a number**: *Chrono, Boon, Kin, Quest, Knot.* **8.2a's grace note is
+  that nobody named these islands, and the signs had been naming them twice the whole time.**
+- **The notices were the other habit.** *"Be friendly and share BERRIES with others and DAEMON"* is now
+  **"BERRIES grow here. Other things eat them"**; *"DANGER! FAST CURRENT! Fishing and surfing
+  prohibited!"* is now **"The current runs hard here. It has carried people out"** — ***which warns
+  harder, and does it without an ordinance.***
+- ***One thing deliberately left.*** **The house on SIX ISLAND where a woman measures HERACROSS and
+  keeps a chart, next door to a man who knows his height to one decimal because a neighbour measured
+  him.** *8.2a says the islands are where nobody is measuring YOU, and those two rooms are that stated
+  by contrast.* **Rewriting them would delete the joke and the argument in one pass.**
+
+### `MT. JITTER` — a mountain in neither column
+
+- ***Five signposts named a mountain the game has never had.*** **The map says `MT. SMOULDER`; every
+  line of dialogue said `MT. JITTER`.** *It got in when the move rename EMBER → JITTER reached a PLACE
+  months ago, and then T-23 named that mapsec something else entirely.*
+- ***And that is why nothing caught it.*** **Every check here compares two columns — is dialogue still
+  saying the VANILLA name — and `MT. JITTER` is neither vanilla nor ours.** *A third state, invisible
+  to all of them, sitting on a signpost for weeks.*
+- **`check_lexicon` gained the narrow version:** *a place-shaped phrase no map bears, **built out of
+  one of our own renamed move or species names**.* ***The broad version — is every place-shaped phrase
+  a real mapsec — reports seventy things and nearly all are fine***, `CYCLING ROAD` and `PROOF HALL`
+  and eight kinds of `DAEMON GYM`. **The narrow one reports the failure mode and nothing else.**
+- **It found a second on its first run, pointing the other way:** *dialogue says `TAPPOINT'S CAVE` and
+  the mapsec still said `DIGLETT'S CAVE`* — **months after DIGLETT stopped being a daemon.** ***The map
+  was the stale one.***
+
+---
+
 ## v11.162 — 2026-09-11
 
 ### T-44 and T-35 — the check cried wolf twice and was blind in three places

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.162**
+**A total conversion — the living design bible, v11.163**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5568,6 +5568,31 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 ***Kanto tells you what things are. The islands tell you how they look from where the speaker is standing.*** **That is checkable on a single line without thinking about the thesis**, which is the only kind of rule that survives 9,500 words.
 
+#### What tier 3b actually was — measured 2026-09-11
+
+***It was a READ of ~9,500 words and a rewrite of eighteen blocks.*** **The rule held exactly as written — checkable on a single line, without thinking about the thesis** — *and the size was wrong by an order of magnitude.*
+
+| island | blocks | changed |
+|---|---|---|
+| FOUR | 36 | 5 |
+| SIX | 138 | 5 |
+| ONE | 127 | 2 |
+| FIVE | 126 | 1 |
+| SEVEN · THREE · TWO | ~300 | 5 |
+| | **~750** | **18** |
+
+***The shape of the eighteen is the finding, not the number.*** **Eight are island SIGNS, three are public NOTICES, four are SHOPKEEPERS, and three are the REVIEW BOARD's own leader** carrying mainland authority onto the island she was born on. **Not one is an ordinary islander.**
+
+*Because vanilla wrote its Sevii NPCs as people who happen to be somewhere*, which is what this section asks for and what it never checked. ***The tone rule did not need applying to the islands. It needed applying to the institutions standing on them*** — and that is a population you can search for, which is why the last four islands took an afternoon between them.
+
+**Every remaining island sign was doing two things at once.** *It delivered a verdict* — `Where Time Goes`, `Island of Family Bonding`, `Island of Infinity` — **and it asserted a SECOND VANILLA NAME for an island this map calls a number**: *Chrono, Boon, Kin, Quest, Knot.* ***The grace note below says nobody named these islands, and the signs had been quietly naming them twice the whole time.***
+
+**And the notices were the other habit.** *"Be friendly and share BERRIES with others and DAEMON"* became **"BERRIES grow here. Other things eat them"**, which is the same advice without the manners lesson; *"DANGER! FAST CURRENT! Fishing and surfing prohibited!"* became **"The current runs hard here. It has carried people out"** — ***which warns harder, and does it without an ordinance.***
+
+#### One thing deliberately left, because the rule works by contrast
+
+**`SIX ISLAND`'s `LONG WADE` has a house where a woman measures HERACROSS in inches and keeps a chart**, next door to a man who knows his own height to one decimal *because a neighbour measured him.* ***This section says the islands are where nobody is measuring YOU, and that is exactly what those two rooms demonstrate:*** **on the mainland measurement is a benchmark that decides what you are allowed to do; here it is a hobby between neighbours.** *Rewriting it would delete the joke and the argument in one pass.*
+
 *One grace note kept from the deferral:* **the mainland has names and the islands have numbers.** *Places on them are named — KINDLE ROAD, BOND BRIDGE, TREASURE BEACH — labels applied by whoever arrived first, on an island nobody named.* **Nobody remarks on it.**
 
 #### The ending — superseded 2026-09-10, see 4.34
@@ -5628,7 +5653,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | **1** | `CORPUS STAFF` · Scorn's one beat · Ty's reframe at Dotted Hole · the Warehouse scene | ***done 2026-09-10*** |
 | **2** | `RUBY`/`SAPPHIRE` renamed · Celio and the machine · the Tanoby chambers as 4.24's translations · the doctrine's room (4.33) | ***done 2026-09-10*** |
 | **3a** | **Naming the places** | ***done 2026-09-10*** — *21 named, 14 kept by rule* |
-| **3b** | Rewriting ~9,500 words to the tone rule | ***the trap the deferral was written about*** |
+| **3b** | Reading ~9,500 words to the tone rule | ***done 2026-09-11*** — *18 blocks of ~750, and see below* |
 
 ***Tier 3's condition is met, and that is the finding rather than a milestone.*** **The deferral said "not until the rest is in play", and the rest is in play** — *Act 2's six scenes are in the ROM, both gems are named, the machine points at DOLDRUM, and the doctrine has a room.*
 

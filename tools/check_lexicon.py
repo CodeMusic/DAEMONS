@@ -268,6 +268,69 @@ def read(rel, pat):
     return re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
 
 
+def check_phantom_places():
+    """A place-shaped phrase in dialogue that NO map bears, built out of one of
+    our own names.
+
+    Found 2026-09-11 on ONE ISLAND. The map said MT. SMOULDER and every line of
+    dialogue said MT. JITTER -- a name the game has never had anywhere. It got
+    in because the move rename EMBER -> JITTER reached a PLACE months ago, and
+    then T-23 named that mapsec something else entirely.
+
+    THE EXISTING STALE-NAME CHECK CANNOT SEE THIS. It asks "does dialogue still
+    say the VANILLA name", and MT. JITTER is neither vanilla nor ours. It is a
+    third state, and it survived every check this project has because every
+    check compares two columns and this is in neither.
+
+    Narrow on purpose. Asking "is every place-shaped phrase a real mapsec"
+    reports seventy things, nearly all of them fine -- CYCLING ROAD, PROOF HALL,
+    eight kinds of DAEMON GYM. Requiring that the phrase contain one of OUR OWN
+    renamed move or species names is the actual failure mode and reports only
+    it: that is how both JITTER and TAPPOINT got into a place name.
+    """
+    import json, subprocess
+    rel = "src/data/region_map/region_map_sections.json"
+    f = os.path.join(GBA, rel)
+    if not os.path.isfile(f):
+        return []
+    names = {m["name"] for m in json.load(open(f))["map_sections"] if m.get("name")}
+    ours = set()
+    for r, pat in (("src/data/text/move_names.h", r'\[MOVE_\w+\]\s*=\s*_\("([^"]+)"\)'),
+                   ("src/data/text/species_names.h", r'\[SPECIES_\w+\]\s*=\s*_\("([^"]+)"\)')):
+        p = os.path.join(GBA, r)
+        if not os.path.isfile(p):
+            continue
+        v = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + r],
+                           capture_output=True, text=True)
+        if v.returncode != 0:
+            continue
+        o = re.findall(pat, open(p, encoding="utf-8", errors="ignore").read())
+        van = re.findall(pat, v.stdout)
+        ours |= {o[i] for i in range(min(len(o), len(van)))
+                 if o[i] != van[i] and len(o[i]) > 3}
+    if not ours:
+        return []
+    suf = ("SPA|CAVE|TOWER|ROAD|PATH|ISLE|ISLAND|TUNNEL|VALLEY|BRIDGE|BEACH"
+           "|CANYON|RUINS|MANSION|FOREST|SPRING")
+    pat = re.compile(r"\b(MT\. [A-Z][A-Z']+|(?:[A-Z][A-Z'.]+ ){1,2}(?:%s))\b" % suf)
+    out = []
+    for root, dirs, files in os.walk(os.path.join(GBA, "data")):
+        for fn in files:
+            if fn != "text.inc":
+                continue
+            p = os.path.join(root, fn)
+            txt = re.sub(r"\\[nlp]", " ",
+                         open(p, encoding="utf-8", errors="ignore").read())
+            for m in pat.finditer(txt):
+                ph = re.sub(r"\s+", " ", m.group(1)).strip()
+                if ph in names:
+                    continue
+                if set(re.split(r"[ .']+", ph)) & ours:
+                    out.append((os.path.relpath(p, GBA),
+                                "%s -- no map bears that name" % ph))
+    return out
+
+
 def check_conflict_markers():
     """No tracked file may contain a merge conflict marker.
 
@@ -456,6 +519,14 @@ def main():
         print("\n  %d version disagreement(s):\n" % len(vbad))
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
+
+    fbad = check_phantom_places()
+    if not fbad:
+        print("  no dialogue names a place the map does not have.")
+    else:
+        print("\n  %d phantom place name(s):\n" % len(fbad))
+        for what, why in fbad:
+            print("   %-44s %s" % (what, why))
 
     cbad = check_conflict_markers()
     if not cbad:
