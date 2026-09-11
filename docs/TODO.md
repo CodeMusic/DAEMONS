@@ -21,7 +21,7 @@ for the same reason: the record of what was decided is worth more than a short
 list.
 
 **Add a ticket the moment a request would otherwise live only in a
-conversation.** That is what this file is for.
+conversation.** That is what this file is for.t-
 
 ### Claim a ticket before you start it
 
@@ -64,6 +64,7 @@ was one `git log -S` away.*
 
 | | what | where | from |
 |---|---|---|---|
+| **T-11** | **The unreachable routines — and 50 of them just became reachable.** *2.10 renamed 269 of 356 and left 87 that nothing in this game could meet; the ticket has sat in **Blocked** waiting on the bestiary ever since.* ***T-45 is what unblocked it***: **naming 52 island daemons put 50 still-vanilla routines onto the learnset of a daemon a player can encounter** — `SPIDER WEB`, `OCTAZOOKA`, `MORNING SUN`, `TRIPLE KICK`, `PSYWAVE`, `SKETCH`. **2.10's rule applies to them now by its own terms.** *Smaller than 50 in practice: some are generic primitives and `LICK` already carries SLURP's ruling, so the read comes first* | `engineGba`, moves | 2.10, T-45 |
 | ~~**T-41**~~ | ~~**The 41 thin openings.**~~ ***Closed `7f2df046d` — and the list was wrong.*** **Twenty-two of the forty-one were daemons opening with `WRITE`, `FLIP` or `PUSH`, which 2.8 SETTLED ON PURPOSE.** *A check that fires on a thing the design decided is arguing with it, not measuring it.* `THIN OPENING` is retired and replaced by two flags that mean separate things — **`MIXED SIGNAL`** (*before 10 it does something typed, it is the wrong type, and it never does its own*) and **`LATE TYPE`** (*first on-type damaging routine after 25*) — **which between them caught four the old flag missed.** Eighteen substitutions, nineteen daemons, all four flags now none, off-type 41% | `level_up_learnsets.h` · `tools/gbacoherence.py` | **2.7d**, 2.8 |
 | **T-16** | **Per-gym battle backdrops.** Eight benchmarks, eight rooms, one backdrop, and it is the one place decoration IS the argument: 5.3 gives each gym a lever and the backdrop can be the room you met it in. ***Costed wrong when it was proposed** — "ROM-only, cheap" is true of the BYTES and false of the work.* **Gen 3 keys the backdrop off ten TERRAIN types, each a full tileset, tilemap and palette in `graphics/battle_terrain/`** — so reassigning an existing one per gym is a data change, and eight gym-specific ones is **eight new tilesets**. *Decide which of the two before starting* | `graphics/battle_terrain/`, `src/battle_bg.c` | 5.3, 9.4 |
 | ~~**T-39**~~ | ~~**The cross-gen relatives of our Kanto lines are HALF renamed.**~~ ***Closed `e9dcc84c4` — and there were FOURTEEN, not thirteen.*** *`HITMONTOP` was missing from the ticket's own list.* **Each named from its own line** (2.7f): the sleep ladder gained `STANDBY` below SUSPEND, the argument triad gained `PREMISE` and `CIRCULAR`, and `GOLDSET` is the clean twin of BADSEED off the same BLIGHT. **All four ROMs build and `gbastr` confirms the names through the charmap.** *The tool gap it exposed is the lasting part* — **every check defines "ours" by diffing against upstream, so a daemon we forgot to rename is invisible to all of them** | `engineGba`, species | T-36, 8.2, **2.7f** |
@@ -77,7 +78,6 @@ was one `git log -S` away.*
 |---|---|---|---|
 | **T-05** | **Callow and The Bleed share their music.** *8.1's second theme cannot be given to either until they have a slot of their own* | **A track that does not exist yet.** *Re-read 2026-09-10 and the ticket was aimed at the wrong repo:* `data/maps/songs.asm` is the **Game Boy** build, which CLAUDE.md says is a reference and not updated further. **On the GBA it is one field in a map's `.json`** — so the plumbing is not the blocker at all. `song-status.md` lists eleven compositions still unassigned, and this wants one of them | 7.3, 8.1 |
 | **T-10** | **The missing key signature as a puzzle** — notes reading flat because the key is absent, and giving them the key lifts them. **2.6's one-clause test for CONTEXT as a room rather than a definition**, and 5.3 names *the room* as one of four levers a grinder cannot grind | Wants **Brazen gym**, which is T-03's territory. Sequence it after | lineage 3b, 5.3 |
-| **T-11** | **The 87 unreachable routines.** 2.10 renamed 269 of 356 — every routine the player can meet in this game | The rest wait on **the bestiary**, not on a decision | 2.10 |
 
 
 ---
