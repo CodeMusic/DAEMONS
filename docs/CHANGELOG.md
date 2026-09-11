@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.174 — 2026-09-11
+
+### 2.6 re-scored at seventeen types — and CONTEXT went up
+
+- ***The open question assumed OPAQUE would break CONTEXT's 8/8. It does the opposite.*** **`→ OPAQUE
+  ×0` is the cleanest single prediction the clause makes anywhere in the chart:** *you cannot reframe
+  what you cannot read.* **`← OPAQUE ×2` is the same sentence backwards.** ***CONTEXT is 11 / 11.***
+- ***And the real gap was somewhere else entirely.*** **`HARDENED` is in 21 relations — more than any
+  other type in the game — and had never been scored at all.** *`OPAQUE` (10) had not either.* **Both
+  pass**: HARDENED at roughly 17/21, *because eleven of its relations are resistances and one clause
+  predicts all eleven at once*; OPAQUE at roughly 6/10, *with `← LOGIC ×2` being 8.7's own triangle —
+  rules open black boxes.*
+- **The original run walked 83 relations. The ROM has 111**, read out of `gTypeEffectiveness` rather
+  than recounted by hand — ***so it was missing 28, a third of the chart***, and every type gained at
+  least one relation.
+- ***One contradiction recorded rather than argued away:*** **`HARDENED → SIGNAL ×0.5`.** *Metal
+  conducts.* **A clause about resisting predicts the opposite of a conductor doing less**, and it is the
+  only mark in the re-score that goes the wrong way.
+- **And the two failures failed harder.** *`LEGACY` is 0 / 16 now, not 0 / 14; `VECTOR` is 1 / 13.* **Both
+  gained a relation and neither gained a prediction** — ***which is what a naming problem looks like when
+  the sample grows.*** *That strengthens the case for `RUST` and `FLOAT` and does not decide it: those
+  are type renames, a gym and a museum and a badge each, and they stay their own decision.*
+
+---
+
 ## v11.173 — 2026-09-11
 
 ### T-11 — the unreachable routines stopped being unreachable

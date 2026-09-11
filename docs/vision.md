@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.173**
+**A total conversion — the living design bible, v11.174**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -993,6 +993,41 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 | **CONTENT** | *the thing itself, with nothing read into it* | 3 / 4 | passes on a small hand |
 | **LEGACY** | *deprecated hardware still running* | **0 / 14** | **FAILS** |
 | **VECTOR** | *direction in a space of meanings* | **1 / 12**, one contradicted | **FAILS** |
+
+#### Re-scored at seventeen — 2026-09-11
+
+***The open question assumed OPAQUE would break CONTEXT's 8/8. It does the opposite, and the real gap was somewhere else entirely.***
+
+**The run above walked 83 relations at fifteen types. The ROM has 111 at seventeen** — *read out of `gTypeEffectiveness` rather than recounted by hand.* **So the original run was missing 28 relations, a third of the chart**, and every type gained at least one.
+
+***And two types were never scored at all.*** **`HARDENED` is in 21 relations — more than any other type in the game — and `OPAQUE` is in 10.** *Neither has a clause in the table above.* **That is the finding: not that CONTEXT wanted re-checking, but that the most-connected type in the chart had never been put through the instrument.**
+
+#### CONTEXT goes up, not down
+
+**Its three new relations are `→ HARDENED ×0.5`, `→ OPAQUE ×0` and `← OPAQUE ×2`**, and the clause — *the frame you read a thing in* — predicts all three:
+
+| | |
+|---|---|
+| **`→ OPAQUE ×0`** | ***you cannot reframe what you cannot read.*** **The immunity is the cleanest single prediction the clause makes anywhere in the chart** |
+| **`← OPAQUE ×2`** | *the same sentence in the other direction — a box you cannot see inside beats the frame you would have read it in* |
+| **`→ HARDENED ×0.5`** | *framing does little to a thing that is all structure.* **Weak, and honest** |
+
+***`CONTEXT` is 11 / 11.*** **It was the strongest type in the game at fifteen and the two new types made it stronger**, which is worth stating plainly because the open log expected the reverse.
+
+#### The two that had never been scored
+
+| type | one clause | predicts | |
+|---|---|---|---|
+| **HARDENED** | *material chosen to resist, and it gave up everything else to do it* | **~17 / 21** | **passes.** *Eleven of its relations are resistances and the clause predicts all eleven at once; `← CORRUPT ×0`, `← ENTROPY ×2` and `← LOGIC ×2` follow from the same sentence* |
+| **OPAQUE** | *a box you cannot see inside* | **~6 / 10** | **passes.** *`← LOGIC ×2` is 8.7's own triangle — rules open black boxes — and `← CONTEXT ×0` is CONTEXT's best prediction read backwards* |
+
+***One possible contradiction, recorded rather than argued away:*** **`HARDENED → SIGNAL ×0.5`.** *Metal conducts.* **A clause about resisting predicts the opposite of a conductor doing less**, and it is the only mark in the re-score that goes the wrong way.
+
+#### And the two failures failed harder
+
+**`LEGACY` is 0 / 16** now, not 0 / 14. **`VECTOR` is 1 / 13**, still with its one contradiction. *Both gained a relation and neither gained a prediction* — **which is what a naming problem looks like when the sample grows**: a clause that carried nothing at fourteen carries nothing at sixteen.
+
+***That strengthens the case for `RUST` and `FLOAT` and does not decide it.*** **Those are type renames — a gym, a museum and a badge each** — *and they stay in the log as their own decision rather than being carried in on the back of an arithmetic pass.*
 
 #### Three things the run found
 
@@ -7416,7 +7451,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
 - ~~`SWARM` and `GROWTH` each mean two things~~ **Cleared 2026-09-10 (2.8): `SCALE OUT` and `SCALE UP`.** *check_lexicon reports 1,152 names and no word meaning two things*
-- **The Chart publishes fifteen types and the ROM runs seventeen** (8.7). Re-score the one-clause test at 17 — CONTEXT's 8/8 was scored without OPAQUE, which is immune to it
+- ~~Re-score the one-clause test at 17~~ **Done 2026-09-11 (2.6).** ***CONTEXT went UP, to 11/11*** — *the immunity the question worried about is the clause's cleanest prediction in the chart: you cannot reframe what you cannot read.* **The real gap was that `HARDENED` (21 relations, the most-connected type in the game) and `OPAQUE` (10) had never been scored at all.** *Both pass. The run had walked 83 relations and the ROM has 111*
 - **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
 - ~~Craft rule 5 is unpaid for benchmarks 2–8~~ **Designed 2026-09-10 (5.3).** *Seven leaders, each with the thing an overlevelled player still runs into* — **now it is a build task rather than a design one**
 - ~~The six new leader names are unbuilt~~ **In the ROM 2026-09-10 (5.3a), with 127 lines of dialogue swept to match.** *What is still unbuilt is the mechanics* — the parties, Doldrum's healing trainers and Scorn's fixed roll
