@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.177**
+**A total conversion — the living design bible, v11.178**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -299,18 +299,34 @@ weakest of the three hints in that shop**, and the shop keeps the other two.
 
 ***The regions are the last two vanilla place names in the game.*** **`KANTO` and `SEVII` survived every naming pass** — *3.1 renamed eleven cities, 8.2a named twenty-one island places, and the two containers were never touched.* **Player-visible cost, measured:** `KANTO` is **3 strings and 12 dialogue lines**; `SEVII` is **`SEVII ISLANDS`, 14 `SEVII ISLE n` mapsecs and a handful of lines.** *Neither is expensive; both were simply never asked.*
 
-***And the pair should be named the way this section works, which is crosswise:***
+***And the pair is named the way this section works, which is crosswise.*** **Built 2026-09-11 (T-48, `tools/port_regions.py`).**
 
-| | **proposed** | |
+| | **ours** | |
 |---|---|---|
-| **Kanto** | **GAMUT** | ***the complete range a system can reproduce*** — **a colour-science word, and the famous fact about a gamut is that no device covers what an eye can see.** *0.2's image-making vocabulary, 0.4's sensation-and-perception split, and the Index's own limit, in one word.* **Its towns are each one colour; the region is the set of them, and the set is bounded** |
-| **The islands** | **THE HOLDOUTS** | ***the holdout set is the data deliberately kept OUT, so you can find out whether the model generalises*** — **which is what Act 2 is**, structurally, *and what every person on those islands is.* **A holdout is also somebody who would not come along.** *Craft rule 3 exactly: it names what was done to them, not what they are* |
+| `KANTO` | **`GAMUT`** | ***the complete range a system can reproduce*** — **and the famous fact about a gamut is that no device covers what an eye can see.** *0.2's image-making vocabulary, 0.4's sensation-and-perception split, and the Index's own limit, in one word.* **Its towns are each one colour; the region is the set of them, and the set is bounded** |
+| `SEVII ISLANDS` | **`THE MARGINS`** | ***a CONTINENTAL MARGIN is the zone between the mainland and the deep***, which is where they are; **a classifier's MARGIN is the band at the decision boundary, *where the hard cases live***; *and a margin is the edge of a printed page.* **Craft rule 3 exactly: it names what was done to them, not what they are** |
 
-***The point of the pair is that each region is named in the OTHER one's language.*** **`GAMUT` is a word about human perception, worn by the region where machines are the subject. `THE HOLDOUTS` is a word from statistics, worn by the region where people are.** *The two names perform the bridge, and neither is ever explained.*
+***Each region is named in the OTHER one's language.*** **`GAMUT` is a word about human perception, worn by the region where machines are the subject. `THE MARGINS` is a word from statistics, worn by the region where people are.** *The two names perform the bridge, and neither is ever explained.*
 
-***Checked against the lexicon before proposing, and this is why there are not four proposals:*** **`OUTLIER` and `PROOF` — the two obvious first choices — are both already species**, *and `TAIL` and `PLATE` are taken too.* **`GAMUT` and `HOLDOUT` are clean.**
+**`SEVII ISLE 6`–`24` became `MARGIN ISLE 6`–`24`** — *8.2a's grace note is that a place carrying its island's number is a place nobody named*, **so they keep the number.**
 
-<span>OPEN</span> — ***the rule above is settled; the two names are a recommendation and the pick is not this section's to make.*** *Alternates held: **SPECTRA** and **IMPRESSION** for the mainland; **THE FRINGE** and **THE MARGINS** for the islands.* **Tickets T-47 and T-48.**
+#### `THE HOLDOUTS` was the recommendation for a day, and the check retired it
+
+***It was the better word and it is unusable.*** **`LOOKOUT` — SENTRET and FURRET — is edit-distance 3 from `HOLDOUT`, both are `<word>`+`OUT` compounds, and `LOOKOUT` is ISLAND-ONLY**: *Five Isle Meadow, Six Island Water Path, Seven Island Sevault Canyon, measured off `wild_encounters.json`.* ***A player standing in THE HOLDOUTS would be catching LOOKOUTs.***
+
+**`check_lexicon` could not have caught it** — *its near-collision rule is vowel-insertion only, and this is a two-substitution rhyme.* **And `THE HOLDOUT` turns out to be a held proposal for the warden's place already** (8.5's list), *which nobody had noticed either.* ***Three strikes, and only the third was found by looking.***
+
+*`OUTLIER` and `PROOF` — the two obvious first choices — are both already species, and `TAIL` and `PLATE` are taken too.* **Alternates left on the shelf: `SPECTRA` and `IMPRESSION`; `THE FRINGE` and `THE REMAINDER`.**
+
+#### Three things the build found, and two were its own bugs
+
+| | |
+|---|---|
+| ***`THE MARGINS` carries its own article*** | **the first sweep produced `the THE MARGINS` in seven places** — *the ferry PASS description and the start menu among them.* **Absorbing a preceding article is a rule the tool now has, and the whole tree was reverted and redone rather than patched** |
+| ***Absorbing it DROPPED a `.string` boundary*** | *`"…arrived in the SEVII\n" "ISLANDS looking for you"` is one name across two lines, and a three-word match replaced by two words ate the seam.* **The tool's own re-split guard caught it before anything was written**: **the gaps that carry a boundary are now kept first |
+| ***And the seam caught the VERIFICATION too*** | **`gbastr` reported `out of paper` missing from the ROM** — *because the line breaks between `of` and `paper`.* **The same trap, one step later in the process, and the fourth time this session** |
+
+**One block was a REWRITE, not a substitution.** *SevenIsland's naming joke is a folk etymology for `seven`, twice over, and a sweep would have left a man confidently explaining a number that is no longer in the name.* **The shape is kept exactly — a confident wrong reading, undercut, then a grander and equally unverifiable one** — *and both readings are wrong in the right direction (craft rule 2), because neither of them is the margin the name actually carries.*
 
 ---
 
@@ -7654,7 +7670,7 @@ Kept here because the reasoning is worth more than the outcome.
 - **Seventeen type-resist handlers, to finish 1.6c's rack** (2.12). *`<TYPE> GAIN` amplifies one channel; `<TYPE> TRAP` would damp one, and the register is already derived.* **The cheapest good idea in that section**
 - **The overfit state** (2.12). **Benchmark 4's own lesson, and it is not a mechanic** — *`FURY CUTTER`'s counter already exists and only the penalty is new.* ***`OVERFIT` is a species, so the seventh state needs a name before anything else***
 - **Temperature as a room** (2.12), at Benchmark 7 — *widen the damage roll for both sides, on a flag.* **5.3b already built that plumbing for SCORN**
-- **Which region names** (0.6). ***`GAMUT` and `THE HOLDOUTS` are the recommendation and the pick is the author's*** — T-48
+- ~~Which region names~~ **Built 2026-09-11 (0.6, T-48): `GAMUT` and `THE MARGINS`.** ***`THE HOLDOUTS` was the recommendation for a day and the check retired it*** — *`LOOKOUT` is edit-distance 3, is the same `<word>`+`OUT` shape, and is **island-only***
 - ~~`SWARM` and `GROWTH` each mean two things~~ **Cleared 2026-09-10 (2.8): `SCALE OUT` and `SCALE UP`.** *check_lexicon reports 1,152 names and no word meaning two things*
 - ~~Re-score the one-clause test at 17~~ **Done 2026-09-11 (2.6).** ***CONTEXT went UP, to 11/11*** — *the immunity the question worried about is the clause's cleanest prediction in the chart: you cannot reframe what you cannot read.* **The real gap was that `HARDENED` (21 relations, the most-connected type in the game) and `OPAQUE` (10) had never been scored at all.** *Both pass. The run had walked 83 relations and the ROM has 111*
 - ~~`LEGACY` → `RUST` and `VECTOR` → `FLOAT`~~ **Declined 2026-09-11 (2.6), with reasons rather than left open.** ***The failing score was a property of the clause, not of the word*** — *a sentence saying what a type IS can predict none of a chart made only of relations.* **Re-clauses: LEGACY 0/16 → 12/16, VECTOR 1/13 → 10/13, both names unchanged**, and `FLOAT`'s whole argument — the STRATUM immunity — arrives for free

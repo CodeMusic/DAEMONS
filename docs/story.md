@@ -5,7 +5,7 @@ Not the story as the player meets it — that is
 says what is available at each point. **This is what happened**, in the order it
 happened, which is an order no player is ever given.
 
-> **Reconciled against the bible at v11.177, 2026-09-11.**
+> **Reconciled against the bible at v11.178, 2026-09-11.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*

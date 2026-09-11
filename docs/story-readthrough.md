@@ -3,7 +3,7 @@
 Not the story as designed — the story **in the order a player actually meets
 it**, with what they can know at each point and what they cannot yet.
 
-> **Reconciled against the bible at v11.177, 2026-09-11.**
+> **Reconciled against the bible at v11.178, 2026-09-11.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -193,12 +193,12 @@ this page.**
 
 ## 14. The islands — Act 2, and the register changes
 
-**Nobody is measuring you here.** Kanto tells the player what things are; the
-islands tell them how things look from where the speaker is standing. *That is
+**Nobody is measuring you here.** GAMUT tells the player what things are; the
+MARGINS tell them how things look from where the speaker is standing. *That is
 the only difference a player will consciously notice, and it is the whole of
 Act 2's argument arriving as grammar.*
 
-**And the teaching reverses with it** (0.6). *Kanto explained machines by
+**And the teaching reverses with it** (0.6). *GAMUT explained machines by
 reaching for the player's own mind, because that was the only vocabulary they
 had.* **By here it is not** — forty hours have installed a second one — **so the
 islands describe a mind in the language the player was taught on the way.**

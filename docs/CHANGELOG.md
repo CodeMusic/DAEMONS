@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.178 — 2026-09-11
+
+### T-48 — the last two vanilla place names in the game
+
+- ***`KANTO` → `GAMUT`, `SEVII ISLANDS` → `THE MARGINS`***, and `SEVII ISLE 6`–`24` → `MARGIN ISLE 6`–`24`, *which keeps 8.2a's grace note that a place carrying its island's number is a place nobody named.* **3.1 renamed eleven cities and port_sevii named twenty-one island places; the two containers were never asked.**
+- **A `GAMUT` is the complete range a system can reproduce, and no device covers what an eye can see** — *0.2's image-making vocabulary and 0.4's sensation/perception split in one word, for the region whose towns are each one colour.* **A `MARGIN` is the zone between the mainland and the deep, the band at a classifier's decision boundary where the hard cases live, and the edge of a printed page.** ***Each region is named in the other one's language.***
+- ***`THE HOLDOUTS` was the recommendation for a day and the check retired it.*** **`LOOKOUT` — SENTRET and FURRET — is edit-distance 3, the same `<word>`+`OUT` shape, and ISLAND-ONLY**: *a player standing in THE HOLDOUTS would be catching LOOKOUTs.* **`check_lexicon` could not have seen it — its near-collision rule is vowel-insertion only.**
+- **27 substitutions in 14 files, 7 mapsecs, one item description, one authored rewrite.** *SevenIsland's naming joke was a folk etymology for `seven`, twice over;* **the shape is kept and only the thing explained wrongly changed.**
+- ***Two of the tool's own bugs are the part worth keeping.*** **`THE MARGINS` carries its own article and the first sweep wrote `the THE MARGINS` seven times** — *tree reverted whole and redone, not patched.* **Absorbing the article then ATE a `.string` boundary**, *because a three-word match replaced by two words drops a gap* — **caught by the tool's own re-split guard before a byte was written**, and the gaps that carry a boundary are now kept first.
+- ***And the same seam caught the verification.*** **`gbastr` reported `out of paper` missing from the ROM because the line breaks between `of` and `paper`** — *the fourth time in one session, now at the last step instead of the first.*
+
+---
+
 ## v11.177 — 2026-09-11
 
 ### 2.12 — five later-generation mechanics, four worth having
