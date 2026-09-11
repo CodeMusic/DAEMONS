@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.177 — 2026-09-11
+
+### 2.12 — five later-generation mechanics, four worth having
+
+- ***The berry premise needed correcting first: Gen 3 IS the berry generation.*** **43 of them ship in FireRed and 1.6d already named the lot as `TRAP` handlers.** *Berries are not a thing to add.* **What is genuinely later-generation is the TYPE-RESIST berry**, ***and it is the best fit in the whole question***: *seventeen `<TYPE> TRAP` handlers beside seventeen `<TYPE> GAIN` items* — **one shelf of the Bag turns a channel up and the other catches it, and 1.6c's claim that reading the rack is reading the chart becomes true both ways.** *One hold effect, one check at `TypeCalc`, seventeen items.*
+- **The physical/special split is `IS_TYPE_PHYSICAL(moveType) (moveType < TYPE_MYSTERY)`, `battle.h:475`** — *so `TAMPER` is physical because CORRUPT is, and tampering with data is not a physical act.* ***The code is +355 bytes and 7 call sites; the job is 354 judgment calls***, and **5.3b already had to design around the Gen 3 rule in so many words.** *1.6d's `WATTAGE` and `BANDWIDTH` are the distinction the split would make legible.*
+- ***The overfit state is Benchmark 4's own lesson and it is not a mechanic.*** **Same routine several turns running: stronger at that one, weaker at everything else** — *overfitting and habit, neither said.* **`FURY CUTTER`'s counter already exists.** ***`OVERFIT` is a species***, so the seventh state needs a name first.
+- **Temperature as a room at Benchmark 7** — *widen the damage roll, lift crits, drop accuracy, both sides, on a flag.* **5.3b built that plumbing for SCORN already.**
+- ***Catastrophic forgetting is already in the game and nobody has noticed.*** **Four routines and learning a fifth costs one** — *vanilla's oldest mechanic, sitting in this design since before the design.* **It needs no code, only a STREAM line that does not explain it.**
+- ***And one rejected, on 2.6's own grounds:*** **an effectiveness preview that is sometimes wrong.** *It is the thesis as a UI element and it must not be built* — **"a contradiction costs trust in the chart, and the chart is the argument."** ***The test for anything further: does it make the argument legible, or unreliable?***
+
+---
+
 ## v11.176 — 2026-09-11
 
 ### 0.6 — the bridge, and the direction it runs

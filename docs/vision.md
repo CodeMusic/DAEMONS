@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.176**
+**A total conversion — the living design bible, v11.177**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1835,6 +1835,75 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***An ability line is thirty-two characters and most of them described a body.*** *"Heals the body by shedding", "Hurts to touch", "Turns electricity into HP"* — **rewritten to what the flag actually is**: `Clears its own state.` · `Costs whatever touches it.` · `Takes SIGNAL in as HP.` **Longest is thirty-one.**
 
 *Two more came free from work already done*: **`Prevents self-destruction` is now `Nothing here may PANIC`**, and **`Prevents fleeing` is `The foe cannot DETACH`** — *because 2.10 renamed SELFDESTRUCT and 1.4 had already renamed fleeing.* **The surfaces had drifted apart and nobody had joined them up.**
+
+
+### 2.12 Mechanics from later generations — five asked, four worth having
+
+*Asked 2026-09-11. **Every cost below was read out of the engine, not estimated.***
+
+#### 1. The physical / special split — <span>OPEN</span>, and the code is the cheap half
+
+***Gen 1–3 decide physical-or-special by the TYPE. Gen 4 moved it to the MOVE.*** **In this build that is two macros:**
+
+> `#define IS_TYPE_PHYSICAL(moveType) (moveType < TYPE_MYSTERY)` — `battle.h:475`
+
+**So LOGIC, VECTOR, CORRUPT, STRATUM, LEGACY, SWARM, LATENT, HARDENED and CONTENT are physical, and everything above the gap is special.** *Which is arbitrary in our reading and occasionally wrong in it:* **`TAMPER` is CORRUPT and therefore physical, and tampering with data is not a physical act.**
+
+***And it already leaked into a gym.*** **5.3b had to design around it in so many words** — *"in Gen 3 fire is special, so the starter everyone brings to a GROWTH gym is answered by a screen rather than by a type."*
+
+**The distinction is already in our lexicon and the split would make it legible.** *1.6d named the six vitamins for six parts of a spec:* **ATTACK is `WATTAGE` and SP. ATK is `BANDWIDTH`** — ***raw power against how much can be carried down a channel.*** *That is exactly what the split is about, and right now a routine inherits which one it uses from a table it has nothing to do with.*
+
+| cost | |
+|---|---|
+| **the code** | `u8 split` in `struct BattleMove` (**+355 bytes**), **7 call sites**, and `AI_TypeCalc`. *An afternoon* |
+| **the design** | ***354 judgment calls***, and **five leader designs in 5.3b were built against the Gen 3 rule** |
+
+***Recommendation: yes, and not alone.*** **The code is not the job; the 354 rulings are**, *and they belong with the routine work 2.10 left open rather than as a pass of their own.*
+
+#### 2. Type-resist handlers — <span>OPEN</span>, and this is the best fit in the question
+
+***The premise wants correcting first: Gen 3 IS the berry generation.*** **FireRed already ships 43 of them, the pinch berries, the nature-confusion berries and `HOLD_EFFECT_RESTORE_STATS`** — *and 1.6d already named the lot as `TRAP` handlers, which is a better design than vanilla's.* **Berries are not a thing to add. They are in, and they are ours.**
+
+***What is genuinely later-generation is the TYPE-RESIST berry*** — **Gen 4's Occa and its sixteen siblings: a one-shot that halves a super-effective hit of exactly one type.** *And it is the best mechanical fit anything in this section has:*
+
+- ***It completes 1.6c's rack.*** **Seventeen `<TYPE> GAIN` items amplify one channel; seventeen `<TYPE> TRAP` handlers damp one.** *One shelf of the Bag turns the chart up and the other catches it* — **and 1.6c's claim that a player who reads the rack has read the chart becomes true in both directions**
+- ***It teaches the chart by requiring it.*** **You cannot bring the right one without knowing what you are weak to**
+- ***It is level-proof***, which is 5.3's actual test for a mechanic
+- **The register needs no decision.** *1.6d already derived it:* **a berry is a handler, a handler installed against a machine condition is a trap, and the bag pocket is a trap table**
+
+**Cost: one new hold effect, one check where `TypeCalc` lands (`battle_script_commands.c:1458`), and seventeen item entries.** *Smaller than the split by an order of magnitude.*
+
+#### 3. The overfit state — <span>OPEN</span>, and it is Benchmark 4's own lesson
+
+***Verdigris is Benchmark 4 and its lesson is overfitting, and the lesson is not a mechanic.*** **5.3b gives TRELLIS party composition, which is a fine lever and is not the thing the gym is about.** *Craft rule 5 says a lesson that can be skipped by grinding is not a lesson.*
+
+> **A daemon that uses the same routine several turns running gets stronger at that one and weaker at everything else.**
+
+***That is overfitting and it is also a habit, and neither word has to be said.*** **The machinery exists** — *`FURY CUTTER` and `ROLLOUT` already escalate on repetition through `gDisableStructs`*, so the counter is built and only the penalty is new.
+
+***One thing it needs that this section cannot give it: a name.*** **`OVERFIT` is already a species**, and *the six states are past-participle machine conditions* — **THROTTLED, SUSPENDED, LEAKING, OVERHEATED, HUNG, THRASHING** — *so a seventh joins that set or it does not go in.*
+
+#### 4. Temperature as a room — <span>OPEN</span>, and the plumbing already shipped
+
+***Quicksilver is Benchmark 7 and its lesson is temperature.*** **Raise it and the same model becomes more interesting and less reliable**, *which is one sentence and a damage roll.*
+
+**Gen 3 already rolls damage at 85–100%.** ***Widening that roll, lifting the crit rate and dropping accuracy, for both sides, gated on a flag*** — **and 5.3b already built exactly this plumbing for SCORN**: *"the damage calculation — one flag, read in three places."* **The precedent is in the ROM and it is his.**
+
+*It is also the one lesson on the list that the player should be able to feel go wrong in their favour.*
+
+#### 5. Catastrophic forgetting — ***it is already in the game and nobody has noticed***
+
+**Four routines, and learning a fifth means choosing one to lose.** ***That is catastrophic forgetting, it is vanilla's oldest mechanic, and it has been sitting in this design since before the design existed.***
+
+**This needs no implementation at all.** *It needs one line somewhere that does not explain it* — **and the STREAM is where that line goes, because the STREAM is already the surface that says a true thing shortly before the player needs it.**
+
+#### And one that is rejected, because it would spend the only thing 2.6 says not to
+
+***Proposed and declined: an effectiveness preview that is occasionally miscalibrated.*** **Showing the player a prediction before they commit, and being wrong sometimes, is the thesis as a UI element** — *and it is the one mechanic in this section that must not be built.*
+
+**2.6 is explicit**: ***"a contradiction costs trust in the chart — and the chart is the argument."*** *A player who cannot trust the chart does not learn a model from it; they learn that the game lies.* **The thing being taught is the casualty.**
+
+***That is the test every further proposal here has to pass:*** **does it make the argument legible, or does it make the argument unreliable?**
 
 
 ---
@@ -7581,6 +7650,11 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **The physical / special split** (2.12). *The code is an afternoon and the 354 judgment calls are the job* — **and five of 5.3b's leader designs were built against the Gen 3 rule**
+- **Seventeen type-resist handlers, to finish 1.6c's rack** (2.12). *`<TYPE> GAIN` amplifies one channel; `<TYPE> TRAP` would damp one, and the register is already derived.* **The cheapest good idea in that section**
+- **The overfit state** (2.12). **Benchmark 4's own lesson, and it is not a mechanic** — *`FURY CUTTER`'s counter already exists and only the penalty is new.* ***`OVERFIT` is a species, so the seventh state needs a name before anything else***
+- **Temperature as a room** (2.12), at Benchmark 7 — *widen the damage roll for both sides, on a flag.* **5.3b already built that plumbing for SCORN**
+- **Which region names** (0.6). ***`GAMUT` and `THE HOLDOUTS` are the recommendation and the pick is the author's*** — T-48
 - ~~`SWARM` and `GROWTH` each mean two things~~ **Cleared 2026-09-10 (2.8): `SCALE OUT` and `SCALE UP`.** *check_lexicon reports 1,152 names and no word meaning two things*
 - ~~Re-score the one-clause test at 17~~ **Done 2026-09-11 (2.6).** ***CONTEXT went UP, to 11/11*** — *the immunity the question worried about is the clause's cleanest prediction in the chart: you cannot reframe what you cannot read.* **The real gap was that `HARDENED` (21 relations, the most-connected type in the game) and `OPAQUE` (10) had never been scored at all.** *Both pass. The run had walked 83 relations and the ROM has 111*
 - ~~`LEGACY` → `RUST` and `VECTOR` → `FLOAT`~~ **Declined 2026-09-11 (2.6), with reasons rather than left open.** ***The failing score was a property of the clause, not of the word*** — *a sentence saying what a type IS can predict none of a chart made only of relations.* **Re-clauses: LEGACY 0/16 → 12/16, VECTOR 1/13 → 10/13, both names unchanged**, and `FLOAT`'s whole argument — the STRATUM immunity — arrives for free
