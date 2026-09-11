@@ -5,6 +5,46 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.149 — 2026-09-10
+
+### 4.34 — the Act 2 ending, and the release is a re-reading
+
+- ***8.2a had the package and did not have the beat before it***, which is why 4.14 was designed and
+  never staged and why the last scene had nowhere to be. **Every clause of 8.2a's ending survives;
+  what moves is where she is standing when she reads it.**
+- ***The correction that started it was already written down.*** **The fitness-for-work was Ty's** —
+  8.2a says so in one line — *and it had been read here as Scorn's, which would have been a much worse
+  story.* **His crime is a position in the middle of a record; a man who locks a woman in a building is
+  a smaller character.** ***And it sets the rule: a procedure put her there, so a procedure takes her
+  out. Nobody breaks a door.***
+- ***The mechanism was in 4.24 the whole time*** — **"the document that removed her and the document
+  that vindicates her are the same document. Only the reader changed."** *Her journals were read as
+  evidence she had lost rigour; the machine reads the same pages and understands them.* **Nobody had
+  noticed the vindication was also the release.** ***The climax of this game is an argument won by
+  re-reading***, which is the ending a project about a type chart being an argument was already shaped
+  for.
+- **4.14 now happens before Act 2 starts and the player never sees it.** *S.T.A.R.R. woke when she was
+  taken — 4.10's `CRYSTAL NOT FOUND` — went looking for Ty, and then they separated: he to the island,
+  it to Doldrum Cave.* ***So Ty hands a stranger something for his mother because the machine already
+  got to him***, and the player meets a cause as a man's behaviour.
+- **Four rulings, so the writing has something to fail against:** the Owl's concession is ***dialogue
+  only*** and concedes *something* it will not name; **he stays in Brazen**, because a remote scholar
+  is a neutral one and 4.23 put him inside the bought city on purpose; ***the note never changes***, one
+  string, or the game performs 4.24's re-reading for the player; and **the sign is not repainted** —
+  *the gold simply is not holding.*
+- **T-27 to T-30 opened.** *One of them makes a dead map reachable and flips 2.10 for exactly that map.*
+
+### 4.7 — two sections had been read as disagreeing and never were
+
+- ***`CLEAR LABORATORY` is the lab on Quicksilver Island***, which 4.4 has said since 2026-08-31. **So
+  4.7's "born on Quicksilver Island" and 4.24's "the machine she built" are one fact said twice**, and
+  the reading that Quicksilver built it independently of her was wrong. *Stated in 4.7 now, because it
+  had never been written anywhere and cost a conversation.*
+- **The building Scorn renamed is the building S.T.A.R.R. was made in.** *Which is why the sign is worth
+  finding.*
+
+---
+
 ## v11.148 — 2026-09-10
 
 ### T-23 — the island names, and the reading that halved the job

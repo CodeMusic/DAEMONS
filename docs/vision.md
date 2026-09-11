@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.148**
+**A total conversion — the living design bible, v11.149**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2858,6 +2858,8 @@ The distinction is worth protecting. A clone story is about hubris and ownership
 
 **What that yields.** S.T.A.R.R. is self-aware in the narrow and literal sense that it can read its own state, and it is in tune with the loop that follows from that: **context determines which content is available, and the content you end up holding reshapes the context you are in.** Run that around enough times with something watching it happen, and what comes out behaves like feeling. See 0.3.
 
+***Built by her, in her own building — recorded 2026-09-10 because it had never been said and two sections were read as disagreeing.*** **`CLEAR LABORATORY` is the lab on Quicksilver Island** (4.4) — *the one under the gold leaf.* So **"born on Quicksilver Island" and 4.24's "the machine she built" are one fact said twice**, not two claims to reconcile. *Crystal was its lead researcher; the years spent working out what BunnyArtsai had done were hers.* **The building Scorn renamed is the building S.T.A.R.R. was made in**, which is why the sign is worth finding.
+
 **The name, settled 2026-08-31.** **The species field reads `STARR`; the documents write `S.T.A.R.R.`** — the lab plates, the terminal logs, anything an institution wrote.
 
 **That is 3.2's device applied to a name.** The official map keeps its numbers and the signposts carry what people actually say; **the institution spells the acronym out and everyone else says the word.** It also means **the player learns what the letters stand for in the ruins rather than from the Index** — an expansion found, not a label read.
@@ -3752,6 +3754,65 @@ Corpus rooms, and the trainer table.
 #### Seven
 
 ***The islands are seven, and he has noticed.*** *He will not be the one to say what that is a reference to.*
+
+### 4.34 The Act 2 ending — the release is a re-reading, not a rescue
+
+***Recorded 2026-09-10, from the opera, in conversation.*** **8.2a had the package and did not have the beat before it**, which is why 4.14 was designed and never staged and why the last scene had nowhere to be. *Every clause of 8.2a's ending survives. What moves is where she is standing when she reads it.*
+
+#### The correction that started it, and it was already written down
+
+***The fitness-for-work was Ty's.*** **8.2a says so in one line — *"after Ty had his mother committed and locked out of her own lab, he could not stay"*** — *and it had been read here as Scorn's, which would have been a much worse story.* **Scorn's crime is a position in the middle of a record** (4.4, 4.18a); *a man who locks a woman in a building is a different character and a smaller one.*
+
+***And the correction sets the rule for the ending:*** **a procedure put her there, so a procedure has to take her out.** *Nobody breaks a door. The player is not a rescue.*
+
+#### The mechanism was in 4.24 the whole time
+
+> **The document that removed her and the document that vindicates her are the same document. Only the reader changed.**
+
+***Her journals were read as evidence she had lost rigour.*** **S.T.A.R.R. reads the same pages and understands them** — *which is 4.24's* Quantum Translations*, already written, already the vindication,* **and nobody had noticed it was also the release.**
+
+*So the climax of this game is an argument won by re-reading.* **For a project whose thesis is that a type chart can be an argument, that is the ending the rest of it was already shaped for.**
+
+#### Why S.T.A.R.R. is not asleep, and what it did first
+
+***It woke when she was taken.*** **4.10's log is exact — the trigger is `CRYSTAL NOT FOUND`, "a missing dependency that is also a bereavement", and the sequence reconciles as *she is removed at step 2, the incident is step 5*.** *It was awake for three steps before it left.* **Her absence is the frame shift**; nothing else in the lab changed.
+
+***Then it went looking for Ty, and that is 4.14.*** **It works out where a man in his condition would go, and goes there** — *and it did this before Act 2 starts.* **Which means the player never sees 4.14 and meets its consequence instead:** *Ty hands a stranger something for his mother because the machine already got to him.* **Then they separate.** *He goes to the island. It goes to Doldrum Cave and waits for someone who can get through both gates.*
+
+#### The order
+
+| | | |
+|---|---|---|
+| **1** | **The lab, post–Review Board** | *She is not there.* **A scientist hands you the Global Index** — something has to set the flag and a wall cannot — **and the note she left is on the wall** |
+| **2** | **The islands, then the Warehouse** | **Ty gives you the package.** *4.14 is why he is ready to* |
+| **3** | **The machine completes, DOLDRUM CAVE opens** | ***S.T.A.R.R.*** |
+| **4** | **Brazen, the Owl** (4.23) | **You bring the machine to the scholar.** *It argues her side out of her own journals.* **The Owl concedes something and will not name it** |
+| **5** | **The flight** | *The one thing only S.T.A.R.R. can do.* **You give her the package. She reads it** |
+| **6** | **You wake at home** | *the same shape the Review Board already uses.* **She is in the lab** |
+| **7** | **Quicksilver, later** | ***More of the gold has lifted.*** *Nobody repainted anything* |
+
+***The argument comes before the reunion, because the argument is what causes it.***
+
+#### Four rulings, so the writing has something to fail against
+
+**1. The Owl's concession is dialogue and nothing else.** *No document, no item, no flag the player can read.* **4.24 already fixed his posture** — *he does not concede consciousness, he concedes **something**, and the strongest available position is "there is something here and I will not name it."* **That is craft rule 1 stated by a character**, and it is the one line in this sequence that can wreck the whole game by being one sentence too generous.
+
+**2. He stays in Brazen.** *4.23 put him in Mr. Psychic's house — a lone scholar keeping his own counsel **inside the bought city**, a peer reviewer living in a building Corpus owns.* **A remote scholar is a neutral scholar and the placement stops meaning anything.** *The flight is spent on her, not on him.*
+
+**3. The note never changes.** ***One string, written once.*** **It is ordinary on its face — the Index, the work continuing — and carries one clause that only parses if she expected not to be there.** *It never says she knew.* **The scientist who hands it over has plainly not noticed anything odd about it**, which is the tell. ***If the note rewrote itself after the release, the game would do 4.24's re-reading for the player instead of letting them do it.*** *The whole section is about a document that did not change.*
+
+**4. The sign is not repainted.** *4.4 is explicit that the gold over `CLEAR LABORATORY` is **"not a gesture; it is a fact with a date"**.* **Restoring it is a victory lap, and the one thing this game never does is sneer at him** (see the open log on Brazen). ***So the gold simply is not holding.*** *More of the older letters show than did before. Nobody announced anything, and the player has to look — which is how they found it the first time.*
+
+#### What it costs, and the ruling it flips
+
+***`BIRTH ISLAND` and `NAVEL ROCK` were left unnamed this morning under 2.10*** — *name what the player can meet in this game.* **If S.T.A.R.R. is the only way to one of them, a player meets it**, and the ruling flips for exactly one map. ***It is also the only place in the game reachable by nothing else***, which is worth more than either map is currently worth: *both are fully built and both are dead content.*
+
+#### What is deliberately not here
+
+- ***Nobody is rescued.*** **The player arrives, and that is the entire contribution** — *which is 8.2a's "it goes to Crystal, and Ty does not", extended to everyone.*
+- **What is in the package is still not written**, and 8.2a's reason holds: *it may never need to be.*
+- ***Ty is not at the reading.*** **4.17's not-visiting is a choice on both sides** and this does not take it away from either of them.
+- **No character explains the frame shift**, the log, the procedure, or why the machine went looking. *The Quicksilver terminal says `CRYSTAL NOT FOUND` and stops.*
 
 ## 5. THE BENCHMARKS
 
@@ -5320,13 +5381,13 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 *One grace note kept from the deferral:* **the mainland has names and the islands have numbers.** *Places on them are named — KINDLE ROAD, BOND BRIDGE, TREASURE BEACH — labels applied by whoever arrived first, on an island nobody named.* **Nobody remarks on it.**
 
-#### The ending
+#### The ending — superseded 2026-09-10, see 4.34
 
 ***Both men are in the warehouse and Scorn does not recognise him.*** *They worked the same operation from opposite ends and were never in a room.* **Ty approaches you. Ty gives you the package.**
 
 ***It goes to Crystal, and Ty does not.*** **4.14 is exact that the repair is *a fact delivered, not a feeling exchanged*** — *a feeling exchanged is precisely what 4.3 says does not transmit.* **A package obeys that. A son walking through the door would undo it**, and would undo 4.17's not-visiting being a choice on both sides.
 
-**She reads it. That is the last scene.** *What is in it is not written here and may never need to be.*
+***What this section had wrong was where she is standing when she reads it.*** **4.34 keeps every clause above and moves the last scene**, because the opera has a beat between the warehouse and the reading that this section did not know about. *The package is still the ending. It is no longer the only thing that had to happen.*
 
 #### The naming rule, which fell out of counting the places — 2026-09-10
 
