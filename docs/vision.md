@@ -7440,12 +7440,12 @@ Kept here because the reasoning is worth more than the outcome.
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - ~~The bestiary naming register is undecided~~ **It had been decided in practice and never written down** (8.2b). *The 72 that shipped run three registers at once* — **technical surface for the bestiary, myth for the legendaries, the project's own names for the MUSAI and ROVER families** — and the fork in the log was answered by 4.26 without anyone noticing
-- **69 species beyond Kanto are meetable and unnamed** (8.2b), all of them reached through the Sevii Islands. **8.2a's ruling holds: name nothing there**
+- ~~69 species beyond Kanto are meetable and unnamed~~ **Superseded 2026-09-11 (8.2b, T-45).** ***The ruling held until two of our own rules contradicted each other*** — *"name nothing there" against 2.10's "name what the player can meet"* — **and 33 of the 69 have wild encounters.** *All 33 are island-only, so they took Act 2's register:* **Kanto's creatures are machinery, the islands' are mind.** **52 named with their evolutions; 219 species are ours.** *The rest exist only in the data and stay unnamed*
 - The supervised starter slot is **yours to pick** (8.2)
 - ~~Callow and The Bleed share their music~~ **It was already TODO T-05**, *carried in both places for a week.* **Blocked on a track that does not exist, not on a decision**
 - ~~57 `catch` / `caught` instances remain in dialogue~~ **Done 2026-08-31**, caught in play: the capture message still read *PACKET was caught!*. **55 instances rewritten.** The only survivor is *catchy tune*, which is a song
 - ~~MOON STONE still wants a name~~ **Moved to TODO T-33.** *It was waiting on the town pass and the town pass is done*
-- `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
+- ~~`Corpel` collides with Team Corpus~~ **Gone.** *No species carries it and 8.2's table is the only place the word still appears* — **the collision was resolved by the bestiary passes without anybody closing the entry**
 - ~~Starter daemon names are placeholders and need a pass~~ **Moved to TODO T-34.** *A pass is a job*
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
 - ~~Nineteen `type word + DAEMON` dialogue lines still name vanilla types — held until 5 settles the leaders~~ ***5.3 and 5.3b settled them, so the hold is over and this is a job:*** **TODO T-32**
