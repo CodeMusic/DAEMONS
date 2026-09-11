@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.153**
+**A total conversion — the living design bible, v11.154**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -589,6 +589,27 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 ***1.4 wanted this word and measured it away.*** **"You `bind()` a daimon and you *invoke* it, both idioms true twice over"** — *refused because the Game Boy's battle-menu left column runs x10–x14, five characters, and INVOKE is six.*
 
 **The GBA menu is pixel-addressed.** `gText_BattleMenu` reads `FIGHT{CLEAR_TO 56}BAG\nDAEMON{CLEAR_TO 56}DETACH` — **so DETACH already shipped**, the Game Boy's constraint never applied here, and **INVOKE measures 36px, which is exactly DAEMON's width in the same column.** *The objection was hardware, and the hardware changed.*
+
+##### The verb has to reach the log, and for a year it did not
+
+***The menu said INVOKE and the battle log said "used."*** **`sText_AttackerUsedX` read `{B_ATK_NAME_WITH_PREFIX} used\n{B_BUFF2}`** — *the verb the player presses and the verb the game reports, disagreeing on the single most-read line in the game.* **Fixed 2026-09-10.** `ECHO invoked REFLECT!`
+
+**A routine is a subroutine**, and a subroutine is the thing you *invoke*. The word was already correct on the button; it had simply never been carried to the sentence the button produces.
+
+> ***THE RULE.*** **A ROUTINE is INVOKED. An ITEM is USED.**
+> *You use a thing and you invoke a procedure* — and **collapsing those two verbs would cost more than the inconsistency ever did.** `{B_PLAYER_NAME} used {B_LAST_ITEM}` stays, and so does every other item frame.
+
+*Measured before it changed, because it is the line a player reads ten thousand times:* **145px worst case** — `Remote ` plus a ten-character nickname plus `invoked` — **against the 196px box.** *Fifty-one to spare, so no name can overflow it.*
+
+#### The states had to reach the log too — three surfaces that had not
+
+***Changed in the same pass, and each was a different kind of survivor.***
+
+**`defrosted`, three times, for a state called HUNG.** *SUSPENDED's recovery already read **"resumed!"***, so this is its pair: **a hung process that comes back has RESPONDED**, and one a move brings back is **RESET** — *which is the word WATCHDOG's own description uses.*
+
+***`cured its {B_BUFF1} problem` could not survive the rename at all, and had been broken since it happened.*** **`B_BUFF1` fills from `gText_Paralysis` and its siblings, and 1.6 turned those into ADJECTIVES** — so the line rendered ***"cured its throttled problem!"***. *Four of the six are adjectives and two are gerunds*, so **no frame holds the word inline.** It drops out, and the noun is **`state`** — which is what this section calls it: *a state is something a process is IN.*
+
+***And three of the six bag cures had been left behind by their own siblings.*** **THROTTLED and OVERHEATED already read *"is no longer X"***; LEAKING was still *"cured of"*, which is the medicine register the items were moved out of, and **SUSPENDED and HUNG were still "woke up" and "thawed out."** *They now match the battle log word for word* — **which matters because a player meets the battle line and the bag line for the same event minutes apart**, and a vocabulary that only holds in one of them is not a vocabulary.
 
 #### And moves become ROUTINES
 

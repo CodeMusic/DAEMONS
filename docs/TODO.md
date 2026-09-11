@@ -23,6 +23,19 @@ list.
 **Add a ticket the moment a request would otherwise live only in a
 conversation.** That is what this file is for.
 
+### Claim a ticket before you start it
+
+**Sessions run in parallel and cannot see each other's working trees.** Six
+version numbers have now been taken twice because two branches both reached for
+the next one, and a ticket is the same hazard with more of the day attached.
+
+> **Mark the ticket `WIP — <branch>`, and get that mark onto `main` BEFORE
+> doing the work.** An uncommitted claim is invisible, which makes it worse than
+> no claim: it looks like diligence and prevents nothing.
+
+*Clear the mark when the ticket closes.* **A stale `WIP` is the one failure mode
+here** — if a branch is gone and the mark is still on, the ticket is free.
+
 ---
 
 ## Ready — decided, unblocked, nobody has done it
@@ -33,6 +46,8 @@ conversation.** That is what this file is for.
 | **T-34** | **The starter names are placeholders.** *2.7a retyped the three and 4.26 named thirty-two others around them, so they are now the least finished names in the game* — **and they are the first three the player reads** | `engineGba`, species | 8.2 |
 | **T-26** | **Sevii tier 3b — the ~9,500 words.** 8.2a's tone rule, applied to a quarter of the game's map dialogue: *Kanto tells you what things are; the islands tell you how they look from where the speaker is standing.* ***The names are done (T-23) and they were the cheap half*** — 21 places, one tool, one afternoon. **This is 136 maps and 2,043 strings**, and 8.2a is explicit that it is *not a naming pass.* *Do it island by island; the vocabulary pass has already been through, so what is stale is register and plot, not words* | `engineGba/data/maps/`, 136 maps | 8.2a tier 3b |
 | **T-16** | **Per-gym battle backdrops.** Eight benchmarks, eight rooms, one backdrop, and it is the one place decoration IS the argument: 5.3 gives each gym a lever and the backdrop can be the room you met it in. ***Costed wrong when it was proposed** — "ROM-only, cheap" is true of the BYTES and false of the work.* **Gen 3 keys the backdrop off ten TERRAIN types, each a full tileset, tilemap and palette in `graphics/battle_terrain/`** — so reassigning an existing one per gym is a data change, and eight gym-specific ones is **eight new tilesets**. *Decide which of the two before starting* | `graphics/battle_terrain/`, `src/battle_bg.c` | 5.3, 9.4 |
+| **T-36** | **`WIP — worktree-t36-coherence`.** **The daemon × type × routine coherence sweep.** 2.7a did this for three lines out of seventy-two, by hand, and found the seam: *the retyped thirteen were **78% off-type** against a **45%** baseline.* **The other sixty-nine have never been looked at**, and the question is no longer off-type percentage — *that is measurable and mostly fine* — but whether **a daemon's routines read as things THAT daemon would do.** ECHO invoking REFLECT is right because ECHO is a thing that navigates by reply; nothing has checked whether HEAP, MUTEX or STUB are as lucky. ***Wants a tool, not a conversation***: print each daemon with its types and its full learnset, flag the routines that are off-type AND off-concept, and let a human read the flags. `port_starters.py` is the pattern for the fix once the list exists | `tools/`, new · `level_up_learnsets.h` | 2.7, 2.7a |
+| **T-37** | **`INVOKE` is only on two surfaces.** 1.6 now rules that **a ROUTINE is INVOKED and an ITEM is USED**, and the battle log was corrected to match the menu — *but nothing has swept the rest of the game for the old verb.* **Dialogue, the STREAM's lessons, the help system and the Index all pre-date the rule**, and *"use a move"* in an NPC's mouth is now wrong in a way nothing checks. **The trap is that `use` is also correct constantly** — you use an item, use a BOX, use the PORT — so this is a human read, not a substitution. ***Counted 2026-09-10: 20 dialogue strings pair a use-verb with `move`/`ROUTINE`***, and most also still say `move` where 1.6 says ROUTINE — *"it can still use moves like CUT"*, *"lets you use the move ROCK SMASH"* — **so this ticket and the `move` → `ROUTINE` prose pass are the same read, done once** | `engineGba/data/`, `src/data/text/` | 1.6 |
 | **T-35** | **Re-port the harness after every name pass.** *`mappings.json` went stale by **80 species, 266 routines and 121 items** in a single day* — that is the table the agent reads every name out of. **`port_gamedata.py` is one command, and it belongs inside a rename rather than after one.** *`check_agent_vocab` now catches the prompt half; the mappings half still relies on someone running it* | `tools/port_gamedata.py` | this review |
 
 ---
