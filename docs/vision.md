@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.172**
+**A total conversion — the living design bible, v11.173**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1555,7 +1555,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 #### Thirteen kept, and fifty-eight descriptions rewritten
 
-**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK`, `MIMIC`, `MINIMIZE`, `RECOVER`, `ENDURE`, `CONVERSION` and `CONVERSION 2` were left alone** — *2.8's rule that the pass which renames what already lands makes the game worse.*
+**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK`, `MIMIC`, `MINIMIZE`, `RECOVER`, `ENDURE`, `CONVERSION`, `CONVERSION 2` and — added 2026-09-11 — `SUBSTITUTE` were left alone** — *2.8's rule that the pass which renames what already lands makes the game worse.*
 
 ***And fifty-eight descriptions had to move with their names***, because a description that still describes the old one is worse than no rename at all: *`OCCLUDE` cannot say "bites with vicious fangs".* **Every line measured against the 170px box; the widest is 126.**
 
@@ -1581,6 +1581,22 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***What is left is genuinely unreachable.*** **The 87 remaining are learned by no daemon in this game, taught by no TM and used by no trainer** — *they belong to species the bestiary has not reached.* <span>OPEN</span>, **and it waits on 8.2 rather than on a decision.**
 
+
+#### Reopened and finished — 2026-09-11
+
+***The 87 "genuinely unreachable" routines stopped being unreachable, and nothing about the routines changed.*** **T-45 named 52 island daemons, and naming a daemon is what brings its learnset into scope** — *so 50 still-vanilla routines were suddenly on the list of something a player can encounter, and this section's own rule applied to them by its own terms.*
+
+**Forty renamed. 309 of 356 are ours.** *Three of them got a shape rather than a word each, which is the part worth keeping:*
+
+| | |
+|---|---|
+| **the KICK family** | *LOGIC's register is argument, so* `JUMP KICK` → **`LEAP`**, `HI JUMP KICK` → **`GREAT LEAP`**, `ROLLING KICK` → **`LOOP BACK`**, and `TRIPLE KICK` → **`CHAIN RULE`** — ***three linked steps, each resting on the last*** |
+| **`STOCKPILE` · `SWALLOW` · `SPIT UP`** | *one mechanism, so one metaphor:* **`ENQUEUE` · `DEQUEUE` · `EVICT ALL`.** *You fill it, you drain it, or you throw the whole thing away* |
+| **the two bone routines** | **STRATUM is 2.6's *physical layer everything else runs on***, so they are memory faults — **`HARD FAULT`** and **`PAGE FAULT`** |
+
+***Nine proposals were refused before anything was written*** — `SYLLOGISM`, `CAVITATE`, `EVICT`, `SPINLOCK` and five more were all already taken. **And `SNAPSHOT` got past that check and was caught by `check_lexicon`**, *because the check I wrote by hand read moves, species, abilities and classes and not **items**.* **It is `IMPRINT`.**
+
+***Ten routines are still vanilla on a reachable list, and every one is already ruled:*** **seven of the thirteen above, plus `LICK` which carries SLURP's ruling and `PRESENT` which carries REPAY's.** *`SUBSTITUTE` was the only one never written down, and is now the fourteenth keep.*
 
 ### 2.10a `KILL` and `WEED` — decided, 2026-09-11
 

@@ -5,6 +5,36 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.173 — 2026-09-11
+
+### T-11 — the unreachable routines stopped being unreachable
+
+- ***Nothing about the routines changed.*** **T-45 named 52 island daemons, and naming a daemon is what
+  brings its learnset into scope** — *so 50 still-vanilla routines were suddenly on the list of something
+  a player can encounter, and 2.10's own rule applied to them by its own terms.* **A ticket that had sat
+  in Blocked since September was released by a different ticket's side effect.**
+- **Forty renamed. 309 of 356 are ours**, up from 269.
+- ***Three groups got a shape rather than a word each***, which is the part worth keeping:
+  - **the KICK family is LOGIC, and LOGIC's register is argument** — `JUMP KICK` → **`LEAP`**,
+    `HI JUMP KICK` → **`GREAT LEAP`**, `ROLLING KICK` → **`LOOP BACK`**, `TRIPLE KICK` →
+    ***`CHAIN RULE`***, *three linked steps each resting on the last.*
+  - **`STOCKPILE`, `SWALLOW` and `SPIT UP` are one mechanism, so they are one metaphor:**
+    ***`ENQUEUE` · `DEQUEUE` · `EVICT ALL`.*** *You fill it, you drain it, or you throw the whole thing
+    away.*
+  - **STRATUM is 2.6's physical layer everything else runs on**, so its two bone routines are memory
+    faults: **`HARD FAULT`** and **`PAGE FAULT`**.
+- ***Nine proposals were refused before anything was written*** — `SYLLOGISM`, `CAVITATE`, `EVICT`,
+  `SPINLOCK` and five more were already taken.
+- ***And `SNAPSHOT` got past that check and was caught by `check_lexicon` afterwards***, **because the
+  collision check I wrote by hand read moves, species, abilities and classes — and not ITEMS.** *The
+  same surface that 4.26's original check missed, for the same reason, four weeks later.* **It is
+  `IMPRINT` now.**
+- **Ten routines are still vanilla on a reachable list and every one is already ruled:** *seven of
+  2.10's thirteen deliberate keeps, plus `LICK` which carries SLURP's ruling and `PRESENT` which carries
+  REPAY's.* **`SUBSTITUTE` was the only one never written down and is now the fourteenth keep.**
+
+---
+
 ## v11.172 — 2026-09-11
 
 ### T-46 — all four coherence flags report none, and three of them are rulings
