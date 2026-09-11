@@ -520,6 +520,22 @@ def check_stale_names():
         renamed.update({van[k]: ours[k] for k in ours
                         if van.get(k) and ours.get(k) and van[k] != ours[k]})
 
+    #  ITEMS too. They were missing until 2026-09-11 and four lines still
+    #  offered the player a POKé DOLL, which is the DECOY. Items live in JSON
+    #  rather than a header, so they need their own reader -- which is exactly
+    #  why they were left out, and exactly why nothing noticed.
+    import json as _json
+    vj = upstream("src/data/items.json")
+    f = os.path.join(GBA, "src/data/items.json")
+    if vj and os.path.isfile(f):
+        try:
+            vo = {i["itemId"]: i.get("english") for i in _json.loads(vj)["items"]}
+            oo = {i["itemId"]: i.get("english") for i in _json.load(open(f))["items"]}
+            renamed.update({vo[k]: oo[k] for k in oo
+                            if vo.get(k) and oo.get(k) and vo[k] != oo[k]})
+        except Exception:
+            pass
+
     for rel, pat in (("src/data/text/move_names.h", r'\[MOVE_\w+\]\s*=\s*_\("([^"]+)"\)'),
                      ("src/data/text/species_names.h", r'\[SPECIES_\w+\]\s*=\s*_\("([^"]+)"\)')):
         up = upstream(rel)
@@ -542,7 +558,12 @@ def check_stale_names():
         if os.path.isfile(f):
             live |= set(re.findall(pat, open(f, encoding="utf-8", errors="ignore").read()))
     renamed = {o: n for o, n in renamed.items()
-               if o not in live and o.isupper() and len(o) > 2}
+               #  NOT o.isupper(). "POKé DOLL".isupper() is False, because é
+               #  is not an uppercase character -- so the one item name in the
+               #  game with an accent in it was invisible to this check on the
+               #  very run that added items to it. The test is "contains no
+               #  lowercase ASCII", which is what was meant all along.
+               if o not in live and not re.search(r"[a-z]", o) and len(o) > 2}
 
     out = []
     for root, dirs, files in os.walk(os.path.join(GBA, "data")):
@@ -667,7 +688,7 @@ def main():
 
     pbad = check_stale_names()
     if not pbad:
-        print("  no dialogue names a place, move or daemon we renamed.")
+        print("  no dialogue names a place, move, daemon or item we renamed.")
     else:
         print("\n  %d stale name(s) in dialogue:\n" % len(pbad))
         for what, why in pbad:

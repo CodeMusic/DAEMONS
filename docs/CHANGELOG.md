@@ -5,6 +5,27 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.168 — 2026-09-11
+
+### T-33 — the stone already had a name, and five other items did not
+
+- ***Proving the ticket first: `MOON STONE` is `REFLECTION`, and has been.*** **So is the whole set** —
+  `EXPOSURE` · `AXIOM` · `EMBEDDING` · `AFFECT` · `REWARD`, *the six things a mind is built from* — **and
+  4.30's room already reads "A REFLECTION", which was the single worry the ticket carried.**
+- ***What was real is the class of bug the ticket implied.*** **Five lines still offered the player a
+  `POKé DOLL` and an `EXP. SHARE`** — the `DECOY` and the `WEIGHT SHARE`. *The fifth spanned a line
+  break, which is the seam that hid `ROCK SMASH` for weeks.*
+- **The stale-name check covered places, moves and species and not ITEMS.** *Items live in JSON rather
+  than a header and needed their own reader* — ***which is exactly why they were skipped, and exactly
+  why nothing noticed.***
+- ***And the filter had a bug that hid the one name that mattered.*** **It kept only names where
+  `o.isupper()`, and `"POKé DOLL".isupper()` is `False`, because `é` is not an uppercase character.**
+  *So on the run that added items, the single item name with an accent in it was still invisible.* **The
+  test is now "contains no lowercase ASCII", which is what was meant all along.** *Verified by putting
+  `POKé DOLL` back and watching it fail.*
+
+---
+
 ## v11.167 — 2026-09-11
 
 ### 2.10a — `KILL` and `WEED` decided, and the test caught a third word
