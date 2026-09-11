@@ -182,6 +182,99 @@ def read(rel, pat):
     return re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
 
 
+def check_stale_names():
+    """No line of dialogue may name a place, a move or a daemon by a name we replaced.
+
+    Found 2026-09-10, in three widening passes. First six lines still sending
+    the player to ROCK TUNNEL after the map had said THE BLACKOUT for weeks.
+    Then, once moves were included, THIRTY-ONE more: the game teaching CUT,
+    FLY, DIG and DOUBLE-EDGE, none of which are the names of those moves any
+    more. A player is told to use a move that does not exist.
+
+    Two things this has to get right, and the first version got neither:
+
+      * READ WHOLE BLOCKS. A name splits across two `.string` lines, and
+        `ROCK SMASH` hid in exactly that seam for weeks.
+      * NEVER FLAG AN OLD NAME THAT IS SOMEBODY'S CURRENT NAME. GRASS became
+        GROWTH and GROWTH is also a move we renamed, so a naive map reports
+        every line that says GROWTH. The rename map is filtered against the
+        live lexicon before anything is matched.
+
+    Derived, not listed: every map is ours-vs-upstream, so a rename made
+    tomorrow is covered tonight with nobody remembering to add it.
+    """
+    import json, subprocess
+
+    def upstream(rel):
+        r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                           capture_output=True, text=True)
+        return r.stdout if r.returncode == 0 else None
+
+    renamed = {}
+
+    rel = "src/data/region_map/region_map_sections.json"
+    up = upstream(rel)
+    if up and os.path.isfile(os.path.join(GBA, rel)):
+        van = {m["id"]: m.get("name") for m in json.loads(up)["map_sections"]}
+        ours = {m["id"]: m.get("name")
+                for m in json.load(open(os.path.join(GBA, rel)))["map_sections"]}
+        renamed.update({van[k]: ours[k] for k in ours
+                        if van.get(k) and ours.get(k) and van[k] != ours[k]})
+
+    for rel, pat in (("src/data/text/move_names.h", r'\[MOVE_\w+\]\s*=\s*_\("([^"]+)"\)'),
+                     ("src/data/text/species_names.h", r'\[SPECIES_\w+\]\s*=\s*_\("([^"]+)"\)')):
+        up = upstream(rel)
+        f = os.path.join(GBA, rel)
+        if not up or not os.path.isfile(f):
+            continue
+        ours = re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
+        van = re.findall(pat, up)
+        renamed.update({van[i]: ours[i] for i in range(min(len(ours), len(van)))
+                        if van[i] != ours[i]})
+
+    #  the live lexicon, so an old name that is now somebody else's name is
+    #  never reported -- this is the GROWTH case and it is not hypothetical
+    live = set()
+    for rel, pat in (("src/data/text/move_names.h", r'_\("([^"]+)"\)'),
+                     ("src/data/text/species_names.h", r'_\("([^"]+)"\)'),
+                     ("src/battle_main.c", r'\[TYPE_\w+\]\s*=\s*_\("(\w+)"\)'),
+                     ("src/data/region_map/region_map_entry_strings.h", r'_\("([^"]+)"\)')):
+        f = os.path.join(GBA, rel)
+        if os.path.isfile(f):
+            live |= set(re.findall(pat, open(f, encoding="utf-8", errors="ignore").read()))
+    renamed = {o: n for o, n in renamed.items()
+               if o not in live and o.isupper() and len(o) > 2}
+
+    out = []
+    for root, dirs, files in os.walk(os.path.join(GBA, "data")):
+        for fn in files:
+            if fn != "text.inc":
+                continue
+            p = os.path.join(root, fn)
+            lines = open(p, encoding="utf-8", errors="ignore").read().split("\n")
+            i = 0
+            while i < len(lines):
+                m = re.match(r'\s*\.string "(.*)"', lines[i])
+                if not m:
+                    i += 1
+                    continue
+                start, parts = i, []
+                while i < len(lines):
+                    mm = re.match(r'\s*\.string "(.*)"', lines[i])
+                    if not mm:
+                        break
+                    parts.append(mm.group(1))
+                    i += 1
+                #  the whole block, escapes flattened, so a name split over a
+                #  line break is still one name
+                s = re.sub(r"\\[nlp]", " ", "".join(parts))
+                for old, new in renamed.items():
+                    if re.search(r"(?<![A-Z])%s(?![A-Z])" % re.escape(old), s):
+                        out.append(("%s:%d" % (os.path.relpath(p, GBA), start + 1),
+                                    "says %s; the game calls it %s" % (old, new)))
+    return out
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -241,13 +334,21 @@ def main():
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
 
+    pbad = check_stale_names()
+    if not pbad:
+        print("  no dialogue names a place, move or daemon we renamed.")
+    else:
+        print("\n  %d stale name(s) in dialogue:\n" % len(pbad))
+        for what, why in pbad:
+            print("   %-44s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad) else 0
+    return 1 if (bad or vbad or tbad or pbad) else 0
 
 
 if __name__ == "__main__":
