@@ -5,6 +5,65 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.158 — 2026-09-11
+
+### 2.7c — T-36's structural half is closed
+
+- ***SILENT TYPE reports none. NO STAB reports none.*** **Off-type overall moved 44% → 42%**
+  against 2.7a's 45% baseline — *the right direction, and small enough to say the pass did not
+  overshoot into making every daemon a monotype.* **All four ROMs build** (`38d65ba08`).
+
+### Eight of the thirteen were one fault wearing different names
+
+- **A line carries both its types and the routines for both, and then the LAST evolution drops
+  the second type's entire vocabulary.** *INJECTOR knew no CORRUPT routine while **SCRAPER, the
+  larva it grows out of, knows TAINT at level 1**. COLDREAD lost MISREAD and CONSTRUE that
+  SMOOCHUM has. TARPIT lost ETCH. BADSEED lost ADULTERATE. **ENSEMBLE — the most GROWTH-shaped
+  daemon in the bestiary — lost BATCH, SEED, SATURATE and STARVE in one step** and came out
+  knowing no GROWTH routine at all.*
+- ***4.26's PORYGON2 rule running backwards***, which means **most of this pass was RESTORATION
+  rather than invention** — the routine each daemon needed was already in its own line, one
+  stage down, under the name we had already chosen for it.
+- **Where that was true it was taken, even when a better joke was available.** *COLDREAD states
+  what you are about to say slightly before you say it, and `SCHEDULE` is the one routine that
+  resolves a turn later than it was invoked — and it still lost to restoring what the line
+  already had.* ***The cheaper claim is the truer one.***
+
+### The other five, and the one worth the whole tool
+
+- **2.7a's ROVERBYTE case**: a second type *arrives on evolution and arrives without a verb.*
+  SCHEDULER and PIPELINE take `SEDIMENT`, **which drops the target's speed, which is SCHEDULER's
+  Index entry stated as a mechanic.** **ESCALATE is *vanilla's own oldest joke surviving the
+  retype intact* — a Flying type that cannot fly.** ***PULSAR is the funniest***: BEACON, which
+  is FLOW and only FLOW, carries two CONTEXT routines, and PULSAR, which IS CONTEXT, carried none.
+- ***STARR.*** CONTEXT/EMERGENT, an Index entry that is an account of runaway recursion, and no
+  EMERGENT routine. **`RUNAWAY` locks the invoker in for several turns with no way out and leaves
+  it incoherent afterwards** — ***the only routine in the game whose DRAWBACK is the daemon's own
+  Index entry***, and at 90 against 60 on-type, *the numbers agree with the reading for once.*
+
+### What was left alone is the same decision, written down
+
+- **SCHEDULER and PIPELINE keep their 120-power off-type finishers**; **ESCALATE keeps two
+  EMERGENT routines** (*a thing that was doing nothing and now has every permission **is**
+  emergence*); **the GASTLY line keeps its whole off-type spine** — `DEFER` + `INTERPRET` is a
+  combination vanilla built on purpose and **`ORPHAN` is HAUNTPROC's Index entry as a verb.**
+- *Each is argued in a comment above its learnset rather than left to be rediscovered.*
+
+### Two gaps found by reading, not by the tool — T-39, T-40
+
+- **The cross-gen relatives of our Kanto lines are HALF renamed.** `CROBAT`, `CLEFFA`, `POLITOED`
+  and `SLOWKING` have our names; ***PICHU, IGGLYBUFF, TYROGUE, SMOOCHUM, ELEKID, MAGBY, BELLOSSOM,
+  ESPEON, UMBREON, STEELIX, SCIZOR, KINGDRA and BLISSEY do not.***
+- ***And the sweep cannot see any of them.*** **`gbacoherence.py` defines "ours" by DIFFING
+  against upstream**, so *a daemon we forgot to rename is invisible to the check that would have
+  caught it.* **A tool that decides what to look at by what we already changed cannot report what
+  we failed to change.**
+- **PULSAR still carries its VANILLA Index entry** — *a geometric body the locals suspect is
+  alien* — on a daemon whose name is a timing signal. `port_index.py` wrote the entries we had;
+  the ones we never wrote kept Kanto's, and nothing checks.
+
+---
+
 ## v11.157 — 2026-09-11
 
 ### 2.7b — the coherence sweep read all 151, and the premise had moved

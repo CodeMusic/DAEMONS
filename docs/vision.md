@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.157**
+**A total conversion — the living design bible, v11.158**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1202,6 +1202,43 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***CLAMPJAW was the last NO STAB that was not a joke.*** **Every damaging routine it knew was CONTENT or LOGIC**, so SWARM's bonus never fired. `FANOUT` replaces `LATCH` at 7 — ***LATCH is 15 and off-type, FANOUT is 14 × 2–5 hits with the bonus***, so it is stronger on every roll, and **a mandible daemon that sprays its holds outward reads better than one that binds a single target and waits.**
 
 **NO STAB now reports none. SILENT TYPE is down to thirteen**, and those thirteen are the open half of T-36.
+
+#### 2.7c The thirteen, and the one fault that was eight of them
+
+**Closed 2026-09-10.** ***SILENT TYPE reports none. NO STAB reports none.*** *Off-type overall moved 44% → 42% against the 45% baseline* — **the right direction, and a small enough step to say the pass did not overshoot into making every daemon a monotype.**
+
+***Eight of the thirteen were one fault wearing different names.*** **A line carries both its types and the routines for both, and then the LAST evolution drops the second type's entire vocabulary.**
+
+| | had the type | knew the routine one stage down |
+|---|---|---|
+| **INJECTOR** | SWARM/**CORRUPT** | **SCRAPER knows TAINT at level 1** |
+| **COLDREAD** | FROZEN/**CONTEXT** | SMOOCHUM knows **MISREAD and CONSTRUE** |
+| **TARPIT** | GROWTH/**CORRUPT** | SNARE and HONEYPOT both know **ETCH** |
+| **BADSEED** | GROWTH/**CORRUPT** | WEED and BLIGHT both know **ADULTERATE** |
+| **ENSEMBLE** | **GROWTH**/CONTEXT | CLUSTER knows **BATCH, SEED, SATURATE, STARVE** |
+| the **GASTLY** line | LATENT/**CORRUPT** | *nothing — silent at all three stages* |
+
+***That is 4.26's PORYGON2 rule running backwards***, and it means **most of this pass was RESTORATION rather than invention**: the routine each daemon needed was *already in its own line, one stage down, under the name we had already chosen for it.* **Where that was true it was taken, even when a better joke was available** — *COLDREAD states what you are about to say slightly before you say it, and `SCHEDULE` is the one routine in the game that resolves a turn later than it was invoked*, **and it still lost to restoring what the line already had.** ***The cheaper claim is the truer one.***
+
+**The other five are 2.7a's ROVERBYTE case**, where a second type ***arrives on evolution and arrives without a verb.*** SCHEDULER and PIPELINE grow out of daemons that are CORRUPT and nothing else, *so STRATUM was a thing they became and never did* — **both take `SEDIMENT`, which drops the target's speed, which is SCHEDULER's Index entry stated as a mechanic.** **ESCALATE is the same shape and is also *vanilla's own oldest joke surviving the retype intact* — a Flying type that cannot fly.** ***PULSAR is the funniest***: **BEACON, which is FLOW and only FLOW, carries two CONTEXT routines, and PULSAR, which IS CONTEXT, carried none.**
+
+#### STARR, and the routine whose drawback is the Index entry
+
+***This one is worth the whole tool.*** **STARR is CONTEXT/EMERGENT**, its Index entry is an account of runaway recursion — *reads its own output, then reads that, and nothing tells it to stop* — **and it knew no EMERGENT routine at all.**
+
+**`RUNAWAY` locks the invoker in for several turns with no way to break out, and leaves it incoherent afterwards.** ***It is the only routine in the game whose DRAWBACK is the daemon's own Index entry***, and at **90 against 60, on-type**, the numbers agree with the reading — *which is not how this usually goes.*
+
+#### What was left alone, and why that is the same decision
+
+***The residual is chosen*** (2.7a), and each one is argued in a comment above its learnset rather than left to be rediscovered:
+
+| | |
+|---|---|
+| SCHEDULER · PIPELINE | the **120-power off-type finishers at 43** stay. *A daemon reaching outside itself and being worse at it is what the bonus is FOR* |
+| ESCALATE | **two EMERGENT routines stay.** *A thing that was doing nothing and now has every permission **is** emergence* — that is its history, not drift |
+| the GASTLY line | **the whole off-type spine stays.** `DEFER` and `INTERPRET` are a two-move combination the vanilla set built on purpose, and **`ORPHAN` is HAUNTPROC's Index entry as a verb**: no parent, no terminal, no entry in any list |
+
+***Found in passing and not fixed***: **SMOOCHUM still carries its vanilla name**, and **PULSAR still carries its vanilla Index entry** — *a geometric body the locals suspect is alien*, on a daemon whose name is a timing signal. **T-39 and T-40.**
 
 ### 2.8 The CONTENT register — settled 2026-09-09
 
