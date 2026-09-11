@@ -5,6 +5,38 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.170 — 2026-09-11
+
+### The machine counts in binary, and nobody explains it
+
+- ***Renaming the islands to `001`–`111` was considered and refused.*** **The numbers are not only on
+  the islands** — *`SEVII ISLE 22` would be `10110` and the scheme breaks on its own family* — **and a
+  signpost reading `101 ISLAND` announces the machinery in the half of the game where it is meant to be
+  quietest.** *Plain numbers say nobody bothered; binary says a system did this deliberately, which is
+  the wrong claim for Act 2.*
+- ***So a MACHINE says it instead.*** **Celio's Network Machine readout now ends `NODE 001. RANGE 001 TO
+  111.`** — *and the player is standing on ONE ISLAND while they read it*, **which is the whole of the
+  connection.** *The range says there are seven without saying seven.*
+- **Same device 4.7 already uses for `S.T.A.R.R.` versus `STARR`:** *the institution spells it out and
+  everyone else says the word.* **Here the machine addresses and everyone else points.**
+
+### 8.2b's bound moved — 30 names, in a register the map earned
+
+- ***Two of our own rules had quietly come into contradiction.*** **8.2b said "name nothing there";
+  2.10 says "name what the player can meet in this game."** *245 species still carry vanilla names, and
+  **30 of them have wild encounters*** — a player meets `HERACROSS`, `SKARMORY`, `LARVITAR`, `UNOWN`
+  and twenty-six others by name, in ordinary play.
+- **T-39 had already broken that tie once on principle**, naming fourteen cross-gen relatives. ***This
+  carries the same principle to its edge: meetable gets a name, data-only does not.*** *30, not 69, and
+  the remaining ~215 stay exactly where 8.2b put them.*
+- ***And the register is the finding rather than the ruling.*** **All 30 are ISLAND-ONLY — measured,
+  with zero appearing on the mainland** — *so they are not an appendix to Kanto's bestiary.* **They are
+  Act 2's, and Act 2 is the rise of perspective thinking.** ***Kanto's creatures are named for
+  machinery; the islands' are named for mind.*** *Nobody says this, and the map makes it true.*
+- **T-45 opened.**
+
+---
+
 ## v11.169 — 2026-09-11
 
 ### T-38 — the story documents, split into the half a machine can judge

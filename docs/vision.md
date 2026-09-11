@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.169**
+**A total conversion — the living design bible, v11.170**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5736,10 +5736,19 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | | | |
 |---|---|---|
 | **Technical surface** | *the bestiary* | HEAP · STACK · FORK · THREAD · PAYLOAD · ECHO · PACKET · LATENCY — **the register the rest of the lexicon speaks** |
+| **Psychology** | *the islands* | ***added 2026-09-11.*** **The 30 wild-encounterable species beyond Kanto are ISLAND-ONLY — measured, not assumed: zero of them appear on the mainland.** *So Act 1's bestiary is machinery and Act 2's is mind*, which is 8.2a's own division stated in the creatures rather than in the dialogue |
 | **Myth** | *the legendaries* | **ASCLEPIUS · ORPHEUS · PROMETHEUS** — ***these ARE "true names the Index cannot reach"***, which is the fork's other half, spent on exactly the six creatures the Index was never going to hold |
 | **The project's own** | *MUSAI and ROVER* | **characters rather than creatures**, and 8.2 already treats them that way |
 
 ***So the fork was never either/or. It was a distribution***, and the log had recorded a decision as an open question for five weeks.
+
+#### The bound moved, 2026-09-11 — and 2.10 is why
+
+***8.2b said "name nothing there" and 2.10 says "name what the player can meet in this game", and those had quietly come into contradiction.*** **245 species still carry vanilla names, and 30 of them have wild encounters** — *a player meets HERACROSS, SKARMORY, LARVITAR, UNOWN, SNEASEL and twenty-five others, by name, in ordinary play.*
+
+***T-39 had already broken the tie once on a principled basis***, naming fourteen cross-gen relatives because they evolve into or out of daemons we had named. **This is the same principle carried to its edge: a species the player can MEET gets a name; a species that exists only in the data does not.** *That is 30 names, not 69, and the remaining ~215 stay where 8.2b put them.*
+
+***And the register is the finding rather than the ruling.*** **All 30 are island-only**, so they are not an appendix to Kanto's bestiary — **they are Act 2's**, and Act 2 is *the rise of perspective thinking.* *Kanto's creatures are named for machinery; the islands' are named for mind.* **Nobody says this and the map makes it true.**
 
 #### The bound is 8.2a's, not a new one
 
