@@ -5,6 +5,42 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.162 — 2026-09-11
+
+### T-44 and T-35 — the check cried wolf twice and was blind in three places
+
+- ***The ticket was two false positives and both were the same kind of mistake:*** **a rule that knew
+  one shape of a thing.** `PRIORITY/Paralyze Heal` is **the glossary working** — the agent naming ours
+  against vanilla, inline — and the exemption only knew the table's *own row* shape. *`backtracking
+  confusion` is English*, and the innocent-list named the adjectives one at a time, so it was always a
+  run behind the agent's prose.
+- ***The interesting half came from testing the checker against sentences it SHOULD catch, rather than
+  reading it.*** **Three holes it had been silent about:**
+  - **The eleven town patterns were UPPER-ONLY.** *"head back to Pewter" in the agent's own notes was
+    invisible to every run there has ever been.* **Widening them caught a live leak in the first
+    second.**
+  - ***Species were not checked at all.*** **A hand-written list cannot hold 151 names, so nobody wrote
+    one** — and the prompt was telling the agent to bind **Mewtwo** in **Cerulean Cave**, to expect
+    **Zubat** *"the cave classic"*, and that **Gyarados** is Water/Flying.
+  - ***Abilities were the same hole from both sides.*** **`port_gamedata.py` was missing `ABILITY_NAME`
+    from its table list**, so the bridge reported `TORRENT` at a daemon the ROM calls `SPILLOVER` —
+    ***77 of 78 stale.*** **The tool and the check were blind in the same place, which is exactly why
+    neither could catch the other.**
+- **33 occurrences of 24 names swept out of `game.txt`, from the build rather than by hand**, so the
+  glossary rows that name the vanilla word *on purpose* are untouched.
+- ***And the design question the ticket actually asked — should the LIVE prompt be checked — is
+  answered by what happened next.*** **`mappings.json` went clean and the live prompt went on saying
+  TORRENT**, because it is *a snapshot written before the fix*. **So it is still scanned, and a hit
+  whose word no longer exists in anything we author is reported as history rather than counted as a
+  fault.** *Reporting history as a fault is the same mistake the archived prompts caused, one directory
+  along.*
+- **T-35 closes with it, and not on its own terms.** ***Its premise was that the tables go stale and
+  want re-running; the finding was that one table was never in the tool***, so re-running it faithfully
+  would never once have fixed abilities.
+- **Eight regression cases, four that must fire and four that must not.**
+
+---
+
 ## v11.161 — 2026-09-11
 
 ### 2.7f — the fourteen daemons no check could see
