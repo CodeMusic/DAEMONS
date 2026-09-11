@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.174**
+**A total conversion — the living design bible, v11.175**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1027,7 +1027,7 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 
 **`LEGACY` is 0 / 16** now, not 0 / 14. **`VECTOR` is 1 / 13**, still with its one contradiction. *Both gained a relation and neither gained a prediction* — **which is what a naming problem looks like when the sample grows**: a clause that carried nothing at fourteen carries nothing at sixteen.
 
-***That strengthens the case for `RUST` and `FLOAT` and does not decide it.*** **Those are type renames — a gym, a museum and a badge each** — *and they stay in the log as their own decision rather than being carried in on the back of an arithmetic pass.*
+***That reads as a case for `RUST` and `FLOAT`, and it is not one.*** **A second run at the same two numbers found the fault in the sentence rather than in the word** — *see below.* **Both renames are declined**, and the arithmetic pass is the thing that made it possible to decline them.
 
 #### Three things the run found
 
@@ -1043,12 +1043,70 @@ So the CONTEXT balance fix belongs in `moves.asm`.
 
 ***`gTypeNames` in `battle_main.c` is a plain string table at `TYPE_NAME_LENGTH 8`.*** **Invariant 6's expensive half — renaming constants — does not apply.** *What the player reads is one line each.*
 
-#### Open, and deliberately
+#### The clause was the fault, not the name — settled 2026-09-11
 
-**Neither rename is made here.** *The names in 2.2 were chosen as a complete set and this section is not entitled to overrule two of them on its own evidence* — **it is entitled to say which two are not working, and it does.**
+***A 0 / 16 is not evidence about a word. It is evidence about a sentence***, and this section spent four days reading it as the first thing.
 
-- **LEGACY** wants its mineral hardness back while keeping old-silicon. `SILICON` is literally both, *but may blur against STRATUM, which already owns "the physical layer."* `RUST` is the other direction — **corroded metal, decayed hardware, and a language** — *and being eaten by water is **why rust exists**, which would turn LEGACY's ×2 weakness to FLOW from opaque into obvious.*
-- **VECTOR** needs its not-groundedness back. `ABSTRACT` is 8 exactly and **recovers the immunity in one step** — *the physical layer cannot reach the abstract* — while keeping the embedding reading.
+**Look at what actually separates the passes from the failures. It is not abstraction:**
+
+| | the clause it was given | |
+|---|---|---|
+| **CONTEXT** 11 / 11 | *the frame you read a thing in — what makes the same thing **mean differently*** | **a verb, aimed outward** |
+| **EMERGENT** 7 / 7 | *the behaviour **nobody designed** and nobody can **account for*** | **two verbs, aimed outward** |
+| **HARDENED** ~17 / 21 | *material chosen to **resist**, and it **gave up** everything else to do it* | **two verbs** |
+| **LEGACY** 0 / 16 | *deprecated hardware still running* | ***a description of itself*** |
+| **VECTOR** 1 / 13 | *direction in a space of meanings* | ***a description of itself*** |
+
+***The chart is made of nothing but relations.*** **A clause that says what a type IS cannot predict one of them. A clause that says what it DOES to other things predicts them by construction** — *which is why the two most abstract names in the game score perfectly and the two most concrete ones score nothing.*
+
+**That also corrects this section's own diagnosis three headings up.** *"The failures are the two whose renames are the most abstract"* was the wrong reading of the right number: **CONTEXT is more abstract than LEGACY by any measure, and it is the strongest type in the game.**
+
+#### The same two names, re-clauses — and both pass
+
+> ### LEGACY — *old material that everything else has had time to work on*
+
+***12 / 16, no contradictions***, up from 0 / 16 **with the word untouched.**
+
+| predicts | |
+|---|---|
+| `← FLOW ×2` | **water has had time.** *This is the relation Slate is built on (2.7's UNSUPERVISED note) and it stops being opaque* |
+| `← GROWTH ×2` | roots split it |
+| `← STRATUM ×2` | the ground works on what sits on it |
+| `← LOGIC ×2` | old material is brittle; step-by-step force finds the fault |
+| `← HARDENED ×2` | **material chosen to resist beats material that is merely old.** *The cleanest pair in the chart* |
+| `← CORRUPT ×0.5` | you cannot poison a rock |
+| `← ENTROPY ×0.5` | it has already been through heat |
+| `← VECTOR ×0.5` | a direction that never touches it cannot work on it |
+| `→ HARDENED ×0.5` · `→ LOGIC ×0.5` · `→ STRATUM ×0.5` | *age is not an argument, and it does not move the layer it is part of* |
+| `→ SWARM ×2` | mass against many small agents |
+
+***Silent on four, and all four are attacking*** — `→ ENTROPY`, `→ FROZEN`, `→ VECTOR`, `← CONTENT`. **A clause about being worked on predicts defence and says little about offence**, which is an honest limit and is written here rather than scored away.
+
+> ### VECTOR — *a direction that never touches the ground*
+
+***10 / 13, no contradictions***, up from 1 / 13 **with the word untouched** — *and the single relation the old clause **contradicted** is now its best prediction:*
+
+| | |
+|---|---|
+| **`← STRATUM ×0`** | ***the ground cannot reach what never touches it.*** **The immunity that "made VECTOR look like a bug" is recovered by a sentence, not by a rename** |
+| `← GROWTH ×0.5` | what grows out of the ground cannot get to it |
+| `← LEGACY ×2` | *old material, thrown, is the thing that does reach it* |
+| `← SIGNAL ×2` | nothing between it and the current |
+| `← LOGIC ×0.5` | you cannot corner what is not standing anywhere |
+| `→ LEGACY ×0.5` · `→ HARDENED ×0.5` | *a direction does little to material* |
+| `→ GROWTH ×2` · `→ LOGIC ×2` · `→ SWARM ×2` | **everything rooted, stepwise or numerous is reached from a place it cannot stand** |
+
+*Silent on three:* `→ SIGNAL`, `← FROZEN`, `← SWARM`.
+
+#### So the renames are declined, and here is the rest of the cost
+
+**Both proposals were real and neither was cheap.** *8.7 named them the two best in the third review, and they would have been paid for in places the instrument cannot see:*
+
+- ***`LEGACY` is load-bearing in 4.32.*** **The whole justification for putting thinking-distortions in the Slate museum is one sentence** — *"a legacy mind is precisely one that still runs the faults it shipped with"* — and **a rust mind is not a thing.** *The word carries a room.*
+- ***`VECTOR` is half a deliberate pair.*** **2.3 gives it *embeddings, latent space, direction*, and `EMBEDDING` is an item** (1.6c, the THUNDER STONE slot). *`FLOAT` is a number type; it severs the pair for a reading the clause now supplies anyway.*
+- **31 `LEGACY` and 39 `VECTOR` occurrences in the ROM**, *plus a gym, a museum, a badge and the help system's chart pane.* **2.8's rule — do not rename what already lands — applies to both.**
+
+***The instrument did its job and the reading of it was wrong.*** **2.6 says in its own opening that it is *an instrument, not a verdict*** — *and the thing a verdict would have cost here was a museum.*
 
 **SWARM passes at 4 / 13**, *and 2.5 already records it as mechanically weak for entirely unrelated reasons.* **Two independent problems pointing at one type is worth a look.**
 
@@ -6317,7 +6375,7 @@ So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right cre
 #### Refused, or held
 
 - **`SUS` → `ZZZ`/`HLD`.** ***Held.*** *The Among Us reading is real and it is also a joke that lands beside a daemon that has stopped responding.* **`HLD` loses the whole word; `ZZZ` says asleep, which is precisely what 1.6 spent a section refusing.** <span>OPEN</span> — *a playtest decides this, not an argument*
-- **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`.** ***Held, and they are the two best proposals in the review.*** **LEGACY scores 0/14 on the one-clause test and `RUST` recovers two relations for one word**; `FLOAT` recovers VECTOR's immunity honestly. ***Both are type renames*** — invariant 3 territory, a gym, a museum and a badge each — **and they are not decided in the same hour as everything else**
+- ~~**`LEGACY` → `RUST` and `VECTOR` → `FLOAT`.**~~ ***Declined 2026-09-11 (2.6), and the review was right about the number and wrong about the cause.*** **Both types score what they score because their clause describes what they ARE and the chart contains nothing but relations** — *re-clauses take LEGACY from 0/16 to 12/16 and VECTOR from 1/13 to 10/13 with the words untouched*, **including the `← STRATUM ×0` immunity that `FLOAT` was proposed to recover.** *And `LEGACY` turned out to carry 4.32's museum in one sentence*
 - **`PRIORITY` → `BURST` and `MP` → `CYCLES`.** *Both better than what they replace.* **`CYCLES` especially** — 4.30 still says MANA, *The Bag* ships MP, and **MANA is the lexicon's one fantasy noun.** <span>OPEN</span>
 - **`PKRS` → `VIRAL`** and **MOON STONE → `TIMEOUT`.** *Taken in principle*, and both wait on their own passes
 - **CONSENSUS scaling with the quorum.** ***Refused for now.*** 2.5 made it boring **on purpose** — *"a swarm does not need a gimmick, it needs to keep showing up"* — and the review's version is better writing and worse balance. **Revisit if SWARM underperforms in play, which is the condition 2.5 already set**
@@ -7452,7 +7510,7 @@ Kept here because the reasoning is worth more than the outcome.
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
 - ~~`SWARM` and `GROWTH` each mean two things~~ **Cleared 2026-09-10 (2.8): `SCALE OUT` and `SCALE UP`.** *check_lexicon reports 1,152 names and no word meaning two things*
 - ~~Re-score the one-clause test at 17~~ **Done 2026-09-11 (2.6).** ***CONTEXT went UP, to 11/11*** — *the immunity the question worried about is the clause's cleanest prediction in the chart: you cannot reframe what you cannot read.* **The real gap was that `HARDENED` (21 relations, the most-connected type in the game) and `OPAQUE` (10) had never been scored at all.** *Both pass. The run had walked 83 relations and the ROM has 111*
-- **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** (8.7). The two best proposals in the third review, and both are type renames — a gym, a museum and a badge each
+- ~~`LEGACY` → `RUST` and `VECTOR` → `FLOAT`~~ **Declined 2026-09-11 (2.6), with reasons rather than left open.** ***The failing score was a property of the clause, not of the word*** — *a sentence saying what a type IS can predict none of a chart made only of relations.* **Re-clauses: LEGACY 0/16 → 12/16, VECTOR 1/13 → 10/13, both names unchanged**, and `FLOAT`'s whole argument — the STRATUM immunity — arrives for free
 - ~~Craft rule 5 is unpaid for benchmarks 2–8~~ **Designed 2026-09-10 (5.3).** *Seven leaders, each with the thing an overlevelled player still runs into* — **now it is a build task rather than a design one**
 - ~~The six new leader names are unbuilt~~ **In the ROM 2026-09-10 (5.3a), with 127 lines of dialogue swept to match.** *What is still unbuilt is the mechanics* — the parties, Doldrum's healing trainers and Scorn's fixed roll
 - ~~The Review Board has no names~~ **Named 2026-09-10 (6): PHLEGMATIC, CHOLERIC, MELANCHOLIC, SANGUINE**, and the two mismatched types corrected with them — *Choleric is LOGIC and Sanguine is EMERGENT*

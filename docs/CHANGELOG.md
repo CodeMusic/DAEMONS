@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.175 — 2026-09-11
+
+### 2.6 — the clause was the fault, not the name. Both type renames declined
+
+- ***A 0 / 16 is not evidence about a word. It is evidence about a sentence.*** **The two types that fail
+  the one-clause test are the only two whose clause describes *what the thing is* rather than *what it
+  does to other things*** — *and the chart contains nothing but relations.* **A clause that says what a
+  type IS cannot predict one of them.**
+- **Which is why the reading this section had been carrying was backwards.** *"The failures are the two
+  whose renames are the most abstract"* is **wrong**: `CONTEXT` is more abstract than `LEGACY` by any
+  measure and scores 11 / 11. ***The failures are the two most concrete names in the set.***
+- ***Re-clauses, same words, both pass.*** **`LEGACY` — *old material that everything else has had time
+  to work on* — 0 / 16 → 12 / 16**, no contradictions, *and `← FLOW ×2` (the relation Slate is built on)
+  stops being opaque*. **`VECTOR` — *a direction that never touches the ground* — 1 / 13 → 10 / 13**,
+  and ***the one relation the old clause contradicted, `← STRATUM ×0`, is now its best prediction.***
+- **So `LEGACY` → `RUST` and `VECTOR` → `FLOAT` are declined** — *8.7's two best proposals, closed with
+  reasons rather than left open.* **`FLOAT`'s entire argument was the STRATUM immunity and a sentence
+  recovers it for nothing.** *And the design-side cost was measured for the first time:* **4.32's
+  museum rests on one sentence — *"a legacy mind is precisely one that still runs the faults it shipped
+  with"* — and a rust mind is not a thing**; `VECTOR` is half a deliberate pair with the item
+  `EMBEDDING`; **31 and 39 occurrences in the ROM, plus a gym, a badge and the help pane.**
+- ***2.6 calls itself "an instrument, not a verdict" in its own opening.*** **The instrument was right
+  every time it ran. What a verdict would have cost here was a room.**
+
+---
+
 ## v11.174 — 2026-09-11
 
 ### 2.6 re-scored at seventeen types — and CONTEXT went up

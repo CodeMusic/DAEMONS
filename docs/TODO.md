@@ -89,9 +89,9 @@ was one `git log -S` away.*
 - **THROTTLED's five strays** — SIGNAL owns it six to five (2.7)
 - **SUSPENDED's six sleep moves** — CONTEXT owns the concept; retyping the moves is a balance question (2.7)
 - **`PKRS` still says PKRS** — the condition has no place in the lexicon yet (9.15)
-- **`LEGACY` → `RUST` and `VECTOR` → `FLOAT`** — a gym, a museum and a badge each (8.7)
+- ~~`LEGACY` → `RUST` and `VECTOR` → `FLOAT`~~ **Declined 2026-09-11 (2.6).** *The clause was the fault, not the name — both re-clause and pass with the words untouched*
 - **Whether the doctrine has a name, and whether he has one** — *placement settled by T-22: SIX ISLAND's GREEN PATH, somewhere with nobody to check him.* **Both names were left off on purpose and that may be the answer**: naming the doctrine gives the game a thing to hold, and 4.33's whole rule is that it holds nothing (4.33)
-- **Re-score the one-clause test at 17 types** — CONTEXT's 8/8 was scored without OPAQUE (8.7)
+- ~~Re-score the one-clause test at 17 types~~ **Done 2026-09-11 (2.6).** *CONTEXT went up to 11/11; HARDENED and OPAQUE had never been scored and both pass*
 
 ---
 
