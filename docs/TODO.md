@@ -36,6 +36,28 @@ the next one, and a ticket is the same hazard with more of the day attached.
 *Clear the mark when the ticket closes.* **A stale `WIP` is the one failure mode
 here** — if a branch is gone and the mark is still on, the ticket is free.
 
+### Read the ticket, then check it — the oldest ones are the least true
+
+**A ticket records what was true on the day it was written**, and this file has
+been going long enough that the old ones have drifted. ***Four tickets closed on
+2026-09-11 had a premise that was wrong, and in every case the ticket's own
+claim was the thing that needed correcting rather than the code:***
+
+| | it said | it was |
+|---|---|---|
+| **T-41** | 41 thin openings | *22 of them were `WRITE`, `FLIP` and `PUSH` — **which 2.8 settled on purpose.** The check was arguing with the design* |
+| **T-26** | rewrite ~9,500 words | *a **read** of 9,500 and a rewrite of **18 blocks**, because vanilla already wrote its islanders in register* |
+| **T-44** | two false positives | *two, plus **three holes the check had been silent about** — including 77 of 78 stale ability names* |
+| **T-34** | the starter names are placeholders | *seven of nine were load-bearing; the other two were a **ten-day-old collision the newcomer caused***, which the git log settled and neither of us remembered correctly |
+
+> **Spend the first twenty minutes proving the ticket, not doing it.** *Measure
+> the thing it claims.* **If the number comes back different, that IS the work** —
+> and it has been better work than the ticket every time so far.
+
+*The corollary is cheap and worth saying:* **the git log is evidence and memory
+is not.** *T-34 turned on which of two names was written first, and the answer
+was one `git log -S` away.*
+
 ---
 
 ## Ready — decided, unblocked, nobody has done it
