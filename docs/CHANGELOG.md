@@ -5,6 +5,46 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.171 — 2026-09-11
+
+### T-45 — fifty-two island daemons, and PROTEUS put back
+
+- ***The ticket said thirty and the answer is fifty-two***, and the difference is the interesting part.
+  **33 species have wild encounters.** *Then the evolution check found sixteen more, and a second pass
+  three after that* — **because a base named with its evolution left vanilla is T-39's exact bug.**
+  *So the lines are named whole:* `RUMINATE` → `BROODING` → `GRIEVANCE`, `WHIM` → `CAPRICE` →
+  `ABANDON`, `ATTACHMENT` → `CLINGING`. ***It also caught `SUBSTRATE` → `PORYGON2`, which predates
+  today entirely.***
+- **The register is 8.2b's new fourth row, and the map earned it:** *all 33 seeds are island-only, zero
+  on the mainland.* **Kanto's creatures are machinery; these are mind** — `WHIM`, `DREAD`, `OMEN`,
+  `RECALL`, `STARTLE`, `SYMBOL`, `APATHY`, `ILLUSION`, `HOARDING`, `RESENTMENT`, `BLINDSPOT`.
+- **98 Index entries across both editions**, in the voice the rest keep. *`TYRANITAR`'s needed its own
+  pass — vanilla splits that entry on `#if REVISION` and the pattern could not see it.*
+- ***`HERACROSS` is `DRIVE`, which makes the Six Island measuring house better than it was:*** **a woman
+  who measures DRIVES in inches, which is exactly what you do with drives.**
+
+### PROTEUS — the puzzle is timed, not removed
+
+- ***T-29 hid Deoxys outright and that was wrong.*** **In vanilla the island needs the AURORA TICKET, an
+  event item never distributed — so it was unobtainable on any ordinary cartridge, and OUR change is
+  what made the island reachable at all.**
+- **So it is timed.** *While 4.34's scene is unfinished the island is bare and she is the only thing on
+  it; once she has gone home, the island has its puzzle back.* ***The place where a woman was left, and
+  afterwards something else is standing on it.***
+- *One engine detail that made the first gate a no-op:* **vanilla's own `TryShowDeoxysPuzzle` CLEARS the
+  meteorite's hide flag**, so ours has to run after it.
+- **`DEOXYS` → `PROTEUS`**, in 8.2b's myth register: *the god who changes shape to avoid answering and
+  tells the truth only to whoever holds on.* **Four formes, one myth, no gloss.**
+
+### And naming them is what made the next job visible
+
+- ***`gbacoherence` defines "ours" by whether a name was renamed***, so fifty-two daemons walked into
+  its scope at once and **32 trip `SILENT TYPE` or `NO STAB`** — *vanilla Johto learnsets nobody has
+  curated.* **T-46.** *Off-type overall is 43 per cent against 2.7a's 45 per cent baseline even so,
+  which makes it coherence rather than coverage.*
+
+---
+
 ## v11.170 — 2026-09-11
 
 ### The machine counts in binary, and nobody explains it
