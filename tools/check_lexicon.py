@@ -169,8 +169,14 @@ def check_tickets():
     #  visible, because a gap at the TOP of the range is invisible to a check
     #  that derives its range from max(). The check that enforces "never
     #  deleted" was blind to the approved way of keeping it.
+    #  ...and only BELOW the tables start. The preamble discusses tickets by id
+    #  -- the section on why old tickets drift cites four of them in a table --
+    #  and counting those as rows reported three duplicates that are prose.
+    #  The ledger is everything from the first "## Ready" onward.
+    doc = open(f, encoding="utf-8").read()
+    cut = doc.find("## Ready")
     ids = re.findall(r"\|\s*~{0,2}\s*\*\*(T-(\d+))\*\*",
-                     open(f, encoding="utf-8").read())
+                     doc[cut:] if cut > 0 else doc)
     if not ids:
         return [("TODO.md", "no ticket rows matched -- the format moved, or the file is empty")]
     nums = [int(n) for _, n in ids]
