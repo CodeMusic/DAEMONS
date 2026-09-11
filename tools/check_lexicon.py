@@ -268,6 +268,48 @@ def read(rel, pat):
     return re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
 
 
+def check_near_collisions(surfaces):
+    """Two names where one is the other with a single character INSERTED.
+
+    Found 2026-09-11. The SQUIRTLE line was CLUSTR from 2026-08-31; ten days
+    later the Kanto sweep gave EXEGGCUTE the name CLUSTER. Two different
+    strings, so "no word means two things" passed every run -- and on a party
+    screen they are one word with a letter knocked out.
+
+    INSERTION ONLY, and that is the whole design of this check. Edit distance
+    1 in general reports twenty-three pairs here and every one is fine:
+    LOCK/LICK, FLIP/FLAP, LATIAS/LATIOS, SWALLOW/SWELLOW -- substitutions make
+    two words that look different. Stripping vowels is worse still and equates
+    SCAN with SUICUNE.
+
+    A name that is another name plus one letter is the case a reader cannot
+    tell apart, and it is the only one worth failing a build over.
+    """
+    flat = []
+    for kind, names in sorted(surfaces.items()):
+        for n in names:
+            if len(n) >= 4 and n != "??????????":
+                flat.append((n.upper(), n, kind))
+    by_len = {}
+    for up, n, kind in flat:
+        by_len.setdefault(len(up), []).append((up, n, kind))
+    out = []
+    for ln, rows in sorted(by_len.items()):
+        for up, n, kind in rows:
+            for up2, n2, kind2 in by_len.get(ln + 1, []):
+                #  ...and the inserted letter must be a VOWEL. That is what
+                #  separates a misspelling from two words: CLUSTR+E is CLUSTER
+                #  and LABL+E is LABEL, while LOCK+B is BLOCK and MUTE+D is
+                #  MUTED, which nobody has ever confused. Insertion alone still
+                #  reported thirteen pairs and every one was fine.
+                if any(up2[:i] + up2[i + 1:] == up and up2[i] in "AEIOU"
+                       for i in range(len(up2))):
+                    out.append(("%s / %s" % (n, n2),
+                                "%s and %s -- one is the other with a vowel dropped"
+                                % (kind, kind2)))
+    return out
+
+
 def check_phantom_places():
     """A place-shaped phrase in dialogue that NO map bears, built out of one of
     our own names.
@@ -519,6 +561,14 @@ def main():
         print("\n  %d version disagreement(s):\n" % len(vbad))
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
+
+    nbad = check_near_collisions(surfaces)
+    if not nbad:
+        print("  no name is another with a vowel dropped.")
+    else:
+        print("\n  %d near-collision(s):\n" % len(nbad))
+        for what, why in nbad:
+            print("   %-30s %s" % (what, why))
 
     fbad = check_phantom_places()
     if not fbad:

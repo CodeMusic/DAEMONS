@@ -5,6 +5,38 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.165 — 2026-09-11
+
+### 2.7a reversed the same day — `LABEL`, `CLUSTER`, and EXEGGCUTE moves
+
+- ***The rule promoted this morning is withdrawn, and the git log is what killed it.*** **`LABL` and
+  `CLUSTR` landed 2026-08-31 in the Game Boy build; `CLUSTER` landed 2026-09-10 in the Kanto sweep and
+  had never existed there at all.** *So `CLUSTR` was never avoiding a collision —* ***EXEGGCUTE walked
+  into one that was ten days old, and the newcomer is the one that moved.***
+- **`LABL` → `LABEL`, `CLUSTR` → `CLUSTER`, and EXEGGCUTE `CLUSTER` → `BOOTSTRAP`** — *which sharpens
+  that line's own joke rather than spending it:* ***bootstrap aggregating is literally how an `ENSEMBLE`
+  is built***, and a bootstrap is a thing that starts itself, which is an egg.
+- ***8.2b's register was the argument all along.*** **The technical surface is `HEAP`, `STACK`, `FORK`,
+  `THREAD`, `PACKET` — every one the undisguised word** — *so `LABL` was the odd one out against our own
+  rule, not merely against a dictionary.* **A game teaching these ideas should spend its first three
+  names on the terms themselves.**
+- **And the paradigm was never carried by the spelling.** *`LABEL` → `RUBRIC` → `CANON` is one
+  annotation, then a scoring scheme, then the authoritative body; `CLUSTER` → `LOCUS` → `MANIFOLD` is a
+  group of points, then a defined set, then a surface.* ***The progressions were doing the whole job and
+  the missing letter was decoration on top of them.***
+
+### The check that could not see it, and the three narrowings that failed
+
+- ***Exact-duplicate testing passes `CLUSTR` beside `CLUSTER` because they are different strings.***
+  **On a party screen they are one word with a letter knocked out.**
+- **The narrowing took four attempts and the three failures are the useful record:** *edit distance 1
+  reports 23 pairs and all are fine (`LOCK`/`LICK`, `LATIAS`/`LATIOS`); stripping vowels **equates
+  `SCAN` with `SUICUNE`**; inserting any character still reports 13 (`MUTE`/`MUTED`, `LOCK`/`BLOCK`).*
+- ***Inserting a VOWEL is the misspelling case and reports nothing at all now.*** **Verified by
+  restoring all three old names and watching it fail.**
+
+---
+
 ## v11.164 — 2026-09-11
 
 ### T-34 — 2.7a, and the missing letter promoted to a rule

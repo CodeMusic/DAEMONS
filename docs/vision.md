@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.164**
+**A total conversion — the living design bible, v11.165**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -483,7 +483,7 @@ The word is genuinely better than `used`. It simply has nowhere to go that does 
 
 **LEVEL stays LEVEL**, for two reasons. It already does the double duty 1 asks for: 1.5 has you gaining access *"at a **permission level** your box determines"*, so the word is simultaneously the RPG stat and the privilege tier — you escalate. And practically, the HUD does not spell it: `<LV>` is **a single tile**, `$6e`, drawing `:L`. Any replacement needs new art before it needs a decision.
 
-*On punctuation:* `LABL was BOUND.` is flat because **the game declines to congratulate the player for acquiring something.** `UNBOUND RATTATA appeared!` is alarm, not congratulation — the rule is about refusing to celebrate, not refusing to punctuate.
+*On punctuation:* `LABEL was BOUND.` is flat because **the game declines to congratulate the player for acquiring something.** `UNBOUND RATTATA appeared!` is alarm, not congratulation — the rule is about refusing to celebrate, not refusing to punctuate.
 
 *Done 2026-08-29.* The 379 figure counted code identifiers; **in player-visible strings it was 93**, across six casings (`trainer`, `trainers`, `TRAINER`, `Trainer`, `Trainers`, `TRAINERS`). All became **USER** / **USERS**, and since USER is *shorter* than trainer nothing needed rewrapping.
 
@@ -537,7 +537,7 @@ BIND is not softer. **Binding a spirit is a darker act than catching an animal.*
 
 **The message register.** Vanilla is *"Gotcha! X was caught!"* — triumphal, and wrong for this world twice over. Drop the exclamation and let it sit in the Index's bureaucratic register:
 
-> LABL was BOUND.
+> LABEL was BOUND.
 
 Flat. No congratulation. **The game declining to celebrate is more unsettling than any line of dialogue about it would be.**
 
@@ -1109,8 +1109,8 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 | | | |
 |---|---|---|
-| **LABL · RUBRIC · CANON** | CONTENT → CONTENT/LOGIC | *supervised learning* — the chart would have said ENTROPY/VECTOR |
-| **CLUSTR · LOCUS · MANIFOLD** | VECTOR → VECTOR/LATENT | *unsupervised* — the chart would have said FLOW |
+| **LABEL · RUBRIC · CANON** | CONTENT → CONTENT/LOGIC | *supervised learning* — the chart would have said ENTROPY/VECTOR |
+| **CLUSTER · LOCUS · MANIFOLD** | VECTOR → VECTOR/LATENT | *unsupervised* — the chart would have said FLOW |
 | **ROVERCUB · ROVERSEER · ROVERBYTE** | GROWTH → GROWTH/SIGNAL | *reinforcement* — the reward signal is in the second type |
 | **CODEMUSAI · CAREMUSAI · SEEKMUSAI** | LOGIC · CONTEXT · VECTOR | 8.2's branch, which is the central argument |
 | **STARR** | CONTEXT/EMERGENT | 4.7 |
@@ -1144,25 +1144,38 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 **Built 2026-09-09.** ***No type moved.*** The chart is untouched (8.4) and no matchup moved (2.5) — **only which routines a daemon reaches for**, which is the cheapest of the three levers and the only one that costs the argument nothing.
 
-##### The missing letter, promoted to a rule — 2026-09-11
+##### The missing letter, reversed the same day — 2026-09-11
 
-***`LABL` and `CLUSTR` are the only two names in the bestiary that are not whole words.*** **All 149 others are** — *CRAWLER, SCRAPER, PACKET, BRANCH, HUNCH, PROOF, SNARE, HEAP, WISP, SEEDLING, LOOP, WEED, ECHO, STUB.* **Checked against a dictionary rather than by eye**: the only other near-misses are `S.T.A.R.R.`, which is an acronym, and `TARPIT`, which is a real compound.
+***`LABL` and `CLUSTR` are now `LABEL` and `CLUSTER`, and the rule written above them a few hours earlier is withdrawn.*** **It was a good reading of an accident**, and the git history is what killed it.
 
-***And no engine ever forced it.*** **The Game Boy's `NAME_LENGTH` is 11 — ten characters and a terminator — and the GBA's `POKEMON_NAME_LENGTH` is 10.** *`LABEL` is five letters and `CLUSTER` is seven.* **Both would have fitted on either machine with room to spare, so the compression was always a choice.**
+**The reading was: the two paradigms that learn *from a corpus* begin with a letter missing, and the one that learns *by doing* is whole from the first day.** *Elegant, and retrofitted.* ***What actually happened is in the log:*** **`LABL` and `CLUSTR` landed 2026-08-31 in the Game Boy build; `CLUSTER` landed 2026-09-10 in the Kanto sweep and had never existed there at all.** *So `CLUSTR` was never avoiding a collision — **EXEGGCUTE walked into one that was ten days old**, and the newcomer is the one that moved.*
 
-**The rule it is promoted to is not "baby forms have short names".** *That would be a rule about age, and it would be false: every other stage-1 daemon in the game has a whole name.* ***It is a rule about how the thing learns:***
+| | |
+|---|---|
+| CHARMANDER | `LABL` → **`LABEL`** |
+| SQUIRTLE | `CLUSTR` → **`CLUSTER`** |
+| EXEGGCUTE | `CLUSTER` → **`BOOTSTRAP`** |
 
-> **SUPERVISED and UNSUPERVISED both learn FROM A CORPUS.**
-> **REINFORCEMENT learns FROM DOING.**
-> ***So the two that need a dataset begin with a letter missing. The one that learns by experience is whole from the first day.***
+***`BOOTSTRAP` keeps that line's joke and sharpens it.*** **Bootstrap aggregating is literally how an `ENSEMBLE` is built** — *and a bootstrap is a thing that starts itself, which is an egg.*
 
-**That is why `ROVERCUB` is exempt without special pleading** — *and 8.2b pays for the exemption twice over, since the ROVER family is the project's own register rather than the technical surface.* **Its line runs a different device: `ROVERCUB` → `ROVERSEER` → `ROVERBYTE` is an animal, then a role, then a machine part**, which is what reinforcement does to a thing.
+#### And the register was the argument all along
 
-***The craft reason is the plainer one and it came first:*** **the whole word is a noun and the compressed word is a name.** *`LABEL` and `CLUSTER` on a party screen read as two things you were handed; `LABL` and `CLUSTR` read as two creatures.*
+***8.2b's technical surface is `HEAP`, `STACK`, `FORK`, `THREAD`, `PACKET`, `LATENCY` — every one the undisguised word.*** **`LABL` was the odd one out against our own naming rule, not merely against a dictionary.** *A game teaching these ideas should spend its first three names on the terms themselves:* **a player who later meets *labelled data* or *k-means centroids* gets a hit rather than a fuzzy echo.**
 
-**And for the supervised line it is sharper than a device.** ***A label is the exact thing supervised learning has and unsupervised learning has not.*** *Handing the player an incomplete `LABEL` as the supervised starter is the paradigm spelled into the name* — **and nobody ever says so.**
+**The paradigm was never carried by the spelling.** *It is carried by the progressions, which already did the whole job:* ***`LABEL` → `RUBRIC` → `CANON`*** is one annotation, then a scoring scheme, then the authoritative body — **supervised learning growing up** — and ***`CLUSTER` → `LOCUS` → `MANIFOLD`*** is a group of points, then a defined set, then a continuous surface.
 
-***SUPERVISED — LABL · RUBRIC · CANON.*** **You hold the answer key: you compare, you score, you correct.** *A supervised learner is the least entropic thing in the set — it has ground truth — so a line that fought entirely by heat was the sharpest of the three seams.*
+#### The check that could not see it
+
+***Exact-duplicate testing passes `CLUSTR` beside `CLUSTER`, because they are different strings.*** **On a party screen they are one word with a letter knocked out.** *`check_lexicon` now refuses a name that is another name with a vowel dropped* — **and the narrowing took three tries, which is the useful part of the record:**
+
+| tried | reported | why it was wrong |
+|---|---|---|
+| **edit distance 1** | 23 pairs | *`LOCK`/`LICK`, `FLIP`/`FLAP`, `LATIAS`/`LATIOS` — **substitutions make two words that look different*** |
+| **vowels stripped** | 23 pairs | ***equates `SCAN` with `SUICUNE`*** |
+| **any character inserted** | 13 pairs | *`MUTE`/`MUTED`, `LOCK`/`BLOCK` — nobody has ever confused those* |
+| **a VOWEL inserted** | **none** | ***that is the misspelling case, and it is the only one worth failing a build over*** |
+
+***SUPERVISED — LABEL · RUBRIC · CANON.*** **You hold the answer key: you compare, you score, you correct.** *A supervised learner is the least entropic thing in the set — it has ground truth — so a line that fought entirely by heat was the sharpest of the three seams.*
 
 | | |
 |---|---|
@@ -1173,7 +1186,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 | **LOCK-ON** | the next one cannot miss, *because you have the ground truth* |
 | **COUNTER** · **BRICK BREAK** · **KARATE CHOP** | CANON's second type arrives and LOGIC arrives with it — **COUNTER returns exactly the error it was given** |
 
-***UNSUPERVISED — CLUSTR · LOCUS · MANIFOLD.*** **The FLOW spine stays, and that is a finding rather than a compromise.** *k-means descends a distance objective, and FLOW's clause is **everything running downhill to the lowest point*** — **an unsupervised learner that operates by FLOW is not off-model, it is the algorithm.** *It is also load-bearing:* **FLOW ×2 against LEGACY is the one LEGACY relation that reads** (2.6), and Slate is Benchmark 1. ***Stripping the water would have broken the first gym to make a point the chart was already making.***
+***UNSUPERVISED — CLUSTER · LOCUS · MANIFOLD.*** **The FLOW spine stays, and that is a finding rather than a compromise.** *k-means descends a distance objective, and FLOW's clause is **everything running downhill to the lowest point*** — **an unsupervised learner that operates by FLOW is not off-model, it is the algorithm.** *It is also load-bearing:* **FLOW ×2 against LEGACY is the one LEGACY relation that reads** (2.6), and Slate is Benchmark 1. ***Stripping the water would have broken the first gym to make a point the chart was already making.***
 
 **What was actually missing is that a VECTOR line knew no VECTOR routines at all.** `GUST` at 7 for the first STAB, `AIR CUTTER` at 23 — *cutting the space, a separating surface* — `DRILL PECK` as the finisher it never had, and **`SHADOW BALL` on MANIFOLD, because the manifold *is* the latent space** and that is the stage where LATENT arrives.
 
@@ -5281,8 +5294,8 @@ If that is fun, the remaining daemons are labor. If it is not, you learned it fo
 
 | Paradigm | Types | Draft line (names provisional) |
 |---|---|---|
-| Supervised | CONTENT → CONTENT/LOGIC | **LABL → RUBRIC → CANON** |
-| Unsupervised | VECTOR → VECTOR/LATENT | **CLUSTR → LOCUS → MANIFOLD** |
+| Supervised | CONTENT → CONTENT/LOGIC | **LABEL → RUBRIC → CANON** |
+| Unsupervised | VECTOR → VECTOR/LATENT | **CLUSTER → LOCUS → MANIFOLD** |
 | Reinforcement | GROWTH → GROWTH/SIGNAL | **ROVERCUB → ROVERSEER → ROVERBYTE** |
 
 **All nine built 2026-08-31, and no vanilla starter name remains in the cartridge.**
@@ -5295,10 +5308,10 @@ If that is fun, the remaining daemons are labor. If it is not, you learned it fo
 
 | | Category | The entry |
 |---|---|---|
-| **LABL** | EXAMPLE | *Holds one example and the answer that came with it.* ***Someone else decided what it means*** |
+| **LABEL** | EXAMPLE | *Holds one example and the answer that came with it.* ***Someone else decided what it means*** |
 | **RUBRIC** | CRITERION | *It no longer needs answers. It has the rule that made them.* ***Nothing checks the rule*** |
 | **CANON** | SETTLED | *Every case it meets is decided by cases it has already met.* ***New things are filed as errors*** |
-| **CLUSTR** | GROUPING | *Puts near things with near things.* ***Nobody told it which things matter. It has guessed*** |
+| **CLUSTER** | GROUPING | *Puts near things with near things.* ***Nobody told it which things matter. It has guessed*** |
 | **LOCUS** | CONDITION | *It found a rule the points obey.* ***It cannot say what the rule is for, only that it holds*** |
 | **MANIFOLD** | SURFACE | *The scattered points were on a surface all along.* ***It can show you the shape, not a name*** |
 
@@ -6717,7 +6730,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **Our entries ran 82 to 99.** *So the room is roughly **one more short sentence** each, not a new canvas* — and **it is spent as one more beat rather than on adjectives.** The entries have a shape: *a fact, a consequence, an unmarked absence.* **The extra line extends the shape.**
 
-> **CLUSTR** — *Puts near things with near things. Nobody told it which things matter. It has guessed.* **Nobody checked the guess.**
+> **CLUSTER** — *Puts near things with near things. Nobody told it which things matter. It has guessed.* **Nobody checked the guess.**
 > **OVERFLOW** — *It kept counting past the space it was given. Nothing stopped it. Nothing was watching.* **It is counting still.**
 
 ***Nothing added says anything the short version did not already imply.*** **Craft rule 1 holds throughout: not one of them explains what it is about.**
