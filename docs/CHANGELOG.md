@@ -5,6 +5,30 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.151 — 2026-09-10
+
+### The Open log swept — ten entries that were not open
+
+- ***8.7's rule about unswept rulings, applied to the log that 8.7 is written in.*** **Six entries were
+  questions the project had already answered and gone on answering** — the STREAM notification (T-12),
+  the Musai branch (T-02), the forty-two `fight`s (T-07), the ~154 `#MON`s (T-08), the leaders'
+  mechanics (5.3b), and ***"Ty is absent from the endgame — statement or loose thread?"***, which 8.2a
+  answers in so many words and 4.34 then answered again.
+- **Four more were jobs living in the log instead of in TODO**, which is the one thing CLAUDE.md says
+  the split exists to prevent: ***the Open log holds a question and TODO holds a job.*** `PC` → `PORT`
+  is **T-31**, the nineteen type-word lines are **T-32**, `MOON STONE` is **T-33**, the starter names
+  are **T-34**.
+- **One was a duplicate.** *Callow and The Bleed's shared music had been carried in both files for a
+  week* — it is **T-05**, blocked on a track that does not exist.
+- ***The nineteen type-word lines were not stale, they were unblocked.*** **They were held until 5
+  settled the Benchmark leaders, and 5.3b settled them**, so the hold expired without anybody noticing.
+
+***The finding is the same one this week keeps producing:*** **a surface read end to end shows what no
+diff does.** *Nothing here was wrong when it was written. Six of them stopped being true and the file
+had no way to notice.*
+
+---
+
 ## v11.150 — 2026-09-10
 
 ### 4.34's four scenes are in the ROM — T-27, T-28, T-29, T-30

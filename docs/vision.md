@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.150**
+**A total conversion — the living design bible, v11.151**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7119,35 +7119,35 @@ Kept here because the reasoning is worth more than the outcome.
 - ~~The six new leader names are unbuilt~~ **In the ROM 2026-09-10 (5.3a), with 127 lines of dialogue swept to match.** *What is still unbuilt is the mechanics* — the parties, Doldrum's healing trainers and Scorn's fixed roll
 - ~~The Review Board has no names~~ **Named 2026-09-10 (6): PHLEGMATIC, CHOLERIC, MELANCHOLIC, SANGUINE**, and the two mismatched types corrected with them — *Choleric is LOGIC and Sanguine is EMERGENT*
 - **SUSPENDED is CONTEXT's concept; whether the six sleep moves are retyped onto it is a balance question** (2.7). Moving them takes GROWTH's only sleep move away and hands CONTEXT six — 2.5's rule says rebalance moves before matchups
-- **Four of the thirteen retyped daemons are still 78% off-type** — the Musai branch and STARR (2.7). The three starters are done (2.7a); the same treatment is owed to the other four
+- ~~Four of the thirteen retyped daemons are still 78% off-type~~ **Done 2026-09-10 (T-02).** *100% in fact, all nineteen.* **`tools/port_musai.py` takes the branch to 37%, under 2.7's 45% baseline** — and ***S.T.A.R.R. was already at 25%***: the 78% was the thirteen's average carried onto a name that did not deserve it
 - ~~The CONTENT register for ROUTINES~~ **Settled 2026-09-09 (2.8): the instruction set.** *Say the name; if you then have to say what it does, it is not CONTENT*
 - ~~`THRASH` and `HARDEN`~~ **Cleared (2.8).** `SIGNAL BEAM` is now unblocked by 2.9's SWARM register — **`GOSSIP`** — and waits only on the SWARM batch
 - ~~The ROUTINES pass~~ **Done 2026-09-10 (2.10): 269 of 356, and every routine the player can meet.** *The 87 left are reachable by nothing in this game* — **they wait on the bestiary, not on a decision**
 - **Does THRASHING want an owner** (2.7), or is "the state no type owns" the point? LOGIC is the candidate — a system so busy reasoning about itself it makes no progress
 - **THROTTLED's five strays** (2.7). SIGNAL owns it six to five; the strays are the question
-- **The STREAM has no overworld notification** (9.16). The host reports unseen shows once you are already watching one, and the item description carries the rule; a real marker wants a map object
-- **`PC` → `PORT` is decided and not swept** (1.7). Four menu strings and ~25 dialogue lines, and `\nPC` has no word boundary in front of it, so it is a `port_vocab.py` pass
+- ~~The STREAM has no overworld notification~~ **Built 2026-09-10 (T-12).** *Nine told-flags out of T-17's block and the same per-step hook the VS SEEKER uses* — **told, not seen: a show you skipped does not nag, and a new MARK still announces**
+- ~~`PC` → `PORT` is decided and not swept~~ ***Decided is not a question.*** **Moved to TODO T-31** — *four menu strings, ~25 dialogue lines, and `\nPC` has no word boundary in front of it*
 - **PKRS still says PKRS** (9.15). Its tile no longer borrows LEAKING's colour, but the name is vanilla and the condition has no place in the lexicon yet
 - Does the player meet Scorn before Halftone Tower?
 - Does RECURSION justify engine work in the slice, or defer?
 - How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?
 - Are the humors too neat? Four is convenient; the real theory had temperaments blending.
 - Does **Al** get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
-- Ty is absent from the endgame by design. Does that read as a statement or as a loose thread?
+- ~~Ty is absent from the endgame by design. Does that read as a statement or a loose thread?~~ ***It reads as a loose thread, and 8.2a is the answer: Act 2 is the islands.*** **Closed twice over** — *4.34 then put him in the Warehouse handing you something for his mother, and 4.17's not-visiting is still a choice on both sides*
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - ~~The bestiary naming register is undecided~~ **It had been decided in practice and never written down** (8.2b). *The 72 that shipped run three registers at once* — **technical surface for the bestiary, myth for the legendaries, the project's own names for the MUSAI and ROVER families** — and the fork in the log was answered by 4.26 without anyone noticing
 - **69 species beyond Kanto are meetable and unnamed** (8.2b), all of them reached through the Sevii Islands. **8.2a's ruling holds: name nothing there**
 - The supervised starter slot is **yours to pick** (8.2)
-- **Callow and The Bleed share their music** with other maps, so 8.1's second theme needs new `songs.asm` entries first (7.3)
+- ~~Callow and The Bleed share their music~~ **It was already TODO T-05**, *carried in both places for a week.* **Blocked on a track that does not exist, not on a decision**
 - ~~57 `catch` / `caught` instances remain in dialogue~~ **Done 2026-08-31**, caught in play: the capture message still read *PACKET was caught!*. **55 instances rewritten.** The only survivor is *catchy tune*, which is a song
-- **MOON STONE still wants a name** — tied to a place rather than a paradigm, so it belongs with the town pass (8.2)
+- ~~MOON STONE still wants a name~~ **Moved to TODO T-33.** *It was waiting on the town pass and the town pass is done*
 - `Corpel` collides with **Team Corpus** and is still in 8.2's table — CODEX proposed
-- Starter daemon names are placeholders and need a pass.
+- ~~Starter daemon names are placeholders and need a pass~~ **Moved to TODO T-34.** *A pass is a job*
 - Should ORPHAN be bindable at all, or only witnessed? *Lean: bindable — a blank entry sitting in your own collection is worth more than a blank entry you only heard about.*
-- Nineteen `type word + DAEMON` dialogue lines still name vanilla types, nearly all in gyms — held until 5 settles the Benchmark leaders (1.2)
-- Forty-two `fight` occurrences want a human read; some are the replaced verb, some are people (1.2)
-- Roughly 154 `#MON` occurrences read singular by default and want a human read at step 8 — on screen, not in the source (1.2)
+- ~~Nineteen `type word + DAEMON` dialogue lines still name vanilla types — held until 5 settles the leaders~~ ***5.3 and 5.3b settled them, so the hold is over and this is a job:*** **TODO T-32**
+- ~~Forty-two `fight` occurrences want a human read~~ **Read 2026-09-10 (T-07).** *Three buckets and the read was the job* — **four were the TYPE in lower case, eleven were 1.2's replaced verb, and the rest are people.** *It also turned up the help system's own copy of the chart*
+- ~~Roughly 154 `#MON` occurrences read singular by default~~ **Read 2026-09-10 (T-08).** *POKéMON is its own plural and DAEMON is an ordinary noun that is not.* **25 sentences force it and were done one at a time**; the rest are genuinely singular or attributive
 - Does a non-canonical ROM load in Gen1Recomp at all? One afternoon answers it; do not design around either answer first (8.5)
 - How many Index entries should disagree between editions — five? twelve? — before it stops being unsettling and starts being a gimmick? (8.4)
 - Is edition-exclusivity fair when link trading needs two people, two carts and a cable, and most players will have one? *Lean: yes — the Index was never going to be completable, and 4.2 says so.*
