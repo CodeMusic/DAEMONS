@@ -5,6 +5,11 @@ Not the story as the player meets it — that is
 says what is available at each point. **This is what happened**, in the order it
 happened, which is an order no player is ever given.
 
+> **Reconciled against the bible at v11.169, 2026-09-11.**
+> *Neither of these is built from anything, so nothing except this line
+> says how far behind they are. `check_lexicon.py` reports the gap, and
+> refuses any name in here that the game no longer uses.*
+
 *Internal.* It contains the 4.10 sequence and Ty Clear's parentage, both of
 which `CLAUDE.md` keeps out of public writing.
 

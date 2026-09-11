@@ -3,6 +3,11 @@
 Not the story as designed — the story **in the order a player actually meets
 it**, with what they can know at each point and what they cannot yet.
 
+> **Reconciled against the bible at v11.169, 2026-09-11.**
+> *Neither of these is built from anything, so nothing except this line
+> says how far behind they are. `check_lexicon.py` reports the gap, and
+> refuses any name in here that the game no longer uses.*
+
 *Internal document.* It contains the 4.10 order and the inference beats, which
 `CLAUDE.md` keeps out of public writing.
 
@@ -194,8 +199,8 @@ the only difference a player will consciously notice, and it is the whole of
 Act 2's argument arriving as grammar.*
 
 One thing carries over without being remarked on: **the mainland has names and
-the islands have numbers.** Places *on* them are named — KINDLE ROAD, BOND
-BRIDGE, TREASURE BEACH — labels applied by whoever arrived first, on an island
+the islands have numbers.** Places *on* them are named — SMOKE ROAD, LONGCROSS,
+FINDERS BEACH — labels applied by whoever arrived first, on an island
 nobody named.
 
 **What the player has:** eight MARKS, a full party, and no further test.

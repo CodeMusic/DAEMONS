@@ -274,6 +274,46 @@ def read(rel, pat):
     return re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
 
 
+def check_story_freshness():
+    """How far behind the bible each story document says it is.
+
+    T-38: these two are prose with no build behind them, so no diff can tell
+    you they have drifted -- story-readthrough.md was a whole act behind and
+    nothing said so. The stale-NAME check above catches the objective half.
+    This is the other half, and it is REPORTED RATHER THAN FAILED on purpose.
+
+    A story document legitimately trails the bible by a few versions; failing
+    a build for that is the crying-wolf failure this project has already had
+    twice today. What is not legitimate is nobody knowing, so the number is
+    printed every run whether it is zero or forty.
+    """
+    cl = os.path.join(DOCS, "CHANGELOG.md")
+    if not os.path.isfile(cl):
+        return []
+    heads = re.findall(r"(?m)^## v(\d+(?:\.\d+)*)\s+—", open(cl, encoding="utf-8").read())
+    if not heads:
+        return []
+    top_v = heads[0]
+    out = []
+    for rel in ("docs/story.md", "docs/story-readthrough.md"):
+        p = os.path.join(ROOT, rel)
+        if not os.path.isfile(p):
+            continue
+        m = re.search(r"Reconciled against the bible at v(\d+(?:\.\d+)+)",
+                      open(p, encoding="utf-8", errors="ignore").read())
+        if not m:
+            out.append((rel, "carries no reconciled-against line"))
+        elif m.group(1) != top_v:
+            try:
+                gap = vkey(top_v)[-1] - vkey(m.group(1))[-1]
+                out.append((rel, "reconciled at v%s, bible is v%s -- %d behind"
+                            % (m.group(1), top_v, gap)))
+            except Exception:
+                out.append((rel, "reconciled at v%s, bible is v%s"
+                            % (m.group(1), top_v)))
+    return out
+
+
 def check_vanilla_index():
     """A renamed daemon whose Index entry is still Kanto's, word for word.
 
@@ -566,6 +606,21 @@ def check_stale_names():
                if o not in live and not re.search(r"[a-z]", o) and len(o) > 2}
 
     out = []
+    #  THE STORY DOCUMENTS TOO. They are prose with no build behind them, so
+    #  nothing has ever checked them -- and story-readthrough.md was naming
+    #  KINDLE ROAD, BOND BRIDGE and TREASURE BEACH a day after the islands were
+    #  renamed. A markdown paragraph WRAPS, so the text is flattened before
+    #  matching: "BOND\nBRIDGE" is one name, and the first scan of this missed
+    #  exactly that one for exactly that reason.
+    for rel in ("docs/story.md", "docs/story-readthrough.md"):
+        p = os.path.join(ROOT, rel)
+        if not os.path.isfile(p):
+            continue
+        prose = re.sub(r"\s+", " ", open(p, encoding="utf-8", errors="ignore").read())
+        for old, new in renamed.items():
+            if re.search(r"\b%s\b" % re.escape(old), prose):
+                out.append((rel, "says %s; the game calls it %s" % (old, new)))
+
     for root, dirs, files in os.walk(os.path.join(GBA, "data")):
         for fn in files:
             if fn != "text.inc":
@@ -653,6 +708,13 @@ def main():
         print("\n  %d version disagreement(s):\n" % len(vbad))
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
+
+    sfresh = check_story_freshness()
+    if sfresh:
+        for what, why in sfresh:
+            print("  ..  %-28s %s" % (os.path.basename(what), why))
+    else:
+        print("  both story documents are reconciled to the current bible.")
 
     ibad = check_vanilla_index()
     if not ibad:

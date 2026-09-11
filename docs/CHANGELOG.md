@@ -5,6 +5,26 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.169 — 2026-09-11
+
+### T-38 — the story documents, split into the half a machine can judge
+
+- ***Two documents with no build behind them, so no diff could ever say they had drifted.*** **The
+  ticket asked for staleness to be VISIBLE. It is now partly CHECKABLE, which is better, and the part
+  that cannot be is reported rather than failed.**
+- **`check_lexicon` refuses a name in either document that the game no longer uses.** *It caught three
+  on its first run* — **`KINDLE ROAD`, `TREASURE BEACH` and `BOND BRIDGE`**, *a single day after the
+  islands were renamed, in the very paragraph that explains the naming rule.*
+- ***And `BOND BRIDGE` was missed by the first scan, because the paragraph wraps it across a line.***
+  **Prose is flattened before matching now** — *the fourth time today that one seam has hidden
+  something, after `ROCK SMASH`, `EXP. SHARE` and "too scared to move".*
+- **The other half is a `Reconciled against the bible at vX` line in each document, and it is REPORTED,
+  NOT FAILED.** *A story document legitimately trails the bible by a few versions, and failing a build
+  for that is the crying-wolf failure this project has already had twice today.* ***The number prints
+  every run whether it is zero or forty***, which is the whole of what the ticket asked for.
+
+---
+
 ## v11.168 — 2026-09-11
 
 ### T-33 — the stone already had a name, and five other items did not
