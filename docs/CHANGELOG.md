@@ -5,6 +5,31 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.172 — 2026-09-11
+
+### T-46 — all four coherence flags report none, and three of them are rulings
+
+- ***23 daemons, not 32.*** **The ticket counted flag LINES**, and `SILENT TYPE` and `NO STAB` name the
+  same nine creatures twice.
+- ***T-36's central finding held a second time:*** **the dominant fault is a SECOND TYPE WHOSE
+  VOCABULARY NEVER APPEARS.** *Five daemons had a SWARM half that never showed up; six had a VECTOR or
+  STRATUM half that never did.* **So most of this was restoration rather than invention, exactly as it
+  was in September's pass** — 18 substitutions, one routine out and one in, so the count and the pacing
+  are untouched.
+- **Twelve more for `MIXED SIGNAL` and `LATE TYPE`, mostly two routines trading places:** *DREAD
+  startles at 1 instead of 11, STARTLE's first on-type moves from 29 to 15, PERIPHERY's from 34 to 17.*
+- ***`PROTEUS` needed the same fix twice.*** **Vanilla splits that learnset on `#if defined(FIRERED)` /
+  `#elif defined(LEAFGREEN)`** — the Attack forme and the Defense forme — *so the first substitution
+  fixed one edition and the tool went on reporting the other.*
+- ***And three are not fixed, deliberately.*** **`SYMBOL`, `REPAY` and `PREMISE` know exactly one
+  routine each, and in all three the single routine IS the creature:** *`PRIOR`'s type is decided by the
+  individual carrying it; `PRESENT` helps or harms at random; and `WRITE` is all a premise knows before
+  it becomes three different arguments.* **Each has a ruling in the tool now, so the next reader meets a
+  decision rather than a gap.**
+- **Off-type overall 42 per cent against 2.7a's 45 per cent baseline.**
+
+---
+
 ## v11.171 — 2026-09-11
 
 ### T-45 — fifty-two island daemons, and PROTEUS put back

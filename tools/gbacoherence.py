@@ -101,6 +101,34 @@ EXEMPT = {
         "LATENT on a creature that is not. Swapping it for a CONTENT primitive "
         "would fix the report and delete the creature. 2.8's own counter-test "
         "cuts this way: the routine IS the thing itself here",
+
+    #  T-46. Three daemons know exactly ONE routine between them, and in all
+    #  three cases the single routine is the creature. An on-type second
+    #  routine would clear the flag and cost more than the flag is worth.
+    ("SYMBOL", "SILENT TYPE"):
+        "it knows one routine, PRIOR, and PRIOR's type is decided by the "
+        "individual carrying it. The tool reads the table's base type and sees "
+        "CONTEXT unused; in play it is whatever this one turned out to be. A "
+        "daemon called SYMBOL whose only routine means something different in "
+        "every copy is the joke, and it is vanilla's joke sharpened rather "
+        "than ours invented",
+    ("SYMBOL", "NO STAB"):
+        "same single routine, stated in the numbers",
+    ("REPAY", "SILENT TYPE"):
+        "it knows one routine, PRESENT, which helps or harms at random -- "
+        "vanilla's own one-move creature, and 8.2b's name is built on it: "
+        "'the amounts have never matched and it keeps coming.' Giving it a "
+        "FROZEN routine would make it a competent ice type and delete a gift "
+        "nobody can predict",
+    ("REPAY", "NO STAB"):
+        "same single routine, stated in the numbers",
+    ("PREMISE", "SILENT TYPE"):
+        "it knows one routine, WRITE, and becomes three different daemons "
+        "depending on how it grew -- which is what a premise does. 2.7f named "
+        "it for the argument triad on exactly that reading, so an on-type "
+        "second routine would be arguing with the name",
+    ("PREMISE", "NO STAB"):
+        "same single routine, stated in the numbers",
 }
 
 
