@@ -5,7 +5,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-## v11.155 — 2026-09-11
+## v11.156 — 2026-09-11
 
 ### docs/story.md — the story in the order it happened
 
@@ -41,6 +41,40 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - **T-38**: both story files go stale silently. **Every other surface has a tool or a check;
   these two are prose, so the check cannot be a diff** — a *last reconciled against vX* line
   would at least make the staleness visible.
+## v11.155 — 2026-09-10
+
+### T-37 — a ROUTINE is invoked, an item is used, everywhere now
+
+- ***1.6's rule reached the battle log and the menu and stopped there.*** **Now it is on the map
+  dialogue, the help system, the battle prompts and the TM descriptions** — *four surfaces, 140-odd
+  blocks.*
+- ***Most `use` survived, and that is the rule working rather than an omission.*** **A TM is an item**,
+  so *"I used TMs to teach good ROUTINES"* and *"Using it writes the ROUTINE into a daemon"* were
+  already correct. **Thirteen blocks are frozen** because the word is the verb or the PC's own `MOVE`
+  command.
+- ***Three false positives, each caught before anything was written:*** **"I'm too scared to move!"**,
+  **"mimic my every move?"** and **"you may need to just move to a new town"** — all three came out as
+  ROUTINE in a dry run. *Every one is a phrase split across a line break*, which is why the guard had
+  to stop being per-line and become **per-block**. **The first only surfaced because it overflowed the
+  box**, so the later passes read every changed line instead of only the wide ones.
+- **A pre-existing 291px line turned up in the matchup pane** — *43px past vanilla's own widest, shipped
+  and never measured.* **The help pane's budget is 248px, not 196**, and that number is vanilla's
+  widest line rather than a guess.
+- **Two TM descriptions would not fit three lines once ROUTINE replaced move**, so they are said more
+  tightly rather than wrapped to four.
+
+### The STREAM's fifteen lesson titles
+
+- ***Vanilla's are the same sentence in different clothes*** — *"Teach me how to battle."*, *"How do I
+  register an item?"*, and eight of *"About the X MARK."* **Widest was 146px; widest now is 124px, and
+  none of them is a question.**
+- **Written after reading the shows rather than off the old titles.** *HOSTING's script ends "A hosted
+  DAEMON is running. It is just not running here."* — **so the title is `Still running elsewhere`.**
+  Beside it: `The first exchange` · `When a process stalls` · `Reading the chart` ·
+  `Binding a stranger` · `What a TM costs` · `One item, one button`.
+- ***The eight MARK shows stay plain — `The SLATE MARK`, and so on down.*** **A list where every row
+  reaches for a phrase has no shape**, and the marks are the institutional half of it: *they are
+  certificates, and a certificate does not get a turn of phrase.*
 
 ---
 
