@@ -127,11 +127,12 @@ TEXT = {
     "ITEM_IAPAPA_BERRY": ["A hold item that restores HP but",
                           "may cause THRASHING when used."],
 
-    #  The TMs. "move" is deliberately left alone -- 1.6 records that
-    #  move -> routine inside prose is the ROUTINES pass, not this one.
-    "ITEM_TM06":         ["A move that leaves the foe",
-                          "CASCADING. Its damage",
-                          "worsens every turn."],
+    #  The TMs. "move" is NO LONGER left alone: the ROUTINES pass (T-37)
+    #  swept prose to ROUTINE, and this table is authored, so a re-run was
+    #  reverting it. Anything port_vocab sweeps has to be current HERE too.
+    "ITEM_TM06":         ["A ROUTINE that leaves the foe",
+                          "CASCADING. Its damage worsens",
+                          "every turn."],
     "ITEM_TM13":         ["An icy-cold beam is shot at the",
                           "foe. It may leave the",
                           "target HUNG."],
@@ -153,9 +154,9 @@ TEXT = {
     "ITEM_TM38":         ["The foe is incinerated with",
                           "an intense flame. It may leave",
                           "the target OVERHEATED."],
-    "ITEM_TM42":         ["An attack move that becomes very",
-                          "powerful if the user is LEAKING,",
-                          "OVERHEATED or THROTTLED."],
+    "ITEM_TM42":         ["An attack ROUTINE that becomes",
+                          "very powerful if the user is",
+                          "LEAKING, OVERHEATED or THROTTLED."],
 
     #  Three of OUR OWN descriptions had no line break at all and ran to 290,
     #  288 and 245 pixels in a box whose ceiling is 198 -- found by measuring
@@ -195,8 +196,8 @@ NAMED = {
     "ITEM_BLACK_BELT":     ("LOGIC GAIN",    ["Rules applied step by step, not",
                                               "intuition. Gain lifts one",
                                               "channel: this one is LOGIC."]),
-    "ITEM_SHARP_BEAK":     ("VECTOR GAIN",   ["A direction in a space of",
-                                              "meanings. Gain lifts one",
+    "ITEM_SHARP_BEAK":     ("VECTOR GAIN",   ["A direction that never touches",
+                                              "the ground. Gain lifts one",
                                               "channel: this one is VECTOR."]),
     "ITEM_POISON_BARB":    ("CORRUPT GAIN",  ["Data that has been tampered",
                                               "with. Gain lifts one channel:",
@@ -204,9 +205,9 @@ NAMED = {
     "ITEM_SOFT_SAND":      ("STRATUM GAIN",  ["The layer everything else runs",
                                               "on. Gain lifts one channel:",
                                               "this one is STRATUM."]),
-    "ITEM_HARD_STONE":     ("LEGACY GAIN",   ["Deprecated hardware, still",
-                                              "running. Gain lifts one channel:",
-                                              "this one is LEGACY."]),
+    "ITEM_HARD_STONE":     ("LEGACY GAIN",   ["Old material everything else has",
+                                              "had time to work on. Gain lifts",
+                                              "one channel: this one is LEGACY."]),
     "ITEM_SILVER_POWDER":  ("SWARM GAIN",    ["Many small agents; no single one",
                                               "matters. Gain lifts one channel:",
                                               "this one is SWARM."]),
@@ -302,9 +303,9 @@ NAMED = {
     "ITEM_AMULET_COIN":    ("SURCHARGE",     ["Charged on top of the agreed",
                                               "rate. Doubles prize money if",
                                               "the holder took part."]),
-    "ITEM_UP_GRADE":       ("SERVICE PACK",  ["Everything that was fixed since",
-                                              "the release, in one bundle.",
-                                              "Made by SILPH CO."]),
+    "ITEM_UP_GRADE":       ("SERVICE PACK",  ["Everything that was fixed",
+                                              "since the release, in one",
+                                              "bundle. Made by FOUNDRY CO."]),
     "ITEM_DRAGON_SCALE":   ("SCALING LAW",   ["What happens to a thing when",
                                               "you only make it bigger.",
                                               "A JETSTREAM may be holding it."]),
