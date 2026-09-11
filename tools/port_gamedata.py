@@ -174,8 +174,14 @@ def main():
     report = []
 
     #  species and moves: our source lists them in ID order
+    #  ABILITY_NAME was missing from this list until 2026-09-11, which is why
+    #  the bridge went on reporting TORRENT at a daemon whose ability the ROM
+    #  calls SPILLOVER. Nothing errored; the agent was told the wrong word about
+    #  the thing it was holding. Found by widening check_agent_vocab to cover
+    #  abilities -- the tool and the check were blind in the same place.
     for key, path, macro in (("SPECIES_NAME", "src/data/text/species_names.h", "SPECIES"),
-                             ("MOVE_NAME", "src/data/text/move_names.h", "MOVE")):
+                             ("MOVE_NAME", "src/data/text/move_names.h", "MOVE"),
+                             ("ABILITY_NAME", "src/data/text/abilities.h", "ABILITY")):
         try:
             ours = names_from_header(path, macro)
         except FileNotFoundError:

@@ -40,6 +40,11 @@ GBA  = os.path.join(ROOT, "engineGba")
 #  The lexicon, as what must never appear. Value is what it should have been,
 #  so a failure tells you the fix rather than just the fault.
 BANNED = [
+    #  The town names match the Capitalised form as well as the SHOUTED one.
+    #  They were upper-only, so "head back to Pewter" in the agent's own notes
+    #  was invisible to every run of this check. Found by testing the checker
+    #  against a sentence it should have caught rather than by reading it.
+    #  Glossary rows still carry the vanilla name and EXEMPT still skips them.
     (r"Pok[eé]mon",       "DAEMON"),
     (r"\bPOKEMON\b",      "DAEMON"),
     (r"Pok[eé] ?Ball",    "BOX"),
@@ -48,16 +53,16 @@ BANNED = [
     (r"Professor Oak",    "CRYSTAL CLEAR"),
     (r"PROF\.? ?OAK",     "CRYSTAL CLEAR"),
     (r"\bOAKS?_",         "CRYSTALS_"),
-    (r"\bPALLET\b",       "BLANCHE"),
-    (r"\bVIRIDIAN\b",     "CALLOW"),
-    (r"\bPEWTER\b",       "SLATE"),
-    (r"\bCERULEAN\b",     "DOLDRUM"),
-    (r"\bLAVENDER\b",     "HALFTONE"),
-    (r"\bCELADON\b",      "VERDIGRIS"),
-    (r"\bFUCHSIA\b",      "LURID"),
-    (r"\bSAFFRON\b",      "BRAZEN"),
-    (r"\bCINNABAR\b",     "QUICKSILVER"),
-    (r"\bVERMILION\b",    "ARDOR"),
+    (r"\b(?:PALLET|Pallet)\b",       "BLANCHE"),
+    (r"\b(?:VIRIDIAN|Viridian)\b",     "CALLOW"),
+    (r"\b(?:PEWTER|Pewter)\b",       "SLATE"),
+    (r"\b(?:CERULEAN|Cerulean)\b",     "DOLDRUM"),
+    (r"\b(?:LAVENDER|Lavender)\b",     "HALFTONE"),
+    (r"\b(?:CELADON|Celadon)\b",      "VERDIGRIS"),
+    (r"\b(?:FUCHSIA|Fuchsia)\b",      "LURID"),
+    (r"\b(?:SAFFRON|Saffron)\b",      "BRAZEN"),
+    (r"\b(?:CINNABAR|Cinnabar)\b",     "QUICKSILVER"),
+    (r"\b(?:VERMILION|Vermilion)\b",    "ARDOR"),
     (r"DAEMON MART",      "THE REPO"),
     (r"DAEMON CENTER",    "CHECKPOINT"),
     #  1.6's six states. The bridge was handing the model the RAM's vanilla
@@ -83,13 +88,29 @@ BANNED = [
 #  replacement a short distance later, with a pipe between them.
 EXEMPT = re.compile(r"\|[^|]{0,40}\*\*[A-Z]")
 
+#  The glossary teaches the agent "OURS / vanilla", and the agent then writes
+#  that pair back in its own notes -- "Need POTION, PRIORITY/Paralyze Heal, and
+#  USERBOXes". That is the table WORKING, not a leak: the vanilla word is there
+#  because ours is sitting against it. EXEMPT only knows the table's own row
+#  shape, so the inline form went unrecognised and was reported for days.
+GLOSSED = re.compile(r"[A-Z]{3,}(?:\s?[A-Z]{3,})*\s*[/(]\s*$")
+#  ...and the same gloss written the other way round: "Pewter/SLATE". Requires
+#  an ALL-CAPS token after the slash, which is how every name of ours is
+#  written, so "Pewter/Route 3" is still a leak.
+GLOSSED_AFTER = re.compile(r"^\s*[/(]\s*[A-Z]{3,}")
+
 #  Words that are also ordinary English. "navigation confusion" is not a status
 #  condition and "the poison type" in a sentence about the chart is not either.
 #  A checker that cries about these gets muted, and a muted checker finds
 #  nothing at all -- which is worse than the leak it was built for.
 INNOCENT = re.compile(
-    r"(?i)(navigation|avoid\w*|any|the)\s+confusion"
-    r"|confusion\s+(later|about|between)"
+    #  Any -ing or -ion word in front of it is describing a muddle, not naming
+    #  a state: navigation confusion, backtracking confusion. Listing them one
+    #  at a time meant the list was always one run behind the agent's prose.
+    r"(?i)"
+    r"\b\w+(?:ing|ion)\s+confusion"
+    r"|\b(any|the|more|less|some)\s+confusion"
+    r"|confusion\s+(later|about|between|here)"
 )
 
 def scan(label, text):
@@ -104,6 +125,13 @@ def scan(label, text):
             if EXEMPT.search(text[max(0, m.start() - 90):m.start()]):
                 continue
             if INNOCENT.search(text[max(0, m.start() - 20):m.end() + 20]):
+                continue
+            #  ...and the inline gloss: OURS immediately before it, slashed or
+            #  parenthesised. The agent is translating, which is the thing we
+            #  asked it to be able to do.
+            if GLOSSED.search(text[max(0, m.start() - 40):m.start()]):
+                continue
+            if GLOSSED_AFTER.search(text[m.end():m.end() + 40]):
                 continue
             a, b = max(0, m.start() - 45), min(len(text), m.end() + 45)
             found.append((label, m.group(0), want,
@@ -245,10 +273,85 @@ def derived_table_check():
     return bad
 
 
+def vanilla_name_check():
+    """Vanilla DAEMON names reaching the model, derived from the build.
+
+    The forbidding table lists towns and system words by hand, and a hand list
+    cannot hold 151 species. So none of them were checked -- and the prompt was
+    telling the agent to go and bind **Mewtwo**, by name, in the post-game
+    section. It had been there the whole time and nothing looked.
+
+    Same shape as the towns: ours-vs-upstream, so a species renamed tomorrow is
+    covered tonight. Short names are skipped because a three-letter vanilla name
+    is usually also an English word, and the glossary rows are exempt for the
+    reason every other row is.
+    """
+    bad = []
+    f = os.path.join(AI, "server", "prompts", "game.txt")
+    if not os.path.exists(f):
+        return bad
+    #  species AND abilities: both are renamed wholesale and neither can live
+    #  on a hand-written list. Abilities were the second half of the same hole
+    #  -- the prompt names Levitate, which is NO ADDRESS.
+    ours, pat = {}, r'\[(?:SPECIES|ABILITY)_(\w+)\]\s*=\s*_\("([^"]+)"\)'
+    van = ""
+    for rel in ("src/data/text/species_names.h", "src/data/text/abilities.h"):
+        p = os.path.join(GBA, rel)
+        if not os.path.exists(p):
+            continue
+        try:
+            v = subprocess.run(["git", "-C", os.path.realpath(GBA), "show",
+                                "upstream/master:" + rel],
+                               capture_output=True, text=True, timeout=20).stdout
+        except Exception:
+            return bad
+        van += v
+        ours.update(dict(re.findall(pat, open(p, encoding="utf-8").read())))
+    if not van:
+        return bad
+    texts = [("prompt (vanilla name)", open(f, encoding="utf-8").read())]
+    live = os.path.join(AI, "server", "gpt_data", "last_userInputText_prompt.txt")
+    if os.path.exists(live):
+        texts.append(("user prompt (vanilla name)",
+                      open(live, encoding="utf-8").read()))
+    for label, txt in texts:
+        for mid, v in re.findall(pat, van):
+            o = ours.get(mid)
+            if not o or o == v or len(v) < 5 or v == "??????????":
+                continue
+            for m in re.finditer(r"\b%s\b" % re.escape(v), txt, re.I):
+                if EXEMPT.search(txt[m.end():m.end() + 60]):
+                    continue
+                if EXEMPT.search(txt[max(0, m.start() - 90):m.start()]):
+                    continue
+                if GLOSSED.search(txt[max(0, m.start() - 40):m.start()]):
+                    continue
+                if GLOSSED_AFTER.search(txt[m.end():m.end() + 40]):
+                    continue
+                a0, b0 = max(0, m.start() - 45), min(len(txt), m.end() + 45)
+                bad.append((label, m.group(0), o,
+                            txt[a0:b0].replace("\n", " ").strip()))
+    return bad
+
+
+def authored_text():
+    """Everything we actually write that reaches the model."""
+    out = []
+    for rel in ("server/prompts/game.txt", "game_data_firered/mappings.json"):
+        p = os.path.join(AI, rel)
+        if os.path.exists(p):
+            out.append(open(p, encoding="utf-8", errors="ignore").read())
+    return "\n".join(out)
+
+
 def main():
     hits = []
+    live_hits = []
     hits += derived_table_check()
     hits += stale_ours_check()
+    named = vanilla_name_check()
+    hits += [h for h in named if not h[0].startswith("user prompt")]
+    live_hits += [h for h in named if h[0].startswith("user prompt")]
     hits += scan("developer prompt", render_developer_prompt())
 
     #  The last prompt actually sent -- from the LIVE run dir, which is plain
@@ -258,7 +361,7 @@ def main():
     #  picked an archive first, which is how this got noticed.
     live = os.path.join(AI, "server", "gpt_data", "last_userInputText_prompt.txt")
     if os.path.exists(live):
-        hits += scan("user prompt (live)", open(live, encoding="utf-8").read())
+        live_hits += scan("user prompt (live)", open(live, encoding="utf-8").read())
 
     maps = os.path.join(AI, "game_data_firered", "mappings.json")
     if os.path.exists(maps):
@@ -266,8 +369,27 @@ def main():
         for table, val in raw.items():
             hits += scan("mappings.json/%s" % table, json.dumps(val))
 
+    #  THE LIVE PROMPT IS A SNAPSHOT, NOT A SURFACE WE AUTHOR. A hit in it means
+    #  the LAST RUN saw that word, which is two different things: either the
+    #  word is still in something we write -- a real leak -- or we have already
+    #  fixed it and the file simply predates the fix. Reporting the second as a
+    #  fault is reporting history, which is the same mistake the archived
+    #  prompts caused, one directory along.
+    #
+    #  Demonstrated 2026-09-11: ABILITY_NAME went from 77 stale to 0, and the
+    #  live prompt went on saying TORRENT because it was written before that.
+    src = authored_text()
+    stale_snapshot = [h for h in live_hits
+                      if not re.search(r"\b%s\b" % re.escape(h[1]), src, re.I)]
+    hits += [h for h in live_hits if h not in stale_snapshot]
+
     if not hits:
         print("  no vanilla vocabulary reaches the model.")
+        if stale_snapshot:
+            print("  %d in the last run's prompt only, already fixed at source:"
+                  % len(stale_snapshot))
+            for label, word, want, ctx in stale_snapshot:
+                print("     %-16s now %s -- clears on the next run" % (word, want))
         return 0
     print("  %d vanilla word(s) still reaching the model:\n" % len(hits))
     for label, word, want, ctx in hits:
