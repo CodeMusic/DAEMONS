@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.156**
+**A total conversion — the living design bible, v11.157**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1176,6 +1176,32 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 ***It landed at 31%, below the 45% baseline rather than at it.*** **That is defensible for the three daemons a player carries for the whole game** — *the creatures that most need to be what they say they are* — but it was not the number aimed at, and it is recorded rather than rounded off.
 
 
+
+#### 2.7b The other sixty-nine, and the number that retired the question
+
+**Built 2026-09-10** — `tools/gbacoherence.py`, T-36. *2.7a did three lines out of seventy-two by hand.* **This reads all 151 daemons that now carry one of our names**, and ***the first thing it said was that the premise had moved:*** **off-type overall is 44% against 2.7a's 45% baseline.** *The bestiary is sitting exactly on coverage.* **Ranking on the percentage would have produced a list of nothing**, so the tool reports it and refuses to rank on it.
+
+***Which means the tool cannot score coherence, and does not try.*** **Whether ECHO invoking REFLECT reads right is a judgement, and nothing in a script can make it.** *So it finds the three faults that ARE computable — which are the three 2.7a found by hand — and then prints the learnset and gets out of the way.*
+
+| | |
+|---|---|
+| **SILENT TYPE** | a daemon **has** a type and knows **not one routine of it**. *ROVERBYTE's exact fault: GROWTH/SIGNAL, with the SIGNAL half never appearing.* **A type the creature never uses is a label, not a design** |
+| **NO STAB** | every damaging routine is off-type, so **the bonus never fires once** — *a daemon mechanically worse at everything it does than the chart says it is* |
+| **THIN OPENING** | everything **before level 10** is off-type. ***The first three things a creature does are what teach a player what it is*** |
+
+**19 · 4 · 41.** *And ROVERBYTE came back clean, because CARRIER is now in its list* — **the tool agreeing with a fix made by hand a day earlier is the only validation available and it is a good one.**
+
+***A flag that is correct has to be able to stop reporting.*** **`EXEMPT` is keyed by *(daemon, fault)* rather than by daemon**, so *a creature excused for one thing still reports the other two* — and **each entry carries its ruling**, because a report that accumulates permanent known noise stops being read, and the day it stops being read is the day a real flag hides in it. **STUB is the case that proves it**: 4.26 calls it *"a placeholder that does nothing, until it does"*, and **a stub that knows no routine of its own type IS the joke.** *The tool flags it; a human says that.* **PENDING and BUFFER are cocoons with no damaging routine to make on-type, and CRAWLER is a larva with one attack that evolves at 7.**
+
+#### The first three lines fixed — 2026-09-10
+
+***CHILLER is typed FLOW and only FLOW, and its entire list was FROZEN and CONTENT.*** *Seel's vanilla set carried across untouched, Ice and Normal the whole way, on a daemon we retyped for water.* **The type defended, it was read in the Index, and it never once ACTED.**
+
+**Two substitutions rather than one, because the two jobs sit at opposite ends of the curve.** `TRICKLE` takes level 1 from `COLLIDE` — *40 with the bonus is 60 against COLLIDE's 70, which is nothing*, and **the first routine is the one that teaches a player what the daemon is.** ***`DESCEND` could not sit there***: it would have been the only attack until 17, *and it spends a turn under water before it lands.* **So `DESCEND` takes 37 from `FORCE`**, where a charge turn is affordable — **the same 90 once the bonus applies, without the recoil** — and *it is FLOW's own clause as a verb, everything running downhill to the lowest point.* **A seal dives.** **CRYOGEN takes both**, at its own levels: *4.26's PORYGON2 rule, a line fixed at one stage is half a fix.*
+
+***CLAMPJAW was the last NO STAB that was not a joke.*** **Every damaging routine it knew was CONTENT or LOGIC**, so SWARM's bonus never fired. `FANOUT` replaces `LATCH` at 7 — ***LATCH is 15 and off-type, FANOUT is 14 × 2–5 hits with the bonus***, so it is stronger on every roll, and **a mandible daemon that sprays its holds outward reads better than one that binds a single target and waits.**
+
+**NO STAB now reports none. SILENT TYPE is down to thirteen**, and those thirteen are the open half of T-36.
 
 ### 2.8 The CONTENT register — settled 2026-09-09
 

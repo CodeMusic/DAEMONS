@@ -41,6 +41,29 @@ ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 ALL  = "--all" in sys.argv
 EARLY = 10          # "before level 10" -- the window a player meets it in
 
+#  Flags that are CORRECT and should stop reporting. Same device as
+#  check_lexicon's ALLOWED and for the same reason: a report carrying permanent
+#  known-noise stops being read, and the day it stops being read is the day a
+#  real flag hides in it. A name here is a ruling, not a dismissal, so each one
+#  carries why -- and the entry names the FLAG, so a daemon exempted for one
+#  fault still reports the other two.
+EXEMPT = {
+    ("STUB", "SILENT TYPE"):
+        "4.26 -- a placeholder that does nothing, until it does. A stub knowing "
+        "no routine of its own type IS the joke",
+    ("STUB", "NO STAB"):
+        "same joke, stated in the numbers",
+    ("CRAWLER", "NO STAB"):
+        "a larva with one attack is the genre's oldest shape, and it evolves at "
+        "7. It knows BACKLOG, so SWARM is not silent -- only its one DAMAGING "
+        "routine is off-type",
+    ("PENDING", "SILENT TYPE"):
+        "a cocoon. Knows PIN twice and nothing else; there is no routine to "
+        "make on-type",
+    ("BUFFER", "SILENT TYPE"):
+        "the other cocoon, same reason",
+}
+
 
 def read(rel):
     return open(os.path.join(GBA, rel), encoding="utf-8", errors="ignore").read()
@@ -141,15 +164,18 @@ def main():
         return 0
 
     print("  %d of our daemons have a learnset and a type\n" % len(rows))
-    for label, pick in (
+    excused = 0
+    for label, fault, pick in (
         ("SILENT TYPE  — has the type, knows not one routine of it",
-         lambda r: r["silent"]),
+         "SILENT TYPE", lambda r: r["silent"]),
         ("NO STAB      — every damaging routine is off-type",
-         lambda r: r["nostab"]),
+         "NO STAB", lambda r: r["nostab"]),
         ("THIN OPENING — everything before level %d is off-type" % EARLY,
-         lambda r: r["thin"] and not r["nostab"]),
+         "THIN OPENING", lambda r: r["thin"] and not r["nostab"]),
     ):
-        hit = sorted([r for r in rows if pick(r)],
+        flagged = [r for r in rows if pick(r)]
+        excused += sum(1 for r in flagged if (r["name"], fault) in EXEMPT)
+        hit = sorted([r for r in flagged if (r["name"], fault) not in EXEMPT],
                      key=lambda r: (r["pct"] is not None, r["pct"] or 0), reverse=True)
         print("  %s" % label)
         if not hit:
@@ -159,6 +185,12 @@ def main():
             extra = (" — " + ", ".join(r["silent"])) if r["silent"] else ""
             pct = "  no damaging routine" if r["pct"] is None else "%3d%% off-type" % r["pct"]
             print("     %-12s %-18s %s%s" % (r["name"], "/".join(r["types"]), pct, extra))
+        print()
+
+    if excused:
+        print("  %d flag(s) excused, each with a ruling:" % excused)
+        for (who, fault), why in sorted(EXEMPT.items()):
+            print("     %-10s %-13s %s" % (who, fault, why))
         print()
 
     tot_off = sum(len(r["off"]) for r in rows)
