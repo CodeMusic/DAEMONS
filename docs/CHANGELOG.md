@@ -5,6 +5,32 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.167 — 2026-09-11
+
+### 2.10a — `KILL` and `WEED` decided, and the test caught a third word
+
+- ***The ticket asked for a decision on two words. Both stay*** — **and the check that settled the first
+  one turned up a third that nobody had decided anything about.**
+- ***`KILL` is not a tonal break, and the evidence is that the lexicon already held the whole event.***
+  **`KILL` is the routine (`GUILLOTINE`), `SIGKILL` is a daemon (`SCIZOR`), and `DETACH` is what vanilla
+  calls fainting.** *You kill a process and it detaches.* **Two halves of one event, each named
+  correctly — with the middle term sitting in the bestiary the whole time and nobody putting the three
+  together.**
+- ***Its three siblings agree, and a SET is testable where one word is not.*** `GUILLOTINE` → **`KILL`**,
+  `SHEER COLD` → **`TERMINATE`**, `HORN DRILL` → **`WIPE`** — *and `FISSURE` was still `FISSURE`.*
+  **A vanilla geological word among three process words, learnable at level 41, when 2.10's rule is to
+  name every routine the player can meet.**
+- **`FISSURE` → `SEGFAULT`.** ***A segmentation fault is a fatal fault in the layer everything else runs
+  on, and 2.6's STRATUM is "the physical layer everything else runs on"*** — *so it is now the only one
+  of the four whose name says which layer it breaks.*
+- **`WEED` is settled by the line it is in:** `WEED` → `BLIGHT` → `BADSEED` → `GOLDSET`. *The other
+  reading exists in isolation and does not survive three evolutions of agriculture.*
+- ***The general form is worth more than either ruling.*** **A word with two readings is disambiguated
+  by its neighbours, so the test is never the word alone — it is the word among the four things next to
+  it.** *That is how `KILL` was cleared and `FISSURE` caught, in the same look.*
+
+---
+
 ## v11.166 — 2026-09-11
 
 ### T-40 — thirty Index entries, and two wrong counts on the way to them

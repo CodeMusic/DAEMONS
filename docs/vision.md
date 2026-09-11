@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.166**
+**A total conversion — the living design bible, v11.167**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1581,6 +1581,43 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***What is left is genuinely unreachable.*** **The 87 remaining are learned by no daemon in this game, taught by no TM and used by no trainer** — *they belong to species the bestiary has not reached.* <span>OPEN</span>, **and it waits on 8.2 rather than on a decision.**
 
+
+### 2.10a `KILL` and `WEED` — decided, 2026-09-11
+
+***T-43 existed to make two words a decision instead of an oversight.*** **Both are decided: they stay.** *And the test that settled the first one turned up a third word that was an oversight, which is the useful part.*
+
+#### `KILL` is not a tonal break. It is one third of a system already in the lexicon
+
+**The instinct was that a genre where creatures *faint* should not have a routine called `KILL`.** *That is true of the genre and false here*, and ***the evidence is that the lexicon already contains the whole event and nobody had noticed it:***
+
+| | | |
+|---|---|---|
+| **`KILL`** | the routine | *`GUILLOTINE`* — **the verb you send** |
+| **`SIGKILL`** | a daemon | *`SCIZOR`* — **the signal that cannot be caught, handled or ignored** |
+| **`DETACH`** | the outcome | *what vanilla calls fainting* — **what happens at the other end** |
+
+***You kill a process and it detaches.*** **Those are not two registers in collision; they are the two halves of one event, each named correctly**, and the middle term was sitting in the bestiary the whole time.
+
+#### And its three siblings agree, which is the check that decided it
+
+**The four one-hit-KO routines are a set, and a set is testable in a way one word is not:**
+
+| | |
+|---|---|
+| `GUILLOTINE` | **`KILL`** |
+| `SHEER COLD` | **`TERMINATE`** |
+| `HORN DRILL` | **`WIPE`** |
+| `FISSURE` | ***still `FISSURE`*** |
+
+***`KILL` and `TERMINATE` are the two words an operating system actually uses***, and `WIPE` is what happens to the data. **Three of the four were already in register. The one that was not had never been renamed at all** — *a vanilla geological word sitting among three process words, reachable at level 41, and 2.10's rule is to name every routine the player can meet.*
+
+**`FISSURE` → `SEGFAULT`.** ***A segmentation fault is a fatal fault in the layer everything else runs on, and STRATUM is 2.6's "physical layer everything else runs on"*** — *so the type and the routine now say the same thing, and it is the only one of the four whose name states which layer it breaks.*
+
+#### `WEED` is settled by the line it is in
+
+**`WEED` → `BLIGHT` → `BADSEED` → `GOLDSET`.** *The other reading exists in isolation and does not survive three evolutions of agriculture.* **A player meeting `WEED` and then `BLIGHT` is not thinking about anything but plants**, and ***2.8's rule applies to the whole line rather than to a word held up on its own.***
+
+*The general form, which is worth more than either ruling:* **a word with two readings is disambiguated by its neighbours, so the test is never the word alone — it is the word among the four things next to it.** ***That is how `KILL` was cleared and how `FISSURE` was caught, in the same look.***
 
 ### 2.11 The abilities — a register that is not a verb
 
