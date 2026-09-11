@@ -5,6 +5,46 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.152 — 2026-09-10
+
+### The harness had not heard about any of it
+
+- ***A day of renames landed in the ROM and none of them reached the agent.***
+  **`mappings.json` was stale by 80 species, 266 routines and 121 items** — *the table it reads
+  every name out of* — **so it has been looking at a party, a bag and a battle described almost
+  entirely in vanilla.** Regenerated with `port_gamedata`.
+- ***`game.txt` was worse, because it does not describe — it instructs.*** **Every HM is
+  renamed** — CUT→`PRUNE`, FLY→`GOTO`, SURF→`TRAVERSE`, STRENGTH→`DISPLACE`, FLASH→`VERBOSE` —
+  **and the prompt told the agent in five places to teach FLY and SURF as early as possible.**
+  *It would have searched a move list for two names that are not in it.* **ICE HEAL said
+  `PREEMPT`**, true for four days and now `WATCHDOG`; **the PC is the `PORT`** (T-01) and the
+  prompt said PC four times.
+- **An HM row was added with the rule attached**, because five names do not generalise to the
+  other 261: ***every routine in this game is renamed, so read the name off the screen and
+  never reach for a vanilla one.***
+
+### And a third surface for check_agent_vocab
+
+- ***The forbidding table catches VANILLA words reaching the model. It cannot catch OUR OWN
+  words gone stale***, and that has now happened three times: **`INTERRUPT`→`PREEMPT`→`WATCHDOG`,
+  `CLARIFIER`→`CC-7` three times inside the opening sequence, and 266 routines including the
+  two HMs the prompt names.** *Every one is a word this project chose and then changed, so no
+  list of forbidden words will ever contain it.* **Only the build can catch it**, and it does
+  now — vanilla's `move_names.h` against ours, against the prompt.
+- **Routines only, deliberately.** *Items and species appear in the prompt inside
+  vanilla-to-ours mapping rows where naming the vanilla side is the row's whole job* — the same
+  EXEMPT problem the forbidding table already has — **while a routine name in this prompt is
+  always an instruction to go and use it.**
+- **Three of its first four findings were false positives, and two were kept as exemptions
+  with reasons**: `BIND` is 1.5's verb and `GROWTH` is a type name. ***The third was fixed in
+  the data instead*** — the nickname examples were `SPARK` and `EMBER`, both renamed routines,
+  and they are now `JOLT` and `CINDER`. **Better for the data to be unambiguous than for the
+  checker to know about an exception.**
+- **T-35**: `port_gamedata` belongs *inside* a rename rather than after one. *The prompt half is
+  checked now; the mappings half still relies on someone running it.*
+
+---
+
 ## v11.151 — 2026-09-10
 
 ### The Open log swept — ten entries that were not open

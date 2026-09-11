@@ -118,6 +118,66 @@ def render_developer_prompt():
                          cwd=os.path.join(AI, "server"))
     return out.stdout
 
+def stale_ours_check():
+    """Names the PROMPT asserts that the build no longer has.
+
+    This is the SECOND failure mode and the forbidding table cannot see it.
+    That table catches VANILLA words reaching the model. This catches OUR OWN
+    words gone stale -- which has now happened three times:
+
+        INTERRUPT  became PREEMPT became WATCHDOG, and game.txt said PREEMPT
+        CLARIFIER  became CC-7, and game.txt said CLARIFIER three times inside
+                   the opening sequence, which the agent follows literally
+        SURF, FLY  became TRAVERSE and GOTO along with 264 other routines, and
+                   the prompt went on telling the agent to teach FLY and SURF
+
+    Every one of those is a word this project chose and then changed, so no
+    list of forbidden words will ever contain it. Only the build can catch it.
+
+    ROUTINES ONLY, deliberately. Item and species names appear in the prompt
+    inside vanilla-to-ours mapping rows where naming the vanilla side is the
+    row's whole job -- the same EXEMPT problem the forbidding table already
+    has -- while a routine name in this prompt is always an instruction to go
+    and use it.
+    """
+    #  Ours for a DIFFERENT reason, each with the reason. Same device as
+    #  check_lexicon's ALLOWED and needed for the same cause: one word can
+    #  legitimately belong to two of our own surfaces at once.
+    OURS_ELSEWHERE = {
+        "BIND":   "1.5's verb -- you BIND a daemon. The move BIND is LATCH",
+        "GROWTH": "a TYPE name (2.2). The move GROWTH is SCALE UP",
+    }
+    bad = []
+    f = os.path.join(AI, "server", "prompts", "game.txt")
+    ours_f = os.path.join(GBA, "src/data/text/move_names.h")
+    if not (os.path.exists(f) and os.path.exists(ours_f)):
+        return bad
+    try:
+        van = subprocess.run(["git", "-C", os.path.realpath(GBA), "show",
+                              "upstream/master:src/data/text/move_names.h"],
+                             capture_output=True, text=True, timeout=20).stdout
+    except Exception:
+        return bad
+    if not van:
+        return bad
+    pat = r'\[MOVE_(\w+)\]\s*=\s*_\("([^"]+)"\)'
+    ours = dict(re.findall(pat, open(ours_f, encoding="utf-8").read()))
+    txt = open(f, encoding="utf-8").read()
+    #  A table row that maps vanilla to ours names both sides on purpose.
+    body = "\n".join(l for l in txt.split("\n")
+                     if not (l.lstrip().startswith("|") and "**" in l))
+    for mid, v in re.findall(pat, van):
+        o = ours.get(mid)
+        if not o or o == v or len(v) < 3 or v in OURS_ELSEWHERE:
+            continue
+        n = len(re.findall(r"\b%s\b" % re.escape(v), body))
+        if n:
+            bad.append(("prompt (stale ours)", v, o,
+                        "%d place(s) -- the game renamed this routine and the "
+                        "prompt did not" % n))
+    return bad
+
+
 def derived_table_check():
     """Compare the BRIDGE's own lookup tables against the game they read.
 
@@ -188,6 +248,7 @@ def derived_table_check():
 def main():
     hits = []
     hits += derived_table_check()
+    hits += stale_ours_check()
     hits += scan("developer prompt", render_developer_prompt())
 
     #  The last prompt actually sent -- from the LIVE run dir, which is plain
