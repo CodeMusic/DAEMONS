@@ -187,6 +187,20 @@ open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
 
 **`objcopy --pad-to 0x9000000` pads every build to a flat sixteen megabytes**, so the file size is the same whatever the cartridge holds. *The real figure is the linker's high-water mark* — which is what `gbabudget.py` reconstructs out of the map, and it agrees with `--print-memory-usage` to the byte.
 
+### 11. `sMapsecName_X undeclared here (not in a function)` after a rename
+
+***Symptom:*** *a mapsec rename builds nothing, and the undeclared symbol is the NEW name.*
+
+**`region_map_entry_strings.h` and `region_map_entries.h` are both generated from `region_map_sections.json` and both gitignored** — and after renaming `BIRTH ISLAND` the strings header held **the old symbol carrying the new string**, `sMapsecName_BIRTH_ISLAND[] = _("THE ANNEX")`, while the entries header, from the same JSON on the same run, referred to `sMapsecName_THE_ANNEX`. *Only one of the two had moved.*
+
+***Delete both and let the generator start from nothing.*** *That produced the matching pair, and `tools/port_sevii.py` now removes them on every write so the rename cannot half-apply.* **Why one regenerated and the other did not has not been established** — which is the reason to delete rather than to reason about it.
+
+### 12. A new `text.inc` that links to nothing
+
+***Symptom:*** *`undefined reference to 'MapName_Text_Whatever'` for a string you can see on disk.*
+
+**A map directory is not a build input.** *`data/event_scripts.s` lists every `scripts.inc` and every `text.inc` by hand*, and **a map that never had dialogue has no `text.inc` line to copy** — the event islands are the ones this bites, because nobody could reach them so nobody ever wrote a line for them. ***Add the `.include` yourself.***
+
 ---
 
 ## 5. Two habits worth keeping

@@ -5,6 +5,53 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.150 — 2026-09-10
+
+### 4.34's four scenes are in the ROM — T-27, T-28, T-29, T-30
+
+- **T-27, the lab.** ***The silence version.*** *Vanilla walks her up to your door after the Review
+  Board and escorts you in; none of it happens.* **You come out of your house after the biggest thing
+  you have done and for the first time nobody is waiting, and nothing says so.** Done by leaving one
+  scene var at a value the on-frame table has no entry for — ***no script was deleted and two of them
+  simply have no way to run.*** **The GLOBAL INDEX is handed over by a man at a desk, on being spoken
+  to.**
+- ***The note is the object everything downstream re-reads***, so it is one string and it never
+  changes. **"In a careful hand" is the whole tell and nothing points at it** — *a woman taken out of
+  a building does not leave a tidy note.* The clause that only parses if she knew is **"does not need
+  me in the room to continue"**, which reads as ordinary modesty the first time. *The aide has read it
+  and got nothing out of it: "I read it. It is about the entries."*
+- **The 60-species gate went with the escort, deliberately.** *An aide saying "you have not earned it
+  yet" reinstates assessment at the exact moment 8.2a's tone rule removes it.* ***It is now the first
+  thing in the game given to you without a test.***
+- **T-28, the Owl.** ***The player only ever hears one side*** — not economy, but the safest way to
+  write it: **the machine's argument never has to be written down, so it can never say the thesis.**
+  *That is also 4.24's own structure with Act 1 inverted.* **He is not a fool and he is not beaten:**
+  the turn is him noticing that his own objection applies to him. ***The concession refuses the word
+  twice before making it.*** *Gate is a new `DaemonsPartyHasStarr` special — party, not caught,
+  because 4.34 says you **bring** the machine.*
+- **T-29, `THE ANNEX`.** ***The only one of the twenty-two island names not said by a person who
+  arrived*** — **nobody arrives there, so the name came off a form**, and *an annex is a building
+  attached to a bigger one, for what will not fit in it.* **The last scene moves there from the lab**,
+  which is the one thing 8.2a got wrong. *She does not ask how you got here.* **Deoxys is turned off:
+  a legendary ten tiles from the ending would be absurd.**
+- **T-30, the gold.** ***The inversion is done by order and nothing else*** — the buried name is what
+  you read first now and the gold one is last, and **no line remarks on it.** *4.4 calls the leaf "not
+  a gesture, a fact with a date", so repainting it would be a gesture.* **Nobody touches the sign. It
+  stops holding.**
+
+### engine.md gains traps 11 and 12, both from T-29 and neither from the scene
+
+- ***A mapsec rename half-applied.*** **`region_map_entry_strings.h` held the OLD symbol carrying the
+  NEW string** while the entries header, *from the same JSON on the same run*, used the new one —
+  undeclared symbol at compile. **Deleting both generated headers produced the matching pair**, and
+  `port_sevii.py` now removes them on every write. ***Why one regenerated and the other did not has
+  not been established***, which is the reason to delete rather than reason about it.
+- ***A map directory is not a build input.*** **`BirthIsland_Exterior` had no `text.inc` at all** — an
+  event island nobody could reach, so nobody had ever written a line for it — *and a new one has to be
+  listed in `event_scripts.s` by hand.*
+
+---
+
 ## v11.149 — 2026-09-10
 
 ### 4.34 — the Act 2 ending, and the release is a re-reading

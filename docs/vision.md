@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.149**
+**A total conversion — the living design bible, v11.150**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3803,9 +3803,13 @@ Corpus rooms, and the trainer table.
 
 **4. The sign is not repainted.** *4.4 is explicit that the gold over `CLEAR LABORATORY` is **"not a gesture; it is a fact with a date"**.* **Restoring it is a victory lap, and the one thing this game never does is sneer at him** (see the open log on Brazen). ***So the gold simply is not holding.*** *More of the older letters show than did before. Nobody announced anything, and the player has to look — which is how they found it the first time.*
 
-#### What it costs, and the ruling it flips
+#### `THE ANNEX` — built 2026-09-10, and the one name nobody said
 
-***`BIRTH ISLAND` and `NAVEL ROCK` were left unnamed this morning under 2.10*** — *name what the player can meet in this game.* **If S.T.A.R.R. is the only way to one of them, a player meets it**, and the ruling flips for exactly one map. ***It is also the only place in the game reachable by nothing else***, which is worth more than either map is currently worth: *both are fully built and both are dead content.*
+***`BIRTH ISLAND` → `THE ANNEX`, and it is the only one of the twenty-two not named by a person who arrived.*** **Nobody arrives here.** *So the name came off a form* — **and the work is done by the gap between the word and the rock.** *An annex is a building attached to a bigger one, for what will not fit in it.* **Nothing in the game remarks on this**, and the contrast is the point: every other island place is a label a person applied, and this one is a label a system applied.
+
+***2.10's ruling flips for exactly this map.*** *`NAVEL ROCK` stays unnamed — nothing in this game reaches it.*
+
+**Deoxys and the triangle puzzle are turned off there.** ***A legendary standing ten tiles from the last scene would be absurd***, and it is one of 8.2b's sixty-nine unnamed besides.
 
 #### What is deliberately not here
 

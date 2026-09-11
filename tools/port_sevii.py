@@ -83,6 +83,12 @@ NAMED = {
     #  SEVEN ISLAND
     "CANYON ENTRANCE": ("THE WAY IN",     "the plainest label on the islands, and nobody improved on it"),
     "SEVAULT CANYON":  ("LONG DROP",      "a canyon said from the top of it"),
+    #  T-29 / 4.34. The twenty-second, and the only one in the set NOT named
+    #  by a person who arrived. Nobody arrives here. The name came off a form,
+    #  and it is the gap between the word and the rock that does the work: an
+    #  ANNEX is a building attached to a bigger one, for what will not fit.
+    #  Nothing in the game remarks on it.
+    "BIRTH ISLAND":    ("THE ANNEX",      "every other island name was said by a person. This one was filed"),
 }
 
 #  Kept, on purpose, each with the rule that keeps it. Reported every run so a
@@ -94,7 +100,7 @@ KEPT = [
     ("SEVII ISLE 6, 7, 8, 9, 22, 23, 24","carries its island's number, so nobody named it"),
     ("TANOBY RUINS / KEY / CHAMBERS",    "4.24: an alphabet nobody reads. The name is a transliteration"),
     ("MONEAN .. VIAPOIS CHAMBER",        "the same seven sounds, untranslated for the same reason"),
-    ("NAVEL ROCK, BIRTH ISLAND",         "2.10: no player of this game can reach either"),
+    ("NAVEL ROCK",                        "2.10: no player of this game can reach it"),
     ("CORPUS WAREHOUSE, USER TOWER",     "already ours, tier 1 and tier 0"),
 ]
 
@@ -183,6 +189,19 @@ def main():
     for old, new, why, px, ch, flag in changed:
         have[old]["name"] = new
     open(JSON, "w").write(json.dumps(doc, indent=2) + "\n")
+
+    #  ...and DELETE the two generated headers. Renaming BIRTH ISLAND left
+    #  region_map_entry_strings.h holding the OLD symbol with the NEW string
+    #  -- `sMapsecName_BIRTH_ISLAND[] = _("THE ANNEX")` -- while the entries
+    #  header, generated from the same JSON, referred to sMapsecName_THE_ANNEX.
+    #  The build then failed on an undeclared symbol. Removing both and
+    #  letting the generator start from nothing produced the right pair.
+    #  They are gitignored, so this costs a rebuild and nothing else.
+    for gen in ("region_map_entry_strings.h", "region_map_entries.h"):
+        p = os.path.join(GBA, "src", "data", "region_map", gen)
+        if os.path.exists(p):
+            os.remove(p)
+            print("  removed generated %s -- it regenerates from the JSON" % gen)
 
     #  ...and the hand-written symbols. This is the trap: region_map.c names
     #  sMapsecName_* by hand and the generator derives them from the name.
