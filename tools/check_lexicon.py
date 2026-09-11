@@ -43,6 +43,7 @@ file says a finished ticket is struck through and never deleted, so a missing
 number means one was.
 """
 import json, os, re, sys
+import subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
@@ -180,6 +181,43 @@ def read(rel, pat):
     if not os.path.isfile(f):
         return []
     return re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
+
+
+def check_conflict_markers():
+    """No tracked file may contain a merge conflict marker.
+
+    This is not hypothetical. docs/CHANGELOG.md carried `<<<<<<< HEAD`,
+    `=======` and `>>>>>>> main` IN THE TREE, committed, for several releases
+    -- and nobody noticed, because both sides of that merge were pure appends
+    and the file still read correctly to a human. A diff showed nothing wrong
+    because each side's text was fine; it took reading the whole file to find
+    the three lines that belonged to neither.
+
+    Cheap, and the only check here that would have caught it.
+    """
+    out = []
+    r = subprocess.run(["git", "-C", ROOT, "ls-files"], capture_output=True, text=True)
+    if r.returncode != 0:
+        return out
+    for rel in r.stdout.split("\n"):
+        if not rel or rel.endswith((".pdf", ".png", ".gba", ".gbc", ".mid", ".wav")):
+            continue
+        p = os.path.join(ROOT, rel)
+        if not os.path.isfile(p):
+            continue
+        try:
+            lines = open(p, encoding="utf-8", errors="ignore").read().split("\n")
+        except OSError:
+            continue
+        for i, line in enumerate(lines, 1):
+            if line.startswith(("<<<<<<< ", ">>>>>>> ")) or line.rstrip() == "=======":
+                #  a bare ======= is a legitimate markdown rule, so it only
+                #  counts when one of the real markers is in the same file
+                if line.rstrip() == "=======" and not any(
+                        l.startswith(("<<<<<<< ", ">>>>>>> ")) for l in lines):
+                    continue
+                out.append(("%s:%d" % (rel, i), line.strip()[:40]))
+    return out
 
 
 def check_stale_names():
@@ -334,6 +372,14 @@ def main():
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
 
+    cbad = check_conflict_markers()
+    if not cbad:
+        print("  no file carries a merge conflict marker.")
+    else:
+        print("\n  %d conflict marker(s) COMMITTED:\n" % len(cbad))
+        for what, why in cbad:
+            print("   %-44s %s" % (what, why))
+
     pbad = check_stale_names()
     if not pbad:
         print("  no dialogue names a place, move or daemon we renamed.")
@@ -348,7 +394,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad) else 0
 
 
 if __name__ == "__main__":
