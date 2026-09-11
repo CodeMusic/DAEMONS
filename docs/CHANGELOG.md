@@ -5,6 +5,45 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.153 — 2026-09-10
+
+### T-32, and a bug class the read turned up on the way
+
+- ***The ticket said nineteen lines and there were 124 candidates***, of which **36 were the type and
+  the rest were the English word.** *That ratio is 1.2's whole argument, stated as a measurement.*
+- **The gyms went first and the chart claims were checked before the words changed.** ***Our chart is
+  vanilla's plus exactly one line*** — CONTEXT → LATENT made mutual — *so every matchup those rooms
+  teach was still true and only the vocabulary was wrong.* **Nothing needed re-teaching.**
+- **Then the rest:** SWARM for the Pattern Bush collectors, FLOW on Route 20, FROZEN on Four Island,
+  CORRUPT in Lurid, CONTEXT on the Brazen gym sign, and ***EMERGENT five times in SANGUINE's room***,
+  where 6 had already made her that and nobody had told her.
+- ***Route 9's taunt was a pun on the word and the type, and the type is gone.*** **Rebuilt on SWARM —
+  *"you're outnumbered!"*** — rather than left as a joke with nothing under it.
+- **~70 lines are untouched and every one is the English word:** *"Ground floor opportunity!"*,
+  *"steel yourself"*, *"the first electric lock opened"*. **Two were never candidates** — the museum's
+  *"It looks like a rock to me"* and 4.33's *"I did not say the rock thinks."*
+
+### 37 lines named something the game no longer calls that
+
+- ***The player is told to use `CUT`, `FLY`, `DIG`, `DOUBLE-EDGE`, `MEGA PUNCH`, `ROCK SMASH` and
+  `ROCK SLIDE`*** — **none of which are those moves' names.** *They are PRUNE, GOTO, EXCAVATE,
+  CLOBBER, COMMIT, CRACK and CARRY.* **Plus four places and one daemon.**
+- ***Renaming a table is one edit; the prose naming it is in sixty-three other files***, and nothing
+  connected the two. **No diff ever showed it, because every one of those files was correct on the day
+  it was written.**
+- **`check_lexicon.py` now covers places, moves and species together**, derived ours-vs-upstream so a
+  rename made tomorrow is caught tonight. ***Two things it had to get right, both learned by getting
+  them wrong first:***
+  - **Read whole blocks.** *`ROCK SMASH` hid across a line break for weeks* — **and this morning's
+    Sevii sweep missed `BOND BRIDGE` in exactly the same seam.**
+  - **Never flag an old name that is now somebody else's name**, *or GROWTH the type reports every
+    line about GROWTH the move.*
+- *Verified by breaking it deliberately.* **`CUT` → `PRUNE` also broke grammar twice**, because *CUT is
+  its own past participle and PRUNE is not* — **a substitution pass cannot see that and a person has
+  to.**
+
+---
+
 ## v11.152 — 2026-09-10
 
 ### The harness had not heard about any of it
@@ -42,45 +81,6 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
   checker to know about an exception.**
 - **T-35**: `port_gamedata` belongs *inside* a rename rather than after one. *The prompt half is
   checked now; the mappings half still relies on someone running it.*
-
----
-
-## v11.152 — 2026-09-10
-
-### T-32, and a bug class the read turned up on the way
-
-- ***The ticket said nineteen lines and there were 124 candidates***, of which **36 were the type and
-  the rest were the English word.** *That ratio is 1.2's whole argument, stated as a measurement.*
-- **The gyms went first and the chart claims were checked before the words changed.** ***Our chart is
-  vanilla's plus exactly one line*** — CONTEXT → LATENT made mutual — *so every matchup those rooms
-  teach was still true and only the vocabulary was wrong.* **Nothing needed re-teaching.**
-- **Then the rest:** SWARM for the Pattern Bush collectors, FLOW on Route 20, FROZEN on Four Island,
-  CORRUPT in Lurid, CONTEXT on the Brazen gym sign, and ***EMERGENT five times in SANGUINE's room***,
-  where 6 had already made her that and nobody had told her.
-- ***Route 9's taunt was a pun on the word and the type, and the type is gone.*** **Rebuilt on SWARM —
-  *"you're outnumbered!"*** — rather than left as a joke with nothing under it.
-- **~70 lines are untouched and every one is the English word:** *"Ground floor opportunity!"*,
-  *"steel yourself"*, *"the first electric lock opened"*. **Two were never candidates** — the museum's
-  *"It looks like a rock to me"* and 4.33's *"I did not say the rock thinks."*
-
-### 37 lines named something the game no longer calls that
-
-- ***The player is told to use `CUT`, `FLY`, `DIG`, `DOUBLE-EDGE`, `MEGA PUNCH`, `ROCK SMASH` and
-  `ROCK SLIDE`*** — **none of which are those moves' names.** *They are PRUNE, GOTO, EXCAVATE,
-  CLOBBER, COMMIT, CRACK and CARRY.* **Plus four places and one daemon.**
-- ***Renaming a table is one edit; the prose naming it is in sixty-three other files***, and nothing
-  connected the two. **No diff ever showed it, because every one of those files was correct on the day
-  it was written.**
-- **`check_lexicon.py` now covers places, moves and species together**, derived ours-vs-upstream so a
-  rename made tomorrow is caught tonight. ***Two things it had to get right, both learned by getting
-  them wrong first:***
-  - **Read whole blocks.** *`ROCK SMASH` hid across a line break for weeks* — **and this morning's
-    Sevii sweep missed `BOND BRIDGE` in exactly the same seam.**
-  - **Never flag an old name that is now somebody else's name**, *or GROWTH the type reports every
-    line about GROWTH the move.*
-- *Verified by breaking it deliberately.* **`CUT` → `PRUNE` also broke grammar twice**, because *CUT is
-  its own past participle and PRUNE is not* — **a substitution pass cannot see that and a person has
-  to.**
 
 ---
 
