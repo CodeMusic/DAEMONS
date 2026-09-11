@@ -274,6 +274,71 @@ def read(rel, pat):
     return re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
 
 
+def check_vanilla_index():
+    """A renamed daemon whose Index entry is still Kanto's, word for word.
+
+    T-40: PULSAR was found describing "a geometric body the locals suspect is
+    an alien creature". port_index.py wrote the entries we HAD, and the ones we
+    never wrote kept vanilla's -- so the game named 166 daemons and went on
+    describing thirty of them as the creatures they replaced.
+
+    THE COMPARISON HAS TO APPLY OUR VOCABULARY FIRST. The sweep turned POKeMON
+    into DAEMON inside every entry, so a byte-for-byte diff against upstream
+    says almost nothing is vanilla -- which is exactly what the first
+    measurement of this ticket reported, and it was wrong by twenty.
+    """
+    import subprocess, importlib.util, io, contextlib
+    bad = []
+    names = os.path.join(GBA, "src/data/text/species_names.h")
+    if not os.path.isfile(names):
+        return bad
+    argv, sys.argv = sys.argv, ["port_vocab"]
+    try:
+        s = importlib.util.spec_from_file_location(
+            "pv", os.path.join(os.path.dirname(os.path.abspath(__file__)), "port_vocab.py"))
+        pv = importlib.util.module_from_spec(s)
+        with contextlib.redirect_stdout(io.StringIO()):
+            try:
+                s.loader.exec_module(pv)
+            except SystemExit:
+                pass
+    except Exception:
+        return bad
+    finally:
+        sys.argv = argv
+    if not hasattr(pv, "convert"):
+        return bad
+    pat = r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]+)"\)'
+    def up(rel):
+        r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                           capture_output=True, text=True)
+        return r.stdout if r.returncode == 0 else ""
+    ours = dict(re.findall(pat, open(names, encoding="utf-8").read()))
+    van = dict(re.findall(pat, up("src/data/text/species_names.h")))
+    renamed = {k for k in ours
+               if van.get(k) and ours[k] != van[k] and ours[k] != "??????????"}
+    if not renamed:
+        return bad
+    rx = r'const u8 g(\w+?)PokedexText\[\]\s*=\s*_\(\s*((?:"[^"]*"\s*)+)\)'
+    flat = lambda b: re.sub(r"\s+", " ",
+                            re.sub(r"\\[nlp]", " ",
+                                   "".join(re.findall(r'"([^"]*)"', b)))).strip()
+    norm = lambda s: re.sub(r"\W", "", s).upper()
+    for rel in ("src/data/pokemon/pokedex_text_fr.h", "src/data/pokemon/pokedex_text_lg.h"):
+        f = os.path.join(GBA, rel)
+        vsrc = up(rel)
+        if not os.path.isfile(f) or not vsrc:
+            continue
+        o = {norm(k): flat(b) for k, b in re.findall(rx, open(f, encoding="utf-8").read())}
+        v = {norm(k): b for k, b in re.findall(rx, vsrc)}
+        for k in sorted(renamed):
+            key = norm(k)
+            if key in o and key in v and o[key] == flat(pv.convert(v[key])):
+                bad.append(("%s (%s)" % (ours[k], os.path.basename(rel)),
+                            "Index entry is still %s's" % van[k]))
+    return bad
+
+
 def check_near_collisions(surfaces):
     """Two names where one is the other with a single character INSERTED.
 
@@ -567,6 +632,14 @@ def main():
         print("\n  %d version disagreement(s):\n" % len(vbad))
         for what, why in vbad:
             print("   %-16s %s" % (what, why))
+
+    ibad = check_vanilla_index()
+    if not ibad:
+        print("  no renamed daemon has a vanilla Index entry.")
+    else:
+        print("\n  %d vanilla Index entry(s) under our names:\n" % len(ibad))
+        for what, why in ibad:
+            print("   %-32s %s" % (what, why))
 
     nbad = check_near_collisions(surfaces)
     if not nbad:

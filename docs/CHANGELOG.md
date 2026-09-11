@@ -5,6 +5,36 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.166 — 2026-09-11
+
+### T-40 — thirty Index entries, and two wrong counts on the way to them
+
+- ***The ticket said ten. The number is thirty*** — **25 in FIRERED, 29 in LEAFGREEN.** *It had counted
+  only T-39's fourteen, which were the ones anybody had looked at.*
+- ***And the first measurement said ten as well, and was wrong for a better reason.*** **Comparing our
+  entries to upstream byte-for-byte reports almost everything as rewritten, because the vocabulary sweep
+  turned `POKéMON` into `DAEMON` inside every single one.** *The comparison has to apply our own
+  vocabulary to vanilla and diff against that.* **`PULSAR` — the daemon that raised this ticket, visibly
+  still describing "a geometric body the locals suspect is an alien creature" — did not appear in my own
+  first list.** ***That absence is what exposed the method, and it is the second time today a check
+  passed by not looking properly.***
+- **Thirty entries written to both editions**, in the voice the authored ones already keep: *short,
+  present tense, a process rather than a creature, and the last line lands.*
+  - **`GUARDIAN`** — *It stays at the door. Nothing has come. It has been right about that for years, and
+    will be wrong once.*
+  - **`GOLDSET`** — *Every answer in it was checked by hand, once, a long time ago. Nobody has checked
+    the hands.*
+  - **`STAMPEDE`** — *One of them moves and the rest resolve to move. Nothing decided this.*
+  - **`FUSE`** — *It fails on purpose, and first, so that the rest does not. Its whole working life is
+    one moment.*
+- **Same text in both editions**, *which holds the divergence reduction the ticket measured rather than
+  spending it* — 8.4's question of how many entries should disagree stays open and unspent.
+- **`check_lexicon` now refuses a renamed daemon whose Index entry is still Kanto's** — ***applying our
+  vocabulary before the diff, because the naive version is the mistake this very ticket made first.***
+  *Verified by restoring PULSAR's Kanto entry and watching it fail.*
+
+---
+
 ## v11.165 — 2026-09-11
 
 ### 2.7a reversed the same day — `LABEL`, `CLUSTER`, and EXEGGCUTE moves
