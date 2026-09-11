@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.158**
+**A total conversion — the living design bible, v11.159**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1239,6 +1239,48 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 | the GASTLY line | **the whole off-type spine stays.** `DEFER` and `INTERPRET` are a two-move combination the vanilla set built on purpose, and **`ORPHAN` is HAUNTPROC's Index entry as a verb**: no parent, no terminal, no entry in any list |
 
 ***Found in passing and not fixed***: **SMOOCHUM still carries its vanilla name**, and **PULSAR still carries its vanilla Index entry** — *a geometric body the locals suspect is alien*, on a daemon whose name is a timing signal. **T-39 and T-40.**
+
+#### 2.7d The 41 was the wrong list, and 2.8 is why
+
+**Closed 2026-09-10.** ***All four flags report none.*** *Off-type overall 42% → 41% against the 45% baseline.* **Eighteen substitutions across nineteen daemons** — but **the number that matters is the one that went away: twenty-two of the forty-one were never faults.**
+
+***`THIN OPENING` read "everything before level 10 is off-type", and twenty-two of its hits were daemons that open with `WRITE`, `FLIP` or `PUSH`.*** **Those are TACKLE, SCRATCH and POUND — and 2.8 settled them on purpose:**
+
+> ***`TACKLE` is the one that sets the tone*** — twenty-five of the seventy-two learn it and **for most it is the first routine they know.** `WRITE` is the plainest operation there is and every daemon can do it; *damage in this world is putting your data where theirs was.*
+
+**A check that fires on a thing the design decided is not measuring the design. It is arguing with it.** *This is the same shape as 2.7b's finding that the bestiary was already sitting on the coverage baseline, and it arrived the same way — by reading the tool's output instead of trusting it.*
+
+***So CONTENT is excluded by RULING, not by exception.*** **That distinction is the whole point**: an exception list that grows to twenty-two entries is a tool nobody reads, and *2.8 already gives the reason in one clause* — **CONTENT is the type that hands you no verb.** ***Opening with it says nothing false about a creature. Opening with somebody else's type does.***
+
+#### Two more things the first flag had wrong
+
+| | |
+|---|---|
+| **it fired with an on-type routine in the same window** | COLDREAD opens with `STALE` **and** `LICK`. *Being taught correctly plus some coverage is not a fault* — **it is what 2.7b said coverage is FOR** |
+| **it counted damaging routines only** | `DAMPEN` at level 1 on a FLOW daemon **is the creature saying what it is**, and the flag read it as silence |
+
+#### What replaced it — two flags that mean separate things
+
+***Between them they caught four daemons the old one missed while dropping twenty-two it should never have had.***
+
+**`MIXED SIGNAL`** — *before level 10 it does something typed, it is the wrong type, and it never does its own.* **Ten.** The **NIDORAN male line opened with `PROBE`, a flying routine on a creature made of poison**, while *its sister line opened with `FLIP`* — **one split teaching two different creatures.** The **ZUBAT line** spent everything before 10 as SWARM and LATENT, *two types it does not have*, which is the daemon **2.7b named as its own example.** **INDEXER's only typed routine before 28 was `MISREAD` — and it had it twice**, the same entry counted again.
+
+**`LATE TYPE`** — *the label is right and the first routine that hits with it arrives after level 25.* **Thirteen, and some are worse than the silent ones were:**
+
+| | | |
+|---|---|---|
+| **HANDLER** | FLOW | first FLOW attack at **58** |
+| **PARTITION** | STRATUM | first STRATUM attack at **52**, *for **fifteen** power* |
+| **FAULT** | FLOW | first FLOW attack at **50** |
+| **RAMROD · BULLDOZER** | STRATUM/LEGACY | ***the ground line did not touch the ground until the level cap*** |
+
+#### The method, in one move
+
+***`PROBE` was not deleted when the NIDORAN line lost it.*** **It went to ECHO** — *the daemon that navigates by sending something out to find what is there*, and which had been carrying **no VECTOR routine at all before level 21.** ***The vocabulary was already right. It was on the wrong creature.***
+
+#### SLURP, and the ruling worth keeping
+
+***Exempted rather than fixed.*** **`LICK` is the daemon's NAME as a verb**, and *vanilla types that routine LATENT on a creature that is not.* **Swapping it for a CONTENT primitive would fix the report and delete the creature.** ***2.8's own counter-test cuts this way***: the counter-test exists to stop CONTENT annexing vocabulary the other types need — **and here the routine IS the thing itself.**
 
 ### 2.8 The CONTENT register — settled 2026-09-09
 

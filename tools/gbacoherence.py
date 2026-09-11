@@ -26,9 +26,40 @@ and then it gets out of the way and prints the list for a human to read.
                   bonus never fires. Mechanically it is a daemon that is worse
                   at everything it does than the chart says it should be.
 
-    THIN OPENING  the routines it has BEFORE level 10 are all off-type. A
-                  player meets the daemon there, and the first three things it
-                  does are what teaches them what it is.
+    MIXED SIGNAL  before level 10 the daemon does something TYPED, it is the
+                  wrong type, and it never does its own. A player meets a
+                  creature there and the first thing it does teaches them what
+                  it is -- so being taught a type it does not have is worse
+                  than being taught nothing.
+
+    LATE TYPE     it does have a damaging routine of its own type, and the
+                  routine does not arrive until after level 25. The label is
+                  right and the player waits most of the game to see it.
+
+THIN OPENING WAS THE FIRST TRY AT THIS AND IT CRIED WOLF. It read "everything
+before level 10 is off-type" and flagged 41 daemons, and 22 of them were
+flagged for opening with WRITE, FLIP or PUSH. Those are TACKLE, SCRATCH and
+POUND, and 2.8 SETTLED THEM ON PURPOSE: "WRITE is the plainest operation there
+is and every daemon can do it -- damage in this world is putting your data
+where theirs was." A check that fires on a thing the design decided is not
+measuring the design, it is arguing with it.
+
+So CONTENT is excluded from MIXED SIGNAL by ruling rather than by exception.
+2.8 makes CONTENT the type that hands you no verb, the neutral instruction set
+every daemon performs; opening with it says nothing false about the creature.
+Opening with SOMEBODY ELSE'S type does.
+
+Two more things the first version got wrong, both found by reading its output:
+
+  * it counted DAMAGING routines only, so a daemon opening with an on-type
+    STATUS routine looked silent. DAMPEN at level 1 on a FLOW daemon is the
+    creature saying what it is. MIXED SIGNAL still counts damage, because the
+    fault is about what a player is TAUGHT by watching it attack -- but
+    LATE TYPE's threshold was set knowing this, not in ignorance of it.
+
+  * it fired even when an on-type routine sat in the same window. A daemon
+    that opens with one of each is being taught correctly and the off-type
+    one is coverage, which is what 2.7b said off-type is FOR.
 
 The percentage is still printed, because it is the cheapest way to spot a line
 that drifted -- but it is reported, never ranked on.
@@ -40,6 +71,9 @@ GBA  = os.path.join(ROOT, "engineGba")
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 ALL  = "--all" in sys.argv
 EARLY = 10          # "before level 10" -- the window a player meets it in
+LATE  = 25          # past here, the label has been waiting most of the game
+#  2.8: the type that hands you no verb. Opening with it says nothing false.
+NEUTRAL = "CONTENT"
 
 #  Flags that are CORRECT and should stop reporting. Same device as
 #  check_lexicon's ALLOWED and for the same reason: a report carrying permanent
@@ -62,6 +96,11 @@ EXEMPT = {
         "make on-type",
     ("BUFFER", "SILENT TYPE"):
         "the other cocoon, same reason",
+    ("SLURP", "MIXED SIGNAL"):
+        "LICK is the daemon's NAME as a verb, and vanilla types that routine "
+        "LATENT on a creature that is not. Swapping it for a CONTENT primitive "
+        "would fix the report and delete the creature. 2.8's own counter-test "
+        "cuts this way: the routine IS the thing itself here",
 }
 
 
@@ -126,11 +165,20 @@ def main():
         off = [(lv, m) for lv, m in dmg if mt.get(m) not in mine]
         early = [(lv, m) for lv, m in dmg if lv <= EARLY]
         silent = [t for t in mine if not any(mt.get(m) == t for _, m in moves)]
+        #  wrong: early, damaging, and typed as something it is NOT -- with
+        #  CONTENT excluded by 2.8's ruling rather than by exception.
+        wrong = [(lv, m) for lv, m in early
+                 if mt.get(m) not in mine and mt.get(m) != NEUTRAL]
+        right = [(lv, m) for lv, m in early if mt.get(m) in mine]
+        on = [lv for lv, m in dmg if mt.get(m) in mine]
         rows.append({
             "name": names[k], "types": mine, "moves": moves, "dmg": dmg, "off": off,
-            "silent": silent,
+            "silent": silent, "wrong": wrong,
             "nostab": bool(dmg) and len(off) == len(dmg),
-            "thin": bool(early) and all(mt.get(m) not in mine for _, m in early),
+            #  an on-type routine in the same window means the player IS being
+            #  taught correctly, and the off-type one is coverage (2.7b)
+            "mixed": bool(wrong) and not right,
+            "late": min(on) if on and min(on) > LATE else None,
             #  None, not 0. A daemon with no damaging routine at all -- PENDING
             #  knows PIN twice and nothing else -- reported as "0% off-type",
             #  which reads as a clean sheet and is the opposite of the truth.
@@ -147,7 +195,10 @@ def main():
         flags = []
         if r["silent"]:  flags.append("SILENT TYPE: " + ", ".join(r["silent"]))
         if r["nostab"]:  flags.append("NO STAB")
-        if r["thin"]:    flags.append("THIN OPENING")
+        if r["mixed"]:
+            flags.append("MIXED SIGNAL: " + ", ".join(
+                "%s@%d is %s" % (mn.get(m, m), lv, mt.get(m)) for lv, m in r["wrong"]))
+        if r["late"]:    flags.append("LATE TYPE: first on-type at %d" % r["late"])
         if flags:
             print("      !! " + " · ".join(flags))
 
@@ -170,8 +221,11 @@ def main():
          "SILENT TYPE", lambda r: r["silent"]),
         ("NO STAB      — every damaging routine is off-type",
          "NO STAB", lambda r: r["nostab"]),
-        ("THIN OPENING — everything before level %d is off-type" % EARLY,
-         "THIN OPENING", lambda r: r["thin"] and not r["nostab"]),
+        ("MIXED SIGNAL — before level %d it does something typed, it is the wrong\n"
+         "                 type, and it never does its own" % EARLY,
+         "MIXED SIGNAL", lambda r: r["mixed"] and not r["nostab"]),
+        ("LATE TYPE    — its first on-type damaging routine arrives after level %d" % LATE,
+         "LATE TYPE", lambda r: r["late"] and not r["silent"]),
     ):
         flagged = [r for r in rows if pick(r)]
         excused += sum(1 for r in flagged if (r["name"], fault) in EXEMPT)
@@ -182,7 +236,13 @@ def main():
             print("     none\n")
             continue
         for r in hit:
-            extra = (" — " + ", ".join(r["silent"])) if r["silent"] else ""
+            if fault == "MIXED SIGNAL":
+                extra = " — " + ", ".join("%s@%d is %s" % (mn.get(m, m), lv, mt.get(m))
+                                          for lv, m in r["wrong"])
+            elif fault == "LATE TYPE":
+                extra = " — first on-type at %d" % r["late"]
+            else:
+                extra = (" — " + ", ".join(r["silent"])) if r["silent"] else ""
             pct = "  no damaging routine" if r["pct"] is None else "%3d%% off-type" % r["pct"]
             print("     %-12s %-18s %s%s" % (r["name"], "/".join(r["types"]), pct, extra))
         print()

@@ -5,6 +5,50 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.159 — 2026-09-11
+
+### 2.7d — the flag was arguing with 2.8, and 2.8 wins
+
+- ***Twenty-two of `THIN OPENING`'s forty-one hits were daemons that open with `WRITE`, `FLIP`
+  or `PUSH`*** — TACKLE, SCRATCH and POUND — **and 2.8 settled those deliberately**: *"`WRITE`
+  is the plainest operation there is and every daemon can do it."*
+- **A check that fires on a thing the design decided is not measuring the design, it is arguing
+  with it.** *Same shape as 2.7b's baseline finding, and found the same way — by reading the
+  output instead of trusting it.*
+- ***CONTENT is excluded by RULING, not by exception.*** **An exception list that grows to
+  twenty-two entries is a tool nobody reads**, and 2.8 already gives the reason in one clause:
+  *CONTENT is the type that hands you no verb.* **Opening with it says nothing false. Opening
+  with somebody else's type does.**
+
+### Two flags replace one, and catch four it was missing
+
+- **`MIXED SIGNAL`** — *before level 10 it does something typed, it is the wrong type, and it
+  never does its own.* **Ten.** The NIDORAN male line **opened with a flying routine on a
+  creature made of poison** while its sister line opened with the neutral primitive; the ZUBAT
+  line spent its whole early game as two types it does not have; **INDEXER's only typed routine
+  before 28 was `MISREAD`, and it had it twice.**
+- **`LATE TYPE`** — *first on-type damaging routine after level 25.* **Thirteen, and some are
+  worse than the silent ones were**: HANDLER's first FLOW attack was at **58**, PARTITION's
+  first STRATUM attack at **52 for fifteen power**, and ***the RHYHORN line did not touch the
+  ground until the level cap.***
+- Two corrections the old flag needed either way: it fired **even when an on-type routine sat in
+  the same window** (*coverage is not a fault — 2.7b*), and it **counted damaging routines only**,
+  so `DAMPEN` at level 1 on a FLOW daemon read as silence.
+
+### The method, and the one exemption
+
+- ***`PROBE` was not deleted when the NIDORAN line lost it. It went to ECHO*** — the daemon that
+  navigates by sending something out to find what is there, carrying **no VECTOR routine at all
+  before level 21.** ***The vocabulary was already right; it was on the wrong creature.***
+- **SLURP is exempted rather than fixed.** *`LICK` is the daemon's NAME as a verb*, and vanilla
+  types that routine LATENT on a creature that is not. **Swapping it for a CONTENT primitive
+  would fix the report and delete the creature** — and 2.8's counter-test, which exists to stop
+  CONTENT annexing what other types need, **cuts that way here: the routine IS the thing itself.**
+- **Eighteen substitutions, nineteen daemons, all four ROMs build.** *Off-type overall 42% → 41%
+  against the 45% baseline.* **T-41 closed** (`7f2df046d`).
+
+---
+
 ## v11.158 — 2026-09-11
 
 ### 2.7c — T-36's structural half is closed
