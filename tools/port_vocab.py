@@ -172,8 +172,20 @@ NAMES.update(pairs_from("src/data/text/trainer_class_names.h", r'_\("([^"]*)"\)'
 NAMES.update(pairs_from("src/data/text/move_names.h",    r'_\("([^"]*)"\)'))
 NAMES.update(pairs_from("src/data/items.json",           r'"english":\s*"([^"]*)"'))
 # a rename is only safe to apply inside prose if the vanilla name is a word
+#
+#  NOT .isupper(). "é" IS A LOWERCASE CASED CHARACTER, so "POKéMANIAC".isupper()
+#  is False and so is "POKé DOLL".isupper() -- and this filter was therefore
+#  dropping EVERY vanilla name that contains the accent, which is precisely the
+#  set of names this whole tool exists to remove. POKéDEX is hardcoded down in
+#  VOCAB because somebody hit the symptom and patched that one instance.
+#
+#  The intent was "no lowercase letters", so say that. This is the same family
+#  as the escape trap: a rule about characters, written in terms of a function
+#  that means something slightly different, silently excluding the exact cases
+#  that mattered.
 NAMES = {k: v for k, v in NAMES.items()
-         if k.isupper() and len(k) > 3 and k not in ("NONE", "????????")}
+         if not re.search("[a-z]", k) and len(k) > 3
+         and k not in ("NONE", "????????")}
 
 #  THE EIGHTEEN TYPE NAMES ARE NEVER SUBSTITUTED, anywhere, by anything. The
 #  chart is the argument (invariant 3) and its words are authored on every
@@ -547,6 +559,39 @@ PHRASE_MAP = dict(PHRASES)
 # sentinel first. (104 substitutions were silently missed before this.)
 ESCAPE = re.compile(r'\\[nlp]')
 
+#  A/AN AGREEMENT. Replacing the noun and not the article in front of it is how
+#  "a POKéMANIAC" became "a ARCHIVIST" in three lines the moment trainer-class
+#  renames started being learned. Reading those lines found "was an HUNCH" two
+#  lines below, left by an EARLIER pass -- so this was never one bad run, it was
+#  a missing rule that every rename since has been able to trip.
+#
+#  SOUND, NOT SPELLING, and only for OUR words. A, E, I and O take "an"; U is
+#  "yoo" (a USERBOX) and H is aspirated (a HUNCH), which are the two the naive
+#  letter rule gets wrong. The guard matters more than the rule: an ACRONYM read
+#  letter by letter takes "an" before H and M -- "an HM01" is correct English --
+#  so this only touches a word THIS TOOL INTRODUCED, where the vanilla article
+#  was chosen for a different noun and is now certainly stale.
+#
+#  Matched across "\n", "\l" and "\p" as well as spaces, because the article
+#  and its noun land on either side of a line break constantly. Same trap as
+#  everywhere else in this file.
+OUR_WORDS = {v.split()[0] for v in list(NAMES.values()) + list(VOCAB.values())
+             if v and v.split() and not re.search("[a-z]", v.split()[0])}
+#  The noun capture takes NO apostrophe. With one in the class it swallowed the
+#  possessive -- "a ARCHIVIST's" captured ARCHIVIST' , which is in no lexicon,
+#  and the one line in the game that needed the fix most did not get it.
+AN_RE = re.compile(r"\b([Aa])([nN]?)((?:\\[nlp]|\s)+)([A-Z][A-Z\-]{2,})")
+
+
+def articles(body):
+    def fix(m):
+        art, gap, word = m.group(1), m.group(3), m.group(4)
+        if word not in OUR_WORDS:
+            return m.group(0)
+        return art + ("n" if word[0] in "AEIO" else "") + gap + word
+    return AN_RE.sub(fix, body)
+
+
 def convert(body):
     # {PKMN} is a control code that RENDERS the noun, so it has to move too --
     # spelled out first, so it goes through the singular/plural decision like
@@ -601,7 +646,7 @@ def convert(body):
     ip = iter(phrases)
     res = re.sub('\x02', lambda _: next(ip), res)
     ik = iter(kept)
-    return re.sub('\x03', lambda _: next(ik), res)
+    return articles(re.sub('\x03', lambda _: next(ik), res))
 
 # ------------------------------------------------------------- the rewrap
 BREAK  = re.compile(r'\\[nlp]')

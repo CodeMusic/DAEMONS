@@ -5,6 +5,66 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.160 — 2026-09-11
+
+### 2.7e — a withdrawn word came back twice, and one character is why
+
+- ***`TAINT` was refused as a MARK name in 5.2*** for a well-known vulgar reading — *"a second
+  meaning the design did not choose is not a second meaning; it is a leak"* — **and it was still
+  the name of `MOVE_POISON_STING`**, and still the punchline of a Viridian City line:
+  **"Mind the TAINT."** *Second town of the game.*
+- **The ruling was made for one surface and swept to none of the others**, so the fix is a check:
+  **`VETOED` in `check_lexicon`** fails on any withdrawn word in anything a player can read, and
+  *says what to write instead rather than only what not to.*
+- **`TAMPER` takes the routine** — 2.6 reads CORRUPT as *"data that has been **tampered** with"*,
+  so it is the type's own clause as a verb, which is `DESCEND`'s justification from 2.7b.
+  ***`SKEW` could not take it: `SKEW` is MARK 5.***
+
+### The root cause is one character
+
+- **The check found `MANIAC` immediately** — refused by craft rule 3 in the same breath as TAINT,
+  still in **six** player-visible lines.
+- ***`port_vocab` filtered its learned renames with `k.isupper()`, and `é` is a LOWERCASE cased
+  character.*** `"POKéMANIAC".isupper()` is `False`. So is `"POKé DOLL"`. **The filter was
+  silently dropping every vanilla name containing the accent — exactly the set the vocabulary
+  pass exists to remove.**
+- **`POKéDEX` is hardcoded in `VOCAB` by hand**, which is somebody hitting the symptom and never
+  finding this. *The filter now says what it meant: no lowercase letters.*
+- Same family as the escape trap that has hidden substitutions in four tools: **a rule about
+  characters written in terms of a function that means something slightly different.**
+
+### And the article was never agreed
+
+- Fixing the filter renamed five `POKéMANIAC`s automatically **and produced "a ARCHIVIST" three
+  times.** Reading those lines found **"was an HUNCH" two lines below**, from an earlier pass —
+  ***so it was never one bad run, it was a missing rule every rename since could trip.***
+- **Sound, not spelling.** A/E/I/O take *an*; **U is "yoo" and H is aspirated**, the two a letter
+  rule gets wrong. ***Guarded to words the tool introduced***, because an acronym read letter by
+  letter takes *an* before H and M — **"an HM01" is correct English.**
+- **Seventeen found, nearly all pre-existing**: *a AFFECT · an MUSAI · a INDEX ×3 · an SURCHARGE ·
+  a ANOMALY · a ECHO ×2 · an QUERY · an GREP ×2 · an BACKBONE · A ANOMALY doll.*
+
+### Three left for a human, which is the division
+
+- **No rename could reach them** — free prose, not the class name. *The Two Island tutor's joke is
+  an ECHO* — "MOVE MANIAC", then "also a mushroom maniac" — **so the replacement repeats too, or
+  it stops being a joke.** All three measured against the 196px box; the longest is 193.
+- **All four ROMs build**, `port_vocab` reports nothing on a second run, and the harness mappings
+  were re-ported inside the rename rather than after it (T-35).
+- **T-42 closed** (`b8e509ed6`). **T-43** records `WEED` and `KILL` as decisions rather than
+  oversights; **T-44** the harness's two live-prompt hits.
+
+### And the ticket check could not see a closed ticket
+
+- ***`check_tickets` exists to enforce "a finished ticket is struck through, never deleted" — and
+  its pattern could not match a struck-through row.*** It missed **T-41 silently on the day it was
+  closed**, and only spoke up once T-43 existed.
+- **A gap at the TOP of the range is invisible to a check that derives its range from `max()`.**
+  *The check was not wrong about the rule; it was blind to the approved way of keeping it* — which
+  is the third check this week that passed by not looking.
+
+---
+
 ## v11.159 — 2026-09-11
 
 ### 2.7d — the flag was arguing with 2.8, and 2.8 wins

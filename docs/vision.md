@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.159**
+**A total conversion — the living design bible, v11.160**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1211,7 +1211,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 | | had the type | knew the routine one stage down |
 |---|---|---|
-| **INJECTOR** | SWARM/**CORRUPT** | **SCRAPER knows TAINT at level 1** |
+| **INJECTOR** | SWARM/**CORRUPT** | **SCRAPER knows TAMPER at level 1** |
 | **COLDREAD** | FROZEN/**CONTEXT** | SMOOCHUM knows **MISREAD and CONSTRUE** |
 | **TARPIT** | GROWTH/**CORRUPT** | SNARE and HONEYPOT both know **ETCH** |
 | **BADSEED** | GROWTH/**CORRUPT** | WEED and BLIGHT both know **ADULTERATE** |
@@ -1281,6 +1281,36 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 #### SLURP, and the ruling worth keeping
 
 ***Exempted rather than fixed.*** **`LICK` is the daemon's NAME as a verb**, and *vanilla types that routine LATENT on a creature that is not.* **Swapping it for a CONTENT primitive would fix the report and delete the creature.** ***2.8's own counter-test cuts this way***: the counter-test exists to stop CONTENT annexing vocabulary the other types need — **and here the routine IS the thing itself.**
+
+#### 2.7e A withdrawn word came back twice, and one character is why
+
+**Found 2026-09-10, by being asked.** ***`TAINT` was refused as a MARK name in 5.2*** — *"a second meaning the design did not choose is not a second meaning; it is a leak"* — **and it was still the name of `MOVE_POISON_STING`.** *And still the punchline of a Viridian City line:* **"Mind the TAINT."** — second town of the game, on its own line, as the payoff of a two-line exchange.
+
+***The ruling was made for one surface and swept to none of the others.*** **That is the failure the tools exist to catch**, so the fix is a check and not an edit: **`VETOED` in `check_lexicon`**, which fails on any withdrawn word appearing in anything a player can read, and *carries what to write instead rather than only what not to write.*
+
+**`TAMPER` takes the routine** — *2.6 reads CORRUPT as "data that has been **tampered** with", so it is the type's own clause as a verb*, which is the justification 2.7b used for `DESCEND`. **`SKEW` could not take it: `SKEW` is MARK 5.**
+
+#### The root cause is one character
+
+***The check found `MANIAC` immediately*** — refused by craft rule 3 in the same breath as TAINT, still in **six** player-visible lines. **Why it survived is the finding:**
+
+> **`port_vocab` learns renames by diffing our tables against upstream's, then filters them with `k.isupper()`.** ***`é` is a LOWERCASE cased character***, so **`"POKéMANIAC".isupper()` is `False`** — and so is `"POKé DOLL"`, and `"POKé BALL"`.
+
+***That filter was silently dropping every vanilla name containing the accent, which is exactly the set of names the vocabulary pass exists to remove.*** **`POKéDEX` is hardcoded in `VOCAB` by hand** — *somebody hit the symptom and never found this.* The filter now says what it meant: **no lowercase letters.**
+
+*This is the same family as the escape trap that has now hidden substitutions in four tools:* **a rule about characters, written in terms of a function that means something slightly different, silently excluding the exact cases that mattered.**
+
+#### And the article was never agreed
+
+**Fixing the filter turned five `POKéMANIAC`s into `ARCHIVIST` automatically — and produced "a ARCHIVIST" three times.** *Substituting a noun and not the article in front of it was an error nothing here checked for*, and reading those lines found **"was an HUNCH" two lines below**, left by an earlier pass. ***So it was never one bad run. It was a missing rule that every rename since has been able to trip.***
+
+**Sound, not spelling**: A/E/I/O take *an*; **U is "yoo" (`a USERBOX`) and H is aspirated (`a HUNCH`)**, which are the two a letter rule gets wrong. ***Guarded to words the tool introduced***, because **an acronym read letter by letter legitimately takes *an* before H and M — "an HM01" is correct English** and a naive rule would break it.
+
+**Seventeen across the corpus, nearly all pre-existing**: *used a AFFECT · obtained an MUSAI · a INDEX ×3 · an SURCHARGE · a ANOMALY · a ECHO ×2 · an QUERY · an GREP ×2 · an BACKBONE · A ANOMALY doll.*
+
+#### Three were left for a human, and that is the division
+
+***No rename could reach them*** — they are free prose, not the class name. **The Two Island tutor's joke is an ECHO** — *"MOVE MANIAC"*, then *"also a mushroom maniac"* — **so the replacement repeats too, or it stops being a joke**: `ROUTINE ARCHIVIST` and `mushroom archivist`. *All three measured against the 196px box; the longest is 193.*
 
 ### 2.8 The CONTENT register — settled 2026-09-09
 
@@ -1389,7 +1419,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 |---|---|---|---|
 | **LOGIC** | *rules applied step by step; proof, not intuition* | **derivation** — what establishes a thing by steps | ASSERT · REDUCE · ENTAIL · **CRACK** |
 | **VECTOR** | *direction in a space of meanings* | **delivery with a heading** | DISPATCH · ROUTE · STEER · **GOTO** |
-| **CORRUPT** | *data that has been tampered with* | **tampering and decay** | TAINT · FALSIFY · SPOIL · SEED |
+| **CORRUPT** | *data that has been tampered with* | **tampering and decay** | **TAMPER** · FALSIFY · SPOIL · SEED |
 | **STRATUM** | *the physical layer everything else runs on* | **substrate and ground** | GROUND · ANCHOR · SEAT · SUBSIDE |
 | **LEGACY** | *deprecated hardware still running* | ***the old instruction set*** — operations that still work because nobody removed them | NOP · ROTATE · PARITY · DEPRECATE |
 | **SWARM** | *many small agents; no single one matters* | **distributed protocols** | **GOSSIP** · FANOUT · ELECT · HEARTBEAT |
@@ -5034,7 +5064,7 @@ intro that leads into an unreadable screen is the wrong order to build in.
 | **Scorn** (7.x) | *"Never sneers, never gloats. **Genuinely warm**, genuinely pleased to meet you."* |
 | **CAIRN** (5.1) | *"His creed, said plainly and **sympathetically**... **He is right, and that is the point.**"* |
 | **The institution** (4.x) | *"The silence is **not shame and not cruelty**... **Nobody decides to be cruel.**"* |
-| **Craft rule 3** | pathology words are refused outright — `#MANIAC` → `ARCHIVIST`, `TAINT` → `SKEW` |
+| **Craft rule 3** | pathology words are refused outright — `#MANIAC` → `ARCHIVIST`, `TAINT` → `SKEW` (marks) / `TAMPER` (routines). ***A refusal applies to every surface***, and 2.8b is what happened when it was applied to one |
 
 ***This design has no villain.*** **Its central move is refusing to make anyone a monster**, and the greyscale is *invariant 5's spending decision about where colour is used*, **not a mood.**
 

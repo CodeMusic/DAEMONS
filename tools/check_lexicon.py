@@ -162,7 +162,15 @@ def check_tickets():
     f = os.path.join(DOCS, "TODO.md")
     if not os.path.isfile(f):
         return bad
-    ids = re.findall(r"\|\s*\*\*(T-(\d+))\*\*", open(f, encoding="utf-8").read())
+    #  ~~ ALLOWED BEFORE THE ID. A closed ticket is struck through -- which is
+    #  what this file's own rule requires and what this check exists to enforce
+    #  -- and the first pattern could not see one. It missed T-41 silently the
+    #  day it was closed, and only spoke up once T-43 existed to make the gap
+    #  visible, because a gap at the TOP of the range is invisible to a check
+    #  that derives its range from max(). The check that enforces "never
+    #  deleted" was blind to the approved way of keeping it.
+    ids = re.findall(r"\|\s*~{0,2}\s*\*\*(T-(\d+))\*\*",
+                     open(f, encoding="utf-8").read())
     if not ids:
         return [("TODO.md", "no ticket rows matched -- the format moved, or the file is empty")]
     nums = [int(n) for _, n in ids]
@@ -174,6 +182,83 @@ def check_tickets():
         bad.append(("TODO.md", "no row for %s -- a finished ticket is struck through, "
                     "never deleted" % ", ".join("T-%02d" % n for n in missing)))
     return bad
+
+
+#  Words the design WITHDREW, and which must never come back in anything a
+#  player can read. This list exists because TAINT was withdrawn as a MARK
+#  name in 5.2 -- "a second meaning the design did not choose is not a second
+#  meaning; it is a leak" -- and was still the name of MOVE_POISON_STING four
+#  months later, AND the punchline of a Viridian City line: "Mind the TAINT."
+#
+#  The ruling was made for one surface and never swept to the others, which is
+#  the failure this whole tool exists to catch. A veto that is not enforced is
+#  a preference.
+#
+#  Each entry carries what replaced it, so the message tells you what to write
+#  instead of only what not to.
+VETOED = {
+    "TAINT":  ("TAMPER (routines) / SKEW (marks)",
+               "withdrawn 5.2 for a well-known vulgar reading, in a game "
+               "where you RECEIVE one"),
+    "MANIAC": ("ARCHIVIST",
+               "craft rule 3 -- name the process, not the pathology"),
+}
+
+
+def check_vetoed():
+    """No player-visible string may contain a word the design withdrew.
+
+    Scans the whole lexicon AND every line of map dialogue, because TAINT was
+    living in both and the mark ruling had swept neither.
+
+    Matched on word boundaries against the flattened text: an escape is two
+    characters and the first is a letter, so `\nTAINT` puts `n` against `T`
+    and a naive \b finds no boundary -- the trap that has now hidden
+    substitutions in four separate tools.
+    """
+    out = []
+    files = []
+    for rel in ("src/data/text/move_names.h", "src/data/text/species_names.h",
+                "src/data/text/abilities.h", "src/data/text/item_names.h",
+                "src/data/text/trainer_class_names.h", "src/battle_main.c",
+                "src/strings.c", "src/battle_message.c"):
+        f = os.path.join(GBA, rel)
+        if os.path.isfile(f):
+            files.append((rel, f))
+    maps = os.path.join(GBA, "data/maps")
+    for root, _, fnames in os.walk(maps):
+        for fn in fnames:
+            if fn.endswith((".inc", ".pory")):
+                f = os.path.join(root, fn)
+                files.append((os.path.relpath(f, GBA), f))
+
+    #  PLAYER-VISIBLE LITERALS ONLY. The first version matched whole files and
+    #  reported nine hits, and every one was a CODE SYMBOL --
+    #  OBJ_EVENT_GFX_POKE_MANIAC and TRAINER_CLASS_POKEMANIAC, whose displayed
+    #  strings already read ARCHIVIST. Renaming a constant changes nothing a
+    #  player sees and breaks the build; only the text matters. This is the
+    #  same error port_states.py made the same week, which is twice.
+    LITERAL = re.compile(r'_\("((?:[^"\\]|\\.)*)"\)|\.string\s+"((?:[^"\\]|\\.)*)"')
+
+    for rel, f in files:
+        try:
+            raw = open(f, encoding="utf-8", errors="ignore").read()
+        except OSError:
+            continue
+        for m in LITERAL.finditer(raw):
+            #  flatten the escapes inside the literal -- an escape is two
+            #  characters and the first is a letter, so \nTAINT puts n against
+            #  T and a naive boundary match finds nothing
+            text = re.sub(r"\\[nlpN]", " ", m.group(1) or m.group(2) or "")
+            for word, (instead, why) in VETOED.items():
+                #  case-INSENSITIVE: "I'm also a mushroom maniac" sat one line
+                #  below "DAEMON MOVE MANIAC" and the first version read only
+                #  the shouted one. A veto is on the word, not on its casing.
+                if re.search(r"(?<![A-Za-z])%s(?![A-Za-z])" % word, text, re.I):
+                    line = raw.count("\n", 0, m.start()) + 1
+                    out.append(("%s:%d" % (rel, line),
+                                "%s -- use %s (%s)" % (word, instead, why)))
+    return out
 
 
 def read(rel, pat):
@@ -388,13 +473,21 @@ def main():
         for what, why in pbad:
             print("   %-44s %s" % (what, why))
 
+    nbad = check_vetoed()
+    if not nbad:
+        print("  no withdrawn word appears in anything a player can read.")
+    else:
+        print("\n  %d use(s) of a WITHDRAWN word:\n" % len(nbad))
+        for what, why in nbad:
+            print("   %-44s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad) else 0
 
 
 if __name__ == "__main__":
