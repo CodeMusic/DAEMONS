@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.160**
+**A total conversion — the living design bible, v11.161**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1311,6 +1311,35 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 #### Three were left for a human, and that is the division
 
 ***No rename could reach them*** — they are free prose, not the class name. **The Two Island tutor's joke is an ECHO** — *"MOVE MANIAC"*, then *"also a mushroom maniac"* — **so the replacement repeats too, or it stops being a joke**: `ROUTINE ARCHIVIST` and `mushroom archivist`. *All three measured against the 196px box; the longest is 193.*
+
+#### 2.7f The fourteen that no check could see
+
+**Named 2026-09-10.** ***Found by reading COLDREAD's line for T-36***: **SMOOCHUM is Jynx's pre-evolution, it is in the Index, it evolves into a daemon we named — and it was still called SMOOCHUM.** *It was not alone and it was not a clean scope boundary*: CROBAT, CLEFFA, POLITOED and SLOWKING had all been done. **The sweep found FOURTEEN, not the thirteen the ticket listed** — *HITMONTOP was missing from both.*
+
+> ***None of them were visible to any check.*** **`gbacoherence` and `port_vocab` both define "ours" by DIFFING against upstream**, so *a daemon we forgot to rename is identical to upstream and therefore invisible to every tool that decides what to look at by what we already changed.* **The same shape as `check_lexicon` passing on an empty README** — which is why this was found by reading a learnset rather than by running anything.
+
+| | | |
+|---|---|---|
+| **PICHU** | `STATIC` | *static electricity, and the keyword.* Before **SPIKE** and **SURGE** — the line is escalating electrical events, and **this is the one with no control over itself yet** |
+| **IGGLYBUFF** | `STANDBY` | the rung below **SUSPEND**, which is below **HIBERNATE**. *The line was already a sleep-state ladder and was missing its lightest state* |
+| **TYROGUE** | `PREMISE` | **what an argument starts from before it branches** — and it is *the only daemon in the game that branches three ways* |
+| **HITMONTOP** | `CIRCULAR` | it fights by spinning, and it completes a triad about argument: ***the axiom, the rebuttal, and the one that goes nowhere*** |
+| **SMOOCHUM** | `TELL` | **the cue a cold reader works from.** *COLDREAD states what you are about to say; this is the thing it read* |
+| **ELEKID** | `CRANK` | it spins its arms to generate current. **A crank, then a DYNAMO** — *which is the order those were actually invented in* |
+| **MAGBY** | `CINDER` | a small hot fragment, before a **FORGE** |
+| **BELLOSSOM** | `GOLDSET` | **gold-standard labels.** ***The clean twin of BADSEED off the same BLIGHT*** — one was fed poison and one was fed ground truth, *and the types already said so*: BADSEED is GROWTH/**CORRUPT** and this is GROWTH alone |
+| **ESPEON** | `LENSMUSAI` | **a lens IS the frame you read a thing in**, which is CONTEXT's clause, and `LENS` is CONTEXT's own register word |
+| **UMBREON** | `MASKMUSAI` | `MASK` is **OPAQUE's** own register word, and OPAQUE is *the black box from outside* |
+| **STEELIX** | `HARDLINE` | *a dedicated physical line, and uncompromising.* **Keeps BACKBONE's shape and takes its own type into the name** |
+| **SCIZOR** | `SIGKILL` | **REAPER reaps what has already died; this is the signal nothing survives and nothing can catch.** *Deliberately adjacent to T-43's `KILL` question and should be decided WITH it* |
+| **KINGDRA** | `TURBULENCE` | NOZZLE, then JETSTREAM, then ***the thing a flow becomes that nobody designed.*** Turbulence is the canonical example of emergence in a fluid — **and the daemon gains EMERGENT at exactly this stage** |
+| **BLISSEY** | `HEARTBEAT` | **the liveness signal, after UPTIME** — and *a heart, on the daemon shaped like one* |
+
+***The four MUSAI keep their shape***: **CARE · SEEK · CODE · LENS · MASK** — *every prefix is four letters and every one is its eeveelution's type stated as a noun.*
+
+**`TURBULENCE` is exactly `POKEMON_NAME_LENGTH`.** *That is fine — vanilla ships `FARFETCH'D` at ten — and it was measured rather than assumed.*
+
+***Ten of the fourteen still carry vanilla Kanto Index text.*** **Naming them has made T-40 considerably more visible**, which is the honest cost of doing the cheap half first.
 
 ### 2.8 The CONTENT register — settled 2026-09-09
 

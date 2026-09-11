@@ -5,6 +5,51 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.161 — 2026-09-11
+
+### 2.7f — the fourteen daemons no check could see
+
+- ***Found by reading COLDREAD's line for T-36***, not by running anything: **SMOOCHUM is Jynx's
+  pre-evolution, it is in the Index, it evolves into a daemon we named — and it was still called
+  SMOOCHUM.** *CROBAT, CLEFFA, POLITOED and SLOWKING had already been done, so it was not a scope
+  boundary either.* **Fourteen, not the thirteen the ticket listed — `HITMONTOP` was missing from
+  both.**
+- ***The reason none of them were visible is worth more than the names.*** **`gbacoherence` and
+  `port_vocab` both define "ours" by DIFFING against upstream**, so *a daemon we forgot to rename
+  is identical to upstream and invisible to every tool that decides what to look at by what we
+  already changed.* **Same shape as `check_lexicon` passing on an empty README.**
+
+### Each named from its own line
+
+- **The sleep ladder was missing its lightest state**: `STANDBY`, below SUSPEND, below HIBERNATE.
+- **The argument line branches three ways and only two branches had names**: `PREMISE` is what an
+  argument starts from, and `CIRCULAR` completes the triad — ***the axiom, the rebuttal, and the
+  one that goes nowhere.***
+- ***`GOLDSET` is the clean twin of `BADSEED`*** off the same BLIGHT — **one was fed poison and one
+  was fed ground truth, and the types already said so**: BADSEED is GROWTH/**CORRUPT**, this is
+  GROWTH alone.
+- **`TURBULENCE` is what a flow becomes that nobody designed** — the canonical example of emergence
+  in a fluid, on the daemon that ***gains EMERGENT at exactly that stage.***
+- **The four MUSAI keep their shape**: CARE · SEEK · CODE · **LENS** · **MASK** — *four letters
+  each, and every one is its eeveelution's type stated as a noun.*
+- `STATIC` · `TELL` · `CRANK` · `CINDER` · `HARDLINE` · `HEARTBEAT`, and **`SIGKILL`**, which is
+  *deliberately adjacent to T-43's `KILL` question and should be decided with it.*
+
+### Measured, not assumed
+
+- **`TURBULENCE` is exactly `POKEMON_NAME_LENGTH`** — fine, vanilla ships `FARFETCH'D` at ten.
+- **Trainer Tower nicknames follow**, because vanilla sets the nickname equal to the species name
+  and those daemons would otherwise announce their Kanto names in battle.
+- **All four ROMs build and `gbastr` confirms all fourteen through the charmap**, which is the only
+  evidence that counts here.
+- ***A thing suspected and cleared***: the two editions are **not** drifting apart. Our FR and LG
+  Index texts differ for **191** species where vanilla's differ for **252** — *the port reduced
+  divergence rather than creating it.* **T-40 is about authorship, not consistency.**
+- **T-39 closed** (`e9dcc84c4`). *Ten of the fourteen still carry vanilla Kanto Index text, which
+  is T-40 and is now considerably more visible — the honest cost of doing the cheap half first.*
+
+---
+
 ## v11.160 — 2026-09-11
 
 ### 2.7e — a withdrawn word came back twice, and one character is why
