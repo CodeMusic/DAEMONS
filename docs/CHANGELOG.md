@@ -5,6 +5,36 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.164 — 2026-09-11
+
+### T-34 — 2.7a, and the missing letter promoted to a rule
+
+- ***The ticket said the starter names were placeholders. Seven of the nine were load-bearing.***
+  **2.7a curated all three lines' learnsets to the learning paradigm each name carries**, the type
+  table at 2.7 is keyed to them, *`LABL` is 2.8's own worked example for the punctuation rule*, and
+  there are 24 references outside the name table. **Renaming them is 2.8's trap — the pass that renames
+  what already lands.**
+- ***But two of them really did look unfinished, and the test proved it.*** **Checked against a
+  dictionary rather than by eye: `LABL` and `CLUSTR` are the only two names in 151 that are not whole
+  words.** *Every other base form is — CRAWLER, PACKET, HEAP, WISP, SNARE, STUB. The only near-misses
+  are `S.T.A.R.R.`, an acronym, and `TARPIT`, a real compound.*
+- ***And no engine ever forced it.*** **The Game Boy's `NAME_LENGTH` is 11 and the GBA's is 10.**
+  *`LABEL` is five letters; `CLUSTER` is seven.* **Both fitted on both machines, so the compression was
+  always a choice** — which is what makes it promotable instead of a workaround being rationalised.
+- **The rule is NOT "baby forms have short names".** *That would be a claim about age and it is false —
+  every other stage-1 daemon has a whole name.* ***It is a claim about how the thing learns:*** **the
+  two paradigms that learn FROM A CORPUS begin with a letter missing; the one that learns BY DOING is
+  whole from the first day.** *Which is why `ROVERCUB` is exempt without special pleading, and 8.2b pays
+  for the exemption twice since the ROVER family is the project's own register.*
+- **The craft reason came first and is the plainer one:** ***the whole word is a noun and the compressed
+  word is a name.*** *`LABEL` and `CLUSTER` read as two things you were handed; `LABL` and `CLUSTR` read
+  as two creatures.*
+- ***And for the supervised line it is sharper than a device.*** **A label is the exact thing supervised
+  learning has and unsupervised learning has not** — *so an incomplete `LABEL`, handed over as the
+  supervised starter, is the paradigm spelled into the name.* **Nobody ever says so.**
+
+---
+
 ## v11.163 — 2026-09-11
 
 ### T-26 — tier 3b was a read, not a rewrite

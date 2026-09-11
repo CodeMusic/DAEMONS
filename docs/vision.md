@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.163**
+**A total conversion — the living design bible, v11.164**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1143,6 +1143,24 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 #### 2.7a The three starters, curated to their paradigms
 
 **Built 2026-09-09.** ***No type moved.*** The chart is untouched (8.4) and no matchup moved (2.5) — **only which routines a daemon reaches for**, which is the cheapest of the three levers and the only one that costs the argument nothing.
+
+##### The missing letter, promoted to a rule — 2026-09-11
+
+***`LABL` and `CLUSTR` are the only two names in the bestiary that are not whole words.*** **All 149 others are** — *CRAWLER, SCRAPER, PACKET, BRANCH, HUNCH, PROOF, SNARE, HEAP, WISP, SEEDLING, LOOP, WEED, ECHO, STUB.* **Checked against a dictionary rather than by eye**: the only other near-misses are `S.T.A.R.R.`, which is an acronym, and `TARPIT`, which is a real compound.
+
+***And no engine ever forced it.*** **The Game Boy's `NAME_LENGTH` is 11 — ten characters and a terminator — and the GBA's `POKEMON_NAME_LENGTH` is 10.** *`LABEL` is five letters and `CLUSTER` is seven.* **Both would have fitted on either machine with room to spare, so the compression was always a choice.**
+
+**The rule it is promoted to is not "baby forms have short names".** *That would be a rule about age, and it would be false: every other stage-1 daemon in the game has a whole name.* ***It is a rule about how the thing learns:***
+
+> **SUPERVISED and UNSUPERVISED both learn FROM A CORPUS.**
+> **REINFORCEMENT learns FROM DOING.**
+> ***So the two that need a dataset begin with a letter missing. The one that learns by experience is whole from the first day.***
+
+**That is why `ROVERCUB` is exempt without special pleading** — *and 8.2b pays for the exemption twice over, since the ROVER family is the project's own register rather than the technical surface.* **Its line runs a different device: `ROVERCUB` → `ROVERSEER` → `ROVERBYTE` is an animal, then a role, then a machine part**, which is what reinforcement does to a thing.
+
+***The craft reason is the plainer one and it came first:*** **the whole word is a noun and the compressed word is a name.** *`LABEL` and `CLUSTER` on a party screen read as two things you were handed; `LABL` and `CLUSTR` read as two creatures.*
+
+**And for the supervised line it is sharper than a device.** ***A label is the exact thing supervised learning has and unsupervised learning has not.*** *Handing the player an incomplete `LABEL` as the supervised starter is the paradigm spelled into the name* — **and nobody ever says so.**
 
 ***SUPERVISED — LABL · RUBRIC · CANON.*** **You hold the answer key: you compare, you score, you correct.** *A supervised learner is the least entropic thing in the set — it has ground truth — so a line that fought entirely by heat was the sharpest of the three seams.*
 
