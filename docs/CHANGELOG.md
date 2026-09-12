@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.182 — 2026-09-12
+
+### 8.10 — the first playtest finding came from the empty file
+
+- ***Asking only on first arrival was too rare, and the run proved it in one number.*** **Step 871, last new map at step 666** — *205 steps with nothing to trigger on* — **and it fails worst exactly where it matters, because a stuck agent stops entering new maps and a stuck agent has the most to say.** *Arrival now has a floor: sixty steps without an entry and it is asked about the last stretch anyway* (`engineAi` `ccaf769`). **Two counters, because one would re-ask every turn for as long as the agent declined.**
+- ***But the run had already produced a finding, in `objectives.json`, where nobody was looking.*** **"AERON alone still struggles vs FLOW gym. Need to level JINX, find a *Grass or Electric* type in tall grass…"** — ***it read FLOW off the screen and then reasoned in vanilla types.*** **The chart is legible enough to navigate and it is not learning that from us; it is remembering Pokémon.** *Which is 2.6's question arriving as evidence: can a player generalise, or only remember?* ***This reader remembered.***
+- ***And then it ground Route 4 for 205 steps for something that is not there.*** **Route 4 land is PING, NIBBLE, WORM, PREEMPT, SECTOR — no GROWTH and no SIGNAL**, *and the nearest is `WEED`/`SNARE` on Route 5, past Doldrum.* **That is vanilla's structure, not our bug.** ***The finding is the other half: it could not tell from five names that none of them was what it needed, and had to bind them and look.***
+- ***Which reframes what the AI playtester is.*** **9.4's answer to "can you tell a daemon's type" is COLOUR, and the harness reads RAM by symbol name and cannot see colour at all.** *So the agent is playing this game with the type labels removed* — **a worse proxy for a player than it looks, and a better instrument than a player for one thing: it tests the TEXT channel alone.** ***A `CONFUSED` entry from it means the words did not carry it, and never that the game did not*** — and that has to be labelled wherever its output is read.
+
+---
+
 ## v11.181 — 2026-09-12
 
 ### 8.10 — the slice was played, and the record was what was missing
