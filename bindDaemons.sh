@@ -127,9 +127,14 @@ USAGE
   # Last, because it is the one thing that has to be typed by hand -- and
   # printed with the path THIS machine has, resolved through the symlink:
   # Lua does not expand ~, and mGBA's scripting box is a REPL, not a picker.
+  # Found by GLOB rather than typed. The script was renamed once and this line
+  # went on printing the old path, which is worse than printing nothing: what
+  # it prints is pasted straight into an emulator by hand.
   local lua=""
-  [[ -d engineAi/mgba/scripts ]] &&
-    lua="$(cd engineAi/mgba/scripts && pwd -P)/FireRedBridgeSocketServer.lua"
+  if [[ -d engineAi/mgba/scripts ]]; then
+    local dir; dir="$(cd engineAi/mgba/scripts && pwd -P)"
+    for f in "$dir"/*BridgeSocketServer.lua; do [[ -f $f ]] && lua="$f"; done
+  fi
   cat <<USAGE
 
 THE --ai MANUAL STEP
@@ -516,9 +521,16 @@ if [[ $AI -eq 1 ]]; then
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes
 
-  # Resolved through the symlink and made absolute, because Lua does not
-  # expand ~ and the REPL is where this path actually gets pasted.
-  LUA_PATH="$(cd "$HARNESS/mgba/scripts" && pwd -P)/FireRedBridgeSocketServer.lua"
+  # Resolved through the symlink, made absolute, and found by GLOB -- because
+  # Lua does not expand ~, the REPL is where this path actually gets pasted,
+  # and the script has been renamed once already. The usage block does the
+  # same; a name typed in two places is a name that goes stale in one.
+  LUA_PATH=""
+  for f in "$(cd "$HARNESS/mgba/scripts" && pwd -P)"/*BridgeSocketServer.lua; do
+    [[ -f $f ]] && LUA_PATH="$f"
+  done
+  [[ -n $LUA_PATH ]] ||
+    { echo "no *BridgeSocketServer.lua in $HARNESS/mgba/scripts" >&2; exit 1; }
   # DEPENDENCIES, CHECKED RATHER THAN ASSUMED. The bridge died on import with
   # ModuleNotFoundError: requests, and the only visible symptom was the agent
   # logging ECONNREFUSED against :8000 forever -- which reads as "the bridge is

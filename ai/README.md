@@ -148,7 +148,7 @@ typed into it fails with `unexpected symbol near '~'`. Paste this instead
 (absolute: Lua does not expand `~`):
 
 ```lua
-dofile("/ABSOLUTE/PATH/TO/mgba/scripts/FireRedBridgeSocketServer.lua")
+dofile("/ABSOLUTE/PATH/TO/mgba/scripts/DaemonsBridgeSocketServer.lua")
 ```
 
 `--ai` prints the exact line. The menu route also works — **File → Load
