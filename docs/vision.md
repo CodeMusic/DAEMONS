@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.178**
+**A total conversion — the living design bible, v11.179**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1920,6 +1920,53 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 **2.6 is explicit**: ***"a contradiction costs trust in the chart — and the chart is the argument."*** *A player who cannot trust the chart does not learn a model from it; they learn that the game lies.* **The thing being taught is the casualty.**
 
 ***That is the test every further proposal here has to pass:*** **does it make the argument legible, or does it make the argument unreliable?**
+
+
+### 2.13 The names, read against their own tables — 2026-09-12
+
+***Every check this project owns compares names to OTHER NAMES.*** **`check_lexicon` finds collisions, vowel-drops and stale prose; `gbacoherence` reads a daemon's ROUTINE LIST against its type.** *Nothing had ever read a NAME against the row it sits on* — **and that is the axis the impression *"some of these feel like generic renames"* is actually about.**
+
+#### The bound is 2.6's, and it is the whole design of the check
+
+> **A contradicting clause is worse than a silent one.** *Silence costs a lookup.* **A contradiction costs trust in the chart — and the chart is the argument.**
+
+***So `PRUNE` dealing flat damage is SILENT, and is fine.*** **`REINFORCE` lowering the target's DEFENSE is a contradiction.** *The first costs a player one lookup; the second teaches them the wrong thing and then makes them distrust the next name too.*
+
+***And the other bound is 2.8's.*** **`WRITE`, `FLIP` and `PUSH` are TACKLE, SCRATCH and POUND, settled on purpose** — *"damage in this world is putting your data where theirs was."* **`gbacoherence`'s first version flagged 41 daemons and 22 of them were flagged for exactly that.** ***Plainness is never a fault here.*** *Only a name that says the wrong thing is.*
+
+#### What the measurement found — seven of 574
+
+| | |
+|---|---|
+| **DIRECTION** ×3 | *the name states a direction and the effect goes the other way* |
+| **TYPE WORD** ×4 | *a daemon's name is another type's own word* |
+| **DISPLACED** ×1 | **found afterwards, and not in the original seven** — *our name is vanilla's name for a different thing* |
+
+***That is 7 of 574 names, which is the honest headline*** — **the impression was right about the axis and wrong about the scale.** *The rest of the "generic" feeling is `EFFECT_HIT`: twenty-four moves that are flat damage and have nothing to say, and 2.8 already ruled that the plainest of them are correct.*
+
+#### The five that moved
+
+| | | |
+|---|---|---|
+| `REINFORCE` → **`FATIGUE`** | IRON TAIL, *lowers the foe's DEFENSE* | ***metal fatigue is armour giving under repeated load.*** **HARDENED's own register, and the effect said as a material** |
+| `DEPRECATE` → **`LONG SUPPORT`** | ANCIENT POWER, *may raise every stat* | **an LTS release is old, still maintained, and better than you expected.** *LEGACY, exactly — and it is 12 characters, which is the cap* |
+| `DISSOLVE` → **`PASSIVATE`** | ACID ARMOR, *raises DEFENSE twice* | ***passivation is the layer that makes metal unreactive*** — **acid and armour in one word**, *in CORRUPT's own world. Vanilla's joke was liquefy-to-be-hard-to-hit and dropping `ARMOR` had kept only the misleading half* |
+| `NOISE` → **`RESIDUAL`** | CLEFFA, *CONTENT* | **ENTROPY's 2.6 clause is *noise and heat*, quoted verbatim on the CHARCOAL item.** *4.26's line is statistics as an evolution line and* ***`RESIDUAL · ANOMALY · OUTLIER` keeps it whole*** — a residual is what the model failed to explain, which is the first step toward being an outlier |
+| `CHARM` → **`TRANSPOSE`** | SWEET KISS, *causes THRASHING* | ***vanilla's CHARM is our `DOWNCLOCK`***, so two moves answered to one name and **the wrong one had it.** *A transposition is the classic confusion error* |
+
+***`IRON TAIL`'s DESCRIPTION had doubled down on the error.*** **It read *"Adds more of what was already holding"* in front of an effect that takes armour away** — *so the description was not merely tolerating the wrong name, it was arguing for it.* **Four descriptions rewritten with the names.**
+
+#### The three that stayed, and each is a ruling rather than a skip
+
+***An exemption nobody can read is indistinguishable from a bug***, so each one is in the tool with its reasoning and `--rulings` prints it.
+
+- **`SUBSTRATE`** is CONTENT and SUBSTRATE is STRATUM's word. ***4.25, on purpose*** — *it was the original name for the TYPE, cut at nine characters, and the species took it.* **Its ability is `INHERITS`**, which is the Index entry as a mechanic.
+- **`SUSPEND`** is CONTENT and SUSPENDED is CONTEXT's concept. ***The name is a VERB IT PERFORMS, not a type claim*** — *it is the sleep ladder's middle rung, and what it does to other daemons is suspend them.* **2.7 asks who owns the STATE; a daemon that inflicts one is not claiming to be the type that owns it.**
+- **`FAULT`** is FLOW while STRATUM has `HARD FAULT`, `PAGE FAULT` and `SEGFAULT`. ***STRATUM owns the COMPOUNDS and not the bare noun***, so this is **not an exemption at all — it is a word the check deliberately does not list**, and the reasoning sits in `TYPE_WORDS` beside the omission. *A ruling that can never fire is worse than no entry.* **4.26 reads FAULT and HANDLER as *"the thing it needs is not loaded; and the thing that catches that"*, which AGREES with the memory reading and disagrees only about the type** — *which is the chart's business, not the name's.*
+
+#### Verified by breaking it, three faults at a time
+
+***All five were put back and the check named all five***, one line each, with the right fault class on each — **and `DISPLACED` was the one the original count missed**, because a name being vanilla's name for something else is not visible from either table on its own.
 
 
 ---
@@ -7666,8 +7713,8 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
-- **Which of the four name/type collisions gives way** (T-49). ***Each is a good ruling that never met another good ruling***, which is SNAPSHOT/IMPRINT again. **`NOISE` is the one with a clean fix** — *4.26's line is statistics as an evolution line, and `VARIANCE · ANOMALY · OUTLIER` keeps it while leaving ENTROPY its clause.* **`SUBSTRATE` is 4.25's on purpose and `SUSPEND` waits on 2.7; `FAULT` and its routines agree in MEANING and disagree in TYPE**, which may be the chart's business and not the name's
-- **`REINFORCE`, `DEPRECATE` and `DISSOLVE` say the opposite of what they do** (T-49). *Three of 356, and the only three* — **`REINFORCE` lowers the target's Defence, which is the worst of them**
+- ~~Which of the four name/type collisions gives way~~ **Answered 2026-09-12 (2.13, T-49): one moved and three were rulings.** ***`NOISE` → `RESIDUAL`*** — *4.26's statistics line survives whole and ENTROPY keeps its clause.* **`SUBSTRATE` is 4.25's on purpose, `SUSPEND` is a verb it performs rather than a type claim, and `FAULT` is a word the check deliberately does not list** — *STRATUM owns the compounds, not the bare noun*
+- ~~`REINFORCE`, `DEPRECATE` and `DISSOLVE` say the opposite of what they do~~ **Fixed 2026-09-12 (2.13, T-49): `FATIGUE`, `LONG SUPPORT`, `PASSIVATE`.** ***And `IRON TAIL`'s description had doubled down on the error***, reading *"adds more of what was already holding"* in front of an effect that takes armour away
 - **The physical / special split** (2.12). *The code is an afternoon and the 354 judgment calls are the job* — **and five of 5.3b's leader designs were built against the Gen 3 rule**
 - **Seventeen type-resist handlers, to finish 1.6c's rack** (2.12). *`<TYPE> GAIN` amplifies one channel; `<TYPE> TRAP` would damp one, and the register is already derived.* **The cheapest good idea in that section**
 - **The overfit state** (2.12). **Benchmark 4's own lesson, and it is not a mechanic** — *`FURY CUTTER`'s counter already exists and only the penalty is new.* ***`OVERFIT` is a species, so the seventh state needs a name before anything else***

@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.179 — 2026-09-12
+
+### 2.13 — the names, read against their own tables
+
+- ***Every check this project owns compares names to OTHER names.*** **`check_lexicon` finds collisions, vowel-drops and stale prose; `gbacoherence` reads a daemon's ROUTINE LIST against its type.** *Nothing had ever read a NAME against the row it sits on* — **which is the axis "some of these feel like generic renames" is actually about.**
+- ***The check fires on CONTRADICTION only, and the bound is 2.6's own:*** **silence costs a lookup, a contradiction costs trust.** *`PRUNE` dealing flat damage is silent and fine; `REINFORCE` lowering the target's DEFENSE is not.* **And 2.8's bound holds too — `WRITE`, `FLIP` and `PUSH` were settled on purpose, so plainness is never a fault here.**
+- **Seven of 574**, *which is the honest headline: the impression was right about the axis and wrong about the scale.* **`REINFORCE` → `FATIGUE`** *(metal fatigue is armour giving under repeated load)*, **`DEPRECATE` → `LONG SUPPORT`** *(an LTS release is old, still maintained, and better than you expected)*, **`DISSOLVE` → `PASSIVATE`** *(the layer that makes metal unreactive — acid and armour in one word)*, **`NOISE` → `RESIDUAL`** *(ENTROPY's clause is "noise and heat"; `RESIDUAL · ANOMALY · OUTLIER` keeps 4.26's statistics line whole)*.
+- ***And a class the original count missed.*** **`CHARM` → `TRANSPOSE`**: *vanilla's CHARM is our `DOWNCLOCK`*, **so two moves answered to one name and the wrong one had it.** *A name that is vanilla's name for something else is invisible from either table on its own.*
+- ***`IRON TAIL`'s DESCRIPTION had doubled down on the error***, reading *"adds more of what was already holding"* in front of an effect that takes armour away — **so it was not tolerating the wrong name, it was arguing for it.** *Four descriptions rewritten with the names, and four trainer-tower nicknames on CLEFFA followed the species.*
+- **Three stayed, each a ruling with its reasoning in the tool.** `SUBSTRATE` is 4.25's on purpose; `SUSPEND` is *a verb it performs, not a type claim*; **`FAULT` is not an exemption at all** — *STRATUM owns the compounds and not the bare noun, so it is a word the check deliberately does not list.* ***A ruling that can never fire is worse than no entry.***
+
+---
+
 ## v11.178 — 2026-09-11
 
 ### T-48 — the last two vanilla place names in the game
