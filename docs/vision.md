@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.180**
+**A total conversion — the living design bible, v11.181**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5612,7 +5612,9 @@ If that is fun, the remaining daemons are labor. If it is not, you learned it fo
 
 **The slice is built, 2026-08-31.** Type chart, intro, route signage, CAIRN at Benchmark 1, **Slate's theme and The Bleed's modulation** (7.14a), and **every creature the player meets between Blanche and Slate named, drawn and filed** (8.1a). **Thirty-two daemons now carry original front and back art** — the three starter lines, the six wild lines, the four MUSAI, ARTSAI and S.T.A.R.R.
 
-***The next milestone is the one 8.6 named: Benchmark 1 beaten on hardware.*** Not another section.
+~~***The next milestone is the one 8.6 named: Benchmark 1 beaten on hardware.*** Not another section.~~
+
+***Met, and the record is what was missing — see 8.10.*** **The slice has been played through by hand, and an agent ran 770 steps through it unattended** — *all eight MARKS, thirteen maps, past Slate and out onto Route 4 toward Doldrum.* **This line stood unstruck for eleven days and 171 version bumps while it was already false**, *which is 8.7's rule about unswept rulings landing on a milestone instead of a name.*
 
 ### 8.1a The nine wild daemons — built 2026-08-31
 
@@ -6212,6 +6214,51 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 ***Which is folklore, and folklore is how anyone ever found the original.***
 
+### 8.10 The slice was played, and the record was the thing that was missing — 2026-09-12
+
+***8.1's last line said the next milestone was Benchmark 1 beaten on hardware, and 8.6 recorded that as binding.*** **Both were true when written and neither was updated.** *The slice has been played through by hand. An agent has run it unattended.* **The sentence stood for eleven days and 171 version bumps while it was already false.**
+
+***This is 8.7's rule about unswept rulings, arriving somewhere worse than a name.*** **A stale FACT costs a reader one correction. A stale INSTRUCTION costs them their next decision** — *and "the next milestone is X, not another section" is the one sentence in this document whose whole job is to say what to do next.* **Every reader after it concluded the project was stalled at Benchmark 1**, *including a session that went looking and found 171 bumps of evidence for a conclusion that was simply out of date.*
+
+> ***The milestone was met and the milestone was not closed, and only one of those two is a project problem.***
+
+#### What the unattended run actually reached
+
+**Measured off `engineAi/server/gpt_data/`, not remembered:**
+
+| | |
+|---|---|
+| **770 steps** | one session, unattended |
+| **eight MARKS** | *the debug build grants them; it is not a claim about difficulty* |
+| **thirteen maps** | Deadstack, Route 4 and its checkpoints, and on toward Doldrum |
+| **200 asides** | *the inner voice, and every one of them tactical* |
+| **9 backchannel questions** | *"Is there a walkable path from (14,15) to the right edge of ROUTE4…"* |
+| ***0 playtest entries*** | **`playtest.json` is `[]`** |
+
+#### And the empty file is the finding
+
+***`server/src/core/playtest.js` is one of the better-designed things in the harness.*** **Four kinds, with `CONFUSED` correctly called *the valuable one*, and deliberately never returned to the agent so it cannot become another thing to reason about.** *Its opening comment is the whole argument for it:*
+
+> *It has the one quality a human tester loses within minutes and never gets back: **it does not know what anything is supposed to mean.** A sign that reads as atmosphere to whoever wrote it reads as an instruction to something arriving cold, and the gap between those is where the design is actually failing.*
+
+***And the tool recorded nothing in 770 steps while `asides` recorded two hundred.*** **The difference was not the tool. `playtestActionSchema` is in the LEAN set and its description is good.** *The difference is that asides are ASKED FOR and playtest was not* — **its only ask was the last paragraph of `<reflect_now>`, a block that fires solely when the primary objective is replaced**, *and which carries a comment warning that the reminder block is exactly where `reflect` itself went unused for 357 steps.* ***The same burial, applied to a different tool, by the person who had written the warning.***
+
+**So the file's own opening line was still literally true: *nobody has ever asked it what it thought of the place.*** *Nobody had.*
+
+#### The fix, and why arrival is the right moment
+
+***Asked on FIRST ARRIVAL at a map*** (`engineAi` `df80922`), **which is not an arbitrary cadence.** *It is the one turn where the agent is a cold reader of a place* — **and being a cold reader is the entire reason its feedback is worth more than ours.** ***Walk the same room twice and it has already worked out what the sign meant, which means it has stopped being able to report that the sign was unclear.***
+
+- **Rate-limited by steps since the last entry, not per map**, *so a building with four doors asks once instead of four times.* **Forty steps is about thirteen asks across a run the size of the last one**
+- **`lastPlaytestStep` starts at `-Infinity`** so the first new map asks — *a zero would make the nudge wait forty steps into a fresh run, which is most of Blanche* — **and the reload guards for it, because JSON has no `-Infinity`**
+- **The block asks about the PLACE and never about the play.** *`reflect`, self-criticism and asides already cover how it is doing;* ***none of them covers what the game is like to arrive in cold***, and that is the only thing it can report that nobody else can
+- **And it is allowed to say nothing.** *"If nothing here struck you either way, say nothing and move on. An empty report is worse than no report, and most rooms are just rooms"* — **because a nudge that demands an answer manufactures one**, which is the failure mode 2.6 spent a day on in a different register
+
+#### What this makes the next milestone
+
+***Not "play it" — that is done.*** **It is *`playtest.json` with entries in it***, read once and acted on: **the only class of finding none of the five checks can produce.** *Every check this project owns reads a table.* ***Nothing reads a session.***
+
+
 ### 8.3 Known bottleneck
 
 **Sprites.** 151 daemons, front and back, 2bpp, four shades, 56×56 maximum — roughly 300 hand-tuned tiles. Nothing about it is hard; it is simply the largest block of labor in the project. AI generation can rough out silhouettes, but expect manual cleanup: the Game Boy palette and tile constraints are unforgiving.
@@ -6680,7 +6727,9 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 
 > **The bible is outrunning the slice.**
 
-**It is right, and it is recorded here as binding.** Sixteen version bumps in one session, and 8.1's slice is still not beaten on hardware — **the next milestone worth recording is that, not another section.**
+**It is right, and it was recorded here as binding.** Sixteen version bumps in one session, and 8.1's slice is still not beaten on hardware — **the next milestone worth recording is that, not another section.**
+
+***Discharged 2026-09-12, and eleven days late in the RECORD rather than in the work*** (8.10). **The slice was played; this sentence was not updated** — *and because it is the one place the bible says what to do next, every reader after it concluded the project was stalled.* **It is the most expensive kind of stale ruling: not a wrong fact, a wrong instruction.**
 
 #### One constraint the review did not have
 

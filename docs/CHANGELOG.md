@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.181 — 2026-09-12
+
+### 8.10 — the slice was played, and the record was what was missing
+
+- ***8.1's last line said the next milestone was Benchmark 1 beaten on hardware and 8.6 recorded that as binding. Both were true when written and neither was updated.*** **The slice has been played through by hand and an agent has run it unattended** — *770 steps, eight MARKS, thirteen maps, past Slate and out toward Doldrum.* **The sentence stood for eleven days and 171 version bumps while it was already false.**
+- ***This is 8.7's unswept-ruling rule arriving somewhere worse than a name.*** **A stale FACT costs a reader one correction; a stale INSTRUCTION costs them their next decision** — *and "the next milestone is X, not another section" is the one sentence in the bible whose whole job is to say what to do next.* ***The milestone was met and the milestone was not closed, and only one of those two is a project problem.***
+- ***And the unattended run's empty file is the other finding.*** **`playtest.json` is `[]` after 770 steps, while `asides.json` holds 200 — every one of them tactical.** *The tool was never the problem:* **`playtestActionSchema` is in the LEAN set and `playtest.js` is one of the better-designed things in the harness**, *with `CONFUSED` correctly called the valuable one and the file deliberately never returned to the agent.* **The difference is that asides are ASKED FOR** — *playtest's only ask was the last paragraph of `<reflect_now>`, which fires solely when the primary objective is replaced,* ***and which carries a comment warning that the reminder block is exactly where `reflect` itself went unused for 357 steps.*** **The same burial, applied to a different tool, by the person who wrote the warning.**
+- **So the file's own opening line was still literally true — *nobody has ever asked it what it thought of the place.*** **Fixed in `engineAi` `df80922`: asked on FIRST ARRIVAL at a map**, *which is the one turn where the agent is a cold reader of a place — and being a cold reader is the entire reason its feedback is worth more than ours.* ***Walk the same room twice and it has already worked out what the sign meant, which means it can no longer report that the sign was unclear.***
+- **Rate-limited by steps since the last entry rather than per map**, *so a building with four doors asks once.* **And it is allowed to say nothing** — *"most rooms are just rooms"* — **because a nudge that demands an answer manufactures one.**
+- ***The next milestone is no longer "play it".*** **It is `playtest.json` with entries in it, read once and acted on** — **T-50.** *Every check this project owns reads a table.* ***Nothing reads a session.***
+
+---
+
 ## v11.180 — 2026-09-12
 
 ### Open log — does the frame family want its reverse?
