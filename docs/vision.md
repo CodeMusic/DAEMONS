@@ -7666,6 +7666,8 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **Which of the four name/type collisions gives way** (T-49). ***Each is a good ruling that never met another good ruling***, which is SNAPSHOT/IMPRINT again. **`NOISE` is the one with a clean fix** — *4.26's line is statistics as an evolution line, and `VARIANCE · ANOMALY · OUTLIER` keeps it while leaving ENTROPY its clause.* **`SUBSTRATE` is 4.25's on purpose and `SUSPEND` waits on 2.7; `FAULT` and its routines agree in MEANING and disagree in TYPE**, which may be the chart's business and not the name's
+- **`REINFORCE`, `DEPRECATE` and `DISSOLVE` say the opposite of what they do** (T-49). *Three of 356, and the only three* — **`REINFORCE` lowers the target's Defence, which is the worst of them**
 - **The physical / special split** (2.12). *The code is an afternoon and the 354 judgment calls are the job* — **and five of 5.3b's leader designs were built against the Gen 3 rule**
 - **Seventeen type-resist handlers, to finish 1.6c's rack** (2.12). *`<TYPE> GAIN` amplifies one channel; `<TYPE> TRAP` would damp one, and the register is already derived.* **The cheapest good idea in that section**
 - **The overfit state** (2.12). **Benchmark 4's own lesson, and it is not a mechanic** — *`FURY CUTTER`'s counter already exists and only the penalty is new.* ***`OVERFIT` is a species, so the seventh state needs a name before anything else***
