@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.180 — 2026-09-12
+
+### Open log — does the frame family want its reverse?
+
+- ***`PERSPECTIVE` is TRANSFORM and every copy move in the game runs the same direction.*** **`ASSUME`, `CLONE`, `IMPRINT` and `COPY STATE` are all *user ← foe*; `SWAP SCOPE` is the only mutual one.** *No generation of the source game has a target-becomes-user move at all* — **Pokémon has a move for empathy and none for imposition.**
+- ***The reading is 4.18a's.*** **A clarifier weighs two threads at a perspective stage and 8.5 records the failure as *one vote could be raised***, so the reverse is not *"you become me"* but ***"your resolution comes out where I wanted it."***
+- **The mechanic with a visible argument is *the target's type becomes the user's*** — ***you hand them your weaknesses.*** *Entrainment (the ability version) is nearly free in C and 2.11 makes it the more chilling read, but a player will never notice it.*
+- ***CONTEXT, and never CORRUPT.*** **CONTENT for *I become you*, CONTEXT for *you become me*, and 0.4 says neither input wins** — *the two frame moves as the two halves of recognition, never stated.* **CORRUPT would make the type the moral, which is craft rule 1 breaking.**
+- **`ALIGN` is the name**, *and Benchmark 8 is alignment.* ***And the risk is the vehicle***: **the CC-7 is the obvious source and 4.32's point is that nothing points at it.**
+
+---
+
 ## v11.179 — 2026-09-12
 
 ### 2.13 — the names, read against their own tables

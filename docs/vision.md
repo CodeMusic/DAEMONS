@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.179**
+**A total conversion — the living design bible, v11.180**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7713,6 +7713,12 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
+- **Does the frame family want its REVERSE** — *a move where the FOE takes the USER's frame?* ***Asked 2026-09-12.*** **`PERSPECTIVE` is TRANSFORM, typed CONTENT, and every copy move in the game runs the same direction**: `ASSUME`, `CLONE`, `IMPRINT`, `COPY STATE` are all *user ← foe*, and `SWAP SCOPE` is the only mutual one. ***No generation of the source game has a target-becomes-user move at all*** — **Pokémon has a move for empathy and none for imposition**, *and this design already contains the thing the source is missing.*
+  - ***The reading is 4.18a's, not a new invention.*** **A clarifier weighs two threads at a perspective stage, and 8.5 records the failure as *one vote could be raised*** — so the reverse of PERSPECTIVE is not *"you become me"* but ***"your resolution comes out where I wanted it."***
+  - **The mechanic with a visible argument is *the target's type becomes the user's*** — ***you hand them your weaknesses***, legible inside one battle and level-proof, which is craft rule 5. *The quieter option is Gen 4's Entrainment, which is `ASSUME` with the battlers swapped and nearly free in C* — **and 2.11 makes it the more chilling read, since an ability is *what is true of a daemon while it is doing nothing.*** *A player will never notice that one, which is the case against it.*
+  - ***It should be CONTEXT, and it must not be CORRUPT.*** **`PERSPECTIVE` — I become you — is CONTENT; the reverse — you become me — is CONTEXT**, *and 0.4's rule is that neither input wins.* ***So the two frame moves would be the two halves of recognition with neither dominating, which is 0.4 as a move pair and is never said.*** **CORRUPT fits the sentence — *data that has been tampered with* — and would be the game telling the player the move is evil.** *The type would become the moral, and that is craft rule 1 breaking.*
+  - **`ALIGN` is the name**, *clean at distance 3 with nothing that rhymes*, **and Benchmark 8 IS alignment — *who controls the ground everything stands on.*** *`ONBOARD` is funnier and more Corpus, and sits 3 from `UNLOAD`* — **3 is what retired `THE HOLDOUTS`, so it wants the harder check first.**
+  - ***And the risk that decides where it comes from.*** **The obvious vehicle is the CC-7 the player has carried since minute fifteen** — *and 4.32's whole point is that nothing points at it.* **Teaching a move from it points at it**, which may spend something Callow is saving. *Safer: it is Scorn's ace's move and the TM is somewhere in Corpus.*
 - ~~Which of the four name/type collisions gives way~~ **Answered 2026-09-12 (2.13, T-49): one moved and three were rulings.** ***`NOISE` → `RESIDUAL`*** — *4.26's statistics line survives whole and ENTROPY keeps its clause.* **`SUBSTRATE` is 4.25's on purpose, `SUSPEND` is a verb it performs rather than a type claim, and `FAULT` is a word the check deliberately does not list** — *STRATUM owns the compounds, not the bare noun*
 - ~~`REINFORCE`, `DEPRECATE` and `DISSOLVE` say the opposite of what they do~~ **Fixed 2026-09-12 (2.13, T-49): `FATIGUE`, `LONG SUPPORT`, `PASSIVATE`.** ***And `IRON TAIL`'s description had doubled down on the error***, reading *"adds more of what was already holding"* in front of an effect that takes armour away
 - **The physical / special split** (2.12). *The code is an afternoon and the 354 judgment calls are the job* — **and five of 5.3b's leader designs were built against the Gen 3 rule**
