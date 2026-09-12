@@ -123,6 +123,14 @@ def port_progress():
     step stayed unticked, because the step was still waiting for BOULDER.
     Nothing errored, which is why it took a screenshot to find."""
     badges = our_badge_ids()
+    #  The map table this function has to agree with. Read here rather than
+    #  passed in, because port_progress runs before main() loads it and the
+    #  whole point is that these two files must not drift apart.
+    try:
+        valid = {nm for mm in json.load(open(MAPS, encoding="utf-8"))["MAP_NAME_TABLE"].values()
+                 for nm in mm.values()}
+    except Exception:
+        valid = set()
     total = 0
     for rel in ("engineAi/server/progress_steps.json",
                 "engineAi/server/gpt_data/progress_steps.json"):
@@ -133,14 +141,49 @@ def port_progress():
         steps = doc if isinstance(doc, list) else doc.get("steps", [])
         n = 0
         t = 0
+        m = 0
         for e in steps:
             lab = e.get("label")
             if lab in PROGRESS_LABELS:
                 e["label"] = PROGRESS_LABELS[lab]; n += 1
             if e.get("type") == "badge" and e.get("trigger") in badges:
                 e["trigger"] = badges[e["trigger"]]; t += 1
-        print("  %-40s %2d of %d labels, %d badge trigger(s)"
-              % (os.path.basename(rel), n, len(steps), t))
+            #  AND THE SAME BUG AGAIN, ONE STEP TYPE OVER.
+            #
+            #  This function's own docstring records it for BADGES -- "the card
+            #  showed the SLATE MARK and the step stayed unticked, because the
+            #  step was still waiting for BOULDER. Nothing errored, which is
+            #  why it took a screenshot to find." It then fixed labels and
+            #  badges and left map_visit alone.
+            #
+            #  So all four map_visit triggers stayed vanilla while their labels
+            #  became ours: a step LABELLED "DEADSTACK" waiting on
+            #  CERULEAN_CITY, which this very tool had renamed to DOLDRUM_CITY
+            #  in MAP_NAME_TABLE. gameLoop matches `map_name == trigger` by
+            #  exact string, so the panel showed DEADSTACK incomplete for
+            #  eight hundred steps after the agent walked through it. Found by
+            #  a second screenshot, which is once more than it should take.
+            #
+            #  PLACES is the right transform and not a parallel list: these
+            #  triggers ARE map names, and the map table above is substituted
+            #  with exactly this, longest-first so VIRIDIAN_FOREST beats
+            #  VIRIDIAN.
+            if e.get("type") == "map_visit" and isinstance(e.get("trigger"), str):
+                trig = e["trigger"]
+                new_trig = trig
+                for old_p, rep in sorted(PLACES, key=lambda p: -len(p[0])):
+                    new_trig = new_trig.replace(old_p, rep)
+                if new_trig != trig:
+                    e["trigger"] = new_trig; m += 1
+        #  Reported rather than assumed: a trigger that names no map can never
+        #  fire, and that is the failure mode this whole comment is about.
+        unresolved = [(e.get("label"), e.get("trigger")) for e in steps
+                      if valid and e.get("type") == "map_visit" and e.get("trigger") not in valid]
+        print("  %-40s %2d of %d labels, %d badge, %d map trigger(s)"
+              % (os.path.basename(rel), n, len(steps), t, m))
+        for label, trig in unresolved:
+            print("     UNRESOLVED  %-18s %s  (names no map; can never fire)"
+                  % (label or "?", trig))
         total += n
         if WRITE:
             json.dump(doc, open(f, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
