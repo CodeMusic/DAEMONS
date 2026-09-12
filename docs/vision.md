@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.182**
+**A total conversion — the living design bible, v11.183**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6284,16 +6284,33 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 > *It measures the NAMES. **It says nothing about whether a player can tell a daemon's type by looking at it** — 9.4's hue makes that a label, reliably, and a label is not a model.*
 
-#### And that reframes what the AI playtester IS
+#### It is not blind, and the truth is sharper — corrected 2026-09-12
 
-***9.4's answer to "can you tell a daemon's type" is COLOUR***, systematically, every daemon. **The harness reads the game out of RAM by symbol name. It cannot see colour at all.**
+***An earlier version of this section said the harness "cannot see colour at all" and that the agent was "playing with the type labels removed." Both are false, and the correction is the better finding.***
 
-> ***So the agent is playing a version of this game with the type labels removed.***
+**`screenshotService.js` sends TWO images every step** — *the frame upscaled ×3 with a nearest-neighbour kernel, and the same frame with a coordinate grid composited over it* — **and neither is desaturated anywhere in the path.** *`keepLastNUserMessagesWithImages` defaults to 2, so the CURRENT screen is always in the request* (raisable with `DAEMONS_KEEP_IMAGES`).
 
-**That makes it a WORSE proxy for a player than it looks, and a BETTER instrument than a player, for one specific thing:** *it is a test of the TEXT channel alone.* **Its confusion about Route 4's types is therefore evidence that 9.4 is doing real work, not evidence that the names are failing.**
+***So 9.4's hue was in front of it, the type badges were in front of it, the summary screen was one menu away — and it still reasoned in Grass and Electric.***
 
-***This has to be labelled wherever its findings are read, or they will be mistaken for player findings.*** **A `CONFUSED` entry from the agent means *the words did not carry it*. It never means *the game did not carry it*** — **the agent cannot see the half of the game that 9.4 built to carry it.**
+**Which makes the finding much worse than a missing channel, and much more useful:**
 
+> ***The names do not merely have to carry a model. They have to beat the model the reader already has.***
+
+**2.6 asks whether a player can generalise or only remember.** *This reader could do either and chose to remember* — **and it had every channel the game offers and preferred its own priors.** ***A pretrained reader translates back whenever translation is possible***, which is a cost of renaming that 2.6 never priced and cannot price from the chart alone.
+
+#### And one thing the harness already knew about itself
+
+***`promptBuilder.js` carries this, written about an entirely different bug:***
+
+> *the agent was being told, **in structured text it trusts more than the screenshot**, that it stood in a battle colosseum inside a dialogue*
+
+**That was observed here, recorded here, and is the mechanism for the whole of the above.** *The screen is sent; the text is believed.* ***A channel that is present and under-weighted fails in exactly the way a missing channel does, and is much harder to notice*** — **which is why this section got it wrong the first time.**
+
+#### What that leaves open, and it is a real fork
+
+***Nothing in the prompt tells the agent that colour IS the type.*** **Telling it would make the run answer a different question:** *whether a reader who has been handed the model can use it* — **which is not what 9.4 claims.** *9.4 claims hue is a **label a player can read**, and the game states that claim itself, in the type badges.*
+
+**So: leave it unsaid and the agent keeps testing the text channel against its own priors, which is the harder and more honest test. Say it and the run starts measuring 9.4 instead of 2.6.** ***Both are worth measuring and they are not the same run.*** <span>OPEN</span>
 
 ### 8.3 Known bottleneck
 
@@ -7798,7 +7815,8 @@ Kept here because the reasoning is worth more than the outcome.
 ### Open
 
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
-- **Can a player tell a daemon's type from its NAME, and does it matter that 9.4 means they never have to?** (8.10). ***The agent ground Route 4 for 205 steps looking for a GROWTH or SIGNAL daemon and could not tell from five names that none of them was one*** — **which is 2.6's closing paragraph observed rather than argued.** *And it cannot see colour, so it is testing the text channel alone:* ***its confusion is evidence that 9.4 works, not that the names fail.*** **The open part is whether the TEXT channel should carry it too, or whether asking it to is asking names to do a job the palette already does better**
+- **Do the names have to BEAT the model a reader already has?** (8.10). ***The agent ground Route 4 for 205 steps looking for a GROWTH or SIGNAL daemon, with 9.4's hue in front of it and the type badges on screen, and reasoned in Grass and Electric anyway.*** **2.6 asks whether a player can generalise or only remember; this reader could do either and chose to remember.** *A pretrained reader translates back whenever translation is possible* — **a cost of renaming that 2.6 never priced and cannot price from the chart alone**
+- **Should the agent be TOLD that colour is the type?** (8.10). *Saying it makes the run measure 9.4 — whether a reader handed the model can use it. Leaving it unsaid keeps the run measuring 2.6 — whether the words win against priors.* ***Both are worth measuring and they are not the same run***
 - **Does the frame family want its REVERSE** — *a move where the FOE takes the USER's frame?* ***Asked 2026-09-12.*** **`PERSPECTIVE` is TRANSFORM, typed CONTENT, and every copy move in the game runs the same direction**: `ASSUME`, `CLONE`, `IMPRINT`, `COPY STATE` are all *user ← foe*, and `SWAP SCOPE` is the only mutual one. ***No generation of the source game has a target-becomes-user move at all*** — **Pokémon has a move for empathy and none for imposition**, *and this design already contains the thing the source is missing.*
   - ***The reading is 4.18a's, not a new invention.*** **A clarifier weighs two threads at a perspective stage, and 8.5 records the failure as *one vote could be raised*** — so the reverse of PERSPECTIVE is not *"you become me"* but ***"your resolution comes out where I wanted it."***
   - **The mechanic with a visible argument is *the target's type becomes the user's*** — ***you hand them your weaknesses***, legible inside one battle and level-proof, which is craft rule 5. *The quieter option is Gen 4's Entrainment, which is `ASSUME` with the battlers swapped and nearly free in C* — **and 2.11 makes it the more chilling read, since an ability is *what is true of a daemon while it is doing nothing.*** *A player will never notice that one, which is the case against it.*

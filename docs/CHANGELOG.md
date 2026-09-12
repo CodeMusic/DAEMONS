@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.183 — 2026-09-12
+
+### 8.10 corrected — the harness is not blind, and the finding is sharper for it
+
+- ***v11.182 said the harness "cannot see colour at all" and that the agent was "playing with the type labels removed." Both are false.*** **`screenshotService.js` sends TWO images every step** — *the frame upscaled ×3 nearest-neighbour, and the same frame with a coordinate grid composited over it* — **and nothing in that path desaturates anything.** *`keepLastNUserMessagesWithImages` defaults to 2, so the current screen is always in the request.*
+- ***So 9.4's hue was in front of it, the type badges were on screen, the summary screen was one menu away — and it still reasoned in Grass and Electric.*** **Which makes the finding worse than a missing channel and much more useful:** ***the names do not merely have to carry a model, they have to beat the model the reader already has.*** **2.6 asks whether a player can generalise or only remember; this reader could do either and chose to remember.** *A pretrained reader translates back whenever translation is possible — a cost of renaming 2.6 never priced and cannot price from the chart alone.*
+- ***And the harness already knew this about itself.*** **`promptBuilder.js`, written about an unrelated bug:** *"the agent was being told, **in structured text it trusts more than the screenshot**, that it stood in a battle colosseum inside a dialogue."* **The screen is sent; the text is believed.** ***A channel that is present and under-weighted fails exactly the way a missing one does and is far harder to notice*** — which is how this section got it wrong the first time.
+- **New fork, recorded rather than decided:** *nothing tells the agent that colour IS the type.* **Saying it makes the run measure 9.4 — whether a reader handed the model can use it. Leaving it unsaid keeps the run measuring 2.6 — whether the words win against priors.** ***Both are worth measuring and they are not the same run.***
+
+---
+
 ## v11.182 — 2026-09-12
 
 ### 8.10 — the first playtest finding came from the empty file
@@ -12,7 +23,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - ***Asking only on first arrival was too rare, and the run proved it in one number.*** **Step 871, last new map at step 666** — *205 steps with nothing to trigger on* — **and it fails worst exactly where it matters, because a stuck agent stops entering new maps and a stuck agent has the most to say.** *Arrival now has a floor: sixty steps without an entry and it is asked about the last stretch anyway* (`engineAi` `ccaf769`). **Two counters, because one would re-ask every turn for as long as the agent declined.**
 - ***But the run had already produced a finding, in `objectives.json`, where nobody was looking.*** **"AERON alone still struggles vs FLOW gym. Need to level JINX, find a *Grass or Electric* type in tall grass…"** — ***it read FLOW off the screen and then reasoned in vanilla types.*** **The chart is legible enough to navigate and it is not learning that from us; it is remembering Pokémon.** *Which is 2.6's question arriving as evidence: can a player generalise, or only remember?* ***This reader remembered.***
 - ***And then it ground Route 4 for 205 steps for something that is not there.*** **Route 4 land is PING, NIBBLE, WORM, PREEMPT, SECTOR — no GROWTH and no SIGNAL**, *and the nearest is `WEED`/`SNARE` on Route 5, past Doldrum.* **That is vanilla's structure, not our bug.** ***The finding is the other half: it could not tell from five names that none of them was what it needed, and had to bind them and look.***
-- ***Which reframes what the AI playtester is.*** **9.4's answer to "can you tell a daemon's type" is COLOUR, and the harness reads RAM by symbol name and cannot see colour at all.** *So the agent is playing this game with the type labels removed* — **a worse proxy for a player than it looks, and a better instrument than a player for one thing: it tests the TEXT channel alone.** ***A `CONFUSED` entry from it means the words did not carry it, and never that the game did not*** — and that has to be labelled wherever its output is read.
+- ~~*Which reframes what the AI playtester is: the harness reads RAM by symbol name and cannot see colour at all.*~~ ***WRONG, and corrected in v11.183.*** **It sends two colour images every step.** *The claim was asserted without reading `screenshotService.js`.*
 
 ---
 
