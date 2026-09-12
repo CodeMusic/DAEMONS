@@ -94,8 +94,9 @@ FLAGS
                  and the archive is swept to the most recent 5 runs, since
                  --fresh is what creates them. DAEMONS_KEEP_RUNS changes the
                  number; 0 keeps everything.
-  --model NAME   use a specific model instead of the "daemons" group. Names
-                 come from tools/ai_models.py, which reads them out of LM
+  --model NAME   use a specific model instead of the default, which is
+                 or-muse-glimmer. Names come from ai/litellm/config.yaml and
+                 from tools/ai_models.py, which reads them out of LM
                  Studio -- e.g. qwen3-vl-8b, minicpm-v-4-6.
   --simple-schema  drop the three action variants that only annotate
                  (add_marker, delete_marker, restart_console), leaving five.
@@ -248,6 +249,19 @@ for arg in "$@"; do
     *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
 done
+
+# THE DEFAULT MODEL, AND IT IS SET IN WANT_MODEL ON PURPOSE.
+#
+# The obvious place is the OPENAI_MODEL fallback further down, and that would
+# be a bug: the DAEMONS_STORE case below keys off WANT_MODEL, because `or-` is
+# this file's convention for OpenRouter entries and OpenRouter rejects the
+# Responses API's `store` parameter. Default the model down there and
+# WANT_MODEL stays empty, the case falls through to `*)`, store is left on,
+# and every request fails on a parameter nobody chose.
+#
+# So the default belongs here, where --model has already had its say and the
+# or-* test can still see the answer.
+: "${WANT_MODEL:=or-muse-glimmer}"
 
 if [[ $AI -eq 1 && $CLASSIC -eq 1 ]]; then
   echo "--ai is GBA only: the harness reads pokefirered's RAM by symbol name." >&2
