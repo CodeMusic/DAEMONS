@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.183**
+**A total conversion — the living design bible, v11.184**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6237,7 +6237,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 #### And the empty file is the finding
 
-***`server/src/core/playtest.js` is one of the better-designed things in the harness.*** **Four kinds, with `CONFUSED` correctly called *the valuable one*, and deliberately never returned to the agent so it cannot become another thing to reason about.** *Its opening comment is the whole argument for it:*
+***`server/src/core/playtest.js` is one of the better-designed things in the harness.*** **Three kinds** *(four until 2026-09-13 — see below for why `NOTED` went)*, **with `CONFUSED` correctly called *the valuable one*, and deliberately never returned to the agent so it cannot become another thing to reason about.** *Its opening comment is the whole argument for it:*
 
 > *It has the one quality a human tester loses within minutes and never gets back: **it does not know what anything is supposed to mean.** A sign that reads as atmosphere to whoever wrote it reads as an instruction to something arriving cold, and the gap between those is where the design is actually failing.*
 
@@ -6311,6 +6311,36 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 ***Nothing in the prompt tells the agent that colour IS the type.*** **Telling it would make the run answer a different question:** *whether a reader who has been handed the model can use it* — **which is not what 9.4 claims.** *9.4 claims hue is a **label a player can read**, and the game states that claim itself, in the type badges.*
 
 **So: leave it unsaid and the agent keeps testing the text channel against its own priors, which is the harder and more honest test. Say it and the run starts measuring 9.4 instead of 2.6.** ***Both are worth measuring and they are not the same run.*** <span>OPEN</span>
+
+#### What the channel taught about ASKING — 2026-09-13
+
+***It took five changes to get one honest entry into `playtest.json`, and none of them was a bug in the tool.*** **Every one was a mistake about how a question gets answered**, *and they are worth keeping as a sequence because each looked like the fix.*
+
+| | what was wrong | what `aside` already knew |
+|---|---|---|
+| **1** | *asked only on first arrival at a map* | **205 steps passed with no new map** — *and a stuck agent is the one with the most to say* |
+| **2** | ***`playtest` was an ACTION*** | **the request allows EXACTLY ONE tool call per turn**, *so it was being asked to spend its only move on commentary. It chose to play, correctly.* **`aside` is a FIELD and rides along for free** |
+| **3** | *the field opened "USUALLY EMPTY"* | **the model emitted `kind=""` on every turn for 130 steps — doing exactly what it was told.** ***`aside` describes a STANCE, never a policy***, *and a rule about when to stay silent produces silence* |
+| **4** | *"was there anything worth reporting?"* | **an open question with a sanctioned no gets the no.** *"What did you have to guess at?" presumes there was something and asks which* |
+| **5** | ***`NOTED` — "an observation with no verdict"*** | **18 of the first 20 entries, sixteen of them play narration on consecutive turns** — *"Menu is open."* ***It had no test to fail, and it duplicated `aside` exactly.*** **Removed** |
+
+**The test that replaced NOTED is the one worth keeping:**
+
+> ***Would this still be true tomorrow, for somebody else?***
+> *"The east exit is higher up than it looks from here" survives the turn and is a report. "Menu is open" does not, and is an aside.*
+
+#### And a person at the controls is invisible to it
+
+***The first CONFUSED that looked like a bug was the author saving the game.*** **The agent had pressed B; a person then drove to the save screen; and the agent filed** *"pressing B after using DEEP RECOVER took me through a save screen and then to the title screen."* ***A confident causal claim about a cause that was not it*** — **and `reflect` and self-criticism learn from outcomes, so they would have learned from that too.**
+
+**So there is a PAUSE now**, and three things about it are deliberate:
+
+- ***It sends the wanted state, not a toggle***, *so two open dashboards cannot each flip it and cancel out*
+- ***The loop gate sits above the `try`***, *because the `finally` flushes usage files and records loop time — a paused iteration inside it would write two files twice a second and count idle as work*
+- ***On resume the agent is TOLD***, **once and plainly** — *not guessed at: the harness knows a person had the controls, so it says the screen may not be where you left it, none of it was you, and nothing from that stretch is evidence*
+
+***And for when nobody presses the button***, *both `aside` and `playtest_kind` now say a person may take the controls without warning* — **so an unexplained change is thought of as that, rather than as something it caused.** *A report that blames the wrong button sends somebody to fix a bug that is not there.*
+
 
 ### 8.3 Known bottleneck
 

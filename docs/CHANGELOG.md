@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.184 — 2026-09-13
+
+### 8.10 — what the playtest channel taught about asking
+
+- ***Five changes to get one honest entry into `playtest.json`, and none was a bug in the tool.*** **Arrival-only was too rare; an ACTION cost the agent its only tool call per turn; "USUALLY EMPTY" produced `kind=""` for 130 steps; an open question with a sanctioned no got the no; and `NOTED` had no test to fail.** *`aside` had already solved every one of them* — **it is a field, it describes a stance rather than a policy, and it never gives the model a drawer.**
+- ***`NOTED` is removed.*** **18 of the first 20 entries, sixteen of them play narration on consecutive turns**, *and "an observation with no verdict" is exactly what `aside` already is.* **Replaced by one test: *would this still be true tomorrow, for somebody else?*** *Plus a 15-step throttle as a backstop, since removing the drawer does not stop flooding arriving under another label.*
+- ***A person at the controls was invisible to it.*** **The first CONFUSED that looked like a bug was the author saving the game** — *the agent pressed B, a person drove to the save screen, and it filed a confident causal claim about a cause that was not it.* **There is now a pause**: *the wanted state rather than a toggle, gated above the loop's `try` so idle is not counted as work, and the agent is TOLD on resume rather than left to guess.* ***And `aside` and `playtest_kind` both now say a person may take the controls without warning.***
+
+---
+
 ## v11.183 — 2026-09-12
 
 ### 8.10 corrected — the harness is not blind, and the finding is sharper for it
