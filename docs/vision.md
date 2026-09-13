@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.184**
+**A total conversion — the living design bible, v11.185**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6340,6 +6340,14 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 - ***On resume the agent is TOLD***, **once and plainly** — *not guessed at: the harness knows a person had the controls, so it says the screen may not be where you left it, none of it was you, and nothing from that stretch is evidence*
 
 ***And for when nobody presses the button***, *both `aside` and `playtest_kind` now say a person may take the controls without warning* — **so an unexplained change is thought of as that, rather than as something it caused.** *A report that blames the wrong button sends somebody to fix a bug that is not there.*
+
+#### And the self-model was rehearsing its faults — 2026-09-13
+
+***`<self>` is read back every turn, and the aside is told to SPEAK AS THE PERSON DESCRIBED THERE.*** **So a field that asked for *"a tendency, a habit, a fault named plainly"* cast every fault as a character to perform.** *Its own good example was* ***"I commit to a route before I have checked it, and then I am reluctant to turn back"*** — **and that sentence came back as four of the six entries**, *×3, ×2, ×2, with "noticed 4 times" presented as extra weight.* ***The example seeded the observation and the loop reinforced it.***
+
+**It stays a DESCRIPTION rather than an instruction** — *rules have `learned`, and `<self>` is a speaker to be consistent with* — **but of the player it is BECOMING:** *not "someone who commits too early" but* ***"someone who checks the collision data before committing."*** *Describe a fault and the voice rehearses it; describe the fix and it rehearses that.*
+
+***Two lessons, both the same shape as the rest of this section.*** **An example inside a description is not illustration, it is the most likely output.** *And a deduplication that is exact on purpose needs the writer told to repeat itself exactly* — **or paraphrases of one observation fill every slot.**
 
 
 ### 8.3 Known bottleneck

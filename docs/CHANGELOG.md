@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.185 — 2026-09-13
+
+### 8.10 — the self-model was rehearsing its faults
+
+- ***`<self>` is read back every turn and the aside speaks as the person it describes.*** **Asking for "a tendency, a habit, a fault named plainly" cast every fault as a character to perform** — *and the field's own good example, "I commit to a route before I have checked it", came back as four of six entries.* **Now it describes the player it is becoming**: *"someone who checks the collision data before committing."* **Still a description, not an instruction.**
+- ***An example inside a description is not illustration, it is the most likely output.*** *And an exact-match dedup needs the writer told to repeat itself exactly, or paraphrases fill every slot.*
+- **Also in engineAi:** *the progress loader now takes step definitions from the template by id and only progress from the run* — **the running server had been writing its in-memory copy back over two corrected files**; *and memory, playtest and the backchannel scroll.*
+
+---
+
 ## v11.184 — 2026-09-13
 
 ### 8.10 — what the playtest channel taught about asking
