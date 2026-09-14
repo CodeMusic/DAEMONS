@@ -5,7 +5,7 @@ Not the story as the player meets it — that is
 says what is available at each point. **This is what happened**, in the order it
 happened, which is an order no player is ever given.
 
-> **Reconciled against the bible at v11.191, 2026-09-14.**
+> **Reconciled against the bible at v11.192, 2026-09-14.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -70,8 +70,9 @@ and the event is never named.
 
 ## The ending
 
-The machine completes, Doldrum Cave opens, and you earn S.T.A.R.R. You bring it
-to a scholar in the bought city, and it argues her side out of her own journals —
+The machine completes, Doldrum Cave opens, and you earn S.T.A.R.R. — which tells
+you, once, to take it to THE SCHOLAR. You bring it
+to him in the bought city, and it argues her side out of her own journals —
 the same pages that were read as evidence she had lost rigour. The Owl concedes
 *something* and will not name it — then signs a sealed peer review, addressed to
 the people who signed the first one, and hands it to you. A procedure put her

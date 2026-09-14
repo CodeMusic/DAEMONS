@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.191**
+**A total conversion — the living design bible, v11.192**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4369,6 +4369,8 @@ Corpus rooms, and the trainer table.
 **1. The Owl's concession is spoken, and what he signs is sealed.** ~~*No document, no item, no flag the player can read.*~~ ***Reversed on playtest 2026-09-14:*** **he said *"I will put that in writing, and I will sign that too"* and handed the player nothing, so the scene promised a consequence and never showed one** — *a playtester came out of it unsure anything had changed.* **He now writes, signs and seals a PEER REVIEW addressed to *the people who signed the first one*; the player carries it and gives it to Crystal with the package.** ***Its contents are never shown, anywhere***, **and that is the part of this ruling that mattered** — *4.24 fixed his posture: he does not concede consciousness, he concedes **something**, and the strongest available position is "there is something here and I will not name it."* **That is craft rule 1 stated by a character**, and a letter the player could read is the one object in this sequence that could wreck the game by being one sentence too generous. *And it fits the rule above it: a procedure put her there, so a procedure takes her out — a peer reviewer's signed letter is that, exactly.*
 
 ***S.T.A.R.R. is now seen arguing, and still never quoted.*** **The same playtest could not tell what the Owl was answering**, *because T-28 had the player hear one side only.* **Three lines of narration fix it without breaking that** — *S.T.A.R.R. shows him a page of handwriting; S.T.A.R.R. answers him; S.T.A.R.R. answers again, and does not stop.* **After the concession, S.T.A.R.R. turns toward the door** — *and, if the player is not carrying the package yet, does not go.*
+
+***And the player is told where to go***, *added 2026-09-14 on playtest: nothing pointed at the Owl, so the scene was only ever found by accident.* **The moment S.T.A.R.R. is caught in DOLDRUM CAVE it speaks once, in its terminal's register** — *S.T.A.R.R. is looking at you. / ONE READER IN BRAZEN HAS NOT DECIDED YET. / TAKE ME TO THE SCHOLAR.* **A place and a person, and nothing about what the argument is.** ***His house is THE SCHOLAR'S HOUSE***, *and the TM line calls him THE SCHOLAR*: **"MR. CONSTRUE" was vanilla's MR. PSYCHIC swept by the type rename, and a name a vocabulary pass produced is not a name anybody gave him.**
 
 **2. He stays in Brazen.** *4.23 put him in Mr. Psychic's house — a lone scholar keeping his own counsel **inside the bought city**, a peer reviewer living in a building Corpus owns.* **A remote scholar is a neutral scholar and the placement stops meaning anything.** *The flight is spent on her, not on him.*
 

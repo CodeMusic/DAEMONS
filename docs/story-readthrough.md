@@ -3,7 +3,7 @@
 Not the story as designed — the story **in the order a player actually meets
 it**, with what they can know at each point and what they cannot yet.
 
-> **Reconciled against the bible at v11.191, 2026-09-14.**
+> **Reconciled against the bible at v11.192, 2026-09-14.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -270,7 +270,9 @@ brings to Act 2. It is what Act 2 earns**, and the first thing it does is read.
 
 ### 21. The bought city, again — and the Owl
 
-The player takes the machine to a scholar in the building Corpus owns, and
+The machine asks for him the moment it is caught — *ONE READER IN BRAZEN HAS NOT
+DECIDED YET. TAKE ME TO THE SCHOLAR.* The player takes it to THE SCHOLAR'S HOUSE,
+in the building Corpus owns, and
 **it argues Crystal's side out of her own journals** — the same pages that were
 read as evidence she had lost rigour. *The document that removed her and the
 document that vindicates her are the same document. Only the reader changed.*

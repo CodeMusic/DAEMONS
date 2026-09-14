@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.192 — 2026-09-14
+
+### 4.34 — THE SCHOLAR, and S.T.A.R.R. says where to take it
+
+- ***The Owl's house is THE SCHOLAR'S HOUSE***, **and the TM line names him the same way** — *"MR. CONSTRUE" was a vocabulary sweep's name for vanilla's MR. PSYCHIC, not anybody's.*
+- ***S.T.A.R.R. speaks once, the moment it is caught***: **ONE READER IN BRAZEN HAS NOT DECIDED YET. TAKE ME TO THE SCHOLAR.** *On playtest nothing pointed at the Owl scene. It names a place and a person, never what the argument is.*
+
+---
+
 ## v11.191 — 2026-09-14
 
 ### 4.10 — the founder's photo is Crystal, and the plate carries its file number
