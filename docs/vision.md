@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.201**
+**A total conversion — the living design bible, v11.202**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2178,7 +2178,7 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **He is not a brat and he is not a villain. He is doing exactly what he was taught, faithfully.**
 
-*So he calls her **Gran**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer without losing the family: **Gran** is familiar, faintly impatient, and not contemptuous. It is also two characters shorter, so nothing needed rewrapping. His sister says **Gran's lab** for the same reason.
+*So he calls her **CRYSTAL**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer without losing the family. ~~**Gran**~~ *was the first answer and read oddly on playtest (2026-09-14).* **Her name is the right one, and 4.1 had already said why: every other authority has a role, and she is just her name** — *her own grandchildren included.* **It is familiar, faintly impatient, and not contemptuous**, *and a family whose children use a grandmother's first name is one that treats her as a colleague.* His sister says **CRYSTAL's lab** for the same reason. **T-81.**
 
 *Which pronouns are already right.* The intro's *"This is my grandson. **He's** been your rival"* and *"**His** name is `<RIVAL>`"* are Crystal talking about **Al**, and correct as they stand. They sit two lines from her own name, so they read like misses and are not — recorded here so nobody fixes them.
 
@@ -4009,7 +4009,7 @@ before the gyms is that it had a scene in it nobody had noticed.*
 
 ***Crystal reads daemons with an instrument. DAISY just looks at them.***
 
-> **DAISY:** *"Gran reads them with an instrument. I just look. May I see your
+> **DAISY:** *"CRYSTAL reads them with an instrument. I just look. May I see your
 > first one?"*
 
 **That is 0.4 inside one family** — two accounts of the same creature, both
@@ -4041,10 +4041,10 @@ to know what is happening inside it.
 |---|---|
 | **on AL** | *"He has not mentioned the result. So I know the result."* |
 | **on the TOWN MAP** | *"It shows where you are and what the places are called. The two do not always agree."* — 3.2's device, ninety seconds early |
-| **on the bookshelf** | *"Shelves of books about daemons. None of them by Gran."* |
+| **on the bookshelf** | *"Shelves of books about daemons. None of them by CRYSTAL."* |
 | **on an EGG** | *"I cannot do anything with an EGG. There is nothing running in it yet."* |
 
-***"None of them by Gran" pays off a line in the lab*** — *"Everyone says so.
+***"None of them by CRYSTAL" pays off a line in the lab*** — *"Everyone says so.
 Very few of them have read her."* **Neither explains the other.**
 
 *Settled 2026-09-06:* **DAISY is `VERA CLEAR`.**
@@ -6082,6 +6082,20 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 **151 of 386 species names are ours.**
 
+#### The last eight a player can meet — *named 2026-09-14*
+
+***Playtest noticed vanilla names still in the Index.*** **Measured again: eight meetable species had been missed**, *because the first measure counted wild encounters and scripts and missed eggs, breeding and fossils.* **LUGIA and HO-OH were counted and are not meetable** — *Navel Rock needs a ticket this game never gives.* ***The other 183 stay unnamed, as ruled above*** — *confirmed over naming all 193.*
+
+| vanilla | ours | register | why |
+|---|---|---|---|
+| **TOGEPI → TOGETIC** | **TRUST → HOPE** | *islands* | **the egg you are handed, and what it grows into by being kept** — *the first thing a mind learns, and the virtue it leaves behind* |
+| **AZURILL** | **VALENCE** | *islands* | **MOOD's baby: toward or away, before it is any one mood** |
+| **WYNAUT** | **RANKLE** | *islands* | **RESENTMENT's baby: the process, not the grievance** — *craft rule 3* |
+| **OMANYTE → OMASTAR** | **MAGTAPE → MAINFRAME** | *Kanto* | **the HELIX CORE is wound in a spiral; tape was, and the machine it fed was too heavy to move** |
+| **KABUTO → KABUTOPS** | **DRUM → PUNCHCARD** | *Kanto* | **the DOME CORE is "a drum, sealed at both ends" — drum memory; then a thing that records by cutting and never reads back** |
+
+*`SPOOL` was the first name for OMANYTE and is a routine; `check_lexicon` refused it.* **Every one has a new Index entry and category. T-82.**
+
 #### Four that the type did the work for
 
 **`BELLSPROUT` → `SNARE` → `HONEYPOT` → `TARPIT`.** *A GROWTH/CORRUPT line that catches things and holds them* — **and a honeypot and a tarpit are exactly that, in order of how long they hold you.**
@@ -8080,6 +8094,7 @@ Kept here because the reasoning is worth more than the outcome.
 | Was | Now | Why |
 |---|---|---|
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
+| **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *her grandchildren included.* 4.3, T-81 (2026-09-14) |
 | **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away the Five Witnesses lock and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
 | **Ty**, an unrelated rival | **Ty Clear**, Crystal's son and Scorn's partner | Turns a methodological disagreement into a cost somebody pays (4.3). |
 | S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |

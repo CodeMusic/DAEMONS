@@ -5,6 +5,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.202 — 2026-09-14
+
+### 4.3 — Al calls her CRYSTAL
+
+- ***"Gran" read oddly on playtest.*** **Her name, as 4.1 already says of her: every other authority has a role and she is just her name** — *her grandchildren included.* **Eleven lines in the lab and the Clears' house; logged in Reversed.**
+
+### 8.2b — The last eight a player can meet
+
+- ***TOGEPI → TOGETIC is TRUST → HOPE, AZURILL is VALENCE, WYNAUT is RANKLE*** *(islands)*; ***OMANYTE → OMASTAR is MAGTAPE → MAINFRAME, KABUTO → KABUTOPS is DRUM → PUNCHCARD*** *(Kanto).* **Each with a new Index entry and category.** *LUGIA and HO-OH are not meetable; the other 183 stay unnamed.*
+
+### The RUNNING SHOES
+
+- ***Mom tells you to hold B, in her own voice***, **and running works indoors on every map but the five link rooms.**
+
 ## v11.201 — 2026-09-14
 
 ### 9.22 — No seams, and the station under the sandbar
