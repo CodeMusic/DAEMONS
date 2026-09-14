@@ -31,10 +31,13 @@ PREVIEW = "/tmp/blanche_grass_fx.png"
 WRITE = "--write" in sys.argv
 
 C = {n: G.GROUND_COLOURS[n - 1] for n in range(1, 9)}          # GRASS, TIP, TUFT, DARK, CHALK, SPECK, SHADE, EDGE
-DARKER = (116, 138, 116)                                       # one step past DARK, for the deepest base
-# general_1's index -> the Blanche colour doing that job
-MOVE = {1: C[G.TIP], 2: C[G.GRASS], 3: C[G.TUFT], 4: C[G.DARK], 5: DARKER,
-        12: C[G.EDGE], 13: C[G.GRASS], 14: C[G.TUFT], 15: C[G.DARK]}
+# A sprite on grass the same colours as itself vanishes, so the effect is pushed
+# one step outward on both ends: its tips lighter than any grass tile, its body
+# and base darker than the darkest tuft. Still no green a pale town lacks.
+def shade(c, k):
+    return tuple(max(0, min(255, round(v * k))) for v in c)
+MOVE = {1: C[G.SPECK], 2: C[G.TIP], 3: shade(C[G.TUFT], 0.86), 4: shade(C[G.DARK], 0.74), 5: shade(C[G.DARK], 0.58),
+        12: C[G.SPECK], 13: shade(C[G.GRASS], 0.92), 14: shade(C[G.TUFT], 0.82), 15: shade(C[G.DARK], 0.70)}
 
 
 def read_pal(path):
