@@ -207,6 +207,12 @@ open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
 
 **`data/maps.o` `.incbin`s every layout's `map.bin` and `border.bin`, and `map_data_rules.mk` never listed them**, so make rebuilt the maps only when `layouts.json` changed. *The tileset is a C `INCBIN`, which make does track, so the new blocks reached the ROM and the map pointing at them did not.* **T-57, T-58 and T-59 all shipped that way, and the check that "passed" searched the ROM for `metatiles.bin` — the half that was never stale.** ***The rule now depends on every layout `.bin`. And verify what you changed: search the ROM for the map too.***
 
+### 14. The neighbour drawn with your tileset
+
+***Symptom:*** *a map looks right, and then garbles the moment you stand in the map next to it — Route 1's birches drawn as Callow's buildings from inside Callow, the pale sea drawn as solid blue and black from Route 21 South.*
+
+**`fieldmap.c` copies `MAP_OFFSET` (7) rows or columns of each connected map into the grid, and every cell of the grid is drawn with the tilesets of the map you are standing in.** *A primary block (id < 640) draws the same everywhere; a secondary block draws whatever that id means in whichever tileset is loaded.* **Vanilla gets away with it by keeping the last seven cells of a map in blocks both neighbours share.** ***So a redraw near an edge has to be checked from the other side***: **`tools/gbaseams.py` lists every cell that would draw differently.** *Where two sides genuinely need different drawings — the sandbar's water sliver, pale from North and blue from South — give the block the same id in both tilesets and a different drawing in each, and list the id in the tool.* **The map border has the same property one level up: it is one block all round the map, so water or trees in view near a side must match it.**
+
 ---
 
 ## 5. Two habits worth keeping

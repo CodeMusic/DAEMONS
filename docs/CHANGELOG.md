@@ -5,6 +5,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.201 — 2026-09-14
+
+### 9.22 — No seams, and the station under the sandbar
+
+- ***A style may change; it may not change on open ground.*** **Route 1's trees follow the grass** — *broadleaf wherever it is coloured, birches only in the pale stretch* — **and Blanche's chalk path runs unbroken to the ledge at row 26**, *the grass changing at the first pale ledge's lip.* ***Route 21's line of rocks becomes a sandbar the width of the sea***, **deep enough that no water is in view as you cross into South.** *Reverses two rows of* Where the pale ends.
+- ***Why the joins garbled:*** **a connection draws seven rows of the neighbour with your own tileset** (*engine.md trap 14*, `tools/gbaseams.py`). **The sandbar's water sliver has the same ids in both tilesets and a different drawing in each.**
+- ***A hatch on the sandbar leads to an emptied research station*** — **the room of Crystal's session with BunnyArtsai, cleared: a visitor log reading `CRYSTAL CLEAR. SEPT 3. PURPOSE: SESSION.` and `TRANSCRIPT: WITHHELD.`** *It proves the session and shows nothing of it (4.10); the date repeats SEPT 3 rather than adding one.* **Chosen over showing the session.**
+
+### 4.7 — S.T.A.R.R. knows GOTO
+
+- ***It is what later flies the player***, **so it learns GOTO at 70 beside RECURSION and is HM-compatible**; *the debug party's GOTO moves to it from SEEKMUSAI.*
+
+### 9.23 — No GYM, and not houses
+
+- ***Every sign and line says BENCHMARK; the title stays LEADER***, *chosen over PROCTOR.* **Next: each kind its own silhouette (T-77), and a BENCHMARK's pillars in its leader's type colour (T-78).**
+
 ## v11.200 — 2026-09-14
 
 ### 9.23 — CHECKPOINTS, THE REPO and the BENCHMARKS, as buildings

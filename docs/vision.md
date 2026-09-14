@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.200**
+**A total conversion — the living design bible, v11.201**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3440,6 +3440,8 @@ The distinction is worth protecting. A clone story is about hubris and ownership
 **The move is the argument.** RECURSION compounds for as long as it is allowed to run and collapses to nothing the instant it is interrupted. That is a positive feedback loop and its termination, expressed in two lines of battle code. The player learns to protect it without ever being told what it models.
 
 ***Built 2026-09-13.*** **It runs on FURY CUTTER's counter, not on Bide** — *which was what this section assumed for the Game Boy build, where it would have been assembly surgery.* **On GBA the counter that grows with each consecutive use and resets when the move is interrupted already exists**, so RECURSION branches inside that calculation: *+50% of base per consecutive use to ×2.5, reset by a miss, by a skipped turn (sleep, flinch, full paralysis), or by using any other move in between.* **Base 60, EMERGENT, learned at 70 — the level S.T.A.R.R. is met at in Doldrum Cave** — *and in Metronome's, Mimic's and Sketch's forbidden list and not copyable by Mirror Move, because it is given to nothing else in the game.* **It borrows Psycho Boost's animation until it has its own.**
+
+***And GOTO, at the same level — decided 2026-09-14.*** **S.T.A.R.R. is what later flies the player between places**, *so it knows GOTO the day it is met and can relearn it by HM* — **its four moves at 70 are SAFEGUARD, PSYCHIC, RECURSION and GOTO.** *A daemon that travels by jumping to an address is the machine side of BunnyArtsai moving through frames.* **The debug party carries GOTO on S.T.A.R.R. too, not SEEKMUSAI. T-75.**
 
 **The lineage, stated entirely in the movedex and out loud to nobody:**
 
@@ -7884,12 +7886,34 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 | | drawn pale | where the colour returns |
 |---|---|---|
-| **Route 1** | ***its last ten rows***, *and every tree along its sides and its top row, with Blanche's birch border past them* | **the grass, paths, ledges and flowers above the pale stretch** — *walking north, the ground colours before the trees do* |
-| **Route 21 North** | ***all of it*** — *the channel, the open sea in pale shallow and pale deep, the rocks, the sand bars, the shore and its trees* | **at Route 21 South, behind a line of pale rocks across the sea with a gap to surf through** — *open water has no edge to hide a seam, so one is built* |
+| **Route 1** | ***its last ten rows***, *birches and pale ground* — ~~*and every tree along its sides and its top row, with Blanche's birch border past them*~~ ***reversed on playtest, see* No seams** | **at the stretch's first ledge**: *coloured above the lip, pale below*; **and Blanche's chalk path runs on through coloured grass to the ledge you jump at row 26** |
+| **Route 21 North** | ***all of it*** — *the channel, the open sea in pale shallow and pale deep, the rocks, the sand bars, the shore and its trees* | **across a sandbar at the join with Route 21 South** — ~~*behind a line of pale rocks with a gap to surf through*~~ ***reversed on playtest, see* No seams** |
 
 ***The signs say something.*** **Vanilla's boards carried a squiggle that reads as Japanese at a glance.** *A 16-pixel board holds three letters of a 3x5 font*, **so they say short words: BLANCHE on a board as wide as two cells, LAB, a question mark for the trainer tips, and RT1 on Route 1.** ***The text boxes they open are unchanged.***
 
 ***Why Route 21 South stays vanilla:*** **it is drawn from Quicksilver's tileset, which the island, Route 20 and the Safari areas share** — *pale water there would put the same line wherever that sea continues.* **The island is where the colour comes back. T-60.**
+
+#### No seams — *playtest 2026-09-14*
+
+***A style may change; it may not change on open ground.*** **Three seams were found by playing, and each moved to something that already draws a line.**
+
+| | was | now |
+|---|---|---|
+| **Route 1's trees** | ***birches the whole way to Callow*** — *white trees beside coloured grass for thirty rows* | ***the trees follow the grass***: **broadleaf wherever the ground is coloured, birches only in the pale stretch** |
+| **Route 1's path** | ***cut across its width*** — *gold on one row, chalk on the next* | ***one colour the whole way***: **Blanche's chalk runs up through coloured grass to the ledge at row 26**, *and the grass itself changes at the first pale ledge's lip* |
+| **Route 21** | ***a line of rocks on open water*** — *rigid, and it garbled crossing the join* | ***a sandbar the full width of the sea***, **with a hatch, and a caretaker who says nobody comes out this far** |
+
+***Why the join garbled, which is a fact about the engine and not about the art.*** **A connection draws seven rows of the neighbouring map with the tileset of the map you stand in** (*engine.md trap 14*). ***So the last seven rows of any map are drawn twice***, *once by each tileset*, **and anything Blanche drew there reads as Callow's or Quicksilver's blocks from the other side** — *which is what happened entering Callow under Route 1's birches.* **`tools/gbaseams.py` finds every such cell.**
+
+***Why a sandbar, and why it is deep.*** **The border past a map's sides is one block all round**, *pale water North and blue South*, **and it is on screen whenever you are near a side** — *so water in view must match the map you are standing in, and water in view at the moment of crossing would change colour under you.* ***Only land the whole width, deep enough to fill the screen, satisfies both.*** **Its sand is gold throughout** — *a bar that was chalk on one half would be the seam it replaces* — **and the sliver of water along its ends is drawn pale in Blanche's tileset and blue in Quicksilver's under the same ids**, *so each side's player sees water matching their own border.* **T-72, T-73.**
+
+#### The station under the sandbar — *decided 2026-09-14*
+
+***A hatch on the sandbar leads down to an emptied research station*** — **the room where Crystal's session with BunnyArtsai happened** (*4.10,* Echoes of the Algorithm), **cleared out.** *Terminals still lit with their input cables taken out, so nothing on them answers; a table with a visitor log.*
+
+**The log has one line: `CRYSTAL CLEAR. SEPT 3. PURPOSE: SESSION.` Then `TRANSCRIPT: WITHHELD.`**
+
+***It points at what she saw and never shows it.*** **4.10 rules that the player reads the format decaying at Quicksilver without ever seeing the first time** — *so the station is proof a session happened and nothing about what was in it.* ***The date repeats SEPT 3 rather than adding one*** — **the same ruling as the founder's plate, `PR-0903`** — *so it confirms she was still being let in on the day the file closed, and gives the arithmetic nothing new.* ***Chosen over showing the session.*** **It is also the first interior between Quicksilver and Callow**, *which 4.23 had noted there was none of.* **T-74.**
 
 #### The world's own trees, water and grass — *decided 2026-09-14*
 
@@ -7916,6 +7940,12 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***Signs carry the emblem and no letters.*** **Our 3x5 font fits three letters to a board, and every short form of these names is an abbreviation the lexicon avoids** — *the full name is in the text box and on the town map.* ***The emblem replaces the Poké Ball everywhere it stood***: *over the door, on the sign, on the CHECKPOINT floor.*
 
 ***Colour here carries function, not decoration*** (9.4): **a colour per kind is how a player tells the three apart at a glance**, *which is the job vanilla's red and blue did.* **Teal, amber and slate are ours; red and blue were theirs.** *Halftone greys them like everything else.* **T-62 to T-65.**
+
+#### What they are called, and what they are not — *playtest 2026-09-14*
+
+***Nothing the player reads says GYM.*** **Every sign and line says BENCHMARK** — *`SLATE CITY BENCHMARK / LEADER: CAIRN`.* ***The title stays LEADER***, **chosen over PROCTOR**: *a proctor supervises an exam without sitting it, and you fight this person*; **a benchmark's leader is the top of the board you are trying to beat.** *Eight labels in the FAME CHECKER, 88 pixels wide, read BENCHMARK without the town, because VERDIGRIS BENCHMARK and QUICKSILVER BENCHMARK do not fit.* **T-76.**
+
+***They should not look like houses.*** **A roof and a door recoloured is still a house**, *so each kind gets a silhouette of its own on vanilla's footprint* (**T-77**), ***and a BENCHMARK's two pillars take the colour of its leader's type*** (**T-78**) — *9.4's rule on the building itself.* **Concepts first.**
 
 ### 9.2 Order of operations
 
