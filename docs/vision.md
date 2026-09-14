@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.194**
+**A total conversion — the living design bible, v11.195**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7837,6 +7837,17 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | **the houses and fences** | ***drawn in COMMON rows 2 and 3***, *shared by about 180 maps* | **pointed at Blanche's own rows 8 and 12** — *nearly unused, and no other map draws them* — **filled with pale copies of the common colours** |
 | **the ground and trees** | ***common row 0, 1317 of Blanche's draws*** | **a Blanche-only runtime wash later**, *the same shape as Halftone's tint, never touching Blanche's own rows* |
 | **the lab's interior** | ***shared with the whole Quicksilver lab*** | **split into its own tileset** — *so the working lab and the ruin can read as one place, before and after* |
+
+#### The lab, from inside — *decided 2026-09-14*
+
+***A working lab, lived in*** — **the exterior's pale stone carried inside, papers where someone left them, and the one gold detail.** *Not a showroom and not an institution*: **CORPUS turns it into one later, and the room should have been a person's first.**
+
+| | becomes | because |
+|---|---|---|
+| **Oak's red machine** | ***the PORT*** | **1.3: *"you reach the BOXES through a PORT"*** — *a socket in the wall of a host.* **The room the player gets their first box in shows where a box plugs in** |
+| **the long shelves** | ***her journals*** | **4.24: *the document that removed her and the document that vindicates her are the same document.*** *Rows of bound notebooks, never remarked on, in the room she worked in* |
+| **the two tutorial posters** | ***new text*** | **the last vanilla lines in her lab** — *rewritten to craft rule 1* |
+| **everything else** | ***redrawn on its own tile*** | **the computer, the INDEX unit and her note, the bench with the three boxes, and the people keep their scripts and collision** |
 
 ***Concept art comes from the n8n `daemon/sprite` workflow's new `kind: environment`***, **top-down three-quarter or front elevation, with lettering forbidden in the prompt** — *and, as with the people, it is reference to draw from: the tiles are written by hand, eight pixels at a time.* **T-53 to T-56.**
 

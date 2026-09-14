@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.195 — 2026-09-14
+
+### 9.22 — Crystal's lab, from inside
+
+- ***A working lab, lived in.*** **Oak's red machine becomes the PORT a BOX connects through (1.3); the long shelves hold her journals (4.24), never remarked on; the two tutorial posters get new text.** *Every piece stays on its tile, so every script and wall stays valid.* **T-57.**
+- ***The Blanche lab and the ground wash are built*** — **T-53 to T-56 closed**: *the lab exterior, the pale houses, the runtime ground wash, and the lab's own interior tileset.*
+- ***The sprite workflow draws rooms***: **`view: interior`.**
+
+---
+
 ## v11.194 — 2026-09-14
 
 ### 9.22 — Blanche's buildings, and the one warm note
