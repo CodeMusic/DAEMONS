@@ -7,7 +7,7 @@ A symbol per kind replaces the Poke Ball wherever it stood -- over the door, on
 the sign, on the CHECKPOINT floor:
 
     CHECKPOINT   a circular restore arrow      teal
-    THE REPO     a stacked package             golden amber
+    THE REPO     a branch glyph                golden amber   (it was a package until T-66)
     BENCHMARK    a gauge with one needle       slate, a gold pivot
 
 Each is 16x16 in roles, not colours: O outline, L light, M mid, D dark, T a
@@ -35,22 +35,22 @@ EMBLEMS = {
         "...OOLMMMMMO....",
         ".....OOOOOO.....",
         "................"],
-    "REPO": [
+    "REPO": [                                   # the version-control branch: a trunk, a fork, three commits
         "................",
-        ".....OOOOOO.....",
-        "....OLLLLLMO....",
-        "....OLLTLLMO....",
-        "....OMMTMMDO....",
-        "....OOOOOOOO....",
-        "..OOOOOOOOOOOO..",
-        ".OLLLLLMOLLLLLMO",
-        ".OLLTLLMOLLLTLMO",
-        ".OMMTMMDOMMMTMDO",
-        ".OMMTMMDOMMMTMDO",
-        ".OMMMMMDOMMMMMDO",
-        ".ODDDDDDODDDDDDO",
-        ".OOOOOOOOOOOOOO.",
-        "................",
+        "....OOO.........",
+        "...OLLLO........",
+        "...OLTLO...OOO..",
+        "...OLLLO..OLLLO.",
+        "....OMO...OLTLO.",
+        "....OMO...OLLLO.",
+        "....OMO....OMO..",
+        "....OMO...OMMO..",
+        "....OMOOOOMMO...",
+        "....OMMMMMMO....",
+        "...OLLLOOOO.....",
+        "...OLTLO........",
+        "...OLLLO........",
+        "....OOO.........",
         "................"],
     "BENCHMARK": [
         "................",
@@ -74,10 +74,34 @@ EMBLEMS = {
 # nominal colours, for previews only
 PREVIEW_COLOURS = {
     "CHECKPOINT": {"O": (36, 70, 76), "L": (156, 220, 210), "M": (96, 184, 176), "D": (58, 138, 140)},
-    "REPO": {"O": (80, 56, 30), "L": (238, 214, 140), "M": (212, 168, 82), "D": (170, 120, 54), "T": (250, 244, 220)},
+    "REPO": {"O": (80, 56, 30), "L": (238, 214, 140), "M": (170, 120, 54), "T": (250, 244, 220)},
     "BENCHMARK": {"O": (52, 58, 72), "W": (232, 236, 242), "T": (120, 128, 146), "N": (52, 58, 72),
                   "G": (214, 176, 70), "S": (150, 160, 178)},
 }
+
+
+# a 3x5 face for the plates beside the doors (T-66)
+FONT = {
+    "A": ("010", "101", "111", "101", "101"), "E": ("111", "100", "110", "100", "111"),
+    "K": ("101", "110", "100", "110", "101"), "M": ("101", "111", "111", "101", "101"),
+    "O": ("111", "101", "101", "101", "111"), "P": ("110", "101", "110", "100", "100"),
+    "R": ("110", "101", "110", "101", "101"),
+}
+CHECK = ["......",                                 # a checkmark for the CHECKPOINT's plate
+         ".....1",
+         "....11",
+         "1..11.",
+         "1111..",
+         ".11..."]
+
+
+def word(text):
+    """rows of 0/1, three pixels a letter and one between."""
+    rows = [[] for _ in range(5)]
+    for k, ch in enumerate(text):
+        for y in range(5):
+            rows[y] += [int(b) for b in FONT[ch][y]] + ([0] if k < len(text) - 1 else [])
+    return rows
 
 
 def emblem(kind, roles):

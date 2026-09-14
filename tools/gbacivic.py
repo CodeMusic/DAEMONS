@@ -136,9 +136,12 @@ def draw_checkpoint():
     # the restore arrow over the door, on a teal roundel inside the door's own cell
     c.rect(32, 34, 47, 49, r, A["TEALL"])
     c.stamp(32, 34, E.emblem("CHECKPOINT", {"O": A["OUT"], "L": 1, "M": A["TEALD"]}), r)
-    # the sign by the door: the emblem, no letters
-    c.rect(6, 49, 27, 62, r, A["OUT"]); c.rect(7, 50, 26, 61, r, A["WHITE"])
-    c.stamp(9, 48, [row for row in E.emblem("CHECKPOINT", {"O": A["OUT"], "L": A["TEALL"], "M": A["TEALD"]})][1:15], r)
+    # right of the door, a plate with a checkmark (T-66); the emblem is only over the door
+    c.rect(48, 49, 63, 60, r, A["OUT"]); c.rect(49, 50, 62, 59, r, 1)
+    for y, line in enumerate(E.CHECK):
+        for x, ch in enumerate(line):
+            if ch == "1":
+                c.rect(51 + x * 2, 50 + y, 52 + x * 2, 50 + y, r, A["TEALD"])
     return c
 
 
@@ -160,9 +163,13 @@ def draw_repo():
         c.rect(x0 + 3, 36, x0 + 12, 46, r, A["OUT"]); c.rect(x0 + 4, 37, x0 + 11, 45, r, 2)
         c.rect(x0 + 4, 37, x0 + 6, 39, r, 1); c.rect(x0 + 8, 37, x0 + 8, 45, r, 3)
     c.rect(32, 33, 47, 49, r, A["GOLDL"])
-    c.stamp(32, 34, E.emblem("REPO", {"O": A["OUT"], "L": A["BRIGHT"], "M": A["GOLD3"], "D": A["AMBERD"], "T": 1}), r)
-    c.rect(4, 49, 27, 62, r, A["OUT"]); c.rect(5, 50, 26, 61, r, A["WHITE"])
-    c.stamp(8, 48, E.emblem("REPO", {"O": A["OUT"], "L": A["BRIGHT"], "M": A["GOLD3"], "D": A["AMBERD"], "T": A["WHITE"]})[1:15], r)
+    c.stamp(32, 34, E.emblem("REPO", {"O": A["OUT"], "L": A["BRIGHT"], "M": A["AMBERD"], "T": 1}), r)
+    # right of the door, a plate reading REPO (T-66)
+    c.rect(48, 50, 63, 58, r, A["AMBERD"]); c.rect(48, 50, 63, 50, r, A["OUT"]); c.rect(48, 58, 63, 58, r, A["OUT"])
+    for y, line in enumerate(E.word("REPO")):
+        for x, v in enumerate(line):
+            if v:
+                c.px(48 + 1 + x, 52 + y, r, 1)
     return c
 
 
@@ -214,8 +221,12 @@ def benchmark_column(role, dy):
         x0 = 10 if role == "P" else 1
         c.rect(x0, 0, x0 + 4, 14, r, A["LIGHT"]); c.rect(x0, 0, x0, 14, r, A["MID"]); c.rect(x0 + 4, 0, x0 + 4, 14, r, A["MID"])
         c.rect(x0 - 1, 12, x0 + 5, 14, r, A["GREY"])
-    if role == "W":                                       # a blank stone plaque, left of the door
-        c.rect(3, 2, 15, 9, r, A["OUT"]); c.rect(4, 3, 15, 8, r, A["PALE"])
+    if role == "P'":                                      # right of the door, a plate reading MARK (T-66)
+        c.rect(0, 2, 15, 10, r, A["DARK"]); c.rect(0, 2, 15, 2, r, A["OUT"]); c.rect(0, 10, 15, 10, r, A["OUT"])
+        for y, line in enumerate(E.word("MARK")):
+            for x, v in enumerate(line):
+                if v:
+                    c.px(x, 4 + y, r, 1)
     if role == "L":
         c.rect(0, 0, 1, 15, r, A["OUT"])
     if role == "R":
@@ -428,11 +439,12 @@ def main():
         new_ppal[2][i] = colour
     m61, door_tiles = VERDIGRIS_DOOR
     e = list(struct.unpack_from("<8H", prim, m61 * 16))
+    door_still_row2 = any(t & 0x3FF in door_tiles and (t >> 12) & 0xF == 2 for t in e)
     for j, t in enumerate(e):
         if t & 0x3FF in door_tiles:
             e[j] = (t & 0x0FFF) | (5 << 12)
     struct.pack_into("<8H", prim, m61 * 16, *e)
-    for n in door_tiles:
+    for n in (door_tiles if door_still_row2 else []):     # already moved: do not recolour twice
         for yy in range(8):
             for xx in range(8):
                 X, Y = (n % 16) * 8 + xx, (n // 16) * 8 + yy
