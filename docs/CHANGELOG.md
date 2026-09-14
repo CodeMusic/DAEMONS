@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.188 — 2026-09-13
+
+### 8.6a — in Halftone, everything is grey
+
+- ***Reversed on playtest:*** **v11.187 kept your own daemons and the menus in colour in Halftone; a grey town with a coloured team and a coloured message box read as a filter with holes.** *Now the whole screen is grey there — you, your daemons, the healthboxes, the menus, every text window — except during PERSPECTIVE's flash, which brings all of it back for a second.*
+- ***Built as one pass, not many loaders.*** **The grey is applied once a frame to the faded palette buffer, just before the vblank copies it out**, *leaving the unfaded buffer in colour so the flash is a single copy and a flag.* **The per-loader greying in `battle_bg.c` and `battle_gfx_sfx_util.c` is gone.** *EWRAM unchanged at 261040.*
+
+---
+
 ## v11.187 — 2026-09-13
 
 ### 8.6a, 4.6, 4.7 — Halftone's grey reaches the tower and its battles; PERSPECTIVE flashes; RECURSION exists

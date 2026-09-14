@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.187**
+**A total conversion — the living design bible, v11.188**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6799,22 +6799,17 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | **Daemons** | the 9.4 ramp, **its saturation scaled by friendship** | below |
 | **Umbra** | the value floor | the four humours are **the four type anchors** — red VECTOR, yellow ENTROPY, black LATENT, white FROZEN. *The player has read those hues on daemons for forty hours and meets them as people, in the dark.* **Colour arrives by contrast with darkness instead of with grey** |
 
-#### 8.6a Halftone, extended to its tower and its battles — decided and built 2026-09-13
+#### 8.6a Halftone, all of it grey — decided and built 2026-09-13, revised the same day
 
 ***Halftone was grey outside and in colour inside the tower***, **because the tint asked whether the map belonged to the town's map section and the tower has its own.** *The tower is the place Halftone exists for — something the Index cannot name, and an instrument needed to see it — so it is grey now, all seven floors, tiles and people.*
 
-**And a battle in Halftone keeps the world's rule rather than breaking it:**
+***In Halftone, everything on the screen is grey.*** **The town, the tower, the battle scene, the side you face, *your own daemons, you,* the healthboxes, the menus and every window of text.**
 
-| | in Halftone | |
-|---|---|---|
-| **the scene** — terrain, background | **grey** | *the world has colour, and here the world has had it taken* |
-| **the side you face** — daemons, the tower's ghost, the trainer | **grey** | *not yet resolved.* **A ghost the RESOLVER unmasks stays grey** |
-| **your own daemons** | **colour** | ***"a daemon has as much of it as it has accumulated"*** — *yours have* |
-| **the menus** | **colour** | *the move menu's type colours are how the chart is read, and Halftone is the town where reading clearly is the lesson* |
+*The first cut kept your own daemons and the menus in colour* — **"a daemon has as much of it as it has accumulated," and the move menu's type colours are how the chart is read.** ***Reversed on playtest the same day:*** **a grey town with a coloured message box and a coloured team read as a filter that had missed some things, not as a place.** *The town is the lesson only if nothing in it is exempt — and that includes the one reading aid the player has grown used to, which is the point of taking it away here.* **Friendship-saturation (below) is unaffected; it is about daemons everywhere else.**
 
-***PERSPECTIVE brings the colour back.*** **When a daemon takes another's frame in Halftone, the scene and the side you face return to full colour for about a second, then go grey again** — *the flash spans the moment the form changes.* **An opposing daemon that transforms is greyed again once it has the frame; yours keeps the colour it took.** *This settles 4.6's open question by place: the flash cannot become common, because the only town where it can happen is grey.*
+***PERSPECTIVE brings the colour back.*** **When a daemon takes another's frame in Halftone, the whole screen returns to full colour for about a second, then goes grey again** — *the flash spans the moment the form changes.* *This settles 4.6's open question by place: the flash cannot become common, because the only town where it can happen is grey.*
 
-**Every path that puts the scene on screen goes through a greyed loader** — *including a move animation restoring the background, and the battle screen redrawing after the bag.* **A daemon behind a SUBSTITUTE is left as it is during the flash**, *because its sprite is the doll.*
+***How it is built, because the first way leaked.*** **Greying each loader in turn — terrain, the opposing battler, the trainer — missed everything it did not name.** *The grey is now applied once a frame to the one buffer every palette reaches the screen through, just before the vblank copies it out.* **The colour copy underneath is never touched**, *so the flash is one copy back and one flag, and nothing can be left in colour by a loader nobody thought of.* ***A colour already grey costs one multiply and a compare***, **so a settled frame is nearly free.**
 
 #### Saturation is friendship, and that is the thesis made mechanical
 
