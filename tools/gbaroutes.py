@@ -16,7 +16,12 @@ walk out of the pale town:
                              channel of clear water with its stone rim, until
                              just before it opens into the sea
 
-Both stretches start and end on a tree boundary, so no tree is half one kind.
+    ROUTE 1'S SIDES, rows 0..29   the tree columns down both edges become
+                             birches the whole way to Callow, trees only, and
+                             the map border past them is Blanche's birch border
+
+Every stretch starts and ends on a tree boundary, so no tree is half one kind.
+A stretch already drawn is skipped, so adding one re-runs the tool safely.
 
 DERIVED THE WAY THE GROUND WAS (gbaground.py, whose drawing this imports): every
 ground colour is given its job, so paths, tufts, tall grass and the curve of
@@ -43,7 +48,11 @@ RULES = os.path.join(GBA, "tileset_rules.mk")
 PREVIEW = "/tmp/blanche_roads.png"
 WRITE = "--write" in sys.argv
 
-STRETCHES = [("Route1_Layout", 30, 40), ("Route21_North_Layout", 0, 10)]
+# (layout, first row, end row, columns or None for all, trees only)
+STRETCHES = [("Route1_Layout", 30, 40, None, False),
+             ("Route21_North_Layout", 0, 10, None, False),
+             ("Route1_Layout", 0, 30, (0, 1, 22, 23), True)]
+BORDERS = {"Route1_Layout": "PalletTown_Layout"}     # take this map's border blocks
 JOBS = dict(G.JOBS)
 JOBS[5] = {10: G.CHALK, 1: G.SPECK, 6: G.SHADE, 7: G.SHADE, 8: G.SHADE, 9: G.SHADE, 11: G.SHADE, 12: G.SHADE,
            13: G.EDGE, 14: G.EDGE, 15: G.GRASS, 2: G.SHADE, 3: G.JOINT if hasattr(G, "JOINT") else G.SHADE}
@@ -101,18 +110,26 @@ def main():
 
     is_ground = lambda t: bool(t & 0x3FF) and ((t >> 12) & 0xF) in GROUND_ROWS
     maps, ids, copies = {}, {}, 0
-    for name, y0, y1 in STRETCHES:
+    for name, y0, y1, columns, trees_only in STRETCHES:
         lay = layouts[name]
-        bd_path = os.path.join(GBA, lay["blockdata_filepath"]); bd = bytearray(open(bd_path, "rb").read())
+        bd_path = os.path.join(GBA, lay["blockdata_filepath"])
+        if name in maps:
+            bd = maps[name][1]
+        else:
+            bd = bytearray(open(bd_path, "rb").read())
         W, H = lay["width"], lay["height"]
         cell = lambda x, y: struct.unpack_from("<H", bd, (y * W + x) * 2)[0] & 0x3FF
-        if WRITE and all(cell(x, y) not in G.TREE_BLOCKS for x in range(W) for y in range(y0, y1)):
-            raise SystemExit("  already drawn: %s rows %d..%d have no vanilla trees left" % (name, y0, y1 - 1))
-        CW, CH = W * 16, H * 16
+        xs = columns if columns is not None else range(W)
+        if all(cell(x, y) not in G.TREE_BLOCKS for x in xs for y in range(y0, y1)):
+            print("  %s rows %d..%d: already drawn" % (name, y0, y1 - 1))
+            maps.setdefault(name, (bd_path, bd, W, y0, y1))
+            continue
         base = {}
         obj = {}
         post = {}
-        blocks = {(x, y): cell(x, y) for x in range(W) for y in range(y0, y1)}
+        blocks = {(x, y): cell(x, y) for x in xs for y in range(y0, y1)}
+        if trees_only:
+            blocks = {c: m for c, m in blocks.items() if m in G.TREE_BLOCKS}
         for (x, y), m in blocks.items():
             e = entries(m)
             for q in range(4):
@@ -233,7 +250,8 @@ def main():
                 metas += struct.pack("<8H", *out); attrs += attr(m); copies += 1
             raw = struct.unpack_from("<H", bd, (y * W + x) * 2)[0]
             struct.pack_into("<H", bd, (y * W + x) * 2, (raw & ~0x3FF) | ids[key])
-        maps[name] = (bd_path, bd, W, y0, y1)
+        maps[name] = (bd_path, bd, W, y0, y1) if name not in maps else (bd_path, bd, W, min(maps[name][3], y0), max(maps[name][4], y1))
+        print("  %s rows %d..%d: drawn" % (name, y0, y1 - 1))
 
     total = num_tiles + len(tiles)
     print("  %d tiles drawn (slots %d..%d), %d blocks copied; tileset now %d/384 tiles, %d/384 blocks"
@@ -282,6 +300,10 @@ def main():
         open(os.path.join(SD, "metatile_attributes.bin"), "wb").write(attrs)
         for name, (bd_path, bd, W, y0, y1) in maps.items():
             open(bd_path, "wb").write(bd)
+        for name, source in BORDERS.items():
+            src = open(os.path.join(GBA, layouts[source]["border_filepath"]), "rb").read()
+            open(os.path.join(GBA, layouts[name]["border_filepath"]), "wb").write(src)
+            print("  %s border: %s's" % (name, source))
         open(RULES, "w").write(re.sub(rule, lambda mm: mm.group(1) + str(total), rules))
         print("  written: tiles.png, metatiles, attributes, %s, -num_tiles %d" % (", ".join(maps), total))
 
