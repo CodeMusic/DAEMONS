@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.191 — 2026-09-14
+
+### 4.10 — the founder's photo is Crystal, and the plate carries its file number
+
+- ***The photograph in the Quicksilver lab is Crystal***, **redrawn in the Lab tileset's four photo tiles** — *vanilla's was Dr. Fuji.*
+- ***The plate's file number is `PR-0903`***: **a personnel record numbered by the day it closed**, *so it repeats SEPT 3 rather than adding a date to the scheme.* **The first date stays unread and the plate does not name her** — *CLEAR is found under the gold leaf.*
+
+---
+
 ## v11.190 — 2026-09-14
 
 ### 9.10 — the player walks, and REASON and INSTINCT differ by the tail

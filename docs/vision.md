@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.190**
+**A total conversion — the living design bible, v11.191**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2985,6 +2985,8 @@ So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen
 **Brazen posts its review scores** — three at 30/100, one at 94/100, and a congratulation. No names, no commentary, nobody beside it to explain. *Scorn's Solution* has him designing the evaluations so rivals fail; this is the published result. **The cheerfulness is the point.**
 
 **Quicksilver keeps a photograph of the lab's founder.** The plate under it carries two dates and a file number, and the last thing it says is that **the file is complete** — 4.10's own phrase for how he removed her. No diagnosis, no reason, nothing medical. **The horror is that the paperwork is in order.**
+
+***The file number is `PR-0903`***, *settled 2026-09-14 when the photo was redrawn as Crystal.* **A personnel record, numbered by the date it closed** — *the lab's own register, the same as the CC-7 requisition beside it, and it repeats SEPT 3 rather than adding a date.* ***The first date stays unread.*** **The sign reads only the second**, *which is where the eye goes on a plate like this and is the one date the arithmetic needs.* **The plate does not carry her name** — *CLEAR is the word under the gold leaf, and the player finds it by looking there.*
 
 *And the reason she was removed is now settled, without a word of it appearing.* Not a diagnosis — **a technical judgement.** Her claims about recursive feedback loops looked unrigorous to people who had not read the work, which is exactly 4.10's *policy triggered on work that looked strange.* The file can be entirely accurate and entirely fatal, and that is worse than malice.
 
