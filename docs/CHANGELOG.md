@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.205 — 2026-09-14
+
+### 4.4 — The gold leaf, drawn
+
+- ***Quicksilver's lab board is gold leaf with SCORN on it and one corner curled back over older lettering***, **replacing vanilla's red squiggle** (`tools/gbaislandsigns.py`); *One Island's Net Center board reads NET.*
+
 ## v11.204 — 2026-09-14
 
 ### 9.23 — The buildings in detail, on town tiles

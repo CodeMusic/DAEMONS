@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.204**
+**A total conversion — the living design bible, v11.205**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2758,7 +2758,7 @@ One journal entry proposes a thought experiment: **a mind whose reality is bound
 
 **The acronym is dropped, the name is kept.** iASHC pays nothing here — a player cannot unpack it and it teaches them nothing — but ***Scorn Solutions* is a name, not an initialism**, and it pays twice: the surname, and the contempt.
 
-**In the ROM:** the Quicksilver lab sign, which read `#MON LAB`. *Gold leaf, laid over something. Where it has lifted, the older letters show.* **The player has to look.**
+**In the ROM:** the Quicksilver lab sign, which read `#MON LAB`. *Gold leaf, laid over something. Where it has lifted, the older letters show.* **The player has to look.** ***Drawn 2026-09-14 (T-86):*** **the board is gold leaf with SCORN on it, its lower right corner curled back over a paler board with a few darker, older letter fragments — too little to read.** *The picture shows the lifting before the text box names it.*
 
 *Which building carries it.* The **lab is intact** and holds the paperwork — the requisition, the minutes, the photo plate. The **Mansion is the ruin** and holds the machine's own words. **A campus, not a building**: the sign stands on the half that survived.
 
