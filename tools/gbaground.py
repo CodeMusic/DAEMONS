@@ -259,7 +259,7 @@ def main():
     tiles, slot = [], {}
     def put(px, at=None):
         key = bytes(px)
-        if key in slot:
+        if key in slot and at is None:                  # a reserved slot is never shared
             return slot[key]
         n = num_tiles + len(tiles)
         assert at is None or n == at, (n, at)
@@ -314,6 +314,8 @@ def main():
                 elif bottom:
                     px, row = quadrant(x, y, q, "base" if t & 0x3FF else "all")
                     out[q] = (put(px) + 640) | (row << 12)
+                if m in POND_BLOCKS and bottom:                 # the water animates by quadrant
+                    out[q] = (640 + SLOT_WATER + q) | (7 << 12)
             new_cells[(x, y)] = tuple(out)
 
     pond_tiles = {new_cells[(x, y)][q] & 0x3FF for (x, y) in new_cells if cell(x, y) in POND_BLOCKS for q in range(4)}
@@ -417,4 +419,5 @@ def main():
               % (FLOWER_FRAMES - 1, WATER_FRAMES - 1, total))
 
 
-main()
+if __name__ == "__main__":
+    main()

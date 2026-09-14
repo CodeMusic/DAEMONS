@@ -17,6 +17,12 @@ WHAT IS KEPT is what something can still reach:
   - every tile those blocks draw, and the animated slots, which do not move:
     TilesetAnim_PalletTown writes its frames to slots 800..807 by number.
 
+THE ANIMATED SLOTS HOLD THEIR OWN FRAME 0, and only it. T-58 let the pond's lower
+water tiles de-duplicate onto its upper two, so 806 and 807 were handed to birch
+crowns -- and every animation tick painted water over the trees. Before packing,
+any tile squatting in a pinned slot is moved out and its blocks repointed, frame
+0 is written back, and the pond's bottom quadrants are pointed at 804 + quadrant.
+
 Every other block is blanked to zeros -- ids never shift, so nothing that names
 a block by number can land on the wrong one -- and the surviving tiles are
 packed down around the pinned slots, with every block's entries rewritten to
@@ -32,6 +38,7 @@ RULES = os.path.join(GBA, "tileset_rules.mk")
 LABELS = os.path.join(GBA, "include/constants/metatile_labels.h")
 TILESET = "gTileset_PalletTown"
 PINNED = set(range(160, 168))          # anim/flower -> 800, anim/water -> 804
+ANIMS = {160: "flower", 164: "water"}
 WRITE = "--write" in sys.argv
 
 
@@ -43,6 +50,42 @@ def main():
     rules = open(RULES).read()
     rule = r"(secondary/pallet_town/tiles\.4bpp: %\.4bpp: %\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )(\d+)"
     num_tiles = int(re.search(rule, rules).group(2))
+
+    # the animated slots: evict squatters, restore frame 0, point the pond at its own quadrants
+    def tile(img_px, n):
+        return tuple(img_px[(n % 16) * 8 + i % 8, (n // 16) * 8 + i // 8] for i in range(64))
+    grown = Image.new("P", (128, max(tiles_img.height, ((num_tiles + 16) // 16) * 8)))
+    grown.putpalette(tiles_img.getpalette()); grown.paste(tiles_img, (0, 0)); tp = grown.load()
+    evicted = 0
+    for first, name in ANIMS.items():
+        frame = Image.open(os.path.join(SD, "anim", name, "0.png")).load()
+        for q in range(4):
+            want = tuple(frame[(q % 2) * 8 + i % 8, (q // 2) * 8 + i // 8] for i in range(64))
+            slot_n = first + q
+            if tile(tp, slot_n) == want:
+                continue
+            moved_to = num_tiles; num_tiles += 1; evicted += 1
+            if (moved_to // 16) * 8 + 8 > grown.height:
+                bigger = Image.new("P", (128, grown.height + 8)); bigger.putpalette(grown.getpalette()); bigger.paste(grown, (0, 0))
+                grown = bigger; tp = grown.load()
+            for i, v in enumerate(tile(tp, slot_n)):
+                tp[(moved_to % 16) * 8 + i % 8, (moved_to // 16) * 8 + i // 8] = v
+            for i, v in enumerate(want):
+                tp[(slot_n % 16) * 8 + i % 8, (slot_n // 16) * 8 + i // 8] = v
+            for m in range(n_meta):
+                e = list(struct.unpack_from("<8H", metas, m * 16))
+                is_pond = all(640 + 164 <= (t & 0x3FF) <= 640 + 167 for t in e[:4])
+                for j, t in enumerate(e):
+                    if (t & 0x3FF) == 640 + slot_n and not (name == "water" and is_pond and j < 4):
+                        e[j] = (t & ~0x3FF) | (640 + moved_to)
+                struct.pack_into("<8H", metas, m * 16, *e)
+    for m in range(n_meta):
+        e = list(struct.unpack_from("<8H", metas, m * 16))
+        if all(640 + 164 <= (t & 0x3FF) <= 640 + 167 for t in e[:4]):
+            e[:4] = [(t & ~0x3FF) | (640 + 164 + j) for j, t in enumerate(e[:4])]
+            struct.pack_into("<8H", metas, m * 16, *e)
+    tiles_img = grown
+    print("  animated slots: %d squatters moved out, frame 0 restored" % evicted)
 
     keep_blocks = set()
     for l in layouts:

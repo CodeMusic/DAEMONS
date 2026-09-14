@@ -81,7 +81,8 @@ def draw():
                 obj[y][x] = (row, v)
 
     def o_px(row, x, y, v):
-        obj[y][x] = (row, v)
+        if 0 <= x < W and 0 <= y < H:
+            obj[y][x] = (row, v)
 
     # ------------------------------------------------------------ the room
     # the floor: pale stone, one slab per block, faint grout, a lit corner
@@ -244,13 +245,28 @@ def draw():
                 base[y][x] = 4
 
     # ------------------------------------------------------------ plants and the mat
-    R = 11
-    for px0 in (2, W - 15):
-        o_rect(R, px0 + 3, 200, px0 + 10, 207, 11)
-        o_rect(R, px0 + 3, 200, px0 + 10, 200, 10)
-        o_rect(R, px0 + 3, 206, px0 + 10, 207, 12)
-        for (lx, ly, lw, lh, c) in ((0, 188, 5, 8, 8), (7, 186, 6, 9, 7), (3, 182, 6, 10, 9), (8, 192, 4, 6, 8)):
-            o_rect(R, px0 + lx, ly, px0 + lx + lw, ly + lh, c)
+    R = 11   # two potted plants: a terracotta pot with a lip, a full crown of leaves
+    for px0 in (1, W - 16):
+        o_rect(R, px0 + 4, 200, px0 + 11, 207, 11)          # the pot
+        o_rect(R, px0 + 10, 201, px0 + 11, 207, 12)         # its shaded side
+        o_rect(R, px0 + 5, 207, px0 + 10, 207, 12)
+        o_rect(R, px0 + 3, 198, px0 + 12, 200, 10)          # its lip
+        o_rect(R, px0 + 3, 200, px0 + 12, 200, 12)
+        blobs = ((8, 193, 4.2), (4, 195, 3.2), (12, 195, 3.2), (5, 189, 3.2), (11, 189, 3.2), (8, 186, 2.6))
+        inside = lambda x, y: any((x - bx) ** 2 + (y - by) ** 2 <= r * r for bx, by, r in blobs)
+        for y in range(180, 200):
+            for lx in range(0, 16):
+                if not inside(lx, y):
+                    continue
+                edge = not all(inside(lx + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                if edge:
+                    c = 9
+                else:
+                    near = min(blobs, key=lambda bl: (lx - bl[0]) ** 2 + (y - bl[1]) ** 2)
+                    c = 7 if (lx - near[0]) + (y - near[1]) < -1 else 8
+                o_px(R, px0 + lx, y, c)
+        for lx, y in ((8, 190), (8, 191), (5, 192), (11, 192), (8, 196)):   # where leaves overlap
+            o_px(R, px0 + lx, y, 9)
     o_rect(R, 84, 194, 123, 206, 15)
     o_rect(R, 85, 195, 122, 205, 14)
     o_rect(R, 88, 199, 119, 200, 13)
