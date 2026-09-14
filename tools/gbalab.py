@@ -3,6 +3,7 @@
 
     python3 tools/gbalab.py            # preview to /tmp/lab_exterior.png
     python3 tools/gbalab.py --write    # tiles, metatiles, the map, the door
+    python3 tools/gbalab.py --door     # the door animation alone, from the drawing
 
 The design is 9.22's, from the concept drafts made with the n8n workflow's
 kind: environment -- B's long symmetrical front and window rhythm, the front
@@ -34,9 +35,11 @@ WHERE IT GOES, measured rather than assumed:
   and used 76 -- so nothing another block draws is repainted, and
   tileset_rules.mk's -num_tiles is raised to match.
 
-  THE DOOR OPENS AS HER DOOR. graphics/door_anims/oaks_lab.png is three 16x16
-  frames (closed, half, open); they are redrawn from the door cell itself, and
-  field_door.c draws them in row 9 instead of vanilla's row 10.
+  THE DOOR OPENS AS HER DOOR. The door is two cells tall, so the animation is
+  too: graphics/door_anims/oaks_lab.png is three 16x32 frames (closed, half,
+  open) cut from the door cell and the cell above it, and field_door.c plays
+  it as DOOR_SIZE_1x2 in row 9. It was 16x16 at first, and only the lower half
+  of the door opened. --door redraws it alone, since --write runs once.
 """
 import json, os, re, struct, sys
 from PIL import Image
@@ -49,6 +52,7 @@ RULES = os.path.join(GBA, "tileset_rules.mk")
 DOOR_PNG = os.path.join(GBA, "graphics/door_anims/oaks_lab.png")
 PREVIEW = "/tmp/lab_exterior.png"
 WRITE = "--write" in sys.argv
+DOOR_ONLY = "--door" in sys.argv
 
 NUM_TILES_IN_PRIMARY = NUM_METATILES_IN_PRIMARY = 640
 SECONDARY_TILE_ROOM = 1024 - 640
@@ -145,13 +149,14 @@ def draw():
 
 
 def door_frames(c):
-    """Closed, half, open -- the door cell as drawn, then the leaves parting."""
-    dx, dy = (DOOR_CELL[0] - X0) * 16, (DOOR_CELL[1] - Y0) * 16
-    cell = [row[dx:dx + 16] for row in c[dy:dy + 16]]
+    """Closed, half, open -- the door cell and the one above it, as drawn, then
+    the leaves parting. 16x32 each: DOOR_SIZE_1x2 draws the pair."""
+    dx, dy = (DOOR_CELL[0] - X0) * 16, (DOOR_CELL[1] - 1 - Y0) * 16
+    cell = [row[dx:dx + 16] for row in c[dy:dy + 32]]
     frames = [cell]
     for gap in (2, 4):
         f = [r[:] for r in cell]
-        for y in range(16):
+        for y in range(32):
             for x in range(16):
                 gx = dx + x
                 if 53 <= gx <= 58 and c[dy + y][gx] in (8, 9, 10):
@@ -159,11 +164,22 @@ def door_frames(c):
                         f[y][x] = 7                    # the room behind it is dark
         frames.append(f)
     for f in frames:                                   # a door frame is never see-through
-        for y in range(16):
+        for y in range(32):
             for x in range(16):
                 if f[y][x] == 0:
                     f[y][x] = 1
     return frames
+
+
+def write_door(frames, p9):
+    door = Image.new("P", (16, 96))
+    door.putpalette([v for rgb in p9 for v in rgb] + [0] * 720)
+    dp = door.load()
+    for i, f in enumerate(frames):
+        for y in range(32):
+            for x in range(16):
+                dp[x, i * 32 + y] = f[y][x]
+    door.save(DOOR_PNG)
 
 
 def pal(path):
@@ -172,6 +188,10 @@ def pal(path):
 
 def main():
     canvas = draw()
+    if DOOR_ONLY:
+        write_door(door_frames(canvas), pal(os.path.join(TS, "palettes/09.pal")))
+        print("  written: %s, three 16x32 frames" % DOOR_PNG)
+        return
     layout = [l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]
               if l.get("name") == "PalletTown_Layout"][0]
     bd_path = os.path.join(GBA, layout["blockdata_filepath"])
@@ -264,14 +284,14 @@ def main():
                                 continue
                             vp[xx * 16 + (q % 2) * 8 + tx, yy * 16 + (q // 2) * 8 + ty] = pals.get(p, pals[0])[v]
     frames = door_frames(canvas)
-    strip = Image.new("RGB", (16 * 3 + 8, 16), (40, 40, 40))
+    strip = Image.new("RGB", (16 * 3 + 8, 32), (40, 40, 40))
     for i, f in enumerate(frames):
-        for y in range(16):
+        for y in range(32):
             for x in range(16):
                 strip.putpixel((i * 19 + x, y), p9[f[y][x]])
-    sheet = Image.new("RGB", (view.width * 4, view.height * 4 + 16 * 4 + 8), (40, 40, 40))
+    sheet = Image.new("RGB", (view.width * 4, view.height * 4 + 32 * 4 + 8), (40, 40, 40))
     sheet.paste(view.resize((view.width * 4, view.height * 4), Image.NEAREST), (0, 0))
-    sheet.paste(strip.resize((strip.width * 4, 64), Image.NEAREST), (0, view.height * 4 + 8))
+    sheet.paste(strip.resize((strip.width * 4, 128), Image.NEAREST), (0, view.height * 4 + 8))
     sheet.save(PREVIEW)
     print("  preview %s" % PREVIEW)
 
@@ -280,14 +300,7 @@ def main():
         open(os.path.join(TS, "metatiles.bin"), "wb").write(metas)
         open(os.path.join(TS, "metatile_attributes.bin"), "wb").write(attrs)
         open(bd_path, "wb").write(bd)
-        door = Image.new("P", (16, 48))
-        door.putpalette([v for rgb in p9 for v in rgb] + [0] * 720)
-        dp = door.load()
-        for i, f in enumerate(frames):
-            for y in range(16):
-                for x in range(16):
-                    dp[x, i * 16 + y] = f[y][x]
-        door.save(DOOR_PNG)
+        write_door(frames, p9)
         rules = open(RULES).read()
         new_rules, n = re.subn(r"(secondary/pallet_town/tiles\.4bpp: %\.4bpp: %\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+",
                                lambda m: m.group(1) + str(total_tiles), rules)

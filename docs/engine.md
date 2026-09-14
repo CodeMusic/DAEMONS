@@ -201,6 +201,12 @@ open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
 
 **A map directory is not a build input.** *`data/event_scripts.s` lists every `scripts.inc` and every `text.inc` by hand*, and **a map that never had dialogue has no `text.inc` line to copy** — the event islands are the ones this bites, because nobody could reach them so nobody ever wrote a line for them. ***Add the `.include` yourself.***
 
+### 13. A redrawn map that never reaches the ROM
+
+***Symptom:*** *new tiles on old maps in game — vanilla trees on a town you redrew, a house that is half one building and half another, a room whose exit does nothing.*
+
+**`data/maps.o` `.incbin`s every layout's `map.bin` and `border.bin`, and `map_data_rules.mk` never listed them**, so make rebuilt the maps only when `layouts.json` changed. *The tileset is a C `INCBIN`, which make does track, so the new blocks reached the ROM and the map pointing at them did not.* **T-57, T-58 and T-59 all shipped that way, and the check that "passed" searched the ROM for `metatiles.bin` — the half that was never stale.** ***The rule now depends on every layout `.bin`. And verify what you changed: search the ROM for the map too.***
+
 ---
 
 ## 5. Two habits worth keeping
