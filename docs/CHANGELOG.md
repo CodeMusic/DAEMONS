@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.197 — 2026-09-14
+
+### 9.22 — Two households, two buildings
+
+- ***The player's house is a timber cottage; the Clears' house is the lab's pale stone with a glasshouse.*** **Both stay on vanilla's footprints and share the one animated door, each with its own frame around it.** *The cottage is drawn in row 11, the stone house in the lab's row 9 with two new greens; no gold, so the lab keeps the only warm note.* **The daisies are bolder (T-58).** **T-59.**
+
 ## v11.196 — 2026-09-14
 
 ### 9.22 — Blanche's ground, drawn

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.196**
+**A total conversion — the living design bible, v11.197**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7866,6 +7866,17 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***How it fits, measured.*** **The ground blocks draw the General tileset, shared by about 180 maps, so nothing is redrawn where it is.** *Blanche's tileset has 224 free tile slots and its palette row 7 is unused and row 12 nearly so*: **the tiles are drawn fresh there, and a common block Blanche uses gets a Blanche copy** — *the sign block's route in T-55.* ***The flowers and the water are animated in the shared tileset***, **so Blanche's copies need a tileset animation of their own.**
 
 ***And the wash comes off whatever the new tiles replace*** — **a tile drawn pale and then washed would be paled twice.** *It stays only on anything left undrawn.* **Concepts come from `kind: environment, view: terrain`. T-58.**
+
+#### Two households, two buildings — *decided 2026-09-14*
+
+***T-55 made both houses pale, and a pale copy of one house is still two copies of one house.*** **They are two households, so they are two buildings** — *on vanilla's footprints, with vanilla's collision and doors.*
+
+| | becomes | because |
+|---|---|---|
+| **the player's house** | ***a timber cottage*** — *weatherboard walls, a steep shingle roof, a stone chimney and an attic dormer, a porch, window boxes* | **an ordinary family home**, *which is the point next to the Clears* |
+| **the Clears' house** | ***the lab's pale stone*** — *a hipped slate roof, tall narrow windows, a stone door surround* — ***with a glasshouse of white frames and plants*** | **Al and Vera are Crystal's grandchildren, so it is drawn in the lab's own palette row.** *Vera just looks (4.29); the house is built for looking, and nothing says so* |
+
+***Both doors are the same block***, **which the door animation is keyed to, so they share one door and each house draws its own frame around it** — *the cottage a porch, the stone house a lintel and jambs.* **The cottage takes Blanche's row 11, free since T-58; the stone house takes the lab's row 9, whose two unused indices become the glasshouse's greens.** ***No gold***: *the lab keeps the only warm note.* **T-59.**
 
 ### 9.2 Order of operations
 
