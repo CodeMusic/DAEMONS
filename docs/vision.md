@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.193**
+**A total conversion — the living design bible, v11.194**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7820,6 +7820,25 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 - **Which routes change by watch?** *Every route diluting it; three or four that visibly change teaches it.*
 - **Does the season lean belong in both editions**, or does it stack with Tier 2 so that CONTEXT's winter is a different place from CONTENT's?
 - **Does the Index record when a daemon was bound?** *It could. 4.2 says the Index cannot hold what matters, and a timestamp is exactly the thing it can hold.*
+
+### 9.22 Blanche's buildings, and the one warm note — *decided 2026-09-14, not drawn*
+
+***Environment art starts with CRYSTAL CLEAR's lab***, **the one building Blanche has** (4.23) — *and the first thing a player sees of her.* **Blanche is the pre-colour town** (3.1): *white, high and open, the achromatic pole Halftone answers.* **So the town goes pale and the lab keeps one warm note** — ***the only one in Blanche.***
+
+#### The lab, from outside
+
+***Pale stone walls, a flat slate roof, plain tall windows, and one line of gold: the door frame and the plate above it.*** **Gold is the Clears' family colour** (*Crystal golden-amber, Ty darker, Al between*), **so the building carries her the way her fur does — as a colour, not a word.** ***No lettering on the building***: *the sign already reads CRYSTAL CLEAR RESEARCH LAB, and CLEAR is what the player finds under the gold leaf at Quicksilver.* **Her musical motif (7.6) is a separate thing; the visual one is this.**
+
+#### What the tiles allow, measured
+
+| | | |
+|---|---|---|
+| **the lab** | ***26 blocks placed on no other map***, *nearly every tile its own* | **drawn in Blanche's own row 9**, *which already holds whites, greys, glass blues and a five-step gold*; **five tiles are shared and stay untouched** |
+| **the houses and fences** | ***drawn in COMMON rows 2 and 3***, *shared by about 180 maps* | **pointed at Blanche's own rows 8 and 12** — *nearly unused, and no other map draws them* — **filled with pale copies of the common colours** |
+| **the ground and trees** | ***common row 0, 1317 of Blanche's draws*** | **a Blanche-only runtime wash later**, *the same shape as Halftone's tint, never touching Blanche's own rows* |
+| **the lab's interior** | ***shared with the whole Quicksilver lab*** | **split into its own tileset** — *so the working lab and the ruin can read as one place, before and after* |
+
+***Concept art comes from the n8n `daemon/sprite` workflow's new `kind: environment`***, **top-down three-quarter or front elevation, with lettering forbidden in the prompt** — *and, as with the people, it is reference to draw from: the tiles are written by hand, eight pixels at a time.* **T-53 to T-56.**
 
 ### 9.2 Order of operations
 

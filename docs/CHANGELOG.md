@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.194 — 2026-09-14
+
+### 9.22 — Blanche's buildings, and the one warm note
+
+- ***Environment art starts with CRYSTAL CLEAR's lab***: **pale stone, a flat slate roof, tall windows, and one line of gold at the door** — *the Clears' family colour, carried as a colour and never as lettering.*
+- ***Blanche goes pale and the lab does not.*** **The houses and fences move onto Blanche's own palette rows with pale copies of the common colours; the ground and trees wait for a Blanche-only runtime wash.** *The lab's interior splits from the Quicksilver lab's tileset.* **T-53 to T-56.**
+- ***The n8n sprite workflow draws buildings***: **`kind: environment`, top-down three-quarter or front, no lettering.**
+
+---
+
 ## v11.193 — 2026-09-14
 
 ### 9.21 proposed — time; the GLOBAL INDEX plan; THE ANNEX reachable again
