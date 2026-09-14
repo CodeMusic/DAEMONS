@@ -15,7 +15,8 @@ WHAT IS KEPT is what something can still reach:
     and Route 21 North, which draw a few of Blanche's blocks at their edges;
   - every block a script or the door code names by id (metatile_labels.h);
   - every tile those blocks draw, and the animated slots, which do not move:
-    TilesetAnim_PalletTown writes its frames to slots 800..807 by number.
+    TilesetAnim_PalletTown writes its frames to slots 800..807 and 953..956
+    by number.
 
 THE ANIMATED SLOTS HOLD THEIR OWN FRAME 0, and only it. T-58 let the pond's lower
 water tiles de-duplicate onto its upper two, so 806 and 807 were handed to birch
@@ -37,8 +38,8 @@ SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 RULES = os.path.join(GBA, "tileset_rules.mk")
 LABELS = os.path.join(GBA, "include/constants/metatile_labels.h")
 TILESET = "gTileset_PalletTown"
-PINNED = set(range(160, 168))          # anim/flower -> 800, anim/water -> 804
-ANIMS = {160: "flower", 164: "water"}
+PINNED = set(range(160, 168)) | set(range(313, 317))   # anim/flower -> 800, anim/water -> 804, anim/deep -> 953
+ANIMS = {160: "flower", 164: "water", 313: "deep"}
 WRITE = "--write" in sys.argv
 
 
@@ -81,9 +82,10 @@ def main():
                 struct.pack_into("<8H", metas, m * 16, *e)
     for m in range(n_meta):
         e = list(struct.unpack_from("<8H", metas, m * 16))
-        if all(640 + 164 <= (t & 0x3FF) <= 640 + 167 for t in e[:4]):
-            e[:4] = [(t & ~0x3FF) | (640 + 164 + j) for j, t in enumerate(e[:4])]
-            struct.pack_into("<8H", metas, m * 16, *e)
+        for first in (164, 313):                  # water and deep water animate by quadrant
+            if all(640 + first <= (t & 0x3FF) <= 640 + first + 3 for t in e[:4]):
+                e[:4] = [(t & ~0x3FF) | (640 + first + j) for j, t in enumerate(e[:4])]
+                struct.pack_into("<8H", metas, m * 16, *e)
     tiles_img = grown
     print("  animated slots: %d squatters moved out, frame 0 restored" % evicted)
 

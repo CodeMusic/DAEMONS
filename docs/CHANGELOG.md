@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.198 — 2026-09-14
+
+### 9.22 — Where the pale ends
+
+- ***The pale runs out along both roads, so the colour returns away from the edge seen from town.*** **Route 1's last ten rows, its sides and its top row are birches and pale ground; all of Route 21 North is pale — channel, sea, rocks, sand bars and shore — ending behind a line of rocks with a surf gap.** *Route 21 South keeps Quicksilver's tileset and its colour.* **Signs read BLANCHE, LAB, ? and RT1 in a 3x5 font.** *Build: map changes now reach the ROM (engine.md trap 13).* **T-60.**
+
 ## v11.197 — 2026-09-14
 
 ### 9.22 — Two households, two buildings

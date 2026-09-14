@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.197**
+**A total conversion — the living design bible, v11.198**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7877,6 +7877,19 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | **the Clears' house** | ***the lab's pale stone*** — *a hipped slate roof, tall narrow windows, a stone door surround* — ***with a glasshouse of white frames and plants*** | **Al and Vera are Crystal's grandchildren, so it is drawn in the lab's own palette row.** *Vera just looks (4.29); the house is built for looking, and nothing says so* |
 
 ***Both doors are the same block***, **which the door animation is keyed to, so they share one door and each house draws its own frame around it** — *the cottage a porch, the stone house a lintel and jambs.* **The cottage takes Blanche's row 11, free since T-58; the stone house takes the lab's row 9, whose two unused indices become the glasshouse's greens.** ***No gold***: *the lab keeps the only warm note.* **T-59.**
+
+#### Where the pale ends — *decided 2026-09-14*
+
+***A redraw that stops at the map edge stops where the player is looking.*** **From Blanche you see about five rows into each road**, *so a pale town with vanilla roads showed a hard line at both exits — birches against conifers, clear water against blue sea.* **So the pale runs out along the roads, and the colour comes back somewhere the eye is not already fixed:**
+
+| | drawn pale | where the colour returns |
+|---|---|---|
+| **Route 1** | ***its last ten rows***, *and every tree along its sides and its top row, with Blanche's birch border past them* | **the grass, paths, ledges and flowers above the pale stretch** — *walking north, the ground colours before the trees do* |
+| **Route 21 North** | ***all of it*** — *the channel, the open sea in pale shallow and pale deep, the rocks, the sand bars, the shore and its trees* | **at Route 21 South, behind a line of pale rocks across the sea with a gap to surf through** — *open water has no edge to hide a seam, so one is built* |
+
+***The signs say something.*** **Vanilla's boards carried a squiggle that reads as Japanese at a glance.** *A 16-pixel board holds three letters of a 3x5 font*, **so they say short words: BLANCHE on a board as wide as two cells, LAB, a question mark for the trainer tips, and RT1 on Route 1.** ***The text boxes they open are unchanged.***
+
+***Why Route 21 South stays vanilla:*** **it is drawn from Quicksilver's tileset, which the island, Route 20 and the Safari areas share** — *pale water there would put the same line wherever that sea continues.* **The island is where the colour comes back. T-60.**
 
 ### 9.2 Order of operations
 

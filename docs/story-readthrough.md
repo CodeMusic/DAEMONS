@@ -3,7 +3,7 @@
 Not the story as designed — the story **in the order a player actually meets
 it**, with what they can know at each point and what they cannot yet.
 
-> **Reconciled against the bible at v11.197, 2026-09-14.**
+> **Reconciled against the bible at v11.198, 2026-09-14.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*

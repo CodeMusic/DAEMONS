@@ -20,6 +20,13 @@ walk out of the pale town:
                              birches the whole way to Callow, trees only, and
                              the map border past them is Blanche's birch border
     ROUTE 1'S TOP ROW, rows 0..1   the trees along the Callow end, trees only
+    ROUTE 21 NORTH, rows 10..49   the rest of it: the open sea, its rocks and
+                             sand bars, the shore and the trees. The water is
+                             pale shallow or pale deep as vanilla's was blue or
+                             dark, and both animate. Across the bottom, rows
+                             48..49, a line of pale rocks with a gap to surf
+                             through at x 10..13, so the sea turns vanilla again
+                             behind a shoal rather than on bare water.
 
 Every stretch starts and ends on a tree boundary, so no tree is half one kind.
 A stretch already drawn is skipped, so adding one re-runs the tool safely.
@@ -53,11 +60,37 @@ WRITE = "--write" in sys.argv
 STRETCHES = [("Route1_Layout", 30, 40, None, False),
              ("Route21_North_Layout", 0, 10, None, False),
              ("Route1_Layout", 0, 30, (0, 1, 22, 23), True),
-             ("Route1_Layout", 0, 2, None, True)]
+             ("Route1_Layout", 0, 2, None, True),
+             ("Route21_North_Layout", 10, 50, None, False)]
 BORDERS = {"Route1_Layout": "PalletTown_Layout"}     # take this map's border blocks
+BORDERS_TRANSLATED = {"Route21_North_Layout"}        # point the border at the copies of its own blocks
+
+# the sea: every water block draws General's four animated tiles 416..419, in
+# row 4 (shallow) or row 6 (deep); the pale copies animate from slots 804 and 953
+WATER_TILES = range(416, 420)
+DEEP_SLOT = 313                                      # absolute 953; TilesetAnim_PalletTown writes here
+DEEP_OF = {G.WATER: G.DEEP, G.DEEP: G.WATER, G.RIPPLE: G.RIPPLE, G.SPECK: G.RIPPLE}
+def deep_water(x, y, f):
+    return DEEP_OF[G.water(x, y, f)]
+# a shore's stone rim, by block and quadrant -- where vanilla drew its brown edge
+RIM = {291: {0: "top", 1: "top"}, 264: {0: "top", 1: "top"}, 265: {0: "top", 1: "top"},
+       298: {0: "left", 2: "left"}, 300: {1: "right", 3: "right"}, 304: {1: "right"}, 305: {0: "left"}}
+# rocks, foam and boulders standing in the water, recoloured into pale stone
+TOP_JOBS = {
+    4: {1: G.SPECK, 2: G.WATER, 3: G.RIPPLE, 4: G.WATER, 5: G.WATER, 6: G.RIPPLE, 7: G.WATER, 8: G.STONE,
+        9: G.JOINT, 10: G.JOINT, 11: G.OUTLINE, 12: G.DEEP, 13: G.CHALK, 14: G.SHADE, 15: G.SHADE},
+    6: {1: G.SPECK, 2: G.RIPPLE, 3: G.RIPPLE, 4: G.RIPPLE, 5: G.RIPPLE, 6: G.DEEP, 7: G.RIPPLE, 8: G.SPECK, 9: G.RIPPLE},
+    2: {1: G.SPECK, 2: G.STONE, 3: G.STONE, 4: G.JOINT, 5: G.JOINT, 6: G.OUTLINE, 7: G.OUTLINE},
+}
+SHOALS = {"Route21_North_Layout": (48, [(2, "big"), (4, "small"), (6, "big"), (8, "small"),
+                                        (14, "small"), (16, "big"), (18, "small"), (20, "big")])}
+ROCKS = {"big": ((272, 273), (280, 281)), "small": ((459, 460), (467, 468))}
 JOBS = dict(G.JOBS)
 JOBS[5] = {10: G.CHALK, 1: G.SPECK, 6: G.SHADE, 7: G.SHADE, 8: G.SHADE, 9: G.SHADE, 11: G.SHADE, 12: G.SHADE,
            13: G.EDGE, 14: G.EDGE, 15: G.GRASS, 2: G.SHADE, 3: G.JOINT if hasattr(G, "JOINT") else G.SHADE}
+JOBS[4] = TOP_JOBS[4]                                                                        # sand bars' water edges
+JOBS[6] = TOP_JOBS[6]
+TOP_JOBS[6] = {}          # the dark halo vanilla puts round a rock: on pale water it only scatters, so it goes
 JOBS[3] = {1: G.SPECK, 2: G.SPECK, 3: G.SHADE, 4: G.SHADE, 5: 14, 6: 9, 7: 9, 15: G.GRASS}   # a fence post in row 7
 LEDGE = {4: 14, 9: 13, 10: 13, 11: 13, 12: 14, 13: 14, 14: 9}                               # row 1 rock -> pale stone
 REPOINT_ROW = {2: 10}                                                                       # fences and signs
@@ -101,14 +134,23 @@ def main():
     slot = {}
     for n in range(num_tiles):
         key = bytes(stp[(n % 16) * 8 + i % 8, (n // 16) * 8 + i // 8] for i in range(64))
-        if not G.SLOT_WATER <= n < G.SLOT_WATER + 4:      # water is placed by quadrant, never matched
+        if not (G.SLOT_WATER <= n < G.SLOT_WATER + 4 or DEEP_SLOT <= n < DEEP_SLOT + 4):   # placed by quadrant, never matched
             slot.setdefault(key, n)
     tiles = []
+    deep_frame = lambda f: [[deep_water((q % 2) * 8 + i % 8, (q // 2) * 8 + i // 8, f) for i in range(64)] for q in range(4)]
+    if num_tiles == DEEP_SLOT:
+        tiles.extend(deep_frame(0))                       # reserved: 953..956, never shared
+        num_tiles_reserved = 4
+    else:
+        assert num_tiles > DEEP_SLOT and all(
+            [stp[(n % 16) * 8 + i % 8, (n // 16) * 8 + i // 8] for i in range(64)] == deep_frame(0)[n - DEEP_SLOT]
+            for n in range(DEEP_SLOT, DEEP_SLOT + 4)), "slots %d..%d are not the deep water" % (DEEP_SLOT, DEEP_SLOT + 3)
     def put(px):
         key = bytes(px)
         if key not in slot:
             slot[key] = num_tiles + len(tiles); tiles.append(px)
         return slot[key]
+    translate = {}
 
     is_ground = lambda t: bool(t & 0x3FF) and ((t >> 12) & 0xF) in GROUND_ROWS
     maps, ids, copies = {}, {}, 0
@@ -124,25 +166,53 @@ def main():
         xs = columns if columns is not None else range(W)
         if all(cell(x, y) not in G.TREE_BLOCKS for x in xs for y in range(y0, y1)):
             print("  %s rows %d..%d: already drawn" % (name, y0, y1 - 1))
-            maps.setdefault(name, (bd_path, bd, W, y0, y1))
+            maps.setdefault(name, (bd_path, bd, W, 0, H))
             continue
-        base = {}
-        obj = {}
-        post = {}
+        if name in SHOALS:
+            row0, rocks = SHOALS[name]
+            for sx, kind in rocks:
+                for dy in (0, 1):
+                    for dx in (0, 1):
+                        x, y, want = sx + dx, row0 + dy, ROCKS[kind][dy][dx]
+                        if cell(x, y) != 299:
+                            continue
+                        tmpl = next(i for i in range(W * H) if struct.unpack_from("<H", bd, i * 2)[0] & 0x3FF == want)
+                        hi = struct.unpack_from("<H", bd, tmpl * 2)[0] & ~0x3FF
+                        struct.pack_into("<H", bd, (y * W + x) * 2, hi | want)
+        base, obj, post, anim_q = {}, {}, {}, {}
         blocks = {(x, y): cell(x, y) for x in xs for y in range(y0, y1)}
         if trees_only:
             blocks = {c: m for c, m in blocks.items() if m in G.TREE_BLOCKS}
+
+        def rim(style, x, y, q):
+            for i in range(64):
+                X, Y = x * 16 + (q % 2) * 8 + i % 8, y * 16 + (q // 2) * 8 + i // 8
+                lx, ly = X - x * 16, Y - y * 16
+                c = None
+                if style == "top":
+                    c = G.OUTLINE if ly == 0 else G.JOINT if ly == 6 or (ly > 0 and X % 8 == 7) else None if ly == 7 else G.STONE
+                elif style == "left":
+                    c = G.OUTLINE if lx == 0 else G.JOINT if lx == 6 or (lx > 0 and Y % 8 == 7) else None if lx == 7 else G.STONE
+                elif style == "right":
+                    c = G.OUTLINE if lx == 15 else G.JOINT if lx == 9 or (lx < 15 and Y % 8 == 7) else None if lx == 8 else G.STONE
+                if c is not None:
+                    obj[(X, Y)] = (7, c)
+
         for (x, y), m in blocks.items():
             e = entries(m)
+            water_block = any((t & 0x3FF) in WATER_TILES for t in e[:4])
+            deep = all((t & 0x3FF) in WATER_TILES and (t >> 12) & 0xF == 6 for t in e[:4])
             for q in range(4):
                 t = e[q]
+                if m not in G.TREE_BLOCKS and (t & 0x3FF) in WATER_TILES:
+                    anim_q[(x, y, q)] = DEEP_SLOT if deep else G.SLOT_WATER
                 for ty in range(8):
                     for tx in range(8):
                         X, Y = x * 16 + (q % 2) * 8 + tx, y * 16 + (q // 2) * 8 + ty
-                        if m in G.POND_BLOCKS:
-                            base[(X, Y)] = G.water(X, Y, 0)
-                        elif m in G.TREE_BLOCKS:
+                        if m in G.TREE_BLOCKS:
                             base[(X, Y)] = G.TIP if (X % 16, Y % 16) in ((3, 5), (11, 13)) else G.TUFT if (X % 16, Y % 16) in ((4, 4), (12, 12)) else G.GRASS
+                        elif (x, y, q) in anim_q:
+                            base[(X, Y)] = (deep_water if deep else G.water)(X, Y, 0)
                         elif m in POST_BLOCKS and (t >> 12) & 0xF == 3:
                             v = vanilla_pixel(t, tx, ty)
                             base[(X, Y)] = G.GRASS
@@ -150,14 +220,22 @@ def main():
                                 post[(X, Y)] = v
                         elif is_ground(t):
                             base[(X, Y)] = JOBS.get((t >> 12) & 0xF, {}).get(vanilla_pixel(t, tx, ty), G.GRASS)
-                # ledges: row 1 rock in the top layer, recoloured into pale stone
                 t = e[4 + q]
-                if m not in G.POND_BLOCKS and t & 0x3FF and (t >> 12) & 0xF == 1:
+                if not t & 0x3FF:
+                    continue
+                row = (t >> 12) & 0xF
+                style = RIM.get(m, {}).get(q)
+                if style:
+                    rim(style, x, y, q)
+                elif (water_block and row in TOP_JOBS) or (not water_block and row == 1):
+                    jobs = TOP_JOBS[row] if water_block else LEDGE
                     for ty in range(8):
                         for tx in range(8):
                             v = vanilla_pixel(t, tx, ty)
                             if v:
-                                obj[(x * 16 + (q % 2) * 8 + tx, y * 16 + (q // 2) * 8 + ty)] = (7, LEDGE.get(v, 13))
+                                c = jobs.get(v, None if water_block and row == 6 else G.STONE)
+                                if c is not None:
+                                    obj[(x * 16 + (q % 2) * 8 + tx, y * 16 + (q // 2) * 8 + ty)] = (7, c)
         # birches, top to bottom so a lower crown covers the trunk above it; only on tree cells
         tree = G.birch()
         anchors = {(x, y) for (x, y), m in blocks.items() if m in G.TREE_ANCHORS}
@@ -184,24 +262,6 @@ def main():
             if m == G.FLOWER_BLOCK:
                 for (px, py), c in bed.items():
                     obj[(x * 16 + px, y * 16 + py)] = c
-            if m in G.POND_BLOCKS:
-                e = entries(m)
-                for q in range(4):
-                    if not e[4 + q] & 0x3FF:
-                        continue
-                    left = blocks.get((x - 1, y), cell(x - 1, y) if x else -1) not in G.POND_BLOCKS
-                    right = blocks.get((x + 1, y), cell(x + 1, y) if x < W - 1 else -1) not in G.POND_BLOCKS
-                    for ty in range(8):
-                        for tx in range(8):
-                            X, Y = x * 16 + (q % 2) * 8 + tx, y * 16 + (q // 2) * 8 + ty
-                            lx = X - x * 16
-                            c = None
-                            if left and lx < 8:
-                                c = G.OUTLINE if lx == 0 else G.JOINT if lx == 6 or (lx > 0 and Y % 8 == 7) else None if lx == 7 else G.STONE
-                            if right and lx >= 8 and c is None:
-                                c = G.OUTLINE if lx == 15 else G.JOINT if lx == 9 or (lx < 15 and Y % 8 == 7) else None if lx == 8 else G.STONE
-                            if c is not None:
-                                obj[(X, Y)] = (7, c)
 
         def quadrant(x, y, q, what):
             rows, px = set(), []
@@ -236,8 +296,8 @@ def main():
                 elif bottom:
                     px, row = quadrant(x, y, q, "base" if t & 0x3FF else "all")
                     out[q] = (put(px) + 640) | (row << 12)
-                if m in G.POND_BLOCKS and bottom:
-                    out[q] = (640 + G.SLOT_WATER + q) | (7 << 12)
+                if (x, y, q) in anim_q and bottom:
+                    out[q] = (640 + anim_q[(x, y, q)] + q) | (7 << 12)
                 if m in POST_BLOCKS:
                     px, row = quadrant(x, y, q, "all")
                     out[q] = (put(px) + 640) | (row << 12)
@@ -252,7 +312,8 @@ def main():
                 metas += struct.pack("<8H", *out); attrs += attr(m); copies += 1
             raw = struct.unpack_from("<H", bd, (y * W + x) * 2)[0]
             struct.pack_into("<H", bd, (y * W + x) * 2, (raw & ~0x3FF) | ids[key])
-        maps[name] = (bd_path, bd, W, y0, y1) if name not in maps else (bd_path, bd, W, min(maps[name][3], y0), max(maps[name][4], y1))
+            translate.setdefault((name, m), set()).add(ids[key])
+        maps[name] = (bd_path, bd, W, 0, H)          # the preview shows the whole map
         print("  %s rows %d..%d: drawn" % (name, y0, y1 - 1))
 
     total = num_tiles + len(tiles)
@@ -302,6 +363,22 @@ def main():
         open(os.path.join(SD, "metatile_attributes.bin"), "wb").write(attrs)
         for name, (bd_path, bd, W, y0, y1) in maps.items():
             open(bd_path, "wb").write(bd)
+        for name in BORDERS_TRANSLATED:
+            path = os.path.join(GBA, layouts[name]["border_filepath"]); border = bytearray(open(path, "rb").read())
+            for i in range(len(border) // 2):
+                raw = struct.unpack_from("<H", border, i * 2)[0]; new = translate.get((name, raw & 0x3FF), set())
+                if len(new) == 1:
+                    struct.pack_into("<H", border, i * 2, (raw & ~0x3FF) | next(iter(new)))
+            open(path, "wb").write(border)
+            print("  %s border: %s" % (name, [struct.unpack_from("<H", border, i * 2)[0] & 0x3FF for i in range(len(border) // 2)]))
+        flat = [c for col in G.ROW7 for c in col]
+        os.makedirs(os.path.join(SD, "anim", "deep"), exist_ok=True)
+        for f in range(G.WATER_FRAMES):
+            im = Image.new("P", (16, 16)); im.putpalette(flat + [0] * (768 - len(flat))); ip = im.load()
+            for q, px in enumerate(deep_frame(f)):
+                for i, v in enumerate(px):
+                    ip[(q % 2) * 8 + i % 8, (q // 2) * 8 + i // 8] = v
+            im.save(os.path.join(SD, "anim", "deep", "%d.png" % f))
         for name, source in BORDERS.items():
             src = open(os.path.join(GBA, layouts[source]["border_filepath"]), "rb").read()
             open(os.path.join(GBA, layouts[name]["border_filepath"]), "wb").write(src)
