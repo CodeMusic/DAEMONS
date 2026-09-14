@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.185**
+**A total conversion — the living design bible, v11.186**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7159,6 +7159,43 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 3. **Head-to-body ratio carries age.** *Large head for children, small for adults.* **Left unstated it defaults to the Barks prior and everyone comes out cute** — which is what nearly broke Scorn, since 4.4 needs him genuinely persuasive and 3.1 holds Brass City in reserve against the day Brazen reads as the game sneering at him.
 
 *Scorn was the tone test rather than the join test, and the tradition's most famous snake is **Sir Hiss**, a sniveling comic sidekick — precisely the failure to avoid.* **He came back composed, level-eyed and warm**, which is 4.4's *pleased with the arrangement* arriving in a sprite.
+
+### 9.4a The move menu — a type as a word, and what a move does — built 2026-09-13
+
+***A player asked the question the chart could not answer from the menu: which of these four moves hits, and which only lowers a defence?*** **The move names had been renamed into our vocabulary and stopped carrying vanilla's hints**, *and the only thing the menu said about a move was its type, one move at a time, in the info box.*
+
+#### Two questions, two channels
+
+**Colour is the type, and it already means that everywhere in this game.** *The chart's own rule is "hue is the type; effectiveness is weight, never colour"* — **so what a move DOES belongs on the weight side of that line, and gets a shape.**
+
+| | |
+|---|---|
+| **the name** | ***written in its type's colour*** — step 4 of the type's ramp, the same step a badge's ground uses |
+| **a 4px mark before it** | ***blank for a move that hits***; ▲ raise · ▼ lower · × afflict · + mend · ■ guard · ○ other |
+| **the info box** | MP, and the highlighted move's type **written in that same colour, with no `TYPE/` label** |
+
+***Hitting is unmarked on purpose.*** **217 of 355 moves deal damage**, *it is the thing a player most wants to see plainly, and because every other class carries a mark, an unmarked name can only mean one thing.*
+
+#### What the numbers decided
+
+- ***No hue had to change for contrast.*** **Step 4 of every type is readable as text on the white box and white is readable on it**; *the worst is FROZEN at 5.7:1.* **The consistency rule is one hue per type and one step of it for words.**
+- ***Four pixels, not the font's arrows.*** **The font's own arrows are 8px and would push fourteen names out of their 64px slot**; *a 4px mark overflows none.* **Seven FONT_SMALL cells nothing in the game uses are redrawn as the marks** — *three ink columns and the cell's fourth as the gap, which is why AFFLICT is a cross: at three pixels a diamond and a plus are the same shape.*
+- ***`TYPE/` went because it did not fit.*** **The label is 23px, and with it EMERGENT and HARDENED already ran past the box.**
+- ***Palette 5's colours 1–4 carry the four move colours*** — **every battle window draws with 11–15 only**, *so nothing else on the battle screen can be recoloured by it.*
+
+#### HARDENED and OPAQUE finally have colours
+
+**`TYPE_COLOR` had fifteen entries for seventeen types.** ***HARDENED is tempered straw*** — *the colour steel turns as it is hardened; every grey metal tried first landed on LEGACY or LOGIC* — ***and OPAQUE is near-black***, *a box you cannot see into.*
+
+#### What it did not reach, and what is still open
+
+- ***The type BADGES are unchanged.*** **The badge sheet has thirteen usable colour slots for eighteen types**, *so HARDENED still shares LEGACY's plate and OPAQUE LATENT's.* **Giving them their own plates means taking a slot from a type that has one.**
+- <span>OPEN</span> **LOGIC and LEGACY are nearly one colour as text** — 7.8 CIE76 at step 4, where the earlier "not worth separating" ruling was made at sprite size. *The written type name is the only thing that tells them apart in the menu.*
+- ***Dark types read as plain text at step 4*** — **CORRUPT, LATENT, EMERGENT and OPAQUE.** *Built at step 4 as decided; `tools/gbamovemenu.py --write --text-step lightest` is the measured alternative and gives the first three their colour back.*
+
+#### Where it lives
+
+**`tools/gbamovemenu.py` writes `src/data/battle_move_menu.h` and redraws the font**, *and it imports its classifier, its marks and its colour maths from `tools/gbachart.py`* — **so the page a reader checks and the ROM a player holds cannot disagree about which move is which.** *The chart itself is generated now too: its footer had claimed "read out of the built table" and nothing produced it.*
 
 ### 9.5 The music, re-emitted rather than carried
 

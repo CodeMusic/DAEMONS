@@ -95,10 +95,10 @@ OPAQUE_OPTIONS = [
      "The most separable at sprite size, but it reads as a dark VECTOR rather than as something sealed."),
 ]
 WHY_PROPOSED = {
-    "HARDENED": "<strong>Tempered straw.</strong> Proposed, not shipped. Tempering is how steel is hardened, "
+    "HARDENED": "<strong>Tempered straw.</strong> Adopted 2026-09-13. Tempering is how steel is hardened, "
                 "and straw is the colour it turns at the temperature that makes it hard, so the hue is the "
                 "clause's own process. Every grey metal was tried first and every one landed on LEGACY or LOGIC.",
-    "OPAQUE":   "<strong>Near-black.</strong> Proposed, not shipped. A box you cannot see inside is the one "
+    "OPAQUE":   "<strong>Near-black.</strong> Adopted 2026-09-13. A box you cannot see inside is the one "
                 "type that should look like nothing can be read off it — and it stays clear of the default "
                 "text colour, which a dark type easily would not.",
 }
@@ -166,7 +166,27 @@ NEW_GLOSS = {
 #  the thing a player most wants to see plainly, and because every OTHER class
 #  carries a mark, an unmarked name can only mean one thing.
 CATEGORY_ORDER = ["HIT", "RAISE", "LOWER", "AFFLICT", "MEND", "GUARD", "OTHER"]
-CATEGORY_ICON  = {"HIT": "", "RAISE": "▲", "LOWER": "▼", "AFFLICT": "◆", "MEND": "✚", "GUARD": "■", "OTHER": "●"}
+#  THE MARKS AS PIXELS, and this is the one definition: tools/gbamovemenu.py
+#  draws exactly these into the font, and this page draws exactly these too.
+#  Three ink columns in a 4px cell, because the cell's fourth column is the
+#  gap before the name. At three pixels a diamond and a plus are the same
+#  shape, so AFFLICT is a cross. (top row in the font cell, rows of ink)
+MARK_BITMAP = {
+    "HIT":     (0, []),      #  blank, so the names stay in one column
+    "RAISE":   (5, [".#.", "###", ".#.", ".#.", ".#."]),
+    "LOWER":   (5, [".#.", ".#.", ".#.", "###", ".#."]),
+    "AFFLICT": (6, ["#.#", ".#.", "#.#"]),
+    "MEND":    (6, [".#.", "###", ".#."]),
+    "GUARD":   (6, ["###", "###", "###"]),
+    "OTHER":   (6, ["###", "#.#", "###"]),
+}
+
+def mark_svg(cls, scale=2):
+    top, rows = MARK_BITMAP[cls]
+    rects = "".join('<rect x="%d" y="%d" width="1" height="1"/>' % (x, y + top - 4)
+                    for y, r in enumerate(rows) for x, ch in enumerate(r) if ch == "#")
+    return ('<svg class="mk" viewBox="0 0 4 7" width="%d" height="%d" fill="currentColor" '
+            'aria-hidden="true">%s</svg>' % (4 * scale, 7 * scale, rects))
 CATEGORY_SAYS  = {
     "HIT":     "Deals damage. Unmarked.",
     "RAISE":   "Raises your own stats. No damage.",
@@ -188,6 +208,8 @@ RAISE_EF   = {"MINIMIZE", "DEFENSE_CURL", "STOCKPILE", "CHARGE", "FOCUS_ENERGY",
 
 #  In-game the marks are 4px glyphs redrawn into font cells nothing uses.
 FREE_GLYPHS = "ÌÍÎÏìíîï"
+CLASS_GLYPH = {"HIT": "Ì", "RAISE": "Í", "LOWER": "Î", "AFFLICT": "Ï",
+               "MEND": "ì", "GUARD": "í", "OTHER": "î"}
 
 #  The four moves from the author's screenshot of the move menu, 2026-09-13.
 SAMPLE, SAMPLE_CURSOR, SAMPLE_MP = ("OCCLUDE", "THERMAL", "POLLUTE", "INSPECT"), "THERMAL", "15/15"
@@ -367,7 +389,8 @@ def load_font():
         return sum(t[cm[c]] for c in s if c in cm and cm[c] < len(t))
     return width, cm, tables
 
-def load_moves(tn):
+def classify_moves(tn):
+    """{MOVE_CONSTANT: (class, our type, power, our name)} -- the one classifier."""
     names = dict(re.findall(r'\[MOVE_(\w+)\]\s*=\s*_\("([^"]+)"\)', gba_read("src/data/text/move_names.h")))
     blocks = dict(re.findall(r'\[MOVE_(\w+)\] =\s*\{(.*?)\n\s*\},', gba_read("src/data/battle_moves.h"), re.S))
     out = {}
@@ -384,8 +407,11 @@ def load_moves(tn):
         elif "_DOWN" in ef or ef in ("TICKLE", "MEMENTO"):        c = "LOWER"
         elif ef in AFFLICT_EF or ef.startswith(STATUS_PREFIX):    c = "AFFLICT"
         else:                                                     c = "OTHER"
-        out[names[mv]] = (c, ty, pw)
+        out[mv] = (c, ty, pw, names[mv])
     return out
+
+def load_moves(tn):
+    return {n: (c, ty, pw) for c, ty, pw, n in classify_moves(tn).values()}
 
 # ================================================================= colour
 def ramp_step(rgb, coeffs):
@@ -576,8 +602,7 @@ def main():
 
     # ------------------------------------------------------------ move menu
     def mark(c):
-        i = CATEGORY_ICON[c]
-        return '<span class="mk">%s</span>' % i if i else '<span class="mk"></span>'
+        return mark_svg(c, 2)
     cells = []
     for n in SAMPLE:
         c, ty, pw = moves[n]
@@ -595,7 +620,7 @@ def main():
     legend = "".join(
         '<tr><td class="now">%s</td><td class="mkcell">%s</td><td class="num">%d</td><td>%s</td>'
         '<td class="ex">%s</td></tr>'
-        % (c, CATEGORY_ICON[c] or "<span class=faint>none</span>", len(cats[c]), CATEGORY_SAYS[c],
+        % (c, mark_svg(c, 3) if MARK_BITMAP[c][1] else "<span class=faint>none</span>", len(cats[c]), CATEGORY_SAYS[c],
            ", ".join(cats[c][:6]) + ("…" if len(cats[c]) > 6 else ""))
         for c in CATEGORY_ORDER)
 
@@ -638,7 +663,7 @@ def main():
             why.append('<tr><td class="now">%s%s</td><td class="was">%s</td><td>%s</td></tr>'
                        % (t, ("<small>%s</small>" % tag) if tag else "", hexc(hue[t]), text))
         elif t in WHY_PROPOSED:
-            why.append('<tr><td class="now">%s<small>proposed</small></td><td class="was">%s</td><td>%s</td></tr>'
+            why.append('<tr><td class="now">%s<small>adopted 2026-09-13</small></td><td class="was">%s</td><td>%s</td></tr>'
                        % (t, hexc(hue[t]), WHY_PROPOSED[t]))
         else:
             report("!!  %s has no 'why this colour' entry" % t)
@@ -754,10 +779,13 @@ table.tbl td.now small{display:block;font-weight:400;color:var(--faint);font-siz
 table.tbl td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
 table.tbl td.num.warn{color:var(--warn);font-weight:600}
 table.tbl td.ex{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint)}
-table.tbl td.mkcell{font-size:15px;text-align:center;width:44px}
+table.tbl td.mkcell{text-align:center;width:44px;color:var(--ink)}
+table.tbl td.mkcell .mk{width:12px;height:21px;margin:0}
 table.tbl tr.rec td{background:color-mix(in srgb,var(--good) 8%,transparent)}
 .note{font-size:13.5px;color:var(--dim);border-left:2px solid var(--rule-hard);padding-left:14px;max-width:62ch}
 .open{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;border:1px solid var(--warn);color:var(--warn);padding:1px 5px;border-radius:2px;vertical-align:2px;white-space:nowrap}
+.done{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;border:1px solid var(--good);color:var(--good);padding:1px 5px;border-radius:2px;vertical-align:2px;white-space:nowrap}
+.review.done-banner{border-color:var(--good);background:color-mix(in srgb,var(--good) 7%,var(--raise))}
 .review{border:1px solid var(--warn);border-left:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 6%,var(--raise));padding:14px 18px;border-radius:2px;font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--ink)}
 .review p{margin:0;max-width:none}
 .sw{display:inline-block;width:18px;height:18px;border-radius:2px;vertical-align:-4px;margin-right:6px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 14%,transparent)}
@@ -774,7 +802,7 @@ table.tbl tr.rec td{background:color-mix(in srgb,var(--good) 8%,transparent)}
 .mock-moves{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;padding:14px 16px}
 .mv{display:flex;align-items:center;white-space:nowrap}
 .cur{display:inline-block;width:14px;color:#2a2a30}
-.mk{display:inline-block;width:14px;font-size:11px;color:#4a4a4a}
+.mk{display:inline-block;width:8px;height:14px;margin-right:5px;vertical-align:middle;color:#4a4a4a;flex:none}
 .mock-info{padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:150px}
 .mock-info div{display:flex;justify-content:space-between;gap:14px}
 .mockcap{flex:1 1 240px;font-size:13.5px;color:var(--dim);max-width:44ch}
@@ -786,17 +814,17 @@ footer{border-top:1px solid var(--rule-hard);padding-top:18px;font-size:12.5px;c
 </style>
 <div class="wrap">
 <header>
-  <p class="eyebrow">CONTEXT / CONTENT · §2 · §9.4 · under review 2026-09-13</p>
+  <p class="eyebrow">CONTEXT / CONTENT · §2 · §9.4 · decided 2026-09-13</p>
   <h1>The Chart and the States</h1>
   <p class="lede">All {{NREL}} relations under our {{NTYPE}} names, what each one teaches, and how the
-  argument survives a daemon that is two things at once. And, for review first: one rule for how
+  argument survives a daemon that is two things at once. And, decided 2026-09-13: one rule for how
   every screen uses a type's colour, hues for the two types that never had one, and a mark on each
   move that says what it does.</p>
 </header>
 
-<div class="review"><p><strong>Under review.</strong> Everything marked <span class="open">PROPOSED</span>
-is a recommendation, not the game. Nothing here has touched the ROM: the colours are decided on
-this page first, then built.</p></div>
+<div class="review done-banner"><p><strong>Decided 2026-09-13, and built.</strong> The colour rule, the HARDENED
+and OPAQUE hues, the move marks and the unlabelled type line are in the ROM. What is still marked
+<span class="open">OPEN</span> was not decided.</p></div>
 
 <section>
   <div class="sec-head"><h2>Colour: one hue per type, and one step of it for words</h2></div>
@@ -822,12 +850,12 @@ this page first, then built.</p></div>
   <div class="scroll"><table class="tbl">
     <thead><tr><th>Closest pairs as text</th><th>Sprites</th><th>Step 4</th></tr></thead>
     <tbody>{{CLOSE}}</tbody></table></div>
-  <p class="note"><span class="open">DECISION</span> <strong>LOGIC / LEGACY is {{LL_S4}} at step 4</strong>
+  <p class="note"><span class="open">OPEN</span> <strong>LOGIC / LEGACY is {{LL_S4}} at step 4</strong>
   ({{LL_MID}} at sprite size). The ruling further down — that separating them was "not worth weakening a
   metaphor for two points" — was made at sprite size. As text they are effectively one colour, so it is
   worth deciding again: move one of them within its own metaphor, or accept that the info box is the only
   thing that tells them apart.</p>
-  <p class="note"><span class="open">DECISION</span> <strong>Some words read as plain text, for two different
+  <p class="note"><span class="done">DECIDED · step 4</span> <strong>Some words read as plain text, for two different
   reasons.</strong> A hue that sits near the battle box's own grey: {{NEAR_GREY}}. A hue too dark and too weak to
   show at letter size: {{AS_INK}} — OCCLUDE and POLLUTE in the mockup are this kind. One alternative: <em>words
   take the lightest step that still reads as text</em> — the hue itself where it already clears 4.5:1
@@ -835,7 +863,8 @@ this page first, then built.</p></div>
   20 instead of {{N_S4}}. <strong>It cannot fix {{STILL_PLAIN}}</strong>: those hues either sit beside the grey
   or carry almost no colour, at any step. For CONTENT that is the design — the thing itself should not look like anything — and for all of them the
   mark and the written type do the work. The cost: for the types it changes, a badge and a written name stop
-  sharing one colour.</p>
+  sharing one colour. <em>Built at step 4; the alternative is one flag,
+  <code>tools/gbamovemenu.py --write --text-step lightest</code>.</em></p>
 
   <h3>The two types with no colour</h3>
   <p><code>TYPE_COLOR</code> has fifteen entries for {{NTYPE}} types. Today the badge tool gives HARDENED
@@ -843,7 +872,7 @@ this page first, then built.</p></div>
   entry</mark>, so those daemons still wear vanilla colours. Colour cannot be consistent anywhere until
   these two have one. Each option is measured against all the others; <em>worst</em> is its distance to
   whichever type it sits nearest.</p>
-  <h3>HARDENED <span class="open">DECISION</span></h3>
+  <h3>HARDENED <span class="done">DECIDED · tempered straw</span></h3>
   <div class="scroll"><table class="tbl">
     <thead><tr><th>Option</th><th>Sprite · step 4</th><th>Worst, sprites</th><th>Worst, step 4</th><th>Nearest</th><th>Text</th><th>Colour as a word</th><th>Why</th></tr></thead>
     <tbody>{{HARD_ROWS}}</tbody></table></div>
@@ -851,7 +880,7 @@ this page first, then built.</p></div>
   and every one landed within 4–9 of LEGACY, LOGIC or FROZEN. Metal is already crowded in this palette,
   because LOGIC is steel and LEGACY is slate. The candidates above work by being the colour metal
   <em>takes</em> when it is worked, rather than the colour of metal at rest.</p>
-  <h3>OPAQUE <span class="open">DECISION</span></h3>
+  <h3>OPAQUE <span class="done">DECIDED · near-black</span></h3>
   <div class="scroll"><table class="tbl">
     <thead><tr><th>Option</th><th>Sprite · step 4</th><th>Worst, sprites</th><th>Worst, step 4</th><th>Nearest</th><th>Text</th><th>Colour as a word</th><th>Why</th></tr></thead>
     <tbody>{{OPAQUE_ROWS}}</tbody></table></div>
@@ -870,7 +899,7 @@ this page first, then built.</p></div>
   <div class="mockwrap">
     {{MOCK}}
     <p class="mockcap">Your screenshot's four: {{SAMPLE_NOTE}}. The three that hit are unmarked;
-    INSPECT lowers the foe's defence and carries ▼. The info box keeps MP and names the highlighted
+    INSPECT lowers the foe's defence and carries the down arrow. The info box keeps MP and names the highlighted
     move's type in its colour, without the <code>TYPE/</code> label.
     <strong>OCCLUDE and POLLUTE show the problem noted above</strong>: both read almost as plain text at
     step 4. The alternative would give POLLUTE its olive back. It would not rescue OCCLUDE, because the

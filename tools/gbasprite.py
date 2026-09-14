@@ -186,6 +186,13 @@ TYPE_COLOR = {
     #  -- the strangeness is the point, and a brighter jade would simply have
     #  read as a second SIGNAL. Now 26.0 from SIGNAL.
     "DRAGON":   ( 53, 125, 110),   # EMERGENT -- jade, deeper than SIGNAL's current
+    #  THE TWO GEN 3 ADDED, decided 2026-09-13 (docs/type-chart.html). Until
+    #  now this table had fifteen entries for seventeen types, and every daemon
+    #  whose primary type was one of these two was SKIPPED rather than coloured.
+    "STEEL":    (196, 170,  96),   # HARDENED -- tempered straw: the colour steel
+                                   #   turns as it is hardened. Every grey metal
+                                   #   landed on LEGACY or LOGIC first.
+    "DARK":     ( 40,  40,  46),   # OPAQUE   -- near-black; a box you cannot see into
 }
 BG = (205, 205, 172)               # what Gen 3 puts in index 0
 

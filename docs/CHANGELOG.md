@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.186 — 2026-09-13
+
+### 9.4a — the move menu: a type as a word, and what a move does
+
+- ***A move now carries two things on two channels.*** **Its name is written in its type's colour** — *step 4 of the ramp, the same step a badge's ground uses* — **and a 4px mark before it says what it does**: *blank for a move that hits, then ▲ raise, ▼ lower, × afflict, + mend, ■ guard, ○ other.* **The info box names the highlighted move's type in that colour, with no `TYPE/` label** — *the label was 23px and already pushed EMERGENT and HARDENED past the box.*
+- ***No hue changed for contrast*** — **step 4 of every type reads on white, worst FROZEN at 5.7:1.** *The font's own arrows are 8px and would overflow fourteen names; the marks are 4px and overflow none, drawn into seven font cells nothing uses.*
+- ***HARDENED is tempered straw and OPAQUE is near-black*** — **`TYPE_COLOR` had fifteen entries for seventeen types.**
+- **Not reached:** *the type badges, whose sheet has thirteen colour slots for eighteen types.* **Still open:** *LOGIC and LEGACY are nearly one colour as text, and the dark types read as plain text at step 4 — the measured alternative is one flag.*
+- ***`tools/gbamovemenu.py` imports its classifier, marks and colour maths from `tools/gbachart.py`***, **so the chart a reader checks and the ROM a player holds cannot disagree.** *The chart is generated now too.*
+
+---
+
 ## v11.185 — 2026-09-13
 
 ### 8.10 — the self-model was rehearsing its faults
