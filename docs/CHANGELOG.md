@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.196 — 2026-09-14
+
+### 9.22 — Blanche's ground, drawn
+
+- ***The runtime wash was the stopgap; Blanche's ground is now drawn.*** **Silver-green grass almost white at the tips, white chalk paths, white-barked birches, white flowers and a clear pale pond** — *no colour anywhere, so the lab's gold stays the only warm note.* **Drawn as Blanche-only copies in its own tileset and rows 7 and 12; the flowers and water get their own animation; the wash comes off whatever the new tiles replace.** *The sprite workflow gains `view: terrain`.* **T-58.**
+
 ## v11.195 — 2026-09-14
 
 ### 9.22 — Crystal's lab, from inside

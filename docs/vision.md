@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.195**
+**A total conversion — the living design bible, v11.196**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7835,7 +7835,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 |---|---|---|
 | **the lab** | ***26 blocks placed on no other map***, *nearly every tile its own* | **drawn in Blanche's own row 9**, *which already holds whites, greys, glass blues and a five-step gold*; **five tiles are shared and stay untouched** |
 | **the houses and fences** | ***drawn in COMMON rows 2 and 3***, *shared by about 180 maps* | **pointed at Blanche's own rows 8 and 12** — *nearly unused, and no other map draws them* — **filled with pale copies of the common colours** |
-| **the ground and trees** | ***common row 0, 1317 of Blanche's draws*** | **a Blanche-only runtime wash later**, *the same shape as Halftone's tint, never touching Blanche's own rows* |
+| **the ground and trees** | ***common row 0, 1317 of Blanche's draws*** | **a Blanche-only runtime wash first** (*T-56*), ***then redrawn*** — *see* **The ground, drawn** *below* |
 | **the lab's interior** | ***shared with the whole Quicksilver lab*** | **split into its own tileset** — *so the working lab and the ruin can read as one place, before and after* |
 
 #### The lab, from inside — *decided 2026-09-14*
@@ -7850,6 +7850,22 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | **everything else** | ***redrawn on its own tile*** | **the computer, the INDEX unit and her note, the bench with the three boxes, and the people keep their scripts and collision** |
 
 ***Concept art comes from the n8n `daemon/sprite` workflow's new `kind: environment`***, **top-down three-quarter or front elevation, with lettering forbidden in the prompt** — *and, as with the people, it is reference to draw from: the tiles are written by hand, eight pixels at a time.* **T-53 to T-56.**
+
+#### The ground, drawn — *decided 2026-09-14*
+
+***The wash was the stopgap; the ground is now drawn.*** **T-56 paled vanilla's field, and a pale Kanto field still reads as Kanto** — *mint grass, sand paths, conifers, a blue pond.* **Blanche gets a ground of its own, still with no colour in it.**
+
+| | becomes | because |
+|---|---|---|
+| **the grass** | ***short silver-green grass, almost white at the tips*** | *a town in a field before colour, not a town under snow* — **frost would say winter, and 9.21's seasons may want winter** |
+| **the paths** | ***white chalk and gravel*** | **the same white as the lab's stone**, *so the town and the lab are one material* |
+| **the trees** | ***white-barked birches*** | ***a different tree, not a paler one*** — **same footprint, same collision** |
+| **the flower bed** | ***white flowers on pale stems*** | *no petal colour anywhere* |
+| **the pond** | ***clear pale water over a light bed*** | **the lab's gold stays the only warm note in Blanche** |
+
+***How it fits, measured.*** **The ground blocks draw the General tileset, shared by about 180 maps, so nothing is redrawn where it is.** *Blanche's tileset has 224 free tile slots and its palette row 7 is unused and row 12 nearly so*: **the tiles are drawn fresh there, and a common block Blanche uses gets a Blanche copy** — *the sign block's route in T-55.* ***The flowers and the water are animated in the shared tileset***, **so Blanche's copies need a tileset animation of their own.**
+
+***And the wash comes off whatever the new tiles replace*** — **a tile drawn pale and then washed would be paled twice.** *It stays only on anything left undrawn.* **Concepts come from `kind: environment, view: terrain`. T-58.**
 
 ### 9.2 Order of operations
 

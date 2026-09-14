@@ -10,7 +10,7 @@ degrades instead of erroring.
 |---|---|---|---|
 | `daemon/health` | ✅ | ✅ | probes text, vision, image and TTS and says which are ready |
 | `daemon/look` | ✅ | ✅ | describes a screenshot, on request only |
-| `daemon/sprite` | ✅ | ✅ | a draft to draw from: a daemon in §9.4's neutral greys, a person or overworld figure, or (`kind: environment`) a building, with no lettering |
+| `daemon/sprite` | ✅ | ✅ | a draft to draw from: a daemon in §9.4's neutral greys, a person or overworld figure, or (`kind: environment`) a building, a room or (`view: terrain`) a patch of ground, with no lettering |
 | `daemon/voice` | ✅ | ✅ | speaks one line of inner voice in the INDEX voice |
 | `daemon/chat` | ⚠️ inactive | ⚠️ inactive | OpenAI chat-completions + thought extraction + TTS |
 
