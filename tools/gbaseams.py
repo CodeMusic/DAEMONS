@@ -17,9 +17,16 @@ it uses, and the same colours in every secondary palette row it uses. Vanilla
 relies on exactly that in a few places (towns share blocks copied from one
 another), so this compares what is drawn rather than refusing every id >= 640.
 
-A block may also be DUAL on purpose: the same id drawn differently in two
-tilesets so that each side sees a version that matches its own border. Those ids
-are listed below with the tool that made them, and pass for that pair only.
+NO BLOCK MAY BE "DUAL". The first sandbar gave one id a different drawing in
+each tileset, so each side would see its own; it glitched anyway, because the
+engine does not redraw the screen when you cross -- the cells already on screen
+keep the tile numbers and palette rows they were drawn with (trap 14). Only a
+block that draws the same in both tilesets is safe.
+
+AND THE BORDER. A map's border is drawn past its sides, and is on screen at a
+crossing within seven cells of a side. A secondary border block beside a
+connection to a different tileset is reported too; it is safe only if the map
+keeps the player seven cells in from that side where they cross (gbasandbar.py).
 
 Reported per side: the map whose cells are wrong, the neighbour whose tileset
 draws them, and the rows or columns they sit in.
@@ -31,8 +38,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 BAND = 7
 FILTER = sys.argv[1] if len(sys.argv) > 1 else ""
-# ids drawn differently on purpose, by the pair of tilesets they serve (see the docstring)
-DUAL = {frozenset({"gTileset_PalletTown", "gTileset_CinnabarIsland"}): {880, 947, 948, 949, 950, 951}}   # gbasandbar.py
+# secondary borders that are known to be kept off screen at the crossing, and by what
+BORDER_KEPT_OFF = {"Route21_North": "gbasandbar.py: the arms keep the crossing seven cells in from both sides"}
 
 
 def tdir(symbol):
@@ -137,16 +144,22 @@ def main():
                 ys = [y for y in range(H) if 0 <= y + off < la["height"]]
                 cells = [(x, y) for x in xs for y in ys]
             bad = {}
-            dual = DUAL.get(frozenset({la["secondary_tileset"], lb["secondary_tileset"]}), set())
             for x, y in cells:
                 m = g[y * W + x] & 0x3FF
-                if m >= 640 and m not in dual and not same_block(m, A, B):
+                if m >= 640 and not same_block(m, A, B):
                     bad.setdefault(m, []).append((x, y))
             if bad:
                 n = sum(len(v) for v in bad.values()); total += n
                 rows = sorted({y for v in bad.values() for _, y in v}); cols = sorted({x for v in bad.values() for x, _ in v})
                 print("  %-28s seen from %-22s %4d cells, %2d blocks  rows %s  cols %s" % (
                     nname, dname, n, len(bad), "%d..%d" % (rows[0], rows[-1]), "%d..%d" % (cols[0], cols[-1])))
+            border = open(os.path.join(GBA, lb["border_filepath"]), "rb").read()
+            sec_border = sorted({struct.unpack_from("<H", border, i)[0] & 0x3FF for i in range(0, len(border), 2)} - set(range(640)))
+            if sec_border and not all(same_block(m, A, B) for m in sec_border):
+                note = BORDER_KEPT_OFF.get(nname)
+                print("  %-28s border %s is secondary, on screen crossing from %s%s" % (nname, sec_border, dname, "  (kept off: %s)" % note if note else ""))
+                if not note:
+                    total += 1
     print("  %d cells draw wrong across a connection" % total)
     return total
 

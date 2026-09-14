@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.202**
+**A total conversion — the living design bible, v11.203**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7919,7 +7919,9 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***Why the join garbled, which is a fact about the engine and not about the art.*** **A connection draws seven rows of the neighbouring map with the tileset of the map you stand in** (*engine.md trap 14*). ***So the last seven rows of any map are drawn twice***, *once by each tileset*, **and anything Blanche drew there reads as Callow's or Quicksilver's blocks from the other side** — *which is what happened entering Callow under Route 1's birches.* **`tools/gbaseams.py` finds every such cell.**
 
-***Why a sandbar, and why it is deep.*** **The border past a map's sides is one block all round**, *pale water North and blue South*, **and it is on screen whenever you are near a side** — *so water in view must match the map you are standing in, and water in view at the moment of crossing would change colour under you.* ***Only land the whole width, deep enough to fill the screen, satisfies both.*** **Its sand is gold throughout** — *a bar that was chalk on one half would be the seam it replaces* — **and the sliver of water along its ends is drawn pale in Blanche's tileset and blue in Quicksilver's under the same ids**, *so each side's player sees water matching their own border.* **T-72, T-73.**
+***Why the sandbar is shaped as it is.*** ~~*Deep enough to fill the screen, with its edges drawn pale in one tileset and blue in the other under the same ids*~~ ***— reversed on playtest the same day: it was far too big, and it still glitched.*** **The engine does not redraw the screen when you cross a connection**: *every cell already on screen keeps the tile and palette row it was drawn with, now reading the other map's tiles and colours* (*engine.md trap 14*). **So whatever is on screen at the crossing must be primary — and that includes the border past the map's sides, which on Route 21 North is Blanche's pale water.**
+
+***Now: a bar three rows deep across the whole sea, and two arms of sand from it down both sides to the join, so the only crossing is a channel at least seven cells in from either edge*** — **you see seven cells to each side, so the border is never on screen there.** *The arms' last row is solid, so nobody surfs off them across the join.* **Its sand is gold throughout** — *a bar that was chalk on one half would be the seam it replaces.* **T-72, T-73, T-83.**
 
 #### The station under the sandbar — *decided 2026-09-14*
 
@@ -7959,7 +7961,17 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***Nothing the player reads says GYM.*** **Every sign and line says BENCHMARK** — *`SLATE CITY BENCHMARK / LEADER: CAIRN`.* ***The title stays LEADER***, **chosen over PROCTOR**: *a proctor supervises an exam without sitting it, and you fight this person*; **a benchmark's leader is the top of the board you are trying to beat.** *Eight labels in the FAME CHECKER, 88 pixels wide, read BENCHMARK without the town, because VERDIGRIS BENCHMARK and QUICKSILVER BENCHMARK do not fit.* **T-76.**
 
-***They should not look like houses.*** **A roof and a door recoloured is still a house**, *so each kind gets a silhouette of its own on vanilla's footprint* (**T-77**), ***and a BENCHMARK's two pillars take the colour of its leader's type*** (**T-78**) — *9.4's rule on the building itself.* **Concepts first.**
+***They should not look like houses.*** **A roof and a door recoloured is still a house**, *so each kind gets a silhouette of its own on vanilla's footprint* (**T-77**), ***and a BENCHMARK's two pillars take the colour of its leader's type*** (**T-78**) — *9.4's rule on the building itself.* ***Chosen from concepts, 2026-09-14:***
+
+| | becomes | what it says without a word |
+|---|---|---|
+| **BENCHMARK** | ***a colonnade*** — *a flat roof, a stone frieze with a relief of bars, the gauge over the door and the mark's name beside it, columns across the front, the two at the door in the leader's type* | **an institution that measures**, *which is 5's whole complaint about it* |
+| **CHECKPOINT** | ***a rotunda*** — *a teal dome carrying the restore arrow, over a round stone drum with tall windows* | **the one round building in a town of boxes**, *found at a glance; the checkmark plate goes, the dome is the sign* |
+| **THE REPO** | ***stacked shipping containers*** — *the branch stencilled on the top one, the door cut into the bottom pair, REPO on the left container* | **packages, arriving and leaving** — *1's definition, standing in a yard* |
+
+***A BENCHMARK's two words*** (**T-79**): **the free-standing board reads MARK, and the frieze carries the name of the mark earned inside** — *SLATE, SLOPE, SENSE, FIT, SKEW, FRAME, HEAT or TRUE*, **in the 3x5 face, four pixels a letter, so the longest is two cells.** *The name is the only thing on the building that differs by town besides the pillars, so it is drawn on each town's own blocks.*
+
+***Built 2026-09-14, and what bounds the detail.*** **Vanilla's buildings are shaded and textured; ours read flat on playtest (T-85).** *All three kinds are drawn in the General tileset, whose 640 slots are full*, **so detail is paid for in tiles: 45 of vanilla's duplicate tiles were merged to make room, mirrored tiles are shared, and the drawings take 127 of the 132 slots that result** — *a dentilled cornice and one step on the colonnade, a canopy and plinth on the rotunda, castings on the containers.* ***More than that means drawing on each town's own tileset.*** **The board's face sits low, in the one cell every town's board has.**
 
 ### 9.2 Order of operations
 

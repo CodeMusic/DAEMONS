@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.203 — 2026-09-14
+
+### 9.23 — Buildings that are not houses
+
+- ***The BENCHMARK is a colonnade, the CHECKPOINT a rotunda, THE REPO stacked containers***, **chosen from concepts.** *A BENCHMARK's two door pillars wear its leader's type colour from each town's unused palette row 7; its frieze carries the mark's name; its board reads MARK.* **The CHECKPOINT's checkmark plate goes.**
+- ***Detail is bounded by the General tileset.*** **45 duplicate tiles were freed (`tools/gbadedupe.py`)**, *and the drawings use 127 of 132 slots.*
+
+### 9.22 — The sandbar, small, and why the first one glitched
+
+- ***The engine does not redraw the screen when you cross a connection***, **so the first sandbar's same-id-different-drawing trick showed Blanche's drawing in Quicksilver's palette.** *Reversed the same day:* **a three-row bar with sand arms down both sides and a channel seven cells in from each edge**, *so nothing secondary, the border included, is on screen at the crossing.*
+- ***A sketch under the visitor log***: **one rabbit three times — faceted, split, whole** (*4.6's forms, never named*).
+
 ## v11.202 — 2026-09-14
 
 ### 4.3 — Al calls her CRYSTAL

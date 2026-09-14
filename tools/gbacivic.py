@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
-"""CHECKPOINTS, THE REPO and the BENCHMARKS, as buildings (T-62, T-63, T-64; vision.md 9.23).
+"""CHECKPOINTS, THE REPO and the BENCHMARKS, as buildings (T-62..T-64, T-77..T-79; vision.md 9.23).
 
     python3 tools/gbacivic.py            # report and preview to /tmp/civic.png (before | after)
-    python3 tools/gbacivic.py --write    # tiles, blocks and palettes across the outdoor tilesets
+    python3 tools/gbacivic.py --write    # tiles, blocks and palettes across the outdoor tilesets, and eight town maps
 
-WHAT EACH BECOMES (9.23): a CHECKPOINT with a calm teal roof and a circular
-restore arrow; THE REPO with a golden amber roof and a stacked package; a
-BENCHMARK with a slate roof and a gauge. Signs carry the emblem and no letters.
+WHAT EACH BECOMES (9.23, chosen from concepts 2026-09-14 so none of them reads as a house):
+
+    CHECKPOINT   a rotunda: a teal dome carrying the restore arrow, its crown rising
+                 into the row above, over a round stone drum on a stone terrace
+    THE REPO     stacked shipping containers: the branch stencilled on the top one,
+                 the door cut into the bottom pair, REPO on the left container
+    BENCHMARK    a colonnade: a flat roof, a frieze with a relief of bars and the
+                 mark's name, the gauge over the door, columns across the front --
+                 the two at the door in the leader's type colour -- and steps
 
 FOUND BY THEIR DOORS, NOT BY BLOCK NUMBERS. Every warp into a Pokemon Center,
 Mart or Gym is a building: 17 CHECKPOINTS, 12 REPOs and 8 BENCHMARKs on the
@@ -17,21 +23,34 @@ building is stamped from a drawing placed on its door, and every block under it
 palette row 2, 3 or 5 that draws a tile the vanilla building draws. Grass, the
 town's own rows and the door keep what they had.
 
-A BENCHMARK IS DRAWN BY COLUMN, because they are not all one width (six cells at
-Callow and Quicksilver, seven at Slate, more at Verdigris) and the same block
-stands at a different offset in different towns. Each column is drawn by its
-role -- left edge, wall, the plaque and pillars beside the door, the door, right
-edge -- so a block always gets the same pixels wherever it stands.
+A BENCHMARK IS DRAWN BY COLUMN, because they are six, seven and eight cells wide
+and the same block stands at a different offset in different towns. Each column
+is drawn by its role -- left edge, wall, the pillar either side of the door, the
+door, right edge -- so a block always gets the same pixels wherever it stands.
+Rows -4..-2 are one block for every middle column, so only rows -1 and 0 can
+tell one column from another: the gauge and the pillars live there.
+
+TWO THINGS DIFFER BY TOWN, and each is done the cheapest way it can be:
+
+  THE PILLARS' COLOUR (T-78). The pillar blocks are shared by all eight, so the
+  pillar is drawn on the top layer in palette row 7, which every one of the
+  eight towns' tilesets leaves unused; the recess behind it moves to the bottom
+  layer. Each town's row 7 holds its leader's type colour (gbasprite.py's
+  TYPE_COLOR), so one drawing wears eight colours.
+  THE MARK'S NAME (T-79). Letters cannot be a palette trick, so the two frieze
+  cells right of the door are given blocks of the town's own, with the name
+  drawn over the frieze in the 3x5 face.
 
 COLOUR. The General palette rows are full. The CHECKPOINT's teal takes three
 colours of row 2 that only one Verdigris door block drew (8, 9) or nothing drew
 (15), and that door block moves to row 5, whose browns it recolours onto. THE
-REPO is drawn in row 5, whose golds were the BENCHMARK roof's and are now the
-REPO's alone. The BENCHMARK is row 2's slate greys, its gauge row 5's gold.
+REPO is drawn in row 5's golds. The BENCHMARK is row 2's slate greys and whites,
+its gauge row 5's gold, its pillars row 7.
 
-TILES. Each drawn tile is de-duplicated and placed in a slot that only these
-buildings used, or in one nobody used. A block asked for two different drawings
-by two buildings is a conflict and is reported, never guessed.
+TILES. Each drawn tile is de-duplicated -- mirrored and flipped copies included,
+which the dome and the colonnade rely on -- and placed in a slot that only these
+buildings used, or one nobody used. A block asked for two different drawings by
+two buildings is a conflict and is reported, never guessed.
 """
 import importlib.util, json, os, re, struct, sys
 from PIL import Image
@@ -42,6 +61,7 @@ E = importlib.util.module_from_spec(spec); spec.loader.exec_module(E)
 
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
+RULES = os.path.join(GBA, "tileset_rules.mk")
 PREVIEW = "/tmp/civic.png"
 WRITE = "--write" in sys.argv
 
@@ -53,17 +73,39 @@ GROUP = {
     "BENCHMARK": [313, 314, 315, 321, 322, 323, 329, 330, 331, 336, 337, 338, 339, 340, 341, 342,
                   344, 345, 346, 348, 349, 350, 352, 360],
 }
-SIGN_BLOCKS = {352: 0, 360: 1}
+SIGN_BLOCKS = {352: 0, 360: 1}                      # the BENCHMARK's free-standing board: top cell, bottom cell
 # vanilla's CHECKPOINT roof reaches one row up: every town draws that top edge
 # with a block of its own, whose top layer draws these four roof tiles in row 2
-CHECKPOINT_ROOF_EDGE = {192, 193, 194, 195}                        # the BENCHMARK's free-standing board: top cell, bottom cell
+CHECKPOINT_ROOF_EDGE = {192, 193, 194, 195}
 TEAL = {8: (58, 138, 140), 9: (96, 184, 176), 15: (156, 220, 210)}
 VERDIGRIS_DOOR = (61, [200, 201, 216, 217])          # moves from row 2 to row 5
 ROW2_TO_5 = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 4, 7: 5, 8: 9, 9: 8}
+PILLAR_ROW = 7
+
+# each BENCHMARK town: its mark (T-79) and its leader's type colour (T-78, gbasprite.py TYPE_COLOR)
+TOWNS = {
+    "gTileset_PewterCity":     ("SLATE", "LEGACY",  (130, 130, 138)),
+    "gTileset_CeruleanCity":   ("SLOPE", "FLOW",    (70, 106, 176)),
+    "gTileset_VermilionCity":  ("SENSE", "SIGNAL",  (86, 190, 190)),
+    "gTileset_CeladonCity":    ("FIT",   "GROWTH",  (92, 158, 96)),
+    "gTileset_FuchsiaCity":    ("SKEW",  "CORRUPT", (84, 92, 52)),
+    "gTileset_SaffronCity":    ("FRAME", "CONTEXT", (176, 86, 158)),
+    "gTileset_CinnabarIsland": ("HEAT",  "ENTROPY", (222, 158, 46)),
+    "gTileset_ViridianCity":   ("TRUE",  "STRATUM", (158, 122, 78)),
+}
 
 # palette roles
 R2 = dict(WHITE=1, PALE=2, LIGHT=3, MID=4, GREY=5, DARK=6, OUT=7, TEALD=8, TEALM=9, TEALL=15)
 R5 = dict(WHITE=1, LIGHT=2, GREY=3, DARK=4, OUT=5, GOLDL=6, GOLDM=7, GOLDD=8, AMBERD=9, BRIGHT=10, GOLD2=11, GOLD3=12)
+R7 = dict(LIGHT=1, MID=2, DARK=3, OUT=4)
+
+
+def type_ramp(rgb):
+    """row 7: a light, the colour, a dark and an outline, from one type colour."""
+    light = tuple(min(255, int(c + (255 - c) * 0.45)) for c in rgb)
+    dark = tuple(int(c * 0.62) for c in rgb)
+    out = tuple(int(c * 0.35) for c in rgb)
+    return {R7["LIGHT"]: light, R7["MID"]: tuple(rgb), R7["DARK"]: dark, R7["OUT"]: out}
 
 
 def read_pal(path):
@@ -103,134 +145,144 @@ class Canvas:
                 if v:
                     self.px(x0 + x, y0 + y, row, v)
 
+    def word(self, x0, y0, text, row, v):
+        for y, line in enumerate(E.word(text)):
+            for x, b in enumerate(line):
+                if b:
+                    self.px(x0 + x, y0 + y, row, v)
+
 
 # ------------------------------------------------------------------ drawings
 def draw_checkpoint():
-    """80x64, cells dx -2..+2 by dy -3..0; the door is x 32..47, y 48..63. Row 2."""
-    c, r = Canvas(80, 64), 2
-    A = R2
-    # a hipped teal roof: courses every 8 pixels so the middle of it repeats, and
-    # the hips only in the outer cell each side
-    for y in range(2, 31):
-        c.rect(0, y, 79, y, r, A["TEALM"])
-        if y % 8 == 7:
-            c.rect(0, y, 79, y, r, A["TEALD"])
-        elif y % 8 == 0:
-            c.rect(0, y, 79, y, r, A["TEALL"])
-    for y in range(2, 31):
-        inset = max(0, (30 - y) // 2)
-        inset = min(inset, 15)
-        for x in range(0, inset):
-            c.p[y][x] = None; c.p[y][79 - x] = None
-        c.px(inset, y, r, A["OUT"]); c.px(79 - inset, y, r, A["OUT"])
-        c.px(inset + 1, y, r, A["TEALL"]); c.px(78 - inset, y, r, A["TEALD"])
-    c.rect(16, 1, 63, 1, r, A["OUT"])
-    c.rect(0, 29, 79, 30, r, A["TEALD"]); c.rect(0, 31, 79, 31, r, A["OUT"])
-    # the walls, in the colour numbers every building shares (1 wall, 2 trim, 3 base)
-    c.rect(0, 32, 79, 63, r, 1)
-    c.rect(0, 32, 79, 33, r, 2)
-    c.rect(0, 59, 79, 62, r, 3); c.rect(0, 63, 79, 63, r, A["OUT"])
-    for x0 in (0, 64):                                    # a window in each end cell, the same tiles both sides
-        c.rect(x0 + 3, 36, x0 + 12, 46, r, A["OUT"]); c.rect(x0 + 4, 37, x0 + 11, 45, r, A["PALE"])
-        c.rect(x0 + 4, 37, x0 + 6, 39, r, 1); c.rect(x0 + 8, 37, x0 + 8, 45, r, A["LIGHT"])
-    # the restore arrow over the door, on a teal roundel inside the door's own cell
-    c.rect(32, 34, 47, 49, r, A["TEALL"])
-    c.stamp(32, 34, E.emblem("CHECKPOINT", {"O": A["OUT"], "L": 1, "M": A["TEALD"]}), r)
-    # right of the door, a plate with a checkmark (T-66); the emblem is only over the door
-    c.rect(48, 49, 63, 60, r, A["OUT"]); c.rect(49, 50, 62, 59, r, 1)
-    for y, line in enumerate(E.CHECK):
-        for x, ch in enumerate(line):
-            if ch == "1":
-                c.rect(51 + x * 2, 50 + y, 52 + x * 2, 50 + y, r, A["TEALD"])
+    """80x80: the row above the building (dy -4, only the crown), then dy -3..0. The door is x 32..47, y 64..79. Row 2."""
+    c, r, A = Canvas(80, 80), 2, R2
+    # the terrace the drum stands on
+    c.rect(0, 16, 79, 79, r, A["GREY"])
+    for y in range(20, 79, 8):
+        c.rect(0, y, 79, y, r, A["MID"])
+    # the dome, an ellipse from its crown at y 6 to its eave at y 47
+    for y in range(6, 48):
+        t = (47 - y) / 41.0
+        half = int(38 * max(0.0, 1 - t * t) ** 0.5)
+        shade = "TEALL" if y < 17 else "TEALM" if y < 38 else "TEALD"
+        c.rect(40 - half, y, 39 + half, y, r, A[shade])
+        c.px(40 - half - 1, y, r, A["OUT"]); c.px(40 + half, y, r, A["OUT"])
+        if y % 9 == 3 and y > 10:                       # courses of the dome
+            c.rect(40 - half, y, 39 + half, y, r, A["TEALD"] if shade != "TEALD" else A["OUT"])
+    c.rect(34, 5, 45, 5, r, A["OUT"])
+    c.rect(38, 1, 41, 4, r, A["WHITE"]); c.rect(37, 0, 42, 0, r, A["OUT"]); c.px(37, 1, r, A["OUT"]); c.px(42, 1, r, A["OUT"])   # the lantern
+    c.rect(2, 44, 77, 46, r, A["TEALD"]); c.rect(2, 47, 77, 47, r, A["OUT"])
+    c.stamp(32, 22, E.emblem("CHECKPOINT", {"O": A["OUT"], "L": A["WHITE"], "M": A["TEALL"], "D": A["TEALD"]}), r)
+    # the drum: lit in the middle, shaded to its edges
+    for y in range(48, 76):
+        for x in range(4, 76):
+            d = abs(x - 39.5)
+            c.px(x, y, r, A["WHITE"] if d < 16 else A["PALE"] if d < 28 else A["LIGHT"])
+    c.rect(4, 48, 4, 75, r, A["OUT"]); c.rect(75, 48, 75, 75, r, A["OUT"]); c.rect(4, 48, 75, 49, r, A["MID"])
+    for x0 in (9, 21, 53, 65):                          # tall windows, the same tiles either side
+        c.rect(x0, 53, x0 + 5, 70, r, A["OUT"]); c.rect(x0 + 1, 54, x0 + 4, 69, r, A["PALE"])
+        c.rect(x0 + 1, 54, x0 + 2, 57, r, A["WHITE"]); c.rect(x0 + 1, 62, x0 + 4, 62, r, A["LIGHT"])
+    c.rect(30, 60, 49, 63, r, A["OUT"]); c.rect(31, 61, 48, 62, r, A["LIGHT"])      # the lintel over the door
+    c.rect(28, 58, 51, 59, r, A["TEALD"]); c.rect(28, 57, 51, 57, r, A["OUT"])   # a teal canopy over the door
+    c.rect(4, 72, 75, 72, r, A["MID"]); c.rect(4, 73, 75, 75, r, A["LIGHT"])      # the drum's plinth
+    c.rect(0, 76, 79, 78, r, A["LIGHT"]); c.rect(0, 76, 79, 76, r, A["WHITE"]); c.rect(0, 79, 79, 79, r, A["OUT"])
+    c.rect(0, 16, 79, 79, r, None) if False else None
+    for y in range(16):                                 # the row above keeps only the crown
+        for x in range(80):
+            if c.p[y][x] is not None and c.p[y][x][1] == A["GREY"]:
+                c.p[y][x] = None
     return c
 
 
 def draw_repo():
     """64x64, cells dx -2..+1 by dy -3..0; the door is x 32..47, y 48..63. Row 5."""
-    c, r = Canvas(64, 64), 5
-    A = R5
-    for y in range(3, 31):                                # a gabled amber roof
-        c.rect(0, y, 63, y, r, A["GOLD2"])
-        if (y - 3) % 4 == 3:
-            c.rect(1, y, 62, y, r, A["GOLDD"])
-        elif (y - 3) % 4 == 0:
-            c.rect(1, y, 62, y, r, A["BRIGHT"])
-    c.rect(0, 2, 63, 2, r, A["OUT"]); c.rect(0, 3, 0, 31, r, A["OUT"]); c.rect(63, 3, 63, 31, r, A["OUT"])
-    c.rect(0, 29, 63, 30, r, A["AMBERD"]); c.rect(0, 31, 63, 31, r, A["OUT"])
-    c.rect(0, 32, 63, 63, r, 1); c.rect(0, 32, 63, 33, r, 2)
-    c.rect(0, 59, 63, 62, r, 3); c.rect(0, 63, 63, 63, r, A["OUT"])
-    for x0 in (0, 48):                                    # a window in each end cell, the same tiles both sides
-        c.rect(x0 + 3, 36, x0 + 12, 46, r, A["OUT"]); c.rect(x0 + 4, 37, x0 + 11, 45, r, 2)
-        c.rect(x0 + 4, 37, x0 + 6, 39, r, 1); c.rect(x0 + 8, 37, x0 + 8, 45, r, 3)
-    c.rect(32, 33, 47, 49, r, A["GOLDL"])
-    c.stamp(32, 34, E.emblem("REPO", {"O": A["OUT"], "L": A["BRIGHT"], "M": A["AMBERD"], "T": 1}), r)
-    # right of the door, a plate reading REPO (T-66)
-    c.rect(48, 50, 63, 58, r, A["AMBERD"]); c.rect(48, 50, 63, 50, r, A["OUT"]); c.rect(48, 58, 63, 58, r, A["OUT"])
-    for y, line in enumerate(E.word("REPO")):
-        for x, v in enumerate(line):
-            if v:
-                c.px(48 + 1 + x, 52 + y, r, 1)
+    c, r, A = Canvas(64, 64), 5, R5
+    c.rect(0, 0, 63, 63, r, A["GREY"]); c.rect(0, 0, 63, 0, r, A["OUT"])            # the yard deck behind
+    for x in (0, 63):
+        c.rect(x, 0, x, 63, r, A["OUT"])
+
+    def container(x0, y0, x1, y1, body, rib):
+        for x in range(x0, x1 + 1):
+            c.rect(x, y0, x, y1, r, body if (x - x0) % 4 else rib)
+        c.rect(x0, y0, x1, y0, r, A["OUT"]); c.rect(x0, y1, x1, y1, r, A["OUT"])
+        c.rect(x0, y0, x0, y1, r, A["OUT"]); c.rect(x1, y0, x1, y1, r, A["OUT"])
+        c.rect(x0 + 1, y0 + 1, x1 - 1, y0 + 1, r, A["BRIGHT"])
+        for cx, cy in ((x0 + 1, y0 + 1), (x1 - 2, y0 + 1), (x0 + 1, y1 - 2), (x1 - 2, y1 - 2)):   # corner castings
+            c.rect(cx, cy, cx + 1, cy + 1, r, A["DARK"])
+        c.rect(x0 + 1, y1 - 1, x1 - 1, y1 - 1, r, rib)
+    container(6, 3, 57, 29, A["GOLDD"], A["AMBERD"])
+    c.rect(20, 8, 43, 25, r, A["AMBERD"])
+    c.stamp(24, 9, E.emblem("REPO", {"O": A["OUT"], "L": A["BRIGHT"], "M": A["GOLDM"], "T": A["WHITE"]}), r)
+    container(0, 30, 31, 63, A["GOLD2"], A["GOLDD"])
+    container(32, 30, 63, 63, A["GOLD2"], A["GOLDD"])
+    c.rect(31, 44, 48, 47, r, A["OUT"]); c.rect(32, 45, 47, 46, r, A["AMBERD"])     # the cut over the door
+    for x in (51, 57):                                  # locking bars on the right container
+        c.rect(x, 36, x + 1, 58, r, A["LIGHT"]); c.rect(x + 1, 36, x + 1, 58, r, A["DARK"])
+    c.rect(4, 38, 22, 46, r, A["AMBERD"]); c.rect(4, 38, 22, 38, r, A["OUT"]); c.rect(4, 46, 22, 46, r, A["OUT"])
+    c.word(5, 40, "REPO", r, A["WHITE"])
     return c
 
 
 def benchmark_column(role, dy):
     """16x16 of (row, index) for one BENCHMARK cell by its role and row (dy -4..0)."""
-    c, r = Canvas(16, 16), 2
-    A, B = R2, R5
-    if dy <= -2:                                          # the slate roof
-        c.rect(0, 0, 15, 15, r, A["MID"])
-        for y in range(16):                               # courses every 8, so the roof rows repeat
-            if y % 8 == 7:
-                c.rect(0, y, 15, y, r, A["DARK"])
-            elif y % 8 == 0:
-                c.rect(0, y, 15, y, r, A["LIGHT"])
-        if dy == -4:
-            c.rect(0, 0, 15, 2, r, A["OUT"]); c.rect(0, 3, 15, 4, r, A["PALE"])
-        if role == "L":
-            c.rect(0, 0, 1, 15, r, A["OUT"]); c.rect(2, 0, 2, 15, r, A["LIGHT"])
-        if role == "R":
-            c.rect(14, 0, 15, 15, r, A["OUT"]); c.rect(13, 0, 13, 15, r, A["DARK"])
-        return c
-    if dy == -1:                                          # the eave, and the upper wall
-        c.rect(0, 0, 15, 3, r, A["DARK"]); c.rect(0, 4, 15, 4, r, A["OUT"])
-        c.rect(0, 5, 15, 15, r, 1); c.rect(0, 5, 15, 5, r, 2)
-        if role == "D":                                   # the gauge over the door, in row 5
+    c, r, A, B = Canvas(16, 16), 2, R2, R5
+    edge = {"L": 0, "R": 15}.get(role)
+    if dy == -4:                                        # the flat roof deck and its parapet
+        c.rect(0, 0, 15, 15, r, A["MID"]); c.rect(0, 0, 15, 0, r, A["OUT"]); c.rect(0, 1, 15, 1, r, A["LIGHT"])
+        c.rect(8, 3, 8, 11, r, A["GREY"])
+        c.rect(0, 12, 15, 12, r, A["OUT"]); c.rect(0, 13, 15, 15, r, A["PALE"])
+    elif dy == -3:                                      # a cornice with dentils, then the frieze's relief of bars
+        c.rect(0, 0, 15, 15, r, A["WHITE"]); c.rect(0, 0, 15, 0, r, A["LIGHT"])
+        c.rect(0, 1, 15, 1, r, A["PALE"]); c.rect(0, 2, 15, 2, r, A["MID"])
+        for x in range(0, 16, 4):                       # dentils, four to a cell so every cell repeats
+            c.rect(x + 1, 3, x + 2, 4, r, A["LIGHT"]); c.px(x + 2, 4, r, A["MID"])
+        c.rect(0, 5, 15, 5, r, A["PALE"])
+        if role not in ("L", "R"):
+            for x0, h in ((2, 4), (6, 7), (10, 5)):
+                c.rect(x0, 13 - h, x0 + 2, 13, r, A["PALE"]); c.rect(x0 + 2, 13 - h, x0 + 2, 13, r, A["LIGHT"]); c.px(x0, 13 - h, r, A["LIGHT"])
+        c.rect(0, 14, 15, 14, r, A["LIGHT"]); c.rect(0, 15, 15, 15, r, A["PALE"])
+    elif dy == -2:                                      # the architrave, where the mark's name goes
+        c.rect(0, 0, 15, 9, r, A["WHITE"]); c.rect(0, 10, 15, 10, r, A["LIGHT"])
+        c.rect(0, 11, 15, 13, r, A["MID"]); c.rect(0, 14, 15, 15, r, A["OUT"])
+    elif dy == -1:                                      # capitals, the porch in shadow, the gauge over the door
+        c.rect(0, 0, 15, 15, r, A["DARK"]); c.rect(0, 0, 15, 1, r, A["OUT"])
+        if role == "D":
             c = Canvas(16, 16)
-            c.rect(0, 0, 15, 3, 5, B["DARK"]); c.rect(0, 4, 15, 4, 5, B["OUT"])
-            c.rect(0, 5, 15, 15, 5, B["WHITE"])
+            c.rect(0, 0, 15, 15, 5, B["LIGHT"]); c.rect(0, 0, 15, 1, 5, B["OUT"])
             art = E.emblem("BENCHMARK", {"O": B["OUT"], "W": B["WHITE"], "T": B["GREY"], "N": B["OUT"], "G": B["BRIGHT"], "S": B["LIGHT"]})
-            for y in range(11):
+            for y in range(13):
                 for x in range(16):
-                    v = art[y + 2][x]
-                    if v:
-                        c.px(x, y + 5, 5, v)
+                    if art[y + 1][x]:
+                        c.px(x, y + 2, 5, art[y + 1][x])
             return c
-        if role in ("W", "M"):                            # a tall window
-            c.rect(4, 7, 11, 15, r, A["OUT"]); c.rect(5, 8, 10, 15, r, A["PALE"]); c.rect(5, 8, 6, 10, r, A["WHITE"])
-        if role in ("P", "P'"):                           # a pillar
-            x0 = 10 if role == "P" else 1
-            c.rect(x0, 5, x0 + 4, 15, r, A["LIGHT"]); c.rect(x0, 5, x0, 15, r, A["MID"]); c.rect(x0 + 4, 5, x0 + 4, 15, r, A["MID"])
-        if role == "L":
-            c.rect(0, 0, 1, 15, r, A["OUT"])
-        if role == "R":
-            c.rect(14, 0, 15, 15, r, A["OUT"])
-        return c
-    # dy 0: the lower wall, the plaque and the pillars' feet
-    c.rect(0, 0, 15, 15, r, 1); c.rect(0, 11, 15, 14, r, 3); c.rect(0, 15, 15, 15, r, A["OUT"])
-    if role in ("P", "P'"):
-        x0 = 10 if role == "P" else 1
-        c.rect(x0, 0, x0 + 4, 14, r, A["LIGHT"]); c.rect(x0, 0, x0, 14, r, A["MID"]); c.rect(x0 + 4, 0, x0 + 4, 14, r, A["MID"])
-        c.rect(x0 - 1, 12, x0 + 5, 14, r, A["GREY"])
-    if role == "P'":                                      # right of the door, a plate reading MARK (T-66)
-        c.rect(0, 2, 15, 10, r, A["DARK"]); c.rect(0, 2, 15, 2, r, A["OUT"]); c.rect(0, 10, 15, 10, r, A["OUT"])
-        for y, line in enumerate(E.word("MARK")):
-            for x, v in enumerate(line):
-                if v:
-                    c.px(x, 4 + y, r, 1)
-    if role == "L":
-        c.rect(0, 0, 1, 15, r, A["OUT"])
-    if role == "R":
-        c.rect(14, 0, 15, 15, r, A["OUT"])
+        if role in ("W", "M"):
+            c.rect(4, 2, 11, 3, r, A["PALE"]); c.rect(4, 4, 11, 4, r, A["LIGHT"])
+            c.rect(5, 5, 10, 15, r, A["WHITE"]); c.rect(6, 5, 6, 15, r, A["PALE"]); c.rect(10, 5, 10, 15, r, A["LIGHT"])
+        if role in ("P", "P'"):                         # the leader's pillar, in row 7
+            x0 = 10 if role == "P" else 0
+            c.rect(x0, 2, x0 + 5, 3, PILLAR_ROW, R7["LIGHT"]); c.rect(x0, 4, x0 + 5, 4, PILLAR_ROW, R7["OUT"])
+            c.rect(x0 + (1 if role == "P" else 0), 5, x0 + (5 if role == "P" else 4), 15, PILLAR_ROW, R7["MID"])
+            c.rect(x0 + (1 if role == "P" else 0), 5, x0 + (1 if role == "P" else 0), 15, PILLAR_ROW, R7["LIGHT"])
+            c.rect(x0 + (5 if role == "P" else 4), 5, x0 + (5 if role == "P" else 4), 15, PILLAR_ROW, R7["DARK"])
+    else:                                               # dy 0: only its top half is building -- the shafts' feet, bases and one step
+        c.rect(0, 0, 15, 3, r, A["DARK"])
+        c.rect(0, 4, 15, 4, r, A["PALE"]); c.rect(0, 5, 15, 5, r, A["WHITE"]); c.rect(0, 6, 15, 6, r, A["LIGHT"]); c.rect(0, 7, 15, 7, r, A["OUT"])
+        if role in ("W", "M"):
+            c.rect(5, 0, 10, 2, r, A["WHITE"]); c.rect(6, 0, 6, 2, r, A["PALE"]); c.rect(10, 0, 10, 2, r, A["LIGHT"])
+            c.rect(4, 3, 11, 4, r, A["LIGHT"]); c.rect(4, 4, 11, 4, r, A["MID"])
+        if role in ("P", "P'"):
+            x0 = 10 if role == "P" else 0
+            a, b = (x0 + 1, x0 + 5) if role == "P" else (x0, x0 + 4)
+            c.rect(a, 0, b, 2, PILLAR_ROW, R7["MID"]); c.rect(a, 0, a, 2, PILLAR_ROW, R7["LIGHT"]); c.rect(b, 0, b, 2, PILLAR_ROW, R7["DARK"])
+            c.rect(x0, 3, x0 + 5, 4, PILLAR_ROW, R7["DARK"])
+    if edge is not None and dy >= -3:                   # the end walls, stone the full height
+        x0 = 0 if role == "L" else 12
+        c.rect(x0, 0 if dy > -3 else 1, x0 + 3, 15 if dy < 0 else 11, r, A["WHITE"])
+        c.rect(edge, 0, edge, 15, r, A["OUT"]); c.rect(x0 + (3 if role == "L" else 0), 0, x0 + (3 if role == "L" else 0), 15 if dy < 0 else 11, r, A["LIGHT"])
+    if edge is not None and dy == -4:
+        c.rect(edge, 0, edge, 15, r, A["OUT"])
+    if edge is not None and dy == -2:
+        c.rect(edge, 0, edge, 15, r, A["OUT"])
     return c
 
 
@@ -243,26 +295,55 @@ def benchmark_role(dx, left, right):
 
 
 def draw_board():
-    """16x32 BENCHMARK board, rows 5: a slate frame, the gauge, two posts."""
-    c, r = Canvas(16, 32), 5
-    B = R5
-    c.rect(0, 2, 15, 20, r, B["OUT"]); c.rect(1, 3, 14, 19, r, B["LIGHT"]); c.rect(2, 4, 13, 18, r, B["WHITE"])
-    art = E.emblem("BENCHMARK", {"O": B["OUT"], "W": B["WHITE"], "T": B["GREY"], "N": B["OUT"], "G": B["BRIGHT"], "S": B["LIGHT"]})
-    for y in range(1, 14):
-        for x in range(1, 15):
-            v = art[y][x]
-            if v:
-                c.px(x, y + 4, r, v)
+    """16x32 BENCHMARK board, row 5, reading MARK. Its face sits low, in the bottom cell, because
+    the top cell only draws its lower half and one town's board has no top cell at all."""
+    c, r, B = Canvas(16, 32), 5, R5
+    c.rect(0, 13, 15, 24, r, B["WHITE"]); c.rect(0, 13, 15, 13, r, B["OUT"]); c.rect(0, 24, 15, 24, r, B["OUT"])
+    c.rect(0, 14, 0, 23, r, B["OUT"]); c.rect(0, 14, 15, 14, r, B["LIGHT"])
+    c.word(1, 17, "MARK", r, B["OUT"])
     for x0 in (3, 11):
-        c.rect(x0, 21, x0 + 1, 29, r, B["GREY"]); c.rect(x0 + 1, 21, x0 + 1, 29, r, B["DARK"])
-    c.rect(1, 30, 14, 31, r, B["LIGHT"])
+        c.rect(x0, 25, x0 + 1, 30, r, B["GREY"]); c.rect(x0 + 1, 25, x0 + 1, 30, r, B["DARK"])
+    c.rect(1, 31, 14, 31, r, B["LIGHT"])
     return c
+
+
+def plate_over(col, dx_in_plate, text):
+    """the mark's name over one architrave cell: dx_in_plate is this cell's x offset within the plate."""
+    c = Canvas(16, 16)
+    c.p = [list(row) for row in col.p]
+    w = len(text) * 4 + 3
+    for x in range(16):
+        px = x + dx_in_plate
+        if 0 <= px < w:
+            for y in range(0, 10):
+                c.p[y][x] = (2, R2["DARK"])
+            c.p[0][x] = (2, R2["OUT"]); c.p[9][x] = (2, R2["OUT"])
+            if px == 0 or px == w - 1:
+                for y in range(10):
+                    c.p[y][x] = (2, R2["OUT"])
+    rows = E.word(text)
+    for y in range(5):
+        for x, b in enumerate(rows[y]):
+            X = x + 2 - dx_in_plate
+            if b and 0 <= X < 16:
+                c.p[y + 2][X] = (2, R2["WHITE"])
+    return c
+
+
+# ------------------------------------------------------------------ tiles, with mirrored copies shared
+def hflip(px):
+    return tuple(px[(i // 8) * 8 + 7 - i % 8] for i in range(64))
+
+
+def vflip(px):
+    return tuple(px[(7 - i // 8) * 8 + i % 8] for i in range(64))
 
 
 # ------------------------------------------------------------------ main
 def main():
     layouts = {l.get("id"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if l.get("id")}
     prim = bytearray(open(os.path.join(PD, "metatiles.bin"), "rb").read())
+    pattr = open(os.path.join(PD, "metatile_attributes.bin"), "rb").read()
     ptiles = Image.open(os.path.join(PD, "tiles.png")); ptp = ptiles.load()
     ppal = {n: read_pal(os.path.join(PD, "palettes/%02d.pal" % n)) for n in range(7)}
     btiles = {k: {t & 0x3FF for m in v for t in struct.unpack_from("<8H", prim, m * 16)
@@ -273,7 +354,8 @@ def main():
     def sec(symbol):
         if symbol not in secs:
             d = tdir(symbol, "secondary")
-            secs[symbol] = {"dir": d, "meta": bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read())}
+            secs[symbol] = {"dir": d, "meta": bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read()),
+                            "attr": bytearray(open(os.path.join(d, "metatile_attributes.bin"), "rb").read())}
         return secs[symbol]
 
     def entries(tileset, m):
@@ -320,6 +402,19 @@ def main():
     def emit(tileset, m, j, pix, where):
         e = entries(tileset, m)
         rows = {v[0] for v in pix if v is not None}
+        q = j % 4
+        if PILLAR_ROW in rows:
+            # the pillar goes on the top layer in row 7; everything behind it moves to the bottom layer
+            base = [v if v is not None and v[0] != PILLAR_ROW else None for v in pix]
+            top = [v if v is not None and v[0] == PILLAR_ROW else None for v in pix]
+            brow = {v[0] for v in base if v is not None}
+            if len(brow) > 1:
+                conflicts.append(((tileset, m), j, where + " mixes rows %s" % sorted(brow)))
+                return
+            fill = min((v[1] for v in base if v is not None), default=1)
+            want(tileset, m, q, tuple(v[1] if v else fill for v in base), brow.pop() if brow else 2, where)
+            want(tileset, m, 4 + q, tuple(v[1] if v else 0 for v in top), PILLAR_ROW, where)
+            return
         if len(rows) > 1:
             conflicts.append(((tileset, m), j, where + " mixes rows %s" % sorted(rows)))
             return
@@ -329,11 +424,10 @@ def main():
             pix = [v if v is not None else (row, fill) for v in pix]
         want(tileset, m, j, tuple(v[1] if v else 0 for v in pix), row, where)
 
-    cp = draw_checkpoint(); tall = Canvas(80, 80)
-    tall.p = [[None] * 80 for _ in range(16)] + cp.p         # the row above the roof, left empty
-    CANVAS = {"CHECKPOINT": (tall, -2, -4), "REPO": (draw_repo(), -2, -3)}
+    checkpoint = draw_checkpoint()
+    CANVAS = {"CHECKPOINT": (checkpoint, -2, -4), "REPO": (draw_repo(), -2, -3)}
     board = draw_board()
-    counts = {}
+    counts, benchmarks = {}, []
     for kind, mp, l, x, y, cell, W, H in instances:
         counts[kind] = counts.get(kind, 0) + 1
         ts = l["secondary_tileset"]
@@ -355,6 +449,7 @@ def main():
             right = 0
             while has(x + right + 1, y - 1) or has(x + right + 1, y - 2):
                 right += 1
+            benchmarks.append((mp, l, x, y, left, right))
             for dy in range(-4, 1):
                 for dx in range(left, right + 1):
                     X, Y = x + dx, y + dy
@@ -402,27 +497,32 @@ def main():
     for symbol in {l["secondary_tileset"] for l in layouts.values() if l["primary_tileset"] == "gTileset_General"}:
         scan_refs(symbol, sec(symbol)["meta"], 640)
     anim = set(range(416, 482)) | set(range(508, 512))
-    free = sorted(n for n in range(2, 640) if n not in referenced_elsewhere and n not in anim)
-    pool = [n for n in free]
-    tiles = {}
-    distinct = {px for js in wants.values() for px, row in js.values() if any(px)}
-    by_kind = {}
-    for (ts, m), js in wants.items():
-        pass
-    print("  distinct tiles wanted: %d; slots available: %d" % (len(distinct), len(pool)))
-    for (ts, m), js in wants.items():
+    pool = sorted(n for n in range(2, 640) if n not in referenced_elsewhere and n not in anim)
+    available = len(pool)
+    slot = {}                                             # pixels -> (tile, flip bits)
+    def place(px):
+        if not any(px):
+            return 0, 0
+        if px in slot:
+            return slot[px]
+        for flip, f in ((0x400, hflip), (0x800, vflip), (0xC00, lambda p: hflip(vflip(p)))):
+            t = f(px)
+            if t in slot and slot[t][1] == 0:
+                return slot[t][0], flip
+        if not pool:
+            raise SystemExit("  !! out of primary tile slots (%d were available)" % available)
+        slot[px] = (pool.pop(0), 0)
+        return slot[px]
+    for (ts, m), js in sorted(wants.items(), key=lambda kv: (kv[0][0], kv[0][1])):
         for j, (px, row) in js.items():
-            if not any(px):
-                tiles[px] = 0                             # nothing drawn: no tile
-            elif px not in tiles:
-                if not pool:
-                    raise SystemExit("  !! out of primary tile slots")
-                tiles[px] = pool.pop(0)
-    print("  %d blocks redrawn, %d distinct tiles; %d slots were available (only these buildings or nobody used them)"
-          % (len(wants), len(tiles), len(free)))
+            place(px)
+    used = len({v[0] for v in slot.values()})
+    print("  %d blocks redrawn, %d distinct tiles after mirroring; %d slots were available" % (len(wants), used, available))
 
     new_tiles = ptiles.copy(); ntp = new_tiles.load()
-    for px, n in tiles.items():
+    for px, (n, flip) in slot.items():
+        if flip:
+            continue
         for i, v in enumerate(px):
             ntp[(n % 16) * 8 + i % 8, (n // 16) * 8 + i // 8] = v
     for (ts, m), js in wants.items():
@@ -430,8 +530,46 @@ def main():
         k = m if m < 640 else m - 640
         e = list(struct.unpack_from("<8H", buf, k * 16))
         for j, (px, row) in js.items():
-            e[j] = tiles[px] | (row << 12)
+            n, flip = place(px)
+            e[j] = (n | flip | (row << 12)) if n else 0
         struct.pack_into("<8H", buf, k * 16, *e)
+
+    # ---------------------------------------------------------------- the mark's name, on each town's own blocks
+    rules = open(RULES).read()
+    town_tiles, map_writes = {}, {}
+    for mp, l, x, y, left, right in benchmarks:
+        ts = l["secondary_tileset"]; mark = TOWNS[ts][0]
+        s = sec(ts)
+        bd = map_writes.get(l["blockdata_filepath"]) or bytearray(open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read())
+        map_writes[l["blockdata_filepath"]] = bd
+        W = l["width"]
+        if ts not in town_tiles:
+            key = "secondary/%s/tiles.4bpp: %%.4bpp: %%.png\n\t$(GFX) $< $@ -num_tiles " % os.path.basename(s["dir"])
+            at = rules.index(key) + len(key)
+            img = Image.open(os.path.join(s["dir"], "tiles.png"))
+            town_tiles[ts] = {"key": key, "n": int(rules[at:].split()[0]), "img": img, "new": [], "have": {}}
+            tp = img.load(); tt = town_tiles[ts]
+            for n in range(tt["n"]):
+                tt["have"].setdefault(tuple(tp[(n % 16) * 8 + i % 8, (n // 16) * 8 + i // 8] for i in range(64)), n)
+        tt = town_tiles[ts]
+        for dx in (1, 2):
+            X, Y = x + dx, y - 2
+            raw = struct.unpack_from("<H", bd, (Y * W + X) * 2)[0]; m = raw & 0x3FF
+            if m >= 640 and m not in (330, 331):
+                e = entries(ts, m)
+                if e and all(((t >> 12) & 0xF) == 2 and (t & 0x3FF) >= 640 for t in e[4:]):
+                    print("  %s: the name is already on (%d,%d)" % (mp, X, Y)); continue
+            col = plate_over(benchmark_column(benchmark_role(dx, left, right), -2), 16 * (dx - 1), mark)
+            e = list(entries(ts, m))
+            for q in range(4):
+                px = tuple(v[1] if v else 0 for v in quadrant_of(col, 0, 0, q))
+                if px not in tt["have"]:
+                    tt["have"][px] = tt["n"] + len(tt["new"]); tt["new"].append(px)
+                e[4 + q] = (640 + tt["have"][px]) | (2 << 12)
+            nid = 640 + len(s["meta"]) // 16
+            s["meta"] += struct.pack("<8H", *e); s["attr"] += pattr[m * 4:(m + 1) * 4]
+            struct.pack_into("<H", bd, (Y * W + X) * 2, (raw & ~0x3FF) | nid)
+        print("  %s: %s on the frieze" % (mp, mark))
 
     # ---------------------------------------------------------------- palettes, and the Verdigris door
     new_ppal = {n: list(c) for n, c in ppal.items()}
@@ -449,13 +587,21 @@ def main():
             for xx in range(8):
                 X, Y = (n % 16) * 8 + xx, (n // 16) * 8 + yy
                 ntp[X, Y] = ROW2_TO_5.get(ntp[X, Y], ntp[X, Y])
+    row7 = {}
+    for ts, (mark, tname, rgb) in TOWNS.items():
+        d = tdir(ts, "secondary"); cols = read_pal(os.path.join(d, "palettes/%02d.pal" % PILLAR_ROW))
+        for i, colour in type_ramp(rgb).items():
+            cols[i] = colour
+        row7[ts] = cols
 
     # ---------------------------------------------------------------- preview
-    def render(l, x0, y0, w, h, prim_meta, prim_tiles, pals_primary, sec_meta):
+    def render(l, x0, y0, w, h, prim_meta, prim_tiles, pals_primary, sec_meta, sec_tiles, row7_pal, bd):
         sd = tdir(l["secondary_tileset"], "secondary")
-        st = Image.open(os.path.join(sd, "tiles.png")); stp = st.load()
+        stp = sec_tiles.load()
         pals = [pals_primary[n] for n in range(7)] + [read_pal(os.path.join(sd, "palettes/%02d.pal" % n)) for n in range(7, 13)]
-        bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read(); W = l["width"]
+        if row7_pal:
+            pals[PILLAR_ROW] = row7_pal
+        W = l["width"]
         img = Image.new("RGB", (w * 16, h * 16)); o = img.load(); ptp_ = prim_tiles.load()
         for yy in range(y0, y0 + h):
             for xx in range(x0, x0 + w):
@@ -468,7 +614,7 @@ def main():
                 for layer in (0, 1):
                     for q in range(4):
                         t = ee[layer * 4 + q]; i = t & 0x3FF
-                        src, jj, hh = (ptp_, i, prim_tiles.height) if i < 640 else (stp, i - 640, st.height)
+                        src, jj, hh = (ptp_, i, prim_tiles.height) if i < 640 else (stp, i - 640, sec_tiles.height)
                         for ty in range(8):
                             for tx in range(8):
                                 sy = (jj // 16) * 8 + (7 - ty if (t >> 11) & 1 else ty)
@@ -477,21 +623,37 @@ def main():
                                     continue
                                 o[(xx - x0) * 16 + (q % 2) * 8 + tx, (yy - y0) * 16 + (q // 2) * 8 + ty] = pals[(t >> 12) & 0xF][v]
         return img
-    views = [("LAYOUT_PEWTER_CITY", 8, 10, 26, 18), ("LAYOUT_VIRIDIAN_CITY", 20, 5, 22, 24), ("LAYOUT_SAFFRON_CITY", 16, 5, 36, 36)]
+
+    def grown(ts):
+        tt = town_tiles.get(ts)
+        img = Image.open(os.path.join(tdir(ts, "secondary"), "tiles.png"))
+        if not tt or not tt["new"]:
+            return img
+        total = tt["n"] + len(tt["new"])
+        g = Image.new("P", (128, ((total + 15) // 16) * 8)); g.putpalette(img.getpalette()); g.paste(img, (0, 0)); gp = g.load()
+        for k, px in enumerate(tt["new"]):
+            s_ = tt["n"] + k
+            for i, v in enumerate(px):
+                gp[(s_ % 16) * 8 + i % 8, (s_ // 16) * 8 + i // 8] = v
+        return g
+
+    views = [("LAYOUT_PEWTER_CITY", 8, 10, 26, 18), ("LAYOUT_VIRIDIAN_CITY", 20, 5, 22, 24), ("LAYOUT_SAFFRON_CITY", 16, 5, 36, 36),
+             ("LAYOUT_FUCHSIA_CITY", 0, 24, 24, 14), ("LAYOUT_CINNABAR_ISLAND", 10, 0, 18, 14)]
     panels = []
     for lid, x0, y0, w, h in views:
-        l = layouts[lid]; sd = tdir(l["secondary_tileset"], "secondary")
-        old_sec = open(os.path.join(sd, "metatiles.bin"), "rb").read()
-        new_sec = bytes(sec(l["secondary_tileset"])["meta"])
+        l = layouts[lid]; ts = l["secondary_tileset"]; sd = tdir(ts, "secondary")
         h = min(h, l["height"] - y0); w = min(w, l["width"] - x0)
-        panels.append((render(l, x0, y0, w, h, open(os.path.join(PD, "metatiles.bin"), "rb").read(), ptiles, ppal, old_sec),
-                       render(l, x0, y0, w, h, bytes(prim), new_tiles, new_ppal, new_sec)))
+        old_bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+        new_bd = bytes(map_writes.get(l["blockdata_filepath"], old_bd))
+        panels.append((render(l, x0, y0, w, h, open(os.path.join(PD, "metatiles.bin"), "rb").read(), ptiles, ppal,
+                              open(os.path.join(sd, "metatiles.bin"), "rb").read(), Image.open(os.path.join(sd, "tiles.png")), None, old_bd),
+                       render(l, x0, y0, w, h, bytes(prim), new_tiles, new_ppal, bytes(sec(ts)["meta"]), grown(ts), row7.get(ts), new_bd)))
     width = max(a.width for a, _ in panels) * 2 + 8
     sheet = Image.new("RGB", (width, sum(a.height for a, _ in panels) + 8 * len(panels)), (30, 30, 30)); yy = 0
     for a, b in panels:
         sheet.paste(a, (0, yy)); sheet.paste(b, (a.width + 8, yy)); yy += a.height + 8
     sheet.save(PREVIEW)
-    print("  preview %s (before | after: Slate, Callow, Brazen)" % PREVIEW)
+    print("  preview %s (before | after: Slate, Callow, Brazen, Lurid, Quicksilver)" % PREVIEW)
 
     if WRITE:
         if conflicts:
@@ -500,8 +662,20 @@ def main():
         open(os.path.join(PD, "metatiles.bin"), "wb").write(prim)
         for symbol, s in secs.items():
             open(os.path.join(s["dir"], "metatiles.bin"), "wb").write(s["meta"])
+            open(os.path.join(s["dir"], "metatile_attributes.bin"), "wb").write(s["attr"])
         write_pal(os.path.join(PD, "palettes/02.pal"), new_ppal[2])
-        print("  written: tiles.png, General metatiles, %d secondary metatile files, palette row 2" % len(secs))
+        for ts, cols in row7.items():
+            write_pal(os.path.join(tdir(ts, "secondary"), "palettes/%02d.pal" % PILLAR_ROW), cols)
+        for ts, tt in town_tiles.items():
+            if not tt["new"]:
+                continue
+            grown(ts).save(os.path.join(tdir(ts, "secondary"), "tiles.png"))
+            at = rules.index(tt["key"]) + len(tt["key"])
+            rules = rules[:at] + str(tt["n"] + len(tt["new"])) + rules[at + len(str(tt["n"])):]
+        open(RULES, "w").write(rules)
+        for path, bd in map_writes.items():
+            open(os.path.join(GBA, path), "wb").write(bd)
+        print("  written: General tiles, metatiles and row 2; %d secondary tilesets; eight towns' row 7; the frieze names" % len(secs))
 
 
 if __name__ == "__main__":
