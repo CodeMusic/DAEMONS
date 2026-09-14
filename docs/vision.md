@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.188**
+**A total conversion — the living design bible, v11.189**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4364,7 +4364,9 @@ Corpus rooms, and the trainer table.
 
 #### Four rulings, so the writing has something to fail against
 
-**1. The Owl's concession is dialogue and nothing else.** *No document, no item, no flag the player can read.* **4.24 already fixed his posture** — *he does not concede consciousness, he concedes **something**, and the strongest available position is "there is something here and I will not name it."* **That is craft rule 1 stated by a character**, and it is the one line in this sequence that can wreck the whole game by being one sentence too generous.
+**1. The Owl's concession is spoken, and what he signs is sealed.** ~~*No document, no item, no flag the player can read.*~~ ***Reversed on playtest 2026-09-14:*** **he said *"I will put that in writing, and I will sign that too"* and handed the player nothing, so the scene promised a consequence and never showed one** — *a playtester came out of it unsure anything had changed.* **He now writes, signs and seals a PEER REVIEW addressed to *the people who signed the first one*; the player carries it and gives it to Crystal with the package.** ***Its contents are never shown, anywhere***, **and that is the part of this ruling that mattered** — *4.24 fixed his posture: he does not concede consciousness, he concedes **something**, and the strongest available position is "there is something here and I will not name it."* **That is craft rule 1 stated by a character**, and a letter the player could read is the one object in this sequence that could wreck the game by being one sentence too generous. *And it fits the rule above it: a procedure put her there, so a procedure takes her out — a peer reviewer's signed letter is that, exactly.*
+
+***S.T.A.R.R. is now seen arguing, and still never quoted.*** **The same playtest could not tell what the Owl was answering**, *because T-28 had the player hear one side only.* **Three lines of narration fix it without breaking that** — *S.T.A.R.R. shows him a page of handwriting; S.T.A.R.R. answers him; S.T.A.R.R. answers again, and does not stop.* **After the concession, S.T.A.R.R. turns toward the door** — *and, if the player is not carrying the package yet, does not go.*
 
 **2. He stays in Brazen.** *4.23 put him in Mr. Psychic's house — a lone scholar keeping his own counsel **inside the bought city**, a peer reviewer living in a building Corpus owns.* **A remote scholar is a neutral scholar and the placement stops meaning anything.** *The flight is spent on her, not on him.*
 
@@ -7900,6 +7902,7 @@ Kept here because the reasoning is worth more than the outcome.
 | A vented server, cubes explicitly banned | A **cube with a screen**, pips for privilege | The ban existed because a cube says *container*. A screen says *running*, which is the reading 1.3 wanted — so the objection dissolves rather than being overruled. Vents also never shipped: the ladder loop broke before the third vent (1.3). |
 | **RIGOUR**, for the item BLACK BELT | **LOGIC GAIN** | *"Held to argue harder from"* was a good name and its reasoning was sound. 1.6c then made the other sixteen type boosters a rack of labelled controls, and a set of eighteen where one is a poem is a bug, not a flourish. **Only the set changed; the name did nothing wrong.** |
 | Drop the rival naming prompt, hard-code "Ty Clear" | Keep the prompt, hard-code **CLEAR** | The surname is the half that carries the inference. Spending a famous vanilla beat bought nothing — and the prompt, reframed as *what will you call him*, becomes the route-sign device a minute before Route 1 teaches it (4.3). |
+| **The Owl's concession is dialogue only** — no document, no item (4.34 ruling 1) | **A sealed PEER REVIEW** he signs and the player gives to Crystal; its contents are never shown | He promised it in writing and handed over nothing, so the scene read as having changed nothing. The ruling's real worry — a concession one sentence too generous — is kept by sealing it (4.34). |
 
 ### Open
 

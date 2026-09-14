@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.189 — 2026-09-14
+
+### 4.34 — the Owl signs something, and S.T.A.R.R. is seen arguing
+
+- ***Ruling 1 reversed on playtest.*** **The Owl said he would put it in writing and sign it, then handed over nothing — so a playtester came out of the scene unsure anything had changed.** *He now writes, signs and seals a* **PEER REVIEW** *addressed to the people who signed the first one; the player gives it to Crystal with the package.* ***Its contents are never shown***, **which is what the ruling was protecting.**
+- ***S.T.A.R.R. is narrated, never quoted.*** **Three lines — a page of handwriting, an answer, an answer that does not stop — so the Owl is visibly answering something**, *and the machine's argument is still never written down.* **After the concession it turns toward the door; without the package it says it is waiting.**
+- ***MR. CONSTRUE is an owl*** **in the overworld**, *in his own sprite slot: the balding man he replaced stands on 29 maps.*
+
+---
+
 ## v11.188 — 2026-09-13
 
 ### 8.6a — in Halftone, everything is grey

@@ -491,6 +491,16 @@ USABLE = {
     "ITEM_LETTER":       ("ENVELOPE",     ["Sealed. It is addressed, and it",
                                            "is not addressed to you."]),
 
+    #  T-51. What the Owl signs (4.34, ruling 1 reversed on playtest). He said
+    #  "I will put that in writing, and I will sign that too" and handed over
+    #  nothing, so the scene promised a consequence and never showed one. Its
+    #  contents are never shown, which is the part of the ruling that mattered.
+    #  A PEER REVIEW is exactly what a scholar signs, and it answers the Review
+    #  Board without saying so. Repurposed from ITEM_DEVON_GOODS: a Hoenn key
+    #  item nothing in this game referenced, and already a sealed package.
+    "ITEM_DEVON_GOODS":  ("PEER REVIEW",  ["Signed and sealed. Addressed to",
+                                           "everyone who signed the first one."]),
+
     # T-20. 8.2a calls these the two halves of a bridge between systems built
     # apart, and a KEY PAIR is that, exactly and as a term of art: two halves
     # made together, useless singly, and one of them is the half you are

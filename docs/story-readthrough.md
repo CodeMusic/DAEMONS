@@ -3,7 +3,7 @@
 Not the story as designed — the story **in the order a player actually meets
 it**, with what they can know at each point and what they cannot yet.
 
-> **Reconciled against the bible at v11.187, 2026-09-11.**
+> **Reconciled against the bible at v11.189, 2026-09-14.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -275,14 +275,19 @@ The player takes the machine to a scholar in the building Corpus owns, and
 read as evidence she had lost rigour. *The document that removed her and the
 document that vindicates her are the same document. Only the reader changed.*
 
-The Owl concedes *something* and will not name it.
+The player never hears the machine's words — *only that it shows him a page of
+handwriting, and answers, and does not stop.* The Owl concedes *something* and
+will not name it. **Then he writes for a long time, signs it, seals it, and gives
+the player a PEER REVIEW addressed to the people who signed the first one.**
+*Nobody ever reads what it says.*
 
 **A procedure put her away. A re-reading takes her out.**
 
 ### 22. Blanche — she reads it
 
-S.T.A.R.R. carries the player home. **The package goes to Crystal and she reads
-it.** The player wakes at home.
+S.T.A.R.R. carries the player to her. **The package goes to Crystal and she reads
+it.** *The peer review goes to her too; she reads who it is addressed to and keeps
+it closed.* The player wakes at home.
 
 *Later, on Quicksilver, more of the gold has lifted from the sign.* **Nobody
 repainted anything.**

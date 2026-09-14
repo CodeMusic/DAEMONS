@@ -5,7 +5,7 @@ Not the story as the player meets it — that is
 says what is available at each point. **This is what happened**, in the order it
 happened, which is an order no player is ever given.
 
-> **Reconciled against the bible at v11.187, 2026-09-11.**
+> **Reconciled against the bible at v11.189, 2026-09-14.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -73,9 +73,10 @@ and the event is never named.
 The machine completes, Doldrum Cave opens, and you earn S.T.A.R.R. You bring it
 to a scholar in the bought city, and it argues her side out of her own journals —
 the same pages that were read as evidence she had lost rigour. The Owl concedes
-*something* and will not name it. A procedure put her away; a re-reading takes
-her out. S.T.A.R.R. flies you to her, you give her the package, and she reads
-it. You wake at home. Later, on Quicksilver, more of the gold has lifted —
+*something* and will not name it — then signs a sealed peer review, addressed to
+the people who signed the first one, and hands it to you. A procedure put her
+away; a re-reading takes her out. S.T.A.R.R. flies you to her, you give her the
+package and the review, and she reads the package. You wake at home. Later, on Quicksilver, more of the gold has lifted —
 nobody repainted anything.
 
 ---
