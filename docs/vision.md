@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.203**
+**A total conversion — the living design bible, v11.204**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7972,6 +7972,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***A BENCHMARK's two words*** (**T-79**): **the free-standing board reads MARK, and the frieze carries the name of the mark earned inside** — *SLATE, SLOPE, SENSE, FIT, SKEW, FRAME, HEAT or TRUE*, **in the 3x5 face, four pixels a letter, so the longest is two cells.** *The name is the only thing on the building that differs by town besides the pillars, so it is drawn on each town's own blocks.*
 
 ***Built 2026-09-14, and what bounds the detail.*** **Vanilla's buildings are shaded and textured; ours read flat on playtest (T-85).** *All three kinds are drawn in the General tileset, whose 640 slots are full*, **so detail is paid for in tiles: 45 of vanilla's duplicate tiles were merged to make room, mirrored tiles are shared, and the drawings take 127 of the 132 slots that result** — *a dentilled cornice and one step on the colonnade, a canopy and plinth on the rotunda, castings on the containers.* ***More than that means drawing on each town's own tileset.*** **The board's face sits low, in the one cell every town's board has.**
+
+***And then it was drawn on each town's own tileset — 2026-09-14.*** **`tools/gbacivictown.py` gives every cell of 35 of the 37 buildings a block of its town's own**, *so the detail stops competing for five shared slots:* **a lit, ribbed dome with a lantern over coursed stone and arched windows; ribbed containers with castings, lock rods and a hazard-striped lintel; a colonnade with a skylight, dentils, a carved frieze, fluted columns, sconces, full steps, a bronze plate for the mark's name and a full-height board.** *The room comes from slots no block of the town draws, and from each town's own duplicate tiles.* ***The shared drawing stays underneath as the fallback***, **and two buildings keep it:** *Lurid's BENCHMARK, which stands within seven cells of a connection (trap 14), and Brazen's REPO, whose tileset has no room left.*
 
 ### 9.2 Order of operations
 

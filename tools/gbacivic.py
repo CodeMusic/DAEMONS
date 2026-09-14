@@ -81,6 +81,8 @@ TEAL = {8: (58, 138, 140), 9: (96, 184, 176), 15: (156, 220, 210)}
 VERDIGRIS_DOOR = (61, [200, 201, 216, 217])          # moves from row 2 to row 5
 ROW2_TO_5 = {1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 4, 7: 5, 8: 9, 9: 8}
 PILLAR_ROW = 7
+# cells tools/gbacivictown.py has redrawn on town tiles: read through to their original blocks, never written
+TOWN_MANIFEST = os.path.join(ROOT, "tools", "gbacivictown.json")
 
 # each BENCHMARK town: its mark (T-79) and its leader's type colour (T-78, gbasprite.py TYPE_COLOR)
 TOWNS = {
@@ -363,6 +365,7 @@ def main():
         k = m if m < 640 else m - 640
         return list(struct.unpack_from("<8H", buf, k * 16)) if (k + 1) * 16 <= len(buf) else None
 
+    TOWN_CELLS = json.load(open(TOWN_MANIFEST))["cells"] if os.path.exists(TOWN_MANIFEST) else {}
     # every building, by its door
     instances = []
     for mp in sorted(os.listdir(os.path.join(GBA, "data/maps"))):
@@ -373,7 +376,8 @@ def main():
         if not l or l["primary_tileset"] != "gTileset_General":
             continue
         bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read(); W, H = l["width"], l["height"]
-        cell = lambda x, y, bd=bd, W=W: struct.unpack_from("<H", bd, (y * W + x) * 2)[0] & 0x3FF
+        town = TOWN_CELLS.get(mp, {})
+        cell = lambda x, y, bd=bd, W=W, town=town: town.get("%d,%d" % (x, y), struct.unpack_from("<H", bd, (y * W + x) * 2)[0] & 0x3FF)
         for w in j["warp_events"]:
             for suffix, (kind, door) in KINDS.items():
                 if w["dest_map"].endswith(suffix) and 0 <= w["x"] < W and 0 <= w["y"] < H and cell(w["x"], w["y"]) == door:
@@ -554,6 +558,8 @@ def main():
         tt = town_tiles[ts]
         for dx in (1, 2):
             X, Y = x + dx, y - 2
+            if "%d,%d" % (X, Y) in TOWN_CELLS.get(mp, {}):
+                print("  %s: (%d,%d) is drawn on town tiles" % (mp, X, Y)); continue
             raw = struct.unpack_from("<H", bd, (Y * W + X) * 2)[0]; m = raw & 0x3FF
             if m >= 640 and m not in (330, 331):
                 e = entries(ts, m)

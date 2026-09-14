@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.204 — 2026-09-14
+
+### 9.23 — The buildings in detail, on town tiles
+
+- ***35 of 37 buildings are redrawn on their own town's tiles*** **with far more detail than the shared tileset can hold** (`tools/gbacivictown.py`); *the shared drawing stays as the fallback.* **Lurid's BENCHMARK (beside a connection) and Brazen's REPO (no room) keep it.**
+
 ## v11.203 — 2026-09-14
 
 ### 9.23 — Buildings that are not houses
