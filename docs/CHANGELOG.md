@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.199 — 2026-09-14
+
+### 9.22 — The world's own trees, water and grass
+
+- ***The General tileset's nature is redrawn in place for every outdoor map.*** **Trees are a round broadleaf, traced piece by piece from vanilla's standalone and forest trees; water is ripple dashes on vanilla's blues in both animated groups; grass is a meadow green with our own sprig, tall grass a field of blades, and the walking effect to match.** *Exact colour replacement across 58 outdoor palettes keeps every seam.* **T-61.**
+
 ## v11.198 — 2026-09-14
 
 ### 9.22 — Where the pale ends

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.198**
+**A total conversion — the living design bible, v11.199**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7890,6 +7890,18 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***The signs say something.*** **Vanilla's boards carried a squiggle that reads as Japanese at a glance.** *A 16-pixel board holds three letters of a 3x5 font*, **so they say short words: BLANCHE on a board as wide as two cells, LAB, a question mark for the trainer tips, and RT1 on Route 1.** ***The text boxes they open are unchanged.***
 
 ***Why Route 21 South stays vanilla:*** **it is drawn from Quicksilver's tileset, which the island, Route 20 and the Safari areas share** — *pale water there would put the same line wherever that sea continues.* **The island is where the colour comes back. T-60.**
+
+#### The world's own trees, water and grass — *decided 2026-09-14*
+
+***Outside Blanche the ground was still Nintendo's drawing on every map.*** **So the General tileset's nature is redrawn in place, and every town and route changes together** — *the tiles change and the blocks do not, so nothing mixes old and new:*
+
+| | becomes | why this and not something else |
+|---|---|---|
+| **the trees** | ***a round broadleaf*** — *a lumpy green crown on a short dark trunk, big enough that a forest reads as one mass* | **different from Blanche's white birches, so those stay Blanche's** |
+| **the water** | ***short ripple dashes on vanilla's blues***, *three to a square, drifting against each other* | **the pond's language: the pale water and the sea read as one water, one of them drained** |
+| **the grass** | ***a meadow green, our own sprig, and tall grass as a field of narrow blades***, *with the walking effect redrawn to match* | *new shapes and new colours — recolouring vanilla's tufts would still read as vanilla's* |
+
+***A tree is not a tile.*** **Vanilla's tree is 32 by 48 pixels in pieces reused across dozens of blocks, some of one tree and some of two overlapping ones**, *so every piece was traced back to where it sat in a standalone tree or a forest and redrawn from the same place in the new one.* ***The colours moved as exact values across 58 outdoor palettes***, *so no seam can open where a town's own tiles meet grass.* **T-61.**
 
 ### 9.2 Order of operations
 
