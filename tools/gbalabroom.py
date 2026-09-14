@@ -220,8 +220,6 @@ def draw():
     o_rect(R, 128, 78, 175, 82, 15)
     for lx in (131, 170):
         o_rect(R, lx, 83, lx + 3, 93, 15)
-    o_rect(R, 160, 70, 166, 73, 10)            # a coil of cable, left out
-    o_px(R, 163, 71, 8)
 
     # ------------------------------------------------------------ low shelves of worn journals
     R = 8
