@@ -30,10 +30,18 @@ WHAT HAS TO READ AT SIXTEEN PIXELS, in order of what the eye finds first:
     the tail      out from under the hem, on the side the references put it
 
 VANILLA'S IDIOM FOR EVERYTHING ELSE. Same outline weight, walk frames drop the
-whole figure one row and move the feet, and the head is large, because every
+whole figure one row, and the head is large, because every
 walking sprite in this game is -- 9.4's head-to-body rule is for the portraits,
 and a sixteen-pixel adult drawn at adult proportions is a stick with a dot on
 it. Crystal's ears start a row higher than Al's; that is the age, here.
+
+A WALK IS THE ARMS, NOT THE FEET. The first cut moved only the feet and read as
+someone sliding. Vanilla's rival swings both arms against the legs: the hand on
+the side of the long stride pushes a column out and a row up, the other tucks
+in and hangs a row lower, and the next step trades them. From the side the hand
+passes in front of the body, then behind it. So each walk frame below is
+written out from the shoulders down -- arms, legs, and the tail, which sways
+one column each way from behind and hangs, then flicks out, from the front.
 
 ONE PALETTE FOR THE FAMILY. 9.4's line is "three foxes, a palette apart --
 Crystal golden-amber, Ty darker, Al somewhere between", and at overworld size
@@ -173,15 +181,84 @@ CRYSTAL_SIDE = [
     "     KKKKK      ",
 ]
 
-# Walking: the figure drops a row and the last three rows are the feet.
-CRYSTAL_FRONT_STEPS = [
-    ["    KDDKKDDK    ", "    KDDKKKKKK   ", "   KKKK         "],
-    ["    KDDKKDDK    ", "   KKKKKKDDK    ", "         KKKK   "],
-]
-CRYSTAL_SIDE_STEPS = [
-    ["    KDDKDDK YCYK", "   KDDK KDDKKK  ", "   KKK   KKK    "],
-    ["     KDDDKKYCYK ", "     KDKDK KKK  ", "    KKK KKK     "],
-]
+# Walking: the figure drops a row; everything below the shoulders is written out
+# per step, because a walk is the arms and the tail as much as the feet.
+CRYSTAL_WALKS = {
+    "front1": {                   # her right hand forward and up, left tucked
+        21: "   KWWKPPKWWK   ",
+        22: "  KWWWKPPKWWWK  ",
+        23: " KWwWWKPPKWwWK  ",
+        24: " KgwWWKPPKWwWK  ",
+        25: " KgKWWKPPKWwWK  ",
+        26: " KKKWWKDDKWwgK  ",
+        27: "KGYKWWKDDKWKgK  ",
+        28: "KYYKwWKDDKWwK   ",
+        29: "KYCKKDDKKDDK    ",   # the tail hangs to the ground
+        30: " KK KDDKKKKKK   ",
+        31: "   KKKK         ",
+    },
+    "front2": {                   # left hand forward, right tucked
+        21: "   KWWKPPKWWK   ",
+        22: "  KWWWKPPKWWWK  ",
+        23: "  KWwWKPPKWWwWK ",
+        24: "  KWwWKPPKWWwgK ",
+        25: "  KWwWKPPKWWKgK ",
+        26: "  KgwWKDDKWWKK  ",
+        27: " KKgKWKDDKWWK   ",
+        28: "KGYKwWKDDKWwK   ",   # and flicks up, out from behind the tucked hand
+        29: "KYCKKDDKKDDK    ",
+        30: " KKKKKKKKDDK    ",
+        31: "         KKKK   ",
+    },
+    "back1": {
+        21: "   KWWWWWWWWK   ",
+        22: "  KWWWWWWWWWWK  ",
+        23: " KWwWWWWKKWwWK  ",
+        24: " KgwWWWKYGKwWK  ",
+        25: " KgKWWWKYYKwWK  ",
+        26: "  KKWWKYGKWwgK  ",   # the tail's lower half sways left
+        27: "   KWWKYCKWKgK  ",
+        28: "   KwWWKKWWwK   ",
+        29: "    KDDKKDDK    ",
+        30: "    KDDKKKKKK   ",
+        31: "   KKKK         ",
+    },
+    "back2": {
+        21: "   KWWWWWWWWK   ",
+        22: "  KWWWWWWWWWWK  ",
+        23: "  KWwWWWKKWWwWK ",
+        24: "  KWwWWKYGKWwgK ",
+        25: "  KWwWWKYYKWKgK ",
+        26: "  KgwWWWKYGKKK  ",   # and right
+        27: "  KgKWWWKYCKK   ",
+        28: "   KwWWWWKKwK   ",
+        29: "    KDDKKDDK    ",
+        30: "   KKKKKKDDK    ",
+        31: "         KKKK   ",
+    },
+    "side1": {                    # the near hand swings in front of her
+        23: "    KWwWWWK     ",
+        24: "   KWWwWWWK     ",
+        25: "   KgKWwWWK     ",
+        26: "   KgKWKWWKK    ",
+        27: "    KWWWWwKYK   ",
+        28: "    KwWWWwKGYK  ",
+        29: "    KDDKDDK YCYK",
+        30: "   KDDK KDDKKK  ",
+        31: "   KKK   KKK    ",
+    },
+    "side2": {                    # and behind
+        23: "    KWwWWWK     ",
+        24: "    KWWwWWK     ",
+        25: "    KWWwWgK     ",
+        26: "    KWWKWgKK    ",
+        27: "    KWWWWwKYK   ",
+        28: "    KwWWWwKGYK  ",
+        29: "     KDDDKKYCYK ",
+        30: "     KDKDK KKK  ",
+        31: "    KKK KKK     ",
+    },
+}
 
 # --------------------------------------------------------------------- AL
 # Younger, so his ears start a row lower and stand less tall.
@@ -260,30 +337,91 @@ AL_SIDE = [
     "     KBBBK KKK  ",
 ]
 
-AL_FRONT_STEPS = [
-    ["    KLLKKLLK    ", "    KBBKKBBBK   ", "   KBBBK        "],
-    ["    KLLKKLLK    ", "   KBBBKKBBK    ", "        KBBBK   "],
-]
-AL_SIDE_STEPS = [
-    ["    KLLKLLKKRCRK", "   KLLK KBBKKK  ", "   KBBK  KBBK   "],
-    ["     KLLLKKRCRK ", "     KBLBK KKK  ", "    KBBKBBK     "],
-]
+AL_WALKS = {
+    "front1": {                   # his right paw forward and out, left tucked lower
+        23: " KRKCCCCCCCKRK  ",
+        24: " KBKCCCCCCCKRK  ",
+        25: "  KKBBBBBBBKBK  ",
+        26: " KKKKLLLLLLKBK  ",
+        27: " KrRKLLLLLLKK   ",
+        28: " KRRKLLKKLLK    ",
+        29: " KCRKLLKKLLK    ",   # the tail hangs to its tip
+        30: "  KKKBBKKBBBK   ",
+        31: "   KBBBK        ",
+    },
+    "front2": {
+        23: "  KRKCCCCCCCKRK ",
+        24: "  KRKCCCCCCCKBK ",
+        25: "  KBKBBBBBBBKK  ",
+        26: " KKBKLLLLLLKK   ",
+        27: "KrRKKLLLLLLK    ",   # and swings out
+        28: "KRRKKLLKKLLK    ",
+        29: "KCK KLLKKLLK    ",
+        30: "   KBBBKKBBK    ",
+        31: "        KBBBK   ",
+    },
+    "back1": {
+        23: " KRKCCCCCCCKRK  ",
+        24: " KBKCwCCCCwKRK  ",
+        25: "  KKBBBKKBBKBK  ",
+        26: "   KKLKRRKLKBK  ",
+        27: "    KLKrRKLKK   ",
+        28: "    KKRRKLLK    ",   # the tail sways left
+        29: "    KKCCKLLK    ",
+        30: "    KBBKKBBBK   ",
+        31: "   KBBBK        ",
+    },
+    "back2": {
+        23: "  KRKCCCCCCCKRK ",
+        24: "  KRKwCCCCwCKBK ",
+        25: "  KBKBBKKBBBKK  ",
+        26: "  KBKLKRRKLKK   ",
+        27: "  KKKLKrRKLK    ",
+        28: "    KLLKRRKK    ",   # and right
+        29: "    KLLKCCKK    ",
+        30: "   KBBBKKBBK    ",
+        31: "        KBBBK   ",
+    },
+    "side1": {                    # the near paw in front
+        24: "   KRKCCCCK     ",
+        25: "   KBKCCCCK     ",
+        26: "   KBKBBBBK     ",
+        27: "     KLLLLKK    ",
+        28: "     KLLLlKRK   ",
+        29: "    KLLKLLKKRCRK",
+        30: "   KLLK KBBKKK  ",
+        31: "   KBBK  KBBK   ",
+    },
+    "side2": {                    # and behind
+        24: "    KCCCRKK     ",
+        25: "    KCCCKBK     ",
+        26: "    KBBBKBK     ",
+        27: "     KLLLLKK    ",
+        28: "     KLLLlKRK   ",
+        29: "     KLLLKKRCRK ",
+        30: "     KBLBK KKK  ",
+        31: "    KBBKBBK     ",
+    },
+}
 
 
 def standing(rows):
     return [" " * 16] * 8 + rows + [" " * 16]
 
 
-def walking(rows, feet):
-    body = [" " * 16] * 9 + rows[:-3]
-    return body + feet
+def walking(rows, replace):
+    """Drop the standing figure a row, then write the step over it, whole rows."""
+    f = [" " * 16] * 9 + list(rows)
+    for r, line in replace.items():
+        f[r] = line
+    return f
 
 
-def frames(front, back, side, front_steps, side_steps, who):
+def frames(front, back, side, walks, who):
     out = [standing(front), standing(back), standing(side)]
-    out += [walking(front, f) for f in front_steps]
-    out += [walking(back, f) for f in front_steps]
-    out += [walking(side, f) for f in side_steps]
+    out += [walking(front, walks["front1"]), walking(front, walks["front2"])]
+    out += [walking(back, walks["back1"]), walking(back, walks["back2"])]
+    out += [walking(side, walks["side1"]), walking(side, walks["side2"])]
     for n, f in enumerate(out):
         assert len(f) == 32, "%s frame %d is %d rows" % (who, n, len(f))
         for r, line in enumerate(f):
@@ -295,9 +433,9 @@ def frames(front, back, side, front_steps, side_steps, who):
 
 FIGURES = [
     ("crystal", os.path.join(PEOPLE, "prof_oak.png"),
-     frames(CRYSTAL_FRONT, CRYSTAL_BACK, CRYSTAL_SIDE, CRYSTAL_FRONT_STEPS, CRYSTAL_SIDE_STEPS, "crystal")),
+     frames(CRYSTAL_FRONT, CRYSTAL_BACK, CRYSTAL_SIDE, CRYSTAL_WALKS, "crystal")),
     ("al", os.path.join(PEOPLE, "blue.png"),
-     frames(AL_FRONT, AL_BACK, AL_SIDE, AL_FRONT_STEPS, AL_SIDE_STEPS, "al")),
+     frames(AL_FRONT, AL_BACK, AL_SIDE, AL_WALKS, "al")),
 ]
 
 
