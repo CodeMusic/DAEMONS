@@ -19,6 +19,7 @@ walk out of the pale town:
     ROUTE 1'S SIDES, rows 0..29   the tree columns down both edges become
                              birches the whole way to Callow, trees only, and
                              the map border past them is Blanche's birch border
+    ROUTE 1'S TOP ROW, rows 0..1   the trees along the Callow end, trees only
 
 Every stretch starts and ends on a tree boundary, so no tree is half one kind.
 A stretch already drawn is skipped, so adding one re-runs the tool safely.
@@ -51,7 +52,8 @@ WRITE = "--write" in sys.argv
 # (layout, first row, end row, columns or None for all, trees only)
 STRETCHES = [("Route1_Layout", 30, 40, None, False),
              ("Route21_North_Layout", 0, 10, None, False),
-             ("Route1_Layout", 0, 30, (0, 1, 22, 23), True)]
+             ("Route1_Layout", 0, 30, (0, 1, 22, 23), True),
+             ("Route1_Layout", 0, 2, None, True)]
 BORDERS = {"Route1_Layout": "PalletTown_Layout"}     # take this map's border blocks
 JOBS = dict(G.JOBS)
 JOBS[5] = {10: G.CHALK, 1: G.SPECK, 6: G.SHADE, 7: G.SHADE, 8: G.SHADE, 9: G.SHADE, 11: G.SHADE, 12: G.SHADE,
