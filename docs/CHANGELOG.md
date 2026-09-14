@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.187 — 2026-09-13
+
+### 8.6a, 4.6, 4.7 — Halftone's grey reaches the tower and its battles; PERSPECTIVE flashes; RECURSION exists
+
+- ***Halftone's tower was in colour*** **because the tint checked the town's map section and the tower has its own.** *All seven floors are grey now, tiles and people.*
+- ***A battle in Halftone keeps the world's rule.*** **The scene and the side you face are grey — daemons, the tower's ghost even once the RESOLVER unmasks it, and the trainer — while your own daemons and the menus keep their colour**, *because "a daemon has as much colour as it has accumulated" and the move menu's type colours are how the chart is read.*
+- ***PERSPECTIVE flashes the colour back in Halftone***, **about a second, spanning the moment the form changes.** *4.6's open question — would MOCK make the flash common? — is settled by place: the flash only happens in the one grey town.*
+- ***RECURSION is built***, **on Fury Cutter's counter rather than the Bide surgery 4.7 assumed for the Game Boy build**: *+50% of base per consecutive use to ×2.5, reset by a miss, a skipped turn or any other move.* **Base 60, EMERGENT, S.T.A.R.R.'s at 70 — its Doldrum Cave level — and forbidden to Metronome, Mimic, Sketch and Mirror Move.**
+- ***ARTSAI now carries PERSPECTIVE when met at 50.*** **It was learned at 10 and always pushed out of the four newest moves**; *it is taught again as ARTSAI's level-50 move.*
+- **Debug kit:** *ARTSAI ignored every command because Gen 3 makes a player's Mew obey only with the official-event flag, which a created daemon lacks — the kit sets it. The kit also carries the RESOLVER now, and SEEKMUSAI carries the HMs instead of S.T.A.R.R., whose four slots had all been field moves.*
+
+---
+
 ## v11.186 — 2026-09-13
 
 ### 9.4a — the move menu: a type as a word, and what a move does

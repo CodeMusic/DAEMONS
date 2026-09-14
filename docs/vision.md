@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.186**
+**A total conversion — the living design bible, v11.187**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3411,7 +3411,7 @@ It also rhymes across the cast: **Al Clear received the form of his father's les
 
 *Considered:* **PROXY** (stands in for another; legal and technical) and **STUB** (an interface with no implementation) both work. MOCK wins on the second register — STUB has no emotional reading at all, and PROXY implies acting *on behalf of*, which is a different thing from wearing a shape.
 
-*Open:* if PERSPECTIVE ever triggers the colour flash discussed against 8.6, MOCK makes it a recurring sight rather than a rarity. That is either a dilution of Umbra or a quiet argument that **colour is what taking another's frame looks like, wherever it happens.** Not settled.
+~~*Open:* if PERSPECTIVE ever triggers the colour flash discussed against 8.6, MOCK makes it a recurring sight rather than a rarity.~~ ***Settled and built 2026-09-13 (8.6a): the flash happens in Halftone and nowhere else.*** **Scoping it to the one grey town answers the worry by geography** — *MOCK can use PERSPECTIVE as often as it likes, but a flash only means something where the world is grey, so it stays rare by place rather than by rule.* **Colour is what taking another's frame looks like — in the one town where colour has been taken away.**
 
 **On the number.** She was the thirty-fifth iteration, and the game says so exactly once — see 4.8. It is a lab record, not a name. Printing "35" in the Index and in every line of her dialogue handed the player the key before they ever met the lock, and it made a serial number of the one daemon whose entire significance is that she was **not** one of a series.
 
@@ -3436,6 +3436,8 @@ The distinction is worth protecting. A clone story is about hubris and ownership
 **Signature move: RECURSION.** Data self-referencing — a move that reads its own accumulated state. Repurpose the Bide/Rage machinery, which already stores a running counter across turns. Suggested behaviour: each consecutive use raises power by 50% of base, uncapped for three turns, resetting if interrupted. Type EMERGENT, and given to nothing else in the game.
 
 **The move is the argument.** RECURSION compounds for as long as it is allowed to run and collapses to nothing the instant it is interrupted. That is a positive feedback loop and its termination, expressed in two lines of battle code. The player learns to protect it without ever being told what it models.
+
+***Built 2026-09-13.*** **It runs on FURY CUTTER's counter, not on Bide** — *which was what this section assumed for the Game Boy build, where it would have been assembly surgery.* **On GBA the counter that grows with each consecutive use and resets when the move is interrupted already exists**, so RECURSION branches inside that calculation: *+50% of base per consecutive use to ×2.5, reset by a miss, by a skipped turn (sleep, flinch, full paralysis), or by using any other move in between.* **Base 60, EMERGENT, learned at 70 — the level S.T.A.R.R. is met at in Doldrum Cave** — *and in Metronome's, Mimic's and Sketch's forbidden list and not copyable by Mirror Move, because it is given to nothing else in the game.* **It borrows Psycho Boost's animation until it has its own.**
 
 **The lineage, stated entirely in the movedex and out loud to nobody:**
 
@@ -6797,6 +6799,23 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 | **Daemons** | the 9.4 ramp, **its saturation scaled by friendship** | below |
 | **Umbra** | the value floor | the four humours are **the four type anchors** — red VECTOR, yellow ENTROPY, black LATENT, white FROZEN. *The player has read those hues on daemons for forty hours and meets them as people, in the dark.* **Colour arrives by contrast with darkness instead of with grey** |
 
+#### 8.6a Halftone, extended to its tower and its battles — decided and built 2026-09-13
+
+***Halftone was grey outside and in colour inside the tower***, **because the tint asked whether the map belonged to the town's map section and the tower has its own.** *The tower is the place Halftone exists for — something the Index cannot name, and an instrument needed to see it — so it is grey now, all seven floors, tiles and people.*
+
+**And a battle in Halftone keeps the world's rule rather than breaking it:**
+
+| | in Halftone | |
+|---|---|---|
+| **the scene** — terrain, background | **grey** | *the world has colour, and here the world has had it taken* |
+| **the side you face** — daemons, the tower's ghost, the trainer | **grey** | *not yet resolved.* **A ghost the RESOLVER unmasks stays grey** |
+| **your own daemons** | **colour** | ***"a daemon has as much of it as it has accumulated"*** — *yours have* |
+| **the menus** | **colour** | *the move menu's type colours are how the chart is read, and Halftone is the town where reading clearly is the lesson* |
+
+***PERSPECTIVE brings the colour back.*** **When a daemon takes another's frame in Halftone, the scene and the side you face return to full colour for about a second, then go grey again** — *the flash spans the moment the form changes.* **An opposing daemon that transforms is greyed again once it has the frame; yours keeps the colour it took.** *This settles 4.6's open question by place: the flash cannot become common, because the only town where it can happen is grey.*
+
+**Every path that puts the scene on screen goes through a greyed loader** — *including a move animation restoring the background, and the battle screen redrawing after the bag.* **A daemon behind a SUBSTITUTE is left as it is during the flash**, *because its sprite is the doll.*
+
 #### Saturation is friendship, and that is the thesis made mechanical
 
 ***A daemon at low friendship is nearly grey with a hint of its type; at maximum it is the full ramp.*** *One hook at sprite-palette load, keyed off `MON_DATA_FRIENDSHIP`.*
@@ -7922,7 +7941,7 @@ Kept here because the reasoning is worth more than the outcome.
 - ~~`PC` → `PORT` is decided and not swept~~ ***Decided is not a question.*** **Moved to TODO T-31** — *four menu strings, ~25 dialogue lines, and `\nPC` has no word boundary in front of it*
 - **PKRS still says PKRS** (9.15). Its tile no longer borrows LEAKING's colour, but the name is vanilla and the condition has no place in the lexicon yet
 - Does the player meet Scorn before Halftone Tower?
-- Does RECURSION justify engine work in the slice, or defer?
+- ~~Does RECURSION justify engine work in the slice, or defer?~~ **Built 2026-09-13 (4.7)**, *and it was never engine work on GBA: Fury Cutter's counter already did it*
 - How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?
 - Are the humors too neat? Four is convenient; the real theory had temperaments blending.
 - Does **Al** get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
