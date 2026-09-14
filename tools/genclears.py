@@ -61,6 +61,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PEOPLE = os.path.join(GBA, "graphics/object_events/pics/people")
 PAL = os.path.join(GBA, "graphics/object_events/palettes/npc_clears.pal")
+# the naming screen draws the rival from a sheet of its own: the same nine frames stacked,
+# 16x288, with a palette of its own (T-87) -- or "RIVAL's NAME?" shows vanilla's boy
+NAMING = os.path.join(GBA, "graphics/naming_screen/rival.png")
+NAMING_PAL = os.path.join(GBA, "graphics/naming_screen/rival.pal")
 PREVIEW = "/tmp/clears_ow.png"
 WRITE = "--write" in sys.argv
 
@@ -471,6 +475,15 @@ def preview(sheets):
     out.save(PREVIEW)
 
 
+def stacked(img):
+    """a horizontal sheet of 16x32 frames, stacked vertically."""
+    n = img.width // 16
+    out = Image.new("P", (16, 32 * n)); out.putpalette(img.getpalette())
+    for k in range(n):
+        out.paste(img.crop((k * 16, 0, (k + 1) * 16, 32)), (0, 32 * k))
+    return out
+
+
 def write_pal(path):
     lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in PALETTE]
     # CRLF, as .gitattributes has it for JASC-PAL (see tools/gbasprite.py)
@@ -486,3 +499,7 @@ if WRITE:
         print("  written %s" % os.path.relpath(path, ROOT))
     write_pal(PAL)
     print("  written %s" % os.path.relpath(PAL, ROOT))
+    al = next(img for name, path, img in sheets if name == "al")
+    stacked(al).save(NAMING, bits=4)
+    write_pal(NAMING_PAL)
+    print("  written %s and its palette" % os.path.relpath(NAMING, ROOT))
