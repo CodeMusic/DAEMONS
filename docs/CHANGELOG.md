@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.190 — 2026-09-14
+
+### 9.10 — the player walks, and REASON and INSTINCT differ by the tail
+
+- ***The player's overworld sprite is the grey monkey from the portraits*** **— wide brown hat, long cream coat open over black, the strap to the BOX, boots, a tail — for walking, running, the head-shake and raising an item.** *Bike, surf and fishing are T-52.*
+- ***The one difference between the two figures is the tail:*** **REASON's curls up on its right, INSTINCT's hangs and curls down on its left.** *A face cannot carry "two people" at sixteen pixels; a tail can, from every side, without being an opposite.*
+- ***`player.pal` is remapped by role***, **because all seven player sheets share it** — *so the sheets not yet drawn read as a rough version of the figure rather than as noise.*
+
+---
+
 ## v11.189 — 2026-09-14
 
 ### 4.34 — the Owl signs something, and S.T.A.R.R. is seen arguing

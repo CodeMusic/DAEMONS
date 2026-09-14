@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.189**
+**A total conversion — the living design bible, v11.190**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7341,6 +7341,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 **The two figures are the same person's two ways of arriving at an answer**, which is why they are ***deliberately not a matched pair of opposites.*** *Neither is the careful one. Neither is the wild one.* **They are two people, and the player picks the one they would rather be.**
 
 *And it costs nothing to be careful here:* **nothing in the game refers to either with a pronoun.**
+
+***In the overworld they differ by one thing, and it is the tail*** — *decided 2026-09-14 when the walking sprites were drawn.* **Both are the grey monkey from the portraits: the wide brown hat, the long cream coat open over black, the strap to the BOX.** *At sixteen pixels a face cannot carry "two people" and a tail can:* ***REASON's tail curls up on its right; INSTINCT's hangs and curls down on its left.*** **It reads from every side, costs no colour, and is not an opposite** — *neither curl is the careful one.*
 
 ### 9.10a The two legendaries were describing their own paperwork
 
