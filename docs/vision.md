@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.192**
+**A total conversion — the living design bible, v11.193**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7768,6 +7768,59 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***The rule this yields is in `engine.md` and it is short: measure the whole table, not the diff.***
 
+### 9.21 Time — a clock made of play time, and what the hours and seasons are for — *proposed 2026-09-14, not built*
+
+***Asked on playtest: FireRed hacks add day and night, with different daemons by the hour — could this, and what about the four seasons?*** **Written as a design before anything is built, because the mechanism is the easy half and the meaning is the half that can go wrong.**
+
+#### The clock is play time, because the cartridge has none
+
+***FireRed carts have no real-time clock***, **and the engine says so itself** — *`ScrCmd_gettime` is commented out and `pokemon.c` notes that FR/LG removed the time-of-day evolutions for exactly that reason.* **But `SaveBlock2` already keeps `playTimeHours`, `playTimeMinutes` and `playTimeSeconds` in every save**, so the proposal is ***a clock derived from play time and nothing else*** — **zero new saved bytes, which matters when EWRAM has about a kilobyte free.**
+
+| | proposed | why |
+|---|---|---|
+| **a day** | **one hour of play** | *long enough that a route has a mood; short enough that a session sees dusk* |
+| **four watches** | **dawn · day · dusk · night**, *fifteen minutes each* | **four, not twenty-four** — *a watch is legible from the screen alone* |
+| **a season** | **seven days of play** | *a season turns inside one sitting of a few evenings, and a year inside a playthrough* |
+
+***The honest cost: time stops when the player stops.*** **A real clock would keep night falling while the cartridge sits in a drawer, and this one cannot.** *That is also what makes it fair — nobody misses a season by being away — and an emulator-only real-time mode stays possible later behind the same four watches.*
+
+#### What the hours are for: day is CONTENT, night is CONTEXT
+
+***The game's argument already has two halves, and daylight is the literal one.*** **By day the world is what it is. At night the same route is re-read** — *the same tiles under a different frame* — ***which is 0.4 as a lighting change, and nobody says it.***
+
+- **The look** is a palette tint on outdoor maps: *warm at dusk, a blue-dark at night.* **It reuses 8.6a's per-frame pass over the faded palette buffer**, *already measured as nearly free on a settled frame.* **Interiors and caves are untouched, and Halftone stays grey at every hour** — *grey outranks time.*
+- **The daemons** change by watch on a few routes and islands, **not everywhere.** *LATENT and OPAQUE come out at night*, **and a handful of daemons are met only then.**
+- ***Never stated.*** **No NPC mentions that the night route holds different daemons**, *and no Index entry calls one nocturnal.* **The player notices or does not.**
+
+#### What the seasons are for: the four humours, which were already here
+
+***Section 6 gives the REVIEW BOARD the four humours, and 9.4 made them the four type anchors*** — **red VECTOR, yellow ENTROPY, black LATENT, white FROZEN.** ***Classical humoral theory already assigns each humour a season***, **so the seasons were in the design before anyone asked for them:**
+
+| season | humour | anchor | the wild tables lean toward |
+|---|---|---|---|
+| **spring** | sanguine | red | **VECTOR** |
+| **summer** | choleric | yellow | **ENTROPY** |
+| **autumn** | melancholic | black | **LATENT** |
+| **winter** | phlegmatic | white | **FROZEN** |
+
+***A lean, not a swap*** — **the same rule as the editions' Tier 2**, *so a season shifts what is common without taking anything away.* ***It is the REVIEW BOARD's model of a person, applied to the weather*** — **an innate constitution read off the calendar**, *which is 6's error made into climate and never named.* **The player meets the Board at the end and has been living inside its four seasons for forty hours.**
+
+***Seasons do not repaint the world*** — *snow on every tileset is a palette and tileset job across dozens of maps, and the argument lives in the tables.* **A faint seasonal tint on outdoor grass is the most it proposes.**
+
+#### How it would be built, from things the engine already does
+
+- ***The table switch has a precedent.*** **ALTERING CAVE already stores several wild tables for one map and adds a variable to pick among them in `GetCurrentMapWildMonHeaderId`.** *Time and season become that variable* — **consecutive headers per map in `wild_encounters.json`, ROM cost only.**
+- ***The tint has a precedent.*** **8.6a's `DaemonsGreyHalftoneFrame` is one pass a frame over `gPlttBufferFaded`.** *A time tint is a blend in the same place, skipped indoors.*
+- ***The clock is a function, not a variable***: **watch and season are computed from play time when asked**, *so nothing new is saved and nothing can fall out of step.*
+- ***The playtest agent reads RAM***, **so it can be told the watch and season for free** — *which makes the time system testable by the harness the same day it lands.*
+
+#### Open, deliberately
+
+- **Is one hour of play the right day**, or should a day be shorter so a single session sees all four watches twice?
+- **Which routes change by watch?** *Every route diluting it; three or four that visibly change teaches it.*
+- **Does the season lean belong in both editions**, or does it stack with Tier 2 so that CONTEXT's winter is a different place from CONTENT's?
+- **Does the Index record when a daemon was bound?** *It could. 4.2 says the Index cannot hold what matters, and a timestamp is exactly the thing it can hold.*
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -7912,6 +7965,8 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
+- **Day, night and the four seasons** (9.21, *proposed 2026-09-14*). ***A clock made of play time, day read as CONTENT and night as CONTEXT, and the seasons as the Review Board's four humours leaning the wild tables toward VECTOR, ENTROPY, LATENT and FROZEN.*** **Nothing built; four questions in 9.21 to settle first**
+- **The GLOBAL INDEX in the islands** (*asked 2026-09-14*). ***Every daemon past #151 findable in the seven islands, split by edition.*** **235 species, 33 met today.** *A derived placement is drafted for review in `tools/plan_global_index.py`* — **and it collides with 2.10 and 8.2b: a daemon the player can meet gets a name, so making all of them meetable means naming about two hundred more, in the islands' register**
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
 - **Do the names have to BEAT the model a reader already has?** (8.10). ***The agent ground Route 4 for 205 steps looking for a GROWTH or SIGNAL daemon, with 9.4's hue in front of it and the type badges on screen, and reasoned in Grass and Electric anyway.*** **2.6 asks whether a player can generalise or only remember; this reader could do either and chose to remember.** *A pretrained reader translates back whenever translation is possible* — **a cost of renaming that 2.6 never priced and cannot price from the chart alone**
 - **Should the agent be TOLD that colour is the type?** (8.10). *Saying it makes the run measure 9.4 — whether a reader handed the model can use it. Leaving it unsaid keeps the run measuring 2.6 — whether the words win against priors.* ***Both are worth measuring and they are not the same run***

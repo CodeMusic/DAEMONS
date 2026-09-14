@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.193 — 2026-09-14
+
+### 9.21 proposed — time; the GLOBAL INDEX plan; THE ANNEX reachable again
+
+- ***9.21, proposed and not built:*** **a clock made of play time** (*FireRed has no RTC; `SaveBlock2` already saves play time, so nothing new is stored*), **day as CONTENT and night as CONTEXT**, ***and the four seasons as the Review Board's four humours*** — *spring VECTOR, summer ENTROPY, autumn LATENT, winter FROZEN* — **leaning the wild tables.** *Built on two precedents already in the engine: ALTERING CAVE's table switch and 8.6a's palette pass.*
+- ***The GLOBAL INDEX in the islands*** **goes to the Open log with a derived placement for review** (`tools/plan_global_index.py`): *235 species past #151, 33 met today; edition by Tier 2's lean, habitat by type, stage by island.* **It collides with 2.10 — about two hundred more names.**
+- ***THE ANNEX is reachable after 4.34***: **the ARDOR CITY ferry sails there once Crystal has read the package.** *PROTEUS had been standing on an island nothing could reach.*
+
+---
+
 ## v11.192 — 2026-09-14
 
 ### 4.34 — THE SCHOLAR, and S.T.A.R.R. says where to take it
