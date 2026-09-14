@@ -32,7 +32,7 @@ import os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
-ELF  = os.path.join(GBA, "pokefirered.elf")
+ELF  = os.path.join(GBA, "daemonsContent.elf")
 NM   = "arm-none-eabi-nm"
 OUT  = os.path.join(ROOT, "ai", "pokefirered.sym")
 

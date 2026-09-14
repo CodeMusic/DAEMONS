@@ -213,13 +213,13 @@ def main():
     out.append("")
     out.append("| | size | used | free | %age |")
     out.append("|---|---|---|---|---|")
-    rel = memory("pokefirered.map")
+    rel = memory("daemonsContent.map")
     for name, size in REGIONS:
         used = rel.get(name, 0)
         out.append("| **%s** | %s | %s | **%s** | %.2f%% |"
                    % (name, kb(size), kb(used), kb(size - used), 100.0 * used / size))
     out.append("")
-    dbg = memory("pokefirered_debug.map")
+    dbg = memory("daemonsContent_debug.map")
     if dbg:
         out.append("*The debug ROM costs a further **%d bytes** of EWRAM and **%d** of IWRAM.*"
                    % (dbg.get("EWRAM", 0) - rel.get("EWRAM", 0),
@@ -232,7 +232,7 @@ def main():
     out.append("")
     out.append("| EWRAM | | IWRAM | |")
     out.append("|---|---|---|---|")
-    e, i = tenants("pokefirered.map", "ewram"), tenants("pokefirered.map", "iwram")
+    e, i = tenants("daemonsContent.map", "ewram"), tenants("daemonsContent.map", "iwram")
     for n in range(max(len(e), len(i))):
         a = "`%s` | %s" % (e[n][1], kb(e[n][0])) if n < len(e) else " | "
         b = "`%s` | %s" % (i[n][1], kb(i[n][0])) if n < len(i) else " | "

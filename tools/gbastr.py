@@ -25,7 +25,11 @@ def encode(s):
     except KeyError as e:
         sys.exit("no charmap entry for %s" % e)
 
-roms = [f for f in sorted(os.listdir(ENG)) if f.endswith(".gba")]
+#  Our ROMs first. Builds from before the rename leave pokefirered*.gba behind,
+#  and a stale ROM answering NO for a string that is in the real one is exactly
+#  the false negative this tool exists to prevent.
+_all = [f for f in sorted(os.listdir(ENG)) if f.endswith(".gba")]
+roms = [f for f in _all if f.startswith("daemons")] or _all
 words = sys.argv[1:] or sys.exit(__doc__)
 for rom in roms:
     data = open(os.path.join(ENG, rom), "rb").read()

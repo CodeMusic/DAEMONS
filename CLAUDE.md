@@ -173,7 +173,7 @@ make vanilla-check  # prove the classic toolchain against pristine upstream
 ```
 
 For the GBA build, `make -C engineGba firered` (or `leafgreen`, or
-`firered_debug`). **`shasum -c firered.sha1` now fails by design** — the ROM
+`firered_debug`). The ROMs are named for our editions, not retail's: `daemonsContent.gba` and `daemonsContext.gba`, with `_debug` for the testing builds — the Makefile maps `firered` to CONTENT and `leafgreen` to CONTEXT, and `.elf`, `.map`, `.sym` and mGBA's `.sav` follow the same name. **`shasum -c firered.sha1` now fails by design** — the ROM
 carries our content. It proves the *toolchain* on a pristine `pret/pokefirered`
 checkout, and it did still pass after the debug scaffolding went in, which was
 the point at the time. It is not a regression check for this fork.

@@ -54,7 +54,7 @@ Their file against our ROM reads party, position and battle state **correctly**,
 and move names, item names and **the type chart** as garbage. That is the worst
 failure mode available: it looks like it is working.
 
-`tools/gbasym.py` emits ours from `pokefirered.elf`, so it cannot drift — rename
+`tools/gbasym.py` emits ours from `daemonsContent.elf`, so it cannot drift — rename
 a symbol or move a struct and the table follows on the next build.
 `FIRERED_BRIDGE_STRICT_SYMBOLS=1` is set so a missing symbol fails loudly
 instead of reading zeroes.

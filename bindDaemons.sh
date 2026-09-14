@@ -295,9 +295,15 @@ else
     context) TARGET=leafgreen ;;
   esac
   [[ $DEBUG -eq 1 ]] && TARGET="${TARGET}_debug"
-  # pokefirered names the ROM after the build, so the debug build gets its own
-  # file and therefore its own .sav.
-  ROM="poke${TARGET}.gba"
+  # The ROM carries our edition's name -- engineGba's Makefile renames it from
+  # retail's pokefirered.gba. The debug build still gets its own file, and
+  # therefore its own .sav.
+  case "$EDITION" in
+    content) ROM=daemonsContent ;;
+    context) ROM=daemonsContext ;;
+  esac
+  [[ $DEBUG -eq 1 ]] && ROM="${ROM}_debug"
+  ROM="${ROM}.gba"
   # agbcc lives inside the engine checkout; the ARM binutils it calls do not.
   export PATH="/opt/homebrew/bin:$PATH"
   command -v arm-none-eabi-as >/dev/null || {
