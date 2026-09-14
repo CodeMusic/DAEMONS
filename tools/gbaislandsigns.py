@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Two vanilla boards that still carried red squiggle lettering (T-86; vision.md 4.4, 9.22).
+"""Vanilla boards that still carried red squiggle lettering (T-86; vision.md 4.4, 9.22, 9.23).
 
     python3 tools/gbaislandsigns.py            # preview to /tmp/island_signs.png (before | after)
     python3 tools/gbaislandsigns.py --write    # tiles, blocks, the two maps
@@ -12,6 +12,11 @@ curl, showing a paler board beneath with fragments of darker, older lettering --
 too little to read. The picture shows the lifting; the text box names it. Row 5,
 whose golds these are, on the top layer over the lab wall, with its two legs in
 the row below.
+
+BRAZEN'S TWO RED ROUNDELS (42 and 50, 13..14) were vanilla's GYM markers in front
+of the PROOF HALL and the BENCHMARK. The BENCHMARK's becomes the MARK board every
+other BENCHMARK town has; the PROOF HALL's reads QED, which is how a proof ends.
+Both are copies of Brazen's own sign blocks, which the two had shared.
 
 ONE ISLAND'S NET CENTER BOARD (15, 6). It is General's block 2, the ordinary
 signpost every map shares, so it is copied into the Sevii 1-3 tileset rather
@@ -106,10 +111,40 @@ def net_board():
     return g, 2
 
 
+def mark_board():
+    """16x24 in row 5: the BENCHMARK's board, as the other seven towns have it, reading MARK."""
+    WHITE, LIGHT, GREY, DARK, OUT, BRIGHT, GOLD3 = 1, 2, 3, 4, 5, 10, 12
+    g = grid(16, 24)
+    rect(g, 0, 1, 15, 14, OUT); rect(g, 1, 2, 14, 13, WHITE)
+    rect(g, 1, 2, 14, 2, BRIGHT); rect(g, 1, 13, 14, 13, LIGHT)
+    word(g, 1, 6, "MARK", OUT)
+    rect(g, 2, 12, 13, 12, GOLD3)
+    for x in (3, 11):
+        rect(g, x, 15, x + 1, 22, GREY); rect(g, x, 15, x, 22, LIGHT)
+        rect(g, x - 1, 23, x + 2, 23, DARK)
+    return g, 5
+
+
+def qed_board():
+    """16x24 in row 2: the PROOF HALL's board. A proof ends in QED; the board says only that."""
+    WHITE, PALE, LIGHT, MID, GREY, DARK, OUT = 1, 2, 3, 4, 5, 6, 7
+    g = grid(16, 24)
+    rect(g, 1, 1, 14, 14, OUT); rect(g, 2, 2, 13, 13, WHITE)
+    rect(g, 2, 2, 13, 2, PALE); rect(g, 2, 13, 13, 13, LIGHT)
+    word(g, 3, 6, "QED", OUT)
+    rect(g, 3, 12, 12, 12, MID)
+    for x in (3, 11):
+        rect(g, x, 15, x + 1, 22, GREY); rect(g, x + 1, 15, x + 1, 22, DARK)
+        rect(g, x - 1, 23, x + 2, 23, MID)
+    return g, 2
+
+
 # (map, tileset, art, [(cell x, cell y, art x of the cell's left, art y of the cell's top)])
 SIGNS = [
     ("CinnabarIsland", "gTileset_CinnabarIsland", gold_leaf_board, [(9, 9, 0, -8), (10, 9, 16, -8), (9, 10, 0, 8), (10, 10, 16, 8)]),
     ("OneIsland", "gTileset_SeviiIslands123", net_board, [(15, 6, 0, 0)]),
+    ("SaffronCity", "gTileset_SaffronCity", mark_board, [(50, 13, 0, -8), (50, 14, 0, 8)]),
+    ("SaffronCity", "gTileset_SaffronCity", qed_board, [(42, 13, 0, -8), (42, 14, 0, 8)]),
 ]
 
 
@@ -120,15 +155,23 @@ def main():
     rules = open(RULES).read()
     pt = Image.open(os.path.join(PD, "tiles.png")); ptp = pt.load()
     panels, writes = [], []
+    maps_open, sets_open = {}, {}
     for mp, ts, artf, cells in SIGNS:
         art, row = artf()
         j = json.load(open(os.path.join(GBA, "data/maps", mp, "map.json"))); l = layouts[j["layout"]]
-        bd_path = os.path.join(GBA, l["blockdata_filepath"]); bd = bytearray(open(bd_path, "rb").read()); W = l["width"]
+        bd_path = os.path.join(GBA, l["blockdata_filepath"]); W = l["width"]
+        bd = maps_open.setdefault(bd_path, bytearray(open(bd_path, "rb").read()))
         d = tdir(ts)
-        meta = bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read()); attr = bytearray(open(os.path.join(d, "metatile_attributes.bin"), "rb").read())
-        key = "secondary/%s/tiles.4bpp: %%.4bpp: %%.png\n\t$(GFX) $< $@ -num_tiles " % os.path.basename(d)
-        at = rules.index(key) + len(key); n = int(rules[at:].split()[0])
-        img = Image.open(os.path.join(d, "tiles.png")); ip = img.load()
+        if d not in sets_open:
+            key_ = "secondary/%s/tiles.4bpp: %%.4bpp: %%.png\n\t$(GFX) $< $@ -num_tiles " % os.path.basename(d)
+            at_ = rules.index(key_) + len(key_)
+            sets_open[d] = dict(meta=bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read()),
+                                attr=bytearray(open(os.path.join(d, "metatile_attributes.bin"), "rb").read()),
+                                img=Image.open(os.path.join(d, "tiles.png")), key=key_, n=int(rules[at_:].split()[0]), total=None,
+                                disk_meta=open(os.path.join(d, "metatiles.bin"), "rb").read(), disk_img=Image.open(os.path.join(d, "tiles.png")))
+        st_ = sets_open[d]
+        meta, attr, key, img = st_["meta"], st_["attr"], st_["key"], st_["img"]
+        n = st_["total"] or st_["n"]; ip = img.load()
         referenced = {(struct.unpack_from("<H", meta, i * 2)[0] & 0x3FF) - 640 for i in range(len(meta) // 2)}
         free = [s for s in range(n) if s not in referenced and (s // 16 + 1) * 8 <= img.height] + list(range(n, 384))
         placed = {}
@@ -179,12 +222,16 @@ def main():
                 for k, v in enumerate(px):
                     gp[(s % 16) * 8 + k % 8, (s // 16) * 8 + k // 8] = v
             print("  %s: %d tiles, %d blocks" % (mp, len(new_tiles), len(plan)))
-            writes.append((d, g, meta, attr, bd_path, bd, key, n, total))
+            st_["img"], st_["total"] = g, total
             img, ip = g, g.load()
+            if d not in [w[0] for w in writes]:
+                writes.append((d, bd_path))
+            elif bd_path not in [w[1] for w in writes]:
+                writes.append((d, bd_path))
 
         # preview around the board
         pals = [read_pal(os.path.join(PD, "palettes/%02d.pal" % k)) for k in range(7)] + [read_pal(os.path.join(d, "palettes/%02d.pal" % k)) for k in range(7, 13)]
-        old_meta = open(os.path.join(d, "metatiles.bin"), "rb").read(); old_img = Image.open(os.path.join(d, "tiles.png"))
+        old_meta, old_img = st_["disk_meta"], st_["disk_img"]
         def render(data, mt, timg):
             tp = timg.load()
             x0, y0 = min(c[0] for c in cells) - 3, min(c[1] for c in cells) - 3
@@ -220,13 +267,17 @@ def main():
     print("  preview %s (before | after: Quicksilver, One Island)" % PREVIEW)
 
     if WRITE:
-        for d, g, meta, attr, bd_path, bd, key, n, total in writes:
-            g.save(os.path.join(d, "tiles.png"))
-            open(os.path.join(d, "metatiles.bin"), "wb").write(meta); open(os.path.join(d, "metatile_attributes.bin"), "wb").write(attr)
-            open(bd_path, "wb").write(bd)
-            if total > n:
-                rules = open(RULES).read(); at = rules.index(key) + len(key)
-                open(RULES, "w").write(rules[:at] + str(total) + rules[at + len(str(n)):])
+        done_sets = set()
+        for d, bd_path in writes:
+            open(bd_path, "wb").write(maps_open[bd_path])
+            if d in done_sets:
+                continue
+            done_sets.add(d); st_ = sets_open[d]
+            st_["img"].save(os.path.join(d, "tiles.png"))
+            open(os.path.join(d, "metatiles.bin"), "wb").write(st_["meta"]); open(os.path.join(d, "metatile_attributes.bin"), "wb").write(st_["attr"])
+            if st_["total"] and st_["total"] > st_["n"]:
+                rules = open(RULES).read(); at = rules.index(st_["key"]) + len(st_["key"])
+                open(RULES, "w").write(rules[:at] + str(st_["total"]) + rules[at + len(str(st_["n"])):])
         print("  written: %d boards" % len(writes))
 
 

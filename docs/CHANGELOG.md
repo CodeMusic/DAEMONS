@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.206 — 2026-09-14
+
+### 9.23 — Brazen's roundels
+
+- ***Brazen's two red GYM roundels are boards now***: **MARK before the BENCHMARK, as in the other seven towns, and QED before the PROOF HALL.**
+- ***The CHECKPOINT and REPO drawn over each other*** **were Quicksilver's pair, which stand wall to wall** — *the shared drawing let one building's blocks show inside the other's footprint.* **T-85's town-tile redraw already gives each its own blocks, and they now read cleanly; no Sevii island has the two touching.**
+
 ## v11.205 — 2026-09-14
 
 ### 4.4 — The gold leaf, drawn
