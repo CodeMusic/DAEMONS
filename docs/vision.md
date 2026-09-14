@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.199**
+**A total conversion — the living design bible, v11.200**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7902,6 +7902,20 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | **the grass** | ***a meadow green, our own sprig, and tall grass as a field of narrow blades***, *with the walking effect redrawn to match* | *new shapes and new colours — recolouring vanilla's tufts would still read as vanilla's* |
 
 ***A tree is not a tile.*** **Vanilla's tree is 32 by 48 pixels in pieces reused across dozens of blocks, some of one tree and some of two overlapping ones**, *so every piece was traced back to where it sat in a standalone tree or a forest and redrawn from the same place in the new one.* ***The colours moved as exact values across 58 outdoor palettes***, *so no seam can open where a town's own tiles meet grass.* **T-61.**
+
+### 9.23 CHECKPOINTS, THE REPO and the BENCHMARKS, as buildings — *decided 2026-09-14, not drawn*
+
+***The lexicon renamed them in section 1; they still looked like a Pokémon Center, a Poké Mart and a Gym.*** **A player finds them by sight in every town, so what they look like is how the names are learned.** *Each keeps what the vanilla building did for navigation — you can spot one across a town — and says what it is by what it shows, not by what it spells.*
+
+| | emblem | outside | inside |
+|---|---|---|---|
+| **CHECKPOINT** | ***a circular restore arrow*** | ***a calm teal roof*** | ***the healing machine becomes a rack of BOX slots with progress lights*** — *restore from a saved state, which is what 1 says a CHECKPOINT is* |
+| **THE REPO** | ***a stacked package*** | ***a warm amber roof*** | ***shelves of labelled package bins*** — *a repo distributes packages (1)* |
+| **BENCHMARK** | ***a gauge needle*** | ***a slate grey roof*** | **the arenas keep their city themes (5)**; ***the entrance statues become a scoreboard plinth*** |
+
+***Signs carry the emblem and no letters.*** **Our 3x5 font fits three letters to a board, and every short form of these names is an abbreviation the lexicon avoids** — *the full name is in the text box and on the town map.* ***The emblem replaces the Poké Ball everywhere it stood***: *over the door, on the sign, on the CHECKPOINT floor.*
+
+***Colour here carries function, not decoration*** (9.4): **a colour per kind is how a player tells the three apart at a glance**, *which is the job vanilla's red and blue did.* **Teal, amber and slate are ours; red and blue were theirs.** *Halftone greys them like everything else.* **T-62 to T-65.**
 
 ### 9.2 Order of operations
 

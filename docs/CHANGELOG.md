@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.200 — 2026-09-14
+
+### 9.23 — CHECKPOINTS, THE REPO and the BENCHMARKS, as buildings
+
+- ***A symbol per kind replaces the Poké Ball*** — **a restore arrow, a stacked package, a gauge needle** — *on doors, signs and the CHECKPOINT floor; signs carry no letters.* **Roofs are teal, amber and slate in our own shapes.** ***Inside, a rack of BOX slots restores daemons, the REPO shelves package bins, and BENCHMARK statues become a scoreboard plinth.*** *T-61's grass also reaches Blanche's pale tall grass.* **T-62 to T-65.**
+
 ## v11.199 — 2026-09-14
 
 ### 9.22 — The world's own trees, water and grass
