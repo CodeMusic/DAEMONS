@@ -121,15 +121,44 @@ def silhouette(a):
     missed key; it looks like a framing bug.
 
     So the four corners are keyed as well, when they agree with each other.
-    The hue rule still runs, because it is what removes the ellipse."""
+    The hue rule still runs, because it is what removes the ellipse.
+
+    AND ONLY WHAT TOUCHES THE BORDER IS BACKGROUND. Both rules are colour
+    tests, and a colour test cannot tell the backdrop from a garment that
+    happens to sit near it. Al's backdrop is a dark sage at (97,130,103), and
+    the shaded lavender of his trousers and the grey of the box he holds are
+    inside the 45 radius -- so the early pic shipped with its trousers mostly
+    holes, and the late one speckled. A keyable pixel is background only if it
+    connects to the edge of the image through other keyable pixels; the
+    outline stops the fill, so the inside of the figure survives whatever
+    colour it is. The ellipse touches the backdrop, so it still goes."""
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
-    greenish = (g - r > 12) & (g - b > 4)
+    keyable = (g - r > 12) & (g - b > 4)
     corners = np.stack([a[2, 2], a[2, -3], a[-3, 2], a[-3, -3]])
     spread = corners.max(axis=0) - corners.min(axis=0)
     if spread.max() < 24:                       # a real flat backdrop
         key = np.median(corners, axis=0)
-        greenish = greenish | (((a - key) ** 2).sum(axis=2) < 45 ** 2)
-    return ~greenish
+        keyable = keyable | (((a - key) ** 2).sum(axis=2) < 45 ** 2)
+    return ~connected_to_border(keyable)
+
+def connected_to_border(mask):
+    """The part of mask reachable from the image's edge, 4-connected."""
+    try:
+        from scipy import ndimage
+        labels, _ = ndimage.label(mask)
+        edge = np.unique(np.concatenate([labels[0], labels[-1], labels[:, 0], labels[:, -1]]))
+        return np.isin(labels, edge[edge > 0])
+    except ImportError:
+        reach = np.zeros_like(mask)
+        reach[0], reach[-1], reach[:, 0], reach[:, -1] = mask[0], mask[-1], mask[:, 0], mask[:, -1]
+        while True:
+            grow = reach.copy()
+            grow[1:] |= reach[:-1]; grow[:-1] |= reach[1:]
+            grow[:, 1:] |= reach[:, :-1]; grow[:, :-1] |= reach[:, 1:]
+            grow &= mask
+            if (grow == reach).all():
+                return reach
+            reach = grow
 
 def cut(job):
     # Sampled on the grid it was drawn on: these are pixel drawings upscaled
