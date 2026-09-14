@@ -261,4 +261,5 @@ def main():
         print("  written: %d palettes, tiles.png (16 grass tiles, the tall grass clump), tall_grass.png, jump_tall_grass.png" % len(changed))
 
 
-main()
+if __name__ == "__main__":
+    main()

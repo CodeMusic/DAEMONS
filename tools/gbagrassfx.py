@@ -31,13 +31,12 @@ PREVIEW = "/tmp/blanche_grass_fx.png"
 WRITE = "--write" in sys.argv
 
 C = {n: G.GROUND_COLOURS[n - 1] for n in range(1, 9)}          # GRASS, TIP, TUFT, DARK, CHALK, SPECK, SHADE, EDGE
-# A sprite on grass the same colours as itself vanishes, so the effect is pushed
-# one step outward on both ends: its tips lighter than any grass tile, its body
-# and base darker than the darkest tuft. Still no green a pale town lacks.
-def shade(c, k):
-    return tuple(max(0, min(255, round(v * k))) for v in c)
-MOVE = {1: C[G.SPECK], 2: C[G.TIP], 3: shade(C[G.TUFT], 0.86), 4: shade(C[G.DARK], 0.74), 5: shade(C[G.DARK], 0.58),
-        12: C[G.SPECK], 13: shade(C[G.GRASS], 0.92), 14: shade(C[G.TUFT], 0.82), 15: shade(C[G.DARK], 0.70)}
+# Each index takes the colour its job has in Blanche's tall grass TILE
+# (gbapalegrass.py), so the parted grass is the grass it parts. An earlier pass
+# darkened the body to stand out, and it sat on the pale field as a dark band;
+# what stands out now is only what should -- the thrown leaves, near white.
+MOVE = {1: C[G.SPECK], 2: C[G.TIP], 3: C[G.GRASS], 4: C[G.DARK], 5: C[G.DARK],
+        12: C[G.TIP], 13: C[G.GRASS], 14: C[G.TUFT], 15: C[G.DARK]}
 
 
 def read_pal(path):
