@@ -52,7 +52,7 @@ WRITE = "--write" in sys.argv
 GROUND_COLOURS = [(196, 212, 186), (230, 238, 222), (172, 192, 166), (140, 162, 138),
                   (238, 238, 230), (252, 252, 248), (218, 218, 208), (214, 222, 204)]
 ROW7 = [(255, 0, 255)] + GROUND_COLOURS + [(84, 90, 96), (214, 230, 234), (186, 210, 220), (152, 184, 202),
-                                           (230, 228, 222), (180, 178, 172), (214, 214, 200)]
+                                           (230, 228, 222), (180, 178, 172), (132, 132, 120)]
 ROW12 = [(255, 0, 255)] + GROUND_COLOURS + [(84, 90, 96), (246, 246, 242), (226, 236, 222), (196, 214, 196),
                                             (160, 182, 164), (124, 146, 130), (70, 74, 80)]
 GRASS, TIP, TUFT, DARK, CHALK, SPECK, SHADE, EDGE = range(1, 9)
@@ -92,19 +92,26 @@ def water(x, y, f):
 
 
 def daisies(f):
-    """one cell of the bed, frame f: {(x, y): (row, index)} in cell coordinates"""
+    """one cell of the bed, frame f: {(x, y): (row, index)} in cell coordinates.
+    Three full heads and a bud: white petals two pixels out, a grey ring to hold
+    them against pale grass, a dark eye, dark leaves -- bold at 16x16."""
     px = {}
-    for k, (cx, cy) in enumerate(((3, 4), (11, 3), (7, 10), (13, 12), (2, 13))):
-        px[(cx, cy + 3)] = (7, TUFT)                                      # the stem stays put
-        px[(cx + 1, cy + 3)] = (7, DARK)
-        cx += (0, 1, 0, -1)[(f + k) % 4]                                  # the head sways
-        px[(cx, cy + 2)] = (7, TUFT)
-        for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
-            px[(cx + dx, cy + dy)] = (7, SPECK)
-        for dx, dy in ((-1, -1), (1, 1)):
-            px[(cx + dx, cy + dy)] = (7, SHADE)
+    for k, (cx, cy, big) in enumerate(((4, 4, True), (11, 6, True), (6, 11, True), (13, 13, False))):
+        for dx, dy in ((0, 3), (0, 4)):
+            px[(cx + dx, cy + dy)] = (7, TUFT)                            # the stem stays put
+        for dx in (-2, -1, 1, 2):
+            px[(cx + dx, cy + 3 + (abs(dx) == 1))] = (7, DARK)            # leaves
+        cx += (0, 1, 0, -1)[(f + k) % 4] if big else 0                    # the head sways
+        r = 2 if big else 1
+        petals = {(cx + dx, cy + dy) for dx in range(-r, r + 1) for dy in range(-r, r + 1)
+                  if 0 < abs(dx) + abs(dy) <= r + (big and 0)} | ({(cx + dx, cy + dy) for dx in (-1, 1) for dy in (-1, 1)} if big else set())
+        ring = {(x + dx, y + dy) for (x, y) in petals for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))} - petals - {(cx, cy)}
+        for c in ring:
+            px[c] = (7, JOINT)
+        for c in petals:
+            px[c] = (7, SPECK)
         px[(cx, cy)] = (7, EYE)
-    return {(x % 16, y % 16): c for (x, y), c in px.items() if 0 <= x < 16 and 0 <= y < 16}
+    return {(x, y): c for (x, y), c in px.items() if 0 <= x < 16 and 0 <= y < 16}
 
 
 def birch():
