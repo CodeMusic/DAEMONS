@@ -37,6 +37,7 @@ blocked cell where it was, on `gTileset_SlateBenchmark`; Brazen's dojo keeps the
 old tileset it shared.
 
     python3 tools/gbainterior.py slate --write
+    python3 tools/gbainterior.py doldrum --write      # BASIN's becalmed lido (T-106)
 
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
@@ -409,6 +410,95 @@ def slate(old_img, raw_=None):
     return r.im
 
 
+# DOLDRUM BENCHMARK (BASIN), from the concept approved 2026-09-15: the becalmed lido. Every water cell stays
+# water (MB_OCEAN_WATER, surfable) and every walkway floor; the drawing reads which is which from the room itself
+def doldrum(old_img, raw_=None):
+    ST = load("gbastatues")
+    old = Old("cerulean_gym")
+    _, raw = old.layout("LAYOUT_CERULEAN_CITY_GYM")
+    H, W = len(raw), len(raw[0])
+    blocked = lambda x, y: bool((raw[y][x] >> 10) & 3)
+    water = lambda x, y: 0 <= x < W and 0 <= y < H and (old.attr(raw[y][x] & 0x3FF) & 0x1FF) == 0x15 and not blocked(x, y) and y >= 3
+    WATER, WATERL, WATERD, WALLBAND, RING = (58, 116, 176), (84, 144, 200), (46, 98, 156), (34, 72, 120), (72, 132, 190)
+    DECK, GROUT = (226, 222, 208), (196, 204, 212)
+    WALK, WALKL, GUTTER = (236, 232, 218), (248, 246, 238), (120, 170, 210)
+    COPE, COPEF = (248, 246, 238), (196, 192, 180)
+    TILE, TILEL, TILED, TRIM = (198, 214, 226), (220, 232, 240), (160, 182, 200), (92, 120, 150)
+    SKY, SKYL, SEA, SEAD = (206, 230, 244), (232, 244, 250), (98, 150, 196), (70, 120, 170)
+    STEEL, STEELL, STEELD = (176, 184, 192), (222, 228, 232), (110, 118, 126)
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    CX, CY = 8 * 16 + 8, 6 * 16 + 8
+    for y in range(H):
+        for x in range(W):
+            X, Y = x * 16, y * 16
+            if y <= 2 or x in (0, W - 1) or y == H - 1:
+                continue
+            if water(x, y):
+                for yy in range(16):
+                    for xx in range(16):
+                        px, py = X + xx, Y + yy
+                        d = math.hypot(px - CX, (py - CY) * 1.3)
+                        c = WATER
+                        if (py % 8) == 3 and (px // 8 + py // 8) % 3 == 0:
+                            c = WATERL
+                        if int(d) % 18 == 0 and d > 20:
+                            c = RING
+                        r.px(px, py, c)
+                if not water(x, y - 1):
+                    r.rect(X, Y, X + 15, Y + 3, WALLBAND); r.rect(X, Y + 4, X + 15, Y + 4, WATERD)
+                if not water(x - 1, y):
+                    r.rect(X, Y, X + 1, Y + 15, WATERD)
+                if not water(x + 1, y):
+                    r.rect(X + 14, Y, X + 15, Y + 15, WATERD)
+            else:
+                if 2 <= x <= W - 3 and 5 <= y <= H - 3:
+                    r.rect(X, Y, X + 15, Y + 15, WALK)
+                    if x % 2 == 0:
+                        r.rect(X, Y, X + 15, Y, WALKL)
+                    if water(x, y - 1) or water(x, y + 1):
+                        r.rect(X, Y + 7, X + 15, Y + 8, GUTTER)
+                    else:
+                        r.rect(X + 7, Y, X + 8, Y + 15, GUTTER)
+                else:
+                    r.rect(X, Y, X + 15, Y + 15, DECK)
+                    r.rect(X, Y, X + 15, Y, GROUT); r.rect(X, Y, X, Y + 15, GROUT); r.rect(X + 8, Y + 8, X + 15, Y + 8, GROUT)
+                if water(x, y + 1):
+                    r.rect(X, Y + 12, X + 15, Y + 13, COPE); r.rect(X, Y + 14, X + 15, Y + 15, COPEF)
+    r.ellipse(CX, CY + 3, 14, 7, COPEF); r.ellipse(CX, CY, 14, 7, COPE); r.ellipse(CX, CY, 10, 5, WALK); r.ellipse(CX, CY, 3, 1.5, GUTTER)
+    for y in range(0, 48):
+        for x in range(0, W * 16):
+            c = TILE
+            if y % 8 == 0 or x % 8 == 0:
+                c = TILED
+            elif y % 8 == 1:
+                c = TILEL
+            r.px(x, y, c)
+    r.rect(0, 40, W * 16 - 1, 43, TRIM); r.rect(0, 44, W * 16 - 1, 47, TILED)
+    for px_ in (4 * 16 + 8, 6 * 16 + 8, 10 * 16 + 8, 12 * 16 + 8):                 # portholes onto a flat horizon
+        r.ellipse(px_, 22, 9, 9, STEELD); r.ellipse(px_, 22, 7, 7, SKY)
+        r.rect(px_ - 6, 25, px_ + 6, 29, SEA); r.rect(px_ - 5, 30, px_ + 5, 31, SEAD); r.rect(px_ - 4, 17, px_ - 1, 18, SKYL)
+        r.rect(px_ - 7, 24, px_ + 7, 24, SKYL)
+    r.ellipse(8 * 16 + 8, 6, 5, 4, STEEL)
+    r.rect(0, 0, 15, H * 16 - 1, TRIM); r.rect(W * 16 - 16, 0, W * 16 - 1, H * 16 - 1, TRIM)
+    for y in range(0, H * 16, 16):
+        r.rect(0, y, 15, y, TILED); r.rect(W * 16 - 16, y, W * 16 - 1, y, TILED)
+    r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    for (lx, ly) in ((3, 5), (13, 5), (3, 18), (13, 18)):                                # steel pool ladders
+        X, Y = lx * 16, ly * 16
+        r.rect(X + 3, Y - 4, X + 4, Y + 10, STEEL); r.rect(X + 11, Y - 4, X + 12, Y + 10, STEEL)
+        r.rect(X + 3, Y - 4, X + 4, Y - 4, STEELL); r.rect(X + 11, Y - 4, X + 12, Y - 4, STEELL)
+        for k in (0, 5):
+            r.rect(X + 5, Y + k, X + 10, Y + k, STEELD)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[16 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx in (6, 10):
+        r.indexed(top, pal0, sx * 16, 16 * 16); r.indexed(base, pal0, sx * 16, 17 * 16)
+    r.rect(7 * 16 + 2, 18 * 16 + 2, 10 * 16 - 3, 18 * 16 + 15, TRIM); r.rect(7 * 16 + 4, 18 * 16 + 4, 10 * 16 - 5, 18 * 16 + 13, TILEL)
+    r.rect(7 * 16 + 4, 18 * 16 + 8, 10 * 16 - 5, 18 * 16 + 9, GUTTER)
+    return r.im
+
+
 # the REPO's materials
 def repo(old_img):
     W, H = 11, 9
@@ -526,6 +616,11 @@ BUILDINGS = {
     "slate": dict(
         old="pewter_gym", symbol="gTileset_SlateBenchmark", dir="slate_benchmark",
         layouts=[("LAYOUT_PEWTER_CITY_GYM", slate)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),    # DOLDRUM BENCHMARK, on a tileset of its own
+    "doldrum": dict(
+        old="cerulean_gym", symbol="gTileset_DoldrumBenchmark", dir="doldrum_benchmark",
+        layouts=[("LAYOUT_CERULEAN_CITY_GYM", doldrum)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
     ),
 }
