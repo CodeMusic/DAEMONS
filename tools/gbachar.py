@@ -132,6 +132,43 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/leader_blaine_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_blaine.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # The BENCHMARK staff (T-116): one portrait per gym, DOLDRUM two; drafted through daemon/sprite.
+    "staff_slate": dict(src="gfx/characters/staff_slate_beaver.png",       # SLATE's apprentice, a young beaver
+                        dst="engineGba/graphics/trainers/front_pics/staff_slate_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_slate.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_doldrum_swimmer": dict(src="gfx/characters/staff_doldrum_manatee.png",       # DOLDRUM's swimmer, a manatee
+                        dst="engineGba/graphics/trainers/front_pics/staff_doldrum_swimmer_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_doldrum_swimmer.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_doldrum_picnicker": dict(src="gfx/characters/staff_doldrum_capybara.png",       # DOLDRUM's picnicker, a capybara
+                        dst="engineGba/graphics/trainers/front_pics/staff_doldrum_picnicker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_doldrum_picnicker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_ardor": dict(src="gfx/characters/staff_ardor_meerkat.png",       # ARDOR's staff, meerkats on watch
+                        dst="engineGba/graphics/trainers/front_pics/staff_ardor_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_ardor.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_verdigris": dict(src="gfx/characters/staff_verdigris_poodle.png",       # VERDIGRIS's staff, poodles clipped to shape
+                        dst="engineGba/graphics/trainers/front_pics/staff_verdigris_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_verdigris.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_lurid": dict(src="gfx/characters/staff_lurid_frog.png",       # LURID's staff, tailless poison dart frogs
+                        dst="engineGba/graphics/trainers/front_pics/staff_lurid_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_lurid.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_brazen": dict(src="gfx/characters/staff_brazen_tarsier.png",       # BRAZEN's staff, tarsiers framing what they watch
+                        dst="engineGba/graphics/trainers/front_pics/staff_brazen_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_brazen.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_quicksilver": dict(src="gfx/characters/staff_quicksilver_rat.png",       # QUICKSILVER's staff, lab rats
+                        dst="engineGba/graphics/trainers/front_pics/staff_quicksilver_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_quicksilver.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "staff_callow": dict(src="gfx/characters/staff_callow_penguin.png",       # CALLOW's staff, cheerful penguins
+                        dst="engineGba/graphics/trainers/front_pics/staff_callow_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/staff_callow.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
 }
 
 def silhouette(a, hue=True, holes=False):
