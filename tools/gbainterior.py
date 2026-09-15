@@ -38,6 +38,7 @@ old tileset it shared.
 
     python3 tools/gbainterior.py slate --write
     python3 tools/gbainterior.py doldrum --write      # BASIN's becalmed lido (T-106)
+    python3 tools/gbainterior.py ardor --write        # GAUGE's signal room (T-107)
 
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
@@ -499,6 +500,116 @@ def doldrum(old_img, raw_=None):
     return r.im
 
 
+# ARDOR BENCHMARK (GAUGE), from the concept approved 2026-09-15: the signal room. Vanilla's switch puzzle is whole --
+# fifteen identical unlabelled ports where the bins stood, and the beam barrier a signal gate between two emitters,
+# drawn on, half on and off so every block id the map script swaps in has art of its own
+A_FLOOR, A_FLOORL, A_JOINT, A_TRACE, A_TRACEL = (58, 48, 52), (74, 62, 66), (40, 32, 36), (164, 100, 60), (212, 146, 92)
+A_WALL, A_WALLD, A_WALLL, A_TRIM, A_TRAY = (124, 42, 42), (84, 28, 30), (164, 68, 58), (190, 118, 70), (46, 40, 44)
+A_STEEL, A_STEELL, A_STEELD, A_HOLE = (150, 154, 160), (200, 204, 208), (96, 100, 108), (28, 26, 30)
+A_AMBER, A_AMBERD, A_RED, A_GREEN = (255, 190, 80), (200, 120, 40), (230, 64, 52), (96, 206, 120)
+A_BEAM, A_GLOW, A_EDGE, A_HAZ = (255, 240, 200), (255, 176, 84), (206, 96, 44), (236, 184, 48)
+A_GATE = [(x, y) for y in (6, 7) for x in range(3, 8)]
+A_IDS = {"half": [0x2BB, 0x2BC, 0x2BD, 0x2BE, 0x2BF, 0x2C3, 0x2C4, 0x2C5, 0x2C6, 0x2C7],
+         "off":  [0x293, 0x294, 0x281, 0x295, 0x296, 0x29B, 0x29C, 0x281, 0x29D, 0x29E],
+         "on":   [0x2A9, 0x2AA, 0x285, 0x2AB, 0x2AC, 0x2B1, 0x2B2, 0x28D, 0x2B3, 0x2B4]}   # on last: where half on draws
+                                                                                    # the same, the map starts on on's ids
+
+
+def ardor_room(gate="on"):
+    ST = load("gbastatues")
+    W, H = 11, 21
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    under_gate = lambda x, y: 48 <= x < 128 and 96 <= y < 128           # no copper here: Floor 0x281 serves both rows
+    for y in range(32, 20 * 16):                                        # dark floor panels, copper along the joints
+        for x in range(W * 16):
+            c = A_FLOOR
+            if x % 16 == 0 or y % 16 == 0:
+                c = A_JOINT
+                if ((y % 32 == 0 and x % 16 != 0) or (x % 48 == 0 and y % 16 != 0)) and not under_gate(x, y):
+                    c = A_TRACE
+            elif x % 16 == 1 or y % 16 == 1:
+                c = A_FLOORL
+            r.px(x, y, c)
+    for x in range(0, W * 16, 48):
+        for y in range(32, 20 * 16, 32):
+            if not under_gate(x, y) and not under_gate(x - 1, y - 1):
+                r.rect(x - 1, y - 1, x + 1, y + 1, A_TRACEL)
+    r.rect(0, 0, W * 16 - 1, 31, A_WALL); r.rect(0, 0, W * 16 - 1, 3, A_WALLD)          # the back wall and its scope
+    r.rect(0, 24, W * 16 - 1, 27, A_TRAY); r.rect(0, 28, W * 16 - 1, 31, A_WALLD)
+    r.rect(52, 4, 123, 22, A_STEELD); r.rect(54, 6, 121, 20, (20, 34, 30))
+    for x in range(56, 120):
+        r.px(x, 13 + int(5 * math.sin((x - 56) / 5.0) * (1 if (x // 16) % 2 else 0.4)), A_GREEN)
+    for x in (16, 144):                                                  # vents
+        r.rect(x, 6, x + 16, 20, A_TRAY)
+        for k in range(4):
+            r.rect(x + 2, 8 + k * 3, x + 14, 8 + k * 3, A_STEELD)
+    for (x0, x1) in ((0, 15), (160, 175)):                               # GAUGE's end, its side walls
+        r.rect(x0, 32, x1, 6 * 16 - 1, A_WALL); r.rect(x0 if x0 else x1 - 1, 32, x0 + 1 if x0 else x1, 6 * 16 - 1, A_WALLD)
+    for (x0, x1) in ((0, 47), (128, 175)):                               # the wall across, either side of the gate
+        r.rect(x0, 96, x1, 127, A_WALL); r.rect(x0, 96, x1, 98, A_WALLL); r.rect(x0, 124, x1, 127, A_WALLD)
+        r.rect(x0, 106, x1, 109, A_TRAY)
+    for rx in (2, 8):                                                    # amplifier racks, their lights blinking
+        X = rx * 16
+        r.rect(X + 1, 90, X + 14, 125, A_STEELD); r.rect(X + 2, 91, X + 13, 124, A_STEEL); r.rect(X + 2, 91, X + 13, 92, A_STEELL)
+        for k in range(5):
+            y = 97 + k * 5
+            r.rect(X + 4, y, X + 11, y + 2, A_HOLE); r.px(X + 5 + k % 3, y + 1, [A_AMBER, A_RED, A_GREEN][k % 3])
+    for cx in (3, 7):                                                    # copper coils where the pillars stood
+        X = cx * 16
+        r.rect(X + 3, 16, X + 12, 46, A_AMBERD)
+        for y in range(18, 44, 3):
+            r.rect(X + 2, y, X + 13, y + 1, A_TRIM); r.px(X + 3, y, A_TRACEL)
+        r.rect(X + 2, 44, X + 13, 47, A_STEELD); r.rect(X + 4, 12, X + 11, 16, A_STEEL)
+    r.shade(66, 64, 114, 66, 0.7)                                        # GAUGE's steel dais, a hazard stripe round it
+    r.rect(64, 34, 111, 63, A_STEELD); r.rect(66, 36, 109, 61, A_STEEL); r.rect(66, 36, 109, 37, A_STEELL)
+    for x in range(64, 112):
+        if (x // 3) % 2:
+            r.px(x, 34, A_HAZ); r.px(x, 63, A_HAZ)
+    for ex in (3, 7):                                                    # the gate's emitters
+        X = ex * 16
+        r.rect(X + 4, 92, X + 11, 126, A_STEELD); r.rect(X + 5, 93, X + 10, 125, A_STEEL)
+        for y in (104, 118):
+            on = gate != "off"
+            r.ellipse(X + 8, y, 4, 4, (A_AMBER if gate == "on" else A_AMBERD) if on else A_HOLE)
+            r.ellipse(X + 8, y, 2, 2, A_BEAM if gate == "on" else (A_GLOW if on else A_STEELD))
+    for k, y in enumerate((104, 118)):                                   # the beam: both on, the lower one off after a switch
+        if gate == "off" or (gate == "half" and k == 1):
+            continue
+        for x in range(60, 117):
+            r.px(x, y - 2, A_EDGE); r.px(x, y + 2, A_EDGE); r.px(x, y - 1, A_GLOW); r.px(x, y + 1, A_GLOW); r.px(x, y, A_BEAM)
+            if (x * 7) % 11 == 0:
+                r.px(x, y - 3, A_GLOW); r.px(x, y + 3, A_GLOW)
+    for (bx, by) in [(x, y) for y in (10, 12, 14) for x in (1, 3, 5, 7, 9)]:   # fifteen ports, none of them labelled
+        X, Y = bx * 16, by * 16
+        r.shade(X + 4, Y + 13, X + 15, Y + 15, 0.6)
+        r.rect(X + 2, Y + 1, X + 13, Y + 13, A_STEELD); r.rect(X + 3, Y + 2, X + 12, Y + 12, A_STEEL); r.rect(X + 3, Y + 2, X + 12, Y + 3, A_STEELL)
+        for k in range(3):
+            r.rect(X + 4 + k * 3, Y + 6, X + 5 + k * 3, Y + 8, A_HOLE)
+        r.px(X + 11, Y + 10, A_STEELD)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[32 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx in (3, 7):
+        r.indexed(top, pal0, sx * 16, 16 * 16); r.indexed(base, pal0, sx * 16, 17 * 16)
+    r.rect(66, 306, 108, 319, A_AMBERD); r.rect(68, 308, 106, 317, A_TRAY)      # the mat
+    r.rect(0, 20 * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
+def ardor(old_img):
+    return ardor_room("on")
+
+
+def ardor_states():
+    """Every block id the map script swaps into the gate, with the art of the state it names."""
+    out = {}
+    for gate, ids in A_IDS.items():
+        im = ardor_room(gate).load()
+        for (x, y), m in zip(A_GATE, ids):
+            out[m] = tuple(im[x * 16 + i % 16, y * 16 + i // 16] for i in range(256))
+    return out
+
+
 # the REPO's materials
 def repo(old_img):
     W, H = 11, 9
@@ -622,6 +733,12 @@ BUILDINGS = {
         old="cerulean_gym", symbol="gTileset_DoldrumBenchmark", dir="doldrum_benchmark",
         layouts=[("LAYOUT_CERULEAN_CITY_GYM", doldrum)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),    # ARDOR BENCHMARK, on a tileset of its own; the gate's three states keep their ids
+    "ardor": dict(
+        old="vermilion_gym", symbol="gTileset_ArdorBenchmark", dir="ardor_benchmark",
+        layouts=[("LAYOUT_VERMILION_CITY_GYM", ardor)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        states=ardor_states,
     ),
 }
 
@@ -676,7 +793,10 @@ def build(name, cfg):
     attr_of, raw_of = {}, {}
     canvases = {}
     for lid, draw in cfg["layouts"]:
-        img, raw = old.layout(lid)
+        if LAYOUTS[lid]["secondary_tileset"] == cfg["symbol"]:        # its map.bin already holds the new ids, which
+            raise SystemExit("  %s: %s is already built -- restore its map.bin and layouts.json "      # read against
+                             "from git before rebuilding" % (name, lid))                                 # the old tileset
+        img, raw = old.layout(lid)                                                                       # are nonsense
         canvas = draw(img, theme, raw) if draw in (checkpoint_2f, themed) else draw(img)
         l = LAYOUTS[lid]; W, H = l["width"], l["height"]
         cp = canvas.load()
@@ -705,6 +825,8 @@ def build(name, cfg):
         reserved[m] = (tuple(pix[i // 16][i % 16] for i in range(256)), old.attr(m) & ~(7 << 29))
     for m, (lid, x, y) in cfg["from_cells"].items():
         reserved[m] = (art_of[(lid, x, y)], old.attr(m) & ~(7 << 29))
+    for m, art in (cfg["states"]() if "states" in cfg else {}).items():
+        reserved[m] = (art, old.attr(m) & ~(7 << 29))
     ids, next_id = {v: k for k, v in reserved.items()}, 640
     cell_id = {}
     for key in art_of:
