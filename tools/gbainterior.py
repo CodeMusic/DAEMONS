@@ -21,10 +21,16 @@ barrier and its shade (cable_club.inc), Viridian's two counter pieces
 originals recoloured into the building's theme, so each animation's frames
 still match; the counter pieces take the new counter's own cells.
 
-WHY A TILESET EACH. `gTileset_PokemonCenter` also draws One Island's and Indigo
-Plateau's CHECKPOINTs, which are shaped differently; those stay on it for now
-(T-103), and One Island's upstairs, which is identical to Kanto's, moves over.
-`gTileset_Mart` keeps the unused Lavaridge and RS layouts.
+WHY A TILESET EACH. One tileset cannot hold every CHECKPOINT: Kanto's two floors
+(and One Island's identical upstairs) fill `gTileset_Checkpoint` to 381 of 384
+tiles. One Island's and Indigo Plateau's downstairs, which are shaped
+differently and have no concept of their own, get `gTileset_CheckpointOneIsland`
+and `gTileset_CheckpointIndigo`: the theme and the new floor, Kanto's new
+drawing wherever the same vanilla block stands (KANTO_STAMP), our plant for
+Indigo's, and everything else recoloured. `gTileset_PokemonCenter` now serves
+only the unused RS layout; `gTileset_Mart` keeps the unused Lavaridge and RS ones.
+
+    python3 tools/gbainterior.py checkpoint_one_island checkpoint_indigo --write
 
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
@@ -251,7 +257,7 @@ def link_mark(r, cx, cy):
         r.ellipse(nx, cy, 6, 6, C_INLAY); r.ellipse(nx, cy, 4, 4, C_INLAYB); r.ellipse(nx, cy, 1.6, 1.6, C_INLAY)
 
 
-def checkpoint_2f(old_img, theme):
+def checkpoint_2f(old_img, theme, raw=None):
     r = Room(old_img.copy())
     floor_cols = set(FLOOR_OLD)
     for y in range(r.h):
@@ -268,6 +274,54 @@ def checkpoint_2f(old_img, theme):
             for x in range(cx * 16, cx * 16 + 16):
                 r.p[x, y] = cp_floor(x, y)
         plant(r, cx * 16 + 2, 128, *PLANT_CP)
+    return r.im
+
+
+# the CHECKPOINTs without a concept of their own (One Island, Indigo Plateau): the theme, the new floor, and wherever
+# they stand the same vanilla furniture as Kanto's downstairs, Kanto's new drawing of it -- found by the vanilla block
+# id, whose Kanto cell is recorded here because Kanto's own map now uses the new tileset's ids
+KANTO_STAMP = {
+    723: (1, 0), 653: (1, 1), 660: (1, 2),                                             # the plant
+    713: (2, 0), 714: (3, 0), 715: (2, 1), 716: (3, 1), 717: (2, 2), 718: (3, 2),       # the leaflet shelf
+    681: (4, 1), 682: (5, 1), 683: (6, 1), 689: (4, 2), 690: (5, 2), 691: (6, 2),   # the rack (not the plain wall: stamped
+                                                                                     # alone it patched the recoloured walls)
+    646: (7, 0), 647: (8, 0), 654: (7, 1), 655: (8, 1),                                 # the monitor
+    684: (9, 1), 685: (10, 1), 692: (9, 2), 693: (10, 2),                              # the counter's arm and bell
+    645: (11, 0), 98: (11, 1), 661: (11, 2),                                            # the terminal
+    662: (12, 0), 663: (13, 0), 670: (12, 1), 671: (13, 1),                             # the wall map
+    697: (4, 3), 700: (5, 3), 664: (7, 3), 701: (10, 3),                               # the counter's front
+    649: (6, 5), 650: (7, 5), 651: (8, 5), 657: (6, 6), 658: (7, 6), 659: (8, 6),
+    665: (6, 7), 666: (7, 7), 667: (8, 7),                                              # the floor arrow
+    706: (6, 8), 707: (7, 8), 708: (8, 8), 26: (6, 9), 27: (7, 9), 28: (8, 9),          # the mat
+}
+_KANTO = []
+
+
+def themed(old_img, theme, raw):
+    if not _KANTO:
+        _KANTO.append(checkpoint_1f(None).load())
+    kp = _KANTO[0]
+    r = Room(old_img.copy())
+    floor_cols = set(FLOOR_OLD)
+    for y in range(r.h):
+        for x in range(r.w):
+            c = r.p[x, y]
+            r.p[x, y] = cp_floor(x, y) if c in floor_cols else theme.get(c, c)
+    for y, row in enumerate(raw):
+        for x, v in enumerate(row):
+            cell = KANTO_STAMP.get(v & 0x3FF)
+            if cell:
+                for yy in range(16):
+                    for xx in range(16):
+                        r.p[x * 16 + xx, y * 16 + yy] = kp[cell[0] * 16 + xx, cell[1] * 16 + yy]
+    # vanilla's floor plants -- a leafy top (832 or 768) over its pot (769) -- become our snake plant
+    for y in range(1, len(raw)):
+        for x in range(len(raw[0])):
+            if raw[y][x] & 0x3FF == 769 and raw[y - 1][x] & 0x3FF in (832, 768):
+                for yy in range((y - 1) * 16, (y + 1) * 16):
+                    for xx in range(x * 16, x * 16 + 16):
+                        r.p[xx, yy] = cp_floor(xx, yy)
+                plant(r, x * 16 + 2, y * 16 + 2, *PLANT_CP)
     return r.im
 
 
@@ -366,6 +420,25 @@ BUILDINGS = {
         from_cells={0x2BF: ("LAYOUT_MART", 1, 3), 0x2C0: ("LAYOUT_MART", 1, 4)},
         plan={"LAYOUT_MART": {(1, 6): (False, 0), (2, 6): (False, 0), (4, 5): (True, 0), (5, 5): (True, 0), (4, 6): (True, 0), (5, 6): (True, 0)}},
     ),
+    # One Island's and Indigo Plateau's downstairs, each on a tileset of its own (gTileset_Checkpoint is full)
+    "checkpoint_one_island": dict(
+        old="pokemon_center", symbol="gTileset_CheckpointOneIsland", dir="checkpoint_one_island",
+        layouts=[("LAYOUT_ONE_ISLAND_POKEMON_CENTER_1F", themed)],
+        theme=THEME_CP,
+        recoloured=ESCALATOR + [0x2C5, 0x35A, 0x35B, 0x35D, 0x35F],      # the network machine's screens, which the map script switches on
+        forced=set(ESCALATOR),
+        recolour_cells={"LAYOUT_ONE_ISLAND_POKEMON_CENTER_1F": [(x, y) for x in (0, 1) for y in (4, 5, 6)]},
+        from_cells={}, plan={},
+    ),
+    "checkpoint_indigo": dict(
+        old="pokemon_center", symbol="gTileset_CheckpointIndigo", dir="checkpoint_indigo",
+        layouts=[("LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F", themed)],
+        theme=THEME_CP,
+        recoloured=ESCALATOR + [0x2C5],
+        forced=set(ESCALATOR),
+        recolour_cells={"LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F": [(x, y) for x in (0, 1) for y in (13, 14, 15)]},
+        from_cells={}, plan={},
+    ),
 }
 
 
@@ -420,7 +493,7 @@ def build(name, cfg):
     canvases = {}
     for lid, draw in cfg["layouts"]:
         img, raw = old.layout(lid)
-        canvas = draw(img, theme) if draw is checkpoint_2f else draw(img)
+        canvas = draw(img, theme, raw) if draw in (checkpoint_2f, themed) else draw(img)
         l = LAYOUTS[lid]; W, H = l["width"], l["height"]
         cp = canvas.load()
         for y in range(H):
