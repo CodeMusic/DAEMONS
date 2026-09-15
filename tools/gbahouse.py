@@ -70,7 +70,7 @@ ROWS = {                                             # palette rows 7..12, fifte
     7: ["OUT", "BEAMD", "BEAM", "BEAML", "WOODD", "WOODF", "WOODT", "FLOORS", "FLOORD", "FLOOR", "FLOORL", "SHADE", "SHADE2", "CREAM", "CREAMD"],
     8: ["OUT", "SIDED", "SIDE", "SEAM", "WALLD", "WALL", "WALLL", "BEAMD", "BEAM", "BEAML", "WOODD", "WOODF", "WOODT", "VOID", "CREAM"],
     9: ["OUT", "SOOT", "STONED", "MORTAR", "STONE", "STONET", "WHITE", "IROND", "IRON", "IRONT", "SCREEND", "SCREEN", "SCREENL", "SKYD", "SKY"],
-    10: ["OUT", "EMBER", "FIRE2", "FIRE", "GLOW", "COPPER", "POTD", "POT", "POTT", "CHK", "SKYL", "WHITE", "WOODF", "WOODT", "BEAM"],
+    10: ["OUT", "SOOT", "STONED", "MORTAR", "STONE", "STONET", "EMBER", "FIRE2", "FIRE", "GLOW", "IROND", "IRON", "WHITE", "CHK", "SHADE"],   # the hearth row: fire with its stone and iron
     11: ["OUT", "RUGD", "RUG1", "RUG2", "RUG3", "RUG4", "RUG5", "Q1", "Q2", "Q3", "QD", "FLOOR", "FLOORL", "FLOORS", "SHADE2"],
     12: ["OUT", "GREEND", "GREEN", "GREENL", "BOOK1", "BOOK2", "BOOK3", "BOOK4", "BOOK5", "WOODD", "WOODF", "WOODT", "POT", "POTD", "FLOOR"],
 }
@@ -248,9 +248,12 @@ def hearth(r, x0):
     r.rect(x0 + 6, 12, x1 - 6, 31, "SOOT")
     for k, x in enumerate(range(x0 + 8, x1 - 7, 3)):
         r.rect(x, 20 + (k % 2) * 3, x + 1, 30, "FIRE" if k % 2 else "FIRE2")
-    r.rect(x0 + 7, 28, x1 - 7, 31, "EMBER"); r.rect(x0 - 4, 9, x1 + 4, 10, "WOODT"); r.hline(x0 - 4, x1 + 4, 11, "WOODD")
-    r.rect(x0 - 4, 32, x1 + 4, 37, "STONET"); r.hline(x0 - 4, x1 + 4, 32, "WHITE"); r.rect(x0 - 4, 38, x1 + 4, 39, "STONED"); r.hline(x0 - 4, x1 + 4, 40, "OUT")
-    r.rect(x0 + 6, 33, x1 - 6, 36, "GLOW"); r.shadow(x0 - 3, 41, x1 + 5, 42)
+    # the mantel and hearthstone are stone and stop at the breast's own edges: a tile holding stone and the wall
+    # or the floor has no palette row to be drawn in
+    r.rect(x0, 9, x1, 10, "STONET"); r.hline(x0, x1, 11, "STONED")
+    r.rect(x0 + 7, 28, x1 - 7, 31, "EMBER")
+    r.rect(x0, 32, x1, 37, "STONET"); r.hline(x0, x1, 32, "WHITE"); r.rect(x0, 38, x1, 39, "STONED"); r.hline(x0, x1, 40, "OUT")
+    r.rect(x0 + 6, 33, x1 - 6, 36, "GLOW"); r.shadow(x0 + 1, 41, x1 + 2, 42)
 
 
 def first_floor():
@@ -258,8 +261,11 @@ def first_floor():
     # x1: the basin (KITCHEN)
     r.box(17, 14, 31, 38, 5, top="CREAM", front="WOODF", dark="WOODD")
     r.rect(19, 15, 28, 18, "STONED"); r.rect(20, 16, 27, 17, "SKY"); r.rect(19, 24, 29, 36, "WOODD"); r.rect(20, 25, 28, 35, "WOODF"); r.px(27, 30, "COPPER")
-    # x2: the iron stove and its pipe (KITCHEN)
-    r.rect(37, 0, 40, 13, "IROND"); r.vline(37, 0, 13, "IRON")
+    # x2: the iron stove and its pipe (KITCHEN), on a stone splashback -- iron has no row with the wall in it,
+    # so the pipe is a dark silhouette across the beam and iron only against the stone
+    r.rect(32, 8, 47, 13, "STONE"); r.hline(32, 47, 8, "STONET"); r.hline(32, 47, 11, "MORTAR"); r.vline(40, 8, 10, "MORTAR")
+    r.rect(37, 0, 40, 7, "OUT"); r.vline(37, 0, 7, "BEAMD")
+    r.rect(37, 8, 40, 13, "IROND"); r.vline(37, 8, 13, "IRON")
     r.box(33, 14, 46, 38, 4, top="IRONT", front="IRON", dark="IROND")
     r.rect(36, 24, 43, 33, "IROND"); r.rect(37, 26, 42, 31, "EMBER"); r.rect(38, 27, 41, 30, "FIRE2")
     # x3..4: the counter and its cupboards (CABINET), a shelf of jars above
