@@ -43,6 +43,7 @@ old tileset it shared.
     python3 tools/gbainterior.py lurid --write        # TILT's tilted room, its maze redrawn (T-109)
     python3 tools/gbainterior.py brazen --write       # MATTE's gallery of mounts (T-111)
     python3 tools/gbainterior.py quicksilver --write  # ANNEAL's silver lab (T-112)
+    python3 tools/gbainterior.py callow --write       # SCORN's survey floor, its spinner maze redrawn (T-113)
 
 Statue heads are drawn on the top layer, as vanilla does, so the player walks behind them (T-110).
 
@@ -1083,6 +1084,190 @@ def quicksilver(old_img, statues=True):
     return quicksilver_room(False, statues)
 
 
+# CALLOW BENCHMARK (SCORN), from the concept approved 2026-09-15 (v2): the survey floor. A benchmark is a surveyor's
+# mark. Poured concrete, unripe green, with a surveyor's grid; every wall a cut section through the ground; the spinners
+# painted in SCORN's red, the stops brass survey discs; he stands on a dark slab with a snake coiled faint in it, and a
+# fossil serpent lies in the rock of the back wall under a red plumb bob. The spinner maze is new -- found by a search
+# that simulates field_player_avatar.c's slides -- so a player who knows vanilla's still has to work this one out
+C_GRID = [                                # rows 2..22; # a wall (or a statue), > < ^ v a spinner, o a stop, @ a person
+    "..@.......@.^.......",
+    "....v.......#<......",
+    "#...........#.o<....",
+    "###################.",
+    "###################.",
+    "#......#.....@......",
+    "#.....@.......>...#.",
+    "#....#.....^......#.",
+    "#....#<...@.@...#.#.",
+    "#..@.#>#........#.#.",
+    "#.v#<#.#############",
+    "...#.#<#############",
+    "#>.#.vv#...@....#.#.",
+    "#..######..#....#.#.",
+    "#<.#######.#....#.#.",
+    "#.<...####.#......#.",
+    "...v...#...#......#.",
+    "####...#...#........",
+    "####...#.......#@..#",
+    "..@...<.............",
+    ".......v..v.........",
+]
+C_DIRS = {">": (1, 0), "<": (-1, 0), "^": (0, -1), "v": (0, 1)}
+C_BEH = {">": 0x54, "<": 0x55, "^": 0x56, "v": 0x57, "o": 0x58}               # MB_SPIN_RIGHT .. MB_STOP_SPINNING
+C_CELL = {(x, y + 2): ch for y, row in enumerate(C_GRID) for x, ch in enumerate(row)}
+C_WALLS = {c for c, ch in C_CELL.items() if ch == "#"}
+C_SPINS = {c: C_DIRS[ch] for c, ch in C_CELL.items() if ch in C_DIRS}
+C_STOPS = {c for c, ch in C_CELL.items() if ch == "o"}
+C_STATUES = [(15, 20), (19, 20)]
+C_DOOR = [(16, 22), (17, 22), (18, 22)]
+C_PLAN = {c: (ch == "#", C_BEH.get(ch, 0)) for c, ch in C_CELL.items() if c not in C_STATUES + C_DOOR}
+
+
+def callow_check():
+    """Slide the maze the way the engine does and refuse a room that strands anyone: SCORN and every trainer can be
+    reached from the door, the door can be reached from everywhere you can get to, and no slide goes on forever"""
+    people = json.load(open(os.path.join(GBA, "data/maps/ViridianCity_Gym/map.json")))["object_events"]
+    at = {(o["x"], o["y"]) for o in people}
+    assert at == {c for c, ch in C_CELL.items() if ch == "@"} and set(C_STATUES) <= C_WALLS, "CALLOW: the grid's people or statues moved"
+    solid = lambda c: not (0 <= c[0] < 20 and 2 <= c[1] <= 22) or c in C_WALLS or c in at
+    dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))
+
+    def step(c, d):
+        n = (c[0] + d[0], c[1] + d[1])
+        if solid(n):
+            return None
+        if n not in C_SPINS:
+            return n
+        cur, dirn, seen = n, C_SPINS[n], set()
+        while True:
+            assert (cur, dirn) not in seen, "CALLOW: a slide that never ends, from %s" % (c,)
+            seen.add((cur, dirn))
+            nxt = (cur[0] + dirn[0], cur[1] + dirn[1])
+            if solid(nxt):
+                return cur
+            cur = nxt
+            if cur in C_STOPS:
+                return cur
+            dirn = C_SPINS.get(cur, dirn)
+
+    start = (17, 22)
+    edges, todo = {}, [start]
+    while todo:
+        c = todo.pop()
+        if c in edges:
+            continue
+        edges[c] = {r_ for r_ in (step(c, d) for d in dirs) if r_}
+        todo += [r_ for r_ in edges[c] if r_ not in edges]
+    back, todo = {start}, [start]
+    while todo:
+        c = todo.pop()
+        for a, outs in edges.items():
+            if c in outs and a not in back:
+                back.add(a); todo.append(a)
+    assert set(edges) <= back, "CALLOW: somewhere you can reach and never leave"
+    near = lambda t: any((t[0] + dx, t[1] + dy) in edges for dx, dy in dirs)
+    assert all(near((o["x"], o["y"])) for o in people if o.get("trainer_type") != "TRAINER_TYPE_NONE" or o["x"] == 2), "CALLOW: someone out of reach"
+
+
+C_CONC, C_CONCL, C_GRIDL, C_TICK = (196, 206, 184), (212, 220, 200), (170, 182, 160), (140, 156, 128)
+C_SLAB, C_SLABL, C_SLABD = (180, 184, 178), (208, 212, 206), (140, 144, 138)
+C_SOIL, C_CLAY, C_CLAYD, C_ROCK, C_ROCKD, C_BED = (104, 132, 72), (152, 112, 76), (128, 92, 62), (132, 130, 124), (108, 106, 100), (64, 60, 58)
+C_PAINT, C_PAINTD, C_PANEL = (236, 56, 48), (168, 32, 34), (184, 196, 170)
+C_RED, C_REDL, C_REDD = (222, 48, 44), (255, 128, 112), (130, 26, 30)
+C_BONE, C_BONED = (214, 206, 186), (160, 152, 134)
+C_BRASS, C_BRASSL, C_BRASSD = (204, 164, 80), (240, 212, 136), (140, 104, 44)
+C_STONE, C_STONEL, C_INK = (58, 62, 66), (86, 92, 98), (30, 34, 30)
+
+
+def callow(old_img, statues=True):
+    callow_check()
+    ST = load("gbastatues")
+    W, H = 20, 24
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    walled = C_WALLS - set(C_STATUES)                    # a statue stands on the floor
+    blocked = lambda x, y: not (0 <= x < W) or y < 2 or y > 22 or (x, y) in walled
+    for y in range(H * 16):                              # poured concrete, a surveyor's grid
+        for x in range(W * 16):
+            dx, dy = x % 16, y % 16
+            c = C_CONC
+            if dx == 0 or dy == 0:
+                c = C_GRIDL
+            elif (dx + dy * 3) % 11 == 0:
+                c = C_CONCL
+            if (dx == 0 and dy in (15, 1)) or (dy == 0 and dx in (15, 1)):
+                c = C_TICK
+            r.px(x, y, c)
+    for x in range(W):                                   # the back wall: a deep section through the ground
+        X = x * 16
+        r.rect(X, 0, X + 15, 3, C_SLABD)
+        y = 4
+        for n, c in [(4, C_SOIL), (6, C_CLAY), (2, C_CLAYD), (8, C_ROCK), (2, C_ROCKD), (10, C_BED)]:
+            r.rect(X, y, X + 15, min(31, y + n - 1), c); y += n
+        r.px(X + (x * 7) % 16, 14, C_CLAYD); r.px(X + (x * 5 + 3) % 16, 22, C_ROCKD)
+    for x in range(2 * 16, 9 * 16):                      # a fossil serpent in the rock
+        y = 19 + round(2.2 * math.sin((x - 2 * 16) / 9.0))
+        r.px(x, y, C_BONE)
+        if x % 3 == 0:
+            r.px(x, y - 1, C_BONED); r.px(x, y + 1, C_BONED)
+    hx = 9 * 16; hy = 19 + round(2.2 * math.sin((hx - 2 * 16) / 9.0))
+    r.rect(hx, hy - 1, hx + 3, hy + 1, C_BONE); r.px(hx + 2, hy - 1, C_BONED)
+    px_ = 10 * 16 + 8                                    # the plumb line, its bob red
+    r.rect(px_ - 3, 0, px_ + 3, 2, C_BRASSD); r.rect(px_, 3, px_, 23, C_INK)
+    for k, w in enumerate((1, 2, 3, 3, 2, 1, 0)):
+        r.rect(px_ - w, 24 + k, px_ + w, 24 + k, C_RED if k < 5 else C_REDD)
+    r.px(px_ - 1, 25, C_REDL)
+    for y in range(2, 23):                               # walls: a slab on top, the strata where they face the floor
+        for x in range(W):
+            if not blocked(x, y):
+                continue
+            X, Y = x * 16, y * 16
+            if not blocked(x, y + 1):
+                r.rect(X, Y, X + 15, Y + 2, C_SLABL)
+                yy = Y + 3
+                for n, c in [(2, C_SOIL), (4, C_CLAY), (1, C_CLAYD), (4, C_ROCK), (1, C_ROCKD), (99, C_BED)]:
+                    r.rect(X, yy, X + 15, min(Y + 15, yy + n - 1), c); yy += n
+                    if yy > Y + 15:
+                        break
+                for k in range(X + 2, X + 16, 5):
+                    r.px(k, Y + 11, C_ROCKD)
+                r.shade(X, Y + 16, X + 15, Y + 18, 0.82)
+            else:
+                r.rect(X, Y, X + 15, Y + 15, C_SLAB)
+                if not blocked(x - 1, y): r.rect(X, Y, X + 1, Y + 15, C_SLABL)
+                if not blocked(x + 1, y): r.rect(X + 14, Y, X + 15, Y + 15, C_SLABD)
+                if not blocked(x, y - 1): r.rect(X, Y, X + 15, Y + 1, C_SLABL)
+    for (x, y), (ddx, ddy) in C_SPINS.items():           # SCORN's red, on the cells that throw you
+        X, Y = x * 16, y * 16
+        r.rect(X + 2, Y + 2, X + 13, Y + 13, C_PANEL)
+        for off in (-3, 2):
+            for t in range(-4, 5):
+                a = off + (4 - abs(t))
+                for w in (0, 1):
+                    cx_, cy_ = (8 + a + w, 8 + t) if ddx else (8 + t, 8 + a + w)
+                    if ddx < 0: cx_ = 15 - cx_
+                    if ddy < 0: cy_ = 15 - cy_
+                    r.px(X + cx_, Y + cy_, C_PAINT if w == 0 else C_PAINTD)
+    for (x, y) in C_STOPS:                               # brass survey discs
+        X, Y = x * 16, y * 16
+        r.ellipse(X + 8, Y + 8, 6, 6, C_BRASSD); r.ellipse(X + 8, Y + 8, 5, 5, C_BRASS)
+        r.rect(X + 8, Y + 4, X + 8, Y + 12, C_BRASSD); r.rect(X + 4, Y + 8, X + 12, Y + 8, C_BRASSD); r.px(X + 6, Y + 5, C_BRASSL)
+    r.rect(1 * 16 + 1, 2 * 16 + 1, 4 * 16 - 2, 4 * 16 - 2, C_STONE); r.rect(1 * 16 + 1, 2 * 16 + 1, 4 * 16 - 2, 2 * 16 + 2, C_STONEL)
+    r.rect(1 * 16 + 1, 4 * 16 - 3, 4 * 16 - 2, 4 * 16 - 2, C_REDD); r.shade(1 * 16 + 1, 4 * 16 - 1, 4 * 16 - 2, 4 * 16 + 1, 0.75)
+    scx, scy = 2 * 16 + 8, 3 * 16 + 2                    # a snake coiled faint in his slab
+    for k in range(160):
+        rad = 2 + k * 0.058
+        r.px(round(scx + rad * math.cos(k * 0.12)), round(scy + rad * math.sin(k * 0.12) * 0.8), C_REDD)
+    r.rect(scx + 10, scy - 6, scx + 12, scy - 5, C_RED); r.px(scx + 13, scy - 6, C_REDD)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[112 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx, sy in (C_STATUES if statues else ()):        # TRUE
+        r.indexed(top, pal0, sx * 16, (sy - 1) * 16); r.indexed(base, pal0, sx * 16, sy * 16)
+    r.rect(16 * 16 + 2, 22 * 16 + 2, 19 * 16 - 3, 22 * 16 + 15, C_SLABD); r.rect(16 * 16 + 4, 22 * 16 + 4, 19 * 16 - 5, 22 * 16 + 13, C_SOIL)
+    r.rect(0, 23 * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
 def quicksilver_states():
     """Each block id the quiz doors' scripts set, drawn from the room with every door open; an id used at several
     doors must draw the same at all of them, or the room would open wrongly somewhere"""
@@ -1253,6 +1438,12 @@ BUILDINGS = {
         layouts=[("LAYOUT_CINNABAR_ISLAND_GYM", quicksilver)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
         states=quicksilver_states, tops={"LAYOUT_CINNABAR_ISLAND_GYM": [(23, 19), (27, 19)]},
+    ),    # CALLOW BENCHMARK: a new spinner maze through the plan, checked by sliding it before it is built
+    "callow": dict(
+        old="viridian_gym", symbol="gTileset_CallowBenchmark", dir="callow_benchmark",
+        layouts=[("LAYOUT_VIRIDIAN_CITY_GYM", callow)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={},
+        plan={"LAYOUT_VIRIDIAN_CITY_GYM": C_PLAN}, tops={"LAYOUT_VIRIDIAN_CITY_GYM": [(15, 19), (19, 19)]},
     ),
 }
 
