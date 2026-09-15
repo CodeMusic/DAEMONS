@@ -41,6 +41,7 @@ old tileset it shared.
     python3 tools/gbainterior.py ardor --write        # GAUGE's signal room (T-107)
     python3 tools/gbainterior.py verdigris --write    # TRELLIS's espalier house (T-108)
     python3 tools/gbainterior.py lurid --write        # TILT's tilted room, its maze redrawn (T-109)
+    python3 tools/gbainterior.py brazen --write       # MATTE's gallery of mounts (T-111)
 
 Statue heads are drawn on the top layer, as vanilla does, so the player walks behind them (T-110).
 
@@ -849,6 +850,84 @@ def lurid(old_img):
     return lurid_room()
 
 
+# BRAZEN BENCHMARK (MATTE), from the concept approved 2026-09-15: the gallery of mounts. Vanilla's pad maze is whole
+# and every cell keeps its collision. Each room is a picture seen through its own mat -- gilt frame mouldings between
+# rooms, a cream bevelled mat where they meet a room, a halftone print in a different ink on each floor, so a room
+# shows only its own part of the picture. The pads are brass viewfinders; MATTE stands on the bare mount, framed
+B_GALLERY, B_GALLERYD = (58, 44, 40), (38, 28, 26)
+B_GILT, B_GILTL, B_GILTD, B_GILTS = (196, 150, 64), (238, 204, 116), (130, 90, 36), (96, 64, 28)
+B_MAT, B_MATL, B_MATD = (232, 224, 204), (248, 244, 232), (196, 186, 164)
+B_BRASS, B_BRASSL = (214, 170, 72), (250, 222, 140)
+B_CYAN, B_MAGENTA_INK, B_YELLOW, B_KEY = ((214, 230, 232), (110, 170, 190)), ((236, 220, 228), (190, 110, 150)), \
+    ((238, 232, 204), (206, 176, 80)), ((226, 226, 228), (120, 122, 136))
+B_INKS = {(0, 0): B_CYAN, (1, 0): B_MAGENTA_INK, (2, 0): B_YELLOW, (0, 1): B_KEY, (1, 1): None, (2, 1): B_CYAN,
+          (0, 2): B_YELLOW, (1, 2): B_KEY, (2, 2): B_MAGENTA_INK}
+B_ROOMS_X, B_ROOMS_Y = [(0, 8), (10, 18), (20, 28)], [(2, 7), (10, 15), (18, 23)]
+B_STATUES = [(12, 20), (16, 20)]
+
+
+def brazen(old_img, statues=True):
+    ST = load("gbastatues")
+    W, H = 29, 25
+    pads = {(w["x"], w["y"]) for w in json.load(open(os.path.join(GBA, "data/maps/SaffronCity_Gym/map.json")))["warp_events"]
+            if w["dest_map"] == "MAP_SAFFRON_CITY_GYM"}
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    r.rect(0, 0, W * 16 - 1, H * 16 - 1, B_GALLERY)
+    for wy in (0, 8, 16):                                # the gallery wall over each row of rooms, a brass picture rail
+        Y = wy * 16
+        r.rect(0, Y, W * 16 - 1, Y + 3, B_GALLERYD)
+        r.rect(0, Y + 10, W * 16 - 1, Y + 11, B_GILTD); r.rect(0, Y + 12, W * 16 - 1, Y + 12, B_GILT)
+    for ry, (y0, y1) in enumerate(B_ROOMS_Y):
+        for rx, (x0, x1) in enumerate(B_ROOMS_X):
+            ink = B_INKS[(rx, ry)]
+            X0, Y0, X1, Y1 = x0 * 16, y0 * 16, (x1 + 1) * 16 - 1, (y1 + 1) * 16 - 1
+            for y in range(Y0, Y1 + 1):
+                for x in range(X0, X1 + 1):
+                    c = B_MATL
+                    if ink:                              # halftone: a big dot, then a small one
+                        paper, dot = ink
+                        dx, dy, big = x % 8, y % 8, (x // 8 + y // 8) % 2 == 0
+                        c = paper
+                        if big and 2 <= dx <= 5 and 2 <= dy <= 5 and not (dx in (2, 5) and dy in (2, 5)):
+                            c = dot
+                        elif not big and dx in (3, 4) and dy in (3, 4):
+                            c = dot
+                    r.px(x, y, c)
+            r.rect(X0, Y0, X1, Y0 + 2, B_MATD); r.rect(X0, Y0 + 3, X1, Y0 + 3, B_MAT)      # the mat's bevel
+            r.rect(X0, Y0, X0 + 1, Y1, B_MATL); r.rect(X1 - 1, Y0, X1, Y1, B_MATD); r.rect(X0, Y1 - 1, X1, Y1, B_MATD)
+    for vx in (9, 19):                                   # the gilt mouldings between rooms
+        X = vx * 16
+        r.rect(X, 32, X + 15, (H - 1) * 16 - 1, B_GILT)
+        r.rect(X + 2, 32, X + 3, (H - 1) * 16 - 1, B_GILTL); r.rect(X + 7, 32, X + 8, (H - 1) * 16 - 1, B_GILTD)
+        r.rect(X + 12, 32, X + 13, (H - 1) * 16 - 1, B_GILTS)
+        for y in range(32, (H - 1) * 16, 6):
+            r.px(X + 5, y, B_GILTL); r.px(X + 10, y + 3, B_GILTD)
+    for wy in (7, 15):
+        Y = (wy + 1) * 16 + 24
+        r.rect(0, Y, W * 16 - 1, Y + 7, B_GILT); r.rect(0, Y + 1, W * 16 - 1, Y + 2, B_GILTL); r.rect(0, Y + 6, W * 16 - 1, Y + 7, B_GILTS)
+    r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    for (px_, py_) in pads:                              # brass viewfinders round a dark window
+        X, Y = px_ * 16, py_ * 16
+        r.rect(X + 3, Y + 3, X + 12, Y + 12, B_GALLERY); r.rect(X + 5, Y + 5, X + 10, Y + 10, B_GALLERYD)
+        for (cx, cy, sx, sy) in ((1, 1, 1, 1), (13, 1, -1, 1), (1, 13, 1, -1), (13, 13, -1, -1)):
+            r.rect(min(X + cx, X + cx + sx * 5), min(Y + cy, Y + cy + 1), max(X + cx, X + cx + sx * 5) + (1 if sx < 0 else 0), max(Y + cy, Y + cy + 1), B_BRASS)
+            r.rect(min(X + cx, X + cx + 1), min(Y + cy, Y + cy + sy * 5), max(X + cx, X + cx + 1), max(Y + cy, Y + cy + sy * 5) + (1 if sy < 0 else 0), B_BRASS)
+            r.px(X + cx + (1 if sx > 0 else 0), Y + cy + (1 if sy > 0 else 0), B_BRASSL)
+        r.rect(X + 7, Y + 7, X + 8, Y + 8, B_BRASSL)
+    FX0, FY0, FX1, FY1 = 12 * 16 + 4, 10 * 16 + 2, 17 * 16 - 5, 13 * 16 - 3        # MATTE's mount, an empty gilt frame
+    r.rect(FX0, FY0, FX1, FY1, B_GILT); r.rect(FX0 + 5, FY0 + 5, FX1 - 5, FY1 - 5, B_MATL)
+    r.rect(FX0 + 1, FY0 + 1, FX1 - 1, FY0 + 2, B_GILTL); r.rect(FX0 + 1, FY0 + 1, FX0 + 2, FY1 - 1, B_GILTL)
+    r.rect(FX0 + 1, FY1 - 2, FX1 - 1, FY1 - 1, B_GILTS); r.rect(FX1 - 2, FY0 + 1, FX1 - 1, FY1 - 1, B_GILTS)
+    r.rect(FX0 + 5, FY0 + 5, FX1 - 5, FY0 + 6, B_MATD)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[80 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx, sy in (B_STATUES if statues else ()):        # FRAME
+        r.indexed(top, pal0, sx * 16, (sy - 1) * 16); r.indexed(base, pal0, sx * 16, sy * 16)
+    r.rect(13 * 16 + 2, 23 * 16 + 2, 16 * 16 - 3, 23 * 16 + 15, B_GILTD); r.rect(13 * 16 + 4, 23 * 16 + 4, 16 * 16 - 5, 23 * 16 + 13, B_MAT)
+    return r.im
+
+
 # the REPO's materials
 def repo(old_img):
     W, H = 11, 9
@@ -994,6 +1073,12 @@ BUILDINGS = {
         plan={"LAYOUT_FUCHSIA_CITY_GYM": L_PLAN},
         swap=("LAYOUT_FUCHSIA_CITY_GYM", lambda: lurid_room(after=True), L_EXIT,
               "data/maps/FuchsiaCity_Gym/scripts.inc", "FuchsiaCity_Gym_EventScript_ShowWalls"),
+    ),    # BRAZEN BENCHMARK, on a tileset of its own; the pad maze untouched
+    "brazen": dict(
+        old="saffron_gym", symbol="gTileset_BrazenBenchmark", dir="brazen_benchmark",
+        layouts=[("LAYOUT_SAFFRON_CITY_GYM", brazen)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        tops={"LAYOUT_SAFFRON_CITY_GYM": [(12, 19), (16, 19)]},
     ),
 }
 
