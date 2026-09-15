@@ -39,6 +39,7 @@ old tileset it shared.
     python3 tools/gbainterior.py slate --write
     python3 tools/gbainterior.py doldrum --write      # BASIN's becalmed lido (T-106)
     python3 tools/gbainterior.py ardor --write        # GAUGE's signal room (T-107)
+    python3 tools/gbainterior.py verdigris --write    # TRELLIS's espalier house (T-108)
 
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
@@ -610,6 +611,115 @@ def ardor_states():
     return out
 
 
+# VERDIGRIS BENCHMARK (TRELLIS), from the concept approved 2026-09-15: the espalier house. Every hedge cell stays
+# blocked and becomes a plant pruned flat along a verdigris frame; the lawn is mown in stripes, the flowers are
+# identical seedlings on canes, the sand is gravel, the wall is a glasshouse
+V_VERD, V_VERDL, V_VERDD = (84, 158, 138), (140, 204, 180), (46, 102, 90)
+V_LEAF, V_LEAFL, V_LEAFD = (68, 138, 62), (116, 182, 86), (38, 90, 46)
+V_GRASS, V_GRASSL, V_GRASSD = (98, 158, 86), (114, 174, 98), (78, 132, 72)
+V_PATH, V_PATHL, V_PATHD = (204, 194, 168), (224, 216, 194), (164, 154, 130)
+V_GLASS, V_GLASSL = (184, 222, 220), (226, 244, 240)
+V_BRONZE, V_BRONZED, V_BLOOM, V_BLOOMD = (168, 124, 70), (116, 82, 46), (232, 214, 120), (190, 160, 70)
+
+
+def verdigris(old_img):
+    ST = load("gbastatues")
+    old = Old("celadon_gym")
+    _, raw = old.layout("LAYOUT_CELADON_CITY_GYM")
+    H, W = len(raw), len(raw[0])
+    inside = lambda x, y: 1 <= x <= W - 2 and 2 <= y <= H - 2
+    blocked = lambda x, y: inside(x, y) and bool((raw[y][x] >> 10) & 3)
+    path = lambda x, y: inside(x, y) and ((5 <= x <= 7 and y >= 9) or (2 <= x <= 10 and 10 <= y <= 11) or y >= 15)
+    flower = lambda x, y: (raw[y][x] & 0x3FF) in (0x2B6, 0x2B7)
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(2, H - 1):                                            # mown lawn, and gravel where the sand ran
+        for x in range(1, W - 1):
+            X, Y = x * 16, y * 16
+            if path(x, y):
+                for yy in range(16):
+                    for xx in range(16):
+                        c = V_PATH
+                        if (xx * 5 + yy * 3 + x + y) % 11 == 0:
+                            c = V_PATHD
+                        elif (xx * 3 + yy * 7 + x) % 13 == 0:
+                            c = V_PATHL
+                        r.px(X + xx, Y + yy, c)
+                if not path(x, y - 1) and inside(x, y - 1):              # bronze edging where the lawn stops
+                    r.rect(X, Y, X + 15, Y + 1, V_VERDD)
+                if not path(x - 1, y) and inside(x - 1, y):
+                    r.rect(X, Y, X + 1, Y + 15, V_VERDD)
+                if not path(x + 1, y) and inside(x + 1, y):
+                    r.rect(X + 14, Y, X + 15, Y + 15, V_VERDD)
+            else:
+                r.rect(X, Y, X + 15, Y + 15, V_GRASSL if (x // 2) % 2 else V_GRASS)
+                for k in range(0, 16, 4):
+                    r.px(X + (k * 5 + y * 3) % 16, Y + k + 1, V_GRASSD)
+    r.rect(0, 0, W * 16 - 1, 31, V_GLASS)                                # the glasshouse, its bars gone green
+    for x in range(0, W * 16, 12):
+        r.rect(x, 0, x + 1, 31, V_VERD)
+    for y in (0, 11, 22):
+        r.rect(0, y, W * 16 - 1, y + 1, V_VERD)
+    for x in range(2, W * 16, 12):
+        r.rect(x + 1, 3, x + 3, 9, V_GLASSL)
+    r.rect(0, 28, W * 16 - 1, 31, V_VERDD)
+    for x0 in (0, (W - 1) * 16):                                         # bronze columns, verdigris down them
+        r.rect(x0, 0, x0 + 15, H * 16 - 1, V_VERD)
+        r.rect(x0 + 3, 0, x0 + 12, H * 16 - 1, V_VERDL); r.rect(x0 + 7, 0, x0 + 8, H * 16 - 1, V_VERDD)
+        for y in range(8, H * 16, 24):
+            r.rect(x0 + 2, y, x0 + 13, y + 2, V_BRONZE)
+    r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+
+    def espalier(cx, cy):
+        X, Y = cx * 16, cy * 16
+        r.shade(X, Y + 14, X + 15, Y + 15, 0.65)
+        left, right = blocked(cx - 1, cy), blocked(cx + 1, cy)
+        if not left:
+            r.rect(X + 1, Y, X + 2, Y + 14, V_VERDD); r.px(X + 1, Y, V_VERDL)
+        if not right:
+            r.rect(X + 13, Y, X + 14, Y + 14, V_VERDD); r.px(X + 13, Y, V_VERDL)
+        for wy in (3, 8, 12):
+            r.rect(X + (0 if left else 2), Y + wy, X + (15 if right else 13), Y + wy, V_VERD)
+        r.rect(X + 7, Y + 2, X + 8, Y + 14, V_BRONZED)
+        for wy in (3, 8, 12):
+            x0, x1 = X + (0 if left else 3), X + (15 if right else 12)
+            for xx in range(x0, x1 + 1):
+                k = (xx + wy * 5) % 5
+                r.px(xx, Y + wy - 1, V_LEAF); r.px(xx, Y + wy + 1, V_LEAFD if k < 3 else V_LEAF)
+                if k != 4:
+                    r.px(xx, Y + wy - 2, V_LEAFL if k == 1 else V_LEAF)
+                if k in (0, 2):
+                    r.px(xx, Y + wy - 3, V_LEAFL)
+                if k == 3 and wy != 12:
+                    r.px(xx, Y + wy + 2, V_LEAFD)
+            for xx in range(x0, x1 + 1, 4):
+                r.px(xx + 1, Y + wy, V_VERDL)
+        r.rect(X + 6, Y + 14, X + 9, Y + 15, V_BRONZED)
+    for y in range(H):
+        for x in range(W):
+            if blocked(x, y):
+                espalier(x, y)
+            elif flower(x, y):                                           # identical seedlings, one bloom each
+                X, Y = x * 16, y * 16
+                for (sx, sy) in ((4, 5), (11, 5), (4, 12), (11, 12)):
+                    r.rect(X + sx, Y + sy - 4, X + sx, Y + sy + 1, V_BRONZE)
+                    r.px(X + sx - 1, Y + sy - 1, V_LEAF); r.px(X + sx + 1, Y + sy - 2, V_LEAF)
+                    r.px(X + sx - 1, Y + sy - 4, V_BLOOM); r.px(X + sx, Y + sy - 5, V_BLOOM); r.px(X + sx + 1, Y + sy - 4, V_BLOOMD)
+                    r.px(X + sx - 1, Y + sy + 2, V_GRASSD); r.px(X + sx + 1, Y + sy + 2, V_GRASSD)
+    for x in range(5 * 16, 9 * 16):                                      # TRELLIS's alcove, gravel edged in bronze
+        for y in range(4 * 16, 5 * 16):
+            r.px(x, y, V_PATHD if (x * 5 + y * 3) % 11 == 0 else (V_PATHL if (x * 3 + y * 7) % 13 == 0 else V_PATH))
+    r.rect(5 * 16, 5 * 16 - 2, 9 * 16 - 1, 5 * 16 - 1, V_VERDD)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[48 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx in (4, 8):
+        r.indexed(top, pal0, sx * 16, 15 * 16); r.indexed(base, pal0, sx * 16, 16 * 16)
+    r.rect(5 * 16 + 2, 18 * 16 + 2, 8 * 16 - 3, 18 * 16 + 15, V_VERDD); r.rect(5 * 16 + 4, 18 * 16 + 4, 8 * 16 - 5, 18 * 16 + 13, V_VERD)
+    for x in range(5 * 16 + 6, 8 * 16 - 6, 4):
+        r.rect(x, 18 * 16 + 6, x, 18 * 16 + 11, V_VERDL)
+    return r.im
+
+
 # the REPO's materials
 def repo(old_img):
     W, H = 11, 9
@@ -739,6 +849,11 @@ BUILDINGS = {
         layouts=[("LAYOUT_VERMILION_CITY_GYM", ardor)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
         states=ardor_states,
+    ),    # VERDIGRIS BENCHMARK, on a tileset of its own
+    "verdigris": dict(
+        old="celadon_gym", symbol="gTileset_VerdigrisBenchmark", dir="verdigris_benchmark",
+        layouts=[("LAYOUT_CELADON_CITY_GYM", verdigris)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
     ),
 }
 
