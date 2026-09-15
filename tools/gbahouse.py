@@ -8,10 +8,13 @@ WHY ITS OWN TILESET. Both floors are drawn almost entirely from gTileset_Buildin
 the primary every interior in the game loads (184 layouts), so redrawing those
 tiles would redraw shops and houses alike. The house gets a secondary tileset of
 its own instead -- the route CRYSTAL CLEAR's lab took (T-54) -- and every cell of
-both floors a block of it. The layout, collision and every behaviour stay: each
-new block copies the attributes of the block it replaces, so the KITCHEN, the
-CABINET, the TELEVISION, the WINDOW, the BOOKSHELF, the DRESSER, the signpost,
-both stair warps and the exit mat keep doing what they did.
+both floors a block of it.
+
+THE LAYOUT is new, and PLAN below is its truth: which cells are open, and the
+behaviour of each one that has any. The map sizes, the exit mat, both stair warps,
+the PORT at (1,1), the TV at (6,1), the note at (11,1) and the wake-up cell (6,6)
+stay where they were; MOM stands in her kitchen at (3,3) and the console sits at
+(9,6) -- both moved in the maps' map.json, which this tool does not write.
 
 THE DRAWING follows vanilla's rooms, which read as a box because:
   * the camera looks down from the south, so an object shows a lit top face and a
@@ -199,46 +202,88 @@ def chair(r, cx, cy, back):
         r.rect(cx - 5, cy - 9, cx + 5, cy - 4, "WOODD"); r.vline(cx + 7, cy - 12, cy + 5, "WOODD"); r.hline(cx - 7, cx + 7, cy - 1, "OUT")
 
 
+def armchair(r, cx, cy, facing):
+    """a padded armchair side-on, seen from above and the south: a tall back on the
+    outer side, an arm roll either side of the seat, a skirt in shadow along the front"""
+    x0, x1, top, bot = cx - 11, cx + 11, cy - 13, cy + 11
+    r.shadow(x0 + 3, bot + 1, x1 + 4, bot + 4); r.shadow(x1 + 2, top + 6, x1 + 4, bot)
+    bx0, bx1 = (x0, x0 + 6) if facing == "right" else (x1 - 6, x1)
+    sx0, sx1 = (bx1 + 1, x1) if facing == "right" else (x0, bx0 - 1)
+    r.rect(x0, top + 4, x1, bot, "Q1")
+    r.rect(bx0, top, bx1, bot - 7, "Q1"); r.hline(bx0, bx1, top, "RUG2"); r.hline(bx0, bx1, top + 1, "Q2")
+    r.vline(bx1 if facing == "right" else bx0, top + 2, bot - 7, "QD")
+    r.rect(sx0, top + 4, sx1, top + 8, "Q1"); r.hline(sx0, sx1, top + 4, "RUG2"); r.hline(sx0, sx1, top + 9, "QD")
+    r.rect(sx0 + 1, top + 10, sx1 - 1, bot - 11, "Q2"); r.hline(sx0 + 1, sx1 - 1, top + 10, "RUG2")
+    r.rect(sx0, bot - 10, sx1, bot - 7, "Q1"); r.hline(sx0, sx1, bot - 10, "RUG2")
+    r.rect(x0, bot - 6, x1, bot, "QD"); r.hline(x0, x1, bot - 6, "RUGD")
+    r.hline(bx0, bx1, top - 1, "OUT"); r.hline(sx0, sx1, top + 3, "OUT"); r.hline(x0, x1, bot, "OUT")
+    r.vline(x0 - 1, top if facing == "right" else top + 4, bot, "OUT"); r.vline(x1 + 1, top + 4 if facing == "right" else top, bot, "OUT")
+
+
+def bench(r, x0, y0, x1):
+    r.shadow(x0 + 2, y0 + 9, x1 + 3, y0 + 11)
+    r.rect(x0, y0, x1, y0 + 3, "WOODT"); r.hline(x0, x1, y0, "CREAM"); r.rect(x0, y0 + 4, x1, y0 + 6, "WOODF"); r.hline(x0, x1, y0 + 7, "OUT")
+    r.vline(x0 - 1, y0, y0 + 7, "OUT"); r.vline(x1 + 1, y0, y0 + 7, "OUT"); r.hline(x0, x1, y0 - 1, "OUT")
+    for x in (x0 + 1, x1 - 2):
+        r.rect(x, y0 + 8, x + 1, y0 + 10, "WOODD")
+
+
+def rect_table(r, x0, y0, x1, y1):
+    r.shadow(x0 + 3, y1 + 4, x1 + 4, y1 + 7)
+    for x in (x0 + 1, x1 - 2):
+        r.rect(x, y1 + 1, x + 1, y1 + 5, "WOODD")
+    r.rect(x0, y0, x1, y1 - 4, "WOODT"); r.hline(x0, x1, y0, "CREAM"); r.rect(x0, y1 - 3, x1, y1, "WOODF"); r.hline(x0, x1, y1, "OUT")
+    r.vline(x1, y0, y1, "WOODD"); r.vline(x0 - 1, y0, y1, "OUT"); r.vline(x1 + 1, y0, y1, "OUT"); r.hline(x0, x1, y0 - 1, "OUT")
+
+
+def hearth(r, x0):
+    """the stone chimney breast on the back wall, two cells wide, its hearthstone lit"""
+    x1 = x0 + 31
+    r.rect(x0, 0, x1, 31, "STONE")
+    for y in range(1, 31, 5):
+        r.hline(x0, x1, y, "MORTAR")
+        for x in range(x0 + (4 if (y // 5) % 2 else 0), x1 + 1, 8):
+            r.vline(x, y, y + 4, "MORTAR")
+    r.vline(x0, 0, 31, "STONET"); r.vline(x1, 0, 31, "STONED")
+    r.rect(x0 + 6, 12, x1 - 6, 31, "SOOT")
+    for k, x in enumerate(range(x0 + 8, x1 - 7, 3)):
+        r.rect(x, 20 + (k % 2) * 3, x + 1, 30, "FIRE" if k % 2 else "FIRE2")
+    r.rect(x0 + 7, 28, x1 - 7, 31, "EMBER"); r.rect(x0 - 4, 9, x1 + 4, 10, "WOODT"); r.hline(x0 - 4, x1 + 4, 11, "WOODD")
+    r.rect(x0 - 4, 32, x1 + 4, 37, "STONET"); r.hline(x0 - 4, x1 + 4, 32, "WHITE"); r.rect(x0 - 4, 38, x1 + 4, 39, "STONED"); r.hline(x0 - 4, x1 + 4, 40, "OUT")
+    r.rect(x0 + 6, 33, x1 - 6, 36, "GLOW"); r.shadow(x0 - 3, 41, x1 + 5, 42)
+
+
 def first_floor():
     r = Room(13, 10); shell(r, void_bottom=True)
-    # x1: the counter with its basin (KITCHEN)
+    # x1: the basin (KITCHEN)
     r.box(17, 14, 31, 38, 5, top="CREAM", front="WOODF", dark="WOODD")
     r.rect(19, 15, 28, 18, "STONED"); r.rect(20, 16, 27, 17, "SKY"); r.rect(19, 24, 29, 36, "WOODD"); r.rect(20, 25, 28, 35, "WOODF"); r.px(27, 30, "COPPER")
     # x2: the iron stove and its pipe (KITCHEN)
     r.rect(37, 0, 40, 13, "IROND"); r.vline(37, 0, 13, "IRON")
     r.box(33, 14, 46, 38, 4, top="IRONT", front="IRON", dark="IROND")
     r.rect(36, 24, 43, 33, "IROND"); r.rect(37, 26, 42, 31, "EMBER"); r.rect(38, 27, 41, 30, "FIRE2")
-    # x3..4: the dresser with plates (CABINET)
-    r.box(50, 2, 77, 38, 3, top="WOODT", front="WOODF", dark="WOODD")
-    r.hline(51, 76, 17, "WOODD"); r.hline(51, 76, 24, "WOODD")
-    for x in (53, 60, 67):
-        r.rect(x, 8, x + 4, 15, "WHITE"); r.vline(x + 4, 8, 15, "CREAMD")
-    r.rect(52, 26, 62, 36, "WOODD"); r.rect(65, 26, 75, 36, "WOODD"); r.px(60, 31, "COPPER"); r.px(67, 31, "COPPER")
-    # x5: copper pans on hooks
-    r.hline(82, 93, 8, "BEAMD")
-    for x, h in ((83, 7), (89, 5)):
-        r.vline(x + 2, 9, 11, "BEAMD"); r.rect(x, 12, x + 5, 12 + h, "COPPER"); r.vline(x + 5, 12, 12 + h, "POTD")
+    # x3..4: the counter and its cupboards (CABINET), a shelf of jars above
+    r.box(49, 14, 78, 38, 5, top="CREAM", front="WOODF", dark="WOODD")
+    for x in (51, 65):
+        r.rect(x, 24, x + 11, 36, "WOODD"); r.rect(x + 1, 25, x + 10, 35, "WOODF"); r.px(x + (10 if x == 51 else 1), 30, "COPPER")
+    # x5, rows 1..3: the peninsula, a long worktop running into the room, its end the only front
+    # (as tall as the back counter, so its top reaches y 39 and its front, doors and all, the floor at row 3)
+    r.box(81, 14, 94, 62, 25, top="CREAM", front="WOODF", dark="WOODD")
+    r.rect(83, 44, 92, 60, "WOODD"); r.rect(84, 45, 91, 59, "WOODF"); r.px(90, 52, "COPPER")
+    r.rect(83, 17, 92, 25, "WOODT"); r.hline(83, 92, 26, "WOODD"); r.vline(92, 17, 26, "WOODD")   # a chopping board
+    r.ellipse(88, 33, 5, 3, lambda x, y, d: r.px(x, y, "POTD" if d > 0.55 else "GREENL"))       # a bowl
+    # the runner MOM stands on
+    for y in range(44, 58):
+        for x in range(20, 77):
+            r.px(x, y, "RUGD" if y in (44, 57) else ("RUG4" if (y // 3) % 2 else "RUG1"))
+    r.shadow(21, 58, 77, 59, 0.8)
     # x6: the TV on its cabinet (TELEVISION)
     r.box(97, 22, 110, 38, 3, top="WOODT", front="WOODF", dark="WOODD")
     r.box(98, 6, 109, 21, 2, top="IRONT", front="IROND", dark="IROND", shadow=False)
     r.rect(100, 10, 107, 19, "SCREEN"); r.rect(101, 11, 103, 13, "SCREENL"); r.hline(100, 107, 19, "SCREEND")
-    # x7: a framed picture
-    r.rect(114, 8, 125, 19, "BEAM"); r.rect(116, 10, 123, 17, "SKY"); r.rect(116, 14, 123, 17, "GREEN"); r.shadow(126, 9, 127, 20)
-    # x8: the window (WINDOW)
-    window(r, 129, 5, 14, 14)
-    # x9: the stone fireplace, its hearthstone on the floor lit by the fire
-    r.rect(144, 0, 159, 31, "STONE")
-    for y in range(1, 31, 5):
-        r.hline(144, 159, y, "MORTAR")
-        for x in range(144 + (4 if (y // 5) % 2 else 0), 160, 8):
-            r.vline(x, y, y + 4, "MORTAR")
-    r.vline(144, 0, 31, "STONET"); r.vline(159, 0, 31, "STONED")
-    r.rect(147, 14, 156, 31, "SOOT")
-    for k, x in enumerate(range(148, 156, 2)):
-        r.rect(x, 21 + (k % 2) * 3, x + 1, 30, "FIRE" if k % 2 else "FIRE2")
-    r.rect(147, 29, 156, 31, "EMBER"); r.rect(142, 10, 161, 11, "WOODT"); r.hline(142, 161, 12, "WOODD")
-    r.rect(142, 32, 161, 36, "STONET"); r.hline(142, 161, 32, "WHITE"); r.rect(142, 37, 161, 38, "STONED"); r.hline(142, 161, 39, "OUT")
-    r.rect(147, 33, 156, 35, "GLOW"); r.shadow(143, 40, 162, 41)
+    # x7..8: the hearth; x9: the window (WINDOW)
+    hearth(r, 112)
+    window(r, 146, 5, 12, 14)
     # x10..12: the stairs up, treads and risers, a banister
     x0, bottom, steps = 162, 62, 8
     for k in range(steps):
@@ -251,17 +296,15 @@ def first_floor():
     for k in range(steps * 7 + 3):
         r.px(x0 + k * 4 // 7, bottom - 15 - k, "BEAML"); r.px(x0 + k * 4 // 7, bottom - 14 - k, "BEAMD")
     r.shadow(160, 63, 207, 65)
-    # the rug, the table on cells (6..7, 4..5), four chairs
-    rug(r, 112, 80, 50, 28)
-    r.ellipse(113, 88, 22, 10, lambda x, y, d: r.shadow(x, y, x, y))
-    for lx in (96, 127):
-        r.rect(lx, 78, lx + 1, 92, "WOODD")
-    r.ellipse(112, 74, 22, 11, lambda x, y, d: r.px(x, y, "WOODF"))
-    r.ellipse(112, 72, 22, 10, lambda x, y, d: r.px(x, y, "CREAM" if (d > 0.8 and y < 67) else "WOODT"))
-    for cx, cy, back in ((104, 54, "up"), (120, 54, "up"), (104, 100, "down"), (120, 100, "down")):
-        chair(r, cx, cy, back)
-    plant(r, 17, 104); plant(r, 193, 104)
-    # the doormat over the exit, with a thickness
+    # the fireside: a rug, and an armchair either side on (6,3) and (9,3)
+    rug(r, 128, 60, 26, 13)
+    armchair(r, 105, 55, "right"); armchair(r, 150, 55, "left")
+    plant(r, 192, 56); plant(r, 192, 104)
+    # the dining table on (1..2,6), a bench on the rows either side -- clear of the mat
+    bench(r, 18, 80, 44)
+    rect_table(r, 18, 94, 44, 108)
+    bench(r, 18, 115, 44)
+    # the doormat over the exit
     for y in range(130, 146):
         for x in range(52, 92):
             r.px(x, y, "RUG4" if (x // 4 + y // 4) % 2 else "WOODF")
@@ -271,25 +314,36 @@ def first_floor():
 
 def second_floor():
     r = Room(12, 9); shell(r, attic=True)
-    # x1..2: the desk, the PORT on it at (1,1)
+    # x1..2: the desk, the PORT on it at (1,1), its chair pushed in on (2,2)
     r.box(17, 18, 46, 40, 5, top="WOODT", front="WOODF", dark="WOODD")
     r.rect(35, 27, 45, 38, "WOODD"); r.rect(36, 28, 44, 32, "WOODF"); r.rect(36, 34, 44, 37, "WOODF"); r.px(40, 30, "COPPER"); r.px(40, 35, "COPPER")
     r.box(19, 4, 32, 17, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
     r.rect(21, 8, 30, 15, "SCREEN"); r.rect(22, 9, 24, 11, "SCREENL"); r.px(29, 15, "LED")
     r.rect(20, 19, 31, 21, "IRONT"); r.hline(20, 31, 22, "IROND")
-    # x3: the chest of drawers (DRESSER)
-    r.box(49, 8, 62, 40, 3, top="WOODT", front="WOODF", dark="WOODD")
-    for y in (16, 24, 32):
-        r.hline(49, 62, y, "WOODD"); r.px(55, y + 4, "COPPER"); r.px(56, y + 4, "COPPER")
-    # x4..5: the bookshelf (BOOKSHELF)
-    r.box(66, 0, 93, 40, 2, top="WOODT", front="WOODD", dark="OUT")
+    chair(r, 40, 47, "down")
+    # x3..4: the bookshelf (BOOKSHELF)
+    r.box(50, 0, 77, 40, 2, top="WOODT", front="WOODD", dark="OUT")
     for k, y in enumerate((5, 16, 27)):
-        for x in range(68, 92, 3):
+        for x in range(52, 76, 3):
             h = 8 - ((x // 3 + k) % 3)
             r.rect(x, y + (9 - h), x + 1, y + 9, ["BOOK1", "BOOK2", "BOOK3", "BOOK4", "BOOK5"][(x // 3 + k) % 5])
-        r.hline(67, 92, y + 10, "WOODT")
-    # x6..7: the dormer window
-    window(r, 99, 4, 26, 16, deep=True)
+        r.hline(51, 76, y + 10, "WOODT")
+    # x5..6: the dormer window (WINDOW); x7: a narrow chest of drawers (DRESSER)
+    window(r, 84, 3, 28, 16, deep=True)
+    r.box(116, 10, 124, 40, 3, top="WOODT", front="WOODF", dark="WOODD")
+    for y in (18, 25, 32):
+        r.hline(116, 124, y, "WOODD"); r.px(120, y + 3, "COPPER")
+    # the bed under the dormer on (5..6, 2..3), head to the wall, a chest at its foot on row 4
+    r.shadow(86, 67, 118, 69); r.shadow(116, 30, 118, 66)
+    r.rect(84, 24, 115, 32, "WOODF"); r.hline(84, 115, 24, "WOODT"); r.vline(115, 24, 32, "WOODD")
+    r.rect(86, 33, 113, 40, "WHITE"); r.hline(86, 113, 40, "CREAMD"); r.rect(89, 34, 98, 38, "CREAM"); r.rect(101, 34, 110, 38, "CREAM")
+    for y in range(41, 58):
+        for x in range(86, 114):
+            r.px(x, y, "QD" if x == 113 else ["Q1", "Q2", "Q3", "RUG2"][((x - 86) // 8 + (y - 41) // 8) % 4])
+    r.rect(86, 58, 113, 61, "QD")
+    r.rect(84, 62, 115, 66, "WOODF"); r.hline(84, 115, 62, "WOODT"); r.hline(84, 115, 66, "OUT"); r.vline(83, 24, 66, "OUT"); r.vline(116, 24, 66, "OUT")
+    r.box(88, 69, 111, 79, 3, top="WOODT", front="WOODF", dark="WOODD")
+    r.rect(97, 74, 102, 76, "COPPER")
     # x8..10: the stairwell, an opening behind a railing, the treads going down
     r.rect(128, 24, 175, 60, "SOOT")
     for k in range(5):
@@ -303,32 +357,60 @@ def second_floor():
     r.rect(178, 10, 188, 23, "CREAM"); r.vline(188, 10, 23, "CREAMD"); r.px(183, 11, "CHK")
     for y in (14, 17, 20):
         r.hline(180, 186, y, "WOODF")
-    # the bed on x2, rows 4..6: headboard, pillow, quilt, its fall, a footboard
-    r.shadow(30, 108, 54, 111); r.shadow(51, 62, 54, 107)
-    r.rect(28, 56, 51, 64, "WOODF"); r.hline(28, 51, 56, "WOODT"); r.vline(51, 56, 64, "WOODD")
-    r.rect(30, 65, 49, 73, "WHITE"); r.hline(30, 49, 73, "CREAMD"); r.rect(32, 66, 40, 71, "CREAM")
-    for y in range(74, 98):
-        for x in range(30, 50):
-            r.px(x, y, "QD" if x == 49 else ["Q1", "Q2", "Q3", "RUG2"][((x - 30) // 8 + (y - 74) // 8) % 4])
-    for y in range(98, 104):
-        for x in range(30, 50):
-            r.px(x, y, "QD" if y > 100 else ["QD", "Q2", "Q3"][((x - 30) // 8) % 3])
-    r.rect(28, 104, 51, 108, "WOODF"); r.hline(28, 51, 104, "WOODT"); r.hline(28, 51, 108, "OUT"); r.vline(51, 56, 108, "OUT"); r.vline(27, 56, 108, "OUT")
-    # the rug, the low table with the set on (6,4), the console on (6,5), its pad
-    rug(r, 104, 96, 50, 28)                              # the same rug as downstairs, on the same grid: its tiles are shared
-    r.shadow(94, 84, 122, 86)
-    r.rect(90, 74, 119, 78, "WOODT"); r.hline(90, 119, 74, "CREAM"); r.rect(90, 79, 119, 81, "WOODF"); r.hline(90, 119, 82, "OUT")
-    for lx in (91, 117):
-        r.rect(lx, 82, lx + 1, 86, "WOODD")
-    r.box(95, 54, 112, 73, 3, top="IRONT", front="IRON", dark="IROND", shadow=False)
-    r.rect(98, 60, 109, 70, "SCREEN"); r.rect(99, 61, 103, 64, "SCREENL"); r.hline(98, 109, 70, "SCREEND")
-    r.shadow(100, 97, 116, 99)
-    r.rect(97, 88, 111, 91, "IRONT"); r.hline(97, 111, 88, "WHITE"); r.rect(97, 92, 111, 95, "IRON"); r.hline(97, 111, 96, "OUT")
-    r.px(100, 94, "LED"); r.rect(104, 93, 109, 94, "IROND")
-    for k in range(8):
-        r.px(106 + k // 3, 97 + k, "IROND")
-    r.rect(106, 105, 115, 108, "IRONT"); r.rect(106, 109, 115, 110, "IRON")
+    # the console corner, rows 5..8 on the right: a rug; the set on its low cabinet on
+    # (10..11,5); the console on the floor on (9,6), its lead up to the set; a crate of
+    # games on (11,6); a floor cushion on (8,6)
+    rug(r, 144, 108, 26, 13)                             # downstairs' fireside rug on the same grid phase: its edge tiles are shared
+    r.box(163, 84, 188, 95, 3, top="WOODT", front="WOODF", dark="WOODD")
+    r.rect(166, 89, 175, 94, "WOODD"); r.rect(177, 89, 186, 94, "WOODD")
+    r.box(167, 66, 184, 83, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
+    r.rect(170, 71, 181, 81, "SCREEN"); r.rect(171, 72, 175, 75, "SCREENL"); r.hline(170, 181, 81, "SCREEND")
+    r.shadow(147, 108, 160, 110)
+    r.rect(146, 99, 157, 102, "IRONT"); r.hline(146, 157, 99, "WHITE"); r.rect(146, 103, 157, 106, "IRON"); r.hline(146, 157, 107, "OUT")
+    r.vline(145, 99, 107, "OUT"); r.vline(158, 99, 107, "OUT"); r.px(148, 105, "LED"); r.rect(151, 104, 156, 105, "IROND")
+    for k in range(9):
+        r.px(158 + k, 101 - k // 2, "IROND")
+    r.box(178, 102, 189, 111, 3, top="WOODT", front="WOODF", dark="WOODD")
+    for x, c in ((180, "BOOK1"), (183, "BOOK2"), (186, "BOOK4")):
+        r.rect(x, 97, x + 1, 102, c)
+    r.shadow(127, 113, 141, 115)
+    r.rect(125, 102, 139, 112, "Q3"); r.hline(125, 139, 102, "RUG2"); r.rect(125, 109, 139, 112, "QD"); r.hline(125, 139, 113, "OUT")
+    r.rect(129, 104, 135, 107, "RUG5")
     return r
+
+
+# ================================================================== the plan: collision and behaviour
+# '.' walkable, '#' blocked; every other cell's behaviour is 0
+MB = dict(KITCHEN=0x8A, CABINET=0x89, TELEVISION=0x86, WINDOW=0x9D, BOOKSHELF=0x81, DRESSER=0x8B, SIGNPOST=0x84,
+          WARP_UP=0x6C, WARP_DOWN=0x6F, SOUTH_ARROW_WARP=0x65)
+PLAN = {
+    LAYOUTS[0]: ([
+        "#############",
+        "#############",
+        "#....#.....##",      # (5,2) the peninsula; (10,2) the stairs
+        "#....##..#...",      # MOM at (3,3); the armchairs at (6,3) and (9,3)
+        "#...........#",      # a plant at (12,4)
+        "###..........",      # the dining benches and table, (1..2, 5..7)
+        "###..........",
+        "###.........#",      # a plant at (12,7)
+        "#............",      # the mat (3..5,8)
+        "#############",
+    ], {(1, 1): "KITCHEN", (2, 1): "KITCHEN", (3, 1): "CABINET", (4, 1): "CABINET", (6, 1): "TELEVISION",
+        (9, 1): "WINDOW", (10, 2): "WARP_UP", (4, 8): "SOUTH_ARROW_WARP"}),
+    LAYOUTS[1]: ([
+        "############",
+        "############",
+        "#.#..##.##..",       # the desk chair (2,2); the bed (5..6, 2..3); the stairwell (8..9); (10,2) the stairs
+        "#....##.##..",
+        "#....##.....",       # the chest at the bed's foot (5..6,4)
+        "#.........##",       # the set (10..11,5)
+        "#........#.#",       # the console (9,6), the crate (11,6), a floor cushion (8,6); the player wakes at (6,6)
+        "#...........",
+        "#...........",
+    ], {(3, 1): "BOOKSHELF", (4, 1): "BOOKSHELF", (5, 1): "WINDOW", (6, 1): "WINDOW", (7, 1): "DRESSER",
+        (11, 1): "SIGNPOST", (10, 2): "WARP_DOWN", (10, 5): "TELEVISION", (11, 5): "TELEVISION"}),
+}
+WALK, BLOCK = 12 << 10, 1 << 10       # the map's collision and elevation bits: elevation 3 open, or collision 1
 
 
 # ================================================================== tiles, blocks, palettes
@@ -352,10 +434,8 @@ def main():
     layouts = {l.get("name"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]}
     rows = {r: [(255, 0, 255)] + [C[n] for n in names] for r, names in ROWS.items()}
     rooms = {LAYOUTS[0]: first_floor(), LAYOUTS[1]: second_floor()}
-    battr = open(os.path.join(PRIM, "metatile_attributes.bin"), "rb").read()
-    sattr = open(os.path.join(BASE, "metatile_attributes.bin"), "rb").read()
     tiles, tile_list, blocks, block_list, attrs = {}, [], {}, [], []
-    new_maps, total_err, used_rows = {}, 0, {}
+    new_maps, total_err, used_rows, uses = {}, 0, {}, {}
 
     def place(px):
         if px in tiles:
@@ -369,13 +449,12 @@ def main():
 
     for name, room in rooms.items():
         lay = layouts[name]; W, H = lay["width"], lay["height"]
-        bd = bytearray(open(os.path.join(GBA, lay["blockdata_filepath"]), "rb").read())
+        bd = bytearray(W * H * 2)
+        grid, behaviours = PLAN[name]
+        assert len(grid) == H and all(len(row) == W for row in grid), "the plan for %s is not %dx%d" % (name, W, H)
         for cy in range(H):
             for cx in range(W):
-                raw = struct.unpack_from("<H", bd, (cy * W + cx) * 2)[0]; m = raw & 0x3FF
-                a = battr[m * 4:(m + 1) * 4] if m < 640 else sattr[(m - 640) * 4:(m - 639) * 4]
-                if m >= 640 and len(a) < 4:
-                    raise SystemExit("cell (%d,%d) of %s: block %d has no attributes" % (cx, cy, name, m))
+                raw = WALK if grid[cy][cx] == "." else BLOCK
                 entries = []
                 for q in range(4):
                     x0, y0 = cx * 16 + (q % 2) * 8, cy * 16 + (q // 2) * 8
@@ -391,9 +470,9 @@ def main():
                     r, err, idx = best
                     total_err += err; used_rows[r] = used_rows.get(r, 0) + 1
                     n, flip = place(idx)
+                    uses.setdefault(n, []).append((name[:25], cx, cy))
                     entries.append((640 + n) | flip | (r << 12))
-                a = bytes(a)
-                a = struct.pack("<I", struct.unpack("<I", a)[0] & ~(7 << 29))      # bottom layer only: NORMAL
+                a = struct.pack("<I", MB[behaviours[(cx, cy)]] if (cx, cy) in behaviours else 0)   # bottom layer only: NORMAL
                 key = (tuple(entries), a)
                 if key not in blocks:
                     blocks[key] = 640 + len(block_list); block_list.append(entries + [0, 0, 0, 0]); attrs.append(a)
@@ -402,11 +481,20 @@ def main():
     quads = max(1, sum(used_rows.values()))
     print("  %d tiles (of 384), %d blocks (of 384); tiles by row %s; mean squared colour error per pixel %.1f" % (
         len(tile_list), len(block_list), dict(sorted(used_rows.items())), total_err / (quads * 64)))
-    assert len(tile_list) <= 384 and len(block_list) <= 384, "over budget"
+    over = len(tile_list) > 384 or len(block_list) > 384
+    if over:
+        print("  OVER BUDGET: the preview is drawn, nothing will be written")
+        once = {}
+        for n, where in uses.items():
+            if len(where) == 1:
+                once[where[0]] = once.get(where[0], 0) + 1
+        print("  cells holding the most tiles used nowhere else:", sorted(once.items(), key=lambda t: -t[1])[:16])
 
     # preview: the concept as drawn | the game's render of the tiles and palettes
     def render(name):
         lay = layouts[name]; W, H = lay["width"], lay["height"]; bd = new_maps[name]
+        if over:                                   # tile ids past 10 bits: nothing to render yet
+            return rooms[name].im.copy()
         out = Image.new("RGB", (W * 16, H * 16)); o = out.load()
         for cy in range(H):
             for cx in range(W):
@@ -419,14 +507,28 @@ def main():
                         if t & 0x800: y = 7 - y
                         o[cx * 16 + (q % 2) * 8 + x, cy * 16 + (q // 2) * 8 + y] = pal[px[i]]
         return out
-    panels = [(rooms[n].im, render(n)) for n in LAYOUTS]
-    wid = sum(a.width for a, _ in panels) + 16
-    sheet = Image.new("RGB", (wid, max(a.height for a, _ in panels) * 2 + 8), (28, 30, 36)); x = 0
-    for a, b in panels:
-        sheet.paste(a, (x, 0)); sheet.paste(b, (x, a.height + 8)); x += a.width + 16
+    def plan(name):
+        out = render(name); d = ImageDraw.Draw(out, "RGBA"); grid, behaviours = PLAN[name]
+        for cy, row in enumerate(grid):
+            for cx, c in enumerate(row):
+                if c == "#":
+                    d.rectangle((cx * 16, cy * 16, cx * 16 + 15, cy * 16 + 15), fill=(220, 40, 40, 90))
+        for (cx, cy) in behaviours:
+            d.rectangle((cx * 16, cy * 16, cx * 16 + 15, cy * 16 + 15), outline=(255, 230, 60, 255))
+        return out
+    panels = [(rooms[n].im, render(n), plan(n)) for n in LAYOUTS]
+    wid = sum(p[0].width for p in panels) + 16
+    hgt = max(p[0].height for p in panels)
+    sheet = Image.new("RGB", (wid, hgt * 3 + 16), (28, 30, 36)); x = 0
+    for p in panels:
+        for k, im in enumerate(p):
+            sheet.paste(im, (x, k * (hgt + 8)))
+        x += p[0].width + 16
     sheet.resize((sheet.width * 3, sheet.height * 3), Image.NEAREST).save(PREVIEW)
-    print("  preview %s (top: drawn; bottom: tiles and palettes as the game will show them)" % PREVIEW)
+    print("  preview %s (top: drawn; middle: tiles and palettes as the game will show them; bottom: blocked cells red, behaviours outlined)" % PREVIEW)
 
+    if over:
+        raise SystemExit(1)
     if WRITE:
         os.makedirs(os.path.join(OUT_DIR, "palettes"), exist_ok=True)
         img = Image.new("P", (128, ((len(tile_list) + 15) // 16) * 8))
