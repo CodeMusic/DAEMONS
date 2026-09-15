@@ -297,22 +297,23 @@ def first_floor():
     # x7..8: the hearth; x9: the window (WINDOW)
     hearth(r, 112)
     window(r, 144, 8, 16, 16)
-    # x10..12: the stairs up, treads and risers, a banister
-    x0, bottom, steps = 162, 62, 8
-    for k in range(steps):
-        y = bottom - k * 7; xs = x0 + k * 4
-        r.rect(xs, y - 6, 207, y - 4, "WOODT"); r.hline(xs, 207, y - 6, "CREAM")
-        r.rect(xs, y - 3, 207, y, "WOODF"); r.hline(xs, 207, y, "WOODD"); r.vline(xs, y - 6, y, "WOODD")
-    for k in range(steps):
-        px_, py = x0 + k * 4 + 1, bottom - k * 7
-        r.rect(px_, py - 15, px_ + 1, py - 7, "WOODD"); r.px(px_, py - 15, "WOODT")
-    for k in range(steps * 7 + 3):
-        r.px(x0 + k * 4 // 7, bottom - 15 - k, "WOODF"); r.px(x0 + k * 4 // 7, bottom - 14 - k, "BEAMD")
-    r.shadow(160, 63, 207, 65)
+    # x11..12: the stairs up. The warp on the landing at (10,2) is walked EAST, so they rise to the right from it:
+    # four steps of 8 along the back wall, each tread a strip, the stringer's sawtooth facing the room, a rail
+    # along it, and the opening in the ceiling they climb into
+    r.rect(176, 0, 207, 18, "OUT")
+    for k in range(4):
+        xs, top = 176 + k * 8, 34 - k * 6
+        r.rect(xs, top, xs + 7, top + 5, "WOODT"); r.hline(xs, xs + 7, top, "CREAM"); r.vline(xs, top, top + 5, "WOODD")
+        r.rect(xs, top + 6, xs + 7, 46, "WOODF"); r.vline(xs, top + 6, 46, "WOODD")
+    r.hline(176, 207, 47, "OUT"); r.shadow(176, 48, 207, 50)
+    for k in range(4):
+        r.rect(179 + k * 8, 30 - k * 6, 180 + k * 8, 38 - k * 6, "WOODD")
+    for x in range(176, 208):
+        r.px(x, 31 - (x - 176) * 6 // 8, "BEAMD")
     # the fireside: a rug, and an armchair either side on (6,3) and (9,3)
     rug(r, 128, 60, 26, 13)
     armchair(r, 105, 55, "right"); armchair(r, 150, 55, "left")
-    plant(r, 192, 56); plant(r, 192, 104)
+    plant(r, 192, 60); plant(r, 192, 108)                # on (12,4) and (12,7), not half a cell above them
     # the dining table on (1..2,6), a bench on the rows either side -- clear of the mat
     bench(r, 18, 80, 44)
     rect_table(r, 18, 94, 44, 108)
@@ -336,7 +337,7 @@ def second_floor():
     r.vline(16, 8, 23, "OUT"); r.vline(31, 8, 23, "OUT"); r.hline(17, 30, 23, "OUT")
     r.rect(19, 13, 28, 20, "SCREEN"); r.rect(20, 14, 22, 16, "SCREENL"); r.px(27, 21, "SCREENL")
     r.rect(20, 25, 31, 27, "CREAM"); r.hline(20, 31, 28, "CREAMD")          # a keyboard
-    chair(r, 40, 49, "down")
+    chair(r, 40, 45, "down")
     # x3..4: the bookshelf (BOOKSHELF), both cells edge to edge
     r.box(49, 0, 78, 40, 2, top="WOODT", front="WOODD", dark="OUT", shadow=False); r.shadow(51, 41, 81, 43)
     for k, y in enumerate((5, 16, 27)):
@@ -360,14 +361,16 @@ def second_floor():
     r.rect(84, 62, 115, 66, "WOODF"); r.hline(84, 115, 62, "WOODT"); r.hline(84, 115, 66, "OUT"); r.vline(83, 24, 66, "OUT"); r.vline(116, 24, 66, "OUT")
     r.box(88, 69, 111, 79, 3, top="WOODT", front="WOODF", dark="WOODD")
     r.rect(97, 74, 102, 76, "COPPER")
-    # x8..10: the stairwell, an opening behind a railing, the treads going down
-    r.rect(128, 24, 175, 60, "OUT")
-    for k in range(5):
-        r.rect(130 + k * 5, 28 + k * 6, 175, 30 + k * 6, "WOODF"); r.hline(130 + k * 5, 175, 28 + k * 6, "WOODT")
+    # x8..9: the stairwell. The warp on the landing at (10,2) is walked WEST, so the stairs go down to the left
+    # from it: each step a strip further left, lower and darker; a railing on the south and west, open to the landing
+    r.rect(128, 24, 159, 60, "OUT")
+    for k, (c, d) in enumerate((("WOODT", "WOODF"), ("WOODF", "WOODD"), ("WOODD", "BEAMD"), ("BEAMD", "OUT"))):
+        xs, top = 152 - k * 8, 26 + k * 6
+        r.rect(xs, top, xs + 7, 60, d); r.rect(xs, top, xs + 7, top + 2, c); r.vline(xs, top, 60, "OUT")
     r.rect(126, 18, 128, 62, "WOODF"); r.vline(126, 18, 62, "WOODT"); r.vline(128, 18, 62, "WOODD")
-    for x in range(130, 160, 6):
+    for x in range(131, 158, 6):
         r.rect(x, 58, x + 1, 66, "WOODD"); r.px(x, 58, "WOODT")
-    r.rect(126, 55, 161, 56, "WOODT"); r.hline(126, 161, 57, "WOODD"); r.shadow(128, 67, 163, 69)
+    r.rect(126, 55, 159, 56, "WOODT"); r.hline(126, 159, 57, "WOODD"); r.rect(158, 55, 159, 66, "WOODD"); r.shadow(128, 67, 161, 69)
     # x11: the pinned note (signpost)
     r.shadow(181, 13, 189, 26)
     r.rect(178, 10, 188, 23, "CREAM"); r.vline(188, 10, 23, "CREAMD"); r.px(183, 11, "BEAMD")
@@ -379,16 +382,16 @@ def second_floor():
     rug(r, 144, 108, 26, 13)                             # downstairs' fireside rug on the same grid phase: its edge tiles are shared
     # (the set fills (10..11,4)'s middle from y 64 to 79 and its cabinet starts at 80; the console fills the top
     # half of (9,6) exactly; the lead is drawn in the outline colour, which every row has; no shadow lands on the rug)
-    r.box(163, 81, 188, 95, 3, top="WOODT", front="WOODF", dark="WOODD", shadow=False); r.shadow(165, 96, 190, 97)
-    r.rect(166, 86, 175, 93, "WOODD"); r.rect(177, 86, 186, 93, "WOODD")
-    r.box(169, 65, 182, 78, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
-    r.vline(168, 64, 79, "OUT"); r.vline(183, 64, 79, "OUT"); r.hline(169, 182, 79, "OUT")
-    r.rect(171, 69, 180, 77, "SCREEN"); r.rect(172, 70, 175, 72, "SCREENL"); r.hline(171, 180, 77, "SCREEND")
+    r.box(177, 81, 190, 95, 3, top="WOODT", front="WOODF", dark="WOODD", shadow=False); r.shadow(177, 96, 191, 97)
+    r.rect(179, 86, 188, 93, "WOODD")
+    r.box(177, 65, 190, 78, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
+    r.vline(176, 64, 79, "OUT"); r.vline(191, 64, 79, "OUT"); r.hline(177, 190, 79, "OUT")
+    r.rect(179, 69, 188, 77, "SCREEN"); r.rect(180, 70, 183, 72, "SCREENL"); r.hline(179, 188, 77, "SCREEND")
     r.rect(145, 97, 158, 102, "IRON"); r.rect(145, 97, 158, 99, "IRONT"); r.hline(145, 158, 97, "WHITE")
     r.hline(144, 159, 96, "OUT"); r.hline(144, 159, 103, "OUT"); r.vline(144, 96, 103, "OUT"); r.vline(159, 96, 103, "OUT")
     r.px(147, 101, "SCREENL"); r.hline(151, 156, 101, "IROND")
-    for k in range(8):
-        r.px(160 + k, 100 - k // 2, "OUT")
+    for k in range(16):
+        r.px(160 + k, 101 - k // 3, "OUT")
     r.box(178, 102, 189, 111, 3, top="WOODT", front="WOODF", dark="WOODD")
     for x, c in ((180, "BOOK1"), (183, "BOOK2"), (186, "BOOK4")):
         r.rect(x, 97, x + 1, 102, c)
@@ -420,13 +423,13 @@ PLAN = {
         "############",
         "#.#..##.##..",       # the desk chair (2,2); the bed (5..6, 2..3); the stairwell (8..9); (10,2) the stairs
         "#....##.##..",
-        "#....##.....",       # the chest at the bed's foot (5..6,4)
-        "#.........##",       # the set (10..11,5)
+        "#....##....#",       # the chest at the bed's foot (5..6,4); the set (11,4) -- (10,4) stays open, BirthIsland warps there
+        "#..........#",       # the set's cabinet (11,5)
         "#........#.#",       # the console (9,6), the crate (11,6), a floor cushion (8,6); the player wakes at (6,6)
         "#...........",
         "#...........",
     ], {(3, 1): "BOOKSHELF", (4, 1): "BOOKSHELF", (5, 1): "WINDOW", (6, 1): "WINDOW", (7, 1): "DRESSER",
-        (11, 1): "SIGNPOST", (10, 2): "WARP_DOWN", (10, 5): "TELEVISION", (11, 5): "TELEVISION"}),
+        (11, 1): "SIGNPOST", (10, 2): "WARP_DOWN", (11, 4): "TELEVISION", (11, 5): "TELEVISION"}),
 }
 WALK, BLOCK = 12 << 10, 1 << 10       # the map's collision and elevation bits: elevation 3 open, or collision 1
 
