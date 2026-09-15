@@ -106,9 +106,35 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/champion_rival_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/champion_rival.pal",
                         size=(64, 64), colours=15, base=1, palsize=16),
+    # The six BENCHMARK leaders who had no art, drafted through n8n daemon/sprite under
+    # 9.4's fable rule (2026-09-15); each species is the leader's role.
+    "basin":   dict(src="gfx/characters/basin.png",       # a hippo lido attendant, settled in the pool she cannot climb out of
+                        dst="engineGba/graphics/trainers/front_pics/leader_misty_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_misty.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "gauge":   dict(src="gfx/characters/gauge.png",       # a hare line engineer, ears as receptors, reacting first
+                        dst="engineGba/graphics/trainers/front_pics/leader_lt_surge_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_lt_surge.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "trellis": dict(src="gfx/characters/trellis.png",       # a bowerbird gardener, everything arranged to one exact shape
+                        dst="engineGba/graphics/trainers/front_pics/leader_erika_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_erika.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
+                        dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "matte":   dict(src="gfx/characters/matte.png",       # a chameleon film editor, deciding what is shown
+                        dst="engineGba/graphics/trainers/front_pics/leader_sabrina_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_sabrina.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False, holes=True),
+    "anneal":  dict(src="gfx/characters/anneal.png",       # a salamander metallurgist, at home in controlled heat
+                        dst="engineGba/graphics/trainers/front_pics/leader_blaine_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_blaine.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
 }
 
-def silhouette(a):
+def silhouette(a, hue=True, holes=False):
     """Background AND the shadow ellipse, which are both GREENISH.
 
     The ellipse is the background blended toward white, so it keeps the green
@@ -131,15 +157,34 @@ def silhouette(a):
     holes, and the late one speckled. A keyable pixel is background only if it
     connects to the edge of the image through other keyable pixels; the
     outline stops the fill, so the inside of the figure survives whatever
-    colour it is. The ellipse touches the backdrop, so it still goes."""
+    colour it is. The ellipse touches the backdrop, so it still goes.
+
+    AND THE HUE RULE IS FOR GREEN BACKDROPS ONLY. The leaders drafted through
+    daemon/sprite (2026-09-15) stand on plain white with no ellipse, and two of
+    them are green where it matters: TRELLIS's apron and MATTE's skin. With the
+    hue rule on, both leaked out through gaps in the outline and the apron came
+    back a hole. hue=False keys on the flat corners alone."""
     r, g, b = a[..., 0], a[..., 1], a[..., 2]
-    keyable = (g - r > 12) & (g - b > 4)
+    keyable = (g - r > 12) & (g - b > 4) if hue else np.zeros(a.shape[:2], dtype=bool)
     corners = np.stack([a[2, 2], a[2, -3], a[-3, 2], a[-3, -3]])
     spread = corners.max(axis=0) - corners.min(axis=0)
     if spread.max() < 24:                       # a real flat backdrop
         key = np.median(corners, axis=0)
         keyable = keyable | (((a - key) ** 2).sum(axis=2) < 45 ** 2)
-    return ~connected_to_border(keyable)
+    background = connected_to_border(keyable)
+    if holes and spread.max() < 24:
+        # BACKDROP CAN BE ENCLOSED. MATTE's curled tail closes a loop against her
+        # legs, and the white inside it touches no edge, so the rule above keeps
+        # it as figure -- a white block in battle. Opt-in, per job: pockets that
+        # match the corner colour closely AND are large are backdrop too, so eye
+        # whites and highlights survive. Only for art with no white clothing.
+        from scipy import ndimage
+        near = (((a - key) ** 2).sum(axis=2) < 20 ** 2) & ~background
+        labels, n = ndimage.label(near)
+        sizes = ndimage.sum(near, labels, range(1, n + 1))
+        floor = 0.0008 * a.shape[0] * a.shape[1]         # deringe has shrunk the art to its drawn grid,
+        background = background | np.isin(labels, [i + 1 for i, v in enumerate(sizes) if v > floor])   # so a share, not a count
+    return ~background
 
 def connected_to_border(mask):
     """The part of mask reachable from the image's edge, 4-connected."""
@@ -166,7 +211,7 @@ def cut(job):
     # never has to be read. Matters less here than for the daemons -- a 2.7x
     # reduction averages most of it away -- but one pipeline, one behaviour.
     a = deringe(np.asarray(Image.open(os.path.join(ROOT, job["src"])).convert("RGB")).astype(int))
-    ink = silhouette(a)
+    ink = silhouette(a, job.get("hue", True), job.get("holes", False))
     ys, xs = np.where(ink)
     box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)
     im = Image.fromarray(a.astype(np.uint8)).crop(box)
@@ -217,8 +262,12 @@ def index(cell, hold, job):
     return out, table
 
 def main():
-    prev, x = Image.new("RGB", ((64 * 6 + 40) * len(JOBS), 96 * 6), (18, 18, 24)), 0
-    for name, job in JOBS.items():
+    # Name jobs to cut only those (python3 tools/gbachar.py basin tilt --write); with none, every job runs.
+    only = [a for a in sys.argv[1:] if not a.startswith("--")]
+    assert all(a in JOBS for a in only), "no such job: %s" % [a for a in only if a not in JOBS]
+    todo = {k: v for k, v in JOBS.items() if not only or k in only}
+    prev, x = Image.new("RGB", ((64 * 6 + 40) * len(todo), 96 * 6), (18, 18, 24)), 0
+    for name, job in todo.items():
         cell, hold = cut(job)
         out, table = index(cell, hold, job)
         print("  %-8s %-52s %dx%d, %d colours at index %d+"
