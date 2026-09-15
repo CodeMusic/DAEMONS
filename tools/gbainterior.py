@@ -42,6 +42,7 @@ old tileset it shared.
     python3 tools/gbainterior.py verdigris --write    # TRELLIS's espalier house (T-108)
     python3 tools/gbainterior.py lurid --write        # TILT's tilted room, its maze redrawn (T-109)
     python3 tools/gbainterior.py brazen --write       # MATTE's gallery of mounts (T-111)
+    python3 tools/gbainterior.py quicksilver --write  # ANNEAL's silver lab (T-112)
 
 Statue heads are drawn on the top layer, as vanilla does, so the player walks behind them (T-110).
 
@@ -928,6 +929,173 @@ def brazen(old_img, statues=True):
     return r.im
 
 
+# QUICKSILVER BENCHMARK (ANNEAL), from the concept approved 2026-09-15: the silver lab where S.T.A.R.R. was built.
+# Vanilla's quiz is whole. Everything is mercury and steel, and the one colour in the room is S.T.A.R.R.'s blue: the
+# conduit up the middle and its light on the floor, the quiz still running on her machines, the barrier the conduit
+# holds shut -- and, never pointed at, a deer: antler-branched electrodes at the conduit's head, the same antlers
+# engraved in ANNEAL's annealing plate. The quiz doors open by the script's own blocks, drawn from the room opened
+Q_DOORS = {1: (26, 8), 2: (17, 8), 3: (17, 15), 5: (5, 16), 6: (5, 8)}        # top-left of each 2x2 door
+Q_DOOR4 = [(11, 22), (11, 23)]
+Q_DOOR_CELLS = {(x + dx, y + dy) for (x, y) in Q_DOORS.values() for dx in (0, 1) for dy in (0, 1)}
+Q_QUIZ = [(22, 10), (15, 2), (13, 10), (13, 17), (1, 18), (1, 10)]            # left cell of each machine
+Q_STATUES = [(23, 20), (27, 20)]
+Q_USES = {                                                                     # each script id, every cell it is set at
+    0x2C7: [(x, y) for (x, y) in Q_DOORS.values()], 0x2C6: [(x + 1, y) for (x, y) in Q_DOORS.values()],
+    0x2CF: [(x, y + 1) for (x, y) in Q_DOORS.values()], 0x2CE: [(x + 1, y + 1) for (x, y) in Q_DOORS.values()],
+    0x289: [(x, y + 2) for (x, y) in Q_DOORS.values()] + [(11, 22)], 0x281: [(x + 1, y + 2) for (x, y) in Q_DOORS.values()] + [(11, 23)],
+    0x282: [(x + 2, y + 2) for (x, y) in Q_DOORS.values()], 0x2D1: [(11, 21)]}
+Q_FLOOR, Q_FLOORL, Q_JOINT, Q_RIVET = (146, 152, 160), (168, 174, 182), (108, 114, 124), (190, 196, 204)
+Q_TOP, Q_TOPL, Q_FACE, Q_FACED, Q_FACEL = (196, 200, 208), (226, 230, 236), (118, 124, 134), (84, 90, 100), (150, 156, 166)
+Q_BACK, Q_BACKD, Q_BACKL = (72, 78, 90), (50, 54, 64), (96, 102, 116)
+Q_GLASS, Q_GLASSL, Q_CASE, Q_CASEL = (26, 34, 52), (60, 76, 104), (170, 176, 186), (206, 212, 220)
+Q_BLUE, Q_BLUEL, Q_BLUED, Q_CORE = (72, 164, 255), (164, 214, 255), (36, 92, 196), (232, 246, 255)
+
+
+def quicksilver_room(doors_open=False, statues=True):
+    ST = load("gbastatues")
+    _, raw = Old("cinnabar_gym").layout("LAYOUT_CINNABAR_ISLAND_GYM")
+    H, W = len(raw), len(raw[0])
+    conduit = lambda x, y: 10 <= x <= 12 and y <= 21
+
+    def blocked(x, y):
+        if not (0 <= x < W and 0 <= y < H):
+            return True
+        if doors_open and ((x, y) in Q_DOOR_CELLS or (x, y) in Q_DOOR4):
+            return False
+        return bool((raw[y][x] >> 10) & 3)
+
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+
+    def line(x0, y0, x1, y1, c):
+        n = max(abs(x1 - x0), abs(y1 - y0), 1)
+        for i in range(n + 1):
+            r.px(round(x0 + (x1 - x0) * i / n), round(y0 + (y1 - y0) * i / n), c)
+
+    for y in range(H * 16):                              # steel plate, the same in every cell
+        for x in range(W * 16):
+            dx, dy = x % 16, y % 16
+            c = Q_FLOOR
+            if dx == 0 or dy == 0:
+                c = Q_JOINT
+            elif dx == 1 or dy == 1:
+                c = Q_FLOORL
+            elif (dx, dy) in ((3, 3), (12, 3), (3, 12), (12, 12)):
+                c = Q_RIVET
+            r.px(x, y, c)
+    r.rect(0, 0, W * 16 - 1, 31, Q_BACK); r.rect(0, 0, W * 16 - 1, 3, Q_BACKD); r.rect(0, 24, W * 16 - 1, 31, Q_FACE)
+    r.rect(0, 24, W * 16 - 1, 25, Q_FACEL); r.rect(0, 30, W * 16 - 1, 31, Q_FACED)
+    for x in range(8, W * 16, 32):
+        r.rect(x, 6, x + 1, 22, Q_BACKL)
+    for y in range(2, H - 1):                            # wall cells: a front face over floor, a top face otherwise
+        for x in range(W):
+            if conduit(x, y) or not blocked(x, y):
+                continue
+            X, Y = x * 16, y * 16
+            if not blocked(x, y + 1):
+                r.rect(X, Y, X + 15, Y + 15, Q_FACE); r.rect(X, Y, X + 15, Y + 2, Q_TOPL); r.rect(X, Y + 13, X + 15, Y + 15, Q_FACED)
+                r.rect(X, Y + 7, X + 15, Y + 7, Q_FACEL)
+                if not conduit(x, y + 1):
+                    r.shade(X, Y + 16, X + 15, Y + 18, 0.8)
+            else:
+                r.rect(X, Y, X + 15, Y + 15, Q_TOP)
+                if not blocked(x - 1, y): r.rect(X, Y, X + 1, Y + 15, Q_TOPL)
+                if not blocked(x + 1, y): r.rect(X + 14, Y, X + 15, Y + 15, Q_FACED)
+    for (x, y) in Q_DOORS.values():
+        if doors_open:                                   # a gap in the wall, its two ends shown
+            for dy in (0, 1):
+                r.rect(x * 16, (y + dy) * 16, x * 16 + 1, (y + dy) * 16 + 15, Q_FACED)
+                r.rect((x + 2) * 16 - 2, (y + dy) * 16, (x + 2) * 16 - 1, (y + dy) * 16 + 15, Q_FACED)
+        else:                                            # a steel shutter with a blue seam
+            X, Y = x * 16, y * 16
+            r.rect(X, Y + 4, X + 31, Y + 15, Q_TOP); r.rect(X, Y + 4, X + 31, Y + 5, Q_TOPL)
+            r.rect(X, Y + 16, X + 31, Y + 31, Q_FACE); r.rect(X, Y + 16, X + 31, Y + 17, Q_TOPL); r.rect(X, Y + 29, X + 31, Y + 31, Q_FACED)
+            for k in range(Y + 19, Y + 29, 3):
+                r.rect(X + 2, k, X + 29, k, Q_FACED)
+            r.rect(X + 15, Y + 17, X + 16, Y + 28, Q_BLUED); r.px(X + 15, Y + 22, Q_BLUE); r.px(X + 16, Y + 23, Q_BLUE)
+    for y in range(2 * 16, 22 * 16):                     # the conduit's light on the floor, columns 9 and 13 only
+        for x in list(range(9 * 16, 10 * 16)) + list(range(13 * 16, 14 * 16)):
+            if blocked(x // 16, y // 16):
+                continue
+            d = (10 * 16 + 4 - x) if x < 11 * 16 else (x - (13 * 16 - 5))
+            k = max(0.0, 1 - d / 18.0) * 0.28
+            p = r.p[x, y]
+            r.px(x, y, tuple(int(p[i] * (1 - k) + Q_BLUEL[i] * k) for i in range(3)))
+    X0, X1, cx = 10 * 16 + 4, 13 * 16 - 5, 11 * 16 + 8   # the conduit, a glass column of blue light
+    r.rect(X0, 0, X1, 22 * 16 - 1, Q_CASE); r.rect(X0 + 3, 0, X1 - 3, 22 * 16 - 1, Q_GLASS); r.rect(X0 + 4, 0, X0 + 4, 22 * 16 - 1, Q_GLASSL)
+    for y in range(24, 21 * 16 + 8):
+        w = 2 + int(1.5 * (1 + math.sin(y * 2 * math.pi / 16)))
+        r.rect(cx - w, y, cx + w, y, Q_BLUED); r.rect(cx - max(0, w - 2), y, cx + max(0, w - 2), y, Q_BLUE)
+        r.px(cx, y, Q_CORE if y % 16 < 8 else Q_BLUEL)
+    for y in range(32, 21 * 16, 32):
+        r.rect(X0, y, X1, y + 2, Q_CASE); r.rect(X0 + 1, y + 1, X1 - 1, y + 1, Q_CASEL)
+    r.rect(9 * 16, 4, 14 * 16 - 1, 23, Q_BACKD)          # the electrodes at its head, branched like antlers
+    for s in (-1, 1):
+        beam = [(cx + s * 2, 24), (cx + s * 12, 18), (cx + s * 24, 13), (cx + s * 34, 6)]
+        for (a, b) in zip(beam, beam[1:]):
+            line(*a, *b, Q_BLUEL); line(a[0], a[1] - 1, b[0], b[1] - 1, Q_BLUE)
+        for (t0, t1) in (((cx + s * 12, 18), (cx + s * 14, 8)), ((cx + s * 24, 13), (cx + s * 27, 4)),
+                         ((cx + s * 30, 9), (cx + s * 38, 12)), ((cx + s * 18, 15), (cx + s * 21, 7))):
+            line(*t0, *t1, Q_BLUE)
+        r.px(cx + s * 34, 6, Q_CORE); r.px(cx + s * 27, 4, Q_CORE); r.px(cx + s * 14, 8, Q_CORE)
+    r.rect(cx - 6, 24, cx + 6, 31, Q_CASE); r.rect(cx - 3, 26, cx + 3, 29, Q_BLUEL)
+    r.rect(X0, 21 * 16 + 6, X1, 21 * 16 + 15, Q_CASE); r.rect(X0 + 2, 21 * 16 + 8, X1 - 2, 21 * 16 + 9, Q_CASEL)
+    if doors_open:                                       # door 4: the barrier retracted, the emitter capped
+        r.rect(cx - 3, 21 * 16 + 11, cx + 3, 21 * 16 + 13, Q_BLUED)
+    else:                                                # door 4: the barrier the conduit's light holds shut
+        for y in range(22 * 16, 24 * 16):
+            r.rect(11 * 16 + 1, y, 11 * 16 + 2, y, Q_CASE); r.rect(11 * 16 + 13, y, 11 * 16 + 14, y, Q_CASE)
+            for x in range(11 * 16 + 3, 11 * 16 + 13):
+                ph = (x * 3 + y) % 8
+                r.px(x, y, Q_BLUEL if ph == 0 else (Q_BLUE if ph < 4 else Q_BLUED))
+    for (qx, qy) in Q_QUIZ:                              # the quiz, still running on her machines
+        X, Y = qx * 16, qy * 16
+        r.rect(X + 2, Y - 10, X + 29, Y + 13, Q_CASE); r.rect(X + 2, Y - 10, X + 29, Y - 9, (214, 218, 226))
+        r.rect(X + 5, Y - 7, X + 26, Y + 5, Q_GLASS)
+        for k, yy in enumerate(range(Y - 5, Y + 4, 3)):
+            r.rect(X + 7, yy, X + 7 + (8 + (k * 5 + qx) % 12), yy, Q_BLUE if k else Q_BLUEL)
+        r.rect(X + 5, Y + 8, X + 26, Y + 10, Q_FACED)
+        for k in range(5):
+            r.rect(X + 7 + k * 4, Y + 8, X + 8 + k * 4, Y + 9, Q_TOP)
+    pcx, pcy = 5 * 16 + 8, 4 * 16 + 8                    # ANNEAL's annealing plate, the antlers engraved
+    r.ellipse(pcx, pcy + 2, 23, 21, Q_FACED); r.ellipse(pcx, pcy, 23, 21, Q_CASE); r.ellipse(pcx, pcy, 20, 18, (132, 138, 148))
+    r.ellipse(pcx, pcy, 18, 16, (150, 156, 166))
+    for s in (-1, 1):
+        beam = [(pcx + s, pcy + 9), (pcx + s * 5, pcy + 3), (pcx + s * 9, pcy - 3), (pcx + s * 12, pcy - 10)]
+        for (a, b) in zip(beam, beam[1:]):
+            line(*a, *b, Q_BLUED); line(a[0] + s, a[1], b[0] + s, b[1], Q_BLUED)
+        line(pcx + s * 5, pcy + 3, pcx + s * 12, pcy + 1, Q_BLUED); line(pcx + s * 9, pcy - 3, pcx + s * 15, pcy - 4, Q_BLUED)
+        line(pcx + s * 10, pcy - 6, pcx + s * 7, pcy - 12, Q_BLUED)
+        r.px(pcx + s * 12, pcy - 10, Q_BLUE); r.px(pcx + s * 15, pcy - 4, Q_BLUE); r.px(pcx + s * 7, pcy - 12, Q_BLUE)
+    r.rect(3 * 16 + 2, 8, 3 * 16 + 13, 22, Q_CASE); r.rect(3 * 16 + 4, 10, 3 * 16 + 11, 20, (186, 180, 164))    # the photograph
+    r.rect(3 * 16 + 6, 13, 3 * 16 + 7, 18, Q_FACED); r.rect(3 * 16 + 9, 12, 3 * 16 + 10, 18, Q_FACED)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[96 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx, sy in (Q_STATUES if statues else ()):        # HEAT
+        r.indexed(top, pal0, sx * 16, (sy - 1) * 16); r.indexed(base, pal0, sx * 16, sy * 16)
+    r.rect(24 * 16 + 2, 23 * 16 + 2, 27 * 16 - 3, 23 * 16 + 15, Q_FACED); r.rect(24 * 16 + 4, 23 * 16 + 4, 27 * 16 - 5, 23 * 16 + 13, Q_FACE)
+    r.rect(24 * 16 + 4, 23 * 16 + 8, 27 * 16 - 5, 23 * 16 + 8, Q_BLUED)
+    r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
+def quicksilver(old_img, statues=True):
+    return quicksilver_room(False, statues)
+
+
+def quicksilver_states():
+    """Each block id the quiz doors' scripts set, drawn from the room with every door open; an id used at several
+    doors must draw the same at all of them, or the room would open wrongly somewhere"""
+    im = quicksilver_room(True).load()
+    art = lambda x, y: tuple(im[x * 16 + i % 16, y * 16 + i // 16] for i in range(256))
+    out = {}
+    for m, cells in Q_USES.items():
+        arts = {art(*c) for c in cells}
+        assert len(arts) == 1, "QUICKSILVER: block 0x%X draws differently at %s" % (m, cells)
+        out[m] = arts.pop()
+    return out
+
+
 # the REPO's materials
 def repo(old_img):
     W, H = 11, 9
@@ -1079,6 +1247,12 @@ BUILDINGS = {
         layouts=[("LAYOUT_SAFFRON_CITY_GYM", brazen)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
         tops={"LAYOUT_SAFFRON_CITY_GYM": [(12, 19), (16, 19)]},
+    ),    # QUICKSILVER BENCHMARK, on a tileset of its own; the quiz doors keep the ids their scripts set
+    "quicksilver": dict(
+        old="cinnabar_gym", symbol="gTileset_QuicksilverBenchmark", dir="quicksilver_benchmark",
+        layouts=[("LAYOUT_CINNABAR_ISLAND_GYM", quicksilver)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        states=quicksilver_states, tops={"LAYOUT_CINNABAR_ISLAND_GYM": [(23, 19), (27, 19)]},
     ),
 }
 
