@@ -15,7 +15,13 @@ above -- a dark mouth under the lid, a latch, a raised flag -- on a square post.
 No warm colour: the flag is ink, because in Blanche row 2's reds would come out
 as row 10's rose, and the lab keeps Blanche's only warm note (9.22).
 
-The Building tileset (every interior) numbers its own tiles 352..369 and is not
+VANILLA'S LID stood a cell higher: every mailbox has a block above it whose top
+layer draws General tiles 336 and 337 (General 353, and one block each in
+Cerulean, Blanche, Saffron and Sevii 4-5). Ours is whole in its own cell, so
+those two tiles are cleared to transparent -- left alone they drew vanilla's lid
+above ours, an echo of the old mailbox. Nothing else outdoors draws them.
+
+The Building tileset (every interior) numbers its own tiles 336..369 and is not
 touched: this writes the General sheet only.
 """
 import os, sys
@@ -27,6 +33,7 @@ PD = os.path.join(GBA, "data/tilesets/primary/general")
 PREVIEW = "/tmp/mailbox.png"
 WRITE = "--write" in sys.argv
 TILES = (352, 353, 368, 369)          # top-left, top-right, bottom-left, bottom-right
+LID = (336, 337)                      # vanilla's lid, in the block above: cleared
 
 # row 2 roles: 1 white, 2 pale, 3 light, 4 mid, 5 grey, 6 dark, 7 ink; . transparent
 ART = [
@@ -70,6 +77,10 @@ def main():
         for y in range(8):
             for x in range(8):
                 n[(t % 16) * 8 + x, (t // 16) * 8 + y] = px[oy + y][ox + x]
+    for t in LID:
+        for y in range(8):
+            for x in range(8):
+                n[(t % 16) * 8 + x, (t // 16) * 8 + y] = 0
 
     rows = {"row 2": read_pal(os.path.join(PD, "palettes/02.pal")),
             "Blanche's row 10": read_pal(os.path.join(GBA, "data/tilesets/secondary/pallet_town/palettes/10.pal"))}
@@ -86,7 +97,7 @@ def main():
     print("  preview %s (vanilla | ours in row 2, then vanilla | ours in Blanche's row 10)" % PREVIEW)
     if WRITE:
         new.save(path)
-        print("  written: General tiles %s" % (TILES,))
+        print("  written: General tiles %s, and vanilla's lid %s cleared" % (TILES, LID))
 
 
 if __name__ == "__main__":
