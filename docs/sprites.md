@@ -4,8 +4,8 @@
 
 | sprites | vanilla shipped | redrawn | recoloured | still vanilla | added | done |
 |---|---|---|---|---|---|---|
-| overworld people | 96 | 28 | 0 | 68 | 11 | **29%** |
-| trainer portraits | 146 | 11 | 0 | 135 | 9 | **8%** |
+| overworld people | 96 | 36 | 0 | 60 | 11 | **38%** |
+| trainer portraits | 146 | 13 | 0 | 133 | 9 | **9%** |
 | trainer back pics | 6 | 0 | 0 | 6 | 0 | **0%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
 | hearsay portraits | 8 | 6 | 0 | 2 | 0 | **75%** |
@@ -14,8 +14,8 @@
 | daemon icons | 387 | 2 | 0 | 385 | 0 | **1%** |
 | overworld daemons | 42 | 2 | 0 | 40 | 0 | **5%** |
 | overworld objects | 19 | 3 | 0 | 16 | 0 | **16%** |
-| ***the people*** | 260 | 49 | 0 | 211 | 20 | ***18.8%*** |
-| ***every sprite*** | 1478 | 122 | 0 | 1356 | 20 | ***8.3%*** |
+| ***the people*** | 260 | 59 | 0 | 201 | 20 | ***22.7%*** |
+| ***every sprite*** | 1478 | 132 | 0 | 1346 | 20 | ***8.9%*** |
 
 ## The towns
 
@@ -24,13 +24,13 @@
 | town | colour and theme | people sheets on screen | still vanilla | shared with other towns | done |
 |---|---|---|---|---|---|
 | **BLANCHE** | white, blank; home, the pre-colour state | 8 | 0 | 6 | 100% |
-| **CALLOW** | green, unripe, untested | 16 | 13 | 15 | 19% |
-| **SLATE** | stone, a writing surface; the museum of dead hardware | 22 | 18 | 21 | 18% |
-| **DOLDRUM** | a becalmed sea, low spirits | 22 | 19 | 20 | 14% |
-| **ARDOR** | flush and heat, brash zeal; the port | 23 | 18 | 22 | 22% |
-| **HALFTONE** | dots that only look like grey; the tower | 15 | 15 | 14 | 0% |
-| **VERDIGRIS** | green corrosion on bronze; Corpus rotting beneath | 34 | 29 | 32 | 15% |
-| **LURID** | garish glow; spectacle and toxicity | 20 | 18 | 19 | 10% |
-| **BRAZEN** | brass over base metal; corporate capture | 20 | 18 | 17 | 10% |
-| **QUICKSILVER** | mercury: alive, unstable; the ruined lab | 16 | 14 | 14 | 12% |
-| **UMBRA** | full shadow, all colour absorbed; the Review Board | 10 | 8 | 10 | 20% |
+| **CALLOW** | green, unripe, untested | 16 | 9 | 15 | 44% |
+| **SLATE** | stone, a writing surface; the museum of dead hardware | 22 | 14 | 21 | 36% |
+| **DOLDRUM** | a becalmed sea, low spirits | 22 | 13 | 20 | 41% |
+| **ARDOR** | flush and heat, brash zeal; the port | 23 | 14 | 22 | 39% |
+| **HALFTONE** | dots that only look like grey; the tower | 15 | 11 | 14 | 27% |
+| **VERDIGRIS** | green corrosion on bronze; Corpus rotting beneath | 34 | 24 | 32 | 29% |
+| **LURID** | garish glow; spectacle and toxicity | 20 | 14 | 19 | 30% |
+| **BRAZEN** | brass over base metal; corporate capture | 20 | 13 | 17 | 35% |
+| **QUICKSILVER** | mercury: alive, unstable; the ruined lab | 16 | 10 | 14 | 38% |
+| **UMBRA** | full shadow, all colour absorbed; the Review Board | 10 | 4 | 10 | 60% |

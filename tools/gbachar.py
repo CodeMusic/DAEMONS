@@ -169,6 +169,15 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/staff_callow_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_callow.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # CORPUS STAFF (T-118): penguins, the organisation CALLOW's staff belong to -- the male is the same drawing.
+    "corpus_m": dict(src="gfx/characters/staff_callow_penguin.png",
+                        dst="engineGba/graphics/trainers/front_pics/rocket_grunt_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rocket_grunt_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "corpus_f": dict(src="gfx/characters/institution_penguin_f.png",
+                        dst="engineGba/graphics/trainers/front_pics/rocket_grunt_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rocket_grunt_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
 }
 
 def silhouette(a, hue=True, holes=False):
