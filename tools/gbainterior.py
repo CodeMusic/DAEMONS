@@ -32,6 +32,12 @@ only the unused RS layout; `gTileset_Mart` keeps the unused Lavaridge and RS one
 
     python3 tools/gbainterior.py checkpoint_one_island checkpoint_indigo --write
 
+BENCHMARKS too: `slate` (T-105) is CAIRN's hall, drawn from its concept with every
+blocked cell where it was, on `gTileset_SlateBenchmark`; Brazen's dojo keeps the
+old tileset it shared.
+
+    python3 tools/gbainterior.py slate --write
+
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
 """
@@ -325,6 +331,84 @@ def themed(old_img, theme, raw):
     return r.im
 
 
+# SLATE BENCHMARK (CAIRN), from the concept approved 2026-09-15: a slate hall that keeps a record. The same cells
+# are blocked and open -- every boulder becomes a cairn where it stood, so the room plays exactly as before
+S_SLATE, S_SLATEL, S_SLATED, S_JOINT = (104, 112, 124), (132, 140, 152), (84, 90, 102), (70, 76, 88)
+S_WALL, S_WALLD, S_WALLL = (60, 64, 74), (42, 46, 54), (84, 90, 100)
+S_CHALK, S_CHALKD = (234, 232, 222), (190, 188, 180)
+S_LIME, S_LIMEL, S_LIMED = (196, 192, 180), (218, 214, 202), (160, 156, 146)
+S_STONE, S_STONEL, S_STONED = (138, 132, 124), (170, 164, 154), (98, 94, 88)
+S_LAMP, S_INK = (244, 204, 120), (30, 32, 38)
+
+
+def slate(old_img, raw_=None):
+    ST = load("gbastatues")
+    W, H = old_img.width // 16, old_img.height // 16
+    lid = "LAYOUT_PEWTER_CITY_GYM"
+    l = LAYOUTS[lid]; bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+    blocked = {(x, y) for y in range(H) for x in range(W) if (struct.unpack_from("<H", bd, (y * W + x) * 2)[0] >> 10) & 3}
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(H * 16):                                                 # slate flagstones, rows offset by half
+        for x in range(W * 16):
+            off = 8 if (y // 16) % 2 else 0
+            c = S_SLATE
+            if y % 16 == 0 or (x + off) % 16 == 0:
+                c = S_JOINT
+            elif y % 16 == 1 or (x + off) % 16 == 1:
+                c = S_SLATEL
+            elif (x * 7 + y * 3) % 23 == 0:
+                c = S_SLATED
+            r.px(x, y, c)
+    for y in range(7 * 16, 15 * 16):                                        # the limestone path, door to dais
+        for x in range(6 * 16 + 1, 7 * 16 - 1):
+            r.px(x, y, S_LIMED if y % 8 == 0 else (S_LIMEL if y % 8 == 1 else S_LIME))
+    for x in range(4 * 16, 9 * 16):
+        for y in range(10 * 16 + 3, 11 * 16 - 3):
+            if not (6 * 16 <= x < 7 * 16):
+                r.px(x, y, S_LIMED if x % 8 == 0 else S_LIME)
+    r.shade(66, 116, 146, 119, 0.8)                                         # CAIRN's dais
+    r.rect(64, 60, 143, 115, S_LIMED); r.rect(66, 62, 141, 113, S_LIME); r.rect(66, 62, 141, 64, S_LIMEL)
+    r.rect(72, 68, 135, 107, S_LIMEL); r.rect(74, 70, 133, 105, S_LIME)
+    for x in range(76, 132, 4):
+        r.px(x, 72, S_CHALKD); r.px(x, 103, S_CHALKD)
+    r.rect(66, 112, 141, 115, S_LIMED)
+    r.rect(0, 0, W * 16 - 1, 47, S_WALL); r.rect(0, 44, W * 16 - 1, 47, S_WALLD); r.rect(0, 0, W * 16 - 1, 3, S_WALLD)
+    for gx0 in range(20, 190, 22):                                          # the record: tallies of five
+        for row, gy in enumerate((12, 24, 34)):
+            if (gx0 // 22 + row) % 5 == 4:
+                continue
+            for k in range(4):
+                r.rect(gx0 + k * 3, gy, gx0 + k * 3, gy + 7, S_CHALK)
+            for k in range(12):
+                r.px(gx0 - 1 + k, gy + 6 - k // 2, S_CHALKD)
+    for lx in (44, 148):
+        r.rect(lx, 14, lx + 6, 26, S_WALLL); r.ellipse(lx + 3, 12, 5, 4, S_LAMP); r.ellipse(lx + 3, 12, 3, 2, (255, 236, 180))
+    r.rect(80, 6, 127, 40, (96, 70, 48)); r.rect(83, 9, 124, 37, (46, 52, 58))     # the board behind the dais
+    for k, yy in enumerate(range(12, 36, 5)):
+        r.rect(87, yy, 87 + 12 + (k * 7) % 14, yy + 1, S_CHALK); r.rect(106, yy, 106 + 8 + (k * 5) % 10, yy + 1, S_CHALKD)
+    r.rect(0, 0, 15, H * 16 - 1, S_WALL); r.rect(12 * 16, 0, W * 16 - 1, H * 16 - 1, S_WALL)
+    r.rect(14, 48, 15, H * 16 - 17, S_WALLD); r.rect(12 * 16, 48, 12 * 16 + 1, H * 16 - 17, S_WALLL)
+    r.rect(0, 15 * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+
+    def cairn(cx, cy):
+        r.shade(cx * 16 + 3, cy * 16 + 13, cx * 16 + 15, cy * 16 + 15, 0.7)
+        for k, (w, h) in enumerate(((13, 5), (10, 4), (7, 4))):
+            x0 = cx * 16 + (16 - w) // 2; y1 = cy * 16 + 13 - k * 4; y0 = y1 - h
+            r.rect(x0, y0, x0 + w - 1, y1, S_STONE); r.rect(x0, y0, x0 + w - 1, y0, S_STONEL); r.rect(x0 + w - 1, y0, x0 + w - 1, y1, S_STONED)
+            r.rect(x0, y1, x0 + w - 1, y1, S_INK)
+        r.rect(cx * 16 + 7, cy * 16 + 2, cx * 16 + 8, cy * 16 + 3, S_CHALK)
+    for (x, y) in sorted(blocked):
+        if 3 <= y <= 10 and 1 <= x <= 11:
+            cairn(x, y)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx in (4, 8):
+        r.indexed(top, pal0, sx * 16, 11 * 16); r.indexed(base, pal0, sx * 16, 12 * 16)
+    r.rect(84, 222, 123, 239, S_WALLD); r.rect(86, 224, 121, 237, (76, 82, 94)); r.rect(86, 224, 121, 224, S_CHALKD); r.rect(86, 237, 121, 237, S_CHALKD)
+    return r.im
+
+
 # the REPO's materials
 def repo(old_img):
     W, H = 11, 9
@@ -438,6 +522,11 @@ BUILDINGS = {
         forced=set(ESCALATOR),
         recolour_cells={"LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F": [(x, y) for x in (0, 1) for y in (13, 14, 15)]},
         from_cells={}, plan={},
+    ),    # SLATE BENCHMARK, on a tileset of its own: Brazen's dojo keeps gTileset_PewterGym
+    "slate": dict(
+        old="pewter_gym", symbol="gTileset_SlateBenchmark", dir="slate_benchmark",
+        layouts=[("LAYOUT_PEWTER_CITY_GYM", slate)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
     ),
 }
 
