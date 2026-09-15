@@ -51,7 +51,7 @@ C = dict(
     WALL=(198, 152, 106), WALLL=(220, 178, 128), WALLD=(164, 120, 82), SEAM=(140, 98, 64),
     SIDE=(120, 84, 58), SIDED=(96, 66, 46),
     FLOOR=(186, 132, 82), FLOORL=(208, 156, 102), FLOORD=(154, 106, 66), FLOORS=(126, 86, 54),
-    SHADE=(118, 80, 50), SHADE2=(142, 98, 62),
+    SHADE=(118, 80, 50), SHADE2=(142, 98, 62), SHADE3=(90, 61, 38),
     WOODT=(214, 166, 112), WOODF=(150, 100, 62), WOODD=(110, 72, 44),
     STONET=(196, 192, 184), STONE=(158, 154, 148), STONED=(112, 108, 104), MORTAR=(128, 124, 118),
     SOOT=(44, 36, 34), FIRE=(252, 196, 80), FIRE2=(236, 132, 52), EMBER=(190, 70, 36), GLOW=(214, 150, 96),
@@ -67,11 +67,11 @@ C = dict(
     LED=(236, 96, 72), COPPER=(200, 124, 74), VOID=(16, 12, 10),
 )
 ROWS = {                                             # palette rows 7..12, fifteen colours each, by material
-    7: ["OUT", "BEAMD", "BEAM", "BEAML", "WOODD", "WOODF", "WOODT", "FLOORS", "FLOORD", "FLOOR", "FLOORL", "SHADE", "SHADE2", "CREAM", "CREAMD"],
+    7: ["OUT", "BEAMD", "BEAM", "SHADE3", "WOODD", "WOODF", "WOODT", "FLOORS", "FLOORD", "FLOOR", "FLOORL", "SHADE", "SHADE2", "CREAM", "CREAMD"],
     8: ["OUT", "SIDED", "SIDE", "SEAM", "WALLD", "WALL", "WALLL", "BEAMD", "BEAM", "BEAML", "WOODD", "WOODF", "WOODT", "VOID", "CREAM"],
-    9: ["OUT", "SOOT", "STONED", "MORTAR", "STONE", "STONET", "WHITE", "IROND", "IRON", "IRONT", "SCREEND", "SCREEN", "SCREENL", "SKYD", "SKY"],
-    10: ["OUT", "SOOT", "STONED", "MORTAR", "STONE", "STONET", "EMBER", "FIRE2", "FIRE", "GLOW", "IROND", "IRON", "WHITE", "CHK", "SHADE"],   # the hearth row: fire with its stone and iron
-    11: ["OUT", "RUGD", "RUG1", "RUG2", "RUG3", "RUG4", "RUG5", "Q1", "Q2", "Q3", "QD", "FLOOR", "FLOORL", "FLOORS", "SHADE2"],
+    9: ["OUT", "IROND", "IRON", "IRONT", "SCREEND", "SCREEN", "SCREENL", "WHITE", "SKY", "SKYD", "SKYL", "CHK", "BEAMD", "BEAM", "WOODT"],   # devices and glass
+    10: ["OUT", "SOOT", "STONED", "MORTAR", "STONE", "STONET", "EMBER", "FIRE2", "FIRE", "GLOW", "IROND", "IRON", "IRONT", "WHITE", "SKY"],   # the hearth: fire, stone, iron, the basin's water
+    11: ["OUT", "RUGD", "RUG1", "RUG2", "RUG3", "RUG4", "SHADE3", "Q1", "Q2", "Q3", "QD", "FLOOR", "FLOORL", "FLOORS", "SHADE2"],
     12: ["OUT", "GREEND", "GREEN", "GREENL", "BOOK1", "BOOK2", "BOOK3", "BOOK4", "BOOK5", "WOODD", "WOODF", "WOODT", "POT", "POTD", "FLOOR"],
 }
 
@@ -153,24 +153,23 @@ def shell(r, attic=False, void_bottom=False):
         r.rect(0, H - 16, W - 1, H - 1, "VOID")
 
 
-def window(r, x0, y0, w, h, deep=False):
-    if deep:
-        r.rect(x0 - 3, y0 - 2, x0 + w + 2, y0 + h + 2, "BEAMD")
-    r.rect(x0, y0, x0 + w - 1, y0 + h, "BEAM")
-    r.rect(x0 + 2, y0 + 2, x0 + w - 3, y0 + h - 3, "SKY"); r.rect(x0 + 2, y0 + 2, x0 + w // 2 - 2, y0 + 5, "SKYL")
-    r.rect(x0 + 2, y0 + h - 5, x0 + w - 3, y0 + h - 3, "SKYD")
-    r.vline(x0 + w // 2, y0 + 2, y0 + h - 3, "BEAM"); r.hline(x0 + 2, x0 + w - 3, y0 + h // 2, "BEAM")
-    r.rect(x0 - 2, y0 + h + 1, x0 + w + 1, y0 + h + 2, "WOODT"); r.rect(x0 - 2, y0 + h + 3, x0 + w + 1, y0 + h + 3, "WOODD")
-    r.shadow(x0 - 1, y0 + h + 4, x0 + w + 2, y0 + h + 5)
-    cw = max(3, w // 6)
-    for cx in (x0 + 1, x0 + w - 1 - cw):
-        for y in range(y0 + 1, y0 + h - 1):
+def window(r, x0, y0, w, h):
+    """a window filling exactly its block of tiles -- reveal, frame, glass, curtains, sill -- because glass and
+    curtains share no palette row with the wall, so no tile may hold both"""
+    x1, y1 = x0 + w - 1, y0 + h - 1; mid = (x0 + x1 + 1) // 2; gy0, gy1 = y0 + 3, y1 - 6
+    r.rect(x0, y0, x1, y1, "BEAMD"); r.rect(x0 + 2, y0 + 1, x1 - 2, y1 - 4, "BEAM")
+    r.rect(x0 + 4, gy0, x1 - 4, gy1, "SKY"); r.rect(x0 + 4, gy0, mid - 2, gy0 + 3, "SKYL"); r.rect(x0 + 4, gy1 - 2, x1 - 4, gy1, "SKYD")
+    r.vline(mid, gy0, gy1, "BEAM"); r.hline(x0 + 4, x1 - 4, (gy0 + gy1) // 2, "BEAM")
+    r.rect(x0, y1 - 3, x1, y1 - 1, "WOODT"); r.hline(x0, x1, y1, "OUT")
+    cw = max(2, w // 8)
+    for cx in (x0 + 3, x1 - 2 - cw):
+        for y in range(y0 + 2, y1 - 4):
             for x in range(cx, cx + cw):
                 r.px(x, y, "CHK" if (x // 2 + y // 2) % 2 else "WHITE")
 
 
 def rug(r, cx, cy, rx, ry):
-    bands = ["RUG1", "RUG2", "RUG3", "RUG4", "RUG5", "RUG2", "RUG1", "RUG4"]
+    bands = ["RUG1", "RUG2", "RUG3", "RUG4", "Q3", "RUG2", "RUG1", "RUG4"]
     r.ellipse(cx + 1, cy + 2, rx, ry, lambda x, y, d: r.px(x, y, "SHADE2"))
     def paint(x, y, d):
         c = bands[int((1 - math.sqrt(d)) * 12) % len(bands)]
@@ -271,7 +270,7 @@ def first_floor():
     # x2: the iron stove and its pipe (KITCHEN); the pipe is a dark silhouette across the beam, iron against the stone
     r.rect(37, 0, 40, 7, "OUT"); r.vline(37, 0, 7, "BEAMD")
     r.rect(37, 8, 40, 13, "IROND"); r.vline(37, 8, 13, "IRON")
-    r.box(33, 14, 46, 38, 4, top="IRONT", front="IRON", dark="IROND")
+    r.box(33, 14, 46, 39, 4, top="IRONT", front="IRON", dark="IROND")      # to y 39, so its shadow starts on the next row of tiles
     r.rect(36, 24, 43, 33, "IROND"); r.rect(37, 26, 42, 31, "EMBER"); r.rect(38, 27, 41, 30, "FIRE2")
     # x3..4: the counter and its cupboards (CABINET), a shelf of jars above
     r.box(49, 14, 78, 38, 5, top="CREAM", front="WOODF", dark="WOODD")
@@ -297,7 +296,7 @@ def first_floor():
     r.rect(99, 13, 108, 20, "SCREEN"); r.rect(100, 14, 102, 16, "SCREENL"); r.hline(99, 108, 20, "SCREEND")
     # x7..8: the hearth; x9: the window (WINDOW)
     hearth(r, 112)
-    window(r, 146, 5, 12, 14)
+    window(r, 144, 8, 16, 16)
     # x10..12: the stairs up, treads and risers, a banister
     x0, bottom, steps = 162, 62, 8
     for k in range(steps):
@@ -308,7 +307,7 @@ def first_floor():
         px_, py = x0 + k * 4 + 1, bottom - k * 7
         r.rect(px_, py - 15, px_ + 1, py - 7, "WOODD"); r.px(px_, py - 15, "WOODT")
     for k in range(steps * 7 + 3):
-        r.px(x0 + k * 4 // 7, bottom - 15 - k, "BEAML"); r.px(x0 + k * 4 // 7, bottom - 14 - k, "BEAMD")
+        r.px(x0 + k * 4 // 7, bottom - 15 - k, "WOODF"); r.px(x0 + k * 4 // 7, bottom - 14 - k, "BEAMD")
     r.shadow(160, 63, 207, 65)
     # the fireside: a rug, and an armchair either side on (6,3) and (9,3)
     rug(r, 128, 60, 26, 13)
@@ -329,28 +328,31 @@ def first_floor():
 def second_floor():
     r = Room(12, 9); shell(r, attic=True)
     # x1..2: the desk, the PORT on it at (1,1), its chair pushed in on (2,2)
-    r.box(17, 18, 46, 40, 5, top="WOODT", front="WOODF", dark="WOODD")
-    r.rect(35, 27, 45, 38, "WOODD"); r.rect(36, 28, 44, 32, "WOODF"); r.rect(36, 34, 44, 37, "WOODF"); r.px(40, 30, "COPPER"); r.px(40, 35, "COPPER")
-    r.box(19, 4, 32, 17, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
-    r.rect(21, 8, 30, 15, "SCREEN"); r.rect(22, 9, 24, 11, "SCREENL"); r.px(29, 15, "LED")
-    r.rect(20, 19, 31, 21, "IRONT"); r.hline(20, 31, 22, "IROND")
-    chair(r, 40, 47, "down")
-    # x3..4: the bookshelf (BOOKSHELF)
-    r.box(50, 0, 77, 40, 2, top="WOODT", front="WOODD", dark="OUT")
+    # (the monitor fills its cell from y 8 to 23 and the desk top starts at 24, so iron never shares a tile with
+    # the wall or the wood; shadows fall only on the floor, clear of the skirting and the board seams)
+    r.box(17, 24, 46, 40, 5, top="WOODT", front="WOODF", dark="WOODD", shadow=False); r.shadow(19, 41, 49, 43)
+    r.rect(35, 31, 45, 39, "WOODD"); r.rect(36, 32, 44, 38, "WOODF"); r.px(40, 35, "WOODT")
+    r.box(17, 9, 30, 22, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
+    r.vline(16, 8, 23, "OUT"); r.vline(31, 8, 23, "OUT"); r.hline(17, 30, 23, "OUT")
+    r.rect(19, 13, 28, 20, "SCREEN"); r.rect(20, 14, 22, 16, "SCREENL"); r.px(27, 21, "SCREENL")
+    r.rect(20, 25, 31, 27, "CREAM"); r.hline(20, 31, 28, "CREAMD")          # a keyboard
+    chair(r, 40, 49, "down")
+    # x3..4: the bookshelf (BOOKSHELF), both cells edge to edge
+    r.box(49, 0, 78, 40, 2, top="WOODT", front="WOODD", dark="OUT", shadow=False); r.shadow(51, 41, 81, 43)
     for k, y in enumerate((5, 16, 27)):
         for x in range(52, 76, 3):
             h = 8 - ((x // 3 + k) % 3)
             r.rect(x, y + (9 - h), x + 1, y + 9, ["BOOK1", "BOOK2", "BOOK3", "BOOK4", "BOOK5"][(x // 3 + k) % 5])
-        r.hline(51, 76, y + 10, "WOODT")
-    # x5..6: the dormer window (WINDOW); x7: a narrow chest of drawers (DRESSER)
-    window(r, 84, 3, 28, 16, deep=True)
+        r.hline(50, 77, y + 10, "WOODT")
+    # x5..6: the dormer window (WINDOW), cut up through the beam; x7: a narrow chest of drawers (DRESSER)
+    window(r, 80, 0, 32, 24)
     r.box(116, 10, 124, 40, 3, top="WOODT", front="WOODF", dark="WOODD")
     for y in (18, 25, 32):
         r.hline(116, 124, y, "WOODD"); r.px(120, y + 3, "COPPER")
     # the bed under the dormer on (5..6, 2..3), head to the wall, a chest at its foot on row 4
-    r.shadow(86, 67, 118, 69); r.shadow(116, 30, 118, 66)
+    r.shadow(86, 67, 118, 69); r.shadow(117, 41, 119, 66)
     r.rect(84, 24, 115, 32, "WOODF"); r.hline(84, 115, 24, "WOODT"); r.vline(115, 24, 32, "WOODD")
-    r.rect(86, 33, 113, 40, "WHITE"); r.hline(86, 113, 40, "CREAMD"); r.rect(89, 34, 98, 38, "CREAM"); r.rect(101, 34, 110, 38, "CREAM")
+    r.rect(86, 33, 113, 40, "CREAMD"); r.hline(86, 113, 40, "QD"); r.rect(89, 34, 98, 38, "CREAM"); r.rect(101, 34, 110, 38, "CREAM")
     for y in range(41, 58):
         for x in range(86, 114):
             r.px(x, y, "QD" if x == 113 else ["Q1", "Q2", "Q3", "RUG2"][((x - 86) // 8 + (y - 41) // 8) % 4])
@@ -359,7 +361,7 @@ def second_floor():
     r.box(88, 69, 111, 79, 3, top="WOODT", front="WOODF", dark="WOODD")
     r.rect(97, 74, 102, 76, "COPPER")
     # x8..10: the stairwell, an opening behind a railing, the treads going down
-    r.rect(128, 24, 175, 60, "SOOT")
+    r.rect(128, 24, 175, 60, "OUT")
     for k in range(5):
         r.rect(130 + k * 5, 28 + k * 6, 175, 30 + k * 6, "WOODF"); r.hline(130 + k * 5, 175, 28 + k * 6, "WOODT")
     r.rect(126, 18, 128, 62, "WOODF"); r.vline(126, 18, 62, "WOODT"); r.vline(128, 18, 62, "WOODD")
@@ -368,28 +370,30 @@ def second_floor():
     r.rect(126, 55, 161, 56, "WOODT"); r.hline(126, 161, 57, "WOODD"); r.shadow(128, 67, 163, 69)
     # x11: the pinned note (signpost)
     r.shadow(181, 13, 189, 26)
-    r.rect(178, 10, 188, 23, "CREAM"); r.vline(188, 10, 23, "CREAMD"); r.px(183, 11, "CHK")
+    r.rect(178, 10, 188, 23, "CREAM"); r.vline(188, 10, 23, "CREAMD"); r.px(183, 11, "BEAMD")
     for y in (14, 17, 20):
         r.hline(180, 186, y, "WOODF")
     # the console corner, rows 5..8 on the right: a rug; the set on its low cabinet on
     # (10..11,5); the console on the floor on (9,6), its lead up to the set; a crate of
     # games on (11,6); a floor cushion on (8,6)
     rug(r, 144, 108, 26, 13)                             # downstairs' fireside rug on the same grid phase: its edge tiles are shared
-    r.box(163, 84, 188, 95, 3, top="WOODT", front="WOODF", dark="WOODD")
-    r.rect(166, 89, 175, 94, "WOODD"); r.rect(177, 89, 186, 94, "WOODD")
-    r.box(167, 66, 184, 83, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
-    r.rect(170, 71, 181, 81, "SCREEN"); r.rect(171, 72, 175, 75, "SCREENL"); r.hline(170, 181, 81, "SCREEND")
-    r.shadow(147, 108, 160, 110)
-    r.rect(146, 99, 157, 102, "IRONT"); r.hline(146, 157, 99, "WHITE"); r.rect(146, 103, 157, 106, "IRON"); r.hline(146, 157, 107, "OUT")
-    r.vline(145, 99, 107, "OUT"); r.vline(158, 99, 107, "OUT"); r.px(148, 105, "LED"); r.rect(151, 104, 156, 105, "IROND")
-    for k in range(9):
-        r.px(158 + k, 101 - k // 2, "IROND")
+    # (the set fills (10..11,4)'s middle from y 64 to 79 and its cabinet starts at 80; the console fills the top
+    # half of (9,6) exactly; the lead is drawn in the outline colour, which every row has; no shadow lands on the rug)
+    r.box(163, 81, 188, 95, 3, top="WOODT", front="WOODF", dark="WOODD", shadow=False); r.shadow(165, 96, 190, 97)
+    r.rect(166, 86, 175, 93, "WOODD"); r.rect(177, 86, 186, 93, "WOODD")
+    r.box(169, 65, 182, 78, 2, top="IRONT", front="IRON", dark="IROND", shadow=False)
+    r.vline(168, 64, 79, "OUT"); r.vline(183, 64, 79, "OUT"); r.hline(169, 182, 79, "OUT")
+    r.rect(171, 69, 180, 77, "SCREEN"); r.rect(172, 70, 175, 72, "SCREENL"); r.hline(171, 180, 77, "SCREEND")
+    r.rect(145, 97, 158, 102, "IRON"); r.rect(145, 97, 158, 99, "IRONT"); r.hline(145, 158, 97, "WHITE")
+    r.hline(144, 159, 96, "OUT"); r.hline(144, 159, 103, "OUT"); r.vline(144, 96, 103, "OUT"); r.vline(159, 96, 103, "OUT")
+    r.px(147, 101, "SCREENL"); r.hline(151, 156, 101, "IROND")
+    for k in range(8):
+        r.px(160 + k, 100 - k // 2, "OUT")
     r.box(178, 102, 189, 111, 3, top="WOODT", front="WOODF", dark="WOODD")
     for x, c in ((180, "BOOK1"), (183, "BOOK2"), (186, "BOOK4")):
         r.rect(x, 97, x + 1, 102, c)
-    r.shadow(127, 113, 141, 115)
     r.rect(125, 102, 139, 112, "Q3"); r.hline(125, 139, 102, "RUG2"); r.rect(125, 109, 139, 112, "QD"); r.hline(125, 139, 113, "OUT")
-    r.rect(129, 104, 135, 107, "RUG5")
+    r.rect(129, 104, 135, 107, "Q2")
     return r
 
 
