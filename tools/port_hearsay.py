@@ -19,9 +19,10 @@ feedback, loop, recursive, self-reinforcing or bias (4.9).
 
 THE WORLD LINE IS WRITTEN WITH THE ENTRY. An entry unlocks when you hear it, so
 the sign, the journal or the person has to say what HEARSAY says they said; every
-label a HEARSAY entry quotes is rewritten here with it. The REVIEW BOARD's own
-room intros are left for later (T-99), so entries unlocked there quote them as
-they stand.
+label a HEARSAY entry quotes is rewritten here with it -- the REVIEW BOARD's own
+rooms included, since 2026-09-15: each member speaks in their humour, PHLEGMATIC
+unhurried, CHOLERIC arguing, MELANCHOLIC remembering CRYSTAL, SANGUINE delighted
+by what nobody planned. Their music cues and the champion reveal are kept.
 
 KEPT OUT, by the bible: nobody names CRYSTAL's son, VERA's father or the lobby
 floor; no entry dates anything at Quicksilver (4.10); and SCORN's "kid" is gone.
@@ -172,7 +173,7 @@ HEARSAY = {
             (FAVOURITE, "M", [["MELANCHOLIC's LATENT daemons", "don't look like much until they", "do."]]),
             (LIKE, "M", [["I went in confident. She let me."], ["Then she beat me, and asked after", "my mother."]]),
             (RUMOR, "", [["She and CRYSTAL CLEAR were rivals", "when they were young."], ["Asked who won, she said they both", "did, and it cost them both."]]),
-            (FAMILY, "F", [["CRYSTAL's taken an interest in", "you, child."], ["She'd sooner fiddle with her INDEX", "than talk to a soul."], ["Mind you, she was usually right."]]),
+            (FAMILY, "F", [["CRYSTAL's taken an interest in", "you, child."], ["DAEMONS are for engaging, not for", "filing."]]),
             (LIKE, "F", [["Take MELANCHOLIC, for example."], ["Nobody has sat on the REVIEW BOARD", "as long, and she's not finished."]]),
         ],
         "letter": ("F", [["Don't go soft, child."], ["And if you do, go soft on purpose.", "CRYSTAL never managed that."]]),
@@ -310,6 +311,44 @@ WORLD = {
     "Route4_Text_PeopleLikeAndRespectBrock": [["Oh, wow, that's the SLATE MARK!", "You got it from CAIRN?"], ["He is not the strongest leader.", "He is the one whose records you", "can check."],
                                               ["My brother says that is the same", "as boring."]],
     "MtMoon_1F_Text_BrockHelpsExcavateFossils": [["I dig CORES out of DEADSTACK.", "CAIRN comes down some weekends."], ["He labels everything twice."]],
+    # the REVIEW BOARD's rooms
+    "PokemonLeague_LoreleisRoom_Text_Intro": [["Welcome to the DAEMON LEAGUE."], ["I am PHLEGMATIC.", "Fourth of the REVIEW BOARD."], ["There is no hurry. There never is."],
+                                              ["Freezing ROUTINES are powerful."], ["Your DAEMON will be at my mercy", "when they are hung solid."],
+                                              ["Whenever you are ready.{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}"]],
+    "PokemonLeague_LoreleisRoom_Text_RematchIntro": [["Welcome to the DAEMON LEAGUE."], ["I, PHLEGMATIC of the REVIEW", "BOARD, am here again."], ["There is still no hurry."],
+                                                     ["Freezing ROUTINES are powerful."], ["Your DAEMON will be at my mercy", "when they are hung solid."],
+                                                     ["Whenever you are ready.{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}"]],
+    "PokemonLeague_LoreleisRoom_Text_Defeat": [["…There.", "That was not slow at all."]],
+    "PokemonLeague_LoreleisRoom_Text_PostBattle": [["Go on ahead."], ["Take the next one slowly.", "It will not go anywhere."]],
+    "PokemonLeague_BrunosRoom_Text_Intro": [["I am CHOLERIC.", "Second of the REVIEW BOARD!"], ["Every battle is an argument, and I", "have never lost one!"],
+                                            ["I've lived and trained with my", "LOGIC daemons! And that will", "never change!"], ["{PLAYER}!"],
+                                            ["Premise: we are stronger.", "Conclusion: you lose!"], ["Hoo hah!"]],
+    "PokemonLeague_BrunosRoom_Text_RematchIntro": [["I am CHOLERIC.", "Second of the REVIEW BOARD!"], ["I have gone over our last battle.", "My reasoning was sound!"],
+                                                   ["I've lived and trained with my", "LOGIC daemons! And that will", "never change!"], ["{PLAYER}!"],
+                                                   ["Premise: we are stronger.", "Conclusion: you lose!"], ["Hoo hah!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}"]],
+    "PokemonLeague_BrunosRoom_Text_Defeat": [["Why?", "My reasoning was sound!"]],
+    "PokemonLeague_BrunosRoom_Text_PostBattle": [["My job is done."], ["I will go over that battle until", "I find the flaw."], ["Go face your next challenge."]],
+    "PokemonLeague_AgathasRoom_Text_Intro": [["I am MELANCHOLIC.", "Third of the REVIEW BOARD!"], ["CRYSTAL's taken an interest in", "you, child."],
+                                             ["She'd sooner finish that INDEX", "than finish a conversation."], ["Wanted it more than she wanted", "any of us."],
+                                             ["Mind you, she was usually right.", "That was the trouble."], ["DAEMONS are for engaging, not for", "filing."],
+                                             ["{PLAYER}! I'll show you how a real", "USER engages!"]],
+    "PokemonLeague_AgathasRoom_Text_RematchIntro": [["I am MELANCHOLIC.", "Third of the REVIEW BOARD."], ["You're back, child. CRYSTAL's", "still watching you, I expect."],
+                                                    ["She'd sooner finish that INDEX", "than finish a conversation."], ["Wanted it more than she wanted", "any of us."],
+                                                    ["Mind you, she was usually right.", "That was the trouble."], ["DAEMONS are for engaging, not for", "filing."],
+                                                    ["{PLAYER}! I'll show you how a real", "USER engages!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}"]],
+    "PokemonLeague_AgathasRoom_Text_Defeat": [["Oh, my."], ["She was right about you.", "Don't tell her I said so."]],
+    "PokemonLeague_AgathasRoom_Text_PostBattle": [["You win. I see what CRYSTAL sees."], ["Now go on, child, before I start", "remembering things."]],
+    "PokemonLeague_LancesRoom_Text_Intro": [["Ah! I heard about you, {PLAYER}!"], ["I lead the REVIEW BOARD."], ["You can call me SANGUINE the", "EMERGENT USER."],
+                                            ["You know that EMERGENT DAEMON", "are mythical."], ["They're hard to bind and raise,", "but their powers are superior."],
+                                            ["I never know what they'll do.", "That's the best part!"], ["Your LEAGUE challenge ends with", "me, {PLAYER}! Surprise me!"]],
+    "PokemonLeague_LancesRoom_Text_RematchIntro": [["Ah! So, you've returned, {PLAYER}!"], ["I lead the REVIEW BOARD."], ["You can call me SANGUINE the", "EMERGENT USER."],
+                                                   ["You know that EMERGENT DAEMON", "are mythical."], ["They're hard to bind and raise,", "but their powers are superior."],
+                                                   ["Last time you did something I", "never saw coming. Do it again!"],
+                                                   ["Your LEAGUE challenge ends with", "me, {PLAYER}!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}"]],
+    "PokemonLeague_LancesRoom_Text_Defeat": [["That's it!"], ["Nobody planned that, and it was", "wonderful."]],
+    "PokemonLeague_LancesRoom_Text_PostBattle": [["I didn't see a single turn of that", "coming, {PLAYER}!"], ["You are now the DAEMON LEAGUE", "champion!"],
+                                                 ["…Or, you would have been, but", "you have one more challenge", "ahead."], ["You have to face another USER! His", "name is…"],
+                                                 ["{RIVAL}! He beat the REVIEW BOARD", "before you!"], ["He is the real DAEMON LEAGUE", "champion!"]],
     # CRYSTAL
     "PalletTown_ProfessorOaksLab_Text_OakIsGoingToHaveRadioShow": [["There was to be a lecture series.", "It was announced twice."], ["Now it is a radio programme.", "She did not pick the name."]],
 }
