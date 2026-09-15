@@ -258,12 +258,17 @@ def hearth(r, x0):
 
 def first_floor():
     r = Room(13, 10); shell(r, void_bottom=True)
-    # x1: the basin (KITCHEN)
-    r.box(17, 14, 31, 38, 5, top="CREAM", front="WOODF", dark="WOODD")
-    r.rect(19, 15, 28, 18, "STONED"); r.rect(20, 16, 27, 17, "SKY"); r.rect(19, 24, 29, 36, "WOODD"); r.rect(20, 25, 28, 35, "WOODF"); r.px(27, 30, "COPPER")
-    # x2: the iron stove and its pipe (KITCHEN), on a stone splashback -- iron has no row with the wall in it,
-    # so the pipe is a dark silhouette across the beam and iron only against the stone
-    r.rect(32, 8, 47, 13, "STONE"); r.hline(32, 47, 8, "STONET"); r.hline(32, 47, 11, "MORTAR"); r.vline(40, 8, 10, "MORTAR")
+    # one stone splashback behind the basin and the stove: stone, water and iron share no palette row with the
+    # wall, so every tile holding them is kept clear of it
+    r.rect(16, 8, 47, 13, "STONE"); r.hline(16, 47, 8, "STONET"); r.hline(16, 47, 11, "MORTAR")
+    for x in (24, 40):
+        r.vline(x, 8, 10, "MORTAR")
+    # x1: the stone basin, its apron down to the tile edge, a wooden cupboard under (KITCHEN)
+    r.box(17, 14, 31, 38, 5, top="STONET", front="WOODF", dark="STONED")
+    r.rect(17, 21, 31, 23, "STONE"); r.hline(17, 31, 23, "STONED"); r.vline(31, 24, 37, "WOODD")
+    r.rect(19, 15, 28, 18, "STONED"); r.rect(20, 16, 27, 17, "SKY"); r.px(21, 16, "WHITE")
+    r.rect(19, 25, 29, 36, "WOODD"); r.rect(20, 26, 28, 35, "WOODF"); r.px(27, 30, "WOODT")
+    # x2: the iron stove and its pipe (KITCHEN); the pipe is a dark silhouette across the beam, iron against the stone
     r.rect(37, 0, 40, 7, "OUT"); r.vline(37, 0, 7, "BEAMD")
     r.rect(37, 8, 40, 13, "IROND"); r.vline(37, 8, 13, "IRON")
     r.box(33, 14, 46, 38, 4, top="IRONT", front="IRON", dark="IROND")
@@ -283,10 +288,13 @@ def first_floor():
         for x in range(20, 77):
             r.px(x, y, "RUGD" if y in (44, 57) else ("RUG4" if (y // 3) % 2 else "RUG1"))
     r.shadow(21, 58, 77, 59, 0.8)
-    # x6: the TV on its cabinet (TELEVISION)
-    r.box(97, 22, 110, 38, 3, top="WOODT", front="WOODF", dark="WOODD")
-    r.box(98, 6, 109, 21, 2, top="IRONT", front="IROND", dark="IROND", shadow=False)
-    r.rect(100, 10, 107, 19, "SCREEN"); r.rect(101, 11, 103, 13, "SCREENL"); r.hline(100, 107, 19, "SCREEND")
+    # x6: the TV on its cabinet (TELEVISION) -- the set fills the cell from y 8 to 23 and the cabinet from 24, so
+    # no tile holds iron with the wall or the wood
+    r.box(97, 24, 110, 38, 3, top="WOODT", front="WOODF", dark="WOODD", shadow=False)
+    r.shadow(98, 39, 111, 39); r.shadow(98, 41, 111, 41)      # not the floor seam at y 40: a darker seam is in no row with the armchair
+    r.box(97, 9, 110, 22, 2, top="IRONT", front="IROND", dark="IROND", shadow=False); r.hline(97, 110, 23, "OUT")
+    r.vline(96, 8, 23, "OUT"); r.vline(111, 8, 23, "OUT")
+    r.rect(99, 13, 108, 20, "SCREEN"); r.rect(100, 14, 102, 16, "SCREENL"); r.hline(99, 108, 20, "SCREEND")
     # x7..8: the hearth; x9: the window (WINDOW)
     hearth(r, 112)
     window(r, 146, 5, 12, 14)
