@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.207 — 2026-09-15
+
+### 5.3 — TILT's room, redrawn
+
+- ***Lurid's invisible-wall maze is new, in two halves*** **joined by four corner pads that turn you one way only, clockwise** — *the first half ends at the upper-left pad, the second begins upper right; the lower-left pad has a pocket of its own, so the first half cannot be skipped, and it is the second half's way back.* **This replaces 5.3's "keep vanilla's invisible-wall maze".**
+- ***When TILT loses, the walls show***: **every leaning floor tile a wall mostly covers swaps its light and dark, and a lit way opens straight from his dais to the door.** *T-109.*
+
 ## v11.206 — 2026-09-14
 
 ### 9.23 — Brazen's roundels

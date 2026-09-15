@@ -40,6 +40,9 @@ old tileset it shared.
     python3 tools/gbainterior.py doldrum --write      # BASIN's becalmed lido (T-106)
     python3 tools/gbainterior.py ardor --write        # GAUGE's signal room (T-107)
     python3 tools/gbainterior.py verdigris --write    # TRELLIS's espalier house (T-108)
+    python3 tools/gbainterior.py lurid --write        # TILT's tilted room, its maze redrawn (T-109)
+
+Statue heads are drawn on the top layer, as vanilla does, so the player walks behind them (T-110).
 
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
@@ -62,6 +65,7 @@ def load(name):
 CP, RP, EM = load("gbacheckpoint"), load("gbarepo"), load("gbaemblems")
 PRIM = os.path.join(GBA, "data/tilesets/primary/building")
 LAYOUTS = {l["id"]: l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if "id" in l}
+MAGENTA = (255, 0, 255)                   # transparent: the see-through pixels of a top-layer tile
 
 
 def read_pal(path):
@@ -344,7 +348,7 @@ S_STONE, S_STONEL, S_STONED = (138, 132, 124), (170, 164, 154), (98, 94, 88)
 S_LAMP, S_INK = (244, 204, 120), (30, 32, 38)
 
 
-def slate(old_img, raw_=None):
+def slate(old_img, raw_=None, statues=True):
     ST = load("gbastatues")
     W, H = old_img.width // 16, old_img.height // 16
     lid = "LAYOUT_PEWTER_CITY_GYM"
@@ -406,7 +410,7 @@ def slate(old_img, raw_=None):
     pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
     badges = Image.open(ST.BADGES).load()
     top, base = ST.mark_top([[badges[x, y] for x in range(16)] for y in range(16)]), ST.plinth()
-    for sx in (4, 8):
+    for sx in ((4, 8) if statues else ()):
         r.indexed(top, pal0, sx * 16, 11 * 16); r.indexed(base, pal0, sx * 16, 12 * 16)
     r.rect(84, 222, 123, 239, S_WALLD); r.rect(86, 224, 121, 237, (76, 82, 94)); r.rect(86, 224, 121, 224, S_CHALKD); r.rect(86, 237, 121, 237, S_CHALKD)
     return r.im
@@ -414,7 +418,7 @@ def slate(old_img, raw_=None):
 
 # DOLDRUM BENCHMARK (BASIN), from the concept approved 2026-09-15: the becalmed lido. Every water cell stays
 # water (MB_OCEAN_WATER, surfable) and every walkway floor; the drawing reads which is which from the room itself
-def doldrum(old_img, raw_=None):
+def doldrum(old_img, raw_=None, statues=True):
     ST = load("gbastatues")
     old = Old("cerulean_gym")
     _, raw = old.layout("LAYOUT_CERULEAN_CITY_GYM")
@@ -494,7 +498,7 @@ def doldrum(old_img, raw_=None):
     pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
     badges = Image.open(ST.BADGES).load()
     top, base = ST.mark_top([[badges[16 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
-    for sx in (6, 10):
+    for sx in ((6, 10) if statues else ()):
         r.indexed(top, pal0, sx * 16, 16 * 16); r.indexed(base, pal0, sx * 16, 17 * 16)
     r.rect(7 * 16 + 2, 18 * 16 + 2, 10 * 16 - 3, 18 * 16 + 15, TRIM); r.rect(7 * 16 + 4, 18 * 16 + 4, 10 * 16 - 5, 18 * 16 + 13, TILEL)
     r.rect(7 * 16 + 4, 18 * 16 + 8, 10 * 16 - 5, 18 * 16 + 9, GUTTER)
@@ -516,7 +520,7 @@ A_IDS = {"half": [0x2BB, 0x2BC, 0x2BD, 0x2BE, 0x2BF, 0x2C3, 0x2C4, 0x2C5, 0x2C6,
                                                                                     # the same, the map starts on on's ids
 
 
-def ardor_room(gate="on"):
+def ardor_room(gate="on", statues=True):
     ST = load("gbastatues")
     W, H = 11, 21
     r = Room(Image.new("RGB", (W * 16, H * 16)))
@@ -590,15 +594,15 @@ def ardor_room(gate="on"):
     pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
     badges = Image.open(ST.BADGES).load()
     top, base = ST.mark_top([[badges[32 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
-    for sx in (3, 7):
+    for sx in ((3, 7) if statues else ()):
         r.indexed(top, pal0, sx * 16, 16 * 16); r.indexed(base, pal0, sx * 16, 17 * 16)
     r.rect(66, 306, 108, 319, A_AMBERD); r.rect(68, 308, 106, 317, A_TRAY)      # the mat
     r.rect(0, 20 * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
     return r.im
 
 
-def ardor(old_img):
-    return ardor_room("on")
+def ardor(old_img, statues=True):
+    return ardor_room("on", statues)
 
 
 def ardor_states():
@@ -622,7 +626,7 @@ V_GLASS, V_GLASSL = (184, 222, 220), (226, 244, 240)
 V_BRONZE, V_BRONZED, V_BLOOM, V_BLOOMD = (168, 124, 70), (116, 82, 46), (232, 214, 120), (190, 160, 70)
 
 
-def verdigris(old_img):
+def verdigris(old_img, statues=True):
     ST = load("gbastatues")
     old = Old("celadon_gym")
     _, raw = old.layout("LAYOUT_CELADON_CITY_GYM")
@@ -712,12 +716,137 @@ def verdigris(old_img):
     pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
     badges = Image.open(ST.BADGES).load()
     top, base = ST.mark_top([[badges[48 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
-    for sx in (4, 8):
+    for sx in ((4, 8) if statues else ()):
         r.indexed(top, pal0, sx * 16, 15 * 16); r.indexed(base, pal0, sx * 16, 16 * 16)
     r.rect(5 * 16 + 2, 18 * 16 + 2, 8 * 16 - 3, 18 * 16 + 15, V_VERDD); r.rect(5 * 16 + 4, 18 * 16 + 4, 8 * 16 - 5, 18 * 16 + 13, V_VERD)
     for x in range(5 * 16 + 6, 8 * 16 - 6, 4):
         r.rect(x, 18 * 16 + 6, x, 18 * 16 + 11, V_VERDL)
     return r.im
+
+
+# LURID BENCHMARK (TILT), from the concept approved 2026-09-15 (v3). A new invisible maze in two halves joined by four
+# corner pads that turn you one way only, clockwise: the first half ends at the upper-left pad, which puts you upper
+# right for the second. The lower-left pad has a pocket of its own, so nobody skips the first half; it is also the
+# second half's way back. The floor is a grid that leans, the same over wall and open cell alike. When TILT loses,
+# every leaning tile a wall mostly covers swaps its light and dark, and a lit way opens from his dais to the door
+L_GRID = [                                # rows 2..21; # an invisible wall (or a statue), P a pad
+    "P.....#.....##P",
+    ".##.#.#.#.#.#..",
+    "#..#..#..##....",
+    "......#.##.#...",
+    ".#...##....#.#.",
+    ".#....##..#.#.#",
+    "..##.##.#......",
+    ".#....#..#.###.",
+    "..#...#...#....",
+    "#..####.#...#.#",
+    "##...#...#..#..",
+    "...#.#....#..#.",
+    "###..#....##.#.",
+    "....##....#....",
+    ".#.#.######....",
+    ".#.........#...",
+    "..#.#..#..###..",
+    "#...####..#.#..",
+    ".#.#........#..",
+    "P.#..#...#..#.P",
+]
+L_PADS = [(0, 2), (14, 2), (14, 21), (0, 21)]           # clockwise: each sends you to the next
+L_STATUES = [(4, 19), (10, 19)]
+L_DOOR = [(6, 21), (7, 21), (8, 21)]
+L_EXIT = {(7, 16), (7, 18), (7, 19)}                     # opened when TILT loses: straight down to the door
+L_WALLS = {(x, y + 2) for y, row in enumerate(L_GRID) for x, ch in enumerate(row) if ch == "#"}
+L_PLAN = {(x, y + 2): (ch == "#", 0x67 if ch == "P" else 0)          # MB_REGULAR_WARP on the pads
+          for y, row in enumerate(L_GRID) for x, ch in enumerate(row) if (x, y + 2) not in L_STATUES + L_DOOR}
+L_FLOOR, L_FLOORL, L_LINE, L_LINEL = (192, 188, 140), (230, 228, 190), (158, 152, 110), (242, 240, 208)
+L_WALL, L_WALLD, L_WALLL = (76, 50, 86), (50, 32, 58), (108, 76, 116)
+L_GLOW, L_GLOWL, L_MAG = (196, 238, 118), (236, 255, 200), (222, 96, 172)
+L_DAIS, L_DAISL, L_DAISD, L_PADC = (132, 100, 132), (170, 136, 164), (92, 66, 94), (60, 40, 70)
+
+
+def lurid_check():
+    """The halves are sealed from each other, the pocket holds the pad and two cells, and every open cell belongs to
+    one of the three; after the win the way out reaches TILT from the door"""
+    def reach(start, walls):
+        seen, todo = {start}, [start]
+        while todo:
+            x, y = todo.pop()
+            for n in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= n[0] < 15 and 2 <= n[1] <= 21 and n not in walls and n not in seen:
+                    seen.add(n); todo.append(n)
+        return seen
+    a, b, c = reach((7, 21), L_WALLS), reach((14, 2), L_WALLS), reach((0, 21), L_WALLS)
+    opened = {(x, y) for x in range(15) for y in range(2, 22) if (x, y) not in L_WALLS}
+    assert (0, 2) in a and (14, 21) in b and (7, 14) in b and not a & b and not c & (a | b) and len(c) == 3, "LURID: the halves leak"
+    assert opened == a | b | c, "LURID: a pocket nobody can reach"
+    assert (7, 14) in reach((7, 21), L_WALLS - L_EXIT), "LURID: the way out does not reach TILT"
+
+
+def lurid_room(after=False):
+    from collections import Counter
+    ST = load("gbastatues")
+    W, H = 15, 23
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    flipped = set()
+    if after:                                            # a leaning tile flips whole when a wall covers most of it
+        hidden = L_WALLS - set(L_STATUES) - {(x, y - 1) for x, y in L_STATUES} - L_EXIT
+        inwall, total = Counter(), Counter()
+        for y in range(32, 22 * 16):
+            for x in range(W * 16):
+                t = ((x + y // 2) // 16, y // 16)
+                total[t] += 1
+                if (x // 16, y // 16) in hidden:
+                    inwall[t] += 1
+        flipped = {t for t in total if inwall[t] * 2 > total[t]}
+    for y in range(32, 22 * 16):                         # the grid leans half a pixel a row
+        for x in range(W * 16):
+            u = x + y // 2
+            light = ((u // 16) + (y // 16)) % 2 == 1
+            if (u // 16, y // 16) in flipped:
+                light = not light
+            c = L_FLOORL if light else L_FLOOR
+            if u % 16 == 0 or y % 16 == 0:
+                c = L_LINE
+            elif u % 16 == 1 or y % 16 == 1:
+                c = L_LINEL
+            if x < 6:
+                c = tuple(int(v * 0.86) for v in c)
+            r.px(x, y, c)
+    r.rect(0, 0, W * 16 - 1, 31, L_WALL); r.rect(0, 0, W * 16 - 1, 2, L_WALLD); r.rect(0, 27, W * 16 - 1, 31, L_WALLD)
+    r.rect(0, 25, W * 16 - 1, 26, L_WALLL)
+    r.rect(64, 4, 175, 23, L_WALLD); r.rect(66, 6, 173, 21, (34, 26, 40))          # a distribution with a long tail
+    for k, h in enumerate([2, 5, 11, 14, 12, 9, 7, 5, 4, 3, 3, 2, 2, 1, 1, 1, 1, 1]):
+        r.rect(70 + k * 6, 20 - h, 74 + k * 6, 20, L_GLOW if k != 3 else L_MAG)
+    for lx in (24, 208):
+        r.rect(lx, 6, lx + 7, 20, L_WALLL); r.ellipse(lx + 3, 12, 3, 5, L_GLOW); r.ellipse(lx + 3, 12, 1, 3, L_GLOWL)
+    for y in range(12 * 16 + 2, 15 * 16 - 2):           # TILT's slab, leaning with the floor
+        s = (y - 12 * 16) // 2
+        x0, x1 = 6 * 16 + 10 - s, 9 * 16 - 2 - s
+        for x in range(x0, x1 + 1):
+            r.px(x, y, L_DAISL if (y < 12 * 16 + 4 or x < x0 + 2) else (L_DAISD if (y > 15 * 16 - 5 or x > x1 - 2) else L_DAIS))
+    if after:                                            # the way out, lit
+        r.rect(7 * 16 + 5, 15 * 16, 7 * 16 + 10, 21 * 16 - 1, L_GLOW); r.rect(7 * 16 + 7, 15 * 16, 7 * 16 + 8, 21 * 16 - 1, L_GLOWL)
+    for (px_, py_) in L_PADS:                            # the pads: a spiral winding clockwise
+        cx, cy = px_ * 16 + 8, py_ * 16 + 8
+        r.ellipse(cx, cy, 7, 7, L_WALLD); r.ellipse(cx, cy, 6, 6, L_PADC)
+        for k in range(90):
+            rad = 0.6 + k * 0.058
+            r.px(int(round(cx + rad * math.cos(k * 0.19))), int(round(cy + rad * math.sin(k * 0.19))), L_MAG if k < 60 else L_GLOW)
+    pal0 = read_pal(os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal"))
+    badges = Image.open(ST.BADGES).load()
+    top, base = ST.mark_top([[badges[64 + x, y] for x in range(16)] for y in range(16)]), ST.plinth()
+    for sx, sy in L_STATUES:                             # SKEW; their heads are solid here, so nobody stands behind
+        r.indexed(top, pal0, sx * 16, (sy - 1) * 16); r.indexed(base, pal0, sx * 16, sy * 16)
+    r.rect(6 * 16 + 2, 21 * 16 + 2, 9 * 16 - 3, 21 * 16 + 15, L_WALLD); r.rect(6 * 16 + 4, 21 * 16 + 4, 9 * 16 - 5, 21 * 16 + 13, L_WALL)
+    for x in range(6 * 16 + 6, 9 * 16 - 6, 3):
+        r.px(x, 21 * 16 + 8 + (x // 3) % 2, L_GLOW)
+    r.rect(0, 22 * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
+def lurid(old_img):
+    lurid_check()
+    return lurid_room()
 
 
 # the REPO's materials
@@ -838,22 +967,33 @@ BUILDINGS = {
         old="pewter_gym", symbol="gTileset_SlateBenchmark", dir="slate_benchmark",
         layouts=[("LAYOUT_PEWTER_CITY_GYM", slate)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        tops={"LAYOUT_PEWTER_CITY_GYM": [(4, 11), (8, 11)]},
     ),    # DOLDRUM BENCHMARK, on a tileset of its own
     "doldrum": dict(
         old="cerulean_gym", symbol="gTileset_DoldrumBenchmark", dir="doldrum_benchmark",
         layouts=[("LAYOUT_CERULEAN_CITY_GYM", doldrum)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        tops={"LAYOUT_CERULEAN_CITY_GYM": [(6, 16), (10, 16)]},
     ),    # ARDOR BENCHMARK, on a tileset of its own; the gate's three states keep their ids
     "ardor": dict(
         old="vermilion_gym", symbol="gTileset_ArdorBenchmark", dir="ardor_benchmark",
         layouts=[("LAYOUT_VERMILION_CITY_GYM", ardor)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
-        states=ardor_states,
+        states=ardor_states, tops={"LAYOUT_VERMILION_CITY_GYM": [(3, 16), (7, 16)]},
     ),    # VERDIGRIS BENCHMARK, on a tileset of its own
     "verdigris": dict(
         old="celadon_gym", symbol="gTileset_VerdigrisBenchmark", dir="verdigris_benchmark",
         layouts=[("LAYOUT_CELADON_CITY_GYM", verdigris)],
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        tops={"LAYOUT_CELADON_CITY_GYM": [(4, 15), (8, 15)]},
+    ),    # LURID BENCHMARK: a new maze through the plan, the pads, and the swap its map script runs when TILT loses
+    "lurid": dict(
+        old="fuchsia_gym", symbol="gTileset_LuridBenchmark", dir="lurid_benchmark",
+        layouts=[("LAYOUT_FUCHSIA_CITY_GYM", lurid)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={},
+        plan={"LAYOUT_FUCHSIA_CITY_GYM": L_PLAN},
+        swap=("LAYOUT_FUCHSIA_CITY_GYM", lambda: lurid_room(after=True), L_EXIT,
+              "data/maps/FuchsiaCity_Gym/scripts.inc", "FuchsiaCity_Gym_EventScript_ShowWalls"),
     ),
 }
 
@@ -905,7 +1045,7 @@ def build(name, cfg):
     old = Old(cfg["old"])
     theme = cfg["theme"]
     art_of = {}            # (layout, x, y) -> 16x16 RGB
-    attr_of, raw_of = {}, {}
+    attr_of, raw_of, top_of = {}, {}, {}
     canvases = {}
     for lid, draw in cfg["layouts"]:
         if LAYOUTS[lid]["secondary_tileset"] == cfg["symbol"]:        # its map.bin already holds the new ids, which
@@ -915,6 +1055,8 @@ def build(name, cfg):
         canvas = draw(img, theme, raw) if draw in (checkpoint_2f, themed) else draw(img)
         l = LAYOUTS[lid]; W, H = l["width"], l["height"]
         cp = canvas.load()
+        tops = set(cfg.get("tops", {}).get(lid, []))
+        fp = draw(img, statues=False).load() if tops else None      # the same room with no statues: what is under a head
         for y in range(H):
             for x in range(W):
                 m = raw[y][x] & 0x3FF
@@ -923,7 +1065,12 @@ def build(name, cfg):
                     for yy in range(16):
                         for xx in range(16):
                             cp[x * 16 + xx, y * 16 + yy] = pix[yy][xx]
-                art_of[(lid, x, y)] = tuple(cp[x * 16 + i % 16, y * 16 + i // 16] for i in range(256))
+                art = tuple(cp[x * 16 + i % 16, y * 16 + i // 16] for i in range(256))
+                top = None
+                if (x, y) in tops:                   # a statue's head on the top layer, over the floor, as vanilla has it
+                    floor = tuple(fp[x * 16 + i % 16, y * 16 + i // 16] for i in range(256))
+                    top = tuple(a if a != f else MAGENTA for a, f in zip(art, floor)); art = floor
+                art_of[(lid, x, y)] = art; top_of[(lid, x, y)] = top
                 a = old.attr(m) & ~(7 << 29)
                 r = raw[y][x]
                 if (x, y) in cfg["plan"].get(lid, {}):
@@ -937,17 +1084,17 @@ def build(name, cfg):
     reserved = {}
     for m in cfg["recoloured"]:
         pix = recolour(old.block(m), theme)
-        reserved[m] = (tuple(pix[i // 16][i % 16] for i in range(256)), old.attr(m) & ~(7 << 29))
+        reserved[m] = (tuple(pix[i // 16][i % 16] for i in range(256)), None, old.attr(m) & ~(7 << 29))
     for m, (lid, x, y) in cfg["from_cells"].items():
-        reserved[m] = (art_of[(lid, x, y)], old.attr(m) & ~(7 << 29))
+        reserved[m] = (art_of[(lid, x, y)], top_of[(lid, x, y)], old.attr(m) & ~(7 << 29))
     for m, art in (cfg["states"]() if "states" in cfg else {}).items():
-        reserved[m] = (art, old.attr(m) & ~(7 << 29))
+        reserved[m] = (art, None, old.attr(m) & ~(7 << 29))
     ids, next_id = {v: k for k, v in reserved.items()}, 640
     cell_id = {}
     for key in art_of:
         lid, x, y = key
         m = canvases[lid][3][y][x] & 0x3FF
-        k2 = (art_of[key], attr_of[key])
+        k2 = (art_of[key], top_of[key], attr_of[key])
         if m in cfg["forced"]:
             cell_id[key] = m; continue
         if k2 not in ids:
@@ -955,20 +1102,45 @@ def build(name, cfg):
                 next_id += 1
             ids[k2] = next_id; next_id += 1
         cell_id[key] = ids[k2]
+    swaps = []
+    if "swap" in cfg:                                    # a second state a map script sets, cell by cell
+        slid, after, opened = cfg["swap"][:3]
+        ap = after().load()
+        for y in range(canvases[slid][2]):
+            for x in range(canvases[slid][1]):
+                key = (slid, x, y)
+                was = bool((raw_of[key] >> 10) & 3)
+                shut = was and (x, y) not in opened
+                art = tuple(ap[x * 16 + i % 16, y * 16 + i // 16] for i in range(256))
+                if art == art_of[key] and shut == was:
+                    continue
+                k2 = (art, top_of[key], attr_of[key])
+                if k2 not in ids:
+                    while next_id in reserved:
+                        next_id += 1
+                    ids[k2] = next_id; next_id += 1
+                swaps.append((x, y, ids[k2], int(shut)))
+        print("  %s: %d cells change when the script runs" % (name, len(swaps)))
     blocks = {v: k for k, v in ids.items()}
-    for m, (art, a) in reserved.items():
-        blocks[m] = (art, a)
+    for m, v in reserved.items():
+        blocks[m] = v
     nblocks = max(blocks) - 639
     print("  %s: %d blocks (ids to %d, of 384)" % (name, len(blocks), nblocks))
 
     # tiles
-    quads = {}
-    for m, (art, a) in blocks.items():
-        for q in range(4):
-            x0, y0 = (q % 2) * 8, (q // 2) * 8
-            quads[(m, q)] = tuple(art[(y0 + i // 8) * 16 + x0 + i % 8] for i in range(64))
+    quads = {}                                           # (block, entry 0..3 bottom, 4..7 top) -> 64 pixels
+    for m, (art, top, a) in blocks.items():
+        for layer, pix in ((0, art), (1, top)):
+            if pix is None:
+                continue
+            for q in range(4):
+                x0, y0 = (q % 2) * 8, (q // 2) * 8
+                t = tuple(pix[(y0 + i // 8) * 16 + x0 + i % 8] for i in range(64))
+                if layer and all(c == MAGENTA for c in t):
+                    continue                             # an empty top tile is entry 0, as in vanilla
+                quads[(m, layer * 4 + q)] = t
     uniq = list(set(quads.values()))
-    rows, near, k = fit_rows(uniq)
+    rows, near, k = fit_rows([[c for c in t if c != MAGENTA] or [(0, 0, 0)] for t in uniq])
     row_pals = [[(255, 0, 255)] + r + [(0, 0, 0)] * (15 - len(r)) for r in rows]
     tiles, tile_list, entry = {}, [], {}
     err_total = 0
@@ -977,6 +1149,8 @@ def build(name, cfg):
         for ri, pal in enumerate(row_pals):
             idx, err = [], 0
             for c in px:
+                if c == MAGENTA:
+                    idx.append(0); continue
                 c2 = near.get(c, c)
                 j, e = min(((j, sum((c2[t] - pal[j][t]) ** 2 for t in range(3))) for j in range(1, len(rows[ri]) + 1)), key=lambda z: z[1])
                 idx.append(j); err += e
@@ -1002,13 +1176,17 @@ def build(name, cfg):
         for y in range(H):
             for x in range(W):
                 m = cell_id[(lid, x, y)]
-                for q in range(4):
+                for q in range(8):
+                    if (m, q) not in entry:
+                        continue
                     t = entry[(m, q)]; idx = tile_list[(t & 0x3FF) - 640]; pal = row_pals[((t >> 12) & 15) - 7]
                     for i in range(64):
+                        if q >= 4 and idx[i] == 0:
+                            continue
                         tx, ty = i % 8, i // 8
                         if t & 0x400: tx = 7 - tx
                         if t & 0x800: ty = 7 - ty
-                        o[x * 16 + (q % 2) * 8 + tx, y * 16 + (q // 2) * 8 + ty] = pal[idx[i]]
+                        o[x * 16 + (q % 4 % 2) * 8 + tx, y * 16 + (q % 4 // 2) * 8 + ty] = pal[idx[i]]
         old_img, _ = old.layout(lid)
         pair = Image.new("RGB", (W * 32 + 8, H * 16), (30, 30, 30)); pair.paste(old_img, (0, 0)); pair.paste(out, (W * 16 + 8, 0))
         shots.append(pair)
@@ -1031,8 +1209,8 @@ def build(name, cfg):
             ip[(n % 16) * 8 + i % 8, (n // 16) * 8 + i // 8] = v
     img.save(os.path.join(d, "tiles.png"))
     meta, attrs = bytearray(nblocks * 16), bytearray(nblocks * 4)
-    for m, (art, a) in blocks.items():
-        struct.pack_into("<8H", meta, (m - 640) * 16, *[entry[(m, q)] for q in range(4)], 0, 0, 0, 0)
+    for m, (art, top, a) in blocks.items():
+        struct.pack_into("<8H", meta, (m - 640) * 16, *[entry.get((m, q), 0) for q in range(8)])
         struct.pack_into("<I", attrs, (m - 640) * 4, a)
     open(os.path.join(d, "metatiles.bin"), "wb").write(meta)
     open(os.path.join(d, "metatile_attributes.bin"), "wb").write(attrs)
@@ -1075,6 +1253,16 @@ def build(name, cfg):
              "// T-103: %s, rethemed and replanned.\nconst struct Tileset gTileset_%s =\n{\n    .isCompressed = TRUE,\n    .isSecondary = TRUE,\n"
              "    .tiles = gTilesetTiles_%s,\n    .palettes = gTilesetPalettes_%s,\n    .metatiles = gMetatiles_%s,\n"
              "    .metatileAttributes = gMetatileAttributes_%s,\n    .callback = NULL,\n};\n" % (stem, stem, stem, stem, stem, stem))
+    if swaps:                                            # the script's half: one setmetatile per changed cell
+        inc_path, label = os.path.join(GBA, cfg["swap"][3]), cfg["swap"][4]
+        begin, end = "@ generated by DAEMONS tools/gbainterior.py %s -- do not edit by hand\n" % name, "@ end of generated %s\n" % name
+        body = begin + "%s::\n" % label + "".join("\tsetmetatile %d, %d, 0x%X, %d\n" % sw for sw in swaps) + "\treturn\n" + end
+        text = open(inc_path).read()
+        if begin in text:
+            text = text[:text.index(begin)] + body + text[text.index(end) + len(end):]
+        else:
+            text = text + ("" if text.endswith("\n") else "\n") + "\n" + body
+        open(inc_path, "w").write(text)
     print("  %s: written %s, %d layouts, registered" % (name, os.path.relpath(d, GBA), len(cfg["layouts"])))
 
 

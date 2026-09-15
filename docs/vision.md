@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.206**
+**A total conversion — the living design bible, v11.207**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4562,7 +4562,7 @@ Corpus rooms, and the trainer table.
 
 **His creed:** *he does not need to beat you.*
 
-***THE ROOM IS ALREADY THE ARGUMENT.*** **Keep vanilla's invisible-wall maze**: *you cannot trust what you can see, and there is no trick to it but patience.*
+***THE ROOM IS ALREADY THE ARGUMENT.*** **An invisible-wall maze** — ***redrawn in two halves, 2026-09-15, replacing "keep vanilla's"*** — *you cannot trust what you can see, and there is no trick to it but patience.* **The floor is a grid that leans, the same over a wall as over open floor.** ***Four corner pads turn you one way only, clockwise***: *the first half ends at the upper-left pad, which puts you in the upper right for the second; the lower-left pad has a pocket of its own, so nobody skips the first half, and it is also the second half's way back.* ***When he loses, every leaning tile a wall mostly covers swaps its light and dark, and a lit way opens straight from his dais to the door*** — **the walls were there the whole time.** *Built as T-109.*
 
 ***THE MECHANIC.*** **Status that turns your own routines against you** — THRASHING first, OBFUSCATE second. ***A THRASHING daemon at level 80 still hits itself.*** **Status is the one thing in the engine that ignores level completely**, which makes this the cleanest grind-proof design of the seven *and* the lesson stated exactly: **you were not outfought. Your outputs were made unreliable.**
 
