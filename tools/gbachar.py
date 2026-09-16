@@ -127,6 +127,18 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/hiker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/hiker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "picnicker": dict(src="gfx/characters/portrait_picnicker.png",       # a hedgehog, as her sheet is
+                        dst="engineGba/graphics/trainers/front_pics/picnicker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/picnicker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "youngster": dict(src="gfx/characters/portrait_youngster.png",       # a mouse
+                        dst="engineGba/graphics/trainers/front_pics/youngster_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/youngster.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "bugcatcher": dict(src="gfx/characters/portrait_bug_catcher.png",    # a swallow, catching them on the wing
+                        dst="engineGba/graphics/trainers/front_pics/bug_catcher_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/bug_catcher.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
