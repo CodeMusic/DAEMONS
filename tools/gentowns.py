@@ -568,8 +568,14 @@ def revert_plan():
     return out
 
 
-def register_one(edit, const, cname, fname, tag_name, note, frames=9):
-    """one graphics id: the constant, the sheet, its frame table, its info and its pointer"""
+def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALSLOT_NPC_SPECIAL"):
+    """one graphics id: the constant, the sheet, its frame table, its info and its pointer
+
+    SLOT is not free. The engine patches the palette named by the tag INTO the slot named here, so
+    two sprites sharing a slot with different tags repaint each other: vanilla keeps one tag per
+    slot (blue->1, pink->2, white->4) and anything registered here keeps that pairing or joins the
+    special slot, where one map may hold only one.
+    """
     def constants(s):
         if ("#define %s " % const) in s:
             return s
@@ -600,10 +606,10 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9):
             return s
         return s.rstrip("\n") + "\n\n// %s\n" % note + (
             "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s = {\n    .tileTag = TAG_NONE,\n    .paletteTag = %s,\n"
-            "    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 256,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = PALSLOT_NPC_SPECIAL,\n"
+            "    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 256,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = %s,\n"
             "    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .disableReflectionPaletteLoad = FALSE,\n    .tracks = TRACKS_FOOT,\n"
             "    .oam = &gObjectEventBaseOam_16x32,\n    .subspriteTables = gObjectEventSpriteOamTables_16x32,\n    .anims = sAnimTable_Standard,\n"
-            "    .images = sPicTable_%s,\n    .affineAnims = gDummySpriteAffineAnimTable,\n};\n") % (cname, tag_name, cname)
+            "    .images = sPicTable_%s,\n    .affineAnims = gDummySpriteAffineAnimTable,\n};\n") % (cname, tag_name, slot, cname)
     edit("src/data/object_events/object_event_graphics_info.h", info)
 
     def pointers(s):

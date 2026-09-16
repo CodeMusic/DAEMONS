@@ -255,6 +255,16 @@ finally:
 
 **Better still, do not import a writing tool at all.** *`genprops.py` dropped its `import gbatrees` and quotes `broadleaf()`'s measurements instead, so the hazard cannot come back.* ***The `gen*` sprite tools are all correctly guarded; the unguarded ones are `gba*`.***
 
+### 17. A new sprite that repaints every other NPC on the map
+
+***Symptom:*** *a sprite you registered looks right, and somebody ELSE on the same map comes out in the wrong colours — or does when the two happen to spawn in the other order.*
+
+**An object's graphics info carries BOTH a `paletteTag` and a `paletteSlot`, and the engine patches the palette named by the tag INTO the slot named by the info.** *So the slot is shared state: two sprites on one map that name the same slot with different tags overwrite each other, and which one wins is spawn order.* ***The pairing is therefore an invariant, not a choice.*** **Vanilla keeps exactly one tag per slot** — *blue→`PALSLOT_NPC_1`, pink→2, green→3, white→4* — **and anything registered here keeps its sheet's pairing or it is a bug.**
+
+`PALSLOT_NPC_SPECIAL` is the deliberate exception: *it is patched per object from that object's own tag, which is how the Clears, the Owl and the town locals each carry sixteen colours of their own* — **and it is exactly why ONE MAP MAY HOLD ONLY ONE special-slot character**, which `gentowns.py` spends a guest mechanism and a `revert_plan()` on.
+
+***The check is three lines and worth running after any registration:*** group every `gObjectEventGraphicsInfo_*` by its tag and collect the slots it appears in; **a tag in two slots is the bug.** *The only one vanilla splits is `OBJ_EVENT_PAL_TAG_PLAYER_RED`, which is the player's own forms.* **T-126's four new sheets inherited the slot of the sprite each replaced** — *pink/2 from the Poké Maniac, blue/1 from the Rocker, white/4 from the Woman and the Hiker* — **so the palette each needs was already loaded on every map it stands on and nothing else there changed colour.**
+
 ## 5. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
