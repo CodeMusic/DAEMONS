@@ -215,6 +215,20 @@ open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
 
 ---
 
+### 15. A new NPC whose head is sheared off, and whose side view wears its head at its feet
+
+***Symptom:*** *a sprite you ADDED renders as scrambled bands; every sprite you OVERWROTE is fine.*
+
+**`spritesheet_rules.mk` names every object-event sheet explicitly and converts it with `-mwidth`/`-mheight`, which is what packs each frame's 2×4 tiles together for `overworld_frame()`.** *A sheet wider than one frame with no rule is converted in raster order across the whole strip, so every frame is cut from the wrong tiles.* **Overwriting a vanilla sheet inherits vanilla's rule** — which is why three batches of redrawn classes were correct and all 37 sheets this project ADDED (the BENCHMARK guide, the nine staff, the 26 town locals, AL's guest) were scrambled from the day they shipped.
+
+***It hid three ways, and each is its own lesson:***
+
+- **The recipe changed and `make` did not care.** *Adding the rule rebuilt nothing, because make compares TIMESTAMPS, not recipes, and the `.4bpp` was newer than its `.png`.* ***Delete the stale artefact, or nothing happens.***
+- **Four green builds proved nothing.** *`make` exited 0 each time while the ROM kept the object file it had already linked.* **Trap 1 again, wearing different clothes.**
+- ***The verification could not see it.*** **Byte-checking the built `.4bpp` against the ROM passes perfectly — a scrambled sheet matches its own scrambled self.** *The check that works is to DECODE: read the first eight tiles out of the `.4bpp`, assemble them as a 16×32 frame, and compare with frame 0 of the PNG.*
+
+**`genfolk.ensure_rule()` now writes the rule whenever a tool saves a new sheet**, so the first failure cannot recur; the other two are why the decode check belongs in every sprite verification.
+
 ## 5. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
