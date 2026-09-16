@@ -157,7 +157,10 @@ def main():
     for k, n in pair.items():
         gfx, ssp, pic, psp = k
         if pic in PAIRS:
-            pairs.append((k, n))
+            # A PAIR's note names TWO animals, so the question is whether this sheet's animal is one
+            # of them -- membership, not equality. Anything the note does not account for is a real
+            # disagreement and is reported as one.
+            pairs.append((k, n, bool(ssp) and norm(ssp) in {norm(w) for w in re.split(r"\band\b|,", psp or "")}))
         elif cls(gfx) == cls(pic) or (ssp and psp and norm(ssp) == norm(psp)):
             # THE TEST IS EITHER, AND THAT IS THE POINT. Matching NAMES alone reported 47 CORPUS
             # STAFF trainers as mismatched, because their portraits are filed under the job name and
@@ -166,15 +169,17 @@ def main():
             agree.append((k, n))
         else:
             differ.append((k, n))
-    blind = [(k, n) for k, n in differ if not k[1] or not k[3]]
-    show = lambda t: sorted(t, key=lambda kn: -kn[1])
+    blind = [i for i in differ if not i[0][1] or not i[0][3]]
+    show = lambda t: sorted(t, key=lambda i: -i[1])
 
     def dump(title, items):
         if not items:
             return
-        print("%s (%d pairings, %d objects)" % (title, len(items), sum(n for _, n in items)))
-        for (gfx, ssp, pic, psp), n in show(items):
-            print("  %-20s %-18s battles as %-20s %-22s x%d" % (gfx, ssp or "?", pic, psp or "?", n))
+        print("%s (%d pairings, %d objects)" % (title, len(items), sum(i[1] for i in items)))
+        for item in show(items):
+            (gfx, ssp, pic, psp), n = item[0], item[1]
+            mark = "" if len(item) < 3 else ("   accounted for" if item[2] else "   *** NOT IN THE PICTURE ***")
+            print("  %-20s %-18s battles as %-20s %-22s x%d%s" % (gfx, ssp or "?", pic, psp or "?", n, mark))
         print()
 
     dump("DISAGREE -- the sprite and the picture are different animals", differ)
@@ -183,7 +188,7 @@ def main():
     if SHOW_ALL:
         dump("AGREE", agree)
     else:
-        print("AGREE: %d pairings, %d objects (--pairs to list)" % (len(agree), sum(n for _, n in agree)))
+        print("AGREE: %d pairings, %d objects (--pairs to list)" % (len(agree), sum(i[1] for i in agree)))
 
 
 if __name__ == "__main__":

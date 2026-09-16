@@ -252,23 +252,23 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/juggler_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/juggler.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_twins": dict(src="gfx/characters/portrait_twins.png",                     # two quails
+    "p_twins": dict(src="gfx/characters/portrait_twins.png",                     # two PIGLETS, as LITTLE_GIRL is (T-128)
                         dst="engineGba/graphics/trainers/front_pics/twins_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/twins.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_youngcouple": dict(src="gfx/characters/portrait_young_couple.png",        # two swans, and the tuber is a cygnet
+    "p_youngcouple": dict(src="gfx/characters/portrait_young_couple.png",        # an OX and a GAZELLE, as MAN and BEAUTY are (T-128)
                         dst="engineGba/graphics/trainers/front_pics/young_couple_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/young_couple.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_sisandbro": dict(src="gfx/characters/portrait_sis_and_bro.png",           # two rabbits
+    "p_sisandbro": dict(src="gfx/characters/portrait_sis_and_bro.png",           # a DUCKLING and an AXOLOTL, as TUBER_M and SWIMMER_F are (T-128)
                         dst="engineGba/graphics/trainers/front_pics/sis_and_bro_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/sis_and_bro.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_crushkin": dict(src="gfx/characters/portrait_crush_kin.png",              # two wolverines, as crush_girl is
+    "p_crushkin": dict(src="gfx/characters/portrait_crush_kin.png",              # a KANGAROO and a WOLVERINE, as BLACK_BELT and CRUSH_GIRL are (T-128)
                         dst="engineGba/graphics/trainers/front_pics/crush_kin_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/crush_kin.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_coolcouple": dict(src="gfx/characters/portrait_cool_couple.png",          # two ibexes
+    "p_coolcouple": dict(src="gfx/characters/portrait_cool_couple.png",          # a WOLF and a FALCON, as COOLTRAINER_M and _F are (T-126)
                         dst="engineGba/graphics/trainers/front_pics/cool_couple_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/cool_couple.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
