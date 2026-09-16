@@ -189,14 +189,15 @@ DUCKLING = small_fig(small_bird("y", "O"), small_ring("W", "v"), small_side_ring
 # bars are two small grips at the rider's shoulders, and the wheel is DARK with one rose stripe --
 # a pale rectangle there reads as a licence plate.
 BOAR_FRONT = h32([
-    "              KK",      # the crown: vanilla starts 4 wide and widens by two a row
-    "             KSS",
+    "            KeeK",      # EARS, two rows tall -- one pixel of ear reads as nothing, and vanilla's
+    "            KeeK",      # rider carries its whole silhouette in a crest at exactly this height
+    "           KeSSS",
     "            KSSS",
     "           KSSSS",
     "          KSKSSS",      # the eye
-    "         KSSeeee",      # the snout, dark
-    "         KWeeeee",      # a tusk beside it
-    "          KKeeee",
+    "         KSSSSee",      # the snout, narrowed to the centre four columns
+    "         KSSSWee",      # a tusk rising beside it, not at the temple
+    "          KKSSee",
     "           Knnnn",      # the jacket
     "          Knnnnn",
     "         Knnnnnn",      # widest: mirrors to fourteen, exactly vanilla's
@@ -214,8 +215,9 @@ BOAR_FRONT = h32([
     "              KK",
 ])
 BOAR_BACK = h32([
-    "              KK",
-    "             KSS",
+    "            KeeK",
+    "            KeeK",
+    "           KeSSS",
     "            KSSS",
     "           KSSSS",
     "          KSSSSS",
@@ -274,6 +276,7 @@ SHEETS = [   # vanilla's sheet, ours, frames, frame size, palette letters, palet
     ("bear cub", "little_boy.png",    BEARCUB,   9, 16, WHITE, "npc_white.pal", None),
     ("duckling", "tuber_m_water.png", DUCKLING, 10, 16, BLUE,  "npc_blue.pal",  "y"),
     ("cygnet",   "tuber_f.png",       CYGNET,   10, 16, WHITE, "npc_white.pal", "W"),
+    ("boar",     "biker.png",         BIKER,    10, 32, PINK,  "npc_pink.pal",  None),
 ]
 
 # THE BIKER IS STILL NOT WRITTEN -- four drafts, and the halves failed in turn. BIKER above is kept
