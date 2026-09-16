@@ -202,10 +202,16 @@ WALRUS_SIDE = S(pad(["", "", "     KKKK", "    KhhhhK", "   KhKhhhhK", " Kjjjhhh
 # ROLE (9.4): the town's child, its working adult, its elder.
 
 def put(rows, r, c, ch):
-    """set pixels in a HALF row, before it is mirrored: a symmetric marking"""
+    """set pixels in a row before it is mirrored or padded: a marking
+
+    This clipped to EIGHT, because it was written for the half rows a front view mirrors -- but it
+    is called on SIDE rows too, which run to eleven, and it was silently cutting the back off every
+    side head it touched. Clip nothing: H() still trims a half to eight, S() still pads a side to
+    sixteen, and check() catches anything wider.
+    """
     rows = list(rows)
-    row = rows[r].ljust(8)
-    rows[r] = (row[:c] + ch + row[c + len(ch):])[:8]
+    row = rows[r].ljust(max(8, len(rows[r])))
+    rows[r] = row[:c] + ch + row[c + len(ch):]
     return rows
 
 
