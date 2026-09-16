@@ -140,6 +140,103 @@ GOAT = (overlay(GOAT[0], 8, ["KWWK"], 6), GOAT[1], overlay(GOAT[2], 8, ["KWK"], 
 GOAT = (overlay(GOAT[0], CANE, ["KK", "nK", "nK", "nK", "nK", "nK", "nK", "KK"], CANE_X), GOAT[1], GOAT[2])
 
 
+# ============================================================ the low-use classes (T-120, batch 3)
+# Same rule, further down the usage list: the species is the ROLE. Nine-frame sheets take no raised
+# hand; the count is whatever the file on disk already holds, asserted before anything is written.
+
+# ---- npc_white
+_h = mammal("g", "w", "W")                                   # a LYNX: tufted ears, and a suit
+LYNX = fig(_h, "g", "G", "G", "g", "E")
+for _l in (2, 11):
+    LYNX = (overlay(LYNX[0], 1, ["KwK", "KgK"], _l), overlay(LYNX[1], 1, ["KwK", "KgK"], _l), LYNX[2])
+LYNX = (overlay(LYNX[0], 9, ["WW"], 7), LYNX[1], LYNX[2])    # a collar
+
+NEWT = fig(mammal("t", "t", "T"), "t", "R", "R", "t", "t")    # a NEWT, in and out of the water
+NEWT = (NEWT[0], overlay(NEWT[1], TAIL, ["KttK", "KtTK", " KtK", "  KK"], 6),
+        overlay(NEWT[2], TAIL, ["KttK", " KtK", "  KK"], 10))
+
+_h = mammal("E", "E", "g")                                   # an OX: horns, and a working shirt
+OX = fig(_h, "E", "r", "G", "E", "E")
+OX = (overlay(OX[0], 2, ["KWK", "KWK"], 2), overlay(OX[1], 2, ["KWK", "KWK"], 2), overlay(OX[2], 2, ["KWK"], 4))
+OX = (overlay(OX[0], 2, ["KWK", "KWK"], 12), overlay(OX[1], 2, ["KWK", "KWK"], 12), OX[2])
+
+KANGAROO = fig(mammal("S", "S", "a"), "S", "W", "W", "S", "E")   # a KANGAROO in a white gi
+KANGAROO = (KANGAROO[0], overlay(KANGAROO[1], TAIL, ["KSSK", "KSSK", " KSK", "  KK"], 6),
+            overlay(KANGAROO[2], TAIL, ["KSSK", " KSK", "  KK"], 10))
+
+_h = mammal("g", "G", "w")                                   # a MULE: the ears are the whole read
+MULE = fig(_h, "g", "T", "T", "g", "E")
+for _l in (2, 11):
+    MULE = (overlay(MULE[0], 0, ["KGK", "KGK", "KgK"], _l), overlay(MULE[1], 0, ["KGK", "KGK", "KGK"], _l), MULE[2])
+MULE = (MULE[0], MULE[1], overlay(MULE[2], 0, ["KGK", "KGK", "KgK"], 5))
+
+_h = mammal("E", "E", "T")                                   # a WOLVERINE: the sand stripe down its flank
+_h = (put(put(_h[0], 5, 3, "T"), 6, 3, "T"), put(put(_h[1], 5, 3, "T"), 6, 3, "T"), put(_h[2], 5, 4, "T"))
+WOLVERINE = fig(_h, "E", "R", "G", "E", "E")
+
+_h = mammal("W", "G", "W")                                   # a PANDA in a chef's hat
+_h = (put(put(_h[0], 4, 3, "G"), 5, 3, "G"), _h[1], put(_h[2], 4, 4, "G"))    # the eye patches
+PANDA_CHEF = fig(_h, "W", "W", "W", "W", "G")
+PANDA_CHEF = (overlay(PANDA_CHEF[0], 0, ["KWWWWK", "KWWWWK"], 5),
+              overlay(PANDA_CHEF[1], 0, ["KWWWWK", "KWWWWK"], 5),
+              overlay(PANDA_CHEF[2], 0, ["KWWWK", "KWWWK"], 4))
+
+HEN = fig(bird("W", "R", "T"), "W", "r", "r", "T", "T")       # a HEN
+HEN = (overlay(HEN[0], 0, ["KRRK"], 6), overlay(HEN[1], 0, ["KRRK"], 6), overlay(HEN[2], 0, ["KRRK"], 5))
+
+_h = mammal("w", "w", "W")                                   # an old RAM: the horns curl
+RAM = fig(_h, "w", "t", "G", "w", "E")
+for _l in (1, 12):
+    RAM = (overlay(RAM[0], 3, ["KgK", "KgK", "KgK"], _l), overlay(RAM[1], 3, ["KgK", "KgK", "KgK"], _l), RAM[2])
+RAM = (overlay(RAM[0], 3, ["KgK", "KgK"], 1), RAM[1], overlay(RAM[2], 3, ["KgK", "KgK"], 2))
+RAM = (overlay(RAM[0], CANE, ["KK", "EK", "EK", "EK", "EK", "EK", "EK", "KK"], CANE_X), RAM[1], RAM[2])
+
+# ---- npc_green
+_h = mammal("p", "p", "W")                                   # an AXOLOTL: the frills are the animal
+AXOLOTL = fig(_h, "p", "l", "J", "p", "p")
+for _l in (1, 12):
+    AXOLOTL = (overlay(AXOLOTL[0], 4, ["KqK", "KqK"], _l), overlay(AXOLOTL[1], 4, ["KqK", "KqK"], _l), AXOLOTL[2])
+AXOLOTL = (AXOLOTL[0], AXOLOTL[1], overlay(AXOLOTL[2], 4, ["KqK", "KqK"], 11))
+
+_h = mammal("Y", "Y", "a")                                   # a RACCOON: the mask, the ringed tail
+_h = (put(put(_h[0], 5, 3, "W"), 5, 5, "W"), _h[1], put(_h[2], 5, 5, "W"))
+RACCOON = fig(_h, "Y", "y", "J", "Y", "N")
+RACCOON = (RACCOON[0], overlay(RACCOON[1], TAIL, ["KYYK", "KWYK", "KYWK", " KK "], 6),
+           overlay(RACCOON[2], TAIL, ["KYYK", "KWYK", " KK "], 10))
+
+WALLABY = fig(mammal("o", "o", "a"), "o", "l", "J", "o", "e")     # a WALLABY
+WALLABY = (WALLABY[0], overlay(WALLABY[1], TAIL, ["KooK", "KoeK", " KoK", "  KK"], 6),
+           overlay(WALLABY[2], TAIL, ["KooK", " KoK", "  KK"], 10))
+
+# ---- npc_blue
+_h = mammal("s", "s", "a")                                   # a GAZELLE: thin straight horns
+GAZELLE = fig(_h, "s", "v", "v", "s", "d")
+for _l in (2, 11):
+    GAZELLE = (overlay(GAZELLE[0], 0, ["KdK", "KdK", "KdK"], _l), overlay(GAZELLE[1], 0, ["KdK", "KdK", "KdK"], _l), GAZELLE[2])
+GAZELLE = (GAZELLE[0], GAZELLE[1], overlay(GAZELLE[2], 0, ["KdK", "KdK", "KdK"], 5))
+
+WOLF = fig(mammal("D", "D", "a"), "D", "V", "D", "D", "d")        # a WOLF
+WOLF = (WOLF[0], overlay(WOLF[1], TAIL, ["KDDK", "KDdK", "KDDK", " KK "], 6),
+        overlay(WOLF[2], TAIL, ["KDDK", "KDdK", " KK "], 10))
+
+FALCON = fig(bird("d", "O", "y"), "d", "v", "D", "y", "y")        # a FALCON
+FALCON = (FALCON[0], overlay(FALCON[1], TAIL, ["KddK", "KdDK", " KK "], 6), FALCON[2])
+
+AXOLOTL_B = fig(mammal("a", "a", "W"), "a", "y", "y", "a", "a")   # the same axolotl, on land, in blue
+for _l in (1, 12):
+    AXOLOTL_B = (overlay(AXOLOTL_B[0], 4, ["KvK", "KvK"], _l), overlay(AXOLOTL_B[1], 4, ["KvK", "KvK"], _l), AXOLOTL_B[2])
+
+# ---- npc_pink
+_h = mammal("w", "p", "p")                                   # an OPOSSUM: pink ears, a pink nose
+OPOSSUM = fig(_h, "w", "m", "n", "w", "n")
+OPOSSUM = (OPOSSUM[0], overlay(OPOSSUM[1], TAIL, ["KpK", " KpK", "  KK"], 7),
+           overlay(OPOSSUM[2], TAIL, ["KppK", " KpK", "  KK"], 10))
+
+_h = mammal("g", "P", "p")                                   # a SHREW, with a cane
+SHREW = fig(_h, "g", "c", "n", "g", "n")
+SHREW = (overlay(SHREW[0], CANE, ["KK", "nK", "nK", "nK", "nK", "nK", "nK", "KK"], CANE_X), SHREW[1], SHREW[2])
+
+
 SHEETS = [   # the sheet vanilla shipped, our species, the frames, its palette -- ten frames each
     ("badger",    "hiker.png",       BADGER,    "g", WHITE, "npc_white.pal"),
     ("pelican",   "fisher.png",      PELICAN,   "T", WHITE, "npc_white.pal"),
@@ -153,6 +250,28 @@ SHEETS = [   # the sheet vanilla shipped, our species, the frames, its palette -
     ("skunk",     "rocker.png",      SKUNK,     "D", BLUE,  "npc_blue.pal"),
     ("albatross", "sailor.png",      ALBATROSS, "P", PINK,  "npc_pink.pal"),
     ("goat",      "old_man_1.png",   GOAT,      "w", PINK,  "npc_pink.pal"),
+
+    # batch 3: the low-use classes. A raised hand of None means a NINE-frame sheet, which has none --
+    # the count is whatever the file on disk already holds, and main() asserts it before writing.
+    ("lynx",      "gentleman.png",       LYNX,       "g",  WHITE, "npc_white.pal"),
+    ("newt",      "swimmer_m_water.png", NEWT,       "t",  WHITE, "npc_white.pal"),
+    ("newt",      "swimmer_m_land.png",  NEWT,       "t",  WHITE, "npc_white.pal"),
+    ("ox",        "man.png",             OX,         "E",  WHITE, "npc_white.pal"),
+    ("kangaroo",  "black_belt.png",      KANGAROO,   "S",  WHITE, "npc_white.pal"),
+    ("mule",      "worker_m.png",        MULE,       "g",  WHITE, "npc_white.pal"),
+    ("wolverine", "crush_girl.png",      WOLVERINE,  "E",  WHITE, "npc_white.pal"),
+    ("panda",     "chef.png",            PANDA_CHEF, None, WHITE, "npc_white.pal"),
+    ("hen",       "woman_3.png",         HEN,        None, WHITE, "npc_white.pal"),
+    ("old ram",   "old_man_2.png",       RAM,        None, WHITE, "npc_white.pal"),
+    ("axolotl",   "swimmer_f_water.png", AXOLOTL,    "p",  GREEN, "npc_green.pal"),
+    ("raccoon",   "camper.png",          RACCOON,    "a",  GREEN, "npc_green.pal"),
+    ("wallaby",   "boy.png",             WALLABY,    "a",  GREEN, "npc_green.pal"),
+    ("gazelle",   "beauty.png",          GAZELLE,    "s",  BLUE,  "npc_blue.pal"),
+    ("wolf",      "cooltrainer_m.png",   WOLF,       "D",  BLUE,  "npc_blue.pal"),
+    ("falcon",    "cooltrainer_f.png",   FALCON,     "y",  BLUE,  "npc_blue.pal"),
+    ("axolotl",   "swimmer_f_land.png",  AXOLOTL_B,  "a",  BLUE,  "npc_blue.pal"),
+    ("opossum",   "poke_maniac.png",     OPOSSUM,    "w",  PINK,  "npc_pink.pal"),
+    ("shrew",     "old_woman.png",       SHREW,      None, PINK,  "npc_pink.pal"),
 ]
 
 
