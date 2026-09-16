@@ -29,8 +29,17 @@ anywhere, and UMBRA's plateau has three adults and nobody else, so those sheets 
     BRAZEN       brass over base metal    a lion cub, a golden retriever
     QUICKSILVER  mercury; the ruined lab  a ferret, a silver pheasant, an old grey cat
     UMBRA        full shadow              a black panther
+
+One map, one special palette -- so a town map with a special-slot character on it cannot simply
+take the town's locals: whoever spawned last would repaint the other. Two maps are like that, and
+they are answered differently. On DOLDRUM's city map AL becomes a GUEST: redrawn against the sea
+town's own sixteen, keeping the Clears' rust, orange and purple-grey in three letters no seal,
+otter or walrus uses, and registered as a variant on the town's tag -- so the six citizens there
+become locals and AL still walks in his own colours. On QUICKSILVER's island the SEAGALLOP cannot
+be made to fit (ten colours, four of them nowhere near mercury, two letters free), so that map
+keeps vanilla's people and revert_plan() puts back the two this tool took.
 """
-import glob, json, os, re, sys
+import glob, json, os, re, subprocess, sys
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -50,7 +59,27 @@ ADULT = {"MAN", "WOMAN_1", "WOMAN_2", "WOMAN_3", "BALDING_MAN", "GENTLEMAN", "FA
          "COOLTRAINER_F", "ROCKER", "FISHER", "HIKER", "POKE_MANIAC", "SAILOR", "BLACK_BELT", "SWIMMER_M_LAND", "SWIMMER_F_LAND", "CAMPER",
          "PICNICKER", "CHEF", "SUPER_NERD", "TUBER_M_LAND", "TUBER_F_LAND"}
 ELDER = {"OLD_MAN_1", "OLD_MAN_2", "OLD_WOMAN"}
-SPECIAL = {"OBJ_EVENT_GFX_PROF_OAK", "OBJ_EVENT_GFX_BLUE", "OBJ_EVENT_GFX_DAISY", "OBJ_EVENT_GFX_OWL"}
+def special_gfx():
+    """every OBJ_EVENT_GFX_* the engine draws from PALSLOT_NPC_SPECIAL, our own town locals aside.
+
+    There is ONE special slot and it is patched per object from that object's tag, so the last
+    special sprite to spawn on a map sets the sixteen colours every special sprite on it draws
+    from. Naming the four Clears by hand missed the SEAGALLOP -- which shares QUICKSILVER's island
+    and is added by script mid-scene -- so this is READ FROM THE ENGINE rather than typed.
+    """
+    if not hasattr(special_gfx, "cache"):
+        info = open(os.path.join(GBA, "src/data/object_events/object_event_graphics_info.h")).read()
+        slots = {m.group(1) for m in re.finditer(
+            r"const struct ObjectEventGraphicsInfo (gObjectEventGraphicsInfo_\w+) = \{(.*?)\n\};", info, re.S)
+            if "PALSLOT_NPC_SPECIAL" in m.group(2)}
+        ptr = open(os.path.join(GBA, "src/data/object_events/object_event_graphics_info_pointers.h")).read()
+        # a guest's variant sits on the TOWN's tag, so it contends with nothing: it is ours, not foreign.
+        # (Missing this made the second --write see AL_DOLDRUM holding the map and revert its citizens.)
+        mine = {"OBJ_EVENT_GFX_" + x["const"] for x in GUESTS}
+        special_gfx.cache = {g.strip() for g, gi in re.findall(
+            r"\[(OBJ_EVENT_GFX_\w+)\s*\]\s*= &(gObjectEventGraphicsInfo_\w+),", ptr)
+            if gi in slots and not g.strip().startswith("OBJ_EVENT_GFX_TOWN_") and g.strip() not in mine}
+    return special_gfx.cache
 
 
 def pad(rows, n=23):
@@ -416,7 +445,11 @@ def plan_maps(prefix, name, roles=ROLES):
         if mp.endswith("_Gym/map.json"):
             continue
         objs = json.load(open(mp)).get("object_events", [])
-        special = any(o.get("graphics_id") in SPECIAL for o in objs)
+        held = [o.get("graphics_id") for o in objs if o.get("graphics_id") in special_gfx()]
+        g = guest_of(name)
+        if g and os.path.basename(os.path.dirname(mp)) == g["map"]:
+            held = [h for h in held if h != g["source"]]      # the guest joins the town's palette
+        special = bool(held)
         for i, o in enumerate(objs):
             g = o.get("graphics_id", "").replace("OBJ_EVENT_GFX_", "")
             role = "child" if g in CHILD else "adult" if g in ADULT else "elder" if g in ELDER else None
@@ -429,6 +462,156 @@ def plan_maps(prefix, name, roles=ROLES):
     return todo, sorted(set(left))
 
 
+# ---------------------------------------------------------------- a guest in the town's palette
+# One map, one special palette. Where a special-slot character stands on a town map, the town's
+# citizens cannot be repointed -- whoever spawns last would repaint the other. A GUEST is the way
+# out: the character is redrawn against the town's own sixteen, keeping the colours that ARE its
+# identity and collapsing the rest onto near neighbours the town already has, and is registered as
+# a variant graphics id on the town's tag. Only that one map's object changes; the character is
+# untouched everywhere else.
+#
+# AL on DOLDRUM's city map is the one that fits: the Clears' rust, orange and purple-grey go into
+# 'e', 'm' and 'W', which no seal, otter or walrus draws with, and his browns, cream, lilac and
+# pale blue land within 21-37 of colours the sea town already owns.
+#
+# QUICKSILVER's island is the one that DOES NOT: the SEAGALLOP needs ten colours, four of them
+# (steel blue, indigo, magenta, a bright yellow) nowhere near a mercury palette with two letters
+# free. That map keeps vanilla's citizens, and revert_plan() puts back the two this tool took.
+GUESTS = [
+    dict(town="DOLDRUM", map="CeruleanCity", source="OBJ_EVENT_GFX_BLUE", sheet="blue.png",
+         palette="npc_clears.pal", const="AL_DOLDRUM", fname="al_doldrum", letters="emW", collapse=40.0),
+]
+
+
+def guest_of(town):
+    for g in GUESTS:
+        if g["town"] == town:
+            return g
+    return None
+
+
+def used_letters(roles):
+    """the palette letters a town's own sheets actually draw with"""
+    u = set()
+    for front, back, side, _ in roles.values():
+        for rows in (front, back, side):
+            for r in rows:
+                u |= set(r)
+    return u - {" "}
+
+
+def merged_palette(name, colours, roles):
+    """the town's sixteen, with a guest's own colours dropped into letters no local uses"""
+    pal = full_palette(colours)
+    g = guest_of(name)
+    if not g:
+        return pal, None
+    lines = open(os.path.join(PALS, g["palette"])).read().replace("\r", "").split("\n")[3:19]
+    src = [tuple(map(int, l.split())) for l in lines if l.strip()]
+    im = Image.open(os.path.join(PEOPLE, g["sheet"]))
+    free = [LETTERS[c] for c in g["letters"]]
+    mine = {LETTERS[c] for c in used_letters(roles)}
+    assert not (set(free) & mine), "%s: guest letters %r are drawn by the town's own sheets" % (name, g["letters"])
+    dist = lambda a, b: sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5
+    remap, identity = {0: 0, 15: 15}, []
+    for i in sorted(set(im.getdata())):
+        if i in (0, 15):
+            continue
+        near = min((dist(src[i], pal[j]), j) for j in sorted(mine))
+        if near[0] <= g["collapse"]:
+            remap[i] = near[1]                       # near enough to a colour the town already has
+        else:
+            identity.append(i)                       # this one IS the character; it needs a letter
+    assert len(identity) <= len(free), "%s: the guest needs %d colours of its own, %d letters free" % (
+        name, len(identity), len(free))
+    for i, slot in zip(identity, free):
+        pal[slot] = src[i]
+        remap[i] = slot
+    return pal, remap
+
+
+def guest_sheet(pal, remap, g):
+    im = Image.open(os.path.join(PEOPLE, g["sheet"]))
+    out = Image.new("P", im.size)
+    flat = [c for rgb in pal for c in rgb]
+    out.putpalette(flat + [0] * (768 - len(flat)))
+    out.putdata(bytes(remap[p] for p in im.getdata()))
+    return out
+
+
+def revert_plan():
+    """a map a foreign special character holds cannot carry our locals: put its citizens back"""
+    out = []
+    for prefix, name, _tag, _colours, roles in TOWNS:
+        g = guest_of(name)
+        for mp in sorted(glob.glob(os.path.join(GBA, "data/maps/%s*/map.json" % prefix))):
+            objs = json.load(open(mp)).get("object_events", [])
+            held = [o.get("graphics_id") for o in objs if o.get("graphics_id") in special_gfx()]
+            if g and os.path.basename(os.path.dirname(mp)) == g["map"]:
+                held = [h for h in held if h != g["source"]]
+            mine = [i for i, o in enumerate(objs) if o.get("graphics_id", "").startswith("OBJ_EVENT_GFX_TOWN_")]
+            if not held or not mine:
+                continue
+            rel = os.path.relpath(mp, GBA)
+            up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True).stdout
+            upobjs = json.loads(up)["object_events"]
+            assert len(upobjs) == len(objs), "%s: object count differs from upstream, cannot restore by index" % rel
+            for i in mine:
+                out.append((mp, i, upobjs[i]["graphics_id"], objs[i]["graphics_id"], ",".join(
+                    h.replace("OBJ_EVENT_GFX_", "") for h in held)))
+    return out
+
+
+def register_one(edit, const, cname, fname, tag_name, note, frames=9):
+    """one graphics id: the constant, the sheet, its frame table, its info and its pointer"""
+    def constants(s):
+        if ("#define %s " % const) in s:
+            return s
+        m = re.search(r"\n#define NUM_OBJ_EVENT_GFX\s+(\d+)\n", s); n = int(m.group(1))
+        return s[:m.start()] + "\n#define %s %d" % (const, n) + "\n\n#define NUM_OBJ_EVENT_GFX     %d\n" % (n + 1) + s[m.end():]
+    edit("include/constants/event_objects.h", constants)
+
+    def graphics(s):
+        if ("gObjectEventPic_%s[]" % cname) in s:
+            return s
+        anchor = 'const u16 gObjectEventPic_BenchmarkGuide[] = INCBIN_U16("graphics/object_events/pics/people/benchmark_guide.4bpp");\n'
+        assert s.count(anchor) == 1
+        return s.replace(anchor, anchor + 'const u16 gObjectEventPic_%s[] = INCBIN_U16("graphics/object_events/pics/people/%s.4bpp");\n' % (cname, fname))
+    edit("src/data/object_events/object_event_graphics.h", graphics)
+
+    def pictables(s):
+        if ("sPicTable_%s[]" % cname) in s:
+            return s
+        start = s.index("static const struct SpriteFrameImage sPicTable_BenchmarkGuide[] = {")
+        end = s.index("};\n", start) + 3
+        block = "\nstatic const struct SpriteFrameImage sPicTable_%s[] = {\n%s};\n" % (cname, "".join(
+            "    overworld_frame(gObjectEventPic_%s, 2, 4, %d),\n" % (cname, k) for k in range(frames)))
+        return s[:end] + block + s[end:]
+    edit("src/data/object_events/object_event_pic_tables.h", pictables)
+
+    def info(s):
+        if ("gObjectEventGraphicsInfo_%s =" % cname) in s:
+            return s
+        return s.rstrip("\n") + "\n\n// %s\n" % note + (
+            "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s = {\n    .tileTag = TAG_NONE,\n    .paletteTag = %s,\n"
+            "    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 256,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = PALSLOT_NPC_SPECIAL,\n"
+            "    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .disableReflectionPaletteLoad = FALSE,\n    .tracks = TRACKS_FOOT,\n"
+            "    .oam = &gObjectEventBaseOam_16x32,\n    .subspriteTables = gObjectEventSpriteOamTables_16x32,\n    .anims = sAnimTable_Standard,\n"
+            "    .images = sPicTable_%s,\n    .affineAnims = gDummySpriteAffineAnimTable,\n};\n") % (cname, tag_name, cname)
+    edit("src/data/object_events/object_event_graphics_info.h", info)
+
+    def pointers(s):
+        if ("&gObjectEventGraphicsInfo_%s," % cname) in s:
+            return s
+        decl = "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BenchmarkGuide;\n"
+        entry_re = re.search(r"    \[OBJ_EVENT_GFX_BENCHMARK_GUIDE\s*\]\s*= &gObjectEventGraphicsInfo_BenchmarkGuide,\n", s)
+        assert s.count(decl) == 1 and entry_re
+        last = max(m.end() for m in re.finditer(r"    \[OBJ_EVENT_GFX_\w+\s*\]\s*= &gObjectEventGraphicsInfo_\w+,\n", s))
+        s = s[:last] + "    [%s]%s = &gObjectEventGraphicsInfo_%s,\n" % (const, " " * max(1, 40 - len(const)), cname) + s[last:]
+        return s.replace(decl, decl + "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s;\n" % cname, 1)
+    edit("src/data/object_events/object_event_graphics_info_pointers.h", pointers)
+
+
 def register():
     def edit(path, fn):
         p = os.path.join(GBA, path); s = open(p).read(); s2 = fn(s)
@@ -438,8 +621,9 @@ def register():
     for prefix, name, tag, colours, roles in TOWNS:
         pal_name = "npc_town_%s" % name.lower()
         tag_name = "OBJ_EVENT_PAL_TAG_NPC_TOWN_%s" % name
+        pal, _remap = merged_palette(name, colours, roles)
         with open(os.path.join(PALS, pal_name + ".pal"), "w") as f:
-            f.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in full_palette(colours)))
+            f.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in pal))
 
         def movement(s):
             if tag_name not in s:
@@ -453,64 +637,30 @@ def register():
             return s
         edit("src/event_object_movement.c", movement)
 
-        for role in [r for r in ROLES if r in roles]:
-            const = "OBJ_EVENT_GFX_TOWN_%s_%s" % (name, role.upper())
-            cname = "Town%s%s" % (camel(name), role.capitalize())
-            fname = "town_%s_%s" % (name.lower(), role)
-
-            def constants(s):
-                if ("#define %s " % const) in s:
-                    return s
-                m = re.search(r"\n#define NUM_OBJ_EVENT_GFX\s+(\d+)\n", s); n = int(m.group(1))
-                return s[:m.start()] + "\n#define %s %d" % (const, n) + "\n\n#define NUM_OBJ_EVENT_GFX     %d\n" % (n + 1) + s[m.end():]
-            edit("include/constants/event_objects.h", constants)
-
-            def graphics(s):
-                if ("gObjectEventPic_%s[]" % cname) not in s:
-                    anchor = 'const u16 gObjectEventPic_BenchmarkGuide[] = INCBIN_U16("graphics/object_events/pics/people/benchmark_guide.4bpp");\n'
-                    assert s.count(anchor) == 1
-                    s = s.replace(anchor, anchor + 'const u16 gObjectEventPic_%s[] = INCBIN_U16("graphics/object_events/pics/people/%s.4bpp");\n' % (cname, fname))
-                if ("gObjectEventPal_NpcTown%s[]" % camel(name)) not in s:
-                    anchor = 'const u16 gObjectEventPal_NpcOwl[] = INCBIN_U16("graphics/object_events/palettes/npc_owl.gbapal");\n'
-                    assert s.count(anchor) == 1
-                    s = s.replace(anchor, anchor + 'const u16 gObjectEventPal_NpcTown%s[] = INCBIN_U16("graphics/object_events/palettes/%s.gbapal");\n' % (camel(name), pal_name))
+        def graphics_pal(s):
+            if ("gObjectEventPal_NpcTown%s[]" % camel(name)) in s:
                 return s
-            edit("src/data/object_events/object_event_graphics.h", graphics)
+            anchor = 'const u16 gObjectEventPal_NpcOwl[] = INCBIN_U16("graphics/object_events/palettes/npc_owl.gbapal");\n'
+            assert s.count(anchor) == 1
+            return s.replace(anchor, anchor + 'const u16 gObjectEventPal_NpcTown%s[] = INCBIN_U16("graphics/object_events/palettes/%s.gbapal");\n' % (camel(name), pal_name))
+        edit("src/data/object_events/object_event_graphics.h", graphics_pal)
 
-            def pictables(s):
-                if ("sPicTable_%s[]" % cname) in s:
-                    return s
-                start = s.index("static const struct SpriteFrameImage sPicTable_BenchmarkGuide[] = {")
-                end = s.index("};\n", start) + 3
-                block = "\nstatic const struct SpriteFrameImage sPicTable_%s[] = {\n%s};\n" % (cname, "".join("    overworld_frame(gObjectEventPic_%s, 2, 4, %d),\n" % (cname, k) for k in range(9)))
-                return s[:end] + block + s[end:]
-            edit("src/data/object_events/object_event_pic_tables.h", pictables)
+        for role in [r for r in ROLES if r in roles]:
+            register_one(edit, "OBJ_EVENT_GFX_TOWN_%s_%s" % (name, role.upper()),
+                         "Town%s%s" % (camel(name), role.capitalize()),
+                         "town_%s_%s" % (name.lower(), role), tag_name,
+                         "%s's %s (T-119): %s, in the town's own palette" % (name, role, roles[role][3]))
 
-            def info(s):
-                if ("gObjectEventGraphicsInfo_%s =" % cname) in s:
-                    return s
-                return s.rstrip("\n") + "\n\n// %s's %s (T-119): %s, in the town's own palette\n" % (name, role, roles[role][3]) + (
-                    "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s = {\n    .tileTag = TAG_NONE,\n    .paletteTag = %s,\n"
-                    "    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 256,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = PALSLOT_NPC_SPECIAL,\n"
-                    "    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .disableReflectionPaletteLoad = FALSE,\n    .tracks = TRACKS_FOOT,\n"
-                    "    .oam = &gObjectEventBaseOam_16x32,\n    .subspriteTables = gObjectEventSpriteOamTables_16x32,\n    .anims = sAnimTable_Standard,\n"
-                    "    .images = sPicTable_%s,\n    .affineAnims = gDummySpriteAffineAnimTable,\n};\n") % (cname, tag_name, cname)
-            edit("src/data/object_events/object_event_graphics_info.h", info)
-
-            def pointers(s):
-                if ("&gObjectEventGraphicsInfo_%s," % cname) in s:
-                    return s
-                decl = "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BenchmarkGuide;\n"
-                entry_re = re.search(r"    \[OBJ_EVENT_GFX_BENCHMARK_GUIDE\s*\]\s*= &gObjectEventGraphicsInfo_BenchmarkGuide,\n", s)
-                assert s.count(decl) == 1 and entry_re
-                last = max(m.end() for m in re.finditer(r"    \[OBJ_EVENT_GFX_\w+\s*\]\s*= &gObjectEventGraphicsInfo_\w+,\n", s))
-                s = s[:last] + "    [%s]%s = &gObjectEventGraphicsInfo_%s,\n" % (const, " " * max(1, 40 - len(const)), cname) + s[last:]
-                return s.replace(decl, decl + "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s;\n" % cname, 1)
-            edit("src/data/object_events/object_event_graphics_info_pointers.h", pointers)
+        g = guest_of(name)
+        if g:
+            register_one(edit, "OBJ_EVENT_GFX_" + g["const"], camel(g["const"]), g["fname"], tag_name,
+                         "%s's guest (T-119): %s redrawn against the town's sixteen, so one map can hold both"
+                         % (name, g["source"].replace("OBJ_EVENT_GFX_", "")))
 
     # the text colour table pairs gfx ids two at a time; locals speak in the neutral colour
     ev = open(os.path.join(GBA, "include/constants/event_objects.h")).read()
-    ids = {c: int(n) for c, n in re.findall(r"#define (OBJ_EVENT_GFX_TOWN_\w+) (\d+)", ev)}
+    pat = "|".join([r"OBJ_EVENT_GFX_TOWN_\w+"] + ["OBJ_EVENT_GFX_" + g["const"] for g in GUESTS])
+    ids = {c: int(n) for c, n in re.findall(r"#define (%s) (\d+)" % pat, ev)}
 
     def colours(s):
         start = s.index("static const u8 sTextColorTable[] =")
@@ -543,23 +693,59 @@ def main():
         by_role = {r: sum(1 for t in todo if t[2] == r) for r in roles}
         print("  %-12s repoint %s%s" % (name, ", ".join("%s %d" % (r, by_role[r]) for r in ROLES if r in roles),
               ("; left alone on %s (a special-slot character shares the map)" % ", ".join(left)) if left else ""))
+    guest_imgs = []
+    for prefix, name, tag, colours, roles in TOWNS:
+        g = guest_of(name)
+        if not g:
+            continue
+        pal, remap = merged_palette(name, colours, roles)
+        img = guest_sheet(pal, remap, g)
+        guest_imgs.append((g, img))
+        bg = Image.new("RGB", img.size, (150, 150, 150))
+        bg.paste(img.convert("RGB"), (0, 0), Image.frombytes("L", img.size, bytes(255 if i else 0 for i in img.getdata())))
+        rows.append(bg)
+        print("  %-12s guest %s -> %s, keeping %d colours of its own" % (
+            name, g["source"].replace("OBJ_EVENT_GFX_", ""), g["const"], len([c for c in g["letters"]])))
+
+    reverts = revert_plan()
+    for mp, i, back, cur, held in reverts:
+        print("  %-12s restore %s -> %s (%s holds that map's palette)" % (
+            os.path.basename(os.path.dirname(mp)), cur.replace("OBJ_EVENT_GFX_", ""),
+            back.replace("OBJ_EVENT_GFX_", ""), held))
+
     out = Image.new("RGB", (144 * 5, 32 * 5 * len(rows)), (60, 60, 60))
     for i, r in enumerate(rows):
         out.paste(r.resize((r.width * 5, 160), Image.NEAREST), (0, 160 * i))
     out.save(PREVIEW)
-    print("  %d sheets -> preview %s (town by town: child, adult, elder)" % (len(built), PREVIEW))
+    print("  %d sheets -> preview %s (town by town: child, adult, elder; guests last)" % (len(rows), PREVIEW))
     if WRITE:
         for filename, img in built:
             img.save(os.path.join(PEOPLE, filename), bits=4)
+        for g, img in guest_imgs:
+            img.save(os.path.join(PEOPLE, g["fname"] + ".png"), bits=4)
         register()
         changed = {}
-        for name, (mp, i, role) in all_todo:
+
+        def load(mp):
             if mp not in changed:
-                raw = open(mp).read(); changed[mp] = (json.loads(raw), raw.endswith("\n"))
-            changed[mp][0]["object_events"][i]["graphics_id"] = "OBJ_EVENT_GFX_TOWN_%s_%s" % (name, role.upper())
+                raw = open(mp).read()
+                changed[mp] = (json.loads(raw), raw.endswith("\n"))
+            return changed[mp][0]
+
+        for name, (mp, i, role) in all_todo:
+            load(mp)["object_events"][i]["graphics_id"] = "OBJ_EVENT_GFX_TOWN_%s_%s" % (name, role.upper())
+        swapped = 0
+        for g, _img in guest_imgs:
+            for o in load(os.path.join(GBA, "data/maps/%s/map.json" % g["map"]))["object_events"]:
+                if o.get("graphics_id") == g["source"]:
+                    o["graphics_id"] = "OBJ_EVENT_GFX_" + g["const"]
+                    swapped += 1
+        for mp, i, back, _cur, _held in reverts:
+            load(mp)["object_events"][i]["graphics_id"] = back
         for mp, (m, nl) in changed.items():
             open(mp, "w").write(json.dumps(m, indent=2) + ("\n" if nl else ""))
-        print("  written %d sheets, %d palettes, registered; %d citizens repointed on %d maps" % (len(built), len(TOWNS), len(all_todo), len(changed)))
+        print("  written %d sheets + %d guest, %d palettes, registered; %d citizens repointed, %d guest object(s) swapped, %d restored; %d maps"
+              % (len(built), len(guest_imgs), len(TOWNS), len(all_todo), swapped, len(reverts), len(changed)))
 
 
 if __name__ == "__main__":
