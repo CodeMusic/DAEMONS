@@ -43,7 +43,7 @@ import glob, json, os, re, subprocess, sys
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from genfolk import overlay, figure, check, sheet, PEOPLE, GBA
+from genfolk import overlay, figure, check, sheet, ensure_rule, PEOPLE, GBA
 from genleaders import H, S
 
 PREVIEW = "/tmp/towns_ow.png"
@@ -725,10 +725,13 @@ def main():
     out.save(PREVIEW)
     print("  %d sheets -> preview %s (town by town: child, adult, elder; guests last)" % (len(rows), PREVIEW))
     if WRITE:
+        rules = 0
         for filename, img in built:
             img.save(os.path.join(PEOPLE, filename), bits=4)
+            rules += ensure_rule(filename)       # a sheet we ADD has no conversion rule until we write one
         for g, img in guest_imgs:
             img.save(os.path.join(PEOPLE, g["fname"] + ".png"), bits=4)
+            rules += ensure_rule(g["fname"] + ".png")
         register()
         changed = {}
 

@@ -27,7 +27,7 @@ import os, sys
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from genfolk import overlay, figure, check, sheet, read_pal, WHITE, GREEN, PEOPLE
+from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, WHITE, GREEN, PEOPLE
 from genleaders import H, S, BLUE, PINK
 
 PREVIEW = "/tmp/staff_ow.png"
@@ -818,7 +818,9 @@ def main():
     if WRITE:
         for filename, img in built:
             img.save(os.path.join(PEOPLE, filename), bits=4)
-            print("  written people/%s (%d frames)" % (filename, img.width // 16))
+            new = ensure_rule(filename)          # a sheet we ADD has no conversion rule until we write one
+            print("  written people/%s (%d frames)%s" % (filename, img.width // 16,
+                                                         "  + conversion rule" if new else ""))
 
 
 if __name__ == "__main__":

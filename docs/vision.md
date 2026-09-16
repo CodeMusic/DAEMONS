@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.207**
+**A total conversion — the living design bible, v11.208**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6560,7 +6560,9 @@ Two ambitions worth recording so they are not lost, and **deliberately not desig
 
 **How far the foxes spread — decided 2026-08-29.** 4.1 makes Crystal a fox and 4.3 makes the resemblance an inference beat. The open question was whether *everyone* is animal-like.
 
-**They are not, and the reason is resolution rather than lore.** At 16×16 a character has about three pixels of head, so the entire animal vocabulary is **ears, a tail, and a shade** — the bible says as much already. Making the whole cast anthropomorphic costs something like a hundred sprite sets and buys almost nothing, because at that size a badger and a bear are the same eight pixels. So: **the Clears get ears, tail and value; nobody else changes; and the game never says anyone is a fox.** It reads as family resemblance rather than as a species claim, which is exactly the job 4.3 gives it.
+**They are not, and the reason is resolution rather than lore.** At 16×16 a character has about three pixels of head, so the entire animal vocabulary is **ears, a tail, and a shade** — the bible says as much already. Making the whole cast anthropomorphic costs something like a hundred sprite sets and buys almost nothing, because at that size a badger and a bear are the same eight pixels. So: ~~**the Clears get ears, tail and value; nobody else changes; and the game never says anyone is a fox.**~~ **the Clears get ears, tail and value, and the game never says anyone is a fox.** It reads as family resemblance rather than as a species claim, which is exactly the job 4.3 gives it.
+
+> ***"Nobody else changes" is SUPERSEDED — struck 2026-09-15.*** **9.4's fable rule (settled 2026-09-06) governs the cast**, and it was settled the hard way: four treatments were generated and the animal-head-on-a-human-body was rejected because *it failed on a **bug catcher in shorts*** — a generic class sheet, tested directly. **Its three clauses are about RENDERING, not about who is an animal.** *The amendment below had already taken the floor out of this ruling a day earlier by moving the resolution it rested on; 9.4 then decided the question it left open.* **T-115 through T-120 are built on 9.4**, and by this striking the sentence above no longer contradicts about a hundred sheets that are in the ROM.
 
 *The failure mode, and the cheap escape.* If three tailed characters among an untailed cast reads as *otherness* rather than *lineage*, the fix is not to convert everyone — it is to give light animal features to a handful of **recurring** characters (Scorn, two or three Benchmark leaders) so that fox becomes one species among several. Eight sprites, not a hundred. Decide it on playtest, not now.
 

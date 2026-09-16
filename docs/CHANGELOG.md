@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.208 — 2026-09-15
+
+### 8.5 — "Nobody else changes" is struck
+
+- ***8.5's 2026-08-29 ruling — "the Clears get ears, tail and value; nobody else changes" — is superseded and struck.*** **Its reasoning was a Game Boy fact** (*"at 16×16 a character has about three pixels of head… a badger and a bear are the same eight pixels"*), **and 8.5's own amendment of 2026-09-04 had already removed the floor from it**: the GBA portrait is 64×96, where a fox is a fox.
+- ***9.4's fable rule (2026-09-06) governs the cast***, and it settled the question the amendment left open — **by generating four treatments and rejecting the animal head on a human body because *it failed on a bug catcher in shorts***, which is a generic class sheet tested directly. **Its three clauses are about rendering, not about who is an animal.**
+- *Recorded because T-115 through T-120 are built on 9.4 and about a hundred sheets are in the ROM;* **the struck sentence contradicted them.**
+
 ## v11.207 — 2026-09-15
 
 ### 5.3 — TILT's room, redrawn

@@ -47,6 +47,30 @@ PREVIEW = "/tmp/folk_ow.png"
 WRITE = "--write" in sys.argv
 
 
+RULES = os.path.join(GBA, "spritesheet_rules.mk")
+
+
+def ensure_rule(filename, mwidth=2, mheight=4):
+    """a NEW sheet needs its own conversion rule, and nothing warns you when it has none.
+
+    `spritesheet_rules.mk` names every object-event sheet explicitly and converts it with
+    -mwidth/-mheight, which is what packs each frame's tiles together for overworld_frame(). A sheet
+    wider than one frame WITHOUT a rule is converted in raster order across the whole strip: every
+    frame comes out scrambled -- the head sheared off, and on the side frame the head down at the
+    feet. Overwriting a vanilla sheet inherits vanilla's rule, which is why this only ever bites the
+    sheets we ADD. Byte-checking the .4bpp against the ROM cannot catch it: a scrambled sheet
+    verifies perfectly against its own scrambled self. Compare a decoded frame instead.
+    """
+    name = filename[:-4] if filename.endswith(".png") else filename
+    target = "$(OBJEVENTGFXDIR)/people/%s.4bpp" % name
+    s = open(RULES).read()
+    if target + ":" in s:
+        return False
+    open(RULES, "w").write(s.rstrip("\n") + "\n\n%s: %%.4bpp: %%.png\n\t$(GFX) $< $@ -mwidth %d -mheight %d\n"
+                          % (target, mwidth, mheight))
+    return True
+
+
 def read_pal(name):
     return [tuple(map(int, l.split())) for l in open(os.path.join(PALS, name)).read().replace("\r", "").split("\n")[3:19]]
 
