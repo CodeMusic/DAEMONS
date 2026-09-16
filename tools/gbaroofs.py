@@ -14,7 +14,7 @@ The buildings are found exactly as gbacivic.py finds them -- by the door warp,
 the door block, and the building's own blocks either side -- reading through
 tools/gbacivictown.json to the original blocks where a town redrew a cell.
 """
-import importlib.util, json, os, struct, sys
+import importlib.util, json, os, struct, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 spec = importlib.util.spec_from_file_location("gbacivic", os.path.join(ROOT, "tools", "gbacivic.py"))
@@ -40,7 +40,7 @@ def main():
                    for t in struct.unpack_from("<8H", buf, k * 16))
 
     town_cells = json.load(open(C.TOWN_MANIFEST))["cells"] if os.path.exists(C.TOWN_MANIFEST) else {}
-    total = 0
+    total = given_back = 0
     for mp in sorted(os.listdir(os.path.join(C.GBA, "data/maps"))):
         p = os.path.join(C.GBA, "data/maps", mp, "map.json")
         if not os.path.exists(p):
@@ -50,6 +50,11 @@ def main():
             continue
         path = os.path.join(C.GBA, l["blockdata_filepath"])
         bd = bytearray(open(path, "rb").read()); W, H = l["width"], l["height"]; ts = l["secondary_tileset"]
+        # What vanilla left WALKABLE at that row is ground under an overhang, not roof surface, and
+        # blocking it took a walkway away in four towns (T-121). Read upstream and never block there.
+        up = subprocess.run(["git", "-C", C.GBA, "show", "upstream/master:" + l["blockdata_filepath"]],
+                            capture_output=True).stdout
+        restored = []
         town = town_cells.get(mp, {})
         cell = lambda x, y: town.get("%d,%d" % (x, y), struct.unpack_from("<H", bd, (y * W + x) * 2)[0] & 0x3FF)
         has = lambda x, y: 0 <= x < W and 0 <= y < H and is_building(ts, cell(x, y)) and cell(x, y) not in C.SIGN_BLOCKS
@@ -70,15 +75,24 @@ def main():
                 if not (0 <= X < W and 0 <= Y < H) or cell(X, Y) in C.SIGN_BLOCKS:
                     continue
                 raw = struct.unpack_from("<H", bd, (Y * W + X) * 2)[0]
+                off = (Y * W + X) * 2
+                if up and len(up) >= off + 2 and (int.from_bytes(up[off:off + 2], "little") >> 10) & 3 == 0:
+                    if (raw >> 10) & 3:                        # we blocked ground vanilla let you stand on
+                        struct.pack_into("<H", bd, off, raw & 0x3FF)
+                        restored.append((X, Y))
+                    continue
                 if (raw >> 10) & 3 == 0:                       # collision 0: walkable
                     struct.pack_into("<H", bd, (Y * W + X) * 2, (raw & 0x3FF) | (1 << 10))
                     blocked.append((X, Y))
             print("  %-16s BENCHMARK door (%d,%d), columns %+d..%+d: roof cells blocked %s" % (mp, x, y, left, right, blocked or "none"))
-        if blocked:
-            total += len(blocked)
+        if restored:
+            print("  %-16s gave back %d cell(s) vanilla left walkable: %s" % (mp, len(restored), restored))
+        if blocked or restored:
+            total += len(blocked); given_back += len(restored)
             if WRITE:
                 open(path, "wb").write(bd)
-    print("  %d roof cells %s" % (total, "blocked and written" if WRITE else "to block (run with --write)"))
+    print("  %d roof cells %s; %d walkable cells given back (T-121)"
+          % (total, "blocked and written" if WRITE else "to block (run with --write)", given_back))
 
 
 if __name__ == "__main__":
