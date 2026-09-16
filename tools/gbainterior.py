@@ -1354,7 +1354,428 @@ THEME_CP = {
 ESCALATOR = [0x2D0, 0x30A, 0x308, 0x2D8, 0x312, 0x310, 0x2D1, 0x30B, 0x309, 0x2D9, 0x313, 0x311,
              0x2EB, 0x31E, 0x31C, 0x2E3, 0x316, 0x314, 0x2E4, 0x317, 0x315]
 
+# ================================================================ THE VERDIGRIS INTERIORS (T-125)
+# The espalier house next door says it in a garden -- "the frame the plant grows to and no other
+# shape" (T-108). These five say it in commerce, so the rule is material rather than topiary:
+#
+#     BRONZE where the building asserts itself,
+#     VERDIGRIS only where hands and time have reached it,
+#     GREEN only where something is still alive.
+#
+# Corrosion is a record of CONTACT, not a mood -- craft rule 3, name the process. So the bloom sits on
+# handles, coin slots, counter edges and the beams over a kitchen pass, and nowhere else. Verdigris is
+# "green corrosion on bronze; Corpus rotting beneath" (1986), and the store is the thing that went up:
+# the kid outside says the town felt greener before it did, and he is right (craft rule 2).
+#
+# WHAT IS A FIXTURE IS READ FROM THE GAME, NOT GUESSED. A blocked cell whose metatile behaviour is 0
+# is plain wall; any other behaviour is something the player can use -- 128 counters, 130 shelving,
+# and the one-off signs, screens and machines. That is why the hotel's reception run (behaviour 128,
+# eight cells) draws as a counter although it touches the wall, and why the condominiums' apartment
+# walls draw as wall although they stand in open floor. A border flood-fill was the first plan and
+# this is better: the classification is the game's own.
+I_FLOOR, I_FLOORL, I_FLOORD = (212, 202, 180), (230, 222, 202), (176, 166, 146)
+I_WALL, I_WALLL, I_WALLD = (208, 202, 188), (230, 226, 212), (148, 142, 128)
+I_CARPET, I_CARPETL, I_CARPETD = (170, 142, 122), (194, 168, 148), (134, 110, 92)
+I_CREAM, I_CREAML, I_CREAMD = (206, 200, 158), (228, 222, 186), (170, 164, 126)
+I_SLOT, I_SLOTD = (206, 186, 140), (170, 148, 104)
+I_BOARD, I_BOARDL, I_BOARDD = (188, 170, 128), (208, 192, 152), (150, 132, 96)
+I_INK = (38, 36, 32)
+
+
+def _verd_scan(lid, secdir):
+    """Classify every cell from the game's own data, and group the furniture into CLUSTERS.
+
+    THE FIRST DRAFT USED ONE SIGNAL AND EMPTIED THE ROOMS. A blocked cell's metatile BEHAVIOUR gives
+    its role -- 128 counter, 130 shelf, 157 window, 138 kitchen -- but behaviour 0 does NOT mean wall:
+    the restaurant's round tables, the Game Corner's machine banks and the school's long table are all
+    blocked cells with behaviour 0, and calling them wall swallowed every one. WALL is what a border
+    flood-fill reaches through blocked, role-less cells; anything else blocked is FREESTANDING.
+
+    And furniture is drawn per CLUSTER, never per cell. A kitchen is one 5x7 block holding a counter,
+    a stove, a dresser and a plate; a table is a 2x2 whose single role cell is the cup standing on it.
+    One stamp per cell threw that away and 98 distinct vanilla blocks came back as 5."""
+    old = Old(secdir)
+    _, raw = old.layout(lid)
+    H, W = len(raw), len(raw[0])
+    blk, beh = {}, {}
+    for y in range(H):
+        for x in range(W):
+            v = raw[y][x]
+            blk[(x, y)] = bool((v >> 10) & 3)
+            beh[(x, y)] = old.attr(v & 0x3FF) & 0x1FF
+    wall, stack = set(), [(x, y) for y in range(H) for x in range(W)
+                          if blk[(x, y)] and not beh[(x, y)] and (x in (0, W - 1) or y in (0, H - 1))]
+    while stack:
+        c = stack.pop()
+        if c in wall:
+            continue
+        wall.add(c)
+        for d in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (c[0] + d[0], c[1] + d[1])
+            if blk.get(n) and not beh.get(n) and n not in wall:
+                stack.append(n)
+    furn = {c for c in blk if blk[c] and c not in wall}
+    groups, seen = [], set()
+    for c in sorted(furn):
+        if c in seen:
+            continue
+        stack, g = [c], set()
+        while stack:
+            q = stack.pop()
+            if q in seen or q not in furn:
+                continue
+            seen.add(q); g.add(q)
+            for d in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                stack.append((q[0] + d[0], q[1] + d[1]))
+        groups.append(g)
+    return old, raw, W, H, blk, beh, wall, groups
+
+
+def _slab(r, g, top, rim, lip=None):
+    """One bronze-rimmed slab over exactly the cells of a cluster, so a counter reads as a RUN and a
+    service block as a block. The rim is drawn only on the sides the cluster does not continue."""
+    for (cx, cy) in sorted(g):
+        X, Y = cx * 16, cy * 16
+        r.rect(X, Y, X + 15, Y + 15, top)
+        if (cx, cy - 1) not in g:
+            r.rect(X, Y, X + 15, Y + 1, rim)
+        if (cx - 1, cy) not in g:
+            r.rect(X, Y, X + 1, Y + 15, rim)
+        if (cx + 1, cy) not in g:
+            r.rect(X + 14, Y, X + 15, Y + 15, rim)
+        if (cx, cy + 1) not in g:                      # the front edge, where every hand rests
+            r.rect(X, Y + 12, X + 15, Y + 13, rim)
+            r.rect(X, Y + 14, X + 15, Y + 15, lip or rim)
+
+
+_MAP_EVENTS = {}
+
+
+def _map_events(lid):
+    """Every cell a map puts a warp, an object or a sign on -- which a drawing must leave clear.
+
+    A chair drawn on an NPC's cell puts furniture under a standing character, and the first pass did
+    exactly that to one of T-119's Verdigris locals at (1,2) in the restaurant. The layout id does not
+    name its map, and mangling LAYOUT_CELADON_CITY_RESTAURANT into CeladonCity_Restaurant works only
+    by luck -- LAYOUT_HOUSE2 and LAYOUT_TWO_ISLAND_* do not mangle -- so the index is DERIVED, once,
+    from every map.json's own `layout` field. All seventeen rooms in scope resolve 1:1."""
+    if not _MAP_EVENTS:
+        base = os.path.join(GBA, "data/maps")
+        for name in sorted(os.listdir(base)):
+            p = os.path.join(base, name, "map.json")
+            if not os.path.isfile(p):
+                continue
+            try:
+                d = json.load(open(p))
+            except Exception:
+                continue
+            key = d.get("layout")
+            if not key:
+                continue
+            cells = _MAP_EVENTS.setdefault(key, set())
+            for field in ("warp_events", "object_events", "bg_events"):
+                cells |= {(e["x"], e["y"]) for e in d.get(field, []) if "x" in e and "y" in e}
+    return _MAP_EVENTS.get(lid, set())
+
+
+def _weave(r, X, Y, base, light, dark):
+    """A floor you can actually see. MEASURED OFF VANILLA: its hotel carpet spends 16% of every cell
+    on its pattern and its restaurant floor 25%; the first draft spent 0.8% -- two pixels a cell --
+    and 57% of the whole room came out one flat colour, which is why it read as mud rather than a
+    room. This is ~23%, inside vanilla's own range."""
+    r.rect(X, Y, X + 15, Y + 15, base)
+    for yy in range(16):
+        for xx in range(16):
+            if (xx + yy * 3) % 6 == 0:
+                r.px(X + xx, Y + yy, light)
+    r.rect(X, Y, X + 15, Y, dark)
+
+
+def _wall_kind(old, m):
+    """What vanilla drew on this wall cell, read from its own colour signature.
+
+    The hotel holds TWENTY-SEVEN distinct wall block ids -- a beam ceiling, windows punched into it,
+    a banister, side returns, plain plaster -- and the first draft painted every one as the same
+    plaster, which is how the lobby lost its orientation. Classifying by what vanilla put there
+    collapses those 27 to five KINDS, so this is five drawings rather than twenty-seven or one."""
+    c = Counter(old.block(m)[y][x] for y in range(16) for x in range(16))
+    f = lambda pred: sum(v for col, v in c.items() if pred(*col)) / 256.0
+    if f(lambda r_, g_, b_: b_ > r_ + 25 and b_ > g_ + 10) > .22:
+        return "window"
+    if f(lambda r_, g_, b_: r_ > 150 and g_ > 130 and b_ < 110) > .40:
+        return "beam"
+    if f(lambda r_, g_, b_: r_ + g_ + b_ < 180) > .35:
+        return "dark"
+    if f(lambda r_, g_, b_: abs(r_ - g_) < 18 and abs(g_ - b_) < 18 and 90 < r_ < 210) > .40:
+        return "stone"
+    return "plaster"
+
+
+def _verd_walls(r, W, H, blk, wall, old, raw):
+    """Beam, window, stone, plaster or the black band -- whichever vanilla had there, in our own
+    materials. VERDIGRIS GOES ONLY WHERE CONTACT HAPPENS: the hollow of a beam where the steam
+    collects, a window's sill, and the foot of any wall the room can actually see."""
+    for (x, y) in sorted(wall):
+        X, Y = x * 16, y * 16
+        k = _wall_kind(old, raw[y][x] & 0x3FF)
+        if k == "dark":
+            r.rect(X, Y, X + 15, Y + 15, (0, 0, 0))
+            continue
+        if k == "beam":                                       # the ceiling run
+            r.rect(X, Y, X + 15, Y + 15, V_BLOOMD)
+            r.rect(X, Y, X + 15, Y + 2, V_BRONZE)
+            r.rect(X, Y + 6, X + 15, Y + 7, V_BRONZED)
+            r.rect(X, Y + 8, X + 15, Y + 9, V_VERD)           # the hollow, gone green
+            r.rect(X, Y + 13, X + 15, Y + 15, V_BRONZED)
+        elif k == "window":                                   # glass in a bronze frame
+            r.rect(X, Y, X + 15, Y + 15, V_BLOOMD)
+            r.rect(X + 1, Y + 2, X + 14, Y + 11, V_BRONZED)
+            r.rect(X + 2, Y + 3, X + 13, Y + 10, V_GLASS)
+            for ox in (5, 10):
+                r.rect(X + ox, Y + 3, X + ox, Y + 10, V_BRONZED)
+            r.rect(X + 3, Y + 4, X + 4, Y + 5, V_GLASSL)
+            r.rect(X + 1, Y + 12, X + 14, Y + 13, V_VERD)     # the sill, where every elbow rests
+        elif k == "stone":                                    # the stair: pale treads, a bronze rail
+            r.rect(X, Y, X + 15, Y + 15, I_WALLL)
+            for oy in range(1, 16, 3):
+                r.rect(X, Y + oy, X + 15, Y + oy, I_WALLD)
+            r.rect(X + 13, Y, X + 14, Y + 15, V_BRONZE)
+        else:                                                 # plaster, with a grain so it is not a field
+            r.rect(X, Y, X + 15, Y + 15, I_WALL)
+            for yy in range(0, 16, 5):
+                r.rect(X, Y + yy, X + 15, Y + yy, I_WALLL)
+            for (dx, dy) in ((3, 2), (11, 9)):
+                r.px(X + dx, Y + dy, I_WALLD); r.px(X + dx + 4, Y + dy + 3, I_WALLD)
+        if not blk.get((x, y + 1), True):                     # the foot of a wall the room can see
+            r.rect(X, Y + 7, X + 15, Y + 8, V_BRONZE)
+            r.rect(X, Y + 9, X + 15, Y + 9, V_VERD)
+            r.rect(X, Y + 12, X + 15, Y + 15, I_WALLD)
+
+
+def _paint_floor(r, X, Y, x, y, kind):
+    if kind == "store":                                   # parquet, the column line inlaid in bronze
+        for yy in range(16):
+            for xx in range(16):
+                r.px(X + xx, Y + yy, I_FLOOR if ((xx + (yy // 4) * 3) % 8) else I_FLOORL)
+        r.rect(X, Y, X + 15, Y, I_FLOORD); r.rect(X, Y, X, Y + 15, I_FLOORD)
+        if x % 4 == 0:
+            r.rect(X + 6, Y, X + 9, Y + 15, V_BRONZED)
+    elif kind == "block":                                 # a landing, identical on every floor
+        for yy in range(16):
+            for xx in range(16):
+                r.px(X + xx, Y + yy, I_FLOORL if (xx % 8 < 4) == (yy % 8 < 4) else I_FLOOR)
+        r.rect(X, Y, X + 15, Y, I_FLOORD); r.rect(X, Y, X, Y + 15, I_FLOORD)
+    elif kind == "table":                                 # carpet, one motif repeated on the same grid
+        r.rect(X, Y, X + 15, Y + 15, I_CARPET)
+        for (dx, dy) in ((4, 4), (12, 12)):
+            r.px(X + dx, Y + dy, I_CARPETL); r.px(X + dx + 1, Y + dy, I_CARPETD); r.px(X + dx, Y + dy + 1, I_CARPETD)
+        r.rect(X, Y, X + 15, Y, I_CARPETD)
+    elif kind == "slot":                                  # the chequer: a grid you stand inside
+        for yy in range(16):
+            for xx in range(16):
+                r.px(X + xx, Y + yy, I_SLOT if (((x * 16 + xx) // 8 + (y * 16 + yy) // 8) % 2) else I_SLOTD)
+    else:                                                 # "board": plain boards, running the long way
+        for yy in range(16):
+            for xx in range(16):
+                r.px(X + xx, Y + yy, I_BOARDD if yy % 5 == 0 else (I_BOARDL if yy % 5 == 1 else I_BOARD))
+
+
+def _paint_wall(r, X, Y, face):
+    r.rect(X, Y, X + 15, Y + 15, I_WALL)
+    for yy in range(0, 16, 4):
+        r.rect(X, Y + yy, X + 15, Y + yy, I_WALLL)
+    if face:                                              # the foot of a wall run: a bronze rail, then skirting
+        r.rect(X, Y + 8, X + 15, Y + 9, V_BRONZE)
+        r.rect(X, Y + 10, X + 15, Y + 10, V_BRONZED)
+        r.rect(X, Y + 12, X + 15, Y + 15, I_WALLD)
+
+
+def verd_table(lid):
+    """THE RESTAURANT AND THE HOTEL -- the frame, served (T-125).
+
+    Tables identical and laid identically, on the same grid the store's gondolas stand on. The bronze
+    goes VERDIGRIS only along the edge a counter actually faces -- read per cell from which side opens
+    onto floor, not hardcoded -- and across the kitchen pass, where the steam reaches. Everything else
+    stays bronze, and the only green left in either room is what is alive: the tea in the cup and the
+    plate nobody cleared.
+
+    The hotel says "this is a hotel for people", so it keeps no daemon fixture at all. It has none to
+    lose -- neither room holds a PC -- and that absence is the joke rather than an omission."""
+    old, raw, W, H, blk, beh, wall, groups = _verd_scan(lid, "restaurant_hotel")
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    # THE TWO ROOMS DO NOT SHARE A GROUND. Vanilla gives the restaurant a cream floor and the hotel a
+    # salmon carpet, and each room's commonest colour sits near 36%; painting both with one carpet put
+    # ours at 45% and made them read as the same room twice.
+    ground = (I_CREAM, I_CREAML, I_CREAMD) if lid.endswith("RESTAURANT") else (I_CARPET, I_CARPETL, I_CARPETD)
+    for y in range(H):                                            # woven at vanilla's own density
+        for x in range(W):
+            if (x, y) not in wall:
+                _weave(r, x * 16, y * 16, *ground)
+    _verd_walls(r, W, H, blk, wall, old, raw)
+    for g in groups:
+        xs = [p[0] for p in g]; ys = [p[1] for p in g]
+        roles = {beh[p] for p in g if beh[p]}
+        if len(g) > 4 or 128 in roles:                            # a counter run, or the service block
+            _slab(r, g, V_BLOOMD, V_BRONZED)
+            for (cx, cy) in sorted(g):
+                X, Y = cx * 16, cy * 16
+                b = beh[(cx, cy)]
+                for (dx, dy, x0, y0, x1, y1) in ((0, 1, 0, 14, 15, 15), (0, -1, 0, 0, 15, 1),
+                                                 (-1, 0, 0, 0, 1, 15), (1, 0, 14, 0, 15, 15)):
+                    if b == 128 and (cx + dx, cy + dy) not in g and not blk.get((cx + dx, cy + dy), True):
+                        r.rect(X + x0, Y + y0, X + x1, Y + y1, V_VERD)   # worn green where hands rest
+                if b == 128 and (cx, cy + 1) not in g and not blk.get((cx, cy + 1), True) \
+                        and (cx + cy) % 3 == 0:                   # something set out and not cleared
+                    r.ellipse(X + 8, Y + 6, 3, 2, I_WALLL)
+                    r.ellipse(X + 8, Y + 6, 2, 1, V_LEAF)
+                if b == 138:                                      # the stove, and the pass above it
+                    r.rect(X + 2, Y + 3, X + 13, Y + 12, I_INK)
+                    for (ox, oy) in ((5, 6), (10, 6), (5, 10), (10, 10)):
+                        r.ellipse(X + ox, Y + oy, 2, 1.5, V_BRONZE)
+                    r.rect(X, Y, X + 15, Y + 1, V_VERD)
+                elif b == 139:                                    # the dresser
+                    r.rect(X + 2, Y + 3, X + 13, Y + 12, V_BRONZED)
+                    for oy in (4, 8):
+                        r.rect(X + 3, Y + oy, X + 12, Y + oy + 2, I_WALLL)
+                        r.rect(X + 6, Y + oy + 1, X + 9, Y + oy + 1, V_BLOOM)
+                elif b == 153:                                    # a plate, put down and not cleared
+                    r.ellipse(X + 8, Y + 8, 4, 3, I_WALLL); r.ellipse(X + 8, Y + 8, 2, 1.5, V_LEAF)
+                elif b == 132:                                    # the card standing on the counter
+                    r.rect(X + 4, Y + 3, X + 11, Y + 9, I_WALLL)
+                    r.rect(X + 4, Y + 3, X + 11, Y + 4, V_BRONZED)
+                    for oy in (6, 8):
+                        r.rect(X + 5, Y + oy, X + 10, Y + oy, V_VERDD)
+        else:                                                     # a four-top, laid like every other
+            X0, Y0 = min(xs) * 16, min(ys) * 16
+            WW, HH = (max(xs) - min(xs) + 1) * 16, (max(ys) - min(ys) + 1) * 16
+            r.shade(X0 + 3, Y0 + HH - 3, X0 + WW - 4, Y0 + HH - 1, 0.72)
+            r.ellipse(X0 + WW // 2, Y0 + HH // 2, WW // 2 - 2, HH // 2 - 3, V_BRONZED)
+            r.ellipse(X0 + WW // 2, Y0 + HH // 2 - 1, WW // 2 - 3, HH // 2 - 4, V_BLOOMD)
+            r.ellipse(X0 + WW // 2, Y0 + HH // 2 - 1, WW // 2 - 6, HH // 2 - 6, V_BLOOM)
+            forbid = _map_events(lid)
+            for (cx, cy) in sorted(g):            # chairs, standing on the open floor as vanilla's do
+                for dy in (-1, 1):
+                    n = (cx, cy + dy)
+                    if n in g or blk.get(n, True) or n in forbid:   # never under an NPC or on a warp
+                        continue
+                    NX, NY = n[0] * 16, n[1] * 16
+                    if dy < 0:                                    # above the table, seen from behind
+                        r.rect(NX + 4, NY + 6, NX + 11, NY + 9, V_BRONZE)
+                        r.rect(NX + 3, NY + 10, NX + 12, NY + 14, V_BRONZED)
+                        r.rect(NX + 4, NY + 11, NX + 11, NY + 13, V_VERDD)   # worn where you sit
+                    else:                                         # below it, seen from the front
+                        r.rect(NX + 3, NY + 1, NX + 12, NY + 5, V_BRONZED)
+                        r.rect(NX + 4, NY + 2, NX + 11, NY + 4, V_VERDD)
+                        r.rect(NX + 4, NY + 6, NX + 11, NY + 9, V_BRONZE)
+            if 155 in roles:                                      # the cup left on it, the tea still in it
+                r.ellipse(X0 + WW // 2, Y0 + HH // 2 - 2, 3, 2, I_WALLL)
+                r.ellipse(X0 + WW // 2, Y0 + HH // 2 - 2, 2, 1, V_LEAF)
+            elif 153 in roles:
+                r.ellipse(X0 + WW // 2, Y0 + HH // 2 - 2, 4, 3, I_WALLL)
+                r.ellipse(X0 + WW // 2, Y0 + HH // 2 - 2, 2, 1, V_LEAF)
+    for y in range(H):                                            # the way out
+        for x in range(W):
+            if beh[(x, y)] == 101:
+                X, Y = x * 16, y * 16
+                r.rect(X + 1, Y + 4, X + 14, Y + 13, V_BRONZED)
+                r.rect(X + 2, Y + 5, X + 13, Y + 12, V_VERD)
+                r.rect(X + 4, Y + 7, X + 11, Y + 10, V_VERDL)
+    if all((x, H - 1) in wall for x in range(W)):                 # vanilla leaves the bottom row black
+        r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
+def verd_draw(lid, secdir, kind):
+    """The four buildings not yet redrawn: floor, walls and a plain slab per cluster, so the tool runs
+    and their previews show plainly that they are UNFINISHED rather than pretending otherwise."""
+    old, raw, W, H, blk, beh, wall, groups = _verd_scan(lid, secdir)
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(H):
+        for x in range(W):
+            if (x, y) not in wall:
+                _paint_floor(r, x * 16, y * 16, x, y, kind)
+    _verd_walls(r, W, H, blk, wall, old, raw)
+    for g in groups:
+        _slab(r, g, V_BLOOMD, V_BRONZED)
+    if all((x, H - 1) in wall for x in range(W)):
+        r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
+def verd_room(lid, secdir, kind):
+    def draw(old_img, statues=True):
+        return verd_table(lid) if kind == "table" else verd_draw(lid, secdir, kind)
+    return draw
+
+
+def gamecorner_states():
+    """Our own art for every id the Game Corner's scripts set. Without these, the five cells the
+    hideout stair uses would render in VANILLA's art inside a room that is no longer vanilla's --
+    and cable_club.inc reaches in from another map for two more."""
+    r = Room(Image.new("RGB", (16 * 5, 16 * 2)))
+    for i in range(5):
+        _paint_floor(r, i * 16, 0, i, 6, "slot")
+        _paint_floor(r, i * 16, 16, i, 7, "slot")
+    _paint_wall(r, 16, 0, True)
+    for cx in (2, 3, 4):                                  # the hatch, open: a bronze lip and steps down
+        X = cx * 16
+        r.rect(X, 16, X + 15, 31, I_INK)
+        for s in range(4):
+            r.rect(X + 1, 18 + s * 3, X + 14, 19 + s * 3, V_BRONZED if s % 2 else V_BRONZE)
+    grab = lambda cx, cy: tuple(r.p[cx * 16 + i % 16, cy * 16 + i // 16] for i in range(256))
+    return {0x292: grab(0, 0),     # Floor_ShadeFull      -- the hatch shut, the chequer unbroken
+            0x2CF: grab(1, 0),     # PurpleWall_Floor     -- the wall above it, shut
+            0x2E1: grab(0, 0),     # CheckeredFloor_ShadeLeft, set from cable_club.inc
+            0x2F7: grab(1, 0),     # CounterBarrier, likewise
+            0x29D: grab(2, 1),     # Floor_StairsTop
+            0x29E: grab(3, 1),     # StairsTop
+            0x29F: grab(4, 1),     # StairsBottom
+            0x2A6: grab(2, 1),     # PurpleWall_StairsTop
+            0x2A7: grab(3, 1)}     # PurpleWall_stairsBottom
+
+
+_STORE = ["LAYOUT_CELADON_CITY_DEPARTMENT_STORE_%s" % f for f in ("1F", "2F", "3F", "4F", "5F", "ROOF")]
+_BLOCK = ["LAYOUT_CELADON_CITY_CONDOMINIUMS_%s" % f for f in ("1F", "2F", "3F", "ROOF")]
+_TABLE = ["LAYOUT_CELADON_CITY_RESTAURANT", "LAYOUT_CELADON_CITY_HOTEL"]
+_SLOT = ["LAYOUT_CELADON_CITY_GAME_CORNER", "LAYOUT_CELADON_CITY_GAME_CORNER_PRIZE_ROOM",
+         "LAYOUT_TWO_ISLAND_JOYFUL_GAME_CORNER"]
+_BOARD = ["LAYOUT_VIRIDIAN_CITY_SCHOOL", "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM"]
+
+
 BUILDINGS = {
+    # THE VERDIGRIS INTERIORS (T-125), one tileset per building. The two _DUPLICATE layouts are left
+    # out on purpose: no map.json references either, so drawing them would spend blocks on rooms
+    # nobody can enter.
+    "verdigris_store": dict(
+        old="department_store", symbol="gTileset_VerdigrisStore", dir="verdigris_store",
+        layouts=[(l, verd_room(l, "department_store", "store")) for l in _STORE],
+        theme={}, recoloured=[0x28D], forced={0x28D},      # the elevator door, named by field_door.c
+        recolour_cells={}, from_cells={}, plan={},
+    ),
+    "verdigris_block": dict(
+        old="condominiums", symbol="gTileset_VerdigrisBlock", dir="verdigris_block",
+        layouts=[(l, verd_room(l, "condominiums", "block")) for l in _BLOCK],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),
+    "verdigris_table": dict(
+        old="restaurant_hotel", symbol="gTileset_VerdigrisTable", dir="verdigris_table",
+        layouts=[(l, verd_room(l, "restaurant_hotel", "table")) for l in _TABLE],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),
+    "verdigris_floor": dict(
+        old="game_corner", symbol="gTileset_VerdigrisFloor", dir="verdigris_floor",
+        layouts=[(l, verd_room(l, "game_corner", "slot")) for l in _SLOT],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        states=gamecorner_states,
+    ),
+    # The School tileset spans TWO TOWNS -- Viridian's classroom is CALLOW's, Celadon's lecture room
+    # is VERDIGRIS's -- so this one is drawn as a shared instruction room rather than in Verdigris's
+    # bronze, and the split is left open. See T-125.
+    "verdigris_board": dict(
+        old="school", symbol="gTileset_VerdigrisBoard", dir="verdigris_board",
+        layouts=[(l, verd_room(l, "school", "board")) for l in _BOARD],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),
     "checkpoint": dict(
         old="pokemon_center", symbol="gTileset_Checkpoint", dir="checkpoint",
         layouts=[("LAYOUT_POKEMON_CENTER_1F", checkpoint_1f), ("LAYOUT_POKEMON_CENTER_2F", checkpoint_2f),
