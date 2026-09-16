@@ -229,6 +229,32 @@ open(P, 'w').write(open(P).read().replace(a, b))     # DESTROYS P
 
 **`genfolk.ensure_rule()` now writes the rule whenever a tool saves a new sheet**, so the first failure cannot recur; the other two are why the decode check belongs in every sprite verification.
 
+***THE GENERAL FORM, and it has now cost time in five shapes: a check that examined nothing reports exactly what a clean check reports, and both look like good news.***
+
+- ***A loop that iterated zero times returns zero.*** *`layouts.json` was mis-keyed three times running — `name` against the folder against `blockdata_filepath`, then `p.split("/")[1]` against `[2]` — and every time the report read "none".* **Print what the loop EXAMINED, not only what it found**: *"scanned 1652 objects across 426 maps" is the line that makes a zero mean something.*
+- ***A name that finds nothing has not shown the thing is unused.*** **There is no `OBJ_EVENT_GFX_STRENGTH_BOULDER`** — *the maps place `PUSHABLE_BOULDER` and `object_event_graphics_info_pointers.h` points it at `gObjectEventGraphicsInfo_StrengthBoulder`* — **so counting by the file's own name reported 0 objects for a sheet that draws 58.** *`sPicTable_RedSurf` likewise draws every frame from `gObjectEventPic_RedSurfRun`, which is why `red_surf.png` is the dead one and `red_surf_run.png` is the player.* ***Follow the pointer table, never the name.***
+- ***A grep that excludes the file holding the answer returns nothing.*** *Searching for `SURF_RUN` while filtering out the pointer tables reported no references at all — the filter removed the only hits.*
+- ***Structure inferred from a PROJECTION is not structure.*** **One 16×16 sprite was read wrong four times running — a footprint, then a dome profile, then lobes, then two separate clumps** — *each inferred from per-row widths, a per-colour mask, or a min/max span, and each refuted by the next measurement.* **A connected-component pass settled it in one line: ONE mass of 161px, and the "gap" was a notch that closes a row later.** ***Test the structure; do not read it off a summary.***
+- ***A percentage over the wrong denominator flatters.*** *A redraw measured "53% identical to vanilla" counting the shared empty margins as agreement; over INK cells only it was 22%.* **Choose the denominator that can embarrass you.**
+
+### 16. A tool that rewrites a tileset nobody asked it to touch
+
+***Symptom:*** *none at the time. A `--write` run of one tool leaves a DIFFERENT tool's artefact modified, and the diff surfaces days later.*
+
+**Twenty-one tools in `tools/` end in a bare `main()` with no `if __name__ == "__main__"` guard, so importing one RUNS it.** *And each reads its own switch off shared interpreter state — `WRITE = "--write" in sys.argv`, evaluated at module level* — **so importing any of them from a tool invoked with `--write` arms their write flag too.** `genprops.py --write` would have rewritten `general/tiles.png`, the shipped broadleaf tileset, as a side-effect of drawing three 16×16 props. ***Proved rather than suspected:*** *set `sys.argv` to the real invocation, import, and read the flag back — `gbatrees.WRITE` returns `True`.*
+
+***The house idiom is already in `check_lexicon.py` and `gbabudget.py`*** — swap `sys.argv` around the import and restore it in a `finally`, with `contextlib.redirect_stdout` over the module's own report:
+
+```python
+argv, sys.argv = sys.argv, ["gbatrees"]
+try:
+    ...
+finally:
+    sys.argv = argv
+```
+
+**Better still, do not import a writing tool at all.** *`genprops.py` dropped its `import gbatrees` and quotes `broadleaf()`'s measurements instead, so the hazard cannot come back.* ***The `gen*` sprite tools are all correctly guarded; the unguarded ones are `gba*`.***
+
 ## 5. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
