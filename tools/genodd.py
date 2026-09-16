@@ -183,57 +183,60 @@ DUCKLING = small_fig(small_bird("y", "O"), small_ring("W", "v"), small_side_ring
 # A row that reaches column 15 becomes TWELVE pixels wide once mirrored, so the first draft's wheel
 # was a bar across the machine and its snout was a band across the face. Head on, a wheel is narrow:
 # it stops three columns from the centre. The handlebars are what give the thing its width instead.
+# Measured off vanilla's own front frame rather than invented, which is what the first three drafts
+# got wrong. Vanilla's ink occupies rows 10-31 ONLY, is at most FOURTEEN columns across (9..22), and
+# tapers symmetrically to two pixels at the bottom: a lozenge, not a machine with its arms out. The
+# bars are two small grips at the rider's shoulders, and the wheel is DARK with one rose stripe --
+# a pale rectangle there reads as a licence plate.
 BOAR_FRONT = h32([
-    "            KKKK",      # every row runs to column 15, or the mirror opens a seam
+    "              KK",      # the crown: vanilla starts 4 wide and widens by two a row
+    "             KSS",
+    "            KSSS",
     "           KSSSS",
-    "          KSSSSS",
     "          KSKSSS",      # the eye
-    "          KSSSSS",
-    "          KSSeee",      # the snout, dark
-    "         KWeeeee",      # and a tusk beside it
+    "         KSSeeee",      # the snout, dark
+    "         KWeeeee",      # a tusk beside it
     "          KKeeee",
     "           Knnnn",      # the jacket
     "          Knnnnn",
+    "         Knnnnnn",      # widest: mirrors to fourteen, exactly vanilla's
+    "        KGnnnnnn",      # the grip, tucked at the shoulder
     "         Knnnnnn",
-    "        KSnnnnnn",      # a trotter on the bar
-    "  KgggggKnnnnnnn",      # the handlebar, reaching past him
-    "   KKKKKKnnnnnnn",
-    "         Knnnnnn",
-    "         KGGGGGG",      # the tank
-    "        KGGggggg",
-    "        KnnGGGGG",
-    "         Knnnnnn",
-    "            Kwww",      # the wheel, narrow because it is edge on
-    "            KwGG",
-    "            KwGG",
-    "            Kwww",
-    "            KKKK",
+    "         Kgggggg",      # the machine, silver under him
+    "        Kggggggg",
+    "        KGgggggg",
+    "         KGggggg",
+    "          Kggggg",
+    "          KnnGGG",      # darkening into the wheel
+    "           Knnnn",
+    "            KPnn",      # one rose stripe on the tyre
+    "             Knn",
+    "              KK",
 ])
 BOAR_BACK = h32([
-    "            KKKK",
+    "              KK",
+    "             KSS",
+    "            KSSS",
     "           KSSSS",
     "          KSSSSS",
-    "          KSSSSS",
-    "          KSSSSS",
-    "          KSSSSS",
+    "         KSSSSSS",
     "         KSSSSSS",
     "          KKSSSS",
     "           Knnnn",
     "          Knnnnn",
     "         Knnnnnn",
-    "        KSnnnnnn",
-    "  KgggggKnnnnnnn",
-    "   KKKKKKnnnnnnn",
+    "        KGnnnnnn",
     "         Knnnnnn",
-    "         KGGGGGG",
-    "        KGGggggg",
-    "        KnnGGGGG",
-    "         Knnnnnn",
-    "            Kwww",
-    "            KwGG",
-    "            KwGG",
-    "            Kwww",
-    "            KKKK",
+    "         Kgggggg",
+    "        Kggggggg",
+    "        KGgggggg",
+    "         KGggggg",
+    "          Kggggg",
+    "          KnnGGG",
+    "           Knnnn",
+    "            KPnn",
+    "             Knn",
+    "              KK",
 ])
 BOAR_SIDE = s32([
     "", "", "",
@@ -273,19 +276,28 @@ SHEETS = [   # vanilla's sheet, ours, frames, frame size, palette letters, palet
     ("cygnet",   "tuber_f.png",       CYGNET,   10, 16, WHITE, "npc_white.pal", "W"),
 ]
 
-# THE BIKER IS NOT WRITTEN YET, and BIKER above is kept only so the next draft has somewhere to start.
-# Three attempts in, the BOAR reads -- tan head, dark snout, a tusk either side -- but the MACHINE
-# does not, and a sheet 35 objects deep is not worth shipping half-right:
+# THE BIKER IS STILL NOT WRITTEN -- four drafts, and the halves failed in turn. BIKER above is kept
+# because draft four solved one of them and that measurement should not be lost.
 #
-#   * the handlebars are a one-pixel line standing clear of the body, and read as outstretched arms
-#   * head on, the wheel reads as a white box under the engine -- a licence plate, not a wheel
-#   * the whole silhouette is bulkier than vanilla's, which is compact and plainly a bike
-#   * only the side view works, where two round wheels and a rider astride are unmistakable
+# Drafts 1-3 lost the MACHINE. Handlebars drawn as a one-pixel line standing clear of the body read
+# as outstretched arms; the head-on wheel read as a white box, a licence plate rather than a wheel;
+# and the whole thing was bulkier than the sprite it replaced. Only the side view ever worked.
 #
-# What the next draft should do: take the proportions from vanilla's own front frame rather than
-# inventing them -- a narrow upright machine no wider than the rider's shoulders, the bars angled
-# DOWN into the fork so they join the thing they steer, and the front wheel implied by a dark gap
-# beneath the engine instead of a pale rectangle. The side view can stay as it is.
+# Draft 4 fixed exactly that, by MEASURING VANILLA instead of judging my own drawing: its front frame
+# occupies rows 10-31 only, is at most FOURTEEN columns wide, and tapers symmetrically to two pixels
+# at the bottom. Every earlier draft was wider than the thing it replaced. The silhouette and the
+# side view are right now.
+#
+# What draft 4 still gets wrong is the FACE, and it is the vulture's failure again: a peach dome with
+# a dark horizontal band reads as a person wearing something.
+#
+#   * the snout spans the full width of the head, so it reads as a visor, not a snout
+#   * the tusks sit at the temples as two white pixels, where they read as ears or as highlights
+#   * the crown is bare, where vanilla's rider has an unmistakable crest doing all the silhouette work
+#
+# Draft 5: narrow the snout to the bottom-centre four columns with the face left clear above it, put
+# the tusks immediately beside the snout rising upward, and give the crown a feature -- a boar's ear
+# pair or a bristle ridge -- so the head has a top silhouette instead of a dome. Keep the geometry.
 
 
 def check(name, frames, index, side):
