@@ -276,6 +276,48 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/sr_and_jr_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/sr_and_jr.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # The ten that were AT OR ABOVE the cut-off and had been missed. A class must not wear a
+    # BENCHMARK leader's species, and must not repeat one already spent on another class.
+    "p_ranger_m": dict(src="gfx/characters/portrait_pokemon_ranger_m.png",       # a pine marten
+                        dst="engineGba/graphics/trainers/front_pics/pokemon_ranger_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/pokemon_ranger_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_ranger_f": dict(src="gfx/characters/portrait_pokemon_ranger_f.png",       # the same marten
+                        dst="engineGba/graphics/trainers/front_pics/pokemon_ranger_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/pokemon_ranger_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_breeder": dict(src="gfx/characters/portrait_pokemon_breeder.png",         # a goose
+                        dst="engineGba/graphics/trainers/front_pics/pokemon_breeder_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/pokemon_breeder.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_aroma": dict(src="gfx/characters/portrait_aroma_lady.png",                # a honeybee, and the hive talks by dancing
+                        dst="engineGba/graphics/trainers/front_pics/aroma_lady_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/aroma_lady.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_rsyoungster": dict(src="gfx/characters/portrait_rs_youngster.png",        # a vole
+                        dst="engineGba/graphics/trainers/front_pics/rs_youngster_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_youngster.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_lady": dict(src="gfx/characters/portrait_lady.png",                       # a swan
+                        dst="engineGba/graphics/trainers/front_pics/lady_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/lady.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_engineer": dict(src="gfx/characters/portrait_engineer.png",               # a beaver, a record in material that lasts
+                        dst="engineGba/graphics/trainers/front_pics/engineer_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/engineer.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_tamer": dict(src="gfx/characters/portrait_tamer.png",                     # a hyena ringmaster
+                        dst="engineGba/graphics/trainers/front_pics/tamer_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/tamer.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_psychic_f": dict(src="gfx/characters/portrait_psychic_f.png",             # a jellyfish, not a second octopus
+                        dst="engineGba/graphics/trainers/front_pics/psychic_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/psychic_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_painter": dict(src="gfx/characters/portrait_painter.png",                 # a toucan -- MATTE owns the chameleon
+                        dst="engineGba/graphics/trainers/front_pics/painter_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/painter.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
