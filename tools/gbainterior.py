@@ -1942,7 +1942,112 @@ _SLOT = ["LAYOUT_CELADON_CITY_GAME_CORNER", "LAYOUT_CELADON_CITY_GAME_CORNER_PRI
 _BOARD = ["LAYOUT_VIRIDIAN_CITY_SCHOOL", "LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM"]
 
 
+# ================================================================ THE PROOF HALL (T-122)
+# BRAZEN is the bought city -- brass over base metal, "honestly itself, gold-coloured the whole way
+# through and worth a fraction as much", where nothing is concealed because nobody is concealing
+# (2009). Its BENCHMARK is the gallery of mounts (T-111): gilt frames, brass brackets, a leader who
+# certifies. This building does the identical work two streets away with no authority to certify
+# anybody.
+#
+# ITS NAME WAS DECIDED LONG AGO AND A FRESH CONCEPT NEARLY OVERWROTE IT. T-25 renamed vanilla's
+# FIGHTING DOJO to the PROOF HALL -- "a dojo is where a discipline is practised and a proof is where
+# one is settled" -- and the name ships in four maps' text and in `gText_QuestLog_FightingDojo`, with
+# a QED board outside where the other seven towns carry a MARK board. A concept drafted by checking
+# the species, move, item and ability tables found the word free and proposed something else entirely;
+# THE GAME'S OWN MAP TEXT is where a building's name actually lives, and it was never searched.
+#
+# SO: A HALL THAT PROVES, AND CERTIFIES NOBODY. QED is its mark and QED is not a MARK -- it is not
+# among the eight on the trainer card, which is exactly why the emblem cannot be taken as a trophy.
+#
+# THE SAME FITTINGS IN THE CHEAPER METAL. Plain steel where the gallery has gilt, and the only brass
+# in the room is a shoe at the foot of each pillar and the mat at the door. An EMPTY BRACKET over the
+# back wall where every BENCHMARK mounts its gauge -- never removed, never installed -- and a plaque
+# cast and never engraved. The tallies are chalk, like SLATE's (T-105), and nobody countersigns them.
+#
+# THE EMBLEM IS VANILLA'S OWN. The Master already says "do not take our emblem as your trophy!" and
+# the room already has two painted discs on its back wall. Ours keeps one, centred: it is not a MARK,
+# it is not among the eight on the trainer card, and it certifies nothing -- which is why it cannot be
+# taken. Nobody in the room explains any of this (craft rule 1).
+D_STEEL, D_STEELL, D_STEELD = (150, 150, 158), (186, 186, 194), (112, 112, 122)
+D_BRASS, D_BRASSL, D_BRASSD = (190, 160, 70), (228, 200, 110), (140, 112, 48)
+D_BOARD, D_BOARDL, D_BOARDD = (186, 166, 124), (206, 190, 152), (150, 130, 94)
+D_MAT, D_MATL, D_MATD = (126, 150, 120), (152, 178, 144), (94, 116, 90)
+D_CHALK, D_INK = (232, 230, 220), (40, 40, 46)
+
+
+def proof_hall(old_img, statues=True):
+    old = Old("pewter_gym")
+    _, raw = old.layout("LAYOUT_SAFFRON_CITY_DOJO")
+    H, W = len(raw), len(raw[0])
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(H * 16):                                       # a plain boarded floor
+        c = D_BOARDD if y % 6 == 0 else (D_BOARDL if y % 6 == 1 else D_BOARD)
+        r.rect(0, y, W * 16 - 1, y, c)
+        if y % 6 == 3:
+            for x in range(8, W * 16, 48):
+                r.px((x + y * 5) % (W * 16), y, D_BOARDD)
+    MX0, MY0, MX1, MY1 = 4 * 16, 7 * 16, 9 * 16 - 1, 13 * 16 - 1  # the mat: canvas, where the gallery has gilt
+    r.rect(MX0 - 2, MY0 - 2, MX1 + 2, MY1 + 2, D_MATD)
+    r.rect(MX0, MY0, MX1, MY1, D_MAT)
+    r.rect(MX0, MY0, MX1, MY0 + 1, D_MATL)
+    for gx in range(MX0, MX1, 16):
+        r.rect(gx, MY0, gx, MY1, D_MATD)
+    for gy in range(MY0, MY1, 16):
+        r.rect(MX0, gy, MX1, gy, D_MATD)
+    r.rect(16, 16, (W - 1) * 16 - 1, 3 * 16 - 1, D_STEEL)         # the back wall
+    for yy in range(16, 3 * 16, 5):
+        r.rect(16, yy, (W - 1) * 16 - 1, yy, D_STEELL)
+    r.rect(16, 3 * 16 - 6, (W - 1) * 16 - 1, 3 * 16 - 5, D_BRASS)
+    r.rect(16, 3 * 16 - 4, (W - 1) * 16 - 1, 3 * 16 - 1, D_STEELD)
+    r.ellipse(6 * 16 + 8, 32, 13, 11, D_STEELD)                   # THE EMBLEM, and it certifies nothing
+    r.ellipse(6 * 16 + 8, 32, 11, 9, D_BRASSD)
+    r.ellipse(6 * 16 + 8, 32, 8, 6, D_BRASS)
+    r.rect(6 * 16 + 3, 30, 6 * 16 + 13, 33, D_BRASSL)
+    r.rect(6 * 16 + 7, 24, 6 * 16 + 9, 40, D_BRASSL)
+    for tx in (2 * 16, 9 * 16):                                   # the tallies, in fives, uncountersigned
+        r.rect(tx, 22, tx + 28, 44, D_INK)
+        r.rect(tx + 1, 23, tx + 27, 43, D_STEELD)
+        for row_, ty in enumerate((26, 34)):
+            for k in range(4):
+                r.rect(tx + 4 + k * 3, ty, tx + 4 + k * 3, ty + 6, D_CHALK)
+            for k in range(12):
+                r.px(tx + 3 + k, ty + 5 - k // 2, D_CHALK)
+    r.rect(4 * 16 + 2, 20, 4 * 16 + 5, 30, D_BRASSD)              # the bracket, with nothing in it
+    r.rect(4 * 16 + 10, 20, 4 * 16 + 13, 30, D_BRASSD)
+    r.rect(8 * 16 + 2, 22, 8 * 16 + 13, 40, D_BRASSD)             # the plaque, cast and never engraved
+    r.rect(8 * 16 + 3, 23, 8 * 16 + 12, 39, D_BRASS)
+    for px_ in (4, 8):                                            # two pillars, plain steel
+        X = px_ * 16
+        r.rect(X, 3 * 16, X + 15, 7 * 16 - 1, D_STEEL)
+        r.rect(X + 2, 3 * 16, X + 13, 7 * 16 - 1, D_STEELL)
+        r.rect(X + 7, 3 * 16, X + 8, 7 * 16 - 1, D_STEELD)
+        r.rect(X, 7 * 16 - 7, X + 15, 7 * 16 - 4, D_BRASSD)       # one brass shoe: the only gilt down here
+        r.rect(X, 7 * 16 - 3, X + 15, 7 * 16 - 1, D_INK)
+    for (sx, sy) in ((3, 13), (9, 13)):                           # the two posts, each with a blank plate
+        X, Y = sx * 16, sy * 16
+        r.shade(X + 2, Y + 13, X + 13, Y + 15, 0.72)
+        r.rect(X + 3, Y + 2, X + 12, Y + 14, D_STEELD)
+        r.rect(X + 4, Y + 4, X + 11, Y + 11, D_STEELL)
+        r.rect(X + 3, Y + 2, X + 12, Y + 3, D_BRASSD)
+    X, Y = 6 * 16, 14 * 16                                        # the way out
+    r.rect(X + 1, Y + 4, X + 14, Y + 13, D_BRASSD)
+    r.rect(X + 2, Y + 5, X + 13, Y + 12, D_BRASS)
+    r.rect(X + 4, Y + 7, X + 11, Y + 10, D_BRASSL)
+    r.rect(0, 0, W * 16 - 1, 15, (0, 0, 0))                       # vanilla's own black surround
+    r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    r.rect(0, 0, 15, H * 16 - 1, (0, 0, 0))
+    r.rect((W - 1) * 16, 0, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
 BUILDINGS = {
+    # THE PROOF HALL (T-122): the last consumer of gTileset_PewterGym moves off it, as the eight
+    # BENCHMARKs already have.
+    "proof_hall": dict(
+        old="pewter_gym", symbol="gTileset_ProofHall", dir="proof_hall",
+        layouts=[("LAYOUT_SAFFRON_CITY_DOJO", proof_hall)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),
     # THE VERDIGRIS INTERIORS (T-125), one tileset per building. The two _DUPLICATE layouts are left
     # out on purpose: no map.json references either, so drawing them would spend blocks on rooms
     # nobody can enter.
