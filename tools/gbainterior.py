@@ -2040,7 +2040,158 @@ def proof_hall(old_img, statues=True):
     return r.im
 
 
+# ================================================================ THE SCHOOL, SPLIT PER TOWN (T-125)
+# One tileset served two rooms in two different towns doing two different things: VIRIDIAN's is
+# CALLOW's classroom and CELADON's is VERDIGRIS's lecture room, which is not a classroom at all -- it
+# reads you a DAEMON Lecture and hands over a MUSAI. Their plans are all but identical (windows at
+# (1,1), a region map at (7,1), bookshelves at (8,2), a long table at (4,4), the mat at (4,7); the
+# lecture room adds one blocked cell at (7,3)), so the split is about TOWN and FUNCTION, not layout.
+# A tileset apiece, as checkpoint_indigo already serves exactly one layout.
+#
+# CALLOW'S CLASSROOM. The town is green, unripe, untested, and its BENCHMARK is the survey floor
+# (T-113) -- poured concrete under a surveyor's grid. So the classroom is built of the same stuff, and
+# THE GRID ON THE BOARD IS THE GRID UNDER YOUR FEET. The board carries the type table as a lattice of
+# identical chalk cells, the desks face it in rows, and the one living thing in the room is a plant on
+# the sill grown past its cane. Nobody remarks on it (craft rule 1). The room's own shipped text is
+# already the lesson -- "I have to have the table by Friday. I do not have to understand it. I have to
+# have it." / "It is all on the board." / "Learn the table. It does not change."
+C_BOARD, C_BOARDF = (38, 54, 44), (24, 34, 28)
+
+
+def callow_school(old_img, statues=True):
+    old = Old("school")
+    _, raw = old.layout("LAYOUT_VIRIDIAN_CITY_SCHOOL")
+    H, W = len(raw), len(raw[0])
+    blk = {(x, y): bool((raw[y][x] >> 10) & 3) for y in range(H) for x in range(W)}
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(H):                                            # poured concrete, under the survey grid
+        for x in range(W):
+            X, Y = x * 16, y * 16
+            for yy in range(16):
+                for xx in range(16):
+                    r.px(X + xx, Y + yy, C_CONCL if (xx + yy) % 9 == 0 else C_CONC)
+            r.rect(X, Y, X + 15, Y, C_GRIDL); r.rect(X, Y, X, Y + 15, C_GRIDL)
+            if x % 2 == 0 and y % 2 == 0:
+                r.rect(X, Y, X + 1, Y + 1, C_TICK)                # a surveyor's tick at every other node
+    for (x, y) in [(x, y) for y in range(H) for x in range(W) if blk[(x, y)]]:
+        X, Y = x * 16, y * 16
+        r.rect(X, Y, X + 15, Y + 15, C_PANEL)                     # the walls, a pale panel
+        for yy in range(0, 16, 5):
+            r.rect(X, Y + yy, X + 15, Y + yy, C_SLABL)
+        if not blk.get((x, y + 1), True):
+            r.rect(X, Y + 11, X + 15, Y + 12, C_BRASSD)
+            r.rect(X, Y + 13, X + 15, Y + 15, C_SLABD)
+    r.rect(3 * 16, 16, 7 * 16 - 1, 2 * 16 - 3, C_BOARDF)          # THE BOARD, and it is the frame
+    r.rect(3 * 16 + 2, 18, 7 * 16 - 3, 2 * 16 - 6, C_BOARD)
+    for gx in range(3 * 16 + 4, 7 * 16 - 4, 5):                   # the table, as a lattice of equal cells
+        r.rect(gx, 20, gx, 2 * 16 - 8, C_BONED)
+    for gy in range(20, 2 * 16 - 8, 4):
+        r.rect(3 * 16 + 4, gy, 7 * 16 - 5, gy, C_BONED)
+    for k in range(6):                                            # a few cells filled in, none explained
+        r.rect(3 * 16 + 5 + (k * 7) % 30, 21 + (k % 3) * 4, 3 * 16 + 8 + (k * 7) % 30, 22 + (k % 3) * 4, C_BONE)
+    for wx in (1, 2):                                             # the windows, and the plant on the sill
+        X = wx * 16
+        r.rect(X + 1, 18, X + 14, 2 * 16 - 5, C_SLABD)
+        r.rect(X + 2, 19, X + 13, 2 * 16 - 6, (206, 226, 232))
+        r.rect(X + 7, 19, X + 8, 2 * 16 - 6, C_SLABD)
+    r.rect(16 + 4, 2 * 16 - 6, 16 + 11, 2 * 16 - 3, C_CLAYD)      # the pot
+    r.rect(16 + 5, 2 * 16 - 9, 16 + 6, 2 * 16 - 6, C_BRASS)       # its cane
+    for (lx, ly) in ((3, -13), (6, -15), (8, -11), (4, -17)):     # and the thing growing past it
+        r.rect(16 + lx, 2 * 16 + ly, 16 + lx + 1, 2 * 16 + ly + 2, C_SOIL)
+    X = 7 * 16                                                    # the region map, framed
+    r.rect(X + 1, 18, X + 14, 2 * 16 - 4, C_BRASSD)
+    r.rect(X + 2, 19, X + 13, 2 * 16 - 5, C_PANEL)
+    r.rect(X + 4, 21, X + 8, 25, C_SOIL); r.rect(X + 7, 24, X + 11, 27, C_CLAY)
+    for bx in (8, 9):                                             # the bookshelves
+        X, Y = bx * 16, 2 * 16
+        r.rect(X, Y + 1, X + 15, Y + 14, C_CLAYD)
+        r.rect(X + 1, Y + 2, X + 14, Y + 13, C_INK)
+        for sy in (3, 8):
+            for sx in range(X + 2, X + 14, 2):
+                r.rect(sx, Y + sy, sx, Y + sy + 4, C_BONE if (sx // 2) % 2 else C_SOIL)
+    for tx in (4, 5):                                             # the long table, and the notebook on it
+        X, Y = tx * 16, 4 * 16
+        r.shade(X, Y + 13, X + 15, Y + 15, 0.74)
+        r.rect(X, Y + 2, X + 15, Y + 13, C_CLAYD)
+        r.rect(X, Y + 3, X + 15, Y + 11, C_CLAY)
+    r.rect(4 * 16 + 5, 4 * 16 + 5, 5 * 16 + 10, 4 * 16 + 9, C_BONE)
+    r.rect(5 * 16 - 1, 4 * 16 + 5, 5 * 16, 4 * 16 + 9, C_BONED)
+    X, Y = 4 * 16, 7 * 16                                         # the way out
+    r.rect(X + 1, Y + 4, X + 14, Y + 13, C_BRASSD); r.rect(X + 2, Y + 5, X + 13, Y + 12, C_BRASS)
+    r.rect(0, 0, W * 16 - 1, 15, (0, 0, 0)); r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    r.rect(0, 0, 15, H * 16 - 1, (0, 0, 0)); r.rect((W - 1) * 16, 0, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
+# VERDIGRIS'S LECTURE ROOM sits on the condominiums' roof, so it is built of what the block below it is
+# built of -- cool stone landings, bronze fittings, verdigris only where a hand goes -- and its board
+# is a lecture board rather than a table to be learned. The extra blocked cell at (7,3) is its lectern.
+def verdigris_lecture(old_img, statues=True):
+    old = Old("school")
+    _, raw = old.layout("LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM")
+    H, W = len(raw), len(raw[0])
+    blk = {(x, y): bool((raw[y][x] >> 10) & 3) for y in range(H) for x in range(W)}
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(H):
+        for x in range(W):
+            if not blk[(x, y)]:
+                _tiles(r, x * 16, y * 16, I_TILE, I_TILEL, I_TILED)
+    for (x, y) in [(x, y) for y in range(H) for x in range(W) if blk[(x, y)]]:
+        X, Y = x * 16, y * 16
+        r.rect(X, Y, X + 15, Y + 15, I_WALL)
+        for yy in range(0, 16, 5):
+            r.rect(X, Y + yy, X + 15, Y + yy, I_WALLL)
+        if not blk.get((x, y + 1), True):
+            r.rect(X, Y + 11, X + 15, Y + 12, V_BRONZE)
+            r.rect(X, Y + 13, X + 15, Y + 13, V_VERD)
+            r.rect(X, Y + 14, X + 15, Y + 15, I_WALLD)
+    r.rect(3 * 16, 17, 7 * 16 - 1, 2 * 16 - 4, V_BRONZED)         # the lecture board
+    r.rect(3 * 16 + 2, 19, 7 * 16 - 3, 2 * 16 - 6, I_WALLL)
+    for gy in range(21, 2 * 16 - 8, 4):
+        r.rect(3 * 16 + 5, gy, 3 * 16 + 5 + 18 + (gy % 3) * 6, gy, V_VERDD)
+    for wx in (1, 2):
+        X = wx * 16
+        r.rect(X + 1, 18, X + 14, 2 * 16 - 5, V_BRONZED)
+        r.rect(X + 2, 19, X + 13, 2 * 16 - 6, V_GLASS)
+        r.rect(X + 7, 19, X + 8, 2 * 16 - 6, V_BRONZED)
+        r.rect(X + 1, 2 * 16 - 4, X + 14, 2 * 16 - 3, V_VERD)
+    X = 7 * 16
+    r.rect(X + 1, 18, X + 14, 2 * 16 - 4, V_BRONZED)
+    r.rect(X + 2, 19, X + 13, 2 * 16 - 5, V_GLASS)
+    r.rect(X + 4, 21, X + 8, 25, V_LEAF); r.rect(X + 7, 24, X + 11, 27, V_LEAFD)
+    for bx in (8, 9):
+        X, Y = bx * 16, 2 * 16
+        r.rect(X, Y + 1, X + 15, Y + 14, V_BRONZED)
+        r.rect(X + 1, Y + 2, X + 14, Y + 13, I_INK)
+        for sy in (3, 8):
+            for sx in range(X + 2, X + 14, 2):
+                r.rect(sx, Y + sy, sx, Y + sy + 4, V_BLOOMD if (sx // 2) % 2 else V_LEAF)
+    for (cx, cy) in [(x, y) for y in range(H) for x in range(W)
+                     if blk[(x, y)] and 3 <= y <= 6]:              # the table, and the lectern beside it
+        X, Y = cx * 16, cy * 16
+        r.shade(X, Y + 13, X + 15, Y + 15, 0.74)
+        r.rect(X, Y + 2, X + 15, Y + 13, V_BRONZED)
+        r.rect(X + 1, Y + 3, X + 14, Y + 11, V_BLOOMD)
+        r.rect(X + 4, Y + 5, X + 11, Y + 9, I_WALLL)
+    X, Y = 4 * 16, 7 * 16
+    r.rect(X + 1, Y + 4, X + 14, Y + 13, V_BRONZED); r.rect(X + 2, Y + 5, X + 13, Y + 12, V_VERD)
+    r.rect(0, 0, W * 16 - 1, 15, (0, 0, 0)); r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    r.rect(0, 0, 15, H * 16 - 1, (0, 0, 0)); r.rect((W - 1) * 16, 0, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
 BUILDINGS = {
+    # THE SCHOOL, SPLIT PER TOWN (T-125): one room each, as checkpoint_indigo already is.
+    "callow_school": dict(
+        old="school", symbol="gTileset_CallowSchool", dir="callow_school",
+        layouts=[("LAYOUT_VIRIDIAN_CITY_SCHOOL", callow_school)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),
+    "verdigris_lecture": dict(
+        old="school", symbol="gTileset_VerdigrisLecture", dir="verdigris_lecture",
+        layouts=[("LAYOUT_CELADON_CITY_CONDOMINIUMS_ROOF_ROOM", verdigris_lecture)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+    ),
     # THE PROOF HALL (T-122): the last consumer of gTileset_PewterGym moves off it, as the eight
     # BENCHMARKs already have.
     "proof_hall": dict(
