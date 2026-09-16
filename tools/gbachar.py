@@ -222,6 +222,60 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/elite_four_lance_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/elite_four_lance.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # The dozen with no overworld counterpart, at the agreed cut-off: a class earns a drawing if
+    # three or more trainers use it. The PAIR classes are two figures of one species in one 64x64.
+    "p_birdkeeper": dict(src="gfx/characters/portrait_bird_keeper.png",          # an ostrich, keeping smaller birds
+                        dst="engineGba/graphics/trainers/front_pics/bird_keeper_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/bird_keeper.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_cueball": dict(src="gfx/characters/portrait_cue_ball.png",                # a rhinoceros
+                        dst="engineGba/graphics/trainers/front_pics/cue_ball_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/cue_ball.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_supernerd": dict(src="gfx/characters/portrait_super_nerd.png",            # a ring-tailed lemur
+                        dst="engineGba/graphics/trainers/front_pics/super_nerd_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/super_nerd.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_gamer": dict(src="gfx/characters/portrait_gamer.png",                     # a JACKAL -- and never a fox (9.4)
+                        dst="engineGba/graphics/trainers/front_pics/gamer_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/gamer.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_ruinmaniac": dict(src="gfx/characters/portrait_ruin_maniac.png",          # an aardvark, the digger
+                        dst="engineGba/graphics/trainers/front_pics/ruin_maniac_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/ruin_maniac.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_burglar": dict(src="gfx/characters/portrait_burglar.png",                 # a weasel
+                        dst="engineGba/graphics/trainers/front_pics/burglar_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/burglar.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_juggler": dict(src="gfx/characters/portrait_juggler.png",                 # an octopus: the arms are the act
+                        dst="engineGba/graphics/trainers/front_pics/juggler_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/juggler.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_twins": dict(src="gfx/characters/portrait_twins.png",                     # two quails
+                        dst="engineGba/graphics/trainers/front_pics/twins_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/twins.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_youngcouple": dict(src="gfx/characters/portrait_young_couple.png",        # two swans, and the tuber is a cygnet
+                        dst="engineGba/graphics/trainers/front_pics/young_couple_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/young_couple.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_sisandbro": dict(src="gfx/characters/portrait_sis_and_bro.png",           # two rabbits
+                        dst="engineGba/graphics/trainers/front_pics/sis_and_bro_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/sis_and_bro.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_crushkin": dict(src="gfx/characters/portrait_crush_kin.png",              # two wolverines, as crush_girl is
+                        dst="engineGba/graphics/trainers/front_pics/crush_kin_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/crush_kin.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_coolcouple": dict(src="gfx/characters/portrait_cool_couple.png",          # two ibexes
+                        dst="engineGba/graphics/trainers/front_pics/cool_couple_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/cool_couple.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_srandjr": dict(src="gfx/characters/portrait_sr_and_jr.png",               # two porcupines
+                        dst="engineGba/graphics/trainers/front_pics/sr_and_jr_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/sr_and_jr.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
