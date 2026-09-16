@@ -41,7 +41,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import overlay, figure, check, sheet, read_pal, PEOPLE, WHITE, GREEN
-from genleaders import BLUE, PINK
+from genleaders import H, S, BLUE, PINK
 from gentowns import mammal, bird, fig, put, pad, TAIL, CANE, CANE_X
 
 PREVIEW = "/tmp/trainers_ow.png"
@@ -237,6 +237,37 @@ SHREW = fig(_h, "g", "c", "n", "g", "n")
 SHREW = (overlay(SHREW[0], CANE, ["KK", "nK", "nK", "nK", "nK", "nK", "nK", "KK"], CANE_X), SHREW[1], SHREW[2])
 
 
+# ---- the WATER sheets are a different pose, not the same drawing
+# A class's land and water sheets are one ANIMAL but not one POSE. Vanilla's *_water sheets are
+# swimmers: measured off frame 0, the ink runs rows 14-28 only -- a head, a widening body, and at
+# rows 27-28 two stubs with water between them, which are the arms at the surface. There are no
+# legs and nothing below row 28. Drawing the land figure here put the swimmers on TOP of the water,
+# standing, which is what a playtest screenshot caught.
+def swimmer(head, muzzle, body, arm):
+    """rows 14-28 of the frame: six blank rows, then head, shoulders, and arms at the waterline"""
+    front = ["", "", "", "", "", "",
+             "      KK", "     K" + head * 2, "    K" + head * 3, "    K" + head + "K" + head,
+             "    K" + head * 3, "   K" + head + muzzle * 3, "   K" + head * 2 + muzzle * 2,
+             "  K" + body * 5, " K" + body * 6, " K" + body * 6, "  K" + body * 5,
+             " K" + body * 6, " K" + body * 6, " K" + arm * 2 + "K", "  K" + arm + "K"]
+    back = ["", "", "", "", "", "",
+            "      KK", "     K" + head * 2, "    K" + head * 3, "    K" + head * 3,
+            "    K" + head * 3, "   K" + head * 4, "   K" + head * 4,
+            "  K" + body * 5, " K" + body * 6, " K" + body * 6, "  K" + body * 5,
+            " K" + body * 6, " K" + body * 6, " K" + arm * 2 + "K", "  K" + arm + "K"]
+    side = ["", "", "", "", "", "",
+            "     KKK", "    K" + head * 3 + "K", "   K" + head + "K" + head * 2 + "K",
+            "  K" + muzzle * 2 + head * 3 + "K", "   K" + head * 4 + "K",
+            "    K" + body * 4 + "K", "   K" + body * 5 + "K", "   K" + body * 5 + "K",
+            "    K" + body * 4 + "K", "   K" + body * 5 + "K", "   K" + arm * 3 + "K",
+            "    K" + arm + "K"]
+    return H(pad(front)), H(pad(back)), S(pad(side))
+
+
+NEWT_WATER = swimmer("t", "T", "R", "t")          # the same newt, swimming
+AXOLOTL_WATER = swimmer("p", "W", "l", "p")       # the same axolotl, swimming
+
+
 SHEETS = [   # the sheet vanilla shipped, our species, the frames, its palette -- ten frames each
     ("badger",    "hiker.png",       BADGER,    "g", WHITE, "npc_white.pal"),
     ("pelican",   "fisher.png",      PELICAN,   "T", WHITE, "npc_white.pal"),
@@ -254,7 +285,7 @@ SHEETS = [   # the sheet vanilla shipped, our species, the frames, its palette -
     # batch 3: the low-use classes. A raised hand of None means a NINE-frame sheet, which has none --
     # the count is whatever the file on disk already holds, and main() asserts it before writing.
     ("lynx",      "gentleman.png",       LYNX,       "g",  WHITE, "npc_white.pal"),
-    ("newt",      "swimmer_m_water.png", NEWT,       "t",  WHITE, "npc_white.pal"),
+    ("newt swimming", "swimmer_m_water.png", NEWT_WATER, "t", WHITE, "npc_white.pal"),
     ("newt",      "swimmer_m_land.png",  NEWT,       "t",  WHITE, "npc_white.pal"),
     ("ox",        "man.png",             OX,         "E",  WHITE, "npc_white.pal"),
     ("kangaroo",  "black_belt.png",      KANGAROO,   "S",  WHITE, "npc_white.pal"),
@@ -263,7 +294,7 @@ SHEETS = [   # the sheet vanilla shipped, our species, the frames, its palette -
     ("panda",     "chef.png",            PANDA_CHEF, None, WHITE, "npc_white.pal"),
     ("hen",       "woman_3.png",         HEN,        None, WHITE, "npc_white.pal"),
     ("old ram",   "old_man_2.png",       RAM,        None, WHITE, "npc_white.pal"),
-    ("axolotl",   "swimmer_f_water.png", AXOLOTL,    "p",  GREEN, "npc_green.pal"),
+    ("axolotl swimming", "swimmer_f_water.png", AXOLOTL_WATER, "p", GREEN, "npc_green.pal"),
     ("raccoon",   "camper.png",          RACCOON,    "a",  GREEN, "npc_green.pal"),
     ("wallaby",   "boy.png",             WALLABY,    "a",  GREEN, "npc_green.pal"),
     ("gazelle",   "beauty.png",          GAZELLE,    "s",  BLUE,  "npc_blue.pal"),
