@@ -265,6 +265,22 @@ finally:
 
 ***The check is three lines and worth running after any registration:*** group every `gObjectEventGraphicsInfo_*` by its tag and collect the slots it appears in; **a tag in two slots is the bug.** *The only one vanilla splits is `OBJ_EVENT_PAL_TAG_PLAYER_RED`, which is the player's own forms.* **T-126's four new sheets inherited the slot of the sprite each replaced** — *pink/2 from the Poké Maniac, blue/1 from the Rocker, white/4 from the Woman and the Hiker* — **so the palette each needs was already loaded on every map it stands on and nothing else there changed colour.**
 
+### 18. A join that read a third of the evidence and looked complete
+
+***Symptom:*** *none. A census reports a plausible number, the fix that follows it is applied cleanly, the build is green, and the ticket closes. The work is a third done.*
+
+**T-126 asked which map objects battle as a class whose sprite is somebody else's.** *The join walked `trainers.h` → a script label that runs `trainerbattle` → the object that runs the label*, **and it globbed `data/maps/*/scripts.inc`.** ***That glob holds 258 of this game's 726 battle labels.*** *`data/scripts/trainers.inc` is ONE shared file holding 468 more — **every route and island trainer there is** — and no map folder mentions it.*
+
+**So the census returned 38 pairings where there are 72, five disagreements where there are sixteen, and ten objects to repoint where there were about a hundred.** *Nothing looked wrong at any point: the counts were specific, the five disagreements were real, and the repointing worked.*
+
+***This is trap 15's general form again — a check that examined nothing reports exactly what a clean check reports — with a new and worse wrinkle: a check that examined SOME of the evidence reports something that survives inspection.*** **A zero invites suspicion. A plausible non-zero does not.**
+
+**Three habits fall out of it, and `tools/spritejoin.py` now carries all three:**
+
+- ***Print what you EXAMINED, above what you found***, *every run*: **"742 trainers, 2072 .inc files holding 726 battle labels, 1652 objects across 426 maps"** — *the line that makes 72 pairings mean something. The original tool printed only its findings, so the number that was wrong was never on screen.*
+- ***Glob the tree, not the convention.*** **`data/**/*.inc` costs nothing and cannot be a third of the answer.** *The narrow glob encoded an assumption about where scripts live that was true of most of them.*
+- ***Make the test fail in both directions before trusting it.*** **Matching by NAME alone reported 47 CORPUS STAFF trainers as mismatched** — *their portraits are filed under the job names `corpus_m`/`corpus_f`, not the convention* — **and matching by SPECIES alone reported every town's staff against itself**, *because one side's note reads "CALLOW's staff, cheerful penguins" and the other reads "penguin".* **The test that holds is EITHER: a disagreement has to fail the name test AND the species test.**
+
 ## 5. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**

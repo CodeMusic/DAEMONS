@@ -37,7 +37,7 @@ import glob, json, os, re, sys
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, PEOPLE, GBA, WHITE
+from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, PEOPLE, GBA, WHITE, GREEN
 from genleaders import BLUE, PINK
 from gentowns import mammal, bird, fig, put, pad, TAIL, register_one, camel
 
@@ -107,6 +107,109 @@ AARDVARK = (AARDVARK[0], overlay(AARDVARK[1], TAIL, ["KTTK", "KTTK", "KTK", " KK
             overlay(AARDVARK[2], TAIL, ["KTTTK", "KTTK", " KK"], 10))
 
 
+# ============================================================ the second batch (T-126, widened)
+# Eleven more classes, found once the join read all 726 battle labels instead of 258. Same rule as
+# the four above and same method: the species is the portrait's, the palette is the slot's, and the
+# sheet each replaces is the one vanilla was standing in with.
+
+# ---- BIRD_KEEPER: an OSTRICH (npc_blue, slot 1) -- a small head a long way up
+# bird() gives a head that sits ON the shoulders, which is every other bird here and wrong for this
+# one: the whole read is the NECK. So the head is drawn small and high and the neck is four rows.
+OSTRICH_F = ["     KKK", "    KDDD", "    KDKD", "    KDDD", "    KDDO", "      Ka", "      Ka", "      Ka", "      Ka"]
+OSTRICH_B = ["     KKK", "    KDDD", "    KDDD", "    KDDD", "    KDDD", "      Ka", "      Ka", "      Ka", "      Ka"]
+OSTRICH_S = ["     KKKK", "    KDDDK", "  KOODDDK", "    KDKDK", "    KDDDK", "    KaaK", "    KaaK", "    KaaK", "    KaaK"]
+OSTRICH = fig((OSTRICH_F, OSTRICH_B, OSTRICH_S), "D", "D", "D", "a", "O")
+
+# ---- GAMER: a JACKAL (npc_pink, slot 2) -- and never a fox, which is the Clears' (9.4)
+_h = mammal("g", "g", "w")
+JACKAL = fig(_h, "g", "n", "n", "g", "K")
+for _l in (2, 11):                                            # the ears are tall and come to a point
+    JACKAL = (overlay(JACKAL[0], 0, ["KgK", "KgK", "KgK"], _l),
+              overlay(JACKAL[1], 0, ["KGK", "KGK", "KGK"], _l), JACKAL[2])
+JACKAL = (JACKAL[0], JACKAL[1], overlay(JACKAL[2], 0, ["KgK", "KgK", "KgK"], 5))
+JACKAL = (JACKAL[0], overlay(JACKAL[1], TAIL, ["KggK", "KGgK", "KggK", " KK "], 6),
+          overlay(JACKAL[2], TAIL, ["KggK", "KGgK", " KK "], 10))
+
+# ---- PAINTER: a TOUCAN (npc_blue, slot 1) -- MATTE owns the chameleon
+# The bill is half the bird and has to be drawn that way; a toucan with a normal beak is a crow.
+TOUCAN = fig(bird("d", "W", "y"), "d", "W", "D", "y", "y")
+TOUCAN = (overlay(overlay(TOUCAN[0], 5, ["KyyK"], 6), 6, ["KyOK"], 6), TOUCAN[1],
+          overlay(overlay(overlay(TOUCAN[2], 3, ["KyyyK"], 0), 4, ["KyyyyK"], 0), 5, ["KyOOK"], 1))
+
+# ---- SUPER_NERD: a RING-TAILED LEMUR (npc_white, slot 4)
+_h = mammal("g", "w", "W")
+_h = (put(put(_h[0], 5, 3, "K"), 5, 5, "K"), _h[1], put(_h[2], 5, 4, "K"))     # the dark eye patches
+LEMUR = fig(_h, "g", "W", "G", "g", "G")                      # a white coat, as the scientist wore
+LEMUR = (LEMUR[0], overlay(LEMUR[1], TAIL, ["KWWK", "KGGK", "KWWK", " KK "], 6),
+         overlay(LEMUR[2], TAIL, ["KWWK", "KGGK", "KWWK", " KK "], 10))
+
+# ---- AROMA_LADY: a HONEYBEE (npc_white, slot 4) -- 8.2b's hive, which talks by dancing
+# THE FIRST DRAFT WAS A BULL. mammal() gives a head with an ear at each top corner, and two straight
+# stalks above a tan face are HORNS -- engine.md has this exact failure recorded twice already (a
+# gold ear on a brown head, and the moth whose antennae read as horns). So there is no mammal head
+# here: a bee is a pair of COMPOUND EYES that take the sides of the whole face, and the antennae are
+# short, two rows not three, and end in a KNOB, which is what a horn never does.
+BEE_F = ["", "", "    KKKK", "   KTTTT", "   KKKTT", "   KKKTT", "   KTTTT", "    KTTu", "     KKu"]
+BEE_B = ["", "", "    KKKK", "   KTTTT", "   KTTTT", "   KTTTT", "   KTTTT", "    KTTu", "     KKu"]
+BEE_S = ["", "", "    KKKKK", "   KTTTTTK", "  KKKKTTTK", "  KKKKTTTK", "   KTTTTTK", "    KTTuuK", "     KKuK"]
+BEE = fig((BEE_F, BEE_B, BEE_S), "T", "TuTu", "u", "T", "u")   # the stripes are the shirt, four letters not one
+for _col in (2, 11):                                           # antennae: a stalk and a knob, angled off the crown
+    BEE = (overlay(overlay(BEE[0], 0, ["KwK"], _col), 1, ["KuK"], _col),
+           overlay(overlay(BEE[1], 0, ["KwK"], _col), 1, ["KuK"], _col), BEE[2])
+BEE = (BEE[0], BEE[1], overlay(overlay(BEE[2], 0, ["KwK"], 3), 1, ["KuK"], 3))
+BEE = (BEE[0], overlay(overlay(BEE[1], 10, ["Kww", "Kww", "KwK"], 1), 10, ["wwK", "wwK", "KwK"], 12),
+       overlay(BEE[2], 10, ["Kww", "Kww", "KwK"], 8))         # a pair of wings, folded at rest
+
+# ---- PSYCHIC_F and PSYCHIC_M: a JELLYFISH (npc_green, slot 3) -- not a second octopus
+JELLY_F = ["    KKKK", "  KKpppp", " Kpppppp", " Kpppppp", " KpKWKpp", " Kppppqq", "  KpqqqW", "   Kqqqq", "    KKqq"]
+JELLY_B = ["    KKKK", "  KKpppp", " Kpppppp", " Kpppppp", " Kpppppp", " Kppppqq", "  Kpqqqq", "   Kqqqq", "    KKqq"]
+JELLY_S = ["   KKKKK", "  KppppppK", " KpppppppK", " KpppppppK", "KpKWKppppK", "KppppppqqK", " KpqqqqqqK", "  KqqqqqK", "   KKqqK"]
+def _jelly(robe, hem):
+    """one jellyfish, two robes -- the same rule the two rangers are drawn under"""
+    f = fig((JELLY_F, JELLY_B, JELLY_S), "p", robe, hem, "p", hem)
+    for _col, _patch in ((0, [" Kp", "Kpq", "Kqp", "Kpq", " KK"]), (13, ["pK ", "qpK", "pqK", "qpK", "KK "])):
+        f = (overlay(f[0], 5, _patch, _col), overlay(f[1], 5, _patch, _col), f[2])
+    return f
+
+
+JELLY = _jelly("q", "b")            # PSYCHIC_F, as her picture is
+JELLY_MALE = _jelly("b", "N")       # PSYCHIC_M -- DARIO, the darker robe his picture now wears
+
+# ---- POKEMON_RANGER_M / _F: one PINE MARTEN, in two builds (npc_green, slot 3)
+_h = mammal("e", "e", "a")
+MARTEN_M = fig(_h, "e", "J", "N", "e", "Y")                   # the bib is the marten's own mark
+MARTEN_M = (overlay(MARTEN_M[0], 9, ["KaaK"], 6), MARTEN_M[1], overlay(MARTEN_M[2], 9, ["KaK"], 5))
+MARTEN_M = (MARTEN_M[0], overlay(MARTEN_M[1], TAIL, ["KeeK", "KeYK", "KeeK", " KK "], 6),
+            overlay(MARTEN_M[2], TAIL, ["KeeK", "KeYK", " KK "], 10))
+MARTEN_F = fig(_h, "e", "l", "N", "e", "Y")                   # the same marten, the other uniform
+MARTEN_F = (overlay(MARTEN_F[0], 9, ["KaaK"], 6), MARTEN_F[1], overlay(MARTEN_F[2], 9, ["KaK"], 5))
+MARTEN_F = (MARTEN_F[0], overlay(MARTEN_F[1], TAIL, ["KeeK", "KeYK", "KeeK", " KK "], 6),
+            overlay(MARTEN_F[2], TAIL, ["KeeK", "KeYK", " KK "], 10))
+for _l in (2, 11):                                            # hers carries the ear tufts
+    MARTEN_F = (overlay(MARTEN_F[0], 1, ["KaK", "KeK"], _l), overlay(MARTEN_F[1], 1, ["KaK", "KeK"], _l), MARTEN_F[2])
+
+# ---- LADY: a SWAN (npc_white, slot 4) -- the neck, and nothing else needed
+SWAN_F = ["     KKK", "    KWWW", "    KWKW", "    KWWR", "    KKRR", "      KW", "      KW", "      KW", "      KW"]
+SWAN_B = ["     KKK", "    KWWW", "    KWWW", "    KWWW", "    KWWW", "      KW", "      KW", "      KW", "      KW"]
+SWAN_S = ["     KKKK", "    KWWWK", "  KRKWKWK", "    KWWWK", "    KWWWK", "    KWWK", "    KWWK", "    KWWK", "    KWWK"]
+SWAN = fig((SWAN_F, SWAN_B, SWAN_S), "W", "W", "w", "R", "R")
+
+# ---- ENGINEER: a BEAVER (npc_white, slot 4) -- a record in a material that lasts
+_h = mammal("r", "r", "T")
+_h = (overlay(list(_h[0]), 8, ["KWWK"], 4), _h[1], overlay(list(_h[2]), 8, ["KWK"], 3))   # the incisors
+BEAVER = fig(_h, "r", "t", "u", "r", "E")
+BEAVER = (BEAVER[0], overlay(BEAVER[1], TAIL, ["KEEEEK", "KEEEEK", " KEEK ", "  KK  "], 5),
+          overlay(BEAVER[2], TAIL, ["KEEEK", "KEEEK", " KKK "], 10))
+
+# ---- TAMER: a HYENA ringmaster (npc_white, slot 4)
+_h = mammal("T", "T", "w")
+_h = (put(put(_h[0], 4, 3, "G"), 6, 5, "G"), put(put(_h[1], 4, 3, "G"), 6, 6, "G"), put(_h[2], 4, 5, "G"))
+HYENA = fig(_h, "T", "R", "G", "T", "E")                      # the ringmaster's red coat
+for _l in (2, 11):                                            # round ears, set wide and high
+    HYENA = (overlay(HYENA[0], 1, ["KTTK", "KGGK"], _l - 1), overlay(HYENA[1], 1, ["KTTK", "KGGK"], _l - 1), HYENA[2])
+HYENA = (HYENA[0], HYENA[1], overlay(HYENA[2], 1, ["KTTK", "KGGK"], 4))
+
+
 CLASSES = [
     # the portrait's class, our species, the art, the sheet, the letters, the palette, tag and slot,
     # the sprite it stands in for today, and what it is
@@ -122,8 +225,52 @@ CLASSES = [
     ("RUIN_MANIAC", "aardvark", AARDVARK, "ruin_maniac", WHITE, "npc_white.pal",
      "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4", "hiker.png",
      "an aardvark, digging where the ruin is"),
+
+    ("BIRD_KEEPER", "ostrich", OSTRICH, "bird_keeper", BLUE, "npc_blue.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_BLUE", "PALSLOT_NPC_1", "rocker.png",
+     "an ostrich, keeping smaller birds -- 18 objects, the largest disagreement in the game"),
+    ("GAMER", "jackal", JACKAL, "gamer", PINK, "npc_pink.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_PINK", "PALSLOT_NPC_2", "old_man_1.png",
+     "a black-backed jackal, never a fox"),
+    ("PAINTER", "toucan", TOUCAN, "painter", BLUE, "npc_blue.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_BLUE", "PALSLOT_NPC_1", "lass.png",
+     "a toucan, the bill half the bird"),
+    ("SUPER_NERD", "lemur", LEMUR, "super_nerd", WHITE, "npc_white.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4", "scientist.png",
+     "a ring-tailed lemur in the white coat"),
+    ("AROMA_LADY", "honeybee", BEE, "aroma_lady", WHITE, "npc_white.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4", "woman_2.png",
+     "a honeybee, and the hive talks by dancing"),
+    ("PSYCHIC_F", "jellyfish", JELLY, "psychic_f", GREEN, "npc_green.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_GREEN", "PALSLOT_NPC_3", "woman_1.png",
+     "a jellyfish, which is not a second octopus"),
+    ("PSYCHIC_M", "jellyfish", JELLY_MALE, "psychic_m", GREEN, "npc_green.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_GREEN", "PALSLOT_NPC_3", "boy.png",
+     "the same jellyfish in the darker robe -- DARIO, in the TRAINER TOWER"),
+    ("POKEMON_RANGER_M", "pine marten", MARTEN_M, "pokemon_ranger_m", GREEN, "npc_green.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_GREEN", "PALSLOT_NPC_3", "camper.png",
+     "a pine marten in the ranger's green"),
+    ("POKEMON_RANGER_F", "pine marten", MARTEN_F, "pokemon_ranger_f", GREEN, "npc_green.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_GREEN", "PALSLOT_NPC_3", "picnicker.png",
+     "the same marten, the other uniform"),
+    ("LADY", "swan", SWAN, "lady", WHITE, "npc_white.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4", "woman_2.png",
+     "a swan, carried by the neck"),
+    ("ENGINEER", "beaver", BEAVER, "engineer", WHITE, "npc_white.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4", "balding_man.png",
+     "a beaver, a record in a material that lasts"),
+    ("TAMER", "hyena", HYENA, "tamer", WHITE, "npc_white.pal",
+     "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4", "man.png",
+     "a hyena ringmaster"),
 ]
-FRAMES = 9                       # nine, so no raised hand: none of the four is ever a script's greeter
+FRAMES = 9                       # nine, so no raised hand: none of these is ever a script's greeter
+
+# DEFERRED, and named here so it is not lost: CUE_BALL, a rhinoceros, 8 objects on Routes 16-18.
+# It stands on BIKER, which is the one sheet in this batch that is not 16x32 -- 32x32, ten frames,
+# and a MACHINE as well as a rider. Giving the class a 16x32 sheet would take the bike away from a
+# trainer vanilla deliberately put in the gang, so it wants the biker's own geometry and its own
+# ticket; the boar took six drafts and this would be a seventh.
+DEFERRED = [("CUE_BALL", "rhinoceros", "biker.png", "32x32, ten frames, and the bike is half the sprite")]
 
 
 # ---------------------------------------------------------------- who battles as what
@@ -138,9 +285,15 @@ def trainer_pics():
 
 
 def script_trainers():
-    """the label a map object runs -> the trainer the label starts a battle with"""
+    """the label a map object runs -> the trainer the label starts a battle with.
+
+    EVERY .inc, not `data/maps/*/scripts.inc`. That narrower glob is what this tool shipped with and
+    it sees 258 of the game's 726 battle labels, because `data/scripts/trainers.inc` is ONE shared
+    file holding 468 of them -- every route and island trainer there is. It did not fail; it returned
+    38 pairings where there are 72, and the repointing that followed was a third of the job.
+    """
     out = {}
-    for f in glob.glob(os.path.join(GBA, "data/maps/*/scripts.inc")):
+    for f in glob.glob(os.path.join(GBA, "data/**/*.inc"), recursive=True):
         txt = open(f, errors="ignore").read()
         for m in re.finditer(r"^(\w+)::\s*\n(.*?)(?=^\w+::|\Z)", txt, re.S | re.M):
             t = re.search(r"trainerbattle\w*\s+(TRAINER_[A-Z0-9_]+)", m.group(2))
