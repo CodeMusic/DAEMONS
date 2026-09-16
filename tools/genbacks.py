@@ -1,34 +1,49 @@
 #!/usr/bin/env python3
-"""The battle BACK pics -- the player seen from behind, throwing (T-120; vision.md 9.4).
+"""The battle BACK pics -- the player seen from behind, throwing (T-123; vision.md 9.4, 9.10).
 
-    python3 tools/genbacks.py            # preview to /tmp/backs_ow.png
-    python3 tools/genbacks.py --write    # the four strips, and their palettes
+    python3 tools/genbacks.py            # preview to /tmp/backs.png (vanilla above, ours below)
+    python3 tools/genbacks.py --write    # the two strips, and their palettes
 
-A back pic is not one picture. It is a STRIP of 64x64 frames making a throw, and the strip's
-byte length is hard-coded in C:
+WHY THE FIRST DRAFT FAILED, AND WHAT REPLACED IT. It hand-wrote 64x64 ASCII and came out with no
+head, no arms, a tail in the middle of the coat and an invisible throw. Hand-drawing works at 16x32
+and does not at this size. So nothing here is drawn from nothing: VANILLA'S OWN FRAMES ARE THE
+SKELETON, and they are repainted. Measured, its body, hat and coat hold still across the throw and
+only the near arm, shoulder and head tilt move -- 1461, 1610, 1810 and 1530 pixels change between
+consecutive frames, with boxes spanning most of the canvas -- so tracing keeps an animation that
+would take many drafts to invent, and keeps it exactly.
 
-    gTrainerBackPicTable[] = { ... gTrainerBackPic_Red, 0x2800 ... gTrainerBackPic_OldMan, 0x2000 }
+THE PALETTE DOES MOST OF THE WORK, BECAUSE VANILLA'S INDICES ALREADY CARRY ROLES: 2/3/4 skin, 8 hair,
+9/10 the white shirt, 5/6 the jeans, 11/12 the cap, 13/14 the backpack, 15 the outline, and 1 and 7
+spare. Swapping the sixteen colours role for role changes the character without touching a single
+index, so the silhouette and the throw survive intact.
 
-0x2800 is FIVE frames of 64x64 at 4bpp and 0x2000 is FOUR. A strip of the wrong height is a size
-mismatch rather than a cosmetic bug, so the counts here are fixed: red 5, leaf 5, pokedude 4,
-old man 4.
+BUT A ROLE-FOR-ROLE SWAP GETS THE PROPORTIONS WRONG, which is the finding. Vanilla is mostly BACKPACK
+(830px) over a small white shirt (302px); ours is a long cream coat seen from behind with a dark
+satchel on it. Mapping the pack to the satchel made a grey blob that swallowed the figure. So the
+PACK'S AREA BECOMES THE COAT -- it is the big surface on a back -- and the satchel is drawn on top of
+it out of the two spare indices.
 
-WHO THEY ARE. 9.10 made playerGender a pure sprite selector, so red_back_pic is LOGIC and
-leaf_back_pic is INTUITION -- the player, who is already drawn: gfx/characters/player_logic.jpeg
-and the reference sheets player_ow_ref_back/side.png. The player is a GREY MONKEY (genfolk.py:
-"MOM, a grey monkey, the player's own kind") in a wide brown hat and a long cream coat, a dark
-satchel on a strap across the back, black boots, and a long curling tail. These backs match that
-character; they do not invent a second one.
+THREE SHAPE EDITS, EACH DERIVED RATHER THAN PLACED BY HAND:
 
-WHAT MOVES BETWEEN FRAMES. Measured off vanilla: 1100-2100 pixels change per frame, and the
-bounding boxes span most of the canvas -- but laid out side by side, the body, hat and coat hold
-still and it is the NEAR ARM sweeping forward with a shoulder and head tilt. So each character is
-drawn ONCE from behind and the arm is redrawn per frame, which is how the walk cycles were built.
+  * THE BRIM. Vanilla wears a cap; this figure wears a wide brown hat, and 9.4 says the brim is the
+    widest line on it. The hat's own pixels are found per frame (indices 11/12), its lowest row taken,
+    and the brim grown outward from there -- so it follows the head tilt for free.
+  * THE SATCHEL. The dark disc in the middle of vanilla's pack is its ball emblem; left alone it reads
+    as a hole punched in the coat. It becomes the satchel's body and clasp.
+  * THE TAIL. 9.10 gives the two figures one difference and it is the tail: REASON's curls up on its
+    right, INSTINCT's hangs and curls down on its left. It is drawn from the coat's own bottom edge,
+    found per frame, so it emerges from behind the coat instead of sitting on it.
 
-THE PALETTE IS OURS HERE, unlike the overworld sheets. Each back pic has its own 16 colours in
-graphics/trainers/palettes/<name>.pal and this tool writes them -- so the player's cream and brown
-can be exact. INDEX 0 IS THE TRANSPARENT SLOT AND ITS COLOUR DIFFERS PER FILE: red and leaf use a
-lavender (131,123,164), the old man and the pokedude the usual key green. Each file keeps its own.
+INDEX 0 IS THE TRANSPARENT SLOT AND ITS COLOUR DIFFERS PER FILE -- red and leaf carry a lavender
+(131,123,164) -- so each file keeps the one it has.
+
+FRAME COUNTS ARE HARD-CODED IN C. gTrainerBackPicTable[] gives 0x2800 = FIVE frames for red and leaf,
+so a strip of the wrong height is a size mismatch rather than a cosmetic bug, and the size is asserted
+against the file on disk before anything is written.
+
+SCOPE IS TWO, NOT FOUR. The old man and the pokedude are not the player and have no species yet; that
+wants a decision before drawing, so they keep vanilla's. RS_BRENDAN and RS_MAY are reachable only
+through the Ruby/Sapphire link-partner path and stay vanilla under T-120's cut-off.
 """
 import os, sys
 from PIL import Image
@@ -36,172 +51,141 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA
 
-PREVIEW = "/tmp/backs_ow.png"
+PREVIEW = "/tmp/backs.png"
 WRITE = "--write" in sys.argv
 BACKS = os.path.join(GBA, "graphics/trainers/back_pics")
 PALS = os.path.join(GBA, "graphics/trainers/palettes")
 
-# ---------------------------------------------------------------- the player's sixteen
-#  0 transparent   1 coat cream   2 coat shade   3 hat brown   4 hat shade   5 fur grey
-#  6 fur shade     7 fur dark     8 boot black   9 strap dark  10 satchel    11 satchel light
-# 12 tail grey    13 tail shade  14 white       15 outline black
-PLAYER = ["a", "c", "C", "h", "H", "f", "F", "d", "b", "s", "g", "G", "t", "T", "W", "K"]
-LOGIC_PAL = [(131, 123, 164), (255, 246, 222), (222, 205, 172), (180, 131, 65), (139, 98, 41),
-             (172, 164, 156), (131, 123, 115), (90, 82, 74), (33, 33, 41), (49, 49, 57),
-             (106, 106, 115), (148, 148, 156), (164, 156, 148), (115, 106, 98), (255, 255, 255), (0, 0, 0)]
-INTUITION_PAL = list(LOGIC_PAL)          # the same person; 9.10 makes the choice a sprite, not a species
+HAT, HATD = 11, 12                     # vanilla's cap
+COAT, COATD = 13, 14                   # vanilla's backpack -- the big surface on a back
+SATCHEL, SATCHELL = 1, 7               # vanilla leaves these two unused
+FURL, FUR, FURD, FURK = 2, 3, 4, 8     # vanilla's skin ramp, and its hair
+INK = 15
 
-LETTERS = {ch: i for i, ch in enumerate(PLAYER)}
-LETTERS[" "] = 0
-
-
-def rows(*lines):
-    return list(lines)
-
-
-# The body, seen from behind: hat brim, coat back, the strap crossing it, the satchel, boots, tail.
-# 32 columns drawn and mirrored would put the strap down the centre, so these are drawn whole at 64.
-BODY = rows(
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                      KKKKKKKKKKKKKKKKKKKK                      ",
-    "                  KKKKhhhhhhhhhhhhhhhhhhhhKKKK                  ",
-    "              KKKKhhhhhhhhhhhhhhhhhhhhhhhhhhhhKKKK              ",
-    "          KKKKhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhKKKK          ",
-    "        KKhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhKK        ",
-    "        KHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHK        ",
-    "         KKKKKKKKKKHHHHHHHHHHHHHHHHHHHHHHHHKKKKKKKKKKKK         ",
-    "                   KffffffffffffffffffffffK                     ",
-    "                   KffffffffffffffffffffffK                     ",
-    "                   KffffffffffffffffffffffK                     ",
-    "                   KFFFFFFFFFFFFFFFFFFFFFFK                     ",
-    "                  KKcccccccccccccccccccccccKK                   ",
-    "                 KcccccccccccccccccccccccccccK                  ",
-    "                KccccccccccccsccccccccccccccccK                 ",
-    "               KcccccccccccccsccccccccccccccccK                 ",
-    "              KfcccccccccccccsccccccccccccccccfK                ",
-    "              KFcccccccccccccsccccccccccccccccFK                ",
-    "              KdcccccccccccccsccccccccccccccccdK                ",
-    "              KKcccccccccccccsscccccccccccccccKK                ",
-    "               KccccccccccccccsscccccccccccccK                  ",
-    "               KcccccccccccccccsgggggKcccccccK                  ",
-    "               KcccccccccccccccKgGggGKcccccccK                  ",
-    "               KcccccccccccccccKggggGKcccccccK                  ",
-    "               KcccccccccccccccKgggggKcccccccK                  ",
-    "               KccccccccccccccccKKKKKccccccccK                  ",
-    "               KccccccccccccccccccccccccccccK                   ",
-    "               KCccccccccccccccccccccccccccCK                   ",
-    "               KCccccccccccccccccccccccccccCK                   ",
-    "               KCcccccccccccKttKcccccccccccCK                   ",
-    "               KCccccccccccKtTTtKccccccccccCK                   ",
-    "               KCcccccccccKtTKKtKcccccccccCK                    ",
-    "               KCccccccccKtTKKKtKccccccccCK                     ",
-    "                KCcccccccKtTKccKtKcccccccCK                     ",
-    "                KCccccccKtTKcccKtKccccccCK                      ",
-    "                KCccccccKtKcccccKtKcccccCK                      ",
-    "                KCcccccccKKcccccKtKcccccCK                      ",
-    "                KCcccccccccccccKtTKccccCK                       ",
-    "                KCccccccccccccKtTKcccccCK                       ",
-    "                KCcccccccccccKtTKccccccCK                       ",
-    "                KCccccccccccKtTKcccccccCK                       ",
-    "                KCccccccccccKtKccccccccCK                       ",
-    "                KCcccccccccccKKccccccccCK                       ",
-    "                KCccccccccccccccccccccCK                        ",
-    "                KKCccccccccccccccccccCKK                        ",
-    "                  KCccccccccccccccccCK                          ",
-    "                  KKCccccccccccccccCKK                          ",
-    "                    KbbbbbKKKKbbbbbbK                           ",
-    "                    KbbbbbKKKKbbbbbbK                           ",
-    "                    KbbbbbK  KbbbbbbK                           ",
-    "                    KbbbbbK  KbbbbbbK                           ",
-    "                    KKKKKKK  KKKKKKKK                           ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-    "                                                                ",
-)
-
-# The near arm, per frame of the throw. Drawn over the body at the shoulder, sweeping forward:
-# down at rest, lifting, across the chest, extended, and following through.
-ARMS = [
-    [],                                                      # 0: at rest, the body's own arm serves
-    [(18, 40, "KffK"), (19, 40, "KfFK"), (20, 41, "KffK"), (21, 42, "KfK")],
-    [(16, 44, "KffK"), (17, 46, "KfFK"), (18, 48, "KffK"), (19, 50, "KfK")],
-    [(15, 48, "KffffK"), (16, 52, "KfFFfK"), (17, 56, "KffK")],
-    [(17, 46, "KfffK"), (18, 50, "KfFfK"), (19, 53, "KffK")],
-]
+# role for role, and index 0 keeps whatever that file already had
+OURS = {
+    HAT:      (180, 131, 65),          # the wide brown hat
+    HATD:     (139, 98, 41),
+    COAT:     (226, 210, 178),         # the long cream coat, seen from behind
+    COATD:    (198, 182, 150),
+    9:        (255, 246, 222),          # its lit folds
+    10:       (238, 228, 200),
+    5:        (104, 86, 66),            # the satchel: vanilla's ball emblem is a disc on the back,
+    6:        (68, 56, 42),             # and a dark disc on a cream coat is a bag without editing it
+    FURL:     (214, 210, 202),          # grey fur
+    FUR:      (176, 172, 164),
+    FURD:     (120, 116, 110),
+    FURK:     (88, 84, 80),
+    SATCHEL:  (72, 62, 52),             # the satchel, and its lit edge
+    SATCHELL: (104, 90, 74),
+    INK:      (0, 0, 0),
+}
 
 
-def frame(body, arm):
-    out = [list(r) for r in body]
-    for y, x, patch in arm:
-        for i, ch in enumerate(patch):
-            if ch != " " and 0 <= x + i < 64 and 0 <= y < 64:
-                out[y][x + i] = ch
-    return ["".join(r) for r in out]
-
-
-def check(name, frames):
-    for n, f in enumerate(frames):
-        assert len(f) == 64, "%s frame %d is %d rows" % (name, n, len(f))
-        for r, line in enumerate(f):
-            assert len(line) == 64, "%s frame %d row %d is %d wide" % (name, n, r, len(line))
-            bad = set(line) - set(LETTERS)
-            assert not bad, "%s frame %d row %d has %r" % (name, n, r, bad)
-
-
-def strip(frames, pal):
-    img = Image.new("P", (64, 64 * len(frames)))
-    flat = [c for rgb in pal for c in rgb]
-    img.putpalette(flat + [0] * (768 - len(flat)))
+def frames_of(img):
     px = img.load()
-    for n, f in enumerate(frames):
-        for y, line in enumerate(f):
-            for x, ch in enumerate(line):
-                px[x, n * 64 + y] = LETTERS[ch]
-    return img
+    return [[[px[x, k * 64 + y] for x in range(64)] for y in range(64)]
+            for k in range(img.size[1] // 64)]
 
 
-SHEETS = [   # vanilla's strip, how many frames C demands, the palette
-    ("LOGIC",     "red_back_pic.png",  5, LOGIC_PAL),
-    ("INTUITION", "leaf_back_pic.png", 5, INTUITION_PAL),
-]
+def brim(f):
+    """The hat is vanilla's cap until its brim is grown. Found from the hat's own pixels, so it
+    follows the head tilt without being placed by hand."""
+    hat = [(x, y) for y in range(64) for x in range(64) if f[y][x] in (HAT, HATD)]
+    if not hat:
+        return
+    low = max(y for _, y in hat)
+    wide = [x for x, yy in hat if yy >= low - 2]
+    cx = (min(wide) + max(wide)) // 2
+    half = (max(wide) - min(wide)) // 2
+    # 9.4: THE BRIM IS THE WIDEST LINE ON THE FIGURE. A few pixels either side only made a wider cap,
+    # so it is grown half as far again as the crown and given a curve, which is what says "hat".
+    for k, y in enumerate((low - 1, low, low + 1)):
+        w = half + 4 - k * 2
+        for x in range(cx - w, cx + w + 1):
+            if 0 <= x < 64 and 0 <= y < 64 and f[y][x] not in (HAT, HATD, INK):
+                f[y][x] = HATD if k else HAT
+    for x in range(64):                                   # one black line under it, as vanilla edges its cap
+        for y in range(low, min(64, low + 3)):
+            if f[y][x] in (HAT, HATD) and (y + 1 >= 64 or f[y + 1][x] not in (HAT, HATD)):
+                f[y][x] = INK
+                break
+
+
+def tail(f, right):
+    """9.10's one difference between the two -- REASON's curls up on its right, INSTINCT's hangs and
+    curls down on its left. Grown from the coat's own bottom edge, so it comes out from BEHIND the
+    coat rather than sitting on top of it, which is how the first draft's read as a squiggle."""
+    coat = [(x, y) for y in range(64) for x in range(64) if f[y][x] in (COAT, COATD, 9, 10)]
+    if not coat:
+        return
+    low = max(y for _, y in coat)
+    side = max(x for x, y in coat if y > low - 10) if right else min(x for x, y in coat if y > low - 10)
+    step = 1 if right else -1
+    x, y = side, low - 8
+    # A thin line reads as a wire, so it thickens at the root and tapers, as a tail does.
+    for k in range(11):
+        x += step
+        y += (1 if k < 3 else (0 if k < 6 else -1)) if right else (1 if k < 5 else 0)
+        t = 4 if k < 4 else (3 if k < 8 else 2)
+        for d in range(-t, t + 1):
+            if 0 <= x < 64 and 0 <= y + d < 64 and f[y + d][x] == 0:
+                f[y + d][x] = FURD if abs(d) == t else (FUR if abs(d) > 1 else FURL)
+        for d in (-t - 1, t + 1):
+            if 0 <= x < 64 and 0 <= y + d < 64 and f[y + d][x] == 0:
+                f[y + d][x] = INK
+
+
+# ONE SKELETON, TWO TAILS. Both files carry the SAME sixteen colours but use them for different
+# things -- in red 11/12 are the cap (1425px), in leaf they are only the sunhat's band (210px) while
+# 9/10 are the white hat and 4/8 are long hair (1978px) -- so one index map cannot serve both, and
+# recolouring leaf by red's roles put a white hat on it. The deeper reason not to try is 9.10: these
+# are ONE figure, "two people, and the player picks the one they would rather be", whose only
+# difference is the tail. So both strips are traced from red's frames, and leaf's long hair -- which
+# this character does not have -- never arises.
+SHEETS = [("LOGIC", "red_back_pic.png", True), ("INTUITION", "leaf_back_pic.png", False)]
+SKELETON = "red_back_pic.png"
 
 
 def main():
-    built, rowsout = [], []
-    for name, filename, want, pal in SHEETS:
-        frames = [frame(BODY, ARMS[k]) for k in range(want)]
-        check(name, frames)
-        old = Image.open(os.path.join(BACKS, filename))
-        assert len(frames) == old.size[1] // 64, "%s: %d frames, %s holds %d" % (
-            name, len(frames), filename, old.size[1] // 64)
-        img = strip(frames, pal)
-        assert img.size == old.size, "%s: %s would change size %s -> %s" % (name, filename, old.size, img.size)
-        built.append((filename, img, pal))
-        wide = Image.new("RGB", (64 * want, 64), (60, 60, 60))
-        for k in range(want):
-            wide.paste(img.crop((0, k * 64, 64, (k + 1) * 64)).convert("RGB"), (k * 64, 0))
-        rowsout.append(wide)
-    out = Image.new("RGB", (max(r.width for r in rowsout) * 2, sum(r.height * 2 for r in rowsout)), (40, 40, 46))
+    built, rows = [], []
+    for name, filename, right in SHEETS:
+        src = Image.open(os.path.join(BACKS, filename))
+        skel = Image.open(os.path.join(BACKS, SKELETON))
+        assert src.mode == "P", "%s is %s, not paletted" % (filename, src.mode)
+        assert src.size == skel.size, "%s is %s and the skeleton is %s" % (filename, src.size, skel.size)
+        fs = frames_of(skel)
+        assert len(fs) == 5, "%s holds %d frames, the C table wants 5" % (filename, len(fs))
+        for f in fs:
+            brim(f); tail(f, right)
+        out = Image.new("P", src.size)
+        pal = list(skel.getpalette()[:48])
+        for i, c in OURS.items():
+            pal[i * 3:i * 3 + 3] = list(c)
+        out.putpalette(pal + [0] * (768 - 48))
+        op = out.load()
+        for k, f in enumerate(fs):
+            for y in range(64):
+                for x in range(64):
+                    op[x, k * 64 + y] = f[y][x]
+        assert out.size == src.size, "%s would change size" % filename
+        built.append((filename, out, [tuple(pal[i * 3:i * 3 + 3]) for i in range(16)]))
+        rows.append((src, out, len(fs)))
+    w = max(n for _, _, n in rows) * 64 * 3
+    sheet = Image.new("RGB", (w, len(rows) * (64 * 3 * 2 + 12)), (40, 40, 46))
     y = 0
-    for r in rowsout:
-        out.paste(r.resize((r.width * 2, r.height * 2), Image.NEAREST), (0, y))
-        y += r.height * 2
-    out.save(PREVIEW)
-    print("  %d strips -> preview %s" % (len(built), PREVIEW))
+    for src, out, n in rows:
+        for k in range(n):
+            sheet.paste(src.crop((0, k * 64, 64, (k + 1) * 64)).convert("RGB").resize((192, 192), Image.NEAREST), (k * 192, y))
+            sheet.paste(out.crop((0, k * 64, 64, (k + 1) * 64)).convert("RGB").resize((192, 192), Image.NEAREST), (k * 192, y + 192))
+        y += 64 * 3 * 2 + 12
+    sheet.save(PREVIEW)
+    print("  %d strips -> preview %s (vanilla above, ours below)" % (len(built), PREVIEW))
     if WRITE:
         for filename, img, pal in built:
             img.save(os.path.join(BACKS, filename), bits=4)
-            with open(os.path.join(PALS, filename.replace(".png", ".pal")), "w") as f:
-                f.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in pal))
+            with open(os.path.join(PALS, filename.replace(".png", ".pal")), "w") as fh:
+                fh.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in pal))
         print("  written %d strips and their palettes" % len(built))
 
 
