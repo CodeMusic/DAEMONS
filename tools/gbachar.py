@@ -171,6 +171,57 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/scientist_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/scientist.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_pokemaniac": dict(src="gfx/characters/portrait_pokemaniac.png",   # an opossum
+                        dst="engineGba/graphics/trainers/front_pics/pokemaniac_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/pokemaniac.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_blackbelt": dict(src="gfx/characters/portrait_black_belt.png",    # a kangaroo in a gi
+                        dst="engineGba/graphics/trainers/front_pics/black_belt_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/black_belt.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_crushgirl": dict(src="gfx/characters/portrait_crush_girl.png",    # a wolverine
+                        dst="engineGba/graphics/trainers/front_pics/crush_girl_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/crush_girl.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_sailor": dict(src="gfx/characters/portrait_sailor.png",           # an albatross, always at sea
+                        dst="engineGba/graphics/trainers/front_pics/sailor_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/sailor.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_gentleman": dict(src="gfx/characters/portrait_gentleman.png",     # a lynx in tweed
+                        dst="engineGba/graphics/trainers/front_pics/gentleman_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/gentleman.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_beauty": dict(src="gfx/characters/portrait_beauty.png",           # a gazelle
+                        dst="engineGba/graphics/trainers/front_pics/beauty_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/beauty.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_tuber_f": dict(src="gfx/characters/portrait_tuber_f.png",         # a cygnet in its ring
+                        dst="engineGba/graphics/trainers/front_pics/tuber_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/tuber_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_rocker": dict(src="gfx/characters/portrait_rocker.png",           # a skunk: the stripe was always a mohawk
+                        dst="engineGba/graphics/trainers/front_pics/rocker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rocker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # THE REVIEW BOARD. Section 6 reserves their colours -- sanguine red, choleric yellow,
+    # melancholic black, phlegmatic white -- and 6804 says value carries them: melancholic dark,
+    # phlegmatic pale, sanguine and choleric mid. Same species as their overworld sheets.
+    "p_phlegmatic": dict(src="gfx/characters/portrait_elite_four_lorelei.png",   # a polar bear, FROZEN
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_lorelei_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_lorelei.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_choleric": dict(src="gfx/characters/portrait_elite_four_bruno.png",       # a tiger, LOGIC
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_bruno_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_bruno.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_melancholic": dict(src="gfx/characters/portrait_elite_four_agatha.png",   # a wombat, LATENT
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_agatha_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_agatha.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_sanguine": dict(src="gfx/characters/portrait_elite_four_lance.png",       # a cardinal, EMERGENT
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_lance_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_lance.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
