@@ -139,6 +139,38 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/bug_catcher_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/bug_catcher.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_biker": dict(src="gfx/characters/portrait_biker.png",             # a boar, as the sheet is
+                        dst="engineGba/graphics/trainers/front_pics/biker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/biker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_swimmer_m": dict(src="gfx/characters/portrait_swimmer_m.png",     # a newt
+                        dst="engineGba/graphics/trainers/front_pics/swimmer_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/swimmer_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_lass": dict(src="gfx/characters/portrait_lass.png",               # a lamb
+                        dst="engineGba/graphics/trainers/front_pics/lass_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/lass.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_channeler": dict(src="gfx/characters/portrait_channeler.png",     # a bat, at home in the tower's dark
+                        dst="engineGba/graphics/trainers/front_pics/channeler_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/channeler.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_camper": dict(src="gfx/characters/portrait_camper.png",           # a raccoon
+                        dst="engineGba/graphics/trainers/front_pics/camper_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/camper.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_swimmer_f": dict(src="gfx/characters/portrait_swimmer_f.png",     # an axolotl
+                        dst="engineGba/graphics/trainers/front_pics/swimmer_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/swimmer_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_fisherman": dict(src="gfx/characters/portrait_fisherman.png",     # a pelican: the bill IS the tackle
+                        dst="engineGba/graphics/trainers/front_pics/fisherman_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/fisherman.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_scientist": dict(src="gfx/characters/portrait_scientist.png",     # a mole, the digging nobody sees
+                        dst="engineGba/graphics/trainers/front_pics/scientist_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/scientist.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
