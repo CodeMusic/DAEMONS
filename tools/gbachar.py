@@ -120,6 +120,13 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/leader_erika_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_erika.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # T-120's portraits. A class's portrait and its overworld sheet are ONE species, so the hiker is
+    # the badger his sheet already is. White ground from daemon/sprite, so hue=False as the leaders
+    # are; no enclosed backdrop, so no holes.
+    "hiker":   dict(src="gfx/characters/portrait_hiker_badger.png",
+                        dst="engineGba/graphics/trainers/front_pics/hiker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/hiker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
