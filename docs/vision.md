@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.210**
+**A total conversion — the living design bible, v11.211**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7194,6 +7194,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***A streak is drawn from its type's LIGHT step — unless that would vanish into the body, and then from whichever of its light and DARK steps stands further off it.*** **The line is 9.4's own separability floor: CIE76 20, measured on the body's mid tone**, *the same trap the accents already had, where a red eye on a VECTOR daemon disappears.*
 
 *Corrected 2026-09-17, the day it was written.* **The first version said a streak in the body's own type "reads as a vein" at the light step, and the preview disproved it**: *four CONTENT routines on a CONTENT body showed no streaks at all, because CONTENT's light step is its body's bone.* **Measured over every pair, 28 of the 324 body-and-move combinations fail at the light step — and it is not only a type on itself: LATENT on LEGACY was 4.3.** *All 28 clear the floor at the dark step, which is where a streak in its own type now reads as a vein.* **The choice is made per pair at build time, so no colour maths runs in the cartridge.**
+
+*Corrected again 2026-09-17, v11.211.* **Testing against the body's MID tone alone was still wrong: a same-type streak's light step IS the body's light tone — distance zero — and the mid-only test never looked there.** *The floor is now measured against the body's highlight, light AND mid tones, the three a streak actually sits among, and the dark step is taken whenever the light one comes under 20 from any of them:* **118 of 324 pairs.** ***And the floor is not always reachable***: **20 pairs clear it with neither step — the worst on OPAQUE bodies, whose whole ramp is near-black (OPAQUE on OPAQUE 10.1, LEGACY on OPAQUE 12.3, CONTENT on OPAQUE 12.9) — and take whichever step stands further off.** *That is recorded as a known limit of a near-black type, not hidden; the contact sheet of the first OPAQUE species is where it is judged.*
 
 ***Where there is no individual, the streaks are BLANK.*** **The Index, and anything else that shows a species rather than a daemon, fills 11–14 with neutral grey.** *The Index records what a daemon is; what any one of them has come to understand is not something it can file.* **Nothing says so.**
 

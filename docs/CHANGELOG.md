@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.211 — 2026-09-17
+
+### 9.4 — A streak's step, measured against the right tones
+
+- ***v11.210 tested a streak's light step against the body's mid tone only***, **and a same-type streak's light step is the body's own light tone — distance zero, never measured.**
+- **The floor (CIE76 20) is now tested against the body's highlight, light and mid tones; under it on any, the streak takes the dark step.** *118 of 324 pairs.*
+- ***20 pairs clear the floor with neither step***, **worst on OPAQUE's near-black ramp (OPAQUE on OPAQUE 10.1)** — *they take the further-off step, and the limit is written down rather than hidden.*
+
 ## v11.210 — 2026-09-17
 
 ### 9.4 — A streak's step, corrected the day it was written

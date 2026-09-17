@@ -105,10 +105,21 @@ def place_rich(path, type_rgb, shared=None):
     of PING's accents with it. Found by T-132's streak preview, which read the palette the engine
     actually loads instead of the one embedded in the PNG. So the back's accent pixels are mapped onto
     the front's accents, never quantised afresh."""
-    a = deringe(np.asarray(Image.open(path).convert("RGB")).astype(int))
+    src = Image.open(path)
+    if src.mode == "RGBA":
+        #  A CLEANED DRAFT (tools/cleandraft.py) says which pixels are the creature with its alpha, and is
+        #  already on its own grid, so it is neither deringed nor guessed at. The paper test below cannot be
+        #  used on it: NIBBLE's body is near-white, and treating near-white as paper would cut it out.
+        rgba = np.asarray(src).astype(int)
+        a = rgba[..., :3]
+        subj = rgba[..., 3] > 127
+    else:
+        a = deringe(np.asarray(src.convert("RGB")).astype(int))
+        subj = None
     im = Image.fromarray(a.astype(np.uint8))
     sat = a.max(2) - a.min(2)
-    subj = ~((a.min(2) > 232) & (sat < 24))              # not the flat paper
+    if subj is None:
+        subj = ~((a.min(2) > 232) & (sat < 24))          # not the flat paper
 
     ys, xs = np.where(subj)
     box = (xs.min(), ys.min(), xs.max() + 1, ys.max() + 1)

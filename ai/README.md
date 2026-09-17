@@ -168,3 +168,21 @@ interesting experiment.
 **`http://roverbyteseer.local:8008`**, checkpoint **`pixelArtDiffusionXL_spriteShaper.safetensors`** — *the same model the pixelbyte skill wraps* — **driven directly by `tools/spriteforge.py`**, so drafts can be scripted, batched and rebuilt exactly (*every draft writes a JSON record of prompt, negative, seed, size, steps, cfg, sampler and server version beside its PNG*). **Use it for any sprite need; it is a drafting instrument, and nothing it makes goes into the game without cleanup and a contact sheet.**
 
 *What the first trial measured (2026-09-17, NIBBLE):* **it draws on an exact 8px grid in PNG, so no JPEG ringing** — *the drafts in `gfx/front` and `gfx/back` came from Gemini as JPEG, which is what `gridsample.deringe` exists for;* **at 1024² the art is ~128 px across, too large for a 64 px frame without resampling, which 9.4 refuses — so generate smaller;** **"white background" is not obeyed (it gives a flat light grey), and a faint drop shadow survives the negative prompt**, *so the background is removed by flood fill in cleanup rather than trusted to the prompt;* **"greyscale / monochrome" mostly holds, with small saturated accents (a nose, an inner ear) — which is 9.4's body-plus-accents scheme.** *About 80–110 s per 1024² image on the server's MPS.*
+
+**The recipe, settled on NIBBLE the same day** (*`tools/cleandraft.py`'s docstring has the measurements*): **`--size 512x512`** — *the 8px grid makes that exactly the 64px frame, ~23 s* — **one seed for both views, and the two prompts mirror each other:**
+
+```sh
+S="pixel art game sprite of a single small rat-like creature"
+G="full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text"
+N="white body, pale body, grey background, colored background, drop shadow, shadow, pink, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border, lines"
+python3 tools/spriteforge.py t2i --size 512x512 --seed 1917 --out gfx/drafts/nibble_front \
+  --prompt "pure white background, $S, front view, facing the viewer, big round ears, tail curling beside it, $G" \
+  --negative "side view, profile, rear view, $N"
+python3 tools/spriteforge.py t2i --size 512x512 --seed 1917 --out gfx/drafts/nibble_back \
+  --prompt "pure white background, $S, rear view, facing away from the viewer, back of the head and back of the ears, tail curling toward the viewer, $G" \
+  --negative "face, eyes, nose, whiskers, side view, profile, front view, $N"
+python3 tools/cleandraft.py gfx/drafts/nibble_front.png gfx/drafts/clean/nibble_front.png --streaks
+python3 tools/cleandraft.py gfx/drafts/nibble_back.png  gfx/drafts/clean/nibble_back.png  --streaks
+```
+
+*What failed on the way, so it is not tried again:* **"seen from behind" alone drew a profile; image-to-image from the front at 0.75 redrew the front; "greyscale" without "medium grey" drew a white animal whose type colour showed only as a highlight.**
