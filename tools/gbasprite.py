@@ -85,7 +85,13 @@ def shift_off(accent, type_rgb):
     h, sv, v = colorsys.rgb_to_hsv(*[c / 255 for c in accent])
     return tuple(int(c * 255) for c in colorsys.hsv_to_rgb((th + 0.5) % 1.0, sv, v))
 
+#  The Game Boy build is not updated further (CLAUDE.md), so its names are frozen at LABL and CLUSTR -- renamed
+#  LABEL and CLUSTER in the GBA build (vision.md). Redrawn art is filed under the name the player reads, and T-131
+#  batch 1's two starters were silently built from the Game Boy art until this map existed.
+GBA_NAME = {"LABL": "LABEL", "CLUSTR": "CLUSTER"}
+
 def rich_src(ours, kind):
+    ours = GBA_NAME.get(ours, ours)
     hits = [f for f in glob.glob(os.path.join(ROOT, RICH, "%s_%s.*" % (ours.lower(), kind)))
             if not f.endswith(".txt")]
     return hits[0] if hits else None
@@ -399,6 +405,13 @@ def place(src, palette):
             g[oy + y][ox + x] = 0 if v == 3 else 3 - v   # paper -> 0, dark -> 3
     return g
 
+#  OVERWORLD OBJECTS WITH NO PALETTE SLOT TO GO TO (T-133). A daemon object needs its own palette, and a map
+#  gives it a slot only if no other object there uses it (docs/engine.md). PIDGEY and PIKACHU stand in five
+#  late-game houses and every one of them already fills the slot: Lorelei's house all four NPC slots, the other
+#  four a town local in the special one. Their objects keep vanilla's art until a slot scheme exists -- a ramp
+#  drawn through NPC_BLUE is what turned DEADLOCK peach.
+OW_DEFERRED = {"pidgey", "pikachu"}
+
 pairs = renamed()
 done, skipped, ow_todo = 0, [], []
 for vanilla, ours in sorted(pairs.items()):
@@ -444,7 +457,7 @@ for vanilla, ours in sorted(pairs.items()):
     if front_grid is not None and note:
         ow = derive_overworld(front_grid, front_pal)
         owp = os.path.join(GBA, "graphics/object_events/pics/pokemon/%s.png" % d)
-        if ow and os.path.exists(owp):
+        if ow and os.path.exists(owp) and d not in OW_DEFERRED:
             #  The object's PNG carries INDICES; the game supplies the colours
             #  at runtime from whatever OBJ_EVENT_PAL_TAG its graphics info
             #  names. Vanilla points every creature at a generic NPC palette --
