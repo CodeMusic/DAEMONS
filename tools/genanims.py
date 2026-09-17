@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -345,7 +345,160 @@ def raise_table():
         t[mv] = (lambda stages, e: lambda c, p, se, n: rise(c, stages, se, fast=e.startswith("SPEED"), stats=MULTI_STAT.get(e, 1)))(stages, e)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table}
+
+# ---- the FIELD vocabulary (T-144): routines that change the ground, a side, or what a daemon may do next. ----
+#  The four weathers are REPLAYED every turn they last (General_Sun/Sandstorm/Hail jump into them; General_Rain is
+#  pointed at RAIN DANCE to match), so they are kept short. Four routines carry MECHANICS inside their animation --
+#  ROAR and WHIRLWIND slide the target off (the switch depends on it), TELEPORT hides the user, BATON PASS runs the
+#  sprite that recalls it, CAMOUFLAGE fades the user out and back -- and those tasks are kept; only the picture goes.
+
+WHOLE = "F_PAL_BG | F_PAL_BATTLERS"
+
+
+def weather(c, se):
+    """The ground both sides run on changes: the field takes the routine's colour, briefly, every turn it holds."""
+    return sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_BG", 1, 0, 9, c) + wait() + ["\tdelay 12"] + blend("F_PAL_BG", 1, 9, 0, c) + wait()
+
+
+def screen(c, se):
+    """A side protected: the user's side holds a pale layer of the routine's colour, twice."""
+    out = sound(se, "SOUND_PAN_ATTACKER")
+    for _ in range(2):
+        out += blend("F_PAL_ATK_SIDE", 1, 0, 8, c) + wait() + ["\tdelay 6"] + blend("F_PAL_ATK_SIDE", 1, 8, 0, c) + wait()
+    return out
+
+
+def lay(c, se, times=3):
+    """Something placed on the other side that will act later: laid down in ticks of the routine's colour."""
+    out = send(c)
+    for _ in range(times):
+        out += sound(se) + blend("F_PAL_TARGET", 0, 0, 7, c) + wait() + blend("F_PAL_TARGET", 0, 7, 0, c) + wait() + ["\tdelay 4"]
+    return out
+
+
+def clamp(c, se, times=1):
+    """A restriction: the routine's colour, then a hard snap toward grey held a moment -- something is now locked."""
+    out = send(c)
+    for _ in range(times):
+        out += sound(se) + blend("F_PAL_TARGET", 0, 0, 10, c) + wait() + blend("F_PAL_TARGET", 0, 10, 0, c) + wait()
+        out += tick_se() + blend("F_PAL_TARGET", 0, 0, 12, GREY) + wait() + ["\tdelay 8"] + blend("F_PAL_TARGET", 1, 12, 0, GREY) + wait()
+    return out
+
+
+def deplete(c, se):
+    """SPITE: what the target has left is drawn down, three ticks toward grey."""
+    out = send(c) + sound(se)
+    for i in range(3):
+        out += tick_se() + blend("F_PAL_TARGET", 1, i * 4, (i + 1) * 4, GREY) + wait()
+    return out + ["\tdelay 6"] + blend("F_PAL_TARGET", 1, 12, 0, GREY) + wait()
+
+
+def reveal(c, se, hold=10):
+    """Seen clearly / aimed at: the target is lit (white is neutral, not colour) and held while it is read."""
+    return send(c) + sound(se) + blend("F_PAL_TARGET", 1, 0, 9, "RGB_WHITE") + wait() + ["\tdelay %d" % hold] + blend("F_PAL_TARGET", 1, 9, 0, "RGB_WHITE") + wait()
+
+
+def reset_all(se, steps=1):
+    """Everything returned to a common state: the whole field greys and comes back (HAZE); PERISH SONG counts it down."""
+    out = sound(se, "SOUND_PAN_ATTACKER")
+    for i in range(steps):
+        out += tick_se() + blend(WHOLE, 1, i * (12 // steps), (i + 1) * (12 // steps), GREY) + wait() + ["\tdelay 8"]
+    return out + blend(WHOLE, 1, 12, 0, GREY) + wait()
+
+
+def bond(c, se):
+    """Two processes tied together (DESTINY BOND, GRUDGE): both pulse in step, once in the colour and once in grey."""
+    both = "F_PAL_ATTACKER | F_PAL_TARGET"
+    return sound(se) + blend(both, 1, 0, 10, c) + wait() + blend(both, 1, 10, 0, c) + wait() + blend(both, 1, 0, 10, GREY) + wait() + blend(both, 1, 10, 0, GREY) + wait()
+
+
+def memento(c, se):
+    """The user spends itself to weaken the target: it greys out entirely while the target dips."""
+    return sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 1, 0, 16, GREY) + wait() + blend("F_PAL_TARGET", 0, 0, 8, GREY) + wait() + \
+        blend("F_PAL_TARGET", 1, 8, 0, GREY) + wait() + blend("F_PAL_ATTACKER", 0, 16, 0, GREY) + wait()
+
+
+def evict(c, se, speed):
+    """Forced out: the routine's colour, the target greyed, and vanilla's own slide off the screen, which the switch needs."""
+    return send(c) + sound(se) + blend("F_PAL_TARGET", 0, 0, 10, GREY) + wait() + \
+        ["\tcreatevisualtask AnimTask_SlideOffScreen, 5, ANIM_TARGET, %d" % speed] + wait() + blend("F_PAL_TARGET", 0, 10, 0, GREY) + wait()
+
+
+def teleport(c, se):
+    """Gone: the user greys and vanilla's own task removes it."""
+    return blend("F_PAL_ATTACKER", 0, 0, 12, GREY) + wait() + ["\tcreatevisualtask AnimTask_Teleport, 2"] + sound(se, "SOUND_PAN_ATTACKER") + \
+        ["\tdelay 15"] + wait() + blend("F_PAL_ATTACKER", 0, 12, 0, GREY) + wait()
+
+
+def baton_pass(c, se):
+    """State handed on: the user pulses its routine's colour, then vanilla's recall sprite runs as it must."""
+    return ["\tloadspritegfx ANIM_TAG_POKEBALL"] + sound(se, "SOUND_PAN_ATTACKER") + send(c, 10) + ["\tcreatesprite gBatonPassPokeballSpriteTemplate, ANIM_ATTACKER, 2"]
+
+
+def camouflage(c, se):
+    """Blending into the ground: the user greys toward the field and fades out and back, by vanilla's own fade tasks."""
+    return ["\tmonbg ANIM_ATK_PARTNER", "\tsplitbgprio ANIM_ATTACKER", "\tsetalpha 16, 0"] + blend("F_PAL_ATTACKER", 1, 0, 12, GREY) + wait() + \
+        ["\tcreatevisualtask AnimTask_AttackerFadeToInvisible, 2, 4"] + sound(se, "SOUND_PAN_ATTACKER") + wait() + ["\tdelay 8"] + \
+        blend("F_PAL_ATTACKER", 0, 12, 0, GREY) + wait() + ["\tcreatevisualtask AnimTask_AttackerFadeFromInvisible, 2, 1"] + wait() + ["\tblendoff", "\tclearmonbg ANIM_ATK_PARTNER"]
+
+
+def noop(c, se):
+    """NO-OP: nothing happens, exactly on time."""
+    return sound(se, "SOUND_PAN_ATTACKER") + ["\tdelay 20"]
+
+
+def nightmare(c, se):
+    """A sleeping target's fault fed: slow flickers of the routine's colour over grey."""
+    out = sound(se) + blend("F_PAL_TARGET", 1, 0, 8, GREY) + wait()
+    for _ in range(3):
+        out += blend("F_PAL_TARGET", 0, 8, 12, c) + wait() + blend("F_PAL_TARGET", 0, 12, 8, GREY) + wait()
+    return out + blend("F_PAL_TARGET", 1, 8, 0, GREY) + wait()
+
+
+def curse(se):
+    """CURSE branches as vanilla's does: a LATENT user pays in grey and marks the target; any other climbs twice and slows."""
+    lat = type_rgb555("GHOST")
+    return ["\tchoosetwoturnanim DaemonsCurseLatent, DaemonsCurseStats", "DaemonsCurseDone:", "\tend", "DaemonsCurseLatent:"] + \
+        blend("F_PAL_ATTACKER", 1, 0, 12, GREY) + wait() + bond(lat, se) + ["\tgoto DaemonsCurseDone", "DaemonsCurseStats:"] + \
+        rise(lat, 1, se, stats=2) + blend("F_PAL_ATTACKER", 1, 0, 6, GREY) + wait() + blend("F_PAL_ATTACKER", 2, 6, 0, GREY) + wait() + ["\tgoto DaemonsCurseDone"]
+
+
+def field_table():
+    f = lambda fn, *a: (lambda c, p, se, n: fn(c, se, *a))
+    t = {}
+    for mv in ["SANDSTORM", "RAIN_DANCE", "HAIL", "SUNNY_DAY"]:
+        t[mv] = f(weather)
+    for mv in ["REFLECT", "LIGHT_SCREEN", "SAFEGUARD", "MIST", "WATER_SPORT", "MUD_SPORT"]:
+        t[mv] = f(screen)
+    t["SPIKES"] = f(lay)
+    t["LEECH_SEED"] = f(lay)
+    for mv in ["DISABLE", "TAUNT", "TORMENT", "IMPRISON", "MEAN_LOOK", "SPIDER_WEB", "BLOCK"]:
+        t[mv] = f(clamp)
+    t["ENCORE"] = f(clamp, 2)
+    t["SPITE"] = f(deplete)
+    for mv in ["FORESIGHT", "ODOR_SLEUTH"]:
+        t[mv] = f(reveal)
+    for mv in ["LOCK_ON", "MIND_READER"]:
+        t[mv] = f(reveal, 20)
+    t["HAZE"] = lambda c, p, se, n: reset_all(se)
+    t["PERISH_SONG"] = lambda c, p, se, n: reset_all(se, 3)
+    for mv in ["DESTINY_BOND", "GRUDGE"]:
+        t[mv] = f(bond)
+    t["MEMENTO"] = f(memento)
+    t["ROAR"] = f(evict, 2)
+    t["WHIRLWIND"] = f(evict, 8)
+    t["TELEPORT"] = f(teleport)
+    t["BATON_PASS"] = f(baton_pass)
+    t["CAMOUFLAGE"] = f(camouflage)
+    t["SPLASH"] = f(noop)
+    t["NIGHTMARE"] = f(nightmare)
+    t["TICKLE"] = lambda c, p, se, n: sink(c, 1, se) + sink(c, 1, se)
+    for mv in ["CHARGE", "FOCUS_ENERGY"]:
+        t[mv] = lambda c, p, se, n: rise(c, 1, se)
+    t["CURSE"] = lambda c, p, se, n: curse(se)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table}
 
 
 def first_sound(text):
