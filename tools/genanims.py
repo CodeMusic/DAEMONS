@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -925,7 +925,40 @@ def signal_table():
     t["VOLT_TACKLE"] = lambda c, p, se, n: edges(c, p, se, count=4) + recoil()
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table}
+
+# ---- the CORRUPT vocabulary (T-152): "data that has been tampered with" (2.8). ----
+#  A CORRUPT write goes in clean and comes back WRONG. The target fills smoothly -- and then the return does not
+#  unwind: it steps through out-of-order values, as a record read back from a tampered store does, and a residue
+#  fades last. (ENTROPY is disordered going IN; CORRUPT is disordered coming OUT. SIGNAL is disordered never.)
+
+def taint(c, power, se, lean=False, sel="F_PAL_TARGET", spread=False):
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    if spread:
+        out += blend("F_PAL_BG", 1, 0, 6, c) + wait()
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)]
+    out += blend(sel, 1, 0, k, c) + wait()                     # the write goes in, clean
+    back = [k, k // 4, (k * 3) // 4, k // 8, k // 2, k // 6, 0]  # and comes back through the wrong values
+    for a, b in zip(back, back[1:]):
+        out += blend(sel, 0, a, b, c) + wait()
+    out += blend(sel, 3, 0, 3, c) + wait() + blend(sel, 3, 3, 0, c) + wait()   # the residue, fading last
+    if spread:
+        out += blend("F_PAL_BG", 2, 6, 0, c) + wait()
+    return out
+
+
+def corrupt_table():
+    t = {}
+    t["POISON_STING"] = lambda c, p, se, n: taint(c, p, se, lean=True)
+    t["POISON_FANG"] = lambda c, p, se, n: taint(c, p, se)
+    t["POISON_TAIL"] = lambda c, p, se, n: taint(c, p, se)
+    t["ACID"] = lambda c, p, se, n: taint(c, p, se, sel="F_PAL_DEF_SIDE") + silt()
+    t["SMOG"] = lambda c, p, se, n: taint(c, p, se, spread=True)
+    t["SLUDGE"] = lambda c, p, se, n: taint(c, p, se)
+    t["SLUDGE_BOMB"] = lambda c, p, se, n: taint(c, p, se, spread=True)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table}
 
 
 def first_sound(text):
