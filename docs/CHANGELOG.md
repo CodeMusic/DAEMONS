@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.214 — 2026-09-17
+
+### 10 Open — convergence and divergence as a mechanic
+
+- ***Recorded, not decided.*** **Convergence is worth something only when reached from real divergence** — *a mechanic that simply rewards agreement rewards Scorn, whose crime (4.18a) is forced consistency.*
+- **Four candidate homes: the streaks (CONSENSUS scaling with a party's overlap, CONTEXT with a pair's difference), double battles, the two editions' records, and Scorn's own fully-converged party.** *Leaning toward Scorn's party and the streaks first; to be answered together with the reverse-PERSPECTIVE question, since both reach for `ALIGN`.*
+
 ## v11.213 — 2026-09-17
 
 ### 9.24 — What a routine's animation may show

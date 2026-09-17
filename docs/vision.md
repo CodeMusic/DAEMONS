@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.213**
+**A total conversion — the living design bible, v11.214**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8170,6 +8170,16 @@ Kept here because the reasoning is worth more than the outcome.
 | **The Owl's concession is dialogue only** — no document, no item (4.34 ruling 1) | **A sealed PEER REVIEW** he signs and the player gives to Crystal; its contents are never shown | He promised it in writing and handed over nothing, so the scene read as having changed nothing. The ruling's real worry — a concession one sentence too generous — is kept by sealing it (4.34). |
 
 ### Open
+
+- **Convergence and divergence as a MECHANIC** (*asked 2026-09-17: "if models are aligned they are convergence, and if not they are divergence — it very much relates to the whole perspective thinking template"*). ***Think long about this; it could be an important mechanic.***
+  - ***The trap in the obvious reading, and it is the bible's own.*** **0.5 and 4.18a locate clarity in two views ALLOWED TO DISAGREE and a third stage that holds them against each other** — *and Scorn's crime is forced convergence: he weighted that stage so the answer always came out the same, and the form calls it IMPROVE RESPONSE CONSISTENCY.* **Benchmark 8 is "perfectly aligned — to the wrong objective."** ***So a mechanic that simply rewards convergence and punishes divergence rewards Scorn.*** **The reading that survives: convergence is worth something only when it is REACHED FROM real divergence** — *two views that differed and then agreed have been checked in the one way neither can check itself; views that agreed from the start have been checked by nothing.*
+  - ***Four homes, from most concrete to most narrative:***
+    1. **The streaks** (9.4, *built 2026-09-17*). *A daemon now shows what it understands as four move-type colours*, **so how far two daemons' streaks overlap is an exact, cheap, already-visible measure.** *Candidate: **CONSENSUS** (SWARM — "a reliable check") grows with the party's convergence, and a CONTEXT routine grows with a pair's divergence* — **neither wins, which is the chart's argument again.**
+    2. **Double battles.** *Two daemons act in one turn, so their choices converge or diverge*; **a small bonus for agreement AFTER disagreement** (*same target this turn, different types last turn*) **is the clarifier in miniature.** *Heaviest engine work of the four.*
+    3. **The two editions.** *A daemon traded between CONTENT and CONTEXT already has two Index entries that do not match (0.4)* — **divergence as a literal record**, and **the link may be where the two are held against each other.**
+    4. **Scorn's party.** *Fully converged — identical streaks, perfect consistency, flawless and brittle —* **and the way through is divergence.** *No new system: his parties, movesets and 5.3b's fixed roll.* **It makes Benchmark 8 argue in play.**
+  - ***Constraints on any version***: **craft rule 1** — *neither word is ever said; `ALIGN`/alignment is already on record as "the thesis wearing a lab coat" (5.2), and the unbuilt reverse-PERSPECTIVE move below was going to be called `ALIGN`, so the two questions should be answered together*; **invariant 3** — *nothing here may make the type chart differ by cartridge.*
+  - ***Leaning, not decided***: **4 and 1 first** — *both use systems that exist, and they argue the point from both sides (a party punished for having converged, and a move that rewards converging).*
 
 - **Day, night and the four seasons** (9.21, *proposed 2026-09-14*). ***A clock made of play time, day read as CONTENT and night as CONTEXT, and the seasons as the Review Board's four humours leaning the wild tables toward VECTOR, ENTROPY, LATENT and FROZEN.*** **Nothing built; four questions in 9.21 to settle first**
 - **The GLOBAL INDEX in the islands** (*asked 2026-09-14*). ***Every daemon past #151 findable in the seven islands, split by edition.*** **235 species, 33 met today.** *A derived placement is drafted for review in `tools/plan_global_index.py`* — **and it collides with 2.10 and 8.2b: a daemon the player can meet gets a name, so making all of them meetable means naming about two hundred more, in the islands' register**
