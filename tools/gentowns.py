@@ -568,14 +568,24 @@ def revert_plan():
     return out
 
 
-def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALSLOT_NPC_SPECIAL"):
+GEOM_16x32 = dict(size=256, w=16, h=32, tiles=(2, 4), oam="16x32", tracks="TRACKS_FOOT")
+GEOM_32x32 = dict(size=512, w=32, h=32, tiles=(4, 4), oam="32x32", tracks="TRACKS_BIKE_TIRE")
+
+
+def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALSLOT_NPC_SPECIAL",
+                 geom=None):
     """one graphics id: the constant, the sheet, its frame table, its info and its pointer
 
     SLOT is not free. The engine patches the palette named by the tag INTO the slot named here, so
     two sprites sharing a slot with different tags repaint each other: vanilla keeps one tag per
     slot (blue->1, pink->2, white->4) and anything registered here keeps that pairing or joins the
     special slot, where one map may hold only one.
+
+    GEOM is the sprite's shape and it is NOT cosmetic either: .size, .width/.height, the oam and
+    subsprite tables, and the (mwidth, mheight) the pic table cuts frames with all have to agree
+    with the PNG on disk. A 32x32 sheet cut 2x4 is trap 15 with more tiles.
     """
+    geom = geom or GEOM_16x32
     def constants(s):
         if ("#define %s " % const) in s:
             return s
@@ -597,7 +607,8 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALS
         start = s.index("static const struct SpriteFrameImage sPicTable_BenchmarkGuide[] = {")
         end = s.index("};\n", start) + 3
         block = "\nstatic const struct SpriteFrameImage sPicTable_%s[] = {\n%s};\n" % (cname, "".join(
-            "    overworld_frame(gObjectEventPic_%s, 2, 4, %d),\n" % (cname, k) for k in range(frames)))
+            "    overworld_frame(gObjectEventPic_%s, %d, %d, %d),\n" % (cname, geom["tiles"][0], geom["tiles"][1], k)
+            for k in range(frames)))
         return s[:end] + block + s[end:]
     edit("src/data/object_events/object_event_pic_tables.h", pictables)
 
@@ -606,10 +617,11 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALS
             return s
         return s.rstrip("\n") + "\n\n// %s\n" % note + (
             "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s = {\n    .tileTag = TAG_NONE,\n    .paletteTag = %s,\n"
-            "    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = 256,\n    .width = 16,\n    .height = 32,\n    .paletteSlot = %s,\n"
-            "    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .disableReflectionPaletteLoad = FALSE,\n    .tracks = TRACKS_FOOT,\n"
-            "    .oam = &gObjectEventBaseOam_16x32,\n    .subspriteTables = gObjectEventSpriteOamTables_16x32,\n    .anims = sAnimTable_Standard,\n"
-            "    .images = sPicTable_%s,\n    .affineAnims = gDummySpriteAffineAnimTable,\n};\n") % (cname, tag_name, slot, cname)
+            "    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,\n    .size = %d,\n    .width = %d,\n    .height = %d,\n    .paletteSlot = %s,\n"
+            "    .shadowSize = SHADOW_SIZE_M,\n    .inanimate = FALSE,\n    .disableReflectionPaletteLoad = FALSE,\n    .tracks = %s,\n"
+            "    .oam = &gObjectEventBaseOam_%s,\n    .subspriteTables = gObjectEventSpriteOamTables_%s,\n    .anims = sAnimTable_Standard,\n"
+            "    .images = sPicTable_%s,\n    .affineAnims = gDummySpriteAffineAnimTable,\n};\n") % (
+                cname, tag_name, geom["size"], geom["w"], geom["h"], slot, geom["tracks"], geom["oam"], geom["oam"], cname)
     edit("src/data/object_events/object_event_graphics_info.h", info)
 
     def pointers(s):
