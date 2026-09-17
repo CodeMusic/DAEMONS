@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -863,7 +863,69 @@ def stratum_table():
     t["SAND_TOMB"] = lambda c, p, se, n: blend("F_PAL_BG", 0, 0, 6, c) + wait() + hold(c, p, se) + blend("F_PAL_BG", 1, 6, 0, c) + wait()
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table}
+
+# ---- the SIGNAL vocabulary (T-151): "raw current, before anything interprets it" -- the raw edge (2.8). ----
+#  ENTROPY is uneven noise; SIGNAL is EXACT. Square pulses, full on and full off with no ramp and no decay, on a
+#  regular beat -- a carrier, not a flame. What varies between routines is the train: how many edges, how tall, and
+#  whether the current jumps (ARC), spikes across the field (TRANSIENT), overshoots and cuts out (OVERVOLT), or dies
+#  (SHORT OUT).
+
+def edges(c, power, se, count=3, sel="F_PAL_TARGET", gap=4, climb=False, shake=True):
+    k, amp, n = strength(power)
+    out = sound(se)
+    if shake:
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)]
+    for i in range(count):
+        level = k if not climb else max(4, (k * (i + 1)) // count)
+        out += blend(sel, 0, 0, level, c) + wait() + blend(sel, 0, level, 0, c) + wait() + ["\tdelay %d" % gap]
+    return out
+
+
+def arc(c, power, se):
+    """ARC: the current jumps -- user edge, target edge, user edge, target edge, on the same beat."""
+    out = sound(se)
+    for _ in range(3):
+        out += edges(c, power, se, count=1, sel="F_PAL_ATTACKER", gap=2, shake=False)
+        out += edges(c, power, se, count=1, gap=2, shake=False)
+    return out
+
+
+def transient(c, power, se):
+    """TRANSIENT: one spike, the whole field with it, and nothing after it."""
+    k, amp, n = strength(power)
+    whole = "F_PAL_BG | F_PAL_BATTLERS"
+    return sound(se, "SOUND_PAN_ATTACKER") + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)] + \
+        blend(whole, 0, 0, 14, c) + wait() + blend(whole, 0, 14, 0, c) + wait() + ["\tdelay 6"] + \
+        blend("F_PAL_TARGET", 0, 0, k, c) + wait() + blend("F_PAL_TARGET", 0, k, 0, c) + wait()
+
+
+def overvolt(c, power, se):
+    """OVERVOLT: the train climbs past full, then the current cuts out and the target is left flickering."""
+    out = edges(c, power, se, count=3, climb=True) + blend("F_PAL_TARGET", 0, 0, 16, c) + wait() + blend("F_PAL_TARGET", 0, 16, 0, c) + wait()
+    for _ in range(3):
+        out += blend("F_PAL_TARGET", 0, 0, 6, GREY) + wait() + blend("F_PAL_TARGET", 0, 6, 0, GREY) + wait()
+    return out
+
+
+def short_out(c, power, se):
+    """SHORT OUT: two edges and then nothing -- the target sits dead grey a moment."""
+    return edges(c, power, se, count=2) + blend("F_PAL_TARGET", 0, 0, 10, GREY) + wait() + ["\tdelay 10"] + \
+        blend("F_PAL_TARGET", 1, 10, 0, GREY) + wait()
+
+
+def signal_table():
+    t = {}
+    t["THUNDER_SHOCK"] = lambda c, p, se, n: edges(c, p, se, count=2)
+    t["THUNDERBOLT"] = lambda c, p, se, n: edges(c, p, se, count=4, climb=True)
+    t["SHOCK_WAVE"] = lambda c, p, se, n: edges(c, p, se, count=6, gap=2)
+    t["THUNDER"] = lambda c, p, se, n: transient(c, p, se)
+    t["ZAP_CANNON"] = lambda c, p, se, n: overvolt(c, p, se)
+    t["THUNDER_PUNCH"] = lambda c, p, se, n: short_out(c, p, se)
+    t["SPARK"] = lambda c, p, se, n: arc(c, p, se)
+    t["VOLT_TACKLE"] = lambda c, p, se, n: edges(c, p, se, count=4) + recoil()
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table}
 
 
 def first_sound(text):
