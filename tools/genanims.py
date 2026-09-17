@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -958,7 +958,68 @@ def corrupt_table():
     t["SLUDGE_BOMB"] = lambda c, p, se, n: taint(c, p, se, spread=True)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table}
+
+# ---- the CONTEXT vocabulary (T-153): "the frame you read a thing in -- what makes the same thing mean
+#  differently" (2.8). A CONTEXT write changes the FRAME first: the field takes CONTEXT's magenta and HOLDS it, the
+#  target's colour shifts while the frame is up, and it comes back as the frame lifts. Nothing is thrown; the
+#  reading changes. (PERSPECTIVE, the frame move that is not an attack, already drains to grey before the swap.)
+
+def reframe(c, power, se, lean=False, sel="F_PAL_TARGET", body=None, after=None):
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    out += blend("F_PAL_BG", 1, 0, 9, c) + wait() + sound(se)                  # the frame goes up, and stays up
+    out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 2" % (max(1, amp - 1), n)]
+    out += (body if body is not None else blend(sel, 1, 0, k, c) + wait() + ["\tdelay 8"] + blend(sel, 1, k, 0, c) + wait())
+    out += blend("F_PAL_BG", 1, 9, 0, c) + wait()                              # and the frame lifts
+    return out + (after or [])
+
+
+def misread(c, power, se):
+    """MISREAD: under the frame the target reads two ways at once -- its colour and the ground, alternating."""
+    k, _, _ = strength(power)
+    body = []
+    for _ in range(3):
+        body += blend("F_PAL_TARGET", 0, 0, k, c) + wait() + blend("F_PAL_TARGET", 0, k, 0, c) + wait()
+        body += blend("F_PAL_TARGET", 0, 0, k // 2, GREY) + wait() + blend("F_PAL_TARGET", 0, k // 2, 0, GREY) + wait()
+    return reframe(c, power, se, body=body)
+
+
+def variance(c, power, se):
+    """VARIANCE: the same routine reads differently every time -- three shifts, none the same size."""
+    body = []
+    for lvl in (5, 13, 8):
+        body += blend("F_PAL_TARGET", 1, 0, lvl, c) + wait() + blend("F_PAL_TARGET", 1, lvl, 0, c) + wait()
+    return reframe(c, power, se, body=body)
+
+
+def amplify(c, power, se):
+    """AMPLIFY: what came in goes back doubled -- the user takes the frame's colour first, the target twice as deep."""
+    k, _, _ = strength(power)
+    body = blend("F_PAL_ATTACKER", 1, 0, k // 2, c) + wait() + blend("F_PAL_ATTACKER", 1, k // 2, 0, c) + wait()
+    body += blend("F_PAL_TARGET", 0, 0, min(16, k * 2), c) + wait() + ["\tdelay 8"] + blend("F_PAL_TARGET", 1, min(16, k * 2), 0, c) + wait()
+    return reframe(c, power, se, body=body)
+
+
+def schedule(c, power, se):
+    """SCHEDULE: the frame is set now and nothing lands -- the reading is due later."""
+    body = blend("F_PAL_TARGET", 1, 0, 5, c) + wait() + ["\tdelay 16"] + blend("F_PAL_TARGET", 2, 5, 0, c) + wait()
+    return reframe(c, power, se, body=body)
+
+
+def context_table():
+    t = {}
+    for mv in ["PSYCHIC", "EXTRASENSORY", "LUSTER_PURGE", "MIST_BALL"]:
+        t[mv] = lambda c, p, se, n: reframe(c, p, se)
+    t["PSYBEAM"] = lambda c, p, se, n: reframe(c, p, se, lean=True)
+    t["CONFUSION"] = lambda c, p, se, n: misread(c, p, se)
+    t["PSYWAVE"] = lambda c, p, se, n: variance(c, 60, se)
+    t["MIRROR_COAT"] = lambda c, p, se, n: amplify(c, p if p else 60, se)
+    t["FUTURE_SIGHT"] = lambda c, p, se, n: schedule(c, p, se)
+    t["DREAM_EATER"] = lambda c, p, se, n: reframe(c, p, se, body=feed(c, p, se)[len(send(c)):])
+    t["PSYCHO_BOOST"] = lambda c, p, se, n: reframe(c, p, se, after=recoil())
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table}
 
 
 def first_sound(text):
