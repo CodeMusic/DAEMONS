@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.208**
+**A total conversion — the living design bible, v11.209**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7174,6 +7174,34 @@ the ambiguity.
 1.7:1 and CONTENT 1.9:1. ***On the ramp's dark step the worst case is 5.6:1 and all fifteen
 pass***, so type badges take the dark step as their ground. `ramp5` already produces it.
 **`graphics/interface/pokemon_types.pal` was still vanilla** until 2026-09-09 — see 9.15.
+
+#### Amended 2026-09-17: the streaks — what it is, and what it understands
+
+***A daemon's colour now says two things, and the second one changes as you play.*** **The body is what the daemon IS; the streaks are what it UNDERSTANDS.**
+
+| palette | what it carries |
+|---|---|
+| 0 | transparent |
+| **1–5** | ***the body*** — *its own type's ramp, exactly as the 2026-09-05 amendment set it* |
+| 6–10 | up to five **accents**, keeping their own colour — *an eye, a beak, a marking* |
+| **11–14** | ***the four streaks*** — **one per move slot, each the type of the move in that slot** |
+| 15 | spare |
+
+**The streaks are the types of the moves it KNOWS, one streak per move, in slot order.** *A daemon with three FLOW routines and one SIGNAL routine carries three FLOW streaks and one SIGNAL one* — **so which types it understands and how committed it is to each are both on the body.** ***A move slot with nothing in it gives a streak nothing to be***, *and the streak takes the body's own mid step and disappears into it.*
+
+**This is per INDIVIDUAL, not per species, and it is the first colour in the game that is.** *Two daemons of one species that have learned differently look different* — **and one daemon changes as it learns, forgets and is taught.** *Colour carrying the argument was the rule; colour that ACCUMULATES is the argument doing work over time.*
+
+***A streak is drawn from its type's LIGHT step, not its mid.*** **A FLOW streak on a FLOW body would vanish at the mid step** — *the same trap the accents already had, where a red eye on a VECTOR daemon disappears* — **and at the light step it reads as a vein of the body's own colour, which is what a daemon deep in its own type should look like.**
+
+***Where there is no individual, the streaks are BLANK.*** **The Index, and anything else that shows a species rather than a daemon, fills 11–14 with neutral grey.** *The Index records what a daemon is; what any one of them has come to understand is not something it can file.* **Nothing says so.**
+
+**The art stays type-agnostic, and is now move-agnostic too.** *Each species' drawing marks its four streak regions in four marker colours, which the build maps to 11–14*; **the build writes the species palette with those slots grey, and the engine fills them from the moves when a real daemon is shown.** *The body ramp stays a build-time parameter, as before.*
+
+***What it costs, measured before it was written***: **27 calls across 11 files choose a daemon's palette**, *and every one returns a COMPRESSED palette out of ROM, chosen by species and shininess alone.* **The streaks are one C function that patches 11–14 in the loaded palette from the four moves, called wherever the call can see a daemon.** *The few that see only a species and a personality stay blank, which is the rule rather than a gap.* **`PERSPECTIVE` takes the target's moves, so it takes the target's streaks** — *standing where the other one stands includes understanding what it understands.* *A move changed mid-battle by `CLONE` or `IMPRINT` shows the next time the sprite loads, not in the middle of an animation.*
+
+***Party icons cannot carry any of this*** — *vanilla gives icons three shared palettes between every species* — **and neither the ramp nor the streaks reach them.**
+
+***Never explained in the game.*** **Craft rule 1: nothing tells the player what a streak is.** *They will notice that a daemon they have taught looks different from one they caught, and the chart they learned from the routine names will tell them why.*
 
 #### The people are drawn as a fable, and the rule has three clauses
 

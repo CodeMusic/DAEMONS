@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.209 — 2026-09-17
+
+### 9.4 — The streaks: what a daemon is, and what it understands
+
+- ***A daemon's palette now carries four STREAKS, one per move slot, each the type of the move it knows.*** **The body keeps its own type's ramp — what it IS — and the streaks show what it UNDERSTANDS**, *three FLOW routines and one SIGNAL showing as three FLOW streaks and one SIGNAL.* **An empty move slot's streak disappears into the body.**
+- ***It is the first per-individual colour in the game*** — **two daemons of one species that learned differently look different, and one daemon changes as it learns.**
+- ***Streaks use the type's light step***, *so a streak in the body's own type reads as a vein rather than vanishing.* **Where there is no individual — the Index — the streaks are neutral grey**, *and nothing says why.*
+- **Palette indices 11–14, which were unused; the accents keep 6–10.** *Measured cost: 27 calls in 11 files choose a daemon's palette, each returning compressed ROM data; one C function patches the streaks after load.* **Icons cannot carry it.**
+
 ## v11.208 — 2026-09-15
 
 ### 8.5 — "Nobody else changes" is struck
