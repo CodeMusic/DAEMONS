@@ -259,6 +259,41 @@ def main():
     s = open(SCRIPTS).read()
     release = "--release" in args
     written = 0
+    if release:
+        #  A draft block is found by its header and walked LINE BY LINE with a depth count. Two earlier versions
+        #  failed on EXPLOSION, whose vanilla carries its own `.if REVISION >= 0xA ... .endif`: a region walk cut
+        #  it in the wrong place, and a non-greedy pattern took vanilla's inner .endif for the guard's.
+        head = "@ genanims: %s (T-134, vision.md 9.24)" % fam
+        lines = s.split("\n")
+        out, k = [], 0
+        while k < len(lines):
+            if lines[k] == head + " DRAFT, debug ROMs only until approved." and k + 2 < len(lines) and lines[k + 2] == ".if DAEMONS_DEBUG":
+                out += [head + " approved.", lines[k + 1]]
+                k += 3
+                depth, keep = 1, True
+                while depth:
+                    l = lines[k]
+                    if l.startswith(".if"):
+                        depth += 1
+                    elif l == ".endif":
+                        depth -= 1
+                    elif l == ".else" and depth == 1:
+                        keep = False
+                        k += 1
+                        continue
+                    if depth and keep:
+                        out.append(l)
+                    k += 1
+                written += 1
+                continue
+            out.append(lines[k])
+            k += 1
+        s = "\n".join(out)
+        if head + " DRAFT" in s:
+            raise SystemExit("a %s draft was not released" % fam)
+        print("  %s: %d routines released, type colour %s" % (fam, written, colour))
+        open(SCRIPTS, "w").write(s)
+        return
     for mv in sorted(table):
         a, b = region(s, "Move_" + mv[5:] if mv.startswith("Move_") else mv)
         text = s[a:b]
