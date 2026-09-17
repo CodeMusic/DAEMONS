@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -810,7 +810,60 @@ def entropy_table():
     t["ERUPTION"] = lambda c, p, se, n: noise(c, p, se, sel="F_PAL_DEF_SIDE", spread="F_PAL_BG | F_PAL_ATK_SIDE")
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table}
+
+# ---- the STRATUM vocabulary (T-150): "the physical layer everything else runs on" -- substrate and ground (2.8). ----
+#  A STRATUM write comes FROM BELOW. The layer under both daemons -- the field -- takes STRATUM's brown first, the
+#  terrain shakes (vanilla's own AnimTask_HorizontalShake, which restores itself), and only then does the target take
+#  the colour, jolted vertically. UPHEAVAL moves everything; SEGFAULT opens the layer to black and the target with
+#  it; EXCAVATE goes under on turn 1 (the script's own invisible) and comes up on turn 2.
+
+def ground(c, power, se, lean=False, sel="F_PAL_TARGET", quake=False, fault=False):
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    out += blend("F_PAL_BG", 0, 0, 8 if not lean else 5, c) + wait() + sound(se)
+    #  The shake settles for about (intensity + 2) * 8 frames after its main phase (AnimTask_ShakeTerrain), so it is
+    #  kept small: at 4 + 2*amp for 30, UPHEAVAL outlasted a 160-frame capture still brown.
+    out += ["\tcreatevisualtask AnimTask_HorizontalShake, 5, (MAX_BATTLERS_COUNT + 1), %d, %d" % (3 + amp if quake else 1 + amp // 2, 20 if quake else 8)]
+    if quake:
+        out += ["\tcreatevisualtask AnimTask_HorizontalShake, 5, MAX_BATTLERS_COUNT, %d, 20" % (3 + amp)]
+    else:
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, %d, %d, %d" % (amp + (2 if fault else 0), n, 1)]
+    out += blend(sel, 0, 0, k, c) + wait() + ["\tdelay 6" if quake else "\tdelay 2"]
+    return out + blend(sel, 1, k, 0, c) + blend("F_PAL_BG", 1, 8 if not lean else 5, 0, c) + wait()
+
+
+def segfault(c, se):
+    """SEGFAULT: the layer opens -- the field to black -- and the target falls into it, drained to black, then back."""
+    #  The layer and the target go dark TOGETHER: waiting on the shake first (it settles for ~190 frames at intensity 12)
+    #  meant the target's drain never reached the capture.
+    return send(c, 10) + sound(se) + ["\tcreatevisualtask AnimTask_HorizontalShake, 5, (MAX_BATTLERS_COUNT + 1), 5, 16"] + \
+        blend("F_PAL_BG", 1, 0, 14, "RGB_BLACK") + blend("F_PAL_TARGET", 1, 0, 16, "RGB_BLACK") + wait() + ["\tdelay 12"] + \
+        blend("F_PAL_TARGET", 2, 16, 0, "RGB_BLACK") + blend("F_PAL_BG", 2, 14, 0, "RGB_BLACK") + wait()
+
+
+def excavate(c, power, se, name):
+    """EXCAVATE: turn 1 the user sinks into the layer -- browned and gone; turn 2 it comes up under the target."""
+    return ["\tchoosetwoturnanim %sUnder, %sUp" % (name, name), "%sDone:" % name, "\tend", "%sUnder:" % name] + \
+        sound(se, "SOUND_PAN_ATTACKER") + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_ATTACKER, 0, 2, 6, 1"] + blend("F_PAL_ATTACKER", 1, 0, 12, c) + wait() + \
+        ["\tinvisible ANIM_ATTACKER"] + blend("F_PAL_ATTACKER", 0, 12, 0, c) + wait() + ["\tgoto %sDone" % name, "%sUp:" % name, "\tvisible ANIM_ATTACKER"] + \
+        ground(c, power, se, lean=True, fault=True) + ["\tgoto %sDone" % name]
+
+
+def stratum_table():
+    t = {}
+    t["EARTHQUAKE"] = lambda c, p, se, n: ground(c, p, se, sel="F_PAL_BATTLERS", quake=True)
+    t["MAGNITUDE"] = lambda c, p, se, n: ground(c, 70, se, sel="F_PAL_BATTLERS", quake=True)
+    t["FISSURE"] = lambda c, p, se, n: segfault(c, se)
+    t["DIG"] = lambda c, p, se, n: excavate(c, p, se, "DaemonsExcavate")
+    t["BONE_CLUB"] = lambda c, p, se, n: ground(c, p, se, fault=True)
+    t["BONEMERANG"] = lambda c, p, se, n: ground(c, p, se, lean=True, fault=True)
+    t["BONE_RUSH"] = lambda c, p, se, n: ground(c, p, se, lean=True, fault=True)
+    t["MUD_SLAP"] = lambda c, p, se, n: ground(c, p, se, lean=True) + silt()
+    t["MUD_SHOT"] = lambda c, p, se, n: ground(c, p, se) + silt()
+    t["SAND_TOMB"] = lambda c, p, se, n: blend("F_PAL_BG", 0, 0, 6, c) + wait() + hold(c, p, se) + blend("F_PAL_BG", 1, 6, 0, c) + wait()
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table}
 
 
 def first_sound(text):
