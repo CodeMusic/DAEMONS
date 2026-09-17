@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.213 — 2026-09-17
+
+### 9.24 — What a routine's animation may show
+
+- ***Approved on screen in the T-136 theatre.*** **An animation shows the process its routine names — never a body exerting itself or energy gathered from outside.**
+- **The daemon's own palette is the medium and grey is the ground: loss drains toward grey, recovery is colour returning.** *The only colour an effect may add is the routine's own TYPE colour; the streaks go wherever the palette goes; in Halftone the greying wins.*
+- ***Script first***: *vanilla's tasks and sprites re-sequenced and re-tinted; new effect graphics only where nothing existing can mean the process (T-137).*
+- **Exemplars: RESTORE drawn as a state reloading in three steps; PERSPECTIVE as it already was; WRITE named as the attack case still to solve.**
+
 ## v11.212 — 2026-09-17
 
 ### 2.8 — RECOVER is RESTORE, and the list that said otherwise

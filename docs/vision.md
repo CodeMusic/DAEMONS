@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.212**
+**A total conversion — the living design bible, v11.213**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8010,6 +8010,21 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***Built 2026-09-14, and what bounds the detail.*** **Vanilla's buildings are shaded and textured; ours read flat on playtest (T-85).** *All three kinds are drawn in the General tileset, whose 640 slots are full*, **so detail is paid for in tiles: 45 of vanilla's duplicate tiles were merged to make room, mirrored tiles are shared, and the drawings take 127 of the 132 slots that result** — *a dentilled cornice and one step on the colonnade, a canopy and plinth on the rotunda, castings on the containers.* ***More than that means drawing on each town's own tileset.*** **The board's face sits low, in the one cell every town's board has.** ***Brazen's BENCHMARK had no board, only vanilla's red GYM roundel***, **so the roundel became its MARK board; the one before the PROOF HALL reads QED** — *which is how a proof ends, and all the board says.*
 
 ***And then it was drawn on each town's own tileset — 2026-09-14.*** **`tools/gbacivictown.py` gives every cell of 35 of the 37 buildings a block of its town's own**, *so the detail stops competing for five shared slots:* **a lit, ribbed dome with a lantern over coursed stone and arched windows; ribbed containers with castings, lock rods and a hazard-striped lintel; a colonnade with a skylight, dentils, a carved frieze, fluted columns, sconces, full steps, a bronze plate for the mark's name and a full-height board.** *The room comes from slots no block of the town draws, and from each town's own duplicate tiles.* ***The shared drawing stays underneath as the fallback***, **and two buildings keep it:** *Lurid's BENCHMARK, which stands within seven cells of a connection (trap 14), and Brazen's REPO, whose tileset has no room left.*
+
+### 9.24 What a routine's animation may show — *decided 2026-09-17* (T-135)
+
+***Every name in the battle menu is ours and every animation was vanilla's*** (**354 of 356**, `tools/animcensus.py`), **so a player chose RESTORE and watched a creature pull glowing orbs in from the air.** *The picture argued against the word.* **Six clauses decide what replaces it, and they were drafted on three exemplars and approved on screen in the T-136 theatre before any family was touched.**
+
+1. ***An animation shows the PROCESS its routine names*** — **never a creature exerting its body, and never energy gathered from outside it.** *RESTORE reloads a state the daemon already had; it does not inhale.*
+2. ***The daemon's own palette is the medium, and grey is the ground.*** **Losing something is drawn as draining toward grey; getting it back is the colour returning.** *Grey costs invariant 5 nothing* (**8.6**) — *PERSPECTIVE already drained to grey before it took another's frame, and that is where this clause was found.*
+3. ***The only colour an effect may ADD is a type's*** — **the routine's own, from `gbasprite.py`'s `TYPE_COLOR`** — *never vanilla's decorative yellow flashes, pink hearts or blue stars. Neutrals (black, white, grey) are ground, not colour.*
+4. ***The streaks are part of the palette***, **so whatever happens to a daemon's colour happens to what it knows** — *a drain greys the streaks with the body, and they come back with it* (**9.4, as amended**).
+5. ***In Halftone the frame's greying wins*** (**8.6a**) — **no animation brings colour into Halftone except PERSPECTIVE's flash, which stays the one exception.**
+6. ***Script first.*** **Re-sequence and re-tint vanilla's own tasks and sprites; draw a new effect graphic only when nothing existing can mean the process** (**T-137**). *Vanilla's sounds stay unless one contradicts the picture.*
+
+***The exemplars, as approved***: **RESTORE — its colour drains to grey and returns in three ticked steps, a checkpoint reloading**; *PERSPECTIVE, which already obeyed 1, 2 and 4*; **and WRITE, still vanilla's lunge, named as the case the attacking families must solve** — *under 1 and 3 a write lands on the target as its attacker's type colour, not as a shove.*
+
+***How the families are worked*** (**T-134**): *each is drafted behind `.if DAEMONS_DEBUG` so only the debug ROMs play it, captured in the theatre as filmstrips, approved, and then released* — **and `animcensus.py` counts a family done only when its scripts no longer match upstream's.**
 
 ### 9.2 Order of operations
 
