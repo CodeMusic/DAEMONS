@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -696,7 +696,75 @@ def growth_table():
     t["NEEDLE_ARM"] = lambda c, p, se, n: fit(c, p, se, lean=True)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table}
+
+# ---- the FLOW vocabulary (T-148): "everything running downhill to the lowest point" -- gradient and current (2.8). ----
+#  A FLOW write POURS. A current rises across the field, the target fills, and then everything runs downhill: the
+#  target drains slowly while the field runs off. Its shake is vertical -- flow goes down. ASCEND climbs against the
+#  gradient and falls at once; DESCEND sinks out of sight (the script's own invisible, as GOTO) and surfaces.
+
+def pour(c, power, se, lean=False, sel="F_PAL_TARGET", slow=1, abrupt=False):
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    out += blend("F_PAL_BG", 0 if lean else 1, 0, 6, c) + wait() + sound(se)
+    out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, %d, %d, %d" % (amp, n, 1 if abrupt else 2)]
+    out += blend(sel, 0, 0, k, c) + wait()
+    if abrupt:
+        return out + blend(sel, 0, k, 0, c) + blend("F_PAL_BG", 0, 6, 0, c) + wait()
+    return out + blend(sel, 1 + slow, k, 0, c) + blend("F_PAL_BG", 1 + slow, 6, 0, c) + wait()
+
+
+def silt():
+    """What the water leaves behind (FIREHOSE, MUDDY WATER lower accuracy): the target settles grey a moment."""
+    return blend("F_PAL_TARGET", 0, 0, 7, GREY) + wait() + ["\tdelay 6"] + blend("F_PAL_TARGET", 1, 7, 0, GREY) + wait()
+
+
+def ascend(c, power, se):
+    """ASCEND: up the gradient in three ticked steps, then down all at once."""
+    k, amp, n = strength(power)
+    out = send(c)
+    for i in range(3):
+        out += tick_se() + blend("F_PAL_TARGET", 0, i * k // 3, (i + 1) * k // 3, c) + wait()
+    return out + sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, %d, %d, 1" % (amp, n)] + blend("F_PAL_TARGET", 0, (3 * k) // 3, 0, c) + wait()
+
+
+def ripples(c, power, se, pops=3, lean=False):
+    """Rings spreading: pulses that shrink (RIPPLE), or small pops (SEEP, CAVITATE)."""
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    for i in range(pops):
+        d = max(3, k - i * (k // pops)) if not lean else max(3, k // 2)
+        out += sound(se) + blend("F_PAL_TARGET", 0, 0, d, c) + wait() + blend("F_PAL_TARGET", 0, d, 0, c) + wait()
+    return out
+
+
+def descend(c, power, se, name):
+    """DESCEND: turn 1 sinks -- the user darkens toward the deep and is gone; turn 2 it surfaces under the target."""
+    return ["\tchoosetwoturnanim %sSink, %sSurface" % (name, name), "%sDone:" % name, "\tend", "%sSink:" % name] + \
+        sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 1, 0, 12, c) + wait() + ["\tinvisible ANIM_ATTACKER"] + \
+        blend("F_PAL_ATTACKER", 0, 12, 0, c) + wait() + ["\tgoto %sDone" % name, "%sSurface:" % name, "\tvisible ANIM_ATTACKER"] + \
+        ascend(c, power, se) + ["\tgoto %sDone" % name]
+
+
+def flow_table():
+    t = {}
+    t["WATER_GUN"] = lambda c, p, se, n: pour(c, p, se, lean=True)
+    t["HYDRO_PUMP"] = lambda c, p, se, n: pour(c, p, se, slow=2)
+    t["HYDRO_CANNON"] = lambda c, p, se, n: pour(c, p, se, slow=2) + recoil() + recoil()
+    t["SURF"] = lambda c, p, se, n: pour(c, p, se, sel="F_PAL_DEF_SIDE")
+    t["MUDDY_WATER"] = lambda c, p, se, n: pour(c, p, se, sel="F_PAL_DEF_SIDE") + silt()
+    t["WATER_SPOUT"] = lambda c, p, se, n: pour(c, p, se, sel="F_PAL_DEF_SIDE", slow=2)
+    t["OCTAZOOKA"] = lambda c, p, se, n: pour(c, p, se) + silt()
+    t["CRABHAMMER"] = lambda c, p, se, n: pour(c, p, se, abrupt=True)
+    t["WATERFALL"] = lambda c, p, se, n: ascend(c, p, se)
+    t["WATER_PULSE"] = lambda c, p, se, n: ripples(c, p, se)
+    t["BUBBLE"] = lambda c, p, se, n: ripples(c, p, se, pops=3, lean=True)
+    t["BUBBLE_BEAM"] = lambda c, p, se, n: ripples(c, p, se, pops=3)
+    for mv in ["CLAMP", "WHIRLPOOL"]:
+        t[mv] = lambda c, p, se, n: send(c) + hold(c, p, se)
+    t["DIVE"] = lambda c, p, se, n: descend(c, p, se, "DaemonsDescend")
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table}
 
 
 def first_sound(text):
