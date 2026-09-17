@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.214**
+**A total conversion — the living design bible, v11.215**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8179,6 +8179,17 @@ Kept here because the reasoning is worth more than the outcome.
     3. **The two editions.** *A daemon traded between CONTENT and CONTEXT already has two Index entries that do not match (0.4)* — **divergence as a literal record**, and **the link may be where the two are held against each other.**
     4. **Scorn's party.** *Fully converged — identical streaks, perfect consistency, flawless and brittle —* **and the way through is divergence.** *No new system: his parties, movesets and 5.3b's fixed roll.* **It makes Benchmark 8 argue in play.**
   - ***Constraints on any version***: **craft rule 1** — *neither word is ever said; `ALIGN`/alignment is already on record as "the thesis wearing a lab coat" (5.2), and the unbuilt reverse-PERSPECTIVE move below was going to be called `ALIGN`, so the two questions should be answered together*; **invariant 3** — *nothing here may make the type chart differ by cartridge.*
+  - ***SELF-ALIGNMENT matters more than alignment*** (*added 2026-09-17*): **"the one who holds the frame can become aware of it and shift the frame."** *This turns the three frame questions into one family, and puts the weight on the third:*
+
+    | | what happens to a frame | who moves it | where it already is |
+    |---|---|---|---|
+    | **PERSPECTIVE** | *I take yours* | the user, outward | **built** — TRANSFORM, CONTENT, its hue drained to grey before the swap (9.24) |
+    | **ALIGN** (*proposed, below*) | *you take mine* | the user, imposed on another | **unbuilt** — and it is Corpus's move, and Scorn's |
+    | **self-alignment** | *I see mine, and move it* | the holder, on itself | ***already in the game twice, unremarked*** |
+
+    ***Where it already is***: **`CAST`** (*CONVERSION*) **changes the user's type to one of its own moves' types** — *the body taking the shape of what it already understands, which 9.4's streaks now make visible* — and **`RECAST`** (*CONVERSION 2*) **changes the user's type to resist the last routine that hit it** — ***noticing the frame it was hit through, and shifting.*** **That is self-alignment as a mechanic, and nobody arranged it.**
+    ***Why it is the heavier idea***: **4.18a's BELIEFS are the difference between a weight and a position — *a belief that can be inspected and challenged*** — **and self-alignment is the holder doing that to itself.** *Scorn's machine could not: the weighted stage was invisible from inside, so it kept producing the contradiction and kept resolving it the same way.* **So self-alignment is the answer to Benchmark 8 that is not another imposed frame** — *a party that wins by shifting its OWN frame rather than by forcing a counter-alignment on his.*
+    ***Questions it opens, not answered***: *does RECAST become the family's visible centre (an animation under 9.24 that shows the frame noticed before it moves — T-161's COPY family)?* *is there a state or a moment where a daemon's body type drifts toward its streaks, so self-alignment happens over a run and not only in one move?* *and does the reverse-PERSPECTIVE move stay `ALIGN` once self-alignment is the idea the family is for — or does the imposed version want a name that reads as imposition?* **Craft rule 1 holds throughout: none of these words are said.**
   - ***Leaning, not decided***: **4 and 1 first** — *both use systems that exist, and they argue the point from both sides (a party punished for having converged, and a move that rewards converging).*
 
 - **Day, night and the four seasons** (9.21, *proposed 2026-09-14*). ***A clock made of play time, day read as CONTENT and night as CONTEXT, and the seasons as the Review Board's four humours leaning the wild tables toward VECTOR, ENTROPY, LATENT and FROZEN.*** **Nothing built; four questions in 9.21 to settle first**

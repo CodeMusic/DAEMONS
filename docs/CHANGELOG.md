@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.215 — 2026-09-17
+
+### 10 Open — self-alignment, added to convergence
+
+- ***"The one who holds the frame can become aware of it and shift the frame."*** **Three frame moves as one family: PERSPECTIVE (I take yours, built), ALIGN (you take mine, proposed), and self-alignment (I see mine and move it) — the heaviest of the three.**
+- ***Self-alignment is already in the game unremarked***: **CAST changes the user's type to one of its own moves' types, and RECAST to resist the last routine that hit it** — *noticing the frame it was hit through, and shifting.*
+- **It is 4.18a's inspectable BELIEF done by the holder to itself, and the answer to Benchmark 8 that is not another imposed frame.** *Open: RECAST as the family's visible centre, a body type that drifts toward its streaks over a run, and whether ALIGN keeps its name.*
+
 ## v11.214 — 2026-09-17
 
 ### 10 Open — convergence and divergence as a mechanic
