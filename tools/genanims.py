@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -498,7 +498,88 @@ def field_table():
     t["CURSE"] = lambda c, p, se, n: curse(se)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table}
+
+# ---- the LOGIC vocabulary (T-145): "formal rules applied step by step; proof, not intuition" (vision.md 2.8). ----
+#  Where a CONTENT write lands in one pulse, a LOGIC write lands as a DERIVATION: the target takes the colour in
+#  ordered steps, each with its tick -- each licensed by the last -- and then, concluded, the whole thing lets go at
+#  once. How many steps is read off the power, so a stronger proof has more lines.
+
+def derive(c, power, se, lean=False, shake=True, steps=None):
+    """A stepped landing: premise (the attacker's pulse), then the target in ordered ticked steps, then Q.E.D."""
+    k, amp, n = strength(power)
+    if steps is None:
+        steps = min(4, 2 + power // 45)
+    each = max(3, k // steps)
+    out = [] if lean else send(c)
+    level = 0
+    for i in range(steps):
+        out += tick_se() + blend("F_PAL_TARGET", 0, level, level + each, c) + wait()
+        level += each
+        if not lean:
+            out += ["\tdelay 2"]
+    out += sound(se)
+    if shake:
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)]
+    return out + ["\tdelay 4"] + blend("F_PAL_TARGET", 0, level, 0, c) + wait()
+
+
+def returned(c, power, se):
+    """A rebuttal (COUNTER, REVENGE, REVERSAL): the argument received is derived back -- the user steps up first,
+    then hands the same steps to the target."""
+    out = []
+    level = 0
+    for _ in range(2):
+        out += tick_se() + blend("F_PAL_ATTACKER", 0, level, level + 5, c) + wait()
+        level += 5
+    out += blend("F_PAL_ATTACKER", 0, level, 0, c) + wait()
+    return out + derive(c, power, se, lean=True)
+
+
+def non_sequitur(c, power, se):
+    """NON SEQUITUR: the steps do not follow -- a small step, a jump past where the next should be, a step BACK --
+    and the target is left alternating, as confused by it as the move leaves it."""
+    k, amp, n = strength(power)
+    out = send(c) + tick_se() + blend("F_PAL_TARGET", 0, 0, 3, c) + wait() + tick_se() + blend("F_PAL_TARGET", 0, 3, 12, c) + wait()
+    out += tick_se() + blend("F_PAL_TARGET", 0, 12, 6, c) + wait() + sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)]
+    out += blend("F_PAL_TARGET", 0, 6, 0, c) + wait() + blend("F_PAL_TARGET", 0, 0, 8, GREY) + wait() + blend("F_PAL_TARGET", 0, 8, 0, GREY) + wait()
+    return out
+
+
+def loop_back(c, power, se):
+    """LOOP BACK: the derivation climbs and returns to its start, twice, before it lands."""
+    out = send(c)
+    for _ in range(2):
+        out += tick_se() + blend("F_PAL_TARGET", 0, 0, 6, c) + wait() + blend("F_PAL_TARGET", 0, 6, 0, c) + wait()
+    return out + derive(c, power, se, lean=True)
+
+
+def falsify(c, power, se):
+    """FALSIFY breaks screens: on the turn it does (turn 1), the defending side's layer greys and is gone first."""
+    return ["\tchoosetwoturnanim DaemonsFalsifyPlain, DaemonsFalsifyScreen", "DaemonsFalsifyDone:", "\tend", "DaemonsFalsifyPlain:"] + \
+        derive(c, power, se) + ["\tgoto DaemonsFalsifyDone", "DaemonsFalsifyScreen:"] + \
+        blend("F_PAL_DEF_SIDE", 0, 0, 10, c) + wait() + tick_se() + blend("F_PAL_DEF_SIDE", 0, 0, 12, GREY) + wait() + blend("F_PAL_DEF_SIDE", 1, 12, 0, GREY) + wait() + \
+        derive(c, power, se) + ["\tgoto DaemonsFalsifyDone"]
+
+
+def logic_table():
+    t = {}
+    for mv in ["ROCK_SMASH", "KARATE_CHOP", "JUMP_KICK", "HI_JUMP_KICK", "CROSS_CHOP", "VITAL_THROW", "SKY_UPPERCUT", "LOW_KICK", "DYNAMIC_PUNCH"]:
+        t[mv] = lambda c, p, se, n: derive(c, p, se)
+    t["DYNAMIC_PUNCH"] = lambda c, p, se, n: non_sequitur(c, p, se)
+    for mv in ["DOUBLE_KICK", "TRIPLE_KICK", "ARM_THRUST"]:        # each hit plays the animation: one short derivation each
+        t[mv] = lambda c, p, se, n: derive(c, p, se, lean=True, steps=2)
+    t["MACH_PUNCH"] = lambda c, p, se, n: derive(c, p, se, lean=True)           # priority: no premise, straight to the steps
+    t["SEISMIC_TOSS"] = lambda c, p, se, n: derive(c, 80, se, steps=3)          # EQUATE: a fixed result, the same three lines every time
+    t["FOCUS_PUNCH"] = lambda c, p, se, n: derive(c, p, se, steps=3)            # SYLLOGISM: two premises and a conclusion
+    for mv in ["COUNTER", "REVENGE", "REVERSAL"]:
+        t[mv] = lambda c, p, se, n: returned(c, p if p else 60, se)
+    t["SUBMISSION"] = lambda c, p, se, n: derive(c, p, se) + recoil()
+    t["SUPERPOWER"] = lambda c, p, se, n: derive(c, p, se) + recoil() + recoil()   # BRUTE FORCE costs two of its own stats
+    t["ROLLING_KICK"] = lambda c, p, se, n: loop_back(c, p, se)
+    t["BRICK_BREAK"] = lambda c, p, se, n: falsify(c, p, se)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table}
 
 
 def first_sound(text):
