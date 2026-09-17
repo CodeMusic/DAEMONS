@@ -162,3 +162,9 @@ can generalise the chart from names and colour. A model that skips all of that
 and reads the multiplier directly is playing a different game, in the sense the
 game itself is about. Feeding it only what a player could see would be the more
 interesting experiment.
+
+## Sprite drafting: ComfyUI on the LAN
+
+**`http://roverbyteseer.local:8008`**, checkpoint **`pixelArtDiffusionXL_spriteShaper.safetensors`** — *the same model the pixelbyte skill wraps* — **driven directly by `tools/spriteforge.py`**, so drafts can be scripted, batched and rebuilt exactly (*every draft writes a JSON record of prompt, negative, seed, size, steps, cfg, sampler and server version beside its PNG*). **Use it for any sprite need; it is a drafting instrument, and nothing it makes goes into the game without cleanup and a contact sheet.**
+
+*What the first trial measured (2026-09-17, NIBBLE):* **it draws on an exact 8px grid in PNG, so no JPEG ringing** — *the drafts in `gfx/front` and `gfx/back` came from Gemini as JPEG, which is what `gridsample.deringe` exists for;* **at 1024² the art is ~128 px across, too large for a 64 px frame without resampling, which 9.4 refuses — so generate smaller;** **"white background" is not obeyed (it gives a flat light grey), and a faint drop shadow survives the negative prompt**, *so the background is removed by flood fill in cleanup rather than trusted to the prompt;* **"greyscale / monochrome" mostly holds, with small saturated accents (a nose, an inner ear) — which is 9.4's body-plus-accents scheme.** *About 80–110 s per 1024² image on the server's MPS.*
