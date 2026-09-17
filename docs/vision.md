@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.211**
+**A total conversion — the living design bible, v11.212**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1596,9 +1596,11 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***And the perfect answer is unusable, which is worth recording so nobody proposes it again.*** **`POKE` is the BASIC instruction that writes one byte to an address** — it works twice, it is four characters, and it is **unusable in a game that has spent five separate passes deleting `POKé`.** *A pun that survives the read-aloud test and not the search-and-replace test is still a no.*
 
-#### Thirteen already work, and are not to be touched
+#### Twelve already work, and are not to be touched
 
-**`DISABLE` · `BLOCK` · `PROTECT` · `RECOVER` · `ENDURE` · `LOCK-ON` · `SAFEGUARD` · `MIMIC` · `MINIMIZE` · `METRONOME` · `RECYCLE` · `CONVERSION` · `CONVERSION 2`**
+**`DISABLE` · `BLOCK` · `PROTECT` · `ENDURE` · `LOCK-ON` · `SAFEGUARD` · `MIMIC` · `MINIMIZE` · `METRONOME` · `RECYCLE` · `CONVERSION` · `CONVERSION 2`**
+
+*Corrected 2026-09-17, v11.212.* **`RECOVER` was on this list and was renamed `RESTORE` on 2026-09-10** (engine `a62aec091`) — ***not because it failed to land, but because the word was already spent***: **`RECOVER` is the POTION** (*the ladder `RECOVER · DEEP RECOVER · FULL RECOVER · REBUILD`, 1.6d*), *and a routine and an item with one name make a bag and a battle menu that disagree about what the word does.* **The rename was right and the list was not updated; it is now.**
 
 ***A metronome is a clock, recycling is garbage collection, and a type conversion is a type conversion.*** **Same finding as *catchy tune* and `MOVE ITEMS`** (1.6): *the pass that renames what already lands is a pass that makes the game worse.* **`SWIFT`, `FORESIGHT` and `ENCORE` are marginal and get a second look, not a rename by default.**
 
@@ -1737,7 +1739,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 #### Thirteen kept, and fifty-eight descriptions rewritten
 
-**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK`, `MIMIC`, `MINIMIZE`, `RECOVER`, `ENDURE`, `CONVERSION`, `CONVERSION 2` and — added 2026-09-11 — `SUBSTITUTE` were left alone** — *2.8's rule that the pass which renames what already lands makes the game worse.*
+**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK`, `MIMIC`, `MINIMIZE`, `ENDURE`, `CONVERSION`, `CONVERSION 2` and — added 2026-09-11 — `SUBSTITUTE` were left alone** (*`RECOVER` was listed here too until v11.212; it is `RESTORE`, because `RECOVER` is the POTION*) — *2.8's rule that the pass which renames what already lands makes the game worse.*
 
 ***And fifty-eight descriptions had to move with their names***, because a description that still describes the old one is worse than no rename at all: *`OCCLUDE` cannot say "bites with vicious fangs".* **Every line measured against the 170px box; the widest is 126.**
 

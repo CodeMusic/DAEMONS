@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.212 — 2026-09-17
+
+### 2.8 — RECOVER is RESTORE, and the list that said otherwise
+
+- ***Both of 2.8's "left alone" lists still named `RECOVER`***, **but engine `a62aec091` renamed it `RESTORE` on 2026-09-10.**
+- **The rename was right and is now recorded with its reason: `RECOVER` is the POTION** (*1.6d's ladder `RECOVER · DEEP RECOVER · FULL RECOVER · REBUILD`*) — *a routine and an item with one name make a bag and a battle menu disagree about the word.* **"Thirteen already work" is twelve.**
+
 ## v11.211 — 2026-09-17
 
 ### 9.4 — A streak's step, measured against the right tones
