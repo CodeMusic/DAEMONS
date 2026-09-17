@@ -176,6 +176,10 @@ CYGNET = small_fig(small_bird("W", "T"), small_ring("R", "w"), small_side_ring("
 # npc_blue: a s S peach  e dark brown  y yellow  o gold  Y dark gold  v light purple  V purple
 #           D dark purple-grey  O orange  r red  d dark brown  W white  K black
 DUCKLING = small_fig(small_bird("y", "O"), small_ring("W", "v"), small_side_ring("W", "v"))
+# The SAME duckling on land (T-120): tuber_m_land is the boy standing in his ring, and vanilla shows the
+# water sheet and the land sheet as one child. Out of the water the rows under the ring are not the
+# surface but his own orange feet -- the cygnet on tuber_f stands the same way.
+DUCKLING_LAND = small_fig(small_bird("y", "O"), small_ring("W", "O"), small_side_ring("W", "O"))
 
 # ------------------------------------------------------------------ the BIKER, 32x32: a boar
 # The rider and the machine are one picture. Sixteen columns mirrored give the front and back; the
@@ -275,12 +279,15 @@ SHEETS = [   # vanilla's sheet, ours, frames, frame size, palette letters, palet
     ("piglet",   "little_girl.png",   PIGLET,   10, 16, PINK,  "npc_pink.pal",  "p"),
     ("bear cub", "little_boy.png",    BEARCUB,   9, 16, WHITE, "npc_white.pal", None),
     ("duckling", "tuber_m_water.png", DUCKLING, 10, 16, BLUE,  "npc_blue.pal",  "y"),
+    ("duckling on land", "tuber_m_land.png", DUCKLING_LAND, 10, 16, BLUE, "npc_blue.pal", "y"),
     ("cygnet",   "tuber_f.png",       CYGNET,   10, 16, WHITE, "npc_white.pal", "W"),
     ("boar",     "biker.png",         BIKER,    10, 32, PINK,  "npc_pink.pal",  None),
 ]
 
-# THE BIKER IS STILL NOT WRITTEN -- four drafts, and the halves failed in turn. BIKER above is kept
-# because draft four solved one of them and that measurement should not be lost.
+# THE BIKER IS WRITTEN -- six drafts (engine d84615dcb), and BIKER above is draft six: rebuilt in memory it is
+# byte-identical to the biker.png that ships. This comment said "still not written" until 2026-09-17, which
+# made --write look dangerous to run; it was checked rather than trusted before T-120's land duckling was added.
+# The history of the drafts follows, because the measurement that settled it should not be lost.
 #
 # Drafts 1-3 lost the MACHINE. Handlebars drawn as a one-pixel line standing clear of the body read
 # as outstretched arms; the head-on wheel read as a white box, a licence plate rather than a wheel;

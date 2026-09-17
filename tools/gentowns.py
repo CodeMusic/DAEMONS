@@ -122,6 +122,55 @@ IGUANA_SIDE = S(pad(["", "", "     KKKK", "    KlllcK", "   KlKlllcK", " Kllllll
                      "    KiiiK", "   KliiiK", "   KlhiiK", "   KKhiiiK", "    KiiiiKK", "    KjjjjKlK", "    KjjjjK KlK",
                      "    KjjjK   KK", "    KjjjK", "    KjjK", "   KllllK", "   KKKKKK"]))
 
+# The same old iguana LYING DOWN (T-120). VIRIDIAN's opening has him across the road, and vanilla swaps his
+# graphics id to OLD_MAN_LYING_DOWN to do it -- a sheet that was still vanilla's human, on the second town the
+# player reaches, beside a standing iguana and a battle portrait of one (T-123). It is NOT drawn again: the
+# side view is turned a quarter clockwise, which moves whole pixels and resamples nothing, so it is exactly
+# this iguana -- head to the right as vanilla lays him, snout up, the tail trailing. One 32x32 frame, as the
+# engine's table indexes frame 0 nine times.
+def _lying(side):
+    body = [r for r in side if r.strip()]
+    w = max(len(r) for r in body)
+    body = [r.ljust(w) for r in body]
+    left = min(len(r) - len(r.lstrip()) for r in body)
+    right = max(len(r.rstrip()) for r in body)
+    body = [r[left:right] for r in body]
+    return ["".join(body[x][y] for x in range(len(body) - 1, -1, -1)) for y in range(len(body[0]))]
+
+
+IGUANA_LYING = _lying(IGUANA_SIDE)
+
+
+def lying_sheet(pal):
+    """32x32, the figure centred across and resting on the bottom rows, as vanilla's lies"""
+    img = Image.new("P", (32, 32))
+    flat = [c for rgb in pal for c in rgb]
+    img.putpalette(flat + [0] * (768 - len(flat)))
+    px = img.load()
+    ox, oy = (32 - len(IGUANA_LYING[0])) // 2, 31 - len(IGUANA_LYING)
+    for y, row in enumerate(IGUANA_LYING):
+        for x, ch in enumerate(row):
+            if ch != " ":
+                px[ox + x, oy + y] = LETTERS[ch]
+    return img
+
+
+def retag_lying():
+    """OLD_MAN_LYING_DOWN was on NPC_PINK, which has no green. Standing, he is TOWN_CALLOW_ELDER in CALLOW's own
+    palette in the special slot; lying, he has to be the same colours, so the sheet moves to that tag and slot.
+    Only VIRIDIAN uses it, and there CALLOW's palette already holds the special slot."""
+    path = os.path.join(GBA, "src/data/object_events/object_event_graphics_info.h")
+    s = open(path).read()
+    start = s.index("const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldManLyingDown = {")
+    end = s.index("};", start)
+    block = s[start:end]
+    new = block.replace(".paletteTag = OBJ_EVENT_PAL_TAG_NPC_PINK,", ".paletteTag = OBJ_EVENT_PAL_TAG_NPC_TOWN_CALLOW,")
+    new = new.replace(".paletteSlot = PALSLOT_NPC_2,", ".paletteSlot = PALSLOT_NPC_SPECIAL,")
+    assert "NPC_TOWN_CALLOW" in new and "PALSLOT_NPC_SPECIAL" in new, "OldManLyingDown's info is not in the shape expected"
+    if new != block:
+        open(path, "w").write(s[:start] + new + s[end:])
+
+
 # ================================================================== SLATE: stone, a writing surface; the museum of dead hardware
 # a light stone  b stone  c dark stone  d tan  e brown  f dark brown  g slate light  h slate  i slate dark  j pink-grey  k rust  l chalk  m moss
 SLATE_PAL = [(200, 192, 176), (160, 152, 136), (108, 100, 88), (208, 168, 120), (156, 108, 68), (92, 60, 36), (152, 168, 184),
@@ -751,6 +800,8 @@ def main():
             img.save(os.path.join(PEOPLE, g["fname"] + ".png"), bits=4)
             rules += ensure_rule(g["fname"] + ".png")
         register()
+        lying_sheet(full_palette(CALLOW_PAL)).save(os.path.join(PEOPLE, "old_man_lying_down.png"), bits=4)
+        retag_lying()
         changed = {}
 
         def load(mp):
