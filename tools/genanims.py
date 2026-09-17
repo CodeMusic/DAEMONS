@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -214,7 +214,138 @@ def content_table():
     return t
 
 
-FAMILIES = {"CONTENT": ("NORMAL", content_table)}
+
+# ---- the STATE vocabulary (T-141 LOWER, T-142 AFFLICT, T-143 RAISE): a daemon's numbers and state changed. ----
+#  Colour here is each routine's OWN type (9.24.3), so a SIGNAL paralysis flickers teal and a CORRUPT poison creeps
+#  in mould. Up is toward that colour, down is toward grey (9.24.2), and a stage is a step: +2 is drawn as two.
+
+def tick_se():
+    return ["\tplaysewithpan SE_M_MINIMIZE, SOUND_PAN_ATTACKER"]
+
+
+def rise(c, stages, se, fast=False, stats=1):
+    """A parameter of its own turned up: the user's colour climbs toward the routine's type, one step a stage."""
+    out = sound(se, "SOUND_PAN_ATTACKER")
+    for _ in range(stats):
+        level = 0
+        for _ in range(stages):
+            out += tick_se() + blend("F_PAL_ATTACKER", 0 if fast else 1, level, level + 6, c) + wait()
+            level += 6
+        out += ["\tdelay %d" % (4 if fast else 10)] + blend("F_PAL_ATTACKER", 0 if fast else 2, level, 0, c) + wait()
+        if fast:                                           # speed: the same climb, three times as quick
+            out += blend("F_PAL_ATTACKER", 0, 0, 6, c) + wait() + blend("F_PAL_ATTACKER", 0, 6, 0, c) + wait()
+    return out
+
+
+def flicker_self(c, se):
+    """Evasion up: harder to pin down -- the user flickers between its colour and the routine's."""
+    out = sound(se, "SOUND_PAN_ATTACKER")
+    for _ in range(4):
+        out += blend("F_PAL_ATTACKER", 0, 0, 10, c) + wait() + blend("F_PAL_ATTACKER", 0, 10, 0, c) + wait()
+    return out
+
+
+def sink(c, stages, se, sound_wave=False, accuracy=False, slow=False):
+    """A parameter of the target turned down: the routine's colour touches it, then it sinks toward grey a step a stage."""
+    out = send(c)
+    if sound_wave:
+        out += sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_BG", 0, 0, 6, c) + wait() + blend("F_PAL_BG", 0, 6, 0, c) + wait()
+    else:
+        out += sound(se)
+    out += blend("F_PAL_TARGET", 0, 0, 8, c) + wait() + blend("F_PAL_TARGET", 0, 8, 0, c) + wait()
+    sel = "F_PAL_TARGET | F_PAL_BG" if accuracy else "F_PAL_TARGET"   # it cannot see: the field it reads dims too
+    level = 0
+    for _ in range(stages):
+        out += tick_se() + blend(sel, 1, level, level + 5, GREY) + wait()
+        level += 5
+    return out + ["\tdelay 10"] + blend(sel, 3 if slow else 1, level, 0, GREY) + wait()
+
+
+def afflict(kind, c, se):
+    """A fault put into the target, each with its own pattern, in the routine's own colour."""
+    out = send(c) + sound(se)
+    T = "F_PAL_TARGET"
+    if kind in ("sleep", "yawn"):                        # suspended: a slow fade to grey that holds
+        depth, d = (12, 3) if kind == "sleep" else (7, 4)
+        out += blend(T, 0, 0, 6, c) + wait() + blend(T, 0, 6, 0, c) + wait() + blend(T, d, 0, depth, GREY) + wait()
+        out += ["\tdelay 16"] + blend(T, 2, depth, 0, GREY) + wait()
+    elif kind in ("poison", "toxic"):                    # it creeps: the colour seeps in by steps
+        n = 4 if kind == "toxic" else 3
+        for i in range(n):
+            out += tick_se() + blend(T, 2, i * 4, (i + 1) * 4, c) + wait()
+        out += ["\tdelay 8"] + blend(T, 1, n * 4, 0, c) + wait()
+    elif kind == "paralyze":                             # a voltage sag: it flickers
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 1, 0, 8, 1"]
+        for _ in range(4):
+            out += blend(T, 0, 0, 10, c) + wait() + blend(T, 0, 10, 0, c) + wait()
+    elif kind == "burn":                                 # heat that stays: two slow pulses
+        for _ in range(2):
+            out += blend(T, 2, 0, 12, c) + wait() + blend(T, 2, 12, 0, c) + wait()
+    elif kind in ("confuse", "swagger", "teeter"):       # two states at once: colour and grey, alternating
+        if kind == "swagger":                            # it is also turned UP first -- the flattery is real
+            out += blend(T, 1, 0, 10, c) + wait() + blend(T, 1, 10, 0, c) + wait()
+        sel = "F_PAL_DEF_SIDE" if kind == "teeter" else T
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 2"]
+        for _ in range(3):
+            out += blend(sel, 0, 0, 9, c) + wait() + blend(sel, 0, 9, 0, c) + wait()
+            out += blend(sel, 0, 0, 9, GREY) + wait() + blend(sel, 0, 9, 0, GREY) + wait()
+    elif kind == "attract":                              # paired: both pulse in step
+        for _ in range(2):
+            out += blend("F_PAL_ATTACKER | F_PAL_TARGET", 1, 0, 10, c) + wait() + blend("F_PAL_ATTACKER | F_PAL_TARGET", 1, 10, 0, c) + wait()
+    else:
+        raise SystemExit("no affliction pattern for %s" % kind)
+    return out
+
+
+def effect_of(mv):
+    body = re.search(r"\[MOVE_%s\]\s*=\s*\{(.*?)\n    \}" % mv, open(os.path.join(E, "src/data/battle_moves.h")).read(), re.S).group(1)
+    return re.search(r"\.effect = EFFECT_(\w+)", body).group(1)
+
+
+def census_family(name):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("animcensus", os.path.join(ROOT, "tools/animcensus.py"))
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    return [r["move"][5:] for r in mod.census() if r["family"] == name]
+
+
+SOUND_WAVE = {"GROWL", "SCREECH", "METAL_SOUND"}
+
+
+def lower_table():
+    t = {}
+    for mv in census_family("LOWER"):
+        e = effect_of(mv)
+        stages = 2 if e.endswith("_2") else 1
+        t[mv] = (lambda stages, e, mv: lambda c, p, se, n: sink(c, stages, se, sound_wave=mv in SOUND_WAVE,
+                 accuracy=e.startswith("ACCURACY"), slow=e.startswith("SPEED")))(stages, e, mv)
+    return t
+
+
+AFFLICTION = {"SLEEP": "sleep", "YAWN": "yawn", "POISON": "poison", "TOXIC": "toxic", "PARALYZE": "paralyze",
+              "WILL_O_WISP": "burn", "CONFUSE": "confuse", "SWAGGER": "swagger", "FLATTER": "swagger",
+              "TEETER_DANCE": "teeter", "ATTRACT": "attract"}
+
+
+def afflict_table():
+    return {mv: (lambda k: lambda c, p, se, n: afflict(k, c, se))(AFFLICTION[effect_of(mv)]) for mv in census_family("AFFLICT")}
+
+
+MULTI_STAT = {"CALM_MIND": 2, "BULK_UP": 2, "DRAGON_DANCE": 2, "COSMIC_POWER": 2}
+
+
+def raise_table():
+    t = {}
+    for mv in census_family("RAISE"):
+        e = effect_of(mv)
+        if e in ("EVASION_UP", "MINIMIZE"):
+            t[mv] = lambda c, p, se, n: flicker_self(c, se)
+            continue
+        stages = 2 if e.endswith("_2") else 1
+        t[mv] = (lambda stages, e: lambda c, p, se, n: rise(c, stages, se, fast=e.startswith("SPEED"), stats=MULTI_STAT.get(e, 1)))(stages, e)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table}
 
 
 def first_sound(text):
@@ -245,15 +376,17 @@ def main():
     if not args or args[0] not in FAMILIES:
         raise SystemExit(__doc__)
     fam = args[0]
-    tname, make = FAMILIES[fam]
-    colour = type_rgb555(tname)
-    table = make()
+    table = FAMILIES[fam]()
     pw = powers()
-    #  The table must be the whole family and nothing else, as animcensus.py files it: every routine of this
-    #  type with power, and no other. A routine left out stays vanilla silently; one added redraws a stranger.
+    #  Each routine is drawn in ITS OWN type's colour (9.24.3): CONTENT's attacks are all bone, and a status family
+    #  mixes types -- THUNDER WAVE is SIGNAL, POISON POWDER is CORRUPT.
     moves_h = open(os.path.join(E, "src/data/battle_moves.h")).read()
-    family = {mv for mv, body in re.findall(r"\[MOVE_(\w+)\]\s*=\s*\{(.*?)\n    \}", moves_h, re.S)
-              if "TYPE_%s," % tname in body and int(re.search(r"\.power = (\d+)", body).group(1)) > 0}
+    mtype = {mv: re.search(r"\.type = TYPE_(\w+)", body).group(1) for mv, body in re.findall(r"\[MOVE_(\w+)\]\s*=\s*\{(.*?)\n    \}", moves_h, re.S)}
+    colour_of = lambda mv: GREY if mtype[mv] == "MYSTERY" else type_rgb555(mtype[mv])
+    colour = "per routine"
+    #  The table must be the whole family and nothing else, as animcensus.py files it. A routine left out stays
+    #  vanilla silently; one added redraws a stranger.
+    family = set(census_family(fam))
     if family != set(table):
         raise SystemExit("table and family differ -- missing %s, extra %s" % (sorted(family - set(table)), sorted(set(table) - family)))
     s = open(SCRIPTS).read()
@@ -323,7 +456,7 @@ def main():
                     if re.search(r"\b%s\b" % l, keep):
                         raise SystemExit("Move_%s: shared code after %s jumps back into %s; split it by hand" % (mv, cutat, l))
             se = first_sound(vanilla + keep)           # a shared subroutine may carry the sound (SELF_DESTRUCT's does)
-            body = table[mv](colour, pw.get(mv, 0), se, mv)
+            body = table[mv](colour_of(mv), pw.get(mv, 0), se, mv)
             new = ("%s DRAFT, debug ROMs only until approved.\nMove_%s:\n.if DAEMONS_DEBUG\n" % (head, mv) +
                    "\n".join(body) + ("\n" if body[-1] == "\tend" else "\n\tend\n") + ".else\n" + vanilla + ".endif\n" + keep)
             # the label line and any previous genanims header are replaced; other comments above are kept

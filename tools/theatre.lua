@@ -11,6 +11,7 @@
 --     wait 30           let N frames pass
 --     shot name         save a screenshot as <dir>/name.png
 --     burst name 12 4   save 12 screenshots, one every 4 frames: <dir>/name_00.png ... (an animation, as frames)
+--     poke16 ADDR N     write a 16-bit value into memory (the theatre's sTheatreMove, from the .elf's symbols)
 --
 -- Why a file and not keystrokes: a key tapped into the window from outside lands on about half the
 -- frames the game polls, and a menu cannot be driven by input that may or may not arrive. A button
@@ -25,6 +26,13 @@ local KEYS = { A = C.GBA_KEY.A, B = C.GBA_KEY.B, L = C.GBA_KEY.L, R = C.GBA_KEY.
                UP = C.GBA_KEY.UP, DOWN = C.GBA_KEY.DOWN, LEFT = C.GBA_KEY.LEFT, RIGHT = C.GBA_KEY.RIGHT }
 
 local lastId, queue, busy, frame = nil, {}, nil, 0
+
+-- A batch already in the command file when the script loads is OLD: reloading once replayed a finished
+-- 620-command capture from the top. Remember its id so only a batch written after loading runs.
+do
+  local f = io.open(CMD, "r")
+  if f then lastId = (f:read("a") or ""):match("^id (%S+)"); f:close() end
+end
 
 local function readBatch()
   local f = io.open(CMD, "r")
@@ -46,7 +54,9 @@ local function finish()
   if f then f:write("done " .. tostring(lastId) .. "\n"); f:close() end
 end
 
-callbacks:add("frame", function()
+-- Loading the script again replaces the running copy instead of adding a second frame callback beside it.
+if THEATRE_CALLBACK then callbacks:remove(THEATRE_CALLBACK) end
+THEATRE_CALLBACK = callbacks:add("frame", function()
   frame = frame + 1
   if busy then
     busy.left = busy.left - 1
@@ -70,6 +80,12 @@ callbacks:add("frame", function()
     busy = { kind = "hold", key = KEYS[w[2]], left = tonumber(w[3]) or 4 }
   elseif w[1] == "wait" then
     busy = { kind = "wait", left = tonumber(w[2]) or 1 }
+  elseif w[1] == "poke16" then
+    -- write a 16-bit value into the game's memory: `poke16 0x0203xxxx 105` sets the theatre's routine directly.
+    -- Stepping to it with the D-pad drifts, because the theatre ignores input while an animation is still
+    -- playing, and a long one swallows the steps that follow it (T-142's first sheet showed the wrong routines).
+    emu:write16(tonumber(w[2]), tonumber(w[3]))
+    if #queue == 0 then finish() end
   elseif w[1] == "shot" then
     emu:screenshot(DIR .. "/" .. w[2] .. ".png")
     if #queue == 0 then finish() end
