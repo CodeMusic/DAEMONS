@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -631,7 +631,72 @@ def vector_table():
     t["SKY_ATTACK"] = lambda c, p, se, n: aim_then_carry(c, p, se, "DaemonsBallistic")
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table}
+
+# ---- the GROWTH vocabulary (T-147): "training: fitting to whatever it is fed" (2.8). ----
+#  A GROWTH write lands the way a fit converges: the target's colour overshoots, undershoots and settles in
+#  narrowing swings. What it FEEDS on shows too: the drains take colour from the target and step it into the user.
+#  INGEST's animation is also played every turn a SEED drains (General_LeechSeedDrain jumps to it), which suits it.
+
+def fit(c, power, se, lean=False, sel="F_PAL_TARGET", swings=None, diverge=False):
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, max(2, n - 1))]
+    if diverge:                                           # OVERTRAIN: the swings grow instead of settling
+        path = [0, k // 3, k // 6, k * 2 // 3, k // 3, k]
+    elif lean:
+        path = [0, k, k // 3, k // 2]
+    else:
+        path = [0, k, k // 3, k * 2 // 3, k // 2]
+    for a, b in zip(path, path[1:]):
+        out += blend(sel, 0, a, b, c) + wait()
+    return out + blend(sel, 1, path[-1], 0, c) + wait()
+
+
+def feed(c, power, se):
+    """A drain: the target gives up colour and the user takes it in, a step for each 20 power."""
+    k, amp, n = strength(power)
+    steps = max(1, min(3, power // 20))
+    out = send(c) + sound(se) + blend("F_PAL_TARGET", 0, 0, k, c) + wait() + blend("F_PAL_TARGET", 1, k, 0, c) + wait()
+    level = 0
+    for _ in range(steps):
+        out += tick_se() + blend("F_PAL_ATTACKER", 0, level, level + 4, c) + wait()
+        level += 4
+    return out + ["\tdelay 6"] + blend("F_PAL_ATTACKER", 1, level, 0, c) + wait()
+
+
+def backprop(c, power, se):
+    """BACKPROP: the error runs backward first -- target, then user -- and only then does the update land."""
+    return blend("F_PAL_TARGET", 0, 0, 6, c) + wait() + blend("F_PAL_TARGET", 0, 6, 0, c) + wait() + \
+        blend("F_PAL_ATTACKER", 0, 0, 6, c) + wait() + blend("F_PAL_ATTACKER", 0, 6, 0, c) + wait() + fit(c, power, se, lean=True)
+
+
+def batch(c, power, se, name):
+    """BATCH: turn 1 gathers the batch -- the user fills in three slow steps; turn 2 fits it, field and all."""
+    gather = []
+    for i in range(3):
+        gather += tick_se() + blend("F_PAL_ATTACKER", 2, i * 4, (i + 1) * 4, c) + wait()
+    return ["\tchoosetwoturnanim %sGather, %sFit" % (name, name), "%sDone:" % name, "\tend", "%sGather:" % name] + gather + \
+        ["\tdelay 8"] + blend("F_PAL_ATTACKER", 1, 12, 0, c) + wait() + ["\tgoto %sDone" % name, "%sFit:" % name] + \
+        blend("F_PAL_BG", 0, 0, 6, c) + wait() + fit(c, power, se) + blend("F_PAL_BG", 1, 6, 0, c) + wait() + ["\tgoto %sDone" % name]
+
+
+def growth_table():
+    t = {}
+    t["ABSORB"] = lambda c, p, se, n: feed(c, p, se)
+    t["MEGA_DRAIN"] = lambda c, p, se, n: feed(c, p, se)
+    t["GIGA_DRAIN"] = lambda c, p, se, n: feed(c, p, se)
+    t["SOLAR_BEAM"] = lambda c, p, se, n: batch(c, p, se, "DaemonsBatch")
+    t["BULLET_SEED"] = lambda c, p, se, n: fit(c, p, se, lean=True)         # MINIBATCH: small, and again
+    t["RAZOR_LEAF"] = lambda c, p, se, n: fit(c, p, se, sel="F_PAL_DEF_SIDE")
+    t["VINE_WHIP"] = lambda c, p, se, n: backprop(c, p, se)
+    t["MAGICAL_LEAF"] = lambda c, p, se, n: fit(c, p, se, lean=True)        # CONVERGE: never misses, settles fast
+    t["PETAL_DANCE"] = lambda c, p, se, n: fit(c, p, se, diverge=True) + recoil()
+    t["FRENZY_PLANT"] = lambda c, p, se, n: fit(c, p, se) + recoil() + recoil()
+    t["LEAF_BLADE"] = lambda c, p, se, n: fit(c, p, se) 
+    t["NEEDLE_ARM"] = lambda c, p, se, n: fit(c, p, se, lean=True)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table}
 
 
 def first_sound(text):
