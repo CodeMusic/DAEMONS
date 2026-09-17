@@ -12,7 +12,7 @@ while IFS='|' read -r name file desc; do
   python3 tools/prepconcept.py gfx/back/$b-back.$ext $S/src/${name}_back.png 0,200,0
   for v in front back; do
     view="front view"; [ $v = back ] && view="rear view, seen from behind"
-    python3 tools/spriteforge.py i2i --out $S/draft/${name}_$v --image $S/src/${name}_$v.png --denoise 0.55 --seed 1917 \
+    python3 tools/spriteforge.py i2i --out $S/${name}_$v --image $S/src/${name}_$v.png --denoise 0.55 --seed 1917 \
       --prompt "$desc, $view, $P" --negative "$N" 2>&1 | tail -1
   done
 done <<'LIST'
