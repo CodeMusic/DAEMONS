@@ -60,7 +60,9 @@ def blocks(src):
     for b in re.split(r"\n(?=[A-Za-z_]\w*:\n)", src):
         m = re.match(r"([A-Za-z_]\w*):\n", b)
         if m:
-            out[m.group(1)] = b
+            #  Comments are not animation: a note written above the NEXT label lands in this block's text, and it
+            #  made DISABLE look redrawn when RESTORE's draft was annotated.
+            out[m.group(1)] = "\n".join(l for l in b.split("\n") if not l.lstrip().startswith("@"))
     return out
 
 
@@ -124,9 +126,11 @@ def census():
         fam = family(d["effect"], d["power"]) or TYPE_NAME.get(d["type"], d["type"])
         text = b_ours.get(lab, "")
         vanilla = text == b_up.get(lab)
+        #  A redraw behind `.if DAEMONS_DEBUG` is a DRAFT: the debug ROMs play it for approval, release keeps vanilla's.
+        draft = ".if DAEMONS_DEBUG" in text
         tags = sorted(set(re.findall(r"ANIM_TAG_\w+", text)))
         subs = sorted(set(re.findall(r"\b(?:call|goto|jumpif\w*)\s+(\w+)", text)))
-        rows.append(dict(move=mv, name=names.get(mv, "?"), family=fam, label=lab, vanilla=vanilla, tags=tags, subs=subs,
+        rows.append(dict(move=mv, name=names.get(mv, "?"), family=fam, label=lab, vanilla=vanilla or draft, draft=draft, tags=tags, subs=subs,
                          earliest=earliest[mv], learners=len(learners[mv]), trainers=trainer_uses[mv], **d))
     return rows
 
@@ -141,7 +145,7 @@ def main():
         for r in sel:
             seen = "never" if r["earliest"] is None else ("TM/HM" if r["earliest"] == 0 else "Lv%d" % r["earliest"])
             print("  %-14s %-18s %-6s %3d daemons %3d trainer uses  %s" % (r["name"], r["move"][5:], seen, r["learners"], r["trainers"],
-                                                                      "vanilla" if r["vanilla"] else "ours"))
+                                                                      ("draft" if r["draft"] else "vanilla") if r["vanilla"] else "ours"))
         return
     if "--descriptions" in args:
         #  T-138: a routine we renamed whose description is still byte-identical to upstream's. Not every one is

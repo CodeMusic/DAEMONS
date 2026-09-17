@@ -282,7 +282,23 @@ finally:
 - ***Glob the tree, not the convention.*** **`data/**/*.inc` costs nothing and cannot be a third of the answer.** *The narrow glob encoded an assumption about where scripts live that was true of most of them.*
 - ***Make the test fail in both directions before trusting it.*** **Matching by NAME alone reported 47 CORPUS STAFF trainers as mismatched** — *their portraits are filed under the job names `corpus_m`/`corpus_f`, not the convention* — **and matching by SPECIES alone reported every town's staff against itself**, *because one side's note reads "CALLOW's staff, cheerful penguins" and the other reads "penguin".* **The test that holds is EITHER: a disagreement has to fail the name test AND the species test.**
 
-## 5. Two habits worth keeping
+### 19. L and R, which FireRed has already spent
+
+***Symptom:*** *a debug control bound to L or R opens a blue HELP screen instead, in battle as everywhere else.*
+
+**FireRed's help system owns L and R globally** (*the "HELP" button mode, on by default*), **so a new input handler that reads them competes with it and loses.** *The T-136 theatre was written to step ten routines with L and R, and its first on-screen test opened HELP.* ***Use the D-pad, SELECT and START*** — **and note the start menu's DEBUG pages DO get L and R**, *because the help system stands down while that menu is open; that is why the ENCOUNTER page's "L and R step by ten" works and a battle handler's does not.*
+
+## 5. Seeing the game: the theatre and its remote (T-136)
+
+**Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
+
+1. `open -a mGBA engineGba/daemonsContent_debug.gba`, then **Tools → Scripting…** and run `dofile("<repo>/tools/theatre.lua")` in its input line — *once per mGBA session; it survives reopening a rebuilt ROM.*
+2. **`.theatre/run.sh "hold A 4" "wait 60" "shot name" "burst anim 20 6"`** *writes a batch, waits for it, and leaves 240×160 PNGs in `.theatre/` (gitignored)* — **every button held for exact frames, every screenshot the frame the GBA drew.**
+3. **In a battle in a debug ROM (DEBUG → ENCOUNTER → INVOKE), SELECT at "What will X do?" opens the THEATRE**: *LEFT/RIGHT step one routine, UP/DOWN ten, A plays it, START swaps which side uses it, SELECT teaches it to that side's daemon (slot 1→4, streaks re-patched on the spot), B returns to the menu.*
+
+***Timing drifts across boots*** — *the intro, the recap and a menu that remembers its cursor all move* — **so take a `shot` at every stage change and read it before sending the next batch.** *The first unwatched boot pressed through CONTINUE into NEW GAME's controls page.*
+
+## 6. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
 

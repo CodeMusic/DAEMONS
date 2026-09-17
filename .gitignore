@@ -43,3 +43,4 @@ ai/bridgevenv/
 # purpose -- see CLAUDE.md.
 .claude/worktrees/
 .claude/settings.local.json
+.theatre/
