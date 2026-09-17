@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.216 — 2026-09-17
+
+### 2.8 — The "left alone" lists, corrected to what the game says
+
+- ***v11.212 fixed RECOVER and missed five from the same pass.*** **Engine `a62aec091` (2026-09-10) also renamed `ENDURE` → `SURVIVE`, `MIMIC` → `CLONE`, `MINIMIZE` → `SHRINK`, `CONVERSION` → `CAST` and `CONVERSION 2` → `RECAST`**, *and the three "marginal" names `SWIFT`, `FORESIGHT` and `ENCORE` became `UNERRING`, `REVEAL` and `REPLAY`.*
+- **"Twelve already work" is seven.** ***No reason was recorded for the five, and none is invented*** — *the lists now match the ROM, and whether each rename was right is left open, not settled by the correction.*
+
 ## v11.215 — 2026-09-17
 
 ### 10 Open — self-alignment, added to convergence

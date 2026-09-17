@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.215**
+**A total conversion — the living design bible, v11.216**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1596,13 +1596,15 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***And the perfect answer is unusable, which is worth recording so nobody proposes it again.*** **`POKE` is the BASIC instruction that writes one byte to an address** — it works twice, it is four characters, and it is **unusable in a game that has spent five separate passes deleting `POKé`.** *A pun that survives the read-aloud test and not the search-and-replace test is still a no.*
 
-#### Twelve already work, and are not to be touched
+#### Seven already work, and are not to be touched
 
-**`DISABLE` · `BLOCK` · `PROTECT` · `ENDURE` · `LOCK-ON` · `SAFEGUARD` · `MIMIC` · `MINIMIZE` · `METRONOME` · `RECYCLE` · `CONVERSION` · `CONVERSION 2`**
+**`DISABLE` · `BLOCK` · `PROTECT` · `LOCK-ON` · `SAFEGUARD` · `METRONOME` · `RECYCLE`**
+
+*Corrected again 2026-09-17, v11.216 — the same pass renamed five more.* **The engine's naming pass of 2026-09-10 (`a62aec091`, *"the reachable set is done"*) renamed every routine a daemon in this game learns, and this list was not consulted: `ENDURE` → `SURVIVE`, `MIMIC` → `CLONE`, `MINIMIZE` → `SHRINK`, `CONVERSION` → `CAST`, `CONVERSION 2` → `RECAST`.** ***No reason was recorded for those five, and none is invented here*** — *unlike `RESTORE`, below, whose collision with the POTION is documented.* **The names shipped, they have been in the ROM a week, `CAST` and `RECAST` have since become load-bearing** (*self-alignment, 10's Open log*), **and reverting them would be its own rename pass** — *so the list is corrected to what the game says, and the question of whether each rename was right is left open rather than answered by default.*
 
 *Corrected 2026-09-17, v11.212.* **`RECOVER` was on this list and was renamed `RESTORE` on 2026-09-10** (engine `a62aec091`) — ***not because it failed to land, but because the word was already spent***: **`RECOVER` is the POTION** (*the ladder `RECOVER · DEEP RECOVER · FULL RECOVER · REBUILD`, 1.6d*), *and a routine and an item with one name make a bag and a battle menu that disagree about what the word does.* **The rename was right and the list was not updated; it is now.**
 
-***A metronome is a clock, recycling is garbage collection, and a type conversion is a type conversion.*** **Same finding as *catchy tune* and `MOVE ITEMS`** (1.6): *the pass that renames what already lands is a pass that makes the game worse.* **`SWIFT`, `FORESIGHT` and `ENCORE` are marginal and get a second look, not a rename by default.**
+***A metronome is a clock and recycling is garbage collection.*** **Same finding as *catchy tune* and `MOVE ITEMS`** (1.6): *the pass that renames what already lands is a pass that makes the game worse.* ~~**`SWIFT`, `FORESIGHT` and `ENCORE` are marginal and get a second look, not a rename by default.**~~ ***They got the rename*** *(`UNERRING`, `REVEAL`, `REPLAY`, the same pass).* *The type-conversion line that stood here ("a type conversion is a type conversion") went with `CONVERSION`.*
 
 #### PERSPECTIVE stays, as the deliberate exception
 
@@ -1739,7 +1741,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 #### Thirteen kept, and fifty-eight descriptions rewritten
 
-**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK`, `MIMIC`, `MINIMIZE`, `ENDURE`, `CONVERSION`, `CONVERSION 2` and — added 2026-09-11 — `SUBSTITUTE` were left alone** (*`RECOVER` was listed here too until v11.212; it is `RESTORE`, because `RECOVER` is the POTION*) — *2.8's rule that the pass which renames what already lands makes the game worse.*
+**`DISABLE`, `PROTECT`, `SAFEGUARD`, `LOCK-ON`, `METRONOME`, `RECYCLE`, `BLOCK` and — added 2026-09-11 — `SUBSTITUTE` were left alone** (*`RECOVER` was listed here too until v11.212 — it is `RESTORE`, because `RECOVER` is the POTION — and until v11.216 so were `MIMIC`, `MINIMIZE`, `ENDURE`, `CONVERSION` and `CONVERSION 2`, which the 2026-09-10 pass renamed `CLONE`, `SHRINK`, `SURVIVE`, `CAST` and `RECAST` with no recorded reason; the heading's count is kept because it is the pass's, not today's*) — *2.8's rule that the pass which renames what already lands makes the game worse.*
 
 ***And fifty-eight descriptions had to move with their names***, because a description that still describes the old one is worse than no rename at all: *`OCCLUDE` cannot say "bites with vicious fangs".* **Every line measured against the 170px box; the widest is 126.**
 
