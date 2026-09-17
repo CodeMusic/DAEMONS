@@ -12,6 +12,7 @@
 --     shot name         save a screenshot as <dir>/name.png
 --     burst name 12 4   save 12 screenshots, one every 4 frames: <dir>/name_00.png ... (an animation, as frames)
 --     poke16 ADDR N     write a 16-bit value into memory (the theatre's sTheatreMove, from the .elf's symbols)
+--     poke8 ADDR N      write one byte (sTheatreTurn: 1 films a two-turn routine's second half)
 --
 -- Why a file and not keystrokes: a key tapped into the window from outside lands on about half the
 -- frames the game polls, and a menu cannot be driven by input that may or may not arrive. A button
@@ -85,6 +86,10 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
     -- Stepping to it with the D-pad drifts, because the theatre ignores input while an animation is still
     -- playing, and a long one swallows the steps that follow it (T-142's first sheet showed the wrong routines).
     emu:write16(tonumber(w[2]), tonumber(w[3]))
+    if #queue == 0 then finish() end
+  elseif w[1] == "poke8" then
+    -- one byte: the theatre's sTheatreTurn, so a two-turn routine's second half can be filmed
+    emu:write8(tonumber(w[2]), tonumber(w[3]))
     if #queue == 0 then finish() end
   elseif w[1] == "shot" then
     emu:screenshot(DIR .. "/" .. w[2] .. ".png")

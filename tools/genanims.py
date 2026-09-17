@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -579,7 +579,59 @@ def logic_table():
     t["BRICK_BREAK"] = lambda c, p, se, n: falsify(c, p, se)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table}
+
+# ---- the VECTOR vocabulary (T-146): "direction in a space of meanings" -- delivery with a heading (2.8). ----
+#  A CONTENT write lands in place and a LOGIC write lands in steps; a VECTOR write TRAVELS. It leaves the user (its
+#  colour pulses and lets go), crosses the field (the ground flickers in the routine's red while it is in flight),
+#  and arrives with a HEADING: the target is shaken along the line it came in on, never up and down.
+#  FLY (GOTO) and BOUNCE (REBOUND) hide the user on their first turn -- a mechanic: the battle reads it back as the
+#  user being elsewhere -- and that is done with the script's own `invisible` and `visible`, not vanilla's sprites.
+
+def carry(c, power, se, lean=False, sel="F_PAL_TARGET", drift=False, drill=False):
+    k, amp, n = strength(power)
+    out = [] if lean else blend("F_PAL_ATTACKER", 0, 0, 8, c) + wait()
+    out += ([] if lean else blend("F_PAL_ATTACKER", 0, 8, 0, c)) + blend("F_PAL_BG", 1 if drift else 0, 0, 5, c) + wait()
+    out += blend("F_PAL_BG", 0, 5, 0, c) + sound(se)
+    out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, %d" % (amp + (1 if drift else 0), n + (2 if drift else 0), 2 if drift else 1)]
+    if drill:                                             # TUNNEL: the same point struck again and again
+        for _ in range(3):
+            out += blend(sel, 0, 0, k, c) + wait() + blend(sel, 0, k, k // 2, c) + wait()
+        return out + blend(sel, 0, k // 2, 0, c) + wait()
+    return out + blend(sel, 0, 0, k, c) + wait() + blend(sel, 1 if drift else 0, k, 0, c) + wait()
+
+
+def away_and_back(c, power, se, name, bounce=False):
+    """Two turns. The first: the user's colour drains and it is gone -- somewhere else on the map of meanings.
+    The second: it is back, and arrives on its heading (REBOUND lands with a vertical jolt: it comes DOWN)."""
+    run = ["\tvisible ANIM_ATTACKER"] + carry(c, power, se)
+    if bounce:
+        run += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 4, 4, 1"] + wait()
+    return ["\tchoosetwoturnanim %sAway, %sBack" % (name, name), "%sDone:" % name, "\tend", "%sAway:" % name] + \
+        sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 0, 0, 12, GREY) + wait() + ["\tinvisible ANIM_ATTACKER"] + \
+        blend("F_PAL_ATTACKER", 0, 12, 0, GREY) + wait() + ["\tgoto %sDone" % name, "%sBack:" % name] + run + ["\tgoto %sDone" % name]
+
+
+def aim_then_carry(c, power, se, name):
+    """BALLISTIC: the first turn is the aim -- the user held in its colour while the heading is set; the second, the flight."""
+    return ["\tchoosetwoturnanim %sAim, %sFire" % (name, name), "%sDone:" % name, "\tend", "%sAim:" % name] + \
+        blend("F_PAL_ATTACKER", 2, 0, 12, c) + wait() + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_ATTACKER, 1, 0, 6, 2", "\tdelay 16"] + \
+        blend("F_PAL_ATTACKER", 1, 12, 0, c) + wait() + ["\tgoto %sDone" % name, "%sFire:" % name] + carry(c, power, se) + ["\tgoto %sDone" % name]
+
+
+def vector_table():
+    t = {}
+    for mv in ["WING_ATTACK", "AERIAL_ACE", "AEROBLAST"]:
+        t[mv] = lambda c, p, se, n: carry(c, p, se)
+    t["PECK"] = lambda c, p, se, n: carry(c, p, se, lean=True)
+    t["GUST"] = lambda c, p, se, n: carry(c, p, se, drift=True)
+    t["AIR_CUTTER"] = lambda c, p, se, n: carry(c, p, se, sel="F_PAL_DEF_SIDE")
+    t["DRILL_PECK"] = lambda c, p, se, n: carry(c, p, se, drill=True)
+    t["FLY"] = lambda c, p, se, n: away_and_back(c, p, se, "DaemonsGoto")
+    t["BOUNCE"] = lambda c, p, se, n: away_and_back(c, p, se, "DaemonsRebound", bounce=True)
+    t["SKY_ATTACK"] = lambda c, p, se, n: aim_then_carry(c, p, se, "DaemonsBallistic")
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table}
 
 
 def first_sound(text):
