@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.209**
+**A total conversion — the living design bible, v11.210**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7191,7 +7191,9 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **This is per INDIVIDUAL, not per species, and it is the first colour in the game that is.** *Two daemons of one species that have learned differently look different* — **and one daemon changes as it learns, forgets and is taught.** *Colour carrying the argument was the rule; colour that ACCUMULATES is the argument doing work over time.*
 
-***A streak is drawn from its type's LIGHT step, not its mid.*** **A FLOW streak on a FLOW body would vanish at the mid step** — *the same trap the accents already had, where a red eye on a VECTOR daemon disappears* — **and at the light step it reads as a vein of the body's own colour, which is what a daemon deep in its own type should look like.**
+***A streak is drawn from its type's LIGHT step — unless that would vanish into the body, and then from whichever of its light and DARK steps stands further off it.*** **The line is 9.4's own separability floor: CIE76 20, measured on the body's mid tone**, *the same trap the accents already had, where a red eye on a VECTOR daemon disappears.*
+
+*Corrected 2026-09-17, the day it was written.* **The first version said a streak in the body's own type "reads as a vein" at the light step, and the preview disproved it**: *four CONTENT routines on a CONTENT body showed no streaks at all, because CONTENT's light step is its body's bone.* **Measured over every pair, 28 of the 324 body-and-move combinations fail at the light step — and it is not only a type on itself: LATENT on LEGACY was 4.3.** *All 28 clear the floor at the dark step, which is where a streak in its own type now reads as a vein.* **The choice is made per pair at build time, so no colour maths runs in the cartridge.**
 
 ***Where there is no individual, the streaks are BLANK.*** **The Index, and anything else that shows a species rather than a daemon, fills 11–14 with neutral grey.** *The Index records what a daemon is; what any one of them has come to understand is not something it can file.* **Nothing says so.**
 

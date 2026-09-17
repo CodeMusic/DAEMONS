@@ -55,6 +55,16 @@ MAX_ACCENTS = 5            # palette 6..10
 SAT_ACCENT = 60            # a pixel this saturated is a marking, not body
 SAT_BODY = 30              # this neutral is body; between the two is fringing
 
+#  THE STREAKS (9.4, amended 2026-09-17; T-132). A drawing marks its four streak regions in four
+#  marker colours -- one per move slot, in slot order -- and they become palette 11..14. The build
+#  ships those four entries as ONE neutral grey; the engine fills them from the daemon's moves at
+#  runtime. The grey is also the mark tools/genstreaks.py reads to know a species has streaks at all,
+#  so it must stay identical in all four slots and identical to genstreaks.BLANK.
+STREAK_MARKERS = [(255, 0, 255), (0, 255, 255), (255, 255, 0), (0, 255, 0)]   # magenta cyan yellow green
+STREAK_FIRST = 11
+STREAK_BLANK = (148, 148, 148)
+STREAK_TOLERANCE = 48      # per channel: JPEG and deringing move a marker, never this far
+
 def ramp5(r, g, b):
     """Five steps of one hue: highlight, light, mid, dark, near-black outline.
 
@@ -80,13 +90,21 @@ def rich_src(ours, kind):
             if not f.endswith(".txt")]
     return hits[0] if hits else None
 
-def place_rich(path, type_rgb):
+def place_rich(path, type_rgb, shared=None):
     """Redrawn art -> a 64x64 index grid and its palette.
 
     The body is neutral grey and becomes the type ramp; saturated pixels are
     markings and keep their own colour. JPEG ringing puts a band of weakly
     coloured pixels between the two, so anything in that band is treated as
-    body -- a fringe is not a marking."""
+    body -- a fringe is not a marking.
+
+    SHARED IS THE FRONT'S PALETTE, AND THE BACK MUST USE IT. The engine gives a species ONE palette
+    (normal.pal) for both views. Quantising each view's accents separately gave the back its own
+    accent colours, and the loop then wrote normal.pal from whichever view came LAST -- the back -- so
+    the front drew through the back's accents: DEADLOCK's blue badge came out black in battle, and two
+    of PING's accents with it. Found by T-132's streak preview, which read the palette the engine
+    actually loads instead of the one embedded in the PNG. So the back's accent pixels are mapped onto
+    the front's accents, never quantised afresh."""
     a = deringe(np.asarray(Image.open(path).convert("RGB")).astype(int))
     im = Image.fromarray(a.astype(np.uint8))
     sat = a.max(2) - a.min(2)
@@ -112,7 +130,13 @@ def place_rich(path, type_rgb):
     a = np.asarray(im).astype(int)
     m = np.asarray(mask) > 0
     sat = a.max(2) - a.min(2)
-    acc = m & (sat >= SAT_ACCENT)
+    #  Streak markers are found FIRST and taken out of the accents: they are saturated too, and left in
+    #  they would be quantised into five accent colours and the streaks would be painted, not patched.
+    streak = np.full(m.shape, -1)
+    for k, mk in enumerate(STREAK_MARKERS):
+        hit = m & (np.abs(a - np.array(mk)).max(2) <= STREAK_TOLERANCE)
+        streak[hit] = k
+    acc = m & (sat >= SAT_ACCENT) & (streak < 0)
 
     pal = [BG] + ramp5(*type_rgb)
     grid = [[0] * SIZE for _ in range(SIZE)]
@@ -128,7 +152,9 @@ def place_rich(path, type_rgb):
         lvl = np.zeros_like(lum)
 
     accents = []
-    if acc.any():
+    if shared is not None:
+        accents = [c for c in shared[1 + BODY_LEVELS:STREAK_FIRST] if c != (0, 0, 0)]
+    elif acc.any():
         px = Image.fromarray(a[acc].reshape(1, -1, 3).astype(np.uint8))
         n = min(MAX_ACCENTS, len(np.unique(a[acc].reshape(-1, 3), axis=0)))
         q = px.convert("P", palette=Image.ADAPTIVE, colors=n, dither=Image.NONE)
@@ -138,12 +164,19 @@ def place_rich(path, type_rgb):
             if all(sum((c[k]-e[k])**2 for k in range(3)) > 45*45 for e in accents):
                 accents.append(c)                     # of blue look like one blue
     pal += accents
+    if shared is not None:
+        pal = list(shared)                   # the back draws through the front's palette, exactly
+    elif (streak >= 0).any():
+        #  Pad the accents out to index 10, then the four streaks at 11..14, all the one grey.
+        pal += [(0, 0, 0)] * (STREAK_FIRST - len(pal)) + [STREAK_BLANK] * len(STREAK_MARKERS)
 
     for y in range(h):
         for x in range(w):
             if not m[y, x]:
                 continue
-            if acc[y, x] and accents:
+            if streak[y, x] >= 0:
+                grid[oy + y][ox + x] = STREAK_FIRST + streak[y, x]
+            elif acc[y, x] and accents:
                 d = [sum((a[y, x, k] - c[k]) ** 2 for k in range(3)) for c in accents]
                 grid[oy + y][ox + x] = 6 + d.index(min(d))
             else:
@@ -374,7 +407,7 @@ for vanilla, ours in sorted(pairs.items()):
                       ("back",  "gfx/pokemon/back/%sb.png" % d.replace("_", ""))):
         rich = rich_src(ours, kind)
         if rich:
-            grid, palette = place_rich(rich, TYPE_COLOR[t])
+            grid, palette = place_rich(rich, TYPE_COLOR[t], shared=front_pal if kind == "back" else None)
             note = "  redrawn (%d colours)" % len(palette)
         else:
             s = os.path.join(GB, src)
@@ -389,8 +422,10 @@ for vanilla, ours in sorted(pairs.items()):
         if kind == "front":
             front_grid, front_pal = grid, palette
     if WRITE:
-        write_pal(os.path.join(outdir, "normal.pal"), palette)
-        write_pal(os.path.join(outdir, "shiny.pal"), palette)
+        # The FRONT's palette is the species palette; the back was mapped onto it above.
+        species_pal = front_pal if front_pal is not None else palette
+        write_pal(os.path.join(outdir, "normal.pal"), species_pal)
+        write_pal(os.path.join(outdir, "shiny.pal"), species_pal)
 
     #  Derived assets, only for daemons whose art we actually redrew -- a
     #  vanilla-sourced sprite has a vanilla icon and object already.

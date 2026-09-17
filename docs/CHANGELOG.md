@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.210 — 2026-09-17
+
+### 9.4 — A streak's step, corrected the day it was written
+
+- ***v11.209 said a streak in the body's own type "reads as a vein" at the light step. The preview disproved it*** — **four CONTENT routines on a CONTENT body showed no streaks at all.**
+- **A streak now takes its type's light step unless that sits under 9.4's separability floor (CIE76 20 on the body's mid tone), and then whichever of light and DARK stands further off.** *Measured over all 324 body-and-move pairs: 28 fail at the light step, not only a type on itself — LATENT on LEGACY was 4.3 — and all 28 clear at the dark step.*
+- ***And the preview found a bug older than the streaks***: *`gbasprite.py` wrote each species' palette from whichever view it built LAST, the back, so the front drew through the back's accents* — **DEADLOCK's blue badge was black in battle.** *One palette per species now, the back mapped onto the front's accents.*
+
 ## v11.209 — 2026-09-17
 
 ### 9.4 — The streaks: what a daemon is, and what it understands
