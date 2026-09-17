@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -764,7 +764,53 @@ def flow_table():
     t["DIVE"] = lambda c, p, se, n: descend(c, p, se, "DaemonsDescend")
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table}
+
+# ---- the ENTROPY vocabulary (T-149): "noise and heat; disorder that spreads" (2.8). ----
+#  An ENTROPY write is NOISE. The target's colour jumps between uneven levels in a fixed pattern that reads as
+#  random (never Random(): an animation must not touch a battle's rolls), it jitters sideways, and the disorder
+#  SPREADS -- outward into the field, or across everything at once for FLASHOVER. What it leaves decays slowly.
+
+NOISE = [1.0, 0.3, 0.8, 0.15, 0.6, 0.35, 0.9, 0.2, 0.5]
+
+
+def noise(c, power, se, lean=False, sel="F_PAL_TARGET", spread=None, burn_in=False):
+    k, amp, n = strength(power)
+    out = [] if lean else send(c)
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (max(1, amp - 1), n + 3)]
+    levels = [0] + [max(1, int(k * f)) for f in (NOISE[:5] if lean else NOISE)]
+    for a, b in zip(levels, levels[1:]):
+        out += blend(sel, 0, a, b, c) + wait()
+    last = levels[-1]
+    if spread:                                            # the disorder leaves the target and takes the field
+        seq = [0, 6, 2, 5, 1, 4, 0]
+        for a, b in zip(seq, seq[1:]):
+            out += blend(spread, 0, a, b, c) + wait()
+    return out + blend(sel, 3 if burn_in else 1, last, 0, c) + wait()
+
+
+def flashover(c, power, se):
+    """FLASHOVER: the noise, and then everything on the field ignites at once."""
+    whole = "F_PAL_BG | F_PAL_BATTLERS"
+    return noise(c, power, se) + sound(se, "SOUND_PAN_ATTACKER") + blend(whole, 0, 0, 12, c) + wait() + blend(whole, 2, 12, 0, c) + wait()
+
+
+def entropy_table():
+    t = {}
+    t["EMBER"] = lambda c, p, se, n: noise(c, p, se, lean=True)
+    t["FLAMETHROWER"] = lambda c, p, se, n: noise(c, p, se, spread="F_PAL_BG")
+    t["FIRE_BLAST"] = lambda c, p, se, n: flashover(c, p, se)
+    t["BLAST_BURN"] = lambda c, p, se, n: flashover(c, p, se) + recoil() + recoil()
+    t["OVERHEAT"] = lambda c, p, se, n: noise(c, p, se, spread="F_PAL_BG") + recoil() + recoil()
+    t["FIRE_PUNCH"] = lambda c, p, se, n: noise(c, p, se, lean=True, burn_in=True)
+    t["SACRED_FIRE"] = lambda c, p, se, n: noise(c, p, se, burn_in=True)
+    t["BLAZE_KICK"] = lambda c, p, se, n: noise(c, p, se)
+    t["FIRE_SPIN"] = lambda c, p, se, n: send(c) + hold(c, p, se)
+    t["FLAME_WHEEL"] = lambda c, p, se, n: spin(c) + noise(c, p, se, lean=True)
+    t["HEAT_WAVE"] = lambda c, p, se, n: noise(c, p, se, sel="F_PAL_DEF_SIDE", spread="F_PAL_BG")
+    t["ERUPTION"] = lambda c, p, se, n: noise(c, p, se, sel="F_PAL_DEF_SIDE", spread="F_PAL_BG | F_PAL_ATK_SIDE")
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table}
 
 
 def first_sound(text):
