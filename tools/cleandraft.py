@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Clean a spriteforge draft into a daemon drawing gbasprite.py can build (T-131; vision.md 9.4).
 
-    python3 tools/cleandraft.py DRAFT.png OUT.png [--streaks]
+    python3 tools/cleandraft.py DRAFT.png OUT.png [--streaks] [--streak-box=x0,y0,x1,y1]
 
 THE RECIPE IT SERVES, settled on NIBBLE 2026-09-17 (the prompts in full are in ai/README.md):
 
@@ -48,6 +48,7 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PITCH = 8
 BG_TOL = 28          # a background pixel sits within this of the border colour, per channel
+SHADOW_DEPTH = 40    # a cast shadow is at most this much darker than the ground
 OUTLINE_LUM = 60     # darker than this is the creature's outline, and the fill never crosses it
 
 
@@ -78,7 +79,13 @@ def clear_background(g):
     bg = np.median(border, 0)
     bg_lum = int((bg[0] * 299 + bg[1] * 587 + bg[2] * 114) // 1000)
     is_bg = np.abs(g - bg).max(2) <= BG_TOL
-    is_shadow = (sat < 30) & (lum < bg_lum) & (lum >= OUTLINE_LUM)
+    # A CAST SHADOW is a band a little darker than the ground, UNDER the creature. The first rule took any grey
+    # darker than the ground anywhere, and on batch 1 it walked into every grey body without a closed outline --
+    # LABEL, BUFFER and ROVERCUB kept 9-44 pixels. Near the ground's own lightness, and in the lower part only.
+    low = np.zeros((h, w), bool); low[h * 55 // 100:, :] = True
+    is_shadow = (sat < 30) & (lum < bg_lum) & (lum >= bg_lum - SHADOW_DEPTH) & low
+    if int(bg.max() - bg.min()) >= 80:   # a KEY ground: its shadow is dark key colour, which is_bg's tolerance and the
+        is_shadow[:] = False             # spill pass take -- a grey there is the creature (CRAWLER's back lost its lower half)
     # The white line is at the canvas EDGE. Allowed anywhere, the first version walked through a gap the grid
     # left in NIBBLE's thin outline and took 204 pixels of its white body.
     rim = np.zeros((h, w), bool); rim[:4, :] = rim[-4:, :] = rim[:, :4] = rim[:, -4:] = True   # NIBBLE's back had it 4 rows up
@@ -102,7 +109,10 @@ def clear_background(g):
     # tail, whisker or outline never is.
     dark = lum < OUTLINE_LUM
     worn = 0
-    while True:
+    # ON A KEY-COLOUR GROUND THIS STEP IS SKIPPED. A shadow cast on chroma green is dark GREEN, which the flood
+    # already takes; a black mass there is the creature -- CRAWLER's black segments were worn away to 206 pixels.
+    keyed = int(bg.max() - bg.min()) >= 80
+    while not keyed:
         light_body = ~gone & ~dark
         step = []
         for y in range(h):
@@ -150,7 +160,7 @@ def clear_background(g):
     return ~gone, counts, bg
 
 
-def paint_streaks(g, subject):
+def paint_streaks(g, subject, box=None):
     """four short PARALLEL diagonal strokes on the body, left to right, with body between them.
 
     Two placements failed first. Spaced across the figure's whole box, NIBBLE's tail made the box twice its
@@ -159,6 +169,10 @@ def paint_streaks(g, subject):
     median run over the band -- four columns are fixed across it, and each stroke leans the same way."""
     lum = (g[..., 0] * 299 + g[..., 1] * 587 + g[..., 2] * 114) // 1000
     body = subject & (lum >= OUTLINE_LUM)
+    if box:                     # --streak-box x0,y0,x1,y1 in art px: where the automatic place was wrong, say where
+        x0, y0_, x1, y1_ = box
+        inside = np.zeros_like(body); inside[y0_:y1_ + 1, x0:x1 + 1] = True
+        body = body & inside
     ys = np.where(body.any(1))[0]
     y0, y1 = ys.min(), ys.max()
     top = y0 + (y1 - y0) * 50 // 100
@@ -178,18 +192,26 @@ def paint_streaks(g, subject):
     if not starts:
         return [0, 0, 0, 0]
     r0, r1 = int(np.median(starts)), int(np.median(ends))
+    if box:                     # a hand-given box is the span: CRAWLER's widest light run was ONE segment of five
+        r0, r1 = box[0], box[2]
     width = r1 - r0 + 1
     cols = [r0 + round((k + 0.5) * width / 4) for k in range(4)]
     marks = markers()
     painted = [0, 0, 0, 0]
     if min(b - a for a, b in zip(cols, cols[1:])) >= 3:
-        for t in range(span):                                   # ACROSS: room for body between four diagonals
-            y = top + t
-            for k, cx in enumerate(cols):
-                x = cx - t // 2
-                if 0 <= y < g.shape[0] and 0 <= x < g.shape[1] and body[y, x]:
-                    g[y, x] = marks[k]
-                    painted[k] += 1
+        # ACROSS: room for body between four diagonals. A column can land wholly on dark -- CRAWLER's segments
+        # alternate black, and its fourth column fell on one -- so a stroke that finds no body slides sideways,
+        # one px at a time up to its neighbour's half-gap, to the nearest column that has some.
+        gap = min(b - a for a, b in zip(cols, cols[1:])) // 2
+        for k, c0 in enumerate(cols):
+            for off in [0] + [o for d in range(1, gap + 1) for o in (d, -d)]:
+                cells = [(top + t, c0 + off - t // 2) for t in range(span)]
+                cells = [(y, x) for y, x in cells if 0 <= y < g.shape[0] and 0 <= x < g.shape[1] and body[y, x]]
+                if len(cells) >= 3:
+                    for y, x in cells:
+                        g[y, x] = marks[k]
+                    painted[k] = len(cells)
+                    break
         return painted
     # STACKED: a torso too narrow for four diagonals with body between them (NIBBLE's is nine) gets four short
     # dashes down its middle instead, a row of body between each -- still slot 1 to 4, now top to bottom.
@@ -216,9 +238,28 @@ def main():
     src, out = args
     g = sample(src)
     subject, counts, bg = clear_background(g)
+    # KEY SPILL. On a chroma-key ground the model leaves a fringe of key-tinted pixels along the outline and
+    # between legs (CRAWLER kept 42 green "accents"). A pixel leaning toward the key's own hue is spill: at the
+    # subject's edge it is ground, repeatedly, until none touch; inside, it goes back to grey at its brightness.
+    spill_n = 0
+    if int(bg.max() - bg.min()) >= 80:
+        kd = bg - bg.mean(); kd = kd / np.linalg.norm(kd)
+        lean = ((g - g.mean(2, keepdims=True)) * kd).sum(2)
+        spill = subject & (lean > 25)
+        while True:
+            gone = ~subject
+            edge = spill & (np.roll(gone, 1, 0) | np.roll(gone, -1, 0) | np.roll(gone, 1, 1) | np.roll(gone, -1, 1))
+            if not edge.any():
+                break
+            subject &= ~edge; spill &= ~edge; spill_n += int(edge.sum())
+        lg = (g[..., 0] * 299 + g[..., 1] * 587 + g[..., 2] * 114) // 1000
+        g[spill] = lg[spill][:, None]; spill_n += int(spill.sum())
+        counts["kept"] = int(subject.sum())
     print("  %s: %dx%d art px; border colour %s; removed %d background, %d shadow, %d edge-white, %d loose; kept %d"
           % (os.path.basename(src), g.shape[1], g.shape[0], tuple(int(v) for v in bg),
              counts["background"], counts["shadow"], counts["edge"], counts["loose"], counts["kept"]))
+    if spill_n:
+        print("  %d key-spill pixel(s) taken off the edge or returned to grey" % spill_n)
     # A LONE SATURATED PIXEL IS SHADING, NOT A MARKING. The checkpoint shades greyscale with a cool blue tint, and on
     # NIBBLE five single blue specks were saturated enough that gbasprite.py took three of them as accent colours.
     # An accent is a nose, an eye, a stripe: two or more saturated pixels together. A saturated pixel with no
@@ -234,7 +275,8 @@ def main():
             specks += 1
     print("  %d lone saturated pixel(s) returned to grey; %d saturated pixel(s) kept as accents" % (specks, int(hot.sum()) - specks))
     if "--streaks" in sys.argv:
-        painted = paint_streaks(g, subject)
+        box = next((tuple(int(v) for v in x.split("=", 1)[1].split(",")) for x in sys.argv if x.startswith("--streak-box=")), None)
+        painted = paint_streaks(g, subject, box)
         print("  streak pixels painted per slot: %s" % painted)
         assert all(painted), "a streak found no body to sit on -- place it by hand"
     rgba = np.zeros(g.shape[:2] + (4,), np.uint8)
