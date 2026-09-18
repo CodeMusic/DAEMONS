@@ -410,9 +410,25 @@ def place(src, palette):
 #  late-game houses and every one of them already fills the slot: Lorelei's house all four NPC slots, the other
 #  four a town local in the special one. Their objects keep vanilla's art until a slot scheme exists -- a ramp
 #  drawn through NPC_BLUE is what turned DEADLOCK peach.
-OW_DEFERRED = {"pidgey", "pikachu"}
+OW_DEFERRED = {"pidgey", "pikachu", "jigglypuff", "nidoran_f", "nidoran_m"}   # batch 2 adds three, same census owed
 
 pairs = renamed()
+#  THE GBA RENAMED MORE THAN THE GAME BOY DID. renamed() reads the Game Boy build's names, which is where the 66
+#  first drawings came from -- but HEAP, BACKBONE, SECTOR and the rest were renamed only in the GBA build, so a
+#  redrawing of one would never be found. Any GBA-renamed species with redrawn art in RICH is added here, keyed
+#  by its graphics directory (T-131 batch 2).
+def renamed_gba():
+    pat = r'\[SPECIES_(\w+)\]\s*= _\("(.*?)"\)'
+    ours = dict(re.findall(pat, open(os.path.join(GBA, "src/data/text/species_names.h")).read()))
+    up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:src/data/text/species_names.h"],
+                        capture_output=True, text=True).stdout
+    van = dict(re.findall(pat, up))
+    return {c: o for c, o in ours.items() if van.get(c) not in (None, o)}
+_seen = {DIR_FIX.get(v, v.lower().replace(" ", "_").replace(".", "")) for v in pairs}
+for _c, _o in renamed_gba().items():
+    if _c.lower() not in _seen and rich_src(_o, "front"):
+        pairs[_c] = _o
+        DIR_FIX[_c] = _c.lower()
 done, skipped, ow_todo = 0, [], []
 for vanilla, ours in sorted(pairs.items()):
     d = DIR_FIX.get(vanilla, vanilla.lower().replace(" ", "_").replace(".", ""))
