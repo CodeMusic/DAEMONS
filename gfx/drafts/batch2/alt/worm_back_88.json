@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch2/alt/worm_back_88",
+ "prompt": "pure white background, pixel art game sprite of a single snake made of identical repeating segments, seen from directly behind, the smooth back of its head at the top facing away, its segmented body coiled below toward the viewer, no face visible, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "face, eyes, mouth, fangs, tongue, nose, looking at viewer, side view, profile, front view, white body, pale body, grey background, colored background, floor, ground, pedestal, base, people, human, weapon, knife, sword, drop shadow, shadow, pink, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border, lines",
+ "seed": 88,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 23.7,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 12:17:11"
+}

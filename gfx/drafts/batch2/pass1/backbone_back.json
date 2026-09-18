@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch2/backbone_back",
+ "prompt": "pure white background, pixel art game sprite of a single huge serpent made of a long chain of large rounded stone blocks like vertebrae, rear view, facing away from the viewer, back of the head, the chain of stone blocks coiling away, the back of the horned head, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "face, eyes, mouth, side view, profile, front view, white body, pale body, grey background, colored background, drop shadow, shadow, pink, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border, lines",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 32.8,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 11:50:45"
+}

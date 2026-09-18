@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/batch2/suspend_back",
+ "prompt": "a round balloon-like puffball creature with big closed eyes and a curl of hair on its forehead, rear view, seen from behind, pixel art game sprite, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, flat solid green background, centered, no shadow, no text",
+ "negative": "green body, green tint, pale body, drop shadow, shadow, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.55,
+ "image": "gfx/drafts/batch2/src/suspend_back.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 11:48:21"
+}

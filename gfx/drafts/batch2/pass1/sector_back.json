@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch2/sector_back",
+ "prompt": "pure white background, pixel art game sprite of a single small upright armadillo-like mammal whose back is plated with square tiles in a neat grid, rear view, facing away from the viewer, back of the head, the grid of square tiles across its back, a short tail, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "face, eyes, mouth, side view, profile, front view, white body, pale body, grey background, colored background, drop shadow, shadow, pink, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border, lines",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 24.7,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 11:51:50"
+}

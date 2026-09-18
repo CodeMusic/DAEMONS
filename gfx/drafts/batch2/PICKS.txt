@@ -1,0 +1,15 @@
+T-131 batch 2: which draft each view is (the rest of alt/ and pass1/ were not chosen).
+heap_front <- alt/heap_front_7
+heap_back <- alt/heap_back_42
+sector_front <- alt/sector_front_2024
+sector_back <- alt/sector_back_7
+backbone_front <- alt/backbone_front_7
+backbone_back <- alt/backbone_back_88
+preempt_back <- alt/preempt_back_2024
+worm_back <- alt/worm_back_42
+fork_front <- alt/fork_front_88
+branch_front <- alt/branch_front_42
+fork_back <- alt/fork_back_88
+branch_back <- alt/branch_back_42
+ping_front <- alt/ping_front_88
+ping_back <- alt/ping_back_7

@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch2/alt/branch_front_88",
+ "prompt": "pure white background, pixel art game sprite of a single small spiky rabbit-like creature with large upright ears, front view, facing the viewer, one tall horn on its forehead that branches into two tines like a forked twig, empty paws, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "side view, profile, rear view, white body, pale body, grey background, colored background, floor, ground, pedestal, base, people, human, weapon, knife, sword, blade, holding, drop shadow, shadow, pink, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border, lines",
+ "seed": 88,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.6,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 13:01:26"
+}

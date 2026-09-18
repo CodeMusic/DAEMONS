@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/batch2/ping_back",
+ "prompt": "a small fierce sparrow bird with a short sharp beak, ruffled head feathers and spread wings, rear view, seen from behind, pixel art game sprite, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, flat solid green background, centered, no shadow, no text",
+ "negative": "green body, green tint, pale body, drop shadow, shadow, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.55,
+ "image": "gfx/drafts/batch2/src/ping_back.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 23.6,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 11:47:17"
+}

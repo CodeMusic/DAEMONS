@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch2/alt/ping_back_42",
+ "prompt": "pure white background, pixel art game sprite of a single grey hummingbird hovering, rear view, seen from directly behind, back of the head, wings raised high on either side, long tail feathers toward the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "perched, standing, face, eyes, beak tip toward viewer, looking at viewer, side view, profile, front view, brown, orange, red, colorful, white body, pale body, grey background, colored background, floor, ground, grass, branch, flower, frame, box, people, drop shadow, shadow, pink, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.2,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 13:08:02"
+}

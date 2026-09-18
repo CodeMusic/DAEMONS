@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch2/alt/preempt_back_42",
+ "prompt": "pure white background, pixel art game sprite of a single round furry pig-nosed monkey, rear view, facing away from the viewer, the back of its round furry head and body, fists raised to either side, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "face, eyes, mouth, nose, looking at viewer, side view, profile, front view, white body, pale body, grey background, colored background, floor, ground, pedestal, grid, tiles on the ground, people, human, drop shadow, shadow, pink, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border, lines",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 28.0,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 12:06:15"
+}
