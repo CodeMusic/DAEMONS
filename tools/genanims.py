@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN PROTECT)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -1142,7 +1142,41 @@ def protect_table():
     t["HELPING_HAND"] = lambda c, p, se, n: delegate(c, se)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table}
+
+# ---- the OPAQUE vocabulary (T-157): "a box you cannot see inside" (2.8). ----
+#  An OPAQUE write OCCLUDES. The target blacks out to OPAQUE's near-black -- its inside is no longer visible -- the
+#  hit happens there, a shake in the dark nobody can read, and then it is revealed. The event is never shown; only
+#  before and after are. (FROZEN holds still in the light; OPAQUE moves where you cannot see it.)
+
+def occlude(c, power, se, lean=False, after=None, hidden_user=False, times=1):
+    k, amp, n = strength(power)
+    dark = max(12, min(15, k + 4))
+    out = []
+    if hidden_user:                                         # BLINDSIDE: the user is not seen coming either
+        out += blend("F_PAL_ATTACKER", 0, 0, 14, c) + wait()
+    elif not lean:
+        out += send(c)
+    for _ in range(times):
+        out += blend("F_PAL_TARGET", 0, 0, dark, c) + wait() + sound(se)
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)] + wait() + ["\tdelay 4"]
+        out += blend("F_PAL_TARGET", 0 if times > 1 else 1, dark, 0, c) + wait()
+    if hidden_user:
+        out += blend("F_PAL_ATTACKER", 1, 14, 0, c) + wait()
+    return out + (after or [])
+
+
+def opaque_table():
+    t = {}
+    t["BITE"] = lambda c, p, se, n: occlude(c, p, se)
+    t["PURSUIT"] = lambda c, p, se, n: occlude(c, p, se, lean=True)
+    t["FAINT_ATTACK"] = lambda c, p, se, n: occlude(c, p, se, hidden_user=True)
+    t["CRUNCH"] = lambda c, p, se, n: occlude(c, p, se, after=blend("F_PAL_TARGET", 0, 0, 7, GREY) + wait() + ["\tdelay 6"] + blend("F_PAL_TARGET", 1, 7, 0, GREY) + wait())
+    t["THIEF"] = lambda c, p, se, n: occlude(c, p, se, after=take(c))
+    t["KNOCK_OFF"] = lambda c, p, se, n: occlude(c, p, se, after=blend("F_PAL_TARGET", 0, 0, 8, GREY) + wait() + blend("F_PAL_TARGET", 0, 8, 0, GREY) + wait())
+    t["BEAT_UP"] = lambda c, p, se, n: occlude(c, 40, se, lean=True, times=3)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table}
 
 
 def first_sound(text):
