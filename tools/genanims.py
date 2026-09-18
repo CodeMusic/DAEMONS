@@ -1314,7 +1314,78 @@ def hardened_table():
     t["DOOM_DESIRE"] = lambda c, p, se, n: doom_desire(c, se)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table, "HARDENED": hardened_table}
+
+# ---- the EMERGENT vocabulary (T-161): "the behaviour nobody designed and nobody can account for" (2.6). ----
+#  An EMERGENT write appears at a DIFFERENT SCALE from its parts. Small local pulses pass between the user and the
+#  target, none of them much -- and then the WHOLE FIELD blooms jade at once, larger than anything that caused it,
+#  and the target is left holding it after the field lets go. (SWARM's marks add up on the target; EMERGENT's parts
+#  add up to something that was in none of them.)
+
+def emerge(c, power, se, lean=False, depth=None, after=None, spill=False):
+    k, amp, n = strength(power)
+    k = depth or k
+    whole = "F_PAL_BG | F_PAL_BATTLERS" if spill else "F_PAL_BG | F_PAL_DEF_SIDE"
+    out = []
+    if not lean:
+        for sel in ("F_PAL_ATTACKER", "F_PAL_TARGET", "F_PAL_ATTACKER"):     # the parts: small, local, unremarkable
+            out += blend(sel, 0, 0, 3, c) + wait() + blend(sel, 0, 3, 0, c) + wait()
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)]
+    out += blend(whole, 0, 0, 9, c) + blend("F_PAL_TARGET", 0, 0, k, c) + wait()   # the whole, at once
+    out += ["\tdelay 6"] + blend(whole, 1, 9, 0, c) + wait()
+    out += blend("F_PAL_TARGET", 1, k, 0, c) + wait()                        # the target keeps it longest
+    return out + (after or [])
+
+
+def attractor(c, power, se):
+    """ATTRACTOR: pulls everything in toward one point -- the field goes jade and drains INTO the target."""
+    k, amp, n = strength(power)
+    out = sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_BG", 1, 0, 10, c) + wait()
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 2" % (amp, n)]
+    out += blend("F_PAL_BG", 1, 10, 0, c) + blend("F_PAL_DEF_SIDE", 1, 0, k, c) + wait()   # the field flows in
+    return out + ["\tdelay 6"] + blend("F_PAL_DEF_SIDE", 0, k, 0, c) + wait()
+
+
+def runaway(c, power, se):
+    """RUNAWAY: the pattern feeds itself -- two blooms, the second spilling onto the user, which is left unsettled."""
+    out = emerge(c, power, se) + emerge(c, power, se, lean=True, spill=True)
+    for _ in range(2):
+        out += blend("F_PAL_ATTACKER", 0, 0, 6, GREY) + wait() + blend("F_PAL_ATTACKER", 0, 6, 0, GREY) + wait()
+    return out
+
+
+def recursion(c, power, se):
+    """RECURSION: builds on its own last result. The counter (FURY CUTTER's, 1-4) sets how many levels deep: each
+    level starts from where the last one stopped instead of from nothing, the field echoes each output back, and
+    at the end the whole stack comes down at once -- any interruption and it is gone."""
+    out = ["\tcreatevisualtask AnimTask_GetFuryCutterHitCount, 2"]
+    out += ["\tjumpreteq %d, DaemonsRecursion%d" % (i, i) for i in (2, 3, 4)]
+    for levels in (1, 2, 3, 4):
+        if levels > 1:
+            out += ["DaemonsRecursion%d:" % levels]
+        k, amp, n = strength(power * (1 + levels) // 2)
+        out += sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 0, 0, 5, c) + wait() + blend("F_PAL_ATTACKER", 0, 5, 0, c) + wait()
+        level = 0
+        for i in range(levels):
+            nxt = min(16, level + max(3, k // levels) + i)
+            out += sound(se) + blend("F_PAL_TARGET", 1, level, nxt, c) + wait()
+            out += blend("F_PAL_BG", 0, 0, 4, c) + wait() + blend("F_PAL_BG", 0, 4, 0, c) + wait()   # the output, read back
+            level = nxt
+        out += ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n), "\tdelay 4"]
+        out += blend("F_PAL_TARGET", 0, level, level, c) + blend("F_PAL_TARGET", 0, 0, 0, c) + wait() + ["\tend"]
+    return out
+
+
+def emergent_table():
+    t = {}
+    t["DRAGON_CLAW"] = lambda c, p, se, n: emerge(c, p, se)
+    t["TWISTER"] = lambda c, p, se, n: attractor(c, p, se)
+    t["DRAGON_RAGE"] = lambda c, p, se, n: emerge(c, 60, se, depth=10)        # fixed damage: the same bloom every time
+    t["DRAGON_BREATH"] = lambda c, p, se, n: emerge(c, p, se, after=blend("F_PAL_TARGET", 0, 0, 6, c) + wait() + blend("F_PAL_TARGET", 0, 6, 0, c) + wait() + blend("F_PAL_TARGET", 0, 0, 6, c) + wait() + blend("F_PAL_TARGET", 0, 6, 0, c) + wait())
+    t["OUTRAGE"] = lambda c, p, se, n: runaway(c, p, se)
+    t["RECURSION"] = lambda c, p, se, n: recursion(c, p, "SE_M_PSYBEAM2")   # no vanilla of its own to borrow a sound from
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table, "HARDENED": hardened_table, "EMERGENT": emergent_table}
 
 
 def first_sound(text):
