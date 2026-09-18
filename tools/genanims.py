@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -1019,7 +1019,40 @@ def context_table():
     t["PSYCHO_BOOST"] = lambda c, p, se, n: reframe(c, p, se, after=recoil())
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table}
+
+# ---- the SWARM vocabulary (T-154): "many small agents; no single one matters" (2.8). ----
+#  A SWARM write is a QUORUM: many small EQUAL marks land one after another and accumulate on the target, hold a
+#  moment once they are all in, and release together. No mark is the blow; the count is. (LOGIC's steps are ordered
+#  and each licensed by the last; SWARM's are interchangeable, which is the difference between a proof and a vote.)
+
+def quorum(c, power, se, marks=None, sel="F_PAL_TARGET", growing=False, after=None):
+    k, amp, n = strength(power)
+    if marks is None:
+        marks = max(3, min(6, 2 + power // 25))
+    out = send(c)
+    level = 0
+    for i in range(marks):
+        step = max(2, k // marks) if not growing else max(2, ((i + 1) * 2 * k) // (marks * (marks + 1) // 2) // 1)
+        out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 1, 0, 2, 1"]
+        out += blend(sel, 0, level, min(16, level + step), c) + wait()
+        level = min(16, level + step)
+    out += ["\tdelay 8"] + blend(sel, 0, level, 0, c) + wait()     # the decision, all at once
+    return out + (after or [])
+
+
+def swarm_table():
+    t = {}
+    t["PIN_MISSILE"] = lambda c, p, se, n: quorum(c, p, se, marks=2)     # FANOUT, and CONSENSUS plays this script too
+    t["TWINEEDLE"] = lambda c, p, se, n: quorum(c, p, se, marks=2)
+    t["MEGAHORN"] = lambda c, p, se, n: quorum(c, p, se, marks=6)
+    t["LEECH_LIFE"] = lambda c, p, se, n: quorum(c, p, se, marks=3, after=feed(c, p, se)[len(send(c)):])
+    t["SIGNAL_BEAM"] = lambda c, p, se, n: quorum(c, p, se, after=blend("F_PAL_TARGET", 0, 0, 7, GREY) + wait() + blend("F_PAL_TARGET", 0, 7, 0, GREY) + wait())
+    t["SILVER_WIND"] = lambda c, p, se, n: quorum(c, p, se, after=rise(c, 1, se))
+    t["FURY_CUTTER"] = lambda c, p, se, n: quorum(c, p, se, marks=4, growing=True)
+    t["CONSENSUS"] = None            # §2.5's added routine plays FANOUT's script; redrawing that redraws this
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table}
 
 
 def first_sound(text):
@@ -1102,6 +1135,10 @@ def main():
         open(SCRIPTS, "w").write(s)
         return
     for mv in sorted(table):
+        if table[mv] is None:
+            #  A routine with no script of its OWN: the animation table points it at another's (CONSENSUS plays
+            #  FANOUT's PIN MISSILE). Redrawing that one redraws this one; there is nothing here to write.
+            continue
         a, b = region(s, "Move_" + mv[5:] if mv.startswith("Move_") else mv)
         text = s[a:b]
         head = "@ genanims: %s (T-134, vision.md 9.24)" % fam
