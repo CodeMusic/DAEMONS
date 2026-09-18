@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/batch5/overflow_back",
+ "prompt": "a fat rat whose back is heaped with overlapping square tiles spilling over its sides, a long thin tail, rear view, seen from behind, pixel art game sprite, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, flat solid green background, centered, no shadow, no text",
+ "negative": "green body, green tint, pale body, drop shadow, shadow, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.55,
+ "image": "gfx/drafts/batch5/src/overflow_back.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.1,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 16:36:59"
+}

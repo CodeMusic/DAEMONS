@@ -1,0 +1,14 @@
+T-131 batch 5: which draft each view is.
+relay, overflow, surge, rubric, locus, roverseer: from their concepts (i2i 0.55, seed 1917), as batch 1
+capsule_front <- alt/capsule_front_1917
+capsule_back <- alt/capsule_back_1917
+proof_front <- alt/proof_front_1917
+proof_back <- alt/proof_back_1917
+lull_front <- alt/lull_front_1917
+lull_back <- alt/lull_back_1917
+spinlock_front <- alt/spinlock_front_1917
+spinlock_back <- alt/spinlock_back_1917
+cookie_front <- alt/cookie_front_1917
+cookie_back <- alt/cookie_back_1917
+spinlock_back: desaturated (drawn green)
+streak boxes by hand: overflow_front 16,26,44,38  capsule_front 16,24,46,40 (then its square removed by fix.py)
