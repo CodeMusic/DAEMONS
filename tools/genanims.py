@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -1052,7 +1052,41 @@ def swarm_table():
     t["CONSENSUS"] = None            # §2.5's added routine plays FANOUT's script; redrawing that redraws this
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table}
+
+# ---- the FROZEN vocabulary (T-155): "locked to what it already saw, unable to move" (2.8). ----
+#  The one family with NO MOTION. Every other write shakes its target; a FROZEN write snaps it to the pale blue and
+#  holds it dead still -- a long flat hold, no shake, the frame that will not update -- and releases late and all at
+#  once. What varies is how much is locked (one daemon, a side, the field) and for how long.
+
+def lock(c, power, se, lean=False, sel="F_PAL_TARGET", field=False, hold_frames=None, slow_release=False, depth=None):
+    k, _, _ = strength(power)
+    k = depth or k
+    out = [] if lean else send(c)
+    out += sound(se)
+    if field:
+        out += blend("F_PAL_BG", 0, 0, 7, c)
+    out += blend(sel, 0, 0, k, c) + wait()
+    out += ["\tdelay %d" % (hold_frames if hold_frames is not None else (14 if lean else 24))]
+    out += blend(sel, 2 if slow_release else 0, k, 0, c)
+    if field:
+        out += blend("F_PAL_BG", 0, 7, 0, c)
+    return out + wait()
+
+
+def frozen_table():
+    t = {}
+    t["POWDER_SNOW"] = lambda c, p, se, n: lock(c, p, se, lean=True)
+    t["ICE_PUNCH"] = lambda c, p, se, n: lock(c, p, se, lean=True)
+    t["ICE_BEAM"] = lambda c, p, se, n: lock(c, p, se)
+    t["BLIZZARD"] = lambda c, p, se, n: lock(c, p, se, sel="F_PAL_DEF_SIDE", field=True)
+    t["ICY_WIND"] = lambda c, p, se, n: lock(c, p, se, sel="F_PAL_DEF_SIDE", slow_release=True)
+    t["AURORA_BEAM"] = lambda c, p, se, n: lock(c, p, se) + blend("F_PAL_TARGET", 0, 0, 6, GREY) + wait() + blend("F_PAL_TARGET", 1, 6, 0, GREY) + wait()
+    t["SHEER_COLD"] = lambda c, p, se, n: lock(c, p, se, field=True, hold_frames=40, depth=16)
+    t["ICE_BALL"] = lambda c, p, se, n: lock(c, p, se, lean=True)
+    t["ICICLE_SPEAR"] = lambda c, p, se, n: lock(c, p, se, lean=True, hold_frames=6)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table}
 
 
 def first_sound(text):
