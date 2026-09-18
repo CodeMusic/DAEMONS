@@ -410,7 +410,7 @@ def place(src, palette):
 #  late-game houses and every one of them already fills the slot: Lorelei's house all four NPC slots, the other
 #  four a town local in the special one. Their objects keep vanilla's art until a slot scheme exists -- a ramp
 #  drawn through NPC_BLUE is what turned DEADLOCK peach.
-OW_DEFERRED = {"pidgey", "pikachu", "jigglypuff", "nidoran_f", "nidoran_m", "clefairy", "psyduck", "voltorb"}   # batches 2-4 add six, same census owed
+OW_DEFERRED = {"pidgey", "pikachu", "jigglypuff", "nidoran_f", "nidoran_m", "clefairy", "psyduck", "voltorb", "machop", "meowth"}   # batches 2-5 add eight, same census owed
 
 pairs = renamed()
 #  THE GBA RENAMED MORE THAN THE GAME BOY DID. renamed() reads the Game Boy build's names, which is where the 66
