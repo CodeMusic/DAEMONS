@@ -1201,7 +1201,57 @@ def latent_table():
     t["SHADOW_PUNCH"] = lambda c, p, se, n: surface(c, p, se, build=20, lean=True)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table}
+
+# ---- the LEGACY vocabulary (T-159): "old material that everything else has had time to work on" -- deprecated
+#  hardware still running (2.6, 2.8). A LEGACY write is OLD HARDWARE: the user spins up slowly, there is a beat of
+#  latency before anything arrives, and then it lands with MASS -- and it comes off in coarse, held steps, the few
+#  levels an old display has, instead of the smooth fall every newer family uses. Slow clock, low bit depth, weight.
+
+def mass(c, power, se, lean=False, sel="F_PAL_TARGET", shake=None, after=None, depth=None):
+    k, amp, n = strength(power)
+    k = depth or k
+    out = [] if lean else blend("F_PAL_ATTACKER", 2, 0, 7, c) + wait() + blend("F_PAL_ATTACKER", 1, 7, 0, c) + wait() + ["\tdelay 6"]
+    out += sound(se) + (shake if shake is not None else ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 2" % (amp, n)])
+    out += blend(sel, 0, 0, k, c) + wait()
+    for a, b in ((k, (k * 2) // 3), ((k * 2) // 3, k // 3), (k // 3, 0)):   # three coarse levels, each held
+        out += ["\tdelay 5"] + blend(sel, 0, a, b, c) + wait()
+    return out + (after or [])
+
+
+def rotate(c, power, se):
+    """ROTATE: the same slow machine, each turn landing heavier -- read from the rollout counter, as ICE BALL did."""
+    k, amp, n = strength(power)
+    out = ["\tcreatevisualtask AnimTask_GetRolloutCounter, 5, 0"]
+    out += ["\tjumpargeq 0, %d, DaemonsRotate%d" % (i, i) for i in range(1, 5)]
+    for i in range(5):
+        if i:
+            out += ["DaemonsRotate%d:" % i]
+        d = min(16, 6 + i * 2 + (k - 9) // 2)
+        out += mass(c, power, se, depth=d, shake=["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 2" % (min(5, 1 + i), n)])
+        out += ["\tend"]
+    return out
+
+
+def bleach(c):
+    """LEGACY's slate sits beside the grey 9.24.2 keeps for loss, so a slate hit reads as the target draining. It is
+    drawn at the HIGHLIGHT of its own ramp (gbasprite.ramp5's up(0.70), the step its daemons' sprites carry):
+    old material is bleached and worn pale, where loss goes dull. Lighter than the ground, not a new hue."""
+    r, g, b = (int(v) for v in re.findall(r"\d+", c))
+    return "RGB(%d, %d, %d)" % tuple(min(31, int(v + (31 - v) * 0.70)) for v in (r, g, b))
+
+
+def legacy_table():
+    t = {}
+    slowed = blend("F_PAL_TARGET", 1, 0, 8, GREY) + wait() + ["\tdelay 12"] + blend("F_PAL_TARGET", 3, 8, 0, GREY) + wait()
+    t["ROCK_THROW"] = lambda c, p, se, n: mass(c, p, se, lean=True, shake=["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 1, 4"])
+    t["ROCK_TOMB"] = lambda c, p, se, n: mass(c, p, se, after=slowed)
+    t["ROLLOUT"] = lambda c, p, se, n: rotate(c, p, se)
+    t["ANCIENT_POWER"] = lambda c, p, se, n: mass(c, p, se, after=rise(c, 1, se))
+    t["ROCK_SLIDE"] = lambda c, p, se, n: mass(c, p, se, sel="F_PAL_DEF_SIDE", shake=["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 5, 2", "\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_DEF_PARTNER, 3, 0, 5, 2"])
+    t["ROCK_BLAST"] = lambda c, p, se, n: mass(c, p, se, lean=True)
+    return {mv: (lambda f: lambda c, p, se, n: f(bleach(c), p, se, n))(f) for mv, f in t.items()}
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table}
 
 
 def first_sound(text):
