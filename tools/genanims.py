@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN PROTECT)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -1086,7 +1086,63 @@ def frozen_table():
     t["ICICLE_SPEAR"] = lambda c, p, se, n: lock(c, p, se, lean=True, hold_frames=6)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table}
+
+# ---- the PROTECT vocabulary (T-156): refusing, deferring, or taking the hit for another. ----
+#  These act on the USER'S OWN boundary. A seal: the user snaps to its routine's colour and HOLDS it -- nothing
+#  gets in while it is up -- then lets it go. SURVIVE holds at almost-grey (it will stay at 1 HP); SUBSTITUTE greys
+#  what it leaves and then runs vanilla's own AnimTask_MonToSubstitute, which is the mechanic (the stand-in sprite
+#  is vanilla's doll, one of T-137's graphics); MAGIC COAT seals and bounces; INTERCEPT takes; REDIRECT draws the
+#  eye by dimming everything else.
+
+def seal(c, se, hold_frames=16, tick=False):
+    out = sound(se, "SOUND_PAN_ATTACKER") + (tick_se() if tick else [])
+    return out + blend("F_PAL_ATTACKER", 0, 0, 11, c) + wait() + ["\tdelay %d" % hold_frames] + blend("F_PAL_ATTACKER", 1, 11, 0, c) + wait()
+
+
+def survive(c, se):
+    return sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 1, 0, 13, GREY) + wait() + ["\tdelay 18"] + \
+        tick_se() + blend("F_PAL_ATTACKER", 1, 13, 0, GREY) + wait()
+
+
+def substitute(c, se):
+    return sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 1, 0, 12, GREY) + wait() + \
+        blend("F_PAL_ATTACKER", 0, 12, 0, GREY) + wait() + ["\tcreatevisualtask AnimTask_MonToSubstitute, 2"] + wait()
+
+
+def magic_coat(c, se):
+    return seal(c, se, hold_frames=8) + blend("F_PAL_TARGET", 0, 0, 10, c) + wait() + blend("F_PAL_TARGET", 0, 10, 0, c) + wait()
+
+
+def intercept(c, se):
+    return sound(se) + blend("F_PAL_TARGET", 0, 0, 8, GREY) + wait() + blend("F_PAL_TARGET", 0, 8, 0, GREY) + \
+        blend("F_PAL_ATTACKER", 0, 0, 10, c) + wait() + blend("F_PAL_ATTACKER", 1, 10, 0, c) + wait()
+
+
+def redirect(c, se):
+    out = sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_BG | F_PAL_DEF_SIDE", 1, 0, 8, GREY) + wait()
+    for _ in range(2):
+        out += blend("F_PAL_ATTACKER", 0, 0, 10, c) + wait() + blend("F_PAL_ATTACKER", 0, 10, 0, c) + wait()
+    return out + blend("F_PAL_BG | F_PAL_DEF_SIDE", 1, 8, 0, GREY) + wait()
+
+
+def delegate(c, se):
+    both = "F_PAL_ATK_SIDE"
+    return sound(se, "SOUND_PAN_ATTACKER") + blend(both, 0, 0, 9, c) + wait() + blend(both, 1, 9, 0, c) + wait()
+
+
+def protect_table():
+    t = {}
+    t["PROTECT"] = lambda c, p, se, n: seal(c, se)
+    t["DETECT"] = lambda c, p, se, n: seal(c, se, tick=True)
+    t["ENDURE"] = lambda c, p, se, n: survive(c, se)
+    t["SUBSTITUTE"] = lambda c, p, se, n: substitute(c, se)
+    t["MAGIC_COAT"] = lambda c, p, se, n: magic_coat(c, se)
+    t["SNATCH"] = lambda c, p, se, n: intercept(c, se)
+    t["FOLLOW_ME"] = lambda c, p, se, n: redirect(c, se)
+    t["HELPING_HAND"] = lambda c, p, se, n: delegate(c, se)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table}
 
 
 def first_sound(text):
