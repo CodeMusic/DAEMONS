@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch7/alt/dualcore_back2_88",
+ "prompt": "pure white background, pixel art game sprite of a round-bodied flightless bird with TWO HEADS, two separate round heads each on its own long neck rising from one body, two long legs, seen from directly behind, no face visible, the backs of both heads side by side, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "face, eyes, beak, looking at viewer, side view, profile, front view, one head, single head, heron, crane, white body, pale body, grey background, colored background, floor, ground, frame, box, drop shadow, shadow, colorful, text, letters, watermark, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 88,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.3,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 18:41:44"
+}

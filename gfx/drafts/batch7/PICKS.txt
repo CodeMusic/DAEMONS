@@ -1,0 +1,29 @@
+T-131 batch 7: which draft each view is.
+wisp_front <- alt/wisp_front_42
+wisp_back <- alt/wisp_back_42
+revenant_front <- alt/revenant_front_1917
+revenant_back <- alt/revenant_back_1917
+bootstrap_front <- alt/bootstrap_front_42
+bootstrap_back <- alt/bootstrap_back_42
+honeypot_front <- alt/honeypot_front_1917  (desaturated: coloured body)
+honeypot_back <- alt/honeypot_back_1917  (desaturated: coloured body)
+outbreak_front <- alt/outbreak_front_42  (desaturated: coloured body)
+outbreak_back <- alt/outbreak_back_42
+partition_front <- alt/partition_front_42
+partition_back <- alt/partition_back_42
+ramrod_front <- alt/ramrod_front_42
+ramrod_back <- alt/ramrod_back_42
+mite_front <- alt/mite_front_42
+mite_back <- alt/mite_back_42
+tracer_front <- alt/tracer_front_42
+tracer_back <- alt/tracer_back_42
+spaghetti_front <- alt/spaghetti_front_1917  (desaturated: coloured body)
+spaghetti_back <- alt/spaghetti_back_1917  (desaturated: coloured body)
+dualcore_front <- alt/dualcore_front3_88
+dualcore_back <- alt/dualcore_back3_88
+dualcore: the model will not put two heads on one body and draws two birds side by side -- the Index's 'Two of them'. The first pairs filled the frame, and the background fill ran into their pale chests, so they were redrawn small and dark
+streak boxes by hand: ramrod_back 12,20,44,40  tracer_front 12,28,30,44  tracer_back 22,14,40,26  spaghetti_front 18,14,46,36  spaghetti_back 16,10,48,36
+blight_front <- alt/blight_front3_88
+blight_back <- alt/blight_back3_42
+blight: the first picks lost their pale bodies to the background fill; redrawn small and dark, and the model draws it as a wilted flower rather than a creature
+streak box by hand: blight_front 20,14,44,34; blight cleaned in colour and greyed after (fix.py)

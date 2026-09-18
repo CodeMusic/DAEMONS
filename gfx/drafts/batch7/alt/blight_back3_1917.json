@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch7/alt/blight_back3_1917",
+ "prompt": "pure white background, pixel art game sprite of a small round dark grey plant creature on two stubby legs, a large drooping wilted flower on its head, seen from directly behind, no face visible, drips falling from the petals, full body, greyscale, dark grey body with mid grey highlights and black shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, looking at viewer, side view, profile, front view, white body, pale body, green, colorful, grey background, colored background, floor, ground, pot, vase, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 29.7,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 18:47:37"
+}
