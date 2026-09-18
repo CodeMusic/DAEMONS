@@ -13,6 +13,7 @@
 --     burst name 12 4   save 12 screenshots, one every 4 frames: <dir>/name_00.png ... (an animation, as frames)
 --     poke16 ADDR N     write a 16-bit value into memory (the theatre's sTheatreMove, from the .elf's symbols)
 --     poke8 ADDR N      write one byte (sTheatreTurn: 1 films a two-turn routine's second half)
+--     peek 32 ADDR name read 8/16/32 bits and append "name value" to <dir>/peek.txt
 --
 -- Why a file and not keystrokes: a key tapped into the window from outside lands on about half the
 -- frames the game polls, and a menu cannot be driven by input that may or may not arrive. A button
@@ -90,6 +91,14 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
   elseif w[1] == "poke8" then
     -- one byte: the theatre's sTheatreTurn, so a two-turn routine's second half can be filmed
     emu:write8(tonumber(w[2]), tonumber(w[3]))
+    if #queue == 0 then finish() end
+  elseif w[1] == "peek" then
+    -- read memory into <dir>/peek.txt: `peek 32 0x03005008 name` appends "name value". For finding where the player
+    -- is (gSaveBlock1Ptr -> location) when driving the game somewhere rather than filming the theatre.
+    local size, addr = tonumber(w[2]), tonumber(w[3])
+    local v = size == 32 and emu:read32(addr) or size == 16 and emu:read16(addr) or emu:read8(addr)
+    local f = io.open(DIR .. "/peek.txt", "a")
+    if f then f:write((w[4] or "?") .. " " .. string.format("0x%x", v) .. "\n"); f:close() end
     if #queue == 0 then finish() end
   elseif w[1] == "shot" then
     emu:screenshot(DIR .. "/" .. w[2] .. ".png")
