@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch8/alt/ensemble_front2_1917",
+ "prompt": "pure white background, pixel art game sprite of a tall creature with a thick body on two stubby feet and a crown of leaves, with THREE round coconut-like heads each with its own face clustered under the leaves, front view, facing the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, profile, rear view, pot, flower pot, vase, planter, tree, palm tree, plant in a pot, white body, pale body, colorful, grey background, colored background, floor, ground, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.5,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 19:41:39"
+}

@@ -1,0 +1,29 @@
+T-131 batch 8: which draft each view is.
+tarpit_front <- alt/tarpit_front_1917
+tarpit_back <- alt/tarpit_back_1917
+badseed_front <- alt/badseed_front2_88
+badseed_back <- alt/badseed_back2_88
+ensemble_front <- alt/ensemble_front2_88
+ensemble_back <- alt/ensemble_back2_88
+keeper_front <- alt/keeper_front_42
+keeper_back <- alt/keeper_back_42
+seedling_front <- alt/seedling_front_42
+seedling_back <- alt/seedling_back_42
+upstream_front <- alt/upstream_front_1917
+upstream_back <- alt/upstream_back_1917
+reaper_front <- alt/reaper_front_1917
+reaper_back <- alt/reaper_back_1917
+uptime_front <- alt/uptime_front_42
+uptime_back <- alt/uptime_back_42
+mock_front <- alt/mock_front_42
+mock_back <- alt/mock_back_42
+rootkit_front <- alt/rootkit_front_1917
+rootkit_back <- alt/rootkit_back_1917
+emergence_front <- alt/emergence_front_1917
+emergence_back <- alt/emergence_back_1917
+stampede_front <- alt/stampede_front_42
+stampede_back <- alt/stampede_back_42
+tarpit, upstream, reaper, badseed, ensemble: drawn in colour; cleaned IN COLOUR and greyed after, all but the streak markers (fix.py), as batch 7's BLIGHT
+badseed and ensemble: the first drafts drew potted flowers and headless palm trees; redrawn with pots and trees in the negative. ENSEMBLE still has one head, not several
+reaper: its charcoal background, enclosed between the legs, cleared by colour before greying (fix.py unbg)
+reaper: its white ground strip cleared (fix.py unground); a faint trace remains under the front
