@@ -1,0 +1,23 @@
+T-131 batch 3: which draft each view is.
+echo_front <- alt/echo_front_1917
+echo_back <- alt/echo_back_1917
+anomaly_front <- alt/anomaly_front_1917
+anomaly_back <- alt/anomaly_back_1917
+payload_front <- alt/payload_front_1917
+payload_back <- alt/payload_back_1917
+nozzle_front <- alt/nozzle_front_1917
+nozzle_back <- alt/nozzle_back_1917
+pincer_front <- alt/pincer_front_1917
+pincer_back <- alt/pincer_back_1917
+stub_front <- alt/stub_front_1917
+stub_back <- alt/stub_back_1917
+escalate_front <- alt/escalate_front_1917
+escalate_back <- alt/escalate_back_1917
+fault_front <- alt/fault_front_1917
+fault_back <- alt/fault_back_dark_88 (the first back, pale, emptied out under the background fill; redrawn darker)
+driftnet_front <- alt/driftnet_front_1917
+driftnet_back <- alt/driftnet_back_1917
+payload: both views desaturated before cleaning (coloured body)
+driftnet: both views desaturated before cleaning (coloured body)
+streak boxes by hand: echo_front 26,24,38,38  pincer_front 18,19,46,28  pincer_back 18,15,52,24  driftnet_back 20,8,44,20
+nozzle, pincer, stub, escalate: desaturated before cleaning -- drawn pale blue, which gbasprite.py's accent shift turned gold on a FLOW body
