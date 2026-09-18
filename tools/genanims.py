@@ -1385,7 +1385,110 @@ def emergent_table():
     t["RECURSION"] = lambda c, p, se, n: recursion(c, p, "SE_M_PSYBEAM2")   # no vanilla of its own to borrow a sound from
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table, "HARDENED": hardened_table, "EMERGENT": emergent_table}
+
+# ---- the COPY vocabulary (T-162): reading a routine, a state or a frame from somewhere and writing it here. ----
+#  A copy is THE SAME PULSE TWICE. The source shows it; the user makes room -- a brief drain to ground, the grey
+#  PERSPECTIVE drains to before it takes a frame (the family's reference) -- and then the identical pulse, same
+#  depth and same timing, appears on the user. Nothing travels between them: a copy is not a transfer, it is a
+#  second instance. CAST and RECAST read the USER itself, and end in the colour the user has become
+#  (AnimTask_DaemonsBlendToUserType): self-alignment, never named, only shown.
+
+def pulse(sel, k, c, hold_frames=4, delay=0):
+    return blend(sel, delay, 0, k, c) + wait() + ["\tdelay %d" % hold_frames] + blend(sel, delay, k, 0, c) + wait()
+
+
+def make_room(depth=8, hold_frames=4):
+    return blend("F_PAL_ATTACKER", 0, 0, depth, GREY) + wait() + ["\tdelay %d" % hold_frames] + blend("F_PAL_ATTACKER", 0, depth, 0, GREY) + wait()
+
+
+def copy(c, se, src="F_PAL_TARGET", k=10, hold_frames=4, keep=None, steps=None):
+    out = sound(se, "SOUND_PAN_TARGET")
+    out += (steps("F_PAL_TARGET") if steps else pulse(src, k, c, hold_frames))    # the original
+    out += make_room() + tick_se()
+    out += (steps("F_PAL_ATTACKER") if steps else pulse("F_PAL_ATTACKER", k, c, keep if keep is not None else hold_frames))   # the copy
+    return out
+
+
+def exchange(c, se, k=10, hold_frames=10):
+    """Mutual: both make room at once, then each shows the same pulse at the same moment."""
+    both = "F_PAL_ATTACKER | F_PAL_TARGET"
+    return sound(se, "SOUND_PAN_ATTACKER") + blend(both, 0, 0, 8, GREY) + wait() + ["\tdelay 6"] + blend(both, 0, 8, 0, GREY) + wait() + \
+        sound(se) + pulse(both, k, c, hold_frames)
+
+
+def to_self(delay, a, b):
+    return ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, %d, %d, %d" % (delay, a, b)] + wait()
+
+
+def cast(c, se):
+    """CAST: the user reads its own routines -- a pulse in the routine's colour -- makes room, and comes back
+    in the colour of the type it took from them."""
+    return sound(se, "SOUND_PAN_ATTACKER") + pulse("F_PAL_ATTACKER", 8, c) + make_room(10, 2) + tick_se() + \
+        to_self(0, 0, 12) + ["\tdelay 12"] + to_self(1, 12, 0)
+
+
+def recast(c, se):
+    """RECAST: the frame is NOTICED before it moves. The foe that last hit it glints -- the frame it was hit
+    through -- and the user drains to ground and HOLDS there, the longest still moment in the family, before it
+    comes back in the colour of the type that resists what hit it."""
+    return sound(se, "SOUND_PAN_TARGET") + pulse("F_PAL_TARGET", 6, c, 2) + \
+        blend("F_PAL_ATTACKER", 2, 0, 12, GREY) + wait() + ["\tdelay 30"] + tick_se() + \
+        blend("F_PAL_ATTACKER", 0, 12, 0, GREY) + wait() + to_self(1, 0, 13) + ["\tdelay 16"] + to_self(2, 13, 0)
+
+
+def pick(c, se, sel="F_PAL_ATTACKER", ground=False):
+    """A random pick: the user flickers through unrelated depths, fast, and stops -- then the chosen routine runs."""
+    out = sound(se, "SOUND_PAN_ATTACKER")
+    if ground:                                      # SLEEPWALK: the pick happens inside the suspension
+        out += blend("F_PAL_ATTACKER", 1, 0, 10, GREY) + wait()
+    for lvl in (9, 3, 12, 6, 10):
+        out += blend(sel, 0, 0, lvl, c) + blend(sel, 0, lvl, lvl, c) + wait() + ["\tdelay 2"]
+    out += blend(sel, 0, 0, 0, c) + wait()
+    if ground:
+        out += blend("F_PAL_ATTACKER", 1, 10, 0, GREY) + wait()
+    return out
+
+
+def overcommit(c, se):
+    """OVERCOMMIT: half of everything spent at once, then all of it on one number -- down toward ground, and
+    climbing past the top in fast steps."""
+    out = sound(se, "SOUND_PAN_ATTACKER") + blend("F_PAL_ATTACKER", 0, 0, 10, GREY) + wait() + blend("F_PAL_ATTACKER", 0, 10, 0, GREY) + wait()
+    level = 0
+    for _ in range(4):
+        out += tick_se() + blend("F_PAL_ATTACKER", 0, level, level + 4, c) + wait()
+        level += 4
+    return out + ["\tdelay 10"] + blend("F_PAL_ATTACKER", 1, level, 0, c) + wait()
+
+
+def load_balance(c, se):
+    """LOAD BALANCE: two loads made equal -- the user and the foe start apart and settle at the same depth."""
+    return sound(se) + blend("F_PAL_TARGET", 0, 0, 12, c) + blend("F_PAL_ATTACKER", 0, 0, 2, c) + wait() + ["\tdelay 6"] + \
+        blend("F_PAL_TARGET", 1, 12, 7, c) + blend("F_PAL_ATTACKER", 1, 2, 7, c) + wait() + ["\tdelay 10"] + \
+        blend("F_PAL_ATTACKER | F_PAL_TARGET", 1, 7, 0, c) + wait()
+
+
+def copy_table():
+    t = {}
+    t["TRANSFORM"] = None            # PERSPECTIVE: already ours, the family's reference (9.4)
+    t["MIRROR_MOVE"] = None          # REROUTE: its label runs the routine it sends back; there is nothing of its own
+    t["SKILL_SWAP"] = lambda c, p, se, n: exchange(c, se)
+    t["TRICK"] = lambda c, p, se, n: exchange(c, se, hold_frames=2)
+    t["CONVERSION"] = lambda c, p, se, n: cast(c, se)
+    t["CONVERSION_2"] = lambda c, p, se, n: recast(c, se)
+    t["MIMIC"] = lambda c, p, se, n: copy(c, se)
+    t["SKETCH"] = lambda c, p, se, n: copy(c, se, keep=20)                   # kept for good
+    t["ROLE_PLAY"] = lambda c, p, se, n: copy(c, se, k=12, hold_frames=12)   # the whole role, held
+    t["PSYCH_UP"] = lambda c, p, se, n: copy(c, se, steps=lambda sel: tick_se() + blend(sel, 0, 0, 6, c) + wait() + tick_se() + blend(sel, 0, 6, 12, c) + wait() + ["\tdelay 6"] + blend(sel, 1, 12, 0, c) + wait())
+    t["NATURE_POWER"] = lambda c, p, se, n: copy(c, se, src="F_PAL_BG")      # read from the field itself
+    t["RECYCLE"] = lambda c, p, se, n: sound(se, "SOUND_PAN_ATTACKER") + pulse("F_PAL_ATTACKER", 9, c) + make_room(8, 10) + tick_se() + pulse("F_PAL_ATTACKER", 9, c)
+    t["METRONOME"] = lambda c, p, se, n: pick(c, se)
+    t["SLEEP_TALK"] = lambda c, p, se, n: pick(c, se, ground=True)
+    t["ASSIST"] = lambda c, p, se, n: pick(c, se, sel="F_PAL_ATK_SIDE")
+    t["BELLY_DRUM"] = lambda c, p, se, n: overcommit(c, se)
+    t["PAIN_SPLIT"] = lambda c, p, se, n: load_balance(c, se)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table, "HARDENED": hardened_table, "EMERGENT": emergent_table, "COPY": copy_table}
 
 
 def first_sound(text):
