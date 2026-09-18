@@ -1,0 +1,18 @@
+T-131 batch 6: which draft each view is.
+indexer, injector, flood, broadcast, hibernate: from their concepts (i2i 0.55, seed 1917), as batch 1
+sentry_front <- alt/sentry_front_42
+sentry_back <- alt/sentry_back_42
+hotpath_front <- alt/hotpath_front_1917
+hotpath_back <- alt/hotpath_back_1917
+inference_front <- alt/inference_front_1917
+inference_back <- alt/inference_back_1917
+latency_front <- alt/latency_front_1917
+latency_back <- alt/latency_back_1917
+stack_front <- alt/stack_front_1917
+stack_back <- alt/stack_back_1917
+relic_front <- alt/relic_front_1917
+relic_back <- alt/relic_back2_88  (both first backs drew a skeleton warrior; redrawn as a mouse from behind)
+tappoint_front <- alt/tappoint_front_1917
+tappoint_back <- alt/tappoint_back_1917
+streak boxes by hand: indexer_back 27,22,37,38  relic_front 22,20,42,40  tappoint both 20,24,44,40 (then the square removed by fix.py)
+RELIC's back is drawn larger than its front (noted on the sheet, not fixed)
