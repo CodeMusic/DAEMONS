@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Battle animations for a family of routines, generated from one visual vocabulary (T-134; vision.md 9.24).
 
-    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE)
+    python3 tools/genanims.py CONTENT            # report what would be written (families: CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE LATENT)
     python3 tools/genanims.py CONTENT --write     # write the drafts into data/battle_anim_scripts.s
     python3 tools/genanims.py CONTENT --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
@@ -1176,7 +1176,32 @@ def opaque_table():
     t["BEAT_UP"] = lambda c, p, se, n: occlude(c, 40, se, lean=True, times=3)
     return t
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table}
+
+# ---- the LATENT vocabulary (T-158): "running below the surface, unobserved" -- a background process (2.8). ----
+#  A LATENT write is already running before you see it. The target takes the purple so slowly and so faintly it is
+#  barely there -- a background job, unobserved -- and then it SURFACES at once, deep, and sinks back fast. The long
+#  quiet part is the point; the surfacing is only when you notice.
+
+def surface(c, power, se, build=40, lean=False, depth=None, after=None):
+    k, amp, n = strength(power)
+    k = depth or k
+    out = [] if lean else blend("F_PAL_ATTACKER", 3, 0, 4, c) + wait() + blend("F_PAL_ATTACKER", 3, 4, 0, c) + wait()
+    out += blend("F_PAL_TARGET", max(1, build // 10), 0, 3, c) + wait()          # below the surface
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, %d, 1" % (amp, n)]
+    out += blend("F_PAL_TARGET", 0, 3, k, c) + wait() + blend("F_PAL_TARGET", 0, k, 0, c) + wait()
+    return out + (after or [])
+
+
+def latent_table():
+    t = {}
+    t["ASTONISH"] = lambda c, p, se, n: surface(c, p, se, build=10, lean=True)
+    t["LICK"] = lambda c, p, se, n: surface(c, p, se, build=20, lean=True, after=blend("F_PAL_TARGET", 0, 0, 6, c) + wait() + blend("F_PAL_TARGET", 0, 6, 0, c) + wait())
+    t["NIGHT_SHADE"] = lambda c, p, se, n: surface(c, 60, se, depth=11)
+    t["SHADOW_BALL"] = lambda c, p, se, n: surface(c, p, se, after=blend("F_PAL_TARGET", 0, 0, 7, GREY) + wait() + blend("F_PAL_TARGET", 1, 7, 0, GREY) + wait())
+    t["SHADOW_PUNCH"] = lambda c, p, se, n: surface(c, p, se, build=20, lean=True)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table}
 
 
 def first_sound(text):
