@@ -1251,7 +1251,70 @@ def legacy_table():
     t["ROCK_BLAST"] = lambda c, p, se, n: mass(c, p, se, lean=True)
     return {mv: (lambda f: lambda c, p, se, n: f(bleach(c), p, se, n))(f) for mv, f in t.items()}
 
-FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table}
+
+# ---- the HARDENED vocabulary (T-160): "material chosen to resist, and it gave up everything else to do it" (2.6).
+#  A HARDENED write has NO GIVE. Every other family fades -- in, out, in steps -- and this one SNAPS: a blend from k
+#  to k lands at full depth in one frame (the blend task applies its start value and ends), holds, and snaps off.
+#  The user braces in its straw as it strikes; the target takes one hard shake, not a wobble. The one place it
+#  gives is FATIGUE, whose whole description is the armour finally giving.
+
+def snap(sel, k, c):
+    return blend(sel, 0, k, k, c) + wait()
+
+
+def unsnap(sel, c):
+    return blend(sel, 0, 0, 0, c) + wait()
+
+
+def strike(c, power, se, brace=True, hold_frames=6):
+    k, amp, _ = strength(power)
+    out = snap("F_PAL_ATTACKER", 9, c) + ["\tdelay 4"] if brace else []
+    out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, %d, 0, 1, 3" % (amp + 1)]
+    out += snap("F_PAL_TARGET", k, c) + ["\tdelay %d" % hold_frames]
+    out += unsnap("F_PAL_TARGET", c) + (unsnap("F_PAL_ATTACKER", c) if brace else [])
+    return out
+
+
+def temper(c, power, se):
+    """TEMPER: worked until it holds its edge -- three hammer beats on the user, each deeper, then the strike."""
+    out = []
+    for lvl in (4, 7, 10):
+        out += tick_se() + snap("F_PAL_ATTACKER", lvl, c) + ["\tdelay 3"] + unsnap("F_PAL_ATTACKER", c) + ["\tdelay 3"]
+    return out + strike(c, power, se)
+
+
+def fatigue(c, power, se):
+    """FATIGUE: load applied over and over until the armour gives -- the same small snap three times, and the
+    fourth does not snap back: it fades to grey, the family's one give (its DEFENSE drop)."""
+    out = snap("F_PAL_ATTACKER", 9, c) + ["\tdelay 4"]
+    for _ in range(3):
+        out += sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 2, 0, 1, 2"]
+        out += snap("F_PAL_TARGET", 7, c) + ["\tdelay 3"] + unsnap("F_PAL_TARGET", c) + ["\tdelay 3"]
+    out += unsnap("F_PAL_ATTACKER", c) + sound(se) + ["\tcreatevisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 4, 0, 1, 3"]
+    return out + snap("F_PAL_TARGET", 9, GREY) + ["\tdelay 6"] + blend("F_PAL_TARGET", 2, 9, 0, GREY) + wait()
+
+
+def plate(c, power, se):
+    """PLATE: a layer over the top -- the strike, and the user keeps its straw a long moment after (its DEFENSE)."""
+    return strike(c, power, se) + tick_se() + snap("F_PAL_ATTACKER", 11, c) + ["\tdelay 18"] + unsnap("F_PAL_ATTACKER", c)
+
+
+def doom_desire(c, se):
+    """DOOM DESIRE: set now, lands in two turns -- the target is marked and nothing strikes (SCHEDULE's HARDENED twin)."""
+    return snap("F_PAL_ATTACKER", 9, c) + ["\tdelay 4"] + sound(se) + snap("F_PAL_TARGET", 5, c) + ["\tdelay 20"] + \
+        unsnap("F_PAL_TARGET", c) + unsnap("F_PAL_ATTACKER", c)
+
+
+def hardened_table():
+    t = {}
+    t["IRON_TAIL"] = lambda c, p, se, n: fatigue(c, p, se)
+    t["STEEL_WING"] = lambda c, p, se, n: plate(c, p, se)
+    t["METAL_CLAW"] = lambda c, p, se, n: temper(c, p, se)
+    t["METEOR_MASH"] = lambda c, p, se, n: strike(c, p, se, hold_frames=10) + rise(c, 1, se)
+    t["DOOM_DESIRE"] = lambda c, p, se, n: doom_desire(c, se)
+    return t
+
+FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table, "HARDENED": hardened_table}
 
 
 def first_sound(text):
