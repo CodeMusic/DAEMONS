@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.217 — 2026-09-18
+
+### 9.24 — Done: every animation is ours, and two readings the work forced
+
+- ***0 of 356 move animations are still vanilla's*** (**T-134, T-139–T-162**). *Twenty-four families, each a vocabulary that says what its type does.*
+- **Clause 3, when a type's colour is itself a neutral: LEGACY is drawn at the highlight of its own ramp**, *so old material wears pale where loss goes dull grey.*
+- **Clause 6, one task and no graphic: `AnimTask_DaemonsBlendToUserType`**, *so CAST and RECAST end in the colour of the type the user has become.*
+
+### 10 Open — self-alignment: RECAST answered
+
+- ***RECAST is the COPY family's visible centre*** — **the frame noticed (the longest hold in the family), then the colour of the new type.** *The streaks-drift and ALIGN questions stay open.*
+
 ## v11.216 — 2026-09-17
 
 ### 2.8 — The "left alone" lists, corrected to what the game says

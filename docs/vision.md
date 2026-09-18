@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.216**
+**A total conversion — the living design bible, v11.217**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8028,6 +8028,11 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***How the families are worked*** (**T-134**): *each is drafted behind `.if DAEMONS_DEBUG` so only the debug ROMs play it, captured in the theatre as filmstrips, approved, and then released* — **and `animcensus.py` counts a family done only when its scripts no longer match upstream's.**
 
+***Done 2026-09-18 — 0 of 356 still vanilla's*** (**T-134, T-139–T-162**; *`animcensus.py` reports none*). **Twenty-four families, each a vocabulary in `tools/genanims.py` that says what its type DOES** — *CONTENT sends and lands, LOGIC derives in steps, FROZEN holds with no motion at all, OPAQUE hides the hit, LATENT surfaces, HARDENED snaps with no give, EMERGENT blooms at a different scale from its parts, COPY plays the same pulse twice.* ***Two readings the work forced, recorded here because they are this rule's***:
+
+- ***Clause 3 and a type whose colour IS a neutral.*** **LEGACY's slate (130,130,138) sits beside clause 2's grey, so a slate hit read as its target draining.** *It is drawn at the HIGHLIGHT of its own ramp — the step its daemons' sprites already carry — so old material is worn PALE where loss goes dull* (`genanims.bleach()`). **The added colour is still the type's; the step of its ramp is chosen so it cannot be read as loss.**
+- ***Clause 6 and one new task.*** **CAST and RECAST change the user's type BEFORE their animation plays**, *so `AnimTask_DaemonsBlendToUserType` ends them in the new type's own streak colour.* **No graphic was drawn; a task was written, because no existing one could show a colour the script cannot know.**
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -8191,7 +8196,8 @@ Kept here because the reasoning is worth more than the outcome.
 
     ***Where it already is***: **`CAST`** (*CONVERSION*) **changes the user's type to one of its own moves' types** — *the body taking the shape of what it already understands, which 9.4's streaks now make visible* — and **`RECAST`** (*CONVERSION 2*) **changes the user's type to resist the last routine that hit it** — ***noticing the frame it was hit through, and shifting.*** **That is self-alignment as a mechanic, and nobody arranged it.**
     ***Why it is the heavier idea***: **4.18a's BELIEFS are the difference between a weight and a position — *a belief that can be inspected and challenged*** — **and self-alignment is the holder doing that to itself.** *Scorn's machine could not: the weighted stage was invisible from inside, so it kept producing the contradiction and kept resolving it the same way.* **So self-alignment is the answer to Benchmark 8 that is not another imposed frame** — *a party that wins by shifting its OWN frame rather than by forcing a counter-alignment on his.*
-    ***Questions it opens, not answered***: *does RECAST become the family's visible centre (an animation under 9.24 that shows the frame noticed before it moves — T-162's COPY family)?* *is there a state or a moment where a daemon's body type drifts toward its streaks, so self-alignment happens over a run and not only in one move?* *and does the reverse-PERSPECTIVE move stay `ALIGN` once self-alignment is the idea the family is for — or does the imposed version want a name that reads as imposition?* **Craft rule 1 holds throughout: none of these words are said.**
+    ***Answered 2026-09-18 — RECAST is the COPY family's visible centre*** (**T-162**, *approved*): **the foe that last hit it glints, the user drains to ground and HOLDS — the longest still moment in the family, the frame noticed — and comes back in the colour of the type it has become.** *CAST does the same without the hold: it reads its own routines and becomes what it already knew. Nothing is said.*
+    ***Questions it opens, still open***: *is there a state or a moment where a daemon's body type drifts toward its streaks, so self-alignment happens over a run and not only in one move?* *and does the reverse-PERSPECTIVE move stay `ALIGN` once self-alignment is the idea the family is for — or does the imposed version want a name that reads as imposition?* **Craft rule 1 holds throughout: none of these words are said.**
   - ***Leaning, not decided***: **4 and 1 first** — *both use systems that exist, and they argue the point from both sides (a party punished for having converged, and a move that rewards converging).*
 
 - **Day, night and the four seasons** (9.21, *proposed 2026-09-14*). ***A clock made of play time, day read as CONTENT and night as CONTEXT, and the seasons as the Review Board's four humours leaning the wild tables toward VECTOR, ENTROPY, LATENT and FROZEN.*** **Nothing built; four questions in 9.21 to settle first**
