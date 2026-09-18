@@ -1,0 +1,26 @@
+T-131 batch 4: which draft each view is.
+sentinel_front <- alt/sentinel_front_42
+sentinel_back <- alt/sentinel_back_42
+fuse_front <- alt/fuse_front_42
+fuse_back <- alt/fuse_back_42
+sludge_front <- alt/sludge_front_1917  (desaturated: coloured body)
+sludge_back <- alt/sludge_back_1917  (desaturated: coloured body)
+fumes_front <- alt/fumes_front_42
+fumes_back <- alt/fumes_back_42
+spawn_front <- alt/spawn_front_1917
+spawn_back <- alt/spawn_back_1917
+loop_front <- alt/loop_front_1917
+loop_back <- alt/loop_back_1917
+hunch_front <- alt/hunch_front_1917  (desaturated: coloured body)
+hunch_back <- alt/hunch_back_42  (desaturated: coloured body)
+snare_front <- alt/snare_front_42  (desaturated: coloured body)
+snare_back <- alt/snare_back_42  (desaturated: coloured body)
+weed_front <- alt/weed_front_42  (desaturated: coloured body)
+weed_back <- alt/weed_back_42  (desaturated: coloured body)
+beacon_front <- alt/beacon_front_42
+beacon_back <- alt/beacon_back_42
+pulsar_front <- alt/pulsar_front_1917
+pulsar_back <- alt/pulsar_back_1917  (desaturated: coloured body)
+streak box by hand: spawn_back 20,20,42,34
+spawn: both views desaturated (drawn blue; the accent shift turned it gold)
+streak box by hand: loop_front 22,26,40,40 (the dark square took the automatic strokes)
