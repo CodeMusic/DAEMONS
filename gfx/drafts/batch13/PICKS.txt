@@ -1,0 +1,25 @@
+T-131 batch 13: which draft each view is.
+lemma_mind_front <- alt/lemma_mind_front_1917
+lemma_mind_back <- alt/lemma_mind_back_1917
+bulldozer_front <- alt/bulldozer_front_1917
+bulldozer_back <- alt/bulldozer_back_1917
+singular_front <- alt/singular_front_1917
+singular_back <- alt/singular_back_1917
+impulse_front <- alt/impulse_front_1917
+impulse_back <- alt/impulse_back_1917
+dread_front <- alt/dread_front_42
+dread_back <- alt/dread_back_42
+hardline_front <- alt/hardline_front_42
+hardline_back <- alt/hardline_back_42
+multicast_front <- alt/multicast_front_1917
+multicast_back <- alt/multicast_back_1917
+turbulence_front <- alt/turbulence_front_42
+turbulence_back <- alt/turbulence_back_42
+drive_front <- alt/drive_front_42
+drive_back <- alt/drive_back_42
+grievance_front <- alt/grievance_front_1917
+grievance_back <- alt/grievance_back_1917
+singular, turbulence, drive: drawn in colour; cleaned in colour and greyed after (fix.py)
+multicast: seed 42 drew two bats; seed 1917's one bat, on a dark box removed by fix.py
+impulse_back: drawn on a box, removed by fix.py
+multicast: its dark box cleared by colour, then everything but the bat itself (fix.py)

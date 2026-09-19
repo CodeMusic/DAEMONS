@@ -88,7 +88,7 @@ def shift_off(accent, type_rgb):
 #  The Game Boy build is not updated further (CLAUDE.md), so its names are frozen at LABL and CLUSTR -- renamed
 #  LABEL and CLUSTER in the GBA build (vision.md). Redrawn art is filed under the name the player reads, and T-131
 #  batch 1's two starters were silently built from the Game Boy art until this map existed.
-GBA_NAME = {"LABL": "LABEL", "CLUSTR": "CLUSTER"}
+GBA_NAME = {"LABL": "LABEL", "CLUSTR": "CLUSTER", "LEMMA MIND": "LEMMA_MIND"}   # a space in a name is an underscore in a file name
 
 def rich_src(ours, kind):
     ours = GBA_NAME.get(ours, ours)
