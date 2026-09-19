@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/batch9/codemusai_back",
+ "prompt": "a small round robot creature sitting, a round helmet head with a wide visor and two antennae, rear view, seen from behind, pixel art game sprite, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, flat solid green background, centered, no shadow, no text",
+ "negative": "green body, green tint, pale body, drop shadow, shadow, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.55,
+ "image": "gfx/drafts/batch9/src/codemusai_back.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 20:13:43"
+}

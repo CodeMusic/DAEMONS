@@ -1,0 +1,11 @@
+T-131 batch 9: which draft each view is.
+canon, manifold, roverbyte, musai, caremusai, codemusai, seekmusai, artsai, starr: from their concepts (i2i 0.55, seed 1917), as batch 1
+predictor_front <- alt/predictor_front_42
+predictor_back <- alt/predictor_back_42
+thread_front <- alt/thread_front_42
+thread_back <- alt/thread_back_42
+spyware_front <- alt/spyware_front_42
+spyware_back <- alt/spyware_back_42
+streak box by hand: caremusai_front 22,34,42,52
+streak box by hand: manifold_back 11,22,40,30
+starr: drawn brown; cleaned in colour and greyed after, all but the streak markers (fix.py)
