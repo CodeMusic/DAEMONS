@@ -183,7 +183,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/crush_girl_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/crush_girl.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_sailor": dict(src="gfx/characters/portrait_sailor.png",           # an albatross, always at sea
+    "p_sailor": dict(src="gfx/characters/sf_sailor.png",           # an albatross, always at sea
                         dst="engineGba/graphics/trainers/front_pics/sailor_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/sailor.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -191,7 +191,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/gentleman_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/gentleman.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_beauty": dict(src="gfx/characters/portrait_beauty.png",           # a gazelle
+    "p_beauty": dict(src="gfx/characters/sf_beauty.png",           # a gazelle
                         dst="engineGba/graphics/trainers/front_pics/beauty_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/beauty.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -236,7 +236,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/super_nerd_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/super_nerd.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_gamer": dict(src="gfx/characters/portrait_gamer.png",                     # a JACKAL -- and never a fox (9.4)
+    "p_gamer": dict(src="gfx/characters/sf_gamer.png",                     # a JACKAL -- and never a fox (9.4)
                         dst="engineGba/graphics/trainers/front_pics/gamer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/gamer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -355,7 +355,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/staff_lurid_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_lurid.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "staff_brazen": dict(src="gfx/characters/staff_brazen_tarsier.png",       # BRAZEN's staff, tarsiers framing what they watch
+    "staff_brazen": dict(src="gfx/characters/sf_staff_brazen.png",       # BRAZEN's staff, tarsiers framing what they watch
                         dst="engineGba/graphics/trainers/front_pics/staff_brazen_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_brazen.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
