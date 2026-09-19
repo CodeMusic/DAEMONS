@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.219**
+**A total conversion — the living design bible, v11.220**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6209,7 +6209,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 #### Everything it needed was already in the ROM
 
-***Gen 3 left twenty-five species slots over from a scrapped feature.*** **`SPECIES_OLD_UNOWN_B` through `_Z` have base stats, a learnset pointer, a footprint, an icon and a front sprite, and no species uses any of them.** *The sprite is `gMonFrontPic_DoubleQuestionMark`.* ***A creature living in a leftover index slot, drawn as two question marks, is the whole joke arriving by itself***, and not one byte of new art was needed.
+***Gen 3 left twenty-five species slots over from a scrapped feature.*** **`SPECIES_OLD_UNOWN_B` through `_Z` have base stats, a learnset pointer, a footprint, an icon and a front sprite, and no species uses any of them.** *The sprite is `gMonFrontPic_DoubleQuestionMark`.* ***A creature living in a leftover index slot, drawn as two question marks, is the whole joke arriving by itself***, and not one byte of new art was needed. ***Superseded 2026-09-19 by T-163***: **it has its own drawing now** — *the original's backwards-L block, filled with columns of falling green code, generated rather than drawn because it is code, in its own `graphics/pokemon/old_unown_b`; the "??" stays with the other old-Unown slots.*
 
 #### Three numbers are the argument and none of them says it
 
@@ -6238,7 +6238,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 ***The type is CORRUPT / ORACLE, and the second half is the exact homage.*** **Vanilla's MissingNo. is the unused BIRD type, and 2.2 named that slot ORACLE** — *"a black box that returns correct answers without showing how."* **The chart has no rows for ORACLE**, so every matchup through it is even and nothing about the fight changes. ***2.9 called ORACLE "one routine, never seen." It is now also one daemon, barely seen.***
 
-***And it has no colour.*** **9.4 rules that a daemon is coloured by its type; this one shares a placeholder sprite and is left grey.** *A daemon the palette has no entry for* — **which is invariant 5 obeyed rather than broken, and it was not designed, only noticed.**
+***And it has no colour.*** **9.4 rules that a daemon is coloured by its type; this one shares a placeholder sprite and is left grey.** *A daemon the palette has no entry for* — **which is invariant 5 obeyed rather than broken, and it was not designed, only noticed.** ***Superseded 2026-09-19 by T-163***: *with its own sprite it is coloured like every other daemon —* **the body ramps to CORRUPT's mould and the greens stay accents**, *so it keeps invariant 5 by the ordinary rule rather than by exception.* **The Index entry below needed nothing: it describes a missing record, not a look, and *"assembled from the entries either side"* reads the better for a body made of code.**
 
 #### Where it is, and how you are told
 

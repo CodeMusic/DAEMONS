@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.220 — 2026-09-19
+
+### 8.9 — MISSINGNO's drawing and colour brought up to T-163
+
+- ***Asked for MISSINGNO's Index entry, and it already existed*** — **8.9 wrote and built it on 2026-09-10** (*category `UNRECORDED`; CONTENT: "assembled from the entries either side"; CONTEXT: "It is not rare. It is uncounted."*), **and T-163's note calling it "still vanilla's" was wrong.** *The user's ruling: keep it — it describes a missing record, not a look.*
+- **8.9's two sprite paragraphs marked superseded, not deleted**: *it no longer wears the "??" placeholder and is no longer grey — T-163 gave it the backwards-L of falling green code, ramped to CORRUPT with the greens as accents.* **T-163's note corrected in TODO.**
+
 ## v11.219 — 2026-09-19
 
 ### 4.7 — RECURSION is shared: PIXELBYTE → REFORGE (T-165)
