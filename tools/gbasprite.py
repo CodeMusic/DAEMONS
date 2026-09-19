@@ -94,6 +94,9 @@ def rich_src(ours, kind):
     ours = GBA_NAME.get(ours, ours)
     hits = [f for f in glob.glob(os.path.join(ROOT, RICH, "%s_%s.*" % (ours.lower(), kind)))
             if not f.endswith(".txt")]
+    #  A cleaned drawing is a PNG; older drafts (PING's Gemini JPEGs) sit beside some. Glob order is not sorted, and
+    #  taking the first hit built PING from its old JPEG long after batch 2 redrew it (found by T-166).
+    hits.sort(key=lambda f: (not f.endswith(".png"), f))
     return hits[0] if hits else None
 
 def place_rich(path, type_rgb, shared=None):
