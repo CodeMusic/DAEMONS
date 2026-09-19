@@ -5,6 +5,7 @@
     python3 tools/animcensus.py --family HEAL   # every move in a family, earliest-seen first
     python3 tools/animcensus.py --gfx           # the effect graphics, by how many vanilla animations still use them
     python3 tools/animcensus.py --descriptions  # renamed routines whose description is still vanilla's (T-138)
+    python3 tools/animcensus.py --general       # the animations that are not moves: states, weather, items, balls (T-168)
 
 THE QUESTION IT ANSWERS is T-134's: 309 of 355 move names are ours and the animations are all vanilla's, so a
 player watches RESTORE draw a creature gathering energy. A move is VANILLA here while its `Move_` script in
@@ -135,9 +136,34 @@ def census():
     return rows
 
 
+#  T-168. The scripts that are not moves: they play for a STATE (1.6's LEAKING, SUSPENDED, THROTTLED...), the
+#  weather, an item, a ball, a level-up. T-137 closed when no MOVE animation still loaded a vanilla picture, and
+#  that is when this layer showed -- 1.6 renamed every state and SUSPENDED still draws a Z.
+GENERAL = ("Status_", "General_", "Special_", "SafariReaction_", "BallThrow")
+STATE_WORD = {"Status_Poison": "LEAKING", "Status_Confusion": "THRASHING", "Status_Burn": "OVERHEATED",
+              "Status_Sleep": "SUSPENDED", "Status_Paralysis": "THROTTLED", "Status_Freeze": "HUNG"}
+
+
+def general():
+    s_ours, s_up = read("data/battle_anim_scripts.s"), upstream("data/battle_anim_scripts.s")
+    b_ours, b_up = blocks(s_ours), blocks(s_up)
+    labs = [l for l in b_ours if l.startswith(GENERAL)]
+    left = 0
+    for pre in GENERAL:
+        for l in (l for l in labs if l.startswith(pre)):
+            van = b_ours[l] == b_up.get(l)
+            left += van
+            tags = sorted(set(re.findall(r"ANIM_TAG_(\w+)", b_ours[l])))
+            print("  %-30s %-11s %-8s %s" % (l, STATE_WORD.get(l, ""), "vanilla" if van else "ours", " ".join(tags)))
+    print("  %d of %d animations that are not moves are still vanilla's" % (left, len(labs)))
+
+
 def main():
-    rows = census()
     args = sys.argv[1:]
+    if "--general" in args:
+        general()
+        return
+    rows = census()
     if "--family" in args:
         want = args[args.index("--family") + 1].upper()
         sel = [r for r in rows if r["family"] == want]
