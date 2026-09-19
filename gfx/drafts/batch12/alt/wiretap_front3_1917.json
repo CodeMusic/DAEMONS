@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch12/alt/wiretap_front3_1917",
+ "prompt": "pure white background, pixel art game sprite of a single trio of three dark round moles poking up out of one mound of dirt side by side, round noses, front view, facing the viewer, three faces with round noses, full body, greyscale, dark grey body with mid grey highlights and black shading, clean black outline, isolated on plain white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, profile, rear view, human, person, white body, pale body, white fur, grid, tiles, lines, colorful, grey background, colored background, floor, ground, grass, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, border",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 23:43:13"
+}

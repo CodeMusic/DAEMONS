@@ -1,0 +1,31 @@
+T-131 batch 12: which draft each view is.
+ferry_front <- alt/ferry_front_1917
+ferry_back <- alt/ferry_back_1917
+slurp_front <- alt/slurp_front_42
+slurp_back <- alt/slurp_back_42
+vice_front <- alt/vice_front_42
+vice_back <- alt/vice_back_42
+dragnet_front <- alt/dragnet_front_42
+dragnet_back <- alt/dragnet_back_42
+coldvault_front <- alt/coldvault_front_42
+coldvault_back <- alt/coldvault_back_42
+tracker_front <- alt/tracker_front_1917
+tracker_back <- alt/tracker_back_1917
+coldread_front <- alt/coldread_front2_88
+coldread_back <- alt/coldread_back2_88
+resentment_front <- alt/resentment_front_42
+resentment_back <- alt/resentment_back_42
+fossilnet_front <- alt/fossilnet_front_42
+fossilnet_back <- alt/fossilnet_back_42
+coldread: the first drafts drew a pale human woman, too near vanilla's caricature; redrawn as a snowy owl. Its back still faces the viewer -- on T-166's list
+slurp, dragnet, resentment, fossilnet: drawn in colour; cleaned in colour and greyed after (fix.py)
+streak box by hand: dragnet_front 16,8,48,26
+streak box by hand: dragnet_back 16,8,48,26
+pipeline_front <- alt/pipeline_front3_42
+pipeline_back <- alt/pipeline_back3_42
+wiretap_front <- alt/wiretap_front3_88
+wiretap_back <- alt/wiretap_back3_88
+hauntproc_front <- alt/hauntproc_front3_42
+hauntproc_back <- alt/hauntproc_back3_42
+pipeline, wiretap, hauntproc: redrawn dark -- the first picks lost pale bodies to the fill, and wiretap kept its draft's grid lines. hauntproc's back faces the viewer -- on T-166's list
+ferry_front, tracker_back: drawn on a box, removed by fix.py unbox
