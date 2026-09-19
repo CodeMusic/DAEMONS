@@ -1,0 +1,28 @@
+T-131 batch 11: which draft each view is.
+cryogen_front <- alt/cryogen_front_42
+cryogen_back <- alt/cryogen_back_42
+dynamo_front <- alt/dynamo_front_42
+dynamo_back <- alt/dynamo_back_42
+shell_front <- alt/shell_front2_1917
+shell_back <- alt/shell_back2_1917
+flicker_front <- alt/flicker_front_42
+flicker_back <- alt/flicker_back_42
+wildfire_front <- alt/wildfire_front_1917
+wildfire_back <- alt/wildfire_back_1917
+conjecture_front <- alt/conjecture_front_42
+conjecture_back <- alt/conjecture_back_42
+rebuttal_front <- alt/rebuttal_front2_1917
+rebuttal_back <- alt/rebuttal_back2_1917
+overdrive_front <- alt/overdrive_front_42
+overdrive_back <- alt/overdrive_back_42
+scheduler_front <- alt/scheduler_front_42
+scheduler_back <- alt/scheduler_back_42
+guardian_front <- alt/guardian_front_1917
+guardian_back <- alt/guardian_back_1917
+shell, axiomkick, rebuttal: the first drafts drew a bare seashell, a human figure and an armoured knight; redrawn with people and armour negative
+shell: drawn pink; cleaned in colour and greyed after (fix.py)
+streak box by hand: scheduler_back 24,28,40,40
+axiomkick_front <- alt/axiomkick_front2_1917
+axiomkick_back <- alt/axiomkick_back2_1917
+axiomkick: seed 42's thin limbs were lost in cleaning, so seed 1917's pair
+conjecture_back: its white tail was taken by the background fill (not fixed)
