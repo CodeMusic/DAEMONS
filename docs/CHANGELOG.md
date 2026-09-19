@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.218 — 2026-09-19
+
+### 9.4 — The mirror: actors are animals, and a daemon may look like a person
+
+- ***The user's ruling***: **the fable holds for the ACTORS — every person the player meets is an animal — and a DAEMON that reads as a person is allowed, and interesting.**
+- ***A perspective twist, the game's subject turned on the cast***: *where the people are animals, the processes look human; the frame decides which one is the person.* **PROOF, THEOREM, MIME and LEMMA MIND, first flagged as drawing failures, are read as the design.**
+- **Not licensed**: *an actor drawn human (treatment B made Crystal into Professor Oak), and not a quota — the human-looking daemons are the ones whose process is a human practice.*
+
 ## v11.217 — 2026-09-18
 
 ### 9.24 — Done: every animation is ours, and two readings the work forced

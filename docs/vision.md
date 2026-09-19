@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.217**
+**A total conversion — the living design bible, v11.218**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7233,6 +7233,14 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 3. **Head-to-body ratio carries age.** *Large head for children, small for adults.* **Left unstated it defaults to the Barks prior and everyone comes out cute** — which is what nearly broke Scorn, since 4.4 needs him genuinely persuasive and 3.1 holds Brass City in reserve against the day Brazen reads as the game sneering at him.
 
 *Scorn was the tone test rather than the join test, and the tradition's most famous snake is **Sir Hiss**, a sniveling comic sidekick — precisely the failure to avoid.* **He came back composed, level-eyed and warm**, which is 4.4's *pleased with the arrangement* arriving in a sprite.
+
+#### The mirror: actors are animals, and a daemon may look like a person — settled 2026-09-19
+
+***Stated by the user while T-131's sprite pass ran, and it names what the pass had been doing without a rule.*** **The fable holds for the ACTORS: every person the player meets is an animal**, *by the three clauses above — the Clears foxes, the leaders their eight species, every class one species (T-115–T-120).* **The DAEMONS are not bound by it the other way.** ***A daemon that reads as a person is allowed, and it is interesting***: *PROOF and THEOREM came back as bodybuilders, MIME as a clown pressing a wall, LEMMA MIND as a four-armed brute — first flagged as failures of the drawing, now read as the design.*
+
+**It is a PERSPECTIVE TWIST, and it is the game's own subject turned on the cast**: *in a world where the people are animals, the processes are the ones that look human* — **the frame the player reads a thing in (CONTEXT's clause) decides which of the two is the person.** *Nothing in the game says so (craft rule 1); the player sees a fox teach them to catch a thing shaped like a man.*
+
+***What this does NOT license***: **an ACTOR drawn human** — *treatment B above made Crystal into Professor Oak, and the rule for people stands* — **and it is not a quota**: *most daemons stay creatures; the human-looking ones are the ones whose PROCESS is a human practice (proof, argument, mimicry, doctrine), which is why they came out that way unprompted.*
 
 ### 9.4a The move menu — a type as a word, and what a move does — built 2026-09-13
 
