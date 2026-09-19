@@ -263,7 +263,11 @@ def renamed():
 def primary_type(slot_dir):
     p = os.path.join(GB, "data/pokemon/base_stats", slot_dir.replace("_", "") + ".asm")
     if not os.path.exists(p):
-        return None
+        #  A species the Game Boy never had (RESENTMENT is Wobbuffet, T-131 batch 12) has no base_stats file there;
+        #  read the GBA's own species_info.h instead.
+        m = re.search(r"\[SPECIES_%s\]\s*=.*?\.types = \{TYPE_(\w+)," % slot_dir.upper(),
+                      open(os.path.join(GBA, "src/data/pokemon/species_info.h")).read(), re.S)
+        return m.group(1) if m else None
     # pokered writes this two ways in the same table -- "db GRASS, GRASS ; type"
     # and "db PSYCHIC_TYPE, PSYCHIC_TYPE ; type" -- and ours sometimes trails a
     # design note after the comment. Take the first token and drop the suffix.
@@ -410,7 +414,7 @@ def place(src, palette):
 #  late-game houses and every one of them already fills the slot: Lorelei's house all four NPC slots, the other
 #  four a town local in the special one. Their objects keep vanilla's art until a slot scheme exists -- a ramp
 #  drawn through NPC_BLUE is what turned DEADLOCK peach.
-OW_DEFERRED = {"pidgey", "pikachu", "jigglypuff", "nidoran_f", "nidoran_m", "clefairy", "psyduck", "voltorb", "machop", "meowth", "cubone", "fearow", "pidgeot", "slowpoke", "wigglytuff", "doduo", "chansey", "kangaskhan", "mew", "mewtwo", "nidorino", "machoke", "seel", "slowbro"}   # batches 2-11 add twenty-two, same census owed
+OW_DEFERRED = {"pidgey", "pikachu", "jigglypuff", "nidoran_f", "nidoran_m", "clefairy", "psyduck", "voltorb", "machop", "meowth", "cubone", "fearow", "pidgeot", "slowpoke", "wigglytuff", "doduo", "chansey", "kangaskhan", "mew", "mewtwo", "nidorino", "machoke", "seel", "slowbro", "lapras"}   # batches 2-12 add twenty-three, same census owed
 
 pairs = renamed()
 #  THE GBA RENAMED MORE THAN THE GAME BOY DID. renamed() reads the Game Boy build's names, which is where the 66
