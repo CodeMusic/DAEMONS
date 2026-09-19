@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t164/people/obj_sign_1917",
+ "prompt": "a small white metal information signboard on two short legs, pixel art game sprite, single object, top-down three-quarter view, Game Boy Advance RPG overworld style, crisp pixels, clean dark outline, flat solid green background, centered, no shadow, no text",
+ "negative": "green object, text, letters, watermark, people, characters, scenery, ground, floor, frame, border, blurry, photorealistic, shadow",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.2,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 14:48:51"
+}

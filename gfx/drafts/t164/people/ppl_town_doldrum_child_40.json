@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t164/people/ppl_town_doldrum_child_40",
+ "prompt": "a row of nine small pixel art character walking frames, Game Boy Advance RPG overworld sprite sheet, crisp 16-bit pixels, clean dark outline, consistent character in every frame",
+ "negative": "text, letters, watermark, background scenery, blurry, photorealistic, extra characters, merged frames",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.4,
+ "image": "gfx/drafts/t164/people/src_town_doldrum_child.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.6,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 14:54:53"
+}
