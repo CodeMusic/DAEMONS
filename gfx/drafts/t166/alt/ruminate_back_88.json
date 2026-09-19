@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t166/alt/ruminate_back_88",
+ "prompt": "pure white background, pixel art game sprite of a single small armoured larva creature with a horn on its head and a hard rocky hide, rear view, seen from directly behind, facing away from the viewer, the back of its head, no face visible, the rocky armoured back and the horn, full body, greyscale, dark grey body with mid grey highlights and black shading, clean black outline, isolated on plain white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, eye, mouth, beak, nose, looking at viewer, looking back over shoulder, front view, side view, profile, human, person, white body, pale body, colorful, grey background, colored background, floor, ground, grass, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 88,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.5,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 02:56:30"
+}
