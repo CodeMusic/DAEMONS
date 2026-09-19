@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t165/alt/forge_back2_99",
+ "prompt": "pure white background, pixel art game sprite of a single sturdy ox seen from directly behind, its rump and tail toward the viewer, a blacksmith furnace strapped on its back with a short chimney, no face visible, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on pure white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, nose, looking at viewer, front view, side view, profile, human, person, grey background, colored background, frame, box, border, floor, ground, pedestal, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 99,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.9,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 15:51:44"
+}

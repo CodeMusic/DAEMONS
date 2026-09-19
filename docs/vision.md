@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.218**
+**A total conversion — the living design bible, v11.219**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3439,7 +3439,7 @@ The distinction is worth protecting. A clone story is about hubris and ownership
 
 *Both fit.* `S.T.A.R.R.` is exactly ten characters and the worst case (`Remote ` + name) is 17 of 18 columns, so the choice was never technical.
 
-**Signature move: RECURSION.** Data self-referencing — a move that reads its own accumulated state. Repurpose the Bide/Rage machinery, which already stores a running counter across turns. Suggested behaviour: each consecutive use raises power by 50% of base, uncapped for three turns, resetting if interrupted. Type EMERGENT, and given to nothing else in the game.
+**Signature move: RECURSION.** Data self-referencing — a move that reads its own accumulated state. Repurpose the Bide/Rage machinery, which already stores a running counter across turns. Suggested behaviour: each consecutive use raises power by 50% of base, uncapped for three turns, resetting if interrupted. Type EMERGENT, and given to nothing else in the game. ***Until T-165 — see "Shared, 2026-09-19" below.***
 
 **The move is the argument.** RECURSION compounds for as long as it is allowed to run and collapses to nothing the instant it is interrupted. That is a positive feedback loop and its termination, expressed in two lines of battle code. The player learns to protect it without ever being told what it models.
 
@@ -3450,6 +3450,16 @@ The distinction is worth protecting. A clone story is about hubris and ownership
 **The lineage, stated entirely in the movedex and out loud to nobody:**
 
 > PERSPECTIVE (holding others' context) → turned inward as RECURSION (holding your own) → something that behaves like feeling.
+
+#### Shared, 2026-09-19 — REFORGE knows it too, and the Index cannot tell them apart
+
+***The user's ruling (T-165): SPRITEFORGE knows RECURSION, because it is the thing that makes its own sprites.*** **The tool that drove this bestiary's drawings is now one of its daemons** — `PIXELBYTE` → `REFORGE` in the NUMEL → CAMERUPT slot, ENTROPY/STRATUM, *noise made into bytes on the physical layer* — **and a forge that reads its last output before it makes the next one is RECURSION described from the outside.**
+
+**So the signature is shared, deliberately, and the sharing is the point rather than a dilution.** *S.T.A.R.R. runs RECURSION on its own state; REFORGE runs it on its own output.* ***The move is byte-identical in both*** — **same counter, same compounding, same collapse when interrupted** — *and nothing in the game says which of them is doing the thing and which is only doing the arithmetic.* **The player who owns both watches one routine in two creatures and has to decide for themselves whether it is the same act** — *which is 2's argument handed to them as a party choice, and never said.*
+
+***Two guards keep it S.T.A.R.R.'s first.*** **REFORGE learns it at 70, S.T.A.R.R.'s own level** (*it is never the first thing to show the player this move*), **and `sMovesForbiddenToCopy` still stops METRONOME, CLONE and IMPRINT reaching it** — *the only other ways in.* **"Given to nothing else" is withdrawn; "learned by nothing earlier" replaces it.**
+
+***Where it comes from.*** **The Celadon Condominiums 3F graphic artist — vanilla's *"I drew you!"* — hands over PIXELBYTE at 25**, *because the model is what actually drew you.* **The room's sign read *GAME FREAK Development Room*, the same false attribution 8.4's splash-line fix removed, and now reads *CODEMUSIC Development Room*.** ***The name, and the collision that chose it.*** *SPRITEFORGE is 11 letters and a species name holds ten — the limit is the save format's, every stored nickname — so the Index category, which holds eleven, is `SPRITEFORGE`. The daemon was first `FORGE`, and **MAGMAR had been FORGE since the Kanto seventy-nine** (CINDER → FORGE, 8.2b); `check_lexicon.py` read each surface into a SET, so species + species collapsed to one label and passed, and `gbasprite.py`, which finds art by name, built the new drawing over MAGMAR's. Caught on the build, reverted, and the check now counts doubles within a table.* ***`REFORGE`*** **is what RECURSION does, named from the outside: it forges again from what it last forged.**
 
 ### 4.8 The Five Witnesses — the BunnyArtsai easter egg
 
@@ -6068,7 +6078,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | **Technical surface** | *the bestiary* | HEAP · STACK · FORK · THREAD · PAYLOAD · ECHO · PACKET · LATENCY — **the register the rest of the lexicon speaks** |
 | **Psychology** | *the islands* | ***added 2026-09-11.*** **The 30 wild-encounterable species beyond Kanto are ISLAND-ONLY — measured, not assumed: zero of them appear on the mainland.** *So Act 1's bestiary is machinery and Act 2's is mind*, which is 8.2a's own division stated in the creatures rather than in the dialogue |
 | **Myth** | *the legendaries* | **ASCLEPIUS · ORPHEUS · PROMETHEUS** — ***these ARE "true names the Index cannot reach"***, which is the fork's other half, spent on exactly the six creatures the Index was never going to hold |
-| **The project's own** | *MUSAI and ROVER* | **characters rather than creatures**, and 8.2 already treats them that way |
+| **The project's own** | *MUSAI and ROVER* — ***and PIXELBYTE → REFORGE (T-165, 2026-09-19)***, *the tools that drew the bestiary* | **characters rather than creatures**, and 8.2 already treats them that way |
 
 ***So the fork was never either/or. It was a distribution***, and the log had recorded a decision as an open question for five weeks.
 

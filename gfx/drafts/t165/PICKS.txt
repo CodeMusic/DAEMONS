@@ -1,0 +1,6 @@
+T-165: which draft each view is.
+pixelbyte_front <- alt/pixelbyte_front_42
+pixelbyte_back  <- alt/pixelbyte_back2_7
+forge_front     <- alt/forge_front2_7
+forge_back      <- alt/forge_back3_99
+(The drafts say "forge": the species was FORGE until the name turned out to be MAGMAR's; it is REFORGE, and gfx/daemons/ has reforge_*.)

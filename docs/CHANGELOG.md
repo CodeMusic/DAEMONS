@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.219 — 2026-09-19
+
+### 4.7 — RECURSION is shared: PIXELBYTE → REFORGE (T-165)
+
+- ***The user's rulings***: **the two tools that drew this bestiary are daemons** — `PIXELBYTE` → `REFORGE`, *an evolution at 33 in the NUMEL → CAMERUPT slot, ENTROPY/STRATUM (noise made into bytes on the physical layer), no type change needed* — **given by the Celadon Condominiums 3F graphic artist at 25**, *and REFORGE learns RECURSION at 70, S.T.A.R.R.'s own level.*
+- **4.7's "given to nothing else in the game" is withdrawn; "learned by nothing earlier" replaces it.** *The same routine in a mind reading its own state and in a tool reading its own output, byte-identical, and nothing in the game says which is which.*
+- ***The name.*** **SPRITEFORGE is 11 letters and a species name holds 10** (*the save format's limit*), so it is the Index category, which holds 11. **`FORGE` was taken — MAGMAR has been FORGE since the Kanto seventy-nine** — and `check_lexicon.py` missed it, because it read each surface into a set and species + species collapsed to one label; `gbasprite.py` then built the new drawing over MAGMAR's. **Reverted, and the check now counts doubles within a table** (*trainer classes exempt: vanilla lists some twice*). ***`REFORGE`***: *it forges again from what it last forged.*
+- **The room's sign read *GAME FREAK Development Room*** — the same false attribution 8.4's splash line removed — **and now reads *CODEMUSIC Development Room*.**
+- **8.2b's register**: *PIXELBYTE → REFORGE join MUSAI and ROVER under "the project's own".*
+
 ## v11.218 — 2026-09-19
 
 ### 9.4 — The mirror: actors are animals, and a daemon may look like a person

@@ -682,15 +682,27 @@ def main():
             #  against every other placeholder in the build.
             if len(w) < 3 or set(w) <= set("-?"):
                 continue
-            seen.setdefault(w, set()).add(label)
+            seen.setdefault(w, []).append(label)
+
+    #  A LIST, not a set: two entries in the SAME table wearing one word is a
+    #  collision too. With a set, species+species collapsed to one label, and
+    #  T-165 named CAMERUPT `FORGE` while MAGMAR had been FORGE since the Kanto
+    #  seventy-nine -- this check passed it, and gbasprite.py then built the new
+    #  drawing over MAGMAR's, because it finds a daemon's art by its name.
+    #  Trainer classes are exempt WITHIN their own table: vanilla ships the
+    #  same class twice on purpose (a Ruby/Sapphire copy beside FireRed's, a
+    #  rival's per stage), and those are one thing listed twice.
+    def doubled(labels):
+        rest = [l for l in labels if l != "class"] + sorted(set(l for l in labels if l == "class"))
+        return len(rest) > 1
 
     bad = [(w, sorted(v)) for w, v in seen.items()
-           if len(v) > 1 and w not in ALLOWED]
+           if doubled(v) and w not in ALLOWED]
     vbad, seen_versions = check_version()
     tbad = check_tickets()
     print("  %d names across %s" % (len(seen), ", ".join(sorted(surfaces))))
     for w, reason in sorted(ALLOWED.items()):
-        if w in seen and len(seen[w]) > 1:
+        if w in seen and doubled(seen[w]):
             print("  ..  %-14s allowed: %s" % (w, reason))
     if not bad:
         print("  no word means two things.")
