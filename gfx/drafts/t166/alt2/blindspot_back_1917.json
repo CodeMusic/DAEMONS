@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t166/alt2/blindspot_back_1917",
+ "prompt": "pure white background, pixel art game sprite of a single long plain serpent lying low, three-quarter rear view, turned away from the viewer and to the left, seen mostly from behind, no face visible, its long plain back curving away, full body, greyscale, dark grey body with mid grey highlights and black shading, clean black outline, isolated on plain white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, eye, mouth, teeth, beak, nose, looking at viewer, looking back over shoulder, front view, human, person, white body, pale body, colorful, grey background, colored background, floor, ground, grass, water, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.3,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 10:05:14"
+}
