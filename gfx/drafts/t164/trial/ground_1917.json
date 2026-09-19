@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t164/trial/ground_1917",
+ "prompt": "seamless repeating grass ground texture tile, soft green grass with small darker tufts and a few light blades, no objects, pixel art, Game Boy Advance RPG overworld tileset style, top-down three-quarter view, crisp 16-bit pixels, flat even lighting",
+ "negative": "text, letters, watermark, people, characters, animals, border, frame, vignette, blurry, photorealistic, 3d render, perspective distortion",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 14:18:59"
+}
