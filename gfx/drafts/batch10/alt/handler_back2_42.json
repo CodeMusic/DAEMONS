@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch10/alt/handler_back2_42",
+ "prompt": "pure white background, pixel art game sprite of a single upright dark grey duck creature standing on two webbed feet, seen from directly behind, no face visible, the back of its head, webbed hands at its sides, full body, greyscale, dark grey body with mid grey highlights and black shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, bill, looking at viewer, side view, profile, front view, white body, pale body, white head, blue, colorful, grey background, colored background, floor, ground, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, border, lines",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.5,
+ "comfyui": "0.19.1",
+ "made": "2026-09-18 21:49:12"
+}

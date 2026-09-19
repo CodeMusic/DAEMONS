@@ -1,0 +1,32 @@
+T-131 batch 10: which draft each view is.
+quorum_front <- alt/quorum_front_42
+quorum_back <- alt/quorum_back_42
+chiller_front <- alt/chiller_front_42
+chiller_back <- alt/chiller_back_42
+jetstream_front <- alt/jetstream_front_42
+jetstream_back <- alt/jetstream_back_42
+smogstack_front <- alt/smogstack_front_42
+smogstack_back <- alt/smogstack_back_42
+trance_front <- alt/trance_front_42
+trance_back <- alt/trance_back_42
+breaker_front <- alt/breaker_front_42
+breaker_back <- alt/breaker_back_42
+theorem_front <- alt/theorem_front_1917
+theorem_back <- alt/theorem_back_1917
+mime_front <- alt/mime_front_1917
+mime_back <- alt/mime_back_1917
+landfill_front <- alt/landfill_front_42
+landfill_back <- alt/landfill_back_42
+livelock_front <- alt/livelock_front_1917
+livelock_back <- alt/livelock_back_1917
+cairnling_front <- alt/cairnling_front_1917
+cairnling_back <- alt/cairnling_back_1917
+mime, handler: drawn in colour; cleaned in colour and greyed after, all but the streak markers (fix.py)
+cairnling: seed 42 drew a skeleton warrior; seed 1917's small skull-helmeted creature, on a dark square removed by fix.py
+mime reads as a human clown, as PROOF read as a bodybuilder
+streak box by hand: cairnling_back 22,18,42,40
+handler_front <- alt/handler_front2_1917
+handler_back <- alt/handler_back2_1917
+handler: the first ducks lost their white heads to the background fill; redrawn dark grey
+jetstream: its blue turned gold; greyed after cleaning (fix.py)
+handler: the shadow ellipse under its legs cleared outside the leg columns (fix.py); the legs themselves sample as a solid block
