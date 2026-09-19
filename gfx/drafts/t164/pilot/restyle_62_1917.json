@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t164/pilot/restyle_62_1917",
+ "prompt": "a small town house with a blue-grey slate roof with visible tiles and cream plaster walls with wooden trim, pixel art, Game Boy Advance RPG overworld tileset style, top-down three-quarter view, crisp 16-bit pixels, flat even lighting",
+ "negative": "text, letters, watermark, people, characters, border, frame, vignette, blurry, photorealistic, 3d render, perspective distortion, extra windows, extra doors",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.62,
+ "image": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t164/pilot/src.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 57.1,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 14:34:19"
+}
