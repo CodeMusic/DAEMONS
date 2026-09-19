@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/batch15/alt/illusion_back2_42",
+ "prompt": "pure white background, pixel art game sprite of a single dark grey deer with large curled branching antlers, seen from directly behind, no face visible, the antlers from behind, a short tail, full body, greyscale, dark grey body with mid grey highlights and black shading, clean black outline, isolated on plain white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, looking at viewer, side view, profile, front view, white body, pale body, frame, picture frame, box, border, grey background, colored background, floor, ground, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped, lines",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.1,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 01:42:42"
+}

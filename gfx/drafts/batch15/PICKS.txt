@@ -1,0 +1,33 @@
+T-131 batch 15: which draft each view is.
+vigilance_front <- alt/vigilance_front_1917
+vigilance_back <- alt/vigilance_back_1917
+ruminate_front <- alt/ruminate_front_42
+ruminate_back <- alt/ruminate_back_42
+periphery_front <- alt/periphery_front_1917
+periphery_back <- alt/periphery_back_1917
+comfort_front <- alt/comfort_front_42
+comfort_back <- alt/comfort_back_42
+grasp_front <- alt/grasp_front_42
+grasp_back <- alt/grasp_back_42
+hoarding_front <- alt/hoarding_front_42
+hoarding_back <- alt/hoarding_back_42
+imitation_front <- alt/imitation_front_1917
+imitation_back <- alt/imitation_back_1917
+startle_front <- alt/startle_front_1917
+startle_back <- alt/startle_back_1917
+instinct_front <- alt/instinct_front_42
+instinct_back <- alt/instinct_back_42
+callous_front <- alt/callous_front_42
+callous_back <- alt/callous_back_42
+repay_front <- alt/repay_front_1917
+repay_back <- alt/repay_back_1917
+armouring_front <- alt/armouring_front_1917
+armouring_back <- alt/armouring_back_1917
+grasp, imitation, startle, instinct: drawn in colour; cleaned in colour and greyed after (fix.py)
+periphery: seed 42 drew two dragonflies; seed 1917's one, on a dark ground
+streak box by hand: armouring_back 26,24,38,40
+periphery: its dark ground cleared by colour (fix.py)
+illusion_front <- alt/illusion_front_42
+illusion_back <- alt/illusion_back2_1917
+illusion: seed 42's back lost its head and antlers to the fill; redrawn dark (a side view, on T-166's list), its dark ground cleared by keep_largest
+startle_back: drawn on a box, removed by fix.py before greying
