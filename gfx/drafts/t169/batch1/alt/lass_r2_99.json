@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t169/batch1/alt/lass_r2_99",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic lamb character with a lamb head, woolly face, floppy ears and a little muzzle, a girl in a blue dress with a white apron and a straw bonnet, facing the viewer at a slight angle, full body from head to feet, walking upright on two legs like a person and wearing clothes, clean black outline, soft muted colours, isolated on pure white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "human, human face, human head, hair, person, man, woman, girl, boy, child, human skin, grey background, colored background, floor, ground, scenery, frame, border, drop shadow, shadow, text, watermark, multiple characters, two characters, pet, cropped, blurry, photorealistic, on all fours",
+ "seed": 99,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 17:53:28"
+}

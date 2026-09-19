@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t169/batch1/alt/bird_keeper_1917",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic ostrich standing upright, a bird keeper in a brown canvas apron over a shirt, long neck, small hat, facing the viewer at a slight angle, full body from head to feet, standing, clean black outline, soft muted colours, isolated on pure white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "human, human face, person, man, woman, girl, boy, grey background, colored background, floor, ground, grass, scenery, frame, border, drop shadow, shadow, text, letters, watermark, multiple characters, cropped, blurry, photorealistic",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 27.5,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 17:43:23"
+}

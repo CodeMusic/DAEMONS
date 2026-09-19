@@ -127,15 +127,15 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/hiker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/hiker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "picnicker": dict(src="gfx/characters/portrait_picnicker.png",       # a hedgehog, as her sheet is
+    "picnicker": dict(src="gfx/characters/sf_picnicker.png",       # a hedgehog, as her sheet is
                         dst="engineGba/graphics/trainers/front_pics/picnicker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/picnicker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "youngster": dict(src="gfx/characters/portrait_youngster.png",       # a mouse
+    "youngster": dict(src="gfx/characters/sf_youngster.png",       # a mouse
                         dst="engineGba/graphics/trainers/front_pics/youngster_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/youngster.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "bugcatcher": dict(src="gfx/characters/portrait_bug_catcher.png",    # a swallow, catching them on the wing
+    "bugcatcher": dict(src="gfx/characters/sf_bug_catcher.png",    # a swallow, catching them on the wing
                         dst="engineGba/graphics/trainers/front_pics/bug_catcher_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/bug_catcher.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -143,7 +143,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/biker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/biker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_swimmer_m": dict(src="gfx/characters/portrait_swimmer_m.png",     # a newt
+    "p_swimmer_m": dict(src="gfx/characters/sf_swimmer_m.png",     # a newt
                         dst="engineGba/graphics/trainers/front_pics/swimmer_m_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/swimmer_m.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -363,14 +363,29 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/staff_quicksilver_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_quicksilver.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "staff_callow": dict(src="gfx/characters/staff_callow_penguin.png",       # CALLOW's staff, cheerful penguins
+    # T-169 batch 1: the sources marked sf_ are SPRITEFORGE drawings, restyled from the T-120 drawing each class's
+    # sheet was matched to (gfx/drafts/t169/batch1/PICKS.txt); the old sources stay beside them as history.
+    # The BIRD KEEPER, BIKER and LASS kept their T-120 drawings -- the restyle came back noisier, muddier and,
+    # for the lass, half human again: a batch may keep what it has, and three of eleven did.
+    "staff_callow": dict(src="gfx/characters/sf_rocket_grunt_m.png",       # CALLOW's staff, cheerful penguins
                         dst="engineGba/graphics/trainers/front_pics/staff_callow_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_callow.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     # CORPUS STAFF (T-118): penguins, the organisation CALLOW's staff belong to -- the male is the same drawing.
-    "corpus_m": dict(src="gfx/characters/staff_callow_penguin.png",
+    "corpus_m": dict(src="gfx/characters/sf_rocket_grunt_m.png",
                         dst="engineGba/graphics/trainers/front_pics/rocket_grunt_m_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/rocket_grunt_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # The COOL TRAINERs (T-169): the last two faced portraits still vanilla's, drawn from the wolf and falcon halves of
+    # the COOL COUPLE -- which gencouple.py re-headed AFTER this file cut it, so running every job here would put that
+    # pair's two ibexes back. Name jobs (python3 tools/gbachar.py p_cooltrainer_m ...) when writing.
+    "p_cooltrainer_m": dict(src="gfx/characters/sf_cool_trainer_m.png",     # a wolf, as COOLTRAINER_M is (T-126)
+                        dst="engineGba/graphics/trainers/front_pics/cool_trainer_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/cool_trainer_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "p_cooltrainer_f": dict(src="gfx/characters/sf_cool_trainer_f.png",     # a falcon, as COOLTRAINER_F is (T-126)
+                        dst="engineGba/graphics/trainers/front_pics/cool_trainer_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/cool_trainer_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     "corpus_f": dict(src="gfx/characters/institution_penguin_f.png",
                         dst="engineGba/graphics/trainers/front_pics/rocket_grunt_f_front_pic.png",

@@ -1,0 +1,12 @@
+T-169 batch 1: which draft each portrait is. Restyled (image-to-image) from the drawing its overworld sheet was matched
+to, because from words alone the model drew the lass, the picnicker and the falcon as humans (alt/*_1917, *_42, *_r2_*).
+cool_trainer_m  <- alt/cool_trainer_m_i2i_0.6   (the wolf half of the ROM's COOL COUPLE)
+cool_trainer_f  <- alt/cool_trainer_f_i2i_0.6   (the falcon half)
+rocket_grunt_m  <- alt/rocket_grunt_m_i2i_0.5   (and staff_callow: one penguin, T-118)
+picnicker       <- alt/picnicker_i2i_0.5
+bird_keeper     <- alt/bird_keeper_i2i_0.5
+youngster       <- alt/youngster_i2i_0.5
+swimmer_m       <- alt/swimmer_m_i2i_0.5
+biker           <- alt/biker_i2i_0.5
+lass            <- alt/lass_i2i_0.45            (0.55 drifted human)
+bug_catcher     <- alt/bug_catcher_i2i_0.5
