@@ -6,7 +6,7 @@
     python3 tools/genstates.py --wave 2 --release  # approved: drop each .if DAEMONS_DEBUG and vanilla's .else
 
 A WAVE IS NAMED EVERY TIME, because a released script has no guard left to find: run over a released wave, the
-tool would wrap OUR script as if it were vanilla's. Wave 1 is released (engine 0e786a157).
+tool would wrap OUR script as if it were vanilla's. Waves 1 and 2 are released (engine 0e786a157, 79b94a3e0).
 
 WHY. 1.6 renamed every state for a PROCESS -- LEAKING, THRASHING, OVERHEATED, SUSPENDED, THROTTLED, HUNG -- and
 T-137's close showed each still playing the BODY it replaced: a Z, circling ducks, embers, sparks, an ice cube.
