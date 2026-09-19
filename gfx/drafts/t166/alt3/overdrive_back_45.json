@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t166/alt3/overdrive_back_45",
+ "prompt": "a single galloping unicorn horse with a long mane, pixel art game sprite, full body, rear view, seen from directly behind, back of the head, no face visible, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, flat solid green background, centered, no shadow, no text",
+ "negative": "face, eyes, eye, mouth, beak, looking at viewer, front view, green body, green tint, pale body, drop shadow, shadow, colorful, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, border",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "image": "gfx/drafts/t166/src3/overdrive.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 12:47:25"
+}
