@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t169/batch2/alt/swimmer_f_0.6",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic axolotl swimmer with an axolotl head and feathery gills, in a swimsuit, full body, clean black outline, isolated on white, centered",
+ "negative": "human, human face, hair, person, girl, boy, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "image": "gfx/drafts/t169/batch2/src/swimmer_f.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.2,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 18:59:28"
+}

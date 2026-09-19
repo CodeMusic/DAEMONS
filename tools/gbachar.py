@@ -151,15 +151,15 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/lass_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/lass.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_channeler": dict(src="gfx/characters/portrait_channeler.png",     # a bat, at home in the tower's dark
+    "p_channeler": dict(src="gfx/characters/sf_channeler.png",     # a bat, at home in the tower's dark
                         dst="engineGba/graphics/trainers/front_pics/channeler_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/channeler.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_camper": dict(src="gfx/characters/portrait_camper.png",           # a raccoon
+    "p_camper": dict(src="gfx/characters/sf_camper.png",           # a raccoon
                         dst="engineGba/graphics/trainers/front_pics/camper_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/camper.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_swimmer_f": dict(src="gfx/characters/portrait_swimmer_f.png",     # an axolotl
+    "p_swimmer_f": dict(src="gfx/characters/sf_swimmer_f.png",     # an axolotl
                         dst="engineGba/graphics/trainers/front_pics/swimmer_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/swimmer_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -228,7 +228,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/bird_keeper_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/bird_keeper.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_cueball": dict(src="gfx/characters/portrait_cue_ball.png",                # a rhinoceros
+    "p_cueball": dict(src="gfx/characters/sf_cue_ball.png",                # a rhinoceros
                         dst="engineGba/graphics/trainers/front_pics/cue_ball_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/cue_ball.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),

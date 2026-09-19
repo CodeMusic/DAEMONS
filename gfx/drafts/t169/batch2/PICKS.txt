@@ -1,0 +1,2 @@
+T-169 batch 2: each portrait is alt/<name>_0.5 -- image-to-image at 0.5 from the T-120 drawing its overworld sheet was
+matched to. 0.6 was drafted for every one and taken for none: it adds clutter (the hiker's pack, the cue ball's hands).
