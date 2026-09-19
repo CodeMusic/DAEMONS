@@ -1,0 +1,26 @@
+T-131 batch 14: which draft each view is.
+tension_front <- alt/tension_front_42
+tension_back <- alt/tension_back_42
+apathy_front <- alt/apathy_front_1917
+apathy_back <- alt/apathy_back_1917
+blindspot_front <- alt/blindspot_front_42
+blindspot_back <- alt/blindspot_back_42
+whim_front <- alt/whim_front_42
+whim_back <- alt/whim_back_42
+ambush_front <- alt/ambush_front_42
+ambush_back <- alt/ambush_back_42
+huddle_front <- alt/huddle_front_42
+huddle_back <- alt/huddle_back_42
+alarm_front <- alt/alarm_front_42
+alarm_back <- alt/alarm_back_42
+recall_front <- alt/recall_front_42
+recall_back <- alt/recall_back_42
+fixation_front <- alt/fixation_front_42
+fixation_back <- alt/fixation_back_42
+simmer_front <- alt/simmer_front_42
+simmer_back <- alt/simmer_back_42
+omen_front <- alt/omen_front_42
+omen_back <- alt/omen_back_42
+bristle_front <- alt/bristle_front_42
+bristle_back <- alt/bristle_back_42
+whim, huddle, omen, bristle: drawn in colour; cleaned in colour and greyed after (fix.py)
