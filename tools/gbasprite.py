@@ -480,7 +480,9 @@ for vanilla, ours in sorted(pairs.items()):
     if front_grid is not None and note:
         ow = derive_overworld(front_grid, front_pal)
         owp = os.path.join(GBA, "graphics/object_events/pics/pokemon/%s.png" % d)
-        if ow and os.path.exists(owp) and d not in OW_DEFERRED:
+        #  T-133: a daemon's overworld object is now drawn by tools/gbaowslots.py, in its TYPE's palette and a slot
+        #  each map leaves free. This per-daemon path would overwrite that art, so it no longer runs.
+        if False and ow and os.path.exists(owp) and d not in OW_DEFERRED:
             #  The object's PNG carries INDICES; the game supplies the colours
             #  at runtime from whatever OBJ_EVENT_PAL_TAG its graphics info
             #  names. Vanilla points every creature at a generic NPC palette --
