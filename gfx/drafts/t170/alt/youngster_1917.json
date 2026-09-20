@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t170/alt/youngster_1917",
+ "prompt": "pure white background, pixel art mouse boy in a blue and white striped shirt and brown shorts, red cap, chibi game sprite, two heads tall, huge round head, tiny body, thick black outline, flat colours with one shade of shading, facing the viewer, standing, full body, isolated on pure white, centered, large in the frame, no shadow, no text",
+ "negative": "realistic proportions, tall figure, human face, person, detailed shading, gradient, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.6,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 21:42:24"
+}
