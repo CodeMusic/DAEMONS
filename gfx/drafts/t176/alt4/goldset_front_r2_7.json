@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t176/alt4/goldset_front_r2_7",
+ "prompt": "pure white background, pixel art game sprite of a single plant creature: one wide open flower bloom sitting directly on a short thick stalk, broad drooping leaves around its base, two small round eyes in the centre of the bloom, no arms and no legs, front view facing the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, rear view, human, person, humanoid, girl, doll, skirt, dress, arms, legs, hair, face on a body, grey background, colored background, floor, pedestal, frame, drop shadow, text, watermark, multiple creatures, scenery, blurry, cropped",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.1,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 13:55:45"
+}
