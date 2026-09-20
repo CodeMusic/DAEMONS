@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.222 — 2026-09-20
+
+### 9.4 — Which instrument draws whom, and one impression withdrawn (T-174)
+
+- ***The user's ruling: the named cast KEEPS ITS DRAWINGS.*** **The nine that remained went three rounds through the restyle** (*two seeds at 0.45, one at 0.32 with every failure named, judged at 64 pixels rather than at 904*) **and the art they already have is at least as clean as what comes back.**
+- ***What the restyle does to a named character***: **saturates the fur** (*HOLT's otter returns ORANGE, which is the Clears' colour*), **dissolves a light garment on light fur** (*AL's cream shirt as a bare chest in three pictures of four*), **dissolves a small held object** (*CAIRN's slate*), **and loses a face's one mark** (*INIT's muzzle*). *The middle two are fixable at 0.32; the fur is not.*
+- ***So the split is not old against new***: **a daemon's picture carries a TYPE and a SHAPE, which survive a restyle; a named character's carries an IDENTITY, which is the thing the model is entitled to reinterpret** — *and the overworld carries a walk cycle, which it cannot draw at all (T-170).*
+- ***An impression withdrawn, on purpose and in the record***: **three cells suggested the server's portraits were the speckly ones; two measures over all seventy-five said otherwise in both directions**, *and the general question went to T-177 instead of into this document.*
+- **`tools/prephires.py`**: *the high-resolution i2i source the CRYSTAL experiment settled, which had been inline and was lost.*
+
 ## v11.221 — 2026-09-20
 
 ### 4.2 — The Index footprint is the type mark (T-175)

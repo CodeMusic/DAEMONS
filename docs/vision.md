@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.221**
+**A total conversion — the living design bible, v11.222**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7261,6 +7261,21 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 **It is a PERSPECTIVE TWIST, and it is the game's own subject turned on the cast**: *in a world where the people are animals, the processes are the ones that look human* — **the frame the player reads a thing in (CONTEXT's clause) decides which of the two is the person.** *Nothing in the game says so (craft rule 1); the player sees a fox teach them to catch a thing shaped like a man.*
 
 ***What this does NOT license***: **an ACTOR drawn human** — *treatment B above made Crystal into Professor Oak, and the rule for people stands* — **and it is not a quota**: *most daemons stay creatures; the human-looking ones are the ones whose PROCESS is a human practice (proof, argument, mimicry, doctrine), which is why they came out that way unprompted.*
+
+#### Which instrument draws whom — settled 2026-09-20, by measuring rather than by taste
+
+***The question T-174 asked***: **the named cast — CRYSTAL, the player, AL, HOLT, VERA, INIT, CAIRN, SCORN — is drawn by an older hand than the daemons are.** *Should the sprite server redraw them too, so the whole game comes from one instrument?* ***Answered: no, and the reason is not nostalgia.***
+
+**The restyle was run properly before it was refused.** *Three rounds on each of the nine that remained — two seeds at denoise 0.45 and one at 0.32 with every observed failure named — from the drawing at its OWN resolution, and judged at 64 pixels rather than at 904, which is where the first attempt had gone wrong.* **What it does to a named character is consistent and only partly fixable:**
+
+- **It saturates the fur.** *HOLT is an otter and comes back ORANGE at every seed and every strength.* **Orange is the Clears' colour** — *an otter that reads as a fox breaks the fable at the one place a player would notice.*
+- **It dissolves a light garment on light fur.** *AL's cream shirt returned as a bare chest in three of his four pictures.* **Fixable**: *name it, and drop to 0.32.*
+- **It dissolves a small held object** — *CAIRN's slate, AL's monitor.* **Fixable the same way.**
+- **It loses a face's one mark.** *INIT's dark muzzle goes, and a basset becomes a generic ginger dog.*
+
+***So the split is not old against new, it is WHAT THE PICTURE HAS TO CARRY.*** **A daemon's front pic has to carry a TYPE and a shape** — *both survive a restyle, which is why T-131 and T-176 used the server for all 386.* **A named character's portrait has to carry an IDENTITY**, *and identity is exactly the thing the model is entitled to reinterpret.* ***The overworld carries a third thing, a walk cycle, and the server cannot draw it at all*** (T-170).
+
+***One methodological note worth keeping, because it nearly went in as a finding.*** **Three cells beside three others suggested the server's portraits were the speckly ones and the hand drafts the clean ones.** *Measured across all seventy-five — lone pixels, then loose fragments — it did not hold in either direction, and the two worst portraits on both measures are hand drafts.* **The impression was withdrawn and the question became a ticket.** *An eye comparing three things is a hypothesis; the bible only carries what a measure agreed with.*
 
 ### 9.4a The move menu — a type as a word, and what a move does — built 2026-09-13
 
