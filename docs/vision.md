@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.223**
+**A total conversion — the living design bible, v11.224**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7297,6 +7297,18 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***So the split is not old against new, it is WHAT THE PICTURE HAS TO CARRY.*** **A daemon's front pic has to carry a TYPE and a shape** — *both survive a restyle, which is why T-131 and T-176 used the server for all 386.* **A named character's portrait has to carry an IDENTITY**, *and identity is exactly the thing the model is entitled to reinterpret.* ***The overworld carries a third thing, a walk cycle, and the server cannot draw it at all*** (T-170).
 
 ***One methodological note worth keeping, because it nearly went in as a finding.*** **Three cells beside three others suggested the server's portraits were the speckly ones and the hand drafts the clean ones.** *Measured across all seventy-five — lone pixels, then loose fragments — it did not hold in either direction, and the two worst portraits on both measures are hand drafts.* **The impression was withdrawn and the question became a ticket.** *An eye comparing three things is a hypothesis; the bible only carries what a measure agreed with.*
+
+#### Every picture of ours carries an outline — settled 2026-09-20, and the measure that got there
+
+***The question was which portraits were broken, and it could not be answered by any statistic tried.*** **Nine were tested against a list made by eye** (T-177): *crumbs, same-colour blobs, colour churn, rare colours, thin structures, fringe, loose pieces, edge colours, outline share.* **Crumbs and churn find TEXTURE and rank a tweed jacket and a judo gi worst. Loose pieces finds portraits with TWO FIGURES in them.** *The best reached 0.93 by one summary number and still named clean pictures at its extreme.* ***The honest reading: the eye was judging whether the SUBJECT is legible, and that is not a property of the pixels taken one at a time.***
+
+**What separated them was the silhouette's EDGE.** *The pictures that read draw 65–74% of their edge in their four darkest colours and never the bright ones; the pictures that do not draw their edge in* **every colour they have** — *100% of the palette, on seven of the nine.*
+
+***Which is not a fault of the drawing at all.*** **A drawing resized with LANCZOS has a blended edge, and a fifteen-colour adaptive fit spends its slots on that blend** — *BEAUTY holds five near-identical blues from one dress and has none left for her horns or her hands.* **The quantizer cannot draw an outline, because an outline is a decision about what matters and it is only counting.**
+
+***So the rule***: **every 64-pixel picture of ours takes the darkest colour it already uses along its own silhouette.** *Nothing is added to a palette and no colour is invented — a picture that had an outline barely changes, and one that had none gains a shape.* **84 pictures**: *the trainer portraits, the hearsay portraits, the intro pictures and the back pics, ours only.* ***The overworld is excluded on measurement, not on taste*** — *at 16×32 an outline is most of the sprite, which is T-170's finding one size down.*
+
+*It runs inside `gbachar.py` as well as over what is already built, so this is now how a picture is cut rather than a pass someone must remember.*
 
 ### 9.4a The move menu — a type as a word, and what a move does — built 2026-09-13
 

@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.224 — 2026-09-20
+
+### 9.4 — Every picture of ours carries an outline (T-177)
+
+- ***The ticket asked for a measure and the measure said no***: **nine statistics against a list made by eye** — *crumbs, blobs, churn, rare colours, thin structures, fringe, loose pieces, edge colours, outline share* — **and none reproduces it.** *Crumbs and churn rank a tweed jacket and a judo gi worst (texture, not breakage); loose pieces finds portraits with two figures in them.* ***The eye was judging legibility of the SUBJECT, which is not a property of the pixels taken one at a time.***
+- ***But it found the cause***: **the pictures that read draw 65–74% of their silhouette edge in their four darkest colours; the ones that do not draw it in EVERY colour they have.** *A LANCZOS-resized drawing has a blended edge and a fifteen-colour adaptive fit spends its slots on the blend — BEAUTY holds five near-identical blues from one dress and has nothing left for her horns.*
+- **So the fix is not cleaning files, it is the outline the quantizer cannot draw**: *every silhouette pixel takes the darkest colour its own picture already uses.* ***84 pictures, edge-in-its-darkest-four 38% → 100%***, *and idempotent.* **The pass runs inside `gbachar.index` too, so a picture cut in future is outlined as it is written.**
+- ***Excluded on measurement***: **the overworld** — *at 16×32 an outline is most of the sprite (T-170).*
+
 ## v11.223 — 2026-09-20
 
 ### 8.2b — Twelve reachable species nobody had counted (T-131)
