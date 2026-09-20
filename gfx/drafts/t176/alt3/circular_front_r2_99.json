@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t176/alt3/circular_front_r2_99",
+ "prompt": "pure white background, pixel art game sprite of a single creature balanced upside down spinning on the point of its head, two long legs held straight up in a V, two arms out for balance, a conical crest on its head as the spinning point, front view, facing the viewer, the two legs up in a V and the arms held out, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, rear view, spinning top, toy, cone, featureless object, human, person, humanoid, grey background, colored background, floor, pedestal, frame, box, drop shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 99,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.3,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 13:23:09"
+}
