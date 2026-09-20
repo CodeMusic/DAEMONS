@@ -24,6 +24,16 @@ except where the word IS motion (THRASHING); each state is told apart by its rhy
     THROTTLED   SIGNAL    pulse, pulse, a long stall, one more pulse -- a speed cap that stalls work
     HUNG        FROZEN    snaps to FROZEN at once and holds there, still, until it is let go
 
+WAVE 4 -- what happens TO a daemon outside a move: a hit landing, fear, an item acting or being taken, a return,
+gathering, being revealed, a set routine arriving. No sprite is loaded: a loss drains toward grey, a gain deepens
+toward the daemon's own type, a return comes back in ticked steps (9.24's RESTORE exemplar).
+
+KEPT ON PURPOSE, each because the MECHANIC is the picture (T-144's rule, and T-156's doll): the ball throws and
+their four helpers, the level-up, both switch-outs, SUBSTITUTE's four, the Safari's bait, rock and three
+reactions, and CASTFORM's change -- no player of this game can meet a Castform. SNATCH is kept for a mechanical
+reason instead: its script runs past its own `end` into SnatchMoveContinue, which two other scripts jump to, so a
+guard around it does not link. region() now refuses a region with a second label in it rather than writing that.
+
 WAVE 3 -- weather and field, and it is ONE animation: sun, sandstorm, hail and the leech drain turned out to be
 one-line scripts that jump straight into OUR redrawn move animations (rain already did), so they read as vanilla
 only because the jump is byte-identical. What is left is the STAT CHANGE, which plays constantly:
@@ -186,6 +196,69 @@ def statchange():
             + ["DaemonsStatDownSharply:", "\tplaysewithpan SE_M_STAT_DECREASE, SOUND_PAN_ATTACKER"] + down_sharp)
 
 
+# ---- wave 4: what happens TO a daemon outside a move. Each is the palette again, in the vocabulary already set:
+# a loss drains toward grey, a gain deepens toward the daemon's own type, a return comes back in ticked steps.
+def hit(depth=7, shakes=3):
+    return (["\tplaysewithpan SE_M_DOUBLE_SLAP, SOUND_PAN_TARGET"] + shake(2, shakes, 1)
+            + ["\tcreatevisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 0, 0, %d, %s" % (depth, GREY)] + W
+            + ["\tcreatevisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, %d, 0, %s" % (depth, GREY)] + W)
+
+
+def scared():
+    """it is about to be gone: the colour thins and jitters, and vanilla's sweat beads go"""
+    return (["\tcreatevisualtask AnimTask_SafariOrGhost_DecideAnimSides, 2, 1"] + W
+            + shake(1, 10, 1) + ["\tcreatevisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 1, 0, 11, %s" % GREY] + W
+            + ["\tcreatevisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 3, 11, 0, %s" % GREY] + W)
+
+
+def focus_band():
+    """held at one HP: it drains nearly out, then catches and holds one step back"""
+    return (["\tplaysewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER"] + blend(0, 0, 15, GREY) + W
+            + blend(0, 15, 11, GREY) + W + pause(24) + blend(2, 11, 0, GREY) + W)
+
+
+def held_item():
+    """something it carries acts on it: two quick deepenings toward its own type"""
+    beat = (["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 0, 0, 10"] + W
+            + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 1, 10, 0"] + W)
+    return ["\tplaysewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER"] + beat + pause(4) + beat
+
+
+def transfer(se="SE_M_TAIL_WHIP"):
+    """an item moves from one to the other: the one that loses drains, then the one that gains deepens"""
+    return (["\tplaysewithpan %s, SOUND_PAN_TARGET" % se]
+            + ["\tcreatevisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 1, 0, 10, %s" % GREY] + W
+            + ["\tcreatevisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 10, 0, %s" % GREY]
+            + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 1, 0, 10"] + W
+            + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 2, 10, 0"] + W)
+
+
+def restore_ticks():
+    """9.24's exemplar, as RESTORE was built: what was lost comes back in ticked steps"""
+    out = ["\tplaysewithpan SE_M_ABSORB_2, SOUND_PAN_ATTACKER"] + blend(0, 0, 12, GREY) + W
+    for a, b in ((12, 8), (8, 4), (4, 0)):
+        out += blend(1, a, b, GREY) + W + pause(6)
+    return out
+
+
+def gathering():
+    """it holds still and deepens toward its own type, and keeps it"""
+    return (["\tplaysewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER"]
+            + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 2, 0, 12"] + W + pause(20)
+            + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 3, 12, 0"] + W)
+
+
+def revealed():
+    """the SILPH SCOPE: what was grey resolves into its own colour"""
+    return (["\tplaysewithpan SE_M_TELEPORT, SOUND_PAN_ATTACKER"] + blend(0, 0, 15, GREY) + W + pause(10)
+            + blend(3, 15, 0, GREY) + W)
+
+
+def delayed_hit():
+    """a routine that was set turns up later: the same landing, deeper, with nothing thrown"""
+    return (["\tcreatevisualtask AnimTask_SetAnimTargetToBattlerTarget, 2"] + W + hit(depth=11, shakes=5))
+
+
 STATES = [   # wave, label, our word, the process
     (1, "Status_Poison", "LEAKING", leaking),
     (1, "Status_Confusion", "THRASHING", thrashing),
@@ -202,6 +275,18 @@ STATES = [   # wave, label, our word, the process
     (2, "Status_Clamp", "SLUICE", sluice),
     (2, "Status_SandTomb", "BURY", bury),
     (3, "General_StatsChange", "a stat change", statchange),
+    (4, "General_MonHit", "a hit lands", hit),
+    (4, "General_MonScared", "it is about to go", scared),
+    (4, "General_FocusBand", "held at one HP", focus_band),
+    (4, "General_HeldItemEffect", "what it carries acts", held_item),
+    (4, "General_ItemKnockoff", "an item knocked out of it", transfer),
+    (4, "General_ItemSteal", "an item taken", transfer),
+    (4, "General_IngrainHeal", "a return, ticked", restore_ticks),
+    (4, "General_WishHeal", "a return, ticked", restore_ticks),
+    (4, "General_FocusPunchSetUp", "gathering, and holding it", gathering),
+    (4, "General_SilphScoped", "revealed", revealed),
+    (4, "General_FutureSightHit", "a set routine lands", delayed_hit),
+    (4, "General_DoomDesireHit", "a set routine lands", delayed_hit),
 ]
 
 
@@ -215,7 +300,14 @@ def region(text, label):
         e = text.index("\n.endif\n", body_start) + len("\n.endif\n")
         return m.start(), e, text[text.index(".else\n", body_start) + 6:text.index("\n.endif\n", body_start) + 1]
     e = re.compile(r"^\tend\n", re.M).search(text, body_start).end()
-    return m.start(), e, text[body_start:e]
+    van = text[body_start:e]
+    #  A REGION MAY NOT SWALLOW ANOTHER LABEL. General_SnatchMove runs past its own `end` into SnatchMoveContinue,
+    #  which two other scripts jump to -- guarding the region put that label inside `.else`, and the debug build
+    #  failed to link (genanims.py met the same trap on SWALLOW). A script shaped like this keeps vanilla's.
+    inner = [l for l in re.findall(r"^([A-Za-z_]\w*):$", van, re.M)]
+    if inner:
+        raise SystemExit("%s runs into %s, which other scripts call: leave it vanilla's" % (label, ", ".join(inner)))
+    return m.start(), e, van
 
 
 def main():
