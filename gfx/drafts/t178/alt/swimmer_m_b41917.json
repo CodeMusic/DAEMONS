@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t178/alt/swimmer_m_b41917",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic newt in swimming trunks and goggles, with a blunt amphibian head, a crested back and a long flat tail, standing upright on two legs, fully clothed, full body, clean black outline, bold simple shapes, isolated on white, centered",
+ "negative": "naked animal, wild animal, no clothes, feral, on all fours, fox, red fox, vulpine, frog, rodent, mouse, rat, human, human face, human child, hair, person, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic, thin spindly limbs",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 80.0,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 18:25:32"
+}

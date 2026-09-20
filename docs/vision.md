@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.224**
+**A total conversion — the living design bible, v11.225**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7297,6 +7297,18 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***So the split is not old against new, it is WHAT THE PICTURE HAS TO CARRY.*** **A daemon's front pic has to carry a TYPE and a shape** — *both survive a restyle, which is why T-131 and T-176 used the server for all 386.* **A named character's portrait has to carry an IDENTITY**, *and identity is exactly the thing the model is entitled to reinterpret.* ***The overworld carries a third thing, a walk cycle, and the server cannot draw it at all*** (T-170).
 
 ***One methodological note worth keeping, because it nearly went in as a finding.*** **Three cells beside three others suggested the server's portraits were the speckly ones and the hand drafts the clean ones.** *Measured across all seventy-five — lone pixels, then loose fragments — it did not hold in either direction, and the two worst portraits on both measures are hand drafts.* **The impression was withdrawn and the question became a ticket.** *An eye comparing three things is a hypothesis; the bible only carries what a measure agreed with.*
+
+#### Draw it at twice the size it is shown — settled 2026-09-20
+
+***The arithmetic nobody had done, and it explains a year of soft portraits.*** **The checkpoint draws on a fixed 8-pixel grid, so a 512 canvas gives 64 ART PIXELS** — *and a figure standing in that frame occupies about fifty of them.* **A 64×64 trainer portrait was therefore being UPSCALED from a 50-pixel drawing**: `sf_beauty.png` is 24×50, `sf_gamer.png` 24×49. ***28 of 75 portrait sources were smaller than the sprite they became.***
+
+**The portraits that always read are the hand drafts**, *whose figures are 270–290 pixels and get REDUCED into the frame.* ***Downscaling averages. Upscaling invents.*** **Which is why T-177's outline improved every portrait and could not rescue BEAUTY's horns: they are two pixels in the source**, *and no edge rule can recover a shape that was never drawn.*
+
+***So the rule is the canvas***: **1024, which gives 128 art pixels — about twice the sprite — and the reduction does the rest.** *T-131 measured the cost at 82–106 seconds a view against 23 at 512, which for a picture that ships is nothing.*
+
+***And the pass that applied it recorded what this model gets wrong***, *which is worth more than the fourteen redraws*: **it drifts SPECIES** — *three foxes where a jackal and two martens were asked for, a rodent for a hyena, a frog for a salamander (which would have put KOGA's species on a second leader)* — **and it drops CLOTHES**, *returning a plain seagull and a plain penguin where the class is a sailor and an office worker.* **Both are now standing negatives, and a species is described by its features rather than named**: *the jackal's black-and-silver saddle, the marten's cream throat bib, the bowerbird's short stout beak.*
+
+***Half the set was kept.*** **Fourteen of the twenty-eight are still drawn under size and stay that way** — *SWIMMER F, YOUNGSTER and LEADER KOGA read perfectly well, BRUNO's redraw put him in BLACK BELT's own gi, and STAFF BRAZEN's put a tarsier in a top hat, which is a costume decision rather than a repair.* **A source drawn small is a reason to LOOK, not a reason to redraw.**
 
 #### Every picture of ours carries an outline — settled 2026-09-20, and the measure that got there
 

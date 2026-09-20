@@ -122,7 +122,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/leader_lt_surge_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_lt_surge.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "trellis": dict(src="gfx/characters/sf_trellis.png",       # a bowerbird gardener, everything arranged to one exact shape
+    "trellis": dict(src="gfx/characters/sf_trellis_1024.png",       # a bowerbird gardener, everything arranged to one exact shape
                         dst="engineGba/graphics/trainers/front_pics/leader_erika_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_erika.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),

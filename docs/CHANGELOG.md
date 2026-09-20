@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.225 — 2026-09-20
+
+### 9.4 — Draw it at twice the size it is shown (T-178)
+
+- ***The arithmetic nobody had done***: **the checkpoint draws on a fixed 8px grid, so a 512 canvas gives 64 ART PIXELS and a figure occupies about fifty** — *`sf_beauty.png` is 24×50.* **28 of 75 portrait sources were SMALLER than the sprite they became**, *and were upscaled into it.*
+- ***Downscaling averages, upscaling invents***: **the portraits that always read are the hand drafts at 270–290px.** *This is why T-177's outline improved every portrait and could not rescue BEAUTY's horns — they are two pixels in the source.*
+- **The rule is the canvas: 1024**, *which gives 128 art pixels and lets the reduction do the work.* **14 of the 28 redrawn and taken; 14 kept**, *because a source drawn small is a reason to look, not a reason to redraw — SWIMMER F, YOUNGSTER and LEADER KOGA read perfectly well.*
+- ***What the pass recorded about the model is worth more than the redraws***: **it drifts SPECIES** (*three foxes for a jackal and two martens, a rodent for a hyena, a frog for a salamander — which would have put KOGA's species on a second leader*) **and drops CLOTHES** (*a plain seagull, a plain penguin*). *Both are standing negatives now, and a species is described by its features rather than named.*
+
 ## v11.224 — 2026-09-20
 
 ### 9.4 — Every picture of ours carries an outline (T-177)
