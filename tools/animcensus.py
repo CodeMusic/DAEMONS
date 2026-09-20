@@ -5,6 +5,7 @@
     python3 tools/animcensus.py --family HEAL   # every move in a family, earliest-seen first
     python3 tools/animcensus.py --gfx           # the effect graphics, by how many vanilla animations still use them
     python3 tools/animcensus.py --descriptions  # renamed routines whose description is still vanilla's (T-138)
+    python3 tools/animcensus.py --descriptions --kept  # ...and the ones kept on purpose, each with its reason
     python3 tools/animcensus.py --general       # the animations that are not moves: states, weather, items, balls (T-168)
 
 THE QUESTION IT ANSWERS is T-134's: 309 of 355 move names are ours and the animations are all vanilla's, so a
@@ -183,6 +184,34 @@ def main():
             print("  %-14s %-18s %-6s %3d daemons %3d trainer uses  %s" % (r["name"], r["move"][5:], seen, r["learners"], r["trainers"],
                                                                       ("draft" if r["draft"] else "vanilla") if r["vanilla"] else "ours"))
         return
+    #  T-138. A description KEPT ON PURPOSE is not an outstanding one, and the ticket says keeping one needs a
+    #  record rather than silence -- so the reason lives here, beside the count, and the census subtracts them.
+    #  Byte-identity with upstream cannot tell a keep from an oversight; this table is what tells them apart.
+    KEPT = {
+        "MOVE_WHIRLWIND": "the foe is made to switch out, which is what EVICT means",
+        "MOVE_ROAR": "the same text, and unloading is what forcing a switch is",
+        "MOVE_ABSORB": "absorbing half the damage IS what INGEST says",
+        "MOVE_MEGA_DRAIN": "draining half the damage IS what EXTRACT says",
+        "MOVE_LEECH_LIFE": "the same, for SIPHON",
+        "MOVE_GIGA_DRAIN": "the same, for DISTILL",
+        "MOVE_RAGE": "stronger each time the user is hit: ACCUMULATE, exactly",
+        "MOVE_BIDE": "endures two turns then pays back double, which is ACCRUE",
+        "MOVE_SKULL_BASH": "DEFENSE first turn, attack second: PRELOAD",
+        "MOVE_AMNESIA": "already ours -- 'Forgets about something'",
+        "MOVE_THIEF": "taking the foe's held item is LIFT",
+        "MOVE_CONVERSION_2": "changing type against the last attack is RECAST",
+        "MOVE_BELLY_DRUM": "maximum ATTACK for half the HP is OVERCOMMIT",
+        "MOVE_FALSE_SWIPE": "always leaves 1 HP: NONFATAL",
+        "MOVE_FURY_CUTTER": "grows on each successive hit: RAMP UP",
+        "MOVE_PAIN_SPLIT": "adds both HP and shares the total, which is LOAD BALANCE",
+        "MOVE_VITAL_THROW": "acts after the foe and cannot miss: DEDUCE",
+        "MOVE_STOCKPILE": "charges for later, three times: ENQUEUE",
+        "MOVE_SUPERPOWER": "power at the cost of ATTACK and DEFENSE is BRUTE FORCE",
+        "MOVE_ENDEAVOR": "gains as the user's HP falls toward the foe's: EQUALISE",
+        "MOVE_SECRET_POWER": "an effect that varies with the terrain is AMBIENT",
+        "MOVE_CAMOUFLAGE": "type follows the terrain, which is BLEND",
+        "MOVE_AERIAL_ACE": "fast, single target, cannot be evaded: HOMING",
+    }
     if "--descriptions" in args:
         #  T-138: a routine we renamed whose description is still byte-identical to upstream's. Not every one is
         #  wrong (2.8) -- this is the reading list, and it shrinks as each is kept on purpose or rewritten.
@@ -192,9 +221,14 @@ def main():
         named = {r["move"]: r for r in rows}
         hits = [(m, g) for m, g in re.findall(r"\[(MOVE_\w+)\s*-\s*1\]\s*=\s*(gMoveDescription_\w+)", src)
                 if d.get(g) == d_up.get(g) and m in named and named[m]["name"] != n_up.get(m)]
-        for m, g in hits:
+        left = [(m, g) for m, g in hits if m not in KEPT]
+        for m, g in left:
             print("  %-14s (was %-13s) %s" % (named[m]["name"], n_up.get(m), " ".join(re.findall(r'"(.*?)"', d[g])).replace("\\n", " ")))
-        print("  %d renamed routines still carry vanilla's description" % len(hits))
+        print("  %d still to read; %d kept on purpose, with the reason" % (len(left), len(hits) - len(left)))
+        if "--kept" in args:
+            for m, g in hits:
+                if m in KEPT:
+                    print("  KEPT %-14s %s" % (named[m]["name"], KEPT[m]))
         return
     if "--gfx" in args:
         use = defaultdict(set)
