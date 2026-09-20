@@ -244,7 +244,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/ruin_maniac_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/ruin_maniac.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_burglar": dict(src="gfx/characters/portrait_burglar.png",                 # a weasel
+    "p_burglar": dict(src="gfx/characters/sf_burglar.png",                 # a weasel
                         dst="engineGba/graphics/trainers/front_pics/burglar_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/burglar.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -306,7 +306,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/engineer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/engineer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_tamer": dict(src="gfx/characters/portrait_tamer.png",                     # a hyena ringmaster
+    "p_tamer": dict(src="gfx/characters/sf_tamer.png",                     # a hyena ringmaster
                         dst="engineGba/graphics/trainers/front_pics/tamer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/tamer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -331,15 +331,15 @@ JOBS = {
                         pal="engineGba/graphics/trainers/palettes/leader_blaine.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     # The BENCHMARK staff (T-116): one portrait per gym, DOLDRUM two; drafted through daemon/sprite.
-    "staff_slate": dict(src="gfx/characters/staff_slate_beaver.png",       # SLATE's apprentice, a young beaver
+    "staff_slate": dict(src="gfx/characters/sf_staff_slate.png",       # SLATE's apprentice, a young beaver
                         dst="engineGba/graphics/trainers/front_pics/staff_slate_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_slate.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "staff_doldrum_swimmer": dict(src="gfx/characters/staff_doldrum_manatee.png",       # DOLDRUM's swimmer, a manatee
+    "staff_doldrum_swimmer": dict(src="gfx/characters/sf_staff_doldrum_swimmer.png",       # DOLDRUM's swimmer, a manatee
                         dst="engineGba/graphics/trainers/front_pics/staff_doldrum_swimmer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_doldrum_swimmer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "staff_doldrum_picnicker": dict(src="gfx/characters/staff_doldrum_capybara.png",       # DOLDRUM's picnicker, a capybara
+    "staff_doldrum_picnicker": dict(src="gfx/characters/sf_staff_doldrum_picnicker.png",       # DOLDRUM's picnicker, a capybara
                         dst="engineGba/graphics/trainers/front_pics/staff_doldrum_picnicker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_doldrum_picnicker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
