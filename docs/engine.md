@@ -25,9 +25,9 @@ python3 tools/gbabudget.py --write   # and update the tables below
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 254.9 KB | **1.1 KB** | 99.58% |
 | **IWRAM** | 32.0 KB | 29.1 KB | **2.9 KB** | 91.02% |
-| **ROM** | 32.0 MB | 14.7 MB | **17.3 MB** | 45.83% |
+| **ROM** | 32.0 MB | 14.7 MB | **17.3 MB** | 45.86% |
 
-*The debug ROM costs a further **20 bytes** of EWRAM and **48** of IWRAM.*
+*The debug ROM costs a further **40 bytes** of EWRAM and **64** of IWRAM.*
 
 **`gHeap` alone is 112.0 KB of EWRAM** — 44% of the whole region, reserved at address zero and carved up at runtime by `Alloc`.
 
@@ -47,7 +47,7 @@ The biggest tenants after it:
 | surface | characters | widest of ours | headroom |
 |---|---|---|---|
 | species | **10** | `CONJECTURE` (10) | 0 |
-| routine | **12** | `THUNDERPUNCH` (12) | 0 |
+| routine | **12** | `LOAD BALANCE` (12) | 0 |
 | register | **12** | `ABSORBS HEAT` (12) | 0 |
 | type | **8** | `EMERGENT` (8) | 0 |
 | trainer class | **12** | `REVIEW BOARD` (12) | 0 |
@@ -63,7 +63,7 @@ The biggest tenants after it:
 
 | pane | vanilla's widest | ours | |
 |---|---|---|---|
-| item description | **198px** | 198px | 0 to spare |
+| item description | **198px** | 197px | 1 to spare |
 | routine descript. | **108px** | 170px | **62px past it** — `DAEMON. Also warps to the last` |
 | Index entry line | **234px** | 234px | 0 to spare |
 
