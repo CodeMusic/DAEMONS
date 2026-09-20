@@ -152,9 +152,19 @@ def general():
     for pre in GENERAL:
         for l in (l for l in labs if l.startswith(pre)):
             van = b_ours[l] == b_up.get(l)
-            left += van
+            #  A DISPATCH IS NOT VANILLA'S PICTURE. General_Sun is one line, `goto Move_SUNNY_DAY`, and that line is
+            #  byte-identical to upstream -- but the animation it reaches is one we redrew, so the player sees ours.
+            #  Sun, sandstorm, hail, the leech drain and the trap dispatcher all read as vanilla until this ran.
+            body = [x.strip() for x in b_ours[l].splitlines() if x.strip()]
+            body = [x for x in body if not x.endswith(":")]      # the block carries its own label line
+            goto = [x[5:].strip() for x in body if x.startswith("goto ")]
+            dispatch = van and goto and all(x.startswith(("goto ", "jumpargeq ", "createvisualtask ", "delay ", "end")) for x in body)
+            if dispatch:
+                van = False
             tags = sorted(set(re.findall(r"ANIM_TAG_(\w+)", b_ours[l])))
-            print("  %-30s %-11s %-8s %s" % (l, STATE_WORD.get(l, ""), "vanilla" if van else "ours", " ".join(tags)))
+            left += van
+            how = "vanilla" if van else ("-> %s" % goto[-1] if dispatch else "ours")
+            print("  %-30s %-11s %-18s %s" % (l, STATE_WORD.get(l, ""), how, " ".join(tags)))
     print("  %d of %d animations that are not moves are still vanilla's" % (left, len(labs)))
 
 

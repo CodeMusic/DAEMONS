@@ -24,6 +24,14 @@ except where the word IS motion (THRASHING); each state is told apart by its rhy
     THROTTLED   SIGNAL    pulse, pulse, a long stall, one more pulse -- a speed cap that stalls work
     HUNG        FROZEN    snaps to FROZEN at once and holds there, still, until it is let go
 
+WAVE 3 -- weather and field, and it is ONE animation: sun, sandstorm, hail and the leech drain turned out to be
+one-line scripts that jump straight into OUR redrawn move animations (rain already did), so they read as vanilla
+only because the jump is byte-identical. What is left is the STAT CHANGE, which plays constantly:
+
+    a stat change        vanilla scrolls an arrow mask over the daemon; 9.24 makes the daemon's palette the medium --
+                         UP deepens it toward its own type, DOWN drains it toward grey, and two stages go further
+                         and HOLD there before coming back
+
 WAVE 2 -- the other conditions, named for what our routines do (move_names.h, 2.x):
 
     PAIR        CONTENT   its attention is on its pair: it AND the other daemon pulse together, slowly, twice
@@ -159,6 +167,25 @@ def bury():
     return held("GROUND", "SE_M_SAND_TOMB", close=4, hold=12, open_=4, depth=10)
 
 
+def statchange():
+    """9.24 on a stat change: UP deepens the daemon toward its own type, DOWN drains it toward grey, and a two-stage
+    change goes further and holds. AnimTask_DaemonsStatKind reads animationData->animArg and says which it is."""
+    up = (["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 1, 0, 9"] + W
+          + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 2, 9, 0"] + W + ["\tend"])
+    up_sharp = (["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 0, 0, 14"] + W + pause(10)
+                + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 2, 14, 0"] + W + ["\tend"])
+    down = blend(1, 0, 8, GREY) + W + blend(2, 8, 0, GREY) + W + ["\tend"]
+    down_sharp = blend(0, 0, 13, GREY) + W + pause(10) + blend(2, 13, 0, GREY) + W + ["\tend"]
+    return (["\tcreatevisualtask AnimTask_DaemonsStatKind, 5", "\tdelay 0",
+             "\tjumpargeq 0, 1, DaemonsStatDown",
+             "\tjumpargeq 1, 1, DaemonsStatUpSharply"]
+            + ["\tplaysewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER"] + up
+            + ["DaemonsStatUpSharply:", "\tplaysewithpan SE_M_SWAGGER2, SOUND_PAN_ATTACKER"] + up_sharp
+            + ["DaemonsStatDown:", "\tjumpargeq 1, 1, DaemonsStatDownSharply",
+               "\tplaysewithpan SE_M_STAT_DECREASE, SOUND_PAN_ATTACKER"] + down
+            + ["DaemonsStatDownSharply:", "\tplaysewithpan SE_M_STAT_DECREASE, SOUND_PAN_ATTACKER"] + down_sharp)
+
+
 STATES = [   # wave, label, our word, the process
     (1, "Status_Poison", "LEAKING", leaking),
     (1, "Status_Confusion", "THRASHING", thrashing),
@@ -174,6 +201,7 @@ STATES = [   # wave, label, our word, the process
     (2, "Status_Whirlpool", "WHIRLPOOL", whirlpool),
     (2, "Status_Clamp", "SLUICE", sluice),
     (2, "Status_SandTomb", "BURY", bury),
+    (3, "General_StatsChange", "a stat change", statchange),
 ]
 
 
@@ -200,7 +228,8 @@ def main():
         if w != wave:
             continue
         s, e, vanilla = region(text, label)
-        ours = "\n".join(make() + ["\tend"]) + "\n"
+        lines = make()
+        ours = "\n".join(lines + ([] if lines[-1].strip() == "end" else ["\tend"])) + "\n"
         if release:
             block = "%s:\n%s" % (label, ours)
         else:
