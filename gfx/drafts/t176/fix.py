@@ -105,10 +105,14 @@ def unbox_band(path, lo, hi):
     im.save(path)
 
 
-for name in ("drum_front", "drum_back", "magtape_front", "monolith_front"):
+BOXED = ("drum_front", "drum_back", "magtape_front", "monolith_front") if "--batch1" in sys.argv else ("trust_back", "elation_back")
+GREY = ("mutex_back",) if "--batch1" in sys.argv else ("mood_front", "cunning_back")
+for name in BOXED:
     unbox(C + name + ".png")
     unbox_band(C + name + ".png", 96, 200)
     keep_largest(C + name + ".png")
     restreak(name)
-grey_but_markers(C + "mutex_back.png")
-print("  fixed 4 boxes, greyed MUTEX's back")
+for name in GREY:
+    grey_but_markers(C + name + ".png")
+    print("  greyed %s" % name)
+print("  fixed %d boxes" % len(BOXED))

@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t176/alt2/release_back_r2_314",
+ "prompt": "pure white background, pixel art game sprite of a single four-legged woolly creature with a long neck and a round lamp at the tip of its upright tail, striped fleece, seen from directly behind, no face visible, the striped fleece and the raised tail with its round lamp, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, looking at viewer, front view, human, person, humanoid, stick figure, grey background, colored background, floor, ground, water surface, pedestal, frame, box, drop shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 314,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.0,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 12:30:28"
+}

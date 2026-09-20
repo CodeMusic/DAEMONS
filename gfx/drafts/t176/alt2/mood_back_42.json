@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t176/alt2/mood_back_42",
+ "prompt": "pure white background, pixel art game sprite of a single small round creature floating on water, a round body and a thin tail with a ball at the end, seen from directly behind, no face visible, the round back and the ball-tipped tail, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, beak, looking at viewer, side view, profile, front view, human, person, grey background, colored background, floor, ground, grass, water surface, pedestal, base, frame, box, people, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.0,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 12:06:54"
+}

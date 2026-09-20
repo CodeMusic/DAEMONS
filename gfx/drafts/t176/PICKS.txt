@@ -11,3 +11,10 @@ triplecore  front alt/triplecore_front_42    back alt/triplecore_back_42
 HELD: SUBSTRATE (front r2 314 is right, no back matches it), PUNCHCARD (the holes come out as a border, not a body),
 OUTLIER (every seed is symmetrical; "one mark that sets it apart" is what the model will not draw). Both are
 conceptual rather than creaturely -- the case for drawing them in code, as T-167 drew its objects.
+
+BATCH 2: eleven taken, RELEASE held (its tail lamp never lands -- one seed drew a lamp POST beside it).
+trust front_42 / back_1917      hope front_42 / back_42         prescience front_1917 / back_1917
+gathering front_42 / back_42    cunning front_42 / back_42      torpor front_1917 / back_42
+entrapment front_42 / back_1917 elation front_42 / back_1917    buildup front_42 / back_1917
+mood front_r2_99 / back_r2_99   lookout front_r2_7 / back_r2_7  (both redrawn as concrete animals: a round
+  ball-tailed mouse, a ferret standing upright -- the abstract clause is what failed the first time)
