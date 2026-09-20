@@ -1,0 +1,32 @@
+T-131's twelve -- the picks, 2026-09-20. <name> <view> <draft file stem>
+Three rounds: round 1 two seeds, round 2 the five that lost their feature plus every back, round 3 three views.
+
+poll      front  poll_front_1917        a round owl, wings out, facing the viewer
+poll      back   poll_back_42           body away, head turned -- the model will not give an owl a true back
+watchdog  front  watchdog_front_1917    tufts, narrow eyes, wings folded
+watchdog  back   watchdog_back_r27      from behind in profile, tufts above
+pilot     front  pilot_front_r27        the two antennae and their lamps, which round 1 lost
+pilot     back   pilot_back_r27         the round body from behind, both antennae above
+sounding  front  sounding_front_42      the lamp on its stalk and the wide jaw           [colour -> desaturate]
+sounding  back   sounding_back_r27      the tail fin toward the viewer, stalk ahead      [colour -> desaturate]
+starved   front  starved_front_r27      a ribbed seed with a small face, no limbs
+starved   back   starved_back_r21917    a plain husk -- the cleanest back in the batch
+quota     front  quota_front_r27        a creature INSIDE the flower, which round 1 had not drawn
+quota     back   quota_back_r37         the back of the flower head, leaf arms, a body under it
+fakeroot  front  fakeroot_front_r21917  a creature in the trunk, arms raised with a clump on each
+fakeroot  back   fakeroot_back_r31917   mid-grey from behind; r3 seed 7 is the same pose but too dark to ramp
+warning   front  warning_front_1917     the under-bite, facing the viewer
+warning   back   warning_back_1917      the stocky back, head turned
+cache     front  cache_front_42         horns and the broad calm face
+cache     back   cache_back_r27         side-on; a cow will not turn its back to the model either
+triton    front  triton_front_1917      standing, wings held, the blades down its back   [colour -> desaturate]
+triton    back   triton_back_r27        a true from-behind view: wings work, mammals do not
+phoenix   front  phoenix_front_42       crest and open wings                              [colour -> desaturate]
+phoenix   back   phoenix_back_r27       the streaming tail toward the viewer
+
+duplex    ---    tools/gendaemons.py    DRAWN IN CODE. Three rounds and eight seeds returned a single-headed
+                                        quadruped or two separate animals: the model will not put two heads on
+                                        one body (T-131 batch 7 found the same on DUALCORE). "From opposite ends"
+                                        is the whole daemon, so it is authored: one barrel body, four legs, a
+                                        neck and a horned head at each end, and on the back a seam down the
+                                        middle -- neither end leads.

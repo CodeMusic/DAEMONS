@@ -13,6 +13,16 @@ creature, so there is no animal for the model to reach for.
     OUTLIER     "far enough from the rest to be dropped from the average"    -> it drew a symmetrical blob
     RELEASE     "all of it, at once, and then dark"                          -> it drew a lamp POST beside it
 
+T-131 adds a fifth, and it fails for a DIFFERENT reason worth keeping separate:
+
+    DUPLEX      "It sends and receives at once, from opposite ends"          -> it drew a horse, eight times
+
+DUPLEX is not an abstraction -- a body with a head at each end is a perfectly concrete animal. The model simply will
+not draw ONE body with TWO heads: across three rounds and eight seeds it returned a single-headed quadruped or two
+separate animals standing side by side. T-131 batch 7 hit the same wall on DUALCORE and settled it by drawing two
+birds, which that entry allowed. This entry does not: "from opposite ends" is the whole of the daemon, so the two
+heads have to share a body, and a body with a head at each end is four shapes to author.
+
 Drawn here as genmisc.py and genships.py draw: every pixel authored, from shapes rather than from a prompt. A card
 with real holes is trivial to author. One dark patch over one eye is trivial. A tail with a lamp on the end stays
 attached, because it is drawn attached.
@@ -159,7 +169,33 @@ def release(back=False):
     return im
 
 
-SHEETS = [("punchcard", punchcard), ("substrate", substrate), ("outlier", outlier), ("release", release)]
+# ---------------------------------------------------------------- DUPLEX (GIRAFARIG)
+def duplex(back=False):
+    """one body, a neck and a head at each end, facing opposite ways -- drawn side-on so both ends read at 64px"""
+    im, d = canvas()
+    d.ellipse([20, 30, 44, 46], fill=L + (255,))                    # the barrel body, shared
+    d.rectangle([24, 34, 40, 44], fill=L + (255,))
+    for x0, x1, sign in ((24, 15, -1), (40, 49, 1)):                # two necks, rising away from each other
+        d.polygon([(x0, 35), (x0 + sign * 4, 35), (x1 + sign * 3, 16), (x1 - sign * 1, 14)], fill=L + (255,))
+    for hx, sign in ((14, -1), (50, 1)):                            # two heads, each looking outward
+        d.ellipse([hx - 6, 9, hx + 6, 19], fill=L + (255,))
+        d.polygon([(hx + sign * 4, 12), (hx + sign * 8, 14), (hx + sign * 4, 17)], fill=M + (255,))   # muzzle
+        d.rectangle([hx - 3, 4, hx - 2, 9], fill=M + (255,))        # two short horns apiece
+        d.rectangle([hx + 2, 4, hx + 3, 9], fill=M + (255,))
+        if not back:
+            d.point((hx + sign * 2, 13), fill=D + (255,))           # an eye on each, looking its own way
+    for x in (23, 29, 35, 41):                                    # four legs under the shared middle
+        d.rectangle([x, 46, x + 3, 56], fill=D + (255,))
+    d.line([(26, 34), (38, 34)], fill=W + (255,))                   # the lit top of the barrel
+    if back:
+        d.line([(32, 32), (32, 46)], fill=M + (255,))               # the seam down the middle: neither end leads
+    streaks(im, 25, 36, step=3, length=7, down=2)
+    outline(im)
+    return im
+
+
+SHEETS = [("punchcard", punchcard), ("substrate", substrate), ("outlier", outlier), ("release", release),
+          ("duplex", duplex)]
 
 
 def main():

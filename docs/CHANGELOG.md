@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.223 — 2026-09-20
+
+### 8.2b — Twelve reachable species nobody had counted (T-131)
+
+- ***Measured, not estimated***: **`tools/gbareach.py` reads the wild tables, every trainer party, every script, the trades, the starters and the closure of `evolution.h`** — *213 species are reachable, and twelve had never been converted at all: vanilla art AND vanilla names, while the register counted itself complete at 229.* **Ten are the Johto strays in the SEVII trainer parties and two are the legendaries at Navel Rock.**
+- **POLL → SUPERVISOR, PILOT → SOUNDING, STARVED → QUOTA, FAKEROOT, DUPLEX, WARNING, CACHE**, *and* **TRITON and PHOENIX into the MYTH register** — *TRITON is the one who ended the quarrel between ORPHEUS, ASCLEPIUS and PROMETHEUS, so the myth now contains its own resolution; PHOENIX restarts ITSELF, where ASCLEPIUS restarts what has stopped in others.*
+- ***STARVED → QUOTA is the one worth keeping***: **scheduler starvation**, *which is the only true thing about the weakest creature in the games — it is owed a turn and has not had one, and what it becomes gains nothing but its share.*
+- **Art: eleven from the sprite server, DUPLEX from code** (*three rounds and eight seeds returned a single-headed quadruped or two separate animals — the DUALCORE wall again*). ***Daemon fronts 55% → 59%, every sprite 57.5% → 59.9%, and reachable-species-still-vanilla is now ONE: the egg picture.***
+- ***The lesson is about measurement***: **a scope written as an estimate cannot be re-checked.** *T-131 said "about 190–200", T-176 found 43 it had missed, this found twelve more. The tool answers the question every time it is asked.*
+
 ## v11.222 — 2026-09-20
 
 ### 9.4 — Which instrument draws whom, and one impression withdrawn (T-174)

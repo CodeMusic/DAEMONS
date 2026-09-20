@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t131/alt/duplex_back_r27",
+ "prompt": "pure white background, pixel art game sprite of a single long-necked four-legged creature whose upright tail ends in a SECOND HEAD with its own eyes and mouth, both heads alert, seen from directly behind with its back toward the viewer, both heads from behind, the tail head facing away from the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, beak, nose, snout, looking at viewer, head turned toward viewer, front view, three-quarter view, plain horse, ordinary tail, one head, deer, unicorn, human, person, humanoid, grey background, colored background, floor, ground, water surface, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.0,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 16:14:32"
+}

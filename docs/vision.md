@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.222**
+**A total conversion — the living design bible, v11.223**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6091,6 +6091,27 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 | **The project's own** | *MUSAI and ROVER* — ***and PIXELBYTE → REFORGE (T-165, 2026-09-19)***, *the tools that drew the bestiary* | **characters rather than creatures**, and 8.2 already treats them that way |
 
 ***So the fork was never either/or. It was a distribution***, and the log had recorded a decision as an open question for five weeks.
+
+#### The twelve nobody had counted — 2026-09-20
+
+***Found by MEASURING reach rather than estimating it*** (`tools/gbareach.py`, which reads the wild tables, every trainer party, every script, the trades, the starters, and the closure of `evolution.h` over all of them). **213 species are reachable, and TWELVE of them had never been converted at all** — *vanilla art and vanilla NAMES, absent from this register while it counted itself complete at 229.*
+
+**Ten are the Johto strays vanilla sprinkles into the SEVII trainer parties**, *met by anyone who plays past the Elite Four*, **and two are the legendaries at Navel Rock.** *Nothing was wrong with the register; the list it was checked against came from the mainland.*
+
+| | | |
+|---|---|---|
+| **POLL → SUPERVISOR** | *Hoothoot, Noctowl* | **asks the same question at a fixed interval**; *what it evolves into watches one thing and starts it again when it stops* — **it was written in as WATCHDOG and `check_lexicon.py` caught it**: *that word is already the ITEM our Ice Heal became, and item names live in `items.json` whose generated header is gitignored, so grepping the text tables says it is free.* **SUPERVISOR is what OTP calls the thing that restarts a crashed child**, *and the item and the daemon now do the same job at two scales* |
+| **PILOT → SOUNDING** | *Chinchou, Lanturn* | **a light lit for no purpose but to show the line is live**; *and the instrument that measures the dark by sending and waiting* |
+| **STARVED → QUOTA** | *Sunkern, Sunflora* | ***scheduler starvation***, *which is the one true thing about the weakest creature in the games*: **it is owed a turn and has not had one** — *and what it becomes gains nothing but its share* |
+| **FAKEROOT** | *Sudowoodo* | **reports itself as something older and better rooted than it is. Nothing has ever checked** |
+| **DUPLEX** | *Girafarig* | **sends and receives at once, from opposite ends** |
+| **WARNING** | *Snubbull* | **announces a fault in the loudest voice it has. Nothing has failed** |
+| **CACHE** | *Miltank* | **holds what everything nearby will want next. Asking it costs less than working** |
+| **TRITON** | *Lugia* | ***MYTH***: **three of them quarrelled until it arrived. It took no side and said nothing** — *the quarrel is ORPHEUS, ASCLEPIUS and PROMETHEUS, so the myth register now has its own resolution in it* |
+| **PHOENIX** | *Ho-Oh* | ***MYTH***: **the only one that can start itself. What it leaves behind is what it starts from** — *distinct from ASCLEPIUS, who restarts what has stopped in OTHERS* |
+
+***And the lesson is about measurement, not about names.*** **A scope written as an estimate cannot be re-checked**: *T-131 was scoped at "about 190–200 species a player can meet", T-176 then found 43 it had missed, and this found twelve more that the bestiary had never named.* **The tool answers the question every time it is asked**, *and it now answers ONE — the egg picture, which is not a daemon.*
+
 
 #### The bound moved, 2026-09-11 — and 2.10 is why
 

@@ -82,8 +82,12 @@ BUCKET = {
     "OBSESSION": "MIND", "FIXATION": "MIND", "ATTACHMENT": "MIND", "ABANDON": "MIND", "WITHDRAWAL": "MIND",
     "BROODING": "MIND", "CAPRICE": "MIND", "WHIM": "MIND", "IMPULSE": "MIND", "INSTINCT": "MIND", "DRIVE": "MIND",
     "CUNNING": "MIND", "PRESCIENCE": "MIND", "PROTEUS": "MIND",
+    #  T-131, 2026-09-20: the twelve reachable species that had never been converted at all -- the Johto strays
+    #  in the Sevii trainer parties, and the two legendaries at Navel Rock. gbareach.py is what found them.
+    "POLL": "RUNS", "SUPERVISOR": "RUNS", "PILOT": "HAS", "SOUNDING": "DOES", "STARVED": "STATE",
+    "QUOTA": "STATE", "FAKEROOT": "DOES", "DUPLEX": "HAS", "WARNING": "STATE", "CACHE": "HAS",
     #  MYTH and OURS -- 8.2b's other two registers
-    "ASCLEPIUS": "MYTH", "ORPHEUS": "MYTH", "PROMETHEUS": "MYTH",
+    "ASCLEPIUS": "MYTH", "ORPHEUS": "MYTH", "PROMETHEUS": "MYTH", "TRITON": "MYTH", "PHOENIX": "MYTH",
     "MUSAI": "OURS", "CODEMUSAI": "OURS", "CAREMUSAI": "OURS", "SEEKMUSAI": "OURS", "LENSMUSAI": "OURS",
     "MASKMUSAI": "OURS", "ROVERCUB": "OURS", "ROVERSEER": "OURS", "ROVERBYTE": "OURS", "STARR": "OURS",
     "ARTSAI": "OURS", "PIXELBYTE": "OURS", "REFORGE": "OURS",

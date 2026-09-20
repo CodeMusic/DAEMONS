@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t131/alt/poll_back_r27",
+ "prompt": "pure white background, pixel art game sprite of a single small round owl with huge round eyes and a short beak, standing on one foot, seen from directly behind with its back toward the viewer, the round back of its head and its folded wings, tail toward the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, beak, nose, snout, looking at viewer, head turned toward viewer, front view, three-quarter view, human, person, humanoid, grey background, colored background, floor, ground, water surface, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 25.5,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 16:20:40"
+}

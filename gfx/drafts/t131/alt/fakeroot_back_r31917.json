@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t131/alt/fakeroot_back_r31917",
+ "prompt": "pure white background, pixel art game sprite of a single stocky two-legged CREATURE with a thick brown trunk body, two short legs with feet on the ground and two arms raised, a round clump of leaves on each arm, seen from behind with its back toward the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, beak, nose, snout, looking at viewer, head turned toward viewer, front view, three-quarter view, plain tree, forest, oak tree, roots, no limbs, no legs, human, person, humanoid, grey background, colored background, floor, ground, water surface, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, scenery, photorealistic, blurry, cropped",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 25.3,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 16:29:59"
+}

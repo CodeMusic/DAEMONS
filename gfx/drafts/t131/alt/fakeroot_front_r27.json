@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t131/alt/fakeroot_front_r27",
+ "prompt": "pure white background, pixel art game sprite of a single stocky two-legged creature whose body is a thick knotted brown tree trunk, with two arms raised and a round clump of leaves on the end of each arm, and a small face on the trunk, front view, facing the viewer, the small face on the trunk and the two raised arms, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, profile, rear view, plain tree, forest, oak tree, tree without limbs, roots, grass, leaves only, human, person, humanoid, grey background, colored background, floor, ground, water surface, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 16:12:33"
+}
