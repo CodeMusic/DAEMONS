@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t169/batch4/alt/lorelei_0.5",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic polar bear with a polar bear head, a calm scholar in a cold blue coat, full body, clean black outline, isolated on white, centered",
+ "negative": "human, human face, hair, person, girl, boy, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "image": "gfx/drafts/t169/batch4/src/lorelei.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.1,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 20:04:20"
+}

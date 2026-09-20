@@ -116,7 +116,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/leader_lt_surge_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_lt_surge.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "trellis": dict(src="gfx/characters/trellis.png",       # a bowerbird gardener, everything arranged to one exact shape
+    "trellis": dict(src="gfx/characters/sf_trellis.png",       # a bowerbird gardener, everything arranged to one exact shape
                         dst="engineGba/graphics/trainers/front_pics/leader_erika_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_erika.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -210,7 +210,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/elite_four_lorelei_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/elite_four_lorelei.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_choleric": dict(src="gfx/characters/portrait_elite_four_bruno.png",       # a tiger, LOGIC
+    "p_choleric": dict(src="gfx/characters/sf_bruno.png",       # a tiger, LOGIC
                         dst="engineGba/graphics/trainers/front_pics/elite_four_bruno_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/elite_four_bruno.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -318,7 +318,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/painter_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/painter.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "tilt":    dict(src="gfx/characters/tilt.png",       # a toad card dealer, poisonous, still, in no hurry
+    "tilt":    dict(src="gfx/characters/sf_tilt.png",       # a toad card dealer, poisonous, still, in no hurry
                         dst="engineGba/graphics/trainers/front_pics/leader_koga_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_koga.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -326,7 +326,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/leader_sabrina_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_sabrina.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False, holes=True),
-    "anneal":  dict(src="gfx/characters/anneal.png",       # a salamander metallurgist, at home in controlled heat
+    "anneal":  dict(src="gfx/characters/sf_anneal.png",       # a salamander metallurgist, at home in controlled heat
                         dst="engineGba/graphics/trainers/front_pics/leader_blaine_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/leader_blaine.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
