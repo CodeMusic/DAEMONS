@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t178/alt/sailor_b21917",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic albatross with a long hooked bill and very long narrow wings, in a striped sailor shirt and cap, full body, standing, clean black outline, bold simple shapes, isolated on white, centered",
+ "negative": "fox, red fox, vulpine, human, human face, hair, person, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic, thin spindly limbs",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 77.9,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 17:39:29"
+}

@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t178/alt/bug_catcher_b21917",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic swallow with a forked tail and blue-black wings, in a wide sun hat and shorts, holding a net, full body, standing, clean black outline, bold simple shapes, isolated on white, centered",
+ "negative": "fox, red fox, vulpine, human, human face, hair, person, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic, thin spindly limbs",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 78.1,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 17:36:52"
+}

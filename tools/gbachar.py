@@ -133,7 +133,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/hiker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/hiker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "picnicker": dict(src="gfx/characters/sf_picnicker.png",       # a hedgehog, as her sheet is
+    "picnicker": dict(src="gfx/characters/sf_picnicker_1024.png",       # a hedgehog, as her sheet is
                         dst="engineGba/graphics/trainers/front_pics/picnicker_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/picnicker.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -157,11 +157,11 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/lass_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/lass.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_channeler": dict(src="gfx/characters/sf_channeler.png",     # a bat, at home in the tower's dark
+    "p_channeler": dict(src="gfx/characters/sf_channeler_1024.png",     # a bat, at home in the tower's dark
                         dst="engineGba/graphics/trainers/front_pics/channeler_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/channeler.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_camper": dict(src="gfx/characters/sf_camper.png",           # a raccoon
+    "p_camper": dict(src="gfx/characters/sf_camper_1024.png",           # a raccoon
                         dst="engineGba/graphics/trainers/front_pics/camper_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/camper.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -252,7 +252,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/ruin_maniac_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/ruin_maniac.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_burglar": dict(src="gfx/characters/sf_burglar.png",                 # a weasel
+    "p_burglar": dict(src="gfx/characters/sf_burglar_1024.png",                 # a weasel
                         dst="engineGba/graphics/trainers/front_pics/burglar_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/burglar.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -318,7 +318,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/tamer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/tamer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_psychic_f": dict(src="gfx/characters/sf_psychic_f.png",             # a jellyfish, not a second octopus
+    "p_psychic_f": dict(src="gfx/characters/sf_psychic_f_1024.png",             # a jellyfish, not a second octopus
                         dst="engineGba/graphics/trainers/front_pics/psychic_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/psychic_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -339,11 +339,11 @@ JOBS = {
                         pal="engineGba/graphics/trainers/palettes/leader_blaine.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     # The BENCHMARK staff (T-116): one portrait per gym, DOLDRUM two; drafted through daemon/sprite.
-    "staff_slate": dict(src="gfx/characters/sf_staff_slate.png",       # SLATE's apprentice, a young beaver
+    "staff_slate": dict(src="gfx/characters/sf_staff_slate_1024.png",       # SLATE's apprentice, a young beaver
                         dst="engineGba/graphics/trainers/front_pics/staff_slate_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_slate.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "staff_doldrum_swimmer": dict(src="gfx/characters/sf_staff_doldrum_swimmer.png",       # DOLDRUM's swimmer, a manatee
+    "staff_doldrum_swimmer": dict(src="gfx/characters/sf_staff_doldrum_swimmer_1024.png",       # DOLDRUM's swimmer, a manatee
                         dst="engineGba/graphics/trainers/front_pics/staff_doldrum_swimmer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/staff_doldrum_swimmer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -387,11 +387,11 @@ JOBS = {
     # The COOL TRAINERs (T-169): the last two faced portraits still vanilla's, drawn from the wolf and falcon halves of
     # the COOL COUPLE -- which gencouple.py re-headed AFTER this file cut it, so running every job here would put that
     # pair's two ibexes back. Name jobs (python3 tools/gbachar.py p_cooltrainer_m ...) when writing.
-    "p_cooltrainer_m": dict(src="gfx/characters/sf_cool_trainer_m.png",     # a wolf, as COOLTRAINER_M is (T-126)
+    "p_cooltrainer_m": dict(src="gfx/characters/sf_cool_trainer_m_1024.png",     # a wolf, as COOLTRAINER_M is (T-126)
                         dst="engineGba/graphics/trainers/front_pics/cool_trainer_m_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/cool_trainer_m.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_cooltrainer_f": dict(src="gfx/characters/sf_cool_trainer_f.png",     # a falcon, as COOLTRAINER_F is (T-126)
+    "p_cooltrainer_f": dict(src="gfx/characters/sf_cool_trainer_f_1024.png",     # a falcon, as COOLTRAINER_F is (T-126)
                         dst="engineGba/graphics/trainers/front_pics/cool_trainer_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/cool_trainer_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
