@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t169/batch6/alt/al_late_0.5",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic river otter with an otter head, an older trainer in a smart jacket, full body, clean black outline, isolated on white, centered",
+ "negative": "human, human face, hair, person, girl, boy, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "image": "gfx/drafts/t169/batch6/src/al_late.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.4,
+ "comfyui": "0.19.1",
+ "made": "2026-09-19 21:10:14"
+}

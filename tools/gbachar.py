@@ -278,11 +278,11 @@ JOBS = {
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     # The ten that were AT OR ABOVE the cut-off and had been missed. A class must not wear a
     # BENCHMARK leader's species, and must not repeat one already spent on another class.
-    "p_ranger_m": dict(src="gfx/characters/portrait_pokemon_ranger_m.png",       # a pine marten
+    "p_ranger_m": dict(src="gfx/characters/sf_ranger_m.png",       # a pine marten
                         dst="engineGba/graphics/trainers/front_pics/pokemon_ranger_m_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/pokemon_ranger_m.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_ranger_f": dict(src="gfx/characters/portrait_pokemon_ranger_f.png",       # the same marten
+    "p_ranger_f": dict(src="gfx/characters/sf_ranger_f.png",       # the same marten
                         dst="engineGba/graphics/trainers/front_pics/pokemon_ranger_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/pokemon_ranger_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -310,7 +310,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/tamer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/tamer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_psychic_f": dict(src="gfx/characters/portrait_psychic_f.png",             # a jellyfish, not a second octopus
+    "p_psychic_f": dict(src="gfx/characters/sf_psychic_f.png",             # a jellyfish, not a second octopus
                         dst="engineGba/graphics/trainers/front_pics/psychic_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/psychic_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
