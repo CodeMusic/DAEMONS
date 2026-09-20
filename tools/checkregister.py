@@ -64,9 +64,13 @@ BUCKET = {
     #  WORLD -- outside computing altogether
     "BLIGHT": "WORLD", "SEEDLING": "WORLD", "WEED": "WORLD", "WISP": "WORLD", "PULSAR": "WORLD", "SLUDGE": "WORLD",
     "FUMES": "WORLD", "NOZZLE": "WORLD", "JETSTREAM": "WORLD", "CHILLER": "WORLD", "CRYOGEN": "WORLD",
-    "BULLDOZER": "WORLD", "RAMROD": "WORLD", "PINCER": "WORLD", "CLAMPJAW": "WORLD", "MITE": "WORLD",
-    "WILDFIRE": "WORLD", "RELIC": "WORLD", "REVENANT": "WORLD", "CAIRNLING": "WORLD", "LOCUS": "WORLD",
-    "VICE": "WORLD", "CANON": "WORLD", "RUBRIC": "WORLD", "PROOF": "WORLD", "THEOREM": "WORLD",
+    "WILDFIRE": "WORLD", "LOCUS": "WORLD", "CANON": "WORLD",
+    #  T-171's SECOND ruling (2026-09-20): the machines and creature-parts, renamed into the lexicon. The logic and
+    #  rhetoric names were KEPT -- they are the LOGIC and CONTEXT types' own register, and HUNCH -> INFERENCE ->
+    #  CONJECTURE is one line about reasoning.
+    "HARDCODE": "HAS", "MIGRATE": "DOES", "BOTTLENECK": "STATE", "HEATSINK": "HAS", "ACQUIRE": "DOES",
+    "LOCKUP": "STATE", "BLOCKING": "STATE", "RESIDENT": "RUNS", "ARTEFACT": "HAS", "COREFILE": "HAS",
+    "RESPAWN": "DOES", "BUSYWAIT": "STATE", "RUBRIC": "WORLD", "PROOF": "WORLD", "THEOREM": "WORLD",
     "CONJECTURE": "WORLD", "REBUTTAL": "WORLD", "HUNCH": "WORLD", "TRANCE": "WORLD", "LEMMA MIND": "WORLD",
     "ARMOURING": "WORLD", "BRISTLE": "WORLD", "CINDER": "WORLD", "OMEN": "WORLD", "TELL": "WORLD",
     "BUOYANCY": "WORLD", "CALLOUS": "WORLD", "ILLUSION": "WORLD", "IMITATION": "WORLD", "AMBUSH": "WORLD",
