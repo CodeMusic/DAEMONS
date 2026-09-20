@@ -197,7 +197,9 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/gentleman_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/gentleman.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_beauty": dict(src="gfx/characters/sf_beauty.png",           # a gazelle
+    #  T-178: redrawn at 1024. The 512 drafts were 24x50 DRAWN pixels and were upscaled into a 64x64 sprite;
+    #  1024 gives 128 art pixels, so the figure is reduced into the sprite instead. The old sources are in git.
+    "p_beauty": dict(src="gfx/characters/sf_beauty_1024.png",      # a gazelle
                         dst="engineGba/graphics/trainers/front_pics/beauty_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/beauty.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -242,7 +244,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/super_nerd_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/super_nerd.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_gamer": dict(src="gfx/characters/sf_gamer.png",                     # a JACKAL -- and never a fox (9.4)
+    "p_gamer": dict(src="gfx/characters/sf_gamer_1024.png",                     # a JACKAL -- and never a fox (9.4)
                         dst="engineGba/graphics/trainers/front_pics/gamer_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/gamer.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -254,7 +256,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/burglar_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/burglar.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_juggler": dict(src="gfx/characters/portrait_juggler.png",                 # an octopus: the arms are the act
+    "p_juggler": dict(src="gfx/characters/sf_juggler_1024.png",                  # an octopus: the arms are the act (T-178)
                         dst="engineGba/graphics/trainers/front_pics/juggler_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/juggler.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
@@ -284,11 +286,11 @@ JOBS = {
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
     # The ten that were AT OR ABOVE the cut-off and had been missed. A class must not wear a
     # BENCHMARK leader's species, and must not repeat one already spent on another class.
-    "p_ranger_m": dict(src="gfx/characters/sf_ranger_m.png",       # a pine marten
+    "p_ranger_m": dict(src="gfx/characters/sf_ranger_m_1024.png",       # a pine marten
                         dst="engineGba/graphics/trainers/front_pics/pokemon_ranger_m_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/pokemon_ranger_m.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "p_ranger_f": dict(src="gfx/characters/sf_ranger_f.png",       # the same marten
+    "p_ranger_f": dict(src="gfx/characters/sf_ranger_f_1024.png",       # the same marten
                         dst="engineGba/graphics/trainers/front_pics/pokemon_ranger_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/pokemon_ranger_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),

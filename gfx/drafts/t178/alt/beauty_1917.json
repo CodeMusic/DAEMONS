@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t178/alt/beauty_1917",
+ "prompt": "pure white background, pixel art game trainer sprite of a single anthropomorphic gazelle with a gazelle head and two swept-back horns, in a long pale blue dress, hooves, hands held together, full body, standing, clean black outline, bold simple shapes, isolated on white, centered",
+ "negative": "human, human face, hair, person, girl, boy, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic, thin spindly limbs, scattered small objects",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 84.0,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 17:08:28"
+}
