@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t174/alt/crystal_s42",
+ "prompt": "pure white background, pixel art game sprite of a single anthropomorphic red fox scientist with a fox head, calm muzzle and bushy tail, in a white lab coat open over purple, one arm out presenting, full body, clean black outline, isolated on white, centered",
+ "negative": "human, human face, hair, person, anime, green background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "image": "gfx/drafts/t174/src/crystal.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 21.2,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 09:11:57"
+}
