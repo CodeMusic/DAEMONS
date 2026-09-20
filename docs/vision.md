@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.220**
+**A total conversion — the living design bible, v11.221**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2159,6 +2159,16 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 **The player spends forty hours doing what Crystal did, for her reason.** She built the thing to be taken seriously; they fill it to finish the game. Neither can put the thing that matters in it.
 
 **And the last room is her recording them into it.** Nobody remarks on any of this — the arrangement is the argument, and stating it would convert an accusation into a moral.
+
+#### The mark between HT and WT is the chart, not a foot
+
+**Every entry printed a paw print.** *Gen 3 sets a 16x16 one-bit FOOTPRINT between height and weight, and all 386 of ours were still vanilla's.* **It was the only body on a page whose every other line is a process**, and it was spotted in play as *"some symbol or ink smudge"* — which is what a foot looks like when nothing in the fiction has feet.
+
+**It now carries the daemon's TYPE.** *One mark per chart entry, each drawn from that type's own clause in 2.2:* **CONTENT** a token, whole; **LOGIC** a turnstile, which is what proves; **VECTOR** an arrow; **CORRUPT** a blot, spreading; **STRATUM** layers; **LEGACY** a cairn; **SWARM** many, apart; **LATENT** a dashed box — *present, unseen*; **HARDENED** a plate; **ORACLE** a closed box that answers; **ENTROPY** a rising jag; **FLOW** a gradient, descending; **GROWTH** a sprout; **SIGNAL** a carrier; **CONTEXT** two brackets, framing; **FROZEN** a crystal; **EMERGENT** a spiral; **OPAQUE** filled solid — *nothing gets out.*
+
+***Why the type and not a silhouette.*** **The entry prints species, category, height and weight and never once says the type** — Gen 3 keeps that on the summary screen — *so this slot can carry the one fact the page lacks.* **And the chart is the argument** (8.4). *A silhouette was the alternative: at sixteen pixels in one bit it is mush, and it would say nothing the picture beside it does not already say.*
+
+*Written by `tools/genfootprints.py` from each species' primary type, so the mark cannot drift from the chart.* **ORACLE's is drawn and carried by nobody** — *no daemon holds MYSTERY as its first type, and the mark exists so the chart is complete rather than the bestiary.*
 
 ### 4.3 The Clears — Al, and the generation between
 

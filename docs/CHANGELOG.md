@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.221 — 2026-09-20
+
+### 4.2 — The Index footprint is the type mark (T-175)
+
+- ***Spotted in play as "some symbol or ink smudge"***: **the 16x16 one-bit FOOTPRINT between HT and WT was vanilla's paw print on all 386 entries** — *the only body on a page whose every other line is a process.*
+- **It now carries the daemon's TYPE**, *one mark per chart entry drawn from that type's own 2.2 clause* (`tools/genfootprints.py`, from `species_info.h` so it cannot drift from the chart). **Eighteen marks, 386 footprints, zero vanilla paws left in either ROM.**
+- ***Why not a silhouette***: **the entry never says the type** (*Gen 3 keeps it on the summary screen*), *so the slot carries the one fact the page lacks* — **and at sixteen pixels in one bit a silhouette is mush.**
+- **ORACLE's mark is drawn and carried by nobody**: *no daemon holds MYSTERY first; the chart is complete, the bestiary is not.*
+
 ## v11.220 — 2026-09-19
 
 ### 8.9 — MISSINGNO's drawing and colour brought up to T-163
