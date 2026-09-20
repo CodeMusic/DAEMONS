@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t176/alt/substrate_back_r2_7",
+ "prompt": "pure white background, pixel art game sprite of a single creature made of solid stacked slabs of material, thick and heavy and plain, like a block of stone or metal that stands, short blunt limbs, seen from directly behind, no face visible, the stacked slabs from behind, plain and heavy, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, looking at viewer, front view, side view, robot, android, machine, screen, wires, humanoid, human, person, grey background, colored background, floor, ground, pedestal, frame, box, drop shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 27.5,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 11:37:44"
+}

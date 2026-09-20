@@ -1,0 +1,21 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t176/alt/outlier_front_r2_99",
+ "prompt": "pure white background, pixel art game sprite of a single small round pale creature standing alone, with ONE conspicuous dark patch over one eye and one ear longer than the other, everything else plain, front view, facing the viewer, the single dark eye patch and the odd ear, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, profile, rear view, pair, two creatures, twins, symmetrical markings, human, person, grey background, colored background, floor, ground, pedestal, frame, box, drop shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 99,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 23.3,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 11:40:36"
+}

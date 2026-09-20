@@ -1,0 +1,13 @@
+T-176 batch 1: which draft each view is. Nine taken; SUBSTRATE, PUNCHCARD and OUTLIER held.
+mutex       front alt/mutex_front_1917       back alt/mutex_back_1917
+monolith    front alt/monolith_front_42      back alt/monolith_back_1917
+forge       front alt/forge_front_1917       back alt/forge_back_42
+drum        front alt/drum_front_1917        back alt/drum_back_1917
+magtape     front alt/magtape_front_1917     back alt/magtape_back_42
+mainframe   front alt/mainframe_front_1917   back alt/mainframe_back_1917
+blocking    front alt/blocking_front_42      back alt/blocking_back_42
+edgecase    front alt/edgecase_front_1917    back alt/edgecase_back_42
+triplecore  front alt/triplecore_front_42    back alt/triplecore_back_42
+HELD: SUBSTRATE (front r2 314 is right, no back matches it), PUNCHCARD (the holes come out as a border, not a body),
+OUTLIER (every seed is symmetrical; "one mark that sets it apart" is what the model will not draw). Both are
+conceptual rather than creaturely -- the case for drawing them in code, as T-167 drew its objects.
