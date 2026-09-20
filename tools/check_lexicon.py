@@ -541,6 +541,35 @@ def check_stale_names():
 
     Derived, not listed: every map is ours-vs-upstream, so a rename made
     tomorrow is covered tonight with nobody remembering to add it.
+
+    THREE THINGS ADDED 2026-09-20, all found by one line of battle text.
+    `sText_PkmnWrappedBy` still read "was WRAPPED by" months after WRAP became
+    ENCLOSE, and this check could not see it for three separate reasons:
+
+      * IT ONLY READ text.inc. battle_message.c, strings.c and the routine
+        descriptions are C string literals, so every battle message in the game
+        was outside the check. That is where the states and the routines are
+        actually named, which makes it the surface that mattered most.
+      * AN INFLECTED NAME IS STILL THE NAME. WRAPPED, CLAMPED, SKETCHED,
+        STOCKPILED, ENDURED, SNATCHED, TRACED -- seven live ones, none visible
+        to a pattern looking for WRAP. The suffix set is S/ES/D/ED/ING plus a
+        DOUBLED FINAL CONSONANT, because WRAP -> WRAPPED is not WRAP + ED.
+      * THE PAIRINGS WERE ZIPPED, NOT KEYED. `port_names.py` learned this the
+        hard way and this function had the bug it was written to avoid: with
+        types included, a positional zip read FIRE -> FLOW and STEEL ->
+        ENTROPY, because vanilla's type array has holes ours does not. Keyed on
+        the designator, an addition can no longer masquerade as a rename.
+
+    ONE KNOWN BLIND SPOT, reported rather than hidden. When the inflected form
+    is ITSELF a live name the hit is still printed, with a note -- because
+    "{ATK} CLAMPED {DEF}!" is a problem either way: CLAMPED is the name of an
+    ABILITY here, so the line reads as a name where a verb was meant. Silently
+    skipping it is how it survived in the first place.
+
+    NAME TABLES ARE NOT SWEPT, which is engine.md's trap 6. Only the PROSE
+    surfaces in PROSE_C below are read. Pointing this at all of src/ reports 87
+    lines, and the bulk are trainer_tower_sets.c nicknames and items.h data --
+    name tables, where a vanilla word is an authored value and not a mistake.
     """
     import json, subprocess
 
@@ -576,22 +605,43 @@ def check_stale_names():
         except Exception:
             pass
 
-    for rel, pat in (("src/data/text/move_names.h", r'\[MOVE_\w+\]\s*=\s*_\("([^"]+)"\)'),
-                     ("src/data/text/species_names.h", r'\[SPECIES_\w+\]\s*=\s*_\("([^"]+)"\)')):
+    #  KEYED ON THE DESIGNATOR, never zipped by position. A zip cannot tell an
+    #  ADDITION from a RENAME -- the exact mistake port_names.py exists to
+    #  avoid -- and it mispaired the type table outright: vanilla's array has
+    #  holes ours does not, so position n is not the same type on both sides.
+    for rel, pat in (("src/data/text/move_names.h",
+                      r'\[(MOVE_\w+)\]\s*=\s*_\("([^"]+)"\)'),
+                     ("src/data/text/species_names.h",
+                      r'\[(SPECIES_\w+)\]\s*=\s*_\("([^"]+)"\)'),
+                     ("src/data/text/abilities.h",
+                      r'\[(ABILITY_\w+)\]\s*=\s*_\("([^"]+)"\)')):
         up = upstream(rel)
         f = os.path.join(GBA, rel)
         if not up or not os.path.isfile(f):
             continue
-        ours = re.findall(pat, open(f, encoding="utf-8", errors="ignore").read())
-        van = re.findall(pat, up)
-        renamed.update({van[i]: ours[i] for i in range(min(len(ours), len(van)))
-                        if van[i] != ours[i]})
+        ours = dict(re.findall(pat, open(f, encoding="utf-8", errors="ignore").read()))
+        van = dict(re.findall(pat, up))
+        renamed.update({v: ours[k] for k, v in van.items()
+                        if k in ours and ours[k] != v})
 
     #  the live lexicon, so an old name that is now somebody else's name is
     #  never reported -- this is the GROWTH case and it is not hypothetical
-    live = set()
+    #  THE STATES BELONG IN HERE. 1.6 renamed CONFUSION to THRASHING, so a
+    #  routine description reading "ends THRASHING" is correct -- and without
+    #  the states in the live set the inflection pass reports every one of them
+    #  as a leftover THRASH, which is four false alarms in one file. Abilities
+    #  and trainer classes are here for the same reason.
+    type_names = set()
+    f = os.path.join(GBA, "src/battle_main.c")
+    if os.path.isfile(f):
+        type_names = set(re.findall(r'\[TYPE_\w+\]\s*=\s*_\("(\w+)"\)',
+                                    open(f, encoding="utf-8", errors="ignore").read()))
+
+    live = set(STATES)
     for rel, pat in (("src/data/text/move_names.h", r'_\("([^"]+)"\)'),
                      ("src/data/text/species_names.h", r'_\("([^"]+)"\)'),
+                     ("src/data/text/abilities.h", r'_\("([^"]+)"\)'),
+                     ("src/data/text/trainer_class_names.h", r'_\("([^"]+)"\)'),
                      ("src/battle_main.c", r'\[TYPE_\w+\]\s*=\s*_\("(\w+)"\)'),
                      ("src/data/region_map/region_map_entry_strings.h", r'_\("([^"]+)"\)')):
         f = os.path.join(GBA, rel)
@@ -604,6 +654,45 @@ def check_stale_names():
                #  very run that added items to it. The test is "contains no
                #  lowercase ASCII", which is what was meant all along.
                if o not in live and not re.search(r"[a-z]", o) and len(o) > 2}
+
+    #  AN INFLECTED NAME IS STILL THE NAME. Plain suffixes, plus a doubled
+    #  final consonant, which is the one that hid WRAPPED: it is not WRAP + ED.
+    #  A trailing vowel pair rules the doubling out (SEED -> SEEDDED is not a
+    #  word), and the whole pattern is case-sensitive against an uppercase
+    #  name, so lowercase prose -- "cut its own HP" -- never matches CUT.
+    def inflected(old):
+        alts = ["(?:S|ES|D|ED|ING)?"]
+        if (re.search(r"[BCDFGKLMNPRSTVZ]$", old)
+                and not re.search(r"[AEIOU][AEIOU][BCDFGKLMNPRSTVZ]$", old)):
+            alts.insert(0, re.escape(old[-1]) + "(?:ED|ING)")
+        return re.compile(r"(?<![A-Z])%s(%s)(?![A-Z])"
+                          % (re.escape(old), "|".join(alts)))
+
+    pats = {o: inflected(o) for o in renamed}
+
+    #  WHICH LIVE WORDS MAY LEGITIMATELY BE WORN AS AN INFLECTION, and it is a
+    #  short list: a STATE and a TYPE are adjectives the prose is SUPPOSED to
+    #  use. "ends THRASHING" is a routine description doing its job, and 1.6
+    #  renamed CONFUSION to THRASHING precisely so it could.
+    #
+    #  A SPECIES, ABILITY, ITEM or ROUTINE name is NOT in that class, and this
+    #  is the distinction the first cut of this got wrong in both directions.
+    #  Suppressing every live inflection hid "{ATK} CLAMPED {DEF}!" -- CLAMPED
+    #  is the ABILITY BATTLE_ARMOR wears here, so that line reads as a name
+    #  where a verb was meant, which is worse than the stale name alone.
+    #  Suppressing none of them reported four correct THRASHINGs every run.
+    adjectival = set(STATES) | set(type_names)
+
+    def hit(s, old):
+        """None, or how to describe the match -- "" plain, or a collision note."""
+        m = pats[old].search(s)
+        if not m:
+            return None
+        if m.group(1) and m.group(0) in adjectival:
+            return None
+        if m.group(1) and m.group(0) in live:
+            return "; %s is itself a name here" % m.group(0)
+        return " (as %s)" % m.group(0) if m.group(1) else ""
 
     out = []
     #  THE STORY DOCUMENTS TOO. They are prose with no build behind them, so
@@ -618,8 +707,9 @@ def check_stale_names():
             continue
         prose = re.sub(r"\s+", " ", open(p, encoding="utf-8", errors="ignore").read())
         for old, new in renamed.items():
-            if re.search(r"\b%s\b" % re.escape(old), prose):
-                out.append((rel, "says %s; the game calls it %s" % (old, new)))
+            note = hit(prose, old)
+            if note is not None:
+                out.append((rel, "says %s; the game calls it %s%s" % (old, new, note)))
 
     for root, dirs, files in os.walk(os.path.join(GBA, "data")):
         for fn in files:
@@ -642,11 +732,78 @@ def check_stale_names():
                     i += 1
                 #  the whole block, escapes flattened, so a name split over a
                 #  line break is still one name
-                s = re.sub(r"\\[nlp]", " ", "".join(parts))
+                #  a control code is not prose. {PLAY_SE SE_BALL_BOUNCE_1}
+                #  carries the word BOUNCE and means nothing by it, and so do
+                #  {PLUS} and {EMOJI_MINUS} -- three false alarms, all of them
+                #  a constant the player never reads.
+                s = re.sub(r"\{[^}]*\}", " ",
+                           re.sub(r"\\[nlp]", " ", "".join(parts)))
                 for old, new in renamed.items():
-                    if re.search(r"(?<![A-Z])%s(?![A-Z])" % re.escape(old), s):
+                    note = hit(s, old)
+                    if note is not None:
                         out.append(("%s:%d" % (os.path.relpath(p, GBA), start + 1),
-                                    "says %s; the game calls it %s" % (old, new)))
+                                    "says %s; the game calls it %s%s" % (old, new, note)))
+
+    #  THE PROSE C SOURCES, which nothing read until 2026-09-20. Every battle
+    #  message and every routine description is a C string literal, so the
+    #  whole battle log was invisible here. This list is deliberately NOT all
+    #  of src/: name tables hold vanilla words on purpose (engine.md trap 6),
+    #  and sweeping them reports 87 lines of authored data.
+    #  pokedex_text*.h, NOT pokedex_entries.h. The entries file is a name
+    #  table wearing a prose file's extension: its strings are `.categoryName`,
+    #  and sweeping it reported WRAPPING, ABSORBING, BITE, GUTS and WISH --
+    #  every one an AUTHORED category, and eight more that were the word IRON
+    #  in "IRON SNAKE". Trap 6 again, and it took reading the hits to see it.
+    #  The _fr and _lg files are CONTENT's and CONTEXT's own dex text.
+    PROSE_C = ("src/battle_message.c",
+               "src/strings.c",
+               "src/move_descriptions.c",
+               "src/data/text/quest_log.h",
+               "src/data/pokemon/pokedex_text.h",
+               "src/data/pokemon/pokedex_text_fr.h",
+               "src/data/pokemon/pokedex_text_lg.h")
+    for rel in PROSE_C:
+        p = os.path.join(GBA, rel)
+        if not os.path.isfile(p):
+            continue
+        for i, line in enumerate(
+                open(p, encoding="utf-8", errors="ignore").read().split("\n"), 1):
+            #  gExpandedPlaceholder_Sapphire is the literal word SAPPHIRE,
+            #  standing for the RSE cartridge in link text -- not ITEM_SAPPHIRE,
+            #  which is the PRIVATE KEY. Eight of these, all version and team
+            #  names, none of them a reference to anything we renamed.
+            if "gExpandedPlaceholder_" in line:
+                continue
+            m = re.search(r'_\("(.*)"\)', line)
+            if not m:
+                continue
+            s = re.sub(r"\{[^}]*\}", " ", re.sub(r"\\[nlp]", " ", m.group(1)))
+            for old, new in renamed.items():
+                note = hit(s, old)
+                if note is not None:
+                    out.append(("%s:%d" % (rel, i),
+                                "says %s; the game calls it %s%s" % (old, new, note)))
+    return out
+
+
+def check_type_copy():
+    """T-173. `battle_message.c` keeps a SECOND copy of the type names -- eighteen strings of the form
+    "a VECTOR routine", read whenever a routine's type is said aloud -- and nothing compared the two. Sixteen sat
+    at vanilla's words for months and one said CONSTRUE, which is the trainer class and the CONTEXT routine, not
+    the type. A copy nobody checks is how the battle log came to name a type that exists nowhere else in the game.
+    """
+    names = dict(read("src/battle_main.c", r'\[TYPE_(\w+)\] = _\("([^"]*)"\)'))
+    msg = open(os.path.join(GBA, "src/battle_message.c"), encoding="utf-8", errors="ignore").read()
+    tab = dict(re.findall(r"\[TYPE_(\w+)\]\s*=\s*(gText_\w+),?", msg))
+    strs = dict(re.findall(r'const u8 (gText_\w+Move)\[\] = _\("([^"]*)"\)', msg))
+    out = []
+    for t, sym in sorted(tab.items()):
+        want = names.get(t)
+        if not want:
+            continue
+        article = "an" if want[0] in "AEIOU" else "a"
+        if strs.get(sym) != "%s %s routine" % (article, want):
+            out.append(("TYPE_" + t, "%r, and gTypeNames says %s" % (strs.get(sym), want)))
     return out
 
 
@@ -719,6 +876,14 @@ def main():
     else:
         print("\n  %d version disagreement(s):\n" % len(vbad))
         for what, why in vbad:
+            print("   %-16s %s" % (what, why))
+
+    tcopy = check_type_copy()
+    if not tcopy:
+        print("  the battle log's type names agree with the chart's.")
+    else:
+        print("\n  %d type name(s) in the battle log disagree with the chart:\n" % len(tcopy))
+        for what, why in tcopy:
             print("   %-16s %s" % (what, why))
 
     sfresh = check_story_freshness()
