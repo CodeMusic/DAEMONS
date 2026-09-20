@@ -50,6 +50,11 @@ BUCKET = {
     "BREAKER": "HAS", "DYNAMO": "HAS", "COLDVAULT": "HAS", "BADSEED": "HAS", "ENGRAM": "HAS", "SYMBOL": "HAS",
     "PREMISE": "HAS", "GOLDSET": "HAS", "HARDLINE": "HAS", "MIME": "HAS", "QUORUM": "HAS", "SUBSTRATE": "HAS",
     "LANDFILL": "HAS", "STANDBY": "HAS", "BLINDSPOT": "HAS", "PERIPHERY": "HAS", "RESIDUAL": "HAS",
+    #  T-171's ten renames (2026-09-20). They were WORLD -- outside computing altogether -- and the point of the
+    #  rename was to bring them INTO the lexicon, not to make every one a process: six are conditions, which is
+    #  what those daemons are. CRON, ARCHIVER and CANARY do run.
+    "CRON": "RUNS", "ARCHIVER": "RUNS", "CANARY": "RUNS", "DEADLETTER": "HAS", "BACKPRESS": "HAS",
+    "SPRAWL": "STATE", "SKEW": "STATE", "EXHAUST": "STATE", "DANGLING": "STATE", "OVERRUN": "STATE",
     #  STATE -- a condition the system is IN. The user's own example, DEADLOCK, is the head of this list.
     "DEADLOCK": "STATE", "LIVELOCK": "STATE", "LATENCY": "STATE", "OVERFLOW": "STATE", "PENDING": "STATE",
     "FAULT": "STATE", "SPIKE": "STATE", "SURGE": "STATE", "STAMPEDE": "STATE", "SPAGHETTI": "STATE",
