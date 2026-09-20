@@ -1,0 +1,18 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t174/alt2/al_speech_r2",
+ "prompt": "pure white background, pixel art game sprite of a single anthropomorphic young red fox in a BUTTONED cream collared shirt with sleeves, purple trousers, brown boots, a satchel at his side, one hand on his hip, full body, clean black outline, isolated on white, centered",
+ "negative": "bare chest, shirtless, open shirt, unbuttoned, naked, human, human face, hair, person, man, woman, anime, grey background, colored background, floor, scenery, frame, border, drop shadow, text, watermark, blurry, photorealistic",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.32,
+ "image": "gfx/drafts/t174/src2/al_speech_hi.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 44.2,
+ "comfyui": "0.19.1",
+ "made": "2026-09-20 15:08:32"
+}

@@ -53,15 +53,16 @@ GBA = os.path.join(ROOT, "engineGba")
 KEY = (115, 197, 164)          # what vanilla puts in the transparent slot
 
 JOBS = {
-    # T-174. CRYSTAL and the player's LOGIC pose are SPRITEFORGE drawings now, restyled from the pictures the game
-    # already showed (gfx/drafts/t174/): the old .jpeg sources framed badly, and the ROM picture does not. Both take
-    # hue=False -- the green-hue keying is for vanilla's green backdrops, and on our drafts it eats the greens INSIDE
-    # the figure, which shredded the first cuts. INTUITION keeps its drawing: a walking figure is thin diagonals and
-    # the restyle thins them at every strength (0.35 to 0.5, four seeds each).
-    "crystal":     dict(src="gfx/characters/sf_crystal.png",
+    # T-174, settled. THE INTRO THREE KEEP THEIR DRAWINGS. CRYSTAL and the player's LOGIC pose were written as
+    # spriteforge restyles on 2026-09-20 and the user played them and called both distorted; the engine was reverted
+    # and these jobs are back on the art they were drawn from. The rejected drafts are kept in gfx/drafts/t174/ as
+    # sf_crystal_rejected.png and sf_logic_rejected.png. INTUITION never restyled at all -- a walking figure is thin
+    # diagonals and every strength from 0.35 to 0.5 thinned them. What the experiment DID establish is the recipe the
+    # portraits use (tools/prephires.py): restyle from the drawing at its own resolution, never from the ROM picture.
+    "crystal":     dict(src="gfx/characters/crystal_speech.jpeg",
                         dst="engineGba/graphics/oak_speech/oak/pic.png",
                         pal="engineGba/graphics/oak_speech/oak/pal.pal",
-                        size=(64, 96), colours=25, base=97, palsize=32, hue=False, flip=True),
+                        size=(64, 96), colours=25, base=97, palsize=32, flip=True),
     "al_speech":   dict(src="gfx/characters/al_speech.jpeg",
                         dst="engineGba/graphics/oak_speech/rival/pic.png",
                         pal="engineGba/graphics/oak_speech/rival/pal.pal",
@@ -78,10 +79,10 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/rival_late_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/rival_late.pal",
                         size=(64, 64), colours=15, base=1, palsize=16),
-    "logic":       dict(src="gfx/characters/sf_logic.png",
+    "logic":       dict(src="gfx/characters/player_logic.jpeg",
                         dst="engineGba/graphics/oak_speech/red/pic.png",
                         pal="engineGba/graphics/oak_speech/red/pal.pal",
-                        size=(64, 96), colours=31, base=65, palsize=32, hue=False),
+                        size=(64, 96), colours=31, base=65, palsize=32),
     "intuition":   dict(src="gfx/characters/player_intuition.jpeg",
                         dst="engineGba/graphics/oak_speech/leaf/pic.png",
                         pal="engineGba/graphics/oak_speech/leaf/pal.pal",
@@ -552,4 +553,5 @@ def main():
     prev.save("/tmp/char.png")
     print("  preview   /tmp/char.png")
 
-main()
+if __name__ == "__main__":
+    main()

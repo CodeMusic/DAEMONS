@@ -1,0 +1,32 @@
+T-174, the nine that remained (HOLT, VERA, INIT, CAIRN, SCORN, AL x4), 2026-09-20.
+
+Three rounds against each: seed 1917 and seed 7 at denoise 0.45, then one round at 0.32 with each observed failure
+named in the negative. judge.png puts all four beside the art in the game, every cell cut through gbachar at the size
+the game shows it.
+
+WHAT THE RESTYLE DOES TO THIS CAST, measured rather than guessed:
+
+  * IT SATURATES THE FUR. Holt's brown otter comes back ORANGE at every strength and every seed, which is the Clears'
+    colour -- an otter that reads as a fox breaks 9.4's fable where it is loudest.
+  * IT DISSOLVES A LIGHT GARMENT ON LIGHT FUR. Al's cream shirt came back as a BARE CHEST in three of his four poses
+    at 0.45. Naming it in the negative and dropping to 0.32 fixed it, which is the one thing round 2 proved.
+  * IT DISSOLVES A SMALL HELD OBJECT. Cairn's slate and Al's monitor, both at 0.45; both survive 0.32.
+  * IT LOSES A FACE'S ONE MARK. Init's dark muzzle goes; he comes back a generic ginger dog.
+
+AND THE COMPARISON THAT SETTLES IT (style_compare.png), WITH ITS CLAIM CUT BACK TO WHAT WAS MEASURED. The ticket
+opened by calling these nine "the oldest art in the game". Cut at 64x64 beside three of T-169's spriteforge portraits
+they are plainly no worse: Cairn, Scorn and Vera hold a solid outline where BEAUTY's hands and CAMPER's fingers come
+apart. But three cells are an impression, not a measurement, and the two measures that would turn it into one BOTH
+CAME BACK NULL across all 75 portraits:
+
+    lone pixels (a figure pixel matching none of its four neighbours):  spriteforge 28.0%, hand drafts 33.0%
+    loose pieces (figure fragments that are not the body):              spriteforge  0.2,  hand drafts  0.4
+
+So the general claim -- that the spriteforge portraits are the speckly ones -- IS NOT SUPPORTED, and the two worst
+portraits on both measures are hand drafts (the aroma lady, the ruin maniac). What survives is the narrow version:
+there is no quality argument for restyling THESE NINE, because the art they already have is at least as clean as what
+the restyle returns, and the restyle costs identity.
+
+RECOMMENDATION: keep all nine, on the record rather than by default. CAIRN's round 2 is the only cell that beats what
+is in the game -- the in-game tortoise is olive on olive and the restyle separates shell, shirt, apron and boots --
+and it costs the clean outline, so it is the user's call and not the tool's.
