@@ -86,7 +86,9 @@ HEARSAY = {
             (LIKE, "M", [["There. Same as you came in."], ["BASIN's rule, not mine. She says a", "battle in here shouldn't cost", "anybody anything."]]),
             (RUMOR, "M", [["BASIN swims these channels. Same", "route, every morning, for years."], ["She says she is getting faster.", "I have timed her. She is not."]]),
             (LIKE, "F", [["BASIN comes to this cape to", "think. Same rock, every time."], ["She says the view gets a little", "better every visit."]]),
-            (RUMOR, "", [["Her trainers heal every", "challenger who walks in."], ["Some call it the kindest BENCHMARK", "in GAMUT. Some call it the", "slowest."]]),
+            #  USERS, not trainers: 1.7's word, and port_vocab sweeps for it -- with "trainers" here the two tools
+            #  undid each other every run, port_vocab writing USERS and port_hearsay writing it back.
+            (RUMOR, "", [["Her USERS heal every challenger", "who walks in."], ["Some call it the kindest BENCHMARK", "in GAMUT. Some call it the slowest."]]),
         ],
         "letter": ("F", [["You found a way down I hadn't", "seen!"], ["I've been looking for it all week.", "It's further than it looks!"]]),
     },
@@ -130,7 +132,7 @@ HEARSAY = {
             (LIKE, "F", [["I watched where you were looking.", "It was not where I was pointing."], ["That is how you won."]]),
             (DO, "F", [["BRAZEN pays for this BENCHMARK.", "I don't pretend otherwise."], ["I still decide what happens in", "it."]]),
             (RUMOR, "", [["Asked to stand before the CORPUS", "sign, MATTE chose the angle."], ["It is not in any of the photos."]]),
-            (LIKE, "M", [["The DOJO next door challenged", "MATTE. She won in four turns."], ["Then she told them the three", "things they hadn't looked at."]]),
+            (LIKE, "M", [["The PROOF HALL next door challenged", "MATTE. She won in four turns."], ["Then she told them the three", "things they hadn't looked at."]]),
         ],
         "letter": ("F", [["You looked where I was not", "pointing."], ["Most people only manage that once.", "Do it again."]]),
     },
@@ -265,7 +267,7 @@ WORLD = {
     "SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis": [["The FRAME MARK makes DAEMON up to", "L70 obey you!"], ["Stronger DAEMON will ignore your", "orders in battle."],
                                                        ["I watched where you were looking.", "It was not where I was pointing."], ["That is how you won."],
                                                        ["BRAZEN pays for this BENCHMARK.", "I don't pretend otherwise."], ["I still decide what happens in", "it. Please take this TM."]],
-    "SaffronCity_Gym_Text_TyronPostBattle": [["The DOJO next door challenged", "MATTE. She won in four turns."], ["Then she told them the three", "things they hadn't looked at."]],
+    "SaffronCity_Gym_Text_TyronPostBattle": [["The PROOF HALL next door challenged", "MATTE. She won in four turns."], ["Then she told them the three", "things they hadn't looked at."]],
     # QUICKSILVER
     "CinnabarIsland_Gym_Text_ExplainVolcanoBadge": [["Hah!"], ["The HEAT MARK heightens the", "SPECIAL abilities of your DAEMON!"],
                                                     ["ENTROPY! Everything here runs a", "little hot."], ["You'll notice. That's the idea!", "Here, you can have this too!"]],
