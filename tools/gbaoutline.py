@@ -79,6 +79,20 @@ def edge_of(a):
     return fig, fig & (nb > 0)
 
 
+def palette_of(rel, im):
+    """the palette a trainer picture actually renders with is its .pal, not the one inside the PNG"""
+    pf = os.path.join(GBA, "graphics/trainers/palettes",
+                      os.path.basename(rel).replace("_front_pic.png", ".pal"))
+    if os.path.exists(pf):
+        rows = [l.split() for l in open(pf).read().splitlines()[3:] if l.split()]
+        return pf, [[int(v) for v in r] for r in rows]
+    #  ALL 256, not 16: the intro pictures are 8bpp and live in palette BANKS -- the player's indices start at
+    #  65 and CRYSTAL's at 97 (engine.md) -- so a sixteen-entry read finds their colours all black and decides
+    #  every one of them needs a new one.
+    p = (im.getpalette() or []) + [0] * 768
+    return None, [p[i * 3:i * 3 + 3] for i in range(256)]
+
+
 def share(a, lum, k=4):
     """how much of the silhouette's edge is drawn in the picture's own darkest colours"""
     fig, edge = edge_of(a)
@@ -89,19 +103,47 @@ def share(a, lum, k=4):
     return float(np.isin(a[edge], dark).sum() / edge.sum() * 100)
 
 
-def outline(a, lum):
-    """the darkest colour the picture already uses, laid along its own silhouette"""
-    fig, edge = edge_of(a)
+INK = (16, 16, 20)          # near-black, and the same near-black for every picture
+
+
+def choose_ink(a, lum, pal):
+    """Which palette entry becomes the OUTLINE, and whether it has to be recoloured to get there.
+
+    T-177 laid the outline in "the darkest colour the picture already uses", which spends nothing but gives a
+    RED daemon a dark red edge and a grey one a near-black -- one rule, two looks, and the user saw it at once.
+    A true black is worth one palette entry, so one entry is taken.
+
+    WHICH ONE depends on what it costs. The darkest entry is the natural choice and usually already reads as
+    black; but on a picture whose darkest shade is a mid-tone doing real work, forcing it to black darkens
+    every pixel of that shade. So: take the darkest -- unless that would repaint more than a twelfth of the
+    figure, in which case take the LEAST-USED entry instead and lose a highlight nobody counts.
+    """
+    fig, _ = edge_of(a)
     used = np.unique(a[fig])
+    used = used[used != 0]
     if not len(used):
+        return None, False
+    counts = {int(i): int((a[fig] == i).sum()) for i in used}
+    darkest = int(used[np.argmin(lum[used])])
+    if lum[darkest] <= 48:
+        return darkest, False                                  # already black enough; nothing is repainted
+    if counts[darkest] <= fig.sum() / 12:
+        return darkest, True
+    return min(counts, key=lambda i: counts[i]), True
+
+
+def outline(a, lum, ink_index):
+    """the chosen entry, laid along the picture's own silhouette"""
+    fig, edge = edge_of(a)
+    if ink_index is None:
         return a
     b = a.copy()
-    b[edge] = used[np.argmin(lum[used])]
+    b[edge] = ink_index
     return b
 
 
 def main():
-    done = 0
+    done = recoloured = 0
     for label, folder in FAMILIES:
         rows = []
         for base, _, files in os.walk(os.path.join(GBA, folder)):
@@ -120,28 +162,40 @@ def main():
                 if im.mode != "P" or im.size[0] != 64:
                     continue
                 a = np.array(im)
-                lum = luminance(im)
+                palfile, pal = palette_of(rel, im)
+                lum = np.array([(c[0] * 299 + c[1] * 587 + c[2] * 114) // 1000 for c in pal]
+                               + [0] * (256 - len(pal)))
+                ink, repaint = choose_ink(a, lum, pal)
                 before = share(a, lum)
                 #  A BACK PIC IS A STRIP of 64x64 frames stacked (red's is 64x320). Outlining the strip whole is
                 #  wrong at the seams: one frame's feet sit against the next frame's head, so those pixels are not
                 #  silhouette at all. Each frame is outlined on its own.
                 b = a.copy()
                 for top in range(0, a.shape[0], 64):
-                    b[top:top + 64] = outline(a[top:top + 64], lum)
+                    b[top:top + 64] = outline(a[top:top + 64], lum, ink)
+                if repaint:
+                    pal[ink] = list(INK)
+                    lum[ink] = (INK[0] * 299 + INK[1] * 587 + INK[2] * 114) // 1000
                 after = share(b, lum)
-                rows.append((name, before, after, (a != b).sum()))
-                if WRITE and (a != b).any():
+                rows.append((name, before, after, int((a != b).sum()), repaint))
+                if WRITE and ((a != b).any() or repaint):
+                    full = [v for c in pal for v in c] + [0] * (768 - 3 * len(pal))
                     out = Image.fromarray(b, "P")
-                    out.putpalette(im.getpalette())
+                    out.putpalette(full)
                     out.save(os.path.join(GBA, rel))
+                    if palfile and repaint:
+                        with open(palfile, "w") as fh:
+                            fh.write("JASC-PAL\n0100\n%d\n" % len(pal))
+                            for c in pal:
+                                fh.write("%d %d %d\n" % tuple(c))
+                        recoloured += 1
                     done += 1
         if rows:
-            print("  %-19s %d ours: edge in its darkest four, %.0f%% -> %.0f%% (%d px redrawn)"
+            print("  %-19s %d ours: edge in its darkest four, %.0f%% -> %.0f%%; %d took a true black"
                   % (label, len(rows), np.mean([r[1] for r in rows]), np.mean([r[2] for r in rows]),
-                     sum(r[3] for r in rows)))
-            for name, b4, af, n in sorted(rows, key=lambda r: r[1])[:5]:
-                print("       %-26s %3.0f%% -> %3.0f%%" % (name, b4, af))
-    print("  %s" % ("%d written" % done if WRITE else "report only; pass --write"))
+                     sum(1 for r in rows if r[4])))
+    print("  %s" % ("%d written, %d palettes given a near-black" % (done, recoloured)
+                    if WRITE else "report only; pass --write"))
 
 
 if __name__ == "__main__":
