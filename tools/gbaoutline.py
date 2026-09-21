@@ -170,9 +170,17 @@ def main():
                 #  A BACK PIC IS A STRIP of 64x64 frames stacked (red's is 64x320). Outlining the strip whole is
                 #  wrong at the seams: one frame's feet sit against the next frame's head, so those pixels are not
                 #  silhouette at all. Each frame is outlined on its own.
+                #
+                #  BUT ONLY A STRIP IS A STRIP. Splitting every picture on 64 drew a cut line straight across the
+                #  four intro pictures, which are 64x96 -- one figure, not a frame and a half -- and the user saw it
+                #  in play as "a black line in her middle" on CRYSTAL, the player in both poses and the rival. Rows
+                #  63 and 64 carried three times the dark pixels of any other row. A strip's height is a MULTIPLE
+                #  of 64; anything else is one picture and is outlined whole.
+                h = a.shape[0]
+                step = 64 if h > 64 and h % 64 == 0 else h
                 b = a.copy()
-                for top in range(0, a.shape[0], 64):
-                    b[top:top + 64] = outline(a[top:top + 64], lum, ink)
+                for top in range(0, h, step):
+                    b[top:top + step] = outline(a[top:top + step], lum, ink)
                 if repaint:
                     pal[ink] = list(INK)
                     lum[ink] = (INK[0] * 299 + INK[1] * 587 + INK[2] * 114) // 1000
