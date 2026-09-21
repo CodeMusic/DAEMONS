@@ -108,8 +108,64 @@ def gfx_to_sheet():
     return out
 
 
+def unreachable_people():
+    """The people sheets nothing can put on screen, found by walking the WHOLE chain.
+
+    T-120 kept reading as unfinished because the census said "11 still vanilla", which is true and useless if
+    nothing can reach them. But reachability is not one test, it is a chain, and two shorter tests both give
+    the wrong answer:
+
+        "is its graphics id set anywhere?"   calls red_surf_run unreachable -- nothing sets RED_SURF_RUN,
+                                             yet sPicTable_RedSurf reads its frames, and that is what the
+                                             player is made of while crossing water
+        "is its symbol in a pic table?"      calls teachy_tv_host reachable -- it has a pic table of its own
+                                             and nothing ever sets the id that would use it
+
+    So the chain is walked: a graphics id that something SETS -> its ObjectEventGraphicsInfo -> the .images
+    pic table -> the gObjectEventPic_ symbols in it -> the file each symbol INCBINs. A file nothing reaches
+    that way cannot appear on screen, whatever its name suggests.
+
+    This is also how red_surf.png turns out to be art the engine never looks at: RED_SURF is set (the player
+    avatar's RIDE state) but its graphics info points .images at sPicTable_RedSurf, which names RedSurfRun.
+    """
+    d = os.path.join(GBA, "src/data/object_events")
+    #  1. every graphics id something actually sets
+    setters = set()
+    for mj in glob.glob(os.path.join(GBA, "data/maps/*/map.json")):
+        for o in json.load(open(mj)).get("object_events", []):
+            setters.add(o.get("graphics_id", ""))
+    text = ""
+    for pat in ("src/*.c", "data/scripts/*.inc", "data/maps/*/scripts.inc"):
+        for f in glob.glob(os.path.join(GBA, pat)):
+            if os.path.basename(f) != "dynamic_placeholder_text_util.c":
+                text += open(f, errors="ignore").read()
+    setters |= set(re.findall(r"OBJ_EVENT_GFX_\w+", text))
+    #  2. id -> info, 3. info -> pic table, 4. pic table -> symbols, 5. symbol -> file
+    pointers = open(os.path.join(d, "object_event_graphics_info_pointers.h"), errors="ignore").read()
+    id_to_info = dict(re.findall(r"\[(OBJ_EVENT_GFX_\w+)\]\s*=\s*&(\w+)", pointers))
+    infos = open(os.path.join(d, "object_event_graphics_info.h"), errors="ignore").read()
+    info_to_table = dict(re.findall(r"ObjectEventGraphicsInfo (\w+) = \{(?:.*?)\.images = (\w+)", infos, re.S))
+    tables = open(os.path.join(d, "object_event_pic_tables.h"), errors="ignore").read()
+    table_to_syms = {m.group(1): set(re.findall(r"(gObjectEventPic_\w+)", m.group(2)))
+                     for m in re.finditer(r"sPicTable_(\w+)\[\] = \{(.*?)\};", tables, re.S)}
+    sym_to_file = dict(re.findall(r"const u16 (gObjectEventPic_\w+)\[\] = INCBIN_U16\(\"graphics/object_events/pics/people/(\w+)\.4bpp\"",
+                                  open(os.path.join(d, "object_event_graphics.h"), errors="ignore").read()))
+    live = set()
+    for gfx in setters:
+        table = info_to_table.get(id_to_info.get(gfx, ""), "")
+        for sym in table_to_syms.get(table[len("sPicTable_"):] if table.startswith("sPicTable_") else table, ()):
+            if sym in sym_to_file:
+                live.add(sym_to_file[sym])
+    out = set()
+    for full in glob.glob(os.path.join(GBA, "graphics/object_events/pics/people/*.png")):
+        if os.path.splitext(os.path.basename(full))[0] not in live:
+            out.add(os.path.relpath(full, GBA))
+    return out
+
+
 def main():
     vanilla = upstream_files()
+    dead = unreachable_people()
     results = collections.OrderedDict()
     status = {}
     for name, pattern, people in CATEGORIES:
@@ -117,6 +173,8 @@ def main():
         for full in sorted(glob.glob(os.path.join(GBA, pattern))):
             path = os.path.relpath(full, GBA)
             s = state(path, vanilla)
+            if s == "vanilla" and path in dead:
+                s = "unreachable"                 # nothing places it, nothing sets it, nothing reads it
             status[path] = s
             counts[s] += 1
         results[name] = (counts, people)
