@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.226 — 2026-09-20
+
+### 4.2 — L is READ, R is AGAIN, and the Help System leaves the buttons (T-179)
+
+- ***The shoulder buttons did nothing***: **vanilla gave the default button mode to its Help System**, *so L and R opened a help tab everywhere and the paging `LR` mode already implements was switched off.* **HELP is a START menu entry now**, *and it is no longer a button mode at all — a mode whose whole content was "L and R open a help tab" would now mean "L and R do nothing".*
+- **`L` = READ**: *the opposing daemon's Index entry, from the battle action menu.* ***Which is the worst moment to consult it, and that is the point***: **the daemon is in front of you and the Index answers with a category, a height, a weight and one sentence.** *Nobody is told this* (craft rule 1).
+- **`R` = AGAIN**: *the last line said again — a mistimed A loses a line permanently, and vanilla kept no history.*
+- ***Held open***: **R in battle as PERSPECTIVE** (*9.2*), *which is a second battle layout rather than a convenience.*
+
 ## v11.225 — 2026-09-20
 
 ### 9.4 — Draw it at twice the size it is shown (T-178)

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.225**
+**A total conversion — the living design bible, v11.226**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2159,6 +2159,18 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 **The player spends forty hours doing what Crystal did, for her reason.** She built the thing to be taken seriously; they fill it to finish the game. Neither can put the thing that matters in it.
 
 **And the last room is her recording them into it.** Nobody remarks on any of this — the arrangement is the argument, and stating it would convert an accusation into a moral.
+
+#### L is READ, and the worst place to press it is the point — settled 2026-09-20
+
+***The two shoulder buttons did nothing.*** **Vanilla gave the DEFAULT button mode to its Help System**, *so L and R opened a help tab everywhere and the paging that `LR` mode already implements in the Index, the summary screen and the boxes was switched off.* **The Help System is an entry in the START menu now** (T-179), *and the buttons belong to the game.*
+
+***`L` = READ.* One meaning, wherever it is pressed: *what does the record say about this?*** **On the battle action menu it opens the opposing daemon's Index entry, and B returns to the fight.**
+
+***Which is the worst possible moment to consult it, and that is the whole reason it goes there.*** **The daemon is in front of you** — *moving, striking, taking damage, about to do something you need to predict* — **and the Index answers with a category, a height, a weight and one sentence.** *Everything the artifact can hold is on that page, and none of it is what the moment requires.* **The player does not have to be told this and is never told it** (craft rule 1): *they will press L in a tight fight, read "HT 2'04", WT 15.2 lbs.", and press B.*
+
+***`R` = AGAIN***, *the last line said again* — **because a mistimed A loses a line permanently and some lines are the only place a thing is said.** *The game is dense with writing and vanilla kept no history of its own.*
+
+***Held open***: **`R` in battle as PERSPECTIVE** — *9.2's move is "become another thing for a while", and holding it would show the fight from the other side.* **That is a second battle layout and a rule about what it costs**, *so it is a decision rather than a convenience.*
 
 #### The mark between HT and WT is the chart, not a foot
 
