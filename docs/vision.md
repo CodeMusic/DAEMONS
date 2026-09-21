@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.227**
+**A total conversion — the living design bible, v11.228**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2169,6 +2169,8 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 ***Which is the worst possible moment to consult it, and that is the whole reason it goes there.*** **The daemon is in front of you** — *moving, striking, taking damage, about to do something you need to predict* — **and the Index answers with a category, a height, a weight and one sentence.** *Everything the artifact can hold is on that page, and none of it is what the moment requires.* **The player does not have to be told this and is never told it** (craft rule 1): *they will press L in a tight fight, read "HT 2'04", WT 15.2 lbs.", and press B.*
 
 ***`R` = AGAIN***, *the last line said again* — **because a mistimed A loses a line permanently and some lines are the only place a thing is said.** *The game is dense with writing and vanilla kept no history of its own.*
+
+***And the battle says so, once***: **the first two seconds of a fight the prompt reads *L reads. / R looks across.***, *then the question arrives and the hint is not seen again.* **Neither battle window has a spare line** — *both are four tiles tall, which is two, and the prompt's are already "What will / ARTSAI do?"* — **so a permanent label would have to displace the question.** *Two buttons carrying the most interesting things in the game, and nothing saying so, was the one weakness of putting them there.*
 
 ***Held open***: **`R` in battle as PERSPECTIVE** — *9.2's move is "become another thing for a while", and holding it would show the fight from the other side.* **That is a second battle layout and a rule about what it costs**, *so it is a decision rather than a convenience.*
 
@@ -7340,7 +7342,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***Which is not a fault of the drawing at all.*** **A drawing resized with LANCZOS has a blended edge, and a fifteen-colour adaptive fit spends its slots on that blend** — *BEAUTY holds five near-identical blues from one dress and has none left for her horns or her hands.* **The quantizer cannot draw an outline, because an outline is a decision about what matters and it is only counting.**
 
-***So the rule***: **every 64-pixel picture of ours takes the darkest colour it already uses along its own silhouette.** *Nothing is added to a palette and no colour is invented — a picture that had an outline barely changes, and one that had none gains a shape.* **84 pictures**: *the trainer portraits, the hearsay portraits, the intro pictures and the back pics, ours only.* ***The overworld is excluded on measurement, not on taste*** — *at 16×32 an outline is most of the sprite, which is T-170's finding one size down.*
+***So the rule, as amended 2026-09-21***: **every 64-pixel picture of ours carries a TRUE BLACK outline.** *The first version took "the darkest colour it already uses", which spends nothing and reads as one rule in two looks — a red daemon got a dark red edge where a grey one got a near-black, and the user saw it at once.* **A black is worth one palette entry, and which entry depends on what it costs**: *the darkest, unless forcing it would repaint more than a twelfth of the figure, in which case the least-used one, and a highlight nobody counts is lost.* **23 of the 72 portraits needed one; the rest already owned something dark enough.** *Nothing is added to a palette and no colour is invented — a picture that had an outline barely changes, and one that had none gains a shape.* **84 pictures**: *the trainer portraits, the hearsay portraits, the intro pictures and the back pics, ours only.* ***The overworld is excluded on measurement, not on taste*** — *at 16×32 an outline is most of the sprite, which is T-170's finding one size down.*
 
 *It runs inside `gbachar.py` as well as over what is already built, so this is now how a picture is cut rather than a pass someone must remember.*
 

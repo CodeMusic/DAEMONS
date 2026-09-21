@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.228 — 2026-09-21
+
+### 9.4 and 4.2 — a true black outline, and the battle saying what L and R are
+
+- ***The outline rule amended***: **a TRUE BLACK, not "the darkest colour the picture already uses"** — *one rule in two looks, a red daemon edged dark red where a grey one was edged near-black.* **One palette entry buys it**: *the darkest, unless forcing it would repaint more than a twelfth of the figure, in which case the least-used one.* **23 of 72 portraits and 2 of 4 hearsay pictures needed one.**
+- **The battle says what the buttons are, once**: *the first two seconds of a fight the prompt reads* ***L reads. / R looks across.*** *Neither window has a spare line, so a permanent label would displace the question.*
+- ***Measured, not guessed***: **the census stops counting art nothing can reach** (*a graphics id something SETS → its graphics info → the `.images` pic table → the file each symbol INCBINs*), **and `tools/gbafaced.py` answers the same for portraits.** *Overworld people 98%, hearsay 100%, and ZERO faced portraits still vanilla.*
+- **`gbaowslots.py` re-run**: *the six legendaries a player walks up to, plus MUTEX, KABUTO and OMANYTE, stop being vanilla on the map.* **Overworld daemons 64% → 83%.**
+
 ## v11.227 — 2026-09-20
 
 ### 4.2 — R is PERSPECTIVE (T-180)
