@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.229**
+**A total conversion — the living design bible, v11.230**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2141,6 +2141,14 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### The Index names the mark — added 2026-09-21
+
+***9.4 claims hue is a label a player can READ, and until now the game only ever asserted it.*** **A daemon's body is ramped into its type's colour and T-175 put the type's own mark in the footprint slot** — *so the entry page states the type twice and never once in words*, **and a player had no way to learn what either of them meant.** *The chart is the argument (invariant 3), and it was legible only to someone who had already been told.*
+
+***The word goes beside the mark, and is gated exactly as the mark is.*** **`DexScreen_DrawMonFootprint` refuses an uncaught daemon**, *so the mark and its name arrive together and each teaches the other* — **after a few daemons the mark alone is enough, which is what a label is for.** *It names the PRIMARY type, because that is precisely what the mark and the colour encode; a second type named here would label something the page never shows.*
+
+**This does not weaken 4.2's complaint, it sharpens it.** *The Index can now say **CONTENT** and still has no field for what Crystal cared about* — ***the artifact got better at measuring content, which is the joke it has been making all along.***
 
 #### An unseen daemon is a shape — added 2026-09-21
 

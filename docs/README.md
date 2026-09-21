@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.229, working |
-| [`CONTEXT-CONTENT-design-bible-v11.229.pdf`](CONTEXT-CONTENT-design-bible-v11.229.pdf) | Typeset **snapshot** at v11.229 — the port, the bestiary, the harness, the fable cast, the streaks, every animation redrawn, the Index mark that is now the chart, which instrument draws whom, the twelve nobody had counted, the canvas rule, the two shoulder buttons, one of which is a perspective, the one true black every picture of ours is outlined in — daemons included now — and the Index refusing to show you a daemon you have not met. Cut a new one with `./docs/build-pdf.sh 11.229` (the script adds the `v`). | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.230, working |
+| [`CONTEXT-CONTENT-design-bible-v11.230.pdf`](CONTEXT-CONTENT-design-bible-v11.230.pdf) | Typeset **snapshot** at v11.230 — the port, the bestiary, the harness, the fable cast, the streaks, every animation redrawn, the Index mark that is now the chart and the word that finally names it, which instrument draws whom, the canvas rule, the two shoulder buttons, one of which is a perspective, the one true black every picture of ours is outlined in, and the Index refusing to show you a daemon you have not met. Cut a new one with `./docs/build-pdf.sh 11.230` (the script adds the `v`). | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

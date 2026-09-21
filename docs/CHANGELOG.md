@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.230 — 2026-09-21
+
+### 4.2 and 9.4 — the Index names the mark, and two figures lose a seam
+
+- ***The type is a word on the Index entry now*** (T-191, the user's, out of the field test): **9.4 claims hue is a label a player can READ and the game only ever asserted it** — *the body is ramped into the type's colour, T-175 put the type's mark in the footprint slot, and neither was ever named.* **The word sits beside the mark and is gated as the mark is** (*caught, not seen*), *so the two arrive together and each teaches the other.*
+- **The battle hint names both screens**: ***`L INDEX.` / `R PERSPECTIVE.`***, *where it used to paraphrase the second as "looks across".*
+- ***A seam across four figures*** (T-184a): **`gbaoutline` split every picture on 64 rows because a back pic is a strip of stacked frames** — *the four intro pictures are 64×96, one figure, and the split inked a line straight across CRYSTAL, the player in both poses and the rival.* **A strip's height is a multiple of 64; anything else is one picture.**
+- ***T-185's premise was wrong and the play test disproved it*** (T-185a): **the seen-gate is in the page's FILL, not its draw** — *so vanilla never leaked anything; it **dropped** an unseen daemon and let the page close up.* **The unseen are kept and drawn as silhouettes now**, *because on a page that holds a habitat group — usually one or two whole evolution lines — the gap is the information.*
+
 ## v11.229 — 2026-09-21
 
 ### 9.4 and 4.2 — the ink reaches the daemons, and the Index stops telling
