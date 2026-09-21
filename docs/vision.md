@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.228**
+**A total conversion — the living design bible, v11.229**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2141,6 +2141,14 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### An unseen daemon is a shape — added 2026-09-21
+
+**Vanilla's Index draws every daemon on a category page lit and named**, *seen or not* — and because **a page groups an evolution line**, meeting the first of a chain shows you the rest of it for free. ***That is the one thing this screen exists to hold back.*** *Vanilla has the rule and breaks it in this one place:* **the list two screens away already prints `-----` for an unseen daemon**, and **pressing A on an unseen one on the category page already does nothing** — *so the page knows what it must not tell you and shows it anyway.*
+
+***Ours draws the unseen as a silhouette in the ink*** — **the same black the sprites and the portraits are outlined in** (9.4 as amended the same day), *so an unseen daemon is exactly its own outline filled in*, **and its name is the `-----` the list already uses.** ***The number stays***: *where a thing sits in the Index is not what binding one earns you.*
+
+**It is a gate on information and therefore on the argument.** *A player who can read a whole family off one page before meeting any of it has been handed the flattened metric before the thing it flattens* — **which is 4.2's own complaint, committed by the interface rather than by a character.*
 
 The artifact you carry all game **can only measure content.** Height, weight, type, stats. There is no field for the thing Crystal actually cared about.
 
@@ -7186,9 +7194,11 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 *The other eleven are extended from those, and **every one of them is a claim this document is making rather than a fact it inherited.*** **CONTENT is bone — the undifferentiated one. LOGIC is cold steel blue. CONTEXT is magenta.** *So CODEMUSAI and CAREMUSAI, who are the same chassis, now differ by hue as well as by ear cups* — **and the hue is the matchup.**
 
-#### The outline keeps its own colour
+#### The outline is true black — amended 2026-09-21
 
-**Our four tones map to four palette entries:** *paper becomes index 0, which Gen 3 treats as transparent,* **and the three inks become a light, a mid and a dark of the type's hue.** ***Level 0 stays nearly black:*** **an outline that takes the hue stops reading as an outline**, which is the same lesson the 16×16 player sprite taught three times over.
+**Our four tones map to four palette entries:** *paper becomes index 0, which Gen 3 treats as transparent,* **and the three inks become a light, a mid and a dark of the type's hue.** ***Level 0 is the outline, and it is TRUE BLACK*** — *the same ink every portrait carries (9.4a below), so a daemon and the person throwing it are outlined in one colour.*
+
+***This reverses the original rule, which kept a trace of the hue here*** — **an outline that takes the hue stops reading as an outline**, said the 16×16 player sprite three times over, and the answer taken from it was *a trace is not the hue.* **It is.** *Driven in the theatre and measured off the screen (T-184), a GROWTH daemon's outline reads `(24, 33, 24)` — a dark green, and eighteen types meant **eighteen different blacks**, none of which reads as black beside a portrait that does.* ***The lesson survives the reversal***: the outline still must not take the hue, and the way to guarantee that is to give it none. **The hue is carried by the three entries whose job it is.**
 
 #### Amended 2026-09-05: type hue dominant, with a few accents
 
@@ -7206,7 +7216,7 @@ The 8/7 physical–special split is intact and is exactly where 2.1 says it is: 
 
 **The dominant hue is still the type**, so the palette still reads as the chart — *which is what this section actually argued for.* **Colour carries the argument; it just no longer has to do it alone.** The accents buy an eye, a beak, a marking.
 
-***And the art stays type-agnostic.*** **The body is drawn in neutral greys and the accents in saturated colour**, so one drawing is correct whatever the type is — the ramp stays a parameter rather than becoming 151 hand-coloured pictures. *A red eye on a VECTOR daemon would vanish, so an accent that lands too near the type's hue is shifted away from it.* **The near-black outline rule above is unchanged and is why the ramp ends where it does.**
+***And the art stays type-agnostic.*** **The body is drawn in neutral greys and the accents in saturated colour**, so one drawing is correct whatever the type is — the ramp stays a parameter rather than becoming 151 hand-coloured pictures. *A red eye on a VECTOR daemon would vanish, so an accent that lands too near the type's hue is shifted away from it.* **The outline rule above is why the ramp ends where it does** — *since 2026-09-21 it ends on the ink rather than near it.*
 
 #### Two hues moved, 2026-09-08, and the reason generalises
 

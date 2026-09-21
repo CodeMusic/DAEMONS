@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.229 — 2026-09-21
+
+### 9.4 and 4.2 — the ink reaches the daemons, and the Index stops telling
+
+- ***The outline rule reversed where it still kept a trace of the hue***: **a daemon's outline is TRUE BLACK now**, *the same ink every portrait carries.* **Found by measuring the screen rather than the file** (T-184): *a GROWTH daemon's outline read `(24, 33, 24)`, a dark green, and eighteen types meant eighteen different "blacks".* ***The old reasoning survives the reversal*** — an outline that takes the hue stops reading as an outline — **and the way to guarantee it is to give it none.** *454 sprites rewritten; the hue is carried by the three entries whose job it is.*
+- ***An unseen daemon is a silhouette*** (T-185): **vanilla's category pages draw every daemon lit and named whether or not it has been seen**, *and a page groups an evolution line* — **so meeting the first of a chain showed you the rest for free.** *Vanilla already prints `-----` for an unseen daemon in the list and already refuses to open its entry here, so the screen knows the rule and broke it in one place.* **Drawn in the ink, named `-----`, number kept.**
+- **The move descriptions fit the pane they are printed in** (T-181): *the pane is 113px and `port_vocab` was inferring 108 from vanilla's widest line.* **356 descriptions, zero over, down from seventeen** — *and the fourteen that no wrap could fit were re-said with **them** instead of "the foe", which is 17px cheaper and is what this game already believes about the thing across from you.*
+- **HELP could not be closed** (T-182): *the START menu polls a chosen entry's callback every frame, so T-179's HELP entry re-opened itself on the frame it closed.* **Only a reset escaped, and it shipped in all four ROMs.**
+
 ## v11.228 — 2026-09-21
 
 ### 9.4 and 4.2 — a true black outline, and the battle saying what L and R are

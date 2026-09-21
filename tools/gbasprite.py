@@ -31,8 +31,13 @@ TWO DECISIONS ARE MADE HERE, and both are recorded in vision.md 9.4.
 
 Our four tones map to four palette entries: paper becomes index 0 (which Gen 3
 treats as transparent), and the three inks become a light, a mid and a dark of
-the type's hue. Level 0 stays nearly black -- it is the outline, and an outline
-that takes the hue stops reading as an outline.
+the type's hue. Level 0 is the OUTLINE, and it is TRUE BLACK -- T-184, decided
+by the user after seeing a GROWTH daemon's outline read as dark green on the
+screen (24,33,24). 9.4 used to keep a trace of the hue here on the reasoning
+that an outline taking the hue stops reading as an outline; a trace is still
+the hue, and eighteen types meant eighteen different "blacks". One ink, the
+same ink every portrait already uses (T-177), and the hue is carried by the
+three entries whose job that is.
 """
 import os, re, subprocess, sys, zlib, struct
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -65,14 +70,22 @@ STREAK_FIRST = 11
 STREAK_BLANK = (148, 148, 148)
 STREAK_TOLERANCE = 48      # per channel: JPEG and deringing move a marker, never this far
 
-def ramp5(r, g, b):
-    """Five steps of one hue: highlight, light, mid, dark, near-black outline.
+#  The one ink, shared with tools/gbaoutline.py so a daemon and a portrait are outlined in the same
+#  black. It is not (0,0,0): the GBA's five bits per channel put this at RGB(2,2,2), which reads as
+#  ink rather than as a hole punched in the screen.
+INK = (16, 16, 20)
 
-    The outline keeps only a trace of the hue -- 9.4: an outline that takes
-    the hue stops reading as an outline."""
+def ramp5(r, g, b):
+    """Five steps of one hue: highlight, light, mid, dark, and the outline.
+
+    The outline is TRUE BLACK (T-184). It used to keep a trace of the hue, on
+    9.4's reasoning that an outline taking the hue stops reading as one -- but a
+    trace IS the hue, and across eighteen types it made eighteen different
+    blacks, none of which read as black on screen. The hue is carried by the
+    three entries whose job that is."""
     up = lambda t: tuple(min(255, int(c + (255 - c) * t)) for c in (r, g, b))
     dn = lambda t: tuple(max(0, int(c * t)) for c in (r, g, b))
-    return [up(0.70), up(0.38), (r, g, b), dn(0.52), tuple(v + 10 for v in dn(0.16))]
+    return [up(0.70), up(0.38), (r, g, b), dn(0.52), INK]
 
 def shift_off(accent, type_rgb):
     """A red eye on a VECTOR daemon is no eye. If an accent sits within 40
