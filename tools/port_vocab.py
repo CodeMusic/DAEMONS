@@ -695,10 +695,15 @@ def reflowable(body):
 # strings go to the message box, the action window and the ANNOUNCER, so a
 # file-wide bound there is meaningless and "repaired" a two-line string
 # against a twelve-line ceiling.
-PANE_FILES = {"src/move_descriptions.c",
-              "src/data/pokemon/pokedex_text_fr.h",
-              "src/data/pokemon/pokedex_text_lg.h",
-              "src/data/decoration/description.h"}
+#  T-181: a MEASURED pane where one has been measured, and None where it has only been demonstrated.
+#  Vanilla's widest line is a LOWER BOUND on the window, not the window -- move_descriptions.c prints
+#  into POKESUM_WIN_TRAINER_MEMO, which on the moves page is fifteen tiles wide with the text inset
+#  seven pixels (113px), and vanilla's widest line in it is 108. Those five pixels are what this tool
+#  reported as seventeen overflowing lines that were not overflowing, and they cost a day.
+PANE_FILES = {"src/move_descriptions.c": 113,
+              "src/data/pokemon/pokedex_text_fr.h": None,
+              "src/data/pokemon/pokedex_text_lg.h": None,
+              "src/data/decoration/description.h": None}
 
 SKIP_SRC = {"src/data/text/species_names.h", "src/data/text/move_names.h",
                         # generated from JSON and gitignored -- edit the source, not the artifact
@@ -827,6 +832,8 @@ for root, _, fs in os.walk(os.path.join(GBA, "src")):
         bodies = [''.join(PIECE.findall(mm.group(1))) for mm in C_LIT.finditer(up)]
         ceiling = max([own_budget(b) for b in bodies] or [BUDGET])
         cap_lines = max([linecount(b) for b in bodies] or [99])
+        if PANE_FILES.get(rel):
+            ceiling = PANE_FILES[rel]
         decl = re.findall(r'\[\]\[(\d+)\]', src)
         cap = int(decl[0]) - 1 if len(set(decl)) == 1 and decl else None
         n = [0]
