@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.226**
+**A total conversion — the living design bible, v11.227**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2171,6 +2171,16 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 ***`R` = AGAIN***, *the last line said again* — **because a mistimed A loses a line permanently and some lines are the only place a thing is said.** *The game is dense with writing and vanilla kept no history of its own.*
 
 ***Held open***: **`R` in battle as PERSPECTIVE** — *9.2's move is "become another thing for a while", and holding it would show the fight from the other side.* **That is a second battle layout and a rule about what it costs**, *so it is a decision rather than a convenience.*
+
+#### R is PERSPECTIVE, and what it shows is who knows what — settled 2026-09-20
+
+***The move exists already*** (9.2 step 7): **PERSPECTIVE is *become another thing for a while*.** *This is the same idea offered as a LOOK.* **R on the battle action menu redraws the fight from where the opponent stands** — *their back where your daemon stands, your daemon's face where theirs was, both from art every species already has* — **and R or B puts it back.**
+
+***The picture is the hook. The INFORMATION is the argument.*** **The two windows become two accounts side by side**: *left, where the question was, THEIR daemon and its hit points* ***to the number***; *right, where the menu was,* ***yours, and only the shape of it*** — **untouched, marked, hurt, badly hurt, barely up.**
+
+**That is what each side actually knows**, *and it is the ordinary battle screen's own asymmetry turned around and handed back.* ***Nothing says so*** (craft rule 1): *a player presses R, sees `112 of 112` against `untouched`, and either notices or does not.*
+
+***It costs nothing***, *decided with the user*: **charging for a perspective would make a player ration the one thing this game keeps asking them to do.**
 
 #### The mark between HT and WT is the chart, not a foot
 

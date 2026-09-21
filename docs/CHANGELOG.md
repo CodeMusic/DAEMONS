@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.227 — 2026-09-20
+
+### 4.2 — R is PERSPECTIVE (T-180)
+
+- **R on the battle action menu redraws the fight from where the opponent stands**: *their back where your daemon stands, your daemon's face where theirs was, from art every species already has.*
+- ***The information is the argument***: **the two windows become two accounts — THEIR hit points to the number, YOURS only as a shape** (*untouched, marked, hurt, badly hurt, barely up*). **That is what each side knows**, *and nothing says so.*
+- ***It costs nothing***: *charging for a perspective would make a player ration the one thing the game keeps asking them to do.*
+- ***Three engine facts the work turned up***: **`CreatePicSprite` only assigns `paletteNum` when the tag is `TAG_NONE`** (*a real tag left both daemons black*), **`B_WIN_MSG` is not drawn while an action is being chosen**, *and the prompt box is about eleven characters wide.*
+
 ## v11.226 — 2026-09-20
 
 ### 4.2 — L is READ, R is AGAIN, and the Help System leaves the buttons (T-179)
