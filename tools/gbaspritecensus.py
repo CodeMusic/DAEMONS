@@ -35,7 +35,8 @@ CATEGORIES = [   # name, glob, counts toward the people headline
     ("trainer portraits", "graphics/trainers/front_pics/*.png", True),
     ("trainer back pics", "graphics/trainers/back_pics/*.png", True),
     ("intro portraits", "graphics/oak_speech/*/pic.png", True),
-    ("hearsay portraits", "graphics/fame_checker/*.png", True),
+    ("hearsay portraits", "graphics/fame_checker/*.png", True),   # cursor.png and question_mark.png are UI,
+                                                             # not people, and are skipped below
     ("daemon fronts", "graphics/pokemon/*/front.png", False),
     ("daemon backs", "graphics/pokemon/*/back.png", False),
     ("daemon icons", "graphics/pokemon/*/icon.png", False),
@@ -172,6 +173,8 @@ def main():
         counts = collections.Counter()
         for full in sorted(glob.glob(os.path.join(GBA, pattern))):
             path = os.path.relpath(full, GBA)
+            if os.path.basename(path) in ("cursor.png", "question_mark.png"):
+                continue                       # the fame checker's UI, not one of its portraits
             s = state(path, vanilla)
             if s == "vanilla" and path in dead:
                 s = "unreachable"                 # nothing places it, nothing sets it, nothing reads it
