@@ -217,6 +217,14 @@ IDIOM_RE = re.compile("|".join(re.escape(x) for x in IDIOM_HOLD))
 
 VOCAB = {
     "POKéDEX": "INDEX", "POKéDEXES": "INDEXES",
+    # T-193. The last plain-English container in the register. A POOL is exactly
+    # what a bag is -- a set of reusable things you draw from and return to --
+    # where HEAP, the obvious first thought, is the one container that does NOT
+    # give anything back. Our own Index entry for the daemon HEAP says so in as
+    # many words ("It has never been asked to give one back"), and its evolution
+    # is STACK, so the pair is already spending that joke. POOL is 24px against
+    # BAG's 18, which is why this goes through the width check rather than a sed.
+    "BAG": "POOL", "BAGS": "POOLS", "Bag": "POOL", "bag": "POOL", "bags": "POOLS",
     "TRAINER": "USER", "TRAINERS": "USERS", "trainer": "USER", "trainers": "USERS",
     "ROCKET": "CORPUS", "ROCKETS": "CORPUS",
     "BADGE": "MARK", "BADGES": "MARKS", "badge": "MARK", "badges": "MARKS",
