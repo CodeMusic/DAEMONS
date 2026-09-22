@@ -295,7 +295,7 @@ device and is never told what they are holding.**
 
 | | |
 |---|---|
-| **Three PLUGINs** | *available nowhere else, one each tied to a floor's lesson* — **so the prize is the curriculum and not a coupon** |
+| **Three routines, taught by three lecturers** | ***Settled 2026-09-22.*** *Not PLUGINs: all fifty PLUGIN slots are spent, and the ids after HM08 hold REVEAL and one spare.* **A lecturer is a move TUTOR, which needs no item** — *but the tutor table is a `u16` per species with 15 bits used, so it widens to `u32` first (one array type and one shift in `party_menu.c`).* **ATTENTION → `LOCK ON`** *(the next routine cannot miss)*, **CATEGORIES → `BLEND`** *(its type becomes the ground's)*, **ERROR → `REBUT`** *(twice as strong if it was hit first)* — **one per third of the building, and each routine's battle effect IS its floor's lesson** |
 | **The ninth DRIVER, `REVEAL`** | ***Added on the user's answer — §8a.*** *The first draft recommended against, on the ground that there was no unreached place.* **The user's design makes the unreached places, and makes them findable blind** — *which answers the objection instead of overruling it* |
 | **Not a daemon** | *the one daemon you are given for passing a test is the PROOF HALL's problem, and it declined it too* |
 
@@ -331,13 +331,13 @@ which ways were open.*
    marks them.** *ITEMFINDER stays the early tool — one item, one beep; REVEAL is the late one and
    shows every one on the screen.*
 
-### Installed, not used — recommended
+### Installed, not used — settled 2026-09-22
 
 ***A driver is installed on the system rather than taught*** (T-198). **So REVEAL runs once you hold
 it**: *entering a map, anything hidden on it shimmers once and then stays marked.* **The shimmer is
 the moment VERBOSE has; the staying is what makes it a driver.** *The alternative is a USE from the
 TOOLKIT, per map, which is VERBOSE's model exactly* — **it costs a menu trip for every screen, and
-the shimmer gets the same pleasure without it.** ***The user's call.***
+the shimmer gets the same pleasure without it.** ***The user chose installed.***
 
 ### THE GROVES
 
@@ -352,6 +352,21 @@ says whose grove it was.***
 **Some daemons are found ONLY in a grove.** *So a player who wants every daemon needs the school, the
 diploma, the Reading Room and the driver* — ***completion, never the ending.***
 
+### How many, and where — the user's inversion, settled 2026-09-22
+
+***Fourteen: seven on the mainland and seven on the islands*** — **one per Sevii island, of which there
+are exactly seven.**
+
+***And each place hides the OTHER half.*** **The mainland is Act 1** — *benchmarks, metrics, an
+institution that measures* — **so its groves hold daemons whose lineage is PSYCHOLOGY.** **The islands
+are Act 2** — *"nobody is measuring you", perspective* — **so their groves hold daemons whose lineage is
+MACHINE LEARNING.** *What is hidden in each world is the other one.* ***The user calls it holographic, and
+nothing in the game will call it anything.***
+
+**Who lives in a grove: a daemon that stands for something HIDDEN.** *A latent variable, a hidden layer,
+the unconscious, implicit memory, a blind spot, a black box.* **LATENT and OPAQUE are the natural types,
+not the required ones.**
+
 ### This is the bestiary's next destination, and that is also the cost
 
 ***Every daemon placed in a grove becomes REACHABLE***, **and reachability is this project's
@@ -360,8 +375,8 @@ margin and our sprite.** *`docs/still-vanilla.md` lists 146 that have none of th
 unreachable today.*
 
 **So the groves are where that list goes to be finished** — *and each family placed is four jobs,
-not one.* ***Recommended: three families per grove, chosen for the grove, so seven groves ask for
-about twenty-one families — a real, bounded bestiary pass instead of 146 names at once.***
+not one.* ***With fourteen groves, ONE resident family each*** — **fourteen families found nowhere else, beside
+the local daemons that also turn up** — *a bounded bestiary pass instead of 146 names at once.*
 
 | | |
 |---|---|
@@ -618,23 +633,22 @@ from her own laboratory.* **Songs: Nine Breaches, Nine Scars · Crystal's Last S
 
 ---
 
-## 13. BUILD ORDER
+## 13. BUILD ORDER — in batches the user asks for one at a time
 
-*Each stage is playable on its own and none of them strands the one after it.*
+*Each batch is playable on its own and none of them strands the next. **A full field test follows the
+school's last batch**, with the exam in it.*
 
-| | stage | what it proves |
+| batch | what | proves |
 |---|---|---|
-| **A** | **1F LANGUAGE, complete**: label, placard, desk, board, three NPCs. *No exam, no notebook* | **the furniture set**, and whether a floor is fun to stand in |
-| **B** | **the RESEARCH NOTEBOOK**, with `SCHOOL NOTES` only, holding one syllabus | **the reader**, and the save shape |
-| **C** | **the exam**, one section, twelve questions | ***the L/R question*** (§7), the resume, the scoring, the grade |
-| **D** | **the DIPLOMA and THE READING ROOM** | the door, and the first journals |
-| **E** | **floors 2–7**, one at a time | *writing and layouts. No new systems* |
-| **F** | **the other seven notebook sections**, seeded through the existing maps | *writing and flags. No new systems* |
-| **G** | ***REVEAL, then the groves one at a time*** | **the driver is small; each grove is a bestiary pass** |
-
-***Stage C is the one that can fail.*** **Do it third, not last.**
-
----
+| **1** | ***1F LANGUAGE*** — *label on arrival, placard, desk and syllabus, board, three people* | ***BUILT 2026-09-22*** — **the furniture set** |
+| **2** | ***the RESEARCH NOTEBOOK***, *CAIRN hands it over after Benchmark 1*, `SCHOOL NOTES` with the LANGUAGE syllabus, **and the first LOOSE PAGE** (*the carving*) | **the reader, the flags, and insertion order** |
+| **3** | ***the EXAM***, *LANGUAGE's section only, twelve questions* | ***L and R*** (*trap 19*), **resume, score, grade** |
+| **4** | ***2F ATTENTION, 3F MEMORY, 4F CATEGORIES***, *with stairs* | **new layouts; the furniture set repeated** |
+| **5** | ***5F LEARNING, 6F BIAS, 7F ERROR***, *the elevator, the TEXTBOOK, exam season, the Owl at the front, all seven exam sections* | **the whole school** |
+| **6** | ***the DIPLOMA, THE READING ROOM, the three lecturers, REVEAL*** | **the door, the tutor table, the ninth driver** |
+| **7** | ***the exterior***, *redrawn to read as a building of its floors* | **art** |
+| — | ***full field test*** | |
+| **8+** | ***the fourteen groves***, *then the other seven notebook sections* | **bestiary passes; writing** |
 
 ## 14. SETTLED 2026-09-22, on the user's answers
 
@@ -647,11 +661,18 @@ from her own laboratory.* **Songs: Nine Breaches, Nine Scars · Crystal's Last S
 | 5 | **a ninth DRIVER** | ***yes — `REVEAL`***, *a lens and not a key, opening seven groves* (§8a) |
 | 6 | **when the notebook arrives** | ***from CAIRN, after Benchmark 1***, *and everything found before it is kept* (§9) |
 
+### Settled on the second round
+
+| | | |
+|---|---|---|
+| 7 | **REVEAL** | ***installed*** — *a shimmer on entry, then marked* |
+| 8 | **the groves** | ***fourteen***, *each world hiding the other half* (§8a) |
+| 9 | **the Reading Room's routines** | ***three lecturers***: *LOCK ON, BLEND, REBUT* (§8) |
+
 ### Still open
 
-1. **REVEAL installed or used?** *§8a recommends installed, with a shimmer on entry.*
-2. **Which daemons go in which grove** — *and how many families per grove. §8a recommends three.*
-3. **The three Reading Room PLUGINs.** *One per floor lesson — which three floors?*
+1. **The exterior**: *seven floors were settled; the user's last note said nine.* **Which?**
+2. **Which fourteen families**, *and which grove each.*
 
 ---
 

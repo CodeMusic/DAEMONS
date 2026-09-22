@@ -846,6 +846,23 @@ def check_panes():
                 if width(line) > widest:
                     bad.append(("%s (%dpx)" % (m.group(1), width(line)),
                                 "past the %dpx the entries themselves use" % widest))
+
+    #  and the TOOLKIT: every PLUGIN and DRIVER against vanilla's own TM/HM descriptions in that pane, which
+    #  are THREE lines at up to 198px. T-183b re-copied 44 of these from their routines on a comparison that
+    #  counted line breaks as changes, and left every one of them four lines long; port_vocab said so and was
+    #  not run. This says so every time.
+    import json as _json
+    items = _json.load(open(os.path.join(gba, "src/data/items.json"), encoding="utf-8"))
+    for it in (items["items"] if isinstance(items, dict) else items):
+        name = it.get("english", "")
+        if not _re.match(r"(PLUGIN|DRIVER)\d", name):
+            continue
+        lines = it.get("description_english", "").split("\\n")
+        if len(lines) > 3:
+            bad.append((name, "%d lines in the TOOLKIT's three" % len(lines)))
+        for line in lines:
+            if width(line) > 198:
+                bad.append(("%s (%dpx)" % (name, width(line)), "past the 198px vanilla puts in the TOOLKIT"))
     return bad
 
 
@@ -1052,7 +1069,7 @@ def main():
 
     wbad = check_panes()
     if not wbad:
-        print("  every routine description and every margin fits the pane it prints into.")
+        print("  every routine description, margin and PLUGIN fits the pane it prints into.")
     else:
         print("\n  %d line(s) past their pane:\n" % len(wbad))
         for what, why in wbad:

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.239**
+**A total conversion — the living design bible, v11.240**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4589,6 +4589,26 @@ school gates COMPLETION and never the ending.**
 that place, off the path, and none of them says whose it was.* **Each daemon placed in one becomes
 reachable and so inherits four jobs** — *name, entry, margin, sprite* — **which makes the groves the
 bestiary's next destination and also its bill.**
+
+#### The second round — groves, lecturers, and the first floor built — 2026-09-22
+
+***Fourteen groves, and each world hides the other half.*** **Seven on the mainland, one on each of the
+seven Sevii islands.** *The mainland is Act 1 — benchmarks, metrics, measurement — so its groves hold
+daemons of psychology's lineage; the islands are Act 2 — perspective, nobody measuring — so theirs hold
+machine learning's.* **The user calls it holographic; nothing in the game will call it anything.** *A
+resident stands for something hidden, and there is one resident family per grove.*
+
+***REVEAL is installed, not used*** — *a shimmer on entry, then marked.*
+
+***The Reading Room teaches by LECTURER, not by PLUGIN*** — **all fifty PLUGIN slots are spent.** *Three
+move tutors: ATTENTION → `LOCK ON`, CATEGORIES → `BLEND`, ERROR → `REBUT`, each routine's battle effect
+its own floor's lesson.*
+
+***1F LANGUAGE is built*** (T-215). **A floor names its subject on arrival by a map-keyed label**, *because
+vanilla's popup fires only on a map-section change and walking in from CALLOW is not one.* ***And the
+dialogue may not say `BIND`***: **the vocabulary sweep learned vanilla's move BIND → LATCH**, *so
+"USER BINDS DAEMON" would have shipped as "USER LATCH DAEMON".* **The lesson reads "USER READS DAEMON"
+now** — *which is the better sentence for a game about reading anyway.*
 
 #### What it must never do
 

@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.240 — 2026-09-22
+
+### 4.35 — the first floor built, fourteen groves, and a regression of mine undone
+
+- ***1F LANGUAGE is in the ROM*** (T-215, batch 1 of 7): **the subject named on arrival, a placard, the syllabus on the desk with its pass mark, a five-topic board, and the SPELLING student.** *Every word is a draft awaiting approval.*
+- ***A floor label keyed by map***, *because vanilla's popup only fires on a map-section change.* **One row per future floor.**
+- ***Flags 0x300–0x33F reserved*** — *the game had seven named flags left, but 629 were defined and referenced by nothing.* **So the notebook needs no save structure of its own.**
+- ***`BIND` is unsafe in dialogue***: **the sweep learned vanilla's move BIND → LATCH.** *The lesson reads USER READS DAEMON.* ***And the girl's notes said fifteen kinds — Gen 1's count. Seventeen.***
+- ***T-183b was wrong, and it caused a regression.*** **All 44 "drifted" PLUGIN descriptions differed only in LINE BREAKS**; *re-copying them undid a correct reflow and left each a line too long for the TOOLKIT.* **`port_vocab` said so and was not run.** *Restored byte-identical to `730d26bc9`; the tool now compares words; `check_lexicon` now holds every PLUGIN to three lines and 198px, proved by breaking one.*
+- ***Fourteen groves — each world hides the other half***: *mainland groves hold psychology's lineage, island groves machine learning's.* **REVEAL installed. Three LECTURERS in the Reading Room**, *because the PLUGIN slots are spent.*
+
+---
+
 ## v11.239 — 2026-09-22
 
 ### 4.35 — the user's answers: seven floors, a ninth driver, and CAIRN's notebook

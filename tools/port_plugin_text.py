@@ -44,6 +44,10 @@ def move_descriptions():
     return out
 
 
+def words(text):
+    return " ".join(text.replace("\\n", " ").split())
+
+
 def main():
     moves, descs = tmhm_moves(), move_descriptions()
     p = os.path.join(GBA, "src/data/items.json")
@@ -66,11 +70,18 @@ def main():
         #  literal does, and json.dumps escapes the backslash on the way out. Escaping it again here
         #  put a real backslash in the generated header and agbcc said "no mapping exists for
         #  backslash", which is a charmap error rather than a C one and reads like neither.
-        if it.get("description_english") != want:
+        #  COMPARE THE WORDS, NOT THE BREAKS. The routine's text is wrapped for the summary pane (113px, four
+        #  lines); the TOOLKIT pane is vanilla's three lines at up to 198px, and port_vocab reflows these to
+        #  fit it. Comparing the raw strings called every reflowed description "drifted" -- all 44 of them,
+        #  2026-09-22 -- and re-copying them UNDID the reflow and left each one a line too long. The words
+        #  had not changed at all. So: same words, leave it alone; different words, copy, and say to reflow.
+        if words(it.get("description_english", "")) != words(want):
             print("  %-12s %-14s %s" % (it["english"], moves[n], want.replace("\\\\n", " / ")))
             it["description_english"] = want
             changed += 1
     print("\n  %d rewritten from their routine, %d with no routine description" % (changed, missing))
+    if changed:
+        print("  -> now run  python3 tools/port_vocab.py --write  to fit them to the TOOLKIT's three lines")
     if WRITE:
         open(p, "w", encoding="utf-8").write(json.dumps(d, indent=2, ensure_ascii=False) + "\n")
         print("  written src/data/items.json")
