@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.231 — 2026-09-21
+
+### 1.6 and 2.8 — PATCH, DRIVER, and the end of the HM slave
+
+- ***The last two vanilla acronyms*** (T-198): **`TM` → `PATCH`** (*applied once, changes behaviour, consumed*), **`HM` → `DRIVER`** (*what lets a system reach something outside itself*), **`TM CASE` → `PATCHSET`.** *59 item records, 31 files swept; the tool caught a 243px line and a pocket label whose honest expansion was 104px in a field built for 54.*
+- ***A driver is INSTALLED, not taught*** (T-199, phase 2): **holding it is enough.** *The two keys are vanilla's — the MARK is permission, the driver is capability — but no routine slot is spent and no daemon is kept for its labour.* **Answered in one script command, so not one of the six field-move scripts needed an edit.** ***Additive***: *a daemon that knows the routine still works.*
+- **Why it mattered here more than elsewhere**: *everywhere else the HM slave is an inconvenience;* ***in this game it is a contradiction*** — **a creature kept for its labour, in a game arguing it has an inside.**
+- ***`OPUS` filed*** (T-197): *a thing that writes one line in the margin of an Index entry, after the daemon has been carried long enough, and never a measurement.* **The entry measures the daemon; the margin notices the player, and never says so.**
+
 ## v11.230 — 2026-09-21
 
 ### 4.2 and 9.4 — the Index names the mark, and two figures lose a seam

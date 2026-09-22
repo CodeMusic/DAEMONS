@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.230**
+**A total conversion — the living design bible, v11.231**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2141,6 +2141,16 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### A driver is installed, not taught — added 2026-09-21
+
+**TM and HM were the last two vanilla acronyms in the game**, *while the eight routines they carry had been ours for weeks* — **PRUNE, GOTO, TRAVERSE, DISPLACE, VERBOSE, CRACK, ASCEND, DESCEND.** ***`TM` is a `PATCH`*** — *applied once, changes behaviour, consumed, which is a Gen 3 TM exactly* — ***and `HM` is a `DRIVER`***, **what lets a system reach something outside itself**: *cutting a tree, crossing water, moving rock, lighting a room are every one of them that.* **The case is a `PATCHSET`.**
+
+***And the naming is the fix for something this game could not afford to keep.*** **Everywhere else the HM slave is an inconvenience; here it is a contradiction** — *a player keeps a daemon in the party purely as a tool, spending its routine slots on the party's errands, in a game whose whole argument is that the thing in front of you has an inside, and whose fable makes every actor an animal.* ***The design was quietly asking the player to do the thing the game is against, and then never mentioning it.***
+
+**A driver is installed on the SYSTEM.** *Holding it is enough.* ***The two keys are unchanged from vanilla*** — **the MARK is permission and the driver is capability** — *but no routine slot is spent and no daemon is kept for its labour.* **Answered in `ScrCmd_checkpartymove` rather than in the six scripts**, *because all six consume `VAR_RESULT` the same way — a party index, for the animation and for the name in the message — so the driver answers with the first daemon that is not an egg and not one script needed an edit.*
+
+***Additive on purpose***: **a daemon that knows the routine still works**, *so nothing that used to happen stops happening.* **Taking the eight off the learnsets, and the two that go through the party menu rather than a map script** (*GOTO and VERBOSE*), **are later phases and separate decisions.**
 
 #### The Index names the mark — added 2026-09-21
 

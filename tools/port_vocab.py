@@ -225,6 +225,13 @@ VOCAB = {
     # is STACK, so the pair is already spending that joke. POOL is 24px against
     # BAG's 18, which is why this goes through the width check rather than a sed.
     "BAG": "POOL", "BAGS": "POOLS", "Bag": "POOL", "bag": "POOL", "bags": "POOLS",
+    # T-198. The last two vanilla acronyms, while the eight routines they carry
+    # are already ours. A PATCH is a Gen 3 TM exactly -- applied once, changes
+    # behaviour, consumed. A DRIVER is what lets a system reach something
+    # OUTSIDE itself, which is what all eight of them do: cut a tree, cross
+    # water, move rock, light a room. And a driver is INSTALLED rather than
+    # taught, which is the whole of T-199.
+    "TM": "PATCH", "TMs": "PATCHES", "HM": "DRIVER", "HMs": "DRIVERS",
     "TRAINER": "USER", "TRAINERS": "USERS", "trainer": "USER", "trainers": "USERS",
     "ROCKET": "CORPUS", "ROCKETS": "CORPUS",
     "BADGE": "MARK", "BADGES": "MARKS", "badge": "MARK", "badges": "MARKS",
@@ -477,6 +484,13 @@ TYPE_TALK += PLURALS
 PHRASES = sorted((TYPE_TALK +
                   [(k, v) for k, v in NAMES.items() if ' ' in k] +
                   [("SAFARI BALLS", "GUESTBOXES"), ("SAFARI BALL", "GUESTBOX")] +
+                  # T-198. A PATCHSET is a real word for a collection of patches,
+                  # and it holds the drivers too -- which "PATCH CASE" would have
+                  # said less well and 18px wider than the title's 72px centre.
+                  # The pocket label is the same word for the same reason: the
+                  # honest expansion, "PATCHES & DRIVERS", is 104px in a field
+                  # built for 54.
+                  [("TM CASE", "PATCHSET"), ("TMs & HMs", "PATCHSET")] +
                   # ISLANDS only becomes ISLES behind this one name -- every
                   # other island in the game keeps the word it had.
                   [("SEAFOAM ISLANDS", "GLAUCOUS ISLES")] +
