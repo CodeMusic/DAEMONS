@@ -5,6 +5,21 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.238 — 2026-09-22
+
+### 4.35 — CALLOW SCHOOL and the RESEARCH NOTEBOOK, designed and built nowhere
+
+- ***The full design is [`docs/school.md`](school.md)***, 549 lines: **seven floors, a published syllabus, a resumable exam, a diploma, a door in Brazen it opens, and eight notebook sections that fill as you play.** *Nothing is built.*
+- ***The city was named for this six months early.*** **Viridian is `CALLOW CITY` — "green + unripe, UNTESTED" — and `ViridianCity_School` is already in the ROM with a blackboard that is already a topic menu.** *So floor one is a writing job.*
+- ***A school is the second place where explaining is allowed***, and 9.16 settled it for the STREAM without knowing. **The stricter rule that replaces craft rule 1 here: every floor teaches something true in psychology AND in machine learning, and no floor ever joins them up.**
+- ***PERCEPTION is the floor that can wreck the game.*** **It may say colour is constructed rather than found; it may never say what it is constructed from here** — *no line on it may contain `emotion`, `feeling`, `mood` or `context`.* **Craft rule 2 given a room.**
+- ***The exam is the honest version of the thing 4.4 corrupted***: **material published, pass mark printed on the syllabus before the exam exists, walk out mid-paper without losing an answer, sit it again forever.** *Every clause is the negative of one of Scorn's, and no character draws the comparison.*
+- ***The notebook is primary sources; HEARSAY is testimony.*** **4.24's ending is an argument about how a primary source was read**, so the player arrives at it already fluent in the only skill it needs. ***It is 4.10 made into a system***, which is why entries insert into an **authored** order rather than the order they are found.
+- ***Eight sections named by the KIND of document and never the subject*** — `SCHOOL NOTES`, `MARGINALIA`, `LAB NOTES`, `RUN LOGS`, `CORRESPONDENCE`, `THE FILE`, `PROSPECTUS`, `PEER REVIEW`. **The player learns the story by reading the filing system.**
+- **All 21 rock opera songs read back for this**, *and every proposed entry carries the song or the bible section it is drawn from.*
+
+---
+
 ## v11.237 — 2026-09-22
 
 ### 9.4 — the type as a colour on the Index entry, and a generator that could not run

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.237**
+**A total conversion — the living design bible, v11.238**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4506,6 +4506,67 @@ Corpus rooms, and the trainer table.
 - **What is in the package is still not written**, and 8.2a's reason holds: *it may never need to be.*
 - ***Ty is not at the reading.*** **4.17's not-visiting is a choice on both sides** and this does not take it away from either of them.
 - **No character explains the frame shift**, the log, the procedure, or why the machine went looking. *The Quicksilver terminal says `CRYSTAL NOT FOUND` and stops.*
+
+### 4.35 CALLOW SCHOOL and the RESEARCH NOTEBOOK — designed 2026-09-22, built nowhere
+
+***Asked for by the user, at length, and the brief is better than the summary of it.*** **The full
+design is [`docs/school.md`](school.md)** — *seven floors, a published syllabus, a resumable exam, a
+diploma, a door in Brazen it opens, and eight sections of a notebook that fills as you play.* **This
+records the four decisions that belong in the bible rather than in a plan.**
+
+#### A school is the second place where explaining is allowed
+
+***9.16 settled this for the STREAM and did not know it was settling it twice.*** **A system whose
+function in the fiction is instruction can instruct**; *craft rule 1 forbids a character explaining
+the colour–emotion link, not a character explaining something true about minds.*
+
+**The rule that replaces it is stricter than the one it borrows from.** ***Every floor teaches
+something independently true in psychology AND in machine learning, and no floor ever joins them
+up.*** *The join is the player's, and it is the only thing the building withholds.*
+
+***And one floor is a hazard.*** **PERCEPTION may say that colour is constructed rather than found.
+It may never say what it is constructed from in this game** — *no line on that floor may contain
+`emotion`, `feeling`, `mood` or `context`, not as a hedge and not in a student's wrong answer.*
+**The floor stops one step short, and the step it does not take is the one the game is built on.**
+*That is craft rule 2 given a room.*
+
+#### The exam is the honest version of the thing Scorn corrupted
+
+***4.4: he designed the standardised evaluations and rigged them so rivals failed.*** **This school
+publishes the material, publishes the pass mark on the syllabus before the exam exists, lets you
+walk out mid-paper without losing an answer, and lets you sit it again forever.**
+
+*Every one of those is the negative of a clause in 4.4,* ***and no character ever draws the
+comparison.*** **The player takes the good test forty hours before they understand what it is the
+good version of.**
+
+#### The notebook is primary sources, and HEARSAY is testimony
+
+***HEARSAY is what people say about somebody. The RESEARCH NOTEBOOK is what somebody wrote
+themselves.*** **4.24's ending is an argument about how a primary source was read** — *so a player
+who has spent the game collecting primary sources and reading them carefully arrives at that scene
+already fluent in the only skill it requires.*
+
+**And it is 4.10 made into a system.** *A player stands in a ruined lab, reads dated paperwork in
+the wrong order, and reconstructs an event nobody tells them about* — **the best thing in this game,
+and it happens once.** ***Entries therefore insert into an AUTHORED order rather than the order they
+are found***, so the file reads correctly when it is complete and never while it is not.
+
+***The eight sections are named by the KIND of document and never by the subject*** — `SCHOOL
+NOTES`, `MARGINALIA`, `LAB NOTES`, `RUN LOGS`, `CORRESPONDENCE`, `THE FILE`, `PROSPECTUS`, `PEER
+REVIEW` — **so a section title spoils nothing and the player learns the story by reading the filing
+system.** *`PROSPECTUS` is both a company's offering document and a school's brochure: Scorn's
+section and the school's section are the same kind of paper, and nobody says so.*
+
+#### What it must never do
+
+***The ending is never gated.*** **The school, the exam, the diploma and the Reading Room are all
+optional.** *A player who never opens the door still finishes the game — they simply do not
+understand the Owl scene as well,* **which is the correct punishment and the only one.**
+
+***And the exam never loses anything.*** *No timer, no lockout, no single attempt.* **A test that
+can be failed permanently is the test this game spends forty hours arguing against.**
+
 
 ## 5. THE BENCHMARKS
 
