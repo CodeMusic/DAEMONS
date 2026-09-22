@@ -231,7 +231,14 @@ VOCAB = {
     # OUTSIDE itself, which is what all eight of them do: cut a tree, cross
     # water, move rock, light a room. And a driver is INSTALLED rather than
     # taught, which is the whole of T-199.
-    "TM": "PATCH", "TMs": "PATCHES", "HM": "DRIVER", "HMs": "DRIVERS",
+    "TM": "PLUGIN", "TMs": "PLUGINS", "HM": "DRIVER", "HMs": "DRIVERS",
+    # T-206. PATCH lasted one day: the bag already holds an item called PATCH,
+    # whose description is "A patch stops a leak at its source" -- which is THE
+    # metaphor for a patch and is not moving. HOTFIX was the user's suggestion
+    # and is the same family: a hotfix repairs a defect, and so does that item.
+    # A routine taught is not a repair. A PLUGIN adds a capability to something
+    # already running, which is what it is, and it pairs with DRIVER exactly:
+    # install a plugin to gain a routine, install a driver to reach the world.
     "TRAINER": "USER", "TRAINERS": "USERS", "trainer": "USER", "trainers": "USERS",
     "ROCKET": "CORPUS", "ROCKETS": "CORPUS",
     "BADGE": "MARK", "BADGES": "MARKS", "badge": "MARK", "badges": "MARKS",
@@ -490,7 +497,8 @@ PHRASES = sorted((TYPE_TALK +
                   # The pocket label is the same word for the same reason: the
                   # honest expansion, "PATCHES & DRIVERS", is 104px in a field
                   # built for 54.
-                  [("TM CASE", "PATCHSET"), ("TMs & HMs", "PATCHSET")] +
+                  [("TM CASE", "TOOLKIT"), ("TMs & HMs", "TOOLKIT"),
+                   ("PATCHSET", "TOOLKIT")] +
                   # ISLANDS only becomes ISLES behind this one name -- every
                   # other island in the game keeps the word it had.
                   [("SEAFOAM ISLANDS", "GLAUCOUS ISLES")] +
