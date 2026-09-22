@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.233**
+**A total conversion — the living design bible, v11.234**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2141,6 +2141,12 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### A margin can only answer an entry we wrote — settled 2026-09-22
+
+***OPUS covers 240 daemons, and that is every one whose Index entry is ours.*** **The remaining 113 cannot have a margin, and the reason is not effort**: *the margin's whole craft is a second reading of the entry above it* — **so annotating vanilla's prose would be a note in the margin of a page nobody here wrote.**
+
+*They are also, all of them, **unreachable***, **which is why T-40 stopped where it did**: it wrote the thirty entries a player could meet and left the rest, on the same reachability standard T-120 uses for sprites and T-131 for fronts. ***So the honest count is not 240 of 386.*** It is **240 of the 240 daemons that have something of ours to answer**, and the other 113 are an entry ticket wearing a margin ticket's clothes.
 
 #### The foe is a thing. Them is a someone. — settled 2026-09-22
 

@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.234 — 2026-09-22
+
+### 1.6 and 4.2 — the fourth surface, and the margin at 240
+
+- ***The PLUGINs described themselves in vanilla's words*** (T-183a). **The TOOLKIT prints the ITEM's description and not the routine's**, *so all fifty PLUGINs and eight DRIVERs read as vanilla on a screen whose every other word is ours* — **and 32 of the last `foe`s were living there.** ***The fix is not fifty more descriptions***: **a PLUGIN is the routine, so the item takes the routine's own words and cannot drift from them again.**
+- **With the three held items, the ten in each edition's Index entries and one line of the tutorial:** ***zero `foe` anywhere a player can read.***
+- ***OPUS covers 240 daemons*** (T-197), **which is every one whose Index entry is ours.** *The remaining 113 cannot have a margin and the reason is not effort:* **a margin answers OUR entry, and annotating someone else's writing is a note in the margin of a page nobody here wrote.** *They are all unreachable, which is why T-40 left them — the same standard T-120 and T-131 use.*
+- ***A trap re-found the hard way*** (T-210): **comparing our entries to upstream byte-for-byte counts SWEPT vanilla as ours** — *61 by that measure, 33 once the vocabulary is applied to vanilla first.* **T-40 wrote that down and I did it anyway.**
+
 ## v11.233 — 2026-09-22
 
 ### 4.2, 1.6 and 9.15 — the pronoun, the mark, and the margin at 124
