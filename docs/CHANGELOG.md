@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.237 — 2026-09-22
+
+### 9.4 — the type as a colour on the Index entry, and a generator that could not run
+
+- ***The Index entry names the type in the type's colour*** (T-200), **and names BOTH types** — *vanilla showed two and we had dropped to one, which threw away the case the chart is hardest to hold in your head.*
+- **One table, two screens**: *`sTypeTextColor` moved out of `battle_move_menu.h` into `src/data/type_colours.h`* — **a type cannot be one colour in battle and another in the Index.**
+- ***Palette 1 was the answer.*** **All sixteen of palette 0's slots belong to the dex chrome**; *palette 1 is black in the whole dex palette and nothing draws with it,* **so the entry window copies palette 0 into it and paints two slots.**
+- ***Two generators had been unable to run since 2026-09-21*** (T-212): **T-184 made the outline true black and deleted `ramp5`'s fifth coefficient**, *while `gbachart.ramp_step` was still reading `coeffs[3]`.* **The headers on disk stayed correct, which is exactly why it was invisible** — ***nothing re-runs a generator nobody is editing.*** *The regenerated table is byte-identical, which is the proof the fix restored behaviour rather than changed it.*
+- ***44 of the 58 PLUGIN descriptions had drifted from their routine*** (T-183b): **T-181's fourteen new routine descriptions never propagated.** *A copying tool has to be re-run every time its source moves, and only re-running it says whether it has.*
+
+---
+
 ## v11.236 — 2026-09-22
 
 ### 9.4 — the screen that was teaching the wrong chart

@@ -414,10 +414,24 @@ def load_moves(tn):
     return {n: (c, ty, pw) for c, ty, pw, n in classify_moves(tn).values()}
 
 # ================================================================= colour
+def _ink():
+    """gbasprite's INK, read rather than copied -- the outline is one colour or the rule is not one."""
+    gs = open(os.path.join(ROOT, "tools/gbasprite.py"), encoding="utf-8").read()
+    return tuple(int(v) for v in re.search(r'^INK = \((\d+),\s*(\d+),\s*(\d+)\)', gs, re.M).groups())
+
+
 def ramp_step(rgb, coeffs):
+    """gbasprite.ramp5, mirrored: highlight, light, mid, dark, outline.
+
+    T-212. T-184 made the outline TRUE BLACK, which deleted ramp5's fifth COEFFICIENT -- and this function
+    was still reading coeffs[3]. So from 2026-09-21 every caller raised IndexError: `gbamovemenu.py` and
+    `gbachart.py` both stopped being able to regenerate their own artifacts, and NOTHING NOTICED, because
+    nothing re-runs a generator that is not being edited. The headers on disk stayed correct, which is why
+    it was invisible -- a generated file is only as trustworthy as the last run of the thing that wrote it.
+    """
     up = lambda t: tuple(min(255, int(c + (255 - c) * t)) for c in rgb)
     dn = lambda t: tuple(max(0, int(c * t)) for c in rgb)
-    return [up(coeffs[0]), up(coeffs[1]), tuple(rgb), dn(coeffs[2]), tuple(v + 10 for v in dn(coeffs[3]))]
+    return [up(coeffs[0]), up(coeffs[1]), tuple(rgb), dn(coeffs[2]), _ink()]
 
 def gba(c):     #  15-bit colour: what the hardware can actually show
     return tuple(round(v / 255 * 31) * 255 // 31 for v in c)
@@ -475,8 +489,8 @@ def main():
            ("; NOT IN CHART_ORDER: " + ", ".join(stray)) if stray else ""))
 
     shipped, coeffs = load_hues(tn)
-    if coeffs != [0.70, 0.38, 0.52, 0.16]:
-        report("!!  gbasprite.ramp5 is %s, not the 0.70/0.38/0.52/0.16 this page describes" % coeffs)
+    if coeffs != [0.70, 0.38, 0.52]:
+        report("!!  gbasprite.ramp5 is %s, not the 0.70/0.38/0.52 this page describes" % coeffs)
     hue, status = {}, {}
     for t in types:
         if t in shipped:

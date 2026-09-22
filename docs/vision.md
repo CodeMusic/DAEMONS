@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.236**
+**A total conversion — the living design bible, v11.237**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7424,6 +7424,14 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 **The fix is that the discs read their colours from the same table the daemons do** (`tools/genplugincolours.py`, from `gbasprite.py`'s `TYPE_COLOR`), *so a disc and the creature it is teaching about cannot disagree.* **Vanilla's palette structure is kept** — *seven entries are the type's own ramp, lightest to darkest, and the rest is the disc's shading* — **only the hue is ours.**
 
 ***And a second thing had to hold that nobody had checked***: **each disc carries the type of the routine actually on it.** *It did, all 58 — but it is now checked, because a retyped routine would silently teach a wrong pair and nothing else in the build would notice.*
+
+#### Where the player reads it off the daemon — 2026-09-22
+
+***The TOOLKIT teaches the chart; the Index entry is where it is checked against a creature.*** **A daemon's entry names its type in the type's own colour** — *the same `sTypeTextColor` the move menu prints a move's name with, which is the lightest step of the ramp that still clears 4.5:1 on a light box, measured rather than picked.* **So the word and the body agree**, *and the table is now one table read by two screens rather than two tables that could drift.*
+
+***And it names BOTH types now***, **which vanilla did and we had quietly dropped to one.** *A dual type is precisely the case where the chart is hardest to hold in your head* — **showing one of them threw away the half that needed showing.**
+
+*The obstacle was never the writing, it was sixteen slots*: **palette 0 is the Index's chrome and every entry in it is spoken for**, *so taking one would repaint some piece of the page nobody would think to look at.* ***Palette 1 is black in the whole dex palette and nothing on the page draws with it***, **so the entry window copies palette 0 into it and paints two slots** — *every colour that was there renders exactly as it did, and the two new ones cost the frame nothing.*
 
 ### 9.4a The move menu — a type as a word, and what a move does — built 2026-09-13
 
