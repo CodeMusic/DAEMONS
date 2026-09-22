@@ -1,6 +1,7 @@
 # THE SCHOOL, THE EXAM, AND THE RESEARCH NOTEBOOK
 
-*A design document.* **Nothing in here is built.** *Proposed 2026-09-22, from the user's brief,
+*A design document.* **Nothing in here is built.** ***Revised 2026-09-22 on the user's answers*** — *PERCEPTION cut,
+CATEGORIES in, a ninth DRIVER and seven hidden groves added, the notebook from CAIRN.* *Proposed 2026-09-22, from the user's brief,
 against `vision.md` v11.237, the rock opera (`docs/archive/additional rock-opera song lyrics
 backup.rtf`), `lineage.md` and `story.md`.*
 
@@ -74,18 +75,43 @@ distinction is the whole of the build order in §13.*
 
 ## 3. The floors
 
-**Seven sections.** *Each is a word that is load-bearing in cognitive psychology **and** in machine
-learning, and which a player can use in a battle that afternoon.*
+**Seven sections — settled on the user's answer.** *Seven notes, seven colours, seven floors.* **Each
+is a word that is load-bearing in cognitive psychology AND in machine learning, and which a player
+can use in a battle that afternoon.**
 
 | # | section | what it teaches | the two readings, never joined | the floor's joke |
 |---|---|---|---|---|
-| **1F** | **LANGUAGE** | naming, ambiguity, what a word does when you say it | *a token, and a label a mind applies* | **SPELLING.** *An NPC certain words are under a spell — that saying one manifests more than a picture of it.* **He is wrong, and wrong in the right direction** |
-| **2F** | **PERCEPTION** | the senses build a model; what you see is a representation | *encoding, and construction* | *a painter who insists the wall is the colour she painted it, and a decorator who insists it is the colour it reflects.* **Both are right and they will not stop** |
-| **3F** | **ATTENTION** | what gets weight, and therefore what is missed | *weighting, and salience* | *the teacher who has been explaining to an empty half of the room* |
-| **4F** | **MEMORY** | storing, recalling, decay, interference, and that recall rewrites | *retrieval, and reconsolidation* | *a student who has revised the same page eleven times and can only recite the eleventh revision* |
-| **5F** | **LEARNING** | neurons connect, a connection has a **strength**, and a **bias** shifts how easily one fires | *the brain, stated plainly.* **The other reading is never named** | *somebody who learned one thing extremely well and now sees it everywhere* |
+| **1F** | **LANGUAGE** | naming, ambiguity, what a word does when you say it | *a token, and a label a mind applies* | **SPELLING.** *An NPC certain words are under a spell — that saying one manifests more than a picture of it.* **Wrong, and wrong in the right direction** |
+| **2F** | **ATTENTION** | what gets weight, and therefore what is missed | *weighting, and salience* | *the teacher who has been explaining to an empty half of the room* |
+| **3F** | **MEMORY** | storing, recalling, decay, interference, and that recall rewrites | *retrieval, and reconsolidation* | *a student who has revised the same page eleven times and can only recite the eleventh revision* |
+| **4F** | **CATEGORIES** | a category has a middle and no edge; things belong *more or less* | *prototypes, and classification* | *a student whose filing system has a drawer for things that fit nowhere,* **and it is the biggest drawer** |
+| **5F** | **LEARNING** | neurons connect, a connection has a **strength**, a **bias** shifts how easily one fires | *the brain, stated plainly.* **The other reading is never named** | *somebody who learned one thing extremely well and now sees it everywhere* |
 | **6F** | **BIAS** | the named biases and fallacies, with the framing effect given a full period | *cognitive bias, and the b in y = wx + b* | *a debating pair who each name the other's fallacy correctly and neither notices their own* |
 | **7F** | **ERROR** | surprise, correction, and that being wrong is where the change happens | *prediction error, and learning from it* | *the marker who is delighted by a wrong answer and cannot explain why to the student* |
+
+### The order is what happens to a piece of information
+
+**Named, noticed, kept, sorted, changed, bent, corrected.** *Language is the medium the other six are
+taught in, so it is on the floor you walk into; every floor above it is one more thing that happens
+to what came in.* ***And the top floor is ERROR, where the TEXTBOOK is*** — **the last thing the
+building teaches before it tests you is that being wrong is where the change happens.** *Nobody says
+why that is the right last lesson for an exam.*
+
+### 4F sits under the Index's feet
+
+***Crystal built the Index as a taxonomy engine*** (4.2), **and it sorts every daemon into a category
+page.** *A floor that teaches that categories have a middle and no edge is teaching the player the
+first thing that is wrong with the most-used screen in the game* — **and it is taught as a joke about
+a filing drawer.** *Nothing on the floor mentions the Index.*
+
+### PERCEPTION was cut, and the user's reason is better than the one it replaced
+
+***The first draft kept PERCEPTION and fenced it*** — *no line on it could contain `emotion`,
+`feeling`, `mood` or `context`.* **The user cut it on a different ground, and the ground is the one
+that matters: a floor that has to be careful has to be SERIOUS, and seriousness is what removes the
+cover.** *Craft rule 6 is that comedy is the best cover for a thesis* — **so a floor that cannot
+joke cannot hide anything, and the damage would not stop at the floor.** ***A fence was the wrong
+tool. The right one was not building the room.***
 
 ### Why LANGUAGE is on the floor you walk into
 
@@ -108,22 +134,6 @@ never told they had learned them.*
 ***The floor never says the word `network` in the other sense, never says `model`, never says
 `training`, and never mentions a machine.*** **If a line on this floor would still be true with the
 word `computer` in it, the line is wrong and gets rewritten.**
-
-### 2F is the floor that can wreck the game
-
-***Craft rule 1 in one line: no character explains the colour–emotion link.***
-
-**The PERCEPTION floor is allowed to say that colour is constructed rather than found** — that the
-wavelength is out there and the colour is not, that two people can be shown one patch and report
-two things, that the model is built and not received.
-
-***It is NEVER allowed to say what colour is constructed from in this game.*** **No line on this
-floor may contain the word `emotion`, `feeling`, `mood`, or `context`** — *not as a hedge, not as a
-joke, not in a student's wrong answer.* **The floor stops exactly one step short**, *and the step it
-does not take is the one the whole game is built on.*
-
-*This is craft rule 2 given a room.* **"One NPC nearly notices"** — here, one floor does, and
-the game's answer is the stairs.
 
 ---
 
@@ -286,10 +296,79 @@ device and is never told what they are holding.**
 | | |
 |---|---|
 | **Three PLUGINs** | *available nowhere else, one each tied to a floor's lesson* — **so the prize is the curriculum and not a coupon** |
-| ~~**A ninth DRIVER**~~ | ***Recommended against, and the reason is not cost.*** *A driver exists because a place cannot be reached without it.* **There is no unreached place.** *Inventing a traversal in order to justify a prize is building the game backwards* — **and if one is ever genuinely wanted, this is where it goes** |
+| **The ninth DRIVER, `REVEAL`** | ***Added on the user's answer — §8a.*** *The first draft recommended against, on the ground that there was no unreached place.* **The user's design makes the unreached places, and makes them findable blind** — *which answers the objection instead of overruling it* |
 | **Not a daemon** | *the one daemon you are given for passing a test is the PROOF HALL's problem, and it declined it too* |
 
 ---
+
+## 8a. THE NINTH DRIVER — `REVEAL`, and the seven groves
+
+***1001 is nine in binary.*** **S.T.A.R.R. answers every question with `RESPONSE 1001`, and the ninth
+DRIVER is the one that shows what was there all along.** *Nobody in the game says so, and nobody
+needs to.*
+
+### It answers the objection rather than overruling it
+
+**The first draft said a driver exists because a place cannot be reached without it, and there was
+no unreached place.** ***The user's design builds the unreached places*** — **and then makes them
+findable without the driver**, *the way ROCK TUNNEL can be walked without VERBOSE.* **So REVEAL is the
+first driver that is a LENS rather than a KEY.** *Every other one opens a way; this one shows you
+which ways were open.*
+
+### The routine already exists, and so does the slot
+
+| | |
+|---|---|
+| **The routine** | ***vanilla's FORESIGHT is already `REVEAL` in this build*** (`move_names.h`). **Its battle effect is to identify a target so that what was hiding it stops working.** *The field effect is the battle effect, outdoors* |
+| **The item** | ***`ITEM_15B` (347) is unused and sits immediately after `ITEM_HM08` (346).*** **The ninth driver goes in the next id** |
+| **The catch** | *every `ITEM_HM01..ITEM_HM08` range check and `NUM_HIDDEN_MACHINES` must learn about a ninth.* **Grep for both before anything else** |
+| **Where you get it** | ***THE READING ROOM*** — **diploma → REVEAL → the groves.** *The school becomes load-bearing for completion and stays irrelevant to the ending* |
+
+### What it shows
+
+1. **The seven grove entrances** — *a tree you can walk into*, below.
+2. ***The 183 hidden items already in the game, on 79 maps.*** **They are there today and nothing
+   marks them.** *ITEMFINDER stays the early tool — one item, one beep; REVEAL is the late one and
+   shows every one on the screen.*
+
+### Installed, not used — recommended
+
+***A driver is installed on the system rather than taught*** (T-198). **So REVEAL runs once you hold
+it**: *entering a map, anything hidden on it shimmers once and then stays marked.* **The shimmer is
+the moment VERBOSE has; the staying is what makes it a driver.** *The alternative is a USE from the
+TOOLKIT, per map, which is VERBOSE's model exactly* — **it costs a menu trip for every screen, and
+the shimmer gets the same pleasure without it.** ***The user's call.***
+
+### THE GROVES
+
+**Seven hidden places, each entered through a tree.** *A player who presses A on the right tree
+walks in, with or without REVEAL; REVEAL shows which tree.*
+
+***And they are the grove.*** **4.20's *Poly and Fields* is a child who "found my solace in the trees,
+where unique life calls to me"** — *and THE UNDERTONE's carving is where she found the chart.* **Seven
+more of that place, off the path, holding life that lives nowhere else.** ***Nothing in any of them
+says whose grove it was.***
+
+**Some daemons are found ONLY in a grove.** *So a player who wants every daemon needs the school, the
+diploma, the Reading Room and the driver* — ***completion, never the ending.***
+
+### This is the bestiary's next destination, and that is also the cost
+
+***Every daemon placed in a grove becomes REACHABLE***, **and reachability is this project's
+completion standard** (*T-120, T-131*): **a reachable daemon needs our name, our Index entry, our
+margin and our sprite.** *`docs/still-vanilla.md` lists 146 that have none of those and are
+unreachable today.*
+
+**So the groves are where that list goes to be finished** — *and each family placed is four jobs,
+not one.* ***Recommended: three families per grove, chosen for the grove, so seven groves ask for
+about twenty-one families — a real, bounded bestiary pass instead of 146 names at once.***
+
+| | |
+|---|---|
+| **Maps** | *seven small layouts, forest tileset, one entrance each* |
+| **Entering** | *a `bg_event` on the tree's tile; A warps.* **Works without the driver** |
+| **Marking** | *an object on the tree, visible only under the driver's flag* |
+| **Encounters** | *`wild_encounters.json`, one table per grove* |
 
 ## 9. THE RESEARCH NOTEBOOK
 
@@ -312,10 +391,30 @@ than repairs, for exactly that reason.*
 thing IS; the other holds what happened around it** — and **the two editions of this game are
 called CONTENT and CONTEXT.** *Nothing in the game remarks on this and no character may.*
 
-### Where it comes from
+### Where it comes from — CAIRN, after Benchmark 1
 
-**Crystal gives it with the Index**, *in the same breath, as a second and lesser thing* — a
-notebook, because she keeps one, and this is the sort of thing she hands people. **It is empty.**
+***The user's call, and it is better than either option the first draft offered.***
+
+**CAIRN's creed is *"if it is not written down, it did not happen."*** *And 5.1 already says the player
+will meet that sentence again: the Meeting Room minutes are that creed applied to a person* — **a woman
+who could not be followed, and was therefore recorded as not making sense.** *Hour two teaches it as
+sound practice; hour forty shows the cost.*
+
+***So the man whose creed later removes Crystal is the man who hands the player the instrument that
+re-reads her.*** **Nothing connects them, ever.**
+
+**And his loss already sets it up**: *he says the player encoded something he could not read, "a
+format I do not have".* **He then hands the player a format.** *Mechanically it is vanilla's beat —
+BROCK gives a TM after the battle — so the notebook arrives exactly where a reward already does.*
+**It is a reward, because you earned it, and a habit, because it is hour two.** *Both of the first
+draft's options, at once.*
+
+### Everything is a flag, so nothing found early is lost
+
+***THE UNDERTONE's carving and CALLOW's school both come BEFORE Slate.*** **So every entry is a
+flag, not an item**: *a document read before the notebook exists is still recorded, and appears in
+it the moment CAIRN hands it over.* **It is OPUS's rule — a save earns its margins retroactively from
+what it already did — applied to the notebook.**
 
 *It does not appear in the menu until it holds one entry.*
 
@@ -335,13 +434,13 @@ notebook, because she keeps one, and this is the sort of thing she hands people.
 
 ## 10. THE SECTIONS, AND WHERE EACH ENTRY IS FOUND
 
-***Eight sections, named by the KIND of document and never by the subject***, so a section title
+***Eight sections — the school's own, and seven accounts of one story*** — *named by the KIND of document and never by the subject*, so a section title
 spoils nothing and **the player learns the story by reading the filing system.**
 
 | section | whose hand | what kind of document |
 |---|---|---|
 | **SCHOOL NOTES** | the school's | syllabi, exam results, the textbook |
-| **MARGINALIA** | **Crystal's, unofficial** | *things written in the margins of other things* |
+| **LOOSE PAGES** | **Crystal's, unofficial** | *pages bound in nothing, found one at a time* |
 | **LAB NOTES** | Crystal's, at the bench | the ARTSAI sessions |
 | **RUN LOGS** | **the machine's** | terminal output. *Nobody's hand at all* |
 | **CORRESPONDENCE** | letters, both directions | Ty |
@@ -352,20 +451,22 @@ spoils nothing and **the player learns the story by reading the filing system.**
 > ***PROSPECTUS is both a company's offering document and a school's brochure.*** **Scorn's section
 > and the school's section are the same kind of paper.** *That is the joke and nobody says it.*
 
-> **`MARGINALIA` risks reading against OPUS**, which already *writes in the margin*. *Held as the
-> first choice because the rhyme is true — this game's insight arrives in margins twice — but*
-> **`NOTES TO SELF` and `LOOSE PAGES` are the alternates** *if it confuses in play.*
+> ***`LOOSE PAGES`, not `MARGINALIA` — and the first draft's pick was wrong for a reason it did not
+> see.*** **4.2 says who left OPUS is NEVER answered.** *A section called MARGINALIA, in Crystal's
+> hand, beside a thing that writes in margins, answers it quietly* — **it would cost the project an
+> open question it keeps open on purpose.** ***And LOOSE PAGES is how they are found***: *one at a
+> carving, one in a lab, one in a reading room.* **4.10's out-of-order reading, in the section's name.**
 
 ---
 
-### MARGINALIA — Crystal, unofficial
+### LOOSE PAGES — Crystal, unofficial
 
 *Her own hand, off the record. **Songs:** Poly and Fields · Crystal Clear or Crystal Crazy · Love Persists · Crystal's Reply.*
 
 | # | the document | where it is found | drawn from |
 |---|---|---|---|
 | 1 | **the grove** — a child copying symbols off a stone, and the word *integrating* used as arithmetic | ***THE UNDERTONE***, at the carving (4.20, already in the ROM at `(4,24)`) | *Poly and Fields* |
-| 2 | **"a stranger in familiar views"** — somebody who could not see what their family saw, looking for a place where that was not a defect | **CALLOW SCHOOL**, `MARGINALIA` unlocks on the first syllabus | *Poly and Fields* |
+| 2 | **"a stranger in familiar views"** — somebody who could not see what their family saw, looking for a place where that was not a defect | **a GROVE** — *the first one a player walks into* | *Poly and Fields* |
 | 3 | **fields are disciplines and fields are mathematical** — one surface, the same rules everywhere | **THE READING ROOM**, Brazen *(diploma)* | *Poly and Fields* |
 | 4 | **walking through town, head held high** — a page written while being laughed at, and it is not self-pity, it is a work note | **QUICKSILVER**, the lab | *Crystal Clear or Crystal Crazy* |
 | 5 | **"I never thought you'd break this bond"** — an unsent page | **THE READING ROOM** | *Love Persists* |
@@ -494,14 +595,17 @@ from her own laboratory.* **Songs: Nine Breaches, Nine Scars · Crystal's Last S
 | **Maps** | **six new layouts + an elevator.** *Brazen already has a working elevator to copy* |
 | **New code** | **two screens.** *The notebook reader is `fame_checker.c`'s pattern, which we already own. The exam is genuinely new* |
 | **Art** | *the school exterior wants redrawing for a seven-storey building* — **the user has already said so** |
+| **REVEAL** | *one item in the free slot after HM08; a flag; a shimmer on map entry; a marker object per grove.* **No new field move** |
+| **The groves** | ***seven small maps — and about twenty-one daemon families, each of which is FOUR jobs*** (§8a). **This is the expensive line on the page** |
 
 ---
 
 ## 12. THE RULES THIS FEATURE MAY NOT BREAK
 
-1. ***Craft rule 1.*** **§3's 2F ruling is the sharp end.** *No floor joins the two readings.*
-2. ***The ending is never gated.*** **The Reading Room, the diploma and the whole school are
-   optional.** *A player who never opens the door still finishes the game* — **they just do not
+1. ***Craft rule 1, held by craft rule 6.*** *No floor joins the two readings* — **and a floor that
+   cannot be funny is not built (§3, PERCEPTION).**
+2. ***The ending is never gated.*** **The Reading Room, the diploma, REVEAL, the groves and the
+   whole school are optional.** *They gate COMPLETION — every daemon — and nothing else.* *A player who never opens the door still finishes the game* — **they just do not
    understand the Owl scene as well, which is the correct punishment and the only one.**
 3. ***The exam never loses anything.*** *No timer, no lockout, no one-shot.* **A test that can be
    failed permanently is the test this game is arguing against.**
@@ -526,22 +630,28 @@ from her own laboratory.* **Songs: Nine Breaches, Nine Scars · Crystal's Last S
 | **D** | **the DIPLOMA and THE READING ROOM** | the door, and the first journals |
 | **E** | **floors 2–7**, one at a time | *writing and layouts. No new systems* |
 | **F** | **the other seven notebook sections**, seeded through the existing maps | *writing and flags. No new systems* |
+| **G** | ***REVEAL, then the groves one at a time*** | **the driver is small; each grove is a bestiary pass** |
 
 ***Stage C is the one that can fail.*** **Do it third, not last.**
 
 ---
 
-## 14. OPEN — for the user, before any of this is written
+## 14. SETTLED 2026-09-22, on the user's answers
 
-1. **Seven floors, or fewer?** *Seven is the full curriculum; four (LANGUAGE, PERCEPTION, LEARNING,
-   BIAS) is the one that covers the brief and could be finished.*
-2. **80% for the diploma** — *argued in §7, and it is a number, not a principle.*
-3. **`MARGINALIA`**, or `NOTES TO SELF`, or `LOOSE PAGES`?
-4. **`THE READING ROOM`** in the Trainer Fan Club — *or somewhere else in Brazen?*
-5. ***The ninth DRIVER is recommended against in §8.*** **That is a recommendation and not a
-   decision**, and it is yours.
-6. **Does the notebook arrive with the Index, or later?** *§9 says with it. The alternative is that
-   Crystal sends it after the first Benchmark, which makes it a reward rather than a habit.*
+| | question | answer |
+|---|---|---|
+| 1 | **how many floors** | ***seven*** — *seven notes, seven colours.* **PERCEPTION cut, CATEGORIES in** (§3) |
+| 2 | **the pass mark** | ***80%***, *adjustable later* |
+| 3 | **Crystal's unofficial section** | ***`LOOSE PAGES`*** — *MARGINALIA would quietly answer who left OPUS* (§10) |
+| 4 | **the Brazen building** | ***THE READING ROOM, in the Trainer Fan Club*** |
+| 5 | **a ninth DRIVER** | ***yes — `REVEAL`***, *a lens and not a key, opening seven groves* (§8a) |
+| 6 | **when the notebook arrives** | ***from CAIRN, after Benchmark 1***, *and everything found before it is kept* (§9) |
+
+### Still open
+
+1. **REVEAL installed or used?** *§8a recommends installed, with a shimmer on entry.*
+2. **Which daemons go in which grove** — *and how many families per grove. §8a recommends three.*
+3. **The three Reading Room PLUGINs.** *One per floor lesson — which three floors?*
 
 ---
 

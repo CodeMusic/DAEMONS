@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.238**
+**A total conversion — the living design bible, v11.239**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4524,11 +4524,17 @@ the colour–emotion link, not a character explaining something true about minds
 something independently true in psychology AND in machine learning, and no floor ever joins them
 up.*** *The join is the player's, and it is the only thing the building withholds.*
 
-***And one floor is a hazard.*** **PERCEPTION may say that colour is constructed rather than found.
-It may never say what it is constructed from in this game** — *no line on that floor may contain
-`emotion`, `feeling`, `mood` or `context`, not as a hedge and not in a student's wrong answer.*
-**The floor stops one step short, and the step it does not take is the one the game is built on.**
-*That is craft rule 2 given a room.*
+***PERCEPTION was cut, on the user's ruling, and the ground matters more than the decision.*** *The
+first draft kept it and fenced it: no line on it could contain `emotion`, `feeling`, `mood` or
+`context`.* **The user's point: a floor that has to be careful has to be SERIOUS, and seriousness is
+what removes the cover.** *Craft rule 6 says comedy is the best cover for a thesis* — **so a floor
+that cannot joke cannot hide anything, and the damage does not stop at the floor.** ***A fence was
+the wrong tool; the right one was not building the room.*** **CATEGORIES replaces it** — *which sits
+under the Index's feet: a taxonomy engine's players are taught that a category has a middle and no
+edge, as a joke about a filing drawer.*
+
+**Seven floors, settled** — *LANGUAGE, ATTENTION, MEMORY, CATEGORIES, LEARNING, BIAS, ERROR:* **named,
+noticed, kept, sorted, changed, bent, corrected.** *The top floor is ERROR, where the TEXTBOOK is.*
 
 #### The exam is the honest version of the thing Scorn corrupted
 
@@ -4553,15 +4559,41 @@ and it happens once.** ***Entries therefore insert into an AUTHORED order rather
 are found***, so the file reads correctly when it is complete and never while it is not.
 
 ***The eight sections are named by the KIND of document and never by the subject*** — `SCHOOL
-NOTES`, `MARGINALIA`, `LAB NOTES`, `RUN LOGS`, `CORRESPONDENCE`, `THE FILE`, `PROSPECTUS`, `PEER
+NOTES`, `LOOSE PAGES`, `LAB NOTES`, `RUN LOGS`, `CORRESPONDENCE`, `THE FILE`, `PROSPECTUS`, `PEER
 REVIEW` — **so a section title spoils nothing and the player learns the story by reading the filing
 system.** *`PROSPECTUS` is both a company's offering document and a school's brochure: Scorn's
 section and the school's section are the same kind of paper, and nobody says so.*
 
+#### CAIRN hands it over, and REVEAL is the ninth DRIVER — settled 2026-09-22
+
+***The notebook comes from CAIRN after Benchmark 1***, **on the user's call.** *His creed is "if it is
+not written down, it did not happen", and 5.1 already says the Meeting Room minutes are that creed
+applied to a person.* **So the man whose creed later removes Crystal hands the player the instrument
+that re-reads her.** *Nothing connects them.* ***Every entry is a flag and not an item***, **so a
+document read before Slate — the carving, the school — is kept and appears when the book does.**
+
+***Crystal's own section is `LOOSE PAGES`, not `MARGINALIA`***: **4.2 keeps who left OPUS unanswered
+on purpose**, *and a margin-named section in her hand beside a thing that writes in margins would
+answer it quietly.*
+
+***A ninth DRIVER, `REVEAL` — and 1001 is nine in binary.*** **The first draft argued against one:
+a driver exists because a place cannot be reached without it, and there was no unreached place.**
+*The user's design answers that rather than overruling it* — **seven GROVES entered through trees,
+findable blind the way ROCK TUNNEL can be walked without VERBOSE, and some daemons live only there.**
+***So REVEAL is the first driver that is a lens rather than a key.*** *It also shows the 183 hidden
+items already on 79 maps.* **The routine is vanilla's FORESIGHT, already named `REVEAL` here; the item
+goes in `ITEM_15B`, the unused id directly after HM08.** *It comes from the Reading Room* — **so the
+school gates COMPLETION and never the ending.**
+
+***And the groves are the grove.*** **4.20's child "found my solace in the trees"**; *seven more of
+that place, off the path, and none of them says whose it was.* **Each daemon placed in one becomes
+reachable and so inherits four jobs** — *name, entry, margin, sprite* — **which makes the groves the
+bestiary's next destination and also its bill.**
+
 #### What it must never do
 
-***The ending is never gated.*** **The school, the exam, the diploma and the Reading Room are all
-optional.** *A player who never opens the door still finishes the game — they simply do not
+***The ending is never gated.*** **The school, the exam, the diploma, the Reading Room, REVEAL and the
+groves are all optional**, *and gate completion only.* *A player who never opens the door still finishes the game — they simply do not
 understand the Owl scene as well,* **which is the correct punishment and the only one.**
 
 ***And the exam never loses anything.*** *No timer, no lockout, no single attempt.* **A test that

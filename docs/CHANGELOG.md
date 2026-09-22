@@ -5,6 +5,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.239 — 2026-09-22
+
+### 4.35 — the user's answers: seven floors, a ninth driver, and CAIRN's notebook
+
+- ***PERCEPTION cut, and the reason is the rule.*** **A floor that has to be careful has to be serious, and seriousness removes the cover** — *craft rule 6. The first draft fenced it; the right tool was not building the room.* **CATEGORIES replaces it**, *under the Index's feet.*
+- ***Seven floors***: **LANGUAGE, ATTENTION, MEMORY, CATEGORIES, LEARNING, BIAS, ERROR** — *named, noticed, kept, sorted, changed, bent, corrected.* **ERROR is the top floor, where the TEXTBOOK is.**
+- ***CAIRN hands over the notebook after Benchmark 1.*** **His creed — "if it is not written down, it did not happen" — is the one that later removes Crystal, so he gives the player the instrument that re-reads her.** *Every entry is a flag, so anything read before Slate is kept.*
+- ***`LOOSE PAGES`, not `MARGINALIA`*** — *a margin-named section in Crystal's hand beside OPUS would quietly answer who left it, which 4.2 keeps open on purpose.*
+- ***A ninth DRIVER, `REVEAL` — 1001 is nine in binary.*** **Reversed from the first draft's "no"**, *because the user's GROVES make the unreached places and make them findable blind.* **The first driver that is a lens, not a key.** *FORESIGHT is already named REVEAL here, and `ITEM_15B` is free directly after HM08.*
+- ***Seven groves, entered through trees***, **4.20's grove seven times over.** *Some daemons live only there — so they are where `still-vanilla.md` goes to be finished, and each family is four jobs.*
+- **THE READING ROOM in the Fan Club; 80% to pass.** *T-220 and T-221 filed.*
+
+---
+
 ## v11.238 — 2026-09-22
 
 ### 4.35 — CALLOW SCHOOL and the RESEARCH NOTEBOOK, designed and built nowhere
