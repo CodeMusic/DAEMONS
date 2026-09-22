@@ -849,6 +849,73 @@ def check_panes():
     return bad
 
 
+
+#  T-208 pointed 29 ground pickups at the disc by walking every map.json, which is the right way to do it
+#  once and no way at all to keep it true. A pickup added later, or an item changed from a potion to a
+#  PLUGIN, goes back to looking like a potion and nothing says so.
+def check_disc():
+    import glob as _glob, json as _json, re as _re
+
+    bad = []
+    for f in sorted(_glob.glob(os.path.join(ROOT, "engineGba/data/maps/*/map.json"))):
+        try:
+            d = _json.load(open(f, encoding="utf-8"))
+        except Exception:
+            continue
+        name = os.path.basename(os.path.dirname(f))
+        for o in d.get("object_events", []):
+            script = str(o.get("script", ""))
+            gfx = o.get("graphics_id")
+            plugin = bool(_re.search(r"Item(TM|HM)\d", script))
+            if plugin and gfx == "OBJ_EVENT_GFX_ITEM_BALL":
+                bad.append(("%s" % script, "holds a PLUGIN or DRIVER and shows a ball"))
+            elif not plugin and gfx == "OBJ_EVENT_GFX_PLUGIN_DISC":
+                bad.append(("%s" % script, "shows a disc and holds neither"))
+    return bad
+
+
+def check_plugin_colours():
+    """Two things about the PLUGIN disc, which is the one screen that teaches colour-to-type.
+
+    Every PLUGIN and DRIVER shares one drawing and is told apart only by its palette, so the TOOLKIT shows
+    the player eighteen hues beside eighteen type names -- vision.md 9.4's claim, made legible, whether or
+    not we meant it. It teaches whatever it is coloured with, so both halves have to hold: the HUE has to be
+    ours (it was vanilla's until T-211), and each disc has to carry the type of the routine ACTUALLY on it.
+    """
+    import glob as _glob, importlib.util as _il, re as _re
+
+    spec = _il.spec_from_file_location("genplugincolours", os.path.join(ROOT, "tools/genplugincolours.py"))
+    gp = _il.module_from_spec(spec)
+    spec.loader.exec_module(gp)
+    colours = gp.type_colours()
+
+    bad = []
+    for stem, t in sorted(gp.FILES.items()):
+        f = os.path.join(gp.PALDIR, "%s_tm_hm.pal" % stem)
+        if not os.path.exists(f) or t not in colours:
+            continue
+        rows = [l for l in open(f, encoding="utf-8").read().splitlines()[3:] if l.strip()]
+        want = ["%d %d %d" % c for c in gp.ramp(colours[t])]
+        got = rows[gp.FIRST:gp.LAST + 1]
+        if got != want:
+            bad.append(("%s_tm_hm.pal" % stem, "is not %s's colour; re-run tools/genplugincolours.py --write" % t))
+
+    pm = open(os.path.join(ROOT, "engineGba/src/data/party_menu.h"), encoding="utf-8").read()
+    blk = _re.search(r"static const u16 sTMHMMoves\[\] =\s*\{(.*?)\n\};", pm, _re.S)
+    bm = open(os.path.join(ROOT, "engineGba/src/data/battle_moves.h"), encoding="utf-8").read()
+    it = open(os.path.join(ROOT, "engineGba/src/data/item_icon_table.h"), encoding="utf-8").read()
+    if blk:
+        moves = _re.findall(r"\b(MOVE_\w+)", blk.group(1))
+        types = dict(_re.findall(r"\[(MOVE_\w+)\]\s*=\s*\{.*?\.type\s*=\s*TYPE_(\w+)", bm, _re.S))
+        pal = dict(_re.findall(r"\[(ITEM_(?:TM|HM)\d+)\]\s*=\s*\{gItemIcon_TMHM,\s*gItemIconPalette_(\w+)TMHM\}", it))
+        for i, m in enumerate(moves):
+            item = "ITEM_TM%02d" % (i + 1) if i < 50 else "ITEM_HM%02d" % (i - 49)
+            want, got = types.get(m, "?"), pal.get(item, "?").upper()
+            if want != got:
+                bad.append((item, "holds a %s routine and is coloured %s" % (want, got)))
+    return bad
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -991,13 +1058,29 @@ def main():
         for what, why in wbad:
             print("   %-28s %s" % (what, why))
 
+    dbad = check_disc()
+    if not dbad:
+        print("  every ground pickup that holds a PLUGIN or DRIVER shows the disc, and only those do.")
+    else:
+        print("\n  %d pickup(s) showing the wrong thing:\n" % len(dbad))
+        for what, why in dbad:
+            print("   %-44s %s" % (what, why))
+
+    gbad = check_plugin_colours()
+    if not gbad:
+        print("  every PLUGIN disc carries our colour for the type of the routine on it.")
+    else:
+        print("\n  %d disc(s) teaching the wrong chart:\n" % len(gbad))
+        for what, why in gbad:
+            print("   %-24s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad) else 0
 
 
 if __name__ == "__main__":

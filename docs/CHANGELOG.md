@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.236 — 2026-09-22
+
+### 9.4 — the screen that was teaching the wrong chart
+
+- ***The TOOLKIT is a colour chart and nobody designed it as one*** (T-211): **all 58 PLUGINs and DRIVERs share one drawing and are told apart only by a per-type palette**, *so the list the player opens constantly shows eighteen hues beside eighteen type names at once.*
+- ***It was teaching vanilla's.*** **VECTOR is red and its disc was pale blue; LOGIC is steel blue and its disc was orange; OPAQUE is near-black and its disc was pale cyan; SIGNAL is cyan and its disc was yellow.** *A player building the intuition 9.4 claims they can build would have built it backwards, from our own screen, using our own names.*
+- **`tools/genplugincolours.py` re-ramps all sixteen palettes from `gbasprite.py`'s `TYPE_COLOR`** — *the same table that colours the daemons, read at run time rather than copied, so a disc and the creature it teaches about cannot disagree.* **Vanilla's structure is kept**: *seven entries are the type ramp, the rest is the disc's shading.*
+- ***The second half nobody had checked***: **each disc carries the type of the routine actually on it.** *All 58 did — and it is now checked, because a retyped routine would teach a wrong pair silently.*
+- **`check_lexicon` gained `check_plugin_colours()`**, *proved by breaking both halves at once* — **a repainted WATER entry and a DRAGON routine coloured GRASS, both named, then both restored.**
+
+---
+
 ## v11.235 — 2026-09-22
 
 ### 9.15 and 1.6 — all four healthboxes, and the thing on the ground

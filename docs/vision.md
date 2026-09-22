@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.235**
+**A total conversion — the living design bible, v11.236**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7411,6 +7411,19 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***So the rule, as amended 2026-09-21***: **every 64-pixel picture of ours carries a TRUE BLACK outline.** *The first version took "the darkest colour it already uses", which spends nothing and reads as one rule in two looks — a red daemon got a dark red edge where a grey one got a near-black, and the user saw it at once.* **A black is worth one palette entry, and which entry depends on what it costs**: *the darkest, unless forcing it would repaint more than a twelfth of the figure, in which case the least-used one, and a highlight nobody counts is lost.* **23 of the 72 portraits needed one; the rest already owned something dark enough.** *Nothing is added to a palette and no colour is invented — a picture that had an outline barely changes, and one that had none gains a shape.* **84 pictures**: *the trainer portraits, the hearsay portraits, the intro pictures and the back pics, ours only.* ***The overworld is excluded on measurement, not on taste*** — *at 16×32 an outline is most of the sprite, which is T-170's finding one size down.*
 
 *It runs inside `gbachar.py` as well as over what is already built, so this is now how a picture is cut rather than a pass someone must remember.*
+
+
+#### The screen that teaches the chart — 2026-09-22
+
+***Every claim above assumes the player can learn which hue means which type, and 9.4 never said where they would learn it.*** *The answer turned out to already exist and to be teaching the wrong thing.*
+
+**All 58 PLUGINs and DRIVERs share one drawing of a disc and are told apart only by a PER-TYPE PALETTE.** *So the TOOLKIT, a list the player opens constantly, is the one screen in the game that shows eighteen hues beside eighteen type names at once* — **it is a colour chart whether or not anyone designed it as one.**
+
+***It was teaching vanilla's.*** **Our VECTOR is red and its disc was pale blue; our LOGIC is steel blue and its disc was orange; our OPAQUE is near-black and its disc was pale cyan; our SIGNAL is cyan and its disc was yellow.** *A player building exactly the intuition this section claims they can build would have built it backwards, from our own screen, using our own names, and then carried it into every battle.* ***That is worse than teaching nothing***, because a wrong chart learned confidently is not corrected by the right one.
+
+**The fix is that the discs read their colours from the same table the daemons do** (`tools/genplugincolours.py`, from `gbasprite.py`'s `TYPE_COLOR`), *so a disc and the creature it is teaching about cannot disagree.* **Vanilla's palette structure is kept** — *seven entries are the type's own ramp, lightest to darkest, and the rest is the disc's shading* — **only the hue is ours.**
+
+***And a second thing had to hold that nobody had checked***: **each disc carries the type of the routine actually on it.** *It did, all 58 — but it is now checked, because a retyped routine would silently teach a wrong pair and nothing else in the build would notice.*
 
 ### 9.4a The move menu — a type as a word, and what a move does — built 2026-09-13
 
