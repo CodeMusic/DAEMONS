@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.232, working |
-| [`CONTEXT-CONTENT-design-bible-v11.232.pdf`](CONTEXT-CONTENT-design-bible-v11.232.pdf) | Typeset **snapshot** at v11.232 — the port, the bestiary, the harness, the fable cast, the streaks, every animation redrawn, the Index mark and the word that names it, the canvas rule, the two shoulder buttons and the one rule they obey, the true black every picture of ours is outlined in, the Index refusing to show a daemon you have not met, the driver that is installed rather than taught, and the thing on the end of a shelf that writes in the margin. Cut a new one with `./docs/build-pdf.sh 11.232` (the script adds the `v`). | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.233, working |
+| [`CONTEXT-CONTENT-design-bible-v11.233.pdf`](CONTEXT-CONTENT-design-bible-v11.233.pdf) | Typeset **snapshot** at v11.233 — the port, the bestiary, the harness, the fable cast, the streaks, every animation redrawn, the Index mark and the word that names it, the two shoulder buttons and the one rule they obey, the true black every picture of ours is outlined in, the driver that is installed rather than taught, the thing on the end of a shelf that writes in the margin, the pronoun that says the other one has an inside, and the healthbox that names what persists and marks what does not. Cut a new one with `./docs/build-pdf.sh 11.233`. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

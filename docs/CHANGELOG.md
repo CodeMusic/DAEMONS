@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.233 — 2026-09-22
+
+### 4.2, 1.6 and 9.15 — the pronoun, the mark, and the margin at 124
+
+- ***"The foe" is gone from everything a player can read*** (T-183). **154 routine descriptions, six ability descriptions and the help system**, *and the finding is that the rules were the easy half*: **19 pronoun breakages found on the first read of the output and 7 more on the second.** *Singular they needs the verb to agree and every other pronoun in the sentence to follow it.*
+- ***The healthbox names what persists and marks what does not*** (T-187): **THRASHING is a sawtooth, not a tag**, *because it ends when the fight does* — **and because `THR` is already THROTTLED.** *It sits in the three tiles vanilla itself reserved and never filled, so nothing else in the sheet moves.*
+- ***OPUS says something happened***, once (T-203): **"Something has been written in the INDEX."** *It does not name itself, and nothing mentions it again.*
+- **The margin is at 124 daemons and 248 lines**, *which is the intended stopping point rather than a shortfall* — **a note on every page is a second Index.**
+- ***`PATCH` lasted one day*** (T-206): **the bag already holds one, and a hotfix repairs a defect exactly as that item does.** *A routine taught is not a repair* — **`PLUGIN`**, *which pairs with `DRIVER`: install a plugin to gain a routine, install a driver to reach the world.* **The case is a `TOOLKIT`.**
+- **Three HEARSAY names were clipped** (T-204) — *eight tiles is 56px and CRYSTAL CLEAR is 78* — **and the debug build owns six daemons where a margin needs one you own** (T-205), *so the boxes hold every species now, with the met level alternating so both halves of the writing sit on consecutive entries.*
+
 ## v11.232 — 2026-09-21
 
 ### 4.2 — OPUS, and the margin

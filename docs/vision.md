@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.232**
+**A total conversion — the living design bible, v11.233**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2141,6 +2141,22 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### The foe is a thing. Them is a someone. — settled 2026-09-22
+
+***Everywhere else "the foe" is a neutral word for the other side.*** **Here it is the one the game spends forty hours arguing against**: *a foe is a thing you are hitting, and this game's whole claim is that the thing in front of you has an inside.* **The Index said `them`; the routines said `foe` 153 times** — ***the argument disagreeing with itself in the place a player reads most.***
+
+**It is not a substitution, and that is the finding.** *37 of them were vanilla's PASSIVE — "The foe is hit with an intense flame" — and a blind swap writes* **"Them is hit with"**. *Each was turned ACTIVE by hand, and they read better for it: an active sentence is shorter, which matters in 113 pixels and four lines.*
+
+***Then the output had to be read, twice.*** **A rule that turns "the foe" into "them" writes "takes what them was holding", and a rule that leaves "it" alone writes "holds it there" about a someone it has just called them.** *Singular they needs the verb to agree **and** every other pronoun in the sentence to follow it, and neither is something a substitution can know.* **19 found on the first read and 7 more on the second** — *"Copies the routine them last ran" survived the first scan because "last" is not a verb a pattern thinks to look for.*
+
+#### The healthbox names what persists and marks what does not — settled 2026-09-22
+
+***Vanilla's healthbox shows the five `STATUS1` states and nothing else***, *and the reason given is that the rest are volatile.* **That is not our reason.** *Our statuses are states of mind, and a player who cannot see that their daemon is in one cannot reason about it* — **but marking every volatile state turns the healthbox into a dashboard, which is a different game's screen.**
+
+***So the line is drawn where it means something.*** **The five that follow a daemon out of a battle are WORDS** — *`LEK`, `THR`, `SUS`, `HNG`, `OVR`* — **and THRASHING, which ends when the fight does, is a MARK with no letters**: *a sawtooth, in the same badge as its five neighbours, so only the inside differs.* ***The difference in KIND is drawn rather than stated***, and the tag space stays for things that keep.
+
+**It also settles an accident**: *THRASHING's own three letters are taken.* **`THR` is THROTTLED.**
 
 #### OPUS, and the margin — added 2026-09-21
 
