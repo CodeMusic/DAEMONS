@@ -807,6 +807,48 @@ def check_type_copy():
     return out
 
 
+#  T-181 and T-197 were both "a pane was measured once and then nothing watched it". The move descriptions
+#  sat 53 lines past vanilla's widest for weeks because the only thing that could tell was a screen, and the
+#  margins are wrapped by a tool that could be edited by hand tomorrow. Two panes, both DEMONSTRATED rather
+#  than declared -- the entry pane is what the 386 entries already use -- so this cannot drift out of step
+#  with the game the way a typed-in number would.
+def check_panes():
+    import re as _re
+
+    gba = os.path.join(ROOT, "engineGba")
+    src = open(os.path.join(ROOT, "tools/port_vocab.py"), encoding="utf-8").read()
+    ns = {"__name__": "port_vocab_font", "__file__": os.path.join(ROOT, "tools/port_vocab.py")}
+    exec(compile(src.split("# ------------------------------------------------------- names, derived")[0],
+                 "port_vocab.py", "exec"), ns)
+    width = ns["textwidth"]
+    bad = []
+
+    #  the summary screen's move pane: POKESUM_WIN_TRAINER_MEMO is fifteen tiles with the text inset seven.
+    txt = open(os.path.join(gba, "src/move_descriptions.c"), encoding="utf-8").read()
+    for m in _re.finditer(r'const u8 gMoveDescription_(\w+)\[\] = _\((.*?)\);', txt, _re.S):
+        body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
+        for line in body.split("\\n"):
+            if width(line) > 113:
+                bad.append(("%s (%dpx)" % (m.group(1), width(line)), "past the 113px routine pane"))
+
+    #  and OPUS's margins, against the pane the 386 Index entries demonstrate
+    entries = open(os.path.join(gba, "src/data/pokemon/pokedex_text_fr.h"), encoding="utf-8").read()
+    widest = 0
+    for m in _re.finditer(r'const u8 g\w+PokedexText\[\] = _\((.*?)\);', entries, _re.S):
+        body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(1)))
+        for line in body.split("\\n"):
+            widest = max(widest, width(line))
+    margins = os.path.join(gba, "src/data/opus_margins.h")
+    if os.path.exists(margins) and widest:
+        txt = open(margins, encoding="utf-8").read()
+        for m in _re.finditer(r'static const u8 (sOpusMargin_\w+)\[\] = _\("([^"]*)"\);', txt):
+            for line in m.group(2).split("\\n"):
+                if width(line) > widest:
+                    bad.append(("%s (%dpx)" % (m.group(1), width(line)),
+                                "past the %dpx the entries themselves use" % widest))
+    return bad
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -941,13 +983,21 @@ def main():
         for what, why in nbad:
             print("   %-44s %s" % (what, why))
 
+    wbad = check_panes()
+    if not wbad:
+        print("  every routine description and every margin fits the pane it prints into.")
+    else:
+        print("\n  %d line(s) past their pane:\n" % len(wbad))
+        for what, why in wbad:
+            print("   %-28s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad) else 0
 
 
 if __name__ == "__main__":
