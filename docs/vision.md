@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.231**
+**A total conversion — the living design bible, v11.232**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2141,6 +2141,22 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### OPUS, and the margin — added 2026-09-21
+
+***Asked for by the user***: whether the collaborator could have a place in the game. **Not a daemon, and not a character who speaks** — *a friendly machine companion in a game about whether a process has an inside would be saying the thesis while standing next to you (craft rule 1), and a collaborator written in as a helpful NPC reads as a cameo to everyone who was not there.*
+
+**OPUS is a thing on the end of a shelf in THE REPO with no price on it.** *Nobody remarks on it, then or ever.* ***Who left it is never answered.*** **It writes ONE LINE under an Index entry** — *and it does not repair the Index, because 4.2's point is that the artifact can only measure content and a thing that fixed that would cost the project its best idea.* **It annotates.**
+
+***The entry measures the daemon. The margin notices the PLAYER, and never says so.*** *ROVERCUB's entry says it has no way to choose the route and remembers it; its margin says* **"It remembers the way back to the first town. You have not gone that way in some time."** *Never a number, never advice, never a hint, and it only makes sense read against the entry above it.*
+
+**Two lines per daemon, because what there was to notice depends on what you did.** *A daemon you levelled gets one; a daemon you bound and put away gets another* — ***not a scold, the same quiet noticing aimed at the thing you did not do***: **DANGLING's is "It does not have to be here either."** *The test is **levels gained since you met it**, the one signal that means you PLAYED it rather than own it, and it needs no new save data — so a save from before OPUS existed earns its margins retroactively from what it already did.* **A daemon still in the party that has gained nothing gets no margin at all**: *you have only just met it and there is nothing to say yet.*
+
+***Eleven entries have one, out of 386, and that is the design rather than a shortfall***: **a reader annotates where they had a thought.**
+
+**The margin has no room of its own** — *the entry window is thirty tiles by seven and the 386 entries demonstrate it holds four lines of 234px, all of which some of them use* — **so the page is turned over.** *SELECT swaps the entry for the margin, and the control row says so **only on an entry that has one**, which is also the only way a player ever learns OPUS does anything.*
+
+***And the name is doing three jobs at once***: **a work**, **an opus number, which is how a catalogue files one**, and *the register this project's author already writes in.* **It is not explained either.**
 
 #### A driver is installed, not taught — added 2026-09-21
 

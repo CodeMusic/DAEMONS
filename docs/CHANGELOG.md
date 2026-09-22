@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.232 — 2026-09-21
+
+### 4.2 — OPUS, and the margin
+
+- ***A thing on the end of a shelf in THE REPO with no price on it*** (T-197). **It writes one line under an Index entry and does not repair the Index**: *4.2's complaint stands, and this annotates it.* ***The entry measures the daemon; the margin notices the player, and never says so.***
+- **Two lines per daemon** — *one for a daemon you levelled, one for a daemon you bound and put away.* **The test is levels gained since you met it**, *which needs no new save data, so an old save earns its margins retroactively.* **Eleven entries have one out of 386, and that is the design**: *a reader annotates where they had a thought.*
+- **The page turns over**: *the entry window is full, so SELECT swaps the entry for the margin — and the control row says so only where there is one, which is the only way a player learns OPUS does anything.*
+- ***Three readable shelves went in beside it***, *because a thing nobody points at needs a room worth reading.* **`additem` and our own message rather than `giveitem`**: *the fanfare announces a prize, which is the one thing this must not do.*
+- **`ITEM_OPUS` is the first item this project has ADDED rather than renamed** — *appended, never inserted, because item ids are positional; and it turned up that `include/constants/items.h` is tracked and hand-maintained where `src/data/items.h` is generated.*
+
 ## v11.231 — 2026-09-21
 
 ### 1.6 and 2.8 — PATCH, DRIVER, and the end of the HM slave
