@@ -31,45 +31,75 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHEET = os.path.join(ROOT, "engineGba/graphics/battle_interface/healthbox_elements.png")
 PREVIEW = "/tmp/thrash_icon.png"
 WRITE = "--write" in sys.argv
-X0, TEMPLATE_X = 288, 216            # the free slot, and SUS which lends its pill
-LIGHT, SHADOW, GROUND = 2, 3, 12     # nibbles, not palette entries
+#  (destination tile, source tile) for each battler. Battler 0 uses the three tiles vanilla itself reserved
+#  and never filled; the other three had nowhere to go, so the sheet gains a fourth row and they sit in it.
+#  Each one copies ITS OWN battler's SUS icon, because the badge is shaped differently per healthbox -- a
+#  check confirmed battler 0's icons are not battler 1's.
+SLOTS = [(36, 27), (120, 77), (123, 92), (126, 107)]
+SHEET_ROWS = 4                       # was 3; tiles 120-159 are the new row
+#  WHY THE FOUR VARIANTS EXIST, which is not what it looks like: the badges are the SAME SHAPE, and what
+#  differs is the palette index of the ground. UpdateStatusIconInHealthbox does `pltAdder += battlerId + 12`
+#  and fills ONE entry, so battler 0's ground is nibble 12, battler 1's is 13, and so on. Copying battler 0's
+#  tiles for everyone would have drawn every opponent's badge in whatever colour that slot happened to hold.
+LIGHT, SHADOW = 2, 3                 # nibbles, not palette entries
+GROUND_BASE = 12                     # + the battler
 
 
-def draw(a):
-    #  the pill itself is copied from SUS, so the shape is identical to its five neighbours and only what is
-    #  inside it differs -- which is the whole point: same badge, no letters.
+def tile_xy(n):
+    return (n % 40) * 8, (n // 40) * 8
+
+
+def draw_one(a, dst, src, battler):
+    dx, dy = tile_xy(dst)
+    sx, sy = tile_xy(src)
+    GROUND = GROUND_BASE + battler
+    #  the pill itself is copied, so the shape is identical to its five neighbours and only what is inside
+    #  it differs -- which is the whole point: same badge, no letters.
     for y in range(8):
         for x in range(24):
-            a[y][X0 + x] = {2: LIGHT, 3: SHADOW, 12: GROUND}[int(a[y][TEMPLATE_X + x]) % 16]
+            n = int(a[sy + y][sx + x]) % 16
+            a[dy + y][dx + x] = LIGHT if n == LIGHT else (SHADOW if n == SHADOW else GROUND)
     for y in range(1, 7):            # clear the letters back to the ground colour
         for x in range(2, 18):
-            a[y][X0 + x] = GROUND
+            a[dy + y][dx + x] = GROUND
 
     #  A sawtooth: down, up, down, up, across the badge. Not tracking straight, drawn rather than named.
     pts = [(2, 5), (5, 2), (8, 5), (11, 2), (14, 5), (17, 2)]
     for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
         steps = max(abs(x1 - x0), abs(y1 - y0))
-        for s in range(steps + 1):
-            x = x0 + (x1 - x0) * s // steps
-            y = y0 + (y1 - y0) * s // steps
-            a[y][X0 + x] = LIGHT
+        for t in range(steps + 1):
+            x = x0 + (x1 - x0) * t // steps
+            y = y0 + (y1 - y0) * t // steps
+            a[dy + y][dx + x] = LIGHT
             if y + 1 < 7:            # one pixel of weight, so it survives at 24x8 on a lit ground
-                a[y + 1][X0 + x] = LIGHT
+                a[dy + y + 1][dx + x] = LIGHT
+
+
+def draw(a):
+    for battler, (dst, src) in enumerate(SLOTS):
+        draw_one(a, dst, src, battler)
     return a
 
 
 def main():
     im = Image.open(SHEET)
     a = np.array(im)
-    before = a.copy()
+    #  the sheet grows by one row of forty tiles. gBattleInterface_Gfx is declared [][32] and indexed by
+    #  tile, and nothing anywhere counts them, so a longer blob costs only ROM.
+    want = SHEET_ROWS * 8
+    if a.shape[0] < want:
+        pad = np.zeros((want - a.shape[0], a.shape[1]), dtype=a.dtype)
+        a = np.concatenate([a, pad], axis=0)
     a = draw(a)
     out = Image.fromarray(a, "P")
     out.putpalette(im.getpalette())
-    print("  the mark, at tiles 36-38 (x %d..%d):" % (X0, X0 + 23))
-    for y in range(8):
-        print("    " + "".join(".#+"[[LIGHT, SHADOW, GROUND].index(int(a[y][X0 + x]))] for x in range(24)))
-    out.crop((X0 - 96, 0, X0 + 32, 8)).resize((128 * 6, 8 * 6), Image.NEAREST).convert("RGB").save(PREVIEW)
-    print("  its four neighbours and it -> %s" % PREVIEW)
+    print("  the sheet is %dx%d now (%d tiles)" % (a.shape[1], a.shape[0], (a.shape[1] // 8) * (a.shape[0] // 8)))
+    for battler, (dst, src) in enumerate(SLOTS):
+        dx, dy = tile_xy(dst)
+        used = sorted({int(a[dy + y][dx + x]) % 16 for y in range(8) for x in range(24)})
+        print("  battler %d: tiles %d-%d from %d, nibbles %s" % (battler, dst, dst + 2, src, used))
+    out.crop((192, 0, 320, 8)).resize((128 * 6, 8 * 6), Image.NEAREST).convert("RGB").save(PREVIEW)
+    print("  battler 0's, beside its neighbours -> %s" % PREVIEW)
     if WRITE:
         out.save(SHEET)
         print("  written graphics/battle_interface/healthbox_elements.png")

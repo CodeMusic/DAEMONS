@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.235 — 2026-09-22
+
+### 9.15 and 1.6 — all four healthboxes, and the thing on the ground
+
+- ***The THRASHING mark shows on every battler now*** (T-187a), **and last night's "real limit" was a misreading**: *the four per-battler status icons are not four shapes, they are* ***one shape in four palette slots*** — `pltAdder += battlerId + 12`. **A pixel comparison said the art differed and I believed it**; *the tool found the truth by refusing to map nibble 13.* **The sheet gains a fourth row, which costs only ROM.**
+- ***A PLUGIN on the ground looks like an installer, not a potion*** (T-208): **29 ground pickups show a disc** — *TM50 in VICTORY ROAD, HM07 in the ICEFALL CAVE, both of the POWER PLANT's.* **A plugin and a driver are the two things in this game that are INSTALLED rather than consumed**, *and a disc is what an installer came on.*
+- ***A search that returns zero is a search to check***: *the first grep for these found none, because it looked for `finditem` and this codebase keeps the item in the script's NAME.*
+
 ## v11.234 — 2026-09-22
 
 ### 1.6 and 4.2 — the fourth surface, and the margin at 240
