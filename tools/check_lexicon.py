@@ -837,6 +837,17 @@ def check_panes():
             if width(line) > 113:
                 bad.append(("%s (%dpx)" % (m.group(1), width(line)), "past the 113px routine pane"))
 
+    #  the summary's ability line: StringCopy'd into abilityDescStrBuf[52], so a description past 51 bytes writes
+    #  over whatever follows it and says nothing, and then printed at x=2 in a 29-tile window (230px). Ours reach
+    #  33 bytes and 175px (measured T-239); vanilla stopped at 28 and 154.
+    abil = open(os.path.join(gba, "src/data/text/abilities.h"), encoding="utf-8").read()
+    for m in _re.finditer(r'static const u8 (s\w+Description)\[\] = _\("([^"]*)"\);', abil):
+        size = len(_re.findall(r'\\.|\{[^}]*\}|.', m.group(2))) + 1
+        if size > 52:
+            bad.append((m.group(1), "%d bytes, and the summary copies it into 52" % size))
+        if width(m.group(2)) > 230:
+            bad.append(("%s (%dpx)" % (m.group(1), width(m.group(2))), "past the 230px ability pane"))
+
     #  and OPUS's margins, against the pane the 386 Index entries demonstrate
     entries = open(os.path.join(gba, "src/data/pokemon/pokedex_text_fr.h"), encoding="utf-8").read()
     widest = 0
@@ -1298,7 +1309,7 @@ def main():
 
     wbad = check_panes()
     if not wbad:
-        print("  every routine description, margin and item description fits the pane it prints into.")
+        print("  every routine, ability, margin and item description fits the pane it prints into.")
     else:
         print("\n  %d line(s) past their pane:\n" % len(wbad))
         for what, why in wbad:
