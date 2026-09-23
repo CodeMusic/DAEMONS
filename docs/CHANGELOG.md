@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.242 — 2026-09-22
+
+### 4.35 — the paper, built and sat
+
+- ***Batch 3 of 7 — the EXAM — is in the ROM and was PLAYED end to end*** (T-217): **a scratch copy of the debug ROM, a new game, GOTO to CALLOW, the door, the teacher, the paper.** *First time anything in this project was walked rather than screenshotted.*
+- ***Verified in play***: *resume, FINISH early ("5 still unanswered"), hand-in, and* **11 of 12 = 92, A-, a pass**; *THE PAPER in the NOTEBOOK keeps every sitting; a retake is blank.* **Batch 2's notebook and batch 1's `1F  LANGUAGE` label were verified on the way.**
+- ***Answers, never a score***: **three bits each in `VAR_SCHOOL_EXAM_ANSWERS`**, *0x408C–0x40A9 reserved.*
+- ***`engine.md` trap 19 was stale***: **T-179 had already given L and R back to the game**, *so the exam's paging needed nothing.* ***A trap document goes stale the moment its trap is fixed, and nothing tells it.***
+- ***And a new section of `engine.md`***, *driving a new game through the theatre*: **`gSaveBlock1Ptr` moves on every map load; a house stair fires on a press while standing on it; space batched presses twenty frames apart.**
+
+---
+
 ## v11.241 — 2026-09-22
 
 ### 4.35 — the NOTEBOOK, built, and twenty-five PATCHes nobody saw

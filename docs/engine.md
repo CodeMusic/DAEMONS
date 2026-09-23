@@ -284,11 +284,21 @@ finally:
 - ***Glob the tree, not the convention.*** **`data/**/*.inc` costs nothing and cannot be a third of the answer.** *The narrow glob encoded an assumption about where scripts live that was true of most of them.*
 - ***Make the test fail in both directions before trusting it.*** **Matching by NAME alone reported 47 CORPUS STAFF trainers as mismatched** — *their portraits are filed under the job names `corpus_m`/`corpus_f`, not the convention* — **and matching by SPECIES alone reported every town's staff against itself**, *because one side's note reads "CALLOW's staff, cheerful penguins" and the other reads "penguin".* **The test that holds is EITHER: a disagreement has to fail the name test AND the species test.**
 
-### 19. L and R, which FireRed has already spent
+### 19. L and R, which FireRed had already spent — ~~and no longer does~~
 
-***Symptom:*** *a debug control bound to L or R opens a blue HELP screen instead, in battle as everywhere else.*
+***Superseded by T-179, and found stale on 2026-09-22 while building the exam (T-217).*** **The help
+system no longer takes L and R at all**: `RunHelpSystemCallback` opens HELP only when the START menu's
+HELP entry asks (`gDaemonsHelpRequested`), so **L and R belong to the game everywhere** — *the Index,
+the summary screen, the boxes, R = AGAIN in the field, and the exam's section paging.* **Read them
+freely.**
 
-**FireRed's help system owns L and R globally** (*the "HELP" button mode, on by default*), **so a new input handler that reads them competes with it and loses.** *The T-136 theatre was written to step ten routines with L and R, and its first on-screen test opened HELP.* ***Use the D-pad, SELECT and START*** — **and note the start menu's DEBUG pages DO get L and R**, *because the help system stands down while that menu is open; that is why the ENCOUNTER page's "L and R step by ten" works and a battle handler's does not.*
+*The original symptom, kept because the trap is real on any build without T-179:* a debug control bound
+to L or R opened a blue HELP screen instead, because FireRed's "HELP" button mode owns them globally and
+a new input handler competes with it and loses.
+
+***The lesson that outlived the trap***: **a trap document goes stale the moment the thing it warns
+about is fixed, and nothing tells it.** *This one would have steered the exam's design toward SELECT
+for a problem that had been solved a week earlier.*
 
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
@@ -301,6 +311,23 @@ finally:
 **Set the theatre's routine with `poke16`, never by stepping to it; set its move TURN with `poke8` on `sTheatreTurn` (1 films a two-turn routine's second half).** *The address is `sTheatreMove` in `daemonsContent_debug.elf` (`arm-none-eabi-nm … | grep sTheatreMove`, and it moves with every build). The theatre ignores input while an animation plays, so a long animation swallows the D-pad steps after it: T-142's first sheet filmed the wrong routines from the fourth row down.* ***A burst must outlast the animation, and the gap after it too***: *the theatre ignores A while the previous animation plays, so T-149's first sheet filmed FLASHOVER cut short and OVERHEAT not at all.* ***And reloading the script replays nothing***: *it now skips the batch already in the command file, after a reload re-ran a finished 620-command capture from the top.*
 
 ***Timing drifts across boots*** — *the intro, the recap and a menu that remembers its cursor all move* — **so take a `shot` at every stage change and read it before sending the next batch.** *The first unwatched boot pressed through CONTINUE into NEW GAME's controls page.*
+
+### Driving a new game through the theatre — learned 2026-09-22 (T-217)
+
+*The first time anything was walked end to end rather than screenshotted in battle.*
+
+- **Test on a scratch copy of the debug ROM** (`cp daemonsContent_debug.gba <scratch>/examtest.gba`), *so mGBA
+  makes it a save of its own and the user's are never opened.*
+- **The intro's last fade is long.** *A black screen with `gMain.callback2 == CB2_NewGame` is the map loading,
+  not a hang — sample again after a few seconds before debugging anything.*
+- **`gSaveBlock1Ptr` MOVES on every map load.** *Read the pointer fresh, then the `Coords16` at its head, or the
+  position you read is a stale address.*
+- **A house stair is `MB_DOWN_LEFT_STAIR_WARP`**: *it fires on a press of LEFT while STANDING on it, not on
+  stepping onto it.*
+- **Space presses about twenty frames apart in a batch.** *Four-frame holds eight or twelve frames apart dropped
+  some A presses in a long unbroken batch, and the list cursor walked on without them; the same sequence with a
+  screenshot between each step, or twenty-frame gaps, never missed.* ***Look before blaming the game.***
+- **A tap under ~8 frames TURNS the player and does not step.**
 
 ## 6. Two habits worth keeping
 

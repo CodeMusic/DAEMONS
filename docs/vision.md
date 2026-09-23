@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.241**
+**A total conversion — the living design bible, v11.242**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4622,6 +4622,18 @@ the player knows how to do here.*
 ***And its first loose page is a child's***, **found tucked under THE UNDERTONE's carving**: *rows of
 little figures, "some rows push, some give way, some do nothing at all", and homework for tomorrow —
 integrating, page 40.* **It is a type chart and it never says so**, *which is 4.20 in a document.*
+
+#### The paper, built and sat — 2026-09-22
+
+***Batch 3 is in the ROM and was played end to end*** (T-217) — *a new game, a flight to CALLOW, the
+door, the teacher, the paper.* **Twelve questions, every one answerable from the board**, *and the
+twelfth is a joke that rewards reading all of it: what is written in the corner, in smaller chalk.*
+***Eleven right is 92, an A-, a pass***, **and the notebook keeps it**: *"Handed in: 1 time. Best: 92,
+A-."* **Walking out mid-paper loses nothing, and a retake is a blank paper.**
+
+***The screen is paper and ink and nothing else.*** **The one place in the game that tests you is the
+plainest place in it** — *which is 9.4's rule applied to a screen: colour carries an argument or it is
+not used, and a test is not where this game argues.*
 
 #### What it must never do
 

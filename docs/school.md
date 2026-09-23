@@ -648,7 +648,7 @@ school's last batch**, with the exam in it.*
 |---|---|---|
 | **1** | ***1F LANGUAGE*** — *label on arrival, placard, desk and syllabus, board, three people* | ***BUILT 2026-09-22*** — **the furniture set** |
 | **2** | ***the RESEARCH NOTEBOOK***, *CAIRN hands it over after Benchmark 1*, `SCHOOL NOTES` with the LANGUAGE syllabus, **and the first LOOSE PAGE** (*the carving*) | ***BUILT 2026-09-22*** — **the reader, the flags, and insertion order** |
-| **3** | ***the EXAM***, *LANGUAGE's section only, twelve questions* | ***L and R*** (*trap 19*), **resume, score, grade** |
+| **3** | ***the EXAM***, *LANGUAGE's section only, twelve questions* | ***BUILT and PLAYED 2026-09-22*** — **resume, score, grade**; *L and R were already free (T-179)* |
 | **4** | ***2F ATTENTION, 3F MEMORY, 4F CATEGORIES***, *with stairs* | **new layouts; the furniture set repeated** |
 | **5** | ***5F LEARNING, 6F BIAS, 7F ERROR***, *the elevator, the TEXTBOOK, exam season, the Owl at the front, all seven exam sections* | **the whole school** |
 | **6** | ***the DIPLOMA, THE READING ROOM, the three lecturers, REVEAL*** | **the door, the tutor table, the ninth driver** |
