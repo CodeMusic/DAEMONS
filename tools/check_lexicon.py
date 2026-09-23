@@ -999,7 +999,11 @@ def check_numbered():
                 if tw(head) > 94:
                     bad.append((lab, "heading %dpx, and a page is 94" % tw(head)))
     nbsrc = open(os.path.join(ROOT, "engineGba/src/notebook.c"), encoding="utf-8").read()
-    for m in _re.finditer(r"static const u8 (sText_\w+)\[\] = _\((.*?)\);", nbsrc, _re.S):
+    #  T-224: and the documents tools/gbadocs.py has placed, whose words are generated into their own header.
+    docs_h = os.path.join(ROOT, "engineGba/src/data/notebook_documents.h")
+    if os.path.exists(docs_h):
+        nbsrc += open(docs_h, encoding="utf-8").read()
+    for m in _re.finditer(r"static const u8 (s(?:Doc)?Text_\w+)\[\] = _\((.*?)\);", nbsrc, _re.S):
         body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
         if reflow(body, 196) > 47:
             bad.append((m.group(1), "%d lines, and the NOTEBOOK holds 47" % reflow(body, 196)))
@@ -1030,7 +1034,10 @@ def check_numbered():
     nb = os.path.join(ROOT, "engineGba/src/notebook.c")
     if os.path.exists(nb):
         src = open(nb, encoding="utf-8").read()
-        for m in _re.finditer(r"static const u8 (sText_\w+)\[\] = _\((.*?)\);", src, _re.S):
+        dh = os.path.join(ROOT, "engineGba/src/data/notebook_documents.h")
+        if os.path.exists(dh):
+            src += open(dh, encoding="utf-8").read()
+        for m in _re.finditer(r"static const u8 (s(?:Doc)?Text_\w+)\[\] = _\((.*?)\);", src, _re.S):
             body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
             size = len(_re.sub(r"\\[pnl]", "x", body)) + 1
             if size >= 1000:

@@ -353,6 +353,15 @@ sheet (trap 17), a painted label — list what ELSE reads it.** *For music:* `gr
 `midi.cfg`, `ld_script.ld`* — the last is the one that fails as *defined in discarded section*), **and
 `tools/port_music.py`'s `MAP_MUSIC` says which maps play which of ours.**
 
+### 26. A line break the reader reflows is a space
+
+***Symptom (caught in a dry run):*** *a numbered complaint whose items run together into one paragraph.* **`book_reader.c`
+reflows every page itself and breaks a line only at `\p`; `\n` is read as a space**, *which is right for prose written
+to a message box's width and wrong for a list.* **A line meant to stand alone takes `\p`** — *`tools/gbadocs.py` does
+this for the NOTEBOOK's documents.* **And the charmap has no `[` or `]`**: *a draft's `[DATE]` fails the compiler with
+`unknown character U+5B`, so the tool checks every character against `charmap.txt` first and names the one it cannot
+print.*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**

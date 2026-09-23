@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.260 — 2026-09-23
+
+### The documents can be placed with one command
+
+- ***T-224: `tools/gbadocs.py`*** — **the 24 documents' flags, slots, signs, silent filings and the museum card's hook, placing exactly what it is given approved text for.** *A page is read where it is found, full screen, and filed with the NOTEBOOK's own line — no new wording.* **Every spot validated; played with placeholders; all 21 real drafts dry-run** — *20 build and fit, PROSPECTUS 3 waits for its dates.*
+- ***`check_lexicon` measures placed documents too***, *and the tool refuses a character the game cannot print.* **`engine.md` trap 26**: *a line break the reader reflows is a space.*
+
+---
+
 ## v11.259 — 2026-09-23
 
 ### The two story documents catch up
