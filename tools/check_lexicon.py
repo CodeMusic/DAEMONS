@@ -1281,18 +1281,34 @@ def check_articles():
     pats = ["src/*.c", "data/text/*.inc", "data/maps/*/text.inc", "src/data/text/*.h", "src/data/*.h"]
     for pat in pats:
         for f in sorted(glob.glob(os.path.join(GBA, pat))):
-            for i, line in enumerate(open(f, encoding="utf-8", errors="ignore").read().split("\n"), 1):
+            src = open(f, encoding="utf-8", errors="ignore").read()
+            #  T-242: and across a break. A line that ends "a" and a line that begins with the name are one phrase to the
+            #  player, so a break and the quote-newline-.string that follows it read as one space. Each join is marked
+            #  \x01 in place of the newline it swallows, so a line number still counts both.
+            joined = re.sub(r'\\[nlp]"[ \t]*\n[ \t]*(?:\.string[ \t]+)?"', " \x01", src)
+            for line_start, line in _lines_with_offsets(joined):
                 if '"' not in line:
                     continue
-                flat = re.sub(r"\\[nlp]", " ", line)
+                flat = re.sub(r"\\[nlp]", " ", line).replace("\x01", "")
                 for m in re.finditer(r"\b([Aa]n?) (?:\{[A-Z_0-9 ]+\})?([A-Z][A-Z.]+)\b", flat):
                     art, word = m.group(1).lower(), m.group(2)
                     if word in ARTICLE_LETTERS or len(word) < 2:
                         continue
-                    vowel = word[0] in "AEIO" or word.startswith("HONEST") or word.startswith("HOUR")
+                    #  U is a vowel unless it is said "you": a USER, a UNION -- but an UPTIME (T-242: "a UPTIME" shipped,
+                    #  because this line used to call every U a consonant).
+                    you = word.startswith(("USE", "USU", "UNI", "UTI", "URA", "URI", "UBI", "UFO", "UKU"))
+                    vowel = word[0] in "AEIO" or (word[0] == "U" and not you) or word.startswith("HONEST") or word.startswith("HOUR")
                     if (art == "an") != vowel:
-                        out.append(("%s:%d" % (os.path.relpath(f, GBA), i), "%s %s" % (m.group(1), word)))
+                        n = joined[:line_start].count("\n") + joined[:line_start].count("\x01") + 1
+                        out.append(("%s:%d" % (os.path.relpath(f, GBA), n), "%s %s" % (m.group(1), word)))
     return out
+
+
+def _lines_with_offsets(text):
+    pos = 0
+    for line in text.split("\n"):
+        yield pos, line
+        pos += len(line) + 1
 
 
 def main():
