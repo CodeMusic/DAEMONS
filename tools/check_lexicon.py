@@ -953,26 +953,56 @@ def check_numbered():
                     m = _re.search(r"\b(PATCH\d+|TM\d\d|HM\d\d)", line)
                     if m:
                         bad.append(("%s" % os.path.basename(dp), "says %s" % m.group(1)))
-    #  T-219: the TEXTBOOK builds each floor's board page in gStringVar4 and stops at 990 bytes. A board that
-    #  grows past that loses its last topic silently -- so it is measured here, from the labels the notebook
-    #  names, and not from a list kept by hand.
-    nb = os.path.join(ROOT, "engineGba/src/notebook.c")
-    nbsrc = open(nb, encoding="utf-8").read() if os.path.exists(nb) else ""
-    blk = _re.search(r"sBoardTopics\[8\]\[5\] =\s*\{(.*?)\n\};", nbsrc, _re.S)
+    #  T-223: the books are full screen and REFLOW their text (book_reader.c), so what must fit is a number of
+    #  LINES, not bytes. A topic prints across one spread -- 7 lines on the left page, 9 on the right, 94px
+    #  wide -- and a line past that is simply not drawn. A NOTEBOOK entry pages, but holds at most 47 lines at
+    #  196px. Both are measured by the same wrap the game does, from the tables the game reads.
+    src_pv = open(os.path.join(ROOT, "tools/port_vocab.py"), encoding="utf-8").read()
+    ns_pv = {"__name__": "pv", "__file__": os.path.join(ROOT, "tools/port_vocab.py")}
+    exec(compile(src_pv.split("# ------------------------------------------------------- names, derived")[0], "port_vocab.py", "exec"), ns_pv)
+    tw = ns_pv["textwidth"]
+
+    def reflow(body, width):
+        lines, cur = 0, 0
+        for para in _re.split(r"\\p", body):
+            words = [w for w in _re.split(r"\\[nl]| ", para) if w]
+            if not words:
+                continue
+            cur = 0
+            lines += 1
+            for w in words:
+                ww = tw(w)
+                if cur and cur + tw(" ") + ww > width:
+                    lines += 1
+                    cur = ww
+                else:
+                    cur = cur + (tw(" ") if cur else 0) + ww
+        return lines
+
+    texts = {}
+    for dp, dn, fn in os.walk(os.path.join(ROOT, "engineGba/data/maps")):
+        for f in fn:
+            if f == "text.inc":
+                t = open(os.path.join(dp, f), encoding="utf-8").read()
+                for m in _re.finditer(r"^(\w+)::\n((?:\s+\.string \".*\"\n)+)", t, _re.M):
+                    texts[m.group(1)] = "".join(_re.findall(r'\.string "(.*)"', m.group(2))).replace("$", "")
+    br = os.path.join(ROOT, "engineGba/src/book_reader.c")
+    brsrc = open(br, encoding="utf-8").read() if os.path.exists(br) else ""
+    blk = _re.search(r"sTopics\[TB_CHAPTERS \+ 1\]\[TB_TOPICS\] =\s*\{(.*?)\n\};", brsrc, _re.S)
     if blk:
-        texts = {}
-        for dp, dn, fn in os.walk(os.path.join(ROOT, "engineGba/data/maps")):
-            for f in fn:
-                if f == "text.inc":
-                    t = open(os.path.join(dp, f), encoding="utf-8").read()
-                    for m in _re.finditer(r"^(\w+)::\n((?:\s+\.string \".*\"\n)+)", t, _re.M):
-                        texts[m.group(1)] = "".join(_re.findall(r'\.string "(.*)"', m.group(2)))
         for row in _re.finditer(r"\[(\d)\] = \{(.*?)\}", blk.group(1)):
-            size = 0
             for lab in [x.strip() for x in row.group(2).split(",")]:
-                size += len(_re.sub(r"\\[pnl]", "x", texts.get(lab, "")).replace("$", "")) + 1
-            if size >= 990:
-                bad.append(("%sF board" % row.group(1), "%d bytes, and the TEXTBOOK page stops at 990" % size))
+                head, _, body = texts.get(lab, "").partition("\\p")
+                n = reflow(body, 94)
+                if n > 16:
+                    bad.append((lab, "%d lines, and a TEXTBOOK spread holds 16" % n))
+                if tw(head) > 94:
+                    bad.append((lab, "heading %dpx, and a page is 94" % tw(head)))
+    nbsrc = open(os.path.join(ROOT, "engineGba/src/notebook.c"), encoding="utf-8").read()
+    for m in _re.finditer(r"static const u8 (sText_\w+)\[\] = _\((.*?)\);", nbsrc, _re.S):
+        body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
+        if reflow(body, 196) > 47:
+            bad.append((m.group(1), "%d lines, and the NOTEBOOK holds 47" % reflow(body, 196)))
     #  T-219: and the exam paper's own panes -- a title beside its answer letter, a question, an option.
     ex = os.path.join(ROOT, "engineGba/src/school_exam.c")
     if os.path.exists(ex):
@@ -1156,7 +1186,7 @@ def main():
 
     xbad = check_numbered()
     if not xbad:
-        print("  no dialogue says a numbered PATCH, TM or HM; every NOTEBOOK entry and TEXTBOOK page fits; the paper fits.")
+        print("  no dialogue says a numbered PATCH, TM or HM; every NOTEBOOK entry and TEXTBOOK topic fits its page; the paper fits.")
     else:
         print("\n  %d numbered or oversized string(s):\n" % len(xbad))
         for what, why in xbad:

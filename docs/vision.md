@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.245**
+**A total conversion — the living design bible, v11.246**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4674,6 +4674,16 @@ fifty-ninth would move every byte after them.* **So the keeper installs it into 
 flag is all it is** — *which is what "installed" meant all along.* ***Once in, it simply runs***: **every
 unclaimed hidden item within a screen of the player twinkles where it lies, a second after arrival and
 every second and a half after.** *The groves' trees are the next thing it will show.*
+
+#### The two books, read like books — 2026-09-22
+
+***Played, and the objection was exact*** (T-223): **a notebook page in the message box showed two lines at a
+time and never said how many were left.** *A sign may do that; a document may not — 4.24 is about how a
+document was read.* **So both books open full screen now, and the text is reflowed to the page rather than
+shown in the breaks it was written in.** *The NOTEBOOK is a ruled sheet on a spiral in CONTEXT's hue; the
+TEXTBOOK an open book in CONTENT's, opening on CONTENTS, a chapter to a floor and a topic to a spread.* **Each
+chapter carries its board's chalk mark, so the book agrees with the building.** ***§6's "one reader, not two"
+is reversed*** — *the second screen turned out to be one file drawing both.*
 
 #### What it must never do
 

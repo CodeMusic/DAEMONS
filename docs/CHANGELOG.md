@@ -5,6 +5,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.246 — 2026-09-22
+
+### 4.35 — the two books, read like books
+
+- ***T-223, on the user's playtest***: **a notebook page showed two lines at a time in the message box, with no page count.** *Both books now open full screen* (`src/book_reader.c`).
+- ***The NOTEBOOK***: **the lists stay; a chosen page opens on a ruled sheet on a spiral**, *text reflowed to the width, a page count and a turned-down corner only when there is more.*
+- ***The TEXTBOOK***: **an open book at CONTENTS — the seven floors as chapters, each with its board's chalk mark as a slate** (`tools/genbookicons.py`); *A opens a chapter, A on a topic prints it across the spread; LEFT and RIGHT turn; B walks back out.* **A floor not yet stood on is a ghost and will not open.**
+- ***REVERSED***: **school.md §6's "one reader, not two."** *The boards leave the notebook; the textbook holds them.*
+- ***Found in play and fixed***: **each redraw filled ~100,000 pixels one at a time and dropped presses** — *the blank page is drawn once and copied.*
+- ***`check_lexicon` measures lines now, not bytes***: **a topic must fit its spread, an entry the notebook** — *both proved by tightening them until they fired.*
+- ***DRAFT wording***: `CONTENTS`, *and the TEXTBOOK's description.*
+
+---
+
 ## v11.245 — 2026-09-22
 
 ### 4.35 — the door in Brazen, and the driver that opens nothing

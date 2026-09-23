@@ -177,13 +177,25 @@ of the thing he corrupted, and the game never once says so.***
 
 **One key item, on the top floor**, where the brief put it.
 
-***What it actually does, and this is the cheap answer rather than a compromise:*** **taking the
+~~***What it actually does, and this is the cheap answer rather than a compromise:*** **taking the
 TEXTBOOK unlocks the full text of every board topic, on every floor you have visited, inside the
-RESEARCH NOTEBOOK.** *Using the item opens the notebook at `SCHOOL NOTES`.*
+RESEARCH NOTEBOOK.** *Using the item opens the notebook at `SCHOOL NOTES`.*~~
 
-**One reader, not two.** *A second full-screen text UI would cost a second screen's worth of code
-and give the player a second place to look for the same sentence.* **The item exists for the
-fiction and for the pickup; the pages live where every other page lives.**
+~~**One reader, not two.** *A second full-screen text UI would cost a second screen's worth of code
+and give the player a second place to look for the same sentence.*~~ ***REVERSED on playtest,
+2026-09-22 (T-223).*** **The user played it and the objection was to the reader both books shared**:
+*the message box, two lines at a time, with no idea how many pages were left.* **So both books got a
+full screen, and once the notebook had one the textbook's was a small step more** — *the "second
+screen's worth of code" turned out to be one file, `book_reader.c`, drawing both.*
+
+***What it does now.*** **The TEXTBOOK opens on an open book at `CONTENTS`**: *the seven floors as
+chapters, four on the left page and three on the right, each with its board's chalk mark as a small
+slate* (`tools/genbookicons.py`). **The D-pad moves across the contents as it would across a real page;
+A opens a chapter** — *its five topics on the left, its slate drawn large on the right* — **and A on a
+topic prints it across the spread, left page then right.** *LEFT and RIGHT turn to the neighbouring
+chapter or topic; B walks back out one level at a time.* **A floor not yet stood on is printed faintly,
+its slate a ghost, and will not open.** ***The boards are no longer copied into the notebook*** — *a
+book does not need a copy of itself in another book.*
 
 *And it means the exam is always studiable from anywhere*, which is what makes the leave-and-return
 rule in §7 mean something.
@@ -386,6 +398,15 @@ the local daemons that also turn up** — *a bounded bestiary pass instead of 14
 | **Encounters** | *`wild_encounters.json`, one table per grove* |
 
 ## 9. THE RESEARCH NOTEBOOK
+
+### How a page is read — full screen, on ruled paper (T-223)
+
+***Settled on playtest 2026-09-22.*** **The section and page lists stay as they were; a chosen page
+opens full screen on one ruled sheet on a spiral**, *in CONTEXT's hue.* **The text is REFLOWED to the
+sheet, not shown in the two-line breaks it was written in**: *a line break is a space and a new page is
+a new line, so ten lines hold what took five presses of A.* **A page count appears only when there is
+more than one page, and a turned-down corner says there is more.** *A turns on, B goes back to the
+list.* **Nothing is rewritten** — *the same bytes, on a bigger surface.*
 
 ### What it is, and why it is not HEARSAY
 
