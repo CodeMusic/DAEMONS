@@ -1038,6 +1038,40 @@ def check_numbered():
     return bad
 
 
+#  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
+#  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
+#  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
+#  so the source half looks for exactly that, and the ROM half compares the two built charts when both exist.
+def check_one_chart():
+    out = []
+    src = open(os.path.join(GBA, "src/battle_main.c"), encoding="utf-8", errors="ignore").read()
+    for name in ("gTypeEffectiveness", "gTypeNames"):
+        m = re.search(r"const u8 %s\[[^\]]*\](?:\[[^\]]*\])? =\s*\{(.*?)\n\};" % name, src, re.S)
+        if not m:
+            out.append((name, "not found in src/battle_main.c -- the check cannot see the chart"))
+        elif re.search(r"^\s*#\s*if|FIRERED|LEAFGREEN|GAME_VERSION", m.group(1), re.M):
+            out.append((name, "has an edition conditional inside it"))
+    roms = [(os.path.join(GBA, "%s.elf" % n), os.path.join(GBA, "%s.gba" % n)) for n in ("daemonsContent", "daemonsContext")]
+    if all(os.path.exists(e) and os.path.exists(g) for e, g in roms):
+        tables = []
+        for elf, gba in roms:
+            try:
+                nm = subprocess.run(["arm-none-eabi-nm", "-S", elf], capture_output=True, text=True).stdout
+            except OSError:
+                return out
+            rom, got = open(gba, "rb").read(), {}
+            for line in nm.splitlines():
+                f = line.split()
+                if len(f) == 4 and f[3] in ("gTypeEffectiveness", "gTypeNames"):
+                    a, n = int(f[0], 16) - 0x08000000, int(f[1], 16)
+                    got[f[3]] = rom[a:a + n]
+            tables.append(got)
+        for name in ("gTypeEffectiveness", "gTypeNames"):
+            if tables[0].get(name) != tables[1].get(name):
+                out.append((name, "differs between daemonsContent.gba and daemonsContext.gba"))
+    return out
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1196,6 +1230,14 @@ def main():
         for what, why in gbad:
             print("   %-24s %s" % (what, why))
 
+    obad = check_one_chart()
+    if not obad:
+        print("  the type chart is one table, and both editions' ROMs carry it byte for byte.")
+    else:
+        print("\n  %d break(s) in invariant 3:\n" % len(obad))
+        for what, why in obad:
+            print("   %-24s %s" % (what, why))
+
     xbad = check_numbered()
     if not xbad:
         print("  no dialogue says a numbered PATCH, TM or HM; every NOTEBOOK entry and TEXTBOOK topic fits its page; the paper fits.")
@@ -1210,7 +1252,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad) else 0
 
 
 if __name__ == "__main__":

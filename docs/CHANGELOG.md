@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.255 — 2026-09-23
+
+### The log stays in the lab, and the chart is watched
+
+- ***The POWER PLANT played *1001 Fatal Error*** — *the ruined lab's track, carried there because FireRed shares the slot.* **It is on the hideout's track now, as on the Game Boy.** *Every other map playing one of ours matches the Game Boy map for map* (*T-226*).
+- ***T-227: invariant 3 has a guard on the GBA*** — **`check_lexicon` refuses an edition conditional inside the chart, and compares both ROMs' charts byte for byte.** *Identical today; proved by breaking it.*
+
+---
+
 ## v11.254 — 2026-09-23
 
 ### SLATE's theme goes home

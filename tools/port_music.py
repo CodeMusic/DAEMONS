@@ -83,7 +83,7 @@ TRACKS = [
 # So mus_pewter is RESTORED from upstream, and SLATE is mus_slate.
 VANILLA = ["mus_pewter"]
 
-# Which maps play each town's theme. A town's houses play the town's music --
+# Which maps play each town's theme -- and one building that is not a town's. A town's houses play the town's music --
 # vanilla's own grouping, kept -- so a theme follows its town indoors and no
 # further. The maps not listed keep whatever vanilla gave them.
 MAP_MUSIC = {
@@ -92,6 +92,11 @@ MAP_MUSIC = {
     "MUS_BRAZEN": ["SaffronCity", "SaffronCity_House", "SaffronCity_Dojo",
                    "SaffronCity_CopycatsHouse_1F", "SaffronCity_CopycatsHouse_2F",
                    "SaffronCity_PokemonTrainerFanClub", "SaffronCity_MrPsychicsHouse"],
+    # 1001 Fatal Error is the ruined lab's -- "the building whose terminals carry the log" (song-status.md).
+    # FireRed files the POWER PLANT under the Mansion's track, so the port carried the log's music there
+    # too; the Game Boy, the record, files it with the hideout (Dungeon1), and so does this. The Route 21
+    # station keeps the lab's: it is a room cut from the Mansion's basement, terminals and all (T-74).
+    "MUS_ROCKET_HIDEOUT": ["PowerPlant"],
 }
 
 SEMI = {"C_": 0, "C#": 1, "D_": 2, "D#": 3, "E_": 4, "F_": 5,
