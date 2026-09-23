@@ -1142,6 +1142,48 @@ def _load_textwidth():
     return ns["textwidth"]
 
 
+#  T-241: a word said twice, with a line break between -- "by way of the\l THE BLACKOUT." ROCK TUNNEL took the name
+#  THE BLACKOUT and vanilla's "the" in front of it survived, on its own line where no one-line check looks. Read with
+#  every break flattened to a space. Deliberate ones are named here; a doubling vanilla already had is vanilla's.
+DOUBLED_ON_PURPOSE = {
+    "PokemonMansion_B1F_Text_MewtwoIsFarTooPowerful",   # the glitch counting in binary
+    "ViridianCity_School_Text_Spelling_Board",          # a board's title, then its first word
+}
+
+
+def check_doubled():
+    import glob as _glob
+    def blocks(text):
+        out, label, buf = {}, None, []
+        for line in text.split("\n") + ["END::"]:
+            m = re.match(r"^(\w+)::?\s*$", line.strip())
+            if m:
+                if label:
+                    out[label] = " ".join(buf)
+                label, buf = m.group(1), []
+                continue
+            st = re.match(r'\s*\.string\s+"(.*)"', line)
+            if st and label:
+                buf.append(st.group(1))
+        return out
+    def doubles(body):
+        flat = re.sub(r"\{[^}]*\}", "", re.sub(r"\\[nlp]", " ", body)).replace("$", "")
+        return {" ".join(m.group(0).lower().split()) for m in re.finditer(r"\b([A-Za-z]+)\s+\1\b", flat, re.I)}
+    bad = []
+    files = sorted(_glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + _glob.glob(os.path.join(GBA, "data/text/*.inc"))
+                   + _glob.glob(os.path.join(GBA, "data/scripts/*.inc")))
+    for f in files:
+        rel = os.path.relpath(f, GBA)
+        up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True).stdout
+        seen = set().union(*[doubles(b) for b in blocks(up).values()]) if up else set()
+        for label, body in blocks(open(f, encoding="utf-8", errors="ignore").read()).items():
+            if label in DOUBLED_ON_PURPOSE:
+                continue
+            for d in sorted(doubles(body) - seen):
+                bad.append(("%s %s" % (rel, label), '"%s"' % d))
+    return bad
+
+
 #  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
 #  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
 #  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
@@ -1435,6 +1477,14 @@ def main():
         for what, why in mbad:
             print("   %-52s %s" % (what, why))
 
+    dbad2 = check_doubled()
+    if not dbad2:
+        print("  no line says a word twice across a break.")
+    else:
+        print("\n  %d word(s) said twice:\n" % len(dbad2))
+        for what, why in dbad2:
+            print("   %-60s %s" % (what, why))
+
     jbad = check_joins()
     if not jbad:
         print("  no line of dialogue runs into the next without a break.")
@@ -1465,7 +1515,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2) else 0
 
 
 if __name__ == "__main__":
