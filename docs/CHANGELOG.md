@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.262 — 2026-09-23
+
+### The rest of what that sweep bent
+
+- ***T-231: three more lines from September 10*** — **"got an REPLAY!", "received a INTERRUPT", and a HEARSAY story placed at "JITTER SPA"**, *a move's new name written over the place that is KETTLE SPRING on every map.* **Fixed; found by diffing every interface and dialogue line against upstream for a learned rename.**
+- ***`check_lexicon` refuses an article that disagrees with its name***, *escapes flattened first* — **proved by putting the first one back.**
+- ***The field-test route, walked on a fresh debug game***: *GOTO to CALLOW, its vanilla tune, the PORT (and T-230), OPUS on the shelf, the school's door.*
+
+---
+
 ## v11.261 — 2026-09-23
 
 ### The PORT withdraws again

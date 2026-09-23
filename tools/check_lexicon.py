@@ -1133,6 +1133,32 @@ def check_ids():
     return out
 
 
+#  A rename changes the word after "a" or "an" and nothing changes the article. ENCORE became REPLAY and the
+#  battle said "got an REPLAY!"; the POKe FLUTE became INTERRUPT and Lavender said "received a INTERRUPT" --
+#  both for two weeks (found 2026-09-23). Escapes are flattened first: in "got\\nan" the n of the escape sits
+#  against the article and no word boundary exists, which is CLAUDE.md's escape trap and what hid the first one.
+#  Initialisms are read letter by letter (an HP, an S.S. TICKET), and a U that says "you" takes "a" (a USER).
+ARTICLE_LETTERS = {"HP", "MP", "RPG", "NPC", "HM", "SOS", "FM", "X", "L", "R", "S.S.", "S.S", "MRI", "LCD"}
+def check_articles():
+    import glob
+    out = []
+    pats = ["src/*.c", "data/text/*.inc", "data/maps/*/text.inc", "src/data/text/*.h", "src/data/*.h"]
+    for pat in pats:
+        for f in sorted(glob.glob(os.path.join(GBA, pat))):
+            for i, line in enumerate(open(f, encoding="utf-8", errors="ignore").read().split("\n"), 1):
+                if '"' not in line:
+                    continue
+                flat = re.sub(r"\\[nlp]", " ", line)
+                for m in re.finditer(r"\b([Aa]n?) (?:\{[A-Z_0-9 ]+\})?([A-Z][A-Z.]+)\b", flat):
+                    art, word = m.group(1).lower(), m.group(2)
+                    if word in ARTICLE_LETTERS or len(word) < 2:
+                        continue
+                    vowel = word[0] in "AEIO" or word.startswith("HONEST") or word.startswith("HOUR")
+                    if (art == "an") != vowel:
+                        out.append(("%s:%d" % (os.path.relpath(f, GBA), i), "%s %s" % (m.group(1), word)))
+    return out
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1307,6 +1333,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    abad = check_articles()
+    if not abad:
+        print("  every a and an agrees with the name after it.")
+    else:
+        print("\n  %d article(s) that disagree with the name after them:\n" % len(abad))
+        for what, why in abad:
+            print("   %-52s %s" % (what, why))
+
     xbad = check_numbered()
     if not xbad:
         print("  no dialogue says a numbered PATCH, TM or HM; every NOTEBOOK entry and TEXTBOOK topic fits its page; the paper fits.")
@@ -1321,7 +1355,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad) else 0
 
 
 if __name__ == "__main__":
