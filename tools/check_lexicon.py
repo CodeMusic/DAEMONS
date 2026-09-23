@@ -1003,6 +1003,18 @@ def check_numbered():
         body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
         if reflow(body, 196) > 47:
             bad.append((m.group(1), "%d lines, and the NOTEBOOK holds 47" % reflow(body, 196)))
+    #  T-224: and the entries that are a MAP's own text -- the syllabi, the Mansion's logs, the lab's signs. They are
+    #  filed by name from sEntries, so every name there that is not a local sText_ is read from the maps' text.inc.
+    blkE = _re.search(r"static const struct NotebookEntry sEntries\[\] =\s*\{(.*?)\n\};", nbsrc, _re.S)
+    if blkE:
+        for row in _re.finditer(r"\{ NB_\w+,\s*NB_KIND_TEXT,\s*\d+,[^}]*?,\s*(\w+)\s*\}", blkE.group(1)):
+            lab = row.group(1)
+            if lab.startswith("sText_"):
+                continue
+            if lab not in texts:
+                bad.append((lab, "is filed in the NOTEBOOK and no map's text.inc defines it"))
+            elif reflow(texts[lab], 196) > 47:
+                bad.append((lab, "%d lines, and the NOTEBOOK holds 47" % reflow(texts[lab], 196)))
     #  T-219: and the exam paper's own panes -- a title beside its answer letter, a question, an option.
     ex = os.path.join(ROOT, "engineGba/src/school_exam.c")
     if os.path.exists(ex):

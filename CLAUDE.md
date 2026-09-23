@@ -18,8 +18,8 @@ is an argument about consciousness. **Design is well ahead of implementation.**
 - **`docs/lineage.md`** is where the ideas came from — three blogs, 2011–2026.
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
-  budgets, where a variable actually lands, every fixed width, and the eight
-  traps that have already cost this project time. **Read it before adding a
+  budgets, where a variable actually lands, every fixed width, and the traps
+  that have already cost this project time (twenty-four of them now). **Read it before adding a
   static, a name, or a line of text to a pane.** Its numbers are written by
   `tools/gbabudget.py --write` rather than typed.
 
@@ -144,6 +144,11 @@ MANSION is `sMapsecName_POK__MON_MANSION`.
 the start of a line is invisible to a pattern looking for it. This has now hidden
 substitutions in three separate tools. Flatten before you match, and **re-run
 every tool until it reports nothing** — that is what caught all three.
+
+**Run `python3 tools/check_generators.py` before committing.** It runs every tool that has a
+`--write` mode in report mode (about three and a half minutes) and fails if one crashes or writes
+anything. A generated file stays correct on disk long after the tool that wrote it has stopped
+working, and nothing else will tell you (T-212, T-213).
 
 **`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its
 own `charmap.txt` exactly as Gen 1 does, so grepping a `.gba` for ASCII finds

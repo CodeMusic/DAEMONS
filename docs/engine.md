@@ -300,6 +300,45 @@ a new input handler competes with it and loses.
 about is fixed, and nothing tells it.** *This one would have steered the exam's design toward SELECT
 for a problem that had been solved a week earlier.*
 
+### 20. A generator that has not run in two days, and a correct file on disk
+
+***Symptom:*** *none, until somebody needs the tool. The header it wrote is right; the tool that wrote it raises the
+moment it is called.* **T-212 and T-213.** *`genstreaks` had raised `NameError` since T-184 changed a function it lifts
+out of `gbasprite.py`; `genmentors` had been repainting its OWN output instead of vanilla's; `gbainterior.py` with no
+arguments had stopped at its second building for weeks.* ***Nothing re-runs a generator nobody is editing.***
+**`python3 tools/check_generators.py`** *runs every tool that has a `--write` mode in report mode and fails if one
+exits non-zero, takes over three minutes, or WRITES anything* — **run it before any session that ends in a commit.**
+*And a generator reads vanilla from `upstream/master`, never from the file it writes.*
+
+### 21. `StringCopyN` is not a bounded string copy
+
+***Symptom:*** *garbage after a title, or a long text silently cut at 255.* **`StringCopyN(dest, src, n)` copies
+exactly `n` bytes — past `EOS` if the source is shorter — and never terminates; and `n` is a `u8`.** *T-223's book
+reader would have truncated every 1000-byte NOTEBOOK entry.* **Write the four-line bounded copy (`CopyBounded` in
+`src/book_reader.c`) and stop at either.**
+
+### 22. A full-screen redraw that swallows the button presses
+
+***Symptom:*** *a screen that works, and drops about one press in three.* **`FillWindowPixelRect` fills pixel by
+pixel**, *so painting a 240x160 book spread from rectangles took ~15 frames* — **and a press that starts and ends
+inside those frames is never seen.** ***Draw the unchanging background once, keep it on the heap, and `CpuFastCopy`
+it per redraw*** (`Background()` in `src/book_reader.c`); *then print only the text.*
+
+### 23. A new map needs the old save's scene variables, not just its flags
+
+***Symptom:*** *a debug game that cannot leave CALLOW northward.* **Vanilla's old man lies across the road until
+`VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN` moves past 1, and only OAK's parcel moves it.** *A debug kit that sets flags and
+badges and not the SCENE variables leaves every vanilla road-block standing.* **The debug kit now sets this one;**
+*look for the others the same way — `grep -rn VAR_MAP_SCENE data/maps/*/map.json` shows every trigger that waits
+on one.*
+
+### 24. The TOOLKIT's slots are part of the save
+
+***Symptom (caught before shipping):*** *a ninth DRIVER that would have broken every existing save.* **`BAG_TMHM_COUNT`
+(58) sizes an array INSIDE `SaveBlock1`**, *so a 59th slot moves every byte after it.* **REVEAL became a flag
+instead.** *Any pocket's count, any `SaveBlock` array's length, is a save-format change — `tools/gbabudget.py` says
+where the free space actually is.*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
@@ -331,6 +370,20 @@ for a problem that had been solved a week earlier.*
 - **Continuing a save plays FireRed's "Previously on your quest..." recap first**, *and the position read during it is the recap's.* **B skips it.**
 - **Save in-game once you reach where the test starts**, *and the next batch reloads the rebuilt ROM over the same scratch file and continues —* **the theatre survives the reload.**
 - **Of a house's two doormat tiles, only ONE is the arrow warp.** *Read the behaviour, not the picture.*
+
+### And what the second day of driving taught — 2026-09-23
+
+- ***The remote could stall.*** **`run.sh` wrote the command file in place, and the script read it half-written as
+  "0 commands" and then waited on that batch's id forever.** *It writes a temporary file and `mv`s it now.*
+- **A debug new game shows BLACK for about forty seconds after the rival's name** *while the kit fills every box* —
+  *`gMain.callback2` is already `CB2_Overworld` and the player can move; the fade simply has not finished.*
+- **The START menu REMEMBERS its cursor**, *so a batch that assumes INDEX is on top opens whatever was used last.*
+  **Screenshot the menu before choosing from it.**
+- ***Keep wild battles out of a walk with REPEL, not by holding B***: *the remote holds one button at a time.*
+  **`poke16` the step counter** — `gSaveBlock1Ptr + 0x1000 + (VAR_REPEL_STEP_COUNT - 0x4000) * 2` — *and a level-50
+  lead walks anywhere early untouched.* **Trainers still see you**; *a batch of A presses wins those.*
+- **The DEBUG menu's item page cannot add a PLUGIN or a DRIVER** *(the list stops at the scarves)* — **test those on
+  a NEW debug game, whose kit now carries all eight DRIVERs.**
 
 ## 6. Two habits worth keeping
 
