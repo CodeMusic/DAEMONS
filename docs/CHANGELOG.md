@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.265 — 2026-09-23
+
+### The debug game starts in under two seconds
+
+- ***T-237, cut again***: **the 8½-second fill was still a black screen on a phone, and it had cost the boxed daemons their level-50 routines.** *Each box record is now written directly and encrypted once* **— about 105 frames after the last A, and every boxed daemon knows level 50's moves again.** *Played: box 1 holds thirty valid Lv50 daemons; the met levels still alternate 40/50 for OPUS's margins.*
+
+---
+
 ## v11.264 — 2026-09-23
 
 ### The debug game comes back on a phone
