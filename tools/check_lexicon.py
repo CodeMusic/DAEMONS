@@ -1072,6 +1072,57 @@ def check_one_chart():
     return out
 
 
+#  Flags and vars are plain numbers, and two names on one number fail SILENTLY: the second setflag answers the
+#  first's goto_if_set. This project has added forty-one flags and thirty vars by hand (eleven for T-224's
+#  documents alone, and twenty-four documents still to come), so every name we added is checked against every
+#  other name for its number, and every hidden item for its own flag (2026-09-23; clean when written).
+def check_ids():
+    out = []
+    for hdr, prefix in (("include/constants/flags.h", "FLAG_"), ("include/constants/vars.h", "VAR_")):
+        ours = open(os.path.join(GBA, hdr)).read()
+        up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + hdr], capture_output=True, text=True).stdout
+        if not up:
+            continue
+        defs = dict(re.findall(r"^#define\s+(%s\w+|\w+_START)\s+\(?([^/\n]+?)\)?\s*(?://.*)?$" % prefix, ours, re.M))
+        def val(n, depth=0):
+            v = defs.get(n)
+            if v is None or depth > 8:
+                return None
+            v = v.strip()
+            try:
+                return int(v, 0)
+            except ValueError:
+                pass
+            m = re.match(r"(\w+)\s*\+\s*(\w+)$", v)
+            if m:
+                a, b = (int(x, 0) if re.match(r"(0x[0-9a-fA-F]+|\d+)$", x) else val(x, depth + 1) for x in m.groups())
+                return None if a is None or b is None else a + b
+            return val(v, depth + 1)
+        theirs = set(re.findall(r"^#define\s+(%s\w+)" % prefix, up, re.M))
+        seen = {}
+        for n in defs:
+            if not n.startswith(prefix):
+                continue
+            v = val(n)
+            if v is not None:
+                seen.setdefault(v, []).append(n)
+        for v, names in seen.items():
+            if len(names) > 1 and any(n not in theirs for n in names):
+                out.append((hex(v), " and ".join(names)))
+    flags = {}
+    for f in sorted(os.listdir(os.path.join(GBA, "data/maps"))):
+        path = os.path.join(GBA, "data/maps", f, "map.json")
+        if not os.path.exists(path):
+            continue
+        for b in json.load(open(path)).get("bg_events") or []:
+            if b.get("type") == "hidden_item":
+                flags.setdefault(b["flag"], []).append("%s (%d,%d)" % (f, b["x"], b["y"]))
+    for flag, where in flags.items():
+        if len(where) > 1:
+            out.append((flag, "hidden in %s" % ", ".join(where)))
+    return out
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1238,6 +1289,14 @@ def main():
         for what, why in obad:
             print("   %-24s %s" % (what, why))
 
+    ibad = check_ids()
+    if not ibad:
+        print("  every flag and var we added has a number of its own, and every hidden item its own flag.")
+    else:
+        print("\n  %d number(s) answering to two names:\n" % len(ibad))
+        for what, why in ibad:
+            print("   %-24s %s" % (what, why))
+
     xbad = check_numbered()
     if not xbad:
         print("  no dialogue says a numbered PATCH, TM or HM; every NOTEBOOK entry and TEXTBOOK topic fits its page; the paper fits.")
@@ -1252,7 +1311,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad) else 0
 
 
 if __name__ == "__main__":

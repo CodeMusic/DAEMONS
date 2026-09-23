@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.257 — 2026-09-23
+
+### Every flag its own number
+
+- ***T-229: `check_lexicon` refuses two names on one flag or var number***, *and any hidden item sharing another's flag.* **Audited first: clean** — *41 flags, 30 vars and 183 hidden items.* *Proved by breaking it twice.*
+- ***The debug kit's lab, played***: *CRYSTAL greets a new debug game with the post-opening line and rates the INDEX; nothing else fires* (*T-228*).
+
+---
+
 ## v11.256 — 2026-09-23
 
 ### A debug game that starts where it says it does
