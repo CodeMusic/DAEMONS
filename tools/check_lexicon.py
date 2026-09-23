@@ -1062,6 +1062,45 @@ def check_numbered():
     return bad
 
 
+#  T-240: a .string that ends without \n, \l, \p or $ runs straight into the next one. VERA's "It was only" met
+#  "tired." after an #endif and the player read "onlytired" -- since 9f9544aa8, and not one width check or name
+#  check could see it, because each line alone was fine. Vanilla has none, so the rule is: none. Each side of an
+#  #ifdef is read as its own path, because that is where this one hid.
+def check_joins():
+    import glob as _glob
+    bad = []
+    files = sorted(_glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + _glob.glob(os.path.join(GBA, "data/text/*.inc"))
+                   + _glob.glob(os.path.join(GBA, "data/scripts/*.inc")))
+    for f in files:
+        lines = open(f, encoding="utf-8", errors="ignore").read().split("\n")
+        for which in (0, 1):
+            label, seq, branch = None, [], None
+            for line in lines + ["END::"]:
+                s = line.strip()
+                m = re.match(r"^(\w+)::?$", s)
+                if m:
+                    for a, b in zip(seq, seq[1:]):
+                        if a is None or b is None or re.search(r"(\\[nlp]|\$)$", a) or a.endswith(" ") or b.startswith(" "):
+                            continue
+                        if re.search(r"[A-Za-z0-9.,!?\u2026'\"\u201d]$", a) and re.match(r"[A-Za-z0-9\u201c\"]", b):
+                            bad.append(("%s %s" % (os.path.relpath(f, GBA), label), "...%s|%s..." % (a[-24:], b[:16])))
+                    label, seq = m.group(1), []
+                    continue
+                if s.startswith("#if"):
+                    branch = 0
+                elif s.startswith("#else"):
+                    branch = 1
+                elif s.startswith("#endif"):
+                    branch = None
+                elif branch is None or branch == which:
+                    mm = re.match(r'\.string\s+"(.*)"$', s)
+                    if mm and label:
+                        seq.append(mm.group(1))
+                    elif label and s and not s.startswith("@"):
+                        seq.append(None)
+    return sorted(set(bad))
+
+
 #  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
 #  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
 #  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
@@ -1347,6 +1386,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    jbad = check_joins()
+    if not jbad:
+        print("  no line of dialogue runs into the next without a break.")
+    else:
+        print("\n  %d line(s) that run into the next with no space or break:\n" % len(jbad))
+        for what, why in jbad:
+            print("   %-52s %s" % (what, why))
+
     abad = check_articles()
     if not abad:
         print("  every a and an agrees with the name after it.")
@@ -1369,7 +1416,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad) else 0
 
 
 if __name__ == "__main__":

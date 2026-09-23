@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.268 — 2026-09-23
+
+### A fault between two lines
+
+- ***T-240: VERA said "It was onlytired."*** — **both sides of an `#ifdef` ended without a line break, and the line after `#endif` began "tired."** *No check that reads one line at a time could see it.* **Fixed, proved in all four ROMs by bytes, and `check_lexicon` now refuses any `.string` that runs into the next word** — *read down each side of an `#ifdef`; vanilla has none, and this was the only one.*
+
+---
+
 ## v11.267 — 2026-09-23
 
 ### The PLUGIN text nobody sees, and the routine text everybody does
