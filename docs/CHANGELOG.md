@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.256 — 2026-09-23
+
+### A debug game that starts where it says it does
+
+- ***T-228: the debug kit finishes the opening*** — **a brand-new debug game walking north out of BLANCHE was pulled into the starter scene**, *six daemons and eight MARKS in hand.* **Trap 23's audit, done: 36 scene triggers, five in a late save's way, all set now** — *the escort, the lab, CALLOW's parcel, SLATE's gym guide and the tea on BRAZEN's gates* — ***and MOM's running shoes, which a debug game walked straight past.*** *Played on a second new game.*
+
+---
+
 ## v11.255 — 2026-09-23
 
 ### The log stays in the lab, and the chart is watched

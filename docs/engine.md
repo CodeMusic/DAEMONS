@@ -330,7 +330,10 @@ it per redraw*** (`Background()` in `src/book_reader.c`); *then print only the t
 `VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN` moves past 1, and only OAK's parcel moves it.** *A debug kit that sets flags and
 badges and not the SCENE variables leaves every vanilla road-block standing.* **The debug kit now sets this one;**
 *look for the others the same way — `grep -rn VAR_MAP_SCENE data/maps/*/map.json` shows every trigger that waits
-on one.*
+on one.* ***Done 2026-09-23 (T-228)***: **the list is 36 triggers; five stood in a late save's way** — *BLANCHE's escort
+into the starter scene, CALLOW's parcel, SLATE's gym guide, the tea guards on BRAZEN's four gates, and MOM's running
+shoes walked past* — **and the kit sets all five.** *The rest are story battles, badge guards eight MARKS already pass,
+or doors that open on their own.*
 
 ### 24. The TOOLKIT's slots are part of the save
 
