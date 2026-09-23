@@ -791,6 +791,33 @@ def check_stale_names():
                 if note is not None:
                     out.append(("%s:%d" % (rel, i),
                                 "says %s; the game calls it %s%s" % (old, new, note)))
+
+    #  T-244: two more prose surfaces that live beside name tables. ABILITY DESCRIPTIONS share abilities.h with the
+    #  ability names, so only the s*Description lines are read -- PLUS's said "Powers up with MINUS." months after
+    #  MINUS became SINK. And ITEM DESCRIPTIONS live in items.json, which this pass read for its NAMES and never for
+    #  what the items say: the AURORATICKET was still bound for BIRTH ISLAND. The TOOLKIT's are skipped -- nothing
+    #  prints them (engine.md trap 27).
+    rel = "src/data/text/abilities.h"
+    p = os.path.join(GBA, rel)
+    if os.path.isfile(p):
+        for i, line in enumerate(open(p, encoding="utf-8", errors="ignore").read().split("\n"), 1):
+            m = re.search(r'static const u8 s\w+Description\[\] = _\("(.*)"\)', line)
+            if not m:
+                continue
+            for old, new in renamed.items():
+                note = hit(m.group(1), old)
+                if note is not None:
+                    out.append(("%s:%d" % (rel, i), "says %s; the game calls it %s%s" % (old, new, note)))
+    p = os.path.join(GBA, "src/data/items.json")
+    if os.path.isfile(p):
+        for it in json.load(open(p, encoding="utf-8"))["items"]:
+            if it.get("pocket") == "POCKET_TM_CASE":
+                continue
+            d = re.sub(r"\{[^}]*\}", " ", re.sub(r"\\[nlp]", " ", it.get("description_english", "")))
+            for old, new in renamed.items():
+                note = hit(d, old)
+                if note is not None:
+                    out.append(("items.json %s" % it["itemId"], "says %s; the game calls it %s%s" % (old, new, note)))
     return out
 
 
