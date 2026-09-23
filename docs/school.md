@@ -295,7 +295,7 @@ device and is never told what they are holding.**
 
 | | |
 |---|---|
-| **Three routines, taught by three lecturers** | ***Settled 2026-09-22.*** *Not PLUGINs: all fifty PLUGIN slots are spent, and the ids after HM08 hold REVEAL and one spare.* **A lecturer is a move TUTOR, which needs no item** — *but the tutor table is a `u16` per species with 15 bits used, so it widens to `u32` first (one array type and one shift in `party_menu.c`).* **ATTENTION → `LOCK ON`** *(the next routine cannot miss)*, **CATEGORIES → `BLEND`** *(its type becomes the ground's)*, **ERROR → `REBUT`** *(twice as strong if it was hit first)* — **one per third of the building, and each routine's battle effect IS its floor's lesson** |
+| **Three routines, taught by three lecturers** | ***Settled 2026-09-22.*** *Not PLUGINs: all fifty PLUGIN slots are spent, and the ids after HM08 hold REVEAL and one spare.* **A lecturer is a move TUTOR, which needs no item** — ~~*but the tutor table is a `u16` per species with 15 bits used, so it widens to `u32` first*~~ ***not needed, as built***: **a lecture is open to anyone, so `CanLearnTutorMove` answers TRUE for the three and never reads the table.** **ATTENTION → `LOCK ON`** *(the next routine cannot miss)*, **CATEGORIES → `BLEND`** *(its type becomes the ground's)*, **ERROR → `REBUT`** *(twice as strong if it was hit first)* — **one per third of the building, and each routine's battle effect IS its floor's lesson** |
 | **The ninth DRIVER, `REVEAL`** | ***Added on the user's answer — §8a.*** *The first draft recommended against, on the ground that there was no unreached place.* **The user's design makes the unreached places, and makes them findable blind** — *which answers the objection instead of overruling it* |
 | **Not a daemon** | *the one daemon you are given for passing a test is the PROOF HALL's problem, and it declined it too* |
 
@@ -320,7 +320,7 @@ which ways were open.*
 | | |
 |---|---|
 | **The routine** | ***vanilla's FORESIGHT is already `REVEAL` in this build*** (`move_names.h`). **Its battle effect is to identify a target so that what was hiding it stops working.** *The field effect is the battle effect, outdoors* |
-| **The item** | ***`ITEM_15B` (347) is unused and sits immediately after `ITEM_HM08` (346).*** **The ninth driver goes in the next id** |
+| **The item** | ~~***`ITEM_15B` (347) is unused and sits immediately after `ITEM_HM08` (346).*** **The ninth driver goes in the next id**~~ ***REVERSED in the build, 2026-09-22***: **the TOOLKIT's 58 slots are laid out inside the save, and a fifty-ninth moves every byte after them.** *REVEAL is installed into the TOOLKIT, not carried in it:* **a flag, and nothing in the bag** |
 | **The catch** | *every `ITEM_HM01..ITEM_HM08` range check and `NUM_HIDDEN_MACHINES` must learn about a ninth.* **Grep for both before anything else** |
 | **Where you get it** | ***THE READING ROOM*** — **diploma → REVEAL → the groves.** *The school becomes load-bearing for completion and stays irrelevant to the ending* |
 
@@ -651,7 +651,7 @@ school's last batch**, with the exam in it.*
 | **3** | ***the EXAM***, *LANGUAGE's section only, twelve questions* | ***BUILT and PLAYED 2026-09-22*** — **resume, score, grade**; *L and R were already free (T-179)* |
 | **4** | ***2F ATTENTION, 3F MEMORY, 4F CATEGORIES***, *with stairs* | ***BUILT and PLAYED 2026-09-22*** — **a switchback stairwell; each board its subject in chalk** |
 | **5** | ***5F LEARNING, 6F BIAS, 7F ERROR***, *the elevator, the TEXTBOOK, exam season, the Owl at the front, all seven exam sections* | ***BUILT and PLAYED 2026-09-22*** — **the whole school** |
-| **6** | ***the DIPLOMA, THE READING ROOM, the three lecturers, REVEAL*** | **the door, the tutor table, the ninth driver** |
+| **6** | ***the DIPLOMA, THE READING ROOM, the three lecturers, REVEAL*** | ***BUILT and PLAYED 2026-09-22*** — **the door, the lectures, the ninth driver** — *REVEAL as a flag, not a disc (§8a)* |
 | **7** | ***the exterior***, *redrawn to read as a building of its floors* | **art** |
 | — | ***full field test*** | |
 | **8+** | ***the fourteen groves***, *then the other seven notebook sections* | **bestiary passes; writing** |

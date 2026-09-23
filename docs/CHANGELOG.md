@@ -5,6 +5,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.245 — 2026-09-22
+
+### 4.35 — the door in Brazen, and the driver that opens nothing
+
+- ***Batch 6 of 7 is in the ROM and was PLAYED*** (T-218, T-220): **the DIPLOMA, THE READING ROOM, three lecturers, and REVEAL.**
+- ***The DIPLOMA***: *the Owl signs it without looking up;* **it opens as a certificate — name, seven parts, mark and letter — and can be read again from the bag.**
+- ***THE READING ROOM*** *(was the Trainer Fan Club)*: **an attendant who asks to see it, three lecturers on the sofas, a keeper, and six shelves that copy their pages into the NOTEBOOK** — *two new sections, `LAB NOTES` and `PEER REVIEW`, and two more LOOSE PAGES.*
+- ***The lecturers teach to anyone***: **`LOCK ON`, `BLEND`, `REBUT`.** *The tutor table did not need widening after all.*
+- ***REVERSED in the build: REVEAL is a flag, not a disc.*** **The TOOLKIT's 58 slots are laid out inside SaveBlock1; a 59th breaks every save.** *`ITEM_15B` stays unused.*
+- ***REVEAL runs***: **every unclaimed hidden item within a screen twinkles, a second after arrival and every second and a half after** (`src/reveal.c`).
+- ***Verified in play***: *the certificate; the gate admitting; REVEAL installed; BLEND taught over a known routine; a shelf into LAB NOTES and its page read; the twinkle on LURID CITY's hidden item.* **The turn-away was read, not played.**
+
+---
+
 ## v11.244 — 2026-09-22
 
 ### 4.35 — the school, whole on the inside

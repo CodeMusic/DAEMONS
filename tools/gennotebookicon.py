@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The NOTEBOOK's and the TEXTBOOK's item icons, authored in code (T-216, T-219; docs/school.md 6, 9).
+"""The NOTEBOOK's, the TEXTBOOK's and the DIPLOMA's item icons, authored in code (T-216, T-219; docs/school.md 6, 9).
 
     python3 tools/gennotebookicon.py            # preview to /tmp/notebook_icon.png
     python3 tools/gennotebookicon.py --write    # graphics/items/icons/notebook.png + its palette
@@ -9,6 +9,9 @@ the thing a researcher keeps, not a thing a shop sells.
 
 THE TEXTBOOK (T-219) is the same object in CONTENT's hue, with a title band instead of an elastic: the
 textbook holds what things ARE, the notebook what happened AROUND them. The two editions, again, and unsaid.
+
+THE DIPLOMA (T-218) is a rolled certificate tied with a ribbon, in paper and ink and nothing else: a diploma
+has no type, so it gets no hue -- the same rule the exam's own screen keeps.
 
 WHY THE COVER IS CONTEXT'S COLOUR. Invariant 5: colour carries the argument or it is not used. The Index
 holds what a daemon IS; the notebook holds what happened AROUND it -- and the two editions of this game are
@@ -84,8 +87,34 @@ def make(hue, textbook):
     return img, PAL
 
 
-for stem, key, textbook in (("notebook", "PSYCHIC", False), ("textbook", "NORMAL", True)):
-    img, PAL = make(type_hue(key), textbook)
+def make_diploma():
+    PAL = [(0, 0, 0), (16, 16, 20), (243, 241, 232), (222, 218, 204), (190, 184, 166), (60, 58, 66), (96, 92, 104)] + [(0, 0, 0)] * 9
+    W = H = 24
+    px = [[0] * W for _ in range(H)]
+    for y in range(8, 16):                  # the roll: lit along the top, shaded along the bottom
+        for x in range(4, 21):
+            px[y][x] = 2 if y < 11 else (3 if y < 14 else 4)
+    for y in range(8, 16):                  # the rolled ends, curling
+        px[y][4] = 4; px[y][20] = 3; px[y][19] = 4
+    for y in range(7, 17):                  # the ribbon round its middle
+        px[y][11] = 5; px[y][12] = 6
+    for (x, y) in ((10, 17), (9, 18), (8, 19), (13, 17), (14, 18), (15, 19)):
+        px[y][x] = 5                        # and its two tails
+    for y in range(1, 23):
+        for x in range(1, 23):
+            if px[y][x] == 0 and any(px[y + dy][x + dx] not in (0, 1) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                px[y][x] = 1
+    img = Image.new("P", (W, H))
+    flat = []
+    for c in PAL:
+        flat += list(c)
+    img.putpalette(flat + [0] * (768 - len(flat)))
+    img.putdata([c for row in px for c in row])
+    return img, PAL
+
+
+for stem, key, textbook in (("notebook", "PSYCHIC", False), ("textbook", "NORMAL", True), ("diploma", None, None)):
+    img, PAL = make_diploma() if stem == "diploma" else make(type_hue(key), textbook)
     if WRITE:
         img.save(os.path.join(GBA, "graphics/items/icons/%s.png" % stem))
         with open(os.path.join(GBA, "graphics/items/icon_palettes/%s.pal" % stem), "w", newline="\r\n") as f:

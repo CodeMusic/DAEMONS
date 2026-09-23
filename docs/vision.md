@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.244**
+**A total conversion — the living design bible, v11.245**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4659,6 +4659,21 @@ and the door never is.** *Every rule 4.35 set for the paper holds for the room i
 ***And the two books are the two editions.*** **The TEXTBOOK is bound in CONTENT's hue and the notebook in
 CONTEXT's**: *one holds what things are, the other what happened around them.* **Nothing in the game says
 so.**
+
+#### The door in Brazen, and the driver that opens nothing — 2026-09-22
+
+***Batch 6 is in the ROM and was played through*** (T-218, T-220). **Pass the paper and the Owl signs a
+DIPLOMA without looking up**, *and slides it across the desk.* **THE READING ROOM asks to see it** — *an
+attendant who has asked ten thousand times, and who steps anyone without one back onto the mat.* ***Inside,
+three lecturers sit on the sofas and teach to anyone***: **ATTENTION's `LOCK ON`, CATEGORIES' `BLEND`, ERROR's
+`REBUT`.** *Six shelves copy their pages into the NOTEBOOK, and two sections open that nothing else fills:*
+**`LAB NOTES` and `PEER REVIEW`.**
+
+***And REVEAL is not a disc.*** **The TOOLKIT's fifty-eight slots are laid out inside the save**, *and a
+fifty-ninth would move every byte after them.* **So the keeper installs it into the TOOLKIT itself, and a
+flag is all it is** — *which is what "installed" meant all along.* ***Once in, it simply runs***: **every
+unclaimed hidden item within a screen of the player twinkles where it lies, a second after arrival and
+every second and a half after.** *The groves' trees are the next thing it will show.*
 
 #### What it must never do
 
