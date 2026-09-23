@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.252 — 2026-09-23
+
+### The painted words, swept
+
+- ***Every UI sheet read by eye*** — **130 images across eighteen folders, laid out as contact sheets**, *because a word painted into a picture is invisible to every text tool this project has.* **Three more were still vanilla's:**
+  - ***The back of the USER CARD said TRAINER:*** — *now `USER:`, in its own two-pixel face* (`tools/gbacard.py`, *beside USER CARD and MARKS; the first pass only looked at the front*).
+  - ***The summary's INFO page said TRAINER MEMO*** — *now `USER MEMO`, lifted from the pill's own letters with SPEED's S* (`tools/gbalabels.py`).
+  - ***The move relearner said PP*** — *now `MP`, as the summary already did* (`tools/gbalabels.py`).
+- ***And the towns are clean***: *five cities rendered from their map data* — **every painted sign is already ours**; *the `GYM` letters still in the general tileset are used by no metatile.*
+- ***Two need a name, not a fix***: **`OT` and `PkRS`** — *in the Open log.*
+
+---
+
 ## v11.251 — 2026-09-23
 
 ### Guardrails, and two things a player saw that no sweep could

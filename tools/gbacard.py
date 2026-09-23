@@ -79,6 +79,26 @@ if count(42, 47, 96, 128, (0xE,)) == 6:
 else:
   print("  label   already MARKS")
 
+# ---- the back of the card (2026-09-23) --------------------------------------
+# Flip the card with A and the name sat under a third painted TRAINER:, which the
+# first pass never saw because it only looked at the front. A 6-row face with
+# two-pixel strokes, ink 5 on ground 0xD. The label already carries E, R and the
+# colon; U and S are drawn in its stroke. Left-aligned, as a label is: the name
+# prints at a fixed x, so USER: simply leaves it more room.
+if count(72, 78, 0, 56, (5,)) == 8:
+  BK = glyphs(72, 78, 0, 56, (5,), "TRAINER:")
+  BK['U'] = parse(["##..##"] * 5 + [".####."])
+  BK['S'] = parse([".#####", "##....", ".####.", "....##", "....##", "#####."])
+  a[72:78, 0:56] = 0xD                       # clear TRAINER:
+  x = 5
+  for ch in "USER:":
+      g = BK[ch]
+      draw(g, 72, x, 5, 5, 0xD)
+      x += g.shape[1] + 1
+  print("  back    TRAINER: -> USER:  (%d px of %d used)" % (x - 6, 48))
+else:
+  print("  back    already USER:")
+
 if WRITE:
     out = Image.new("P", im.size); out.putdata(a.flatten().tolist())
     out.putpalette(im.getpalette()); out.save(P)

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.251**
+**A total conversion — the living design bible, v11.252**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8588,6 +8588,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
+- **Two painted labels need a NAME, not a fix** (*the UI-art sweep, T-225, 2026-09-23*). ***`OT` on the summary's INFO page*** — **vanilla's ORIGINAL TRAINER; under TRAINER → USER it would be `OU`, which reads as nothing**, *so the rename is not mechanical: keep `OT`, or a word for who first bound the daemon.* ***`PkRS` among the status icons*** — **Pokérus, a virus that spreads through a party and makes it grow faster.** *This game has no name for it, and craft rule 3 says to name the process: what it DOES is spread between daemons that share a party and speed their learning.* **Neither has been touched; both need the user's word first.** *The rest of the sweep was mechanical and is done (T-225).*
 - **LAB NOTES 4 contradicts 4.24** (*found drafting T-224, 2026-09-23*). ***`school.md` §10 draws it from a passage 4.24 rules out of the game in every form***, **and nothing reverses that ruling.** *The draft keeps the page and strikes its lines through, the way the sealed review keeps its cover sheet.* **The options are that, cutting the entry, or re-sourcing the slot from another verse.** *The user's.*
 - **Do the eight DRIVER routines stay in daemons' LEARNSETS?** (*T-199 phase 3, 2026-09-23*). ***Built tonight***: **holding the driver is what reaches the world** — *the six map-script ones since phase 2, GOTO and VERBOSE on any daemon's menu now* — **and a daemon may forget a driver's routine like any other.** ***Left open, because it is the user's***: **whether the eight also come off the level-up and tutor lists, or stay as ordinary routines a daemon may happen to know.** *Leaning: they STAY* — **a daemon knowing PRUNE is not the problem; being KEPT for it was**, *and that is solved.* **Taking them off would also delete CRACK and ASCEND as battle options for the daemons whose learnsets were built around them.**
 - **Convergence and divergence as a MECHANIC** (*asked 2026-09-17: "if models are aligned they are convergence, and if not they are divergence — it very much relates to the whole perspective thinking template"*). ***Think long about this; it could be an important mechanic.***
