@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.250 — 2026-09-23
+
+### 4.35 — twenty-one documents, drafted and held
+
+- ***T-224: the NOTEBOOK's other documents drafted*** — **21 of the 24 still to write**, *each against §10's spec, the verse it is drawn from, and the craft rules; on the user's private field-test page for approval, and in neither repo.* **Three left undrafted on purpose.**
+- ***A contradiction found and logged***: **§10's LAB NOTES 4 is drawn from a passage 4.24 bans from the game** — *in the Open log, with the three ways out.*
+- ***PROSPECTUS opens*** *with BRAZEN's review-scores notice, the eleventh document the game already had.* **The Reading Room's turn-away and REVEAL on the grove tree are PLAYED now**, *not just read.*
+
+---
+
 ## v11.249 — 2026-09-23
 
 ### 4.35 — the notebook fills itself, and the first grove

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.249**
+**A total conversion — the living design bible, v11.250**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8588,6 +8588,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
+- **LAB NOTES 4 contradicts 4.24** (*found drafting T-224, 2026-09-23*). ***`school.md` §10 draws it from a passage 4.24 rules out of the game in every form***, **and nothing reverses that ruling.** *The draft keeps the page and strikes its lines through, the way the sealed review keeps its cover sheet.* **The options are that, cutting the entry, or re-sourcing the slot from another verse.** *The user's.*
 - **Do the eight DRIVER routines stay in daemons' LEARNSETS?** (*T-199 phase 3, 2026-09-23*). ***Built tonight***: **holding the driver is what reaches the world** — *the six map-script ones since phase 2, GOTO and VERBOSE on any daemon's menu now* — **and a daemon may forget a driver's routine like any other.** ***Left open, because it is the user's***: **whether the eight also come off the level-up and tutor lists, or stay as ordinary routines a daemon may happen to know.** *Leaning: they STAY* — **a daemon knowing PRUNE is not the problem; being KEPT for it was**, *and that is solved.* **Taking them off would also delete CRACK and ASCEND as battle options for the daemons whose learnsets were built around them.**
 - **Convergence and divergence as a MECHANIC** (*asked 2026-09-17: "if models are aligned they are convergence, and if not they are divergence — it very much relates to the whole perspective thinking template"*). ***Think long about this; it could be an important mechanic.***
   - ***The trap in the obvious reading, and it is the bible's own.*** **0.5 and 4.18a locate clarity in two views ALLOWED TO DISAGREE and a third stage that holds them against each other** — *and Scorn's crime is forced convergence: he weighted that stage so the answer always came out the same, and the form calls it IMPROVE RESPONSE CONSISTENCY.* **Benchmark 8 is "perfectly aligned — to the wrong objective."** ***So a mechanic that simply rewards convergence and punishes divergence rewards Scorn.*** **The reading that survives: convergence is worth something only when it is REACHED FROM real divergence** — *two views that differed and then agreed have been checked in the one way neither can check itself; views that agreed from the start have been checked by nothing.*
