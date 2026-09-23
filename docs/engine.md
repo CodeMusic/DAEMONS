@@ -362,6 +362,18 @@ this for the NOTEBOOK's documents.* **And the charmap has no `[` or `]`**: *a dr
 `unknown character U+5B`, so the tool checks every character against `charmap.txt` first and names the one it cannot
 print.*
 
+### 27. A PLUGIN's own description, which nothing ever prints
+
+***Symptom (found 2026-09-23, T-239):*** *fifty-eight item descriptions written, re-copied and measured three times, and
+not one of them on any screen.* **`src/data/items.json.txt` — vanilla's template — points every `POCKET_TM_CASE`
+item's `.description` at `gMoveDescription_<its routine>`**, *so the TOOLKIT, the TM mart and the item PORT all show
+the ROUTINE's words, and a PLUGIN's `description_english` is compiled into the ROM and read by nothing.* **T-183a was
+built on the opposite belief and its fix changed nothing a player sees**; *the routines had already been swept by
+T-183.* **To change what a PLUGIN says, edit its routine in `move_descriptions.c`.** *The TOOLKIT prints that at x=2
+with 1px spacing in an 18-tile window, which is roomier than the summary's 113px — so the summary's pane is the one
+`check_lexicon` holds a routine to.* ***Before fitting a line to a pane, find what the pane actually prints: a
+screenshot of it beside the source line settles it in a minute.***
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**

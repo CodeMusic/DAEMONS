@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.267 — 2026-09-23
+
+### The PLUGIN text nobody sees, and the routine text everybody does
+
+- ***T-239: a correction to v11.234.*** **The TOOLKIT does not print a PLUGIN's own description — vanilla's template points every TOOLKIT item at its routine's**, *so T-183a and T-183b rewrote 58 strings no screen shows.* **Nothing a player saw was wrong**; *what was wrong was the record, and three places repeated it.* **`engine.md` trap 27**: *to change what a PLUGIN says, edit its routine.* ***And the text that is printed is now held to four lines as well as 113px.***
+
+---
+
 ## v11.266 — 2026-09-23
 
 ### A line the bag had been cutting off

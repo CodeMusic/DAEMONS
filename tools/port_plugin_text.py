@@ -4,20 +4,16 @@
     python3 tools/port_plugin_text.py            # report
     python3 tools/port_plugin_text.py --write     # into src/data/items.json
 
-WHAT THIS FOUND. The TOOLKIT prints the ITEM's description (`ItemId_GetDescription`, tm_case.c) and not the
-routine's -- so all fifty PLUGINs and eight DRIVERs described themselves in VANILLA'S prose, on a screen
-whose every other word is ours. PLUGIN02 said "Sharp, huge claws hook and slash the foe quickly and with
-great power" while the routine it teaches says "A problem cut down to a smaller one."
+WHAT IT DOES, CORRECTED (T-239, 2026-09-23). This docstring used to say the TOOLKIT prints the ITEM's
+description and not the routine's. It does not, and never did: vanilla's `src/data/items.json.txt` points every
+POCKET_TM_CASE item's `.description` at `gMoveDescription_<its routine>`, so the TOOLKIT, the TM mart and the
+item PORT print the ROUTINE's words, and a PLUGIN's `description_english` is compiled in and read by nothing
+(engine.md trap 27). T-183a's "PLUGIN02 said 'Sharp, huge claws...'" was read out of items.json, not off a screen.
 
-It is also where 32 of the last "foe"s in the game were living, which is how it was noticed at all: T-183
-swept the routine descriptions, the ability descriptions and the help system, and this is a fourth surface
-nobody had looked at.
-
-THE FIX IS NOT TO WRITE FIFTY MORE DESCRIPTIONS. The routine already has one, rewritten and fitted, and a
-PLUGIN is the routine -- so the item takes the routine's own words and cannot drift from them again.
-
-THE PANE IS WIDER HERE, which is why this is a copy and not a rewrap: tm_case.c's WIN_DESCRIPTION is
-eighteen tiles (144px) against the summary screen's fifteen, and our routine lines are cut to 113.
+It is kept because items.json is what every tool here reads when it wants to know what an item says, and a
+PLUGIN whose json disagrees with the screen is a trap for the next one. So it mirrors each routine's words into
+the item, and changes nothing a player sees. TO CHANGE WHAT A PLUGIN SAYS, EDIT ITS ROUTINE in
+`move_descriptions.c`, then re-run this.
 """
 import json, os, re, sys
 

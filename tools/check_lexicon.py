@@ -830,7 +830,10 @@ def check_panes():
     txt = open(os.path.join(gba, "src/move_descriptions.c"), encoding="utf-8").read()
     for m in _re.finditer(r'const u8 gMoveDescription_(\w+)\[\] = _\((.*?)\);', txt, _re.S):
         body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
-        for line in body.split("\\n"):
+        lines = body.split("\\n")
+        if len(lines) > 4:
+            bad.append((m.group(1), "%d lines in the routine pane's four" % len(lines)))
+        for line in lines:
             if width(line) > 113:
                 bad.append(("%s (%dpx)" % (m.group(1), width(line)), "past the 113px routine pane"))
 
@@ -850,10 +853,10 @@ def check_panes():
                     bad.append(("%s (%dpx)" % (m.group(1), width(line)),
                                 "past the %dpx the entries themselves use" % widest))
 
-    #  and the TOOLKIT: every PLUGIN and DRIVER against vanilla's own TM/HM descriptions in that pane, which
-    #  are THREE lines at up to 198px. T-183b re-copied 44 of these from their routines on a comparison that
-    #  counted line breaks as changes, and left every one of them four lines long; port_vocab said so and was
-    #  not run. This says so every time.
+    #  The TOOLKIT does NOT print this text (T-239, engine.md trap 27): vanilla's items.json.txt points every
+    #  TOOLKIT item at its routine's description, which the routine check above already holds -- to 113px and
+    #  four lines, tighter than the TOOLKIT's own 18-tile pane. A PLUGIN's description_english is port_plugin_text's
+    #  mirror of that, and is measured below only so the json stays a truthful copy.
     import json as _json
     items = _json.load(open(os.path.join(gba, "src/data/items.json"), encoding="utf-8"))
     #  T-238: and every OTHER item, in the bag's pane, which is the same 198px. This check looked only at the
