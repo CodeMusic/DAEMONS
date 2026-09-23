@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.248**
+**A total conversion — the living design bible, v11.249**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4696,6 +4696,17 @@ and glass doors that slide.** *A player who has climbed it can read it from the 
 ***And THE READING ROOM stopped being a fan club.*** **A library that has outlived its reason**: *worn parquet,
 walls of books, green lamps, oxblood chairs for the lecturers, the catalogue, the journal open on a lectern — and
 through the window, a brass tower across the street that is not the faculty's.*
+
+#### The notebook fills itself, and the first grove — 2026-09-23
+
+***Ten of the notebook's forty-two documents were already in the game*** — **the Mansion's terminal logs, the
+lab's minute, its requisition and its founder's plate, the Owl's concession and the sealed review.** *So reading
+them now files them, in their own words;* **THE FILE and RUN LOGS open as sections the first time.** ***The Owl's
+two are filed without a word***, *because nothing may interrupt that scene.*
+
+***And the first grove exists.*** **THE UNDERTONE's lone tree answers A, and a clearing the map never showed is
+behind it.** *Nothing is said going in or coming out; REVEAL makes the tree twinkle.* **It is provisional** — *the
+fourteen places and residents are still the user's.*
 
 #### What it must never do
 

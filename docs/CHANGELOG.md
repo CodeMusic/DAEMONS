@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.249 — 2026-09-23
+
+### 4.35 — the notebook fills itself, and the first grove
+
+- ***T-224: ten documents the game already shows are filed when read*** — **the Mansion's four logs (RUN LOGS), the lab's minute, requisition and founder's plate (THE FILE), the ITER log (LAB NOTES), and the Owl's concession and cover sheet (PEER REVIEW).** *Their own words; the only new wording is ten titles. The Owl's two are filed silently.* ***25 still to write, every one for approval.***
+- ***T-221: the first grove, provisional.*** **THE UNDERTONE's lone tree leads into a clearing the map never showed, and the clearing's tree leads back** — *nothing said either way; REVEAL twinkles both.* **`tools/gbagrove.py` builds a grove from one table row**, *cutting the clearing from its forest's own map.* ***Played in and out.***
+- ***The debug kit opens CALLOW's north road*** — *the old man lay across it waiting for a parcel no debug game delivers.*
+- *The "copied into the NOTEBOOK" script moved to `data/scripts/notebook.inc`, so any map can file a page.*
+
+---
+
 ## v11.248 — 2026-09-23
 
 ### Tonight — the morning's list, finished where it could be
