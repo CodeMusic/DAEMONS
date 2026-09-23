@@ -188,7 +188,8 @@ is ours: `DAEMONS_DEBUG=1` suffixes `BUILD_NAME`, so it gets its own ROM file
 and therefore its own save. A new game starts with six daemons picked for their
 **abilities**, one of each **kind** of item so the description window can be
 read, all eight badges and 999999, and the opening already over (no starter
-scene, no parcel, no gym guide, the gate guards' tea); hold B to walk through grass. It is
+scene, no parcel, no gym guide, the gate guards' tea); hold B to walk through grass. Its DEBUG
+menu's JUMP page reaches the RECORD, THE MARGINS and the DIPLOMA without playing to them. It is
 scaffolding for the §9.3 spike rather than a general debug menu — those are the
 two things being evaluated.
 

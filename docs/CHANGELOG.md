@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.263 — 2026-09-23
+
+### The route reaches BRAZEN, and the bible is audited for what was never ticketed
+
+- ***T-236: DEBUG → JUMP → DIPLOMA*** — *REVEAL, the Reading Room and the groves were 84 questions away on a debug game.* **The DEBUG list moved RECORD, ISLANDS and DIPLOMA to a JUMP page when a ninth row ran it off the screen, and a `STATIC_ASSERT` now keeps its help lines in step with its entries** — *the mistake that once blacked out the screen nearly happened again.* **Played to REVEAL.**
+- ***T-232 and T-233: 8.4's edition split, measured*** — **197 of our Index entries are one sentence in both editions** *(nine CONTEXT drafts for the starter lines are on the private page)*, **and Tier 2's leaning rosters were never built** *(four whole-pair swaps proposed).*
+- ***T-234 and T-235: the bible audited for designs with no ticket*** — **Penphin and RESONANCE**, *and* **the Five Witnesses' reward**, *recorded without its solution.*
+
+---
+
 ## v11.262 — 2026-09-23
 
 ### The rest of what that sweep bent
