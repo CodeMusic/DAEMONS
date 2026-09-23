@@ -792,6 +792,23 @@ def check_stale_names():
                     out.append(("%s:%d" % (rel, i),
                                 "says %s; the game calls it %s%s" % (old, new, note)))
 
+    #  T-244, and a string written over several lines. The loop above reads a `_("...")` that opens and closes on one
+    #  line -- which every Index entry does not: they are four literals under one _( ), so the entries were read by
+    #  this check hardly at all. Clean when it was measured (785 such strings); this keeps it so.
+    for rel in PROSE_C:
+        p = os.path.join(GBA, rel)
+        if not os.path.isfile(p):
+            continue
+        t = open(p, encoding="utf-8", errors="ignore").read()
+        for m in re.finditer(r'_\(((?:\s*"(?:[^"\\]|\\.)*"\s*){2,})\)', t):
+            body = "".join(re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(1)))
+            flat = re.sub(r"\{[^}]*\}", " ", re.sub(r"\\[nlp]", " ", body))
+            for old, new in renamed.items():
+                note = hit(flat, old)
+                if note is not None:
+                    out.append(("%s:%d" % (rel, t[:m.start()].count("\n") + 1),
+                                "says %s; the game calls it %s%s" % (old, new, note)))
+
     #  T-244: two more prose surfaces that live beside name tables. ABILITY DESCRIPTIONS share abilities.h with the
     #  ability names, so only the s*Description lines are read -- PLUS's said "Powers up with MINUS." months after
     #  MINUS became SINK. And ITEM DESCRIPTIONS live in items.json, which this pass read for its NAMES and never for
