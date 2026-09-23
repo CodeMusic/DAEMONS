@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.264 — 2026-09-23
+
+### The debug game comes back on a phone
+
+- ***T-237: the user's field test on Delta found a debug new game that went black and stayed black*** — **every test tonight had run on mGBA, where the same black lasted 30–50 seconds.** *Measured with a probe build: 81% of it was each boxed daemon walking its whole level-50 learnset.* **Made at level 5 with level 50's experience, the fill takes about 8½ seconds.** *The boxed daemons still read Lv50 and their met level, so OPUS's margins are untouched.*
+- ***T-232: 89 CONTEXT entries drafted and `tools/gbacontext.py` to write the approved ones***; *route walked end to end, battles included.*
+
+---
+
 ## v11.263 — 2026-09-23
 
 ### The route reaches BRAZEN, and the bible is audited for what was never ticketed
