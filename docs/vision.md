@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.243**
+**A total conversion — the living design bible, v11.244**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4644,6 +4644,21 @@ point.* ***Two things differ, and both are for orientation, not decoration.*** *
 subject in chalk**: *a ring with a dot in it, lines that fade the older they are, three drawers with one
 thing across two.* **A player can tell the floors apart without reading a word**, *which is the only
 thing a board motif is for.*
+
+#### The school, whole on the inside — 2026-09-22
+
+***Batch 5 is in the ROM and was played through*** (T-219, T-217). **Seven floors, a lift, the TEXTBOOK and
+exam season.** *The lift lists the floors by subject; the TEXTBOOK files each floor's board in the notebook
+once you hold the book and have stood on that floor;* **and taking the book is what starts the season** —
+*walk out of the ground floor's door and the teacher's voice follows you down the stairwell.*
+
+***Exam season is the one time the building expects something of you, and it still lets you leave.*** **The
+class is seated, the Owl is at the front, the stairs and the lift are refused — "Take your seat, please." —
+and the door never is.** *Every rule 4.35 set for the paper holds for the room it is sat in.*
+
+***And the two books are the two editions.*** **The TEXTBOOK is bound in CONTENT's hue and the notebook in
+CONTEXT's**: *one holds what things are, the other what happened around them.* **Nothing in the game says
+so.**
 
 #### What it must never do
 

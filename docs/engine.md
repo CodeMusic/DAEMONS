@@ -328,6 +328,9 @@ for a problem that had been solved a week earlier.*
   some A presses in a long unbroken batch, and the list cursor walked on without them; the same sequence with a
   screenshot between each step, or twenty-frame gaps, never missed.* ***Look before blaming the game.***
 - **A tap under ~8 frames TURNS the player and does not step.**
+- **Continuing a save plays FireRed's "Previously on your quest..." recap first**, *and the position read during it is the recap's.* **B skips it.**
+- **Save in-game once you reach where the test starts**, *and the next batch reloads the rebuilt ROM over the same scratch file and continues —* **the theatre survives the reload.**
+- **Of a house's two doormat tiles, only ONE is the arrow warp.** *Read the behaviour, not the picture.*
 
 ## 6. Two habits worth keeping
 

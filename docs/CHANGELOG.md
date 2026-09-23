@@ -5,6 +5,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.244 — 2026-09-22
+
+### 4.35 — the school, whole on the inside
+
+- ***Batch 5 of 7 is in the ROM and was PLAYED*** (T-219, T-217): **5F LEARNING, 6F BIAS, 7F ERROR, the lift, the TEXTBOOK, exam season, and all seven sections of the paper — 84 questions.**
+- ***The lift***: *brass doors in every floor's right-hand window, the floors listed by subject.* **The 1F bookcase stays — it unlocks CRYSTAL CLEAR's HEARSAY entries.**
+- ***The TEXTBOOK*** *from 7F's teacher, bound in CONTENT's hue where the notebook is CONTEXT's;* **it files each floor's board in the notebook once you have stood on that floor.**
+- ***Exam season***: **the book arms it; walking out starts it; coming back, the class is seated, the Owl is at the front, the desk holds the paper, and the stairs and lift are refused — the door never is.**
+- ***Verified in play***: *the lift; the TEXTBOOK's boards; the overheard line and the walk out; the seated room; L and R across all seven sections; a shuffled answer; EXIT; the stairs refusing.*
+- ***Two new measurements in `check_lexicon`***, *both proved by breaking them*: **TEXTBOOK board pages under 990 bytes; the paper's titles, questions and options inside their panes.**
+- ***A labelling slip corrected before commit***: *batch 5's code had been tagged T-221, which is the groves ticket.*
+
+---
+
 ## v11.243 — 2026-09-22
 
 ### 4.35 — four floors, and a stairwell that doubles back

@@ -953,6 +953,38 @@ def check_numbered():
                     m = _re.search(r"\b(PATCH\d+|TM\d\d|HM\d\d)", line)
                     if m:
                         bad.append(("%s" % os.path.basename(dp), "says %s" % m.group(1)))
+    #  T-219: the TEXTBOOK builds each floor's board page in gStringVar4 and stops at 990 bytes. A board that
+    #  grows past that loses its last topic silently -- so it is measured here, from the labels the notebook
+    #  names, and not from a list kept by hand.
+    nb = os.path.join(ROOT, "engineGba/src/notebook.c")
+    nbsrc = open(nb, encoding="utf-8").read() if os.path.exists(nb) else ""
+    blk = _re.search(r"sBoardTopics\[8\]\[5\] =\s*\{(.*?)\n\};", nbsrc, _re.S)
+    if blk:
+        texts = {}
+        for dp, dn, fn in os.walk(os.path.join(ROOT, "engineGba/data/maps")):
+            for f in fn:
+                if f == "text.inc":
+                    t = open(os.path.join(dp, f), encoding="utf-8").read()
+                    for m in _re.finditer(r"^(\w+)::\n((?:\s+\.string \".*\"\n)+)", t, _re.M):
+                        texts[m.group(1)] = "".join(_re.findall(r'\.string "(.*)"', m.group(2)))
+        for row in _re.finditer(r"\[(\d)\] = \{(.*?)\}", blk.group(1)):
+            size = 0
+            for lab in [x.strip() for x in row.group(2).split(",")]:
+                size += len(_re.sub(r"\\[pnl]", "x", texts.get(lab, "")).replace("$", "")) + 1
+            if size >= 990:
+                bad.append(("%sF board" % row.group(1), "%d bytes, and the TEXTBOOK page stops at 990" % size))
+    #  T-219: and the exam paper's own panes -- a title beside its answer letter, a question, an option.
+    ex = os.path.join(ROOT, "engineGba/src/school_exam.c")
+    if os.path.exists(ex):
+        src = open(os.path.join(ROOT, "tools/port_vocab.py"), encoding="utf-8").read()
+        ns = {"__name__": "pv", "__file__": os.path.join(ROOT, "tools/port_vocab.py")}
+        exec(compile(src.split("# ------------------------------------------------------- names, derived")[0], "port_vocab.py", "exec"), ns)
+        width = ns["textwidth"]
+        limit = {"T": 170, "Q": 222, "O": 196}
+        for m in _re.finditer(r'static const u8 s(\w+?)_(T|Q|O)(\d+)(?:_\d)?\[\] = _\("(.*?)"\);', open(ex, encoding="utf-8").read()):
+            for line in m.group(4).split("\\n"):
+                if width(line) > limit[m.group(2)]:
+                    bad.append(("%s %s%s" % (m.group(1), m.group(2), m.group(3)), "%dpx on the paper, past %d" % (width(line), limit[m.group(2)])))
     nb = os.path.join(ROOT, "engineGba/src/notebook.c")
     if os.path.exists(nb):
         src = open(nb, encoding="utf-8").read()
@@ -1124,7 +1156,7 @@ def main():
 
     xbad = check_numbered()
     if not xbad:
-        print("  no dialogue says a numbered PATCH, TM or HM, and every NOTEBOOK entry fits gStringVar4.")
+        print("  no dialogue says a numbered PATCH, TM or HM; every NOTEBOOK entry and TEXTBOOK page fits; the paper fits.")
     else:
         print("\n  %d numbered or oversized string(s):\n" % len(xbad))
         for what, why in xbad:

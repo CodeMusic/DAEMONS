@@ -2069,8 +2069,13 @@ SCHOOL_STAIRS = {           # floor -> [(x, y, "up"|"down", "left"|"right")]
     1: [(8, 3, "up", "right")],
     2: [(8, 3, "down", "right"), (1, 3, "up", "left")],
     3: [(1, 3, "down", "left"), (8, 3, "up", "right")],
-    4: [(8, 3, "down", "right")],
+    4: [(8, 3, "down", "right"), (1, 3, "up", "left")],
+    5: [(1, 3, "down", "left"), (8, 3, "up", "right")],
+    6: [(8, 3, "down", "right"), (1, 3, "up", "left")],
+    7: [(1, 3, "down", "left")],                    # the top: ERROR, and the TEXTBOOK
 }
+SCHOOL_LIFT = (2, 1)        # T-219, batch 5: the lift, in every floor's right-hand window. The bookcase at (8,2) stays:
+                            # on 1F it is the journal that unlocks HEARSAY's entries for CRYSTAL CLEAR.
 
 
 def school_stairs(r, x, y, updown, side):
@@ -2114,6 +2119,32 @@ def school_board_motif(r, floor):
             for sx in range(x0, x1 - (k * 5) % 11, 3):
                 if (sx + k) % 7:
                     r.rect(sx, ly, sx + 1, ly, col)
+    elif floor == 5:                                         # LEARNING: a few nodes, faint links, one link worn heavy
+        cols = [(x0 + 8, (y0 + 1, y0 + 7)), (x0 + 28, (y0 + 2, y0 + 6)), (x0 + 48, (y0 + 4,))]
+        for (ax, ays), (bx, bys) in zip(cols, cols[1:]):
+            for ay in ays:
+                for by in bys:
+                    for t in range(2, 19, 3):            # dotted: a connection that has barely been used
+                        r.rect(ax + (bx - ax) * t // 20, ay + (by - ay) * t // 20, ax + (bx - ax) * t // 20, ay + (by - ay) * t // 20, C_BONED)
+        for t in range(0, 21):                           # the one that has been used a great deal
+            px, py = x0 + 8 + 20 * t // 20, y0 + 1 + 5 * t // 20
+            r.rect(px, py, px, py + 1, C_BONE)
+        for cx, ys in cols:
+            for y in ys:
+                r.rect(cx - 1, y - 1, cx + 1, y + 1, C_BONE)
+    elif floor == 6:                                         # BIAS: a level beam, and a balance that is not level
+        r.rect(x0, y0 + 1, x0 + 16, y0 + 1, C_BONED)
+        for t in range(0, 21):
+            r.rect(x0 + 26 + t, y0 + 2 + t // 5, x0 + 26 + t, y0 + 2 + t // 5, C_BONE)
+        r.rect(x0 + 36, y0 + 4, x0 + 36, y1, C_BONE)
+        r.rect(x0 + 24, y0 + 3, x0 + 28, y0 + 3, C_BONED); r.rect(x0 + 44, y0 + 7, x0 + 48, y0 + 7, C_BONE)
+    elif floor == 7:                                         # ERROR: a line struck through, and the right one under it
+        for sx in range(x0, x1 - 6, 3):
+            r.rect(sx, y0 + 1, sx + 1, y0 + 1, C_BONED)
+        r.rect(x0, y0 + 1, x1 - 8, y0 + 1, C_BONED)
+        for sx in range(x0, x1 - 12, 3):
+            r.rect(sx, y0 + 5, sx + 1, y0 + 5, C_BONE)
+        r.rect(x1 - 9, y0 + 5, x1 - 8, y0 + 6, C_BONE); r.rect(x1 - 7, y0 + 3, x1 - 6, y0 + 5, C_BONE)
     elif floor == 4:                                         # CATEGORIES: three drawers, and one thing across two
         for bx in (x0, x0 + 20, x0 + 40):
             r.rect(bx, y0, bx + 14, y0, C_BONE); r.rect(bx, y1, bx + 14, y1, C_BONE)
@@ -2157,7 +2188,7 @@ def callow_school(old_img, statues=True, floor=1):
             r.rect(3 * 16 + 5 + (k * 7) % 30, 21 + (k % 3) * 4, 3 * 16 + 8 + (k * 7) % 30, 22 + (k % 3) * 4, C_BONE)
     else:
         school_board_motif(r, floor)
-    for wx in (1, 2):                                             # the windows, and the plant on the sill
+    for wx in (1,):                                               # the window, and the plant on the sill
         X = wx * 16
         r.rect(X + 1, 18, X + 14, 2 * 16 - 5, C_SLABD)
         r.rect(X + 2, 19, X + 13, 2 * 16 - 6, (206, 226, 232))
@@ -2184,6 +2215,11 @@ def callow_school(old_img, statues=True, floor=1):
         r.rect(X, Y + 3, X + 15, Y + 11, C_CLAY)
     r.rect(4 * 16 + 5, 4 * 16 + 5, 5 * 16 + 10, 4 * 16 + 9, C_BONE)
     r.rect(5 * 16 - 1, 4 * 16 + 5, 5 * 16, 4 * 16 + 9, C_BONED)
+    X, Y = SCHOOL_LIFT[0] * 16, SCHOOL_LIFT[1] * 16               # THE LIFT: two brass doors, a seam, a lamp
+    r.rect(X + 1, Y + 2, X + 14, Y + 15, C_BRASSD)
+    r.rect(X + 2, Y + 5, X + 7, Y + 15, C_BRASS); r.rect(X + 8, Y + 5, X + 13, Y + 15, C_BRASS)
+    r.rect(X + 7, Y + 5, X + 8, Y + 15, C_BRASSD)
+    r.rect(X + 6, Y + 2, X + 9, Y + 3, C_BONE)
     if floor == 1:
         X, Y = 4 * 16, 7 * 16                                     # the way out -- the ground floor's alone
         r.rect(X + 1, Y + 4, X + 14, Y + 13, C_BRASSD); r.rect(X + 2, Y + 5, X + 13, Y + 12, C_BRASS)
@@ -2253,14 +2289,17 @@ def verdigris_lecture(old_img, statues=True):
 
 BUILDINGS = {
     # THE SCHOOL, SPLIT PER TOWN (T-125): one room each, as checkpoint_indigo already is.
-    #  T-218..T-219: now FOUR FLOORS on the one tileset, each re-planned from pret's pristine room every time the
+    #  T-218..T-219: now SEVEN FLOORS on the one tileset, each re-planned from pret's pristine room every time the
     #  building is rebuilt (see "reset"), so adding floors in batch 5 is a re-run and not a hand-restore.
     "callow_school": dict(
         old="school", symbol="gTileset_CallowSchool", dir="callow_school",
         layouts=[("LAYOUT_VIRIDIAN_CITY_SCHOOL",    callow_school),
                  ("LAYOUT_VIRIDIAN_CITY_SCHOOL_2F", lambda img, statues=True: callow_school(img, statues, floor=2)),
                  ("LAYOUT_VIRIDIAN_CITY_SCHOOL_3F", lambda img, statues=True: callow_school(img, statues, floor=3)),
-                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_4F", lambda img, statues=True: callow_school(img, statues, floor=4))],
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_4F", lambda img, statues=True: callow_school(img, statues, floor=4)),
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_5F", lambda img, statues=True: callow_school(img, statues, floor=5)),
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_6F", lambda img, statues=True: callow_school(img, statues, floor=6)),
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_7F", lambda img, statues=True: callow_school(img, statues, floor=7))],
         reset="data/layouts/ViridianCity_School/map.bin",
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={},
         plan={lid: dict([((x, y), (False, {("up", "right"): 0x6C, ("up", "left"): 0x6D,
@@ -2268,7 +2307,9 @@ BUILDINGS = {
                          for (x, y, ud, side) in SCHOOL_STAIRS[f]] +
                         ([] if f == 1 else [((dx, 7), (False, 0)) for dx in (3, 4, 5)]))   # no way out upstairs
               for f, lid in ((1, "LAYOUT_VIRIDIAN_CITY_SCHOOL"), (2, "LAYOUT_VIRIDIAN_CITY_SCHOOL_2F"),
-                             (3, "LAYOUT_VIRIDIAN_CITY_SCHOOL_3F"), (4, "LAYOUT_VIRIDIAN_CITY_SCHOOL_4F"))},
+                             (3, "LAYOUT_VIRIDIAN_CITY_SCHOOL_3F"), (4, "LAYOUT_VIRIDIAN_CITY_SCHOOL_4F"),
+                             (5, "LAYOUT_VIRIDIAN_CITY_SCHOOL_5F"), (6, "LAYOUT_VIRIDIAN_CITY_SCHOOL_6F"),
+                             (7, "LAYOUT_VIRIDIAN_CITY_SCHOOL_7F"))},
     ),
     "verdigris_lecture": dict(
         old="school", symbol="gTileset_VerdigrisLecture", dir="verdigris_lecture",
