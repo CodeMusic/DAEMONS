@@ -610,7 +610,13 @@ def revert_plan():
             rel = os.path.relpath(mp, GBA)
             up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True).stdout
             upobjs = json.loads(up)["object_events"]
-            assert len(upobjs) == len(objs), "%s: object count differs from upstream, cannot restore by index" % rel
+            if len(upobjs) != len(objs):
+                #  A map whose objects are OURS, not vanilla's rearranged -- CALLOW SCHOOL's floors, where the Owl sits
+                #  at the front in exam season (T-217). There is no vanilla citizen to put back, so it is reported and
+                #  left; it was checked in play (batch 5) that the Owl and the town's locals draw correctly together.
+                print("  %s holds %s and was authored here (%d objects, upstream %d): left as it is"
+                      % (rel, ", ".join(sorted(set(held))), len(objs), len(upobjs)))
+                continue
             for i in mine:
                 out.append((mp, i, upobjs[i]["graphics_id"], objs[i]["graphics_id"], ",".join(
                     h.replace("OBJ_EVENT_GFX_", "") for h in held)))

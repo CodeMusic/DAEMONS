@@ -2475,6 +2475,7 @@ BUILDINGS = {
     "reading_room": dict(
         old="fan_club_daycare", symbol="gTileset_ReadingRoom", dir="reading_room",
         layouts=[("LAYOUT_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB", reading_room)],
+        reset="data/layouts/SaffronCity_PokemonTrainerFanClub/map.bin",
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
     ),
     "verdigris_lecture": dict(
@@ -2681,8 +2682,15 @@ def build(name, cfg):
     canvases = {}
     for lid, draw in cfg["layouts"]:
         if LAYOUTS[lid]["secondary_tileset"] == cfg["symbol"]:        # its map.bin already holds the new ids, which
-            raise SystemExit("  %s: %s is already built -- restore its map.bin and layouts.json "      # read against
-                             "from git before rebuilding" % (name, lid))                                 # the old tileset
+            if not WRITE:                                              # read against the old tileset are nonsense.
+                #  T-213: in report mode a built building is SAID to be built and the run goes on to the rest --
+                #  raising here stopped every building after the first built one, so `gbainterior.py` with no
+                #  arguments had not run to the end since the second building went in.
+                print("  %s: already built on %s -- skipped (rebuild it by restoring its map.bin and layouts.json)"
+                      % (name, cfg["symbol"]))
+                return
+            raise SystemExit("  %s: %s is already built -- restore its map.bin and layouts.json "
+                             "from git before rebuilding" % (name, lid))
         img, raw = old.layout(lid)                                                                       # are nonsense
         canvas = draw(img, theme, raw) if draw in (checkpoint_2f, themed) else draw(img)
         l = LAYOUTS[lid]; W, H = l["width"], l["height"]

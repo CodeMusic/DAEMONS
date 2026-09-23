@@ -30,7 +30,7 @@ serves two things that must now differ -- CRYSTAL's skin index is her face AND h
 cream fur and white coat sleeves -- the split is made by CONNECTED COMPONENT rather than by row, because
 a raised hand sits beside the head in half the frames and a row cut would paint it fur.
 """
-import os, sys
+import io, os, subprocess, sys
 from collections import deque
 from PIL import Image
 
@@ -276,7 +276,11 @@ FIGURES = [
 def main():
     rows, built = [], []
     for fig in FIGURES:
-        src = Image.open(os.path.join(BACKS, fig["file"]))
+        #  Vanilla's frames are the skeleton, so they are read from UPSTREAM: the file on disk is this tool's own
+        #  output, repainted and since outlined (T-184), and re-running on it failed its own head check (T-213).
+        rel = os.path.relpath(os.path.join(BACKS, fig["file"]), GBA)
+        src = Image.open(io.BytesIO(subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                                                   check=True, capture_output=True).stdout))
         assert src.mode == "P" and src.size[0] == 64, "%s is %s %s" % (fig["file"], src.mode, src.size)
         fs = frames_of(src)
         if "strip" in fig:

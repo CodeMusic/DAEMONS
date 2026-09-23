@@ -57,10 +57,12 @@ FLOOR = 20.0                       # 9.4: under ~20 in CIE76 two colours are not
 def from_gbasprite():
     """TYPE_COLOR and ramp5, executed on their own"""
     tree = ast.parse(open(os.path.join(ROOT, "tools/gbasprite.py")).read())
-    want = {"TYPE_COLOR", "STREAK_BLANK", "STREAK_FIRST"}
+    #  INK too: T-184 made ramp5's darkest step the true-black outline, and lifting ramp5 without it is what left
+    #  this tool raising NameError for two days (found by check_generators, T-213).
+    want = {"TYPE_COLOR", "STREAK_BLANK", "STREAK_FIRST", "INK"}
     keep = [n for n in tree.body if (isinstance(n, ast.Assign) and any(getattr(t, "id", "") in want for t in n.targets))
             or (isinstance(n, ast.FunctionDef) and n.name == "ramp5")]
-    assert len(keep) == 4, "gbasprite.py no longer defines TYPE_COLOR, STREAK_BLANK, STREAK_FIRST and ramp5 at top level"
+    assert len(keep) == 5, "gbasprite.py no longer defines TYPE_COLOR, STREAK_BLANK, STREAK_FIRST, INK and ramp5 at top level"
     ns = {}
     exec(compile(ast.Module(body=keep, type_ignores=[]), "gbasprite.py", "exec"), ns)
     assert ns["STREAK_FIRST"] == STREAKS.start, "gbasprite.py puts the streaks at %d, this file at %d" % (ns["STREAK_FIRST"], STREAKS.start)
