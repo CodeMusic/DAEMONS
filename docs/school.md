@@ -673,7 +673,7 @@ school's last batch**, with the exam in it.*
 | **4** | ***2F ATTENTION, 3F MEMORY, 4F CATEGORIES***, *with stairs* | ***BUILT and PLAYED 2026-09-22*** — **a switchback stairwell; each board its subject in chalk** |
 | **5** | ***5F LEARNING, 6F BIAS, 7F ERROR***, *the elevator, the TEXTBOOK, exam season, the Owl at the front, all seven exam sections* | ***BUILT and PLAYED 2026-09-22*** — **the whole school** |
 | **6** | ***the DIPLOMA, THE READING ROOM, the three lecturers, REVEAL*** | ***BUILT and PLAYED 2026-09-22*** — **the door, the lectures, the ninth driver** — *REVEAL as a flag, not a disc (§8a)* |
-| **7** | ***the exterior***, *redrawn to read as a building of its floors* | **art** |
+| **7** | ***the exterior***, *redrawn to read as a building of its floors* | ***BUILT and PLAYED 2026-09-22*** — **seven storeys, drawn from the inside: the switchback stairwell behind glass, the lift's brass doors a floor, and sliding glass doors of its own** (`tools/gbaschoolfront.py`); *and THE READING ROOM's interior* (`gbainterior.py reading_room`) |
 | — | ***full field test*** | |
 | **8+** | ***the fourteen groves***, *then the other seven notebook sections* | **bestiary passes; writing** |
 
@@ -698,7 +698,7 @@ school's last batch**, with the exam in it.*
 
 ### Still open
 
-1. **The exterior**: *seven floors were settled; the user's last note said nine.* **Which?**
+1. ~~**The exterior**: *seven floors were settled; the user's last note said nine.* **Which?**~~ ***Built as SEVEN, 2026-09-22*** — **the building has seven floors inside, and a front that showed nine would be a facade lying about its floors.** *Nine is a re-run of `gbaschoolfront.py` if the user wants it — but there is no room above: the house behind opens onto row 12.*
 2. **Which fourteen families**, *and which grove each.*
 
 ---

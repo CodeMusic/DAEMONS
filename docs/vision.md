@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.246**
+**A total conversion — the living design bible, v11.247**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4684,6 +4684,18 @@ shown in the breaks it was written in.** *The NOTEBOOK is a ruled sheet on a spi
 TEXTBOOK an open book in CONTENT's, opening on CONTENTS, a chapter to a floor and a topic to a spread.* **Each
 chapter carries its board's chalk mark, so the book agrees with the building.** ***§6's "one reader, not two"
 is reversed*** — *the second screen turned out to be one file drawing both.*
+
+#### The school from the street — 2026-09-22
+
+***Batch 7, and the school is complete inside and out.*** **Vanilla left it a cottage with a flower box, the same
+cottage as the house above it.** *So the outside is drawn from the inside*: **the switchback stairwell behind glass,
+six bands of classroom windows with a board at the back of each room, the lift shaft with a brass door a floor,
+and glass doors that slide.** *A player who has climbed it can read it from the road, and nothing is written on it.*
+***Seven storeys, not nine*** — **the building has seven floors inside, and a front that showed more would be lying.**
+
+***And THE READING ROOM stopped being a fan club.*** **A library that has outlived its reason**: *worn parquet,
+walls of books, green lamps, oxblood chairs for the lecturers, the catalogue, the journal open on a lectern — and
+through the window, a brass tower across the street that is not the faculty's.*
 
 #### What it must never do
 

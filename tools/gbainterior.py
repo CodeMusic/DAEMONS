@@ -2287,6 +2287,167 @@ def verdigris_lecture(old_img, statues=True):
     return r.im
 
 
+# THE READING ROOM (T-218, batch 7): what is left of a faculty in the bought city. The Fan Club's plan is kept
+# cell for cell -- both tables, the four seats the lecturers and the keeper sit in, the shelves the NOTEBOOK
+# copies from, the catalogue, the journal HEARSAY reads -- and every surface is re-made as a library that has
+# outlived its reason: parquet worn pale down the middle, green banker's lamps, oxblood club chairs, walls of
+# books, and one thing in brass, because this is Brazen. Nothing is written anywhere.
+RR_PARQ, RR_PARQL, RR_PARQD, RR_SEAM = (150, 106, 66), (160, 115, 72), (140, 98, 60), (124, 86, 54)
+RR_WORN = (178, 138, 92)
+RR_PAPER, RR_PAPERL, RR_PAPERD = (52, 78, 62), (66, 96, 76), (38, 58, 46)
+RR_WOOD, RR_WOODL, RR_WOODD, RR_INK = (100, 64, 40), (128, 84, 52), (70, 44, 28), (36, 26, 22)
+RR_RUG, RR_RUGL, RR_RUGB = (70, 96, 78), (88, 116, 94), (168, 132, 74)
+RR_BAIZE, RR_LAMP, RR_LAMPL, RR_GLOW = (58, 110, 72), (40, 124, 76), (110, 192, 132), (248, 228, 160)
+RR_BRASS, RR_BRASSD = (204, 166, 76), (146, 112, 50)
+RR_LEATHER, RR_LEATHERL, RR_LEATHERD = (132, 46, 40), (170, 72, 58), (88, 30, 28)
+RR_GLASS, RR_GLASSL, RR_SKY = (150, 180, 200), (206, 226, 236), (176, 204, 222)
+RR_PAGE, RR_PAGED = (236, 226, 196), (196, 184, 150)
+RR_BOOKS = [(132, 46, 40), (52, 64, 108), (62, 100, 64), (180, 142, 70), (116, 76, 46), (204, 190, 160)]
+
+
+def _rr_books(r, X0, Y0, X1, Y1, seed):
+    """a shelf's worth of spines between X0 and X1, standing on Y1, tops ragged"""
+    x, k = X0, seed
+    while x <= X1:
+        w = 1 + (k * 7) % 2
+        h = (Y1 - Y0) - (k * 5) % 3
+        c = RR_BOOKS[(k * 3 + x) % len(RR_BOOKS)]
+        r.rect(x, Y1 - h, min(x + w - 1, X1), Y1, c)
+        if (k * 11) % 5 == 0 and x + w <= X1:                    # one leaning, now and then
+            r.px(x + w, Y1 - h + 2, c)
+        x += w + ((k * 13) % 4 == 0)
+        k += 1
+
+
+def _rr_bookcase(r, X, Y, w, h, seed):
+    """a case W x H pixels at X,Y: a lit cornice, shelves of books, a plinth"""
+    r.rect(X, Y, X + w - 1, Y + h - 1, RR_WOODD)
+    r.rect(X, Y, X + w - 1, Y + 2, RR_WOODL); r.rect(X, Y + 3, X + w - 1, Y + 3, RR_INK)
+    r.rect(X + 1, Y + 4, X + w - 2, Y + h - 4, RR_INK)
+    sy = Y + 4
+    while sy + 7 <= Y + h - 4:
+        _rr_books(r, X + 2, sy + 1, X + w - 3, sy + 6, seed + sy)
+        r.rect(X + 1, sy + 7, X + w - 2, sy + 7, RR_WOOD)
+        sy += 8
+    r.rect(X, Y + h - 3, X + w - 1, Y + h - 1, RR_WOOD); r.rect(X, Y + h - 1, X + w - 1, Y + h - 1, RR_INK)
+
+
+def _rr_chair(r, X, Y, facing_right):
+    """an oxblood club chair seen from above-front, its back to the wall side"""
+    r.shade(X + 1, Y + 13, X + 14, Y + 15, 0.72)
+    r.rect(X + 2, Y + 3, X + 13, Y + 13, RR_LEATHERD)
+    r.rect(X + 3, Y + 5, X + 12, Y + 12, RR_LEATHER)
+    bx = X + 2 if facing_right else X + 10                         # the back
+    r.rect(bx, Y + 1, bx + 3, Y + 13, RR_LEATHERD); r.rect(bx + 1, Y + 2, bx + 2, Y + 11, RR_LEATHERL)
+    r.rect(X + 2, Y + 3, X + 13, Y + 4, RR_LEATHERD)               # the arms
+    r.rect(X + 2, Y + 12, X + 13, Y + 13, RR_LEATHERD)
+    r.rect(X + 5, Y + 7, X + 10, Y + 9, RR_LEATHERL)               # the cushion, worn where it is sat on
+    for bx2 in range(X + 4, X + 12, 3):
+        r.px(bx2, Y + 3, RR_BRASS)                                 # studs
+
+
+def reading_room(old_img, statues=True):
+    old = Old("fan_club_daycare")
+    _, raw = old.layout("LAYOUT_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB")
+    H, W = len(raw), len(raw[0])
+    blk = {(x, y): bool((raw[y][x] >> 10) & 3) for y in range(H) for x in range(W)}
+    r = Room(Image.new("RGB", (W * 16, H * 16)))
+    for y in range(H):                                            # parquet, in a basket weave
+        for x in range(W):
+            X, Y = x * 16, y * 16
+            for q in range(4):
+                qx, qy = X + (q % 2) * 8, Y + (q // 2) * 8
+                horiz = (q in (0, 3))
+                for k in range(8):
+                    for m in range(8):
+                        a, b = (k, m) if horiz else (m, k)          # a: across the planks, b: along
+                        c = RR_PARQ if (a // 4) % 2 == 0 else RR_PARQL
+                        if a % 4 == 3:
+                            c = RR_SEAM
+                        elif (a + b * 3) % 11 == 0:
+                            c = RR_PARQD
+                        r.px(qx + m, qy + k, c)
+    for (x0, y0, x1, y1) in ((2, 3, 8, 7), (2, 11, 8, 14)):         # the rugs under each table, faded
+        X0, Y0, X1, Y1 = x0 * 16 + 4, y0 * 16 + 6, x1 * 16 + 11, y1 * 16 + 9
+        r.rect(X0, Y0, X1, Y1, RR_RUGB)
+        r.rect(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, RR_RUG)
+        r.rect(X0 + 4, Y0 + 4, X1 - 4, Y0 + 4, RR_RUGB); r.rect(X0 + 4, Y1 - 4, X1 - 4, Y1 - 4, RR_RUGB)
+        r.rect(X0 + 4, Y0 + 4, X0 + 4, Y1 - 4, RR_RUGB); r.rect(X1 - 4, Y0 + 4, X1 - 4, Y1 - 4, RR_RUGB)
+        for yy in range(Y0 + 6, Y1 - 5, 4):
+            for xx in range(X0 + 7 + (yy // 4) % 2 * 2, X1 - 6, 4):
+                r.px(xx, yy, RR_RUGL)
+    for y in range(2, 16):                                        # worn pale down the middle, door to shelves
+        for x in range(5 * 16 + 3, 6 * 16 - 3):
+            if not blk[(x // 16, y)] and (x + y * 3) % 5 == 0:
+                r.px(x, y * 16 + (x * 7) % 16, RR_WORN)
+
+    # the back wall: green paper over a wainscot, and a brass picture rail
+    r.rect(0, 0, W * 16 - 1, 31, RR_PAPER)
+    for x in range(0, W * 16, 6):
+        r.rect(x, 2, x, 21, RR_PAPERL)
+    r.rect(0, 0, W * 16 - 1, 1, RR_WOODD); r.rect(0, 5, W * 16 - 1, 5, RR_BRASSD)
+    r.rect(0, 22, W * 16 - 1, 31, RR_WOOD); r.rect(0, 22, W * 16 - 1, 22, RR_WOODL); r.rect(0, 31, W * 16 - 1, 31, RR_INK)
+    for x in range(0, W * 16, 16):
+        r.rect(x + 2, 24, x + 13, 29, RR_WOODD)
+    _rr_bookcase(r, 0, 2, 32, 30, 3)                              # FIELDS and UNSENT are on these
+    _rr_bookcase(r, 8 * 16, 2, 32, 30, 11)
+    r.rect(2 * 16 + 2, 18, 4 * 16 - 3, 31, RR_WOODD)                # the lectern HEARSAY's journal lies open on
+    r.rect(2 * 16 + 3, 16, 4 * 16 - 4, 22, RR_WOOD)
+    r.rect(2 * 16 + 6, 13, 3 * 16 - 1, 20, RR_PAGE); r.rect(3 * 16, 13, 4 * 16 - 7, 20, RR_PAGE)
+    r.rect(3 * 16 - 1, 13, 3 * 16, 20, RR_PAGED)
+    for ly in (15, 17, 19):
+        r.rect(2 * 16 + 8, ly, 3 * 16 - 3, ly, RR_PAGED); r.rect(3 * 16 + 2, ly, 4 * 16 - 9, ly, RR_PAGED)
+    for wx in (4, 6):                                             # two tall windows, the sky over the bought city
+        X = wx * 16 + 2
+        r.rect(X, 4, X + 27, 21, RR_WOODD)
+        r.rect(X + 2, 6, X + 25, 20, RR_SKY)
+        r.rect(X + 2, 6, X + 25, 8, RR_GLASSL)
+        r.rect(X + 13, 6, X + 14, 20, RR_WOODD); r.rect(X + 2, 13, X + 25, 13, RR_WOODD)
+        r.rect(X + 1, 21, X + 26, 22, RR_WOODL)
+        for k in range(5):                                        # a brass tower, not ours, across the street
+            r.rect(X + 17 + k, 16 - k // 2, X + 17 + k, 20, RR_BRASSD)
+    X = 10 * 16                                                   # the card catalogue, drawers and brass pulls
+    r.rect(X + 1, 6, X + 15, 31, RR_WOODD); r.rect(X + 1, 6, X + 15, 7, RR_WOODL)
+    for dy in range(9, 30, 5):
+        for dx in (X + 2, X + 9):
+            r.rect(dx, dy, dx + 5, dy + 3, RR_WOOD); r.px(dx + 2, dy + 1, RR_BRASS); r.px(dx + 3, dy + 1, RR_BRASS)
+
+    # every other blocked cell: bookcases on the side walls, low cases in the partitions
+    for (x, y) in [(x, y) for y in range(2, H - 1) for x in range(W) if blk[(x, y)]]:
+        if 4 <= x <= 6:
+            continue                                               # the tables, below
+        X, Y = x * 16, y * 16
+        if y in (8, 9):
+            continue                                               # the partitions, below
+        _rr_bookcase(r, X, Y, 16, 16, x * 7 + y)
+    for (x0, x1) in ((0, 2), (8, 10)):                            # the partitions: two-tier cases, read from the south
+        _rr_bookcase(r, x0 * 16, 8 * 16, (x1 - x0 + 1) * 16, 32, x0 + 17)
+    for ty in (4, 12):                                            # the reading tables, each with two lamps
+        X0, Y0, X1, Y1 = 4 * 16, ty * 16 + 1, 7 * 16 - 1, ty * 16 + 29
+        r.shade(X0 + 1, Y1 + 1, X1 + 1, Y1 + 3, 0.7)
+        r.rect(X0, Y0, X1, Y1, RR_WOODD)
+        r.rect(X0 + 1, Y0 + 1, X1 - 1, Y1 - 5, RR_WOOD)
+        r.rect(X0 + 1, Y0 + 1, X1 - 1, Y0 + 1, RR_WOODL)
+        r.rect(X0 + 4, Y0 + 5, X1 - 4, Y1 - 9, RR_BAIZE)
+        r.rect(X0, Y1 - 4, X1, Y1, RR_WOODD); r.rect(X0 + 2, Y1 - 3, X0 + 3, Y1, RR_INK); r.rect(X1 - 3, Y1 - 3, X1 - 2, Y1, RR_INK)
+        for lx in (X0 + 10, X1 - 15):
+            r.ellipse(lx + 3, Y0 + 10, 8, 5, (min(255, RR_BAIZE[0] + 40), min(255, RR_BAIZE[1] + 40), RR_BAIZE[2] + 30))
+            r.rect(lx + 2, Y0 + 7, lx + 3, Y0 + 11, RR_BRASSD)
+            r.rect(lx - 1, Y0 + 4, lx + 6, Y0 + 7, RR_LAMP); r.rect(lx, Y0 + 4, lx + 5, Y0 + 4, RR_LAMPL)
+            r.rect(lx, Y0 + 8, lx + 5, Y0 + 8, RR_GLOW)
+            r.rect(lx + 1, Y0 + 12, lx + 4, Y0 + 12, RR_BRASS)
+        bx = X0 + 20                                               # an open book, and loose paper
+        r.rect(bx, Y0 + 14, bx + 7, Y0 + 19, RR_PAGE); r.rect(bx + 8, Y0 + 14, bx + 15, Y0 + 19, RR_PAGE)
+        r.rect(bx + 7, Y0 + 14, bx + 8, Y0 + 19, RR_PAGED)
+        r.rect(X1 - 12, Y0 + 15, X1 - 6, Y0 + 20, RR_PAGE); r.rect(X1 - 11, Y0 + 17, X1 - 7, Y0 + 17, RR_PAGED)
+    for (cx, cy, right) in ((3, 5, True), (7, 5, False), (3, 12, True), (7, 12, False)):
+        _rr_chair(r, cx * 16, cy * 16, right)
+    X, Y = 5 * 16, 15 * 16                                        # the mat at the door
+    r.rect(X + 1, Y + 4, X + 14, Y + 13, RR_LEATHERD); r.rect(X + 2, Y + 5, X + 13, Y + 12, RR_LEATHER)
+    r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
+    return r.im
+
+
 BUILDINGS = {
     # THE SCHOOL, SPLIT PER TOWN (T-125): one room each, as checkpoint_indigo already is.
     #  T-218..T-219: now SEVEN FLOORS on the one tileset, each re-planned from pret's pristine room every time the
@@ -2310,6 +2471,11 @@ BUILDINGS = {
                              (3, "LAYOUT_VIRIDIAN_CITY_SCHOOL_3F"), (4, "LAYOUT_VIRIDIAN_CITY_SCHOOL_4F"),
                              (5, "LAYOUT_VIRIDIAN_CITY_SCHOOL_5F"), (6, "LAYOUT_VIRIDIAN_CITY_SCHOOL_6F"),
                              (7, "LAYOUT_VIRIDIAN_CITY_SCHOOL_7F"))},
+    ),
+    "reading_room": dict(
+        old="fan_club_daycare", symbol="gTileset_ReadingRoom", dir="reading_room",
+        layouts=[("LAYOUT_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB", reading_room)],
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
     ),
     "verdigris_lecture": dict(
         old="school", symbol="gTileset_VerdigrisLecture", dir="verdigris_lecture",

@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.247 — 2026-09-22
+
+### 4.35 — the school from the street
+
+- ***Batch 7 of 7 is in the ROM and was PLAYED*** — **CALLOW SCHOOL is complete, inside and out.**
+- ***The exterior***: **the cottage is a seven-storey school, drawn from the inside** — *a glazed stair tower whose flights switch back floor by floor, six bands of classroom windows with a board at the back, the lift shaft with brass doors on every floor, glass doors under a brass canopy* (`tools/gbaschoolfront.py`).
+- ***Its own door***: **the glass leaves slide apart, with the sliding sound** — *three frames in row 8, one row in `field_door.c`; the house above keeps the cottage door.*
+- ***Settled by building it: SEVEN storeys, not nine*** — **the building has seven floors inside.** *And there is no room above: the house behind opens onto row 12.*
+- ***THE READING ROOM's interior***: **a library that has outlived its reason** — *worn parquet, walls of books, green lamps, oxblood chairs, the catalogue, the journal on a lectern* (`gbainterior.py reading_room`, *its own tileset so Vermilion's fan club is untouched*).
+- ***Verified in play***: *the tower from the road; out and back in through the sliding door; the Reading Room, every seat, shelf and the catalogue where they were.*
+
+---
+
 ## v11.246 — 2026-09-22
 
 ### 4.35 — the two books, read like books
