@@ -933,6 +933,37 @@ def check_plugin_colours():
     return bad
 
 
+def check_numbered():
+    """Two traps found on 2026-09-22, kept shut.
+
+    1. The PATCH -> PLUGIN re-sweep ran on words, and `PATCH39` is one token with no word boundary inside it,
+       so all 25 numbered ones survived in dialogue -- every gym leader handing over a "PATCH". Nothing a
+       player reads may carry a numbered PATCH, TM or HM.
+    2. A NOTEBOOK entry is copied into gStringVar4 to be shown, and gStringVar4 is 1000 bytes. An entry that
+       outgrows it overwrites whatever follows it in EWRAM, silently.
+    """
+    import re as _re
+    bad = []
+    for dp, dn, fn in os.walk(os.path.join(ROOT, "engineGba/data")):
+        for f in fn:
+            if not f.endswith(".inc"):
+                continue
+            for line in open(os.path.join(dp, f), encoding="utf-8", errors="ignore"):
+                if ".string" in line:
+                    m = _re.search(r"\b(PATCH\d+|TM\d\d|HM\d\d)", line)
+                    if m:
+                        bad.append(("%s" % os.path.basename(dp), "says %s" % m.group(1)))
+    nb = os.path.join(ROOT, "engineGba/src/notebook.c")
+    if os.path.exists(nb):
+        src = open(nb, encoding="utf-8").read()
+        for m in _re.finditer(r"static const u8 (sText_\w+)\[\] = _\((.*?)\);", src, _re.S):
+            body = "".join(_re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)))
+            size = len(_re.sub(r"\\[pnl]", "x", body)) + 1
+            if size >= 1000:
+                bad.append((m.group(1), "%d bytes, and gStringVar4 holds 1000" % size))
+    return bad
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1091,13 +1122,21 @@ def main():
         for what, why in gbad:
             print("   %-24s %s" % (what, why))
 
+    xbad = check_numbered()
+    if not xbad:
+        print("  no dialogue says a numbered PATCH, TM or HM, and every NOTEBOOK entry fits gStringVar4.")
+    else:
+        print("\n  %d numbered or oversized string(s):\n" % len(xbad))
+        for what, why in xbad:
+            print("   %-32s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad) else 0
 
 
 if __name__ == "__main__":

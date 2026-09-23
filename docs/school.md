@@ -424,6 +424,12 @@ BROCK gives a TM after the battle — so the notebook arrives exactly where a re
 **It is a reward, because you earned it, and a habit, because it is hour two.** *Both of the first
 draft's options, at once.*
 
+### What it is called in the game — `NOTEBOOK`
+
+***An item name is thirteen characters, and `RESEARCH NOTEBOOK` is seventeen.*** **So the game calls it the
+NOTEBOOK**, *and this document keeps its longer name.* `RESEARCH BOOK` *and* `LAB NOTEBOOK` *both fit if
+either reads better in play.* **Its cover is CONTEXT's colour** (`tools/gennotebookicon.py`).
+
 ### Everything is a flag, so nothing found early is lost
 
 ***THE UNDERTONE's carving and CALLOW's school both come BEFORE Slate.*** **So every entry is a
@@ -641,7 +647,7 @@ school's last batch**, with the exam in it.*
 | batch | what | proves |
 |---|---|---|
 | **1** | ***1F LANGUAGE*** — *label on arrival, placard, desk and syllabus, board, three people* | ***BUILT 2026-09-22*** — **the furniture set** |
-| **2** | ***the RESEARCH NOTEBOOK***, *CAIRN hands it over after Benchmark 1*, `SCHOOL NOTES` with the LANGUAGE syllabus, **and the first LOOSE PAGE** (*the carving*) | **the reader, the flags, and insertion order** |
+| **2** | ***the RESEARCH NOTEBOOK***, *CAIRN hands it over after Benchmark 1*, `SCHOOL NOTES` with the LANGUAGE syllabus, **and the first LOOSE PAGE** (*the carving*) | ***BUILT 2026-09-22*** — **the reader, the flags, and insertion order** |
 | **3** | ***the EXAM***, *LANGUAGE's section only, twelve questions* | ***L and R*** (*trap 19*), **resume, score, grade** |
 | **4** | ***2F ATTENTION, 3F MEMORY, 4F CATEGORIES***, *with stairs* | **new layouts; the furniture set repeated** |
 | **5** | ***5F LEARNING, 6F BIAS, 7F ERROR***, *the elevator, the TEXTBOOK, exam season, the Owl at the front, all seven exam sections* | **the whole school** |

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.240**
+**A total conversion — the living design bible, v11.241**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4609,6 +4609,19 @@ vanilla's popup fires only on a map-section change and walking in from CALLOW is
 dialogue may not say `BIND`***: **the vocabulary sweep learned vanilla's move BIND → LATCH**, *so
 "USER BINDS DAEMON" would have shipped as "USER LATCH DAEMON".* **The lesson reads "USER READS DAEMON"
 now** — *which is the better sentence for a game about reading anyway.*
+
+#### The NOTEBOOK, built — 2026-09-22
+
+***Batch 2 is in the ROM*** (T-216). **The game calls it the NOTEBOOK** — *an item name is thirteen
+characters.* **Its cover is CONTEXT's hue**, *read from the same table as the daemons and the discs:
+the Index holds what a thing is, the notebook holds what happened around it, and the colour says so where
+no character may.* ***An entry is read in the ordinary message box***, **so it pages like a sign and R =
+AGAIN repeats it** — *the notebook has no reading screen of its own, because reading is already a thing
+the player knows how to do here.*
+
+***And its first loose page is a child's***, **found tucked under THE UNDERTONE's carving**: *rows of
+little figures, "some rows push, some give way, some do nothing at all", and homework for tomorrow —
+integrating, page 40.* **It is a type chart and it never says so**, *which is 4.20 in a document.*
 
 #### What it must never do
 

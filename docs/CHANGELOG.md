@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.241 — 2026-09-22
+
+### 4.35 — the NOTEBOOK, built, and twenty-five PATCHes nobody saw
+
+- ***Batch 2 of 7 is in the ROM*** (T-216): **CAIRN hands over the NOTEBOOK after Benchmark 1**, *and a save that beat him before it existed gets it the next time it talks to him.*
+- ***`NOTEBOOK`, because an item name is thirteen characters.*** *Its icon is drawn in code in CONTEXT's hue.* **It takes `ITEM_10B`, unused among the key items.**
+- ***A script drives it***: **four specials put up a heap-allocated list of whatever is held and hand the choice back**; *an entry is read in the ordinary message box, so it pages like a sign and R = AGAIN repeats it.* **Sections appear only when they hold something; entries keep an authored order; every entry is a flag.**
+- ***First two entries***: *SCHOOL NOTES — the LANGUAGE syllabus, the desk's own text;* **LOOSE PAGES — THE STONE, a child's page under THE UNDERTONE's carving.** *It is a type chart and never says so.*
+- ***T-222: twenty-five lines of dialogue still said PATCH*** — **every gym leader handing over a `PATCH39`.** *The PLUGIN re-sweep matched words, and `PATCH39` is one token.* **All 25 fixed; `check_lexicon.check_numbered()` now refuses any numbered PATCH, TM or HM, proved by putting one back.** *It also holds every notebook entry under `gStringVar4`'s 1000 bytes.*
+
+---
+
 ## v11.240 — 2026-09-22
 
 ### 4.35 — the first floor built, fourteen groves, and a regression of mine undone
