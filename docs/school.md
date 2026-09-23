@@ -379,6 +379,15 @@ nothing in the game will call it anything.***
 the unconscious, implicit memory, a blind spot, a black box.* **LATENT and OPAQUE are the natural types,
 not the required ones.**
 
+### The first grove, built — 2026-09-23 (provisional)
+
+***The mechanism, proved once.*** **THE UNDERTONE's lone tree** — *the one tree in the forest standing apart in
+the open* — **answers A: the screen fades and you are in a clearing the map never showed.** *The clearing's own
+lone tree takes you back.* **Nothing is said either way**, *so it is found blind by pressing A on the tree that
+stands alone, and REVEAL makes that tree twinkle.* ***`tools/gbagrove.py` builds a grove from one row*** — *the
+clearing is cut from its forest's own map, so it walks and looks like the forest.* **Where the other thirteen go,
+and who lives in any of them, are the user's.**
+
 ### Fourteen families — PROPOSED 2026-09-23, not decided
 
 ***The choice is the user's*** (*§14, still open*); **this is a first draft to react to, chosen from
