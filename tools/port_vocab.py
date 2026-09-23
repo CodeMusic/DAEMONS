@@ -205,6 +205,15 @@ _typed = sorted(k for k in NAMES if k in TYPE_WORDS)
 for k in _typed:
     del NAMES[k]
 
+#  And a move name that is ALSO the interface's own verb. The move WITHDRAW became EDDY, and the word pass
+#  then rewrote the storage system's WITHDRAW -- the PORT offered "EDDY DAEMON" and "EDDY ITEM" and its help
+#  said "Using 'EDDY'" for two weeks (found playing the field-test route, 2026-09-23). The move is renamed in
+#  its own table and in the one line that commands it (CERULEAN's "SHELL, EDDY!"), which is authored; the
+#  VERB is English and stays. Same guard as the type names: out of the word map, never substituted.
+ORDINARY_WORDS = {"WITHDRAW"}
+for k in sorted(ORDINARY_WORDS & set(NAMES)):
+    del NAMES[k]
+
 # ------------------------------------------------------ vocabulary, from GB
 # Phrases where "catch" is not the capture verb. Substituted to themselves
 # BEFORE the word map runs, so the word map never sees the "catch" inside.

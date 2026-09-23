@@ -653,7 +653,10 @@ def check_stale_names():
                #  game with an accent in it was invisible to this check on the
                #  very run that added items to it. The test is "contains no
                #  lowercase ASCII", which is what was meant all along.
-               if o not in live and not re.search(r"[a-z]", o) and len(o) > 2}
+               if o not in live and not re.search(r"[a-z]", o) and len(o) > 2
+               #  and a renamed move whose old name is the interface's own verb (port_vocab's ORDINARY_WORDS):
+               #  the storage system WITHDRAWs, and it is not the move EDDY (found 2026-09-23).
+               and o not in ("WITHDRAW",)}
 
     #  AN INFLECTED NAME IS STILL THE NAME. Plain suffixes, plus a doubled
     #  final consonant, which is the one that hid WRAPPED: it is not WRAP + ED.

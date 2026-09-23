@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.261 — 2026-09-23
+
+### The PORT withdraws again
+
+- ***T-230: the storage system said EDDY DAEMON*** — **the move WITHDRAW's new name had been swept into the interface's own verb**, *two weeks ago, in twelve places.* **Restored, and guarded in both `port_vocab` and `check_lexicon` so no re-run brings it back.** *Every other renamed move was checked against the interface text; this was the only damage. Found playing the field-test route.*
+- ***The field-test page has a route*** *— the same checks ordered by place, with the two that depend on each other in the right order.*
+
+---
+
 ## v11.260 — 2026-09-23
 
 ### The documents can be placed with one command
