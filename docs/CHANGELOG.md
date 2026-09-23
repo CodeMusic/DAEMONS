@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.253 — 2026-09-23
+
+### An entry can reach its family
+
+- ***T-202, built on R so it can be played before it is picked*** — **R on an Index entry opens the page its family is on**, *the cursor already on that daemon; B goes back to the list.* *The user asked for it; only the button was open, and R was the recommendation.* **DRAFT wording: `FAMILY`.**
+- ***CALLOW plays SLATE's theme*** — *vanilla gave the two cities one track, so SLATE's new music reached CALLOW too.* **7.4 already names CALLOW's track; its hook is not in this repo, so the fix is a composition, not a script** (*T-05*).
+
+---
+
 ## v11.252 — 2026-09-23
 
 ### The painted words, swept
