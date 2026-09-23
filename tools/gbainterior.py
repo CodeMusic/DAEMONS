@@ -50,7 +50,7 @@ Statue heads are drawn on the top layer, as vanilla does, so the player walks be
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
 """
-import importlib.util, json, math, os, re, struct, sys
+import importlib.util, json, math, os, re, struct, subprocess, sys, tempfile
 from collections import Counter
 from PIL import Image
 
@@ -2058,7 +2058,72 @@ def proof_hall(old_img, statues=True):
 C_BOARD, C_BOARDF = (38, 54, 44), (24, 34, 28)
 
 
-def callow_school(old_img, statues=True):
+#  T-218..T-219 (batch 4, docs/school.md 3): CALLOW SCHOOL is one building of several floors, all drawn here
+#  and all on gTileset_CallowSchool. Every floor is the same room -- the furniture set is the point: the label,
+#  the placard (the framed map at (7,1)), the desk, the board and three people -- and two things differ:
+#    STAIRS, a switchback stairwell: each flight comes out where it went in, and the next one starts on the
+#      far wall. SCHOOL_STAIRS names them; SCHOOL_PLAN gives each its behaviour.
+#    THE BOARD, which carries its floor's subject in chalk, so a floor can be told from the next at a glance.
+#  Only the ground floor has a way out.
+SCHOOL_STAIRS = {           # floor -> [(x, y, "up"|"down", "left"|"right")]
+    1: [(8, 3, "up", "right")],
+    2: [(8, 3, "down", "right"), (1, 3, "up", "left")],
+    3: [(1, 3, "down", "left"), (8, 3, "up", "right")],
+    4: [(8, 3, "down", "right")],
+}
+
+
+def school_stairs(r, x, y, updown, side):
+    """A flight in a single cell, in the room's own concrete and brass. UP is steps rising toward the wall on
+    its side; DOWN is a dark well with the treads falling away into it."""
+    X, Y = x * 16, y * 16
+    if updown == "up":
+        r.rect(X, Y, X + 15, Y + 15, C_CONC)
+        for k in range(4):                                   # four steps, lighter as they climb
+            h = (k + 1) * 4
+            cx = X + (k * 4 if side == "right" else 12 - k * 4)
+            r.rect(cx, Y + 16 - h, cx + 3, Y + 15, C_PANEL)
+            r.rect(cx, Y + 16 - h, cx + 3, Y + 16 - h, C_BONE)
+            r.rect(cx + (3 if side == "right" else 0), Y + 16 - h, cx + (3 if side == "right" else 0), Y + 15, C_SLABD)
+        rx = X + 1 if side == "right" else X + 14            # the rail, on the open side
+        r.rect(rx, Y + 1, rx, Y + 15, C_BRASSD)
+    else:
+        r.rect(X, Y, X + 15, Y + 15, C_BED)
+        for k in range(4):                                   # the treads, darker as they go down
+            ty = Y + 2 + k * 4
+            shade = [C_BONE, C_BONED, C_SLABD, C_BED][k]
+            r.rect(X + 2, ty, X + 13, ty + 1, shade)
+        r.rect(X, Y, X + 15, Y, C_BRASSD); r.rect(X, Y, X, Y + 15, C_BRASSD); r.rect(X + 15, Y, X + 15, Y + 15, C_BRASSD)
+
+
+def school_board_motif(r, floor):
+    """What is left in chalk on each floor's board. 1F keeps the table it always had."""
+    import math
+    x0, x1, y0, y1 = 3 * 16 + 4, 7 * 16 - 5, 20, 2 * 16 - 8
+    if floor == 2:                                           # ATTENTION: one ring, a dot in it, marks nobody looked at
+        cx, cy = (x0 + x1) // 2, (y0 + y1) // 2
+        for a in range(0, 360, 12):
+            px = int(cx + 7 * math.cos(math.radians(a))); py = int(cy + 3 * math.sin(math.radians(a)))
+            r.rect(px, py, px, py, C_BONE)
+        r.rect(cx, cy, cx + 1, cy, C_BONE)
+        for (dx, dy) in ((-22, -2), (-17, 3), (18, 2), (23, -3), (13, 4)):
+            r.rect(cx + dx, cy + dy, cx + dx, cy + dy, C_BONED)
+    elif floor == 3:                                         # MEMORY: lines of writing, fainter the older they are
+        for k, col in enumerate((C_BONED, C_BONED, C_BONE, C_BONE)):
+            ly = y0 + k * 3
+            for sx in range(x0, x1 - (k * 5) % 11, 3):
+                if (sx + k) % 7:
+                    r.rect(sx, ly, sx + 1, ly, col)
+    elif floor == 4:                                         # CATEGORIES: three drawers, and one thing across two
+        for bx in (x0, x0 + 20, x0 + 40):
+            r.rect(bx, y0, bx + 14, y0, C_BONE); r.rect(bx, y1, bx + 14, y1, C_BONE)
+            r.rect(bx, y0, bx, y1, C_BONE); r.rect(bx + 14, y0, bx + 14, y1, C_BONE)
+        r.rect(x0 + 16, y0 + 3, x0 + 21, y0 + 5, C_BONED)
+        for k in range(3):
+            r.rect(x0 + 4 + k * 20, y0 + 3, x0 + 6 + k * 20, y0 + 4, C_BONE)
+
+
+def callow_school(old_img, statues=True, floor=1):
     old = Old("school")
     _, raw = old.layout("LAYOUT_VIRIDIAN_CITY_SCHOOL")
     H, W = len(raw), len(raw[0])
@@ -2083,12 +2148,15 @@ def callow_school(old_img, statues=True):
             r.rect(X, Y + 13, X + 15, Y + 15, C_SLABD)
     r.rect(3 * 16, 16, 7 * 16 - 1, 2 * 16 - 3, C_BOARDF)          # THE BOARD, and it is the frame
     r.rect(3 * 16 + 2, 18, 7 * 16 - 3, 2 * 16 - 6, C_BOARD)
-    for gx in range(3 * 16 + 4, 7 * 16 - 4, 5):                   # the table, as a lattice of equal cells
-        r.rect(gx, 20, gx, 2 * 16 - 8, C_BONED)
-    for gy in range(20, 2 * 16 - 8, 4):
-        r.rect(3 * 16 + 4, gy, 7 * 16 - 5, gy, C_BONED)
-    for k in range(6):                                            # a few cells filled in, none explained
-        r.rect(3 * 16 + 5 + (k * 7) % 30, 21 + (k % 3) * 4, 3 * 16 + 8 + (k * 7) % 30, 22 + (k % 3) * 4, C_BONE)
+    if floor == 1:
+        for gx in range(3 * 16 + 4, 7 * 16 - 4, 5):               # the table, as a lattice of equal cells
+            r.rect(gx, 20, gx, 2 * 16 - 8, C_BONED)
+        for gy in range(20, 2 * 16 - 8, 4):
+            r.rect(3 * 16 + 4, gy, 7 * 16 - 5, gy, C_BONED)
+        for k in range(6):                                        # a few cells filled in, none explained
+            r.rect(3 * 16 + 5 + (k * 7) % 30, 21 + (k % 3) * 4, 3 * 16 + 8 + (k * 7) % 30, 22 + (k % 3) * 4, C_BONE)
+    else:
+        school_board_motif(r, floor)
     for wx in (1, 2):                                             # the windows, and the plant on the sill
         X = wx * 16
         r.rect(X + 1, 18, X + 14, 2 * 16 - 5, C_SLABD)
@@ -2116,8 +2184,11 @@ def callow_school(old_img, statues=True):
         r.rect(X, Y + 3, X + 15, Y + 11, C_CLAY)
     r.rect(4 * 16 + 5, 4 * 16 + 5, 5 * 16 + 10, 4 * 16 + 9, C_BONE)
     r.rect(5 * 16 - 1, 4 * 16 + 5, 5 * 16, 4 * 16 + 9, C_BONED)
-    X, Y = 4 * 16, 7 * 16                                         # the way out
-    r.rect(X + 1, Y + 4, X + 14, Y + 13, C_BRASSD); r.rect(X + 2, Y + 5, X + 13, Y + 12, C_BRASS)
+    if floor == 1:
+        X, Y = 4 * 16, 7 * 16                                     # the way out -- the ground floor's alone
+        r.rect(X + 1, Y + 4, X + 14, Y + 13, C_BRASSD); r.rect(X + 2, Y + 5, X + 13, Y + 12, C_BRASS)
+    for (sx, sy, updown, side) in SCHOOL_STAIRS.get(floor, []):
+        school_stairs(r, sx, sy, updown, side)
     r.rect(0, 0, W * 16 - 1, 15, (0, 0, 0)); r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
     r.rect(0, 0, 15, H * 16 - 1, (0, 0, 0)); r.rect((W - 1) * 16, 0, W * 16 - 1, H * 16 - 1, (0, 0, 0))
     return r.im
@@ -2182,10 +2253,22 @@ def verdigris_lecture(old_img, statues=True):
 
 BUILDINGS = {
     # THE SCHOOL, SPLIT PER TOWN (T-125): one room each, as checkpoint_indigo already is.
+    #  T-218..T-219: now FOUR FLOORS on the one tileset, each re-planned from pret's pristine room every time the
+    #  building is rebuilt (see "reset"), so adding floors in batch 5 is a re-run and not a hand-restore.
     "callow_school": dict(
         old="school", symbol="gTileset_CallowSchool", dir="callow_school",
-        layouts=[("LAYOUT_VIRIDIAN_CITY_SCHOOL", callow_school)],
-        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
+        layouts=[("LAYOUT_VIRIDIAN_CITY_SCHOOL",    callow_school),
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_2F", lambda img, statues=True: callow_school(img, statues, floor=2)),
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_3F", lambda img, statues=True: callow_school(img, statues, floor=3)),
+                 ("LAYOUT_VIRIDIAN_CITY_SCHOOL_4F", lambda img, statues=True: callow_school(img, statues, floor=4))],
+        reset="data/layouts/ViridianCity_School/map.bin",
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={},
+        plan={lid: dict([((x, y), (False, {("up", "right"): 0x6C, ("up", "left"): 0x6D,
+                                           ("down", "right"): 0x6E, ("down", "left"): 0x6F}[(ud, side)]))
+                         for (x, y, ud, side) in SCHOOL_STAIRS[f]] +
+                        ([] if f == 1 else [((dx, 7), (False, 0)) for dx in (3, 4, 5)]))   # no way out upstairs
+              for f, lid in ((1, "LAYOUT_VIRIDIAN_CITY_SCHOOL"), (2, "LAYOUT_VIRIDIAN_CITY_SCHOOL_2F"),
+                             (3, "LAYOUT_VIRIDIAN_CITY_SCHOOL_3F"), (4, "LAYOUT_VIRIDIAN_CITY_SCHOOL_4F"))},
     ),
     "verdigris_lecture": dict(
         old="school", symbol="gTileset_VerdigrisLecture", dir="verdigris_lecture",
@@ -2370,6 +2453,21 @@ def vflip(t):
 
 def build(name, cfg):
     old = Old(cfg["old"])
+    if cfg.get("reset"):
+        #  T-218: a building that is REBUILT rather than built once. Every one of its layouts goes back to pret's
+        #  pristine room before it is drawn -- read from upstream, so no hand-restore and no stale ids -- which is
+        #  what lets the school grow a floor per batch by re-running this and nothing else.
+        pristine = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + cfg["reset"]],
+                                  check=True, capture_output=True).stdout
+        #  Read from a scratch copy, never the real file: a dry run must not touch the build, and --write puts the
+        #  finished blocks at the real path below.
+        cfg["_real"] = {}
+        for lid, _ in cfg["layouts"]:
+            tmp = os.path.join(tempfile.gettempdir(), "gbainterior_%s.bin" % lid)
+            open(tmp, "wb").write(pristine)
+            cfg["_real"][lid] = LAYOUTS[lid]["blockdata_filepath"]
+            LAYOUTS[lid]["blockdata_filepath"] = tmp
+            LAYOUTS[lid]["secondary_tileset"] = "gTileset_" + "".join(w.title() for w in cfg["old"].split("_"))
     theme = cfg["theme"]
     art_of = {}            # (layout, x, y) -> 16x16 RGB
     attr_of, raw_of, top_of = {}, {}, {}
@@ -2549,7 +2647,7 @@ def build(name, cfg):
         for y in range(H):
             for x in range(W):
                 struct.pack_into("<H", bd, (y * W + x) * 2, (raw_of[(lid, x, y)] & ~0x3FF) | cell_id[(lid, x, y)])
-        open(os.path.join(GBA, l["blockdata_filepath"]), "wb").write(bd)
+        open(os.path.join(GBA, cfg.get("_real", {}).get(lid, l["blockdata_filepath"])), "wb").write(bd)
     # register the tileset and point the layouts at it
     lj_path = os.path.join(GBA, "data/layouts/layouts.json"); lj = open(lj_path).read()
     for lid, _ in cfg["layouts"]:

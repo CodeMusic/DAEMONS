@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.243 — 2026-09-22
+
+### 4.35 — four floors, and a stairwell that doubles back
+
+- ***Batch 4 of 7 — 2F ATTENTION, 3F MEMORY, 4F CATEGORIES — is in the ROM and was CLIMBED*** (T-219).
+- ***One building, four floors, one tileset***: **`gbainterior.py callow_school` rebuilds every floor from pret's pristine room on each run**, *read from upstream into a scratch copy so a dry run never touches the build.* **Batch 5's floors are a re-run.**
+- ***A switchback stairwell***, *each flight coming out where it went in*; ***each board its subject in chalk***; **only the ground floor has a way out.**
+- ***Each floor has the full set***: *label, placard, syllabus, a five-topic board, three people* — **all wording drafted for approval.**
+- ***Verified in play***: *every flight both ways, every label, a board menu and topic, syllabi into the NOTEBOOK, and* **authored order: 4F's syllabus taken before 3F's, and the notebook still reads 1F, 2F, 3F, 4F.**
+- ***The new maps are appended to their group***, *so every existing map keeps its number, and so every save keeps its place.*
+
+---
+
 ## v11.242 — 2026-09-22
 
 ### 4.35 — the paper, built and sat

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.242**
+**A total conversion — the living design bible, v11.243**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4634,6 +4634,16 @@ A-."* **Walking out mid-paper loses nothing, and a retake is a blank paper.**
 ***The screen is paper and ink and nothing else.*** **The one place in the game that tests you is the
 plainest place in it** — *which is 9.4's rule applied to a screen: colour carries an argument or it is
 not used, and a test is not where this game argues.*
+
+#### Four floors, and a stairwell that doubles back — 2026-09-22
+
+***Batch 4 is in the ROM and was climbed*** (T-219). **The school is one building of four floors on one
+tileset**, *drawn by the same function, and every floor is the same room — the furniture set is the
+point.* ***Two things differ, and both are for orientation, not decoration.*** **The stairs switch back**,
+*each flight coming out where it went in, as a real stairwell does,* **and each board carries its floor's
+subject in chalk**: *a ring with a dot in it, lines that fade the older they are, three drawers with one
+thing across two.* **A player can tell the floors apart without reading a word**, *which is the only
+thing a board motif is for.*
 
 #### What it must never do
 
