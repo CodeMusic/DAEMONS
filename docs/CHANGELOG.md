@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.259 — 2026-09-23
+
+### The two story documents catch up
+
+- ***`story.md` and `story-readthrough.md` were 46 versions behind***, *and `check_lexicon` had said so on every run.* **Reconciled**: *the school and its honest exam, the Owl signing without looking up, OPUS on the shelf, CAIRN's NOTEBOOK, THE READING ROOM and the journals the diligent player reads first, the documents filing themselves in authored order, and why a peer reviewer lives in the bought city.* **Nothing added to either that `CLAUDE.md` keeps out of public writing.**
+
+---
+
 ## v11.258 — 2026-09-23
 
 ### The follower, measured

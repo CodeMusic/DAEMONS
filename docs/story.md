@@ -5,7 +5,7 @@ Not the story as the player meets it — that is
 says what is available at each point. **This is what happened**, in the order it
 happened, which is an order no player is ever given.
 
-> **Reconciled against the bible at v11.206, 2026-09-14.**
+> **Reconciled against the bible at v11.259, 2026-09-23.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -42,6 +42,11 @@ looking for Ty, works out where a man in his condition would go, and finds him.
 Then they separate: Ty to the islands, S.T.A.R.R. to Doldrum Cave. Ty could not
 stay, and while he was gone Scorn rebranded the company — gold leaf over the old
 name.
+
+The faculty was once in Brazen. **What is left of it is a reading room that still
+checks credentials at the door**, in a building Corpus now owns — which is why the
+one reader who never decided lives in the bought city at all. Crystal's journals
+ended up on its shelves.
 
 ---
 
@@ -100,6 +105,8 @@ nobody repainted anything.
 | The islands as Act 2, and the tone rule | 8.2a |
 | The Owl, and the peer review | 4.23, 4.24 |
 | The two perspectives the whole thing rests on | 0.5 |
+| CALLOW SCHOOL, the honest exam, the NOTEBOOK and the Reading Room | 4.35, `school.md` |
+| OPUS, and the margin | 4.2 |
 
 ---
 

@@ -3,7 +3,7 @@
 Not the story as designed — the story **in the order a player actually meets
 it**, with what they can know at each point and what they cannot yet.
 
-> **Reconciled against the bible at v11.206, 2026-09-14.**
+> **Reconciled against the bible at v11.259, 2026-09-23.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -53,6 +53,31 @@ in the first hour and does not learn what is behind it until the last.
 
 **Nobody mentions that the man behind it is the reason for everything else.**
 
+### And the school, which is open
+
+**CALLOW SCHOOL**, seven storeys where the cottage was: LANGUAGE, ATTENTION,
+MEMORY, CATEGORIES, LEARNING, BIAS, ERROR — *named, noticed, kept, sorted,
+changed, bent, corrected.* **Every floor teaches something true about minds and
+something true about machines, and no floor ever joins them up.** The join is the
+player's.
+
+Then the paper. **The material is published, the pass mark is on the syllabus
+before the exam exists, you can walk out mid-paper without losing an answer, and
+you can sit it again forever.** *Every one of those is the negative of a clause in
+the evaluations Scorn rigged* — **and nobody draws the comparison.** The player
+takes the good test forty hours before they know what it is the good version of.
+
+**Pass, and the Owl, at the front, signs a DIPLOMA without looking up.** *The
+first time the player meets the reader the ending turns on, he does not look at
+them.*
+
+### And a thing on a shelf with no price
+
+At the end of a shelf in THE REPO sits **OPUS**. Nobody remarks on it. **It writes
+one line under an Index entry** — a second reading of the entry above it, and a
+different one for a daemon you played than for one you bound and put away. *It
+does not fix the Index; it annotates it.* **Who left it is never answered.**
+
 ## 4. Slate — Benchmark 1, Representation
 
 A museum of dead hardware, and a lesson that everything must be encoded in
@@ -69,6 +94,12 @@ Downstairs, a man nobody believes hands over a CORE he says is not empty.
 Upstairs, the cards were written by *a researcher from Blanche who is collecting
 them — "into a module, she said. As though a fault were a part."* **The player
 has been carrying a `CC-7` since minute fifteen and nothing points at it.**
+
+**And CAIRN, after the Benchmark, hands over a NOTEBOOK.** His creed is *if it is
+not written down, it did not happen.* **The man whose creed will later remove
+Crystal hands the player the instrument that re-reads her.** Nothing connects
+them. *Whatever the player has already read — the school, a carving — is in it
+when it arrives.*
 
 ## 5. Doldrum — Benchmark 2, gradient descent
 
@@ -118,6 +149,19 @@ The thesis benchmark, in the city that bought the thesis.
 The theme is in the city's own bright key and then drops a semitone into
 something that climbs and never resolves. **Brass over base metal.**
 
+### THE READING ROOM
+
+**An attendant asks to see the diploma**, the way a person does who has asked ten
+thousand times and stopped wondering why. *It is what is left of the faculty — the
+reason a peer reviewer lives in the bought city at all. Nobody says so.*
+
+**Inside are Crystal's journals, and reading them writes pages into the
+NOTEBOOK** that exist nowhere else. *The player who did the coursework reads the
+same pages the ending turns on, understands them, and is never told what they are
+holding.* Three lecturers teach to anyone, and a ninth DRIVER, **REVEAL**, is a
+lens rather than a key: *hidden things twinkle, and a tree that stands alone
+turns out to lead somewhere.*
+
 ## 11. Quicksilver — Benchmark 7, temperature
 
 A ruined lab on an island. The player arrives from the city of shamelessness
@@ -133,6 +177,12 @@ thing that mattered. **That is the Index, at the scale of history.**
 *The arithmetic is left to the player:* a dated plaque in Brazen, a personnel
 record ending before it, a terminal stopping after. Three documents in two
 cities, and nobody ever states the order.
+
+**Each document read is FILED** — into the NOTEBOOK's sections, named by the kind
+of paper and never by the subject: LAB NOTES, RUN LOGS, THE FILE. *They insert into
+an authored order rather than the order they were found, so the file reads
+correctly when it is complete and never while it is not.* **The ruined lab, made
+into a system.**
 
 ### What woke up here
 
@@ -284,6 +334,10 @@ the player a PEER REVIEW addressed to the people who signed the first one.**
 *Nobody ever reads what it says.*
 
 **A procedure put her away. A re-reading takes her out.**
+
+*A player who read the journals in the Reading Room is the only person in the room
+who already knew.* The two pages of this scene file themselves into PEER REVIEW
+without a word — **nothing interrupts it, not even the book.**
 
 ### 22. Blanche — she reads it
 
