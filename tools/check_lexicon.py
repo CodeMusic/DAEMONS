@@ -1101,6 +1101,47 @@ def check_joins():
     return sorted(set(bad))
 
 
+#  T-240, the other half: nothing measured a line of dialogue against the box it is read in. The field message box
+#  is 26 tiles (new_menu_helpers.c), 208px. Music and colour codes draw nothing; {PLAYER} and {RIVAL} are counted
+#  at seven wide letters; a {STR_VAR} at textwidth's own guess. A line vanilla ships word for word is its problem,
+#  not ours -- two of those are over by that guess, and both hold a number. The panes with their own widths
+#  (help, the intro, the Fame Checker, the STREAM, the Index, the quest log) are measured elsewhere or not here.
+def check_message_box():
+    import glob as _glob
+    tw = _load_textwidth()
+    def clean(l):
+        l = re.sub(r"\{(PLAYER|RIVAL)\}", "WWWWWWW", l)
+        l = re.sub(r"\{(PLAY_BGM|PLAY_SE|PAUSE|PAUSE_MUSIC|RESUME_MUSIC|COLOR|SHADOW|FONT_\w+|HIGHLIGHT|CLEAR_TO|PAUSE_UNTIL_PRESS)[^}]*\}", "", l)
+        return re.sub(r"\{(MUS|SE)_\w+\}", "", l)
+    skip = ("help_system", "new_game_intro", "fame_checker", "teachy", "pokedex", "quest_log")
+    bad = []
+    for f in sorted(_glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + _glob.glob(os.path.join(GBA, "data/text/*.inc"))):
+        if any(x in f for x in skip):
+            continue
+        rel = os.path.relpath(f, GBA)
+        up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True).stdout
+        label = None
+        for line in open(f, encoding="utf-8", errors="ignore").read().split("\n"):
+            m = re.match(r"^(\w+)::", line)
+            if m:
+                label = m.group(1)
+                continue
+            st = re.match(r'\s*\.string\s+"(.*)"', line)
+            if not st:
+                continue
+            for piece in re.split(r"\\[nlp]", st.group(1).replace("$", "")):
+                if piece and tw(clean(piece)) > 208 and piece not in up:
+                    bad.append(("%s %s" % (rel, label), "%dpx in the 208px box: %s" % (tw(clean(piece)), piece)))
+    return bad
+
+
+def _load_textwidth():
+    src = open(os.path.join(ROOT, "tools/port_vocab.py"), encoding="utf-8").read()
+    ns = {"__name__": "pv", "__file__": os.path.join(ROOT, "tools/port_vocab.py")}
+    exec(compile(src.split("# ------------------------------------------------------- names, derived")[0], "port_vocab.py", "exec"), ns)
+    return ns["textwidth"]
+
+
 #  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
 #  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
 #  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
@@ -1386,6 +1427,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    mbad = check_message_box()
+    if not mbad:
+        print("  every line of field dialogue fits the 208px message box.")
+    else:
+        print("\n  %d line(s) wider than the message box:\n" % len(mbad))
+        for what, why in mbad:
+            print("   %-52s %s" % (what, why))
+
     jbad = check_joins()
     if not jbad:
         print("  no line of dialogue runs into the next without a break.")
@@ -1416,7 +1465,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad) else 0
 
 
 if __name__ == "__main__":
