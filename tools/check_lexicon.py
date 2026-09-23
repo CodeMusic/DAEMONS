@@ -467,9 +467,11 @@ def check_phantom_places():
            "|CANYON|RUINS|MANSION|FOREST|SPRING")
     pat = re.compile(r"\b(MT\. [A-Z][A-Z']+|(?:[A-Z][A-Z'.]+ ){1,2}(?:%s))\b" % suf)
     out = []
+    #  T-243: every .inc with dialogue in it, not only the ones named text.inc -- the same blind spot as the stale-name
+    #  pass below, which is where it did its damage.
     for root, dirs, files in os.walk(os.path.join(GBA, "data")):
         for fn in files:
-            if fn != "text.inc":
+            if not fn.endswith(".inc"):
                 continue
             p = os.path.join(root, fn)
             txt = re.sub(r"\\[nlp]", " ",
@@ -714,9 +716,12 @@ def check_stale_names():
             if note is not None:
                 out.append((rel, "says %s; the game calls it %s%s" % (old, new, note)))
 
+    #  T-243: EVERY .inc WITH DIALOGUE IN IT, not only the ones named text.inc. data/text/ holds trainers.inc, the Fame
+    #  Checker, the signs and a dozen more, and data/scripts/ the shared ones; this loop skipped all of them, which is
+    #  how a Route 9 rematch still said ROCK TUNNEL two weeks after this docstring promised it could not.
     for root, dirs, files in os.walk(os.path.join(GBA, "data")):
         for fn in files:
-            if fn != "text.inc":
+            if not fn.endswith(".inc"):
                 continue
             p = os.path.join(root, fn)
             lines = open(p, encoding="utf-8", errors="ignore").read().split("\n")
@@ -1115,7 +1120,8 @@ def check_message_box():
         return re.sub(r"\{(MUS|SE)_\w+\}", "", l)
     skip = ("help_system", "new_game_intro", "fame_checker", "teachy", "pokedex", "quest_log")
     bad = []
-    for f in sorted(_glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + _glob.glob(os.path.join(GBA, "data/text/*.inc"))):
+    for f in sorted(_glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + _glob.glob(os.path.join(GBA, "data/text/*.inc"))
+                    + _glob.glob(os.path.join(GBA, "data/scripts/*.inc"))):
         if any(x in f for x in skip):
             continue
         rel = os.path.relpath(f, GBA)
@@ -1278,7 +1284,7 @@ ARTICLE_LETTERS = {"HP", "MP", "RPG", "NPC", "HM", "SOS", "FM", "X", "L", "R", "
 def check_articles():
     import glob
     out = []
-    pats = ["src/*.c", "data/text/*.inc", "data/maps/*/text.inc", "src/data/text/*.h", "src/data/*.h"]
+    pats = ["src/*.c", "data/text/*.inc", "data/maps/*/text.inc", "data/scripts/*.inc", "src/data/text/*.h", "src/data/*.h"]
     for pat in pats:
         for f in sorted(glob.glob(os.path.join(GBA, pat))):
             src = open(f, encoding="utf-8", errors="ignore").read()

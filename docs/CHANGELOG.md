@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.271 — 2026-09-23
+
+### The files the checks never opened
+
+- ***T-243: the PRUNE tree said "can be CUT down!"*** — **`check_stale_names` read only files named `text.inc`, so every file in `data/text/` and `data/scripts/` went unswept.** *Five lines fixed — the tree prompt (played), two rematches still saying ROCK TUNNEL and FLY, and the DAEMON JUMP rope — and four checks now read every dialogue file.*
+
+---
+
 ## v11.270 — 2026-09-23
 
 ### An article, and the check that let it through
