@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.258 — 2026-09-23
+
+### The follower, measured
+
+- ***T-18 said "measure it before promising it", and now it is measured*** — **RAM is not the cost** (*one object slot and a few bytes, against 804 B of EWRAM free*), **nor the palette** (*three of four spare slots free in BLANCHE, read live*). ***The cost is ART and ROM***: *every overworld daemon sheet is vanilla and most have no walk; nine frames each is ~270 KB at 16×16 for the 240 named daemons, and ~1.1 MB at 32×32 against ~1.3 MB left.* **Still deferred, by choice; now with numbers.**
+
+---
+
 ## v11.257 — 2026-09-23
 
 ### Every flag its own number
