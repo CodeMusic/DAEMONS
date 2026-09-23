@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.266 — 2026-09-23
+
+### A line the bag had been cutting off
+
+- ***T-238: the TOOLKIT's first line was 221px in a 197px window***, **cut at "DRIVE" since T-198.** *`engine.md`'s pane table had said "23px past it" the whole time.* **Now "A case for PATCHES and DRIVERS." (DRAFT).** *`check_lexicon`'s pane check measured the PLUGIN and DRIVER discs and nothing else in that pane;* **it now measures every item description**, *proved by reverting the line.* *`gbabudget.py` measures the routine pane against its real window (113px), and `engine.md`'s EWRAM figure is current again: 804 bytes free.*
+
+---
+
 ## v11.265 — 2026-09-23
 
 ### The debug game starts in under two seconds

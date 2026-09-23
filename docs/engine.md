@@ -23,7 +23,7 @@ python3 tools/gbabudget.py --write   # and update the tables below
 
 | | size | used | free | %age |
 |---|---|---|---|---|
-| **EWRAM** | 256.0 KB | 255.2 KB | **848 B** | 99.68% |
+| **EWRAM** | 256.0 KB | 255.2 KB | **804 B** | 99.69% |
 | **IWRAM** | 32.0 KB | 29.1 KB | **2.9 KB** | 91.02% |
 | **ROM** | 32.0 MB | 14.7 MB | **17.3 MB** | 45.82% |
 
@@ -63,8 +63,8 @@ The biggest tenants after it:
 
 | pane | vanilla's widest | ours | |
 |---|---|---|---|
-| item description | **198px** | 197px | 1 to spare |
-| routine descript. | **108px** | 170px | **62px past it** — `DAEMON. Also warps to the last` |
+| item description | **198px** | 198px | 0 to spare |
+| routine descript. | **108px** | 113px | past vanilla's, and 0 to spare in the 113px window |
 | Index entry line | **234px** | 234px | 0 to spare |
 
 <!-- END GENERATED -->

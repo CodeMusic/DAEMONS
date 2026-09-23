@@ -856,16 +856,16 @@ def check_panes():
     #  not run. This says so every time.
     import json as _json
     items = _json.load(open(os.path.join(gba, "src/data/items.json"), encoding="utf-8"))
+    #  T-238: and every OTHER item, in the bag's pane, which is the same 198px. This check looked only at the
+    #  discs, so the TOOLKIT's own first line ran 221px from T-198 on and the bag cut it at "DRIVE".
     for it in (items["items"] if isinstance(items, dict) else items):
         name = it.get("english", "")
-        if not _re.match(r"(PLUGIN|DRIVER)\d", name):
-            continue
-        lines = it.get("description_english", "").split("\\n")
+        lines = _re.split(r"\\[npl]", it.get("description_english", ""))
         if len(lines) > 3:
-            bad.append((name, "%d lines in the TOOLKIT's three" % len(lines)))
+            bad.append((name, "%d lines in the pane's three" % len(lines)))
         for line in lines:
-            if width(line) > 198:
-                bad.append(("%s (%dpx)" % (name, width(line)), "past the 198px vanilla puts in the TOOLKIT"))
+            if width(line.rstrip()) > 198:
+                bad.append(("%s (%dpx)" % (name, width(line.rstrip())), "past the 198px vanilla puts in that pane"))
     return bad
 
 
@@ -1295,7 +1295,7 @@ def main():
 
     wbad = check_panes()
     if not wbad:
-        print("  every routine description, margin and PLUGIN fits the pane it prints into.")
+        print("  every routine description, margin and item description fits the pane it prints into.")
     else:
         print("\n  %d line(s) past their pane:\n" % len(wbad))
         for what, why in wbad:

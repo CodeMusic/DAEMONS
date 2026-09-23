@@ -183,10 +183,12 @@ def real_names(names):
 
 # Where a line of text has to fit, and the vanilla file the ceiling is read out
 # of. The pane is never told to us by the hardware; vanilla's own widest line is.
+#  The last column is the window itself where it has been measured (T-238): the routine pane is the summary's
+#  15-tile window with text at x=7, 113px, wider than any line vanilla put in it. check_lexicon holds both.
 PANES = [
-    ("item description",  "src/data/items.json",                 r'"description_english":\s*"([^"]*)"'),
-    ("routine descript.", "src/move_descriptions.c",             r'_\("([^"]*)"\)'),
-    ("Index entry line",  "src/data/pokemon/pokedex_text_fr.h",  r'_\(\s*((?:"[^"]*"\s*)+)\)'),
+    ("item description",  "src/data/items.json",                 r'"description_english":\s*"([^"]*)"', None),
+    ("routine descript.", "src/move_descriptions.c",             r'_\("([^"]*)"\)', 113),
+    ("Index entry line",  "src/data/pokemon/pokedex_text_fr.h",  r'_\(\s*((?:"[^"]*"\s*)+)\)', None),
 ]
 
 
@@ -195,7 +197,7 @@ def widest(text, pat, tw):
     for m in re.finditer(pat, text):
         body = m.group(1)
         for piece in re.split(r'\\[npl]', "".join(re.findall(r'"([^"]*)"', body)) if body.startswith('"') else body):
-            piece = piece.replace("$", "")
+            piece = piece.replace("$", "").rstrip()
             if not piece:
                 continue
             w = tw(piece)
@@ -267,13 +269,18 @@ def main():
     out.append("")
     out.append("| pane | vanilla's widest | ours | |")
     out.append("|---|---|---|---|")
-    for label, path, pat in PANES:
+    for label, path, pat, window in PANES:
         up = upstream(path)
         if not up:
             continue
         vw, _ = widest(up, pat, tw)
         ow, line = widest(read(path), pat, tw)
-        note = "%d to spare" % (vw - ow) if ow <= vw else "**%dpx past it** — `%s`" % (ow - vw, line[:34])
+        if ow <= vw:
+            note = "%d to spare" % (vw - ow)
+        elif window and ow <= window:
+            note = "past vanilla's, and %d to spare in the %dpx window" % (window - ow, window)
+        else:
+            note = "**%dpx past it** — `%s`" % (ow - vw, line[:34])
         out.append("| %s | **%dpx** | %dpx | %s |" % (label, vw, ow, note))
     out.append("")
     out.append(END)
