@@ -10,6 +10,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ### The log stays in the lab, and the chart is watched
 
 - ***The POWER PLANT played *1001 Fatal Error*** — *the ruined lab's track, carried there because FireRed shares the slot.* **It is on the hideout's track now, as on the Game Boy.** *Every other map playing one of ours matches the Game Boy map for map* (*T-226*).
+- ***`engine.md` trap 25: a slot you write over is every map's that shares it*** — *twice now, BRAZEN and SLATE; how to list what else reads a slot, and the four lines an appended one takes.*
 - ***T-227: invariant 3 has a guard on the GBA*** — **`check_lexicon` refuses an edition conditional inside the chart, and compares both ROMs' charts byte for byte.** *Identical today; proved by breaking it.*
 
 ---

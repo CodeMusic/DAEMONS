@@ -339,6 +339,17 @@ on one.*
 instead.** *Any pocket's count, any `SaveBlock` array's length, is a save-format change — `tools/gbabudget.py` says
 where the free space actually is.*
 
+### 25. A slot you write over is every map's that shares it
+
+***Symptom:*** *a town's theme playing in forty-two maps, and a build that reported success.* **Vanilla SHARES its
+slots**: `mus_pewter` plays in Viridian, Pewter, Saffron's houses and twenty gatehouses, so writing SLATE's theme over
+it handed SLATE to all of them (T-226) — *the second time: BRAZEN was the first (`34a0ed8e6`), and the note written
+then got the Game Boy's record backwards.* **Before writing over anything shared — a song, a tileset, a people
+sheet (trap 17), a painted label — list what ELSE reads it.** *For music:* `grep -l '"MUS_X"' data/maps/*/map.json`
+*plus* `grep -rn MUS_X data/maps/*/scripts.inc`. **An appended slot is four lines** (*`songs.h`, `song_table.inc`,
+`midi.cfg`, `ld_script.ld`* — the last is the one that fails as *defined in discarded section*), **and
+`tools/port_music.py`'s `MAP_MUSIC` says which maps play which of ours.**
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
