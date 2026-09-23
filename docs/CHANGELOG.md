@@ -5,6 +5,19 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.251 — 2026-09-23
+
+### Guardrails, and two things a player saw that no sweep could
+
+- ***The storage screen said PKMN DATA and PARTY POKéMON*** — **both painted into the tile sheet, so no text sweep could find them.** *Now DATA and PARTY: the vanilla word erased and the rest centred in the same tiles* (`tools/genstoragelabels.py`, *from upstream's sheet*). ***Found walking a debug game's boxes.***
+- ***A debug game sat black for a minute and a half*** — **the kit placed 386 daemons with a search from box 1 for each.** *Straight into the next slot now; the screen lights about a minute sooner.*
+- ***The debug kit opens CALLOW's north road*** — **played on a brand-new debug game.**
+- ***REVEAL's grove trees are generated*** *by `gbagrove.py`, so a new grove is one row and no C.*
+- ***`check_lexicon` measures every NOTEBOOK entry that is a map's own text*** — *the seven syllabi and the eleven filed documents; proved by breaking it.*
+- ***`engine.md` traps 20–24*** — *a generator that stopped running, `StringCopyN`, a redraw that drops presses, a debug kit that leaves scene variables, the TOOLKIT living in the save* — **and `CLAUDE.md` now says: run `check_generators.py` before committing.**
+
+---
+
 ## v11.250 — 2026-09-23
 
 ### 4.35 — twenty-one documents, drafted and held
