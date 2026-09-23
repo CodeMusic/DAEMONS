@@ -47,7 +47,7 @@ SUPERSEDED = {"mus_title"}
 
 TRACKS = [
     ("titletheme",      "mus_title"),        # the front door -- SUPERSEDED
-    ("slatecity",       "mus_pewter"),       # Pewter IS Slate City
+    ("slatecity",       "mus_slate"),        # Pewter IS Slate City -- its own slot since 2026-09-23
     ("thebleed",        "mus_route1"),       # Routes 1 and 2
     ("brazen",          "mus_brazen"),       # Saffron is BRAZEN; the one added slot
     # Eight more that were written on the Game Boy and had never been carried.
@@ -72,6 +72,27 @@ TRACKS = [
 # putting Slate City into that slot handed Brazen the wrong theme as well.
 # The song table is POSITIONAL -- mus_title is row 278 and MUS_TITLE is 278 --
 # so a row APPENDED at the end shifts nothing. Only an insertion would.
+#
+# And SLATE needed one too (2026-09-23). Writing it over mus_pewter handed it to
+# the FORTY-TWO maps vanilla plays that track in -- CALLOW and every floor of its
+# school, BRAZEN's houses, the Reading Room, twenty gatehouses -- when the Game
+# Boy build, which is the record, plays SLATE's theme in SLATE and nowhere else
+# (engine/data/maps/songs.asm: MUSIC_SLATE_CITY on PEWTER_CITY alone). The
+# BRAZEN commit said CALLOW sharing it matched the Game Boy; it did not -- there
+# CALLOW shares vanilla's Cities1, which is what it gets back here.
+# So mus_pewter is RESTORED from upstream, and SLATE is mus_slate.
+VANILLA = ["mus_pewter"]
+
+# Which maps play each town's theme. A town's houses play the town's music --
+# vanilla's own grouping, kept -- so a theme follows its town indoors and no
+# further. The maps not listed keep whatever vanilla gave them.
+MAP_MUSIC = {
+    "MUS_SLATE":  ["PewterCity", "PewterCity_House1", "PewterCity_House2",
+                   "PewterCity_Museum_1F", "PewterCity_Museum_2F"],
+    "MUS_BRAZEN": ["SaffronCity", "SaffronCity_House", "SaffronCity_Dojo",
+                   "SaffronCity_CopycatsHouse_1F", "SaffronCity_CopycatsHouse_2F",
+                   "SaffronCity_PokemonTrainerFanClub", "SaffronCity_MrPsychicsHouse"],
+}
 
 SEMI = {"C_": 0, "C#": 1, "D_": 2, "D#": 3, "E_": 4, "F_": 5,
         "F#": 6, "G_": 7, "G#": 8, "A_": 9, "A#": 10, "B_": 11}
@@ -178,6 +199,31 @@ for name, slot in TRACKS:
         # The binding sound is a jingle: it plays once and hands the screen
         # back. Everything else here is ambient and has to repeat.
         open(dst, "wb").write(midi(tempo, chans, loop=slot not in JINGLES))
+# ---- the slots given back to vanilla, and each town's maps
+import json, subprocess
+def upstream(rel):
+    return subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                          check=True, capture_output=True).stdout
+cfg_up = upstream("sound/songs/midi/midi.cfg").decode()
+for slot in VANILLA:
+    rel = "sound/songs/midi/%s.mid" % slot
+    orig, dst = upstream(rel), os.path.join(GBA, rel)
+    same = open(dst, "rb").read() == orig
+    print("  %-16s <- upstream        %s" % (slot, "vanilla already" if same else "restored" if WRITE else "would restore"))
+    if WRITE and not same:
+        open(dst, "wb").write(orig)
+moved = []
+for song, maps in MAP_MUSIC.items():
+    for m in maps:
+        path = os.path.join(GBA, "data/maps/%s/map.json" % m)
+        raw = open(path).read()
+        d = json.loads(raw)
+        if d["music"] != song:
+            moved.append("%s %s -> %s" % (m, d["music"], song))
+            if WRITE:
+                open(path, "w").write(raw.replace('"music": "%s"' % d["music"], '"music": "%s"' % song, 1))
+print("  maps: %s" % ("; ".join(moved) if moved else "every town's maps play its theme"))
+
 if WRITE and rc == 0:
     # midi.cfg carries mid2agb's -G, and a song whose MIDI says program 80
     # while its .cfg still names a bank without a square there is a silent
@@ -198,7 +244,10 @@ if WRITE and rc == 0:
                           point, text, flags=re.M)
         if not n:
             print("  !! %s has no midi.cfg line" % slot); rc = 1
-    if hits:
+    for slot in VANILLA:                # and a restored slot's line is upstream's, bank and all
+        up = re.search(r"^%s\.mid:.*$" % re.escape(slot), cfg_up, flags=re.M).group(0)
+        text = re.sub(r"^%s\.mid:.*$" % re.escape(slot), lambda m: up, text, flags=re.M)
+    if text != open(cfg).read():
         open(cfg, "w").write(text)
     print("  midi.cfg: %d song(s) pointed at voicegroup%d" % (hits, GB_GROUP))
     print("  written")

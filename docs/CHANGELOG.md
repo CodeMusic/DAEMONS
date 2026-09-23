@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.254 — 2026-09-23
+
+### SLATE's theme goes home
+
+- ***T-226: SLATE's music was playing in forty-two maps*** — **CALLOW, all seven floors of the school, BRAZEN's houses, the Reading Room, PROOF HALL and twenty gatehouses**, *because the port wrote it over a slot vanilla shares.* **The Game Boy build plays it in SLATE alone, and that is the record.** *SLATE now has its own appended slot, vanilla's is restored, and each town's houses play its theme.* **The September 3 claim that CALLOW's sharing matched the Game Boy was wrong, and is corrected.**
+- ***`song-status.md` gains a GBA table*** — *which slot is ours and where it plays.*
+
+---
+
 ## v11.253 — 2026-09-23
 
 ### An entry can reach its family

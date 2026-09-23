@@ -3,6 +3,21 @@
 Every track reviewed for **music** (a transcribed hook, verified) and **story**
 (read against the design and recorded in `vision.md`). Updated 2026-08-30.
 
+## On the GBA — which slot, which maps (2026-09-23)
+
+*`tools/port_music.py` owns this: the notes, the bank, and which maps play each town's theme.* **A town's houses play its theme; nothing further does.**
+
+| Ours | Slot | Plays in |
+|---|---|---|
+| Blanche | `mus_pallet` | BLANCHE and its houses |
+| The Bleed | `mus_route1` | Routes 1 and 2, and the two underground tunnels (*as on the Game Boy*) |
+| Slate | **`mus_slate`** (appended, 348) | SLATE, its houses and museum |
+| Brazen | `mus_brazen` (appended, 347) | BRAZEN and its six interiors |
+| Verdigris, Ardor, Halftone, Quicksilver | vanilla's own town slots | each town, as vanilla grouped it |
+| Corpus building, ruined lab, the dark places | `mus_silph`, `mus_poke_mansion`, `mus_mt_moon` | as vanilla grouped them |
+
+**`mus_pewter` is vanilla's again** — *CALLOW, the school and the gatehouses play it until CALLOW's own theme exists (T-05, T-226).*
+
 ## Act 1 — *The Fall of Blind Ambition*
 
 | # | Track | Key | BPM | Music | Story | In the ROM |
