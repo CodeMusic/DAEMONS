@@ -379,6 +379,42 @@ nothing in the game will call it anything.***
 the unconscious, implicit memory, a blind spot, a black box.* **LATENT and OPAQUE are the natural types,
 not the required ones.**
 
+### Fourteen families — PROPOSED 2026-09-23, not decided
+
+***The choice is the user's*** (*§14, still open*); **this is a first draft to react to, chosen from
+`still-vanilla.md` so that each grove finishes a family that is unreachable today.** *Each is picked for
+what it could stand for, never for a name it has — names come after, and they are the user's too.*
+
+**Mainland — psychology's lineage, something hidden in a MIND:**
+
+| family | types | what it could stand for |
+|---|---|---|
+| **KECLEON** | CONTENT | *the thing in plain sight nobody saw* — **inattentional blindness**; a grove's resident you walk past |
+| **RALTS** line | CONTEXT | *another mind's state, which you only ever infer* |
+| **MEDITITE** line | LOGIC / CONTEXT | *watching your own thinking* — **metacognition** |
+| **SPOINK** line | CONTEXT | *the body's signals you never attend to* — **interoception**; it bounces to keep its heart going |
+| **SLAKOTH** line | CONTENT | *the mind at rest is not idle* — **the default network** |
+| **DUSKULL** line | LATENT | *what memory lets go of, and how* — **forgetting as a process** |
+| **SHUPPET** line | LATENT | *what is kept out of awareness* — **the process, never the pathology** (craft rule 3) |
+
+**Islands — machine learning's lineage, a HIDDEN LAYER:**
+
+| family | types | what it could stand for |
+|---|---|---|
+| **WURMPLE** | SWARM | *a hidden value decides which of two lines it becomes* — **the random seed** |
+| **BELDUM** line | HARDENED / CONTEXT | *four minds joined into one* — **an ensemble, a mixture of experts** |
+| **CASTFORM** | CONTENT | *the same body, a different form in every weather* — **context changes the output, not the weights** |
+| **NOSEPASS** | LEGACY | *it always points one way* — **the gradient** |
+| **BALTOY** line | STRATUM / CONTEXT | *a figure shaped from clay nobody sees* — **latent space** |
+| **NINCADA** line | SWARM / STRATUM | *the shed shell that still fights, and falls to one right hit* — **an adversarial example** |
+| **GULPIN** line | CORRUPT | *it swallows everything whole* — **memorising instead of learning** |
+
+***Why not the obvious ones.*** **The legendaries, the Johto and Hoenn starters and the Regis are left
+out on purpose** — *each is a set-piece, not a resident, and a grove's resident should be found, not
+announced.* **LUNATONE and SOLROCK are a better GAN than anything here** — *but they are two families,
+and 'one resident each' would split them.* ***If the user wants the pair, they take one island between
+them.***
+
 ### This is the bestiary's next destination, and that is also the cost
 
 ***Every daemon placed in a grove becomes REACHABLE***, **and reachability is this project's

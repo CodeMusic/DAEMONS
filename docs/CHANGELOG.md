@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.248 — 2026-09-23
+
+### Tonight — the morning's list, finished where it could be
+
+- ***T-213: every generator must still RUN.*** **`tools/check_generators.py` runs all 94 tools with a `--write` mode in report mode** — *exit 0, under 180 s, and nothing written.* ***Its first run found twelve that could not run, and three were real***: *`genstreaks` had raised `NameError` since T-184; `genmentors` read its own output back as vanilla; `gentowns` crashed on the school's floors.* **And `gbainterior.py` with no arguments had not reached its end since its second building.** *Six excused, each with its reason.*
+- ***T-201: the Index's ring pulses the type*** — **first type, dark, second type, dark.** *INDEXER goes VECTOR red, then SWARM olive. The hard case was not hard: every slot already had its own palette.*
+- ***T-199 phase 3: a DRIVER is installed, not taught.*** **GOTO and VERBOSE are offered to any daemon while the driver is held, and a driver's routine may be forgotten.** *The debug kit now holds all eight; the TOOLKIT's `HM` badge reads `DRV`.* ***Whether the eight also leave the learnsets is in the Open log.***
+- ***The school's seven tickets closed*** (T-214..T-220), **each with its commits.**
+- ***Decisions prepared, not taken***: **T-209 the house palette, T-207 the POOL, T-202 and T-189 the Index's L and R, T-188 REASON and INSTINCT, the learnsets** — *and a first draft of the fourteen grove families* (`school.md` §8a). *All in the field test, for the user.*
+
+---
+
 ## v11.247 — 2026-09-22
 
 ### 4.35 — the school from the street
