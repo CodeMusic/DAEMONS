@@ -17,5 +17,10 @@ post.
 ./bindDaemons.sh     # builds CONTENT and opens it in mGBA
 ```
 
-**How to play it later.** The plan is a small program that takes a copy of *FireRed* you legally own and turns it
-into DAEMONS, so nobody needs to be handed a ROM at all.
+**Or patch a ROM you own.** Every release makes four BPS patches: CONTENT for *FireRed*, CONTEXT for *LeafGreen*,
+each for version 1.0 and for Rev 1, because a patch only fits the exact ROM it was made from. Apply one in any BPS
+patcher ([Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/) runs in a browser) to the matching game you
+own, and you have DAEMONS. The patches are kept out of git for their size and are published as downloads; each
+release's notes name the ROM every patch expects, with its SHA-1.
+
+**Later**, a small program may wrap the same step, so nobody needs to be handed a ROM at all.

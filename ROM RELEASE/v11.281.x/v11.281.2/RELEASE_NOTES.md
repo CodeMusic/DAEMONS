@@ -22,3 +22,14 @@
 - `bc625320` ROM RELEASE: the notes go in git, the ROMs never do; WHERES_THE_ROMS.md says why
 - `7a92fbf5` T-259: ROM releases documented in CLAUDE.md, the ticket logged and closed
 - `8e85bef5` romrelease.py: find the previous release before filing the new one
+
+## Patches
+
+*Apply one to the ROM it names, in any BPS patcher (Rom Patcher JS works in a browser). Each checks the ROM's CRC and refuses the wrong one.*
+
+| patch | apply it to | that ROM's SHA-1 |
+|---|---|---|
+| `PATCHES/DAEMONS CONTENT for FireRed 1.0.bps` | Pokemon FireRed (USA) 1.0 | `41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc` |
+| `PATCHES/DAEMONS CONTENT for FireRed Rev 1.bps` | Pokemon FireRed (USA, Europe) Rev 1 | `dd5945db9b930750cb39d00c84da8571feebf417` |
+| `PATCHES/DAEMONS CONTEXT for LeafGreen 1.0.bps` | Pokemon LeafGreen (USA) 1.0 | `574fa542ffebb14be69902d1d36f1ec0a4afd71e` |
+| `PATCHES/DAEMONS CONTEXT for LeafGreen Rev 1.bps` | Pokemon LeafGreen (USA, Europe) Rev 1 | `7862c67bdecbe21d1d69ce082ce34327e1c6ed5e` |

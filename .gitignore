@@ -12,6 +12,8 @@ engineGba
 # Nintendo's engine (ROM RELEASE/WHERES_THE_ROMS.md)
 ROM RELEASE/**/*.gba
 ROM RELEASE/**/*.sav
+# ...and its BPS patches, for their size (2.5MB each, four a release): published as downloads, not committed
+ROM RELEASE/**/*.bps
 engine/*.gbc
 engine/*.sav
 engineGba/*.gba

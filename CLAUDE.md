@@ -234,6 +234,10 @@ lives in that version's group, `v11.281.x/<release>/`: the two ROMs, `DEBUG/` wi
 `RELEASE_NOTES.md` (each ROM's SHA-1 and the commits since the release before). **The first release after the
 bible moves on seals the old group**: its last ROMs flattened into the group folder, the rest deleted, every note
 set as one `ReleaseNotes_v11.281.x.pdf`. It refuses a dirty tree. Without `--write` it reports what it would do.
+**Each release also gets `PATCHES/`**: four BPS patches (`tools/bps.py`), CONTENT for FireRed 1.0 and Rev 1 and
+CONTEXT for LeafGreen 1.0 and Rev 1, made against pret's own byte-identical builds of retail, cached in
+`~/.cache/daemons` and checked by hash. They are gitignored for size and are what gets published. A patch made by
+this encoder was checked independently: mGBA applied it to a retail Rev 1 ROM and booted DAEMONS.
 
 ## Invariants — do not violate without an explicit decision
 

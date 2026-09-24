@@ -22,6 +22,7 @@ commit what it wrote; the ROMs are ignored by pattern and will not follow.
           daemonsContent.gba          CONTENT
           daemonsContext.gba          CONTEXT
           DEBUG/                      the two testing builds
+          PATCHES/                    four BPS patches, one per retail ROM (below)
           RELEASE_NOTES.md            what changed since the release before it, and each ROM's SHA-1
         v11.281.2/ ...
       v11.280.x/                      a SEALED group: only its last release, flattened
@@ -34,6 +35,12 @@ SEALING happens when the bible moves on: the next release under a new version se
 latest release's ROMs move up into the group folder, the rest are deleted, and all the group's notes are read and
 set as one PDF (pandoc and Chrome, docs/style.css, the same pipeline as docs/build-pdf.sh). A hidden
 `.release.json` keeps the last release's commits, so the next release's notes can say what changed since.
+
+AND A PATCH FOR EACH RETAIL ROM. `PATCHES/` in every release holds four BPS patches (tools/bps.py) -- CONTENT for
+FireRed 1.0 and Rev 1, CONTEXT for LeafGreen 1.0 and Rev 1 -- since a patch applies only to the exact ROM it was made
+from and both revisions are common. The sources are pret's own builds of upstream, which are byte-identical to
+retail (each checked against pret's .sha1), kept in ~/.cache/daemons and never in any repo. The patches are
+gitignored for their size (2.5MB each, four a release); they are what gets published, not the ROMs.
 
 A RELEASE IS REFUSED from a dirty engine or docs tree -- its notes list commits, and uncommitted work would be in
 the ROM and not in the notes.
@@ -48,6 +55,20 @@ BUILD = "--no-build" not in sys.argv
 TARGETS = [("firered", "daemonsContent.gba", False), ("leafgreen", "daemonsContext.gba", False),
            ("firered_debug", "daemonsContent_debug.gba", True), ("leafgreen_debug", "daemonsContext_debug.gba", True)]
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+CACHE = os.path.join(os.path.expanduser("~"), ".cache/daemons/pokefirered-upstream")
+#  (our ROM, the patch's file, pret's build of the retail ROM, its .sha1 file, what the player owns)
+PATCHES = [
+    ("daemonsContent.gba", "DAEMONS CONTENT for FireRed 1.0.bps", "pokefirered.gba", "firered.sha1",
+     "Pokemon FireRed (USA) 1.0"),
+    ("daemonsContent.gba", "DAEMONS CONTENT for FireRed Rev 1.bps", "pokefirered_rev1.gba", "firered_rev1.sha1",
+     "Pokemon FireRed (USA, Europe) Rev 1"),
+    ("daemonsContext.gba", "DAEMONS CONTEXT for LeafGreen 1.0.bps", "pokeleafgreen.gba", "leafgreen.sha1",
+     "Pokemon LeafGreen (USA) 1.0"),
+    ("daemonsContext.gba", "DAEMONS CONTEXT for LeafGreen Rev 1.bps", "pokeleafgreen_rev1.gba", "leafgreen_rev1.sha1",
+     "Pokemon LeafGreen (USA, Europe) Rev 1"),
+]
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import bps
 
 
 def git(repo, *args):
@@ -157,6 +178,52 @@ def seal(group):
     print("  sealed %s" % group)
 
 
+def retail_sources(build):
+    """pret's upstream, built in a worktree in ~/.cache: byte-identical to the retail ROMs, checked by hash."""
+    missing = [p for _, _, p, h, _ in PATCHES if not os.path.exists(os.path.join(CACHE, p))]
+    if missing and not build:
+        print("  !! no clean retail builds in %s yet -- --write makes them (pret upstream, a few minutes)" % CACHE)
+        return False
+    if missing:
+        if not os.path.isdir(CACHE):
+            subprocess.run(["git", "-C", GBA, "fetch", "-q", "upstream"], check=True)
+            subprocess.run(["git", "-C", GBA, "worktree", "add", "-q", "--detach", CACHE, "upstream/master"], check=True)
+            os.symlink(os.path.join(os.path.realpath(GBA), "tools/agbcc"), os.path.join(CACHE, "tools/agbcc"))
+        for target in ("firered", "firered_rev1", "leafgreen", "leafgreen_rev1"):
+            if subprocess.run(["make", "-C", CACHE, target, "-j8"], capture_output=True).returncode:
+                raise SystemExit("  refused: pret's `make %s` failed in %s" % (target, CACHE))
+    for _, _, rom, hashfile, _ in PATCHES:
+        want = open(os.path.join(CACHE, hashfile)).read().split()[0]
+        if sha1(os.path.join(CACHE, rom)) != want:
+            raise SystemExit("  refused: %s is not the retail ROM (SHA-1 differs from pret's %s)" % (rom, hashfile))
+    return True
+
+
+def make_patches(dest):
+    os.makedirs(os.path.join(dest, "PATCHES"), exist_ok=True)
+    rows = []
+    for ours, name, rom, hashfile, owned in PATCHES:
+        src = open(os.path.join(CACHE, rom), "rb").read()
+        tgt = open(os.path.join(dest, ours), "rb").read()
+        patch = bps.create(src, tgt)
+        if bps.apply(src, patch) != tgt:
+            raise SystemExit("  refused: %s does not reproduce %s" % (name, ours))
+        open(os.path.join(dest, "PATCHES", name), "wb").write(patch)
+        rows.append((name, owned, open(os.path.join(CACHE, hashfile)).read().split()[0], len(patch)))
+        print("  patched %s (%d KB, checked by applying it)" % (name, len(patch) // 1024))
+    return rows
+
+
+def patch_notes(rows):
+    out = ["## Patches", "",
+           "*Apply one to the ROM it names, in any BPS patcher (Rom Patcher JS works in a browser). Each checks the "
+           "ROM's CRC and refuses the wrong one.*", "",
+           "| patch | apply it to | that ROM's SHA-1 |", "|---|---|---|"]
+    for name, owned, digest, size in rows:
+        out.append("| `PATCHES/%s` | %s | `%s` |" % (name, owned, digest))
+    return "\n".join(out) + "\n"
+
+
 def release():
     bible = bible_version()
     group = "v%s.x" % bible
@@ -175,6 +242,7 @@ def release():
             seal(g)
     if dirty:
         print("  !! uncommitted changes in the %s tree -- a release would not match its notes" % " and ".join(dirty))
+    retail_sources(WRITE)
     if not WRITE:
         return 0
     if dirty:
@@ -195,7 +263,9 @@ def release():
         roms.append(("DEBUG/" + name if debug else name,
                      ("CONTENT" if "Content" in name else "CONTEXT") + (" (testing build)" if debug else ""), sha1(src)))
     engine, docs = git(GBA, "rev-parse", "--short=9", "HEAD"), git(ROOT, "rev-parse", "--short=8", "HEAD")
-    open(os.path.join(dest, "RELEASE_NOTES.md"), "w", encoding="utf-8").write(notes(version, bible, rec, engine, docs, roms))
+    rows = make_patches(dest)
+    open(os.path.join(dest, "RELEASE_NOTES.md"), "w", encoding="utf-8").write(
+        notes(version, bible, rec, engine, docs, roms) + "\n" + patch_notes(rows))
     json.dump({"version": version, "bible": bible, "engine": engine, "docs": docs,
                "made": datetime.datetime.now().isoformat(timespec="seconds")},
               open(os.path.join(dest, ".release.json"), "w"), indent=1)
@@ -206,6 +276,15 @@ def release():
 def main():
     if len(sys.argv) > 1 and sys.argv[1] == "seal":
         seal(sys.argv[2])
+        return 0
+    if len(sys.argv) > 2 and sys.argv[1] == "patch":
+        #  patches for a release filed before there were patches: `patch v11.281.2 --write`
+        dest = os.path.join(REL, "v%s.x" % sys.argv[2][1:].rsplit(".", 1)[0], sys.argv[2])
+        print("  patches for %s" % os.path.relpath(dest, ROOT))
+        if WRITE and retail_sources(True):
+            rows = make_patches(dest)
+            with open(os.path.join(dest, "RELEASE_NOTES.md"), "a", encoding="utf-8") as f:
+                f.write("\n" + patch_notes(rows))
         return 0
     return release()
 
