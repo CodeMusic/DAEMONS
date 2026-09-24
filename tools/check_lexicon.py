@@ -642,6 +642,14 @@ def check_stale_names():
         renamed.update({v: ours[k] for k, v in van.items()
                         if k in ours and ours[k] != v})
 
+    #  T-246: and every name WE gave and later retired. Diffing against upstream sees vanilla's name and ours and nothing
+    #  in between, so MAROWAK's CAIRNLING, PORYGON's SENTINEL and the TMs' PATCH were all invisible here. The list is
+    #  history, so it is generated -- `tools/gbaretired.py --write` -- rather than recomputed on every run.
+    rp = os.path.join(ROOT, "tools/retired_names.json")
+    if os.path.isfile(rp):
+        for old_name, now in json.load(open(rp, encoding="utf-8"))["retired"].items():
+            renamed.setdefault(old_name, now)
+
     #  the live lexicon, so an old name that is now somebody else's name is
     #  never reported -- this is the GROWTH case and it is not hypothetical
     #  THE STATES BELONG IN HERE. 1.6 renamed CONFUSION to THRASHING, so a
@@ -1278,6 +1286,31 @@ def check_doubled():
     return bad
 
 
+#  T-246: two places where a daemon's NAME sits beside its designator, so a moved or retired name can be caught
+#  outright -- which no check reading prose can do, because SENTINEL is still somebody's name (MAGNEMITE's) and the
+#  Game Corner was offering it for PORYGON.
+#    * The Trainer Tower's daemons carry nicknames, and vanilla's nickname IS the species name. The whole table was
+#      a name table to the stale-name pass (trap 6), so 35 of them still wore a vanilla or a retired name.
+#    * The Game Corner's prize list: gText_<Species>_<n>Coins names the species it sells.
+def check_paired_names():
+    bad = []
+    names = dict(re.findall(r'\[(SPECIES_\w+)\]\s*=\s*_\("([^"]+)"\)',
+                            open(os.path.join(GBA, "src/data/text/species_names.h"), encoding="utf-8").read()))
+    live = set(names.values())
+    t = open(os.path.join(GBA, "src/trainer_tower_sets.c"), encoding="utf-8").read()
+    for m in re.finditer(r'\.nickname = _\("([^"]*)"\)', t):
+        if m.group(1) not in live and set(m.group(1)) != {"$"}:
+            bad.append(("src/trainer_tower_sets.c:%d" % (t[:m.start()].count("\n") + 1),
+                        "nickname %s is no daemon's name" % m.group(1)))
+    t = open(os.path.join(GBA, "src/strings.c"), encoding="utf-8").read()
+    for m in re.finditer(r'gText_([A-Z][a-z]+)_\d+Coins\[\] = _\("([^{"]+)\{', t):
+        want = names.get("SPECIES_" + m.group(1).upper())
+        if want and m.group(2) != want:
+            bad.append(("src/strings.c:%d" % (t[:m.start()].count("\n") + 1),
+                        "the prize list sells %s as %s" % (want, m.group(2))))
+    return bad
+
+
 #  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
 #  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
 #  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
@@ -1579,6 +1612,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    pbad2 = check_paired_names()
+    if not pbad2:
+        print("  every Trainer Tower nickname is a daemon's name, and every Game Corner prize is the daemon it sells.")
+    else:
+        print("\n  %d name(s) that do not match what they name:\n" % len(pbad2))
+        for what, why in pbad2:
+            print("   %-40s %s" % (what, why))
+
     mbad = check_message_box()
     if not mbad:
         print("  every line of field dialogue fits the 208px message box.")
@@ -1625,7 +1666,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2) else 0
 
 
 if __name__ == "__main__":

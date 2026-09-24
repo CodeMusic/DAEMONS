@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.274 — 2026-09-23
+
+### The names we gave and took back
+
+- ***T-246: "The GHOST was CAIRNLING!"*** — **every stale-name check diffed against vanilla, so a name this fork gave and later changed was invisible.** *The tower ghost, two item descriptions, the Game Corner's prizes — one of them selling PORYGON under the name MAGNEMITE wears now — the STREAM's lecture and 35 Trainer Tower nicknames.* **`tools/gbaretired.py` now records every retired name from history, and the Tower and the prize list are checked against the daemons they name.**
+
+---
+
 ## v11.273 — 2026-09-23
 
 ### A word with two meanings
