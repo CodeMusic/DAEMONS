@@ -224,6 +224,16 @@ Do **not** use `git stash` for this. Our changes are committed, so there is
 nothing to stash and you would simply rebuild your own ROM and watch the
 checksums "fail" correctly.
 
+## Releasing ROMs
+
+`tools/romrelease.py --write` builds all four ROMs and files them in **`ROM RELEASE/`** at the repo root, which
+is **gitignored whole** (the ROMs carry Nintendo's code). A release is **`v<design bible>.<n>`** — v11.281.1,
+v11.281.2 — so a ROM always says which design it was built against, and every release under one bible version
+lives in that version's group, `v11.281.x/<release>/`: the two ROMs, `DEBUG/` with the two testing builds, and
+`RELEASE_NOTES.md` (each ROM's SHA-1 and the commits since the release before). **The first release after the
+bible moves on seals the old group**: its last ROMs flattened into the group folder, the rest deleted, every note
+set as one `ReleaseNotes_v11.281.x.pdf`. It refuses a dirty tree. Without `--write` it reports what it would do.
+
 ## Invariants — do not violate without an explicit decision
 
 1. **Never say the thesis.** Craft rule 1 governs everything *inside* the game —
