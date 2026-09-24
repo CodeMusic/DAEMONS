@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.275 — 2026-09-23
+
+### The one relation the design added
+
+- ***T-247: the HELP system's matchup pages were vanilla's***, **and never said CONTEXT and LATENT hit each other for double** — *vision.md 2's only change to the chart, and the chart is the argument.* **Both pages fixed, and `check_help_matchups()` now holds all 34 to `gTypeEffectiveness`.** *The STREAM lectures and every NPC matchup claim were checked the same way and are right.*
+
+---
+
 ## v11.274 — 2026-09-23
 
 ### The names we gave and took back

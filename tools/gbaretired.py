@@ -36,6 +36,9 @@ TABLES = [
     ("src/data/text/abilities.h", r'\[(ABILITY_\w+)\]\s*=\s*_\("([^"]+)"\)', False),
     ("src/data/text/trainer_class_names.h", r'\[(TRAINER_CLASS_\w+)\]\s*=\s*_\("([^"]+)"\)', False),
     ("src/data/items.json", r'"english":\s*"([^"]+)",\s*\n\s*"itemId":\s*"(ITEM_\w+)"', True),
+    #  T-247: places and types were renamed more than once too, and were not read here.
+    ("src/data/region_map/region_map_sections.json", r'"id":\s*"(MAPSEC_\w+)",[^}]*?"name":\s*"([^"]+)"', False),
+    ("src/battle_main.c", r'\[(TYPE_\w+)\]\s*=\s*_\("(\w+)"\)', False),
 ]
 
 

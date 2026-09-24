@@ -1311,6 +1311,45 @@ def check_paired_names():
     return bad
 
 
+#  T-247: the HELP system's thirty-four matchup pages, against the chart they describe. They were hand-kept, and the
+#  one relation the design ADDED -- CONTEXT and LATENT, 2x both ways (vision.md 2) -- was on neither page that
+#  should say it: CONTEXT's routines did not list LATENT, and LATENT's page did not list CONTEXT. The chart is the
+#  argument (invariant 3), so a page that teaches it wrong is teaching the thesis wrong. Every entry of the table
+#  counts, including the ones after the FORESIGHT marker -- the Ghost immunities and the design's own pair.
+def check_help_matchups():
+    bad = []
+    src = open(os.path.join(GBA, "src/battle_main.c"), encoding="utf-8", errors="ignore").read()
+    names = dict(re.findall(r'\[(TYPE_\w+)\]\s*=\s*_\("(\w+)"\)', src))
+    body = re.sub(r"//.*", "", re.search(r"const u8 gTypeEffectiveness\[\d+\] =\s*\{(.*?)\n\};", src, re.S).group(1))
+    eff = {(a, d): m for a, d, m in re.findall(r"(TYPE_\w+),\s*(TYPE_\w+),\s*TYPE_MUL_(\w+)", body)
+           if a not in ("TYPE_FORESIGHT", "TYPE_ENDTABLE")}
+    help_src = open(os.path.join(GBA, "data/text/help_system.inc"), encoding="utf-8").read()
+    marks = {"CIRCLE_DOT": "SUPER_EFFECTIVE", "TRIANGLE": "NOT_EFFECTIVE", "BIG_MULT_X": "NO_EFFECT"}
+    for tconst, tname in names.items():
+        if tconst == "TYPE_MYSTERY":
+            continue
+        stem = tconst[5:].title().replace("_", "")
+        for kind in ("OwnMove", "OwnPokemon"):
+            label = "Help_Text_TypeMatchup%s%s" % (kind, stem)
+            m = re.search(r"^%s::\n((?:\s*\.string \".*\"\n)+)" % label, help_src, re.M)
+            if not m:
+                bad.append((label, "no such page"))
+                continue
+            text = re.sub(r"\\[nlp]", " ", "".join(re.findall(r'\.string "(.*)"', m.group(1)))).replace("$", "")
+            parts = re.split(r"\{(CIRCLE_DOT|TRIANGLE|BIG_MULT_X)\}", text)
+            said = {marks[parts[i]]: {x for x in parts[i + 1].lstrip(": ").replace(" ", "").split(",") if x}
+                    for i in range(1, len(parts), 2)}
+            truth = {}
+            for (a, d), mul in eff.items():
+                if (kind == "OwnMove" and a == tconst) or (kind == "OwnPokemon" and d == tconst):
+                    truth.setdefault(mul, set()).add(names[d] if kind == "OwnMove" else names[a])
+            for mul in marks.values():
+                s1, s2 = said.get(mul, set()), truth.get(mul, set())
+                if s1 != s2:
+                    bad.append((label, "%s: page says %s, the chart says %s" % (mul, sorted(s1), sorted(s2))))
+    return bad
+
+
 #  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
 #  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
 #  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
@@ -1612,6 +1651,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    hbad = check_help_matchups()
+    if not hbad:
+        print("  all 34 HELP matchup pages say what the chart does.")
+    else:
+        print("\n  %d HELP matchup page(s) that disagree with the chart:\n" % len(hbad))
+        for what, why in hbad:
+            print("   %-44s %s" % (what, why))
+
     pbad2 = check_paired_names()
     if not pbad2:
         print("  every Trainer Tower nickname is a daemon's name, and every Game Corner prize is the daemon it sells.")
@@ -1666,7 +1713,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad) else 0
 
 
 if __name__ == "__main__":
