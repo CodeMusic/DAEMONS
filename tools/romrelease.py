@@ -181,6 +181,7 @@ def release():
             if r.returncode:
                 raise SystemExit("  refused: `make %s` failed (exit %d)\n%s" % (target, r.returncode, r.stdout[-1500:] + r.stderr[-1500:]))
             print("  built %s" % target)
+    rec = last_record()                  # before the new folder exists, or it finds itself
     dest = os.path.join(REL, group, "v" + version)
     os.makedirs(os.path.join(dest, "DEBUG"))
     roms = []
@@ -190,7 +191,6 @@ def release():
         roms.append(("DEBUG/" + name if debug else name,
                      ("CONTENT" if "Content" in name else "CONTEXT") + (" (testing build)" if debug else ""), sha1(src)))
     engine, docs = git(GBA, "rev-parse", "--short=9", "HEAD"), git(ROOT, "rev-parse", "--short=8", "HEAD")
-    rec = last_record()
     open(os.path.join(dest, "RELEASE_NOTES.md"), "w", encoding="utf-8").write(notes(version, bible, rec, engine, docs, roms))
     json.dump({"version": version, "bible": bible, "engine": engine, "docs": docs,
                "made": datetime.datetime.now().isoformat(timespec="seconds")},
