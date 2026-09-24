@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.278 — 2026-09-23
+
+### Three answers from the user
+
+- ***DOLDRUM CAVE has two gates, PERMISSION and PERCEPTION*** (T-251): **the guard stands aside at the REVIEW BOARD; without the islands' understanding the cave is grey AND recomposed on each entry, and every encounter is one LATENT abstraction in a random palette that says only *HE WHO SEES ONE, SEES NONE.***
+- ***UNDERSTANDINGS*** (T-252): **THE MARGINS only, never counted, felt rather than told — and the cave's gate is built first.**
+- ***HALFTONE Tower keeps its stones as TOMBSTONES*** (T-249) — **an encased screen, green marks on black, still shaped like a headstone** — *and the unresolved display becomes a latent before decoding* (T-250).
+
+---
+
 ## v11.277 — 2026-09-23
 
 ### Three questions from the user, logged before they are answered
