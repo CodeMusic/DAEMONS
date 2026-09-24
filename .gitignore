@@ -8,8 +8,10 @@ engine
 engineGba
 
 # built ROMs and their debug artefacts
-# ROM RELEASE/ is tools/romrelease.py's archive of released ROMs: never in git, the ROMs carry Nintendo's code
-ROM RELEASE/
+# ROM RELEASE/ is tools/romrelease.py's archive: its notes and PDFs are in git, its ROMs never are -- they run
+# Nintendo's engine (ROM RELEASE/WHERES_THE_ROMS.md)
+ROM RELEASE/**/*.gba
+ROM RELEASE/**/*.sav
 engine/*.gbc
 engine/*.sav
 engineGba/*.gba

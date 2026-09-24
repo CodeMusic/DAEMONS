@@ -11,8 +11,10 @@ the project has is `vision.md`'s (v11.281) -- the specification the ROM implemen
 v<bible>.<n>: v11.281.1, v11.281.2, ... and every release made while the bible says v11.281 belongs to the GROUP
 v11.281.x. A ROM therefore always says which design it was built against.
 
-THE FOLDER, at the repo root, and never in git -- the ROMs carry Nintendo's code and this repo promises not to
-distribute it (CLAUDE.md), so `ROM RELEASE/` is gitignored whole:
+THE FOLDER, at the repo root. Its NOTES are in git -- the release notes, a sealed group's PDF and the hidden
+`.release.json` -- and its ROMS never are: they run Nintendo's engine, and this repo promises not to distribute it
+(the user's, 2026-09-24: ROM RELEASE/WHERES_THE_ROMS.md says so to anyone who looks). So after a release or a seal,
+commit what it wrote; the ROMs are ignored by pattern and will not follow.
 
     ROM RELEASE/
       v11.281.x/                      an OPEN group: one folder per release
@@ -164,7 +166,9 @@ def release():
         raise SystemExit("  %s is sealed; bump the design bible before releasing again" % group)
     n = int(existing[-1].rsplit(".", 1)[1]) + 1 if existing else 1
     version = "%s.%d" % (bible, n)
-    dirty = [name for name, repo in (("engine", GBA), ("docs", ROOT)) if git(repo, "status", "--porcelain", "--untracked-files=no")]
+    #  the release folder itself is not "dirty": a seal deletes tracked notes, and that is the tool's own work
+    dirty = [name for name, repo in (("engine", GBA), ("docs", ROOT))
+             if git(repo, "status", "--porcelain", "--untracked-files=no", "--", ".", ":!ROM RELEASE")]
     print("  design bible v%s: the next release is v%s, in %s/" % (bible, version, group))
     for g in groups():
         if g != group and releases(g):
@@ -195,7 +199,7 @@ def release():
     json.dump({"version": version, "bible": bible, "engine": engine, "docs": docs,
                "made": datetime.datetime.now().isoformat(timespec="seconds")},
               open(os.path.join(dest, ".release.json"), "w"), indent=1)
-    print("  released v%s -> %s" % (version, os.path.relpath(dest, ROOT)))
+    print("  released v%s -> %s  (commit its notes; the ROMs stay out of git)" % (version, os.path.relpath(dest, ROOT)))
     return 0
 
 
