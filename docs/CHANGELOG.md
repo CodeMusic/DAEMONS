@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.277 — 2026-09-23
+
+### Three questions from the user, logged before they are answered
+
+- ***Open: DOLDRUM CAVE with its door open*** — **enterable early, unreadable without what the islands teach**; *with the three rulings it has to answer (8.6a's rejected colour item, 8.6a's grey-by-geography, craft rule 1) and a suggestion that the cave be wrong by ARRANGEMENT rather than by colour.*
+- ***Open: UNDERSTANDINGS***, **the islands' counterpart to DRIVERS** — *a DRIVER is handed over; an understanding cannot be (4.3, 4.24), and REVEAL is already one in all but name.*
+- ***Open: what HALFTONE Tower is about, if not death*** — *the stones may stay as TOMBSTONES in the database sense; the unresolved display as a diffusion latent before decoding.* **T-249 (the tower) and T-250 (the LATENT art) are logged, blocked on it.**
+
+---
+
 ## v11.276 — 2026-09-23
 
 ### A state explained in its own name
