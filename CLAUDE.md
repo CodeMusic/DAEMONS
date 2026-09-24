@@ -189,7 +189,7 @@ and therefore its own save. A new game starts with six daemons picked for their
 **abilities**, one of each **kind** of item so the description window can be
 read, all eight badges and 999999, and the opening already over (no starter
 scene, no parcel, no gym guide, the gate guards' tea); hold B to walk through grass. Its DEBUG
-menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding) and ARTSAI's station without playing to them. It began as
+menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page) and the WARDEN with his TOKEN, without playing to them. It began as
 scaffolding for the §9.3 spike and has grown into the field test's way of reaching things without playing to them.
 
 **Never filter a build for `error:`.** agbcc prints its diagnostics as
