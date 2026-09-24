@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/unresolved/s1101_stop11",
+ "prompt": "a single floating wisp creature, ethereal mist body, two glowing eyes, centered, full body, game sprite, plain grey background",
+ "negative": "text, border, frame, multiple creatures, ground, shadow",
+ "seed": 1101,
+ "steps": 24,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": 11,
+ "size": [
+  768,
+  768
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 21.8,
+ "comfyui": "0.19.1",
+ "made": "2026-09-24 07:06:50"
+}

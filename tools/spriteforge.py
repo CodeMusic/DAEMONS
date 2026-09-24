@@ -5,6 +5,11 @@
                                      [--size 1024x1024] [--steps 28] [--cfg 6.5] [--sampler dpmpp_2m] [--scheduler karras]
     python3 tools/spriteforge.py i2i --out gfx/drafts/nibble_back --image path.png --prompt "..." [--denoise 0.6] ...
     python3 tools/spriteforge.py again gfx/drafts/nibble_front.json     # regenerate a draft exactly from its record
+    python3 tools/spriteforge.py t2i ... --stop-at 4                    # decode the latent 4 steps in, still noise
+
+--stop-at N STOPS THE SAMPLER EARLY and decodes what it has, leftover noise and all: a latent before it has
+been resolved into anything. T-250 wants exactly that for what a player sees without the RESOLVER -- the
+same seed without --stop-at is the thing it would have become.
 
 THE SERVER. ComfyUI at http://roverbyteseer.local:8008 (override with SPRITEFORGE_HOST), checkpoint
 `pixelArtDiffusionXL_spriteShaper.safetensors` -- the same model the pixelbyte skill wraps, driven here
@@ -57,6 +62,12 @@ def graph(p):
         "6": {"class_type": "VAEDecode", "inputs": {"samples": ["5", 0], "vae": ["1", 2]}},
         "7": {"class_type": "SaveImage", "inputs": {"images": ["6", 0], "filename_prefix": "spriteforge"}},
     }
+    if p.get("stop_at"):
+        g["5"] = {"class_type": "KSamplerAdvanced", "inputs": {
+            "model": ["1", 0], "positive": ["2", 0], "negative": ["3", 0], "add_noise": "enable",
+            "noise_seed": p["seed"], "steps": p["steps"], "cfg": p["cfg"], "sampler_name": p["sampler"],
+            "scheduler": p["scheduler"], "start_at_step": 0, "end_at_step": p["stop_at"],
+            "return_with_leftover_noise": "enable"}}
     if p["mode"] == "i2i":
         g["8"] = {"class_type": "LoadImage", "inputs": {"image": p["uploaded"]}}
         g["4"] = {"class_type": "VAEEncode", "inputs": {"pixels": ["8", 0], "vae": ["1", 2]}}
@@ -107,6 +118,7 @@ def main():
         s.add_argument("--cfg", type=float, default=6.5)
         s.add_argument("--sampler", default="dpmpp_2m")
         s.add_argument("--scheduler", default="karras")
+        s.add_argument("--stop-at", type=int, default=None, dest="stop_at")
         if mode == "t2i":
             s.add_argument("--size", default="1024x1024")
         else:
@@ -122,7 +134,7 @@ def main():
         return
     p = dict(mode=a.mode, out=a.out, prompt=a.prompt, negative=a.negative,
              seed=a.seed if a.seed is not None else random.randrange(2 ** 32), steps=a.steps, cfg=a.cfg,
-             sampler=a.sampler, scheduler=a.scheduler, denoise=getattr(a, "denoise", 1.0))
+             sampler=a.sampler, scheduler=a.scheduler, denoise=getattr(a, "denoise", 1.0), stop_at=a.stop_at)
     if a.mode == "t2i":
         p["size"] = tuple(int(v) for v in a.size.split("x"))
     else:
