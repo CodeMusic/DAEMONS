@@ -774,6 +774,28 @@ MARGINS = [
      "Still sealed. Still from the inside."),
 ]
 
+#  T-188 (the user, 2026-09-24): the EDITION keeps deciding the Index entries, and REASON or INSTINCT -- the
+#  choice at the title, which the save keeps as playerGender -- decides the VOICE of the margins. The lines above
+#  are REASON's: they notice what you DID, as a record would. INSTINCT's notice what it was LIKE, and only a
+#  chosen few are written twice; a daemon with no line here gives both players the one above, which is right,
+#  since a reader does not have a second thought about everything.
+#
+#  DRAFT, every line of it, until the user approves the wording.
+INSTINCT = {
+    "ROVERCUB": ("It still turns its head at the first town's name. So do you.",
+                 "It is waiting at the edge of somewhere. It has been a while."),
+    "LABEL":    ("It knew you on sight. It has not had to think about it since.",
+                 "It still flinches at the one thing it has been shown."),
+    "CLUSTER":  ("You went with it on a feeling. It still feels right.",
+                 "It is still sure. Nothing has come near enough to make it unsure."),
+    "NIBBLE":   ("Of all of them, this one. You could not say why.",
+                 "You picked it out once. It has not been picked since."),
+    "HUNCH":    ("You have started trusting it. You did from the start.",
+                 "Asleep. It will know before it wakes."),
+    "MUSAI":    ("It has felt something now. It has not told you what.",
+                 "It is still waiting to feel anything."),
+}
+
 
 def wrap(s):
     out, cur = [], ""
@@ -803,27 +825,39 @@ def main():
             '    u16 species;',
             '    const u8 *carried;',
             '    const u8 *neglected;',
+            '    const u8 *instinctCarried;     // T-188: NULL, and INSTINCT reads the lines above',
+            '    const u8 *instinctNeglected;',
             '};',
             '']
     for sp, name, carried, neglected in MARGINS:
         #  LEMMA MIND has a space in it, and a space in a C identifier is a syntax error rather than a
         #  warning -- so the symbol is the name with its spaces taken out, not the name.
         sym = name.title().replace(" ", "")
-        for kind, text in (("Carried", carried), ("Neglected", neglected)):
+        pairs = [("Carried", carried), ("Neglected", neglected)]
+        if name in INSTINCT:
+            pairs += [("InstinctCarried", INSTINCT[name][0]), ("InstinctNeglected", INSTINCT[name][1])]
+        for kind, text in pairs:
             lines = wrap(text)
             widest = max(textwidth(l) for l in lines)
             bad = widest > PANE or len(lines) > MAXLINES
             over += bad
-            print("  %-10s %-9s %3dpx %d lines%s  %s"
+            print("  %-10s %-17s %3dpx %d lines%s  %s"
                   % (name, kind.lower(), widest, len(lines), " !!" if bad else "  ", " / ".join(lines)))
             body.append('static const u8 sOpusMargin_%s_%s[] = _("%s");' % (sym, kind, "\\n".join(lines)))
         body.append('')
     body.append('static const struct OpusMargin sOpusMargins[] = {')
     for sp, name, _c, _n in MARGINS:
-        body.append('    { %-22s sOpusMargin_%s_Carried, sOpusMargin_%s_Neglected },'
-                    % (sp + ",", name.title().replace(" ", ""), name.title().replace(" ", "")))
+        sym = name.title().replace(" ", "")
+        inst = ("sOpusMargin_%s_InstinctCarried, sOpusMargin_%s_InstinctNeglected" % (sym, sym)
+                if name in INSTINCT else "NULL, NULL")
+        body.append('    { %-22s sOpusMargin_%s_Carried, sOpusMargin_%s_Neglected, %s },'
+                    % (sp + ",", sym, sym, inst))
     body += ['};', '']
-    print("\n  %d margin(s) for %d daemons; %d over the %dpx pane" % (2 * len(MARGINS), len(MARGINS), over, PANE))
+    missing = sorted(set(INSTINCT) - {m[1] for m in MARGINS})
+    if missing:
+        sys.exit("  INSTINCT names a daemon with no margin: %s" % ", ".join(missing))
+    print("\n  %d margin(s) for %d daemons, %d of them written again for INSTINCT; %d over the %dpx pane"
+          % (2 * len(MARGINS) + 2 * len(INSTINCT), len(MARGINS), len(INSTINCT), over, PANE))
     if WRITE:
         open(OUT, "w", encoding="utf-8").write("\n".join(body))
         print("  written %s" % os.path.relpath(OUT, ROOT))

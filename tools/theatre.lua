@@ -1,7 +1,9 @@
 -- The theatre's remote (T-136): drive mGBA from a file, frame-exact, and capture what it shows.
 --
 -- mGBA 0.10.5 has no --script (engineAi/README.md), so load this once from the Scripting window
--- (Tools > Scripting..., then File > Load script...). It then polls a command file every 10 frames:
+-- (Tools > Scripting..., then File > Load script...), or type into that window's own input line
+--     dofile("/Users/christopherhicks/Projects/DAEMONS/tools/theatre.lua")
+-- which needs no file dialog. Quitting mGBA unloads it. It then polls a command file every 10 frames:
 --
 --     <dir>/theatre.cmd       written by you; a new first line "id N" starts a new batch
 --     <dir>/theatre.done     written here: "done N" once batch N has run
