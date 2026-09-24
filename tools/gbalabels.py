@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Two painted labels that still said vanilla's word (2026-09-23).
+"""Painted labels that still said vanilla's word (2026-09-23; OT -> BY 2026-09-24).
 
     python3 tools/gbalabels.py            # report
     python3 tools/gbalabels.py --write    # summary_screen/bg.png, interface/menu_info.png
@@ -92,6 +92,19 @@ def main():
         raise SystemExit("summary_screen/bg.png: %d glyphs in the memo pill, expected 11 or 8" % len(g))
     M = g[-4]                                           # MEMO's M, in either state
     assert len(M[0]) == 5, M
+
+    # ---- the INFO page's OT -> BY (the user, 2026-09-24): who bound it. Same face and colours as the memo pill;
+    # Y is TYPE's Y, and B is drawn at O's width with a middle bar.
+    og, oruns = glyphs(spx, 4, 44, 76, 7, 0x2E)
+    tg = glyphs(spx, 4, 44, 61, 7, 0x2E)[0]             # TYPE
+    if len(og) == 2 and len(tg) == 4 and og[1] == tg[0]:  # O T, and T is TYPE's T
+        B = ["###.", "#..#", "#..#", "###.", "#..#", "#..#", "###."]
+        end = relabel(spx, "BY", {"B": B, "Y": tg[1]}, oruns[0][0], 76, 7, (oruns[0][0] - 1, oruns[-1][1] + 1), 10, 0x2E, 0x2D)
+        out.append("summary  OT -> BY (x %d..%d)" % (oruns[0][0], end))
+    elif len(og) == 2:
+        out.append("summary  already BY")
+    else:
+        raise SystemExit("summary_screen/bg.png: %d glyphs in the OT pill, expected 2" % len(og))
 
     # ---- interface/menu_info.png: PP -> MP. Letters 0x1F on pill 0x1E, rows 115..121.
     mp = os.path.join(GBA, "graphics/interface/menu_info.png")
