@@ -1350,6 +1350,35 @@ def check_help_matchups():
     return bad
 
 
+#  T-248: vanilla's STATUS words where the design has its own. The states were renamed (port_states.py: LEAKING,
+#  CASCADING, SUSPENDED, THROTTLED, OVERHEATED, HUNG, THRASHING) and every surface that EXPLAINS a mechanic was meant
+#  to follow -- but POISON TAIL still said "It may also poison them", CHARGED "Paralyzes on contact", a tip "cures
+#  ... burns". Dialogue is left out on purpose: people sleep, buildings burn, and a trainer is "burned out". What is
+#  held here is the four surfaces that describe what a thing DOES. FROZEN in capitals is a type, and allowed.
+STATUS_WORDS = re.compile(r"\b(poison(?:ed|ing|s)?|paralyz\w*|paralys\w*|burn(?:ed|s|t)?|freez\w*|frozen|asleep|"
+                          r"sleep(?:ing|s|y)?|drows\w*|slumber\w*|confus\w*)\b", re.I)
+
+
+def check_status_words():
+    bad = []
+    def scan(where, text):
+        for m in STATUS_WORDS.finditer(text):
+            if m.group(0) == "FROZEN":
+                continue
+            bad.append((where, "says %r -- the state has its own name (port_states.py)" % m.group(0)))
+    for rel in ("src/move_descriptions.c", "src/data/text/abilities.h", "src/battle_message.c"):
+        t = open(os.path.join(GBA, rel), encoding="utf-8", errors="ignore").read()
+        for m in re.finditer(r'(?:const u8 (\w+)\[\] = )_\(((?:\s*"(?:[^"\\]|\\.)*"\s*)+)\)', t):
+            if rel.endswith("abilities.h") and "Description" not in m.group(1):
+                continue
+            body = re.sub(r"\\[nlp]", " ", "".join(re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2))))
+            scan("%s %s" % (rel, m.group(1)), re.sub(r"\{[^}]*\}", " ", body))
+    for it in json.load(open(os.path.join(GBA, "src/data/items.json"), encoding="utf-8"))["items"]:
+        if it.get("pocket") != "POCKET_TM_CASE":
+            scan("items.json %s" % it["itemId"], re.sub(r"\\[nlp]", " ", it.get("description_english", "")))
+    return bad
+
+
 #  Invariant 3 (CLAUDE.md, 8.4): the type chart is byte-identical across both editions -- it is the argument,
 #  and an argument that changes by cartridge is not one. Nothing watched it on the GBA (2026-09-23). It holds
 #  today because both editions compile ONE table; the way it would break is an edition #if inside that table,
@@ -1651,6 +1680,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    sbad = check_status_words()
+    if not sbad:
+        print("  no routine, ability, item or battle line explains a state in vanilla's word for it.")
+    else:
+        print("\n  %d vanilla status word(s) where a state has its own name:\n" % len(sbad))
+        for what, why in sbad:
+            print("   %-52s %s" % (what, why))
+
     hbad = check_help_matchups()
     if not hbad:
         print("  all 34 HELP matchup pages say what the chart does.")
@@ -1713,7 +1750,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad) else 0
 
 
 if __name__ == "__main__":
