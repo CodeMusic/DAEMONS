@@ -10,6 +10,8 @@
 --
 -- One command per line, run in order:
 --     hold A 6          hold a button (A B L R START SELECT UP DOWN LEFT RIGHT) for N frames, then release
+--     press R           put a button down and LEAVE it down while later commands run (a shot mid-hold)
+--     release R         and let it go
 --     wait 30           let N frames pass
 --     shot name         save a screenshot as <dir>/name.png
 --     burst name 12 4   save 12 screenshots, one every 4 frames: <dir>/name_00.png ... (an animation, as frames)
@@ -90,6 +92,12 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
   if w[1] == "hold" and KEYS[w[2]] then
     emu:addKey(KEYS[w[2]])
     busy = { kind = "hold", key = KEYS[w[2]], left = tonumber(w[3]) or 4 }
+  elseif w[1] == "press" and KEYS[w[2]] then
+    emu:addKey(KEYS[w[2]])
+    if #queue == 0 then finish() end
+  elseif w[1] == "release" and KEYS[w[2]] then
+    emu:clearKey(KEYS[w[2]])
+    if #queue == 0 then finish() end
   elseif w[1] == "wait" then
     busy = { kind = "wait", left = tonumber(w[2]) or 1 }
   elseif w[1] == "poke16" then
