@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.280 — 2026-09-24
+
+### The user's answers, before a night's batch
+
+- ***REMNANT, not GHOST*** (T-253); ***"can't make sense of this!" in the tower, "No, no, no… nothing here makes sense!" in the cave, and the white that wakes you at home*** (T-254); ***the unread cave as a simple drawing*** (T-255); ***whichever parent you talk to gives their shoes*** (T-256).
+- ***The Five Witnesses lead to a NOTEBOOK page — *Echoes of the Algorithm* told by ARTSAI — and back to the station, where its drawing can be read and bound, as many tries as it takes*** (T-235). *Reverses the station's TRANSCRIPT: WITHHELD for this one reward.* **S.T.A.R.R. likewise stays until bound.**
+- ***And the page's twelve decisions***: *INK AND PAPER, A RACK OF SLOTS, R and L, a chosen few written twice with OPUS's voice by REASON or INSTINCT, the drivers stay, BY and MEME, the fourteen groves named across the swap, CONTEXT entries for every daemon a player meets, and the four roster swaps.*
+
+---
+
 ## v11.279 — 2026-09-23
 
 ### DOLDRUM CAVE, before it can be seen
