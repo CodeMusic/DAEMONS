@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.273 — 2026-09-23
+
+### A word with two meanings
+
+- ***T-245: PATCH is the leak cure, and it was the PLUGINS' old name.*** **No sweep could tell them apart, so thirteen lines, the Game Corner's prize list and the TOOLKIT still said PATCH meaning a PLUGIN.** *All fixed; every PATCH a player reads is now classified, and a new one fails until someone says which it means. The withdrawn-word check reads everything a player can, not only map dialogue.*
+
+---
+
 ## v11.272 — 2026-09-23
 
 ### Prose that lives beside a name table

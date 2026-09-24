@@ -231,12 +231,21 @@ def check_vetoed():
         f = os.path.join(GBA, rel)
         if os.path.isfile(f):
             files.append((rel, f))
-    maps = os.path.join(GBA, "data/maps")
-    for root, _, fnames in os.walk(maps):
+    #  T-245: ALL OF data/, and every C source's literals. This read data/maps only -- the same blind spot T-243 found
+    #  in the stale-name pass -- so a vetoed word in a trainer's line, a shared script, a routine description or an
+    #  Index entry would have shipped. None had (measured 2026-09-23); now none can. Code symbols never match: only
+    #  _("...") and .string literals are read.
+    import glob as _glob
+    for root, _, fnames in os.walk(os.path.join(GBA, "data")):
         for fn in fnames:
             if fn.endswith((".inc", ".pory")):
                 f = os.path.join(root, fn)
                 files.append((os.path.relpath(f, GBA), f))
+    seen = {rel for rel, _ in files}
+    for f in sorted(_glob.glob(os.path.join(GBA, "src/**/*.[ch]"), recursive=True)):
+        rel = os.path.relpath(f, GBA)
+        if rel not in seen:
+            files.append((rel, f))
 
     #  PLAYER-VISIBLE LITERALS ONLY. The first version matched whole files and
     #  reported nine hits, and every one was a CODE SYMBOL --
@@ -246,6 +255,13 @@ def check_vetoed():
     #  same error port_states.py made the same week, which is twice.
     LITERAL = re.compile(r'_\("((?:[^"\\]|\\.)*)"\)|\.string\s+"((?:[^"\\]|\\.)*)"')
 
+    items = os.path.join(GBA, "src/data/items.json")
+    if os.path.isfile(items):
+        for it in json.load(open(items, encoding="utf-8"))["items"]:
+            text = re.sub(r"\\[nlpN]", " ", it.get("english", "") + " " + it.get("description_english", ""))
+            for word, (instead, why) in VETOED.items():
+                if re.search(r"(?<![A-Za-z])%s(?![A-Za-z])" % word, text, re.I):
+                    out.append(("items.json %s" % it["itemId"], "%s -- use %s (%s)" % (word, instead, why)))
     for rel, f in files:
         try:
             raw = open(f, encoding="utf-8", errors="ignore").read()
@@ -999,6 +1015,13 @@ def check_plugin_colours():
     return bad
 
 
+#  T-245: the dialogue in which PATCH means the item that cures a leak (vanilla's ANTIDOTE), and not a PLUGIN.
+PATCH_MEANS_THE_ITEM = {
+    "ViridianForest_Text_UseAntidoteForPoison",               # "Leaking? PATCH."
+    "ViridianCity_Mart_Text_ShopDoesGoodBusinessInAntidotes",  # "They shift a lot of PATCH here."
+}
+
+
 def check_numbered():
     """Two traps found on 2026-09-22, kept shut.
 
@@ -1014,11 +1037,32 @@ def check_numbered():
         for f in fn:
             if not f.endswith(".inc"):
                 continue
+            label = None
             for line in open(os.path.join(dp, f), encoding="utf-8", errors="ignore"):
+                lm = _re.match(r"^(\w+)::", line)
+                if lm:
+                    label = lm.group(1)
                 if ".string" in line:
                     m = _re.search(r"\b(PATCH\d+|TM\d\d|HM\d\d)", line)
                     if m:
                         bad.append(("%s" % os.path.basename(dp), "says %s" % m.group(1)))
+                    #  T-245: and PATCH with no number, which T-222 could not see. The word is the leak cure's name
+                    #  (ANTIDOTE -> PATCH) AND was the TMs' name until T-206 made them PLUGINS, so it cannot be swept
+                    #  -- thirteen lines still handed the player "this PATCH" meaning a PLUGIN. So every PATCH a
+                    #  player reads is CLASSIFIED: the lines that mean the item are named below, and a new one fails
+                    #  until someone decides which it is.
+                    for pm in _re.finditer(r"(?<!FIELD )\bPATCH(ES)?\b", line):
+                        if label not in PATCH_MEANS_THE_ITEM:
+                            bad.append(("%s %s" % (os.path.basename(dp), label),
+                                        "says %s -- a PLUGIN, or the leak cure? name it in PATCH_MEANS_THE_ITEM" % pm.group(0)))
+    #  and the C literals, where the Game Corner's prize list read "PATCH13 ... 4,000 COINS" (T-245)
+    import glob
+    for f in sorted(glob.glob(os.path.join(GBA, "src/**/*.c"), recursive=True)):
+        for i, line in enumerate(open(f, encoding="utf-8", errors="ignore"), 1):
+            for m in _re.finditer(r'_\("([^"]*)"', line):
+                n = _re.search(r"\b(PATCH\d+|TM\d\d|HM\d\d)", m.group(1))
+                if n:
+                    bad.append(("%s:%d" % (os.path.relpath(f, GBA), i), "says %s" % n.group(1)))
     #  T-223: the books are full screen and REFLOW their text (book_reader.c), so what must fit is a number of
     #  LINES, not bytes. A topic prints across one spread -- 7 lines on the left page, 9 on the right, 94px
     #  wide -- and a line past that is simply not drawn. A NOTEBOOK entry pages, but holds at most 47 lines at
