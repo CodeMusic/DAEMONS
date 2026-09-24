@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.279 — 2026-09-23
+
+### DOLDRUM CAVE, before it can be seen
+
+- ***T-251 built***: **the guard stands aside at the REVIEW BOARD, and without the understanding the cave is grey, its ladders land anywhere, and every encounter is one LATENT abstraction** — *a new colour each time, the only colour on the screen, saying only HE WHO SEES ONE, SEES NONE.* *With it, the cave is in colour and itself.* **Played both ways** (*DEBUG → JUMP → DOLDRUM*). ***Found doing it***: *a GHOST battle with a trapping daemon was a soft-lock — fixed for every unresolved GHOST battle, and trap 28.*
+
+---
+
 ## v11.278 — 2026-09-23
 
 ### Three answers from the user
