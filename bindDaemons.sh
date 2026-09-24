@@ -12,11 +12,12 @@
 #
 # TWO ENGINES, ON PURPOSE.
 #
-# The Game Boy build (pokered) is where the vertical slice actually is. The
-# GBA build (pokefirered) is a spike: it is being evaluated for whether
-# abilities, item descriptions and a real scripting language are worth
-# rebuilding 334 files for. Neither is the loser yet, so neither is deleted,
-# and --classic is how you reach the one that currently has a game in it.
+# The GBA build (pokefirered) is where the game is. It was opened as a spike --
+# were abilities, item descriptions and a real scripting language worth
+# rebuilding 334 files for? -- and vision.md 9.3 records that it answered in a
+# day and the project moved. The Game Boy build (pokered) is kept as the
+# reference the port tools read from: it still builds and runs its slice, and
+# --classic reaches it. It is not updated further.
 #
 #   engine/     -> ../pokered-daemons       CONTENT = _RED,     CONTEXT = _BLUE
 #   engineGba/  -> ../pokefirered-daemons   CONTENT = firered,  CONTEXT = leafgreen

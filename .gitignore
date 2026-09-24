@@ -2,7 +2,7 @@
 **/.DS_Store
 
 # engine/    -> ../pokered-daemons      (Game Boy, the classic build)
-# engineGba/ -> ../pokefirered-daemons  (GBA, under evaluation)
+# engineGba/ -> ../pokefirered-daemons  (GBA, where the game is)
 # Sibling repos, never vendored: both carry Nintendo-derived graphics.
 engine
 engineGba

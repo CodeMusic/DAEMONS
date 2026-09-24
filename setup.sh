@@ -7,8 +7,8 @@
 # Idempotent — safe to run again any time something looks wrong.
 # See docs/two-repo-pattern.md for why it is built this way.
 #
-# There are two engines now. The Game Boy one holds the vertical slice; the
-# GBA one is a spike being evaluated. Neither is vendored: both carry
+# There are two engines. The GBA one is where the game is (vision.md 9.3); the
+# Game Boy one is kept as the reference the port tools read from. Neither is vendored: both carry
 # Nintendo-derived graphics and this repo promises not to distribute them.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
@@ -156,7 +156,7 @@ fi
 say "ready"
 cat <<'EOS'
      ./bindDaemons.sh              CONTENT on GBA
-     ./bindDaemons.sh --classic    CONTENT on Game Boy (this is where the slice is)
+     ./bindDaemons.sh --classic    CONTENT on Game Boy (the reference build)
      make content                  classic build only
      ./bindDaemons.sh --ai         CONTENT on GBA, played by a model
      make vanilla-check            prove the classic toolchain

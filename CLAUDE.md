@@ -31,7 +31,7 @@ DAEMONS/             <- ALWAYS root sessions here (memory lives here)
   patches/           published diffs against a clean pokered checkout
   gfx/ audio/        original assets
   engine/    ----->  symlink to ../pokered-daemons       (Game Boy)
-  engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, under evaluation)
+  engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, where the game is)
   engineAi/  ----->  symlink to ../gpt-play-pokemon-firered-daemons
 ```
 
@@ -156,8 +156,8 @@ nothing and proves nothing. Compiling is not evidence on this machine either.
 
 ## Build
 
-`bindDaemons.sh` builds an edition and launches it. **It defaults to the GBA
-spike, so `--classic` is how you reach the build that has a game in it.**
+`bindDaemons.sh` builds an edition and launches it. **It defaults to the GBA build, which is where the game
+is; `--classic` reaches the Game Boy reference build.**
 
 ```sh
 ./bindDaemons.sh                    # CONTENT, GBA      -> mGBA
@@ -189,9 +189,8 @@ and therefore its own save. A new game starts with six daemons picked for their
 **abilities**, one of each **kind** of item so the description window can be
 read, all eight badges and 999999, and the opening already over (no starter
 scene, no parcel, no gym guide, the gate guards' tea); hold B to walk through grass. Its DEBUG
-menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA and DOLDRUM CAVE (with or without the understanding) without playing to them. It is
-scaffolding for the §9.3 spike rather than a general debug menu — those are the
-two things being evaluated.
+menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding) and ARTSAI's station without playing to them. It began as
+scaffolding for the §9.3 spike and has grown into the field test's way of reaching things without playing to them.
 
 **Never filter a build for `error:`.** agbcc prints its diagnostics as
 `warning:` lines and then fails with a bare `Error 1`, so `make … | grep -i
