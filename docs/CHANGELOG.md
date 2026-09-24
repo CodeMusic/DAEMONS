@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.283 — 2026-09-24
+
+### An audit of what was adopted and never built
+
+- ***The WARDEN's TOKEN*** (T-260): **8.6 adopted it and vanilla's GOLD TEETH were still in the game** — *the item, its description, four lines, and a key fob drawn by `tools/gentoken.py`. THE HOLDOUT, the SAFARI ZONE's proposed name, is left for the user.*
+- ***The choice at the title is not a gender*** (9.10 corrected): **five scripts still called an INSTINCT player a girl and a REASON player a boy** — *each pair now says one thing, and `check_lexicon` fails any branch that does not, beyond the four VOICE pairs written on purpose.*
+- ***8.6's "Ty is not in the ROM" is no longer true*** (T-261): *T-19 put him in the warehouse; whether the post-game triangle is still owed is the user's.*
+- ***The missing key signature, proposed for a grove*** (T-10): *BRAZEN's maze was approved as it is, and the source has a tree sing the song.*
+- *4.35's heading said "built nowhere"; the school has been built since 2026-09-22.*
+
+---
+
 ## v11.282 — 2026-09-24
 
 ### A day of pushes, built

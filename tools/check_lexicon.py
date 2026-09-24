@@ -42,7 +42,7 @@ line is that ids are permanent. Here a GAP IS a fault, unlike the version: that
 file says a finished ticket is struck through and never deleted, so a missing
 number means one was.
 """
-import json, os, re, sys
+import glob, json, os, re, sys
 import subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -1506,6 +1506,50 @@ def _lines_with_offsets(text):
         pos += len(line) + 1
 
 
+#  9.10: the question at the title is REASON or INSTINCT, and the game keeps it in playerGender -- so a script that
+#  branches on checkplayergender is choosing words by it. Some of those pairs are rewritten on purpose as the two
+#  VOICES (the same person arriving two ways). Every other pair must say the same thing: a WARDEN who called an
+#  INSTINCT player "lassie" and a REASON player "son" was still in the game on 2026-09-24, five years of vanilla after
+#  9.10 said the flag chose nothing but sprites -- 9.10 had counted the C and never the scripts.
+VOICE_PAIRS = {
+    "PalletTown_PlayersHouse_1F_EventScript_MomOakLookingForYou",   # MOM: how long CRYSTAL waited
+    "PalletTown_PlayersHouse_1F_EventScript_TVScreen",              # the film each of them sees
+    "SaffronCity_CopycatsHouse_2F_EventScript_MimicPlayer",         # the player's own speech, two registers
+    "EventScript_MimicTaught",
+}
+
+def check_gender_branches():
+    texts, scripts, bad = {}, {}, []
+    for f in glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + glob.glob(os.path.join(GBA, "data/text/*.inc")) \
+            + [os.path.join(GBA, "data/event_scripts.s")]:
+        t = open(f, encoding="utf-8", errors="replace").read()
+        for m in re.finditer(r'^(\w+)::\s*\n((?:\s*\.string\s+"[^"\n]*"\s*\n)+)', t, re.M):
+            texts[m.group(1)] = "".join(re.findall(r'"([^"]*)"', m.group(2)))
+    for f in glob.glob(os.path.join(GBA, "data/maps/*/scripts.inc")) + glob.glob(os.path.join(GBA, "data/scripts/*.inc")):
+        t = open(f, encoding="utf-8", errors="replace").read()
+        for m in re.finditer(r'^(\w+)::\n(.*?)(?=^\w+::|\Z)', t, re.M | re.S):
+            scripts[m.group(1)] = m.group(2)
+    said = lambda label: [texts.get(x, "") for x in re.findall(r'(?:msgbox|message)\s+(\w+)', scripts.get(label, ""))]
+    for label, body in scripts.items():
+        if "checkplayergender" not in body:
+            continue
+        #  the MALE branch is a label; the FEMALE side is either a label too or the fall-through right after the goto
+        males = re.findall(r'(?:goto|call)_if_eq VAR_RESULT, MALE, (\w+)', body)
+        females = re.findall(r'(?:goto|call)_if_eq VAR_RESULT, FEMALE, (\w+)', body)
+        for male in males:
+            base = male[:-4] if male.endswith("Male") else male
+            if base in VOICE_PAIRS or any(base.startswith(v) for v in VOICE_PAIRS):
+                continue
+            a = said(male)
+            if females:
+                b = said(females[males.index(male)] if males.index(male) < len(females) else females[0])
+            else:
+                tail = body.split(male, 1)[1]
+                b = [texts.get(x, "") for x in re.findall(r'(?:msgbox|message)\s+(\w+)', tail.split("end", 1)[0])]
+            if a != b:
+                bad.append((base, "says different words to REASON and INSTINCT (9.10: the choice is not a gender)"))
+    return bad
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1680,6 +1724,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    gbad2 = check_gender_branches()
+    if not gbad2:
+        print("  REASON and INSTINCT are told the same words, except where the two voices are written on purpose.")
+    else:
+        print("\n  %d line(s) chosen by REASON or INSTINCT as if it were a gender:\n" % len(gbad2))
+        for what, why in gbad2:
+            print("   %-52s %s" % (what, why))
+
     sbad = check_status_words()
     if not sbad:
         print("  no routine, ability, item or battle line explains a state in vanilla's word for it.")
@@ -1750,7 +1802,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2) else 0
 
 
 if __name__ == "__main__":

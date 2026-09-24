@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.282**
+**A total conversion — the living design bible, v11.283**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4507,7 +4507,7 @@ Corpus rooms, and the trainer table.
 - ***Ty is not at the reading.*** **4.17's not-visiting is a choice on both sides** and this does not take it away from either of them.
 - **No character explains the frame shift**, the log, the procedure, or why the machine went looking. *The Quicksilver terminal says `CRYSTAL NOT FOUND` and stops.*
 
-### 4.35 CALLOW SCHOOL and the RESEARCH NOTEBOOK — designed 2026-09-22, built nowhere
+### 4.35 CALLOW SCHOOL and the RESEARCH NOTEBOOK — designed 2026-09-22, built from 2026-09-22 (T-216–T-224)
 
 ***Asked for by the user, at length, and the brief is better than the summary of it.*** **The full
 design is [`docs/school.md`](school.md)** — *seven floors, a published syllabus, a resumable exam, a
@@ -7226,7 +7226,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 
 #### Adopted, not yet built
 
-**Ty is not in the ROM at all.** The bible places him at Quicksilver; no NPC has been written. **So his line and the post-game triangle are new content, not edits** — a larger job than the review implies.
+~~**Ty is not in the ROM at all.**~~ ***No longer true (noted 2026-09-24): T-19 put him in the FIVE ISLAND warehouse, where he hands over the payload.*** The bible places him at Quicksilver; no NPC has been written. **So his line and the post-game triangle are new content, not edits** — a larger job than the review implies. *Whether the triangle is still owed is T-261.*
 
 - **The post-game triangle** — S.T.A.R.R. → Ty → Crystal, three text blocks and three party checks. **And *S.T.A.R.R. inferred correctly and could not go*:** a machine that reads its own state cannot walk back into that building, so it went to the nearest place and stopped — **the becalmed city, the local minimum.** RECURSION collapses when interrupted; her leaving was the interruption
 - **Penphin cannot be weighted.** The Clarifier failed *because* one vote could be raised; **Penphin is two frames that must agree, so there is nothing to raise.** What she would build after learning what was done to the first one — and **HOLT is the failed Penphin**, two perspectives with no rule for choosing. Halves in Doldrum's waters, one per edition
@@ -7797,6 +7797,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***FireRed asks "are you a boy or a girl?" and uses the answer for almost nothing.*** **The flag is read 102 times** in the source and **all but one of them picks a graphic or a palette** — a trainer back pic, a sprite template, a palette table.
 
 **The single exception called you someone's *son* or *daughter*.** *It says **child** now,* and with that gone **`playerGender` is purely a sprite selector.**
+
+***Corrected 2026-09-24: it was not.*** **The count above read the C and never the scripts**, *and vanilla's `checkplayergender` was still choosing words in five places* — **the WARDEN's *son* or *lassie*, the salesman's *laddie* or *sweetie pie*, the tower's *son* or *girl*, a *little brother* or *sister*, a *waiter* or *waitress*.** *An INSTINCT player was being called a girl by the choice at the title.* **Each pair now says one thing** — *friend, child, my youngest, excuse me* — **and `check_lexicon` fails any branch that says different words to the two**, *except the four written on purpose as the two VOICES (MOM, the TV, and the COPYCAT's two).* ***So now it is true.***
 
 ***So the question was doing no work, and it has been replaced with one that does:***
 
