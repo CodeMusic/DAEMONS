@@ -13,6 +13,8 @@
 --     wait 30           let N frames pass
 --     shot name         save a screenshot as <dir>/name.png
 --     burst name 12 4   save 12 screenshots, one every 4 frames: <dir>/name_00.png ... (an animation, as frames)
+--     pburst name 40    every frame for 40 frames: a screenshot AND palette RAM, <dir>/name_00.png + name_00.pal
+--                       (1024 bytes, BG then OBJ) -- for a colour that should not be on screen (T-254)
 --     poke16 ADDR N     write a 16-bit value into memory (the theatre's sTheatreMove, from the .elf's symbols)
 --     poke8 ADDR N      write one byte (sTheatreTurn: 1 films a two-turn routine's second half)
 --     peek 32 ADDR name read 8/16/32 bits and append "name value" to <dir>/peek.txt
@@ -64,6 +66,12 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
   frame = frame + 1
   if busy then
     busy.left = busy.left - 1
+    if busy.kind == "pburst" then
+      emu:screenshot(string.format("%s/%s_%02d.png", DIR, busy.name, busy.n))
+      local f = io.open(string.format("%s/%s_%02d.pal", DIR, busy.name, busy.n), "wb")
+      if f then f:write(emu:readRange(0x05000000, 1024)); f:close() end
+      busy.n = busy.n + 1
+    end
     if busy.kind == "burst" and busy.left % busy.every == 0 then
       emu:screenshot(string.format("%s/%s_%02d.png", DIR, busy.name, busy.n))
       busy.n = busy.n + 1
@@ -105,6 +113,8 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
   elseif w[1] == "shot" then
     emu:screenshot(DIR .. "/" .. w[2] .. ".png")
     if #queue == 0 then finish() end
+  elseif w[1] == "pburst" then
+    busy = { kind = "pburst", name = w[2], n = 0, left = tonumber(w[3]) or 30 }
   elseif w[1] == "burst" then
     local count, every = tonumber(w[3]) or 8, tonumber(w[4]) or 4
     busy = { kind = "burst", name = w[2], n = 0, every = every, left = count * every }

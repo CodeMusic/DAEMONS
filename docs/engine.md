@@ -382,6 +382,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-09-24, T-235):*** *`firered` and `leafgreen` failed with "`Route21_North_Station_EventScript_VisitorLog` undeclared" while both debug builds passed.* **`include/event_scripts.h` has a `#if DAEMONS_DEBUG` block for the DEBUG menu's scripts, and the new extern was added "after the last DEBUG line" — inside it.** *A release build then compiled `reveal.c` without the declaration.* ***Two lessons***: **a declaration goes where its USERS are, not beside the last thing added**; **and the commit is gated on all four ROMs, not run after them** — *the build loop printed the failure and the commit went ahead anyway (`f4d43e6c6`, fixed in `a02293eb4`).* `for t in ...; do make $t || break; done` **followed by `&& git commit`, never `;`.**
 
+### 30. A per-frame palette filter, and the copy that does not wait for the frame
+
+***Symptom (2026-09-24, T-254):*** *in the unread DOLDRUM CAVE, for one frame of a daemon's send-out, the battle terrain showed in colour from part-way down the screen; a later frame, a band of pure white.* **The four-tone drawing (and HALFTONE's grey) are applied to `gPlttBufferFaded` once a frame in `main.c`, and the vblank copies that buffer out — but `BeginNormalPaletteFade` does not wait: it copies the buffer to palette RAM THE MOMENT a fade starts, mid-frame**, *so a fade begun by the ball opening put the raw palette on screen from whatever scanline the copy landed on.* **Found by dumping palette RAM beside each frame (the theatre's `pburst`): only those two frames held raw colours, in the terrain's BG palettes.** ***The filter now also runs before that copy and before the vblank's.*** ***Any whole-screen palette effect must hook every path to `PLTT`, not the one buffer most of them pass through*** — *`grep -n "PLTT" src/palette.c` lists them.*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
@@ -391,6 +395,8 @@ screenshot of it beside the source line settles it in a minute.***
 3. **In a battle in a debug ROM (DEBUG → ENCOUNTER → INVOKE), SELECT at "What will X do?" opens the THEATRE**: *LEFT/RIGHT step one routine, UP/DOWN ten, A plays it, START swaps which side uses it, SELECT teaches it to that side's daemon (slot 1→4, streaks re-patched on the spot), B returns to the menu.*
 
 **Set the theatre's routine with `poke16`, never by stepping to it; set its move TURN with `poke8` on `sTheatreTurn` (1 films a two-turn routine's second half).** *The address is `sTheatreMove` in `daemonsContent_debug.elf` (`arm-none-eabi-nm … | grep sTheatreMove`, and it moves with every build). The theatre ignores input while an animation plays, so a long animation swallows the D-pad steps after it: T-142's first sheet filmed the wrong routines from the fourth row down.* ***A burst must outlast the animation, and the gap after it too***: *the theatre ignores A while the previous animation plays, so T-149's first sheet filmed FLASHOVER cut short and OVERHEAT not at all.* ***And reloading the script replays nothing***: *it now skips the batch already in the command file, after a reload re-ran a finished 620-command capture from the top.*
+
+**`pburst name 40` films every frame AND dumps palette RAM beside it** (*`name_NN.pal`, 1024 bytes, BG then OBJ*) — *for a colour that should not be on screen: it tells a palette that is wrong from a layer that is (trap 30).*
 
 ***Timing drifts across boots*** — *the intro, the recap and a menu that remembers its cursor all move* — **so take a `shot` at every stage change and read it before sending the next batch.** *The first unwatched boot pressed through CONTINUE into NEW GAME's controls page.*
 
