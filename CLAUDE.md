@@ -238,6 +238,9 @@ set as one `ReleaseNotes_v11.281.x.pdf`. It refuses a dirty tree. Without `--wri
 CONTEXT for LeafGreen 1.0 and Rev 1, made against pret's own byte-identical builds of retail, cached in
 `~/.cache/daemons` and checked by hash. They are gitignored for size and are what gets published. A patch made by
 this encoder was checked independently: mGBA applied it to a retail Rev 1 ROM and booted DAEMONS.
+**Before a release anyone else will download, run `python3 tools/check_fresh_clone.py`**: it clones the engine
+from GitHub, builds both editions and compares them byte for byte with this machine's (about five minutes). A
+mismatch means the build needs something that is not in git. First run 2026-09-24: identical.
 
 ## Invariants — do not violate without an explicit decision
 
