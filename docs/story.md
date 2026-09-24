@@ -5,7 +5,7 @@ Not the story as the player meets it — that is
 says what is available at each point. **This is what happened**, in the order it
 happened, which is an order no player is ever given.
 
-> **Reconciled against the bible at v11.281, 2026-09-23.**
+> **Reconciled against the bible at v11.282, 2026-09-24.**
 > *Neither of these is built from anything, so nothing except this line
 > says how far behind they are. `check_lexicon.py` reports the gap, and
 > refuses any name in here that the game no longer uses.*
@@ -82,7 +82,8 @@ the same pages that were read as evidence she had lost rigour. The Owl concedes
 *something* and will not name it — then signs a sealed peer review, addressed to
 the people who signed the first one, and hands it to you. A procedure put her
 away; a re-reading takes her out. S.T.A.R.R. flies you to her, you give her the
-package and the review, and she reads the package. You wake at home. Later, on Quicksilver, more of the gold has lifted —
+package and the review, and she reads the package. You wake at home. Back in her lab she
+lets your INDEX write, once: it is asked one question, and keeps a page of what you chose. Later, on Quicksilver, more of the gold has lifted —
 nobody repainted anything.
 
 ---

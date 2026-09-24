@@ -228,9 +228,9 @@ checksums "fail" correctly.
 
 `tools/romrelease.py --write` builds all four ROMs and files them in **`ROM RELEASE/`** at the repo root. **Its
 notes and PDFs are committed; its ROMs are ignored by pattern and never are** — they run Nintendo's engine
-(`ROM RELEASE/WHERES_THE_ROMS.md`). Commit what a release or a seal writes. A release is **`v<design bible>.<n>`** — v11.281.1,
-v11.281.2 — so a ROM always says which design it was built against, and every release under one bible version
-lives in that version's group, `v11.281.x/<release>/`: the two ROMs, `DEBUG/` with the two testing builds, and
+(`ROM RELEASE/WHERES_THE_ROMS.md`). Commit what a release or a seal writes. A release is **`v<design bible>.<n>`** — v11.282.1,
+v11.282.2 — so a ROM always says which design it was built against, and every release under one bible version
+lives in that version's group, `v11.282.x/<release>/`: the two ROMs, `DEBUG/` with the two testing builds, and
 `RELEASE_NOTES.md` (each ROM's SHA-1 and the commits since the release before). **The first release after the
 bible moves on seals the old group**: its last ROMs flattened into the group folder, the rest deleted, every note
 set as one `ReleaseNotes_v11.281.x.pdf`. It refuses a dirty tree. Without `--write` it reports what it would do.

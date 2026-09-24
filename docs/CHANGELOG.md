@@ -5,6 +5,22 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.282 — 2026-09-24
+
+### A day of pushes, built
+
+- ***OPUS's margins in two voices*** (T-188): **REASON's lines notice what you did, INSTINCT's what it was like** — *six written twice, DRAFT; the debug kit carries OPUS.*
+- ***The send-out's colour flash, traced*** (T-254): **starting a fade copied the palette to the screen at once, past the drawing filter** — *found with the theatre's new `pburst`, which dumps palette RAM beside every frame.* ***engine.md trap 30.***
+- ***The unresolved display is a latent before it is decoded*** (T-250): **the same seed stopped eleven steps in, inside the finished draft's outline** (`spriteforge.py --stop-at`, `gbaunresolved.py`).
+- ***HALFTONE Tower's stones are encased screens, and can be read*** (T-249): **a headstone's housing, a dark screen of green marks; six lines, each an epitaph and a deletion record, DRAFT.**
+- ***L turns an Index entry to its workings*** (T-189): **the line from its root and its routines by level, from the ROM's own tables** — *and SELECT's margin works on the family page's entries at last.*
+- ***A MEME is explained, once*** (T-258): **at the CHECKPOINT, caught from another daemon and passed on** — *FireRed kept the check and never used it.* ***Memetics drafted*** *for INIT, his house and a MANSION log.*
+- ***The INDEX writes a page about you*** (T-257): **CRYSTAL, home after the payload, lets it write; LAB NOTES keeps WHAT YOU CHOSE, rebuilt from the save** — *its words PLACEHOLDERS until approved.*
+- ***ROM releases*** (T-259): **`tools/romrelease.py` files each build by version, seals a superseded version into one PDF, and makes BPS patches for all four retail ROMs** (`tools/bps.py`) — *ROMs and patches never in git; `ROM RELEASE/WHERES_THE_ROMS.md` says why.*
+- ***Where the groves could go*** (T-221): **four real lone trees found; the rest to be planted, the user's to place.**
+
+---
+
 ## v11.281 — 2026-09-24
 
 ### Overnight: the user's answers, built
