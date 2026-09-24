@@ -1550,6 +1550,28 @@ def check_gender_branches():
                 bad.append((base, "says different words to REASON and INSTINCT (9.10: the choice is not a gender)"))
     return bad
 
+#  check_stale_names reads names in CAPITALS, the way a name is written in dialogue -- and a cry is not written that
+#  way: "SPIKE: Chu! Pikachu!" and "UPTIME: Chansi! Chansi!" kept vanilla's species inside a sound (2026-09-24).
+#  So vanilla's species names are looked for here in ANY case, as whole words, in everything a player reads.
+def check_vanilla_species_any_case():
+    up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:src/data/text/species_names.h"],
+                        capture_output=True, text=True).stdout
+    if not up:
+        return []
+    ours = set(re.findall(r'_\("([^"]+)"\)', open(os.path.join(GBA, "src/data/text/species_names.h"), encoding="utf-8").read()))
+    vanilla = [n for n in re.findall(r'_\("([^"]+)"\)', up) if n not in ours and len(n) >= 4 and "?" not in n]
+    pat = re.compile(r"(?<![A-Za-z])(" + "|".join(re.escape(n) for n in sorted(vanilla, key=len, reverse=True)) + r")(?![A-Za-z])", re.I)
+    bad = []
+    files = glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + glob.glob(os.path.join(GBA, "data/text/*.inc")) \
+        + glob.glob(os.path.join(GBA, "data/scripts/*.inc")) + [os.path.join(GBA, "data/event_scripts.s")]
+    for f in files:
+        for i, line in enumerate(open(f, encoding="utf-8", errors="replace")):
+            if ".string" not in line:
+                continue
+            for m in pat.finditer(line.split(".string", 1)[1]):
+                bad.append(("%s:%d" % (os.path.relpath(f, GBA), i + 1), "says vanilla's %r" % m.group(1)))
+    return bad
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1732,6 +1754,14 @@ def main():
         for what, why in gbad2:
             print("   %-52s %s" % (what, why))
 
+    vbad2 = check_vanilla_species_any_case()
+    if not vbad2:
+        print("  no line says a vanilla species name in any case, not even inside a cry.")
+    else:
+        print("\n  %d vanilla species name(s) in dialogue, in some case:\n" % len(vbad2))
+        for what, why in vbad2:
+            print("   %-52s %s" % (what, why))
+
     sbad = check_status_words()
     if not sbad:
         print("  no routine, ability, item or battle line explains a state in vanilla's word for it.")
@@ -1802,7 +1832,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2) else 0
 
 
 if __name__ == "__main__":
