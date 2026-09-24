@@ -378,6 +378,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (caught in play, T-251):*** *"Wild GHOST prevents escape with NO EXIT!" — and then nothing, forever.* **An unresolved GHOST battle forbids the player's side from attacking** *(the tower's "too scared to move")*, **so the only way out is to run — and vanilla still consulted the other side's trapping abilities.** *The tower never met it because nothing there traps; DOLDRUM CAVE's wild table does.* **`IsRunningFromBattleImpossible` now answers success for an unresolved GHOST battle before any ability is read.** ***Any mode that takes away one exit must be checked for every other exit being closable***: *attacking, running, switching, items — one of them has to stay open against everything the other side can field.*
 
+### 29. A declaration inside the debug block, and a release build that no longer compiles
+
+***Symptom (2026-09-24, T-235):*** *`firered` and `leafgreen` failed with "`Route21_North_Station_EventScript_VisitorLog` undeclared" while both debug builds passed.* **`include/event_scripts.h` has a `#if DAEMONS_DEBUG` block for the DEBUG menu's scripts, and the new extern was added "after the last DEBUG line" — inside it.** *A release build then compiled `reveal.c` without the declaration.* ***Two lessons***: **a declaration goes where its USERS are, not beside the last thing added**; **and the commit is gated on all four ROMs, not run after them** — *the build loop printed the failure and the commit went ahead anyway (`f4d43e6c6`, fixed in `a02293eb4`).* `for t in ...; do make $t || break; done` **followed by `&& git commit`, never `;`.**
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**

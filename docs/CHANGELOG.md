@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.281 — 2026-09-24
+
+### Overnight: the user's answers, built
+
+- ***DOLDRUM CAVE*** (T-253–T-255): **a drawing in four tones of ink; its REMNANT a dream that ends in white and wakes you at home; "No, no, no… Nothing here makes sense!"** *The tower's REMNANT "can't make sense of this!".*
+- ***ARTSAI's drawing and S.T.A.R.R.*** (T-235): **the TRANSCRIPT's place in LAB NOTES, the drawing's sparkle under REVEAL, and both encounters retried until bound.** *The words and the answer tile wait for the user.*
+- ***The page's decisions built***: **the rosters lean** (T-233), **the POOL is a rack** (T-207), **the STREAM and the POOL in ink and paper** (T-209), **BY and MEME** (T-225, T-258) — *and the SUMMARY's own status pills, which nothing had touched, stopped saying PSN.*
+- ***DAD, and both parents at home*** (T-256); *the shoes' colours held back for a hand-drawn mask.*
+- ***Drafted for approval***: *the last 48 CONTEXT entries (137, every daemon a player can meet), the fourteen grove families' 32 names, the TRANSCRIPT, DAD's lines.* ***engine.md trap 29.***
+
+---
+
 ## v11.280 — 2026-09-24
 
 ### The user's answers, before a night's batch

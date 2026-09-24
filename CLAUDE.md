@@ -19,7 +19,7 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
   budgets, where a variable actually lands, every fixed width, and the traps
-  that have already cost this project time (twenty-eight of them now). **Read it before adding a
+  that have already cost this project time (twenty-nine of them now). **Read it before adding a
   static, a name, or a line of text to a pane.** Its numbers are written by
   `tools/gbabudget.py --write` rather than typed.
 
