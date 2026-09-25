@@ -19,7 +19,7 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
   budgets, where a variable actually lands, every fixed width, and the traps
-  that have already cost this project time (thirty-two of them now). **Read it before adding a
+  that have already cost this project time (thirty-three of them now). **Read it before adding a
   static, a name, or a line of text to a pane.** Its numbers are written by
   `tools/gbabudget.py --write` rather than typed.
 
@@ -149,6 +149,10 @@ every tool until it reports nothing** — that is what caught all three.
 `--write` mode in report mode (about three and a half minutes) and fails if one crashes or writes
 anything. A generated file stays correct on disk long after the tool that wrote it has stopped
 working, and nothing else will tell you (T-212, T-213).
+
+**Run `python3 tools/check_reach.py` after moving or adding anyone on a map.** It walks every map from where a
+player arrives and fails on anything we made unreachable that vanilla could reach (engine.md trap 33) — a man
+standing in the only doorway hid the game's ending for fifteen days and every other check passed.
 
 **`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its
 own `charmap.txt` exactly as Gen 1 does, so grepping a `.gba` for ASCII finds

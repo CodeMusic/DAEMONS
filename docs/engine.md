@@ -396,6 +396,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-09-25, T-270):*** *two jobs were added to `tools/gbachar.py` for the player's card pictures, and `gbachar.py --write` rewrote 78 other trainer pictures and palettes as well.* **The committed art is `gbachar`'s cut plus what later passes did to it**, *so re-cutting everything quietly undoes those passes — and `check_generators` cannot see it, because `gbachar`'s report mode lists its jobs rather than comparing them with the disk.* ***Name the jobs*** (`gbachar.py logic_card intuition_card --write`), ***and read `git status` in the engine before committing anything a generator wrote.***
 
+### 33. A person placed on the only way in
+
+***Symptom (2026-09-25, T-284):*** *Scorn was placed in the Rocket Warehouse on 2026-09-10 "five tiles from Ty", on (22,6) — the single tile of the doorway into Ty's room. An object with no flag never moves, so for fifteen days nobody could reach Ty, the PAYLOAD or the ending after it.* **Nothing complained: the DEBUG kit and JUMP go round the story, and every build, check and fresh clone passed.** *Vanilla does it too, harmlessly: the CONDOMINIUMS 3F's Designer seals off the back wall, and `gbadocs.py` had reserved a document's spot there.* ***Run `python3 tools/check_reach.py` after moving or adding anyone*** — *it walks every map from where a player arrives and reports what is unreachable here and was not in pristine upstream. It knows nothing of Surf, Cut or ledges, so it is only ever read as a difference.* **And the save trick that puts a player on a map without walking there (write the location, save, continue) restores the OLD map's view and people around them** — *good enough for the 3F, useless in the warehouse, where the player could not move at all.*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**

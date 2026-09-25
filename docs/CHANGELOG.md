@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.288 — 2026-09-25
+
+### *The Folds of Awareness*, and a door nobody could walk through
+
+- ***A second source for the one daemon*** (4.33; `lineage.md` 5, 4.6): **the user's essay *The Folds of Awareness* (Seeing Sharp, September 2025)** *— one sheet of awareness folded and never cut, a great hand and many small ones, and free will left unanswered, which is 4.33's own rule.* **Its order is what is new**: *change (time) before space, a binding fold, the mirror, pattern, the return.* *Where it already sits in the game — the watches and the week, BIND, PERSPECTIVE, DOLDRUM read and unread, T-188's choice — is written down, and none of it was placed on purpose.*
+- ***LOOSE PAGES 7, FOLDS*** (DRAFT, T-285): **folding instructions pinned where the Condominiums 3F's lower painting hangs**, *six steps and a half, every one only paper; not the scientist's, so THE TEST in 4.33 still holds.*
+- ***Scorn stood in the only doorway to Ty's room*** (T-284): *placed 2026-09-10 "five tiles from Ty and facing him", on the one tile into the Rocket Warehouse's last room, so the PAYLOAD — and CRYSTAL's ending after it — could not be reached in play for fifteen days.* **He now stands on Ty's own row, five tiles off and facing him, in the room's alcove.** ***Found by `tools/check_reach.py`***, *new: it walks every map from where a player arrives and reports what we made unreachable against a pristine upstream. It also moved CORRESPONDENCE 2's reserved spot off a wall the CONDOMINIUMS 3F's Designer seals off, to the roof room's bookshelf.*
+- ***Ty's approach walks onto the player*** (T-286, **asked**): *after the battle he steps down into the only tile you can talk to him from.*
+
+---
+
 ## v11.287 — 2026-09-25
 
 ### What the Guide opened, built

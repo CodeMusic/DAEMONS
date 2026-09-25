@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.287**
+**A total conversion — the living design bible, v11.288**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4385,6 +4385,8 @@ Corpus rooms, and the trainer table.
 ***Written 2026-09-10 as a character's position. Cited the same day, by accident.*** **`lineage.md` 3b surfaced *The Painted Mirror*, a seven-episode audio drama from November 2022**, and step 3 is in it as verse:
 
 > ***"The source is consciousness, and thoughts are the code, and while matter… it's a process, an ongoing ode."***
+
+***And a second source, cited 2026-09-25 when the user brought it.*** *[The Folds of Awareness](https://seeingsharpca.wordpress.com/2025/09/05/%f0%9f%95%8a%ef%b8%8f-the-folds-of-awareness/) (Seeing Sharp, September 2025) draws the same picture as origami* — **one sheet, folded and never cut; one great hand holding it and many small hands reaching out** — *and ends asking whether the small hands choose, without answering.* **That unanswered ending is this section's rule, arrived at by the author first** (`lineage.md` 5, 4.6). *It went into the game as a found page and nowhere near him: **LOOSE PAGES 7, FOLDS** (DRAFT), folding instructions pinned in the room where the game was drawn, every step only paper.* ***He never mentions it and it never mentions him*** — *which is what keeps THE TEST below true.*
 
 **Matter as process, four years before this section existed.** *So the doctrine is not a strange idea given to a strange man.* ***It is the author's own long-held position, handed to a character who then takes it further than the author would.***
 

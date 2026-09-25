@@ -417,6 +417,21 @@ And nominalization returns for the third time, now aimed at physics itself: *"La
 
 *Merge Conflicts of the Mind* (24 September 2025) reframes mental illness as **git desync**: hemispheric branches that stop merging, thoughts arriving without an ownership tag, and confabulation as a hotfix — *"It doesn't restore reality — it just restores cohesion."*
 
+### 4.6 The folds — the flip, given an order
+
+***Added 2026-09-25, when the user brought it to the design.*** [*The Folds of Awareness*](https://seeingsharpca.wordpress.com/2025/09/05/%f0%9f%95%8a%ef%b8%8f-the-folds-of-awareness/) (5 September 2025) is **4.3's flip told as origami**: *one sheet of awareness, creased again and again and never cut.* **What it adds that the AFM does not is an ORDER** — *awareness; then CHANGE, a fold, which is where before and after come from; then SPACE, the sequence laid side by side (red then blue becomes red beside blue); then, between the third fold and the fourth, a binding that keeps the parts one (it calls it gravity, and love); then identity, the mirror recognising itself, "I" and "you" at once; then intelligence, pattern; then a return to the source, enriched and unchanged.* **Its hands carry the fractal before 4.4 names it**: *one great hand holds the sheet and many small hands reach out from it.* **And it ends on free will without answering it** — *do the small hands choose, or does the great hand guide?*
+
+**Where it already is in the game**, *none of it placed on purpose:*
+
+- **Its whole picture is the GREEN PATH scientist's** (vision.md 4.33, *the one daemon*) — *one process, and every part a process of it.* **It is that doctrine's second source**, *after* The Painted Mirror; ***and its unanswered ending is 4.33's own rule*** — *he overshoots and the game never adjudicates.*
+- **Change is time** — *the four watches and the week (9.21, built 2026-09-25); the seven day colours reach the CHECKPOINT's trim one at a time, never side by side, so the rainbow exists only across a week.*
+- **The binding fold** — *the game's word for catching a daemon is already BIND.*
+- **The mirror, "I" and "you"** — *PERSPECTIVE (T-190): from over there the daemon opposite is your own.* ***"Without multiplicity there can be no recognition"*** *is that mechanic's precondition.*
+- **The return, enriched and unchanged** — *DOLDRUM CAVE read and unread: the same cave; the understanding changes what is seen, not the place.*
+- **The unanswered choice** — *T-188: REASON or INSTINCT is chosen once, at the title, and never seen again.*
+
+**What went in**: ***LOOSE PAGES 7, FOLDS*** *(DRAFT, the Condominiums 3F in VERDIGRIS, where the game was drawn): six steps and a half for folding a sheet, every one of them only paper.* **It never says what it is a diagram of**, *and it is deliberately not the scientist's — 4.33 rules that nothing may prove he was there — so only a player who has heard him will read it as anything but instructions.* ***What is not mined***: *the essay's conclusions — love, spirit, unity — are said outright, and craft rule 1 keeps every one of them out of the game.*
+
 *Harm Disguised as Care* (30 September 2025) traces **projection + ignorance → labelling → intervention → harm**, wrapped in helpful words, and names the loop: *label → expectation → behaviour → evidence for the label.* It is a 2025 restatement of the 2011 self-fulfilling prophecy, now aimed at institutional safety systems — and it is the strongest theoretical support in the corpus for a *sympathetic* antagonist.
 
 ---
