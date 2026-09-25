@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.283**
+**A total conversion — the living design bible, v11.284**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2235,6 +2235,8 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 ***`R` = AGAIN***, *the last line said again* — **because a mistimed A loses a line permanently and some lines are the only place a thing is said.** *The game is dense with writing and vanilla kept no history of its own.*
 
 ***And the battle says so, once***: **the first two seconds of a fight the prompt reads *L reads. / R looks across.***, *then the question arrives and the hint is not seen again.* **Neither battle window has a spare line** — *both are four tiles tall, which is two, and the prompt's are already "What will / ARTSAI do?"* — **so a permanent label would have to displace the question.** *Two buttons carrying the most interesting things in the game, and nothing saying so, was the one weakness of putting them there.*
+
+***Reading is not keeping*** — ***decided by the user 2026-09-25 (T-267), built.*** **In a battle, L reads the whole entry of the daemon in front of you, bound or not, wild or a trainer's; the INDEX itself still shows ????? until you bind one.** *You can read what is in front of you; you keep only what you bind.* **Nothing is written by reading** — *no seen or caught flag moves* — **and the page cannot be turned to another daemon from there.**
 
 ***Held open***: **`R` in battle as PERSPECTIVE** — *9.2's move is "become another thing for a while", and holding it would show the fight from the other side.* **That is a second battle layout and a rule about what it costs**, *so it is a decision rather than a convenience.*
 
@@ -8234,7 +8236,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***The rule this yields is in `engine.md` and it is short: measure the whole table, not the diff.***
 
-### 9.21 Time — a clock made of play time, and what the hours and seasons are for — *proposed 2026-09-14, not built*
+### 9.21 Time — a clock made of play time, and what the hours and seasons are for — *proposed 2026-09-14; the day decided and built 2026-09-25 (T-268), the seasons still proposed*
 
 ***Asked on playtest: FireRed hacks add day and night, with different daemons by the hour — could this, and what about the four seasons?*** **Written as a design before anything is built, because the mechanism is the easy half and the meaning is the half that can go wrong.**
 
@@ -8286,6 +8288,20 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 - **Which routes change by watch?** *Every route diluting it; three or four that visibly change teaches it.*
 - **Does the season lean belong in both editions**, or does it stack with Tier 2 so that CONTEXT's winter is a different place from CONTENT's?
 - **Does the Index record when a daemon was bound?** *It could. 4.2 says the Index cannot hold what matters, and a timestamp is exactly the thing it can hold.*
+
+#### Decided 2026-09-25, and built (T-268)
+
+***The cartridge turned out to have a clock*** — **the user's EZ-Flash carries the Seiko chip Emerald's cartridges did, and emulators provide one (T-265).** ***So the premise above, "the cartridge has none", holds only sometimes***, **and the user chose both: the real clock when there is one, and the play-time clock when there is not** — *so night falls when it is night where the player is, and every player still has nights.*
+
+| | with a clock | without one |
+|---|---|---|
+| **the watches** | **dawn 5–7, day 7–18, dusk 18–20, night 20–5** | **day, dusk, night, dawn, fifteen minutes of play each** — *day first, so the opening is in daylight* |
+
+- ***The look***, **as proposed**: *a tint applied as each palette loads on an outdoor map — dusk warm, night a blue-dark that keeps every shape readable, dawn a pale half-light — so fades and weather start from it and it cannot compound.* **The people outdoors are in the same light as the ground; menus, text, interiors, caves and battles are not; HALFTONE is grey at every hour.** *A connection that crosses into a different light reloads the rows and the people it would otherwise have carried across.*
+- ***Which routes — three or four, as proposed, the user's choice***: **Route 1**, *where a player can first notice anything*, **and 8, 10 and 12, the three roads into HALFTONE** — *10 is "Gloaming" in the chapter table, dusk approaching the tower.* ***The rule a player can learn by walking: the day's bird sleeps.*** **PACKET's slots go to what runs in the dark — DANGLING, and on 12 RESPAWN — at the slot's own level and odds**, *so a route is exactly as hard at night.* **Water and rock are as by day.** *Both editions change the same way, so Tier 2 is untouched.*
+- ***OPAQUE is not out at night yet.*** **No OPAQUE daemon is in the first 151**, *and one beyond them would arrive before the national INDEX can hold it* — **so the night is LATENT's until the GLOBAL INDEX question is settled.**
+- ***Still never stated.*** *No line says the route changes; the TIME code at the bedroom terminal shows the clock and says nothing about what it is for.*
+- ***Still open***: **the seasons**, *and whether the day should be named where the player can see it — the user asked, 2026-09-25, for the weekday and the watch to appear on leaving a building (T-269).*
 
 ### 9.22 Blanche's buildings, and the one warm note — *decided 2026-09-14, not drawn*
 
@@ -8620,7 +8636,7 @@ Kept here because the reasoning is worth more than the outcome.
     ***Questions it opens, still open***: *is there a state or a moment where a daemon's body type drifts toward its streaks, so self-alignment happens over a run and not only in one move?* *and does the reverse-PERSPECTIVE move stay `ALIGN` once self-alignment is the idea the family is for — or does the imposed version want a name that reads as imposition?* **Craft rule 1 holds throughout: none of these words are said.**
   - ***Leaning, not decided***: **4 and 1 first** — *both use systems that exist, and they argue the point from both sides (a party punished for having converged, and a move that rewards converging).*
 
-- **Day, night and the four seasons** (9.21, *proposed 2026-09-14*). ***A clock made of play time, day read as CONTENT and night as CONTEXT, and the seasons as the Review Board's four humours leaning the wild tables toward VECTOR, ENTROPY, LATENT and FROZEN.*** **Nothing built; four questions in 9.21 to settle first**
+- ~~**Day and night**~~ ***decided and built 2026-09-25 (9.21, T-268)*** — **the real clock when the cartridge has one, play time when not; Routes 1, 8, 10 and 12 at night.** ***The four seasons*** (9.21, *proposed 2026-09-14*). ***A clock made of play time, day read as CONTENT and night as CONTEXT, and the seasons as the Review Board's four humours leaning the wild tables toward VECTOR, ENTROPY, LATENT and FROZEN.*** **Nothing built; four questions in 9.21 to settle first**
 - **The GLOBAL INDEX in the islands** (*asked 2026-09-14*). ***Every daemon past #151 findable in the seven islands, split by edition.*** **235 species, 33 met today.** *A derived placement is drafted for review in `tools/plan_global_index.py`* — **and it collides with 2.10 and 8.2b: a daemon the player can meet gets a name, so making all of them meetable means naming about two hundred more, in the islands' register**
 - Does Halftone hold once the tower is written, or do Penumbra / Moiré serve better?
 - **Do the names have to BEAT the model a reader already has?** (8.10). ***The agent ground Route 4 for 205 steps looking for a GROWTH or SIGNAL daemon, with 9.4's hue in front of it and the type badges on screen, and reasoned in Grass and Electric anyway.*** **2.6 asks whether a player can generalise or only remember; this reader could do either and chose to remember.** *A pretrained reader translates back whenever translation is possible* — **a cost of renaming that 2.6 never priced and cannot price from the chart alone**

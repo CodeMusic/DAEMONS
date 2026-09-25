@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.284 — 2026-09-25
+
+### The cartridge's clock, and what the user decided with it
+
+- ***Day and night, built*** (9.21, T-268): **the real clock when the cartridge has one (T-265), play time when not** — *dusk, night and dawn tint the outdoor maps and the people on them, as each palette loads; HALFTONE stays grey.* ***On Routes 1, 8, 10 and 12 the day's bird sleeps and LATENT comes out*** — *DANGLING, and RESPAWN on 12, at the same levels and odds.* **OPAQUE waits for the GLOBAL INDEX**: *none of it is in the first 151.* ***DEBUG → WATCH*** *forces a watch, so night can be checked at noon.*
+- ***Reading is not keeping*** (4.2, T-267): **in a battle, L reads the whole entry of the daemon in front of you, bound or not; the INDEX still shows ????? until you bind it.**
+- ***The terminal never repeats itself, and reads the clock*** (T-264, T-265): *HELP and TUNE draw from every answer but the last; TIME shows CLOCK and the date, DRAFT. The game only reads the clock.*
+- ***The STREAM's badge says STREAM again*** (T-266): *T-209's recolour had put its letters and its cloud on the same grey.*
+
+---
+
 ## v11.283 — 2026-09-24
 
 ### An audit of what was adopted and never built
