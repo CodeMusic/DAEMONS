@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.286 — 2026-09-25
+
+### The week
+
+- ***The day, named, heard and coloured*** (9.21, T-269, T-273–T-275): **out of a door the name popup slides in again with *F · WEDNESDAY · NIGHT*** *(DRAFT)*; **TUNE at the terminal sounds the day's note first**; **the CHECKPOINT rotunda's trim takes the day's colour**, *the user's rainbow bent where it met a type hue (`tools/gbadaytrim.py`).* ***DEBUG → TIME*** *sets the watch and the weekday.* *The weekday comes from the clock's register, or one day per hour of play.*
+
+---
+
 ## v11.285 — 2026-09-25
 
 ### The Programmer's Guide to the Human Mind, found

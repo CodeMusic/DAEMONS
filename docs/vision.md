@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.285**
+**A total conversion — the living design bible, v11.286**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8377,7 +8377,19 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 - ***Which routes — three or four, as proposed, the user's choice***: **Route 1**, *where a player can first notice anything*, **and 8, 10 and 12, the three roads into HALFTONE** — *10 is "Gloaming" in the chapter table, dusk approaching the tower.* ***The rule a player can learn by walking: the day's bird sleeps.*** **PACKET's slots go to what runs in the dark — DANGLING, and on 12 RESPAWN — at the slot's own level and odds**, *so a route is exactly as hard at night.* **Water and rock are as by day.** *Both editions change the same way, so Tier 2 is untouched.*
 - ***OPAQUE is not out at night yet.*** **No OPAQUE daemon is in the first 151**, *and one beyond them would arrive before the national INDEX can hold it* — **so the night is LATENT's until the GLOBAL INDEX question is settled.**
 - ***Still never stated.*** *No line says the route changes; the TIME code at the bedroom terminal shows the clock and says nothing about what it is for.*
-- ***Still open***: **the seasons**, *and whether the day should be named where the player can see it — the user asked, 2026-09-25, for the weekday and the watch to appear on leaving a building (T-269).*
+- ***Still open***: **the seasons.**
+
+#### The week — decided by the user 2026-09-25, and built (T-269, T-273–T-275)
+
+***The clock also knows the weekday*** — *the S-3511's own register, or, without a clock, one day per hour of play* — **and the user gave the seven days their own seven: the rainbow in order and the notes C to B, Sunday first, which is also the Guide's order (4.36, Chapters 8–9).** ***Each is carried by exactly one thing, and none of them is named:***
+
+| | where | why there |
+|---|---|---|
+| **the name** | **on leaving a building, the popup that names the town slides in again: *F · WEDNESDAY · NIGHT*** | *where a player notices the time* — **ink and paper, the popup's own; no colour in it (9.4)** |
+| **the note** | **TUNE at the bedroom terminal sounds it before its song** | ***sound has no 9.4 problem***; *the banner's mark is the same letter* |
+| **the colour** | **the CHECKPOINT rotunda's trim** — *the band round the dome, its courses, the canopy over the door* | ***one building, seen every day, and a trim rather than a sign*** — **each colour 22+ from every type hue**, *so the rainbow bends where it must: Monday's orange away from GROUND, Tuesday's yellow from STEEL, Thursday's blue from DRAGON* |
+
+***DEBUG's TIME row sets both the watch and the weekday*** *(A and LEFT/RIGHT), and relights the map at once.* **Still never stated** — *what a day's colour or note means is the Guide's to suggest and the player's to notice (0.4).*
 
 ### 9.22 Blanche's buildings, and the one warm note — *decided 2026-09-14, not drawn*
 
