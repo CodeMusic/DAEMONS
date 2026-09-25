@@ -183,7 +183,13 @@ def check_tickets():
     for n in sorted(set(nums)):
         if nums.count(n) > 1:
             bad.append(("T-%02d" % n, "%d rows share it -- ids are permanent" % nums.count(n)))
-    missing = [n for n in range(1, max(nums) + 1) if n not in nums]
+    #  A RESERVED BLOCK IS NOT A GAP (2026-09-25). Two sessions working at once cannot both take "the next id", so
+    #  one takes a block further up and the preamble says so in one line -- "Reserved: T-267 to T-299, <why>" --
+    #  and those ids may stand empty until the session that holds them writes its rows. A duplicate is still a fault.
+    reserved = set()
+    for lo, hi in re.findall(r"Reserved:\s*\*{0,2}T-(\d+)\*{0,2}\s+to\s+\*{0,2}T-(\d+)", doc[:cut] if cut > 0 else ""):
+        reserved.update(range(int(lo), int(hi) + 1))
+    missing = [n for n in range(1, max(nums) + 1) if n not in nums and n not in reserved]
     if missing:
         bad.append(("TODO.md", "no row for %s -- a finished ticket is struck through, "
                     "never deleted" % ", ".join("T-%02d" % n for n in missing)))
