@@ -25,9 +25,9 @@ python3 tools/gbabudget.py --write   # and update the tables below
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 255.3 KB | **748 B** | 99.71% |
 | **IWRAM** | 32.0 KB | 29.1 KB | **2.9 KB** | 91.02% |
-| **ROM** | 32.0 MB | 14.7 MB | **17.3 MB** | 45.82% |
+| **ROM** | 16.0 MB | 9.2 MB | **6.8 MB** | 57.47% |
 
-***The ROM is a 16.0 MB file, and the high-water mark above overstates it.*** **Its sections add up to 9.2 MB; 6.8 MB is free.** *`gfx_data` is pinned where retail keeps it, so what comes before it grows into a 5.5 MB gap below it, and it grows into the 1.3 MB after it. The GBA addresses 32 MB, so the file itself could grow.*
+***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 6.8 MB free is in two places: what comes before it grows into a 5.5 MB gap below it, and it grows into the 1.3 MB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
 *The debug ROM costs a further **48 bytes** of EWRAM and **64** of IWRAM.*
 
@@ -79,7 +79,7 @@ The biggest tenants after it:
 
 | you write | it lands in | notes |
 |---|---|---|
-| `EWRAM_DATA int x;` | **EWRAM** | the scarce one — about a kilobyte free |
+| `EWRAM_DATA int x;` | **EWRAM** | the scarce one — under 800 bytes free (the table above has today's figure) |
 | `static int x;` (uninitialised) | **IWRAM**, as `COMMON` | the *other* scarce one — about three kilobytes free |
 | `static int x = 7;` | **`.data`, which the link script DISCARDS** | ***does not link.*** See trap 2 |
 | `const struct Thing x[] = {...}` | **ROM** | free, effectively. Sixteen megabytes spare |

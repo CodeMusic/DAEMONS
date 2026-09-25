@@ -244,18 +244,22 @@ def main():
     out.append("| | size | used | free | %age |")
     out.append("|---|---|---|---|---|")
     rel = memory("daemonsContent.map")
+    lay = rom_layout("daemonsContent.map")
     for name, size in REGIONS:
         used = rel.get(name, 0)
+        if name == "ROM" and lay:
+            # the ROM's row is the FILE and its contents, not the address space and the high-water mark -- one table
+            # and the paragraph under it gave two answers (14.7 MB used of 32, and 9.2 of 16) until 2026-09-25
+            size, used = ROM_FILE, lay[0]
         out.append("| **%s** | %s | %s | **%s** | %.2f%% |"
                    % (name, kb(size), kb(used), kb(size - used), 100.0 * used / size))
     out.append("")
-    lay = rom_layout("daemonsContent.map")
     if lay:
         contents, gap, gap_at, tail = lay
-        out.append("***The ROM is a %s file, and the high-water mark above overstates it.*** **Its sections add up to %s; "
-                   "%s is free.** *`%s` is pinned where retail keeps it, so what comes before it grows into a %s gap "
-                   "below it, and it grows into the %s after it. The GBA addresses 32 MB, so the file itself could grow.*"
-                   % (kb(ROM_FILE), kb(contents), kb(gap + tail), gap_at, kb(gap), kb(tail)))
+        out.append("***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`%s` is "
+                   "pinned where retail keeps it, so the %s free is in two places: what comes before it grows into a "
+                   "%s gap below it, and it grows into the %s after it. The GBA addresses 32 MB, so the file itself "
+                   "could grow.*" % (gap_at, kb(gap + tail), kb(gap), kb(tail)))
         out.append("")
     dbg = memory("daemonsContent_debug.map")
     if dbg:
@@ -322,9 +326,9 @@ def main():
     out.append(END)
     body = "\n".join(out)
 
-    print("  EWRAM %d / %d, IWRAM %d / %d, ROM %.1f MB"
+    print("  EWRAM %d / %d, IWRAM %d / %d, ROM %.1f MB of %.0f"
           % (rel.get("EWRAM", 0), 256 * 1024, rel.get("IWRAM", 0), 32 * 1024,
-             rel.get("ROM", 0) / 1048576.0))
+             (lay[0] if lay else rel.get("ROM", 0)) / 1048576.0, ROM_FILE / 1048576.0))
     print("  %d name budgets, %d panes" % (len(NAME_TABLES), len(PANES)))
 
     if "--write" in sys.argv:
