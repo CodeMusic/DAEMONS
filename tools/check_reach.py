@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Can the player reach every person, sign and item we put in the world? (found 2026-09-25)
+"""Can the player reach every person, sign and item we put in the world -- through doors that lead somewhere, past
+flags something sets? (found 2026-09-25)
 
     python3 tools/check_reach.py          # report; exits 1 if anything we changed made something unreachable
 
@@ -88,18 +89,86 @@ def audit(root):
     return out
 
 
+def doors(root):
+    """Every warp that leads nowhere, to a warp its map does not have, or somewhere that does not lead back."""
+    maps = {}
+    for d in os.listdir(os.path.join(root, "data/maps")):
+        p = os.path.join(root, "data/maps", d, "map.json")
+        if os.path.exists(p):
+            m = json.load(open(p))
+            maps[m["id"]] = (d, m)
+    out = set()
+    for mid, (d, m) in maps.items():
+        for i, w in enumerate(m.get("warp_events") or []):
+            dm, dw = w["dest_map"], str(w["dest_warp_id"])
+            if dm in ("MAP_DYNAMIC", "MAP_UNDEFINED") or dw in ("127", "WARP_ID_DYNAMIC", "0x7F"):
+                continue
+            if dm not in maps:
+                out.add((d, i, "leads to no map " + dm))
+                continue
+            there = maps[dm][1].get("warp_events") or []
+            k = int(dw, 0) if re.match(r"^(0x)?\d+$", dw) else -1
+            if not 0 <= k < len(there):
+                out.add((d, i, "%s has no warp %s" % (maps[dm][0], dw)))
+            elif there[k]["dest_map"] not in (mid, "MAP_DYNAMIC"):
+                out.add((d, i, "one way: %s#%d leads on to %s" % (maps[dm][0], k, there[k]["dest_map"])))
+    return out
+
+
+#  Flags the story waits on that nothing outside the DEBUG build sets -- each one a ticket, or a bug.
+KNOWN_UNSET = {"FLAG_ARTSAI_PAGE": "T-235: the Five Witnesses' reward waits on the TRANSCRIPT's words"}
+
+
+def unset_flags(root):
+    """Flags a script or the C tests and nothing in normal play ever sets. The DEBUG kit and JUMP are left out on
+    purpose: they are what hid T-284 for fifteen days."""
+    reads, sets = set(), set()
+    for dp, _, fs in os.walk(os.path.join(root, "data")):
+        for f in fs:
+            if f.endswith(".inc") and "debug" not in f.lower():
+                t = re.sub(r"\.if\s+DAEMONS_DEBUG.*?\.endif", "", open(os.path.join(dp, f), errors="ignore").read(), flags=re.S)
+                reads |= set(re.findall(r"^\s*(?:goto|call)_if_(?:un)?set\s+(FLAG_\w+)", t, re.M))
+                reads |= set(re.findall(r"^\s*checkflag\s+(FLAG_\w+)", t, re.M))
+                sets |= set(re.findall(r"^\s*setflag\s+(FLAG_\w+)", t, re.M))
+    for dp, _, fs in os.walk(os.path.join(root, "src")):
+        for f in fs:
+            if f.endswith((".c", ".h")):
+                t = re.sub(r"#if(?:def)?\s+DAEMONS_DEBUG.*?#endif", "", open(os.path.join(dp, f), errors="ignore").read(), flags=re.S)
+                reads |= set(re.findall(r"FlagGet\((FLAG_\w+)\)", t))
+                sets |= set(re.findall(r"FlagSet\((FLAG_\w+)\)", t))
+    skip = ("FLAG_TEMP", "FLAG_HIDDEN_ITEM", "FLAG_DEFEATED", "FLAG_SYS_", "FLAG_BADGE", "FLAG_WORLD_MAP", "FLAG_ITEM_", "FLAG_TRAINER")
+    return {f for f in reads - sets if not f.startswith(skip)}
+
+
 def main():
-    ours, theirs = audit(GBA), audit(upstream())
+    up = upstream()
+    rc = 0
+    ours, theirs = audit(GBA), audit(up)
     worse = sorted(set(ours) - set(theirs))
     print("  %d things the walk cannot reach here, %d in vanilla (Surf, Cut, ledges -- it knows none of them)"
           % (len(ours), len(theirs)))
-    if not worse:
-        print("  nothing we changed made anything unreachable.")
-        return 0
-    print("  !! unreachable here and not in vanilla:")
-    for k in worse:
-        print("     %-36s %-11s (%d,%d)  %s" % (k[0], k[1], k[2], k[3], ours[k]))
-    return 1
+    if worse:
+        print("  !! unreachable here and not in vanilla:")
+        for k in worse:
+            print("     %-36s %-11s (%d,%d)  %s" % (k[0], k[1], k[2], k[3], ours[k]))
+        rc = 1
+    d_ours, d_theirs = doors(GBA), doors(up)
+    worse = sorted(d_ours - d_theirs)
+    print("  %d odd doors here, %d in vanilla" % (len(d_ours), len(d_theirs)))
+    for w in worse:
+        print("  !! %s warp %d: %s" % w)
+        rc = 1
+    f_ours, f_theirs = unset_flags(GBA), unset_flags(up)
+    worse = sorted(f_ours - f_theirs)
+    for f in worse:
+        if f in KNOWN_UNSET:
+            print("  known: %s is tested and never set -- %s" % (f, KNOWN_UNSET[f]))
+        else:
+            print("  !! %s is tested and nothing outside the DEBUG build sets it" % f)
+            rc = 1
+    if not rc:
+        print("  nothing we changed made anything unreachable, any door lead nowhere, or any flag wait forever.")
+    return rc
 
 
 if __name__ == "__main__":
