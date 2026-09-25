@@ -4769,8 +4769,9 @@ shape and lose their names; the reading list keeps its subjects and loses its au
 ***It is the TEXTBOOK's reader, in its own colours*** (`src/book_reader.c`, *a third book*): **its COVER first** — *the
 cover itself, the brain cropped from the PDF's own image and reduced to the book's sixteen colours, the lettering set
 in the game's font with HUMAN MIND doubled* — **then CONTENTS**, *the sections on the left page and the chapters of the
-one under the cursor on the right,* **then the chapter**, *its full title at the head and the text across the spread,
-spread after spread.* ***Its one hue is measured*** (9.4): *the cover's own cyan is 22.7 from SIGNAL, so the Guide's is
+one under the cursor on the right,* **then the chapter, on ONE WIDE PAGE** *(the user's call, 2026-09-25: a spread
+held three words a line) — its full title across the head, the text page after page, each paragraph after the first
+indented.* ***Its one hue is measured*** (9.4): *the cover's own cyan is 22.7 from SIGNAL, so the Guide's is
 (0,200,255), 29.6 from the nearest type.*
 
 #### What it is not

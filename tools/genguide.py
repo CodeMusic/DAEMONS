@@ -27,12 +27,14 @@ OUT_COVER = os.path.join(GBA, "graphics/book/guide_cover.png")
 WRITE = "--write" in sys.argv
 
 # ---------------------------------------------------------------- the page, as book_reader.c draws it
-PAGE_TEXT_W = 94            # TB_TEXT_W: the text column on either page
-LEFT_LINES, RIGHT_LINES = 7, 9
-MAX_LINES = 96              # GB_MAX_LINES in the reader
+#  CONTENTS is a spread (sections left, chapters right); a chapter is read on ONE WIDE PAGE (the user, 2026-09-25).
+PAGE_TEXT_W = 204           # GP_TEXT_W: the reading page's text column
+COLUMN_W = 94               # TB_TEXT_W: either page of the contents spread
+FIRST_LINES, PAGE_LINES = 8, 10
+MAX_LINES = 96              # BR_MAX_LINES in the reader
 SHORT_W = 100               # a contents entry on the right page
 LABEL_W = 86                # a section on the left page
-TITLE_LINES = 4             # the full title, FONT_SMALL, over at most four lines at the head of the left page
+TITLE_LINES = 2             # the full title, FONT_SMALL, across the head of the reading page
 
 # ---------------------------------------------------------------- the four rules (docs/guide.md, vision.md 4.36)
 #  1: about people -- nothing of the game's own vocabulary, and no colour beside a feeling
@@ -129,18 +131,19 @@ def width(s, small=False):
 
 
 def reflow(text, w, small=False):
-    """book_reader.c's Reflow: words wrapped to W; a paragraph starts a new line."""
+    """book_reader.c's Reflow: words wrapped to W; a paragraph starts a new line, and on the Guide's page every
+    paragraph after the first opens indented by three spaces."""
     lines = []
-    for para in text.split("\n\n"):
-        line = ""
+    for k, para in enumerate(text.split("\n\n")):
+        line = "   " if k else ""
         for word in para.split():
-            cand = word if not line else line + " " + word
-            if line and width(cand, small) > w:
+            cand = line + word if line.strip() == "" else line + " " + word
+            if line.strip() and width(cand, small) > w:
                 lines.append(line)
                 line = word
             else:
                 line = cand
-        if line:
+        if line.strip():
             lines.append(line)
     return lines
 
@@ -188,7 +191,7 @@ def c_string(s):
 def check_text(sections):
     bad = []
     for s in sections:
-        if len(reflow(s["heading"], PAGE_TEXT_W, small=True)) > 2:
+        if len(reflow(s["heading"], COLUMN_W, small=True)) > 2:
             bad.append("section %s: its heading takes more than the right page's two small lines" % s["label"])
         if width(s["label"]) > LABEL_W:
             bad.append("section %s: %dpx, the left page takes %d" % (s["label"], width(s["label"]), LABEL_W))
@@ -214,8 +217,9 @@ def check_text(sections):
 
 
 def spreads(e):
+    """Pages, as the reader counts them: the first under the title, then full ones."""
     n = len(reflow(e["text"], PAGE_TEXT_W))
-    return max(1, -(-n // (LEFT_LINES + RIGHT_LINES)))
+    return 1 + max(0, -(-(n - FIRST_LINES) // PAGE_LINES))
 
 
 def header(sections):
