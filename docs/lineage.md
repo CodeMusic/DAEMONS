@@ -300,8 +300,8 @@ found:*
 ### 3c.2 What is new, and where it went
 
 **The seven-day system** (*Chapters 8–9: each day a centre, a colour, a virtue and the sin it guards against*) **is the
-day-of-week banner's table (T-305)**, *and it arrived the same morning the user asked for the banner.* **The case
-studies are T-310.** ***Chapter 1's four regions are the brain T-307 proposes for the USER card.***
+day-of-week banner's table (T-269)**, *and it arrived the same morning the user asked for the banner.* **The case
+studies are T-310.** ***Chapter 1's four regions are the brain T-271 proposes for the USER card.***
 
 ### 3c.3 What is deliberately not mined
 

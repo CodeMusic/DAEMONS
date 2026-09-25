@@ -4752,7 +4752,7 @@ held** — *checked word by word by `tools/genguide.py`, which refuses to write 
 ***Two further cuts, made writing it.*** **Chapter 8 listed the seven centres' colours, and Chapter 9 ties the same
 seven days to wrath and envy** — *read together, that is a colour standing beside a feeling in the game's own
 voice, which is craft rule 1's one absolute.* **The Guide names the centres and the days without their colours**, *and
-whether they come back is T-305's question.* ***And the glossary's "proto-consciousness"*** — *awareness in any system
+whether they come back is T-269's question.* ***And the glossary's "proto-consciousness"*** — *awareness in any system
 that takes in and answers* — **is cut, because it asserts the machine half.**
 
 ***The closest it comes, on purpose, and the user's to rule on***: **INTEGRATION** — *"Thought works through the
@@ -4784,9 +4784,9 @@ margin** — ***THE MARGINS only*, taken literally**, *and shown without being c
 | | | |
 |---|---|---|
 | **T-304** | **understandings written into its margins** | *the book and T-252 joined* |
-| **T-305** | **its seven-day table under the day-of-week banner** | *but MONDAY's orange is 17.3 from ENTROPY, SUNDAY's red 20.7 from VECTOR* |
-| **T-307** | **Chapter 1's four regions as the brain on the USER card** | *if the card may show what is still grey — a count* |
-| **T-308** | **the USER card's BENCHMARKS and UNDERSTANDINGS tabs** | *BENCHMARKS is ready; UNDERSTANDINGS meets T-252 twice* |
+| **T-269** | **its seven-day table under the day-of-week banner** (*T-305, merged*) | *but MONDAY's orange is 17.3 from ENTROPY, SUNDAY's red 20.7 from VECTOR* |
+| **T-271** | **Chapter 1's four regions as the brain on the USER card** (*T-307, merged*) | *if the card may show what is still grey — a count* |
+| **T-272** | **the USER card's BENCHMARKS and UNDERSTANDINGS tabs** (*T-308, merged*) | *BENCHMARKS is ready; UNDERSTANDINGS meets T-252 twice* |
 | **T-309** | **a DREAM SIGN in the unread cave** | *Chapter 17's reality check: text that will not read the same twice* |
 | **T-310** | **the five case studies as islanders** | *0.6: the islands are full of people the mainland's measurement threw out* |
 | **T-311** | **the REVIEW BOARD's copy, its ethics cut out** | *the Guide's conclusion is a list of what the Board's doctrine runs against* |
