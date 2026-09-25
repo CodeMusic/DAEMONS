@@ -94,6 +94,34 @@ def memory(mapname):
     return out
 
 
+ROM_FILE = 16 * 1024 * 1024       # the Makefile's --pad-to 0x9000000: the cartridge image is 16 MB
+
+
+def rom_layout(mapname):
+    """(contents, gap, gap_at, tail): the ROM's own sections added up, and the two stretches of it that are empty.
+
+    THE HIGH-WATER MARK OVERSTATES THE ROM (found 2026-09-25, weighing T-18). The graphics block is pinned at
+    0x08D00000, where retail FireRed keeps it -- so everything before it (code, scripts, text, .rodata, songs)
+    grows into a GAP below that address, and the graphics into the TAIL above them. The mark counted the gap as
+    used: "1.3 MB left" was the tail alone, when the file had several times that free."""
+    path = os.path.join(GBA, mapname)
+    if not os.path.exists(path):
+        return None
+    secs = []
+    for l in open(path, errors="ignore"):
+        m = re.match(r'^(\S+)\s+0x(08[0-9a-f]{6})\s+0x([0-9a-f]+)', l)
+        if m and int(m.group(3), 16) and m.group(1) != "ROM":     # the memory map's own ROM line is the region
+            secs.append((int(m.group(2), 16), int(m.group(3), 16), m.group(1)))
+    secs.sort()
+    contents = sum(size for _, size, _ in secs)
+    gap, gap_at = 0, None
+    for (a, sa, _), (b, _, name) in zip(secs, secs[1:]):
+        if b - (a + sa) > gap:
+            gap, gap_at = b - (a + sa), name
+    end = max(a + s_ for a, s_, _ in secs) - 0x08000000
+    return contents, gap, gap_at, ROM_FILE - end
+
+
 def tenants(mapname, section, limit=6):
     """The biggest single contributors, so the answer to 'what is in there'
     is a list of files rather than a shrug."""
@@ -221,6 +249,14 @@ def main():
         out.append("| **%s** | %s | %s | **%s** | %.2f%% |"
                    % (name, kb(size), kb(used), kb(size - used), 100.0 * used / size))
     out.append("")
+    lay = rom_layout("daemonsContent.map")
+    if lay:
+        contents, gap, gap_at, tail = lay
+        out.append("***The ROM is a %s file, and the high-water mark above overstates it.*** **Its sections add up to %s; "
+                   "%s is free.** *`%s` is pinned where retail keeps it, so what comes before it grows into a %s gap "
+                   "below it, and it grows into the %s after it. The GBA addresses 32 MB, so the file itself could grow.*"
+                   % (kb(ROM_FILE), kb(contents), kb(gap + tail), gap_at, kb(gap), kb(tail)))
+        out.append("")
     dbg = memory("daemonsContent_debug.map")
     if dbg:
         out.append("*The debug ROM costs a further **%d bytes** of EWRAM and **%d** of IWRAM.*"
