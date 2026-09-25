@@ -394,7 +394,7 @@ screenshot of it beside the source line settles it in a minute.***
 
 ### 32. A generator whose output other tools have since changed
 
-***Symptom (2026-09-25, T-270):*** *two jobs were added to `tools/gbachar.py` for the player's card pictures, and `gbachar.py --write` rewrote 78 other trainer pictures and palettes as well.* **The committed art is `gbachar`'s cut plus what later passes did to it**, *so re-cutting everything quietly undoes those passes — and `check_generators` cannot see it, because `gbachar`'s report mode lists its jobs rather than comparing them with the disk.* ***Name the jobs*** (`gbachar.py logic_card intuition_card --write`), ***and read `git status` in the engine before committing anything a generator wrote.***
+***Symptom (2026-09-25, T-270):*** *two jobs were added to `tools/gbachar.py` for the player's card pictures, and `gbachar.py --write` rewrote 78 other trainer pictures and palettes as well.* **The committed art is `gbachar`'s cut plus what later passes did to it**, *so re-cutting everything quietly undoes those passes — and `check_generators` cannot see it, because `gbachar`'s report mode lists its jobs rather than comparing them with the disk.* ***Name the jobs*** (`gbachar.py logic_card intuition_card --write`), ***and read `git status` in the engine before committing anything a generator wrote.*** **It happened again the same day with `port_dialogue.py`** *(T-289): a whole-tree `--write` to restore two lost numbers rewrote 158 files and reverted 89 files of writing done since. Its `--write` now refuses unless the Gen 1 files are named — and a fix to what a generator once wrote goes onto today's text, by hand if need be, not through a re-run.*
 
 ### 33. A person placed on the only way in
 

@@ -31,6 +31,11 @@ MIN = 0.48
 if "--min" in sys.argv:
     MIN = float(sys.argv[sys.argv.index("--min") + 1])
 ONLY = [a for a in sys.argv[1:] if not a.startswith("-") and not re.match(r'^[\d.]+$', a)]
+if WRITE and not ONLY:
+    #  engine.md trap 32, a second time (2026-09-25): later passes -- port_vocab, port_oak, and a great deal of
+    #  writing done in the GBA files directly -- have been layered on this tool's output, so re-writing EVERYTHING
+    #  reverts 89 files of that work. Name the Gen 1 text files to carry (e.g. pokedex_ratings ChampionsRoom).
+    raise SystemExit("  refused: --write re-writes all 158 files it owns and undoes later passes; name the files")
 BUDGET = 196
 MARGIN = 0.04   # the winner must beat the runner-up by this much
 SURE   = 0.85   # ...unless it is this good, when a tie is between twins
@@ -153,6 +158,12 @@ def detok(s):
     return s.replace("@", "")
 
 GB_LINE = re.compile(r'^\s*(text|line|cont|para|next|done|prompt|text_end|para_line|db)\b(.*)$')
+#  A VALUE the game fills in -- a name from a buffer, a count. Gen 1 writes it as its own command between two text
+#  lines; Gen 3 writes {STR_VAR_n} inside the string. This parser used to skip the command, so every value was lost
+#  and the INDEX rating said "DAEMON seen DAEMON owned" with no numbers (found playing it, 2026-09-25). It is kept
+#  as VALUE and given back vanilla Gen 3's own placeholder for it, in order (fill_values).
+GB_VALUE = re.compile(r'^\s*(text_ram|text_decimal|text_bcd)\b')
+VALUE = "\x01"
 GB_LABEL = re.compile(r'^_?(\w+)::')
 
 def gb_blocks(source):
@@ -167,6 +178,9 @@ def gb_blocks(source):
         m = GB_LABEL.match(raw)
         if m:
             flush(); label, pages, cur = m.group(1), [], []
+            continue
+        if label is not None and GB_VALUE.match(raw):
+            cur.append(VALUE)
             continue
         m = GB_LINE.match(raw)
         if not m or label is None:
@@ -410,6 +424,43 @@ def vocabulary_only(vanilla_pages, our_pages):
     a, b = flat(VOCAB.convert(OAK.rename(van))), flat(our)
     return a == b or difflib.SequenceMatcher(None, a, b, autojunk=False).ratio() > 0.97
 
+GBA_VALUE = re.compile(r'\{(STR_VAR_\d|B_BUFF\d)\}')
+#  Sound that vanilla plays AT THE END of a line -- a gym leader's encounter music, a badge's fanfare. It is a
+#  control code, not writing, so a line we rewrote lost it with the words: three gyms' intros started their music
+#  late, and VIRIDIAN's mark came with no fanfare (found 2026-09-25). It goes back on the end of ours.
+SOUND_TAIL = re.compile(r'((?:\{(?:PLAY_BGM|PLAY_SE|PAUSE_MUSIC|RESUME_MUSIC|PAUSE [^}]*|MUS_\w+|SE_\w+|WAIT_SE)\})+)\$$')
+#  Slips in the Game Boy text, which is a frozen reference and is not edited any more (CLAUDE.md).
+GB_SLIPS = [("that DAEMONS live", "that DAEMON live")]   # vanilla: "that #MON live again"
+RAW = {}   # (path, label) -> vanilla Gen 3 body, for its placeholders and its sound
+
+def finish(pages, path, glbl, shaped):
+    """Our pages, with vanilla's placeholders where Gen 1 had values, shaped, and vanilla's closing sound kept."""
+    van = RAW.get((path, glbl), "")
+    fills = [m.group(0) for m in GBA_VALUE.finditer(van)]
+    out = []
+    for page in pages:
+        #  Gen 1 prints a value where the cursor is and the next `text` carries on the same line (" #MON seen"), so
+        #  a value is glued to the words after it -- with no space before punctuation ("CODEMUSAI!").
+        lines, pending = [], None
+        for line in page:
+            for a, b in GB_SLIPS:
+                line = line.replace(a, b)
+            if line == VALUE:
+                pending = (pending + " " if pending else "") + (fills.pop(0) if fills else "")
+                continue
+            if pending is not None and line.strip():
+                line = pending + ("" if line[:1] in "!,.?;:'" else " ") + line
+                pending = None
+            lines.append(line)
+        if pending:
+            lines.append(pending)
+        out.append(lines)
+    body = shaped(out, BUDGET)
+    tail = SOUND_TAIL.search(van)
+    if tail and tail.group(1) not in body:
+        body = body[:-1] + tail.group(1) + "$" if body.endswith("$") else body + tail.group(1)
+    return body
+
 gb_files = subprocess.run(["git", "-C", GB, "diff", "--name-only", "upstream/master", "--", "text/"],
                           capture_output=True, text=True).stdout.split()
 matched, unmatched, nomap, vocab_only, handled, edits = [], [], [], [], [], {}
@@ -432,6 +483,7 @@ for rel in gb_files:
         p = d if d.endswith(".inc") else "data/maps/%s/text.inc" % d
         for lbl, body in gba_blocks(show(GBA, p)).items():
             pool.append((p, lbl, flat(body)))
+            RAW[(p, lbl)] = body
     for lbl, pages in changed.items():
         if (name, lbl) in HANDLED:
             handled.append((name, lbl)); continue
@@ -439,7 +491,10 @@ for rel in gb_files:
         if hand:
             matched.append((name, lbl, hand[0], hand[1], 1.0))
             shaped = keep_shape if panel(lbl, pages) else rewrap
-            edits.setdefault(hand[0], {})[hand[1]] = shaped(pages, BUDGET)
+            hp = hand[0] if hand[0].endswith(".inc") else "data/maps/%s/text.inc" % hand[0]
+            if (hp, hand[1]) not in RAW:
+                RAW.update({(hp, l): b for l, b in gba_blocks(show(GBA, hp)).items()})
+            edits.setdefault(hand[0], {})[hand[1]] = finish(pages, hp, hand[1], shaped)
             continue
         want = flat(' '.join(' '.join(pg) for pg in base.get(lbl, [])))
         if not want:
@@ -459,7 +514,7 @@ for rel in gb_files:
         if best and score >= MIN and (score - second >= MARGIN or score >= SURE):
             matched.append((name, lbl, best[0], best[1], score))
             shaped = keep_shape if panel(lbl, pages) else rewrap
-            edits.setdefault(best[0], {})[best[1]] = shaped(pages, BUDGET)
+            edits.setdefault(best[0], {})[best[1]] = finish(pages, best[0], best[1], shaped)
         elif vocabulary_only(base.get(lbl, []), pages):
             vocab_only.append((name, lbl))
         else:

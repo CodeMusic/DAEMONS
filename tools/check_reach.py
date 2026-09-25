@@ -140,9 +140,51 @@ def unset_flags(root):
     return {f for f in reads - sets if not f.startswith(skip)}
 
 
+def text_blocks(root):
+    """{label: its strings joined}, for every text label in data/."""
+    out = {}
+    for dp, _, fs in os.walk(os.path.join(root, "data")):
+        for f in fs:
+            if f.endswith(".inc"):
+                cur = None
+                for line in open(os.path.join(dp, f), errors="ignore"):
+                    m = re.match(r"^(\w+)::", line)
+                    if m:
+                        cur = m.group(1)
+                        out.setdefault(cur, "")
+                        continue
+                    m = re.match(r'^\s*\.string\s+"(.*)"', line)
+                    if m and cur:
+                        out[cur] += m.group(1)
+                    elif line.strip() and not line.strip().startswith("@"):
+                        cur = None
+    return out
+
+
+#  What a line FILLS IN (a name from a buffer, a count) and what it PLAYS (a leader's music, a mark's fanfare). A
+#  rewrite may drop the player's or rival's name on purpose; it may not drop a value the game computes, or the sound.
+KEPT = re.compile(r"\{(STR_VAR_\d|B_BUFF\d|MUS_\w+|SE_\w+)\}")
+
+
+def lost_values(ours, theirs):
+    """Lines that print a value or play a sound in vanilla and no longer do -- the INDEX rating said "DAEMON seen
+    DAEMON owned" with no numbers for three weeks (port_dialogue.py dropped Gen 1's text_decimal; 2026-09-25)."""
+    out = []
+    for k, v in theirs.items():
+        if k in ours and v:
+            want, have = KEPT.findall(v), KEPT.findall(ours[k])
+            lost = sorted({x for x in want if want.count(x) > have.count(x)})
+            if lost:
+                out.append((k, lost))
+    return sorted(out)
+
+
 def main():
     up = upstream()
     rc = 0
+    for k, lost in lost_values(text_blocks(GBA), text_blocks(up)):
+        print("  !! %s no longer has %s" % (k, ", ".join("{%s}" % x for x in lost)))
+        rc = 1
     ours, theirs = audit(GBA), audit(up)
     worse = sorted(set(ours) - set(theirs))
     print("  %d things the walk cannot reach here, %d in vanilla (Surf, Cut, ledges -- it knows none of them)"
@@ -167,7 +209,8 @@ def main():
             print("  !! %s is tested and nothing outside the DEBUG build sets it" % f)
             rc = 1
     if not rc:
-        print("  nothing we changed made anything unreachable, any door lead nowhere, or any flag wait forever.")
+        print("  nothing we changed made anything unreachable, any door lead nowhere, any flag wait forever, or any line lose\n"
+              "  a value or a sound vanilla had.")
     return rc
 
 

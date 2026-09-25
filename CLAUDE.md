@@ -114,7 +114,7 @@ python3 tools/port_index.py --write       # Index categories and entries
 python3 tools/port_item_text.py --write   # item descriptions (new writing)
 python3 tools/port_oak.py --write         # OAK -> CRYSTAL CLEAR, and her pronouns
 python3 tools/port_vocab.py --write       # POKéMON -> DAEMON, and the rest of it
-python3 tools/port_dialogue.py --write    # our WRITING, matched vanilla to vanilla
+python3 tools/port_dialogue.py --write FILE  # our WRITING, matched vanilla to vanilla -- name the file (trap 32)
 python3 tools/gbasprite.py --write        # 66 sprites, coloured by type
 python3 tools/gbamarks.py --write         # the eight MARKS onto the trainer card
 python3 tools/port_music.py --write       # our tracks, re-emitted as MIDI
@@ -152,7 +152,8 @@ working, and nothing else will tell you (T-212, T-213).
 
 **Run `python3 tools/check_reach.py` after moving or adding anyone on a map.** It walks every map from where a
 player arrives and fails on anything we made unreachable that vanilla could reach, any door that leads nowhere,
-or any flag the story waits on that nothing outside the DEBUG build sets (engine.md trap 33) — a man
+any flag the story waits on that nothing outside the DEBUG build sets, or any line that lost a value or a
+sound vanilla had (engine.md trap 33) — a man
 standing in the only doorway hid the game's ending for fifteen days and every other check passed.
 
 **`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its
