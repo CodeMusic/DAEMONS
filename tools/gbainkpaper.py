@@ -25,6 +25,14 @@ WRITE = "--write" in sys.argv
 PNGS = [("graphics/item_menu/bg.png", 16), ("graphics/teachy_tv/tiles.png", 64)]   # the STREAM loads four rows of it
 PALS = ["graphics/item_menu/bg_female.pal"]
 
+#  THE BADGE (the user, 2026-09-25: "the intro showed a logo, but I didn't see it say STREAM"). Row 2 of the STREAM's
+#  palette is the title badge's alone (screen.bin's row-2 cells are all transparent), and mapping it by lightness put
+#  the cloud, the letters and their shadow on the SAME grey -- the word was there and could not be seen. So the badge
+#  is mapped by what each index draws, not how light it is: a paper card on the black ground, the letters in ink with
+#  the brass accent as their shadow, the play mark in ink and the wave in brass.
+BADGE_ROW = 2
+BADGE = {1: 4, 2: 7, 3: 7, 4: 6, 5: 0, 6: 1, 7: "b", 8: 5, 9: 0, 10: 4, 11: "b", 12: 4, 13: 5}   # index -> RAMP step, "b" brass
+
 RAMP = [(30, 27, 29), (58, 52, 50), (96, 88, 82), (150, 140, 128), (200, 188, 164), (226, 216, 194), (246, 238, 218), (252, 248, 236)]
 BRASS = [(110, 82, 36), (150, 116, 54), (190, 150, 72), (222, 186, 112)]
 
@@ -62,6 +70,9 @@ def main():
         n = min(n, len(pal) // 3)
         cols = [tuple(pal[i:i + 3]) for i in range(0, 3 * n, 3)]
         new = [cols[i] if i % 16 == 0 else ink(cols[i]) for i in range(n)]
+        if rel.startswith("graphics/teachy_tv/"):
+            for i, role in BADGE.items():
+                new[16 * BADGE_ROW + i] = BRASS[2] if role == "b" else RAMP[role]
         if new != cols:
             changed.append(rel)
             if WRITE:
