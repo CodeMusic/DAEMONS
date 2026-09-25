@@ -53,7 +53,9 @@ DOCS = [
     ("RUN_LOGS_5",       ("silent", "CeruleanCave_B1F", "CeruleanCave_B1F_EventScript_CaughtStarr", "setflag FLAG_FOUGHT_MEWTWO")),
     ("RUN_LOGS_6",       ("silent", "CeruleanCave_B1F", "CeruleanCave_B1F_EventScript_Mewtwo", "clearflag FLAG_SYS_SPECIAL_WILD_BATTLE")),
     ("CORRESPONDENCE_1", None),
-    ("CORRESPONDENCE_2", ("furniture", "CeladonCity_Condominiums_3F", 0, 6)),
+    #  2: moved 2026-09-25 from the 3F's back wall (0,6), which the Designer's doorway seals off, to the same
+    #  building's roof-room bookshelf -- still VERDIGRIS, as school.md 10 asks.
+    ("CORRESPONDENCE_2", ("furniture", "CeladonCity_Condominiums_RoofRoom", 8, 2)),
     ("CORRESPONDENCE_3", ("furniture", "SilphCo_3F", 6, 13)),
     ("CORRESPONDENCE_4", ("furniture", "FiveIsland_RocketWarehouse", 25, 4)),
     ("CORRESPONDENCE_5", ("silent", "FiveIsland_RocketWarehouse", "FiveIsland_RocketWarehouse_EventScript_DefeatedGideon", "setflag FLAG_TY_GAVE_PAYLOAD")),
@@ -128,9 +130,57 @@ def check_spot(spot):
     for b in m.get("bg_events") or []:
         if (b["x"], b["y"]) == (x, y) and b.get("script") != ours:
             return "(%d,%d) already has %s" % (x, y, b.get("script"))
+    if any((o["x"], o["y"]) == (x, y) for o in m.get("object_events") or []):
+        return "(%d,%d) has an object on it, which is read before any sign there" % (x, y)
     if any((o["x"], o["y"]) == (x, y + 1) for o in m.get("object_events") or []):
         return "(%d,%d) has somebody standing in front of it" % (x, y)
+    if not reachable(name, m, W, H, cell, (x, y + 1)):
+        return "(%d,%d) cannot be reached from the map's doors -- walls, or somebody standing in the way" % (x, y)
     return None
+
+
+_SCRIPT_WARPS = None
+
+
+def script_warps(name):
+    """Where scripts put the player down on this map -- a grove has no door, only the warp its tree runs."""
+    global _SCRIPT_WARPS
+    if _SCRIPT_WARPS is None:
+        _SCRIPT_WARPS = {}
+        for dp, _, fs in os.walk(os.path.join(GBA, "data")):
+            for f in fs:
+                if f.endswith(".inc"):
+                    for w in re.finditer(r"^\s*warp\w*\s+(MAP_\w+),\s*(?:\d+,\s*)?(-?\d+),\s*(-?\d+)",
+                                         open(os.path.join(dp, f), errors="ignore").read(), re.M):
+                        _SCRIPT_WARPS.setdefault(w.group(1), set()).add((int(w.group(2)), int(w.group(3))))
+    mid = json.loads(load("data/maps/%s/map.json" % name))["id"]
+    return _SCRIPT_WARPS.get(mid, set())
+
+
+def reachable(name, m, W, H, cell, goal):
+    """Can a player walk to GOAL from where they arrive -- the map's warps, the warps scripts make into it, and its
+    edges if it joins another map? CHECK_SPOT's other tests look at one tile, and the CONDOMINIUMS 3F's back wall
+    passed them all: its only way in is a doorway the Designer stands in, so the spot reserved for CORRESPONDENCE 2
+    could never have been read (found placing FOLDS beside it, 2026-09-25). People who never leave block; people
+    who wander, or whom the story can remove (they have a flag), do not. tools/check_reach.py asks the same
+    question of every person, sign and item in the game."""
+    still = {(o["x"], o["y"]) for o in m.get("object_events") or []
+             if "WANDER" not in str(o.get("movement_type", "")) and str(o.get("flag", "0")) == "0"}
+    seen = {(w["x"], w["y"]) for w in m.get("warp_events") or []} | script_warps(name)
+    if m.get("connections"):
+        seen |= {(i, 0) for i in range(W)} | {(i, H - 1) for i in range(W)} | {(0, j) for j in range(H)} | {(W - 1, j) for j in range(H)}
+    seen = {c for c in seen if 0 <= c[0] < W and 0 <= c[1] < H and not (cell(*c) >> 10) & 3}
+    todo = list(seen)
+    while todo:
+        cx, cy = todo.pop()
+        if (cx, cy) == goal:
+            return True
+        for nx, ny in ((cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)):
+            if 0 <= nx < W and 0 <= ny < H and (nx, ny) not in seen and not (cell(nx, ny) >> 10) & 3 \
+                    and (nx, ny) not in still:
+                seen.add((nx, ny))
+                todo.append((nx, ny))
+    return False
 
 
 def charmap():
