@@ -151,7 +151,8 @@ anything. A generated file stays correct on disk long after the tool that wrote 
 working, and nothing else will tell you (T-212, T-213).
 
 **Run `python3 tools/check_reach.py` after moving or adding anyone on a map.** It walks every map from where a
-player arrives and fails on anything we made unreachable that vanilla could reach (engine.md trap 33) — a man
+player arrives and fails on anything we made unreachable that vanilla could reach, any door that leads nowhere,
+or any flag the story waits on that nothing outside the DEBUG build sets (engine.md trap 33) — a man
 standing in the only doorway hid the game's ending for fifteen days and every other check passed.
 
 **`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its
