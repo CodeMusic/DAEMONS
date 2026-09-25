@@ -18,7 +18,8 @@ seen out after dark. Both editions change the same way, so the edition split (Ti
 
 HOW. wild_encounter.c takes the header right after a map's own when it is night and that header is for the same map.
 So each night table is written immediately after its day table, per edition, labelled <day label>_Night (the label
-still contains FireRed or LeafGreen, which is what the template's #ifdef reads). The day tables are never edited:
+still contains FireRed or LeafGreen, which is what the template's #ifdef reads), and carries ALL of the day's tables:
+the one it chose is the only header the engine reads, for the grass, the water, the rods and Rock Smash alike. The day tables are never edited:
 this tool rebuilds every _Night header from its day one and the rule below, so re-running it changes nothing.
 """
 import copy, json, os, sys
@@ -42,8 +43,9 @@ DAY_BIRD = "SPECIES_PIDGEY"   # PACKET: where a slot is replaced because the bir
 def night_of(day):
     n = copy.deepcopy(day)
     n["base_label"] = day["base_label"] + "_Night"
-    for key in ("water_mons", "fishing_mons", "rock_smash_mons"):
-        n.pop(key, None)          # night changes the grass; water and rock are as by day
+    # Night changes the grass; the water, the rods and the rocks are as by day -- and they must be COPIED, not left
+    # out: the engine reads every table from the one header it chose, so a night header without water_mons meant no
+    # surfing encounters and "not even a nibble" on Routes 10 and 12 all night (found 2026-09-25).
     mons = n["land_mons"]["mons"]
     for slot, species in NIGHT[day["map"]].items():
         if day["map"] in ("MAP_ROUTE1", "MAP_ROUTE8", "MAP_ROUTE12"):
