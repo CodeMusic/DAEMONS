@@ -265,6 +265,53 @@ That is the Contextual Feedback Model, complete, filed under a syntax tutorial.
 
 ---
 
+## 3c. UNDATED — THE GUIDE, AND THE THESIS IN A SELF-HELP REGISTER
+
+*Numbered `3c` for the reason `3b` was.* **Added 2026-09-25 (T-303).** ***The user wrote it "a few years ago" and forgot
+it*** — *the date is theirs to give; the PDF's own is only the day it was exported.* ***[The Programmer's Guide to the
+Human Mind](../docs/archive/)*** **is a book: 137 pages, about 26,000 words, six parts and nineteen chapters, each
+reading some part of a person through a programmer's trade** — *hardware, modules, debugging, logs, security, networks.*
+**It is in the game as the GUIDE, found on ONE ISLAND** (vision.md 4.36).
+
+***It is a primary source for the thesis, and nobody had cited it because nobody remembered it.*** **Chapter 3,
+*Emotions as Contextual Information: the Machine Learning Perspective*, is 0's sentence as a chapter:** *feeling runs in
+parallel, takes in the whole moment at once, and is held as an "emotion object" — the feeling, the moment that set it
+off, and the move it wants to make.* **Chapter 11 finishes it**: *thoughts are "data processors", feelings "contextual
+modifiers" that change how the data is read.* **Chapter 4 is 0.3's loop**, *consciousness as the cycle between the
+two, "time-cycled".* ***The blogs argue the thesis and the drama stages it. This one teaches it*** — **which is why, in
+the game, it can only be printed under rules** (4.36's four).
+
+### 3c.1 Where the rest of it already is
+
+***More of the game was already in it than was put there from it*** — *every row below was designed before the book was
+found:*
+
+| in the Guide | in the game |
+|---|---|
+| **Ch. 1: the brain as hardware — cells that fire together wire together** | *the LEARNING floor's PRACTICE board says it in the same words — "Cells that fire together wire…" (T-219)* |
+| **Ch. 6: distortions as bugs — all-or-nothing, the worst case, one bad day read as every day** | *the ERRATA museum, which names every fault and never the distortion (4.32)* |
+| **Ch. 12: a crash that replays "in a loop that will not close"** | *the REMNANT, which keeps running after the record is deleted and loops its turn (T-253)* |
+| **Ch. 13: root access, and the gatekeeper it passes** | *the ROOTBOX, which takes anything because root takes anything (1.x)* |
+| **Ch. 16: the journal as a log and as version control** | *the terminal's LOG code — "Every machine keeps one" — and the NOTEBOOK* |
+| **Ch. 17: reality checks — read a line, look away, read it again** | *DOLDRUM CAVE unread, which is already a dream you wake from (T-254); T-309 proposes the sign* |
+| **Ch. 18: a first meeting as a handshake** | *CELIO's machine, which wants both halves of a key pair before it will talk (8.2a)* |
+| **Conclusion: consent, autonomy, never "to enforce conformity"** | *the REVIEW BOARD, which models a person with four humours and scores them against a norm (6) — the opposite of this list; T-311* |
+
+### 3c.2 What is new, and where it went
+
+**The seven-day system** (*Chapters 8–9: each day a centre, a colour, a virtue and the sin it guards against*) **is the
+day-of-week banner's table (T-305)**, *and it arrived the same morning the user asked for the banner.* **The case
+studies are T-310.** ***Chapter 1's four regions are the brain T-307 proposes for the USER card.***
+
+### 3c.3 What is deliberately not mined
+
+***The reading list names real authors; the case studies name people.*** **Neither goes into the game**, *which keeps a
+list's subjects and a case's shape.* ***And the book's certainty is not carried over***: **the original says the parallels
+are "not just metaphorical"**; *the game's whole device is that neither reading is asserted (0.6),* **so the Guide in
+the game only ever says *like*.**
+
+---
+
 ## 4. 2023–2024 — NAMING, AND THE FORK INTO FICTION
 
 ### 3.1 2023: compression

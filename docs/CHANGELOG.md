@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.285 — 2026-09-25
+
+### The Programmer's Guide to the Human Mind, found
+
+- ***The user's own book, recovered from `docs/archive/`, is in the game*** (4.36, T-300–T-303): **a key item, `GUIDE`, on the bookshelf in ONE ISLAND's second house** — *the islands' direction (0.6) as one volume, found and never handed over, because 4.3 says method is what survives a handoff.* **Its cover first, then CONTENTS — the sections on the left page, their chapters on the right — then each chapter across the spread**, *in the TEXTBOOK's reader with its own colours and its own cover, drawn from the PDF's.* ***137 pages became 28 entries of about a hundred words***, **printed under four rules** — *about people; only ever "like"; the process, never the pathology; no substance named* — **which `tools/genguide.py` checks word by word.** *Every word is DRAFT until the user approves it.*
+- ***Two cuts made writing it***: **the seven centres' colours** (*beside Chapter 9's wrath and envy they tie a colour to a feeling, craft rule 1's one absolute*) **and the glossary's "proto-consciousness"** (*it asserts the machine half*).
+- ***`lineage.md` 3c***: **the Guide is a primary source for the thesis** — *Chapter 3 is "Emotions as Contextual Information", Chapter 11 has thoughts as data and feelings as the context that changes how it is read* — **and eight things the game already had are in it**, *from the REMNANT's loop to the ROOTBOX's root access.*
+- ***What reading it opened, each the user's to rule on*** (T-304–T-311): **understandings written into its margins; its seven-day table for the day-of-week banner** (*MONDAY's orange 17.3 from ENTROPY*); **the brain and the tabs the user asked for on the USER card, both meeting T-252's "never counted"**; **a dream sign in the unread cave; the case studies as islanders; the REVIEW BOARD's copy with its ethics cut out.**
+- ***And one housekeeping rule***: **two sessions cannot both take "the next id"**, *so `TODO.md` can reserve a block in one line and `check_lexicon` reads it* — **T-267 to T-299 for the clock session, T-300 up for this.**
+
 ## v11.284 — 2026-09-25
 
 ### The cartridge's clock, and what the user decided with it

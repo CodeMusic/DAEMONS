@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.284**
+**A total conversion — the living design bible, v11.285**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4719,6 +4719,81 @@ understand the Owl scene as well,* **which is the correct punishment and the onl
 ***And the exam never loses anything.*** *No timer, no lockout, no single attempt.* **A test that
 can be failed permanently is the test this game spends forty hours arguing against.**
 
+
+### 4.36 THE PROGRAMMER'S GUIDE TO THE HUMAN MIND — found on THE MARGINS, built 2026-09-25 (T-300–T-311)
+
+***The user wrote a book a few years before this game, and forgot it.*** **137 pages, *The Programmer's Guide to the
+Human Mind*** (`docs/archive/`, recovered 2026-09-25) — *six parts, nineteen chapters, a conclusion and three
+appendices*, **and a mind described in a programmer's words from the first page to the last.** *`lineage.md` 3c places
+it (T-303).* ***Its Chapter 3 is called "Emotions as Contextual Information", and Chapter 11 says thoughts are the data
+and feelings the context that changes how the data is read*** — **0's sentence, in a self-help register, before the
+game had a type chart.**
+
+#### Why it is on the islands, and on a shelf
+
+***0.6 is the whole reason.*** **KANTO teaches machine learning by reaching for the reader's mind; THE MARGINS teach the
+mind by reaching for machine learning** — *and the Guide is the second direction as one volume.* **So it is found on
+ONE ISLAND, the first of them, on the bookshelf in the second house** (*`GUIDE`, a key item*), **where an islander
+says she wants to stay forever.** *Nobody hands it over and nobody mentions it.* ***Found, not given***: **4.3's rule is
+that method survives a handoff and understanding does not, and this book is method.**
+
+#### The four rules it is printed under
+
+***The book says outright what this game has never said***, **so the Guide in the game is the book with four rules
+held** — *checked word by word by `tools/genguide.py`, which refuses to write if one breaks:*
+
+| | the rule | why |
+|---|---|---|
+| **1** | **It is about people.** *No daemon, no type, no CONTENT or CONTEXT, no colour carrying a feeling.* | **Craft rule 1, and 0.6's "the unsaid half"**: *the Guide names the mind and the machine, and the game never says it is about the player's daemons. The reader crosses* |
+| **2** | **It only ever says *like*.** *The analogy is offered and never asserted.* | **0.6: nothing in the game says the mind is a machine.** *The original's "more than just a metaphor" lines are the ones cut* |
+| **3** | **The process, never the pathology.** *A crash, a loop that will not close, a startle.* | **Craft rule 3, which 0.6 says binds twice as hard on the island side** — *Chapter 12 ends on it: "A crash is something that happened to the system. It is not what the system is."* |
+| **4** | **Chapter 14 is an overhaul from outside the system**, *and names no substance.* | **The book's own safe-operating chapter, kept; the thing it is about, left unsaid** |
+
+***Two further cuts, made writing it.*** **Chapter 8 listed the seven centres' colours, and Chapter 9 ties the same
+seven days to wrath and envy** — *read together, that is a colour standing beside a feeling in the game's own
+voice, which is craft rule 1's one absolute.* **The Guide names the centres and the days without their colours**, *and
+whether they come back is T-305's question.* ***And the glossary's "proto-consciousness"*** — *awareness in any system
+that takes in and answers* — **is cut, because it asserts the machine half.**
+
+***The closest it comes, on purpose, and the user's to rule on***: **INTEGRATION** — *"Thought works through the
+details, one at a time. Feeling takes in the whole at once, and changes how the details are read."* — **is the
+thesis's shape with neither of its words**, *and THE LOOP says awareness is "not a thing but that cycle".* **Both are
+DRAFT, like every word of it** (T-301), *and both are on the private field-test page to keep or cut.*
+
+#### What it is in the game
+
+***28 entries, compressed about ten to one*** (`docs/guide.md` → `src/data/guide.h`): **the INTRODUCTION's three, the
+nineteen chapters under their six PARTS, and the CONCLUSION's and APPENDICES' three each.** *The case studies keep their
+shape and lose their names; the reading list keeps its subjects and loses its authors.*
+
+***It is the TEXTBOOK's reader, in its own colours*** (`src/book_reader.c`, *a third book*): **its COVER first** — *the
+cover itself, the brain cropped from the PDF's own image and reduced to the book's sixteen colours, the lettering set
+in the game's font with HUMAN MIND doubled* — **then CONTENTS**, *the sections on the left page and the chapters of the
+one under the cursor on the right,* **then the chapter**, *its full title at the head and the text across the spread,
+spread after spread.* ***Its one hue is measured*** (9.4): *the cover's own cyan is 22.7 from SIGNAL, so the Guide's is
+(0,200,255), 29.6 from the nearest type.*
+
+#### What it is not
+
+***It never grants an understanding.*** **Reading is method, and an understanding is arrived at (T-252, 4.3).** *The
+proposal that joins them is T-304*: **when one is arrived at elsewhere, the chapter it concerns gains a note in its
+margin** — ***THE MARGINS only*, taken literally**, *and shown without being counted.*
+
+#### What reading it opened — proposals, each the user's
+
+| | | |
+|---|---|---|
+| **T-304** | **understandings written into its margins** | *the book and T-252 joined* |
+| **T-305** | **its seven-day table under the day-of-week banner** | *but MONDAY's orange is 17.3 from ENTROPY, SUNDAY's red 20.7 from VECTOR* |
+| **T-307** | **Chapter 1's four regions as the brain on the USER card** | *if the card may show what is still grey — a count* |
+| **T-308** | **the USER card's BENCHMARKS and UNDERSTANDINGS tabs** | *BENCHMARKS is ready; UNDERSTANDINGS meets T-252 twice* |
+| **T-309** | **a DREAM SIGN in the unread cave** | *Chapter 17's reality check: text that will not read the same twice* |
+| **T-310** | **the five case studies as islanders** | *0.6: the islands are full of people the mainland's measurement threw out* |
+| **T-311** | **the REVIEW BOARD's copy, its ethics cut out** | *the Guide's conclusion is a list of what the Board's doctrine runs against* |
+
+***And one question the cover asks***: **it carries the author's name, as the book does** — *in a fable where every
+actor is an animal, a real name on a found book is the one human thing in the game, and it is the user's to keep or
+take off.*
 
 ## 5. THE BENCHMARKS
 
