@@ -3,6 +3,11 @@
 
     python3 tools/gbachar.py            # report + /tmp/char.png
     python3 tools/gbachar.py --write
+    python3 tools/gbachar.py logic_card intuition_card --write     # NAME THE JOBS -- see below
+
+NAME THE JOBS WHEN YOU WRITE (2026-09-25, T-270). A bare --write rewrote 78 pictures and palettes that later passes
+had changed after this tool cut them, and the report cannot tell -- it lists every job, it does not compare. The
+art in the engine is not all this tool's output any more (engine.md trap 32).
 
 TWO SPRITES, TWO COMPLETELY DIFFERENT FORMATS, and getting either wrong
 produces a screenful of confetti rather than an error.
@@ -87,6 +92,19 @@ JOBS = {
                         dst="engineGba/graphics/oak_speech/leaf/pic.png",
                         pal="engineGba/graphics/oak_speech/leaf/pal.pal",
                         size=(64, 96), colours=31, base=65, palsize=32),
+    # T-270 (the user, 2026-09-25: "the trainer card still shows the vanilla sprite ... it should be the player,
+    # the monkey"). The card draws the TRAINER FRONT PIC -- as do the Hall of Fame and a link battle -- and those
+    # two were still vanilla's RED and LEAF. Same drawings as the intro portraits, fitted to a square frame the way
+    # HEARSAY's CRYSTAL is; REASON is FACILITY_CLASS_RED, INSTINCT FACILITY_CLASS_LEAF (9.10), and 9.10's one
+    # difference, the tail, is in the drawings already.
+    "logic_card":  dict(src="gfx/characters/player_logic.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/red_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/red.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16),
+    "intuition_card": dict(src="gfx/characters/player_intuition.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/leaf_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leaf.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16),
     # HEARSAY's portraits are 64x64 full-body figures with their own palettes,
     # the same shape as a trainer front pic. Crystal needs no new art: the
     # intro portrait fits a square frame, flipped to match how she stands
