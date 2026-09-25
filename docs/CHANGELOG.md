@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.287 — 2026-09-25
+
+### What the Guide opened, built
+
+- ***The margins hold the understandings*** (4.36, T-304): *a note under the chapter an understanding concerns, in the Guide's cyan; DREAMS proposed, the words DRAFT, the chapter asked with T-252.*
+- ***The USER card***: **a brain that lights once and never counts** (T-271), **and R for its BENCHMARKS** — *eight MARKS, each with what it certifies, DRAFT* (T-272). ***No UNDERSTANDINGS tab***, *by T-252's own rule.*
+
+---
+
 ## v11.286 — 2026-09-25
 
 ### The week
