@@ -442,6 +442,13 @@ screenshot of it beside the source line settles it in a minute.***
 - **The DEBUG menu's item page cannot add a PLUGIN or a DRIVER** *(the list stops at the scarves)* — **test those on
   a NEW debug game, whose kit now carries all eight DRIVERs.**
 
+### And the third day — 2026-09-25
+
+- **The player's house is left by the doormat's CENTRE, (4,8), pressing DOWN.** *(5,8) carries a warp but no arrow behaviour — vanilla's own layout, block 20 beside block 19 — so DOWN there does nothing, and a script that stands on it waits forever.* **Upstairs, the stairs are taken by a LEFT step from (10,2); downstairs by an UP from (10,3) onto (10,2).**
+- ***The release build's addresses are not the debug build's***: `gSaveBlock1Ptr` *is `0x03005008` in `daemonsContent.elf` and `0x03005048` in the debug one.* **Read them from the `.elf` you are driving** (`arm-none-eabi-nm … | grep gSaveBlock1Ptr`), *or every peek reads nonsense.*
+- ***A sound can be checked without hearing it***: *after it plays, `gMPlayInfo_SE1`–`SE3`'s first word is the song header it played — compare with `gSongTable[n]`'s header (8 bytes an entry).*
+- ***A battle's opponent can be set in memory***: `gBattleMons` *+ 0x58 × battler; its first halfword is the species — how T-280's refusal was tested against a daemon no debug encounter offers.*
+
 ## 6. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
