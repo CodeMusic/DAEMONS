@@ -386,6 +386,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-09-24, T-254):*** *in the unread DOLDRUM CAVE, for one frame of a daemon's send-out, the battle terrain showed in colour from part-way down the screen; a later frame, a band of pure white.* **The four-tone drawing (and HALFTONE's grey) are applied to `gPlttBufferFaded` once a frame in `main.c`, and the vblank copies that buffer out — but `BeginNormalPaletteFade` does not wait: it copies the buffer to palette RAM THE MOMENT a fade starts, mid-frame**, *so a fade begun by the ball opening put the raw palette on screen from whatever scanline the copy landed on.* **Found by dumping palette RAM beside each frame (the theatre's `pburst`): only those two frames held raw colours, in the terrain's BG palettes.** ***The filter now also runs before that copy and before the vblank's.*** ***Any whole-screen palette effect must hook every path to `PLTT`, not the one buffer most of them pass through*** — *`grep -n "PLTT" src/palette.c` lists them.*
 
+### 31. An emulator's clock that was never set
+
+***Symptom (2026-09-25, T-265):*** *the terminal's TIME code, reading the cartridge clock for the first time, said 2056-08-23 while the Mac said 2026-09-25 — with the minutes right.* **mGBA keeps the clock in a 16-byte record after the save (a `.sav` of 131088 bytes, not 131072), and ours were all zeros: a clock at 2000-01-01 00:00 on the day 1970 began, so it runs 56 years ahead.** *The reading was right; the emulator's clock was never set.* ***Cut a scratch save to 131072 bytes and mGBA starts the clock from the Mac's own time*** *(it did: 2026-09-25 01:45, to the minute)*. **The game only ever READS the clock (`src/daemons_rtc.c`), so it cannot fix one either — on a flash cart the player sets it in the cart's own menu.**
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
