@@ -29,6 +29,9 @@ earlier and keeps that shape until it is re-derived.
 import json, math, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
@@ -161,6 +164,7 @@ def jump_frames():
 
 
 def main():
+    refuse_over_later_work("gbagrass")          # T-293: its files carry later work; generator_drift.json says what
     layouts = json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]
     outdoor = sorted({l["secondary_tileset"] for l in layouts if l.get("primary_tileset") == "gTileset_General"})
     pal_files = [os.path.join(PD, "palettes/%02d.pal" % n) for n in range(7)]

@@ -142,7 +142,11 @@ def outline(a, lum, ink_index):
     return b
 
 
-def main():
+def main(only=None, write=None):
+    """only: picture names (as --only takes them); write: draw it. A tool that cuts one of these pictures calls this
+    on what it just wrote, so its --write lands where the tree is and not on the picture before T-177 (T-293)."""
+    only = ONLY if only is None else only
+    write = WRITE if write is None else write
     done = recoloured = 0
     for label, folder in FAMILIES:
         rows = []
@@ -154,7 +158,7 @@ def main():
                 name = os.path.splitext(f)[0]
                 if name == "pic":                      # oak_speech/<who>/pic.png -- the folder is the name
                     name = os.path.basename(base)
-                if ONLY and name not in ONLY and name.replace("_front_pic", "") not in ONLY:
+                if only and name not in only and name.replace("_front_pic", "") not in only:
                     continue
                 if not is_ours(rel):
                     continue
@@ -186,13 +190,16 @@ def main():
                     lum[ink] = (INK[0] * 299 + INK[1] * 587 + INK[2] * 114) // 1000
                 after = share(b, lum)
                 rows.append((name, before, after, int((a != b).sum()), repaint))
-                if WRITE and ((a != b).any() or repaint):
+                if write and ((a != b).any() or repaint):
                     full = [v for c in pal for v in c] + [0] * (768 - 3 * len(pal))
                     out = Image.fromarray(b, "P")
                     out.putpalette(full)
-                    out.save(os.path.join(GBA, rel))
+                    #  At the depth it was read in: the trainer and back pictures are 4-bit with sixteen colours, and
+                    #  re-saving them 8-bit with 256 changed every file it touched without changing a pixel (T-293).
+                    depth = open(os.path.join(GBA, rel), "rb").read(25)[24]
+                    out.save(os.path.join(GBA, rel), **({"bits": 4} if depth == 4 else {}))
                     if palfile and repaint:
-                        with open(palfile, "w") as fh:
+                        with open(palfile, "w", newline="\r\n") as fh:   # CRLF, as .gitattributes has JASC-PAL
                             fh.write("JASC-PAL\n0100\n%d\n" % len(pal))
                             for c in pal:
                                 fh.write("%d %d %d\n" % tuple(c))
@@ -203,7 +210,7 @@ def main():
                   % (label, len(rows), np.mean([r[1] for r in rows]), np.mean([r[2] for r in rows]),
                      sum(1 for r in rows if r[4])))
     print("  %s" % ("%d written, %d palettes given a near-black" % (done, recoloured)
-                    if WRITE else "report only; pass --write"))
+                    if write else "report only; pass --write"))
 
 
 if __name__ == "__main__":

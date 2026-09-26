@@ -315,6 +315,10 @@ def main():
             img.save(os.path.join(BACKS, fig["file"]), bits=4)
             with open(os.path.join(PALS, fig["pal"]), "w") as fh:
                 fh.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in pal))
+        #  T-177's outline, which every picture of ours carries: drawn by the same pass, so this write lands where the
+        #  tree is and does not take it off again (T-293).
+        import gbaoutline
+        gbaoutline.main(only=[os.path.splitext(fig["file"])[0] for fig, _, _ in built], write=True)
         print("  written %d strips and their palettes" % len(built))
 
 

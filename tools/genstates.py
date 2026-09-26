@@ -322,13 +322,18 @@ def main():
         s, e, vanilla = region(text, label)
         lines = make()
         ours = "\n".join(lines + ([] if lines[-1].strip() == "end" else ["\tend"])) + "\n"
+        #  ALREADY RELEASED: the script there IS ours, with no guard left. Drafting over it would wrap our own script as
+        #  vanilla's -- which is what --write --wave 1 did to the six released states until T-293 (2026-09-25).
+        if text.startswith("%s:\n%s" % (label, ours), s):     # its sub-labels too (the stat change has three)
+            print("  %-18s %-11s released already; left as it is" % (label, word))
+            continue
         if release:
             block = "%s:\n%s" % (label, ours)
         else:
             block = "%s:\n%s %s -- %s (T-168)\n.if DAEMONS_DEBUG\n%s.else\n%s.endif\n" % (label, MARK, label, word, ours, vanilla)
         text = text[:s] + block + text[e:]
         print("  %-18s %-11s %2d lines%s" % (label, word, len(ours.splitlines()), "  (released)" if release else ""))
-    if "--write" in sys.argv or release:
+    if ("--write" in sys.argv or release) and text != open(SCRIPTS).read():
         open(SCRIPTS, "w").write(text)
         print("  written: %s" % os.path.relpath(SCRIPTS, ROOT))
 

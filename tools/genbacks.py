@@ -50,6 +50,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA
+from driftguard import refuse_over_later_work
 
 PREVIEW = "/tmp/backs.png"
 WRITE = "--write" in sys.argv
@@ -148,6 +149,7 @@ SKELETON = "red_back_pic.png"
 
 
 def main():
+    refuse_over_later_work("genbacks")          # T-293: its files carry later work; generator_drift.json says what
     built, rows = [], []
     for name, filename, right in SHEETS:
         src = Image.open(os.path.join(BACKS, filename))
@@ -186,6 +188,10 @@ def main():
             img.save(os.path.join(BACKS, filename), bits=4)
             with open(os.path.join(PALS, filename.replace(".png", ".pal")), "w") as fh:
                 fh.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in pal))
+        #  T-177's outline, which every picture of ours carries: drawn by the same pass, so this write lands where the
+        #  tree is and does not take it off again (T-293).
+        import gbaoutline
+        gbaoutline.main(only=[os.path.splitext(f)[0] for f, _, _ in built], write=True)
         print("  written %d strips and their palettes" % len(built))
 
 

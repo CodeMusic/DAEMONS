@@ -442,7 +442,7 @@ def png(path, g, pal=PAL):
 
 def jasc(path, pal, n=16):
     rows = [pal.get(i, (0, 0, 0)) for i in range(n)]
-    with open(path, "w") as f:
+    with open(path, "w", newline="\r\n") as f:   # CRLF, as .gitattributes has JASC-PAL
         f.write("JASC-PAL\n0100\n%d\n" % n)
         for c in rows: f.write("%d %d %d\n" % c)
 

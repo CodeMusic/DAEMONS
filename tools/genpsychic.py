@@ -90,6 +90,10 @@ def main():
         out.save(os.path.join(PICS, DST + "_front_pic.png"), bits=4)
         with open(os.path.join(PALS, DST + ".pal"), "w") as fh:
             fh.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in colours))
+        #  T-177's outline, which every picture of ours carries: drawn by the same pass, so this write lands where the
+        #  tree is and does not take it off again (T-293).
+        import gbaoutline
+        gbaoutline.main(only=[DST], write=True)
         print("  written the portrait and its palette")
 
 

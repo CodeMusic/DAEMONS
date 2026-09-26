@@ -52,6 +52,7 @@ import numpy as np
 from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from gridsample import deringe
+from driftguard import refuse_over_later_work
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
@@ -560,6 +561,7 @@ def index(cell, hold, job):
 def main():
     # Name jobs to cut only those (python3 tools/gbachar.py basin tilt --write); with none, every job runs.
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
+    refuse_over_later_work("gbachar", named=bool(only))   # T-293: every job at once undoes later passes (trap 32)
     assert all(a in JOBS for a in only), "no such job: %s" % [a for a in only if a not in JOBS]
     todo = {k: v for k, v in JOBS.items() if not only or k in only}
     prev, x = Image.new("RGB", ((64 * 6 + 40) * len(todo), 96 * 6), (18, 18, 24)), 0

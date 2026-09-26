@@ -45,6 +45,9 @@ already draw. Every changed cell gets a copy of its block with its attributes.
 import importlib.util, json, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 spec = importlib.util.spec_from_file_location("gbaground", os.path.join(ROOT, "tools", "gbaground.py"))
 G = importlib.util.module_from_spec(spec); spec.loader.exec_module(G)
@@ -105,6 +108,7 @@ def read_pal(path):
 
 
 def main():
+    refuse_over_later_work("gbaroutes")          # T-293: its files carry later work; generator_drift.json says what
     layouts = {l.get("name"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]}
     prim = open(os.path.join(PD, "metatiles.bin"), "rb").read()
     pattr = open(os.path.join(PD, "metatile_attributes.bin"), "rb").read()

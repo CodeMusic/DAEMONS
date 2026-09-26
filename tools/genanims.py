@@ -1578,6 +1578,11 @@ def main():
         a, b = region(s, "Move_" + mv[5:] if mv.startswith("Move_") else mv)
         text = s[a:b]
         head = "@ genanims: %s (T-134, vision.md 9.24)" % fam
+        #  ALREADY RELEASED: an approved routine has no guard left, only the header above its label. A draft written
+        #  over it would take OUR script for vanilla's and put it in the .else -- the trap this tool's release note
+        #  warns of, and what --write did to every released family until T-293 (2026-09-25).
+        if not release and ".if DAEMONS_DEBUG" not in text and s[:a].endswith(head + " approved.\n"):
+            continue
         if release:
             if ".if DAEMONS_DEBUG" not in text:
                 continue

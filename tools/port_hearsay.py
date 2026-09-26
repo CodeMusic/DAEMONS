@@ -34,6 +34,9 @@ the rest \\l.
 """
 import glob, os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 FAME = os.path.join(GBA, "data/text/fame_checker.inc")
@@ -421,6 +424,7 @@ def replace_block(text, label, lines):
 
 
 def main():
+    refuse_over_later_work("port_hearsay")          # T-293: its files carry later work; generator_drift.json says what
     problems, changed = [], []
     fame = open(FAME, encoding="utf-8").read()
     names = {}

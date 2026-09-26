@@ -55,6 +55,9 @@ two buildings is a conflict and is reported, never guessed.
 import importlib.util, json, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 spec = importlib.util.spec_from_file_location("gbaemblems", os.path.join(ROOT, "tools", "gbaemblems.py"))
 E = importlib.util.module_from_spec(spec); spec.loader.exec_module(E)
@@ -343,6 +346,7 @@ def vflip(px):
 
 # ------------------------------------------------------------------ main
 def main():
+    refuse_over_later_work("gbacivic")          # T-293: its files carry later work; generator_drift.json says what
     layouts = {l.get("id"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if l.get("id")}
     prim = bytearray(open(os.path.join(PD, "metatiles.bin"), "rb").read())
     pattr = open(os.path.join(PD, "metatile_attributes.bin"), "rb").read()

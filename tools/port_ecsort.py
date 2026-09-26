@@ -24,6 +24,9 @@ wrong sort.
 """
 import os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
 PATH = os.path.join(GBA, "src/data/easy_chat/easy_chat_words_by_letter.h")
@@ -61,6 +64,7 @@ def names():
 
 
 def main():
+    refuse_over_later_work("port_ecsort")          # T-293: its files carry later work; generator_drift.json says what
     render = names()
     raw = open(PATH, encoding="utf-8").read()
 

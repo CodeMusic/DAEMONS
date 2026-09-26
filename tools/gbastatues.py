@@ -22,6 +22,9 @@ collision and its script are the shared ones.
 import json, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/building")
@@ -113,6 +116,7 @@ def read_pal(path):
 
 
 def main():
+    refuse_over_later_work("gbastatues")          # T-293: its files carry later work; generator_drift.json says what
     badges = Image.open(BADGES).load()
     icons = {name: [[badges[k * 16 + x, y] for x in range(16)] for y in range(16)] for k, name in enumerate(MARKS)}
     row0 = read_pal(os.path.join(PD, "palettes/00.pal"))

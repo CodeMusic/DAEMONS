@@ -6,21 +6,6 @@
    "engine:data/tilesets/secondary/pallet_town/palettes/10.pal"
   ]
  },
- "gbabox": {
-  "why": "CHANGED AFTER ITS FILES (148ecab7 tools: gbabox draws the Index list icon and the battle slots) -- read what --write would change before running it",
-  "files": [
-   "engine:graphics/items/icon_palettes/dive_ball.pal",
-   "engine:graphics/items/icon_palettes/great_ball.pal",
-   "engine:graphics/items/icon_palettes/luxury_ball.pal",
-   "engine:graphics/items/icon_palettes/master_ball.pal",
-   "engine:graphics/items/icon_palettes/nest_ball.pal",
-   "engine:graphics/items/icon_palettes/net_ball.pal",
-   "engine:graphics/items/icon_palettes/poke_ball.pal",
-   "engine:graphics/items/icon_palettes/repeat_ball.pal",
-   "engine:graphics/items/icon_palettes/safari_ball.pal",
-   "engine:graphics/items/icon_palettes/ultra_ball.pal"
-  ]
- },
  "gbachar": {
   "why": "STALE, by design -- engine.md trap 32: later passes edited its output; name the jobs (gbachar.py JOB --write)",
   "files": [
@@ -166,7 +151,7 @@
   ]
  },
  "gbarepo": {
-  "why": "CHANGED AFTER ITS FILES (83488a6e tools: gbacheckpoint.py and gbarepo.py -- the CHECKPOINT rack, floor a) -- read what --write would change before running it",
+  "why": "STALE -- not idempotent: a second run re-lays the REPO's bins and draws over tile 13, which metatiles 10 and 62 share (T-293); the tree is right",
   "files": [
    "engine:data/tilesets/secondary/mart/metatiles.bin",
    "engine:data/tilesets/secondary/mart/tiles.png"
@@ -179,12 +164,6 @@
    "engine:data/layouts/Route1/map.bin",
    "engine:data/tilesets/secondary/pallet_town/metatile_attributes.bin",
    "engine:data/tilesets/secondary/pallet_town/metatiles.bin"
-  ]
- },
- "gbaseek": {
-  "why": "CHANGED AFTER ITS FILES (4528705e intro: SEEKMUSAI takes the Pikachu slot) -- read what --write would change before running it",
-  "files": [
-   "engine:graphics/oak_speech/pikachu_intro/pikachu.pal"
   ]
  },
  "gbastatues": {
@@ -201,65 +180,11 @@
    "engine:tileset_rules.mk"
   ]
  },
- "gbatitlepal": {
-  "why": "CHANGED AFTER ITS FILES (9cd89bbb title: one lost nibble made the whole screen unreadable) -- read what --write would change before running it",
-  "files": [
-   "engine:graphics/title_screen/firered/background.pal",
-   "engine:graphics/title_screen/leafgreen/background.pal"
-  ]
- },
- "genanims": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 469da6550 T-168 wave 4 released: the twelve non-move animations in the palette v",
-  "files": [
-   "engine:data/battle_anim_scripts.s"
-  ]
- },
  "genbacks": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 6eeb8e3c2 T-177: the 64px art gets the outline the quantizer could not draw",
+  "why": "STALE -- LOGIC's and INTUITION's back pictures were finished by hand after it ran (the paw, the collar line) and it cannot draw that (T-293)",
   "files": [
    "engine:graphics/trainers/back_pics/leaf_back_pic.png",
    "engine:graphics/trainers/back_pics/red_back_pic.png"
-  ]
- },
- "genmentors": {
-  "why": "CHANGED AFTER ITS FILES (f129caee T-213 closed: every generator must still RUN; the school tickets close) -- read what --write would change before running it",
-  "files": [
-   "engine:graphics/trainers/back_pics/old_man_back_pic.png",
-   "engine:graphics/trainers/back_pics/pokedude_back_pic.png"
-  ]
- },
- "genopusicon": {
-  "why": "CHANGED AFTER ITS FILES (13d35e13 T-197a recorded: the cue, the card, and why not an item ball) -- read what --write would change before running it",
-  "files": [
-   "engine:graphics/items/icon_palettes/opus.pal"
-  ]
- },
- "genpairs": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 02e2e62eb T-177 amended: a true black outline on every picture of ours; 6eeb8e3c2 T-177: the 64px art gets the outline the quantizer could not draw",
-  "files": [
-   "engine:graphics/trainers/front_pics/crush_kin_front_pic.png",
-   "engine:graphics/trainers/front_pics/sis_and_bro_front_pic.png",
-   "engine:graphics/trainers/front_pics/twins_front_pic.png",
-   "engine:graphics/trainers/front_pics/young_couple_front_pic.png"
-  ]
- },
- "genpsychic": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 6eeb8e3c2 T-177: the 64px art gets the outline the quantizer could not draw; 6ef4dde3a T-169 batch 6: the two rangers and the jellyfish psychic (m derived by",
-  "files": [
-   "engine:graphics/trainers/front_pics/psychic_m_front_pic.png",
-   "engine:graphics/trainers/palettes/psychic_m.pal"
-  ]
- },
- "genstates": {
-  "why": "CHANGED AFTER ITS FILES (a5dbb65e T-168 closed: wave 4 released; the 22 left are kept on purpose) -- read what --write would change before running it",
-  "files": [
-   "engine:data/battle_anim_scripts.s"
-  ]
- },
- "genstreaks": {
-  "why": "CHANGED AFTER ITS FILES (f129caee T-213 closed: every generator must still RUN; the school tickets close) -- read what --write would change before running it",
-  "files": [
-   "engine:src/data/pokemon/streaks.h"
   ]
  },
  "port_ecsort": {

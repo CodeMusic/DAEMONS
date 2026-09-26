@@ -261,7 +261,7 @@ def main():
         pb.save(os.path.join(DST, "body.png"))
         pe.save(os.path.join(DST, "ears.png"))
         py.save(os.path.join(DST, "eyes.png"))
-        with open(os.path.join(DST, "pikachu.pal"), "w") as f:
+        with open(os.path.join(DST, "pikachu.pal"), "w", newline="\r\n") as f:   # CRLF, as .gitattributes has JASC-PAL
             f.write("JASC-PAL\n0100\n16\n")
             for c in table: f.write("%d %d %d\n" % c)
         print("  written    body.png, ears.png, eyes.png, pikachu.pal")

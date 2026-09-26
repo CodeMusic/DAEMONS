@@ -150,10 +150,12 @@ every tool until it reports nothing** — that is what caught all three.
 anything. A generated file stays correct on disk long after the tool that wrote it has stopped
 working, and nothing else will tell you (T-212, T-213).
 
-**Before running any tool's `--write` on the whole tree, look it up in `tools/generator_drift.json`.** It lists the
-tools whose write would change committed files and why -- most are STALE, and a whole-tree write reverts later work
-(trap 32). `python3 tools/check_generators.py --writes` runs every tool's write in a sandbox (about three minutes) and
-fails on a crash or on drift the file does not know (T-292).
+**A tool whose write would undo later work refuses to.** `tools/generator_drift.json` lists the 14 whose files carry
+hand work done after they last ran, and why; each calls `tools/driftguard.py` and refuses a whole-tree `--write`
+(trap 32), naming what it would change. `--over-later-work` writes anyway -- then read `git diff` first.
+`python3 tools/check_generators.py --writes` runs every tool's write in a sandbox (about three minutes) and fails on
+a crash or on drift the file does not know (T-292). **Read new drift both ways**: T-293 found the TREE was the stale
+side twice -- twelve daemons' streaks never switched on, DARIO never re-derived.
 
 **Run `python3 tools/check_reach.py` after moving or adding anyone on a map.** It walks every map from where a
 player arrives and fails on anything we made unreachable that vanilla could reach, any door that leads nowhere,

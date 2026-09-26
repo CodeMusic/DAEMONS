@@ -20,6 +20,9 @@ empty -- THE REPO's colour is golden amber (9.23).
 import json, os, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 SD = os.path.join(GBA, "data/tilesets/secondary/mart")
@@ -108,6 +111,7 @@ def read_pal(path):
 
 
 def main():
+    refuse_over_later_work("gbarepo")          # T-293: its files carry later work; generator_drift.json says what
     layouts = {l.get("id"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if l.get("id")}
     meta = bytearray(open(os.path.join(SD, "metatiles.bin"), "rb").read()); original = bytes(meta)
     sheet = Image.open(os.path.join(SD, "tiles.png")); sp = sheet.load()

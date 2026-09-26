@@ -292,6 +292,10 @@ def main():
             with open(os.path.join(PALS, name + ".pal"), "w") as fh:
                 fh.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join(
                     "%d %d %d\r\n" % tuple(pal[i * 3:i * 3 + 3]) for i in range(16)))
+            #  T-177's outline, which every picture of ours carries: drawn by the same pass, so this write lands where the
+            #  tree is and does not take it off again (T-293).
+            import gbaoutline
+            gbaoutline.main(only=[name], write=True)
             print("                 written, and its palette; no colour changed")
 
 

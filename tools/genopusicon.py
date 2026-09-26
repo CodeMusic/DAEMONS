@@ -74,7 +74,7 @@ def main():
     print("  the card, the margin rule, and the one mark in it -> %s" % PREVIEW)
     if WRITE:
         im.save(os.path.join(GBA, "graphics/items/icons/opus.png"))
-        with open(os.path.join(GBA, "graphics/items/icon_palettes/opus.pal"), "w") as fh:
+        with open(os.path.join(GBA, "graphics/items/icon_palettes/opus.pal"), "w", newline="\r\n") as fh:   # CRLF, as .gitattributes has JASC-PAL
             fh.write("JASC-PAL\n0100\n16\n")
             for c in PAL:
                 fh.write("%d %d %d\n" % c)

@@ -71,7 +71,7 @@ def main():
             print("    %-22s idx %2d  #%02X%02X%02X" % ((label, i) + q(p[i])))
         if "--write" in sys.argv:
             dst = os.path.join(GFX, sub, "background.pal")
-            with open(dst, "w") as f:
+            with open(dst, "w", newline="\r\n") as f:   # CRLF, as .gitattributes has JASC-PAL
                 f.write("JASC-PAL\n0100\n16\n")
                 for c in p:
                     f.write("%d %d %d\n" % c)

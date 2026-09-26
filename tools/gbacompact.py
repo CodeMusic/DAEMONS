@@ -32,6 +32,9 @@ the new slots (flip bits and palette rows kept).
 import json, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
@@ -44,6 +47,7 @@ WRITE = "--write" in sys.argv
 
 
 def main():
+    refuse_over_later_work("gbacompact")          # T-293: its files carry later work; generator_drift.json says what
     layouts = json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]
     metas = bytearray(open(os.path.join(SD, "metatiles.bin"), "rb").read())
     n_meta = len(metas) // 16

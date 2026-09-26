@@ -45,6 +45,9 @@ cells alone.
 import importlib.util, json, math, os, re, struct, sys
 from PIL import Image, ImageDraw
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 spec = importlib.util.spec_from_file_location("gbacivic", os.path.join(ROOT, "tools", "gbacivic.py"))
 C = importlib.util.module_from_spec(spec); spec.loader.exec_module(C)
@@ -318,6 +321,7 @@ def art_board(tall):
 
 # ================================================================== placing it
 def main():
+    refuse_over_later_work("gbacivictown")          # T-293: its files carry later work; generator_drift.json says what
     layouts = {l.get("id"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if l.get("id")}
     manifest = json.load(open(MANIFEST)) if os.path.exists(MANIFEST) else {"cells": {}, "made": {}}
     prim = open(os.path.join(PD, "metatiles.bin"), "rb").read()

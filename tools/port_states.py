@@ -42,6 +42,9 @@ strings contain "MOVE" and most are the VERB -- MOVE ITEMS, MOVE TO BAG,
 """
 import json, os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA   = os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
@@ -385,6 +388,7 @@ def load(p):
 
 
 def main():
+    refuse_over_later_work("port_states")          # T-293: its files carry later work; generator_drift.json says what
     msg, n = load(MSG), 0
     for old, new in LINES:
         if old in msg:

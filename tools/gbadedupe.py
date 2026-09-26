@@ -26,6 +26,9 @@ TilesetAnim_General writes over by slot number, and slot 0.
 import json, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
@@ -41,6 +44,7 @@ def tdir(symbol):
 
 
 def main():
+    refuse_over_later_work("gbadedupe", named="--secondary" in sys.argv)          # T-293: its files carry later work; generator_drift.json says what
     layouts = json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]
     pairs = {}
     for l in layouts:

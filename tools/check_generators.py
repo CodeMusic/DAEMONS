@@ -199,7 +199,9 @@ def writes():
         for extra in ARGS.get(name, [[]]):
             reset()
             try:
-                r = subprocess.run([sys.executable, os.path.join(d, "tools", f)] + extra + ["--write"], cwd=d,
+                #  --over-later-work: a tool the record marks STALE refuses a plain --write now (driftguard.py, T-293),
+                #  and this is the one place that must see what it WOULD do, to keep the record true.
+                r = subprocess.run([sys.executable, os.path.join(d, "tools", f)] + extra + ["--write", "--over-later-work"], cwd=d,
                                    capture_output=True, text=True, timeout=600, stdin=subprocess.DEVNULL)
                 if "Traceback (most recent call last)" in r.stderr:
                     crashes.append((name, extra, r.stderr.strip().splitlines()[-1]))

@@ -41,6 +41,9 @@ outline.
 import json, os, re, struct, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
@@ -72,6 +75,7 @@ def pale(rgb):
 
 
 def main():
+    refuse_over_later_work("gbablanche")          # T-293: its files carry later work; generator_drift.json says what
     row2, row3 = read_pal(os.path.join(PD, "palettes/02.pal")), read_pal(os.path.join(PD, "palettes/03.pal"))
     row8_path, row10_path = os.path.join(SD, "palettes/08.pal"), os.path.join(SD, "palettes/10.pal")
     row8 = read_pal(row8_path)
