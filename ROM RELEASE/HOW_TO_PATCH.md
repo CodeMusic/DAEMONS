@@ -30,10 +30,10 @@ shows these numbers as soon as you open your ROM. They must match one row exactl
 
 | Your ROM | CRC32 | SHA-1 | Patch |
 |---|---|---|---|
-| Pokémon FireRed (USA) **1.0** | `DD88761C` | `41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc` | `DAEMONS CONTENT for FireRed 1.0.bps` |
-| Pokémon FireRed (USA, Europe) **Rev 1** | `84EE4776` | `dd5945db9b930750cb39d00c84da8571feebf417` | `DAEMONS CONTENT for FireRed Rev 1.bps` |
-| Pokémon LeafGreen (USA) **1.0** | `D69C96CC` | `574fa542ffebb14be69902d1d36f1ec0a4afd71e` | `DAEMONS CONTEXT for LeafGreen 1.0.bps` |
-| Pokémon LeafGreen (USA, Europe) **Rev 1** | `DAFFECEC` | `7862c67bdecbe21d1d69ce082ce34327e1c6ed5e` | `DAEMONS CONTEXT for LeafGreen Rev 1.bps` |
+| Pokémon FireRed (USA) **1.0** | `DD88761C` | `41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc` | `DAEMONS.CONTENT.for.FireRed.1.0.bps` |
+| Pokémon FireRed (USA, Europe) **Rev 1** | `84EE4776` | `dd5945db9b930750cb39d00c84da8571feebf417` | `DAEMONS.CONTENT.for.FireRed.Rev.1.bps` |
+| Pokémon LeafGreen (USA) **1.0** | `D69C96CC` | `574fa542ffebb14be69902d1d36f1ec0a4afd71e` | `DAEMONS.CONTEXT.for.LeafGreen.1.0.bps` |
+| Pokémon LeafGreen (USA, Europe) **Rev 1** | `DAFFECEC` | `7862c67bdecbe21d1d69ce082ce34327e1c6ed5e` | `DAEMONS.CONTEXT.for.LeafGreen.Rev.1.bps` |
 
 *(MD5, if your tool shows that instead: FireRed 1.0 `e26ee0d44e809351c8ce2d73c7400cdd`, FireRed Rev 1
 `51901a6e40661b3914aa333c802e24e8`, LeafGreen 1.0 `612ca9473451fa42b51d1711031ed5f6`, LeafGreen Rev 1
@@ -49,7 +49,8 @@ anything, so it can't damage your file. The usual reasons for a mismatch are:
 ## 3. Download the patch
 
 Open the [**Releases** page](https://github.com/CodeMusic/DAEMONS/releases) and take the newest release. Under
-**Assets**, download the one `.bps` file that matches your row above.
+**Assets**, download the one `.bps` file that matches your row above. (GitHub shows the names with dots where
+the spaces were, as in the table.)
 
 ## 4. Apply it
 

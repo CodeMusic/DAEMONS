@@ -4,6 +4,7 @@
     python3 tools/ghrelease.py                 # report what the newest release would publish
     python3 tools/ghrelease.py --write         # create the GitHub release on CodeMusic/DAEMONS
     python3 tools/ghrelease.py v11.288.10      # a named release instead of the newest
+    python3 tools/ghrelease.py --refresh       # rewrite a published release's page (after HOW_TO_PATCH.md changes)
 
 `romrelease.py` files each release under `ROM RELEASE/` with its notes (committed) and its ROMs and patches (never
 committed: the ROMs are Nintendo's engine with our work in it, and the patches are too large for git). This is the
@@ -75,6 +76,18 @@ def main():
     for p in patches:
         print("  upload     %s  (%d KB)" % (os.path.basename(p), os.path.getsize(p) // 1024))
     print("  page       %d characters: a line, the release notes, then HOW_TO_PATCH.md" % len(body))
+    if "--refresh" in sys.argv:
+        #  rewrite the page of a release already published (its guide changed); the tag and the patches stay
+        if not exists:
+            raise SystemExit("  refused: %s is not published yet" % name)
+        body_path = os.path.join(folder, ".github_body.md")
+        open(body_path, "w").write(body)
+        try:
+            run("gh", "release", "edit", name, "-R", REPO, "--notes-file", body_path)
+        finally:
+            os.remove(body_path)
+        print("  refreshed  the page of %s" % name)
+        return
     problem = ("%s is already published on GitHub" % name if exists else
                "the tree is dirty -- the tag must point at what is published" if dirty else None)
     if not WRITE:
