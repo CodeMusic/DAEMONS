@@ -7,6 +7,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### The playtester's brief, and the credits' runners (2026-09-26)
+
+- ***The AI playtester knows the game as it is now*** (T-319): *the school, the Reading Room, the GUIDE and the understandings are objectives; every prompt names the MARKS held and the understandings arrived at; the brief says what an understanding is. The run itself waits for the local hardware.* **`port_prompts.py` now refuses a whole-tree write**: *the brief is hand-kept past what it knows, and its write would have renamed the brief's own glossary.*
+- ***The credits' runners are the player and AL*** (T-290, DRAFT): *their overworld frames, doubled, in place of vanilla's RED, LEAF and BLUE.*
+- ***A correction***: *the surf sheet called vanilla's RED last push is dead data; surfing draws our player.*
+
 ### DAVID's ship, the shoes, and two codes (2026-09-26)
 
 - ***DAVID captains the S.S. ANNE*** (T-313, DRAFT): *drawn from DAD in a white cap and uniform, and seasick in his own voice. He asks you to call MOM. Played.*

@@ -216,7 +216,9 @@ def writes():
     reset()
     new = {n: sorted(fs - set(known.get(n, {}).get("files", []))) for n, fs in drift.items()}
     new = {n: fs for n, fs in new.items() if fs}
-    gone = sorted(n for n in known if n not in drift)
+    #  a tool that is never sandboxed cannot be seen to drift, so its entry stays (port_prompts, T-319)
+    unseen = set(EXCUSED) | set(SANDBOX_EXCUSED)
+    gone = sorted(n for n in known if n not in drift and n not in unseen)
     for n, extra, last in crashes:
         print("  !! %s%s --write crashes: %s" % (n, (" " + " ".join(extra)) if extra else "", last[:140]))
     for n, fs in sorted(new.items()):
@@ -228,6 +230,7 @@ def writes():
              sum(1 for n in drift if n in known), len(new)))
     if "--record" in sys.argv:
         out = {n: {"why": known.get(n, {}).get("why", "UNREVIEWED"), "files": sorted(fs)} for n, fs in sorted(drift.items())}
+        out.update({n: known[n] for n in known if n in unseen and n not in out})
         json.dump(out, open(DRIFT, "w"), indent=1, ensure_ascii=False)
         open(DRIFT, "a").write("\n")
         print("  recorded %d drifting tools in generator_drift.json" % len(out))

@@ -99,6 +99,9 @@ def port(text, table):
 
 
 def main():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from driftguard import refuse_over_later_work
+    refuse_over_later_work("port_prompts")         # game.txt is hand-maintained now (generator_drift.json)
     if not os.path.isdir(PROMPTS):
         sys.exit("no prompts at %s -- run ./setup.sh" % PROMPTS)
     V = vocab()

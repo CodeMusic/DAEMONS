@@ -214,5 +214,11 @@
    "engine:src/move_descriptions.c",
    "engine:src/school_exam.c"
   ]
+ },
+ "port_prompts": {
+  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pokémon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
+  "files": [
+   "ai:server/prompts/game.txt"
+  ]
  }
 }
