@@ -91,6 +91,9 @@ FIXED = {
     #  link and trade text. Same class as the ability names: a name table a
     #  prose pass had no business in.
     r'gExpandedPlaceholder_\w+\[\] = _\("([^"]*)"\)':      ("placeholder", 16),
+    #  THE CREDITS NAME PEOPLE AND WHAT THEY DID. This pass made FireRed's staff "DAEMON Designers" and "INDEX Text"
+    #  -- real people credited, in our words, with work that was theirs (T-290). A credits line is never swept.
+    r'gCreditsString_\w+\[\] = _\("([^"]*)"\)':           ("credits line", 200),
 }
 FIXED_RE = [re.compile(p) for p in FIXED]
 
@@ -220,9 +223,13 @@ for k in sorted(ORDINARY_WORDS & set(NAMES)):
 IDIOM_HOLD = ("catch up", "Catch up", "caught up", "Caught up",
               "catch on", "caught on", "catch my breath", "caught my breath",
               "catch a cold", "caught a cold", "catch fire", "caught fire",
-              "catch sight", "caught sight", "catching up")
+              "catch sight", "caught sight", "catching up",
+              #  A MEME is caught the way a cold is (T-258): "bound a MEME" is the wrong verb.
+              "caught a MEME", "catch a MEME", "catches a MEME", "catching a MEME")
 
-IDIOM_RE = re.compile("|".join(re.escape(x) for x in IDIOM_HOLD))
+#  AN IDIOM CAN SPAN A LINE BREAK: "has caught\na MEME" is two lines of text, and a literal pattern with a space in
+#  it never saw the break -- the escape trap again (CLAUDE.md). A space in an idiom matches a space or a \n/\l/\p.
+IDIOM_RE = re.compile("|".join(r"(?:\s|\\[nlp])+".join(re.escape(w) for w in x.split(" ")) for x in IDIOM_HOLD))
 
 VOCAB = {
     "POKéDEX": "INDEX", "POKéDEXES": "INDEXES",
@@ -627,7 +634,10 @@ def articles(body):
         art, gap, word = m.group(1), m.group(3), m.group(4)
         if word not in OUR_WORDS:
             return m.group(0)
-        return art + ("n" if word[0] in "AEIO" else "") + gap + word
+        #  U is "an" when it is said UH -- an UPTIME, an UNDERTONE -- and "a" when it is said YOO: a USER, a UNIT.
+        #  The rule had only the second, and wanted "I bound a UPTIME" in the SAFARI's rest house (2026-09-26).
+        uh = word[:2] in ("UP", "UN", "UM", "UL") and not word.startswith(("UNI", "UNU"))
+        return art + ("n" if word[0] in "AEIO" or uh else "") + gap + word
     return AN_RE.sub(fix, body)
 
 

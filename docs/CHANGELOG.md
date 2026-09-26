@@ -7,6 +7,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### The user's answers, built (2026-09-26)
+
+- ***The credits say whose game this is*** (T-290): *"DAEMONS / CONTENT", then "Created by / Christopher Art Hicks", "Built with / Claude Opus" and "Built on / Pokémon FireRed Version and its Staff"; FireRed's staff keep their own headings again (the vocabulary pass had credited them as "DAEMON Designers" and "INDEX Text", and now leaves every credits line alone); and the four cards are ROVERBYTE, MUSAI, ARTSAI and STARR, each drawn from its own front picture.* **Played on a debug RECORD.** *Still to draw: the running player and rival, which are vanilla's humans.*
+- ***Ty*** (T-286, T-288): *the battle calls him TY, and at the handover you step back and he comes one tile out to meet you — face to face, where he used to step onto you. His repeat line was vanilla GIDEON's and is his own. Played.*
+- ***CRYSTAL and AL, approved*** (T-295): *the 40 drafts stand, and CRYSTAL's 20 INDEX rating comments are hers now — "Thank you. I did not think anyone would." where OAK said "You've made my dream a reality!". Her HALL lines played.*
+- ***A find you can see before you can see it*** (T-297, the pilot): *one book in the Guide's bookcase on ONE ISLAND is pulled a pixel proud, and leaves a gap once taken; REVEAL shimmers on the Guide's shelf and on FOLDS until each is found. The inventory of the rest waits on the user.*
+- ***FOLDS's words stand*** (T-285), ***DANGLING stays at night on Route 1*** (T-283).
+- ***The vocabulary tool, level again***: *it wanted "I bound a UPTIME" and "bound a MEME"; U said UH takes "an", and an idiom may span a line break.*
+
 ### *The Folds of Awareness*, and a door nobody could walk through
 
 - ***A second source for the one daemon*** (4.33; `lineage.md` 5, 4.6): **the user's essay *The Folds of Awareness* (Seeing Sharp, September 2025)** *— one sheet of awareness folded and never cut, a great hand and many small ones, and free will left unanswered, which is 4.33's own rule.* **Its order is what is new**: *change (time) before space, a binding fold, the mirror, pattern, the return.* *Where it already sits in the game — the watches and the week, BIND, PERSPECTIVE, DOLDRUM read and unread, T-188's choice — is written down, and none of it was placed on purpose.*
