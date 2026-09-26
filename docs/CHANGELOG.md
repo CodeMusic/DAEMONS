@@ -7,6 +7,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### DAVID's ship, the shoes, and two codes (2026-09-26)
+
+- ***DAVID captains the S.S. ANNE*** (T-313, DRAFT): *drawn from DAD in a white cap and uniform, and seasick in his own voice. He asks you to call MOM. Played.*
+- ***The shoes show who gave them*** (T-256): *MOM's are yellow with black trim, DAD's black with red, on two palette indices freed for them across the player's sheets (`tools/gbashoes.py`), and repainted the moment the shoes change hands. Played all three ways.*
+- ***QR codes*** (T-315): *FOLDS ends on one to the essay on Seeing Sharp, and the Guide on one to its own text. Nothing says what they are. Both decode from the screen, after engine.md trap 36.*
+
 ### Ty's face, CALLOW's song, and patches anyone can use (2026-09-26)
 
 - ***Ty is a red fox*** (T-298, DRAFT art, `tools/genty.py`): *CRYSTAL's portrait and walking sheet with the gold taken down to red and her purple to slate, in the family's own palette ("three foxes, a palette apart", 4.3). He has his own battle picture and walking sheet, plus the raised-paw frame every trainer's sheet has. Played through the battle and the handover.* **It found engine.md trap 35**: *a new overworld sheet with no line in `spritesheet_rules.mk` is cut row by row instead of frame by frame, nothing warns, and a deleted `.4bpp` isn't rebuilt. He vanished after his battle until it was fixed.*
