@@ -150,6 +150,11 @@ every tool until it reports nothing** — that is what caught all three.
 anything. A generated file stays correct on disk long after the tool that wrote it has stopped
 working, and nothing else will tell you (T-212, T-213).
 
+**Before running any tool's `--write` on the whole tree, look it up in `tools/generator_drift.json`.** It lists the
+tools whose write would change committed files and why -- most are STALE, and a whole-tree write reverts later work
+(trap 32). `python3 tools/check_generators.py --writes` runs every tool's write in a sandbox (about three minutes) and
+fails on a crash or on drift the file does not know (T-292).
+
 **Run `python3 tools/check_reach.py` after moving or adding anyone on a map.** It walks every map from where a
 player arrives and fails on anything we made unreachable that vanilla could reach, any door that leads nowhere,
 any flag the story waits on that nothing outside the DEBUG build sets, or any line that lost a value or a

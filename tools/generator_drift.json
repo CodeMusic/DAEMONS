@@ -1,0 +1,293 @@
+{
+ "gbablanche": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by fb6f7ec66 No seams on Route 1 and Route 21; the station; GOTO; no GYM (T-72..T-7",
+  "files": [
+   "engine:data/tilesets/secondary/pallet_town/palettes/08.pal",
+   "engine:data/tilesets/secondary/pallet_town/palettes/10.pal"
+  ]
+ },
+ "gbabox": {
+  "why": "CHANGED AFTER ITS FILES (148ecab7 tools: gbabox draws the Index list icon and the battle slots) -- read what --write would change before running it",
+  "files": [
+   "engine:graphics/items/icon_palettes/dive_ball.pal",
+   "engine:graphics/items/icon_palettes/great_ball.pal",
+   "engine:graphics/items/icon_palettes/luxury_ball.pal",
+   "engine:graphics/items/icon_palettes/master_ball.pal",
+   "engine:graphics/items/icon_palettes/nest_ball.pal",
+   "engine:graphics/items/icon_palettes/net_ball.pal",
+   "engine:graphics/items/icon_palettes/poke_ball.pal",
+   "engine:graphics/items/icon_palettes/repeat_ball.pal",
+   "engine:graphics/items/icon_palettes/safari_ball.pal",
+   "engine:graphics/items/icon_palettes/ultra_ball.pal"
+  ]
+ },
+ "gbachar": {
+  "why": "STALE, by design -- engine.md trap 32: later passes edited its output; name the jobs (gbachar.py JOB --write)",
+  "files": [
+   "engine:graphics/fame_checker/bill.png",
+   "engine:graphics/fame_checker/mr_fuji.png",
+   "engine:graphics/oak_speech/leaf/pal.pal",
+   "engine:graphics/oak_speech/oak/pal.pal",
+   "engine:graphics/oak_speech/red/pal.pal",
+   "engine:graphics/oak_speech/rival/pal.pal",
+   "engine:graphics/trainers/front_pics/cool_couple_front_pic.png",
+   "engine:graphics/trainers/front_pics/crush_kin_front_pic.png",
+   "engine:graphics/trainers/front_pics/cue_ball_front_pic.png",
+   "engine:graphics/trainers/front_pics/elite_four_lorelei_front_pic.png",
+   "engine:graphics/trainers/front_pics/engineer_front_pic.png",
+   "engine:graphics/trainers/front_pics/fisherman_front_pic.png",
+   "engine:graphics/trainers/front_pics/gentleman_front_pic.png",
+   "engine:graphics/trainers/front_pics/lass_front_pic.png",
+   "engine:graphics/trainers/front_pics/leader_giovanni_front_pic.png",
+   "engine:graphics/trainers/front_pics/leader_koga_front_pic.png",
+   "engine:graphics/trainers/front_pics/leader_misty_front_pic.png",
+   "engine:graphics/trainers/front_pics/pokemon_breeder_front_pic.png",
+   "engine:graphics/trainers/front_pics/rocket_grunt_f_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_youngster_front_pic.png",
+   "engine:graphics/trainers/front_pics/ruin_maniac_front_pic.png",
+   "engine:graphics/trainers/front_pics/scientist_front_pic.png",
+   "engine:graphics/trainers/front_pics/sis_and_bro_front_pic.png",
+   "engine:graphics/trainers/front_pics/sr_and_jr_front_pic.png",
+   "engine:graphics/trainers/front_pics/staff_doldrum_picnicker_front_pic.png",
+   "engine:graphics/trainers/front_pics/staff_quicksilver_front_pic.png",
+   "engine:graphics/trainers/front_pics/staff_verdigris_front_pic.png",
+   "engine:graphics/trainers/front_pics/swimmer_m_front_pic.png",
+   "engine:graphics/trainers/front_pics/tuber_f_front_pic.png",
+   "engine:graphics/trainers/front_pics/twins_front_pic.png",
+   "engine:graphics/trainers/front_pics/young_couple_front_pic.png",
+   "engine:graphics/trainers/palettes/aroma_lady.pal",
+   "engine:graphics/trainers/palettes/beauty.pal",
+   "engine:graphics/trainers/palettes/biker.pal",
+   "engine:graphics/trainers/palettes/bird_keeper.pal",
+   "engine:graphics/trainers/palettes/black_belt.pal",
+   "engine:graphics/trainers/palettes/bug_catcher.pal",
+   "engine:graphics/trainers/palettes/burglar.pal",
+   "engine:graphics/trainers/palettes/camper.pal",
+   "engine:graphics/trainers/palettes/champion_rival.pal",
+   "engine:graphics/trainers/palettes/channeler.pal",
+   "engine:graphics/trainers/palettes/cool_couple.pal",
+   "engine:graphics/trainers/palettes/cool_trainer_f.pal",
+   "engine:graphics/trainers/palettes/cool_trainer_m.pal",
+   "engine:graphics/trainers/palettes/crush_girl.pal",
+   "engine:graphics/trainers/palettes/crush_kin.pal",
+   "engine:graphics/trainers/palettes/cue_ball.pal",
+   "engine:graphics/trainers/palettes/elite_four_agatha.pal",
+   "engine:graphics/trainers/palettes/elite_four_bruno.pal",
+   "engine:graphics/trainers/palettes/elite_four_lance.pal",
+   "engine:graphics/trainers/palettes/elite_four_lorelei.pal",
+   "engine:graphics/trainers/palettes/engineer.pal",
+   "engine:graphics/trainers/palettes/fisherman.pal",
+   "engine:graphics/trainers/palettes/gamer.pal",
+   "engine:graphics/trainers/palettes/gentleman.pal",
+   "engine:graphics/trainers/palettes/hiker.pal",
+   "engine:graphics/trainers/palettes/juggler.pal",
+   "engine:graphics/trainers/palettes/lady.pal",
+   "engine:graphics/trainers/palettes/lass.pal",
+   "engine:graphics/trainers/palettes/leader_blaine.pal",
+   "engine:graphics/trainers/palettes/leader_brock.pal",
+   "engine:graphics/trainers/palettes/leader_erika.pal",
+   "engine:graphics/trainers/palettes/leader_giovanni.pal",
+   "engine:graphics/trainers/palettes/leader_koga.pal",
+   "engine:graphics/trainers/palettes/leader_lt_surge.pal",
+   "engine:graphics/trainers/palettes/leader_misty.pal",
+   "engine:graphics/trainers/palettes/leader_sabrina.pal",
+   "engine:graphics/trainers/palettes/leaf.pal",
+   "engine:graphics/trainers/palettes/painter.pal",
+   "engine:graphics/trainers/palettes/picnicker.pal",
+   "engine:graphics/trainers/palettes/pokemaniac.pal",
+   "engine:graphics/trainers/palettes/pokemon_breeder.pal",
+   "engine:graphics/trainers/palettes/pokemon_ranger_f.pal",
+   "engine:graphics/trainers/palettes/pokemon_ranger_m.pal",
+   "engine:graphics/trainers/palettes/psychic_f.pal",
+   "engine:graphics/trainers/palettes/red.pal",
+   "engine:graphics/trainers/palettes/rival_early.pal",
+   "engine:graphics/trainers/palettes/rival_late.pal",
+   "engine:graphics/trainers/palettes/rocker.pal",
+   "engine:graphics/trainers/palettes/rocket_grunt_f.pal",
+   "engine:graphics/trainers/palettes/rocket_grunt_m.pal",
+   "engine:graphics/trainers/palettes/rs_youngster.pal",
+   "engine:graphics/trainers/palettes/ruin_maniac.pal",
+   "engine:graphics/trainers/palettes/sailor.pal",
+   "engine:graphics/trainers/palettes/scientist.pal",
+   "engine:graphics/trainers/palettes/sis_and_bro.pal",
+   "engine:graphics/trainers/palettes/sr_and_jr.pal",
+   "engine:graphics/trainers/palettes/staff_ardor.pal",
+   "engine:graphics/trainers/palettes/staff_brazen.pal",
+   "engine:graphics/trainers/palettes/staff_callow.pal",
+   "engine:graphics/trainers/palettes/staff_doldrum_picnicker.pal",
+   "engine:graphics/trainers/palettes/staff_doldrum_swimmer.pal",
+   "engine:graphics/trainers/palettes/staff_lurid.pal",
+   "engine:graphics/trainers/palettes/staff_quicksilver.pal",
+   "engine:graphics/trainers/palettes/staff_slate.pal",
+   "engine:graphics/trainers/palettes/staff_verdigris.pal",
+   "engine:graphics/trainers/palettes/super_nerd.pal",
+   "engine:graphics/trainers/palettes/swimmer_f.pal",
+   "engine:graphics/trainers/palettes/swimmer_m.pal",
+   "engine:graphics/trainers/palettes/tamer.pal",
+   "engine:graphics/trainers/palettes/tuber_f.pal",
+   "engine:graphics/trainers/palettes/twins.pal",
+   "engine:graphics/trainers/palettes/young_couple.pal",
+   "engine:graphics/trainers/palettes/youngster.pal"
+  ]
+ },
+ "gbacivic": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server",
+  "files": [
+   "engine:data/tilesets/secondary/cerulean_city/palettes/07.pal"
+  ]
+ },
+ "gbacivictown": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server",
+  "files": [
+   "engine:data/tilesets/secondary/cerulean_city/metatiles.bin",
+   "engine:data/tilesets/secondary/cerulean_city/tiles.png"
+  ]
+ },
+ "gbacompact": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 14f790219 CHECKPOINT rotunda, REPO containers, BENCHMARK colonnade; 45 duplicate; 6359e4f37 Batch 7: CALLOW SCHOOL from outside, and THE READING ROOM inside; fb6f7ec66 No seams on Route 1 and Route 21; the station; GOTO; no GYM (T-72..T-7",
+  "files": [
+   "engine:data/tilesets/secondary/pallet_town/metatiles.bin",
+   "engine:data/tilesets/secondary/pallet_town/tiles.png",
+   "engine:tileset_rules.mk"
+  ]
+ },
+ "gbadedupe": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 086598431 THE SCHOLAR'S HOUSE in Brazen is a stone study; fff879fe9 CORPUS never calls itself criminal; every signpost loses its red lette",
+  "files": [
+   "engine:data/tilesets/primary/general/metatiles.bin",
+   "engine:data/tilesets/primary/general/tiles.png",
+   "engine:data/tilesets/secondary/saffron_city/metatiles.bin"
+  ]
+ },
+ "gbagrass": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by fff879fe9 CORPUS never calls itself criminal; every signpost loses its red lette",
+  "files": [
+   "engine:data/tilesets/primary/general/tiles.png"
+  ]
+ },
+ "gbarepo": {
+  "why": "CHANGED AFTER ITS FILES (83488a6e tools: gbacheckpoint.py and gbarepo.py -- the CHECKPOINT rack, floor a) -- read what --write would change before running it",
+  "files": [
+   "engine:data/tilesets/secondary/mart/metatiles.bin",
+   "engine:data/tilesets/secondary/mart/tiles.png"
+  ]
+ },
+ "gbaroutes": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 14f790219 CHECKPOINT rotunda, REPO containers, BENCHMARK colonnade; 45 duplicate; fb6f7ec66 No seams on Route 1 and Route 21; the station; GOTO; no GYM (T-72..T-7",
+  "files": [
+   "engine:data/layouts/Route1/border.bin",
+   "engine:data/layouts/Route1/map.bin",
+   "engine:data/tilesets/secondary/pallet_town/metatile_attributes.bin",
+   "engine:data/tilesets/secondary/pallet_town/metatiles.bin"
+  ]
+ },
+ "gbaseek": {
+  "why": "CHANGED AFTER ITS FILES (4528705e intro: SEEKMUSAI takes the Pikachu slot) -- read what --write would change before running it",
+  "files": [
+   "engine:graphics/oak_speech/pikachu_intro/pikachu.pal"
+  ]
+ },
+ "gbastatues": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 6359e4f37 Batch 7: CALLOW SCHOOL from outside, and THE READING ROOM inside",
+  "files": [
+   "engine:data/tilesets/secondary/celadon_gym/tiles.png",
+   "engine:data/tilesets/secondary/cerulean_gym/tiles.png",
+   "engine:data/tilesets/secondary/cinnabar_gym/tiles.png",
+   "engine:data/tilesets/secondary/fuchsia_gym/tiles.png",
+   "engine:data/tilesets/secondary/pewter_gym/tiles.png",
+   "engine:data/tilesets/secondary/saffron_gym/tiles.png",
+   "engine:data/tilesets/secondary/vermilion_gym/tiles.png",
+   "engine:data/tilesets/secondary/viridian_gym/tiles.png",
+   "engine:tileset_rules.mk"
+  ]
+ },
+ "gbatitlepal": {
+  "why": "CHANGED AFTER ITS FILES (9cd89bbb title: one lost nibble made the whole screen unreadable) -- read what --write would change before running it",
+  "files": [
+   "engine:graphics/title_screen/firered/background.pal",
+   "engine:graphics/title_screen/leafgreen/background.pal"
+  ]
+ },
+ "genanims": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 469da6550 T-168 wave 4 released: the twelve non-move animations in the palette v",
+  "files": [
+   "engine:data/battle_anim_scripts.s"
+  ]
+ },
+ "genbacks": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 6eeb8e3c2 T-177: the 64px art gets the outline the quantizer could not draw",
+  "files": [
+   "engine:graphics/trainers/back_pics/leaf_back_pic.png",
+   "engine:graphics/trainers/back_pics/red_back_pic.png"
+  ]
+ },
+ "genmentors": {
+  "why": "CHANGED AFTER ITS FILES (f129caee T-213 closed: every generator must still RUN; the school tickets close) -- read what --write would change before running it",
+  "files": [
+   "engine:graphics/trainers/back_pics/old_man_back_pic.png",
+   "engine:graphics/trainers/back_pics/pokedude_back_pic.png"
+  ]
+ },
+ "genopusicon": {
+  "why": "CHANGED AFTER ITS FILES (13d35e13 T-197a recorded: the cue, the card, and why not an item ball) -- read what --write would change before running it",
+  "files": [
+   "engine:graphics/items/icon_palettes/opus.pal"
+  ]
+ },
+ "genpairs": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 02e2e62eb T-177 amended: a true black outline on every picture of ours; 6eeb8e3c2 T-177: the 64px art gets the outline the quantizer could not draw",
+  "files": [
+   "engine:graphics/trainers/front_pics/crush_kin_front_pic.png",
+   "engine:graphics/trainers/front_pics/sis_and_bro_front_pic.png",
+   "engine:graphics/trainers/front_pics/twins_front_pic.png",
+   "engine:graphics/trainers/front_pics/young_couple_front_pic.png"
+  ]
+ },
+ "genpsychic": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 6eeb8e3c2 T-177: the 64px art gets the outline the quantizer could not draw; 6ef4dde3a T-169 batch 6: the two rangers and the jellyfish psychic (m derived by",
+  "files": [
+   "engine:graphics/trainers/front_pics/psychic_m_front_pic.png",
+   "engine:graphics/trainers/palettes/psychic_m.pal"
+  ]
+ },
+ "genstates": {
+  "why": "CHANGED AFTER ITS FILES (a5dbb65e T-168 closed: wave 4 released; the 22 left are kept on purpose) -- read what --write would change before running it",
+  "files": [
+   "engine:data/battle_anim_scripts.s"
+  ]
+ },
+ "genstreaks": {
+  "why": "CHANGED AFTER ITS FILES (f129caee T-213 closed: every generator must still RUN; the school tickets close) -- read what --write would change before running it",
+  "files": [
+   "engine:src/data/pokemon/streaks.h"
+  ]
+ },
+ "port_ecsort": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 980854334 T-31, and six lines that sent the player to a place that no longer exi",
+  "files": [
+   "engine:src/data/easy_chat/easy_chat_words_by_letter.h"
+  ]
+ },
+ "port_hearsay": {
+  "why": "STALE -- would put back TM for PLUGIN, 'Freezing' for FROZEN and strip four leaders' music cues (T-289); never --write it whole",
+  "files": [
+   "engine:data/maps/CeruleanCity_Gym/text.inc",
+   "engine:data/maps/PokemonLeague_AgathasRoom/text.inc",
+   "engine:data/maps/PokemonLeague_BrunosRoom/text.inc",
+   "engine:data/maps/PokemonLeague_LancesRoom/text.inc",
+   "engine:data/maps/PokemonLeague_LoreleisRoom/text.inc",
+   "engine:data/maps/SaffronCity_Gym/text.inc",
+   "engine:data/text/fame_checker.inc"
+  ]
+ },
+ "port_states": {
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 3de6857eb T-248: a state is explained in its own name; 4671607a1 T-219 (batch 4): 2F ATTENTION, 3F MEMORY, 4F CATEGORIES; 5d7cd6d95 T-223: the NOTEBOOK and the TEXTBOOK read like books (+2 more)",
+  "files": [
+   "engine:data/maps/ViridianCity_School_3F/text.inc",
+   "engine:data/maps/ViridianCity_School_5F/text.inc",
+   "engine:src/data/items.json",
+   "engine:src/move_descriptions.c",
+   "engine:src/school_exam.c"
+  ]
+ }
+}
