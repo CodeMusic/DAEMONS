@@ -402,7 +402,7 @@ screenshot of it beside the source line settles it in a minute.***
 
 ### 34. A generator whose --write broke while its report kept passing
 
-***Symptom (2026-09-25, T-291):*** *`gbaowslots.py --write` had stopped at a NameError for four days — `gbasprite.py`'s `ramp5` gained `INK` (T-184) and this tool copies `ramp5` out by AST without it.* **`check_generators.py` runs every tool in REPORT mode, and this tool's report never builds a palette**, *so it passed every time. The overworld daemons kept the outline T-184 had replaced everywhere else.* ***A tool you are about to rely on for a write, run its write on a clean tree first and read `git status`*** — *and when it has been a while, expect it to be stale in both directions: it may fail, or it may succeed and undo what came after it (trap 32; this one would have deleted two graphics ids that others added below its block).*
+***Symptom (2026-09-25, T-291):*** *`gbaowslots.py --write` had stopped at a NameError for four days — `gbasprite.py`'s `ramp5` gained `INK` (T-184) and this tool copies `ramp5` out by AST without it.* **`check_generators.py` runs every tool in REPORT mode, and this tool's report never builds a palette**, *so it passed every time. The overworld daemons kept the outline T-184 had replaced everywhere else.* ***A tool you are about to rely on for a write, look it up in `tools/generator_drift.json` and run `check_generators.py --writes`*** (T-292) — *and when it has been a while, expect it to be stale in both directions: it may fail, or it may succeed and undo what came after it (trap 32; this one would have deleted two graphics ids that others added below its block).*
 
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
