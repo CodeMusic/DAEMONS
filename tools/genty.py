@@ -108,7 +108,7 @@ def main():
         print("  report only; pass --write (preview in %s)" % SCRATCH)
         return
     pic.save(OUT_PIC, bits=4)
-    with open(OUT_PAL, "w") as f:
+    with open(OUT_PAL, "w", newline="\r\n") as f:   # .gitattributes checks JASC palettes out CRLF (T-293)
         f.write("JASC-PAL\n0100\n16\n" + "".join("%d %d %d\n" % c for c in cols))
     ow.save(OUT_OW, bits=4)
     print("  written")
