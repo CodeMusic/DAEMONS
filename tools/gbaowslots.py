@@ -31,15 +31,23 @@ NPC = ["PALSLOT_NPC_1", "PALSLOT_NPC_2", "PALSLOT_NPC_3", "PALSLOT_NPC_4"]
 
 def read(p): return open(os.path.join(E, p) if not p.startswith("/") else p).read()
 
+#  Species whose object is not named after them, or is not named on the map at all (found 2026-09-25: the census
+#  counted DEOXYS_N as vanilla and nothing asked whether a player could meet it -- one does, on THE ANNEX once CRYSTAL
+#  has gone home, where BirthIsland_Exterior's script puts it in OBJ_EVENT_GFX_VAR_0). species: (gfx id, pic stem,
+#  {map: the graphics_id that map's object carries for it}).
+ALIASES = {"DEOXYS": ("OBJ_EVENT_GFX_DEOXYS_N", "deoxys_n", {"BirthIsland_Exterior": "OBJ_EVENT_GFX_VAR_0"})}
+
+
 def daemons_with_art():
-    """Species whose battle art is ours and who have an overworld object: the gfx id is the species name."""
+    """Species whose battle art is ours and who have an overworld object: the gfx id is the species name, or ALIASES'."""
     names = dict(re.findall(r'\[SPECIES_(\w+)\]\s*= _\("(.*?)"\)', read("src/data/text/species_names.h")))
     ptrs = dict(re.findall(r"\[(OBJ_EVENT_GFX_\w+)\]\s*=\s*&gObjectEventGraphicsInfo_(\w+)", read(PTRS)))
     out = {}
     for sp, nm in names.items():
         stem = nm.lower().replace(" ", "_")
-        if ("OBJ_EVENT_GFX_" + sp) in ptrs and glob.glob(os.path.join(ROOT, "gfx/daemons/%s_front.png" % stem)):
-            out[sp] = ptrs["OBJ_EVENT_GFX_" + sp]
+        gfx = ALIASES[sp][0] if sp in ALIASES else "OBJ_EVENT_GFX_" + sp
+        if gfx in ptrs and glob.glob(os.path.join(ROOT, "gfx/daemons/%s_front.png" % stem)):
+            out[sp] = ptrs[gfx]
     return out
 
 def species_type(sp):
@@ -76,17 +84,23 @@ def plan():
     maps, misfits = {}, []
     for mj in sorted(glob.glob(os.path.join(E, "data/maps/*/map.json"))):
         j = json.load(open(mj)); objs = j.get("object_events", [])
-        mine = [o for o in objs if o.get("graphics_id") in dgfx]
+        name = os.path.basename(os.path.dirname(mj))
+        here = dict(dgfx)
+        for sp, (g, _, placed) in ALIASES.items():
+            if sp in dm:
+                here[g] = sp
+                if name in placed:
+                    here[placed[name]] = sp
+        mine = [o for o in objs if o.get("graphics_id") in here]
         if not mine:
             continue
-        name = os.path.basename(os.path.dirname(mj))
         refl, beh = map_behaviour(j["layout"])
         wet = lambda o: any(beh(o["x"], o["y"] + k) in REF for k in (1, 2))
-        others = [o for o in objs if o.get("graphics_id") not in dgfx]
+        others = [o for o in objs if o.get("graphics_id") not in here]
         used = {slot_of.get(ptrs.get(o.get("graphics_id")), "?") for o in others}
         types = {}
         for o in mine:
-            types.setdefault(species_type(dgfx[o["graphics_id"]]), []).append(o)
+            types.setdefault(species_type(here[o["graphics_id"]]), []).append(o)
         order = sorted(types, key=lambda t: -len(types[t]))
         free = [s for s in NPC if s not in used] + (["PALSLOT_NPC_SPECIAL"] if "PALSLOT_NPC_SPECIAL" not in used else [])
         assign = {}
@@ -104,7 +118,7 @@ def plan():
                     assign[t] = rs; break
             else:
                 misfits.append((name, t))
-        maps[name] = {t: dict(slot=assign.get(t), species=sorted({dgfx[o["graphics_id"]] for o in types[t]})) for t in order}
+        maps[name] = {t: dict(slot=assign.get(t), species=sorted({here[o["graphics_id"]] for o in types[t]})) for t in order}
     return dm, maps, misfits
 
 if __name__ == "__main__":
@@ -136,7 +150,9 @@ def ow_palette(t):
     tree = ast.parse(open(os.path.join(ROOT, "tools/gbasprite.py")).read())
     ns = {}
     for n in tree.body:
-        if isinstance(n, ast.FunctionDef) and n.name == "ramp5" or isinstance(n, ast.Assign) and any(getattr(x, "id", "") == "TYPE_COLOR" for x in n.targets):
+        #  INK too: ramp5's outline is gbasprite's true black since T-184 (2026-09-21), and without it --write stopped
+        #  at a NameError for four days while report mode, which never builds a palette, went on passing (2026-09-25)
+        if isinstance(n, ast.FunctionDef) and n.name == "ramp5" or isinstance(n, ast.Assign) and any(getattr(x, "id", "") in ("TYPE_COLOR", "INK") for x in n.targets):
             exec(compile(ast.Module(body=[n], type_ignores=[]), "gbasprite", "exec"), ns)
     return [(0, 0, 0)] + ns["ramp5"](*ns["TYPE_COLOR"][t]) + NEUTRALS           # index 0 transparent
 
@@ -192,12 +208,12 @@ def write(dm, maps):
     # 2. object art from each species' built battle sprites, in its type's palette
     for sp in dm:
         t = species_type(sp); pal = ow_palette(t); d = sp.lower()
-        pic = os.path.join(E, "graphics/object_events/pics/pokemon/%s.png" % d)
+        pic = os.path.join(E, "graphics/object_events/pics/pokemon/%s.png" % (ALIASES[sp][1] if sp in ALIASES else d))
         from PIL import Image
         w, h = Image.open(pic).size
         gp = os.path.join(E, "graphics/pokemon", d)
         f, b = os.path.join(gp, "front.png"), os.path.join(gp, "back.png")
-        frames = [frame(f, h, pal)] if w == h else [frame(f, h, pal), frame(b, h, pal), frame(f, h, pal)]
+        frames = [frame(f, h, pal)] if w == h else [frame(f, h, pal), frame(b, h, pal), frame(f, h, pal)][:w // h]
         write_png(pic, frames, pal)
     # 3. graphics infos: the base keeps its id with the type's tag and the slot most maps use; the rest are variants
     need = {}
@@ -215,7 +231,11 @@ def write(dm, maps):
         gi = gi.replace(body.group(0), body.group(1) + nb + body.group(3))
     gi = re.sub(r"\n%s variants.*" % re.escape(MARK), "", gi, flags=re.S)
     consts = read("include/constants/event_objects.h")
-    consts = re.sub(r"\n*%s variants.*?\n(?=\n#define NUM_OBJ_EVENT_GFX)" % re.escape(MARK), "\n", consts, flags=re.S)
+    #  Remove only OUR lines -- the mark and the variant defines. Ids added after this tool last ran (T-208's PLUGIN
+    #  DISC, T-256's DAD) sit between them and NUM_OBJ_EVENT_GFX, and an earlier version of this line deleted them
+    #  with everything else down to NUM (caught before commit, 2026-09-25).
+    consts = re.sub(r"\n%s variants[^\n]*" % re.escape(MARK), "", consts)
+    consts = re.sub(r"\n#define OBJ_EVENT_GFX_DAEMON_\w+ \d+", "", consts)
     first = int(re.search(r"#define OBJ_EVENT_GFX_CUE_BALL (\d+)", consts).group(1)) + 1
     ptrs = read(PTRS); ptrs = re.sub(r"\n    %s variants.*?(?=\n\};)" % re.escape(MARK), "", ptrs, flags=re.S)
     variants, vid, vdefs, vinfos, vptrs = {}, first, [], [], []
@@ -229,9 +249,11 @@ def write(dm, maps):
                           (name.title().replace("_", ""), re.sub(r"\.paletteSlot = \w+", ".paletteSlot = %s" % sl, src)))
             vptrs.append("    [OBJ_EVENT_GFX_DAEMON_%s] = &gObjectEventGraphicsInfo_Daemon_%s," % (name, name.title().replace("_", "")))
     assert vid <= 240, "variants run into the dynamic gfx ids"
-    consts = re.sub(r"\n+(?=\n#define NUM_OBJ_EVENT_GFX)", "\n", consts)
-    consts = consts.replace("\n#define NUM_OBJ_EVENT_GFX", "\n%s variants: a daemon's object in another palette slot, same art\n%s\n\n#define NUM_OBJ_EVENT_GFX" % (MARK, "\n".join(vdefs)), 1)
-    consts = re.sub(r"#define NUM_OBJ_EVENT_GFX\s+\d+", "#define NUM_OBJ_EVENT_GFX     %d" % vid, consts)
+    anchor = re.search(r"#define OBJ_EVENT_GFX_CUE_BALL \d+\n", consts)
+    consts = consts[:anchor.end()] + "\n%s variants: a daemon's object in another palette slot, same art\n%s\n" % (MARK, "\n".join(vdefs)) + consts[anchor.end():]
+    consts = re.sub(r"\n{3,}", "\n\n", consts)
+    ids = [int(v) for v in re.findall(r"#define OBJ_EVENT_GFX_\w+ (\d+)", consts.split("// These are dynamic")[0])]
+    consts = re.sub(r"#define NUM_OBJ_EVENT_GFX\s+\d+", "#define NUM_OBJ_EVENT_GFX     %d" % (max(ids) + 1), consts)
     open(os.path.join(E, "include/constants/event_objects.h"), "w").write(consts)
     open(GI, "w").write(gi.rstrip() + "\n\n%s variants: the same art, another slot\n%s\n" % (MARK, "\n".join(vinfos)))
     ptrs = re.sub(r"\n\};\s*$", "\n    %s variants\n%s\n};\n" % (MARK, "\n".join(vptrs)), ptrs.rstrip() + "\n")
