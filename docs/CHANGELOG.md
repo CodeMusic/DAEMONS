@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Two things found playing, and the family (2026-09-26)
+
+- ***AL walked in through the lab's back wall*** (T-299): *for the INDEX scene after the REVIEW BOARD he was already standing in the lab, so the script's `setobjectxyperm` moved only where he would load next time and he walked the whole route from where he stood — through the top wall and out the same way. Now he is put at the door as well, and comes up from it. Played.*
+- ***The REPO's shelf in front of the door, and OPUS*** (T-312): *the small unit square in front of every REPO's door is floor now, and OPUS sits at the bottom end of CALLOW REPO's right-hand shelving, where a golden ticket is tucked over the bin's label until you take it. A collector in BENCHMARK's REPO has heard of an INDEX upgrade on a shelf with a ticket on it, and says something else once you hold it (DRAFT). Played.*
+- ***The credits name the DAEMON Designers and the family*** (T-314, T-313): *Christopher Art Hicks, Claude Opus, SeeingSharp, PsychologyCode and DetourDesigns; Shirley L Hicks, Dave R Hicks and David F Hicks.* ***In the house, as animals*** (DRAFT): *MOM, once you hold the S.S. ANNE ticket, sends you to a chair by the pool — "your brother has the ship now"; DAD says the post still comes for DOCTOR, and he sells diggers; DAVID is a note on the wall, out on the island ferries this season. All played.*
+- ***The Guide's shelf, and HALFTONE ORPHAN HOUSE*** (T-258).
+
 ### The user's answers, built (2026-09-26)
 
 - ***The credits say whose game this is*** (T-290): *"DAEMONS / CONTENT", then "Created by / Christopher Art Hicks", "Built with / Claude Opus" and "Built on / Pokémon FireRed Version and its Staff"; FireRed's staff keep their own headings again (the vocabulary pass had credited them as "DAEMON Designers" and "INDEX Text", and now leaves every credits line alone); and the four cards are ROVERBYTE, MUSAI, ARTSAI and STARR, each drawn from its own front picture.* **Played on a debug RECORD.** *Still to draw: the running player and rival, which are vanilla's humans.*
