@@ -7,6 +7,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Seven understandings, and the week's colour (2026-09-26)
+
+- ***Understandings, arrived at*** (T-252, DRAFT): *six more, at the moments the user named — the school, the Reading Room, QUICKSILVER's notes, SCORN, TY and CRYSTAL, the GUIDE read through. Each is set silently on the next map load once its moment is complete, and each leaves a note in the margin of the GUIDE chapter it answers. Nothing counts them. SCORN's, in DEBUGGING: "He kept score. He was very good at it." The AI playtester sees all seven.*
+- ***The menu in the day's colour*** (T-318): *the START menu's frame is red on Sunday through violet on Saturday, the user's exception to 9.4.*
+- ***PENPHIN's types*** (T-234): *decided — DOLPHIN VECTOR/FLOW, PENGUIN FLOW, PENPHIN CONTEXT/FLOW; built when the sprites can be drawn.*
+
 ### The playtester's brief, and the credits' runners (2026-09-26)
 
 - ***The AI playtester knows the game as it is now*** (T-319): *the school, the Reading Room, the GUIDE and the understandings are objectives; every prompt names the MARKS held and the understandings arrived at; the brief says what an understanding is. The run itself waits for the local hardware.* **`port_prompts.py` now refuses a whole-tree write**: *the brief is hand-kept past what it knows, and its write would have renamed the brief's own glossary.*
