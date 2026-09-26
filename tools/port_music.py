@@ -89,6 +89,11 @@ VANILLA = ["mus_pewter"]
 MAP_MUSIC = {
     "MUS_SLATE":  ["PewterCity", "PewterCity_House1", "PewterCity_House2",
                    "PewterCity_Museum_1F", "PewterCity_Museum_2F"],
+    # T-05 (2026-09-26): CALLOW's own theme, Desperate Shadows, transcribed from the user's recording by mp3midi.py into
+    # an appended slot like SLATE's. The town, its house and every floor of its school; the gatehouses keep vanilla's.
+    "MUS_CALLOW": ["ViridianCity", "ViridianCity_House", "ViridianCity_School", "ViridianCity_School_2F",
+                   "ViridianCity_School_3F", "ViridianCity_School_4F", "ViridianCity_School_5F",
+                   "ViridianCity_School_6F", "ViridianCity_School_7F"],
     "MUS_BRAZEN": ["SaffronCity", "SaffronCity_House", "SaffronCity_Dojo",
                    "SaffronCity_CopycatsHouse_1F", "SaffronCity_CopycatsHouse_2F",
                    "SaffronCity_PokemonTrainerFanClub", "SaffronCity_MrPsychicsHouse"],

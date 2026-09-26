@@ -217,7 +217,7 @@ def make_patches(dest):
 def patch_notes(rows):
     out = ["## Patches", "",
            "*Apply one to the ROM it names, in any BPS patcher (Rom Patcher JS works in a browser). Each checks the "
-           "ROM's CRC and refuses the wrong one.*", "",
+           "ROM's CRC and refuses the wrong one. Step by step, with every checksum: `ROM RELEASE/HOW_TO_PATCH.md`.*", "",
            "| patch | apply it to | that ROM's SHA-1 |", "|---|---|---|"]
     for name, owned, digest, size in rows:
         out.append("| `PATCHES/%s` | %s | `%s` |" % (name, owned, digest))

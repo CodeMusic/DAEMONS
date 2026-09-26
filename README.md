@@ -6,6 +6,15 @@ Machines evolved into creatures. This is a game about what happened next, and it
 
 ---
 
+## Play it
+
+**From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
+apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
+walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)).
+
+---
+
 ## What this is
 
 A total conversion. It was built first on [pret/pokered](https://github.com/pret/pokered) — the Game Boy — and **ported to the GBA on 2026-09-03**, onto [pret/pokefirered](https://github.com/pret/pokefirered).

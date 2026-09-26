@@ -7,6 +7,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Ty's face, CALLOW's song, and patches anyone can use (2026-09-26)
+
+- ***Ty is a red fox*** (T-298, DRAFT art, `tools/genty.py`): *CRYSTAL's portrait and walking sheet with the gold taken down to red and her purple to slate, in the family's own palette ("three foxes, a palette apart", 4.3). He has his own battle picture and walking sheet, plus the raised-paw frame every trainer's sheet has. Played through the battle and the handover.* **It found engine.md trap 35**: *a new overworld sheet with no line in `spritesheet_rules.mk` is cut row by row instead of frame by frame, nothing warns, and a deleted `.4bpp` isn't rebuilt. He vanished after his battle until it was fixed.*
+- ***CALLOW has its own music*** (T-05, DRAFT): *the user's recording of* 14.25 Desperate Shadows, *transcribed by `mp3midi.py` into a new slot, `MUS_CALLOW` (C# minor, 103 BPM). It plays in the town, its house and every floor of the school. CALLOW had been borrowing vanilla's Pewter theme since T-226.*
+- ***The menu opens on the day's note*** (T-318): *Sunday C to Saturday B, the note TUNE plays. Sunday and Monday stay as they are (the user, 2026-09-26: the chakra order). The virtues will be earned, not given. Where the day sits on the card is asked.*
+- ***DAVID captains the S.S. ANNE*** (T-313), *decided by the user; not built yet.*
+- ***Patches anyone can use***: **`ROM RELEASE/HOW_TO_PATCH.md`** *walks a player from their own cartridge to DAEMONS: which edition, the CRC32, MD5 and SHA-1 of every ROM a patch fits, Rom Patcher JS, mGBA's soft patching, Delta on an iPhone, and what to do with a save.* **`tools/ghrelease.py`** *publishes a release's notes and its four BPS patches to GitHub (never a ROM), and the README now opens with how to play.*
+
 ### The Guide, out in the world (2026-09-26)
 
 - ***A dream sign*** (T-309, DRAFT): *a signpost in DOLDRUM CAVE's first corridor. Unread, it never says the same thing twice — SEVEN FLOORS, DOLDUM CAVE, DOLDRUM COVE, "Surveyed by you". Understood, it says "Three floors. Keep to the lit paths." and keeps saying it. The Guide's reality check, and nothing says so. Played both ways.*

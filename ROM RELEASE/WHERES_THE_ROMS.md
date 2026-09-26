@@ -17,7 +17,7 @@ post.
 ./bindDaemons.sh     # builds CONTENT and opens it in mGBA
 ```
 
-**Or patch a ROM you own.** Every release makes four BPS patches: CONTENT for *FireRed*, CONTEXT for *LeafGreen*,
+**Or patch a ROM you own** — step by step in [`HOW_TO_PATCH.md`](HOW_TO_PATCH.md), with the checksum of every ROM a patch fits. Every release makes four BPS patches: CONTENT for *FireRed*, CONTEXT for *LeafGreen*,
 each for version 1.0 and for Rev 1, because a patch only fits the exact ROM it was made from. Apply one in any BPS
 patcher ([Rom Patcher JS](https://www.marcrobledo.com/RomPatcher.js/) runs in a browser) to the matching game you
 own, and you have DAEMONS. The patches are kept out of git for their size and are published as downloads; each
