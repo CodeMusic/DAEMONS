@@ -179,11 +179,25 @@ def lost_values(ours, theirs):
     return sorted(out)
 
 
+#  A LINE THAT ANNOUNCES WHAT THE SCRIPT ANNOUNCES. Gen 1 put "<PLAYER> got #DEX from OAK!" inside the speaker's own
+#  text; Gen 3's script prints the receipt itself, with its fanfare. Carried across, four lines said it twice -- the
+#  CC-7 three times in a row (found playing CONTEXT from a new game, 2026-09-25).
+RECEIPT = re.compile(r"\{PLAYER\}\s*(?:got|received|obtained)\b", re.I)
+
+
+def doubled_receipts(ours, theirs):
+    return sorted(k for k, v in ours.items() if k in theirs and len(RECEIPT.findall(v)) > len(RECEIPT.findall(theirs[k])))
+
+
 def main():
     up = upstream()
     rc = 0
-    for k, lost in lost_values(text_blocks(GBA), text_blocks(up)):
+    ours_text, theirs_text = text_blocks(GBA), text_blocks(up)
+    for k, lost in lost_values(ours_text, theirs_text):
         print("  !! %s no longer has %s" % (k, ", ".join("{%s}" % x for x in lost)))
+        rc = 1
+    for k in doubled_receipts(ours_text, theirs_text):
+        print("  !! %s announces a receipt vanilla's script prints itself -- the player reads it twice" % k)
         rc = 1
     ours, theirs = audit(GBA), audit(up)
     worse = sorted(set(ours) - set(theirs))
@@ -209,8 +223,8 @@ def main():
             print("  !! %s is tested and nothing outside the DEBUG build sets it" % f)
             rc = 1
     if not rc:
-        print("  nothing we changed made anything unreachable, any door lead nowhere, any flag wait forever, or any line lose\n"
-              "  a value or a sound vanilla had.")
+        print("  nothing we changed made anything unreachable, any door lead nowhere, any flag wait forever, any line lose\n"
+              "  a value or a sound vanilla had, or any receipt get announced twice.")
     return rc
 
 
