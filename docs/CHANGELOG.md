@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### The Guide, out in the world (2026-09-26)
+
+- ***A dream sign*** (T-309, DRAFT): *a signpost in DOLDRUM CAVE's first corridor. Unread, it never says the same thing twice — SEVEN FLOORS, DOLDUM CAVE, DOLDRUM COVE, "Surveyed by you". Understood, it says "Three floors. Keep to the lit paths." and keeps saying it. The Guide's reality check, and nothing says so. Played both ways.*
+- ***The five case studies are islanders*** (T-310, DRAFT): *an engineer who checks the door three times, a designer whose voice says the same three words about every page, an owner who counts his MEADOW and has never sat in it, a writer whose chapter stops at the same place every morning, and a teacher who still counts heads when he looks at the volcano. Played.*
+- ***The REVIEW BOARD's copy*** (T-311): *on the INDIGO lobby's shelf, the Guide with ETHICS cut out at the spine — the contents still list it, and the page before still ends "That is exactly why the next section matters." Played.*
+- ***Ty in his Act 2 voice*** (T-316, DRAFT): *not a trader settling a price any more — a man who spent years telling people what was wrong with them, asks to see how you hold your DAEMONS, and says at the envelope that he looked away and cannot undo it. Played.*
+
 ### Two things found playing, and the family (2026-09-26)
 
 - ***AL walked in through the lab's back wall*** (T-299): *for the INDEX scene after the REVIEW BOARD he was already standing in the lab, so the script's `setobjectxyperm` moved only where he would load next time and he walked the whole route from where he stood — through the top wall and out the same way. Now he is put at the door as well, and comes up from it. Played.*
