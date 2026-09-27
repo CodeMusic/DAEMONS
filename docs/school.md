@@ -3,7 +3,7 @@
 *A design document.* **Nothing in here is built.** ***Revised 2026-09-22 on the user's answers*** — *PERCEPTION cut,
 CATEGORIES in, a ninth DRIVER and seven hidden groves added, the notebook from CAIRN.* *Proposed 2026-09-22, from the user's brief,
 against `vision.md` v11.237, the rock opera (`docs/archive/additional rock-opera song lyrics
-backup.rtf`), `lineage.md` and `story.md`.*
+backup.rtf`), `lineage.md` and the private `story.md`.*
 
 > *Internal.* It names the 4.10 sequence and the shape of the ending, both of which `CLAUDE.md`
 > keeps out of public writing. **It contains no exam question and no journal line** — those are

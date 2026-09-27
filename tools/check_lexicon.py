@@ -317,7 +317,7 @@ def check_story_freshness():
         return []
     top_v = heads[0]
     out = []
-    for rel in ("docs/story.md", "docs/story-readthrough.md"):
+    for rel in ("docs/private/story.md", "docs/private/story-readthrough.md"):
         p = os.path.join(ROOT, rel)
         if not os.path.isfile(p):
             continue
@@ -736,7 +736,7 @@ def check_stale_names():
     #  renamed. A markdown paragraph WRAPS, so the text is flattened before
     #  matching: "BOND\nBRIDGE" is one name, and the first scan of this missed
     #  exactly that one for exactly that reason.
-    for rel in ("docs/story.md", "docs/story-readthrough.md"):
+    for rel in ("docs/private/story.md", "docs/private/story-readthrough.md"):
         p = os.path.join(ROOT, rel)
         if not os.path.isfile(p):
             continue

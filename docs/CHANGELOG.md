@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Virtues, the witnesses' room, and the story kept private (2026-09-27)
+
+- ***Virtues come with the MARKS*** (T-318, DRAFT): *each of the first seven MARKS' BENCHMARKS pages says its virtue, root to crown (DILIGENCE, CHASTITY, CHARITY, KINDNESS, TEMPERANCE, PATIENCE, HUMILITY), and the USER card's portrait comes out of shadow band by band from the feet as they arrive: nothing drawn, no colour added, every unearned band one shade down in the portrait's own palette. Played with none, three and all.*
+- ***The witnesses' room confirms them*** (T-235): *the user confirmed the tile; the room was redrawn so the accounts it contradicted now hold. Details private.*
+- ***The key is DAVID's sheet*** (T-10): *confirmed.*
+- ***`story.md` and `story-readthrough.md` are private*** (the user, 2026-09-27): *their plot is two of the four secrets. They live in `docs/private/`; `check_lexicon` still reads them there.*
+
 ### The singing fir, the witnesses' lock, and the secrets kept (2026-09-27)
 
 - ***The singing fir*** (T-10, DRAFT): *a fir with a star and six baubles in the painting's note colours (`tools/gensingingfir.py`) stands on the S.S. ANNE's pier where the old legend put the truck, reached by SURF from the empty dock. It hums O CHRISTMAS TREE's first phrase without its key signature (the yellow and purple notes sharp) and, given the key, sings it right. The key is LOOSE PAGES 8, THE BAND'S SHEET, from DAVID (a proposal: what gives the key is the user's). After the ship sails, the ferry sailor now lets the player onto the pier, the ship stays gone, and the pier's end is boards rather than an arrow into it. Played: the pier, both tunes (their pitches read off the sound engine), DAVID's handover.*
