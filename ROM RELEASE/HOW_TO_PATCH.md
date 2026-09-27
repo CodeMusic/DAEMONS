@@ -81,6 +81,22 @@ in Delta, press **+** and import the patched file from Files.
 Any BPS patcher works: Floating IPS (Windows), MultiPatch (Mac), or the patching built into RetroArch. The steps
 are always the same: your ROM, then the patch, then save the result.
 
+### On a real Game Boy Advance, with a flash cartridge
+
+A flash cartridge (an EZ-Flash, an EverDrive and the like) plays the patched file on the hardware itself.
+
+1. Patch as above, then copy the patched `.gba` to the cartridge's SD card.
+2. **Save type**: leave it on the cartridge's automatic setting. DAEMONS saves exactly as *FireRed* does (128 KB flash).
+3. **The clock.** DAEMONS reads a cartridge clock if there is one: the days of the week and the time of day come
+   from it. If your cartridge has a clock battery, switch its clock (RTC) **on** for this game in the cartridge's
+   own settings, and set the time there. Without one, the game still plays, and its days follow your play time.
+4. **Check it**: at the terminal in your bedroom, type **TIME**. A **CLOCK** line with today's date means the
+   cartridge's clock is being read.
+
+**Moving a save between an emulator and the cartridge**: a flash cartridge wants a `.sav` of exactly 131,072
+bytes. mGBA's saves are 131,088, because mGBA adds 16 bytes of its own clock data at the end. Trim those 16
+bytes (any hex editor, or `head -c 131072 in.sav > out.sav`) and the cartridge reads it. Back up both copies first.
+
 ## 5. Your save file
 
 - **Start a new game.** A save from the original *FireRed* or *LeafGreen* isn't meant for DAEMONS, so keep your

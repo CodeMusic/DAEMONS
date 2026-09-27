@@ -7,6 +7,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### "Yes to all": the INDEX comes clear, the day on the card, the shadows (2026-09-27)
+
+- ***The INDEX's pictures come clear*** (T-317, DRAFT): *a daemon's picture in its entry is drawn with the map's clarity — two by two while most understandings are still to come, two by one while a few are, sharp once all are held. One rule for both; the page's text never blurs.*
+- ***The day on the USER card*** (T-318): *"F WED" between USER and CARD on the front, at the band's left on the back; your own card only.*
+- ***Virtue over shadow*** (T-318, DRAFT): *each held MARK's page ends "CHARITY / over GREED."; the first seven certify lines were cut to two for the room.*
+- ***RESONANCE decided*** (T-234): *the geometric mean of Attack and Sp. Atk against Defense and Sp. Def, which is what rewards balance; built with PENPHIN.*
+- ***On a real GBA*** (T-265): *`HOW_TO_PATCH.md` has a flash-cartridge section — the clock switched on, TIME to check it, and moving a save.*
+
 ### Reaching what was built (2026-09-27)
 
 - ***DEBUG → JUMP → MORE***: *the JUMP page was full at seven rows, so a second page holds WARDEN, the singing FIR (the ship sailed, with or without the band's sheet, standing beside the fir — otherwise TRAVERSE and a whole voyage away) and the WITNESSES' reward (every understanding set, the TRANSCRIPT taken back, in the room). B steps back a page. Played, both.*
