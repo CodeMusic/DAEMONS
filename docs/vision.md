@@ -3591,7 +3591,7 @@ Her ability *is* the puzzle. That is the whole design.
 
 ***The terminal's number occurs exactly once in the ROM*** — verified by decoding the cartridge ([private: SECRETS §1]).
 
-**Still to build: the hidden object and its event flag.** The five accounts compose to one room and the terminal gives the distance; **nothing yet rewards standing there.**
+~~**Still to build: the hidden object and its event flag.**~~ ***Built 2026-09-27 (T-235)***: **the reward answers on its tile only once every UNDERSTANDING is held** *(the user, 2026-09-27), and gives the TRANSCRIPT under LAB NOTES; until then the tile is floorboards. The room was redrawn so it confirms the accounts. Where, and how: [private: SECRETS §1].*
 
 ### 4.9 Feedback, said sideways — dialogue guidance
 
@@ -7175,6 +7175,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 **The catching tutorial teaches 1.3 before the player owns a box:** *Watch. You weaken it, then you offer it a box. It goes in on its own, or it does not go in.*
 
 #### Adopted, not yet built
+
+***Status, 2026-09-27***: *most of this list is built or settled — Ty is in the ROM (T-19), the post-game triangle is the ending as built (T-261), THE HOLDOUT's TOKEN is in (T-260) and ORPHAN is a routine's name. **Penphin** is decided (T-234: DOLPHIN VECTOR/FLOW, PENGUIN FLOW, PENPHIN CONTEXT/FLOW) and waits on its art; **RESONANCE**'s behaviour has a proposal with the user.*
 
 ~~**Ty is not in the ROM at all.**~~ ***No longer true (noted 2026-09-24): T-19 put him in the FIVE ISLAND warehouse, where he hands over the payload.*** The bible places him at Quicksilver; no NPC has been written. **So his line and the post-game triangle are new content, not edits** — a larger job than the review implies. *Whether the triangle is still owed is T-261.*
 

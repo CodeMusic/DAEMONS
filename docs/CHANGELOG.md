@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Reaching what was built (2026-09-27)
+
+- ***DEBUG → JUMP → MORE***: *the JUMP page was full at seven rows, so a second page holds WARDEN, the singing FIR (the ship sailed, with or without the band's sheet, standing beside the fir — otherwise TRAVERSE and a whole voyage away) and the WITNESSES' reward (every understanding set, the TRANSCRIPT taken back, in the room). B steps back a page. Played, both.*
+- ***A bug that was always there***: *every DEBUG page shorter than seven rows cut its last row off at the bottom — MART's BACK read RACK — because rows are 15px apart and the window was 2n-1 tiles. The window is sized to its rows now; seven rows keep vanilla's height. Retail builds are untouched.*
+- ***The AI playtester knows this week*** (T-319): *the TRANSCRIPT, THE BAND'S SHEET and the fir heard in its key are in its snapshot, and its brief describes the TOWN MAP's clarity, the virtues on the USER card, and the fir and the Five Witnesses as side threads — never where the witnesses point. `check_agent_vocab` caught SURF (it is TRAVERSE).*
+- ***The bible's status notes***: *4.8's reward is marked built; 8.6's "Adopted, not yet built" list carries a status line.*
+
 ### The map comes clear (2026-09-27)
 
 - ***Understanding shown as clarity*** (T-317, DRAFT): *the TOWN MAP's land and sea are drawn slightly blocky while understandings are still to come and resolve as they arrive — two pixels square, then two by one, then sharp. The names, the cursor, the player and the GOTO icons never blur; the towns soften with the land. Nothing says it changed. Played at all three levels, through GOTO.*
