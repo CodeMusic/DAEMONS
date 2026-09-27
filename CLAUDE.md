@@ -284,6 +284,11 @@ The game asks the player to work them out. A reader who knows them cannot un-kno
 - The order of the Quicksilver sequence (4.10) — the dating scheme exists so the
   player reconstructs it
 
+**They live in `docs/private/`, which is gitignored** (2026-09-27): `SECRETS.md` holds the four, and
+`vision-unredacted.md` the whole bible as it stood. The public `vision.md` reads `[private: SECRETS §n]` where each
+stood. **Write new detail about any of the four there, never in a tracked file.** The folder is in no repository, so
+it needs backing up.
+
 ## When you change the design
 
 1. Edit `docs/vision.md` and bump the version line at the top

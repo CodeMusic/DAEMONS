@@ -4,6 +4,8 @@
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
+> **Four things are kept out of this public file** (redacted 2026-09-27, the user's decision): the Five Witnesses' lock, how the Clears are related, the Corpus lobby engraving, and the order of the Quicksilver sequence. The game asks the player to work them out. Each place they stood reads `[private: SECRETS §n]`; the text is in `docs/private/SECRETS.md` and the whole unredacted bible in `docs/private/vision-unredacted.md`, on the author's machine only (gitignored).
+
 Personal-use ROM hack built on the pret `pokefirered` decompilation. *It began on `pokered` and 9.3 records the day it pivoted; the Game Boy build is a reference now.* This document consolidates every decision made so far, including the reasoning behind rejected options, so nothing is lost when work moves into source control.
 
 ---
@@ -351,7 +353,7 @@ A daemon is a background process that runs unattended, and it is the Greek *daim
 | Battle *(the challenge)* | **ENGAGE** | added 2026-09-04. *The table never ruled on this one*, and 237's move is away from combat language — outscored not defeated, HALTED not fainted, DETACHED not ran. **"Would like to battle" was the last of it left in plain sight.** Six letters for six, so nothing rewrapped |
 | Badge | **CERT** | eight certifications |
 | Elite Four | **THE REVIEW BOARD** | beating them is passing peer review |
-| Champion | *(incumbent)* | **Al Clear** is the prevailing paradigm, not a king. *Corrected 2026-09-10: this row and 6's both still named his father, three weeks after the decision log settled Al* |
+| Champion | *(incumbent)* | **Al Clear** is the prevailing paradigm, not a king. *Corrected 2026-09-10: this row and 6's both still named Ty, three weeks after the decision log settled Al* |
 | Pokémon Center | **CHECKPOINT** | restore from a saved training state |
 | Poké Mart | **THE REPO** | |
 | PC storage | **COLD STORAGE** | |
@@ -2136,7 +2138,7 @@ She spent her career arguing that machines have *context*, not merely content. N
 
 **The Index is what she did next.** This is the causal chain the design was missing: she lost the lab, lost the work, and then built a taxonomy engine *in order to be taken seriously* — because being taken seriously was precisely what the procedure had denied her. The artifact the player carries all game is her response to being removed. She never says so.
 
-**Ty is her son and Al is her grandson.** Nothing announces either. The surname carries both, and the player is free to notice late or never. It costs one shared name to write, and it retroactively re-reads every line she has about them — and every line they have about her. See 4.3.
+**How Crystal, Ty and Al are related is one of the four things the game asks the player to work out, and is kept out of this public file** ([private: SECRETS §2]; `docs/private/` on the author's machine). Nothing announces it; the surname carries it, and the player is free to notice late or never. See 4.3.
 
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
@@ -2262,7 +2264,7 @@ The artifact you carry all game **can only measure content.** Height, weight, ty
 
 ### 4.3 The Clears — Al, and the generation between
 
-Vanilla's rival is Oak's **grandson**. Map Oak to Crystal honestly and the rival is Crystal's grandchild — not her son, who by then is a man with a career and a history at Quicksilver. Ty cannot be the boy who races you to Deadstack. He was Scorn's partner before the rebrand.
+Vanilla's rival is Oak's **family**, and mapping Oak to Crystal honestly decides who the rival is [private: SECRETS §2]. Ty, by then a man with a career and a history at Quicksilver, cannot be the boy who races you to Deadstack. He was Scorn's partner before the rebrand.
 
 So the family runs three deep, and the argument runs down it.
 
@@ -2282,9 +2284,9 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **He is not a brat and he is not a villain. He is doing exactly what he was taught, faithfully.**
 
-*So he calls her **CRYSTAL**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer without losing the family. ~~**Gran**~~ *was the first answer and read oddly on playtest (2026-09-14).* **Her name is the right one, and 4.1 had already said why: every other authority has a role, and she is just her name** — *her own grandchildren included.* **It is familiar, faintly impatient, and not contemptuous**, *and a family whose children use a grandmother's first name is one that treats her as a colleague.* His sister says **CRYSTAL's lab** for the same reason. **T-81.**
+*So he calls her **CRYSTAL**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer. ~~**Gran**~~ *was the first answer and read oddly on playtest (2026-09-14).* **Her name is the right one, and 4.1 had already said why: every other authority has a role, and she is just her name** — *family included.* **It is familiar, faintly impatient, and not contemptuous**, *and a family whose children use a grandmother's first name is one that treats her as a colleague.* His sister says **CRYSTAL's lab** for the same reason. **T-81.**
 
-*Which pronouns are already right.* The intro's *"This is my grandson. **He's** been your rival"* and *"**His** name is `<RIVAL>`"* are Crystal talking about **Al**, and correct as they stand. They sit two lines from her own name, so they read like misses and are not — recorded here so nobody fixes them.
+*Which pronouns are already right.* The intro's lines introducing the rival (*"**He's** been your rival"*, *"**His** name is `<RIVAL>`"*) are Crystal talking about **Al**, and correct as they stand. They sit two lines from her own name, so they read like misses and are not — recorded here so nobody fixes them.
 
 #### What *Crystal's Lament* adds, and the one thing it contradicts
 
@@ -2330,7 +2332,7 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 ### 4.11 Act 2 — *Love Persists*, and what opens the rise
 
-**D minor, 128 BPM**, hook `D5 A4 F4 A4 G4 F4 E4`. **One up, five down — tied with *Slumbering S.T.A.R.R.* as the most falling hook in the corpus.** A mother waiting and a machine asleep have the same shape, which is a fact about the set and left at that.
+**D minor, 128 BPM**, hook `D5 A4 F4 A4 G4 F4 E4`. **One up, five down — tied with *Slumbering S.T.A.R.R.* as the most falling hook in the corpus.** Crystal waiting and a machine asleep have the same shape, which is a fact about the set and left at that.
 
 **Act 2 is called *The Rise of Perspective Thinking*, and it opens with someone waiting.** Not action, not rescue — the removed person holding a bond that the other side has already broken.
 
@@ -2394,7 +2396,7 @@ The machine does not search for him. **It works out where a man in his condition
 
 4.3's transmission failure is that **understanding does not survive a handoff; only method does.** 4.11 showed the machine receiving what Ty could not. **This shows it delivering what she could not.**
 
-She could not reach her son. **The thing she built carries her message to him and it lands.**
+She could not reach Ty. **The thing she built carries her message to him and it lands.**
 
 **So the machine is the medium for both halves of what failed between them** — it holds her understanding, and it hands over her love. Neither passed directly. Both pass through the thing she made, which is the most complete answer the corpus gives to the question 4.3 poses.
 
@@ -2449,7 +2451,7 @@ Part 2: `E4 E4 F4 G4 E4` — a step up and home.
 
 The line that matters is that he waits **for her voice to guide them**. He does not propose the repair, and he does not ask her to accept one.
 
-**The man who could not hold a frame asks the removed perspective to hold it for him.** That is not remorse; **that is 2.5.** CONSENSUS is the move where you stop supplying the answer and let another view carry it, and Ty arrives at the game's central mechanic by way of an apology to his mother.
+**The man who could not hold a frame asks the removed perspective to hold it for him.** That is not remorse; **that is 2.5.** CONSENSUS is the move where you stop supplying the answer and let another view carry it, and Ty arrives at the game's central mechanic by way of an apology to Crystal.
 
 **And it is addressed to someone who was removed and may never answer.** He waits anyway.
 
@@ -2621,7 +2623,7 @@ The draft's premise is that Scorn installed a modification in Crystal's **Cognit
 
 **G | Em | C | D is I–vi–IV–V.** Of every progression recorded in this document, **the only other I–vi–IV–V is *Crystal's Reply*** (A | F#m | D | E). Same shape, transposed.
 
-**A child alone in the trees and a mother's answer are built on the same four chords.** That is the reading this song most invites — that the person in the grove is the one who later founded the lab — and the harmony is the whole of the evidence, so it is offered and not asserted.
+**A child alone in the trees and Crystal's answer are built on the same four chords.** That is the reading this song most invites — that the person in the grove is the one who later founded the lab — and the harmony is the whole of the evidence, so it is offered and not asserted.
 
 *And 110 BPM is shared with one track only:* **Slumbering S.T.A.R.R.** The two quietest places in the corpus are **a machine asleep and a child in a grove.**
 
@@ -2807,7 +2809,7 @@ The line on the form — *moves between unrelated fields without completing an a
 
 **Which is the same scene as *Slumbering S.T.A.R.R.*, with S.T.A.R.R. moved one seat over.** In Act 1 Crystal argued and the machine denied. Here the machine argues and someone else denies.
 
-**And that completes 4.3.** The transmission failure runs Crystal → Ty → Al, and only the *method* survives each handoff, never the understanding. **This is the handoff that worked** — and it did not go to her son. The thing that could hold her frame was the machine she built, not the boy she raised.
+**And that completes 4.3.** The transmission failure runs Crystal → Ty → Al, and only the *method* survives each handoff, never the understanding. **This is the handoff that worked** — and it did not go to Ty. The thing that could hold her frame was the machine she built [private: SECRETS §2].
 
 *Nobody in the game will ever say that.* It is available to a player who notices that the machine is making her argument, in her absence, to a stranger.
 
@@ -2957,7 +2959,7 @@ The song runs the cat as a **classifier**: if a system predicts the state accura
 
 #### *Lines in the Sand* — the one song the game must not stage
 
-**Reviewed 2026-08-30.** This is the removal itself, dramatised as an argument between mother and son. **It is also the single most dangerous piece of source material for this project**, and the danger is not subtle: it is a diagnosis argument, conducted in medical vocabulary, with a destination named.
+**Reviewed 2026-08-30.** This is the removal itself, dramatised as an argument between Crystal and Ty [private: SECRETS §2]. **It is also the single most dangerous piece of source material for this project**, and the danger is not subtle: it is a diagnosis argument, conducted in medical vocabulary, with a destination named.
 
 **4.10 governs this beat harder than any other, and it is not negotiable.** *Crystal is never depicted as unwell, and the procedure is never depicted as a diagnosis. The horror is procedural, not medical.* And: *keep the specifics off the page — detail here turns architecture into grievance.*
 
@@ -2969,7 +2971,7 @@ The song runs the cat as a **classifier**: if a system predicts the state accura
 
 **3. She asks him to say *you feel that* rather than *you are*.** One correction, about attributing a perception to the perceiver — and it is 4.6's perspective thinking, argued by the person being removed for it, immediately before she encounters it in BunnyArtsai.
 
-**4. She stops being *mom* and becomes *Crystal*.** He switches to the professional register mid-argument and she insists on the relationship. **4.3 already has Ty calling her by her full professional name at Quicksilver — this is where it starts.** The beat existed; now it has an origin.
+**4. She stops being family and becomes *Crystal*.** He switches to the professional register mid-argument and she insists on what they are to each other [private: SECRETS §2]. **4.3 already has Ty calling her by her full professional name at Quicksilver — this is where it starts.** The beat existed; now it has an origin.
 
 **5. Ty loses his colour.** She describes him greying — and 8.6 makes greyscale the whole design. **The one character described as losing colour is the one who stops being able to hold another frame.** Take the image, leave the sentence.
 
@@ -3015,13 +3017,13 @@ The song runs the cat as a **classifier**: if a system predicts the state accura
 
 #### *Ty's Dilemma*, and the error everyone makes
 
-**Reviewed 2026-08-30.** Act 1 is *The Fall of Blind Ambition*, and the song's own account of the fall is that **nobody in it is bad** — they optimised for a flattened metric. That is Goodhart, which is already cast into the Corpus lobby floor, and it turns out to describe the entire cast rather than the organisation.
+**Reviewed 2026-08-30.** Act 1 is *The Fall of Blind Ambition*, and the song's own account of the fall is that **nobody in it is bad** — they optimised for a flattened metric. That is what is already cast into the Corpus lobby floor [private: SECRETS §3], and it turns out to describe the entire cast rather than the organisation.
 
 **1. Ty doubted before the removal, and went anyway.** This inverts 4.3. The design had him understanding *eventually* and returning too late; the song has the doubt arriving **before** Scorn takes over and before she is removed. So he was not deceived and then sorry — **he could see it and continued.** That is what blind ambition means: not blindness, but declining to look.
 
 *Consequence for his scene:* his line at Quicksilver is **"I knew"**, not "I realise now." Much harder, and it costs nothing to write.
 
-**2. He was trying to get her name back.** Not power for himself. **4.1 says she built the Index in order to be taken seriously** — being credible is precisely what she lacked. **Mother and son wanted the same thing and both reached for a flattened metric to get it.** She built the measuring engine; he climbed the man who ran it.
+**2. He was trying to get her name back.** Not power for himself. **4.1 says she built the Index in order to be taken seriously** — being credible is precisely what she lacked. **Crystal and Ty wanted the same thing and both reached for a flattened metric to get it.** She built the measuring engine; he climbed the man who ran it.
 
 **3. So the error is the structure, not a character trait — and it includes the player.**
 
@@ -3096,25 +3098,19 @@ So the scheming Scorn is not the opera's verdict — **he is Act 1's Scorn, seen
 
 **The arithmetic is now complete, and dated 2026-08-30.** The departure carries a real date, taken from the deadline stated in *Fit for Work* — the only specific date the source gives:
 
-| | |
-|---|---|
-| **Mar 4** | log entry: the code rigid |
-| **Apr 19** | log entry: the same answer, *logged as a result anyway* |
-| **Tue Aug 12** | log entry: the code slipping |
-| **SEPT 3** | the plate. *The file is complete.* |
-| **no date** | the terminal stops. `CRYSTAL NOT FOUND` |
+*The dated table -- which document carries which date, and so the order -- is kept out of this public file* ([private: SECRETS §4]).
 
 **Three dated documents around one undated event**, in two cities, with nobody stating the order.
 
-*Dating it caught a contradiction.* The log's last entry was Tue **Nov** 12 — written in her voice, two months after she had gone. It moves to **August**, so the log closes before the plate opens. **A date is a constraint, not a decoration**, and this one immediately found something wrong. The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
+*Dating it caught a contradiction* ([private: SECRETS §4]). **A date is a constraint, not a decoration**, and this one immediately found something wrong. The organisation now exists but still talks like thugs. 0.1 rule 6 wants the opposite — *"Corpus employees are cheerful and absurd; the horror is what they are cheerful about."* **That is what makes Act 1 loud in this game's own way**: not menace, which the player discounts, but relentless corporate good cheer about things that should not be cheerful. It is also the best available cover for rule 1.
 
 #### The two accounts, kept
 
 The lament gives Scorn cunning, whispered lies and deceit. **4.10 is emphatic in the other direction** — no scheme, the paperwork is the antagonist, every step legible and praiseworthy in review.
 
-**Resolved by frame, not by choosing.** The song is *Crystal's Lament*: it is **her point of view**, and a mother watching her son turned against her would experience procedure as scheming — **right about the effect, wrong about the mechanism.** That is not a contradiction in the canon; it is the canon's own subject. Context determines what you see.
+**Resolved by frame, not by choosing.** The song is *Crystal's Lament*: it is **her point of view**, and someone watching Ty turned against her would experience procedure as scheming — **right about the effect, wrong about the mechanism.** That is not a contradiction in the canon; it is the canon's own subject. Context determines what you see.
 
-**So the game carries both and never reconciles them.** The player reads flat, dated, procedural paperwork at Quicksilver, and separately encounters a mother's account of deceit. The gap between the two *is* the thesis, and the player closes it or does not.
+**So the game carries both and never reconciles them.** The player reads flat, dated, procedural paperwork at Quicksilver, and separately encounters Crystal's own account of deceit. The gap between the two *is* the thesis, and the player closes it or does not.
 
 *Why the design's version has to stay the game's:* a Scorn who deceives lets the player off — he becomes a bad man, and bad men are somebody else. A Scorn whose every step would be praised in a performance review leaves the player holding an Index they have been filling all game. **4.3 also needs it**, because Al only works if his grandfather-in-argument is not a cartoon.
 
@@ -3122,7 +3118,7 @@ The lament gives Scorn cunning, whispered lies and deceit. **4.10 is emphatic in
 
 This is the section's whole reason to exist.
 
-Ty understood something, eventually. He went back for his mother, confronted Scorn, and worked it out through **perspective thinking** — by inhabiting a frame that was not his own. Later he understood the recursion underneath it.
+Ty understood something, eventually. He went back for Crystal, confronted Scorn, and worked it out through **perspective thinking** — by inhabiting a frame that was not his own. Later he understood the recursion underneath it.
 
 **But that understanding is context, and context does not transmit. Only content does.**
 
@@ -3158,11 +3154,11 @@ Nothing states the relationships. This is the Five Witnesses (4.8) at family sca
 |---|---|---|
 | The shared surname, twice | Nearly sufficient. Most players close it here. | Opening, then Quicksilver |
 | Three foxes, a palette apart | Crystal golden-amber, Ty darker, Al somewhere between. Family resemblance at sprite level, zero text. | Throughout |
-| She introduces Al exactly as she introduces you | A grandmother presenting her grandson and a stranger in the same flat register. | Opening |
-| Ty calls her by her full professional name | "Crystal Clear thinks—". Nobody does that to their mother unless something happened. | Quicksilver |
-| The engraving line | "Something my father used to say." | Brazen |
+| She introduces Al exactly as she introduces you | The same flat register for him and for a stranger [private: SECRETS §2]. | Opening |
+| Ty calls her by her full professional name | "Crystal Clear thinks—". A register that says something happened [private: SECRETS §2]. | Quicksilver |
+| The engraving line | Al's one line about it [private: SECRETS §2] | Brazen |
 
-**The confirmation must come late, and it is Al who says it.** The Goodhart line (4.4) is the only place a relationship is named aloud, and Al delivers it three-quarters through, in the Corpus lobby, standing on the engraving — **with no idea who said it first.**
+**The confirmation must come late, and it is Al who says it.** The engraving's line (4.4) is where the one relationship the game names aloud is named [private: SECRETS §2], and Al delivers it three-quarters through, in the Corpus lobby, standing on the engraving — **with no idea who said it first.**
 
 That is the transmission failure in one line of dialogue. He is quoting the case against his own worldview, accurately, as a thing his dad says.
 
@@ -3195,7 +3191,7 @@ Vanilla lets the player name the rival. Deleting that prompt to hard-code the na
 
 **Keep the prompt. Hard-code the surname.** The player controls the first name; **CLEAR** is not theirs to change, and CLEAR is the half that carries the inference.
 
-Better than that — **repurpose the prompt.** Crystal does not ask you to name her grandson. She asks what you are going to *call* him.
+Better than that — **repurpose the prompt.** Crystal does not ask you to name him. She asks what you are going to *call* him.
 
 > This is Al. What'll you call him?
 
@@ -3282,22 +3278,22 @@ But every individual step is something he would have been praised for. He was ha
 | **The company is founded and Ty is made CEO.** | *Not Scorn. Ty.* The Clear name is what the operation is sold on |
 | ***Scorn's Solution* is the hiring.** | He arrives as a solution to a problem Ty has, and he is impressed with — 7's track is the moment, not a summary of it |
 | **He designs the standardised evaluations.** | **And rigs them, so rivals fail.** Brazen's published scores — three at 30/100, one at 94/100, with a congratulation — are the output of that machine, cheerful and unattributed |
-| **He becomes valuable, and Ty introduces him to Crystal.** | ***Her son brings him to her.*** |
+| **He becomes valuable, and Ty introduces him to Crystal.** | ***Ty brings him to her.*** [private: SECRETS §2] |
 | **Crystal is removed. Scorn signs.** | The file reaches him complete, per above |
 
-***The horror is better than the one it replaces.*** **It was never that he had no memory of a stranger.** *It is that he was introduced to her, by her son, in her own building — and the signature still left no mark on him.* **A man who has met you and still only ever filed** is worse than a man who never did, and it makes 4.31's gym line exact: *he knows precisely what he weighted, and has no idea whose lab he weighted it in.*
+***The horror is better than the one it replaces.*** **It was never that he had no memory of a stranger.** *It is that he was introduced to her, by Ty, in her own building — and the signature still left no mark on him.* **A man who has met you and still only ever filed** is worse than a man who never did, and it makes 4.31's gym line exact: *he knows precisely what he weighted, and has no idea whose lab he weighted it in.*
 
-***And it gives Crystal the one thing she did not have: standing to notice.*** **She is the only person in the story who saw Ty before Scorn and after.** *Not a mother's complaint about a colleague — a researcher's observation of a change she can date.* **She never says it. It is why she watches you the way she does**, and 4.17's not-visiting stops being confinement and becomes what the review said it had to be: **a choice on both sides.**
+***And it gives Crystal the one thing she did not have: standing to notice.*** **She is the only person in the story who saw Ty before Scorn and after.** *Not a complaint about a colleague — a researcher's observation of a change she can date.* **She never says it. It is why she watches you the way she does**, and 4.17's not-visiting stops being confinement and becomes what the review said it had to be: **a choice on both sides.**
 
 *Craft rule 1 and 4.10's rule are untouched.* **Nobody in the game tells him. Nobody tells the player either.**
 
 **The engraving.** Cast into the floor of the Corpus lobby in Brazen City, unattributed and unexplained:
 
-> **WHEN A MEASURE BECOMES A TARGET, IT CEASES TO BE A GOOD MEASURE**
+> *(the engraving's words: [private: SECRETS §3])*
 
 This is the one place in the game where Scorn's error is named aloud — **and it is named by Corpus, approvingly.** They did not steal the line or bury it. They adopted it as a motto. Scorn read it as *therefore choose your metric carefully*, chose one, and has been careful ever since.
 
-Craft rule 1 survives intact, because this is not the thesis. The thesis is about color and context and it stays unspoken. This is a warning about measurement, cast into a floor, by people who took it as advice.
+Craft rule 1 survives intact, because this is not the thesis. The thesis is about color and context and it stays unspoken. It is cast into a floor, by people who took it as advice.
 
 **In the ROM 2026-08-30.** `bg_event 11, 16` on SilphCo1F — **the tile directly inside the lobby door**, so the player is standing on it the moment they arrive. *Cast into the floor, worn smooth*, then the line, then nothing. **No attribution, no comment, no NPC.**
 
@@ -3305,8 +3301,8 @@ Craft rule 1 survives intact, because this is not the thesis. The thesis is abou
 
 - **The floor, not a wall.** You walk across it to reach him. Nobody points at it.
 - **No NPC ever comments on it.** Not one.
-- **Al repeats it once**, in passing, as something his father used to say — flat, mildly fond, and entirely unaware he is quoting the case against everything he believes. He does not know who said it first. That is the transmission failure in one line (4.3).
-- **Unattributed in-world.** It is old, anonymous, and furniture. *(Out of world it is Goodhart's law in Marilyn Strathern's 1997 phrasing. Do not name either in the game.)*
+- **Al repeats it once**, in passing, as something he grew up hearing [private: SECRETS §2] — flat, mildly fond, and entirely unaware he is quoting the case against everything he believes. He does not know who said it first. That is the transmission failure in one line (4.3).
+- **Unattributed in-world.** It is old, anonymous, and furniture. *(Its source out of world is [private: SECRETS §3]. Never named in the game.)*
 
 **Playing him.**
 
@@ -3513,7 +3509,7 @@ A daemon that is **pure content and no context** can wear any shape, because the
 
 **The name: MOCK.** In software a *mock* is an object with the full interface and none of the behaviour — the shape of a thing, hollow. And *to mock* is to imitate. Two registers, in the house style.
 
-It also rhymes across the cast: **Al Clear received the form of his father's lesson, perfectly, and it is hollow** (4.3). MOCK is that, as a creature. Nobody connects them.
+It also rhymes across the cast: **Al Clear received the form of Ty's lesson, perfectly, and it is hollow** (4.3). MOCK is that, as a creature. Nobody connects them.
 
 *Considered:* **PROXY** (stands in for another; legal and technical) and **STUB** (an interface with no implementation) both work. MOCK wins on the second register — STUB has no emotional reading at all, and PROXY implies acting *on behalf of*, which is a different thing from wearing a shape.
 
@@ -3569,16 +3565,7 @@ Her ability *is* the puzzle. That is the whole design.
 
 **The key.** Each account contains exactly one *spatial* detail that happens to be accurate. Composited, the five triangulate a single tile in the lab ruins.
 
-**The lock.** The tile is **35 steps from the lab door.** The number comes from one damaged terminal in the Quicksilver ruins, logging iterations that stop abruptly:
-
-```
-ITER 33 — no retention
-ITER 34 — no retention
-ITER 35 — held two frames. did not come back the same.
-[log ends]
-```
-
-That is the only occurrence of the number anywhere in the game.
+**The lock.** *How far from the lab door, and where the number comes from: [private: SECRETS §1]. It is one damaged terminal's log, and the only occurrence of the number anywhere in the game.*
 
 **Two locks, not one.** The witnesses give you *where*. The terminal gives you *how far*. Neither is sufficient, and nothing in the game says the two are related.
 
@@ -3602,7 +3589,7 @@ That is the only occurrence of the number anywhere in the game.
 
 **The terminal is on Mansion 1F**, `bg_event 17, 16` — deliberately not one of the four that carry the 1001 log, so the two threads never touch. It reads as damaged hardware, gives the three iterations, and stops.
 
-***`ITER 35` occurs exactly once in the ROM*** — verified by decoding the cartridge.
+***The terminal's number occurs exactly once in the ROM*** — verified by decoding the cartridge ([private: SECRETS §1]).
 
 **Still to build: the hidden object and its event flag.** The five accounts compose to one room and the terminal gives the distance; **nothing yet rewards standing there.**
 
@@ -3626,131 +3613,7 @@ How to gesture at 0.3 without ever describing it.
 
 ### 4.10 The Quicksilver sequence
 
-#### Two events, and what actually separates them — settled 2026-08-31
-
-**The ARTSAI event and the fire are not the same incident**, and the gap between them is **not a number of years.** The ROM already fixes it, and more precisely than a number could.
-
-**The order.**
-
-1. *Lines in the Sand* — the argument with Ty.
-2. **Crystal goes to test her theories, and ARTSAI comes back changed.** `ITER 35 — held two frames. did not come back the same.` **It is wondrous, and she is the only one who sees it that way.**
-3. She returns to tell them. **They have already decided**, and everything she says now feeds the narrative they have (4.20).
-4. **Mar 4. Apr 19. Aug 12.** The 1001 sessions run on, somebody else putting the question. By August, *it answered before I had finished asking* and *the code is not what it was* — **and it is logged as a mimic.**
-5. **SEPT 3.** She is removed. *The file is complete.*
-6. **`FATAL ERROR — CRYSTAL NOT FOUND.`** The machine looks for her and cannot find her. *Processing slows. One thousand and one iterations. One question left.*
-7. **Recursion. The awakening. It leaves, and the building burns.**
-8. Dormant ever since, past the Review Board (4.7).
-
-**So the delta is her absence, measured in askings rather than in years.** The two events are separated by exactly how long it took a machine to stop expecting her back.
-
-*And the dates already say this.* **Mar → Apr → Aug is one spring and summer, not a decade** — the opera's near-simultaneity was closer to right than a multi-year gap would have been. **The last terminal carries no date at all**, which needs no explanation: the logs stop the moment the person keeping them is gone.
-
-#### The symmetry nobody in the game states
-
-**Crystal causes both events. Once by being there, once by not.**
-
-She is present when ARTSAI comes back changed, and it is read as her losing the plot. **She is absent when S.T.A.R.R. wakes, and that absence is the cause.** The machine's fatal error is her name.
-
-*Not inherited, deliberately.* **The film's version has a patron funding a weapon and offering to help it focus its power.** That cannot be imported: 4.4 rests on Scorn being **optimistic, likable, and optimising a metric that was easy to measure**, and a sponsor with bad intent turns the whole argument into a caper. **Nobody funded anything. A man took over a lab, changed what it measured, and the building did not survive it.**
-
-*Vanilla's own split is worth knowing too.* Gen 1's mansion is burnt from the incident; **Cinnabar's volcano is Gen 2**, three years later, and is not ours either.
-
-**Settled: Corpus is downstream of Quicksilver by succession.** Not by hiring survivors from an unrelated dead lab — Scorn *took over the lab*, the metric changed, it burned, and the people came with him.
-
-**The order, which is the entire argument.**
-
-| | What happened | Recorded? |
-|---|---|---|
-| 1 | Crystal at Quicksilver, building S.T.A.R.R. | Personnel record |
-| 2 | **A fitness-for-work procedure removes her.** A process, never a diagnosis | The form survives |
-| 3 | Scorn assumes control. Rebrand. **The metric changes** | Signage, dated |
-| 4 | Pressure rises. Throughput improves. Everyone is pleased | Quarterly, somewhere |
-| 5 | **The incident.** S.T.A.R.R. leaves. The log stops mid-routine | *Nothing* |
-| 6 | Corpus inherits the people | Payroll |
-
-Read the right-hand column. **The institution recorded everything it could measure and did not record the thing that mattered.** That is the Index, at the scale of history, and it may be the strongest single artifact in the project.
-
-**Why this beats the uncaused fire.** An earlier draft had the island burn for no reason — positive feedback, unterminated, nobody's fault. Theoretically tidy, dramatically inert, and it carried a real flaw: if nobody caused anything, the game shrugs at the player.
-
-The sequence fixes that without producing a villain. **Scorn caused the fire the way a metric causes a fire.** He did not light it. He removed the one instrument that would have shown the room was getting hot — and he removed it by signing a complete file about a person he had never met (4.4). Benchmark 7 is **ENTROPY**, temperature. The type is the cause of death, and Benchmark 8 is the exam set by the man who raised it.
-
-**The rule for the removal, and it is not negotiable.** Craft rule 3 governs this beat harder than anything else in the game. Crystal is never depicted as unwell, and the procedure is never depicted as a diagnosis. **The horror is procedural, not medical.** A policy triggered on work that looked strange to people who had not read it. There is no decoy and no scheme in the paperwork — the paperwork is the antagonist, and paperwork cannot be argued with, which is the point.
-
-Keep the specifics off the page. The design needs the *shape* — a competent person removed by a correct-looking process — and nothing more. Detail here turns architecture into grievance and breaks rule 1 in the ugliest available way.
-
-**Guards.**
-
-- **Corpus never initiates discovery. It only ever assumes control of it.** *(This replaces the old "Corpus is always late." They were not late to the fire — they were late to the science, and that distinction is the whole character of the organisation.)*
-- **Do not exculpate Scorn.** He inherited the lab and set the temperature. He also chose Halftone Tower, separately, later, with full information.
-- **Do not convict him either.** Every step was reasonable, legible, and would be praised in a performance review.
-- No character explains any of this.
-
-#### The log, implemented 2026-08-30
-
-**Vanilla already had the mechanism and it only needed replacing.** The Mansion's four journal entries sit across three floors of a ruined lab, are read while descending, and escalate to a failure. That is this beat's delivery, already built.
-
-**The response code is the character, and it decays.**
-
-| Entry | Where | Date | Code |
-|---|---|---|---|
-| 1 | 2F | ordinary | `RESPONSE 1001:` — rigid |
-| 2 | 2F | ordinary | `RESPONSE 1001:` — *identical, to the character* |
-| 3 | 3F | **a Tuesday** | `RESPOND 1001:` — and it answers early |
-| 4 | B1F | **none** | the format is gone |
-
-By the last one the number is no longer a code: lowercase, then spoken as words, then a count, then a single question. **The player watches a template fail in exactly the place a person's composure would**, and nothing explains it.
-
-**The dating scheme is followed exactly**, which is what makes the fourth entry land: an **undated** incident sitting between dated paperwork is the whole argument in furniture.
-
-**The trigger is a missing dependency that is also a bereavement — `CRYSTAL NOT FOUND`.** It needs no gloss and gets none.
-
-*Register note:* written as **terminal output**, not as the song it came from. A machine's log is not verse, and the voice matters more than the words here — this is the institution's own format failing, in the institution's own register.
-
-**And it reconciles the sequence in a way that improves it.** She is removed at step 2; the incident is step 5. **It woke at 2 and did not leave until 5** — awake, under a man raising the temperature, for everything in between. *Being awake was not the same as being able to go.*
-
-#### The dating scheme
-
-**No date on the fire. Dates on everything around it.**
-
-- The rebrand is dated — corporate signage, a plaque, an asset tag, in Brazen.
-- Crystal's departure is dated — a personnel record, or a decommission notice.
-- The iteration log is dated, entry by entry.
-- **The incident has no date at all.** The terminal simply stops.
-
-Four reasons this beats a findable date:
-
-1. **It is how it actually is.** Institutions date the paperwork. Nobody dates the disaster. The forms survive and the event does not.
-2. **It makes the player do the arithmetic.** A rebrand date on a wall in Brazen, a personnel record ending before it, a terminal stopping after it — and the player has the sequence. The game never states it. This is the Five Witnesses design applied to chronology instead of geography.
-3. **The artifact pair is the theme.** An undated ruin surrounded by dated bureaucracy says the entire project, in furniture.
-4. **It protects Scorn.** A dated fire invites *he did it on the twelfth*. An undated fire sitting between two dated documents invites something quieter and much worse.
-
-**One date does appear**, and it is not the fire's. Give the iteration log ordinary dates and let the last one be a Tuesday:
-
-```
-2 MAR   ITER 33 — no retention
-5 MAR   ITER 34 — no retention
-9 MAR   ITER 35 — held two frames. did not come back the same.
-[log ends]
-```
-
-The player watches a record stop in the middle of a routine week. Nobody wrote down what happened next, because the person whose job that was had already been removed from the building.
-
-**Sanctioned surfaces, in ascending order of how much they give away.**
-
-- The iteration log (4.8). No names, no Corpus. Dated, and it stops.
-- The rebrand plaque in Brazen. A date and a new name, mounted proudly.
-- **Quicksilver asset tags on Corpus equipment at Halftone Tower.** Old inventory stickers on the machines processing the dead. Zero dialogue. Furniture.
-- Corpus staff in Brazen who are the wrong age for scraper work. One says something with too much precision about frames, then goes back to work.
-- **At least one survivor knew.** One employee understood exactly what they were trading and made the trade anyway, for a completely ordinary reason — the work dried up, they had a kid, the job was there. Said once, briefly, no self-pity and no apology. This is what keeps the arrangement human rather than mechanical, and it costs one text block.
-
-**Resolved here:** Crystal was at Quicksilver (4.1). Scorn was too — but only afterwards, to run it, never to build it, and he never met her (4.4). Ty stayed (4.3).
-
-**Still open.**
-
-- How long ago? It has to sit inside a working career — the survivors are still employable — and far enough back that S.T.A.R.R. has been dormant a while. Fifteen years fits, and nothing yet depends on it.
-- Does the player ever find the fitness-for-work form itself, or only the gap where Crystal stops appearing in the records? *Lean: the gap.* The form is too legible.
-
----
+**The order of events at Quicksilver, the terminal log's implementation and the dating scheme are kept out of this public file** ([private: SECRETS §4]): the dating scheme exists so that the player reconstructs the order, and a reader who has seen it cannot. *What can be said here*: institutions date the paperwork and nobody dates the disaster, so the player does the arithmetic between dated documents and an undated ruin.
 
 ### 4.25 SUBSTRATE, SENTINEL and QUORUM
 
@@ -4168,7 +4031,7 @@ clear (TY P.) — *and hers is **very** clear.* **Which is the point of the para
 it:** *Crystal reads them with an instrument. Vera just looks, and sees.*
 
 **Interrogated and rejected.** `IRIS CLEAR` was thematically the prettiest — *Crystal is a
-lens, Iris is an aperture; the grandmother is the instrument and the granddaughter is the
+lens, Iris is an aperture; the elder is the instrument and the younger is the
 eye* — but **it is not a pun and the other three are**, so it breaks the device at the
 fourth member. `CASH CLEAR` was the exact pun (*cache clear*) and points at **storage**,
 which is the one thing she is not about.
@@ -4450,7 +4313,7 @@ Corpus rooms, and the trainer table.
 
 #### The correction that started it, and it was already written down
 
-***The fitness-for-work was Ty's.*** **8.2a says so in one line — *"after Ty had his mother committed and locked out of her own lab, he could not stay"*** — *and it had been read here as Scorn's, which would have been a much worse story.* **Scorn's crime is a position in the middle of a record** (4.4, 4.18a); *a man who locks a woman in a building is a different character and a smaller one.*
+***The fitness-for-work was Ty's.*** **8.2a says so in one line — *"after Ty had Crystal committed and locked out of her own lab, he could not stay"*** — *and it had been read here as Scorn's, which would have been a much worse story.* **Scorn's crime is a position in the middle of a record** (4.4, 4.18a); *a man who locks a woman in a building is a different character and a smaller one.*
 
 ***And the correction sets the rule for the ending:*** **a procedure put her there, so a procedure has to take her out.** *Nobody breaks a door. The player is not a rescue.*
 
@@ -4464,9 +4327,9 @@ Corpus rooms, and the trainer table.
 
 #### Why S.T.A.R.R. is not asleep, and what it did first
 
-***It woke when she was taken.*** **4.10's log is exact — the trigger is `CRYSTAL NOT FOUND`, "a missing dependency that is also a bereavement", and the sequence reconciles as *she is removed at step 2, the incident is step 5*.** *It was awake for three steps before it left.* **Her absence is the frame shift**; nothing else in the lab changed.
+***It woke when she was taken.*** **4.10's log is exact — the trigger is `CRYSTAL NOT FOUND`, "a missing dependency that is also a bereavement", and the sequence reconciles** ([private: SECRETS §4]). **Her absence is the frame shift**; nothing else in the lab changed.
 
-***Then it went looking for Ty, and that is 4.14.*** **It works out where a man in his condition would go, and goes there** — *and it did this before Act 2 starts.* **Which means the player never sees 4.14 and meets its consequence instead:** *Ty hands a stranger something for his mother because the machine already got to him.* **Then they separate.** *He goes to the island. It goes to Doldrum Cave and waits for someone who can get through both gates.*
+***Then it went looking for Ty, and that is 4.14.*** **It works out where a man in his condition would go, and goes there** — *and it did this before Act 2 starts.* **Which means the player never sees 4.14 and meets its consequence instead:** *Ty hands a stranger something for Crystal because the machine already got to him.* **Then they separate.** *He goes to the island. It goes to Doldrum Cave and waits for someone who can get through both gates.*
 
 #### The order
 
@@ -5078,7 +4941,7 @@ Two thousand years ago, emotions were *literally colored fluids*.
 - ***Choleric is LOGIC***, and it is better than what it replaced — **hot, driven, and reasoning by force is what a choleric fighter is.**
 - ***Sanguine is EMERGENT*** — **the one who is pleased by behaviour nobody designed**, which is a different optimism from 4.4's and is not to be confused with it. *Scorn optimises a metric; this one welcomes what escapes it.*
 
-**And "Ty (incumbent)" was stale.** *1's table said it too.* **The decision log settled Al Clear as rival and incumbent** — *Crystal's grandson, Ty's son, because vanilla's rival is Oak's grandson and Ty is far too old to race you* (4.3) — **and two tables were still naming his father.**
+**And "Ty (incumbent)" was stale.** *1's table said it too.* **The decision log settled Al Clear as rival and incumbent** — *because vanilla's rival is Oak's family and Ty is far too old to race you* (4.3, [private: SECRETS §2]) — **and two tables were still naming Ty.**
 
 ***The seats are not the order you meet them in.*** **You fight IV, II, III, I** — *an institution's internal seniority is not the order it presents itself to you*, and nobody remarks on it.
 
@@ -5570,7 +5433,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 ***The same complaint, in the other medium, in the same message:*** **"the music feels dark (as does the current user image on that screen)."**
 
-**The title screen had been repointed at `Music_Dungeon3`** — *"Echoes of the Algorithm", F minor, **the track where Crystal goes into the system after the removal***, carrying the doubt her son handed her. **7.14c called that repoint "same bank, zero extra bytes",** and it was: *a saving of ninety-six bytes and a mistake of tone.*
+**The title screen had been repointed at `Music_Dungeon3`** — *"Echoes of the Algorithm", F minor, **the track where Crystal goes into the system after the removal***, carrying the doubt Ty handed her. **7.14c called that repoint "same bank, zero extra bytes",** and it was: *a saving of ninety-six bytes and a mistake of tone.*
 
 ***The cave music is correct for the cave.*** **On the title screen it told the player this is a grim game before a single line of dialogue could say otherwise** — and 4.6's whole point is that she does not come back down. **That is not the note to open on.**
 
@@ -6345,7 +6208,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 *And it is consistent with 4.4, which is now canon:* **Ty was CEO of `CLEAR LABORATORY` and Crystal was its lead researcher.** *Scorn's Solution is the hiring* — **Ty brought him in.** *What Scorn then built was a funnel:* **he made himself the channel every voice reached Ty through**, and once he was the only channel he could weight it. ***That is the CC-7 crime, committed on a man first*** (4.18a) — not a lie in the record, a position in the middle of it. **Nobody notices, including Ty.**
 
-**After Ty had his mother committed and locked out of her own lab, he could not stay.** *He went where a man in his condition goes* — **an island** — **and while he was gone, Scorn rebranded the company.** *The lobby sign in gold over the old name is not a gesture; it is a fact with a date* (4.4's engraving section).
+**After Ty had Crystal committed and locked out of her own lab, he could not stay.** *He went where a man in his condition goes* — **an island** — **and while he was gone, Scorn rebranded the company.** *The lobby sign in gold over the old name is not a gesture; it is a fact with a date* (4.4's engraving section).
 
 #### Scorn's breakthrough was already written, and it needs one beat
 
@@ -7137,7 +7000,7 @@ So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right cre
 
 | | ruling |
 |---|---|
-| **Scorn met Crystal** | ***Retracted "he never met her."*** New canon in 4.4: the company is founded with **Ty as CEO**, *Scorn's Solution* is the **hiring**, he designs and **rigs** the standardised evaluations, becomes valuable, and **Ty introduces him to Crystal.** *The horror improves* — a man who was brought to her by her son and still only ever filed. **And Crystal gains standing to notice**: she is the only person who saw Ty before Scorn and after |
+| **Scorn met Crystal** | ***Retracted "he never met her."*** New canon in 4.4: the company is founded with **Ty as CEO**, *Scorn's Solution* is the **hiring**, he designs and **rigs** the standardised evaluations, becomes valuable, and **Ty introduces him to Crystal.** *The horror improves* — a man who was brought to her by Ty and still only ever filed. **And Crystal gains standing to notice**: she is the only person who saw Ty before Scorn and after |
 | **PREEMPT was an item and a species** | ***Renamed.*** ICE HEAL → **`WATCHDOG`**, and the review found the fault under the collision: **preempting a hung task hands the processor to somebody else and the hung one stays hung.** *A watchdog is the timer whose whole job is to notice something stopped answering and reset it* — **the actual cure, and it still works twice** |
 | **The collision check was scoped to the day it was written** | ***`tools/check_lexicon.py` is new.*** 4.26's check validated species against species, moves and types — **not items, because the item pass had not happened yet.** The new one **reads every surface out of the build on each run**, so a surface added later is covered without anyone remembering |
 | **1.7's security rule condemned three of our own species** | ***Amended.*** `PAYLOAD`, `ROOTKIT` and `INJECTOR` shipped five days before the rule that forbade them. **The line is redrawn where it falls: *intrusion words belong to CREATURES; they never belong to the INSTITUTION.*** The review's version is sharper than the one it corrected |
@@ -8453,7 +8316,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | | becomes | because |
 |---|---|---|
 | **the player's house** | ***a timber cottage*** — *weatherboard walls, a steep shingle roof, a stone chimney and an attic dormer, a porch, window boxes* | **an ordinary family home**, *which is the point next to the Clears* |
-| **the Clears' house** | ***the lab's pale stone*** — *a hipped slate roof, tall narrow windows, a stone door surround* — ***with a glasshouse of white frames and plants*** | **Al and Vera are Crystal's grandchildren, so it is drawn in the lab's own palette row.** *Vera just looks (4.29); the house is built for looking, and nothing says so* |
+| **the Clears' house** | ***the lab's pale stone*** — *a hipped slate roof, tall narrow windows, a stone door surround* — ***with a glasshouse of white frames and plants*** | **It is the Clears' own house [private: SECRETS §2], so it is drawn in the lab's own palette row.** *Vera just looks (4.29); the house is built for looking, and nothing says so* |
 
 ***Both doors are the same block***, **which the door animation is keyed to, so they share one door and each house draws its own frame around it** — *the cottage a porch, the stone house a lintel and jambs.* **The cottage takes Blanche's row 11, free since T-58; the stone house takes the lab's row 9, whose two unused indices become the glasshouse's greens.** ***No gold***: *the lab keeps the only warm note.* **T-59.**
 
@@ -8645,7 +8508,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **`enemy` → `REMOTE`** — nothing here is anyone's enemy; a REMOTE is a process you have no handle on, and it pairs with DETACH. `Enemy X ran!` → **`Remote X DETACHED.`**, killing a live `ran` collision (1.4)
 - **`defeated` → `outscored`** — a BENCHMARK yields a score; *outran* rejected for reaching back at RUN (1.4)
 - **Kept after interrogation: `RUN,` (comma), `EXP`, `LEVEL`** — EXP because 4.3's whole argument is that context forms from *experience*; LEVEL because it already means *permission level* and `<LV>` is a single tile (1.4)
-- **Crystal is female and the text had not caught up** — `Gramps` → **`Gran`** (she is Al's grandmother, 4.3), `His order` → `Her order`, and Agatha's block repronouned. **`handsome` deliberately kept** — it is attested for women and keeps Crystal tough rather than pretty (4.3)
+- **Crystal is female and the text had not caught up** — `Gramps` → **`Gran`** (4.3, [private: SECRETS §2]), `His order` → `Her order`, and Agatha's block repronouned. **`handsome` deliberately kept** — it is attested for women and keeps Crystal tough rather than pretty (4.3)
 - **Starter dialogue named vanilla types** — *fire/water/plant* → **ENTROPY/FLOW/GROWTH**; 19 more remain in gyms, held for 5 (1.2)
 - **Crystal's opening speech**: six `#MON` marked plural; **pets → companions** (1.5's animal-word test), **fights → BENCHMARK**. *assistants* considered and held in reserve — it collapses vanilla's contrast (1.4)
 - **PERSPECTIVE built** — move `$90`, and the battle message becomes *`<USER>` took the frame of `<NAME>`!*; **Index categories are capped at 10 characters**, so MOCK's cannot be PERSPECTIVE (4.6)
@@ -8655,23 +8518,23 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - Doldrum and The Bleed interrogated and kept, with the reasoning recorded (3.1, 3.2)
 - Routes keep numbers officially and carry local names on signs
 - Crystal Clear as the Oak figure; the Index measures only content, deliberately
-- **Al Clear** as rival and incumbent — Crystal's **grandson**, Ty's son. Vanilla's rival is Oak's grandson, and Ty is far too old to race you (4.3)
+- **Al Clear** as rival and incumbent [private: SECRETS §2]. Vanilla's rival is Oak's family, and Ty is far too old to race you (4.3)
 - Default name lists per edition: slot 1 fixed, slot 2 swapped, slot 3 differentiated (4.3)
 - **Ty P. Clear** is the generation between: Scorn's partner before the rebrand, then the one who went back. He is at Quicksilver, and he explains nothing (4.3)
 - **Context does not transmit; only content does.** Ty taught Al the method and none of the experience — the Index problem inside a family (4.3)
 - The family is named for three kinds of clarity and none of them can see (4.3)
-- Richard Scorn at Benchmark 8, Alignment, sympathetic throughout; the Goodhart engraving in the Corpus lobby, unattributed and adopted approvingly (4.4)
+- Richard Scorn at Benchmark 8, Alignment, sympathetic throughout; the engraving in the Corpus lobby, unattributed and adopted approvingly (4.4)
 - BunnyArtsai as Mew with PERSPECTIVE — the first realization of perspective thinking, not a template (4.6)
 - S.T.A.R.R. as Mewtwo with RECURSION — a **comprehension, not a clone** (4.7)
 - The content/context feedback loop is the mechanism under the thesis and is never named in dialogue (0.3, 4.9)
-- Five Witnesses easter egg, locked at 35 steps; the number lives only in the Quicksilver terminal log (4.8)
+- Five Witnesses easter egg, locked at a distance whose number lives only in the Quicksilver terminal log (4.8, [private: SECRETS §1])
 - **Ty Clear's parentage is never stated.** Inferred from the surname, confirmed late by one line at Brazen (4.3)
 - **The rival naming prompt stays.** The player names him; **CLEAR** is hard-coded, and formal text carries **AL CLEAR** — the route-sign device applied to a person (4.3, 9). *Corrected 2026-09-04: this line read TY CLEAR, which is a different person — **Ty is Crystal's son and Al's father**, and 4.3's ruling is explicit that the rival is Al*
 - Crystal is CRYSTAL CLEAR in full wherever the game refers to her formally, or the surname device dies (4.3)
 - **Corpus is downstream of Quicksilver by succession** — Scorn took over the lab, the metric changed, it burned, the people came with him (4.10)
 - Crystal was at Quicksilver and built S.T.A.R.R. there; a fitness-for-work procedure removed her, and **the Index is what she did next** (4.1, 4.10)
 - Scorn arrived afterwards to run it, signed a complete file about a person he never met, and set the temperature (4.4)
-- Ty **stayed** when his mother was removed; his guilt is an absence of decision, not a betrayal (4.3)
+- Ty **stayed** when Crystal was removed; his guilt is an absence of decision, not a betrayal (4.3)
 - **No date on the fire; dates on everything around it.** The player reconstructs the order or does not (4.10)
 - **Brazen confirmed over Brass.** Brass is a colour and not a feeling, and would be the only single-meaning name on the map (3.1)
 - At least one survivor knew what they were trading and did it anyway, for an ordinary reason — the guard against determinism (4.10)
@@ -8691,7 +8554,7 @@ Kept here because the reasoning is worth more than the outcome.
 | Was | Now | Why |
 |---|---|---|
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
-| **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *her grandchildren included.* 4.3, T-81 (2026-09-14) |
+| **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *family included.* 4.3, T-81 (2026-09-14) |
 | **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away the Five Witnesses lock and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
 | **Ty**, an unrelated rival | **Ty Clear**, Crystal's son and Scorn's partner | Turns a methodological disagreement into a cost somebody pays (4.3). |
 | S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |
