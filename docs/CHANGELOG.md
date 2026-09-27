@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### The singing fir, the witnesses' lock, and the secrets kept (2026-09-27)
+
+- ***The singing fir*** (T-10, DRAFT): *a fir with a star and six baubles in the painting's note colours (`tools/gensingingfir.py`) stands on the S.S. ANNE's pier where the old legend put the truck, reached by SURF from the empty dock. It hums O CHRISTMAS TREE's first phrase without its key signature (the yellow and purple notes sharp) and, given the key, sings it right. The key is LOOSE PAGES 8, THE BAND'S SHEET, from DAVID (a proposal: what gives the key is the user's). After the ship sails, the ferry sailor now lets the player onto the pier, the ship stays gone, and the pier's end is boards rather than an arrow into it. Played: the pier, both tunes (their pitches read off the sound engine), DAVID's handover.*
+- ***The Five Witnesses answer only to every understanding*** (T-235): *the reward's tile is silent until all seven are held, then gives the TRANSCRIPT. Played both ways. Its place is a proposal, kept privately.*
+- ***The four secrets left the public bible*** (the user's option (a)): *they live in `docs/private/`, gitignored; `vision.md` points there, and the parentage and engraving lines left in TODO, lineage, this log and two reviews were rewritten. The published PDF is the redacted one. Git history still holds the old text.*
+- ***Virtues with the MARKS*** (T-318): *a proposed pairing, MARK by MARK root to crown, is with the user.*
+
 ### Seven understandings, and the week's colour (2026-09-26)
 
 - ***Understandings, arrived at*** (T-252, DRAFT): *six more, at the moments the user named — the school, the Reading Room, QUICKSILVER's notes, SCORN, TY and CRYSTAL, the GUIDE read through. Each is set silently on the next map load once its moment is complete, and each leaves a note in the margin of the GUIDE chapter it answers. Nothing counts them. SCORN's, in DEBUGGING: "He kept score. He was very good at it." The AI playtester sees all seven.*
