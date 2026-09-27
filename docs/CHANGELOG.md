@@ -7,6 +7,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### The map comes clear (2026-09-27)
+
+- ***Understanding shown as clarity*** (T-317, DRAFT): *the TOWN MAP's land and sea are drawn slightly blocky while understandings are still to come and resolve as they arrive — two pixels square, then two by one, then sharp. The names, the cursor, the player and the GOTO icons never blur; the towns soften with the land. Nothing says it changed. Played at all three levels, through GOTO.*
+
 ### Virtues, the witnesses' room, and the story kept private (2026-09-27)
 
 - ***Virtues come with the MARKS*** (T-318, DRAFT): *each of the first seven MARKS' BENCHMARKS pages says its virtue, root to crown (DILIGENCE, CHASTITY, CHARITY, KINDNESS, TEMPERANCE, PATIENCE, HUMILITY), and the USER card's portrait comes out of shadow band by band from the feet as they arrive: nothing drawn, no colour added, every unearned band one shade down in the portrait's own palette. Played with none, three and all.*
