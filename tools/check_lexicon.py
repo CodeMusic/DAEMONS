@@ -1578,6 +1578,30 @@ def check_vanilla_species_any_case():
                 bad.append(("%s:%d" % (os.path.relpath(f, GBA), i + 1), "says vanilla's %r" % m.group(1)))
     return bad
 
+#  2026-09-27: `specialvar VAR, Func` stores what Func RETURNS. A special that returns void and sets gSpecialVar_Result
+#  itself must be called with `special` -- through specialvar, VAR_RESULT gets whatever was left in r0, and the script
+#  goes on as if the answer were yes. The Five Witnesses' tile answered to nobody that way for one build (T-235,
+#  engine.md trap 37). Every specialvar target, looked up in src/ by its definition.
+def check_specialvar():
+    import glob as _glob
+    src = "\n".join(open(f, encoding="utf-8", errors="ignore").read()
+                    for f in _glob.glob(os.path.join(GBA, "src", "**", "*.c"), recursive=True))
+    out = []
+    for f in _glob.glob(os.path.join(GBA, "data", "**", "*.inc"), recursive=True):
+        for i, line in enumerate(open(f, encoding="utf-8", errors="ignore"), 1):
+            m = re.match(r"\s*specialvar\s+\w+\s*,\s*(\w+)", line)
+            if not m:
+                continue
+            fn = m.group(1)
+            d = re.search(r"^\s*(?:static\s+)?([A-Za-z_][\w\s\*]*?)\s+\**\b%s\s*\(\s*(?:void)?\s*\)\s*\{" % fn, src, re.M)
+            where = "%s:%d" % (os.path.relpath(f, GBA), i)
+            if not d:
+                out.append((where, "specialvar %s -- no definition found in src/" % fn))
+            elif d.group(1).split()[-1] == "void":
+                out.append((where, "specialvar %s -- it returns void; call it with `special`" % fn))
+    return out
+
+
 def main():
     surfaces = {
         "species": read("src/data/text/species_names.h",
@@ -1832,13 +1856,21 @@ def main():
         for what, why in xbad:
             print("   %-32s %s" % (what, why))
 
+    spbad = check_specialvar()
+    if not spbad:
+        print("  every specialvar calls a special that returns its answer.")
+    else:
+        print("\n  %d specialvar call(s) that read a void special:\n" % len(spbad))
+        for what, why in spbad:
+            print("   %-48s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad) else 0
 
 
 if __name__ == "__main__":

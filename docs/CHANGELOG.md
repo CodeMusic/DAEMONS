@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Two traps made permanent, and the memory measured (2026-09-27)
+
+- ***`check_lexicon` now fails on a `specialvar` that reads a void special*** *— the mistake that let the Five Witnesses' tile answer with one understanding of seven for a build. All 55 of the game's `specialvar` targets pass; the check was proved by putting the bug back. The mirror case (a `special` whose result is read but never set) was swept by hand: every hit is set asynchronously behind a `waitstate` or a yes/no.*
+- ***engine.md traps 37 and 38***: *`specialvar` on a void special; a menu window sized for 16px rows holding 15px ones (MART's RACK).*
+- ***EWRAM, against pristine pokefirered***: *stock links at 99.58%; DAEMONS adds 338 bytes of static state in all. The tightness is vanilla's heap. 748 bytes free.*
+- *No ROM release: the engine did not change.*
+
 ### "Yes to all": the INDEX comes clear, the day on the card, the shadows (2026-09-27)
 
 - ***The INDEX's pictures come clear*** (T-317, DRAFT): *a daemon's picture in its entry is drawn with the map's clarity — two by two while most understandings are still to come, two by one while a few are, sharp once all are held. One rule for both; the page's text never blurs.*
