@@ -10,7 +10,7 @@
 
 - **The lexicon pays for itself.** BIND / DAEMON / CACHE / RESOLVER / ORPHAN each carry two or three readings, and the discipline of *measuring* (18 columns, 9-char species, 10-char categories) means none of it is aspirational. This is the rare design doc where the words have already survived contact with the tile grid.
 - **Procedural horror over villainy** is the strongest single decision in the project. *The file is complete.* / *IMPROVE RESPONSE CONSISTENCY* / the review scores posted with a congratulation — three documents, no villain, and the player does the arithmetic. This is exactly what the opera's two-act shape wants (see §2).
-- **The inference structure is consistent.** Surname → foxes → "Crystal Clear thinks—" → the Goodhart line from Al. Five Witnesses. Three dated documents around one undated event. The game teaches one method (composite the frames) and reuses it at every scale. That is a real design, not a theme.
+- **The inference structure is consistent.** Surname → foxes → "Crystal Clear thinks—" → the engraving's line from Al. Five Witnesses. Three dated documents around one undated event. The game teaches one method (composite the frames) and reuses it at every scale. That is a real design, not a theme.
 
 **Three things to watch**
 

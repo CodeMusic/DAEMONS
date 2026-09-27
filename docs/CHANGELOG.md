@@ -2145,7 +2145,7 @@ had no way to notice.*
   for.
 - **4.14 now happens before Act 2 starts and the player never sees it.** *S.T.A.R.R. woke when she was
   taken — 4.10's `CRYSTAL NOT FOUND` — went looking for Ty, and then they separated: he to the island,
-  it to Doldrum Cave.* ***So Ty hands a stranger something for his mother because the machine already
+  it to Doldrum Cave.* ***So Ty hands a stranger something for Crystal ([private: SECRETS §2]) because the machine already
   got to him***, and the player meets a cause as a man's behaviour.
 - **Four rulings, so the writing has something to fail against:** the Owl's concession is ***dialogue
   only*** and concedes *something* it will not name; **he stays in Brazen**, because a remote scholar
@@ -4385,7 +4385,7 @@ had no way to notice.*
 
 ### A stale line in the decision log
 
-- ***It said the rival's formal name is TY CLEAR.*** **Ty is a different person** — Crystal's son and Al's father — and 4.3's detailed ruling is explicit: *"This is Al. What'll you call him?"* **Corrected**
+- ***It said the rival's formal name is TY CLEAR.*** **Ty is a different person** — the family is [private: SECRETS §2] — and 4.3's detailed ruling is explicit: *"This is Al. What'll you call him?"* **Corrected**
 
 ## v11.83 — 2026-09-04
 
@@ -6118,7 +6118,7 @@ from that.
 - **The arc is two numbers: 74 → 120.** He stopped, then rejoined — and the corpus **does not hand him its own heartbeat.** More convincing than a return to 128
 - **C | F | C | G is I–IV–I–V, the plainest progression in the set, and the feel is still minor-tinted.** The harmony resolves before the texture does — the right description of a man told it is fine who does not believe it
 - **Both hooks open on E**, the third: Part 1 goes to the octave and falls all the way back, Part 2 steps up and comes home
-- **He asks his mother's voice to guide them.** The man who could not hold a frame asks the removed perspective to hold it — **he arrives at 2.5 by way of an apology.** And she may never answer; he waits anyway
+- **He asks Crystal's voice to guide them.** The man who could not hold a frame asks the removed perspective to hold it — **he arrives at 2.5 by way of an apology.** And she may never answer; he waits anyway
 - **It ends mid-refrain, a line short.** Part 2 does not end, it is still waiting when it stops — the only honest ending for a story whose thesis is that resolution comes from another frame
 
 ### Ty's Redemption — the one place the music stops
@@ -6645,8 +6645,8 @@ from that.
 - **Doldrum kept**, with a better reason: the doldrums are a *place*, and being becalmed is the failure state of gradient descent — the name *is* Benchmark 2's lesson
 - **The Bleed kept.** Printing term first; the map already uses the body's colour words for what happens to surfaces (The Flush → Ardor)
 - **BunnyArtsai35 → BunnyArtsai.** The number in her name gave away the Five Witnesses lock; relocated to a single Quicksilver terminal log
-- **Ty → Ty Clear**, Crystal's son and Scorn's partner
-- **The Goodhart engraving** — cast into the Corpus lobby floor, unattributed, adopted approvingly by Corpus
+- **Ty → Ty Clear**, Scorn's partner ([private: SECRETS §2])
+- **The engraving** ([private: SECRETS §3]) — cast into the Corpus lobby floor, unattributed, adopted approvingly by Corpus
 - **S.T.A.R.R. is a comprehension, not a clone** — the lab understood recursion and instantiated it
 - New **§0.3 The loop underneath** (the CFM, named for the authors only) and **§4.9 Feedback, said sideways** (dialogue rules)
 - §10 gains a **Reversed** table
@@ -6740,7 +6740,7 @@ from that.
 - It is also why the player wins: Al was taught, you were let loose
 - **Ty P. Clear** relocates to the Quicksilver ruins. He could explain all of
   it and does not
-- The Goodhart line moves to Al - "something my father used to say", delivered
+- The engraving's line moves to Al ([private: SECRETS §2, §3]), delivered
   with no idea who said it first
 - The family is named for three kinds of clarity: Crystal Clear (transparent,
   unfundable), Ty P. Clear (*type clear*, legible, understood by nobody),

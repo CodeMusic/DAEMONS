@@ -118,7 +118,7 @@ On an empty INDEX Crystal says *"…It is empty. That is a result as well."* On 
 
 ## 3 · Machine learning accuracy
 
-The technical vocabulary is better than most published ML games. Daemonisation via orphaned fork, cascading failure, thrashing, keepalive, quorum, livelock, speculative execution, the Bayesian PRIOR on Hidden Power, EVs-as-bias, Goodhart in Strathern's phrasing, Information Foraging with the right citation — all correct. Where it is off, it is off in ways that are cheap to fix and usually make the joke better.
+The technical vocabulary is better than most published ML games. Daemonisation via orphaned fork, cascading failure, thrashing, keepalive, quorum, livelock, speculative execution, the Bayesian PRIOR on Hidden Power, EVs-as-bias, the lobby engraving, Information Foraging with the right citation — all correct. Where it is off, it is off in ways that are cheap to fix and usually make the joke better.
 
 ### DRIFT — Preemption does not end a hung process `1.6`
 

@@ -8529,7 +8529,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - The content/context feedback loop is the mechanism under the thesis and is never named in dialogue (0.3, 4.9)
 - Five Witnesses easter egg, locked at a distance whose number lives only in the Quicksilver terminal log (4.8, [private: SECRETS §1])
 - **Ty Clear's parentage is never stated.** Inferred from the surname, confirmed late by one line at Brazen (4.3)
-- **The rival naming prompt stays.** The player names him; **CLEAR** is hard-coded, and formal text carries **AL CLEAR** — the route-sign device applied to a person (4.3, 9). *Corrected 2026-09-04: this line read TY CLEAR, which is a different person — **Ty is Crystal's son and Al's father**, and 4.3's ruling is explicit that the rival is Al*
+- **The rival naming prompt stays.** The player names him; **CLEAR** is hard-coded, and formal text carries **AL CLEAR** — the route-sign device applied to a person (4.3, 9). *Corrected 2026-09-04: this line read TY CLEAR, which is a different person — **how Ty and Al are related is [private: SECRETS §2]**, and 4.3's ruling is explicit that the rival is Al*
 - Crystal is CRYSTAL CLEAR in full wherever the game refers to her formally, or the surname device dies (4.3)
 - **Corpus is downstream of Quicksilver by succession** — Scorn took over the lab, the metric changed, it burned, the people came with him (4.10)
 - Crystal was at Quicksilver and built S.T.A.R.R. there; a fitness-for-work procedure removed her, and **the Index is what she did next** (4.1, 4.10)
@@ -8556,7 +8556,7 @@ Kept here because the reasoning is worth more than the outcome.
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
 | **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *family included.* 4.3, T-81 (2026-09-14) |
 | **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away the Five Witnesses lock and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
-| **Ty**, an unrelated rival | **Ty Clear**, Crystal's son and Scorn's partner | Turns a methodological disagreement into a cost somebody pays (4.3). |
+| **Ty**, an unrelated rival | **Ty Clear**, Scorn's partner (the family: [private: SECRETS §2]) | Turns a methodological disagreement into a cost somebody pays (4.3). |
 | S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |
 | **CATCH** | **BIND** | The container was renamed and the verb was not. CATCH is the only lexicon entry doing no double duty; BIND is `bind()`, *binding a daimon*, and a bond — and it is darker rather than softer, so the player stays implicated (1.1). |
 | A vented server, cubes explicitly banned | A **cube with a screen**, pips for privilege | The ban existed because a cube says *container*. A screen says *running*, which is the reading 1.3 wanted — so the objection dissolves rather than being overruled. Vents also never shipped: the ladder loop broke before the third vent (1.3). |
@@ -8635,7 +8635,7 @@ Kept here because the reasoning is worth more than the outcome.
 - How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?
 - Are the humors too neat? Four is convenient; the real theory had temperaments blending.
 - Does **Al** get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
-- ~~Ty is absent from the endgame by design. Does that read as a statement or a loose thread?~~ ***It reads as a loose thread, and 8.2a is the answer: Act 2 is the islands.*** **Closed twice over** — *4.34 then put him in the Warehouse handing you something for his mother, and 4.17's not-visiting is still a choice on both sides*
+- ~~Ty is absent from the endgame by design. Does that read as a statement or a loose thread?~~ ***It reads as a loose thread, and 8.2a is the answer: Act 2 is the islands.*** **Closed twice over** — *4.34 then put him in the Warehouse handing you something for Crystal ([private: SECRETS §2]), and 4.17's not-visiting is still a choice on both sides*
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.
 - ~~The bestiary naming register is undecided~~ **It had been decided in practice and never written down** (8.2b). *The 72 that shipped run three registers at once* — **technical surface for the bestiary, myth for the legendaries, the project's own names for the MUSAI and ROVER families** — and the fork in the log was answered by 4.26 without anyone noticing
