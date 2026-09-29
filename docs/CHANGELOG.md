@@ -7,6 +7,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### A thank-you after the splash (2026-09-29)
+
+- ***"Thank you, Satoshi Tajiri. / An idea from 1996 / is still reaching people. / Me included. / -- CodeMusic"*** (T-320): *a card straight after the CodeMusic animation, in its band and colours; the splash's binary glints about CODE and its notes about MUSIC, fewer and slower than before. Four seconds; A, START or SELECT skip it with the intro.*
+
 ### Two traps made permanent, and the memory measured (2026-09-27)
 
 - ***`check_lexicon` now fails on a `specialvar` that reads a void special*** *— the mistake that let the Five Witnesses' tile answer with one understanding of seven for a build. All 55 of the game's `specialvar` targets pass; the check was proved by putting the bug back. The mirror case (a `special` whose result is read but never set) was swept by hand: every hit is set asynchronously behind a `waitstate` or a yes/no.*
