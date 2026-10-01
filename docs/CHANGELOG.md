@@ -5,6 +5,17 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.289 — 2026-10-01
+
+### The brain shows each understanding, and the user's answers built (2026-10-01)
+
+- ***Reversed (T-271 → T-331)***: **the USER card's brain fills one lobe per understanding, each in its type's colour, with a halo at seven** — *the user could not tell how the single glow changed. Recorded in the Reversed table.*
+- ***No national-INDEX gate*** (T-329): *every daemon's page shows and every evolution happens from the start; trading past the first 151 still waits for the GLOBAL INDEX.*
+- ***The START menu is two columns*** (T-332): *up/down within a column, left/right across; it no longer runs off the screen.*
+- ***MOM's own lines*** (T-326), ***the bedroom poster that sparkles until read*** (T-323), ***CRYWOLF*** (T-327), ***MASKMUSAI redrawn***.
+- ***The three reviews applied*** (T-321, T-322, T-324): *114 sign blocks, 61 INDEX entries, nine teaching lines and the CORPUS self-descriptions; all DRAFT.*
+- ***The AI harness caught up*** (T-330). *New: T-333, 65 named daemons still under vanilla's INDEX category.*
+
 ## v11.288 — 2026-09-25
 
 ### Pictures every push, and two drifts read both ways (2026-10-01)

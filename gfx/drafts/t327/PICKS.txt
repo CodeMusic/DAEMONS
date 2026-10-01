@@ -3,3 +3,7 @@ LENSMUSAI, MASKMUSAI: image to image from MUSAI's own sprite (musai_*_512.png), 
 denoise 0.8 (*_80), backs at 0.6 (*_42, closest to MUSAI's back). SEMAPHORE, KERNEL: text to image, seed 42.
 Greyed but for red/orange markings, then cleandraft --streaks (the white robots' streaks boxed onto the chest).
 GRANBULL still needs a name (the user's) and is not drawn.
+
+CRYWOLF (GRANBULL's slot), 2026-10-01: crywolf_front_42 and crywolf_back_42 (a side view, head thrown back, howling).
+
+MASKMUSAI front, 2026-10-01: redrawn t2i as a grey robot (maskmusai_front_m42) -- the white i2i draft's body could not be told from the paper.

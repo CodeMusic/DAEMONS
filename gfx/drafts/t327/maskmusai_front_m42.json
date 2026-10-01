@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t327/maskmusai_front_m42",
+ "prompt": "pure white background, pixel art game sprite of a small round medium grey robot with two antennae and big headphones, its face covered by a smooth pale theatre mask with two narrow eye slits, front view, facing the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "human, person, white body, pale body, colored background, floor, shadow, text, multiple creatures, scenery, blurry, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 27.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 14:33:31"
+}

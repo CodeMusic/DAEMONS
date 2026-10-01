@@ -322,7 +322,7 @@ MARGINS = [
      "Still unpredicted. Still measured, and still fine."),
     ("SPECIES_NINETALES", "OVERRUN",
      "Nothing intervened. You were there the whole time.",
-     "Still neither. Still nothing intervening."),
+     "Still past it. Still nothing intervening."),
     ("SPECIES_GOLBAT", "TRACER",
      "It followed one back to you.",
      "No path to follow."),

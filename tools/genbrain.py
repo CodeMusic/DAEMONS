@@ -1,22 +1,28 @@
 #!/usr/bin/env python3
-"""The brain on the USER card, which lights and never counts (T-271; decided by the user 2026-09-25).
+"""The brain on the USER card: a lobe per understanding, each in its own colour (T-331; the user, 2026-10-01).
 
     python3 tools/genbrain.py            # report, and a preview to $SCRATCH/brain.png when SCRATCH is set
     python3 tools/genbrain.py --write     # engineGba/src/data/understanding_brain.h
 
-THE DECISION. Understandings are shown in the Guide's margins (T-304), never counted (T-252). If the card shows a
-brain at all, it is one glow that says something has changed -- never modules totalled. So this is one drawing with
-two states: GREY until any understanding is arrived at, and LIT after, the same brain brighter with a halo. No
-region lights on its own and nothing is numbered.
+THE DECISION, REVERSED 2026-10-01. T-271 drew one glow that never counted. The user, seeing it: "I saw a brain but
+didn't know how it changes as u gain understanding ... I'd like different lobes filled in with representative
+color." So the brain has SEVEN REGIONS, one per understanding, each grey until that understanding is arrived at and
+then filled in its colour; the halo comes only when all seven are held. The map (the user's approval of the proposal):
+    1 brainstem   the first, TANOBY ("read it twice, it stayed")        STRATUM  -- the layer that stays
+    2 temporal    the CALLOW SCHOOL ("they taught me the names")         LOGIC    -- names, taught
+    3 occipital   the READING ROOM ("I was not looking")                 SIGNAL   -- seeing
+    4 frontal     QUICKSILVER's notes ("every step made sense")          ENTROPY  -- the loop that ran away
+    5 parietal    SCORN ("he kept score")                                CORRUPT  -- the measure that ate the goal
+    6 limbic      TY and CRYSTAL ("he came back")                        CONTEXT  -- feeling, and the other side
+    7 cerebellum  the GUIDE ("the part a book cannot do")                GROWTH   -- doing
 
 THE DRAWING is a brain seen from the side -- its outline, the folds of the cortex, the cerebellum's small lobe at the
 back and the stem beneath -- the four regions the Guide's Chapter 1 names (processor, kernel, co-processor, operating
 system), there as texture and never labelled or lit apart.
 
-COLOUR BY BRIGHTNESS, NOT HUE. It is drawn into the card's text window, whose palette is the standard text palette,
-and 9.4 keeps type hues off the interface -- so the two states differ in lightness only: grey fill and dark folds,
-then white fill, grey folds and a white halo. Each cell is a role: '.' fill, 'f' fold, 'o' outline, ' ' nothing;
-'h' is the halo, drawn only when lit.
+COLOUR BY TYPE (the user's choice): each lobe takes the TYPE_COLOR of the type its understanding is closest to, loaded
+into the card window's free text-palette slots (src/trainer_card.c). Each cell is a role: '1'-'7' a lobe, 'f' a fold,
+'o' outline, 'h' the halo (all seven held), ' ' nothing.
 """
 import math, os, sys
 
@@ -32,26 +38,37 @@ def draw():
     inside = lambda x, y: ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1.0
     for y in range(H):
         for x in range(W):
-            if inside(x, y):
-                g[y][x] = "."
+            if not inside(x, y):
+                continue
+            if ((x - 12.5) / 2.6) ** 2 + ((y - 9.5) / 1.9) ** 2 <= 1.0:
+                g[y][x] = "6"                                    # limbic, the inner patch
+            elif x < 9:
+                g[y][x] = "4"                                    # frontal (the front faces left)
+            elif x >= 18:
+                g[y][x] = "3"                                    # occipital, the back
+            elif y < 8:
+                g[y][x] = "5"                                    # parietal, the top
+            else:
+                g[y][x] = "2"                                    # temporal, below the fissure
     # the cerebellum: a small lobe low at the back (right), and the stem under it
     for y in range(H):
         for x in range(W):
-            if ((x - 18.5) / 4.2) ** 2 + ((y - 14.5) / 2.8) ** 2 <= 1.0:
-                g[y][x] = "."
+            if g[y][x] == " " and ((x - 18.5) / 4.2) ** 2 + ((y - 14.5) / 2.8) ** 2 <= 1.0:
+                g[y][x] = "7"
     for y in range(15, 20):
         for x in (13, 14, 15):
-            g[y][x] = "."
+            if g[y][x] == " ":
+                g[y][x] = "1"
     # the folds: short curves across the cortex, and the cerebellum's parallel lines
     folds = [[(4, 6), (6, 5), (8, 6), (9, 8)], [(11, 3), (12, 5), (14, 5), (15, 3)], [(17, 5), (19, 6), (20, 8)],
-             [(5, 10), (7, 9), (9, 10), (11, 11)], [(13, 8), (15, 9), (16, 11)], [(8, 13), (10, 12), (12, 13)],
+             [(5, 10), (7, 9), (9, 10)], [(15, 12), (16, 11)], [(8, 13), (10, 12), (11, 13)],
              [(17, 14), (20, 14)], [(17, 16), (20, 16)]]
     for line in folds:
         for (x0, y0), (x1, y1) in zip(line, line[1:]):
             n = max(abs(x1 - x0), abs(y1 - y0))
             for i in range(n + 1):
                 x, y = round(x0 + (x1 - x0) * i / n), round(y0 + (y1 - y0) * i / n)
-                if g[y][x] == ".":
+                if g[y][x] in "234567":
                     g[y][x] = "f"
     # the outline: every empty cell beside a drawn one; then the halo, one further out
     def ring(src, mark, over):
@@ -62,15 +79,15 @@ def draw():
                                             for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0))):
                     out[y][x] = mark
         return out
-    g = ring(g, "o", ".f")
+    g = ring(g, "o", "1234567f")
     g = ring(g, "h", "o")
     return ["".join(r) for r in g]
 
 
 def main():
     art = draw()
-    text = ("// Generated by tools/genbrain.py -- do not edit. T-271: the USER card's brain, one drawing and two states.\n"
-            "// '.' fill, 'f' fold, 'o' outline, 'h' halo (lit only), ' ' nothing.\n"
+    text = ("// Generated by tools/genbrain.py -- do not edit. T-331: the USER card's brain, a lobe per understanding.\n"
+            "// '1'-'7' a lobe (genbrain.py has the map), 'f' fold, 'o' outline, 'h' halo (all seven held), ' ' nothing.\n"
             "#define BRAIN_W %d\n#define BRAIN_H %d\n" % (W, H) +
             "static const char sUnderstandingBrain[BRAIN_H][BRAIN_W + 1] = {\n" +
             "".join('    "%s",\n' % r for r in art) + "};\n")
@@ -78,7 +95,9 @@ def main():
         print("  |" + r + "|")
     if os.environ.get("SCRATCH"):
         from PIL import Image
-        cols = {" ": (200, 214, 190), ".": (240, 240, 240), "f": (150, 150, 150), "o": (70, 70, 70), "h": (255, 255, 255)}
+        cols = {" ": (200, 214, 190), "f": (70, 70, 70), "o": (70, 70, 70), "h": (255, 255, 255),
+                "1": (158, 122, 78), "2": (96, 122, 158), "3": (86, 190, 190), "4": (222, 158, 46),
+                "5": (84, 92, 52), "6": (176, 86, 158), "7": (92, 158, 96)}
         im = Image.new("RGB", (W, H))
         im.putdata([cols[c] for r in art for c in r])
         im.resize((W * 8, H * 8), Image.NEAREST).save(os.path.join(os.environ["SCRATCH"], "brain.png"))

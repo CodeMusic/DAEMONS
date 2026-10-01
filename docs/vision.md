@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.288**
+**A total conversion — the living design bible, v11.289**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4664,7 +4664,7 @@ take off.*
 #### Decided by the user 2026-09-25, and built
 
 - ***The margins hold the understandings*** (T-304): **once one is arrived at, a note appears under the text of the chapter it concerns — indented, in the Guide's cyan, as if written there; reading the Guide grants nothing.** *Which chapter goes with where the first is earned (T-252); DREAMS is proposed, with the DRAFT note* "Read it twice. It stayed." — *the chapter's own reality check, passed.*
-- ***The USER card's brain lights once and never counts*** (T-271): **grey until any understanding is arrived at, lit after — the same drawing brighter, with a halo; no region lights on its own.** *Brightness, not hue (9.4).*
+- ~~***The USER card's brain lights once and never counts*** (T-271): **grey until any understanding is arrived at, lit after — the same drawing brighter, with a halo; no region lights on its own.** *Brightness, not hue (9.4).*~~ ***Reversed by the user 2026-10-01 (T-331)***: **one lobe per understanding, each grey until arrived at and then in the TYPE_COLOR of the type closest to it; a white halo when all seven are held** — *brainstem TANOBY (STRATUM), temporal the SCHOOL (LOGIC), occipital the READING ROOM (SIGNAL), frontal QUICKSILVER's notes (ENTROPY), parietal SCORN (CORRUPT), limbic TY and CRYSTAL (CONTEXT), cerebellum the GUIDE (GROWTH). The user, seeing the single glow, could not tell how it changed. See Reversed.*
 - ***The USER card's BENCHMARKS*** (T-272): **R turns the card's figures into the eight MARKS, each with what it certifies** — *the concept of 5's table said without its name, DRAFT; one not yet held says so.* ***There is no UNDERSTANDINGS tab***: *a list of them would be the count T-252 rules out, and the margins already hold them.*
 - *T-269's seven-day table is built as 9.21's week: the name on leaving a building, the note at the terminal, the colour on the CHECKPOINT's trim.*
 
@@ -8555,6 +8555,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **The USER card's brain lights once and never counts** (T-271, 2026-09-25) | **A lobe per understanding, each in its type's colour; the halo at seven** (T-331, 2026-10-01) | *The user, seeing it: "I saw a brain but didn't know how it changes as u gain understanding."* **A glow that never counts was honest to 4.3 and told the player nothing**; *the lobes show which places changed them without a number anywhere, and the colours carry the chart's own language (9.4). The Guide's margins still hold the words.* |
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
 | **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *family included.* 4.3, T-81 (2026-09-14) |
 | **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away the Five Witnesses lock and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
