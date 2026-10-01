@@ -114,6 +114,14 @@ JOBS = {
                         dst="engineGba/graphics/fame_checker/prof_oak.png",
                         pal=None, size=(64, 64), colours=15, base=1, palsize=16,
                         flip=True),
+    # T-120 (2026-10-01): the ONE vanilla trainer portrait a player can still see -- OAK, the opponent in TEACHY TV's
+    # trainer demo (battle_controller_pokedude.c names TRAINER_PIC_PROFESSOR_OAK; CALLOW gives the TEACHY TV). OAK is
+    # CRYSTAL CLEAR in this game, so it is her drawing fitted to the battle frame, FLIPPED as HEARSAY's is: the
+    # source gestures right, and an opponent faces left, toward the player, as vanilla's OAK does here.
+    "crystal_teachy": dict(src="gfx/characters/crystal_speech.jpeg",
+                        dst="engineGba/graphics/trainers/front_pics/professor_oak_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/professor_oak.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, flip=True),
     "holt":        dict(src="gfx/characters/holt.jpeg",
                         dst="engineGba/graphics/fame_checker/bill.png",
                         pal=None, size=(64, 64), colours=15, base=1, palsize=16),

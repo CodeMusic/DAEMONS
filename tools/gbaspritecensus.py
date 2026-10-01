@@ -164,9 +164,43 @@ def unreachable_people():
     return out
 
 
+def unreachable_portraits():
+    """The trainer portraits no battle can show (T-120), found the same way: by walking what puts one on screen.
+
+    A portrait is reached by a TRAINER that something fights (a map script's trainerbattle, or code that starts a
+    battle by name), by a FACILITY CLASS the Trainer Tower's own sets use (gFacilityClassToPicIndex), or by code
+    that names the TRAINER_PIC_ itself (a link partner, the intro). On 2026-10-01 that left 81 vanilla portraits
+    with nothing reaching them -- FireRed's placeholders for Ruby and Sapphire's classes, there for e-Reader
+    cards this build cannot receive -- and the census kept counting them as T-120's unfinished work.
+    """
+    def read(pat, skip=()):
+        out = ""
+        for f in glob.glob(os.path.join(GBA, pat)):
+            if os.path.relpath(f, GBA) not in skip:
+                out += open(f, errors="ignore").read()
+        return out
+    trainers = open(os.path.join(GBA, "src/data/trainers.h"), errors="ignore").read()
+    pic_of = {t: p for t, p in re.findall(r"\[(TRAINER_\w+)\]\s*=\s*\{.*?\.trainerPic\s*=\s*(TRAINER_PIC_\w+)", trainers, re.S)}
+    code = read("data/maps/*/scripts.inc") + read("data/scripts/*.inc") + read("data/*.s") + read("src/*.c")
+    #  TRAINER_NONE is entry 0 and wears ARCHIE's portrait; it is named everywhere and fought nowhere.
+    live = {pic_of[t] for t in set(re.findall(r"\bTRAINER_\w+", code)) - {"TRAINER_NONE"} if t in pic_of}
+    live |= set(re.findall(r"\bTRAINER_PIC_\w+", code))
+    lookups = os.path.join(GBA, "src/data/pokemon/trainer_class_lookups.h")
+    m = re.search(r"gFacilityClassToPicIndex\[\]\s*=\s*\{(.*?)\};", open(lookups, errors="ignore").read(), re.S)
+    fac = dict(re.findall(r"\[(FACILITY_CLASS_\w+)\]\s*=\s*(TRAINER_PIC_\w+)", m.group(1))) if m else {}
+    live |= {fac[c] for c in set(re.findall(r"FACILITY_CLASS_\w+", read("src/trainer_tower_sets.c"))) if c in fac}
+    tables = open(os.path.join(GBA, "src/data/trainer_graphics/front_pic_tables.h"), errors="ignore").read()
+    sym_of = dict(re.findall(r"TRAINER_SPRITE\((\w+),\s*(gTrainerFrontPic_\w+)", tables))
+    graphics = open(os.path.join(GBA, "src/data/graphics/trainers.h"), errors="ignore").read()
+    file_of = dict(re.findall(r"const u32 (gTrainerFrontPic_\w+)\[\]\s*=\s*INCBIN_U32\(\"(graphics/trainers/front_pics/\w+)\.4bpp", graphics))
+    reached = {file_of[sym_of[p[len("TRAINER_PIC_"):]]] + ".png" for p in live
+               if p[len("TRAINER_PIC_"):] in sym_of and sym_of[p[len("TRAINER_PIC_"):]] in file_of}
+    return {os.path.relpath(f, GBA) for f in glob.glob(os.path.join(GBA, "graphics/trainers/front_pics/*.png"))} - reached
+
+
 def main():
     vanilla = upstream_files()
-    dead = unreachable_people()
+    dead = unreachable_people() | unreachable_portraits()
     results = collections.OrderedDict()
     status = {}
     for name, pattern, people in CATEGORIES:
