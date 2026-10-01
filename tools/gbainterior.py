@@ -1894,6 +1894,15 @@ def verd_draw(lid, secdir, kind):
             elif b in (96, 98):                               # a doorway
                 r.rect(X + 2, Y + 2, X + 13, Y + 15, V_BRONZED)
                 r.rect(X + 3, Y + 3, X + 12, Y + 15, I_INK)
+    if lid == "LAYOUT_CELADON_CITY_CONDOMINIUMS_3F":
+        #  T-297 (the user, "yes to all"): FOLDS' blind tell. The page is pinned behind the painting where the game
+        #  was drawn; a corner of paper shows under the bottom-left of the frame -- findable by a sharp eye, and
+        #  REVEAL only makes it plain.
+        X, Y = 2 * 16, 16 * 16
+        for dy, xs in ((12, range(3, 8)), (13, range(3, 7)), (14, range(3, 6)), (15, range(3, 5))):
+            for dx in xs:
+                r.px(X + dx, Y + dy, I_CREAML)
+        r.px(X + 7, Y + 12, I_CREAMD); r.px(X + 6, Y + 13, I_CREAMD); r.px(X + 5, Y + 14, I_CREAMD); r.px(X + 4, Y + 15, I_CREAMD)
     if all((x, H - 1) in wall for x in range(W)):
         r.rect(0, (H - 1) * 16, W * 16 - 1, H * 16 - 1, (0, 0, 0))
     return r.im
