@@ -7,6 +7,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### Pictures every push, and two drifts read both ways (2026-10-01)
+
+- ***Every push now sends the user picture sheets of what changed*** (the user): *`tools/reviewsheet.py` draws daemons and maps from what the ROM is built from; the rule is in CLAUDE.md.*
+- ***TY's portrait had no outline*** *— it was drawn after `gbaoutline.py` last ran; outlined now, like every other portrait.*
+- ***`gbaowslots.py --write` would have deleted TY, DAVID and the singing fir*** *from the object-event graphics table (each added by hand later). It now refuses through the drift guard; fifteen tools are guarded.*
+- ***T-313 and T-314 closed; the AI's brief knows the groves and the gangway*** (T-319).
+
 ### The fourteen groves, a gangway, and three reviews (2026-10-01)
 
 - ***Every grove is built*** (T-221, DRAFT): *thirteen more hidden clearings, each entered through a tree standing alone and left by the one standing alone inside it — psychology's daemons under the mainland's trees, computing's under the islands'. Thirty-two daemons in fourteen families, with names, both editions' entries and sprites; THE UNDERTONE now holds UNNOTICED. `gbagrove.py` draws a clearing and plants the way in; `gbagrovefamilies.py` writes the words.*

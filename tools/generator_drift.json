@@ -220,5 +220,11 @@
   "files": [
    "ai:server/prompts/game.txt"
   ]
+ },
+ "gbaowslots": {
+  "why": "STALE -- never --write it on the whole tree: object_event_graphics_info.h's tail gained TY (T-298), DAVID (T-313) and the singing fir (T-10) by hand after it last ran, and its write rebuilds that tail without them (found 2026-10-01: a plain --write deleted all three)",
+  "files": [
+   "engine:src/data/object_events/object_event_graphics_info.h"
+  ]
  }
 }

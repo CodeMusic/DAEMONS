@@ -273,5 +273,9 @@ def write(dm, maps):
     print("wrote %d type palettes, %d objects' art, %d variants" % (len(used_types), len(dm), len(variants)))
 
 if __name__ == "__main__" and "--write" in sys.argv:
+    #  2026-10-01: its write rebuilds the graphics table's tail, and TY, DAVID and the singing fir were added there by
+    #  hand after it last ran -- a plain --write deleted all three. generator_drift.json says so; this refuses.
+    from driftguard import refuse_over_later_work
+    refuse_over_later_work("gbaowslots")
     dm, maps, misfits = plan()
     write(dm, maps)

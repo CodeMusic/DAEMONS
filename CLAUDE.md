@@ -150,7 +150,7 @@ every tool until it reports nothing** — that is what caught all three.
 anything. A generated file stays correct on disk long after the tool that wrote it has stopped
 working, and nothing else will tell you (T-212, T-213).
 
-**A tool whose write would undo later work refuses to.** `tools/generator_drift.json` lists the 14 whose files carry
+**A tool whose write would undo later work refuses to.** `tools/generator_drift.json` lists the 15 whose files carry
 hand work done after they last ran, and why; each calls `tools/driftguard.py` and refuses a whole-tree `--write`
 (trap 32), naming what it would change. `--over-later-work` writes anyway -- then read `git diff` first.
 `python3 tools/check_generators.py --writes` runs every tool's write in a sandbox (about three minutes) and fails on
