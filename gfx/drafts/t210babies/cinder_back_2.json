@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t210babies/cinder_back_2",
+ "prompt": "pure white background, pixel art game sprite of a baby creature, a tiny smouldering lump of coal with little feet seen from behind, rear view, facing away from the viewer, an orange ember glowing in its cracks, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "adult, face, eyes, front view, side view, lamp, pedestal, human, person, colored background, floor, ground, shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, border, white body, pale body",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.72,
+ "stop_at": null,
+ "image": "gfx/drafts/t210babies/src/forge_back_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 27.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 17:11:32"
+}

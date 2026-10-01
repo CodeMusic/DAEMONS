@@ -1,0 +1,13 @@
+T-210 babies, 2026-10-01: nine named daemons met by breeding, still on vanilla art, drawn image to image from
+their parents' redrawn sprites (run.sh). Picks after the contact sheet:
+  valence   valence_front, valence_back_2
+  residual  residual_front, residual_back
+  crank     crank_front, crank_back
+  standby   standby_front, standby_back
+  cinder    cinder_front, cinder_back
+  static    static_front, static_back
+  tell      tell_front_2, tell_back
+  premise   premise_front_2, premise_back
+  rankle    rankle_front_3, rankle_back  (third pass: its entry says it smiles the whole time; the first frowned)
+Greyed but for red/orange markings, then cleandraft --streaks. CRANK and CINDER keep backs true to DYNAMO and FORGE;
+TELL's back is still the adult owl's pose -- for the refining sweep.
