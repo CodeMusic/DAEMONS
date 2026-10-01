@@ -5,7 +5,8 @@
     python3 tools/gbagrovefamilies.py --write    # species_names.h, pokedex_entries.h, pokedex_text_fr.h and _lg.h
 
 Thirty-two daemons in fourteen families, one family to a GROVE (tools/gbagrove.py places them). The user approved
-the names and the table on 2026-10-01; every word below is DRAFT until they read it in play.
+the names and the table on 2026-10-01; every word below is DRAFT until they read it in play. Avoid ordinary words that
+are also renamed game terms -- FADING's "grows faint" became "grows HALT" under port_vocab.py (FAINT is HALT here).
 
 THE SWAP. Each world hides the other half: the mainland's groves hold daemons of PSYCHOLOGY's lineage, named in its
 register; the islands' hold COMPUTING's, named in its. Each entry has two jobs -- describe the creature, and teach the
@@ -72,7 +73,7 @@ FAMILIES = [
     ]),
     ("ROUTE 8", "SPECIES_DUSKULL", [
         ("DUSKULL", "FADING", "DECAY",
-         "Whatever it passes grows faint. Not gone. Fainter each time it is not looked at.",
+         "Whatever it passes grows pale. Not gone. Paler each time it is not looked at.",
          "Things it drifted past are still there. Nobody can quite remember where.",
          "a small floating hooded spirit with a skull-like mask and one glowing eye, a wispy tail instead of legs"),
         ("DUSCLOPS", "FORGETTING", "ERASURE",

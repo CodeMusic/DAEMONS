@@ -9,6 +9,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ### Pictures every push, and two drifts read both ways (2026-10-01)
 
+- ***The grove daemons' backs face away now*** (T-221, engine `1b27b402f`): *a back-view pass at 512, and GRADIENT, LIKELIHOOD and PAIRWISE re-rolled; FADING's entry says "grows pale" — the vocabulary sweep had turned "faint" into HALT.*
 - ***Every push now sends the user picture sheets of what changed*** (the user): *`tools/reviewsheet.py` draws daemons and maps from what the ROM is built from; the rule is in CLAUDE.md.*
 - ***TY's portrait had no outline*** *— it was drawn after `gbaoutline.py` last ran; outlined now, like every other portrait.*
 - ***`gbaowslots.py --write` would have deleted TY, DAVID and the singing fir*** *from the object-event graphics table (each added by hand later). It now refuses through the drift guard; fifteen tools are guarded.*

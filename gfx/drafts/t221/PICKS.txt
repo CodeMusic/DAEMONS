@@ -5,3 +5,10 @@ neighbour before cleandraft --streaks. Greyed but for red/orange markings (GUESS
 Streak boxes by hand: ATTUNE back, BURSTMODE front, OVERLOADED back. BURSTMODE's back is its front mirrored (its own
 back draft was too thin to carry streaks). Many backs came out facing forward -- a back-view pass is worth doing.
 Worth a re-roll: GRADIENT (lost the compass-needle nose), LIKELIHOOD, PAIRWISE.
+
+BACK-VIEW PASS, 2026-10-01 (gfx/drafts/t221/backs/): new backs drawn at 512 ("rear view, its back turned ... facing
+away", two seeds) for the daemons whose first back faced forward, and new fronts for GRADIENT, LIKELIHOOD and
+PAIRWISE (seed 7). The drafts came back on an off-white ground, so each was flood-filled to white from its corners
+before cleandraft. Kept as they were: MINDSIGHT, GREEDY, BLOATWARE, OVERLOADED, SUBTEXT (new ones still showed a face
+or would not take streaks) and IFTRUE (its new cocoon is paper-white and would not separate). PAIRWISE's back is its
+new front mirrored. FADING's CONTENT now says "pale": "faint" had been swept into HALT by port_vocab.
