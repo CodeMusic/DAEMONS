@@ -7,6 +7,23 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### "Yes to all", built: the first batch of the goal run (2026-10-01)
+
+- ***The INDEX writes up what you chose*** (T-257): *WHAT YOU CHOSE carries the approved words, and the rival's line names the rival as the player named them.*
+- ***Twenty NOTEBOOK documents are in the world*** (T-224, approved as drafts); *PROSPECTUS 3 waits for the user's two dates.*
+- ***CONTEXT has its own INDEX entries*** (T-232): *all 137 daemons a player can meet now read differently in the two editions.*
+- ***The first UNDERSTANDING is arrived at in TANOBY's seventh chamber*** (T-252), *reading "IT IS STILL / HERE."; the islands' machine still opens DOLDRUM CAVE.*
+- ***The credits' runners are drawn*** (T-290, DRAFT): *the player and AL, each pose redrawn through the sprite server.*
+- ***AL's HEARSAY handover at DOLDRUM CITY*** (T-295, DRAFT) *was still BLUE's ("Smell ya!"); it is AL's now.*
+- ***The Guide's words stand*** (T-301), *approved as a draft; nothing in the ROM changed.*
+- *Housekeeping: PENPHIN's footprints, the sprite census and engine.md's budget numbers regenerated.*
+
+### INSTINCT's margins, approved and extended (2026-10-01)
+
+- ***The six INSTINCT margins are approved*** (T-188, the user, "yes to all"), *and thirteen more daemons get a second line, DRAFT: ROVERBYTE, ARTSAI, STARR, CODEMUSAI, CAREMUSAI, SEEKMUSAI, INSTINCT, CONJECTURE, MOOD, HOPE, COMFORT, ATTACHMENT and TRUST. REASON's lines notice what you did; INSTINCT's what it was like. Nineteen in all.*
+- ***HALFTONE Tower's six stone lines are approved*** (T-249) *as they stood; nothing changed in the ROM.*
+- *Five stale "waiting on the user" tags cleared from TODO (T-10, T-234, T-235, T-256, T-258).*
+
 ### PENPHIN (2026-10-01)
 
 - ***DOLPHIN, PENGUIN and PENPHIN are in*** (T-234, DRAFT art and text): *a red DOLPHIN of reason (VECTOR/FLOW) in WAILMER's slot and a blue PENGUIN of intuition (FLOW) in SPHEAL's; **either one received in a trade becomes PENPHIN** (CONTEXT/FLOW, purple, WAILORD's slot) — the one daemon that needs another person to exist. The art follows the user's own mockup.*

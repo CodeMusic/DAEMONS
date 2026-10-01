@@ -1,0 +1,4 @@
+T-290, 2026-10-01 -- the credits' runners. Each of the run's three poses was redrawn through the sprite server from
+its own overworld frame (src_*.png: the 16x32 frame, scaled up on its backdrop), image to image at denoise 0.60, seed
+42. The *_d45 set kept too much of the doubled pixels. Picks: every *_d60 frame, keyed and brought down to 32x64 in
+gfx/runners/ (tools/gencreditrunners.py reads those).

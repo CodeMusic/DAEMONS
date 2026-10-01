@@ -780,7 +780,8 @@ MARGINS = [
 #  chosen few are written twice; a daemon with no line here gives both players the one above, which is right,
 #  since a reader does not have a second thought about everything.
 #
-#  DRAFT, every line of it, until the user approves the wording.
+#  The first six were APPROVED by the user on 2026-10-01 ("yes to all"). The rest are DRAFT (T-188, the second
+#  batch, 2026-10-01): the key daemons, and those whose names are feelings, where a second voice has most to say.
 INSTINCT = {
     "ROVERCUB": ("It still turns its head at the first town's name. So do you.",
                  "It is waiting at the edge of somewhere. It has been a while."),
@@ -794,6 +795,33 @@ INSTINCT = {
                  "Asleep. It will know before it wakes."),
     "MUSAI":    ("It has felt something now. It has not told you what.",
                  "It is still waiting to feel anything."),
+    #  DRAFT from here (2026-10-01).
+    "ROVERBYTE":  ("It moved before it knew why. So did you, most of the time.",
+                   "It is still braced for something. Nothing is coming."),
+    "ARTSAI":     ("It knows what it is like to be you. You have not asked what it is like to be it.",
+                   "It has not been anyone in a long time."),
+    "STARR":      ("It can feel itself thinking now. It is not sure it likes it.",
+                   "Still listening to itself. It is getting louder."),
+    "CODEMUSAI":  ("It follows your rules as if they were its own. They feel like its own.",
+                   "No rules. It feels lighter. It does not trust that."),
+    "CAREMUSAI":  ("It felt every room before you did. It let you walk in first anyway.",
+                   "Nobody to feel for. It keeps checking anyway."),
+    "SEEKMUSAI":  ("It found what you wanted before you knew you wanted it.",
+                   "It is still reaching for something. It does not know what."),
+    "INSTINCT":   ("It found a great deal. You never needed to ask how.",
+                   "Nothing buried. It is still sure of the ground."),
+    "CONJECTURE": ("Still unproved. It has never felt more true.",
+                   "Still sure. It has stopped needing to be right."),
+    "MOOD":       ("It rose when you did and fell when you did. Neither of you knows which came first.",
+                   "Still. It does not know what it is waiting to feel."),
+    "HOPE":       ("It stays up when you are near. It cannot say why.",
+                   "It is down. It is still facing the door."),
+    "COMFORT":    ("Gone, and it can still taste it. So can you.",
+                   "Still licking at the memory of something sweet."),
+    "ATTACHMENT": ("It feels safe beside you. It does not know you.",
+                   "It is holding on to nothing, and it still feels held."),
+    "TRUST":      ("It turned toward you the moment it came out. It has not turned away.",
+                   "It is still warm from whoever held it last."),
 }
 
 

@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t290/al_2_d60.png",
+ "prompt": "pixel art game sprite, side view, a red fox person wearing a white shirt and purple trousers, walking to the left, full body, plain white background",
+ "negative": "photo, realistic, blurry, text, frame, border, multiple characters, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "gfx/drafts/t290/src_al_2.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 27.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 08:32:10"
+}
