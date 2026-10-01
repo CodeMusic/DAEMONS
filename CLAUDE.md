@@ -236,6 +236,15 @@ Do **not** use `git stash` for this. Our changes are committed, so there is
 nothing to stash and you would simply rebuild your own ROM and watch the
 checksums "fail" correctly.
 
+## Showing the user what changed
+
+**Every push sends the user picture sheets of what changed** (the user, 2026-10-01: "I always get screenshots like
+this, they are super helpful"): daemons with `python3 tools/reviewsheet.py daemons OUT.png NAME ...`, maps with
+`python3 tools/reviewsheet.py map OUT.png MAPNAME [x0 y0 w h]`, and changed words beside their drafts. Both read what
+the ROM is built from, so build first. Send them with SendUserFile and embed them on the field-test page. Theatre
+screenshots go on top when the screen-takeover card is approved -- never instead: it goes unanswered while the user
+is away, and the sheets do not wait on it.
+
 ## Releasing ROMs
 
 `tools/romrelease.py --write` builds all four ROMs and files them in **`ROM RELEASE/`** at the repo root. **Its
