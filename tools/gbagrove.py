@@ -51,47 +51,92 @@ BUSH = 0x005
 #  The tile: (the tile it is drawn from, {(x, y): colour index}).
 TELL_TILES = {462: (0x57, {(7, 0): 6, (7, 1): 6, (7, 2): 6, (7, 3): 6}),            # the trunk: the notches, one slot
               463: (0x1C, {(6, 4): 15, (7, 4): 15, (6, 5): 15, (7, 5): 15}),        # the bush's foot, left half
-              597: (0x1D, {(0, 4): 15, (1, 4): 15, (0, 5): 15, (1, 5): 15})}        # and right half
+              597: (0x1D, {(0, 4): 15, (1, 4): 15, (0, 5): 15, (1, 5): 15}),        # and right half
+              #  SIX ISLAND's door is a rock in the water, the general set's own (0x212..0x21B): a small dark cave-mouth
+              #  on the seam of its lower half, in its darkest grey (0x1A6 is the lower half's left, 0x1A7 its right,
+              #  neither mirrored: the seam is the right edge of one and the left edge of the other)
+              605: (0x1A6, {(x, y): 11 for x in (6, 7) for y in (4, 5, 6)}),
+              620: (0x1A7, {(x, y): 11 for x in (0, 1) for y in (4, 5, 6)})}
 #  The metatile: plain one -> (its grove twin, {tile it uses: tile the twin uses}). Flip and palette bits carry over.
-TELL = {0x026: (553, {0x57: 462}), 0x027: (554, {0x57: 462}), 0x025: (555, {0x57: 462}), BUSH: (556, {0x1C: 463, 0x1D: 597})}
+TELL = {0x026: (553, {0x57: 462}), 0x027: (554, {0x57: 462}), 0x025: (555, {0x57: 462}), BUSH: (556, {0x1C: 463, 0x1D: 597}),
+        0x21A: (557, {0x1A6: 605}), 0x21B: (558, {0x1A7: 620})}                   # the rock's lower half
+
+#  The three doors that are their own area's art (T-337, second pass): VIRIDIAN FOREST's and the BERRY FOREST's big round
+#  tree (one drawing, two palettes) gets the same little door down its stub of a trunk (tile 84, the hollow's darkest
+#  brown, mirrored as the trunk is), in a tile its own tileset
+#  leaves unused, as a metatile past the set's last. Secondary tiles are numbered from 0x280 in a metatile; a swap may
+#  also name a QUARTER ("at", n) where a tile repeats inside the metatile. (SIX ISLAND's rock is the general set's own,
+#  so its tell is in TELL above.)
+SECONDARY_TELL = {
+    "gTileset_ViridianForest": ("secondary/viridian_forest",
+                                {10: (84, {(7, 1): 8, (7, 2): 8, (7, 3): 8})},
+                                {0x2A4: (0x2AB, {0x2D4: 0x28A})}),
+    "gTileset_BerryForest":    ("secondary/berry_forest",
+                                {10: (84, {(7, 1): 8, (7, 2): 8, (7, 3): 8})},
+                                {0x2A4: (0x2AA, {0x2D4: 0x28A})}),
+}
+
+
+def tell_tables():
+    """(tileset dir, metatile base, {new tile: (drawn from, edits)}, {plain: (twin, swap)}) for every set with a tell."""
+    yield "primary/general", 0, TELL_TILES, TELL
+    for d, tiles, metas in SECONDARY_TELL.values():
+        yield d, 0x280, tiles, metas
+
+
+def tell_for(layout):
+    """{plain metatile: its grove twin} for a layout's own two tilesets."""
+    table = {base: twin for base, (twin, _) in TELL.items()} if layout["primary_tileset"] == "gTileset_General" else {}
+    sec = SECONDARY_TELL.get(layout["secondary_tileset"])
+    if sec:
+        table.update({base: twin for base, (twin, _) in sec[2].items()})
+    return table
 
 
 def ensure_tell():
-    """What the general tileset needs for the tell, and writes it with --write. Returns what is (or was) missing."""
+    """What each tileset needs for the tell, and writes it with --write. Returns what is (or was) missing."""
     from PIL import Image
-    d = os.path.join(GBA, "data/tilesets/primary/general")
     todo = []
-    im = Image.open(os.path.join(d, "tiles.png"))
-    px, tw = im.load(), im.width // 8
-    for tid, (src, edits) in TELL_TILES.items():
-        want = {(i, j): edits.get((i, j), px[(src % tw) * 8 + i, (src // tw) * 8 + j]) for i in range(8) for j in range(8)}
-        if any(px[(tid % tw) * 8 + i, (tid // tw) * 8 + j] != v for (i, j), v in want.items()):
-            todo.append("tile %d drawn" % tid)
-            for (i, j), v in want.items():
-                px[(tid % tw) * 8 + i, (tid // tw) * 8 + j] = v
-    meta = bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read())
-    attr = bytearray(open(os.path.join(d, "metatile_attributes.bin"), "rb").read())
-    for base, (twin, swap) in TELL.items():
-        ents = struct.unpack_from("<8H", meta, base * 16)
-        new = struct.pack("<8H", *[(e & ~0x3FF) | swap.get(e & 0x3FF, e & 0x3FF) for e in ents])
-        if meta[twin * 16:twin * 16 + 16] != new or attr[twin * 4:twin * 4 + 4] != attr[base * 4:base * 4 + 4]:
-            todo.append("metatile %d (%s's twin)" % (twin, hex(base)))
-            meta[twin * 16:twin * 16 + 16] = new
-            attr[twin * 4:twin * 4 + 4] = attr[base * 4:base * 4 + 4]
-    if WRITE and todo:
-        im.save(os.path.join(d, "tiles.png"), bits=4)
-        open(os.path.join(d, "metatiles.bin"), "wb").write(meta)
-        open(os.path.join(d, "metatile_attributes.bin"), "wb").write(attr)
+    for sub, base0, tiles, metas in tell_tables():
+        d = os.path.join(GBA, "data/tilesets", sub)
+        mine = []
+        im = Image.open(os.path.join(d, "tiles.png"))
+        px, tw = im.load(), im.width // 8
+        for tid, (src, edits) in tiles.items():
+            want = {(i, j): edits.get((i, j), px[(src % tw) * 8 + i, (src // tw) * 8 + j]) for i in range(8) for j in range(8)}
+            if any(px[(tid % tw) * 8 + i, (tid // tw) * 8 + j] != v for (i, j), v in want.items()):
+                mine.append("tile %d drawn" % tid)
+                for (i, j), v in want.items():
+                    px[(tid % tw) * 8 + i, (tid // tw) * 8 + j] = v
+        meta = bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read())
+        attr = bytearray(open(os.path.join(d, "metatile_attributes.bin"), "rb").read())
+        for base, (twin, swap) in metas.items():
+            b, t = base - base0, twin - base0
+            if len(meta) < (t + 1) * 16:                               # a twin past the set's last metatile
+                meta += bytes((t + 1) * 16 - len(meta))
+                attr += bytes((t + 1) * 4 - len(attr))
+            ents = struct.unpack_from("<8H", meta, b * 16)
+            new = struct.pack("<8H", *[(e & ~0x3FF) | swap.get(("at", k), swap.get(e & 0x3FF, e & 0x3FF))
+                                       for k, e in enumerate(ents)])
+            if meta[t * 16:t * 16 + 16] != new or attr[t * 4:t * 4 + 4] != attr[b * 4:b * 4 + 4]:
+                mine.append("metatile %s (%s's twin)" % (hex(twin), hex(base)))
+                meta[t * 16:t * 16 + 16] = new
+                attr[t * 4:t * 4 + 4] = attr[b * 4:b * 4 + 4]
+        if WRITE and mine:
+            im.save(os.path.join(d, "tiles.png"), bits=4)
+            open(os.path.join(d, "metatiles.bin"), "wb").write(meta)
+            open(os.path.join(d, "metatile_attributes.bin"), "wb").write(attr)
+        todo += ["%s: %s" % (sub.split("/")[1], m) for m in mine]
     return todo
 
 
-def mark_doors(raw, W, cells):
-    """RAW with each cell's plain tree or bush turned into its grove twin."""
+def mark_doors(raw, W, cells, table):
+    """RAW with each cell's plain tree, bush or rock turned into its grove twin (TABLE from tell_for)."""
     raw = bytearray(raw)
     for cx, cy in cells:
         old = struct.unpack_from("<H", raw, (cy * W + cx) * 2)[0]
-        if (old & 0x3FF) in TELL:
-            struct.pack_into("<H", raw, (cy * W + cx) * 2, (old & ~0x3FF) | TELL[old & 0x3FF][0])
+        if (old & 0x3FF) in table:
+            struct.pack_into("<H", raw, (cy * W + cx) * 2, (old & ~0x3FF) | table[old & 0x3FF])
     return bytes(raw)
 GRASS = ((0x008, 0x009), (0x010, 0x011))                                        # even rows, odd rows
 TALL = 0x00D
@@ -113,7 +158,7 @@ CLEARING = [
 #    plant  ("tree", x, y) a 2x2 at (x,y)..(x+1,y+1), or ("bush", x, y); None where a tree already stands alone
 GROVES = [
     dict(name="ViridianForest_Grove", parent="ViridianForest", parent_layout="LAYOUT_VIRIDIAN_FOREST",
-         crop=(38, 39, 16, 17), enter_at=[(30, 57)], back_to=(30, 58), arrive=(4, 6),
+         crop=(38, 39, 16, 17), enter_at=[(30, 57)], back_to=(30, 58), arrive=(4, 6), tell_at=[(29, 57)],
          leave_at=[(7, 3), (8, 3), (9, 3)], family="KECLEON", levels=(6, 9)),
     dict(name="Route25_Grove", parent="Route25", synth=True, plant=None,
          enter_at=[(18, 5)], back_to=(18, 6), family="RALTS", levels=(12, 16)),
@@ -267,6 +312,7 @@ def main():
             x0, y0, w, h = g["crop"]
             crop = b"".join(raw[((y0 + y) * W + x0) * 2:((y0 + y) * W + x0 + w) * 2] for y in range(h))
             arrive, leave_at = g["arrive"], g["leave_at"]
+            crop = mark_doors(crop, w, leave_at, tell_for(pl))                  # T-337: the way out carries it too
         ax, ay = arrive
         assert (struct.unpack_from("<H", crop, (ay * w + ax) * 2)[0] >> 10) & 3 == 0, "%s: the arrival cell is blocked" % name
         assert any((struct.unpack_from("<H", crop, ((ly + 1) * w + lx) * 2)[0] >> 10) & 3 == 0 for (lx, ly) in leave_at), \
@@ -279,7 +325,8 @@ def main():
         praw = dict(planted).get(os.path.join(GBA, pl["blockdata_filepath"])) or \
             open(os.path.join(GBA, pl["blockdata_filepath"]), "rb").read()
         ppath = os.path.join(GBA, pl["blockdata_filepath"])
-        marked = mark_doors(praw, W, g["enter_at"])                              # T-337: a tree already standing too
+        marked = mark_doors(praw, W, g["enter_at"] + g.get("tell_at", []), tell_for(pl))   # T-337 (tell_at: the trunk,
+        #  where the door's event stands on another cell of the tree, as VIRIDIAN FOREST's does)
         if marked != praw:
             planted = [p for p in planted if p[0] != ppath] + [(ppath, marked)]
             praw = marked
