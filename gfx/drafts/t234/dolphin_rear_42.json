@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t234/dolphin_rear_42",
+ "prompt": "pure white background, pixel art game sprite of a single sleek friendly dolphin, rear view, facing away from the viewer, back of the head, dorsal fin and tail flukes, full body, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on pure white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "front view, facing the viewer, face, eyes, beak toward viewer, white body, pale body, human, person, grey background, colored background, frame, box, border, floor, ground, water, waves, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 27.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 07:41:25"
+}

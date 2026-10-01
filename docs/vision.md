@@ -7176,7 +7176,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 
 #### Adopted, not yet built
 
-***Status, 2026-09-27***: *most of this list is built or settled — Ty is in the ROM (T-19), the post-game triangle is the ending as built (T-261), THE HOLDOUT's TOKEN is in (T-260) and ORPHAN is a routine's name. **Penphin** is decided (T-234: DOLPHIN VECTOR/FLOW, PENGUIN FLOW, PENPHIN CONTEXT/FLOW) and waits on its art; **RESONANCE**'s behaviour has a proposal with the user.*
+***Status, 2026-10-01***: *the whole list is built or settled — Ty is in the ROM (T-19), the post-game triangle is the ending as built (T-261), THE HOLDOUT's TOKEN is in (T-260) and ORPHAN is a routine's name. **Penphin is built** (T-234): DOLPHIN VECTOR/FLOW in WAILMER's slot, PENGUIN FLOW in SPHEAL's, either one traded becoming PENPHIN CONTEXT/FLOW in WAILORD's, which learns **RESONANCE** as it evolves — LOGIC and CONTEXT together, √(Attack × Sp. Atk) against √(Defense × Sp. Def), so balance is what it rewards.*
 
 ~~**Ty is not in the ROM at all.**~~ ***No longer true (noted 2026-09-24): T-19 put him in the FIVE ISLAND warehouse, where he hands over the payload.*** The bible places him at Quicksilver; no NPC has been written. **So his line and the post-game triangle are new content, not edits** — a larger job than the review implies. *Whether the triangle is still owed is T-261.*
 

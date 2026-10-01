@@ -1,0 +1,9 @@
+T-234, 2026-10-01 -- DOLPHIN (red, reason), PENGUIN (blue, intuition), PENPHIN (purple, both), after the user's mockup
+(penphin_mockup_user.png). Non-orange hues greyed before cleandraft so the type colour carries the creature.
+
+dolphin  front  dolphin_front_42 (greyed)         back  dolphin_back_99 (greyed)
+penguin  front  penguin_front_99                  back  penguin_back_42 (greyed, mirrored)
+penphin  front  penphin_front_42 (i2i from the mockup, greyed)
+                                                  back  penphin_back_42 (greyed, mirrored -- the dolphin's tail)
+The *_rear_* set was a second try at true rear views; none read as one, so the backs are three-quarter views.
+penphin_rom_preview.png is the six as the ROM holds them, decoded from the built tiles and palettes.

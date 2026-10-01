@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t234/dolphin_front_7",
+ "prompt": "pure white background, pixel art game sprite of a single sleek friendly dolphin, upright and leaping, facing left in three-quarter view, long beak, dorsal fin, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on pure white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "human, person, grey background, colored background, frame, box, border, floor, ground, water, waves, pedestal, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 28.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 07:29:05"
+}

@@ -7,6 +7,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### PENPHIN (2026-10-01)
+
+- ***DOLPHIN, PENGUIN and PENPHIN are in*** (T-234, DRAFT art and text): *a red DOLPHIN of reason (VECTOR/FLOW) in WAILMER's slot and a blue PENGUIN of intuition (FLOW) in SPHEAL's; **either one received in a trade becomes PENPHIN** (CONTEXT/FLOW, purple, WAILORD's slot) — the one daemon that needs another person to exist. The art follows the user's own mockup.*
+- ***One half per cartridge***: *DOLPHIN surfs at DOLDRUM CITY in CONTENT and PENGUIN in CONTEXT, in the same 30% slot, so the trade is the natural way to meet the other one.*
+- ***RESONANCE*** *(MIST BALL's slot, CONTEXT, 90, 100%): strikes with √(Attack × Sp. Atk) against √(Defense × Sp. Def), so 100/100 hits as 100 and 180/20 as 60. PENPHIN is offered it the moment it evolves; LATIAS takes EXTRASENSORY in its place.*
+- ***After the GLOBAL INDEX***: *FRLG will neither trade a daemon from outside the first 151 nor evolve one past them until the national INDEX is on. That is vanilla's rule and it is kept — PENPHIN is a post-game daemon.*
+- *The INDEX entries differ by edition — CONTENT tells what each one does, CONTEXT what it is like to be one.*
+
 ### A thank-you after the splash (2026-09-29)
 
 - ***"Thank you, Satoshi Tajiri. / An idea from 1996 / is still reaching people. / Me included. / -- CodeMusic"*** (T-320): *a card straight after the CodeMusic animation, in its band and colours; the splash's binary glints about CODE and its notes about MUSIC, fewer and slower than before. Four seconds; A, START or SELECT skip it with the intro.*

@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t234/penphin_front_99",
+ "prompt": "pure white background, pixel art game sprite of a penguin and dolphin hybrid creature, penguin body with a dolphin's dorsal fin on its back, orange beak and feet, standing, facing left, full body, clean black outline, isolated on pure white, centered, no shadow, no text",
+ "negative": "human, person, grey background, colored background, frame, box, border, floor, ground, water, waves, pedestal, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 99,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.55,
+ "stop_at": null,
+ "image": "gfx/drafts/t234/penphin_mockup_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 25.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 07:38:34"
+}
