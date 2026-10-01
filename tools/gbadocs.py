@@ -41,7 +41,7 @@ SECTION = {"LOOSE_PAGES": "NB_LOOSE_PAGES", "LAB_NOTES": "NB_LAB_NOTES", "RUN_LO
            "CORRESPONDENCE": "NB_CORRESPONDENCE", "THE_FILE": "NB_THE_FILE", "PROSPECTUS": "NB_PROSPECTUS",
            "PEER_REVIEW": "NB_PEER_REVIEW"}
 
-#  key, spot. None = not drafted, on purpose (school.md 10: LOOSE PAGES 6, CORRESPONDENCE 1, PROSPECTUS 4).
+#  key, spot. None = not drafted, on purpose (school.md 10: LOOSE PAGES 6, PROSPECTUS 4).
 #  A gate is ("set", FLAG) or ("unset", FLAG). Silent spots name the script label and the line to follow.
 DOCS = [
     ("LOOSE_PAGES_2",    ("sign", "ViridianForest_Grove", 11, 15, None)),
@@ -52,7 +52,8 @@ DOCS = [
     ("LAB_NOTES_6",      ("furniture", "CinnabarIsland_PokemonLab_ResearchRoom", 8, 6)),
     ("RUN_LOGS_5",       ("silent", "CeruleanCave_B1F", "CeruleanCave_B1F_EventScript_CaughtStarr", "setflag FLAG_FOUGHT_MEWTWO")),
     ("RUN_LOGS_6",       ("silent", "CeruleanCave_B1F", "CeruleanCave_B1F_EventScript_Mewtwo", "clearflag FLAG_SYS_SPECIAL_WILD_BATTLE")),
-    ("CORRESPONDENCE_1", None),
+    #  1: drafted 2026-10-01 (T-335) -- HALFTONE TOWER, as school.md 10 asks: a grave in 2F's east block, read from below.
+    ("CORRESPONDENCE_1", ("sign", "PokemonTower_2F", 15, 10, None)),
     #  2: moved 2026-09-25 from the 3F's back wall (0,6), which the Designer's doorway seals off, to the same
     #  building's roof-room bookshelf -- still VERDIGRIS, as school.md 10 asks.
     ("CORRESPONDENCE_2", ("furniture", "CeladonCity_Condominiums_RoofRoom", 8, 2)),
@@ -202,8 +203,11 @@ def unprintable(text, chars, names):
 def c_string(text):
     """A document's words as a C string. book_reader.c reflows every line itself and breaks only at \\p, so a
     line the draft breaks on purpose -- a numbered list, a log's rows, written \\n -- becomes \\p too; left as \\n it
-    would run into the line before it (found dry-running all 21 drafts, 2026-09-23)."""
+    would run into the line before it (found dry-running all 21 drafts, 2026-09-23). A single real newline in the
+    JSON is the same deliberate break: the drafts write their lists, log rows and signatures that way, and until
+    T-335 (2026-10-01) all eight of them ran together -- THE FILE 4 read "SAFEGUARD 2. 2. Pay withheld"."""
     text = re.sub(r"\\n[ \t]*\n?", "\n\n", text.strip())
+    text = re.sub(r"(?<!\n)\n(?!\n)", "\n\n", text)
     paras = [" ".join(p.split()) for p in re.split(r"\n\s*\n", text.strip()) if p.strip()]
     out = []
     for i, p in enumerate(paras):
