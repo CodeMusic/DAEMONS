@@ -718,8 +718,14 @@ def check_stale_names():
     #  Suppressing none of them reported four correct THRASHINGs every run.
     adjectival = set(STATES) | set(type_names)
 
+    #  English phrases that contain a renamed word and are not the name: a shop's SERVICE COUNTER is not the move
+    #  COUNTER (CONTRADICT). port_vocab.py holds the same phrases (T-324, 2026-10-01).
+    held = ("SERVICE COUNTER",)
+
     def hit(s, old):
         """None, or how to describe the match -- "" plain, or a collision note."""
+        for h in held:
+            s = s.replace(h, "")
         m = pats[old].search(s)
         if not m:
             return None

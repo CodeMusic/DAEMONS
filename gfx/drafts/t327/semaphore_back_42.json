@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t327/semaphore_back_42",
+ "prompt": "pure white background, pixel art game sprite of a single plump frog creature standing upright holding a signal flag up in each hand, seen from directly behind, back of the head, no face visible, greyscale, clean black outline, pure white background, pixel art game sprite, single creature, full body, centered, no text",
+ "negative": "face, eyes, front view, human, person, colored background, floor, shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 148.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 10:22:17"
+}

@@ -1,0 +1,5 @@
+T-327, 2026-10-01 -- four daemons a player reaches by evolving that still wore vanilla's picture.
+LENSMUSAI, MASKMUSAI: image to image from MUSAI's own sprite (musai_*_512.png), so the family look holds; fronts at
+denoise 0.8 (*_80), backs at 0.6 (*_42, closest to MUSAI's back). SEMAPHORE, KERNEL: text to image, seed 42.
+Greyed but for red/orange markings, then cleandraft --streaks (the white robots' streaks boxed onto the chest).
+GRANBULL still needs a name (the user's) and is not drawn.

@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t327/maskmusai_front_80",
+ "prompt": "small round robot with antennae and headphones, wearing a smooth white theatre mask with two narrow eye slits over its face, greyscale, clean black outline, pure white background, pixel art game sprite, single creature, full body, centered, no text",
+ "negative": "human, person, colored background, floor, shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.8,
+ "stop_at": null,
+ "image": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t327/musai_front_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 90.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 10:30:48"
+}

@@ -67,7 +67,9 @@ def evolutions():
     """{from: {into, ...}} -- every evolution any of the methods reaches"""
     src = read("src/data/pokemon/evolution.h")
     out = {}
-    for m in re.finditer(r"\[SPECIES_([A-Z0-9_]+)\]\s*=\s*\{(.*?)\n    \}", src, re.S):
+    #  T-327: an entry closes with "}}," -- on its own line or not; most are one line, and the old pattern only
+    #  read the multi-line ones, so 34 daemons reached by evolving were counted unreachable.
+    for m in re.finditer(r"\[SPECIES_([A-Z0-9_]+)\]\s*=\s*\{(\{.*?\})\}\s*,", src, re.S):
         out[m.group(1)] = species_in(m.group(2))
     return out
 

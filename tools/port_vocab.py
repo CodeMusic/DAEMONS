@@ -225,7 +225,10 @@ IDIOM_HOLD = ("catch up", "Catch up", "caught up", "Caught up",
               "catch a cold", "caught a cold", "catch fire", "caught fire",
               "catch sight", "caught sight", "catching up",
               #  A MEME is caught the way a cold is (T-258): "bound a MEME" is the wrong verb.
-              "caught a MEME", "catch a MEME", "catches a MEME", "catching a MEME")
+              "caught a MEME", "catch a MEME", "catches a MEME", "catching a MEME",
+              #  A shop's counter is not the move COUNTER (CONTRADICT): VERDIGRIS DEPT. STORE's directory read
+              #  "SERVICE CONTRADICT" twice (found by T-324's sign review, 2026-10-01).
+              "SERVICE COUNTER")
 
 #  AN IDIOM CAN SPAN A LINE BREAK: "has caught\na MEME" is two lines of text, and a literal pattern with a space in
 #  it never saw the break -- the escape trap again (CLAUDE.md). A space in an idiom matches a space or a \n/\l/\p.

@@ -7,6 +7,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ## v11.288 — 2026-09-25
 
+### The fourteen groves, a gangway, and three reviews (2026-10-01)
+
+- ***Every grove is built*** (T-221, DRAFT): *thirteen more hidden clearings, each entered through a tree standing alone and left by the one standing alone inside it — psychology's daemons under the mainland's trees, computing's under the islands'. Thirty-two daemons in fourteen families, with names, both editions' entries and sprites; THE UNDERTONE now holds UNNOTICED. `gbagrove.py` draws a clearing and plants the way in; `gbagrovefamilies.py` writes the words.*
+- ***A gangway to the singing fir*** (T-325): *once the S.S. ANNE has sailed, boards run from the pier to the far quay. TRAVERSE never needed a trade (CLUSTER, STAMPEDE, KEEPER and LOOP all learn it), but the fir can now be walked to.*
+- ***Three reviews, written for the user*** (T-321, T-322, T-324): *every teaching line of dialogue, every named daemon's entry, every sign — verdicts and DRAFT rewrites, kept in `docs/private/` because they quote the game at length.*
+- ***Bugs the reviews found***: *VERDIGRIS DEPT. STORE's "SERVICE CONTRADICT" (fixed, and the phrase is now held by `port_vocab.py`); `gbareach.py` missed one-line evolutions, so 29 reachable daemons were counted unreachable (fixed; T-327 holds what follows).*
+- ***The thank-you card holds 11% longer*** (T-328, the user): *233 frames, about 3.9 seconds.*
+- ***Drafts for the user to pick***: *MOM's own line (T-326) and the bedroom poster (T-323), three each, on the private page.*
+
 ### "Yes to all", built: the first batch of the goal run (2026-10-01)
 
 - ***The INDEX writes up what you chose*** (T-257): *WHAT YOU CHOSE carries the approved words, and the rival's line names the rival as the player named them.*

@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t221/mindsight_back_7",
+ "prompt": "pure white background, pixel art game sprite of a lean graceful creature with a long tail and a tall crest-shaped head, balanced on one leg in a calm pose, thin arms spread like wings, seen from directly behind, back of the head, no face visible, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, front view, human, person, man, woman, boy, girl, child, muscles, human face, grey background, colored background, floor, ground, pedestal, shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, border",
+ "seed": 7,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 150.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-01 09:28:07"
+}

@@ -1,0 +1,7 @@
+T-221, 2026-10-01 -- the thirty-two grove daemons. Text to image, seed 42, from tools/gbagrovefamilies.py's "looks";
+WITNESS's front and both of MINDSIGHT's views are seed 7, re-rolled because seed 42 drew plain humans.
+Drafts were made at 1024 (spriteforge's default; cleandraft wants 512), so each greyed draft was halved with nearest
+neighbour before cleandraft --streaks. Greyed but for red/orange markings (GUESSWORK's horns, MENTALIZE's dress).
+Streak boxes by hand: ATTUNE back, BURSTMODE front, OVERLOADED back. BURSTMODE's back is its front mirrored (its own
+back draft was too thin to carry streaks). Many backs came out facing forward -- a back-view pass is worth doing.
+Worth a re-roll: GRADIENT (lost the compass-needle nose), LIKELIHOOD, PAIRWISE.
