@@ -401,6 +401,33 @@ def check_vanilla_index():
     return bad
 
 
+def check_vanilla_categories():
+    """A renamed daemon whose INDEX category is still upstream's (T-333).
+
+    The category is the line over every entry -- "ALARM, SCOUT DAEMON" -- and the renames never reached it: on
+    2026-10-01, 65 of our names still sat under vanilla's (LENSMUSAI was a SUN DAEMON, SLURP a SAMPLING one). A
+    category may stay vanilla's only when the name did too. Needs the engine's upstream remote; without it, says so.
+    """
+    import subprocess
+    pat_n = r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]+)"\)'
+    pat_c = r'\[NATIONAL_DEX_(\w+)\]\s*=\s*\{\s*\.categoryName\s*=\s*_\("([^"]*)"\)'
+    def up(rel):
+        r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True)
+        return r.stdout if r.returncode == 0 else ""
+    names, cats = os.path.join(GBA, "src/data/text/species_names.h"), os.path.join(GBA, "src/data/pokemon/pokedex_entries.h")
+    vn, vc = up("src/data/text/species_names.h"), up("src/data/pokemon/pokedex_entries.h")
+    if not (os.path.isfile(names) and os.path.isfile(cats)):
+        return []
+    if not (vn and vc):
+        return [("(upstream)", "no upstream/master in the engine -- categories not checked")]
+    ours_n, van_n = dict(re.findall(pat_n, open(names, encoding="utf-8").read())), dict(re.findall(pat_n, vn))
+    ours_c, van_c = dict(re.findall(pat_c, open(cats, encoding="utf-8").read())), dict(re.findall(pat_c, vc))
+    return [("%s (%s)" % (ours_n[k], k), "category is still %s's: %s" % (van_n[k], ours_c[k]))
+            for k in sorted(ours_c)
+            if k in van_c and ours_c[k] == van_c[k] and van_n.get(k) and ours_n.get(k, van_n[k]) != van_n[k]
+            and ours_n[k] != "??????????"]
+
+
 def check_near_collisions(surfaces):
     """Two names where one is the other with a single character INSERTED.
 
@@ -1694,12 +1721,20 @@ def main():
     else:
         print("  both story documents are reconciled to the current bible.")
 
-    ibad = check_vanilla_index()
-    if not ibad:
+    vibad = check_vanilla_index()     # was ibad, which check_ids() below overwrote before the exit code read it
+    if not vibad:
         print("  no renamed daemon has a vanilla Index entry.")
     else:
-        print("\n  %d vanilla Index entry(s) under our names:\n" % len(ibad))
-        for what, why in ibad:
+        print("\n  %d vanilla Index entry(s) under our names:\n" % len(vibad))
+        for what, why in vibad:
+            print("   %-32s %s" % (what, why))
+
+    kbad = check_vanilla_categories()
+    if not kbad:
+        print("  no renamed daemon wears a vanilla INDEX category.")
+    else:
+        print("\n  %d vanilla INDEX category(s) under our names:\n" % len(kbad))
+        for what, why in kbad:
             print("   %-32s %s" % (what, why))
 
     nbad = check_near_collisions(surfaces)
@@ -1876,7 +1911,7 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
 
 
 if __name__ == "__main__":
