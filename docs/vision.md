@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.289**
+**A total conversion — the living design bible, v11.290**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -3693,10 +3693,10 @@ learning to act, it is **more observers and one account.**
 
 | | |
 |---|---|
-| **CONTENT** | *"Three of them, and they do not act either. What one of them saw, three of them saw."* |
+| **CONTENT** | *"Three of them. None acts until enough of the others have seen the same thing. Two is enough. One never is."* |
 | **CONTEXT** | *"Three accounts of one thing. They agree, which is not the same as being right."* |
 
-**That last line is 4.8 and 0.4 in the same breath**, and it is the reason this
+***The CONTENT line was redrawn 2026-10-01 (T-322, the user's choice)***: *the first one taught "three saw it" and never the threshold; this one teaches the minimum — two will do, one never will.* **That last line is 4.8 and 0.4 in the same breath**, and it is the reason this
 evolution was worth having. Category `THRESHOLD`. Disarmed identically, total
 unchanged.
 

@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.290 — 2026-10-01
+
+### QUORUM teaches its word, and the INDEX's categories catch up (2026-10-01)
+
+- ***QUORUM's CONTENT line is redrawn*** (T-322, the user's choice): *"Three of them. None acts until enough of the others have seen the same thing. Two is enough. One never is." — the old line taught "three saw it", never the threshold. 4.25's quote follows; CONTEXT keeps its line.*
+- ***65 named daemons get categories of their own*** (T-333, DRAFT): *ALARM is an OVERCALL DAEMON, BLISSEY's slot a KEEPALIVE, PROTEUS a SHAPESHIFT. `check_lexicon` now fails on any renamed daemon still under upstream's category — and its vanilla-INDEX row, which a later check had been silently overwriting, fails the run again.*
+- ***The dated documents*** (T-335, released in v11.289.2): *the user's own dates on the NOTEBOOK's pages, under fable names; the record itself stays private.*
+
 ## v11.289 — 2026-10-01
 
 ### The brain shows each understanding, and the user's answers built (2026-10-01)
