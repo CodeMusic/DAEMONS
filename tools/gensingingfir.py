@@ -11,6 +11,11 @@ six baubles, not tinsel.
 
 One 16x32 frame in NPC_GREEN's sixteen colours, so it spends no palette of its own: greens for the needles, the
 brown for the trunk, the yellows for the star, pink and purple and the skin orange for the baubles.
+
+T-337 (the user, 2026-10-01): THE STAR TWINKLES. Three frames side by side (48x32): the star as painted; brighter, its
+gold gone pale with a white heart; and a glint, white through the middle with a ray either side. sAnim_SingingFir
+(object_event_anims.h) holds the first frame and flicks through the others now and then, irregularly, the way a
+light catches -- the same sixteen colours, so still no palette of its own.
 """
 import os, sys
 from PIL import Image
@@ -23,6 +28,7 @@ WRITE = "--write" in sys.argv
 SCRATCH = os.environ.get("DAEMONS_SCRATCH", os.path.join(ROOT, ".theatre"))
 
 LIGHT, MID, DARK, TRUNK, STAR, STAR_DARK, PURPLE, ORANGE = 8, 9, 10, 4, 5, 6, 12, 3
+PALE, WHITE = 1, 14
 TIERS = [(3, 10, 1, 4), (8, 18, 2, 6), (15, 27, 3, 7)]      # (top row, bottom row, half-width at top, at bottom)
 BAUBLES = [(8, 7, STAR), (6, 12, PURPLE), (10, 15, ORANGE), (5, 21, STAR), (9, 24, PURPLE), (11, 20, ORANGE)]
 
@@ -55,11 +61,36 @@ def draw():
     return im
 
 
+STAR_PIXELS = ((7, 1), (8, 1), (7, 2), (8, 2), (6, 2), (9, 2), (7, 0), (8, 3), (7, 3))
+
+
+def twinkle(base, glint):
+    """The star caught by the light: its gold gone pale with a white heart, and on GLINT a white streak and two rays."""
+    im = base.copy()
+    px = im.load()
+    for x, y in STAR_PIXELS:
+        px[x, y] = PALE
+    px[7, 1] = px[8, 1] = WHITE
+    if glint:
+        for x, y in ((7, 0), (7, 2), (8, 2), (5, 0), (10, 0)):
+            px[x, y] = WHITE
+    return im
+
+
+def sheet():
+    base = draw()
+    out = Image.new("P", (48, 32), 0)
+    out.putpalette(base.getpalette())
+    for k, frame in enumerate((base, twinkle(base, False), twinkle(base, True))):
+        out.paste(frame, (16 * k, 0))
+    return out
+
+
 def main():
-    fir = draw()
-    print("  the singing fir: 16x32, NPC_GREEN, %d baubles" % len(BAUBLES))
+    fir = sheet()
+    print("  the singing fir: three 16x32 frames (the star twinkles, T-337), NPC_GREEN, %d baubles" % len(BAUBLES))
     os.makedirs(SCRATCH, exist_ok=True)
-    fir.convert("RGBA").resize((16 * 8, 32 * 8), Image.NEAREST).save(os.path.join(SCRATCH, "singing_fir_preview.png"))
+    fir.convert("RGBA").resize((48 * 8, 32 * 8), Image.NEAREST).save(os.path.join(SCRATCH, "singing_fir_preview.png"))
     old = Image.open(OUT) if os.path.exists(OUT) else None
     if old is not None and list(old.getdata()) == list(fir.getdata()):
         print("  singing_fir.png is current")

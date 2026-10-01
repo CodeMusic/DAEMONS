@@ -42,6 +42,57 @@ TREE_BOT_OVER_GROUND = {(True, True): (0x024, 0x025), (False, True): (0x026, 0x0
                         (False, False): (0x026, 0x027)}
 LONE_TREE = (0x01E, 0x01F, 0x026, 0x027)                                        # top-left, top-right, bottom-left, -right
 BUSH = 0x005
+
+#  T-337 (the user, 2026-10-01): A GROVE'S TREE IS SUBTLY NOT LIKE THE OTHERS. Where an ordinary tree's trunk has two
+#  bark notches, a grove's has one dark slot -- a little door; a grove's bush has a small dark gap at its foot. Enough
+#  that someone could learn the pattern, little enough to walk past (T-297: findable blind first, REVEAL only makes it
+#  plain). Drawn in the tileset's own colours into general tiles nothing outdoor uses (462, 463 and 597 appear only in
+#  indoor tilesets, which pair with the building primary), as four metatiles in slots the general tileset left empty.
+#  The tile: (the tile it is drawn from, {(x, y): colour index}).
+TELL_TILES = {462: (0x57, {(7, 0): 6, (7, 1): 6, (7, 2): 6, (7, 3): 6}),            # the trunk: the notches, one slot
+              463: (0x1C, {(6, 4): 15, (7, 4): 15, (6, 5): 15, (7, 5): 15}),        # the bush's foot, left half
+              597: (0x1D, {(0, 4): 15, (1, 4): 15, (0, 5): 15, (1, 5): 15})}        # and right half
+#  The metatile: plain one -> (its grove twin, {tile it uses: tile the twin uses}). Flip and palette bits carry over.
+TELL = {0x026: (553, {0x57: 462}), 0x027: (554, {0x57: 462}), 0x025: (555, {0x57: 462}), BUSH: (556, {0x1C: 463, 0x1D: 597})}
+
+
+def ensure_tell():
+    """What the general tileset needs for the tell, and writes it with --write. Returns what is (or was) missing."""
+    from PIL import Image
+    d = os.path.join(GBA, "data/tilesets/primary/general")
+    todo = []
+    im = Image.open(os.path.join(d, "tiles.png"))
+    px, tw = im.load(), im.width // 8
+    for tid, (src, edits) in TELL_TILES.items():
+        want = {(i, j): edits.get((i, j), px[(src % tw) * 8 + i, (src // tw) * 8 + j]) for i in range(8) for j in range(8)}
+        if any(px[(tid % tw) * 8 + i, (tid // tw) * 8 + j] != v for (i, j), v in want.items()):
+            todo.append("tile %d drawn" % tid)
+            for (i, j), v in want.items():
+                px[(tid % tw) * 8 + i, (tid // tw) * 8 + j] = v
+    meta = bytearray(open(os.path.join(d, "metatiles.bin"), "rb").read())
+    attr = bytearray(open(os.path.join(d, "metatile_attributes.bin"), "rb").read())
+    for base, (twin, swap) in TELL.items():
+        ents = struct.unpack_from("<8H", meta, base * 16)
+        new = struct.pack("<8H", *[(e & ~0x3FF) | swap.get(e & 0x3FF, e & 0x3FF) for e in ents])
+        if meta[twin * 16:twin * 16 + 16] != new or attr[twin * 4:twin * 4 + 4] != attr[base * 4:base * 4 + 4]:
+            todo.append("metatile %d (%s's twin)" % (twin, hex(base)))
+            meta[twin * 16:twin * 16 + 16] = new
+            attr[twin * 4:twin * 4 + 4] = attr[base * 4:base * 4 + 4]
+    if WRITE and todo:
+        im.save(os.path.join(d, "tiles.png"), bits=4)
+        open(os.path.join(d, "metatiles.bin"), "wb").write(meta)
+        open(os.path.join(d, "metatile_attributes.bin"), "wb").write(attr)
+    return todo
+
+
+def mark_doors(raw, W, cells):
+    """RAW with each cell's plain tree or bush turned into its grove twin."""
+    raw = bytearray(raw)
+    for cx, cy in cells:
+        old = struct.unpack_from("<H", raw, (cy * W + cx) * 2)[0]
+        if (old & 0x3FF) in TELL:
+            struct.pack_into("<H", raw, (cy * W + cx) * 2, (old & ~0x3FF) | TELL[old & 0x3FF][0])
+    return bytes(raw)
 GRASS = ((0x008, 0x009), (0x010, 0x011))                                        # even rows, odd rows
 TALL = 0x00D
 COLLIDE = 0x0C00
@@ -139,7 +190,7 @@ def synth_clearing():
             k = rows[r][c]
             x, y = 2 * c, 2 * r
             if k == "X":
-                tl, tr, bl, br = LONE_TREE
+                tl, tr, bl, br = LONE_TREE[:2] + tuple(TELL[m][0] for m in LONE_TREE[2:])   # T-337
                 out = (x, y)
                 for (dx, dy), m in zip(((0, 0), (1, 0), (0, 1), (1, 1)), (tl, tr, bl, br)):
                     grid[y + dy][x + dx] = m | COLLIDE | ELEVATION
@@ -172,11 +223,12 @@ def plant(parent_layout, how):
     cells = [((x, y), BUSH)] if kind == "bush" else \
         [((x + dx, y + dy), m) for (dx, dy), m in zip(((0, 0), (1, 0), (0, 1), (1, 1)), LONE_TREE)]
     changed = False
-    for (cx, cy), m in cells:
+    for (cx, cy), base in cells:
+        m = TELL[base][0] if base in TELL else base                             # T-337: a grove's tree, not a plain one
         old = struct.unpack_from("<H", raw, (cy * W + cx) * 2)[0]
         new = (old & 0xF000) | COLLIDE | m
         if old != new:
-            assert not (old >> 10) & 3 or (old & 0x3FF) == m, "%s: (%d,%d) is not open ground" % (path, cx, cy)
+            assert not (old >> 10) & 3 or (old & 0x3FF) in (m, base), "%s: (%d,%d) is not open ground" % (path, cx, cy)
             struct.pack_into("<H", raw, (cy * W + cx) * 2, new)
             changed = True
     return (path, bytes(raw)) if changed else None
@@ -198,7 +250,8 @@ def main():
     groups = load("data/maps/map_groups.json")
     wild = load("src/data/wild_encounters.json")
     events = open(os.path.join(GBA, "data/event_scripts.s")).read()
-    changes = []
+    changes = ensure_tell()
+    print("  the tell (T-337): %s" % ("; ".join(changes) if changes else "drawn, nothing to do"))
     planted = []
     for g in GROVES:
         name, parent = g["name"], g["parent"]
@@ -225,6 +278,11 @@ def main():
         #  the tree stands where the player will press A, and the player can stand below it
         praw = dict(planted).get(os.path.join(GBA, pl["blockdata_filepath"])) or \
             open(os.path.join(GBA, pl["blockdata_filepath"]), "rb").read()
+        ppath = os.path.join(GBA, pl["blockdata_filepath"])
+        marked = mark_doors(praw, W, g["enter_at"])                              # T-337: a tree already standing too
+        if marked != praw:
+            planted = [p for p in planted if p[0] != ppath] + [(ppath, marked)]
+            praw = marked
         bx, by = g["back_to"]
         assert not (struct.unpack_from("<H", praw, (by * W + bx) * 2)[0] >> 10) & 3, "%s: back_to is blocked" % name
         if g.get("plant"):
@@ -285,8 +343,8 @@ def main():
         if not same: todo.append("its residents (%s)" % g["family"])
         if enter_label not in pscripts: todo.append("the way in, in %s's scripts" % parent)
         if len(enter_events) != len(g["enter_at"]): todo.append("the tree's bg_event at %s" % g["enter_at"])
-        if g.get("plant") and any(p[0].endswith(pl["blockdata_filepath"]) for p in planted):
-            todo.append("a %s planted at %s" % (g["plant"][0], g["plant"][1:]))
+        if any(p[0].endswith(pl["blockdata_filepath"]) for p in planted):
+            todo.append("a %s planted at %s" % (g["plant"][0], g["plant"][1:]) if g.get("plant") else "the door's tell (T-337)")
         print("  %-30s %s" % (name, "; ".join(todo) if todo else "built, nothing to do"))
         changes += todo
         if not WRITE or not todo:
