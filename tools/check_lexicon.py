@@ -512,6 +512,13 @@ def check_phantom_places():
                  if o[i] != van[i] and len(o[i]) > 3}
     if not ours:
         return []
+    #  T-345 (2026-10-02): the four UNDERGROUND PATH signs on ROUTES 5-8 carry graffiti -- "Painted beneath: THE
+    #  TUNNEL", the locals' name for the path -- and TUNNEL is our DRILL PECK, so the phrase looks like a place built
+    #  from one of our names. It is deliberate (T-324 kept it; the user, 2026-10-02: "keep them, teach the check").
+    #  Excused by FILE, SIGN AND PHRASE together, never by the words alone: any other place-shaped phrase painted on
+    #  the same sign, or THE TUNNEL anywhere else, is still caught.
+    graffiti = {("data/maps/Route%d/text.inc" % r, "Route%d_Text_UndergroundPathSign" % r, "THE TUNNEL")
+                for r in (5, 6, 7, 8)}
     suf = ("SPA|CAVE|TOWER|ROAD|PATH|ISLE|ISLAND|TUNNEL|VALLEY|BRIDGE|BEACH"
            "|CANYON|RUINS|MANSION|FOREST|SPRING")
     pat = re.compile(r"\b(MT\. [A-Z][A-Z']+|(?:[A-Z][A-Z'.]+ ){1,2}(?:%s))\b" % suf)
@@ -525,9 +532,13 @@ def check_phantom_places():
             p = os.path.join(root, fn)
             txt = re.sub(r"\\[nlp]", " ",
                          open(p, encoding="utf-8", errors="ignore").read())
+            labels = [(lm.start(), lm.group(1)) for lm in re.finditer(r"^(\w+)::", txt, re.M)]
             for m in pat.finditer(txt):
                 ph = re.sub(r"\s+", " ", m.group(1)).strip()
                 if ph in names:
+                    continue
+                label = next((n for at, n in reversed(labels) if at < m.start()), None)
+                if (os.path.relpath(p, GBA), label, ph) in graffiti:
                     continue
                 if set(re.split(r"[ .']+", ph)) & ours:
                     out.append((os.path.relpath(p, GBA),
