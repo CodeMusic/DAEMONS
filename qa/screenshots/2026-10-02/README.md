@@ -73,3 +73,9 @@ T-210 batch 2 (v11.291.3): TANGENT, JACOBIAN, UNDERTOW, RIPTIDE, SADDLE, OPTIMUM
 T-210 batch 3 (v11.291.4): TEMPO, CADENCE, CYCLICAL, PARTICLE, FLOCKING, OLDBRANCH, BIFURCATE, DEEPWELL, SHALLOWS, CONFLUENCE, STILLRUN, STOPGRAD, PERMAFROST -- fronts and backs decoded from the built ROM. DRAFT.
 
 ![2Oct2026 - T210 - the rest of the water families as built - 12](2Oct2026%20-%20T210%20-%20the%20rest%20of%20the%20water%20families%20as%20built%20-%2012.png)
+
+### 2Oct2026 - T210 - the dragons and fossils as built - 13
+
+T-210 batch 4 (v11.291.5): SINKHOLE, SHIMMER, DUSTDEVIL, DATAGRAM, TRADEWIND, INKLING, GESTALT, EPIPHANY, SAVESTATE, WARMSTART, TOKENRING, TRUNKLINE -- fronts and backs decoded from the built ROM. DRAFT.
+
+![2Oct2026 - T210 - the dragons and fossils as built - 13](2Oct2026%20-%20T210%20-%20the%20dragons%20and%20fossils%20as%20built%20-%2013.png)
