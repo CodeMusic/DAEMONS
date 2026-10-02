@@ -67,3 +67,9 @@ T-210 batch 1, as built: STUMP, COINFLIP and RUNOFF's lines in their type colour
 T-210 batch 2 (v11.291.3): TANGENT, JACOBIAN, UNDERTOW, RIPTIDE, SADDLE, OPTIMUM, SEEPAGE, AQUIFER, BACKFLOW, BLACKWATER -- fronts and backs decoded from the built ROM. DRAFT.
 
 ![2Oct2026 - T210 - the Hoenn water families as built - 11](2Oct2026%20-%20T210%20-%20the%20Hoenn%20water%20families%20as%20built%20-%2011.png)
+
+### 2Oct2026 - T210 - the rest of the water families as built - 12
+
+T-210 batch 3 (v11.291.4): TEMPO, CADENCE, CYCLICAL, PARTICLE, FLOCKING, OLDBRANCH, BIFURCATE, DEEPWELL, SHALLOWS, CONFLUENCE, STILLRUN, STOPGRAD, PERMAFROST -- fronts and backs decoded from the built ROM. DRAFT.
+
+![2Oct2026 - T210 - the rest of the water families as built - 12](2Oct2026%20-%20T210%20-%20the%20rest%20of%20the%20water%20families%20as%20built%20-%2012.png)
