@@ -61,7 +61,7 @@ def main():
     commit = run("git", "log", "-1", "--format=%H", "--", rel).stdout.strip()
     if not commit:
         raise SystemExit("  refused: %s is not committed -- commit what romrelease.py wrote first" % rel)
-    dirty = run("git", "status", "--porcelain").stdout.strip()
+    dirty = run("git", "status", "--porcelain", "--untracked-files=no").stdout.strip()  # as romrelease: drafts in progress are not published
     exists = run("gh", "release", "view", name, "-R", REPO, check=False).returncode == 0
 
     guide = open(os.path.join(REL, "HOW_TO_PATCH.md")).read()
