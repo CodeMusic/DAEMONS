@@ -12,6 +12,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - ***The world shows understanding as a faded print*** (T-317, the user's choice of three mock-ups): *every tileset colour drawn 40% of the way to its own grey while four or more understandings are still to come, 18% while one to three are, as painted with all seven. People and daemons keep their colour. Built and played the same day.*
 - ***Seven UNDERSTANDINGS, and no eighth*** (T-252, the user).
 - *Built the same day, released in v11.290.8: the leaders say each MARK's virtue aloud and CALLOW hears its door (T-346); the CHECKPOINT attendant's dreams for a player who is stuck (T-347); the patches proved on the user's own carts (T-344).*
+- ***engine.md trap 40***: *a theatre started with `open -a mGBA` while the user's mGBA was open loaded into their window; `tools/theatre_start.sh` now refuses that and opens a separate instance, and section 5 says the script needs mGBA frontmost to load.*
 
 ## v11.290 — 2026-10-01
 
