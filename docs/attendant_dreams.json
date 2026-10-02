@@ -1,0 +1,105 @@
+{
+  "_about": "T-347 (approved 2026-10-02), DRAFT. The CHECKPOINT attendant's dreams, two per main-path step of the AI harness's progress list (engineAi/server/progress_steps.json). FIRST: pure image, never a place's name. SECOND: plainer, names the place. Each dream is a list of message boxes, each box one or two lines of at most 208px. tools/gbadreams.py checks all of it and writes src/data/attendant_dreams.h.",
+  "_skip": {
+    "the_guide": "a hidden find (T-297): findable blind first, so no dream points at it",
+    "understanding_first": "an UNDERSTANDING is arrived at, never announced (T-252), so no dream points at it"
+  },
+  "steps": {
+    "starter_pokemon": {
+      "first":  [["I dreamt of a white room with a", "table, and three small boxes on it."], ["Each one was humming to itself.", "I think one of them was yours."]],
+      "second": [["I dreamt CRYSTAL CLEAR was waiting", "in her lab, back in BLANCHE."], ["There was something on her table", "she meant for you to take."]]
+    },
+    "get_pokedex": {
+      "first":  [["I dreamt of a parcel with someone", "else's name on it."], ["You carried it, but it was never", "yours to open. It wanted home."]],
+      "second": [["I dreamt of a parcel at the shop", "in CALLOW, addressed to CRYSTAL."], ["Take it back to her lab in", "BLANCHE. She has something for you."]]
+    },
+    "callow_textbook": {
+      "first":  [["I dreamt of a tall building full of", "chalk dust, and stairs going up."], ["At the very top, someone held out", "a heavy book and waited."]],
+      "second": [["I dreamt you climbed CALLOW SCHOOL", "all the way to the seventh floor."], ["The teacher there has a TEXTBOOK", "with your name already on it."]]
+    },
+    "callow_exam": {
+      "first":  [["I dreamt of a quiet hall with rows", "of desks, and a clock on the wall."], ["The paper was waiting. It did not", "mind how long the season took."]],
+      "second": [["I dreamt of the exam at CALLOW", "SCHOOL, when its season comes."], ["Read the boards and the TEXTBOOK", "first. Eighty earns the DIPLOMA."]]
+    },
+    "boulder_badge": {
+      "first":  [["I dreamt of a forest to the north,", "and past it a grey city of stone."], ["A man there writes everything down.", "He was waiting to be tested."]],
+      "second": [["I dreamt of the BENCHMARK in SLATE,", "past THE UNDERTONE to the north."], ["CAIRN is waiting there. Bring", "something his stone can't stop."]]
+    },
+    "mt_moon": {
+      "first":  [["I dreamt of a mountain hollowed out", "like a stack of old plates."], ["You went in on one side, in the", "dark, and came out by the water."]],
+      "second": [["I dreamt you went east from SLATE,", "through DEADSTACK."], ["DOLDRUM CITY is on the far side,", "where the water is."]]
+    },
+    "cascade_badge": {
+      "first":  [["I dreamt of a pool so still it", "looked like a floor."], ["Someone stood in it up to the", "waist, waiting for you to step in."]],
+      "second": [["I dreamt of the BENCHMARK in", "DOLDRUM. BASIN is waiting there."], ["Small steps, she said. Keep going", "down and you arrive."]]
+    },
+    "ss_anne": {
+      "first":  [["I dreamt a ship was in the harbour,", "all lit up for a party."], ["Your ticket came from a cottage at", "the end of a long road north."]],
+      "second": [["I dreamt of the S.S. ANNE, docked", "in ARDOR."], ["The cottage at the far end of the", "road north of DOLDRUM had a ticket."]]
+    },
+    "thunder_badge": {
+      "first":  [["I dreamt of a door behind a small", "tree, and a hum like a power line."], ["You needed something sharp to get", "through. The ship's captain had it."]],
+      "second": [["I dreamt of the BENCHMARK in ARDOR.", "GAUGE is in there, shouting."], ["PRUNE clears the little tree at", "its door. DRIVER01 teaches it."]]
+    },
+    "rock_tunnel": {
+      "first":  [["I dreamt of a tunnel with no light", "at all, east of the water."], ["Something had to speak up in there", "before you could see the way."]],
+      "second": [["I dreamt of THE BLACKOUT, past", "DOLDRUM to the east."], ["VERBOSE lights it. HALFTONE TOWN", "is on the other side."]]
+    },
+    "rainbow_badge": {
+      "first":  [["I dreamt of a garden under glass,", "and a quiet woman tending vines."], ["She had been expecting a visitor", "who could hold a thing up."]],
+      "second": [["I dreamt of the BENCHMARK in", "VERDIGRIS CITY, west of HALFTONE."], ["TRELLIS is waiting among her", "plants."]]
+    },
+    "reading_room": {
+      "first":  [["I dreamt of a reading room with", "no windows, only shelves."], ["They would only let you in with", "a paper in your hand."]],
+      "second": [["I dreamt of BRAZEN's READING ROOM.", "It wants to see your DIPLOMA."], ["The guards at BRAZEN's gates", "were thirsty. Bring them TEA."]]
+    },
+    "rocket_hideout": {
+      "first":  [["I dreamt of a poster in a noisy", "room, and stairs hidden behind it."], ["Underneath, someone was counting", "something that was not his."]],
+      "second": [["I dreamt of the CORPUS HIDEOUT,", "under the noisy hall in VERDIGRIS."], ["SCORN is at the bottom. He has a", "RESOLVER you will need."]]
+    },
+    "pokemon_tower": {
+      "first":  [["I dreamt of a tall grey tower full", "of things nobody could see."], ["With the right lens they had faces.", "Someone at the top needed you."]],
+      "second": [["I dreamt of the tower in HALFTONE.", "The RESOLVER shows what haunts it."], ["Whoever waits at the top will give", "you the INTERRUPT."]]
+    },
+    "soul_badge": {
+      "first":  [["I dreamt of a big sleeper lying", "across the road."], ["A short tune woke him. Past him,", "the land ran south to a city."]],
+      "second": [["I dreamt of the BENCHMARK in LURID", "CITY, far to the south."], ["Play the INTERRUPT at whatever", "sleeps across the road. TILT waits."]]
+    },
+    "safari_zone": {
+      "first":  [["I dreamt of a wild park behind a", "gate, and a little house deep in it."], ["Someone there kept a way across", "the water."]],
+      "second": [["I dreamt of the SAFARI ZONE in", "LURID CITY."], ["The house at its far end holds", "DRIVER03."]]
+    },
+    "silph_co": {
+      "first":  [["I dreamt of a tall office where", "every door wanted a card."], ["Men in the same coats filled every", "floor. One sat at the very top."]],
+      "second": [["I dreamt of FOUNDRY CO. in BRAZEN.", "CORPUS has taken it over."], ["The CARD KEY is inside somewhere.", "SCORN is at the top."]]
+    },
+    "marsh_badge": {
+      "first":  [["I dreamt of a room where one step", "on the wrong tile put you elsewhere."], ["Someone in the middle had seen you", "coming a long time ago."]],
+      "second": [["I dreamt of the BENCHMARK in", "BRAZEN. Its tiles move you around."], ["MATTE is in the middle, waiting."]]
+    },
+    "pokemon_mansion": {
+      "first":  [["I dreamt of a burnt house on an", "island, and statues with switches."], ["Somewhere in its cellar lay a key", "to a locked door nearby."]],
+      "second": [["I dreamt of the DAEMON MANSION on", "QUICKSILVER. TRAVERSE goes there."], ["The SECRET KEY in its basement", "opens the BENCHMARK."]]
+    },
+    "volcano_badge": {
+      "first":  [["I dreamt of a hall full of heat,", "and quiz machines by every door."], ["The answers were all things you", "already knew."]],
+      "second": [["I dreamt of the BENCHMARK on", "QUICKSILVER. ANNEAL is inside."], ["Answer the machines and you walk", "straight to him."]]
+    },
+    "earth_badge": {
+      "first":  [["I dreamt of a door that had been", "shut so long the dust had settled."], ["It was open now. Someone behind", "it had been counting the days."]],
+      "second": [["I dreamt of the BENCHMARK in", "CALLOW. All seven MARKS open it."], ["SCORN is inside."]]
+    },
+    "victory_road": {
+      "first":  [["I dreamt of a road to the west with", "a gate for every MARK."], ["At its end, a climb in the dark,", "pushing stones out of the way."]],
+      "second": [["I dreamt of ROUTE 23, west of", "CALLOW. Every MARK opens a gate."], ["Then UMBRAL ASCENT. DISPLACE", "moves the boulders."]]
+    },
+    "elite_four": {
+      "first":  [["I dreamt of four people at a long", "table, reading about you."], ["They were waiting for you to come", "and answer for it."]],
+      "second": [["I dreamt of THE REVIEW BOARD at", "UMBRA PLATEAU."], ["Four of them, one after another.", "Bring everything you have."]]
+    },
+    "champion": {
+      "first":  [["I dreamt of a chair at the very", "top, and someone already in it."], ["They knew you better than anyone.", "They had got there first."]],
+      "second": [["I dreamt that past THE REVIEW", "BOARD, {RIVAL} was waiting."], ["Of course it was {RIVAL}."]]
+    }
+  }
+}
