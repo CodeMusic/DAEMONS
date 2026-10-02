@@ -1,0 +1,207 @@
+{
+ "_about": "T-210 batch 3 (DRAFT, built in the 2026-10-02 goal loop): the rest of the water-typed families, named by their own type's register (vision.md 2.9). SEALEO > WALREIN is its own two-stage line: T-234 rerouted SPHEAL (PENGUIN) to evolve by trade into PENPHIN, so nothing evolves into SEALEO any more and it does not grow out of PENGUIN.",
+ "daemons": [
+  {
+   "species": "LOTAD",
+   "name": "TEMPO",
+   "type": "FLOW/GROWTH",
+   "category": "BEAT",
+   "content": [
+    "It drifts on the water and takes one",
+    "small step each time the current",
+    "pulses. It never hurries."
+   ],
+   "context": [
+    "It keeps to a rhythm nobody set.",
+    "It would be lost without one."
+   ]
+  },
+  {
+   "species": "LOMBRE",
+   "name": "CADENCE",
+   "type": "FLOW/GROWTH",
+   "category": "SCHEDULE",
+   "content": [
+    "Its steps start large and shrink as",
+    "it nears what it wants, then grow",
+    "again to look somewhere new."
+   ],
+   "context": [
+    "It slows down when it is close. Most",
+    "things speed up. It has learned",
+    "better."
+   ]
+  },
+  {
+   "species": "LUDICOLO",
+   "name": "CYCLICAL",
+   "type": "FLOW/GROWTH",
+   "category": "RHYTHM",
+   "content": [
+    "It dances in rising and falling",
+    "waves, and every turn of the dance",
+    "settles it somewhere a little better."
+   ],
+   "context": [
+    "Those who hear its rhythm start to",
+    "move with it. Nobody remembers",
+    "deciding to."
+   ]
+  },
+  {
+   "species": "SURSKIT",
+   "name": "PARTICLE",
+   "type": "SWARM/FLOW",
+   "category": "SEARCHER",
+   "content": [
+    "Hundreds skate the pond at once,",
+    "each pulled toward its own best spot",
+    "and toward the best that any found."
+   ],
+   "context": [
+    "None of them knows where the best",
+    "place is. Together they find it."
+   ]
+  },
+  {
+   "species": "MASQUERAIN",
+   "name": "FLOCKING",
+   "type": "SWARM/VECTOR",
+   "category": "MURMURATION",
+   "content": [
+    "It steers by three rules: keep close,",
+    "do not collide, go where the others",
+    "go. The eyes on its wings watch them."
+   ],
+   "context": [
+    "The flock turns as one and no bird",
+    "in it decided to turn."
+   ]
+  },
+  {
+   "species": "CORSOLA",
+   "name": "OLDBRANCH",
+   "type": "FLOW/LEGACY",
+   "category": "UNMERGED",
+   "content": [
+    "It grows on its own, away from the",
+    "rest of the reef. Break a branch off",
+    "and it simply grows another."
+   ],
+   "context": [
+    "Nobody joined it back to the main",
+    "reef. It kept growing anyway, and",
+    "now nobody knows how."
+   ]
+  },
+  {
+   "species": "CLAMPERL",
+   "name": "BIFURCATE",
+   "type": "FLOW",
+   "category": "FORK",
+   "content": [
+    "It keeps one pearl shut inside and",
+    "waits. What it is given decides which",
+    "of two ways it opens."
+   ],
+   "context": [
+    "It could become either. The choice is",
+    "made for it by whatever it is",
+    "holding at the time."
+   ]
+  },
+  {
+   "species": "HUNTAIL",
+   "name": "DEEPWELL",
+   "type": "FLOW",
+   "category": "SHARP LOW",
+   "content": [
+    "It lives at the bottom of the",
+    "narrowest, deepest hollow in the sea.",
+    "One nudge and it is somewhere else."
+   ],
+   "context": [
+    "It is the lowest thing for miles, and",
+    "it does not travel well."
+   ]
+  },
+  {
+   "species": "GOREBYSS",
+   "name": "SHALLOWS",
+   "type": "FLOW",
+   "category": "FLAT LOW",
+   "content": [
+    "It rests in a wide, gentle hollow.",
+    "Nudge it any way and it stays almost",
+    "exactly as low."
+   ],
+   "context": [
+    "It was never the deepest. It is the",
+    "one still there when the water",
+    "changes."
+   ]
+  },
+  {
+   "species": "LUVDISC",
+   "name": "CONFLUENCE",
+   "type": "FLOW",
+   "category": "MEETING",
+   "content": [
+    "It swims where two currents meet and",
+    "join. It is always found in pairs,",
+    "drifting the same way."
+   ],
+   "context": [
+    "After two streams meet, nobody can",
+    "say which water came from which."
+   ]
+  },
+  {
+   "species": "RELICANTH",
+   "name": "STILLRUN",
+   "type": "FLOW/LEGACY",
+   "category": "LIVING OLD",
+   "content": [
+    "It has run without stopping since",
+    "before anything else in the sea was",
+    "built. Nobody dares to switch it off."
+   ],
+   "context": [
+    "Everything around it was replaced.",
+    "It was not. Nobody remembers what",
+    "depends on it."
+   ]
+  },
+  {
+   "species": "SEALEO",
+   "name": "STOPGRAD",
+   "type": "FROZEN/FLOW",
+   "category": "HELD STILL",
+   "content": [
+    "The water around it stops moving. It",
+    "can be pushed, but nothing it learns",
+    "passes back through it."
+   ],
+   "context": [
+    "It is not stubborn. Something",
+    "decided it should no longer change."
+   ]
+  },
+  {
+   "species": "WALREIN",
+   "name": "PERMAFROST",
+   "type": "FROZEN/FLOW",
+   "category": "FROZEN FLOW",
+   "content": [
+    "The ground under it has not thawed",
+    "in an age. Whatever flowed there",
+    "once is still held, exactly as it was."
+   ],
+   "context": [
+    "Dig in and you find what it learned",
+    "long ago, perfectly kept, and no",
+    "longer true."
+   ]
+  }
+ ]
+}

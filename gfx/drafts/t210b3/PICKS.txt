@@ -1,0 +1,20 @@
+T-210 batch 3: which draft each sprite is (cleaned, then greyed by clean.py, which also greys a lone pixel of the art
+that happens to be a streak-marker colour -- TEMPO's lily pad, CYCLICAL's hand, BIFURCATE's shell).
+FRONTS: every one front_42 -- the 1917s were boxed or on dark grounds the fill eats.
+tempo       front_42     a frog on a lily pad
+cadence     front_42
+cyclical    front_42     the lily-pad hat is the line's one flourish
+particle    front_42     a mayfly
+flocking    front_42     drew two mayflies; the cleaning kept one (a murmuration of one: for the refining sweep)
+oldbranch   front_42     a coral tree
+bifurcate   front_42     an oyster and its pearl
+deepwell    front_42     an anglerfish
+shallows    front_42     a flat, winged fish
+confluence  front_42
+stillrun    front_42     a coelacanth
+stopgrad    front_42     a mammoth calf, frost in its hair
+permafrost  front_42
+BACKS, true rear views from back2/: cadence 1917, particle 88 (from above), flocking 42 (from above), bifurcate 1917.
+Mirrored, side-on (T-166's rule): oldbranch (42's rear view lost its trunk to the fill), deepwell, shallows,
+confluence, stillrun. Mirrored and defaced (every seed drew a face): tempo, cyclical, stopgrad, permafrost --
+stopgrad keeps a faint eye the deface's threshold passes (for the refining sweep).
