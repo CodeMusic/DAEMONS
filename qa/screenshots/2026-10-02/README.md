@@ -49,3 +49,15 @@ Proposed, not built: a faded print (recommended), fewer inks, or thin light -- e
 T-317 built (the user's choice, A): CALLOW in the game with one understanding held (40% faded), four (18%) and all seven (as painted); people keep their colour
 
 ![2Oct2026 - T317 - The faded print, played at one, four and seven understandings - 8](2Oct2026%20-%20T317%20-%20The%20faded%20print%2C%20played%20at%20one%2C%20four%20and%20seven%20understandings%20-%208.png)
+
+### 2Oct2026 - T210 - Johto starter lines named, written and drawn - 9
+
+T-210 batch 1, as built: PRIMER, TEPID and LEARNRATE's lines in their type colours, front and back, with both editions' entries
+
+![2Oct2026 - T210 - Johto starter lines named, written and drawn - 9](2Oct2026%20-%20T210%20-%20Johto%20starter%20lines%20named%2C%20written%20and%20drawn%20-%209.png)
+
+### 2Oct2026 - T210 - Hoenn starter lines named, written and drawn - 10
+
+T-210 batch 1, as built: STUMP, COINFLIP and RUNOFF's lines in their type colours, front and back, with both editions' entries
+
+![2Oct2026 - T210 - Hoenn starter lines named, written and drawn - 10](2Oct2026%20-%20T210%20-%20Hoenn%20starter%20lines%20named%2C%20written%20and%20drawn%20-%2010.png)
