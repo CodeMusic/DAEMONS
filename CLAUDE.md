@@ -5,8 +5,14 @@ is an argument about consciousness. **Design is well ahead of implementation.**
 
 ## Always start here
 
+- **A fresh session reads `docs/private/HANDOFF.md` FIRST** (the user, 2026-10-02). It is where the last session
+  stopped: what is in flight, what is waiting on the user, what comes next. **It is rewritten, never appended, at the
+  end of every push** and whenever a session stops mid-job, so it stays short -- everything older is in TODO,
+  CHANGELOG and git, and the handoff points there rather than repeating them. It is in `docs/private/`
+  (gitignored) because a session's state carries the user's private material; never copy it into a tracked file.
+  *"Pick up from the handoff"* means: read it, then the TODO rows it names, then carry on.
 - **`docs/vision.md`** is the design bible and the single source of truth. Read it
-  before proposing anything. It carries a version (currently v1.8) and a decision
+  before proposing anything. It carries a version (v11.290 as of 2026-10-02) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
 - **`docs/TODO.md`** is work that has been **decided and not done.** The rule
@@ -244,6 +250,33 @@ this, they are super helpful"): daemons with `python3 tools/reviewsheet.py daemo
 the ROM is built from, so build first. Send them with SendUserFile and embed them on the field-test page. Theatre
 screenshots go on top when the screen-takeover card is approved -- never instead: it goes unanswered while the user
 is away, and the sheets do not wait on it.
+
+**Every picture sent is also filed in `qa/screenshots/`** (the user, 2026-10-02), with the caption it was sent with,
+so the repository shows what the build looked like: `python3 tools/qashot.py --ticket T-297 --caption "..." FILE...`.
+**A picture showing a NOTEBOOK page, anything from `docs/private/`, or any of the four things below goes in with
+`--private`** (gitignored) -- *when in doubt, private*; `qa/README.md` has the rule. Commit the public ones with the push.
+
+## The push routine
+
+*"Keep going"* means: take the next decided TODO work and release each batch this way. **Nothing here is optional.**
+
+1. **Build all four ROMs and check each exit code** (`firered`, `leafgreen`, `firered_debug`, `leafgreen_debug`).
+2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, then `check_generators.py` on
+   a quiet tree (edit neither repo while it runs).
+3. **Commit per ticket** in both repos -- engine first, then the docs commit that strikes the ticket through with the
+   engine commit -- and push both.
+4. **Release**: `check_fresh_clone.py`, then `romrelease.py --write`, commit "ROM release vX: ...", push, then
+   `ghrelease.py --write`.
+5. **Show it**: review sheets sent with SendUserFile and filed with `qashot.py` (above); a new `<li id="q-pushN">` at
+   the top of `<ol class="asks">` on the private field-test page and its `<p class="build">` bumped -- read the live
+   page first and build from the saved copy (its memory note has the details).
+6. **Rewrite `docs/private/HANDOFF.md`.**
+
+**Standing rules a session has to be told**: never touch the user's own save (`engineGba/daemonsContent.sav`) --
+test on a copy in the scratchpad; mark every new in-game word DRAFT; a message box line is at most 208px; draw
+sprites at `--size 512x512`; never run the paid AI playtester; never decide what a ticket reserves for the user;
+the user's personal story stays in `docs/private/` and reaches the game only as fable -- no real names, company,
+medical detail or emails.
 
 ## Releasing ROMs
 

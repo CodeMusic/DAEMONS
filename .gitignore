@@ -17,6 +17,9 @@ ROM RELEASE/**/*.bps
 # ...and the user's own cart dumps (ROM RELEASE/CART BACKUPS/README.md): retail ROMs, never in git; only the README is
 ROM RELEASE/CART BACKUPS/*
 !ROM RELEASE/CART BACKUPS/README.md
+# QA screenshots not ready to be public (qa/README.md); only the README is tracked
+qa/screenshots/private/*
+!qa/screenshots/private/README.md
 engine/*.gbc
 engine/*.sav
 engineGba/*.gba
