@@ -43,3 +43,9 @@ Seen on screen: the fir star's three looks, FOLDS' painting shimmering under REV
 Proposed, not built: a faded print (recommended), fewer inks, or thin light -- each at none, some and all understandings held, on a real frame of CALLOW
 
 ![2Oct2026 - T317 - Three overworld clarity designs on CALLOW - 7](2Oct2026%20-%20T317%20-%20Three%20overworld%20clarity%20designs%20on%20CALLOW%20-%207.png)
+
+### 2Oct2026 - T317 - The faded print, played at one, four and seven understandings - 8
+
+T-317 built (the user's choice, A): CALLOW in the game with one understanding held (40% faded), four (18%) and all seven (as painted); people keep their colour
+
+![2Oct2026 - T317 - The faded print, played at one, four and seven understandings - 8](2Oct2026%20-%20T317%20-%20The%20faded%20print%2C%20played%20at%20one%2C%20four%20and%20seven%20understandings%20-%208.png)
