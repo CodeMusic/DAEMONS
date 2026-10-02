@@ -46,11 +46,15 @@ BUSH = 0x005
 #  T-337 (the user, 2026-10-01): A GROVE'S TREE IS SUBTLY NOT LIKE THE OTHERS. Where an ordinary tree's trunk has two
 #  bark notches, a grove's has one dark slot -- a little door; a grove's bush has a small dark gap at its foot. Enough
 #  that someone could learn the pattern, little enough to walk past (T-297: findable blind first, REVEAL only makes it
-#  plain). Drawn in the tileset's own colours into general tiles nothing outdoor uses (462, 463 and 597 appear only in
-#  indoor tilesets, which pair with the building primary), as four metatiles in slots the general tileset left empty.
+#  plain). Drawn in the tileset's own colours into general tiles nothing outdoor uses, as four metatiles in slots the
+#  general tileset left empty. FIXED 2026-10-02, found by PLAYING it (the theatre, ROUTE 24): the door was first drawn
+#  into 462 and the bush's foot into 463, which no outdoor METATILE uses -- but 416..463 is where the general set's
+#  water animation writes in VRAM every few frames, so in the game the tell was striped blue water. A decoded sheet
+#  cannot see this (engine.md trap 39). Now 626 and 637, which no metatile of the general set or of any secondary it
+#  pairs with references, and no animation touches; check_tell_tiles() refuses any other kind of choice.
 #  The tile: (the tile it is drawn from, {(x, y): colour index}).
-TELL_TILES = {462: (0x57, {(7, 0): 6, (7, 1): 6, (7, 2): 6, (7, 3): 6}),            # the trunk: the notches, one slot
-              463: (0x1C, {(6, 4): 15, (7, 4): 15, (6, 5): 15, (7, 5): 15}),        # the bush's foot, left half
+TELL_TILES = {626: (0x57, {(7, 0): 6, (7, 1): 6, (7, 2): 6, (7, 3): 6}),            # the trunk: the notches, one slot
+              637: (0x1C, {(6, 4): 15, (7, 4): 15, (6, 5): 15, (7, 5): 15}),        # the bush's foot, left half
               597: (0x1D, {(0, 4): 15, (1, 4): 15, (0, 5): 15, (1, 5): 15}),        # and right half
               #  SIX ISLAND's door is a rock in the water, the general set's own (0x212..0x21B): a small dark cave-mouth
               #  on the seam of its lower half, in its darkest grey (0x1A6 is the lower half's left, 0x1A7 its right,
@@ -58,7 +62,7 @@ TELL_TILES = {462: (0x57, {(7, 0): 6, (7, 1): 6, (7, 2): 6, (7, 3): 6}),        
               605: (0x1A6, {(x, y): 11 for x in (6, 7) for y in (4, 5, 6)}),
               620: (0x1A7, {(x, y): 11 for x in (0, 1) for y in (4, 5, 6)})}
 #  The metatile: plain one -> (its grove twin, {tile it uses: tile the twin uses}). Flip and palette bits carry over.
-TELL = {0x026: (553, {0x57: 462}), 0x027: (554, {0x57: 462}), 0x025: (555, {0x57: 462}), BUSH: (556, {0x1C: 463, 0x1D: 597}),
+TELL = {0x026: (553, {0x57: 626}), 0x027: (554, {0x57: 626}), 0x025: (555, {0x57: 626}), BUSH: (556, {0x1C: 637, 0x1D: 597}),
         0x21A: (557, {0x1A6: 605}), 0x21B: (558, {0x1A7: 620})}                   # the rock's lower half
 
 #  The three doors that are their own area's art (T-337, second pass): VIRIDIAN FOREST's and the BERRY FOREST's big round
@@ -75,6 +79,36 @@ SECONDARY_TELL = {
                                 {10: (84, {(7, 1): 8, (7, 2): 8, (7, 3): 8})},
                                 {0x2A4: (0x2AA, {0x2D4: 0x28A})}),
 }
+
+
+#  The general set's VRAM animations (src/tileset_anims.c): flowers at 508, water and its land edge at 416 (48 tiles),
+#  the sand edge at 464 (18). A tile drawn into any of these is overwritten in the game every few frames.
+GENERAL_ANIMATED = set(range(416, 416 + 48)) | set(range(464, 464 + 18)) | set(range(508, 508 + 4))
+
+
+def check_tell_tiles():
+    """Refuse a general tell tile that an animation overwrites, or that a metatile other than our own twins uses."""
+    import json
+    bad = [t for t in TELL_TILES if t in GENERAL_ANIMATED]
+    twins = {twin - 0 for twin, _ in TELL.values()}
+    layouts = json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]
+    secs = {l["secondary_tileset"] for l in layouts if l.get("primary_tileset") == "gTileset_General"}
+    paths = [("general", os.path.join(GBA, "data/tilesets/primary/general/metatiles.bin"))]
+    folders = {f.replace("_", ""): f for f in os.listdir(os.path.join(GBA, "data/tilesets/secondary"))}
+    for sym in secs:
+        f = folders.get(sym[len("gTileset_"):].lower())
+        if f:
+            paths.append((sym, os.path.join(GBA, "data/tilesets/secondary", f, "metatiles.bin")))
+    for who, p in paths:
+        b = open(p, "rb").read()
+        for m in range(len(b) // 16):
+            if who == "general" and m in twins:
+                continue
+            for e in struct.unpack_from("<8H", b, m * 16):
+                if (e & 0x3FF) in TELL_TILES:
+                    bad.append("%d (metatile %s of %s)" % (e & 0x3FF, hex(m), who))
+    if bad:
+        raise SystemExit("  refused: tell tiles that something else draws over: %s" % ", ".join(map(str, sorted(set(bad), key=str))))
 
 
 def tell_tables():
@@ -96,6 +130,7 @@ def tell_for(layout):
 def ensure_tell():
     """What each tileset needs for the tell, and writes it with --write. Returns what is (or was) missing."""
     from PIL import Image
+    check_tell_tiles()
     todo = []
     for sub, base0, tiles, metas in tell_tables():
         d = os.path.join(GBA, "data/tilesets", sub)

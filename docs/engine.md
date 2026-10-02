@@ -422,6 +422,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-09-27):*** *adding a three-row page to DEBUG's JUMP cut the third row off at the bottom -- and MART's BACK had always read RACK.* **`CreateStartMenuWindow` makes `rows * 2 - 1` tiles, and the menu spaces rows 15px apart**, *so n rows want 15n - 1 pixels and that only fits from seven rows up (vanilla's number, where it happens to work). The DEBUG branch now sizes to the rows; retail's is untouched. **When a list looks right at seven rows and wrong at three, suspect the arithmetic, not the list.***
 
+### 39. A tile no metatile uses can still be one an animation owns
+
+***Symptom (2026-10-02, T-337, seen by PLAYING it):*** *a grove's tree on ROUTE 24 showed two stripes of blue water where its trunk's little door should be. Every decoded sheet had shown the door correctly.* **The door was drawn into general tiles 462 and 463, chosen because no outdoor metatile references them -- but 416..463 is where the general set's water animation writes in VRAM every few frames** (`src/tileset_anims.c`: water and its land edge at 416, 48 tiles; the sand edge at 464, 18; flowers at 508, 4). *A sheet decoded from `tiles.png` draws the file, and the file was right; the screen draws VRAM.* ***Before drawing into a "free" tile, check it against the animations of every tileset it can sit beside***: *`gbagrove.py`'s `check_tell_tiles()` now refuses a tell tile that an animation overwrites or another metatile uses, and the tell lives in 626 and 637. Secondary tilesets animate too (PalletTown, CeladonCity, SilphCo, MtEmber and two gyms).*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
