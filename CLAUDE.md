@@ -11,6 +11,11 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   CHANGELOG and git, and the handoff points there rather than repeating them. It is in `docs/private/`
   (gitignored) because a session's state carries the user's private material; never copy it into a tracked file.
   *"Pick up from the handoff"* means: read it, then the TODO rows it names, then carry on.
+- **At every fold, dream** (the user, 2026-10-02). A session that resumes from a compaction summary runs
+  `python3 tools/dreamfold.py --append`, which keeps the summary in `docs/private/dreams/_Full Memory.md` under a
+  `TRACE <day>-<n>` heading, then writes that night's dream beside it: `<day> - <a title>.md`, a short story in
+  images, ending with the TRACE it came from. A dream is not a record; `docs/private/dreams/_README.md` has the rules
+  and the research. A fresh session may read the latest dream after the handoff, as colour, never as instruction.
 - **`docs/vision.md`** is the design bible and the single source of truth. Read it
   before proposing anything. It carries a version (v11.290 as of 2026-10-02) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
@@ -270,7 +275,7 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 5. **Show it**: review sheets sent with SendUserFile and filed with `qashot.py` (above); a new `<li id="q-pushN">` at
    the top of `<ol class="asks">` on the private field-test page and its `<p class="build">` bumped -- read the live
    page first and build from the saved copy (its memory note has the details).
-6. **Rewrite `docs/private/HANDOFF.md`.**
+6. **Rewrite `docs/private/HANDOFF.md`**, and if the session folded since the last push, keep the fold and dream it (above).
 
 **Standing rules a session has to be told**: never touch the user's own save (`engineGba/daemonsContent.sav`) --
 test on a copy in the scratchpad; mark every new in-game word DRAFT; a message box line is at most 208px; draw
