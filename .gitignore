@@ -14,6 +14,9 @@ ROM RELEASE/**/*.gba
 ROM RELEASE/**/*.sav
 # ...and its BPS patches, for their size (2.5MB each, four a release): published as downloads, not committed
 ROM RELEASE/**/*.bps
+# ...and the user's own cart dumps (ROM RELEASE/CART BACKUPS/README.md): retail ROMs, never in git; only the README is
+ROM RELEASE/CART BACKUPS/*
+!ROM RELEASE/CART BACKUPS/README.md
 engine/*.gbc
 engine/*.sav
 engineGba/*.gba
