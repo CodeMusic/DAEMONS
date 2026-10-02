@@ -1,0 +1,28 @@
+T-210 batch 1: which draft each FRONT is (backs: back2/, picked after T-166's recipe). Coloured drafts are taken to
+grey before cleaning, so the body takes its type's colour.
+primer      front_42
+syllabus    front_42
+curriculum  front_1917
+tepid       front_42
+seethe      front_42
+heatdeath   front_1917
+learnrate   front_42
+momentum    back_1917    (drawn as a "back" but it is the belly-slide the name wants, side-on)
+steepest    front_42
+stump       back_1917    (the stump with a face; its box was filled away after cleaning, batch 15's unbox)
+boosting    front_42
+canopy      front_1917
+coinflip    front_42
+montecarlo  front_42     (front_1917 carried a stray stick)
+runoff      front_1917
+alluvium    front_1917
+lasvegas    REDRAW (both seeds drew a man)
+delta       REDRAW (the fanned delta tail never came)
+BACKS (back2/, T-166's recipe, three seeds): tepid 88, seethe 88, heatdeath 1917, learnrate 1917, steepest 1917.
+No seed turned away: primer, syllabus, curriculum (mirrored, face removed) and momentum (side-on: mirrored) --
+backs_fallback.py.
+More backs: boosting 42, canopy 1917, runoff 1917, alluvium 1917 (back2/). Mirrored (side-on): coinflip, montecarlo.
+Mirrored, face removed: stump (rows 36-48; its redrawn backs were a different tree), canopy (rows 34-50; no streak box would sit on its dark crown). lasvegas and delta wait on redo.
+REDRAWN FRONTS (redo/): lasvegas 1917 (a bird at last; 88 spread its wings), delta 88 -- the fan-shaped delta tail never
+came in any seed, so DELTA's tail is left for the refining sweep. Backs: lasvegas mirrored (side-on), delta from back2 seed 88, a side view mirrored to face the foe
+with its face removed (rows 8-28).

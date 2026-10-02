@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t210b1/redo/delta_front_42",
+ "prompt": "pure white background, pixel art game sprite of a single large broad beaver sitting up, an enormous flat tail spread wide behind it in a fan of branching channels like a river delta, powerful arms, a calm face, front view, facing the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, rear view, human, person, man, woman, humanoid, clothes, sword, weapon, hat, colored background, floor, ground, shadow, text, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, frame, box",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 28.1,
+ "comfyui": "0.19.1",
+ "made": "2026-10-02 12:58:13"
+}
