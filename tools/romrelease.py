@@ -67,6 +67,11 @@ PATCHES = [
     ("daemonsContext.gba", "DAEMONS CONTEXT for LeafGreen Rev 1.bps", "pokeleafgreen_rev1.gba", "leafgreen_rev1.sha1",
      "Pokemon LeafGreen (USA, Europe) Rev 1"),
 ]
+#  T-344 (2026-10-02): the user's own carts, dumped with a GBxCart RW. Every patch whose source a dump IS (by SHA-1, never
+#  by file name) is applied to that dump and must reproduce our ROM byte for byte, or the release is refused -- so a
+#  patch is proved on the ROM a player actually owns, not only on pret's rebuild of it. The folder is gitignored and
+#  its .sav files are never opened.
+CARTS = os.path.join(REL, "CART BACKUPS")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bps
 
@@ -199,8 +204,37 @@ def retail_sources(build):
     return True
 
 
+def cart_dumps():
+    """{sha1: path} for every ROM dump in CART BACKUPS/ -- the .gba files only."""
+    if not os.path.isdir(CARTS):
+        return {}
+    return {sha1(os.path.join(CARTS, f)): os.path.join(CARTS, f)
+            for f in sorted(os.listdir(CARTS)) if f.lower().endswith(".gba")}
+
+
+def prove_on_cart(name, patch, tgt, digest, dumps):
+    """Apply PATCH to the user's dump of its source ROM, if there is one. True if proved, None if no such dump."""
+    cart = dumps.get(digest)
+    if not cart:
+        return None
+    try:
+        out = bps.apply(open(cart, "rb").read(), patch)
+    except ValueError as e:
+        raise SystemExit("  refused: %s will not apply to the user's own cart (%s): %s"
+                         % (name, os.path.basename(cart), e))
+    if out != tgt:
+        raise SystemExit("  refused: %s applied to the user's own cart (%s) does not give our ROM"
+                         % (name, os.path.basename(cart)))
+    return True
+
+
 def make_patches(dest):
     os.makedirs(os.path.join(dest, "PATCHES"), exist_ok=True)
+    dumps = cart_dumps()
+    known = {open(os.path.join(CACHE, h)).read().split()[0] for _, _, _, h, _ in PATCHES}
+    for digest, cart in dumps.items():
+        if digest not in known:
+            print("  !! %s matches no retail ROM a patch is made for -- not used" % os.path.basename(cart))
     rows = []
     for ours, name, rom, hashfile, owned in PATCHES:
         src = open(os.path.join(CACHE, rom), "rb").read()
@@ -209,8 +243,11 @@ def make_patches(dest):
         if bps.apply(src, patch) != tgt:
             raise SystemExit("  refused: %s does not reproduce %s" % (name, ours))
         open(os.path.join(dest, "PATCHES", name), "wb").write(patch)
-        rows.append((name, owned, open(os.path.join(CACHE, hashfile)).read().split()[0], len(patch)))
-        print("  patched %s (%d KB, checked by applying it)" % (name, len(patch) // 1024))
+        digest = open(os.path.join(CACHE, hashfile)).read().split()[0]
+        on_cart = prove_on_cart(name, patch, tgt, digest, dumps)
+        rows.append((name, owned, digest, len(patch), on_cart))
+        print("  patched %s (%d KB, checked by applying it%s)" % (name, len(patch) // 1024,
+              " -- and on the user's own cart" if on_cart else ""))
     return rows
 
 
@@ -218,9 +255,10 @@ def patch_notes(rows):
     out = ["## Patches", "",
            "*Apply one to the ROM it names, in any BPS patcher (Rom Patcher JS works in a browser). Each checks the "
            "ROM's CRC and refuses the wrong one. Step by step, with every checksum: `ROM RELEASE/HOW_TO_PATCH.md`.*", "",
-           "| patch | apply it to | that ROM's SHA-1 |", "|---|---|---|"]
-    for name, owned, digest, size in rows:
-        out.append("| `PATCHES/%s` | %s | `%s` |" % (name, owned, digest))
+           "| patch | apply it to | that ROM's SHA-1 | tested on |", "|---|---|---|---|"]
+    for name, owned, digest, size, on_cart in rows:
+        out.append("| `PATCHES/%s` | %s | `%s` | %s |" % (name, owned, digest,
+                   "a real cart, dumped" if on_cart else "pret's byte-identical rebuild"))
     return "\n".join(out) + "\n"
 
 

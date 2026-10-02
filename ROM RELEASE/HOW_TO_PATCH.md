@@ -39,6 +39,11 @@ shows these numbers as soon as you open your ROM. They must match one row exactl
 `51901a6e40661b3914aa333c802e24e8`, LeafGreen 1.0 `612ca9473451fa42b51d1711031ed5f6`, LeafGreen Rev 1
 `9d33a02159e018d09073e700e1fd10fd`.)*
 
+**The two Rev 1 patches are tested on real cartridges.** From v11.290.8, every release applies its Rev 1 patches to
+ROMs dumped from a real FireRed and a real LeafGreen cart, and refuses to publish unless the result matches the
+game byte for byte. The 1.0 patches are tested the same way against an exact rebuild of 1.0. Each release's notes
+say which test each patch passed.
+
 **If none of the rows match**, the patch will refuse to apply. A BPS patch checks the ROM before it changes
 anything, so it can't damage your file. The usual reasons for a mismatch are:
 
