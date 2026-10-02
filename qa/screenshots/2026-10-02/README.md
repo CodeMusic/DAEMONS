@@ -61,3 +61,9 @@ T-210 batch 1, as built: PRIMER, TEPID and LEARNRATE's lines in their type colou
 T-210 batch 1, as built: STUMP, COINFLIP and RUNOFF's lines in their type colours, front and back, with both editions' entries
 
 ![2Oct2026 - T210 - Hoenn starter lines named, written and drawn - 10](2Oct2026%20-%20T210%20-%20Hoenn%20starter%20lines%20named%2C%20written%20and%20drawn%20-%2010.png)
+
+### 2Oct2026 - T210 - the Hoenn water families as built - 11
+
+T-210 batch 2 (v11.291.3): TANGENT, JACOBIAN, UNDERTOW, RIPTIDE, SADDLE, OPTIMUM, SEEPAGE, AQUIFER, BACKFLOW, BLACKWATER -- fronts and backs decoded from the built ROM. DRAFT.
+
+![2Oct2026 - T210 - the Hoenn water families as built - 11](2Oct2026%20-%20T210%20-%20the%20Hoenn%20water%20families%20as%20built%20-%2011.png)
