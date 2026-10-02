@@ -1,0 +1,13 @@
+T-210 batch 2: which draft each FRONT is (cleaned, then greyed by clean.py; backs below once picked).
+tangent     front_42
+jacobian    front_42     (the pouch of little arrows never came: for the refining sweep)
+undertow    front_42
+riptide     front_1917   (42 drew a blue plesiosaur, not an eel; clean.py found its streak box itself)
+saddle      front_42
+optimum     front_42
+seepage     front_42
+aquifer     front_42     (the lake on its shell never came: for the refining sweep)
+backflow    front_42
+blackwater  front_42     (a white halo the fill left was taken off after cleaning, batch 15's unbox)
+BACKS: seepage, aquifer, backflow, blackwater from back2/ seed 88 (true rear views). Mirrored, side-on (T-166's rule):
+tangent, jacobian, undertow, riptide, saddle, optimum -- backs_fallback.py.
