@@ -7,15 +7,15 @@ can see the game without building it.
 qa/
   screenshots/
     2026-10-01/          one folder a day; its README.md is the gallery, captions and pictures
-      t297_folds_tell.png    <ticket>_<name>.png
+      1Oct2026 - T297 - FOLDS corner of paper - 24.png   <day> - <ticket> - <what it shows> - <number that day>
     private/             GITIGNORED -- anything not ready to be public (below)
 ```
 
 **Every picture sent for review is filed here** (CLAUDE.md, *Showing the user what changed*), with the same caption:
 
 ```sh
-python3 tools/qashot.py --ticket T-297 --caption "FOLDS' corner of paper, before and after" sheet.png
-python3 tools/qashot.py --ticket T-335 --caption "the dated pages" --private pages.png
+python3 tools/qashot.py --ticket T-297 --name "FOLDS corner of paper" --caption "the painting, before and after" sheet.png
+python3 tools/qashot.py --ticket T-335 --name "Dated pages" --caption "the dated pages" --private pages.png
 python3 tools/qashot.py --list
 ```
 

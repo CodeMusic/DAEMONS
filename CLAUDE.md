@@ -252,7 +252,7 @@ screenshots go on top when the screen-takeover card is approved -- never instead
 is away, and the sheets do not wait on it.
 
 **Every picture sent is also filed in `qa/screenshots/`** (the user, 2026-10-02), with the caption it was sent with,
-so the repository shows what the build looked like: `python3 tools/qashot.py --ticket T-297 --caption "..." FILE...`.
+so the repository shows what the build looked like: `python3 tools/qashot.py --ticket T-297 --name "what it shows" --caption "..." FILE...` (files are named `1Oct2026 - T297 - what it shows - 3.png`).
 **A picture showing a NOTEBOOK page, anything from `docs/private/`, or any of the four things below goes in with
 `--private`** (gitignored) -- *when in doubt, private*; `qa/README.md` has the rule. Commit the public ones with the push.
 

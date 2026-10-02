@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """File a QA screenshot in qa/screenshots/, where GitHub shows it (the user, 2026-10-02).
 
-    python3 tools/qashot.py --ticket T-297 --caption "FOLDS' corner of paper, before and after" FILE [FILE ...]
+    python3 tools/qashot.py --ticket T-297 --name "FOLDS corner of paper" --caption "the painting, before and after" FILE
     python3 tools/qashot.py --ticket T-335 --caption "the dated pages" --private FILE ...
     python3 tools/qashot.py --list            # what is filed, public and private
 
-Every picture sent to the user is filed here too. Each is copied into qa/screenshots/<date>/ as
-<ticket>_<name>.png, and that day's README.md gains the caption and the picture, so a day's folder reads as a gallery
-on GitHub.
+Every picture sent to the user is filed here too. Each is copied into qa/screenshots/<YYYY-MM-DD>/ named the user's
+way (2026-10-02): the day it was taken, the ticket if there is one, a short name for what it shows, and its number
+that day -- "21Sept2026 - T121 - REVEALER Found in One Island - 1.png". The number counts the public and private
+folders together, so a day's numbers never repeat. That day's README.md gains the caption and the picture, so the
+folder reads as a gallery on GitHub.
 
 --private files into qa/screenshots/private/<date>/ instead, which is gitignored: anything that shows a NOTEBOOK
 page, anything drawn from docs/private/, or any of the four things CLAUDE.md never puts in public writing. **When in
@@ -16,7 +18,7 @@ whose file name or caption sounds private (PRIVATE_HINTS) is refused unless --pu
 
 Filing the same picture twice does nothing; a different picture under a name already filed is refused.
 """
-import argparse, datetime, filecmp, os, re, shutil, sys
+import argparse, datetime, filecmp, os, re, shutil, sys, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOTS = os.path.join(ROOT, "qa", "screenshots")
@@ -26,40 +28,61 @@ PRIVATE_HINTS = ("notebook", "page", "loose", "correspondence", "prospectus", "l
                  "t-335", "t336", "t-336")
 
 
-def slug(s):
-    return re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")
+MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec")
 
 
-def file_one(src, ticket, caption, date, private):
+def stamp(date):
+    y, m, d = (int(v) for v in date.split("-"))
+    return "%d%s%d" % (d, MONTHS[m - 1], y)
+
+
+def clean(s):
+    """A name safe in a file name on every system: no slashes, colons or quotes."""
+    return re.sub(r"\s+", " ", re.sub(r"[^A-Za-z0-9 .,()&+=-]", "", s)).strip()
+
+
+def next_index(date):
+    n = 0
+    for top in (SHOTS, PRIVATE):
+        day = os.path.join(top, date)
+        if os.path.isdir(day):
+            for f in os.listdir(day):
+                m = re.search(r" - (\d+)\.[a-z]+$", f)
+                if m:
+                    n = max(n, int(m.group(1)))
+    return n + 1
+
+
+def file_one(src, ticket, name, date, private):
     if not os.path.isfile(src):
         raise SystemExit("  refused: %s does not exist" % src)
     day = os.path.join(PRIVATE if private else SHOTS, date)
     os.makedirs(day, exist_ok=True)
-    base, ext = os.path.splitext(os.path.basename(src))
-    tag, stem = re.sub(r"[^a-z0-9]", "", ticket.lower()), slug(base)
-    name = (stem if not tag or stem.startswith(tag) else tag + "_" + stem) + ext.lower()
+    ext = os.path.splitext(src)[1].lower()
+    for top in (SHOTS, PRIVATE):                               # the same picture filed that day already
+        other = os.path.join(top, date)
+        for f in (os.listdir(other) if os.path.isdir(other) else []):
+            if f != "README.md" and filecmp.cmp(src, os.path.join(other, f), shallow=False):
+                print("  already filed: %s" % os.path.relpath(os.path.join(other, f), ROOT))
+                return None
+    parts = [stamp(date)] + ([re.sub(r"[^A-Za-z0-9]", "", ticket).upper()] if ticket else []) + [clean(name)]
+    name = " - ".join(parts + [str(next_index(date))]) + ext
     dest = os.path.join(day, name)
-    if os.path.exists(dest):
-        if filecmp.cmp(src, dest, shallow=False):
-            print("  already filed: %s" % os.path.relpath(dest, ROOT))
-            return None
-        raise SystemExit("  refused: %s is filed already with different contents -- rename the source" %
-                         os.path.relpath(dest, ROOT))
     shutil.copyfile(src, dest)
     print("  filed %s" % os.path.relpath(dest, ROOT))
     return name
 
 
-def note(date, private, ticket, caption, names):
+def note(date, private, caption, names):
     readme = os.path.join(PRIVATE if private else SHOTS, date, "README.md")
     new = not os.path.exists(readme)
     with open(readme, "a") as f:
         if new:
-            f.write("# QA screenshots, %s%s\n\nDecoded from the built ROM unless a caption says otherwise. "
+            f.write("# QA screenshots, %s%s\n\nIn the order they were taken, each with the caption it was sent with. "
                     "Every word in them is a DRAFT until approved.\n" % (date, " (private)" if private else ""))
-        f.write("\n### %s%s\n\n" % (ticket + " -- " if ticket else "", caption))
         for n in names:
-            f.write("![%s](%s)\n" % (caption.replace("]", ")").replace("[", "("), n.replace(" ", "%20")))
+            stem = os.path.splitext(n)[0]
+            f.write("\n### %s\n\n%s\n\n![%s](%s)\n" % (stem, caption, stem, urllib.parse.quote(n)))
 
 
 def listing():
@@ -73,6 +96,7 @@ def main():
     ap = argparse.ArgumentParser(description="File QA screenshots in qa/screenshots/.")
     ap.add_argument("files", nargs="*")
     ap.add_argument("--ticket", default="", help="the TODO id the pictures are for, e.g. T-297")
+    ap.add_argument("--name", default="", help="a few words for what it shows; the file is named with it")
     ap.add_argument("--caption", default="", help="one line, the same as the caption sent to the user")
     ap.add_argument("--date", default=datetime.date.today().isoformat())
     ap.add_argument("--private", action="store_true", help="file in the gitignored private folder")
@@ -82,17 +106,18 @@ def main():
     if a.list or not a.files:
         listing()
         return
-    if not a.caption:
-        raise SystemExit("  refused: --caption is needed (the gallery shows it)")
+    if not a.caption or not a.name:
+        raise SystemExit("  refused: --name and --caption are both needed (the file is named with one, the gallery "
+                         "shows the other)")
     if not a.private and not a.public:
-        said = " ".join([a.caption, a.ticket] + [os.path.basename(f) for f in a.files]).lower()
+        said = " ".join([a.caption, a.name, a.ticket] + [os.path.basename(f) for f in a.files]).lower()
         hit = [h for h in PRIVATE_HINTS if h in said]
         if hit:
             raise SystemExit("  refused: this sounds private (%s). File it with --private, or with --public once "
                              "you have looked and it is not." % ", ".join(hit))
-    names = [n for n in (file_one(f, a.ticket, a.caption, a.date, a.private) for f in a.files) if n]
+    names = [n for n in (file_one(f, a.ticket, a.name, a.date, a.private) for f in a.files) if n]
     if names:
-        note(a.date, a.private, a.ticket, a.caption, names)
+        note(a.date, a.private, a.caption, names)
 
 
 if __name__ == "__main__":
