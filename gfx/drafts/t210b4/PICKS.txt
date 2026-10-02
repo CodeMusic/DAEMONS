@@ -1,0 +1,21 @@
+T-210 batch 4: which draft each sprite is (cleaned, then greyed by clean.py, which greys a lone pixel of the art that
+happens to be a streak-marker colour).
+FRONTS: front_42 for all but gestalt -- the 1917s were mostly boxed on dark grounds.
+sinkhole    front_42     an antlion larva on its sand pit
+shimmer     front_42     an antlion fly; its light body is all wing, so its streaks sit in a hand box across the
+                         wings (clean.py BOX)
+dustdevil   front_42     the swirl of sand never came, only a disc of it (refining sweep)
+datagram    front_42     a dove; the bundle on its foot never came (refining sweep)
+tradewind   front_42     a dove in flight; the cloud wings never came (refining sweep)
+inkling     front_42     a bony-headed lizard
+gestalt     front_1917   an armoured lizard on stones (42 drew a green turtle)
+epiphany    front_42     drawn as a wyvern, not a gliding lizard: a concrete winged reptile, and EMERGENT is the
+                         dragon type -- the user may want a real animal (refining sweep)
+savestate   front_42     a sea lily on a short stalk
+warmstart   front_42     a sea lily grown tall
+tokenring   front_42     a horseshoe crab
+trunkline   front_42     a larger, heavier horseshoe crab
+BACKS, true rear views from back2/: sinkhole 42, shimmer 88, dustdevil 88, epiphany 88, savestate 42, tokenring 42,
+trunkline 42. Mirrored, side-on (T-166's rule): datagram, tradewind (every seed drew a profile), warmstart (42's
+rear view lost its stalk to the fill). Mirrored and defaced: gestalt (every seed drew a face), inkling (88's rear view
+brought a pedestal) -- both heads come out washed light (refining sweep).

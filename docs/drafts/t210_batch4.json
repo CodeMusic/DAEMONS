@@ -1,0 +1,188 @@
+{
+ "_about": "T-210 batch 4 (DRAFT, built in the 2026-10-02 goal loop): the dragons and fossils, named by their own type's register (vision.md 2.8 for CONTENT, 2.9 for the rest). SWABLU > ALTARIA crosses from CONTENT into EMERGENT: the datagram becomes the wind that carries everything. The fossils are LEGACY and keep vanilla's ROOT FOSSIL and CLAW FOSSIL.",
+ "daemons": [
+  {
+   "species": "TRAPINCH",
+   "name": "SINKHOLE",
+   "type": "STRATUM",
+   "category": "PIT",
+   "content": [
+    "It waits at the bottom of a pit of",
+    "loose sand. Whatever steps near the",
+    "edge slides down to it."
+   ],
+   "context": [
+    "It never chases anything.",
+    "The ground does the work for it."
+   ]
+  },
+  {
+   "species": "VIBRAVA",
+   "name": "SHIMMER",
+   "type": "STRATUM/EMERGENT",
+   "category": "UPDRAFT",
+   "content": [
+    "The sand under it heats until the air",
+    "above begins to rise. It beats its wings",
+    "and lets what comes up carry it."
+   ],
+   "context": [
+    "Nothing lifts it. The warm ground",
+    "and the cold sky do it between them."
+   ]
+  },
+  {
+   "species": "FLYGON",
+   "name": "DUSTDEVIL",
+   "type": "STRATUM/EMERGENT",
+   "category": "WHIRLWIND",
+   "content": [
+    "It spins up out of hot sand and still",
+    "air where nothing was, wanders the",
+    "desert, and falls apart."
+   ],
+   "context": [
+    "Nobody made it and nobody steers it.",
+    "Give it the same afternoon and it",
+    "will form again."
+   ]
+  },
+  {
+   "species": "SWABLU",
+   "name": "DATAGRAM",
+   "type": "CONTENT/VECTOR",
+   "category": "ADDRESSED",
+   "content": [
+    "It carries one small bundle tied to",
+    "its foot and flies it to wherever the",
+    "label says. It never opens it."
+   ],
+   "context": [
+    "It does not know what it carries.",
+    "It only knows where."
+   ]
+  },
+  {
+   "species": "ALTARIA",
+   "name": "TRADEWIND",
+   "type": "EMERGENT/VECTOR",
+   "category": "STEADY WIND",
+   "content": [
+    "Its wings are cloud. It blows the same",
+    "way every year, and every bundle in",
+    "the sky rides along with it."
+   ],
+   "context": [
+    "Nobody set its heading. The sun and",
+    "the turning sea did, and ships have",
+    "trusted it for longer than maps."
+   ]
+  },
+  {
+   "species": "BAGON",
+   "name": "INKLING",
+   "type": "EMERGENT",
+   "category": "HUNCH",
+   "content": [
+    "It butts its head against the rocks",
+    "all day, sure there is something it",
+    "is meant to do. It cannot say what."
+   ],
+   "context": [
+    "It is not ready yet. It already",
+    "knows that it will be."
+   ]
+  },
+  {
+   "species": "SHELGON",
+   "name": "GESTALT",
+   "type": "EMERGENT",
+   "category": "WHOLE",
+   "content": [
+    "It shuts itself inside a stone shell",
+    "and holds still. Inside, its parts are",
+    "becoming something none of them is."
+   ],
+   "context": [
+    "Open it now and you find only the",
+    "parts. The whole is not there yet."
+   ]
+  },
+  {
+   "species": "SALAMENCE",
+   "name": "EPIPHANY",
+   "type": "EMERGENT/VECTOR",
+   "category": "ALL AT ONCE",
+   "content": [
+    "It breaks out of its shell all at once",
+    "and flies straight away, as if it had",
+    "always known how."
+   ],
+   "context": [
+    "Nobody can say which part of it learned",
+    "to fly. It only arrives, and points."
+   ]
+  },
+  {
+   "species": "LILEEP",
+   "name": "SAVESTATE",
+   "type": "LEGACY/GROWTH",
+   "category": "PRESERVED",
+   "content": [
+    "It was kept in stone exactly as it was",
+    "on the day the sea left it. Wake it",
+    "and it carries on from there."
+   ],
+   "context": [
+    "It still grows toward a sea that is",
+    "not there any more."
+   ]
+  },
+  {
+   "species": "CRADILY",
+   "name": "WARMSTART",
+   "type": "LEGACY/GROWTH",
+   "category": "RESUMED",
+   "content": [
+    "It picked up growing where it stopped",
+    "and is still fitting itself, slowly,",
+    "to the water it remembers."
+   ],
+   "context": [
+    "Everything it learned is very old.",
+    "It learns new things on top of it,",
+    "never instead of it."
+   ]
+  },
+  {
+   "species": "ANORITH",
+   "name": "TOKENRING",
+   "type": "LEGACY/SWARM",
+   "category": "TAKE TURNS",
+   "content": [
+    "A token passes from claw to claw",
+    "around the shoal. Only the one",
+    "holding it may move."
+   ],
+   "context": [
+    "It is slow and it is fair, and almost",
+    "nothing still works this way."
+   ]
+  },
+  {
+   "species": "ARMALDO",
+   "name": "TRUNKLINE",
+   "type": "LEGACY/SWARM",
+   "category": "CORE LINK",
+   "content": [
+    "Every message in the old sea passed",
+    "along its armoured back. It has never",
+    "once been switched off."
+   ],
+   "context": [
+    "Nobody remembers laying it down.",
+    "Everyone still depends on it."
+   ]
+  }
+ ]
+}
