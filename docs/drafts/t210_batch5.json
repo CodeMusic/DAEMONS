@@ -1,0 +1,289 @@
+{
+ "_about": "T-210 batch 5 (DRAFT, built in the 2026-10-02 goal loop): the early Hoenn routes, named by their own type's register (vision.md 2.8 for CONTENT, 2.9 for the rest). Two lines grow by our stones: NUZLEAF by REWARD (LEAF STONE) into a learned POLICY nobody can read, and SKITTY by REFLECTION (MOON STONE) into a QUINE, a program that prints itself. VOLBEAT and ILLUMISE are a pair, the two halves of a handshake.",
+ "daemons": [
+  {
+   "species": "POOCHYENA",
+   "name": "SMUDGE",
+   "type": "OPAQUE",
+   "category": "SMEAR",
+   "content": [
+    "It rubs up against anything it passes",
+    "and leaves it a little harder to read."
+   ],
+   "context": [
+    "Nobody notices one smudge. A pack of",
+    "them can blur a whole town."
+   ]
+  },
+  {
+   "species": "MIGHTYENA",
+   "name": "ECLIPSE",
+   "type": "OPAQUE",
+   "category": "TOTAL COVER",
+   "content": [
+    "When it stands in front of something,",
+    "nothing behind it can be seen at all.",
+    "It hunts by that."
+   ],
+   "context": [
+    "You can see its shape perfectly. That",
+    "is all you will ever see of it."
+   ]
+  },
+  {
+   "species": "ZIGZAGOON",
+   "name": "DETOUR",
+   "type": "CONTENT",
+   "category": "WANDERING",
+   "content": [
+    "It never goes straight anywhere. It",
+    "runs off on every path it finds and",
+    "somehow comes back with something."
+   ],
+   "context": [
+    "Follow its tracks and you will be lost",
+    "long before it is."
+   ]
+  },
+  {
+   "species": "LINOONE",
+   "name": "UNBRANCHED",
+   "type": "CONTENT",
+   "category": "STRAIGHT",
+   "content": [
+    "It runs in perfectly straight lines and",
+    "never turns aside. Everything it needs",
+    "it carries with it."
+   ],
+   "context": [
+    "It is very fast, because it never",
+    "stops to ask where to go next."
+   ]
+  },
+  {
+   "species": "SEEDOT",
+   "name": "WARMUP",
+   "type": "GROWTH",
+   "category": "FIRST STEPS",
+   "content": [
+    "It hangs from a branch and practises",
+    "the same small things, slowly at first,",
+    "then a little faster every day."
+   ],
+   "context": [
+    "It is not learning much yet. It is",
+    "learning how to learn."
+   ]
+  },
+  {
+   "species": "NUZLEAF",
+   "name": "SHAPING",
+   "type": "GROWTH/OPAQUE",
+   "category": "PAID",
+   "content": [
+    "It does whatever earned it something",
+    "last time, and a little more. It has",
+    "learned to look for the REWARD."
+   ],
+   "context": [
+    "Pay it for the wrong thing once and",
+    "it will find every way to earn it."
+   ]
+  },
+  {
+   "species": "SHIFTRY",
+   "name": "POLICY",
+   "type": "GROWTH/OPAQUE",
+   "category": "SETTLED WAY",
+   "content": [
+    "Given a REWARD, it settled on one way",
+    "of doing things. It does it the same",
+    "way in every wind."
+   ],
+   "context": [
+    "Ask it why and it cannot tell you.",
+    "It only knows what has paid."
+   ]
+  },
+  {
+   "species": "TAILLOW",
+   "name": "SHORTJUMP",
+   "type": "CONTENT/VECTOR",
+   "category": "NEAR HOP",
+   "content": [
+    "It darts from one place to the next",
+    "one close by, never further than it",
+    "can see."
+   ],
+   "context": [
+    "It always lands exactly where it",
+    "aimed. It just never aims far."
+   ]
+  },
+  {
+   "species": "SWELLOW",
+   "name": "LONGJUMP",
+   "type": "CONTENT/VECTOR",
+   "category": "FAR CALL",
+   "content": [
+    "It leaves without warning and lands on",
+    "the far side of the world, then comes",
+    "back to the same spot it left."
+   ],
+   "context": [
+    "Wherever it goes, it remembers the",
+    "way home. That is the whole trick."
+   ]
+  },
+  {
+   "species": "SHROOMISH",
+   "name": "SPARRING",
+   "type": "GROWTH",
+   "category": "PRACTICE",
+   "content": [
+    "It boxes with anything that will",
+    "stand still, and gets a little better",
+    "every round it loses."
+   ],
+   "context": [
+    "It does not mind losing. Every",
+    "loss is something it keeps."
+   ]
+  },
+  {
+   "species": "BRELOOM",
+   "name": "CHECKMATE",
+   "type": "GROWTH/LOGIC",
+   "category": "FORCED END",
+   "content": [
+    "Every punch leaves you one fewer",
+    "place to stand. A few moves later,",
+    "there are none."
+   ],
+   "context": [
+    "By the time you see how it will end,",
+    "it has already ended."
+   ]
+  },
+  {
+   "species": "WHISMUR",
+   "name": "LOWBIT",
+   "type": "CONTENT",
+   "category": "QUIET BIT",
+   "content": [
+    "Its voice is the smallest thing that",
+    "can still be heard. Startle it and it",
+    "doubles."
+   ],
+   "context": [
+    "It is easy to ignore. Everything",
+    "larger is built on top of it."
+   ]
+  },
+  {
+   "species": "LOUDRED",
+   "name": "SHIFTLEFT",
+   "type": "CONTENT",
+   "category": "DOUBLING",
+   "content": [
+    "Every time it shouts, it shouts twice",
+    "as loud as the time before. It cannot",
+    "stop doubling."
+   ],
+   "context": [
+    "It was quiet once. Count the shouts",
+    "and you can say how long ago."
+   ]
+  },
+  {
+   "species": "EXPLOUD",
+   "name": "WRAPAROUND",
+   "type": "CONTENT",
+   "category": "ROLLOVER",
+   "content": [
+    "It got so loud there was no room left",
+    "for the sound. Now its loudest roar",
+    "comes out as a whisper."
+   ],
+   "context": [
+    "Nothing broke. The number simply",
+    "ran out of room and started again."
+   ]
+  },
+  {
+   "species": "SKITTY",
+   "name": "LOOPBACK",
+   "type": "CONTENT",
+   "category": "OWN TAIL",
+   "content": [
+    "It chases its own tail all day. Every",
+    "call it sends out comes straight back",
+    "to itself."
+   ],
+   "context": [
+    "It is not lonely. It has simply never",
+    "needed anyone else to answer."
+   ]
+  },
+  {
+   "species": "DELCATTY",
+   "name": "QUINE",
+   "type": "CONTENT",
+   "category": "OWN SOURCE",
+   "content": [
+    "Given a REFLECTION, it learned to",
+    "describe itself perfectly, and the",
+    "description is all it does."
+   ],
+   "context": [
+    "Ask it what it is and it tells you,",
+    "exactly, and that is the whole of it."
+   ]
+  },
+  {
+   "species": "ROSELIA",
+   "name": "LACED",
+   "type": "GROWTH/CORRUPT",
+   "category": "DOCTORED",
+   "content": [
+    "It looks like a flower and smells like",
+    "one. Whatever learns from it learns",
+    "one thing more."
+   ],
+   "context": [
+    "Nothing seems wrong until the one",
+    "moment it was taught for."
+   ]
+  },
+  {
+   "species": "VOLBEAT",
+   "name": "SYN",
+   "type": "SWARM",
+   "category": "CALL",
+   "content": [
+    "It flashes once into the dark and",
+    "waits. It will not flash again until",
+    "something answers."
+   ],
+   "context": [
+    "A field of them at night is a",
+    "thousand questions, all asked at once."
+   ]
+  },
+  {
+   "species": "ILLUMISE",
+   "name": "ACK",
+   "type": "SWARM",
+   "category": "ANSWER",
+   "content": [
+    "It answers every flash it sees with",
+    "one of its own, and the two of them",
+    "start to blink together."
+   ],
+   "context": [
+    "Nobody leads them. By midnight the",
+    "whole field keeps one time."
+   ]
+  }
+ ]
+}

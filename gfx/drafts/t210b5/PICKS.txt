@@ -1,0 +1,27 @@
+T-210 batch 5: which draft each sprite is (cleaned, then greyed by clean.py, which greys a lone pixel of the art that
+happens to be a streak-marker colour). The prompts asked for a "real animal" and refused mythical ones (EPIPHANY, batch
+4, came out a wyvern); every draft here is a real animal.
+FRONTS: front_42 except where said.
+smudge      front_42     a hyena pup
+eclipse     front_42     a dark hyena
+detour      front_42     a raccoon cub (the zigzag stripes never came: refining sweep)
+unbranched  front_42     a raccoon standing, not running straight (1917 ran, but on a ground of lines: refining sweep)
+warmup      front_42     a squirrel kit on a branch (the branch runs to the edge)
+shaping     front_42     a squirrel with its acorn
+policy      front_42     a squirrel with a great fanned tail
+shortjump   front_42     a swallow on a perch
+longjump    front_42     a swallow in flight
+sparring    front_1917   a kangaroo joey, facing front (no gloves came)
+checkmate   front_1917   a kangaroo in its gloves, facing front
+lowbit      front_42     a small rabbit
+shiftleft   front_42     a rabbit, mouth open
+wraparound  front_42     a hare (the loudspeaker ears never came: refining sweep)
+loopback    front_42     a kitten sitting (1917 curled after its tail, but boxed)
+quine       front_42     a cat sitting upright
+laced       front_1917   an orchid mantis from above (42 kept a block of its green ground)
+syn         front_42     a firefly; its light body is the wing, so its streaks sit in a grid-searched box (clean.py BOX)
+ack         front_42     a rounder firefly
+BACKS, true rear views from back2/: smudge 88, detour 42, unbranched 42, warmup 42, lowbit 88, shiftleft 88,
+wraparound 88, loopback 88, quine 1917, syn 88, ack 88. Mirrored, side-on (T-166's rule): eclipse, shortjump, longjump
+(every seed drew a profile), laced (seen from above). Mirrored and defaced: shaping, policy, checkmate (every seed drew
+a face), sparring (1917's rear view lost its grey body to a grey ground; no streak box would hold).
