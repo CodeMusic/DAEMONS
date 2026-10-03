@@ -19,3 +19,9 @@ T-210 batch 6 (v11.291.7): GLIDEPATH, POSTULATE, DEDUCTION, BACKDOOR, HONEYTRAP,
 T-348 (v11.292.1, DRAFT): what the first shop clerk says when he notices OPUS, in the game's font. Once only, at whichever shop comes first.
 
 ![3Oct2026 - T348 - a shop clerk notices OPUS - 3](3Oct2026%20-%20T348%20-%20a%20shop%20clerk%20notices%20OPUS%20-%203.png)
+
+### 3Oct2026 - T210 - the 13 legendaries as built - 4
+
+T-210 batch 7 (v11.292.2): PONTUS, GAIA, OURANOS, BOREAS, BRONTES, TYPHON, TALOS, DEUCALION, KHIONE, CASTOR, POLYDEUCES, KAIROS, ELPIS -- the myth register, decoded from the built ROM. DRAFT.
+
+![3Oct2026 - T210 - the 13 legendaries as built - 4](3Oct2026%20-%20T210%20-%20the%2013%20legendaries%20as%20built%20-%204.png)
