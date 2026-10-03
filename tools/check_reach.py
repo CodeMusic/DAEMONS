@@ -15,6 +15,13 @@ edges if it joins another map -- through every tile whose collision is open, rou
 leaves (no flag the story can hide them by, and not a wanderer). Then every object with a script and every sign
 or hidden item needs a reached tile beside it.
 
+AND A WAY BACK (the user's playthrough, 2026-10-03: "I can't get out"). CALLOW SCHOOL rose over the lawn that was
+the only way out of the strip below a ledge, and a ledge only lets a player down -- so whoever jumped it was shut in.
+The walk above could not see it: it asks whether a cell can be REACHED, and that strip could. So a second walk knows
+the four ledges (MB_JUMP_*: crossed in their own direction only, landing beyond), goes forward from every arrival
+and back from every way out (the same warps and edges), and reports a cell that can be reached and not left -- a
+trap -- when vanilla has no trap there.
+
 THE WALK IS A FLOOR, NOT A CEILING. It knows nothing of Surf, Cut, Strength, ledges or elevation, so vanilla
 itself has about 240 things it calls unreachable. So the same walk runs on a pristine pret/pokefirered checkout
 (a git worktree of upstream/master, cached in ~/.cache/daemons) and only the DIFFERENCE is reported: what is
@@ -86,6 +93,100 @@ def audit(root):
             if not near(b["x"], b["y"]):
                 out[(d, "sign" if b.get("type") != "hidden_item" else "hidden item", b["x"], b["y"])] = \
                     b.get("script") or b.get("item")
+    return out
+
+
+JUMP = {0x38: (1, 0), 0x39: (-1, 0), 0x3A: (0, -1), 0x3B: (0, 1)}      # MB_JUMP_EAST, WEST, NORTH, SOUTH
+
+
+def _tdir(root, symbol, kind):
+    want = re.sub(r"[^a-z0-9]", "", symbol.replace("gTileset_", "").lower())
+    base = os.path.join(root, "data/tilesets", kind)
+    for d in os.listdir(base):
+        if re.sub(r"[^a-z0-9]", "", d.lower()) == want:
+            return os.path.join(base, d)
+
+
+def traps(root):
+    """{(map, x, y)} -- open cells the player can walk to from an arrival and cannot walk back from to any way out,
+    with ledges one way. Arrivals and ways out are the same set: the warps, the warps scripts make, and the edges."""
+    load = lambda p: json.load(open(os.path.join(root, p)))
+    layouts = {l["id"]: l for l in load("data/layouts/layouts.json")["layouts"] if l}
+    attrs = {}
+    def behaviour(lay, mt):
+        key = (lay["primary_tileset"], lay["secondary_tileset"])
+        if key not in attrs:
+            pa = open(os.path.join(_tdir(root, key[0], "primary"), "metatile_attributes.bin"), "rb").read()
+            sd = _tdir(root, key[1], "secondary")
+            sa = open(os.path.join(sd, "metatile_attributes.bin"), "rb").read() if sd else b""
+            attrs[key] = (pa, sa)
+        pa, sa = attrs[key]
+        a, k = (pa, mt) if mt < 640 else (sa, mt - 640)
+        return struct.unpack_from("<I", a, k * 4)[0] & 0x1FF if (k + 1) * 4 <= len(a) else 0
+    seeds = {}
+    for dp, _, fs in os.walk(os.path.join(root, "data")):
+        for f in fs:
+            if f.endswith(".inc"):
+                for m in re.finditer(r"^\s*warp\w*\s+(MAP_\w+),\s*(?:\d+,\s*)?(-?\d+),\s*(-?\d+)",
+                                     open(os.path.join(dp, f), errors="ignore").read(), re.M):
+                    seeds.setdefault(m.group(1), set()).add((int(m.group(2)), int(m.group(3))))
+    out = set()
+    for d in sorted(os.listdir(os.path.join(root, "data/maps"))):
+        path = os.path.join(root, "data/maps", d, "map.json")
+        if not os.path.exists(path):
+            continue
+        m = json.load(open(path))
+        lay = layouts.get(m.get("layout"))
+        if not lay or not lay.get("blockdata_filepath") or not lay.get("primary_tileset"):
+            continue
+        W, H = lay["width"], lay["height"]
+        bd = open(os.path.join(root, lay["blockdata_filepath"]), "rb").read()
+        cell = lambda x, y: struct.unpack_from("<H", bd, (y * W + x) * 2)[0]
+        still = {(o["x"], o["y"]) for o in m.get("object_events") or []
+                 if str(o.get("flag", "0")) == "0" and "WANDER" not in str(o.get("movement_type", ""))}
+        inside = lambda x, y: 0 <= x < W and 0 <= y < H
+        ledge = {}
+        for y in range(H):
+            for x in range(W):
+                b = behaviour(lay, cell(x, y) & 0x3FF)
+                if b in JUMP:
+                    ledge[(x, y)] = JUMP[b]
+        open_ = lambda x, y: inside(x, y) and not (cell(x, y) >> 10) & 3 and (x, y) not in still \
+            and (x, y) not in ledge
+        def steps(x, y):
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                nx, ny = x + dx, y + dy
+                if (nx, ny) in ledge:
+                    if ledge[(nx, ny)] == (dx, dy) and open_(nx + dx, ny + dy):
+                        yield nx + dx, ny + dy
+                elif open_(nx, ny):
+                    yield nx, ny
+        ends = {(w["x"], w["y"]) for w in m.get("warp_events") or []} | seeds.get(m["id"], set())
+        if m.get("connections"):
+            ends |= {(x, 0) for x in range(W)} | {(x, H - 1) for x in range(W)}
+            ends |= {(0, y) for y in range(H)} | {(W - 1, y) for y in range(H)}
+        ends = {e for e in ends if open_(*e)}
+        fwd, back = set(ends), set(ends)
+        todo = deque(ends)
+        edges = {}
+        while todo:
+            c = todo.popleft()
+            for n in steps(*c):
+                edges.setdefault(n, set()).add(c)
+                if n not in fwd:
+                    fwd.add(n)
+                    todo.append(n)
+        for c in list(fwd):                                             # every reached cell's ways forward, reversed
+            for n in steps(*c):
+                edges.setdefault(n, set()).add(c)
+        todo = deque(ends)
+        while todo:
+            c = todo.popleft()
+            for p in edges.get(c, ()):
+                if p not in back:
+                    back.add(p)
+                    todo.append(p)
+        out |= {(d, x, y) for (x, y) in fwd - back}
     return out
 
 
@@ -208,6 +309,14 @@ def main():
         for k in worse:
             print("     %-36s %-11s (%d,%d)  %s" % (k[0], k[1], k[2], k[3], ours[k]))
         rc = 1
+    t_ours, t_theirs = traps(GBA), traps(up)
+    worse = sorted(t_ours - t_theirs)
+    print("  %d cells a player can reach and not leave here, %d in vanilla" % (len(t_ours), len(t_theirs)))
+    if worse:
+        print("  !! a way in and no way out, and vanilla had one:")
+        for k in worse:
+            print("     %-36s (%d,%d)" % k)
+        rc = 1
     d_ours, d_theirs = doors(GBA), doors(up)
     worse = sorted(d_ours - d_theirs)
     print("  %d odd doors here, %d in vanilla" % (len(d_ours), len(d_theirs)))
@@ -223,8 +332,8 @@ def main():
             print("  !! %s is tested and nothing outside the DEBUG build sets it" % f)
             rc = 1
     if not rc:
-        print("  nothing we changed made anything unreachable, any door lead nowhere, any flag wait forever, any line lose\n"
-              "  a value or a sound vanilla had, or any receipt get announced twice.")
+        print("  nothing we changed made anything unreachable, any pocket a trap, any door lead nowhere, any flag wait\n"
+              "  forever, any line lose a value or a sound vanilla had, or any receipt get announced twice.")
     return rc
 
 

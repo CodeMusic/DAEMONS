@@ -1306,6 +1306,7 @@ def _load_textwidth():
 DOUBLED_ON_PURPOSE = {
     "PokemonMansion_B1F_Text_MewtwoIsFarTooPowerful",   # the glitch counting in binary
     "ViridianCity_School_Text_Spelling_Board",          # a board's title, then its first word
+    "gOakSpeech_Text_RememberRivalsName",               # CRYSTAL laughing, "Ha ha!" (T-362, the user's line)
 }
 
 

@@ -434,6 +434,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-10-03, T-358):*** *the party menu's AWAY option saved the game, and Continuing that save showed THE REPO's floor as noise with its people walking on it; skipping the recap did not help, a warp did.* **The START menu stores the visible map in the save before it saves (`StartMenu_PrepareForSave` → `SaveMapView`), and Continue writes that view straight back into the live map grid** -- *so a save that skips it continues into whatever the last START-menu save saw, at the wrong place.* ***Any save made outside the START menu calls `SaveMapView()` first***, *then saves as `SaveDialogCB_DoSave` does (quest log, game stat, `gDifferentSaveFile`).* **And `gPlayerParty` is not `gSaveBlock1Ptr->playerParty`**: *the save block holds a copy written only at save time -- poke the live party, read the copy.*
 
+### 42. A building that closed a pocket's only way out
+
+***Symptom (2026-10-03, T-361):*** *on a phone, a player jumped CALLOW's ledge into the strip above the fence and could not leave without GOTO.* **CALLOW SCHOOL had risen over the lawn that was that strip's only exit, and a ledge lets a player down and never up** -- *so the strip could be reached, which is all `check_reach.py` asked.* ***Anything placed on a map closes cells, and closing a cell can turn a pocket into a trap***: *`check_reach.py` now walks forward from every arrival and back from every way out, ledges one way, and fails on a cell that can be reached and not left when vanilla has none there.*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**

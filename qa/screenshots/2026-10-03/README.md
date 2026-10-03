@@ -181,3 +181,21 @@ T-356 batch 6 (DRAFT), second and third sheets.
 T-356 batch 7 (DRAFT), second sheet.
 
 ![3Oct2026 - T356 - OPUS margins, batch 7, the legendaries - 33](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%207%2C%20the%20legendaries%20-%2033.png)
+
+### 3Oct2026 - T361 - the gate beside CALLOW SCHOOL - 34
+
+T-361: the strip below CALLOW's ledge had no way out once the school rose over its lawn; the fence's first post beside the school is now a gate.
+
+![3Oct2026 - T361 - the gate beside CALLOW SCHOOL - 34](3Oct2026%20-%20T361%20-%20the%20gate%20beside%20CALLOW%20SCHOOL%20-%2034.png)
+
+### 3Oct2026 - T362 - CRYSTAL and the rivals name - 35
+
+T-362 (DRAFT): CRYSTAL asks whether you remember her grandchild's name, and laughs when you do.
+
+![3Oct2026 - T362 - CRYSTAL and the rivals name - 35](3Oct2026%20-%20T362%20-%20CRYSTAL%20and%20the%20rivals%20name%20-%2035.png)
+
+### 3Oct2026 - T363 - the name screen, two directions - 36
+
+T-363 mock-ups from the real screen: vanilla, A the terminal (chosen by the user), B an INDEX card.
+
+![3Oct2026 - T363 - the name screen, two directions - 36](3Oct2026%20-%20T363%20-%20the%20name%20screen%2C%20two%20directions%20-%2036.png)

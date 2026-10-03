@@ -24,6 +24,11 @@ The house above opens onto row 12, so the school may rise to row 13 and no furth
 planters, the path to the door and row 12 are left exactly as they were. Every cell of the tower is blocked; the
 lawn it rises over (rows 13..15) was walkable and is not now, and nothing is reached only through it.
 
+AND THE GATE (the user's playthrough, 2026-10-03: "I can't get out"). That lawn was also the only way OUT of the strip
+east of it, rows 13..14 between the ledge and the fence: the ledge only lets a player down, so whoever jumped it was
+shut in, and needed GOTO to leave. The fence's first post, at (29,15) beside the tower, is lifted to plain grass --
+a gate onto the lawn below. It is its own step, so it runs on a map where the school is already drawn.
+
 HOW IT GOES IN, as tools/gbascholar.py put the Owl's study into Brazen: every cell gets a block of Callow's own,
 appended; the drawing is the top layer over plain grass, on the COVERED layer, so a sprite standing in front of
 the school is drawn in front of it. Colour comes from Callow's rows 7..12 and the General rows beneath them; row 7,
@@ -192,9 +197,30 @@ def nearest(c, pal):
     return min(range(1, 16), key=lambda k: sum((c[m] - pal[k][m]) ** 2 for m in range(3)))
 
 
+GATE = (29, 15)                     # the fence's first post beside the tower -- the strip's way out (see above)
+FENCE, GRASS = 0x0E7, 0x008
+
+
+def open_gate(layouts):
+    """Lift the fence post at GATE to plain grass, walkable, once; report either way."""
+    l = layouts[LAYOUT]; W = l["width"]
+    path = os.path.join(GBA, l["blockdata_filepath"])
+    bd = bytearray(open(path, "rb").read())
+    n = (GATE[1] * W + GATE[0]) * 2
+    v = struct.unpack_from("<H", bd, n)[0]
+    if v & 0x3FF != FENCE:
+        print("  the gate at (%d,%d) is open (block 0x%X)" % (GATE[0], GATE[1], v & 0x3FF))
+        return
+    print("  the gate at (%d,%d) is still a fence post%s" % (GATE[0], GATE[1], "; opening it" if WRITE else ""))
+    if WRITE:
+        struct.pack_into("<H", bd, n, (v & ~0xFFF) | GRASS)        # plain grass, collision 0, same elevation
+        open(path, "wb").write(bd)
+
+
 def main():
     global R8
     layouts = {l.get("id"): l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if l.get("id")}
+    open_gate(layouts)
     meta = bytearray(open(os.path.join(SD, "metatiles.bin"), "rb").read())
     attr = bytearray(open(os.path.join(SD, "metatile_attributes.bin"), "rb").read())
     pmeta = open(os.path.join(PD, "metatiles.bin"), "rb").read()
