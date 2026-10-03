@@ -13,3 +13,9 @@ T-210 (v11.291.7): INKLING, GESTALT and EPIPHANY redrawn as one real animal, a g
 T-210 batch 6 (v11.291.7): GLIDEPATH, POSTULATE, DEDUCTION, BACKDOOR, HONEYTRAP, BOOTROM, FIRMWARE, BIGIRON, CRACKLE, ARCFLASH, ANODE, CATHODE, SLOWBURN, HASHCODE, FEWSHOT, ZEROSHOT, PRISTINE, FORGERY, LILENDIAN, BIGENDIAN, TRANSFER, OVERTONE, REDACTED, LOCKFILE, STALEMATE -- decoded from the built ROM. DRAFT.
 
 ![3Oct2026 - T210 - the last batch before the legendaries as built - 2](3Oct2026%20-%20T210%20-%20the%20last%20batch%20before%20the%20legendaries%20as%20built%20-%202.png)
+
+### 3Oct2026 - T348 - a shop clerk notices OPUS - 3
+
+T-348 (v11.292.1, DRAFT): what the first shop clerk says when he notices OPUS, in the game's font. Once only, at whichever shop comes first.
+
+![3Oct2026 - T348 - a shop clerk notices OPUS - 3](3Oct2026%20-%20T348%20-%20a%20shop%20clerk%20notices%20OPUS%20-%203.png)
