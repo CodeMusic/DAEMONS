@@ -151,3 +151,9 @@ T-356 batch 3 (DRAFT): the rest of the water-typed families.
 T-356 batch 3 (DRAFT): the rest of the water-typed families.
 
 ![3Oct2026 - T356 - OPUS margins, batch 3, the rest of the water - 25](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%203%2C%20the%20rest%20of%20the%20water%20-%2025.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 4, the dragons and fossils - 26
+
+T-356 batch 4 (DRAFT): the dragons and fossils -- REASON's two margins and INSTINCT's two, read from the built opus_margins.h.
+
+![3Oct2026 - T356 - OPUS margins, batch 4, the dragons and fossils - 26](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%204%2C%20the%20dragons%20and%20fossils%20-%2026.png)
