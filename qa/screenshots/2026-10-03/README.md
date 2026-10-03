@@ -121,3 +121,33 @@ T-358 in the theatre: SEND and its save (the companion read the request back), A
 T-358 in the theatre: the summary and the PORT draw an AWAY daemon paler and refuse to release it; a battle leads with the next one here; DEBUG DEVICE answers a request as the app will.
 
 ![3Oct2026 - T358 - AWAY, in the world - 20](3Oct2026%20-%20T358%20-%20AWAY%2C%20in%20the%20world%20-%2020.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 1, the starters - 21
+
+T-356 batch 1 (DRAFT): the six starter lines, each with REASON's two margins and INSTINCT's two, read from the built opus_margins.h and broken where the pane breaks them.
+
+![3Oct2026 - T356 - OPUS margins, batch 1, the starters - 21](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%201%2C%20the%20starters%20-%2021.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 1, the starters - 22
+
+T-356 batch 1 (DRAFT): the six starter lines, each with REASON's two margins and INSTINCT's two, read from the built opus_margins.h and broken where the pane breaks them.
+
+![3Oct2026 - T356 - OPUS margins, batch 1, the starters - 22](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%201%2C%20the%20starters%20-%2022.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 2, Hoenn water - 23
+
+T-356 batch 2 (DRAFT): the Hoenn water families.
+
+![3Oct2026 - T356 - OPUS margins, batch 2, Hoenn water - 23](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%202%2C%20Hoenn%20water%20-%2023.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 3, the rest of the water - 24
+
+T-356 batch 3 (DRAFT): the rest of the water-typed families.
+
+![3Oct2026 - T356 - OPUS margins, batch 3, the rest of the water - 24](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%203%2C%20the%20rest%20of%20the%20water%20-%2024.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 3, the rest of the water - 25
+
+T-356 batch 3 (DRAFT): the rest of the water-typed families.
+
+![3Oct2026 - T356 - OPUS margins, batch 3, the rest of the water - 25](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%203%2C%20the%20rest%20of%20the%20water%20-%2025.png)

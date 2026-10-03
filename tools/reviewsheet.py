@@ -3,6 +3,7 @@
 
     python3 tools/reviewsheet.py daemons OUT.png NAME [NAME ...]   # front, back, name, category, both entries
     python3 tools/reviewsheet.py map OUT.png MAPNAME [x0 y0 w h]   # a map drawn from its layout and real tilesets
+    python3 tools/reviewsheet.py margins OUT.png NAME [NAME ...]   # OPUS's four margins under the CONTENT entry
 
 Everything is read from what the ROM is BUILT from -- the daemons from graphics/pokemon/<slot>/front.4bpp, back.4bpp
 and normal.gbapal (so build first), the maps from their map.bin -- so a sheet shows what a player would see, not a
@@ -84,6 +85,40 @@ def daemons(out, names):
     img.save(out)
 
 
+def margins(out, names):
+    """T-356: each daemon's CONTENT entry and OPUS's four margins under it -- REASON's carried and put-away lines,
+    then INSTINCT's -- read from the built src/data/opus_margins.h and broken where the pane breaks them."""
+    table = species_table()
+    src = open(os.path.join(GBA, "src/data/opus_margins.h")).read()
+    rows = {}
+    for slot, carried, neglected, ic, inn in re.findall(
+            r"\{ SPECIES_(\w+),\s*(\w+), (\w+), (\w+), (\w+) \}", src):
+        rows[slot] = (carried, neglected, ic, inn)
+    text = dict(re.findall(r'static const u8 (sOpusMargin_\w+)\[\] = _\("(.*?)"\);', src))
+    labels = ("REASON, carried", "REASON, put away", "INSTINCT, carried", "INSTINCT, put away")
+    W, ROW = 1400, 196
+    img = Image.new("RGB", (W, len(names) * ROW + 10), (250, 249, 245))
+    d = ImageDraw.Draw(img)
+    for i, name in enumerate(names):
+        slot, stem, cat = table[name]
+        y = i * ROW + 6
+        base = os.path.join(GBA, "graphics/pokemon", slot.lower())
+        img.paste(picture(os.path.join(base, "front.4bpp"), gbapal(os.path.join(base, "normal.gbapal"))).resize((96, 96), Image.NEAREST), (6, y + 4))
+        d.text((112, y), "%s   %s DAEMON" % (name, cat), fill=(20, 20, 20), font=FONT)
+        entry_text = entry(os.path.join(GBA, "src/data/pokemon/pokedex_text_fr.h"), stem)
+        for k, line in enumerate(textwrap.wrap("CONTENT: " + entry_text, 175)):
+            d.text((112, y + 18 + k * 13), line, fill=(110, 110, 110), font=SMALL)
+        for j, sym in enumerate(rows.get(slot, ())):
+            x, yy = 112 + (j % 2) * 640, y + 52 + (j // 2) * 70
+            d.text((x, yy), labels[j], fill=(67, 101, 139), font=SMALL)
+            if sym == "NULL" or sym not in text:
+                d.text((x, yy + 14), "(the REASON line)", fill=(150, 150, 150), font=SMALL)
+                continue
+            for k, line in enumerate(text[sym].split("\\n")):
+                d.text((x, yy + 14 + k * 13), line, fill=(30, 30, 30), font=SMALL)
+    img.save(out)
+
+
 def layout_of(mapname):
     layouts = json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]
     m = json.load(open(os.path.join(GBA, "data/maps/%s/map.json" % mapname)))
@@ -131,6 +166,8 @@ def main():
     kind, out = _args[0], _args[1]
     if kind == "daemons":
         daemons(out, _args[2:])
+    elif kind == "margins":
+        margins(out, _args[2:])
     elif kind == "map":
         img = render(layout_of(_args[2]))
         if len(_args) == 7:
