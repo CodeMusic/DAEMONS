@@ -1,0 +1,23 @@
+T-210 batch 7, the 13 legendaries: which draft each sprite is (cleaned, then greyed by clean.py). The prompt asked for
+"a legendary mythic creature based on a real animal", the register ORPHEUS, TRITON and PHOENIX already have; humans,
+humanoids, dragons and wyverns refused. Each family shares a motif.
+FRONTS: front_42 except where said.
+pontus      front_42     a great whale
+gaia        front_42     a tortoise with green growing on its back (the mountain never came: refining sweep)
+ouranos     front_42     a pale sky serpent curled like a crescent
+boreas      front_42     a white wolf, tail streaming
+brontes     front_1917   a tiger (the lightning stripes never came: refining sweep)
+typhon      front_42     a lion with an ember-tipped tail
+            (PHOENIX's single feather on the three never came: refining sweep)
+talos       front_88     a bull facing you (run_talos.sh): 1917's bronze bull sat on a dark square that merged
+                         with its legs, 42 drew a minotaur (humanoid, refused), 7 brought a window frame. The
+                         bronze never came, but HARDENED's colour carries it (refining sweep)
+deucalion   front_42     a ram (stone body only in texture: refining sweep)
+khione      front_42     an ice stag
+castor      front_1917   a dark swan, wings raised
+polydeuces  front_1917   a pale swan, wings raised -- the twins match
+kairos      front_1917   a hummingbird (drawn in a box the cleaning took off)
+elpis       front_42     a star-winged moth in its jar
+BACKS: talos 88 (a true rear view, the same bull). Mirrored, side-on (T-166's rule): pontus, gaia, ouranos, boreas,
+khione, castor, polydeuces, kairos. Mirrored and defaced (every seed drew a face): brontes, typhon, deucalion; and
+elpis, so its jar stays.
