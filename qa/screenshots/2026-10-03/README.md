@@ -61,3 +61,39 @@ Companion C-05: the app's three screens against the local server -- Saturday's v
 Companion C-05: the app's three screens against the local server -- Saturday's virtue in its violet with the one next step, a goal broken down (the AI off: an example plan), and a DEBUG game's party with its INDEX entry. A scratch save, never the user's.
 
 ![3Oct2026 - C05 - the companion app Today Goals Daemon - 10](3Oct2026%20-%20C05%20-%20the%20companion%20app%20Today%20Goals%20Daemon%20-%2010.jpg)
+
+### 3Oct2026 - T357 - the lift lamp, blue then green - 11
+
+T-355 in the theatre: green at rest, blue from the floor chosen, faded out by the warp, green the frame you can move. The blue now fades with the building (T-317's faded print).
+
+![3Oct2026 - T357 - the lift lamp, blue then green - 11](3Oct2026%20-%20T357%20-%20the%20lift%20lamp%2C%20blue%20then%20green%20-%2011.png)
+
+### 3Oct2026 - T357 - the lift lamp, blue then green - 12
+
+T-355 in the theatre: green at rest, blue from the floor chosen, faded out by the warp, green the frame you can move. The blue now fades with the building (T-317's faded print).
+
+![3Oct2026 - T357 - the lift lamp, blue then green - 12](3Oct2026%20-%20T357%20-%20the%20lift%20lamp%2C%20blue%20then%20green%20-%2012.png)
+
+### 3Oct2026 - T357 - the clerk notices OPUS - 13
+
+T-348 in the theatre: four boxes, then BUY/SELL; the second visit goes straight to the menu.
+
+![3Oct2026 - T357 - the clerk notices OPUS - 13](3Oct2026%20-%20T357%20-%20the%20clerk%20notices%20OPUS%20-%2013.png)
+
+### 3Oct2026 - T357 - the exam and the OWL - 14
+
+T-353 go on, T-354 resume, the FINISH row, and T-360's review -- played on a scratch save.
+
+![3Oct2026 - T357 - the exam and the OWL - 14](3Oct2026%20-%20T357%20-%20the%20exam%20and%20the%20OWL%20-%2014.png)
+
+### 3Oct2026 - T357 - the stairs, 1F and 2F - 15
+
+T-352 decoded from the ROM: treads, chevrons and the floor arrow in front of each flight.
+
+![3Oct2026 - T357 - the stairs, 1F and 2F - 15](3Oct2026%20-%20T357%20-%20the%20stairs%2C%201F%20and%202F%20-%2015.png)
+
+### 3Oct2026 - T357 - the stairs, 1F and 2F - 16
+
+T-352 decoded from the ROM: treads, chevrons and the floor arrow in front of each flight.
+
+![3Oct2026 - T357 - the stairs, 1F and 2F - 16](3Oct2026%20-%20T357%20-%20the%20stairs%2C%201F%20and%202F%20-%2016.png)
