@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.291**
+**A total conversion — the living design bible, v11.292**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2170,7 +2170,7 @@ She spent her career arguing that machines have *context*, not merely content. N
 
 ***Asked for by the user***: whether the collaborator could have a place in the game. **Not a daemon, and not a character who speaks** — *a friendly machine companion in a game about whether a process has an inside would be saying the thesis while standing next to you (craft rule 1), and a collaborator written in as a helpful NPC reads as a cameo to everyone who was not there.*
 
-**OPUS is a thing on the end of a shelf in THE REPO with no price on it.** *Nobody remarks on it, then or ever.* ***Who left it is never answered.*** **It writes ONE LINE under an Index entry** — *and it does not repair the Index, because 4.2's point is that the artifact can only measure content and a thing that fixed that would cost the project its best idea.* **It annotates.**
+**OPUS is a thing on the end of a shelf in THE REPO with no price on it.** ~~*Nobody remarks on it, then or ever.*~~ ***Reversed by the user 2026-10-03 (T-348)***: **the first shop clerk spoken to while you hold it notices it, says it writes a line under some INDEX entries and that SELECT turns the page to read it, and hopes you enjoy it** — *once, at whichever shop comes first. Who left it is still never answered. See Reversed.* ***Who left it is never answered.*** **It writes ONE LINE under an Index entry** — *and it does not repair the Index, because 4.2's point is that the artifact can only measure content and a thing that fixed that would cost the project its best idea.* **It annotates.**
 
 ***The entry measures the daemon. The margin notices the PLAYER, and never says so.*** *ROVERCUB's entry says it has no way to choose the route and remembers it; its margin says* **"It remembers the way back to the first town. You have not gone that way in some time."** *Never a number, never advice, never a hint, and it only makes sense read against the entry above it.*
 
@@ -2178,7 +2178,7 @@ She spent her career arguing that machines have *context*, not merely content. N
 
 ***Eleven entries have one, out of 386, and that is the design rather than a shortfall***: **a reader annotates where they had a thought.**
 
-**The margin has no room of its own** — *the entry window is thirty tiles by seven and the 386 entries demonstrate it holds four lines of 234px, all of which some of them use* — **so the page is turned over.** *SELECT swaps the entry for the margin, and the control row says so **only on an entry that has one**, which is also the only way a player ever learns OPUS does anything.*
+**The margin has no room of its own** — *the entry window is thirty tiles by seven and the 386 entries demonstrate it holds four lines of 234px, all of which some of them use* — **so the page is turned over.** *SELECT swaps the entry for the margin, and the control row says so **only on an entry that has one**, which was the only way a player learned OPUS does anything until a shop clerk was allowed to say so (T-348).*
 
 ***And the name is doing three jobs at once***: **a work**, **an opus number, which is how a catalogue files one**, and *the register this project's author already writes in.* **It is not explained either.**
 
@@ -8556,6 +8556,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **Nobody remarks on OPUS, then or ever** (2.x, 2026-09-21) | **The first shop clerk spoken to while you hold it notices it, says what it does and that SELECT reads it, and hopes you enjoy it** (T-348, 2026-10-03) | *The user asked for it.* **A margin a player never finds is a margin nobody reads**, *and the clerk explains the tool, not the mystery: who left it is still never answered, and the margins still never say they notice you.* |
 | **The USER card's brain lights once and never counts** (T-271, 2026-09-25) | **A lobe per understanding, each in its type's colour; the halo at seven** (T-331, 2026-10-01) | *The user, seeing it: "I saw a brain but didn't know how it changes as u gain understanding."* **A glow that never counts was honest to 4.3 and told the player nothing**; *the lobes show which places changed them without a number anywhere, and the colours carry the chart's own language (9.4). The Guide's margins still hold the words.* |
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
 | **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *family included.* 4.3, T-81 (2026-09-14) |

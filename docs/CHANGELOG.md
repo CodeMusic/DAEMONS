@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.292 — 2026-10-03
+
+### A shop clerk notices OPUS (2026-10-03)
+
+- ***Reversed by the user (T-348)***: *"Nobody remarks on it, then or ever" no longer holds. The first shop clerk spoken to while the player holds OPUS notices it, says it writes a line under some INDEX entries and that SELECT turns the page, and hopes they enjoy it -- once, at whichever shop comes first. Who left it is still never answered. Built and released the same day.*
+- *Since v11.291, all released: T-210's six batches (95 daemons named by type, written and drawn), the routines they brought in, EPIPHANY's line redrawn as a real animal, the 13 legendaries' myth names approved; T-265's weekday read from the date.*
+
 ## v11.291 — 2026-10-02
 
 ### The world catches up as you understand it, and seven is the number (2026-10-02)
