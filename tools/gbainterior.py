@@ -2089,18 +2089,26 @@ SCHOOL_LIFT = (2, 1)        # T-219, batch 5: the lift, in every floor's right-h
 
 def school_stairs(r, x, y, updown, side):
     """A flight in a single cell, in the room's own concrete and brass. UP is steps rising toward the wall on
-    its side; DOWN is a dark well with the treads falling away into it."""
+    its side; DOWN is a dark well with the treads falling away into it.
+
+    T-352 (the user's playthrough, 2026-10-03: "not clear up vs down and the direction you must enter them"): the
+    first drawing was pale steps on pale concrete. Now UP is bright treads over dark risers, climbing to the wall,
+    with a bone chevron pointing up over the top step; DOWN keeps its dark well and gains a chevron pointing down.
+    And the floor cell in front of every flight carries a brass arrow inlaid toward it -- a stair warp is entered
+    by walking sideways into it (MB_UP/DOWN_RIGHT/LEFT_STAIR_WARP), so the arrow says which way to step."""
     X, Y = x * 16, y * 16
     if updown == "up":
-        r.rect(X, Y, X + 15, Y + 15, C_CONC)
-        for k in range(4):                                   # four steps, lighter as they climb
-            h = (k + 1) * 4
+        r.rect(X, Y, X + 15, Y + 15, C_SLABD)
+        for k in range(4):                                   # four steps, climbing toward the wall
+            h = (k + 1) * 3 + 1
             cx = X + (k * 4 if side == "right" else 12 - k * 4)
-            r.rect(cx, Y + 16 - h, cx + 3, Y + 15, C_PANEL)
-            r.rect(cx, Y + 16 - h, cx + 3, Y + 16 - h, C_BONE)
-            r.rect(cx + (3 if side == "right" else 0), Y + 16 - h, cx + (3 if side == "right" else 0), Y + 15, C_SLABD)
+            r.rect(cx, Y + 16 - h, cx + 3, Y + 15, C_BED)                # the riser's shadow
+            r.rect(cx, Y + 16 - h, cx + 3, Y + 17 - h, C_BONE)          # the tread, lit
         rx = X + 1 if side == "right" else X + 14            # the rail, on the open side
-        r.rect(rx, Y + 1, rx, Y + 15, C_BRASSD)
+        r.rect(rx, Y + 1, rx, Y + 15, C_BRASS)
+        cx = X + 7                                           # the chevron, up
+        for i in range(3):
+            r.rect(cx - i, Y + 2 + i, cx + 1 + i, Y + 2 + i, C_BONE)
     else:
         r.rect(X, Y, X + 15, Y + 15, C_BED)
         for k in range(4):                                   # the treads, darker as they go down
@@ -2108,6 +2116,20 @@ def school_stairs(r, x, y, updown, side):
             shade = [C_BONE, C_BONED, C_SLABD, C_BED][k]
             r.rect(X + 2, ty, X + 13, ty + 1, shade)
         r.rect(X, Y, X + 15, Y, C_BRASSD); r.rect(X, Y, X, Y + 15, C_BRASSD); r.rect(X + 15, Y, X + 15, Y + 15, C_BRASSD)
+        cx = X + 7                                           # the chevron, down, over the dark
+        for i in range(3):
+            r.rect(cx - (2 - i), Y + 10 + i, cx + 1 + (2 - i), Y + 10 + i, C_BRASS)
+    #  the arrow inlaid in the floor cell in front, pointing into the flight
+    fx = X - 16 if side == "right" else X + 16
+    ay = Y + 7
+    if side == "right":
+        r.rect(fx + 4, ay, fx + 10, ay + 1, C_BRASSD)
+        for i in range(4):
+            r.rect(fx + 10 + i - 3, ay - (3 - i), fx + 10 + i - 3, ay + 1 + (3 - i), C_BRASSD)
+    else:
+        r.rect(fx + 5, ay, fx + 11, ay + 1, C_BRASSD)
+        for i in range(4):
+            r.rect(fx + 5 - i + 3, ay - (3 - i), fx + 5 - i + 3, ay + 1 + (3 - i), C_BRASSD)
 
 
 def school_board_motif(r, floor):
@@ -2225,10 +2247,16 @@ def callow_school(old_img, statues=True, floor=1):
     r.rect(4 * 16 + 5, 4 * 16 + 5, 5 * 16 + 10, 4 * 16 + 9, C_BONE)
     r.rect(5 * 16 - 1, 4 * 16 + 5, 5 * 16, 4 * 16 + 9, C_BONED)
     X, Y = SCHOOL_LIFT[0] * 16, SCHOOL_LIFT[1] * 16               # THE LIFT: two brass doors, a seam, a lamp
-    r.rect(X + 1, Y + 2, X + 14, Y + 15, C_BRASSD)
-    r.rect(X + 2, Y + 5, X + 7, Y + 15, C_BRASS); r.rect(X + 8, Y + 5, X + 13, Y + 15, C_BRASS)
-    r.rect(X + 7, Y + 5, X + 8, Y + 15, C_BRASSD)
-    r.rect(X + 6, Y + 2, X + 9, Y + 3, C_BONE)
+    #  T-352: it read as a cupboard. Now a dark frame round it, the floor dial lit above (a needle on a bone
+    #  arc), the doors' centre seam deep, and a call button beside them at hand height.
+    r.rect(X, Y, X + 15, Y + 15, C_BED)                           # the frame
+    r.rect(X + 4, Y + 1, X + 11, Y + 3, C_SLABD)                  # the floor dial
+    r.rect(X + 5, Y + 2, X + 10, Y + 2, C_BONE)
+    r.rect(X + 8, Y + 1, X + 8, Y + 2, C_BRASS)                   # its needle
+    r.rect(X + 1, Y + 4, X + 12, Y + 15, C_BRASSD)
+    r.rect(X + 2, Y + 5, X + 6, Y + 15, C_BRASS); r.rect(X + 8, Y + 5, X + 12, Y + 15, C_BRASS)
+    r.rect(X + 7, Y + 5, X + 7, Y + 15, C_BED)                    # the seam
+    r.rect(X + 14, Y + 8, X + 14, Y + 10, C_BONE)                 # the call button
     if floor == 1:
         X, Y = 4 * 16, 7 * 16                                     # the way out -- the ground floor's alone
         r.rect(X + 1, Y + 4, X + 14, Y + 13, C_BRASSD); r.rect(X + 2, Y + 5, X + 13, Y + 12, C_BRASS)
