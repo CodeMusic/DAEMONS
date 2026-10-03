@@ -109,3 +109,15 @@ T-359 mock-up, by palette from the ROM's data: summer as drawn, spring (palette,
 T-359 mock-up on Route 1, where the spring flower scatter has open grass to show in. The tall grass shares the trees' colours, so it turns with them.
 
 ![3Oct2026 - T359 - the seasons on Route 1, mock-up - 18](3Oct2026%20-%20T359%20-%20the%20seasons%20on%20Route%201%2C%20mock-up%20-%2018.png)
+
+### 3Oct2026 - T358 - AWAY, the party menu - 19
+
+T-358 in the theatre: SEND and its save (the companion read the request back), AWAY in the party, STAY, and the last one who can battle refused. Every word DRAFT.
+
+![3Oct2026 - T358 - AWAY, the party menu - 19](3Oct2026%20-%20T358%20-%20AWAY%2C%20the%20party%20menu%20-%2019.png)
+
+### 3Oct2026 - T358 - AWAY, in the world - 20
+
+T-358 in the theatre: the summary and the PORT draw an AWAY daemon paler and refuse to release it; a battle leads with the next one here; DEBUG DEVICE answers a request as the app will.
+
+![3Oct2026 - T358 - AWAY, in the world - 20](3Oct2026%20-%20T358%20-%20AWAY%2C%20in%20the%20world%20-%2020.png)
