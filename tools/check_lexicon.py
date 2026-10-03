@@ -755,6 +755,12 @@ def check_stale_names():
     #  where a verb was meant, which is worse than the stale name alone.
     #  Suppressing none of them reported four correct THRASHINGs every run.
     adjectival = set(STATES) | set(type_names)
+    #  A state is a verb too: FLAME BODY "OVERHEATS whatever touches it". While the routine OVERHEAT kept its vanilla
+    #  name nothing asked; renaming it BURNOUT (T-210, 2026-10-03) made the state's own verb read as the routine's
+    #  old name. The states' verb forms are worn on purpose, like the adjectives.
+    for s in STATES:
+        if s.endswith("ED"):
+            adjectival |= {s[:-2] + "S", s[:-2] + "ING", s[:-1] + "S"}
 
     #  English phrases that contain a renamed word and are not the name: a shop's SERVICE COUNTER is not the move
     #  COUNTER (CONTRADICT). port_vocab.py holds the same phrases (T-324, 2026-10-01).
