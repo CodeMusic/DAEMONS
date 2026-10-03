@@ -1176,6 +1176,7 @@ C_PAINT, C_PAINTD, C_PANEL = (236, 56, 48), (168, 32, 34), (184, 196, 170)
 C_RED, C_REDL, C_REDD = (222, 48, 44), (255, 128, 112), (130, 26, 30)
 C_BONE, C_BONED = (214, 206, 186), (160, 152, 134)
 C_BRASS, C_BRASSL, C_BRASSD = (204, 164, 80), (240, 212, 136), (140, 104, 44)
+C_LIFTLAMP = (40, 232, 96)     # the school lift's lamp: a colour nothing else uses, so the game finds it (school_lift.c)
 C_STONE, C_STONEL, C_INK = (58, 62, 66), (86, 92, 98), (30, 34, 30)
 
 
@@ -2252,7 +2253,7 @@ def callow_school(old_img, statues=True, floor=1):
     r.rect(X, Y, X + 15, Y + 15, C_BED)                           # the frame
     r.rect(X + 4, Y + 1, X + 11, Y + 3, C_SLABD)                  # the floor dial
     r.rect(X + 5, Y + 2, X + 10, Y + 2, C_BONE)
-    r.rect(X + 8, Y + 1, X + 8, Y + 2, C_BRASS)                   # its needle
+    r.rect(X + 7, Y + 1, X + 8, Y + 2, C_LIFTLAMP)                # its lamp, lit green; blue while the lift rides
     r.rect(X + 1, Y + 4, X + 12, Y + 15, C_BRASSD)
     r.rect(X + 2, Y + 5, X + 6, Y + 15, C_BRASS); r.rect(X + 8, Y + 5, X + 12, Y + 15, C_BRASS)
     r.rect(X + 7, Y + 5, X + 7, Y + 15, C_BED)                    # the seam

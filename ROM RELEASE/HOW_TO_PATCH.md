@@ -98,6 +98,12 @@ A flash cartridge (an EZ-Flash, an EverDrive and the like) plays the patched fil
 4. **Check it**: at the terminal in your bedroom, type **TIME**. A **CLOCK** line with today's date means the
    cartridge's clock is being read.
 
+**Updating to a new release on the cartridge**: the save lives beside the ROM as its own `.sav` file on the SD card
+(on an EZ-Flash Omega, in its `SAVER` folder), matched to the ROM by **file name**. Copy that `.sav` to your
+computer first, then replace the `.gba` with the newly patched one under the **same file name**, and your game
+carries on. A ROM under a new name starts a new save. The cartridge writes the save to the SD card when you next
+boot or reset into its menu, so do that before taking the card out.
+
 **Moving a save between an emulator and the cartridge**: a flash cartridge wants a `.sav` of exactly 131,072
 bytes. mGBA's saves are 131,088, because mGBA adds 16 bytes of its own clock data at the end. Trim those 16
 bytes (any hex editor, or `head -c 131072 in.sav > out.sav`) and the cartridge reads it. Back up both copies first.
