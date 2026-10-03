@@ -24,6 +24,7 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 | [**CodeMusic/pokefirered-daemons**](https://github.com/CodeMusic/pokefirered-daemons) | the engine — **this is where the work is** |
 | [**CodeMusic/pokered-daemons**](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, where the vertical slice was made. Kept as a reference, not updated further |
 | [**CodeMusic/gpt-play-pokemon-firered-daemons**](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a **model play it** — fork of [Clad3815](https://github.com/Clad3815/gpt-play-pokemon-firered) |
+| [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — a device that carries one of your daemons and helps you get things done; its app, server and firmware. Ours from the first line, no fork |
 
 **Why the move.** A spike was run to answer one question — are abilities, item descriptions and a real scripting language worth rebuilding 334 files for? Gen 1 stores **no item descriptions at all**, which is a writing-led project running on the one generation with nowhere to write. Abilities give the chart a second axis. The Index went from six lines of eighteen characters to three of forty-two.
 
@@ -182,9 +183,10 @@ audio/      original music (music/, sfx/)
 engine/     -> pokered-daemons        Game Boy, reference
 engineGba/  -> pokefirered-daemons    GBA, where the work happens
 engineAi/   -> gpt-play-...-daemons   the harness that lets a model play it
+companion/  -> daemons-companion      the goal companion: app, server, devices
 ```
 
-The three `engine*` entries are **gitignored symlinks**. Nothing is ever
+The three `engine*` entries and `companion/` are **gitignored symlinks**. Nothing is ever
 vendored in here.
 
 The bible is [`docs/vision.md`](docs/vision.md). It is the only document that

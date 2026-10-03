@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.292**
+**A total conversion — the living design bible, v11.293**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8187,7 +8187,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***The rule this yields is in `engine.md` and it is short: measure the whole table, not the diff.***
 
-### 9.21 Time — a clock made of play time, and what the hours and seasons are for — *proposed 2026-09-14; the day decided and built 2026-09-25 (T-268), the seasons still proposed*
+### 9.21 Time — a clock made of play time, and what the hours and seasons are for — *proposed 2026-09-14; the day decided and built 2026-09-25 (T-268); the seasons decided 2026-10-03 (T-359)*
 
 ***Asked on playtest: FireRed hacks add day and night, with different daemons by the hour — could this, and what about the four seasons?*** **Written as a design before anything is built, because the mechanism is the easy half and the meaning is the half that can go wrong.**
 
@@ -8224,7 +8224,22 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***A lean, not a swap*** — **the same rule as the editions' Tier 2**, *so a season shifts what is common without taking anything away.* ***It is the REVIEW BOARD's model of a person, applied to the weather*** — **an innate constitution read off the calendar**, *which is 6's error made into climate and never named.* **The player meets the Board at the end and has been living inside its four seasons for forty hours.**
 
-***Seasons do not repaint the world*** — *snow on every tileset is a palette and tileset job across dozens of maps, and the argument lives in the tables.* **A faint seasonal tint on outdoor grass is the most it proposes.**
+~~***Seasons do not repaint the world*** — *snow on every tileset is a palette and tileset job across dozens of maps, and the argument lives in the tables.* **A faint seasonal tint on outdoor grass is the most it proposes.**~~ ***Superseded by the user, 2026-10-03 (below).***
+
+#### Decided 2026-10-03: the seasons repaint the world, and each edition keeps a hemisphere (T-359)
+
+***The user: "we already make use of time, I'd love to implement these seasons into the game too."*** **The world shows the season, by palette, with no new sprites and little new code** -- the way the day's watches and T-317's faded print already recolour tilesets as they load:
+
+| | the world |
+|---|---|
+| **winter** | *wintery*: greens cooled and whitened toward frost |
+| **spring** | *subtle*: fresher greens, more flowers where flowers already grow |
+| **summer** | *the world as drawn* |
+| **autumn** | *the trees turn*: their greens toward amber, rust and gold |
+
+***And the editions keep opposite hemispheres*** -- **CONTEXT the northern year, CONTENT the southern**: *from December 21 to March 21 it is winter in CONTEXT and summer in CONTENT, and CONTENT's autumn is CONTEXT's spring.* **The two cartridges are one argument told from two sides; now they are one year seen from two halves of the world.** *The goal companion (9.25) keeps the same rule, so a daemon's season is the same in the game and on the device.*
+
+***The clock decides, and play time stands in*** -- **with the cartridge's clock, the real date; without one, play time, as the table above proposed (a season every seven days of play).** *The humours' lean on the wild tables stays a proposal.*
 
 #### How it would be built, from things the engine already does
 
@@ -8423,6 +8438,18 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 - ***Clause 3 and a type whose colour IS a neutral.*** **LEGACY's slate (130,130,138) sits beside clause 2's grey, so a slate hit read as its target draining.** *It is drawn at the HIGHLIGHT of its own ramp — the step its daemons' sprites already carry — so old material is worn PALE where loss goes dull* (`genanims.bleach()`). **The added colour is still the type's; the step of its ramp is chosen so it cannot be read as loss.**
 - ***Clause 6 and one new task.*** **CAST and RECAST change the user's type BEFORE their animation plays**, *so `AnimTask_DaemonsBlendToUserType` ends them in the new type's own streak colour.* **No graphic was drawn; a task was written, because no existing one could show a colour the script cannot know.**
+
+### 9.25 The goal companion, and AWAY — *decided 2026-10-03 (T-358)*
+
+***The user, on their first anniversary at work: a device that carries a daemon and helps you get things done.*** **`daemons-companion`** (its own repo, symlinked as `companion/`: an app, a local server, ESP32-S3 and Pi Zero devices) **is the successor to RoverRadio** -- *where this game's week came from* -- **and it holds nothing of Nintendo's.** *Its vision and plan are its own (`companion/docs/`); this section is only the game's half.*
+
+**A daemon can go to the device, and the game always shows where it is:**
+
+- ***Sending starts in the game.*** **A party daemon's menu offers to send it; the game saves and tells the player to open the save in the app,** *which checks the daemon is in the party and marks it AWAY.* **Coming home is the same, reversed**, *and it brings back the friendship it built there.*
+- ***AWAY is washed out everywhere*** -- **party, PORT, summary** -- *so it is never lost.* **It cannot battle, be traded or be released.** ***It can go into the PORT and come back out***, *so the player can still play with six.*
+- ***The mark is one of four bits nothing uses*** -- **beside *is egg* in every daemon's record, outside the checksum** -- *so it travels with the daemon through the PORT and costs no save space.*
+
+***The menu's words are the user's to choose (OPEN).***
 
 ### 9.2 Order of operations
 

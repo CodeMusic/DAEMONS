@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.293 — 2026-10-03
+
+### The seasons, and a daemon that can leave on a device (2026-10-03)
+
+- ***9.21: the seasons decided*** (T-359, the user): *they repaint the world by palette -- winter wintery, spring's flowers, autumn's trees -- and the editions keep opposite hemispheres: CONTEXT the northern year, CONTENT the southern. The clock decides; play time stands in. Supersedes the proposal that seasons do not repaint the world.*
+- ***9.25: the goal companion, and AWAY*** (T-358, the user): *a daemon sent to the companion's device stays in the game washed out, cannot battle, trade or be released, can go into the PORT; sending and returning start in the game and finish in the companion's app. The companion is its own public repo, CodeMusic/daemons-companion.*
+
 ## v11.292 — 2026-10-03
 
 ### A shop clerk notices OPUS (2026-10-03)
