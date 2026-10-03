@@ -43,3 +43,21 @@ T-355 (v11.292.4): the school lift's lamp from the built art -- green at rest, b
 T-360 (v11.294.1, DRAFT): what the OWL says after the DIPLOMA, in the game's font (sample name and count).
 
 ![3Oct2026 - T360 - the OWL after the DIPLOMA - 7](3Oct2026%20-%20T360%20-%20the%20OWL%20after%20the%20DIPLOMA%20-%207.png)
+
+### 3Oct2026 - C05 - the companion app Today Goals Daemon - 8
+
+Companion C-05: the app's three screens against the local server -- Saturday's virtue in its violet with the one next step, a goal broken down (the AI off: an example plan), and a DEBUG game's party with its INDEX entry. A scratch save, never the user's.
+
+![3Oct2026 - C05 - the companion app Today Goals Daemon - 8](3Oct2026%20-%20C05%20-%20the%20companion%20app%20Today%20Goals%20Daemon%20-%208.jpg)
+
+### 3Oct2026 - C05 - the companion app Today Goals Daemon - 9
+
+Companion C-05: the app's three screens against the local server -- Saturday's virtue in its violet with the one next step, a goal broken down (the AI off: an example plan), and a DEBUG game's party with its INDEX entry. A scratch save, never the user's.
+
+![3Oct2026 - C05 - the companion app Today Goals Daemon - 9](3Oct2026%20-%20C05%20-%20the%20companion%20app%20Today%20Goals%20Daemon%20-%209.jpg)
+
+### 3Oct2026 - C05 - the companion app Today Goals Daemon - 10
+
+Companion C-05: the app's three screens against the local server -- Saturday's virtue in its violet with the one next step, a goal broken down (the AI off: an example plan), and a DEBUG game's party with its INDEX entry. A scratch save, never the user's.
+
+![3Oct2026 - C05 - the companion app Today Goals Daemon - 10](3Oct2026%20-%20C05%20-%20the%20companion%20app%20Today%20Goals%20Daemon%20-%2010.jpg)
