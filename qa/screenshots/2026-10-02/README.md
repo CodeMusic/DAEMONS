@@ -79,3 +79,9 @@ T-210 batch 3 (v11.291.4): TEMPO, CADENCE, CYCLICAL, PARTICLE, FLOCKING, OLDBRAN
 T-210 batch 4 (v11.291.5): SINKHOLE, SHIMMER, DUSTDEVIL, DATAGRAM, TRADEWIND, INKLING, GESTALT, EPIPHANY, SAVESTATE, WARMSTART, TOKENRING, TRUNKLINE -- fronts and backs decoded from the built ROM. DRAFT.
 
 ![2Oct2026 - T210 - the dragons and fossils as built - 13](2Oct2026%20-%20T210%20-%20the%20dragons%20and%20fossils%20as%20built%20-%2013.png)
+
+### 2Oct2026 - T210 - the early Hoenn routes as built - 14
+
+T-210 batch 5 (v11.291.6): SMUDGE, ECLIPSE, DETOUR, UNBRANCHED, WARMUP, SHAPING, POLICY, SHORTJUMP, LONGJUMP, SPARRING, CHECKMATE, LOWBIT, SHIFTLEFT, WRAPAROUND, LOOPBACK, QUINE, LACED, SYN, ACK -- fronts and backs decoded from the built ROM. DRAFT.
+
+![2Oct2026 - T210 - the early Hoenn routes as built - 14](2Oct2026%20-%20T210%20-%20the%20early%20Hoenn%20routes%20as%20built%20-%2014.png)
