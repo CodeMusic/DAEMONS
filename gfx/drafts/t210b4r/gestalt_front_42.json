@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t210b4r/gestalt_front_42",
+ "prompt": "pure white background, pixel art game sprite of a single real animal, a Draco gliding lizard curled tightly into a ball, its scaly armoured back and folded rib-wings wrapped around it like a shell, eyes peeking out, front view, facing the viewer, the curled armoured ball and the peeking eyes, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, rear view, human, person, humanoid, dragon, wyvern, fantasy creature, mythical creature, monster, grey background, colored background, floor, ground, water surface, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped, white body, pale body, colorful",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://100.67.234.4:8008",
+ "seconds": 22.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-03 05:05:36"
+}

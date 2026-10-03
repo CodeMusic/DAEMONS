@@ -1,0 +1,380 @@
+{
+ "_about": "T-210 batch 6 (DRAFT, built in the 2026-10-03 goal loop): the last batch before the 13 legendaries, named by their own type's register (vision.md 2.8 for CONTENT, 2.9 for the rest). Three pairs are two halves of one idea: PLUSLE and MINUN (ANODE, CATHODE), SOLROCK and LUNATONE (BIGENDIAN, LILENDIAN: the same bytes read two ways), and the sworn rivals ZANGOOSE and SEVIPER (PRISTINE, FORGERY).",
+ "daemons": [
+  {
+   "species": "GLIGAR",
+   "name": "GLIDEPATH",
+   "type": "STRATUM/VECTOR",
+   "category": "DESCENT",
+   "content": [
+    "It drops from the cliff and glides down",
+    "on a line it worked out before it",
+    "jumped. It always lands."
+   ],
+   "context": [
+    "It never flies up. It only ever comes",
+    "down, and always where it meant to."
+   ]
+  },
+  {
+   "species": "MAKUHITA",
+   "name": "POSTULATE",
+   "type": "LOGIC",
+   "category": "GIVEN",
+   "content": [
+    "It plants its feet and will not be moved.",
+    "Everything it does starts from there."
+   ],
+   "context": [
+    "Nobody ever proved it should stand",
+    "there. It simply does, and so it holds."
+   ]
+  },
+  {
+   "species": "HARIYAMA",
+   "name": "DEDUCTION",
+   "type": "LOGIC",
+   "category": "PROVEN",
+   "content": [
+    "It pushes one step at a time, every",
+    "step following from the last, until",
+    "there is nowhere left for you to stand."
+   ],
+   "context": [
+    "Once it has finished, nobody can",
+    "argue. They can only check the steps."
+   ]
+  },
+  {
+   "species": "SABLEYE",
+   "name": "BACKDOOR",
+   "type": "OPAQUE/LATENT",
+   "category": "UNSEEN",
+   "content": [
+    "It lives deep under everything, out of",
+    "sight, with eyes that shine in the",
+    "dark. It takes what it wants quietly."
+   ],
+   "context": [
+    "Look straight at it and it is not",
+    "there. It was there all along."
+   ]
+  },
+  {
+   "species": "MAWILE",
+   "name": "HONEYTRAP",
+   "type": "HARDENED",
+   "category": "DECOY",
+   "content": [
+    "It lies still with its mouth open and",
+    "something sweet inside. Whatever comes",
+    "to take it does not leave."
+   ],
+   "context": [
+    "It looks like the easiest way in.",
+    "That is the point of it."
+   ]
+  },
+  {
+   "species": "ARON",
+   "name": "BOOTROM",
+   "type": "HARDENED/LEGACY",
+   "category": "READ ONLY",
+   "content": [
+    "It is very small and very hard. It",
+    "starts the same way every single time,",
+    "and nothing can change how."
+   ],
+   "context": [
+    "Everything else begins after it does.",
+    "Nothing begins without it."
+   ]
+  },
+  {
+   "species": "LAIRON",
+   "name": "FIRMWARE",
+   "type": "HARDENED/LEGACY",
+   "category": "BURNED IN",
+   "content": [
+    "Its armour has grown into its body.",
+    "It can be changed, just, but almost",
+    "nobody ever dares."
+   ],
+   "context": [
+    "It was meant to be updated. It has",
+    "not been, and it still works."
+   ]
+  },
+  {
+   "species": "AGGRON",
+   "name": "BIGIRON",
+   "type": "HARDENED/LEGACY",
+   "category": "OLD GIANT",
+   "content": [
+    "It is enormous and very old, and its",
+    "armour has never once been broken.",
+    "Whole towns still run on it."
+   ],
+   "context": [
+    "Everyone says it will be replaced",
+    "soon. They have said so for years."
+   ]
+  },
+  {
+   "species": "ELECTRIKE",
+   "name": "CRACKLE",
+   "type": "SIGNAL",
+   "category": "CHARGE",
+   "content": [
+    "Its fur crackles as it runs and stands",
+    "on end. Touch it and you will feel",
+    "it before you hear it."
+   ],
+   "context": [
+    "It means nothing yet. It is only",
+    "charge, waiting for somewhere to go."
+   ]
+  },
+  {
+   "species": "MANECTRIC",
+   "name": "ARCFLASH",
+   "type": "SIGNAL",
+   "category": "ARC",
+   "content": [
+    "Charge builds in its mane until it",
+    "jumps the gap all at once in a white",
+    "arc. It strikes before the thunder."
+   ],
+   "context": [
+    "Where it struck, the air smells",
+    "burnt for hours afterward."
+   ]
+  },
+  {
+   "species": "PLUSLE",
+   "name": "ANODE",
+   "type": "SIGNAL",
+   "category": "POSITIVE",
+   "content": [
+    "It gives off charge all the time and",
+    "is never happier than beside its",
+    "other half."
+   ],
+   "context": [
+    "On its own it does nothing. With",
+    "the other, the current flows."
+   ]
+  },
+  {
+   "species": "MINUN",
+   "name": "CATHODE",
+   "type": "SIGNAL",
+   "category": "NEGATIVE",
+   "content": [
+    "It draws charge in all the time and",
+    "is never happier than beside its",
+    "other half."
+   ],
+   "context": [
+    "It is not the lesser one. Nothing",
+    "flows without both of them."
+   ]
+  },
+  {
+   "species": "TORKOAL",
+   "name": "SLOWBURN",
+   "type": "ENTROPY",
+   "category": "SOOTY",
+   "content": [
+    "It burns low and steady inside its",
+    "shell for years, and gives off more",
+    "smoke than anyone would like."
+   ],
+   "context": [
+    "It never quite goes out. Everything",
+    "near it ends up a little grey."
+   ]
+  },
+  {
+   "species": "SPINDA",
+   "name": "HASHCODE",
+   "type": "CONTENT",
+   "category": "SPOTS",
+   "content": [
+    "Its spots are worked out from",
+    "everything it is. Change it at all and",
+    "the spots come out completely different."
+   ],
+   "context": [
+    "No two have ever had the same spots.",
+    "That is how they tell each other apart."
+   ]
+  },
+  {
+   "species": "CACNEA",
+   "name": "FEWSHOT",
+   "type": "GROWTH",
+   "category": "SPARSE DIET",
+   "content": [
+    "It learns from almost nothing: one",
+    "rain a year is enough. It keeps every",
+    "drop it is given."
+   ],
+   "context": [
+    "Give it a little and it does well.",
+    "Give it a lot and it does not need it."
+   ]
+  },
+  {
+   "species": "CACTURNE",
+   "name": "ZEROSHOT",
+   "type": "GROWTH/OPAQUE",
+   "category": "UNTAUGHT",
+   "content": [
+    "It does things nobody ever showed it,",
+    "at night, and it does them well.",
+    "Nobody can say where it learned."
+   ],
+   "context": [
+    "It was never taught this. It is very",
+    "sure of it anyway."
+   ]
+  },
+  {
+   "species": "ZANGOOSE",
+   "name": "PRISTINE",
+   "type": "CONTENT",
+   "category": "ORIGINAL",
+   "content": [
+    "It is exactly what it is, with nothing",
+    "added and nothing missing. It can",
+    "tell a copy at a glance."
+   ],
+   "context": [
+    "It has one enemy, and it would know",
+    "that enemy anywhere."
+   ]
+  },
+  {
+   "species": "SEVIPER",
+   "name": "FORGERY",
+   "type": "CORRUPT",
+   "category": "FAKE",
+   "content": [
+    "It copies whatever it sees, very well,",
+    "with one small change hidden inside.",
+    "Its tail is its signature."
+   ],
+   "context": [
+    "It has one enemy, and it cannot",
+    "fool that one at all."
+   ]
+  },
+  {
+   "species": "LUNATONE",
+   "name": "LILENDIAN",
+   "type": "LEGACY/CONTEXT",
+   "category": "SMALL FIRST",
+   "content": [
+    "It reads everything from the small end",
+    "first. It has always done it that",
+    "way, and it always will."
+   ],
+   "context": [
+    "Its other half reads the same things",
+    "the other way round. Neither is wrong."
+   ]
+  },
+  {
+   "species": "SOLROCK",
+   "name": "BIGENDIAN",
+   "type": "LEGACY/CONTEXT",
+   "category": "BIG FIRST",
+   "content": [
+    "It reads everything from the big end",
+    "first. It has always done it that",
+    "way, and it always will."
+   ],
+   "context": [
+    "Its other half reads the same things",
+    "the other way round. They have argued",
+    "about it for a very long time."
+   ]
+  },
+  {
+   "species": "TROPIUS",
+   "name": "TRANSFER",
+   "type": "GROWTH/VECTOR",
+   "category": "CARRIED",
+   "content": [
+    "It grows fruit in one land and carries",
+    "it to the next, where the young ones",
+    "already know how to eat it."
+   ],
+   "context": [
+    "What it learned far away is still good",
+    "here. That is why it travels."
+   ]
+  },
+  {
+   "species": "CHIMECHO",
+   "name": "OVERTONE",
+   "type": "CONTEXT",
+   "category": "SAME NOTE",
+   "content": [
+    "It rings one note, and each listener",
+    "hears something different in it,",
+    "depending on where they stand."
+   ],
+   "context": [
+    "The note never changes. The people",
+    "who hear it do."
+   ]
+  },
+  {
+   "species": "ABSOL",
+   "name": "REDACTED",
+   "type": "OPAQUE",
+   "category": "WARNING",
+   "content": [
+    "It appears before a disaster. It knows",
+    "what is coming, and every word of the",
+    "warning is blacked out."
+   ],
+   "context": [
+    "People blame it for what comes next.",
+    "It only came to tell them."
+   ]
+  },
+  {
+   "species": "SNORUNT",
+   "name": "LOCKFILE",
+   "type": "FROZEN",
+   "category": "HOLD",
+   "content": [
+    "It sits in front of a door and will not",
+    "move, and while it sits there nothing",
+    "else may touch what is inside."
+   ],
+   "context": [
+    "It meant to be there for a moment.",
+    "Nobody came to let it go."
+   ]
+  },
+  {
+   "species": "GLALIE",
+   "name": "STALEMATE",
+   "type": "FROZEN",
+   "category": "STANDSTILL",
+   "content": [
+    "It waits for something that is waiting",
+    "for it. Neither moves. The ice around",
+    "them has not moved in years."
+   ],
+   "context": [
+    "Nothing is broken. Everything is",
+    "simply waiting for everything else."
+   ]
+  }
+ ]
+}

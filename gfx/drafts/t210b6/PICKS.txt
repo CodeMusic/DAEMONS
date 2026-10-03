@@ -1,0 +1,34 @@
+T-210 batch 6: which draft each sprite is (cleaned, then greyed by clean.py, which greys a lone pixel of the art that
+happens to be a streak-marker colour). Every draft a real animal.
+FRONTS: front_42 except where said.
+glidepath   front_42     a colugo-like glider on a branch (it reads owlish: refining sweep)
+postulate   front_42     a bear cub, feet planted
+deduction   front_42     a big bear
+backdoor    front_42     an aye-aye-like lemur
+honeytrap   front_42     an alligator snapping turtle, mouth open (the pink lure greys out)
+bootrom     front_42     a baby pangolin
+firmware    front_42     a pangolin standing
+bigiron     front_1917   a giant armoured pangolin; drawn on a grey square the fill stopped at, taken off by fix.py
+                         (batch 6 T-131's unbox, unrim, despeck); a pale rim is left like edge light
+crackle     front_42     a dingo pup
+arcflash    front_1917   a dingo, larger
+anode       front_42     a harvest mouse
+cathode     front_42     a rounder mouse
+slowburn    front_42     a tortoise (the smoke never came: refining sweep)
+hashcode    front_42     a red panda (its random spots never came: refining sweep)
+fewshot     front_42     a thorny devil
+zeroshot    front_42     a thorny devil standing
+pristine    front_42     a mongoose
+forgery     front_42     a snake
+lilendian   front_1917   a moon bear, its pale V on its chest
+bigendian   front_1917   a sun bear, its golden chest
+transfer    front_42     a giraffe, fruit at its feet
+overtone    front_42     a bellbird
+redacted    front_42     an arctic fox (the dark band across its eyes never came: refining sweep)
+lockfile    front_42     a snowy owl chick
+stalemate   front_42     a snowy owl
+BACKS, true rear views from back2/: postulate 42, backdoor 42, honeytrap 88, slowburn 88, pristine 42, forgery 1917,
+lilendian 42, bigendian 88 (42's dark bear broke apart in the fill), redacted 42. Mirrored, side-on (T-166's rule):
+deduction (42's rear view lost its body), bigiron, arcflash, fewshot, zeroshot, transfer, overtone. Mirrored and
+defaced (every seed drew a face; owls are all face): glidepath, bootrom, firmware, crackle, anode, cathode, hashcode
+(a wide band: its eye patches sit low), lockfile, stalemate.

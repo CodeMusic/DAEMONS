@@ -19,3 +19,7 @@ BACKS, true rear views from back2/: sinkhole 42, shimmer 88, dustdevil 88, epiph
 trunkline 42. Mirrored, side-on (T-166's rule): datagram, tradewind (every seed drew a profile), warmstart (42's
 rear view lost its stalk to the fill). Mirrored and defaced: gestalt (every seed drew a face), inkling (88's rear view
 brought a pedestal) -- both heads come out washed light (refining sweep).
+REDRAWN 2026-10-03 (the user: "redraw as a real animal"): inkling, gestalt and epiphany are now one real animal, a
+gliding lizard, drawn in gfx/drafts/t210b4r/ -- inkling front_1917, gestalt front_1917 (armoured), epiphany front_42
+(gliding on its rib-wings; it drew two and the cleaning kept one). Every back is the front mirrored: the rear-view
+prompt said "Draco" and drew bat-winged dragons. EPIPHANY is small for a final stage (refining sweep).
