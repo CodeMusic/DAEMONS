@@ -98,14 +98,30 @@ def charmap_table():
     return {"_about": "byte (hex) -> character; 0xFF ends a string", "bytes": table}
 
 
+#  RoverRadio's day table (the user's own design, CodeMusic/RoverByte RoverCodeBase: PrefrontalCortex/ProtoPerceptions.cpp
+#  DAY_COLORS, AuditoryCortex/PitchPerception.cpp, VisualCortex/RoverViewManager.cpp CHAKRA_DATA and VIRTUE_DATA --
+#  four arrays, Sunday first, read across; companion docs/INHERITANCE.md). The game's own week agrees on the rainbow
+#  and the notes; the chakra and the virtue are RoverRadio's, and the game does not pair days with virtues.
+ROVERRADIO_DAYS = [
+    ("red", "Root", "Chastity cures Lust"),
+    ("orange", "Sacral", "Temperance cures Gluttony"),
+    ("yellow", "Solar Plexus", "Charity cures Greed"),
+    ("green", "Heart", "Diligence cures Sloth"),
+    ("blue", "Throat", "Forgiveness cures Wrath"),
+    ("indigo", "Third Eye", "Kindness cures Envy"),
+    ("violet", "Crown", "Humility cures Pride"),
+]
+
+
 def week_table():
     trims = re.findall(r"RGB\((\d+),\s*(\d+),\s*(\d+)\),\s*//\s*(\w+),\s*([A-G])", read("src/data/day_trims.h"))
     days = []
     for r, g, b, day, note in trims:
         hexc = "#%02X%02X%02X" % tuple(int(v) * 255 // 31 for v in (r, g, b))
-        days.append({"day": day.capitalize(), "colour": hexc, "note": note})
+        hue, chakra, virtue = ROVERRADIO_DAYS[len(days)]
+        days.append({"day": day.capitalize(), "colour": hexc, "hue": hue, "note": note, "chakra": chakra, "virtue": virtue})
     return {"_about": "Sunday first; each day's colour is the CHECKPOINT's trim (day_trims.h) and its note C to B "
-                      "(vision 9.21). The virtue for each day comes from RoverRadio (companion C-01) when known.",
+                      "(vision 9.21); its hue, chakra and virtue are RoverRadio's day table (companion docs/INHERITANCE.md).",
             "days": days}
 
 
