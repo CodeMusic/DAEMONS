@@ -157,3 +157,27 @@ T-356 batch 3 (DRAFT): the rest of the water-typed families.
 T-356 batch 4 (DRAFT): the dragons and fossils -- REASON's two margins and INSTINCT's two, read from the built opus_margins.h.
 
 ![3Oct2026 - T356 - OPUS margins, batch 4, the dragons and fossils - 26](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%204%2C%20the%20dragons%20and%20fossils%20-%2026.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 5, the early Hoenn routes - 30
+
+T-356 batch 5 (DRAFT), second sheet.
+
+![3Oct2026 - T356 - OPUS margins, batch 5, the early Hoenn routes - 30](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%205%2C%20the%20early%20Hoenn%20routes%20-%2030.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 6, the last before the legendaries - 31
+
+T-356 batch 6 (DRAFT), second and third sheets.
+
+![3Oct2026 - T356 - OPUS margins, batch 6, the last before the legendaries - 31](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%206%2C%20the%20last%20before%20the%20legendaries%20-%2031.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 6, the last before the legendaries - 32
+
+T-356 batch 6 (DRAFT), second and third sheets.
+
+![3Oct2026 - T356 - OPUS margins, batch 6, the last before the legendaries - 32](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%206%2C%20the%20last%20before%20the%20legendaries%20-%2032.png)
+
+### 3Oct2026 - T356 - OPUS margins, batch 7, the legendaries - 33
+
+T-356 batch 7 (DRAFT), second sheet.
+
+![3Oct2026 - T356 - OPUS margins, batch 7, the legendaries - 33](3Oct2026%20-%20T356%20-%20OPUS%20margins%2C%20batch%207%2C%20the%20legendaries%20-%2033.png)
