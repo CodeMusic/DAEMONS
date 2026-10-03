@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.294 — 2026-10-03
+
+### CONTENT keeps the northern year (2026-10-03)
+
+- ***9.21, flipped by the user the same day***: *CONTENT the northern year, CONTEXT the southern -- CONTENT is the calendar as the game's maker lives it, CONTEXT the same date reframed from the other half of the world. In the Reversed table.*
+
 ## v11.293 — 2026-10-03
 
 ### The seasons, and a daemon that can leave on a device (2026-10-03)

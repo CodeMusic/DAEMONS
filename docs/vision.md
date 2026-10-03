@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.293**
+**A total conversion — the living design bible, v11.294**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8237,7 +8237,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | **summer** | *the world as drawn* |
 | **autumn** | *the trees turn*: their greens toward amber, rust and gold |
 
-***And the editions keep opposite hemispheres*** -- **CONTEXT the northern year, CONTENT the southern**: *from December 21 to March 21 it is winter in CONTEXT and summer in CONTENT, and CONTENT's autumn is CONTEXT's spring.* **The two cartridges are one argument told from two sides; now they are one year seen from two halves of the world.** *The goal companion (9.25) keeps the same rule, so a daemon's season is the same in the game and on the device.*
+***And the editions keep opposite hemispheres*** -- **CONTENT the northern year, CONTEXT the southern**: *from December 21 to March 21 it is winter in CONTENT and summer in CONTEXT, and CONTEXT's autumn is CONTENT's spring.* **The two cartridges are one argument told from two sides; now they are one year seen from two halves of the world.** ***Why this way round*** (*flipped by the user the same day -- see Reversed*): **CONTENT is "the thing itself, with nothing read into it" -- the calendar as the game's maker lives it; CONTEXT is "framing and reinterpretation" -- the same date read from the other side of the world, December's midsummer.** *The day does not change; the frame does, which is CONTEXT's whole idea told by the planet. And CONTENT is the default build, so the game most tested keeps its maker's season.* *The goal companion (9.25) keeps the same rule, so a daemon's season is the same in the game and on the device.*
 
 ***The clock decides, and play time stands in*** -- **with the cartridge's clock, the real date; without one, play time, as the table above proposed (a season every seven days of play).** *The humours' lean on the wild tables stays a proposal.*
 
@@ -8583,6 +8583,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **CONTEXT keeps the northern year, CONTENT the southern** (9.21, earlier 2026-10-03) | **CONTENT the northern year, CONTEXT the southern** (the user, 2026-10-03) | *The user, on reflection: "I think CONTENT should be the north america, and CONTEXT as south america's season."* **It fits the registers better**: *CONTENT is the thing itself -- the calendar as lived where the game is made; CONTEXT is the same date reframed by the other half of the world.* |
 | **Nobody remarks on OPUS, then or ever** (2.x, 2026-09-21) | **The first shop clerk spoken to while you hold it notices it, says what it does and that SELECT reads it, and hopes you enjoy it** (T-348, 2026-10-03) | *The user asked for it.* **A margin a player never finds is a margin nobody reads**, *and the clerk explains the tool, not the mystery: who left it is still never answered, and the margins still never say they notice you.* |
 | **The USER card's brain lights once and never counts** (T-271, 2026-09-25) | **A lobe per understanding, each in its type's colour; the halo at seven** (T-331, 2026-10-01) | *The user, seeing it: "I saw a brain but didn't know how it changes as u gain understanding."* **A glow that never counts was honest to 4.3 and told the player nothing**; *the lobes show which places changed them without a number anywhere, and the colours carry the chart's own language (9.4). The Guide's margins still hold the words.* |
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
