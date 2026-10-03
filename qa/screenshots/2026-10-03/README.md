@@ -199,3 +199,9 @@ T-362 (DRAFT): CRYSTAL asks whether you remember her grandchild's name, and laug
 T-363 mock-ups from the real screen: vanilla, A the terminal (chosen by the user), B an INDEX card.
 
 ![3Oct2026 - T363 - the name screen, two directions - 36](3Oct2026%20-%20T363%20-%20the%20name%20screen%2C%20two%20directions%20-%2036.png)
+
+### 3Oct2026 - T363 - the name screen, built - 37
+
+T-363: the name screen in the terminal look the user chose, built from its own palettes and tiles by tools/gbanaming.py and played in the theatre; with CRYSTAL's new lines after it.
+
+![3Oct2026 - T363 - the name screen, built - 37](3Oct2026%20-%20T363%20-%20the%20name%20screen%2C%20built%20-%2037.png)
