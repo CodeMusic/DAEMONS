@@ -18,6 +18,18 @@ watch's light then fall on it exactly as they fall on summer now. The faded prin
 engine's own sums (fieldmap.c DaemonsClarityEntries, daemons_time.c DaemonsTintForWatch), done in five-bit colour,
 so what the sheet shows at dusk or in a faded print is what the cartridge would draw.
 
+WHAT IT COSTS, against engine.md's three budgets (2026-10-03: EWRAM 748 B free, IWRAM 2.9 KB, ROM 6.8 MB):
+  ROM    three tables of sixteen colours, 3 x 16 x 2 = 96 bytes, and a few hundred bytes of code; the flower scatter
+         a few dozen more. Nothing new is drawn.
+  EWRAM  none. The season is a function of the clock or play time, asked when needed (as DaemonsWatch is), and the
+         flower scatter rewrites metatile ids in the map grid that already exists.
+  IWRAM  none.   SAVE  none.   CPU  once per map load, one pass over at most 13 x 16 = 208 colours.
+
+ONE PASS, NOT THREE. A tile colour as it loads becomes: the season's colour (palette 0's slot, or the green it copies),
+then T-317's faded print, then the watch's light -- one function per colour, which is exactly what palettes() does
+below. The engine today runs the faded print and the tint as separate loops (fieldmap.c, DaemonsClarityEntries then
+ApplyGlobalTintToPaletteEntries); the season should join them as one loop that does all three, not add a third.
+
 SPRING'S FLOWERS. "More flowers where flowers already grow" cannot be a palette alone: the palette can only make
 the flowers there brighter. The mock-up also shows the cheap way to have more -- a fixed scatter of the plain-grass
 metatiles swapped for the flower metatile as the map loads (no new art; both walk the same), never under a person
