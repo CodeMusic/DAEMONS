@@ -97,3 +97,15 @@ T-352 decoded from the ROM: treads, chevrons and the floor arrow in front of eac
 T-352 decoded from the ROM: treads, chevrons and the floor arrow in front of each flight.
 
 ![3Oct2026 - T357 - the stairs, 1F and 2F - 16](3Oct2026%20-%20T357%20-%20the%20stairs%2C%201F%20and%202F%20-%2016.png)
+
+### 3Oct2026 - T359 - the seasons on CALLOW, mock-up - 17
+
+T-359 mock-up, by palette from the ROM's data: summer as drawn, spring (palette, then with the flower scatter), autumn, winter, and how autumn and winter take the watch and the faded print. Nothing built; waiting on approval.
+
+![3Oct2026 - T359 - the seasons on CALLOW, mock-up - 17](3Oct2026%20-%20T359%20-%20the%20seasons%20on%20CALLOW%2C%20mock-up%20-%2017.png)
+
+### 3Oct2026 - T359 - the seasons on Route 1, mock-up - 18
+
+T-359 mock-up on Route 1, where the spring flower scatter has open grass to show in. The tall grass shares the trees' colours, so it turns with them.
+
+![3Oct2026 - T359 - the seasons on Route 1, mock-up - 18](3Oct2026%20-%20T359%20-%20the%20seasons%20on%20Route%201%2C%20mock-up%20-%2018.png)
