@@ -44,6 +44,7 @@ DAEMONS/             <- ALWAYS root sessions here (memory lives here)
   engine/    ----->  symlink to ../pokered-daemons       (Game Boy)
   engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, where the game is)
   engineAi/  ----->  symlink to ../gpt-play-pokemon-firered-daemons
+  companion/ ----->  symlink to ../daemons-companion   (the goal companion: app, server, devices)
 ```
 
 `engineAi/` is a fork of Clad3815/gpt-play-pokemon-firered: it drives mGBA over
@@ -51,6 +52,11 @@ a Lua socket and reads the game out of RAM, so a model can play the build. Same
 treatment as the other two -- our fork as `origin`, theirs as `upstream`, the
 `context-content` branch -- and the same rule: **never vendored in here.**
 `ai/` holds what is ours (n8n workflows, the LiteLLM config, `ai/README.md`).
+
+`companion/` is **daemons-companion** (2026-10-03, the anniversary sprint): a goal companion that carries a
+daemon -- an Expo app, a local server and ESP32-S3 / Pi Zero devices, the successor to RoverRadio and RoverCub. It
+holds nothing of Nintendo's, reads a DAEMONS save (copies only, never the user's own), and keeps its own `TODO.md`
+with `C-` ids; its plan is `companion/docs/PLAN.md`. Local only until the user creates its GitHub remote (C-12).
 
 All three symlinks are gitignored and no fork is ever vendored: both carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted
