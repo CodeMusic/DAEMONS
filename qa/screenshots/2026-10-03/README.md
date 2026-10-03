@@ -37,3 +37,9 @@ T-352 (v11.292.3): CALLOW SCHOOL 2F before and after -- up and down told apart, 
 T-355 (v11.292.4): the school lift's lamp from the built art -- green at rest, blue from choosing a floor until you can move again.
 
 ![3Oct2026 - T355 - the school lift lamp green and blue - 6](3Oct2026%20-%20T355%20-%20the%20school%20lift%20lamp%20green%20and%20blue%20-%206.png)
+
+### 3Oct2026 - T360 - the OWL after the DIPLOMA - 7
+
+T-360 (v11.294.1, DRAFT): what the OWL says after the DIPLOMA, in the game's font (sample name and count).
+
+![3Oct2026 - T360 - the OWL after the DIPLOMA - 7](3Oct2026%20-%20T360%20-%20the%20OWL%20after%20the%20DIPLOMA%20-%207.png)
