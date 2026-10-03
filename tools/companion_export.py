@@ -14,6 +14,7 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
   week.json     the week as the game keeps it: Sunday first, each day's colour (day_trims.h, the CHECKPOINT's trim)
                 and its note, C to B (vision 9.21)
   seasons.json  the seasons by edition (C-14), from tools/seasons.py -- the one definition the game shares
+  save_layout.json  the save's sectors, sizes and offsets, read from the built game (C-02)
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
 entries and our art only.
@@ -108,6 +109,42 @@ def week_table():
             "days": days}
 
 
+#  C-02 / T-358: the two bits of a daemon's flags byte (struct BoxPokemon, byte 19: isBadEgg, hasSpecies, isEgg,
+#  blockBoxRS, then unused:4) that carry the companion's link. T-358 defines them in the engine; until then they are
+#  named here, and both must agree.
+AWAY_BIT, ASKED_BIT = 4, 5
+
+
+def save_layout():
+    """C-02: what a save reader needs, read from the BUILT game (the ELF's symbol sizes, global.h's offsets), so a
+    change to the save blocks reaches the companion. Both editions must agree; without a build, nothing is written."""
+    import subprocess
+    sizes = {}
+    for elf in ("daemonsContent.elf", "daemonsContext.elf"):
+        path = os.path.join(GBA, elf)
+        if not os.path.exists(path):
+            return None
+        out = subprocess.run(["arm-none-eabi-nm", "-S", path], capture_output=True, text=True).stdout
+        got = {m.group(2): int(m.group(1), 16) for m in re.finditer(r"^[0-9a-f]+ ([0-9a-f]+) [BbDd] (gSaveBlock1|gSaveBlock2|gPokemonStorage)$", out, re.M)}
+        if sizes and got != sizes:
+            raise SystemExit("  refused: the two editions' save blocks differ: %s" % elf)
+        sizes = got
+    g = read("include/global.h")
+    def off(field):
+        m = re.search(r"/\*0x([0-9A-Fa-f]+)\*/\s*(?:u8|struct Pokemon)\s+%s\b" % re.escape(field), g)
+        return int(m.group(1), 16)
+    return {"_about": "the Gen 3 save as this game writes it: two slots of 14 sectors (0x1000 each: 3968 bytes of data, "
+                      "then id u16 at 0xFF4, checksum u16 at 0xFF6, signature u32 0x08012025 at 0xFF8, counter u32 at "
+                      "0xFFC); a section's checksum is the u32 sum of its data, folded (high half + low half). "
+                      "Sizes from the built ELF.",
+            "sector_size": 0x1000, "sector_data_size": 3968, "sectors_per_slot": 14, "signature": 0x08012025,
+            "saveblock2_size": sizes["gSaveBlock2"], "saveblock1_size": sizes["gSaveBlock1"],
+            "storage_size": sizes["gPokemonStorage"],
+            "party_count_offset": off("playerPartyCount"), "party_offset": off("playerParty"),
+            "pokemon_size": 100, "box_pokemon_size": 80, "level_offset": 84,
+            "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT}
+
+
 def seasons_table():
     """C-14: the seasons from tools/seasons.py, the one definition the game's T-359 will share."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -124,6 +161,11 @@ def seasons_table():
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table()}
+    layout = save_layout()
+    if layout:
+        files["save_layout.json"] = layout
+    else:
+        print("  no build to read the save layout from (make firered leafgreen first); save_layout.json left as it is")
     changed = []
     for name, data in files.items():
         text = json.dumps(data, indent=1, ensure_ascii=False) + "\n"
