@@ -31,3 +31,9 @@ T-210 batch 7 (v11.292.2): PONTUS, GAIA, OURANOS, BOREAS, BRONTES, TYPHON, TALOS
 T-352 (v11.292.3): CALLOW SCHOOL 2F before and after -- up and down told apart, an arrow to step on each flight, and a lift that looks like one. Drawn from the built layouts.
 
 ![3Oct2026 - T352 - CALLOW SCHOOL stairs and lift before and after - 5](3Oct2026%20-%20T352%20-%20CALLOW%20SCHOOL%20stairs%20and%20lift%20before%20and%20after%20-%205.png)
+
+### 3Oct2026 - T355 - the school lift lamp green and blue - 6
+
+T-355 (v11.292.4): the school lift's lamp from the built art -- green at rest, blue from choosing a floor until you can move again.
+
+![3Oct2026 - T355 - the school lift lamp green and blue - 6](3Oct2026%20-%20T355%20-%20the%20school%20lift%20lamp%20green%20and%20blue%20-%206.png)
