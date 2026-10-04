@@ -79,3 +79,9 @@ C-51: FLARE on the board -- teach a remote, its three buttons, and which remote 
 C-46, C-49: the user's own goal on the board, synced from the iPhone app -- Clean Apartment, LIVING ROOM 1/4, Entry.
 
 ![4Oct2026 - C46 - the users goal on the board - 14](4Oct2026%20-%20C46%20-%20the%20users%20goal%20on%20the%20board%20-%2014.png)
+
+### 4Oct2026 - T372 - the trainer cards clock mark, three options - 15
+
+T-372 mock-up on the real card: A a clock or hourglass beside the day in the header, B the word LIVE or PLAY there (DRAFT), C the symbol on the TIME row. Left: the cartridge's real clock; right: time from play.
+
+![4Oct2026 - T372 - the trainer cards clock mark, three options - 15](4Oct2026%20-%20T372%20-%20the%20trainer%20cards%20clock%20mark%2C%20three%20options%20-%2015.png)
