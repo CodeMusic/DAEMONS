@@ -49,3 +49,9 @@ T-349: the catching battle's old man, redrawn as an iguana -- the crest and snou
 C-29: SETTINGS shows the save path and where it came from; SYNC with no save set explains a save and offers the picker.
 
 ![4Oct2026 - C29 - the companions SETTINGS and the SYNC that teaches the path - 8](4Oct2026%20-%20C29%20-%20the%20companions%20SETTINGS%20and%20the%20SYNC%20that%20teaches%20the%20path%20-%208.png)
+
+### 4Oct2026 - C36 - the handhelds four screens, captured from the board - 9
+
+C-36, C-37: the handheld's screens captured from the board itself -- Sunday's tamed red, ARTSAI drawn as the game draws it, and its INDEX entry a press away.
+
+![4Oct2026 - C36 - the handhelds four screens, captured from the board - 9](4Oct2026%20-%20C36%20-%20the%20handhelds%20four%20screens%2C%20captured%20from%20the%20board%20-%209.png)
