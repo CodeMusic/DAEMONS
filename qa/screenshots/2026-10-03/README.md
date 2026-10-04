@@ -211,3 +211,27 @@ T-363: the name screen in the terminal look the user chose, built from its own p
 T-359 built: CALLOW in each season and Route 1's spring flowers, played in the theatre (DEBUG > ENCOUNTER > SEASON).
 
 ![3Oct2026 - T359 - the seasons, in the game - 38](3Oct2026%20-%20T359%20-%20the%20seasons%2C%20in%20the%20game%20-%2038.png)
+
+### 3Oct2026 - C10 - the companion answers the game - 39
+
+C-10: a save the game wrote (CODEMUSAI asked to go) read by the companion, which shows the request; one press answers it, and CODEMUSAI is AWAY on the device. A backup of the save is kept.
+
+![3Oct2026 - C10 - the companion answers the game - 39](3Oct2026%20-%20C10%20-%20the%20companion%20answers%20the%20game%20-%2039.png)
+
+### 3Oct2026 - C10 - the companion answers the game - 40
+
+C-10: a save the game wrote (CODEMUSAI asked to go) read by the companion, which shows the request; one press answers it, and CODEMUSAI is AWAY on the device. A backup of the save is kept.
+
+![3Oct2026 - C10 - the companion answers the game - 40](3Oct2026%20-%20C10%20-%20the%20companion%20answers%20the%20game%20-%2040.png)
+
+### 3Oct2026 - C18 - the companion draws daemons as the game does - 41
+
+C-18: before, the source drawings with their raw streak markers; after, each party daemon in its type palette with its streaks painted for its own routines, as the game paints them.
+
+![3Oct2026 - C18 - the companion draws daemons as the game does - 41](3Oct2026%20-%20C18%20-%20the%20companion%20draws%20daemons%20as%20the%20game%20does%20-%2041.png)
+
+### 3Oct2026 - C18 - the companion draws daemons as the game does - 42
+
+C-18: before, the source drawings with their raw streak markers; after, each party daemon in its type palette with its streaks painted for its own routines, as the game paints them.
+
+![3Oct2026 - C18 - the companion draws daemons as the game does - 42](3Oct2026%20-%20C18%20-%20the%20companion%20draws%20daemons%20as%20the%20game%20does%20-%2042.png)

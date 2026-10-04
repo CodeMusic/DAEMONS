@@ -67,6 +67,12 @@ def species_table():
         texts[edition] = {m.group(1): gba_string(m.group(2))
                           for m in re.finditer(r"const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", read(rel), re.S)}
     art = set(os.listdir(os.path.join(ROOT, "gfx", "daemons")))
+    body = {}
+    for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{((?:(?!\[SPECIES_).)*)", info, re.S):
+        t = re.search(r"\.types\s*=\s*\{\s*TYPE_(\w+)", m.group(2))
+        if t:
+            body[m.group(1)] = TYPE_ORDER.index(t.group(1)) if t.group(1) in TYPE_ORDER else None
+    streaky = set(re.findall(r"\[SPECIES_(\w+)\]\s*=\s*TRUE", read("src/data/pokemon/streaks.h")))
 
     out = {}
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
@@ -84,8 +90,76 @@ def species_table():
             "entry": {ed: texts[ed].get(sym) for ed in ("CONTENT", "CONTEXT")},
             "art": {view: ("gfx/daemons/%s_%s.png" % (stem, view)) if ("%s_%s.png" % (stem, view)) in art else None
                     for view in ("front", "back")},
+            "bodyType": body.get(sp),                  # C-18: the type its palette ramp was built from
+            "streaks": sp in streaky,                  # C-18: palette 11..14 carry its four routines' streaks
         }
         out[str(sid)] = row
+    return out
+
+
+TYPE_ORDER = ["NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY",
+              "FIRE", "WATER", "GRASS", "ELECTRIC", "PSYCHIC", "ICE", "DRAGON", "DARK"]      # include/constants/pokemon.h
+
+
+def rgb8(r, g, b):
+    return [(c << 3) | (c >> 2) for c in (r, g, b)]
+
+
+def streaks_table():
+    """C-18: the game's streak colours (src/data/pokemon/streaks.h, tools/genstreaks.py), [body type][move type]."""
+    src = read("src/data/pokemon/streaks.h")
+    colours = []
+    for body in TYPE_ORDER:
+        row = re.search(r"\[TYPE_%s\] = \{(.*?)\},\n" % body, src).group(1)
+        cells = dict(re.findall(r"\[TYPE_(\w+)\] = RGB\((\d+), (\d+), (\d+)\)", row) and
+                     [(t, rgb8(int(r), int(g), int(b))) for t, r, g, b in
+                      re.findall(r"\[TYPE_(\w+)\] = RGB\((\d+), (\d+), (\d+)\)", row)])
+        colours.append([cells.get(t) for t in TYPE_ORDER])
+    blank = rgb8(*map(int, re.search(r"gStreakBlank = RGB\((\d+), (\d+), (\d+)\)", src).groups()))
+    return {"_about": "the game's streak colours: colours[body type][move type], 8-bit RGB; a move slot with no move takes "
+                      "the body palette's index 3; palette indices 11..14 are the four slots, in order",
+            "types": TYPE_ORDER, "colours": colours, "blank": blank, "first_index": 11, "body_mid_index": 3}
+
+
+def moves_table():
+    """C-18: each move's type, by the game's move id."""
+    ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define MOVE_(\w+)\s+(\d+)\b", read("include/constants/moves.h"))}
+    out = {}
+    for m in re.finditer(r"\[MOVE_(\w+)\]\s*=\s*\{(.*?)\n    \}", read("src/data/battle_moves.h"), re.S):
+        t = re.search(r"\.type\s*=\s*TYPE_(\w+)", m.group(2))
+        if t and m.group(1) in ids and t.group(1) in TYPE_ORDER:
+            out[str(ids[m.group(1)])] = TYPE_ORDER.index(t.group(1))
+    return out
+
+
+def party_art(species):
+    """C-18: each daemon as the game draws it -- its built front sprite (graphics/pokemon/<slot>/front.4bpp) in its
+    normal palette, an indexed PNG whose palette the server rewrites per daemon (11..14, its routines). Only species
+    with our own drawing in gfx/daemons/ are exported, so nothing of Nintendo's is ever copied."""
+    from PIL import Image
+    out = {}
+    for sid, row in species.items():
+        if not row["art"]["front"]:
+            continue
+        d = os.path.join(GBA, "graphics/pokemon", row["constant"].lower())
+        tiles, pal = os.path.join(d, "front.4bpp"), os.path.join(d, "normal.gbapal")
+        if not (os.path.exists(tiles) and os.path.exists(pal)):
+            continue
+        raw, praw = open(tiles, "rb").read(), open(pal, "rb").read()
+        colours = []
+        for i in range(16):
+            c = int.from_bytes(praw[2 * i:2 * i + 2], "little")
+            colours += rgb8(c & 31, (c >> 5) & 31, (c >> 10) & 31)
+        im = Image.new("P", (64, 64), 0)
+        px = im.load()
+        for t in range(64):
+            for y in range(8):
+                for x in range(8):
+                    b = raw[t * 32 + y * 4 + x // 2]
+                    px[(t % 8) * 8 + x, (t // 8) * 8 + y] = (b >> 4) if x & 1 else b & 15
+        im.putpalette(colours + [0] * (768 - len(colours)))
+        name = os.path.basename(row["art"]["front"]).replace("_front.png", "") + ".png"
+        out[name] = im
     return out
 
 
@@ -176,7 +250,7 @@ def seasons_table():
 
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
-             "seasons.json": seasons_table()}
+             "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table()}
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -192,6 +266,21 @@ def main():
             if WRITE:
                 os.makedirs(OUT, exist_ok=True)
                 open(path, "w", encoding="utf-8").write(text)
+    import io
+    art = party_art(files["species.json"])
+    art_dir = os.path.join(OUT, "art")
+    art_changed = 0
+    for name, im in art.items():
+        buf = io.BytesIO()
+        im.save(buf, "PNG", transparency=0, optimize=True)
+        path = os.path.join(art_dir, name)
+        if not os.path.exists(path) or open(path, "rb").read() != buf.getvalue():
+            art_changed += 1
+            if WRITE:
+                os.makedirs(art_dir, exist_ok=True)
+                open(path, "wb").write(buf.getvalue())
+    if art_changed:
+        changed.append("art/ (%d of %d)" % (art_changed, len(art)))
     sp = files["species.json"]
     with_art = sum(1 for r in sp.values() if r["art"]["front"])
     with_entry = sum(1 for r in sp.values() if r["entry"]["CONTENT"] and r["entry"]["CONTEXT"])
