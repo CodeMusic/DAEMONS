@@ -33,6 +33,12 @@ spawns, so whichever comes last colours the other (engine.md trap 17). The OWL a
 SCHOOL for eleven days -- a green and yellow OWL at the exam, brown children after it -- and every check passed. So
 each map's special slot (and any slot a tag is patched into at spawn) is read here too, and a map where two tags
 share one is reported unless vanilla shares it, or the two are never shown together (KNOWN_SHARED, with why).
+
+AND WHO IS REGISTERED TWICE (T-369, trap 17's three-line check, run every time). A palette tag registered in two
+slots is the bug in its general form -- whichever map shows both, one repaints the other. Every graphics info is grouped
+by its tag and the slots it names are collected; a tag in two slots that vanilla does not split is reported, except the
+two the engine means: the player's own forms, and the daemons' type tags, which are patched per map at spawn and kept
+apart there by gbaowslots.py (REGISTERED_SPLIT, with why).
 """
 import json, os, re, struct, subprocess, sys
 from collections import deque
@@ -302,6 +308,26 @@ KNOWN_SHARED = {("BirthIsland_Exterior", "PALSLOT_NPC_SPECIAL"):
                 "CRYSTAL stands only until she reads the PAYLOAD, and the meteorite is hidden until she has"}
 
 
+# T-369: tags the engine registers in more than one slot on purpose, and why.
+REGISTERED_SPLIT = {
+    "OBJ_EVENT_PAL_TAG_PLAYER_RED": "the player's own forms (vanilla splits it too)",
+}
+SPLIT_PREFIXES = {
+    "OBJ_EVENT_PAL_TAG_DAEMON_TYPE": "a daemon's type palette, patched into a slot free on its map at spawn (gbaowslots.py)",
+}
+
+
+def registration_splits(root):
+    """{tag: slots} for every palette tag the graphics infos register in more than one slot (engine.md trap 17)."""
+    text = open(os.path.join(root, "src/data/object_events/object_event_graphics_info.h")).read()
+    slots = {}
+    for body in re.findall(r"const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_\w+ = \{(.*?)\};", text, re.S):
+        tag, slot = re.search(r"\.paletteTag = (\w+)", body), re.search(r"\.paletteSlot = (\w+)", body)
+        if tag and slot and tag.group(1) != "OBJ_EVENT_PAL_TAG_NONE":
+            slots.setdefault(tag.group(1), set()).add(slot.group(1))
+    return {t: tuple(sorted(s)) for t, s in slots.items() if len(s) > 1}
+
+
 def palette_clashes(root):
     """{(map, slot): tags} for every map where two palette tags would be patched into one slot."""
     E = lambda p: open(os.path.join(root, p)).read()
@@ -381,10 +407,21 @@ def main():
             print("  !! %s: %s share %s, so whichever spawns last repaints the other (trap 17)"
                   % (k[0], " and ".join(p_ours[k]), k[1]))
             rc = 1
+    r_ours, r_theirs = registration_splits(GBA), registration_splits(up)
+    examined = len(re.findall(r"const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_",
+                              open(os.path.join(GBA, "src/data/object_events/object_event_graphics_info.h")).read()))
+    print("  %d graphics infos read for their palette registration (trap 17)" % examined)   # trap 18: what was examined
+    for tag in sorted(r_ours):
+        why = REGISTERED_SPLIT.get(tag) or next((w for pre, w in SPLIT_PREFIXES.items() if tag.startswith(pre)), None)
+        if tag in r_theirs or why:
+            continue
+        print("  !! %s is registered in %s -- a map showing both repaints one with the other (trap 17)"
+              % (tag, " and ".join(r_ours[tag])))
+        rc = 1
     if not rc:
         print("  nothing we changed made anything unreachable, any pocket a trap, any door lead nowhere, any flag wait\n"
               "  forever, any line lose a value or a sound vanilla had, any receipt get announced twice,\n"
-              "  or anyone repaint anyone.")
+              "  or anyone repaint anyone, or any palette registered twice.")
     return rc
 
 
