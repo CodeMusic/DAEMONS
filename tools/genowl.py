@@ -51,8 +51,8 @@ PALETTE = [
     (140, 114,  82),  # 2  f  feathers
     ( 92,  70,  50),  # 3  d  feathers, dark
     (240, 228, 200),  # 4  C  face disc, breast
-    (120,  72,  44),  # 5  V  waistcoat
-    ( 84,  48,  30),  # 6  v  waistcoat, buttons
+    ( 88, 176,  64),  # 5  V  waistcoat: CALLOW SCHOOL's green (T-366, the user's choice C, 2026-10-04)
+    (240, 224,  96),  # 6  v  waistcoat, buttons: CALLOW SCHOOL's yellow
     (230, 190,  70),  # 7  Y  beak, talons
     (170, 130,  40),  # 8  y  beak, shade
     (150, 150, 160),  # 9  s  (spare grey)
