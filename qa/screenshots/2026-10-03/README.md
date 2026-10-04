@@ -205,3 +205,9 @@ T-363 mock-ups from the real screen: vanilla, A the terminal (chosen by the user
 T-363: the name screen in the terminal look the user chose, built from its own palettes and tiles by tools/gbanaming.py and played in the theatre; with CRYSTAL's new lines after it.
 
 ![3Oct2026 - T363 - the name screen, built - 37](3Oct2026%20-%20T363%20-%20the%20name%20screen%2C%20built%20-%2037.png)
+
+### 3Oct2026 - T359 - the seasons, in the game - 38
+
+T-359 built: CALLOW in each season and Route 1's spring flowers, played in the theatre (DEBUG > ENCOUNTER > SEASON).
+
+![3Oct2026 - T359 - the seasons, in the game - 38](3Oct2026%20-%20T359%20-%20the%20seasons%2C%20in%20the%20game%20-%2038.png)
