@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.294**
+**A total conversion — the living design bible, v11.295**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8449,7 +8449,16 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 - ***AWAY is washed out everywhere*** -- **party, PORT, summary** -- *so it is never lost.* **It cannot battle, be traded or be released.** ***It can go into the PORT and come back out***, *so the player can still play with six.*
 - ***The mark is one of four bits nothing uses*** -- **beside *is egg* in every daemon's record, outside the checksum** -- *so it travels with the daemon through the PORT and costs no save space.*
 
+***Reshaped by the user 2026-10-04 (T-370; the companion's PLAN 3):***
+
+- ***One daemon at a time.*** **SEND is not offered while another daemon is AWAY or asked for.**
+- ***SEND appears only once the companion knows the save.*** **The app's first SYNC writes a flag into the save; until then the party menu has no SEND**, *so a player without the companion never meets it.* **The people on the CHECKPOINT's second floor talk about the companion** -- *that loading a save into it brings a new SEND* -- **so the player learns of it in the world.**
+- ***An emergency way home, in the game.*** **An AWAY daemon can be called home without the app**, *so it is never stuck in limbo when the app cannot be reached.* **The game warns first: the companion still thinks it is out, and another cannot be sent until it is released there** -- *the next SYNC sees it home and settles both sides.*
+- ***The app is married to one save*** *(the companion's side)*: **a daemon carried for one game only ever goes home to that game's save.**
+
 ***The menu's words are the user's to choose (OPEN).***
+
+***And the trainer card says whether the clock is real*** *(T-372, the user 2026-10-04)*: **on the player's card (START > their name), a mark or a word says whether the real-time clock is on** -- *time, weekday and seasons from the cartridge, or from play time (9.21).*
 
 ### 9.2 Order of operations
 

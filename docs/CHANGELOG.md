@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.295 — 2026-10-04
+
+### AWAY reshaped, and the clock on the trainer card (2026-10-04)
+
+- ***9.25, the user's answers (T-370)***: *one daemon at a time; SEND only once the companion's first SYNC has flagged the save, and the CHECKPOINT's second floor talks about the companion; an emergency way home in the game, with a warning, so a daemon is never stuck when the app cannot be reached; and the companion married to one save, so a daemon only goes home to the game it came from (the companion's PLAN 3). The menu's words stay OPEN.*
+- ***9.25 (T-372)***: *the trainer card marks whether the real-time clock is on.*
+
+---
+
 ## v11.294 — 2026-10-03
 
 ### CONTENT keeps the northern year (2026-10-03)
