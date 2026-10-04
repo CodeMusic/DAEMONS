@@ -141,6 +141,58 @@ def iguana(f):
     for x in range(chin_x - 3, chin_x - 1):
         if 0 <= chin_y + 6 < 64 and f[chin_y + 6][x] not in OM_SKIN:
             f[chin_y + 6][x] = INK
+    lizard(f, hs, front, top, low, ey)
+
+
+# T-349 (the user, 2026-10-04: in the catching lesson "I didnt see a fabalized animal just the oldman"). The dewlap
+# and the eye were not enough: from behind, the round skull and the coat still read as a bald old man. So the two
+# shapes no person has, each found from the frame's own pixels and so following the head through the throw:
+#   THE CREST   a saw-tooth of spikes standing off the crown (the swept tufts below it are the nape's)
+#   THE SNOUT   the face drawn out three pixels past the nose, blunt, with a mouth line along it
+CREST, CRESTL = 7, 14
+
+def lizard(f, hs, front, top, low, ey):
+    body = {(x, y) for y in range(64) for x in range(64) if f[y][x] in OM_SKIN + OM_HAIR}
+    head_cols = [x for x in range(64) if any((x, y) in hs for y in range(64))]
+    if not head_cols:
+        return
+    back = min(head_cols)
+    # the crown: for each column across the top of the head, its topmost head-or-hair pixel; a spike every third
+    for x in range(back + 1, front - 5, 3):
+        ys = [y for y in range(64) if (x, y) in body]
+        if not ys:
+            continue
+        y0 = min(ys)
+        for dy, xs in ((1, (x, x + 1)), (2, (x,)), (3, (x,))):
+            for xx in xs:
+                put(f, xx, y0 - dy, CRESTL if dy == 1 else CREST)
+        for xx, yy in ((x - 1, y0 - 1), (x - 1, y0 - 2), (x + 1, y0 - 2), (x - 1, y0 - 3), (x + 1, y0 - 3), (x, y0 - 4)):
+            put(f, xx, yy, INK)
+    # (the back of the neck needs no spikes of its own: the white hair's swept-back tufts, recoloured, already make
+    # a spined nape -- spikes added behind them only floated in the air beside it)
+    # the snout: rows from just under the eye to just above the chin, drawn out three pixels and outlined
+    rows = range(ey + 2, low - 1)
+    for y in rows:
+        xs = [x for x in range(64) if (x, y) in hs]
+        if not xs:
+            continue
+        x1 = max(xs)
+        for x in range(x1 + 1, x1 + 4):
+            if 0 <= x < 63 and f[y][x] in (0, INK):
+                f[y][x] = 2
+        if 0 <= x1 + 4 < 64 and f[y][x1 + 4] == 0:
+            f[y][x1 + 4] = INK
+    if rows:
+        top_y, bot_y = rows[0], rows[-1]
+        for y in (top_y - 1, bot_y + 1):
+            xs = [x for x in range(64) if (x, y) in hs]
+            if xs:
+                for x in range(max(xs) + 1, max(xs) + 4):
+                    put(f, x, y, INK)
+        mouth = bot_y - 1
+        xs = [x for x in range(64) if 0 <= mouth < 64 and f[mouth][x] == 2 and (x, mouth) not in hs]
+        for x in xs[:-1]:
+            f[mouth][x] = 4
 
 
 # ====================================================================== CRYSTAL CLEAR, a fox

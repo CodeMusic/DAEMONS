@@ -224,7 +224,8 @@ def doors(root):
 
 
 #  Flags the story waits on that nothing outside the DEBUG build sets -- each one a ticket, or a bug.
-KNOWN_UNSET = {"FLAG_ARTSAI_PAGE": "T-235: the Five Witnesses' reward waits on the TRANSCRIPT's words"}
+KNOWN_UNSET = {"FLAG_ARTSAI_PAGE": "T-235: the Five Witnesses' reward waits on the TRANSCRIPT's words",
+               "FLAG_COMPANION_LINKED": "T-370: set by the companion app's first SYNC, outside the game (companion C-21)"}
 
 
 def unset_flags(root):
