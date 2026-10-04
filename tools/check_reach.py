@@ -26,6 +26,13 @@ THE WALK IS A FLOOR, NOT A CEILING. It knows nothing of Surf, Cut, Strength, led
 itself has about 240 things it calls unreachable. So the same walk runs on a pristine pret/pokefirered checkout
 (a git worktree of upstream/master, cached in ~/.cache/daemons) and only the DIFFERENCE is reported: what is
 unreachable here and was reachable there, or is new and unreachable. That list should be empty.
+
+AND WHO REPAINTS WHOM (T-365, the user, 2026-10-03: "before the owl was colourful now normal"). Two people on one map
+whose palette tags share the special slot repaint each other: the slot is patched from each object's own tag as it
+spawns, so whichever comes last colours the other (engine.md trap 17). The OWL and CALLOW's people did it in CALLOW
+SCHOOL for eleven days -- a green and yellow OWL at the exam, brown children after it -- and every check passed. So
+each map's special slot (and any slot a tag is patched into at spawn) is read here too, and a map where two tags
+share one is reported unless vanilla shares it, or the two are never shown together (KNOWN_SHARED, with why).
 """
 import json, os, re, struct, subprocess, sys
 from collections import deque
@@ -290,6 +297,40 @@ def doubled_receipts(ours, theirs):
     return sorted(k for k, v in ours.items() if k in theirs and len(RECEIPT.findall(v)) > len(RECEIPT.findall(theirs[k])))
 
 
+KNOWN_SHARED = {("BirthIsland_Exterior", "PALSLOT_NPC_SPECIAL"):
+                "CRYSTAL stands only until she reads the PAYLOAD, and the meteorite is hidden until she has"}
+
+
+def palette_clashes(root):
+    """{(map, slot): tags} for every map where two palette tags would be patched into one slot."""
+    E = lambda p: open(os.path.join(root, p)).read()
+    ptr = dict(re.findall(r"\[(OBJ_EVENT_GFX_\w+)\]\s*=\s*&(gObjectEventGraphicsInfo_\w+)",
+                          E("src/data/object_events/object_event_graphics_info_pointers.h")))
+    info = {}
+    for name, body in re.findall(r"const struct ObjectEventGraphicsInfo (gObjectEventGraphicsInfo_\w+) = \{(.*?)\};",
+                                 E("src/data/object_events/object_event_graphics_info.h"), re.S):
+        tag, slot = re.search(r"\.paletteTag = (\w+)", body), re.search(r"\.paletteSlot = (\w+)", body)
+        if tag and slot:
+            info[name] = (tag.group(1), slot.group(1))
+    patched = lambda tag: tag.startswith("OBJ_EVENT_PAL_TAG_DAEMON_TYPE") or tag == "OBJ_EVENT_PAL_TAG_NPC_OWL"
+    out = {}
+    maps = os.path.join(root, "data/maps")
+    for m in sorted(os.listdir(maps)):
+        try:
+            j = json.load(open(os.path.join(maps, m, "map.json")))
+        except (OSError, ValueError):
+            continue
+        slots = {}
+        for o in j.get("object_events") or []:
+            t = info.get(ptr.get(o.get("graphics_id", "")))
+            if t and t[0] != "OBJ_EVENT_PAL_TAG_NONE":
+                slots.setdefault(t[1], set()).add(t[0])
+        for slot, tags in slots.items():
+            if len(tags) > 1 and (slot == "PALSLOT_NPC_SPECIAL" or any(patched(t) for t in tags)):
+                out[(m, slot)] = tuple(sorted(tags))
+    return out
+
+
 def main():
     up = upstream()
     rc = 0
@@ -331,9 +372,18 @@ def main():
         else:
             print("  !! %s is tested and nothing outside the DEBUG build sets it" % f)
             rc = 1
+    p_ours, p_theirs = palette_clashes(GBA), palette_clashes(up)
+    for k in sorted(set(p_ours) - set(p_theirs)):
+        if k in KNOWN_SHARED:
+            print("  known: %s shares %s between %s -- %s" % (k[0], k[1], ", ".join(p_ours[k]), KNOWN_SHARED[k]))
+        else:
+            print("  !! %s: %s share %s, so whichever spawns last repaints the other (trap 17)"
+                  % (k[0], " and ".join(p_ours[k]), k[1]))
+            rc = 1
     if not rc:
         print("  nothing we changed made anything unreachable, any pocket a trap, any door lead nowhere, any flag wait\n"
-              "  forever, any line lose a value or a sound vanilla had, or any receipt get announced twice.")
+              "  forever, any line lose a value or a sound vanilla had, any receipt get announced twice,\n"
+              "  or anyone repaint anyone.")
     return rc
 
 

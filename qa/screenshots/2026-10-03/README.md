@@ -259,3 +259,9 @@ T-364: at home in BRAZEN, the scholar's tale, then the same review offer; YES op
 C-10: the companion answered the game's request; the game loads the save and shows CODEMUSAI AWAY
 
 ![3Oct2026 - C10 - an app-answered save read back by the game - 46](3Oct2026%20-%20C10%20-%20an%20app-answered%20save%20read%20back%20by%20the%20game%20-%2046.png)
+
+### 3Oct2026 - T365 - the OWL before and after, exam and classroom - 47
+
+T-365: left, before (exam: a green and yellow OWL; classroom: brown children); right, after (the OWL brown, CALLOW's people green)
+
+![3Oct2026 - T365 - the OWL before and after, exam and classroom - 47](3Oct2026%20-%20T365%20-%20the%20OWL%20before%20and%20after%2C%20exam%20and%20classroom%20-%2047.png)
