@@ -235,3 +235,27 @@ C-18: before, the source drawings with their raw streak markers; after, each par
 C-18: before, the source drawings with their raw streak markers; after, each party daemon in its type palette with its streaks painted for its own routines, as the game paints them.
 
 ![3Oct2026 - C18 - the companion draws daemons as the game does - 42](3Oct2026%20-%20C18%20-%20the%20companion%20draws%20daemons%20as%20the%20game%20does%20-%2042.png)
+
+### 3Oct2026 - T364 - exam season, the house empty and the note - 43
+
+T-364: in exam season the OWL's house in BRAZEN is empty; a note says where he is (DRAFT)
+
+![3Oct2026 - T364 - exam season, the house empty and the note - 43](3Oct2026%20-%20T364%20-%20exam%20season%2C%20the%20house%20empty%20and%20the%20note%20-%2043.png)
+
+### 3Oct2026 - T364 - the OWL at the front after the DIPLOMA - 44
+
+T-364: after the DIPLOMA he stays at the front and offers the review; after BRAZEN the room is without him
+
+![3Oct2026 - T364 - the OWL at the front after the DIPLOMA - 44](3Oct2026%20-%20T364%20-%20the%20OWL%20at%20the%20front%20after%20the%20DIPLOMA%20-%2044.png)
+
+### 3Oct2026 - T364 - the same OWL at home, then the review - 45
+
+T-364: at home in BRAZEN, the scholar's tale, then the same review offer; YES opens the marked paper
+
+![3Oct2026 - T364 - the same OWL at home, then the review - 45](3Oct2026%20-%20T364%20-%20the%20same%20OWL%20at%20home%2C%20then%20the%20review%20-%2045.png)
+
+### 3Oct2026 - C10 - an app-answered save read back by the game - 46
+
+C-10: the companion answered the game's request; the game loads the save and shows CODEMUSAI AWAY
+
+![3Oct2026 - C10 - an app-answered save read back by the game - 46](3Oct2026%20-%20C10%20-%20an%20app-answered%20save%20read%20back%20by%20the%20game%20-%2046.png)
