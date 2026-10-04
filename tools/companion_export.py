@@ -78,6 +78,13 @@ def species_table():
         if t:
             body[m.group(1)] = TYPE_ORDER.index(t.group(1)) if t.group(1) in TYPE_ORDER else None
     streaky = set(re.findall(r"\[SPECIES_(\w+)\]\s*=\s*TRUE", read("src/data/pokemon/streaks.h")))
+    # C-24: its growth rate, so a boxed daemon's level can be read from its experience (OPUS's margins need it)
+    growth_names = ["MEDIUM_FAST", "ERRATIC", "FLUCTUATING", "MEDIUM_SLOW", "FAST", "SLOW"]   # constants/pokemon.h
+    growth = {}
+    for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{((?:(?!\[SPECIES_).)*)", info, re.S):
+        g = re.search(r"\.growthRate\s*=\s*GROWTH_(\w+)", m.group(2))
+        if g and g.group(1) in growth_names:
+            growth[m.group(1)] = growth_names.index(g.group(1))
 
     out = {}
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
@@ -97,6 +104,7 @@ def species_table():
                     for view in ("front", "back")},
             "bodyType": body.get(sp),                  # C-18: the type its palette ramp was built from
             "streaks": sp in streaky,                  # C-18: palette 11..14 carry its four routines' streaks
+            "growth": growth.get(sp, 0),               # C-24: GROWTH_*, MEDIUM_FAST where a macro hides it
         }
         out[str(sid)] = row
     return out
