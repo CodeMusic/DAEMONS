@@ -56,7 +56,8 @@ treatment as the other two -- our fork as `origin`, theirs as `upstream`, the
 `companion/` is **daemons-companion** (2026-10-03, the anniversary sprint): a goal companion that carries a
 daemon -- an Expo app, a local server and ESP32-S3 / Pi Zero devices, the successor to RoverRadio and RoverCub. It
 holds nothing of Nintendo's, reads a DAEMONS save (copies only, never the user's own), and keeps its own `TODO.md`
-with `C-` ids; its plan is `companion/docs/PLAN.md`. Local only until the user creates its GitHub remote (C-12).
+with `C-` ids; its plan is `companion/docs/PLAN.md`. Public at CodeMusic/daemons-companion (C-12): **nothing personal
+goes in it.** `companion/bindCompanion.sh` starts its server and app (a site by default; `ios`, `android`, `server`, `test`).
 
 All three symlinks are gitignored and no fork is ever vendored: both carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted
