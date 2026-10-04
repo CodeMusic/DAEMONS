@@ -4,6 +4,7 @@ twice.
 
     python3 tools/companion_export.py            # report: what would change in companion/server/data/
     python3 tools/companion_export.py --write    # write it
+    python3 tools/companion_export.py --check    # exit 1 if the companion's data is stale (the push routine, T-373)
 
 Writes three files into the companion repo (symlinked here as companion/, setup.sh step 5):
 
@@ -17,6 +18,7 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
   save_layout.json  the save's sectors, sizes and offsets, read from the built game (C-02)
   profile_layout.json  where the PROFILE's facts live in the save, from global.h and flags.h (C-23)
   maps.json     every map by the numbers a save stores, with its place's name (C-23)
+  margins.json  OPUS's margins, and the game's rule for which line shows (C-24, T-373)
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
 entries and our art only.
@@ -269,7 +271,7 @@ def profile_layout():
     g = read("include/global.h")
     sb2, sb1, dex = struct_offsets(g, "SaveBlock2"), struct_offsets(g, "SaveBlock1"), struct_offsets(g, "Pokedex")
     flags = flag_values(["FLAG_BADGE01_GET", "FLAG_BADGE08_GET", "FLAG_SYS_POKEDEX_GET", "FLAG_SYS_GAME_CLEAR",
-                         "FLAG_GOT_DIPLOMA", "DAEMONS_FLAGS_START"])
+                         "FLAG_GOT_DIPLOMA", "DAEMONS_FLAGS_START", "FLAG_COMPANION_LINKED", "FLAG_COMPANION_RECALLED"])
     items = dict(re.findall(r"^#define\s+(ITEM_OPUS)\s+(\d+)", read("include/constants/items.h"), re.M))
     kcount = re.search(r"#define\s+BAG_KEYITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)
     return {"_about": "C-23: offsets into SaveBlock2 (section 0) and SaveBlock1 (sections 1-4, end to end), read from "
@@ -287,7 +289,9 @@ def profile_layout():
                     "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount)},
             "flags": {"marks_first": flags["FLAG_BADGE01_GET"], "marks_last": flags["FLAG_BADGE08_GET"],
                       "index": flags["FLAG_SYS_POKEDEX_GET"], "game_clear": flags["FLAG_SYS_GAME_CLEAR"],
-                      "diploma": flags["FLAG_GOT_DIPLOMA"], "daemons_flags_start": flags["DAEMONS_FLAGS_START"]},
+                      "diploma": flags["FLAG_GOT_DIPLOMA"], "daemons_flags_start": flags["DAEMONS_FLAGS_START"],
+                      "companion_linked": flags["FLAG_COMPANION_LINKED"],
+                      "companion_recalled": flags["FLAG_COMPANION_RECALLED"]},
             "items": {"opus": int(items["ITEM_OPUS"])}}
 
 
@@ -303,6 +307,25 @@ def maps_table():
         for n, m in enumerate(groups[group]):
             sec = json.loads(read("data/maps/%s/map.json" % m)).get("region_map_section", "")
             out["%d.%d" % (g, n)] = {"map": m, "place": names.get(sec, "")}
+    return out
+
+
+def margins_table():
+    """C-24 / T-373: OPUS's margins as the game holds them (src/data/opus_margins.h, written by genmargins.py), keyed by
+    the internal species id a save stores -- with the game's own rule for which line shows, so the app reads exactly
+    what the INDEX would: none without OPUS in the bag; CARRIED once any daemon of the species, in the party or a box,
+    has gained levels_carried levels since it was met; NEGLECTED if it is only boxed without; and INSTINCT's voice
+    (where it has lines) for a player who chose INSTINCT, which the save keeps as playerGender 1."""
+    src = read("src/data/opus_margins.h")
+    ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define SPECIES_(\w+)\s+(\d+)\b", read("include/constants/species.h"))}
+    text = {name: gba_string(body) for name, body in re.findall(r"static const u8 (sOpusMargin_\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S)}
+    levels = int(re.search(r"#define\s+OPUS_LEVELS_CARRIED\s+(\d+)", read("src/pokedex_screen.c")).group(1))
+    out = {"_about": margins_table.__doc__.split("\n")[0].strip() + " Rule: see tools/companion_export.py margins_table.",
+           "levels_carried": levels, "instinct_gender": 1, "margins": {}}
+    for sp, *lines in re.findall(r"\{\s*SPECIES_(\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", src):
+        get = lambda n: None if n == "NULL" else text[n]
+        out["margins"][str(ids[sp])] = {"carried": get(lines[0]), "neglected": get(lines[1]),
+                                        "instinctCarried": get(lines[2]), "instinctNeglected": get(lines[3])}
     return out
 
 
@@ -322,7 +345,7 @@ def seasons_table():
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
-             "profile_layout.json": profile_layout(), "maps.json": maps_table()}
+             "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table()}
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -364,7 +387,13 @@ def main():
         print("  written: " + ", ".join(changed))
     else:
         print("  would change: " + ", ".join(changed) + " (report only; pass --write)")
+    #  T-373: --check is the push routine's: the companion must hold the words the game is built from -- the INDEX
+    #  entries, OPUS's margins, the save's layout -- or a release ships words the companion does not have.
+    if "--check" in sys.argv and changed and not WRITE:
+        print("  !! the companion's data is stale: python3 tools/companion_export.py --write, then commit it in companion/")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

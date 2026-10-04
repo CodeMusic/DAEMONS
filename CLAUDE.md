@@ -273,8 +273,9 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 *"Keep going"* means: take the next decided TODO work and release each batch this way. **Nothing here is optional.**
 
 1. **Build all four ROMs and check each exit code** (`firered`, `leafgreen`, `firered_debug`, `leafgreen_debug`).
-2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, then `check_generators.py` on
-   a quiet tree (edit neither repo while it runs).
+2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, `companion_export.py --check`
+   (the companion holds the words the game is built from, T-373), then `check_generators.py` on a quiet tree (edit
+   neither repo while it runs).
 3. **Commit per ticket** in both repos -- engine first, then the docs commit that strikes the ticket through with the
    engine commit -- and push both.
 4. **Release**: `check_fresh_clone.py`, then `romrelease.py --write`, commit "ROM release vX: ...", push, then

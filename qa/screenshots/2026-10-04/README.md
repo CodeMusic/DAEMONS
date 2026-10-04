@@ -19,3 +19,9 @@ C-23: the companion's PROFILE, read from a save the game wrote: trainer, ID No.,
 T-366: the OWL in CALLOW SCHOOL's green and yellow -- the exam and the classroom before and after, and his house
 
 ![4Oct2026 - T366 - the OWL in CALLOW SCHOOLs colours - 3](4Oct2026%20-%20T366%20-%20the%20OWL%20in%20CALLOW%20SCHOOLs%20colours%20-%203.png)
+
+### 4Oct2026 - T370 - AWAY reshaped, played end to end - 4
+
+T-370: SEND only once linked, one at a time, the emergency way home, and SEND again after the app's SYNC (DRAFT words)
+
+![4Oct2026 - T370 - AWAY reshaped, played end to end - 4](4Oct2026%20-%20T370%20-%20AWAY%20reshaped%2C%20played%20end%20to%20end%20-%204.png)
