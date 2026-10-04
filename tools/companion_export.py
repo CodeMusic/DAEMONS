@@ -15,6 +15,8 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
                 and its note, C to B (vision 9.21)
   seasons.json  the seasons by edition (C-14), from tools/seasons.py -- the one definition the game shares
   save_layout.json  the save's sectors, sizes and offsets, read from the built game (C-02)
+  profile_layout.json  where the PROFILE's facts live in the save, from global.h and flags.h (C-23)
+  maps.json     every map by the numbers a save stores, with its place's name (C-23)
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
 entries and our art only.
@@ -235,6 +237,75 @@ def save_layout():
             "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT}
 
 
+def struct_offsets(text, struct):
+    """{field: offset} for one struct in a header, from its /*0xNN*/ comments -- so a field is found in ITS struct (a
+    name like flags appears in two save blocks)."""
+    m = re.search(r"^struct %s\s*\{(.*?)^\};" % re.escape(struct), text, re.M | re.S)
+    if not m:
+        raise SystemExit("  refused: struct %s not found" % struct)
+    return {f: int(o, 16) for o, f in re.findall(r"/\*0x([0-9A-Fa-f]+)\*/\s*[\w ]+?\s+\**(\w+)\s*(?:\[|;|:)", m.group(1))}
+
+
+def flag_values(names, header="constants/flags.h"):
+    """the numbers of constants, as the compiler sees them: the C preprocessor expands each through every header it
+    leans on (SYS_FLAGS, TRAINER_FLAGS_END, MAX_TRAINERS_COUNT...), and the arithmetic left is evaluated here."""
+    import subprocess, tempfile
+    src = '#include "%s"\n' % header + "".join("@%d@ %s\n" % (i, n) for i, n in enumerate(names))
+    with tempfile.NamedTemporaryFile("w", suffix=".c", delete=False) as f:
+        f.write(src)
+    out = subprocess.run(["arm-none-eabi-cpp", "-P", "-I", os.path.join(GBA, "include"), f.name],
+                         capture_output=True, text=True)
+    os.unlink(f.name)
+    got = {names[int(i)]: v for i, v in re.findall(r"^@(\d+)@ (.+)$", out.stdout, re.M)}
+    missing = [n for n in names if n not in got]
+    if missing:
+        raise SystemExit("  refused: the preprocessor did not resolve %s\n%s" % (missing, out.stderr[-800:]))
+    return {n: eval(got[n], {"__builtins__": {}}) for n in names}
+
+
+def profile_layout():
+    """C-23: where the PROFILE's facts live in a save -- the trainer, the play time, the INDEX's seen and bound, the
+    MARKS, how far the game has gone and where it was saved -- every offset from the built game's own headers."""
+    g = read("include/global.h")
+    sb2, sb1, dex = struct_offsets(g, "SaveBlock2"), struct_offsets(g, "SaveBlock1"), struct_offsets(g, "Pokedex")
+    flags = flag_values(["FLAG_BADGE01_GET", "FLAG_BADGE08_GET", "FLAG_SYS_POKEDEX_GET", "FLAG_SYS_GAME_CLEAR",
+                         "FLAG_GOT_DIPLOMA", "DAEMONS_FLAGS_START"])
+    items = dict(re.findall(r"^#define\s+(ITEM_OPUS)\s+(\d+)", read("include/constants/items.h"), re.M))
+    kcount = re.search(r"#define\s+BAG_KEYITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)
+    return {"_about": "C-23: offsets into SaveBlock2 (section 0) and SaveBlock1 (sections 1-4, end to end), read from "
+                      "global.h's own struct comments; flag numbers resolved from flags.h. A flag below "
+                      "daemons_flags_start is a bit in SaveBlock1's flags, one at or above it a bit in SaveBlock2's "
+                      "daemonsFlags. INDEX flags are by national number minus one. Money is stored XOR the "
+                      "encryption key.",
+            "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
+                    "trainer_id": sb2["playerTrainerId"], "play_time_hours": sb2["playTimeHours"],
+                    "play_time_minutes": sb2["playTimeMinutes"], "play_time_seconds": sb2["playTimeSeconds"],
+                    "index_bound": sb2["pokedex"] + dex["owned"], "index_seen": sb2["pokedex"] + dex["seen"],
+                    "index_bytes": dex["seen"] - dex["owned"],
+                    "daemons_flags": sb2["daemonsFlags"], "encryption_key": sb2["encryptionKey"]},
+            "sb1": {"location": sb1["location"], "flags": sb1["flags"], "money": sb1["money"],
+                    "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount)},
+            "flags": {"marks_first": flags["FLAG_BADGE01_GET"], "marks_last": flags["FLAG_BADGE08_GET"],
+                      "index": flags["FLAG_SYS_POKEDEX_GET"], "game_clear": flags["FLAG_SYS_GAME_CLEAR"],
+                      "diploma": flags["FLAG_GOT_DIPLOMA"], "daemons_flags_start": flags["DAEMONS_FLAGS_START"]},
+            "items": {"opus": int(items["ITEM_OPUS"])}}
+
+
+def maps_table():
+    """C-23: every map by the numbers a save stores (group, number), with its place's name as the game shows it."""
+    groups = json.loads(read("data/maps/map_groups.json"))
+    names = {}
+    for sec in json.loads(read("src/data/region_map/region_map_sections.json"))["map_sections"]:
+        if sec.get("name"):
+            names[sec["id"]] = sec["name"]
+    out = {"_about": "C-23: map group.number -> the map and its place's name (region_map_sections.json, our names)."}
+    for g, group in enumerate(groups["group_order"]):
+        for n, m in enumerate(groups[group]):
+            sec = json.loads(read("data/maps/%s/map.json" % m)).get("region_map_section", "")
+            out["%d.%d" % (g, n)] = {"map": m, "place": names.get(sec, "")}
+    return out
+
+
 def seasons_table():
     """C-14: the seasons from tools/seasons.py, the one definition the game's T-359 will share."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -250,7 +321,8 @@ def seasons_table():
 
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
-             "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table()}
+             "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
+             "profile_layout.json": profile_layout(), "maps.json": maps_table()}
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
