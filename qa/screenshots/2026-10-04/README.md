@@ -37,3 +37,15 @@ T-374: SEND asks to restore a wounded daemon; an AWAY daemon refuses ITEM, the b
 T-371: on every CHECKPOINT's second floor, a lemur explains the companion and SEND; once linked, he notices (DRAFT)
 
 ![4Oct2026 - T371 - the lemur who tells you about the companion - 6](4Oct2026%20-%20T371%20-%20the%20lemur%20who%20tells%20you%20about%20the%20companion%20-%206.png)
+
+### 4Oct2026 - T349 - the old man as an iguana, vanilla above - 7
+
+T-349: the catching battle's old man, redrawn as an iguana -- the crest and snout read as one now (vanilla above).
+
+![4Oct2026 - T349 - the old man as an iguana, vanilla above - 7](4Oct2026%20-%20T349%20-%20the%20old%20man%20as%20an%20iguana%2C%20vanilla%20above%20-%207.png)
+
+### 4Oct2026 - C29 - the companions SETTINGS and the SYNC that teaches the path - 8
+
+C-29: SETTINGS shows the save path and where it came from; SYNC with no save set explains a save and offers the picker.
+
+![4Oct2026 - C29 - the companions SETTINGS and the SYNC that teaches the path - 8](4Oct2026%20-%20C29%20-%20the%20companions%20SETTINGS%20and%20the%20SYNC%20that%20teaches%20the%20path%20-%208.png)
