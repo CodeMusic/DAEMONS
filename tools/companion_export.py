@@ -287,7 +287,8 @@ def profile_layout():
                       "global.h's own struct comments; flag numbers resolved from flags.h. A flag below "
                       "daemons_flags_start is a bit in SaveBlock1's flags, one at or above it a bit in SaveBlock2's "
                       "daemonsFlags. INDEX flags are by national number minus one. Money is stored XOR the "
-                      "encryption key.",
+                      "encryption key. A daemon is SEEN only when sb2 index_seen and sb1 seen1 and seen2 all have its bit "
+                      "(pokedex_screen.c's anticheat), so a writer sets all three.",
             "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
                     "trainer_id": sb2["playerTrainerId"], "play_time_hours": sb2["playTimeHours"],
                     "play_time_minutes": sb2["playTimeMinutes"], "play_time_seconds": sb2["playTimeSeconds"],
@@ -295,7 +296,9 @@ def profile_layout():
                     "index_bytes": dex["seen"] - dex["owned"],
                     "daemons_flags": sb2["daemonsFlags"], "encryption_key": sb2["encryptionKey"]},
             "sb1": {"location": sb1["location"], "flags": sb1["flags"], "money": sb1["money"],
-                    "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount)},
+                    "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount),
+                    # C-15: the INDEX's seen flags are kept three times; the game believes them only when all agree
+                    "seen1": sb1["seen1"], "seen2": sb1["seen2"]},
             "flags": {"marks_first": flags["FLAG_BADGE01_GET"], "marks_last": flags["FLAG_BADGE08_GET"],
                       "index": flags["FLAG_SYS_POKEDEX_GET"], "game_clear": flags["FLAG_SYS_GAME_CLEAR"],
                       "diploma": flags["FLAG_GOT_DIPLOMA"], "daemons_flags_start": flags["DAEMONS_FLAGS_START"],
