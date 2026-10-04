@@ -19,6 +19,7 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
   profile_layout.json  where the PROFILE's facts live in the save, from global.h and flags.h (C-23)
   maps.json     every map by the numbers a save stores, with its place's name (C-23)
   margins.json  OPUS's margins, and the game's rule for which line shows (C-24, T-373)
+  items.json    every item by id, our name and description, for what an AWAY daemon holds (C-31)
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
 entries and our art only.
@@ -329,6 +330,18 @@ def margins_table():
     return out
 
 
+def items_table():
+    """C-31: every item by the id a save stores, with our name and description (src/data/items.json, which the game's
+    items.h is generated from) -- so the app and the device name what an AWAY daemon is holding as the game does."""
+    ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define (ITEM_\w+)\s+(\d+)\b", read("include/constants/items.h"))}
+    out = {"_about": "C-31: item id -> our name and description, from src/data/items.json."}
+    for it in json.loads(read("src/data/items.json"))["items"]:
+        if it.get("itemId") in ids and ids[it["itemId"]]:
+            out[str(ids[it["itemId"]])] = {"name": it.get("english", ""),
+                                           "description": it.get("description_english", "").replace("\\n", " ")}
+    return out
+
+
 def seasons_table():
     """C-14: the seasons from tools/seasons.py, the one definition the game's T-359 will share."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -345,7 +358,8 @@ def seasons_table():
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
-             "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table()}
+             "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
+             "items.json": items_table()}
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
