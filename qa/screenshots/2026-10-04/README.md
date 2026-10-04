@@ -61,3 +61,15 @@ C-36, C-37: the handheld's screens captured from the board itself -- Sunday's ta
 C-13, C-42: home is the daemon you carry -- how it is, its meals and water, the meal-time cue -- and CARE feeds, waters and trains it (captured from the board).
 
 ![4Oct2026 - C13 - the daemon at home and its CARE menu, from the board - 11](4Oct2026%20-%20C13%20-%20the%20daemon%20at%20home%20and%20its%20CARE%20menu%2C%20from%20the%20board%20-%2011.png)
+
+### 4Oct2026 - C49 - a step done and undone on the board, its milestone above it - 12
+
+C-49, C-50: on the board -- a step with its milestone, done (the next at once, undo offered), undone, and a milestone finished (scratch server, not the user's data).
+
+![4Oct2026 - C49 - a step done and undone on the board, its milestone above it - 12](4Oct2026%20-%20C49%20-%20a%20step%20done%20and%20undone%20on%20the%20board%2C%20its%20milestone%20above%20it%20-%2012.png)
+
+### 4Oct2026 - C51 - FLARE, the daemons remotes - 13
+
+C-51: FLARE on the board -- teach a remote, its three buttons, and which remote ARTSAI uses (SONY added from the site).
+
+![4Oct2026 - C51 - FLARE, the daemons remotes - 13](4Oct2026%20-%20C51%20-%20FLARE%2C%20the%20daemons%20remotes%20-%2013.png)
