@@ -85,6 +85,13 @@ def species_table():
         g = re.search(r"\.growthRate\s*=\s*GROWTH_(\w+)", m.group(2))
         if g and g.group(1) in growth_names:
             growth[m.group(1)] = growth_names.index(g.group(1))
+    # C-45: its base stats, so a daemon that grew on the device comes home with the stats the game would give it
+    base = {}
+    for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{((?:(?!\[SPECIES_).)*)", info, re.S):
+        got = [re.search(r"\.%s\s*=\s*(\d+)" % f, m.group(2)) for f in
+               ("baseHP", "baseAttack", "baseDefense", "baseSpeed", "baseSpAttack", "baseSpDefense")]
+        if all(got):
+            base[m.group(1)] = [int(x.group(1)) for x in got]
 
     out = {}
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
@@ -105,6 +112,7 @@ def species_table():
             "bodyType": body.get(sp),                  # C-18: the type its palette ramp was built from
             "streaks": sp in streaky,                  # C-18: palette 11..14 carry its four routines' streaks
             "growth": growth.get(sp, 0),               # C-24: GROWTH_*, MEDIUM_FAST where a macro hides it
+            "base": base.get(sp),                      # C-45: HP, Attack, Defense, Speed, Sp.Atk, Sp.Def
         }
         out[str(sid)] = row
     return out
@@ -245,7 +253,15 @@ def save_layout():
             "storage_size": sizes["gPokemonStorage"],
             "party_count_offset": off("playerPartyCount"), "party_offset": off("playerParty"),
             "pokemon_size": 100, "box_pokemon_size": 80, "level_offset": 84,
-            "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT}
+            "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT,
+            # C-45: sNatureStatTable (pokemon.c), by nature: Attack, Defense, Speed, Sp.Atk, Sp.Def, each +1, -1 or 0
+            "natures": natures_table()}
+
+
+def natures_table():
+    body = re.search(r"sNatureStatTable\[NUM_NATURES\]\[NUM_NATURE_STATS\]\s*=\s*\{(.*?)\};", read("src/pokemon.c"), re.S).group(1)
+    rows = re.findall(r"\[NATURE_\w+\]\s*=\s*\{([^}]*)\}", body)
+    return [[int(v) for v in r.replace("+", "").split(",")] for r in rows]
 
 
 def struct_offsets(text, struct):
