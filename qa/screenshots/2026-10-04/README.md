@@ -55,3 +55,9 @@ C-29: SETTINGS shows the save path and where it came from; SYNC with no save set
 C-36, C-37: the handheld's screens captured from the board itself -- Sunday's tamed red, ARTSAI drawn as the game draws it, and its INDEX entry a press away.
 
 ![4Oct2026 - C36 - the handhelds four screens, captured from the board - 9](4Oct2026%20-%20C36%20-%20the%20handhelds%20four%20screens%2C%20captured%20from%20the%20board%20-%209.png)
+
+### 4Oct2026 - C13 - the daemon at home and its CARE menu, from the board - 11
+
+C-13, C-42: home is the daemon you carry -- how it is, its meals and water, the meal-time cue -- and CARE feeds, waters and trains it (captured from the board).
+
+![4Oct2026 - C13 - the daemon at home and its CARE menu, from the board - 11](4Oct2026%20-%20C13%20-%20the%20daemon%20at%20home%20and%20its%20CARE%20menu%2C%20from%20the%20board%20-%2011.png)
