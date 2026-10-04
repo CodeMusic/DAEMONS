@@ -73,3 +73,9 @@ C-49, C-50: on the board -- a step with its milestone, done (the next at once, u
 C-51: FLARE on the board -- teach a remote, its three buttons, and which remote ARTSAI uses (SONY added from the site).
 
 ![4Oct2026 - C51 - FLARE, the daemons remotes - 13](4Oct2026%20-%20C51%20-%20FLARE%2C%20the%20daemons%20remotes%20-%2013.png)
+
+### 4Oct2026 - C46 - the users goal on the board - 14
+
+C-46, C-49: the user's own goal on the board, synced from the iPhone app -- Clean Apartment, LIVING ROOM 1/4, Entry.
+
+![4Oct2026 - C46 - the users goal on the board - 14](4Oct2026%20-%20C46%20-%20the%20users%20goal%20on%20the%20board%20-%2014.png)
