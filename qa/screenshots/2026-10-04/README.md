@@ -97,3 +97,9 @@ T-337, seen on a screen 2026-10-04: the singing fir on the empty pier; its star 
 T-337, seen on a screen 2026-10-04: the singing fir on the empty pier; its star holds gold, then catches the light and glints white, on an irregular loop (theatre burst, every sixth frame).
 
 ![4Oct2026 - T337 - the singing firs star twinkling, frame by frame - 17](4Oct2026%20-%20T337%20-%20the%20singing%20firs%20star%20twinkling%2C%20frame%20by%20frame%20-%2017.png)
+
+### 4Oct2026 - T372 - the clock beside the day on the trainer card - 18
+
+T-372 built: the clock beside the day, front and back, when the cartridge's real clock drives the time (here mGBA's) -- the user's choice, A with a clock.
+
+![4Oct2026 - T372 - the clock beside the day on the trainer card - 18](4Oct2026%20-%20T372%20-%20the%20clock%20beside%20the%20day%20on%20the%20trainer%20card%20-%2018.png)
