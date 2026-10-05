@@ -210,8 +210,8 @@ def lizard(f, hs, front, top, low, ey):
 PD_SKIN, PD_HAIR, PD_LIPS, PD_VEST = (1, 2, 3, 4), (12, 7), 13, (5, 6, 8, 14)
 BLOCK = (23, 4)                        # frame 0's head block, top-left: the bob starts at column 23, the ears need row 4
 CRYSTAL = {
-    7: (255, 214, 66), 12: (236, 176, 40), 11: (196, 120, 28),    # her gold, its shade, a rust edge
-    9: (255, 246, 214),                                            # cream: the muzzle and the throat
+    7: (255, 137, 26), 11: (166, 52, 34), 12: (66, 22, 32),       # T-350: her orange, its rust shade, the head's outline
+    9: (245, 245, 245),                                            # white fur: the cheek and inside the ears
     5: (240, 240, 244), 8: (212, 214, 226), 6: (170, 172, 190),   # the white coat where the vest was
     10: (84, 84, 100),                                              # grey paws
     13: (255, 246, 214),                                            # the lips go; their index is cream now
@@ -262,6 +262,83 @@ NECK_FROM = 25                         # art rows from here down are the RUFF. T
                                        # that, as a lollipop
 
 
+# ---------------------------------------------------------------------- T-350: CRYSTAL FROM BEHIND
+# THE HEAD ABOVE STILL READ AS PASTED ON (the user, 2026-10-03: "we just drew a fox like head over the original and
+# you can tell"): a profile, drawn flat, on a figure seen from behind. Its replacement was drafted on the sprite
+# server (gfx/drafts/crystal_back_f0_s361: an i2i of the standing frame, a three-quarter BACK view -- the round head
+# from behind, the near ear tall, the snout's tip just past the cheek, and the orange ruff falling to the collar),
+# shrunk to 64x64 and APPROVED by the user on 2026-10-04 as set on each frame. Drawn by hand into index art from that
+# approved frame; placed per frame exactly where the old head was (head_offsets), so the throw is vanilla's.
+# K is its own outline (a maroon, as approved, not the ink), O the orange, R the rust shade, W white fur, L the coat.
+BACK_L = {".": None, "K": 12, "O": 7, "R": 11, "W": 9, "L": 6}
+BACK_AT = (-2, 1)                      # its top-left against BLOCK
+OLD_HEAD = (7, 12, 11, 9, 13)          # every colour the old head was drawn in
+BACK_HEAD = [
+    ".......................KK......",
+    ".......K..............KKKK.....",
+    ".......KKK...........KKRKK.....",
+    ".......KKKK..........KOOKK.....",
+    "......KKKKKK........ROOWKK.....",
+    "......KROOK........ROOWWKK.....",
+    "......KROOOK......ROOOWWKK.....",
+    "......KOOOOOR....ROOOWWWKK.....",
+    "......KOOOOOOK..ROOOOWWWKK.....",
+    ".....KROOORKOKKKOOOOOWWWK......",
+    ".....KOOORROOOOOOOOOOWLLK......",
+    ".....KOORROOOOOORROOOWWL.......",
+    ".....KRROOOOOOOOOROOOOKRK......",
+    ".....KRROOOOOOOOORROOOKKR......",
+    ".....KROOOOOOOOOOORROKKRK......",
+    "...KKKROOOOOOOOOOOOORKOOORR....",
+    "....KKOOOOOOOOOOOOOOOOOOOK.....",
+    "....KOOOOOOOOOOOOOOOOOOKKOKK...",
+    "....KOOOOOOOOOOOOOOOOOOLKOK....",
+    "....KOOOOOOOOOOOOOOOOOWWKKK....",
+    "..K.KOOOOOOOOOOOOOOOOWWWKKK....",
+    ".KKROOOROOOOOOOOOOOOWWWWWRRK...",
+    "..KORROROOOOOOOOOOOWWWWWWWOOKK.",
+    "..KRKRRRROROOOOORROOOWWWWWWLORK",
+    "...KKKRRRRRRRRRRRROOOOWWWWWWLKK",
+    ".....KKRKKKKKKRRRRROOOLKWWWKKK.",
+    ".....KROOOOOOOKRKRRRRKKLK.K....",
+    "...KKOOOOOOOOOORKKKKKRRKK......",
+    "..KKOOOOOOOOOOOOOKLLLKKKKK.....",
+    ".KKOOOOOOOOOOOOO........KK.....",
+    "KKKOOOOOOOOOOOOOO........K.....",
+    "KKOOOOOOOOOOOOOOO..............",
+    "KKKOOOOOOOOOOOOOO..............",
+    "KKOOOOOOOOOOOOOOO..............",
+    "KKKOOOOOOOOOOOOOK..............",
+    ".K.KKOOOOOOOOOOK...............",
+    ".....KOOOOOOOOK................",
+    "......KOOOOOOK.................",
+    "......KOOOOOK..................",
+    ".......KOOKK...................",
+    "........KK.....................",
+]
+
+
+def back_head(fs):
+    for f, (dx, dy) in zip(fs, head_offsets_cache):
+        # the old head goes, colours and the ink that outlined them
+        gone = {(x, y) for y in range(64) for x in range(64) if f[y][x] in OLD_HEAD}
+        for x, y in list(gone):
+            for a in (-1, 0, 1):
+                for b in (-1, 0, 1):
+                    if 0 <= x + a < 64 and 0 <= y + b < 64 and f[y + b][x + a] == INK:
+                        gone.add((x + a, y + b))
+        for x, y in gone:
+            f[y][x] = 0
+        ox, oy = BLOCK[0] + dx + BACK_AT[0], BLOCK[1] + dy + BACK_AT[1]
+        for r, row in enumerate(BACK_HEAD):
+            for c, ch in enumerate(row):
+                if BACK_L[ch] is not None and 0 <= ox + c < 64 and 0 <= oy + r < 64:
+                    f[oy + r][ox + c] = BACK_L[ch]
+
+
+head_offsets_cache = []
+
+
 def head_offsets(fs):
     tmpl = [(x, y, fs[0][y][x]) for y in range(11, 39) for x in range(23, 51) if fs[0][y][x] in PD_HAIR]
     out = []
@@ -274,7 +351,8 @@ def head_offsets(fs):
 
 
 def fox_strip(fs):
-    for f, (dx, dy) in zip(fs, head_offsets(fs)):
+    head_offsets_cache[:] = head_offsets(fs)
+    for f, (dx, dy) in zip(fs, head_offsets_cache):
         ox, oy = BLOCK[0] + dx, BLOCK[1] + dy
         w, h = len(FOX_HEAD[0]), len(FOX_HEAD)
         # the old head goes: the bob and the lips anywhere in the block, and the face's pale eye in its top part.
@@ -321,7 +399,8 @@ def fox_strip(fs):
 
 FIGURES = [
     dict(name="the old iguana", file="old_man_back_pic.png", pal="old_man_back_pic.pal", colours=IGUANA, shape=iguana),
-    dict(name="CRYSTAL CLEAR", file="pokedude_back_pic.png", pal="pokedude_back_pic.pal", colours=CRYSTAL, strip=fox_strip),
+    dict(name="CRYSTAL CLEAR", file="pokedude_back_pic.png", pal="pokedude_back_pic.pal", colours=CRYSTAL,
+         strip=lambda fs: (fox_strip(fs), back_head(fs))),                       # T-350: and then seen from behind
 ]
 
 
