@@ -61,3 +61,6 @@ ai/bridgevenv/
 
 # The four things the game asks the player to work out (CLAUDE.md), kept out of the public repo, 2026-09-27
 docs/private/
+
+# T-350: drafts drawn over the original game's frames stay local (nothing of Nintendo's in this repo)
+gfx/drafts/crystal_back_*
