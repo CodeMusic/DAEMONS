@@ -154,11 +154,14 @@ def clear_battle(g):
         s = g.state()
         if not s["battle"]:
             return
-        if attempt < 6:       # RUN is the menu's bottom right (DETACH); B first to clear any text. A trainer refuses it.
+        if attempt < 2:       # RUN is the menu's bottom right (DETACH); B first to clear any text. A trainer refuses it.
             run("hold B 8", "wait 40", "hold DOWN 8", "wait 16", "hold RIGHT 8", "wait 16", "hold A 8", "wait 120",
                 "hold A 8", "wait 60", "hold A 8", "wait 40")
-        else:
-            run(*(["hold A 6", "wait 50"] * 6))
+        else:                 # fight: ROUTINES, then each of the four slots in turn (the first may be out of MP)
+            slot = [[], ["RIGHT"], ["DOWN"], ["DOWN", "RIGHT"]][attempt % 4]
+            run("hold B 8", "wait 30", "hold A 8", "wait 40", "hold UP 6", "wait 10", "hold LEFT 6", "wait 10",
+                *sum((["hold %s 6" % k, "wait 10"] for k in slot), []), "hold A 8", "wait 90",
+                *(["hold A 6", "wait 50"] * 4))
     sys.exit("theatre_walk: still in a battle after forty tries")
 
 
@@ -168,6 +171,11 @@ OPPOSITE = {"UP": "DOWN", "DOWN": "UP", "LEFT": "RIGHT", "RIGHT": "LEFT"}
 def enter(g, m, warp, start_map):
     """Standing on a warp that has not fired: a door mat fires on pressing out through it, FireRed's sideways stairs
     (the museum's) on pressing along them -- so press each way in turn, stepping back on whenever a press took us off."""
+    s = g.state()
+    if (s["x"], s["y"]) != warp:                                         # on the mat's end: onto its middle first
+        dx, dy = warp[0] - s["x"], warp[1] - s["y"]
+        if abs(dx) + abs(dy) == 1:
+            run("hold %s 16" % next(d for d, v in DIRS.items() if v == (dx, dy)), "wait 30")
     # a mat or a door fires on pressing OUT through it -- toward the wall, or off the map -- so those sides first
     def closed(d):
         n = (warp[0] + DIRS[d][0], warp[1] + DIRS[d][1])
