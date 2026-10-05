@@ -5,6 +5,7 @@
     python3 tools/theatre_walk.py to X Y                 # walk to (X, Y) on this map
     python3 tools/theatre_walk.py warp MAP_DEST          # walk into this map's warp to MAP_DEST
     python3 tools/theatre_walk.py edge up|down|left|right   # walk off this map's edge, onto the next
+    python3 tools/theatre_walk.py flag 0x302 [0|1]       # read a flag, or set it -- to replay a scene on a scratch save
     ... --release                                         # the theatre is running the release ROM, not the debug one
 
 WHY. Driving the theatre by held buttons alone went wrong all morning: a 16-frame hold sometimes only turns the
@@ -246,6 +247,20 @@ def main():
     if not a or a[0] == "where":
         s = g.state()
         print("%s (%d, %d)%s" % (map_name(*s["map"]), s["x"], s["y"], "  IN A BATTLE" if s["battle"] else ""))
+        return
+    if a[0] == "flag":                 # FireRed's flags in SaveBlock1 (+0xEE0); DAEMONS' own from 0x900 in SaveBlock2 (+0xEA0)
+        f = int(a[1], 0)
+        if f < 0x900:
+            base, f2 = peek([(32, g.sb1, "p")])["p"] + 0xEE0, f
+        else:
+            base, f2 = peek([(32, symbol("gSaveBlock2Ptr", "--release" in sys.argv), "p")])["p"] + 0xEA0, f - 0x900
+        addr, bit = base + (f2 >> 3), 1 << (f2 & 7)
+        byte = peek([(8, addr, "b")])["b"]
+        if len(a) > 2:
+            byte = byte | bit if int(a[2]) else byte & ~bit
+            run("poke8 %s %d" % (hex(addr), byte))
+            byte = peek([(8, addr, "b")])["b"]
+        print("flag %s is %s" % (hex(f), "set" if byte & bit else "clear"))
         return
     s = g.state()
     m = Map(map_name(*s["map"]))

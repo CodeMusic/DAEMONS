@@ -37,3 +37,15 @@ v11.295.7 in the theatre: 'Leave it with me. It will not take long.' before, and
 v11.295.6 in the theatre: CAIRN's statue after the win, and THE UNDERTONE's SAMMY after his battle
 
 ![5Oct2026 - T321 - the SLATE gym statue and SAMMY - 7](5Oct2026%20-%20T321%20-%20the%20SLATE%20gym%20statue%20and%20SAMMY%20-%207.png)
+
+### 5Oct2026 - T321 - CAIRN gives the NOTEBOOK - 8
+
+v11.295.7 in the theatre (the NOTEBOOK flag cleared on the scratch save, CAIRN fought): the gift and his book
+
+![5Oct2026 - T321 - CAIRN gives the NOTEBOOK - 8](5Oct2026%20-%20T321%20-%20CAIRN%20gives%20the%20NOTEBOOK%20-%208.png)
+
+### 5Oct2026 - T321 - the Owl and the thermostat - 9
+
+v11.295.7 in the theatre: the Owl's scene with S.T.A.R.R. in the party, the rewritten turn included
+
+![5Oct2026 - T321 - the Owl and the thermostat - 9](5Oct2026%20-%20T321%20-%20the%20Owl%20and%20the%20thermostat%20-%209.png)
