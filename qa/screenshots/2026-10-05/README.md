@@ -19,3 +19,9 @@ v11.295.5, a fresh CONTENT game in the theatre: the rival in the lab before CRYS
 v11.295.5, a fresh CONTENT game in the theatre: the CC-7 delivered, the INDEX handed over, and CRYSTAL's two things that open it further
 
 ![5Oct2026 - T338 - CRYSTAL hints at OPUS with the INDEX - 4](5Oct2026%20-%20T338%20-%20CRYSTAL%20hints%20at%20OPUS%20with%20the%20INDEX%20-%204.png)
+
+### 5Oct2026 - T321 - three rewritten lines where they are spoken - 5
+
+v11.295.5 in the theatre: the SLATE curator (before T-375's fix: he said 'The upstairs exhibit' upstairs), the museum's old man, and the VERDIGRIS store's child
+
+![5Oct2026 - T321 - three rewritten lines where they are spoken - 5](5Oct2026%20-%20T321%20-%20three%20rewritten%20lines%20where%20they%20are%20spoken%20-%205.png)
