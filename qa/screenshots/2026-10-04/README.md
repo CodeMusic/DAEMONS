@@ -103,3 +103,9 @@ T-337, seen on a screen 2026-10-04: the singing fir on the empty pier; its star 
 T-372 built: the clock beside the day, front and back, when the cartridge's real clock drives the time (here mGBA's) -- the user's choice, A with a clock.
 
 ![4Oct2026 - T372 - the clock beside the day on the trainer card - 18](4Oct2026%20-%20T372%20-%20the%20clock%20beside%20the%20day%20on%20the%20trainer%20card%20-%2018.png)
+
+### 4Oct2026 - T350 - CRYSTAL from behind, the draft beside the old - 19
+
+T-350 draft: CRYSTAL's back in the STREAM's catch, the fox head and ruff seen from behind on every throw frame (top: the pasted head it replaces). For the user's approval before it is built.
+
+![4Oct2026 - T350 - CRYSTAL from behind, the draft beside the old - 19](4Oct2026%20-%20T350%20-%20CRYSTAL%20from%20behind%2C%20the%20draft%20beside%20the%20old%20-%2019.png)
