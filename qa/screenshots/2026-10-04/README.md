@@ -121,3 +121,21 @@ v11.295.5: CRYSTAL's back as genmentors.py builds it from vanilla's four frames,
 v11.295.5 in the theatre: the STREAM's Binding a stranger, the intro slide and the send-out
 
 ![4Oct2026 - T350 - CRYSTAL from behind in the STREAM - 21](4Oct2026%20-%20T350%20-%20CRYSTAL%20from%20behind%20in%20the%20STREAM%20-%2021.png)
+
+### 4Oct2026 - T323 - the bedroom poster, read - 23
+
+v11.295.5 in the theatre: the bedroom poster, every line in its box
+
+![4Oct2026 - T323 - the bedroom poster, read - 23](4Oct2026%20-%20T323%20-%20the%20bedroom%20poster%2C%20read%20-%2023.png)
+
+### 4Oct2026 - T218 - the READING ROOM turns away a player with no DIPLOMA - 24
+
+v11.295.5 in the theatre: BRAZEN's READING ROOM without the DIPLOMA, the turn-away as written
+
+![4Oct2026 - T218 - the READING ROOM turns away a player with no DIPLOMA - 24](4Oct2026%20-%20T218%20-%20the%20READING%20ROOM%20turns%20away%20a%20player%20with%20no%20DIPLOMA%20-%2024.png)
+
+### 4Oct2026 - T332 - the two-column START menu - 25
+
+v11.295.5 in the theatre: the START menu in two columns
+
+![4Oct2026 - T332 - the two-column START menu - 25](4Oct2026%20-%20T332%20-%20the%20two-column%20START%20menu%20-%2025.png)
