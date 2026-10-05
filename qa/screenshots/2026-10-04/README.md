@@ -85,3 +85,15 @@ C-46, C-49: the user's own goal on the board, synced from the iPhone app -- Clea
 T-372 mock-up on the real card: A a clock or hourglass beside the day in the header, B the word LIVE or PLAY there (DRAFT), C the symbol on the TIME row. Left: the cartridge's real clock; right: time from play.
 
 ![4Oct2026 - T372 - the trainer cards clock mark, three options - 15](4Oct2026%20-%20T372%20-%20the%20trainer%20cards%20clock%20mark%2C%20three%20options%20-%2015.png)
+
+### 4Oct2026 - T337 - the singing firs star twinkling, frame by frame - 16
+
+T-337, seen on a screen 2026-10-04: the singing fir on the empty pier; its star holds gold, then catches the light and glints white, on an irregular loop (theatre burst, every sixth frame).
+
+![4Oct2026 - T337 - the singing firs star twinkling, frame by frame - 16](4Oct2026%20-%20T337%20-%20the%20singing%20firs%20star%20twinkling%2C%20frame%20by%20frame%20-%2016.png)
+
+### 4Oct2026 - T337 - the singing firs star twinkling, frame by frame - 17
+
+T-337, seen on a screen 2026-10-04: the singing fir on the empty pier; its star holds gold, then catches the light and glints white, on an irregular loop (theatre burst, every sixth frame).
+
+![4Oct2026 - T337 - the singing firs star twinkling, frame by frame - 17](4Oct2026%20-%20T337%20-%20the%20singing%20firs%20star%20twinkling%2C%20frame%20by%20frame%20-%2017.png)
