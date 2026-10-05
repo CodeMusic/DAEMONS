@@ -109,3 +109,15 @@ T-372 built: the clock beside the day, front and back, when the cartridge's real
 T-350 draft: CRYSTAL's back in the STREAM's catch, the fox head and ruff seen from behind on every throw frame (top: the pasted head it replaces). For the user's approval before it is built.
 
 ![4Oct2026 - T350 - CRYSTAL from behind, the draft beside the old - 19](4Oct2026%20-%20T350%20-%20CRYSTAL%20from%20behind%2C%20the%20draft%20beside%20the%20old%20-%2019.png)
+
+### 4Oct2026 - T350 - CRYSTAL from behind, as built - 20
+
+v11.295.5: CRYSTAL's back as genmentors.py builds it from vanilla's four frames, beside the head it replaced
+
+![4Oct2026 - T350 - CRYSTAL from behind, as built - 20](4Oct2026%20-%20T350%20-%20CRYSTAL%20from%20behind%2C%20as%20built%20-%2020.png)
+
+### 4Oct2026 - T350 - CRYSTAL from behind in the STREAM - 21
+
+v11.295.5 in the theatre: the STREAM's Binding a stranger, the intro slide and the send-out
+
+![4Oct2026 - T350 - CRYSTAL from behind in the STREAM - 21](4Oct2026%20-%20T350%20-%20CRYSTAL%20from%20behind%20in%20the%20STREAM%20-%2021.png)
