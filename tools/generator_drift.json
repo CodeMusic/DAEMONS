@@ -206,8 +206,9 @@
   ]
  },
  "port_states": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 3de6857eb T-248: a state is explained in its own name; 4671607a1 T-219 (batch 4): 2F ATTENTION, 3F MEMORY, 4F CATEGORIES; 5d7cd6d95 T-223: the NOTEBOOK and the TEXTBOOK read like books (+2 more)",
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 3de6857eb T-248: a state is explained in its own name; 4671607a1 T-219 (batch 4): 2F ATTENTION, 3F MEMORY, 4F CATEGORIES; 5d7cd6d95 T-223: the NOTEBOOK and the TEXTBOOK read like books (+2 more); T-383: PHLEGMATIC's 'deep-freeze' is ice, not the HANG state -- dialogue keeps ordinary words (check_lexicon's rule)",
   "files": [
+   "engine:data/maps/FourIsland_IcefallCave_Back/text.inc",
    "engine:data/maps/ViridianCity_School_3F/text.inc",
    "engine:data/maps/ViridianCity_School_5F/text.inc",
    "engine:src/data/items.json",

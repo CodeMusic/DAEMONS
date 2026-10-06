@@ -241,16 +241,30 @@ class Runner:
                 raise RouteError("%s has no warp to land on: give X Y" % folder)
             x, y = warps[0]["x"], warps[0]["y"]
         w = tw.symbol("gDaemonsDebugWarp", False)
-        tw.run("poke8 %s %d" % (hex(w + 1), group), "poke8 %s %d" % (hex(w + 2), num),
-               "poke16 %s %d" % (hex(w + 4), int(x)), "poke16 %s %d" % (hex(w + 6), int(y)),
-               "poke8 %s 1" % hex(w), "wait 120")
-        for _ in range(20):
+        arm = ["poke8 %s %d" % (hex(w + 1), group), "poke8 %s %d" % (hex(w + 2), num),
+               "poke16 %s %d" % (hex(w + 4), int(x)), "poke16 %s %d" % (hex(w + 6), int(y)), "poke8 %s 1" % hex(w)]
+        tw.run(*arm, "wait 120")
+        lost = 0
+        for attempt in range(120):
             name, here = self.where()
             if name == folder:
                 tw.run("wait 60")                                         # the fade in
+                if not self.free():                                       # someone saw us land: play it out first
+                    self.boxes()
                 return
-            tw.run("hold B 6", "wait 40")                                 # a box was open: the warp waits for control
-        raise RouteError("the warp to %s did not land (still on %s)" % (folder, name))
+            st = tw.peek([(8, self.lock, "lock"), (8, w, "armed")])
+            if st["armed"]:          # waiting for the field's controls (src/overworld.c, WarpIfTheTheatreAsks)
+                tw.run("hold B 6", "wait 40")
+            elif st["lock"]:         # taken, and on its way: the old map's music fades out first, slowly after a scene
+                tw.run("wait 60")
+            else:                    # taken, free, and still here: lost -- arm it again
+                lost += 1
+                tw.run(*arm, "wait 60")
+                if lost > 3:
+                    break
+        st = tw.peek([(8, self.lock, "lock"), (8, w, "armed")])
+        raise RouteError("the warp to %s did not land (still on %s; controls %s, warp %s)"
+                         % (folder, name, "LOCKED" if st["lock"] else "free", "still armed" if st["armed"] else "taken"))
 
     def person(self, spec):
         folder, _ = self.where()
@@ -294,6 +308,10 @@ class Runner:
 
     def talk(self, spec, n=None):
         self.walkto(spec)
+        tw.run("wait 30")
+        if not self.free():                                               # a trainer saw us turn: theirs first
+            self.boxes()
+            self.walkto(spec)
         tw.run("hold A 6", "wait 50")
         self.boxes(n)
 
