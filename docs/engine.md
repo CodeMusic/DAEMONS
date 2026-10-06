@@ -529,7 +529,7 @@ or an 8-frame press only turns the player*), **FireRed's sideways stairs** (*pre
 
 **Ice** (*2026-10-06*): **a step onto `MB_ICE` is planned to where the slide stops** -- *the next tile blocked or not
 ice, as `ForcedMovement_Slip` does -- and the walker waits out the slide before reading where it is;* **cracked ice is a
-wall** (*it drops you a floor*). *It solves STILLFALL B1F's field in ten moves, stopping at the rocks inside it.*
+wall** (*it drops you a floor*). *It solves STILLFALL B1F's field in ten moves, stopping at the rocks inside it --* **walked in the theatre 2026-10-06** *(`tools/routes/stillfall.json`): every slide stopped where the plan said, and the last step took the ladder to 1F.*
 ***Each floor of STILLFALL is several separate regions*** *joined by the floors above and below, so a* `to` *across
 one floor can rightly answer "no way".*
 

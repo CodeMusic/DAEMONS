@@ -1,0 +1,14 @@
+{
+  "rom": "debug",
+  "about": "STILLFALL CAVE's ice (2026-10-06): the walker plans a step onto MB_ICE to where the slide stops. B1F's field, from its lower ledge to the ladder up at (12, 3), which lands on 1F -- ten moves on paper, the rocks inside the ice as the stops.",
+  "stops": [
+    {"stop": "STILLFALL B1F: across the ice", "steps": [
+      "repel",
+      "goto FourIsland_IcefallCave_B1F 15 16",
+      "shot the ledge",
+      "to 12 3",
+      "expect FourIsland_IcefallCave_1F",
+      "shot across"
+    ]}
+  ]
+}
