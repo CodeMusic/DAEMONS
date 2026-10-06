@@ -129,10 +129,15 @@
     {
       "stop": "SLATE: the town and the museum",
       "steps": [
+        "var VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 1",
         "goto PewterCity_Museum_1F",
         "music",
         "look 4 4",
-        "warp MAP_PEWTER_CITY",
+        "to 14 8",
+        "hold DOWN 24",
+        "hold DOWN 24",
+        "wait 120",
+        "expect PewterCity",
         "music MUS_SLATE"
       ]
     },
