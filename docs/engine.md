@@ -505,6 +505,33 @@ screenshot of it beside the source line settles it in a minute.***
 - ***A sound can be checked without hearing it***: *after it plays, `gMPlayInfo_SE1`–`SE3`'s first word is the song header it played — compare with `gSongTable[n]`'s header (8 bytes an entry).*
 - ***A battle's opponent can be set in memory***: `gBattleMons` *+ 0x58 × battler; its first halfword is the species — how T-280's refusal was tested against a daemon no debug encounter offers.*
 
+### The walker — `tools/theatre_walk.py`, 2026-10-05
+
+**Held buttons alone are not a way to walk.** *A 16-frame hold sometimes only turns the player and sometimes carries
+it two tiles; a wild battle swallows the next twenty presses; a text box holds the player while the script believes
+it is walking.* **So the walker plans from the map's own collision and steps one tile at a time, reading the position
+back after each:**
+
+| command | what it does |
+|---|---|
+| `where` | *the map and the tile the player stands on* |
+| `to X Y` | **a BFS path over the layout's `map.bin` collision** (*ledges crossed in their own direction only, people who never move as walls*), *taken one 12-frame step at a time; a step that did not land is pressed again, and a blocked one marks the tile and plans again* |
+| `warp MAP_DEST` | *walk into this map's warp to MAP_DEST* |
+| `edge up\|down\|left\|right` | *walk off this map's edge onto the next* |
+| `flag 0xNNN [0\|1]` | **read or set a flag on the scratch save** -- *FireRed's in `gSaveBlock1Ptr + 0xEE0`, ours (0x900 and up) in `gSaveBlock2Ptr + 0xEA0` -- to replay a scene (clear its flag) or reach past one* |
+| `--release` | *the theatre is running the release ROM: every address is read from `daemonsContent.map` instead* |
+
+***What it handles***: **a wild battle** (*two RUN tries, then it fights, cycling the routine slots so a slot at 0 MP
+is passed over*), **a trainer battle** (*fought: a trainer cannot be run from*), **a text box** (*closed with B*),
+**a door mat** (*Gen 3's mats warp only from their middle tile, pressing out through the closed side -- an end tile
+or an 8-frame press only turns the player*), **FireRed's sideways stairs** (*pressed along, LEFT or RIGHT, not up*),
+**and a scene that holds the player** (*it waits for the script to let go before planning*).
+
+***What it cannot do yet***: **ice** (*STILLFALL CAVE: a step slides until something stops it, and the plan must know
+that*), **Strength boulders**, **Surf and Cut**, *and the START menu's GOTO, which remembers its cursor and refuses
+indoors -- GOTO from outdoors, by screenshot.* **`gMain.inBattle` is BIT 1 of `gMain + 0x439`** (*bit 0 is
+`oamLoadDisabled`*): *reading bit 0 said "no battle" mid-battle and cost two ten-minute walks.*
+
 ## 6. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
