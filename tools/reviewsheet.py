@@ -125,10 +125,25 @@ def layout_of(mapname):
     return next(l for l in layouts if l.get("id") == m["layout"])
 
 
+def gdir(symbol, kind):
+    """Where a tileset's TILES and PALETTES are, which is not always its own folder: SilphCo draws with
+    Condominiums' graphics (headers.h names them), so its folder holds metatiles and nothing to draw them with."""
+    own = C.tdir(symbol, kind)
+    if os.path.exists(os.path.join(own, "tiles.png")):
+        return own
+    headers = open(os.path.join(GBA, "src/data/tilesets/headers.h")).read()
+    body = re.search(r"const struct Tileset %s =\s*\{(.*?)\};" % re.escape(symbol), headers, re.S)
+    tiles = body and re.search(r"\.tiles = (\w+)", body.group(1))
+    graphics = open(os.path.join(GBA, "src/data/tilesets/graphics.h")).read()
+    path = tiles and re.search(r"%s\[\] = INCBIN_U32\(\"(data/tilesets/[^\"]+)/tiles\." % re.escape(tiles.group(1)), graphics)
+    return os.path.join(GBA, path.group(1)) if path else own
+
+
 def render(l, bd=None):
     pd, sd = C.tdir(l["primary_tileset"], "primary"), C.tdir(l["secondary_tileset"], "secondary")
     prim = open(os.path.join(pd, "metatiles.bin"), "rb").read()
     meta = open(os.path.join(sd, "metatiles.bin"), "rb").read()
+    pd, sd = gdir(l["primary_tileset"], "primary"), gdir(l["secondary_tileset"], "secondary")
     pals = [C.read_pal(os.path.join(pd, "palettes/%02d.pal" % n)) for n in range(7)] + \
            [C.read_pal(os.path.join(sd, "palettes/%02d.pal" % n)) for n in range(7, 13)]
     pt, st = Image.open(os.path.join(pd, "tiles.png")), Image.open(os.path.join(sd, "tiles.png"))
