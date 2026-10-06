@@ -2,63 +2,91 @@
   "rom": "debug",
   "about": "The work-day run's items 2 and 3 (2026-10-06): each of the seven leaders giving the MARK and naming its virtue (T-346's unplayed half), PHLEGMATIC's scene in STILLFALL CAVE and SCORN's intro on the FOUNDRY's 11F (T-321). On the debug scratch save: each stop clears the flag that let the scene play once, warps in beside it and plays it, battles won by DEBUG. FIRST DRAFT: written while the theatre was closed.",
   "stops": [
-    {"stop": "SLATE: the leader's MARK and DILIGENCE", "steps": [
-      "trainer TRAINER_LEADER_BROCK 0",
-      "goto PewterCity_Gym 6 6",
-      "talk EventScript_Brock",
-      "says \"DILIGENCE, over SLOTH.\""
-    ]},
-    {"stop": "CERULEAN: CHASTITY", "steps": [
-      "trainer TRAINER_LEADER_MISTY 0",
-      "goto CeruleanCity_Gym 8 7",
-      "talk EventScript_Misty",
-      "says \"CHASTITY, over LUST.\""
-    ]},
-    {"stop": "VERMILION: CHARITY", "steps": [
-      "trainer TRAINER_LEADER_LT_SURGE 0",
-      "goto VermilionCity_Gym 5 3",
-      "talk EventScript_LtSurge",
-      "says \"CHARITY, over GREED!\""
-    ]},
-    {"stop": "CELADON: KINDNESS", "steps": [
-      "trainer TRAINER_LEADER_ERIKA 0",
-      "goto CeladonCity_Gym 6 5",
-      "talk EventScript_Erika",
-      "says \"KINDNESS, over ENVY.\""
-    ]},
-    {"stop": "FUCHSIA: TEMPERANCE", "steps": [
-      "trainer TRAINER_LEADER_KOGA 0",
-      "goto FuchsiaCity_Gym 7 14",
-      "talk EventScript_Koga",
-      "says \"TEMPERANCE, over GLUTTONY.\""
-    ]},
-    {"stop": "BRAZEN: PATIENCE", "steps": [
-      "trainer TRAINER_LEADER_SABRINA 0",
-      "goto SaffronCity_Gym 14 12",
-      "talk EventScript_Sabrina",
-      "says \"PATIENCE, over WRATH.\""
-    ]},
-    {"stop": "QUICKSILVER: ANNEAL, HUMILITY and the door in CALLOW", "steps": [
-      "trainer TRAINER_LEADER_BLAINE 0",
-      "goto CinnabarIsland_Gym 5 5",
-      "talk EventScript_Blaine",
-      "says \"HUMILITY, over PRIDE.\"",
-      "says \"There is a door in CALLOW that has been shut a long time.\""
-    ]},
-    {"stop": "STILLFALL CAVE: PHLEGMATIC and the ledger", "steps": [
-      "var VAR_MAP_SCENE_ICEFALL_CAVE_BACK 0",
-      "flag FLAG_HIDE_ICEFALL_CAVE_ROCKETS 0",
-      "flag FLAG_HIDE_ICEFALL_CAVE_LORELEI 0",
-      "goto FourIsland_IcefallCave_Back 12 22",
-      "trigger 12 18",
-      "says \"They kept a ledger.\""
-    ]},
-    {"stop": "THE FOUNDRY 11F: SCORN to the PRESIDENT", "steps": [
-      "var VAR_MAP_SCENE_SILPH_CO_11F 0",
-      "flag FLAG_HIDE_SILPH_ROCKETS 0",
-      "goto SilphCo_11F 6 16",
-      "trigger 6 15",
-      "says \"You protected what you valued.\""
-    ]}
+    {
+      "stop": "SLATE: the leader's MARK and DILIGENCE",
+      "steps": [
+        "trainer TRAINER_LEADER_BROCK 0",
+        "goto PewterCity_Gym 6 6",
+        "talk EventScript_Brock",
+        "says \"DILIGENCE, over SLOTH.\""
+      ]
+    },
+    {
+      "stop": "CERULEAN: CHASTITY",
+      "steps": [
+        "trainer TRAINER_LEADER_MISTY 0",
+        "goto CeruleanCity_Gym 8 7",
+        "talk EventScript_Misty",
+        "says \"CHASTITY, over LUST.\""
+      ]
+    },
+    {
+      "stop": "VERMILION: CHARITY",
+      "steps": [
+        "trainer TRAINER_LEADER_LT_SURGE 0",
+        "goto VermilionCity_Gym 5 3",
+        "talk EventScript_LtSurge",
+        "says \"CHARITY, over GREED!\""
+      ]
+    },
+    {
+      "stop": "CELADON: KINDNESS",
+      "steps": [
+        "trainer TRAINER_LEADER_ERIKA 0",
+        "goto CeladonCity_Gym 6 5",
+        "talk EventScript_Erika",
+        "says \"KINDNESS, over ENVY.\""
+      ]
+    },
+    {
+      "stop": "FUCHSIA: TEMPERANCE",
+      "steps": [
+        "trainer TRAINER_LEADER_KOGA 0",
+        "goto FuchsiaCity_Gym 7 14",
+        "talk EventScript_Koga",
+        "says \"TEMPERANCE, over GLUTTONY.\""
+      ]
+    },
+    {
+      "stop": "BRAZEN: PATIENCE",
+      "steps": [
+        "trainer TRAINER_LEADER_SABRINA 0",
+        "goto SaffronCity_Gym 14 12",
+        "talk EventScript_Sabrina",
+        "says \"PATIENCE, over WRATH.\""
+      ]
+    },
+    {
+      "stop": "QUICKSILVER: ANNEAL, HUMILITY and the door in CALLOW",
+      "steps": [
+        "trainer TRAINER_LEADER_BLAINE 0",
+        "goto CinnabarIsland_Gym 5 5",
+        "talk EventScript_Blaine",
+        "says \"HUMILITY, over PRIDE.\"",
+        "says \"There is a door in CALLOW that has been shut a long time.\""
+      ]
+    },
+    {
+      "stop": "STILLFALL CAVE: PHLEGMATIC and the ledger",
+      "steps": [
+        "repel",
+        "var VAR_MAP_SCENE_ICEFALL_CAVE_BACK 0",
+        "flag FLAG_HIDE_ICEFALL_CAVE_ROCKETS 0",
+        "flag FLAG_HIDE_ICEFALL_CAVE_LORELEI 0",
+        "goto FourIsland_IcefallCave_Back 12 22",
+        "trigger 12 18",
+        "says \"They kept a ledger.\""
+      ]
+    },
+    {
+      "stop": "THE FOUNDRY 11F: SCORN to the PRESIDENT",
+      "steps": [
+        "var VAR_MAP_SCENE_SILPH_CO_11F 0",
+        "flag FLAG_HIDE_SILPH_ROCKETS 0",
+        "goto SilphCo_11F 6 16",
+        "trigger 6 15",
+        "says \"You protected what you valued.\""
+      ]
+    }
   ]
 }

@@ -43,3 +43,21 @@ T-321 seen: PHLEGMATIC's scene, played on the earlier build -- frame 19 is the '
 T-321 seen: SCORN on the FOUNDRY's 11F
 
 ![6Oct2026 - T321 - SCORN to the PRESIDENT - 7](6Oct2026%20-%20T321%20-%20SCORN%20to%20the%20PRESIDENT%20-%207.png)
+
+### 6Oct2026 - T383 - the three lines in the game - 8
+
+T-383 seen: PHLEGMATIC's deep-freeze, the ice room's once they hang, Route 25's starts thrashing (t383 route, v11.296.1 debug)
+
+![6Oct2026 - T383 - the three lines in the game - 8](6Oct2026%20-%20T383%20-%20the%20three%20lines%20in%20the%20game%20-%208.png)
+
+### 6Oct2026 - T383 - the three lines in the game - 9
+
+T-383 seen: PHLEGMATIC's deep-freeze, the ice room's once they hang, Route 25's starts thrashing (t383 route, v11.296.1 debug)
+
+![6Oct2026 - T383 - the three lines in the game - 9](6Oct2026%20-%20T383%20-%20the%20three%20lines%20in%20the%20game%20-%209.png)
+
+### 6Oct2026 - T383 - the three lines in the game - 10
+
+T-383 seen: PHLEGMATIC's deep-freeze, the ice room's once they hang, Route 25's starts thrashing (t383 route, v11.296.1 debug)
+
+![6Oct2026 - T383 - the three lines in the game - 10](6Oct2026%20-%20T383%20-%20the%20three%20lines%20in%20the%20game%20-%2010.png)

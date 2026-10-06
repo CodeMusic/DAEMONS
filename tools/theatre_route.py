@@ -20,6 +20,7 @@ step is one line, split like a shell line:
     trigger X Y [N]            step onto a scene's trigger tile from beside it, and capture the scene to its end
                                (its battles won on a DEBUG route, fought on a release one)
     read                       capture the box on screen now, without pressing anything
+    finish                     play out whatever script is running, capturing each box (a scene a battle broke into)
     press BUTTON [N]           press it N times (default 1), forty frames apart, capturing after each
     hold BUTTON FRAMES         hold it for exact frames, capturing nothing
     wait FRAMES
@@ -169,6 +170,9 @@ def decode(raw):
 
 
 def fold(s):
+    """Spaces and line breaks folded, case ignored, and the game's curly quotes read as straight ones (it prints
+    "we’ll" where a route file says "we'll")."""
+    s = s.replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"')
     return " ".join(s.replace("\n", " ").split()).upper()
 
 
@@ -199,6 +203,8 @@ class Runner:
         self.out = os.path.join(THEATRE, "routes", route_name)
         os.makedirs(self.out, exist_ok=True)
         self.same_build()
+        if not release:              # a debug route wins any battle the walker meets on the way, as `win` does
+            tw.clear_battle = lambda g: self.win()
 
     def same_build(self):
         """Every address comes from the build's .map, so the theatre must be running THAT build. A rebuild that only
@@ -400,7 +406,10 @@ class Runner:
         for _ in range(30):
             if not self.g.state()["battle"]:
                 return
-            tw.run("poke8 %s 1" % hex(outcome), "hold A 8", "wait 60")
+            # the outcome is read at the end of a TURN: so take one -- ROUTINES (top left), then the first routine.
+            # A on DETACH takes none ("You cannot DETACH from a USER engagement!"), and that loop never ends.
+            tw.run("poke8 %s 1" % hex(outcome), "hold B 8", "wait 30", "hold UP 6", "wait 10", "hold LEFT 6", "wait 10",
+                   "hold A 8", "wait 40", "hold A 8", "wait 150", "hold A 6", "wait 60")
         raise RouteError("still in a battle after thirty turns")
 
     def var(self, v, value):
@@ -435,6 +444,9 @@ class Runner:
             self.trigger(int(args[0]), int(args[1]), int(args[2]) if len(args) > 2 else None)
         elif op == "look":
             self.look(int(args[0]), int(args[1]), int(args[2]) if len(args) > 2 else None)
+        elif op == "finish":
+            if not self.free():
+                self.boxes()
         elif op == "read":
             self.capture("read")
         elif op == "press":

@@ -2,25 +2,36 @@
   "rom": "debug",
   "about": "T-383 (2026-10-06): the three lines the status sweep broke, read back from the game after the fix -- PHLEGMATIC's threat in STILLFALL CAVE, the REVIEW BOARD's ice room, and a Route 25 trainer after his battle.",
   "stops": [
-    {"stop": "STILLFALL CAVE: PHLEGMATIC's threat", "steps": [
-      "var VAR_MAP_SCENE_ICEFALL_CAVE_BACK 0",
-      "flag FLAG_HIDE_ICEFALL_CAVE_ROCKETS 0",
-      "flag FLAG_HIDE_ICEFALL_CAVE_LORELEI 0",
-      "goto FourIsland_IcefallCave_Back 12 22",
-      "trigger 12 18",
-      "says \"confess, we'll deep-freeze you.\""
-    ]},
-    {"stop": "THE REVIEW BOARD: the ice room", "steps": [
-      "flag FLAG_DEFEATED_LORELEI 0",
-      "goto PokemonLeague_LoreleisRoom 6 6",
-      "talk EventScript_Lorelei",
-      "says \"Your DAEMON will be at my mercy once they hang.\""
-    ]},
-    {"stop": "ROUTE 25: the trainer after his battle", "steps": [
-      "trainer TRAINER_YOUNGSTER_CHAD 1",
-      "goto Route25 36 5",
-      "talk EventScript_Chad",
-      "says \"If your DAEMON starts thrashing, switch it out.\""
-    ]}
+    {
+      "stop": "STILLFALL CAVE: PHLEGMATIC's threat",
+      "steps": [
+        "repel",
+        "var VAR_MAP_SCENE_ICEFALL_CAVE_BACK 0",
+        "flag FLAG_HIDE_ICEFALL_CAVE_ROCKETS 0",
+        "flag FLAG_HIDE_ICEFALL_CAVE_LORELEI 0",
+        "goto FourIsland_IcefallCave_Back 12 22",
+        "trigger 12 18",
+        "says \"confess, we'll deep-freeze you.\""
+      ]
+    },
+    {
+      "stop": "THE REVIEW BOARD: the ice room",
+      "steps": [
+        "flag FLAG_DEFEATED_LORELEI 0",
+        "var VAR_MAP_SCENE_POKEMON_LEAGUE 1",
+        "goto PokemonLeague_LoreleisRoom 6 6",
+        "talk EventScript_Lorelei",
+        "says \"Your DAEMON will be at my mercy once they hang.\""
+      ]
+    },
+    {
+      "stop": "ROUTE 25: the trainer after his battle",
+      "steps": [
+        "trainer TRAINER_YOUNGSTER_CHAD 1",
+        "goto Route25 36 5",
+        "talk EventScript_Chad",
+        "says \"If your DAEMON starts thrashing, switch it out.\""
+      ]
+    }
   ]
 }
