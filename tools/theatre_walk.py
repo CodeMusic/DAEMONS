@@ -32,7 +32,7 @@ ICE, CRACKED_ICE = 0x23, 0x27            # MB_ICE slides you on until something 
 
 def symbol(name, release):
     m = open(os.path.join(GBA, "daemonsContent.map" if release else "daemonsContent_debug.map")).read()
-    hit = re.search(r"^\s+(0x[0-9a-f]+)\s+%s = \.$" % re.escape(name), m, re.M)
+    hit = re.search(r"^\s+(0x[0-9a-f]+)\s+%s( = \.)?$" % re.escape(name), m, re.M)   # "= ." or a bare symbol
     if not hit:
         sys.exit("theatre_walk: no symbol %s in the build's .map -- build it first" % name)
     return int(hit.group(1), 16)

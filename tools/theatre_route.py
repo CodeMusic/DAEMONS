@@ -141,6 +141,13 @@ def _charmap():
 CHARS = _charmap()
 
 
+# gen 3's {EXT_CTRL_CODE} arguments by code (src/text.c): COLOR, HIGHLIGHT, SHADOW 1; COLOR_HIGHLIGHT_SHADOW 3;
+# PALETTE, FONT 1; PAUSE 1; PLAY_BGM 2; ESCAPE, SHIFT_RIGHT, SHIFT_DOWN 1; PLAY_SE 2; CLEAR, SKIP, CLEAR_TO,
+# MIN_LETTER_SPACING 1 -- and none for the rest (RESET_FONT, PAUSE_UNTIL_PRESS, WAIT_SE, FILL_WINDOW, ...)
+EXT_ARGS = {0x01: 1, 0x02: 1, 0x03: 1, 0x04: 3, 0x05: 1, 0x06: 1, 0x08: 1, 0x0B: 2, 0x0C: 1, 0x0D: 1, 0x0E: 1,
+            0x10: 2, 0x11: 1, 0x12: 1, 0x13: 1, 0x14: 1}
+
+
 def decode(raw):
     out, i = [], 0
     while i < len(raw):
@@ -151,8 +158,8 @@ def decode(raw):
             out.append("\n")
         elif b in (0xFA, 0xFB):
             out.append("\n\n" if b == 0xFB else "\n")
-        elif b == 0xFC:                                                   # a control code and its arguments
-            i += {0x04: 3, 0x0B: 2, 0x10: 2, 0x13: 1, 0x14: 1, 0x15: 0, 0x16: 0, 0x17: 0, 0x18: 0}.get(raw[i + 1], 1)
+        elif b == 0xFC and i + 1 < len(raw):                              # a control code, then its arguments
+            i += 1 + EXT_ARGS.get(raw[i + 1], 0)
         elif b == 0xFD:
             i += 1
         else:
@@ -483,6 +490,8 @@ def contact_sheet(path, title, frames, failed, cols=3):
         except OSError:
             continue
         d.text((x, y + H + 4), "%d. %s" % (i + 1, label), fill=(200, 200, 120), font=font)
+        if i and words == frames[i - 1][2]:
+            continue                                                      # the same message, read again
         flat = " / ".join(l.strip() for l in words.split("\n") if l.strip())
         for k, line in enumerate(textwrap.wrap(flat, 60)[:3]):            # the box's words, three lines at most
             d.text((x, y + H + 24 + k * 18), line, fill=(200, 200, 200), font=font)
