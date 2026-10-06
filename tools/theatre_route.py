@@ -198,6 +198,20 @@ class Runner:
         self.objects = tw.symbol("gObjectEvents", release)
         self.out = os.path.join(THEATRE, "routes", route_name)
         os.makedirs(self.out, exist_ok=True)
+        self.same_build()
+
+    def same_build(self):
+        """Every address comes from the build's .map, so the theatre must be running THAT build. A rebuild that only
+        grew some text moved everything in ROM after it (the song table by 16 bytes on 2026-10-06) while RAM stayed
+        put -- so the walk worked and every music check read the wrong song. Compare the song table in the
+        emulator with the same bytes in the built ROM."""
+        rom = os.path.join(GBA, "daemonsContent.gba" if self.release else "daemonsContent_debug.gba")
+        at = tw.symbol("gSongTable", self.release)
+        want = open(rom, "rb").read()[at - 0x08000000: at - 0x08000000 + 32]
+        got = tw.peek([(32, at + 4 * k, "w%d" % k) for k in range(8)])
+        if b"".join(got["w%d" % k].to_bytes(4, "little") for k in range(8)) != want:
+            raise SystemExit("theatre_route: the theatre is not running the build in engineGba/ -- copy %s over "
+                             ".theatre/rom/ and reload it in the theatre's window first" % os.path.basename(rom))
 
     # what the screen and the script are doing
     def free(self):
@@ -320,11 +334,12 @@ class Runner:
         answer the direction that faces (x, y) from it."""
         folder, here = self.where()
         m = tw.Map(folder)
+        warps = {(w["x"], w["y"]) for w in m.json.get("warp_events") or []}
         sides = []
         for d, (dx, dy) in tw.DIRS.items():
             t = (x - dx, y - dy)
-            if need and d != need or not m.open(*t, None) and t != here:
-                continue
+            if need and d != need or not m.open(*t, None) and t != here or t in warps:
+                continue                                                  # a door beside a sign would take us away
             p = [] if t == here else m.path(here, t)
             if p is not None:
                 sides.append((len(p), d, t))
