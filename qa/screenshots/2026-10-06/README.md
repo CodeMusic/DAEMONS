@@ -61,3 +61,9 @@ T-383 seen: PHLEGMATIC's deep-freeze, the ice room's once they hang, Route 25's 
 T-383 seen: PHLEGMATIC's deep-freeze, the ice room's once they hang, Route 25's starts thrashing (t383 route, v11.296.1 debug)
 
 ![6Oct2026 - T383 - the three lines in the game - 10](6Oct2026%20-%20T383%20-%20the%20three%20lines%20in%20the%20game%20-%2010.png)
+
+### 6Oct2026 - T358 - AWAY end to end - 11
+
+AWAY end to end (work-day run item 4): SEND, SYNC, AWAY in the game, CALL HOME, SYNC, home -- the theatre and a scratch companion
+
+![6Oct2026 - T358 - AWAY end to end - 11](6Oct2026%20-%20T358%20-%20AWAY%20end%20to%20end%20-%2011.png)
