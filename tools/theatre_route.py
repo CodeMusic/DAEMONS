@@ -472,12 +472,17 @@ class Runner:
             folder, _ = self.where()
             want = args[0] if args else map_json(folder).get("music")
             table, bgm = tw.symbol("gSongTable", self.release), tw.symbol("gMPlayInfo_BGM", self.release)
-            got = tw.peek([(32, table + 8 * const(want), "want"), (32, bgm, "playing")])
-            if got["want"] != got["playing"]:
-                heads = tw.peek([(32, table + 8 * n, "h%d" % n) for n in range(400)])      # one batch, not 400
-                k = next((n for n in range(400) if heads["h%d" % n] == got["playing"]), None)
-                name = next((w for w, v in DEFINES.items() if w.startswith("MUS_") and v.strip().isdigit()
-                             and int(v.split()[0]) == k), "song %s" % k)
+            for attempt in range(8):                                      # a warp's new song fades in: let it settle
+                got = tw.peek([(32, table + 8 * const(want), "want"), (32, bgm, "playing")])
+                if got["want"] == got["playing"]:
+                    break
+                tw.run("wait 60")
+            else:
+                songs = sum(1 for l in open(os.path.join(GBA, "sound/song_table.inc")) if l.strip().startswith("song "))
+                heads = tw.peek([(32, table + 8 * n, "h%d" % n) for n in range(songs)])     # one batch, not one a song
+                k = next((n for n in range(songs) if heads["h%d" % n] == got["playing"]), None)
+                name = next((w for w, v in DEFINES.items() if w.startswith("MUS_") and v.split()[0].isdigit()
+                             and int(v.split()[0]) == k), "no song in the table" if k is None else "song %d" % k)
                 raise RouteError("%s should play %s; %s is playing" % (folder, want, name))
         elif op == "says":
             want = fold(" ".join(args))
