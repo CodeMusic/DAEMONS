@@ -27,6 +27,7 @@ GBA = os.path.join(ROOT, "engineGba")
 THEATRE = os.path.join(ROOT, ".theatre")
 DIRS = {"UP": (0, -1), "DOWN": (0, 1), "LEFT": (-1, 0), "RIGHT": (1, 0)}
 JUMP = {0x38: (1, 0), 0x39: (-1, 0), 0x3A: (0, -1), 0x3B: (0, 1)}       # MB_JUMP_EAST, WEST, NORTH, SOUTH
+ICE, CRACKED_ICE = 0x23, 0x27            # MB_ICE slides you on until something stops you; cracked ice drops you a floor
 
 
 def symbol(name, release):
@@ -121,7 +122,18 @@ class Map:
         if (x, y) == goal:
             return self.inside(x, y)
         return self.inside(x, y) and not (self.cell(x, y) >> 10) & 3 and (x, y) not in self.still \
-            and (x, y) not in self.learned and self.behaviour(x, y) not in JUMP
+            and (x, y) not in self.learned and self.behaviour(x, y) not in JUMP and self.behaviour(x, y) != CRACKED_ICE
+
+    def slide(self, at, dx, dy):
+        """A step onto MB_ICE carries on in its direction until the next tile is not open, or the tile is not ice
+        (ForcedMovement_Slip, src/field_player_avatar.c) -- so the plan must step to where it stops, not to where it
+        was pressed."""
+        while self.inside(*at) and self.behaviour(*at) == ICE:
+            nxt = (at[0] + dx, at[1] + dy)
+            if not self.open(*nxt, None):
+                break
+            at = nxt
+        return at
 
     def path(self, start, goal):
         """[(dir, (x, y))] from start to goal, ledges one way -- or None."""
@@ -137,9 +149,11 @@ class Map:
                     if n2 not in prev and self.open(*n2, goal):
                         prev[n2] = (c, d)
                         todo.append(n2)
-                elif n not in prev and self.open(*n, goal):
-                    prev[n] = (c, d)
-                    todo.append(n)
+                elif self.open(*n, goal):
+                    n = self.slide(n, dx, dy)                           # ice: where the step actually stops
+                    if n not in prev:
+                        prev[n] = (c, d)
+                        todo.append(n)
         if goal not in prev:
             return None
         out, c = [], goal
@@ -218,6 +232,12 @@ def walk(g, goal, into_warp=False):
         for tries in range(4):
             run("hold %s 12" % d, "wait 16")                             # a turn, or one tile (8 frames could only turn on a mat)
             s = g.state()
+            while m.behaviour(s["x"], s["y"]) == ICE and s["map"] == start_map:     # still sliding: wait it out
+                run("wait 16")
+                t = g.state()
+                if (t["x"], t["y"]) == (s["x"], s["y"]):
+                    break
+                s = t
             if s["map"] != start_map:
                 return s                                                 # a warp, or the next map
             if s["battle"]:

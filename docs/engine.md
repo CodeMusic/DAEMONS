@@ -527,8 +527,13 @@ is passed over*), **a trainer battle** (*fought: a trainer cannot be run from*),
 or an 8-frame press only turns the player*), **FireRed's sideways stairs** (*pressed along, LEFT or RIGHT, not up*),
 **and a scene that holds the player** (*it waits for the script to let go before planning*).
 
-***What it cannot do yet***: **ice** (*STILLFALL CAVE: a step slides until something stops it, and the plan must know
-that*), **Strength boulders**, **Surf and Cut**, *and the START menu's GOTO, which remembers its cursor and refuses
+**Ice** (*2026-10-06*): **a step onto `MB_ICE` is planned to where the slide stops** -- *the next tile blocked or not
+ice, as `ForcedMovement_Slip` does -- and the walker waits out the slide before reading where it is;* **cracked ice is a
+wall** (*it drops you a floor*). *It solves STILLFALL B1F's field in ten moves, stopping at the rocks inside it.*
+***Each floor of STILLFALL is several separate regions*** *joined by the floors above and below, so a* `to` *across
+one floor can rightly answer "no way".*
+
+***What it cannot do yet***: **Strength boulders**, **Surf and Cut**, *and the START menu's GOTO, which remembers its cursor and refuses
 indoors -- GOTO from outdoors, by screenshot.* **`gMain.inBattle` is BIT 1 of `gMain + 0x439`** (*bit 0 is
 `oamLoadDisabled`*): *reading bit 0 said "no battle" mid-battle and cost two ten-minute walks.*
 
