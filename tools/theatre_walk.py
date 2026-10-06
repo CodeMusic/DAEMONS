@@ -56,6 +56,7 @@ def peek(reads):
 
 class Game:
     def __init__(self, release):
+        self.release = release
         self.sb1 = symbol("gSaveBlock1Ptr", release)
         self.main = symbol("gMain", release)
 
@@ -241,6 +242,22 @@ def walk(g, goal, into_warp=False):
     sys.exit("theatre_walk: gave up after 400 steps")
 
 
+def flag(g, f, value=None):
+    """Read a flag, or set it (value 0/1) and read it back. FireRed's flags are in SaveBlock1 (+0xEE0); DAEMONS' own,
+    from 0x900, in SaveBlock2 (+0xEA0)."""
+    if f < 0x900:
+        base, f2 = peek([(32, g.sb1, "p")])["p"] + 0xEE0, f
+    else:
+        base, f2 = peek([(32, symbol("gSaveBlock2Ptr", g.release), "p")])["p"] + 0xEA0, f - 0x900
+    addr, bit = base + (f2 >> 3), 1 << (f2 & 7)
+    byte = peek([(8, addr, "b")])["b"]
+    if value is not None:
+        byte = byte | bit if value else byte & ~bit
+        run("poke8 %s %d" % (hex(addr), byte))
+        byte = peek([(8, addr, "b")])["b"]
+    return bool(byte & bit)
+
+
 def main():
     a = [x for x in sys.argv[1:] if x != "--release"]
     g = Game("--release" in sys.argv)
@@ -248,19 +265,9 @@ def main():
         s = g.state()
         print("%s (%d, %d)%s" % (map_name(*s["map"]), s["x"], s["y"], "  IN A BATTLE" if s["battle"] else ""))
         return
-    if a[0] == "flag":                 # FireRed's flags in SaveBlock1 (+0xEE0); DAEMONS' own from 0x900 in SaveBlock2 (+0xEA0)
+    if a[0] == "flag":
         f = int(a[1], 0)
-        if f < 0x900:
-            base, f2 = peek([(32, g.sb1, "p")])["p"] + 0xEE0, f
-        else:
-            base, f2 = peek([(32, symbol("gSaveBlock2Ptr", "--release" in sys.argv), "p")])["p"] + 0xEA0, f - 0x900
-        addr, bit = base + (f2 >> 3), 1 << (f2 & 7)
-        byte = peek([(8, addr, "b")])["b"]
-        if len(a) > 2:
-            byte = byte | bit if int(a[2]) else byte & ~bit
-            run("poke8 %s %d" % (hex(addr), byte))
-            byte = peek([(8, addr, "b")])["b"]
-        print("flag %s is %s" % (hex(f), "set" if byte & bit else "clear"))
+        print("flag %s is %s" % (hex(f), "set" if flag(g, f, int(a[2]) if len(a) > 2 else None) else "clear"))
         return
     s = g.state()
     m = Map(map_name(*s["map"]))

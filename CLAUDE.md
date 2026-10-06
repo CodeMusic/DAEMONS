@@ -139,6 +139,7 @@ python3 tools/gbamarks.py --write         # the eight MARKS onto the trainer car
 python3 tools/port_music.py --write       # our tracks, re-emitted as MIDI
 python3 tools/gbastr.py CONTEXT USERBOX   # search a .gba through the charmap
 python3 tools/theatre_walk.py to X Y     # walk the theatre's player there, tile by tile (engine.md 5)
+python3 tools/theatre_route.py tools/routes/field-test.json  # play a route; a contact sheet per stop (engine.md 5)
 ```
 
 Two habits worth keeping:

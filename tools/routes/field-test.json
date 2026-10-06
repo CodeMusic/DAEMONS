@@ -1,0 +1,108 @@
+{
+  "rom": "debug",
+  "about": "The field page's 'route through it' (T-378, from the walk of 2026-10-04): a fresh DEBUG game, from the bedroom to QUICKSILVER and back to BRAZEN. Each stop starts with a goto, so a stop that fails does not take the rest with it. The Reading Room's inside needs the DIPLOMA (DEBUG -> JUMP -> DIPLOMA first); without it the attendant's turn-away is what gets captured. FIRST DRAFT: written while the theatre was closed; the stops' standing tiles are planned from the maps, not yet played.",
+  "stops": [
+    {"stop": "BLANCHE: the bedroom", "steps": [
+      "expect PalletTown_PlayersHouse_2F",
+      "shot the bedroom",
+      "music"
+    ]},
+    {"stop": "BLANCHE: CRYSTAL's lab", "steps": [
+      "goto PalletTown_ProfessorOaksLab",
+      "music",
+      "look 6 1",
+      "look 8 1"
+    ]},
+    {"stop": "CALLOW: the PORT", "steps": [
+      "goto ViridianCity_PokemonCenter_1F",
+      "music",
+      "look 11 1 3",
+      "shot the PORT's menu",
+      "press B 3"
+    ]},
+    {"stop": "THE REPO: OPUS on the shelf", "steps": [
+      "goto ViridianCity_Mart",
+      "look 8 6"
+    ]},
+    {"stop": "CALLOW SCHOOL 1F", "steps": [
+      "goto ViridianCity_School",
+      "music",
+      "look 5 4",
+      "look 4 4",
+      "look 7 1"
+    ]},
+    {"stop": "CALLOW SCHOOL 2F", "steps": [
+      "goto ViridianCity_School_2F",
+      "talk LOCALID_SCHOOL_2F_TEACHER",
+      "talk LOCALID_SCHOOL_2F_WINDOWS",
+      "look 5 4"
+    ]},
+    {"stop": "CALLOW SCHOOL 3F", "steps": [
+      "goto ViridianCity_School_3F",
+      "talk LOCALID_SCHOOL_3F_TEACHER",
+      "talk LOCALID_SCHOOL_3F_ELEVENTH",
+      "talk LOCALID_SCHOOL_3F_FRIDAY"
+    ]},
+    {"stop": "CALLOW SCHOOL 4F", "steps": [
+      "goto ViridianCity_School_4F",
+      "talk LOCALID_SCHOOL_4F_TEACHER",
+      "talk LOCALID_SCHOOL_4F_DRAWERS"
+    ]},
+    {"stop": "CALLOW SCHOOL 5F", "steps": [
+      "goto ViridianCity_School_5F",
+      "talk LOCALID_SCHOOL_5F_TEACHER",
+      "talk LOCALID_SCHOOL_5F_EVERYWHERE",
+      "talk LOCALID_SCHOOL_5F_SLEEP"
+    ]},
+    {"stop": "CALLOW SCHOOL 6F", "steps": [
+      "goto ViridianCity_School_6F",
+      "talk LOCALID_SCHOOL_6F_TEACHER",
+      "talk LOCALID_SCHOOL_6F_WRONGABOUT",
+      "talk LOCALID_SCHOOL_6F_TWOOPTIONS"
+    ]},
+    {"stop": "CALLOW SCHOOL 7F", "steps": [
+      "goto ViridianCity_School_7F",
+      "talk LOCALID_SCHOOL_7F_TEACHER",
+      "talk LOCALID_SCHOOL_7F_ONPURPOSE",
+      "talk LOCALID_SCHOOL_7F_CERTAIN"
+    ]},
+    {"stop": "BRAZEN: the Reading Room", "steps": [
+      "goto SaffronCity_PokemonTrainerFanClub",
+      "music",
+      "talk LOCALID_READING_ROOM_ATTENDANT",
+      "to 2 11",
+      "talk LOCALID_READING_ROOM_KEEPER",
+      "talk LOCALID_READING_ROOM_ATTENTION 2",
+      "press B 3",
+      "look 0 9",
+      "look 10 1"
+    ]},
+    {"stop": "THE UNDERTONE: the grove", "steps": [
+      "goto ViridianForest_Grove 8 4",
+      "music",
+      "look 11 15"
+    ]},
+    {"stop": "SLATE: the town and the museum", "steps": [
+      "goto PewterCity_Museum_1F",
+      "music",
+      "look 4 4",
+      "warp MAP_PEWTER_CITY",
+      "music MUS_SLATE"
+    ]},
+    {"stop": "QUICKSILVER: the lab's signs", "steps": [
+      "goto CinnabarIsland_PokemonLab_Entrance",
+      "look 16 5",
+      "look 12 5"
+    ]},
+    {"stop": "QUICKSILVER: the Mansion's log", "steps": [
+      "goto PokemonMansion_1F",
+      "look 7 6"
+    ]},
+    {"stop": "BRAZEN: the scores notice files itself", "steps": [
+      "goto SaffronCity 13 26",
+      "flag FLAG_NOTEBOOK_PROSPECTUS_SCORES 0",
+      "look 13 25",
+      "flagis FLAG_NOTEBOOK_PROSPECTUS_SCORES 1"
+    ]}
+  ]
+}

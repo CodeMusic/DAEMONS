@@ -532,6 +532,30 @@ that*), **Strength boulders**, **Surf and Cut**, *and the START menu's GOTO, whi
 indoors -- GOTO from outdoors, by screenshot.* **`gMain.inBattle` is BIT 1 of `gMain + 0x439`** (*bit 0 is
 `oamLoadDisabled`*): *reading bit 0 said "no battle" mid-battle and cost two ten-minute walks.*
 
+### The route runner — `tools/theatre_route.py`, 2026-10-06 (T-378)
+
+**A route is a JSON list of stops, and each stop a list of one-line steps** (`tools/routes/field-test.json` *is the
+field page's "route through it"*). **The runner plays it with the walker underneath and writes one contact sheet per
+stop**, *every capture captioned with the words its box held*, **plus `report.md`, into `.theatre/routes/<route>/`.**
+*A failed stop is reported and the run goes on: each stop starts with a* `goto`, *so one failure does not take the
+rest with it.* `--check` *resolves every map, person, flag, var and song without the theatre;* `--from N` *and*
+`--only 2,5` *replay part of it. The full step list is in the tool's docstring.*
+
+| step | what it does |
+|---|---|
+| `goto MAP [X Y]` | **the DEBUG build's theatre warp** (`gDaemonsDebugWarp`), *to (X, Y) or the map's first warp* |
+| `talk WHO [N]` / `look X Y [N]` | *stand beside a person (their `LOCALID_`, their script, or `X,Y`) or where a sign reads, face it, press A,* **capture each box until the script lets go**, *or only N boxes* |
+| `says "TEXT"` | **fail unless a box in this stop said it** (*the words are read from `gStringVar4`*) |
+| `music [MUS_X]` | **fail unless that song is playing** (*default: the map's own `music`*) |
+| `flag` / `flagis` / `var` / `repel` | *set a flag; fail unless one is set (a document that files itself); set a var; no wild battles* |
+| `fight` / `win` | *the walker's battle; DEBUG: `gBattleOutcome = 1` and a turn* |
+
+**Every field message is expanded into `gStringVar4` before it prints**, *so the box's words can be read back through
+the charmap instead of off a screenshot.* **"The script has let go" is `sLockFieldControls == 0` and
+`sGlobalScriptContextStatus == 2` (CONTEXT_SHUTDOWN)** — *both are* `static`, **so they are in the `.elf`'s symbols
+(`arm-none-eabi-nm`), not the `.map`.* **A `LOCALID_` name is its object's index + 1** (`tools/mapjson`), *and
+`gObjectEvents`' coordinates carry `MAP_OFFSET` (7).*
+
 ## 6. Two habits worth keeping
 
 **Derive, don't assert.** *Every tool in `tools/` that reads the game's own data has needed no revision; every one that encoded a fact by hand has.* **When the model or the game looks confused, grep our own data before blaming either.**
