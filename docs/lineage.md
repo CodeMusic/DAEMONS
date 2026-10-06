@@ -507,6 +507,7 @@ Every article that feeds something downstream, with what it became. Links go to 
 | [Harm Disguised as Care](https://seeingsharpca.wordpress.com/2025/09/30/harm-disguised-as-care/) | Projection → labelling → intervention → harm, in helpful words | **Scorn**, warm and wrong |
 | [Path and Place](https://seeingsharpca.wordpress.com/2025/10/03/path-and-place-the-two-partners-of-creation-within/) | Left mind maps the path; right mind finds the place. Both create | Benchmark design: method versus destination |
 | [The Resonance Fractal](https://seeingsharpca.wordpress.com/2025/11/27/the-resonance-fractal-how-one-simple-loop-built-the-universe/) | One loop at every scale, photon to culture | **§11.3** — the game runs it at two scales and needs a third |
+| [Intelligence Without Understanding Is Artificial](https://seeingsharpca.wordpress.com/2026/10/05/intelligence-without-understanding-is-artificial/) | Understanding is the roots that let knowledge travel; "artificial" is the look of a thing without them, whatever it is made of. Its test: *"does this intelligence belong to whoever displays it?"* | **§0.7** — MARKS and ROOTS, the quest's two halves; the borrowed daemon, the plastic plants, the fact collector |
 
 ### 7.4 The architecture, three times
 

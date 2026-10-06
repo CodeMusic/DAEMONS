@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.296 — 2026-10-06
+
+### The quest's two halves: MARKS and ROOTS (2026-10-06)
+
+- ***0.7, new (the user's decision)***: **the MARKS give intelligence, the ROOTS give understanding**, *and the user's
+  sentence "Intelligence without understanding is artificial" (Seeing Sharp, 5 October 2026) is the spine of both
+  halves -- never said in the game.* **ROOTS** *(chosen over GROUNDING, BEARINGS and leaving it unnamed)* **is a name,
+  never a count**: *one label on the USER card's brain, opposite BENCHMARKS.* **The world shows the difference
+  instead, in three DRAFTS for the user's approval**: *the borrowed daemon (its refusals), CORPUS's plastic plants
+  against the CHECKPOINTS' real ones, and a fact collector with every MARK.* Tickets T-379--T-382; nothing built yet.
+- ***`lineage.md` 7.3*** gains the article.
+
 ## v11.295 — 2026-10-04
 
 ### AWAY reshaped, and the clock on the trainer card (2026-10-04)

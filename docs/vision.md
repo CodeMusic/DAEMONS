@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.295**
+**A total conversion — the living design bible, v11.296**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -329,6 +329,52 @@ weakest of the three hints in that shop**, and the shop keeps the other two.
 | ***And the seam caught the VERIFICATION too*** | **`gbastr` reported `out of paper` missing from the ROM** — *because the line breaks between `of` and `paper`.* **The same trap, one step later in the process, and the fourth time this session** |
 
 **One block was a REWRITE, not a substitution.** *SevenIsland's naming joke is a folk etymology for `seven`, twice over, and a sweep would have left a man confidently explaining a number that is no longer in the name.* **The shape is kept exactly — a confident wrong reading, undercut, then a grander and equally unverifiable one** — *and both readings are wrong in the right direction (craft rule 2), because neither of them is the margin the name actually carries.*
+
+
+### 0.7 The quest's two halves: MARKS and ROOTS (decided by the user 2026-10-06)
+
+> ***Intelligence without understanding is artificial.***
+> **The MARKS give you intelligence. The ROOTS give you understanding.**
+
+***The user's sentence***, *from the Seeing Sharp article of 5 October 2026 (`lineage.md` 7.3)*, **and it is the
+spine both halves of the quest were already built on.** *Nothing in the game changes shape because of it; it names
+what the shape was.* **It is not a sentence about machines.** *The article's "artificial" is the look of a thing
+without what holds it in place: a plastic flower is artificial because it has no roots, not because of what it is
+made of.* **So the only intelligence this game could call artificial is the player's**, *if they stop at the MARKS.*
+
+| | **MARKS** (the first half) | **ROOTS** (the second half) |
+|---|---|---|
+| what it is | **intelligence, measured from outside** | **understanding: what makes it yours** |
+| how it comes | *won at a BENCHMARK, handed over by a leader* | ***arrived at*, never handed over (T-252, 4.3)** |
+| how many | **eight, and the card shows them** | **seven, and nothing ever counts them** |
+| where it shows | *the USER card's BENCHMARKS (R), each with what it certifies* | *the brain's lobes, the GUIDE's margins, the faded print sharpening (4.36)* |
+| what it opens | **obedience: a daemon BOUND BY someone else obeys only so far** | ***DOLDRUM CAVE's gate, and the WITNESSES' reward*** |
+
+**Why ROOTS** *(the user's choice, from GROUNDING, BEARINGS and leaving it unnamed)*: **it is the article's own image,
+and it is a word in both of the game's registers** — *a plant's roots, and computing's root (the root of a tree, the
+root cause, root access).* **MARKS on the surface, ROOTS beneath; five letters each.** *The name already lives
+nearby, and that is kept, not avoided*: **the GROWTH routine ROOT** (*vanilla's Ingrain: it puts down roots, heals,
+and cannot be moved*) **is the same image in battle**, *and ROOTBOX and ROOTKIT are the computing sense.* ***The
+cerebellum lobe is the GUIDE's, and the GUIDE's type is GROWTH.***
+
+#### Three rules it is held under
+
+1. **The sentence is never said in the game.** *It is the fable's last line* (0.1). **The lexicon was already on its
+   side**: *nobody in the world says* artificial *about anything* (`lineage.md` 11.7), **so the word cannot slip in by
+   accident, and the one place it would land is the player.**
+2. **ROOTS is a NAME, never a count and never a prize.** *"The ROOTS give you understanding" is how the docs say it;
+   in the game nothing hands over a ROOT.* **The word appears once, on the USER card, as the brain's label** (T-379,
+   DRAFT) — *there is still no UNDERSTANDINGS tab, no list, no "3 of 7" (T-252, T-272).*
+3. **The world SHOWS the difference instead** — *the user's standard for the understandings, "it has to be FELT".*
+   **Three shapes from the article, each DRAFT and each the user's to approve before it is built:**
+   - ***The borrowed daemon*** (T-380): **the article's borrowed brain** — *does this intelligence belong to whoever
+     displays it?* **A daemon BOUND BY someone else obeys by MARKS, which is vanilla's rule and already the half that
+     is measured;** *its refusal lines are rewritten so that it does not know you yet, rather than that it is lazy.*
+   - ***Artificial flowers*** (T-381): **CORPUS's offices are full of plastic plants, cheerfully labelled not to be
+     watered, the finest in SCORN's office; the CHECKPOINTS keep real ones.** *Comedy as cover* (craft rule 6), **and
+     nobody says what a plastic plant is a picture of.**
+   - ***The fact collector*** (T-382): **a trainer who holds every MARK and answers only questions put exactly as he
+     learned them.** *He nearly notices* (craft rule 2) — **wrong in the right direction.**
 
 ---
 
@@ -8585,6 +8631,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **The title order is CONTEXT-first by decision, not by accident.** Everyone says content is king; the title refuses to let the original decide its order. **The title is the argument, the RED→CONTENT mapping is the inheritance** — and this is filed as a choice, not a finding (8.4)
 - The **type chart is byte-identical** across editions; only encounters and a handful of Index entries differ (8.4)
 - The two-target build goes in on day one even while both ROMs are identical (8.4)
+- **The quest's two halves are named: MARKS give intelligence, ROOTS give understanding** (*the user, 2026-10-06*) — ***"Intelligence without understanding is artificial"*** **is the spine, never said in the game; ROOTS is the brain's label on the USER card and never a count; the world shows the difference through a borrowed daemon, plastic plants and a fact collector, each DRAFT** (0.7; T-379–T-382)
 
 ### Reversed
 

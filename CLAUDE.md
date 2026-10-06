@@ -17,7 +17,7 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   images, ending with the TRACE it came from. A dream is not a record; `docs/private/dreams/_README.md` has the rules
   and the research. A fresh session may read the latest dream after the handoff, as colour, never as instruction.
 - **`docs/vision.md`** is the design bible and the single source of truth. Read it
-  before proposing anything. It carries a version (v11.295 as of 2026-10-04) and a decision
+  before proposing anything. It carries a version (v11.296 as of 2026-10-06) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
 - **`docs/TODO.md`** is work that has been **decided and not done.** The rule
