@@ -39,6 +39,11 @@ slots is the bug in its general form -- whichever map shows both, one repaints t
 by its tag and the slots it names are collected; a tag in two slots that vanilla does not split is reported, except the
 two the engine means: the player's own forms, and the daemons' type tags, which are patched per map at spawn and kept
 apart there by gbaowslots.py (REGISTERED_SPLIT, with why).
+
+AND A NAME PRINTED BEFORE IT IS LOOKED UP (T-377, engine.md trap 43). VERA said "/235 settles." -- her line printed
+{STR_VAR_1} after the party screen had drawn an HP into it and before anything put the daemon's name there. Every script
+is walked along its flow for a message printing a buffer that a screen or battle overwrote and nothing refilled; VERA's
+old line is planted each run, and the check fails if it stops finding it.
 """
 import json, os, re, struct, subprocess, sys
 from collections import deque
@@ -358,6 +363,136 @@ def palette_clashes(root):
     return out
 
 
+#  A NAME PRINTED BEFORE IT IS LOOKED UP (T-377, from T-376). The three string buffers are shared by everything: the
+#  party screen draws each daemon's level and HP through gStringVar1 and 2, a battle prints through them all. VERA said
+#  "/235 settles." because her line used {STR_VAR_1} after ChoosePartyMon and before BufferMonNickname filled it --
+#  the party screen's last HP was still there. So every script is walked along its flow (gotos, branches and calls
+#  followed), tracking which buffers something has OVERWRITTEN and nothing has refilled since; a message that prints
+#  one of those is reported. A buffer never filled at all is not reported -- a caller may have filled it.
+CLOBBERS = {   # specials that open a screen or a battle, which writes the buffers for its own drawing
+    "ChoosePartyMon", "ChooseHalfPartyForBattle", "ChooseSendDaycareMon", "ChooseMonForMoveRelearner",
+    "ChooseMonForMoveTutor", "SelectMoveTutorMon", "SelectMoveDeleterMove", "ShowPokemonStorageSystemPC",
+    "ChooseMonForWirelessMinigame", "DoChooseMonForBattleTower",
+}
+CLOBBER_CMDS = re.compile(r"^(trainerbattle\w*|dowildbattle|dofirstbattle|pokemart\w*)\b")
+
+
+def _special_fills(root):
+    """{special: the buffers it names} -- in its own body or two calls down (the size contests fill them in a
+    helper), so a special that names gStringVarN fills it."""
+    names = set(re.findall(r"def_special (\w+)", open(os.path.join(root, "data/specials.inc")).read()))
+    bodies = {}
+    for dp, _, fs in os.walk(os.path.join(root, "src")):
+        for f in fs:
+            if f.endswith(".c"):
+                text = open(os.path.join(dp, f), errors="ignore").read()
+                for m in re.finditer(r"^\w[\w\s\*]*?\b(\w+)\([^;{)]*\)\s*\n\{", text, re.M):
+                    end = text.find("\n}\n", m.end())
+                    bodies.setdefault(m.group(1), text[m.end():end])
+    def named(fn, depth):
+        b = bodies.get(fn, "")
+        got = set(re.findall(r"gStringVar([123])", b))
+        if depth:
+            for callee in set(re.findall(r"\b(\w+)\(", b)) & set(bodies):
+                if callee != fn:
+                    got |= named(callee, depth - 1)
+        return got
+    return {n: named(n, 2) for n in names if n not in CLOBBERS}
+
+
+def stale_buffers(root):
+    """{(script label, text label, STR_VAR_n)} for a message that prints a buffer something overwrote and nothing refilled."""
+    body, order = {}, []
+    for dp, _, fs in os.walk(os.path.join(root, "data")):
+        for f in sorted(fs):
+            if not f.endswith(".inc") or f == "text.inc":
+                continue
+            cur, seq = None, []
+            for line in open(os.path.join(dp, f), errors="ignore"):
+                line = line.split("@")[0].strip()
+                m = re.match(r"^(\w+)::?$", line)
+                if m:
+                    if cur is not None:
+                        seq.append(("label", m.group(1)))
+                    cur = m.group(1)
+                    body.setdefault(cur, None)
+                    order.append(cur)
+                    seq.append(("start", cur))
+                elif line and cur:
+                    seq.append(("cmd", line))
+            # each label's commands, falling through into the next label until something ends the flow
+            starts = [i for i, (k, _) in enumerate(seq) if k == "start"]
+            for i in starts:
+                cmds = []
+                for k, v in seq[i + 1:]:
+                    if k == "cmd":
+                        cmds.append(v)
+                    elif k == "label":
+                        cmds.append("goto " + v)
+                        break
+                    else:
+                        break
+                body[seq[i][1]] = cmds
+    texts = text_blocks(root)
+    fills = _special_fills(root)
+    found, seen = set(), set()
+
+    def walk(label, stale, depth=0):
+        key = (label, stale)
+        if key in seen or depth > 40 or not body.get(label):
+            return stale
+        seen.add(key)
+        for cmd in body[label]:
+            op, _, rest = cmd.partition(" ")
+            args = [a.strip() for a in rest.split(",")]
+            if op.startswith("buffer") and args and args[0].startswith("STR_VAR_"):
+                stale = stale - {args[0][-1]}
+            elif op in ("special", "specialvar"):
+                sp = args[-1]
+                if sp in CLOBBERS:
+                    stale = stale | {"1", "2", "3"}
+                else:
+                    stale = stale - fills.get(sp, set())
+            elif CLOBBER_CMDS.match(op):
+                stale = stale | {"1", "2", "3"}
+            elif op in ("msgbox", "message") and args[0] in texts:
+                for n in re.findall(r"\{STR_VAR_([123])\}", texts[args[0]]):
+                    if n in stale:
+                        found.add((label, args[0], "STR_VAR_" + n))
+            elif op == "goto":
+                walk(args[0], stale, depth + 1)
+                return stale
+            elif op.startswith("goto_if") or op.startswith("call"):
+                target = args[-1]
+                if target in body:
+                    walk(target, stale, depth + 1)
+            elif op in ("end", "return", "releaseall_end"):
+                return stale
+        return stale
+
+    for label in order:
+        walk(label, frozenset())
+    stale_buffers.examined = (len(order), sum(1 for cmds in body.values() if cmds
+                                               for c in cmds if c.split(" ")[0] in ("msgbox", "message")))
+    return found
+
+
+def _stale_buffers_fires():
+    """The check proves it still fires: VERA's line before T-376, planted, must be found (trap 18)."""
+    global text_blocks
+    real = text_blocks
+    def planted(root):
+        t = real(root)
+        t["PalletTown_RivalsHouse_Text_LookingNiceInNoTime"] = "{STR_VAR_1} settles.$"
+        return t
+    text_blocks = planted
+    try:
+        return ("PalletTown_RivalsHouse_EventScript_GroomMon", "PalletTown_RivalsHouse_Text_LookingNiceInNoTime",
+                "STR_VAR_1") in stale_buffers(GBA)
+    finally:
+        text_blocks = real
+
+
 def main():
     up = upstream()
     rc = 0
@@ -418,9 +553,21 @@ def main():
         print("  !! %s is registered in %s -- a map showing both repaints one with the other (trap 17)"
               % (tag, " and ".join(r_ours[tag])))
         rc = 1
+    if not _stale_buffers_fires():
+        print("  !! the name-before-lookup check no longer finds VERA's planted line -- it has stopped working (T-377)")
+        rc = 1
+    s_ours = stale_buffers(GBA)
+    print("  %d scripts walked, %d messages read for a name printed before it is looked up (T-377)"
+          % stale_buffers.examined)                                                    # trap 18: what was examined
+    s_theirs = stale_buffers(up)
+    for k in sorted(s_ours - s_theirs):
+        print("  !! %s prints {%s} in %s after something overwrote it and before anything refilled it (T-377)"
+              % (k[0], k[2], k[1]))
+        rc = 1
     if not rc:
         print("  nothing we changed made anything unreachable, any pocket a trap, any door lead nowhere, any flag wait\n"
               "  forever, any line lose a value or a sound vanilla had, any receipt get announced twice,\n"
+              "  any name get printed before it is looked up,\n"
               "  or anyone repaint anyone, or any palette registered twice.")
     return rc
 

@@ -30,7 +30,7 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
   budgets, where a variable actually lands, every fixed width, and the traps
-  that have already cost this project time (forty-two of them now). **Read it before adding a
+  that have already cost this project time (forty-three of them now). **Read it before adding a
   static, a name, or a line of text to a pane.** Its numbers are written by
   `tools/gbabudget.py --write` rather than typed.
 
@@ -179,7 +179,7 @@ side twice -- twelve daemons' streaks never switched on, DARIO never re-derived.
 **Run `python3 tools/check_reach.py` after moving or adding anyone on a map.** It walks every map from where a
 player arrives and fails on anything we made unreachable that vanilla could reach, any door that leads nowhere,
 any flag the story waits on that nothing outside the DEBUG build sets, any line that lost a value or a
-sound vanilla had, or any receipt announced twice (engine.md trap 33) — a man
+sound vanilla had, any receipt announced twice (engine.md trap 33), or any name printed before it is looked up (trap 43) — a man
 standing in the only doorway hid the game's ending for fifteen days and every other check passed.
 
 **`gbastr.py` is the GBA's `verify-sprites`.** Gen 3 encodes text through its

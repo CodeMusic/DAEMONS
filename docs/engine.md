@@ -440,6 +440,10 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-10-03, T-361):*** *on a phone, a player jumped CALLOW's ledge into the strip above the fence and could not leave without GOTO.* **CALLOW SCHOOL had risen over the lawn that was that strip's only exit, and a ledge lets a player down and never up** -- *so the strip could be reached, which is all `check_reach.py` asked.* ***Anything placed on a map closes cells, and closing a cell can turn a pocket into a trap***: *`check_reach.py` now walks forward from every arrival and back from every way out, ledges one way, and fails on a cell that can be reached and not left when vanilla has none there.*
 
+### 43. A name printed before it was looked up
+
+***Symptom (2026-10-05, T-376):*** *VERA, tending a daemon, said* **"/235 settles."** *Her line printed `{STR_VAR_1}` after `special ChoosePartyMon` and before `special BufferMonNickname` filled it* -- **and the party screen draws every daemon's level and HP through `gStringVar1` and `gStringVar2`**, *so the buffer still held the last HP it drew.* **The three string buffers belong to whoever wrote last**: *a party screen, the PORT, a move tutor, any battle and a mart all write them for their own drawing.* ***A message may print a buffer only once something has filled it since the last of those***: *`check_reach.py` walks every script along its flow (gotos, branches, calls), tracks what has been overwritten and not refilled (a `buffer*` command, or a special whose body fills it two calls down), and fails on a message that prints one -- with VERA's old line planted each run to prove it still fires (T-377).*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
