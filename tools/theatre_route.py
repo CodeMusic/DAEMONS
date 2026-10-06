@@ -17,12 +17,15 @@ step is one line, split like a shell line:
     talk WHO [N]               walkto, press A, and capture each box until the script lets go -- or only N boxes,
                                leaving the script open for the presses that follow (a YES/NO, a menu)
     look X Y [N]               the same for a sign, a shelf or a PC at (X, Y): stand where it reads, face it, press A
+    trigger X Y [N]            step onto a scene's trigger tile from beside it, and capture the scene to its end
+                               (its battles won on a DEBUG route, fought on a release one)
     read                       capture the box on screen now, without pressing anything
     press BUTTON [N]           press it N times (default 1), forty frames apart, capturing after each
     hold BUTTON FRAMES         hold it for exact frames, capturing nothing
     wait FRAMES
     shot LABEL                 a screenshot into this stop's sheet
     flag FLAG_NAME|0xNNN 0|1   set a flag on the scratch save (to replay a scene, or reach past one)
+    trainer TRAINER_NAME 0|1   set a trainer's beaten flag (0: they battle again -- a leader gives the MARK again)
     flagis FLAG_NAME|0xNNN 0|1 fail the stop unless the flag is clear (0) or set (1) -- a document that files itself
     var VAR_NAME|0x40NN N      set a var
     repel [STEPS]              no wild battles for STEPS steps (default 250)
@@ -65,7 +68,7 @@ def _defines(*headers):
     return raw
 
 
-DEFINES = _defines("flags.h", "vars.h", "songs.h")
+DEFINES = _defines("flags.h", "vars.h", "songs.h", "opponents.h")
 
 
 def const(name):
@@ -284,14 +287,14 @@ class Runner:
 
     def talk(self, spec, n=None):
         self.walkto(spec)
-        self.press("A", 1, until_free=n is None, limit=n)
+        tw.run("hold A 6", "wait 50")
+        self.boxes(n)
 
-    def look(self, x, y, n=None):
+    def beside(self, x, y, need=None):
+        """Walk to the open tile beside (x, y) nearest the player -- on the side `need` faces from, if given -- and
+        answer the direction that faces (x, y) from it."""
         folder, here = self.where()
         m = tw.Map(folder)
-        facing = {(b["x"], b["y"]): b.get("player_facing_dir", "") for b in m.json.get("bg_events") or []}
-        need = {"BG_EVENT_PLAYER_FACING_NORTH": "UP", "BG_EVENT_PLAYER_FACING_SOUTH": "DOWN",
-                "BG_EVENT_PLAYER_FACING_EAST": "RIGHT", "BG_EVENT_PLAYER_FACING_WEST": "LEFT"}.get(facing.get((x, y)))
         sides = []
         for d, (dx, dy) in tw.DIRS.items():
             t = (x - dx, y - dy)
@@ -301,28 +304,54 @@ class Runner:
             if p is not None:
                 sides.append((len(p), d, t))
         if not sides:
-            raise RouteError("nowhere to stand to read (%d, %d) on %s" % (x, y, folder))
+            raise RouteError("nowhere to stand beside (%d, %d) on %s" % (x, y, folder))
         _, d, t = min(sides)
         if t != here:
             tw.walk(self.g, t)
-        tw.run("hold %s 4" % d, "wait 12")
-        self.press("A", 1, until_free=n is None, limit=n)
+        if self.where()[1] != t:
+            raise RouteError("meant to stand at %s beside (%d, %d), stood at %s" % (t, x, y, self.where()[1]))
+        return d
 
-    def press(self, button, times=1, until_free=False, limit=None):
-        tw.run("hold %s 6" % button, "wait 50")
-        self.capture("%s" % button)
-        count = 1
-        while until_free and count < 40:
-            if self.free():
+    def look(self, x, y, n=None):
+        facing = {(b["x"], b["y"]): b.get("player_facing_dir", "") for b in map_json(self.where()[0]).get("bg_events") or []}
+        need = {"BG_EVENT_PLAYER_FACING_NORTH": "UP", "BG_EVENT_PLAYER_FACING_SOUTH": "DOWN",
+                "BG_EVENT_PLAYER_FACING_EAST": "RIGHT", "BG_EVENT_PLAYER_FACING_WEST": "LEFT"}.get(facing.get((x, y)))
+        d = self.beside(x, y, need)
+        tw.run("hold %s 4" % d, "wait 12")                                 # under 8 frames: a turn, not a step
+        tw.run("hold A 6", "wait 50")
+        self.boxes(n)
+
+    def trigger(self, x, y, n=None):
+        """Step onto a scene's trigger tile from beside it, then capture the scene to its end."""
+        d = self.beside(x, y)
+        tw.run("hold %s 12" % d, "wait 40")
+        self.boxes(n)
+
+    def boxes(self, limit=None):
+        """Capture each box and press A, until the script lets go (or `limit` boxes). A battle on the way is won
+        (DEBUG) or fought (the walker's), and the scene carries on after it."""
+        count, battles = 0, 0
+        while count < (limit or 60):
+            if self.g.state()["battle"]:
+                battles += 1
+                self.capture("a battle")
+                self.win() if not self.release else tw.clear_battle(self.g)
+                tw.run("wait 60")
+                if battles > 6:
+                    raise RouteError("six battles in one scene")
+                continue
+            if limit is None and self.free():
                 return
-            tw.run("hold A 6", "wait 50")
             self.capture("A")
+            tw.run("hold A 6", "wait 50")
             count += 1
-        for _ in range((limit or times) - count):
+        if limit is None and not self.free():
+            raise RouteError("the script still held the player after sixty boxes")
+
+    def press(self, button, times=1):
+        for _ in range(times):
             tw.run("hold %s 6" % button, "wait 50")
             self.capture(button)
-        if until_free and not self.free():
-            raise RouteError("the script still held the player after forty boxes")
 
     def win(self):
         if self.release:
@@ -362,6 +391,8 @@ class Runner:
             self.walkto(args[0])
         elif op == "talk":
             self.talk(args[0], int(args[1]) if len(args) > 1 else None)
+        elif op == "trigger":
+            self.trigger(int(args[0]), int(args[1]), int(args[2]) if len(args) > 2 else None)
         elif op == "look":
             self.look(int(args[0]), int(args[1]), int(args[2]) if len(args) > 2 else None)
         elif op == "read":
@@ -378,6 +409,10 @@ class Runner:
             want = int(args[1])
             if tw.flag(self.g, const(args[0]), want) != bool(want):
                 raise RouteError("%s did not take" % args[0])
+        elif op == "trainer":
+            want = int(args[1])
+            if tw.flag(self.g, const("TRAINER_FLAGS_START") + const(args[0]), want) != bool(want):
+                raise RouteError("%s's flag did not take" % args[0])
         elif op == "flagis":
             if tw.flag(self.g, const(args[0])) != bool(int(args[1])):
                 raise RouteError("%s is %s" % (args[0], "clear" if int(args[1]) else "set"))
@@ -480,7 +515,9 @@ def check(route):
                 if a[0] in ("goto", "expect"):
                     map_index(a[1])
                     folder = a[1] if a[0] == "goto" else folder
-                elif a[0] in ("flag", "flagis", "var"):
+                    if a[0] == "goto" and len(a) > 3 and not tw.Map(a[1]).open(int(a[2]), int(a[3]), None):
+                        raise RouteError("goto %s %s %s lands in a wall" % tuple(a[1:4]))
+                elif a[0] in ("flag", "flagis", "var", "trainer"):
                     const(a[1])
                 elif a[0] in ("talk", "walkto") and folder:
                     who(folder, a[1])
