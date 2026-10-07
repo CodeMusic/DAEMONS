@@ -28,6 +28,10 @@ step is one line, split like a shell line:
     hold BUTTON FRAMES         hold it for exact frames, capturing nothing
     wait FRAMES
     shot LABEL                 a screenshot into this stop's sheet
+    load debug|release         put the built ROM in the theatre (.theatre/rom/theatre_<kind>.gba, its save kept beside
+                               it) and continue the game -- no click in the theatre's window (T-386)
+    continue                   from the intro, title, menu or recap to the player free on the overworld
+    save                       save the game in the game (START, SAVE, YES): another ROM can continue from it
     savestate NAME             keep this moment in .theatre/states/NAME.ss (the theatre script's own, T-386)
     loadstate NAME             come back to it: a route can start there instead of playing up to it
     flag FLAG_NAME|0xNNN 0|1   set a flag on the scratch save (to replay a scene, or reach past one)
@@ -201,7 +205,7 @@ def elf_symbol(name, release):
 # The DEBUG build warps by poking gDaemonsDebugWarp; the ROM players get has no such thing, but every daemon offers GOTO
 # (FLY) while the GOTO DRIVER is in the bag (T-199). So `fly` plays it as a player would: START, DAEMON, a daemon, GOTO,
 # and then the region map, whose cursor is steered by reading it out of RAM (sMapCursor) until the town is under it.
-STARTMENU_POKEMON = 1                                                       # src/start_menu.c's enum: DAEMON's entry
+STARTMENU_POKEMON, STARTMENU_SAVE = 1, 4                                     # src/start_menu.c's enum: DAEMON's, SAVE's
 
 
 def mapsec_id(name):
@@ -457,6 +461,77 @@ class Runner:
     def var(self, v, value):
         tw.run("poke16 %s %d" % (hex(tw.peek([(32, self.g.sb1, "p")])["p"] + 0x1000 + (v - 0x4000) * 2), value))
 
+    def start_menu(self, entry):
+        """Open START and put its cursor on ENTRY (the menu remembers its cursor, so read where it is)."""
+        S = lambda n: elf_symbol(n, self.release)
+        cur, num, order = S("sStartMenuCursorPos"), S("sNumStartMenuItems"), S("sStartMenuOrder")
+        tw.run("hold START 6", "wait 40")
+        for tries in range(6):                                            # the release menu takes longer to build
+            st = tw.peek([(8, cur, "cur"), (8, num, "num")] + [(8, order + i, "o%d" % i) for i in range(12)])
+            items = [st["o%d" % i] for i in range(st["num"])]
+            if entry in items:
+                break
+            tw.run("wait 20")
+        if entry not in items:
+            tw.run("hold B 6", "wait 30")
+            raise RouteError("the START menu has no entry %d here" % entry)
+        # T-332's two columns: down the left, then the right; up and down within a column, left and right across
+        rows = (len(items) + 1) // 2                                       # StartMenuRows(): always two columns here
+        (c0, r0), (c1, r1) = divmod(st["cur"], rows), divmod(items.index(entry), rows)
+        if c0 != c1:
+            tw.run("hold RIGHT 4" if c1 > c0 else "hold LEFT 4", "wait 14")
+            r0 = min(r0, (rows if c1 == 0 else len(items) - rows) - 1)
+        for _ in range(abs(r1 - r0)):
+            tw.run("hold %s 4" % ("DOWN" if r1 > r0 else "UP"), "wait 14")
+        if tw.peek([(8, cur, "c")])["c"] != items.index(entry):
+            tw.run("hold B 6", "wait 30")
+            raise RouteError("the START menu's cursor did not reach entry %d" % entry)
+
+    def continue_game(self):
+        """T-386: from wherever the game is booting -- the intro, the title, the menu, the recap -- to the overworld,
+        by watching gMain.callback2 (a Thumb pointer: its low bit set) rather than counting frames, which drift."""
+        S = lambda n: elf_symbol(n, self.release)
+        title, menu, ow = S("CB2_TitleScreenRun"), S("CB2_MainMenu"), S("CB2_Overworld")
+        cb2 = tw.symbol("gMain", self.release) + 4
+        for i in range(120):
+            cb = tw.peek([(32, cb2, "cb")])["cb"] & ~1
+            if cb == ow:
+                self.g.p = None
+                if self.free():
+                    return
+                tw.run("wait 30")
+            elif cb == title:
+                tw.run("hold START 6", "wait 60")
+            elif cb == menu:
+                tw.run("hold A 6", "wait 90")                             # CONTINUE is first
+            else:
+                tw.run("hold B 6", "wait 60")                             # the intro, a fade, the recap
+        raise RouteError("the game never reached the overworld")
+
+    def load(self, kind):
+        """T-386: put this build's ROM in the theatre (its save beside it, kept between runs) and continue the game."""
+        if kind not in ("debug", "release") or (kind == "release") != self.release:
+            raise RouteError("load %s on a %s route" % (kind, "release" if self.release else "debug"))
+        built = os.path.join(GBA, "daemonsContent.gba" if self.release else "daemonsContent_debug.gba")
+        rom = os.path.join(THEATRE, "rom", "theatre_%s.gba" % kind)
+        shutil.copyfile(built, rom)
+        tw.run("load %s" % rom, "wait 120")
+        self.g.p = None
+        self.continue_game()
+
+    def save(self):
+        """T-386: save the game in the game -- START, SAVE, YES (and YES again over an older save) -- so a save made
+        on one ROM can be continued on another: the DEBUG build goes somewhere, saves, and the release ROM starts there."""
+        if not self.free():
+            raise RouteError("save needs the player free on the overworld")
+        self.start_menu(STARTMENU_SAVE)
+        tw.run("hold A 6", "wait 60", "hold A 6", "wait 90", "hold A 6", "wait 240")   # SAVE, YES, YES over the old one
+        for attempt in range(20):
+            if self.free():
+                return
+            tw.run("hold B 6", "wait 40")
+        raise RouteError("the save did not finish")
+
     def fly(self, folder, x=None, y=None):
         """T-384: GOTO to the town FOLDER lies in, as a player does it, then walk to (X, Y) if given."""
         sec = mapsec_id(map_json(folder)["region_map_section"])
@@ -466,17 +541,8 @@ class Runner:
         if not self.free():
             raise RouteError("fly needs the player free on the overworld")
         S = lambda n: elf_symbol(n, self.release)
-        cur, num, order = S("sStartMenuCursorPos"), S("sNumStartMenuItems"), S("sStartMenuOrder")
-        # 1. START, and down (or up) to DAEMON -- the menu remembers its cursor, so read where it is
-        tw.run("hold START 6", "wait 40")
-        st = tw.peek([(8, cur, "cur"), (8, num, "num")] + [(8, order + i, "o%d" % i) for i in range(12)])
-        items = [st["o%d" % i] for i in range(st["num"])]
-        if STARTMENU_POKEMON not in items:
-            tw.run("hold B 6", "wait 30")
-            raise RouteError("the START menu has no DAEMON entry yet")
-        d = items.index(STARTMENU_POKEMON) - st["cur"]
-        for _ in range(abs(d)):
-            tw.run("hold %s 4" % ("DOWN" if d > 0 else "UP"), "wait 14")
+        # 1. START, and to DAEMON
+        self.start_menu(STARTMENU_POKEMON)
         tw.run("hold A 6", "wait 100")                                    # the party fades in
         # 2. the daemon under the cursor, and GOTO among its actions (any daemon, while the DRIVER is in the bag)
         tw.run("hold A 6", "wait 30")
@@ -537,6 +603,12 @@ class Runner:
             self.goto(args[0], *(int(v) for v in args[1:3]))
         elif op == "fly":
             self.fly(args[0], *(int(v) for v in args[1:3]))
+        elif op == "save":                                             # T-386
+            self.save()
+        elif op == "continue":
+            self.continue_game()
+        elif op == "load":
+            self.load(args[0])
         elif op in ("savestate", "loadstate"):                         # T-386
             states = os.path.join(THEATRE, "states")
             os.makedirs(states, exist_ok=True)
