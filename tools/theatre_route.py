@@ -9,7 +9,10 @@
 A route is JSON: {"rom": "debug" | "release", "about": "...", "stops": [{"stop": "a name", "steps": [...]}]}, and each
 step is one line, split like a shell line:
 
-    goto MAP_FOLDER [X Y]      the DEBUG build's theatre warp (gDaemonsDebugWarp): to (X, Y), or the map's first warp
+    goto MAP_FOLDER [X Y]      the DEBUG build's theatre warp (gDaemonsDebugWarp): to (X, Y), or the map's first warp;
+                               on a RELEASE route, fly
+    fly MAP_FOLDER [X Y]       GOTO there as a player does (START, DAEMON, a daemon, GOTO, the region map's cursor read
+                               out of RAM and steered to the town), then walk to (X, Y) -- the town's own map only (T-384)
     to X Y                     walk there on this map (tools/theatre_walk.py)
     warp MAP_DEST              walk into this map's warp to MAP_DEST
     edge up|down|left|right    walk off this map's edge
@@ -192,6 +195,43 @@ def elf_symbol(name, release):
     return int(m.group(1), 16)
 
 
+# ---- T-384: GOTO the game's own way, for a route on the RELEASE ROM ---------------------------------------------------
+# The DEBUG build warps by poking gDaemonsDebugWarp; the ROM players get has no such thing, but every daemon offers GOTO
+# (FLY) while the GOTO DRIVER is in the bag (T-199). So `fly` plays it as a player would: START, DAEMON, a daemon, GOTO,
+# and then the region map, whose cursor is steered by reading it out of RAM (sMapCursor) until the town is under it.
+STARTMENU_POKEMON = 1                                                       # src/start_menu.c's enum: DAEMON's entry
+
+
+def mapsec_id(name):
+    """MAPSEC_X -> its number, counted down the enum in the generated header as the compiler counts it."""
+    n, out = 0, {}
+    for m in re.finditer(r"^\s+(MAPSEC_\w+)\s*(?:=\s*([\w+ ]+))?,", open(os.path.join(GBA, "include/constants/region_map_sections.h")).read(), re.M):
+        if m.group(2):
+            v = m.group(2).strip()
+            n = int(v, 0) if re.fullmatch(r"\d+|0x[0-9a-fA-F]+", v) else out.get(v, n)
+        out[m.group(1)] = n
+        n += 1
+    if name not in out:
+        raise RouteError("no %s in region_map_sections.h" % name)
+    return out[name]
+
+
+def fly_action():
+    """GOTO's place among the party menu's actions: CURSOR_OPTION_FIELD_MOVES + FIELD_MOVE_FLY, read from the source."""
+    enum = open(os.path.join(GBA, "src/data/party_menu.h")).read()
+    opts = re.findall(r"^\s+(CURSOR_OPTION_\w+),", enum[enum.index("CURSOR_OPTION_SUMMARY,") - 20:], re.M)
+    fly = int(re.search(r"#define FIELD_MOVE_FLY\s+(\d+)", open(os.path.join(GBA, "include/constants/party_menu.h")).read()).group(1))
+    return opts.index("CURSOR_OPTION_FIELD_MOVES") + fly
+
+
+def kanto_cells(sec, release):
+    """Where a map section sits on Kanto's region map: the cells of sRegionMapSections_Kanto's map layer (22 x 15)."""
+    at = elf_symbol("sRegionMapSections_Kanto", release) - 0x08000000
+    rom = open(os.path.join(GBA, "daemonsContent.gba" if release else "daemonsContent_debug.gba"), "rb").read()
+    layer = rom[at: at + 22 * 15]
+    return [(i % 22, i // 22) for i, b in enumerate(layer) if b == sec]
+
+
 class Runner:
     def __init__(self, route_name, release):
         self.g = tw.Game(release)
@@ -252,8 +292,8 @@ class Runner:
 
     # the steps
     def goto(self, folder, x=None, y=None):
-        if self.release:
-            raise RouteError("goto is the DEBUG build's theatre warp; a release route walks")
+        if self.release:                                                  # T-384: the ROM players get goes by GOTO
+            return self.fly(folder, x, y)
         group, num = map_index(folder)
         if x is None:
             warps = map_json(folder).get("warp_events") or []
@@ -415,11 +455,86 @@ class Runner:
     def var(self, v, value):
         tw.run("poke16 %s %d" % (hex(tw.peek([(32, self.g.sb1, "p")])["p"] + 0x1000 + (v - 0x4000) * 2), value))
 
+    def fly(self, folder, x=None, y=None):
+        """T-384: GOTO to the town FOLDER lies in, as a player does it, then walk to (X, Y) if given."""
+        sec = mapsec_id(map_json(folder)["region_map_section"])
+        cells = kanto_cells(sec, self.release)
+        if not cells:
+            raise RouteError("%s is not on Kanto's map (a SEVII island: GOTO there is not taught yet)" % folder)
+        if not self.free():
+            raise RouteError("fly needs the player free on the overworld")
+        S = lambda n: elf_symbol(n, self.release)
+        cur, num, order = S("sStartMenuCursorPos"), S("sNumStartMenuItems"), S("sStartMenuOrder")
+        # 1. START, and down (or up) to DAEMON -- the menu remembers its cursor, so read where it is
+        tw.run("hold START 6", "wait 40")
+        st = tw.peek([(8, cur, "cur"), (8, num, "num")] + [(8, order + i, "o%d" % i) for i in range(12)])
+        items = [st["o%d" % i] for i in range(st["num"])]
+        if STARTMENU_POKEMON not in items:
+            tw.run("hold B 6", "wait 30")
+            raise RouteError("the START menu has no DAEMON entry yet")
+        d = items.index(STARTMENU_POKEMON) - st["cur"]
+        for _ in range(abs(d)):
+            tw.run("hold %s 4" % ("DOWN" if d > 0 else "UP"), "wait 14")
+        tw.run("hold A 6", "wait 100")                                    # the party fades in
+        # 2. the daemon under the cursor, and GOTO among its actions (any daemon, while the DRIVER is in the bag)
+        tw.run("hold A 6", "wait 30")
+        base = tw.peek([(32, S("sPartyMenuInternal"), "p")])["p"]
+        acts = tw.peek([(8, base + 15 + i, "a%d" % i) for i in range(9)] + [(8, base + 24, "n")])
+        actions = [acts["a%d" % i] for i in range(acts["n"])]
+        if fly_action() not in actions:
+            tw.run("hold B 6", "wait 30", "hold B 6", "wait 60", "hold B 6", "wait 30")
+            raise RouteError("GOTO is not offered: is the GOTO DRIVER in the bag, and its MARK held?")
+        for _ in range(actions.index(fly_action())):
+            tw.run("hold DOWN 4", "wait 14")
+        tw.run("hold A 6", "wait 120")                                    # the region map opens
+        # 3. the cursor, steered cell by cell to the nearest of the town's cells
+        mc = S("sMapCursor")
+        for wait in range(8):                                             # the map, or "Can't use that here."
+            if tw.peek([(32, mc, "p")])["p"]:
+                break
+            tw.run("wait 30")
+        else:
+            tw.run("hold B 6", "wait 40", "hold B 6", "wait 60", "hold B 6", "wait 40")
+            raise RouteError("GOTO can't be used here (indoors, or a cave): walk outside first")
+        for tries in range(80):
+            p = tw.peek([(32, mc, "p")])["p"]
+            if not p:
+                tw.run("wait 20"); continue
+            c = tw.peek([(16, p, "x"), (16, p + 2, "y"), (16, p + 20, "sec")])
+            x0, y0 = c["x"], c["y"]
+            tx, ty = min(cells, key=lambda t: abs(t[0] - x0) + abs(t[1] - y0))
+            if (x0, y0) == (tx, ty):
+                break
+            way = "RIGHT" if tx > x0 else "LEFT" if tx < x0 else "DOWN" if ty > y0 else "UP"
+            tw.run("hold %s 4" % way, "wait 16")
+        else:
+            tw.run("hold B 6", "wait 60")
+            raise RouteError("the region map's cursor never reached %s -- on the SEVII islands the map opens on them; "
+                             "GOTO from Kanto" % folder)
+        tw.run("wait 10")
+        if tw.peek([(16, p + 20, "sec")])["sec"] != sec:
+            raise RouteError("the cursor is on %s's cell but the map names section %d" % (folder, c["sec"]))
+        tw.run("hold A 6", "wait 200")                                    # the flight, and the landing's fade
+        for attempt in range(60):
+            self.g.p = None                         # a flight moves gSaveBlock1: the cached pointer would name the old town
+            name, here = self.where()
+            if self.free() and mapsec_id(map_json(name).get("region_map_section", "MAPSEC_NONE")) == sec:
+                break
+            tw.run("wait 30")
+        else:
+            raise RouteError("GOTO did not land in %s's town" % folder)
+        if x is not None:
+            if name != folder:
+                raise RouteError("GOTO lands in %s, not %s: walk from there with warp and to" % (name, folder))
+            tw.walk(self.g, (int(x), int(y)))
+
     def step(self, line):
         a = words(line)
         op, args = a[0].lower(), a[1:]
         if op == "goto":
             self.goto(args[0], *(int(v) for v in args[1:3]))
+        elif op == "fly":
+            self.fly(args[0], *(int(v) for v in args[1:3]))
         elif op == "to":
             tw.walk(self.g, (int(args[0]), int(args[1])))
         elif op == "warp":

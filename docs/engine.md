@@ -466,6 +466,7 @@ screenshot of it beside the source line settles it in a minute.***
   makes it a save of its own and the user's are never opened.*
 - **The intro's last fade is long.** *A black screen with `gMain.callback2 == CB2_NewGame` is the map loading,
   not a hang — sample again after a few seconds before debugging anything.*
+- ***And a flight moves it too*** (T-384): *a walker that caches the pointer and re-reads it only when the map it reads changes can read the OLD town at the old address after GOTO, forever -- re-read the pointer while waiting to land.*
 - **`gSaveBlock1Ptr` MOVES on every map load.** *Read the pointer fresh, then the `Coords16` at its head, or the
   position you read is a stale address.*
 - **A house stair is `MB_DOWN_LEFT_STAIR_WARP`**: *it fires on a press of LEFT while STANDING on it, not on
