@@ -141,6 +141,12 @@ directly: the same reason `daemon/voice` is proxied.
 **Body**: `{ text | audioBase64 + audioMime, daemon: {nickname, name, types, category, entry}, day: {day, theme, cue},
 history: [{text, answer}], provider: "auto" | "local" | "openrouter", speak: true, voice: "index" }`.
 
+**The goal and a memory** (2026-10-07): the companion server sends `goal: {goal, step, milestone}` -- the one next step
+it is walking you through -- and fills `history` with the last six exchanges of *that device* (kept fifteen quiet
+minutes, never written down). The model is told the goal **only when what was said asks about it** (what next, what
+should I do, my goal, help ...): a small model mentions whatever it is told, and the companion never nags. Answers have
+markdown stripped, since they are spoken.
+
 **Local or OpenRouter**: `auto` (the default) uses the local model unless it is already answering someone -- the
 workflow counts the local turns in flight in its static data, and a turn that never finished stops counting after two
 minutes -- and then OpenRouter, so nobody waits behind anyone. A local call that fails falls through to OpenRouter too.

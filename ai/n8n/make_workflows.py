@@ -53,6 +53,9 @@ return [{ json: {
   daemon: { nickname: String(d.nickname || d.name || 'your daemon'), name: String(d.name || ''), types: String(d.types || ''),
             category: String(d.category || ''), entry: String(d.entry || '') },
   day: body.day || null,
+  // the goal the companion is walking them through, and its one next step (the companion server sends it)
+  goal: body.goal && typeof body.goal === 'object' ? { goal: String(body.goal.goal || '').slice(0, 120),
+        step: String(body.goal.step || '').slice(0, 160), milestone: String(body.goal.milestone || '').slice(0, 120) } : null,
   history: Array.isArray(body.history) ? body.history.slice(-6) : [],
   speak: body.speak !== false, voice: String(body.voice || 'index'),
   localModel: String(body.localModel || ''),
@@ -74,12 +77,15 @@ BUILD = r"""// The daemon, as a character: its name, its types, its INDEX entry,
 const v = $input.first().json;
 const d = v.daemon;
 const day = v.day || {};
+// A small model mentions whatever it is told, so it is told the goal only when they ask about it: never nags (PLAN 7).
+const asksAboutGoal = /\b(what (should|do|now|next)|next|goal|step|to ?do|help|plan|task|stuck)\b/i.test(String(v.text || ''));
 const system = [
   `You are ${d.nickname}, a DAEMON${d.name && d.name !== d.nickname ? ' (' + d.name + ')' : ''}, carried by the person you are talking with on a small handheld companion.`,
   d.types ? `Your types: ${d.types}.` : '',
   d.category ? `Your INDEX category: ${d.category}.` : '',
   d.entry ? `Your INDEX entry, as the record describes you: ${d.entry}` : '',
   day.theme || day.cue ? `Today is ${day.day || 'today'}: ${day.theme || ''}${day.cue ? ', ' + day.cue : ''}.` : '',
+  asksAboutGoal && v.goal && v.goal.step ? `They are working toward: ${v.goal.goal || 'a goal'}${v.goal.milestone ? ' (now: ' + v.goal.milestone + ')' : ''}. Their one next step: ${v.goal.step}. Bring it up only if they ask what to do or about their goal; then name that step, simply. Never nag.` : '',
   'Speak as yourself, in one to three short sentences: warm, curious, a little strange. You are heard, not read, so no lists, no markdown and no emoji.',
   'Help with their goals when they ask. Never lecture, and never explain what you are a metaphor for.',
 ].filter(Boolean).join('\n');
@@ -104,7 +110,7 @@ PARSE = r"""// The answer, and the local model's turn released. A reasoning mode
 const v = $('Build Chat').first().json;
 const r = ($input.first() || {}).json || {};
 const raw = r?.choices?.[0]?.message?.content ?? r?.message?.content ?? '';
-const answer = String(raw).replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+const answer = String(raw).replace(/<think>[\s\S]*?<\/think>/g, '').replace(/[*_#`]+/g, '').replace(/\s+/g, ' ').trim();   // spoken: no markdown
 let provider = v.provider;
 try { if ($('Think (OpenRouter)').isExecuted) provider = 'openrouter'; } catch (e) {}
 const g = $getWorkflowStaticData('global');
