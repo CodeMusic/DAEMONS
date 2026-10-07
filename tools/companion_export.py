@@ -193,17 +193,17 @@ def charmap_table():
     return {"_about": "byte (hex) -> character; 0xFF ends a string", "bytes": table}
 
 
-#  The Xenith week (the user's own framework; the Guide's Chapters 8-9 give each day its centre, virtue and shadow, and
-#  the game's MARKS give the same virtues -- T-305, T-346): Sunday first, read across. The theme words are the
-#  user's, 2026-10-07 (companion C-73). The colour and the note are the game's own week (day_trims.h, vision 9.21).
+#  The Xenith week (the user's own framework and the Programmer's Guide, as the user gave it 2026-10-07): each day's
+#  centre, its virtue and the vice it cures, and the theme word. The colour and the note are the game's own week
+#  (day_trims.h, vision 9.21). Friday's virtue may become ADMIRATION (the user's open question, companion C-73).
 XENITH_DAYS = [
-    ("red",    "Root",         "Diligence",  "Sloth",    "Passion"),
-    ("orange", "Sacral",       "Chastity",   "Lust",     "Development"),
-    ("yellow", "Solar Plexus", "Charity",    "Greed",    "Connection"),
-    ("green",  "Heart",        "Kindness",   "Envy",     "Growth"),
-    ("blue",   "Throat",       "Temperance", "Gluttony", "Calm"),
-    ("indigo", "Third Eye",    "Patience",   "Wrath",    "Intuition"),
-    ("violet", "Crown",        "Humility",   "Pride",    "Flow"),
+    ("red",    "Root",         "Chastity",    "Lust",     "Passion"),
+    ("orange", "Sacral",       "Temperance",  "Gluttony", "Development"),
+    ("yellow", "Solar Plexus", "Charity",     "Greed",    "Connection"),
+    ("green",  "Heart",        "Diligence",   "Sloth",    "Growth"),
+    ("blue",   "Throat",       "Forgiveness", "Wrath",    "Calm"),
+    ("indigo", "Third Eye",    "Kindness",    "Envy",     "Intuition"),
+    ("violet", "Crown",        "Humility",    "Pride",    "Flow"),
 ]
 
 
@@ -214,10 +214,10 @@ def week_table():
         hexc = "#%02X%02X%02X" % tuple(int(v) * 255 // 31 for v in (r, g, b))
         hue, chakra, virtue, shadow, theme = XENITH_DAYS[len(days)]
         days.append({"day": day.capitalize(), "colour": hexc, "hue": hue, "note": note, "chakra": chakra,
-                     "virtue": virtue, "shadow": shadow, "cue": "%s over %s" % (virtue, shadow), "theme": theme})
+                     "virtue": virtue, "shadow": shadow, "cue": "%s cures %s" % (virtue, shadow), "theme": theme})
     return {"_about": "Sunday first; each day's colour is the CHECKPOINT's trim (day_trims.h) and its note C to B "
-                      "(vision 9.21); its hue, chakra, virtue over its shadow, and theme are the Xenith week (the "
-                      "Guide's Chapters 8-9, and the user's theme words, companion C-73).",
+                      "(vision 9.21); its hue, chakra, the virtue and the vice it cures, and the theme are the "
+                      "user's Xenith week (companion C-73).",
             "days": days}
 
 
