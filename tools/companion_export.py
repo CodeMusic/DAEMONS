@@ -153,6 +153,18 @@ def moves_table():
     return out
 
 
+def routines_table():
+    """C-68: the names the game prints for each move (a routine) and each type, for GAME ROUTINES on the handhelds."""
+    ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define MOVE_(\w+)\s+(\d+)\b", read("include/constants/moves.h"))}
+    names = {}
+    for m in re.finditer(r'\[MOVE_(\w+)\]\s*=\s*_\("([^"]*)"\)', read("src/data/text/move_names.h")):
+        if m.group(1) in ids and ids[m.group(1)]:
+            names[str(ids[m.group(1)])] = m.group(2)
+    types = dict(re.findall(r'\[TYPE_(\w+)\]\s*=\s*_\("([^"]*)"\)', read("src/battle_main.c")))
+    return {"_about": "the game's move (routine) names by move id, and its type names in moves.json's type order",
+            "types": [types.get(t, t) for t in TYPE_ORDER], "moves": names}
+
+
 def party_art(species):
     """C-18: each daemon as the game draws it -- its built front sprite (graphics/pokemon/<slot>/front.4bpp) in its
     normal palette, an indexed PNG whose palette the server rewrites per daemon (11..14, its routines). Only species
@@ -387,7 +399,7 @@ def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
              "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
-             "items.json": items_table()}
+             "items.json": items_table(), "routines.json": routines_table()}
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
