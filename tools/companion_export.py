@@ -193,18 +193,17 @@ def charmap_table():
     return {"_about": "byte (hex) -> character; 0xFF ends a string", "bytes": table}
 
 
-#  RoverRadio's day table (the user's own design, CodeMusic/RoverByte RoverCodeBase: PrefrontalCortex/ProtoPerceptions.cpp
-#  DAY_COLORS, AuditoryCortex/PitchPerception.cpp, VisualCortex/RoverViewManager.cpp CHAKRA_DATA and VIRTUE_DATA --
-#  four arrays, Sunday first, read across; companion docs/INHERITANCE.md). The game's own week agrees on the rainbow
-#  and the notes; the chakra and the virtue are RoverRadio's, and the game does not pair days with virtues.
-ROVERRADIO_DAYS = [
-    ("red", "Root", "Chastity cures Lust"),
-    ("orange", "Sacral", "Temperance cures Gluttony"),
-    ("yellow", "Solar Plexus", "Charity cures Greed"),
-    ("green", "Heart", "Diligence cures Sloth"),
-    ("blue", "Throat", "Forgiveness cures Wrath"),
-    ("indigo", "Third Eye", "Kindness cures Envy"),
-    ("violet", "Crown", "Humility cures Pride"),
+#  The Xenith week (the user's own framework; the Guide's Chapters 8-9 give each day its centre, virtue and shadow, and
+#  the game's MARKS give the same virtues -- T-305, T-346): Sunday first, read across. The theme words are the
+#  user's, 2026-10-07 (companion C-73). The colour and the note are the game's own week (day_trims.h, vision 9.21).
+XENITH_DAYS = [
+    ("red",    "Root",         "Diligence",  "Sloth",    "Passion"),
+    ("orange", "Sacral",       "Chastity",   "Lust",     "Development"),
+    ("yellow", "Solar Plexus", "Charity",    "Greed",    "Connection"),
+    ("green",  "Heart",        "Kindness",   "Envy",     "Growth"),
+    ("blue",   "Throat",       "Temperance", "Gluttony", "Calm"),
+    ("indigo", "Third Eye",    "Patience",   "Wrath",    "Intuition"),
+    ("violet", "Crown",        "Humility",   "Pride",    "Flow"),
 ]
 
 
@@ -213,10 +212,12 @@ def week_table():
     days = []
     for r, g, b, day, note in trims:
         hexc = "#%02X%02X%02X" % tuple(int(v) * 255 // 31 for v in (r, g, b))
-        hue, chakra, virtue = ROVERRADIO_DAYS[len(days)]
-        days.append({"day": day.capitalize(), "colour": hexc, "hue": hue, "note": note, "chakra": chakra, "virtue": virtue})
+        hue, chakra, virtue, shadow, theme = XENITH_DAYS[len(days)]
+        days.append({"day": day.capitalize(), "colour": hexc, "hue": hue, "note": note, "chakra": chakra,
+                     "virtue": virtue, "shadow": shadow, "cue": "%s over %s" % (virtue, shadow), "theme": theme})
     return {"_about": "Sunday first; each day's colour is the CHECKPOINT's trim (day_trims.h) and its note C to B "
-                      "(vision 9.21); its hue, chakra and virtue are RoverRadio's day table (companion docs/INHERITANCE.md).",
+                      "(vision 9.21); its hue, chakra, virtue over its shadow, and theme are the Xenith week (the "
+                      "Guide's Chapters 8-9, and the user's theme words, companion C-73).",
             "days": days}
 
 
