@@ -19,3 +19,15 @@ The CC1101 after the refactor: battery in the top bar (C-63) and the DAY screen 
 v11.296.2: the GUIDE's SECURITY day line, before and after -- it follows the Xenith week (T-385)
 
 ![7Oct2026 - T385 - GUIDE day line - 3](7Oct2026%20-%20T385%20-%20GUIDE%20day%20line%20-%203.png)
+
+### 7Oct2026 - C66 - CC1101 talk answered - 4
+
+The CC1101's TALK screen after a talk turn: 3 s from its microphone, the local model's answer, its voice played (C-66)
+
+![7Oct2026 - C66 - CC1101 talk answered - 4](7Oct2026%20-%20C66%20-%20CC1101%20talk%20answered%20-%204.png)
+
+### 7Oct2026 - C70 - CC1101 wifi motion - 5
+
+WI-FI MOTION on the CC1101: 943 channel readings in 44 s, movement as a multiple of the still room (C-70)
+
+![7Oct2026 - C70 - CC1101 wifi motion - 5](7Oct2026%20-%20C70%20-%20CC1101%20wifi%20motion%20-%205.png)
