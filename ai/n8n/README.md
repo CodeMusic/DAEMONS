@@ -149,7 +149,7 @@ minutes -- and then OpenRouter, so nobody waits behind anyone. A local call that
 
 | variable | what | default |
 |---|---|---|
-| `DAEMONS_STT_URL` | an OpenAI-compatible transcription server (`/v1/audio/transcriptions`, multipart) | `http://host.docker.internal:8000` |
+| `DAEMONS_STT_URL` | an OpenAI-compatible transcription server (`/v1/audio/transcriptions`, multipart) | `http://host.docker.internal:8770` |
 | `DAEMONS_STT_MODEL` | its model name | `whisper-1` |
 | `DAEMONS_LLM_URL`, `DAEMONS_LLM_MODEL` | the local model's server and its name in LM Studio (or the body's `localModel`) | `http://host.docker.internal:1234`, `google/gemma-3-4b` |
 | `OPENROUTER_API_KEY` | turns OpenRouter on | -- |

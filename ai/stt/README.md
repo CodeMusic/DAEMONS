@@ -1,7 +1,7 @@
 # Speech to text on roverbyteseer (companion C-83)
 
-`whisper_server.py`: MLX Whisper behind an OpenAI-compatible `/v1/audio/transcriptions`, on port 8000. n8n's
-`daemon/talk` and `daemon/hear` call it at `DAEMONS_STT_URL` (default `http://host.docker.internal:8000`, which from
+`whisper_server.py`: MLX Whisper behind an OpenAI-compatible `/v1/audio/transcriptions`, on port 8770 (8000 is already taken there). n8n's
+`daemon/talk` and `daemon/hear` call it at `DAEMONS_STT_URL` (default `http://host.docker.internal:8770`, which from
 n8n's container is roverbyteseer itself).
 
 ## Install (on roverbyteseer, once)
@@ -34,7 +34,7 @@ cat > ~/Library/LaunchAgents/ca.codemusic.daemons-stt.plist <<EOF
 </dict></plist>
 EOF
 launchctl load ~/Library/LaunchAgents/ca.codemusic.daemons-stt.plist
-curl -s localhost:8000/health                         # {"ok": true, "model": "mlx-community/whisper-large-v3-turbo"}
+curl -s localhost:8770/health                         # {"ok": true, "model": "mlx-community/whisper-large-v3-turbo"}
 ```
 
 A smaller, faster model: set `WHISPER_MODEL` to `mlx-community/whisper-small-mlx` in the plist's EnvironmentVariables.

@@ -1,0 +1,240 @@
+{
+  "name": "DAEMONS — daemon/hear (speech to text)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/hear",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "h1",
+      "name": "Webhook /daemon/hear",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "daemon-hear"
+    },
+    {
+      "parameters": {
+        "jsCode": "// daemon/hear: recorded audio in, what was said out. Never throws (see daemon/talk).\nconst req = $input.first().json;\nconst headers = req.headers || {};\nconst body = req.body || {};\nconst expected = $env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret'] !== expected) return [{ json: { ok: false, error: 'unauthorized' } }];\nconst audioBase64 = body.audioBase64 ? String(body.audioBase64) : '';\nif (!audioBase64) return [{ json: { ok: false, error: 'nothing to hear: send audioBase64' } }];\nreturn [{ json: { ok: true, audioBase64, audioMime: String(body.audioMime || 'audio/wav'), language: String(body.language || '') } }];"
+      },
+      "id": "h2",
+      "name": "Validate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "h3",
+      "name": "Ok?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ text: null, error: $json.error }) }}",
+        "options": {}
+      },
+      "id": "h4",
+      "name": "Respond Error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        660,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// The device's recording, as a file the speech-to-text server can take.\nconst v = $input.first().json;\nconst bin = await this.helpers.prepareBinaryData(Buffer.from(v.audioBase64, 'base64'), 'speech.wav', v.audioMime);\nreturn [{ json: v, binary: { audio: bin } }];"
+      },
+      "id": "h5",
+      "name": "Audio to File",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.DAEMONS_STT_URL || 'http://host.docker.internal:8770') + '/v1/audio/transcriptions' }}",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "audio"
+            },
+            {
+              "name": "model",
+              "value": "={{ $env.DAEMONS_STT_MODEL || 'whisper-1' }}"
+            },
+            {
+              "name": "response_format",
+              "value": "json"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "h6",
+      "name": "Hear (speech to text)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// The words, or a named absence: a device can say \"I could not hear that\" instead of hanging.\nconst r = ($input.first() || {}).json || {};\nconst text = String(r.text || '').trim();\nreturn [{ json: { text: text || null, error: text ? null : (r.error ? String(r.error.message || r.error).slice(0, 200) : 'nothing_heard') } }];"
+      },
+      "id": "h7",
+      "name": "Shape",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "h8",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "active": false,
+  "connections": {
+    "Webhook /daemon/hear": {
+      "main": [
+        [
+          {
+            "node": "Validate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate": {
+      "main": [
+        [
+          {
+            "node": "Ok?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ok?": {
+      "main": [
+        [
+          {
+            "node": "Audio to File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio to File": {
+      "main": [
+        [
+          {
+            "node": "Hear (speech to text)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hear (speech to text)": {
+      "main": [
+        [
+          {
+            "node": "Shape",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  }
+}

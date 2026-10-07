@@ -56,6 +56,11 @@ def main():
     else:
         wid = call(base, key, "POST", "/workflows", body)["id"]
         print("created  %s  (%s on %s)" % (wf["name"], wid, args[0]))
+    # every workflow made for DAEMONS carries the servers' "daemons" tag (the user, 2026-10-07)
+    tags = [t for t in call(base, key, "GET", "/tags?limit=100").get("data", []) if t["name"] == "daemons"]
+    tag = tags[0]["id"] if tags else call(base, key, "POST", "/tags", {"name": "daemons"})["id"]
+    call(base, key, "PUT", "/workflows/%s/tags" % wid, [{"id": tag}])
+    print("tagged   daemons")
     if "--off" not in sys.argv:
         call(base, key, "POST", "/workflows/%s/activate" % wid)
         print("active")

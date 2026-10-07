@@ -8,7 +8,7 @@ house. n8n's daemon/talk and daemon/hear call it (DAEMONS_STT_URL); anything tha
                                     response_format=json|text  ->  {"text": "..."}
     GET  /health                    {"ok": true, "model": ...}
 
-Run:   WHISPER_MODEL=mlx-community/whisper-large-v3-turbo  python3 whisper_server.py   (port 8000, all interfaces)
+Run:   WHISPER_MODEL=mlx-community/whisper-large-v3-turbo  python3 whisper_server.py   (port 8770, all interfaces; 8000 is taken on roverbyteseer)
 The model downloads on first use (about 1.6 GB for large-v3-turbo) and stays loaded. ffmpeg must be installed: it
 reads whatever the device recorded (wav, mp3, m4a, ...).
 """
@@ -20,7 +20,7 @@ from fastapi import FastAPI, File, Form, UploadFile
 from fastapi.responses import JSONResponse, PlainTextResponse
 
 MODEL = os.environ.get("WHISPER_MODEL", "mlx-community/whisper-large-v3-turbo")
-PORT = int(os.environ.get("WHISPER_PORT", "8000"))
+PORT = int(os.environ.get("WHISPER_PORT", "8770"))
 app = FastAPI(title="DAEMONS speech to text")
 
 

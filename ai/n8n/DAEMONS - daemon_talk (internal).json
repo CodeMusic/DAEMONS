@@ -124,7 +124,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "={{ ($env.DAEMONS_STT_URL || 'http://host.docker.internal:8000') + '/v1/audio/transcriptions' }}",
+        "url": "={{ ($env.DAEMONS_STT_URL || 'http://host.docker.internal:8770') + '/v1/audio/transcriptions' }}",
         "sendBody": true,
         "contentType": "multipart-form-data",
         "bodyParameters": {
