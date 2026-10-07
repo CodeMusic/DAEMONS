@@ -195,7 +195,7 @@ def charmap_table():
 
 #  The Xenith week (the user's own framework and the Programmer's Guide, as the user gave it 2026-10-07): each day's
 #  centre, its virtue and the vice it cures, and the theme word. The colour and the note are the game's own week
-#  (day_trims.h, vision 9.21). Friday's virtue may become ADMIRATION (the user's open question, companion C-73).
+#  (day_trims.h, vision 9.21).
 XENITH_DAYS = [
     ("red",    "Root",         "Chastity",    "Lust",     "Passion"),
     ("orange", "Sacral",       "Temperance",  "Gluttony", "Development"),
