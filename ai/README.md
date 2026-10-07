@@ -16,6 +16,18 @@ is kept as the readable statement of what we changed and why.
 [h]: https://github.com/Clad3815/gpt-play-pokemon-firered
 [f]: https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons
 
+## Also in this folder: the companion's voice
+
+This README is about the model that **plays** the game. Two neighbours here serve the
+[companion](https://github.com/CodeMusic/daemons-companion) instead -- the daemon you carry, talking:
+
+- **`n8n/`** -- the workflows on your own n8n: `daemon/talk` (push to talk: speech to text, the
+  daemon answering as itself on a local model or OpenRouter, the INDEX voice), `daemon/voice`,
+  `daemon/hear` and the rest, written by `make_workflows.py` and imported by `push.py`
+  (every one tagged `daemons`). Its README has each endpoint and the settings it reads.
+- **`stt/`** -- speech to text: MLX Whisper behind an OpenAI-style endpoint on port 8770, with
+  its install and the launch agent that keeps it running.
+
 ## It reads RAM first, and the screen second
 
 **The state comes out of memory, by symbol name.** mGBA exposes a Lua socket, a
