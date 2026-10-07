@@ -49,7 +49,7 @@ if (provider === 'local') g.inflight.push(now);
 const d = body.daemon || {};
 return [{ json: {
   ok: true, text, heard: null, audioBase64, audioMime: String(body.audioMime || 'audio/wav'),
-  provider, hasOpenRouter, startedAt: now,
+  provider, want, hasOpenRouter, startedAt: now,   // want: what was asked -- "local" never falls back to OpenRouter
   daemon: { nickname: String(d.nickname || d.name || 'your daemon'), name: String(d.name || ''), types: String(d.types || ''),
             category: String(d.category || ''), entry: String(d.entry || '') },
   day: body.day || null,
@@ -155,7 +155,7 @@ nodes = [
     node("t9", "Build Chat", "code", 2, [1540, 0], {"jsCode": BUILD}),
     http_llm("t10", "Think (chosen)", [1760, 0], "={{ $json.url }}", "={{ $json.auth }}", "={{ JSON.stringify($json.completionBody) }}"),
     iff("t11", "Local failed?", [1980, 0],
-        "={{ !($json.choices && $json.choices[0]) && $('Build Chat').first().json.provider === 'local' && $('Build Chat').first().json.hasOpenRouter }}", "true"),
+        "={{ !($json.choices && $json.choices[0]) && $('Build Chat').first().json.provider === 'local' && $('Build Chat').first().json.hasOpenRouter && $('Build Chat').first().json.want !== 'local' }}", "true"),
     http_llm("t12", "Think (OpenRouter)", [2200, -160], "https://openrouter.ai/api/v1/chat/completions",
         "={{ 'Bearer ' + ($env.OPENROUTER_API_KEY || '') }}",
         "={{ JSON.stringify({ ...$('Build Chat').first().json.completionBody, model: $env.DAEMONS_OPENROUTER_MODEL || 'meta-llama/llama-3.1-8b-instruct' }) }}"),
