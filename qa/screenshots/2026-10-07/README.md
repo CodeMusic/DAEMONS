@@ -49,3 +49,9 @@ The CC1101's low-battery warning, checked with a pretend charge: BATTERY LOW at 
 LONGWAVE's FIND IT on the CC1101, live mid-run (a routine now answers SHOT) and its result, which no longer goes dark
 
 ![7Oct2026 - C28 - CC1101 find it - 8](7Oct2026%20-%20C28%20-%20CC1101%20find%20it%20-%208.png)
+
+### 7Oct2026 - C28 - CC1101 what remote - 9
+
+FLARE's WHAT REMOTE IS THIS on the CC1101, and the routine and type lists scrolling
+
+![7Oct2026 - C28 - CC1101 what remote - 9](7Oct2026%20-%20C28%20-%20CC1101%20what%20remote%20-%209.png)
