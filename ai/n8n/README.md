@@ -151,10 +151,15 @@ minutes -- and then OpenRouter, so nobody waits behind anyone. A local call that
 |---|---|---|
 | `DAEMONS_STT_URL` | an OpenAI-compatible transcription server (`/v1/audio/transcriptions`, multipart) | `http://host.docker.internal:8000` |
 | `DAEMONS_STT_MODEL` | its model name | `whisper-1` |
-| `DAEMONS_LLM_URL`, `DAEMONS_LLM_MODEL` | the local model (falls back to `DEX_LLM_URL`, `DEX_LLM_MODEL`) | `http://host.docker.internal:1234` |
+| `DAEMONS_LLM_URL`, `DAEMONS_LLM_MODEL` | the local model's server and its name in LM Studio (or the body's `localModel`) | `http://host.docker.internal:1234`, `google/gemma-3-4b` |
 | `OPENROUTER_API_KEY` | turns OpenRouter on | -- |
 | `DAEMONS_OPENROUTER_MODEL` | which OpenRouter model | `meta-llama/llama-3.1-8b-instruct` |
 
 It speaks through `DEXTER_TTS_URL` with `voice: 'index'`, as `daemon/voice` does; the INDEX entry read aloud (companion
 C-65) is `daemon/voice` itself, with no model.
+
+**Imported and live 2026-10-07** with `python3 ai/n8n/push.py internal|public FILE` (keys in `docs/private/n8n/keys.env`).
+Measured: a local turn with the INDEX voice about 14 s once the model is loaded (the first loads it, about 35 s); a
+text-only turn through the public relay 1.3 s. **LM Studio keeps nothing loaded**, so the model is asked for by name
+(`gemma-3-4b`: a talker, with no thinking step to wait through). OpenRouter already answers there: its key is set.
 
