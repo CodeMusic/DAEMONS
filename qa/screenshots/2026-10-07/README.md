@@ -37,3 +37,9 @@ WI-FI MOTION on the CC1101: 943 channel readings in 44 s, movement as a multiple
 LONGWAVE on the CC1101: WHAT'S ON THE AIR, 90 s across 315/433/868/915 MHz, listening only; the screen fine after the radio
 
 ![7Oct2026 - C28 - CC1101 longwave - 6](7Oct2026%20-%20C28%20-%20CC1101%20longwave%20-%206.png)
+
+### 7Oct2026 - C63 - CC1101 low battery - 7
+
+The CC1101's low-battery warning, checked with a pretend charge: BATTERY LOW at 12%, the icon red; at 4% the sleep rule fires (C-63)
+
+![7Oct2026 - C63 - CC1101 low battery - 7](7Oct2026%20-%20C63%20-%20CC1101%20low%20battery%20-%207.png)
