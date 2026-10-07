@@ -1,0 +1,615 @@
+{
+  "name": "DAEMONS — daemon/talk (speak with your daemon)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/talk",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "t1",
+      "name": "Webhook /daemon/talk",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "daemon-talk"
+    },
+    {
+      "parameters": {
+        "jsCode": "// daemon/talk: a person speaks (or types) to the daemon they carry, and it answers in its own words, read aloud\n// by the INDEX voice. Companion C-64 / C-66.\n//\n// Never throws. Under responseMode:responseNode a thrown node never reaches Respond and the caller hangs\n// (daemon/voice measured a 120 s hang) -- so a bad request comes back as a named error instead.\nconst req = $input.first().json;\nconst headers = req.headers || {};\nconst body = req.body || {};\nconst expected = $env.DEX_SHARED_SECRET;\nif (expected && headers['x-dex-secret'] !== expected) return [{ json: { ok: false, error: 'unauthorized' } }];\nconst text = String(body.text || '').trim();\nconst audioBase64 = body.audioBase64 ? String(body.audioBase64) : '';\nif (!text && !audioBase64) return [{ json: { ok: false, error: 'nothing to answer: send text or audioBase64' } }];\n\n// Local or OpenRouter. 'auto' (the default) asks the local model unless it is already answering someone; then\n// OpenRouter, so a second person never waits behind the first. 'local' and 'openrouter' force one.\nconst hasOpenRouter = !!$env.OPENROUTER_API_KEY;\nconst want = String(body.provider || 'auto');\nconst g = $getWorkflowStaticData('global');\nconst now = Date.now();\ng.inflight = (g.inflight || []).filter((t) => now - t < 120000);     // a turn that never finished stops counting\nlet provider = want === 'openrouter' && hasOpenRouter ? 'openrouter' : 'local';\nif (want === 'auto' && g.inflight.length && hasOpenRouter) provider = 'openrouter';\nif (provider === 'local') g.inflight.push(now);\n\nconst d = body.daemon || {};\nreturn [{ json: {\n  ok: true, text, heard: null, audioBase64, audioMime: String(body.audioMime || 'audio/wav'),\n  provider, hasOpenRouter, startedAt: now,\n  daemon: { nickname: String(d.nickname || d.name || 'your daemon'), name: String(d.name || ''), types: String(d.types || ''),\n            category: String(d.category || ''), entry: String(d.entry || '') },\n  day: body.day || null,\n  history: Array.isArray(body.history) ? body.history.slice(-6) : [],\n  speak: body.speak !== false, voice: String(body.voice || 'index'),\n} }];"
+      },
+      "id": "t2",
+      "name": "Validate + Choose",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "t3",
+      "name": "Ok?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ answer: null, error: $json.error }) }}",
+        "options": {}
+      },
+      "id": "t4",
+      "name": "Respond Error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        660,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.audioBase64 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "t5",
+      "name": "Heard audio?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// The device's recording, as a file the speech-to-text server can take.\nconst v = $input.first().json;\nconst bin = await this.helpers.prepareBinaryData(Buffer.from(v.audioBase64, 'base64'), 'speech.wav', v.audioMime);\nreturn [{ json: v, binary: { audio: bin } }];"
+      },
+      "id": "t6",
+      "name": "Audio to File",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.DAEMONS_STT_URL || 'http://host.docker.internal:8000') + '/v1/audio/transcriptions' }}",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "audio"
+            },
+            {
+              "name": "model",
+              "value": "={{ $env.DAEMONS_STT_MODEL || 'whisper-1' }}"
+            },
+            {
+              "name": "response_format",
+              "value": "json"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "t7",
+      "name": "Hear (speech to text)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        -160
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// What was heard becomes what was said. If nothing could be made out, the daemon is told so and asks again.\nconst v = $('Validate + Choose').first().json;\nconst r = ($input.first() || {}).json || {};\nconst heard = String(r.text || '').trim();\nreturn [{ json: { ...v, text: heard || v.text, heard: heard || null, audioBase64: '' } }];"
+      },
+      "id": "t8",
+      "name": "Take Transcript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// The daemon, as a character: its name, its types, its INDEX entry, and the day. Short and spoken, because it is\n// read aloud. It helps with goals when asked and never explains what it stands for (DAEMONS craft rule 1).\nconst v = $input.first().json;\nconst d = v.daemon;\nconst day = v.day || {};\nconst system = [\n  `You are ${d.nickname}, a DAEMON${d.name && d.name !== d.nickname ? ' (' + d.name + ')' : ''}, carried by the person you are talking with on a small handheld companion.`,\n  d.types ? `Your types: ${d.types}.` : '',\n  d.category ? `Your INDEX category: ${d.category}.` : '',\n  d.entry ? `Your INDEX entry, as the record describes you: ${d.entry}` : '',\n  day.theme || day.cue ? `Today is ${day.day || 'today'}: ${day.theme || ''}${day.cue ? ', ' + day.cue : ''}.` : '',\n  'Speak as yourself, in one to three short sentences: warm, curious, a little strange. You are heard, not read, so no lists, no markdown and no emoji.',\n  'Help with their goals when they ask. Never lecture, and never explain what you are a metaphor for.',\n].filter(Boolean).join('\\n');\nconst messages = [{ role: 'system', content: system }];\nfor (const h of v.history) {\n  if (h && h.text) messages.push({ role: 'user', content: String(h.text) });\n  if (h && h.answer) messages.push({ role: 'assistant', content: String(h.answer) });\n}\nmessages.push({ role: 'user', content: v.text || '(they spoke, but nothing could be made out)' });\nconst local = v.provider === 'local';\nconst model = local ? ($env.DAEMONS_LLM_MODEL || $env.DEX_LLM_MODEL || 'default')\n                    : ($env.DAEMONS_OPENROUTER_MODEL || 'meta-llama/llama-3.1-8b-instruct');\nreturn [{ json: { ...v,\n  url: local ? (($env.DAEMONS_LLM_URL || $env.DEX_LLM_URL || 'http://host.docker.internal:1234') + '/v1/chat/completions')\n             : 'https://openrouter.ai/api/v1/chat/completions',\n  auth: local ? '' : 'Bearer ' + ($env.OPENROUTER_API_KEY || ''),\n  completionBody: { model, messages, max_tokens: 200, temperature: 0.7, stream: false },\n} }];"
+      },
+      "id": "t9",
+      "name": "Build Chat",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ $json.auth }}"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://codemusic.ca"
+            },
+            {
+              "name": "X-Title",
+              "value": "DAEMONS companion"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.completionBody) }}",
+        "options": {
+          "timeout": 90000
+        }
+      },
+      "id": "t10",
+      "name": "Think (chosen)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        0
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ !($json.choices && $json.choices[0]) && $('Build Chat').first().json.provider === 'local' && $('Build Chat').first().json.hasOpenRouter }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "t11",
+      "name": "Local failed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + ($env.OPENROUTER_API_KEY || '') }}"
+            },
+            {
+              "name": "HTTP-Referer",
+              "value": "https://codemusic.ca"
+            },
+            {
+              "name": "X-Title",
+              "value": "DAEMONS companion"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ ...$('Build Chat').first().json.completionBody, model: $env.DAEMONS_OPENROUTER_MODEL || 'meta-llama/llama-3.1-8b-instruct' }) }}",
+        "options": {
+          "timeout": 90000
+        }
+      },
+      "id": "t12",
+      "name": "Think (OpenRouter)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        -160
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// The answer, and the local model's turn released. A reasoning model's <think> block is not something to say aloud.\nconst v = $('Build Chat').first().json;\nconst r = ($input.first() || {}).json || {};\nconst raw = r?.choices?.[0]?.message?.content ?? r?.message?.content ?? '';\nconst answer = String(raw).replace(/<think>[\\s\\S]*?<\\/think>/g, '').trim();\nlet provider = v.provider;\ntry { if ($('Think (OpenRouter)').isExecuted) provider = 'openrouter'; } catch (e) {}\nconst g = $getWorkflowStaticData('global');\ng.inflight = (g.inflight || []).filter((t) => t !== v.startedAt);\nreturn [{ json: { answer: answer || null, error: answer ? null : 'no_model_answered', provider, heard: v.heard || null,\n                  speak: !!(v.speak && answer), voice: v.voice } }];"
+      },
+      "id": "t13",
+      "name": "Parse + Release",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.speak }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "t14",
+      "name": "Speak it?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DEXTER_TTS_URL || 'http://host.docker.internal:8880/tts' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Dex-Key",
+              "value": "={{ $env.DEX_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: String($json.answer || '').slice(0, 600), voice: $json.voice || 'index' }) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 90000
+        }
+      },
+      "id": "t15",
+      "name": "Index TTS (local)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2860,
+        -160
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// mp3 -> base64 when it spoke, and a named absence when the voice was down. Must not throw (see Validate).\nlet p = {};\ntry { p = $('Parse + Release').first().json || {}; } catch (e) { p = {}; }\nlet audioBase64 = null;\nif (p.speak) {\n  try { const buf = await this.helpers.getBinaryDataBuffer(0, 'data'); if (buf && buf.length) audioBase64 = buf.toString('base64'); } catch (e) {}\n}\nreturn [{ json: { answer: p.answer || null, heard: p.heard || null, provider: p.provider || null, audioBase64,\n                  audioMime: audioBase64 ? 'audio/mpeg' : null,\n                  error: p.error || (p.speak && !audioBase64 ? 'voice_unavailable' : null) } }];"
+      },
+      "id": "t16",
+      "name": "Assemble",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3080,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "t17",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3300,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook /daemon/talk": {
+      "main": [
+        [
+          {
+            "node": "Validate + Choose",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate + Choose": {
+      "main": [
+        [
+          {
+            "node": "Ok?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ok?": {
+      "main": [
+        [
+          {
+            "node": "Heard audio?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Heard audio?": {
+      "main": [
+        [
+          {
+            "node": "Audio to File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio to File": {
+      "main": [
+        [
+          {
+            "node": "Hear (speech to text)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hear (speech to text)": {
+      "main": [
+        [
+          {
+            "node": "Take Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Take Transcript": {
+      "main": [
+        [
+          {
+            "node": "Build Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Chat": {
+      "main": [
+        [
+          {
+            "node": "Think (chosen)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think (chosen)": {
+      "main": [
+        [
+          {
+            "node": "Local failed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local failed?": {
+      "main": [
+        [
+          {
+            "node": "Think (OpenRouter)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Parse + Release",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think (OpenRouter)": {
+      "main": [
+        [
+          {
+            "node": "Parse + Release",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse + Release": {
+      "main": [
+        [
+          {
+            "node": "Speak it?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Speak it?": {
+      "main": [
+        [
+          {
+            "node": "Index TTS (local)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Assemble",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Index TTS (local)": {
+      "main": [
+        [
+          {
+            "node": "Assemble",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  }
+}

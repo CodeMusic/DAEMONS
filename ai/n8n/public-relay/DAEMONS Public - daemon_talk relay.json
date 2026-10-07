@@ -1,0 +1,123 @@
+{
+  "name": "DAEMONS Public — daemon/talk relay",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daemon/talk",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "pt1",
+      "name": "Public Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "pub-daemon-talk"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://10.0.0.136:5678/webhook/daemon/talk",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "x-dex-secret",
+              "value": "={{ $json.headers['x-dex-secret'] || '' }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "pt2",
+      "name": "Relay to Internal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// A dead backend comes back as a NAMED absence, never a 500: the device can say \"the voice is down\" or \"nobody\n// answered\" instead of hanging (daemon/voice's relay does the same).\nconst j = ($input.first() || {}).json || {};\nif (!j.answer && !j.error) return [{ json: { answer: null, heard: null, provider: null, audioBase64: null, audioMime: null, error: 'backend_unreachable' } }];\nreturn [{ json: j }];"
+      },
+      "id": "pt3",
+      "name": "Shape Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "pt4",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        672,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Public Webhook": {
+      "main": [
+        [
+          {
+            "node": "Relay to Internal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Relay to Internal": {
+      "main": [
+        [
+          {
+            "node": "Shape Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shape Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

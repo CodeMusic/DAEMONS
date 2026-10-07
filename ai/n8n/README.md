@@ -13,6 +13,7 @@ degrades instead of erroring.
 | `daemon/sprite` | ✅ | ✅ | a draft to draw from: a daemon in §9.4's neutral greys, a person or overworld figure, or (`kind: environment`) a building, a room or (`view: terrain`) a patch of ground, with no lettering |
 | `daemon/voice` | ✅ | ✅ | speaks one line of inner voice in the INDEX voice |
 | `daemon/chat` | ⚠️ inactive | ⚠️ inactive | OpenAI chat-completions + thought extraction + TTS |
+| `daemon/talk` | ✅ | ✅ | **the companion's push to talk** (companion C-64, C-66): text or recorded audio in -> speech to text -> the carried daemon answers in character (local model, or OpenRouter) -> the INDEX voice -> `{answer, heard, provider, audioBase64}` |
 
 Reuses `DEX_SHARED_SECRET`, `DEX_KEY`, `MLX_VLM_URL`, `DEX_LLM_URL`,
 `BONSAI_URL` and `DEXTER_TTS_URL`, with `DAEMONS_*` overrides where a separate
@@ -130,3 +131,30 @@ Treat it as a **drafting tool**. §9.4 also says nothing in a finished sprite is
 accidental, and a four-step 384px generation is not that. What it is good for
 is seeing a hundred creature ideas quickly without spending a hundred Gemini
 prompts — and the good ones then get drawn properly.
+
+## `daemon/talk`, and the companion's devices (2026-10-07)
+
+Every companion device that can listen -- the handhelds, the watch, the stick, the Tab5 and the phone app -- talks to its
+daemon through this one endpoint, **by way of the companion server** (which holds the secret and knows the daemon), never
+directly: the same reason `daemon/voice` is proxied.
+
+**Body**: `{ text | audioBase64 + audioMime, daemon: {nickname, name, types, category, entry}, day: {day, theme, cue},
+history: [{text, answer}], provider: "auto" | "local" | "openrouter", speak: true, voice: "index" }`.
+
+**Local or OpenRouter**: `auto` (the default) uses the local model unless it is already answering someone -- the
+workflow counts the local turns in flight in its static data, and a turn that never finished stops counting after two
+minutes -- and then OpenRouter, so nobody waits behind anyone. A local call that fails falls through to OpenRouter too.
+
+**New settings it reads** (all optional; without `OPENROUTER_API_KEY` it is local-only):
+
+| variable | what | default |
+|---|---|---|
+| `DAEMONS_STT_URL` | an OpenAI-compatible transcription server (`/v1/audio/transcriptions`, multipart) | `http://host.docker.internal:8000` |
+| `DAEMONS_STT_MODEL` | its model name | `whisper-1` |
+| `DAEMONS_LLM_URL`, `DAEMONS_LLM_MODEL` | the local model (falls back to `DEX_LLM_URL`, `DEX_LLM_MODEL`) | `http://host.docker.internal:1234` |
+| `OPENROUTER_API_KEY` | turns OpenRouter on | -- |
+| `DAEMONS_OPENROUTER_MODEL` | which OpenRouter model | `meta-llama/llama-3.1-8b-instruct` |
+
+It speaks through `DEXTER_TTS_URL` with `voice: 'index'`, as `daemon/voice` does; the INDEX entry read aloud (companion
+C-65) is `daemon/voice` itself, with no model.
+
