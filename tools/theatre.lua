@@ -118,6 +118,24 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
     local f = io.open(DIR .. "/peek.txt", "a")
     if f then f:write((w[4] or "?") .. " " .. string.format("0x%x", v) .. "\n"); f:close() end
     if #queue == 0 then finish() end
+  elseif w[1] == "load" then
+    -- T-386: put another ROM in the theatre without touching its window (mGBA 0.10's emu:loadFile): the save beside it
+    -- comes too, and the game starts from the top. `load /path/theatre_release.gba`. The path may hold spaces.
+    local path = table.concat(w, " ", 2)
+    local ok = emu:loadFile(path)
+    if ok then emu:autoloadSave(); emu:reset() end
+    console:log("theatre: load " .. path .. (ok and "" or " FAILED"))
+    if #queue == 0 then finish() end
+  elseif w[1] == "reset" then
+    emu:reset()
+    if #queue == 0 then finish() end
+  elseif w[1] == "savestate" or w[1] == "loadstate" then
+    -- a moment to come back to: a route can start from one instead of playing up to it (`loadstate <dir>/x.ss`)
+    local path = table.concat(w, " ", 2)
+    local ok
+    if w[1] == "savestate" then ok = emu:saveStateFile(path) else ok = emu:loadStateFile(path) end
+    if not ok then console:log("theatre: " .. w[1] .. " " .. path .. " FAILED") end
+    if #queue == 0 then finish() end
   elseif w[1] == "shot" then
     emu:screenshot(DIR .. "/" .. w[2] .. ".png")
     if #queue == 0 then finish() end

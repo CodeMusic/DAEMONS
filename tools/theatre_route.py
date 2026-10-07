@@ -28,6 +28,8 @@ step is one line, split like a shell line:
     hold BUTTON FRAMES         hold it for exact frames, capturing nothing
     wait FRAMES
     shot LABEL                 a screenshot into this stop's sheet
+    savestate NAME             keep this moment in .theatre/states/NAME.ss (the theatre script's own, T-386)
+    loadstate NAME             come back to it: a route can start there instead of playing up to it
     flag FLAG_NAME|0xNNN 0|1   set a flag on the scratch save (to replay a scene, or reach past one)
     trainer TRAINER_NAME 0|1   set a trainer's beaten flag (0: they battle again -- a leader gives the MARK again)
     flagis FLAG_NAME|0xNNN 0|1 fail the stop unless the flag is clear (0) or set (1) -- a document that files itself
@@ -535,6 +537,14 @@ class Runner:
             self.goto(args[0], *(int(v) for v in args[1:3]))
         elif op == "fly":
             self.fly(args[0], *(int(v) for v in args[1:3]))
+        elif op in ("savestate", "loadstate"):                         # T-386
+            states = os.path.join(THEATRE, "states")
+            os.makedirs(states, exist_ok=True)
+            path = os.path.join(states, args[0] + ".ss")
+            if op == "loadstate" and not os.path.exists(path):
+                raise RouteError("no state %s -- save it first (savestate %s)" % (args[0], args[0]))
+            tw.run("%s %s" % (op, path), "wait 30")
+            self.g.p = None                                                # a loaded moment has its own gSaveBlock1
         elif op == "to":
             tw.walk(self.g, (int(args[0]), int(args[1])))
         elif op == "warp":
