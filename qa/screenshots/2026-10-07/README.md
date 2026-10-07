@@ -55,3 +55,9 @@ LONGWAVE's FIND IT on the CC1101, live mid-run (a routine now answers SHOT) and 
 FLARE's WHAT REMOTE IS THIS on the CC1101, and the routine and type lists scrolling
 
 ![7Oct2026 - C28 - CC1101 what remote - 9](7Oct2026%20-%20C28%20-%20CC1101%20what%20remote%20-%209.png)
+
+### 7Oct2026 - T386 - release route by GOTO - 10
+
+The release ROM in the theatre, loaded with no click: a release route's goto flies to VERMILION, fly to CELADON (T-384, T-386)
+
+![7Oct2026 - T386 - release route by GOTO - 10](7Oct2026%20-%20T386%20-%20release%20route%20by%20GOTO%20-%2010.png)
