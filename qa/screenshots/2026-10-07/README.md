@@ -31,3 +31,9 @@ The CC1101's TALK screen after a talk turn: 3 s from its microphone, the local m
 WI-FI MOTION on the CC1101: 943 channel readings in 44 s, movement as a multiple of the still room (C-70)
 
 ![7Oct2026 - C70 - CC1101 wifi motion - 5](7Oct2026%20-%20C70%20-%20CC1101%20wifi%20motion%20-%205.png)
+
+### 7Oct2026 - C28 - CC1101 longwave - 6
+
+LONGWAVE on the CC1101: WHAT'S ON THE AIR, 90 s across 315/433/868/915 MHz, listening only; the screen fine after the radio
+
+![7Oct2026 - C28 - CC1101 longwave - 6](7Oct2026%20-%20C28%20-%20CC1101%20longwave%20-%206.png)
