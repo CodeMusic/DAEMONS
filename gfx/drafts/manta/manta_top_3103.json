@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/manta/manta_top_3103",
+ "prompt": "pure white background, pixel art game sprite of a single manta ray seen from directly above, top-down view, wide triangular wings spread flat, short tail, two small horn-like fins at the head, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "side view, profile, front view, white body, pale body, grey background, colored background, drop shadow, shadow, colorful, text, letters, watermark, multiple creatures, scenery, water, waves, photorealistic, blurry, cropped, frame, border, lines",
+ "seed": 3103,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer.local:8008",
+ "seconds": 27.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-08 12:09:24"
+}
