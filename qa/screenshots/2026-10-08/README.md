@@ -79,3 +79,9 @@ T-392 (DRAFT, debug build, the battle theatre): the seven union routines, each i
 T-392 (DRAFT): ordinary routines carry the signature in their type's ink -- bits on the CONTENT side (PUSH, REDUCE, UPHEAVAL), notes on the CONTEXT side (CONSTRUE, RADIATE, SHADOW).
 
 ![8Oct2026 - T392 - bits and notes in type ink - 14](8Oct2026%20-%20T392%20-%20bits%20and%20notes%20in%20type%20ink%20-%2014.png)
+
+### 8Oct2026 - T394 - GAME EVENTS - 15
+
+T-394: a new debug game starts with nothing; DEBUG -> GAME EVENTS gives or takes each piece of the old kit in the order the game gives it -- EVERYTHING on a fresh game, MARKS one at a time, the understandings.
+
+![8Oct2026 - T394 - GAME EVENTS - 15](8Oct2026%20-%20T394%20-%20GAME%20EVENTS%20-%2015.png)

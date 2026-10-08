@@ -219,11 +219,16 @@ the point at the time. It is not a regression check for this fork.
 
 **pokefirered ships no debug build**, unlike pokeemerald, so `firered_debug`
 is ours: `DAEMONS_DEBUG=1` suffixes `BUILD_NAME`, so it gets its own ROM file
-and therefore its own save. A new game starts with six daemons picked for their
-**abilities**, one of each **kind** of item so the description window can be
-read, all eight badges and 999999, and the opening already over (no starter
-scene, no parcel, no gym guide, the gate guards' tea); hold B to walk through grass. Its DEBUG
-menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page), and on its MORE page the WARDEN with his TOKEN, the singing FIR on the empty pier and the WITNESSES' reward with every understanding held, without playing to them; its main page's WATCH forces dawn, day, dusk or night and relights the map at once (T-268). It began as
+and therefore its own save. **A new debug game starts as a normal one does** (T-394, the user 2026-10-08: "debug
+mode starts with lots of things so you can't test some things"). **DEBUG → GAME EVENTS** hands the kit out a piece
+at a time, in story order, each row + held or · not and A giving or taking it: EVERYTHING (the old kit -- six daemons
+picked for their **abilities**, one of each **kind** of item, all eight badges, 999999, the opening already over), the
+ROSTER, EVERY DAEMON (INDEX and PORT), the STOCK, the OPENING, then shoes, INDEX, OPUS, MARKS (a page, each leader),
+the NOTEBOOK (empty, or EVERY PAGE), the school, the ticket, the DRIVERS (a page), TEA and BRAZEN's gates, REVEAL,
+the RESOLVER, the INTERRUPT, every GOTO point, the GUIDE, the GLOBAL INDEX and the UNDERSTANDINGS (a page, each with
+what it needs, and LET INSIGHTS ARRIVE AGAIN). `src/daemons_debug_events.c`; the kit's pieces are in `new_game.c`.
+Hold B to walk through grass. Its DEBUG
+menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page), and on its MORE page the WARDEN with his TOKEN, the singing FIR on the empty pier and the WITNESSES' reward with every understanding held, without playing to them; its main page's WATCH forces dawn, day, dusk or night and relights the map at once (T-268), and SOUND plays any song or sound effect. It began as
 scaffolding for the §9.3 spike and has grown into the field test's way of reaching things without playing to them.
 
 **Never filter a build for `error:`.** agbcc prints its diagnostics as
