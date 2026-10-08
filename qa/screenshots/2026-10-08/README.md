@@ -67,3 +67,15 @@ T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each 
 T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
 
 ![8Oct2026 - T389 - the seven leaders and their roots - 11](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%2011.png)
+
+### 8Oct2026 - T392 - the seven union routines - 13
+
+T-392 (DRAFT, debug build, the battle theatre): the seven union routines, each its own picture with the splash's bits and notes in the splash's colours.
+
+![8Oct2026 - T392 - the seven union routines - 13](8Oct2026%20-%20T392%20-%20the%20seven%20union%20routines%20-%2013.png)
+
+### 8Oct2026 - T392 - bits and notes in type ink - 14
+
+T-392 (DRAFT): ordinary routines carry the signature in their type's ink -- bits on the CONTENT side (PUSH, REDUCE, UPHEAVAL), notes on the CONTEXT side (CONSTRUE, RADIATE, SHADOW).
+
+![8Oct2026 - T392 - bits and notes in type ink - 14](8Oct2026%20-%20T392%20-%20bits%20and%20notes%20in%20type%20ink%20-%2014.png)
