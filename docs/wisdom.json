@@ -1,0 +1,69 @@
+{
+  "about": "T-389, T-390 (bible 0.7, Wisdom; the user, 2026-10-08): a MARK and its ROOT together. Each pair: the leader's lines after the win without the understanding and with it, the union routine's PLUGIN, and the insight that arrives once both are held. Every word is DRAFT. tools/gbawisdom.py writes these into the seven BENCHMARKS' scripts and text and into src/data/wisdom.h; edit here, never there.",
+  "arrival": ["An insight arrives.", "“{INSIGHT}”", "You write it down in the NOTEBOOK."],
+  "pairs": [
+    {
+      "leader": "CAIRN", "mark": "SLATE", "virtue": "DILIGENCE", "badge": "FLAG_BADGE01_GET",
+      "map": "PewterCity_Gym", "root": "FLAG_UNDERSTANDING_SCHOOL", "given": "FLAG_GOT_UNION_CAIRN", "insight_flag": "FLAG_INSIGHT_DILIGENCE",
+      "plugin": "ITEM_TM05", "plugin_name": "PLUGIN05", "routine": "FLUENCY", "type": "LEGACY",
+      "without": ["That MARK taught you to keep a record that reads the same twice.", "Keeping it is not knowing what it says.", "The school in CALLOW has names for you. Come back when they are yours."],
+      "with": ["You learned the names in CALLOW, then found the rest.", "A record kept with diligence, read by someone who knows what it says.", "Take this."],
+      "explain": ["PLUGIN05 is FLUENCY. It says the same thing every time: damage equal to its level.", "Any DAEMON can run it."],
+      "insight": "Learned twice, the names were a record. Used once, they were mine."
+    },
+    {
+      "leader": "BASIN", "mark": "SLOPE", "virtue": "CHASTITY", "badge": "FLAG_BADGE02_GET",
+      "map": "CeruleanCity_Gym", "root": "FLAG_UNDERSTANDING_FIRST", "given": "FLAG_GOT_UNION_BASIN", "insight_flag": "FLAG_INSIGHT_CHASTITY",
+      "plugin": "ITEM_TM10", "plugin_name": "PLUGIN10", "routine": "STILLPOINT", "type": "FLOW",
+      "without": ["That MARK taught you to get better by small steps.", "Small steps only find the bottom of the valley you started in.", "Past the last island, a line waits that holds still. Come back when one has stayed for you."],
+      "with": ["So a line held still for you.", "Small steps found the bottom. Something steady told you it was the right one.", "Take this."],
+      "explain": ["PLUGIN10 is STILLPOINT. It waits where the water is calm, and hits twice as hard if it was hit first.", "Any DAEMON can run it."],
+      "insight": "Small steps find a bottom. Only stillness tells me it is the right one."
+    },
+    {
+      "leader": "GAUGE", "mark": "SENSE", "virtue": "CHARITY", "badge": "FLAG_BADGE03_GET",
+      "map": "VermilionCity_Gym", "root": "FLAG_UNDERSTANDING_RETURN", "given": "FLAG_GOT_UNION_GAUGE", "insight_flag": "FLAG_INSIGHT_CHARITY",
+      "plugin": "ITEM_TM21", "plugin_name": "PLUGIN21", "routine": "RECONNECT", "type": "SIGNAL",
+      "without": ["That MARK taught you to tell what came from what you expected!", "You still expect people to stay as you found them!", "Out on the islands, somebody is on the way back. Come back when you've met him!"],
+      "with": ["You saw somebody come back! Not who you expected. Who he is now!", "Signal from noise, in a person. The hard kind!", "Here!"],
+      "explain": ["PLUGIN21 is RECONNECT! It reaches out again where the line went dead, and it never misses!", "Any DAEMON can run it!"],
+      "insight": "What comes back is not what left. Listen to what arrives, not what I expected."
+    },
+    {
+      "leader": "TRELLIS", "mark": "FIT", "virtue": "KINDNESS", "badge": "FLAG_BADGE04_GET",
+      "map": "CeladonCity_Gym", "root": "FLAG_UNDERSTANDING_GUIDE", "given": "FLAG_GOT_UNION_TRELLIS", "insight_flag": "FLAG_INSIGHT_KINDNESS",
+      "plugin": "ITEM_TM32", "plugin_name": "PLUGIN32", "routine": "PRAXIS", "type": "GROWTH",
+      "without": ["That MARK taught you to draw one line through many points.", "A line is not a path. Nobody walks a line.", "There is a book about minds on an ordinary shelf, out on the islands. Come back when you have read it to the end."],
+      "with": ["You read it to the end, and you are still walking.", "The line was the book. The path was always yours.", "Take this."],
+      "explain": ["PLUGIN32 is PRAXIS. It does what it read, and grows by doing it: it raises its ATTACK each time it hits.", "Any DAEMON can run it."],
+      "insight": "A line through the points is a theory. Walking it is the part no book can do."
+    },
+    {
+      "leader": "TILT", "mark": "SKEW", "virtue": "TEMPERANCE", "badge": "FLAG_BADGE05_GET",
+      "map": "FuchsiaCity_Gym", "root": "FLAG_UNDERSTANDING_SCORN", "given": "FLAG_GOT_UNION_TILT", "insight_flag": "FLAG_INSIGHT_TEMPERANCE",
+      "plugin": "ITEM_TM37", "plugin_name": "PLUGIN37", "routine": "MEDIAN", "type": "CORRUPT",
+      "without": ["That MARK taught you that the peak misses the middle.", "A man in CALLOW reads only the peak, and he reads it very well.", "Come back when you have stood in the middle against him."],
+      "with": ["You beat him, and every number he kept was right.", "The middle he never measured is where you were standing.", "Take this."],
+      "explain": ["PLUGIN37 is MEDIAN. It ignores the highest and the lowest, and cuts their HP to the middle: half.", "Any DAEMON can run it."],
+      "insight": "The score was right. It never counted the middle, and the middle is where I stood."
+    },
+    {
+      "leader": "MATTE", "mark": "FRAME", "virtue": "PATIENCE", "badge": "FLAG_BADGE06_GET",
+      "map": "SaffronCity_Gym", "root": "FLAG_UNDERSTANDING_READING", "given": "FLAG_GOT_UNION_MATTE", "insight_flag": "FLAG_INSIGHT_PATIENCE",
+      "plugin": "ITEM_TM43", "plugin_name": "PLUGIN43", "routine": "PANORAMA", "type": "CONTEXT",
+      "without": ["That MARK taught you what a frame holds.", "It cannot show you what was outside it all along.", "This city has a room that will not let you in yet. Come back when it has."],
+      "with": ["You were let in, and came out seeing more.", "Not more inside the frame. Around it.", "That took patience. Most people only wait. Take this."],
+      "explain": ["PLUGIN43 is PANORAMA. It takes in everything around the frame: it hits both of them, and never misses.", "Any DAEMON can run it."],
+      "insight": "A frame shows what it holds. Patience shows what was there all along, just outside it."
+    },
+    {
+      "leader": "ANNEAL", "mark": "HEAT", "virtue": "HUMILITY", "badge": "FLAG_BADGE07_GET",
+      "map": "CinnabarIsland_Gym", "root": "FLAG_UNDERSTANDING_NOTES", "given": "FLAG_GOT_UNION_ANNEAL", "insight_flag": "FLAG_INSIGHT_HUMILITY",
+      "plugin": "ITEM_TM45", "plugin_name": "PLUGIN45", "routine": "HINDSIGHT", "type": "ENTROPY",
+      "without": ["That MARK taught you to wander hot and settle cool.", "The man who worked on this island knew that too, and every step he took made sense.", "His notes are still here. Come back when you know which step was which."],
+      "with": ["You read his notes. Every step made sense, and the whole went wrong.", "Knowing hot from cool means stepping out of the loop to see it.", "That takes humility. Take this."],
+      "explain": ["PLUGIN45 is HINDSIGHT. It looks back at its last strike and builds on it: twice as hard each turn in a row.", "Any DAEMON can run it."],
+      "insight": "Every step made sense on its own. Knowing which to keep means stepping out of the loop."
+    }
+  ]
+}

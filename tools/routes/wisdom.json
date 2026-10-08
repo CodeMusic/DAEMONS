@@ -1,0 +1,168 @@
+{
+ "rom": "debug",
+ "about": "T-389, T-390 (bible 0.7, Wisdom): each of the seven leaders after the win -- without the paired understanding, then with it and the union PLUGIN handed over, then once more -- and the insight that arrives on the next step. On the debug scratch save: flags are set and cleared around each stop, and every root is cleared again after. TILT's stop clears the eighth MARK while it plays, because SCORN's understanding IS beating him and would arrive again on the warp.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "CAIRN: the SLATE MARK, without and with its understanding",
+   "steps": [
+    "trainer TRAINER_LEADER_BROCK 1",
+    "flag FLAG_GOT_TM39_FROM_BROCK 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_SCHOOL 0",
+    "flag FLAG_GOT_UNION_CAIRN 0",
+    "flag FLAG_INSIGHT_DILIGENCE 1",
+    "goto PewterCity_Gym 6 6",
+    "talk EventScript_Brock",
+    "says \"That MARK taught you to keep\"",
+    "flag FLAG_UNDERSTANDING_SCHOOL 1",
+    "talk EventScript_Brock",
+    "says \"received PLUGIN05\"",
+    "talk EventScript_Brock",
+    "flag FLAG_INSIGHT_DILIGENCE 0",
+    "trigger 6 7",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_SCHOOL 0"
+   ]
+  },
+  {
+   "stop": "BASIN: the SLOPE MARK, without and with its understanding",
+   "steps": [
+    "trainer TRAINER_LEADER_MISTY 1",
+    "flag FLAG_GOT_TM03_FROM_MISTY 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "flag FLAG_GOT_UNION_BASIN 0",
+    "flag FLAG_INSIGHT_CHASTITY 1",
+    "goto CeruleanCity_Gym 8 7",
+    "talk EventScript_Misty",
+    "says \"That MARK taught you to get \"",
+    "flag FLAG_UNDERSTANDING_FIRST 1",
+    "talk EventScript_Misty",
+    "says \"received PLUGIN10\"",
+    "talk EventScript_Misty",
+    "flag FLAG_INSIGHT_CHASTITY 0",
+    "trigger 8 8",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_FIRST 0"
+   ]
+  },
+  {
+   "stop": "GAUGE: the SENSE MARK, without and with its understanding",
+   "steps": [
+    "trainer TRAINER_LEADER_LT_SURGE 1",
+    "flag FLAG_GOT_TM34_FROM_SURGE 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_RETURN 0",
+    "flag FLAG_GOT_UNION_GAUGE 0",
+    "flag FLAG_INSIGHT_CHARITY 1",
+    "goto VermilionCity_Gym 5 3",
+    "talk EventScript_LtSurge",
+    "says \"That MARK taught you to tell\"",
+    "flag FLAG_UNDERSTANDING_RETURN 1",
+    "talk EventScript_LtSurge",
+    "says \"received PLUGIN21\"",
+    "talk EventScript_LtSurge",
+    "flag FLAG_INSIGHT_CHARITY 0",
+    "trigger 5 4",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_RETURN 0"
+   ]
+  },
+  {
+   "stop": "TRELLIS: the FIT MARK, without and with its understanding",
+   "steps": [
+    "trainer TRAINER_LEADER_ERIKA 1",
+    "flag FLAG_GOT_TM19_FROM_ERIKA 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_GUIDE 0",
+    "flag FLAG_GOT_UNION_TRELLIS 0",
+    "flag FLAG_INSIGHT_KINDNESS 1",
+    "goto CeladonCity_Gym 6 5",
+    "talk EventScript_Erika",
+    "says \"That MARK taught you to draw\"",
+    "flag FLAG_UNDERSTANDING_GUIDE 1",
+    "talk EventScript_Erika",
+    "says \"received PLUGIN32\"",
+    "talk EventScript_Erika",
+    "flag FLAG_INSIGHT_KINDNESS 0",
+    "trigger 6 6",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_GUIDE 0"
+   ]
+  },
+  {
+   "stop": "TILT: the SKEW MARK, without and with its understanding",
+   "steps": [
+    "flag FLAG_BADGE08_GET 0",
+    "trainer TRAINER_LEADER_KOGA 1",
+    "flag FLAG_GOT_TM06_FROM_KOGA 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_SCORN 0",
+    "flag FLAG_GOT_UNION_TILT 0",
+    "flag FLAG_INSIGHT_TEMPERANCE 1",
+    "goto FuchsiaCity_Gym 7 14",
+    "talk EventScript_Koga",
+    "says \"That MARK taught you that th\"",
+    "flag FLAG_UNDERSTANDING_SCORN 1",
+    "talk EventScript_Koga",
+    "says \"received PLUGIN37\"",
+    "talk EventScript_Koga",
+    "flag FLAG_INSIGHT_TEMPERANCE 0",
+    "trigger 7 15",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_SCORN 0",
+    "flag FLAG_BADGE08_GET 1"
+   ]
+  },
+  {
+   "stop": "MATTE: the FRAME MARK, without and with its understanding",
+   "steps": [
+    "trainer TRAINER_LEADER_SABRINA 1",
+    "flag FLAG_GOT_TM04_FROM_SABRINA 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_READING 0",
+    "flag FLAG_GOT_UNION_MATTE 0",
+    "flag FLAG_INSIGHT_PATIENCE 1",
+    "goto SaffronCity_Gym 14 12",
+    "talk EventScript_Sabrina",
+    "says \"That MARK taught you what a \"",
+    "flag FLAG_UNDERSTANDING_READING 1",
+    "talk EventScript_Sabrina",
+    "says \"received PLUGIN43\"",
+    "talk EventScript_Sabrina",
+    "flag FLAG_INSIGHT_PATIENCE 0",
+    "trigger 14 13",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_READING 0"
+   ]
+  },
+  {
+   "stop": "ANNEAL: the HEAT MARK, without and with its understanding",
+   "steps": [
+    "trainer TRAINER_LEADER_BLAINE 1",
+    "flag FLAG_GOT_TM38_FROM_BLAINE 1",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_UNDERSTANDING_NOTES 0",
+    "flag FLAG_GOT_UNION_ANNEAL 0",
+    "flag FLAG_INSIGHT_HUMILITY 1",
+    "goto CinnabarIsland_Gym 5 5",
+    "talk EventScript_Blaine",
+    "says \"That MARK taught you to wand\"",
+    "flag FLAG_UNDERSTANDING_NOTES 1",
+    "talk EventScript_Blaine",
+    "says \"received PLUGIN45\"",
+    "talk EventScript_Blaine",
+    "flag FLAG_INSIGHT_HUMILITY 0",
+    "trigger 5 6",
+    "says \"An insight arrives.\"",
+    "flag FLAG_UNDERSTANDING_NOTES 0"
+   ]
+  }
+ ]
+}

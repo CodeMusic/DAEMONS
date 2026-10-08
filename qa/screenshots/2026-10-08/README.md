@@ -25,3 +25,45 @@ TRAVERSE's ride is a manta (DEBUG build, theatre, PALLET's pool): mounting, then
 T-391 (DRAFT): the PLUGINs' sixteen routine descriptions that were still vanilla's, old (grey) beside new, in the game's font at the TOOLKIT's 113px width.
 
 ![8Oct2026 - T391 - routine descriptions - 4](8Oct2026%20-%20T391%20-%20routine%20descriptions%20-%204.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 5
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 5](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%205.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 6
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 6](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%206.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 7
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 7](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%207.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 8
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 8](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%208.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 9
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 9](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%209.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 10
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 10](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%2010.png)
+
+### 8Oct2026 - T389 - the seven leaders and their roots - 11
+
+T-389, T-390 (DRAFT, DEBUG build, theatre route tools/routes/wisdom.json): each leader after the win -- without the paired understanding, with it and the union PLUGIN handed over, once more -- and the insight that arrives on the next step.
+
+![8Oct2026 - T389 - the seven leaders and their roots - 11](8Oct2026%20-%20T389%20-%20the%20seven%20leaders%20and%20their%20roots%20-%2011.png)

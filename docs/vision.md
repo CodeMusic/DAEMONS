@@ -385,7 +385,7 @@ map, two the type:*
 
 | leader · MARK (what it certifies) | the understanding it waits on | the union routine (its PLUGIN) |
 |---|---|---|
-| CAIRN · SLATE (*a record that reads the same twice*) | the SCHOOL's (CALLOW, a city back) | **FLUENCY**, STRATUM |
+| CAIRN · SLATE (*a record that reads the same twice*) | the SCHOOL's (CALLOW, a city back) | **FLUENCY**, LEGACY |
 | BASIN · SLOPE (*better by small steps, downhill*) | the FIRST (TANOBY; her city holds the cave it opens) | **STILLPOINT**, FLOW |
 | GAUGE · SENSE (*what came, told from what you expected*) | the RETURN (his port sails to the islands and THE ANNEX) | **RECONNECT**, SIGNAL |
 | TRELLIS · FIT (*a line through the points, not each one*) | the GUIDE's (a GROWTH lobe, her type) | **PRAXIS**, GROWTH |
@@ -406,8 +406,8 @@ map, two the type:*
    its own animation, and each carries the splash's binary and notes in the splash's own colours (9.24).**
 3. ***An insight arrives*** (T-390). **When a MARK and its understanding are both held, the next map load shows one
    short line, in the player's own hand like the GUIDE's margins, and files it in the NOTEBOOK's new INSIGHT section.**
-   ***Rule 2 is amended, not reversed***: **INSIGHT grows one line a pair and is never numbered** — *no "of 7", no order
-   but arrival, the way the brain's lobes light without a total.* **What it lists is wisdom, in the player's words;
+   ***Rule 2 is amended, not reversed***: **INSIGHT grows one line a pair and is never numbered** — *no "of 7"; its pages stand in the MARKS'
+   order, as every NOTEBOOK section keeps its authored order, the way the brain's lobes light without a total.* **What it lists is wisdom, in the player's words;
    the understandings themselves are still never listed.**
 
 ---

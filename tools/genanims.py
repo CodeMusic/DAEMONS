@@ -1490,6 +1490,24 @@ def copy_table():
 
 FAMILIES = {"CONTENT": content_table, "LOWER": lower_table, "AFFLICT": afflict_table, "RAISE": raise_table, "FIELD": field_table, "LOGIC": logic_table, "VECTOR": vector_table, "GROWTH": growth_table, "FLOW": flow_table, "ENTROPY": entropy_table, "STRATUM": stratum_table, "SIGNAL": signal_table, "CORRUPT": corrupt_table, "CONTEXT": context_table, "SWARM": swarm_table, "FROZEN": frozen_table, "PROTECT": protect_table, "OPAQUE": opaque_table, "LATENT": latent_table, "LEGACY": legacy_table, "HARDENED": hardened_table, "EMERGENT": emergent_table, "COPY": copy_table}
 
+#  T-389 (bible 0.7, Wisdom): the seven union routines are filed by their type but are not drawn by its vocabulary --
+#  each gets an effect of its own with the splash's binary and notes (T-392, 9.24 as amended). Until then the
+#  animation table points each at a script of its type's, as CONSENSUS plays FANOUT's, so nothing here writes them.
+UNION = {"LEGACY": "FLUENCY", "FLOW": "STILLPOINT", "SIGNAL": "RECONNECT", "GROWTH": "PRAXIS", "CORRUPT": "MEDIAN",
+         "CONTEXT": "PANORAMA", "ENTROPY": "HINDSIGHT"}
+
+
+def _with_union(fam, fn):
+    def table():
+        t = fn()
+        if fam in UNION:
+            t[UNION[fam]] = None
+        return t
+    return table
+
+
+FAMILIES = {k: _with_union(k, v) for k, v in FAMILIES.items()}
+
 
 def first_sound(text):
     m = re.search(r"\b(SE_M_\w+|SE_\w+)\b", text)

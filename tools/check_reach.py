@@ -256,6 +256,12 @@ def unset_flags(root):
                 t = re.sub(r"#if(?:def)?\s+DAEMONS_DEBUG.*?#endif", "", open(os.path.join(dp, f), errors="ignore").read(), flags=re.S)
                 reads |= set(re.findall(r"FlagGet\((FLAG_\w+)\)", t))
                 sets |= set(re.findall(r"FlagSet\((FLAG_\w+)\)", t))
+                # a flag set through a table -- FlagSet(sUnderstandingConditions[i].flag) (T-252): the first flag of each
+                # of that table's rows is set by it (T-389 made scripts test the understandings for the first time)
+                for table in set(re.findall(r"FlagSet\((\w+)\[\w+\]\.\w+\)", t)):
+                    body = re.search(r"\b%s\[\]\s*=\s*\{(.*?)\n\};" % table, t, re.S)
+                    if body:
+                        sets |= set(re.findall(r"\{\s*(FLAG_\w+)", body.group(1)))
     skip = ("FLAG_TEMP", "FLAG_HIDDEN_ITEM", "FLAG_DEFEATED", "FLAG_SYS_", "FLAG_BADGE", "FLAG_WORLD_MAP", "FLAG_ITEM_", "FLAG_TRAINER")
     return {f for f in reads - sets if not f.startswith(skip)}
 
