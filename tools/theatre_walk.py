@@ -94,6 +94,10 @@ class Map:
         self.attrs = self._attrs(lay)
         self.still = {(o["x"], o["y"]) for o in m.get("object_events") or []
                       if "WANDER" not in str(o.get("movement_type", ""))}
+        # a scene's trigger tile: walked around when there is another way (CINNABAR's "The door is locked..." steps the
+        # player back, and a path through it is re-planned through it forever), crossed only when there is not
+        self.triggers = {(c["x"], c["y"]) for c in m.get("coord_events") or [] if c.get("type") == "trigger"}
+        self.avoid_triggers = False
         self.learned = set()                                           # tiles found blocked on the way
         self.misses = {}                                               # ... and how often each refused a step
 
@@ -121,6 +125,8 @@ class Map:
     def open(self, x, y, goal):
         if (x, y) == goal:
             return self.inside(x, y)
+        if self.avoid_triggers and (x, y) in self.triggers:
+            return False
         return self.inside(x, y) and not (self.cell(x, y) >> 10) & 3 and (x, y) not in self.still \
             and (x, y) not in self.learned and self.behaviour(x, y) not in JUMP and self.behaviour(x, y) != CRACKED_ICE
 
@@ -136,7 +142,16 @@ class Map:
         return at
 
     def path(self, start, goal):
-        """[(dir, (x, y))] from start to goal, ledges one way -- or None."""
+        """[(dir, (x, y))] from start to goal, ledges one way -- or None. Around every scene's trigger if it can be, and
+        through one only when there is no other way (the Reading Room's whole doorway is one)."""
+        self.avoid_triggers = True
+        try:
+            around = self._path(start, goal)
+        finally:
+            self.avoid_triggers = False
+        return around if around is not None else self._path(start, goal)
+
+    def _path(self, start, goal):
         prev, todo = {start: None}, deque([start])
         while todo:
             c = todo.popleft()

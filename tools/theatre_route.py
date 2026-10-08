@@ -239,7 +239,7 @@ def kanto_cells(sec, release):
 
 
 class Runner:
-    def __init__(self, route_name, release):
+    def __init__(self, route_name, release, check_build=True):
         self.g = tw.Game(release)
         self.release = release
         self.lock = elf_symbol("sLockFieldControls", release)
@@ -248,7 +248,8 @@ class Runner:
         self.objects = tw.symbol("gObjectEvents", release)
         self.out = os.path.join(THEATRE, "routes", route_name)
         os.makedirs(self.out, exist_ok=True)
-        self.same_build()
+        if check_build:                   # a route that starts by loading its own ROM is checked after the load
+            self.same_build()
         if not release:              # a debug route wins any battle the walker meets on the way, as `win` does
             tw.clear_battle = lambda g: self.win()
 
@@ -520,6 +521,7 @@ class Runner:
         shutil.copyfile(built, rom)
         tw.run("load %s" % rom, "wait 120")
         self.g.p = None
+        self.same_build()                                                   # the ROM now running is this build's
         self.continue_game()
 
     def save(self):
@@ -826,7 +828,9 @@ def main():
         print("\n".join(bad) or "%s: every name resolves (%d stops)" % (args[0], len(route["stops"])))
         sys.exit(1 if bad else 0)
     name = os.path.splitext(os.path.basename(args[0]))[0]
-    r = Runner(name, route.get("rom") == "release")
+    first = next((st for i, st in enumerate(route["stops"], 1) if i >= start and (not only or i in only)), None)
+    loads_first = bool(first and first["steps"] and words(first["steps"][0])[0].lower() == "load")
+    r = Runner(name, route.get("rom") == "release", check_build=not loads_first)
     report = ["# %s" % name, "", route.get("about", ""), ""]
     failures = 0
     for i, stop in enumerate(route["stops"], 1):

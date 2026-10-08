@@ -157,8 +157,11 @@
     "flag FLAG_GOT_DIPLOMA 0",
     "fly SaffronCity",
     "warp MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
+    "expect SaffronCity_PokemonTrainerFanClub 5 15",
+    "hold UP 12",
+    "wait 40",
+    "finish",
     "music",
-    "trigger 5 14",
     "says \"Graduates only, I'm afraid.\""
    ]
   },
@@ -197,9 +200,10 @@
    "stop": "SLATE: the town and the museum",
    "steps": [
     "loadstate release-start",
-    "var VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 1",
     "fly PewterCity",
+    "var VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 1",
     "warp MAP_PEWTER_CITY_MUSEUM_1F",
+    "finish",
     "music",
     "look 4 4",
     "to 14 8",
