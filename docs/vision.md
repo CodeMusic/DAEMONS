@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.296**
+**A total conversion — the living design bible, v11.297**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -375,6 +375,40 @@ cerebellum lobe is the GUIDE's, and the GUIDE's type is GROWTH.***
      nobody says what a plastic plant is a picture of.**
    - ***The fact collector*** (T-382): **a trainer who holds every MARK and answers only questions put exactly as he
      learned them.** *He nearly notices* (craft rule 2) — **wrong in the right direction.**
+
+#### Wisdom: a MARK and its ROOT together (decided by the user 2026-10-08, T-389, T-390)
+
+**Intelligence and understanding together are wisdom.** *The user's own step past the sentence: if a MARK without its
+ROOT is the artificial half, the two held together are what the quest was for.* **Seven of the eight MARKS are paired
+with one understanding each; SCORN's TRUE MARK pairs with none, because beating him IS one.** *Five pairs follow the
+map, two the type:*
+
+| leader · MARK (what it certifies) | the understanding it waits on | the union routine (its PLUGIN) |
+|---|---|---|
+| CAIRN · SLATE (*a record that reads the same twice*) | the SCHOOL's (CALLOW, a city back) | **FLUENCY**, STRATUM |
+| BASIN · SLOPE (*better by small steps, downhill*) | the FIRST (TANOBY; her city holds the cave it opens) | **STILLPOINT**, FLOW |
+| GAUGE · SENSE (*what came, told from what you expected*) | the RETURN (his port sails to the islands and THE ANNEX) | **RECONNECT**, SIGNAL |
+| TRELLIS · FIT (*a line through the points, not each one*) | the GUIDE's (a GROWTH lobe, her type) | **PRAXIS**, GROWTH |
+| TILT · SKEW (*where the peak misses the middle*) | SCORN's (a CORRUPT lobe, his type) | **MEDIAN**, CORRUPT |
+| MATTE · FRAME (*what the brackets hold, and leave out*) | the READING ROOM's (her own city) | **PANORAMA**, CONTEXT |
+| ANNEAL · HEAT (*wander hot, settle cool, and know which*) | the NOTES (his own island) | **HINDSIGHT**, ENTROPY |
+
+1. ***The leaders speak to it*** (T-389). **Talked to after the win, a leader whose understanding you do not hold says
+   what the MARK taught and what to come back understanding** — *pointing at a place or a person, never naming the
+   understanding as a thing to collect* — **and one whose understanding you hold says what the two make together, and
+   gives the union routine's PLUGIN, once.** *Rule 1 holds: nobody says the sentence; the lines show the gap.* **This is
+   also the guidance the NOTES, the RETURN and the FIRST never had** (*none of the three had a sign, a dream or a line
+   pointing at it*).
+2. ***The seven union routines are new routines on seven existing PLUGINs.*** *The TOOLKIT's 58 slots are laid out in
+   the save and the learnset mask has six spare bits (engine.md trap 24), so no PLUGIN is added:* **PRIOR (Pickup only),
+   UNLOAD (EVICT's twin), INSTANCE, PAIR, AMBIENT, DISUSE (RAPPORT stays) and BIT ROT (three weathers stay) give their
+   numbers to the seven**, *and every daemon can learn them, as the READING ROOM's lectures teach anyone.* **Each has
+   its own animation, and each carries the splash's binary and notes in the splash's own colours (9.24).**
+3. ***An insight arrives*** (T-390). **When a MARK and its understanding are both held, the next map load shows one
+   short line, in the player's own hand like the GUIDE's margins, and files it in the NOTEBOOK's new INSIGHT section.**
+   ***Rule 2 is amended, not reversed***: **INSIGHT grows one line a pair and is never numbered** — *no "of 7", no order
+   but arrival, the way the brain's lobes light without a total.* **What it lists is wisdom, in the player's words;
+   the understandings themselves are still never listed.**
 
 ---
 
@@ -8484,6 +8518,14 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 - ***Clause 3 and a type whose colour IS a neutral.*** **LEGACY's slate (130,130,138) sits beside clause 2's grey, so a slate hit read as its target draining.** *It is drawn at the HIGHLIGHT of its own ramp — the step its daemons' sprites already carry — so old material is worn PALE where loss goes dull* (`genanims.bleach()`). **The added colour is still the type's; the step of its ramp is chosen so it cannot be read as loss.**
 - ***Clause 6 and one new task.*** **CAST and RECAST change the user's type BEFORE their animation plays**, *so `AnimTask_DaemonsBlendToUserType` ends them in the new type's own streak colour.* **No graphic was drawn; a task was written, because no existing one could show a colour the script cannot know.**
+
+***Amended 2026-10-08 (the user, T-392): the game's own signature.*** **Routines may now carry the splash's 0s and 1s
+and its notes as particles** — *the presents scene's code becoming music (`graphics/intro/game_freak`), the game's
+first and only image of what a daemon is.* **Clause 6 allows it, because no vanilla graphic can mean CODE or the
+music it becomes; clause 3 still governs it**: *an ordinary routine's bits and notes are in its own type's colour* —
+**binary on the CONTENT side of the chart, notes on the CONTEXT side.** ***The seven union routines (0.7, Wisdom) are
+the one exception, as PERSPECTIVE's flash is in Halftone***: **each has an effect of its own, and its bits and notes
+come in the splash's own colours, so the signature is theirs alone.**
 
 ### 9.25 The goal companion, and AWAY — *decided 2026-10-03 (T-358)*
 

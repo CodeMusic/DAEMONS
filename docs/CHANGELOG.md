@@ -5,6 +5,21 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.297 — 2026-10-08
+
+### Wisdom: a MARK and its ROOT together (2026-10-08)
+
+- ***0.7, Wisdom (the user's decision, T-389, T-390)***: **intelligence and understanding together are wisdom.** *Seven
+  leaders each pair with one understanding (five by the map, two by type; SCORN with none): talked to after the win,
+  each says what the MARK taught and where to come back understanding, or, with it held, what the two make together,
+  and gives that pair's union routine on a PLUGIN.* **Seven new routines on seven retired PLUGIN numbers** *(PRIOR,
+  UNLOAD, INSTANCE, PAIR, AMBIENT, DISUSE, BIT ROT), because the TOOLKIT's slots are in the save.* **An insight arrives
+  when both are held and is filed in a new NOTEBOOK section, INSIGHT** -- *rule 2 amended: it grows, never numbered.*
+- ***9.24, amended (T-392)***: **routines may carry the splash's bits and notes**, *in their type's colour (binary on
+  the CONTENT side, notes on the CONTEXT side); the seven union routines alone wear the splash's own colours.*
+- ***TRAVERSE (T-388)***: *the water ride, still vanilla's shape, becomes a manta ray whose wings ripple like GOTO's
+  wave (the user's pick).*
+
 ## v11.296 — 2026-10-06
 
 ### The quest's two halves: MARKS and ROOTS (2026-10-06)
