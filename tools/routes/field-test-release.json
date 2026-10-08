@@ -1,0 +1,244 @@
+{
+ "rom": "release",
+ "about": "The field-test route on the ROM players get (T-386): every stop comes back to BLANCHE (loadstate release-start), GOTOs to its town and walks in -- no DEBUG warp, no JUMP. The DIPLOMA is a flag here; the debug route warped past the Reading Room's door. Stop 1 loads the built release ROM into the theatre and continues its save (.theatre/rom/theatre_release.sav: give it a save made in BLANCHE first, e.g. by the debug build's save step).",
+ "stops": [
+  {
+   "stop": "the release ROM, continued in BLANCHE",
+   "steps": [
+    "load release",
+    "expect PalletTown",
+    "savestate release-start",
+    "shot BLANCHE"
+   ]
+  },
+  {
+   "stop": "BLANCHE: the bedroom",
+   "steps": [
+    "loadstate release-start",
+    "warp MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
+    "warp MAP_PALLET_TOWN_PLAYERS_HOUSE_2F",
+    "expect PalletTown_PlayersHouse_2F",
+    "shot the bedroom",
+    "music"
+   ]
+  },
+  {
+   "stop": "BLANCHE: CRYSTAL's lab",
+   "steps": [
+    "loadstate release-start",
+    "warp MAP_PALLET_TOWN_PROFESSOR_OAKS_LAB",
+    "music",
+    "look 6 1",
+    "look 8 1"
+   ]
+  },
+  {
+   "stop": "CALLOW: the PORT",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F",
+    "music",
+    "look 11 1 3",
+    "shot the PORT's menu",
+    "press B 3"
+   ]
+  },
+  {
+   "stop": "THE REPO: OPUS on the shelf",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_MART",
+    "look 8 6"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 1F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "music",
+    "look 5 4",
+    "look 4 4"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 2F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_2F",
+    "talk LOCALID_SCHOOL_2F_TEACHER",
+    "talk LOCALID_SCHOOL_2F_WINDOWS",
+    "look 5 4"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 3F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_2F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_3F",
+    "talk LOCALID_SCHOOL_3F_TEACHER",
+    "talk LOCALID_SCHOOL_3F_ELEVENTH",
+    "talk LOCALID_SCHOOL_3F_FRIDAY"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 4F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_2F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_3F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_4F",
+    "talk LOCALID_SCHOOL_4F_TEACHER",
+    "talk LOCALID_SCHOOL_4F_DRAWERS"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 5F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_2F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_3F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_4F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_5F",
+    "talk LOCALID_SCHOOL_5F_TEACHER",
+    "talk LOCALID_SCHOOL_5F_EVERYWHERE",
+    "talk LOCALID_SCHOOL_5F_SLEEP"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 6F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_2F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_3F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_4F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_5F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_6F",
+    "talk LOCALID_SCHOOL_6F_TEACHER",
+    "talk LOCALID_SCHOOL_6F_WRONGABOUT",
+    "talk LOCALID_SCHOOL_6F_TWOOPTIONS"
+   ]
+  },
+  {
+   "stop": "CALLOW SCHOOL 7F",
+   "steps": [
+    "loadstate release-start",
+    "fly ViridianCity",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_2F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_3F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_4F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_5F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_6F",
+    "warp MAP_VIRIDIAN_CITY_SCHOOL_7F",
+    "talk LOCALID_SCHOOL_7F_TEACHER",
+    "talk LOCALID_SCHOOL_7F_ONPURPOSE",
+    "talk LOCALID_SCHOOL_7F_CERTAIN"
+   ]
+  },
+  {
+   "stop": "BRAZEN: the Reading Room's door",
+   "steps": [
+    "loadstate release-start",
+    "flag FLAG_GOT_DIPLOMA 0",
+    "fly SaffronCity",
+    "warp MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
+    "music",
+    "trigger 5 14",
+    "says \"Graduates only, I'm afraid.\""
+   ]
+  },
+  {
+   "stop": "BRAZEN: inside the Reading Room (with the DIPLOMA)",
+   "steps": [
+    "loadstate release-start",
+    "flag FLAG_GOT_DIPLOMA 1",
+    "fly SaffronCity",
+    "warp MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
+    "to 2 11",
+    "talk LOCALID_READING_ROOM_KEEPER",
+    "talk LOCALID_READING_ROOM_ATTENTION 2",
+    "press B 3",
+    "look 0 9",
+    "look 10 1"
+   ]
+  },
+  {
+   "stop": "THE UNDERTONE: the grove",
+   "steps": [
+    "loadstate release-start",
+    "repel",
+    "fly ViridianCity",
+    "edge up",
+    "warp MAP_ROUTE2_VIRIDIAN_FOREST_SOUTH_ENTRANCE",
+    "warp MAP_VIRIDIAN_FOREST",
+    "look 30 57",
+    "expect ViridianForest_Grove",
+    "to 8 4",
+    "music",
+    "look 11 15"
+   ]
+  },
+  {
+   "stop": "SLATE: the town and the museum",
+   "steps": [
+    "loadstate release-start",
+    "var VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 1",
+    "fly PewterCity",
+    "warp MAP_PEWTER_CITY_MUSEUM_1F",
+    "music",
+    "look 4 4",
+    "to 14 8",
+    "hold DOWN 24",
+    "hold DOWN 24",
+    "wait 120",
+    "expect PewterCity",
+    "music MUS_SLATE"
+   ]
+  },
+  {
+   "stop": "QUICKSILVER: the lab's signs",
+   "steps": [
+    "loadstate release-start",
+    "fly CinnabarIsland",
+    "warp MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
+    "look 16 5",
+    "look 12 5"
+   ]
+  },
+  {
+   "stop": "QUICKSILVER: the Mansion's log",
+   "steps": [
+    "loadstate release-start",
+    "fly CinnabarIsland",
+    "warp MAP_POKEMON_MANSION_1F",
+    "look 7 6"
+   ]
+  },
+  {
+   "stop": "BRAZEN: the scores notice files itself",
+   "steps": [
+    "loadstate release-start",
+    "fly SaffronCity",
+    "to 13 26",
+    "flag FLAG_NOTEBOOK_PROSPECTUS_SCORES 0",
+    "look 13 25",
+    "flagis FLAG_NOTEBOOK_PROSPECTUS_SCORES 1"
+   ]
+  }
+ ]
+}

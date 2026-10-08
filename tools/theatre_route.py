@@ -492,14 +492,17 @@ class Runner:
         by watching gMain.callback2 (a Thumb pointer: its low bit set) rather than counting frames, which drift."""
         S = lambda n: elf_symbol(n, self.release)
         title, menu, ow = S("CB2_TitleScreenRun"), S("CB2_MainMenu"), S("CB2_Overworld")
-        cb2 = tw.symbol("gMain", self.release) + 4
+        cb2, recap = tw.symbol("gMain", self.release) + 4, tw.symbol("gQuestLogState", self.release)
         for i in range(120):
             cb = tw.peek([(32, cb2, "cb")])["cb"] & ~1
             if cb == ow:
                 self.g.p = None
-                if self.free():
+                if tw.peek([(8, recap, "q")])["q"]:                     # "Previously on your quest...": it runs ON
+                    tw.run("hold B 6", "wait 60")                         # the overworld, so B until it is over
+                elif self.free():
                     return
-                tw.run("wait 30")
+                else:
+                    tw.run("wait 30")
             elif cb == title:
                 tw.run("hold START 6", "wait 60")
             elif cb == menu:
@@ -586,8 +589,13 @@ class Runner:
         for attempt in range(60):
             self.g.p = None                         # a flight moves gSaveBlock1: the cached pointer would name the old town
             name, here = self.where()
-            if self.free() and mapsec_id(map_json(name).get("region_map_section", "MAPSEC_NONE")) == sec:
-                break
+            if mapsec_id(map_json(name).get("region_map_section", "MAPSEC_NONE")) == sec:
+                if self.free():
+                    break
+                tw.run("wait 60")                   # the landing's fade; then a scene that runs on arrival is played
+                if not self.free():                 # out, its boxes captured, as goto does (CALLOW's lock, 2026-10-07)
+                    self.boxes()
+                continue
             tw.run("wait 30")
         else:
             raise RouteError("GOTO did not land in %s's town" % folder)
