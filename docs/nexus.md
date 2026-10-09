@@ -47,9 +47,29 @@ the species underneath is only a slot for its type, stats and routines, chosen s
 | the phoenix whose cry makes the shadows clear | **PHOENIX** (already ours, HO-OH) | -- | met here too; its sprite is shared with the rest of the game |
 | the Christmas penguin, the narrator's inner penguin | **PENGUIN** (already ours) | -- | the penguin of PENPHEN (episode 5); its sprite is shared too |
 
+**Their colour (the user, 2026-10-09): full natural colour, as paint -- with their type's colour emphasised** (its
+drips, a glow, brush accents): REFLECTION OPAQUE's near-black ink; LODESTAR HARDENED's straw gold and CONTEXT's magenta;
+PERIHELION SIGNAL's teal comet; LYUBOV ENTROPY's golden yellow; MULTIMAL and ILLUMINED FLOW's deep blue; LYNX and BASTET
+CONTENT's bone. **An explicit exception to invariant 5 for the NEXUS residents** -- to go in the bible's decision log
+with the next design change.
+
 **Not placed**: the dolphin (episode 5 is after the NEXUS, and no free species is a dolphin), the Dignified Deer of the
 dedications (the NEXUS deer already), the Egyptian Bastet, the Mole-mole (DIGLETT is TAPPOINT), the Eagle, the comet,
 Santa (on the road home, not the NEXUS).
+
+## The drawings (spriteforge, `gfx/drafts/nexus/`; each draft's seed and prompt beside it)
+
+Chosen by the user, 2026-10-09 -- still to be cleaned to the 64px sprite and approved on a sheet:
+
+- **REFLECTION**: `try4/reflection_p7202` -- the painted wolf, the mirror in its jaws; **the glass black** (the
+  source's painted mirror is dark: "even the trees grow in the darkness of night"), a white glint so it still reads
+  as a mirror -- **`try6/reflection_black_7302`, chosen: the black glass without the tree** (the user, 2026-10-09).
+- **LODESTAR**: `round5/lodestar_8102` (the middle deer).
+- **PERIHELION**: `round5/perihelion_8102` (the tiger with the stars).
+- **LYNX**: `round5/lynx_8101`; **BASTET**: `round5/bastet_8103` (the user: "looks good"; seeds picked by the session, to confirm).
+- **LYUBOV**: `round7/lyubov_full_9404` -- a lioness, folk flowers, whole (chosen 2026-10-09).
+- **MULTIMAL**: `round7/multimal_9201` -- facing right, a light glowing in its chest (chosen).
+- **ILLUMINED**: `round7/illumined_9101_lit` -- the white cat in a halo of light (chosen).
 
 ## To build, once the cast is settled
 

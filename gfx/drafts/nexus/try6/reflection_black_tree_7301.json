@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/nexus/try6/reflection_black_tree_7301",
+ "prompt": "a small young wolf pup painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, natural grey and white fur, a small round black mirror held in its mouth by the handle, the dark glossy glass catching a white glint of light, storybook painting, the creature alone on a plain white background",
+ "negative": "pixel art, photorealistic, 3d render, background scenery, text, watermark, multiple creatures, human, blue glass, light glass",
+ "seed": 7301,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.3,
+ "stop_at": null,
+ "image": "gfx/drafts/nexus/try6/reflection_black_tree_base.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 12:41:12"
+}

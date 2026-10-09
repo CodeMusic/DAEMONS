@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/nexus/round7/illumined_9102_lit",
+ "prompt": "an enlightened serene cat with big paws, long whiskers and big ears, surrounded by a soft radiant halo of golden light, glowing, rays of light around it, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting",
+ "negative": "pixel art, text, watermark, dark background",
+ "seed": 9301,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.42,
+ "stop_at": null,
+ "image": "gfx/drafts/nexus/round7/illumined_base_9102.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 13:09:50"
+}

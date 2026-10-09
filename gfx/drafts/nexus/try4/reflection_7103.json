@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/nexus/try4/reflection_7103",
+ "prompt": "a small young wolf pup painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, natural colors, a small round hand mirror held in its mouth by the handle, the mirror reflecting light, a few near-black ink paint drips at its feet, storybook painting, the creature alone on a plain white background, full body",
+ "negative": "pixel art, photorealistic, 3d render, background scenery, text, watermark, multiple creatures, human, standing on hind legs",
+ "seed": 7103,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.55,
+ "stop_at": null,
+ "image": "gfx/drafts/nexus/try4/reflection_base.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 12:27:33"
+}

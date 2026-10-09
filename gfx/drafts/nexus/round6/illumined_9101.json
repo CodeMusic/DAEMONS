@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/round6/illumined_9101",
+ "prompt": "a single creature painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, the creature alone isolated on a plain pure white background, no background scenery, full body, an enlightened serene cat creature, very large fluffy polydactyl paws with extra toes, long flowing whiskers, very big tall ears, a gentle dog-like muzzle and loyal dog-like eyes, glowing softly with inner light, deep blue and gold paint, calm and wise",
+ "negative": "pixel art, photorealistic, 3d render, background painting, scenery, sky, ground, text, letters, watermark, multiple separate creatures, human, cropped, many animals, wings, antlers",
+ "seed": 9101,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 30.2,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 12:45:21"
+}

@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/perihelion_4101",
+ "prompt": "pure white background, pixel art game sprite of a single creature, made entirely of paint, visible thick brushstrokes, painterly impasto texture, soft paint drips, canvas texture, full body, facing left three-quarter view, greyscale, medium grey body with light grey highlights and dark grey shading, clean dark outline, a majestic tiger with a long glowing comet tail of light streaming behind it, cosmic star specks in its stripes, wearing small round spectacles like a wise teacher",
+ "negative": "photorealistic, 3d render, colorful, colored background, grey background, scenery, text, letters, watermark, multiple creatures, human, cropped, blurry",
+ "seed": 4101,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 11:31:09"
+}

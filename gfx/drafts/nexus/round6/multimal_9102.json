@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/round6/multimal_9102",
+ "prompt": "a single creature painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, the creature alone isolated on a plain pure white background, no background scenery, full body, one silhouette made of many different animals blended together, the dark outline of a wolf, an owl's wings, a deer's antlers, a cat's tail and a fox's ears all merged into one shape, deep blue shadow paint, a warm golden light glowing from within its heart shining through the silhouette, hopeful",
+ "negative": "pixel art, photorealistic, 3d render, background painting, scenery, sky, ground, text, letters, watermark, multiple separate creatures, human, cropped, single animal, plain wolf, plain fox",
+ "seed": 9102,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 12:46:08"
+}

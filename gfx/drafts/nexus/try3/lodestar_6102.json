@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/try3/lodestar_6102",
+ "prompt": "a single creature painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, a few paint drips at its feet, storybook painting, the creature alone isolated on a plain pure white background, no background scenery, full body, greyscale, no color, a graceful deer standing, a bright glowing star of light on its chest, soft light radiating from it",
+ "negative": "pixel art, photorealistic, 3d render, colorful, colored background, dark background, background painting, scenery, sky, ground, text, letters, watermark, multiple creatures, human, hands, paws holding, cropped",
+ "seed": 6102,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 11:34:06"
+}

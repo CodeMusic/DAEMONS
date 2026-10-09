@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/nexus/round7/lyubov_9203",
+ "prompt": "a graceful feminine lioness, full body visible, sitting proudly, elegant and classy, golden-yellow coat with ornate Russian folk-art floral patterns, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, on a plain white background",
+ "negative": "cropped, close-up, mane, pixel art, scenery, text",
+ "seed": 9203,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.62,
+ "stop_at": null,
+ "image": "gfx/drafts/nexus/round7/lyubov_base.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 13:08:41"
+}

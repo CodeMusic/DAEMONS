@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/round7/lyubov_full_9404",
+ "prompt": "a single graceful feminine lioness lying down, her whole body visible from nose to tail, small in the frame with space around her, elegant and proud, golden-yellow coat with ornate Russian folk-art floral patterns painted on her face and body, kind blue eyes, a single creature painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, the creature alone isolated on a plain pure white background",
+ "negative": "cropped, close-up, portrait, frame, border, mane, male lion, pixel art, photorealistic, scenery, text, watermark",
+ "seed": 9404,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 13:12:35"
+}

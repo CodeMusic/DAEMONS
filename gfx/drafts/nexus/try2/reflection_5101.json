@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/try2/reflection_5101",
+ "prompt": "a single creature painted with thick acrylic paint on canvas, made entirely of paint, bold expressive brushstrokes, impasto, paint drips, palette knife texture, storybook painting, isolated on a pure white background, full body, greyscale, no color, a small young wolf pup carrying a small round hand mirror in its mouth, the mirror held between its teeth",
+ "negative": "pixel art, photorealistic, 3d render, colorful, colored background, scenery, text, letters, watermark, multiple creatures, human, cropped",
+ "seed": 5101,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 30.1,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 11:31:52"
+}

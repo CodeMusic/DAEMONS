@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/round5/lynx_8103",
+ "prompt": "a single creature painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, natural colors, storybook painting, the creature alone isolated on a plain pure white background, no background scenery, full body, a small lynx point siamese kitten with tufted ears, cream body with tabby-striped points, bright blue eyes, curious, sitting",
+ "negative": "pixel art, photorealistic, 3d render, background painting, scenery, sky, ground, text, letters, watermark, multiple creatures, human, cropped",
+ "seed": 8103,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.3,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 12:38:21"
+}

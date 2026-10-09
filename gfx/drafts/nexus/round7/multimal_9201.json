@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/nexus/round7/multimal_9201",
+ "prompt": "a creature that is a silhouette of many animals merged, a warm golden light glowing from within its chest shining out through its body, hopeful, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting",
+ "negative": "pixel art, text, watermark",
+ "seed": 9201,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.38,
+ "stop_at": null,
+ "image": "gfx/drafts/nexus/round7/multimal_base.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 13:07:31"
+}
