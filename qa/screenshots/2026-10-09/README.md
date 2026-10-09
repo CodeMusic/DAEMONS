@@ -13,3 +13,9 @@ T-396: the game no longer stops a second SEND (v11.298.1). Written from the sour
 The M5GO, read off its own screen over the cable: CAREMUSAI drawn. It had run out of memory to download the picture.
 
 ![9Oct2026 - C97 - the M5GO draws CAREMUSAI - 2](9Oct2026%20-%20C97%20-%20the%20M5GO%20draws%20CAREMUSAI%20-%202.png)
+
+### 9Oct2026 - C100 - the home-screen widget - 3
+
+C-100: the daemon on the phone's home screen, drawn off the widget's real views -- medium, medium just after FEED, small, and no daemon chosen. Every word DRAFT; not yet on a phone.
+
+![9Oct2026 - C100 - the home-screen widget - 3](9Oct2026%20-%20C100%20-%20the%20home-screen%20widget%20-%203.png)
