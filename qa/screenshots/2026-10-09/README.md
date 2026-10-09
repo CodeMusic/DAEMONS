@@ -19,3 +19,15 @@ The M5GO, read off its own screen over the cable: CAREMUSAI drawn. It had run ou
 C-100: the daemon on the phone's home screen, drawn off the widget's real views -- medium, medium just after FEED, small, and no daemon chosen. Every word DRAFT; not yet on a phone.
 
 ![9Oct2026 - C100 - the home-screen widget - 3](9Oct2026%20-%20C100%20-%20the%20home-screen%20widget%20-%203.png)
+
+### 9Oct2026 - T395 - the NEXUS residents in the ROM - 4
+
+The eight NEXUS residents as the ROM is built: front, back, category and both editions' INDEX entries.
+
+![9Oct2026 - T395 - the NEXUS residents in the ROM - 4](9Oct2026%20-%20T395%20-%20the%20NEXUS%20residents%20in%20the%20ROM%20-%204.png)
+
+### 9Oct2026 - T395 - OPUS margins for the residents - 5
+
+OPUS's margins for the eight (DRAFT), as the pane breaks them.
+
+![9Oct2026 - T395 - OPUS margins for the residents - 5](9Oct2026%20-%20T395%20-%20OPUS%20margins%20for%20the%20residents%20-%205.png)
