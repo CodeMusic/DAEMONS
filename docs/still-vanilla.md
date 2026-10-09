@@ -1,4 +1,4 @@
-# The daemons still carrying vanilla's name
+# The daemons still carrying vanilla's name -- STALE since 2026-10-03 (T-210 named every one); kept as history
 
 **146 of them, in 88 families.** Every one of Kanto's 151 is already ours — what is left is **Johto and Hoenn**,
 and all of them are currently **unreachable**, which is why T-40 stopped where it did.

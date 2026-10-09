@@ -47,6 +47,11 @@ def species_table():
     dex = re.findall(r"NATIONAL_DEX_(\w+)\s*,", read("include/constants/pokedex.h"))
     national = {name: i for i, name in enumerate(dex)}                       # NATIONAL_DEX_NONE is 0
     to_nat = set(re.findall(r"SPECIES_TO_NATIONAL\((\w+)\)", read("src/pokemon.c")))   # every species the INDEX numbers
+    # T-395: a NEXUS resident is a slot under another name (SPECIES_REFLECTION is SPECIES_OLD_UNOWN_C), and the
+    # INDEX numbers it by that name: its national entry, category and text are keyed REFLECTION, not OLD_UNOWN_C
+    alias = {a: b for a, b in re.findall(r"#define SPECIES_(\w+)\s+SPECIES_(\w+)\b", read("include/constants/species.h"))}
+    by_slot = {b: a for a, b in alias.items()}
+    to_nat |= {alias[n] for n in re.findall(r"^\s*NATIONAL_DEX_(\w+),\s*$", read("src/pokemon.c"), re.M) if n in alias}
     names = dict(re.findall(r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]*)"\)', read("src/data/text/species_names.h")))
     typename = dict(re.findall(r'\[TYPE_(\w+)\]\s*=\s*_\("([^"]*)"\)', read("src/battle_main.c")))
     info = read("src/data/pokemon/species_info.h")
@@ -97,15 +102,15 @@ def species_table():
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
         if sp not in to_nat or sp not in names:
             continue
-        nat = national.get(sp)
+        nat = national.get(by_slot.get(sp), national.get(sp))
         stem = re.sub(r"[^a-z0-9_]", "", names[sp].lower().replace(" ", "_"))   # LEMMA MIND -> lemma_mind
-        sym = desc.get(sp)
+        sym = desc.get(sp, desc.get(by_slot.get(sp)))
         row = {
             "constant": sp,
             "national": nat,
             "name": names[sp],
             "types": types.get(sp, []),
-            "category": cat.get(sp),
+            "category": cat.get(sp, cat.get(by_slot.get(sp))),
             "entry": {ed: texts[ed].get(sym) for ed in ("CONTENT", "CONTEXT")},
             "art": {view: ("gfx/daemons/%s_%s.png" % (stem, view)) if ("%s_%s.png" % (stem, view)) in art else None
                     for view in ("front", "back")},
@@ -115,6 +120,12 @@ def species_table():
             "base": base.get(sp),                      # C-45: HP, Attack, Defense, Speed, Sp.Atk, Sp.Def
         }
         out[str(sid)] = row
+    # T-395: the save keeps an INDEX bit per national number up to NUM_SPECIES rounded to a byte (DEX_FLAGS_NO, 416);
+    # the eight NEXUS residents pushed the unused slots past it, and a number the save cannot hold reads the next array
+    flag_bits = 8 * ((ids["EGG"] + 7) // 8)
+    for row in out.values():
+        if row["national"] and row["national"] > flag_bits:
+            row["national"] = None
     return out
 
 
@@ -175,6 +186,8 @@ def party_art(species):
         if not row["art"]["front"]:
             continue
         d = os.path.join(GBA, "graphics/pokemon", row["constant"].lower())
+        if not os.path.isdir(d):        # T-395: a NEXUS resident's folder is named for it (nexus_reflection)
+            d = os.path.join(GBA, "graphics/pokemon", "nexus_" + row["name"].lower())
         tiles, pal = os.path.join(d, "front.4bpp"), os.path.join(d, "normal.gbapal")
         if not (os.path.exists(tiles) and os.path.exists(pal)):
             continue

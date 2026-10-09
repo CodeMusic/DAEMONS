@@ -71,6 +71,42 @@ Chosen by the user, 2026-10-09 -- still to be cleaned to the 64px sprite and app
 - **MULTIMAL**: `round7/multimal_9201` -- facing right, a light glowing in its chest (chosen).
 - **ILLUMINED**: `round7/illumined_9101_lit` -- the white cat in a halo of light (chosen).
 
+## In the game: eight NEW daemons (the user, 2026-10-09)
+
+The slots first proposed above (ABSOL, JIRACHI, RAIKOU, ENTEI, FEEBAS, MILOTIC, SKITTY, DELCATTY) were already named
+daemons -- `docs/still-vanilla.md` was stale (T-210 named all 386 by 2026-10-03). So the NEXUS residents are **eight new
+daemons** in the engine's unused species slots (`SPECIES_OLD_UNOWN_C`..`J`), each taking its type, stats and routines
+from the daemon it was modelled on. **INDEX numbers 387-394; MISSINGNO moves from 387 to 395**, still one past the
+end (8.9: the entry the register does not hold), and the INDEX's count becomes 394. The save is unchanged: its INDEX
+flags are sized by NUM_SPECIES (412). **MULTIMAL evolves by friendship** (Feebas's beauty cannot be raised in this
+game); LYNX by the MOON STONE.
+
+### The INDEX entries (APPROVED by the user, 2026-10-09)
+
+| daemon | category | CONTENT | CONTEXT |
+|---|---|---|---|
+| REFLECTION | CANVAS | It brings a painted mirror in its mouth to anyone lost in the night. Blank canvases come in many forms, it seems to say. | The mirror reflects what its holder needs to learn. Held long enough, it is also a window into other worlds. |
+| LODESTAR | GUIDESTAR | A familiar glow in the dark. In its light, fears calm, and the shapes that frightened you are seen to be friends. | Those who once saw its light walk their own path after, sure of their footing even at night. |
+| PERIHELION | COMET | It passes close only once in a long while. In that pass it teaches the lesson that stays: being different is good. | Its pupils hardly saw it go. Long after, they still hear what it taught them, now in their own voices. |
+| LYUBOV | DEVOTION | It sees others before they are willing to see themselves. It crosses great distances to visit, and asks nothing for the fare. | Those it saw rarely see it in time. After, they mean more to it than they can ever express, and cannot say so. |
+| MULTIMAL | SHADOWS | A shadow in the shapes of many animals: those someone tried to heal, but could not reach. A small light stays lit within. | Those who walked away for their own well-being meet it again in the dark. Once they accept it, its shadow fades. |
+| ILLUMINED | RADIANT | The light within it grew until it was all there was. It was always a friend. It was only that the night was dark. | Near it, the ones who were afraid feel the strength of reconnection, and are no longer afraid. |
+| LYNX | FAMILIAR | A small cat that seems somehow familiar. Its tufted ears hear what most cannot, and it never forgets a visitor. | When a guest leaves, it waits by the door. It knows before they do who will be missed. |
+| BASTET | BOUNDLESS | It sits as still as a temple statue. Those it watches begin to reach for more, and make things beyond their day's work. | Its keepers learn that their only limits were ever the ones they imagined. |
+
+### OPUS's margins (DRAFT; in the game 2026-10-09, `tools/genmargins.py`)
+
+| daemon | carried | neglected |
+|---|---|---|
+| REFLECTION | You have looked into the mirror it carries. You looked for a long time. | It is still holding the mirror out. Nobody has taken it. |
+| LODESTAR | You have walked a long way by its light. You have not once looked lost. | It is still shining where it was left. Somebody, somewhere, is walking toward it. |
+| PERIHELION | It has stayed close to you a long while now. That is not like it. | It has gone round again. It will be back. |
+| LYUBOV | You saw it in time. | It came all this way. You put it away. |
+| MULTIMAL | You did not walk away from this one. | You walked away. It understands. Its light is still on. |
+| ILLUMINED | You stayed until it was all light. | Even put away, it is not dark in there. |
+| LYNX | It follows you from room to room now. | It is waiting by the door. |
+| BASTET | You have made more since you started carrying it. | It is sitting very still. It is waiting for you to begin. |
+
 ## To build, once the cast is settled
 
 1. The fir in all fifteen places (the S.S. Anne and the fourteen groves), flat until the key; `tools/gbagrove.py`.

@@ -57,12 +57,25 @@ def species_table():
                             open(os.path.join(GBA, "src/data/text/species_names.h")).read()))
     cats = dict(re.findall(r'\[NATIONAL_DEX_(\w+)\]\s*=\s*\{\s*\.categoryName = _\("([^"]*)"\)',
                            open(os.path.join(GBA, "src/data/pokemon/pokedex_entries.h")).read()))
-    return {ours: (slot, slot.capitalize(), cats.get(slot, "")) for slot, ours in names.items()}
+    # T-395: a NEXUS resident's INDEX row and text are keyed by its own name (SPECIES_REFLECTION is OLD_UNOWN_C)
+    alias = {b: a for a, b in re.findall(r"#define SPECIES_(\w+)\s+SPECIES_(\w+)\b",
+                                         open(os.path.join(GBA, "include/constants/species.h")).read())}
+    out = {}
+    for slot, ours in names.items():
+        key = alias.get(slot, slot)
+        out[ours] = (slot, key.capitalize(), cats.get(key, ""))
+    return out
 
 
 def entry(path, stem):
     m = re.search(r'g%sPokedexText\[\] = _\(\n(.*?)\);' % stem, open(path).read(), re.S)
     return "".join(re.findall(r'"([^"]*)"', m.group(1))).replace("\\n", " ") if m else ""
+
+
+def slot_dir(slot, name):
+    """A daemon's built sprites: its slot's folder, or a NEXUS resident's own (nexus_reflection, T-395)."""
+    base = os.path.join(GBA, "graphics/pokemon", slot.lower())
+    return base if os.path.isdir(base) else os.path.join(GBA, "graphics/pokemon", "nexus_" + name.lower())
 
 
 def daemons(out, names):
@@ -73,7 +86,7 @@ def daemons(out, names):
     for i, name in enumerate(names):
         slot, stem, cat = table[name]
         y = i * 150 + 5
-        base = os.path.join(GBA, "graphics/pokemon", slot.lower())
+        base = slot_dir(slot, name)
         pal = gbapal(os.path.join(base, "normal.gbapal"))
         for k, view in enumerate(("front", "back")):
             img.paste(picture(os.path.join(base, view + ".4bpp"), pal).resize((128, 128), Image.NEAREST), (5 + 135 * k, y))
@@ -102,7 +115,7 @@ def margins(out, names):
     for i, name in enumerate(names):
         slot, stem, cat = table[name]
         y = i * ROW + 6
-        base = os.path.join(GBA, "graphics/pokemon", slot.lower())
+        base = slot_dir(slot, name)
         img.paste(picture(os.path.join(base, "front.4bpp"), gbapal(os.path.join(base, "normal.gbapal"))).resize((96, 96), Image.NEAREST), (6, y + 4))
         d.text((112, y), "%s   %s DAEMON" % (name, cat), fill=(20, 20, 20), font=FONT)
         entry_text = entry(os.path.join(GBA, "src/data/pokemon/pokedex_text_fr.h"), stem)
