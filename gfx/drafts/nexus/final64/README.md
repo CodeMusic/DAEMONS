@@ -15,4 +15,19 @@ fitted from. The drawings they came from, each with its seed and prompt beside i
 | BASTET | `../round5/bastet_8103` | rembg isnet-anime |
 
 Coloured in full natural colour as paint, their type's colour emphasised (docs/nexus.md: an exception to invariant 5
-for the NEXUS residents, the user, 2026-10-09). Back sprites, the INDEX entries and the slots in the game come next.
+for the NEXUS residents, the user, 2026-10-09). **The fronts were approved by the user, 2026-10-09.**
+
+## The backs (`<name>_back.png`; drafts in `../backs/`, seen from behind -- picks the session's, approved by the user)
+
+| daemon | drawing | cut |
+|---|---|---|
+| REFLECTION | `../backs/reflection_10103` | rembg isnet-general-use, largest shape kept (10101, a white wolf on a black disc, would not separate) |
+| LODESTAR | `../backs/lodestar_10103` | as REFLECTION |
+| PERIHELION | `../backs/perihelion_10101` | as REFLECTION; its cosmos kept, as on its front |
+| LYUBOV | `../backs/lyubov_10103` | as REFLECTION (10101's floral surround took most of her with it) |
+| MULTIMAL | `../backs/multimal_10101` | as REFLECTION |
+| ILLUMINED | `../backs/illumined_10103` | as REFLECTION |
+| LYNX | `../backs/lynx_10103` | as REFLECTION |
+| BASTET | `../backs/bastet_10101` | as REFLECTION (10102 was cream on near-white, and faint) |
+
+The INDEX entries and the slots in the game come next.

@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/backs/lodestar_10103",
+ "prompt": "a single creature seen from behind, back view, rear view, we see its back and the back of its head, painted with thick acrylic paint, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, the creature alone isolated on a plain pure white background, no background scenery, a graceful golden deer with magenta legs and tall magenta antlers, a soft golden starlight glowing around it",
+ "negative": "front view, face, facing the viewer, pixel art, photorealistic, 3d render, scenery, text, letters, watermark, multiple creatures, human",
+ "seed": 10103,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 28.2,
+ "comfyui": "0.19.1",
+ "made": "2026-10-09 16:18:13"
+}
