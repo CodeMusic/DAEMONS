@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.297**
+**A total conversion — the living design bible, v11.298**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8539,7 +8539,7 @@ come in the splash's own colours, so the signature is theirs alone.**
 
 ***Reshaped by the user 2026-10-04 (T-370; the companion's PLAN 3):***
 
-- ***One daemon at a time.*** **SEND is not offered while another daemon is AWAY or asked for.**
+- ~~***One daemon at a time.*** **SEND is not offered while another daemon is AWAY or asked for.**~~ ***Reversed by the user 2026-10-09 (T-396)***: **any number may be AWAY, one device to a daemon.** *SEND is refused only for a daemon not in full health, or the last one here able to battle (one asked for counts as gone). The companion says which device carries which (its C-80): a daemon is in one device at a time, and choosing another device for it moves it there -- so it feels real. See Reversed.*
 - ***SEND appears only once the companion knows the save.*** **The app's first SYNC writes a flag into the save; until then the party menu has no SEND**, *so a player without the companion never meets it.* **The people on the CHECKPOINT's second floor talk about the companion** -- *that loading a save into it brings a new SEND* -- **so the player learns of it in the world.**
 - ***An emergency way home, in the game.*** **An AWAY daemon can be called home without the app**, *so it is never stuck in limbo when the app cannot be reached.* **The game warns first: the companion still thinks it is out, and another cannot be sent until it is released there** -- *the next SYNC sees it home and settles both sides.*
 - ***The app is married to one save*** *(the companion's side)*: **a daemon carried for one game only ever goes home to that game's save.**
@@ -8681,6 +8681,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **One daemon at a time** (9.25, T-370, 2026-10-04) | **Any number AWAY, one device to a daemon** (T-396, the user 2026-10-09) | *The companion learned to put a daemon in each device (its C-80) and the game still refused a second SEND.* **A daemon in two places at once would not feel real; two daemons in two devices does.** *The one-at-a-time rule was standing in for "one place at a time", which the companion now keeps.* |
 | **CONTEXT keeps the northern year, CONTENT the southern** (9.21, earlier 2026-10-03) | **CONTENT the northern year, CONTEXT the southern** (the user, 2026-10-03) | *The user, on reflection: "I think CONTENT should be the north america, and CONTEXT as south america's season."* **It fits the registers better**: *CONTENT is the thing itself -- the calendar as lived where the game is made; CONTEXT is the same date reframed by the other half of the world.* |
 | **Nobody remarks on OPUS, then or ever** (2.x, 2026-09-21) | **The first shop clerk spoken to while you hold it notices it, says what it does and that SELECT reads it, and hopes you enjoy it** (T-348, 2026-10-03) | *The user asked for it.* **A margin a player never finds is a margin nobody reads**, *and the clerk explains the tool, not the mystery: who left it is still never answered, and the margins still never say they notice you.* |
 | **The USER card's brain lights once and never counts** (T-271, 2026-09-25) | **A lobe per understanding, each in its type's colour; the halo at seven** (T-331, 2026-10-01) | *The user, seeing it: "I saw a brain but didn't know how it changes as u gain understanding."* **A glow that never counts was honest to 4.3 and told the player nothing**; *the lobes show which places changed them without a number anywhere, and the colours carry the chart's own language (9.4). The Guide's margins still hold the words.* |

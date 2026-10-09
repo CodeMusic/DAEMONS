@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.298 — 2026-10-09
+
+### AWAY, any number (2026-10-09)
+
+- ***9.25, reversed (the user, T-396)***: **SEND no longer refuses a second daemon.** *Any number may be AWAY, each in a device of its own; the companion keeps one daemon to one device, and choosing another device for a daemon moves it. SEND still refuses a daemon not in full health, and the last one here able to battle -- now counting one asked for as gone, since several can be asked for before a SYNC.* *"One at a time: X is with your device now." is gone from the game.*
+
+---
+
 ## v11.297 — 2026-10-08
 
 ### Wisdom: a MARK and its ROOT together (2026-10-08)
