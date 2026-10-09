@@ -85,7 +85,7 @@ model_list:
   - model_name: daemons
     litellm_params:
       model: openai/qwen/qwen3-vl-8b       # openai/ = OpenAI-compatible, not OpenAI
-      # 127.0.0.1, NOT roverbyteseer.local. LM Studio binds to loopback only
+      # 127.0.0.1, NOT roverbyteseer. LM Studio binds to loopback only
       # -- `LM Studio 127.0.0.1:1234 (LISTEN)` -- so the LAN name resolves to an
       # address nothing is listening on. LiteLLM runs on this same box, so
       # loopback is right; it is the PROXY that gets exposed, never LM Studio.

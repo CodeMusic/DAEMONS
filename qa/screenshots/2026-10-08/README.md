@@ -85,3 +85,9 @@ T-392 (DRAFT): ordinary routines carry the signature in their type's ink -- bits
 T-394: a new debug game starts with nothing; DEBUG -> GAME EVENTS gives or takes each piece of the old kit in the order the game gives it -- EVERYTHING on a fresh game, MARKS one at a time, the understandings.
 
 ![8Oct2026 - T394 - GAME EVENTS - 15](8Oct2026%20-%20T394%20-%20GAME%20EVENTS%20-%2015.png)
+
+### 8Oct2026 - C80 - a daemon in each device - 16
+
+The companion site's YOUR DEVICES against a scratch server and a synthetic save: each device carries its own daemon, chosen here. PIP has just moved from the CC1101 to the CoreS3.
+
+![8Oct2026 - C80 - a daemon in each device - 16](8Oct2026%20-%20C80%20-%20a%20daemon%20in%20each%20device%20-%2016.jpg)

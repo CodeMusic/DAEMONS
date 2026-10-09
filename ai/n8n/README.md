@@ -40,7 +40,7 @@ the harness and the model — translating Responses to chat, dropping unsupporte
 parameters, handling the stream is its entire job:
 
 ```
-harness  --/v1/responses-->  LiteLLM  --/v1/chat/completions-->  roverbyteseer.local:1234
+harness  --/v1/responses-->  LiteLLM  --/v1/chat/completions-->  roverbyteseer:1234
 ```
 
 `daemon/chat` is kept because it is a working chat-completions endpoint with
@@ -92,7 +92,7 @@ same way it already picks the LiteLLM host:
 The tailnet name is the point. `roverbyteseer` resolves to `100.67.234.4`
 from anywhere Tailscale is up, so the internal workflow is not a home-only
 path — measured from the tailnet rather than the LAN, it answers in 116ms.
-`roverbyteseer.local` is the LAN-only name and is *not* what this uses.
+`roverbyteseer` is the LAN-only name and is *not* what this uses.
 
 The relay is the fallback for a machine with internet but no tailnet. Probed
 with `daemon/health` rather than `daemon/voice`, because probing the voice

@@ -85,7 +85,7 @@ n8n.codemusic.ca {
 ```
 
 Then away it is `https://n8n.codemusic.ca/llm/v1`, and at home the direct
-`http://roverbyteseer.local:4000/v1`.
+`http://roverbyteseer:4000/v1`.
 
 **This is genuinely fine, with one condition: `master_key` is now the only
 thing between the internet and your model server.** LiteLLM checks it on every
@@ -111,7 +111,7 @@ guardrail plugin logs two load errors on 3.9 and the proxy serves regardless).
 **Three things the machine corrected in this config**, all of which would have
 looked like a broken bridge:
 
-- LM Studio listens on `127.0.0.1:1234`, so `roverbyteseer.local:1234` resolves
+- LM Studio listens on `127.0.0.1:1234`, so `roverbyteseer:1234` resolves
   to an address nothing answers on. LiteLLM runs on the same box, so loopback
   is right — and it is the *proxy* that gets exposed, never LM Studio.
 - **Corrected 2026-09-07:** an earlier note here claimed the dex workflows
@@ -185,7 +185,7 @@ Check the bridge before trusting a long run — this is the call that 404s if
 `use_chat_completions_api` is missing:
 
 ```
-curl -s http://roverbyteseer.local:4000/v1/responses \
+curl -s http://roverbyteseer:4000/v1/responses \
   -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
   -H 'Content-Type: application/json' \
   -d '{"model":"daemons","input":"say ready"}' | head -c 300

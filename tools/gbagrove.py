@@ -22,6 +22,11 @@ The way IN is a tree that already stands alone (ROUTE 25's bush, FIVE ISLAND's m
 THREE ISLAND's berry forest, ROUTE 13's copse) or one PLANTED where the map has open ground: a 2x2 tree, or on a
 cramped island a bush. Planting writes the parent's map.bin; check_reach proves no way was closed.
 
+THE FIFTEENTH (T-395, the user, 2026-10-09: "a grove through the fir"). The singing fir on the S.S. Anne's empty pier
+(T-10) is its door: no tree tile answers A -- the fir's own script goes in, once it sings in key (FLAG_FIR_IN_KEY). A
+row with `enter_at` empty is such a grove: its way in is written, and called from the script that owns the door. Who
+lives there is the user's (family None: nobody yet, and no encounter table).
+
 THE RESIDENTS. Each grove's encounter table is its family alone (FAMILY below), in both editions. Every one of them
 is past the first 151, so -- FireRed's own rule -- its INDEX page shows and it evolves only once the GLOBAL INDEX is
 held. That is the user's to keep or lift (T-221).
@@ -221,6 +226,7 @@ GROVES = [
          enter_at=[(10, 17), (11, 17)], back_to=(10, 18), family="NINCADA", levels=(40, 44)),
     dict(name="SevenIsland_Grove", parent="SevenIsland", synth=True, plant=("bush", 3, 10),
          enter_at=[(3, 10)], back_to=(3, 11), family="BALTOY", levels=(44, 48)),
+    #  T-395: the fir's door -- now THE NEXUS (the user, 2026-10-09), its own design (docs/nexus.md), not a row here yet.
 ]
 
 #  Who lives in each grove: (species, share of the twelve slots, levels above the grove's floor). A family's later
@@ -335,8 +341,11 @@ def main():
     planted = []
     for g in GROVES:
         name, parent = g["name"], g["parent"]
-        mapc, lay_id = const(name), "LAYOUT_" + const(name)[4:]
         pm = load("data/maps/%s/map.json" % parent)
+        #  the names, from the parent's own map.json id (T-395: SSAnne is MAP_SSANNE_..., which const() would split)
+        parentc = pm["id"]
+        mapc = parentc + "_GROVE" if name == parent + "_Grove" else const(name)
+        lay_id = "LAYOUT_" + mapc[4:]
         pl = next(l for l in layouts["layouts"] if l.get("id") == g.get("parent_layout", pm["layout"]))
         W = pl["width"]
         if g.get("synth"):
@@ -392,7 +401,7 @@ def main():
                    "%s_MapScripts::\n\t.byte 0\n\n"
                    "@ The grove's own lone tree takes you back. Nothing is said.\n"
                    "%s_EventScript_Leave::\n\tlockall\n\tplayse SE_M_CUT\n\twarp %s, %d, %d\n\twaitstate\n\treleaseall\n\tend\n"
-                   % (name, name, const(parent), bx, by))
+                   % (name, name, parentc, bx, by))
         enter_label = "%s_EventScript_Grove" % parent
         enter = ("\n@ T-221: the tree that stands alone answers A -- the way into a grove. Nothing is said; REVEAL makes it\n"
                  "@ twinkle (src/reveal.c), and pressing A on the right tree finds it without.\n"
@@ -405,7 +414,8 @@ def main():
         inc_t = '\t.include "data/maps/%s/text.inc"\n' % name
         #  the residents: the family, in both editions, in place of any placeholder
         wg = next(x for x in wild["wild_encounter_groups"] if x.get("label") == "gWildMonHeaders")
-        tables = [family_table(g, "s%s_%s" % (name.replace("_", ""), ed)) for ed in ("FireRed", "LeafGreen")]
+        tables = [] if g["family"] is None else \
+            [family_table(g, "s%s_%s" % (name.replace("_", ""), ed)) for ed in ("FireRed", "LeafGreen")]   # T-395: nobody yet
         have = [e for e in wg["encounters"] if e["map"] == mapc]
         same = sorted(json.dumps(e, sort_keys=True) for e in have) == sorted(json.dumps(e, sort_keys=True) for e in tables)
         pscripts = open(os.path.join(GBA, "data/maps/%s/scripts.inc" % parent)).read()

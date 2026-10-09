@@ -11,7 +11,7 @@
 been resolved into anything. T-250 wants exactly that for what a player sees without the RESOLVER -- the
 same seed without --stop-at is the thing it would have become.
 
-THE SERVER. ComfyUI at http://roverbyteseer.local:8008 (override with SPRITEFORGE_HOST), checkpoint
+THE SERVER. ComfyUI at http://roverbyteseer:8008 (override with SPRITEFORGE_HOST), checkpoint
 `pixelArtDiffusionXL_spriteShaper.safetensors` -- the same model the pixelbyte skill wraps, driven here
 directly so a draft can be scripted, batched and rebuilt. It is a DRAFTING instrument: 9.4 says nothing
 in a finished sprite is accidental, and a diffusion output is all accident until it has been cleaned.
@@ -29,7 +29,9 @@ uploads its source with POST /upload/image first.
 """
 import argparse, json, os, random, sys, time, urllib.parse, urllib.request, uuid
 
-HOST = os.environ.get("SPRITEFORGE_HOST", "http://roverbyteseer.local:8008")
+#  roverbyteseer by name -- at home and, through Tailscale, away (the user, 2026-10-09: "don't use .local, just
+#  roverbyteseer")
+HOST = os.environ.get("SPRITEFORGE_HOST", "http://roverbyteseer:8008")
 CKPT = "pixelArtDiffusionXL_spriteShaper.safetensors"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
