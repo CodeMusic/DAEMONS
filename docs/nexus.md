@@ -31,21 +31,21 @@ coming from the creatures and the music.
 - **THE (NOT A) HUNTER**: an NPC, **a bear in red plaid**. *"Hunter? I'm no hunter... not anymore."* Then guidance
   close to the source's: the animals are precious; charm balanced with firmness; walls where doors should be.
 
-## Who lives there (proposed; names DRAFT, psychology's register -- it is a mainland grove)
+## Who lives there (SETTLED with the user 2026-10-09; names DRAFT until played)
 
-Every resident is NEXUS-only and drawn new, in paint, with spriteforge; the species underneath is only a slot for its
-type, stats and routines, chosen so the type says something true.
+Every resident is NEXUS-only and **drawn new, in paint** -- made of paint, as the NEXUS itself is -- with spriteforge;
+the species underneath is only a slot for its type, stats and routines, chosen so the type says something true.
 
-| from the source | daemon | slot (type) | note |
+| from the source | daemon | slot (type) | the drawing |
 |---|---|---|---|
-| the shadows of animal forms -- those the narrator tried to heal and could not reach, and walked away from for their own well-being | **MULTIMAL** (the user's name) | SABLEYE (OPAQUE / LATENT) | a silhouette of many animals at once; what cannot be reached, unseen and latent |
-| the phoenix whose cry makes the shadows clear | **PHOENIX** (already ours, HO-OH) | -- | the user: "I like Phoenix"; it can be met here |
-| the wolves cloaked in the dark, feared, then friends; the small wolf with the painted mirror | a family: the small wolf, then the grown | POOCHYENA -> MIGHTYENA (OPAQUE) | names to choose |
-| the deer whose light shows the wolves are friends | a deer -- **a star, compassion, hope** | JIRACHI (HARDENED / CONTEXT), the wish star; or CELEBI (CONTEXT / GROWTH) | name to choose |
-| the lynx point and the Egyptian Siamese | **LYNX** -- a lynx point Siamese that looks Egyptian | SKITTY -> DELCATTY (CONTENT) | one cat or two: open |
-| the Christmas penguin, the narrator's "inner penguin" | **PENGUIN** (already ours) | -- | the same penguin that pairs with the dolphin (the source's episode 5 is PENPHEN) |
-| *(the dedications, not the NEXUS scenes)* the Tutoring Tiger | a tiger -- a comet's look, a teacher's | RAIKOU (SIGNAL) | name to choose |
-| *(the dedications)* the Lovely Lioness | a lioness -- a Russian feel | ABSOL (OPAQUE: the one not seen in time) or ENTEI (ENTROPY) | open |
+| the small wolf that brings the painted mirror | **REFLECTION** | ABSOL (OPAQUE), one stage | a small wolf, a little painted mirror in its mouth |
+| the deer whose light shows the wolves are friends | **LODESTAR** -- a star, compassion, hope | JIRACHI (HARDENED / CONTEXT), the wish star; it does not evolve | a deer, a star's light in it |
+| the Tutoring Tiger (the dedications) | **PERIHELION** | RAIKOU (SIGNAL) | a tiger with a comet's look, cosmic, and a teacher's |
+| the Lovely Lioness (the dedications) | **LYUBOV** | ENTEI (ENTROPY) | a lion, proud and full of class, a Russian feel |
+| the shadows of animal forms: those the narrator could not reach, and walked away from for their own well-being | **MULTIMAL** -> **ILLUMINED** | FEEBAS -> MILOTIC (FLOW): the overlooked, then radiant | a silhouette of many animals at once -- not all dark: something within it holds hope and light; grown, that light is what it is |
+| the lynx point, and the Egyptian Siamese | **LYNX** -> **BASTET** | SKITTY -> DELCATTY (CONTENT) | a lynx point Siamese kitten; grown, a cat that looks Egyptian |
+| the phoenix whose cry makes the shadows clear | **PHOENIX** (already ours, HO-OH) | -- | met here too; its sprite is shared with the rest of the game |
+| the Christmas penguin, the narrator's inner penguin | **PENGUIN** (already ours) | -- | the penguin of PENPHEN (episode 5); its sprite is shared too |
 
 **Not placed**: the dolphin (episode 5 is after the NEXUS, and no free species is a dolphin), the Dignified Deer of the
 dedications (the NEXUS deer already), the Egyptian Bastet, the Mole-mole (DIGLETT is TAPPOINT), the Eagle, the comet,
