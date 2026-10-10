@@ -1111,7 +1111,7 @@ MARGINS = [
     ("SPECIES_JIRACHI", "ELPIS",
      "It has been awake for you longer than it should be. It is still listening.",
      "Asleep at the bottom of something. Still there."),
-    #  T-395: the NEXUS residents, in the engine's unused slots (tools/gbanexus.py; docs/nexus.md). DRAFT.
+    #  T-395: the NEXUS residents, in the engine's unused slots (tools/gbanexus.py; docs/nexus.md). Approved by the user, 2026-10-10.
     ("SPECIES_OLD_UNOWN_C", "REFLECTION",
      "You have looked into the mirror it carries. You looked for a long time.",
      "It is still holding the mirror out. Nobody has taken it."),

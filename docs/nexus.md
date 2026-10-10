@@ -94,7 +94,7 @@ game); LYNX by the MOON STONE.
 | LYNX | FAMILIAR | A small cat that seems somehow familiar. Its tufted ears hear what most cannot, and it never forgets a visitor. | When a guest leaves, it waits by the door. It knows before they do who will be missed. |
 | BASTET | BOUNDLESS | It sits as still as a temple statue. Those it watches begin to reach for more, and make things beyond their day's work. | Its keepers learn that their only limits were ever the ones they imagined. |
 
-### OPUS's margins (DRAFT; in the game 2026-10-09, `tools/genmargins.py`)
+### OPUS's margins (APPROVED by the user, 2026-10-10; in the game, `tools/genmargins.py`)
 
 | daemon | carried | neglected |
 |---|---|---|
