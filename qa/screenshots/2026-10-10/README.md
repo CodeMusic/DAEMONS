@@ -19,3 +19,27 @@ THE NEXUS as the ROM is built from it (DRAFT): left as first seen, every grove's
 The door tree's four states (found; not yet found; tried; tried again), the Christmas tree, the fir before and after its key, and the bear in red plaid (DRAFT).
 
 ![10Oct2026 - T395 - the NEXUS pieces - 3](10Oct2026%20-%20T395%20-%20the%20NEXUS%20pieces%20-%203.png)
+
+### 10Oct2026 - T395 - played - the fir takes its key and opens into THE NEXUS - 4
+
+Played in the theatre (debug build): ROUTE 1's grove, the fir flat until the band's sheet, then in its key and a door, and THE NEXUS on arrival.
+
+![10Oct2026 - T395 - played - the fir takes its key and opens into THE NEXUS - 4](10Oct2026%20-%20T395%20-%20played%20-%20the%20fir%20takes%20its%20key%20and%20opens%20into%20THE%20NEXUS%20-%204.png)
+
+### 10Oct2026 - T395 - played - a grove not yet found - 5
+
+Played: a grove's door not yet found, tried three times -- smudged, then dots and lines, then only a drawing of a tree.
+
+![10Oct2026 - T395 - played - a grove not yet found - 5](10Oct2026%20-%20T395%20-%20played%20-%20a%20grove%20not%20yet%20found%20-%205.png)
+
+### 10Oct2026 - T395 - played - THE NOT A HUNTER - 6
+
+Played: THE (NOT A) HUNTER's first words and his line after.
+
+![10Oct2026 - T395 - played - THE NOT A HUNTER - 6](10Oct2026%20-%20T395%20-%20played%20-%20THE%20NOT%20A%20HUNTER%20-%206.png)
+
+### 10Oct2026 - T395 - played - the Christmas tree home - 7
+
+Played: the Christmas tree sings, asks to go home, and the GUARDIAN speaks before the warp to the pier.
+
+![10Oct2026 - T395 - played - the Christmas tree home - 7](10Oct2026%20-%20T395%20-%20played%20-%20the%20Christmas%20tree%20home%20-%207.png)
