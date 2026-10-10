@@ -135,11 +135,11 @@ TEXT = {
     "Nexus_Text_HunterFirst": "Red plaid, in the dark.\nA hunter?\\p"
                               "Hunter? I'm no hunter…\nnot anymore.\\p"
                               "And frankly, I never was\nto begin with.\\p"
-                              "How could anyone hurt these\nanimals? They are precious.\\p"
+                              "How could anyone hurt these\nDAEMONS? They are precious.\\p"
                               "…Now why would you turn back?\nWhy would my tone make you buckle?\\p"
                               "Charm must be balanced with\nfirmness, or you are only\\lspeaking in mirages.\\p"
                               "And keep faith. Don't let walls\nbe placed where doors should be.",
-    "Nexus_Text_Hunter": "These animals are precious.\nMind how you walk among them.",
+    "Nexus_Text_Hunter": "These DAEMONS are precious.\nMind how you walk among them.",
     "Nexus_Text_HunterAll": "Every door here is open to you now.\nThey always were.",
     "Nexus_Text_Phoenix": "Its cry rings out, and the shadows\nin the paint come clear!",
 }
