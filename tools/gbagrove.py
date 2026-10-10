@@ -22,7 +22,14 @@ The way IN is a tree that already stands alone (ROUTE 25's bush, FIVE ISLAND's m
 THREE ISLAND's berry forest, ROUTE 13's copse) or one PLANTED where the map has open ground: a 2x2 tree, or on a
 cramped island a bush. Planting writes the parent's map.bin; check_reach proves no way was closed.
 
-THE FIFTEENTH (T-395, the user, 2026-10-09: "a grove through the fir"). The singing fir on the S.S. Anne's empty pier
+THE FIR IN EVERY GROVE (T-395, the user, 2026-10-09; docs/nexus.md). Every grove holds the singing fir: flat and
+washed out (OBJ_EVENT_GFX_SINGING_FIR_DIM) until the band's sheet has given it its key, then the fir itself, and a door
+into THE NEXUS. Both stand on one tile, the dim one first and the bright one next (EventScript_SingingFir swaps them
+by local id); FLAG_HIDE_FIR_UNKEYED keeps the bright one hidden until then, set on every arrival. Arriving in a grove
+also sets its FOUND flag, which is what makes its tree in THE NEXUS an ordinary one (tools/gbanexusmap.py). The flags
+are written into include/constants/flags.h here, one per row, so a new grove needs no edit there.
+
+THE FIFTEENTH (T-395, the user, 2026-10-09: "a grove through the fir"), as first planned. The singing fir on the S.S. Anne's empty pier
 (T-10) is its door: no tree tile answers A -- the fir's own script goes in, once it sings in key (FLAG_FIR_IN_KEY). A
 row with `enter_at` empty is such a grove: its way in is written, and called from the script that owns the door. Who
 lives there is the user's (family None: nobody yet, and no encounter table).
@@ -198,7 +205,7 @@ CLEARING = [
 #    plant  ("tree", x, y) a 2x2 at (x,y)..(x+1,y+1), or ("bush", x, y); None where a tree already stands alone
 GROVES = [
     dict(name="ViridianForest_Grove", parent="ViridianForest", parent_layout="LAYOUT_VIRIDIAN_FOREST",
-         crop=(38, 39, 16, 17), enter_at=[(30, 57)], back_to=(30, 58), arrive=(4, 6), tell_at=[(29, 57)],
+         crop=(38, 39, 16, 17), enter_at=[(30, 57)], back_to=(30, 58), arrive=(4, 6), tell_at=[(29, 57)], fir=(10, 4),
          leave_at=[(7, 3), (8, 3), (9, 3)], family="KECLEON", levels=(6, 9)),
     dict(name="Route25_Grove", parent="Route25", synth=True, plant=None,
          enter_at=[(18, 5)], back_to=(18, 6), family="RALTS", levels=(12, 16)),
@@ -249,6 +256,43 @@ FAMILY = {
     "BALTOY":   [("SPECIES_BALTOY", 7, 0), ("SPECIES_CLAYDOL", 5, 0)],
 }
 RATE = 20
+
+FIR_SYNTH = (11, 3)                                     # the fir in a drawn clearing: row 1's open ground, right of the way out
+FLAG_BASE = 0x110                                       # FLAG_<GROVE>_FOUND, DAEMONS_FLAGS_START + 0x110 up, in GROVES order
+
+
+def found_flag(mapc):
+    return "FLAG_%s_FOUND" % mapc[4:]
+
+
+def fir_of(g):
+    """Where the grove's fir stands; the player arriving from THE NEXUS stands one below it, facing it."""
+    return g.get("fir", FIR_SYNTH)
+
+
+def map_const(g):
+    """The grove's MAP_ constant, as main() names it (T-395: from the parent's own id)."""
+    pm = load("data/maps/%s/map.json" % g["parent"])
+    return pm["id"] + "_GROVE" if g["name"] == g["parent"] + "_Grove" else const(g["name"])
+
+
+def flags_block():
+    lines = ["//  BEGIN gbagrove -- T-395: each grove once arrived in, so its tree in THE NEXUS is an ordinary one",
+             "//  (tools/gbagrove.py writes this block; tools/gbanexusmap.py reads it)."]
+    for k, g in enumerate(GROVES):
+        lines.append("#define %-40s (DAEMONS_FLAGS_START + 0x%X)" % (found_flag(map_const(g)), FLAG_BASE + k))
+    return "\n".join(lines + ["//  END gbagrove"]) + "\n"
+
+
+def ensure_flags():
+    p = os.path.join(GBA, "include/constants/flags.h")
+    t = open(p).read()
+    blk = flags_block()
+    m = re.search(r"//  BEGIN gbagrove.*?//  END gbagrove\n", t, re.S)
+    new = t[:m.start()] + blk + t[m.end():] if m else t.replace("#define DAEMONS_FLAGS_COUNT", blk + "\n#define DAEMONS_FLAGS_COUNT", 1)
+    if new != t and WRITE:
+        open(p, "w").write(new)
+    return [] if new == t else ["the FOUND flags in flags.h"]
 
 
 def load(p):
@@ -338,6 +382,9 @@ def main():
     events = open(os.path.join(GBA, "data/event_scripts.s")).read()
     changes = ensure_tell()
     print("  the tell (T-337): %s" % ("; ".join(changes) if changes else "drawn, nothing to do"))
+    flag_todo = ensure_flags()
+    print("  the FOUND flags: %s" % ("written" if flag_todo and WRITE else "would change" if flag_todo else "current"))
+    changes += flag_todo
     planted = []
     for g in GROVES:
         name, parent = g["name"], g["parent"]
@@ -387,21 +434,33 @@ def main():
                  "border_filepath": ldir + "/border.bin", "blockdata_filepath": ldir + "/map.bin"}
         have_layout = any(l.get("id") == lay_id for l in layouts["layouts"])
         mdir = "data/maps/%s" % name
+        fx, fy = fir_of(g)
+        assert (struct.unpack_from("<H", crop, (fy * w + fx) * 2)[0] >> 10) & 3 == 0 and \
+            (struct.unpack_from("<H", crop, ((fy + 1) * w + fx) * 2)[0] >> 10) & 3 == 0, "%s: the fir's tile or the one below is blocked" % name
+        fir = lambda gfx, flag: {"type": "object", "graphics_id": gfx, "x": fx, "y": fy, "elevation": 3,
+                                 "movement_type": "MOVEMENT_TYPE_NONE", "movement_range_x": 0, "movement_range_y": 0,
+                                 "trainer_type": "TRAINER_TYPE_NONE", "trainer_sight_or_berry_tree_id": "0",
+                                 "script": "EventScript_SingingFir", "flag": flag}
         mapjson = {
             "id": mapc, "name": name, "layout": lay_id, "music": pm["music"],
             "region_map_section": pm["region_map_section"], "requires_flash": False, "weather": pm["weather"],
             "map_type": pm["map_type"], "allow_cycling": pm["allow_cycling"], "allow_escaping": pm["allow_escaping"],
             "allow_running": pm["allow_running"], "show_map_name": False, "floor_number": 0,
-            "battle_scene": pm["battle_scene"], "connections": None, "object_events": [], "warp_events": [],
+            "battle_scene": pm["battle_scene"], "connections": None, "warp_events": [],
+            #  T-395: the fir before the key, then the fir (the script swaps them by local id: keep them first, in order)
+            "object_events": [fir("OBJ_EVENT_GFX_SINGING_FIR_DIM", "FLAG_FIR_IN_KEY"),
+                              fir("OBJ_EVENT_GFX_SINGING_FIR", "FLAG_HIDE_FIR_UNKEYED")],
             "coord_events": [],
             "bg_events": [{"type": "sign", "x": lx, "y": ly, "elevation": 0, "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
                            "script": "%s_EventScript_Leave" % name} for (lx, ly) in leave_at],
         }
         scripts = ("@ T-221: a grove (tools/gbagrove.py writes this).\n"
-                   "%s_MapScripts::\n\t.byte 0\n\n"
+                   "%s_MapScripts::\n\tmap_script MAP_SCRIPT_ON_TRANSITION, %s_OnTransition\n\t.byte 0\n\n"
+                   "@ T-395: found, so its tree in THE NEXUS is an ordinary one; and the fir as it stands (flat until the key).\n"
+                   "%s_OnTransition::\n\tsetflag %s\n\tcall EventScript_FirKeyFlags\n\tend\n\n"
                    "@ The grove's own lone tree takes you back. Nothing is said.\n"
                    "%s_EventScript_Leave::\n\tlockall\n\tplayse SE_M_CUT\n\twarp %s, %d, %d\n\twaitstate\n\treleaseall\n\tend\n"
-                   % (name, name, parentc, bx, by))
+                   % (name, name, name, found_flag(mapc), name, parentc, bx, by))
         enter_label = "%s_EventScript_Grove" % parent
         enter = ("\n@ T-221: the tree that stands alone answers A -- the way into a grove. Nothing is said; REVEAL makes it\n"
                  "@ twinkle (src/reveal.c), and pressing A on the right tree finds it without.\n"

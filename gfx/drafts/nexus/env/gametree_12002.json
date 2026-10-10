@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/env/gametree_12002",
+ "prompt": "a single round bushy tree for a top-down game map, seen from above at an angle, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, deep teal and green canopy with moonlit highlights, small trunk, isolated on a plain white background",
+ "negative": "pixel art, text, watermark, signature, frame, border, frame, circle, moon, sky, ground, landscape, multiple trees, roots",
+ "seed": 12002,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 85.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-10 16:04:47"
+}

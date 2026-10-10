@@ -16,6 +16,11 @@ T-337 (the user, 2026-10-01): THE STAR TWINKLES. Three frames side by side (48x3
 gold gone pale with a white heart; and a glint, white through the middle with a ray either side. sAnim_SingingFir
 (object_event_anims.h) holds the first frame and flicks through the others now and then, irregularly, the way a
 light catches -- the same sixteen colours, so still no palette of its own.
+
+T-395 (the user, 2026-10-09): THE FIR IS FLAT UNTIL THE KEY. Every fir -- in every grove and on the pier -- is drawn
+dim and washed out until the band's sheet has given it its key: the same pixels in fir_dim.pal, NPC_GREEN with each
+colour taken most of the way to its own grey and down in brightness, patched into PALSLOT_NPC_1 at spawn as the OWL is. With the key it
+is the fir above, in NPC_GREEN, and it is a door (docs/nexus.md).
 """
 import os, sys
 from PIL import Image
@@ -24,6 +29,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PAL = os.path.join(GBA, "graphics/object_events/palettes/npc_green.pal")
 OUT = os.path.join(GBA, "graphics/object_events/pics/misc/singing_fir.png")
+DIM = os.path.join(GBA, "graphics/object_events/palettes/fir_dim.pal")
+WASH, DARKEN = 0.70, 0.72                                   # how far to grey, and how much light is left
 WRITE = "--write" in sys.argv
 SCRATCH = os.environ.get("DAEMONS_SCRATCH", os.path.join(ROOT, ".theatre"))
 
@@ -86,7 +93,23 @@ def sheet():
     return out
 
 
+def dim_palette():
+    """NPC_GREEN, washed out: each colour most of the way to its own grey, and dimmed. Index 0 stays transparent."""
+    out = []
+    for k, (r, g, b) in enumerate(jasc(PAL)):
+        if k:
+            y = 0.299 * r + 0.587 * g + 0.114 * b
+            r, g, b = (int(round((c + (y - c) * WASH) * DARKEN)) for c in (r, g, b))
+        out.append((r, g, b))
+    return "JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in out)
+
+
 def main():
+    dim = dim_palette()
+    old_dim = open(DIM, newline="").read() if os.path.exists(DIM) else None
+    print("  fir_dim.pal: %s" % ("current" if old_dim == dim else "written" if WRITE else "would change"))
+    if WRITE and old_dim != dim:
+        open(DIM, "w", newline="").write(dim)
     fir = sheet()
     print("  the singing fir: three 16x32 frames (the star twinkles, T-337), NPC_GREEN, %d baubles" % len(BAUBLES))
     os.makedirs(SCRATCH, exist_ok=True)

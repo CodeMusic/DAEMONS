@@ -224,11 +224,11 @@ mode starts with lots of things so you can't test some things"). **DEBUG → GAM
 at a time, in story order, each row + held or · not and A giving or taking it: EVERYTHING (the old kit -- six daemons
 picked for their **abilities**, one of each **kind** of item, all eight badges, 999999, the opening already over), the
 ROSTER, EVERY DAEMON (INDEX and PORT), the STOCK, the OPENING, then shoes, INDEX, OPUS, MARKS (a page, each leader),
-the NOTEBOOK (empty, or EVERY PAGE), the school, the ticket, the DRIVERS (a page), TEA and BRAZEN's gates, REVEAL,
+the NOTEBOOK (empty, or EVERY PAGE), the school, the ticket, the FIR IN ITS KEY, EVERY GROVE FOUND (T-395), the DRIVERS (a page), TEA and BRAZEN's gates, REVEAL,
 the RESOLVER, the INTERRUPT, every GOTO point, the GUIDE, the GLOBAL INDEX and the UNDERSTANDINGS (a page, each with
 what it needs, and LET INSIGHTS ARRIVE AGAIN). `src/daemons_debug_events.c`; the kit's pieces are in `new_game.c`.
 Hold B to walk through grass. Its DEBUG
-menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page), and on its MORE page the WARDEN with his TOKEN, the singing FIR on the empty pier and the WITNESSES' reward with every understanding held, without playing to them; its main page's WATCH forces dawn, day, dusk or night and relights the map at once (T-268), and SOUND plays any song or sound effect. It began as
+menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page), and on its MORE page the WARDEN with his TOKEN, the singing FIR on the empty pier and the WITNESSES' reward with every understanding held, and THE NEXUS (T-395: the fir in its key, every grove found or none), without playing to them; its main page's WATCH forces dawn, day, dusk or night and relights the map at once (T-268), and SOUND plays any song or sound effect. It began as
 scaffolding for the §9.3 spike and has grown into the field test's way of reaching things without playing to them.
 
 **Never filter a build for `error:`.** agbcc prints its diagnostics as

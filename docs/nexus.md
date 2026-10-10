@@ -107,9 +107,22 @@ game); LYNX by the MOON STONE.
 | LYNX | It follows you from room to room now. | It is waiting by the door. |
 | BASTET | You have made more since you started carrying it. | It is sitting very still. It is waiting for you to begin. |
 
-## To build, once the cast is settled
+## Built (2026-10-10, DRAFT throughout)
 
-1. The fir in all fifteen places (the S.S. Anne and the fourteen groves), flat until the key; `tools/gbagrove.py`.
-2. The NEXUS map and its painted tileset (spriteforge, `tools/spriteforge.py`, roverbyteseer by name).
-3. Its doors: one per grove, ordinary once the grove has been entered (a flag per grove), grey and smudging before.
-4. The GUARDIAN's lines at each door; the bear and his lines; the residents, their names, entries and painted sprites.
+1. **The fir in all fifteen places** (the S.S. Anne and the fourteen groves; `tools/gbagrove.py`): two objects on one
+   tile, the fir before the key (`OBJ_EVENT_GFX_SINGING_FIR_DIM`, NPC_GREEN washed out, `fir_dim.pal` from
+   `tools/gensingingfir.py`) and the fir, swapped the moment the sheet gives it its key. One script for every fir,
+   `EventScript_SingingFir`: without the key, the off tune and the remark; with it, the tune right and **"The branches
+   part, like a door. Go through?"** Arriving in a grove sets its FOUND flag.
+2. **THE NEXUS** (`tools/gbanexusmap.py`): 26x23, its own tileset `gTileset_Nexus` -- the ground, the meadow, the wall of
+   trees, the door tree and the Christmas tree all drawn on spriteforge (`gfx/drafts/nexus/env/`, seed and prompt beside
+   each) and cleaned in the tool. The meadow is where the residents are met (TILE_ENCOUNTER_LAND).
+3. **Its doors**: the mainland's seven groves down the left, the islands' down the right. A grove found is an ordinary
+   tree and a door to it; one not yet found is grey -- tried, it smudges; tried again, it is only dots and lines; then
+   "Only a drawing of a tree." Whole again on the next visit. **The Christmas tree** sings in key and goes home to the
+   pier.
+4. **The GUARDIAN** speaks at every door as the player leaves, a different line of the source's at each (fifteen).
+   **THE (NOT A) HUNTER** stands in the meadow (`tools/genhunter.py`). **PHOENIX** waits once (level 35); the meadow holds
+   REFLECTION, LYNX, MULTIMAL and PENGUIN, LODESTAR more rarely, PERIHELION and LYUBOV once in a long while.
+
+Debug: JUMP > MORE > NEXUS; GAME EVENTS: THE FIR IN ITS KEY, EVERY GROVE FOUND.

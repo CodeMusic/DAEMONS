@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/env/wall_11003",
+ "prompt": "seamless texture, a dense dark forest canopy seen from directly above, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, deep navy and dark green leaves, night, fills the whole image",
+ "negative": "pixel art, text, watermark, signature, frame, border, horizon, sky, perspective, path, animals, people",
+ "seed": 11003,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 81.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-10 15:52:19"
+}

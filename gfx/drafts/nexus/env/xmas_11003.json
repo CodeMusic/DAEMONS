@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/env/xmas_11003",
+ "prompt": "a christmas fir tree glowing with many coloured lights and a golden star on top, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, night glow, isolated on a plain white background",
+ "negative": "pixel art, text, watermark, signature, frame, border, ground, landscape, presents, room, people",
+ "seed": 11003,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 83.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-10 15:50:57"
+}

@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.299 — 2026-10-10
+
+### THE NEXUS (2026-10-09/10)
+
+- ***3.4, new (the user, T-395)***: **THE NEXUS, between the groves**, *from THE PAINTED MIRROR.* **The singing fir stands in every grove, flat and washed out until the band's sheet gives it its key; then every fir is a door into a place made entirely of paint** -- *its trees doors to the groves already found (a grove not yet found is a grey tree that grows less real the harder it is tried), one Christmas tree home to the pier, the GUARDIAN a voice at every door, THE (NOT A) HUNTER a bear in red plaid, eight residents of its own (INDEX 387-394, MISSINGNO moved to 395), PENGUIN in the meadow and PHOENIX once.*
+- ***9.4, an exception (the user)***: **the NEXUS residents are drawn in full natural colour, as paint, with their type's colour emphasised** -- *the one place a daemon is not coloured by its type, and meant to read as one.*
+
+---
+
 ## v11.298 — 2026-10-09
 
 ### AWAY, any number (2026-10-09)

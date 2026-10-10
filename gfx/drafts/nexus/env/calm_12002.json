@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/env/calm_12002",
+ "prompt": "seamless texture, top-down view of dark painted earth at night, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, calm deep indigo and navy with soft violet strokes, very few tiny specks of gold, low contrast, flat even lighting, no flowers, no grass blades, fills the whole image",
+ "negative": "pixel art, text, watermark, signature, frame, border, horizon, sky, perspective, flowers, grass, trees, animals, people, objects",
+ "seed": 12002,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 84.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-10 16:03:20"
+}

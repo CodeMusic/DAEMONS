@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.298**
+**A total conversion — the living design bible, v11.299**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2197,6 +2197,17 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 **Still to do in this pass:** 379 occurrences of *trainer* → USER (1.4), and the route signposts themselves.
 
 ---
+
+### 3.4 THE NEXUS — between the groves (T-395, the user, 2026-10-09)
+
+***Lineage: THE PAINTED MIRROR*** (`archive/The Painted Mirror.rtf`, lineage.md). **Every grove holds the singing fir now, as the S.S. ANNE's pier does, and every fir is flat — washed out, its tune a semitone wrong — until the band's sheet gives it its key.** *With the key, any fir is a door, and through it is THE NEXUS: night, a meadow made entirely of paint, its own tileset drawn on spriteforge.*
+
+- **Its trees are doors to the groves.** *A grove the player has been in is an ordinary painted tree, and through it the player arrives beside that grove's fir; one not yet found is grey, and the harder the player tries it, the less real it becomes — smudged, then only dots and lines.* **The NEXUS never gives a grove away.**
+- **One Christmas tree**, *the way home to the pier.* **The GUARDIAN OF THE NEXUS is a voice, never seen**, *a line from the source at each door as the player leaves.*
+- **THE (NOT A) HUNTER**, *a bear in red plaid* — *"Hunter? I'm no hunter… not anymore."*
+- **Eight residents of its own** *(REFLECTION, LODESTAR, PERIHELION, LYUBOV, MULTIMAL › ILLUMINED, LYNX › BASTET: INDEX 387–394, MISSINGNO one past them at 395)*, **PENGUIN in its meadow, and PHOENIX once.**
+
+*The design in full, its cast and every word: `docs/nexus.md`. Built by `tools/gbanexus.py` (the residents), `tools/gbagrove.py` (the fir in every grove) and `tools/gbanexusmap.py` (the place).*
 
 ## 4. CAST
 
@@ -7632,6 +7643,10 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***One methodological note worth keeping, because it nearly went in as a finding.*** **Three cells beside three others suggested the server's portraits were the speckly ones and the hand drafts the clean ones.** *Measured across all seventy-five — lone pixels, then loose fragments — it did not hold in either direction, and the two worst portraits on both measures are hand drafts.* **The impression was withdrawn and the question became a ticket.** *An eye comparing three things is a hypothesis; the bible only carries what a measure agreed with.*
 
+#### The NEXUS residents: paint, and their type emphasised — the one exception (2026-10-09)
+
+***Invariant 5's live rule is that a daemon is coloured by its type.*** **The eight NEXUS residents are not** *(the user, 2026-10-09: "these daemons can be in full natural colour but painted but let us emphasize the types colour in some way").* **They are drawn in full natural colour, as paint, because THE NEXUS is a place made entirely of paint and so is everything in it** — *and the type is carried as an emphasis inside the painting rather than as the whole palette: REFLECTION's near-black OPAQUE ink, LODESTAR's HARDENED straw gold and CONTEXT magenta, PERIHELION's SIGNAL teal comet, LYUBOV's ENTROPY gold, MULTIMAL and ILLUMINED's FLOW blue, LYNX and BASTET's CONTENT bone.* ***It is an exception and is meant to read as one***: *a player who has learned that colour is the chart meets, in one place only, creatures that are coloured by what they are like rather than what they are* — **the colour still carries something, and the something is the NEXUS.** *Nowhere else may a daemon do this.*
+
 #### Draw it at twice the size it is shown — settled 2026-09-20
 
 ***The arithmetic nobody had done, and it explains a year of soft portraits.*** **The checkpoint draws on a fixed 8-pixel grid, so a 512 canvas gives 64 ART PIXELS** — *and a figure standing in that frame occupies about fifty of them.* **A 64×64 trainer portrait was therefore being UPSCALED from a 50-pixel drawing**: `sf_beauty.png` is 24×50, `sf_gamer.png` 24×49. ***28 of 75 portrait sources were smaller than the sprite they became.***
@@ -8574,6 +8589,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 ## 10. DECISION LOG
 
 ### Settled
+
+- **THE NEXUS (T-395, 2026-10-09)** — every grove holds the singing fir, flat until the key; through any fir in its key, a place made of paint whose trees are doors to the groves already found; eight residents of its own, drawn in natural colour as paint with their type emphasised, the one exception to colour-by-type (3.4, 9.4)
 
 - Base: `pokered`, Gen 1, RGBDS assembly
 - Fifteen types as listed; CONTEXT is Special; STRATUM replaces SUBSTRATE for string length

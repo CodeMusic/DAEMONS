@@ -1,0 +1,106 @@
+{
+ "rom": "debug",
+ "about": "T-395, THE NEXUS (docs/nexus.md): the fir flat in a grove before the key, the band's sheet giving it its key and the door it becomes, THE NEXUS on arrival, a grove not yet found (grey, smudged, dots and lines), a found grove's door and the GUARDIAN on the way through, THE (NOT A) HUNTER, and the Christmas tree home to the pier. On the debug scratch save; every flag it sets is cleared again at the end.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "ROUTE 1's grove: the fir, flat, before the key",
+   "steps": [
+    "flag FLAG_FIR_IN_KEY 0",
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 0",
+    "flag FLAG_NEXUS_VISITED 0",
+    "goto Route1_Grove 11 4",
+    "shot the fir before the key",
+    "talk 11,3",
+    "says \"Something is missing.\""
+   ]
+  },
+  {
+   "stop": "the band's sheet gives it its key, and it is a door",
+   "steps": [
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 1",
+    "talk 11,3 4",
+    "says \"every one is home.\"",
+    "press A",
+    "read",
+    "press A",
+    "wait 180",
+    "expect Nexus 12 5",
+    "music",
+    "shot THE NEXUS, on arrival"
+   ]
+  },
+  {
+   "stop": "a grove not yet found: grey, smudged, dots and lines",
+   "steps": [
+    "flag FLAG_ROUTE24_GROVE_FOUND 0",
+    "goto Nexus 3 10",
+    "look 3 9",
+    "says \"the less real it becomes\"",
+    "shot smudged",
+    "look 3 9",
+    "says \"dots and lines\"",
+    "shot dots and lines",
+    "look 3 9",
+    "says \"Only a drawing of a tree.\""
+   ]
+  },
+  {
+   "stop": "THE (NOT A) HUNTER",
+   "steps": [
+    "flag FLAG_NEXUS_HUNTER_MET 0",
+    "goto Nexus 12 15",
+    "talk 12,14",
+    "says \"I'm no hunter\"",
+    "talk 12,14",
+    "says \"These animals are precious.\""
+   ]
+  },
+  {
+   "stop": "a found grove's door, the GUARDIAN, and through",
+   "steps": [
+    "goto Nexus 3 5",
+    "look 3 4 1",
+    "press A",
+    "read",
+    "press A",
+    "read",
+    "press A",
+    "wait 180",
+    "expect Route1_Grove 11 4",
+    "shot back beside the fir, in its key"
+   ]
+  },
+  {
+   "stop": "the Christmas tree, home to the pier",
+   "steps": [
+    "goto Nexus 12 5",
+    "look 12 4 1",
+    "press A",
+    "read",
+    "press A",
+    "read",
+    "press A",
+    "read",
+    "press A",
+    "wait 180",
+    "expect SSAnne_Exterior 57 27",
+    "shot the pier, the fir in its key"
+   ]
+  },
+  {
+   "stop": "clean up",
+   "steps": [
+    "flag FLAG_FIR_IN_KEY 0",
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 0",
+    "flag FLAG_NEXUS_VISITED 0",
+    "flag FLAG_NEXUS_HUNTER_MET 0"
+   ]
+  }
+ ]
+}

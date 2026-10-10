@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/nexus/env/meadow_11001",
+ "prompt": "seamless texture, top-down view of tall wild grass and little flowers at night, made entirely of paint, bold expressive brushstrokes, impasto, storybook painting, deep blue and teal grass strokes with glowing dabs of magenta, violet and gold, flat even lighting, no horizon, fills the whole image",
+ "negative": "pixel art, text, watermark, signature, frame, border, horizon, sky, perspective, trees, animals, people",
+ "seed": 11001,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  1024,
+  1024
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 83.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-10 15:34:28"
+}

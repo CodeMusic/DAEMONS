@@ -129,6 +129,9 @@ def who(folder, spec):
         hits = [i for i, o in enumerate(objs) if str(o.get("local_id")) == spec or o.get("script") == spec]
         if not hits:
             hits = [i for i, o in enumerate(objs) if spec.lower() in str(o.get("script", "")).lower()]
+    #  T-395: two objects on ONE tile are one place to stand (the fir before its key and after it, only one shown)
+    if len(hits) > 1 and len({(objs[i]["x"], objs[i]["y"]) for i in hits}) == 1:
+        hits = hits[:1]
     if len(hits) != 1:
         raise RouteError("%s on %s: %s" % (spec, folder, "nobody" if not hits else "%d people match" % len(hits)))
     o = objs[hits[0]]
