@@ -52,6 +52,8 @@ DOCS = os.path.join(ROOT, "docs")
 #  Doubles that are on purpose. A word here has been argued for, not overlooked.
 ALLOWED = {
     "OVERHEAT": "the ENTROPY move and the OVERHEATED state agreeing is the point (2.8)",
+    "REFLECTION": "the NEXUS wolf carries a painted mirror, and the stone LYNX grows by is one; the user kept both "
+                  "on purpose, 2026-10-09 (T-395)",
 }
 
 #  Same idea as ALLOWED, for the version. A number here is a fault that has
