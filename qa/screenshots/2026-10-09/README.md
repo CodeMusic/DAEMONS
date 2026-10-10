@@ -31,3 +31,21 @@ The eight NEXUS residents as the ROM is built: front, back, category and both ed
 OPUS's margins for the eight (DRAFT), as the pane breaks them.
 
 ![9Oct2026 - T395 - OPUS margins for the residents - 5](9Oct2026%20-%20T395%20-%20OPUS%20margins%20for%20the%20residents%20-%205.png)
+
+### 9Oct2026 - C101 - the SI4732s CHANNEL and LIGHTNING screens - 6
+
+CHANNEL on FM (the daemon, the frequency, the signal, the voice line, the band dial), a seek moving the needle, and LIGHTNING on AM with the face drawn before its picture arrives
+
+![9Oct2026 - C101 - the SI4732s CHANNEL and LIGHTNING screens - 6](9Oct2026%20-%20C101%20-%20the%20SI4732s%20CHANNEL%20and%20LIGHTNING%20screens%20-%206.png)
+
+### 9Oct2026 - C101 - the SI4732s CHANNEL and LIGHTNING screens - 7
+
+CHANNEL on FM (the daemon, the frequency, the signal, the voice line, the band dial), a seek moving the needle, and LIGHTNING on AM with the face drawn before its picture arrives
+
+![9Oct2026 - C101 - the SI4732s CHANNEL and LIGHTNING screens - 7](9Oct2026%20-%20C101%20-%20the%20SI4732s%20CHANNEL%20and%20LIGHTNING%20screens%20-%207.png)
+
+### 9Oct2026 - C101 - the SI4732s CHANNEL and LIGHTNING screens - 8
+
+CHANNEL on FM (the daemon, the frequency, the signal, the voice line, the band dial), a seek moving the needle, and LIGHTNING on AM with the face drawn before its picture arrives
+
+![9Oct2026 - C101 - the SI4732s CHANNEL and LIGHTNING screens - 8](9Oct2026%20-%20C101%20-%20the%20SI4732s%20CHANNEL%20and%20LIGHTNING%20screens%20-%208.png)
