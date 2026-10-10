@@ -121,7 +121,8 @@ game); LYNX by the MOON STONE.
    tree and a door to it; one not yet found is grey -- tried, it smudges; tried again, it is only dots and lines; then
    "Only a drawing of a tree." Whole again on the next visit. **The Christmas tree** sings in key and goes home to the
    pier.
-4. **The GUARDIAN** speaks at every door as the player leaves, a different line of the source's at each (fifteen).
+4. **The GUARDIAN** speaks at every door as the player leaves, a different line of the source's at each (fifteen;
+   **approved by the user, 2026-10-10**, with the bear's words -- his precious ones are DAEMONS, not animals).
    **THE (NOT A) HUNTER** stands in the meadow (`tools/genhunter.py`). **PHOENIX** waits once (level 35); the meadow holds
    REFLECTION, LYNX, MULTIMAL and PENGUIN, LODESTAR more rarely, PERIHELION and LYUBOV once in a long while.
 

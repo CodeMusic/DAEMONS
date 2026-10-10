@@ -26,7 +26,8 @@ COVERED (both layers beneath the sprites), so a tree never draws over the player
 TILE_ENCOUNTER_LAND with an ordinary behaviour: encounters, and no grass-rustle sprite drawn in another tileset's
 green. MAP_TYPE_UNDERGROUND, so the day's light never tints a place that is always night.
 
-EVERY WORD IS DRAFT: the GUARDIAN's lines are the source's, cut to the box; the bear's are close to it.
+THE WORDS: the GUARDIAN's fifteen lines (the source's, cut to the box) and the bear's (close to it, his precious ones
+DAEMONS) were APPROVED by the user, 2026-10-10. The fir's remark and the door and tree prompts are still DRAFT.
 """
 import importlib.util, json, os, re, struct, sys
 from PIL import Image, ImageFilter, ImageOps, ImageEnhance
@@ -96,7 +97,8 @@ PIER = ("MAP_SSANNE_EXTERIOR", 57, 27)                    # beside the pier's fi
 MUSIC = "MUS_SLOW_PALLET"                                 # DRAFT: the home theme, slowed -- the way home is here
 
 # --------------------------------------------------------------------------------------------- the words (all DRAFT)
-#  The GUARDIAN OF THE NEXUS, a voice, never seen: the source's own lines, one at each door, cut to the box.
+#  The GUARDIAN OF THE NEXUS, a voice, never seen: the source's own lines, one at each door, cut to the box. APPROVED by
+#  the user, 2026-10-10, as were the bear's words below.
 VOICE = "A voice carries across the paint."
 GUARDIAN_HOME = "“Those notes were never flat.\nThey were only misunderstood.\\pYou may return home.”"
 GUARDIAN = [
