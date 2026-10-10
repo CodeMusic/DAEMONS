@@ -43,3 +43,21 @@ Played: THE (NOT A) HUNTER's first words and his line after.
 Played: the Christmas tree sings, asks to go home, and the GUARDIAN speaks before the warp to the pier.
 
 ![10Oct2026 - T395 - played - the Christmas tree home - 7](10Oct2026%20-%20T395%20-%20played%20-%20the%20Christmas%20tree%20home%20-%207.png)
+
+### 10Oct2026 - C104 - the T-Decks first screen - 8
+
+The T-Deck Plus running the companion for the first time (C-104): the home screen before it is linked, 320x240, the battery read by voltage. Its LoRa radio reported ready at 433 MHz (C-72).
+
+![10Oct2026 - C104 - the T-Decks first screen - 8](10Oct2026%20-%20C104%20-%20the%20T-Decks%20first%20screen%20-%208.png)
+
+### 10Oct2026 - C104 - the T-Decks ROUTINES - 9
+
+The T-Deck's ROUTINES before a daemon is carried: the party (C-51). The footer names the trackball (roll, click) but still a top button the T-Deck lacks -- fixed after this picture.
+
+![10Oct2026 - C104 - the T-Decks ROUTINES - 9](10Oct2026%20-%20C104%20-%20the%20T-Decks%20ROUTINES%20-%209.png)
+
+### 10Oct2026 - C104 - the T-Decks footer - 10
+
+The T-Deck's ROUTINES after the footer fix: roll, click, backspace -- no top button named.
+
+![10Oct2026 - C104 - the T-Decks footer - 10](10Oct2026%20-%20C104%20-%20the%20T-Decks%20footer%20-%2010.png)
