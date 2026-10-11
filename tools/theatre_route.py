@@ -339,6 +339,9 @@ class Runner:
     def person(self, spec):
         folder, _ = self.where()
         lid, placed = who(folder, spec)
+        #  T-395: everyone placed on the same tile is the same place to stand -- whichever is shown is the one meant
+        lids = {lid} | {(int(o["local_id"]) if str(o.get("local_id")).isdigit() else i + 1)
+                         for i, o in enumerate(map_json(folder).get("object_events") or []) if (o["x"], o["y"]) == placed}
         group, num = map_index(folder)
         reads = []
         for k in range(OBJECT_EVENTS):
@@ -347,7 +350,7 @@ class Runner:
                       (16, a + 0x10, "x%d" % k), (16, a + 0x12, "y%d" % k)]
         s = tw.peek(reads)
         for k in range(OBJECT_EVENTS):
-            if s["f%d" % k] & 1 and (s["id%d" % k], s["n%d" % k], s["g%d" % k]) == (lid, num, group):
+            if s["f%d" % k] & 1 and s["id%d" % k] in lids and (s["n%d" % k], s["g%d" % k]) == (num, group):
                 return (s["x%d" % k] - 7, s["y%d" % k] - 7)               # gObjectEvents carry MAP_OFFSET
         raise RouteError("%s is not on screen on %s (hidden by a flag?)" % (spec, folder))
 
