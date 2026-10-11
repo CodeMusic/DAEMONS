@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g2_cycling_triathlete_f_13003",
+ "prompt": "a jaguar woman in a red cycling suit, holding her bike helmet under her arm, spotted jaguar fur, jaguar head and ears, long spotted tail, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, human, human skin, plant, helmet on head",
+ "seed": 13003,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.7,
+ "stop_at": null,
+ "image": "gfx/drafts/t120hoenn/g2_running_triathlete_f_13002.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 19:30:08"
+}

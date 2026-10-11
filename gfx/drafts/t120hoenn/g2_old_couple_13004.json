@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g2_old_couple_13004",
+ "prompt": "two old elephants side by side, an elephant man and an elephant woman, both with grey skin, long trunks and big ears, she wears a shawl and a dress, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, human, human skin, plant",
+ "seed": 13004,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.72,
+ "stop_at": null,
+ "image": "gfx/drafts/t120hoenn/g2_old_couple_13002.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 83.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 19:34:46"
+}

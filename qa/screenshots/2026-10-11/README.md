@@ -61,3 +61,21 @@ T-120 Group 1 as the ROM has them: all 29 Hoenn copies cut to 64x64, 15 colours 
 T-120: the young couple recut, her head whole (64x64 at 6x)
 
 ![11Oct2026 - T120 - young couple fixed - 10](11Oct2026%20-%20T120%20-%20young%20couple%20fixed%20-%2010.png)
+
+### 11Oct2026 - T120 - Hoenn group 2 drafts - 11
+
+T-120 Group 2 drafts: 25 Hoenn classes with no FireRed twin, two seeds each, each drawn over a Group 1 portrait of a similar build
+
+![11Oct2026 - T120 - Hoenn group 2 drafts - 11](11Oct2026%20-%20T120%20-%20Hoenn%20group%202%20drafts%20-%2011.png)
+
+### 11Oct2026 - T120 - Hoenn group 2 cut - 12
+
+T-120 Group 2 as the ROM has them: 26 at 64x64, seed 13002, three redrawn
+
+![11Oct2026 - T120 - Hoenn group 2 cut - 12](11Oct2026%20-%20T120%20-%20Hoenn%20group%202%20cut%20-%2012.png)
+
+### 11Oct2026 - T120 - Hoenn group 2 redraws - 13
+
+T-120: the three Group 2 redraws, seeds 13003-13005; picked cycling F 13005, old couple 13004, SR. AND JR. 13004
+
+![11Oct2026 - T120 - Hoenn group 2 redraws - 13](11Oct2026%20-%20T120%20-%20Hoenn%20group%202%20redraws%20-%2013.png)

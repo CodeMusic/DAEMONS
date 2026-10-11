@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g2_school_kid_f_13001",
+ "prompt": "a young koala girl in a school uniform with a satchel, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, multiple characters, plant",
+ "seed": 13001,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.85,
+ "stop_at": null,
+ "image": "gfx/characters/hoenn/rs_lass.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 83.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 18:36:58"
+}

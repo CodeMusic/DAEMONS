@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g2_guitarist_13001",
+ "prompt": "a howler monkey man in a leather jacket with an electric guitar, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, multiple characters, plant",
+ "seed": 13001,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.85,
+ "stop_at": null,
+ "image": "gfx/characters/hoenn/rs_cool_trainer_m.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 82.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 18:28:35"
+}
