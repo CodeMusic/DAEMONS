@@ -426,6 +426,125 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/rocket_grunt_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/rocket_grunt_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # T-120 GROUP 1 (the user, 2026-10-11: "use 13001 for all, make the beauty's dress red"): Hoenn's copies of
+    # classes FireRed has, drawn image to image from our FireRed portrait of the class (tools/t120hoenn.py). On
+    # screen nowhere -- e-Reader trainers only -- redrawn so no Nintendo picture stays in the ROM.
+    "h_aroma_lady": dict(src="gfx/characters/hoenn/rs_aroma_lady.png",     # a honeybee woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_aroma_lady_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_aroma_lady.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_beauty": dict(src="gfx/characters/hoenn/rs_beauty.png",     # a gazelle woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_beauty_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_beauty.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_bird_keeper": dict(src="gfx/characters/hoenn/rs_bird_keeper.png",     # an ostrich
+                        dst="engineGba/graphics/trainers/front_pics/rs_bird_keeper_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_bird_keeper.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_black_belt": dict(src="gfx/characters/hoenn/rs_black_belt.png",     # a kangaroo
+                        dst="engineGba/graphics/trainers/front_pics/rs_black_belt_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_black_belt.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_bug_catcher": dict(src="gfx/characters/hoenn/rs_bug_catcher.png",     # a young swallow
+                        dst="engineGba/graphics/trainers/front_pics/rs_bug_catcher_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_bug_catcher.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_camper": dict(src="gfx/characters/hoenn/rs_camper.png",     # a young raccoon
+                        dst="engineGba/graphics/trainers/front_pics/rs_camper_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_camper.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_cool_trainer_f": dict(src="gfx/characters/hoenn/rs_cool_trainer_f.png",     # a falcon woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_cool_trainer_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_cool_trainer_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_cool_trainer_m": dict(src="gfx/characters/hoenn/rs_cool_trainer_m.png",     # a wolf man
+                        dst="engineGba/graphics/trainers/front_pics/rs_cool_trainer_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_cool_trainer_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_fisherman": dict(src="gfx/characters/hoenn/rs_fisherman.png",     # a pelican
+                        dst="engineGba/graphics/trainers/front_pics/rs_fisherman_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_fisherman.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_gentleman": dict(src="gfx/characters/hoenn/rs_gentleman.png",     # a lynx gentleman
+                        dst="engineGba/graphics/trainers/front_pics/rs_gentleman_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_gentleman.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_hiker": dict(src="gfx/characters/hoenn/rs_hiker.png",     # a badger hiker with a big backpack and a mountain cap
+                        dst="engineGba/graphics/trainers/front_pics/rs_hiker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_hiker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_lady": dict(src="gfx/characters/hoenn/rs_lady.png",     # a young swan girl
+                        dst="engineGba/graphics/trainers/front_pics/rs_lady_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_lady.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_lass": dict(src="gfx/characters/hoenn/rs_lass.png",     # a lamb girl
+                        dst="engineGba/graphics/trainers/front_pics/rs_lass_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_lass.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_picnicker": dict(src="gfx/characters/hoenn/rs_picnicker.png",     # a hedgehog girl
+                        dst="engineGba/graphics/trainers/front_pics/rs_picnicker_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_picnicker.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_pokemaniac": dict(src="gfx/characters/hoenn/rs_pokemaniac.png",     # an opossum wearing a monster costume hood
+                        dst="engineGba/graphics/trainers/front_pics/rs_pokemaniac_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_pokemaniac.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_pokemon_breeder_f": dict(src="gfx/characters/hoenn/rs_pokemon_breeder_f.png",     # a goose woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_pokemon_breeder_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_pokemon_breeder_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_pokemon_breeder_m": dict(src="gfx/characters/hoenn/rs_pokemon_breeder_m.png",     # a goose man
+                        dst="engineGba/graphics/trainers/front_pics/rs_pokemon_breeder_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_pokemon_breeder_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_pokemon_ranger_f": dict(src="gfx/characters/hoenn/rs_pokemon_ranger_f.png",     # a pine marten woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_pokemon_ranger_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_pokemon_ranger_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_pokemon_ranger_m": dict(src="gfx/characters/hoenn/rs_pokemon_ranger_m.png",     # a pine marten man
+                        dst="engineGba/graphics/trainers/front_pics/rs_pokemon_ranger_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_pokemon_ranger_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_psychic_f": dict(src="gfx/characters/hoenn/rs_psychic_f.png",     # a jellyfish woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_psychic_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_psychic_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_psychic_m": dict(src="gfx/characters/hoenn/rs_psychic_m.png",     # a jellyfish man
+                        dst="engineGba/graphics/trainers/front_pics/rs_psychic_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_psychic_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_ruin_maniac": dict(src="gfx/characters/hoenn/rs_ruin_maniac.png",     # an aardvark explorer
+                        dst="engineGba/graphics/trainers/front_pics/rs_ruin_maniac_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_ruin_maniac.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_sailor": dict(src="gfx/characters/hoenn/rs_sailor.png",     # an albatross
+                        dst="engineGba/graphics/trainers/front_pics/rs_sailor_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_sailor.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_sis_and_bro": dict(src="gfx/characters/hoenn/rs_sis_and_bro.png",     # a duckling boy and an axolotl girl side by side
+                        dst="engineGba/graphics/trainers/front_pics/rs_sis_and_bro_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_sis_and_bro.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_swimmer_f": dict(src="gfx/characters/hoenn/rs_swimmer_f.png",     # an axolotl woman
+                        dst="engineGba/graphics/trainers/front_pics/rs_swimmer_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_swimmer_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_swimmer_m": dict(src="gfx/characters/hoenn/rs_swimmer_m.png",     # a newt man
+                        dst="engineGba/graphics/trainers/front_pics/rs_swimmer_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_swimmer_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_tuber_m": dict(src="gfx/characters/hoenn/tuber_m.png",     # a duckling boy
+                        dst="engineGba/graphics/trainers/front_pics/tuber_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/tuber_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_twins": dict(src="gfx/characters/hoenn/rs_twins.png",     # two identical twin girls side by side
+                        dst="engineGba/graphics/trainers/front_pics/rs_twins_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_twins.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_young_couple": dict(src="gfx/characters/hoenn/rs_young_couple.png",     # an ox man and a gazelle woman side by side
+                        dst="engineGba/graphics/trainers/front_pics/rs_young_couple_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/rs_young_couple.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
 }
 
 def silhouette(a, hue=True, holes=False):

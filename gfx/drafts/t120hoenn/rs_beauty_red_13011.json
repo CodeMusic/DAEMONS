@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/rs_beauty_red_13011",
+ "prompt": "a gazelle woman in a long bright red evening gown, red dress, crimson satin, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "blue dress, blue, text, watermark, frame, border, scenery, human face, multiple characters",
+ "seed": 13011,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.78,
+ "stop_at": null,
+ "image": "gfx/characters/sf_beauty_1024.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 80.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 16:27:44"
+}

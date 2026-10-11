@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/rs_camper_13001",
+ "prompt": "a young raccoon in a scout shirt, shorts and a cap, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, multiple characters",
+ "seed": 13001,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.62,
+ "stop_at": null,
+ "image": "gfx/characters/sf_camper_1024.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 79.1,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 14:44:58"
+}

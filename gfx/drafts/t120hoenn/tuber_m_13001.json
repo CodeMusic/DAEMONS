@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/tuber_m_13001",
+ "prompt": "a duckling boy in swim trunks with a swim ring, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, multiple characters",
+ "seed": 13001,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.62,
+ "stop_at": null,
+ "image": "gfx/characters/portrait_tuber_f.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 85.2,
+ "comfyui": "0.19.1",
+ "made": "2026-10-11 15:33:59"
+}

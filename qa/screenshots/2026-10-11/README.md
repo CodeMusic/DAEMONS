@@ -43,3 +43,15 @@ T-381, played: a FOUNDRY CO. plant, SCORN's on 11F, a CHECKPOINT's real one.
 T-382, played: UMBRA PLATEAU's real plant, the fact collector asked twice, and the young trainer beside him.
 
 ![11Oct2026 - T382 - the fact collector, played - 7](11Oct2026%20-%20T382%20-%20the%20fact%20collector%2C%20played%20-%207.png)
+
+### 11Oct2026 - T120 - Hoenn group 1 drafts - 8
+
+T-120 Group 1: our FireRed portrait (left) and two Hoenn drafts drawn from it, all 28 classes
+
+![11Oct2026 - T120 - Hoenn group 1 drafts - 8](11Oct2026%20-%20T120%20-%20Hoenn%20group%201%20drafts%20-%208.png)
+
+### 11Oct2026 - T120 - Hoenn group 1 cut - 9
+
+T-120 Group 1 as the ROM has them: all 29 Hoenn copies cut to 64x64, 15 colours each, seed 13001, the beauty in red
+
+![11Oct2026 - T120 - Hoenn group 1 cut - 9](11Oct2026%20-%20T120%20-%20Hoenn%20group%201%20cut%20-%209.png)
