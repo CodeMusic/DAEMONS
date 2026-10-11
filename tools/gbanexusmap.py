@@ -324,46 +324,177 @@ def quantise(images, colours=15):
     return [(0, 0, 0)] + pal, out
 
 
-# ------------------------------------------------------------------------------------------------------ the tileset
-class Tileset:
+# ---------------------------------------------------------------------------------------- the landscape, painted whole
+#  (the user, 2026-10-10: "review how the landscape looks so it doesn't look jagged"). Cell by cell, the clearing was a
+#  box with square notches and the meadows two rectangles. Now it is ONE PICTURE at the game's own size -- the paint
+#  textures laid down under soft masks: a clearing whose edge wanders like a brushstroke, a shadow pooled inside it,
+#  meadows with ragged edges, a shadow under every door, light around the Christmas tree -- and the picture is cut into
+#  tiles afterwards. The tiles share ten painted palettes, and a tile that matches another (flipped or not) is drawn
+#  once. That needs more than one secondary tileset holds, so THE NEXUS has its own primary too (gTileset_NexusPaint,
+#  as interiors have gTileset_Building): 1024 tiles and 13 palettes between the two.
+import numpy as np
+from scipy.cluster.vq import kmeans2
+
+PRIMARY, PDIR = "gTileset_NexusPaint", "nexus_paint"
+CLEAR = (1.55, 1.30, W - 1.55, H - 1.30)                # the clearing's box, in cells, before its edge wanders
+CORNER = 4.6                                              # its corners' radius, in cells
+WOBBLE, BRUSH = 7.0, 2.4                                  # how far the edge wanders, and its brushstroke ragged
+SHADOW, SHADOW_W = 0.42, 18.0                             # the shade pooled inside the edge, and how far in it reaches
+MEADOWS = [(13.0, 10.4, 3.9, 2.9), (13.0, 17.8, 3.8, 2.3)]   # centre and radii, in cells
+GLOW = (13.0, 3.6, 3.0, None, 0.16)                      # the Christmas tree's light: centre, radius, -, strength
+GROUND_WHOLE = (40, 60, 1000, 900)                        # the floor: this much of its draft, over the whole map
+DITHER = 14.0                                             # its strength, in 8-bit steps
+LAND_PALS = 10                                            # palettes 0..9 for the landscape; 10..12 the trees
+TREE_PAL = {"tree": 10, "grey": 11, "xmas": 12}
+
+
+def smooth_noise(h, w, cell, seed):
+    """Smooth value noise in -0.5..0.5, its features about CELL pixels across."""
+    rng = np.random.default_rng(seed)
+    gh, gw = h // cell + 3, w // cell + 3
+    g = Image.fromarray((rng.random((gh, gw)) * 255).astype(np.uint8))
+    return np.asarray(g.resize((gw * cell, gh * cell), Image.BICUBIC), float)[:h, :w] / 255.0 - 0.5
+
+
+def smoothstep(a, b, x):
+    t = np.clip((x - a) / (b - a), 0, 1)
+    return t * t * (3 - 2 * t)
+
+
+def landscape():
+    """(RGB float image, wall alpha, meadow alpha) for the whole map, W*16 x H*16."""
+    ph, pw = H * 16, W * 16
+    yy, xx = np.mgrid[0:ph, 0:pw].astype(float)
+    tex = {k: np.asarray(texture(k), float) for k in ("ground", "meadow", "wall")}
+    tex["wall"] = tex["wall"] * WALL_LIGHT
+    tile = lambda t: np.tile(t, (ph // t.shape[0] + 1, pw // t.shape[1] + 1, 1))[:ph, :pw]
+    #  The floor is one painting laid over the whole clearing, never repeated -- a repeat drew a grid of its streaks.
+    f, (a, b, c, d), _ = ART["ground"]
+    gimg = Image.open(os.path.join(DRAFTS, f)).convert("RGB")
+    G = np.asarray(gimg.crop(GROUND_WHOLE).resize((pw, ph), Image.LANCZOS), float)
+    M, L = tile(tex["meadow"]), tile(tex["wall"])
+    x0, y0, x1, y1 = (v * 16 for v in CLEAR)
+    r = CORNER * 16
+    qx = np.abs(xx - (x0 + x1) / 2) - ((x1 - x0) / 2 - r)
+    qy = np.abs(yy - (y0 + y1) / 2) - ((y1 - y0) / 2 - r)
+    inside = -(np.hypot(np.maximum(qx, 0), np.maximum(qy, 0)) + np.minimum(np.maximum(qx, qy), 0) - r)
+    inside = inside + WOBBLE * 2 * smooth_noise(ph, pw, 44, 1) + BRUSH * 2 * smooth_noise(ph, pw, 5, 2)
+    wall = 1 - smoothstep(-2.5, 2.5, inside)
+    shade = 1 - SHADOW * np.clip(1 - inside / SHADOW_W, 0, 1)
+    img = G * shade[..., None]
+    meadow = np.zeros((ph, pw))
+    for k, (cx, cy, rx, ry) in enumerate(MEADOWS):
+        e = np.sqrt(((xx - cx * 16) / (rx * 16)) ** 2 + ((yy - cy * 16) / (ry * 16)) ** 2)
+        sd = (1 - e) * min(rx, ry) * 16 + 9 * smooth_noise(ph, pw, 14, 10 + k) + 5 * smooth_noise(ph, pw, 4, 20 + k)
+        meadow = np.maximum(meadow, smoothstep(-3, 3, sd))
+    img = img * (1 - meadow[..., None]) + M * meadow[..., None]
+    for _, (x, y) in DOORS:                                   # a shadow under every door
+        e = np.sqrt(((xx - (x + 1) * 16) / 19.0) ** 2 + ((yy - (y + 1.8) * 16) / 7.5) ** 2)
+        img = img * (1 - 0.45 * np.clip(1 - e, 0, 1) ** 0.8)[..., None]
+    gx, gy, gr, gc, gs = GLOW                               # light, not paint: the floor lifted toward white, its hue kept
+    d = np.hypot(xx - gx * 16, yy - gy * 16) / (gr * 16)
+    img = img + (255 - img) * (gs * np.clip(1 - d, 0, 1) ** 2)[..., None]
+    img = img * (1 - wall[..., None]) + L * wall[..., None]
+    return np.clip(img, 0, 255), wall, meadow * (1 - wall)
+
+
+class Sheet:
+    """Every tile and metatile of both tilesets, numbered as the engine numbers them (0..1023)."""
     def __init__(self):
-        self.tiles = [tuple([0] * 64)]           # tile 0 of the secondary set: empty
-        self.index = {self.tiles[0]: 0}
-        self.metas, self.meta_index = [], {}
-        self.pals = {}
+        self.tiles = [np.zeros(64, np.uint8)]                 # tile 0: empty, for an empty layer
+        self.index = {bytes(64): (0, 0)}
+        self.metas = [((0,) * 4, (0,) * 4, COVERED)]           # metatile 0: nothing, never placed
+        self.meta_index = {self.metas[0]: 0}
+        self.pals = [[(0, 0, 0)] * 16 for _ in range(16)]
 
-    def tile(self, img, x, y):
-        t = tuple(img.getpixel((x + i % 8, y + i // 8)) for i in range(64))
-        if t not in self.index:
-            self.index[t] = len(self.tiles)
-            self.tiles.append(t)
-        return 0x280 + self.index[t] if self.index[t] else 0
-
-    def quarter(self, img, px, py, pal):
-        """The four tile entries of the 16x16 block at (px, py) of IMG in palette PAL."""
-        out = []
-        for k in range(4):
-            t = self.tile(img, px + (k % 2) * 8, py + (k // 2) * 8)
-            out.append(t | (pal << 12) if t else 0)
-        return out
+    def tile(self, idx, flips=True):
+        """The entry (tile number and flip bits) for an 8x8 block of palette indices."""
+        a = np.asarray(idx, np.uint8).reshape(8, 8)
+        key = bytes(a)
+        if key in self.index:
+            t, f = self.index[key]
+            return t | f
+        if flips:
+            for f, b in ((0x400, a[:, ::-1]), (0x800, a[::-1, :]), (0xC00, a[::-1, ::-1])):
+                k2 = bytes(np.ascontiguousarray(b))
+                if k2 in self.index:
+                    t, f0 = self.index[k2]
+                    return t | (f0 ^ f)
+        n = len(self.tiles)
+        self.tiles.append(a.reshape(64))
+        self.index[key] = (n, 0)
+        return n
 
     def meta(self, bottom, middle, attr):
         key = (tuple(bottom), tuple(middle), attr)
         if key not in self.meta_index:
-            self.meta_index[key] = 640 + len(self.metas)
+            self.meta_index[key] = len(self.metas)
             self.metas.append(key)
         return self.meta_index[key]
 
 
+def landscape_palettes(img):
+    """Ten palettes for the picture's tiles, and each tile's palette and indices."""
+    th, tw = H * 2, W * 2
+    T = img.reshape(th, 8, tw, 8, 3).transpose(0, 2, 1, 3, 4).reshape(th * tw, 64, 3)
+    feat = np.concatenate([T.mean(1), T.std(1) * 0.6], 1)
+    _, lab = kmeans2(feat, LAND_PALS, seed=395, minit="++")
+    pals = []
+    for it in range(4):
+        pals = []
+        for g in range(LAND_PALS):
+            pix = T[lab == g].reshape(-1, 3)
+            if len(pix) == 0:
+                pix = T.reshape(-1, 3)
+            rng = np.random.default_rng(395 + g)
+            pix = pix[rng.choice(len(pix), min(len(pix), 24000), replace=False)]
+            c, _ = kmeans2(pix, 15, seed=395 + g, minit="++")
+            pals.append(np.clip(np.round(c / 8) * 8, 0, 248))
+        err = np.stack([((T[:, :, None, :] - p[None, None]) ** 2).sum(-1).min(-1).sum(-1) for p in pals], 1)
+        lab = err.argmin(1)
+    #  A light ordered dither as each pixel takes its colour: where neighbouring tiles took different palettes, the
+    #  seam is broken up rather than drawn as a square.
+    bayer = (np.array([[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]], float) / 16 - 0.47) * DITHER
+    dith = np.tile(bayer, (2, 2)).reshape(64, 1)
+    idx = np.stack([((T[n][:, None, :] + dith[:, :, None] - pals[lab[n]][None]) ** 2).sum(-1).argmin(-1) + 1
+                    for n in range(len(T))])
+    return pals, lab.reshape(th, tw), idx.reshape(th, tw, 64)
+
+
+def merge_tiles(pals, lab, idx, budget):
+    """Fewer tiles, if the picture needs more than the tilesets hold: the tiles are clustered by how they look, and every
+    tile in a cluster is drawn as the real tile nearest its middle. Painted texture hides it; a flat edge would not."""
+    th, tw = lab.shape
+    keys, first, who = {}, [], np.zeros(th * tw, int)
+    for n in range(th * tw):
+        k = (int(lab.flat[n]), bytes(idx.reshape(-1, 64)[n].astype(np.uint8)))
+        if k not in keys:
+            keys[k] = len(first)
+            first.append(n)
+        who[n] = keys[k]
+    if len(first) <= budget:
+        return lab, idx, len(first)
+    rgb = np.stack([pals[lab.flat[n]][idx.reshape(-1, 64)[n] - 1].reshape(-1) for n in first]).astype(float)
+    #  Agglomerative (Ward): the closest pairs merge first, so no tile stands in for one that looks nothing like it.
+    from scipy.cluster.hierarchy import linkage, fcluster
+    cl = fcluster(linkage(rgb, "ward"), budget, criterion="maxclust")
+    rep = {}
+    for c in set(cl):
+        members = np.where(cl == c)[0]
+        cent = rgb[members].mean(0)
+        rep[c] = members[((rgb[members] - cent) ** 2).sum(1).argmin()]
+    lab2, idx2 = lab.copy().reshape(-1), idx.copy().reshape(-1, 64)
+    for n in range(th * tw):
+        m = first[rep[cl[who[n]]]]
+        lab2[n], idx2[n] = lab.flat[m], idx.reshape(-1, 64)[m]
+    return lab2.reshape(th, tw), idx2.reshape(th, tw, 64), len(set(cl))
+
+
 def build_art():
-    tex = {k: texture(k) for k in ("ground", "meadow", "wall")}
-    tex["wall"] = ImageEnhance.Brightness(tex["wall"]).enhance(WALL_LIGHT)
     tree = masked("tree", 32, 32)
     xmas = masked("xmas", 32, 48)
     g1, g2, g3 = grey_states(tree)
     pals, P = {}, {}
-    for k in ("ground", "meadow", "wall"):
-        pals[k], (P[k],) = quantise([tex[k]])
     pals["tree"], (P["tree"],) = quantise([tree])
     pals["grey"], (P["grey1"], P["grey2"], P["grey3"]) = quantise([g1, g2, g3])
     pals["xmas"], (P["xmas"],) = quantise([xmas])
@@ -371,55 +502,56 @@ def build_art():
 
 
 def build(pals, P):
-    ts = Tileset()
-    ts.pals = pals
-    grid = [[None] * W for _ in range(H)]
+    img, wall, meadow = landscape()
+    lpals, lab, idx = landscape_palettes(img)
+    tree_tiles = 1 + 4 * 16 + 6 * 4                              # the four door trees and the Christmas tree, at most
+    lab, idx, n = merge_tiles(lpals, lab, idx, 1024 - tree_tiles - 8)
+    sh = Sheet()
+    for g, p in enumerate(lpals):
+        sh.pals[g] = [(0, 0, 0)] + [tuple(int(v) for v in c) for c in p]
+    for k, v in TREE_PAL.items():
+        sh.pals[v] = list(pals[k])
+    land = [[sh.tile(idx[ty, tx]) | (int(lab[ty, tx]) << 12) for tx in range(W * 2)] for ty in range(H * 2)]
+    bottom = lambda x, y: [land[2 * y][2 * x], land[2 * y][2 * x + 1], land[2 * y + 1][2 * x], land[2 * y + 1][2 * x + 1]]
     raw = [[0] * W for _ in range(H)]
-
-    def ground_at(x, y, key="ground"):
-        n = P[key].width // 16                                   # the texture repeats every n cells
-        return ts.quarter(P[key], (x % n) * 16, (y % n) * 16, PAL[key])
-
-    def is_wall(x, y):
-        return x < 2 or x >= W - 2 or y < 2 or y >= H - 2 or (x, y) in BUMPS
-
-    def in_meadow(x, y):
-        return any(a <= x <= c and b <= y <= d for a, b, c, d in MEADOW)
-
     for y in range(H):
         for x in range(W):
-            if is_wall(x, y):
-                m = ts.meta(ground_at(x, y, "wall"), [0] * 4, COVERED)
-                raw[y][x] = m | COLLIDE | ELEV
-            elif in_meadow(x, y):
-                m = ts.meta(ground_at(x, y, "meadow"), [0] * 4, COVERED | LAND)
-                raw[y][x] = m | ELEV
-            else:
-                m = ts.meta(ground_at(x, y), [0] * 4, COVERED)
-                raw[y][x] = m | ELEV
+            cw = wall[y * 16:(y + 1) * 16, x * 16:(x + 1) * 16].mean()
+            cm = meadow[y * 16:(y + 1) * 16, x * 16:(x + 1) * 16].mean()
+            attr = COVERED | (LAND if cm > 0.5 and cw <= 0.5 else 0)
+            raw[y][x] = sh.meta(bottom(x, y), [0] * 4, attr) | (COLLIDE if cw > 0.5 else 0) | ELEV
 
-    def overlay(img, pal, x0, y0, w, h, store):
+    def over(im, pal, dx, dy):
+        out = []
+        for k in range(4):
+            px = np.asarray(im.crop((dx * 16 + (k % 2) * 8, dy * 16 + (k // 2) * 8,
+                                     dx * 16 + (k % 2) * 8 + 8, dy * 16 + (k // 2) * 8 + 8)), np.uint8)
+            t = sh.tile(px, flips=False) if px.any() else 0
+            out.append(t | (pal << 12) if t else 0)
+        return out
+
+    def overlay(im, pal, x0, y0, w, h, store):
         for dy in range(h):
             for dx in range(w):
                 x, y = x0 + dx, y0 + dy
-                m = ts.meta(ground_at(x, y), ts.quarter(img, dx * 16, dy * 16, PAL[pal]), COVERED)
+                m = sh.meta(bottom(x, y), over(im, pal, dx, dy), COVERED)
                 store[(dx, dy)] = m
                 raw[y][x] = m | COLLIDE | ELEV
 
-    cx, cy = CHRISTMAS
-    overlay(P["xmas"], "xmas", cx, cy, 2, 3, {})
-    states = {}                                                  # door -> {state: {(dx, dy): metatile}}
+    overlay(P["xmas"], TREE_PAL["xmas"], CHRISTMAS[0], CHRISTMAS[1], 2, 3, {})
+    states = {}
     for name, (x, y) in DOORS:
         st = {}
-        for key, img, pal in (("tree", P["tree"], "tree"), ("grey3", P["grey3"], "grey"),
-                              ("grey2", P["grey2"], "grey"), ("grey1", P["grey1"], "grey")):
+        for key, im, pal in (("tree", P["tree"], "tree"), ("grey3", P["grey3"], "grey"),
+                             ("grey2", P["grey2"], "grey"), ("grey1", P["grey1"], "grey")):
             st[key] = {}
-            overlay(img, pal, x, y, 2, 2, st[key])               # the last drawn stays: grey, as the map is drawn
+            overlay(im, TREE_PAL[pal], x, y, 2, 2, st[key])     # the last drawn stays: grey, as the map is drawn
         states[name] = st
     for (x, y) in (ARRIVE, HUNTER, PHOENIX) + tuple((x + dx, y + 2) for _, (x, y) in DOORS for dx in (0, 1)) + \
             ((CHRISTMAS[0], CHRISTMAS[1] + 3), (CHRISTMAS[0] + 1, CHRISTMAS[1] + 3)):
         assert not (raw[y][x] >> 10) & 3, "(%d,%d) must be open ground" % (x, y)
-    return ts, raw, states
+    assert len(sh.tiles) <= 1024 and len(sh.metas) <= 1023, (len(sh.tiles), len(sh.metas))
+    return sh, raw, states
 
 
 # ------------------------------------------------------------------------------------------------- the engine files
@@ -435,25 +567,28 @@ def jasc(pal):
     return "JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in (list(pal) + [(0, 0, 0)] * 16)[:16])
 
 
-def tileset_files(ts):
-    """{path: bytes or str} for the tileset folder."""
+def tileset_files(sh):
+    """{(dir, path): data} for the primary half (tiles and metatiles 0..639, palettes 0..6) and the secondary."""
     files = {}
-    n = len(ts.tiles)
-    img = Image.new("P", (128, ((n + 15) // 16) * 8))
-    img.putpalette(sum(([v * 17] * 3 for v in range(16)), []) + [0] * 720)
-    ip = img.load()
-    for k, t in enumerate(ts.tiles):
-        for i, v in enumerate(t):
-            ip[(k % 16) * 8 + i % 8, (k // 16) * 8 + i // 8] = v
-    files["tiles.png"] = img
-    meta, attr = bytearray(), bytearray()
-    for bottom, middle, a in ts.metas:
-        meta += struct.pack("<8H", *(list(bottom) + list(middle)))
-        attr += struct.pack("<I", a)
-    files["metatiles.bin"], files["metatile_attributes.bin"] = bytes(meta), bytes(attr)
-    for r in range(16):
-        k = next((k for k, v in PAL.items() if v == r), None)
-        files["palettes/%02d.pal" % r] = jasc(ts.pals[k] if k else [(0, 0, 0)] * 16)
+    for part, d, t0, t1, m0, m1, pals in (("primary", PDIR, 0, 640, 0, 640, range(0, 7)),
+                                          ("secondary", TSDIR, 640, 1024, 640, 1024, range(7, 13))):
+        tiles = sh.tiles[t0:t1]
+        n = 640 if part == "primary" else max(1, len(tiles))
+        img = Image.new("P", (128, ((n + 15) // 16) * 8))
+        img.putpalette(sum(([v * 17] * 3 for v in range(16)), []) + [0] * 720)
+        ip = img.load()
+        for k, t in enumerate(tiles):
+            for i, v in enumerate(t):
+                ip[(k % 16) * 8 + i % 8, (k // 16) * 8 + i // 8] = int(v)
+        files[(part, d, "tiles.png")] = img
+        meta, attr = bytearray(), bytearray()
+        for b, m, a in sh.metas[m0:m1]:
+            meta += struct.pack("<8H", *(list(b) + list(m)))
+            attr += struct.pack("<I", a)
+        files[(part, d, "metatiles.bin")] = bytes(meta) or bytes(16)
+        files[(part, d, "metatile_attributes.bin")] = bytes(attr) or bytes(4)
+        for r in range(16):
+            files[(part, d, "palettes/%02d.pal" % r)] = jasc(sh.pals[r] if r in pals else [(0, 0, 0)] * 16)
     return files
 
 
@@ -691,28 +826,30 @@ def encounters():
             for ed in ("FireRed", "LeafGreen")]
 
 
-def preview(ts, raw, pals):
+def preview(sh, raw):
     """The map as the game will draw it, at 2x, for a contact sheet."""
-    img = Image.new("RGB", (W * 16, H * 16))
-    pal_rgb = {v: ts.pals[k] for k, v in PAL.items()}
-    def draw_tile(entry, x, y, transparent):
-        if not entry:
-            return
-        t = ts.tiles[(entry & 0x3FF) - 0x280]
-        p = pal_rgb[entry >> 12]
-        hf, vf = entry & 0x400, entry & 0x800
-        for i, v in enumerate(t):
-            if v == 0 and transparent:
-                continue
-            tx, ty = i % 8, i // 8
-            img.putpixel((x + (7 - tx if hf else tx), y + (7 - ty if vf else ty)), p[v])
+    img = np.zeros((H * 16, W * 16, 3), np.uint8)
+    def draw(e, x, y, transparent):
+        t = sh.tiles[e & 0x3FF].reshape(8, 8)
+        if e & 0x400:
+            t = t[:, ::-1]
+        if e & 0x800:
+            t = t[::-1, :]
+        pal = np.array(sh.pals[e >> 12], np.uint8)
+        block = pal[t]
+        if transparent:
+            m = t != 0
+            img[y:y + 8, x:x + 8][m] = block[m]
+        else:
+            img[y:y + 8, x:x + 8] = block
     for my in range(H):
         for mx in range(W):
-            bottom, middle, _ = ts.metas[(raw[my][mx] & 0x3FF) - 640]
-            for layer, entries in ((False, bottom), (True, middle)):
+            b, m, _ = sh.metas[raw[my][mx] & 0x3FF]
+            for layer, entries in ((False, b), (True, m)):
                 for k, e in enumerate(entries):
-                    draw_tile(e, mx * 16 + (k % 2) * 8, my * 16 + (k // 2) * 8, layer)
-    return img.resize((W * 32, H * 32), Image.NEAREST)
+                    if e or not layer:
+                        draw(e, mx * 16 + (k % 2) * 8, my * 16 + (k // 2) * 8, layer)
+    return Image.fromarray(img).resize((W * 32, H * 32), Image.NEAREST)
 
 
 def main():
@@ -721,17 +858,15 @@ def main():
         sys.exit("  words too wide for the box:\n    " + "\n    ".join(bad))
     pals, P = build_art()
     ts, raw, states = build(pals, P)
-    print("  the tileset: %d tiles, %d metatiles (of 384 each)" % (len(ts.tiles), len(ts.metas)))
-    assert len(ts.tiles) <= 384 and len(ts.metas) <= 384
+    print("  the tilesets: %d tiles, %d metatiles (of 1024 between the primary and the secondary)" % (len(ts.tiles), len(ts.metas)))
     os.makedirs(SCRATCH, exist_ok=True)
-    pv = preview(ts, raw, pals)
+    pv = preview(ts, raw)
     pv.save(os.path.join(SCRATCH, "nexus_map_preview.png"))
     print("  preview: %s" % os.path.join(SCRATCH, "nexus_map_preview.png"))
 
     todo = {}
-    tdir = "data/tilesets/secondary/%s" % TSDIR
-    for rel, v in tileset_files(ts).items():
-        p = gpath(os.path.join(tdir, rel))
+    for (part, d, rel), v in tileset_files(ts).items():
+        p = gpath(os.path.join("data/tilesets", part, d, rel))
         if isinstance(v, Image.Image):
             same = os.path.exists(p) and list(Image.open(p).getdata()) == list(v.getdata()) and Image.open(p).size == v.size
         else:
@@ -753,7 +888,7 @@ def main():
     #  the registrations: layout, map group, includes, tileset headers and rule, encounters
     layouts = json.loads(read("data/layouts/layouts.json"))
     entry = {"id": LAYOUT, "name": NAME + "_Layout", "width": W, "height": H, "border_width": 2, "border_height": 2,
-             "primary_tileset": "gTileset_General", "secondary_tileset": TILESET,
+             "primary_tileset": PRIMARY, "secondary_tileset": TILESET,
              "border_filepath": "data/layouts/%s/border.bin" % NAME, "blockdata_filepath": "data/layouts/%s/map.bin" % NAME}
     have = [l for l in layouts["layouts"] if l.get("id") == LAYOUT]
     if have != [entry]:
@@ -792,16 +927,35 @@ def main():
              "    .isSecondary = TRUE,\n    .tiles = gTilesetTiles_%s,\n    .palettes = gTilesetPalettes_%s,\n"
              "    .metatiles = gMetatiles_%s,\n    .metatileAttributes = gMetatileAttributes_%s,\n    .callback = NULL,\n};\n"
              % (stem, stem, stem, stem, stem))]
+    ps = PRIMARY[len("gTileset_"):]
+    regs += [("src/data/tilesets/graphics.h", "gTilesetTiles_%s[]" % ps,
+              "// T-395: THE NEXUS's primary half -- the landscape painted whole (tools/gbanexusmap.py).\n"
+              "const u32 gTilesetTiles_%s[] = INCBIN_U32(\"data/tilesets/primary/%s/tiles.4bpp.lz\");\n\n"
+              "const u16 gTilesetPalettes_%s[][16] =\n{\n%s};\n" % (ps, PDIR, ps,
+              "".join("\tINCBIN_U16(\"data/tilesets/primary/%s/palettes/%02d.gbapal\"),\n" % (PDIR, k) for k in range(16)))),
+             ("src/data/tilesets/metatiles.h", "gMetatiles_%s[]" % ps,
+              "const u16 gMetatiles_%s[] = INCBIN_U16(\"data/tilesets/primary/%s/metatiles.bin\");\n"
+              "const u32 gMetatileAttributes_%s[] = INCBIN_U32(\"data/tilesets/primary/%s/metatile_attributes.bin\");\n"
+              % (ps, PDIR, ps, PDIR)),
+             ("src/data/tilesets/headers.h", "gTileset_%s =" % ps,
+              "// T-395: THE NEXUS's primary half (tools/gbanexusmap.py), as interiors have gTileset_Building.\n"
+              "const struct Tileset gTileset_%s =\n{\n    .isCompressed = TRUE,\n"
+              "    .isSecondary = FALSE,\n    .tiles = gTilesetTiles_%s,\n    .palettes = gTilesetPalettes_%s,\n"
+              "    .metatiles = gMetatiles_%s,\n    .metatileAttributes = gMetatileAttributes_%s,\n    .callback = NULL,\n};\n"
+              % (ps, ps, ps, ps, ps))]
     for rel, marker, block in regs:
         s = read(rel)
         if marker not in s:
             todo[gpath(rel)] = s + ("" if s.endswith("\n") else "\n") + block
-    rules = read("tileset_rules.mk")
-    key = "$(TILESETGFXDIR)/secondary/%s/tiles.4bpp: %%.4bpp: %%.png\n\t$(GFX) $< $@ -num_tiles " % TSDIR
-    want = key + "%d -Wnum_tiles\n" % len(ts.tiles)
-    if want not in rules:
-        rules = re.sub(re.escape(key) + r"\d+ -Wnum_tiles\n", "", rules)
-        todo[gpath("tileset_rules.mk")] = rules.rstrip("\n") + "\n\n" + want
+    rules0 = rules = read("tileset_rules.mk")
+    for part, d, n in (("primary", PDIR, 640), ("secondary", TSDIR, max(1, len(ts.tiles) - 640))):
+        key = "$(TILESETGFXDIR)/%s/%s/tiles.4bpp: %%.4bpp: %%.png\n\t$(GFX) $< $@ -num_tiles " % (part, d)
+        want = key + "%d -Wnum_tiles\n" % n
+        if want not in rules:
+            rules = re.sub(r"\n*" + re.escape(key) + r"\d+ -Wnum_tiles\n", "\n", rules)
+            rules = rules.rstrip("\n") + "\n\n" + want
+    if rules != rules0:
+        todo[gpath("tileset_rules.mk")] = rules
     wild = json.loads(read("src/data/wild_encounters.json"))
     wg = next(x for x in wild["wild_encounter_groups"] if x.get("label") == "gWildMonHeaders")
     mine = encounters()

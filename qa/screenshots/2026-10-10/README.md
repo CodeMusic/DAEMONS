@@ -61,3 +61,9 @@ The T-Deck's ROUTINES before a daemon is carried: the party (C-51). The footer n
 The T-Deck's ROUTINES after the footer fix: roll, click, backspace -- no top button named.
 
 ![10Oct2026 - C104 - the T-Decks footer - 10](10Oct2026%20-%20C104%20-%20the%20T-Decks%20footer%20-%2010.png)
+
+### 10Oct2026 - T395 - THE NEXUS painted whole, before and after - 11
+
+THE NEXUS's landscape, from the built data: before, cell by cell (square notches, rectangle meadows, a repeating floor); now painted whole -- the clearing's edge wanders, the meadows are ragged, the floor never repeats; and with every grove found.
+
+![10Oct2026 - T395 - THE NEXUS painted whole, before and after - 11](10Oct2026%20-%20T395%20-%20THE%20NEXUS%20painted%20whole%2C%20before%20and%20after%20-%2011.png)

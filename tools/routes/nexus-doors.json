@@ -1,0 +1,347 @@
+{
+ "rom": "debug",
+ "about": "T-395: every connection of THE NEXUS -- the pier's fir in, then each of the fourteen grove doors out (the GUARDIAN on the way) to beside that grove's fir, and back in through it. Debug scratch save; the flags it sets for the fir are cleared at the end (the groves stay found).",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "the pier's fir, in its key, into THE NEXUS",
+   "steps": [
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 1",
+    "flag FLAG_FIR_IN_KEY 1",
+    "flag FLAG_NEXUS_VISITED 1",
+    "goto SSAnne_Exterior 57 27",
+    "shot the pier's fir, in its key",
+    "talk 57,28 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5",
+    "shot THE NEXUS, painted whole"
+   ]
+  },
+  {
+   "stop": "door 1: Route1_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ROUTE1_GROVE_FOUND 1",
+    "goto Nexus 3 5",
+    "look 3 4 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect Route1_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 2: ViridianForest_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_VIRIDIAN_FOREST_GROVE_FOUND 1",
+    "goto Nexus 7 7",
+    "look 7 6 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect ViridianForest_Grove 10 5",
+    "shot arrived beside the fir",
+    "talk 10,4 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 3: Route24_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ROUTE24_GROVE_FOUND 1",
+    "goto Nexus 3 10",
+    "look 3 9 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect Route24_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 4: Route25_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ROUTE25_GROVE_FOUND 1",
+    "goto Nexus 7 12",
+    "look 7 11 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect Route25_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 5: Route11_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ROUTE11_GROVE_FOUND 1",
+    "goto Nexus 3 15",
+    "look 3 14 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect Route11_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 6: Route8_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ROUTE8_GROVE_FOUND 1",
+    "goto Nexus 7 17",
+    "look 7 16 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect Route8_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 7: Route13_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ROUTE13_GROVE_FOUND 1",
+    "goto Nexus 4 20",
+    "look 4 19 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect Route13_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 8: OneIsland_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_ONE_ISLAND_GROVE_FOUND 1",
+    "goto Nexus 21 5",
+    "look 21 4 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect OneIsland_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 9: TwoIsland_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_TWO_ISLAND_GROVE_FOUND 1",
+    "goto Nexus 17 7",
+    "look 17 6 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect TwoIsland_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 10: ThreeIsland_BerryForest_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_THREE_ISLAND_BERRY_FOREST_GROVE_FOUND 1",
+    "goto Nexus 21 10",
+    "look 21 9 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect ThreeIsland_BerryForest_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 11: FourIsland_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_FOUR_ISLAND_GROVE_FOUND 1",
+    "goto Nexus 17 12",
+    "look 17 11 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect FourIsland_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 12: FiveIsland_Meadow_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_FIVE_ISLAND_MEADOW_GROVE_FOUND 1",
+    "goto Nexus 21 15",
+    "look 21 14 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect FiveIsland_Meadow_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 13: SixIsland_WaterPath_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_SIX_ISLAND_WATER_PATH_GROVE_FOUND 1",
+    "goto Nexus 17 17",
+    "look 17 16 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect SixIsland_WaterPath_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "door 14: SevenIsland_Grove, out and back by its fir",
+   "steps": [
+    "flag FLAG_SEVEN_ISLAND_GROVE_FOUND 1",
+    "goto Nexus 20 20",
+    "look 20 19 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 240",
+    "expect SevenIsland_Grove 11 4",
+    "shot arrived beside the fir",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 240",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "clean up",
+   "steps": [
+    "flag FLAG_FIR_IN_KEY 0",
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 0",
+    "flag FLAG_NEXUS_VISITED 0"
+   ]
+  }
+ ]
+}

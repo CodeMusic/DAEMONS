@@ -783,7 +783,7 @@ def check(route):
             try:
                 if a[0] in ("goto", "expect"):
                     map_index(a[1])
-                    folder = a[1] if a[0] == "goto" else folder
+                    folder = a[1]                                         # an expect says where a script's warp landed
                     if a[0] == "goto" and len(a) > 3 and not tw.Map(a[1]).open(int(a[2]), int(a[3]), None):
                         raise RouteError("goto %s %s %s lands in a wall" % tuple(a[1:4]))
                 elif a[0] in ("flag", "flagis", "var", "trainer"):
