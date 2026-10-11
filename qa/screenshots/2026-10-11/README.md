@@ -55,3 +55,9 @@ T-120 Group 1: our FireRed portrait (left) and two Hoenn drafts drawn from it, a
 T-120 Group 1 as the ROM has them: all 29 Hoenn copies cut to 64x64, 15 colours each, seed 13001, the beauty in red
 
 ![11Oct2026 - T120 - Hoenn group 1 cut - 9](11Oct2026%20-%20T120%20-%20Hoenn%20group%201%20cut%20-%209.png)
+
+### 11Oct2026 - T120 - young couple fixed - 10
+
+T-120: the young couple recut, her head whole (64x64 at 6x)
+
+![11Oct2026 - T120 - young couple fixed - 10](11Oct2026%20-%20T120%20-%20young%20couple%20fixed%20-%2010.png)
