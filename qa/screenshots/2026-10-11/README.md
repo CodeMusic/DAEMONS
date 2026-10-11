@@ -79,3 +79,9 @@ T-120 Group 2 as the ROM has them: 26 at 64x64, seed 13002, three redrawn
 T-120: the three Group 2 redraws, seeds 13003-13005; picked cycling F 13005, old couple 13004, SR. AND JR. 13004
 
 ![11Oct2026 - T120 - Hoenn group 2 redraws - 13](11Oct2026%20-%20T120%20-%20Hoenn%20group%202%20redraws%20-%2013.png)
+
+### 11Oct2026 - C111 - the phone hosting on its own - 14
+
+C-111 in the iOS Simulator, a scratch copy of a save: 'Or host it on this phone alone', the party painted on the phone, the widget hosting CAREMUSAI, and SETTINGS for a phone alone. Taken before two fixes: the handheld cards now step aside, and the gap in the settings text is gone.
+
+![11Oct2026 - C111 - the phone hosting on its own - 14](11Oct2026%20-%20C111%20-%20the%20phone%20hosting%20on%20its%20own%20-%2014.png)
