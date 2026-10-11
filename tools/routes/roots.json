@@ -1,0 +1,53 @@
+{
+ "rom": "debug",
+ "about": "T-379..T-382, approved 2026-10-11: a FOUNDRY plant, SCORN's, a CHECKPOINT's real one, UMBRA's, and the fact collector asked twice.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "a FOUNDRY plant",
+   "steps": [
+    "repel 250",
+    "goto SilphCo_1F",
+    "look 7 4",
+    "says \"PLEASE DO NOT WATER ME!\""
+   ]
+  },
+  {
+   "stop": "SCORN's plant, 11F",
+   "steps": [
+    "goto SilphCo_11F 7 9",
+    "look 7 8",
+    "says \"never grown one\""
+   ]
+  },
+  {
+   "stop": "a CHECKPOINT's real plant",
+   "steps": [
+    "goto ViridianCity_PokemonCenter_1F 1 2",
+    "look 1 1",
+    "says \"A new leaf is coming in.\""
+   ]
+  },
+  {
+   "stop": "UMBRA's plant, and the fact collector",
+   "steps": [
+    "flag FLAG_FACT_COLLECTOR_ASKED 0",
+    "goto IndigoPlateau_PokemonCenter_1F 7 4",
+    "look 8 4",
+    "says \"still damp\"",
+    "to 17 12",
+    "talk 19,12",
+    "says \"word for word\"",
+    "talk 21,12",
+    "says \"He said it again, slower.\"",
+    "talk 19,12",
+    "says \"I must be tired.\""
+   ]
+  }
+ ]
+}
