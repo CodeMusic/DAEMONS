@@ -107,7 +107,7 @@ game); LYNX by the MOON STONE.
 | LYNX | It follows you from room to room now. | It is waiting by the door. |
 | BASTET | You have made more since you started carrying it. | It is sitting very still. It is waiting for you to begin. |
 
-## Built (2026-10-10, DRAFT throughout)
+## Built (2026-10-10; every word, the music and the encounters approved by the user the same day)
 
 1. **The fir in all fifteen places** (the S.S. Anne and the fourteen groves; `tools/gbagrove.py`): two objects on one
    tile, the fir before the key (`OBJ_EVENT_GFX_SINGING_FIR_DIM`, NPC_GREEN washed out, `fir_dim.pal` from

@@ -1,4 +1,4 @@
-# THE NEXUS's environment, drawn on spriteforge (T-395, 2026-10-10) -- DRAFT
+# THE NEXUS's environment, drawn on spriteforge (T-395, 2026-10-10) -- approved by the user the same day
 
 Twenty-six drafts were drawn; every one's record is here (`<name>.json`: prompt, negative, seed, steps), so any can be
 drawn again exactly with `python3 tools/spriteforge.py again <json>`. Only the five the game is built from are kept as

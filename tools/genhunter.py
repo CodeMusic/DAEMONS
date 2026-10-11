@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""THE (NOT A) HUNTER of THE NEXUS: a brown bear in red plaid (T-395, DRAFT art; docs/nexus.md).
+"""THE (NOT A) HUNTER of THE NEXUS: a brown bear in red plaid (T-395; approved by the user, 2026-10-10; docs/nexus.md).
 
     python3 tools/genhunter.py            # report, and a preview in the scratch dir
     python3 tools/genhunter.py --write    # graphics/object_events/pics/people/nexus_hunter.png

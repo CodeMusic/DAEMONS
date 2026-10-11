@@ -27,7 +27,8 @@ TILE_ENCOUNTER_LAND with an ordinary behaviour: encounters, and no grass-rustle 
 green. MAP_TYPE_UNDERGROUND, so the day's light never tints a place that is always night.
 
 THE WORDS: the GUARDIAN's fifteen lines (the source's, cut to the box) and the bear's (close to it, his precious ones
-DAEMONS) were APPROVED by the user, 2026-10-10. The fir's remark and the door and tree prompts are still DRAFT.
+DAEMONS) were APPROVED by the user, 2026-10-10 -- and then the rest: the fir's remark, the door and tree prompts, the
+music, PHOENIX's level and the meadow's residents. Nothing in THE NEXUS is a draft now.
 """
 import importlib.util, json, os, re, struct, sys
 from PIL import Image, ImageFilter, ImageOps, ImageEnhance
@@ -94,9 +95,9 @@ DOORS = [
 HUNTER = (12, 14)
 PHOENIX = (12, 10)
 PIER = ("MAP_SSANNE_EXTERIOR", 57, 27)                    # beside the pier's fir, on the strip north of it
-MUSIC = "MUS_SLOW_PALLET"                                 # DRAFT: the home theme, slowed -- the way home is here
+MUSIC = "MUS_SLOW_PALLET"                                 # the home theme, slowed -- the way home is here (approved)
 
-# --------------------------------------------------------------------------------------------- the words (all DRAFT)
+# ------------------------------------------------------------------------- the words (approved by the user, 2026-10-10)
 #  The GUARDIAN OF THE NEXUS, a voice, never seen: the source's own lines, one at each door, cut to the box. APPROVED by
 #  the user, 2026-10-10, as were the bear's words below.
 VOICE = "A voice carries across the paint."
@@ -458,7 +459,7 @@ def tileset_files(ts):
 
 def scripts(states, ts):
     rows = {g["name"]: g for g in grove.GROVES}
-    out = ["@ T-395: THE NEXUS (docs/nexus.md) -- tools/gbanexusmap.py writes this file. Every word is DRAFT.",
+    out = ["@ T-395: THE NEXUS (docs/nexus.md) -- tools/gbanexusmap.py writes this file. Every word approved by the user, 2026-10-10.",
            "",
            "%s_MapScripts::" % NAME,
            "\tmap_script MAP_SCRIPT_ON_LOAD, %s_OnLoad" % NAME,
@@ -648,7 +649,7 @@ def scripts(states, ts):
 
 
 def text_inc():
-    out = ["@ T-395: THE NEXUS's words, and the singing fir's (tools/gbanexusmap.py). Every word is DRAFT.", ""]
+    out = ["@ T-395: THE NEXUS's words, and the singing fir's (tools/gbanexusmap.py). Every word approved by the user, 2026-10-10.", ""]
     for label, t in TEXT.items():
         out.append("%s::\n%s" % (label, gba_string(t)))
     return "\n".join(out)
