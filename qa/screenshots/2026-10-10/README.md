@@ -73,3 +73,15 @@ THE NEXUS's landscape, from the built data: before, cell by cell (square notches
 The T-Display-S3 Pro's first screens, 480x222, before linking: the face, TODAY, DAEMON and ROUTINES, taken down the cable.
 
 ![10Oct2026 - C105 - T-Display-S3 Pro first screens - 12](10Oct2026%20-%20C105%20-%20T-Display-S3%20Pro%20first%20screens%20-%2012.png)
+
+### 10Oct2026 - C72 - MESH on the T-Deck - 15
+
+MESH (LoRa) on the T-Deck: NEARBY and CALL OUT, then NEARBY open for ARCHIVER at 433 MHz -- nobody heard yet (the watch is not flashed). The battery icon shows the charging bolt on USB (C-106).
+
+![10Oct2026 - C72 - MESH on the T-Deck - 15](10Oct2026%20-%20C72%20-%20MESH%20on%20the%20T-Deck%20-%2015.png)
+
+### 10Oct2026 - C72 - MESH on the T-Deck - 16
+
+MESH (LoRa) on the T-Deck: NEARBY and CALL OUT, then NEARBY open for ARCHIVER at 433 MHz -- nobody heard yet (the watch is not flashed). The battery icon shows the charging bolt on USB (C-106).
+
+![10Oct2026 - C72 - MESH on the T-Deck - 16](10Oct2026%20-%20C72%20-%20MESH%20on%20the%20T-Deck%20-%2016.png)
