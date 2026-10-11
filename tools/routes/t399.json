@@ -1,0 +1,40 @@
+{
+  "rom": "debug",
+  "about": "T-399 (2026-10-11): LAVENDER MART's BUY -- a kind, BACK, B, and BACK out to the counter.",
+  "stops": [
+    {
+      "stop": "LAVENDER MART: kinds, BACK and B",
+      "steps": [
+        "load debug",
+        "goto LavenderTown_Mart",
+        "talk LavenderTown_Mart_EventScript_Clerk 1",
+        "press A 3",
+        "shot shop-menu",
+        "press A",
+        "wait 60",
+        "shot kinds",
+        "press DOWN",
+        "press A",
+        "wait 20",
+        "shot repairs",
+        "press DOWN 6",
+        "shot repairs-at-back",
+        "press A",
+        "wait 20",
+        "shot kinds-cursor-kept",
+        "press DOWN",
+        "press A",
+        "wait 20",
+        "shot field",
+        "press B",
+        "wait 20",
+        "shot b-to-kinds",
+        "press DOWN 2",
+        "shot kinds-at-back",
+        "press A",
+        "wait 90",
+        "shot back-to-shop-menu"
+      ]
+    }
+  ]
+}
