@@ -67,3 +67,9 @@ The T-Deck's ROUTINES after the footer fix: roll, click, backspace -- no top but
 THE NEXUS's landscape, from the built data: before, cell by cell (square notches, rectangle meadows, a repeating floor); now painted whole -- the clearing's edge wanders, the meadows are ragged, the floor never repeats; and with every grove found.
 
 ![10Oct2026 - T395 - THE NEXUS painted whole, before and after - 11](10Oct2026%20-%20T395%20-%20THE%20NEXUS%20painted%20whole%2C%20before%20and%20after%20-%2011.png)
+
+### 10Oct2026 - C105 - T-Display-S3 Pro first screens - 12
+
+The T-Display-S3 Pro's first screens, 480x222, before linking: the face, TODAY, DAEMON and ROUTINES, taken down the cable.
+
+![10Oct2026 - C105 - T-Display-S3 Pro first screens - 12](10Oct2026%20-%20C105%20-%20T-Display-S3%20Pro%20first%20screens%20-%2012.png)
