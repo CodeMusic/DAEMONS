@@ -85,3 +85,21 @@ T-120: the three Group 2 redraws, seeds 13003-13005; picked cycling F 13005, old
 C-111 in the iOS Simulator, a scratch copy of a save: 'Or host it on this phone alone', the party painted on the phone, the widget hosting CAREMUSAI, and SETTINGS for a phone alone. Taken before two fixes: the handheld cards now step aside, and the gap in the settings text is gone.
 
 ![11Oct2026 - C111 - the phone hosting on its own - 14](11Oct2026%20-%20C111%20-%20the%20phone%20hosting%20on%20its%20own%20-%2014.png)
+
+### 11Oct2026 - C113 - widget dens - 15
+
+C-113: the phone widget's dens, one per type, and the sizes -- drawn on the Mac from the real sprites by the widget's own SwiftUI, not yet on the phone
+
+![11Oct2026 - C113 - widget dens - 15](11Oct2026%20-%20C113%20-%20widget%20dens%20-%2015.png)
+
+### 11Oct2026 - C113 - widget dens - 16
+
+C-113: the phone widget's dens, one per type, and the sizes -- drawn on the Mac from the real sprites by the widget's own SwiftUI, not yet on the phone
+
+![11Oct2026 - C113 - widget dens - 16](11Oct2026%20-%20C113%20-%20widget%20dens%20-%2016.png)
+
+### 11Oct2026 - C113 - widget at every size - 17
+
+C-113: the widget at the smallest and largest iPhone sizes, after the responsive pass
+
+![11Oct2026 - C113 - widget at every size - 17](11Oct2026%20-%20C113%20-%20widget%20at%20every%20size%20-%2017.png)

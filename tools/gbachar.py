@@ -644,7 +644,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/cycling_triathlete_f_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/cycling_triathlete_f.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "h_old_couple": dict(src="gfx/characters/hoenn/old_couple.png",     # an old elephant man and an old elephant woman side by side, redrawn (seed 13004)
+    "h_old_couple": dict(src="gfx/characters/hoenn/old_couple.png",     # two old elephants, redrawn (seed 13004; her half 13010, a plain shawl and dress)
                         dst="engineGba/graphics/trainers/front_pics/old_couple_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/old_couple.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),

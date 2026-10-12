@@ -5,6 +5,7 @@
     python3 tools/t120hoenn.py sheet OUT.png       # the drafts side by side with the FireRed portrait they come from
     python3 tools/t120hoenn.py draft2 [NAME ...]  # GROUP 2: two seeds of each, over a Group 1 portrait
     python3 tools/t120hoenn.py sheet2 OUT.png      # GROUP 2's drafts side by side
+    python3 tools/t120hoenn.py draft3|sheet3 ...   # GROUP 3, the same way
 
 GROUP 1 (the user, 2026-10-11: "redraw from our FireRed portrait", this group first): the 28 Hoenn copies of classes
 FireRed already has. A class is one animal (T-120), so each takes its FireRed twin's -- drawn image to image from OUR
@@ -89,6 +90,26 @@ GROUP2 = {
     "old_couple":               ("rs_young_couple", "an old elephant man and an old elephant woman side by side"),
 }
 
+# GROUP 3 (the user, 2026-10-12: "start group 3"): Hoenn's named people, drawn as GROUP 2 was. The animals are
+# PROPOSALS, judged by the user as pictures. NOT HERE, the user's to choose: the two rival teams (grunts, admins,
+# ARCHIE, MAXIE) and BRENDAN and MAY -- Hoenn's two player figures, which may be the grey monkey our own two are.
+GROUP3 = {
+    "leader_roxanne":       ("rs_lass",           "a young tortoise woman with glasses in a school uniform, holding a book"),
+    "leader_brawly":        ("rs_black_belt",     "a sea lion man in a surfer's rash vest and board shorts"),
+    "leader_wattson":       ("rs_hiker",          "a jolly old platypus man in work overalls with a tool belt"),
+    "leader_flannery":      ("rs_swimmer_f",      "a fire salamander young woman, black and orange, in a tank top and jeans"),
+    "leader_norman":        ("rs_gentleman",      "a labrador dog father in a sweater vest and slacks"),
+    "leader_winona":        ("rs_beauty",         "an osprey woman in a pilot's flight suit with a scarf"),
+    "leader_tate_and_liza": ("rs_twins",          "two young twin lemurs side by side, a boy and a girl, matching outfits"),
+    "leader_wallace":       ("rs_gentleman",      "a sea otter man in a flamboyant white cape and a fancy hat"),
+    "elite_four_sidney":    ("guitarist",         "a spotted hyena punk in a leather vest"),
+    "elite_four_phoebe":    ("rs_lass",           "a white barn owl girl in a simple dress with a bead necklace"),
+    "elite_four_glacia":    ("rs_lady",           "an arctic fox woman in a long white coat"),
+    "elite_four_drake":     ("rs_sailor",         "an old crocodile sea captain in a captain's coat"),
+    "champion_steven":      ("rs_gentleman",      "a pangolin man in a sharp grey suit"),
+    "wally":                ("rs_bug_catcher",    "a young fawn boy in a green shirt and shorts"),
+}
+
 
 def source(job):
     s = open(os.path.join(ROOT, "tools/gbachar.py")).read()
@@ -108,11 +129,12 @@ def draft(names):
             print("  %-24s %d %s" % (name, seed, "ok" if r.returncode == 0 else "FAILED " + r.stderr[-200:]), flush=True)
 
 
-def draft2(names):
-    for name in names or GROUP2:
-        base, what = GROUP2[name]
+def draft2(names, group=None, tag="g2"):
+    group = group or GROUP2
+    for name in names or group:
+        base, what = group[name]
         for seed in SEEDS:
-            out = "%s/g2_%s_%d" % (OUT, name, seed)
+            out = "%s/%s_%s_%d" % (OUT, tag, name, seed)
             if os.path.exists(os.path.join(ROOT, out + ".png")):
                 continue
             r = subprocess.run([sys.executable, "tools/spriteforge.py", "i2i", "--out", out,
@@ -122,21 +144,22 @@ def draft2(names):
             print("  %-24s %d %s" % (name, seed, "ok" if r.returncode == 0 else "FAILED " + r.stderr[-200:]), flush=True)
 
 
-def sheet2(out):
+def sheet2(out, group=None, tag="g2"):
     from PIL import Image, ImageDraw
-    rows = list(GROUP2)
+    group = group or GROUP2
+    rows = list(group)
     W = 2 * 200 + 20
     img = Image.new("RGB", (W * 3, (len(rows) + 2) // 3 * 220 + 10), (24, 24, 32))
     d = ImageDraw.Draw(img)
     for k, name in enumerate(rows):
         x0, y0 = (k % 3) * W + 5, (k // 3) * 220 + 5
         for i, s in enumerate(SEEDS):
-            p = os.path.join(ROOT, "%s/g2_%s_%d.png" % (OUT, name, s))
+            p = os.path.join(ROOT, "%s/%s_%s_%d.png" % (OUT, tag, name, s))
             if os.path.exists(p):
                 im = Image.open(p).convert("RGB")
                 im.thumbnail((190, 190))
                 img.paste(im, (x0 + i * 200, y0 + 18))
-        d.text((x0, y0 + 2), "%s  (over %s; %d / %d)" % (name, GROUP2[name][0][3:], SEEDS[0], SEEDS[1]), fill="white")
+        d.text((x0, y0 + 2), "%s  (over %s; %d / %d)" % (name, group[name][0].replace("rs_", ""), SEEDS[0], SEEDS[1]), fill="white")
     img.save(out)
 
 
@@ -168,5 +191,9 @@ if __name__ == "__main__":
         draft2(sys.argv[2:])
     elif sys.argv[1:2] == ["sheet2"]:
         sheet2(sys.argv[2])
+    elif sys.argv[1:2] == ["draft3"]:
+        draft2(sys.argv[2:], GROUP3, "g3")
+    elif sys.argv[1:2] == ["sheet3"]:
+        sheet2(sys.argv[2], GROUP3, "g3")
     else:
         sys.exit(__doc__)
