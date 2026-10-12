@@ -67,3 +67,21 @@ C-119: the 44 daemons whose eyes are now checked -- awake, asleep, glad. 35 new,
 C-119: six of the newly checked daemons (BOOTROM, DAYDREAM, UNBRANCHED, HASHCODE, WITNESS, PILOT) in all eight expressions: awake, drowsy, asleep, glad, sad, mad, afraid, restless.
 
 ![12Oct2026 - C119 - six new eyes in every expression - 11](12Oct2026%20-%20C119%20-%20six%20new%20eyes%20in%20every%20expression%20-%2011.png)
+
+### 12Oct2026 - T120 - MAGMA red - 12
+
+T-120: MAGMA's five recoloured MAGMA red -- the source picks above, the 64x64 the ROM has below
+
+![12Oct2026 - T120 - MAGMA red - 12](12Oct2026%20-%20T120%20-%20MAGMA%20red%20-%2012.png)
+
+### 12Oct2026 - T120 - Hoenn group 3 shipped - 13
+
+T-120 Group 3 as v11.299.5 ships it
+
+![12Oct2026 - T120 - Hoenn group 3 shipped - 13](12Oct2026%20-%20T120%20-%20Hoenn%20group%203%20shipped%20-%2013.png)
+
+### 12Oct2026 - T120 - six hammerhead tries - 14
+
+T-120: six tries at the AQUA admin as a hammerhead -- the model draws him a hammer, never the head
+
+![12Oct2026 - T120 - six hammerhead tries - 14](12Oct2026%20-%20T120%20-%20six%20hammerhead%20tries%20-%2014.png)
