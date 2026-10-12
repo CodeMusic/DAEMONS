@@ -55,3 +55,15 @@ T-120: BRENDAN's and MAY's back pics (REASON's and INSTINCT's throw in each port
 T-120: Group 3's eight redraws, seeds 13003-13005
 
 ![12Oct2026 - T120 - Hoenn group 3 redraws - 9](12Oct2026%20-%20T120%20-%20Hoenn%20group%203%20redraws%20-%209.png)
+
+### 12Oct2026 - C119 - 44 daemons with checked eyes - awake asleep glad - 10
+
+C-119: the 44 daemons whose eyes are now checked -- awake, asleep, glad. 35 new, each eye grown to its whole socket by tools/faces.ts and checked on the sleeping face; glad no longer draws a line across the body.
+
+![12Oct2026 - C119 - 44 daemons with checked eyes - awake asleep glad - 10](12Oct2026%20-%20C119%20-%2044%20daemons%20with%20checked%20eyes%20-%20awake%20asleep%20glad%20-%2010.png)
+
+### 12Oct2026 - C119 - six new eyes in every expression - 11
+
+C-119: six of the newly checked daemons (BOOTROM, DAYDREAM, UNBRANCHED, HASHCODE, WITNESS, PILOT) in all eight expressions: awake, drowsy, asleep, glad, sad, mad, afraid, restless.
+
+![12Oct2026 - C119 - six new eyes in every expression - 11](12Oct2026%20-%20C119%20-%20six%20new%20eyes%20in%20every%20expression%20-%2011.png)
