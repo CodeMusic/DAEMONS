@@ -7,6 +7,7 @@
     python3 tools/t120hoenn.py sheet2 OUT.png      # GROUP 2's drafts side by side
     python3 tools/t120hoenn.py draft3|sheet3 ...   # GROUP 3, the same way
     python3 tools/t120hoenn.py redraw3|resheet3 ... # GROUP 3's redraws, three seeds each
+    python3 tools/t120hoenn.py magmared            # MAGMA's five picks into MAGMA red (from magma_pre_red/, idempotent)
 
 GROUP 1 (the user, 2026-10-11: "redraw from our FireRed portrait", this group first): the 28 Hoenn copies of classes
 FireRed already has. A class is one animal (T-120), so each takes its FireRed twin's -- drawn image to image from OUR
@@ -148,6 +149,28 @@ RSEEDS = (13003, 13004, 13005)
 RDENOISE = 0.80
 
 
+def magma_red(path, coat=False):
+    """MAGMA's uniforms came out grey-violet and magenta (the user, 2026-10-12: "fix the magma red"). Hot pink trim and
+    violet cloth go to MAGMA red at their own brightness; the light pinks (snout, ears), dark fur and the ground shadow
+    stay. MAXIE's coat is tan, so for him tan goes red too. The picks before this are in magma_pre_red/."""
+    import numpy as np
+    from PIL import Image
+    im = Image.open(path).convert("RGB")
+    a = np.asarray(im).astype(float) / 255
+    hsv = np.asarray(im.convert("HSV")).astype(float) / 255
+    h, s, v = hsv[..., 0], hsv[..., 1], hsv[..., 2]
+    notbg = np.sqrt(((a - a[5, 5]) ** 2).sum(-1)) > 0.06
+    magenta = (h > 0.82) & (h < 0.97) & (s > 0.55) & notbg
+    cloth = (h > 0.62) & (h < 0.82) & (s > 0.10) & (v > 0.40) & (v < 0.80) & notbg
+    if coat:
+        cloth = cloth | ((h > 0.03) & (h < 0.13) & (s > 0.30) & (v > 0.30) & notbg)
+    out = hsv.copy()
+    out[..., 0] = np.where(magenta | cloth, 0.995, h)
+    out[..., 1] = np.where(cloth, np.clip(s * 2.6, 0.55, 0.85), np.where(magenta, np.maximum(s, 0.75), s))
+    out[..., 2] = np.where(cloth, v * 0.92, v)
+    return Image.fromarray((out * 255).astype(np.uint8), "HSV").convert("RGB")
+
+
 def source(job):
     s = open(os.path.join(ROOT, "tools/gbachar.py")).read()
     return re.search(r'"%s":\s*dict\(src="([^"]+)"' % re.escape(job), s).group(1)
@@ -232,6 +255,14 @@ if __name__ == "__main__":
         draft2(sys.argv[2:], GROUP3, "g3")
     elif sys.argv[1:2] == ["sheet3"]:
         sheet2(sys.argv[2], GROUP3, "g3")
+    elif sys.argv[1:2] == ["magmared"]:
+        import shutil
+        for n in ("magma_grunt_m", "magma_grunt_f", "magma_admin_m", "magma_admin_f", "magma_leader_maxie"):
+            pre = os.path.join(ROOT, OUT, "magma_pre_red", n + ".png")
+            if not os.path.exists(pre):
+                shutil.copy(os.path.join(ROOT, "gfx/characters/hoenn", n + ".png"), pre)
+            magma_red(pre, coat=n == "magma_leader_maxie").save(os.path.join(ROOT, "gfx/characters/hoenn", n + ".png"))
+            print("  red  " + n)
     elif sys.argv[1:2] == ["redraw3"]:
         draft2(sys.argv[2:], REDRAW3, "g3", RSEEDS, RDENOISE)
     elif sys.argv[1:2] == ["resheet3"]:

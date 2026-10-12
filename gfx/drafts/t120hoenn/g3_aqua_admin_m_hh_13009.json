@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g3_aqua_admin_m_hh_13009",
+ "prompt": "hammerhead shark, anthropomorphic hammerhead shark man, his head is a very wide flat horizontal hammer shape like the letter T, with one eye on each far tip, blue-grey skin, a dark blue wetsuit and a red bandana, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "great white shark, pointed snout, round head, fins on head, horns, text, watermark, scenery, human face, human",
+ "seed": 13009,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.88,
+ "stop_at": null,
+ "image": "gfx/characters/hoenn/aqua_admin_m.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 78.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-12 14:22:48"
+}
