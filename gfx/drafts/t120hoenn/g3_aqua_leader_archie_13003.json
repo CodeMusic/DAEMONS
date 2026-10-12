@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g3_aqua_leader_archie_13003",
+ "prompt": "a big burly great white shark man in a dark blue wetsuit, an anchor necklace and a bandana, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "text, watermark, frame, border, scenery, background objects, human face, multiple characters, plant",
+ "seed": 13003,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.8,
+ "stop_at": null,
+ "image": "gfx/drafts/t120hoenn/g3_aqua_grunt_m_13002.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 78.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-12 14:07:13"
+}

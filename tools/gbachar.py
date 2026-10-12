@@ -652,6 +652,112 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/sr_and_jr_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/sr_and_jr.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    # T-120 GROUP 3 (the user, 2026-10-12: "use your picks, and redraw the nine"): Hoenn's named people and the
+    # two teams, each drawn over a Group 1 portrait -- BRENDAN and MAY over our own player's, the grey monkey.
+    "h_leader_roxanne": dict(src="gfx/characters/hoenn/leader_roxanne.png",     # a young tortoise woman with glasses (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/leader_roxanne_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_roxanne.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_brawly": dict(src="gfx/characters/hoenn/leader_brawly.png",     # a sea lion man (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/leader_brawly_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_brawly.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_wattson": dict(src="gfx/characters/hoenn/leader_wattson.png",     # a jolly old platypus man (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/leader_wattson_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_wattson.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_norman": dict(src="gfx/characters/hoenn/leader_norman.png",     # a labrador dog father (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/leader_norman_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_norman.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_winona": dict(src="gfx/characters/hoenn/leader_winona.png",     # an osprey woman (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/leader_winona_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_winona.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_tate_and_liza": dict(src="gfx/characters/hoenn/leader_tate_and_liza.png",     # two young twin lemurs side by side (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/leader_tate_and_liza_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_tate_and_liza.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_wallace": dict(src="gfx/characters/hoenn/leader_wallace.png",     # a sea otter man (seed 13001)
+                        dst="engineGba/graphics/trainers/front_pics/leader_wallace_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_wallace.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_elite_four_sidney": dict(src="gfx/characters/hoenn/elite_four_sidney.png",     # a spotted hyena punk (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_sidney_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_sidney.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_elite_four_phoebe": dict(src="gfx/characters/hoenn/elite_four_phoebe.png",     # a white barn owl girl (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_phoebe_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_phoebe.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_elite_four_glacia": dict(src="gfx/characters/hoenn/elite_four_glacia.png",     # an arctic fox woman (seed 13001)
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_glacia_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_glacia.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_elite_four_drake": dict(src="gfx/characters/hoenn/elite_four_drake.png",     # an old crocodile sea captain (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/elite_four_drake_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/elite_four_drake.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_champion_steven": dict(src="gfx/characters/hoenn/champion_steven.png",     # a pangolin man (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/champion_steven_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/champion_steven.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_wally": dict(src="gfx/characters/hoenn/wally.png",     # a young fawn boy (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/wally_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/wally.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_ruby_sapphire_brendan": dict(src="gfx/characters/hoenn/ruby_sapphire_brendan.png",     # a grey monkey boy (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/ruby_sapphire_brendan_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/ruby_sapphire_brendan.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_ruby_sapphire_may": dict(src="gfx/characters/hoenn/ruby_sapphire_may.png",     # a grey monkey girl (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/ruby_sapphire_may_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/ruby_sapphire_may.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_aqua_grunt_m": dict(src="gfx/characters/hoenn/aqua_grunt_m.png",     # a hammerhead shark man (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/aqua_grunt_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/aqua_grunt_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_aqua_grunt_f": dict(src="gfx/characters/hoenn/aqua_grunt_f.png",     # a hammerhead shark woman (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/aqua_grunt_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/aqua_grunt_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_aqua_admin_f": dict(src="gfx/characters/hoenn/aqua_admin_f.png",     # a hammerhead shark woman (seed 13002)
+                        dst="engineGba/graphics/trainers/front_pics/aqua_admin_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/aqua_admin_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_leader_flannery": dict(src="gfx/characters/hoenn/leader_flannery.png",     # a fire salamander woman, redrawn (seed 13004)
+                        dst="engineGba/graphics/trainers/front_pics/leader_flannery_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/leader_flannery.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_magma_grunt_m": dict(src="gfx/characters/hoenn/magma_grunt_m.png",     # a mole with tiny eyes, redrawn (seed 13005)
+                        dst="engineGba/graphics/trainers/front_pics/magma_grunt_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/magma_grunt_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_magma_grunt_f": dict(src="gfx/characters/hoenn/magma_grunt_f.png",     # a mole with tiny eyes, redrawn (seed 13005; 13003 had a person's face)
+                        dst="engineGba/graphics/trainers/front_pics/magma_grunt_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/magma_grunt_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_magma_admin_m": dict(src="gfx/characters/hoenn/magma_admin_m.png",     # a mole with tiny eyes, redrawn (seed 13003)
+                        dst="engineGba/graphics/trainers/front_pics/magma_admin_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/magma_admin_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_magma_admin_f": dict(src="gfx/characters/hoenn/magma_admin_f.png",     # a mole with tiny eyes, redrawn (seed 13003)
+                        dst="engineGba/graphics/trainers/front_pics/magma_admin_f_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/magma_admin_f.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_magma_leader_maxie": dict(src="gfx/characters/hoenn/magma_leader_maxie.png",     # a star-nosed mole with a ring of pink tentacles on its nose, redrawn (seed 13004)
+                        dst="engineGba/graphics/trainers/front_pics/magma_leader_maxie_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/magma_leader_maxie.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_aqua_admin_m": dict(src="gfx/characters/hoenn/aqua_admin_m.png",     # a hammerhead shark man, redrawn (seed 13004)
+                        dst="engineGba/graphics/trainers/front_pics/aqua_admin_m_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/aqua_admin_m.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
+    "h_aqua_leader_archie": dict(src="gfx/characters/hoenn/aqua_leader_archie.png",     # a big burly great white shark man, redrawn (seed 13003)
+                        dst="engineGba/graphics/trainers/front_pics/aqua_leader_archie_front_pic.png",
+                        pal="engineGba/graphics/trainers/palettes/aqua_leader_archie.pal",
+                        size=(64, 64), colours=15, base=1, palsize=16, hue=False),
 }
 
 def silhouette(a, hue=True, holes=False):

@@ -6,6 +6,7 @@
     python3 tools/t120hoenn.py draft2 [NAME ...]  # GROUP 2: two seeds of each, over a Group 1 portrait
     python3 tools/t120hoenn.py sheet2 OUT.png      # GROUP 2's drafts side by side
     python3 tools/t120hoenn.py draft3|sheet3 ...   # GROUP 3, the same way
+    python3 tools/t120hoenn.py redraw3|resheet3 ... # GROUP 3's redraws, three seeds each
 
 GROUP 1 (the user, 2026-10-11: "redraw from our FireRed portrait", this group first): the 28 Hoenn copies of classes
 FireRed already has. A class is one animal (T-120), so each takes its FireRed twin's -- drawn image to image from OUR
@@ -91,8 +92,9 @@ GROUP2 = {
 }
 
 # GROUP 3 (the user, 2026-10-12: "start group 3"): Hoenn's named people, drawn as GROUP 2 was. The animals are
-# PROPOSALS, judged by the user as pictures. NOT HERE, the user's to choose: the two rival teams (grunts, admins,
-# ARCHIE, MAXIE) and BRENDAN and MAY -- Hoenn's two player figures, which may be the grey monkey our own two are.
+# PROPOSALS, judged by the user as pictures -- except where the user chose (2026-10-12): BRENDAN and MAY are THE GREY
+# MONKEY our own two are, in Hoenn's clothes, drawn over REASON's and INSTINCT's portraits; AQUA are SHARKS (ARCHIE a
+# great white) and MAGMA are MOLES (MAXIE a star-nosed mole). A base with a / in it is a path, not a Group 1 pick.
 GROUP3 = {
     "leader_roxanne":       ("rs_lass",           "a young tortoise woman with glasses in a school uniform, holding a book"),
     "leader_brawly":        ("rs_black_belt",     "a sea lion man in a surfer's rash vest and board shorts"),
@@ -108,7 +110,42 @@ GROUP3 = {
     "elite_four_drake":     ("rs_sailor",         "an old crocodile sea captain in a captain's coat"),
     "champion_steven":      ("rs_gentleman",      "a pangolin man in a sharp grey suit"),
     "wally":                ("rs_bug_catcher",    "a young fawn boy in a green shirt and shorts"),
+    "ruby_sapphire_brendan": ("gfx/characters/player_logic.jpeg",
+                              "a grey monkey boy in a white knit cap, an orange and black jacket and dark shorts, a long tail"),
+    "ruby_sapphire_may":     ("gfx/characters/player_intuition.jpeg",
+                              "a grey monkey girl in a red bandana, a red top and dark bike shorts, a long tail"),
+    "aqua_grunt_m":         ("rs_cool_trainer_m", "a hammerhead shark man in a striped shirt, a blue bandana and dark trousers"),
+    "aqua_grunt_f":         ("rs_swimmer_f",      "a hammerhead shark woman in a striped shirt, a blue bandana and dark trousers"),
+    "aqua_admin_m":         ("rs_gentleman",      "a hammerhead shark man in a dark blue wetsuit and a captain's bandana"),
+    "aqua_admin_f":         ("rs_beauty",         "a hammerhead shark woman in a dark blue wetsuit and a bandana"),
+    "aqua_leader_archie":   ("rs_black_belt",     "a big great white shark man in a dark blue wetsuit, an anchor necklace and a bandana"),
+    "magma_grunt_m":        ("rs_cool_trainer_m", "a mole man in a red hooded uniform with a hood up"),
+    "magma_grunt_f":        ("rs_swimmer_f",      "a mole woman in a red hooded uniform with a hood up"),
+    "magma_admin_m":        ("rs_gentleman",      "a mole man in a red and black uniform with a high collar"),
+    "magma_admin_f":        ("rs_beauty",         "a mole woman in a red and black uniform with a high collar"),
+    "magma_leader_maxie":   ("rs_gentleman",      "a star-nosed mole man with glasses in a red and black long coat"),
 }
+
+# GROUP 3's REDRAWS (the user, 2026-10-12: "redraw the nine"; FLANNERY "looks too person like"). FLANNERY drawn over
+# the newt swimmer, already a salamander's shape; MAGMA over the badger hiker, a stocky digger, with the mole spelled
+# out (the first drafts read as rats); ARCHIE and the AQUA admin over the AQUA grunt, whose shark fills the frame.
+MOLE = "a mole with tiny eyes, a long pink pointed snout, velvety dark grey fur and huge pink digging claws"
+REDRAW3 = {
+    "leader_flannery":    ("rs_swimmer_m", "a fire salamander woman, glossy black skin with bright orange spots, a "
+                           "salamander head with no hair, a long tail, wearing a tank top and baggy orange trousers"),
+    "magma_grunt_m":      ("rs_hiker", MOLE + ", a man in a red hooded uniform with the hood up"),
+    "magma_grunt_f":      ("rs_hiker", MOLE + ", a woman in a red hooded uniform with the hood up"),
+    "magma_admin_m":      ("rs_hiker", MOLE + ", a man in a red and black uniform with a high collar"),
+    "magma_admin_f":      ("rs_hiker", MOLE + ", a woman in a red and black uniform with a high collar"),
+    "magma_leader_maxie": ("rs_hiker", "a star-nosed mole with a ring of pink tentacles on its nose, tiny eyes, velvety "
+                           "dark fur, huge digging claws, round glasses, a red and black long coat"),
+    "aqua_admin_m":       ("gfx/drafts/t120hoenn/g3_aqua_grunt_m_13002.png",
+                           "a hammerhead shark man in a dark blue wetsuit and a captain's bandana"),
+    "aqua_leader_archie": ("gfx/drafts/t120hoenn/g3_aqua_grunt_m_13002.png",
+                           "a big burly great white shark man in a dark blue wetsuit, an anchor necklace and a bandana"),
+}
+RSEEDS = (13003, 13004, 13005)
+RDENOISE = 0.80
 
 
 def source(job):
@@ -129,37 +166,37 @@ def draft(names):
             print("  %-24s %d %s" % (name, seed, "ok" if r.returncode == 0 else "FAILED " + r.stderr[-200:]), flush=True)
 
 
-def draft2(names, group=None, tag="g2"):
+def draft2(names, group=None, tag="g2", seeds=SEEDS, denoise=None):
     group = group or GROUP2
     for name in names or group:
         base, what = group[name]
-        for seed in SEEDS:
+        for seed in seeds:
             out = "%s/%s_%s_%d" % (OUT, tag, name, seed)
             if os.path.exists(os.path.join(ROOT, out + ".png")):
                 continue
             r = subprocess.run([sys.executable, "tools/spriteforge.py", "i2i", "--out", out,
-                                "--image", "gfx/characters/hoenn/%s.png" % base, "--prompt", "%s, %s" % (what, STYLE),
-                                "--negative", NEG + ", plant", "--seed", str(seed), "--denoise", str(G2DENOISE)],
+                                "--image", base if "/" in base else "gfx/characters/hoenn/%s.png" % base, "--prompt", "%s, %s" % (what, STYLE),
+                                "--negative", NEG + ", plant", "--seed", str(seed), "--denoise", str(denoise or G2DENOISE)],
                                cwd=ROOT, capture_output=True, text=True)
             print("  %-24s %d %s" % (name, seed, "ok" if r.returncode == 0 else "FAILED " + r.stderr[-200:]), flush=True)
 
 
-def sheet2(out, group=None, tag="g2"):
+def sheet2(out, group=None, tag="g2", seeds=SEEDS):
     from PIL import Image, ImageDraw
     group = group or GROUP2
     rows = list(group)
-    W = 2 * 200 + 20
+    W = len(seeds) * 200 + 20
     img = Image.new("RGB", (W * 3, (len(rows) + 2) // 3 * 220 + 10), (24, 24, 32))
     d = ImageDraw.Draw(img)
     for k, name in enumerate(rows):
         x0, y0 = (k % 3) * W + 5, (k // 3) * 220 + 5
-        for i, s in enumerate(SEEDS):
+        for i, s in enumerate(seeds):
             p = os.path.join(ROOT, "%s/%s_%s_%d.png" % (OUT, tag, name, s))
             if os.path.exists(p):
                 im = Image.open(p).convert("RGB")
                 im.thumbnail((190, 190))
                 img.paste(im, (x0 + i * 200, y0 + 18))
-        d.text((x0, y0 + 2), "%s  (over %s; %d / %d)" % (name, group[name][0].replace("rs_", ""), SEEDS[0], SEEDS[1]), fill="white")
+        d.text((x0, y0 + 2), "%s  (over %s; %d / %d)" % (name, os.path.basename(group[name][0]).replace("rs_", ""), seeds[0], seeds[-1]), fill="white")
     img.save(out)
 
 
@@ -195,5 +232,9 @@ if __name__ == "__main__":
         draft2(sys.argv[2:], GROUP3, "g3")
     elif sys.argv[1:2] == ["sheet3"]:
         sheet2(sys.argv[2], GROUP3, "g3")
+    elif sys.argv[1:2] == ["redraw3"]:
+        draft2(sys.argv[2:], REDRAW3, "g3", RSEEDS, RDENOISE)
+    elif sys.argv[1:2] == ["resheet3"]:
+        sheet2(sys.argv[2], REDRAW3, "g3", RSEEDS)
     else:
         sys.exit(__doc__)
