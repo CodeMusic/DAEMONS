@@ -750,7 +750,7 @@ JOBS = {
                         dst="engineGba/graphics/trainers/front_pics/magma_leader_maxie_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/magma_leader_maxie.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),
-    "h_aqua_admin_m": dict(src="gfx/characters/hoenn/aqua_admin_m.png",     # a hammerhead shark man, redrawn (seed 13004)
+    "h_aqua_admin_m": dict(src="gfx/characters/hoenn/aqua_admin_m.png",     # a tiger shark (the user, 2026-10-13): seed 13017, stripes painted on the head -- the model draws none
                         dst="engineGba/graphics/trainers/front_pics/aqua_admin_m_front_pic.png",
                         pal="engineGba/graphics/trainers/palettes/aqua_admin_m.pal",
                         size=(64, 64), colours=15, base=1, palsize=16, hue=False),

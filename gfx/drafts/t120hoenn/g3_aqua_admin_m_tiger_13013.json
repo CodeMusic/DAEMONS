@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t120hoenn/g3_aqua_admin_m_tiger_13013",
+ "prompt": "a tiger shark man with dark vertical tiger stripes across his blue-grey back and arms, a blunt rounded shark snout, a dark blue wetsuit and a captain's bandana, anthropomorphic animal, full body standing, facing the viewer, simple flat colours, clean outlines, game character portrait, plain white background",
+ "negative": "tiger, cat, fur, orange, great white shark, hammer, weapon, text, watermark, scenery, human face, human",
+ "seed": 13013,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.7,
+ "stop_at": null,
+ "image": "gfx/characters/hoenn/aqua_admin_m.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 77.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-13 18:56:05"
+}
