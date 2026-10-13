@@ -307,7 +307,7 @@ device and is never told what they are holding.**
 
 | | |
 |---|---|
-| **Three routines, taught by three lecturers** | ***Settled 2026-09-22.*** *Not PLUGINs: all fifty PLUGIN slots are spent, and the ids after HM08 hold REVEAL and one spare.* **A lecturer is a move TUTOR, which needs no item** — ~~*but the tutor table is a `u16` per species with 15 bits used, so it widens to `u32` first*~~ ***not needed, as built***: **a lecture is open to anyone, so `CanLearnTutorMove` answers TRUE for the three and never reads the table.** **ATTENTION → `LOCK ON`** *(the next routine cannot miss)*, **CATEGORIES → `BLEND`** *(its type becomes the ground's)*, **ERROR → `REBUT`** *(twice as strong if it was hit first)* — **one per third of the building, and each routine's battle effect IS its floor's lesson** |
+| **Three routines, taught by three lecturers** | ***Settled 2026-09-22.*** *Not PLUGINs: all fifty PLUGIN slots are spent, and the ids after HM08 hold REVEAL and one spare.* **A lecturer is a move TUTOR, which needs no item** — ~~*but the tutor table is a `u16` per species with 15 bits used, so it widens to `u32` first*~~ ***not needed, as built***: **a lecture is open to anyone, so `CanLearnTutorMove` answers TRUE for the three and never reads the table.** **ATTENTION → `ANTICIPATE`** *(the next routine cannot miss; LOCK ON until T-393, 2026-10-13, beside vanilla's LOCK-ON)*, **CATEGORIES → `BLEND`** *(its type becomes the ground's)*, **ERROR → `REBUT`** *(twice as strong if it was hit first)* — **one per third of the building, and each routine's battle effect IS its floor's lesson** |
 | **The ninth DRIVER, `REVEAL`** | ***Added on the user's answer — §8a.*** *The first draft recommended against, on the ground that there was no unreached place.* **The user's design makes the unreached places, and makes them findable blind** — *which answers the objection instead of overruling it* |
 | **Not a daemon** | *the one daemon you are given for passing a test is the PROOF HALL's problem, and it declined it too* |
 
@@ -739,7 +739,7 @@ school's last batch**, with the exam in it.*
 |---|---|---|
 | 7 | **REVEAL** | ***installed*** — *a shimmer on entry, then marked* |
 | 8 | **the groves** | ***fourteen***, *each world hiding the other half* (§8a) |
-| 9 | **the Reading Room's routines** | ***three lecturers***: *LOCK ON, BLEND, REBUT* (§8) |
+| 9 | **the Reading Room's routines** | ***three lecturers***: *ANTICIPATE, BLEND, REBUT* (§8) |
 
 ### Still open
 

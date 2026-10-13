@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.300 — 2026-10-13
+
+### Two LOCK ONs, and DESCEND (T-393)
+
+- ***4.35, the Reading Room (the user)***: **ATTENTION's routine is `ANTICIPATE`**, *not LOCK ON. MIND READER had been renamed LOCK ON while vanilla's LOCK-ON stayed in the game under its own name, so two routines with one effect were called nearly the same thing; MIND READER's description already said it* predicts *what the other will do, so it took the name that says that. LOCK-ON keeps its own.*
+- ***DESCEND stays without a DRIVER (the user)***: *T-391's audit said DESCEND was never given; it has been learned by level since T-36 -- HEATSINK at 37, ARCHIVER at 42. Only DRIVER08, which would teach it, is debug-only, and stays so: FireRed has no deep water, so a DRIVER would teach a routine with nowhere to use it.*
+
+---
+
 ## v11.299 — 2026-10-10
 
 ### THE NEXUS (2026-10-09/10)

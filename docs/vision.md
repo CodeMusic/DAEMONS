@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.299**
+**A total conversion — the living design bible, v11.300**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4559,7 +4559,7 @@ resident stands for something hidden, and there is one resident family per grove
 ***REVEAL is installed, not used*** — *a shimmer on entry, then marked.*
 
 ***The Reading Room teaches by LECTURER, not by PLUGIN*** — **all fifty PLUGIN slots are spent.** *Three
-move tutors: ATTENTION → `LOCK ON`, CATEGORIES → `BLEND`, ERROR → `REBUT`, each routine's battle effect
+move tutors: ATTENTION → `ANTICIPATE` *(renamed from LOCK ON, T-393: vanilla's LOCK-ON is in the game under its own name)*, CATEGORIES → `BLEND`, ERROR → `REBUT`, each routine's battle effect
 its own floor's lesson.*
 
 ***1F LANGUAGE is built*** (T-215). **A floor names its subject on arrival by a map-keyed label**, *because
@@ -4623,7 +4623,7 @@ so.**
 ***Batch 6 is in the ROM and was played through*** (T-218, T-220). **Pass the paper and the Owl signs a
 DIPLOMA without looking up**, *and slides it across the desk.* **THE READING ROOM asks to see it** — *an
 attendant who has asked ten thousand times, and who steps anyone without one back onto the mat.* ***Inside,
-three lecturers sit on the sofas and teach to anyone***: **ATTENTION's `LOCK ON`, CATEGORIES' `BLEND`, ERROR's
+three lecturers sit on the sofas and teach to anyone***: **ATTENTION's `ANTICIPATE`, CATEGORIES' `BLEND`, ERROR's
 `REBUT`.** *Six shelves copy their pages into the NOTEBOOK, and two sections open that nothing else fills:*
 **`LAB NOTES` and `PEER REVIEW`.**
 
