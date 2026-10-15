@@ -31,3 +31,15 @@ C-119 and C-121 on the T-Embed CC1101 (ROVERCUB) and SI4732 (STARR), borrowed fo
 C-121 on the T-Display-S3 Pro (STARR): DRINK let go, Drank. at once, sent 226 ms later via home; its five expressions. The first two frames are black: its screen was asleep (the bench now wakes it first).
 
 ![15Oct2026 - C121 - the T-Display-S3 Pro on the bench - 8](15Oct2026%20-%20C121%20-%20the%20T-Display-S3%20Pro%20on%20the%20bench%20-%208.png)
+
+### 15Oct2026 - 20 Hoenn portraits outlined - 9
+
+Drift sweep: the 20 T-120 Hoenn portraits take the true-black outline (was / now)
+
+![15Oct2026 - 20 Hoenn portraits outlined - 9](15Oct2026%20-%2020%20Hoenn%20portraits%20outlined%20-%209.png)
+
+### 15Oct2026 - T404 - legendaries overworld in type colours - 10
+
+T-404: ENTEI, RAIKOU, SUICUNE, CELEBI's overworld objects from their own art in their type palettes
+
+![15Oct2026 - T404 - legendaries overworld in type colours - 10](15Oct2026%20-%20T404%20-%20legendaries%20overworld%20in%20type%20colours%20-%2010.png)
