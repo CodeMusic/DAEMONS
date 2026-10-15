@@ -493,6 +493,9 @@ def full_palette(colours):
     return [KEY] + list(colours) + [(255, 255, 255), (0, 0, 0)]
 
 
+KEEP_SCRIPTS = {"CheckpointFloor2_EventScript_CompanionLemur"}   # characters, not townsfolk (T-404)
+
+
 def plan_maps(prefix, name, roles=ROLES):
     """(map path, object index, role) for every citizen to repoint, and the maps left alone"""
     todo, left = [], []
@@ -509,6 +512,10 @@ def plan_maps(prefix, name, roles=ROLES):
             g = o.get("graphics_id", "").replace("OBJ_EVENT_GFX_", "")
             role = "child" if g in CHILD else "adult" if g in ADULT else "elder" if g in ELDER else None
             if role not in roles or o.get("trainer_type") not in (None, "TRAINER_TYPE_NONE", "0"):
+                continue
+            #  T-404: T-371's companion lemur is ONE character on every CHECKPOINT 2F, not a citizen of each town --
+            #  a write reskinned him as each town's adult.
+            if o.get("script") in KEEP_SCRIPTS:
                 continue
             if special:
                 left.append(os.path.basename(os.path.dirname(mp)))

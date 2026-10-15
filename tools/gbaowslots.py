@@ -229,7 +229,13 @@ def write(dm, maps):
         nb = re.sub(r"\.paletteTag = \w+", ".paletteTag = OBJ_EVENT_PAL_TAG_DAEMON_TYPE_%s" % t, body.group(2))
         nb = re.sub(r"\.paletteSlot = \w+", ".paletteSlot = %s" % base.get(sp, "PALSLOT_NPC_1"), nb)
         gi = gi.replace(body.group(0), body.group(1) + nb + body.group(3))
-    gi = re.sub(r"\n%s variants.*" % re.escape(MARK), "", gi, flags=re.S)
+    #  T-404 (2026-10-15): take out ONLY our block -- the mark and the Daemon_ variant infos under it -- and put the new
+    #  one back where it was. ".*" to the end of the file deleted TY, DAVID and the fir, added by hand after it.
+    vblock = re.compile(r"\n%s variants[^\n]*\n(?:\s*const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Daemon_\w+ = \{.*?\};\n?)*"
+                        % re.escape(MARK), re.S)
+    vm = vblock.search(gi)
+    vat = vm.start() if vm else None
+    gi = vblock.sub("", gi, count=1)
     consts = read("include/constants/event_objects.h")
     #  Remove only OUR lines -- the mark and the variant defines. Ids added after this tool last ran (T-208's PLUGIN
     #  DISC, T-256's DAD) sit between them and NUM_OBJ_EVENT_GFX, and an earlier version of this line deleted them
@@ -255,7 +261,12 @@ def write(dm, maps):
     ids = [int(v) for v in re.findall(r"#define OBJ_EVENT_GFX_\w+ (\d+)", consts.split("// These are dynamic")[0])]
     consts = re.sub(r"#define NUM_OBJ_EVENT_GFX\s+\d+", "#define NUM_OBJ_EVENT_GFX     %d" % (max(ids) + 1), consts)
     open(os.path.join(E, "include/constants/event_objects.h"), "w").write(consts)
-    open(GI, "w").write(gi.rstrip() + "\n\n%s variants: the same art, another slot\n%s\n" % (MARK, "\n".join(vinfos)))
+    block = "\n%s variants: the same art, another slot\n%s\n" % (MARK, "\n".join(vinfos))
+    if vat is None:
+        gi = gi.rstrip() + "\n" + block
+    else:
+        gi = gi[:vat].rstrip() + "\n" + block + "\n" + gi[vat:].lstrip("\n")
+    open(GI, "w").write(gi.rstrip() + "\n")
     ptrs = re.sub(r"\n\};\s*$", "\n    %s variants\n%s\n};\n" % (MARK, "\n".join(vptrs)), ptrs.rstrip() + "\n")
     #  the table is included BEFORE the infos, so each needs a forward declaration at the top, as vanilla's do
     ptrs = re.sub(r"^%s declarations\n(?:const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Daemon_\w+;\n)*" % re.escape(MARK), "", ptrs)

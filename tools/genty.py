@@ -111,6 +111,10 @@ def main():
     with open(OUT_PAL, "w", newline="\r\n") as f:   # .gitattributes checks JASC palettes out CRLF (T-293)
         f.write("JASC-PAL\n0100\n16\n" + "".join("%d %d %d\n" % c for c in cols))
     ow.save(OUT_OW, bits=4)
+    #  T-404: the true-black outline every portrait has (T-177), drawn on what was just written -- TY's was added by
+    #  hand after this last ran (73e892a3a), and a write without it took the outline off again.
+    import gbaoutline
+    gbaoutline.main(only=["ty_front_pic"], write=True)
     print("  written")
 
 
