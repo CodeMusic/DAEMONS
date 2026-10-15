@@ -11,23 +11,37 @@
   "files": [
    "engine:graphics/fame_checker/bill.png",
    "engine:graphics/fame_checker/mr_fuji.png",
-   "engine:graphics/oak_speech/leaf/pal.pal",
-   "engine:graphics/oak_speech/oak/pal.pal",
-   "engine:graphics/oak_speech/red/pal.pal",
-   "engine:graphics/oak_speech/rival/pal.pal",
+   "engine:graphics/trainers/front_pics/aqua_admin_f_front_pic.png",
+   "engine:graphics/trainers/front_pics/bug_maniac_front_pic.png",
+   "engine:graphics/trainers/front_pics/champion_steven_front_pic.png",
    "engine:graphics/trainers/front_pics/cool_couple_front_pic.png",
    "engine:graphics/trainers/front_pics/crush_kin_front_pic.png",
    "engine:graphics/trainers/front_pics/cue_ball_front_pic.png",
+   "engine:graphics/trainers/front_pics/dragon_tamer_front_pic.png",
+   "engine:graphics/trainers/front_pics/elite_four_glacia_front_pic.png",
    "engine:graphics/trainers/front_pics/elite_four_lorelei_front_pic.png",
    "engine:graphics/trainers/front_pics/engineer_front_pic.png",
+   "engine:graphics/trainers/front_pics/expert_m_front_pic.png",
    "engine:graphics/trainers/front_pics/fisherman_front_pic.png",
    "engine:graphics/trainers/front_pics/gentleman_front_pic.png",
    "engine:graphics/trainers/front_pics/lass_front_pic.png",
+   "engine:graphics/trainers/front_pics/leader_brawly_front_pic.png",
    "engine:graphics/trainers/front_pics/leader_giovanni_front_pic.png",
    "engine:graphics/trainers/front_pics/leader_koga_front_pic.png",
    "engine:graphics/trainers/front_pics/leader_misty_front_pic.png",
+   "engine:graphics/trainers/front_pics/leader_norman_front_pic.png",
+   "engine:graphics/trainers/front_pics/parasol_lady_front_pic.png",
    "engine:graphics/trainers/front_pics/pokemon_breeder_front_pic.png",
    "engine:graphics/trainers/front_pics/rocket_grunt_f_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_fisherman_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_lass_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_pokemon_breeder_m_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_ruin_maniac_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_sis_and_bro_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_swimmer_m_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_tuber_f_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_twins_front_pic.png",
+   "engine:graphics/trainers/front_pics/rs_young_couple_front_pic.png",
    "engine:graphics/trainers/front_pics/rs_youngster_front_pic.png",
    "engine:graphics/trainers/front_pics/ruin_maniac_front_pic.png",
    "engine:graphics/trainers/front_pics/scientist_front_pic.png",
@@ -38,81 +52,51 @@
    "engine:graphics/trainers/front_pics/staff_verdigris_front_pic.png",
    "engine:graphics/trainers/front_pics/swimmer_m_front_pic.png",
    "engine:graphics/trainers/front_pics/tuber_f_front_pic.png",
+   "engine:graphics/trainers/front_pics/tuber_m_front_pic.png",
    "engine:graphics/trainers/front_pics/twins_front_pic.png",
    "engine:graphics/trainers/front_pics/young_couple_front_pic.png",
-   "engine:graphics/trainers/palettes/aroma_lady.pal",
-   "engine:graphics/trainers/palettes/beauty.pal",
-   "engine:graphics/trainers/palettes/biker.pal",
-   "engine:graphics/trainers/palettes/bird_keeper.pal",
-   "engine:graphics/trainers/palettes/black_belt.pal",
-   "engine:graphics/trainers/palettes/bug_catcher.pal",
-   "engine:graphics/trainers/palettes/burglar.pal",
-   "engine:graphics/trainers/palettes/camper.pal",
-   "engine:graphics/trainers/palettes/champion_rival.pal",
-   "engine:graphics/trainers/palettes/channeler.pal",
-   "engine:graphics/trainers/palettes/cool_couple.pal",
-   "engine:graphics/trainers/palettes/cool_trainer_f.pal",
-   "engine:graphics/trainers/palettes/cool_trainer_m.pal",
-   "engine:graphics/trainers/palettes/crush_girl.pal",
-   "engine:graphics/trainers/palettes/crush_kin.pal",
+   "engine:graphics/trainers/palettes/aqua_admin_f.pal",
+   "engine:graphics/trainers/palettes/bug_maniac.pal",
+   "engine:graphics/trainers/palettes/champion_steven.pal",
    "engine:graphics/trainers/palettes/cue_ball.pal",
-   "engine:graphics/trainers/palettes/elite_four_agatha.pal",
-   "engine:graphics/trainers/palettes/elite_four_bruno.pal",
-   "engine:graphics/trainers/palettes/elite_four_lance.pal",
+   "engine:graphics/trainers/palettes/dragon_tamer.pal",
+   "engine:graphics/trainers/palettes/elite_four_glacia.pal",
    "engine:graphics/trainers/palettes/elite_four_lorelei.pal",
    "engine:graphics/trainers/palettes/engineer.pal",
+   "engine:graphics/trainers/palettes/expert_m.pal",
    "engine:graphics/trainers/palettes/fisherman.pal",
-   "engine:graphics/trainers/palettes/gamer.pal",
    "engine:graphics/trainers/palettes/gentleman.pal",
-   "engine:graphics/trainers/palettes/hiker.pal",
-   "engine:graphics/trainers/palettes/juggler.pal",
-   "engine:graphics/trainers/palettes/lady.pal",
    "engine:graphics/trainers/palettes/lass.pal",
-   "engine:graphics/trainers/palettes/leader_blaine.pal",
-   "engine:graphics/trainers/palettes/leader_brock.pal",
-   "engine:graphics/trainers/palettes/leader_erika.pal",
+   "engine:graphics/trainers/palettes/leader_brawly.pal",
    "engine:graphics/trainers/palettes/leader_giovanni.pal",
    "engine:graphics/trainers/palettes/leader_koga.pal",
-   "engine:graphics/trainers/palettes/leader_lt_surge.pal",
    "engine:graphics/trainers/palettes/leader_misty.pal",
-   "engine:graphics/trainers/palettes/leader_sabrina.pal",
-   "engine:graphics/trainers/palettes/leaf.pal",
-   "engine:graphics/trainers/palettes/painter.pal",
-   "engine:graphics/trainers/palettes/picnicker.pal",
-   "engine:graphics/trainers/palettes/pokemaniac.pal",
+   "engine:graphics/trainers/palettes/leader_norman.pal",
+   "engine:graphics/trainers/palettes/parasol_lady.pal",
    "engine:graphics/trainers/palettes/pokemon_breeder.pal",
-   "engine:graphics/trainers/palettes/pokemon_ranger_f.pal",
-   "engine:graphics/trainers/palettes/pokemon_ranger_m.pal",
-   "engine:graphics/trainers/palettes/psychic_f.pal",
-   "engine:graphics/trainers/palettes/red.pal",
-   "engine:graphics/trainers/palettes/rival_early.pal",
-   "engine:graphics/trainers/palettes/rival_late.pal",
-   "engine:graphics/trainers/palettes/rocker.pal",
    "engine:graphics/trainers/palettes/rocket_grunt_f.pal",
-   "engine:graphics/trainers/palettes/rocket_grunt_m.pal",
+   "engine:graphics/trainers/palettes/rs_fisherman.pal",
+   "engine:graphics/trainers/palettes/rs_lass.pal",
+   "engine:graphics/trainers/palettes/rs_pokemon_breeder_m.pal",
+   "engine:graphics/trainers/palettes/rs_ruin_maniac.pal",
+   "engine:graphics/trainers/palettes/rs_sis_and_bro.pal",
+   "engine:graphics/trainers/palettes/rs_swimmer_m.pal",
+   "engine:graphics/trainers/palettes/rs_tuber_f.pal",
+   "engine:graphics/trainers/palettes/rs_twins.pal",
+   "engine:graphics/trainers/palettes/rs_young_couple.pal",
    "engine:graphics/trainers/palettes/rs_youngster.pal",
    "engine:graphics/trainers/palettes/ruin_maniac.pal",
-   "engine:graphics/trainers/palettes/sailor.pal",
    "engine:graphics/trainers/palettes/scientist.pal",
    "engine:graphics/trainers/palettes/sis_and_bro.pal",
    "engine:graphics/trainers/palettes/sr_and_jr.pal",
-   "engine:graphics/trainers/palettes/staff_ardor.pal",
-   "engine:graphics/trainers/palettes/staff_brazen.pal",
-   "engine:graphics/trainers/palettes/staff_callow.pal",
    "engine:graphics/trainers/palettes/staff_doldrum_picnicker.pal",
-   "engine:graphics/trainers/palettes/staff_doldrum_swimmer.pal",
-   "engine:graphics/trainers/palettes/staff_lurid.pal",
    "engine:graphics/trainers/palettes/staff_quicksilver.pal",
-   "engine:graphics/trainers/palettes/staff_slate.pal",
    "engine:graphics/trainers/palettes/staff_verdigris.pal",
-   "engine:graphics/trainers/palettes/super_nerd.pal",
-   "engine:graphics/trainers/palettes/swimmer_f.pal",
    "engine:graphics/trainers/palettes/swimmer_m.pal",
-   "engine:graphics/trainers/palettes/tamer.pal",
    "engine:graphics/trainers/palettes/tuber_f.pal",
+   "engine:graphics/trainers/palettes/tuber_m.pal",
    "engine:graphics/trainers/palettes/twins.pal",
-   "engine:graphics/trainers/palettes/young_couple.pal",
-   "engine:graphics/trainers/palettes/youngster.pal"
+   "engine:graphics/trainers/palettes/young_couple.pal"
   ]
  },
  "gbacivic": {
@@ -148,6 +132,16 @@
   "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by fff879fe9 CORPUS never calls itself criminal; every signpost loses its red lette",
   "files": [
    "engine:data/tilesets/primary/general/tiles.png"
+  ]
+ },
+ "gbaowslots": {
+  "why": "STALE -- never --write it on the whole tree: object_event_graphics_info.h's tail gained TY (T-298), DAVID (T-313) and the singing fir (T-10) by hand after it last ran, and its write rebuilds that tail without them (found 2026-10-01: a plain --write deleted all three) AND (2026-10-15) the four legendaries' overworld pics -- ENTEI, RAIKOU, SUICUNE, CELEBI -- are vanilla's: a write moves them to their type palettes (T-133), which is right, but only once the tool keeps the hand-added tail (TY, DAVID, the fir).",
+  "files": [
+   "engine:graphics/object_events/pics/pokemon/celebi.png",
+   "engine:graphics/object_events/pics/pokemon/entei.png",
+   "engine:graphics/object_events/pics/pokemon/raikou.png",
+   "engine:graphics/object_events/pics/pokemon/suicune.png",
+   "engine:src/data/object_events/object_event_graphics_info.h"
   ]
  },
  "gbarepo": {
@@ -187,6 +181,27 @@
    "engine:graphics/trainers/back_pics/red_back_pic.png"
   ]
  },
+ "gentowns": {
+  "why": "STALE -- never --write it on the whole tree: T-371 (2ae2997b1) made the CHECKPOINT 2F companion lemur one character on every floor (CheckpointFloor2_EventScript_CompanionLemur, SUPER_NERD); a write reskins him as each town's adult. Fix: the tool skips that object.",
+  "files": [
+   "engine:data/maps/CeladonCity_PokemonCenter_2F/map.json",
+   "engine:data/maps/CeruleanCity_PokemonCenter_2F/map.json",
+   "engine:data/maps/CinnabarIsland_PokemonCenter_2F/map.json",
+   "engine:data/maps/FuchsiaCity_PokemonCenter_2F/map.json",
+   "engine:data/maps/IndigoPlateau_PokemonCenter_2F/map.json",
+   "engine:data/maps/LavenderTown_PokemonCenter_2F/map.json",
+   "engine:data/maps/PewterCity_PokemonCenter_2F/map.json",
+   "engine:data/maps/SaffronCity_PokemonCenter_2F/map.json",
+   "engine:data/maps/VermilionCity_PokemonCenter_2F/map.json",
+   "engine:data/maps/ViridianCity_PokemonCenter_2F/map.json"
+  ]
+ },
+ "genty": {
+  "why": "STALE: TY's portrait was outlined by `gbaoutline --only ty` after genty last ran (73e892a3a); a write removes the outline. Re-run that after any genty write -- better, genty calls the outline itself.",
+  "files": [
+   "engine:graphics/trainers/front_pics/ty_front_pic.png"
+  ]
+ },
  "port_ecsort": {
   "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 980854334 T-31, and six lines that sent the player to a place that no longer exi",
   "files": [
@@ -205,6 +220,12 @@
    "engine:data/text/fame_checker.inc"
   ]
  },
+ "port_pronoun": {
+  "why": "STALE: T-391 (c4d5edf8b) rewrote the PLUGINs' last vanilla routine descriptions by hand after this ran; a write restores the T-183 pronoun-only versions.",
+  "files": [
+   "engine:src/move_descriptions.c"
+  ]
+ },
  "port_states": {
   "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 3de6857eb T-248: a state is explained in its own name; 4671607a1 T-219 (batch 4): 2F ATTENTION, 3F MEMORY, 4F CATEGORIES; 5d7cd6d95 T-223: the NOTEBOOK and the TEXTBOOK read like books (+2 more); T-383: PHLEGMATIC's 'deep-freeze' is ice, not the HANG state -- dialogue keeps ordinary words (check_lexicon's rule)",
   "files": [
@@ -220,12 +241,6 @@
   "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pokémon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
   "files": [
    "ai:server/prompts/game.txt"
-  ]
- },
- "gbaowslots": {
-  "why": "STALE -- never --write it on the whole tree: object_event_graphics_info.h's tail gained TY (T-298), DAVID (T-313) and the singing fir (T-10) by hand after it last ran, and its write rebuilds that tail without them (found 2026-10-01: a plain --write deleted all three)",
-  "files": [
-   "engine:src/data/object_events/object_event_graphics_info.h"
   ]
  }
 }
