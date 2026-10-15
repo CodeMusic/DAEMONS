@@ -766,7 +766,7 @@ def check_stale_names():
 
     #  English phrases that contain a renamed word and are not the name: a shop's SERVICE COUNTER is not the move
     #  COUNTER (CONTRADICT). port_vocab.py holds the same phrases (T-324, 2026-10-01).
-    held = ("SERVICE COUNTER",)
+    held = ("SERVICE COUNTER", "REST HOUSE", "KNOWS THE REST")   # T-401: a rest house and "the rest" are not IDLE
 
     def hit(s, old):
         """None, or how to describe the match -- "" plain, or a collision note."""

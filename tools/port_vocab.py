@@ -228,7 +228,10 @@ IDIOM_HOLD = ("catch up", "Catch up", "caught up", "Caught up",
               "caught a MEME", "catch a MEME", "catches a MEME", "catching a MEME",
               #  A shop's counter is not the move COUNTER (CONTRADICT): VERDIGRIS DEPT. STORE's directory read
               #  "SERVICE CONTRADICT" twice (found by T-324's sign review, 2026-10-01).
-              "SERVICE COUNTER")
+              "SERVICE COUNTER",
+              #  A rest house, and "the rest", are not the move REST (IDLE): the SAFARI ZONE's four signs read "IDLE
+              #  HOUSE" from 2026-09-10 and the band's sheet "THE TUNE KNOWS THE IDLE." (found by T-401, 2026-10-15).
+              "REST HOUSE", "KNOWS THE REST")
 
 #  AN IDIOM CAN SPAN A LINE BREAK: "has caught\na MEME" is two lines of text, and a literal pattern with a space in
 #  it never saw the break -- the escape trap again (CLAUDE.md). A space in an idiom matches a space or a \n/\l/\p.
