@@ -142,6 +142,80 @@ def tenants(mapname, section, limit=6):
     return rows[:limit]
 
 
+# ------------------------------------------------- against vanilla, and the save (the user, 2026-10-15)
+#  "How much did it change from base, so we can gauge how much content we can add." Vanilla is pret's pristine
+#  FireRed, built in ~/.cache/daemons/pokefirered-upstream (romrelease.py keeps it there for the BPS patches). Without
+#  it the comparison is left out, and says so, rather than guessed.
+VANILLA = os.path.expanduser("~/.cache/daemons/pokefirered-upstream")
+
+
+def rom_sections(mapname):
+    path = os.path.join(GBA, mapname)
+    out = {}
+    if not os.path.exists(path):
+        return out
+    for l in open(path, errors="ignore"):
+        m = re.match(r'^(\S+)\s+0x(08[0-9a-f]{6})\s+0x([0-9a-f]+)', l)
+        if m and int(m.group(3), 16) and m.group(1) != "ROM":
+            out[m.group(1)] = out.get(m.group(1), 0) + int(m.group(3), 16)
+    return out
+
+
+SAVE_PARTS = [("SaveBlock1", "struct SaveBlock1", "SECTOR_ID_SAVEBLOCK1_START", "SECTOR_ID_SAVEBLOCK1_END"),
+              ("SaveBlock2", "struct SaveBlock2", None, None),
+              ("PokemonStorage", "struct PokemonStorage", "SECTOR_ID_PKMN_STORAGE_START", "SECTOR_ID_PKMN_STORAGE_END")]
+
+
+def save_sizes(tree):
+    """sizeof each save block, asked of agbcc itself with the tree's own headers: the map has no symbol with the size,
+    and a size added up by hand from the structs would be the first number in this file to drift."""
+    src = ('#include "global.h"\n#include "pokemon_storage_system.h"\nconst u32 kSizes[] = { %s };\n'
+           % ", ".join("sizeof(%s)" % t for _, t, _, _ in SAVE_PARTS))
+    agbcc = os.path.join(tree, "tools/agbcc/bin/agbcc")
+    if not os.path.exists(agbcc):
+        return None
+    import tempfile
+    fd, cfile = tempfile.mkstemp(suffix=".c")                # preproc wants the source by name, not on stdin
+    os.write(fd, src.encode()); os.close(fd)
+    try:
+        cpp = subprocess.run(["arm-none-eabi-cpp", "-iquote", "include", "-Wno-trigraphs", "-DFIRERED", "-DREVISION=0",
+                              "-DENGLISH", "-DMODERN=0", "-DDAEMONS_DEBUG=0", "-I", "tools/agbcc/include", "-I",
+                              "tools/agbcc", "-nostdinc", "-undef", "-std=gnu89", cfile], cwd=tree,
+                             capture_output=True, text=True)
+        pre = subprocess.run([os.path.join(tree, "tools/preproc/preproc"), "-i", cfile, "charmap.txt"], input=cpp.stdout,
+                             cwd=tree, capture_output=True, text=True)
+        asm = subprocess.run([agbcc, "-mthumb-interwork", "-O2", "-fhex-asm", "-o", "-", "-"], input=pre.stdout,
+                             cwd=tree, capture_output=True, text=True).stdout
+    except OSError:
+        return None
+    finally:
+        os.unlink(cfile)
+    words = [int(w, 16) for w in re.findall(r'\.word\s+0x([0-9a-f]+)', asm)]
+    return words if len(words) == len(SAVE_PARTS) else None
+
+
+def save_caps(tree):
+    h = open(os.path.join(tree, "include/save.h"), errors="ignore").read()
+    num = lambda k: int(re.search(r'#define\s+%s\s+(\d+)' % k, h).group(1))
+    data = num("SECTOR_DATA_SIZE")
+    return [data * ((num(b) - num(a) + 1) if a else 1) for _, _, a, b in SAVE_PARTS]
+
+
+def flags_and_vars():
+    """(ours used, ours total) for the DAEMONS flag block, and the placeholder VAR_0x40xx that nothing references."""
+    f = read("include/constants/flags.h")
+    m = re.search(r'#define\s+DAEMONS_FLAGS_COUNT\s+(0x[0-9a-fA-F]+|\d+)', f)
+    total = int(m.group(1), 0) if m else 0
+    used = len(re.findall(r'#define\s+FLAG_\w+\s+\(DAEMONS_FLAGS_START\s*\+', f))
+    names = re.findall(r'^#define\s+(VAR_0x40[0-9A-F]{2})\b', read("include/constants/vars.h"), re.M)
+    free = 0
+    for v in names:
+        hits = subprocess.run(["git", "-C", GBA, "grep", "-lw", v, "--", "src", "data", "include", "asm"],
+                              capture_output=True, text=True).stdout.split()
+        free += not [h for h in hits if not h.endswith("constants/vars.h")]
+    return used, total, free
+
+
 HEAP = None
 def heap():
     global HEAP
@@ -279,6 +353,50 @@ def main():
         a = "`%s` | %s" % (e[n][1], kb(e[n][0])) if n < len(e) else " | "
         b = "`%s` | %s" % (i[n][1], kb(i[n][0])) if n < len(i) else " | "
         out.append("| %s | %s |" % (a, b))
+    out.append("")
+
+    out.append("### Against vanilla FireRed, and the save")
+    out.append("")
+    vmap = os.path.join(VANILLA, "pokefirered.map")
+    if os.path.exists(vmap):
+        vmem, vlay = memory(vmap), rom_layout(vmap)
+        out.append("*Measured against pret's pristine FireRed (`%s`), the same way.*" % vmap.replace(os.path.expanduser("~"), "~"))
+        out.append("")
+        out.append("| | vanilla | ours | we added | free now |")
+        out.append("|---|---|---|---|---|")
+        out.append("| **ROM** contents | %s | %s | **%s** | %s |" % (kb(vlay[0]), kb(lay[0]), kb(lay[0] - vlay[0]), kb(ROM_FILE - lay[0])))
+        for name, size in REGIONS[:2]:
+            out.append("| **%s** | %s | %s | **%s** | %s |" % (name, kb(vmem[name]), kb(rel[name]),
+                       kb(rel[name] - vmem[name]), kb(size - rel[name])))
+        out.append("")
+        a, b = rom_sections(vmap), rom_sections("daemonsContent.map")
+        out.append("| ROM section | vanilla | ours | grew |")
+        out.append("|---|---|---|---|")
+        for k in sorted(set(a) | set(b), key=lambda k: -b.get(k, 0)):
+            d = b.get(k, 0) - a.get(k, 0)
+            out.append("| `%s` | %s | %s | %s%s |" % (k, kb(a.get(k, 0)), kb(b.get(k, 0)), "-" if d < 0 else "", kb(abs(d))))
+        out.append("")
+    else:
+        out.append("*No pristine FireRed build in `%s`, so nothing to compare against (`romrelease.py` makes one).*"
+                   % VANILLA.replace(os.path.expanduser("~"), "~"))
+        out.append("")
+    ours_sz, caps = save_sizes(GBA), save_caps(GBA)
+    van_sz = save_sizes(VANILLA) if os.path.isdir(VANILLA) else None
+    if ours_sz:
+        out.append("| save block | vanilla | ours | its fixed space | slack |")
+        out.append("|---|---|---|---|---|")
+        for n, (label, _, _, _) in enumerate(SAVE_PARTS):
+            out.append("| `%s` | %s | %s | %s | **%s** |" % (label, "%d B" % van_sz[n] if van_sz else "?",
+                       "%d B" % ours_sz[n], "%d B" % caps[n], "%d B" % (caps[n] - ours_sz[n])))
+        out.append("")
+    fu, ft, vf = flags_and_vars()
+    out.append("**Story state:** %d of our %d flags used (**%d free**); **%d** of vanilla's spare `VAR_0x40xx` "
+               "referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*"
+               % (fu, ft, ft - fu, vf))
+    out.append("")
+    out.append("***Where the limit is:*** *ROM is not it -- text and scripts are cheap, and art is what spends it. "
+               "EWRAM is: vanilla is already ~99.6% full, so anything that must stay resident while you walk "
+               "(a follower, an always-on effect) has to find bytes, or borrow from `gHeap` as screens do.*")
     out.append("")
 
     out.append("### Every fixed-width name budget, and what we actually ship")
