@@ -40,7 +40,11 @@ EXCUSED = {
 }
 
 #  Tools that generate one named thing at a time are run once per thing, all of them.
+#  gbadocs places only the documents its --text file holds, and that file is private: run without it, its write takes
+#  every placed page out of the world -- which is not drift (found 2026-10-15).
+_DOCS_TEXT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs", "private", "notebook_docs.json")
 ARGS = {
+    "gbadocs":   [["--text", _DOCS_TEXT]] if os.path.exists(_DOCS_TEXT) else [],
     "genanims":  [[f] for f in ("CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL "
                                 "CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE LATENT").split()],
     "genstates": [["--wave", "1"]],
@@ -170,13 +174,20 @@ def sandbox():
         subprocess.run(["git", "-C", repo, "worktree", "prune"], capture_output=True)
         os.makedirs(os.path.dirname(path), exist_ok=True)
         subprocess.run(["git", "-C", repo, "worktree", "add", "--detach", path, "HEAD"], check=True, capture_output=True)
-    for link, target in (("engineGba", e), ("engine", os.path.realpath(os.path.join(ROOT, "engine")))):
+    #  engineAi is only READ by the tools sandboxed here (gbadreams reads its progress steps) -- the real fork is linked,
+    #  and the two that write it are SANDBOX_EXCUSED (found 2026-10-15: gbadreams crashed without it).
+    for link, target in (("engineGba", e), ("engine", os.path.realpath(os.path.join(ROOT, "engine"))),
+                         ("engineAi", os.path.realpath(os.path.join(ROOT, "engineAi")))):
         if os.path.exists(target):
             os.symlink(target, os.path.join(d, link))
     for t in os.listdir(os.path.join(eng, "tools")):
         b = os.path.join(eng, "tools", t, t)
         if os.path.isfile(b) and os.access(b, os.X_OK):
             shutil.copy2(b, os.path.join(e, "tools", t, t))
+    #  agbcc installs INTO the engine's tools/ and is gitignored, so a worktree has none; gbabudget measures the save
+    #  blocks with it and, without it, silently dropped engine.md's whole save table (found 2026-10-15).
+    if os.path.isdir(os.path.join(eng, "tools", "agbcc")) and not os.path.exists(os.path.join(e, "tools", "agbcc")):
+        os.symlink(os.path.join(eng, "tools", "agbcc"), os.path.join(e, "tools", "agbcc"))
     for f in os.listdir(eng):
         if f.startswith("daemonsCont") and f.endswith((".map", ".elf", ".gba")):
             shutil.copy2(os.path.join(eng, f), os.path.join(e, f))
@@ -190,7 +201,7 @@ def writes():
     def reset():
         for r in (d, e):
             subprocess.run(["git", "-C", r, "checkout", "--", "."], capture_output=True)
-            subprocess.run(["git", "-C", r, "clean", "-fdq", "-e", "engineGba", "-e", "engine"], capture_output=True)
+            subprocess.run(["git", "-C", r, "clean", "-fdq", "-e", "engineGba", "-e", "engine", "-e", "engineAi", "-e", "tools/agbcc"], capture_output=True)
     crashes, drift, t0 = [], {}, time.time()
     for f in generators([]):
         name = f[:-3]
@@ -207,11 +218,16 @@ def writes():
                     crashes.append((name, extra, r.stderr.strip().splitlines()[-1]))
             except subprocess.TimeoutExpired:
                 crashes.append((name, extra, "did not finish in 600s"))
+            #  A change of line endings alone is not drift: the engine's .gitattributes asks CRLF of every .pal, and a
+            #  tool that writes LF would read as drifting on every run (found 2026-10-15). So: content changes, and
+            #  new files -- not git status.
             for repo, tag in ((d, "docs"), (e, "engine")):
-                st = subprocess.run(["git", "-C", repo, "status", "--porcelain"], capture_output=True, text=True).stdout
-                for line in st.splitlines():
-                    path = line[3:]
-                    if path not in ("engineGba", "engine"):
+                changed = subprocess.run(["git", "-C", repo, "diff", "--ignore-cr-at-eol", "--name-only"],
+                                         capture_output=True, text=True).stdout.splitlines()
+                new_files = subprocess.run(["git", "-C", repo, "ls-files", "--others", "--exclude-standard"],
+                                           capture_output=True, text=True).stdout.splitlines()
+                for path in changed + new_files:
+                    if path not in ("engineGba", "engine", "engineAi"):
                         drift.setdefault(name, set()).add("%s:%s" % (tag, path))
     reset()
     new = {n: sorted(fs - set(known.get(n, {}).get("files", []))) for n, fs in drift.items()}

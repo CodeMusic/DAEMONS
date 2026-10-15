@@ -27,7 +27,7 @@ python3 tools/gbabudget.py --write   # and update the tables below
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 255.3 KB | **736 B** | 99.72% |
 | **IWRAM** | 32.0 KB | 29.1 KB | **2.9 KB** | 91.05% |
-| **ROM** | 16.0 MB | 9.4 MB | **6.6 MB** | 58.55% |
+| **ROM** | 16.0 MB | 9.4 MB | **6.6 MB** | 58.57% |
 
 ***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 6.6 MB free is in two places: what comes before it grows into a 5.3 MB gap below it, and it grows into the 1.3 MB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
@@ -52,15 +52,15 @@ The biggest tenants after it:
 
 | | vanilla | ours | we added | free now |
 |---|---|---|---|---|
-| **ROM** contents | 8.9 MB | 9.4 MB | **519.6 KB** | 6.6 MB |
+| **ROM** contents | 8.9 MB | 9.4 MB | **523.3 KB** | 6.6 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **368 B** | 736 B |
 | **IWRAM** | 29.1 KB | 29.1 KB | **12 B** | 2.9 KB |
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.3 MB | 486.4 KB |
-| `gfx_data` | 1.7 MB | 1.7 MB | -8.0 KB |
-| `.text` | 1.4 MB | 1.4 MB | 42.6 KB |
+| `.rodata` | 4.8 MB | 5.3 MB | 489.0 KB |
+| `gfx_data` | 1.7 MB | 1.7 MB | -7.9 KB |
+| `.text` | 1.4 MB | 1.4 MB | 43.6 KB |
 | `script_data` | 496.9 KB | 525.5 KB | 28.6 KB |
 | `song_data` | 282.1 KB | 251.1 KB | -31.0 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
@@ -74,7 +74,7 @@ The biggest tenants after it:
 | `SaveBlock2` | 3876 B | 3876 B | 3968 B | **92 B** |
 | `PokemonStorage` | 33744 B | 33744 B | 35712 B | **1968 B** |
 
-**Story state:** 75 of our 1024 flags used (**949 free**); **75** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
+**Story state:** 77 of our 1024 flags used (**947 free**); **75** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
 
 ***Where the limit is:*** *ROM is not it -- text and scripts are cheap, and art is what spends it. EWRAM is: vanilla is already ~99.6% full, so anything that must stay resident while you walk (a follower, an always-on effect) has to find bytes, or borrow from `gHeap` as screens do.*
 

@@ -344,10 +344,20 @@ def main():
     for name in maps:
         mpath = "data/maps/%s/map.json" % name
         raw = load(mpath); m = json.loads(raw)
-        keep = [b for b in m.get("bg_events") or [] if not str(b.get("script", "")).startswith("NotebookDoc_")]
         add = [{"type": "sign", "x": x, "y": y, "elevation": 0, "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
                 "script": "NotebookDoc_%s_%d_%d" % (name, x, y)} for (mn, x, y) in sorted(spots) if mn == name]
-        new_bg = keep + add
+        #  A spot already in the map keeps its place in the list; only a new one goes at the end. Removing and
+        #  appending moved our sign behind any bg_event added by hand since (T-381's plants), and every write
+        #  reordered five maps for nothing (found 2026-10-15).
+        want = {b["script"]: b for b in add}
+        new_bg = []
+        for b in m.get("bg_events") or []:
+            sc = str(b.get("script", ""))
+            if not sc.startswith("NotebookDoc_"):
+                new_bg.append(b)
+            elif sc in want:
+                new_bg.append(want.pop(sc))
+        new_bg += [b for b in add if b["script"] in want]
         new_raw = raw if new_bg == (m.get("bg_events") or []) else None
         if new_raw is None:
             m["bg_events"] = new_bg
