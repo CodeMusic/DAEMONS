@@ -134,16 +134,6 @@
    "engine:data/tilesets/primary/general/tiles.png"
   ]
  },
- "gbaowslots": {
-  "why": "STALE -- never --write it on the whole tree: object_event_graphics_info.h's tail gained TY (T-298), DAVID (T-313) and the singing fir (T-10) by hand after it last ran, and its write rebuilds that tail without them (found 2026-10-01: a plain --write deleted all three) AND (2026-10-15) the four legendaries' overworld pics -- ENTEI, RAIKOU, SUICUNE, CELEBI -- are vanilla's: a write moves them to their type palettes (T-133), which is right, but only once the tool keeps the hand-added tail (TY, DAVID, the fir).",
-  "files": [
-   "engine:graphics/object_events/pics/pokemon/celebi.png",
-   "engine:graphics/object_events/pics/pokemon/entei.png",
-   "engine:graphics/object_events/pics/pokemon/raikou.png",
-   "engine:graphics/object_events/pics/pokemon/suicune.png",
-   "engine:src/data/object_events/object_event_graphics_info.h"
-  ]
- },
  "gbarepo": {
   "why": "STALE -- not idempotent: a second run re-lays the REPO's bins and draws over tile 13, which metatiles 10 and 62 share (T-293); the tree is right",
   "files": [
@@ -179,27 +169,6 @@
   "files": [
    "engine:graphics/trainers/back_pics/leaf_back_pic.png",
    "engine:graphics/trainers/back_pics/red_back_pic.png"
-  ]
- },
- "gentowns": {
-  "why": "STALE -- never --write it on the whole tree: T-371 (2ae2997b1) made the CHECKPOINT 2F companion lemur one character on every floor (CheckpointFloor2_EventScript_CompanionLemur, SUPER_NERD); a write reskins him as each town's adult. Fix: the tool skips that object.",
-  "files": [
-   "engine:data/maps/CeladonCity_PokemonCenter_2F/map.json",
-   "engine:data/maps/CeruleanCity_PokemonCenter_2F/map.json",
-   "engine:data/maps/CinnabarIsland_PokemonCenter_2F/map.json",
-   "engine:data/maps/FuchsiaCity_PokemonCenter_2F/map.json",
-   "engine:data/maps/IndigoPlateau_PokemonCenter_2F/map.json",
-   "engine:data/maps/LavenderTown_PokemonCenter_2F/map.json",
-   "engine:data/maps/PewterCity_PokemonCenter_2F/map.json",
-   "engine:data/maps/SaffronCity_PokemonCenter_2F/map.json",
-   "engine:data/maps/VermilionCity_PokemonCenter_2F/map.json",
-   "engine:data/maps/ViridianCity_PokemonCenter_2F/map.json"
-  ]
- },
- "genty": {
-  "why": "STALE: TY's portrait was outlined by `gbaoutline --only ty` after genty last ran (73e892a3a); a write removes the outline. Re-run that after any genty write -- better, genty calls the outline itself.",
-  "files": [
-   "engine:graphics/trainers/front_pics/ty_front_pic.png"
   ]
  },
  "port_ecsort": {

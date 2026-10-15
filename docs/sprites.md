@@ -12,10 +12,10 @@
 | daemon fronts | 386 | 385 | 0 | 1 | 10 | **100%** |
 | daemon backs | 384 | 384 | 0 | 0 | 10 | **100%** |
 | daemon icons | 387 | 385 | 0 | 2 | 9 | **99%** |
-| overworld daemons | 42 | 36 | 0 | 6 | 0 | **86%** |
+| overworld daemons | 42 | 40 | 0 | 2 | 0 | **95%** |
 | overworld objects | 19 | 19 | 0 | 0 | 2 | **100%** |
 | ***the people*** | 251 | 251 | 0 | 0 | 69 | ***100.0%*** |
-| ***every sprite*** | 1469 | 1460 | 0 | 9 | 100 | ***99.4%*** |
+| ***every sprite*** | 1469 | 1464 | 0 | 5 | 100 | ***99.7%*** |
 
 ## The towns
 
