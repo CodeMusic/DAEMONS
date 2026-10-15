@@ -19,3 +19,15 @@ C-121 and C-119 on the Fire (bench.py): DRINK held, the key white the moment it 
 C-121 and C-119 on the M5GO (no PSRAM; SEEKMUSAI borrowed for the check): DRINK held lit, Drank. at once, sent 338 ms later from the loop after the drawing; awake, drowsy, asleep, glad, sad all taken.
 
 ![15Oct2026 - C121 - the M5GO on the bench - the three buttons and five expressions - 5](15Oct2026%20-%20C121%20-%20the%20M5GO%20on%20the%20bench%20-%20the%20three%20buttons%20and%20five%20expressions%20-%205.png)
+
+### 15Oct2026 - C121 - both T-Embeds on the bench - five expressions - 7
+
+C-119 and C-121 on the T-Embed CC1101 (ROVERCUB) and SI4732 (STARR), borrowed for the check and given back: at rest on their own Wi-Fi, then awake, drowsy, asleep, glad (the heart now kept inside the den), sad.
+
+![15Oct2026 - C121 - both T-Embeds on the bench - five expressions - 7](15Oct2026%20-%20C121%20-%20both%20T-Embeds%20on%20the%20bench%20-%20five%20expressions%20-%207.png)
+
+### 15Oct2026 - C121 - the T-Display-S3 Pro on the bench - 8
+
+C-121 on the T-Display-S3 Pro (STARR): DRINK let go, Drank. at once, sent 226 ms later via home; its five expressions. The first two frames are black: its screen was asleep (the bench now wakes it first).
+
+![15Oct2026 - C121 - the T-Display-S3 Pro on the bench - 8](15Oct2026%20-%20C121%20-%20the%20T-Display-S3%20Pro%20on%20the%20bench%20-%208.png)
