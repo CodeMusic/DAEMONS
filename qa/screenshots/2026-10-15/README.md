@@ -13,3 +13,9 @@ T-392: the seven union routines and four ordinary ones in type ink, filmed in th
 C-121 and C-119 on the Fire (bench.py): DRINK held, the key white the moment it goes down; let go, Drank. and water 3/3 drawn at once; the companion heard it 1.0 s later (200 in 239 ms via home). Below: CAREMUSAI awake, drowsy, asleep, glad, sad.
 
 ![15Oct2026 - C121 - the Fire on the bench - the three buttons and five expressions - 4](15Oct2026%20-%20C121%20-%20the%20Fire%20on%20the%20bench%20-%20the%20three%20buttons%20and%20five%20expressions%20-%204.png)
+
+### 15Oct2026 - C121 - the M5GO on the bench - the three buttons and five expressions - 5
+
+C-121 and C-119 on the M5GO (no PSRAM; SEEKMUSAI borrowed for the check): DRINK held lit, Drank. at once, sent 338 ms later from the loop after the drawing; awake, drowsy, asleep, glad, sad all taken.
+
+![15Oct2026 - C121 - the M5GO on the bench - the three buttons and five expressions - 5](15Oct2026%20-%20C121%20-%20the%20M5GO%20on%20the%20bench%20-%20the%20three%20buttons%20and%20five%20expressions%20-%205.png)
