@@ -11,6 +11,8 @@ engineGba
 # ROM RELEASE/ is tools/romrelease.py's archive: its notes and PDFs are in git, its ROMs never are -- they run
 # Nintendo's engine (ROM RELEASE/WHERES_THE_ROMS.md)
 ROM RELEASE/**/*.gba
+#  ...and a zip of them (one was made in Finder beside v11.301.2, 2026-10-15): it carries the same ROMs.
+ROM RELEASE/**/*.zip
 ROM RELEASE/**/*.sav
 # ...and its BPS patches, for their size (2.5MB each, four a release): published as downloads, not committed
 ROM RELEASE/**/*.bps
