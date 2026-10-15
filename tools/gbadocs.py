@@ -43,7 +43,7 @@ SECTION = {"LOOSE_PAGES": "NB_LOOSE_PAGES", "LAB_NOTES": "NB_LAB_NOTES", "RUN_LO
            "PEER_REVIEW": "NB_PEER_REVIEW"}
 
 #  key, spot. None = not drafted, on purpose (school.md 10: LOOSE PAGES 6, PROSPECTUS 4).
-#  A gate is ("set", FLAG) or ("unset", FLAG). Silent spots name the script label and the line to follow.
+#  A gate is ("set", FLAG), ("unset", FLAG), or ("unset_or_unread", FLAG): before the flag, or after it while unread (T-401). Silent spots name the script label and the line to follow.
 DOCS = [
     ("LOOSE_PAGES_2",    ("sign", "ViridianForest_Grove", 11, 15, None)),
     ("LOOSE_PAGES_4",    ("furniture", "CinnabarIsland_PokemonLab_Lounge", 3, 1)),
@@ -70,7 +70,7 @@ DOCS = [
     ("PROSPECTUS_4",     None),
     ("PROSPECTUS_5",     ("sign", "PokemonTower_5F", 14, 11, None)),
     ("PROSPECTUS_6",     ("sign", "SaffronCity_Gym", 14, 9, ("set", "FLAG_DEFEATED_SABRINA"))),
-    ("PEER_REVIEW_3",    ("sign", "SaffronCity_MrPsychicsHouse", 5, 5, ("unset", "FLAG_OWL_CONCEDED"))),
+    ("PEER_REVIEW_3",    ("sign", "SaffronCity_MrPsychicsHouse", 5, 5, ("unset_or_unread", "FLAG_OWL_CONCEDED"))),   # T-401: READ AGAIN needs it
     ("PEER_REVIEW_4",    ("sign", "SaffronCity_MrPsychicsHouse", 5, 5, ("set", "FLAG_OWL_CONCEDED"))),
 ]
 READABLE = {0x81, 0x83, 0x89, 0x93, 0x94, 0x95, 0x97, 0x98, 0x9A, 0xA0, 0x8F}
@@ -314,7 +314,14 @@ def main():
             inc.append("\tsetvar VAR_0x8007, 0")
         for n, (k, gate) in enumerate(docs):
             skip = "NotebookDoc_%s_%d_%d_%d" % (name, x, y, n)
-            if gate:
+            if gate and gate[0] == "unset_or_unread":
+                #  T-401 (the user, 2026-10-15): before the flag, or after it if never read -- the page a later one
+                #  answers (the Owl's READ AGAIN is FIRST REVIEW annotated) is shown first to a player who missed it.
+                go = "NotebookDoc_%s_%d_%d_%d_go" % (name, x, y, n)
+                inc.append("\tgoto_if_unset %s, %s" % (gate[1], go))
+                inc.append("\tgoto_if_set %s, %s" % (flag(k), skip))
+                inc.append("%s::" % go)
+            elif gate:
                 inc.append("\t%s %s, %s" % ("goto_if_unset" if gate[0] == "set" else "goto_if_set", gate[1], skip))
             inc.append("\tcall NotebookDoc_%s%s" % (k, "_Quiet" if many else ""))
             inc.append("%s::" % skip)
