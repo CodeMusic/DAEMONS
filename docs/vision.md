@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.300**
+**A total conversion — the living design bible, v11.301**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4340,7 +4340,7 @@ Corpus rooms, and the trainer table.
 
 > ***"The source is consciousness, and thoughts are the code, and while matter… it's a process, an ongoing ode."***
 
-***And a second source, cited 2026-09-25 when the user brought it.*** *[The Folds of Awareness](https://seeingsharpca.wordpress.com/2025/09/05/%f0%9f%95%8a%ef%b8%8f-the-folds-of-awareness/) (Seeing Sharp, September 2025) draws the same picture as origami* — **one sheet, folded and never cut; one great hand holding it and many small hands reaching out** — *and ends asking whether the small hands choose, without answering.* **That unanswered ending is this section's rule, arrived at by the author first** (`lineage.md` 5, 4.6). *It went into the game as a found page and nowhere near him: **LOOSE PAGES 7, FOLDS** (DRAFT), folding instructions pinned in the room where the game was drawn, every step only paper.* ***He never mentions it and it never mentions him*** — *which is what keeps THE TEST below true.*
+***And a second source, cited 2026-09-25 when the user brought it.*** *[The Folds of Awareness](https://seeingsharpca.wordpress.com/2025/09/05/%f0%9f%95%8a%ef%b8%8f-the-folds-of-awareness/) (Seeing Sharp, September 2025) draws the same picture as origami* — **one sheet, folded and never cut; one great hand holding it and many small hands reaching out** — *and ends asking whether the small hands choose, without answering.* **That unanswered ending is this section's rule, arrived at by the author first** (`lineage.md` 5, 4.6). *It went into the game as a found page and nowhere near him: **LOOSE PAGES 7, FOLDS** (DRAFT), folding instructions pinned in the room where the game was drawn.* ***Since 2026-10-15 (T-401, the user) each step carries the essay's own word for its fold*** *-- AWARENESS, CHANGE, SPACE, MIRROR, PATTERN, RETURN -- because, as only paper, it read as paper (see Reversed); the essay's conclusions still stay out.* ***He never mentions it and it never mentions him*** — *which is what keeps THE TEST below true.*
 
 **Matter as process, four years before this section existed.** *So the doctrine is not a strange idea given to a strange man.* ***It is the author's own long-held position, handed to a character who then takes it further than the author would.***
 
@@ -8698,6 +8698,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **FOLDS is only paper** (4.33, LOOSE PAGES 7, 2026-09-25): *every step a fold, a crease, a corner, never saying what it is a diagram of* | **Each fold carries the essay's word for it** (T-401, the user 2026-10-15): *AWARENESS, CHANGE, SPACE, MIRROR, PATTERN, RETURN* | *The user, reading the loose pages again: "it isnt clear that it is talking about awareness ... right now it looks like it is literally talking about paper folds."* **A page indirect enough that nobody can find its subject has stopped being a fable and become a puzzle with no answer.** *The words name the stages, never the conclusions (love, spirit, unity), so craft rule 1 still holds; and the page still never mentions the scientist, so 4.33's NEVER ADJUDICATE is untouched. THE STONE and FIELDS were made plainer the same day.* |
 | **One daemon at a time** (9.25, T-370, 2026-10-04) | **Any number AWAY, one device to a daemon** (T-396, the user 2026-10-09) | *The companion learned to put a daemon in each device (its C-80) and the game still refused a second SEND.* **A daemon in two places at once would not feel real; two daemons in two devices does.** *The one-at-a-time rule was standing in for "one place at a time", which the companion now keeps.* |
 | **CONTEXT keeps the northern year, CONTENT the southern** (9.21, earlier 2026-10-03) | **CONTENT the northern year, CONTEXT the southern** (the user, 2026-10-03) | *The user, on reflection: "I think CONTENT should be the north america, and CONTEXT as south america's season."* **It fits the registers better**: *CONTENT is the thing itself -- the calendar as lived where the game is made; CONTEXT is the same date reframed by the other half of the world.* |
 | **Nobody remarks on OPUS, then or ever** (2.x, 2026-09-21) | **The first shop clerk spoken to while you hold it notices it, says what it does and that SELECT reads it, and hopes you enjoy it** (T-348, 2026-10-03) | *The user asked for it.* **A margin a player never finds is a margin nobody reads**, *and the clerk explains the tool, not the mystery: who left it is still never answered, and the margins still never say they notice you.* |

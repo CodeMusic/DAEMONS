@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.301 — 2026-10-15
+
+### The loose pages say what they are about (T-401)
+
+- ***4.33 and LOOSE PAGES 7, reversed (the user)***: **FOLDS names each fold** -- *AWARENESS, CHANGE, SPACE, MIRROR, PATTERN, RETURN, the essay's own order -- because as only paper it read as paper ("it isnt clear that it is talking about awareness"). The essay's conclusions stay out (craft rule 1) and it still never mentions the scientist (NEVER ADJUDICATE). See Reversed.*
+- ***LOOSE PAGES 1 and 3 (the user)***: **THE STONE** *now says what nobody at home sees ("they say I see things that are not there"; the rule "sat still long enough to copy down"), and is approved;* **FIELDS** *no longer breaks a sentence across a page, and ends "To me it is all one room."*
+
+---
+
 ## v11.300 — 2026-10-13
 
 ### Two LOCK ONs, and DESCEND (T-393)
