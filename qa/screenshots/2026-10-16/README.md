@@ -79,3 +79,9 @@ T-413: SCORN's converged party, the stack (the user, 2026-10-16), played in the 
 Where the BOX-3 would open each daemon's mouth while it speaks: each daemon with checked eyes, the suggestion boxed (red: a mouth already drawn in the sprite; orange: one placed), and beside it the mouth open. None is drawn until checked; until then a speech bubble.
 
 ![16Oct2026 - C138 - mouths suggested for checking - 13](16Oct2026%20-%20C138%20-%20mouths%20suggested%20for%20checking%20-%2013.png)
+
+### 16Oct2026 - C138 - BOX-3 speaking with mouths - 14
+
+The BOX-3's replying frames with checked mouths (companion 60e0639): CODEMUSAI and CAREMUSAI open a light bar on the visor, ARCHIVER and ECHO open their mouths; frame 0 open, frame 1 shut.
+
+![16Oct2026 - C138 - BOX-3 speaking with mouths - 14](16Oct2026%20-%20C138%20-%20BOX-3%20speaking%20with%20mouths%20-%2014.png)
