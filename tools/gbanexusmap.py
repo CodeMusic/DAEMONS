@@ -92,6 +92,33 @@ DOORS = [
     ("FourIsland_Grove", (17, 10)), ("FiveIsland_Meadow_Grove", (21, 13)), ("SixIsland_WaterPath_Grove", (17, 15)),
     ("SevenIsland_Grove", (20, 18)),
 ]
+#  T-408 (the user, 2026-10-16, from The Painted Mirror, where each NEXUS door was its own universe): every grove is a
+#  universe, and a sign stands beside its door -- readable before you have been, its words a hint to where the door is.
+#  Names and words approved by the user, 2026-10-16. The sign is the game's own sign object: no tile is spent (the
+#  tileset is at 1006 of 1024), one shared picture. It stands on the clearing's side of the door, a row below its crown.
+UNIVERSES = {
+    "ViridianForest_Grove": ("THE BACKDROPVERSE", "Where everyone walks past first,\none tree is not part of the forest."),
+    "Route1_Grove": ("THE PULSEVERSE", "Before you knew the way, your feet\nknew the first road out of town."),
+    "Route24_Grove": ("THE INWARDVERSE", "Past the bridge everyone dares,\nthe one who stops to look inside."),
+    "Route25_Grove": ("THE EMPATHVERSE", "On the long road to the far cottage,\na bush stands where no one asked it."),
+    "Route11_Grove": ("THE DRIFTVERSE", "East of the harbour, a tree is\nresting where the road forgot it."),
+    "Route8_Grove": ("THE HAZEVERSE", "Between two towns, a little before\nthe tower, something is fading."),
+    "Route13_Grove": ("THE HUSHVERSE", "In the copse by the fences, one\ncorner tree has not said a word."),
+    "OneIsland_Grove": ("THE SEEDVERSE", "On the first island, one bush is\nholding a value nobody can see."),
+    "TwoIsland_Grove": ("THE WEATHERVERSE", "On the second island, a tree is\nwaiting to see what the sky does."),
+    "ThreeIsland_BerryForest_Grove": ("THE HUNGERVERSE", "In the third island's berries,\nsomething has eaten all the paths."),
+    "FourIsland_Grove": ("THE HUSKVERSE", "On the cold fourth island, a tree\nhas left its old shell behind."),
+    "FiveIsland_Meadow_Grove": ("THE MECHAVERSE", "In the fifth island's meadow, four\nminds are learning to be one."),
+    "SixIsland_WaterPath_Grove": ("THE COMPASSVERSE", "Along the sixth island's water,\na rock points the same way always."),
+    "SevenIsland_Grove": ("THE CLAYVERSE", "At the end of the seventh island,\na bush hides a figure of clay."),
+}
+
+
+def sign_at(x, y):
+    """Beside a door's 2x2 crown at (x, y): right of it on the mainland's (left) side, left of it on the islands'."""
+    return (x + 2, y + 1) if x < W // 2 else (x - 1, y + 1)
+
+
 HUNTER = (12, 14)
 PHOENIX = (12, 10)
 PIER = ("MAP_SSANNE_EXTERIOR", 57, 27)                    # beside the pier's fir, on the strip north of it
@@ -147,6 +174,7 @@ TEXT = {
     "Nexus_Text_Phoenix": "Its cry rings out, and the shadows\nin the paint come clear!",
 }
 TEXT.update({"Nexus_Text_Guardian%d" % k: g for k, g in enumerate(GUARDIAN)})
+TEXT.update({"Nexus_Text_Sign%d" % k: "%s\\p%s" % UNIVERSES[name] for k, (name, _) in enumerate(DOORS)})   # T-408
 BOX = 208
 
 
@@ -780,6 +808,9 @@ def scripts(states, ts):
             "\tclearflag FLAG_HIDE_FIR_UNKEYED",
             "\treturn",
             ""]
+    #  T-408: the universes' signs, one beside every door, read whether or not the grove has been found
+    for k, (name, _) in enumerate(DOORS):
+        out += ["%s_EventScript_Sign%d::" % (NAME, k), "\tmsgbox %s_Text_Sign%d, MSGBOX_SIGN" % (NAME, k), "\tend", ""]
     return "\n".join(out)
 
 
@@ -809,7 +840,9 @@ def map_json():
         "object_events": [obj("OBJ_EVENT_GFX_NEXUS_HUNTER", HUNTER, "MOVEMENT_TYPE_LOOK_AROUND",
                               "%s_EventScript_Hunter" % NAME, "0"),
                           obj("OBJ_EVENT_GFX_HO_OH", PHOENIX, "MOVEMENT_TYPE_FACE_DOWN",
-                              "%s_EventScript_Phoenix" % NAME, "FLAG_NEXUS_PHOENIX_GONE")],
+                              "%s_EventScript_Phoenix" % NAME, "FLAG_NEXUS_PHOENIX_GONE")] +
+                         [obj("OBJ_EVENT_GFX_SIGN", sign_at(x, y), "MOVEMENT_TYPE_FACE_DOWN",       # T-408
+                              "%s_EventScript_Sign%d" % (NAME, k), "0") for k, (_, (x, y)) in enumerate(DOORS)],
         "warp_events": [], "coord_events": [], "bg_events": bg}
 
 
