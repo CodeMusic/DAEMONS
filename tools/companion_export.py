@@ -516,11 +516,117 @@ def seasons_table():
             "play_hours_per_season": seasons.PLAY_HOURS_PER_SEASON}
 
 
+
+#  C-126/C-127 (the companion session, for the user's PROFILE, 2026-10-16): the MARKS as the trainer card draws them
+#  and with their STREAM lessons; the UNDERSTANDINGS' colours and lobes; the two regions as the region map lays them out.
+MARK_TOWNS = ["MAPSEC_PEWTER_CITY", "MAPSEC_CERULEAN_CITY", "MAPSEC_VERMILION_CITY", "MAPSEC_CELADON_CITY",
+              "MAPSEC_FUCHSIA_CITY", "MAPSEC_SAFFRON_CITY", "MAPSEC_CINNABAR_ISLAND", "MAPSEC_VIRIDIAN_CITY"]
+
+
+def _section_names():
+    return {sec["id"]: sec.get("name", "") for sec in json.loads(read("src/data/region_map/region_map_sections.json"))["map_sections"]}
+
+
+def marks_table():
+    """C-126: each MARK -- its flag, its STREAM lesson (title and both scripts, teachy_tv.h), and the town whose
+    BENCHMARK gives it; its badge is art/mark_N.png. And each UNDERSTANDING -- its flag, its lobe and colour on the
+    USER card's brain (trainer_card.c's sBrainLobes, T-331), where it is arrived at, and its name. The understandings
+    have only WORKING names (the debug menu's) until the user names them (T-252); their lessons are T-405."""
+    tv = read("src/data/text/teachy_tv.h")
+    def text(sym):
+        m = re.search(r"const u8 %s\[\] = _\(\s*(.*?)\);" % sym, tv, re.S)
+        #  the game's scroll break (\\l) is a line break on a phone, and the terminating $ is not a word
+        return gba_string(m.group(1)).replace("\\l", "\n").rstrip("$") if m else ""
+    names = _section_names()
+    flags = flag_values(["FLAG_BADGE0%d_GET" % i for i in range(1, 9)] + UNDERSTANDINGS)
+    marks = []
+    for i in range(1, 9):
+        marks.append({"n": i, "flag": flags["FLAG_BADGE0%d_GET" % i], "art": "mark_%d.png" % i,
+                      "title": text("gTeachyTvString_Mark%d" % i),
+                      "lesson": [t for t in (text("gTeachyTvText_Mark%dScript1" % i), text("gTeachyTvText_Mark%dScript2" % i)) if t],
+                      "found": names.get(MARK_TOWNS[i - 1], "")})
+    tc = read("src/trainer_card.c")
+    lobes = re.findall(r"\{ (FLAG_UNDERSTANDING_\w+),\s*\w+,\s*RGB\((\d+), (\d+), (\d+)\)\s*\},\s*//\s*(\w+)\s+(\w+)", tc)
+    debug = read("src/daemons_debug_events.c")
+    working = re.findall(r"sName_Root(\d)\[\] = _\(\"([^\"]*)\"\)", debug)
+    working = {int(n): t for n, t in working}
+    found = ["TANOBY CHAMBERS, its last inscription", "CALLOW SCHOOL: the TEXTBOOK and the DIPLOMA",
+             "BRAZEN's READING ROOM, with REVEAL", "QUICKSILVER's notes: the run logs and THE FILE",
+             "SCORN beaten, the eighth MARK", "TY met, and CRYSTAL found", "THE GUIDE, read to its end"]
+    unders = []
+    for k, (flag, r, g, b, lobe, ty) in enumerate(lobes):
+        unders.append({"n": k + 1, "flag": flags[flag], "flag_name": flag, "lobe": lobe, "type": ty,
+                       "rgb": rgb8(int(r), int(g), int(b)), "name": working.get(k + 1, ""), "name_is_working": True,
+                       "found": found[k], "lesson": None})
+    return {"_about": "C-126: the MARKS (badge art, STREAM lesson, town) and the UNDERSTANDINGS (brain lobe, colour, "
+                      "where arrived at). Understanding names are working names until the user names them (T-252); "
+                      "their lessons are null until T-405. Order matches profile_layout's flags.understandings.",
+            "marks": marks, "understandings": unders}
+
+
+def regions_table():
+    """C-127: GAMUT and THE MARGINS as the region map lays them out -- each map grid's cells as map sections (22 x 15,
+    the map layer of region_map_layout_*.h), and for every section its name and the flag the game sets when it is
+    first visited (FLAG_WORLD_MAP_*, which the game keeps for towns and a few places only -- a route has none). THE
+    MARGINS' name is hidden until game_clear (the REVIEW BOARD beaten, profile_layout's flags.game_clear)."""
+    names = _section_names()
+    fl = read("include/constants/flags.h")
+    visited = {}
+    world = re.findall(r"#define (FLAG_WORLD_MAP_(\w+))\s", fl)
+    want = flag_values([f for f, _ in world])
+    for f, suffix in world:
+        mapname = None
+        for d in os.listdir(os.path.join(GBA, "data/maps")):
+            mj = os.path.join(GBA, "data/maps", d, "map.json")
+            if os.path.exists(mj):
+                m = json.load(open(mj))
+                if m.get("id") == "MAP_" + suffix:
+                    mapname = m.get("region_map_section"); break
+        if mapname:
+            visited.setdefault(mapname, want[f])
+    def grid(fname):
+        body = read("src/data/region_map/%s" % fname)
+        layer = body.split("[LAYER_MAP] =")[1].split("[LAYER_DUNGEON]")[0]
+        return [re.findall(r"MAPSEC_\w+", row) for row in re.findall(r"\{([^{}]*)\}", layer)]
+    regions = []
+    for key, title, files in (("mainland", "gText_Kanto", ["region_map_layout_kanto.h"]),
+                              ("islands", "gText_SeviiIslands", ["region_map_layout_sevii_123.h", "region_map_layout_sevii_45.h", "region_map_layout_sevii_67.h"])):
+        name = gba_string(re.search(r"const u8 %s\[\] = _\((\".*?\")\);" % title, read("src/strings.c")).group(1))
+        maps = [{"file": f, "grid": grid(f)} for f in files]
+        secs = sorted({c for m in maps for row in m["grid"] for c in row} - {"MAPSEC_NONE"})
+        regions.append({"key": key, "name": name, "hidden_until": "game_clear" if key == "islands" else None, "maps": maps,
+                        "sections": {sc: {"name": names.get(sc, ""), "visited_flag": visited.get(sc)} for sc in secs}})
+    return {"_about": "C-127: the two regions as the game's region map lays them out. A cell is a map section; a section "
+                      "with a visited_flag lights when that flag is set (bits as profile_layout explains); one without "
+                      "(routes, water) has no record in the save -- light it however the PROFILE likes, e.g. when a "
+                      "neighbouring town is lit. MARGINS is three maps, as the game's own region map is.",
+            "regions": regions}
+
+
+def mark_art():
+    """C-126: the eight MARK badges as the trainer card draws them -- badges.png (128x16, a 16x16 badge each) in the
+    card's badge palette."""
+    from PIL import Image
+    sheet = Image.open(os.path.join(GBA, "graphics/trainer_card/badges.png"))
+    pal = None
+    gp = os.path.join(GBA, "graphics/trainer_card/badges.pal")
+    if os.path.exists(gp):
+        v = [int(x) for x in read("graphics/trainer_card/badges.pal").split()[3:3 + 48]]
+        pal = v + [0] * 720
+    out = {}
+    for i in range(8):
+        im = sheet.crop((i * 16, 0, i * 16 + 16, 16)).convert("P") if sheet.mode == "P" else sheet.crop((i * 16, 0, i * 16 + 16, 16))
+        if pal and im.mode == "P":
+            im.putpalette(pal)
+        out["mark_%d.png" % (i + 1)] = im
+    return out
+
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
              "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
-             "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table()}
+             "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table(),
+             "marks.json": marks_table(), "regions.json": regions_table()}   # C-126, C-127
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -539,6 +645,7 @@ def main():
     import io
     art = party_art(files["species.json"])
     art.update(player_art())                                           # C-125
+    art.update(mark_art())                                             # C-126
     art_dir = os.path.join(OUT, "art")
     art_changed = 0
     for name, im in art.items():
