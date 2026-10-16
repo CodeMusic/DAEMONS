@@ -73,3 +73,9 @@ HOME on the site (companion 6016d05) against a stand-in Home Assistant with made
 T-413: SCORN's converged party, the stack (the user, 2026-10-16), played in the theatre
 
 ![16Oct2026 - T413 - SCORN the stack - 12](16Oct2026%20-%20T413%20-%20SCORN%20the%20stack%20-%2012.png)
+
+### 16Oct2026 - C138 - mouths suggested for checking - 13
+
+Where the BOX-3 would open each daemon's mouth while it speaks: each daemon with checked eyes, the suggestion boxed (red: a mouth already drawn in the sprite; orange: one placed), and beside it the mouth open. None is drawn until checked; until then a speech bubble.
+
+![16Oct2026 - C138 - mouths suggested for checking - 13](16Oct2026%20-%20C138%20-%20mouths%20suggested%20for%20checking%20-%2013.png)
