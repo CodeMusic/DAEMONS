@@ -25,3 +25,21 @@ T-409 DRAFT: the NEXUS tree lit note by note in the painting's colours, with the
 Goal B DRAFT: the glitch effect (DEBUG > SOUND > GLITCH), placed nowhere; sent 2026-10-16
 
 ![16Oct2026 - GoalB - glitch effect draft - 4](16Oct2026%20-%20GoalB%20-%20glitch%20effect%20draft%20-%204.gif)
+
+### 16Oct2026 - C138 - BOX-3 faces by voice phase - 5
+
+The ESP32-S3-BOX-3's screen, as the companion draws it: each Home Assistant voice phase (idle, listening, thinking, replying, error, muted, timer) in two frames, for CODEMUSAI, CAREMUSAI, ARCHIVER and LENSMUSAI awake, then CODEMUSAI asleep (it wakes to answer). Half size.
+
+![16Oct2026 - C138 - BOX-3 faces by voice phase - 5](16Oct2026%20-%20C138%20-%20BOX-3%20faces%20by%20voice%20phase%20-%205.png)
+
+### 16Oct2026 - C138 - BOX-3 faces by voice phase - 6
+
+The ESP32-S3-BOX-3's screen, as the companion draws it: each Home Assistant voice phase (idle, listening, thinking, replying, error, muted, timer) in two frames, for CODEMUSAI, CAREMUSAI, ARCHIVER and LENSMUSAI awake, then CODEMUSAI asleep (it wakes to answer). Half size.
+
+![16Oct2026 - C138 - BOX-3 faces by voice phase - 6](16Oct2026%20-%20C138%20-%20BOX-3%20faces%20by%20voice%20phase%20-%206.png)
+
+### 16Oct2026 - C138 - BOX-3 device picture - 7
+
+The ESP32-S3-BOX-3 as DEVICES draws it (Espressif): white face, screen, red circle, cyan dock.
+
+![16Oct2026 - C138 - BOX-3 device picture - 7](16Oct2026%20-%20C138%20-%20BOX-3%20device%20picture%20-%207.png)
