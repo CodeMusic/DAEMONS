@@ -122,7 +122,7 @@ def sign_at(x, y):
 HUNTER = (12, 14)
 PHOENIX = (12, 10)
 PIER = ("MAP_SSANNE_EXTERIOR", 57, 27)                    # beside the pier's fir, on the strip north of it
-MUSIC = "MUS_SLOW_PALLET"                                 # the home theme, slowed -- the way home is here (approved)
+MUSIC = "MUS_NEXUS"         # T-409 (DRAFT): its own, on the fir's notes (tools/gennexustheme.py); was MUS_SLOW_PALLET
 
 # ------------------------------------------------------------------------- the words (approved by the user, 2026-10-10)
 #  The GUARDIAN OF THE NEXUS, a voice, never seen: the source's own lines, one at each door, cut to the box. APPROVED by

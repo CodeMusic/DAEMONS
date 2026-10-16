@@ -35,7 +35,7 @@ CHIP_BANK, CHIP_SLOTS = "voicegroup192", {80, 81, 87, 126}
 
 OURS = ["mus_title", "mus_pallet", "mus_pewter", "mus_route1", "mus_brazen",
         "mus_celadon", "mus_cinnabar", "mus_lavender", "mus_vermillion",
-        "mus_silph", "mus_poke_mansion", "mus_mt_moon", "mus_caught_intro"]
+        "mus_silph", "mus_poke_mansion", "mus_mt_moon", "mus_caught_intro", "mus_callow", "mus_nexus"]
 JINGLES = {"mus_caught_intro"}          # plays once and hands the screen back
 
 def banks():
