@@ -43,3 +43,15 @@ The ESP32-S3-BOX-3's screen, as the companion draws it: each Home Assistant voic
 The ESP32-S3-BOX-3 as DEVICES draws it (Espressif): white face, screen, red circle, cyan dock.
 
 ![16Oct2026 - C138 - BOX-3 device picture - 7](16Oct2026%20-%20C138%20-%20BOX-3%20device%20picture%20-%207.png)
+
+### 16Oct2026 - T408 - the NEXUS signs - 8
+
+v11.301.7: T-408, each grove door in THE NEXUS has its universe's sign (in game), and the map sheet decoded from the ROM
+
+![16Oct2026 - T408 - the NEXUS signs - 8](16Oct2026%20-%20T408%20-%20the%20NEXUS%20signs%20-%208.png)
+
+### 16Oct2026 - T408 - the NEXUS signs - 9
+
+v11.301.7: T-408, each grove door in THE NEXUS has its universe's sign (in game), and the map sheet decoded from the ROM
+
+![16Oct2026 - T408 - the NEXUS signs - 9](16Oct2026%20-%20T408%20-%20the%20NEXUS%20signs%20-%209.png)
