@@ -44,6 +44,33 @@ def gba_string(body):
     return "".join(parts).replace("\\n", "\n").replace("\\p", "\n\n")
 
 
+def native_values():
+    """{SPECIES_X: the packed u16 tools/gbanative.py writes into the ROM} -- one source for the game and the companion."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import gbanative
+    return {sp: gbanative.pack(h) for sp, h in gbanative.homes().items()}
+
+
+def native_of(v):
+    """T-407: what the INDEX's NATIVE box says, as data. None: not met in the wild. A list is null when it is every
+    one (any season, any hour, both editions). grove is the universe's name (THE NEXUS for the NEXUS) -- the game
+    shows A GROVE until the daemon has been seen, and so should the companion."""
+    if not v:
+        return None
+    import gbagrove, gbanexusmap, gbanative
+    seasons = [x for i, x in enumerate(gbanative.SEASONS) if v >> (4 + i) & 1]
+    hours = [x for i, x in enumerate(gbanative.WATCHES) if v >> (8 + i) & 1]
+    editions = [x for i, x in enumerate(("CONTENT", "CONTEXT")) if v >> (2 + i) & 1]
+    g = v >> 12
+    grove = None if not g else "THE NEXUS" if g == gbanative.NEXUS else \
+        gbanexusmap.UNIVERSES[gbagrove.GROVES[g - 1]["name"]][0]
+    return {"regions": [x for i, x in enumerate(("GAMUT", "THE MARGINS")) if v >> i & 1],
+            "editions": editions if len(editions) < 2 else None,
+            "seasons": seasons if len(seasons) < 4 else None,
+            "hours": hours if len(hours) < 4 else None,
+            "grove": grove}
+
+
 def species_table():
     ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define SPECIES_(\w+)\s+(\d+)\b", read("include/constants/species.h"))}
     dex = re.findall(r"NATIONAL_DEX_(\w+)\s*,", read("include/constants/pokedex.h"))
@@ -100,6 +127,7 @@ def species_table():
         if all(got):
             base[m.group(1)] = [int(x.group(1)) for x in got]
 
+    native = native_values()
     out = {}
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
         if sp not in to_nat or sp not in names:
@@ -120,6 +148,7 @@ def species_table():
             "streaks": sp in streaky,                  # C-18: palette 11..14 carry its four routines' streaks
             "growth": growth.get(sp, 0),               # C-24: GROWTH_*, MEDIUM_FAST where a macro hides it
             "base": base.get(sp),                      # C-45: HP, Attack, Defense, Speed, Sp.Atk, Sp.Def
+            "native": native_of(native.get("SPECIES_" + sp, 0)),   # T-407: the INDEX's NATIVE box, as data
         }
         out[str(sid)] = row
     # T-395: the save keeps an INDEX bit per national number up to NUM_SPECIES rounded to a byte (DEX_FLAGS_NO, 416);
