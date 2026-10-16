@@ -43,3 +43,15 @@ Drift sweep: the 20 T-120 Hoenn portraits take the true-black outline (was / now
 T-404: ENTEI, RAIKOU, SUICUNE, CELEBI's overworld objects from their own art in their type palettes
 
 ![15Oct2026 - T404 - legendaries overworld in type colours - 10](15Oct2026%20-%20T404%20-%20legendaries%20overworld%20in%20type%20colours%20-%2010.png)
+
+### 15Oct2026 - C123 - a message from the T-Deck to everyone nearby - 11
+
+C-123 on the T-Deck: home (type: a message nearby), typing, Enter -- Sent to everyone nearby, a message heard kept in its box (FROM STARR, NEARBY), and a key that reads it.
+
+![15Oct2026 - C123 - a message from the T-Deck to everyone nearby - 11](15Oct2026%20-%20C123%20-%20a%20message%20from%20the%20T-Deck%20to%20everyone%20nearby%20-%2011.png)
+
+### 15Oct2026 - C121 - the T-Deck on the bench - 12
+
+The T-Deck on its own Wi-Fi again (it had known none of the networks here), ARCHIVER at rest, and in awake, drowsy, asleep, glad, sad.
+
+![15Oct2026 - C121 - the T-Deck on the bench - 12](15Oct2026%20-%20C121%20-%20the%20T-Deck%20on%20the%20bench%20-%2012.png)
