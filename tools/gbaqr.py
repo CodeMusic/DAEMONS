@@ -42,6 +42,17 @@ CODES = [
     ("NineScars",    "https://soundcloud.com/codemusai/09-nine-scars-nine-breaches"),
     ("ScornSolution", "https://soundcloud.com/codemusai/03-scorns-solution"),
     ("ScornBlues",   "https://soundcloud.com/codemusai/12-scornsolutions-blues"),
+    #  T-402, the rest (the user's links, 2026-10-15). Crystal's Reply (https://soundcloud.com/codemusai/19-crystals-reply)
+    #  waits for LOOSE PAGES 6, which is not written; Ty's Redemption has two parts and NO ADDRESS carries Part 1's.
+    ("PolyFields",   "https://soundcloud.com/codemusai/04-poly-and-fields-act-1"),
+    ("LovePersists", "https://soundcloud.com/codemusai/14-love-persists"),
+    ("DesperateShadows", "https://soundcloud.com/codemusai/14-25-desperate-shadows"),
+    ("QuantumTranslations", "https://soundcloud.com/codemusai/14-75-quantum-translations"),
+    ("StarrsRevelation", "https://soundcloud.com/codemusai/16-s-t-a-r-r-s-revelation"),
+    ("TysRedemption", "https://soundcloud.com/codemusai/17-tys-redemption-part1"),
+    ("BetrayalsSting", "https://soundcloud.com/codemusai/20-betrayals-sting"),
+    ("EmpireOfScorn", "https://soundcloud.com/codemusai/21-empire-of-scorn"),
+    ("OwlAndCode",   "https://soundcloud.com/codemusai/the-owl-and-the-code"),
 ]
 
 
