@@ -61,3 +61,15 @@ v11.301.7: T-408, each grove door in THE NEXUS has its universe's sign (in game)
 T-409 DRAFT: the fir in B-flat (the user, 2026-10-16), green opening, the painting's colours
 
 ![16Oct2026 - T409 - the tree in B-flat - 10](16Oct2026%20-%20T409%20-%20the%20tree%20in%20B-flat%20-%2010.png)
+
+### 16Oct2026 - C139 - HOME on the site against a stand-in house - 11
+
+HOME on the site (companion 6016d05) against a stand-in Home Assistant with made-up rooms: the house's name, ASK THE HOUSE answered, rooms with On/Off, -/+, Open/Stop/Close, Run, Pause/Next; a lock shown with no keys and an unreachable light greyed; the site's Home Assistant card connected, the token kept and never shown.
+
+![16Oct2026 - C139 - HOME on the site against a stand-in house - 11](16Oct2026%20-%20C139%20-%20HOME%20on%20the%20site%20against%20a%20stand-in%20house%20-%2011.png)
+
+### 16Oct2026 - T413 - SCORN the stack - 12
+
+T-413: SCORN's converged party, the stack (the user, 2026-10-16), played in the theatre
+
+![16Oct2026 - T413 - SCORN the stack - 12](16Oct2026%20-%20T413%20-%20SCORN%20the%20stack%20-%2012.png)
