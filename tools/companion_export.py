@@ -444,6 +444,9 @@ def profile_layout():
             "sb1": {"location": sb1["location"], "flags": sb1["flags"], "money": sb1["money"],
                     "rival_name": sb1["rivalName"],                                    # C-125: the name the player gave
                     "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount),
+                    #  C-128: the PLUGIN pocket holds the eight DRIVERS (and every PLUGIN), the items pocket TEA
+                    "tmhm": sb1["bagPocket_TMHM"], "tmhm_count": int(re.search(r"#define\s+BAG_TMHM_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
+                    "items_pocket": sb1["bagPocket_Items"], "items_count": int(re.search(r"#define\s+BAG_ITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
                     # C-15: the INDEX's seen flags are kept three times; the game believes them only when all agree
                     "seen1": sb1["seen1"], "seen2": sb1["seen2"]},
             "flags": {"marks_first": flags["FLAG_BADGE01_GET"], "marks_last": flags["FLAG_BADGE08_GET"],
@@ -547,6 +550,17 @@ def marks_table():
                       "title": text("gTeachyTvString_Mark%d" % i),
                       "lesson": [t for t in (text("gTeachyTvText_Mark%dScript1" % i), text("gTeachyTvText_Mark%dScript2" % i)) if t],
                       "found": names.get(MARK_TOWNS[i - 1], "")})
+    #  T-389/T-390's words (docs/wisdom.json, DRAFT): the leader after the win without the paired understanding and with
+    #  it, the union PLUGIN handed over and what it does, and the insight that arrives when both are held. The eighth
+    #  MARK has no pair. T-410's balance paragraphs will join these as "balance".
+    wis = json.load(open(os.path.join(ROOT, "docs", "wisdom.json"), encoding="utf-8"))
+    for pr in wis["pairs"]:
+        n = int(pr["badge"][-6:-4])
+        marks[n - 1]["wisdom"] = {"leader": pr["leader"], "virtue": pr["virtue"], "root_flag_name": pr["root"],
+                                  "without": pr["without"], "with": pr["with"], "explain": pr["explain"],
+                                  "union_plugin": pr["plugin_name"], "union_routine": pr["routine"],
+                                  "given_flag_name": pr["given"], "insight": pr["insight"],
+                                  "insight_flag_name": pr["insight_flag"]}
     tc = read("src/trainer_card.c")
     lobes = re.findall(r"\{ (FLAG_UNDERSTANDING_\w+),\s*\w+,\s*RGB\((\d+), (\d+), (\d+)\)\s*\},\s*//\s*(\w+)\s+(\w+)", tc)
     debug = read("src/daemons_debug_events.c")
@@ -603,6 +617,32 @@ def regions_table():
                       "(routes, water) has no record in the save -- light it however the PROFILE likes, e.g. when a "
                       "neighbouring town is lit. MARGINS is three maps, as the game's own region map is.",
             "regions": regions}
+
+
+def _grove_flag(g):
+    return "FLAG_" + re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "_", g.replace("_Grove", "")).upper() + "_GROVE_FOUND"
+
+
+def groves_table():
+    """T-408: the fourteen groves as universes -- each one's name and the sign beside its door in THE NEXUS (both
+    approved by the user, 2026-10-16), the map its door tree stands on, the flag set the first time it is arrived in,
+    and the family that lives there (our names). Read from tools/gbanexusmap.py and tools/gbagrove.py as text."""
+    nx = open(os.path.join(ROOT, "tools", "gbanexusmap.py"), encoding="utf-8").read()
+    gv = open(os.path.join(ROOT, "tools", "gbagrove.py"), encoding="utf-8").read()
+    uni = {g: (t, h.replace("\\n", "\n")) for g, t, h in re.findall(r'"(\w+_Grove)": \("([^"]+)", "([^"]+)"\)', nx)}
+    rows = re.findall(r'dict\(name="(\w+_Grove)", parent="(\w+)".*?family="(\w+)"', gv, re.S)
+    fam = dict(re.findall(r'"(\w+)":\s*\[(\(.*?\))\],', gv))
+    byconst = {v["constant"]: v["name"] for v in species_table().values() if isinstance(v, dict) and v.get("constant")}
+    flags = flag_values([_grove_flag(g) for g, _, _ in rows])
+    out = []
+    for g, parent, family in rows:
+        t, h = uni.get(g, ("", ""))
+        out.append({"grove": g, "universe": t, "sign": h, "door_map": parent, "found_flag": flags.get(_grove_flag(g)),
+                    "found_flag_name": _grove_flag(g),
+                    "family": [byconst.get(c, c) for c in re.findall(r"SPECIES_(\w+)", fam.get(family, ""))]})
+    return {"_about": "T-408: the groves as universes, with THE NEXUS's signs; found_flag is set the first time the "
+                      "grove is arrived in (bits as profile_layout explains). THE NEXUS itself is the PAINTEDVERSE.",
+            "nexus": "THE PAINTEDVERSE", "groves": out}
 
 
 def mark_art():
@@ -812,7 +852,8 @@ def main():
              "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
              "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table(),
              "marks.json": marks_table(), "regions.json": regions_table(),     # C-126, C-127
-             "events.json": events_table(), "school.json": school_table()}       # C-128, C-129
+             "events.json": events_table(), "school.json": school_table(),
+             "groves.json": groves_table()}                                     # T-408       # C-128, C-129
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
