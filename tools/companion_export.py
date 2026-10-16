@@ -20,6 +20,8 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
   maps.json     every map by the numbers a save stores, with its place's name (C-23)
   margins.json  OPUS's margins, and the game's rule for which line shows (C-24, T-373)
   items.json    every item by id, our name and description, for what an AWAY daemon holds (C-31)
+  events.json   the GAME EVENTS, in story order, and the flags that say each is held (C-128)
+  school.json   CALLOW SCHOOL: each floor's subject, syllabus and board, the paper, the DIPLOMA (C-129)
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
 entries and our art only.
@@ -621,12 +623,196 @@ def mark_art():
         out["mark_%d.png" % (i + 1)] = im
     return out
 
+def _c_strings(src):
+    """{symbol: text} for every _("...") constant in a C file, the scroll break (\\l) a line break, no $"""
+    return {s: gba_string(b).replace("\\l", "\n").rstrip("$")
+            for s, b in re.findall(r"\b(\w+)\[\]\s*=\s*_\(\s*((?:\"(?:[^\"\\]|\\.)*\"\s*)+)\)", src)}
+
+
+def _inc_text(rel, label):
+    """one label's words from a map's text.inc: its .string lines up to the $, \\l and \\p as line breaks"""
+    m = re.search(r"^%s::\s*\n((?:\s*\.string\s+\".*\"\s*\n?)+)" % re.escape(label), read(rel), re.M)
+    return gba_string(m.group(1)).replace("\\l", "\n").rstrip("$") if m else None
+
+
+#  C-128 (the companion session, for the PROFILE, 2026-10-16): the GAME EVENTS page's rows, less the debug's own kit.
+EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
+                   "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL"}
+
+
+def events_table():
+    """C-128: the PROFILE's GAME EVENTS -- every row of the debug menu's GAME EVENTS page (src/daemons_debug_events.c) in
+    story order, a sub-page's rows (MARKS, NOTEBOOK, DRIVERS, UNDERSTANDINGS) where its row stands, each with the test
+    the page's IsHeld makes for its + or ·, as flags and a var. The debug's own kit (EVERYTHING, THE ROSTER, EVERY
+    DAEMON, THE STOCK, EVERY PAGE), each sub-page's ALL and LET INSIGHTS ARRIVE AGAIN are left out. A row held by a
+    bag item has held null and its items, since the bag is not a flag."""
+    src = read("src/daemons_debug_events.c")
+    strings = _c_strings(src)
+    def rows(arr):
+        body = re.search(r"%s\[\]\s*=\s*\{(.*?)\n\};" % arr, src, re.S).group(1)
+        return [(n, k, ev, int(off or 0)) for n, k, ev, off in
+                re.findall(r"\{\s*(sName_\w+),\s*(R_\w+),\s*(\w+)(?:\s*\+\s*(\d+))?\s*\}", body)]
+    titles = {pg: re.split(r"[,:]", strings[t])[0] for pg, t in
+              zip(["PG_EVENTS", "PG_MARKS", "PG_NOTEBOOK", "PG_DRIVERS", "PG_ROOTS"],
+                  re.search(r"sTitles\[PG_COUNT\]\s*=\s*\{(.*?)\};", src, re.S).group(1).replace(",", " ").split())}
+    pages = {"PG_MARKS": "sRows_Marks", "PG_NOTEBOOK": "sRows_Notebook", "PG_DRIVERS": "sRows_Drivers",
+             "PG_ROOTS": "sRows_Roots"}
+    held_src = re.search(r"static bool8 IsHeld\(u8 ev\)\s*\{(.*?)\n\}", src, re.S).group(1)
+    by_flag = dict(re.findall(r"case (EV_\w+):\s*return FlagGet\((FLAG_\w+)\);", held_src))
+    by_item = dict(re.findall(r"case (EV_\w+):\s*return CheckBagHasItem\((ITEM_\w+), 1\);", held_src))
+    by_var = {e: (v, op, int(n, 0)) for e, v, op, n in
+              re.findall(r"case (EV_\w+):\s*return VarGet\((VAR_\w+)\) (!=|==|>=) (\w+);", held_src)}
+    groves = re.findall(r"FLAG_\w+", re.search(r"sGroveFound\[\]\s*=\s*\{(.*?)\};", src, re.S).group(1))
+    roots = [r.split(",")[0].strip() for r in
+             re.findall(r"\{\s*(FLAG_UNDERSTANDING_\w+[^}]*)\}", re.search(r"sRoots\[7\]\[3\]\s*=\s*\{(.*?)\n\};", src, re.S).group(1))]
+    marks = ["FLAG_BADGE0%d_GET" % i for i in range(1, 9)]
+    #  THE OPENING has no mark on the page (it only gives); held here is the last of what DaemonsDebug_FinishOpening
+    #  sets -- the lab's scene once the starter, the rival, the parcel and the INDEX are all handed over
+    opening = re.search(r"VarSet\((VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB), (\d+)\)", read("src/new_game.c"))
+    plan = []                                   # (section, name, flags, var, items, note)
+    for name, kind, ev, off in rows("sRows_Events"):
+        if kind == "R_PAGE":
+            for sname, skind, sev, soff in rows(pages[ev]):
+                if sev in EVENTS_LEFT_OUT:
+                    continue
+                if sev == "EV_MARK1":
+                    plan.append((titles[ev], sname, [marks[soff]], None, None, None))
+                elif sev == "EV_ROOT1":
+                    plan.append((titles[ev], sname, [roots[soff]], None, None, None))
+                elif sev == "EV_DRIVER1":
+                    plan.append((titles[ev], sname, None, None, [("ITEM_HM01", soff)], "held: the DRIVER in the bag"))
+                elif sev in by_flag:
+                    plan.append((titles[ev], sname, [by_flag[sev]], None, None, None))
+                else:
+                    raise SystemExit("  refused: no held test read for %s" % sev)
+            continue
+        if ev in EVENTS_LEFT_OUT:
+            continue
+        sec = titles["PG_EVENTS"]
+        if ev in by_flag:
+            plan.append((sec, name, [by_flag[ev]], None, None, None))
+        elif ev in by_item:
+            plan.append((sec, name, None, None, [(by_item[ev], 0)], "held: the item in the bag"))
+        elif ev in by_var:
+            plan.append((sec, name, [], by_var[ev], None, None))
+        elif ev == "EV_GROVES":
+            plan.append((sec, name, groves, None, None, None))
+        elif ev == "EV_GLOBAL_INDEX":
+            plan.append((sec, name, ["FLAG_SYS_NATIONAL_DEX"], ("VAR_NATIONAL_DEX", "==", 0x6258), None,
+                         "IsNationalPokedexEnabled: also sb2 pokedex.nationalMagic == 0xB9 (sb2_byte)"))
+        elif ev == "EV_OPENING":
+            plan.append((sec, name, [], (opening.group(1), ">=", int(opening.group(2))), None,
+                         "the page only gives this row; held is the lab's scene DaemonsDebug_FinishOpening sets"))
+        elif ev == "EV_STREAM":
+            plan.append((sec, name, None, None, [("ITEM_TEACHY_TV", 0), ("ITEM_FAME_CHECKER", 0)],
+                         "the page only gives this row (the STREAM and HEARSAY in the bag, every show told)"))
+        else:
+            raise SystemExit("  refused: no held test read for %s" % ev)
+    fnames = sorted({f for p in plan for f in (p[2] or [])})
+    vnames = sorted({p[3][0] for p in plan if p[3]})
+    inames = sorted({i for p in plan for i, _ in (p[4] or [])})
+    fl = flag_values(fnames)
+    vr = flag_values(vnames, "constants/vars.h")
+    it = flag_values(inames, "constants/items.h")
+    g = read("include/global.h")
+    sb1, sb2, dex = struct_offsets(g, "SaveBlock1"), struct_offsets(g, "SaveBlock2"), struct_offsets(g, "Pokedex")
+    events = []
+    for k, (sec, name, flags, var, items, note) in enumerate(plan):
+        row = {"n": k + 1, "name": strings[name], "section": sec}
+        if flags is None:
+            row["held"] = None
+            row["items"] = [{"name": i if not o else "%s + %d" % (i, o), "id": it[i] + o} for i, o in items]
+        else:
+            row["held"] = {"all_flags": [fl[f] for f in flags], "flag_names": flags}
+            if var:
+                row["held"]["var"] = {"name": var[0], "number": vr[var[0]], "op": var[1], "value": var[2]}
+            if name == "sName_GlobalIndex":
+                row["held"]["sb2_byte"] = {"field": "pokedex.nationalMagic", "offset": sb2["pokedex"] + dex["nationalMagic"],
+                                           "value": 0xB9}
+        if note:
+            row["note"] = note
+        events.append(row)
+    return {"_about": "C-128: the GAME EVENTS page of the debug menu, in story order, its sub-pages' rows where each "
+                      "stands (section is the page's heading). held: every flag in all_flags set (bits as "
+                      "profile_layout explains) and, if given, var compared by op to value; a var is a u16 at "
+                      "sb1_vars + 2 * (number - vars_start). held null means the page tests the bag: items lists the "
+                      "item ids (key items, or a DRIVER in the TM case). The debug's own kit, each sub-page's ALL and "
+                      "its LET INSIGHTS ARRIVE AGAIN are left out.",
+            "sb1_vars": sb1["vars"], "vars_start": 0x4000, "events": events}
+
+
+def school_table():
+    """C-129: CALLOW SCHOOL, what is taught -- each floor's subject (the TEXTBOOK's chapter names, book_reader.c), its
+    placard and syllabus, its board's five topics (the TEXTBOOK prints the board itself, sTopics, so the book and the
+    building are one text), the flag that marks it stood on (the TEXTBOOK greys a chapter without it); the paper
+    (school_exam.c: seven sections, each question's choices and its right answer, the pass mark, the grade letters);
+    and the DIPLOMA, with the vars the mark is kept in."""
+    br = read("src/book_reader.c")
+    bs = _c_strings(br)
+    chapters = re.findall(r"\bsChapter\d\b", re.search(r"sChapterNames\[[^]]*\]\s*=\s*\{(.*?)\};", br, re.S).group(1))
+    vflags = re.findall(r"FLAG_\w+", re.search(r"sChapterFlags\[[^]]*\]\s*=\s*\{(.*?)\};", br, re.S).group(1))
+    topics = {int(n): re.findall(r"\w+", t) for n, t in
+              re.findall(r"\[(\d)\]\s*=\s*\{([^}]*)\}", re.search(r"sTopics\[[^]]*\]\[[^]]*\]\s*=\s*\{(.*?)\n\};", br, re.S).group(1))}
+    ex = read("src/school_exam.c")
+    es = _c_strings(ex)
+    sections = re.findall(r"\{\s*(sSection_\w+),\s*(sQuestions_\w+),", re.search(r"sSections\[\]\s*=\s*\{(.*?)\};", ex, re.S).group(1))
+    pass_mark = int(re.search(r"#define EXAM_PASS_MARK\s+(\d+)", ex).group(1))
+    per_var = int(re.search(r"#define QS_PER_VAR\s+(\d+)", ex).group(1))
+    grades = [{"from": int(n), "letter": es[s]} for n, s in
+              re.findall(r"if \(percent >= (\d+)\) return (\w+);", re.search(r"GradeLetter\(u16 percent\)(.*?)\n\}", ex, re.S).group(1))]
+    grades.append({"from": 0, "letter": es["sF"]})
+    fl = flag_values(vflags + ["FLAG_GOT_DIPLOMA", "FLAG_SCHOOL_GOT_TEXTBOOK", "FLAG_SCHOOL_PAPER_MARKED"])
+    vnames = ["VAR_SCHOOL_EXAM_BEST", "VAR_SCHOOL_EXAM_LAST", "VAR_SCHOOL_EXAM_ATTEMPTS", "VAR_SCHOOL_EXAM_ANSWERS"]
+    vr = flag_values(vnames, "constants/vars.h")
+    sb1 = struct_offsets(read("include/global.h"), "SaveBlock1")
+    floors = []
+    for k, ch in enumerate(chapters):
+        f = k + 1
+        mapdir = "data/maps/ViridianCity_School" + ("" if f == 1 else "_%dF" % f)
+        prefix = "ViridianCity_School" + ("" if f == 1 else "_%dF" % f)
+        board = []
+        for sym in topics[f]:
+            words = _inc_text(mapdir + "/text.inc", sym)
+            name, _, rest = words.partition("\n\n")
+            board.append({"topic": name, "text": rest})
+        floors.append({"floor": "%dF" % f, "subject": bs[ch], "visited_flag": fl[vflags[k]], "visited_flag_name": vflags[k],
+                       "placard": _inc_text(mapdir + "/text.inc", prefix + "_Text_Placard"),
+                       "syllabus": _inc_text(mapdir + "/text.inc", prefix + "_Text_Syllabus"),
+                       "board_intro": _inc_text(mapdir + "/text.inc", prefix + "_Text_BoardIntro"),
+                       "board": board})
+    paper, q = [], 0
+    for sec, qs in sections:
+        body = re.search(r"%s\[\]\s*=\s*\{(.*?)\n\};" % qs, ex, re.S).group(1)
+        questions = []
+        for t, txt, opts, ans in re.findall(r"\{\s*(\w+),\s*(\w+),\s*\{([^}]*)\},\s*(\d)\s*\}", body):
+            questions.append({"q": q, "title": es[t], "text": es[txt],
+                              "choices": [es[o.strip()] for o in opts.split(",")], "answer": int(ans) - 1})
+            q += 1
+        paper.append({"section": es[sec], "questions": questions})
+    return {"_about": "C-129: CALLOW SCHOOL. floors: 1F-7F, each a TEXTBOOK chapter (subject) whose five topics are "
+                      "the floor's board, word for word; a chapter is greyed until its visited_flag is set. paper: "
+                      "the exam's seven sections in order; answer is an index into choices (the save stores 1-4 for "
+                      "A-D, 0 unanswered). The mark is round(correct * 100 / total); pass_mark or better passes, and "
+                      "passing gives the DIPLOMA (flags.diploma). The save keeps no letter: grades turns a mark into "
+                      "it (GradeLetter). vars: u16s at sb1_vars + 2 * (number - vars_start); answers is the first of "
+                      "the vars holding each question's answer, per_var to a var, three bits each, question q in var "
+                      "answers + q // per_var at bit 3 * (q % per_var).",
+            "floors": floors, "paper": paper, "pass_mark": pass_mark, "grades": grades,
+            "flags": {"diploma": fl["FLAG_GOT_DIPLOMA"], "textbook": fl["FLAG_SCHOOL_GOT_TEXTBOOK"],
+                      "paper_marked": fl["FLAG_SCHOOL_PAPER_MARKED"]},
+            "vars": {"best": vr["VAR_SCHOOL_EXAM_BEST"], "last": vr["VAR_SCHOOL_EXAM_LAST"],
+                     "attempts": vr["VAR_SCHOOL_EXAM_ATTEMPTS"], "answers": vr["VAR_SCHOOL_EXAM_ANSWERS"],
+                     "per_var": per_var},
+            "sb1_vars": sb1["vars"], "vars_start": 0x4000}
+
+
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
              "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
              "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table(),
-             "marks.json": marks_table(), "regions.json": regions_table()}   # C-126, C-127
+             "marks.json": marks_table(), "regions.json": regions_table(),     # C-126, C-127
+             "events.json": events_table(), "school.json": school_table()}       # C-128, C-129
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
