@@ -103,3 +103,9 @@ T-407: NATIVE in place of the size box on the INDEX area screen (PACKET, SENTRY)
 T-407: NATIVE in place of the size box on the INDEX area screen (PACKET, SENTRY), DRAFT words
 
 ![16Oct2026 - T407 - NATIVE on the INDEX - 17](16Oct2026%20-%20T407%20-%20NATIVE%20on%20the%20INDEX%20-%2017.png)
+
+### 16Oct2026 - C143 - NATIVE on the companion INDEX - 18
+
+The companion's INDEX at phone width: ANODE's entry with NATIVE -- GAMUT, CONTENT ONLY, DUSK -- in the game's own words (DRAFT).
+
+![16Oct2026 - C143 - NATIVE on the companion INDEX - 18](16Oct2026%20-%20C143%20-%20NATIVE%20on%20the%20companion%20INDEX%20-%2018.jpg)
