@@ -55,3 +55,9 @@ C-123 on the T-Deck: home (type: a message nearby), typing, Enter -- Sent to eve
 The T-Deck on its own Wi-Fi again (it had known none of the networks here), ARCHIVER at rest, and in awake, drowsy, asleep, glad, sad.
 
 ![15Oct2026 - C121 - the T-Deck on the bench - 12](15Oct2026%20-%20C121%20-%20the%20T-Deck%20on%20the%20bench%20-%2012.png)
+
+### 15Oct2026 - C121 - both Dials on the bench - 14
+
+Both M5 Dials on today's firmware, on their own Wi-Fi again: EMERGENCE asleep at night and ROVERCUB's clock face, ROUTINES with WHISPER first, and each daemon in awake, drowsy, asleep, glad, sad.
+
+![15Oct2026 - C121 - both Dials on the bench - 14](15Oct2026%20-%20C121%20-%20both%20Dials%20on%20the%20bench%20-%2014.png)
