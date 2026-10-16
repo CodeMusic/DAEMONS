@@ -19,3 +19,9 @@ T-409 DRAFT: the NEXUS tree lit note by note in the painting's colours, with the
 T-409 DRAFT: the NEXUS tree lit note by note in the painting's colours, with the new NEXUS theme; sent 2026-10-16 for approval before release
 
 ![16Oct2026 - T409 - the NEXUS tree lit note by note - 3](16Oct2026%20-%20T409%20-%20the%20NEXUS%20tree%20lit%20note%20by%20note%20-%203.png)
+
+### 16Oct2026 - GoalB - glitch effect draft - 4
+
+Goal B DRAFT: the glitch effect (DEBUG > SOUND > GLITCH), placed nowhere; sent 2026-10-16
+
+![16Oct2026 - GoalB - glitch effect draft - 4](16Oct2026%20-%20GoalB%20-%20glitch%20effect%20draft%20-%204.gif)
