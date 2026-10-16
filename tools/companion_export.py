@@ -554,13 +554,17 @@ def marks_table():
     #  it, the union PLUGIN handed over and what it does, and the insight that arrives when both are held. The eighth
     #  MARK has no pair. T-410's balance paragraphs will join these as "balance".
     wis = json.load(open(os.path.join(ROOT, "docs", "wisdom.json"), encoding="utf-8"))
+    wf = flag_values([f for pr in wis["pairs"] for f in (pr["root"], pr["given"], pr["insight_flag"])])
     for pr in wis["pairs"]:
         n = int(pr["badge"][-6:-4])
         marks[n - 1]["wisdom"] = {"leader": pr["leader"], "virtue": pr["virtue"], "root_flag_name": pr["root"],
                                   "without": pr["without"], "with": pr["with"], "explain": pr["explain"],
                                   "union_plugin": pr["plugin_name"], "union_routine": pr["routine"],
                                   "given_flag_name": pr["given"], "insight": pr["insight"],
-                                  "insight_flag_name": pr["insight_flag"]}
+                                  "insight_flag_name": pr["insight_flag"],
+                                  #  numbers, as the save reader works from them (the companion session, 2026-10-16)
+                                  "root_flag": wf[pr["root"]], "given_flag": wf[pr["given"]],
+                                  "insight_flag": wf[pr["insight_flag"]]}
     tc = read("src/trainer_card.c")
     lobes = re.findall(r"\{ (FLAG_UNDERSTANDING_\w+),\s*\w+,\s*RGB\((\d+), (\d+), (\d+)\)\s*\},\s*//\s*(\w+)\s+(\w+)", tc)
     debug = read("src/daemons_debug_events.c")
