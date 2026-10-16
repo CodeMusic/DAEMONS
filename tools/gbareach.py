@@ -12,6 +12,7 @@ legendary. An estimate cannot be re-checked. This reads the game.
 REACHABLE means one of:
 
     wild        src/data/wild_encounters.json -- every grass, water, rock-smash and fishing table
+    shift       src/data/wild_shifts.h -- a grass slot's season and hour homes (T-407, tools/gbashifts.py)
     trainer     src/data/trainer_parties.h -- every party of every trainer
     script      data/**/*.inc -- givemon, setwildbattle, the gift and static and legendary encounters
     trade       src/data/ingame_trades.h -- what is offered AND what is asked for
@@ -50,6 +51,8 @@ def sources():
     out["wild"] = {e["species"].replace("SPECIES_", "") for grp in j.get("wild_encounter_groups", [])
                    for f in grp.get("encounters", []) for k, v in f.items()
                    if isinstance(v, dict) for e in v.get("mons", [])}
+    #  T-407 (2026-10-16): the season and hour rows put 61 daemons in the grass that no wild table names.
+    out["shift"] = species_in(read("src/data/wild_shifts.h"))
     out["trainer"] = species_in(read("src/data/trainer_parties.h"))
     inc = []
     for base, _, files in os.walk(os.path.join(GBA, "data")):
@@ -105,7 +108,7 @@ def main():
     reach = close(direct, evo)
     reach.discard("NONE")
     print("  REACHABLE, by how a player gets there")
-    for k in ("wild", "trainer", "script", "trade", "starter"):
+    for k in ("wild", "shift", "trainer", "script", "trade", "starter"):
         print("    %-9s %4d" % (k, len(src[k])))
     print("    %-9s %4d   (direct %d, +%d by evolution)" % ("all", len(reach), len(direct), len(reach) - len(direct)))
 

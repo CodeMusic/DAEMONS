@@ -44,6 +44,10 @@ AND A NAME PRINTED BEFORE IT IS LOOKED UP (T-377, engine.md trap 43). VERA said 
 {STR_VAR_1} after the party screen had drawn an HP into it and before anything put the daemon's name there. Every script
 is walked along its flow for a message printing a buffer that a screen or battle overwrote and nothing refilled; VERA's
 old line is planted each run, and the check fails if it stops finding it.
+AND THE SEASON AND HOUR HOMES (T-407, the user, 2026-10-16). src/data/wild_shifts.h gives a grass slot to another
+daemon in some seasons and watches, on top of the map's own table -- so a row is only met if its map has grass in that
+edition, its slot is one of the twelve, and it names at least one season and one watch. Each row is read against
+wild_encounters.json, and a row that can never fire is reported.
 """
 import json, os, re, struct, subprocess, sys
 from collections import deque
@@ -499,6 +503,38 @@ def _stale_buffers_fires():
         text_blocks = real
 
 
+SEASON_NAMES, WATCH_NAMES = ["WINTER", "SPRING", "SUMMER", "AUTUMN"], ["DAY", "DUSK", "NIGHT", "DAWN"]
+
+
+def shift_problems(root):
+    """T-407: every wild_shifts.h row that can never fire, and how many rows were read."""
+    path = os.path.join(root, "src/data/wild_shifts.h")
+    if not os.path.exists(path):
+        return [], 0
+    src = open(path).read()
+    wild = json.load(open(os.path.join(root, "src/data/wild_encounters.json")))["wild_encounter_groups"][0]["encounters"]
+    names = set(re.findall(r"\[(SPECIES_\w+)\]\s*=\s*_\(", open(os.path.join(root, "src/data/text/species_names.h")).read()))
+    bad, n = [], 0
+    for block in re.finditer(r"#(?:el)?if defined\((\w+)\)(.*?)(?=#elif|#endif)", src, re.S):
+        label = {"FIRERED": "FireRed", "LEAFGREEN": "LeafGreen"}[block.group(1)]
+        for mp, slot, when, sp in re.findall(r"\{ MAP_GROUP\((MAP_\w+)\), MAP_NUM\(\1\),\s*(\d+), ([^,]+), (SPECIES_\w+) \}",
+                                             block.group(2)):
+            n += 1
+            where = "%s %s slot %s %s" % (label, mp, slot, sp)
+            land = [e for e in wild if e["map"] == mp and label in e["base_label"] and "land_mons" in e]
+            if not land:
+                bad.append("%s: the map has no grass in this edition" % where)
+            elif int(slot) >= len(land[0]["land_mons"]["mons"]):
+                bad.append("%s: there is no such slot" % where)
+            if sp not in names:
+                bad.append("%s: no such daemon" % where)
+            seasons = "WS_ALL_SEASONS" in when or any("SEASON_" + x in when for x in SEASON_NAMES)
+            watches = "WS_ALL_WATCHES" in when or "WS_NOT_NIGHT" in when or any("WATCH_" + x in when for x in WATCH_NAMES)
+            if not (seasons and watches):
+                bad.append("%s: names no season or no watch, so it never fires" % where)
+    return bad, n
+
+
 def main():
     up = upstream()
     rc = 0
@@ -569,6 +605,11 @@ def main():
     for k in sorted(s_ours - s_theirs):
         print("  !! %s prints {%s} in %s after something overwrote it and before anything refilled it (T-377)"
               % (k[0], k[2], k[1]))
+        rc = 1
+    sh_bad, sh_rows = shift_problems(GBA)
+    print("  %d season and hour rows read against the grass they sit on (T-407)" % sh_rows)   # trap 18
+    for b in sh_bad:
+        print("  !! %s" % b)
         rc = 1
     if not rc:
         print("  nothing we changed made anything unreachable, any pocket a trap, any door lead nowhere, any flag wait\n"

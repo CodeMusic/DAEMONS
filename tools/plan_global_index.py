@@ -28,6 +28,8 @@ one line to change, and the page shows what each rule did.
             below the level they evolve at -- so a player can meet a line in
             order and still find each form wild.
   ALREADY   the 33 met on the islands today keep their places.
+  MAINLAND  the 61 daemons given season and hour homes on the early roads (T-407, src/data/wild_shifts.h,
+            tools/gbashifts.py) are met before the League, so they leave this plan: no island slot is spent on them.
   FIXED     the 16 legendaries are not wild: each gets a proposed fixed
             encounter, and those are design, not derivation.
 
@@ -108,11 +110,19 @@ def load():
         maps[j.get("id")] = j.get("region_map_section")
     secs = {s["id"]: s.get("name", s["id"]) for s in json.load(open(os.path.join(GBA, "src/data/region_map/region_map_sections.json")))["map_sections"]}
     wild = json.load(open(os.path.join(GBA, "src/data/wild_encounters.json")))
-    return names, num, types, evo, parent, maps, secs, wild
+    #  T-407: {species: {(edition, map)}} from the season and hour rows, one block per edition.
+    shifts = {}
+    p = os.path.join(GBA, "src/data/wild_shifts.h")
+    src = open(p).read() if os.path.exists(p) else ""
+    for block in re.finditer(r"#(?:el)?if defined\((\w+)\)(.*?)(?=#elif|#endif)", src, re.S):
+        ed = "CONTENT" if block.group(1) == "FIRERED" else "CONTEXT"
+        for mp, sp in re.findall(r"\{ MAP_GROUP\((MAP_\w+)\).*?(SPECIES_\w+) \}", block.group(2)):
+            shifts.setdefault(sp, set()).add((ed, mp))
+    return names, num, types, evo, parent, maps, secs, wild, shifts
 
 
 def main():
-    names, num, types, evo, parent, maps, secs, wild = load()
+    names, num, types, evo, parent, maps, secs, wild, shifts = load()
 
     def root(s):
         while s in parent:
@@ -165,6 +175,13 @@ def main():
             where, ed, why = FIXED[s]
             rows.append({**base, "status": "fixed", "edition": ed, "place": where, "kind": "fixed encounter", "levels": "", "note": why})
             continue
+        if s in shifts:
+            eds = sorted({e for e, _ in shifts[s]})
+            places = sorted({secs.get(maps.get(m), m) for _, m in shifts[s]})
+            rows.append({**base, "status": "mainland", "edition": "both" if len(eds) == 2 else eds[0],
+                         "place": ", ".join(places), "kind": "land, by season or hour", "levels": "",
+                         "note": "Season and hour homes (T-407)" + ("; also on the islands today" if s in met_now else "")})
+            continue
         if s in met_now:
             eds = sorted({e for e, _, _ in met_now[s]})
             places = sorted({secs.get(maps.get(m), m) for _, m, _ in met_now[s]})
@@ -207,12 +224,13 @@ def main():
     count = lambda **kw: sum(1 for r in rows if all(r.get(k) == v for k, v in kw.items()))
     summary = {
         "species": len(rows), "already": count(status="already"), "new": count(status="new"),
-        "fixed": count(status="fixed"), "overflow": count(status="overflow"),
+        "fixed": count(status="fixed"), "overflow": count(status="overflow"), "mainland": count(status="mainland"),
         "content_only": count(edition="CONTENT"), "context_only": count(edition="CONTEXT"), "both": count(edition="both"),
         "named": sum(1 for r in rows if r["name"] != r["id"].replace("SPECIES_", "").replace("_", " ")),
         "families": len(family),
     }
-    print("  %(species)d species past 151: %(already)d already met, %(new)d placed, %(fixed)d fixed, %(overflow)d with no room" % summary)
+    print("  %(species)d species past 151: %(mainland)d on the mainland by season or hour, %(already)d already met on the islands, "
+          "%(new)d placed, %(fixed)d fixed, %(overflow)d with no room" % summary)
     print("  edition: %(content_only)d CONTENT only, %(context_only)d CONTEXT only, %(both)d in both" % summary)
     if "--html" in sys.argv:
         out = sys.argv[sys.argv.index("--html") + 1]
@@ -285,7 +303,7 @@ td.name small{display:block;font-weight:400;color:var(--muted);font-size:12px}
 .ed-CONTEXT{color:var(--context);background:var(--context-soft)}
 .ed-both{color:var(--both);background:var(--both-soft)}
 .st{font:500 11px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
-.st-new{color:var(--sea)} .st-already{color:var(--muted)} .st-fixed{color:var(--context)} .st-overflow{color:var(--warn)}
+.st-new{color:var(--sea)} .st-already{color:var(--muted)} .st-fixed{color:var(--context)} .st-overflow{color:var(--warn)} .st-mainland{color:var(--content)}
 .types{color:var(--muted);font-size:12px}
 .open{display:grid;gap:10px;max-width:78ch}
 .open li{margin-bottom:6px}
@@ -318,6 +336,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--rule);paddin
         <button type="button" id="st-new" aria-pressed="false" data-st="new">Placed</button>
         <button type="button" id="st-fixed" aria-pressed="false" data-st="fixed">Fixed</button>
         <button type="button" id="st-already" aria-pressed="false" data-st="already">Already met</button>
+        <button type="button" id="st-mainland" aria-pressed="false" data-st="mainland">Mainland</button>
       </div>
       <input type="search" id="q" placeholder="Search a name, type or place" aria-label="Search">
       <span class="count" id="count"></span>
@@ -343,7 +362,7 @@ footer{color:var(--muted);font-size:13px;border-top:1px solid var(--rule);paddin
 <script>
 const DATA = __DATA__;
 const S = DATA.summary;
-const tally = [["Past #151", S.species], ["Met today", S.already], ["Placed", S.new], ["Fixed", S.fixed], ["CONTENT only", S.content_only], ["CONTEXT only", S.context_only], ["In both", S.both]];
+const tally = [["Past #151", S.species], ["Mainland", S.mainland], ["Met today", S.already], ["Placed", S.new], ["Fixed", S.fixed], ["CONTENT only", S.content_only], ["CONTEXT only", S.context_only], ["In both", S.both]];
 if (S.overflow) tally.push(["No room", S.overflow]);
 document.getElementById("tally").innerHTML = tally.map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join("");
 document.getElementById("unnamed").textContent = S.species - S.named;
