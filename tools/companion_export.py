@@ -354,6 +354,27 @@ def notebook_table():
     flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"})
     fv = flag_values(flagnames)
     abouts = {n: gba_string(b) for n, b in re.findall(r"static const u8 sNoteAbout_(\w+)\[\]\s*=\s*_\((.*?)\);", notes, re.S)}
+    # T-403: each page's SEEN number (unread until FLAG_NOTEBOOK_SEEN_0 + seen is set) and the map it was found on
+    seen0 = flag_values(["FLAG_NOTEBOOK_SEEN_0"])["FLAG_NOTEBOOK_SEEN_0"]
+    groups = {m: (int(n), int(g)) for m, n, g in
+              re.findall(r"#define (MAP_\w+)\s+\((\d+) \| \((\d+) << 8\)\)", read("include/constants/map_groups.h"))}
+    places = json.load(open(os.path.join(OUT, "maps.json"), encoding="utf-8")) if os.path.exists(os.path.join(OUT, "maps.json")) else {}
+    places = places or maps_table()
+    found = {}
+    for flag, seen, mp in re.findall(r"\{\s*(FLAG_\w+),\s*(\d+),\s*(MAP_\w+),", notes):
+        g = groups.get(mp)
+        found[flag] = (seen0 + int(seen), places.get("%d.%d" % (g[1], g[0]), {}).get("place") if g else None)
+    # T-402: the song or post a page ends on, as its QR code says (sPageQr -> sQrCodes -> the URL above each code)
+    qrc = read("src/data/qr_codes.h")
+    urls = dict((n, u) for u, n in re.findall(r"//\s*(https?://\S+)\s*\nstatic const u8 (sQr_\w+)\[\]", qrc))
+    table = re.search(r"sQrCodes\[\]\s*=\s*\{(.*?)\}", qrc, re.S).group(1).replace(" ", "").split(",")
+    consts = {n: int(v) for n, v in re.findall(r"#define (BOOK_QR_\w+)\s+(\d+)", read("include/constants/book_qr.h"))}
+    pageqr = re.search(r"sPageQr\[\]\s*=\s*\{(.*?)^\};", nb, re.S | re.M).group(1)
+    links = {}
+    for flag, qr in re.findall(r"\{\s*(FLAG_\w+),\s*(BOOK_QR_\w+)\s*\}", pageqr):
+        i = consts.get(qr)
+        if i is not None and i < len(table) and table[i] in urls:
+            links[flag] = urls[table[i]]
     pages = []
     for sec, kind, arg, flag, flag2, title, text in rows:
         words = None
@@ -366,11 +387,14 @@ def notebook_table():
             words = re.sub(r"\{(?!RIVAL\}|PLAYER\})[^}]*\}", "", words).strip()
         pages.append({"section": sections.index(sec), "title": strings[title], "kind": kind[8:].lower(),
                       "flag": fv[flag], "flag2": fv[flag2] if flag2 != "0" else 0,
-                      "about": abouts.get(flag[5:]), "text": words})
+                      "about": abouts.get(flag[5:]), "text": words,
+                      "seen": found.get(flag, (None, None))[0], "place": found.get(flag, (None, None))[1],
+                      "link": links.get(flag)})
     return {"_about": "C-125: the NOTEBOOK's pages in the game's own order, read from src/notebook.c and the headers it "
                       "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
                       "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
-                      "the save when opened; no words here.",
+                      "the save when opened; no words here. seen: the flag set once the page is opened in the game (unread until "
+                      "then, T-403); place: where it was found; link: the song or post its QR code opens (T-402).",
             "sections": [strings[names[s]] for s in sections], "pages": pages}
 
 
