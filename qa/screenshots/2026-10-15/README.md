@@ -61,3 +61,9 @@ The T-Deck on its own Wi-Fi again (it had known none of the networks here), ARCH
 Both M5 Dials on today's firmware, on their own Wi-Fi again: EMERGENCE asleep at night and ROVERCUB's clock face, ROUTINES with WHISPER first, and each daemon in awake, drowsy, asleep, glad, sad.
 
 ![15Oct2026 - C121 - both Dials on the bench - 14](15Oct2026%20-%20C121%20-%20both%20Dials%20on%20the%20bench%20-%2014.png)
+
+### 15Oct2026 - C121 - the CoreS3 on the bench - 15
+
+The CoreS3 on today's firmware: its round face, ROUTINES opened on RADIOS (WHISPER, UPLINK) with the party below, and ARTSAI in awake, drowsy, asleep, glad, sad. Battery 3%, charging.
+
+![15Oct2026 - C121 - the CoreS3 on the bench - 15](15Oct2026%20-%20C121%20-%20the%20CoreS3%20on%20the%20bench%20-%2015.png)
