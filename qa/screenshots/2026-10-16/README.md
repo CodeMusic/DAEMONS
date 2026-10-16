@@ -85,3 +85,9 @@ Where the BOX-3 would open each daemon's mouth while it speaks: each daemon with
 The BOX-3's replying frames with checked mouths (companion 60e0639): CODEMUSAI and CAREMUSAI open a light bar on the visor, ARCHIVER and ECHO open their mouths; frame 0 open, frame 1 shut.
 
 ![16Oct2026 - C138 - BOX-3 speaking with mouths - 14](16Oct2026%20-%20C138%20-%20BOX-3%20speaking%20with%20mouths%20-%2014.png)
+
+### 16Oct2026 - T163 - MISSINGNO arrives as a glitch - 15
+
+The glitch on MISSINGNO's encounter (the user, 2026-10-16), engine 5aa2115c3
+
+![16Oct2026 - T163 - MISSINGNO arrives as a glitch - 15](16Oct2026%20-%20T163%20-%20MISSINGNO%20arrives%20as%20a%20glitch%20-%2015.gif)
