@@ -91,3 +91,15 @@ The BOX-3's replying frames with checked mouths (companion 60e0639): CODEMUSAI a
 The glitch on MISSINGNO's encounter (the user, 2026-10-16), engine 5aa2115c3
 
 ![16Oct2026 - T163 - MISSINGNO arrives as a glitch - 15](16Oct2026%20-%20T163%20-%20MISSINGNO%20arrives%20as%20a%20glitch%20-%2015.gif)
+
+### 16Oct2026 - T407 - NATIVE on the INDEX - 16
+
+T-407: NATIVE in place of the size box on the INDEX area screen (PACKET, SENTRY), DRAFT words
+
+![16Oct2026 - T407 - NATIVE on the INDEX - 16](16Oct2026%20-%20T407%20-%20NATIVE%20on%20the%20INDEX%20-%2016.png)
+
+### 16Oct2026 - T407 - NATIVE on the INDEX - 17
+
+T-407: NATIVE in place of the size box on the INDEX area screen (PACKET, SENTRY), DRAFT words
+
+![16Oct2026 - T407 - NATIVE on the INDEX - 17](16Oct2026%20-%20T407%20-%20NATIVE%20on%20the%20INDEX%20-%2017.png)
