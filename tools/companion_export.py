@@ -316,13 +316,91 @@ def flag_values(names, header="constants/flags.h"):
     return {n: eval(got[n], {"__builtins__": {}}) for n in names}
 
 
+UNDERSTANDINGS = ["FLAG_UNDERSTANDING_FIRST", "FLAG_UNDERSTANDING_SCHOOL", "FLAG_UNDERSTANDING_READING",
+                  "FLAG_UNDERSTANDING_NOTES", "FLAG_UNDERSTANDING_SCORN", "FLAG_UNDERSTANDING_RETURN",
+                  "FLAG_UNDERSTANDING_GUIDE"]
+INSIGHTS = ["FLAG_INSIGHT_" + v for v in ("DILIGENCE", "CHASTITY", "CHARITY", "KINDNESS", "TEMPERANCE", "PATIENCE",
+                                           "HUMILITY")]
+
+
+def notebook_table():
+    """C-125: the NOTEBOOK, as src/notebook.c's own table holds it -- every page in its authored order, its section, the
+    flag (and second flag) that files it, its one line from notebook_notes.h, and its words, from wherever the game keeps
+    them: notebook.c, the placed documents (notebook_documents.h), the insights (wisdom.h) or a map's text.inc. The
+    companion shows a page only once the save holds its flags. A page written from the save at the moment it is opened
+    (the paper's record, WHAT YOU CHOSE) is listed with no words: the game writes it, and the phone says so."""
+    nb, docs, wis = read("src/notebook.c"), read("src/data/notebook_documents.h"), read("src/data/wisdom.h")
+    notes = read("src/data/notebook_notes.h")
+    strings = {}
+    for src in (nb, docs, wis):
+        for name, body in re.findall(r"static const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S):
+            strings[name] = gba_string(body)
+    import glob
+    labels = {}
+    for f in glob.glob(os.path.join(GBA, "data/maps/*/text.inc")) + glob.glob(os.path.join(GBA, "data/text/*.inc")):
+        for name, body in re.findall(r"^(\w+)::\s*\n((?:\s*\.string\s+\"(?:[^\"\\]|\\.)*\"\s*\n?)+)",
+                                     open(f, encoding="utf-8").read(), re.M):
+            labels[name] = gba_string(body).replace("\\l", "\n").replace("$", "")
+    order = re.search(r"enum\s*\{\s*(NB_SCHOOL_NOTES.*?)NB_SECTION_COUNT", nb, re.S).group(1)
+    sections = re.findall(r"(NB_\w+)", order)
+    names = dict(re.findall(r"\[(NB_\w+)\]\s*=\s*(\w+)", nb))
+    body = re.search(r"static const struct NotebookEntry sEntries\[\] =\s*\{(.*?)^\};", nb, re.M | re.S).group(1)
+    macros = dict(re.findall(r"#define (NB_DOC_\w+) (\{.*?\}),", docs))
+    body = re.sub(r"\bNB_DOC_\w+\b", lambda m: macros.get(m.group(0), "") + ",", body)
+    insight = re.search(r"#define NB_INSIGHT_ENTRIES \\\n(.*?)(?:\n\n|\Z)", wis, re.S).group(1)
+    body = body.replace("NB_INSIGHT_ENTRIES", insight.replace("\\", ""))
+    body = re.sub(r"//[^\n]*", "", body)
+    rows = re.findall(r"\{\s*(NB_\w+),\s*(NB_KIND_\w+),\s*(\d+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", body)
+    flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"})
+    fv = flag_values(flagnames)
+    abouts = {n: gba_string(b) for n, b in re.findall(r"static const u8 sNoteAbout_(\w+)\[\]\s*=\s*_\((.*?)\);", notes, re.S)}
+    pages = []
+    for sec, kind, arg, flag, flag2, title, text in rows:
+        words = None
+        if kind == "NB_KIND_TEXT":
+            words = strings.get(text) if text in strings else labels.get(text)
+            if words is None:
+                raise SystemExit("  refused: the NOTEBOOK's %s has no words the export can find (%s)" % (title, text))
+            if arg == "1":
+                words = words.split("\n\n", 1)[-1]           # the heading the title already carries
+            words = re.sub(r"\{(?!RIVAL\}|PLAYER\})[^}]*\}", "", words).strip()
+        pages.append({"section": sections.index(sec), "title": strings[title], "kind": kind[8:].lower(),
+                      "flag": fv[flag], "flag2": fv[flag2] if flag2 != "0" else 0,
+                      "about": abouts.get(flag[5:]), "text": words})
+    return {"_about": "C-125: the NOTEBOOK's pages in the game's own order, read from src/notebook.c and the headers it "
+                      "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
+                      "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
+                      "the save when opened; no words here.",
+            "sections": [strings[names[s]] for s in sections], "pages": pages}
+
+
+def player_art():
+    """C-125: the player as the game draws them -- REASON (red) and INSTINCT (leaf): the trainer card's front picture in
+    its own palette, and the first walking frame (facing you) in the player's overworld palette. Ours, the monkey."""
+    from PIL import Image
+    def jasc(rel):
+        lines = read(rel).split()
+        return [int(v) for v in lines[3:3 + 48]]
+    out = {}
+    for who, pic, walk in (("reason", "red", "red_normal"), ("instinct", "leaf", "green_normal")):
+        im = Image.open(os.path.join(GBA, "graphics/trainers/front_pics/%s_front_pic.png" % pic)).convert("P")
+        im.putpalette(jasc("graphics/trainers/palettes/%s.pal" % pic) + [0] * 720)
+        out["player_%s.png" % who] = im
+        sheet = Image.open(os.path.join(GBA, "graphics/object_events/pics/people/%s.png" % walk)).convert("P")
+        frame = sheet.crop((0, 0, 16, 32))
+        frame.putpalette(jasc("graphics/object_events/palettes/player.pal") + [0] * 720)
+        out["player_%s_walk.png" % who] = frame
+    return out
+
+
 def profile_layout():
     """C-23: where the PROFILE's facts live in a save -- the trainer, the play time, the INDEX's seen and bound, the
     MARKS, how far the game has gone and where it was saved -- every offset from the built game's own headers."""
     g = read("include/global.h")
     sb2, sb1, dex = struct_offsets(g, "SaveBlock2"), struct_offsets(g, "SaveBlock1"), struct_offsets(g, "Pokedex")
     flags = flag_values(["FLAG_BADGE01_GET", "FLAG_BADGE08_GET", "FLAG_SYS_POKEDEX_GET", "FLAG_SYS_GAME_CLEAR",
-                         "FLAG_GOT_DIPLOMA", "DAEMONS_FLAGS_START", "FLAG_COMPANION_LINKED", "FLAG_COMPANION_RECALLED"])
+                         "FLAG_GOT_DIPLOMA", "DAEMONS_FLAGS_START", "FLAG_COMPANION_LINKED", "FLAG_COMPANION_RECALLED",
+                         "FLAG_SYS_B_DASH", "FLAG_SHOES_FROM_DAD", "FLAG_GOT_NOTEBOOK"] + UNDERSTANDINGS + INSIGHTS)
     items = dict(re.findall(r"^#define\s+(ITEM_OPUS)\s+(\d+)", read("include/constants/items.h"), re.M))
     kcount = re.search(r"#define\s+BAG_KEYITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)
     return {"_about": "C-23: offsets into SaveBlock2 (section 0) and SaveBlock1 (sections 1-4, end to end), read from "
@@ -338,6 +416,7 @@ def profile_layout():
                     "index_bytes": dex["seen"] - dex["owned"],
                     "daemons_flags": sb2["daemonsFlags"], "encryption_key": sb2["encryptionKey"]},
             "sb1": {"location": sb1["location"], "flags": sb1["flags"], "money": sb1["money"],
+                    "rival_name": sb1["rivalName"],                                    # C-125: the name the player gave
                     "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount),
                     # C-15: the INDEX's seen flags are kept three times; the game believes them only when all agree
                     "seen1": sb1["seen1"], "seen2": sb1["seen2"]},
@@ -345,7 +424,12 @@ def profile_layout():
                       "index": flags["FLAG_SYS_POKEDEX_GET"], "game_clear": flags["FLAG_SYS_GAME_CLEAR"],
                       "diploma": flags["FLAG_GOT_DIPLOMA"], "daemons_flags_start": flags["DAEMONS_FLAGS_START"],
                       "companion_linked": flags["FLAG_COMPANION_LINKED"],
-                      "companion_recalled": flags["FLAG_COMPANION_RECALLED"]},
+                      "companion_recalled": flags["FLAG_COMPANION_RECALLED"],
+                      # C-125: the PROFILE's more -- whose shoes, the understandings and insights held, the NOTEBOOK
+                      "shoes": flags["FLAG_SYS_B_DASH"], "shoes_from_dad": flags["FLAG_SHOES_FROM_DAD"],
+                      "notebook": flags["FLAG_GOT_NOTEBOOK"],
+                      "understandings": [flags[f] for f in UNDERSTANDINGS],
+                      "insights": [flags[f] for f in INSIGHTS]},
             "items": {"opus": int(items["ITEM_OPUS"])}}
 
 
@@ -412,7 +496,7 @@ def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
              "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
-             "items.json": items_table(), "routines.json": routines_table()}
+             "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table()}
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -430,6 +514,7 @@ def main():
                 open(path, "w", encoding="utf-8").write(text)
     import io
     art = party_art(files["species.json"])
+    art.update(player_art())                                           # C-125
     art_dir = os.path.join(OUT, "art")
     art_changed = 0
     for name, im in art.items():
