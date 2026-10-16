@@ -55,3 +55,9 @@ v11.301.7: T-408, each grove door in THE NEXUS has its universe's sign (in game)
 v11.301.7: T-408, each grove door in THE NEXUS has its universe's sign (in game), and the map sheet decoded from the ROM
 
 ![16Oct2026 - T408 - the NEXUS signs - 9](16Oct2026%20-%20T408%20-%20the%20NEXUS%20signs%20-%209.png)
+
+### 16Oct2026 - T409 - the tree in B-flat - 10
+
+T-409 DRAFT: the fir in B-flat (the user, 2026-10-16), green opening, the painting's colours
+
+![16Oct2026 - T409 - the tree in B-flat - 10](16Oct2026%20-%20T409%20-%20the%20tree%20in%20B-flat%20-%2010.png)
