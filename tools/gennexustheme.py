@@ -5,8 +5,8 @@
     python3 tools/gennexustheme.py --write    # engineGba/sound/songs/midi/mus_nexus.mid
 
 The user, 2026-10-16: the NEXUS gets music "with an o-christmas-tree feel built on the fir's notes". The fir sings
-the carol's first phrase in A-flat (src/field_specials.c, sFirTune); this is written in the same key and the same
-3/4, so the tree's song and the room's are one piece. Sixteen bars and a loop:
+the carol's first phrase in B-flat, the painting's key (src/field_specials.c, sFirTune; the user, 2026-10-16). The
+notes below are written in A-flat and sounded a whole tone up (KEY), so the tree's song and the room's are one piece. Sixteen bars and a loop:
 
   A (1-8)   harp arpeggios under a held string chord; the glockenspiel -- the tree's sparkle -- answers with the
             phrase's first two gestures only (E-flat to the three A-flats; B-flat to the three Cs), never the whole
@@ -23,6 +23,7 @@ OUT = os.path.join(ROOT, "engineGba", "sound", "songs", "midi", "mus_nexus.mid")
 TPQ, CELL = 48, 12          # a cell is a sixteenth; a 3/4 bar is twelve
 BAR = 12
 TEMPO = 84
+KEY = 2                     # written in A-flat, sounded in B-flat
 
 #  A-flat major. MIDI numbers.
 Ab3, Bb3, C4, Db4, Eb4, F4, G4, Ab4, Bb4, C5, Db5, Eb5 = 56, 58, 60, 61, 63, 65, 67, 68, 70, 72, 73, 75
@@ -86,7 +87,7 @@ def midi():
             ticks = cells * CELL
             if pitch is None:
                 rest += ticks; continue
-            ps = (pitch,) if isinstance(pitch, int) else tuple(pitch)
+            ps = tuple(x + KEY for x in ((pitch,) if isinstance(pitch, int) else pitch))
             ev += var(rest) + bytes((0x90 | ch, ps[0], vel))
             for x in ps[1:]:
                 ev += b"\x00" + bytes((0x90 | ch, x, vel))
