@@ -53,6 +53,9 @@ CODES = [
     ("BetrayalsSting", "https://soundcloud.com/codemusai/20-betrayals-sting"),
     ("EmpireOfScorn", "https://soundcloud.com/codemusai/21-empire-of-scorn"),
     ("OwlAndCode",   "https://soundcloud.com/codemusai/the-owl-and-the-code"),
+    #  THE BAND'S SHEET is from The Painted Mirror (lineage 3b): the user's episode, "Where Sound comes to Light, and
+    #  Light comes to Sound" (2026-10-15).
+    ("PaintedMirror", "https://open.spotify.com/episode/1BvPzmV46drWhhePPiZvk1"),
 ]
 
 
