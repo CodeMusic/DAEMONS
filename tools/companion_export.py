@@ -696,6 +696,34 @@ def mark_art():
         out["mark_%d.png" % (i + 1)] = im
     return out
 
+def guide_table():
+    """THE PROGRAMMER'S GUIDE TO THE HUMAN MIND for the companion's reading tab (the user via the companion session,
+    2026-10-16): docs/guide.md in its order, read by genguide.py's own parse, each paragraph plain text. Held once
+    FLAG_GOT_GUIDE is set. The words are the game's DRAFT (T-315) and already public in docs/guide.md."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import genguide
+    sections = []
+    for sec in genguide.parse():
+        sections.append({"key": sec["key"], "label": sec["label"], "heading": sec["heading"],
+                         "entries": [{"short": e["short"], "title": e["title"],
+                                      "paragraphs": [" ".join(p) for p in e["paras"] if p]} for e in sec["entries"]]})
+    return {"flag": flag_values(["FLAG_GOT_GUIDE"])["FLAG_GOT_GUIDE"], "draft": True,
+            "title": "THE PROGRAMMER'S GUIDE TO THE HUMAN MIND", "sections": sections}
+
+
+def guide_cover():
+    """The GUIDE's 8-bit cover (graphics/book/guide_cover.png, 240x160) for the public companion -- with its bottom
+    line, the author's real name, painted out in the cover's own ground: nothing personal goes in the companion
+    (C-12), until the user says otherwise. Every white pixel of rows 151-157, x 54-186, becomes (48, 46, 46)."""
+    from PIL import Image
+    im = Image.open(os.path.join(GBA, "graphics/book/guide_cover.png")).convert("RGB")
+    for y in range(151, 158):
+        for x in range(54, 187):
+            if im.getpixel((x, y)) == (250, 250, 250):
+                im.putpixel((x, y), (48, 46, 46))
+    return im
+
+
 def _c_strings(src):
     """{symbol: text} for every _("...") constant in a C file, the scroll break (\\l) a line break, no $"""
     return {s: gba_string(b).replace("\\l", "\n").rstrip("$")
@@ -886,7 +914,8 @@ def main():
              "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table(),
              "marks.json": marks_table(), "regions.json": regions_table(),     # C-126, C-127
              "events.json": events_table(), "school.json": school_table(),
-             "groves.json": groves_table()}                                     # T-408       # C-128, C-129
+             "groves.json": groves_table(),                                     # T-408       # C-128, C-129
+             "guide.json": guide_table()}                                       # the reading tab
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -917,8 +946,17 @@ def main():
             if WRITE:
                 os.makedirs(art_dir, exist_ok=True)
                 open(path, "wb").write(buf.getvalue())
+    #  The cover is RGB, not a palette with a clear index 0: written on its own, nothing made transparent.
+    buf = io.BytesIO()
+    guide_cover().save(buf, "PNG", optimize=True)
+    path = os.path.join(art_dir, "guide_cover.png")
+    if not os.path.exists(path) or open(path, "rb").read() != buf.getvalue():
+        art_changed += 1
+        if WRITE:
+            os.makedirs(art_dir, exist_ok=True)
+            open(path, "wb").write(buf.getvalue())
     if art_changed:
-        changed.append("art/ (%d of %d)" % (art_changed, len(art)))
+        changed.append("art/ (%d of %d)" % (art_changed, len(art) + 1))
     sp = files["species.json"]
     with_art = sum(1 for r in sp.values() if r["art"]["front"])
     with_entry = sum(1 for r in sp.values() if r["entry"]["CONTENT"] and r["entry"]["CONTEXT"])
