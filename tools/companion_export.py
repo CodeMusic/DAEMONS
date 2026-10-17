@@ -718,16 +718,10 @@ def guide_table():
 
 
 def guide_cover():
-    """The GUIDE's 8-bit cover (graphics/book/guide_cover.png, 240x160) for the public companion -- with its bottom
-    line, the author's real name, painted out in the cover's own ground: nothing personal goes in the companion
-    (C-12), until the user says otherwise. Every white pixel of rows 151-157, x 54-186, becomes (48, 46, 46)."""
+    """The GUIDE's 8-bit cover (graphics/book/guide_cover.png, 240x160) as the game draws it, author's name and all --
+    the user, 2026-10-17: "yes show my name" on the public companion."""
     from PIL import Image
-    im = Image.open(os.path.join(GBA, "graphics/book/guide_cover.png")).convert("RGB")
-    for y in range(151, 158):
-        for x in range(54, 187):
-            if im.getpixel((x, y)) == (250, 250, 250):
-                im.putpixel((x, y), (48, 46, 46))
-    return im
+    return Image.open(os.path.join(GBA, "graphics/book/guide_cover.png")).convert("RGB")
 
 
 def _c_strings(src):
