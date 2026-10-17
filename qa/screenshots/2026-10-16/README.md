@@ -115,3 +115,27 @@ The companion's INDEX at phone width: ANODE's entry with NATIVE -- GAMUT, CONTEN
 The StickS3 on today's firmware with its small screen fitted: ARTSAI's name and day whole, lists of three rows clear of the footer, and ARTSAI in its five expressions.
 
 ![16Oct2026 - C121 - the StickS3 on the bench, fitted - 20](16Oct2026%20-%20C121%20-%20the%20StickS3%20on%20the%20bench%2C%20fitted%20-%2020.png)
+
+### 16Oct2026 - C145 - the LIBRARY and the GUIDE - 21
+
+The companion's LIBRARY at phone width: the shelf (CALLOW SCHOOL, THE GUIDE), the GUIDE's 8-bit cover with CONTENTS, and a chapter on the book's own page. The author's name is painted out of the cover (the companion is public). Words DRAFT.
+
+![16Oct2026 - C145 - the LIBRARY and the GUIDE - 21](16Oct2026%20-%20C145%20-%20the%20LIBRARY%20and%20the%20GUIDE%20-%2021.jpg)
+
+### 16Oct2026 - C145 - the LIBRARY and the GUIDE - 22
+
+The companion's LIBRARY at phone width: the shelf (CALLOW SCHOOL, THE GUIDE), the GUIDE's 8-bit cover with CONTENTS, and a chapter on the book's own page. The author's name is painted out of the cover (the companion is public). Words DRAFT.
+
+![16Oct2026 - C145 - the LIBRARY and the GUIDE - 22](16Oct2026%20-%20C145%20-%20the%20LIBRARY%20and%20the%20GUIDE%20-%2022.jpg)
+
+### 16Oct2026 - C145 - the LIBRARY and the GUIDE - 23
+
+The companion's LIBRARY at phone width: the shelf (CALLOW SCHOOL, THE GUIDE), the GUIDE's 8-bit cover with CONTENTS, and a chapter on the book's own page. The author's name is painted out of the cover (the companion is public). Words DRAFT.
+
+![16Oct2026 - C145 - the LIBRARY and the GUIDE - 23](16Oct2026%20-%20C145%20-%20the%20LIBRARY%20and%20the%20GUIDE%20-%2023.jpg)
+
+### 16Oct2026 - T405 - a ROOTs lesson on the companion - 24
+
+STILL's page on the companion (dark, AUTO at night): the STREAM lecture read as a MARK's is -- the first box leading, the rest as points.
+
+![16Oct2026 - T405 - a ROOTs lesson on the companion - 24](16Oct2026%20-%20T405%20-%20a%20ROOTs%20lesson%20on%20the%20companion%20-%2024.jpg)
