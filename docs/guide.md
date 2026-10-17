@@ -110,13 +110,13 @@ Like a steady power supply, a week that tends every center in turn leaves no par
 
 ## P3 | PART 3 | Advanced Mental Engineering
 
-### SECURITY | Virtues and Sins: Securing the System
+### SECURITY | Virtues and Shadows: Securing the System
 
-Each day's center has a virtue that protects it and a sin that exploits it, the way a patch closes a vulnerability.
+Each day's center has a virtue that steadies it and a shadow it can fall into. A shadow is not an intruder: it is a part of us left running, like a process in the background.
 
-Sunday: chastity against lust. Monday: temperance against gluttony. Tuesday: charity against greed. Wednesday: diligence against sloth. Thursday: forgiveness against wrath. Friday: kindness against envy. Saturday: humility against pride.
+Sunday: chastity over lust. Monday: temperance over gluttony. Tuesday: charity over greed. Wednesday: diligence over sloth. Thursday: forgiveness over wrath. Friday: kindness over envy. Saturday: humility over pride.
 
-Begin each day by naming its pair. Practice the one, watch for the other. Like updates applied on a schedule, the week keeps the whole system patched.
+Begin each day by naming its pair. Practice the one, and look for the other without blaming yourself. Like a scan on a schedule, the week lights every part in turn, and what is seen can be balanced.
 
 ### AUTOMATION | Habit Formation: Automating Positive Routines
 

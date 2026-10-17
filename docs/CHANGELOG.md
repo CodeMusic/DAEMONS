@@ -9,7 +9,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ### Over, never cures (T-418)
 
-- ***9.21, the week (the user)***: **a virtue is said over its shadow -- "CHARITY / over GREED." -- never as its cure.** *"Cures" makes the shadow an illness, and someone who takes in that they are the illness is harmed by the word: craft rule 3 reaching the week. "Shadow" is the structure (Jung's shadow work: lit and balanced, not removed) and the seven old names are the ground, so the MARKS print neither "vice" nor "sin".* ***Built***: *the ROM already said "over"; the companion's day cue now does too (`tools/companion_export.py`, week.json).* ***Asked***: *the GUIDE's SECURITY page keeps the book's "Virtues and Sins".*
+- ***9.21, the week (the user)***: **a virtue is said over its shadow -- "CHARITY / over GREED." -- never as its cure.** *"Cures" makes the shadow an illness, and someone who takes in that they are the illness is harmed by the word: craft rule 3 reaching the week. "Shadow" is the structure (Jung's shadow work: lit and balanced, not removed) and the seven old names are the ground, so the MARKS print neither "vice" nor "sin".* ***Built***: *the ROM already said "over"; the companion's day cue now does too (`tools/companion_export.py`, week.json).* ***And the GUIDE (approved the same day)***: *its SECURITY page is now "Virtues and Shadows: Securing the System" -- a shadow "is not an intruder", each virtue over its shadow, a scan on a schedule where the patch was -- which also retires the old page's EXPLOIT, an intrusion word for a person (1.7). DRAFT.*
 - ***10, Settled***: **Over, never cures.**
 
 ---
