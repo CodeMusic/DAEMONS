@@ -25,3 +25,9 @@ DRAFT, not in the build: the GUIDE's SECURITY page as it reads now (Virtues and 
 In the ROM (CONTENT debug build, engine 0c16670da, played in the theatre): the GUIDE's SECURITY page, both pages -- Virtues and Shadows: Securing the System, each virtue over its shadow. Matches the drafted mock line for line.
 
 ![17Oct2026 - T418 - GUIDE SECURITY page in the ROM - 4](17Oct2026%20-%20T418%20-%20GUIDE%20SECURITY%20page%20in%20the%20ROM%20-%204.png)
+
+### 17Oct2026 - T415 - weather on Route 1 - 5
+
+T-415: weather by season on Route 1 (clear, rain, storm, snow, fog, wind; day and night), with the user's four changes
+
+![17Oct2026 - T415 - weather on Route 1 - 5](17Oct2026%20-%20T415%20-%20weather%20on%20Route%201%20-%205.png)
