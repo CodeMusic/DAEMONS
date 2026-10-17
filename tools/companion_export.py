@@ -606,10 +606,13 @@ def marks_table():
     for k, (flag, r, g, b, lobe, ty) in enumerate(lobes):
         unders.append({"n": k + 1, "flag": flags[flag], "flag_name": flag, "lobe": lobe, "type": ty,
                        "rgb": rgb8(int(r), int(g), int(b)), "name": named.get(k + 1, ""), "name_is_working": False,
-                       "found": found[k], "lesson": None})
+                       "found": found[k],
+                       # T-405 (approved 2026-10-16): its STREAM lecture, as the MARKS' -- its two scripts
+                       "lesson": [t for t in (text("gTeachyTvText_Root%dScript1" % (k + 1)),
+                                              text("gTeachyTvText_Root%dScript2" % (k + 1))) if t] or None})
     return {"_about": "C-126: the MARKS (badge art, STREAM lesson, town) and the UNDERSTANDINGS (brain lobe, colour, "
                       "where arrived at). Understanding names are the user's (T-252, 2026-10-16); "
-                      "their lessons are null until T-405. Order matches profile_layout's flags.understandings.",
+                      "their lessons are T-405's STREAM lectures, as the MARKS' are. Order matches profile_layout's flags.understandings.",
             "marks": marks, "understandings": unders}
 
 
