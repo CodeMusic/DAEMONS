@@ -710,6 +710,9 @@ def guide_table():
         sections.append({"key": sec["key"], "label": sec["label"], "heading": sec["heading"],
                          "entries": [{"short": e["short"], "title": e["title"],
                                       "paragraphs": [" ".join(p) for p in e["paras"] if p]} for e in sec["entries"]]})
+    #  Its last page is a QR code (book_reader.c, BOOK_QR_GUIDE): on the companion it is a link, on that last entry
+    import gbaqr
+    sections[-1]["entries"][-1]["link"] = dict(gbaqr.CODES)["Guide"]
     return {"flag": flag_values(["FLAG_GOT_GUIDE"])["FLAG_GOT_GUIDE"], "draft": True,
             "title": "THE PROGRAMMER'S GUIDE TO THE HUMAN MIND", "sections": sections}
 
