@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.301**
+**A total conversion — the living design bible, v11.302**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8376,6 +8376,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***DEBUG's TIME row sets both the watch and the weekday*** *(A and LEFT/RIGHT), and relights the map at once.* **Still never stated** — *what a day's colour or note means is the Guide's to suggest and the player's to notice (0.4).*
 
+***Over, never cures — decided by the user 2026-10-17 (T-418)***: **a virtue is said over its shadow — *"CHARITY / over GREED."* — and never as its cure.** *A mind not at ease is real; but "cures" makes the shadow an illness, and someone who takes in that they* are *the illness is harmed by the word.* **That is craft rule 3 — name the process, not the pathology — reaching the week.** ***"Shadow" is the structure*** *(the user's word, from Jung's shadow work: something to be lit and balanced, not an object to be cut out)*, **and the game already draws it that way: the USER card's seven bands sit in shadow until each virtue lights its own (T-318), and the eighth door asks for the seven to be *balanced*, not purged.** ***The seven old names keep it grounded*** — *SLOTH, GREED and PRIDE are as concrete as words get* — **so the MARKS print no category word, neither "vice" nor "sin": only the virtue over its shadow's name.** *The companion's day cue reads "Chastity over Lust" (`tools/companion_export.py`, week.json).* ***Asked***: *the GUIDE's SECURITY page (4.36) keeps the book's own "Virtues and Sins".*
+
 ### 9.22 Blanche's buildings, and the one warm note — *decided 2026-09-14, not drawn*
 
 ***Environment art starts with CRYSTAL CLEAR's lab***, **the one building Blanche has** (4.23) — *and the first thing a player sees of her.* **Blanche is the pre-colour town** (3.1): *white, high and open, the achromatic pole Halftone answers.* **So the town goes pale and the lab keeps one warm note** — ***the only one in Blanche.***
@@ -8590,6 +8592,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **Over, never cures (T-418, 2026-10-17)** — a virtue is said over its shadow, never as its cure; "shadow" is the structure and the seven old names the ground, so the MARKS print neither "vice" nor "sin" (9.21; craft rule 3)
 - **THE NEXUS (T-395, 2026-10-09)** — every grove holds the singing fir, flat until the key; through any fir in its key, a place made of paint whose trees are doors to the groves already found; eight residents of its own, drawn in natural colour as paint with their type emphasised, the one exception to colour-by-type (3.4, 9.4)
 
 - Base: `pokered`, Gen 1, RGBDS assembly
