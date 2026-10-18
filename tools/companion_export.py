@@ -431,12 +431,17 @@ def notebook_table():
             tune = songs.get(arg[len("PLAY_SONG_"):])
             if tune is None:
                 raise SystemExit("  refused: docs/play_songs.json has no song %s" % arg)
-            page.update(key=tune["key"], notes=tune["notes"].split(), heard=fv.get(tune.get("heard")) if tune.get("heard") else None)
+            notes = tune["notes"].split()
+            frames = tune.get("frames") or [tune["beat"]] * (len(notes) - 1) + [tune["last"]]
+            if len(frames) != len(notes):
+                raise SystemExit("  refused: %s has %d notes and %d frames" % (arg, len(notes), len(frames)))
+            page.update(key=tune["key"], notes=notes, frames=frames,    # 60 fps, as the game plays it when heard
+                        heard=fv.get(tune.get("heard")) if tune.get("heard") else None)
         pages.append(page)
     return {"_about": "C-125: the NOTEBOOK's pages in the game's own order, read from src/notebook.c and the headers it "
                       "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
                       "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
-                      "the save when opened; no words here. kind song (T-417, the SONGBOOK): drawn by the game as coloured note heads on a staff; song names the tune, key the major key it counts in, notes the motif as heard (C4 middle C, sharps or flats), heard the flag set once it is heard at its place (learned is flag). seen: the flag set once the page is opened in the game (unread until "
+                      "the save when opened; no words here. kind song (T-417, the SONGBOOK): drawn by the game as coloured note heads on a staff; song names the tune, key the major key it counts in, notes the motif as heard (C4 middle C, sharps or flats), frames each note's length at 60 fps as the game plays it when heard, heard the flag set once it is heard at its place (learned is flag). seen: the flag set once the page is opened in the game (unread until "
                       "then, T-403); key_colours: the twelve note colours C..B and outline the notes' outline, as the GBA shows them (T-417); place: where it was found; link: the song or post its QR code opens (T-402).",
             "sections": [strings[names[s]] for s in sections], "pages": pages,
             #  T-417: the twelve key colours, C..B, and the note outline, as the GBA shows them (tools/genplaynotes.py)
