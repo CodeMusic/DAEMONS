@@ -366,10 +366,11 @@ def notebook_table():
     (the paper's record, WHAT YOU CHOSE) is listed with no words: the game writes it, and the phone says so."""
     import genplaynotes
     nb, docs, wis = read("src/notebook.c"), read("src/data/notebook_documents.h"), read("src/data/wisdom.h")
+    dreams = read("src/data/dream_log.h")                                                   # T-412: the DREAM LOG
     hol, holl = read("src/data/daemons_holidays.h"), read("src/data/holiday_lines.h")    # T-416: THE YEAR
     notes = read("src/data/notebook_notes.h")
     strings = {}
-    for src in (nb, docs, wis, hol):
+    for src in (nb, docs, wis, hol, dreams):
         for name, body in re.findall(r"(?:static )?const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S):
             strings[name] = gba_string(body)
     import glob
@@ -388,6 +389,8 @@ def notebook_table():
     body = body.replace("NB_INSIGHT_ENTRIES", insight.replace("\\", ""))
     year = re.search(r"#define NB_YEAR_ENTRIES \\\n(.*?)(?:\n\n|\Z)", holl, re.S).group(1)   # T-416
     body = body.replace("NB_YEAR_ENTRIES", year.replace("\\", ""))
+    dream = re.search(r"#define NB_DREAM_ENTRIES \\\n(.*?)(?:\n\n|\Z)", dreams, re.S).group(1)   # T-412
+    body = body.replace("NB_DREAM_ENTRIES", dream.replace("\\", ""))
     body = re.sub(r"//[^\n]*", "", body)
     body = re.sub(r"#if DAEMONS_DEBUG\n.*?#endif", "", body, flags=re.S)     # the release build's pages only
     rows = re.findall(r"\{\s*(NB_\w+),\s*(NB_KIND_\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", body)

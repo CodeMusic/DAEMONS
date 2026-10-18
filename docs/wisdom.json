@@ -1,5 +1,7 @@
 {
   "about": "T-389, T-390 (bible 0.7, Wisdom; the user, 2026-10-08): a MARK and its ROOT together. Each pair: the leader's lines after the win without the understanding and with it, the union routine's PLUGIN, and the insight that arrives once both are held. Every word is DRAFT. tools/gbawisdom.py writes these into the seven BENCHMARKS' scripts and text and into src/data/wisdom.h; edit here, never there.",
+  "balance_about": "T-410 (the user, 2026-10-16; approved 2026-10-18): once a MARK and its ROOT are both held, mark_balance -- how the understanding balances the MARK -- is on the USER card's BENCHMARKS page (A on that MARK turns to it), and root_balance -- how the MARK balances the understanding -- is in that understanding's GUIDE margin, under its note. DRAFT.",
+  "last": {"flag": "FLAG_INSIGHT_LAST", "title": "I KEPT LOOKING", "insight": "I kept looking for it on the next page. It was the light I was reading by. It was never mine, and it was already on.", "lines": ["I kept looking for it on the next", "page. It was the light I was", "reading by. It was never mine, and", "it was already on."], "about": "T-411 (the user, 2026-10-16; option A approved 2026-10-18): arrives as an insight does, the first step after all seven insights have, and is filed last under INSIGHT. It never names what it is about. DRAFT."},
   "arrival": ["An insight arrives.", "“{INSIGHT}”", "You write it down in the NOTEBOOK."],
   "pairs": [
     {
@@ -9,7 +11,9 @@
       "without": ["That MARK taught you to keep a record that reads the same twice.", "Keeping it is not knowing what it says.", "The school in CALLOW has names for you. Come back when they are yours."],
       "with": ["You learned the names in CALLOW, then found the rest.", "A record kept with diligence, read by someone who knows what it says.", "Take this."],
       "explain": ["PLUGIN05 is FLUENCY. It says the same thing every time: damage equal to its level.", "Any DAEMON can run it."],
-      "insight": "Learned twice, the names were a record. Used once, they were mine."
+      "insight": "Learned twice, the names were a record. Used once, they were mine.",
+      "mark_balance": "A record kept with care is only stone until someone can read it. The names gave it a reader. What was written down became mine.",
+      "root_balance": "Names drift as they are used. The record holds them still, so I can tell when a word has changed, and know that it was the word."
     },
     {
       "leader": "BASIN", "mark": "SLOPE", "virtue": "CHASTITY", "badge": "FLAG_BADGE02_GET",
@@ -18,7 +22,9 @@
       "without": ["That MARK taught you to get better by small steps.", "Small steps only find the bottom of the valley you started in.", "Past the last island, a line waits that holds still. Come back when one has stayed for you."],
       "with": ["So a line held still for you.", "Small steps found the bottom. Something steady told you it was the right one.", "Take this."],
       "explain": ["PLUGIN10 is STILLPOINT. It waits where the water is calm, and hits twice as hard if it was hit first.", "Any DAEMON can run it."],
-      "insight": "Small steps find a bottom. Only stillness tells me it is the right one."
+      "insight": "Small steps find a bottom. Only stillness tells me it is the right one.",
+      "mark_balance": "Small steps always find a bottom. They never ask if it is the right one. Stillness asks. Without it, every valley feels like arriving.",
+      "root_balance": "Stillness alone finds nothing. It only waits. The small steps give it somewhere to have arrived: a rest, and not a stop."
     },
     {
       "leader": "GAUGE", "mark": "SENSE", "virtue": "CHARITY", "badge": "FLAG_BADGE03_GET",
@@ -27,7 +33,9 @@
       "without": ["That MARK taught you to tell what came from what you expected!", "You still expect people to stay as you found them!", "Out on the islands, somebody is on the way back. Come back when you've met him!"],
       "with": ["You saw somebody come back! Not who you expected. Who he is now!", "Signal from noise, in a person. The hard kind!", "Here!"],
       "explain": ["PLUGIN21 is RECONNECT! It reaches out again where the line went dead, and it never misses!", "Any DAEMON can run it!"],
-      "insight": "What comes back is not what left. Listen to what arrives, not what I expected."
+      "insight": "What comes back is not what left. Listen to what arrives, not what I expected.",
+      "mark_balance": "Signal from noise starts with what I expect. Expect the one who left, and the one who comes back is only noise. MEND hears who arrived.",
+      "root_balance": "Coming back is not enough if nobody is listening. SENSE is the listening: hearing what is said, not what I was braced for."
     },
     {
       "leader": "TRELLIS", "mark": "FIT", "virtue": "KINDNESS", "badge": "FLAG_BADGE04_GET",
@@ -36,7 +44,9 @@
       "without": ["That MARK taught you to draw one line through many points.", "A line is not a path. Nobody walks a line.", "There is a book about minds on an ordinary shelf, out on the islands. Come back when you have read it to the end."],
       "with": ["You read it to the end, and you are still walking.", "The line was the book. The path was always yours.", "Take this."],
       "explain": ["PLUGIN32 is PRAXIS. It does what it read, and grows by doing it: it raises its ATTACK each time it hits.", "Any DAEMON can run it."],
-      "insight": "A line through the points is a theory. Walking it is the part no book can do."
+      "insight": "A line through the points is a theory. Walking it is the part no book can do.",
+      "mark_balance": "A line through the points explains them and goes nowhere. Practice walks it, and finds where the line was wrong: kindly, step by step.",
+      "root_balance": "Practice alone repeats whatever it began with. The line gives it a shape to check against, so doing becomes learning, not only habit."
     },
     {
       "leader": "TILT", "mark": "SKEW", "virtue": "TEMPERANCE", "badge": "FLAG_BADGE05_GET",
@@ -45,7 +55,9 @@
       "without": ["That MARK taught you that the peak misses the middle.", "A man in CALLOW reads only the peak, and he reads it very well.", "Come back when you have stood in the middle against him."],
       "with": ["You beat him, and every number he kept was right.", "The middle he never measured is where you were standing.", "Take this."],
       "explain": ["PLUGIN37 is MEDIAN. It ignores the highest and the lowest, and cuts their HP to the middle: half.", "Any DAEMON can run it."],
-      "insight": "The score was right. It never counted the middle, and the middle is where I stood."
+      "insight": "The score was right. It never counted the middle, and the middle is where I stood.",
+      "mark_balance": "The peak missing the middle is a fact about numbers. Knowing where I stand makes it mine: the middle is a place, and I was in it.",
+      "root_balance": "Knowing where I stand can turn to thinking I stand at the centre. The skew keeps it honest. Every view leans, and mine is a view."
     },
     {
       "leader": "MATTE", "mark": "FRAME", "virtue": "PATIENCE", "badge": "FLAG_BADGE06_GET",
@@ -54,7 +66,9 @@
       "without": ["That MARK taught you what a frame holds.", "It cannot show you what was outside it all along.", "This city has a room that will not let you in yet. Come back when it has."],
       "with": ["You were let in, and came out seeing more.", "Not more inside the frame. Around it.", "That took patience. Most people only wait. Take this."],
       "explain": ["PLUGIN43 is PANORAMA. It takes in everything around the frame: it hits both of them, and never misses.", "Any DAEMON can run it."],
-      "insight": "A frame shows what it holds. Patience shows what was there all along, just outside it."
+      "insight": "A frame shows what it holds. Patience shows what was there all along, just outside it.",
+      "mark_balance": "A frame holds what it holds, and holds it well. NOTICE looks past the edge. It was never all of it.",
+      "root_balance": "Noticing everything is noticing nothing. The frame gives attention an edge: one thing, then the next, then what is around it."
     },
     {
       "leader": "ANNEAL", "mark": "HEAT", "virtue": "HUMILITY", "badge": "FLAG_BADGE07_GET",
@@ -63,7 +77,9 @@
       "without": ["That MARK taught you to wander hot and settle cool.", "The man who worked on this island knew that too, and every step he took made sense.", "His notes are still here. Come back when you know which step was which."],
       "with": ["You read his notes. Every step made sense, and the whole went wrong.", "Knowing hot from cool means stepping out of the loop to see it.", "That takes humility. Take this."],
       "explain": ["PLUGIN45 is HINDSIGHT. It looks back at its last strike and builds on it: twice as hard each turn in a row.", "Any DAEMON can run it."],
-      "insight": "Every step made sense on its own. Knowing which to keep means stepping out of the loop."
+      "insight": "Every step made sense on its own. Knowing which to keep means stepping out of the loop.",
+      "mark_balance": "Wander hot, settle cool: it only works if I know which I am doing. REFLECT is that knowing, a step out of the heat to see its shape.",
+      "root_balance": "Reflection that never steps back in goes cold and still. The heat keeps it moving: try, cool, look, and try again."
     }
   ]
 }

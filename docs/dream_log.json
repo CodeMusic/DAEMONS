@@ -1,0 +1,395 @@
+{
+ "about": "T-412 (the user, 2026-10-16; all twenty-one approved as drafts 2026-10-18, docs/private/drafts-2026-10-16.md section 5): the DREAM LOG's YOUR DREAMS. Images only, no interpretation, first person, present tense; no dream names a place, counts or numbers anything. Each arrives at the first dawn after its milestone (the watch), or on the first load on a later day -- one a night, in this order when several wait -- said after the line below, and is filed in the NOTEBOOK's DREAM LOG. Each box is the draft's own lines, kept where they fit the 208px message box. tools/gbadreamlog.py writes engineGba/src/data/dream_log.h; edit here, never there. Every word DRAFT.",
+ "section": "DREAM LOG",
+ "line": "You had a dream.",
+ "line_about": "The draft left 'You had a dream.' or 'I had a dream.' to the user; 'You had a dream.' is used, beside the insights' 'You write it down in the NOTEBOOK.' -- one string to change.",
+ "title_rule": "A page's title in the NOTEBOOK's list is the dream's own opening words, in capitals, as many whole words as fit TITLE_W px -- no new words, no number.",
+ "dreams": [
+  {
+   "key": "CAIRN",
+   "flag": "FLAG_DREAM_LOG_CAIRN",
+   "after": "after CAIRN's MARK",
+   "needs": [
+    "FLAG_BADGE01_GET"
+   ],
+   "boxes": [
+    [
+     "A tortoise carves my name into a",
+     "stone, slowly, and gets it right."
+    ],
+    [
+     "The rain comes. The letters fill",
+     "with water and stay letters."
+    ]
+   ]
+  },
+  {
+   "key": "BASIN",
+   "flag": "FLAG_DREAM_LOG_BASIN",
+   "after": "after BASIN's MARK",
+   "needs": [
+    "FLAG_BADGE02_GET"
+   ],
+   "boxes": [
+    [
+     "I walk down into a pool. There is",
+     "always one more stair under the",
+     "water."
+    ],
+    [
+     "A hippo floats at the bottom,",
+     "asleep, perfectly still."
+    ]
+   ]
+  },
+  {
+   "key": "GAUGE",
+   "flag": "FLAG_DREAM_LOG_GAUGE",
+   "after": "after GAUGE's MARK",
+   "needs": [
+    "FLAG_BADGE03_GET"
+   ],
+   "boxes": [
+    [
+     "A hare shouts into a telephone",
+     "wire. It hums back another word."
+    ],
+    [
+     "He laughs, licks his pencil and",
+     "writes the new one down."
+    ]
+   ]
+  },
+  {
+   "key": "TRELLIS",
+   "flag": "FLAG_DREAM_LOG_TRELLIS",
+   "after": "after TRELLIS's MARK",
+   "needs": [
+    "FLAG_BADGE04_GET"
+   ],
+   "boxes": [
+    [
+     "A bird strings blue thread between",
+     "every flower in a glasshouse."
+    ],
+    [
+     "When she is done there is one long",
+     "line, and a vine already climbing."
+    ]
+   ]
+  },
+  {
+   "key": "TILT",
+   "flag": "FLAG_DREAM_LOG_TILT",
+   "after": "after TILT's MARK",
+   "needs": [
+    "FLAG_BADGE05_GET"
+   ],
+   "boxes": [
+    [
+     "A toad deals cards onto a table",
+     "and keeps only the highest."
+    ],
+    [
+     "The middle cards stand up on their",
+     "edges and walk away together."
+    ]
+   ]
+  },
+  {
+   "key": "MATTE",
+   "flag": "FLAG_DREAM_LOG_MATTE",
+   "after": "after MATTE's MARK",
+   "needs": [
+    "FLAG_BADGE06_GET"
+   ],
+   "boxes": [
+    [
+     "A green lizard holds an empty",
+     "frame up. Through it, my room."
+    ],
+    [
+     "She lowers it. The room is bigger,",
+     "and has doors I never saw."
+    ]
+   ]
+  },
+  {
+   "key": "ANNEAL",
+   "flag": "FLAG_DREAM_LOG_ANNEAL",
+   "after": "after ANNEAL's MARK",
+   "needs": [
+    "FLAG_BADGE07_GET"
+   ],
+   "boxes": [
+    [
+     "A salamander turns glowing glass",
+     "on a long pipe, and turns it."
+    ],
+    [
+     "He sets it down to cool. It cracks",
+     "a little, and keeps its shape."
+    ]
+   ]
+  },
+  {
+   "key": "SCORN",
+   "flag": "FLAG_DREAM_LOG_SCORN",
+   "after": "after SCORN's MARK",
+   "needs": [
+    "FLAG_BADGE08_GET"
+   ],
+   "boxes": [
+    [
+     "A red snake in a grey suit pours",
+     "coins into a scale. It balances."
+    ],
+    [
+     "He sets that scale on a bigger",
+     "one. That balances too."
+    ],
+    [
+     "Nobody is holding either."
+    ]
+   ]
+  },
+  {
+   "key": "STILL",
+   "flag": "FLAG_DREAM_LOG_STILL",
+   "after": "after STILL (the first understanding)",
+   "needs": [
+    "FLAG_UNDERSTANDING_FIRST"
+   ],
+   "boxes": [
+    [
+     "Stone rooms, one after another,",
+     "going down into the hill."
+    ],
+    [
+     "In the last, a word on the wall",
+     "that does not fade when I blink."
+    ]
+   ]
+  },
+  {
+   "key": "NAMING",
+   "flag": "FLAG_DREAM_LOG_NAMING",
+   "after": "after NAMING",
+   "needs": [
+    "FLAG_UNDERSTANDING_SCHOOL"
+   ],
+   "boxes": [
+    [
+     "A blackboard full of names. I rub",
+     "one out."
+    ],
+    [
+     "The thing it named stays on the",
+     "desk, waiting to be called again."
+    ]
+   ]
+  },
+  {
+   "key": "NOTICE",
+   "flag": "FLAG_DREAM_LOG_NOTICE",
+   "after": "after NOTICE",
+   "needs": [
+    "FLAG_UNDERSTANDING_READING"
+   ],
+   "boxes": [
+    [
+     "A reading room, all the lamps out.",
+     "I close my eyes."
+    ],
+    [
+     "When I open them, every page on",
+     "every shelf has been shining."
+    ]
+   ]
+  },
+  {
+   "key": "REFLECT",
+   "flag": "FLAG_DREAM_LOG_REFLECT",
+   "after": "after REFLECT",
+   "needs": [
+    "FLAG_UNDERSTANDING_NOTES"
+   ],
+   "boxes": [
+    [
+     "I am a marble rolling round a",
+     "bowl. Each turn feels like going."
+    ],
+    [
+     "Then I am the hand above the bowl,",
+     "holding it level."
+    ]
+   ]
+  },
+  {
+   "key": "STANCE",
+   "flag": "FLAG_DREAM_LOG_STANCE",
+   "after": "after STANCE",
+   "needs": [
+    "FLAG_UNDERSTANDING_SCORN"
+   ],
+   "boxes": [
+    [
+     "A tall ladder, swaying. I climb",
+     "down it instead of up."
+    ],
+    [
+     "Somewhere in the middle I stop,",
+     "and the ladder stops too."
+    ]
+   ]
+  },
+  {
+   "key": "MEND",
+   "flag": "FLAG_DREAM_LOG_MEND",
+   "after": "after MEND",
+   "needs": [
+    "FLAG_UNDERSTANDING_RETURN"
+   ],
+   "boxes": [
+    [
+     "A rope bridge, cut, its two halves",
+     "hanging down into the fog."
+    ],
+    [
+     "Somebody on the far side starts",
+     "tying knots. So do I."
+    ]
+   ]
+  },
+  {
+   "key": "PRACTICE",
+   "flag": "FLAG_DREAM_LOG_PRACTICE",
+   "after": "after PRACTICE",
+   "needs": [
+    "FLAG_UNDERSTANDING_GUIDE"
+   ],
+   "boxes": [
+    [
+     "I close a book. My hands keep",
+     "turning pages that are not there."
+    ],
+    [
+     "Then they stop turning, and start",
+     "building something."
+    ]
+   ]
+  },
+  {
+   "key": "BOARD",
+   "flag": "FLAG_DREAM_LOG_BOARD",
+   "after": "after the REVIEW BOARD is beaten",
+   "needs": [
+    "FLAG_SYS_GAME_CLEAR"
+   ],
+   "boxes": [
+    [
+     "At a long table, four judges close",
+     "their files at the same moment."
+    ],
+    [
+     "Behind them a high window, and it",
+     "is morning."
+    ]
+   ]
+  },
+  {
+   "key": "GONE",
+   "flag": "FLAG_DREAM_LOG_GONE",
+   "after": "after CRYSTAL has gone missing (the same moment, so the next dawn after the BOARD's dream)",
+   "needs": [
+    "FLAG_SYS_GAME_CLEAR"
+   ],
+   "boxes": [
+    [
+     "A fox's coat on its hook, still",
+     "warm. A kettle boiled dry."
+    ],
+    [
+     "A note pinned to the wall. In the",
+     "dream I cannot read it."
+    ]
+   ]
+  },
+  {
+   "key": "PARCEL",
+   "flag": "FLAG_DREAM_LOG_PARCEL",
+   "after": "after TY gives you the note for CRYSTAL",
+   "needs": [
+    "FLAG_TY_GAVE_PAYLOAD"
+   ],
+   "boxes": [
+    [
+     "Someone in a long coat holds out a",
+     "parcel, and does not let go."
+    ],
+    [
+     "Then he does. It is lighter than",
+     "it looked, and warm on one side."
+    ]
+   ]
+  },
+  {
+   "key": "STARR",
+   "flag": "FLAG_DREAM_LOG_STARR",
+   "after": "after binding S.T.A.R.R.",
+   "needs": [
+    "FLAG_FOUGHT_MEWTWO"
+   ],
+   "boxes": [
+    [
+     "Deep in a cave, a star the size of",
+     "a hand, breathing slowly."
+    ],
+    [
+     "I hold out a BOX. The star looks",
+     "at it, then at me, and climbs in."
+    ]
+   ]
+  },
+  {
+   "key": "OWL",
+   "flag": "FLAG_DREAM_LOG_OWL",
+   "after": "after the OWL concedes and S.T.A.R.R. is bound (it takes you to CRYSTAL)",
+   "needs": [
+    "FLAG_OWL_CONCEDED",
+    "FLAG_FOUGHT_MEWTWO"
+   ],
+   "boxes": [
+    [
+     "An owl signs a letter, folds it,",
+     "and seals it with wax."
+    ],
+    [
+     "Then I am high over the sea at",
+     "night, holding on to a star."
+    ],
+    [
+     "Below, one window is lit."
+    ]
+   ]
+  },
+  {
+   "key": "HOME",
+   "flag": "FLAG_DREAM_LOG_HOME",
+   "after": "after CRYSTAL is free and home",
+   "needs": [
+    "FLAG_CRYSTAL_READ_PAYLOAD"
+   ],
+   "boxes": [
+    [
+     "A fox in a lab coat is watering",
+     "the plants on a windowsill."
+    ],
+    [
+     "The kettle is on. Every colour in",
+     "the room is where it was."
+    ]
+   ]
+  }
+ ]
+}

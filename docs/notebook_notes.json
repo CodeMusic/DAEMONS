@@ -381,6 +381,116 @@
    "seen": 80,
    "map": null,
    "about": "In your own words, on its day."
+  },
+  "FLAG_INSIGHT_LAST": {
+   "seen": 81,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_CAIRN": {
+   "seen": 82,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_BASIN": {
+   "seen": 83,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_GAUGE": {
+   "seen": 84,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_TRELLIS": {
+   "seen": 85,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_TILT": {
+   "seen": 86,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_MATTE": {
+   "seen": 87,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_ANNEAL": {
+   "seen": 88,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_SCORN": {
+   "seen": 89,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_STILL": {
+   "seen": 90,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_NAMING": {
+   "seen": 91,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_NOTICE": {
+   "seen": 92,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_REFLECT": {
+   "seen": 93,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_STANCE": {
+   "seen": 94,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_MEND": {
+   "seen": 95,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_PRACTICE": {
+   "seen": 96,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_BOARD": {
+   "seen": 97,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_GONE": {
+   "seen": 98,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_PARCEL": {
+   "seen": 99,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_STARR": {
+   "seen": 100,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_OWL": {
+   "seen": 101,
+   "map": null,
+   "about": null
+  },
+  "FLAG_DREAM_LOG_HOME": {
+   "seen": 102,
+   "map": null,
+   "about": null
   }
  }
 }
