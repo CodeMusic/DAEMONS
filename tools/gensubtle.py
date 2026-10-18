@@ -194,10 +194,12 @@ def glyphs(img, s, x, y, small, fg):
         x += widths[code]
 
 
-def frames_of(key):
+def frames_of(key, letters=True):
+    """A picture's frames. LETTERS=False leaves out anything set in the game's font (the week's note names): the
+    companion holds nothing of Nintendo's, and the font is FireRed's."""
     fn = sp.SPRITES[key]
     if key == "stairs":
-        return fn(text=lambda im, s, x, y, small, fg, shadow: glyphs(im, s, x, y, small, fg))
+        return fn(text=lambda im, s, x, y, small, fg, shadow: glyphs(im, s, x, y, small, fg)) if letters else fn()
     return fn()
 
 
@@ -220,7 +222,7 @@ def indexed(rgb, w=None, h=None, fill="C_PAPER", role=None):
     return out
 
 
-def cover():
+def cover(letters=True):
     """The cover (240x160, the whole window): the boards, the title in the game's font, the seam on a plate, and
     the six clair glyphs a shade off the boards -- there for a player who knows to look. No byline (the user)."""
     im = Image.new("RGB", (240, 160), RGB8["C_COVER"])
@@ -230,8 +232,9 @@ def cover():
     d.rectangle((48, 4, 53, 152), fill=RGB8["C_EDGE_DARK"])                  # the spine
     d.rectangle((58, 8, 184, 148), outline=RGB8["C_RULE"])
     title, sub = "THE SUBTLE LAYER", "a trainer's handbook"
-    glyphs(im, title, 121 - g.width(title) // 2, 12, False, RGB8["C_CHALK"])
-    glyphs(im, sub, 121 - g.width(sub, True) // 2, 27, True, RGB8["C_CHALK_FAINT"])
+    if letters:                                   # the companion sets its own title: the font is FireRed's
+        glyphs(im, title, 121 - g.width(title) // 2, 12, False, RGB8["C_CHALK"])
+        glyphs(im, sub, 121 - g.width(sub, True) // 2, 27, True, RGB8["C_CHALK_FAINT"])
     plate = frames_of("seam")[0]
     d.rectangle((72, 44, 72 + plate.width + 3, 44 + plate.height + 3), outline=RGB8["C_RULE"])
     im.paste(plate, (74, 46))
@@ -327,12 +330,13 @@ def subtle_book():
 
 def subtle_images():
     """{name: picture} for the companion: each picture as the game draws it (native size, RGB), its frames numbered,
-    and the cover. RGB on purpose, like the GUIDE's cover: the page colour is part of the picture."""
+    and the cover. RGB on purpose: the page colour is part of the picture. Nothing in them is set in the game's font
+    (FireRed's): the cover's title and the week's note names are left for the app to set in its own type."""
     out = {}
     for key in pictures(parse()):
-        for f, fr in enumerate(frames_of(key)):
+        for f, fr in enumerate(frames_of(key, letters=False)):
             out["subtle_%s_%d.png" % (key, f)] = fr
-    out["subtle_cover.png"] = cover()
+    out["subtle_cover.png"] = cover(letters=False)
     return out
 
 
