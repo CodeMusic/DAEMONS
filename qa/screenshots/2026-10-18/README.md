@@ -307,3 +307,21 @@ T-415 phase 2 (v11.304.2): wx2_fog_found
 T-415 phase 2 (v11.304.2): wx2_index_native_in_rain
 
 ![18Oct2026 - T415 - wx2indexnativeinrain - 53](18Oct2026%20-%20T415%20-%20wx2indexnativeinrain%20-%2053.png)
+
+### 18Oct2026 - C158 - the casino dressed, the house, own settings - 59
+
+C-158/C-159 on the site: the CASINO in the boards' drawn pieces with autumn's leaves falling, THE HOUSE (today's odds and why), a device's own settings
+
+![18Oct2026 - C158 - the casino dressed, the house, own settings - 59](18Oct2026%20-%20C158%20-%20the%20casino%20dressed%2C%20the%20house%2C%20own%20settings%20-%2059.png)
+
+### 18Oct2026 - C158 - tab5 house and own settings - 60
+
+C-158/C-159 on the Tab5: THE HOUSE beside THE CASINO, ITS SETTINGS on every device; off Wi-Fi the overlays say they wait for the companion
+
+![18Oct2026 - C158 - tab5 house and own settings - 60](18Oct2026%20-%20C158%20-%20tab5%20house%20and%20own%20settings%20-%2060.png)
+
+### 18Oct2026 - C158 - casino drawn pieces and hats - 61
+
+C-158: every drawn piece and holiday hat, ported from casino.cpp by firmware/common/casino_art.py (autumn's colours in the slots)
+
+![18Oct2026 - C158 - casino drawn pieces and hats - 61](18Oct2026%20-%20C158%20-%20casino%20drawn%20pieces%20and%20hats%20-%2061.png)
