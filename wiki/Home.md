@@ -54,10 +54,10 @@ Boy build still compiles and runs its vertical slice, and is kept as a reference
 
 **The whole game is playable**, both editions, start to finish. Every daemon carries a DAEMONS name and a DAEMONS
 INDEX entry; the world keeps time, turns through the seasons in two hemispheres, has weather that follows them, and
-gives each edition an instrument to play ([The world](The-world)).
+follows the real calendar's holidays, and gives each edition an instrument to play ([The world](The-world)).
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.302.3**, from 2026-10-17. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.304.6**, from 2026-10-18. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
@@ -67,7 +67,7 @@ Releases come often, each one named for the version of the design bible it was b
 ## Pages
 
 - [Playing](Playing) -- patch your own cartridge's ROM and play, on an emulator, an iPhone or a real GBA
-- [The world](The-world) -- the clock, the seasons, the weather, the instruments, the NOTEBOOK
+- [The world](The-world) -- the clock, the seasons, the weather, the holidays, the instruments, the NOTEBOOK
 - [Editions](Editions) -- CONTENT and CONTEXT: what differs, and what never does
 - [The companion](The-companion) -- a daemon hosted on your phone or a board
 - [Building](Building) -- build both editions from source

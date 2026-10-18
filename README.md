@@ -11,8 +11,8 @@ Machines evolved into creatures. This is a game about what happened next, and it
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.302.3**
-(2026-10-17), and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing, building and the
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.304.6**
+(2026-10-18), and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing, building and the
 two editions.
 
 ---
@@ -78,9 +78,12 @@ requisition, a set of minutes, a carving, an engraving, none of them signed and 
 
 **The world keeps time.** A cartridge clock if there is one, play time if not: dawn, day, dusk and night, the weekday,
 and seasons that repaint the world in two hemispheres — CONTENT keeps a northern year and CONTEXT a southern one.
-Since v11.302.1 the **weather** follows the season too, and since v11.302.3 each edition has an **instrument** — a
-HARP in CONTENT, a FLUTE in CONTEXT — played note by note in colour, with a SONGBOOK for what you play. There is a
-NOTEBOOK for what you find, a school with a DIPLOMA, and places the game never points to.
+The **weather** follows the season, and **holidays** follow the real calendar — three a month, each month with its own
+colour and note. Each edition has an **instrument** — a HARP in CONTENT, a FLUTE in CONTEXT — played note by note in
+colour, with seven songs to hear in the world and learn, and a SONGBOOK for what you play. A daemon's **colour is its
+friendship**, nearly grey until it trusts you. There is a NOTEBOOK for what you find (a DREAM LOG among it), a school
+with a DIPLOMA, a GAME CORNER that plays like the companion's CASINO, and places the game never points to, each with
+music of its own.
 
 **Your daemons can leave.** SEND one from your party and the
 [companion](https://github.com/CodeMusic/daemons-companion) hosts it on your phone or a board; it comes home at the
@@ -89,8 +92,8 @@ next SYNC with what it learned.
 **And a model plays it.** [`engineAi/`](ai/README.md) drives mGBA over a Lua socket, reads the game out of RAM by symbol name, and decides. It keeps a self-model, four humor axes derived from what happens to it, and dreams at every summary fold — and any of it can be spoken aloud.
 
 **What is not done:** every new word in the game is still a draft until it is approved, and some decided work is not
-built yet — the holidays, the groves' own music, the weather's second phase, the songbook's seven songs. The
-[TODO list](docs/TODO.md) is the honest picture of what is next.
+built yet — routine animations that carry the game's own signature, and the HARP and FLUTE taking the project's own
+voices (the companion already plays them). The [TODO list](docs/TODO.md) is the honest picture of what is next.
 
 See [`docs/`](docs/) for the design bible, which is the honest picture of where this stands — including the decisions that were reversed and why.
 
@@ -164,7 +167,8 @@ game **starts as a normal one does**, and **START → DEBUG → GAME EVENTS** ha
 out the kit a piece at a time, in story order — its first row, EVERYTHING, is six
 daemons picked for their **abilities**, one of each *kind* of item, all eight
 MARKS and 999999. Its other pages **JUMP** to places without playing to them,
-force the **TIME** of day, the season and the weather, and play any **SOUND**.
+force the **TIME** of day, the season, the weather and the date, and play any
+**SOUND**.
 **Hold B** walks through grass. The engine's
 [README](https://github.com/CodeMusic/pokefirered-daemons#the-debug-build) has
 the whole menu.

@@ -99,7 +99,8 @@ debug run never touches a playthrough.
   **kind** of item (so every description window can be read), all eight MARKS and 999999.
 - **HEAL** restores the party; **MART** sets 999999 and adds or takes away any item.
 - **JUMP** reaches places without playing to them (and **MORE** has a second page).
-- **ENCOUNTER** meets a daemon at a level, and forces the **season** and the **weather**.
+- **ENCOUNTER** meets a daemon at a level, and forces the **season**, the **weather** and the **date** (a holiday, or a
+  month's 1st).
 - **TIME** forces dawn, day, dusk or night, or AUTO, and relights the map at once.
 - **SOUND** plays any song or sound effect, the glitch, and the HARP's and FLUTE's scales.
 - Held with **SELECT** on the map: A heals, B restocks, UP plays the next song, DOWN puts the map's own back.

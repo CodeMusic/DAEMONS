@@ -12,6 +12,7 @@ the two editions cost almost nothing to build.
 | on the Game Boy build | `_RED` | `_BLUE` |
 | leans toward, early | CONTENT, LOGIC, STRATUM, LEGACY -- the literal, the rule-based, the physical layer | CONTEXT, LATENT, VECTOR, ENTROPY -- framing, the unconscious, embeddings, noise |
 | its year | northern | southern -- two seasons on |
+| its holidays | the shared ones, and a northern one each month | the shared ones, and a southern one each month |
 | its instrument | the HARP | the FLUTE |
 
 CONTENT is the default build. The title puts CONTEXT first anyway: everyone says content is king, and the title
@@ -31,7 +32,8 @@ is not one. The story is the same story, the towns are the same towns, and every
   different flat sentences about the same creature, and for some of them different heights and weights, each stated
   as fact. Nobody in the game explains it.
 - **The year.** CONTENT keeps a northern year and CONTEXT a southern one, so the seasons -- and the weather, which
-  follows them and is drawn for each edition apart -- are never the same in both at once.
+  follows them and is drawn for each edition apart -- are never the same in both at once. Each month one holiday is
+  CONTENT's, one CONTEXT's and one both editions'; on two days a year each edition lets in the other's daemons.
 - **What you play.** CONTENT has the HARP and CONTEXT the FLUTE ([The world](The-world#play-the-harp-and-the-flute)).
 - **The INDEX cannot be completed alone.** With edition-exclusive daemons, finishing it takes someone else's
   playthrough: another person's context, over a link cable.

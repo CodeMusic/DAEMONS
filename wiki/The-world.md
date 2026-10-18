@@ -29,7 +29,7 @@ dawn, dusk or night -- so some daemons are met only at a time of year, or a time
 
 ## The weather
 
-Since **v11.302.1** the weather follows the season, over the ordinary outdoor maps:
+The weather follows the season, over the ordinary outdoor maps:
 
 | season | the weather |
 |---|---|
@@ -42,11 +42,32 @@ It is drawn from the date, so it costs nothing in the save and two players on th
 the same sky. A spell of weather can begin at any minute, last from ten minutes to a whole day, and cover one town or
 both regions -- the islands can have their own. Most of the time the sky is clear.
 
-Weather reaches into battle without touching the type chart: **WIND lifts VECTOR routines**, and snow falls as hail.
+Weather reaches into battle without touching the type chart. Each lifts its own routines, a quarter stronger:
+
+| weather | lifts |
+|---|---|
+| storm | SIGNAL |
+| fog | LATENT |
+| wind | VECTOR |
+
+Snow falls as hail, and the battle takes the weather's tint. Some daemons come out only in a weather, and the INDEX's
+NATIVE line says so (IN RAIN).
+
+## Holidays
+
+The game keeps the real calendar's holidays, under the world's own names: **three a month** -- one shared by both
+editions, one for CONTENT's northern year and one for CONTEXT's southern -- 36 in all. Playing on one changes the
+game a little and never gates it: its own light and sky, some daemons turning up more on their day, fireworks, and a
+gift, once a year -- sometimes an item, sometimes a line. On two of them, each edition's world lets in the other's
+daemons, for that day only. The lines are kept in **THE YEAR**, a section of the NOTEBOOK.
+
+**Every month has a colour and a note.** The months run the chromatic scale, January C to December B, from red
+through green and blue to purple, the same colours as the days' notes. The day's banner and the USER card show them,
+and the banner plays the month's note on the 1st. Without a clock, the holidays follow your play time.
 
 ## PLAY: the HARP and the FLUTE
 
-Since **v11.302.3** each edition has an instrument: **the HARP in CONTENT, the FLUTE in CONTEXT.** Take it out and a
+Each edition has an instrument: **the HARP in CONTENT, the FLUTE in CONTEXT.** Take it out and a
 **KEY WHEEL** of twelve keys opens, then folds into a **STAFF**:
 
 | | |
@@ -57,12 +78,33 @@ Since **v11.302.3** each edition has an instrument: **the HARP in CONTENT, the F
 
 Every note has its own colour -- C red, D orange, E yellow, F green, G blue, A indigo, B violet -- and stays bright
 whatever the light. **Some things in the world listen** -- and to them the right notes in the wrong key are not quite
-the same tune. What you play is written in the **SONGBOOK**.
+the same tune.
+
+**Seven songs** are heard somewhere in the world. Play one back and it is learned, and each does something of its own.
+What you play is written in the **SONGBOOK**, in the notes' colours.
+
+## Colour is friendship
+
+A daemon's colours fill as it comes to trust you: nearly grey with a hint of its type at first, half its colour by
+the time it is friendly, the full ramp at the most. People stay in colour; some trainers' daemons never warm to anyone.
+
+## The GAME CORNER
+
+The GAME CORNER's machines play as the companion's CASINO does: reels of the daemons you have seen, a coin and the
+season's piece, a holiday's hats -- and luck from the game's own day: the holiday, the sky, the hour and the season.
+
+## Music
+
+Four towns have their own themes, and each of the hidden places has a loop of its own.
 
 ## The NOTEBOOK
 
-The NOTEBOOK keeps the pages you find and write, in sections -- school notes, lab notes, letters, the SONGBOOK and
-more. A page not yet read carries a dot, and each says where it was found. A few end on a QR code, which opens a song.
+The NOTEBOOK keeps the pages you find and write, in sections -- school notes, lab notes, letters, the SONGBOOK, THE
+YEAR and more. A page not yet read carries a dot, and each says where it was found. A few end on a QR code, which
+opens a song.
+
+**The DREAM LOG.** After a milestone, at the next dawn, you say *"I had a dream."* -- and the dream is filed, as an
+image, with a title and no interpretation. Someone else's dreams are kept there too.
 
 ## CALLOW SCHOOL
 
@@ -72,13 +114,14 @@ CALLOW SCHOOL has a TEXTBOOK, an EXAM you can leave and come back to, and a DIPL
 
 There are eight MARKS, each won at a BENCHMARK, and each prints a **virtue over its shadow**. A MARK is a lesson as
 much as a badge: a BENCHMARK's lesson is mechanical, so it cannot be skipped by grinding. Some of what the game
-teaches arrives quietly and is never counted.
+teaches arrives quietly and is never counted. A MARK and what it pairs with, once both are held, each say how the
+other balances it; and when every pair is held, a last note arrives.
 
 ## The INDEX
 
 The INDEX has **395 entries**, and every one is written twice -- the two editions say something different about each
-daemon. Its area page says where a daemon is **NATIVE**: its region and, when it keeps to them, its edition, hours
-and seasons.
+daemon. Its area page says where a daemon is **NATIVE**: its region and, when it keeps to them, its edition, hours,
+seasons and weathers.
 
 ## Places the game never points to
 
@@ -92,5 +135,6 @@ home with what it learned. See [The companion](The-companion).
 
 ## Not built yet
 
-Decided, and still to come: holidays through the year, the hidden places' own music, the weather's second phase, and
-a songbook of songs to learn. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md) has them.
+Decided, and still to come: routine animations that carry the game's own signature -- its binary and its notes --
+and the HARP and FLUTE taking the project's own voices, as the companion already plays them. The
+[TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md) has them and more.

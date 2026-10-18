@@ -35,13 +35,18 @@ with no computer, taking the save from an emulator on the same phone (built; sti
 
 ## What it does with your game
 
-- **THE CASINO.** Every board has SLOTS: three reels of your own party. **The coins are your game's money** -- the
-  board starts from what your save holds, and the next SYNC writes what it won or lost into the save, never below
-  nothing and never past 999999. The odds are the Game Corner's, about 94 back for every 100 bet.
+- **THE CASINO.** Every board has SLOTS -- and so do the phone, the site and the Tab5: three reels of your own party.
+  **The coins are your game's money** -- the companion starts from what your save holds, and the next SYNC writes what
+  was won or lost into the save, never below nothing and never past 999999. The odds move with the day, between 90 and
+  100 back for every 100 bet: a holiday, the weather where you are, the hour and the season, as the game's own GAME
+  CORNER does. THE HOUSE says today's odds and why; THE TABLE shows who else is playing, and a big win is called out.
+- **The game's own voice.** On the phone, the site and the Tab5 every tune plays on the instrument your save's edition
+  has -- DAEMONS' own harp for CONTENT, its flute for CONTEXT.
 - **Experience.** Every step of a goal you finish feeds the daemon and gives it experience, which comes home with it.
-- **Your save, to read.** The app, the site and the Tab5 show your PROFILE (your MARKS, ROOTS, the regions you have
-  seen, the hidden places you have found), the NOTEBOOK and its SONGBOOK, CALLOW SCHOOL and your DIPLOMA, and the INDEX
-  with each daemon's NATIVE line -- only what your save has already reached.
+- **Your save, to read.** The app, the site and the Tab5 show YOU (your MARKS, ROOTS, the regions you have seen, the
+  hidden places you have found, the story so far), a LIBRARY (CALLOW SCHOOL and your DIPLOMA, THE GUIDE once found, the
+  NOTEBOOK, the SONGBOOK's songs on a staff in their colours, and STREAM's lessons), and the INDEX with each daemon's
+  NATIVE line -- only what your save has already reached.
 
 ## More
 
