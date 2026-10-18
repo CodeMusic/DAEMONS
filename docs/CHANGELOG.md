@@ -5,6 +5,18 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.305 — 2026-10-18
+
+### Weather, the DREAM LOG, the GAME CORNER, one voice (T-415, T-412, T-422, T-424, T-425, T-426)
+
+- ***3.7, new***: **WEATHER**, *special and rare, by season; a boost and a weakened type in battle, the tint and the glint, weather daemons, IN RAIN.*
+- ***3.8, new***: **THE DREAM LOG**, *your dreams and hers, titled by the user.*
+- ***3.9, new***: **THE GAME CORNER as the companion's CASINO**, *the game's own day setting the luck.*
+- ***3.5***: **one voice everywhere** -- *our own harp and flute in the game and the companion; the SONGBOOK playable on the companion.*
+- ***8, Saturation is friendship***: **built.**
+
+---
+
 ## v11.304 — 2026-10-18
 
 ### HOLIDAYS, and the FLUTE moved (T-416, T-417)

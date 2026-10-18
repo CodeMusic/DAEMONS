@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.304**
+**A total conversion — the living design bible, v11.305**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2222,6 +2222,8 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 - **No song's notes may sit inside another's** *-- a build-time check (`tools/genplaysongs.py`), so a song met part-way never cuts off a longer one.*
 - ***The cost***: *no resident RAM, no save growth beyond its flags, one shared OBJ palette slot (the note colours) that T-415 and T-416 will share.*
 
+- **One voice everywhere (T-425, T-426)**: *the HARP and FLUTE are our own -- synthesized, approved by ear, nothing of Nintendo's (`tools/geninstruments.py`) -- and the game, the phone, the site and the Tab5 all play them, by the save's edition. The companion's SONGBOOK can be played too: a song or freely, in a key, harp strings plucked or the flute breathed into; locked until the save holds the instrument.*
+
 *The design in full: `docs/private/draft-play-2026-10-17.md`; the motifs and how they were found: `docs/private/draft-play-songs-2026-10-17.md`. Built by `src/play.c`, `tools/genplaysounds.py`, `tools/genplaynotes.py` and `tools/genplaysongs.py` (`docs/play_songs.json`).* **The groves' own music (T-408)** *is drawn from the same two albums: fourteen loops transcribed onto the game's instruments by `tools/gengrovemusic.py`, each universe its own band.*
 
 ### 3.6 HOLIDAYS — the real calendar, and a colour for each month (T-416, the user, 2026-10-17/18)
@@ -2235,6 +2237,27 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 - **The quiet days stay quiet** *(remembrance, Obon, the Day of the Dead: DAWN VIGIL, LANTERN NIGHTS, MARIGOLD DAYS) -- no colour, confetti or item; a line arrives where it belongs.* **HALFTONE stays grey on every holiday, and BREATHVERSE stays timeless.**
 
 *The table: `docs/holidays.json`, written into the ROM by `tools/genholidays.py`; the code in `src/daemons_holidays.c`.*
+
+### 3.7 WEATHER — special and rare (T-415, the user, 2026-10-17/18)
+
+**Mostly clear skies; weather is an event.** *It can start at any hour and last from ten minutes to a whole day, usually about a watch; each event has a size, from one town to both regions; both extremes are rare. It follows the season (spring rain and storms, summer storms, autumn fog and wind, winter snow) and is worked out from the date, so it costs no save.*
+
+- **In battle a weather boosts one type ×1.25 and weakens another ×0.75**: *rain FLOW (ENTROPY weakened), storms SIGNAL, fog LATENT -- what runs unobserved, in weather that hides things -- and wind VECTOR; no sandstorm, no chip damage. Fog is a light haze that darkens at night; rain is heavier.*
+- **The battle carries the weather in**: *a light wash over its background, and a glint on a routine's name when the weather boosts it.*
+- **Some daemons come with the weather** *(SEEPAGE in rain, PILOT in storms, LOCKFILE in snow, DANGLING in fog, EDGECASE in wind), and the INDEX's NATIVE box says IN RAIN for one met only then.*
+- **HALFTONE stays grey and BREATHVERSE timeless**, *whatever the sky.*
+
+*`src/daemons_weather.c`, `tools/skyodds.py`.*
+
+### 3.8 THE DREAM LOG (T-412, the user, 2026-10-16/18)
+
+**A NOTEBOOK section of dreams.** *Each of YOUR DREAMS -- twenty-one, one after each MARK, each understanding and the story's turns -- arrives at the first dawn after its milestone, one a night, opening "I had a dream.", under a title of its own the user chose one by one. HER DREAMS are the attendant's: the dream she tells at a heal is filed under its title, and once its step is done her page gains where it led, which she says aloud once at the next heal.* **A dream is never explained.**
+
+*`docs/dream_log.json`, `docs/attendant_dreams.json`; `tools/gbadreamlog.py`, `tools/gbadreams.py`.*
+
+### 3.9 THE GAME CORNER — the companion's CASINO (T-422, the user, 2026-10-18)
+
+**The reels are daemons**: *the player's lead the jackpot, the rest from the INDEX seen, a coin, the season's piece, the season falling over the reels, a holiday's hats; one line pays. The return is 90 to 100 back of every 100 bet, moved by the GAME's own day -- its holiday, weather, watch and season by edition -- with the companion's cat-and-string reach and near misses, the same numbers as the devices (`tools/gencasino.py` holds the two together). Its tunes play on the day's note. Its people say a daemon can go home to a phone and play these same reels there.* **The devices follow the real world; the game follows its own.**
 
 ## 4. CAST
 
@@ -7249,6 +7272,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 ***How it is built, because the first way leaked.*** **Greying each loader in turn — terrain, the opposing battler, the trainer — missed everything it did not name.** *The grey is now applied once a frame to the one buffer every palette reaches the screen through, just before the vblank copies it out.* **The colour copy underneath is never touched**, *so the flash is one copy back and one flag, and nothing can be left in colour by a loader nobody thought of.* ***A colour already grey costs one multiply and a compare***, **so a settled frame is nearly free.**
 
 #### Saturation is friendship, and that is the thesis made mechanical
+
+***Built 2026-10-18 (T-424)***: *one hook at palette load; the share of colour kept rises with friendship (12% at 0, about half at 70, all at 255); the Corpus's daemons at 0; the INDEX grey; icons stay in colour (they share palettes).*
 
 ***A daemon at low friendship is nearly grey with a hint of its type; at maximum it is the full ramp.*** *One hook at sprite-palette load, keyed off `MON_DATA_FRIENDSHIP`.*
 
