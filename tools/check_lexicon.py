@@ -1523,6 +1523,64 @@ def check_ids():
     return out
 
 
+#  T-420 (2026-10-18): a flag RANGE is one name and a computed offset, so check_ids cannot see what it covers. The
+#  STREAM's MARK shows were FLAG_UNUSED_0x4A8 + n, OPUS's two flags were put on two of them, and watching a show took
+#  OPUS off its shelf for a month. Every range our flags.h declares (`// .. + 0xNNN` after its first flag) is expanded
+#  and checked against every other flag we name; every flag we name is inside the DAEMONS block or vanilla's; the
+#  NOTEBOOK's SEEN numbers fit its two blocks; and no FLAG_UNUSED_ name is used by anything (that is how the STREAM's
+#  nine hid). teachy_tv.c, notebook.c and school_exam.c hold their computed ranges to these names by STATIC_ASSERT.
+def check_flag_ranges():
+    out = []
+    hdr = open(os.path.join(GBA, "include/constants/flags.h"), encoding="utf-8").read()
+    consts = {}
+    for n, v in re.findall(r"^#define\s+(\w+)\s+\(?\s*(0x[0-9A-Fa-f]+|\d+)\s*\)?\s*(?://.*)?$", hdr, re.M):
+        consts[n] = int(v, 0)
+    start = consts.get("DAEMONS_FLAGS_START")
+    count = consts.get("DAEMONS_FLAGS_COUNT")
+    if start is None or count is None:
+        return [("flags.h", "DAEMONS_FLAGS_START or DAEMONS_FLAGS_COUNT not found")]
+    owner = {}      # offset in the DAEMONS block -> names
+    ranges = []
+    for m in re.finditer(r"^#define\s+(FLAG_\w+)\s+\(DAEMONS_FLAGS_START\s*\+\s*(0x[0-9A-Fa-f]+|\d+)\)(.*)$", hdr, re.M):
+        name, off, rest = m.group(1), int(m.group(2), 0), m.group(3)
+        if not 0 <= off < count:
+            out.append((name, "offset %#x is outside the DAEMONS block (0..%#x)" % (off, count - 1)))
+        owner.setdefault(off, []).append(name)
+        r = re.search(r"\.\.\s*\+\s*(0x[0-9A-Fa-f]+|\d+)", rest)
+        if r:
+            end = int(r.group(1), 0)
+            if end < off or end >= count:
+                out.append((name, "its range ends at %#x, outside the DAEMONS block or before it starts" % end))
+            ranges.append((name, off, end))
+    for name, a, b in ranges:
+        for off in range(a + 1, b + 1):
+            for other in owner.get(off, []):
+                #  a range whose members are named too, one by one (FLAG_SONG_HEARD_1 .. _7), is one thing
+                if re.sub(r"\d+$", "", other) != re.sub(r"\d+$", "", name):
+                    out.append((other, "is %#x, inside %s's range (%#x .. %#x)" % (off, name, a, b)))
+        for name2, c, d in ranges:
+            if name2 != name and a <= c <= b:
+                out.append((name2, "its range starts inside %s's (%#x .. %#x)" % (name, a, b)))
+    #  the NOTEBOOK's SEEN numbers: two blocks of NOTEBOOK_SEEN_BLOCK (notebook.c's SeenFlag)
+    block = consts.get("NOTEBOOK_SEEN_BLOCK")
+    f = os.path.join(GBA, "src/data/notebook_notes.h")
+    if block is None:
+        out.append(("NOTEBOOK_SEEN_BLOCK", "not found in flags.h"))
+    elif os.path.isfile(f):
+        for flag, n in re.findall(r"\{\s*(FLAG_\w+),\s*(\d+),", open(f, encoding="utf-8").read()):
+            if int(n) >= 2 * block:
+                out.append((flag, "NOTEBOOK seen %s is past the second SEEN block (%d .. %d)" % (n, block, 2 * block - 1)))
+    #  a FLAG_UNUSED_ name used anywhere but its definition is a flag in use under a name that says it is free
+    for root, sub in (("src", ("*.c", "*.h")), ("data", ("*.inc", "*.s", "*.json"))):
+        for pat in sub:
+            for g in glob.glob(os.path.join(GBA, root, "**", pat), recursive=True):
+                text = open(g, encoding="utf-8", errors="ignore").read()
+                for i, line in enumerate(text.splitlines(), 1):
+                    for u in re.findall(r"\bFLAG_UNUSED_0x[0-9A-Fa-f]+\b", line.split("//")[0].split("@")[0]):
+                        out.append(("%s:%d" % (os.path.relpath(g, GBA), i), "%s is in use but still named UNUSED" % u))
+    return out
+
+
 #  A rename changes the word after "a" or "an" and nothing changes the article. ENCORE became REPLAY and the
 #  battle said "got an REPLAY!"; the POKe FLUTE became INTERRUPT and Lavender said "received a INTERRUPT" --
 #  both for two weeks (found 2026-09-23). Escapes are flattened first: in "got\\nan" the n of the escape sits
@@ -1837,6 +1895,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    rbad = check_flag_ranges()
+    if not rbad:
+        print("  every flag range we declare is clear of every other flag, and no flag named UNUSED is in use.")
+    else:
+        print("\n  %d flag range problem(s):\n" % len(rbad))
+        for what, why in rbad:
+            print("   %-32s %s" % (what, why))
+
     gbad2 = check_gender_branches()
     if not gbad2:
         print("  REASON and INSTINCT are told the same words, except where the two voices are written on purpose.")
@@ -1933,7 +1999,7 @@ def main():
             print("   %-16s %s" % (what, why))
     #  every check's failures reach the exit code (it had dropped tcopy, fbad and the near-collisions, whose count
     #  check_vetoed's overwrote -- found 2026-10-18 in the code-health review)
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
 
 
 if __name__ == "__main__":
