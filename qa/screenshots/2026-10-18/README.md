@@ -355,3 +355,9 @@ Read off the T-Watch S3 itself: the DAEMON face (autumn sky, hill and leaves; EM
 T-422 (v11.304.5): the GAME CORNER as the companion's CASINO -- ordinary day, SO CLOSE, the FIR LIGHTS jackpot, CLOVER DAY, the help card, CONTEXT's suns
 
 ![18Oct2026 - T422 - the CASINO - 81](18Oct2026%20-%20T422%20-%20the%20CASINO%20-%2081.png)
+
+### 18Oct2026 - C162 - the watch face picker on the phone - 82
+
+C-162/C-163 on the iPhone (build e78cc24): the T-Watch S3's ITS SETTINGS -- ITS FACE, DAEMON (chosen, the default), CLOCK and VIRTUE each drawn with its daemon EMERGENCE and the season's sky; SEASON AND WEATHER on
+
+![18Oct2026 - C162 - the watch face picker on the phone - 82](18Oct2026%20-%20C162%20-%20the%20watch%20face%20picker%20on%20the%20phone%20-%2082.png)
