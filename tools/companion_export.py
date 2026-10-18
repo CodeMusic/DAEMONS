@@ -381,7 +381,8 @@ def notebook_table():
     insight = re.search(r"#define NB_INSIGHT_ENTRIES \\\n(.*?)(?:\n\n|\Z)", wis, re.S).group(1)
     body = body.replace("NB_INSIGHT_ENTRIES", insight.replace("\\", ""))
     body = re.sub(r"//[^\n]*", "", body)
-    rows = re.findall(r"\{\s*(NB_\w+),\s*(NB_KIND_\w+),\s*(\d+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", body)
+    body = re.sub(r"#if DAEMONS_DEBUG\n.*?#endif", "", body, flags=re.S)     # the release build's pages only
+    rows = re.findall(r"\{\s*(NB_\w+),\s*(NB_KIND_\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", body)
     flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"})
     fv = flag_values(flagnames)
     abouts = {n: gba_string(b) for n, b in re.findall(r"static const u8 sNoteAbout_(\w+)\[\]\s*=\s*_\((.*?)\);", notes, re.S)}
@@ -416,15 +417,18 @@ def notebook_table():
             if arg == "1":
                 words = words.split("\n\n", 1)[-1]           # the heading the title already carries
             words = re.sub(r"\{(?!RIVAL\}|PLAYER\})[^}]*\}", "", words).strip()
-        pages.append({"section": sections.index(sec), "title": strings[title], "kind": kind[8:].lower(),
+        page = {"section": sections.index(sec), "title": strings[title], "kind": kind[8:].lower(),
                       "flag": fv[flag], "flag2": fv[flag2] if flag2 != "0" else 0,
                       "about": abouts.get(flag[5:]), "text": words,
                       "seen": found.get(flag, (None, None))[0], "place": found.get(flag, (None, None))[1],
-                      "link": links.get(flag)})
+                      "link": links.get(flag)}
+        if kind == "NB_KIND_SONG":                          # T-417: play.c writes the page, its key and notes
+            page["song"] = arg
+        pages.append(page)
     return {"_about": "C-125: the NOTEBOOK's pages in the game's own order, read from src/notebook.c and the headers it "
                       "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
                       "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
-                      "the save when opened; no words here. seen: the flag set once the page is opened in the game (unread until "
+                      "the save when opened; no words here. kind song (T-417, the SONGBOOK): drawn by the game as coloured notes in the key it was played in; song names the tune. seen: the flag set once the page is opened in the game (unread until "
                       "then, T-403); place: where it was found; link: the song or post its QR code opens (T-402).",
             "sections": [strings[names[s]] for s in sections], "pages": pages}
 
