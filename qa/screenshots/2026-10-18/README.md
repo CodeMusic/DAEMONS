@@ -85,3 +85,9 @@ C-154 on the T-Watch S3, from its own screen: another board's jackpot arriving t
 A mockup of the companion's redesign on a phone: A, seven tabs (TODAY as the home page, INDEX and LIBRARY their own tabs, YOU, PLACES); LIBRARY's shelf of four (CALLOW SCHOOL, THE GUIDE, NOTEBOOK, STREAM); B, six tabs with INDEX inside DAEMON.
 
 ![18Oct2026 - C156 - the companion rearranged - mockup - 14](18Oct2026%20-%20C156%20-%20the%20companion%20rearranged%20-%20mockup%20-%2014.png)
+
+### 18Oct2026 - C156 - the six tabs - 15
+
+The companion rearranged (C-156): the site at phone width -- TODAY the home page, DAEMON's segments, LIBRARY's five books, YOU, PLACES -- and the Tab5's TODAY and LIBRARY (on its 2026-10-09 kept data).
+
+![18Oct2026 - C156 - the six tabs - 15](18Oct2026%20-%20C156%20-%20the%20six%20tabs%20-%2015.png)
