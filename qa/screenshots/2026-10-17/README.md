@@ -37,3 +37,9 @@ T-415: weather by season on Route 1 (clear, rain, storm, snow, fog, wind; day an
 The companion app on the user's iPhone, PROFILE's MARK badges: before, smoothed by iOS; after, each pixel repeated (app/modules/daemons-pixels).
 
 ![17Oct2026 - C147 - pixel art crisp on the phone - 6](17Oct2026%20-%20C147%20-%20pixel%20art%20crisp%20on%20the%20phone%20-%206.png)
+
+### 17Oct2026 - C148 - GLOW on the StickC-Plus - 8
+
+C-148: the M5StickC-Plus running the companion, its Thermal HAT seen through GLOW -- the ROUTINES page, then SEE THE HEAT, WARMEST THING, SOMEONE'S HERE (learning, watching) and HOW WARM IS THAT, each at work and its result. Every word DRAFT.
+
+![17Oct2026 - C148 - GLOW on the StickC-Plus - 8](17Oct2026%20-%20C148%20-%20GLOW%20on%20the%20StickC-Plus%20-%208.png)
