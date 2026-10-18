@@ -91,3 +91,15 @@ C-149 on the T-Embed CC1101, from its own screen: the CASINO first in its types,
 C-150 on the T-Embed CC1101 (companion 551bbff, which carries it): FLARE / WHAT REMOTE IS THIS started from the cable, its IR receiver made on first use from the board's own pin, timed out after 60 s with no remote pressed, no restart
 
 ![17Oct2026 - C150 - CC1101 FLARE what remote from the cable - 16](17Oct2026%20-%20C150%20-%20CC1101%20FLARE%20what%20remote%20from%20the%20cable%20-%2016.png)
+
+### 17Oct2026 - T417 - P4 TWELVE DAYS learned - 17
+
+T-417 P4 (v11.302.4): TWELVE DAYS OF DECEMBER heard from the LYREBIRD, played back in E, learned; played again it shows the day
+
+![17Oct2026 - T417 - P4 TWELVE DAYS learned - 17](17Oct2026%20-%20T417%20-%20P4%20TWELVE%20DAYS%20learned%20-%2017.png)
+
+### 17Oct2026 - T417 - P4 HARMONY IN BALANCE turns the sky - 18
+
+T-417 P4: HARMONY IN BALANCE learned outside CALLOW; played again it turns the clear sky to the season's weather
+
+![17Oct2026 - T417 - P4 HARMONY IN BALANCE turns the sky - 18](17Oct2026%20-%20T417%20-%20P4%20HARMONY%20IN%20BALANCE%20turns%20the%20sky%20-%2018.png)
