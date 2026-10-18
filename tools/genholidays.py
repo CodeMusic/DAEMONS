@@ -581,7 +581,7 @@ def table_header(doc, names):
          "};", "",
          "#define HG_GO_ON           (1 << 0)   // gives and reads on",
          "#define HG_LINE            (1 << 1)   // a line for THE YEAR (arg: its index), not an item",
-         "#define HG_LEAD_TYPE_GAIN  (1 << 2)   // the party lead's type's GAIN (sHolidayTypeGain); ITEM_NONE (ORACLE) reads on",
+         "#define HG_LEAD_TYPE_GAIN  (1 << 2)   // the lead's first type's GAIN (sHolidayTypeGain); ORACLE as either type reads on",
          "#define HG_YEAR_DRAW       (1 << 3)   // sHolidayPresents[(year + edition) % 4]",
          "#define HG_STORM_ISLANDS   (1 << 4)   // only if a thunderstorm touched the islands today", "",
          "struct HolidayGift", "{",
@@ -636,7 +636,7 @@ def table_header(doc, names):
     o.append("")
 
     # the lead's GAIN
-    o.append("// DEN DAY: the GAIN item of the party lead's type (ITEM_NONE: ORACLE has none -- its gift reads on to THE YEAR's line).")
+    o.append("// DEN DAY: the GAIN item of the party lead's first type. A lead that is ORACLE as EITHER type gets none -- its gift reads on to\n// THE YEAR's line (the user, 2026-10-18).")
     o.append("static const u16 sHolidayTypeGain[NUMBER_OF_MON_TYPES] = {")
     for t in types:
         o.append("    [%s] = %s," % (t, type_gain.get(t, "ITEM_NONE")))

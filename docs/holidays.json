@@ -13,7 +13,7 @@
    "play_watch": "with no clock, which kind of watch it is snapped to in the play-time year (default: the nearest)",
    "two_on_one_day": "the edition's holiday shows; the COMMON one's gift still waits at the CHECKPOINT (the user, 2026-10-17)",
    "steps_off": "names a COMMON holiday this one is not on the day of: that day is the other's, and this one goes on the next day, inside its own span (SCIENCE FAIR off FLEDGLING DAY, the user, 2026-10-18)",
-   "gift": "a list read in order; an entry whose 'when' matches gives and stops, unless 'go_on'. give: an item name, {line: id} (a line for THE YEAR, once ever), {lead_type_gain} (the party lead's type's GAIN item; a type with none, ORACLE, reads on to the next entry) or {year_draw: [items]} (one by the year and the edition). when: watches, sky (CLEAR RAIN STORM SNOW FOG WIND), weekdays, storm_on_islands_today. ITEMS once per holiday per year (a flag each, and a VAR holding the year); LINES once ever.",
+   "gift": "a list read in order; an entry whose 'when' matches gives and stops, unless 'go_on'. give: an item name, {line: id} (a line for THE YEAR, once ever), {lead_type_gain} (the party lead's GAIN item, by its first type; a lead that is ORACLE as EITHER type reads on to the next entry -- the user, 2026-10-18) or {year_draw: [items]} (one by the year and the edition). when: watches, sky (CLEAR RAIN STORM SNOW FOG WIND), weekdays, storm_on_islands_today. ITEMS once per holiday per year (a flag each, and a VAR holding the year); LINES once ever.",
    "daemons": "a holiday takes a land slot -- the road's SEASON slot by default (tools/gbashifts.py), 'hour' its HOUR slot, or a number -- or a fishing slot ('fish'), keeping its level and odds; it wins over the season row on that slot for the day. 'A|B' names are CONTENT's | CONTEXT's. Never a gate: each is met in the wild somewhere already."
   },
  "months": [
@@ -57,7 +57,7 @@
    {"id": "EVEN_LIGHT_AUTUMN", "title": "EVEN LIGHT, AUTUMN", "text": "Day and night came out even. From here the dark has its turn, and that is fair."},
    {"id": "DAWN_VIGIL", "title": "DAWN VIGIL", "text": "Others kept watch so this morning could be ordinary. I keep a minute of it for them."},
    {"id": "FIRST_FROST", "title": "FIRST FROST", "text": "The first frost says nothing new. It only says it clearly."},
-   {"id": "DEN_DAY", "title": "DEN DAY", "text": "It brought nothing home. It was already looking ahead for me.", "max_lines": 2, "about": "DEN DAY with an ORACLE lead, which has no GAIN item (the user, 2026-10-18)"},
+   {"id": "DEN_DAY", "title": "DEN DAY", "text": "It brought nothing home. It was already looking ahead for me.", "max_lines": 2, "about": "DEN DAY with a lead that is ORACLE as either type (no daemon is ORACLE first; OLD_UNOWN_B is ORACLE second), which has no GAIN item (the user, 2026-10-18)"},
    {"id": "FLEDGLING_DAY", "title": "FLEDGLING DAY", "text": "Everyone I met was new at this once. The best of them still say so."},
    {"id": "LANTERN_NIGHTS", "title": "LANTERN NIGHTS", "text": "A light left in the window is not for me. I leave it on anyway."},
    {"id": "SCIENCE_FAIR", "title": "SCIENCE FAIR", "text": "The result I wanted and the result I got sat side by side. I wrote down the second."},
