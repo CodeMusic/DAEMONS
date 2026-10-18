@@ -808,6 +808,18 @@ def guide_cover():
     return Image.open(os.path.join(GBA, "graphics/book/guide_cover.png")).convert("RGB")
 
 
+def subtle_table():
+    """T-423: THE SUBTLE LAYER for the companion's LIBRARY (the user, 2026-10-18: "both, in parallel"): docs/subtle-layer.md
+    read by tools/gensubtle.py, each paragraph plain text, the asking voice marked, each entry's picture and its frame
+    count (the phone cannot list the art). Held once FLAG_GOT_SUBTLE_LAYER is set, as the GUIDE is. The words are the
+    game's DRAFT and already public in docs/subtle-layer.md; the pictures carry nothing set in the game's font."""
+    import gensubtle
+    book = gensubtle.subtle_book()
+    book["flag"] = flag_values(["FLAG_GOT_SUBTLE_LAYER"])["FLAG_GOT_SUBTLE_LAYER"]
+    book["cover"] = "art/subtle_cover.png"
+    return book
+
+
 def _c_strings(src):
     """{symbol: text} for every _("...") constant in a C file, the scroll break (\\l) a line break, no $"""
     return {s: gba_string(b).replace("\\l", "\n").rstrip("$")
@@ -1020,6 +1032,7 @@ def main():
              "events.json": events_table(), "school.json": school_table(),
              "groves.json": groves_table(),                                     # T-408       # C-128, C-129
              "guide.json": guide_table(),                                       # the reading tab
+             "subtle.json": subtle_table(),                                     # T-423: the LIBRARY's second book
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
     layout = save_layout()
@@ -1062,8 +1075,20 @@ def main():
         if WRITE:
             os.makedirs(art_dir, exist_ok=True)
             open(path, "wb").write(buf.getvalue())
+    #  T-423: THE SUBTLE LAYER's pictures and cover, RGB like the GUIDE's cover (the page colour is part of the picture).
+    import gensubtle
+    subtle = gensubtle.subtle_images()
+    for name, im in subtle.items():
+        buf = io.BytesIO()
+        im.save(buf, "PNG", optimize=True)
+        path = os.path.join(art_dir, name)
+        if not os.path.exists(path) or open(path, "rb").read() != buf.getvalue():
+            art_changed += 1
+            if WRITE:
+                os.makedirs(art_dir, exist_ok=True)
+                open(path, "wb").write(buf.getvalue())
     if art_changed:
-        changed.append("art/ (%d of %d)" % (art_changed, len(art) + 1))
+        changed.append("art/ (%d of %d)" % (art_changed, len(art) + 1 + len(subtle)))
     sp = files["species.json"]
     with_art = sum(1 for r in sp.values() if r["art"]["front"])
     with_entry = sum(1 for r in sp.values() if r["entry"]["CONTENT"] and r["entry"]["CONTEXT"])
