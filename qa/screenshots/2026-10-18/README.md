@@ -325,3 +325,9 @@ C-158/C-159 on the Tab5: THE HOUSE beside THE CASINO, ITS SETTINGS on every devi
 C-158: every drawn piece and holiday hat, ported from casino.cpp by firmware/common/casino_art.py (autumn's colours in the slots)
 
 ![18Oct2026 - C158 - casino drawn pieces and hats - 61](18Oct2026%20-%20C158%20-%20casino%20drawn%20pieces%20and%20hats%20-%2061.png)
+
+### 18Oct2026 - T423 - the psychic books pages, four hues - 62
+
+T-423 hue mock-ups: the Guide's reading page from the ROM, recoloured (colour only, the words are the Guide's). A neutral cyan, B CONTEXT trim, C CONTEXT-tinted page, D a plum page. The NOTEBOOK's cover is already CONTEXT's hue.
+
+![18Oct2026 - T423 - the psychic books pages, four hues - 62](18Oct2026%20-%20T423%20-%20the%20psychic%20books%20pages%2C%20four%20hues%20-%2062.png)
