@@ -798,14 +798,16 @@ def guide_table():
     import gbaqr
     sections[-1]["entries"][-1]["link"] = dict(gbaqr.CODES)["Guide"]
     return {"flag": flag_values(["FLAG_GOT_GUIDE"])["FLAG_GOT_GUIDE"], "draft": True,
-            "title": "THE PROGRAMMER'S GUIDE TO THE HUMAN MIND", "sections": sections}
+            "title": "THE PROGRAMMER'S GUIDE TO THE HUMAN MIND", "author": "CHRISTOPHER ART HICKS",   # the cover sets them (no lettering in art/guide_cover.png)
+            "sections": sections}
 
 
 def guide_cover():
-    """The GUIDE's 8-bit cover (graphics/book/guide_cover.png, 240x160) as the game draws it, author's name and all --
-    the user, 2026-10-17: "yes show my name" on the public companion."""
-    from PIL import Image
-    return Image.open(os.path.join(GBA, "graphics/book/guide_cover.png")).convert("RGB")
+    """The GUIDE's 8-bit cover (240x160) WITHOUT its lettering (the user, 2026-10-18): the game letters it in its own
+    font, which is Nintendo's, and the companion is public -- so the app sets the title and the author's name in its
+    own type (guide.json's title and author). The art is ours: the boards, the rules, the brain from the user's book."""
+    import genguide
+    return genguide.build_cover(lettered=False).convert("RGB")
 
 
 def subtle_table():

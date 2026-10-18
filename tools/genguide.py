@@ -285,7 +285,10 @@ def nearest(c, roles):
     return min(roles, key=lambda r: sum((a - b) ** 2 for a, b in zip(PALETTE[IDX[r]][1], c)))
 
 
-def build_cover():
+def build_cover(lettered=True):
+    """The cover. lettered=False leaves out the title and the author's name: the companion's copy, since the
+    lettering is the game's own font (Nintendo's) and the companion is public; its app sets them in its own type
+    (the user, 2026-10-18)."""
     W, H = 240, 160
     pix = [[IDX["C_COVER"]] * W for _ in range(H)]
 
@@ -295,6 +298,8 @@ def build_cover():
                 pix[yy][xx] = IDX[role]
 
     def text(s, y, role, small=False, scale=1):
+        if not lettered:
+            return
         pts, tw = glyphs(s, small, scale)
         x0 = COVER_X + 4 + (COVER_W - 4 - tw) // 2
         for (x, yy) in pts:
