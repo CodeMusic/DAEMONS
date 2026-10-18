@@ -297,6 +297,9 @@ class Runner:
         self.frames.append((dst, label, words))
 
     def where(self):
+        #  gSaveBlock1Ptr moves when a map loads; a pointer kept from before a warp reads the old map's location for as
+        #  long as that memory is left alone, so a warp that landed looked lost (T-417 P5, MANSION B1F -> PALLET).
+        self.g.p = None
         s = self.g.state()
         return tw.map_name(*s["map"]), (s["x"], s["y"])
 

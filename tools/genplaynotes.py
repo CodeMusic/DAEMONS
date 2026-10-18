@@ -11,11 +11,13 @@ leaves and T-416's month notes can share it later:
    1-12   the twelve keys, C to B, in the user's colours (2026-10-17): C red, C# red/orange, D orange, D# orange/yellow,
           E yellow, F green, F# green/blue, G blue, G# blue/indigo, A indigo, A# indigo/purple, B purple.
           A is INDIGO everywhere (the user, 2026-10-17) -- the fir's A too (src/field_specials.c, FIR_INDIGO).
-   13     outline    14  highlight    15  white glow
+   13     outline    14  highlight    15  gold-white glow (P5: the staff's heads fill with it when a song joins -- the
+          design's "gold-white (index 15)", DRAFT)
 
 The sheets, each frame in key order C..B:
    notes.png   16x16 x 12   the note that drifts up from the instrument, and the chosen key on the wheel
-   small.png    8x8  x 24   12 wheel dots, then 12 staff heads
+   small.png    8x8  x 37   12 wheel dots, 12 staff heads, 12 hollow heads (P5: the GHOSTS, a learned song's next
+                            notes shown ahead on the staff), then 1 gold head (a joined song's heads)
 """
 import os, sys
 from PIL import Image
@@ -28,7 +30,7 @@ KEYS = [  # 5-bit colours, as the GBA holds them
     (0, 24, 24), (0, 8, 31), (6, 0, 31), (12, 0, 31), (18, 0, 31), (24, 0, 31),
 ]
 OUTLINE, HIGHLIGHT, GLOW = 13, 14, 15
-PALETTE = [(0, 0, 0)] + KEYS + [(4, 3, 8), (31, 31, 26), (31, 31, 31)]
+PALETTE = [(0, 0, 0)] + KEYS + [(4, 3, 8), (31, 31, 26), (31, 28, 14)]
 
 #  16x16: an eighth note, head low left, stem up the right of it, flag out to the right. '#' colour, 'o' outline,
 #  'h' highlight.
@@ -70,6 +72,27 @@ HEAD = [
     "........",
     "........",
 ]
+#  P5: a GHOST -- the head's ring in its key's colour, hollow; and the GOLD head a joined song's notes fill with.
+HOLLOW = [
+    "........",
+    "........",
+    "..###...",
+    ".#...#..",
+    ".#...#..",
+    "..###...",
+    "........",
+    "........",
+]
+GOLD = [
+    "........",
+    "........",
+    "..ooo...",
+    ".ohwwo..",
+    ".owwwo..",
+    "..ooo...",
+    "........",
+    "........",
+]
 
 
 def paint(shape, key):
@@ -95,7 +118,8 @@ def main():
     write = "--write" in sys.argv
     outs = {
         "notes.png": sheet([paint(NOTE, k) for k in range(12)], 16, 16),
-        "small.png": sheet([paint(DOT, k) for k in range(12)] + [paint(HEAD, k) for k in range(12)], 8, 8),
+        "small.png": sheet([paint(DOT, k) for k in range(12)] + [paint(HEAD, k) for k in range(12)]
+                           + [paint(HOLLOW, k) for k in range(12)] + [paint(GOLD, 0)], 8, 8),
     }
     changed = []
     for name, im in outs.items():
