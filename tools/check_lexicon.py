@@ -1757,12 +1757,12 @@ def main():
         for what, why in kbad:
             print("   %-32s %s" % (what, why))
 
-    nbad = check_near_collisions(surfaces)
-    if not nbad:
+    ncbad = check_near_collisions(surfaces)
+    if not ncbad:
         print("  no name is another with a vowel dropped.")
     else:
-        print("\n  %d near-collision(s):\n" % len(nbad))
-        for what, why in nbad:
+        print("\n  %d near-collision(s):\n" % len(ncbad))
+        for what, why in ncbad:
             print("   %-30s %s" % (what, why))
 
     fbad = check_phantom_places()
@@ -1931,7 +1931,9 @@ def main():
         print("\n  %d ticket id problem(s):\n" % len(tbad))
         for what, why in tbad:
             print("   %-16s %s" % (what, why))
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
+    #  every check's failures reach the exit code (it had dropped tcopy, fbad and the near-collisions, whose count
+    #  check_vetoed's overwrote -- found 2026-10-18 in the code-health review)
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
 
 
 if __name__ == "__main__":

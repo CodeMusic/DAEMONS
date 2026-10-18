@@ -19,6 +19,9 @@ The rest is mechanical and safe: the possessive becomes THEIR, and the object be
 """
 import os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work    # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 C = os.path.join(ROOT, "engineGba/src/move_descriptions.c")
 PANE, MAXLINES = 113, 4
@@ -144,6 +147,7 @@ def wrap(s):
 
 
 def main():
+    refuse_over_later_work("port_pronoun")      # T-293: STALE in generator_drift.json (T-391's hand edits)
     src = open(C, encoding="utf-8").read()
     changed = over = 0
     for m in list(re.finditer(r'const u8 gMoveDescription_(\w+)\[\] = _\((.*?)\);', src, re.S)):
