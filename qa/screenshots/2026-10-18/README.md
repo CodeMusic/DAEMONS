@@ -331,3 +331,9 @@ C-158: every drawn piece and holiday hat, ported from casino.cpp by firmware/com
 T-423 hue mock-ups: the Guide's reading page from the ROM, recoloured (colour only, the words are the Guide's). A neutral cyan, B CONTEXT trim, C CONTEXT-tinted page, D a plum page. The NOTEBOOK's cover is already CONTEXT's hue.
 
 ![18Oct2026 - T423 - the psychic books pages, four hues - 62](18Oct2026%20-%20T423%20-%20the%20psychic%20books%20pages%2C%20four%20hues%20-%2062.png)
+
+### 18Oct2026 - C162 - watch face mock-ups, season and weather - 63
+
+C-162 watch face mock-ups with EMERGENCE: top row, the three faces as built; the rest with the season behind (by edition) and the weather in front. Mock-ups, not the watch's own pixels.
+
+![18Oct2026 - C162 - watch face mock-ups, season and weather - 63](18Oct2026%20-%20C162%20-%20watch%20face%20mock-ups%2C%20season%20and%20weather%20-%2063.png)
