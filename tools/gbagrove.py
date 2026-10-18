@@ -261,6 +261,16 @@ FIR_SYNTH = (11, 3)                                     # the fir in a drawn cle
 FLAG_BASE = 0x110                                       # FLAG_<GROVE>_FOUND, DAEMONS_FLAGS_START + 0x110 up, in GROVES order
 
 
+def grove_music(name, parents):
+    """T-408: a grove plays its universe's own song once tools/gengrovemusic.py has made its slot (MUS_GROVE_<X> in
+    songs.h); until then, its parent's. Read here so a --write of this tool never puts the parent's music back."""
+    import gengrovemusic
+    u = next((u for u, g in gengrovemusic.GROVES.items() if g[0] == name), None)
+    const = "MUS_GROVE_%s" % u if u else None
+    songs = open(os.path.join(GBA, "include/constants/songs.h")).read()
+    return const if const and re.search(r"^#define\s+%s\b" % const, songs, re.M) else parents
+
+
 def found_flag(mapc):
     return "FLAG_%s_FOUND" % mapc[4:]
 
@@ -442,7 +452,7 @@ def main():
                                  "trainer_type": "TRAINER_TYPE_NONE", "trainer_sight_or_berry_tree_id": "0",
                                  "script": "EventScript_SingingFir", "flag": flag}
         mapjson = {
-            "id": mapc, "name": name, "layout": lay_id, "music": pm["music"],
+            "id": mapc, "name": name, "layout": lay_id, "music": grove_music(name, pm["music"]),
             "region_map_section": pm["region_map_section"], "requires_flash": False, "weather": pm["weather"],
             "map_type": pm["map_type"], "allow_cycling": pm["allow_cycling"], "allow_escaping": pm["allow_escaping"],
             "allow_running": pm["allow_running"], "show_map_name": False, "floor_number": 0,
