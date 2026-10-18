@@ -128,8 +128,14 @@ def census():
         fam = family(d["effect"], d["power"]) or TYPE_NAME.get(d["type"], d["type"])
         text = b_ours.get(lab, "")
         vanilla = text == b_up.get(lab)
-        #  A redraw behind `.if DAEMONS_DEBUG` is a DRAFT: the debug ROMs play it for approval, release keeps vanilla's.
+        #  A redraw behind `.if DAEMONS_DEBUG` is a DRAFT: the debug ROMs play it for approval, and release plays its
+        #  `.else`. That is vanilla's only if it IS vanilla's: T-392's 2026-10-08 glyph drafts wrapped scripts already
+        #  approved, and this counted all 148 as vanilla (T-392 P1's fix). The union routines' .else is a stand-in.
         draft = ".if DAEMONS_DEBUG" in text
+        if draft and ".else\n" in text:
+            release_part = text.split(".else\n", 1)[1].split(".endif", 1)[0]
+            up = b_up.get(lab, "")
+            draft = bool(up) and release_part.strip() in up
         tags = sorted(set(re.findall(r"ANIM_TAG_\w+", text)))
         subs = sorted(set(re.findall(r"\b(?:call|goto|jumpif\w*)\s+(\w+)", text)))
         rows.append(dict(move=mv, name=names.get(mv, "?"), family=fam, label=lab, vanilla=vanilla or draft, draft=draft, tags=tags, subs=subs,

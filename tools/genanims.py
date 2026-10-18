@@ -1509,21 +1509,9 @@ def _with_union(fam, fn):
 FAMILIES = {k: _with_union(k, v) for k, v in FAMILIES.items()}
 
 
-#  T-392 (9.24 as amended 2026-10-08): the game's signature on its own chart. The CONTENT side of 8.4 sends its bits,
-#  the CONTEXT side its notes -- the splash's glyphs in grey ink, shaded into the routine's own type colour before
-#  they fly (AnimTask_DaemonsInk), so clause 3 still holds. They fly while the family's own picture plays.
-GLYPH_FAMILIES = {"CONTENT": "BITS", "LOGIC": "BITS", "STRATUM": "BITS", "LEGACY": "BITS",
-                  "CONTEXT": "NOTES", "LATENT": "NOTES", "VECTOR": "NOTES", "ENTROPY": "NOTES"}
-
-
-def glyph_lines(kind, colour):
-    out = ["\tloadspritegfx ANIM_TAG_DAEMONS_GLYPHS", "\tloadspritegfx ANIM_TAG_DAEMONS_INK",
-           "\tcreatevisualtask AnimTask_DaemonsInk, 5, %s" % colour]
-    for i in range(5):
-        out.append("\tcreatesprite gDaemonsGlyphInkSpriteTemplate, ANIM_ATTACKER, 2, DAEMONS_GLYPH_STREAM, "
-                   "DAEMONS_GLYPH_%s, 18, %d, 3, 0" % (kind, i))
-        out.append("\tdelay 2")
-    return out
+#  T-392: the game's signature is no longer drafted here. The 2026-10-08 glyph drafts (GLYPH_FAMILIES, glyph_lines,
+#  --glyphs) gave 141 routines one look per family; P1 (2026-10-18) withdrew them, and every routine's signature is now
+#  its own codeword, played by one hook in the battle-animation launcher from tools/gensignature.py's table.
 
 
 def first_sound(text):
@@ -1617,7 +1605,7 @@ def main():
         #  over it would take OUR script for vanilla's and put it in the .else -- the trap this tool's release note
         #  warns of, and what --write did to every released family until T-293 (2026-09-25).
         approved = ".if DAEMONS_DEBUG" not in text and s[:a].endswith(head + " approved.\n")
-        if not release and approved and not ("--glyphs" in args and fam in GLYPH_FAMILIES):
+        if not release and approved:
             continue
         if release:
             if ".if DAEMONS_DEBUG" not in text:
@@ -1647,9 +1635,6 @@ def main():
                         raise SystemExit("Move_%s: shared code after %s jumps back into %s; split it by hand" % (mv, cutat, l))
             se = first_sound(vanilla + keep)           # a shared subroutine may carry the sound (SELF_DESTRUCT's does)
             body = table[mv](colour_of(mv), pw.get(mv, 0), se, mv)
-            if fam in GLYPH_FAMILIES:                  # T-392: every draft of these families carries them
-                ink = bleach(colour_of(mv)) if fam == "LEGACY" else colour_of(mv)
-                body = glyph_lines(GLYPH_FAMILIES[fam], ink) + body
             new = ("%s DRAFT, debug ROMs only until approved.\nMove_%s:\n.if DAEMONS_DEBUG\n" % (head, mv) +
                    "\n".join(body) + ("\n" if body[-1] == "\tend" else "\n\tend\n") + ".else\n" + vanilla + ".endif\n" + keep)
             # the label line and any previous genanims header are replaced; other comments above are kept
