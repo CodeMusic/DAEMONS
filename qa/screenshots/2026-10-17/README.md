@@ -43,3 +43,33 @@ The companion app on the user's iPhone, PROFILE's MARK badges: before, smoothed 
 C-148: the M5StickC-Plus running the companion, its Thermal HAT seen through GLOW -- the ROUTINES page, then SEE THE HEAT, WARMEST THING, SOMEONE'S HERE (learning, watching) and HOW WARM IS THAT, each at work and its result. Every word DRAFT.
 
 ![17Oct2026 - C148 - GLOW on the StickC-Plus - 8](17Oct2026%20-%20C148%20-%20GLOW%20on%20the%20StickC-Plus%20-%208.png)
+
+### 17Oct2026 - T417 - P3 T417P3art - 9
+
+T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's palm (DRAFT)
+
+![17Oct2026 - T417 - P3 T417P3art - 9](17Oct2026%20-%20T417%20-%20P3%20T417P3art%20-%209.png)
+
+### 17Oct2026 - T417 - P3 playp3contentlyrebird - 10
+
+T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's palm (DRAFT)
+
+![17Oct2026 - T417 - P3 playp3contentlyrebird - 10](17Oct2026%20-%20T417%20-%20P3%20playp3contentlyrebird%20-%2010.png)
+
+### 17Oct2026 - T417 - P3 playp3contextflute - 11
+
+T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's palm (DRAFT)
+
+![17Oct2026 - T417 - P3 playp3contextflute - 11](17Oct2026%20-%20T417%20-%20P3%20playp3contextflute%20-%2011.png)
+
+### 17Oct2026 - T417 - P3 playp3reviewcallowobjects - 12
+
+T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's palm (DRAFT)
+
+![17Oct2026 - T417 - P3 playp3reviewcallowobjects - 12](17Oct2026%20-%20T417%20-%20P3%20playp3reviewcallowobjects%20-%2012.png)
+
+### 17Oct2026 - T417 - P3 playp3reviewbeachobjects - 13
+
+T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's palm (DRAFT)
+
+![17Oct2026 - T417 - P3 playp3reviewbeachobjects - 13](17Oct2026%20-%20T417%20-%20P3%20playp3reviewbeachobjects%20-%2013.png)
