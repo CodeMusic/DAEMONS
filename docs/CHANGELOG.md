@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.304 — 2026-10-18
+
+### HOLIDAYS, and the FLUTE moved (T-416, T-417)
+
+- ***3.6, new (the user)***: **the real calendar, a note and a colour for each month** -- *thirty-six holidays, three a month by edition, in-world names in the game; the banner plays the month's note; gifts once a year; THE YEAR in the NOTEBOOK; quiet days kept quiet.*
+- ***3.5 (the user)***: **CONTEXT's FLUTE is found in BREATHVERSE**, *an island grove through a palm on ROUTE 2, so both editions get their instrument at the start.*
+
+---
+
 ## v11.303 — 2026-10-18
 
 ### PLAY, and the groves' music (T-417, T-408)

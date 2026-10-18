@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.303**
+**A total conversion — the living design bible, v11.304**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2213,7 +2213,7 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 
 ***Lineage: A PAINTED CHRISTMAS and THE PAINTED MIRROR*** *(the user's two albums, lineage.md).* **The oldest image in the project is notes seen as colour, with a key missing; PLAY makes it something the player does.** *The twelve notes are the user's own chromatic colours, C red to B purple, and A is INDIGO everywhere -- on the wheel, on the staff, in the months (T-416) and in the fir's tune.*
 
-- **Two instruments, one per edition.** **CONTENT's HARP** *is given by a LYREBIRD two tiles right of CALLOW SCHOOL's door, which sings the school bell back on the HARP's own notes.* **CONTEXT's FLUTE** *lies in a palm's shade on FINDERS BEACH -- a breath instrument, "breathing life into the notes".* *The palm stands in CONTENT too, as scenery.*
+- **Two instruments, one per edition.** **CONTENT's HARP** *is given by a LYREBIRD two tiles right of CALLOW SCHOOL's door, which sings the school bell back on the HARP's own notes.* **CONTEXT's FLUTE** *lies in the sand beside a palm in BREATHVERSE, a small island grove reached through a lone palm on ROUTE 2 just north of CALLOW -- a breath instrument, "breathing life into the notes". The islet is timeless (no season, no watch), and a ring of rocks bounds its sea out of view. Both editions get their instrument at the start (the user, 2026-10-18: on the islands CONTEXT had found it near the end). FINDERS BEACH keeps a palm as scenery.*
 - **The band's sheet gives the key, then you play.** *Taken out, the instrument opens on a wheel of twelve keys; it folds into a staff, and the buttons are the scale's seven degrees -- the D-pad clockwise from Down 1, then B 5, A 6, SELECT 7, L and R an octave down and up, START puts it away. Major keys only, three octaves. Each note drifts up from the instrument in its colour and always shines; there is no full-screen wash.*
 - **A song counts only in its own key.** *The last sixteen notes are listened to: key and order count, octave and tempo do not. The right shape in the wrong key is answered "Close" -- the fir hums it back, and something in it sits wrong.*
 - **O CHRISTMAS TREE in B-flat opens a fir**, *even without the sheet -- the sheet is the hint.* **The notes join into one line, the fir sings it back, and the branches part like a door.** *At THE NEXUS the tree lights note by note, and the GUARDIAN says thank you.*
@@ -2223,6 +2223,18 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 - ***The cost***: *no resident RAM, no save growth beyond its flags, one shared OBJ palette slot (the note colours) that T-415 and T-416 will share.*
 
 *The design in full: `docs/private/draft-play-2026-10-17.md`; the motifs and how they were found: `docs/private/draft-play-songs-2026-10-17.md`. Built by `src/play.c`, `tools/genplaysounds.py`, `tools/genplaynotes.py` and `tools/genplaysongs.py` (`docs/play_songs.json`).* **The groves' own music (T-408)** *is drawn from the same two albums: fourteen loops transcribed onto the game's instruments by `tools/gengrovemusic.py`, each universe its own band.*
+
+### 3.6 HOLIDAYS — the real calendar, and a colour for each month (T-416, the user, 2026-10-17/18)
+
+**Playing on a holiday changes the game a little, and never gates it.** *Three a month -- one COMMON to both editions, one NORTHERN for CONTENT, one SOUTHERN for CONTEXT, whose seasons already run two apart. In-world names in the game (ROLLOVER, FIR LIGHTS, LANTERN NIGHTS, EGG HUNT, DEN DAY...); the real names only in the companion.*
+
+- **Each month is a note**, *the chromatic scale from C in January to B in December, in the same colours as PLAY's notes (A is INDIGO).* **The day banner plays the month's note on the 1st, or under a holiday**, *on the edition's own instrument, and shows it in the month's colour; the trainer card takes the colour too.*
+- **With no cartridge clock, holidays follow the play-time calendar and last one watch.** *Two on one day: the edition's shows, and the COMMON one's gift still waits.* *SCIENCE FAIR steps a day off FLEDGLING DAY so both are seen.*
+- **Gifts come once a year**, *at the CHECKPOINT, from MOM, or in the sand -- sometimes an item, sometimes a line; some change with the season, the weather, the edition or the lead daemon's type.* **The lines file into THE YEAR**, *a section of the NOTEBOOK.*
+- **Some daemons turn up more on their day**, *and on PAIRING DAY and FIR LIGHTS the other edition's are let in, those two days only.* **Skies, light and fireworks** *ride the weather's overlay; fireworks share PLAY's note colours.*
+- **The quiet days stay quiet** *(remembrance, Obon, the Day of the Dead: DAWN VIGIL, LANTERN NIGHTS, MARIGOLD DAYS) -- no colour, confetti or item; a line arrives where it belongs.* **HALFTONE stays grey on every holiday, and BREATHVERSE stays timeless.**
+
+*The table: `docs/holidays.json`, written into the ROM by `tools/genholidays.py`; the code in `src/daemons_holidays.c`.*
 
 ## 4. CAST
 
