@@ -25,3 +25,51 @@ What the T-Watch S3 draws after the fix (read off the watch over its cable). TAL
 The CASINO on the T-Watch S3, from its own screen: CASINO first in its types, STARR and the party on the reels, swipe / tap / hold, a rigged jackpot framed in gold, what it came to -- and (C-154) another board's word through the companion, shown as a notification.
 
 ![18Oct2026 - C149 - the casino on the T-Watch S3 - 4](18Oct2026%20-%20C149%20-%20the%20casino%20on%20the%20T-Watch%20S3%20-%204.png)
+
+### 18Oct2026 - T417 - P5 goldnexus - 5
+
+T-417 P5 (v11.303.1): gold_nexus
+
+![18Oct2026 - T417 - P5 goldnexus - 5](18Oct2026%20-%20T417%20-%20P5%20goldnexus%20-%205.png)
+
+### 18Oct2026 - T417 - P5 contextflute - 6
+
+T-417 P5 (v11.303.1): context_flute
+
+![18Oct2026 - T417 - P5 contextflute - 6](18Oct2026%20-%20T417%20-%20P5%20contextflute%20-%206.png)
+
+### 18Oct2026 - T417 - P5 still - 7
+
+T-417 P5 (v11.303.1): still
+
+![18Oct2026 - T417 - P5 still - 7](18Oct2026%20-%20T417%20-%20P5%20still%20-%207.png)
+
+### 18Oct2026 - T417 - P5 mend - 8
+
+T-417 P5 (v11.303.1): mend
+
+![18Oct2026 - T417 - P5 mend - 8](18Oct2026%20-%20T417%20-%20P5%20mend%20-%208.png)
+
+### 18Oct2026 - T417 - P5 practice - 9
+
+T-417 P5 (v11.303.1): practice
+
+![18Oct2026 - T417 - P5 practice - 9](18Oct2026%20-%20T417%20-%20P5%20practice%20-%209.png)
+
+### 18Oct2026 - T417 - P5 notice - 10
+
+T-417 P5 (v11.303.1): notice
+
+![18Oct2026 - T417 - P5 notice - 10](18Oct2026%20-%20T417%20-%20P5%20notice%20-%2010.png)
+
+### 18Oct2026 - T417 - P5 reflect - 11
+
+T-417 P5 (v11.303.1): reflect
+
+![18Oct2026 - T417 - P5 reflect - 11](18Oct2026%20-%20T417%20-%20P5%20reflect%20-%2011.png)
+
+### 18Oct2026 - T417 - P5 again - 12
+
+T-417 P5 (v11.303.1): again
+
+![18Oct2026 - T417 - P5 again - 12](18Oct2026%20-%20T417%20-%20P5%20again%20-%2012.png)
