@@ -360,6 +360,7 @@ def notebook_table():
     them: notebook.c, the placed documents (notebook_documents.h), the insights (wisdom.h) or a map's text.inc. The
     companion shows a page only once the save holds its flags. A page written from the save at the moment it is opened
     (the paper's record, WHAT YOU CHOSE) is listed with no words: the game writes it, and the phone says so."""
+    import genplaynotes
     nb, docs, wis = read("src/notebook.c"), read("src/data/notebook_documents.h"), read("src/data/wisdom.h")
     notes = read("src/data/notebook_notes.h")
     strings = {}
@@ -436,8 +437,15 @@ def notebook_table():
                       "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
                       "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
                       "the save when opened; no words here. kind song (T-417, the SONGBOOK): drawn by the game as coloured note heads on a staff; song names the tune, key the major key it counts in, notes the motif as heard (C4 middle C, sharps or flats), heard the flag set once it is heard at its place (learned is flag). seen: the flag set once the page is opened in the game (unread until "
-                      "then, T-403); place: where it was found; link: the song or post its QR code opens (T-402).",
-            "sections": [strings[names[s]] for s in sections], "pages": pages}
+                      "then, T-403); key_colours: the twelve note colours C..B and outline the notes' outline, as the GBA shows them (T-417); place: where it was found; link: the song or post its QR code opens (T-402).",
+            "sections": [strings[names[s]] for s in sections], "pages": pages,
+            #  T-417: the twelve key colours, C..B, and the note outline, as the GBA shows them (tools/genplaynotes.py)
+            "key_colours": [hex5(c) for c in genplaynotes.KEYS], "outline": hex5(genplaynotes.PALETTE[genplaynotes.OUTLINE])}
+
+
+def hex5(c):
+    """a GBA 5-bit colour as #rrggbb, each channel v*255//31"""
+    return "#" + "".join("%02x" % (v * 255 // 31) for v in c)
 
 
 def player_art():
