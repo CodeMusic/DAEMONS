@@ -18,7 +18,8 @@ already in the ROM, and it is the precedent for this one. Then **4.33** (the one
 
 ## D. Decided — the user, 2026-10-18 (read this before the analysis below; where they differ, this wins)
 
-**Still no game text.** Every word stays unwritten until the open rows close.
+**Every call is answered**; two are provisional until the user has read the book (CHORUS, and the Clairs hint). **No
+game text is written yet**: the next step is the DRAFT entries, on the user's go.
 
 | § 8 | the call | decided |
 |---|---|---|
@@ -26,13 +27,13 @@ already in the ROM, and it is the precedent for this one. Then **4.33** (the one
 | 2 | **Who wrote it, where it is found** | **An INTERPRETER**, the practitioners' own class. Found, not given, as the Guide was |
 | 3 | **The read test** | **The log decides.** Calm is only a hint; the NOTEBOOK's log shows which reads land. *"What will be will be, and it will be good"* goes |
 | 4 | **The three stats** | **Built, per daemon, in battle only.** Three values in the free condition bytes (§V.1; never BEAUTY), tuning CONTEXT routines in battle. Never a read that comes true in the world. The trainer's half is the log, not a stat |
-| 4 | *the stat names* | ***OPEN, the user wants more first.*** Three clash (§V.5): CHARGE, RESONANCE, ATTUNEMENT. Kept as written meanwhile |
+| 4 | *the stat names* (later that day, §V.5) | **CLOSURE** stays. **ATTUNEMENT stays**: it echoes the GUESSWORK > ATTUNE > MENTALIZE line, practice turning guesswork into attunement. **CHARGE becomes VOLTAGE** (the book's own word; CHARGE is the Ether item). **The crowd bond RESONANCE becomes CHORUS *for now***: RESONANCE is PENPHIN's signature routine (*two frames reinforce each other and neither is lost*, vision 6243) and the crowd's *one thought* is nearly its opposite. ***To revisit once the user has read the book*** |
 | 5 | **Clairs to types** | **The type table** (§6), and the owl line goes |
-| 6 | **"The Clairs"** | ***OPEN: kept as a hint for now, to revisit.*** Checked [private: SECRETS §2] |
+| 6 | **"The Clairs"** | **Kept as a hint, with its glosses.** ***Ask again once the user has read the book.*** Checked [private: SECRETS §2] |
 | 6 | **The kindred bond** | **Keeps its row**, under the guard in [private: SECRETS §2] |
 | 7 | **The device screen** | **Only the companion library's copy** may point at the device; the ROM's book never does |
-| 8 | **Its hue** | ***OPEN: leaning CONTEXT*** (*"more colour in this book for the context connection"*). Mock-ups of each first. *The NOTEBOOK's cover is already CONTEXT's hue (`book_reader.c` sNotebookPal), so a CONTEXT book would match the log it points to* |
-| 8 | **Its title** | ***Kept, checked*** (§V.6); alternatives to show on the revisit |
+| 8 | **Its hue** | **C, the CONTEXT page**: CONTEXT's hue on the rules and corner, and the page tinted toward it (mock-ups: qa 18Oct2026 T423 62; *"more colour in this book for the context connection"*). *The NOTEBOOK's cover is already CONTEXT's hue (`book_reader.c` sNotebookPal), so the book matches the log it points to* |
+| 8 | **Its title** | **THE SUBTLE LAYER** (DRAFT), from the book's own subtitle. *PSYCHIC is printed nowhere (§V.6), so the old title collided with nothing; the user chose this one from four* |
 | 9 | **Lineage** | **`lineage.md` 3d**; the PDFs in `docs/private/books/` |
 | + | **The chakras** (*the user: "that is the part for dancing the body, virtues/shadows balance the mind"*) | **The body half goes in this book**, reversing §1's "cut it": the seven centres, what each governs, too closed / too open / in balance, and the aligning actions (walk, dance, wash, write, sing, posture). Named **attributed**: *the old texts call them chakras*, then *centres*. **Never their colours; no symptom words** (§2.7). The mind is virtues over shadows; the body is the centres. *The Guide's POWER SUPPLY page stays as it is: it names them and gives each a day* |
 
