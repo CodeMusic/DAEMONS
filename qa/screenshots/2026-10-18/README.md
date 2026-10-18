@@ -349,3 +349,9 @@ C-158 on the iPhone (build 09c9852): the CASINO like the boards' -- the band, th
 Read off the T-Watch S3 itself: the DAEMON face (autumn sky, hill and leaves; EMERGENCE walking, facing the way it goes, its heart mark), CLOCK, DAEMON with the season off, VIRTUE, and the CARE grid from a double tap.
 
 ![18Oct2026 - C163 - the watchs faces and its CARE grid, on the watch - 80](18Oct2026%20-%20C163%20-%20the%20watchs%20faces%20and%20its%20CARE%20grid%2C%20on%20the%20watch%20-%2080.png)
+
+### 18Oct2026 - T422 - the CASINO - 81
+
+T-422 (v11.304.5): the GAME CORNER as the companion's CASINO -- ordinary day, SO CLOSE, the FIR LIGHTS jackpot, CLOVER DAY, the help card, CONTEXT's suns
+
+![18Oct2026 - T422 - the CASINO - 81](18Oct2026%20-%20T422%20-%20the%20CASINO%20-%2081.png)
