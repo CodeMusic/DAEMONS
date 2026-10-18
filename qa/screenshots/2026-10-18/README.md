@@ -91,3 +91,39 @@ A mockup of the companion's redesign on a phone: A, seven tabs (TODAY as the hom
 The companion rearranged (C-156): the site at phone width -- TODAY the home page, DAEMON's segments, LIBRARY's five books, YOU, PLACES -- and the Tab5's TODAY and LIBRARY (on its 2026-10-09 kept data).
 
 ![18Oct2026 - C156 - the six tabs - 15](18Oct2026%20-%20C156%20-%20the%20six%20tabs%20-%2015.png)
+
+### 18Oct2026 - T417 - BREATHVERSE context - 16
+
+T-417 BREATHVERSE (v11.303.2): context
+
+![18Oct2026 - T417 - BREATHVERSE context - 16](18Oct2026%20-%20T417%20-%20BREATHVERSE%20context%20-%2016.png)
+
+### 18Oct2026 - T417 - BREATHVERSE content - 17
+
+T-417 BREATHVERSE (v11.303.2): content
+
+![18Oct2026 - T417 - BREATHVERSE content - 17](18Oct2026%20-%20T417%20-%20BREATHVERSE%20content%20-%2017.png)
+
+### 18Oct2026 - T417 - BREATHVERSE surfcontext - 18
+
+T-417 BREATHVERSE (v11.303.2): surf_context
+
+![18Oct2026 - T417 - BREATHVERSE surfcontext - 18](18Oct2026%20-%20T417%20-%20BREATHVERSE%20surfcontext%20-%2018.png)
+
+### 18Oct2026 - T417 - BREATHVERSE beachcontext - 19
+
+T-417 BREATHVERSE (v11.303.2): beach_context
+
+![18Oct2026 - T417 - BREATHVERSE beachcontext - 19](18Oct2026%20-%20T417%20-%20BREATHVERSE%20beachcontext%20-%2019.png)
+
+### 18Oct2026 - T417 - BREATHVERSE map - 20
+
+T-417 BREATHVERSE (v11.303.2): map
+
+![18Oct2026 - T417 - BREATHVERSE map - 20](18Oct2026%20-%20T417%20-%20BREATHVERSE%20map%20-%2020.png)
+
+### 18Oct2026 - T417 - BREATHVERSE route2 - 21
+
+T-417 BREATHVERSE (v11.303.2): route2
+
+![18Oct2026 - T417 - BREATHVERSE route2 - 21](18Oct2026%20-%20T417%20-%20BREATHVERSE%20route2%20-%2021.png)
