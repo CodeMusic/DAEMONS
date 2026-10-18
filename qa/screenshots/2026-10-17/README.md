@@ -79,3 +79,9 @@ T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's
 C-149 on the boards, from their own screens: the Fire's new home (CARE / ROUTINES / INDEX), SLOTS in autumn, a win, Halloween and Christmas dress, and the M5GO's 12x win, still with stand-in pieces there.
 
 ![17Oct2026 - C149 - the casino on the Fire and M5GO - 14](17Oct2026%20-%20C149%20-%20the%20casino%20on%20the%20Fire%20and%20M5GO%20-%2014.png)
+
+### 17Oct2026 - C149 - the casino on the T-Embed CC1101 - 15
+
+C-149 on the T-Embed CC1101, from its own screen: the CASINO first in its types, the reels with the party's three, a spin, a JACKPOT (50x, the carried daemon three times), and what it came to.
+
+![17Oct2026 - C149 - the casino on the T-Embed CC1101 - 15](17Oct2026%20-%20C149%20-%20the%20casino%20on%20the%20T-Embed%20CC1101%20-%2015.png)
