@@ -265,3 +265,45 @@ v11.304.1: hol4_content_halftone_lantern_line
 C-158 and C-159 on the T-Watch S3, from its own screen: reels of daemons seen in the game, ALMOST THE JACKPOT (a third STARR just under the line), a truthful SO CLOSE (the wanted coin one place above the line), the day's colour lifted to be readable, and the board's own SOUND page.
 
 ![18Oct2026 - C158 - the casino in context on the T-Watch S3 - 46](18Oct2026%20-%20C158%20-%20the%20casino%20in%20context%20on%20the%20T-Watch%20S3%20-%2046.png)
+
+### 18Oct2026 - T415 - wx2battletintsheet - 47
+
+T-415 phase 2 (v11.304.2): wx2_battle_tint_sheet
+
+![18Oct2026 - T415 - wx2battletintsheet - 47](18Oct2026%20-%20T415%20-%20wx2battletintsheet%20-%2047.png)
+
+### 18Oct2026 - T415 - wx2glintsheet - 48
+
+T-415 phase 2 (v11.304.2): wx2_glint_sheet
+
+![18Oct2026 - T415 - wx2glintsheet - 48](18Oct2026%20-%20T415%20-%20wx2glintsheet%20-%2048.png)
+
+### 18Oct2026 - T415 - wx2rainfound - 49
+
+T-415 phase 2 (v11.304.2): wx2_rain_found
+
+![18Oct2026 - T415 - wx2rainfound - 49](18Oct2026%20-%20T415%20-%20wx2rainfound%20-%2049.png)
+
+### 18Oct2026 - T415 - wx2stormfound - 50
+
+T-415 phase 2 (v11.304.2): wx2_storm_found
+
+![18Oct2026 - T415 - wx2stormfound - 50](18Oct2026%20-%20T415%20-%20wx2stormfound%20-%2050.png)
+
+### 18Oct2026 - T415 - wx2snowfound - 51
+
+T-415 phase 2 (v11.304.2): wx2_snow_found
+
+![18Oct2026 - T415 - wx2snowfound - 51](18Oct2026%20-%20T415%20-%20wx2snowfound%20-%2051.png)
+
+### 18Oct2026 - T415 - wx2fogfound - 52
+
+T-415 phase 2 (v11.304.2): wx2_fog_found
+
+![18Oct2026 - T415 - wx2fogfound - 52](18Oct2026%20-%20T415%20-%20wx2fogfound%20-%2052.png)
+
+### 18Oct2026 - T415 - wx2indexnativeinrain - 53
+
+T-415 phase 2 (v11.304.2): wx2_index_native_in_rain
+
+![18Oct2026 - T415 - wx2indexnativeinrain - 53](18Oct2026%20-%20T415%20-%20wx2indexnativeinrain%20-%2053.png)
