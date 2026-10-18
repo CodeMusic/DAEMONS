@@ -37,6 +37,22 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 | 9 | **Lineage** | **`lineage.md` 3d**; the PDFs in `docs/private/books/` |
 | + | **The chakras** (*the user: "that is the part for dancing the body, virtues/shadows balance the mind"*) | **The body half goes in this book**, reversing §1's "cut it": the seven centres, what each governs, too closed / too open / in balance, and the aligning actions (walk, dance, wash, write, sing, posture). Named **attributed**: *the old texts call them chakras*, then *centres*. **Never their colours; no symptom words** (§2.7). The mind is virtues over shadows; the body is the centres. *The Guide's POWER SUPPLY page stays as it is: it names them and gives each a day* |
 
+### D2. Decided that evening, after the user read the first draft (and a design agent's review)
+
+| | the call | decided |
+|---|---|---|
+| **Layout** | how it reads | **A contents spread, then each entry opens with its picture on the left page and its text on the right**, continuing over both pages: book_reader's textbook geometry (two 110px pages, a 94px column, the normal font). About 148 spreads; the user kept the normal font for legibility |
+| **Sprites** | what they look like | **Ink diagrams in hue C**, one per entry (50), drawn at the GBA's size; a plain pawn figure for anyone, so no species shows; **the seven centres never coloured, and the heart glyph plain ink** (craft rule 1). Glyph sets recur: read/write/link, the six clairs, the reins, sun and moon. The sources are private (`docs/private/subtle-layer/`) beside the draft |
+| **§2.4** | THE CONTAINER | ***Back, for this one entry, in the game's own metaphor and the user's words***: some trainers say *this world is the product of one processor*; *the spaces between us are merely how we are drawn*; ***only you can answer whether that is so.*** Attributed, so the scientist (4.33) can connect to it. The rest of the book stays practice only |
+| **§2.2** | *content* and *context* | **Ordinary words in the prose, never naming the two layers** |
+| **§3** | the byline | **None.** The design agent proposed *by The Clairs* with the clair glyphs hidden in the cover art; the user chose no byline and will review the cover in the game. **The book also goes into the companion's library** (site, app, Tab5) |
+| **Physics** | additions | **Ripples** (fields; a ripple has no edge), **decoherence by name** (entanglement with the surroundings is the record), and **the two slits** (which path, tied to the spoon: you steer from here, you do not change the record) |
+| **Words** | additions | **Spelling** (*words are under a spell*) and **PROCESSES**: language makes processes into objects; hold the object to carry it, remember the process to change it |
+| **Voice** | a prologue | **First person, the INTERPRETER**, unnamed: *two views of one world; this book holds both, and chooses neither* |
+| **Also** | from the design agent | **The return** (trainer lore: a steer made for the wrong reasons comes back, in its shape and harder), *bug or feature*, and its small edits (the moves reordered, the daemon's three as numbers it cannot see, each clair's type last, FRIDAY and SATURDAY split, UNSEEN folded into STEERING) |
+| **New** | **STAYING WHOLE** | **The book's last section**, from the user's own brief and notebook fragments (private): a biology metaphor for integrity, **in process words only**: the misread, the mask, the same drive reconnected, recognition by contact, staying correctable. **Nothing cures**; **the daemon line is said of shadows** (*unwatched is all a shadow needs to be*); **TWO VOICES** alternates statement and question, the asking voice in faint ink. *The cost of hidden strain*, *two vantage points* (as fable) and *a whole has enough for every part only while every part is well* are in it |
+| *Still open* | | **CHORUS** (approved by the design agent, not yet confirmed by the user), **the Clairs hint** and **the cover** (once seen in the game) |
+
 ### V. Verified 2026-10-18 — the four the review could not see, and two more
 
 1. **The contest-condition bytes are free, with two catches.** `cool beauty cute smart tough sheen` sit in every
