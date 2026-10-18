@@ -187,3 +187,75 @@ v11.303.3: breath_round
 T-420 (v11.303.4): before the repair OPUS is missing; after it OPUS is back; MARK2's show no longer takes it
 
 ![18Oct2026 - T420 - OPUS back on the shelf - 33](18Oct2026%20-%20T420%20-%20OPUS%20back%20on%20the%20shelf%20-%2033.png)
+
+### 18Oct2026 - T416 - hol3contentgrassfoolsday - 34
+
+v11.304.1: hol3_content_grass_fools_day
+
+![18Oct2026 - T416 - hol3contentgrassfoolsday - 34](18Oct2026%20-%20T416%20-%20hol3contentgrassfoolsday%20-%2034.png)
+
+### 18Oct2026 - T416 - hol3contentpairingday - 35
+
+v11.304.1: hol3_content_pairing_day
+
+![18Oct2026 - T416 - hol3contentpairingday - 35](18Oct2026%20-%20T416%20-%20hol3contentpairingday%20-%2035.png)
+
+### 18Oct2026 - T416 - hol3contextpairingday - 36
+
+v11.304.1: hol3_context_pairing_day
+
+![18Oct2026 - T416 - hol3contextpairingday - 36](18Oct2026%20-%20T416%20-%20hol3contextpairingday%20-%2036.png)
+
+### 18Oct2026 - T416 - hol4contentfireworks - 37
+
+v11.304.1: hol4_content_fireworks
+
+![18Oct2026 - T416 - hol4contentfireworks - 37](18Oct2026%20-%20T416%20-%20hol4contentfireworks%20-%2037.png)
+
+### 18Oct2026 - T416 - hol4contentlanterntint - 38
+
+v11.304.1: hol4_content_lantern_tint
+
+![18Oct2026 - T416 - hol4contentlanterntint - 38](18Oct2026%20-%20T416%20-%20hol4contentlanterntint%20-%2038.png)
+
+### 18Oct2026 - T416 - hol4contentskysnowcarving - 39
+
+v11.304.1: hol4_content_sky_snow_carving
+
+![18Oct2026 - T416 - hol4contentskysnowcarving - 39](18Oct2026%20-%20T416%20-%20hol4contentskysnowcarving%20-%2039.png)
+
+### 18Oct2026 - T416 - hol4contextvioletbloom - 40
+
+v11.304.1: hol4_context_violet_bloom
+
+![18Oct2026 - T416 - hol4contextvioletbloom - 40](18Oct2026%20-%20T416%20-%20hol4contextvioletbloom%20-%2040.png)
+
+### 18Oct2026 - T416 - hol4contentfirglow - 41
+
+v11.304.1: hol4_content_fir_glow
+
+![18Oct2026 - T416 - hol4contentfirglow - 41](18Oct2026%20-%20T416%20-%20hol4contentfirglow%20-%2041.png)
+
+### 18Oct2026 - T416 - hol4contenttowervisitor - 42
+
+v11.304.1: hol4_content_tower_visitor
+
+![18Oct2026 - T416 - hol4contenttowervisitor - 42](18Oct2026%20-%20T416%20-%20hol4contenttowervisitor%20-%2042.png)
+
+### 18Oct2026 - T416 - hol4contextdawnvigil - 43
+
+v11.304.1: hol4_context_dawn_vigil
+
+![18Oct2026 - T416 - hol4contextdawnvigil - 43](18Oct2026%20-%20T416%20-%20hol4contextdawnvigil%20-%2043.png)
+
+### 18Oct2026 - T416 - hol3contentdendayoracle - 44
+
+v11.304.1: hol3_content_den_day_oracle
+
+![18Oct2026 - T416 - hol3contentdendayoracle - 44](18Oct2026%20-%20T416%20-%20hol3contentdendayoracle%20-%2044.png)
+
+### 18Oct2026 - T416 - hol4contenthalftonelanternline - 45
+
+v11.304.1: hol4_content_halftone_lantern_line
+
+![18Oct2026 - T416 - hol4contenthalftonelanternline - 45](18Oct2026%20-%20T416%20-%20hol4contenthalftonelanternline%20-%2045.png)
