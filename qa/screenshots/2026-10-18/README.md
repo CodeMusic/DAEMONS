@@ -385,3 +385,15 @@ T-426 on the site (bench check, as if the instrument were held): the songs or PL
 T-426 on the iPhone (build e39b8ee), the debug save holding the harp and every song: PLAY THE HARP -- PLAY FREELY and the eight songs, each learned and in its key's colour -- above the SONGBOOK
 
 ![18Oct2026 - T426 - PLAY THE HARP on the phone - 93](18Oct2026%20-%20T426%20-%20PLAY%20THE%20HARP%20on%20the%20phone%20-%2093.png)
+
+### 18Oct2026 - C162 - the battery on the watch faces - 94
+
+The battery on the T-Watch S3's DAEMON and CLOCK faces, read off the watch: 100%+ (charging) at the top of the DAEMON face and over the six on the CLOCK.
+
+![18Oct2026 - C162 - the battery on the watch faces - 94](18Oct2026%20-%20C162%20-%20the%20battery%20on%20the%20watch%20faces%20-%2094.png)
+
+### 18Oct2026 - T423 - THE SUBTLE LAYER in the companion library - 95
+
+T-423 on the site (bench check, as if the save held it): THE SUBTLE LAYER on the LIBRARY's shelf, its cover with the title in our own type and the contents, and TWO VOICES with the asking voice faint
+
+![18Oct2026 - T423 - THE SUBTLE LAYER in the companion library - 95](18Oct2026%20-%20T423%20-%20THE%20SUBTLE%20LAYER%20in%20the%20companion%20library%20-%2095.png)
