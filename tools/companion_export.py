@@ -472,6 +472,47 @@ def hex5(c):
     return "#" + "".join("%02x" % (v * 255 // 31) for v in c)
 
 
+def play_table():
+    """T-426 (the user, 2026-10-18): PLAY for the companion -- the instrument, the key, the buttons and the songs as the
+    game has them (src/play.c, docs/play_songs.json), so a device or the phone can be played the way the game is. The
+    note sprites are the game's own (tools/genplaynotes.py draws them; ours): art/play_notes.png, art/play_small.png."""
+    import genplaynotes
+    songs = json.load(open(os.path.join(ROOT, "docs/play_songs.json"), encoding="utf-8"))["songs"]
+    fl = flag_values(["FLAG_GOT_INSTRUMENT"] + sorted({t[k] for t in songs for k in ("learned", "heard") if t.get(k)}))
+    it = flag_values(["ITEM_HARP", "ITEM_FLUTE"], "constants/items.h")
+    out = []
+    for t in songs:
+        notes = t["notes"].split()
+        out.append({"id": t["id"], "title": t["title"], "key": t["key"], "notes": notes,
+                    "frames": t.get("frames") or [t["beat"]] * (len(notes) - 1) + [t["last"]],
+                    "learned_flag": fl.get(t.get("learned")), "heard_flag": fl.get(t.get("heard"))})
+    return {"_about": "T-426 (the user, 2026-10-18): PLAY as the game plays it. The instrument is the save's edition's "
+                      "(CONTENT the HARP, CONTEXT the FLUTE; sounds/instruments.json) and is LOCKED until the save holds "
+                      "got_instrument_flag (or the item). Choose a key (major keys only), then play the scale's seven "
+                      "degrees; buttons are the game's (D-pad clockwise from Down 1, Left 2, Up 3, Right 4, then B 5, "
+                      "A 6, SELECT 7; L an octave down, R an octave up). A song is heard from the last sixteen notes: "
+                      "its key and its order count, octave and tempo do not; the right shape in another key is ALMOST. "
+                      "A learned song (learned_flag held; O CHRISTMAS TREE always) joins its notes and echoes. Each note "
+                      "drifts up in its key colour (key_colours, C..B; A is INDIGO). art/play_notes.png: 12 16x16 notes "
+                      "C..B; art/play_small.png: 12 wheel dots, 12 staff heads, 12 hollow heads, then the rest, 8x8.",
+            "got_instrument_flag": fl["FLAG_GOT_INSTRUMENT"], "items": {"HARP": it["ITEM_HARP"], "FLUTE": it["ITEM_FLUTE"]},
+            "editions": {"CONTENT": "harp", "CONTEXT": "flute"},
+            "keys": ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"],
+            "buttons": {"DOWN": 1, "LEFT": 2, "UP": 3, "RIGHT": 4, "B": 5, "A": 6, "SELECT": 7,
+                        "L": "octave down", "R": "octave up", "START": "put it away"},
+            "listen": {"last_notes": 16, "counts": ["key", "order"], "ignores": ["octave", "tempo"],
+                       "almost": "the right shape in another key"},
+            "key_colours": [hex5(c) for c in genplaynotes.KEYS], "outline": hex5(genplaynotes.PALETTE[genplaynotes.OUTLINE]),
+            "songs": out}
+
+
+def play_art():
+    """the game's own PLAY sprites, as genplaynotes drew them (indexed, index 0 clear)"""
+    from PIL import Image
+    d = os.path.join(GBA, "graphics", "play")
+    return {"play_notes.png": Image.open(os.path.join(d, "notes.png")), "play_small.png": Image.open(os.path.join(d, "small.png"))}
+
+
 def player_art():
     """C-125: the player as the game draws them -- REASON (red) and INSTINCT (leaf): the trainer card's front picture in
     its own palette, and the first walking frame (facing you) in the player's overworld palette. Ours, the monkey."""
@@ -979,7 +1020,8 @@ def main():
              "events.json": events_table(), "school.json": school_table(),
              "groves.json": groves_table(),                                     # T-408       # C-128, C-129
              "guide.json": guide_table(),                                       # the reading tab
-             "holidays.json": holidays_table()}                                 # T-416 / C-149
+             "holidays.json": holidays_table(),                                 # T-416 / C-149
+             "play.json": play_table()}                                         # T-426
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -999,6 +1041,7 @@ def main():
     art = party_art(files["species.json"])
     art.update(player_art())                                           # C-125
     art.update(mark_art())                                             # C-126
+    art.update(play_art())                                             # T-426
     art_dir = os.path.join(OUT, "art")
     art_changed = 0
     for name, im in art.items():
