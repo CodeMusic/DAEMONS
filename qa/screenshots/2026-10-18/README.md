@@ -19,3 +19,9 @@ C-151 on two boards, from their own screens: the T-Deck (ARTSAI) and the CC1101 
 What the T-Watch S3 draws after the fix (read off the watch over its cable). TALK sits in what was the static bottom third.
 
 ![18Oct2026 - C71 - the watch face after the screen fix - 3](18Oct2026%20-%20C71%20-%20the%20watch%20face%20after%20the%20screen%20fix%20-%203.png)
+
+### 18Oct2026 - C149 - the casino on the T-Watch S3 - 4
+
+The CASINO on the T-Watch S3, from its own screen: CASINO first in its types, STARR and the party on the reels, swipe / tap / hold, a rigged jackpot framed in gold, what it came to -- and (C-154) another board's word through the companion, shown as a notification.
+
+![18Oct2026 - C149 - the casino on the T-Watch S3 - 4](18Oct2026%20-%20C149%20-%20the%20casino%20on%20the%20T-Watch%20S3%20-%204.png)
