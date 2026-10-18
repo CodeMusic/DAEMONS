@@ -79,3 +79,9 @@ T-417 P5 (v11.303.1): again
 C-154 on the T-Watch S3, from its own screen: another board's jackpot arriving through the companion, shown at 0.3, 1.5 and 3 seconds and gone at 5; then a wave. Not at the reels, never answered.
 
 ![18Oct2026 - C154 - notifications on the T-Watch S3 - 13](18Oct2026%20-%20C154%20-%20notifications%20on%20the%20T-Watch%20S3%20-%2013.png)
+
+### 18Oct2026 - C156 - the companion rearranged - mockup - 14
+
+A mockup of the companion's redesign on a phone: A, seven tabs (TODAY as the home page, INDEX and LIBRARY their own tabs, YOU, PLACES); LIBRARY's shelf of four (CALLOW SCHOOL, THE GUIDE, NOTEBOOK, STREAM); B, six tabs with INDEX inside DAEMON.
+
+![18Oct2026 - C156 - the companion rearranged - mockup - 14](18Oct2026%20-%20C156%20-%20the%20companion%20rearranged%20-%20mockup%20-%2014.png)
