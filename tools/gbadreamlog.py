@@ -11,8 +11,10 @@ its NOTEBOOK title and its words.
 It holds the words to the draft's own shape and refuses what would break it:
   - a box keeps the draft's own lines wherever each fits the 208px message box; a box with a line too wide is
     rewrapped (words unchanged) and reported; a single word wider than the box stops the run;
-  - a title is the dream's own opening words in capitals, as many whole words as fit TITLE_W -- no new words, and
-    never a number (the lock's rule: nothing in a dream counts, numbers or paces anything);
+  - a title is the dream's own "title", chosen by the user one by one (2026-10-18): ALL CAPS, at most TITLE_W, and
+    never a number (the lock's rule: nothing in a dream counts, numbers or paces anything); a dream without one stops
+    the run;
+  - the two headings (YOUR DREAMS, HER DREAMS -- T-412's two parts) fit TITLE_W too;
   - every dream fits gStringVar4 (1000 bytes) with the line said before it.
 """
 import io, contextlib, json, os, sys
@@ -55,22 +57,14 @@ def box_lines(box, key, notes):
     return new
 
 
-SMALL = {"A", "AN", "THE", "MY", "ITS", "INTO", "IN", "OF", "ON", "TO", "AND", "AT"}
-
-
-def title(boxes):
-    """The opening words that fit TITLE_W, cut at the first comma or full stop among them; failing that, without the
-    little words a cut phrase would end on."""
-    taken = []
-    for word in " ".join(boxes[0]).upper().split():
-        if width(" ".join(taken + [word])) > TITLE_W:
-            break
-        taken.append(word)
-        if word[-1] in ".,:;":
-            return " ".join(taken).rstrip(".,:;")
-    while len(taken) > 1 and taken[-1] in SMALL:
-        taken.pop()
-    return " ".join(taken)
+def title(d):
+    """The dream's own title (T-412, the user's choice, 2026-10-18)."""
+    t = d.get("title")
+    if not t:
+        sys.exit("gbadreamlog: %s has no title" % d["key"])
+    if t != t.upper() or width(t) > TITLE_W:
+        sys.exit("gbadreamlog: %s's title %r must be capitals within %dpx (it is %dpx)" % (d["key"], t, TITLE_W, width(t)))
+    return t
 
 
 def c(s):
@@ -79,11 +73,14 @@ def c(s):
 
 def main():
     doc = json.load(open(SRC, encoding="utf-8"))
+    for h in doc["headings"].values():
+        if h != h.upper() or width(h) > TITLE_W or any(ch.isdigit() for ch in h):
+            sys.exit("gbadreamlog: the heading %r must be capitals within %dpx, no number" % (h, TITLE_W))
     notes, rows = [], []
     for d in doc["dreams"]:
         boxes = [box_lines(b, d["key"], notes) for b in d["boxes"]]
         text = "\\p".join(b[0] + "".join(("\\n" if i == 1 else "\\l") + l for i, l in enumerate(b[1:], 1)) for b in boxes)
-        t = title(boxes)
+        t = title(d)
         if any(ch.isdigit() for ch in t + text):
             sys.exit("gbadreamlog: %s carries a digit -- a dream never numbers anything" % d["key"])
         if len(doc["line"]) + 2 + len(text) >= 1000:
@@ -95,7 +92,10 @@ def main():
            "// Included once, by notebook.c.",
            "#ifndef GUARD_DATA_DREAM_LOG_H", "#define GUARD_DATA_DREAM_LOG_H", "",
            'static const u8 sSection_DreamLog[] = _("%s");' % c(doc["section"]),
-           'static const u8 sDreamLine[] = _("%s");' % c(doc["line"]), ""]
+           'static const u8 sDreamLine[] = _("%s");' % c(doc["line"]),
+           "//  T-412's two parts, heading the list once the attendant has told one of her dreams (notebook.c).",
+           'static const u8 sDreamHeading_Yours[] = _("%s");' % c(doc["headings"]["yours"]),
+           'static const u8 sDreamHeading_Hers[] = _("%s");' % c(doc["headings"]["hers"]), ""]
     for d, t, text, needs, boxes in rows:
         out.append('static const u8 sDreamTitle_%s[] = _("%s");' % (d["key"].capitalize(), c(t)))
         out.append('static const u8 sDreamText_%s[] = _("%s");' % (d["key"].capitalize(), c(text)))
@@ -112,7 +112,7 @@ def main():
     out += ["};", "", "#endif // GUARD_DATA_DREAM_LOG_H", ""]
     h = "\n".join(out)
     for d, t, text, needs, boxes in rows:
-        print("  %-9s %-28s %s" % (d["key"], t, "  |  ".join("%s (%dpx)" % (l, width(l)) for b in boxes for l in b)))
+        print("  %-9s %-20s %s" % (d["key"], "%s (%dpx)" % (t, width(t)), "  |  ".join("%s (%dpx)" % (l, width(l)) for b in boxes for l in b)))
     for n in notes:
         print("  NOTE " + n)
     old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""

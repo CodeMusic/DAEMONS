@@ -367,10 +367,11 @@ def notebook_table():
     import genplaynotes
     nb, docs, wis = read("src/notebook.c"), read("src/data/notebook_documents.h"), read("src/data/wisdom.h")
     dreams = read("src/data/dream_log.h")                                                   # T-412: the DREAM LOG
+    hers = read("src/data/attendant_dreams.h")                                              # T-412: HER DREAMS
     hol, holl = read("src/data/daemons_holidays.h"), read("src/data/holiday_lines.h")    # T-416: THE YEAR
     notes = read("src/data/notebook_notes.h")
     strings = {}
-    for src in (nb, docs, wis, hol, dreams):
+    for src in (nb, docs, wis, hol, dreams, hers):
         for name, body in re.findall(r"(?:static )?const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S):
             strings[name] = gba_string(body)
     import glob
@@ -391,10 +392,15 @@ def notebook_table():
     body = body.replace("NB_YEAR_ENTRIES", year.replace("\\", ""))
     dream = re.search(r"#define NB_DREAM_ENTRIES \\\n(.*?)(?:\n\n|\Z)", dreams, re.S).group(1)   # T-412
     body = body.replace("NB_DREAM_ENTRIES", dream.replace("\\", ""))
+    her = re.search(r"#define NB_HER_DREAM_ENTRIES \\\n(.*?)(?:\n\n|\Z)", hers, re.S).group(1)   # T-412: HER DREAMS
+    body = body.replace("NB_HER_DREAM_ENTRIES", her.replace("\\", ""))
+    #  each of her steps: the flag that says it is done, and where it led (shown once that flag is held)
+    led = {told: (done, ledname) for done, told, first, second, ledname in
+           re.findall(r"\{\s*(FLAG_\w+),\s*(FLAG_\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", hers)}
     body = re.sub(r"//[^\n]*", "", body)
     body = re.sub(r"#if DAEMONS_DEBUG\n.*?#endif", "", body, flags=re.S)     # the release build's pages only
     rows = re.findall(r"\{\s*(NB_\w+),\s*(NB_KIND_\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", body)
-    flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"})
+    flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"} | {d for d, n in led.values()})
     fv = flag_values(flagnames)
     abouts = {n: gba_string(b) for n, b in re.findall(r"static const u8 sNoteAbout_(\w+)\[\]\s*=\s*_\((.*?)\);", notes, re.S)}
     # T-403: each page's SEEN number (unread until FLAG_NOTEBOOK_SEEN_0 + seen is set) and the map it was found on
@@ -424,7 +430,7 @@ def notebook_table():
     pages = []
     for sec, kind, arg, flag, flag2, title, text in rows:
         words = None
-        if kind == "NB_KIND_TEXT":
+        if kind in ("NB_KIND_TEXT", "NB_KIND_HER_DREAM"):
             words = strings.get(text) if text in strings else labels.get(text)
             if words is None:
                 raise SystemExit("  refused: the NOTEBOOK's %s has no words the export can find (%s)" % (title, text))
@@ -436,6 +442,9 @@ def notebook_table():
                       "about": abouts.get(flag[5:]), "text": words,
                       "seen": found.get(flag, (None, None))[0], "place": found.get(flag, (None, None))[1],
                       "link": links.get(flag)}
+        if kind == "NB_KIND_HER_DREAM":                     # T-412: where it led, once its step is done
+            done, ledname = led[flag]
+            page.update(led=strings[ledname], led_flag=fv[done])
         if kind == "NB_KIND_SONG":                          # T-417: play.c writes the page, its key and notes
             page["song"] = arg
             tune = songs.get(arg[len("PLAY_SONG_"):])
@@ -452,7 +461,7 @@ def notebook_table():
                       "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
                       "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
                       "the save when opened; no words here. kind song (T-417, the SONGBOOK): drawn by the game as coloured note heads on a staff; song names the tune, key the major key it counts in, notes the motif as heard (C4 middle C, sharps or flats), frames each note's length at 60 fps as the game plays it when heard, heard the flag set once it is heard at its place (learned is flag). seen: the flag set once the page is opened in the game (unread until "
-                      "then, T-403); key_colours: the twelve note colours C..B and outline the notes' outline, as the GBA shows them (T-417); place: where it was found; link: the song or post its QR code opens (T-402).",
+                      "then, T-403); key_colours: the twelve note colours C..B and outline the notes' outline, as the GBA shows them (T-417); place: where it was found; link: the song or post its QR code opens (T-402). kind her_dream (T-412): one of the CHECKPOINT attendant's dreams, under HER DREAMS after YOUR DREAMS in the DREAM LOG; led is where it led, shown under it once the save holds led_flag (its step done).",
             "sections": [strings[names[s]] for s in sections], "pages": pages,
             #  T-417: the twelve key colours, C..B, and the note outline, as the GBA shows them (tools/genplaynotes.py)
             "key_colours": [hex5(c) for c in genplaynotes.KEYS], "outline": hex5(genplaynotes.PALETTE[genplaynotes.OUTLINE])}

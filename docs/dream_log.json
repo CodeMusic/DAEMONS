@@ -3,12 +3,18 @@
  "section": "DREAM LOG",
  "line": "I had a dream.",
  "line_about": "The draft left 'You had a dream.' or 'I had a dream.' to the user, who chose 'I had a dream.' (2026-10-18): the player says it, first person like the dreams themselves. DRAFT.",
- "title_rule": "A page's title in the NOTEBOOK's list is the dream's own opening words, in capitals, as many whole words as fit TITLE_W px -- no new words, no number.",
+ "title_rule": "A page's title in the NOTEBOOK's list is its own \"title\" -- chosen by the user one by one from the draft's two (2026-10-18, docs/private/draft-dream-titles-and-attendant-2026-10-18.md part 1): ALL CAPS, at most TITLE_W px, an image taken from the dream, never what it stands for, never a number. DRAFT.",
+ "headings": {
+  "yours": "YOUR DREAMS",
+  "hers": "HER DREAMS"
+ },
+ "headings_about": "T-412's two parts. Once the CHECKPOINT attendant has told one of her dreams (T-347; docs/attendant_dreams.json, tools/gbadreams.py), the DREAM LOG's list is headed in two: YOUR DREAMS, then HER DREAMS. A player she never dreamt for sees the list as before, unheaded. DRAFT.",
  "dreams": [
   {
    "key": "CAIRN",
    "flag": "FLAG_DREAM_LOG_CAIRN",
    "after": "after CAIRN's MARK",
+   "title": "THE CARVED NAME",
    "needs": [
     "FLAG_BADGE01_GET"
    ],
@@ -27,6 +33,7 @@
    "key": "BASIN",
    "flag": "FLAG_DREAM_LOG_BASIN",
    "after": "after BASIN's MARK",
+   "title": "THE SUNKEN STAIR",
    "needs": [
     "FLAG_BADGE02_GET"
    ],
@@ -46,6 +53,7 @@
    "key": "GAUGE",
    "flag": "FLAG_DREAM_LOG_GAUGE",
    "after": "after GAUGE's MARK",
+   "title": "THE HUMMING WIRE",
    "needs": [
     "FLAG_BADGE03_GET"
    ],
@@ -64,6 +72,7 @@
    "key": "TRELLIS",
    "flag": "FLAG_DREAM_LOG_TRELLIS",
    "after": "after TRELLIS's MARK",
+   "title": "THE GLASSHOUSE",
    "needs": [
     "FLAG_BADGE04_GET"
    ],
@@ -82,6 +91,7 @@
    "key": "TILT",
    "flag": "FLAG_DREAM_LOG_TILT",
    "after": "after TILT's MARK",
+   "title": "CARDS ON EDGE",
    "needs": [
     "FLAG_BADGE05_GET"
    ],
@@ -100,6 +110,7 @@
    "key": "MATTE",
    "flag": "FLAG_DREAM_LOG_MATTE",
    "after": "after MATTE's MARK",
+   "title": "THE EMPTY FRAME",
    "needs": [
     "FLAG_BADGE06_GET"
    ],
@@ -118,6 +129,7 @@
    "key": "ANNEAL",
    "flag": "FLAG_DREAM_LOG_ANNEAL",
    "after": "after ANNEAL's MARK",
+   "title": "COOLING GLASS",
    "needs": [
     "FLAG_BADGE07_GET"
    ],
@@ -136,6 +148,7 @@
    "key": "SCORN",
    "flag": "FLAG_DREAM_LOG_SCORN",
    "after": "after SCORN's MARK",
+   "title": "THE SCALES",
    "needs": [
     "FLAG_BADGE08_GET"
    ],
@@ -157,6 +170,7 @@
    "key": "STILL",
    "flag": "FLAG_DREAM_LOG_STILL",
    "after": "after STILL (the first understanding)",
+   "title": "STONE ROOMS",
    "needs": [
     "FLAG_UNDERSTANDING_FIRST"
    ],
@@ -175,6 +189,7 @@
    "key": "NAMING",
    "flag": "FLAG_DREAM_LOG_NAMING",
    "after": "after NAMING",
+   "title": "THE BLACKBOARD",
    "needs": [
     "FLAG_UNDERSTANDING_SCHOOL"
    ],
@@ -193,6 +208,7 @@
    "key": "NOTICE",
    "flag": "FLAG_DREAM_LOG_NOTICE",
    "after": "after NOTICE",
+   "title": "SHINING PAGES",
    "needs": [
     "FLAG_UNDERSTANDING_READING"
    ],
@@ -211,6 +227,7 @@
    "key": "REFLECT",
    "flag": "FLAG_DREAM_LOG_REFLECT",
    "after": "after REFLECT",
+   "title": "THE MARBLE",
    "needs": [
     "FLAG_UNDERSTANDING_NOTES"
    ],
@@ -229,6 +246,7 @@
    "key": "STANCE",
    "flag": "FLAG_DREAM_LOG_STANCE",
    "after": "after STANCE",
+   "title": "DOWN THE LADDER",
    "needs": [
     "FLAG_UNDERSTANDING_SCORN"
    ],
@@ -247,6 +265,7 @@
    "key": "MEND",
    "flag": "FLAG_DREAM_LOG_MEND",
    "after": "after MEND",
+   "title": "KNOTS IN THE FOG",
    "needs": [
     "FLAG_UNDERSTANDING_RETURN"
    ],
@@ -265,6 +284,7 @@
    "key": "PRACTICE",
    "flag": "FLAG_DREAM_LOG_PRACTICE",
    "after": "after PRACTICE",
+   "title": "EMPTY PAGES",
    "needs": [
     "FLAG_UNDERSTANDING_GUIDE"
    ],
@@ -283,6 +303,7 @@
    "key": "BOARD",
    "flag": "FLAG_DREAM_LOG_BOARD",
    "after": "after the REVIEW BOARD is beaten",
+   "title": "CLOSED FILES",
    "needs": [
     "FLAG_SYS_GAME_CLEAR"
    ],
@@ -301,6 +322,7 @@
    "key": "GONE",
    "flag": "FLAG_DREAM_LOG_GONE",
    "after": "after CRYSTAL has gone missing (the same moment, so the next dawn after the BOARD's dream)",
+   "title": "A KETTLE BOILED DRY",
    "needs": [
     "FLAG_SYS_GAME_CLEAR"
    ],
@@ -319,6 +341,7 @@
    "key": "PARCEL",
    "flag": "FLAG_DREAM_LOG_PARCEL",
    "after": "after TY gives you the note for CRYSTAL",
+   "title": "THE PARCEL",
    "needs": [
     "FLAG_TY_GAVE_PAYLOAD"
    ],
@@ -337,6 +360,7 @@
    "key": "STARR",
    "flag": "FLAG_DREAM_LOG_STARR",
    "after": "after binding S.T.A.R.R.",
+   "title": "A BREATHING STAR",
    "needs": [
     "FLAG_FOUGHT_MEWTWO"
    ],
@@ -355,6 +379,7 @@
    "key": "OWL",
    "flag": "FLAG_DREAM_LOG_OWL",
    "after": "after the OWL concedes and S.T.A.R.R. is bound (it takes you to CRYSTAL)",
+   "title": "SEALING WAX",
    "needs": [
     "FLAG_OWL_CONCEDED",
     "FLAG_FOUGHT_MEWTWO"
@@ -377,6 +402,7 @@
    "key": "HOME",
    "flag": "FLAG_DREAM_LOG_HOME",
    "after": "after CRYSTAL is free and home",
+   "title": "THE WINDOWSILL",
    "needs": [
     "FLAG_CRYSTAL_READ_PAYLOAD"
    ],
