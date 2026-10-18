@@ -321,6 +321,66 @@
    "seen": 68,
    "map": null,
    "about": "Heard where REFLECT is learned."
+  },
+  "FLAG_YEAR_LINE_ROLLOVER": {
+   "seen": 69,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_EVEN_LIGHT_SPRING": {
+   "seen": 70,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_EVEN_LIGHT_AUTUMN": {
+   "seen": 71,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_DAWN_VIGIL": {
+   "seen": 72,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_FIRST_FROST": {
+   "seen": 73,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_DEN_DAY": {
+   "seen": 74,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_FLEDGLING_DAY": {
+   "seen": 75,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_LANTERN_NIGHTS": {
+   "seen": 76,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_SCIENCE_FAIR": {
+   "seen": 77,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_TRUCE_DAY": {
+   "seen": 78,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_MARIGOLD_DAYS": {
+   "seen": 79,
+   "map": null,
+   "about": "In your own words, on its day."
+  },
+  "FLAG_YEAR_LINE_GIVING_THANKS": {
+   "seen": 80,
+   "map": null,
+   "about": "In your own words, on its day."
   }
  }
 }

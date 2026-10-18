@@ -457,8 +457,7 @@ def flags_block(doc):
         lines.append("#define %-36s (DAEMONS_FLAGS_START + 0x%03X)" % ("FLAG_YEAR_LINE_" + l["id"], FLAG_LINE_BASE + i))
     lines.append("//  MARIGOLD DAYS' visitor at the stones in DAEMON TOWER: hidden but on those days (set and cleared on the floor's transition).")
     lines.append("#define %-36s (DAEMONS_FLAGS_START + 0x%03X)" % ("FLAG_HIDE_HOLIDAY_VISITOR", FLAG_LINE_BASE + len(doc["lines"])))
-    lines.append("#define %-36s %s" % ("FLAG_HOLIDAY_GIFT_FIRST", common[0]))
-    lines.append("#define %-36s %d" % ("HOLIDAY_GIFT_FLAG_COUNT", 24))
+    lines.append("#define %-36s %d   // from FLAG_HOLIDAY_GIFT_COMMON_JAN" % ("HOLIDAY_GIFT_FLAG_COUNT", 24))
     lines.append("//  END genholidays")
     return "\n".join(lines) + "\n"
 

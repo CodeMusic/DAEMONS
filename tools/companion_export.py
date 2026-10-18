@@ -362,10 +362,11 @@ def notebook_table():
     (the paper's record, WHAT YOU CHOSE) is listed with no words: the game writes it, and the phone says so."""
     import genplaynotes
     nb, docs, wis = read("src/notebook.c"), read("src/data/notebook_documents.h"), read("src/data/wisdom.h")
+    hol, holl = read("src/data/daemons_holidays.h"), read("src/data/holiday_lines.h")    # T-416: THE YEAR
     notes = read("src/data/notebook_notes.h")
     strings = {}
-    for src in (nb, docs, wis):
-        for name, body in re.findall(r"static const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S):
+    for src in (nb, docs, wis, hol):
+        for name, body in re.findall(r"(?:static )?const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S):
             strings[name] = gba_string(body)
     import glob
     labels = {}
@@ -381,6 +382,8 @@ def notebook_table():
     body = re.sub(r"\bNB_DOC_\w+\b", lambda m: macros.get(m.group(0), "") + ",", body)
     insight = re.search(r"#define NB_INSIGHT_ENTRIES \\\n(.*?)(?:\n\n|\Z)", wis, re.S).group(1)
     body = body.replace("NB_INSIGHT_ENTRIES", insight.replace("\\", ""))
+    year = re.search(r"#define NB_YEAR_ENTRIES \\\n(.*?)(?:\n\n|\Z)", holl, re.S).group(1)   # T-416
+    body = body.replace("NB_YEAR_ENTRIES", year.replace("\\", ""))
     body = re.sub(r"//[^\n]*", "", body)
     body = re.sub(r"#if DAEMONS_DEBUG\n.*?#endif", "", body, flags=re.S)     # the release build's pages only
     rows = re.findall(r"\{\s*(NB_\w+),\s*(NB_KIND_\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", body)
@@ -762,7 +765,8 @@ def _inc_text(rel, label):
 
 #  C-128 (the companion session, for the PROFILE, 2026-10-16): the GAME EVENTS page's rows, less the debug's own kit.
 EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
-                   "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL"}
+                   "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
+                   "EV_YEAR_ALL", "EV_GIFTS_AGAIN"}                                        # T-416
 
 
 def events_table():
@@ -773,15 +777,17 @@ def events_table():
     bag item has held null and its items, since the bag is not a flag."""
     src = read("src/daemons_debug_events.c")
     strings = _c_strings(src)
+    strings.update(_c_strings(read("src/data/daemons_holidays.h")))     # T-416: THE YEAR's rows are its lines' titles
+    year_lines = [l["id"] for l in json.load(open(os.path.join(ROOT, "docs", "holidays.json"), encoding="utf-8"))["lines"]]
     def rows(arr):
         body = re.search(r"%s\[\]\s*=\s*\{(.*?)\n\};" % arr, src, re.S).group(1)
         return [(n, k, ev, int(off or 0)) for n, k, ev, off in
-                re.findall(r"\{\s*(sName_\w+),\s*(R_\w+),\s*(\w+)(?:\s*\+\s*(\d+))?\s*\}", body)]
+                re.findall(r"\{\s*((?:sName|gYearTitle)_\w+),\s*(R_\w+),\s*(\w+)(?:\s*\+\s*(\d+))?\s*\}", body)]
     titles = {pg: re.split(r"[,:]", strings[t])[0] for pg, t in
-              zip(["PG_EVENTS", "PG_MARKS", "PG_NOTEBOOK", "PG_DRIVERS", "PG_ROOTS", "PG_SONGS"],
+              zip(["PG_EVENTS", "PG_MARKS", "PG_NOTEBOOK", "PG_DRIVERS", "PG_ROOTS", "PG_SONGS", "PG_YEAR"],
                   re.search(r"sTitles\[PG_COUNT\]\s*=\s*\{(.*?)\};", src, re.S).group(1).replace(",", " ").split())}
     pages = {"PG_MARKS": "sRows_Marks", "PG_NOTEBOOK": "sRows_Notebook", "PG_DRIVERS": "sRows_Drivers",
-             "PG_ROOTS": "sRows_Roots", "PG_SONGS": "sRows_Songs"}
+             "PG_ROOTS": "sRows_Roots", "PG_SONGS": "sRows_Songs", "PG_YEAR": "sRows_Year"}
     held_src = re.search(r"static bool8 IsHeld\(u8 ev\)\s*\{(.*?)\n\}", src, re.S).group(1)
     by_flag = dict(re.findall(r"case (EV_\w+):\s*return FlagGet\((FLAG_\w+)\);", held_src))
     by_item = dict(re.findall(r"case (EV_\w+):\s*return CheckBagHasItem\((ITEM_\w+), 1\);", held_src))
@@ -806,6 +812,8 @@ def events_table():
                     plan.append((titles[ev], sname, [roots[soff]], None, None, None))
                 elif sev == "EV_SONG1":         # T-417: the fir's song, then the seven (FLAG_SONG_FIR, FLAG_SONG_1..)
                     plan.append((titles[ev], sname, ["FLAG_SONG_%s" % (soff or "FIR")], None, None, None))
+                elif sev == "EV_YEAR1":         # T-416: THE YEAR's lines, in the year's order
+                    plan.append((titles[ev], sname, ["FLAG_YEAR_LINE_%s" % year_lines[soff]], None, None, None))
                 elif sev == "EV_DRIVER1":
                     plan.append((titles[ev], sname, None, None, [("ITEM_HM01", soff)], "held: the DRIVER in the bag"))
                 elif sev in by_flag:
@@ -933,6 +941,19 @@ def school_table():
             "sb1_vars": sb1["vars"], "vars_start": 0x4000}
 
 
+def holidays_table():
+    """C-149 / T-416: the holidays by their real names, from the game's own table (docs/holidays.json, through
+    tools/genholidays.py's companion_doc), so the companion and the game cannot disagree."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    argv, sys.argv[:] = list(sys.argv), [sys.argv[0]]
+    try:
+        import genholidays
+    finally:
+        sys.argv[:] = argv
+    #  written in genholidays' own layout (one holiday a line), as the companion's file already is
+    return genholidays.companion_text(json.load(open(os.path.join(ROOT, "docs", "holidays.json"), encoding="utf-8")))
+
+
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
@@ -941,7 +962,8 @@ def main():
              "marks.json": marks_table(), "regions.json": regions_table(),     # C-126, C-127
              "events.json": events_table(), "school.json": school_table(),
              "groves.json": groves_table(),                                     # T-408       # C-128, C-129
-             "guide.json": guide_table()}                                       # the reading tab
+             "guide.json": guide_table(),                                       # the reading tab
+             "holidays.json": holidays_table()}                                 # T-416 / C-149
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
@@ -949,7 +971,7 @@ def main():
         print("  no build to read the save layout from (make firered leafgreen first); save_layout.json left as it is")
     changed = []
     for name, data in files.items():
-        text = json.dumps(data, indent=1, ensure_ascii=False) + "\n"
+        text = data if isinstance(data, str) else json.dumps(data, indent=1, ensure_ascii=False) + "\n"
         path = os.path.join(OUT, name)
         old = open(path, encoding="utf-8").read() if os.path.exists(path) else None
         if old != text:
