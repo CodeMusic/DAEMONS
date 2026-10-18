@@ -4,11 +4,16 @@
     python3 tools/genplaysounds.py            # report
     python3 tools/genplaysounds.py --write    # the sixteen .mid files and their four lines each
 
-docs/private/draft-play-2026-10-17.md sec. 5. Both timbres are already in the ROM, so nothing here is a sample:
-  HARP   DirectSoundWaveData_sc88pro_harp,  voice 46 of voicegroup128 (the bank SE_NOTE_* use) -- plucked: one note
-         that dies away by itself (the voice's own decay), so a press is a pluck.
-  FLUTE  DirectSoundWaveData_sc88pro_flute, voice 73 of voicegroup132 -- its envelope sustains, so the note is one
-         long held note (TIE) and src/play.c fades it out and stops it when the button is let go: a breath.
+docs/private/draft-play-2026-10-17.md sec. 5. The timbres are OUR OWN (T-425, the user 2026-10-18 by ear): the HARP and
+FLUTE of audio/instruments/, which tools/geninstruments.py also writes into the engine as voicegroup193 -- nothing
+here is a sample:
+  HARP   voice 0 of voicegroup193 (DirectSoundWaveData_daemons_harp) -- plucked: the sample rings out by itself
+         and does not loop, so a press is a pluck.
+  FLUTE  voice 1 of voicegroup193 (DirectSoundWaveData_daemons_flute) -- its sample loops and its envelope sustains,
+         so the note is one long held note (TIE) and src/play.c fades it out and stops it when the button is let go:
+         a breath.
+(Until T-425 these were retail's sc88pro_harp, voice 46 of voicegroup128, and sc88pro_flute, voice 73 of
+voicegroup132; both samples stay in the ROM, other songs play them.)
 
 Eight naturals per instrument, C to the C above (SE_HARP_C .. SE_HARP_C_HIGH, SE_FLUTE_C .. SE_FLUTE_C_HIGH), on the
 SE2 player as the toy piano's are; a sharp is its natural bent a semitone up and an octave is a bend of twelve
@@ -35,8 +40,8 @@ NATURALS = [("C", 0), ("D", 2), ("E", 4), ("F", 5), ("G", 7), ("A", 9), ("B", 11
 TPQ = 24
 #  name, program, middle C, velocity, ticks held, midi.cfg flags
 INSTRUMENTS = [
-    ("HARP",  46, 60, 112, 4 * TPQ,  "-E -R50 -G128 -V110 -P4"),
-    ("FLUTE", 73, 72, 100, 32 * TPQ, "-E -R50 -G132 -V100 -P4"),
+    ("HARP",  0, 60, 112, 4 * TPQ,  "-E -R50 -G193 -V110 -P4"),
+    ("FLUTE", 1, 72, 100, 32 * TPQ, "-E -R50 -G193 -V100 -P4"),
 ]
 TEMPO = 120
 
@@ -118,9 +123,13 @@ def main():
             open(path, "w", encoding="utf-8").write(t2)
 
     t = open(CFG, encoding="utf-8").read()
+    want = ["%-31s%s" % (label + ".mid:", flags) for _, _, label, _, flags in snd]
+    stale = [l for l in re.findall(r"^se_(?:harp|flute)_\w+\.mid:.*$", t, flags=re.M) if l not in want]
+    if stale:                                        # a line whose flags moved: take it out, ensure_lines puts it back
+        t = re.sub(r"^(?:%s)\n" % "|".join(re.escape(l) for l in stale), "", t, flags=re.M)
     t2, c = ensure_lines(t, r"^mus_nexus\.mid:", ["%-31s%s" % (label + ".mid:", flags) for _, _, label, _, flags in snd],
                          "midi.cfg")
-    changes += c
+    changes += c + ["midi.cfg: - %s" % l for l in stale]
     if write and c:
         open(CFG, "w", encoding="utf-8").write(t2)
 
