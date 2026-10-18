@@ -85,3 +85,9 @@ C-149 on the boards, from their own screens: the Fire's new home (CARE / ROUTINE
 C-149 on the T-Embed CC1101, from its own screen: the CASINO first in its types, the reels with the party's three, a spin, a JACKPOT (50x, the carried daemon three times), and what it came to.
 
 ![17Oct2026 - C149 - the casino on the T-Embed CC1101 - 15](17Oct2026%20-%20C149%20-%20the%20casino%20on%20the%20T-Embed%20CC1101%20-%2015.png)
+
+### 17Oct2026 - C150 - CC1101 FLARE what remote from the cable - 16
+
+C-150 on the T-Embed CC1101 (companion 551bbff, which carries it): FLARE / WHAT REMOTE IS THIS started from the cable, its IR receiver made on first use from the board's own pin, timed out after 60 s with no remote pressed, no restart
+
+![17Oct2026 - C150 - CC1101 FLARE what remote from the cable - 16](17Oct2026%20-%20C150%20-%20CC1101%20FLARE%20what%20remote%20from%20the%20cable%20-%2016.png)
