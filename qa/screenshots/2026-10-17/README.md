@@ -31,3 +31,9 @@ In the ROM (CONTENT debug build, engine 0c16670da, played in the theatre): the G
 T-415: weather by season on Route 1 (clear, rain, storm, snow, fog, wind; day and night), with the user's four changes
 
 ![17Oct2026 - T415 - weather on Route 1 - 5](17Oct2026%20-%20T415%20-%20weather%20on%20Route%201%20-%205.png)
+
+### 17Oct2026 - C147 - pixel art crisp on the phone - 6
+
+The companion app on the user's iPhone, PROFILE's MARK badges: before, smoothed by iOS; after, each pixel repeated (app/modules/daemons-pixels).
+
+![17Oct2026 - C147 - pixel art crisp on the phone - 6](17Oct2026%20-%20C147%20-%20pixel%20art%20crisp%20on%20the%20phone%20-%206.png)
