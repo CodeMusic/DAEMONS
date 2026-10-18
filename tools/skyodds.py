@@ -51,7 +51,8 @@ LEN=rows('sSkyLengths'); SZ=rows('sSkySizes')
 CR=nums(re.search(r'sSkyCentreRegion\[2\] = \{(.*?)\}', W).group(1))
 def rp(rows,st):
     r=rows[pick([w for _,_,w in rows],st.n())]; return r[0]+st.n()%(r[1]-r[0]+1)
-N=len(order)-1  # SPECIAL_AREA excluded
+#  the C draws below MAPSEC_NEXUS when it has one (THE NEXUS's own section, 2026-10-18), else below SPECIAL_AREA
+N=order.index('MAPSEC_NEXUS') if 'MAPSEC_NEXUS' in order else len(order)-1
 def events(day,season,salt=0x544E4F43):
     st=R(H((day*0x9E3779B9)^salt)); n=pick(EPD[season],st.n()); ev=[]
     for _ in range(n):

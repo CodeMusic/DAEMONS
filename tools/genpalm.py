@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""The palm on FINDERS BEACH, with CONTEXT's FLUTE in its shade (T-417 P3, DRAFT art).
+"""The palm on FINDERS BEACH (T-417 P3, DRAFT art) -- and on ROUTE 2 and BREATHVERSE (2026-10-18).
 
     python3 tools/genpalm.py            # report, and a preview in the scratch dir
     python3 tools/genpalm.py --write    # graphics/object_events/pics/misc/beach_palm.png
 
 The user, 2026-10-17 (docs/private/draft-play-2026-10-17.md 2): the FLUTE lies under a palm on FINDERS BEACH
-(OneIsland_TreasureBeach), on the sand's northern point at (9,19). FRLG has no palm in any tileset, so the palm is an
+(OneIsland_TreasureBeach), on the sand's northern point at (9,19); the user, 2026-10-18, moved the FLUTE to BREATHVERSE (tools/gbabreathverse.py), whose way in and way out
+are this palm too, and left FINDERS BEACH's as scenery. FRLG has no palm in any tileset, so the palm is an
 object, drawn like the singing fir: inanimate, in NPC_GREEN's sixteen colours so it spends no palette of its own
 (PALSLOT_NPC_3, the tag's own slot -- engine.md trap 17).
 

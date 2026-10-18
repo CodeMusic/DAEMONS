@@ -40,6 +40,9 @@ SCRATCH = os.environ.get("DAEMONS_SCRATCH", os.path.join(ROOT, ".theatre"))
 DRAFTS = os.path.join(ROOT, "gfx/drafts/nexus/env")
 SAVED = os.path.join(ROOT, "gfx/nexus/env")              # the cleaned pieces, as the game draws them
 NAME, MAPC, LAYOUT = "Nexus", "MAP_NEXUS", "LAYOUT_NEXUS"
+#  Its own map section (the user, 2026-10-18, DRAFT): CONTINUE there named it "S.S. ANNE", the section it was first filed
+#  under for the fir on the pier. A grove takes its parent's; THE NEXUS has no parent, so it is THE NEXUS.
+SECTION = "MAPSEC_NEXUS"
 TILESET, TSDIR = "gTileset_Nexus", "nexus"
 
 
@@ -833,7 +836,7 @@ def map_json():
         "movement_range_x": 1, "movement_range_y": 1, "trainer_type": "TRAINER_TYPE_NONE",
         "trainer_sight_or_berry_tree_id": "0", "script": script, "flag": flag}
     return {
-        "id": MAPC, "name": NAME, "layout": LAYOUT, "music": MUSIC, "region_map_section": "MAPSEC_S_S_ANNE",
+        "id": MAPC, "name": NAME, "layout": LAYOUT, "music": MUSIC, "region_map_section": SECTION,
         "requires_flash": False, "weather": "WEATHER_NONE", "map_type": "MAP_TYPE_UNDERGROUND",
         "allow_cycling": False, "allow_escaping": False, "allow_running": True, "show_map_name": False,
         "floor_number": 0, "battle_scene": "MAP_BATTLE_SCENE_NORMAL", "connections": None,

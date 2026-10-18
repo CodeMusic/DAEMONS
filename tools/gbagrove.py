@@ -257,6 +257,11 @@ FAMILY = {
 }
 RATE = 20
 
+#  Doors that are not a grove's row but are found the same way, so REVEAL twinkles them too: (the way in, the way out).
+#  T-417 (the user, 2026-10-18): BREATHVERSE, the islet where CONTEXT's FLUTE lies -- in by ROUTE 2's lone palm, out by
+#  the islet's own (tools/gbabreathverse.py builds it; it is not one of the fourteen, so it has no row above).
+OTHER_DOORS = [("Route2_EventScript_Breathverse", "Breathverse_EventScript_Leave")]
+
 FIR_SYNTH = (11, 3)                                     # the fir in a drawn clearing: row 1's open ground, right of the way out
 FLAG_BASE = 0x110                                       # FLAG_<GROVE>_FOUND, DAEMONS_FLAGS_START + 0x110 up, in GROVES order
 
@@ -550,6 +555,7 @@ def main():
     names = []
     for g in GROVES:
         names += ["%s_EventScript_Grove" % g["parent"], "%s_EventScript_Leave" % g["name"]]
+    names += [n for pair in OTHER_DOORS for n in pair]
     hdr += ["extern const u8 %s[];" % n for n in names]
     hdr += ["", "static const u8 *const sGroveTrees[] =", "{"] + ["    %s," % n for n in names] + \
            ["};", "", "#endif // GUARD_DATA_GROVE_TREES_H", ""]
