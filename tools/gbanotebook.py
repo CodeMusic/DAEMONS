@@ -7,8 +7,9 @@
 Reads `docs/notebook_notes.json` -- one row per NOTEBOOK entry, keyed by the flag that files it -- and writes the
 table notebook.c looks each entry up in:
 
-  seen   its SEEN flag, FLAG_NOTEBOOK_SEEN_0 + seen (flags.h). PERMANENT: a new entry takes the next number and a
-         number is never reused, or an old save's marks would move to other pages.
+  seen   its SEEN flag, FLAG_NOTEBOOK_SEEN_0 + seen (flags.h) -- and from 64 up, FLAG_NOTEBOOK_SEEN_64 + seen - 64,
+         the second block (T-417 P2: the first filled at 61; notebook.c's SeenFlag spills). PERMANENT: a new entry
+         takes the next number and a number is never reused, or an old save's marks would move to other pages.
   map    the map it was found on (its folder in data/maps); R in the NOTEBOOK opens the TOWN MAP there. None for a
          page with no place (the INSIGHTs: they arrive, they are not found).
   about  one line under the list, DRAFT. It says what the thing IS -- never what it means (craft rule 1).
@@ -27,7 +28,7 @@ GBA = os.path.join(ROOT, "engineGba")
 OUT = os.path.join(GBA, "src", "data", "notebook_notes.h")
 WRITE = "--write" in sys.argv
 PRIVATE = os.path.join(ROOT, "docs", "private", "notebook_docs.json")
-SEEN_COUNT = 64          # FLAG_NOTEBOOK_SEEN_0 .. +63 (flags.h)
+SEEN_COUNT = 128         # FLAG_NOTEBOOK_SEEN_0 .. +63, then FLAG_NOTEBOOK_SEEN_64 .. +63 (flags.h; T-417 P2)
 BOX = 208
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

@@ -281,6 +281,46 @@
    "seen": 60,
    "map": null,
    "about": "In your own words, after a MARK."
+  },
+  "FLAG_SONG_FIR": {
+   "seen": 61,
+   "map": null,
+   "about": "Hummed by the singing firs."
+  },
+  "FLAG_SONG_1": {
+   "seen": 62,
+   "map": null,
+   "about": "Heard where NAMING is learned."
+  },
+  "FLAG_SONG_2": {
+   "seen": 63,
+   "map": null,
+   "about": "Heard where STILL is learned."
+  },
+  "FLAG_SONG_3": {
+   "seen": 64,
+   "map": null,
+   "about": "Heard where MEND is learned."
+  },
+  "FLAG_SONG_4": {
+   "seen": 65,
+   "map": null,
+   "about": "Heard where PRACTICE is learned."
+  },
+  "FLAG_SONG_5": {
+   "seen": 66,
+   "map": null,
+   "about": "Heard where STANCE is learned."
+  },
+  "FLAG_SONG_6": {
+   "seen": 67,
+   "map": null,
+   "about": "Heard where NOTICE is learned."
+  },
+  "FLAG_SONG_7": {
+   "seen": 68,
+   "map": null,
+   "about": "Heard where REFLECT is learned."
   }
  }
 }
