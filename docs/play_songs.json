@@ -1,0 +1,108 @@
+{
+ "about": "T-417 PLAY (the user, 2026-10-17): the songs PLAY listens for. O CHRISTMAS TREE, then the seven, one per MARK/ROOT pair -- each motif chosen by the user by ear from their own recordings (docs/private/draft-play-songs-2026-10-17.md). 'notes' are as the game plays them when the song is HEARD (C4 is middle C; a sharp or flat may be written either way); 'key' is the major key it counts in (a minor tune is written in its relative major). 'beat' is the frames an ordinary note is held when it is heard or echoed and 'last' the final note's (or 'frames', one per note). 'title' and 'page' are in-game words, DRAFT. tools/genplaysongs.py writes engineGba/src/data/play_songs.h and fails if any song's shape (its intervals) sits inside another's, which would stop the longer one from ever being heard to its end.",
+ "songs": [
+  {
+   "id": "FIR",
+   "title": "O CHRISTMAS TREE",
+   "pair": "the fir",
+   "key": "Bb",
+   "notes": "F4 Bb4 Bb4 Bb4 C5 D5 D5 D5",
+   "frames": [30, 22, 8, 40, 18, 22, 8, 40],
+   "learned": "FLAG_SONG_FIR",
+   "heard": null,
+   "understanding": null,
+   "page": null
+  },
+  {
+   "id": "NAMING",
+   "title": "TWELVE DAYS OF DECEMBER",
+   "pair": "SLATE / NAMING",
+   "motif": "SLATE-3",
+   "key": "E",
+   "notes": "C#5 B4 G#4 A4 F#4 G#4 F#4 E4 D#4 E4",
+   "beat": 15, "last": 40,
+   "learned": "FLAG_SONG_1",
+   "heard": "FLAG_SONG_HEARD_1",
+   "understanding": "FLAG_UNDERSTANDING_SCHOOL",
+   "page": "Heard at CALLOW SCHOOL."
+  },
+  {
+   "id": "STILL",
+   "title": "THE REALIZATION",
+   "pair": "SLOPE / STILL",
+   "motif": "SLOPE-1",
+   "key": "Eb",
+   "notes": "C4 Bb3 C4 D4 Eb4 D4 C4 F4 Eb4 F4",
+   "beat": 22, "last": 48,
+   "learned": "FLAG_SONG_2",
+   "heard": "FLAG_SONG_HEARD_2",
+   "understanding": "FLAG_UNDERSTANDING_FIRST",
+   "page": "Heard in the TANOBY RUINS."
+  },
+  {
+   "id": "MEND",
+   "title": "FORGIVENESS OFFERED",
+   "pair": "SENSE / MEND",
+   "motif": "SENSE-1",
+   "key": "D",
+   "notes": "E4 D4 B3 E4 F#4 E4 C#4 E4 D4 B3 A3",
+   "beat": 20, "last": 48,
+   "learned": "FLAG_SONG_3",
+   "heard": "FLAG_SONG_HEARD_3",
+   "understanding": "FLAG_UNDERSTANDING_RETURN",
+   "page": "Hummed by CRYSTAL."
+  },
+  {
+   "id": "PRACTICE",
+   "title": "SEQUEL THE GUARDIAN",
+   "pair": "FIT / PRACTICE",
+   "motif": "FIT-1",
+   "key": "G",
+   "notes": "B3 A3 D4 C4 D4 E4 G3 B3 A3",
+   "beat": 17, "last": 44,
+   "learned": "FLAG_SONG_4",
+   "heard": "FLAG_SONG_HEARD_4",
+   "understanding": "FLAG_UNDERSTANDING_GUIDE",
+   "page": "Heard where the GUIDE was kept."
+  },
+  {
+   "id": "STANCE",
+   "title": "HARMONY IN BALANCE",
+   "pair": "SKEW / STANCE",
+   "motif": "SKEW-1",
+   "key": "D",
+   "notes": "A4 B4 C#5 A4 F#4 E4 F#4 D4",
+   "beat": 20, "last": 48,
+   "learned": "FLAG_SONG_5",
+   "heard": "FLAG_SONG_HEARD_5",
+   "understanding": "FLAG_UNDERSTANDING_SCORN",
+   "page": "Heard where SCORN was beaten."
+  },
+  {
+   "id": "NOTICE",
+   "title": "THE SHIMMERING CANVAS",
+   "pair": "FRAME / NOTICE",
+   "motif": "FRAME-1",
+   "key": "D",
+   "notes": "C#5 B4 F#4 D4 E4 D4 F#4 E4",
+   "beat": 20, "last": 48,
+   "learned": "FLAG_SONG_6",
+   "heard": "FLAG_SONG_HEARD_6",
+   "understanding": "FLAG_UNDERSTANDING_READING",
+   "page": "Heard in the READING ROOM."
+  },
+  {
+   "id": "REFLECT",
+   "title": "REFLECTIONS WITHIN",
+   "pair": "HEAT / REFLECT",
+   "motif": "HEAT-1",
+   "key": "G",
+   "notes": "B3 E4 D4 C4 B3 D4 B3 C4 B3 G3",
+   "beat": 22, "last": 48,
+   "learned": "FLAG_SONG_7",
+   "heard": "FLAG_SONG_HEARD_7",
+   "understanding": "FLAG_UNDERSTANDING_NOTES",
+   "page": "Heard on QUICKSILVER IS."
+  }
+ ]
+}
