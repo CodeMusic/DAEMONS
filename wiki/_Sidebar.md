@@ -2,6 +2,7 @@
 
 - [Home](Home)
 - [Playing](Playing)
+- [The world](The-world)
 - [Editions](Editions)
 - [The companion](The-companion)
 - [Building](Building)

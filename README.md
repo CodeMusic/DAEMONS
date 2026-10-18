@@ -11,7 +11,9 @@ Machines evolved into creatures. This is a game about what happened next, and it
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)).
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.302.3**
+(2026-10-17), and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing, building and the
+two editions.
 
 ---
 
@@ -24,7 +26,7 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 | [**CodeMusic/pokefirered-daemons**](https://github.com/CodeMusic/pokefirered-daemons) | the engine — **this is where the work is** |
 | [**CodeMusic/pokered-daemons**](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, where the vertical slice was made. Kept as a reference, not updated further |
 | [**CodeMusic/gpt-play-pokemon-firered-daemons**](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a **model play it** — fork of [Clad3815](https://github.com/Clad3815/gpt-play-pokemon-firered) |
-| [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — a device that carries one of your daemons and helps you get things done; its app, server and firmware. Ours from the first line, no fork |
+| [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — your phone or a board hosts a daemon you SEND from your party, one to each device, and it helps you get things done; its app, server and firmware. Ours from the first line, no fork |
 
 **Why the move.** A spike was run to answer one question — are abilities, item descriptions and a real scripting language worth rebuilding 334 files for? Gen 1 stores **no item descriptions at all**, which is a writing-led project running on the one generation with nowhere to write. Abilities give the chart a second axis. The Index went from six lines of eighteen characters to three of forty-two.
 
@@ -46,7 +48,7 @@ Gen 1 had no abilities, no held items, one Special stat, and fifteen type slots.
 
 That remains true on the GBA. The chart is still the argument — §2's *only* change to the matchup table, `CONTEXT ↔ LATENT` at mutual 2×, was finally built there. What the newer machine adds is room to *say* things: descriptions, longer entries, and abilities as a second axis alongside the chart rather than a replacement for it.
 
-So the fifteen types are the vocabulary of thinking machines — CONTENT and CONTEXT, LOGIC and LATENT, ENTROPY, FLOW, GROWTH, SWARM. The matchups between them aren't decorative. Rules parse data brilliantly and fail at framing, and the combat math says so in every battle, without a single line of dialogue explaining it.
+So the fifteen type names are the vocabulary of thinking machines (the GBA plays seventeen: its Steel and Dark slots became HARDENED and OPAQUE) — CONTENT and CONTEXT, LOGIC and LATENT, ENTROPY, FLOW, GROWTH, SWARM. The matchups between them aren't decorative. Rules parse data brilliantly and fail at framing, and the combat math says so in every battle, without a single line of dialogue explaining it.
 
 The rest follows the same principle. Kanto's towns were already named after colors and the original game never did anything with it, so this one finishes the job: every city is a word that means both a color and a feeling. Routes are named for what happens *between* colors — bleeding, fading, glazing, gloaming. The official map keeps its numbers. The people who live there use different names.
 
@@ -65,15 +67,30 @@ A few rules the project holds itself to, in case they're useful to anyone buildi
 
 ## Status
 
-**Design is still ahead of implementation, but the slice is walkable.**
+**Design is still ahead of implementation, and the whole game is playable** — both editions, start to finish, from
+BLANCHE TOWN to the REVIEW BOARD.
 
-You can play **Blanche Town → The Bleed → Callow → The Undertone → Underpaint → Slate → Benchmark 1** end to end. The type chart is in and complete, the routes carry both their names, several towns have their own music, and the story's documents are where they belong — a requisition, a set of minutes, a carving, an engraving, none of them signed and none of them explained.
+**Every daemon is ours.** All 386 species carry our names, plus nine new ones in slots the original left empty; the
+INDEX's 395 entries are rewritten, and the two editions say something different about every one. 1,464 of the
+original's 1,469 sprites are redrawn, daemons coloured by their type. The type chart is in and complete, the routes
+carry both their names, several towns have their own music, and the story's documents are where they belong — a
+requisition, a set of minutes, a carving, an engraving, none of them signed and none of them explained.
 
-**The slice has a cast now.** Thirty-two daemons carry our names, our art and an Index entry — the three starter lines, the six wild lines, and the MUSAI, ARTSAI and S.T.A.R.R. Every creature the player meets in the slice is drawn.
+**The world keeps time.** A cartridge clock if there is one, play time if not: dawn, day, dusk and night, the weekday,
+and seasons that repaint the world in two hemispheres — CONTENT keeps a northern year and CONTEXT a southern one.
+Since v11.302.1 the **weather** follows the season too, and since v11.302.3 each edition has an **instrument** — a
+HARP in CONTENT, a FLUTE in CONTEXT — played note by note in colour, with a SONGBOOK for what you play. There is a
+NOTEBOOK for what you find, a school with a DIPLOMA, and places the game never points to.
+
+**Your daemons can leave.** SEND one from your party and the
+[companion](https://github.com/CodeMusic/daemons-companion) hosts it on your phone or a board; it comes home at the
+next SYNC with what it learned.
 
 **And a model plays it.** [`engineAi/`](ai/README.md) drives mGBA over a Lua socket, reads the game out of RAM by symbol name, and decides. It keeps a self-model, four humor axes derived from what happens to it, and dreams at every summary fold — and any of it can be spoken aloud.
 
-**What is not done:** the bestiary is thirty-two, not 151. Enough ROM hacks have died designing a full roster before shipping a single town.
+**What is not done:** every new word in the game is still a draft until it is approved, and some decided work is not
+built yet — the holidays, the groves' own music, the weather's second phase, the songbook's seven songs. The
+[TODO list](docs/TODO.md) is the honest picture of what is next.
 
 See [`docs/`](docs/) for the design bible, which is the honest picture of where this stands — including the decisions that were reversed and why.
 
@@ -103,10 +120,6 @@ rather than fetched.
 Homebrew's ARM gcc ships no libc, so `MODERN=1` fails on `string.h`. agbcc
 brings its own headers and is the path that works here.
 
-**Before blaming anything, prove the toolchain.** `make vanilla-check` builds
-pristine upstream in a throwaway worktree and checks the hashes without
-touching your branch. If vanilla matches, the break is ours.
-
 *`shasum -c firered.sha1` fails by design* — the ROM carries our content. It
 proves the toolchain on a pristine `pret/pokefirered` checkout and is not a
 regression check for this fork.
@@ -116,7 +129,8 @@ regression check for this fork.
 | `make content` / `make context` | build a **Game Boy** edition — the `make` shim only reaches `engine/` |
 | `make play` | build CONTENT and launch it in an emulator |
 | `make play-debug` | the same, with debug mode compiled in |
-| `make vanilla-check` | prove the toolchain against pristine upstream |
+| `make -C engineGba firered` / `leafgreen` | build a **GBA** edition directly — `daemonsContent.gba`, `daemonsContext.gba` |
+| `make vanilla-check` | prove the Game Boy toolchain against pristine upstream |
 | `./bindDaemons.sh` | build an edition and run it — **`--help` is the full list** |
 | `./bindDaemons.sh --classic` | the Game Boy build; the GBA one is the default |
 | `./bindDaemons.sh --ai` | a model plays it, through `engineAi` — see [`ai/README.md`](ai/README.md) |
@@ -126,9 +140,15 @@ is the source of truth** and works with nothing checked out and no toolchain
 installed — which is when someone needs to read it. This README used to list
 the flags itself and went stale twice.
 
-**When a build breaks, run `make vanilla-check` first.** It builds pristine
-`upstream/master` in a throwaway worktree and checks the hashes without touching
-your branch. If vanilla matches, the toolchain is fine and the break is ours.
+**Check the exit code, never grep for `error:`.** agbcc prints its diagnostics
+as `warning:` lines and then fails with a bare `Error 1`, so a filtered build
+looks clean while the ROM silently keeps the previous binary. `bindDaemons.sh`
+runs under `set -euo pipefail` and gets this right.
+
+**When the Game Boy build breaks, run `make vanilla-check` first.** It builds
+pristine `pret/pokered` in a throwaway worktree and checks the hashes without
+touching your branch. If vanilla matches, the toolchain is fine and the break is
+ours.
 
 ### Debug mode
 
@@ -139,10 +159,15 @@ Both engines have one, and they are **not the same thing**.
 ./bindDaemons.sh --classic --debug    # Game Boy — upstream's
 ```
 
-`pokefirered` ships no debug build at all, so the GBA one is ours: a new game
-starts with six daemons picked for their **abilities**, one of each *kind* of
-item so the description window can be read, all eight MARKS and 999999, and
-**hold B** walks through grass.
+`pokefirered` ships no debug build at all, so the GBA one is ours. A new debug
+game **starts as a normal one does**, and **START → DEBUG → GAME EVENTS** hands
+out the kit a piece at a time, in story order — its first row, EVERYTHING, is six
+daemons picked for their **abilities**, one of each *kind* of item, all eight
+MARKS and 999999. Its other pages **JUMP** to places without playing to them,
+force the **TIME** of day, the season and the weather, and play any **SOUND**.
+**Hold B** walks through grass. The engine's
+[README](https://github.com/CodeMusic/pokefirered-daemons#the-debug-build) has
+the whole menu.
 
 The Game Boy one is upstream's, which `pokered` has always carried behind its
 `_DEBUG` define and only ever wired to a Blue build:
@@ -172,18 +197,21 @@ tradeoffs and the alternatives are written up in
 ## Layout
 
 ```
-docs/       vision.md — the living design bible, incl. the decision log
-            versioned PDF snapshots, type-system build notes
-tools/      the port tools — every rename crossed to the GBA through one
-ai/         n8n workflows, the LiteLLM config, and how a model plays it
-patches/    drop-in files and diffs against a clean upstream checkout
-gfx/        original sprite work (front/, back/, overworld/, ui/)
-audio/      original music (music/, sfx/)
+docs/         vision.md — the living design bible, incl. the decision log
+              versioned PDF snapshots, the changelog, TODO, engine notes
+tools/        the port tools and generators — everything crosses to the GBA through one
+ai/           n8n workflows, the LiteLLM config, and how a model plays it
+patches/      drop-in files and diffs against a clean upstream checkout
+gfx/          original art (daemons/, characters/, overworld/, nexus/, ui/ ...)
+audio/        original music (music/, sfx/)
+ROM RELEASE/  every release's notes, by bible version (the ROMs themselves never)
+qa/           what each build looked like, filed with the picture's caption
+wiki/         the GitHub wiki's pages; wiki/publish.sh publishes them
 
-engine/     -> pokered-daemons        Game Boy, reference
-engineGba/  -> pokefirered-daemons    GBA, where the work happens
-engineAi/   -> gpt-play-...-daemons   the harness that lets a model play it
-companion/  -> daemons-companion      the goal companion: app, server, devices
+engine/       -> pokered-daemons        Game Boy, reference
+engineGba/    -> pokefirered-daemons    GBA, where the work happens
+engineAi/     -> gpt-play-...-daemons   the harness that lets a model play it
+companion/    -> daemons-companion      the goal companion: app, server, devices
 ```
 
 The three `engine*` entries and `companion/` are **gitignored symlinks**. Nothing is ever

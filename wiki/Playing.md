@@ -56,8 +56,8 @@ A flash cartridge (an EZ-Flash, an EverDrive and the like) plays the patched fil
 - Copy the patched `.gba` to the cartridge's SD card.
 - **Save type:** leave it on automatic. DAEMONS saves exactly as *FireRed* does (128 KB flash).
 - **The clock:** DAEMONS reads a cartridge clock if there is one -- the days of the week and the time of day come
-  from it. Switch the cartridge's RTC on for this game in its own settings. Without one the game still plays, and its
-  days follow your play time. The terminal in your bedroom answers **TIME** with a CLOCK line when it is being read.
+  from it, and so do the seasons and the weather ([The world](The-world)). Switch the cartridge's RTC on for this game
+  in its own settings. Without one the game still plays, and its days follow your play time. The terminal in your bedroom answers **TIME** with a CLOCK line when it is being read.
 - **Moving a save from mGBA:** a flash cart wants exactly 131,072 bytes; mGBA's saves are 16 bytes longer (its clock
   data). Trim them (`head -c 131072 in.sav > out.sav`) and back up both copies first.
 
@@ -76,6 +76,6 @@ A flash cartridge (an EZ-Flash, an EverDrive and the like) plays the patched fil
 | A white screen, or it won't start | Usually a bad dump. Dump the cartridge again. |
 
 Found a bug in the game? Please [open an issue](https://github.com/CodeMusic/DAEMONS/issues) and say which release you
-are playing (it is in the release's name, like `v11.299.4`).
+are playing (it is in the release's name, like `v11.302.3`).
 
 Rather build it yourself? See [Building](Building).

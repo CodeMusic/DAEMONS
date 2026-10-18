@@ -22,13 +22,26 @@ call it home on its own.
 ## Where it can live
 
 - **Your phone (the happy path).** The companion's app runs as a site in your browser and as an iPhone app from the
-  same code, and on the iPhone a daemon can live on your home screen as a widget of its own, with FEED, WATER and
-  TRAIN.
-- **A board.** Most LilyGO and M5Stack boards can host one: the LilyGO T-Embed family, the T-Watch S3, the T-Deck and
-  the T-Display-S3 Pro; the M5StickS3, CoreS3, M5GO, Fire and Dial; and the M5Stack Tab5 as a control center. The
-  daemon is drawn as the game draws it, and its routines from the game come along.
+  same code, and on the iPhone a daemon can live on your home screen as a widget of its own, with DRINK, FEED, TRAIN
+  and, at bedtime, SLEEP.
+- **A board.** Most LilyGO and M5Stack boards can host one: the LilyGO T-Embed family, the T-Watch S3, the T-Deck,
+  the T-Display-S3 Pro and AMOLED; the M5StickS3, the StickC-Plus (which, with its thermal HAT, **sees heat**), the
+  CoreS3, M5GO, Fire, Dial and Cardputer; and the M5Stack Tab5 as a control center. The daemon is drawn as the game
+  draws it, and its routines from the game come along.
+- **Your home.** An ESP32-S3-BOX-3 running Home Assistant's own voice assistant can wear the daemon as its face.
 
-Everything runs **on your own machine**: a local server, no accounts, no hosting.
+Everything runs **on your own machine**: a local server, no accounts, no hosting. The phone can also host on its own,
+with no computer, taking the save from an emulator on the same phone (built; still being checked on a real phone).
+
+## What it does with your game
+
+- **THE CASINO.** Every board has SLOTS: three reels of your own party. **The coins are your game's money** -- the
+  board starts from what your save holds, and the next SYNC writes what it won or lost into the save, never below
+  nothing and never past 999999. The odds are the Game Corner's, about 94 back for every 100 bet.
+- **Experience.** Every step of a goal you finish feeds the daemon and gives it experience, which comes home with it.
+- **Your save, to read.** The app, the site and the Tab5 show your PROFILE (your MARKS, ROOTS, the regions you have
+  seen, the hidden places you have found), the NOTEBOOK and its SONGBOOK, CALLOW SCHOOL and your DIPLOMA, and the INDEX
+  with each daemon's NATIVE line -- only what your save has already reached.
 
 ## More
 

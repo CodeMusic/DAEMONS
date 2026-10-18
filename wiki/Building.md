@@ -80,8 +80,10 @@ launching a stale ROM.
 
 ## When a build breaks
 
-Run **`make vanilla-check`** first. It builds pristine upstream in a throwaway git worktree and checks the hashes
-without touching your branch. If vanilla matches, the toolchain is fine and the break is in DAEMONS.
+Check the exit code first (above). For the Game Boy build, run **`make vanilla-check`**: it builds pristine
+`pret/pokered` in a throwaway git worktree and checks the hashes without touching your branch. If vanilla matches,
+the toolchain is fine and the break is in DAEMONS. For the GBA, a pristine `pret/pokefirered` checkout that passes
+`shasum -c firered.sha1` proves the same.
 
 *`shasum -c firered.sha1` fails by design* in the fork -- the ROM carries DAEMONS. It proves the toolchain only on a
 pristine `pret/pokefirered` checkout.
@@ -95,8 +97,12 @@ debug run never touches a playthrough.
 - **DEBUG > GAME EVENTS** hands out the kit a piece at a time, in story order, each row marked held or not, and A gives
   or takes it. Its first row, EVERYTHING, is the old kit: six daemons picked for their **abilities**, one of each
   **kind** of item (so every description window can be read), all eight MARKS and 999999.
-- The DEBUG menu's **JUMP** pages reach places without playing to them; **WATCH** forces dawn, day, dusk or night;
-  **SOUND** plays any song or sound effect.
+- **HEAL** restores the party; **MART** sets 999999 and adds or takes away any item.
+- **JUMP** reaches places without playing to them (and **MORE** has a second page).
+- **ENCOUNTER** meets a daemon at a level, and forces the **season** and the **weather**.
+- **TIME** forces dawn, day, dusk or night, or AUTO, and relights the map at once.
+- **SOUND** plays any song or sound effect, the glitch, and the HARP's and FLUTE's scales.
+- Held with **SELECT** on the map: A heals, B restocks, UP plays the next song, DOWN puts the map's own back.
 - **Hold B** to walk through grass.
 
 The Game Boy debug build is upstream's own, and a different thing: **SELECT** on the title screen opens its menu, and
