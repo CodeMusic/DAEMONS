@@ -259,3 +259,9 @@ v11.304.1: hol3_content_den_day_oracle
 v11.304.1: hol4_content_halftone_lantern_line
 
 ![18Oct2026 - T416 - hol4contenthalftonelanternline - 45](18Oct2026%20-%20T416%20-%20hol4contenthalftonelanternline%20-%2045.png)
+
+### 18Oct2026 - C158 - the casino in context on the T-Watch S3 - 46
+
+C-158 and C-159 on the T-Watch S3, from its own screen: reels of daemons seen in the game, ALMOST THE JACKPOT (a third STARR just under the line), a truthful SO CLOSE (the wanted coin one place above the line), the day's colour lifted to be readable, and the board's own SOUND page.
+
+![18Oct2026 - C158 - the casino in context on the T-Watch S3 - 46](18Oct2026%20-%20C158%20-%20the%20casino%20in%20context%20on%20the%20T-Watch%20S3%20-%2046.png)
