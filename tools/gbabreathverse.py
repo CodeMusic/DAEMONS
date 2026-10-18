@@ -11,8 +11,10 @@ tools/gbagrove.py lists both palms among the trees src/reveal.c marks). On the i
 palm, which is the way home, back to ROUTE 2's. Beside the palm lies the FLUTE (tools/genflute.py), CONTEXT only: the
 grove opens in both editions, and in CONTENT the islet simply has no FLUTE (the simplest reading, DRAFT).
 
-THE MAP. An islet of sand (the general tileset's own 3x3 sand-in-water pieces, as FINDERS BEACH draws its point) in
-open water to the edge of the screen; out of view, a ring of sea rocks (the general set's two 2x2 rocks, alternated),
+THE MAP. An islet of sand in open water to the edge of the screen, irregular and rounded with a small spit to the
+south-west (the user, 2026-10-18: "round it off"), drawn from the general tileset's sand-in-water pieces as FINDERS
+BEACH draws its own coast: the 3x3 edges and corners and the four inner corners where the shore steps (125/126 above,
+12D/12E below; tile() picks each from its neighbours and refuses a cell no piece can draw); out of view, a ring of sea rocks (the general set's two 2x2 rocks, alternated),
 so a player who SURFs off it later meets rocks, not the map's edge. The GBA shows 15x10 cells, the player 7 from each
 side and 4 from the top, 5 from the bottom, and a scroll uncovers one more: the islet is placed so that from every
 cell of it the rocks stay one cell beyond that (check_view() refuses otherwise). Primary gTileset_General with FINDERS
@@ -29,9 +31,12 @@ WRITE = "--write" in sys.argv
 
 NAME, MAPC, LAYOUT = "Breathverse", "MAP_BREATHVERSE", "LAYOUT_BREATHVERSE"
 PARENT = "Route2"
-W, H = 28, 24
-ISLET = (11, 10, 6, 4)                                   # x, y, width, height: sand, its edges in the water
-RING = (1, 1, 26, 22)                                    # the rocks' rectangle, two cells thick, in 2x2 rocks
+W, H = 28, 26
+#  the islet, row by row: y -> (first x, last x). 26 cells (the 6x4 it replaces was 24): rounded, stepped
+#  shoulders, and a two-wide spit running south off the west end (the user, 2026-10-18). Its own cells only are sand.
+ISLET_ROWS = {9: (13, 14), 10: (12, 15), 11: (11, 16), 12: (11, 16), 13: (12, 15), 14: (12, 13), 15: (12, 13)}
+ISLET_CELLS = {(x, y) for y, (a, b) in ISLET_ROWS.items() for x in range(a, b + 1)}
+RING = (1, 1, 26, 24)                                    # the rocks' rectangle, two cells thick, in 2x2 rocks
 PALM = (13, 11)                                          # the way home; the player arrives one below, facing it
 ARRIVE = (13, 12)
 FLUTE = (14, 11)                                         # beside the palm, CONTEXT only
@@ -42,7 +47,9 @@ ROUTE2_BACK = (12, 76)
 
 MUSIC = "MUS_GROVE_INWARD"          # INWARD's band leads with a FLUTE (tools/gengrovemusic.py); shared, never written over
 WATER = 0x12B | 0x1000              # ocean, elevation 1 -- FINDERS BEACH's own values
-SAND = {"tl": 0x10C, "t": 0x10D, "tr": 0x10E, "l": 0x114, "c": 0x115, "r": 0x116, "bl": 0x11C, "b": 0x11D, "br": 0x11E}
+SAND = {"tl": 0x10C, "t": 0x10D, "tr": 0x10E, "l": 0x114, "c": 0x115, "r": 0x116, "bl": 0x11C, "b": 0x11D, "br": 0x11E,
+        #  the inner corners: sand all round but for one diagonal of water (FINDERS BEACH's (8,19), (11,19))
+        "nw": 0x125, "ne": 0x126, "sw": 0x12D, "se": 0x12E}
 SAND_BITS = 0x3000                  # elevation 3
 ROCKS = [(0x110, 0x111, 0x118, 0x119), (0x1CB, 0x1CC, 0x1D3, 0x1D4)]
 ROCK_BITS = 0x0400                  # collision
@@ -70,23 +77,40 @@ def draw():
     for k, (x, y) in enumerate(cells):
         tl, tr, bl, br = ROCKS[k % 2]
         grid[y][x], grid[y][x + 1], grid[y + 1][x], grid[y + 1][x + 1] = [m | ROCK_BITS for m in (tl, tr, bl, br)]
-    ix, iy, iw, ih = ISLET
-    for y in range(iy, iy + ih):
-        for x in range(ix, ix + iw):
-            v = "t" if y == iy else "b" if y == iy + ih - 1 else ""
-            h = "l" if x == ix else "r" if x == ix + iw - 1 else ""
-            grid[y][x] = SAND[(v + h) or ("c" if not (v or h) else v or h)] | SAND_BITS
+    for x, y in ISLET_CELLS:
+        grid[y][x] = SAND[tile(x, y)] | SAND_BITS
     return b"".join(struct.pack("<H", v) for row in grid for v in row)
+
+
+def tile(x, y):
+    """The sand piece for an islet cell, from which of its eight neighbours are water. The tileset draws an edge, a
+    corner, or one inner corner -- a cell one wide, or with two diagonals of water, has no piece, and is refused."""
+    s = lambda dx, dy: (x + dx, y + dy) in ISLET_CELLS
+    n, so, w, e = not s(0, -1), not s(0, 1), not s(-1, 0), not s(1, 0)
+    need = {(): None, ("w",): [(1, -1), (1, 1)], ("e",): [(-1, -1), (-1, 1)], ("n",): [(-1, 1), (1, 1)],
+            ("s",): [(-1, -1), (1, -1)], ("n", "w"): [(1, 1)], ("n", "e"): [(-1, 1)], ("s", "w"): [(1, -1)],
+            ("s", "e"): [(-1, -1)]}
+    open_ = tuple(k for k, v in (("n", n), ("s", so), ("w", w), ("e", e)) if v)
+    if open_ not in need:
+        raise SystemExit("gbabreathverse: (%d,%d) is open to the water on %s -- no sand piece draws it" % (x, y, open_))
+    if open_:
+        assert all(s(*d) for d in need[open_]), "(%d,%d): an edge with water on its inner diagonal" % (x, y)
+        name = {("w",): "l", ("e",): "r", ("n",): "t", ("s",): "b", ("n", "w"): "tl", ("n", "e"): "tr",
+                ("s", "w"): "bl", ("s", "e"): "br"}[open_]
+        return name
+    wet = [k for k, d in (("nw", (-1, -1)), ("ne", (1, -1)), ("sw", (-1, 1)), ("se", (1, 1))) if not s(*d)]
+    assert len(wet) <= 1, "(%d,%d): water on two diagonals -- no sand piece draws it" % (x, y)
+    return wet[0] if wet else "c"
 
 
 def check_view():
     """From every cell of the islet, and one scroll further, the screen shows no rock and no edge of the map."""
-    ix, iy, iw, ih = ISLET
     rx, ry, rw, rh = RING
-    assert ix - SCREEN_LEFT - 1 > rx + 1 and ix + iw - 1 + SCREEN_RIGHT + 1 < rx + rw - 2, "a rock is in view across"
-    assert iy - SCREEN_UP - 1 > ry + 1 and iy + ih - 1 + SCREEN_DOWN + 1 < ry + rh - 2, "a rock is in view up or down"
+    for ix, iy in ISLET_CELLS:
+        assert ix - SCREEN_LEFT - 1 > rx + 1 and ix + SCREEN_RIGHT + 1 < rx + rw - 2, "a rock is in view across from (%d,%d)" % (ix, iy)
+        assert iy - SCREEN_UP - 1 > ry + 1 and iy + SCREEN_DOWN + 1 < ry + rh - 2, "a rock is in view up or down from (%d,%d)" % (ix, iy)
     for x, y in (PALM, ARRIVE, FLUTE):
-        assert ix < x < ix + iw - 1 and iy < y < iy + ih - 1, "(%d,%d) is not on the islet's open sand" % (x, y)
+        assert (x, y) in ISLET_CELLS and tile(x, y) == "c", "(%d,%d) is not on the islet's open sand" % (x, y)
 
 
 def obj(gfx, xy, script, flag):
