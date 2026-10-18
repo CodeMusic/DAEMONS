@@ -317,14 +317,16 @@ def header(sections, keys, nframes):
 # ---------------------------------------------------------------- the companion's copy (tools/companion_export.py)
 def subtle_book():
     """The book for the companion's library, in the game's order: each paragraph plain text, the asking voice marked,
-    each entry's picture by key and its frame count (the phone cannot list the art). DRAFT, as in the game."""
+    each entry's picture by key and its frame count (the phone cannot list the art), and as 'labels' the words
+    the game letters onto a picture (the week's notes on its steps, C to B), since the art carries no font. DRAFT, as in the game."""
     out = []
     for s in parse():
         out.append({"label": s["label"], "heading": s["heading"], "entries": [
             {"short": e["short"], "title": e["title"], "picture": e["sprite"],
              "frames": len(frames_of(e["sprite"], letters=False)), "caption": e["caption"],
              "paragraphs": [{"text": p, "voice": "asking" if k in e["faint"] else "telling"}
-                            for k, p in enumerate(e["paras"])]}
+                            for k, p in enumerate(e["paras"])],
+             **({"labels": list("CDEFGAB")} if e["sprite"] == "stairs" else {})}
             for e in s["entries"]]})
     return {"title": "THE SUBTLE LAYER", "subtitle": "a trainer's handbook", "draft": True, "sections": out}
 
