@@ -181,3 +181,9 @@ v11.303.3: hol_context_gift_flower_show
 v11.303.3: breath_round
 
 ![18Oct2026 - T416 - breathround - 30](18Oct2026%20-%20T416%20-%20breathround%20-%2030.png)
+
+### 18Oct2026 - T420 - OPUS back on the shelf - 33
+
+T-420 (v11.303.4): before the repair OPUS is missing; after it OPUS is back; MARK2's show no longer takes it
+
+![18Oct2026 - T420 - OPUS back on the shelf - 33](18Oct2026%20-%20T420%20-%20OPUS%20back%20on%20the%20shelf%20-%2033.png)
