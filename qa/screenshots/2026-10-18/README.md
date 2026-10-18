@@ -337,3 +337,9 @@ T-423 hue mock-ups: the Guide's reading page from the ROM, recoloured (colour on
 C-162 watch face mock-ups with EMERGENCE: top row, the three faces as built; the rest with the season behind (by edition) and the weather in front. Mock-ups, not the watch's own pixels.
 
 ![18Oct2026 - C162 - watch face mock-ups, season and weather - 63](18Oct2026%20-%20C162%20-%20watch%20face%20mock-ups%2C%20season%20and%20weather%20-%2063.png)
+
+### 18Oct2026 - C158 - the phone casino dressed - 79
+
+C-158 on the iPhone (build 09c9852): the CASINO like the boards' -- the band, three dark reels with the payline, the coin and autumn's leaf drawn as the boards draw them, the reels' daemons from the INDEX seen, leaves falling over them; ARCHIVER the JACK
+
+![18Oct2026 - C158 - the phone casino dressed - 79](18Oct2026%20-%20C158%20-%20the%20phone%20casino%20dressed%20-%2079.png)
