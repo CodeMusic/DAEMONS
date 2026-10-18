@@ -1,8 +1,8 @@
 {
  "about": "T-412 (the user, 2026-10-16; all twenty-one approved as drafts 2026-10-18, docs/private/drafts-2026-10-16.md section 5): the DREAM LOG's YOUR DREAMS. Images only, no interpretation, first person, present tense; no dream names a place, counts or numbers anything. Each arrives at the first dawn after its milestone (the watch), or on the first load on a later day -- one a night, in this order when several wait -- said after the line below, and is filed in the NOTEBOOK's DREAM LOG. Each box is the draft's own lines, kept where they fit the 208px message box. tools/gbadreamlog.py writes engineGba/src/data/dream_log.h; edit here, never there. Every word DRAFT.",
  "section": "DREAM LOG",
- "line": "You had a dream.",
- "line_about": "The draft left 'You had a dream.' or 'I had a dream.' to the user; 'You had a dream.' is used, beside the insights' 'You write it down in the NOTEBOOK.' -- one string to change.",
+ "line": "I had a dream.",
+ "line_about": "The draft left 'You had a dream.' or 'I had a dream.' to the user, who chose 'I had a dream.' (2026-10-18): the player says it, first person like the dreams themselves. DRAFT.",
  "title_rule": "A page's title in the NOTEBOOK's list is the dream's own opening words, in capitals, as many whole words as fit TITLE_W px -- no new words, no number.",
  "dreams": [
   {
