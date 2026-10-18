@@ -787,6 +787,8 @@ def companion_doc(doc):
         rule = dict(r)
         row = {"name": h["real"], "edition": "both" if h["edition"] == "COMMON" else h["edition"], "rule": rule,
                "days": h["days"]}
+        if h.get("steps_off"):          # the companion has no ids: the real name of the holiday it steps off
+            row["steps_off"] = next(o["real"] for o in doc["holidays"] if o["id"] == h["steps_off"])
         if h.get("quiet"):
             row["quiet"] = True
         else:
