@@ -373,3 +373,9 @@ T-424 (v11.304.6): friendship 0, 70, 150, 255; a Corpus daemon grey; the INDEX g
 T-422 (v11.304.6): the lead daemon dancing, one line, the help card whole, its day's reason
 
 ![18Oct2026 - T422 - the CASINO fixed - 84](18Oct2026%20-%20T422%20-%20the%20CASINO%20fixed%20-%2084.png)
+
+### 18Oct2026 - T426 - PLAY the harp and flute on the site - 86
+
+T-426 on the site (bench check, as if the instrument were held): the songs or PLAY FREELY, the key wheel, the harp with O CHRISTMAS TREE joined and echoing, the flute's holes
+
+![18Oct2026 - T426 - PLAY the harp and flute on the site - 86](18Oct2026%20-%20T426%20-%20PLAY%20the%20harp%20and%20flute%20on%20the%20site%20-%2086.png)
