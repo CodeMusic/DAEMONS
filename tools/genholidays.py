@@ -805,13 +805,16 @@ def companion_doc(doc):
         "rules": ("fixed: month, day. nth_weekday: month, n (1st..4th), weekday (0 Sunday). easter: days after Easter "
                   "Sunday. table: one date a year, 'MM-DD' by year. season_start: the day the edition's own season "
                   "begins (seasons.json). 'days' long from there."),
+        "steps_off": ("the real name of a COMMON holiday this one is not on the day of: that day is the other's, and "
+                      "this one goes on inside its own span (T-416: SCIENCE FAIR off FLEDGLING DAY, the user, 2026-10-18)."),
         "holidays": rows,
     }
 
 
 def companion_text(doc):
     d = companion_doc(doc)
-    head = json.dumps({"_about": d["_about"], "rules": d["rules"]}, ensure_ascii=False, indent=1)[:-2]
+    head = json.dumps({"_about": d["_about"], "steps_off": d["steps_off"], "rules": d["rules"]},
+                      ensure_ascii=False, indent=1)[:-2]
     body = ",\n".join("  " + json.dumps(r, ensure_ascii=False) for r in d["holidays"])
     return head + ',\n "holidays": [\n' + body + "\n ]\n}\n"
 
