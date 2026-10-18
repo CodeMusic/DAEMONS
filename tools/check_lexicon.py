@@ -1529,6 +1529,51 @@ def check_ids():
 #  and checked against every other flag we name; every flag we name is inside the DAEMONS block or vanilla's; the
 #  NOTEBOOK's SEEN numbers fit its two blocks; and no FLAG_UNUSED_ name is used by anything (that is how the STREAM's
 #  nine hid). teachy_tv.c, notebook.c and school_exam.c hold their computed ranges to these names by STATIC_ASSERT.
+def check_save_numbering():
+    """A save keeps the map it was made on by NUMBER: its group and number, and the layout's number
+    (SaveBlock1.mapLayoutId; overworld.c reloads gMapLayouts[id - 1] on CONTINUE). So a layout or a map may only be
+    ADDED AT THE END -- one put in the middle renumbers everything after it, and every older save in those maps
+    opens on the wrong tiles (found 2026-10-18: T-423's new layout at row 21 turned THE NEXUS into a jumble). Checked
+    against the engine the last ROM release was built from (its RELEASE_NOTES name the commit)."""
+    import glob, json, subprocess
+    notes = sorted(glob.glob(os.path.join(ROOT, "ROM RELEASE", "v*", "*", "RELEASE_NOTES.md")), key=os.path.getmtime)
+    sha = None
+    for n in reversed(notes):
+        m = re.search(r"\*\*Engine\*\*: \S+ `([0-9a-f]{7,})`", open(n, encoding="utf-8").read())
+        if m:
+            sha = m.group(1)
+            break
+    if not sha:
+        return []
+
+    def at(rel):
+        r = subprocess.run(["git", "-C", GBA, "show", "%s:%s" % (sha, rel)], capture_output=True, text=True)
+        return r.stdout if r.returncode == 0 else None
+    bad = []
+    old = at("data/layouts/layouts.json")
+    if old:
+        was = [l.get("id") for l in json.loads(old)["layouts"]]
+        now = [l.get("id") for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"]]
+        for k, w in enumerate(was):
+            if k >= len(now) or now[k] != w:
+                bad.append(("layout %d" % (k + 1), "was %s at release %s, now %s -- add new layouts at the END"
+                            % (w, sha, now[k] if k < len(now) else "gone")))
+                break
+    old = at("data/maps/map_groups.json")
+    if old:
+        was, now = json.loads(old), json.load(open(os.path.join(GBA, "data/maps/map_groups.json")))
+        for g in was.get("group_order", []):
+            a, b = was.get(g, []), now.get(g, [])
+            for k, w in enumerate(a):
+                if k >= len(b) or b[k] != w:
+                    bad.append(("%s %d" % (g, k), "was %s, now %s -- add new maps at the END of a group"
+                                % (w, b[k] if k < len(b) else "gone")))
+                    break
+        if now.get("group_order", [])[:len(was.get("group_order", []))] != was.get("group_order", []):
+            bad.append(("map groups", "the group order changed -- add new groups at the END"))
+    return bad
+
+
 def check_flag_ranges():
     out = []
     hdr = open(os.path.join(GBA, "include/constants/flags.h"), encoding="utf-8").read()
@@ -1895,6 +1940,14 @@ def main():
         for what, why in ibad:
             print("   %-24s %s" % (what, why))
 
+    snbad = check_save_numbering()
+    if not snbad:
+        print("  every layout and map keeps its number from the last release, so older saves open where they were.")
+    else:
+        print("\n  %d save-numbering problem(s):\n" % len(snbad))
+        for what, why in snbad:
+            print("   %-32s %s" % (what, why))
+
     rbad = check_flag_ranges()
     if not rbad:
         print("  every flag range we declare is clear of every other flag, and no flag named UNUSED is in use.")
@@ -1999,7 +2052,7 @@ def main():
             print("   %-16s %s" % (what, why))
     #  every check's failures reach the exit code (it had dropped tcopy, fbad and the near-collisions, whose count
     #  check_vetoed's overwrote -- found 2026-10-18 in the code-health review)
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or snbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
 
 
 if __name__ == "__main__":
