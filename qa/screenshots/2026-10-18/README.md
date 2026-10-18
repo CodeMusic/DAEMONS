@@ -343,3 +343,9 @@ C-162 watch face mock-ups with EMERGENCE: top row, the three faces as built; the
 C-158 on the iPhone (build 09c9852): the CASINO like the boards' -- the band, three dark reels with the payline, the coin and autumn's leaf drawn as the boards draw them, the reels' daemons from the INDEX seen, leaves falling over them; ARCHIVER the JACK
 
 ![18Oct2026 - C158 - the phone casino dressed - 79](18Oct2026%20-%20C158%20-%20the%20phone%20casino%20dressed%20-%2079.png)
+
+### 18Oct2026 - C163 - the watchs faces and its CARE grid, on the watch - 80
+
+Read off the T-Watch S3 itself: the DAEMON face (autumn sky, hill and leaves; EMERGENCE walking, facing the way it goes, its heart mark), CLOCK, DAEMON with the season off, VIRTUE, and the CARE grid from a double tap.
+
+![18Oct2026 - C163 - the watchs faces and its CARE grid, on the watch - 80](18Oct2026%20-%20C163%20-%20the%20watchs%20faces%20and%20its%20CARE%20grid%2C%20on%20the%20watch%20-%2080.png)
