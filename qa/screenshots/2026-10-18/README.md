@@ -13,3 +13,9 @@ C-151, first run on two boards: each sees the other at the table through the com
 C-151 on two boards, from their own screens: the T-Deck (ARTSAI) and the CC1101 (CODEMUSAI) each see the other at the table; the T-Deck's typed word reaches the CC1101; its jackpot is called out there and cheered back -- CODEMUSAI CHEERS. Seated again on the current server, each named once.
 
 ![18Oct2026 - C151 - the table on the T-Deck and CC1101 - 2](18Oct2026%20-%20C151%20-%20the%20table%20on%20the%20T-Deck%20and%20CC1101%20-%202.png)
+
+### 18Oct2026 - C71 - the watch face after the screen fix - 3
+
+What the T-Watch S3 draws after the fix (read off the watch over its cable). TALK sits in what was the static bottom third.
+
+![18Oct2026 - C71 - the watch face after the screen fix - 3](18Oct2026%20-%20C71%20-%20the%20watch%20face%20after%20the%20screen%20fix%20-%203.png)
