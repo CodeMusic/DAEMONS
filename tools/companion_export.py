@@ -738,12 +738,12 @@ def _inc_text(rel, label):
 
 #  C-128 (the companion session, for the PROFILE, 2026-10-16): the GAME EVENTS page's rows, less the debug's own kit.
 EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
-                   "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL"}
+                   "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL"}
 
 
 def events_table():
     """C-128: the PROFILE's GAME EVENTS -- every row of the debug menu's GAME EVENTS page (src/daemons_debug_events.c) in
-    story order, a sub-page's rows (MARKS, NOTEBOOK, DRIVERS, UNDERSTANDINGS) where its row stands, each with the test
+    story order, a sub-page's rows (MARKS, NOTEBOOK, DRIVERS, UNDERSTANDINGS, SONGBOOK) where its row stands, each with the test
     the page's IsHeld makes for its + or ·, as flags and a var. The debug's own kit (EVERYTHING, THE ROSTER, EVERY
     DAEMON, THE STOCK, EVERY PAGE), each sub-page's ALL and LET INSIGHTS ARRIVE AGAIN are left out. A row held by a
     bag item has held null and its items, since the bag is not a flag."""
@@ -754,10 +754,10 @@ def events_table():
         return [(n, k, ev, int(off or 0)) for n, k, ev, off in
                 re.findall(r"\{\s*(sName_\w+),\s*(R_\w+),\s*(\w+)(?:\s*\+\s*(\d+))?\s*\}", body)]
     titles = {pg: re.split(r"[,:]", strings[t])[0] for pg, t in
-              zip(["PG_EVENTS", "PG_MARKS", "PG_NOTEBOOK", "PG_DRIVERS", "PG_ROOTS"],
+              zip(["PG_EVENTS", "PG_MARKS", "PG_NOTEBOOK", "PG_DRIVERS", "PG_ROOTS", "PG_SONGS"],
                   re.search(r"sTitles\[PG_COUNT\]\s*=\s*\{(.*?)\};", src, re.S).group(1).replace(",", " ").split())}
     pages = {"PG_MARKS": "sRows_Marks", "PG_NOTEBOOK": "sRows_Notebook", "PG_DRIVERS": "sRows_Drivers",
-             "PG_ROOTS": "sRows_Roots"}
+             "PG_ROOTS": "sRows_Roots", "PG_SONGS": "sRows_Songs"}
     held_src = re.search(r"static bool8 IsHeld\(u8 ev\)\s*\{(.*?)\n\}", src, re.S).group(1)
     by_flag = dict(re.findall(r"case (EV_\w+):\s*return FlagGet\((FLAG_\w+)\);", held_src))
     by_item = dict(re.findall(r"case (EV_\w+):\s*return CheckBagHasItem\((ITEM_\w+), 1\);", held_src))
@@ -780,6 +780,8 @@ def events_table():
                     plan.append((titles[ev], sname, [marks[soff]], None, None, None))
                 elif sev == "EV_ROOT1":
                     plan.append((titles[ev], sname, [roots[soff]], None, None, None))
+                elif sev == "EV_SONG1":         # T-417: the fir's song, then the seven (FLAG_SONG_FIR, FLAG_SONG_1..)
+                    plan.append((titles[ev], sname, ["FLAG_SONG_%s" % (soff or "FIR")], None, None, None))
                 elif sev == "EV_DRIVER1":
                     plan.append((titles[ev], sname, None, None, [("ITEM_HM01", soff)], "held: the DRIVER in the bag"))
                 elif sev in by_flag:
