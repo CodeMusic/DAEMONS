@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.303 — 2026-10-18
+
+### PLAY, and the groves' music (T-417, T-408)
+
+- ***3.5, new (the user)***: **an instrument and a SONGBOOK** -- *CONTENT's HARP from a LYREBIRD at CALLOW SCHOOL, CONTEXT's FLUTE under a palm on FINDERS BEACH; the band's sheet gives the key, then you play; a song counts only in its own key, with "Close" for the right shape in the wrong one; O CHRISTMAS TREE in B-flat opens a fir and lights THE NEXUS; seven songs from the user's albums, one per MARK and ROOT, each motif chosen by ear, heard at its understanding's place and learned by playing it back.* **A is INDIGO everywhere.**
+- ***T-408 (the user)***: **each grove its own music**, *fourteen loops from the user's own songs, each universe its own band; the comparison by ear is T-419.*
+
+---
+
 ## v11.302 — 2026-10-17
 
 ### Over, never cures (T-418)

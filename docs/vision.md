@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.302**
+**A total conversion — the living design bible, v11.303**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2208,6 +2208,21 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 - **Eight residents of its own** *(REFLECTION, LODESTAR, PERIHELION, LYUBOV, MULTIMAL › ILLUMINED, LYNX › BASTET: INDEX 387–394, MISSINGNO one past them at 395)*, **PENGUIN in its meadow, and PHOENIX once.**
 
 *The design in full, its cast and every word: `docs/nexus.md`. Built by `tools/gbanexus.py` (the residents), `tools/gbagrove.py` (the fir in every grove) and `tools/gbanexusmap.py` (the place).*
+
+### 3.5 PLAY — an instrument, and a SONGBOOK (T-417, the user, 2026-10-17)
+
+***Lineage: A PAINTED CHRISTMAS and THE PAINTED MIRROR*** *(the user's two albums, lineage.md).* **The oldest image in the project is notes seen as colour, with a key missing; PLAY makes it something the player does.** *The twelve notes are the user's own chromatic colours, C red to B purple, and A is INDIGO everywhere -- on the wheel, on the staff, in the months (T-416) and in the fir's tune.*
+
+- **Two instruments, one per edition.** **CONTENT's HARP** *is given by a LYREBIRD two tiles right of CALLOW SCHOOL's door, which sings the school bell back on the HARP's own notes.* **CONTEXT's FLUTE** *lies in a palm's shade on FINDERS BEACH -- a breath instrument, "breathing life into the notes".* *The palm stands in CONTENT too, as scenery.*
+- **The band's sheet gives the key, then you play.** *Taken out, the instrument opens on a wheel of twelve keys; it folds into a staff, and the buttons are the scale's seven degrees -- the D-pad clockwise from Down 1, then B 5, A 6, SELECT 7, L and R an octave down and up, START puts it away. Major keys only, three octaves. Each note drifts up from the instrument in its colour and always shines; there is no full-screen wash.*
+- **A song counts only in its own key.** *The last sixteen notes are listened to: key and order count, octave and tempo do not. The right shape in the wrong key is answered "Close" -- the fir hums it back, and something in it sits wrong.*
+- **O CHRISTMAS TREE in B-flat opens a fir**, *even without the sheet -- the sheet is the hint.* **The notes join into one line, the fir sings it back, and the branches part like a door.** *At THE NEXUS the tree lights note by note, and the GUARDIAN says thank you.*
+- **Seven songs, one for each MARK and ROOT, from the user's albums, each motif chosen by ear from the recordings** *(SLATE / NAMING, The Twelve Days of December; SLOPE / STILL, The Realization; SENSE / MEND, 1001 / Forgiveness Offered; FIT / PRACTICE, SeQueL the Guardian; SKEW / STANCE, Harmony in Balance; FRAME / NOTICE, The Shimmering Canvas; HEAT / REFLECT, Reflections Within the Mirror).* **A song is heard at its understanding's place once that understanding is held, and learned by playing it back.** *Played again where it belongs, each does one small thing -- the day shown, daemons kept away, a daemon that flew away come back, the notes pointing toward a grove not yet found, the sky turned for a watch, something risen from the water.* *Even beats for now; rhythm never counts when the player plays.*
+- **The SONGBOOK** *is a section of the NOTEBOOK: each song written as coloured note heads on a staff, in the key it was learned in.*
+- **No song's notes may sit inside another's** *-- a build-time check (`tools/genplaysongs.py`), so a song met part-way never cuts off a longer one.*
+- ***The cost***: *no resident RAM, no save growth beyond its flags, one shared OBJ palette slot (the note colours) that T-415 and T-416 will share.*
+
+*The design in full: `docs/private/draft-play-2026-10-17.md`; the motifs and how they were found: `docs/private/draft-play-songs-2026-10-17.md`. Built by `src/play.c`, `tools/genplaysounds.py`, `tools/genplaynotes.py` and `tools/genplaysongs.py` (`docs/play_songs.json`).* **The groves' own music (T-408)** *is drawn from the same two albums: fourteen loops transcribed onto the game's instruments by `tools/gengrovemusic.py`, each universe its own band.*
 
 ## 4. CAST
 
