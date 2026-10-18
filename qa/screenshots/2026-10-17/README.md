@@ -73,3 +73,9 @@ T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's
 T-417 P3: the LYREBIRD gives the HARP at CALLOW, the FLUTE under FINDERS BEACH's palm (DRAFT)
 
 ![17Oct2026 - T417 - P3 playp3reviewbeachobjects - 13](17Oct2026%20-%20T417%20-%20P3%20playp3reviewbeachobjects%20-%2013.png)
+
+### 17Oct2026 - C149 - the casino on the Fire and M5GO - 14
+
+C-149 on the boards, from their own screens: the Fire's new home (CARE / ROUTINES / INDEX), SLOTS in autumn, a win, Halloween and Christmas dress, and the M5GO's 12x win, still with stand-in pieces there.
+
+![17Oct2026 - C149 - the casino on the Fire and M5GO - 14](17Oct2026%20-%20C149%20-%20the%20casino%20on%20the%20Fire%20and%20M5GO%20-%2014.png)
