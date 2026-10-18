@@ -73,3 +73,9 @@ T-417 P5 (v11.303.1): reflect
 T-417 P5 (v11.303.1): again
 
 ![18Oct2026 - T417 - P5 again - 12](18Oct2026%20-%20T417%20-%20P5%20again%20-%2012.png)
+
+### 18Oct2026 - C154 - notifications on the T-Watch S3 - 13
+
+C-154 on the T-Watch S3, from its own screen: another board's jackpot arriving through the companion, shown at 0.3, 1.5 and 3 seconds and gone at 5; then a wave. Not at the reels, never answered.
+
+![18Oct2026 - C154 - notifications on the T-Watch S3 - 13](18Oct2026%20-%20C154%20-%20notifications%20on%20the%20T-Watch%20S3%20-%2013.png)
