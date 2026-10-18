@@ -3,7 +3,8 @@
 *Read 2026-10-18 for the session that builds it (T-423). **Notes, not decisions**: everything marked **the user's
 call** is theirs.*
 
-**Two sources.** The PDFs are not in the repository; the user hands them over.
+**Two sources.** The PDFs are not in the repository: they are in `docs/private/books/` (the user, 2026-10-18), because
+the repository is public and the byline is a real name.
 
 - *Becoming Heroic*, the user's early book (26 pages). It is the first draft of the same material.
 - *Developing Psychic Routines* (16 pages, about 5,400 words, dated 2026-10-18), the rewrite aimed at the game: "a
@@ -12,6 +13,49 @@ call** is theirs.*
 **Read these first.** [`guide.md`](guide.md)'s header, and `vision.md` **4.36**: the Guide is the user's other book,
 already in the ROM, and it is the precedent for this one. Then **4.33** (the one daemon), **9.21** (the week),
 **T-418** (over, never cures), **0.1** (craft rules) and **0.6**.
+
+---
+
+## D. Decided — the user, 2026-10-18 (read this before the analysis below; where they differ, this wins)
+
+**Still no game text.** Every word stays unwritten until the open rows close.
+
+| § 8 | the call | decided |
+|---|---|---|
+| 1 | **Cosmology** | **Practice only** (§2.4 (a)). The book says what a trainer does and notices, never what the world is made of. The Container, *the Processor is aware* and panpsychism go; read, write, link and the physics pages stay |
+| 2 | **Who wrote it, where it is found** | **An INTERPRETER**, the practitioners' own class. Found, not given, as the Guide was |
+| 3 | **The read test** | **The log decides.** Calm is only a hint; the NOTEBOOK's log shows which reads land. *"What will be will be, and it will be good"* goes |
+| 4 | **The three stats** | **Built, per daemon, in battle only.** Three values in the free condition bytes (§V.1; never BEAUTY), tuning CONTEXT routines in battle. Never a read that comes true in the world. The trainer's half is the log, not a stat |
+| 4 | *the stat names* | ***OPEN, the user wants more first.*** Three clash (§V.5): CHARGE, RESONANCE, ATTUNEMENT. Kept as written meanwhile |
+| 5 | **Clairs to types** | **The type table** (§6), and the owl line goes |
+| 6 | **"The Clairs"** | ***OPEN: kept as a hint for now, to revisit.*** Checked [private: SECRETS §2] |
+| 6 | **The kindred bond** | **Keeps its row**, under the guard in [private: SECRETS §2] |
+| 7 | **The device screen** | **Only the companion library's copy** may point at the device; the ROM's book never does |
+| 8 | **Its hue** | ***OPEN: leaning CONTEXT*** (*"more colour in this book for the context connection"*). Mock-ups of each first. *The NOTEBOOK's cover is already CONTEXT's hue (`book_reader.c` sNotebookPal), so a CONTEXT book would match the log it points to* |
+| 8 | **Its title** | ***Kept, checked*** (§V.6); alternatives to show on the revisit |
+| 9 | **Lineage** | **`lineage.md` 3d**; the PDFs in `docs/private/books/` |
+| + | **The chakras** (*the user: "that is the part for dancing the body, virtues/shadows balance the mind"*) | **The body half goes in this book**, reversing §1's "cut it": the seven centres, what each governs, too closed / too open / in balance, and the aligning actions (walk, dance, wash, write, sing, posture). Named **attributed**: *the old texts call them chakras*, then *centres*. **Never their colours; no symptom words** (§2.7). The mind is virtues over shadows; the body is the centres. *The Guide's POWER SUPPLY page stays as it is: it names them and gives each a day* |
+
+### V. Verified 2026-10-18 — the four the review could not see, and two more
+
+1. **The contest-condition bytes are free, with two catches.** `cool beauty cute smart tough sheen` sit in every
+   daemon's box substructure (`include/pokemon.h`), so they cost no save budget. Nothing reads them as a rule: the
+   battle controllers only ferry them (`battle_controller_opponent.c`, `_pokedude.c`) and the roamer copies them
+   (`roamer.c`). **The catches**: the in-game trades write them (`ingame_trades.h`: 5/5/5/30/5, sheen 10), so a
+   traded daemon arrives non-zero; and **BEAUTY is EVO_BEAUTY**: SADDLE (Feebas) becomes Milotic at 170
+   (`evolution.h`). SADDLE is in no wild table or trade (only `opus_margins.h`), but BEAUTY stays untouched. **They are
+   per daemon.** A trainer's own value would need SaveBlock space (`engine.md`'s budgets).
+2. **8.6's friendship saturation is decided and not built.** Settled 2026-09-06 (*"Saturation is friendship"*,
+   CHANGELOG), but `GetMonSpritePalFromSpeciesAndPersonality` returns the species palette untouched and nothing tints
+   a daemon by friendship. No ticket carries it. **The book cannot lean on "the bond is already visible" until it is.**
+3. **The kindred-bond row**: checked against `SECRETS.md`; the verdict and its guard are there, [private: SECRETS §2].
+4. **"The Clairs" against the Clears**: checked against `SECRETS.md`; the verdict is there, [private: SECRETS §2].
+5. **Three of the book's words are already taken** (`check_lexicon.py`'s surfaces): **CHARGE** is an item (the Ether
+   ladder: CHARGE, FULL CHARGE, CHARGE ALL, FULL RECHARGE); **RESONANCE**, the crowd bond, is MIST BALL's routine;
+   **ATTUNEMENT** stands next to **ATTUNE**, KIRLIA's name. **CLOSURE** is free.
+6. **PSYCHIC is not printed anywhere in the ROM.** §7 below is out of date: the routine is CONSTRUE, the type
+   CONTEXT, the class INTERPRETER, and the word survives only in code comments. The title collides with nothing; the
+   question is only whether a word the game renamed comes back on a cover.
 
 ---
 

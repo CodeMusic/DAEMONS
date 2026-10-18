@@ -312,6 +312,50 @@ the game only ever says *like*.**
 
 ---
 
+## 3d. A FEW YEARS AGO, AND 2026 — *BECOMING HEROIC*, AND THE PSYCHIC BOOK IT BECAME
+
+*Numbered `3d` for the reason `3b` was.* **Added 2026-10-18 (T-423).** ***Two books by the user, one the draft of the
+other.*** *Becoming Heroic* (26 pages, about 6,400 words) is from **"a few years ago"**, in the user's words: the date
+is theirs to give. *Developing Psychic Routines* (16 pages, about 5,500 words) is **its rewrite for the game, dated
+2026-10-18**: *"a trainer's guide to the subtle layer"*. **Neither PDF is in the repository**; they are kept privately
+(`docs/private/books/`), because the byline is a real name. The notes that bring the rewrite into the game are
+[`psychic-routines-notes.md`](psychic-routines-notes.md).
+
+***The draft holds two worlds open, and the rewrite closed one of them.*** *Becoming Heroic* explains everything
+twice: in the **Codedverse**, a self-aware system whose residents are co-developers of it, and in the **Mechaverse**,
+where the same things must survive a double-slit experiment. Its Chapter 9 calls the choice between them a false
+dichotomy, and its page 19 answers whether any of it is real with ***"I cannot answer that."*** **That is 0.6 written
+years before 0.6**: the game asserts neither reading. *The rewrite chose the code side and lost the doubt*, which is
+why the notes' first call (practice only, no cosmology) was needed.
+
+### 3d.1 Where it already is
+
+| in the books | in the game |
+|---|---|
+| **The Mechaverse and the Codedverse** (and a passing *Paintedverse*) | *the groves as universes (T-408), credited until now to The Painted Mirror alone: **MECHAVERSE has a second, earlier source*** |
+| **The seven pairings, virtue and sin** | *the week (9.21) and the Guide's SECURITY page. The draft says "cures"; the rewrite already says **over**, which T-418 made the rule* |
+| **The chakras, "a system of balance and not any cultural beliefs"** | *the Guide's POWER SUPPLY page names the centres and their days; **the body balance itself** (what each governs, too closed or too open, the aligning actions: dance, walk, sing) **goes into the psychic book** (T-423)* |
+| ***"Anxiety tries to figure it all out now, whereas Intuition knows"*** | *the read test, decided the other way: **the log decides**, calm is only a hint (T-423)* |
+| **Superheroes help maintain the goodness within other Superheroes; each eye has a blind spot** | *the link family, and PENPHIN's "alone, neither mirror image of the self will hear clearly" (3b.1)* |
+
+### 3d.2 What is new
+
+**A grammar: read, write and link**, *three operations on "the seam" between the solid world and the subtle one*;
+**three stats** (*how whole a system is, how thin its membrane, how much charge it holds*); and **an honest physics**:
+*decoherence, all paths, the lever you cannot pull* (erasing every record is why nothing steers the solid world),
+and ***"no one spoon"***, which names the single place the fiction departs from its own physics and calls it small.
+***"Do not ask whether your reads were right. Ask whether the system that made them was whole"*** **is the best line
+in either book.**
+
+### 3d.3 What is deliberately not mined
+
+***The draft's certainty and its science-of-the-day are left where they are***: hero genes and epigenetics, left
+brain and right brain, information faster than light, *"everything happens for a reason"*, the symptom column, and the
+reading list. ***And the rewrite's cosmology*** (*one awareness, an aware Processor, panpsychism*) **stays out of
+the book the player carries** (4.33): *the game lets its scientist say it, and nothing agrees with him.*
+
+---
+
 ## 4. 2023–2024 — NAMING, AND THE FORK INTO FICTION
 
 ### 3.1 2023: compression
