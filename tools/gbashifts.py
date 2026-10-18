@@ -18,6 +18,14 @@ chosen, on top of whichever header (day or night) was chosen -- src/wild_encount
 (DaemonsWatch's order: DAY DUSK NIGHT DAWN); the first row whose season bit AND watch bit are both set wins. RAM 0,
 save 0. CONTEXT needs nothing extra: DaemonsSeason already returns the edition's own season.
 
+WEATHER DAEMONS (T-415 phase 2, decided 2026-10-17): a few daemons come out only in a weather, on roads of the table
+above, in the road's SEASON slot -- level and odds the slot's own, as every row here. A weather row names its skies in
+bits 8-15 of `when` (DAEMONS_SKY_*, include/daemons_weather.h) and fires only while the map's weather is one of them
+(DaemonsSkyNow, so the day's draw, a song, DEBUG or a map's own header alike); it comes first, so in its weather it
+wins the slot from the season's. Every daemon and road below is a DRAFT choice (2026-10-18), picked by type: rain a
+FLOW daemon, a thunderstorm a SIGNAL one, snow FROZEN, fog LATENT (the fog boost's type), wind VECTOR. Three are met
+nowhere else, so the INDEX's NATIVE says IN RAIN, IN STORMS, IN WIND (tools/gbanative.py).
+
 AND THE DAEMONS MUST BE READY. All of these are met nowhere before the League today, so the report checks every one:
 a name, front and back drawn (not pret's), an INDEX entry and category of ours in BOTH editions, and streaks. A
 daemon that fails is listed and left OUT of the table -- this tool never writes words.
@@ -68,6 +76,37 @@ TABLES = [
     ("MAP_ROUTE7",  (0, "PACKET"),  ["LACED*", "STARVED*", "WARMUP", "TELL"],
                     (4, "PACKET"),  ["HUDDLE", "SYN|ACK", "SMUDGE"]),
 ]
+#  T-415 phase 2 (DRAFT, 2026-10-18): sky (DAEMONS_SKY_* without the prefix), the daemon ("C|X" allowed), its roads --
+#  each a road of TABLES, in that road's season slot. Why each: SEEPAGE (Barboach, FLOW/STRATUM) is water coming up
+#  through the ground in the rain, by the water of ROUTE 22 and ROUTE 6; PILOT (Chinchou, FLOW/SIGNAL), a light in
+#  the storm, by the POWER PLANT on ROUTE 10 and on the coast of ROUTE 25; LOCKFILE (Snorunt, FROZEN) by the snowy
+#  climbs of ROUTE 3 and ROUTE 9 (a season home elsewhere, so NATIVE keeps saying WINTER); DANGLING (Gastly,
+#  LATENT/CORRUPT), a gas, in the fog by HALFTONE's DAEMON TOWER on ROUTE 8 and ROUTE 10's south; EDGECASE
+#  (Farfetch'd, CONTENT/VECTOR) blown in on the wind across NUGGET BRIDGE (ROUTE 24) and ROUTE 5.
+WEATHER = [
+    ("RAIN",  "SEEPAGE",  ["MAP_ROUTE22", "MAP_ROUTE6"]),
+    ("STORM", "PILOT",    ["MAP_ROUTE10", "MAP_ROUTE25"]),
+    ("SNOW",  "LOCKFILE", ["MAP_ROUTE3", "MAP_ROUTE9"]),
+    ("FOG",   "DANGLING", ["MAP_ROUTE8", "MAP_ROUTE10"]),
+    ("WIND",  "EDGECASE", ["MAP_ROUTE24", "MAP_ROUTE5"]),
+]
+SKIES = ["CLEAR", "RAIN", "STORM", "SNOW", "FOG", "WIND"]   # include/daemons_weather.h, DAEMONS_SKY_*
+
+
+def sky_seasons():
+    """{sky: [the seasons the day's draw brings it in]}, read from src/daemons_weather.c's sSkyKinds -- for NATIVE
+    (tools/gbanative.py): a weather row fires in any season its weather is there (DEBUG can force one), but the INDEX
+    says where a daemon is met in the ordinary run of things, so LOCKFILE stays IN WINTER."""
+    import re as _re
+    src = open(os.path.join(GBA, "src/daemons_weather.c")).read()
+    block = src.split("sSkyKinds[SEASON_COUNT][DAEMONS_SKY_COUNT]", 1)[1].split("};", 1)[0]
+    out = {k: [] for k in SKIES}
+    for season, row in _re.findall(r"\[SEASON_(\w+)\]\s*=\s*\{([^}]*)\}", block):
+        for k, w in zip(SKIES, row.split(",")):
+            if int(w) > 0:
+                out[k].append(season)
+    return out
+
 DRAFT_SEASONS = ["SPRING", "SUMMER", "AUTUMN", "WINTER"]   # the draft's column order
 DRAFT_HOURS = ["DAWN", "DUSK", "NIGHT"]
 EDITIONS = (("CONTENT", "FIRERED", "FireRed"), ("CONTEXT", "LEAFGREEN", "LeafGreen"))
@@ -100,21 +139,27 @@ def pick(cell, ed):
 
 
 def rows(names):
-    """[(edition index, map, slot, when, species constant, daemon name)], in the draft's order."""
+    """[(edition index, map, slot, when, species constant, daemon name, skies)], the weather rows first (they win their
+    slot while their weather lasts), then the draft's order. skies is [] for a row that fires in any weather."""
     out = []
+    season_slot = {mp: sslot for mp, (sslot, _), _, _, _ in TABLES}
     for ed in (0, 1):
+        for sky, cell, maps in WEATHER:
+            name, _ = pick(cell, ed)
+            for mp in maps:
+                out.append((ed, mp, season_slot[mp], (SEASONS, WATCHES), names[name][0], name, [sky]))
         for mp, (sslot, _), seasons, (hslot, _), hours in TABLES:
             for col, cell in zip(DRAFT_SEASONS, seasons):
                 name, day = pick(cell, ed)
                 watches = [w for w in WATCHES if not (day and w == "NIGHT")]
-                out.append((ed, mp, sslot, ([col], watches), names[name][0], name))
+                out.append((ed, mp, sslot, ([col], watches), names[name][0], name, []))
             for col, cell in zip(DRAFT_HOURS, hours):
                 name, _ = pick(cell, ed)
-                out.append((ed, mp, hslot, (SEASONS, [col]), names[name][0], name))
+                out.append((ed, mp, hslot, (SEASONS, [col]), names[name][0], name, []))
     return out
 
 
-def when_expr(seasons, watches):
+def when_expr(seasons, watches, skies=()):
     s = "WS_ALL_SEASONS" if len(seasons) == 4 else " | ".join("WS_SEASON(SEASON_%s)" % x for x in seasons)
     if len(watches) == 4:
         w = "WS_ALL_WATCHES"
@@ -122,7 +167,7 @@ def when_expr(seasons, watches):
         w = "WS_NOT_NIGHT"
     else:
         w = " | ".join("WS_WATCH(WATCH_%s)" % x for x in watches)
-    return s + " | " + w
+    return s + " | " + w + "".join(" | WS_SKY(DAEMONS_SKY_%s)" % k for k in skies)
 
 
 def readiness(species):
@@ -176,13 +221,14 @@ def render(table):
         "//  season and one 10% slot to the hour (dawn, dusk, night); level and odds stay the slot's own. Read after the",
         "//  land slot is chosen, on top of whichever header (day or night) was chosen: the first row for this map and",
         "//  slot whose season bit AND watch bit are both set wins (src/wild_encounter.c, WildShiftSpecies).",
+        "//  T-415 phase 2: the weather rows come first and fire only in their weather (DRAFT daemons and roads).",
         "",
         "struct WildShift",
         "{",
         "    u8 mapGroup;",
         "    u8 mapNum;",
         "    u8 slot;",
-        "    u8 when;     // bits 0-3: SEASON_* (DaemonsSeason), bits 4-7: WATCH_* (DaemonsWatch)",
+        "    u16 when;    // bits 0-3: SEASON_* (DaemonsSeason), 4-7: WATCH_* (DaemonsWatch), 8-15: DAEMONS_SKY_* (none: any)",
         "    u16 species;",
         "};",
         "",
@@ -191,6 +237,8 @@ def render(table):
         "#define WS_ALL_SEASONS  0x0F",
         "#define WS_ALL_WATCHES  0xF0",
         "#define WS_NOT_NIGHT    (WS_ALL_WATCHES & ~WS_WATCH(WATCH_NIGHT))   // a (day) row: skipped at night",
+        "#define WS_SKY(k)       (1 << (8 + (k)))   // T-415 phase 2: a weather row, DAEMONS_SKY_* (daemons_weather.h)",
+        "#define WS_ANY_SKY      0xFF00",
         "",
         "static const struct WildShift sWildShifts[] =",
         "{",
@@ -198,20 +246,27 @@ def render(table):
     for i, (edname, define, _) in enumerate(EDITIONS):
         lines.append("#%s defined(%s)   // %s" % ("if" if i == 0 else "elif", define, edname))
         last = None
-        for ed, mp, slot, (ss, ws), sp, name in table:
+        for ed, mp, slot, (ss, ws), sp, name, skies in table:
             if ed != i:
                 continue
             if mp != last:
-                lines.append("    // %s" % mp[4:])
+                lines.append("    // %s%s" % (mp[4:], " -- in weather (T-415)" if skies else ""))
                 last = mp
             lines.append("    { MAP_GROUP(%s), MAP_NUM(%s), %2d, %s, %s },   // %s"
-                         % (mp, mp, slot, when_expr(ss, ws), sp, name))
+                         % (mp, mp, slot, when_expr(ss, ws, skies), sp, name))
     lines += ["#endif", "};", ""]
     return "\n".join(lines)
 
 
 def main():
     names = by_name()
+    tabled = {mp for mp, _, _, _, _ in TABLES}
+    for sky, cell, maps in WEATHER:
+        assert sky in SKIES[1:], "%s: no such sky" % sky
+        for mp in maps:
+            assert mp in tabled, "%s: weather rows ride a road of TABLES, %s is not one" % (cell, mp)
+        for n in cell.split("|"):
+            assert len(names.get(n, [])) == 1, "%s: %r names %s" % (sky, n, names.get(n))
     for mp, (sslot, stoday), seasons, (hslot, htoday), hours in TABLES:
         for cell in seasons + hours + [stoday, htoday]:
             for n in cell.rstrip("*").split("|"):
@@ -229,7 +284,7 @@ def main():
                 assert have == want, "%s %s slot %d holds %s, the draft says %s" % (mp, label, slot, have, want)
 
     table = rows(names)
-    species = {sp for _, _, _, _, sp, _ in table}
+    species = {r[4] for r in table}
     ready = readiness(species)
     unready = {sp: m for sp, m in ready.items() if m}
     for sp, why in sorted(unready.items()):
@@ -241,8 +296,9 @@ def main():
     for sp, why in sorted(LEFT_OUT.items()):
         print("  left out: %s -- %s" % (sp, why))
 
-    print("  %d maps, %d rows per edition, %d daemons (%d ready: name, art, INDEX in both editions, streaks)"
-          % (len(TABLES), sum(1 for r in table if r[0] == 0), len({r[4] for r in table}), len(ready) - len(unready)))
+    print("  %d maps, %d rows per edition (%d in weather), %d daemons (%d ready: name, art, INDEX in both editions, streaks)"
+          % (len(TABLES), sum(1 for r in table if r[0] == 0), sum(1 for r in table if r[0] == 0 and r[6]),
+             len({r[4] for r in table}), len(ready) - len(unready)))
     new = render(table)
     old = open(OUT).read() if os.path.exists(OUT) else None
     if new == old:

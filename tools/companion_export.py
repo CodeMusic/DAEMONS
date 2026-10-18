@@ -45,7 +45,7 @@ def gba_string(body):
 
 
 def native_values():
-    """{SPECIES_X: the packed u16 tools/gbanative.py writes into the ROM} -- one source for the game and the companion."""
+    """{SPECIES_X: the packed u32 tools/gbanative.py writes into the ROM} -- one source for the game and the companion."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import gbanative
     return {sp: gbanative.pack(h) for sp, h in gbanative.homes().items()}
@@ -61,14 +61,18 @@ def native_of(v):
     seasons = [x for i, x in enumerate(gbanative.SEASONS) if v >> (4 + i) & 1]
     hours = [x for i, x in enumerate(gbanative.WATCHES) if v >> (8 + i) & 1]
     editions = [x for i, x in enumerate(("CONTENT", "CONTEXT")) if v >> (2 + i) & 1]
-    g = v >> 12
+    g = v >> 12 & 15
+    weathers = [x for i, x in enumerate(gbanative.SKIES[1:]) if v >> (16 + i) & 1]   # T-415 phase 2: "IN RAIN"
     grove = None if not g else "THE NEXUS" if g == gbanative.NEXUS else \
         gbanexusmap.UNIVERSES[gbagrove.GROVES[g - 1]["name"]][0]
-    return {"regions": [x for i, x in enumerate(("GAMUT", "THE MARGINS")) if v >> i & 1],
+    out = {"regions": [x for i, x in enumerate(("GAMUT", "THE MARGINS")) if v >> i & 1],
             "editions": editions if len(editions) < 2 else None,
             "seasons": seasons if len(seasons) < 4 else None,
             "hours": hours if len(hours) < 4 else None,
             "grove": grove}
+    if weathers:   # only the few met only in weather carry it, so every other row stays as it was
+        out["weathers"] = weathers
+    return out
 
 
 def species_table():
