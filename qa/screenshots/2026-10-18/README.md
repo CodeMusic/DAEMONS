@@ -379,3 +379,9 @@ T-422 (v11.304.6): the lead daemon dancing, one line, the help card whole, its d
 T-426 on the site (bench check, as if the instrument were held): the songs or PLAY FREELY, the key wheel, the harp with O CHRISTMAS TREE joined and echoing, the flute's holes
 
 ![18Oct2026 - T426 - PLAY the harp and flute on the site - 86](18Oct2026%20-%20T426%20-%20PLAY%20the%20harp%20and%20flute%20on%20the%20site%20-%2086.png)
+
+### 18Oct2026 - T426 - PLAY THE HARP on the phone - 93
+
+T-426 on the iPhone (build e39b8ee), the debug save holding the harp and every song: PLAY THE HARP -- PLAY FREELY and the eight songs, each learned and in its key's colour -- above the SONGBOOK
+
+![18Oct2026 - T426 - PLAY THE HARP on the phone - 93](18Oct2026%20-%20T426%20-%20PLAY%20THE%20HARP%20on%20the%20phone%20-%2093.png)
