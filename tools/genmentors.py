@@ -410,8 +410,7 @@ def main():
         #  Vanilla's frames are the skeleton, so they are read from UPSTREAM: the file on disk is this tool's own
         #  output, repainted and since outlined (T-184), and re-running on it failed its own head check (T-213).
         rel = os.path.relpath(os.path.join(BACKS, fig["file"]), GBA)
-        src = Image.open(io.BytesIO(subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                                                   check=True, capture_output=True).stdout))
+        src = Image.open(io.BytesIO(daemonslib.upstream(GBA, rel, binary=True)))  # T-421: daemonslib's, which stops on a failed git
         assert src.mode == "P" and src.size[0] == 64, "%s is %s %s" % (fig["file"], src.mode, src.size)
         fs = frames_of(src)
         if "strip" in fig:

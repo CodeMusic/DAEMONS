@@ -34,7 +34,8 @@ def move(px, x0, x1, y0, y1, dx, fill):
 
 
 def main():
-    raw = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + REL], check=True, capture_output=True).stdout
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git
+    raw = daemonslib.upstream(GBA, REL, binary=True)
     im = Image.open(io.BytesIO(raw)); im.load(); px = im.load()
 
     # ---- PKMN DATA -> DATA. The label's background is index 2.

@@ -192,10 +192,8 @@ def port_progress():
 
 def upstream_header(path):
     """Vanilla's copy of the same file, from the fork's upstream remote."""
-    import subprocess
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + path],
-                       capture_output=True, text=True)
-    return r.stdout if r.returncode == 0 else ""
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git; a file vanilla never had is "", as before
+    return daemonslib.upstream(GBA, path, missing="")
 
 
 def names_from_text(src, macro):
@@ -254,9 +252,7 @@ def main():
         items = doc if isinstance(doc, list) else next(v for v in doc.values() if isinstance(v, list))
         table, changed = raw["ITEM_NAME"], 0
         import subprocess
-        vr = subprocess.run(["git", "-C", GBA, "show", "upstream/master:src/data/items.json"],
-                            capture_output=True, text=True)
-        vdoc = json.loads(vr.stdout) if vr.returncode == 0 else []
+        vdoc = json.loads(upstream_header("src/data/items.json") or "[]")   # T-421: through daemonslib
         vitems = vdoc if isinstance(vdoc, list) else next(
             (v for v in (vdoc.values() if isinstance(vdoc, dict) else []) if isinstance(v, list)), [])
         for i, it in enumerate(items):

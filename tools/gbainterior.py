@@ -2696,8 +2696,7 @@ def build(name, cfg):
         #  T-218: a building that is REBUILT rather than built once. Every one of its layouts goes back to pret's
         #  pristine room before it is drawn -- read from upstream, so no hand-restore and no stale ids -- which is
         #  what lets the school grow a floor per batch by re-running this and nothing else.
-        pristine = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + cfg["reset"]],
-                                  check=True, capture_output=True).stdout
+        pristine = daemonslib.upstream(GBA, cfg["reset"], binary=True)  # T-421: daemonslib's, which stops on a failed git
         #  Read from a scratch copy, never the real file: a dry run must not touch the build, and --write puts the
         #  finished blocks at the real path below.
         cfg["_real"] = {}

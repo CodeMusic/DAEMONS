@@ -209,8 +209,8 @@ def flat(s):
     return ' '.join(re.sub(r"[^a-z0-9' ]", ' ', s.lower()).split())
 
 def show(repo, path):
-    return subprocess.run(["git", "-C", repo, "show", "upstream/master:" + path],
-                          capture_output=True, text=True).stdout
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git; a file vanilla never had is "", as before
+    return daemonslib.upstream(repo, path, missing="")
 
 # ------------------------------------------------------- map name -> map dirs
 GBA_MAPS = sorted(d for d in os.listdir(os.path.join(GBA, "data/maps"))

@@ -58,9 +58,8 @@ def main():
              open(os.path.join(GBA, "src/data/text/species_names.h"), encoding="utf-8").read())}
     same = sorted(k for k in fr if fr[k] and fr[k] == lg.get(k))
     if not TEXT:
-        import subprocess
-        up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:src/data/pokemon/pokedex_text_fr.h"],
-                            capture_output=True, text=True).stdout
+        import daemonslib  # T-421: daemonslib's, which stops on a failed git (it read one as "")
+        up = daemonslib.upstream(GBA, "src/data/pokemon/pokedex_text_fr.h")
         vanilla = {m.group(2).upper(): body(m.group(3)) for m in ENTRY.finditer(up)}
         ours = [k for k in same if vanilla.get(k) != fr[k]]
         print("  %d of our entries still say the same thing in both editions (and %d of vanilla's)"

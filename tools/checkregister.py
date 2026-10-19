@@ -98,8 +98,8 @@ PAT = r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]*)"\)'
 
 def names():
     ours = dict(re.findall(PAT, open(os.path.join(E, "src/data/text/species_names.h")).read()))
-    up = dict(re.findall(PAT, subprocess.run(["git", "-C", E, "show", "upstream/master:src/data/text/species_names.h"],
-                                             capture_output=True, text=True).stdout))
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git (it read one as "")
+    up = dict(re.findall(PAT, daemonslib.upstream(E, "src/data/text/species_names.h")))
     ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define SPECIES_(\w+)\s+(\d+)",
                                                             open(os.path.join(E, "include/constants/species.h")).read())}
     return [(o, "Kanto" if ids.get(c, 999) <= 151 else "beyond") for c, o in ours.items() if up.get(c) not in (None, o)]

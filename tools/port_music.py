@@ -210,10 +210,9 @@ for name, slot in TRACKS:
         # back. Everything else here is ambient and has to repeat.
         open(dst, "wb").write(midi(tempo, chans, loop=slot not in JINGLES))
 # ---- the slots given back to vanilla, and each town's maps
-import json, subprocess
+import json, subprocess, daemonslib
 def upstream(rel):
-    return subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                          check=True, capture_output=True).stdout
+    return daemonslib.upstream(GBA, rel, binary=True)  # T-421: daemonslib's, which stops on a failed git
 cfg_up = upstream("sound/songs/midi/midi.cfg").decode()
 for slot in VANILLA:
     rel = "sound/songs/midi/%s.mid" % slot

@@ -53,7 +53,8 @@ def faced():
 
 def is_vanilla(name):
     rel = "graphics/trainers/front_pics/%s_front_pic.png" % name
-    raw = git("show", "upstream/master:" + rel, binary=True)
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git (no remote read as "never had")
+    raw = daemonslib.upstream(E, rel, missing=b"", binary=True)
     if not raw:
         return False                       # a picture vanilla never had is ours by definition
     ours = Image.open(os.path.join(E, rel))

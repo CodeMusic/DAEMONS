@@ -374,9 +374,8 @@ def check_vanilla_index():
         return bad
     pat = r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]+)"\)'
     def up(rel):
-        r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                           capture_output=True, text=True)
-        return r.stdout if r.returncode == 0 else ""
+        import daemonslib
+        return daemonslib.upstream(GBA, rel)  # T-421: daemonslib's, which stops on a failed git (it read one as "")
     ours = dict(re.findall(pat, open(names, encoding="utf-8").read()))
     van = dict(re.findall(pat, up("src/data/text/species_names.h")))
     renamed = {k for k in ours
@@ -414,8 +413,8 @@ def check_vanilla_categories():
     pat_n = r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]+)"\)'
     pat_c = r'\[NATIONAL_DEX_(\w+)\]\s*=\s*\{\s*\.categoryName\s*=\s*_\("([^"]*)"\)'
     def up(rel):
-        r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True)
-        return r.stdout if r.returncode == 0 else ""
+        import daemonslib
+        return daemonslib.upstream(GBA, rel)  # T-421: daemonslib's, which stops on a failed git (it read one as "")
     names, cats = os.path.join(GBA, "src/data/text/species_names.h"), os.path.join(GBA, "src/data/pokemon/pokedex_entries.h")
     vn, vc = up("src/data/text/species_names.h"), up("src/data/pokemon/pokedex_entries.h")
     if not (os.path.isfile(names) and os.path.isfile(cats)):

@@ -50,8 +50,9 @@ def read(text):
 
 
 def upstream(path):
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + path], capture_output=True, text=True)
-    return read(r.stdout) if r.returncode == 0 else None
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git; a palette vanilla never had is None, as before
+    text = daemonslib.upstream(GBA, path, missing=None)
+    return read(text) if text is not None else None
 
 
 def on_disk(path):

@@ -52,8 +52,8 @@ def main():
         bd = bytearray(open(path, "rb").read()); W, H = l["width"], l["height"]; ts = l["secondary_tileset"]
         # What vanilla left WALKABLE at that row is ground under an overhang, not roof surface, and
         # blocking it took a walkway away in four towns (T-121). Read upstream and never block there.
-        up = subprocess.run(["git", "-C", C.GBA, "show", "upstream/master:" + l["blockdata_filepath"]],
-                            capture_output=True).stdout
+        import daemonslib  # T-421: daemonslib's, which stops on a failed git; a layout vanilla never had is b"", as before
+        up = daemonslib.upstream(C.GBA, l["blockdata_filepath"], missing=b"", binary=True)
         restored = []
         town = town_cells.get(mp, {})
         cell = lambda x, y: town.get("%d,%d" % (x, y), struct.unpack_from("<H", bd, (y * W + x) * 2)[0] & 0x3FF)

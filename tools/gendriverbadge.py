@@ -23,7 +23,8 @@ GLYPHS = {"D": ["77.", "7.7", "7.7", "7.7", "7.7", "77."],
 
 
 def main():
-    raw = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + REL], check=True, capture_output=True).stdout
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git
+    raw = daemonslib.upstream(GBA, REL, binary=True)
     im = Image.open(io.BytesIO(raw)); px = im.load()
     for y in range(3, 9):
         for x in range(2, 14):

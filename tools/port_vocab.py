@@ -139,8 +139,8 @@ def textwidth(s):
 
 # ------------------------------------------------------- names, derived
 def git_show(path):
-    return subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + path],
-                          capture_output=True, text=True).stdout
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git; a file vanilla never had is "", as before
+    return daemonslib.upstream(GBA, path, missing="")
 
 def pairs_from(path, pattern):
     """{vanilla -> ours} for one table, by diffing us against upstream."""
@@ -1044,8 +1044,7 @@ def mapsec_names(text):
            next((v for v in j.values() if isinstance(v, list)), []) if isinstance(j, dict) else j
     return {r["id"]: r.get("name", "") for r in rows if isinstance(r, dict) and "id" in r}
 
-van = mapsec_names(subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + RMS],
-                                  capture_output=True, text=True).stdout)
+van = mapsec_names(git_show(RMS))
 now = mapsec_names(open(os.path.join(GBA, RMS), encoding="utf-8").read())
 # The generator works on BYTES, not characters: é is two bytes in UTF-8 and
 # becomes TWO underscores, so POKéMON MANSION is sMapsecName_POK__MON_MANSION.

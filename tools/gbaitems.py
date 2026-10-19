@@ -206,8 +206,8 @@ def load(text):
 
 def main():
     ours = load(open(os.path.join(GBA, "src/data/items.json")).read())
-    van  = load(subprocess.run(["git", "-C", GBA, "show", "upstream/master:src/data/items.json"],
-                               capture_output=True, text=True, check=True).stdout)
+    import daemonslib  # T-421: daemonslib's, which stops on a failed git
+    van  = load(daemonslib.upstream(GBA, "src/data/items.json"))
     A = {i["itemId"]: i for i in van}
     B = {i["itemId"]: i for i in ours}
     renamed = {k: (A[k]["english"], v["english"]) for k, v in B.items()

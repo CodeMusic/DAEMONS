@@ -615,7 +615,8 @@ def revert_plan():
             if not held or not mine:
                 continue
             rel = os.path.relpath(mp, GBA)
-            up = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True, text=True).stdout
+            import daemonslib  # T-421: daemonslib's, which stops on a failed git
+            up = daemonslib.upstream(GBA, rel, missing="")
             upobjs = json.loads(up)["object_events"]
             if len(upobjs) != len(objs):
                 #  A map whose objects are OURS, not vanilla's rearranged -- CALLOW SCHOOL's floors, where the Owl sits
