@@ -165,8 +165,8 @@ def ow_palette(t):
     return [(0, 0, 0)] + ns["ramp5"](*ns["TYPE_COLOR"][t]) + NEUTRALS           # index 0 transparent
 
 def write_pal(path, cols):
-    full = list(cols) + [(0, 0, 0)] * (16 - len(cols))
-    open(path, "wb").write(("\r\n".join(["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in full]) + "\r\n").encode())
+    import daemonslib
+    daemonslib.write_pal(path, cols, pad=True)  # T-421: tools/daemonslib.py's, padded to sixteen
 
 def frame(src_png, size, pal):
     """One object frame from a BUILT battle sprite: crop to the subject, fit to size, map to the type palette, outline."""

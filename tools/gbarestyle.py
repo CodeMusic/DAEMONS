@@ -25,7 +25,7 @@ WHAT DOES NOT MOVE: every block id, every collision and behaviour attribute, the
 field_door.c, not redrawn), primary tiles, and TRANSPARENCY -- a kit pixel that was index 0 stays 0, so a top-layer
 tile still shows the ground behind it and the roof still draws over the player where it did.
 """
-import json, os, struct, subprocess, sys
+import json, os, struct, subprocess, sys, daemonslib
 import numpy as np
 from PIL import Image
 
@@ -48,13 +48,11 @@ NEG = ("text, letters, watermark, people, characters, border, frame, vignette, b
 
 
 def read_pal(n):
-    d = PD if n < 7 else SD
-    return [tuple(map(int, l.split())) for l in open(os.path.join(d, "palettes/%02d.pal" % n)).read().replace("\r", "").split("\n")[3:19]]
+    return daemonslib.read_pal(os.path.join(PD if n < 7 else SD, "palettes/%02d.pal" % n))  # T-421: tools/daemonslib.py's
 
 
 def write_pal(n, cols):
-    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % tuple(c) for c in cols]
-    open(os.path.join(SD, "palettes/%02d.pal" % n), "wb").write(("\r\n".join(lines) + "\r\n").encode())
+    daemonslib.write_pal(os.path.join(SD, "palettes/%02d.pal" % n), [tuple(c) for c in cols])  # T-421: tools/daemonslib.py's
 
 
 class TS:

@@ -242,9 +242,7 @@ def preview(img):
 
 
 def write_pal(path):
-    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in PALETTE]
-    # CRLF, as .gitattributes has it for JASC-PAL (see tools/gbasprite.py)
-    open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
+    daemonslib.write_pal(path, PALETTE)  # T-421: tools/daemonslib.py's (CRLF, as .gitattributes has it)
 
 
 img = sheet(frames())

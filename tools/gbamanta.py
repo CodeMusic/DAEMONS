@@ -20,6 +20,7 @@ frame, each pixel given one of the player palette's own colours by lightness, an
 """
 import os
 import sys
+import daemonslib
 from collections import deque
 
 from PIL import Image
@@ -45,10 +46,7 @@ FRAMES = {
 
 
 def read_pal(path):
-    lines = open(path).read().split()
-    n = int(lines[2])
-    vals = list(map(int, lines[3:3 + 3 * n]))
-    return [tuple(vals[i:i + 3]) for i in range(0, 3 * n, 3)]
+    return daemonslib.read_pal(path, sized=True)  # T-421: tools/daemonslib.py's, as many colours as the file says
 
 
 def cut_out(path):

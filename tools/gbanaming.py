@@ -22,7 +22,7 @@ in 11 and 12 now (src/naming_screen.c, sTextColorStruct), so the keys can be pal
 THE BACKGROUND was one striped tile, #2, repeated. It is navy now, and the field behind the boxes is a 4x4 block of
 tiles in the sheet's unused slots 30..45, a scatter of small 0s and 1s, repeated every 32 pixels.
 """
-import os, struct, sys
+import os, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -57,8 +57,7 @@ SOLID = {1: 12, 2: 12, 3: 12, 4: 12}  # the old stripes and their edges: plain n
 
 
 def read_pal(name):
-    lines = open(os.path.join(NS, name + ".pal")).read().split("\n")
-    return [tuple(int(v) for v in l.split()) for l in lines[3:19]]
+    return daemonslib.read_pal(os.path.join(NS, name + ".pal"))  # T-421: tools/daemonslib.py's
 
 
 def pal_text(cols):

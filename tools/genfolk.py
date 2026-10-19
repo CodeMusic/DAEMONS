@@ -72,7 +72,7 @@ def ensure_rule(filename, mwidth=2, mheight=4):
 
 
 def read_pal(name):
-    return [tuple(map(int, l.split())) for l in open(os.path.join(PALS, name)).read().replace("\r", "").split("\n")[3:19]]
+    return daemonslib.read_pal(os.path.join(PALS, name))  # T-421: tools/daemonslib.py's
 
 
 # letter -> index, per palette

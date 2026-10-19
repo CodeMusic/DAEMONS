@@ -16,7 +16,7 @@ The house palette the user chose is the books': near-black frames, warm paper, o
 Index 0 of every sixteen is transparency and is never touched. Text colours (bag_window_pal.pal) are not in the
 list: they are read as colours, and changing them is a different question.
 """
-import colorsys, os, sys
+import colorsys, os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -52,9 +52,11 @@ def ink(c):
 
 
 def read_pal(p):
-    lines = open(p, newline="").read().replace("\r\n", "\n").split("\n")
-    n = int(lines[2])
-    return [tuple(int(v) for v in lines[3 + i].split()) for i in range(n)]
+    return daemonslib.read_pal(p, sized=True)  # T-421: tools/daemonslib.py's, as many colours as the file says
+
+
+#  Its own still: it writes LF and the palette's own count (a palette of any length), and folding it would change
+#  the bytes it writes (T-421).
 
 
 def write_pal(p, cols):

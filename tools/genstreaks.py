@@ -43,7 +43,7 @@ vanilla palette does not hold one exact grey four times over, and the check asse
 TYPE_MYSTERY has no colour and takes the blank grey, as an empty move slot would not -- an empty slot
 disappears into the body, and that is the engine's job, not a table's.
 """
-import ast, glob, os, re, sys
+import ast, glob, os, re, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -102,8 +102,7 @@ def species_dirs():
 
 
 def read_pal(path):
-    L = open(path).read().replace("\r", "").split("\n")
-    return [tuple(map(int, l.split())) for l in L[3:3 + int(L[2])]]
+    return daemonslib.read_pal(path, sized=True)  # T-421: tools/daemonslib.py's, as many colours as the file says
 
 
 def streaked(d):

@@ -42,8 +42,7 @@ INDOOR = os.path.join(GBA, "graphics/battle_terrain/indoor")
 
 
 def read_pal(path):
-    L = open(path).read().replace("\r", "").split("\n")
-    return [tuple(map(int, l.split())) for l in L[3:3 + int(L[2])]]
+    return daemonslib.read_pal(path, sized=True)  # T-421: tools/daemonslib.py's, as many colours as the file says
 
 
 def town_palettes():

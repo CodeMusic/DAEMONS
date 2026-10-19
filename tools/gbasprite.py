@@ -408,12 +408,9 @@ def derive_icon(grid, palette):
     return out, (pi, err)
 
 def write_pal(path, palette):
-    lines = ["JASC-PAL", "0100", "16"]
-    full = list(palette) + [(0, 0, 0)] * (16 - len(palette))
-    lines += ["%d %d %d" % c for c in full]
     # JASC-PAL is a CRLF format and .gitattributes says so; writing LF makes git
-    # rewrite all 66 of these on every checkout.
-    open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
+    # rewrite all 66 of these on every checkout. Padded to sixteen with black.
+    daemonslib.write_pal(path, palette, pad=True)  # T-421: tools/daemonslib.py's
 
 def place(src, palette):
     """Centre the sprite in the frame, mapping our four tones to 0..3."""

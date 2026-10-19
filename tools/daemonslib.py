@@ -7,21 +7,26 @@ upstream               vanilla's copy of a file, `git show upstream/master:<rel>
 preview                where a report-mode preview goes: /tmp/<name>, or $DAEMONS_PREVIEW_DIR/<name>
 
 As tools/fontwidth.py: nothing here imports a tool, so importing it runs nothing. A tool whose own copy BEHAVED
-differently kept it (a palette of any length, a write that pads to sixteen, a git with a timeout); T-421's row in
-docs/TODO.md lists them.
+differently kept it (a git with a timeout, a write in LF with its own count); T-421's row in docs/TODO.md lists
+them. A palette of any length (sized=) and a write that pads to sixteen (pad=) were folded in later (T-421).
 """
 import os, subprocess, sys
 
 # ---------------------------------------------------------------------------------------------------- palettes
 
 
-def read_pal(path):
-    """The sixteen colours of a JASC-PAL file, as (r, g, b) tuples (lines 4-19; CR or CRLF alike)."""
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
+def read_pal(path, sized=False):
+    """The sixteen colours of a JASC-PAL file, as (r, g, b) tuples (lines 4-19; CR or CRLF alike). sized=True reads
+    as many as the file's own third line says, for the tools that take a palette of any length."""
+    L = open(path).read().replace("\r", "").split("\n")
+    return [tuple(map(int, l.split())) for l in L[3:3 + int(L[2]) if sized else 19]]
 
 
-def write_pal(path, colours):
-    """A JASC-PAL file, CRLF, as .gitattributes has it: written LF, git rewrites every one on checkout."""
+def write_pal(path, colours, pad=False):
+    """A JASC-PAL file, CRLF, as .gitattributes has it: written LF, git rewrites every one on checkout. pad=True fills
+    a short palette out to sixteen with black."""
+    if pad:
+        colours = list(colours) + [(0, 0, 0)] * (16 - len(colours))
     lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in colours]
     open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
 
