@@ -7,3 +7,9 @@ In the order they were taken, each with the caption it was sent with. Every word
 C-159: the T-Watch S3's own SOUND, switched off as the board reports it (INTERACT setting sound off t-watch-s3-77bef4, sent to a test server on a copy of the save), shown on the site under PLACES as this one's own, Off.
 
 ![19Oct2026 - C159 - a boards sound off on the site - 1](19Oct2026%20-%20C159%20-%20a%20boards%20sound%20off%20on%20the%20site%20-%201.jpg)
+
+### 19Oct2026 - the wiki GUIDE cover, author lower - 2
+
+The GUIDE cover on the wiki: the author's name moved lower, clear of the art
+
+![19Oct2026 - the wiki GUIDE cover, author lower - 2](19Oct2026%20-%20the%20wiki%20GUIDE%20cover%2C%20author%20lower%20-%202.png)
