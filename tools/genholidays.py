@@ -6,7 +6,8 @@
     python3 tools/genholidays.py --companion   # print companion/server/data/holidays.json as the game's table makes it
 
 docs/holidays.json is the single source: each holiday's real name (the companion's) and in-world name (the game's,
-DRAFT), edition, date rule, length, quiet, banner, overlays, sky, daemons, routines' look, gift and THE YEAR's line;
+DRAFT), edition, date rule, length, quiet, banner, overlays, sky, daemons, routines' look (T-392 P3: "routine_looks"
+turns each into a shape and lanes of the twelve month colours, sHolidayRoutineLooks), gift and THE YEAR's line;
 the twelve months' notes and colours. The approved table it was made from is docs/private/draft-holidays-2026-10-17.md.
 
 --write writes (all generated; the hand-written engine code that reads them is the build plan's,
@@ -84,6 +85,63 @@ GIVERS = ["CHECKPOINT", "MOM", "BEACH", "HALFTONE", "TOWER", "DAWN_OUTDOORS"]
 NATURALS = {"C": 0, "D": 1, "E": 2, "F": 3, "G": 4, "A": 5, "B": 6}   # SE_NOTE_C + n (field_specials.c)
 LAND_SLOTS, FISH_SLOTS = 12, 10
 WRITE = "--write" in sys.argv
+
+#  T-392 P3: a routine's holiday look (docs/holidays.json "routine_looks"), as src/daemons_signature.c plays it.
+LOOK_SHAPES = ["KEEP", "RING", "HEART", "STARS", "SCATTER", "SWEEP", "FALL", "ORBIT"]
+LOOK_BLACK = 12                  # lane bit 12: the glyph in the outline's true black, ringed in the look's first colour
+LOOK_FLAGS = {"bleach": "HRL_BLEACH", "twinkle": "HRL_TWINKLE", "notes": "HRL_NOTES"}
+KEY_COLOURS = os.path.join(GBA, "graphics", "play", "key_colours.pal")   # tools/genplaynotes.py: 1-12 the months
+
+
+def key_colours():
+    """The twelve months' bright colours (PLAY's PALTAG_KEY_COLOURS, indices 1-12), as 0-255 RGB."""
+    rows = read(KEY_COLOURS).split("\n")[3:]
+    pal = [tuple(int(x) for x in r.split()) for r in rows if r.strip()]
+    return pal[1:13]
+
+
+def hue(rgb):
+    import colorsys
+    return colorsys.rgb_to_hsv(*(c / 255 for c in rgb))[0] * 360
+
+
+def nearest_month(hexcol):
+    """A colour that is no month's (gold, a pastel, clover green) read as the month nearest it by hue (the user, 2026-10-18)."""
+    rgb = tuple(int(hexcol[i:i + 2], 16) for i in (1, 3, 5))
+    h = hue(rgb)
+    best = min(range(12), key=lambda m: min(abs(h - hue(key_colours()[m])), 360 - abs(h - hue(key_colours()[m]))))
+    return best
+
+
+def resolve_look(doc, look, holiday_month):
+    """-> (shape, lane mask, [flag names], 'how it reads') for one look in one holiday (month 1-12), or raise KeyError."""
+    spec = doc["routine_looks"][look]
+    mon = [m["month"] for m in doc["months"]]
+    lanes, reads = 0, []
+    cols = spec.get("colours", [])
+    if cols == "ALL":
+        lanes, reads = 0xFFF, ["the twelve"]
+    else:
+        for c in cols:
+            if c == "MONTH":
+                m = holiday_month - 1
+                lanes |= 1 << m
+                reads.append(mon[m])
+            elif c == "BLACK":
+                lanes |= 1 << LOOK_BLACK
+                reads.append("black")
+            elif c.startswith("#"):
+                m = nearest_month(c)
+                lanes |= 1 << m
+                reads.append("%s as %s" % (c, mon[m]))
+            else:
+                m = mon.index(c)
+                lanes |= 1 << m
+                reads.append(mon[m])
+    flags = [LOOK_FLAGS[k] for k in LOOK_FLAGS if spec.get(k)]
+    if spec.get("bleach"):
+        reads.append("its own ink, paled")
+    return spec["shape"], lanes, flags, ", ".join(reads)
 
 
 def read(path):
@@ -409,6 +467,27 @@ def check(doc, names, wild, met, errors, notes):
         for r in h.get("routines", []):
             if r["routine"] not in moves:
                 errors.append("%s: no routine %r" % (h["id"], r["routine"]))
+            if r["look"] not in doc.get("routine_looks", {}):
+                errors.append("%s: %s's look %r is not in routine_looks" % (h["id"], r["routine"], r["look"]))
+            elif h.get("quiet"):
+                errors.append("%s is QUIET and dresses %s (a quiet day dresses no routine)" % (h["id"], r["routine"]))
+    for look, spec in doc.get("routine_looks", {}).items():
+        if spec.get("shape") not in LOOK_SHAPES:
+            errors.append("routine look %r: shape %r" % (look, spec.get("shape")))
+        cols = spec.get("colours", [])
+        if not cols and not spec.get("bleach"):
+            errors.append("routine look %r has no colour and is not bleached" % look)
+        if cols and spec.get("bleach"):
+            errors.append("routine look %r is both coloured and bleached" % look)
+        mon = [m["month"] for m in doc["months"]]
+        for c in ([] if cols == "ALL" else cols):
+            if c not in mon + ["MONTH", "BLACK"] and not re.fullmatch(r"#[0-9a-fA-F]{6}", c):
+                errors.append("routine look %r: colour %r is no month (colours only from the twelve, the user 2026-10-18)" % (look, c))
+        if cols != "ALL" and "BLACK" in cols and cols[0] == "BLACK":
+            errors.append("routine look %r: BLACK needs a month colour first to ring it" % look)
+        for k in spec:
+            if k not in ("shape", "colours", "bleach", "twinkle", "notes", "about"):
+                errors.append("routine look %r: unknown key %r" % (look, k))
         for o in h.get("overlay", []):
             if o not in OVERLAYS:
                 errors.append("%s: overlay %s" % (h["id"], o))
@@ -538,6 +617,14 @@ def const_header(doc):
     o.append("")
     for i, g in enumerate(GIVERS):
         o.append("#define GIVER_%-16s %d" % (g, i))
+    o += ["", "// T-392 P3: a routine's holiday look (sHolidayRoutineLooks; src/daemons_signature.c plays it). The lanes are a",
+          "// mask of the twelve months (bit 0 JAN) and HRL_LANE_BLACK; glyph k wears the (k mod n)-th lane set."]
+    for i, s in enumerate(LOOK_SHAPES):
+        o.append("#define HRL_SHAPE_%-8s %d" % (s, i))
+    o.append("#define HRL_LANE_BLACK     %d" % LOOK_BLACK)
+    o += ["#define HRL_BLEACH         (1 << 0)   // the type's own ink, paled (white, silver, frost: no month)",
+          "#define HRL_TWINKLE        (1 << 1)   // the glyphs blink",
+          "#define HRL_NOTES          (1 << 2)   // every glyph a note"]
     o += ["", "#define HOLIDAY_AREA_LAND  0", "#define HOLIDAY_AREA_FISH  1", "",
           "#define HOLIDAY_FIRST_YEAR %d   // the Easter and Mid-Autumn tables; outside them a moving holiday keeps its mean date" % FIRST_YEAR,
           "#define HOLIDAY_LAST_YEAR  %d" % LAST_YEAR,
@@ -678,7 +765,7 @@ def table_header(doc, names):
         for h in rows:
             o.append('static const u8 sHolidayName_%s[] = _("%s");' % (h["id"].title().replace("_", ""), c_quote(h["name"])))
         gifts, presents = [], None
-        rowtext, shifts, skies = [], [], []
+        rowtext, shifts, skies, looks = [], [], [], []
         for idx, h in enumerate(rows):
             hid = idx + 1
             first = len(gifts)
@@ -736,6 +823,11 @@ def table_header(doc, names):
                     shifts.append("    { %s, %s, MAP_GROUP(%s), MAP_NUM(%s), HOLIDAY_AREA_%s, %2d, 0x%X },   // %s, %s"
                                   % (species[nm][0], const_id(h), mp, mp, dm["area"].upper(), slot,
                                      mask(dm["watches"], WATCHES), h["name"], nm))
+            for r in h.get("routines", []):
+                shape, lanes, fl, how = resolve_look(doc, r["look"], h["month"])
+                looks.append("    { %s, %s, HRL_SHAPE_%s, 0x%04X, %s },   // %s on %s: %s (%s)"
+                             % (moves[r["routine"]], const_id(h), shape, lanes, " | ".join(fl) or "0",
+                                r["routine"], h["name"], r["look"], how))
             if h.get("sky"):
                 s = h["sky"]
                 skies.append("    { %s, DAEMONS_SKY_%s, %s, %s, 0x%X, %s },   // %s"
@@ -753,6 +845,10 @@ def table_header(doc, names):
         o.append("};")
         o.append("static const struct HolidaySky sHolidaySkies[] = {")
         o += skies
+        o.append("};")
+        o.append("// T-392 P3: the routines a holiday dresses -- their signature's look, never the daemon (struct in daemons_holidays.h).")
+        o.append("static const struct HolidayRoutineLook sHolidayRoutineLooks[] = {")
+        o += looks
         o.append("};")
     o += ["#endif", ""]
     return "\n".join(o)
@@ -833,6 +929,13 @@ def main():
     new_flags = flags_after(doc, errors)
     new_vars = vars_after(errors)
 
+    if not errors:
+        print("  routine looks (T-392 P3), colours only from the twelve months:")
+        for h in doc["holidays"]:
+            for r in h.get("routines", []):
+                shape, lanes, fl, how = resolve_look(doc, r["look"], h["month"])
+                print("    %-14s %-12s %-28s %-7s %s%s" % (h["name"], r["routine"], r["look"], shape, how,
+                                                        "" if not fl else " [" + ", ".join(f[4:].lower() for f in fl) + "]"))
     print("  %d holidays (%d per ROM), %d lines for THE YEAR, %d gifts"
           % (len(doc["holidays"]), 24, len(doc["lines"]), sum(len(h["gift"]) for h in doc["holidays"])))
     for n in notes:

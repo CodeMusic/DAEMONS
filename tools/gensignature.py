@@ -41,7 +41,17 @@ own, which stays as it is), each redrawn one pixel in from the tile's edge and r
 eight sides. Index 1 is TRUE BLACK in both palettes it is drawn in (vision 9.4a's outline, every picture of ours):
 daemons_ink.pal (grey, shaded into the type's colour at the start of a routine -- black times any colour stays black)
 and daemons_glyphs.pal (the splash's colours, for the seven union routines). The ink's greys are lifted so a 1 is the
-type's own colour and a 0 a step under it, not the darker shades the 2026-10-08 sheet borrowed (DRAFT). APPROVED rows play in the release ROMs; the debug ROMs play every row. Approving routines is
+type's own colour and a 0 a step under it, not the darker shades the 2026-10-08 sheet borrowed (DRAFT). APPROVED rows play in the release ROMs; the debug ROMs play every row.
+
+NO CAP (the user, 2026-10-18): a signature runs in full -- `end` waits for it (the report names the longest) -- and the
+seven union routines' hand-made scripts play in every ROM, so their rows are OWN_SCRIPT everywhere and the hook stands
+aside for them.
+
+THE LANES (T-392 P3; the user, 2026-10-18: a holiday look in colours ONLY from the twelve month colours). --write also
+draws graphics/battle_anims/sprites/daemons_lanes.png and .pal: the same 0, 1 and note in thirteen lanes -- each month's
+bright colour (PLAY's key colours, tools/genplaynotes.py), outlined in true black, and a BLACK lane ringed in index 14,
+which the engine sets to the look's first month. The looks themselves are tools/genholidays.py's (docs/holidays.json
+"routine_looks", sHolidayRoutineLooks): which routine, on which holiday, in which lanes and shape. Approving routines is
 adding them to APPROVED here and re-running --write -- the scripts are never touched (engine.md trap 32).
 """
 import ast, colorsys, importlib.util, math, os, re, struct, subprocess, sys
@@ -196,13 +206,56 @@ def glyph_image():
     return im
 
 
+# ---- the lane sheet (P3: a routine's holiday look, in the twelve month colours) ----
+#  Thirteen lanes of the four frames: lanes 0-11 the months (JAN..DEC), each glyph filled in that month's bright colour
+#  (PLAY's key colours, tools/genplaynotes.py) and outlined in true black; lane 12 BLACK, filled in the true black and
+#  ringed in index 14, which daemons_signature.c sets to the look's first month at the start of the routine. No new
+#  art: the battle glyph sheet's own 0, 1 and note, re-indexed. Frame = lane * 4 + glyph (the sheet is 4 tiles wide).
+LANES_PNG = os.path.join(SPRITES, "daemons_lanes.png")
+LANES_PAL = os.path.join(SPRITES, "daemons_lanes.pal")
+KEY_COLOURS = os.path.join(E, "graphics", "play", "key_colours.pal")
+LANE_COUNT, LANE_RING = 13, 14
+
+
+def key_colours():
+    rows = open(KEY_COLOURS).read().replace("\r", "").split("\n")[3:]
+    pal = [tuple(int(x) for x in r.split()) for r in rows if r.strip()]
+    return pal[1:13]
+
+
+def lanes_palette():
+    pal = [(0, 0, 0), (0, 0, 0)] + key_colours() + [key_colours()[2], (0, 0, 0)]   # 14: MAR's until a look sets it
+    return pal
+
+
+def lanes_image():
+    from PIL import Image
+    im = Image.new("P", (32, 8 * LANE_COUNT), 0)
+    flat = []
+    for c in lanes_palette():
+        flat += list(c)
+    im.putpalette(flat + [0] * (768 - len(flat)))
+    px = im.load()
+    for lane in range(LANE_COUNT):
+        fill, ring = (2 + lane, OUTLINE) if lane < 12 else (OUTLINE, LANE_RING)
+        for k, (shape, _ink) in enumerate(GLYPH_FRAMES):
+            g = outlined(GLYPH_ROWS[shape], 15)
+            for y in range(8):
+                for x in range(8):
+                    v = g[y][x]
+                    px[k * 8 + x, lane * 8 + y] = fill if v == 15 else ring if v == OUTLINE else 0
+    return im
+
+
 def glyph_files():
-    """{path: bytes} of the three files --write keeps current."""
+    """{path: bytes} of the five files --write keeps current."""
     import io
     buf = io.BytesIO()
     glyph_image().save(buf, "PNG")
+    lanes = io.BytesIO()
+    lanes_image().save(lanes, "PNG")
     return {GLYPH_PNG: buf.getvalue(), GLYPH_PAL: jasc(splash_palette()).encode(),
-            INK_PAL: jasc(ink_palette()).encode()}
+            INK_PAL: jasc(ink_palette()).encode(), LANES_PNG: lanes.getvalue(), LANES_PAL: jasc(lanes_palette()).encode()}
 
 
 def png_pixels(data):
@@ -648,7 +701,7 @@ def main():
     for b in bad:
         print("  FAIL", b)
     longest = max(rows, key=length_of)
-    print("  the longest signature: %s, %d frames (it may run 12 past its picture, no more)" % (longest["name"], length_of(longest)))
+    print("  the longest signature: %s, %d frames (it runs in full: `end` waits for it)" % (longest["name"], length_of(longest)))
     stale = glyph_stale()
     if "--write" in args:
         if bad:
