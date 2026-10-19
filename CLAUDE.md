@@ -45,6 +45,7 @@ DAEMONS/             <- ALWAYS root sessions here (memory lives here)
   engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, where the game is)
   engineAi/  ----->  symlink to ../gpt-play-pokemon-firered-daemons
   companion/ ----->  symlink to ../daemons-companion   (the goal companion: app, server, devices)
+  playground/ ---->  symlink to ../daemons-playground  (the game in a browser, for demos and beta tests)
 ```
 
 `engineAi/` is a fork of Clad3815/gpt-play-pokemon-firered: it drives mGBA over
@@ -60,7 +61,14 @@ with `C-` ids; its plan is `companion/docs/PLAN.md`. Public at CodeMusic/daemons
 goes in it.** `companion/bindCompanion.sh` starts its server and app (a site by default; `ios`, `android`, `server`, `test`);
 `updateCompanion.sh` flashes the handheld and `linkCompanion.sh` links it to the server over its USB cable.
 
-All three symlinks are gitignored and no fork is ever vendored: both carry
+`playground/` is **daemons-playground** (2026-10-19, T-428): an all-in-one harness to demo and beta test the game from
+one URL -- the edition, DEBUG or not, a `.sav` or a new game, played in the browser (EmulatorJS's mGBA core, from its
+CDN), the save kept and downloaded, the companion and each release's notes in tabs. `playground/bindPlayground.sh`
+serves it on port 4740 (`--build` for engineGba's build instead of the latest release). It reads the ROMs from
+`ROM RELEASE/` here at the moment they are asked for and answers only this machine, a private network and the
+tailnet; it holds no ROM, so it is public at CodeMusic/daemons-playground -- **nothing personal goes in it either.**
+
+Every one of these symlinks is gitignored and no fork is ever vendored: the engines carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted
 material. Work in them freely; just don't merge either one in here.
 

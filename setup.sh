@@ -46,13 +46,13 @@ engine() { # name  link  repo  upstream
   echo "     $link -> $dir  ($(git -C "$dir" branch --show-current), upstream ${up##*/})"
 }
 
-say "1/6  engines"
+say "1/7  engines"
 engine "classic" engine    "https://github.com/CodeMusic/pokered-daemons.git" \
                            "https://github.com/pret/pokered.git"
 engine "gba"     engineGba "https://github.com/CodeMusic/pokefirered-daemons.git" \
                            "https://github.com/pret/pokefirered.git"
 
-say "2/6  toolchains"
+say "2/7  toolchains"
 if command -v rgbasm >/dev/null; then
   echo "     rgbds    $(rgbasm --version 2>&1 | head -1)"
 else
@@ -88,7 +88,7 @@ else
   echo "     agbcc    built and installed"
 fi
 
-say "3/6  emulators"
+say "3/7  emulators"
 for pair in "SameBoy:sameboy" "mGBA:mgba"; do
   app="${pair%%:*}"; cask="${pair##*:}"
   if [[ -d "/Applications/$app.app" ]]; then echo "     $app"
@@ -106,7 +106,7 @@ done
 # The change itself is still inert without the env var: the client was
 # `new OpenAI({ apiKey })` with no baseURL and could only ever reach OpenAI.
 # patches/ai-local-model.patch is kept as the readable statement of it.
-say "4/6  ai harness"
+say "4/7  ai harness"
 engine "ai" engineAi "https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons.git" \
                      "https://github.com/Clad3815/gpt-play-pokemon-firered.git"
 if [[ -d engineAi/server/node_modules ]]; then
@@ -115,12 +115,12 @@ else
   echo "     deps     missing — run: (cd engineAi/server && npm ci)" >&2
 fi
 
-# ---- 5/6 the goal companion ---------------------------------------------
+# ---- 5/7 the goal companion ---------------------------------------------
 #
 # NOT A FORK. daemons-companion (2026-10-03) is ours from the first line and holds nothing of Nintendo's: a goal
 # companion that carries a daemon, its app, server and device firmware. So it is a plain clone on main, no upstream,
 # and the same gitignored symlink as the engines.
-say "5/6  goal companion"
+say "5/7  goal companion"
 if [[ -d ../daemons-companion/.git ]]; then
   echo "     companion present"
 else
@@ -130,13 +130,28 @@ fi
 ln -sfn ../daemons-companion companion
 echo "     companion -> ../daemons-companion  ($(git -C ../daemons-companion branch --show-current))"
 
-# ---- 6/6 the model proxy ------------------------------------------------
+# ---- 6/7 the playground --------------------------------------------------
+#
+# NOT A FORK EITHER. daemons-playground (2026-10-19, T-428) is the all-in-one harness to demo and beta test the game:
+# the game in a browser, the companion beside it, what's new in each release. It holds no ROM -- it reads them from
+# ROM RELEASE/ here, beside it -- so it is public, a plain clone on main and the same gitignored symlink.
+say "6/7  playground"
+if [[ -d ../daemons-playground/.git ]]; then
+  echo "     playground present"
+else
+  git clone --quiet https://github.com/CodeMusic/daemons-playground.git ../daemons-playground
+  echo "     playground cloned"
+fi
+ln -sfn ../daemons-playground playground
+echo "     playground -> ../daemons-playground  ($(git -C ../daemons-playground branch --show-current))"
+
+# ---- 7/7 the model proxy ------------------------------------------------
 #
 # Nothing here is installed by this script: LiteLLM lives on roverbyteseer, and
 # Tailscale needs a browser login against an account this script cannot have.
 # What it CAN do is say which of the three steps is missing, in order, so a new
 # machine does not have to remember any of it. See ai/litellm/README.md.
-say "6/6  model proxy"
+say "7/7  model proxy"
 TS_APP="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 if [[ -x "$TS_APP" ]]; then
   # The CLI is inside the bundle, not on PATH -- `command -v tailscale` finds
