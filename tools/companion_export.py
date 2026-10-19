@@ -547,13 +547,17 @@ def profile_layout():
                       "daemons_flags_start is a bit in SaveBlock1's flags, one at or above it a bit in SaveBlock2's "
                       "daemonsFlags. INDEX flags are by national number minus one. Money is stored XOR the "
                       "encryption key. A daemon is SEEN only when sb2 index_seen and sb1 seen1 and seen2 all have its bit "
-                      "(pokedex_screen.c's anticheat), so a writer sets all three.",
+                      "(pokedex_screen.c's anticheat), so a writer sets all three. T-427: house_take is the house's take "
+                      "(what the GAME CORNER and the CASINO kept, in money), house_take_bytes wide, signed little-endian "
+                      "(negative while the player is ahead), stored plain -- NOT XORed as money is. Only ever added to.",
             "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
                     "trainer_id": sb2["playerTrainerId"], "play_time_hours": sb2["playTimeHours"],
                     "play_time_minutes": sb2["playTimeMinutes"], "play_time_seconds": sb2["playTimeSeconds"],
                     "index_bound": sb2["pokedex"] + dex["owned"], "index_seen": sb2["pokedex"] + dex["seen"],
                     "index_bytes": dex["seen"] - dex["owned"],
-                    "daemons_flags": sb2["daemonsFlags"], "encryption_key": sb2["encryptionKey"]},
+                    "daemons_flags": sb2["daemonsFlags"], "encryption_key": sb2["encryptionKey"],
+                    #  T-427: the house's take, beside the money it is counted in (C-167 adds the CASINO's at SYNC)
+                    "house_take": sb2["houseTake"], "house_take_bytes": 4, "house_take_signed": True},
             "sb1": {"location": sb1["location"], "flags": sb1["flags"], "money": sb1["money"],
                     "rival_name": sb1["rivalName"],                                    # C-125: the name the player gave
                     "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount),

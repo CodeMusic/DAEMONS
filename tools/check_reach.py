@@ -319,6 +319,12 @@ def doubled_receipts(ours, theirs):
     return sorted(k for k, v in ours.items() if k in theirs and len(RECEIPT.findall(v)) > len(RECEIPT.findall(theirs[k])))
 
 
+#  New things the walk cannot reach, where vanilla's own neighbours are unreachable to it too, and why.
+KNOWN_UNREACHABLE = {("RocketHideout_B4F", "sign", x, y):
+                     "T-427: SCORN's plants, in the office behind the door the two guards open by script -- vanilla's "
+                     "SCORN, its item and its hidden items there are unreachable to the walk as well"
+                     for x, y in ((16, 8), (16, 9), (22, 8), (22, 9))}
+
 KNOWN_SHARED = {("BirthIsland_Exterior", "PALSLOT_NPC_SPECIAL"):
                 "CRYSTAL stands only until she reads the PAYLOAD, and the meteorite is hidden until she has"}
 
@@ -547,6 +553,9 @@ def main():
         rc = 1
     ours, theirs = audit(GBA), audit(up)
     worse = sorted(set(ours) - set(theirs))
+    for k in [k for k in worse if k in KNOWN_UNREACHABLE]:
+        print("  known: %s %s (%d,%d) is unreachable to the walk -- %s" % (k[0], k[1], k[2], k[3], KNOWN_UNREACHABLE[k]))
+    worse = [k for k in worse if k not in KNOWN_UNREACHABLE]
     print("  %d things the walk cannot reach here, %d in vanilla (Surf, Cut, ledges -- it knows none of them)"
           % (len(ours), len(theirs)))
     if worse:
