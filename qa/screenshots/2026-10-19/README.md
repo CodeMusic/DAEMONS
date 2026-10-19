@@ -13,3 +13,9 @@ C-159: the T-Watch S3's own SOUND, switched off as the board reports it (INTERAC
 The GUIDE cover on the wiki: the author's name moved lower, clear of the art
 
 ![19Oct2026 - the wiki GUIDE cover, author lower - 2](19Oct2026%20-%20the%20wiki%20GUIDE%20cover%2C%20author%20lower%20-%202.png)
+
+### 19Oct2026 - the wiki SUBTLE LAYER cover, title lower - 3
+
+THE SUBTLE LAYER's cover on the wiki: the title a little lower, off the border
+
+![19Oct2026 - the wiki SUBTLE LAYER cover, title lower - 3](19Oct2026%20-%20the%20wiki%20SUBTLE%20LAYER%20cover%2C%20title%20lower%20-%203.png)

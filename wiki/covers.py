@@ -57,7 +57,7 @@ def guide():
 def subtle():
     s = json.load(open(os.path.join(DATA, "subtle.json")))
     im = book("subtle_cover.png"); d = ImageDraw.Draw(im); w = im.width
-    spaced(d, s["title"], font(21), 30, w, "#f0e6f2", 1.5)
+    spaced(d, s["title"], font(21), 36, w, "#f0e6f2", 1.5)       # a little below the border (the user, 2026-10-19)
     spaced(d, s.get("subtitle", ""), font(16, 2), 75, w, "#9a86a0", 0)
     return im
 
