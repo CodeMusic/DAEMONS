@@ -11,7 +11,11 @@ and 33 of them are met anywhere -- 28 per edition, 5 unique to each.
 
 NOTHING HERE IS WRITTEN TO THE GAME. It derives a placement from the data so a
 person can argue with a table instead of with a paragraph. Every rule below is
-one line to change, and the page shows what each rule did.
+one line to change, and the page shows what each rule did. T-334 (approved
+2026-10-19) builds it: tools/gbaglobalindex.py --write takes derive() from here
+and writes the slots and the sixteen fixed encounters. The plan reads the tables
+as they were BEFORE that write (every slot it changed carries "t334_was", the
+slot as it stood), so the plan is the same before and after, and so is the write.
 
   EDITION   vision.md's Tier 2, "let the rosters lean": CONTENT sees more of
             CONTENT, LOGIC, STRATUM, LEGACY; CONTEXT sees more of CONTEXT,
@@ -54,7 +58,8 @@ LEAN = {"CONTENT": {"TYPE_NORMAL", "TYPE_FIGHTING", "TYPE_GROUND", "TYPE_ROCK"},
 # Where a map sits, read off its id, and what kind of place it is.
 ISLAND = [("ONE_ISLAND", 1), ("MT_EMBER", 1), ("TWO_ISLAND", 2), ("THREE_ISLAND", 3),
           ("FOUR_ISLAND", 4), ("FIVE_ISLAND", 5), ("SIX_ISLAND", 6), ("SEVEN_ISLAND", 7)]
-NOT_OURS = ("ALTERING_CAVE", "TANOBY_RUINS_")        # variable tables, and the chambers' own puzzle
+NOT_OURS = ("ALTERING_CAVE", "TANOBY_RUINS_",        # variable tables, and the chambers' own puzzle
+            "_GROVE")                                # T-334: each grove's table is tools/gbagrove.py's universe
 HABITAT = [("ICEFALL_CAVE", "ice"), ("LOST_CAVE", "shadow"), ("RUBY_PATH", "deep rock"),
            ("SUMMIT_PATH", "mountain"), ("MT_EMBER_EXTERIOR", "mountain"), ("KINDLE_ROAD", "mountain"),
            ("SEVAULT_CANYON", "canyon"), ("BERRY_FOREST", "forest"), ("PATTERN_BUSH", "forest"),
@@ -90,6 +95,21 @@ FIXED = {
 }
 
 
+MARK = "t334_was"
+
+
+def baseline(wild):
+    """The tables as they stood before tools/gbaglobalindex.py wrote them: every slot it changed carries the slot it
+    replaced under MARK, so putting that back gives the plan the same ground on every run."""
+    for grp in wild["wild_encounter_groups"]:
+        for enc in grp["encounters"]:
+            for kind in ROOM:
+                for i, m in enumerate((enc.get(kind) or {}).get("mons", [])):
+                    if MARK in m:
+                        enc[kind]["mons"][i] = m[MARK]
+    return wild
+
+
 def load():
     names = dict(re.findall(r'\[(SPECIES_\w+)\]\s*=\s*_\("([^"]*)"', open(os.path.join(GBA, "src/data/text/species_names.h")).read()))
     num = {k: int(v) for k, v in re.findall(r"#define (SPECIES_\w+)\s+(\d+)", open(os.path.join(GBA, "include/constants/species.h")).read())}
@@ -109,7 +129,7 @@ def load():
         j = json.load(open(f))
         maps[j.get("id")] = j.get("region_map_section")
     secs = {s["id"]: s.get("name", s["id"]) for s in json.load(open(os.path.join(GBA, "src/data/region_map/region_map_sections.json")))["map_sections"]}
-    wild = json.load(open(os.path.join(GBA, "src/data/wild_encounters.json")))
+    wild = baseline(json.load(open(os.path.join(GBA, "src/data/wild_encounters.json"))))
     #  T-407: {species: {(edition, map)}} from the season and hour rows, one block per edition.
     shifts = {}
     p = os.path.join(GBA, "src/data/wild_shifts.h")
@@ -121,7 +141,8 @@ def load():
     return names, num, types, evo, parent, maps, secs, wild, shifts
 
 
-def main():
+def derive():
+    """(rows, summary, tables, wild): every species past 151 and where it is met; the island tables; the baseline."""
     names, num, types, evo, parent, maps, secs, wild, shifts = load()
 
     def root(s):
@@ -218,7 +239,8 @@ def main():
         hi = max(best["hi"], lo + 3)
         note = ("Evolves at %d" % evo_lv) if evo_lv else ("Evolves by %s" % parent[s][1].replace("EVO_", "").replace("_", " ").lower() if s in parent else "First form")
         rows.append({**base, "status": "new", "edition": ed, "place": "%s · island %d" % (best["place"], best["island"]),
-                     "map": best["map"], "kind": best["kind"].replace("_mons", "").replace("_", " "), "levels": "%d–%d" % (lo, hi), "note": note})
+                     "map": best["map"], "kind": best["kind"].replace("_mons", "").replace("_", " "), "levels": "%d–%d" % (lo, hi), "note": note,
+                     "slot_kind": best["kind"], "eds": eds, "evo_lv": evo_lv, "species": s})
 
     rows.sort(key=lambda r: r["num"])
     count = lambda **kw: sum(1 for r in rows if all(r.get(k) == v for k, v in kw.items()))
@@ -229,6 +251,11 @@ def main():
         "named": sum(1 for r in rows if r["name"] != r["id"].replace("SPECIES_", "").replace("_", " ")),
         "families": len(family),
     }
+    return rows, summary, tables, wild
+
+
+def main():
+    rows, summary, tables, wild = derive()
     print("  %(species)d species past 151: %(mainland)d on the mainland by season or hour, %(already)d already met on the islands, "
           "%(new)d placed, %(fixed)d fixed, %(overflow)d with no room" % summary)
     print("  edition: %(content_only)d CONTENT only, %(context_only)d CONTEXT only, %(both)d in both" % summary)
@@ -394,4 +421,6 @@ render();
 </script>
 """
 
-main()
+
+if __name__ == "__main__":
+    main()

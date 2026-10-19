@@ -52,16 +52,16 @@ The biggest tenants after it:
 
 | | vanilla | ours | we added | free now |
 |---|---|---|---|---|
-| **ROM** contents | 8.9 MB | 9.8 MB | **940.4 KB** | 6.2 MB |
+| **ROM** contents | 8.9 MB | 9.8 MB | **941.4 KB** | 6.2 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **392 B** | 712 B |
 | **IWRAM** | 29.1 KB | 29.1 KB | **12 B** | 2.9 KB |
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.6 MB | 829.8 KB |
+| `.rodata` | 4.8 MB | 5.6 MB | 830.0 KB |
 | `gfx_data` | 1.7 MB | 1.7 MB | -6.7 KB |
-| `.text` | 1.4 MB | 1.4 MB | 68.0 KB |
-| `script_data` | 496.9 KB | 531.9 KB | 35.0 KB |
+| `.text` | 1.4 MB | 1.4 MB | 68.1 KB |
+| `script_data` | 496.9 KB | 532.6 KB | 35.7 KB |
 | `song_data` | 282.1 KB | 256.3 KB | -25.8 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
 | `lib_text` | 56.5 KB | 56.5 KB | 0 B |
@@ -74,7 +74,7 @@ The biggest tenants after it:
 | `SaveBlock2` | 3876 B | 3876 B | 3968 B | **92 B** |
 | `PokemonStorage` | 33744 B | 33744 B | 35712 B | **1968 B** |
 
-**Story state:** 206 of our 1024 flags used (**818 free**); **69** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
+**Story state:** 218 of our 1024 flags used (**806 free**); **69** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
 
 ***Where the limit is:*** *ROM is not it -- text and scripts are cheap, and art is what spends it. EWRAM is: vanilla is already ~99.6% full, so anything that must stay resident while you walk (a follower, an always-on effect) has to find bytes, or borrow from `gHeap` as screens do.*
 
