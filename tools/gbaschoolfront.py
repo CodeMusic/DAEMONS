@@ -36,6 +36,7 @@ which Callow's blocks use only in indices 1..4, gives eleven spare indices to co
 The door cell is drawn in row 8 alone, because a door's frames are played in one palette row and must match it.
 """
 import json, os, re, struct, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,14 +67,6 @@ ROWS = tuple(range(0, 13))
 
 #  Row 8 as the door frames will draw it; index 0 is never used, because index 0 is transparent.
 R8 = None
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, cols):
-    open(path, "w").write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in cols))
 
 
 # ---------------------------------------------------------------- the drawing, 80x96, None where the ground shows

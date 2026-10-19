@@ -25,6 +25,7 @@ The Building tileset (every interior) numbers its own tiles 336..369 and is not
 touched: this writes the General sheet only.
 """
 import os, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,10 +55,6 @@ ART = [
     "......7457......",
     ".....774577.....",
 ]
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

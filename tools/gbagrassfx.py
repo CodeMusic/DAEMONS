@@ -17,6 +17,7 @@ sprite sheet. field_effect_helpers.c loads it under its own tag when the grass
 cell underfoot is drawn in Blanche's ground row.
 """
 import importlib.util, os, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,10 +38,6 @@ C = {n: G.GROUND_COLOURS[n - 1] for n in range(1, 9)}          # GRASS, TIP, TUF
 # what stands out now is only what should -- the thrown leaves, near white.
 MOVE = {1: C[G.SPECK], 2: C[G.TIP], 3: C[G.GRASS], 4: C[G.DARK], 5: C[G.DARK],
         12: C[G.TIP], 13: C[G.GRASS], 14: C[G.TUFT], 15: C[G.DARK]}
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

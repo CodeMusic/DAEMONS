@@ -15,6 +15,7 @@ over the table, in the Mansion tileset's palette row 9, which nothing else in
 that tileset draws. Its text is read with the log.
 """
 import json, os, re, struct, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,14 +55,6 @@ def sketch():
             g[13][x0 + x] = 3
     return ["".join(str(v) for v in row) for row in g]
 SKETCH = sketch()
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, cols):
-    open(path, "w").write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in cols))
 
 
 def main():

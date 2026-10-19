@@ -27,6 +27,7 @@ Blanche's pale tall grass (gbaroutes.py) was derived from vanilla's clump
 earlier and keeps that shape until it is re-derived.
 """
 import json, math, os, re, struct, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -62,15 +63,6 @@ TALL = (68, 69, 84, 85)
 LIT, LEAF, DARK, DEEP = 1, 2, 3, 4
 BASE, GLIGHT, TUFT, TDARK = 13, 12, 14, 15
 PREVIEW_MAPS = [("Route1_Layout", 0, 2, 24, 16), ("CeladonCity_Layout", 18, 0, 24, 14)]
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, colours):
-    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in colours]
-    open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
 
 
 def secondary_dir(symbol):

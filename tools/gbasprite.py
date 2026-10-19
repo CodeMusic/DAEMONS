@@ -40,6 +40,7 @@ same ink every portrait already uses (T-177), and the hue is carried by the
 three entries whose job that is.
 """
 import os, re, subprocess, sys, zlib, struct
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from gbimg import read_png
 
@@ -267,12 +268,8 @@ DIR_FIX = {"NIDORAN♀": "nidoran_f", "NIDORAN♂": "nidoran_m",
            "MISSINGNO.": None}
 
 def upstream(path):
-    r = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    return daemonslib.upstream(GB, path)
 
 def renamed():
     pat = r'dname\s+"([^"]*)"'

@@ -16,6 +16,7 @@ Blanche's two copies of the block draw the same tiles and change with it. The
 Building tileset (every interior) has its own tiles 304..321 and is not touched.
 """
 import os, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,10 +44,6 @@ FACE = [
     "5577755555577755",
     "5555555555555555",
 ]
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

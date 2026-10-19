@@ -33,6 +33,7 @@ the pale one, so the lip -- which vanilla draws entirely in the bottom half --
 belongs to the pale side.
 """
 import json, os, struct, subprocess, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,14 +57,6 @@ ROW = 10
 # vanilla row 5 index -> a slot of row 10, and the colour that slot takes
 SLOTS = {10: 8, 11: 9, 12: 9, 13: 10, 15: 11}
 CHALK, CHALK_EDGE = (238, 238, 230), (218, 218, 208)       # Blanche's path, row 7 indices 5 and 7
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, cols):
-    open(path, "w").write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in cols))
 
 
 def git_bytes(path):

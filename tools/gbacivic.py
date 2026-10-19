@@ -53,6 +53,7 @@ buildings used, or one nobody used. A block asked for two different drawings by
 two buildings is a conflict and is reported, never guessed.
 """
 import importlib.util, json, os, re, struct, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -111,15 +112,6 @@ def type_ramp(rgb):
     dark = tuple(int(c * 0.62) for c in rgb)
     out = tuple(int(c * 0.35) for c in rgb)
     return {R7["LIGHT"]: light, R7["MID"]: tuple(rgb), R7["DARK"]: dark, R7["OUT"]: out}
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, colours):
-    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in colours]
-    open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
 
 
 def tdir(symbol, kind):

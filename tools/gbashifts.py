@@ -31,6 +31,7 @@ a name, front and back drawn (not pret's), an INDEX entry and category of ours i
 daemon that fails is listed and left OUT of the table -- this tool never writes words.
 """
 import os, re, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
@@ -120,14 +121,10 @@ def read(rel):
 
 
 def upstream(rel, binary=False):
-    r = subprocess.run(["git", "-C", GBA, "show", "%s:%s" % (UPSTREAM, rel)], capture_output=True)
-    if r.returncode != 0:
-        #  T-421: "" only for a file vanilla never had; any other git failure stops the run.
-        err = r.stderr.decode("utf-8", "replace")
-        if "does not exist in" not in err and "exists on disk, but not in" not in err:
-            sys.exit("  !! git show %s:%s failed: %s" % (UPSTREAM, rel, err.strip()))
-        return b"" if binary else ""
-    return r.stdout if binary else r.stdout.decode("utf-8", "replace")
+    #  T-421: tools/daemonslib.py's -- "" only for a file vanilla never had; any other failed git stops the run.
+    #  Read as bytes and decoded here with "replace", as this tool always has (no newline translation).
+    raw = daemonslib.upstream(GBA, rel, missing=b"", binary=True, ref=UPSTREAM)
+    return raw if binary else raw.decode("utf-8", "replace")
 
 
 def by_name():

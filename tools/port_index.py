@@ -14,6 +14,7 @@ obvious. Both editions get the same text: vanilla ships different dex entries
 in FireRed and LeafGreen, and 8.4 fixed both of ours to the same story.
 """
 import os, re, subprocess, sys, textwrap
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
@@ -21,12 +22,8 @@ WRITE = "--write" in sys.argv
 WIDTH, LINES = 42, 3
 
 def upstream(path):
-    r = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    return daemonslib.upstream(GB, path)
 
 def categories(text):
     """{Species: CATEGORY} from dex_entries.asm."""

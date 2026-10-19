@@ -39,6 +39,7 @@ that is gentler the darker the colour -- so a roof fades and an outline stays an
 outline.
 """
 import json, os, re, struct, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -55,15 +56,6 @@ WRITE = "--write" in sys.argv
 ROW_PALE = 10
 ROW3_MOVE = {9: 10, 10: 8, 11: 9, 12: 15}     # row 3's colliding indices, in row 10
 SIGN_BLOCK = 2                                # common, used in eight other towns
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, colours):
-    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in colours]
-    open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
 
 
 def pale(rgb):

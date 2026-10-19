@@ -28,6 +28,7 @@ board is within seven cells of a connection (engine.md trap 14). A board already
 drawn is left alone.
 """
 import importlib.util, json, os, re, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,10 +46,6 @@ def tdir(symbol):
     for d in os.listdir(os.path.join(GBA, "data/tilesets/secondary")):
         if re.sub(r"[^a-z0-9]", "", d.lower()) == want:
             return os.path.join(GBA, "data/tilesets/secondary", d)
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def grid(w, h):

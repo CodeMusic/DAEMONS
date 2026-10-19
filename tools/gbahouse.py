@@ -35,6 +35,7 @@ nearest pixel. Textures sit on the 8-pixel grid (boards eight tall, joints every
 16 or 32, planks every 8) so tiles repeat, and mirrored tiles are shared.
 """
 import json, math, os, re, struct, sys
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -435,12 +436,6 @@ WALK, BLOCK = 12 << 10, 1 << 10       # the map's collision and elevation bits: 
 
 
 # ================================================================== tiles, blocks, palettes
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, cols):
-    open(path, "w").write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in cols))
 
 
 def hflip(px):

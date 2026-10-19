@@ -42,6 +42,7 @@ no script names or changes one of its blocks, and the room needs more tiles
 than the old tileset had free.
 """
 import json, os, re, struct, sys
+from daemonslib import write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -274,11 +275,6 @@ def draw():
 
 def pal(path):
     return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, colours):
-    lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in colours]
-    open(path, "wb").write(("\r\n".join(lines) + "\r\n").encode())
 
 
 def main():

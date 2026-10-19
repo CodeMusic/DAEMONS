@@ -20,6 +20,7 @@ future ability rename travels here by re-running this rather than by anyone
 remembering that this file exists.
 """
 import os, re, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
@@ -27,12 +28,8 @@ PATH = os.path.join(GBA, "src/data/easy_chat/easy_chat_group_status.h")
 
 
 def upstream(rel):
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    return daemonslib.upstream(GBA, rel)
 
 
 def main():

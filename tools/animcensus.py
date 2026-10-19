@@ -26,6 +26,7 @@ in the game's reachable set and do not count.
 Traps respected: nothing here imports a gba* tool (docs/engine.md trap 16); everything is read as text.
 """
 import os, re, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,11 +54,8 @@ def read(p):
 
 
 def upstream(p):
-    r = subprocess.run(["git", "-C", E, "show", "upstream/master:" + p], capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (p, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    return daemonslib.upstream(E, p)
 
 
 def blocks(src):

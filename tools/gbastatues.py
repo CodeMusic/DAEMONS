@@ -20,6 +20,7 @@ own tileset; the statue's top block there is re-pointed to them. Its plinth, its
 collision and its script are the shared ones.
 """
 import json, os, re, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -109,10 +110,6 @@ def mark_top(icon):
 def tiles_of(g16):
     """the four 8x8 quadrants of a 16x16, in TL TR BL BR order"""
     return [tuple(g16[(q // 2) * 8 + i // 8][(q % 2) * 8 + i % 8] for i in range(64)) for q in range(4)]
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

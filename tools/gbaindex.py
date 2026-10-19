@@ -21,6 +21,7 @@ THE PLAY-TEST ANSWER IS THE PAIR LIST. Those are the entries where reading the
 other cartridge tells you something, and there is no way to see both at once.
 """
 import difflib, os, re, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
@@ -31,12 +32,8 @@ LIT = re.compile(r'const u8 (\w+PokedexText)\[\] = _\(\s*((?:"(?:[^"\\]|\\.)*"\s
 PIECE = re.compile(r'"((?:[^"\\]|\\.)*)"')
 
 def upstream(rel):
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    return daemonslib.upstream(GBA, rel)
 
 def texts(rel, raw=None):
     src = raw if raw is not None else open(os.path.join(GBA, rel), encoding="utf-8").read()

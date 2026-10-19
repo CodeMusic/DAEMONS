@@ -43,6 +43,7 @@ grass, the daisies, the water -- so the roads cost only what Blanche did not
 already draw. Every changed cell gets a copy of its block with its attributes.
 """
 import importlib.util, json, os, re, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -101,10 +102,6 @@ REPOINT_ROW = {2: 10}                                                           
 # a tree: the post goes to the top layer in row 10, the grass and birch under it
 POST_BLOCKS = {682, 683, 690, 698}
 GROUND_ROWS = {0, 1, 3, 4, 5, 6}
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

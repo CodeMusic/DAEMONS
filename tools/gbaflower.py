@@ -18,6 +18,7 @@ sway a pixel either way across the five frames, as vanilla's did, and the static
 tiles hold frame 0 so the tileset reads right before the animation first runs.
 """
 import os, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -65,10 +66,6 @@ def frame(sway):
                     put(cx - 2 + dx + sx, top + dy, {"R": 11, "C": 10, "P": 9}[ch])
         put(cx + 1 + sx, top + 5, 4)                    # the shade under the cup
     return px
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

@@ -29,6 +29,7 @@ for the floor, the glow palette for the sprites. New tiles go into slots no used
 block will reference once these blocks are re-pointed.
 """
 import importlib.util, json, os, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -142,10 +143,6 @@ def hflip(t):
 
 def vflip(t):
     return tuple(t[(7 - i // 8) * 8 + i % 8] for i in range(64))
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

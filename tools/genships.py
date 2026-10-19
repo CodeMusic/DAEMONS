@@ -23,6 +23,7 @@ LEFT as vanilla's are: sAnimTable_Standard mirrors a west frame for east, and th
 ss_anne keeps its conversion rule (-mwidth 8 -mheight 4); the Seagallop's 64x64 needs none.
 """
 import os, sys
+from daemonslib import write_pal   # T-421: one copy, not one per tool
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -200,11 +201,6 @@ def ss_anne():
     d.rectangle([119, 30, 121, 32], fill=4)
     outline(img, 1, skip=(13, 7))
     return img
-
-
-def write_pal(path, pal):
-    with open(path, "w", newline="\r\n") as f:
-        f.write("JASC-PAL\n0100\n16\n" + "".join("%d %d %d\n" % c for c in pal))
 
 
 SHEETS = [   # file, maker, palette (None = keep the file's own)

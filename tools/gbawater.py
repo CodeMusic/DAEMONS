@@ -25,6 +25,7 @@ thing in both: 6 the body, 5 a step lighter, 3 lighter again, 1 the speck.
 Open water is 6 with 5 dashes; shallow water is 5 with 3 dashes and 6 beneath.
 """
 import importlib.util, json, os, re, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -61,10 +62,6 @@ PREVIEW_MAPS = [("SSAnne_Exterior_Layout", 0, 0, 24, 14), ("FourIsland_Layout", 
 
 def water_tile(mapping, q, f):
     return [mapping[ripple((q % 2) * 8 + i % 8, (q // 2) * 8 + i // 8, f)] for i in range(64)]
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def secondary_dir(symbol):

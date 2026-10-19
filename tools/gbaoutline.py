@@ -31,6 +31,7 @@ and the player's back pics. Vanilla's own art is never touched. The overworld is
 The same pass runs inside gbachar.py, so a picture cut in future is outlined as it is written.
 """
 import io, os, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 import numpy as np
 from PIL import Image
 
@@ -56,13 +57,7 @@ def git(*a, binary=False):
 def upstream_bytes(rel):
     """vanilla's copy of rel, or None for a file vanilla never had. Any other git failure stops the run (T-421):
     it used to read as "not vanilla's", and every vanilla picture would have been outlined as ours."""
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True)
-    if r.returncode == 0:
-        return r.stdout
-    err = r.stderr.decode("utf-8", "replace")
-    if "does not exist in" in err or "exists on disk, but not in" in err:
-        return None
-    sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, err.strip()))
+    return daemonslib.upstream(GBA, rel, missing=None, binary=True)   # T-421: tools/daemonslib.py's
 
 
 def is_ours(rel):

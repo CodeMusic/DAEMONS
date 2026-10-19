@@ -65,6 +65,7 @@ The percentage is still printed, because it is the cheapest way to spot a line
 that drifted -- but it is reported, never ranked on.
 """
 import os, re, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
@@ -138,12 +139,8 @@ def read(rel):
 
 def upstream(rel):
     """Vanilla's copy, so 'ours' is DERIVED rather than listed here."""
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    return daemonslib.upstream(GBA, rel)
 
 
 def load():

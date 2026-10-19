@@ -38,6 +38,7 @@ corner vanilla never drew -- sand missing only its south-east -- is a new
 primary block made from vanilla's own corner tile, unflipped.
 """
 import json, os, struct, subprocess, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -64,10 +65,6 @@ BLUE = 299
 
 def git_bytes(path):
     return subprocess.run(["git", "-C", GBA, "show", "%s:%s" % (BEFORE, path)], capture_output=True, check=True).stdout
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

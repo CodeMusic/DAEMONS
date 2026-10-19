@@ -25,6 +25,7 @@ Three sources, none of them a guess:
 replaces what is between the two GENERATED markers.
 """
 import os, re, subprocess, sys, io, contextlib, importlib.util
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -52,15 +53,8 @@ def textwidth():
 
 
 def upstream(path):
-    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + path],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: "" only for a file vanilla never had; any other git failure (no upstream remote, a bad ref) stops
-        #  the run rather than reading as "vanilla had nothing".
-        if "does not exist in" in r.stderr or "exists on disk, but not in" in r.stderr:
-            return ""
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
-    return r.stdout
+    #  T-421: tools/daemonslib.py's -- "" only for a file vanilla never had; any other failed git stops the run
+    return daemonslib.upstream(GBA, path, missing="")
 
 
 def read(path):

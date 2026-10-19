@@ -18,6 +18,7 @@ which had 36. The bins' ambers go in the Mart tileset's palette row 10, which wa
 empty -- THE REPO's colour is golden amber (9.23).
 """
 import json, os, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -104,10 +105,6 @@ def hflip(t):
 
 def vflip(t):
     return tuple(t[(7 - i // 8) * 8 + i % 8] for i in range(64))
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def main():

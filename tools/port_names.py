@@ -15,6 +15,7 @@ Only names we actually changed are touched. Everything still vanilla stays
 vanilla, so a half-ported table is obvious rather than silently mixed.
 """
 import difflib, json, os, re, subprocess, sys
+import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
@@ -72,12 +73,8 @@ def gb_list(path, macro):
             re.finditer(r'%s\s+"([^"]*)"' % macro, open(os.path.join(GB, path)).read())]
 
 def upstream_list(path, macro):
-    r = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
-        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
-    txt = r.stdout
+    #  T-421: tools/daemonslib.py's, which stops the run on any failed git
+    txt = daemonslib.upstream(GB, path)
     return [_strip(m.group(1)) for m in re.finditer(r'%s\s+"([^"]*)"' % macro, txt)]
 
 rc = 0

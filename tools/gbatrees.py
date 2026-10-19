@@ -27,6 +27,7 @@ flipped). Where the old tree or its shadow was and the new one is not, a
 bottom-layer tile gets grass and a top-layer tile gets transparency.
 """
 import json, os, re, struct, sys
+from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,10 +57,6 @@ SCENES = [
      [(x, y) for y in (-32, 0, 32) for x in (32, 64)]),
 ]
 PREVIEW_MAPS = [("Route1_Layout", 0, 8, 24, 14), ("ViridianCity_Layout", 0, 0, 24, 16), ("Route2_Layout", 0, 0, 24, 16)]
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
 
 
 def secondary_dir(symbol):

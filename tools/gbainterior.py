@@ -51,6 +51,7 @@ Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
 """
 import importlib.util, json, math, os, re, struct, subprocess, sys, tempfile
+from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from collections import Counter
 from PIL import Image
 
@@ -69,14 +70,6 @@ CP, RP, EM = load("gbacheckpoint"), load("gbarepo"), load("gbaemblems")
 PRIM = os.path.join(GBA, "data/tilesets/primary/building")
 LAYOUTS = {l["id"]: l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if "id" in l}
 MAGENTA = (255, 0, 255)                   # transparent: the see-through pixels of a top-layer tile
-
-
-def read_pal(path):
-    return [tuple(map(int, l.split())) for l in open(path).read().replace("\r", "").split("\n")[3:19]]
-
-
-def write_pal(path, cols):
-    open(path, "w").write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in cols))
 
 
 # ---------------------------------------------------------------- the old tileset, rendered flat
