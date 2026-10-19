@@ -43,3 +43,9 @@ T-408 (v11.306.5): each grove recoloured to its universe's mood, 2 at night, ROU
 T-334 (v11.306.6): daemons past #151 on the islands, KAIROS fixed in BERRY FOREST, a two-word category, NATIVE for PRESCIENCE
 
 ![19Oct2026 - T334 - the GLOBAL INDEX placed - 7](19Oct2026%20-%20T334%20-%20the%20GLOBAL%20INDEX%20placed%20-%207.png)
+
+### 19Oct2026 - T421 - the INDEX label and battle rain - 10
+
+T-421 (v11.306.8): the type label above the name, read mid-battle and on the INDEX; battle rain confirmed
+
+![19Oct2026 - T421 - the INDEX label and battle rain - 10](19Oct2026%20-%20T421%20-%20the%20INDEX%20label%20and%20battle%20rain%20-%2010.png)
