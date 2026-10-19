@@ -19,3 +19,9 @@ The GUIDE cover on the wiki: the author's name moved lower, clear of the art
 THE SUBTLE LAYER's cover on the wiki: the title a little lower, off the border
 
 ![19Oct2026 - the wiki SUBTLE LAYER cover, title lower - 3](19Oct2026%20-%20the%20wiki%20SUBTLE%20LAYER%20cover%2C%20title%20lower%20-%203.png)
+
+### 19Oct2026 - T427 - the house keeps - 4
+
+T-427 (v11.306.3): the ledger owed and kept, the plants at 8000, SCORN's office, VERDIGRIS after the fall
+
+![19Oct2026 - T427 - the house keeps - 4](19Oct2026%20-%20T427%20-%20the%20house%20keeps%20-%204.png)
