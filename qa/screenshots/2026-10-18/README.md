@@ -397,3 +397,27 @@ The battery on the T-Watch S3's DAEMON and CLOCK faces, read off the watch: 100%
 T-423 on the site (bench check, as if the save held it): THE SUBTLE LAYER on the LIBRARY's shelf, its cover with the title in our own type and the contents, and TWO VOICES with the asking voice faint
 
 ![18Oct2026 - T423 - THE SUBTLE LAYER in the companion library - 95](18Oct2026%20-%20T423%20-%20THE%20SUBTLE%20LAYER%20in%20the%20companion%20library%20-%2095.png)
+
+### 18Oct2026 - T392 - sig2typesoverview - 96
+
+T-392 P2 (v11.305.3): sig2_types_overview
+
+![18Oct2026 - T392 - sig2typesoverview - 96](18Oct2026%20-%20T392%20-%20sig2typesoverview%20-%2096.png)
+
+### 18Oct2026 - T392 - sig2all363sheet - 97
+
+T-392 P2 (v11.305.3): sig2_all363_sheet
+
+![18Oct2026 - T392 - sig2all363sheet - 97](18Oct2026%20-%20T392%20-%20sig2all363sheet%20-%2097.png)
+
+### 18Oct2026 - T392 - sig2misreadzoom - 98
+
+T-392 P2 (v11.305.3): sig2_misread_zoom
+
+![18Oct2026 - T392 - sig2misreadzoom - 98](18Oct2026%20-%20T392%20-%20sig2misreadzoom%20-%2098.png)
+
+### 18Oct2026 - T392 - sig2lowhp - 99
+
+T-392 P2 (v11.305.3): sig2_lowhp
+
+![18Oct2026 - T392 - sig2lowhp - 99](18Oct2026%20-%20T392%20-%20sig2lowhp%20-%2099.png)
