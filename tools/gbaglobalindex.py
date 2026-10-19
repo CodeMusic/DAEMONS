@@ -28,8 +28,12 @@ open floor tile farthest from every way in ("the deepest chamber", "the back roo
 northernmost, never a tile whose loss would cut the map in two, never beside a door, a person or a sign.
 
     Seven have overworld art (RAIKOU ENTEI SUICUNE LUGIA HO-OH CELEBI DEOXYS) and are seen. The nine without it
-    stand UNSEEN (MOVEMENT_TYPE_INVISIBLE): a player meets an invisible wall at the far end of a place and presses A.
-    Their art is the user's call, and so is whether they stay unseen.
+    stand UNSEEN (MOVEMENT_TYPE_INVISIBLE) and are FOUND BY WALKING INTO THEIR PLACE (the user, 2026-10-19): a step
+    into the tile starts the meeting -- the cry, then the battle (src/field_control_avatar.c, TryWalkIntoUnseenLegend,
+    for this tool's block of flags only; A works too). They stay unseen (the user, 2026-10-19); their art is the
+    user's call.
+    The tile is found by a walk that obeys ledges (their own direction only) and elevation, with Surf, so every one is
+    reached on foot from where the player lands (tools/check_reach.py checks it, from beside the tile, at its height).
     LUGIA and HO-OH are vanilla's, at NAVEL ROCK; the ferry sails there once the GLOBAL INDEX is held (by hand, in
     VermilionCity/scripts.inc). DEOXYS is already at THE ANNEX. Neither is written here.
     The three beasts stand only once the GLOBAL INDEX is held, and the edition daemons only in their edition: both
@@ -50,9 +54,9 @@ FLAGS = "include/constants/flags.h"
 FLAG_BASE = 0x140                     # DAEMONS_FLAGS_START + 0x140 .. + 0x14F, this tool's block
 BEGIN, END = "//  BEGIN gbaglobalindex", "//  END gbaglobalindex"
 
-LEFT_OUT = {
-    "SPECIES_BELLOSSOM": "GOLDSET's drawing carries no streak markers, so genstreaks gives it no streaks",
-}
+#  BELLOSSOM (GOLDSET) was here until 2026-10-19: its front drawing carried no streak markers. They were painted on its
+#  petals (gfx/daemons/goldset_front.png, cleandraft.paint_streaks with a box on the flower head, as its back had them).
+LEFT_OUT = {}
 
 #  species -> (map dir, level, where in it, edition, art). where: "deep" = farthest from every way in; "top" = the
 #  northernmost. edition: "both", "CONTENT" or "CONTEXT". LATIOS/LATIAS share one object.
@@ -75,6 +79,8 @@ ALREADY = {"SPECIES_LUGIA": "NAVEL ROCK, the base (vanilla's; the ferry opens wi
            "SPECIES_DEOXYS": "THE ANNEX (already)"}
 UNSEEN_GFX = "OBJ_EVENT_GFX_ITEM_BALL"      # never drawn: MOVEMENT_TYPE_INVISIBLE
 OPEN = {0x00, 0x08, 0x21}                    # MB_NORMAL, MB_CAVE, MB_SAND: floor a daemon can stand on
+JUMP = {0x38: (1, 0), 0x39: (-1, 0), 0x3A: (0, -1), 0x3B: (0, 1)}      # MB_JUMP_EAST, WEST, NORTH, SOUTH
+SURF = {0x10, 0x11, 0x12, 0x15, 0x1B}       # pond, fast, deep, ocean, cycling-road water: Surf's
 RATES = {}
 
 
@@ -176,42 +182,93 @@ def give_slots(plan_rows, wild, tables):
 
 # ---- the fixed encounters -------------------------------------------------------------------------------------------
 
-def floor_tile(mapdir, where, j, placed=()):
-    """(x, y, elevation) for a daemon to stand on, by the rule in the docstring. placed: the tiles of this tool's
-    daemons already decided on this map in this run, which stand like anyone else."""
+def walker(j, placed=(), keep_mine=False):
+    """(walk, cell, beh) for a map: walk(without=None) -> ({(x, y): steps} for every LAND tile a player reaches, the
+    set of (x, y, elevation) states reached). Ledges are crossed in their own direction only, landing beyond; on land a
+    step to another elevation needs one of them to be 0 (or 15); Surf goes on and off water at any elevation, as
+    vanilla's dismount does (every island is reached by Surf, so the walk assumes it). People who never move are walls;
+    this tool's own daemons are not, unless keep_mine (tools/check_reach.py asks who can reach THEM)."""
     ows = mod("gbaowslots")
     lay = {l["id"]: l for l in json.loads(read("data/layouts/layouts.json"))["layouts"] if l}[j["layout"]]
     W, H = lay["width"], lay["height"]
     bd = open(os.path.join(GBA, lay["blockdata_filepath"]), "rb").read()
     cell = lambda x, y: struct.unpack_from("<H", bd, (y * W + x) * 2)[0]
     _, beh = ows.map_behaviour(j["layout"])
-    mine = {(o["x"], o["y"]) for o in j.get("object_events") or [] if str(o.get("script", "")).startswith("GlobalIndex_")}
+    mine = set() if keep_mine else \
+        {(o["x"], o["y"]) for o in j.get("object_events") or [] if str(o.get("script", "")).startswith("GlobalIndex_")}
     objs = [o for o in j.get("object_events") or [] if (o["x"], o["y"]) not in mine]
     still = {(o["x"], o["y"]) for o in objs if "WANDER" not in str(o.get("movement_type", ""))} | set(placed)
-    marks = list(placed) + [(o["x"], o["y"]) for o in objs] + [(w["x"], w["y"]) for w in j.get("warp_events") or []] \
-        + [(b["x"], b["y"]) for b in j.get("bg_events") or []] + [(c["x"], c["y"]) for c in j.get("coord_events") or []]
     start = {(w["x"], w["y"]) for w in j.get("warp_events") or []}
     if j.get("connections"):
         start |= {(x, 0) for x in range(W)} | {(x, H - 1) for x in range(W)} | {(0, y) for y in range(H)} | {(W - 1, y) for y in range(H)}
-    blocked = lambda x, y: (cell(x, y) >> 10) & 3 or (x, y) in still
+    inside = lambda x, y: 0 <= x < W and 0 <= y < H
+    blocked = lambda x, y: not inside(x, y) or (cell(x, y) >> 10) & 3 or (x, y) in still
+    water = lambda x, y: beh(x, y) in SURF
+
+    def enter(c, n, d):
+        """The state a step from c onto n (direction d) lands in, or None; water's elevation is 'surf'."""
+        nx, ny = n
+        ce = c[2]
+        if blocked(nx, ny):
+            return None
+        b = beh(nx, ny)
+        if b in JUMP:
+            if JUMP[b] != d or ce == "surf":
+                return None
+            lx, ly = nx + d[0], ny + d[1]
+            if blocked(lx, ly) or water(lx, ly) or beh(lx, ly) in JUMP:
+                return None
+            e = cell(lx, ly) >> 12
+            return (lx, ly, ce if e in (0, 15) else e)
+        e = cell(nx, ny) >> 12
+        if water(nx, ny):
+            return (nx, ny, "surf")
+        if ce == "surf":
+            return (nx, ny, e)
+        if ce not in (0, 15) and e not in (0, 15) and e != ce:
+            return None
+        return (nx, ny, ce if e == 15 else e)
 
     def walk(without=None):
-        dist = {}
-        q = deque()
+        seen, q, dist = set(), deque(), {}
         for s in start:
-            if 0 <= s[0] < W and 0 <= s[1] < H and not blocked(*s) and s != without:
-                dist[s] = 0
-                q.append(s)
+            if inside(*s) and not blocked(*s) and s != without:
+                st = (s[0], s[1], "surf" if water(*s) else cell(*s) >> 12)
+                seen.add(st)
+                q.append((st, 0))
         while q:
-            cx, cy = q.popleft()
-            for n in ((cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)):
-                if 0 <= n[0] < W and 0 <= n[1] < H and n not in dist and n != without and not blocked(*n):
-                    dist[n] = dist[(cx, cy)] + 1
-                    q.append(n)
-        return dist
+            c, k = q.popleft()
+            if c[2] != "surf" and (c[0], c[1]) not in dist:
+                dist[(c[0], c[1])] = k
+            for d in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = enter(c, (c[0] + d[0], c[1] + d[1]), d)
+                if n and n not in seen and (n[0], n[1]) != without:
+                    seen.add(n)
+                    q.append((n, k + 1))
+        return dist, seen
 
+    return walk, cell, beh
+
+
+def met_on_foot(states, x, y, e):
+    """Can a player stand beside (x, y) ON LAND, at height e (or 0), facing it? A surfing player is at the water's
+    height and meets nothing standing on the shore (GetObjectEventIdByPosition matches elevation)."""
+    beside = {(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)}
+    return any((sx, sy) in beside and se != "surf" and (e == 0 or se in (0, e)) for sx, sy, se in states)
+
+
+def floor_tile(mapdir, where, j, placed=()):
+    """(x, y, elevation) for a daemon to stand on, by the rule in the docstring. placed: the tiles of this tool's
+    daemons already decided on this map in this run, which stand like anyone else."""
+    walk_states, cell, beh = walker(j, placed)
+    walk = lambda without=None: walk_states(without)[0]
+    states = walk_states()[1]
+    mine = {(o["x"], o["y"]) for o in j.get("object_events") or [] if str(o.get("script", "")).startswith("GlobalIndex_")}
+    objs = [o for o in j.get("object_events") or [] if (o["x"], o["y"]) not in mine]
+    marks = list(placed) + [(o["x"], o["y"]) for o in objs] + [(w["x"], w["y"]) for w in j.get("warp_events") or []] \
+        + [(b["x"], b["y"]) for b in j.get("bg_events") or []] + [(c["x"], c["y"]) for c in j.get("coord_events") or []]
     dist = walk()
-    ok = [t for t in dist if beh(*t) in OPEN and 1 <= cell(*t) >> 12 <= 14
+    ok = [t for t in dist if beh(*t) in OPEN and 1 <= cell(*t) >> 12 <= 14 and met_on_foot(states, t[0], t[1], cell(*t) >> 12)
           and all(abs(t[0] - m[0]) + abs(t[1] - m[1]) > 2 for m in marks)]
     if where == "top":
         ok.sort(key=lambda t: (t[1], -dist[t], t[0]))

@@ -44,6 +44,10 @@ AND A NAME PRINTED BEFORE IT IS LOOKED UP (T-377, engine.md trap 43). VERA said 
 {STR_VAR_1} after the party screen had drawn an HP into it and before anything put the daemon's name there. Every script
 is walked along its flow for a message printing a buffer that a screen or battle overwrote and nothing refilled; VERA's
 old line is planted each run, and the check fails if it stops finding it.
+AND THE LEGENDS, ON FOOT (T-334, the user, 2026-10-19). The GLOBAL INDEX's fixed encounters stand where
+tools/gbaglobalindex.py derived, and the unseen ones are met by walking into their place -- so each needs a land tile
+beside it that a player reaches with ledges crossed their own way only and elevation obeyed (Surf allowed: every island
+is reached by it), at the legend's own height. The first walk above knows neither, and passed JIRACHI anyway.
 AND THE SEASON AND HOUR HOMES (T-407, the user, 2026-10-16). src/data/wild_shifts.h gives a grass slot to another
 daemon in some seasons and watches, on top of the map's own table -- so a row is only met if its map has grass in that
 edition, its slot is one of the twelve, and it names at least one season and one watch. Each row is read against
@@ -541,6 +545,33 @@ def shift_problems(root):
     return bad, n
 
 
+def legends_on_foot(root):
+    """[problem] -- every GLOBAL INDEX legend (gbaglobalindex.py's objects) must have a reached land tile beside it at
+    its own elevation, by that tool's walk (ledges, elevation, Surf). Ours only: vanilla has none."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("gbaglobalindex", os.path.join(ROOT, "tools", "gbaglobalindex.py"))
+    g = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(g)
+    bad, n = [], 0
+    for d in sorted(os.listdir(os.path.join(root, "data/maps"))):
+        path = os.path.join(root, "data/maps", d, "map.json")
+        if not os.path.exists(path):
+            continue
+        m = json.load(open(path))
+        mine = [o for o in m.get("object_events") or [] if str(o.get("script", "")).startswith("GlobalIndex_")]
+        if not mine:
+            continue
+        walk, cell, beh = g.walker(m, keep_mine=True)
+        _, states = walk()
+        for o in mine:
+            n += 1
+            x, y, e = o["x"], o["y"], int(o.get("elevation", 0))
+            if not g.met_on_foot(states, x, y, e):
+                bad.append("%s (%d,%d) %s: no land tile beside it is reached on foot at its height" % (d, x, y, o["script"]))
+    legends_on_foot.examined = n
+    return bad
+
+
 def main():
     up = upstream()
     rc = 0
@@ -614,6 +645,11 @@ def main():
     for k in sorted(s_ours - s_theirs):
         print("  !! %s prints {%s} in %s after something overwrote it and before anything refilled it (T-377)"
               % (k[0], k[2], k[1]))
+        rc = 1
+    lg_bad = legends_on_foot(GBA)
+    print("  %d GLOBAL INDEX legends read for a tile beside them reached on foot (T-334)" % legends_on_foot.examined)
+    for b in lg_bad:
+        print("  !! " + b)
         rc = 1
     sh_bad, sh_rows = shift_problems(GBA)
     print("  %d season and hour rows read against the grass they sit on (T-407)" % sh_rows)   # trap 18
