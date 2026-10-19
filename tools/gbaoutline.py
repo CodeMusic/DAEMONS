@@ -53,15 +53,27 @@ def git(*a, binary=False):
     return r.stdout if binary else r.stdout.decode()
 
 
+def upstream_bytes(rel):
+    """vanilla's copy of rel, or None for a file vanilla never had. Any other git failure stops the run (T-421):
+    it used to read as "not vanilla's", and every vanilla picture would have been outlined as ours."""
+    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel], capture_output=True)
+    if r.returncode == 0:
+        return r.stdout
+    err = r.stderr.decode("utf-8", "replace")
+    if "does not exist in" in err or "exists on disk, but not in" in err:
+        return None
+    sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, err.strip()))
+
+
 def is_ours(rel):
     """a picture vanilla never had, or one whose pixels differ from vanilla's -- never vanilla's own"""
-    raw = git("show", "upstream/master:" + rel, binary=True)
-    if not raw:
+    raw = upstream_bytes(rel)
+    if raw is None:
         return True
     try:
         theirs = Image.open(io.BytesIO(raw))
-    except Exception:
-        return True
+    except Exception as e:
+        sys.exit("  !! vanilla's %s did not open as a picture: %s" % (rel, e))
     ours = Image.open(os.path.join(GBA, rel))
     return ours.size != theirs.size or ours.tobytes() != theirs.tobytes()
 

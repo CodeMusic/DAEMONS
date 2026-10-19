@@ -21,8 +21,12 @@ WRITE = "--write" in sys.argv
 WIDTH, LINES = 42, 3
 
 def upstream(path):
-    return subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
-                          capture_output=True, text=True).stdout
+    r = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
+    return r.stdout
 
 def categories(text):
     """{Species: CATEGORY} from dex_entries.asm."""

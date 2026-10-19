@@ -138,12 +138,28 @@ def scan(label, text):
                           text[a:b].replace("\n", " ").strip()))
     return found
 
+def upstream(rel):
+    """vanilla's copy of rel. A failed git stops the run (T-421): it used to read as "", and the check passed."""
+    try:
+        r = subprocess.run(["git", "-C", os.path.realpath(GBA), "show", "upstream/master:" + rel],
+                           capture_output=True, text=True, timeout=20)
+    except Exception as e:
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, e))
+    if r.returncode != 0 or not r.stdout:
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip() or "empty"))
+    return r.stdout
+
+
 def render_developer_prompt():
     js = ("(async()=>{const p=require('%s/server/src/ai/promptBuilder.js');"
           "const d=await p.buildDeveloperPrompt();"
           "process.stdout.write(typeof d==='string'?d:JSON.stringify(d));})()" % AI)
     out = subprocess.run(["node", "-e", js], capture_output=True, text=True,
                          cwd=os.path.join(AI, "server"))
+    if out.returncode != 0:
+        #  T-421: a prompt that failed to build is not a prompt with no vanilla words in it.
+        sys.exit("  !! node could not build the developer prompt (exit %d): %s"
+                 % (out.returncode, (out.stderr.strip().splitlines() or ["no output"])[-1]))
     return out.stdout
 
 def stale_ours_check():
@@ -180,14 +196,7 @@ def stale_ours_check():
     ours_f = os.path.join(GBA, "src/data/text/move_names.h")
     if not (os.path.exists(f) and os.path.exists(ours_f)):
         return bad
-    try:
-        van = subprocess.run(["git", "-C", os.path.realpath(GBA), "show",
-                              "upstream/master:src/data/text/move_names.h"],
-                             capture_output=True, text=True, timeout=20).stdout
-    except Exception:
-        return bad
-    if not van:
-        return bad
+    van = upstream("src/data/text/move_names.h")
     pat = r'\[MOVE_(\w+)\]\s*=\s*_\("([^"]+)"\)'
     ours = dict(re.findall(pat, open(ours_f, encoding="utf-8").read()))
     txt = open(f, encoding="utf-8").read()
@@ -299,13 +308,7 @@ def vanilla_name_check():
         p = os.path.join(GBA, rel)
         if not os.path.exists(p):
             continue
-        try:
-            v = subprocess.run(["git", "-C", os.path.realpath(GBA), "show",
-                                "upstream/master:" + rel],
-                               capture_output=True, text=True, timeout=20).stdout
-        except Exception:
-            return bad
-        van += v
+        van += upstream(rel)
         ours.update(dict(re.findall(pat, open(p, encoding="utf-8").read())))
     if not van:
         return bad

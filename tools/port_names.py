@@ -72,8 +72,12 @@ def gb_list(path, macro):
             re.finditer(r'%s\s+"([^"]*)"' % macro, open(os.path.join(GB, path)).read())]
 
 def upstream_list(path, macro):
-    txt = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
-                         capture_output=True, text=True).stdout
+    r = subprocess.run(["git", "-C", GB, "show", "upstream/master:" + path],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
+    txt = r.stdout
     return [_strip(m.group(1)) for m in re.finditer(r'%s\s+"([^"]*)"' % macro, txt)]
 
 rc = 0

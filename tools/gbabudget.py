@@ -54,7 +54,13 @@ def textwidth():
 def upstream(path):
     r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + path],
                        capture_output=True, text=True)
-    return r.stdout if r.returncode == 0 else ""
+    if r.returncode != 0:
+        #  T-421: "" only for a file vanilla never had; any other git failure (no upstream remote, a bad ref) stops
+        #  the run rather than reading as "vanilla had nothing".
+        if "does not exist in" in r.stderr or "exists on disk, but not in" in r.stderr:
+            return ""
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (path, r.stderr.strip()))
+    return r.stdout
 
 
 def read(path):

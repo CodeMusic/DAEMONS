@@ -37,8 +37,15 @@ SLICE = [
 STR = re.compile(r'^\s*\.string "(.*)"\s*$')
 
 def upstream(rel):
-    return subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                          capture_output=True, text=True).stdout
+    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        #  T-421: "" only for a file vanilla never had; any other git failure (no upstream remote, a bad ref) stops
+        #  the run rather than reading as "vanilla had nothing".
+        if "does not exist in" in r.stderr or "exists on disk, but not in" in r.stderr:
+            return ""
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
+    return r.stdout
 
 # ---------------------------------------------------------------- exemptions
 #

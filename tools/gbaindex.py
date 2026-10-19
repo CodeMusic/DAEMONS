@@ -31,8 +31,12 @@ LIT = re.compile(r'const u8 (\w+PokedexText)\[\] = _\(\s*((?:"(?:[^"\\]|\\.)*"\s
 PIECE = re.compile(r'"((?:[^"\\]|\\.)*)"')
 
 def upstream(rel):
-    return subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                          capture_output=True, text=True).stdout
+    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
+    return r.stdout
 
 def texts(rel, raw=None):
     src = raw if raw is not None else open(os.path.join(GBA, rel), encoding="utf-8").read()

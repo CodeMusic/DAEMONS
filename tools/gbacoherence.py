@@ -138,9 +138,12 @@ def read(rel):
 
 def upstream(rel):
     """Vanilla's copy, so 'ours' is DERIVED rather than listed here."""
-    out = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
-                         capture_output=True, text=True)
-    return out.stdout if out.returncode == 0 else ""
+    r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
+    return r.stdout
 
 
 def load():

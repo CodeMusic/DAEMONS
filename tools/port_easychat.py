@@ -29,7 +29,10 @@ PATH = os.path.join(GBA, "src/data/easy_chat/easy_chat_group_status.h")
 def upstream(rel):
     r = subprocess.run(["git", "-C", GBA, "show", "upstream/master:" + rel],
                        capture_output=True, text=True)
-    return r.stdout if r.returncode == 0 else ""
+    if r.returncode != 0:
+        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.strip()))
+    return r.stdout
 
 
 def main():

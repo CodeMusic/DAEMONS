@@ -53,7 +53,11 @@ def read(p):
 
 
 def upstream(p):
-    return subprocess.run(["git", "-C", E, "show", "upstream/master:" + p], capture_output=True, text=True).stdout
+    r = subprocess.run(["git", "-C", E, "show", "upstream/master:" + p], capture_output=True, text=True)
+    if r.returncode != 0:
+        #  T-421: a failed git (no upstream remote, a bad ref) is not "vanilla had nothing" -- stop, loudly.
+        sys.exit("  !! git show upstream/master:%s failed: %s" % (p, r.stderr.strip()))
+    return r.stdout
 
 
 def blocks(src):

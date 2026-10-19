@@ -121,6 +121,12 @@ def read(rel):
 
 def upstream(rel, binary=False):
     r = subprocess.run(["git", "-C", GBA, "show", "%s:%s" % (UPSTREAM, rel)], capture_output=True)
+    if r.returncode != 0:
+        #  T-421: "" only for a file vanilla never had; any other git failure stops the run.
+        err = r.stderr.decode("utf-8", "replace")
+        if "does not exist in" not in err and "exists on disk, but not in" not in err:
+            sys.exit("  !! git show %s:%s failed: %s" % (UPSTREAM, rel, err.strip()))
+        return b"" if binary else ""
     return r.stdout if binary else r.stdout.decode("utf-8", "replace")
 
 
