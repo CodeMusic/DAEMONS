@@ -49,3 +49,15 @@ T-334 (v11.306.6): daemons past #151 on the islands, KAIROS fixed in BERRY FORES
 T-421 (v11.306.8): the type label above the name, read mid-battle and on the INDEX; battle rain confirmed
 
 ![19Oct2026 - T421 - the INDEX label and battle rain - 10](19Oct2026%20-%20T421%20-%20the%20INDEX%20label%20and%20battle%20rain%20-%2010.png)
+
+### 19Oct2026 - T428 - the playgrounds companion carries a daemon SENT in the browser - 11
+
+The playground's own companion, fed the browser game's save: ARTSAI, SENT from the party, taken at the COMPANION tab's SYNC, and AWAY in the game when it starts again from the save the companion wrote (C-169).
+
+![19Oct2026 - T428 - the playgrounds companion carries a daemon SENT in the browser - 11](19Oct2026%20-%20T428%20-%20the%20playgrounds%20companion%20carries%20a%20daemon%20SENT%20in%20the%20browser%20-%2011.jpg)
+
+### 19Oct2026 - T428 - the playgrounds companion carries a daemon SENT in the browser - 12
+
+The playground's own companion, fed the browser game's save: ARTSAI, SENT from the party, taken at the COMPANION tab's SYNC, and AWAY in the game when it starts again from the save the companion wrote (C-169).
+
+![19Oct2026 - T428 - the playgrounds companion carries a daemon SENT in the browser - 12](19Oct2026%20-%20T428%20-%20the%20playgrounds%20companion%20carries%20a%20daemon%20SENT%20in%20the%20browser%20-%2012.jpg)
