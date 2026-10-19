@@ -30,14 +30,14 @@ WHICH ROOM IS WHICH IS DERIVED TOO: `gbainterior.py` pairs each `LAYOUT_*_GYM` w
 the C looks the backdrop up by the MAP the battle happens on, so a BENCHMARK's trainers and its leader
 share it and nothing outside the eight rooms changes.
 """
-import ast, colorsys, os, re, struct, sys
+import ast, colorsys, os, re, struct, sys, daemonslib
 from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 TOOLS = os.path.join(ROOT, "tools")
 WRITE = "--write" in sys.argv
-PREVIEW = "/tmp/backdrops.png"
+PREVIEW = daemonslib.preview("backdrops.png")   # /tmp/backdrops.png (T-421)
 INDOOR = os.path.join(GBA, "graphics/battle_terrain/indoor")
 
 

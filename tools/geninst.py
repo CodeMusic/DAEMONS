@@ -22,7 +22,7 @@ every town, so every map that uses one changes, which is the point. The species 
 Frame counts are vanilla's: the attendant four, the receptionists and the deliveryman three still
 frames, the clerk, the officer and the staff nine with their walks.
 """
-import os, re, sys
+import os, re, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +30,7 @@ from genfolk import overlay, figure, standing, check, sheet, read_pal, WHITE, PE
 from genleaders import H, S, BLUE, PINK
 from genstaff import PENGUIN_FRONT, PENGUIN_BACK, PENGUIN_SIDE
 
-PREVIEW = "/tmp/institutions_ow.png"
+PREVIEW = daemonslib.preview("institutions_ow.png")   # /tmp/institutions_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 # ------------------------------------------------------------------ the CHECKPOINT attendant, an elephant (npc_pink)

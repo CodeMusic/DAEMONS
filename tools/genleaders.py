@@ -30,13 +30,13 @@ the green slot's olives, greens and plums for TRELLIS, TILT and MATTE; the pink 
 and pale blues for BASIN; the blue slot's orange for GAUGE. --write moves each leader's paletteTag
 and paletteSlot in object_event_graphics_info.h to match.
 """
-import os, re, sys
+import os, re, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import mirror, overlay, figure, check, sheet, read_pal, WHITE, GREEN, PEOPLE, GBA
 
-PREVIEW = "/tmp/leaders_ow.png"
+PREVIEW = daemonslib.preview("leaders_ow.png")   # /tmp/leaders_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 # letter -> index for the two slots genfolk.py never needed

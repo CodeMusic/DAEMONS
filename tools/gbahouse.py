@@ -34,7 +34,7 @@ colour, then each 8x8 tile is given whichever row reproduces it best, pixel by
 nearest pixel. Textures sit on the 8-pixel grid (boards eight tall, joints every
 16 or 32, planks every 8) so tiles repeat, and mirrored tiles are shared.
 """
-import json, math, os, re, struct, sys
+import json, math, os, re, struct, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image, ImageDraw
 
@@ -43,7 +43,7 @@ GBA = os.path.join(ROOT, "engineGba")
 BASE = os.path.join(GBA, "data/tilesets/secondary/generic_building_1")
 PRIM = os.path.join(GBA, "data/tilesets/primary/building")
 OUT_DIR = os.path.join(GBA, "data/tilesets/secondary/players_house")
-PREVIEW = "/tmp/house.png"
+PREVIEW = daemonslib.preview("house.png")   # /tmp/house.png (T-421)
 WRITE = "--write" in sys.argv
 LAYOUTS = ("PalletTown_PlayersHouse_1F_Layout", "PalletTown_PlayersHouse_2F_Layout")
 

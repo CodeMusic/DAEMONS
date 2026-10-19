@@ -52,7 +52,7 @@ which the dome and the colonnade rely on -- and placed in a slot that only these
 buildings used, or one nobody used. A block asked for two different drawings by
 two buildings is a conflict and is reported, never guessed.
 """
-import importlib.util, json, os, re, struct, sys
+import importlib.util, json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -66,7 +66,7 @@ E = importlib.util.module_from_spec(spec); spec.loader.exec_module(E)
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/civic.png"
+PREVIEW = daemonslib.preview("civic.png")   # /tmp/civic.png (T-421)
 WRITE = "--write" in sys.argv
 
 BUILDING_ROWS = {2, 3, 5}

@@ -34,14 +34,14 @@ values vanilla's reflection gives them.
 
 Every value is snapped to the GBA's five bits per channel, which is what the converter will do anyway.
 """
-import os, statistics, subprocess, sys
+import os, statistics, subprocess, sys, daemonslib
 from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DIR = "graphics/object_events/palettes"
 WRITE = "--write" in sys.argv
-PREVIEW = "/tmp/reflection.png"
+PREVIEW = daemonslib.preview("reflection.png")   # /tmp/reflection.png (T-421)
 TRAIN = ("player", "npc_blue", "npc_pink", "npc_green", "npc_white")
 
 

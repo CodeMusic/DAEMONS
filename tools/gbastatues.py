@@ -19,7 +19,7 @@ own 16x16 icon, cast in row 0's golds on a stone cap, on tiles of the BENCHMARK'
 own tileset; the statue's top block there is re-pointed to them. Its plinth, its
 collision and its script are the shared ones.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -31,7 +31,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/building")
 BADGES = os.path.join(GBA, "graphics/trainer_card/badges.png")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/statues.png"
+PREVIEW = daemonslib.preview("statues.png")   # /tmp/statues.png (T-421)
 WRITE = "--write" in sys.argv
 TOP, BASE = (256, 257, 272, 273), (288, 289, 304, 305)
 MARKS = ["SLATE", "SLOPE", "SENSE", "FIT", "SKEW", "FRAME", "HEAT", "TRUE"]

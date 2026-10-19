@@ -30,14 +30,14 @@ serves two things that must now differ -- CRYSTAL's skin index is her face AND h
 cream fur and white coat sleeves -- the split is made by CONNECTED COMPONENT rather than by row, because
 a raised hand sits beside the head in half the frames and a row cut would paint it fur.
 """
-import io, os, subprocess, sys
+import io, os, subprocess, sys, daemonslib
 from collections import deque
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA
 
-PREVIEW = "/tmp/mentors.png"
+PREVIEW = daemonslib.preview("mentors.png")   # /tmp/mentors.png (T-421)
 WRITE = "--write" in sys.argv
 BACKS = os.path.join(GBA, "graphics/trainers/back_pics")
 PALS = os.path.join(GBA, "graphics/trainers/palettes")

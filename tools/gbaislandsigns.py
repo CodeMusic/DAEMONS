@@ -27,7 +27,7 @@ and collision; tiles go into slots no block draws, else onto the end. Neither
 board is within seven cells of a connection (engine.md trap 14). A board already
 drawn is left alone.
 """
-import importlib.util, json, os, re, struct, sys
+import importlib.util, json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -37,7 +37,7 @@ E = importlib.util.module_from_spec(spec); spec.loader.exec_module(E)
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/island_signs.png"
+PREVIEW = daemonslib.preview("island_signs.png")   # /tmp/island_signs.png (T-421)
 WRITE = "--write" in sys.argv
 
 

@@ -27,12 +27,12 @@ EACH MARK IS THE TYPE'S OWN CLAUSE from 2.2, drawn flat:
 
 ONE BIT: 0 is ink and 255 is paper, and the file is mode "1" at 16x16 -- the build turns it into .1bpp.
 """
-import os, re, sys
+import os, re, sys, daemonslib
 from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 E = os.path.join(ROOT, "engineGba")
-PREVIEW = "/tmp/footprints.png"
+PREVIEW = daemonslib.preview("footprints.png")   # /tmp/footprints.png (T-421)
 WRITE = "--write" in sys.argv
 INK, PAPER = 0, 255
 

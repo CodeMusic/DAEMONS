@@ -42,7 +42,7 @@ TILES ARE SHARED WITH BLANCHE'S where the pixels agree -- the birches, the
 grass, the daisies, the water -- so the roads cost only what Blanche did not
 already draw. Every changed cell gets a copy of its block with its attributes.
 """
-import importlib.util, json, os, re, struct, sys
+import importlib.util, json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -57,7 +57,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/blanche_roads.png"
+PREVIEW = daemonslib.preview("blanche_roads.png")   # /tmp/blanche_roads.png (T-421)
 WRITE = "--write" in sys.argv
 
 # (layout, first row, end row, columns or None for all, trees only)

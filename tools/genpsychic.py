@@ -29,13 +29,13 @@ INDEX 0 IS THE TRANSPARENT SLOT and keeps whatever the source had. A 4bpp portra
 carry its colours -- `trainers.h` takes the picture from `<name>_front_pic.4bpp.lz` and the palette
 from a separate `palettes/<name>.gbapal.lz` -- so the `.pal` is written every time.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA
 
-PREVIEW = "/tmp/psychic.png"
+PREVIEW = daemonslib.preview("psychic.png")   # /tmp/psychic.png (T-421)
 WRITE = "--write" in sys.argv
 PICS = os.path.join(GBA, "graphics/trainers/front_pics")
 PALS = os.path.join(GBA, "graphics/trainers/palettes")

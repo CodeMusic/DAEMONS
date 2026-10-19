@@ -26,14 +26,14 @@ colour it lacks may be added -- chosen by ROLE, never by nearest RGB (genprops.p
 into skin). The engine draws shadows. Every sheet is one frame; single-frame 16x16 misc sheets carry no conversion
 rule, and the larger ones keep the rule they already have (the sizes are asserted unchanged).
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import read_pal, GBA, WHITE
 from genleaders import BLUE, PINK
 
-PREVIEW = "/tmp/misc_ow.png"
+PREVIEW = daemonslib.preview("misc_ow.png")   # /tmp/misc_ow.png (T-421)
 WRITE = "--write" in sys.argv
 MISC = os.path.join(GBA, "graphics/object_events/pics/misc")
 

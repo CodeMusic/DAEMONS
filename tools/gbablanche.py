@@ -38,7 +38,7 @@ PALE is desaturation toward the colour's own grey, then a lift toward white
 that is gentler the darker the colour -- so a roof fades and an outline stays an
 outline.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -50,7 +50,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/blanche_pale.png"
+PREVIEW = daemonslib.preview("blanche_pale.png")   # /tmp/blanche_pale.png (T-421)
 WRITE = "--write" in sys.argv
 
 ROW_PALE = 10

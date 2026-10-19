@@ -22,14 +22,14 @@ THE FRAME COUNT AND THE FRAME SIZE ARE FIXED. The pic tables index a set number 
 tile size, and the ROM reads whatever follows if a sheet is short -- so every sheet is measured
 against the file already on disk before a byte is written.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import read_pal, PEOPLE, WHITE
 from genleaders import BLUE, PINK
 
-PREVIEW = "/tmp/odd_ow.png"
+PREVIEW = daemonslib.preview("odd_ow.png")   # /tmp/odd_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 

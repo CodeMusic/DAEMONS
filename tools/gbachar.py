@@ -47,7 +47,7 @@ ellipse, but oak_speech draws platform.png separately underneath and the
 battle screen draws its own -- so the ellipse has to come off or the character
 stands on two of them.
 """
-import os, sys
+import os, sys, daemonslib
 import numpy as np
 from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -923,8 +923,8 @@ def main():
                     for c in rows:
                         f.write("%d %d %d\n" % c)
             print("           written")
-    prev.save("/tmp/char.png")
-    print("  preview   /tmp/char.png")
+    prev.save(daemonslib.preview("char.png"))
+    print("  preview   %s" % daemonslib.preview("char.png"))
 
 if __name__ == "__main__":
     main()

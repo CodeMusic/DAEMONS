@@ -15,12 +15,12 @@ and the second frame is what an inanimate object shows when nothing is animating
 same. Sixteen colours, entry 0 transparent, and it borrows the ITEM BALL's own palette slot so no new
 palette tag is spent.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "engineGba/graphics/object_events/pics/misc/plugin_disc.png")
-PREVIEW = "/tmp/plugin_disc.png"
+PREVIEW = daemonslib.preview("plugin_disc.png")   # /tmp/plugin_disc.png (T-421)
 WRITE = "--write" in sys.argv
 
 #  Matched to the item ball's own palette so the slot it borrows already holds these.

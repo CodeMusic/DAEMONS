@@ -20,7 +20,7 @@ The text box each sign opens is unchanged; the board is only its cover. Each
 cell keeps its ground in the bottom layer and its attributes and collision; the
 board replaces the top layer, and every changed cell gets a new block.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +28,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/blanche_signs.png"
+PREVIEW = daemonslib.preview("blanche_signs.png")   # /tmp/blanche_signs.png (T-421)
 WRITE = "--write" in sys.argv
 ROW = 10
 WHITE, PALE, LIGHT, MID, GREY, SHADE, INK = 1, 2, 3, 4, 5, 6, 7

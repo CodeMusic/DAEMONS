@@ -24,7 +24,7 @@ row 6 (the deeper blues), so the pattern only uses indices that mean the same
 thing in both: 6 the body, 5 a step lighter, 3 lighter again, 1 the speck.
 Open water is 6 with 5 dashes; shallow water is 5 with 3 dashes and 6 beneath.
 """
-import importlib.util, json, os, re, struct, sys
+import importlib.util, json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -34,7 +34,7 @@ G = importlib.util.module_from_spec(spec); spec.loader.exec_module(G)
 
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
-PREVIEW = "/tmp/world_water.png"
+PREVIEW = daemonslib.preview("world_water.png")   # /tmp/world_water.png (T-421)
 WRITE = "--write" in sys.argv
 FRAMES = 8
 BODY, DASH, CREST, SPECK = range(4)

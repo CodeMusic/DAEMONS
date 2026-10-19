@@ -81,13 +81,27 @@ def dirty():
     return seen
 
 
+#  T-421: a report-mode preview goes to /tmp/<name> unless DAEMONS_PREVIEW_DIR says otherwise (daemonslib.preview),
+#  so this run's previews go to a directory of its own, removed at exit -- not over another session's /tmp/<name>.
+_PREVIEWS = None
+
+
+def preview_env():
+    global _PREVIEWS
+    if _PREVIEWS is None:
+        import atexit, shutil, tempfile
+        _PREVIEWS = tempfile.mkdtemp(prefix="check_generators-previews-")
+        atexit.register(shutil.rmtree, _PREVIEWS, True)
+    return dict(os.environ, DAEMONS_PREVIEW_DIR=_PREVIEWS)
+
+
 def run(f):
     t0 = time.time()
     code, last = 0, ""
     for extra in ARGS.get(f[:-3], [[]]):
         try:
             r = subprocess.run([sys.executable, os.path.join(TOOLS, f)] + extra, cwd=ROOT, capture_output=True,
-                               text=True, timeout=LIMIT, stdin=subprocess.DEVNULL)
+                               text=True, timeout=LIMIT, stdin=subprocess.DEVNULL, env=preview_env())
             out = (r.stderr.strip() or r.stdout.strip()).splitlines()
             if r.returncode != 0:
                 code, last = r.returncode, " ".join(extra) + ": " + (out[-1] if out else "")
@@ -222,7 +236,8 @@ def writes():
                 #  --over-later-work: a tool the record marks STALE refuses a plain --write now (driftguard.py, T-293),
                 #  and this is the one place that must see what it WOULD do, to keep the record true.
                 r = subprocess.run([sys.executable, os.path.join(d, "tools", f)] + extra + ["--write", "--over-later-work"], cwd=d,
-                                   capture_output=True, text=True, timeout=600, stdin=subprocess.DEVNULL)
+                                   capture_output=True, text=True, timeout=600, stdin=subprocess.DEVNULL,
+                                   env=preview_env())
                 if "Traceback (most recent call last)" in r.stderr:
                     crashes.append((name, extra, r.stderr.strip().splitlines()[-1]))
             except subprocess.TimeoutExpired:

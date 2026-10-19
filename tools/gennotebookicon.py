@@ -21,7 +21,7 @@ rather than copied, as the PLUGIN discs are (T-211). Nothing in the game says wh
 FORMAT. 24x24, mode "P", sixteen colours, entry 0 transparent; the palette ships beside the picture as a
 JASC .pal the build turns into a .gbapal (the same as OPUS's, T-197).
 """
-import os, re, sys
+import os, re, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -121,5 +121,5 @@ for stem, key, textbook in (("notebook", "PSYCHIC", False), ("textbook", "NORMAL
             f.write("JASC-PAL\n0100\n16\n" + "".join("%d %d %d\n" % c for c in PAL))
         print("  written graphics/items/icons/%s.png and its palette" % stem)
     else:
-        img.convert("RGB").resize((24 * 8, 24 * 8), Image.NEAREST).save("/tmp/%s_icon.png" % stem)
-        print("  preview /tmp/%s_icon.png" % stem)
+        img.convert("RGB").resize((24 * 8, 24 * 8), Image.NEAREST).save(daemonslib.preview("%s_icon.png" % stem))
+        print("  preview %s" % daemonslib.preview("%s_icon.png" % stem))

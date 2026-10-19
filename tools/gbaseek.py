@@ -33,7 +33,7 @@ sixteen pixels wide. Moving one coordinate in oak_speech.c was cheaper than
 shrinking the character. The overlay only has to cover the SCAN-LINE, not the
 whole faceplate -- the body's faceplate is already dark and static underneath.
 """
-import os, sys
+import os, sys, daemonslib
 import numpy as np
 from PIL import Image
 from scipy import ndimage
@@ -254,8 +254,8 @@ def main():
     for n, st in enumerate(states):
         prev.paste(compose(*st).resize((32 * S, 32 * S), Image.NEAREST),
                    (n * (32 * S + 12), 2))
-    prev.save("/tmp/seek.png")
-    print("  preview    /tmp/seek.png  -- %s" % ", ".join(labels))
+    prev.save(daemonslib.preview("seek.png"))
+    print("  preview    %s  -- %s" % (daemonslib.preview("seek.png"), ", ".join(labels)))
 
     if "--write" in sys.argv:
         pb.save(os.path.join(DST, "body.png"))

@@ -17,7 +17,7 @@ gyms and houses, so they are left alone; the new tiles go into the Mart tileset,
 which had 36. The bins' ambers go in the Mart tileset's palette row 10, which was
 empty -- THE REPO's colour is golden amber (9.23).
 """
-import json, os, struct, sys
+import json, os, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -29,7 +29,7 @@ GBA = os.path.join(ROOT, "engineGba")
 SD = os.path.join(GBA, "data/tilesets/secondary/mart")
 PD = os.path.join(GBA, "data/tilesets/primary/building")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/repo.png"
+PREVIEW = daemonslib.preview("repo.png")   # /tmp/repo.png (T-421)
 WRITE = "--write" in sys.argv
 MAX_TILES = 384
 ROW = 10

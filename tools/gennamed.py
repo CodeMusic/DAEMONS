@@ -36,7 +36,7 @@ FRAME COUNTS ARE VANILLA'S. Six of these sheets hold nine frames; five hold THRE
 tables name ids 0,1,2 and repeat them, and every one of those objects is MOVEMENT_TYPE_FACE_DOWN.
 Every sheet here overwrites a vanilla filename, so each inherits vanilla's own conversion rule.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -44,7 +44,7 @@ from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, PEOPLE
 from genleaders import BLUE, PINK
 from gentowns import mammal, bird, fig, put, TAIL
 
-PREVIEW = "/tmp/named_ow.png"
+PREVIEW = daemonslib.preview("named_ow.png")   # /tmp/named_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 

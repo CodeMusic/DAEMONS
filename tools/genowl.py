@@ -35,14 +35,14 @@ feet trade. From behind the tail feathers sway; from the side they flick.
 
 HIS OWN PALETTE, in PALSLOT_NPC_SPECIAL: nothing else stands in that house.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PIC = os.path.join(GBA, "graphics/object_events/pics/people/owl.png")
 PAL = os.path.join(GBA, "graphics/object_events/palettes/npc_owl.pal")
-PREVIEW = "/tmp/owl_ow.png"
+PREVIEW = daemonslib.preview("owl_ow.png")   # /tmp/owl_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 PALETTE = [

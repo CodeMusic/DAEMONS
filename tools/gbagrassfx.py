@@ -16,7 +16,7 @@ water blues and everything else stay, so the copy is a drop-in for the same
 sprite sheet. field_effect_helpers.c loads it under its own tag when the grass
 cell underfoot is drawn in Blanche's ground row.
 """
-import importlib.util, os, sys
+import importlib.util, os, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -28,7 +28,7 @@ GBA = os.path.join(ROOT, "engineGba")
 SRC = os.path.join(GBA, "graphics/field_effects/palettes/general_1.pal")
 OUT = os.path.join(GBA, "graphics/field_effects/palettes/blanche_grass.pal")
 SHEETS = ["graphics/field_effects/pics/tall_grass.png", "graphics/field_effects/pics/jump_tall_grass.png"]
-PREVIEW = "/tmp/blanche_grass_fx.png"
+PREVIEW = daemonslib.preview("blanche_grass_fx.png")   # /tmp/blanche_grass_fx.png (T-421)
 WRITE = "--write" in sys.argv
 
 C = {n: G.GROUND_COLOURS[n - 1] for n in range(1, 9)}          # GRASS, TIP, TUFT, DARK, CHALK, SPECK, SHADE, EDGE

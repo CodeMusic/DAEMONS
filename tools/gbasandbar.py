@@ -37,7 +37,7 @@ body, the arms and every edge that meets blue water are primary. The one inner
 corner vanilla never drew -- sand missing only its south-east -- is a new
 primary block made from vanilla's own corner tile, unflipped.
 """
-import json, os, struct, subprocess, sys
+import json, os, struct, subprocess, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -46,7 +46,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 BD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 CD = os.path.join(GBA, "data/tilesets/secondary/cinnabar_island")
-PREVIEW = "/tmp/sandbar.png"
+PREVIEW = daemonslib.preview("sandbar.png")   # /tmp/sandbar.png (T-421)
 WRITE = "--write" in sys.argv
 BEFORE = "fb6f7ec66^"                 # the engine before the first sandbar: the sea rows and Quicksilver's tileset
 

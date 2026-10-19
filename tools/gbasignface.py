@@ -15,13 +15,13 @@ without saying anything.
 Blanche's two copies of the block draw the same tiles and change with it. The
 Building tileset (every interior) has its own tiles 304..321 and is not touched.
 """
-import os, sys
+import os, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PD = os.path.join(ROOT, "engineGba", "data/tilesets/primary/general")
-PREVIEW = "/tmp/signface.png"
+PREVIEW = daemonslib.preview("signface.png")   # /tmp/signface.png (T-421)
 WRITE = "--write" in sys.argv
 TILES = (304, 305, 320, 321)          # top-left, top-right, bottom-left, bottom-right
 

@@ -31,12 +31,12 @@ WHAT gbasprite.py EXPECTS, and what these files therefore are: 64x64 RGBA, the s
 NEUTRAL GREY -- it ramps the greys into the daemon's own type colour, so anything coloured here would fight it --
 and the four STREAK MARKERS painted on the body in its own marker colours, one per routine slot (9.4 as amended).
 """
-import ast, os, sys
+import ast, os, sys, daemonslib
 from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "gfx/daemons")
-PREVIEW = "/tmp/daemons_code.png"
+PREVIEW = daemonslib.preview("daemons_code.png")   # /tmp/daemons_code.png (T-421)
 WRITE = "--write" in sys.argv
 
 #  The five greys gbasprite.py ramps, darkest last; K is the outline.

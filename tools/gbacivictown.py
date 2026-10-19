@@ -42,7 +42,7 @@ blocks this tool made; a rerun draws over the originals, reuses its own block
 ids and frees its old tiles. gbacivic.py reads the same file and leaves those
 cells alone.
 """
-import importlib.util, json, math, os, re, struct, sys
+import importlib.util, json, math, os, re, struct, sys, daemonslib
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -57,7 +57,7 @@ GBA = C.GBA
 PD = C.PD
 RULES = C.RULES
 MANIFEST = os.path.join(ROOT, "tools", "gbacivictown.json")
-PREVIEW = "/tmp/civic_town.png"
+PREVIEW = daemonslib.preview("civic_town.png")   # /tmp/civic_town.png (T-421)
 WRITE = "--write" in sys.argv
 BAND = 7
 ANIM_SLOTS = {"gTileset_CeladonCity": range(744, 776)}      # TilesetAnim_Celadon writes from 744

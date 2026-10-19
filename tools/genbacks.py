@@ -45,14 +45,14 @@ SCOPE IS TWO, NOT FOUR. The old man and the pokedude are not the player and have
 wants a decision before drawing, so they keep vanilla's. RS_BRENDAN and RS_MAY are reachable only
 through the Ruby/Sapphire link-partner path and stay vanilla under T-120's cut-off.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA
 from driftguard import refuse_over_later_work
 
-PREVIEW = "/tmp/backs.png"
+PREVIEW = daemonslib.preview("backs.png")   # /tmp/backs.png (T-421)
 WRITE = "--write" in sys.argv
 BACKS = os.path.join(GBA, "graphics/trainers/back_pics")
 PALS = os.path.join(GBA, "graphics/trainers/palettes")

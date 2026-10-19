@@ -53,7 +53,7 @@ size reads as the rider falling -- so the spokes flicker instead, which is what
 spokes do (the GB build's bike made the same call). The rod passes behind the
 body when it is cocked and in front of it when it is cast.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -61,7 +61,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PEOPLE = os.path.join(GBA, "graphics/object_events/pics/people")
 BLOB = os.path.join(GBA, "graphics/object_events/pics/misc/surf_blob.png")
 PAL = os.path.join(GBA, "graphics/object_events/palettes/player.pal")
-PREVIEW = "/tmp/player_ow.png"
+PREVIEW = daemonslib.preview("player_ow.png")   # /tmp/player_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 # Each entry keeps VANILLA'S ROLE for that index, so vanilla art drawn with it

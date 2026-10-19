@@ -18,13 +18,13 @@ Re-tiling: every cell inside the badge is redrawn, its 8x8 tiles deduplicated, a
 the new tiles written into the tile slots the badge used and nothing else used
 (no other title cell, nothing in screen.bin). It stops if they do not fit.
 """
-import os, struct, sys
+import os, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DIR = os.path.join(GBA, "graphics/teachy_tv")
-PREVIEW = "/tmp/stream.png"
+PREVIEW = daemonslib.preview("stream.png")   # /tmp/stream.png (T-421)
 WRITE = "--write" in sys.argv
 BOX = (5, 1, 26, 12)                     # the badge's cells: x0, y0, x1, y1 (exclusive)
 PAL = 2

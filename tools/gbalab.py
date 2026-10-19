@@ -41,7 +41,7 @@ WHERE IT GOES, measured rather than assumed:
   it as DOOR_SIZE_1x2 in row 9. It was 16x16 at first, and only the lower half
   of the door opened. --door redraws it alone, since --write runs once.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,7 +50,7 @@ TS = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 PRIMARY = os.path.join(GBA, "data/tilesets/primary/general")
 RULES = os.path.join(GBA, "tileset_rules.mk")
 DOOR_PNG = os.path.join(GBA, "graphics/door_anims/oaks_lab.png")
-PREVIEW = "/tmp/lab_exterior.png"
+PREVIEW = daemonslib.preview("lab_exterior.png")   # /tmp/lab_exterior.png (T-421)
 WRITE = "--write" in sys.argv
 DOOR_ONLY = "--door" in sys.argv
 

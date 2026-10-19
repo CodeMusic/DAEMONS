@@ -50,7 +50,7 @@ Statue heads are drawn on the top layer, as vanilla does, so the player walks be
 Everything is flattened onto the bottom layer, as the player's house is (T-89):
 nothing in either room draws over a sprite.
 """
-import importlib.util, json, math, os, re, struct, subprocess, sys, tempfile
+import importlib.util, json, math, os, re, struct, subprocess, sys, tempfile, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from collections import Counter
 from PIL import Image
@@ -2864,7 +2864,7 @@ def build(name, cfg):
     sheet = Image.new("RGB", (max(s.width for s in shots), sum(s.height + 8 for s in shots)), (30, 30, 30)); y = 0
     for s in shots:
         sheet.paste(s, (0, y)); y += s.height + 8
-    path = "/tmp/interior_%s.png" % name
+    path = daemonslib.preview("interior_%s.png" % name)
     sheet.resize((sheet.width * 2, sheet.height * 2), Image.NEAREST).save(path)
     print("  %s: preview %s" % (name, path))
     if not ok:

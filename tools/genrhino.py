@@ -29,14 +29,14 @@ pic table takes `overworld_frame(pic, 4, 4, k)`, and the info carries .size 512 
 and subsprite tables -- a 32x32 sheet cut 2x4 is trap 15 with more tiles, and decoding one 2x4 to
 check it once reported five of the player's own sprites as scrambled when nothing was wrong.
 """
-import glob, json, os, re, sys
+import glob, json, os, re, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import ensure_rule, PEOPLE, GBA
 from gentowns import register_one, GEOM_32x32
 
-PREVIEW = "/tmp/rhino.png"
+PREVIEW = daemonslib.preview("rhino.png")   # /tmp/rhino.png (T-421)
 WRITE = "--write" in sys.argv
 SRC, DST = "biker.png", "cue_ball.png"
 CONST, CNAME = "OBJ_EVENT_GFX_CUE_BALL", "CueBall"

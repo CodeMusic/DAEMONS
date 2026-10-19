@@ -23,13 +23,13 @@ WHICH INDICES. gbagfx converts this sheet by index % 16, which every existing ic
 50/51/60, THR 34/35/44, HNG 66/67/76 -- all of them 2, 3 and 12 in their own block. 12 is the one colour
 FillPalette replaces at runtime with sStatusIconColors[], so 12 is the ground and 2 is the mark.
 """
-import os, sys
+import os, sys, daemonslib
 import numpy as np
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHEET = os.path.join(ROOT, "engineGba/graphics/battle_interface/healthbox_elements.png")
-PREVIEW = "/tmp/thrash_icon.png"
+PREVIEW = daemonslib.preview("thrash_icon.png")   # /tmp/thrash_icon.png (T-421)
 WRITE = "--write" in sys.argv
 #  (destination tile, source tile) for each battler. Battler 0 uses the three tiles vanilla itself reserved
 #  and never filled; the other three had nowhere to go, so the sheet gains a fourth row and they sit in it.

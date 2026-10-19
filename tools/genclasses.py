@@ -33,7 +33,7 @@ runs. Joining the three finds the objects that BATTLE as one of these four, whic
 that matters -- their current graphics_id is the wrong answer, not the question. Running again after
 --write finds them already correct and does nothing.
 """
-import glob, json, os, re, sys
+import glob, json, os, re, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +41,7 @@ from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, PEOPLE
 from genleaders import BLUE, PINK
 from gentowns import mammal, bird, fig, put, pad, TAIL, register_one, camel
 
-PREVIEW = "/tmp/classes_ow.png"
+PREVIEW = daemonslib.preview("classes_ow.png")   # /tmp/classes_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 

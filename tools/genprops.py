@@ -90,14 +90,14 @@ NO TOOL OWNS pics/misc/. gbabox.py writes item_ball.png because the ball is the 
 gbaplayer.py writes surf_blob.png because you ride it; both are side-effects of their own subject.
 These three are their own subject and belong here.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import read_pal, GBA, GREEN, WHITE
 from genodd import check, build          # guarded by __main__; importing it runs nothing
 
-PREVIEW = "/tmp/props_ow.png"
+PREVIEW = daemonslib.preview("props_ow.png")   # /tmp/props_ow.png (T-421)
 WRITE = "--write" in sys.argv
 MISC = os.path.join(GBA, "graphics/object_events/pics/misc")
 

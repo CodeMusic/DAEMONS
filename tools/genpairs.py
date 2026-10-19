@@ -31,7 +31,7 @@ A head that is turned is drawn full width instead, as the couple's falcon is.
 
 THE BODIES ARE ASSERTED BYTE-IDENTICAL after every run. Only the cleared boxes may change.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -283,8 +283,8 @@ def main():
         prev = Image.new("RGB", (64 * 6 * 2 + 12, 64 * 6), (48, 48, 52))
         prev.paste(src.convert("RGB").resize((384, 384), Image.NEAREST), (0, 0))
         prev.paste(out.convert("RGB").resize((384, 384), Image.NEAREST), (396, 0))
-        prev.save("/tmp/pairs_%s.png" % name)
-        print("  %-14s %d figure(s) redrawn -> /tmp/pairs_%s.png (before, after)" % (name, len(job["figures"]), name))
+        prev.save(daemonslib.preview("pairs_%s.png" % name))
+        print("  %-14s %d figure(s) redrawn -> %s (before, after)" % (name, len(job["figures"]), daemonslib.preview("pairs_%s.png" % name)))
         for f in job["figures"]:
             print("                 %s" % f["why"])
         if WRITE:

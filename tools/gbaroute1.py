@@ -32,7 +32,7 @@ are split by quadrant: the top two from the coloured block, the bottom two from
 the pale one, so the lip -- which vanilla draws entirely in the bottom half --
 belongs to the pale side.
 """
-import json, os, struct, subprocess, sys
+import json, os, struct, subprocess, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -41,7 +41,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/route1_seams.png"
+PREVIEW = daemonslib.preview("route1_seams.png")   # /tmp/route1_seams.png (T-421)
 WRITE = "--write" in sys.argv
 VANILLA = "78917336e^"                  # the commit before Blanche's roads were drawn
 

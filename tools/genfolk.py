@@ -36,14 +36,14 @@ A WALK IS THE ARMS AND THE TAIL, NOT ONLY THE FEET (genclears.py): each walk
 frame drops the figure a row, swings the arms against the legs and sways the
 tail a column. Frame 9, where a sheet has it, is ANIM_RAISE_HAND.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PEOPLE = os.path.join(GBA, "graphics/object_events/pics/people")
 PALS = os.path.join(GBA, "graphics/object_events/palettes")
-PREVIEW = "/tmp/folk_ow.png"
+PREVIEW = daemonslib.preview("folk_ow.png")   # /tmp/folk_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 

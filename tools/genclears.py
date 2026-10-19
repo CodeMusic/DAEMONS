@@ -54,7 +54,7 @@ in PALSLOT_NPC_SPECIAL -- the one slot patched per object from its own tag.
 Crystal and Al share three maps; two different tags in that slot would recolour
 whichever spawned first. One tag cannot.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -65,7 +65,7 @@ PAL = os.path.join(GBA, "graphics/object_events/palettes/npc_clears.pal")
 # 16x288, with a palette of its own (T-87) -- or "RIVAL's NAME?" shows vanilla's boy
 NAMING = os.path.join(GBA, "graphics/naming_screen/rival.png")
 NAMING_PAL = os.path.join(GBA, "graphics/naming_screen/rival.pal")
-PREVIEW = "/tmp/clears_ow.png"
+PREVIEW = daemonslib.preview("clears_ow.png")   # /tmp/clears_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 PALETTE = [

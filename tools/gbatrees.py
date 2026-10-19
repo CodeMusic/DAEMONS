@@ -26,14 +26,14 @@ its foot, lit from above so it is its own mirror image (vanilla reuses pieces
 flipped). Where the old tree or its shadow was and the new one is not, a
 bottom-layer tile gets grass and a top-layer tile gets transparency.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
-PREVIEW = "/tmp/world_trees.png"
+PREVIEW = daemonslib.preview("world_trees.png")   # /tmp/world_trees.png (T-421)
 WRITE = "--write" in sys.argv
 
 LIT, LEAF, DARK, DEEP, BARK, BARKD = 1, 2, 3, 4, 5, 6

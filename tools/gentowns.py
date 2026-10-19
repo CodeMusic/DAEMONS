@@ -39,14 +39,14 @@ become locals and AL still walks in his own colours. On QUICKSILVER's island the
 be made to fit (ten colours, four of them nowhere near mercury, two letters free), so that map
 keeps vanilla's people and revert_plan() puts back the two this tool took.
 """
-import glob, json, os, re, subprocess, sys
+import glob, json, os, re, subprocess, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import overlay, figure, check, sheet, ensure_rule, PEOPLE, GBA
 from genleaders import H, S
 
-PREVIEW = "/tmp/towns_ow.png"
+PREVIEW = daemonslib.preview("towns_ow.png")   # /tmp/towns_ow.png (T-421)
 WRITE = "--write" in sys.argv
 PALS = os.path.join(GBA, "graphics/object_events/palettes")
 KEY = (115, 197, 164)

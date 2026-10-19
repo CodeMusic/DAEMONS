@@ -21,13 +21,13 @@ HOW. The subject is cut from the drawing by its own border colour, scaled to fit
 nearest at this ratio drops whole limbs), and each pixel is mapped to the nearest colour in the sheet's palette in
 CIE-ish weighted RGB, with a transparency cut so the ground does not become a colour.
 """
-import os, sys
+import os, sys, daemonslib
 import numpy as np
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 E = os.path.join(ROOT, "engineGba")
-OUT = "/tmp/reduce.png"
+OUT = daemonslib.preview("reduce.png")   # /tmp/reduce.png (T-421)
 
 TRIAL = [   # label, the 64px drawing, the sheet it would go into, which frame is standing-down
     ("YOUNGSTER (a person)", "engineGba/graphics/trainers/front_pics/youngster_front_pic.png",

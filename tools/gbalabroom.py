@@ -41,7 +41,7 @@ THE TILESET IS REBUILT, not appended to. It is this room's alone since T-54,
 no script names or changes one of its blocks, and the room needs more tiles
 than the old tileset had free.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from daemonslib import write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -50,7 +50,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/building")
 SD = os.path.join(GBA, "data/tilesets/secondary/blanche_lab")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/lab_room.png"
+PREVIEW = daemonslib.preview("lab_room.png")   # /tmp/lab_room.png (T-421)
 WRITE = "--write" in sys.argv
 
 CORE = [(250, 248, 242), (230, 226, 216), (208, 202, 190), (172, 166, 156), (116, 110, 108), (56, 52, 60)]

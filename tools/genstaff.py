@@ -23,14 +23,14 @@ gyms use, and nothing outside them changes. One species per gym, chosen for the 
 Trainers walk up to a player they spot, so every sheet has the walk frames. Each draws from the
 palette slot its object graphics name (the same slots the leaders use; no colour changes).
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, WHITE, GREEN, PEOPLE
 from genleaders import H, S, BLUE, PINK
 
-PREVIEW = "/tmp/staff_ow.png"
+PREVIEW = daemonslib.preview("staff_ow.png")   # /tmp/staff_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 # ------------------------------------------------------------------ SLATE: a young beaver (npc_green)

@@ -22,13 +22,13 @@ EACH HEAD IS DRAWN AS A HALF AND MIRRORED. Nine columns become eighteen, which i
 width, and it makes a symmetry error impossible rather than merely unlikely -- the thing that went
 wrong four times when this project drew by eye.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA, PEOPLE
 
-PREVIEW = "/tmp/couple.png"
+PREVIEW = daemonslib.preview("couple.png")   # /tmp/couple.png (T-421)
 WRITE = "--write" in sys.argv
 PIC = os.path.join(GBA, "graphics/trainers/front_pics/cool_couple_front_pic.png")
 PAL = os.path.join(GBA, "graphics/trainers/palettes/cool_couple.pal")

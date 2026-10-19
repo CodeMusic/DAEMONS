@@ -19,7 +19,7 @@ clump, each of its row-0 jobs given Blanche's colour for that job:
 so the blades stand lighter than the mass they grow from, as the coloured ones
 do. gbagrassfx.py gives the walking effect the same colour per job.
 """
-import importlib.util, json, os, struct, sys
+import importlib.util, json, os, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +31,7 @@ W = load("gbagrass")
 
 GBA = os.path.join(ROOT, "engineGba")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
-PREVIEW = "/tmp/pale_grass.png"
+PREVIEW = daemonslib.preview("pale_grass.png")   # /tmp/pale_grass.png (T-421)
 WRITE = "--write" in sys.argv
 TALL_GRASS_BEHAVIOUR = 0x02
 JOB = {W.BASE: G.GRASS, W.GLIGHT: G.TIP, W.TUFT: G.TUFT, W.TDARK: G.DARK,

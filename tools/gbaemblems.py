@@ -16,6 +16,7 @@ places an emblem maps the roles onto the palette row the building is drawn in,
 so one drawing serves the door, the sign and the floor.
 """
 from PIL import Image
+import daemonslib
 
 EMBLEMS = {
     "CHECKPOINT": [
@@ -125,8 +126,8 @@ def main():
             for x, ch in enumerate(row):
                 if ch != ".":
                     sheet.putpixel((k * 24 + x, y), PREVIEW_COLOURS[kind][ch])
-    sheet.resize((sheet.width * 12, sheet.height * 12), Image.NEAREST).save("/tmp/emblems.png")
-    print("  preview /tmp/emblems.png")
+    sheet.resize((sheet.width * 12, sheet.height * 12), Image.NEAREST).save(daemonslib.preview("emblems.png"))
+    print("  preview %s" % daemonslib.preview("emblems.png"))
 
 
 if __name__ == "__main__":

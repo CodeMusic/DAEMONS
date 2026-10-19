@@ -14,12 +14,12 @@ without saying what OPUS is, which is the same restraint the rest of it keeps.
 FORMAT. Gen 3 item icons are 24x24, mode "P", sixteen colours, with entry 0 transparent, and the palette
 ships beside the picture as a JASC .pal the build turns into a .gbapal.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
-PREVIEW = "/tmp/opus_icon.png"
+PREVIEW = daemonslib.preview("opus_icon.png")   # /tmp/opus_icon.png (T-421)
 WRITE = "--write" in sys.argv
 
 #  The ink is the project's own (T-177/T-184), so the card is outlined in the same black as every daemon.

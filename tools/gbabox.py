@@ -37,7 +37,7 @@ gbagfx builds their .gbapal from the PNG itself.
           graphics/interface/ball_open.png                                16x16
           graphics/pokedex/caught_marker.png                              8x8
 """
-import os, sys, math, struct
+import os, sys, math, struct, daemonslib
 import numpy as np
 from PIL import Image
 
@@ -518,7 +518,7 @@ def main():
     for i, (rel, g, pal) in enumerate(jobs + [("marker", marker(True), None)]):
         im = png(None, g).convert("RGB")
         prev.paste(im.resize((im.width*8, im.height*8), Image.NEAREST), ((i%7)*24*8, 0))
-    prev.save("/tmp/box.png")
+    prev.save(daemonslib.preview("box.png"))
 
     for rel, g, pal in jobs:
         print("  %-52s %dx%d%s" % (rel, g.shape[1], g.shape[0], "  +.pal" if pal else ""))
@@ -567,6 +567,6 @@ def main():
         im = Image.new("P", (8, 8)); im.putdata(out.flatten().tolist())
         im.putpalette(src.getpalette()); im.save(mp)
         print("\n  written.")
-    print("  preview   /tmp/box.png")
+    print("  preview   %s" % daemonslib.preview("box.png"))
 
 main()

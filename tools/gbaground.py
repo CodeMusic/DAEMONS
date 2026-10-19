@@ -38,7 +38,7 @@ THE FLOWERS AND THE WATER MOVE. The shared ones animate General's slots, which
 Blanche no longer draws, so their frames are written to anim/flower and
 anim/water and TilesetAnim_PalletTown copies them to slots 800 and 804.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,7 +46,7 @@ GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/blanche_ground.png"
+PREVIEW = daemonslib.preview("blanche_ground.png")   # /tmp/blanche_ground.png (T-421)
 WRITE = "--write" in sys.argv
 
 GROUND_COLOURS = [(196, 212, 186), (230, 238, 222), (172, 192, 166), (140, 162, 138),

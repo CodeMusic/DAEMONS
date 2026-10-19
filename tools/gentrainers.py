@@ -36,7 +36,7 @@ Still to come in T-120: the biker (twenty frames, its own riding animation), the
 (a 16x16 sheet), the nine-frame worker and chef, the thirty-odd low-use sheets, and every
 trainer portrait.
 """
-import os, sys
+import os, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -44,7 +44,7 @@ from genfolk import overlay, figure, check, sheet, read_pal, PEOPLE, WHITE, GREE
 from genleaders import H, S, BLUE, PINK
 from gentowns import mammal, bird, fig, put, pad, TAIL, CANE, CANE_X
 
-PREVIEW = "/tmp/trainers_ow.png"
+PREVIEW = daemonslib.preview("trainers_ow.png")   # /tmp/trainers_ow.png (T-421)
 WRITE = "--write" in sys.argv
 
 

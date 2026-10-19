@@ -14,7 +14,7 @@ BG0 logo (8bpp, prio 0) / BG1 subtitle (prio 1) / BG2 copyright and PRESS START
 1 -- which on this hardware puts them ABOVE BG1 and BG2 and below BG0. That
 rule is the whole reason PRESS START disappeared.
 """
-import os, struct, sys
+import os, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -147,7 +147,7 @@ def main():
               % ("OBJ  " + png, at[0], at[0]+size[0]-1, at[1], at[1]+size[1]-1))
 
     dst = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv \
-          else "/tmp/title_%s.png" % ed
+          else daemonslib.preview("title_%s.png" % ed)
     out.resize((W * 3, H * 3), Image.NEAREST).save(dst)
     print("    written %s" % dst)
 

@@ -26,7 +26,7 @@ gives the same jobs, so the sprite matches the tile it parts.
 Blanche's pale tall grass (gbaroutes.py) was derived from vanilla's clump
 earlier and keeps that shape until it is re-derived.
 """
-import json, math, os, re, struct, sys
+import json, math, os, re, struct, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -37,7 +37,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 FX = os.path.join(GBA, "graphics/field_effects")
-PREVIEW = "/tmp/world_grass.png"
+PREVIEW = daemonslib.preview("world_grass.png")   # /tmp/world_grass.png (T-421)
 WRITE = "--write" in sys.argv
 
 # vanilla colour -> ours

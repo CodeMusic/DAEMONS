@@ -24,14 +24,14 @@ above ours, an echo of the old mailbox. Nothing else outdoors draws them.
 The Building tileset (every interior) numbers its own tiles 336..369 and is not
 touched: this writes the General sheet only.
 """
-import os, sys
+import os, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
-PREVIEW = "/tmp/mailbox.png"
+PREVIEW = daemonslib.preview("mailbox.png")   # /tmp/mailbox.png (T-421)
 WRITE = "--write" in sys.argv
 TILES = (352, 353, 368, 369)          # top-left, top-right, bottom-left, bottom-right
 LID = (336, 337)                      # vanilla's lid, in the block above: cleared

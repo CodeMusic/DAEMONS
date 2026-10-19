@@ -17,7 +17,7 @@ other flower colour to give; no new hue is added for decoration (9.4). The heads
 sway a pixel either way across the five frames, as vanilla's did, and the static
 tiles hold frame 0 so the tileset reads right before the animation first runs.
 """
-import os, sys
+import os, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 ANIM = os.path.join(PD, "anim/flower")
-PREVIEW = "/tmp/flower.png"
+PREVIEW = daemonslib.preview("flower.png")   # /tmp/flower.png (T-421)
 WRITE = "--write" in sys.argv
 TILES = (508, 509, 510, 511)
 SWAY = (0, 1, 0, -1, 0)                 # the heads' x offset in each of the five frames

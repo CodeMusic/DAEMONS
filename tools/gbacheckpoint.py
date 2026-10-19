@@ -28,7 +28,7 @@ Everything is drawn in palette indices, not colours: row 11 for the rack, row 12
 for the floor, the glow palette for the sprites. New tiles go into slots no used
 block will reference once these blocks are re-pointed.
 """
-import importlib.util, json, os, struct, sys
+import importlib.util, json, os, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -40,7 +40,7 @@ SD = os.path.join(GBA, "data/tilesets/secondary/pokemon_center")
 PD = os.path.join(GBA, "data/tilesets/primary/building")
 PICS = os.path.join(GBA, "graphics/field_effects/pics")
 RULES = os.path.join(GBA, "tileset_rules.mk")
-PREVIEW = "/tmp/checkpoint.png"
+PREVIEW = daemonslib.preview("checkpoint.png")   # /tmp/checkpoint.png (T-421)
 WRITE = "--write" in sys.argv
 MAX_TILES = 384
 

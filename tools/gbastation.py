@@ -14,7 +14,7 @@ The sheet covers the table cell below the book, on the top layer
 over the table, in the Mansion tileset's palette row 9, which nothing else in
 that tileset draws. Its text is read with the log.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -24,7 +24,7 @@ SD = os.path.join(GBA, "data/tilesets/secondary/pokemon_mansion")
 PD = os.path.join(GBA, "data/tilesets/primary/building")
 RULES = os.path.join(GBA, "tileset_rules.mk")
 MAP = os.path.join(GBA, "data/layouts/Route21_North_Station/map.bin")
-PREVIEW = "/tmp/station.png"
+PREVIEW = daemonslib.preview("station.png")   # /tmp/station.png (T-421)
 WRITE = "--write" in sys.argv
 W = 11
 CELL = (5, 7)                                 # the table cell under the book

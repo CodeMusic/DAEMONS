@@ -22,14 +22,14 @@ chosen, not borrowed, and written to their .pal here (the .gbapal is generated).
 LEFT as vanilla's are: sAnimTable_Standard mirrors a west frame for east, and the cutscenes move them assuming it.
 ss_anne keeps its conversion rule (-mwidth 8 -mheight 4); the Seagallop's 64x64 needs none.
 """
-import os, sys
+import os, sys, daemonslib
 from daemonslib import write_pal   # T-421: one copy, not one per tool
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import GBA
 
-PREVIEW = "/tmp/ships_ow.png"
+PREVIEW = daemonslib.preview("ships_ow.png")   # /tmp/ships_ow.png (T-421)
 WRITE = "--write" in sys.argv
 MISC = os.path.join(GBA, "graphics/object_events/pics/misc")
 PALS = os.path.join(GBA, "graphics/object_events/palettes")

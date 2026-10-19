@@ -35,7 +35,7 @@ the school is drawn in front of it. Colour comes from Callow's rows 7..12 and th
 which Callow's blocks use only in indices 1..4, gives eleven spare indices to concrete, glass, brass and board.
 The door cell is drawn in row 8 alone, because a door's frames are played in one palette row and must match it.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal, write_pal   # T-421: one copy, not one per tool
 from PIL import Image
 
@@ -45,7 +45,7 @@ SD = os.path.join(GBA, "data/tilesets/secondary/viridian_city")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 DOOR_PNG = os.path.join(GBA, "graphics/door_anims/callow_school.png")
 LABELS = os.path.join(GBA, "include/constants/metatile_labels.h")
-PREVIEW = "/tmp/schoolfront.png"
+PREVIEW = daemonslib.preview("schoolfront.png")   # /tmp/schoolfront.png (T-421)
 WRITE = "--write" in sys.argv
 MAX_TILES = MAX_BLOCKS = 384
 LAYOUT = "LAYOUT_VIRIDIAN_CITY"

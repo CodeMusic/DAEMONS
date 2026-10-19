@@ -32,7 +32,7 @@ lapels, and her top in the blue, which is the nearest the row has.
 At eleven pixels a portrait is a head and a collar. The ears are what say fox;
 they go to the very top of the frame.
 """
-import os, struct, sys
+import os, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +41,7 @@ TILES = os.path.join(GBA, "data/tilesets/secondary/lab/tiles.png")
 PRIMARY_METATILES = os.path.join(GBA, "data/tilesets/primary/building/metatiles.bin")
 LAB_METATILES = os.path.join(GBA, "data/tilesets/secondary/lab/metatiles.bin")
 PAL0 = os.path.join(GBA, "data/tilesets/primary/building/palettes/00.pal")
-PREVIEW = "/tmp/founder.png"
+PREVIEW = daemonslib.preview("founder.png")   # /tmp/founder.png (T-421)
 WRITE = "--write" in sys.argv
 NUM_TILES_IN_PRIMARY = NUM_METATILES_IN_PRIMARY = 640
 
