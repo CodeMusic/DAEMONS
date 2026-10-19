@@ -46,11 +46,11 @@ def guide():
     im = book("guide_cover.png"); d = ImageDraw.Draw(im); w = im.width
     words = g["title"].split(" "); big = " ".join(words[-2:]); rest = words[:-2]
     cut = min(range(1, len(rest)), key=lambda k: abs(len(" ".join(rest[:k])) - len(" ".join(rest[k:])))) if len(rest) > 1 else len(rest)
-    ink = "#f3f4f6"                                  # placed as the app places them (at 2x there: 10, 27, 50, 288)
+    ink = "#f3f4f6"                                  # placed as the app places them (at 2x there: 10, 27, 50, 296)
     spaced(d, " ".join(rest[:cut]), font(20), 15, w, ink, 1.5)
     spaced(d, " ".join(rest[cut:]), font(20), 40, w, ink, 1.5)
     spaced(d, big, font(43), 72, w, ink, 3)
-    spaced(d, g.get("author", ""), font(18), 432, w, ink, 1.5)
+    spaced(d, g.get("author", ""), font(18), 444, w, ink, 1.5)   # under the art, clear of it (the user, 2026-10-19)
     return im
 
 
