@@ -96,8 +96,13 @@ def emit(group, table, fill, size):
     return block
 
 def replace(body, group, block):
-    if re.search(r"^%s::" % group, body, re.M):
-        body = re.sub(r"\n\t\.align 2\n%s::\n(?:\t\w+.*\n)+" % group, "", body)
+    #  T-421: in place where the group already stands. It used to be cut out and appended, which carried every group
+    #  written after it (geninstruments' voicegroup193, T-425) above it on each run -- drift with nothing changed.
+    pat = r"\n\t\.align 2\n%s::\n(?:\t\w+.*\n)+" % group
+    found = re.findall(pat, body)
+    if found:
+        assert len(found) == 1, "%s stands %d times in voice_groups.inc" % (group, len(found))
+        return re.sub(pat, lambda m: block, body)
     return body.rstrip("\n") + "\n" + block
 
 def main():

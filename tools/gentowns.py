@@ -745,7 +745,12 @@ def register():
 
     # the text colour table pairs gfx ids two at a time; locals speak in the neutral colour
     ev = open(os.path.join(GBA, "include/constants/event_objects.h")).read()
-    pat = "|".join([r"OBJ_EVENT_GFX_TOWN_\w+"] + ["OBJ_EVENT_GFX_" + g["const"] for g in GUESTS])
+    #  T-421: only the sheets this tool registers. OBJ_EVENT_GFX_TOWN_\w+ also caught genlyrebird's
+    #  TOWN_CALLOW_LYREBIRD (id 228), and an entry that far out grows the table past ids 207-227 -- DAD, TY, the firs
+    #  -- whose missing entries would then read 0 (MALE, blue) where they now fall off the end and read NEUTRAL.
+    ours = ["OBJ_EVENT_GFX_TOWN_%s_%s" % (name, role.upper()) for _, name, _, _, roles in TOWNS
+            for role in ROLES if role in roles]
+    pat = "|".join(ours + ["OBJ_EVENT_GFX_" + g["const"] for g in GUESTS])
     ids = {c: int(n) for c, n in re.findall(r"#define (%s) (\d+)" % pat, ev)}
 
     def colours(s):
