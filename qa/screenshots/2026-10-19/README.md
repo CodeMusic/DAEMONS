@@ -61,3 +61,9 @@ The playground's own companion, fed the browser game's save: ARTSAI, SENT from t
 The playground's own companion, fed the browser game's save: ARTSAI, SENT from the party, taken at the COMPANION tab's SYNC, and AWAY in the game when it starts again from the save the companion wrote (C-169).
 
 ![19Oct2026 - T428 - the playgrounds companion carries a daemon SENT in the browser - 12](19Oct2026%20-%20T428%20-%20the%20playgrounds%20companion%20carries%20a%20daemon%20SENT%20in%20the%20browser%20-%2012.jpg)
+
+### 19Oct2026 - T428 - the COMPANION tab from the playgrounds own export of the site - 13
+
+The playground's COMPANION tab on its own static export of the companion's site (/companion-site/, same origin, no Expo dev server): a DEBUG game's SENT CAREMUSAI on TODAY. The pane's network log shows no request to port 8081.
+
+![19Oct2026 - T428 - the COMPANION tab from the playgrounds own export of the site - 13](19Oct2026%20-%20T428%20-%20the%20COMPANION%20tab%20from%20the%20playgrounds%20own%20export%20of%20the%20site%20-%2013.jpg)
