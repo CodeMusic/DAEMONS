@@ -366,24 +366,14 @@ def load_hues(tn):
     coeffs = [float(x) for x in re.findall(r'(?:up|dn)\((0\.\d+)\)', fn)]
     return shipped, coeffs
 
+#  T-421: the one reader, tools/fontwidth.py -- the copy here read the apostrophe as 0px
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fontwidth import all_glyph_widths, charmap as _engine_charmap  # noqa: E402
+
+
 def load_font():
-    src = gba_read("src/text.c")
-    tables = {n: [int(x) for x in re.findall(r'\d+', b)] for n, b in
-              re.findall(r'(sFont\w*LatinGlyphWidths)\[\]\s*=\s*\{(.*?)\};', src, re.S)}
-    cm = {}
-    for line in open(os.path.join(GBA, "charmap.txt"), encoding="utf-8"):
-        body = line.split("@")[0].strip()
-        if "=" not in body:
-            continue
-        k, v = (p.strip() for p in body.split("=", 1))
-        if len(k) == 3 and k[0] == k[2] == "'":
-            k = k[1]
-        elif len(k) > 1 and k[0] == k[-1] == '"':
-            k = k[1:-1]
-        try:
-            cm[k] = int(v.split()[0], 16)
-        except ValueError:
-            pass
+    tables = all_glyph_widths()
+    cm = _engine_charmap()
     def width(s, table):
         t = tables[table]
         return sum(t[cm[c]] for c in s if c in cm and cm[c] < len(t))

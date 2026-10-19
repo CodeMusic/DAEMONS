@@ -36,28 +36,14 @@ OUT = os.path.join(GBA, "src", "data", "attendant_dreams.h")
 WRITE = "--write" in sys.argv
 
 
-def _font():
-    """The message box's font: glyph widths from src/text.c, keyed through charmap.txt (as port_dialogue reads it --
-    copied, not imported, because importing that tool runs it)."""
-    body = re.search(r'sFontNormalLatinGlyphWidths\[\]\s*=\s*\{(.*?)\};',
-                     open(os.path.join(GBA, "src/text.c"), encoding="utf-8").read(), re.S).group(1)
-    widths = [int(x) for x in re.findall(r'\d+', body)]
-    cm = {}
-    for line in open(os.path.join(GBA, "charmap.txt"), encoding="utf-8"):
-        line = line.split('@')[0].strip()
-        if '=' not in line:
-            continue
-        k, v = (p.strip() for p in line.split('=', 1))
-        if len(k) == 3 and k[0] == k[2] == "'":
-            k = k[1]
-        elif len(k) > 1 and k[0] == k[-1] == '"':
-            k = k[1:-1]
-        try:
-            cm[k] = int(v, 16)
-        except ValueError:
-            pass
-    return widths, cm
+#  T-421: the one reader, tools/fontwidth.py -- the copies here read the apostrophe as 0px
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fontwidth import font as _engine_font  # noqa: E402
 
+
+def _font():
+    """The message box's font: glyph widths from src/text.c, keyed through charmap.txt."""
+    return _engine_font()
 
 WIDTHS, CHARMAP = _font()
 

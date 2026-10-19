@@ -101,25 +101,13 @@ BUDGET, WIDE = 196, {"data/text/help_system.inc": 220,
                      "data/text/new_game_intro.inc": 220}
 
 # ------------------------------------------------------------------ the font
+#  T-421: the one reader, tools/fontwidth.py -- the copies here read the apostrophe as 0px
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fontwidth import font as _engine_font  # noqa: E402
+
+
 def _font():
-    src = open(os.path.join(GBA, "src/text.c"), encoding="utf-8").read()
-    body = re.search(r'sFontNormalLatinGlyphWidths\[\]\s*=\s*\{(.*?)\};', src, re.S).group(1)
-    widths = [int(x) for x in re.findall(r'\d+', body)]
-    cm = {}
-    for line in open(os.path.join(GBA, "charmap.txt"), encoding="utf-8"):
-        line = line.split('@')[0].strip()
-        if '=' not in line:
-            continue
-        k, v = (p.strip() for p in line.split('=', 1))
-        if len(k) == 3 and k[0] == k[2] == "'":
-            k = k[1]
-        elif len(k) > 1 and k[0] == k[-1] == '"':
-            k = k[1:-1]
-        try:
-            cm[k] = int(v, 16)
-        except ValueError:
-            pass
-    return widths, cm
+    return _engine_font()
 
 WIDTHS, CHARMAP = _font()
 # A control code either DRAWS NOTHING or expands to a word. Measuring the

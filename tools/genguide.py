@@ -99,28 +99,13 @@ def check_palette():
     return bad
 
 # ---------------------------------------------------------------- the font, from the engine
-def load_font():
-    src = open(os.path.join(GBA, "src/text.c"), encoding="utf-8").read()
-    def widths(name):
-        return [int(x) for x in re.findall(r"\d+", re.search(name + r"\[\]\s*=\s*\{(.*?)\};", src, re.S).group(1))]
-    cm = {}
-    for line in open(os.path.join(GBA, "charmap.txt"), encoding="utf-8"):
-        line = line.split("@")[0].strip()
-        if "=" not in line:
-            continue
-        k, v = (p.strip() for p in line.split("=", 1))
-        if k == "'\\''":
-            k = "'"
-        elif len(k) == 3 and k[0] == k[2] == "'":
-            k = k[1]
-        else:
-            continue
-        try:
-            cm.setdefault(k, int(v.split()[0], 16))
-        except ValueError:
-            pass
-    return widths("sFontNormalLatinGlyphWidths"), widths("sFontSmallLatinGlyphWidths"), cm
+#  T-421: the one reader, tools/fontwidth.py, shared with every other tool that measures a line
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fontwidth import glyph_widths, charmap as _engine_charmap  # noqa: E402
 
+
+def load_font():
+    return glyph_widths("sFontNormalLatinGlyphWidths"), glyph_widths("sFontSmallLatinGlyphWidths"), _engine_charmap()
 
 WN, WS, CM = load_font()
 
