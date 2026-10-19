@@ -41,8 +41,9 @@ TEXT = {
     "SEEKMUSAI": ("Jolteon",    "Finds the nearest match to anything it is shown. Nearest is not the same as right. Nobody told it. Nobody will."),
     "BUFFER":    ("Kakuna",     "Holds what was taken until there is somewhere to put it. It does not know where that is. It keeps holding."),
     "PENDING":   ("Metapod",    "Waiting to be processed. It has been waiting a while. Nothing has told it how long. It has stopped counting."),
-    "ARTSAI":    ("Mew",        "Observed once, at a facility, by five people. No two accounts agree. The record is filed complete and unread."),
-    "STARR":     ("Mewtwo",     "Assembled from a study of a single prior event. Not derived from a sample. Built to specification. Signed off."),
+    #  ARTSAI and STARR are below, with the four the Game Boy build never wrote: their v11.30 entries here ("Observed
+    #  once, at a facility" / "Assembled from a study") described only how they came to exist, v11.33 replaced them,
+    #  and a dict keeps the later key -- so the earlier two were dead text (T-421).
     "BROADCAST": ("Pidgeot",    "Sends to everyone at once, because it cannot tell who needs it. Most of what it says lands nowhere. It sends again."),
     "RELAY":     ("Pidgeotto",  "Takes what it is handed and hands it on. It does not open it. That is the whole of the job. It is good at it."),
     "PACKET":    ("Pidgey",     "Carries something it cannot read to somewhere it has never been. It does not ask what is inside. It arrives."),
