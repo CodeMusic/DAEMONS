@@ -10,12 +10,14 @@ and the front at 2x. Writes DIR/sheet.png.
 """
 
 import ast, re, sys, glob, os
-sys.path.insert(0, "tools")
+#  T-421: from the repo, wherever it is run from (DIR stays relative to where you are)
+TOOLS = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, TOOLS)
 from PIL import Image, ImageDraw
-tree = ast.parse(open("tools/gbasprite.py").read())
+tree = ast.parse(open(os.path.join(TOOLS, "gbasprite.py")).read())
 keep = [n for n in tree.body if isinstance(n, (ast.Import, ast.ImportFrom, ast.FunctionDef, ast.Assign))]
-ns = {"__file__": "tools/gbasprite.py"}; exec(compile(ast.Module(body=keep, type_ignores=[]), "gbasprite", "exec"), ns)
-T = ns["TYPE_COLOR"]; E = "engineGba/src/data/"
+ns = {"__file__": os.path.join(TOOLS, "gbasprite.py")}; exec(compile(ast.Module(body=keep, type_ignores=[]), "gbasprite", "exec"), ns)
+T = ns["TYPE_COLOR"]; E = os.path.join(os.path.dirname(TOOLS), "engineGba", "src", "data") + "/"
 NAMES = {"NORMAL":"CONTENT","FIGHTING":"LOGIC","FLYING":"VECTOR","POISON":"CORRUPT","GROUND":"STRATUM","ROCK":"LEGACY","BUG":"SWARM",
          "GHOST":"LATENT","STEEL":"HARDENED","FIRE":"ENTROPY","WATER":"FLOW","GRASS":"GROWTH","ELECTRIC":"SIGNAL","PSYCHIC":"CONTEXT",
          "ICE":"FROZEN","DRAGON":"EMERGENT","DARK":"OPAQUE"}
@@ -37,6 +39,8 @@ def moves_at(sp, lvl):
     return got[-4:]
 def mtype(mv): return re.search(r"\[%s\] =.*?\.type = TYPE_(\w+)" % mv, moves_h, re.S).group(1)
 def mname(mv): return re.search(r"\[%s\]\s*= _\(\"(.*?)\"\)" % mv, move_names).group(1)
+if len(sys.argv) < 3:
+    sys.exit(__doc__)
 R = sys.argv[1]; rows = [l.split() for l in sys.argv[2:]]
 def render(gp, body, mts):
     grid, pal = gp; pal = list(pal)

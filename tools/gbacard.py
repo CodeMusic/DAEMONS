@@ -13,7 +13,8 @@ import os, sys
 import numpy as np
 from PIL import Image
 
-GBA = "engineGba"
+#  T-421: from the repo, wherever it is run from
+GBA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engineGba")
 P = os.path.join(GBA, "graphics/trainer_card/tiles.png")
 WRITE = "--write" in sys.argv
 im = Image.open(P); a = np.asarray(im).copy()

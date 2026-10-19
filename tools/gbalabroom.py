@@ -3,6 +3,7 @@
 
     python3 tools/gbalabroom.py            # preview to /tmp/lab_room.png (before | after)
     python3 tools/gbalabroom.py --write    # gTileset_BlancheLab, rebuilt; the room repointed
+    python3 tools/gbalabroom.py --before=PNG   # put a picture of the old room on the preview's left half
 
 The design is 9.22's, from the n8n interior drafts -- A's layout, angle and
 pale palette, with B's lived-in details:
@@ -383,7 +384,8 @@ def main():
                             o[cx * 16 + (q % 2) * 8 + i % 8, cy * 16 + (q // 2) * 8 + i // 8] = p[v]
         return img
     after = render_new()
-    before_path = "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/crystal_lab_interior_x2.png"
+    #  T-421: the "before" picture was a path in one session's scratchpad; name one with --before=PNG
+    before_path = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--before=")), "")
     sheet = Image.new("RGB", (Wm * 16 * 2 + 8, Hm * 16), (30, 30, 30))
     if os.path.exists(before_path):
         sheet.paste(Image.open(before_path).convert("RGB").resize((Wm * 16, Hm * 16)), (0, 0))
