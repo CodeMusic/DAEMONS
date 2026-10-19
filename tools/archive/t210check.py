@@ -12,7 +12,7 @@ line wider than the widest line the existing entries use, measured in the game's
 """
 import glob, json, os, re, sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # tools/archive/ -> the repo
 GBA = os.path.join(ROOT, "engineGba")
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 sys.argv = sys.argv[:1]                 # check_lexicon reads argv when imported

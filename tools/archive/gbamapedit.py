@@ -35,7 +35,7 @@ WHAT THIS TAUGHT, so the next edit is cheaper:
 import json, os, re, struct, sys
 from PIL import Image
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # tools/archive/ -> the repo
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 PREVIEW = "/tmp/route1_edit.png"

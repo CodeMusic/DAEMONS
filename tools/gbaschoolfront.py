@@ -29,7 +29,7 @@ east of it, rows 13..14 between the ledge and the fence: the ledge only lets a p
 shut in, and needed GOTO to leave. The fence's first post, at (29,15) beside the tower, is lifted to plain grass --
 a gate onto the lawn below. It is its own step, so it runs on a map where the school is already drawn.
 
-HOW IT GOES IN, as tools/gbascholar.py put the Owl's study into Brazen: every cell gets a block of Callow's own,
+HOW IT GOES IN, as tools/archive/gbascholar.py put the Owl's study into Brazen: every cell gets a block of Callow's own,
 appended; the drawing is the top layer over plain grass, on the COVERED layer, so a sprite standing in front of
 the school is drawn in front of it. Colour comes from Callow's rows 7..12 and the General rows beneath them; row 7,
 which Callow's blocks use only in indices 1..4, gives eleven spare indices to concrete, glass, brass and board.

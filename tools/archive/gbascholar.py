@@ -29,7 +29,7 @@ still grow into; it stops if they do not fit.
 import json, math, os, struct, sys
 from PIL import Image
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # tools/archive/ -> the repo
 GBA = os.path.join(ROOT, "engineGba")
 SD = os.path.join(GBA, "data/tilesets/secondary/saffron_city")
 PD = os.path.join(GBA, "data/tilesets/primary/general")

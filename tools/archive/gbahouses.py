@@ -36,7 +36,7 @@ The player's house blocks are rewritten in place; the Clears' house gets copies.
 import json, os, re, struct, sys
 from PIL import Image
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # tools/archive/ -> the repo
 GBA = os.path.join(ROOT, "engineGba")
 PD = os.path.join(GBA, "data/tilesets/primary/general")
 SD = os.path.join(GBA, "data/tilesets/secondary/pallet_town")

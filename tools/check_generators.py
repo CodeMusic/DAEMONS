@@ -30,10 +30,8 @@ SELF = os.path.basename(__file__)
 #  name -> why it may not pass in report mode. Keep this short; every line is a tool nobody is watching.
 EXCUSED = {
     #  ONE-SHOT MIGRATIONS: each asserts the vanilla state it converts, and that state is gone because it ran.
+    #  (gbahouses, gbamapedit and gbascholar went to tools/archive/ in T-421, which this does not scan.)
     "gbaground":  "one-shot: re-cut Kanto's ground tiles; asserts the tileset ends at vanilla's 160",
-    "gbahouses":  "one-shot: redrew the towns' houses; asserts Pallet still draws vanilla's row 11",
-    "gbamapedit": "one-shot: T-71's first Route 1 edit; asserts the grass it put a pond on",
-    "gbascholar": "one-shot: the Owl's study in Brazen; asserts the house it replaced",
     #  TRANSCRIBERS, not generators: each needs an audio file named on the command line.
     "mp3midi":    "a transcriber: needs an .mp3 to read",
     "stems2midi": "a transcriber: needs a directory of stems",

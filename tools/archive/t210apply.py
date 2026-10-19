@@ -12,7 +12,7 @@ gfx/daemons/<name>_front/_back.png); routines are move_names.h, by hand, once th
 """
 import glob, json, os, re, sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # tools/archive/ -> the repo
 GBA = os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
 FILES = {"names": "src/data/text/species_names.h", "cat": "src/data/pokemon/pokedex_entries.h",

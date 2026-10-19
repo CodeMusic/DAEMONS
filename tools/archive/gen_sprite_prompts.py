@@ -8,12 +8,13 @@ ones tools/gbasprite.py actually assigned. A prompt that names the wrong colour
 is worse than no prompt.
 """
 import os, re, subprocess, sys
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+TOOLS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # tools/archive/ -> tools/
+sys.path.insert(0, TOOLS)
 import importlib.util
 spec = importlib.util.spec_from_file_location(
-    "gs", os.path.join(os.path.dirname(os.path.abspath(__file__)), "gbasprite.py"))
+    "gs", os.path.join(TOOLS, "gbasprite.py"))
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))   # tools/archive/ -> the repo
 GB = os.path.join(ROOT, "engine")
 
 TYPE_NAME = {"NORMAL":"CONTENT","FIGHTING":"LOGIC","FLYING":"VECTOR","POISON":"CORRUPT",
