@@ -32,7 +32,16 @@ THE RULE IT FAILS ON (exit 1, so check_generators fails with it):
     note, a different path and a different tempo.
 
 THE TABLE (src/data/daemons_signatures.h, generated, read by src/daemons_signature.c): one 12-byte row per move id
-and the type inks. APPROVED rows play in the release ROMs; the debug ROMs play every row. Approving routines is
+and the type inks.
+
+THE GLYPHS (T-392 P2; the user, 2026-10-18: "outline every signature glyph with a dark edge so any colour reads on
+any picture" -- MISREAD's magenta was lost on its own pink). --write also draws the battle's own glyph sheet,
+graphics/battle_anims/sprites/daemons_glyphs.png: the splash's 0, 1 and note (tools/gbanotes.py draws the splash's
+own, which stays as it is), each redrawn one pixel in from the tile's edge and ringed in index 1, the OUTLINE, on all
+eight sides. Index 1 is TRUE BLACK in both palettes it is drawn in (vision 9.4a's outline, every picture of ours):
+daemons_ink.pal (grey, shaded into the type's colour at the start of a routine -- black times any colour stays black)
+and daemons_glyphs.pal (the splash's colours, for the seven union routines). The ink's greys are lifted so a 1 is the
+type's own colour and a 0 a step under it, not the darker shades the 2026-10-08 sheet borrowed (DRAFT). APPROVED rows play in the release ROMs; the debug ROMs play every row. Approving routines is
 adding them to APPROVED here and re-running --write -- the scripts are never touched (engine.md trap 32).
 """
 import ast, colorsys, importlib.util, math, os, re, struct, subprocess, sys
@@ -53,8 +62,16 @@ PILOT = {
     "DESTINY_BOND": "ATOMIC", "GRUDGE": "ZOMBIE", "RETURN": "RAPPORT", "PRESENT": "PRESENT",
     "TACKLE": "WRITE", "EMBER": "JITTER", "WATER_GUN": "TRICKLE", "CONFUSION": "MISREAD",
 }
-#  Released by the user's word: the pilot (2026-10-18, T-392 "Build P1 ... a pilot of 31"). P2 adds families here.
+#  Released by the user's word: the pilot (2026-10-18, T-392 "Build P1 ... a pilot of 31"), then P2 (the user,
+#  2026-10-18: "roll out to ALL 363"), family by family as the plan's section 3 releases them -- each family named
+#  here sets SIG_APPROVED on every routine of it. The order is the one P2 released them in: the chart's eight sided
+#  families first (they carried the 2026-10-08 draft), then the other ten types, then the six status families.
 APPROVED = set(PILOT)
+APPROVED_FAMILIES = [
+    "CONTENT", "LOGIC", "STRATUM", "LEGACY", "CONTEXT", "LATENT", "VECTOR", "ENTROPY",
+    "FLOW", "SIGNAL", "GROWTH", "CORRUPT", "SWARM", "HARDENED", "FROZEN", "EMERGENT", "OPAQUE", "COPY",
+    "RAISE", "LOWER", "HEAL", "AFFLICT", "PROTECT", "FIELD",
+]
 
 UNION = {"FLUENCY", "STILLPOINT", "RECONNECT", "PRAXIS", "MEDIAN", "PANORAMA", "HINDSIGHT"}
 
@@ -84,6 +101,142 @@ VERB = {
 FLAG_APPROVED, FLAG_OWN_SCRIPT, FLAG_UNION, FLAG_NOTES_LEAD = 1, 2, 4, 8
 MAJOR8 = [0, 2, 4, 5, 7, 9, 11, 12]
 NOTE_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+
+
+# ---- the glyph sheet and its two palettes (P2: the outline) ----
+GLYPH_ROWS = {
+    "ZERO": ["........",
+             "..###...",
+             ".#...#..",
+             ".#...#..",
+             ".#...#..",
+             "..###...",
+             "........",
+             "........"],
+    "ONE":  ["........",
+             "...##...",
+             "..###...",
+             "...##...",
+             "...##...",
+             "..####..",
+             "........",
+             "........"],
+    "NOTE": ["........",
+             "....##..",
+             "....#.#.",
+             "....#...",
+             "..###...",
+             "..###...",
+             "........",
+             "........"],
+}
+OUTLINE = 1
+#  The four frames, in the splash sheet's order and on its indices (3 the 0, 4 the 1, 7 and 8 the note and the lit note).
+GLYPH_FRAMES = [("ZERO", 3), ("ONE", 4), ("NOTE", 7), ("NOTE", 8)]
+SPRITES = os.path.join(E, "graphics", "battle_anims", "sprites")
+GLYPH_PNG = os.path.join(SPRITES, "daemons_glyphs.png")
+GLYPH_PAL = os.path.join(SPRITES, "daemons_glyphs.pal")
+INK_PAL = os.path.join(SPRITES, "daemons_ink.pal")
+#  The ink: grey, each index shaded by its grey / 31 into the type's colour (daemons_signature.c). 1 the outline.
+INK_GREYS = {1: 0, 3: 208, 4: 248, 7: 208, 8: 248}
+
+
+def outlined(rows, ink):
+    g = [[ink if c == "#" else 0 for c in r] for r in rows]
+    out = [row[:] for row in g]
+    for y in range(8):
+        for x in range(8):
+            if g[y][x]:
+                continue
+            if any(0 <= y + dy < 8 and 0 <= x + dx < 8 and g[y + dy][x + dx]
+                   for dy in (-1, 0, 1) for dx in (-1, 0, 1)):
+                out[y][x] = OUTLINE
+    for y in range(8):
+        for x in range(8):
+            if g[y][x] and (x in (0, 7) or y in (0, 7)):
+                raise SystemExit("a glyph touches its tile's edge: no room for the outline")
+    return out
+
+
+def splash_palette():
+    tree = ast.parse(open(os.path.join(ROOT, "tools/gbanotes.py")).read())
+    for n in tree.body:
+        if isinstance(n, ast.Assign) and any(getattr(t, "id", "") == "PALETTE" for t in n.targets):
+            pal = list(ast.literal_eval(n.value))
+            pal[OUTLINE] = (0, 0, 0)          # the splash's own navy outline, made the true black every picture wears
+            return pal
+    raise SystemExit("gbanotes.py no longer defines PALETTE")
+
+
+def ink_palette():
+    pal = [(0, 0, 0)] + [(104, 104, 104)] * 15
+    for i, g in INK_GREYS.items():
+        pal[i] = (g, g, g)
+    return pal
+
+
+def jasc(pal):
+    return "JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % c for c in pal)
+
+
+def glyph_image():
+    from PIL import Image
+    im = Image.new("P", (16, 16), 0)
+    flat = []
+    for c in splash_palette():
+        flat += list(c)
+    im.putpalette(flat + [0] * (768 - len(flat)))
+    px = im.load()
+    for k, (shape, ink) in enumerate(GLYPH_FRAMES):
+        g = outlined(GLYPH_ROWS[shape], ink)
+        ox, oy = (k % 2) * 8, (k // 2) * 8
+        for y in range(8):
+            for x in range(8):
+                px[ox + x, oy + y] = g[y][x]
+    return im
+
+
+def glyph_files():
+    """{path: bytes} of the three files --write keeps current."""
+    import io
+    buf = io.BytesIO()
+    glyph_image().save(buf, "PNG")
+    return {GLYPH_PNG: buf.getvalue(), GLYPH_PAL: jasc(splash_palette()).encode(),
+            INK_PAL: jasc(ink_palette()).encode()}
+
+
+def png_pixels(data):
+    from PIL import Image
+    import io
+    im = Image.open(io.BytesIO(data))
+    return im.mode, im.size, list(im.getdata()), im.getpalette()[:48] if im.getpalette() else None
+
+
+def glyph_stale():
+    stale = []
+    for path, data in glyph_files().items():
+        if not os.path.exists(path):
+            stale.append(path)
+            continue
+        cur = open(path, "rb").read()
+        if path.endswith(".png"):
+            if png_pixels(cur) != png_pixels(data):
+                stale.append(path)
+        elif cur.replace(b"\r\n", b"\n") != data.replace(b"\r\n", b"\n"):
+            stale.append(path)
+    return stale
+
+
+# ---- how long a signature runs (daemons_signature.c's DaemonsSignature_Start, SIG_MODE_FULL) ----
+def length_of(r):
+    flight = r["tempo"] * 3 // 2 if "SLOW" in r["mods"] else r["tempo"] * 2 // 3 if "FAST" in r["mods"] else r["tempo"]
+    notes_lead = r["flags"] & FLAG_NOTES_LEAD
+    note_start, bit_start = (0, LAG) if notes_lead else (LAG, 0)
+    last = max(k for k, b in enumerate(bits(r["rhythm"])) if b)
+    last_pluck = note_start + last * note_step(r)
+    end = max(last_pluck + flight, bit_start + 8 * 2 + flight, last_pluck + 10 + 5)
+    return end + 2           # tEnd = end + 1, and the task is destroyed on the frame after it
+
 
 
 def read(p):
@@ -185,7 +338,7 @@ def routines():
         if path in ("FALL",) and fam == "HARDENED":
             wave = 0                                 # HARDENED: no give
         flags = 0
-        if mv in APPROVED:
+        if mv in APPROVED or fam in APPROVED_FAMILIES:
             flags |= FLAG_APPROVED
         if mv in UNION:
             flags |= FLAG_UNION | FLAG_OWN_SCRIPT
@@ -265,6 +418,8 @@ def header(rows, colours):
 def pick(rows, names):
     if not names:
         return [r for r in rows if r["mv"] in PILOT]
+    if [n.upper() for n in names] == ["ALL"]:
+        return rows
     want = {n.upper() for n in names}
     return [r for r in rows if r["name"] in want or r["mv"] in want]
 
@@ -273,20 +428,23 @@ def pick(rows, names):
 def sheet(rows, path):
     from PIL import Image, ImageDraw
     W, H = 760, 34
-    img = Image.new("RGB", (W, 24 + H * len(rows)), (24, 24, 28))
+    per = 92                                    # a long sheet (ALL) wraps into columns of 92
+    cols = (len(rows) + per - 1) // per
+    img = Image.new("RGB", (W * cols, 24 + H * min(per, len(rows))), (24, 24, 28))
     d = ImageDraw.Draw(img)
     d.text((8, 6), "T-392 signatures (DRAFT): word in the type's ink, rhythm, path, figure on a staff", fill=(220, 220, 220))
     for i, r in enumerate(rows):
-        y = 24 + i * H
+        y = 24 + (i % per) * H
+        ox = (i // per) * W
         ink = tuple(min(255, c * 8 + 4) for c in r["ink"]) if not r["flags"] & FLAG_UNION else (255, 214, 90)
-        d.text((8, y + 10), "%3d %s" % (r["id"], r["name"]), fill=(230, 230, 230))
+        d.text((ox + 8, y + 10), "%3d %s" % (r["id"], r["name"]), fill=(230, 230, 230))
         for k, b in enumerate(bits(r["word"])):
-            d.text((128 + k * 12, y + 4), str(b), fill=ink)
+            d.text((ox + 128 + k * 12, y + 4), str(b), fill=ink)
         for k, b in enumerate(bits(r["rhythm"])):
-            d.text((128 + k * 12, y + 18), "x" if b else ".", fill=(150, 150, 160))
-        d.text((250, y + 10), "%s %s" % (r["path"], "+".join(r["mods"])), fill=(200, 200, 210))
+            d.text((ox + 128 + k * 12, y + 18), "x" if b else ".", fill=(150, 150, 160))
+        d.text((ox + 250, y + 10), "%s %s" % (r["path"], "+".join(r["mods"])), fill=(200, 200, 210))
         # a staff: five lines, the three notes as dots on it (C4 on the first ledger below)
-        x0 = 400
+        x0 = ox + 400
         for ln in range(5):
             d.line((x0, y + 6 + ln * 5, x0 + 120, y + 6 + ln * 5), fill=(110, 110, 120))
         steps = [0, 1, 2, 3, 4, 5, 6, 7]
@@ -297,7 +455,7 @@ def sheet(rows, path):
             ny = y + 6 + 4 * 5 + 5 - dia * 2.5
             nx = x0 + 20 + k * 35
             d.ellipse((nx - 4, ny - 3, nx + 4, ny + 3), fill=ink)
-        d.text((540, y + 10), "key %s%s  tempo %d  %s%s" % (
+        d.text((ox + 540, y + 10), "key %s%s  tempo %d  %s%s" % (
             NOTE_NAMES[r["tonic"]], "" if not r["register"] else " %+d oct" % (r["register"] // 12), r["tempo"],
             "notes first" if r["flags"] & FLAG_NOTES_LEAD else "bits first",
             "  APPROVED" if r["flags"] & FLAG_APPROVED else ""), fill=(200, 200, 210))
@@ -484,10 +642,14 @@ def main():
             return 0
     text = header(rows, colours)
     cur = open(OUT).read() if os.path.exists(OUT) else ""
-    print("  %d routines signed; %d APPROVED for the release ROMs (the pilot)" % (len(rows), sum(r["flags"] & FLAG_APPROVED > 0 for r in rows)))
+    print("  %d routines signed; %d APPROVED for the release ROMs (the pilot and %d families)" % (
+        len(rows), sum(r["flags"] & FLAG_APPROVED > 0 for r in rows), len(APPROVED_FAMILIES)))
     print("  the closest two routines of one type: " + ", ".join("%s %d" % (t, d) for t, d in sorted(worst.items())))
     for b in bad:
         print("  FAIL", b)
+    longest = max(rows, key=length_of)
+    print("  the longest signature: %s, %d frames (it may run 12 past its picture, no more)" % (longest["name"], length_of(longest)))
+    stale = glyph_stale()
     if "--write" in args:
         if bad:
             raise SystemExit("  refused: the uniqueness rule fails")
@@ -496,8 +658,16 @@ def main():
             print("  wrote", os.path.relpath(OUT, ROOT))
         else:
             print("  %s is current" % os.path.relpath(OUT, ROOT))
+        for path, data in glyph_files().items():
+            if path in stale:
+                open(path, "wb").write(data)
+                print("  wrote", os.path.relpath(path, ROOT))
+        if not stale:
+            print("  the glyph sheet and its palettes are current")
     else:
         print("  %s %s" % (os.path.relpath(OUT, ROOT), "is current" if text == cur else "would change (--write)"))
+        for path in stale:
+            print("  %s would change (--write)" % os.path.relpath(path, ROOT))
     return 1 if bad else 0
 
 

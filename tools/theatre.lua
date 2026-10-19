@@ -20,6 +20,10 @@
 --     poke16 ADDR N     write a 16-bit value into memory (the theatre's sTheatreMove, from the .elf's symbols)
 --     poke8 ADDR N      write one byte (sTheatreTurn: 1 films a two-turn routine's second half)
 --     peek 32 ADDR name read 8/16/32 bits and append "name value" to <dir>/peek.txt
+--     trace name 120 32:ADDR 8:ADDR d8:ADDR ...
+--                       every frame for 120 frames, one line of the values to <dir>/name.trace (8/16/32 bits;
+--                       d8 reads the 32-bit pointer at ADDR and then the byte it points to) -- for counting
+--                       frames: T-392 P2 measured each routine's signature past its picture this way
 --
 -- Why a file and not keystrokes: a key tapped into the window from outside lands on about half the
 -- frames the game polls, and a menu cannot be driven by input that may or may not arrive. A button
@@ -73,6 +77,19 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
       local f = io.open(string.format("%s/%s_%02d.pal", DIR, busy.name, busy.n), "wb")
       if f then f:write(emu:readRange(0x05000000, 1024)); f:close() end
       busy.n = busy.n + 1
+    end
+    if busy.kind == "trace" then
+      local vals = {}
+      for _, sp in ipairs(busy.specs) do
+        local v
+        if sp.deref then v = emu:read8(emu:read32(sp.addr))
+        elseif sp.size == 32 then v = emu:read32(sp.addr)
+        elseif sp.size == 16 then v = emu:read16(sp.addr)
+        else v = emu:read8(sp.addr) end
+        vals[#vals + 1] = string.format("%x", v)
+      end
+      busy.file:write(table.concat(vals, " ") .. "\n")
+      if busy.left == 0 then busy.file:close() end
     end
     if busy.kind == "burst" and busy.left % busy.every == 0 then
       emu:screenshot(string.format("%s/%s_%02d.png", DIR, busy.name, busy.n))
@@ -139,6 +156,15 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
   elseif w[1] == "shot" then
     emu:screenshot(DIR .. "/" .. w[2] .. ".png")
     if #queue == 0 then finish() end
+  elseif w[1] == "trace" then
+    local specs = {}
+    for i = 4, #w do
+      local kind, addr = w[i]:match("^(d?%d+):(.+)$")
+      specs[#specs + 1] = { size = tonumber((kind or "32"):match("%d+")), deref = (kind or ""):sub(1, 1) == "d",
+                            addr = tonumber(addr) }
+    end
+    busy = { kind = "trace", left = tonumber(w[3]) or 60, specs = specs,
+             file = io.open(DIR .. "/" .. w[2] .. ".trace", "w") }
   elseif w[1] == "pburst" then
     busy = { kind = "pburst", name = w[2], n = 0, left = tonumber(w[3]) or 30 }
   elseif w[1] == "burst" then
