@@ -49,6 +49,9 @@ ARGS = {
                                 "CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE LATENT").split()],
     "genstates": [["--wave", "1"]],
 }
+#  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
+SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"
+           for name in ("gbadocs",) if ARGS.get(name) == []}
 
 
 def generators(only):
@@ -105,6 +108,9 @@ def main():
     #  unanswerable -- which tool touched the file?
     bad, results = [], []
     for f in tools:
+        if f[:-3] in SKIPPED:
+            print("  skipped %s: %s" % (f, SKIPPED[f[:-3]]))
+            continue
         b0 = dirty()
         f, code, secs, last = run(f)
         wrote = sorted(p for (_, p, _, _) in (dirty() - b0))
@@ -131,8 +137,10 @@ def main():
         for f, why in bad:
             print("     %-30s %s" % (f, why))
         return 1
-    print("  all %d generators run in report mode, exit 0, and write nothing; %d excused, each with its reason (%.0fs)."
-          % (len(tools) - sum(1 for f in tools if f[:-3] in EXCUSED), sum(1 for f in tools if f[:-3] in EXCUSED), total))
+    skipped = sum(1 for f in tools if f[:-3] in SKIPPED)
+    excused = sum(1 for f in tools if f[:-3] in EXCUSED)
+    print("  all %d generators run in report mode, exit 0, and write nothing; %d excused, each with its reason%s (%.0fs)."
+          % (len(tools) - excused - skipped, excused, "; %d SKIPPED (above)" % skipped if skipped else "", total))
     return 0
 
 
@@ -206,6 +214,9 @@ def writes():
     for f in generators([]):
         name = f[:-3]
         if name in EXCUSED or name in SANDBOX_EXCUSED:
+            continue
+        if name in SKIPPED:
+            print("  skipped %s: %s" % (name, SKIPPED[name]))
             continue
         for extra in ARGS.get(name, [[]]):
             reset()
