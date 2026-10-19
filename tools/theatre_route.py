@@ -41,6 +41,27 @@ step is one line, split like a shell line:
     repel [STEPS]              no wild battles for STEPS steps (default 250)
     fight                      clear a battle: run from a wild one, fight a trainer (the walker's)
     win                        DEBUG: win the battle on screen (gBattleOutcome = 1, then a turn)
+    bump WHO [keep]            walk beside someone and then INTO them, pressing no A: fail unless that starts their
+                               script (T-334: an unseen legend is met by walking into its place); the scene is then
+                               captured to its end, its battle won on a DEBUG route -- with keep, left at the battle's
+                               first "What will X do?" for the steps that follow (press L, win, finish)
+    wild [past151|SPECIES_X] [N] [keep]   walk back and forth in the grass (or water) here until a wild battle
+                               starts, capture its opening, and win it (DEBUG); with past151 or a species, keep going (up
+                               to N battles, default 12) until the daemon met is one past the first 151 (or that one), and
+                               fail if none is; keep leaves the last battle open at its first menu
+    foe SPECIES_X              fail unless the battle on screen is against SPECIES_X (read from gBattleMons)
+    unsaid "TEXT"              fail the stop if a box captured in it said TEXT (a gift given once is not given twice)
+    friendship SLOT N          set party daemon SLOT's (0-5) friendship to N: gPlayerParty decrypted, the byte set, the
+                               checksum made again and encrypted back, as the game would have written it (T-424)
+    coins N                    set the TOKEN CASE's count (stored XOR the save's key, src/coins.c)
+    remember NAME SPEC 8|16|32 note a RAM value (SPEC as poke's) ...
+    moved NAME                 ... and fail unless it has changed since (the GAME CORNER's take after a pull, T-427)
+    poke SYMBOL[+OFF] 8|16|32 VALUE   write RAM: SYMBOL from the build's .map (a static from the .elf); *SYMBOL+OFF
+                               follows the pointer first (*gSaveBlock1Ptr+0x296) -- the DEBUG overrides (the date,
+                               the weather, the watch) are EWRAM globals, set this way instead of through the menu
+    register ITEM_X            register a key item for SELECT (gSaveBlock1Ptr->registeredItem), so `press SELECT` uses it
+    play NOTES                 on the instrument: press each note's button, 1-7 (DOWN LEFT UP RIGHT B A SELECT), a
+                               note a token; a token may end in + or - (hold R or L for the octave above or below)
     expect MAP_FOLDER [X Y]    fail the stop unless the player is there
     music [MUS_NAME]           fail the stop unless that song is playing (default: the one the map's map.json names)
     says "TEXT"                fail the stop unless a box captured in it said TEXT (spaces and line breaks folded)
@@ -96,6 +117,29 @@ def const(name):
         return int(eval(expr, {"__builtins__": {}}))
     except Exception:
         raise RouteError("no flag or var called %s" % name)
+
+
+def _numbers(header):
+    out = {}
+    for line in open(os.path.join(GBA, "include/constants", header)):
+        m = re.match(r"#define\s+(\w+)\s+(\d+|0x[0-9A-Fa-f]+)\b", line)
+        if m:
+            out[m.group(1)] = int(m.group(2), 0)
+    return out
+
+
+def const_species(name):
+    n = _numbers("species.h").get(name)
+    if n is None:
+        raise RouteError("no species called %s" % name)
+    return n
+
+
+def const_item(name):
+    n = _numbers("items.h").get(name)
+    if n is None:
+        raise RouteError("no item called %s" % name)
+    return n
 
 
 def map_index(folder):
@@ -357,15 +401,25 @@ class Runner:
                 return (s["x%d" % k] - 7, s["y%d" % k] - 7)               # gObjectEvents carry MAP_OFFSET
         raise RouteError("%s is not on screen on %s (hidden by a flag?)" % (spec, folder))
 
-    def walkto(self, spec):
+    def walkto(self, spec, reaches=(1, 2)):
         folder, _ = self.where()
         m = tw.Map(folder)
+        try:
+            self.person(spec)
+        except RouteError:                      # off screen: objects spawn only near the camera, so walk toward them
+            _, placed = who(folder, spec)
+            near = sorted(((abs(x - placed[0]) + abs(y - placed[1]), (x, y)) for x in range(placed[0] - 4, placed[0] + 5)
+                           for y in range(placed[1] - 4, placed[1] + 5) if m.open(x, y, None)), key=lambda t: t[0])
+            for _, t in near:
+                if m.path(self.where()[1], t) is not None:
+                    tw.walk(self.g, t)
+                    break
         for attempt in range(4):
             them = self.person(spec)
             _, here = self.where()
             sides = []
             for d, (dx, dy) in tw.DIRS.items():
-                for reach in (1, 2):                                      # 2: across a counter
+                for reach in reaches:                                     # 2: across a counter
                     t = (them[0] - dx * reach, them[1] - dy * reach)
                     if reach == 2 and m.open(them[0] - dx, them[1] - dy, None):
                         continue
@@ -379,7 +433,7 @@ class Runner:
                 tw.walk(self.g, t)
             if self.person(spec) == them and self.where()[1] == t:
                 tw.run("hold %s 4" % d, "wait 12")                         # under 8 frames: a turn, not a step
-                return
+                return d
         raise RouteError("%s kept moving away" % spec)
 
     def talk(self, spec, n=None):
@@ -454,6 +508,151 @@ class Runner:
         for _ in range(times):
             tw.run("hold %s 6" % button, "wait 50")
             self.capture(button)
+
+    def bump(self, spec, keep=False):
+        """T-334: walk into someone without pressing A, and play out what that starts."""
+        d = self.walkto(spec, reaches=(1,))                               # beside them: nothing between
+        tw.run("hold %s 16" % d, "wait 16")
+        if self.free() and not self.g.state()["battle"]:
+            raise RouteError("walking into %s started nothing" % spec)
+        self.capture("walked in", read_text=False)
+        if keep:
+            self.to_battle_menu()
+        else:
+            self.boxes()
+
+    def to_battle_menu(self):
+        """Wait for a battle, then for its first "What will X do?" (the cry, the intro, the send-out)."""
+        for _ in range(40):
+            if self.g.state()["battle"]:
+                break
+            tw.run("wait 30")
+        else:
+            raise RouteError("no battle began")
+        self.at_action_menu()
+        self.capture("the battle", read_text=False)
+
+    def at_action_menu(self):
+        """Advance a battle's opening boxes with B (it chooses nothing) until the player's "What will X do?" -- the
+        player controller's HandleInputChooseAction (several controllers have a static of that name: any of them)."""
+        elf = os.path.join(GBA, "daemonsContent.elf" if self.release else "daemonsContent_debug.elf")
+        out = subprocess.run(["arm-none-eabi-nm", elf], capture_output=True, text=True).stdout
+        menus = {int(a, 16) for a in re.findall(r"^([0-9a-f]{8}) t HandleInputChooseAction$", out, re.M)}
+        funcs = tw.symbol("gBattlerControllerFuncs", self.release)
+        for _ in range(40):
+            if tw.peek([(32, funcs, "f")])["f"] & ~1 in menus:
+                tw.run("wait 20")
+                return
+            tw.run("hold B 6", "wait 40")
+        raise RouteError("the battle never reached its first menu")
+
+    def addr(self, spec):
+        deref = spec.startswith("*")
+        name, _, off = spec.lstrip("*").partition("+")
+        try:
+            at = tw.symbol(name, self.release)
+        except Exception:
+            at = elf_symbol(name, self.release)
+        if deref:
+            at = tw.peek([(32, at, "p")])["p"]
+        return at + (int(off, 0) if off else 0)
+
+    def read(self, spec, bits):
+        v = tw.peek([(bits, self.addr(spec), "v")])["v"]
+        return v - (1 << bits) if bits == 32 and v >> 31 else v
+
+    ORDERS = ["GAEM", "GAME", "GEAM", "GEMA", "GMAE", "GMEA", "AGEM", "AGME", "AEGM", "AEMG", "AMGE", "AMEG",
+              "EGAM", "EGMA", "EAGM", "EAMG", "EMGA", "EMAG", "MGAE", "MGEA", "MAGE", "MAEG", "MEGA", "MEAG"]
+
+    def friendship(self, slot, value):
+        base = tw.symbol("gPlayerParty", self.release) + 100 * slot
+        w = tw.peek([(32, base + 4 * k, "w%d" % k) for k in range(20)])
+        words_ = [w["w%d" % k] for k in range(20)]
+        pid, otid = words_[0], words_[1]
+        key = pid ^ otid
+        secure = [words_[8 + k] ^ key for k in range(12)]                 # 48 bytes from offset 32
+        g = self.ORDERS[pid % 24].index("G")
+        word = 3 * g + 2                                                  # growth: species, item, exp, ppBonuses, FRIENDSHIP
+        secure[word] = (secure[word] & ~0xFF00) | (value << 8)
+        halves = [h for x in secure for h in (x & 0xFFFF, x >> 16)]
+        checksum = sum(halves) & 0xFFFF
+        cmds = ["poke16 %s %d" % (hex(base + 28), checksum)]
+        for k in (word,):
+            enc = secure[k] ^ key
+            cmds += ["poke16 %s %d" % (hex(base + 32 + 4 * k), enc & 0xFFFF),
+                     "poke16 %s %d" % (hex(base + 32 + 4 * k + 2), enc >> 16)]
+        tw.run(*cmds)
+
+    def foe(self):
+        return tw.peek([(16, tw.symbol("gBattleMons", self.release) + 0x58, "sp")])["sp"]
+
+    def wild(self, past151, limit, keep=False):
+        """Pace two tiles of this map until a wild battle starts; past151: until the daemon met is past the first 151."""
+        folder, here = self.where()
+        m = tw.Map(folder)
+        other = next((t for t in ((here[0] + 1, here[1]), (here[0] - 1, here[1]), (here[0], here[1] + 1),
+                                  (here[0], here[1] - 1)) if m.open(*t, None)), None)
+        if other is None:
+            raise RouteError("nowhere to pace beside %s on %s" % (here, folder))
+        self.var(const("VAR_REPEL_STEP_COUNT"), 0)
+        pair = (here, other)
+        met = []
+        for battles in range(limit):
+            for steps in range(200):
+                if self.g.state()["battle"]:
+                    break
+                if not self.free():                     # a battle's transition, or an insight: which?
+                    tw.run("wait 90")
+                    if self.g.state()["battle"]:
+                        break
+                    if not self.free():                 # an insight, a note: read it and go on
+                        self.boxes(1)
+                    continue
+                now = self.where()[1]
+                if now not in pair:                     # a battle or a box moved us: back to the two tiles
+                    tw.walk(self.g, pair[0])
+                    continue
+                to = pair[1] if now == pair[0] else pair[0]
+                d = next(k for k, v in tw.DIRS.items() if (now[0] + v[0], now[1] + v[1]) == to)
+                tw.run("hold %s 12" % d, "wait 8")
+            else:
+                raise RouteError("two hundred steps on %s and no wild battle" % folder)
+            tw.run("wait 200")                                              # the transition, and the daemon's entry
+            sp = self.foe()
+            met.append(sp)
+            done = not past151 or (sp > 151 if past151 == "past151" else sp == past151)
+            if done and keep:
+                self.at_action_menu()
+                self.capture("wild battle (species %d)" % sp, read_text=False)
+                return
+            self.capture("wild battle (species %d)" % sp, read_text=False)
+            self.win()
+            tw.run("wait 60")
+            if not self.free():
+                self.boxes()
+            if done:
+                return
+        raise RouteError("%d wild battles and none was %s (%s)" % (limit, past151, met))
+
+    def poke(self, spec, bits, value):
+        at = self.addr(spec)
+        if bits == 32:                                                    # the theatre writes 8 and 16 bits
+            tw.run("poke16 %s %d" % (hex(at), value & 0xFFFF), "poke16 %s %d" % (hex(at + 2), value >> 16))
+        else:
+            tw.run("poke%d %s %d" % (bits, hex(at), value))
+
+    NOTE_BUTTONS = {"1": "DOWN", "2": "LEFT", "3": "UP", "4": "RIGHT", "5": "B", "6": "A", "7": "SELECT"}
+
+    def note(self, token):
+        """One note on the instrument (src/play.c): its button, with R or L held for the octave above or below."""
+        button = self.NOTE_BUTTONS.get(token[0])
+        if not button:
+            raise RouteError("no note %s (1-7, then + or -)" % token)
+        octave = {"+": "R", "-": "L"}.get(token[1:2])
+        if octave:
+            tw.run("press %s" % octave, "wait 2", "hold %s 6" % button, "wait 4", "release %s" % octave, "wait 22")
+        else:
+            tw.run("hold %s 6" % button, "wait 26")
 
     def win(self):
         if self.release:
@@ -688,6 +887,41 @@ class Runner:
             self.var(const(args[0]), int(args[1], 0))
         elif op == "repel":
             self.var(const("VAR_REPEL_STEP_COUNT"), int(args[0]) if args else 250)
+        elif op == "bump":
+            self.bump(args[0], "keep" in args[1:])
+        elif op == "wild":
+            want = "past151" if "past151" in args else next((const_species(v) for v in args if v.startswith("SPECIES_")), None)
+            self.wild(want, next((int(v) for v in args if v.isdigit()), 12), "keep" in args)
+        elif op == "unsaid":
+            bad = fold(" ".join(args))
+            if any(bad in fold(t) for t in self.said):
+                raise RouteError('a box said "%s"' % " ".join(args))
+        elif op == "friendship":
+            self.friendship(int(args[0]), int(args[1]))
+        elif op == "coins":
+            key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
+            self.poke("*gSaveBlock1Ptr+0x294", 16, int(args[0]) ^ key)
+        elif op == "remember":
+            self.memory = getattr(self, "memory", {})
+            self.memory[args[0]] = (args[1], int(args[2]), self.read(args[1], int(args[2])))
+            self.capture("%s = %d" % (args[0], self.memory[args[0]][2]), read_text=False)
+        elif op == "moved":
+            spec, bits, was = self.memory[args[0]]
+            now = self.read(spec, bits)
+            self.capture("%s: %d -> %d" % (args[0], was, now), read_text=False)
+            if now == was:
+                raise RouteError("%s is still %d" % (args[0], now))
+        elif op == "foe":
+            got = self.foe()
+            if got != const_species(args[0]):
+                raise RouteError("the battle is against species %d, not %s" % (got, args[0]))
+        elif op == "poke":
+            self.poke(args[0], int(args[1]), int(args[2], 0))
+        elif op == "register":
+            self.poke("*gSaveBlock1Ptr+0x296", 16, const_item(args[0]))
+        elif op == "play":
+            for note in args:
+                self.note(note)
         elif op == "fight":
             tw.clear_battle(self.g)
         elif op == "win":
@@ -852,7 +1086,22 @@ def main():
         report += ["## %d. %s -- %s" % (i, stop["stop"], "FAILED: " + failed if failed else "ok"), "",
                    "![](%s)" % os.path.basename(sheet), ""]
         report += ["> " + s.replace("\n", "  \n> ") + "\n" for s in said]
-    open(os.path.join(r.out, "report.md"), "w").write("\n".join(report) + "\n")
+    path = os.path.join(r.out, "report.md")
+    if (only or start > 1) and os.path.exists(path):
+        #  a part replayed: the stops not played keep their sections from the last report, in route order
+        def sections(text):
+            out = {}
+            for part in re.split(r"(?m)^(?=## \d+\. )", text):
+                m = re.match(r"## (\d+)\. ", part)
+                if m:
+                    out[int(m.group(1))] = part.rstrip("\n") + "\n"
+            return out
+        old, new = sections(open(path).read()), sections("\n".join(report) + "\n")
+        head = "\n".join(report[:4])
+        merged = [new.get(i) or old.get(i) for i in range(1, len(route["stops"]) + 1)]
+        open(path, "w").write(head + "\n" + "\n".join(m for m in merged if m))
+    else:
+        open(path, "w").write("\n".join(report) + "\n")
     print("%d stops failed; report and sheets in %s" % (failures, os.path.relpath(r.out, ROOT)))
     sys.exit(failures)
 

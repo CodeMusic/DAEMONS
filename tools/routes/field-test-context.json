@@ -1,0 +1,217 @@
+{
+  "rom": "debug",
+  "about": "The field test's CONTEXT run (2026-10-19): what only CONTEXT has, and what it shares with CONTENT played again on its own build. Run it from a shadow root whose engineGba/daemonsContent_debug.* point at the CONTEXT build (the walker reads only CONTENT's names): BREATHVERSE and the FLUTE, no LYREBIRD at CALLOW, TWELVE DAYS on the FLUTE (heard flag set; CONTEXT hears it at CALLOW SCHOOL's placard), the fir's door and THE NEXUS lit, FIR LIGHTS' banner and gift, RAIN and SEEPAGE, KYOGRE walked into on OUTCAST ISLAND (CONTEXT only) with its INDEX read mid-battle, GROUDON not standing, BELLOSSOM (GOLDSET) met in BERRY FOREST with its streaks, the DREAM LOG at dawn, the GAME CORNER and the ledger.",
+  "stops": [
+    {
+      "stop": "the CONTEXT DEBUG build, continued",
+      "steps": [
+        "load debug",
+        "shot continued"
+      ]
+    },
+    {
+      "stop": "CALLOW: no LYREBIRD in CONTEXT",
+      "steps": [
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "shot two tiles right of the school door",
+        "flagis FLAG_HIDE_LYREBIRD 1"
+      ]
+    },
+    {
+      "stop": "BREATHVERSE: in by ROUTE 2's palm, and the FLUTE by the islet's palm",
+      "steps": [
+        "flag FLAG_GOT_INSTRUMENT 0",
+        "goto Route2 12 76",
+        "repel 999",
+        "talk Route2_EventScript_Breathverse",
+        "wait 120",
+        "expect Breathverse 13 12",
+        "shot the islet",
+        "talk Breathverse_EventScript_Flute",
+        "says \"A FLUTE. The wind off the sea\"",
+        "flagis FLAG_GOT_INSTRUMENT 1"
+      ]
+    },
+    {
+      "stop": "PLAY: TWELVE DAYS on the FLUTE in E -- learned",
+      "steps": [
+        "flag FLAG_SONG_HEARD_1 1",
+        "flag FLAG_SONG_1 0",
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "register ITEM_FLUTE",
+        "var VAR_PLAY_KEY 4",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 6 5 3 4 2 3 2 1 7 1",
+        "wait 60",
+        "shot joined",
+        "finish",
+        "says \"wrote it into the SONGBOOK\"",
+        "flagis FLAG_SONG_1 1"
+      ]
+    },
+    {
+      "stop": "PLAY: ALMOST on the FLUTE -- TWELVE DAYS in C",
+      "steps": [
+        "goto ViridianCity 27 22",
+        "var VAR_PLAY_KEY 0",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 6 5 3 4 2 3 2 1 7 1",
+        "wait 90",
+        "finish",
+        "says \"Close. The shape is right\""
+      ]
+    },
+    {
+      "stop": "PLAY: O CHRISTMAS TREE on the FLUTE to ROUTE 1's flat fir -- its door",
+      "steps": [
+        "flag FLAG_FIR_IN_KEY 0",
+        "flag FLAG_NEXUS_LIT 0",
+        "goto Route1_Grove 11 4",
+        "repel 999",
+        "hold UP 4",
+        "wait 20",
+        "var VAR_PLAY_KEY 10",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 5 1 1 1 2 3 3 3",
+        "wait 60",
+        "finish",
+        "says \"every one is home\"",
+        "wait 120",
+        "expect Nexus 12 5",
+        "flagis FLAG_FIR_IN_KEY 1"
+      ]
+    },
+    {
+      "stop": "THE NEXUS lit",
+      "steps": [
+        "goto Nexus 12 5",
+        "hold UP 4",
+        "wait 20",
+        "var VAR_PLAY_KEY 10",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 5 1 1 1 2 3 3 3",
+        "wait 90",
+        "wait 240",
+        "finish",
+        "says \"Thank you.\"",
+        "flagis FLAG_NEXUS_LIT 1",
+        "wait 30",
+        "shot lit"
+      ]
+    },
+    {
+      "stop": "a holiday: FIR LIGHTS -- the banner, and the gift once a year",
+      "steps": [
+        "poke gDaemonsDateOverride 8 12",
+        "flag FLAG_HOLIDAY_GIFT_COMMON_JAN+11 0",
+        "goto ViridianCity_PokemonCenter_1F 7 6",
+        "repel 999",
+        "wait 90",
+        "warp MAP_VIRIDIAN_CITY",
+        "wait 20",
+        "shot the banner",
+        "wait 40",
+        "shot the banner, later",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "says \"It is FIR LIGHTS today. This was left for you.\"",
+        "flagis FLAG_HOLIDAY_GIFT_COMMON_JAN+11 1",
+        "poke gDaemonsDateOverride 8 0"
+      ]
+    },
+    {
+      "stop": "weather: RAIN -- SEEPAGE on ROUTE 22",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 2",
+        "goto Route22 15 9",
+        "wait 120",
+        "shot rain",
+        "wild SPECIES_BARBOACH 25 keep",
+        "press A",
+        "wait 20",
+        "shot the routines",
+        "press B",
+        "wait 30",
+        "win",
+        "finish",
+        "poke gDaemonsWeatherOverride 8 0"
+      ]
+    },
+    {
+      "stop": "a fixed legendary: KYOGRE walked into on OUTCAST ISLAND, its INDEX read mid-battle (FIRST SEA)",
+      "steps": [
+        "flag FLAG_HIDE_GLOBAL_KYOGRE 0",
+        "flag FLAG_SYS_NATIONAL_DEX 0",
+        "goto SixIsland_OutcastIsland 8 22",
+        "repel 999",
+        "bump GlobalIndex_EventScript_Kyogre keep",
+        "press L",
+        "wait 90",
+        "shot its INDEX entry",
+        "press B",
+        "wait 120",
+        "press A",
+        "press A",
+        "wait 30",
+        "shot the signature",
+        "win",
+        "finish",
+        "flagis FLAG_HIDE_GLOBAL_KYOGRE 1"
+      ]
+    },
+    {
+      "stop": "GROUDON does not stand in CONTEXT",
+      "steps": [
+        "flag FLAG_HIDE_GLOBAL_GROUDON 0",
+        "goto MtEmber_RubyPath_B4F 14 13",
+        "flagis FLAG_HIDE_GLOBAL_GROUDON 1",
+        "shot the deepest chamber, empty"
+      ]
+    },
+    {
+      "stop": "BELLOSSOM (GOLDSET) in BERRY FOREST, its streaks, its INDEX read mid-battle",
+      "steps": [
+        "goto ThreeIsland_BerryForest 4 6",
+        "wild SPECIES_BELLOSSOM 30 keep",
+        "press L",
+        "wait 90",
+        "shot its INDEX entry (REFERENCE)",
+        "press B",
+        "wait 120",
+        "win",
+        "finish"
+      ]
+    },
+    {
+      "stop": "the DREAM LOG: one of yours, at dawn",
+      "steps": [
+        "flag FLAG_BADGE01_GET 1",
+        "flag FLAG_DREAM_LOG_CAIRN 0",
+        "var VAR_DREAM_LOG_STAMP 65535",
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "hold RIGHT 12",
+        "wait 30",
+        "finish",
+        "hold LEFT 12",
+        "wait 30",
+        "finish",
+        "hold RIGHT 12",
+        "wait 30",
+        "finish",
+        "says \"I had a dream.\"",
+        "flagis FLAG_DREAM_LOG_CAIRN 1"
+      ]
+    }
+  ]
+}

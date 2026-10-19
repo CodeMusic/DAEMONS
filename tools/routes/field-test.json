@@ -1,11 +1,12 @@
 {
   "rom": "debug",
-  "about": "The field page's 'route through it' (T-378, from the walk of 2026-10-04): a fresh DEBUG game, from the bedroom to QUICKSILVER and back to BRAZEN. Each stop starts with a goto, so a stop that fails does not take the rest with it. The Reading Room's door turns away a player without the DIPLOMA (that is what its stop captures); the next stop warps past the attendant to the room itself. CALLOW SCHOOL 1F's placard is not read: in exam season the seated students box in the tile it is read from. FIRST DRAFT: written while the theatre was closed; the stops' standing tiles are planned from the maps, not yet played.",
+  "about": "The field page's 'route through it' (T-378, from the walk of 2026-10-04): a fresh DEBUG game, from the bedroom to QUICKSILVER and back to BRAZEN. Each stop starts with a goto, so a stop that fails does not take the rest with it. The Reading Room's door turns away a player without the DIPLOMA (that is what its stop captures); the next stop warps past the attendant to the room itself. CALLOW SCHOOL 1F's placard is not read: in exam season the seated students box in the tile it is read from. FIRST DRAFT: written while the theatre was closed; the stops' standing tiles are planned from the maps, not yet played. EXTENDED 2026-10-19 with every feature since 2026-10-17 (stops 19 on): PLAY (the HARP from the LYREBIRD, TWELVE DAYS heard, ALMOST, learned, its banner, the SONGBOOK page, the fir's door, THE NEXUS lit), a holiday (MASK NIGHT's banner and its gift once a year, THE YEAR's TRUCE DAY line), the DREAM LOG (hers at a heal, yours at dawn), the GAME CORNER's pull and the take, CORPUS's ledger, a fixed legendary walked into (GROUDON, then JIRACHI on foot) with its INDEX and its two-word category read mid-battle before the GLOBAL INDEX, a routine's signature, a placed island daemon past 151, RAIN and SEEPAGE, saturation at friendship 0 and 255. The DEBUG overrides (date, weather) are poked, not set through the menu; CONTEXT's own run is tools/routes/field-test-context.json.",
   "stops": [
     {
-      "stop": "BLANCHE: the bedroom",
+      "stop": "BLANCHE: the bedroom (the DEBUG build, continued)",
       "steps": [
-        "expect PalletTown_PlayersHouse_2F",
+        "load debug",
+        "goto PalletTown_PlayersHouse_2F 5 5",
         "shot the bedroom",
         "music"
       ]
@@ -181,6 +182,382 @@
         "flag FLAG_NOTEBOOK_PROSPECTUS_SCORES 0",
         "look 13 25",
         "flagis FLAG_NOTEBOOK_PROSPECTUS_SCORES 1"
+      ]
+    },
+    {
+      "stop": "PLAY: the HARP from the LYREBIRD",
+      "steps": [
+        "flag FLAG_GOT_INSTRUMENT 0",
+        "goto ViridianCity 27 21",
+        "repel 999",
+        "talk 27,19",
+        "says \"Take the HARP.\"",
+        "flagis FLAG_GOT_INSTRUMENT 1"
+      ]
+    },
+    {
+      "stop": "PLAY: TWELVE DAYS heard at the LYREBIRD, in E",
+      "steps": [
+        "flag FLAG_UNDERSTANDING_SCHOOL 1",
+        "flag FLAG_SONG_1 0",
+        "flag FLAG_SONG_HEARD_1 0",
+        "goto ViridianCity 27 21",
+        "repel 999",
+        "talk 27,19",
+        "says \"in the key of E\"",
+        "flagis FLAG_SONG_HEARD_1 1"
+      ]
+    },
+    {
+      "stop": "PLAY: ALMOST -- TWELVE DAYS in C",
+      "steps": [
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "register ITEM_HARP",
+        "var VAR_PLAY_KEY 0",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 6 5 3 4 2 3 2 1 7 1",
+        "wait 90",
+        "shot played in C",
+        "finish",
+        "says \"Close. The shape is right\"",
+        "flagis FLAG_SONG_1 0"
+      ]
+    },
+    {
+      "stop": "PLAY: TWELVE DAYS played back in E -- learned",
+      "steps": [
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "register ITEM_HARP",
+        "var VAR_PLAY_KEY 4",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 6 5 3 4 2 3 2 1 7 1",
+        "wait 60",
+        "shot joined",
+        "wait 120",
+        "shot echo",
+        "finish",
+        "says \"wrote it into the SONGBOOK\"",
+        "flagis FLAG_SONG_1 1"
+      ]
+    },
+    {
+      "stop": "PLAY: TWELVE DAYS again -- its event, the day banner",
+      "steps": [
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "var VAR_PLAY_KEY 4",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 6 5 3 4 2 3 2 1 7 1",
+        "wait 40",
+        "shot joined",
+        "wait 60",
+        "shot banner 1",
+        "wait 60",
+        "shot banner 2",
+        "finish",
+        "shot after"
+      ]
+    },
+    {
+      "stop": "the SONGBOOK: TWELVE DAYS' page, in its key",
+      "steps": [
+        "flag FLAG_SONG_FIR 0",
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "press DOWN 6",
+        "press A",
+        "wait 40",
+        "press A",
+        "wait 60",
+        "says \"Heard at CALLOW SCHOOL.\"",
+        "says \"In the key of E.\"",
+        "shot the page",
+        "press B 4",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "PLAY: O CHRISTMAS TREE in B FLAT to ROUTE 1's flat fir -- its door",
+      "steps": [
+        "flag FLAG_FIR_IN_KEY 0",
+        "flag FLAG_NEXUS_LIT 0",
+        "goto Route1_Grove 11 4",
+        "repel 999",
+        "hold UP 4",
+        "wait 20",
+        "register ITEM_HARP",
+        "var VAR_PLAY_KEY 10",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 5 1 1 1 2 3 3 3",
+        "wait 60",
+        "shot played",
+        "finish",
+        "says \"every one is home\"",
+        "wait 120",
+        "expect Nexus 12 5",
+        "flagis FLAG_FIR_IN_KEY 1",
+        "shot THE NEXUS"
+      ]
+    },
+    {
+      "stop": "THE NEXUS lit: O CHRISTMAS TREE to its tree",
+      "steps": [
+        "goto Nexus 12 5",
+        "hold UP 4",
+        "wait 20",
+        "shot unlit",
+        "var VAR_PLAY_KEY 10",
+        "press SELECT",
+        "wait 60",
+        "press A",
+        "play 5 1 1 1 2 3 3 3",
+        "wait 90",
+        "shot lighting",
+        "wait 240",
+        "finish",
+        "says \"Thank you.\"",
+        "flagis FLAG_NEXUS_LIT 1",
+        "wait 30",
+        "shot lit"
+      ]
+    },
+    {
+      "stop": "a holiday: MASK NIGHT -- the banner at the door",
+      "steps": [
+        "poke gDaemonsDateOverride 8 10",
+        "goto ViridianCity_PokemonCenter_1F 7 6",
+        "repel 999",
+        "wait 90",
+        "warp MAP_VIRIDIAN_CITY",
+        "shot the door",
+        "wait 20",
+        "shot the banner",
+        "wait 40",
+        "shot the banner, later"
+      ]
+    },
+    {
+      "stop": "a holiday: MASK NIGHT -- the gift after a heal",
+      "steps": [
+        "flag FLAG_HOLIDAY_GIFT_COMMON_JAN+9 0",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "repel 999",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "says \"It is MASK NIGHT today. This was left for you.\"",
+        "flagis FLAG_HOLIDAY_GIFT_COMMON_JAN+9 1"
+      ]
+    },
+    {
+      "stop": "a holiday: the gift once a year -- not again",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "unsaid \"This was left for you.\""
+      ]
+    },
+    {
+      "stop": "THE YEAR: TRUCE DAY's line at a heal",
+      "steps": [
+        "poke gDaemonsDateOverride 8 9",
+        "flag FLAG_HOLIDAY_GIFT_COMMON_JAN+8 0",
+        "flag FLAG_YEAR_LINE_TRUCE_DAY 0",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 90",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "says \"Nobody won today.\"",
+        "flagis FLAG_YEAR_LINE_TRUCE_DAY 1"
+      ]
+    },
+    {
+      "stop": "the DREAM LOG: one of hers, at a heal",
+      "steps": [
+        "poke gDaemonsDateOverride 8 37",
+        "var VAR_DREAM_HEALS 2",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 90",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "says \"I had the strangest dream last night.\""
+      ]
+    },
+    {
+      "stop": "the DREAM LOG: one of yours, at dawn",
+      "steps": [
+        "poke gDaemonsDateOverride 8 0",
+        "flag FLAG_BADGE01_GET 1",
+        "flag FLAG_DREAM_LOG_CAIRN 0",
+        "var VAR_DREAM_LOG_STAMP 65535",
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "hold RIGHT 12",
+        "wait 30",
+        "finish",
+        "hold LEFT 12",
+        "wait 30",
+        "finish",
+        "hold RIGHT 12",
+        "wait 30",
+        "finish",
+        "says \"I had a dream.\"",
+        "flagis FLAG_DREAM_LOG_CAIRN 1"
+      ]
+    },
+    {
+      "stop": "the GAME CORNER: a pull, and the take moving",
+      "steps": [
+        "flag FLAG_GOT_COIN_CASE 1",
+        "coins 500",
+        "goto CeladonCity_GameCorner",
+        "repel 999",
+        "remember take *gSaveBlock2Ptr+0xE9C 32",
+        "look 5 6 1",
+        "press A",
+        "wait 120",
+        "shot the reels",
+        "press DOWN",
+        "press A",
+        "wait 60",
+        "press A",
+        "wait 30",
+        "press A",
+        "wait 30",
+        "press A",
+        "wait 200",
+        "shot the pull",
+        "press B",
+        "wait 60",
+        "shot leaving",
+        "finish",
+        "moved take"
+      ]
+    },
+    {
+      "stop": "CORPUS's ledger: the take, kept by ACCOUNTS",
+      "steps": [
+        "goto RocketHideout_B1F 21 13",
+        "repel 999",
+        "look 21 14",
+        "says \"A ledger lies open on the desk.\"",
+        "says \"UP FROM THE GAME CORNER\""
+      ]
+    },
+    {
+      "stop": "a fixed legendary: GROUDON walked into, its INDEX read mid-battle (FIRST LAND), a routine's signature",
+      "steps": [
+        "flag FLAG_HIDE_GLOBAL_GROUDON 0",
+        "flag FLAG_SYS_NATIONAL_DEX 0",
+        "goto MtEmber_RubyPath_B4F 14 13",
+        "repel 999",
+        "bump GlobalIndex_EventScript_Groudon keep",
+        "press L",
+        "wait 90",
+        "shot its INDEX entry",
+        "press B",
+        "wait 120",
+        "shot back",
+        "press A",
+        "press A",
+        "wait 20",
+        "shot the routine",
+        "wait 30",
+        "shot the signature",
+        "wait 30",
+        "wait 30",
+        "shot the signature, later",
+        "wait 30",
+        "shot the signature, later still",
+        "win",
+        "finish",
+        "flagis FLAG_HIDE_GLOBAL_GROUDON 1"
+      ]
+    },
+    {
+      "stop": "a placed island daemon past 151: SIX ISLAND's WATER PATH, read mid-battle",
+      "steps": [
+        "goto SixIsland_WaterPath 10 58",
+        "wild past151 20 keep",
+        "press L",
+        "wait 90",
+        "shot its INDEX entry",
+        "press B",
+        "wait 120",
+        "win",
+        "finish"
+      ]
+    },
+    {
+      "stop": "weather: RAIN -- SEEPAGE on ROUTE 22, IN RAIN, a boosted routine",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 2",
+        "goto Route22 15 9",
+        "wait 120",
+        "shot rain",
+        "wild SPECIES_BARBOACH 25 keep",
+        "press A",
+        "wait 20",
+        "shot the routines (FLOW glints)",
+        "press B",
+        "wait 30",
+        "press L",
+        "wait 90",
+        "shot its INDEX entry",
+        "press A",
+        "wait 40",
+        "shot its next page (IN RAIN)",
+        "press B",
+        "wait 120",
+        "win",
+        "finish",
+        "poke gDaemonsWeatherOverride 8 0"
+      ]
+    },
+    {
+      "stop": "saturation at two friendships: the lead at 0, then at 255",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 1",
+        "friendship 0 0",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "shot friendship 0",
+        "win",
+        "finish",
+        "friendship 0 255",
+        "wild 1 keep",
+        "shot friendship 255",
+        "win",
+        "finish",
+        "friendship 0 70",
+        "poke gDaemonsWeatherOverride 8 0"
+      ]
+    },
+    {
+      "stop": "JIRACHI: walked into, on foot from the plateau",
+      "steps": [
+        "flag FLAG_HIDE_GLOBAL_JIRACHI 0",
+        "goto FiveIsland_MemorialPillar 8 45",
+        "repel 999",
+        "shot the plateau",
+        "bump GlobalIndex_EventScript_Jirachi",
+        "flagis FLAG_HIDE_GLOBAL_JIRACHI 1",
+        "shot gone"
+      ]
+    },
+    {
+      "stop": "KYOGRE does not stand in CONTENT",
+      "steps": [
+        "flag FLAG_HIDE_GLOBAL_KYOGRE 0",
+        "goto SixIsland_OutcastIsland 8 22",
+        "flagis FLAG_HIDE_GLOBAL_KYOGRE 1"
       ]
     }
   ]

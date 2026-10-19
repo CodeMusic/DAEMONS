@@ -52,7 +52,7 @@ The biggest tenants after it:
 
 | | vanilla | ours | we added | free now |
 |---|---|---|---|---|
-| **ROM** contents | 8.9 MB | 9.8 MB | **941.4 KB** | 6.2 MB |
+| **ROM** contents | 8.9 MB | 9.8 MB | **941.5 KB** | 6.2 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **392 B** | 712 B |
 | **IWRAM** | 29.1 KB | 29.1 KB | **12 B** | 2.9 KB |
 
@@ -60,7 +60,7 @@ The biggest tenants after it:
 |---|---|---|---|
 | `.rodata` | 4.8 MB | 5.6 MB | 830.0 KB |
 | `gfx_data` | 1.7 MB | 1.7 MB | -6.7 KB |
-| `.text` | 1.4 MB | 1.4 MB | 68.1 KB |
+| `.text` | 1.4 MB | 1.4 MB | 68.2 KB |
 | `script_data` | 496.9 KB | 532.6 KB | 35.7 KB |
 | `song_data` | 282.1 KB | 256.3 KB | -25.8 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
@@ -589,6 +589,8 @@ rest with it.* `--check` *resolves every map, person, flag, var and song without
 | `music [MUS_X]` | **fail unless that song is playing** (*default: the map's own `music`*) |
 | `flag` / `flagis` / `var` / `repel` | *set a flag; fail unless one is set (a document that files itself); set a var; no wild battles* |
 | `fight` / `win` | *the walker's battle; DEBUG: `gBattleOutcome = 1` and a turn* |
+| `bump` / `wild` / `foe` | ***2026-10-19 (T-334)***: *walk INTO someone pressing no A (an unseen legend); pace the grass until a wild battle, a species, or one past 151; `keep` stops at the first "What will X do?" (the player controller's `HandleInputChooseAction`) for `press L` and the like* |
+| `poke` / `register` / `play` / `friendship` / `coins` / `remember`+`moved` / `unsaid` | *write RAM by symbol (`*gSaveBlock1Ptr+0x296`) -- the DEBUG overrides `gDaemonsDateOverride`, `gDaemonsWeatherOverride` are EWRAM globals; a key item onto SELECT; the instrument's notes 1-7; a party daemon's friendship (decrypted, checksummed, encrypted back); the TOKEN CASE (XOR the save's key); a value that must change; a line that must not be said* |
 
 **Every field message is expanded into `gStringVar4` before it prints**, *so the box's words can be read back through
 the charmap instead of off a screenshot.* **"The script has let go" is `sLockFieldControls == 0` and
