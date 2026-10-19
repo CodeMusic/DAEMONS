@@ -80,6 +80,14 @@ width = _ns["textwidth"]
 PANE_W, PANE_LINES = 234, 4
 
 
+
+def sub1(pat, repl, s, what, count=0):
+    """re.sub that must match exactly once (T-421, genbackdrops' `assert s.count(anchor) == 1`): a pattern that
+    stops matching would otherwise leave the file as it was and report nothing to change."""
+    out, n = re.subn(pat, repl, s, count=count)
+    assert n == 1, "%s: %d matches, want 1 -- %s" % (what, n, pat)
+    return out
+
 def wrap(text):
     lines, cur = [], ""
     for w in text.split():
@@ -310,7 +318,8 @@ def engine(made):
     # names
     def names(t):
         for letter, name, *_ in RESIDENTS:
-            t = re.sub(r'(\[SPECIES_OLD_UNOWN_%s\]\s*=\s*_\(")[^"]*("\))' % letter, r"\g<1>%s\g<2>" % name, t)
+            t = sub1(r'(\[SPECIES_OLD_UNOWN_%s\]\s*=\s*_\(")[^"]*("\))' % letter, r"\g<1>%s\g<2>" % name, t,
+                     "species_names.h OLD_UNOWN_" + letter)
         return t
     edit("src/data/text/species_names.h", names)
 

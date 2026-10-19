@@ -191,6 +191,14 @@ FAMILIES = [
 ]
 
 
+
+def sub1(pat, repl, s, what, count=0):
+    """re.sub that must match exactly once (T-421, genbackdrops' `assert s.count(anchor) == 1`): a pattern that
+    stops matching would otherwise leave the file as it was and report nothing to change."""
+    out, n = re.subn(pat, repl, s, count=count)
+    assert n == 1, "%s: %d matches, want 1 -- %s" % (what, n, pat)
+    return out
+
 def wrap(s):
     out, cur = [], ""
     for w in s.split():
@@ -231,16 +239,17 @@ def main():
                     print("  !! %s %s: %d lines" % (name, ed, len(lines)))
                     bad += 1
             print("  %-10s %-10s %-11s %s" % (grove[:10], name, cat, slot))
-            names = re.sub(r'(\[SPECIES_%s\]\s*=\s*_\(")[^"]*("\))' % slot, r"\g<1>%s\g<2>" % name, names)
-            entries = re.sub(r'(\[NATIONAL_DEX_%s\]\s*=\s*\{\s*\.categoryName = _\(")[^"]*("\))' % slot,
-                             r"\g<1>%s\g<2>" % cat, entries)
+            names = sub1(r'(\[SPECIES_%s\]\s*=\s*_\(")[^"]*("\))' % slot, r"\g<1>%s\g<2>" % name, names,
+                         "species_names.h " + slot)
+            entries = sub1(r'(\[NATIONAL_DEX_%s\]\s*=\s*\{\s*\.categoryName = _\(")[^"]*("\))' % slot,
+                           r"\g<1>%s\g<2>" % cat, entries, "pokedex_entries.h " + slot)
             for text, which in ((content, "fr"), (context, "lg")):
                 pat = r'(const u8 g%sPokedexText\[\] = _\(\n)(?:.*\n)*?(.*"\);)' % ident(slot)
                 body = entry_text(wrap(text)) + ");"
                 if which == "fr":
-                    fr = re.sub(pat, lambda m: m.group(1) + body, fr, count=1)
+                    fr = sub1(pat, lambda m: m.group(1) + body, fr, "pokedex_text_fr.h " + slot, count=1)
                 else:
-                    lg = re.sub(pat, lambda m: m.group(1) + body, lg, count=1)
+                    lg = sub1(pat, lambda m: m.group(1) + body, lg, "pokedex_text_lg.h " + slot, count=1)
     old = [open(p).read() for p in (names_p, entries_p, fr_p, lg_p)]
     changed = [p for p, o, s in zip((names_p, entries_p, fr_p, lg_p), old, (names, entries, fr, lg)) if o != s]
     print("\n  %d daemons, %d over the pane; %s" % (n, bad, ", ".join(os.path.basename(p) for p in changed) or "nothing to change"))

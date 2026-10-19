@@ -29,6 +29,14 @@ PTRS = os.path.join(E, "src/data/object_events/object_event_graphics_info_pointe
 REF = {0x10, 0x16, 0x1A, 0x1B, 0x23}          # metatile_behavior.c: MetatileBehavior_IsReflective
 NPC = ["PALSLOT_NPC_1", "PALSLOT_NPC_2", "PALSLOT_NPC_3", "PALSLOT_NPC_4"]
 
+
+def sub1(pat, repl, s, what, count=0):
+    """re.sub that must match exactly once (T-421, genbackdrops' `assert s.count(anchor) == 1`): a pattern that
+    stops matching would otherwise leave the file as it was and report nothing to change."""
+    out, n = re.subn(pat, repl, s, count=count)
+    assert n == 1, "%s: %d matches, want 1 -- %s" % (what, n, pat)
+    return out
+
 def read(p): return open(os.path.join(E, p) if not p.startswith("/") else p).read()
 
 #  Species whose object is not named after them, or is not named on the map at all (found 2026-09-25: the census
@@ -226,8 +234,11 @@ def write(dm, maps):
     for sp, info in dm.items():
         t = species_type(sp)
         body = re.search(r"(const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s = \{)(.*?)(\};)" % info, gi, re.S)
-        nb = re.sub(r"\.paletteTag = \w+", ".paletteTag = OBJ_EVENT_PAL_TAG_DAEMON_TYPE_%s" % t, body.group(2))
-        nb = re.sub(r"\.paletteSlot = \w+", ".paletteSlot = %s" % base.get(sp, "PALSLOT_NPC_1"), nb)
+        assert body, "no gObjectEventGraphicsInfo_%s in %s" % (info, GI)
+        nb = sub1(r"\.paletteTag = \w+", ".paletteTag = OBJ_EVENT_PAL_TAG_DAEMON_TYPE_%s" % t, body.group(2),
+                  "%s's paletteTag" % info)
+        nb = sub1(r"\.paletteSlot = \w+", ".paletteSlot = %s" % base.get(sp, "PALSLOT_NPC_1"), nb, "%s's paletteSlot" % info)
+        assert gi.count(body.group(0)) == 1, "%s's graphics info appears twice" % info
         gi = gi.replace(body.group(0), body.group(1) + nb + body.group(3))
     #  T-404 (2026-10-15): take out ONLY our block -- the mark and the Daemon_ variant infos under it -- and put the new
     #  one back where it was. ".*" to the end of the file deleted TY, DAVID and the fir, added by hand after it.
