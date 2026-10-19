@@ -208,6 +208,11 @@ def sandbox():
     #  blocks with it and, without it, silently dropped engine.md's whole save table (found 2026-10-15).
     if os.path.isdir(os.path.join(eng, "tools", "agbcc")) and not os.path.exists(os.path.join(e, "tools", "agbcc")):
         os.symlink(os.path.join(eng, "tools", "agbcc"), os.path.join(e, "tools", "agbcc"))
+    #  T-421: the build writes ten headers from json (map_groups.h, layouts.h, region_map_sections.h, items.h ...) and
+    #  gitignores them, so a worktree has none -- companion_export and genholidays crashed on map_groups.h. Made here
+    #  as the build makes them, from the worktree's own json, by the helpers just copied in (`make generated`); they
+    #  are ignored files, so a reset keeps them.
+    subprocess.run(["make", "-C", e, "generated", "-j8"], check=True, capture_output=True)
     for f in os.listdir(eng):
         if f.startswith("daemonsCont") and f.endswith((".map", ".elf", ".gba")):
             shutil.copy2(os.path.join(eng, f), os.path.join(e, f))
