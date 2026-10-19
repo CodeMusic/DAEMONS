@@ -25,3 +25,9 @@ THE SUBTLE LAYER's cover on the wiki: the title a little lower, off the border
 T-427 (v11.306.3): the ledger owed and kept, the plants at 8000, SCORN's office, VERDIGRIS after the fall
 
 ![19Oct2026 - T427 - the house keeps - 4](19Oct2026%20-%20T427%20-%20the%20house%20keeps%20-%204.png)
+
+### 19Oct2026 - T427 - the take frozen at the fall - 5
+
+T-427 (v11.306.4): ¥12340 at the fall; the take rises to 99999 and VERDIGRIS still says ¥12340
+
+![19Oct2026 - T427 - the take frozen at the fall - 5](19Oct2026%20-%20T427%20-%20the%20take%20frozen%20at%20the%20fall%20-%205.png)
