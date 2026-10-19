@@ -44,7 +44,7 @@ with no computer, taking the save from an emulator on the same phone (built; sti
   has -- DAEMONS' own harp for CONTENT, its flute for CONTEXT.
 - **Experience.** Every step of a goal you finish feeds the daemon and gives it experience, which comes home with it.
 - **Your save, to read.** The app, the site and the Tab5 show YOU (your MARKS, ROOTS, the regions you have seen, the
-  hidden places you have found, the story so far), a LIBRARY (CALLOW SCHOOL and your DIPLOMA, THE GUIDE once found, the
+  hidden places you have found, the story so far), a LIBRARY (CALLOW SCHOOL and your DIPLOMA, THE GUIDE and THE SUBTLE LAYER once found -- see [Books](Books) -- the
   NOTEBOOK, the SONGBOOK's songs on a staff in their colours, and STREAM's lessons), and the INDEX with each daemon's
   NATIVE line -- only what your save has already reached.
 
