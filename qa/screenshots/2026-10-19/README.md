@@ -37,3 +37,9 @@ T-427 (v11.306.4): ¥12340 at the fall; the take rises to 99999 and VERDIGRIS st
 T-408 (v11.306.5): each grove recoloured to its universe's mood, 2 at night, ROUTE 1 unchanged; an approved INDEX entry
 
 ![19Oct2026 - T408 - grove moods - 6](19Oct2026%20-%20T408%20-%20grove%20moods%20-%206.png)
+
+### 19Oct2026 - T334 - the GLOBAL INDEX placed - 7
+
+T-334 (v11.306.6): daemons past #151 on the islands, KAIROS fixed in BERRY FOREST, a two-word category, NATIVE for PRESCIENCE
+
+![19Oct2026 - T334 - the GLOBAL INDEX placed - 7](19Oct2026%20-%20T334%20-%20the%20GLOBAL%20INDEX%20placed%20-%207.png)
