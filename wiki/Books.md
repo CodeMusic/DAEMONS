@@ -12,7 +12,7 @@ below, so the words here never fall behind the game's.
 
 ## THE PROGRAMMER'S GUIDE TO THE HUMAN MIND
 
-<img src="https://raw.githubusercontent.com/CodeMusic/daemons-companion/main/server/data/art/guide_cover.png" width="480" alt="THE GUIDE's cover">
+<img src="https://raw.githubusercontent.com/CodeMusic/DAEMONS/main/wiki/images/guide_cover.png" width="396" alt="THE GUIDE's cover">
 
 The mind treated as software, written as an engineer's manual. The brain is the hardware, and thoughts, feelings and
 habits are code that can be read, debugged and rewritten. Its tools come from NLP, CBT, mindfulness, hypnotherapy and
@@ -39,7 +39,7 @@ journaling, each set out as a way of working on the system. 28 chapters:
 
 ## THE SUBTLE LAYER: a trainer's handbook
 
-<img src="https://raw.githubusercontent.com/CodeMusic/daemons-companion/main/server/data/art/subtle_cover.png" width="480" alt="THE SUBTLE LAYER's cover">
+<img src="https://raw.githubusercontent.com/CodeMusic/DAEMONS/main/wiki/images/subtle_cover.png" width="396" alt="THE SUBTLE LAYER's cover">
 
 A handbook of practice, not of cosmology: what trainers do with the layer under the solid world, and what they notice
 when they do it. It holds the craft and the physics side by side and chooses neither. It covers reading (the clairs),
@@ -68,6 +68,6 @@ second, asking voice is printed faint. 51 pages in ten sections:
 
 ## The covers
 
-The covers above are the companion's copies, and they carry no lettering. The game's font belongs to Nintendo, and the
-companion publishes nothing of Nintendo's, so the app, the site and the Tab5 each set the title over the art in their
-own type.
+The covers' art carries no lettering: the game's font belongs to Nintendo, and nothing of Nintendo's is published. So
+the companion sets each title over the art in its own type, and the covers on this page have their titles drawn in the
+same way, in a common typeface (`wiki/covers.py` makes them from the companion's art and titles).
