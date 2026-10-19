@@ -433,3 +433,33 @@ THE HOUSE page on the site against a test server on a copy of the save: THE HOUS
 THE HOUSE page on the site against a test server on a copy of the save: THE HOUSE OWES 300 (the player ahead), 100 back at the next SYNC, 147 pulls; opened, each board's share -- the watch and T-Deck down, the Fire and the CC1101 up. The two hints now readable.
 
 ![18Oct2026 - C167 - the house keeps on the site - 101](18Oct2026%20-%20C167%20-%20the%20house%20keeps%20on%20the%20site%20-%20101.png)
+
+### 18Oct2026 - T392 - t392p3firlightszoom - 102
+
+T-392 P3 (v11.306.1): t392p3_firlights_zoom
+
+![18Oct2026 - T392 - t392p3firlightszoom - 102](18Oct2026%20-%20T392%20-%20t392p3firlightszoom%20-%20102.png)
+
+### 18Oct2026 - T392 - t392p3pairingzoom - 103
+
+T-392 P3 (v11.306.1): t392p3_pairing_zoom
+
+![18Oct2026 - T392 - t392p3pairingzoom - 103](18Oct2026%20-%20T392%20-%20t392p3pairingzoom%20-%20103.png)
+
+### 18Oct2026 - T392 - t392p3cloverseedzoom - 104
+
+T-392 P3 (v11.306.1): t392p3_clover_seed_zoom
+
+![18Oct2026 - T392 - t392p3cloverseedzoom - 104](18Oct2026%20-%20T392%20-%20t392p3cloverseedzoom%20-%20104.png)
+
+### 18Oct2026 - T392 - t392p3uniondebug - 105
+
+T-392 P3 (v11.306.1): t392p3_union_debug
+
+![18Oct2026 - T392 - t392p3uniondebug - 105](18Oct2026%20-%20T392%20-%20t392p3uniondebug%20-%20105.png)
+
+### 18Oct2026 - T392 - t392p3shiftuncut - 106
+
+T-392 P3 (v11.306.1): t392p3_shift_uncut
+
+![18Oct2026 - T392 - t392p3shiftuncut - 106](18Oct2026%20-%20T392%20-%20t392p3shiftuncut%20-%20106.png)
