@@ -549,7 +549,9 @@ def profile_layout():
                       "encryption key. A daemon is SEEN only when sb2 index_seen and sb1 seen1 and seen2 all have its bit "
                       "(pokedex_screen.c's anticheat), so a writer sets all three. T-427: house_take is the house's take "
                       "(what the GAME CORNER and the CASINO kept, in money), house_take_bytes wide, signed little-endian "
-                      "(negative while the player is ahead), stored plain -- NOT XORed as money is. Only ever added to.",
+                      "(negative while the player is ahead), stored plain -- NOT XORed as money is. Only ever added to. "
+                      "house_take_at_fall is the take as it stood when CORPUS fell (the game freezes it there, once; "
+                      "VERDIGRIS names it), same width and sign -- the game's to write, never a writer's.",
             "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
                     "trainer_id": sb2["playerTrainerId"], "play_time_hours": sb2["playTimeHours"],
                     "play_time_minutes": sb2["playTimeMinutes"], "play_time_seconds": sb2["playTimeSeconds"],
@@ -557,7 +559,8 @@ def profile_layout():
                     "index_bytes": dex["seen"] - dex["owned"],
                     "daemons_flags": sb2["daemonsFlags"], "encryption_key": sb2["encryptionKey"],
                     #  T-427: the house's take, beside the money it is counted in (C-167 adds the CASINO's at SYNC)
-                    "house_take": sb2["houseTake"], "house_take_bytes": 4, "house_take_signed": True},
+                    "house_take": sb2["houseTake"], "house_take_bytes": 4, "house_take_signed": True,
+                    "house_take_at_fall": sb2["houseTakeAtFall"]},
             "sb1": {"location": sb1["location"], "flags": sb1["flags"], "money": sb1["money"],
                     "rival_name": sb1["rivalName"],                                    # C-125: the name the player gave
                     "key_items": sb1["bagPocket_KeyItems"], "key_items_count": int(kcount),
