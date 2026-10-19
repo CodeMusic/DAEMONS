@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.305**
+**A total conversion — the living design bible, v11.306**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8595,6 +8595,16 @@ music it becomes; clause 3 still governs it**: *an ordinary routine's bits and n
 **binary on the CONTENT side of the chart, notes on the CONTEXT side.** ***The seven union routines (0.7, Wisdom) are
 the one exception, as PERSPECTIVE's flash is in Halftone***: **each has an effect of its own, and its bits and notes
 come in the splash's own colours, so the signature is theirs alone.**
+
+***Amended 2026-10-18 (the user, T-392): every routine signed, and the holidays' one allowance.*** **All 363 routines
+carry a signature of their own** -- *a codeword from the routine's id, so no two are alike: nine glyphs of bits and a
+three-note figure whose rhythm is the 1s, in the key its type's colour folds into (7.2), both on every routine with its
+side's kind leading, each glyph outlined in true black (9.4a); every signature runs in full; the seven union routines
+play their own hand-made scripts.* ***Third exception to clause 3***: **on a holiday a routine its row names may wear
+that holiday's look on its signature only -- the glyphs' shape and colour, drawn from the twelve month colours alone**
+*(a colour that is no month's is read as the nearest month; one with no hue -- white, silver, frost -- is the type's own
+colour paled). Never the daemon, never the picture beneath, never new art.* **A QUIET holiday adds nothing: its
+signatures keep their ink and play soft.** *`tools/gensignature.py`; the looks in `docs/holidays.json`.*
 
 ### 9.25 The goal companion, and AWAY — *decided 2026-10-03 (T-358)*
 

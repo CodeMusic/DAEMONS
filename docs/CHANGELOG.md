@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.306 — 2026-10-18
+
+### Every routine signed (T-392)
+
+- ***9.24, amended (the user)***: **all 363 routines carry a signature of their own** -- *nine glyphs of bits and a three-note figure in the type's key, unique by construction, outlined in true black, run in full; the union routines' own scripts released.* **A third exception to clause 3**: *on a holiday a routine may wear the holiday's look on its signature only, in the twelve month colours; a QUIET holiday plays soft.*
+
+---
+
 ## v11.305 — 2026-10-18
 
 ### Weather, the DREAM LOG, the GAME CORNER, one voice (T-415, T-412, T-422, T-424, T-425, T-426)
