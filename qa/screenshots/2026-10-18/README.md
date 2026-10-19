@@ -421,3 +421,15 @@ T-392 P2 (v11.305.3): sig2_misread_zoom
 T-392 P2 (v11.305.3): sig2_lowhp
 
 ![18Oct2026 - T392 - sig2lowhp - 99](18Oct2026%20-%20T392%20-%20sig2lowhp%20-%2099.png)
+
+### 18Oct2026 - C167 - the house keeps on the site - 100
+
+THE HOUSE page on the site against a test server on a copy of the save: THE HOUSE OWES 300 (the player ahead), 100 back at the next SYNC, 147 pulls; opened, each board's share -- the watch and T-Deck down, the Fire and the CC1101 up. The two hints now readable.
+
+![18Oct2026 - C167 - the house keeps on the site - 100](18Oct2026%20-%20C167%20-%20the%20house%20keeps%20on%20the%20site%20-%20100.jpg)
+
+### 18Oct2026 - C167 - the house keeps on the site - 101
+
+THE HOUSE page on the site against a test server on a copy of the save: THE HOUSE OWES 300 (the player ahead), 100 back at the next SYNC, 147 pulls; opened, each board's share -- the watch and T-Deck down, the Fire and the CC1101 up. The two hints now readable.
+
+![18Oct2026 - C167 - the house keeps on the site - 101](18Oct2026%20-%20C167%20-%20the%20house%20keeps%20on%20the%20site%20-%20101.png)
