@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draw the player's overworld sprite -- the figure you look at all game.
 
-    python3 tools/genplayer.py [--show]
+    python3 tools/genplayer.py [--show] [--write]
 
 gfx/sprites/red.png is six 16x16 frames: down, up, side, then a walk frame for
 each. Facing right is the side frame with OAM's x-flip, so there is no fourth
@@ -30,7 +30,8 @@ show it.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gbimg import write_png
+from gbimg import guarded_png
+WRITE = "--write" in sys.argv   # T-421: report only without it
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 LV = {"#": 0, ":": 1, ".": 2, " ": 3}          # 3 is transparent for OBJ tiles
@@ -129,16 +130,16 @@ for name, art in FRAMES:
     if len(art) != 16 or any(len(r) != 16 for r in art):
         sys.exit("%s is not 16x16" % name)
     rows += [[LV[c] for c in r] for r in art]
-write_png(os.path.join(ENG, "gfx/sprites/red.png"), rows, 2)
-print("  gfx/sprites/red.png 16x%d -- %s" % (len(rows), ", ".join(n for n, _ in FRAMES)))
+how = guarded_png(os.path.join(ENG, "gfx/sprites/red.png"), rows, 2, WRITE)
+print("  gfx/sprites/red.png 16x%d -- %s: %s" % (len(rows), ", ".join(n for n, _ in FRAMES), how))
 
 rows = []
 for name, art in BIKE:
     if len(art) != 16 or any(len(r) != 16 for r in art):
         sys.exit("bike %s is not 16x16" % name)
     rows += [[LV[c] for c in r] for r in art]
-write_png(os.path.join(ENG, "gfx/sprites/red_bike.png"), rows, 2)
-print("  gfx/sprites/red_bike.png 16x%d" % len(rows))
+how = guarded_png(os.path.join(ENG, "gfx/sprites/red_bike.png"), rows, 2, WRITE)
+print("  gfx/sprites/red_bike.png 16x%d: %s" % (len(rows), how))
 
 if "--show" in sys.argv:
     for name, art in FRAMES:

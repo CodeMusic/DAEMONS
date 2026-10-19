@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draw the CodeMusic splash tiles: a falling note, a braced-note mark, wordmarks.
 
-    python3 tools/gensplash.py
+    python3 tools/gensplash.py [--write]
 
 Replaces the GAME FREAK intro assets in place. All four are 2-bit greyscale at
 the exact sizes the engine expects, and they follow the convention the vanilla
@@ -17,7 +17,8 @@ already rules out generating anything under 16x16.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gbimg import write_png
+from gbimg import guarded_png
+WRITE = "--write" in sys.argv   # T-421: report only without it
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 # The vanilla splash does not use one convention: the star and the mark ink at
@@ -114,5 +115,5 @@ JOBS = [("gfx/splash/falling_star.png",      grid(NOTE8)),
         ("gfx/title/gamefreak_inc.png",      strip("CODEMUSIC", 72))]
 
 for path, g in JOBS:
-    write_png(os.path.join(ENG, path), g, 2)
-    print("  %-40s %dx%d" % (path, len(g[0]), len(g)))
+    how = guarded_png(os.path.join(ENG, path), g, 2, WRITE)
+    print("  %-40s %dx%d: %s" % (path, len(g[0]), len(g), how))

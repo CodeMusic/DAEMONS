@@ -55,7 +55,7 @@ def quantise(grid, levels=4):
     """0 = darkest ink, levels-1 = lightest. Even thresholds."""
     return [[ min(levels-1, v*levels//256) for v in row ] for row in grid]
 
-def write_png(path, grid, bitdepth):
+def png_bytes(grid, bitdepth):
     H=len(grid); W=len(grid[0]); ppb = 8//bitdepth
     stride = (W*bitdepth+7)//8; raw=b''
     for row in grid:
@@ -68,4 +68,20 @@ def write_png(path, grid, bitdepth):
     png = (b'\x89PNG\r\n\x1a\n'
            + chunk(b'IHDR', struct.pack('>IIBBBBB', W,H,bitdepth,0,0,0,0))
            + chunk(b'IDAT', zlib.compress(raw,9)) + chunk(b'IEND', b''))
-    open(path,'wb').write(png)
+    return png
+
+def write_png(path, grid, bitdepth):
+    open(path,'wb').write(png_bytes(grid, bitdepth))
+
+def guarded_png(path, grid, bitdepth, write):
+    """Write only with --write (T-421); without it, say whether the file on disk already matches."""
+    new = png_bytes(grid, bitdepth)
+    try:
+        same = open(path, 'rb').read() == new
+    except OSError:
+        same = False
+    if write:
+        if not same:
+            open(path, 'wb').write(new)
+        return "written" if not same else "unchanged"
+    return "matches" if same else "WOULD CHANGE (--write to write it)"

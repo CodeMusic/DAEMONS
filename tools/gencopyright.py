@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Redraw the copyright screen's three lines.
 
-    python3 tools/gencopyright.py
+    python3 tools/gencopyright.py [--write]
 
 The screen is built from raw tiles, not from the game font: PlaceString walks a
 list of tile IDs that LoadCopyrightTiles has just copied into vChars2 $60. That
@@ -30,7 +30,8 @@ S P h l g p y / 0 1 2 - and the caps O D E M U I that CODEMUSIC needs.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gbimg import write_png
+from gbimg import guarded_png
+WRITE = "--write" in sys.argv   # T-421: report only without it
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 INK, PAPER = 0, 3
@@ -102,5 +103,5 @@ if __name__ == "__main__":
         base += tiles
         for r, row in enumerate(strip(text, tiles)):
             out[r] += row
-    write_png(os.path.join(ENG, "gfx/splash/copyright.png"), out, 2)
-    print("  gfx/splash/copyright.png %dx8" % len(out[0]))
+    how = guarded_png(os.path.join(ENG, "gfx/splash/copyright.png"), out, 2, WRITE)
+    print("  gfx/splash/copyright.png %dx8: %s" % (len(out[0]), how))

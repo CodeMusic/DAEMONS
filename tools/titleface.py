@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Light the title figure's face.
 
-    python3 tools/titleface.py [--show]
+    python3 tools/titleface.py [--show] [--write]
 
 Run AFTER converting generated art into gfx/title/player.png. It rewrites the
 head, and nothing else.
@@ -33,7 +33,8 @@ read as a hat rather than a halo.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gbimg import read_png, write_png
+from gbimg import read_png, guarded_png
+WRITE = "--write" in sys.argv   # T-421: report only without it
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 DST = os.path.join(ENG, "gfx/title/player.png")
@@ -53,8 +54,8 @@ g = [[min(3, lum(x, y) * 4 // 256) for x in range(w)] for y in range(h)]
 for dy, row in enumerate(FACE):
     for dx, c in enumerate(row):
         g[Y0 + dy][X0 + dx] = LV[c]
-write_png(DST, g, 2)
-print("  lit the face on %s" % os.path.relpath(DST, os.path.dirname(ENG)))
+how = guarded_png(DST, g, 2, WRITE)
+print("  lit the face on %s: %s" % (os.path.relpath(DST, os.path.dirname(ENG)), how))
 if "--show" in sys.argv:
     for y in range(0, 20):
         print("  %2d %s" % (y, "".join("#:. "[v] for v in g[y])))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draw the eight MARKS for the player status screen.
 
-    python3 tools/genmarks.py
+    python3 tools/genmarks.py [--write]
 
 gfx/trainer_card/badges.png is sixteen 16x16 blocks alternating FACE, BADGE:
 DrawBadges shows the face until the mark is earned, then the badge. Vanilla put
@@ -31,7 +31,8 @@ No glyphs, no letters: craft rule 1 holds on the status screen too.
 """
 import sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gbimg import write_png
+from gbimg import guarded_png
+WRITE = "--write" in sys.argv   # T-421: report only without it
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 N, PAPER = 16, 3
@@ -184,8 +185,8 @@ for name, fn in MARKS:
     mark = fn()
     rows += mark.ghost().g + mark.g          # face slot first, then the badge
     print("  %-6s %s" % (name, fn.__doc__.split('.')[0]))
-write_png(os.path.join(ENG, "gfx/trainer_card/badges.png"), rows, 2)
-print("  gfx/trainer_card/badges.png 16x%d" % len(rows))
+how = guarded_png(os.path.join(ENG, "gfx/trainer_card/badges.png"), rows, 2, WRITE)
+print("  gfx/trainer_card/badges.png 16x%d: %s" % (len(rows), how))
 
 if "--show" in sys.argv:
     for n, (name, fn) in enumerate(MARKS):

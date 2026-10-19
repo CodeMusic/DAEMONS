@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Draw the player as they stand on the title screen, with the daemons cycling past.
 
-    python3 tools/gentitle.py [--show]
+    python3 tools/gentitle.py [--show] [--write]
 
 gfx/title/player.png is 40x56 and is drawn as OAM sprites beside whichever
 daemon the title screen is currently showing. Level 3 is transparent.
@@ -16,7 +16,8 @@ that would let it open.
 """
 import sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gbimg import write_png
+from gbimg import guarded_png
+WRITE = "--write" in sys.argv   # T-421: report only without it
 
 ENG = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "engine")
 W, H, CLEAR = 40, 56, 3
@@ -85,7 +86,7 @@ ellipse(20, 14, 19, 3, 0, fill=1)             # brim
 rect(14, 3, 25, 14, 0, fill=1)                # crown
 band(11, 13, 14, 25, 0)                       # hatband
 
-write_png(os.path.join(ENG, "gfx/title/player.png"), g, 2)
-print("  gfx/title/player.png %dx%d" % (W, H))
+how = guarded_png(os.path.join(ENG, "gfx/title/player.png"), g, 2, WRITE)
+print("  gfx/title/player.png %dx%d: %s" % (W, H, how))
 if "--show" in sys.argv:
     for r in g: print("   " + "".join("#:. "[v] for v in r))
