@@ -1,5 +1,5 @@
 {
- "_about": "T-210 batch 7 (DRAFT, built in the 2026-10-03 goal loop): the 13 legendaries, in vision.md 8.2b's MYTH register (names approved by the user 2026-10-03). Each entry says what the daemon does now (9.10a), and stops a sentence early. Families: PONTUS, GAIA and OURANOS (sea, earth, and the sky that ends their quarrel by arriving, as TRITON ended the birds'); BOREAS, BRONTES and TYPHON (PHOENIX's three); TALOS, DEUCALION and KHIONE (the sealed three); CASTOR and POLYDEUCES (the twins); KAIROS; ELPIS.",
+ "_about": "T-210 batch 7 (APPROVED by the user 2026-10-19, built in the 2026-10-03 goal loop): the 13 legendaries, in vision.md 8.2b's MYTH register (names approved by the user 2026-10-03). Each entry says what the daemon does now (9.10a), and stops a sentence early. Families: PONTUS, GAIA and OURANOS (sea, earth, and the sky that ends their quarrel by arriving, as TRITON ended the birds'); BOREAS, BRONTES and TYPHON (PHOENIX's three); TALOS, DEUCALION and KHIONE (the sealed three); CASTOR and POLYDEUCES (the twins); KAIROS; ELPIS.",
  "daemons": [
   {"species": "KYOGRE", "name": "PONTUS", "type": "FLOW", "category": "FIRST SEA",
    "content": ["It holds everything and has no shape.", "Whatever falls into it becomes part", "of it, and keeps no edge of its own."],

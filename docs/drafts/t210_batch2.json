@@ -1,5 +1,5 @@
 {
-  "_about": "T-210 batch 2 (DRAFT, built in the 2026-10-02 goal loop at the user's request): the five Hoenn water families, named by their own type's register (vision.md 2.9). Each: vanilla species, our name, INDEX category, CONTENT (what it does), CONTEXT (what follows).",
+  "_about": "T-210 batch 2 (APPROVED by the user 2026-10-19, built in the 2026-10-02 goal loop at the user's request): the five Hoenn water families, named by their own type's register (vision.md 2.9). Each: vanilla species, our name, INDEX category, CONTENT (what it does), CONTEXT (what follows).",
   "daemons": [
     {"species": "WINGULL",   "name": "TANGENT",    "type": "FLOW/VECTOR", "category": "HEADING",
      "content": ["It flies the way the slope points", "from wherever it happens to be. It", "never looks further than that."],

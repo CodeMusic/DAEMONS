@@ -1,5 +1,5 @@
 {
-  "_about": "T-210 batch 1 (DRAFT, for the user's approval): the six starter lines of Johto and Hoenn, named by their own type's register (vision.md 2.9). Each: vanilla species, our name, INDEX category, the CONTENT entry (what it does), the CONTEXT entry (what follows).",
+  "_about": "T-210 batch 1 (APPROVED by the user 2026-10-19, drafted for their approval): the six starter lines of Johto and Hoenn, named by their own type's register (vision.md 2.9). Each: vanilla species, our name, INDEX category, the CONTENT entry (what it does), the CONTEXT entry (what follows).",
   "daemons": [
     {"species": "CHIKORITA",  "name": "PRIMER",     "type": "GROWTH", "category": "FIRST PAGE",
      "content": ["It will only eat what it has eaten", "before, a little harder each time.", "It has never once been surprised."],
