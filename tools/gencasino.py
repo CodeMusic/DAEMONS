@@ -94,6 +94,14 @@ def engine(comp):
     if 'PIECES = ["JACK", "F1", "F2", "F3", "COIN", "SEASON"]' not in ts or \
        'OUTCOMES = ["LOSE", "SEASON1", "JACK2", "SEASON3", "COIN3", "FRIEND3", "JACK3"]' not in ts:
         problems.append("slots.ts's PIECES or OUTCOMES moved -- the game's piecesFor needs porting again")
+    # C-151: a win this big is called to the table -- in the game, the crowd at the GAME CORNER's other machines cheers
+    # it (T-422, the user 2026-10-19). The JACKPOT always; otherwise a pay at or over the threshold read here.
+    ta = re.search(r'export function tableAct\(o: number\)[^{]*\{ return o === 6 \? "JACKPOT" : PAYS\[o\] >= (\d+) \? "BIGWIN" : null; \}', ts)
+    if not ta:
+        raise SystemExit("gencasino: slots.ts's tableAct has a new shape -- port the cheer's threshold here")
+    e["CHEER_PAYS"] = int(ta.group(1))
+    if 'PAYS[o] >= %d ? "BIGWIN"' % e["CHEER_PAYS"] not in h:
+        problems.append("slots.h's tableAct is not slots.ts's")
     oc = re.search(r"export function outcomeOf\(a: number, b: number, c: number\): number \{(.*?)\n\}", ts, re.S)
     want = ("if (a === b && b === c) return a === JACK ? 6 : a === COIN ? 4 : a === SEASON ? 3 : 5;"
             "if (a === JACK && b === JACK) return 2;if (a === SEASON) return 1;return 0;")
@@ -383,6 +391,8 @@ def header(e, luck, tune_list, art, look_list, hat_list, holidays, piece_pals, t
     w("// (the results and the pieces, CASINO_LOSE.. and CASINO_JACK.., are include/daemons_casino.h's, slots.ts's order)")
     w("static const u16 sCasinoWeights[CASINO_OUTCOME_COUNT] = {%s};" % ", ".join(map(str, e["WEIGHTS"])))
     w("static const u8 sCasinoPays[CASINO_OUTCOME_COUNT] = {%s};" % ", ".join(map(str, e["PAYS"])))
+    w("#define CASINO_CHEER_PAYS   %d      // tableAct: a pay this big (or the JACKPOT) is cheered by the other machines" %
+      e["CHEER_PAYS"])
     w("#define CASINO_STRIP        %d      // each piece twice round a reel" % e["STRIP"])
     w("STATIC_ASSERT(CASINO_STRIP == CASINO_STRIP_LENGTH, CasinoStripIsTheCompanions);")
     w("#define CASINO_FINE         %d   // a table for any return is kept in ten thousand" % e["FINE"])
