@@ -52,20 +52,20 @@ The biggest tenants after it:
 
 | | vanilla | ours | we added | free now |
 |---|---|---|---|---|
-| **ROM** contents | 8.9 MB | 9.8 MB | **941.5 KB** | 6.2 MB |
+| **ROM** contents | 8.9 MB | 9.8 MB | **941.8 KB** | 6.2 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **392 B** | 712 B |
 | **IWRAM** | 29.1 KB | 29.1 KB | **12 B** | 2.9 KB |
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.6 MB | 830.0 KB |
+| `.rodata` | 4.8 MB | 5.6 MB | 830.1 KB |
 | `gfx_data` | 1.7 MB | 1.7 MB | -6.7 KB |
-| `.text` | 1.4 MB | 1.4 MB | 68.2 KB |
+| `.text` | 1.4 MB | 1.4 MB | 68.3 KB |
 | `script_data` | 496.9 KB | 532.6 KB | 35.7 KB |
 | `song_data` | 282.1 KB | 256.3 KB | -25.8 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
 | `lib_text` | 56.5 KB | 56.5 KB | 0 B |
-| `extra` | 0 B | 40.0 KB | 40.0 KB |
+| `extra` | 0 B | 40.2 KB | 40.2 KB |
 | `lib_rodata` | 1.6 KB | 1.6 KB | 0 B |
 
 | save block | vanilla | ours | its fixed space | slack |
