@@ -235,13 +235,13 @@ def cover(letters=True):
     if letters:                                   # the companion sets its own title: the font is FireRed's
         glyphs(im, title, 121 - g.width(title) // 2, 12, False, RGB8["C_CHALK"])
         glyphs(im, sub, 121 - g.width(sub, True) // 2, 27, True, RGB8["C_CHALK_FAINT"])
-    plate = frames_of("seam")[0]
-    d.rectangle((72, 44, 72 + plate.width + 3, 44 + plate.height + 3), outline=RGB8["C_RULE"])
-    im.paste(plate, (74, 46))
+    plate = frames_of("seam")[0].crop((9, 0, 85, 84))   # narrowed (the user, 2026-10-20), so the glyphs sit clear of it
+    d.rectangle((81, 44, 81 + plate.width + 3, 44 + plate.height + 3), outline=RGB8["C_RULE"])
+    im.paste(plate, (83, 46))
     faint = RGB8["C_EDGE"]
     for k, fn in enumerate(sp.CLAIR_GLYPHS):
-        x = 61 if k < 3 else 162
-        fn(im, x, 52 + (k % 3) * 30, c=faint)
+        x = 59 if k < 3 else 163
+        fn(im, x, 50 + (k % 3) * 30, c=faint)
     return im
 
 
