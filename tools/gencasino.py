@@ -495,8 +495,9 @@ def header(e, luck, tune_list, art, look_list, hat_list, holidays, piece_pals, t
     w("};")
     w("")
     w("// ---- each holiday's dress (docs/holidays.json's \"companion\"): its look, its two colours (0: the season's), its hat,")
-    w("// and whether it is the lucky one; a QUIET day is left undressed (HF_QUIET), a flipped one has no hat")
-    w("struct CasinoHoliday { u8 look, hat; bool8 lucky; u32 a, b; };")
+    w("// whether it is the lucky one, and whether it stands the daemons on their heads (casino.cpp drawPicture's flip,")
+    w("// FOOLS' DAY); a QUIET day is left undressed (HF_QUIET), a flipped one has no hat")
+    w("struct CasinoHoliday { u8 look, hat; bool8 lucky, flip; u32 a, b; };")
     for guard, ids in holidays.items():
         w("#%s defined(%s)" % ("if" if guard == "FIRERED" else "elif", guard))
         w("static const struct CasinoHoliday sCasinoHolidays[HOLIDAY_COUNT + 1] = {")
@@ -509,8 +510,9 @@ def header(e, luck, tune_list, art, look_list, hat_list, holidays, piece_pals, t
             hat_c = "CASINO_HAT_%s" % hat.upper() if hat and hat != "none" and not c.get("flip") else "CASINO_HAT_NONE"
             cols = c.get("colours") or [None, None]
             lucky = "TRUE" if re.search(luck["lucky_re"], h["real"], re.I) else "FALSE"
-            w("    [%2d] = {%s, %s, %s, 0x%06X, 0x%06X},   // %s (%s)" % (
-                n, look_c, hat_c, lucky, colour(cols[0]) or 0, colour(cols[1]) or 0, h["name"], h["real"]))
+            flip = "TRUE" if c.get("flip") else "FALSE"
+            w("    [%2d] = {%s, %s, %s, %s, 0x%06X, 0x%06X},   // %s (%s)" % (
+                n, look_c, hat_c, lucky, flip, colour(cols[0]) or 0, colour(cols[1]) or 0, h["name"], h["real"]))
         w("};")
     w("#endif")
     w("")
