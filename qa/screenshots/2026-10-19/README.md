@@ -67,3 +67,27 @@ The playground's own companion, fed the browser game's save: ARTSAI, SENT from t
 The playground's COMPANION tab on its own static export of the companion's site (/companion-site/, same origin, no Expo dev server): a DEBUG game's SENT CAREMUSAI on TODAY. The pane's network log shows no request to port 8081.
 
 ![19Oct2026 - T428 - the COMPANION tab from the playgrounds own export of the site - 13](19Oct2026%20-%20T428%20-%20the%20COMPANION%20tab%20from%20the%20playgrounds%20own%20export%20of%20the%20site%20-%2013.jpg)
+
+### 19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 14
+
+The playground's HELP: how to play, how to use the companion, and where a daemon can live (the iPhone app, LilyGO and M5Stack boards) -- on the start page, in its own tab, and on a phone; X is A and Z is B, as in mGBA.
+
+![19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 14](19Oct2026%20-%20T428%20-%20the%20playgrounds%20HELP%20and%20the%20keys%20as%20in%20mGBA%20-%2014.jpg)
+
+### 19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 15
+
+The playground's HELP: how to play, how to use the companion, and where a daemon can live (the iPhone app, LilyGO and M5Stack boards) -- on the start page, in its own tab, and on a phone; X is A and Z is B, as in mGBA.
+
+![19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 15](19Oct2026%20-%20T428%20-%20the%20playgrounds%20HELP%20and%20the%20keys%20as%20in%20mGBA%20-%2015.jpg)
+
+### 19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 16
+
+The playground's HELP: how to play, how to use the companion, and where a daemon can live (the iPhone app, LilyGO and M5Stack boards) -- on the start page, in its own tab, and on a phone; X is A and Z is B, as in mGBA.
+
+![19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 16](19Oct2026%20-%20T428%20-%20the%20playgrounds%20HELP%20and%20the%20keys%20as%20in%20mGBA%20-%2016.jpg)
+
+### 19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 17
+
+The playground's HELP: how to play, how to use the companion, and where a daemon can live (the iPhone app, LilyGO and M5Stack boards) -- on the start page, in its own tab, and on a phone; X is A and Z is B, as in mGBA.
+
+![19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 17](19Oct2026%20-%20T428%20-%20the%20playgrounds%20HELP%20and%20the%20keys%20as%20in%20mGBA%20-%2017.jpg)
