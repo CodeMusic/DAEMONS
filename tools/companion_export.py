@@ -542,6 +542,15 @@ def profile_layout():
                          "FLAG_SYS_B_DASH", "FLAG_SHOES_FROM_DAD", "FLAG_GOT_NOTEBOOK"] + UNDERSTANDINGS + INSIGHTS)
     items = dict(re.findall(r"^#define\s+(ITEM_OPUS)\s+(\d+)", read("include/constants/items.h"), re.M))
     kcount = re.search(r"#define\s+BAG_KEYITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)
+    first_met_count = int(re.search(r"#define\s+DAEMONS_FIRST_SEEN_COUNT\s+(\d+)", read("include/constants/global.h")).group(1))
+    magic = re.search(r"#define\s+FIRST_SEEN_MAGIC\s+(0x[0-9A-Fa-f]+)", read("src/daemons_first_seen.c"))
+    if not magic:
+        raise SystemExit("  refused: FIRST_SEEN_MAGIC not found in src/daemons_first_seen.c")
+    FIRST_MET_MAGIC = int(magic.group(1), 16)
+    #  a map section's number is its place in region_map_sections.json (the enum is generated in that order)
+    first_met_places = {str(n): sec["name"] for n, sec in
+                        enumerate(json.loads(read("src/data/region_map/region_map_sections.json"))["map_sections"])
+                        if sec.get("name")}
     return {"_about": "C-23: offsets into SaveBlock2 (section 0) and SaveBlock1 (sections 1-4, end to end), read from "
                       "global.h's own struct comments; flag numbers resolved from flags.h. A flag below "
                       "daemons_flags_start is a bit in SaveBlock1's flags, one at or above it a bit in SaveBlock2's "
@@ -551,7 +560,11 @@ def profile_layout():
                       "(what the GAME CORNER and the CASINO kept, in money), house_take_bytes wide, signed little-endian "
                       "(negative while the player is ahead), stored plain -- NOT XORed as money is. Only ever added to. "
                       "house_take_at_fall is the take as it stood when CORPUS fell (the game freezes it there, once; "
-                      "VERDIGRIS names it), same width and sign -- the game's to write, never a writer's.",
+                      "VERDIGRIS names it), same width and sign -- the game's to write, never a writer's. "
+                      "T-406: sb1 first_met is where each daemon was first SEEN, first_met_bytes bytes, one per national "
+                      "number (number - 1), each a map section first_met_places names (0: not recorded); trust them only "
+                      "when the u32 at first_met_magic is first_met_magic_value (an older save holds a recap scene there). "
+                      "A SEEN daemon with 0 was seen before the game kept them: the INDEX says BEFORE RECORDS.",
             "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
                     "trainer_id": sb2["playerTrainerId"], "play_time_hours": sb2["playTimeHours"],
                     "play_time_minutes": sb2["playTimeMinutes"], "play_time_seconds": sb2["playTimeSeconds"],
@@ -568,7 +581,14 @@ def profile_layout():
                     "tmhm": sb1["bagPocket_TMHM"], "tmhm_count": int(re.search(r"#define\s+BAG_TMHM_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
                     "items_pocket": sb1["bagPocket_Items"], "items_count": int(re.search(r"#define\s+BAG_ITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
                     # C-15: the INDEX's seen flags are kept three times; the game believes them only when all agree
-                    "seen1": sb1["seen1"], "seen2": sb1["seen2"]},
+                    "seen1": sb1["seen1"], "seen2": sb1["seen2"],
+                    # T-406: where each daemon was first met -- a byte per national number (index = number - 1), its
+                    # map section (first_met_places names it; 0 = not recorded). Believe the bytes only when the magic
+                    # at first_met_magic (u32, little-endian) is first_met_magic_value: an older save holds a recap scene
+                    # there. A daemon SEEN with 0 was seen before the game kept these (the INDEX: BEFORE RECORDS).
+                    "first_met": sb1["daemonsFirstSeen"], "first_met_bytes": first_met_count,
+                    "first_met_magic": sb1["daemonsFirstSeenMagic"], "first_met_magic_value": FIRST_MET_MAGIC,
+                    "first_met_places": first_met_places},
             "flags": {"marks_first": flags["FLAG_BADGE01_GET"], "marks_last": flags["FLAG_BADGE08_GET"],
                       "index": flags["FLAG_SYS_POKEDEX_GET"], "game_clear": flags["FLAG_SYS_GAME_CLEAR"],
                       "diploma": flags["FLAG_GOT_DIPLOMA"], "daemons_flags_start": flags["DAEMONS_FLAGS_START"],
