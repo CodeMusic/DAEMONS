@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""The groves' music (T-408 part 3): fourteen loops from the user's own recordings, each on its universe's own band.
+"""The groves' music (T-408 part 3): fourteen loops from the user's own recordings, each on its universe's own band --
+and CALLOW's theme (T-05), a fifteenth loop made the same way, on a town's band.
 
     python3 tools/gengrovemusic.py                     # report: transcribe all fourteen, sizes, voices, slots
     python3 tools/gengrovemusic.py --out DIR           # also write the fourteen MIDIs to DIR (mus_grove_<x>.mid)
     python3 tools/gengrovemusic.py --out DIR --render  # and render each to audio, plus "Grove arrangements.mp3"
     python3 tools/gengrovemusic.py --write             # into engineGba: the MIDIs, four slot lines each, the maps
-    python3 tools/gengrovemusic.py BACKDROP HUSH ...   # just those universes
+    python3 tools/gengrovemusic.py BACKDROP HUSH ...   # just those universes (or CALLOW)
 
 DECIDED BY THE USER, 2026-10-17 (docs/TODO.md T-408; the mapping and its reasons are in the private draft
 docs/private/draft-grove-music-2026-10-17.md, the sources in docs/private/audio/ -- neither is in git, so on a fresh
@@ -65,6 +66,14 @@ THE BANDS, and why (the user's draft table, T-408 section 5, made playable in fi
   CLAY      nylon guitar lead, guitar strummed dyads on 1 and 3, tuba bass, timpani on every downbeat. Earth:
             plucked, low and heavy, balanced on one point.
 
+CALLOW (T-05, chosen by the user's ear 2026-10-19 from three candidate loops): The Christmas Cloak of Self,
+68.68-96.92 s, 12 bars at 102 BPM, D major (pinned in KEYS: D major, B minor and G major hear alike, 0.83), with no
+PLAY motif in it. Its band, SCHOOLBELL, is no grove's: piano lead, glockenspiel answering an octave up, a string dyad,
+fingered bass -- a schoolroom's instruments for the town of the school. It is written into MUS_CALLOW (349), the slot
+CALLOW already had (the town, its house and every floor of the school play it -- tools/port_music.py's MAP_MUSIC),
+over the placeholder transcription of Desperate Shadows; THE BLEED is mus_route1 and is not touched. MUS_CALLOW is
+CALLOW's own slot, not a parent's, so trap 25 does not stand in the way.
+
 WHAT IT DOES NOT DO. It cannot hear. The transcription is signal processing (mp3midi.py's docstring says why that
 and not a model), so a window whose key is ambiguous (HUSH, COMPASS: E major and E minor read equally) or whose lead
 is buried (BACKDROP) comes out weaker, and the report says which. --render is for the user's ear, not a proof.
@@ -117,6 +126,12 @@ GROVES = {
     "COMPASS":  ("SixIsland_WaterPath_Grove",     "SOUNDS",   115.77, 135.77),
     "CLAY":     ("SevenIsland_Grove",             "HARMONY",   49.95,  70.89),
 }
+
+#  The towns (T-05): name -> (slot, song, loop start, loop end). Their maps are port_music.py's MAP_MUSIC.
+TOWNS = {
+    "CALLOW":   ("mus_callow",                    "CLOAK",     68.68,  96.92),
+}
+WINDOWS = dict(list(GROVES.items()) + list(TOWNS.items()))
 
 #  voicegroup191's real instruments (General MIDI numbers, zero-based)
 PIANO, GLOCK, XYLO, BELL, GUITAR, BASS, SYNBASS, PIZZ, HARP, TIMP, STRINGS, CHOIR, TRUMPET, TUBA, HORN, OBOE, FLUTE, \
@@ -177,6 +192,11 @@ BANDS = {
                  ("strum", GUITAR,  70, (48, 67), {"n": 2}),
                  ("bass",  TUBA,    92, (33, 55), {}),
                  ("down",  TIMP,    78, (41, 55), {})],
+    #  SCHOOLBELL, CALLOW's (T-05): the schoolroom's piano, the bell answering it, strings and a walking bass
+    "CALLOW":   [("lead",  PIANO,   88, (60, 84), {}),
+                 ("answer", GLOCK,  60, (72, 96), {}),
+                 ("pad",   STRINGS, 52, (55, 74), {"n": 2}),
+                 ("bass",  BASS,    86, (31, 52), {})],
 }
 
 NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -229,7 +249,7 @@ def analyse(universe):
     the key candidates. Cached on disk, outside both repos (~/.cache/daemons/gengrovemusic), by source and window,
     so the report stays inside check_generators' time limit."""
     import numpy as np, librosa, mp3midi
-    grove, song, t0, t1 = GROVES[universe]
+    grove, song, t0, t1 = WINDOWS[universe]
     src = os.path.join(AUDIO, SONGS[song][0])
     key = "v6|%s|%s|%.2f|%.2f|%d" % (os.path.basename(src), os.path.getmtime(src), t0, t1, os.path.getsize(src))
     cpath = os.path.join(CACHE, "%s.json" % universe)
@@ -288,7 +308,7 @@ def in_key(a, tonic, mode):
 
 
 #  The user's ear overrides the arithmetic: universe -> (tonic, mode). Empty until the user has listened.
-KEYS = {}
+KEYS = {"CALLOW": ("D", "major")}       # the user chose candidate 1 in D major (2026-10-19)
 
 
 # ---------------------------------------------------------------- the arrangement
@@ -696,7 +716,7 @@ def likeness(u, mix, data):
     frame, over one loop (1.0 is the same pitch classes at the same moments). It hears harmony, not tone."""
     import numpy as np, librosa
     if u not in _HEARD:
-        _, song, t0, t1 = GROVES[u]
+        _, song, t0, t1 = WINDOWS[u]
         y, sr = librosa.load(os.path.join(AUDIO, SONGS[song][0]), sr=22050, mono=True, offset=t0, duration=t1 - t0)
         _HEARD[u] = librosa.feature.chroma_cqt(y=librosa.effects.harmonic(y), sr=22050, hop_length=2048)
     a = _HEARD[u]
@@ -727,7 +747,7 @@ def render_all(midis, outdir, voices, samples):
         sf.write(os.path.join(loopdir, "%s.wav" % u), mix, sr)
         with tempfile.TemporaryDirectory() as d:
             wav = os.path.join(d, "name.wav")
-            say("The %sverse." % u.capitalize(), wav)
+            say(("%s." if u in TOWNS else "The %sverse.") % u.capitalize(), wav)
             voice, vsr = sf.read(wav, dtype="float32")
             voice = librosa.resample(voice, orig_sr=vsr, target_sr=sr) * 0.8
         whole += [voice, sil(0.6), mix, sil(1.2)]
@@ -744,7 +764,7 @@ def render_all(midis, outdir, voices, samples):
 # ---------------------------------------------------------------- --write: the engine
 
 def slot(u):
-    return "mus_grove_%s" % u.lower()
+    return TOWNS[u][0] if u in TOWNS else "mus_grove_%s" % u.lower()
 
 
 def write_engine(midis):
@@ -773,12 +793,16 @@ def write_engine(midis):
             m = list(re.finditer(r"^\tsong \w+, \d+, \d+$", t, re.M))[-1]
             t = t[:m.end()] + "\n\tsong %s, 0, 0" % s + t[m.end():]
             changed.append(const)
-        if not re.search(r"^%s\.mid:" % s, c, re.M):
+        if re.search(r"^%s\.mid:" % s, c, re.M):        # a town's slot already exists: its bank becomes ours
+            c = re.sub(r"^(%s\.mid:\s*).*$" % s, lambda m: m.group(1) + CFG, c, count=1, flags=re.M)
+        else:
             m = list(re.finditer(r"^(?:mus_nexus|mus_grove_\w+)\.mid:.*$", c, re.M))[-1]
             c = c[:m.end()] + "\n%-31s%s" % (s + ".mid:", CFG) + c[m.end():]
         if "sound/songs/midi/%s.o(.rodata);" % s not in l:
             m = list(re.finditer(r"^(\s*)sound/songs/midi/\w+\.o\(\.rodata\);$", l, re.M))[-1]
             l = l[:m.end()] + "\n%ssound/songs/midi/%s.o(.rodata);" % (m.group(1), s) + l[m.end():]
+        if u in TOWNS:                       # a town's maps are port_music.py's
+            continue
         mj = os.path.join(GBA, "data/maps/%s/map.json" % GROVES[u][0])
         raw = open(mj).read()
         new = re.sub(r'"music": "[A-Z0-9_]+"', '"music": "%s"' % const, raw, count=1)
@@ -794,11 +818,11 @@ def write_engine(midis):
 # ---------------------------------------------------------------- main
 
 def main():
-    only = [a.upper() for a in sys.argv[1:] if a.upper() in GROVES]
+    only = [a.upper() for a in sys.argv[1:] if a.upper() in WINDOWS]
     if OUT:
         only = [a for a in only if a != os.path.basename(OUT).upper()]
-    todo = only or list(GROVES)
-    missing = sorted({SONGS[GROVES[u][1]][0] for u in todo if not os.path.exists(os.path.join(AUDIO, SONGS[GROVES[u][1]][0]))})
+    todo = only or list(WINDOWS)
+    missing = sorted({SONGS[WINDOWS[u][1]][0] for u in todo if not os.path.exists(os.path.join(AUDIO, SONGS[WINDOWS[u][1]][0]))})
     if missing:
         print("  the sources are private (docs/private/audio/) and %d are not here: %s" % (len(missing), "; ".join(missing)))
         print("  nothing transcribed; nothing written")
@@ -842,7 +866,7 @@ def main():
                 open(path, "wb").write(data)
                 agb = agb_bytes(path)
         total_mid += len(data); total_agb += agb or 0
-        _, song, t0, t1 = GROVES[u]
+        _, song, t0, t1 = WINDOWS[u]
         band = ", ".join("%s %s" % (r, p) for r, p, _, _, _ in BANDS[u])
         print("  %-9s %-9s %6.2f %5.1f %-9s %5.2f %5.2f %5d %5d %6d %6s %4d  %s%s" % (
             u, song, t1 - t0, a["bpm"], "%s %s" % (a["tonic"], a["mode"][:3]), a["kcorr"], likes[u][0],
@@ -866,8 +890,13 @@ def main():
     else:
         h = open(os.path.join(GBA, "include/constants/songs.h")).read() if os.path.isdir(GBA) else ""
         have = [u for u in todo if re.search(r"^#define\s+%s\b" % slot(u).upper(), h, re.M)]
-        print("  engine: %d of %d MUS_GROVE slots exist; --write would add the rest (four lines each) and point the "
-              "groves' maps at them" % (len(have), len(todo)))
+        mids = dict(midis)
+        stale = [u for u in have if (open(os.path.join(GBA, "sound/songs/midi/%s.mid" % slot(u)), "rb").read()
+                                     if os.path.exists(os.path.join(GBA, "sound/songs/midi/%s.mid" % slot(u)))
+                                     else None) != mids[u]]
+        print("  engine: %d of %d slots exist, %d of them holding another MIDI (%s); --write would add the rest (four "
+              "lines each), write the MIDIs and point the groves' maps at them" %
+              (len(have), len(todo), len(stale), ", ".join(stale) or "none"))
     return 0
 
 

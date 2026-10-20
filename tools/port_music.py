@@ -89,8 +89,10 @@ VANILLA = ["mus_pewter"]
 MAP_MUSIC = {
     "MUS_SLATE":  ["PewterCity", "PewterCity_House1", "PewterCity_House2",
                    "PewterCity_Museum_1F", "PewterCity_Museum_2F"],
-    # T-05 (2026-09-26): CALLOW's own theme, Desperate Shadows, transcribed from the user's recording by mp3midi.py into
-    # an appended slot like SLATE's. The town, its house and every floor of its school; the gatehouses keep vanilla's.
+    # T-05: CALLOW's own theme in an appended slot like SLATE's -- since 2026-10-19 the user's The Christmas Cloak of
+    # Self on the SCHOOLBELL band (tools/gengrovemusic.py writes the slot; it held mp3midi.py's Desperate Shadows from
+    # 2026-09-26). The town, its house and every floor of its school; the gatehouses keep vanilla's; THE BLEED is
+    # mus_route1, untouched.
     "MUS_CALLOW": ["ViridianCity", "ViridianCity_House", "ViridianCity_School", "ViridianCity_School_2F",
                    "ViridianCity_School_3F", "ViridianCity_School_4F", "ViridianCity_School_5F",
                    "ViridianCity_School_6F", "ViridianCity_School_7F"],
