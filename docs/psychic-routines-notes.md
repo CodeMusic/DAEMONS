@@ -18,7 +18,7 @@ already in the ROM, and it is the precedent for this one. Then **4.33** (the one
 
 ## D. Decided — the user, 2026-10-18 (read this before the analysis below; where they differ, this wins)
 
-**Every call is answered**; two are provisional until the user has read the book (CHORUS, and the Clairs hint). **No
+**Every call is answered, and the last three were made with the book in the game** (2026-10-20: the cover, CHORUS, the Clairs). **No
 game text is written yet**: the next step is the DRAFT entries, on the user's go.
 
 | § 8 | the call | decided |
@@ -29,7 +29,7 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 | 4 | **The three stats** | **Built, per daemon, in battle only.** Three values in the free condition bytes (§V.1; never BEAUTY), tuning CONTEXT routines in battle. Never a read that comes true in the world. The trainer's half is the log, not a stat |
 | 4 | *the stat names* (later that day, §V.5) | **CLOSURE** stays. **ATTUNEMENT stays**: it echoes the GUESSWORK > ATTUNE > MENTALIZE line, practice turning guesswork into attunement. **CHARGE becomes VOLTAGE** (the book's own word; CHARGE is the Ether item). **The crowd bond RESONANCE becomes CHORUS *for now***: RESONANCE is PENPHIN's signature routine (*two frames reinforce each other and neither is lost*, vision 6243) and the crowd's *one thought* is nearly its opposite. ***To revisit once the user has read the book*** |
 | 5 | **Clairs to types** | **The type table** (§6), and the owl line goes |
-| 6 | **"The Clairs"** | **Kept as a hint, with its glosses.** ***Ask again once the user has read the book.*** Checked [private: SECRETS §2] |
+| 6 | **"The Clairs"** | **Kept as a hint, with its glosses** -- *confirmed 2026-10-20 with the book in the game and a quiet version (no family name, no glosses) beside it*. Checked [private: SECRETS §2] |
 | 6 | **The kindred bond** | **Keeps its row**, under the guard in [private: SECRETS §2] |
 | 7 | **The device screen** | **Only the companion library's copy** may point at the device; the ROM's book never does |
 | 8 | **Its hue** | **C, the CONTEXT page**: CONTEXT's hue on the rules and corner, and the page tinted toward it (mock-ups: qa 18Oct2026 T423 62; *"more colour in this book for the context connection"*). *The NOTEBOOK's cover is already CONTEXT's hue (`book_reader.c` sNotebookPal), so the book matches the log it points to* |
@@ -51,7 +51,7 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 | **Voice** | a prologue | **First person, the INTERPRETER**, unnamed: *two views of one world; this book holds both, and chooses neither* |
 | **Also** | from the design agent | **The return** (trainer lore: a steer made for the wrong reasons comes back, in its shape and harder), *bug or feature*, and its small edits (the moves reordered, the daemon's three as numbers it cannot see, each clair's type last, FRIDAY and SATURDAY split, UNSEEN folded into STEERING) |
 | **New** | **STAYING WHOLE** | **The book's last section**, from the user's own brief and notebook fragments (private): a biology metaphor for integrity, **in process words only**: the misread, the mask, the same drive reconnected, recognition by contact, staying correctable. **Nothing cures**; **the daemon line is said of shadows** (*unwatched is all a shadow needs to be*); **TWO VOICES** alternates statement and question, the asking voice in faint ink. *The cost of hidden strain*, *two vantage points* (as fable) and *a whole has enough for every part only while every part is well* are in it |
-| *Still open* | | **CHORUS** (approved by the design agent, not yet confirmed by the user), **the Clairs hint** and **the cover** (once seen in the game) |
+| **2026-10-20** | the last three, seen in the game | **CHORUS** confirmed (over UNISON, CHOIR and RESONANCE); **the Clairs hint kept, glosses and all**; **the cover: A**, the six clair glyphs a shade off the boards -- with the seam's plate narrowed so they sit clear of it, since the first build's overlapped its edge (engine 4227f501d, companion 4467612). *Mock-ups: qa private 20Oct2026 T423 2-4* |
 
 ### V. Verified 2026-10-18 — the four the review could not see, and two more
 
