@@ -91,3 +91,27 @@ The playground's HELP: how to play, how to use the companion, and where a daemon
 The playground's HELP: how to play, how to use the companion, and where a daemon can live (the iPhone app, LilyGO and M5Stack boards) -- on the start page, in its own tab, and on a phone; X is A and Z is B, as in mGBA.
 
 ![19Oct2026 - T428 - the playgrounds HELP and the keys as in mGBA - 17](19Oct2026%20-%20T428%20-%20the%20playgrounds%20HELP%20and%20the%20keys%20as%20in%20mGBA%20-%2017.jpg)
+
+### 19Oct2026 - T415 - leftwindsheet - 18
+
+v11.306.9: left_wind_sheet
+
+![19Oct2026 - T415 - leftwindsheet - 18](19Oct2026%20-%20T415%20-%20leftwindsheet%20-%2018.png)
+
+### 19Oct2026 - T415 - leftplaysheet - 19
+
+v11.306.9: left_play_sheet
+
+![19Oct2026 - T415 - leftplaysheet - 19](19Oct2026%20-%20T415%20-%20leftplaysheet%20-%2019.png)
+
+### 19Oct2026 - T415 - leftcasinosheet - 20
+
+v11.306.9: left_casino_sheet
+
+![19Oct2026 - T415 - leftcasinosheet - 20](19Oct2026%20-%20T415%20-%20leftcasinosheet%20-%2020.png)
+
+### 19Oct2026 - T415 - leftcontextrainsheet - 21
+
+v11.306.9: left_context_rain_sheet
+
+![19Oct2026 - T415 - leftcontextrainsheet - 21](19Oct2026%20-%20T415%20-%20leftcontextrainsheet%20-%2021.png)
