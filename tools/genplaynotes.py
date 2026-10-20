@@ -16,8 +16,10 @@ leaves and T-416's month notes can share it later:
 
 The sheets, each frame in key order C..B:
    notes.png   16x16 x 12   the note that drifts up from the instrument, and the chosen key on the wheel
-   small.png    8x8  x 37   12 wheel dots, 12 staff heads, 12 hollow heads (P5: the GHOSTS, a learned song's next
-                            notes shown ahead on the staff), then 1 gold head (a joined song's heads)
+   small.png    8x8  x 38   12 wheel dots, 12 staff heads, 12 hollow heads (P5: the GHOSTS, a learned song's next
+                            notes shown ahead on the staff), then 1 gold head (a joined song's heads), then the BAND'S
+                            SHEET's glyph -- a scrap of staff paper with a B-flat head on it, set beside B FLAT on the
+                            wheel once the sheet is held (the draft's sec. 4; DRAFT art)
 """
 import os, sys
 from PIL import Image
@@ -93,6 +95,18 @@ GOLD = [
     "........",
     "........",
 ]
+#  the BAND'S SHEET: a scrap of cream staff paper, two staff lines, a head on it in B FLAT's colour
+SHEET = [
+    ".oooooo.",
+    ".ohhhhho",
+    ".ooooooo",
+    ".ohh##ho",
+    ".oo###oo",
+    ".ohh##ho",
+    ".ooooooo",
+    "........",
+]
+SHEET_KEY = 10                                            # B FLAT (src/play.c)
 
 
 def paint(shape, key):
@@ -119,7 +133,7 @@ def main():
     outs = {
         "notes.png": sheet([paint(NOTE, k) for k in range(12)], 16, 16),
         "small.png": sheet([paint(DOT, k) for k in range(12)] + [paint(HEAD, k) for k in range(12)]
-                           + [paint(HOLLOW, k) for k in range(12)] + [paint(GOLD, 0)], 8, 8),
+                           + [paint(HOLLOW, k) for k in range(12)] + [paint(GOLD, 0), paint(SHEET, SHEET_KEY)], 8, 8),
     }
     changed = []
     for name, im in outs.items():
