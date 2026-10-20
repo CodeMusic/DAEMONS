@@ -75,6 +75,40 @@ BANNED = [
     (r"(?i)\bfaint(ed|ing|s)?\b",  "HALTED"),
     (r"(?i)\bconfus(ed|ion)\b",    "THRASHING"),
     (r"(?i)\bburned\b",            "OVERHEATED"),
+    #  T-319 (2026-10-20): the people, places, kit and types the sweep above never
+    #  listed. The brief told the agent to beat "the Elite Four (Lorelei, Bruno,
+    #  Agatha, Lance)", restock "Escape Rope" and "Potions", and that "Rain boosts
+    #  Water" -- and this check passed, because none of it was a word it knew.
+    (r"\bElite Four\b|\bE4\b",     "THE REVIEW BOARD"),
+    (r"\b(?:Lorelei|LORELEI|Bruno|BRUNO|Agatha|AGATHA|Lance|LANCE)\b",
+                                     "PHLEGMATIC / CHOLERIC / MELANCHOLIC / SANGUINE"),
+    (r"\b(?:Brock|Misty|Surge|Erika|Koga|Sabrina|Blaine)\b",
+                                     "CAIRN / BASIN / GAUGE / TRELLIS / TILT / MATTE / ANNEAL"),
+    (r"\b(?:Giovanni|GIOVANNI)\b",   "SCORN"),
+    (r"\b(?:Team Rocket|TEAM ROCKET|Rocket HQ)\b", "CORPUS"),
+    (r"\b(?:Kanto|KANTO)\b",         "GAMUT"),
+    (r"\b(?:Sevii|SEVII)\b",         "THE MARGINS"),
+    (r"(?i)DAEMON Centers?\b|Pok[eé] ?Centers?\b|\bNurse Joy\b", "CHECKPOINT"),
+    (r"\bMarts?\b|\bMARTS?\b",      "THE REPO"),
+    (r"\bHMs?\b",                    "DRIVER"),
+    (r"\bTMs?\b",                    "PLUGIN"),
+    (r"\b(?:Hyper |Super |Max )?Potions?\b", "RECOVER / DEEP RECOVER / FULL RECOVER / REBUILD"),
+    (r"\b(?:Max )?Revives?\b",       "RESTART / REBOOT"),
+    (r"\b(?:Super |Max )?Repels?\b", "SUPPRESS"),
+    (r"\bEscape Ropes?\b",           "EJECT"),
+    (r"\bRare Cand(?:y|ies)\b",      "INCREMENT"),
+    (r"\bFull Restores?\b",          "SNAPSHOT"),
+    (r"\b(?:Ultra|Great|Master) Balls?\b", "SUPERBOX / ADMINBOX / ROOTBOX"),
+    (r"\bX[- ]items?\b",             "TUNE items"),
+    #  Vanilla TYPE names, where they are being used as types: in a pair, an
+    #  arrow, or before "type", "damage", "attacks". Title case only, so a
+    #  ROM name in a table (FIRE_PUNCH) and ordinary English are not touched.
+    (r"\b(?:Water|Fire|Grass|Electric|Psychic|Fighting|Flying|Ghost|Steel|Dragon|Dark|Ice|Normal|Ground|Rock|Bug|Poison)"
+     r"(?=\s*(?:/|→)|[- ](?:type|damage|attacks?|threat)\b)", "the type's own name (FLOW, ENTROPY, ...)"),
+    (r"(?:(?<=/)|(?<=→ ))(?:Water|Fire|Grass|Electric|Psychic|Fighting|Flying|Ghost|Steel|Dragon|Dark|Ice|Normal|Ground|Rock|Bug|Poison)\b",
+                                     "the type's own name (FLOW, ENTROPY, ...)"),
+    (r"\b(?:boosts?|weakens?|immune to|resists?|weak to|halves) (?:Water|Fire|Grass|Electric|Psychic|Fighting|Flying|Ghost|Steel|Dragon|Dark|Ice|Normal|Ground|Rock|Bug|Poison)\b",
+                                     "the type's own name (FLOW, ENTROPY, ...)"),
 ]
 
 #  The orientation table in game.txt QUOTES the vanilla names in order to
@@ -111,6 +145,8 @@ INNOCENT = re.compile(
     r"\b\w+(?:ing|ion)\s+confusion"
     r"|\b(any|the|more|less|some)\s+confusion"
     r"|confusion\s+(later|about|between|here)"
+    #  avatar_emotion's own enum (tools.js): "confused" is a face, not a state.
+    r"|surprised,\s+confused"
 )
 
 def scan(label, text):
@@ -190,6 +226,8 @@ def stale_ours_check():
     OURS_ELSEWHERE = {
         "BIND":   "1.5's verb -- you BIND a daemon. The move BIND is LATCH",
         "GROWTH": "a TYPE name (2.2). The move GROWTH is SCALE UP",
+        "RECOVER": "an ITEM (vanilla's POTION). The move RECOVER is RESTORE",
+        "REFLECT": "an UNDERSTANDING (T-252). The move REFLECT is PARAPHRASE",
     }
     bad = []
     f = os.path.join(AI, "server", "prompts", "game.txt")
@@ -312,17 +350,36 @@ def vanilla_name_check():
         ours.update(dict(re.findall(pat, open(p, encoding="utf-8").read())))
     if not van:
         return bad
+    #  Our TYPE names are ours even where vanilla used the same word for something
+    #  else: SWARM is the type (vanilla BUG) and vanilla's ability SWARM is SCALE OUT.
+    tn = re.search(r"const u8 gTypeNames\[.*?\{(.*?)\n\};",
+                   open(os.path.join(GBA, "src", "battle_main.c"), encoding="utf-8").read(), re.S)
+    our_types = set(re.findall(r'_\("(\w+)"\)', tn.group(1))) if tn else set()
     texts = [("prompt (vanilla name)", open(f, encoding="utf-8").read())]
+    pdir = os.path.dirname(f)
+    for g in sorted(os.listdir(pdir)):
+        if g.endswith(".txt") and g != "game.txt":
+            texts.append(("prompt %s (vanilla name)" % g, open(os.path.join(pdir, g), encoding="utf-8").read()))
     live = os.path.join(AI, "server", "gpt_data", "last_userInputText_prompt.txt")
     if os.path.exists(live):
         texts.append(("user prompt (vanilla name)",
                       open(live, encoding="utf-8").read()))
+    maps = os.path.join(AI, "game_data_firered", "mappings.json")
+    if os.path.exists(maps):
+        objs = json.load(open(maps, encoding="utf-8")).get("EVENT_OBJECT_NAME", {})
+        #  T-319: who an NPC IS reaches the model from this table, and it said
+        #  MEWTWO and PIKACHU for the daemons standing in the world.
+        texts.append(("mappings EVENT_OBJECT_NAME (vanilla name)",
+                      " ".join(str(v).replace("_", " ") for v in objs.values())))
     for label, txt in texts:
         for mid, v in re.findall(pat, van):
             o = ours.get(mid)
-            if not o or o == v or len(v) < 5 or v == "??????????":
+            if not o or o == v or len(v) < 5 or v == "??????????" or v in our_types:
                 continue
             for m in re.finditer(r"\b%s\b" % re.escape(v), txt, re.I):
+                #  lower case is English, not a name: "a known immunity", "pressure"
+                if m.group(0).islower():
+                    continue
                 if EXEMPT.search(txt[m.end():m.end() + 60]):
                     continue
                 if EXEMPT.search(txt[max(0, m.start() - 90):m.start()]):
@@ -356,6 +413,14 @@ def main():
     hits += [h for h in named if not h[0].startswith("user prompt")]
     live_hits += [h for h in named if h[0].startswith("user prompt")]
     hits += scan("developer prompt", render_developer_prompt())
+    #  T-319 (2026-10-20): the other four prompts reach a model too -- the
+    #  summary, its roll-up, the self-criticism and the pathfinder. None was
+    #  scanned, and the self-criticism prompt was still teaching the agent that
+    #  "Pikachu is an Electric type".
+    pdir = os.path.join(AI, "server", "prompts")
+    for f in sorted(os.listdir(pdir)) if os.path.isdir(pdir) else []:
+        if f.endswith(".txt") and f != "game.txt":
+            hits += scan("prompt %s" % f, open(os.path.join(pdir, f), encoding="utf-8").read())
 
     #  The last prompt actually sent -- from the LIVE run dir, which is plain
     #  `gpt_data`. The timestamped siblings are archives that --fresh moved

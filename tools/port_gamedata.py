@@ -78,6 +78,22 @@ PLACES = [
 ]
 
 
+#  T-319 (2026-10-20): the people the object table named by vanilla's cast. The
+#  names are the ROM's (src/data/trainers.h, port_vocab.py's people); the leaders
+#  in vanilla's order, and THE REVIEW BOARD by seat.
+OBJECT_NAMES = {
+    "BROCK": "CAIRN", "MISTY": "BASIN", "LT_SURGE": "GAUGE", "ERIKA": "TRELLIS",
+    "KOGA": "TILT", "SABRINA": "MATTE", "BLAINE": "ANNEAL", "GIOVANNI": "SCORN",
+    "LORELEI": "PHLEGMATIC", "BRUNO": "CHOLERIC", "AGATHA": "MELANCHOLIC", "LANCE": "SANGUINE",
+    "ROCKET_M": "CORPUS_STAFF_M", "ROCKET_F": "CORPUS_STAFF_F",
+    "BILL": "HOLT", "DAISY": "VERA", "MR_FUJI": "INIT", "BLUE": "RIVAL",
+    "TEACHY_TV_HOST": "STREAM_HOST", "GYM_GUY": "BENCHMARK_GUIDE", "GYM_SIGN": "BENCHMARK_SIGN",
+    #  NOT ITEM_BALL, CUT_TREE, ROCK_SMASH_ROCK or PUSHABLE_BOULDER: the bridge draws
+    #  the minimap's tile for an object BY THIS NAME (constants/tiles.py,
+    #  OBJECT_EVENT_TILE_BY_TYPE), so those four are a contract, not prose.
+}
+
+
 #  The dashboard's PROGRESS panel. Labels only -- id and trigger are matched
 #  against game flags and must not move.
 PROGRESS_LABELS = {
@@ -238,13 +254,21 @@ def main():
         van = names_from_text(upstream_header(path), macro)
         table = raw[key]
         changed = 0
+        added = 0
         for i, name in enumerate(ours):
             k = str(i)
+            #  T-319 (2026-10-20): an id vanilla never had is ours by definition,
+            #  and it was never written -- this loop only renamed keys already in
+            #  the table. CONSENSUS and the eight routines after it reached the
+            #  bridge as no name at all.
+            if k not in table and i >= len(van):
+                table[k] = name; added += 1
+                continue
             if i >= len(van) or van[i] == name:
                 continue                      # unchanged from vanilla
             if k in table and table[k] != name:
                 table[k] = name; changed += 1
-        report.append((key, changed, "%d ours of %d" % (changed, len(ours))))
+        report.append((key, changed + added, "%d ours of %d, %d new" % (changed, len(ours), added)))
 
     #  items come from the json the build generates its header from
     try:
@@ -258,6 +282,9 @@ def main():
         for i, it in enumerate(items):
             k, name = str(i), str(it.get("english", "")).replace(" ", "_")
             van = str(vitems[i].get("english", "")).replace(" ", "_") if i < len(vitems) else None
+            if van is None and name and k not in table:
+                table[k] = name; changed += 1  # T-319: appended after vanilla's last (OPUS)
+                continue
             if van is not None and van == name:
                 continue                      # unchanged from vanilla
             if name and k in table and table[k] != name:
@@ -275,20 +302,62 @@ def main():
                 new = new.replace(old, rep)
             if new != name:
                 maps[num] = new; changed += 1
-    report.append(("MAP_NAME_TABLE", changed, "%d maps" % sum(len(m) for m in raw["MAP_NAME_TABLE"].values())))
+    #  T-319 (2026-10-20): maps vanilla never had -- the school's upper floors, the
+    #  fourteen groves, THE NEXUS, BREATHVERSE -- were never written, so the bridge
+    #  called them Unknown(5-6). Every one is APPENDED to its group (checked: the
+    #  existing 427 still line up with map_groups.json), so an append is safe; a map
+    #  inserted mid-group would renumber the rest, and that is refused.
+    added = 0
+    mg = json.load(open(os.path.join(GBA, "data/maps/map_groups.json"), encoding="utf-8"))
+    for gi, g in enumerate(mg["group_order"]):
+        have = raw["MAP_NAME_TABLE"].setdefault(str(gi), {})
+        for i, folder in enumerate(mg[g]):
+            if str(i) in have:
+                continue
+            if any(int(k) > i for k in have):
+                sys.exit("  !! %s inserted mid-group %s: the table would renumber" % (folder, g))
+            mid = json.load(open(os.path.join(GBA, "data/maps", folder, "map.json"), encoding="utf-8"))["id"]
+            name = re.sub(r"(\d)F\b", r"\1_F", mid[len("MAP_"):])
+            for old, rep_ in sorted(PLACES, key=lambda p: -len(p[0])):
+                name = name.replace(old, rep_)
+            if name == "NEXUS":
+                name = "THE_NEXUS"
+            have[str(i)] = name; added += 1
+    report.append(("MAP_NAME_TABLE", changed + added, "%d maps, %d new" % (sum(len(m) for m in raw["MAP_NAME_TABLE"].values()), added)))
 
     #  EVENT_OBJECT_NAME is how the agent is told WHO IT IS LOOKING AT -- the
     #  NPC entries in the prompt come from here. It still held PROF_OAK, so the
     #  sprite standing in her lab announced itself as Oak on every turn the
     #  agent could see her, and the inner voice duly read "I hope this NPC is
     #  Professor Oak". No tool had ever touched this table.
+    #  T-319 (2026-10-20): the agent is told who an NPC is from this table, and it
+    #  still said LORELEI, GIOVANNI, BROCK, ROCKET_M and MEWTWO -- PLACES only ever
+    #  reached towns. Species objects are renamed through the constants (vanilla's
+    #  SPECIES_X -> our display name), so a renamed daemon follows on the next run.
+    species_by_const = {}
+    try:
+        cpat = r"\[SPECIES_(\w+)\]\s*=\s*_\(\"([^\"]*)\"\)"
+        ours_sp = dict(re.findall(cpat, open(os.path.join(GBA, "src/data/text/species_names.h"), encoding="utf-8").read()))
+        van_sp = dict(re.findall(cpat, upstream_header("src/data/text/species_names.h")))
+        for c, v in van_sp.items():
+            o = ours_sp.get(c)
+            if o and o != v:
+                species_by_const[c] = re.sub(r"[^A-Z0-9]+", "_", o.upper()).strip("_")
+    except Exception:
+        species_by_const = {}
     if isinstance(raw.get("EVENT_OBJECT_NAME"), dict):
         objs = raw["EVENT_OBJECT_NAME"]
         nchanged = 0
         for k, name in list(objs.items()):
             if not isinstance(name, str):
                 continue
-            new_name = name
+            new_name = OBJECT_NAMES.get(name, name)
+            #  a daemon's overworld object, by its species (LAPRAS_DOLL, DEOXYS_D)
+            head, _, tail = new_name.partition("_")
+            for cand in (new_name, head):
+                if cand in species_by_const:
+                    new_name = species_by_const[cand] + (new_name[len(cand):])
+                    break
             for old_w, rep in sorted(PLACES, key=lambda p: -len(p[0])):
                 new_name = new_name.replace(old_w, rep)
             if new_name != name:
