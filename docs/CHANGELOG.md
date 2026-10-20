@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.307 — 2026-10-20
+
+### CALLOW's own theme (T-05)
+
+- ***7.4 (the user, by ear)***: **CALLOW plays The Christmas Cloak of Self** on the GBA build, *its houses and the school with it; THE BLEED keeps its tune, so the two no longer share.*
+
+---
+
 ## v11.306 — 2026-10-18
 
 ### Every routine signed (T-392)

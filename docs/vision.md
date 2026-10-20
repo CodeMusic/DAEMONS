@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.306**
+**A total conversion — the living design bible, v11.307**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5163,6 +5163,8 @@ Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is
 | **Lurid** | E | 12 *ScornSolutions Blues* | shares `Cities2` |
 | **Callow** | F | 14.25 *Desperate Shadows* | shares `Cities1` |
 | **Doldrum** | G | *Poly and Fields* | shares `Cities2` |
+
+***On the GBA build, CALLOW has its own (T-05, the user by ear, 2026-10-19)***: *CALLOW, its houses and the school play The Christmas Cloak of Self -- 68.68-96.92 s of the user's recording, 12 bars at 102 BPM in D major, on a SCHOOLBELL band (piano, glockenspiel, strings, bass), made by `tools/gengrovemusic.py` as a town entry -- and THE BLEED keeps its own tune, so the two no longer share. No PLAY song's section is used, so the town never gives a motif away.*
 
 **Three of the six are in.** The other three are not blocked — **they share a music slot with maps that are not towns**, so they need a repoint in `data/maps/songs.asm` rather than a body swap. A different edit, not a harder one.
 
