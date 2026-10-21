@@ -1,0 +1,200 @@
+{
+  "rom": "debug",
+  "about": "T-431 P2 + P4 (2026-10-21): the SUMMARY's fourth page, reached by R from KNOWN ROUTINES and left by L, its title blank. A 9x9 grid, axes unlabelled -- across GLAD minus SAD (right is glad), up CALM, down AFRAID -- and a dot whose hue is MAD (a cool slate to an ember) and whose saturation is friendship; under it one of the sixteen approved lines of behaviour (DRAFT in the game). Every line is shown once, every 3x3 reading, the friendship variants and the split between them, MAD's three, the corners, a daemon never stamped, an egg (no page), a boxed daemon from the PC, and HALFTONE (grey). Values are written outright with `feel` (stamped now) on the debug scratch save; UP/DOWN moves between daemons on the page and passes over the egg in slot 4.",
+  "stops": [
+    {
+      "stop": "the way there and back: R through INFO, SKILLS and KNOWN ROUTINES to the fourth page (title blank, four dots), L back to KNOWN ROUTINES and on to INFO, and R again",
+      "steps": [
+        "load debug",
+        "mon 4 egg 1",
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 200",
+        "feel 0 60 0 0 60",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It walks at your pace, unhurried.\" cell=7,1",
+        "keys R",
+        "shown page=FEELINGS",
+        "keys L",
+        "shown page=MOVES",
+        "keys L L",
+        "shown page=INFO",
+        "keys R R R",
+        "shown page=FEELINGS",
+        "keys L A",
+        "shown page=MOVES_INFO",
+        "keys B",
+        "shown page=MOVES",
+        "keys R",
+        "shown page=FEELINGS",
+        "close"
+      ]
+    },
+    {
+      "stop": "glad (x high) calm, middle and afraid; the middle calm and afraid -- UP/DOWN between daemons on the page, the egg in slot 4 passed over",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 200",
+        "friendship 1 200",
+        "friendship 2 200",
+        "friendship 3 200",
+        "friendship 5 200",
+        "feel 0 60 0 0 60 1 60 0 0 0 2 60 0 0 -60 3 0 0 0 60 5 0 0 0 -60",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It walks at your pace, unhurried.\" cell=7,1",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It hums through its routines.\" cell=7,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It bounds ahead, then darts back.\" cell=7,7",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It dozes the moment you stop.\" cell=4,1",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It checks behind you at each turn.\" cell=4,7",
+        "close"
+      ]
+    },
+    {
+      "stop": "the middle, wary and close by friendship; sad (x low) calm, and wary and close",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 50",
+        "friendship 1 180",
+        "friendship 2 200",
+        "friendship 3 50",
+        "friendship 5 200",
+        "feel 0 0 0 0 0 1 0 0 0 0 2 0 0 60 60 3 0 0 60 0 5 0 0 60 0",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It keeps a careful step away.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It leans on you whenever you stop.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It trails a step behind, quiet.\" cell=1,1",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It stops often, looking back.\" cell=1,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It stays close, but will not play.\" cell=1,4",
+        "close"
+      ]
+    },
+    {
+      "stop": "sad and afraid, wary and close; MAD 40 and over first -- afraid, sad, otherwise (the dot an ember)",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 50",
+        "friendship 1 200",
+        "friendship 2 255",
+        "friendship 3 255",
+        "friendship 5 255",
+        "feel 0 0 0 60 -60 1 0 0 60 -60 2 0 60 0 -60 3 0 60 60 0 5 0 60 0 0",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It hides behind whatever is near.\" cell=1,7",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It presses close at every noise.\" cell=1,7",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It snaps at the air when you turn.\" cell=4,7",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It turns its back when you look.\" cell=1,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It glares back at the last fight.\" cell=4,4",
+        "close"
+      ]
+    },
+    {
+      "stop": "all near zero at friendship 255; MAD 100 at friendship 0 (an ember greyed); the corners; never stamped",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 255",
+        "friendship 1 0",
+        "friendship 2 255",
+        "friendship 3 255",
+        "friendship 5 100",
+        "feel 0 5 0 5 5 1 0 100 0 0 2 0 0 100 100 3 100 0 0 -100 5 unset",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It goes where you go, as ever.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It glares back at the last fight.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It trails a step behind, quiet.\" cell=0,0",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It bounds ahead, then darts back.\" cell=8,8",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It dozes the moment you stop.\" cell=4,4",
+        "close"
+      ]
+    },
+    {
+      "stop": "between the friendship variants (split at 125); never stamped at 230; MAD 50 (half way to ember); the last corners",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 120",
+        "friendship 1 130",
+        "friendship 2 230",
+        "friendship 3 255",
+        "friendship 5 255",
+        "feel 0 0 0 0 0 1 0 0 0 0 2 unset 3 0 50 0 0 5 100 0 0 100",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It keeps a careful step away.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It leans on you whenever you stop.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It goes where you go, as ever.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It glares back at the last fight.\" cell=4,4",
+        "keys DOWN",
+        "shown page=FEELINGS \"line=It walks at your pace, unhurried.\" cell=8,0",
+        "close"
+      ]
+    },
+    {
+      "stop": "an egg: no page past INFO (R does nothing)",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "summary 4 R R R",
+        "shown page=INFO",
+        "close"
+      ]
+    },
+    {
+      "stop": "from the PC's box: the fourth page for a boxed daemon (never stamped: the quiet line for its friendship)",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "repel 999",
+        "poke *gPokemonStoragePtr 8 0",
+        "look 11 1 1",
+        "press A 4",
+        "press DOWN 2",
+        "press A",
+        "wait 150",
+        "shot the box",
+        "boxsummary R R R",
+        "shown page=FEELINGS cell=4,4",
+        "keys L",
+        "shown page=MOVES",
+        "keys B",
+        "close"
+      ]
+    },
+    {
+      "stop": "in HALFTONE the grid is grey (it is a menu): BG palettes 5 and 9 grey, the dot an ember made grey",
+      "steps": [
+        "goto LavenderTown 8 8",
+        "repel 999",
+        "flag FLAG_HALFTONE_TRIED_COLOUR 1",
+        "friendship 0 255",
+        "feel 0 0 80 0 -40",
+        "summary 0 R R R",
+        "shown page=FEELINGS \"line=It snaps at the air when you turn.\" cell=4,6",
+        "palette BG 9 grey",
+        "palette BG 5 grey",
+        "shot HALFTONE: the fourth page grey",
+        "close"
+      ]
+    }
+  ]
+}

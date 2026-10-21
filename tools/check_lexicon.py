@@ -695,6 +695,14 @@ def check_stale_names():
         for old_name, now in json.load(open(rp, encoding="utf-8"))["retired"].items():
             renamed.setdefault(old_name, now)
 
+    #  2026-10-21: THE BUILDINGS, which no name table holds. port_vocab.py renames DAEMON CENTER and DAEMON MART as
+    #  PHRASES, but it stashes the line escapes before matching, so "DAEMON\nCENTER" -- a name split by a line break --
+    #  was invisible to it, and two lines kept sending the player to a DAEMON CENTER. Here every block is flattened
+    #  first, so the split form is one name and is caught.
+    for old_name, now in (("DAEMON CENTER", "CHECKPOINT"), ("POKéMON CENTER", "CHECKPOINT"),
+                          ("DAEMON MART", "THE REPO"), ("POKéMON MART", "THE REPO")):
+        renamed.setdefault(old_name, now)
+
     #  the live lexicon, so an old name that is now somebody else's name is
     #  never reported -- this is the GROWTH case and it is not hypothetical
     #  THE STATES BELONG IN HERE. 1.6 renamed CONFUSION to THRASHING, so a
@@ -850,7 +858,8 @@ def check_stale_names():
                "src/data/text/quest_log.h",
                "src/data/pokemon/pokedex_text.h",
                "src/data/pokemon/pokedex_text_fr.h",
-               "src/data/pokemon/pokedex_text_lg.h")
+               "src/data/pokemon/pokedex_text_lg.h",
+               "src/daemons_feelings.c")       # T-431 P4: the lines of behaviour
     for rel in PROSE_C:
         p = os.path.join(GBA, rel)
         if not os.path.isfile(p):
@@ -977,6 +986,18 @@ def check_panes():
             bad.append((m.group(1), "%d bytes, and the summary copies it into 52" % size))
         if width(m.group(2)) > 230:
             bad.append(("%s (%dpx)" % (m.group(1), width(m.group(2))), "past the 230px ability pane"))
+
+    #  T-431 P4: the SUMMARY's fourth page prints ONE line of behaviour, centred in a 224px box; the user approved
+    #  sixteen of at most 208px (a message box's width), one line each. All sixteen must be there and fit.
+    feel = open(os.path.join(gba, "src/daemons_feelings.c"), encoding="utf-8").read()
+    lines = _re.findall(r'static const u8 (sFeelingsLine_\w+)\[\]\s*=\s*_\("([^"]*)"\);', feel)
+    if len(lines) != 16:
+        bad.append(("sFeelingsLine_*", "%d lines of behaviour; the user approved sixteen" % len(lines)))
+    for name, line in lines:
+        if _re.search(r"\\[nlp]", line):
+            bad.append((name, "breaks a line; the page prints one"))
+        if width(line) > 208:
+            bad.append(("%s (%dpx)" % (name, width(line)), "past the 208px a line of behaviour may take"))
 
     #  and OPUS's margins, against the pane the 386 Index entries demonstrate
     entries = open(os.path.join(gba, "src/data/pokemon/pokedex_text_fr.h"), encoding="utf-8").read()

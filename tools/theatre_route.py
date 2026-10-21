@@ -94,6 +94,18 @@ step is one line, split like a shell line:
                                same=NAME (each within 1 of NAME's); more=NAME:AXIS (that axis risen since NAME)
     conditions SLOT A B C D E SHEEN   T-431: write a party daemon's six contest-condition bytes raw, as an in-game trade
                                does (trade_scene.c) -- leaving its feelings' "set" bit as it is
+    feel SLOT GLAD MAD SAD CALM [SLOT ...]   T-431 P2: give party daemons feelings outright -- the four values written,
+                               the "set" bit and the clock's bit set, stamped NOW (the clock read by opening DEBUG ->
+                               GAME EVENTS -> FEELINGS first, which the capture shows); `feel SLOT unset` clears the bit
+    summary SLOT [KEY ...]     T-431 P2: START, DAEMON, the daemon in SLOT, SUMMARY; capture, then press each KEY (R, L,
+                               UP, DOWN, A, B) and capture after it, each captioned with the page on screen and, on the
+                               fourth page, the line it drew. Left open for `shown`; `close` leaves it
+    boxsummary [KEY ...]       the same from the PC's box screen (MOVE DAEMON), its cursor on a daemon: A, SUMMARY, A
+    keys KEY ...               press each KEY in the open SUMMARY, capturing after each as `summary` does
+    shown [page=NAME] [line=TEXT] [cell=C,R] [grey]   fail unless the summary shows that page (INFO, SKILLS, MOVES,
+                               MOVES_INFO, FEELINGS), the fourth page drew that line and put the dot in that cell
+                               (0-8 across, 0-8 down) -- read from the DEBUG build's gFeelingsDebugShown
+    close                      press B until the player is free again
 
 WHO is a person on the current map: their LOCALID_ name, their script's name (or a unique part of it), or "X,Y".
 
@@ -1177,6 +1189,131 @@ class Runner:
         tw.run("poke8 %s 255" % hex(hold + 35), "poke8 %s 255" % hex(hold + 36), *cmds,
                "poke8 %s 0" % hex(hold + 35), "poke8 %s 1" % hex(hold + 36))
 
+    # ---- T-431 P2: the SUMMARY's fourth page ---------------------------------------------------------------------
+
+    PAGES = ["INFO", "SKILLS", "MOVES", "MOVES_INFO", "UNK4", "MOVE_DELETER", "FEELINGS"]
+    PAGE_OFFSET = 0x3214                                                   # PokemonSummaryScreenData.curPageIndex
+
+    def edit_record(self, slot, fn):
+        """Decrypt party daemon SLOT's secure words, let fn change them (a bytearray, the four substructs in their
+        order, and that order), and write them back with the checksum made again -- as the game would."""
+        base, words_ = self.record(("party", slot))
+        pid, otid = words_[0], words_[1]
+        key = pid ^ otid
+        secure = [words_[8 + k] ^ key for k in range(12)]
+        raw = bytearray(b"".join(x.to_bytes(4, "little") for x in secure))
+        fn(raw, self.ORDERS[pid % 24])
+        secure = [int.from_bytes(raw[4 * k: 4 * k + 4], "little") for k in range(12)]
+        halves = [h for x in secure for h in (x & 0xFFFF, x >> 16)]
+        cmds = ["poke16 %s %d" % (hex(base + 28), sum(halves) & 0xFFFF)]
+        for k in range(12):
+            enc = secure[k] ^ key
+            if enc != words_[8 + k]:
+                cmds += ["poke16 %s %d" % (hex(base + 32 + 4 * k), enc & 0xFFFF),
+                         "poke16 %s %d" % (hex(base + 32 + 4 * k + 2), enc >> 16)]
+        hold = elf_symbol("sFollower", self.release)
+        tw.run("poke8 %s 255" % hex(hold + 35), "poke8 %s 255" % hex(hold + 36), *cmds,
+               "poke8 %s 0" % hex(hold + 35), "poke8 %s 1" % hex(hold + 36))
+
+    def feel(self, args):
+        """feel SLOT G M S C [SLOT G M S C ...] -- or SLOT unset."""
+        self.events(["FEELINGS >"])                                       # reads the clock: gFeelingsDebugNow
+        at = elf_symbol("gFeelingsDebugNow", self.release)
+        nowv = tw.peek([(16, at, "now"), (16, at + 2, "clock")])
+        i = 0
+        while i < len(args):
+            slot = int(args[i])
+            if args[i + 1] == "unset":
+                vals, i = None, i + 2
+            else:
+                vals, i = [int(v) for v in args[i + 1: i + 5]], i + 5
+
+            def fn(raw, order, vals=vals):
+                e, m = 12 * order.index("E"), 12 * order.index("M")
+                word = int.from_bytes(raw[m + 8: m + 12], "little")
+                ribbons = (word >> 27) & 0xF
+                if vals is None:
+                    ribbons &= ~1
+                else:
+                    g, md, s, c = vals
+                    raw[e + 6: e + 12] = bytes([g, md, s, c & 0xFF, nowv["now"] & 0xFF, nowv["now"] >> 8])
+                    ribbons = (ribbons & ~3) | 1 | (2 if nowv["clock"] else 0)
+                word = (word & ~(0xF << 27)) | (ribbons << 27)
+                raw[m + 8: m + 12] = word.to_bytes(4, "little")
+            self.edit_record(slot, fn)
+
+    def summary_state(self):
+        ptr = tw.peek([(32, elf_symbol("sMonSummaryScreen", self.release), "p")])["p"]
+        if not ptr:
+            return None, None, None
+        page = tw.peek([(8, ptr + self.PAGE_OFFSET, "pg")])["pg"]
+        shown = elf_symbol("gFeelingsDebugShown", self.release)
+        got = tw.peek([(32, shown, "line"), (32, shown + 4, "cell")])
+        line = None
+        if got["line"] >= 0x08000000:
+            rom = open(os.path.join(GBA, "daemonsContent.gba" if self.release else "daemonsContent_debug.gba"), "rb").read()
+            line = decode(rom[got["line"] - 0x08000000: got["line"] - 0x08000000 + 64])
+        name = self.PAGES[page] if page < len(self.PAGES) else str(page)
+        return name, line, (got["cell"] & 0xFF, (got["cell"] >> 8) & 0xFF)
+
+    def summary_capture(self, what):
+        page, line, cell = self.summary_state()
+        cap = "%s: %s" % (what, page)
+        if page == "FEELINGS":
+            cap += " -- cell %d,%d -- %s" % (cell[0], cell[1], line)
+            self.said.append(line)
+        self.capture(cap, read_text=False)
+
+    def summary_keys(self, keys):
+        for key in keys:
+            tw.run("hold %s 4" % key.upper(), "wait 60")
+            self.summary_capture("after %s" % key.upper())
+
+    def summary(self, slot, keys):
+        if not self.free():
+            raise RouteError("summary needs the player free on the overworld")
+        S = lambda n: elf_symbol(n, self.release)
+        self.start_menu(STARTMENU_POKEMON)
+        tw.run("hold A 6", "wait 100")                                    # the party fades in
+        at = S("gPartyMenu") + 9
+        for _ in range(8):
+            cur = tw.peek([(8, at, "s")])["s"]
+            if cur == slot:
+                break
+            tw.run("hold %s 4" % ("DOWN" if cur < slot else "UP"), "wait 16")
+        if tw.peek([(8, at, "s")])["s"] != slot:
+            raise RouteError("the party menu's cursor did not reach slot %d" % slot)
+        tw.run("hold A 6", "wait 30", "hold A 6", "wait 120")            # its actions; SUMMARY is the first
+        self.summary_capture("slot %d's SUMMARY" % slot)
+        self.summary_keys(keys)
+
+    def boxsummary(self, keys):
+        """From the box screen (MOVE DAEMON), its cursor on a daemon: A, SUMMARY (second in its menu), A."""
+        tw.run("hold A 6", "wait 40", "hold DOWN 4", "wait 16", "hold A 6", "wait 140")
+        self.summary_capture("the box daemon's SUMMARY")
+        self.summary_keys(keys)
+
+    def shown(self, checks):
+        page, line, cell = self.summary_state()
+        for c in checks:
+            k, _, v = c.partition("=")
+            if k == "page" and page != v.upper():
+                raise RouteError("the summary is on %s, not %s" % (page, v.upper()))
+            elif k == "line" and fold(line or "") != fold(v):
+                raise RouteError('the fourth page says "%s", not "%s"' % (line, v))
+            elif k == "cell" and cell != tuple(int(n) for n in v.split(",")):
+                raise RouteError("the dot is in cell %d,%d, not %s" % (cell[0], cell[1], v))
+            elif k not in ("page", "line", "cell"):
+                raise RouteError("shown: no check %s" % c)
+
+    def close(self):
+        for _ in range(8):
+            if self.free():
+                return
+            tw.run("hold B 6", "wait 70")
+        if not self.free():
+            raise RouteError("B did not bring the player back")
+
     def step(self, line):
         a = words(line)
         op, args = a[0].lower(), a[1:]
@@ -1330,6 +1467,18 @@ class Runner:
             self.feelings(args)
         elif op == "conditions":                                            # T-431
             self.conditions(int(args[0]), [int(v) for v in args[1:7]])
+        elif op == "feel":                                                  # T-431 P2
+            self.feel(args)
+        elif op == "summary":                                               # T-431 P2
+            self.summary(int(args[0]), args[1:])
+        elif op == "boxsummary":
+            self.boxsummary(args)
+        elif op == "keys":
+            self.summary_keys(args)
+        elif op == "shown":
+            self.shown(args)
+        elif op == "close":
+            self.close()
         elif op == "says":
             want = fold(" ".join(args))
             if not any(want in fold(s) for s in self.said):
