@@ -69,6 +69,12 @@ FLOOR = 20.0                               # 9.4's separability floor, CIE76
 PALE_NAMED = ("ROCK", "ICE", "DARK", "BUG", "STEEL")   # LEGACY FROZEN OPAQUE SWARM HARDENED, named by the user
 PALE_BELOW = 15.5                                       # and any other type whose anchor moves less than this
 TINT_TARGET = 14.0
+#  FROZEN PUSHED FURTHER (the user, 2026-10-21, after the pale sheet): its highlight is near white, so at 14 the tell
+#  barely showed. For a type here the light end aims at its own target and may carry up to this many times the
+#  anchor's chroma -- a clearer ice-blue. Only the light-end limit is relaxed: the anchor, and so the mid-tone type
+#  check, is the same for every type.
+TINT_PUSH = {"ICE": (22.0, 1.8)}   # type: (target, chroma cap as a multiple of the anchor's)
+PUSH_DL = 8.0                      # and the light end may darken this much L* to find room for the colour
 
 
 # ------------------------------------------------------------------------------------------- read gbasprite's table
@@ -231,7 +237,7 @@ def pale(t):
     return t in PALE_NAMED or anchor(t)[0] < PALE_BELOW
 
 
-def _tint(t, i, smid):
+def _tint(t, i, smid, push=True):
     """Step I (0 highlight, 1 light) of type T's ramp, at its own lightness, in the ANCHOR'S hue, tinted toward
     TINT_TARGET but never more coloured than the shiny mid itself.
 
@@ -244,15 +250,22 @@ def _tint(t, i, smid):
     Ln = lab(n)
     L, A, B = lab(smid)
     hue, cmax = math.atan2(B, A), math.hypot(A, B)
+    target, dls = TINT_TARGET, (0.0, -1.5, 1.5)
+    if push and t in TINT_PUSH:
+        #  near white, a blue runs out of gamut almost at once (FROZEN's highlight hits 255 blue at dE 8), so a pushed
+        #  type's light end may also come down in lightness -- up to PUSH_DL L*, the smallest drop that reaches TARGET
+        target, k = TINT_PUSH[t]
+        cmax *= k
+        dls = tuple(-x / 2 for x in range(0, int(PUSH_DL * 2) + 1))
     best, best_score = n, None
-    for dl in (0.0, -1.5, 1.5):
+    for dl in dls:
         #  from the step's own chroma up: a tint adds colour, it never drains it (SWARM's light step went grey without this)
         for c10 in range(int(math.hypot(Ln[1], Ln[2]) * 10), int(cmax * 10) + 1, 2):
             c = c10 / 10
             cand = rgb_from_lab(Ln[0] + dl, c * math.cos(hue), c * math.sin(hue))
             if cand is None:
                 continue
-            score = (round(abs(de(cand, n) - TINT_TARGET), 1), abs(dl), c)
+            score = (round(abs(de(cand, n) - target), 1), abs(dl), c)
             if best_score is None or score < best_score:
                 best, best_score = cand, score
     return best
@@ -261,19 +274,20 @@ def _tint(t, i, smid):
 _RAMPS = {}
 
 
-def shiny_ramp(t, tell=True):
-    """Type T's four shiny tones: ramp5 of the anchor, and for a pale type the light end tinted (above)."""
+def shiny_ramp(t, tell=2):
+    """Type T's four shiny tones: ramp5 of the anchor, and for a pale type the light end tinted (above).
+    TELL is for the sheets: 0 no tint, 1 the tint without TINT_PUSH, 2 (what is written) the tint as decided."""
     key = (t, tell)
     if key not in _RAMPS:
         smid = anchor(t)[2]
         r = ramp5(*smid)
         if tell and pale(t):
-            r[0], r[1] = _tint(t, 0, smid), _tint(t, 1, smid)
+            r[0], r[1] = _tint(t, 0, smid, tell >= 2), _tint(t, 1, smid, tell >= 2)
         _RAMPS[key] = r
     return _RAMPS[key]
 
 
-def make_shiny(pal, tell=True):
+def make_shiny(pal, tell=2):
     """(type, the shiny palette) -- or (None, None) when palette 1..4 is no type's ramp: then the daemon's shiny is
     not this tool's (UNOWN, the NEXUS daemons) and is left as it is."""
     t = type_of(pal)
@@ -319,7 +333,8 @@ def census(only):
             continue
         sp = d.upper()
         rows.append(dict(dir=d, name=names.get(sp, d.upper()), type=t, types=types.get(sp),
-                         normal=normal, shiny=new, current=shiny, plain=make_shiny(normal, tell=False)[1]))
+                         normal=normal, shiny=new, current=shiny, plain=make_shiny(normal, tell=0)[1],
+                         first=make_shiny(normal, tell=1)[1]))
     return rows, skipped
 
 
@@ -449,11 +464,12 @@ def draw_overview(rows, out, scale=2):
     return out
 
 
-def draw_pale(rows, out, per_type=4, scale=2):
-    """The pale types before and after the stronger tell: normal, the shiny without it, the shiny with it. Daemons with
-    no accent to turn come first -- they are the ones the tell is for."""
+def draw_pale(rows, out, per_type=4, scale=2, types=None):
+    """The pale types before and after the stronger tell: normal, the shiny without it, the shiny with it -- and for a
+    type in TINT_PUSH, BEFORE is the first tint, so the sheet shows the push. Daemons with no accent to turn come
+    first -- they are the ones the tell is for."""
     from PIL import Image, ImageDraw
-    ts = [t for t in ORDER if pale(t)]
+    ts = [t for t in ORDER if pale(t) and (types is None or t in types)]
     cw, ch = 64 * scale * 3 + 40, 64 * scale + 34
     W = 2 * cw + 40
     picks = {}
@@ -465,19 +481,19 @@ def draw_pale(rows, out, per_type=4, scale=2):
     im = Image.new("RGB", (W, H), PAPER)
     dr = ImageDraw.Draw(im)
     f_big, f_name, f_small = _font(26), _font(17), _font(15)
-    dr.text((20, 20), "T-432 pale types: normal | before | with tint", font=f_big, fill=TEXT)
+    dr.text((20, 20), "T-432 pale types: normal | before | after", font=f_big, fill=TEXT)
     y = 80
     for t in ts:
         dr.line([20, y, W - 20, y], fill=RULE, width=2)
         dr.text((20, y + 10), type_label(t), font=f_big, fill=TEXT)
         sx = 20 + int(dr.textlength(type_label(t), font=f_big)) + 24
         swatches(dr, sx, y + 14, ramp5(*TYPE_COLOR[t]), 18)
-        swatches(dr, sx + 90, y + 14, shiny_ramp(t, tell=False), 18)
+        swatches(dr, sx + 90, y + 14, shiny_ramp(t, tell=1 if t in TINT_PUSH else 0), 18)
         swatches(dr, sx + 180, y + 14, shiny_ramp(t), 18)
         y += 60
         for i, r in enumerate(picks[t]):
             cx, cy = 20 + (i % 2) * cw, y + (i // 2) * ch
-            for k, pal in enumerate((r["normal"], r["plain"], r["shiny"])):
+            for k, pal in enumerate((r["normal"], r["first"] if t in TINT_PUSH else r["plain"], r["shiny"])):
                 sp = sprite(r["dir"], pal, scale)
                 im.paste(sp, (cx + k * (64 * scale + 6), cy), sp)
             dr.text((cx + 4, cy + 64 * scale + 4), r["name"], font=f_name, fill=TEXT)
@@ -536,7 +552,8 @@ def main():
     if sheet:
         paths = draw_sheets(rows, sheet)
         ov = draw_overview(rows, os.path.splitext(sheet)[0] + "_overview.png")
-        pl = draw_pale(rows, os.path.splitext(sheet)[0] + "_pale.png")
+        #  the pale sheet shows what is still open: the pushed types, or all the pale ones when none are
+        pl = draw_pale(rows, os.path.splitext(sheet)[0] + "_pale.png", types=list(TINT_PUSH) or None)
         print("  sheets: %s" % ", ".join(paths + [ov, pl]))
 
     if WRITE:
