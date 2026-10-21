@@ -4,7 +4,6 @@
     python3 tools/genshiny.py                  # report: each type's shiny anchor, how many daemons change, questions
     python3 tools/genshiny.py --sheet OUT.png  # also draw the review sheets: OUT_1.png, OUT_2.png ... and OUT_overview.png
     python3 tools/genshiny.py --write          # write engineGba/graphics/pokemon/<name>/shiny.pal
-    python3 tools/genshiny.py --all            # include the daemons whose shiny.pal already differs (UNOWN, the NEXUS ones)
     python3 tools/genshiny.py bulbasaur pikachu   # only these folders
 
 WHY A TOOL. tools/gbasprite.py writes each redrawn daemon's shiny.pal as a COPY of its normal.pal, so a shiny looked
@@ -38,8 +37,11 @@ the palette is what the player sees; a daemon whose mid tone matches no type is 
 does not move the shiny -- the body is the primary, as 9.4 drew it -- and the report lists the dual types so the user
 can say whether a shiny should lean toward the second one instead.
 
-KNOWN AND UNSOLVED: gbasprite.py --write still writes shiny.pal as a copy of normal.pal, so after this tool has written,
-a whole-tree gbasprite --write would undo it. Either gbasprite calls this, or genshiny goes into generator_drift.json.
+  5. THE PALE TYPES TINT THE LIGHT END TOO (the user, 2026-10-21): see PALE_NAMED below.
+
+WHO OWNS shiny.pal: this tool, for every daemon whose normal.pal is a type ramp; a daemon without one (UNOWN, the
+eight NEXUS daemons) keeps the shiny it has. tools/gbasprite.py, which writes normal.pal, calls make_shiny() here for
+shiny.pal rather than copying normal.pal into it -- so a whole-tree gbasprite --write keeps the shinies.
 """
 import ast, colorsys, math, os, re, sys
 
@@ -50,7 +52,6 @@ import daemonslib   # T-421: read_pal / write_pal, CRLF as the engine keeps them
 GBA = os.path.join(ROOT, "engineGba")
 MON = os.path.join(GBA, "graphics", "pokemon")
 WRITE = "--write" in sys.argv
-ALL = "--all" in sys.argv
 
 LSHIFT = 3.0       # how far the anchor's L* may move: the ramp's lightness, and so the drawing, stays as it is
 MARGIN = 8.0       # the shiny mid must be this much nearer its own type than the nearest other one (CIE76)
@@ -61,6 +62,13 @@ GREY_C = 15.0      # a type with less chroma than this may also gain a little (i
 ACCENT_TURNS = (180, 120, 240, 90, 270)   # tried in order; the first that clears both floors is taken
 ACCENT_MIN_SAT = 0.25                      # HSV saturation below this is a grey: left alone
 FLOOR = 20.0                               # 9.4's separability floor, CIE76
+#  THE PALE TYPES' STRONGER TELL (the user, 2026-10-21). A type whose body can move only a little inside its bounds,
+#  on a daemon with no accent to turn, is a shiny nobody sees. So these also TINT THE LIGHT END: highlight and light
+#  keep their lightness and take the anchor's hue, with chroma enough to move them about TINT_TARGET -- and never more
+#  chroma than the anchor's own (_tint says why the anchor's distance rule cannot be used at the light end).
+PALE_NAMED = ("ROCK", "ICE", "DARK", "BUG", "STEEL")   # LEGACY FROZEN OPAQUE SWARM HARDENED, named by the user
+PALE_BELOW = 15.5                                       # and any other type whose anchor moves less than this
+TINT_TARGET = 14.0
 
 
 # ------------------------------------------------------------------------------------------- read gbasprite's table
@@ -219,12 +227,60 @@ def type_of(pal):
     return None
 
 
-def make_shiny(pal):
+def pale(t):
+    return t in PALE_NAMED or anchor(t)[0] < PALE_BELOW
+
+
+def _tint(t, i, smid):
+    """Step I (0 highlight, 1 light) of type T's ramp, at its own lightness, in the ANCHOR'S hue, tinted toward
+    TINT_TARGET but never more coloured than the shiny mid itself.
+
+    WHY NOT THE ANCHOR'S RULE. The light ends of all the ramps sit within 5-8 CIE76 of each other (LEGACY's highlight
+    is 5.1 from LOGIC's, SWARM's 5.1 from GROWTH's) -- near white is near white -- so "nearer its own type's step
+    than any other's by MARGIN" admits no tint at all. The bound is carried instead by the two things already proven
+    inside the type: the HUE is the anchor's, which passed rule 2 on the mid tone, and the CHROMA is capped at the
+    anchor's own, so a highlight is never more of a colour than the body it lights."""
+    n = ramp5(*TYPE_COLOR[t])[i]
+    Ln = lab(n)
+    L, A, B = lab(smid)
+    hue, cmax = math.atan2(B, A), math.hypot(A, B)
+    best, best_score = n, None
+    for dl in (0.0, -1.5, 1.5):
+        #  from the step's own chroma up: a tint adds colour, it never drains it (SWARM's light step went grey without this)
+        for c10 in range(int(math.hypot(Ln[1], Ln[2]) * 10), int(cmax * 10) + 1, 2):
+            c = c10 / 10
+            cand = rgb_from_lab(Ln[0] + dl, c * math.cos(hue), c * math.sin(hue))
+            if cand is None:
+                continue
+            score = (round(abs(de(cand, n) - TINT_TARGET), 1), abs(dl), c)
+            if best_score is None or score < best_score:
+                best, best_score = cand, score
+    return best
+
+
+_RAMPS = {}
+
+
+def shiny_ramp(t, tell=True):
+    """Type T's four shiny tones: ramp5 of the anchor, and for a pale type the light end tinted (above)."""
+    key = (t, tell)
+    if key not in _RAMPS:
+        smid = anchor(t)[2]
+        r = ramp5(*smid)
+        if tell and pale(t):
+            r[0], r[1] = _tint(t, 0, smid), _tint(t, 1, smid)
+        _RAMPS[key] = r
+    return _RAMPS[key]
+
+
+def make_shiny(pal, tell=True):
+    """(type, the shiny palette) -- or (None, None) when palette 1..4 is no type's ramp: then the daemon's shiny is
+    not this tool's (UNOWN, the NEXUS daemons) and is left as it is."""
     t = type_of(pal)
     if t is None:
         return None, None
     _, _, smid = anchor(t)
-    sramp = ramp5(*smid)
+    sramp = shiny_ramp(t, tell)
     out = list(pal)
     out[1:5] = sramp
     th = hsv(smid)[0]
@@ -255,16 +311,15 @@ def census(only):
             continue
         normal = daemonslib.read_pal(os.path.join(p, "normal.pal"))
         shiny = daemonslib.read_pal(os.path.join(p, "shiny.pal"))
-        if shiny != normal and not ALL:
-            skipped.append((d, "its shiny.pal already differs (--all to include it)"))
-            continue
+        #  OWNERSHIP: genshiny owns every shiny.pal whose normal.pal is a type ramp, and no other. A daemon without one
+        #  (UNOWN, the eight NEXUS daemons) keeps the shiny it has -- the user, 2026-10-21.
         t, new = make_shiny(normal)
         if t is None:
-            skipped.append((d, "palette 1..4 is no type's ramp"))
+            skipped.append((d, "not a type ramp: keeps its own shiny.pal"))
             continue
         sp = d.upper()
         rows.append(dict(dir=d, name=names.get(sp, d.upper()), type=t, types=types.get(sp),
-                         normal=normal, shiny=new, current=shiny))
+                         normal=normal, shiny=new, current=shiny, plain=make_shiny(normal, tell=False)[1]))
     return rows, skipped
 
 
@@ -343,8 +398,9 @@ def draw_sheets(rows, out, per=40, cols=4, scale=2):
             sx = 20 + int(dr.textlength(type_label(t), font=f_big)) + 24
             swatches(dr, sx, y + 14, ramp5(*TYPE_COLOR[t]), 18)
             dr.text((sx + 80, y + 12), "->", font=f_name, fill=TEXT)
-            swatches(dr, sx + 108, y + 14, ramp5(*smid), 18)
-            dr.text((sx + 196, y + 15), "hue %+d deg, dE %.0f" % (dh, sh), font=f_small, fill=TEXT)
+            swatches(dr, sx + 108, y + 14, shiny_ramp(t), 18)
+            dr.text((sx + 196, y + 15), "hue %+d deg, dE %.0f%s" % (dh, sh, ", light end tinted" if pale(t) else ""),
+                    font=f_small, fill=TEXT)
             y += 54
             for i, r in enumerate(g):
                 cx, cy = 20 + (i % cols) * cell_w, y + (i // cols) * cell_h
@@ -382,12 +438,50 @@ def draw_overview(rows, out, scale=2):
         sh, dh, smid = anchor(t)
         dr.text((cx, cy), "%s  %s" % (OURS.get(t, t), r["name"]), font=f_name, fill=TEXT)
         swatches(dr, cx, cy + 26, ramp5(*TYPE_COLOR[t]), 14)
-        swatches(dr, cx + 64 * scale + 4, cy + 26, ramp5(*smid), 14)
-        dr.text((cx + 64 * scale + 64, cy + 26), "%+d deg dE %.0f" % (dh, sh), font=f_small, fill=TEXT)
+        swatches(dr, cx + 64 * scale + 4, cy + 26, shiny_ramp(t), 14)
+        dr.text((cx + 64 * scale + 64, cy + 26), "%+d deg dE %.0f%s" % (dh, sh, " +tint" if pale(t) else ""),
+                font=f_small, fill=TEXT)
         a = sprite(r["dir"], r["normal"], scale)
         b = sprite(r["dir"], r["shiny"], scale)
         im.paste(a, (cx, cy + 46), a)
         im.paste(b, (cx + 64 * scale + 4, cy + 46), b)
+    im.save(out)
+    return out
+
+
+def draw_pale(rows, out, per_type=4, scale=2):
+    """The pale types before and after the stronger tell: normal, the shiny without it, the shiny with it. Daemons with
+    no accent to turn come first -- they are the ones the tell is for."""
+    from PIL import Image, ImageDraw
+    ts = [t for t in ORDER if pale(t)]
+    cw, ch = 64 * scale * 3 + 40, 64 * scale + 34
+    W = 2 * cw + 40
+    picks = {}
+    for t in ts:
+        g = sorted((r for r in rows if r["type"] == t),
+                   key=lambda r: (r["shiny"][6:STREAK_FIRST] != r["normal"][6:STREAK_FIRST], r["name"]))
+        picks[t] = g[:per_type]
+    H = 80 + sum(60 + ((len(picks[t]) + 1) // 2) * ch for t in ts)
+    im = Image.new("RGB", (W, H), PAPER)
+    dr = ImageDraw.Draw(im)
+    f_big, f_name, f_small = _font(26), _font(17), _font(15)
+    dr.text((20, 20), "T-432 pale types: normal | before | with tint", font=f_big, fill=TEXT)
+    y = 80
+    for t in ts:
+        dr.line([20, y, W - 20, y], fill=RULE, width=2)
+        dr.text((20, y + 10), type_label(t), font=f_big, fill=TEXT)
+        sx = 20 + int(dr.textlength(type_label(t), font=f_big)) + 24
+        swatches(dr, sx, y + 14, ramp5(*TYPE_COLOR[t]), 18)
+        swatches(dr, sx + 90, y + 14, shiny_ramp(t, tell=False), 18)
+        swatches(dr, sx + 180, y + 14, shiny_ramp(t), 18)
+        y += 60
+        for i, r in enumerate(picks[t]):
+            cx, cy = 20 + (i % 2) * cw, y + (i // 2) * ch
+            for k, pal in enumerate((r["normal"], r["plain"], r["shiny"])):
+                sp = sprite(r["dir"], pal, scale)
+                im.paste(sp, (cx + k * (64 * scale + 6), cy), sp)
+            dr.text((cx + 4, cy + 64 * scale + 4), r["name"], font=f_name, fill=TEXT)
+        y += ((len(picks[t]) + 1) // 2) * ch
     im.save(out)
     return out
 
@@ -414,6 +508,12 @@ def main():
         if dl > 6:
             print("      !! the ramp's lightness moves %.1f L* at one step" % dl)
 
+    print("\n  THE PALE TYPES' TELL -- the light end tinted (highlight, light: normal -> shiny, dE)")
+    for t in ORDER:
+        if pale(t):
+            n, sr = ramp5(*TYPE_COLOR[t]), shiny_ramp(t)
+            print("  %-22s %s" % (type_label(t), "   ".join("%d,%d,%d -> %d,%d,%d (%.1f)" % (n[i] + sr[i] + (de(n[i], sr[i]),))
+                                                              for i in (0, 1))))
     change = [r for r in rows if r["shiny"] != r["current"]]
     print("\n  %d daemons, %d of them would change; %d skipped" % (len(rows), len(change), len(skipped)))
     for d, why in skipped:
@@ -436,7 +536,8 @@ def main():
     if sheet:
         paths = draw_sheets(rows, sheet)
         ov = draw_overview(rows, os.path.splitext(sheet)[0] + "_overview.png")
-        print("  sheets: %s" % ", ".join(paths + [ov]))
+        pl = draw_pale(rows, os.path.splitext(sheet)[0] + "_pale.png")
+        print("  sheets: %s" % ", ".join(paths + [ov, pl]))
 
     if WRITE:
         for r in change:

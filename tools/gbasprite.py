@@ -52,6 +52,7 @@ import colorsys, glob
 from PIL import Image
 import numpy as np
 from gridsample import deringe
+import genshiny      # T-432: shiny.pal is derived there (it reads TYPE_COLOR out of this file, it does not import it)
 
 SIZE = 64
 
@@ -483,7 +484,14 @@ for vanilla, ours in sorted(pairs.items()):
         # The FRONT's palette is the species palette; the back was mapped onto it above.
         species_pal = front_pal if front_pal is not None else palette
         write_pal(os.path.join(outdir, "normal.pal"), species_pal)
-        write_pal(os.path.join(outdir, "shiny.pal"), species_pal)
+        #  T-432: shiny.pal is tools/genshiny.py's, derived from this normal.pal inside the type's bounds -- this used
+        #  to copy normal.pal into it, and a whole-tree run here would have taken every shiny off again. A palette
+        #  that is no type's ramp is not genshiny's, and its shiny.pal is left as it stands.
+        _t, _shiny = genshiny.make_shiny(species_pal)
+        if _shiny is not None:
+            write_pal(os.path.join(outdir, "shiny.pal"), _shiny)
+        elif not os.path.exists(os.path.join(outdir, "shiny.pal")):
+            write_pal(os.path.join(outdir, "shiny.pal"), species_pal)
 
     #  Derived assets, only for daemons whose art we actually redrew -- a
     #  vanilla-sourced sprite has a vanilla icon and object already.
