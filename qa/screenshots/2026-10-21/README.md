@@ -421,3 +421,111 @@ v11.308.2 T-432: one shiny per type, accents to the opposite hue, pale types tin
 v11.308.2 T-432: one shiny per type, accents to the opposite hue, pale types tinted, FROZEN ice-blue; 386 daemons
 
 ![21Oct2026 - T432 - shiny colours - 70](21Oct2026%20-%20T432%20-%20shiny%20colours%20-%2070.png)
+
+### 21Oct2026 - T431 - the feelings page - 71
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 71](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2071.png)
+
+### 21Oct2026 - T431 - the feelings page - 72
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 72](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2072.png)
+
+### 21Oct2026 - T431 - the feelings page - 73
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 73](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2073.png)
+
+### 21Oct2026 - T431 - the feelings page - 74
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 74](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2074.png)
+
+### 21Oct2026 - T431 - the feelings page - 75
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 75](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2075.png)
+
+### 21Oct2026 - T431 - the feelings page - 76
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 76](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2076.png)
+
+### 21Oct2026 - T431 - the feelings page - 77
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 77](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2077.png)
+
+### 21Oct2026 - T431 - the feelings page - 78
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 78](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2078.png)
+
+### 21Oct2026 - T431 - the feelings page - 79
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 79](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2079.png)
+
+### 21Oct2026 - T431 - the feelings page - 80
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 80](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2080.png)
+
+### 21Oct2026 - T431 - the feelings page - 81
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 81](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2081.png)
+
+### 21Oct2026 - T431 - the feelings page - 82
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 82](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2082.png)
+
+### 21Oct2026 - T431 - the feelings page - 83
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 83](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2083.png)
+
+### 21Oct2026 - T431 - the feelings page - 84
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 84](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2084.png)
+
+### 21Oct2026 - T431 - the feelings page - 85
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 85](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2085.png)
+
+### 21Oct2026 - T431 - the feelings page - 86
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 86](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2086.png)
+
+### 21Oct2026 - T431 - the feelings page - 87
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 87](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2087.png)
+
+### 21Oct2026 - T431 - the feelings page - 88
+
+v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
+
+![21Oct2026 - T431 - the feelings page - 88](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2088.png)
