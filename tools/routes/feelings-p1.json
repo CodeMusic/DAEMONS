@@ -1,0 +1,119 @@
+{
+  "rom": "debug",
+  "about": "T-431 P1, feelings in the game (2026-10-21): stored in each daemon's unused contest-condition bytes, pushed by play, fading with a 3-hour half-life, shown on DEBUG -> GAME EVENTS -> FEELINGS. An old save's daemons read zero; a battle won pushes the one who fought; a loss pushes the whole party (and the white-out's CHECKPOINT machine calms it); a CHECKPOINT heal calms; +3 HOURS halves every value; an egg is never pushed; an in-game trade's condition bytes read as zero; a day in a box comes back sad. The theatre's debug scratch save; nothing is saved.",
+  "stops": [
+    {
+      "stop": "an old save's daemons read zero (and slot 5 is made an egg)",
+      "steps": [
+        "load debug",
+        "mon 4 egg 1",
+        "feelings party 0 set=0 glad=0 mad=0 sad=0 calm=0",
+        "feelings party 1 set=0 glad=0",
+        "feelings party 4 set=0 egg=1",
+        "events \"FEELINGS >\""
+      ]
+    },
+    {
+      "stop": "a battle won: the daemon that fought is glad, the rest untouched",
+      "steps": [
+        "goto Route22 15 9",
+        "wild",
+        "finish",
+        "feelings party 0 set=1 glad>=8 mad=0 sad=0",
+        "feelings party 2 set=0 glad=0",
+        "feelings party 4 set=0 egg=1",
+        "events \"FEELINGS >\""
+      ]
+    },
+    {
+      "stop": "a battle lost: the whole party sad, cross and afraid -- then the white-out's CHECKPOINT machine",
+      "steps": [
+        "goto Route22 15 9",
+        "wild keep",
+        "lose",
+        "finish",
+        "feelings party 0 sad>=12 mad>=6",
+        "feelings party 2 set=1 sad>=12 mad>=6 glad=0",
+        "feelings party 4 set=0 egg=1",
+        "events \"FEELINGS >\""
+      ]
+    },
+    {
+      "stop": "a CHECKPOINT heal: calmer, and the follower goes into the machine and comes back",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "repel 999",
+        "feelings party 2 keep=H",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "feelings party 2 more=H:calm",
+        "feelings party 4 set=0 egg=1",
+        "follower shown",
+        "events \"FEELINGS >\""
+      ]
+    },
+    {
+      "stop": "+3 HOURS: every value half what it was",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "events \"FEELINGS >\"",
+        "feelings party 0 keep=L",
+        "feelings party 2 keep=A",
+        "events \"FEELINGS >\" \"+3 HOURS (EVERY STAMP)\"",
+        "feelings party 0 half=L",
+        "feelings party 2 half=A"
+      ]
+    },
+    {
+      "stop": "an in-game trade's condition bytes read as zero (the egg hatched by hand; its bytes written as trade_scene.c does)",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "mon 4 egg 0",
+        "conditions 4 5 5 5 30 5 0",
+        "feelings party 4 set=0 glad=0 mad=0 sad=0 calm=0",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "feelings party 4 set=1 glad=0 mad=0 sad=0 calm>=19 calm<=21"
+      ]
+    },
+    {
+      "stop": "a day in a box: deposited (restamped), a day passes, withdrawn sadder and a little afraid",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "repel 999",
+        "feelings party 1 set=1 keep=B",
+        "poke *gPokemonStoragePtr 8 13",
+        "look 11 1 1",
+        "press A 4",
+        "press DOWN",
+        "press A",
+        "wait 60",
+        "press DOWN",
+        "press A 2",
+        "press LEFT",
+        "shot BOX14 chosen",
+        "press A",
+        "wait 60",
+        "press B",
+        "press A",
+        "wait 60",
+        "press B 4",
+        "finish",
+        "feelings box 13 0 set=1 same=B",
+        "events \"FEELINGS >\" \"+1 DAY (EVERY STAMP)\"",
+        "feelings box 13 0 glad=0 mad=0 sad=0 calm=0",
+        "look 11 1 1",
+        "press A 4",
+        "press A",
+        "wait 90",
+        "press A 2",
+        "wait 60",
+        "press B",
+        "press A",
+        "wait 60",
+        "press B 4",
+        "finish",
+        "feelings party 5 set=1 glad=0 mad=0 sad=10 calm=-5",
+        "events \"FEELINGS >\""
+      ]
+    }
+  ]
+}

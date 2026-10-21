@@ -41,6 +41,7 @@ step is one line, split like a shell line:
     repel [STEPS]              no wild battles for STEPS steps (default 250)
     fight                      clear a battle: run from a wild one, fight a trainer (the walker's)
     win                        DEBUG: win the battle on screen (gBattleOutcome = 1, then a turn)
+    lose                       DEBUG: lose it (gBattleOutcome = 2, then a turn) -- a white-out follows (T-431)
     bump WHO [keep]            walk beside someone and then INTO them, pressing no A: fail unless that starts their
                                script (T-334: an unseen legend is met by walking into its place); the scene is then
                                captured to its end, its battle won on a DEBUG route -- with keep, left at the battle's
@@ -83,6 +84,16 @@ step is one line, split like a shell line:
                                every EVERY frames, in one batch -- a routine in flight, a flicker
     palette BG|OBJ SLOT grey|colour   T-430: fail unless that palette slot on screen (palette RAM) is all grey, or holds
                                some colour (entry 0, the transparent one, is not counted)
+    events "ROW" ["ROW" ...]   T-431: DEBUG -> GAME EVENTS, then each row by its label on the page it is on (a "NAME >"
+                               row opens its page; "#N" is the page's Nth row, from 0), each pressed with A; the page
+                               left open is captured, then B closes the lot. Read from src/daemons_debug_events.c.
+    feelings party SLOT|box BOX POS [CHECK ...]   T-431: a daemon's feelings as the game reads them now (its record
+                               decrypted, faded by the stamp's age against the clock the game last read), captioned;
+                               each CHECK fails the stop unless it holds: glad|mad|sad|calm|friendship (=, <, >, <=, >=) N;
+                               set=0|1 (ever pushed: its bit, even on an egg); egg=0|1; keep=NAME (note all four); half=NAME (each about half of NAME's);
+                               same=NAME (each within 1 of NAME's); more=NAME:AXIS (that axis risen since NAME)
+    conditions SLOT A B C D E SHEEN   T-431: write a party daemon's six contest-condition bytes raw, as an in-game trade
+                               does (trade_scene.c) -- leaving its feelings' "set" bit as it is
 
 WHO is a person on the current map: their LOCALID_ name, their script's name (or a unique part of it), or "X,Y".
 
@@ -858,7 +869,7 @@ class Runner:
         else:
             tw.run("hold %s 6" % button, "wait 26")
 
-    def win(self):
+    def win(self, result=1):
         if self.release:
             raise RouteError("win pokes the battle's outcome: DEBUG routes only")
         outcome = tw.symbol("gBattleOutcome", False)
@@ -867,7 +878,7 @@ class Runner:
                 return
             # the outcome is read at the end of a TURN: so take one -- ROUTINES (top left), then the first routine.
             # A on DETACH takes none ("You cannot DETACH from a USER engagement!"), and that loop never ends.
-            tw.run("poke8 %s 1" % hex(outcome), "hold B 8", "wait 30", "hold UP 6", "wait 10", "hold LEFT 6", "wait 10",
+            tw.run("poke8 %s %d" % (hex(outcome), result), "hold B 8", "wait 30", "hold UP 6", "wait 10", "hold LEFT 6", "wait 10",
                    "hold A 8", "wait 40", "hold A 8", "wait 150", "hold A 6", "wait 60")
         raise RouteError("still in a battle after thirty turns")
 
@@ -1018,6 +1029,154 @@ class Runner:
                 raise RouteError("GOTO lands in %s, not %s: walk from there with warp and to" % (name, folder))
             tw.walk(self.g, (int(x), int(y)))
 
+    # ---- T-431: GAME EVENTS by label, and a daemon's feelings read out of its record ----------------------------
+
+    def event_pages(self):
+        """{page enum: [(label or None, kind, arg)]} and the page enum's order, from src/daemons_debug_events.c."""
+        src = open(os.path.join(GBA, "src/daemons_debug_events.c")).read()
+        pages = re.search(r"enum \{ (PG_EVENTS[^}]*)\}", src).group(1).replace(" ", "").split(",")
+        names = dict(re.findall(r'static const u8 (sName_\w+)\[\]\s*=\s*_\("([^"]*)"\)', src))
+        rows_of = dict(re.findall(r"\[(PG_\w+)\]\s*=\s*\{\s*(sRows_\w+)", src))
+        out = {}
+        for pg, arr in rows_of.items():
+            body = re.search(r"static const struct DbgRow %s\[\] = \{(.*?)\n\};" % arr, src, re.S).group(1)
+            out[pg] = [(names.get(n), k, g) for n, k, g in re.findall(r"\{\s*(\w+),\s*(R_\w+),\s*([^}]+?)\s*\}", body)]
+        return out, pages
+
+    def events(self, labels):
+        pages, order = self.event_pages()
+        S = lambda n: elf_symbol(n, self.release)
+        rows_at, scroll_at = S("sRow"), S("sScroll")
+        tw.run(*["poke16 %s 0" % hex(a + 2 * k) for a in (rows_at, scroll_at) for k in range(len(order) - 1)])
+        self.start_menu(10)                                               # STARTMENU_DEBUG
+        tw.run("hold A 6", "wait 50")                                     # its main page, the cursor on GAME EVENTS
+        tw.run("hold A 6", "wait 90")                                     # GAME EVENTS: the title, then the list
+        page, cursor = "PG_EVENTS", 0
+        for label in labels:
+            rows = pages[page]
+            if label.startswith("#"):
+                idx = int(label[1:])
+            else:
+                hits = [i for i, r in enumerate(rows) if r[0] and fold(r[0]) == fold(label)]
+                if len(hits) != 1:
+                    raise RouteError("GAME EVENTS: no row %s on %s" % (label, page))
+                idx = hits[0]
+            for _ in range(abs(idx - cursor)):
+                tw.run("hold %s 4" % ("DOWN" if idx > cursor else "UP"), "wait 12")
+            tw.run("hold A 6", "wait 90")
+            name, kind, arg = rows[idx]
+            if kind == "R_PAGE":
+                page, cursor = arg, 0
+            else:
+                cursor = idx
+        self.capture("GAME EVENTS: " + " / ".join(labels))
+        for _ in range(4):
+            if self.free():
+                break
+            tw.run("hold B 6", "wait 60")
+        if not self.free():
+            raise RouteError("GAME EVENTS did not close")
+
+    FADE = [round(255 * 2 ** (-d / 18)) for d in range(145)]              # src/daemons_feelings.c's sFade
+
+    def record(self, where):
+        """(base address, 80-byte record words) for ('party', slot) or ('box', box, pos)."""
+        if where[0] == "party":
+            base = tw.symbol("gPlayerParty", self.release) + 100 * where[1]
+        else:
+            base = self.addr("*gPokemonStoragePtr") + 4 + 80 * (30 * where[1] + where[2])
+        w = tw.peek([(32, base + 4 * k, "w%d" % k) for k in range(20)])
+        return base, [w["w%d" % k] for k in range(20)]
+
+    def feelings_of(self, where):
+        base, words_ = self.record(where)
+        pid, otid = words_[0], words_[1]
+        secure = [words_[8 + k] ^ pid ^ otid for k in range(12)]
+        raw = b"".join(x.to_bytes(4, "little") for x in secure)
+        order = self.ORDERS[pid % 24]
+        e, m, g = 12 * order.index("E"), 12 * order.index("M"), 12 * order.index("G")
+        cond = raw[e + 6: e + 12]
+        ribbons = (int.from_bytes(raw[m + 8: m + 12], "little") >> 27) & 0xF
+        egg = (int.from_bytes(raw[m + 4: m + 8], "little") >> 30) & 1
+        nowv = tw.peek([(16, elf_symbol("gFeelingsDebugNow", self.release), "now"),
+                        (16, elf_symbol("gFeelingsDebugNow", self.release) + 2, "clock")])
+        stamp = cond[4] | (cond[5] << 8)
+        ticks = (nowv["now"] - stamp) & 0xFFFF
+        if bool(ribbons & 2) != bool(nowv["clock"]):
+            ticks = 0xFFFF
+        fade = lambda v: 0 if ticks > 144 else (v * self.FADE[ticks] + 127) // 255
+        signed = cond[3] - 256 if cond[3] > 127 else cond[3]
+        f = {"glad": 0, "mad": 0, "sad": 0, "calm": 0}
+        if ribbons & 1 and not egg:
+            f = {"glad": fade(cond[0]), "mad": fade(cond[1]), "sad": fade(cond[2]),
+                 "calm": -fade(-signed) if signed < 0 else fade(signed)}
+        f.update({"set": int(bool(ribbons & 1)), "friendship": raw[g + 9], "egg": egg, "stamp": stamp,
+                  "ticks": ticks, "raw": list(cond), "clock": nowv["clock"]})
+        return f
+
+    def feelings(self, args):
+        if args[0] == "party":
+            where, checks = ("party", int(args[1])), args[2:]
+        else:
+            where, checks = ("box", int(args[1]), int(args[2])), args[3:]
+        f = self.feelings_of(where)
+        self.feel_memory = getattr(self, "feel_memory", {})
+        cap = "%s: G %d M %d S %d C %d F %d%s%s, stamp %d (%s ago, %s)" % (
+            " ".join(map(str, where)), f["glad"], f["mad"], f["sad"], f["calm"], f["friendship"],
+            "" if f["set"] else " -- never set", " EGG" if f["egg"] else "", f["stamp"],
+            "a day+" if f["ticks"] > 144 else "%d ticks" % f["ticks"], "clock" if f["clock"] else "play time")
+        self.capture(cap, read_text=False)
+        self.said.append(cap)
+        AX = ("glad", "mad", "sad", "calm")
+        for c in checks:
+            m = re.fullmatch(r"(glad|mad|sad|calm|friendship|set|egg)(<=|>=|=|<|>)(-?\d+)", c)
+            if m:
+                k, op, n = m.group(1), m.group(2), int(m.group(3))
+                ok = {"=": f[k] == n, "<": f[k] < n, ">": f[k] > n, "<=": f[k] <= n, ">=": f[k] >= n}[op]
+                if not ok:
+                    raise RouteError("%s is %d, not %s %d" % (k, f[k], op, n))
+                continue
+            k, _, name = c.partition("=")
+            if k == "keep":
+                self.feel_memory[name] = {a: f[a] for a in AX}
+            elif k == "half":
+                was = self.feel_memory[name]
+                off = [a for a in AX if abs(f[a] - was[a] / 2) > 1]
+                if off:
+                    raise RouteError("not halved since %s: %s" % (name, ", ".join("%s %d -> %d" % (a, was[a], f[a]) for a in off)))
+            elif k == "same":
+                was = self.feel_memory[name]
+                off = [a for a in AX if abs(f[a] - was[a]) > 1]
+                if off:
+                    raise RouteError("changed since %s: %s" % (name, ", ".join("%s %d -> %d" % (a, was[a], f[a]) for a in off)))
+            elif k == "more":
+                name, _, axis = name.partition(":")
+                if not f[axis] > self.feel_memory[name][axis]:
+                    raise RouteError("%s has not risen since %s (%d -> %d)" % (axis, name, self.feel_memory[name][axis], f[axis]))
+            else:
+                raise RouteError("feelings: no check %s" % c)
+
+    def conditions(self, slot, values):
+        """An in-game trade's six condition bytes, written raw (trade_scene.c), the feelings' bits left alone."""
+        base, words_ = self.record(("party", slot))
+        pid, otid = words_[0], words_[1]
+        key = pid ^ otid
+        secure = [words_[8 + k] ^ key for k in range(12)]
+        raw = bytearray(b"".join(x.to_bytes(4, "little") for x in secure))
+        e = 12 * self.ORDERS[pid % 24].index("E")
+        raw[e + 6: e + 12] = bytes(values)
+        secure = [int.from_bytes(raw[4 * k: 4 * k + 4], "little") for k in range(12)]
+        halves = [h for x in secure for h in (x & 0xFFFF, x >> 16)]
+        cmds = ["poke16 %s %d" % (hex(base + 28), sum(halves) & 0xFFFF)]
+        for k in range(12):
+            enc = secure[k] ^ key
+            if enc != words_[8 + k]:
+                cmds += ["poke16 %s %d" % (hex(base + 32 + 4 * k), enc & 0xFFFF),
+                         "poke16 %s %d" % (hex(base + 32 + 4 * k + 2), enc >> 16)]
+        hold = elf_symbol("sFollower", self.release)
+        tw.run("poke8 %s 255" % hex(hold + 35), "poke8 %s 255" % hex(hold + 36), *cmds,
+               "poke8 %s 0" % hex(hold + 35), "poke8 %s 1" % hex(hold + 36))
+
     def step(self, line):
         a = words(line)
         op, args = a[0].lower(), a[1:]
@@ -1139,6 +1298,8 @@ class Runner:
             tw.clear_battle(self.g)
         elif op == "win":
             self.win()
+        elif op == "lose":                                                  # T-431: B_OUTCOME_LOST, the same way
+            self.win(2)
         elif op == "expect":
             folder, here = self.where()
             if folder != args[0] or (len(args) > 2 and here != (int(args[1]), int(args[2]))):
@@ -1163,6 +1324,12 @@ class Runner:
             self.burst(args[0], int(args[1]), int(args[2]), args[3:])
         elif op == "palette":                                               # T-430
             self.palette(args[0].upper(), int(args[1]), args[2].lower())
+        elif op == "events":                                                # T-431
+            self.events(args)
+        elif op == "feelings":                                              # T-431
+            self.feelings(args)
+        elif op == "conditions":                                            # T-431
+            self.conditions(int(args[0]), [int(v) for v in args[1:7]])
         elif op == "says":
             want = fold(" ".join(args))
             if not any(want in fold(s) for s in self.said):
