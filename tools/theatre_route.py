@@ -79,6 +79,10 @@ step is one line, split like a shell line:
     expect MAP_FOLDER [X Y]    fail the stop unless the player is there
     music [MUS_NAME]           fail the stop unless that song is playing (default: the one the map's map.json names)
     says "TEXT"                fail the stop unless a box captured in it said TEXT (spaces and line breaks folded)
+    burst LABEL COUNT EVERY [BUTTON [FRAMES]]   T-430: hold BUTTON (6 frames by default), then COUNT captures, one
+                               every EVERY frames, in one batch -- a routine in flight, a flicker
+    palette BG|OBJ SLOT grey|colour   T-430: fail unless that palette slot on screen (palette RAM) is all grey, or holds
+                               some colour (entry 0, the transparent one, is not counted)
 
 WHO is a person on the current map: their LOCALID_ name, their script's name (or a unique part of it), or "X,Y".
 
@@ -353,6 +357,29 @@ class Runner:
         if read_text and words and (not self.said or self.said[-1] != words):
             self.said.append(words)
         self.frames.append((dst, label, words))
+
+    def burst(self, label, count, every, hold):
+        """T-430: COUNT frames, one every EVERY, in one batch (so the frames are exact), after holding a button."""
+        name = "s%02d_%02d_b" % (self.stop_no, len(self.frames))
+        cmds = ["hold %s %d" % (hold[0].upper(), int(hold[1]) if len(hold) > 1 else 6)] if hold else []
+        tw.run(*cmds, "burst %s %d %d" % (name, count, every))
+        for k in range(count):
+            src = os.path.join(THEATRE, "%s_%02d.png" % (name, k))
+            dst = os.path.join(self.stop_dir, "%s_%02d.png" % (name, k))
+            if os.path.exists(src):
+                shutil.move(src, dst)
+                self.frames.append((dst, "%s +%d" % (label, k * every), ""))
+
+    def palette(self, kind, slot, want):
+        """T-430: fail unless palette RAM's BG or OBJ SLOT is all grey (r = g = b) or holds some colour."""
+        base = 0x05000000 + (0x200 if kind == "OBJ" else 0) + 32 * slot
+        got = tw.peek([(16, base + 2 * k, "c%d" % k) for k in range(1, 16)])
+        cols = [got["c%d" % k] for k in range(1, 16)]
+        grey = all((c & 31) == ((c >> 5) & 31) == ((c >> 10) & 31) for c in cols)
+        if want == "grey" and not grey:
+            raise RouteError("%s palette %d holds colour: %s" % (kind, slot, " ".join("%04x" % c for c in cols)))
+        if want == "colour" and grey:
+            raise RouteError("%s palette %d is all grey" % (kind, slot))
 
     def where(self):
         #  gSaveBlock1Ptr moves when a map loads; a pointer kept from before a warp reads the old map's location for as
@@ -1132,6 +1159,10 @@ class Runner:
                 name = next((w for w, v in DEFINES.items() if w.startswith("MUS_") and v.split()[0].isdigit()
                              and int(v.split()[0]) == k), "no song in the table" if k is None else "song %d" % k)
                 raise RouteError("%s should play %s; %s is playing" % (folder, want, name))
+        elif op == "burst":                                                 # T-430
+            self.burst(args[0], int(args[1]), int(args[2]), args[3:])
+        elif op == "palette":                                               # T-430
+            self.palette(args[0].upper(), int(args[1]), args[2].lower())
         elif op == "says":
             want = fold(" ".join(args))
             if not any(want in fold(s) for s in self.said):

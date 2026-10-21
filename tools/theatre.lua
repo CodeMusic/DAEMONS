@@ -160,8 +160,14 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
     local specs = {}
     for i = 4, #w do
       local kind, addr = w[i]:match("^(d?%d+):(.+)$")
-      specs[#specs + 1] = { size = tonumber((kind or "32"):match("%d+")), deref = (kind or ""):sub(1, 1) == "d",
-                            addr = tonumber(addr) }
+      -- T-430: a spec that is not a number is dropped, not read: emu:read8(nil) raised every frame and stalled the
+      -- remote until the script was loaded again by hand (2026-10-21, "8:0x0x030028f0")
+      if tonumber(addr) then
+        specs[#specs + 1] = { size = tonumber((kind or "32"):match("%d+")), deref = (kind or ""):sub(1, 1) == "d",
+                              addr = tonumber(addr) }
+      else
+        console:log("theatre: trace spec " .. w[i] .. " is not an address; skipped")
+      end
     end
     busy = { kind = "trace", left = tonumber(w[3]) or 60, specs = specs,
              file = io.open(DIR .. "/" .. w[2] .. ".trace", "w") }

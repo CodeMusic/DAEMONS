@@ -1,0 +1,168 @@
+{
+  "rom": "debug",
+  "about": "T-430, what you bring keeps its colour in HALFTONE (2026-10-21). The first sight's failed flicker, once; the player and the follower in colour in a grey town, walking and on the bike; the START menu grey; a wild battle in DAEMON TOWER -- your daemon and your back in colour, the foe and the healthboxes grey; your routine in flight (colour fading as it crosses) and at impact (a splash of colour on the foe); the foe's routine grey; PERSPECTIVE's flash still whole; the tower floor by floor back in colour once INIT is rescued, the town still grey; and (T-18 follow-up) the follower going into the CHECKPOINT's machine and coming back out. Lead friendship 255 so its colour shows. Debug scratch save: the flags it changes are put back at the end.",
+  "stops": [
+    {
+      "stop": "the first sight: the screen tries to come into colour, and fails",
+      "steps": [
+        "load debug",
+        "friendship 0 255",
+        "mon 0 species SPECIES_CHARMANDER",
+        "flag FLAG_RESCUED_MR_FUJI 0",
+        "flag FLAG_HALFTONE_TRIED_COLOUR 0",
+        "goto Route8 71 10",
+        "repel 999",
+        "wait 40",
+        "shot on ROUTE 8, in colour",
+        "burst \"crossing into HALFTONE\" 32 2 RIGHT 16",
+        "flagis FLAG_HALFTONE_TRIED_COLOUR 1",
+        "palette BG 2 grey",
+        "shot after: grey, and it stays grey",
+        "goto Route8 71 10",
+        "wait 40",
+        "burst \"the second time: no flicker\" 24 3 RIGHT 16"
+      ]
+    },
+    {
+      "stop": "walking in HALFTONE: you and the follower in colour, the town and its people grey",
+      "steps": [
+        "goto LavenderTown 8 8",
+        "repel 999",
+        "to 8 12",
+        "to 6 12",
+        "follower shown",
+        "palette OBJ 0 colour",
+        "palette BG 2 grey",
+        "palette BG 6 grey",
+        "shot walking: the player and the follower in colour",
+        "keyitem ITEM_BICYCLE",
+        "register ITEM_BICYCLE",
+        "press SELECT",
+        "to 8 12",
+        "palette OBJ 0 colour",
+        "shot on the bike",
+        "press SELECT"
+      ]
+    },
+    {
+      "stop": "the START menu stays grey",
+      "steps": [
+        "goto LavenderTown 8 8",
+        "to 7 10",
+        "press START",
+        "palette BG 15 grey",
+        "palette OBJ 0 colour",
+        "shot START open: menu grey, the player in colour",
+        "press B"
+      ]
+    },
+    {
+      "stop": "a wild battle in DAEMON TOWER: your side in colour, theirs grey; your routine fades and splashes, theirs is grey",
+      "steps": [
+        "keyitem ITEM_SILPH_SCOPE",
+        "goto PokemonTower_3F 10 5",
+        "var VAR_REPEL_STEP_COUNT 0",
+        "wild keep",
+        "palette OBJ 0 colour",
+        "palette OBJ 1 grey",
+        "shot the battle: your daemon and your side in colour, the foe and the boxes grey",
+        "press START",
+        "poke sTheatreMove 16 52",
+        "burst \"your JITTER: from you to them, and a splash where it lands\" 40 3 A",
+        "wait 300",
+        "palette OBJ 1 grey",
+        "poke sTheatreMove 16 85",
+        "burst \"your routine 085\" 40 3 A",
+        "wait 300",
+        "poke sTheatreFromFoe 8 1",
+        "poke sTheatreMove 16 52",
+        "burst \"the foe JITTER: grey, no splash on you\" 40 3 A",
+        "wait 300",
+        "poke sTheatreFromFoe 8 0",
+        "poke sTheatreMove 16 144",
+        "burst \"PERSPECTIVE: the whole screen in colour, then grey again\" 40 4 A",
+        "wait 300",
+        "palette OBJ 1 grey",
+        "palette BG 0 grey",
+        "shot after PERSPECTIVE: grey again",
+        "press B",
+        "win"
+      ]
+    },
+    {
+      "stop": "the tower before INIT is rescued: grey on every floor",
+      "steps": [
+        "flag FLAG_RESCUED_MR_FUJI 0",
+        "goto PokemonTower_2F 10 4",
+        "repel 999",
+        "wait 200",
+        "palette BG 2 grey",
+        "flagis FLAG_TOWER_COLOUR_2F 0",
+        "shot 2F before the rescue: grey"
+      ]
+    },
+    {
+      "stop": "after INIT is rescued: floor by floor the tower comes back into colour, and the town stays grey",
+      "steps": [
+        "flag FLAG_RESCUED_MR_FUJI 1",
+        "flag FLAG_TOWER_COLOUR_1F 0",
+        "flag FLAG_TOWER_COLOUR_2F 0",
+        "flag FLAG_TOWER_COLOUR_3F 0",
+        "flag FLAG_TOWER_COLOUR_4F 0",
+        "flag FLAG_TOWER_COLOUR_5F 0",
+        "flag FLAG_TOWER_COLOUR_6F 0",
+        "flag FLAG_TOWER_COLOUR_7F 0",
+        "goto PokemonTower_3F 10 5",
+        "repel 999",
+        "burst \"3F coming back\" 16 10",
+        "flagis FLAG_TOWER_COLOUR_3F 1",
+        "palette BG 2 colour",
+        "shot 3F in colour",
+        "goto PokemonTower_2F 10 4",
+        "burst \"2F coming back\" 16 10",
+        "flagis FLAG_TOWER_COLOUR_2F 1",
+        "flagis FLAG_TOWER_COLOUR_1F 0",
+        "palette BG 2 colour",
+        "goto PokemonTower_3F 10 5",
+        "wait 30",
+        "palette BG 2 colour",
+        "shot 3F again: it stays in colour",
+        "goto PokemonTower_1F",
+        "wait 30",
+        "palette BG 2 grey",
+        "shot 1F not yet come down to: grey",
+        "goto LavenderTown 8 8",
+        "wait 200",
+        "palette BG 2 grey",
+        "flagis FLAG_TOWER_COLOUR_1F 0",
+        "shot the town after the rescue: still grey"
+      ]
+    },
+    {
+      "stop": "T-18 follow-up: the follower goes into the CHECKPOINT's machine, and comes back out",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 6",
+        "to 7 5",
+        "to 7 4",
+        "follower shown",
+        "talk LOCALID_VIRIDIAN_NURSE 1",
+        "burst \"YES: the machine\" 30 6 A",
+        "follower hidden",
+        "finish",
+        "wait 30",
+        "follower shown",
+        "shot after: back out behind you"
+      ]
+    },
+    {
+      "stop": "put back",
+      "steps": [
+        "mon 0 species back",
+        "flag FLAG_RESCUED_MR_FUJI 0",
+        "flag FLAG_TOWER_COLOUR_2F 0",
+        "flag FLAG_TOWER_COLOUR_3F 0",
+        "goto LavenderTown 8 8"
+      ]
+    }
+  ]
+}
