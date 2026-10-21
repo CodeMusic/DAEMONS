@@ -565,3 +565,15 @@ T-433 proposal: every item's push on feelings and friendship, and the events tha
 T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
 
 ![21Oct2026 - T433 - items move feelings - 94](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2094.png)
+
+### 21Oct2026 - T428 - the game on an iPhone, TAP TO PLAY - 95
+
+The game on an iPhone (the iOS Simulator, a real tap): with the ROM slow to arrive, as a phone's first download is, the sound comes up interrupted and the game stands still -- TAP TO PLAY over it; one tap, and the title runs.
+
+![21Oct2026 - T428 - the game on an iPhone, TAP TO PLAY - 95](21Oct2026%20-%20T428%20-%20the%20game%20on%20an%20iPhone%2C%20TAP%20TO%20PLAY%20-%2095.png)
+
+### 21Oct2026 - T428 - the game on an iPhone, TAP TO PLAY - 96
+
+The game on an iPhone (the iOS Simulator, a real tap): with the ROM slow to arrive, as a phone's first download is, the sound comes up interrupted and the game stands still -- TAP TO PLAY over it; one tap, and the title runs.
+
+![21Oct2026 - T428 - the game on an iPhone, TAP TO PLAY - 96](21Oct2026%20-%20T428%20-%20the%20game%20on%20an%20iPhone%2C%20TAP%20TO%20PLAY%20-%2096.png)
