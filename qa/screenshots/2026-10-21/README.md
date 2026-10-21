@@ -529,3 +529,39 @@ v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad a
 v11.308.4 T-431 P2+P4: the SUMMARY's fourth page, an unlabelled grid (sad-glad across, calm-afraid up and down), the dot's hue MAD, saturation friendship, and the 16 approved lines (DRAFT); grey in HALFTONE; both editions
 
 ![21Oct2026 - T431 - the feelings page - 88](21Oct2026%20-%20T431%20-%20the%20feelings%20page%20-%2088.png)
+
+### 21Oct2026 - T433 - items move feelings - 89
+
+T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
+
+![21Oct2026 - T433 - items move feelings - 89](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2089.png)
+
+### 21Oct2026 - T433 - items move feelings - 90
+
+T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
+
+![21Oct2026 - T433 - items move feelings - 90](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2090.png)
+
+### 21Oct2026 - T433 - items move feelings - 91
+
+T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
+
+![21Oct2026 - T433 - items move feelings - 91](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2091.png)
+
+### 21Oct2026 - T433 - items move feelings - 92
+
+T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
+
+![21Oct2026 - T433 - items move feelings - 92](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2092.png)
+
+### 21Oct2026 - T433 - items move feelings - 93
+
+T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
+
+![21Oct2026 - T433 - items move feelings - 93](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2093.png)
+
+### 21Oct2026 - T433 - items move feelings - 94
+
+T-433 proposal: every item's push on feelings and friendship, and the events that are not items; decided by the user 2026-10-21
+
+![21Oct2026 - T433 - items move feelings - 94](21Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2094.png)
