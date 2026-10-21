@@ -54,6 +54,11 @@ step is one line, split like a shell line:
     friendship SLOT N          set party daemon SLOT's (0-5) friendship to N: gPlayerParty decrypted, the byte set, the
                                checksum made again and encrypted back, as the game would have written it (T-424)
     coins N                    set the TOKEN CASE's count (stored XOR the save's key, src/coins.c)
+    keyitem ITEM_X             put a key item in the bag if it is not there (its count stored XOR the save's key), so
+                               `register` and `press SELECT` can use it -- the BICYCLE for T-18's follower
+    follower shown [DX DY]|hidden|absent   T-18: fail unless the follower is drawn (and, given DX DY, stands that many
+                               tiles from the player), drawn nowhere (its sprite hidden or gone), or gone (no sprite);
+                               the capture's caption says where it stands
     remember NAME SPEC 8|16|32 note a RAM value (SPEC as poke's) ...
     moved NAME                 ... and fail unless it has changed since (the GAME CORNER's take after a pull, T-427)
     poke SYMBOL[+OFF] 8|16|32 VALUE   write RAM: SYMBOL from the build's .map (a static from the .elf); *SYMBOL+OFF
@@ -581,6 +586,15 @@ class Runner:
             enc = secure[k] ^ key
             cmds += ["poke16 %s %d" % (hex(base + 32 + 4 * k), enc & 0xFFFF),
                      "poke16 %s %d" % (hex(base + 32 + 4 * k + 2), enc >> 16)]
+        #  T-18: the theatre writes one value a frame, so for two frames the daemon's checksum disagrees with it -- and
+        #  GetMonData makes a daemon read in that frame a BAD EGG for good. The follower reads the party every few
+        #  frames (sFollower's retry +35 and check +36 count down to it), so hold both off while the pokes land.
+        try:
+            hold = elf_symbol("sFollower", self.release)
+            cmds = ["poke8 %s 255" % hex(hold + 35), "poke8 %s 255" % hex(hold + 36)] + cmds + \
+                   ["poke8 %s 0" % hex(hold + 35), "poke8 %s 1" % hex(hold + 36)]
+        except RouteError:
+            pass                                                          # a build from before the follower
         tw.run(*cmds)
 
     def foe(self):
@@ -633,6 +647,47 @@ class Runner:
             if done:
                 return
         raise RouteError("%d wild battles and none was %s (%s)" % (limit, past151, met))
+
+    def keyitem(self, item):
+        """The KEY ITEMS pocket is thirty {itemId, count ^ key} slots at SaveBlock1 0x3B8 (include/global.h)."""
+        key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
+        for i in range(30):
+            at = "*gSaveBlock1Ptr+0x%X" % (0x3B8 + 4 * i)
+            have = self.read(at, 16)
+            if have == item:
+                return
+            if have == 0:
+                self.poke(at, 16, item)
+                self.poke("*gSaveBlock1Ptr+0x%X" % (0x3B8 + 4 * i + 2), 16, 1 ^ key)
+                return
+        raise RouteError("the KEY ITEMS pocket is full")
+
+    SPRITE, MAX_SPRITES = 0x44, 64
+
+    def follower(self, args):
+        """T-18: sFollower (src/daemons_follower.c) holds its sprite's id at +33; the player's is gPlayerAvatar +4."""
+        base = elf_symbol("sFollower", self.release)
+        sprites = tw.symbol("gSprites", self.release)
+        v = tw.peek([(8, base + 33, "id"), (8, tw.symbol("gPlayerAvatar", self.release) + 4, "pid")])
+        fid, pid = v["id"], v["pid"]
+        state, where = "absent", ""
+        if fid < self.MAX_SPRITES:
+            f = sprites + self.SPRITE * fid
+            p = sprites + self.SPRITE * pid
+            w = tw.peek([(32, f + 0x1C, "cb"), (16, f + 0x3E, "fl"), (16, f + 0x20, "fx"), (16, f + 0x22, "fy"),
+                         (16, p + 0x20, "px"), (16, p + 0x22, "py")])
+            if w["fl"] & 1 and (w["cb"] & ~1) == elf_symbol("SpriteCB_Follower", self.release):   # a Thumb pointer is odd
+                sx = lambda n: n - 0x10000 if n & 0x8000 else n
+                dx, dy = sx(w["fx"]) - sx(w["px"]), sx(w["fy"]) - sx(w["py"]) - 2   # FOLLOWER_Y
+                state = "hidden" if w["fl"] & 4 else "shown"
+                where = " at %+d,%+d px from the player" % (dx, dy)
+        self.capture("follower %s%s" % (state, where), read_text=False)
+        want = args[0]
+        if want == "hidden" and state == "shown" or want in ("shown", "absent") and state != want:
+            raise RouteError("the follower is %s%s, not %s" % (state, where, want))
+        if want == "shown" and len(args) >= 3:
+            if where != " at %+d,%+d px from the player" % (16 * int(args[1]), 16 * int(args[2])):
+                raise RouteError("the follower is%s, not %s,%s tiles" % (where, args[1], args[2]))
 
     def poke(self, spec, bits, value):
         at = self.addr(spec)
@@ -901,6 +956,10 @@ class Runner:
         elif op == "coins":
             key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
             self.poke("*gSaveBlock1Ptr+0x294", 16, int(args[0]) ^ key)
+        elif op == "keyitem":
+            self.keyitem(const_item(args[0]))
+        elif op == "follower":
+            self.follower(args)
         elif op == "remember":
             self.memory = getattr(self, "memory", {})
             self.memory[args[0]] = (args[1], int(args[2]), self.read(args[1], int(args[2])))

@@ -865,6 +865,8 @@ def _inc_text(rel, label):
 EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
                    "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
                    "EV_YEAR_ALL", "EV_GIFTS_AGAIN"}                                        # T-416
+#  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
+PAGES_LEFT_OUT = {"PG_FOLLOWER"}
 
 
 def events_table():
@@ -901,6 +903,8 @@ def events_table():
     plan = []                                   # (section, name, flags, var, items, note)
     for name, kind, ev, off in rows("sRows_Events"):
         if kind == "R_PAGE":
+            if ev in PAGES_LEFT_OUT:
+                continue
             for sname, skind, sev, soff in rows(pages[ev]):
                 if sev in EVENTS_LEFT_OUT:
                     continue

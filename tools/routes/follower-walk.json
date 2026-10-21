@@ -1,0 +1,247 @@
+{
+  "rom": "debug",
+  "about": "T-18 P1, the follower daemon (2026-10-20): it walks and hides. The lead -- the first party daemon that is not an egg, HALTED or AWAY -- walks one tile behind as its party icon in its type colours, greyed by friendship. Each stop says where it must stand (follower shown DX DY, in tiles from the player) or that it must not be drawn (hidden: there but invisible; absent: no sprite). ROUTE 1 four ways and a turn back into it (they swap), a ledge (it waits above while the player lands, then jumps it on the next step), the ROUTE 1 / BLANCHE seam both ways, the house door in and out, the bike, SURF (hidden on the water, walking out again on land), a wild battle and back, a lit cave (MT. MOON) and a dark one (ROCK TUNNEL, no FLASH), the OPTIONS row's flag off and on, friendship 0 against 255, and PEWTER's gym guide walking the player to the gym (a cut scene: hidden, then out again). Run it with every daemon's friendship at 255 first so the colour shows; the last stop greys them.",
+  "stops": [
+    {
+      "stop": "ROUTE 1: four ways, and a turn back into it",
+      "steps": [
+        "load debug",
+        "goto Route1 10 29",
+        "repel 999",
+        "friendship 0 255",
+        "friendship 1 255",
+        "friendship 2 255",
+        "friendship 3 255",
+        "friendship 4 255",
+        "friendship 5 255",
+        "follower hidden",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot walking east, it is a tile behind",
+        "to 14 27",
+        "follower shown 0 1",
+        "shot walking north",
+        "to 11 27",
+        "follower shown 1 0",
+        "shot walking west (facing left, unflipped)",
+        "to 11 29",
+        "follower shown 0 -1",
+        "shot walking south",
+        "to 11 28",
+        "follower shown 0 1",
+        "shot turned back into it: the two swap"
+      ]
+    },
+    {
+      "stop": "ROUTE 1: a ledge",
+      "steps": [
+        "goto Route1 14 28",
+        "repel 999",
+        "to 14 30",
+        "follower shown 0 -1",
+        "hold DOWN 14",
+        "shot the player jumps the ledge",
+        "wait 30",
+        "follower shown 0 -2",
+        "shot landed: it waits above the ledge, on the ground",
+        "hold DOWN 8",
+        "wait 4",
+        "shot the player's next step: it jumps the ledge",
+        "wait 30",
+        "follower shown 0 -1",
+        "shot both below the ledge, a tile apart"
+      ]
+    },
+    {
+      "stop": "the seam: ROUTE 1 into BLANCHE and back",
+      "steps": [
+        "goto Route1 12 33",
+        "repel 999",
+        "to 12 35",
+        "follower shown 0 -1",
+        "edge down",
+        "to 12 3",
+        "follower shown 0 -1",
+        "shot BLANCHE, still behind after the seam",
+        "edge up",
+        "to 12 36",
+        "follower shown 0 1",
+        "shot ROUTE 1 again"
+      ]
+    },
+    {
+      "stop": "a door, in and out",
+      "steps": [
+        "goto PalletTown 6 10",
+        "to 6 8",
+        "follower shown 0 1",
+        "warp MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
+        "follower hidden",
+        "shot inside: on the player's tile, hidden",
+        "to 8 6",
+        "follower shown",
+        "shot it walked out of the player",
+        "to 4 7",
+        "to 4 8",
+        "hold DOWN 16",
+        "wait 150",
+        "expect PalletTown",
+        "follower hidden",
+        "shot out of the door",
+        "to 6 10",
+        "follower shown 0 -1",
+        "shot and behind again"
+      ]
+    },
+    {
+      "stop": "the bike",
+      "steps": [
+        "goto PalletTown 10 9",
+        "keyitem ITEM_BICYCLE",
+        "register ITEM_BICYCLE",
+        "press SELECT",
+        "wait 30",
+        "to 18 9",
+        "follower shown -1 0",
+        "shot on the bike, a tile behind",
+        "to 12 9",
+        "follower shown 1 0",
+        "shot turned back on the bike: it swapped and follows west",
+        "press SELECT",
+        "wait 30"
+      ]
+    },
+    {
+      "stop": "SURF: hidden on the water, back on land",
+      "steps": [
+        "goto PalletTown 5 18",
+        "to 6 18",
+        "follower shown -1 0",
+        "hold RIGHT 3",
+        "wait 20",
+        "press A",
+        "press A",
+        "press A",
+        "wait 120",
+        "follower hidden",
+        "shot surfing: no follower",
+        "hold LEFT 20",
+        "wait 60",
+        "follower hidden",
+        "hold LEFT 20",
+        "wait 30",
+        "follower shown 1 0",
+        "shot on land, it walked out again"
+      ]
+    },
+    {
+      "stop": "a wild battle and back",
+      "steps": [
+        "goto Route1 8 34",
+        "to 8 33",
+        "follower shown",
+        "wild",
+        "wait 60",
+        "follower shown",
+        "shot after the battle: where it stood"
+      ]
+    },
+    {
+      "stop": "caves: MT. MOON (lit) and ROCK TUNNEL (dark, no FLASH)",
+      "steps": [
+        "goto MtMoon_1F 18 34",
+        "repel 999",
+        "hold UP 16",
+        "wait 8",
+        "hold UP 16",
+        "wait 30",
+        "follower shown 0 1",
+        "shot MT. MOON: it follows",
+        "goto RockTunnel_1F 17 5",
+        "repel 999",
+        "hold RIGHT 16",
+        "wait 8",
+        "hold RIGHT 16",
+        "wait 30",
+        "follower hidden",
+        "shot ROCK TUNNEL without FLASH: hidden"
+      ]
+    },
+    {
+      "stop": "OPTIONS: FOLLOWER OFF, then ON",
+      "steps": [
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "wait 10",
+        "follower absent",
+        "shot FOLLOWER OFF",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "wait 10",
+        "to 16 29",
+        "follower shown -1 0",
+        "shot FOLLOWER ON"
+      ]
+    },
+    {
+      "stop": "friendship 0 against 255",
+      "steps": [
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot friendship 255: its type colours",
+        "friendship 0 0",
+        "friendship 1 0",
+        "friendship 2 0",
+        "friendship 3 0",
+        "friendship 4 0",
+        "friendship 5 0",
+        "wait 30",
+        "shot friendship 0: greyed (T-424's curve)",
+        "friendship 0 255",
+        "friendship 1 255",
+        "friendship 2 255",
+        "friendship 3 255",
+        "friendship 4 255",
+        "friendship 5 255",
+        "wait 30",
+        "shot 255 again"
+      ]
+    },
+    {
+      "stop": "a cut scene that walks the player: PEWTER's gym guide",
+      "steps": [
+        "flag FLAG_HIDE_PEWTER_CITY_GYM_GUIDE 0",
+        "goto PewterCity 40 22",
+        "repel 999",
+        "var VAR_MAP_SCENE_PEWTER_CITY 0",
+        "to 41 22",
+        "follower shown -1 0",
+        "trigger 42 22 1",
+        "follower shown -1 0",
+        "shot the guide talks: the player not moved yet, it stays",
+        "hold B 6",
+        "wait 70",
+        "follower hidden",
+        "shot the guide walks the player: no follower (frozen and hidden while a script moves the player)",
+        "wait 600",
+        "shot at the gym: GO TAKE ON THE LEADER",
+        "hold A 6",
+        "wait 150",
+        "hold A 6",
+        "wait 150",
+        "hold A 6",
+        "wait 300",
+        "follower hidden",
+        "shot the scene over: it is on the player's tile",
+        "hold UP 16",
+        "wait 30",
+        "follower shown 0 1",
+        "shot and walks out again"
+      ]
+    }
+  ]
+}
