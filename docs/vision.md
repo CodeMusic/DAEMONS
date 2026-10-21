@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.307**
+**A total conversion — the living design bible, v11.308**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6212,6 +6212,8 @@ Three further failures. Statuses are **inflicted by moves**, so THUNDER WAVE wou
 
 **Where it belongs instead:** four *daemons*, not five conditions. As creatures they are non-diagnostic and nothing is afflicted with them. 7's music is the other candidate — a soundtrack carries affect without ever naming it, which is exactly what rule 1 asks for.
 
+***Feelings in the game, settled by the user 2026-10-21 (T-431).*** **The status bar stays as it was; the feelings come in beside it, never named.** *The companion already carries them (its C-120): GLAD, MAD, SAD and CALM-AFRAID, worked out from what you do together and fading over hours. The game derives its own the same way -- from battles won and lost, fainting, healing, walking together, time in a box -- a few bytes a party daemon, and friendship is the fifth value.* **They show three ways and are named in none: the follower's bubble becomes a daemon-emoji built from them; a new SUMMARY page draws them as a grid with colour as the third dimension, its axes unlabelled; and a line under it says what the daemon does, not what it feels** (*"It keeps close, and flinches at loud routines"*). *Rule 3 is kept: a process, shown; never a pathology, announced.*
+
 #### Two naming registers, and this is what separates them
 
 **MUSAI, ROVER, Penphin, BunnyArtsai and S.T.A.R.R. are named individuals from the SHC / iASHC universe.** They are proper nouns and they do not answer to the bestiary convention.
@@ -7268,6 +7270,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 ***In Halftone, everything on the screen is grey.*** **The town, the tower, the battle scene, the side you face, *your own daemons, you,* the healthboxes, the menus and every window of text.**
 
 *The first cut kept your own daemons and the menus in colour* — **"a daemon has as much of it as it has accumulated," and the move menu's type colours are how the chart is read.** ***Reversed on playtest the same day:*** **a grey town with a coloured message box and a coloured team read as a filter that had missed some things, not as a place.** *The town is the lesson only if nothing in it is exempt — and that includes the one reading aid the player has grown used to, which is the point of taking it away here.* **Friendship-saturation (below) is unaffected; it is about daemons everywhere else.**
+
+***Revised by the user 2026-10-21 (T-430): what you bring keeps its colour.*** **You, your daemons, your follower and your own routines' effects stay in colour in Halftone; the town, its people, the side you face and every menu, window, banner and line of text stay grey.** *A routine's effect leaves you in colour and loses it on the way across, and where it lands it splashes a little colour onto the grey daemon it hits -- you bring something, and it touches them slightly.* **The September objection still stands for the reading aids, so they stay grey; it no longer stands for the player's side, because the colour now means something: it is what you carried in.** ***The tower is the exception that ends.*** *Once INIT is rescued, DAEMON TOWER comes back into colour floor by floor as you come down; the town stays grey. The first time you see Halftone, the screen tries to flash into colour and fails.* *PERSPECTIVE's full-screen flash is unchanged.* See Reversed.
 
 ***PERSPECTIVE brings the colour back.*** **When a daemon takes another's frame in Halftone, the whole screen returns to full colour for about a second, then goes grey again** — *the flash spans the moment the form changes.* *This settles 4.6's open question by place: the flash cannot become common, because the only town where it can happen is grey.*
 
@@ -8656,6 +8660,8 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **What you bring keeps its colour (T-430, 2026-10-21)** — in Halftone the player, their daemons, the follower and their own routines' effects stay in colour, splashing a little onto the grey; menus and text stay grey; the tower regains colour after INIT, floor by floor; the town stays grey (8.6a)
+- **Feelings in the game, never named (T-431, 2026-10-21)** — GLAD, MAD, SAD, CALM-AFRAID derived from play, friendship the fifth; shown as the follower's daemon-emoji, a SUMMARY page grid and a line of behaviour; never in the status bar (4.9's affect model)
 - **Over, never cures (T-418, 2026-10-17)** — a virtue is said over its shadow, never as its cure; "shadow" is the structure and the seven old names the ground, so the MARKS print neither "vice" nor "sin", and the GUIDE's SECURITY page is "Virtues and Shadows" (9.21, 4.36; craft rule 3)
 - **THE NEXUS (T-395, 2026-10-09)** — every grove holds the singing fir, flat until the key; through any fir in its key, a place made of paint whose trees are doors to the groves already found; eight residents of its own, drawn in natural colour as paint with their type emphasised, the one exception to colour-by-type (3.4, 9.4)
 
@@ -8765,6 +8771,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **In Halftone everything is grey, you and your daemons included** (8.6a, reversed on playtest 2026-09-13) | **You, your daemons, your follower and your routines' effects keep their colour; menus, windows, banners, text, the town and the other side stay grey; the tower returns to colour after INIT** (T-430, the user 2026-10-21) | *The follower (T-18) was to say it "looks the same as it did. Everything else does not" while greyed. The user: keep its colour, and the player's, and your daemons' and your own effects' in battle -- fading as they cross and splashing onto the grey foe.* **The playtest's objection was a filter that missed some things; this is a filter that spares one side on purpose, and the reading aids stay grey.** |
 | **FOLDS is only paper** (4.33, LOOSE PAGES 7, 2026-09-25): *every step a fold, a crease, a corner, never saying what it is a diagram of* | **Each fold carries the essay's word for it** (T-401, the user 2026-10-15): *AWARENESS, CHANGE, SPACE, MIRROR, PATTERN, RETURN* | *The user, reading the loose pages again: "it isnt clear that it is talking about awareness ... right now it looks like it is literally talking about paper folds."* **A page indirect enough that nobody can find its subject has stopped being a fable and become a puzzle with no answer.** *The words name the stages, never the conclusions (love, spirit, unity), so craft rule 1 still holds; and the page still never mentions the scientist, so 4.33's NEVER ADJUDICATE is untouched. THE STONE and FIELDS were made plainer the same day.* |
 | **One daemon at a time** (9.25, T-370, 2026-10-04) | **Any number AWAY, one device to a daemon** (T-396, the user 2026-10-09) | *The companion learned to put a daemon in each device (its C-80) and the game still refused a second SEND.* **A daemon in two places at once would not feel real; two daemons in two devices does.** *The one-at-a-time rule was standing in for "one place at a time", which the companion now keeps.* |
 | **CONTEXT keeps the northern year, CONTENT the southern** (9.21, earlier 2026-10-03) | **CONTENT the northern year, CONTEXT the southern** (the user, 2026-10-03) | *The user, on reflection: "I think CONTENT should be the north america, and CONTEXT as south america's season."* **It fits the registers better**: *CONTENT is the thing itself -- the calendar as lived where the game is made; CONTEXT is the same date reframed by the other half of the world.* |

@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.308 — 2026-10-21
+
+### What you bring keeps its colour (T-430)
+
+- ***8.6a revised (the user)***: **in Halftone you, your daemons, your follower and your own routines' effects keep their colour**; *an effect fades as it crosses and splashes a little colour onto the grey daemon it hits.* **Menus, windows, banners and text stay grey, as do the town and the other side.** *DAEMON TOWER returns to colour floor by floor once INIT is rescued; the town stays grey, and on first sight it tries to flash into colour and fails.* Logged in Reversed and Settled.
+
+### Feelings in the game (T-431)
+
+- ***4.9's affect model extended (the user)***: **the game derives GLAD, MAD, SAD and CALM-AFRAID from play, as the companion does (C-120), with friendship as a fifth value** -- *shown as the follower's daemon-emoji, a new SUMMARY page (a grid, colour the third dimension, unlabelled) and a line of behaviour; never named, never a status.*
+
 ## v11.307 — 2026-10-20
 
 ### CALLOW's own theme (T-05)
