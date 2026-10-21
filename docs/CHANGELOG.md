@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.309 — 2026-10-21
+
+### Items and moments move feelings (T-433)
+
+- ***4.9 extended (the user)***: **items and moments push the feelings** -- potions and revives gladden by strength, the RARE CANDY angers a little (growth taken), bitter herbs and disliked berries rankle, a TM gladdens, the REMNANT unveiled frightens the party once; evolving, LEADERS and the HALL OF FAME gladden, a release saddens. *The whole table and its numbers are DRAFT and private to the plan.*
+
 ## v11.308 — 2026-10-21
 
 ### What you bring keeps its colour (T-430)

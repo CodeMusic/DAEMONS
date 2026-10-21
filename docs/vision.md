@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.308**
+**A total conversion — the living design bible, v11.309**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6213,6 +6213,8 @@ Three further failures. Statuses are **inflicted by moves**, so THUNDER WAVE wou
 **Where it belongs instead:** four *daemons*, not five conditions. As creatures they are non-diagnostic and nothing is afflicted with them. 7's music is the other candidate — a soundtrack carries affect without ever naming it, which is exactly what rule 1 asks for.
 
 ***Feelings in the game, settled by the user 2026-10-21 (T-431).*** **The status bar stays as it was; the feelings come in beside it, never named.** *The companion already carries them (its C-120): GLAD, MAD, SAD and CALM-AFRAID, worked out from what you do together and fading over hours. The game derives its own the same way -- from battles won and lost, fainting, healing, walking together, time in a box -- a few bytes a party daemon, and friendship is the fifth value.* **They show three ways and are named in none: the follower's bubble becomes a daemon-emoji built from them; a new SUMMARY page draws them as a grid with colour as the third dimension, its axes unlabelled; and a line under it says what the daemon does, not what it feels** (*"It keeps close, and flinches at loud routines"*). *Rule 3 is kept: a process, shown; never a pathology, announced.*
+
+***Items and moments move them too, decided 2026-10-21 (T-433).*** **What you give a daemon is felt**: a potion gladdens by its strength and a revive brings it back glad and steadier; a bitter herb works and is resented; a RARE CANDY makes it a little angry, because it is robbed of growing on its own; a TM gladdens; a berry it dislikes rankles. **And what it sees**: the REMNANT unveiled frightens the whole party once, and the unknown dark a little; evolving, a LEADER beaten and the HALL OF FAME gladden; a partner released saddens the rest. *Nothing names it; each only moves the grid, the emoji and the line.*
 
 #### Two naming registers, and this is what separates them
 
