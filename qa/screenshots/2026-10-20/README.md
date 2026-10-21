@@ -115,3 +115,153 @@ v11.307.2 T-18 P1: the follower walks behind the player in its type colours, gre
 v11.307.2 T-18 P1: the follower walks behind the player in its type colours, greyed by friendship; hidden on SURF; OPTIONS FOLLOWER (DRAFT); CONTENT stops 1-11 and CONTEXT 1-5
 
 ![20Oct2026 - T18 - the follower walks and hides - 22](20Oct2026%20-%20T18%20-%20the%20follower%20walks%20and%20hides%20-%2022.png)
+
+### 20Oct2026 - T18 - talking to the follower - 23
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 23](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2023.png)
+
+### 20Oct2026 - T18 - talking to the follower - 24
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 24](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2024.png)
+
+### 20Oct2026 - T18 - talking to the follower - 25
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 25](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2025.png)
+
+### 20Oct2026 - T18 - talking to the follower - 26
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 26](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2026.png)
+
+### 20Oct2026 - T18 - talking to the follower - 27
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 27](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2027.png)
+
+### 20Oct2026 - T18 - talking to the follower - 28
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 28](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2028.png)
+
+### 20Oct2026 - T18 - talking to the follower - 29
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 29](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2029.png)
+
+### 20Oct2026 - T18 - talking to the follower - 30
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 30](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2030.png)
+
+### 20Oct2026 - T18 - talking to the follower - 31
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 31](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2031.png)
+
+### 20Oct2026 - T18 - talking to the follower - 32
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 32](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2032.png)
+
+### 20Oct2026 - T18 - talking to the follower - 33
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 33](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2033.png)
+
+### 20Oct2026 - T18 - talking to the follower - 34
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 34](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2034.png)
+
+### 20Oct2026 - T18 - talking to the follower - 35
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 35](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2035.png)
+
+### 20Oct2026 - T18 - talking to the follower - 36
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 36](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2036.png)
+
+### 20Oct2026 - T18 - talking to the follower - 37
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 37](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2037.png)
+
+### 20Oct2026 - T18 - talking to the follower - 38
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 38](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2038.png)
+
+### 20Oct2026 - T18 - talking to the follower - 39
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 39](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2039.png)
+
+### 20Oct2026 - T18 - talking to the follower - 40
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 40](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2040.png)
+
+### 20Oct2026 - T18 - talking to the follower - 41
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 41](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2041.png)
+
+### 20Oct2026 - T18 - talking to the follower - 42
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 42](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2042.png)
+
+### 20Oct2026 - T18 - talking to the follower - 43
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 43](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2043.png)
+
+### 20Oct2026 - T18 - talking to the follower - 44
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 44](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2044.png)
+
+### 20Oct2026 - T18 - talking to the follower - 45
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 45](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2045.png)
+
+### 20Oct2026 - T18 - talking to the follower - 46
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 46](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2046.png)
+
+### 20Oct2026 - T18 - talking to the follower - 47
+
+v11.307.3 T-18 P2: A on the follower -- a friendship line, then a mood line, with a bubble; every line DRAFT; 12 stops each edition
+
+![20Oct2026 - T18 - talking to the follower - 47](20Oct2026%20-%20T18%20-%20talking%20to%20the%20follower%20-%2047.png)
