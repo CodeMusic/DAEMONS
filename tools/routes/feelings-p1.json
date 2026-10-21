@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-431 P1, feelings in the game (2026-10-21): stored in each daemon's unused contest-condition bytes, pushed by play, fading with a 3-hour half-life, shown on DEBUG -> GAME EVENTS -> FEELINGS. An old save's daemons read zero; a battle won pushes the one who fought; a loss pushes the whole party (and the white-out's CHECKPOINT machine calms it); a CHECKPOINT heal calms; +3 HOURS halves every value; an egg is never pushed; an in-game trade's condition bytes read as zero; a day in a box comes back sad. The theatre's debug scratch save; nothing is saved.",
+  "about": "T-431 P1, feelings in the game (2026-10-21): stored in each daemon's unused contest-condition bytes, pushed by play, fading with a 3-hour half-life, shown on DEBUG -> GAME EVENTS -> FEELINGS. An old save's daemons read zero; a battle won pushes the one who fought; a loss pushes the whole party (and the white-out's heal does not calm it: only a heal the player chooses does); a CHECKPOINT heal calms; +3 HOURS halves every value; an egg is never pushed; an in-game trade's condition bytes read as zero; a day in a box comes back sad; twelve hours in one, a little sad. The theatre's debug scratch save; nothing is saved.",
   "stops": [
     {
       "stop": "an old save's daemons read zero (and slot 5 is made an egg)",
@@ -26,14 +26,14 @@
       ]
     },
     {
-      "stop": "a battle lost: the whole party sad, cross and afraid -- then the white-out's CHECKPOINT machine",
+      "stop": "a battle lost: the whole party sad, cross and afraid -- and the white-out's heal leaves it afraid (no calm push)",
       "steps": [
         "goto Route22 15 9",
         "wild keep",
         "lose",
         "finish",
         "feelings party 0 sad>=12 mad>=6",
-        "feelings party 2 set=1 sad>=12 mad>=6 glad=0",
+        "feelings party 2 set=1 sad>=12 mad>=6 glad=0 calm=-10",
         "feelings party 4 set=0 egg=1",
         "events \"FEELINGS >\""
       ]
@@ -112,6 +112,48 @@
         "press B 4",
         "finish",
         "feelings party 5 set=1 glad=0 mad=0 sad=10 calm=-5",
+        "events \"FEELINGS >\""
+      ]
+    },
+    {
+      "stop": "twelve hours in a box: withdrawn a little sad (sad +6 on what is left)",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "repel 999",
+        "feelings party 1 set=1 keep=C",
+        "poke *gPokemonStoragePtr 8 13",
+        "poke sDepositBoxId 8 0",
+        "look 11 1 1",
+        "press A 4",
+        "press DOWN",
+        "press A",
+        "wait 60",
+        "press DOWN",
+        "press A 2",
+        "press LEFT",
+        "shot BOX14 chosen",
+        "press A",
+        "wait 60",
+        "press B",
+        "press A",
+        "wait 60",
+        "press B 4",
+        "finish",
+        "feelings box 13 0 set=1 same=C",
+        "events \"FEELINGS >\" \"+12 HOURS (EVERY STAMP)\"",
+        "feelings box 13 0 sad<=2",
+        "look 11 1 1",
+        "press A 4",
+        "press A",
+        "wait 90",
+        "press A 2",
+        "wait 60",
+        "press B",
+        "press A",
+        "wait 60",
+        "press B 4",
+        "finish",
+        "feelings party 5 set=1 sad>=6 sad<=8 calm>=0",
         "events \"FEELINGS >\""
       ]
     }
