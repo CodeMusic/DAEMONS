@@ -53,14 +53,21 @@ step is one line, split like a shell line:
     unsaid "TEXT"              fail the stop if a box captured in it said TEXT (a gift given once is not given twice)
     friendship SLOT N          set party daemon SLOT's (0-5) friendship to N: gPlayerParty decrypted, the byte set, the
                                checksum made again and encrypted back, as the game would have written it (T-424)
+    mon SLOT away|egg|hp|shiny|species VALUE   T-18 P3: the same for the rest of a party daemon -- AWAY (T-358's bit,
+                               0|1), an egg (0|1), its hit points (0 HALTS it, max heals it), shiny (0|1: its OT ID set so it is, or
+                               the player's own back, every secure word re-keyed), its species (SPECIES_X, a number, or back:
+                               an evolution or a trade, as the follower sees one)
     coins N                    set the TOKEN CASE's count (stored XOR the save's key, src/coins.c)
     keyitem ITEM_X             put a key item in the bag if it is not there (its count stored XOR the save's key), so
                                `register` and `press SELECT` can use it -- the BICYCLE for T-18's follower
     follower shown [DX DY]|hidden|absent   T-18: fail unless the follower is drawn (and, given DX DY, stands that many
                                tiles from the player), drawn nowhere (its sprite hidden or gone), or gone (no sprite);
                                the capture's caption says where it stands
+    follower grass|nograss|reflection|noreflection   T-18 P3: fail unless tall grass is drawn over its feet (or not),
+                               or its reflection in the water below it (or not)
     follower talk              T-18 P2: turn to the follower (it must stand a tile away), press A, capture each box
                                until the script lets go -- `says` then checks its words
+    objectat WHO X Y|back      T-18 P3: put a person's coordinates on (X, Y) -- their sprite stays -- or back
     remember NAME SPEC 8|16|32 note a RAM value (SPEC as poke's) ...
     moved NAME                 ... and fail unless it has changed since (the GAME CORNER's take after a pull, T-427)
     poke SYMBOL[+OFF] 8|16|32 VALUE   write RAM: SYMBOL from the build's .map (a static from the .elf); *SYMBOL+OFF
@@ -558,7 +565,7 @@ class Runner:
         name, _, off = spec.lstrip("*").partition("+")
         try:
             at = tw.symbol(name, self.release)
-        except Exception:
+        except (Exception, SystemExit):                                  # theatre_walk exits on a miss
             at = elf_symbol(name, self.release)
         if deref:
             at = tw.peek([(32, at, "p")])["p"]
@@ -598,6 +605,86 @@ class Runner:
         except RouteError:
             pass                                                          # a build from before the follower
         tw.run(*cmds)
+
+    def mon(self, slot, field, value):
+        """T-18 P3: a party daemon's AWAY bit, egg bit, HP, shininess or species, written as the game would."""
+        base = tw.symbol("gPlayerParty", self.release) + 100 * slot
+        w = tw.peek([(32, base + 4 * k, "w%d" % k) for k in range(20)] + [(16, base + 86, "hp")])
+        words_ = [w["w%d" % k] for k in range(20)]
+        pid, otid = words_[0], words_[1]
+        key = pid ^ otid
+        secure = [words_[8 + k] ^ key for k in range(12)]
+        order = self.ORDERS[pid % 24]
+        flags = (words_[4] >> 24) & 0xFF                                  # byte 19: isBadEgg, hasSpecies, isEgg, ..., away
+        cmds, new_otid = [], otid
+        if field == "hp":                                                 # -1 ("max"): its max HP, healed
+            if value < 0:
+                value = tw.peek([(16, base + 88, "m")])["m"]
+            tw.run("poke16 %s %d" % (hex(base + 86), value))
+            return
+        if field == "away":
+            flags = (flags | 0x10) if value else (flags & ~0x10)
+            tw.run("poke8 %s %d" % (hex(base + 19), flags))
+            return
+        if field == "egg":
+            word = 3 * order.index("M") + 1                               # misc: ivs, isEgg (bit 30), abilityNum
+            secure[word] = (secure[word] | (1 << 30)) if value else (secure[word] & ~(1 << 30))
+            flags = (flags | 0x04) if value else (flags & ~0x04)
+            cmds.append("poke8 %s %d" % (hex(base + 19), flags))
+        elif field == "species":                                          # -2 ("back"): the one it had first
+            word = 3 * order.index("G")
+            first = self.__dict__.setdefault("first_species", {}).setdefault(slot, secure[word] & 0xFFFF)
+            secure[word] = (secure[word] & ~0xFFFF) | (first if value == -2 else value)
+        elif field == "shiny":
+            at = self.addr("*gSaveBlock2Ptr+0xA")                          # playerTrainerId, 2-aligned
+            t = tw.peek([(16, at, "lo"), (16, at + 2, "hi")])
+            tid = t["lo"] | (t["hi"] << 16)
+            if value:
+                new_otid = (tid & 0xFFFF) | (((tid & 0xFFFF) ^ (pid >> 16) ^ (pid & 0xFFFF)) << 16)
+            else:
+                new_otid = tid
+                if ((tid >> 16) ^ (tid & 0xFFFF) ^ (pid >> 16) ^ (pid & 0xFFFF)) & 0xFFFF < 8:
+                    new_otid ^= 0x80000
+        else:
+            raise RouteError("mon: no field %s (away, egg, hp, shiny, species)" % field)
+        halves = [h for x in secure for h in (x & 0xFFFF, x >> 16)]
+        cmds.append("poke16 %s %d" % (hex(base + 28), sum(halves) & 0xFFFF))
+        if new_otid != otid:
+            cmds += ["poke16 %s %d" % (hex(base + 4), new_otid & 0xFFFF), "poke16 %s %d" % (hex(base + 6), new_otid >> 16)]
+        key = pid ^ new_otid
+        for k in range(12):
+            enc = secure[k] ^ key
+            if enc != words_[8 + k]:
+                cmds += ["poke16 %s %d" % (hex(base + 32 + 4 * k), enc & 0xFFFF),
+                         "poke16 %s %d" % (hex(base + 32 + 4 * k + 2), enc >> 16)]
+        try:                                                              # the follower held off, as for friendship
+            hold = elf_symbol("sFollower", self.release)
+            cmds = ["poke8 %s 255" % hex(hold + 35), "poke8 %s 255" % hex(hold + 36)] + cmds + \
+                   ["poke8 %s 0" % hex(hold + 35), "poke8 %s 1" % hex(hold + 36)]
+        except RouteError:
+            pass
+        tw.run(*cmds)
+
+    def objectat(self, spec, args):
+        """T-18 P3: put a person's coordinates (current and previous) on a tile, or back where they were: the follower is
+        not an object, so the one thing it does about somebody is notice them in its tile."""
+        folder, _ = self.where()
+        lid, placed = who(folder, spec)
+        for i in range(OBJECT_EVENTS):
+            at = self.objects + OBJECT_EVENT * i
+            v = tw.peek([(8, at, "fl"), (8, at + 8, "lid"), (16, at + 0x10, "x"), (16, at + 0x12, "y")])
+            if v["fl"] & 1 and v["lid"] == lid:
+                break
+        else:
+            raise RouteError("%s is not on screen" % spec)
+        keep = self.__dict__.setdefault("object_was", {})
+        if args[0] == "back":
+            x, y = keep.pop(lid)
+        else:
+            keep.setdefault(lid, (v["x"], v["y"]))
+            x, y = int(args[0]) + 7, int(args[1]) + 7                     # map coordinates: MAP_OFFSET
+        tw.run("poke16 %s %d" % (hex(at + 0x10), x), "poke16 %s %d" % (hex(at + 0x12), y),
+               "poke16 %s %d" % (hex(at + 0x14), x), "poke16 %s %d" % (hex(at + 0x16), y))
 
     def foe(self):
         return tw.peek([(16, tw.symbol("gBattleMons", self.release) + 0x58, "sp")])["sp"]
@@ -691,6 +778,16 @@ class Runner:
         want = args[0]
         if want == "talk":
             return self.follower_talk(state, dx, dy)
+        if want in ("grass", "nograss", "reflection", "noreflection"):     # T-18 P3: what it stands on
+            cb = elf_symbol("SpriteCB_FollowerGrass" if "grass" in want else "SpriteCB_FollowerReflection", self.release)
+            sprites = tw.symbol("gSprites", self.release)
+            v = tw.peek([(32, sprites + self.SPRITE * i + 0x1C, "cb%d" % i) for i in range(self.MAX_SPRITES)] +
+                        [(16, sprites + self.SPRITE * i + 0x3E, "fl%d" % i) for i in range(self.MAX_SPRITES)])
+            drawn = any(v["fl%d" % i] & 1 and not v["fl%d" % i] & 4 and (v["cb%d" % i] & ~1) == cb
+                        for i in range(self.MAX_SPRITES))
+            if drawn != (not want.startswith("no")):
+                raise RouteError("its %s is %sdrawn" % (want.replace("no", ""), "" if drawn else "not "))
+            return
         if want == "hidden" and state == "shown" or want in ("shown", "absent") and state != want:
             raise RouteError("the follower is %s%s, not %s" % (state, where, want))
         if want == "shown" and len(args) >= 3:
@@ -978,6 +1075,11 @@ class Runner:
                 raise RouteError('a box said "%s"' % " ".join(args))
         elif op == "friendship":
             self.friendship(int(args[0]), int(args[1]))
+        elif op == "objectat":
+            self.objectat(args[0], args[1:])
+        elif op == "mon":
+            v = args[2]
+            self.mon(int(args[0]), args[1], const_species(v) if v.startswith("SPECIES_") else -1 if v == "max" else -2 if v == "back" else int(v, 0))
         elif op == "coins":
             key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
             self.poke("*gSaveBlock1Ptr+0x294", 16, int(args[0]) ^ key)
