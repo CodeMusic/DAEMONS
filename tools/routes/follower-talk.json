@@ -1,0 +1,212 @@
+{
+  "rom": "debug",
+  "about": "T-18 P2, the follower daemon (2026-10-20): A on it. The line for its friendship (0, 70, 120, 150, 255: the five readings), then one mood when one holds -- the watch (night, dusk, dawn), the sky (rain, a thunderstorm, snow, fog, wind), the season (winter, spring, summer, autumn), the place (HALFTONE, THE NEXUS), and a hidden item two tiles off; indoors, the friendship line alone. Each mood is talked to twice, since its two lines take turns. The watch, sky and season are the DEBUG overrides (gDaemonsWatchOverride, gDaemonsWeatherOverride, gDaemonsSeasonOverride), poked; a sky takes a map load, so each sky stop starts with a goto. Every word is DRAFT (data/scripts/follower.inc).",
+  "stops": [
+    {
+      "stop": "friendship: its five readings, on ROUTE 1 by day under a clear autumn sky",
+      "steps": [
+        "load debug",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 4",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "friendship 0 0",
+        "follower talk",
+        "says \"is a step behind. It is watching the way out.\"",
+        "friendship 0 70",
+        "follower talk",
+        "says \"keeps the distance you set. No closer.\"",
+        "friendship 0 120",
+        "follower talk",
+        "says \"stays near you without being told.\"",
+        "friendship 0 150",
+        "follower talk",
+        "says \"has stopped watching the door.\"",
+        "friendship 0 255",
+        "follower talk",
+        "says \"would not leave if you opened the box.\"",
+        "says \"stops to turn over a leaf.\"",
+        "says \"is listening to the leaves under its feet.\""
+      ]
+    },
+    {
+      "stop": "the watch: night, dusk, dawn",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "follower talk",
+        "follower talk",
+        "says \"is quieter after dark.\"",
+        "says \"keeps closer once the light goes.\"",
+        "poke gDaemonsWatchOverride 8 2",
+        "follower talk",
+        "follower talk",
+        "says \"looks back the way you came.\"",
+        "says \"watches its shadow get longer.\"",
+        "poke gDaemonsWatchOverride 8 4",
+        "follower talk",
+        "follower talk",
+        "says \"watches the light come up.\"",
+        "says \"was awake before you were.\"",
+        "poke gDaemonsWatchOverride 8 1"
+      ]
+    },
+    {
+      "stop": "the sky: rain",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 2",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot rain on ROUTE 1",
+        "follower talk",
+        "follower talk",
+        "says \"shakes the rain off its casing.\"",
+        "says \"is counting the drops that land on it.\""
+      ]
+    },
+    {
+      "stop": "the sky: a thunderstorm",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 3",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot a thunderstorm on ROUTE 1",
+        "follower talk",
+        "follower talk",
+        "says \"counts the gap between the light and the sound.\"",
+        "says \"walks a little closer while it thunders.\""
+      ]
+    },
+    {
+      "stop": "the sky: snow",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 4",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot snow on ROUTE 1",
+        "follower talk",
+        "follower talk",
+        "says \"leaves a second line of prints beside yours.\"",
+        "says \"watches the snow fill in its tracks.\""
+      ]
+    },
+    {
+      "stop": "the sky: fog",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 5",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot fog on ROUTE 1",
+        "follower talk",
+        "follower talk",
+        "says \"stays where it can still see you.\"",
+        "says \"is listening for what it cannot see.\""
+      ]
+    },
+    {
+      "stop": "the sky: wind",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 6",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "shot wind on ROUTE 1",
+        "follower talk",
+        "follower talk",
+        "says \"leans into the wind when you do.\"",
+        "says \"turns its back to the wind and waits for you.\""
+      ]
+    },
+    {
+      "stop": "the season: winter, spring, summer (autumn was the first stop)",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 1",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "poke gDaemonsSeasonOverride 8 1",
+        "follower talk",
+        "follower talk",
+        "says \"walks exactly in your footsteps.\"",
+        "says \"stands close whenever you stop.\"",
+        "poke gDaemonsSeasonOverride 8 2",
+        "follower talk",
+        "follower talk",
+        "says \"stops at everything that is new.\"",
+        "says \"sniffs at the grass, then at you.\"",
+        "poke gDaemonsSeasonOverride 8 3",
+        "follower talk",
+        "follower talk",
+        "says \"keeps to your shadow.\"",
+        "says \"walks slower in the heat. So do you.\"",
+        "poke gDaemonsSeasonOverride 8 4"
+      ]
+    },
+    {
+      "stop": "HALFTONE",
+      "steps": [
+        "goto LavenderTown 1 12",
+        "repel 999",
+        "to 4 12",
+        "follower shown -1 0",
+        "follower talk",
+        "follower talk",
+        "says \"looks the same as it did. Everything else does not.\"",
+        "says \"keeps checking that you are still you.\""
+      ]
+    },
+    {
+      "stop": "THE NEXUS",
+      "steps": [
+        "goto Nexus 10 12",
+        "repel 999",
+        "to 13 12",
+        "follower shown -1 0",
+        "follower talk",
+        "follower talk",
+        "says \"is looking at the paint.\"",
+        "says \"stands very still, as if it might dry that way.\""
+      ]
+    },
+    {
+      "stop": "it notices a hidden item: VERMILION's MAX ETHER, two tiles off",
+      "steps": [
+        "flag FLAG_HIDDEN_ITEM_VERMILION_CITY_MAX_ETHER 0",
+        "goto VermilionCity 19 11",
+        "repel 999",
+        "to 16 11",
+        "follower shown 1 0",
+        "follower talk",
+        "says \"keeps looking at the ground near here.\""
+      ]
+    },
+    {
+      "stop": "indoors: the friendship line alone",
+      "steps": [
+        "goto PalletTown_PlayersHouse_1F 4 6",
+        "to 7 6",
+        "follower shown -1 0",
+        "follower talk",
+        "says \"would not leave if you opened the box.\"",
+        "unsaid \"leaf\"",
+        "unsaid \"leaves\""
+      ]
+    }
+  ]
+}

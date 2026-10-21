@@ -59,6 +59,8 @@ step is one line, split like a shell line:
     follower shown [DX DY]|hidden|absent   T-18: fail unless the follower is drawn (and, given DX DY, stands that many
                                tiles from the player), drawn nowhere (its sprite hidden or gone), or gone (no sprite);
                                the capture's caption says where it stands
+    follower talk              T-18 P2: turn to the follower (it must stand a tile away), press A, capture each box
+                               until the script lets go -- `says` then checks its words
     remember NAME SPEC 8|16|32 note a RAM value (SPEC as poke's) ...
     moved NAME                 ... and fail unless it has changed since (the GAME CORNER's take after a pull, T-427)
     poke SYMBOL[+OFF] 8|16|32 VALUE   write RAM: SYMBOL from the build's .map (a static from the .elf); *SYMBOL+OFF
@@ -664,13 +666,13 @@ class Runner:
 
     SPRITE, MAX_SPRITES = 0x44, 64
 
-    def follower(self, args):
-        """T-18: sFollower (src/daemons_follower.c) holds its sprite's id at +33; the player's is gPlayerAvatar +4."""
+    def follower_state(self):
+        """T-18: sFollower (src/daemons_follower.c) holds its sprite's id at +33; the player's is gPlayerAvatar +4.
+        Answers (shown|hidden|absent, dx, dy): where it is drawn, in pixels from the player (None when absent)."""
         base = elf_symbol("sFollower", self.release)
         sprites = tw.symbol("gSprites", self.release)
         v = tw.peek([(8, base + 33, "id"), (8, tw.symbol("gPlayerAvatar", self.release) + 4, "pid")])
         fid, pid = v["id"], v["pid"]
-        state, where = "absent", ""
         if fid < self.MAX_SPRITES:
             f = sprites + self.SPRITE * fid
             p = sprites + self.SPRITE * pid
@@ -679,15 +681,38 @@ class Runner:
             if w["fl"] & 1 and (w["cb"] & ~1) == elf_symbol("SpriteCB_Follower", self.release):   # a Thumb pointer is odd
                 sx = lambda n: n - 0x10000 if n & 0x8000 else n
                 dx, dy = sx(w["fx"]) - sx(w["px"]), sx(w["fy"]) - sx(w["py"]) - 2   # FOLLOWER_Y
-                state = "hidden" if w["fl"] & 4 else "shown"
-                where = " at %+d,%+d px from the player" % (dx, dy)
+                return ("hidden" if w["fl"] & 4 else "shown"), dx, dy
+        return "absent", None, None
+
+    def follower(self, args):
+        state, dx, dy = self.follower_state()
+        where = "" if dx is None else " at %+d,%+d px from the player" % (dx, dy)
         self.capture("follower %s%s" % (state, where), read_text=False)
         want = args[0]
+        if want == "talk":
+            return self.follower_talk(state, dx, dy)
         if want == "hidden" and state == "shown" or want in ("shown", "absent") and state != want:
             raise RouteError("the follower is %s%s, not %s" % (state, where, want))
         if want == "shown" and len(args) >= 3:
             if where != " at %+d,%+d px from the player" % (16 * int(args[1]), 16 * int(args[2])):
                 raise RouteError("the follower is%s, not %s,%s tiles" % (where, args[1], args[2]))
+
+    FACING = {"DOWN": 1, "UP": 2, "LEFT": 3, "RIGHT": 4}                  # DIR_SOUTH..DIR_EAST
+
+    def follower_talk(self, state, dx, dy):
+        """T-18 P2: face the follower where it stands (a tap under 8 frames turns the player; none if already facing
+        it, or the tap would walk into it and swap the two), press A, and capture each box until the script lets go."""
+        d = {(-16, 0): "LEFT", (16, 0): "RIGHT", (0, -16): "UP", (0, 16): "DOWN"}.get((dx, dy))
+        if state != "shown" or d is None:
+            raise RouteError("the follower is %s, not a tile from the player to talk to" % state)
+        obj = tw.peek([(8, tw.symbol("gPlayerAvatar", self.release) + 5, "o")])["o"]
+        facing = tw.peek([(8, self.objects + OBJECT_EVENT * obj + 0x18, "f")])["f"] & 0xF
+        if facing != self.FACING[d]:
+            tw.run("hold %s 4" % d, "wait 12")
+        tw.run("hold A 6", "wait 18")
+        self.capture("the bubble", read_text=False)                       # it lasts a second; the box outlasts it
+        tw.run("wait 24")
+        self.boxes()
 
     def poke(self, spec, bits, value):
         at = self.addr(spec)
