@@ -4,6 +4,8 @@
     python3 tools/gencast.py                  # report: who each one is, its frames, its palette, does it fit
     python3 tools/gencast.py --draft [DIR]    # the sheets and palettes as PNG/.pal in DIR (gfx/drafts/t439/)
     python3 tools/gencast.py --sheets DIR     # the contact sheets: vanilla beside ours at 4x, and each over its map at 2x
+                                              #   (--before OLD adds t439_draw_fix.png: the moth and secretary bird
+                                              #   against an earlier draft's sheets in OLD)
     python3 tools/gencast.py --write          # into the engine -- NOT YET: the cast is a draft until the user has
                                               #   seen the sheets (then --write --approved)
 
@@ -124,19 +126,20 @@ KINGFISHER = (_f, _b, _s)
 # ============================================================ the PEPPERED MOTH (unused_woman.png, npc_pink)
 # Speckled wings worn as a shawl, a pale furred face, big black eyes, two feathered antennae. She reads grey in
 # HALFTONE by design: so does her story.
-_h = mammal("w", "G", "w")
-_h = (put(put(put(_h[0], 4, 4, "K"), 5, 4, "K"), 4, 5, "K"), _h[1], put(put(_h[2], 5, 5, "K"), 4, 5, "K"))
-_f, _b, _s = fig(_h, "W", "WWWW", "G", "g", "K")
-_ant_f = [" KK          KK ", "   K        K   "]                    # two feathered antennae
-_f = overlay(_f, 0, _ant_f, 0)
-_b = overlay(_b, 0, _ant_f, 0)
-_s = overlay(_s, 0, ["   KK", "     K"], 0)
-for _r, _c in ((9, 5), (10, 10), (11, 4), (11, 12), (12, 7), (10, 2), (12, 13), (9, 10), (12, 4), (10, 6), (11, 9)):  # the pepper
-    _f = put(_f, _r, _c, "G" if (_r + _c) % 2 else "K")
-_f = overlay(_f, 9, ["      gg"], 4)                                # the shawl's knot at the throat
-_b = overlay(_b, 9, ["   KWWWWWWWWK", "  KWGWWWWWWGWK", " KWWWWKWWGWWWWK", " KWGWWWWWWWWKWK", "  KWWWGWWWWWWK",
-                     "   KKWWWWWWKK", "     KKKKKK"], 0)                # the wings, folded down her back
-_s = overlay(_s, 9, ["    KWWK", "   KWWGWK", "   KWKWWWK", "   KWWWGWK", "    KWWWK", "     KKK"], 3)
+# T-439 (the user, 2026-10-22): unmistakably a moth FROM THE FRONT -- the antennae feathered and spread wide, the
+# pepper dark and clear on pale, and the wings standing out behind her shoulders, so the head is drawn by hand.
+_ant = ["KGK     ", " KGK    ", "  KGK KK"]                             # feathered, spread wide, meeting the crown
+_mf = _ant + ["   KwWWW", "  KwKKWW", "  KwKKww", "  Kwwwww", "   KwwWW", "    KKWW"]   # big black eyes, a fluffy collar
+_mb = _ant + ["   Kwwww", "  Kwwwww", "  Kwwwww", "  Kwwwww", "   Kwwww", "    KKww"]
+_ms = ["   KGK", "    KGK", "     KGKK", "     KwwwK", "    KwwwwwK", "   KwKKwwwK", "  KwwKKwwwK",
+       "   KwwWWwK", "     KKWK"]
+_f, _b, _s = fig((_mf, _mb, _ms), "W", "WWWW", "G", "g", "K")
+_wings = mirror(["KKWWKWWW", "KWKWWWKW", "KWWWKWWW", "KKWWWWKW", " KWKWWGG", "  KKKGGG"])   # the shawl, wing-wide
+_f = overlay(_f, 9, _wings, 0)
+_f = put(put(put(_f, 10, 9, "G"), 12, 5, "G"), 11, 11, "K")          # and the pepper, never quite even
+_b = overlay(_b, 9, ["KKWWWWWWWWWWWWKK", "KWGWWKWWWWGWWKWK", "KWWKWWWGWWWWKWWK", "KKWWGWWWWKWWGWKK",
+                     " KWWWWKWWWGWWWK ", "  KKKWWWWWWKKK  ", "     KKKKKK     "], 0)   # the wings, folded down her back
+_s = overlay(_s, 9, ["  KKWWK", " KWKWWGWK", " KWWWKWWWK", "  KWGWWWGWK", "   KWWKWWK", "    KKKKK"], 2)
 MOTH = (_f, _b, _s)
 
 # ============================================================ the young ERMINE (rich_boy.png, a palette of his own)
@@ -162,17 +165,24 @@ ERMINE = (_f, _b, _s)
 #            w pale grey  g grey  G dark grey  W white  K black
 # Pale grey, the bare orange face, a hooked bill, the quills behind the head he is named for, black thighs as
 # trousers and the long legs; a grey waistcoat and a black tie at the desk.
-_h = bird("w", "R", "G")
-_h = (put(put(_h[0], 4, 3, "R"), 4, 5, "R"), _h[1], put(put(_h[2], 3, 5, "R"), 4, 4, "R"))
-_f, _b, _s = fig(_h, "G", "gWWW", "K", "w", "G")
+# T-439 (the user, 2026-10-22): the crest must read as QUILLS, not ears -- separate dark strokes raked back and out
+# behind both cheeks -- with the bare orange face and the hooked bill. The head is drawn by hand for it.
+_sf = ["K       ",
+       " G      ",
+       "K G  KKK",      # three quills a side, each its own stroke, raked out from behind the crown
+       " G  Kwww",
+       "K GKwwww",
+       " GKRKRww",      # the bare orange face round the eye
+       "  KRRRGG",      # the bill, broad at the base
+       "   KwwwG",
+       "    KKwK"]      # and its hook, dropping at the middle
+_sb = ["K       ", " G      ", "K G  KKK", " G  Kwww", "K GKwwww", " GKwwwww", "  Kwwwww", "   Kwwww", "    KKww"]
+_ss = ["          K K", "         G G", "     KKKKG  K", "    KwwwwKGG", "   KwRKwwwK", " KGRRRwwwwK", "  KGKwwwwK",
+       "     KwwwK", "     KwwK"]
+_f, _b, _s = fig((_sf, _sb, _ss), "G", "gWWW", "K", "w", "G")
 _f = overlay(_f, 9, ["KK"], 7)                                       # the tie
-_f = overlay(_f, 10, ["K"], 7)
-_f = overlay(_f, 10, ["K"], 8)
-_quills_f = ["KK            KK", "GKK          KKG", " GK          KG ", "GKK          KKG", " GK          KG "]
-_f = overlay(_f, 2, _quills_f, 0)                                    # the quills, raked back past both cheeks
-_b = overlay(_b, 2, _quills_f, 0)
+_f = overlay(_f, 10, ["KK"], 7)
 _b = [r.replace("W", "g") if 9 <= i <= 12 else r for i, r in enumerate(_b)]   # the waistcoat's back
-_s = overlay(_s, 1, ["          KK", "         KGGK", "          KGGK", "          KK"], 0)
 SECRETARY = (_f, _b, _s)
 
 # ============================================================ the PTARMIGAN whitewasher (unused_man.png, a palette of his own)
@@ -790,6 +800,31 @@ def map_sheet(path, z=2, span=(12, 8)):
     return path
 
 
+def fix_sheet(path, before, keys=("moth", "secretary"), z=6):
+    """before and after, front and side, for the ones redrawn: `before` holds the earlier draft's sheets by filename"""
+    cells = []
+    for c in CAST:
+        if c["key"] not in keys:
+            continue
+        old = Image.open(os.path.join(before, os.path.basename(c["file"])))
+        for label, img in (("before", old), ("after", build(c))):
+            for k, view in ((0, "front"), (2, "side")):
+                f = frame_rgba(img, k, 16)
+                bg = Image.new("RGB", (16, 32), BG)
+                bg.paste(f, (0, 0), f)
+                cells.append(("%s %s %s" % (c["key"], label, view), bg.resize((16 * z, 32 * z), Image.NEAREST)))
+    cw, chh = 16 * z + 84, 32 * z + 22
+    out = Image.new("RGB", (max(4 * cw + 16, 720), 2 * chh + 44), (60, 60, 64))
+    d = ImageDraw.Draw(out)
+    d.text((10, 8), "T-439 the moth and the secretary bird, before and after -- DRAFT, at %dx." % z, fill=(240, 240, 240), font=FONT)
+    for i, (label, cl) in enumerate(cells):
+        x, y = 10 + (i % 4) * cw, 36 + (i // 4) * chh
+        d.text((x, y), label, fill=(230, 230, 200), font=SMALL)
+        out.paste(cl, (x, y + 16))
+    out.save(path)
+    return path
+
+
 # ============================================================ main
 def main():
     if WRITE and "--approved" not in ARGS:
@@ -835,6 +870,8 @@ def main():
                   people_sheet(os.path.join(SHEETS, "t439_draw_riders_proteus.png"), [c for c in CAST if c["size"] == 32]),
                   map_sheet(os.path.join(SHEETS, "t439_draw_maps.png"))):
             print("  sheet -> %s" % p)
+        if argval("--before"):
+            print("  sheet -> %s" % fix_sheet(os.path.join(SHEETS, "t439_draw_fix.png"), argval("--before")))
 
     if WRITE:
         for c, img in built:
