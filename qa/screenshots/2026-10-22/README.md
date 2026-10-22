@@ -655,3 +655,33 @@ T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, 
 T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
 
 ![22Oct2026 - T438 - batch C rock third pass - 109](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20109.png)
+
+### 22Oct2026 - T438 - field effects built - 110
+
+v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked-on grass wears the season
+
+![22Oct2026 - T438 - field effects built - 110](22Oct2026%20-%20T438%20-%20field%20effects%20built%20-%20110.png)
+
+### 22Oct2026 - T438 - field effects built - 111
+
+v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked-on grass wears the season
+
+![22Oct2026 - T438 - field effects built - 111](22Oct2026%20-%20T438%20-%20field%20effects%20built%20-%20111.png)
+
+### 22Oct2026 - T438 - field effects built - 112
+
+v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked-on grass wears the season
+
+![22Oct2026 - T438 - field effects built - 112](22Oct2026%20-%20T438%20-%20field%20effects%20built%20-%20112.png)
+
+### 22Oct2026 - T438 - field effects built - 113
+
+v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked-on grass wears the season
+
+![22Oct2026 - T438 - field effects built - 113](22Oct2026%20-%20T438%20-%20field%20effects%20built%20-%20113.png)
+
+### 22Oct2026 - T438 - field effects built - 114
+
+v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked-on grass wears the season
+
+![22Oct2026 - T438 - field effects built - 114](22Oct2026%20-%20T438%20-%20field%20effects%20built%20-%20114.png)
