@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-433, items and moments move feelings and friendship (the user's answers, 2026-10-21; docs/private/plan-items-feelings-2026-10-21.md): a RECOVER through the bag, revives and their friendship, a bitter herb, the RARE CANDY (MAD, no GLAD, friendship +1), AFFINITY's GLAD x1.5, a vitamin, a liked and a hated flavour TRAP eaten in battle, a held item given twice (the second gives nothing), the INTERRUPT waking a sleeper, the RESOLVER unveiling the REMNANT (once a game) and the spirit calmed, an evolution and one stopped, a LEADER beaten, the instrument played, a release. Each stop zeroes the daemon's feelings first (feel), so each value is the push alone. The theatre's debug scratch save; nothing is saved.",
+  "about": "T-433, items and moments move feelings and friendship (the user's answers, 2026-10-21; docs/private/plan-items-feelings-2026-10-21.md): a RECOVER through the bag, revives and their friendship, a bitter herb, the RARE CANDY (MAD, no GLAD, friendship +1), AFFINITY's GLAD x1.5, a vitamin, a liked and a hated flavour TRAP eaten in battle, a held item given twice (the second gives nothing), the INTERRUPT waking a sleeper, the RESOLVER unveiling the REMNANT (once a game) and the spirit calmed, an evolution and one stopped, a LEADER beaten, the instrument played, a release. 2026-10-22, the user's four calls: HOTFIX MAD +3 alone, the INTERRUPT in the field as in battle, a release from a box saddens no one and one from the party does. Each stop zeroes the daemon's feelings first (feel), so each value is the push alone. The theatre's debug scratch save; nothing is saved.",
   "stops": [
     {
       "stop": "a RECOVER used through the bag: GLAD +2, friendship as it was",
@@ -45,6 +45,17 @@
         "mon 0 hp 0",
         "useitem ITEM_REVIVAL_HERB",
         "feelings party 0 glad=4 mad=6 friendship=80"
+      ]
+    },
+    {
+      "stop": "HOTFIX: it rankles like the other bitter herbs, MAD +3 and no CALM (the user, 2026-10-22); vanilla's friendship -5 kept",
+      "steps": [
+        "friendship 0 100",
+        "feel 0 0 0 0 0",
+        "mon 0 status 8",
+        "useitem ITEM_HEAL_POWDER",
+        "feelings party 0 glad=0 mad=3 sad=0 calm=0 friendship=95",
+        "mon 0 status 0"
       ]
     },
     {
@@ -128,6 +139,29 @@
         "feelings party 2 mad=0 calm=0",
         "win",
         "finish"
+      ]
+    },
+    {
+      "stop": "the INTERRUPT in the FIELD: each daemon of yours it wakes, MAD +4 CALM -4, as in battle (the user, 2026-10-22); one awake, nothing",
+      "steps": [
+        "close",
+        "keyitem ITEM_POKE_FLUTE",
+        "register ITEM_POKE_FLUTE",
+        "goto Route1 14 29",
+        "repel 999",
+        "mon 0 status 3",
+        "mon 1 status 3",
+        "mon 2 status 0",
+        "feel 0 0 0 0 0 1 0 0 0 0 2 0 0 0 0",
+        "press SELECT",
+        "wait 200",
+        "shot the INTERRUPT played",
+        "press A",
+        "press A",
+        "close",
+        "feelings party 0 mad=4 calm=-4 glad=0",
+        "feelings party 1 mad=4 calm=-4",
+        "feelings party 2 mad=0 calm=0"
       ]
     },
     {
@@ -303,7 +337,7 @@
       ]
     },
     {
-      "stop": "a daemon released from the PC: the party SAD +6 (the walk there may add the follower's GLAD)",
+      "stop": "a daemon released from a BOX: the party is not saddened (the user, 2026-10-22: only a release from the party is)",
       "steps": [
         "goto ViridianCity_PokemonCenter_1F 7 5",
         "repel 999",
@@ -316,6 +350,35 @@
         "wait 150",
         "press A",
         "press DOWN 4",
+        "shot RELEASE",
+        "press A",
+        "press UP",
+        "press A",
+        "wait 120",
+        "press A",
+        "press A",
+        "press A",
+        "press B",
+        "close",
+        "feelings party 0 sad=0",
+        "feelings party 1 sad=0"
+      ]
+    },
+    {
+      "stop": "a daemon released from the PARTY (the PC's DEPOSIT list, slot 1): the rest of the party SAD +6",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "repel 999",
+        "feel 0 0 0 0 0 1 0 0 0 0 2 0 0 0 0",
+        "look 11 1 1",
+        "press A 4",
+        "press DOWN",
+        "press A",
+        "wait 150",
+        "shot the party list",
+        "press DOWN",
+        "press A",
+        "press DOWN 3",
         "shot RELEASE",
         "press A",
         "press UP",
