@@ -13,6 +13,7 @@
     "changed": false,
     "draws": 1516,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 30,
     "row": [
      "general",
@@ -33,6 +34,7 @@
     "changed": false,
     "draws": 1729,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 29,
     "row": [
      "general",
@@ -51,6 +53,7 @@
     "changed": false,
     "draws": 1522,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 29,
     "row": [
      "general",
@@ -70,6 +73,7 @@
     "changed": false,
     "draws": 1518,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 29,
     "row": [
      "general",
@@ -91,6 +95,7 @@
     "changed": true,
     "draws": 621,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -119,6 +124,7 @@
     "changed": true,
     "draws": 842,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -148,6 +154,7 @@
     "changed": true,
     "draws": 1134,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -176,6 +183,7 @@
     "changed": true,
     "draws": 772,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -199,6 +207,7 @@
     "changed": true,
     "draws": 392,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -228,6 +237,7 @@
     "changed": true,
     "draws": 248,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -245,6 +255,7 @@
     "changed": false,
     "draws": 2141,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 33,
     "row": [
      "general",
@@ -263,6 +274,7 @@
     "changed": false,
     "draws": 2437,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 31,
     "row": [
      "general",
@@ -282,6 +294,7 @@
     "changed": false,
     "draws": 2170,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 31,
     "row": [
      "general",
@@ -300,6 +313,7 @@
     "changed": false,
     "draws": 2521,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 30,
     "row": [
      "general",
@@ -326,6 +340,7 @@
     "changed": false,
     "draws": 167,
     "first": "SeafoamIslands_B4F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -352,6 +367,7 @@
     "changed": false,
     "draws": 167,
     "first": "SeafoamIslands_B4F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -378,6 +394,7 @@
     "changed": false,
     "draws": 167,
     "first": "SeafoamIslands_B4F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -404,6 +421,7 @@
     "changed": false,
     "draws": 167,
     "first": "SeafoamIslands_B4F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -431,6 +449,7 @@
     "changed": false,
     "draws": 71,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -458,6 +477,7 @@
     "changed": false,
     "draws": 71,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -485,6 +505,7 @@
     "changed": false,
     "draws": 71,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -512,6 +533,7 @@
     "changed": false,
     "draws": 71,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -526,6 +548,7 @@
     "changed": false,
     "draws": 5,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -540,6 +563,7 @@
     "changed": false,
     "draws": 5,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -554,6 +578,7 @@
     "changed": false,
     "draws": 5,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -568,6 +593,7 @@
     "changed": false,
     "draws": 5,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -585,6 +611,7 @@
     "changed": false,
     "draws": 54,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -602,6 +629,7 @@
     "changed": false,
     "draws": 54,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -619,6 +647,7 @@
     "changed": false,
     "draws": 54,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -636,6 +665,7 @@
     "changed": false,
     "draws": 54,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -652,6 +682,7 @@
     "changed": false,
     "draws": 20,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -668,6 +699,7 @@
     "changed": false,
     "draws": 20,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -684,6 +716,7 @@
     "changed": false,
     "draws": 20,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -700,6 +733,7 @@
     "changed": false,
     "draws": 20,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -716,6 +750,7 @@
     "changed": false,
     "draws": 56,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -732,6 +767,7 @@
     "changed": false,
     "draws": 56,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -748,6 +784,7 @@
     "changed": false,
     "draws": 56,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -764,6 +801,7 @@
     "changed": false,
     "draws": 56,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -782,6 +820,7 @@
     "changed": false,
     "draws": 22,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -800,6 +839,7 @@
     "changed": false,
     "draws": 22,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -818,6 +858,7 @@
     "changed": false,
     "draws": 22,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -836,6 +877,7 @@
     "changed": false,
     "draws": 22,
     "first": "SeafoamIslands_B3F",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -852,6 +894,7 @@
     "changed": false,
     "draws": 56,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -868,6 +911,7 @@
     "changed": false,
     "draws": 62,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -884,6 +928,7 @@
     "changed": false,
     "draws": 50,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -900,6 +945,7 @@
     "changed": false,
     "draws": 55,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -919,6 +965,7 @@
     "changed": true,
     "draws": 57,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -937,6 +984,7 @@
     "changed": true,
     "draws": 33,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -955,6 +1003,7 @@
     "changed": true,
     "draws": 32,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -974,6 +1023,7 @@
     "changed": true,
     "draws": 41,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -991,6 +1041,7 @@
     "changed": true,
     "draws": 31,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -1014,6 +1065,7 @@
     "changed": true,
     "draws": 70,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -1030,6 +1082,7 @@
     "changed": false,
     "draws": 77,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -1046,6 +1099,7 @@
     "changed": false,
     "draws": 98,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 9,
     "row": [
      "general",
@@ -1062,6 +1116,7 @@
     "changed": false,
     "draws": 73,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -1078,6 +1133,7 @@
     "changed": false,
     "draws": 83,
     "first": "TwoIsland_CapeBrink",
+    "motif": false,
     "nmaps": 9,
     "row": [
      "general",
@@ -1112,6 +1168,7 @@
     "changed": true,
     "draws": 475,
     "first": "Route1",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -1140,6 +1197,7 @@
     "changed": true,
     "draws": 257,
     "first": "Route22",
+    "motif": false,
     "nmaps": 42,
     "row": [
      "general",
@@ -1190,6 +1248,7 @@
     "changed": true,
     "draws": 1340,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 42,
     "row": [
      "general",
@@ -1240,6 +1299,7 @@
     "changed": true,
     "draws": 1340,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 42,
     "row": [
      "general",
@@ -1270,6 +1330,7 @@
     "changed": true,
     "draws": 571,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -1298,6 +1359,7 @@
     "changed": false,
     "draws": 257,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -1315,6 +1377,7 @@
     "changed": true,
     "draws": 121,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 26,
     "row": [
      "general",
@@ -1332,6 +1395,7 @@
     "changed": true,
     "draws": 121,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 26,
     "row": [
      "general",
@@ -1351,6 +1415,7 @@
     "changed": true,
     "draws": 590,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 28,
     "row": [
      "general",
@@ -1370,6 +1435,7 @@
     "changed": true,
     "draws": 590,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 28,
     "row": [
      "general",
@@ -1387,6 +1453,7 @@
     "changed": true,
     "draws": 144,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 27,
     "row": [
      "general",
@@ -1404,6 +1471,7 @@
     "changed": true,
     "draws": 144,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 27,
     "row": [
      "general",
@@ -1420,6 +1488,7 @@
     "changed": true,
     "draws": 443,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 43,
     "row": [
      "general",
@@ -1436,6 +1505,7 @@
     "changed": true,
     "draws": 443,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 43,
     "row": [
      "general",
@@ -1517,6 +1587,7 @@
     "changed": true,
     "draws": 3549,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 51,
     "row": [
      "general",
@@ -1533,6 +1604,7 @@
     "changed": true,
     "draws": 496,
     "first": "Route22",
+    "motif": false,
     "nmaps": 39,
     "row": [
      "general",
@@ -1561,6 +1633,7 @@
     "changed": true,
     "draws": 257,
     "first": "Route22",
+    "motif": false,
     "nmaps": 42,
     "row": [
      "general",
@@ -1593,6 +1666,7 @@
     "changed": true,
     "draws": 378,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -1644,6 +1718,7 @@
     "changed": true,
     "draws": 1925,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 42,
     "row": [
      "general",
@@ -1695,6 +1770,7 @@
     "changed": true,
     "draws": 1925,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 42,
     "row": [
      "general",
@@ -1732,6 +1808,7 @@
     "changed": true,
     "draws": 1158,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 52,
     "row": [
      "general",
@@ -1762,6 +1839,7 @@
     "changed": true,
     "draws": 571,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -1779,6 +1857,7 @@
     "changed": true,
     "draws": 121,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 26,
     "row": [
      "general",
@@ -1799,6 +1878,7 @@
     "changed": true,
     "draws": 181,
     "first": "Route4",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -1819,6 +1899,7 @@
     "changed": true,
     "draws": 181,
     "first": "Route4",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -1836,6 +1917,7 @@
     "changed": true,
     "draws": 144,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 27,
     "row": [
      "general",
@@ -1852,6 +1934,7 @@
     "changed": true,
     "draws": 443,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 43,
     "row": [
      "general",
@@ -1868,6 +1951,7 @@
     "changed": true,
     "draws": 496,
     "first": "Route22",
+    "motif": false,
     "nmaps": 39,
     "row": [
      "general",
@@ -1884,6 +1968,7 @@
     "changed": true,
     "draws": 496,
     "first": "Route22",
+    "motif": false,
     "nmaps": 39,
     "row": [
      "general",
@@ -1912,6 +1997,7 @@
     "changed": true,
     "draws": 1109,
     "first": "Route22",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -1946,6 +2032,7 @@
     "changed": true,
     "draws": 2728,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 51,
     "row": [
      "general",
@@ -2053,6 +2140,7 @@
     "changed": true,
     "draws": 7641,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2160,6 +2248,7 @@
     "changed": true,
     "draws": 7641,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2189,6 +2278,7 @@
     "changed": true,
     "draws": 2517,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 52,
     "row": [
      "general",
@@ -2211,6 +2301,7 @@
     "changed": true,
     "draws": 982,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -2231,6 +2322,7 @@
     "changed": true,
     "draws": 1620,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -2251,6 +2343,7 @@
     "changed": true,
     "draws": 181,
     "first": "Route4",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -2271,6 +2364,7 @@
     "changed": true,
     "draws": 181,
     "first": "Route4",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -2289,6 +2383,7 @@
     "changed": true,
     "draws": 1533,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2306,6 +2401,7 @@
     "changed": true,
     "draws": 51,
     "first": "Route1",
+    "motif": false,
     "nmaps": 26,
     "row": [
      "general",
@@ -2348,6 +2444,7 @@
     "changed": true,
     "draws": 1099,
     "first": "Route1",
+    "motif": false,
     "nmaps": 61,
     "row": [
      "general",
@@ -2392,6 +2489,7 @@
     "changed": true,
     "draws": 1299,
     "first": "Route1",
+    "motif": false,
     "nmaps": 61,
     "row": [
      "general",
@@ -2410,6 +2508,7 @@
     "changed": true,
     "draws": 231,
     "first": "Route1",
+    "motif": false,
     "nmaps": 28,
     "row": [
      "general",
@@ -2436,6 +2535,7 @@
     "changed": true,
     "draws": 1060,
     "first": "Route22",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2472,6 +2572,7 @@
     "changed": true,
     "draws": 2730,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 51,
     "row": [
      "general",
@@ -2581,6 +2682,7 @@
     "changed": true,
     "draws": 7657,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2690,6 +2792,7 @@
     "changed": true,
     "draws": 7657,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2718,6 +2821,7 @@
     "changed": true,
     "draws": 2516,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 52,
     "row": [
      "general",
@@ -2736,9 +2840,10 @@
      "sevii_islands_123:847",
      "sevii_islands_123:850"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 926,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -2761,6 +2866,7 @@
     "changed": true,
     "draws": 1623,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -2780,6 +2886,7 @@
     "changed": true,
     "draws": 1534,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 47,
     "row": [
      "general",
@@ -2830,6 +2937,7 @@
     "changed": true,
     "draws": 1186,
     "first": "Route1",
+    "motif": false,
     "nmaps": 61,
     "row": [
      "general",
@@ -2849,6 +2957,7 @@
     "changed": true,
     "draws": 66,
     "first": "CeruleanCity",
+    "motif": false,
     "nmaps": 31,
     "row": [
      "general",
@@ -2869,6 +2978,7 @@
     "changed": true,
     "draws": 86,
     "first": "Route25",
+    "motif": false,
     "nmaps": 37,
     "row": [
      "general",
@@ -2919,6 +3029,7 @@
     "changed": true,
     "draws": 1352,
     "first": "Route1",
+    "motif": false,
     "nmaps": 62,
     "row": [
      "general",
@@ -2939,6 +3050,7 @@
     "changed": true,
     "draws": 267,
     "first": "Route22",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -2965,6 +3077,7 @@
     "changed": true,
     "draws": 686,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 50,
     "row": [
      "general",
@@ -3043,6 +3156,7 @@
     "changed": true,
     "draws": 3053,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 51,
     "row": [
      "general",
@@ -3069,6 +3183,7 @@
     "changed": true,
     "draws": 699,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 51,
     "row": [
      "general",
@@ -3091,6 +3206,7 @@
     "changed": true,
     "draws": 315,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -3108,6 +3224,7 @@
     "changed": true,
     "draws": 417,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 39,
     "row": [
      "general",
@@ -3123,6 +3240,7 @@
     "changed": true,
     "draws": 11,
     "first": "Route4",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -3140,6 +3258,7 @@
     "changed": true,
     "draws": 13,
     "first": "Route4",
+    "motif": false,
     "nmaps": 10,
     "row": [
      "general",
@@ -3157,6 +3276,7 @@
     "changed": true,
     "draws": 384,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 35,
     "row": [
      "general",
@@ -3197,6 +3317,7 @@
     "changed": true,
     "draws": 1025,
     "first": "Route1",
+    "motif": false,
     "nmaps": 59,
     "row": [
      "general",
@@ -3235,6 +3356,7 @@
     "changed": true,
     "draws": 1003,
     "first": "Route1",
+    "motif": false,
     "nmaps": 62,
     "row": [
      "general",
@@ -3255,6 +3377,7 @@
     "changed": true,
     "draws": 267,
     "first": "Route22",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -3279,6 +3402,7 @@
     "changed": true,
     "draws": 271,
     "first": "Route22",
+    "motif": false,
     "nmaps": 45,
     "row": [
      "general",
@@ -3358,6 +3482,7 @@
     "changed": true,
     "draws": 1493,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 48,
     "row": [
      "general",
@@ -3424,9 +3549,10 @@
      "sevii_islands_67:846",
      "sevii_islands_67:871"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 1177,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 44,
     "row": [
      "general",
@@ -3445,9 +3571,10 @@
      "sevii_islands_123:839",
      "sevii_islands_123:858"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 314,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -3464,6 +3591,7 @@
     "changed": true,
     "draws": 416,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 38,
     "row": [
      "general",
@@ -3480,6 +3608,7 @@
     "changed": true,
     "draws": 416,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 39,
     "row": [
      "general",
@@ -3503,6 +3632,7 @@
     "changed": true,
     "draws": 2332,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 47,
     "row": [
      "general",
@@ -3525,6 +3655,7 @@
     "changed": true,
     "draws": 1983,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 46,
     "row": [
      "general",
@@ -3541,6 +3672,7 @@
     "changed": true,
     "draws": 383,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 34,
     "row": [
      "general",
@@ -3555,6 +3687,7 @@
     "changed": true,
     "draws": 2,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -3570,6 +3703,7 @@
     "changed": true,
     "draws": 5,
     "first": "Route4",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -3586,6 +3720,7 @@
     "changed": true,
     "draws": 50,
     "first": "Route3",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -3601,6 +3736,7 @@
     "changed": true,
     "draws": 58,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -3619,6 +3755,7 @@
     "changed": true,
     "draws": 5,
     "first": "Route12",
+    "motif": false,
     "nmaps": 5,
     "row": [
      "general",
@@ -3661,9 +3798,10 @@
      "vermilion_city:648",
      "vermilion_city:649"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 2108,
     "first": "PalletTown",
+    "motif": true,
     "nmaps": 36,
     "row": [
      "general",
@@ -3683,9 +3821,10 @@
      "sevii_islands_123:812",
      "sevii_islands_123:814"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 80,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 25,
     "row": [
      "general",
@@ -3722,9 +3861,10 @@
      "vermilion_city:648",
      "vermilion_city:649"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 2071,
     "first": "PalletTown",
+    "motif": true,
     "nmaps": 36,
     "row": [
      "general",
@@ -3751,9 +3891,10 @@
      "sevii_islands_123:810",
      "sevii_islands_123:811"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 117,
     "first": "Route1",
+    "motif": true,
     "nmaps": 31,
     "row": [
      "general",
@@ -3779,6 +3920,7 @@
     "changed": true,
     "draws": 753,
     "first": "Route2",
+    "motif": true,
     "nmaps": 18,
     "row": [
      "general",
@@ -3801,9 +3943,10 @@
      "vermilion_city:703",
      "vermilion_city:706"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 1446,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 28,
     "row": [
      "general",
@@ -3824,9 +3967,10 @@
      "viridian_forest:678",
      "viridian_forest:679"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 750,
     "first": "Route2",
+    "motif": true,
     "nmaps": 18,
     "row": [
      "general",
@@ -3854,6 +3998,7 @@
     "changed": true,
     "draws": 277,
     "first": "Route2",
+    "motif": true,
     "nmaps": 10,
     "row": [
      "general",
@@ -3908,6 +4053,7 @@
     "changed": true,
     "draws": 981,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 34,
     "row": [
      "general",
@@ -3945,9 +4091,10 @@
      "sevii_islands_45:766",
      "sevii_islands_45:767"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 421,
     "first": "Route4",
+    "motif": true,
     "nmaps": 14,
     "row": [
      "general",
@@ -3967,9 +4114,10 @@
      "lavender_town:644",
      "lavender_town:844"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 16,
     "first": "CeruleanCity",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -4006,9 +4154,10 @@
      "sevii_islands_45:766",
      "sevii_islands_45:767"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 421,
     "first": "Route4",
+    "motif": true,
     "nmaps": 14,
     "row": [
      "general",
@@ -4026,9 +4175,10 @@
      "fuchsia_city:823",
      "lavender_town:844"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 7,
     "first": "CeruleanCity",
+    "motif": true,
     "nmaps": 3,
     "row": [
      "general",
@@ -4053,6 +4203,7 @@
     "changed": true,
     "draws": 145,
     "first": "SafariZone_Center",
+    "motif": true,
     "nmaps": 6,
     "row": [
      "general",
@@ -4074,9 +4225,10 @@
      "sevii_islands_123:799",
      "sevii_islands_45:703"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 146,
     "first": "SafariZone_Center",
+    "motif": true,
     "nmaps": 6,
     "row": [
      "general",
@@ -4091,6 +4243,7 @@
     "changed": true,
     "draws": 1,
     "first": "ThreeIsland",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -4111,9 +4264,10 @@
      "vermilion_city:798",
      "vermilion_city:805"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 63,
     "first": "VermilionCity",
+    "motif": true,
     "nmaps": 3,
     "row": [
      "general",
@@ -4134,9 +4288,10 @@
      "vermilion_city:798",
      "vermilion_city:805"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 63,
     "first": "VermilionCity",
+    "motif": true,
     "nmaps": 3,
     "row": [
      "general",
@@ -4975,6 +5130,7 @@
     "changed": false,
     "draws": 83527,
     "first": "Route1",
+    "motif": false,
     "nmaps": 85,
     "row": [
      "general",
@@ -5182,6 +5338,7 @@
     "changed": false,
     "draws": 16044,
     "first": "Route1",
+    "motif": false,
     "nmaps": 59,
     "row": [
      "general",
@@ -5224,6 +5381,7 @@
     "changed": false,
     "draws": 1276,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5293,6 +5451,7 @@
     "changed": false,
     "draws": 5816,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 13,
     "row": [
      "general",
@@ -5315,6 +5474,7 @@
     "changed": false,
     "draws": 24,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -5337,6 +5497,7 @@
     "changed": false,
     "draws": 163,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -5353,6 +5514,7 @@
     "changed": false,
     "draws": 1,
     "first": "SevenIsland_TrainerTower",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -5367,6 +5529,7 @@
     "changed": false,
     "draws": 1,
     "first": "SevenIsland_TrainerTower",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -5381,6 +5544,7 @@
     "changed": false,
     "draws": 2,
     "first": "SevenIsland_TrainerTower",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -5395,6 +5559,7 @@
     "changed": false,
     "draws": 2,
     "first": "SevenIsland_TrainerTower",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -5410,6 +5575,7 @@
     "changed": false,
     "draws": 22,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5429,6 +5595,7 @@
     "changed": false,
     "draws": 220,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5444,6 +5611,7 @@
     "changed": false,
     "draws": 22,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5462,6 +5630,7 @@
     "changed": false,
     "draws": 21,
     "first": "Route11",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -5478,6 +5647,7 @@
     "changed": false,
     "draws": 205,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5500,6 +5670,7 @@
     "changed": false,
     "draws": 2518,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5516,6 +5687,7 @@
     "changed": false,
     "draws": 205,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5536,6 +5708,7 @@
     "changed": false,
     "draws": 39,
     "first": "Route11",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -5551,6 +5724,7 @@
     "changed": false,
     "draws": 44,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5571,6 +5745,7 @@
     "changed": false,
     "draws": 452,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5586,6 +5761,7 @@
     "changed": false,
     "draws": 56,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5600,6 +5776,7 @@
     "changed": false,
     "draws": 16,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -5614,6 +5791,7 @@
     "changed": false,
     "draws": 8,
     "first": "Route5",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -5629,6 +5807,7 @@
     "changed": false,
     "draws": 18,
     "first": "Route11",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -5645,6 +5824,7 @@
     "changed": false,
     "draws": 516,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5672,6 +5852,7 @@
     "changed": false,
     "draws": 714,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5688,6 +5869,7 @@
     "changed": false,
     "draws": 54,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5705,6 +5887,7 @@
     "changed": false,
     "draws": 8,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -5720,6 +5903,7 @@
     "changed": false,
     "draws": 3,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -5735,6 +5919,7 @@
     "changed": false,
     "draws": 18,
     "first": "Route11",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -5753,6 +5938,7 @@
     "changed": false,
     "draws": 561,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5771,6 +5957,7 @@
     "changed": false,
     "draws": 179,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5785,6 +5972,7 @@
     "changed": false,
     "draws": 26,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 11,
     "row": [
      "general",
@@ -5800,6 +5988,7 @@
     "changed": false,
     "draws": 18,
     "first": "Route11",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -5815,6 +6004,7 @@
     "changed": false,
     "draws": 21,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5841,6 +6031,7 @@
     "changed": false,
     "draws": 185,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5856,6 +6047,7 @@
     "changed": false,
     "draws": 21,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -5870,6 +6062,7 @@
     "changed": false,
     "draws": 26,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 11,
     "row": [
      "general",
@@ -5884,6 +6077,7 @@
     "changed": false,
     "draws": 2,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -5898,6 +6092,7 @@
     "changed": false,
     "draws": 62,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -5912,6 +6107,7 @@
     "changed": false,
     "draws": 62,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -5932,6 +6128,7 @@
     "changed": true,
     "draws": 45,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -5952,6 +6149,7 @@
     "changed": true,
     "draws": 45,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -5972,6 +6170,7 @@
     "changed": false,
     "draws": 43,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -5992,6 +6191,7 @@
     "changed": false,
     "draws": 43,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6007,6 +6207,7 @@
     "changed": false,
     "draws": 101,
     "first": "Route2",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -6022,6 +6223,7 @@
     "changed": false,
     "draws": 101,
     "first": "Route2",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -6040,6 +6242,7 @@
     "changed": true,
     "draws": 86,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6060,6 +6263,7 @@
     "changed": true,
     "draws": 127,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6081,6 +6285,7 @@
     "changed": true,
     "draws": 550,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6101,6 +6306,7 @@
     "changed": true,
     "draws": 192,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6116,6 +6322,7 @@
     "changed": false,
     "draws": 101,
     "first": "Route2",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -6131,6 +6338,7 @@
     "changed": false,
     "draws": 101,
     "first": "Route2",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -6147,6 +6355,7 @@
     "changed": true,
     "draws": 45,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6161,6 +6370,7 @@
     "changed": true,
     "draws": 4,
     "first": "Route2",
+    "motif": true,
     "nmaps": 4,
     "row": [
      "general",
@@ -6182,6 +6392,7 @@
     "changed": false,
     "draws": 125,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6203,6 +6414,7 @@
     "changed": false,
     "draws": 125,
     "first": "Route2",
+    "motif": true,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -6220,6 +6432,7 @@
     "changed": false,
     "draws": 8,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -6235,6 +6448,7 @@
     "changed": false,
     "draws": 3,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -6253,6 +6467,7 @@
     "changed": false,
     "draws": 15,
     "first": "CeruleanCity",
+    "motif": false,
     "nmaps": 5,
     "row": [
      "general",
@@ -6268,6 +6483,7 @@
     "changed": false,
     "draws": 5,
     "first": "Route2",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -6282,6 +6498,7 @@
     "changed": false,
     "draws": 4,
     "first": "Route2",
+    "motif": true,
     "nmaps": 4,
     "row": [
      "general",
@@ -6296,6 +6513,7 @@
     "changed": false,
     "draws": 4,
     "first": "Route2",
+    "motif": true,
     "nmaps": 4,
     "row": [
      "general",
@@ -6311,6 +6529,7 @@
     "changed": false,
     "draws": 5,
     "first": "Route2",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -6325,6 +6544,7 @@
     "changed": false,
     "draws": 2,
     "first": "SaffronCity_Connection",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -6339,6 +6559,7 @@
     "changed": false,
     "draws": 2,
     "first": "SaffronCity_Connection",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -6355,6 +6576,7 @@
     "changed": false,
     "draws": 6,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6370,6 +6592,7 @@
     "changed": false,
     "draws": 26,
     "first": "Route2",
+    "motif": false,
     "nmaps": 5,
     "row": [
      "general",
@@ -6386,6 +6609,7 @@
     "changed": false,
     "draws": 6,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6402,6 +6626,7 @@
     "changed": false,
     "draws": 6,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6432,6 +6657,7 @@
     "changed": false,
     "draws": 45,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 8,
     "row": [
      "general",
@@ -6446,6 +6672,7 @@
     "changed": false,
     "draws": 6,
     "first": "Route2",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "general",
@@ -6462,6 +6689,7 @@
     "changed": false,
     "draws": 6,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6497,6 +6725,7 @@
     "changed": false,
     "draws": 45,
     "first": "Route2",
+    "motif": false,
     "nmaps": 20,
     "row": [
      "general",
@@ -6544,6 +6773,7 @@
     "changed": false,
     "draws": 109,
     "first": "Route2",
+    "motif": false,
     "nmaps": 20,
     "row": [
      "general",
@@ -6561,6 +6791,7 @@
     "changed": false,
     "draws": 16,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6580,6 +6811,7 @@
     "changed": false,
     "draws": 82,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6595,6 +6827,7 @@
     "changed": false,
     "draws": 41,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6609,6 +6842,7 @@
     "changed": false,
     "draws": 40,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6624,6 +6858,7 @@
     "changed": false,
     "draws": 18,
     "first": "Route11",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -6641,6 +6876,7 @@
     "changed": false,
     "draws": 16,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6660,6 +6896,7 @@
     "changed": false,
     "draws": 82,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6675,6 +6912,7 @@
     "changed": false,
     "draws": 41,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6690,6 +6928,7 @@
     "changed": false,
     "draws": 41,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6709,6 +6948,7 @@
     "changed": false,
     "draws": 22,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6726,6 +6966,7 @@
     "changed": false,
     "draws": 32,
     "first": "Route2",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -6743,6 +6984,7 @@
     "changed": false,
     "draws": 4,
     "first": "SSAnne_Exterior",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -6761,6 +7003,7 @@
     "changed": false,
     "draws": 44,
     "first": "SSAnne_Exterior",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -6778,6 +7021,7 @@
     "changed": false,
     "draws": 4,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -6799,6 +7043,7 @@
     "changed": false,
     "draws": 14,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -6813,6 +7058,7 @@
     "changed": false,
     "draws": 2,
     "first": "ThreeIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -6830,6 +7076,7 @@
     "changed": false,
     "draws": 4,
     "first": "Route5",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "gTileset_CeruleanCity",
@@ -6851,6 +7098,7 @@
     "changed": false,
     "draws": 21,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -6894,6 +7142,7 @@
     "changed": false,
     "draws": 121,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -6919,6 +7168,7 @@
     "changed": false,
     "draws": 21,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -6933,6 +7183,7 @@
     "changed": false,
     "draws": 4,
     "first": "FuchsiaCity",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "gTileset_FuchsiaCity",
@@ -6948,6 +7199,7 @@
     "changed": false,
     "draws": 14,
     "first": "LavenderTown",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_FuchsiaCity",
@@ -6962,6 +7214,7 @@
     "changed": false,
     "draws": 4,
     "first": "FuchsiaCity",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "gTileset_FuchsiaCity",
@@ -6976,6 +7229,7 @@
     "changed": false,
     "draws": 1,
     "first": "Route5",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "gTileset_CeruleanCity",
@@ -6993,6 +7247,7 @@
     "changed": false,
     "draws": 4,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7015,6 +7270,7 @@
     "changed": false,
     "draws": 16,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7030,6 +7286,7 @@
     "changed": false,
     "draws": 48,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7049,6 +7306,7 @@
     "changed": false,
     "draws": 306,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7065,6 +7323,7 @@
     "changed": false,
     "draws": 48,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7080,6 +7339,7 @@
     "changed": false,
     "draws": 7,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_FuchsiaCity",
@@ -7095,6 +7355,7 @@
     "changed": false,
     "draws": 7,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_FuchsiaCity",
@@ -7110,6 +7371,7 @@
     "changed": false,
     "draws": 7,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_FuchsiaCity",
@@ -7124,6 +7386,7 @@
     "changed": false,
     "draws": 1,
     "first": "Route5",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "gTileset_CeruleanCity",
@@ -7145,6 +7408,7 @@
     "changed": false,
     "draws": 8,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7176,6 +7440,7 @@
     "changed": false,
     "draws": 32,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7195,6 +7460,7 @@
     "changed": false,
     "draws": 12,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -7210,6 +7476,7 @@
     "changed": false,
     "draws": 21,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7237,6 +7504,7 @@
     "changed": false,
     "draws": 148,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7252,6 +7520,7 @@
     "changed": false,
     "draws": 21,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7267,6 +7536,7 @@
     "changed": false,
     "draws": 7,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_FuchsiaCity",
@@ -7296,6 +7566,7 @@
     "changed": false,
     "draws": 34,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -7316,6 +7587,7 @@
     "changed": false,
     "draws": 17,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -7331,6 +7603,7 @@
     "changed": false,
     "draws": 2,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7352,6 +7625,7 @@
     "changed": false,
     "draws": 18,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7367,6 +7641,7 @@
     "changed": false,
     "draws": 2,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_ViridianCity",
@@ -7386,6 +7661,7 @@
     "changed": false,
     "draws": 12,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -7401,6 +7677,7 @@
     "changed": false,
     "draws": 21,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7424,6 +7701,7 @@
     "changed": false,
     "draws": 120,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7439,6 +7717,7 @@
     "changed": false,
     "draws": 21,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "gTileset_CeladonCity",
@@ -7468,6 +7747,7 @@
     "changed": false,
     "draws": 34,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -7488,6 +7768,7 @@
     "changed": false,
     "draws": 17,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -7506,6 +7787,7 @@
     "changed": false,
     "draws": 13,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "gTileset_CeruleanCity",
@@ -7545,6 +7827,7 @@
     "changed": false,
     "draws": 80,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "gTileset_CeruleanCity",
@@ -7563,6 +7846,7 @@
     "changed": false,
     "draws": 13,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "gTileset_CeruleanCity",
@@ -7587,6 +7871,7 @@
     "changed": false,
     "draws": 96,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7610,6 +7895,7 @@
     "changed": false,
     "draws": 96,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7631,6 +7917,7 @@
     "changed": false,
     "draws": 72,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "gTileset_CeladonCity",
@@ -7681,6 +7968,7 @@
     "changed": false,
     "draws": 414,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "gTileset_CeladonCity",
@@ -7701,6 +7989,7 @@
     "changed": false,
     "draws": 74,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "gTileset_CeladonCity",
@@ -7716,6 +8005,7 @@
     "changed": false,
     "draws": 3,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7731,6 +8021,7 @@
     "changed": false,
     "draws": 3,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7760,6 +8051,7 @@
     "changed": false,
     "draws": 96,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7787,6 +8079,7 @@
     "changed": false,
     "draws": 96,
     "first": "CeladonCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7805,6 +8098,7 @@
     "changed": false,
     "draws": 25,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "gTileset_CeladonCity",
@@ -7840,6 +8134,7 @@
     "changed": false,
     "draws": 149,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "gTileset_CeladonCity",
@@ -7858,6 +8153,7 @@
     "changed": false,
     "draws": 25,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "gTileset_CeladonCity",
@@ -7872,6 +8168,7 @@
     "changed": false,
     "draws": 16,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7886,6 +8183,7 @@
     "changed": false,
     "draws": 72,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7900,6 +8198,7 @@
     "changed": false,
     "draws": 72,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7914,6 +8213,7 @@
     "changed": false,
     "draws": 16,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7928,6 +8228,7 @@
     "changed": false,
     "draws": 16,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7942,6 +8243,7 @@
     "changed": false,
     "draws": 72,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7956,6 +8258,7 @@
     "changed": false,
     "draws": 72,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7970,6 +8273,7 @@
     "changed": false,
     "draws": 16,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -7986,6 +8290,7 @@
     "changed": true,
     "draws": 2,
     "first": "FuchsiaCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -7998,9 +8303,10 @@
      "general:132",
      "sevii_islands_123:871"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 6,
     "first": "Route7",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -8017,6 +8323,7 @@
     "changed": true,
     "draws": 40,
     "first": "Route4",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -8036,6 +8343,7 @@
     "changed": true,
     "draws": 99,
     "first": "Route4",
+    "motif": false,
     "nmaps": 11,
     "row": [
      "general",
@@ -8052,6 +8360,7 @@
     "changed": true,
     "draws": 48,
     "first": "Route4",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -8071,6 +8380,7 @@
     "changed": true,
     "draws": 111,
     "first": "Route1",
+    "motif": false,
     "nmaps": 25,
     "row": [
      "general",
@@ -8092,6 +8402,7 @@
     "changed": true,
     "draws": 124,
     "first": "Route1",
+    "motif": false,
     "nmaps": 26,
     "row": [
      "general",
@@ -8112,6 +8423,7 @@
     "changed": true,
     "draws": 104,
     "first": "Route4",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -8140,6 +8452,7 @@
     "changed": true,
     "draws": 795,
     "first": "Route1",
+    "motif": false,
     "nmaps": 30,
     "row": [
      "general",
@@ -8172,6 +8485,7 @@
     "changed": true,
     "draws": 809,
     "first": "Route1",
+    "motif": false,
     "nmaps": 30,
     "row": [
      "general",
@@ -8189,6 +8503,7 @@
     "changed": true,
     "draws": 50,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -8204,6 +8519,7 @@
     "changed": true,
     "draws": 51,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -8218,6 +8534,7 @@
     "changed": false,
     "draws": 330,
     "first": "SafariZone_East",
+    "motif": false,
     "nmaps": 28,
     "row": [
      "general",
@@ -8233,6 +8550,7 @@
     "changed": false,
     "draws": 1010,
     "first": "SafariZone_East",
+    "motif": false,
     "nmaps": 28,
     "row": [
      "general",
@@ -8250,6 +8568,7 @@
     "changed": true,
     "draws": 30,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8268,6 +8587,7 @@
     "changed": true,
     "draws": 336,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8287,6 +8607,7 @@
     "changed": true,
     "draws": 30,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8330,6 +8651,7 @@
     "changed": true,
     "draws": 1100,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8353,6 +8675,7 @@
     "changed": true,
     "draws": 276,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8369,6 +8692,7 @@
     "changed": true,
     "draws": 266,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8387,6 +8711,7 @@
     "changed": true,
     "draws": 25,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "gTileset_IndigoPlateau",
@@ -8411,6 +8736,7 @@
     "changed": true,
     "draws": 201,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -8434,6 +8760,7 @@
     "changed": true,
     "draws": 197,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -8451,6 +8778,7 @@
     "changed": true,
     "draws": 21,
     "first": "Route22",
+    "motif": false,
     "nmaps": 5,
     "row": [
      "gTileset_IndigoPlateau",
@@ -8480,6 +8808,7 @@
     "changed": true,
     "draws": 278,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -8553,6 +8882,7 @@
     "changed": true,
     "draws": 3109,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -8626,6 +8956,7 @@
     "changed": true,
     "draws": 3103,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -8655,6 +8986,7 @@
     "changed": true,
     "draws": 272,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "gTileset_SaffronCity",
@@ -8672,6 +9004,7 @@
     "changed": true,
     "draws": 27,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -8695,6 +9028,7 @@
     "changed": true,
     "draws": 204,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -8718,6 +9052,7 @@
     "changed": true,
     "draws": 206,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -8735,6 +9070,7 @@
     "changed": true,
     "draws": 29,
     "first": "Route22",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -8754,6 +9090,7 @@
     "changed": true,
     "draws": 18,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8776,6 +9113,7 @@
     "changed": true,
     "draws": 183,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8792,6 +9130,7 @@
     "changed": true,
     "draws": 165,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8809,6 +9148,7 @@
     "changed": true,
     "draws": 20,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -8836,6 +9176,7 @@
     "changed": true,
     "draws": 117,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "general",
@@ -8879,6 +9220,7 @@
     "changed": true,
     "draws": 479,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -8921,6 +9263,7 @@
     "changed": true,
     "draws": 456,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -8940,6 +9283,7 @@
     "changed": true,
     "draws": 46,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -8961,6 +9305,7 @@
     "changed": true,
     "draws": 99,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "general",
@@ -9007,6 +9352,7 @@
     "changed": true,
     "draws": 491,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -9058,6 +9404,7 @@
     "changed": true,
     "draws": 482,
     "first": "PewterCity",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -9081,6 +9428,7 @@
     "changed": true,
     "draws": 153,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 13,
     "row": [
      "general",
@@ -9104,6 +9452,7 @@
     "changed": true,
     "draws": 142,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 13,
     "row": [
      "general",
@@ -9122,6 +9471,7 @@
     "changed": true,
     "draws": 37,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -9140,6 +9490,7 @@
     "changed": true,
     "draws": 48,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -9159,6 +9510,7 @@
     "changed": true,
     "draws": 52,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -9184,6 +9536,7 @@
     "changed": true,
     "draws": 203,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 13,
     "row": [
      "general",
@@ -9209,6 +9562,7 @@
     "changed": true,
     "draws": 193,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 13,
     "row": [
      "general",
@@ -9223,6 +9577,7 @@
     "changed": true,
     "draws": 5,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 5,
     "row": [
      "general",
@@ -9237,6 +9592,7 @@
     "changed": true,
     "draws": 4,
     "first": "ThreeIsland_BondBridge",
+    "motif": false,
     "nmaps": 4,
     "row": [
      "general",
@@ -9256,6 +9612,7 @@
     "changed": true,
     "draws": 42,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -9286,6 +9643,7 @@
     "changed": true,
     "draws": 168,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9329,6 +9687,7 @@
     "changed": true,
     "draws": 906,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9345,6 +9704,7 @@
     "changed": false,
     "draws": 16,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -9362,9 +9722,10 @@
      "viridian_city:647",
      "viridian_city:653"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 205,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 20,
     "row": [
      "general",
@@ -9382,9 +9743,10 @@
      "viridian_city:647",
      "viridian_city:653"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 205,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 20,
     "row": [
      "general",
@@ -9405,6 +9767,7 @@
     "changed": true,
     "draws": 59,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 14,
     "row": [
      "general",
@@ -9441,6 +9804,7 @@
     "changed": true,
     "draws": 659,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9456,6 +9820,7 @@
     "changed": false,
     "draws": 16,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -9472,9 +9837,10 @@
      "viridian_city:647",
      "viridian_city:653"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 202,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 18,
     "row": [
      "general",
@@ -9491,9 +9857,10 @@
      "viridian_city:647",
      "viridian_city:653"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 202,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 18,
     "row": [
      "general",
@@ -9511,6 +9878,7 @@
     "changed": false,
     "draws": 18,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -9527,6 +9895,7 @@
     "changed": true,
     "draws": 10,
     "first": "CeruleanCity",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -9541,9 +9910,10 @@
      "general:319",
      "general:326"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 204,
     "first": "CeruleanCity",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -9604,6 +9974,7 @@
     "changed": true,
     "draws": 1159,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9664,6 +10035,7 @@
     "changed": true,
     "draws": 1158,
     "first": "ViridianCity",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9675,9 +10047,10 @@
     "blocks": [
      "general:326"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 1,
     "first": "Route24",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -9694,6 +10067,7 @@
     "changed": false,
     "draws": 16,
     "first": "SaffronCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "general",
@@ -9707,9 +10081,10 @@
      "general:333",
      "general:343"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 45,
     "first": "Route24",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -9724,6 +10099,7 @@
     "changed": true,
     "draws": 12,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -9739,6 +10115,7 @@
     "changed": false,
     "draws": 23,
     "first": "Route12",
+    "motif": false,
     "nmaps": 11,
     "row": [
      "general",
@@ -9754,6 +10131,7 @@
     "changed": false,
     "draws": 4,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -9769,6 +10147,7 @@
     "changed": false,
     "draws": 6,
     "first": null,
+    "motif": false,
     "nmaps": 0,
     "row": [
      "general",
@@ -9782,9 +10161,10 @@
      "general:319",
      "general:333"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 11,
     "first": "CeruleanCity",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -9798,9 +10178,10 @@
      "general:318",
      "general:319"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 203,
     "first": "CeruleanCity",
+    "motif": true,
     "nmaps": 5,
     "row": [
      "general",
@@ -9819,6 +10200,7 @@
     "changed": false,
     "draws": 44,
     "first": "Route10",
+    "motif": false,
     "nmaps": 15,
     "row": [
      "general",
@@ -9835,6 +10217,7 @@
     "changed": true,
     "draws": 43,
     "first": "Route3",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9851,6 +10234,7 @@
     "changed": true,
     "draws": 43,
     "first": "Route3",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9867,6 +10251,7 @@
     "changed": true,
     "draws": 43,
     "first": "Route3",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9883,6 +10268,7 @@
     "changed": true,
     "draws": 43,
     "first": "Route3",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -9902,6 +10288,7 @@
     "changed": false,
     "draws": 6,
     "first": "Route12",
+    "motif": false,
     "nmaps": 6,
     "row": [
      "general",
@@ -9944,6 +10331,7 @@
     "changed": false,
     "draws": 1010,
     "first": "Route1",
+    "motif": false,
     "nmaps": 39,
     "row": [
      "general",
@@ -9994,6 +10382,7 @@
     "changed": true,
     "draws": 2478,
     "first": "Route1",
+    "motif": false,
     "nmaps": 40,
     "row": [
      "general",
@@ -10022,6 +10411,7 @@
     "changed": true,
     "draws": 251,
     "first": "Route1",
+    "motif": false,
     "nmaps": 28,
     "row": [
      "general",
@@ -10088,6 +10478,7 @@
     "changed": true,
     "draws": 2093,
     "first": "Route1",
+    "motif": false,
     "nmaps": 40,
     "row": [
      "general",
@@ -10257,6 +10648,7 @@
     "changed": true,
     "draws": 14982,
     "first": "Route1",
+    "motif": false,
     "nmaps": 59,
     "row": [
      "general",
@@ -10283,6 +10675,7 @@
     "changed": true,
     "draws": 131,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -10347,6 +10740,7 @@
     "changed": true,
     "draws": 1787,
     "first": "Route1",
+    "motif": false,
     "nmaps": 40,
     "row": [
      "general",
@@ -10390,6 +10784,7 @@
     "changed": true,
     "draws": 2143,
     "first": "Route1",
+    "motif": false,
     "nmaps": 41,
     "row": [
      "general",
@@ -10432,6 +10827,7 @@
     "changed": true,
     "draws": 1263,
     "first": "Route2",
+    "motif": false,
     "nmaps": 12,
     "row": [
      "general",
@@ -10451,6 +10847,7 @@
     "changed": true,
     "draws": 59,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 16,
     "row": [
      "general",
@@ -10495,6 +10892,7 @@
     "changed": false,
     "draws": 1283,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 20,
     "row": [
      "general",
@@ -10528,6 +10926,7 @@
     "changed": true,
     "draws": 305,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -10656,6 +11055,7 @@
     "changed": true,
     "draws": 7046,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 31,
     "row": [
      "general",
@@ -10689,6 +11089,7 @@
     "changed": true,
     "draws": 309,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 19,
     "row": [
      "general",
@@ -10815,6 +11216,7 @@
     "changed": true,
     "draws": 7149,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 31,
     "row": [
      "general",
@@ -10839,6 +11241,7 @@
     "changed": true,
     "draws": 120,
     "first": "ViridianForest",
+    "motif": false,
     "nmaps": 18,
     "row": [
      "general",
@@ -10859,6 +11262,7 @@
     "changed": true,
     "draws": 33,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 16,
     "row": [
      "general",
@@ -10877,6 +11281,7 @@
     "changed": true,
     "draws": 33,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 16,
     "row": [
      "general",
@@ -10888,9 +11293,10 @@
     "blocks": [
      "saffron_city:780"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 2,
     "first": "SaffronCity_Connection",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -10902,9 +11308,10 @@
     "blocks": [
      "saffron_city:780"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 2,
     "first": "SaffronCity_Connection",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -10923,6 +11330,7 @@
     "changed": true,
     "draws": 33,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 16,
     "row": [
      "general",
@@ -10941,6 +11349,7 @@
     "changed": true,
     "draws": 33,
     "first": "ViridianCity",
+    "motif": true,
     "nmaps": 16,
     "row": [
      "general",
@@ -10952,9 +11361,10 @@
     "blocks": [
      "saffron_city:780"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 2,
     "first": "SaffronCity_Connection",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -10966,9 +11376,10 @@
     "blocks": [
      "saffron_city:780"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 2,
     "first": "SaffronCity_Connection",
+    "motif": true,
     "nmaps": 1,
     "row": [
      "general",
@@ -10990,6 +11401,7 @@
     "changed": true,
     "draws": 51,
     "first": "CeruleanCity",
+    "motif": false,
     "nmaps": 21,
     "row": [
      "general",
@@ -11009,6 +11421,7 @@
     "changed": true,
     "draws": 75,
     "first": "Route10",
+    "motif": false,
     "nmaps": 25,
     "row": [
      "general",
@@ -11024,6 +11437,7 @@
     "changed": false,
     "draws": 523,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 25,
     "row": [
      "general",
@@ -11039,6 +11453,7 @@
     "changed": false,
     "draws": 522,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 25,
     "row": [
      "general",
@@ -11054,6 +11469,7 @@
     "changed": false,
     "draws": 521,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 24,
     "row": [
      "general",
@@ -11069,6 +11485,7 @@
     "changed": false,
     "draws": 895,
     "first": "Breathverse",
+    "motif": false,
     "nmaps": 24,
     "row": [
      "general",
@@ -11100,6 +11517,7 @@
     "changed": true,
     "draws": 202,
     "first": "CeruleanCity",
+    "motif": false,
     "nmaps": 47,
     "row": [
      "general",
@@ -11112,9 +11530,10 @@
      "general:416",
      "general:434"
     ],
-    "changed": false,
+    "changed": true,
     "draws": 10,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -11132,6 +11551,7 @@
     "changed": false,
     "draws": 13,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -11149,6 +11569,7 @@
     "changed": false,
     "draws": 13,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -11166,6 +11587,7 @@
     "changed": false,
     "draws": 12,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -11181,6 +11603,7 @@
     "changed": false,
     "draws": 9,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -11198,6 +11621,7 @@
     "changed": false,
     "draws": 12,
     "first": "FourIsland",
+    "motif": false,
     "nmaps": 1,
     "row": [
      "general",
@@ -11217,6 +11641,7 @@
     "changed": true,
     "draws": 16,
     "first": "Route1",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -11236,6 +11661,7 @@
     "changed": true,
     "draws": 13,
     "first": "Route1",
+    "motif": false,
     "nmaps": 7,
     "row": [
      "general",
@@ -11252,6 +11678,7 @@
     "changed": false,
     "draws": 352,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 3,
     "row": [
      "general",
@@ -11267,6 +11694,7 @@
     "changed": false,
     "draws": 90,
     "first": "VermilionCity",
+    "motif": false,
     "nmaps": 2,
     "row": [
      "general",
@@ -11274,6 +11702,74 @@
     ],
     "tile": 618
    }
+  ]
+ },
+ "motifs": {
+  "SAFFRON GYM sign": [
+   366,
+   367,
+   382,
+   383
+  ],
+  "blue house roof": [
+   296,
+   297,
+   298,
+   299,
+   312,
+   313,
+   314,
+   315,
+   328,
+   329,
+   330,
+   331,
+   344,
+   345,
+   346,
+   347
+  ],
+  "hedge": [
+   44,
+   45,
+   92,
+   93,
+   53,
+   60
+  ],
+  "metal fence": [
+   14,
+   15,
+   30,
+   31,
+   47,
+   499,
+   500,
+   308,
+   309,
+   324,
+   325
+  ],
+  "round bush": [
+   12,
+   13,
+   28,
+   29
+  ],
+  "signboard": [
+   364,
+   365,
+   380,
+   381
+  ],
+  "wooden fence": [
+   46,
+   62,
+   63,
+   340,
+   356,
+   357,
+   239
   ]
  },
  "notes": [
@@ -11286,7 +11782,268 @@
   "344: water left: its indices do not keep their order in every row that draws it",
   "347: water left: its indices do not keep their order in every row that draws it"
  ],
+ "pass": 2,
+ "recolour": {
+  "count": 120,
+  "from": {
+   "10": [
+    222,
+    197,
+    164
+   ],
+   "11": [
+    189,
+    148,
+    139
+   ],
+   "12": [
+    148,
+    106,
+    106
+   ],
+   "13": [
+    123,
+    74,
+    74
+   ],
+   "14": [
+    90,
+    57,
+    65
+   ],
+   "9": [
+    238,
+    213,
+    197
+   ]
+  },
+  "row": 1,
+  "tiles": {
+   "cliffs": [
+    50,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    120,
+    121,
+    123,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    136,
+    137,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    163,
+    164,
+    165,
+    166,
+    167,
+    170,
+    171,
+    172,
+    175,
+    176,
+    177,
+    178,
+    179,
+    181,
+    182,
+    183,
+    184,
+    185,
+    187,
+    207,
+    223,
+    397,
+    398,
+    504
+   ],
+   "fences": [
+    46,
+    62,
+    63,
+    239,
+    340,
+    356,
+    357
+   ],
+   "house": [
+    302,
+    303,
+    318,
+    319
+   ],
+   "ledges": [
+    119,
+    122,
+    135,
+    138,
+    151,
+    152,
+    153,
+    154,
+    168,
+    169
+   ],
+   "plants": [
+    79,
+    94,
+    503
+   ],
+   "signs": [
+    364,
+    365,
+    380,
+    381
+   ],
+   "water": [
+    78,
+    95,
+    191,
+    310,
+    311,
+    326,
+    342,
+    358,
+    359,
+    505,
+    506
+   ]
+  },
+  "to": {
+   "10": [
+    224,
+    200,
+    148
+   ],
+   "11": [
+    196,
+    158,
+    108
+   ],
+   "12": [
+    156,
+    114,
+    80
+   ],
+   "13": [
+    120,
+    82,
+    62
+   ],
+   "14": [
+    86,
+    58,
+    52
+   ],
+   "9": [
+    240,
+    224,
+    184
+   ]
+  }
+ },
  "seams": {
+  "closed": 187845,
+  "opened": 140104,
+  "pairs": 20986,
+  "pixel_pairs": 3269952,
+  "worst": [
+   [
+    "115 115 i gTileset_SeviiIslands67",
+    2380
+   ],
+   [
+    "851 851 i gTileset_SeviiIslands123",
+    1935
+   ],
+   [
+    "113 113 i gTileset_SeviiIslands67",
+    1472
+   ],
+   [
+    "849 860 v gTileset_SeviiIslands123",
+    1422
+   ],
+   [
+    "113 124 v gTileset_SeviiIslands67",
+    1215
+   ],
+   [
+    "113 113 i gTileset_SeviiIslands123",
+    1133
+   ],
+   [
+    "860 860 h gTileset_SeviiIslands123",
+    1076
+   ],
+   [
+    "124 124 h gTileset_SeviiIslands67",
+    1064
+   ],
+   [
+    "650 650 i gTileset_IndigoPlateau",
+    1025
+   ],
+   [
+    "113 124 v gTileset_CeruleanCity",
+    981
+   ],
+   [
+    "849 849 i gTileset_SeviiIslands123",
+    971
+   ],
+   [
+    "849 820 v gTileset_SeviiIslands123",
+    940
+   ]
+  ]
+ },
+ "seams_pass1": {
   "closed": 155965,
   "opened": 132359,
   "pairs": 19588,
