@@ -104,7 +104,9 @@ def frames_of(im, fw, fh, n):
 
 
 def sheet_of(frames, fw, fh, size, pal):
-    """frames laid back into a sheet of vanilla's own size and layout, as an indexed PNG in PAL"""
+    """frames laid back into a sheet of vanilla's own size and layout, as an indexed PNG in PAL -- SAVED WITH bits=4
+    (T-442): without it PIL writes all 256 palette entries, gbagfx makes a 512-byte .gbapal, and the field-move streaks
+    are loaded with sizeof() -- so the banner wrote zeros over OBJ palettes 0..14 and every person went black."""
     W, H = size
     im = Image.new("P", (W, H), 0)
     im.putpalette([v for c in pal for v in c] + [0] * (768 - 48))
@@ -1307,12 +1309,12 @@ def main():
         os.makedirs(SHEETS, exist_ok=True)
         for e, van, new, im in drawn:
             key, rel, fw, fh, n, kind = e[:6]
-            sheet_of(new, fw, fh, im.size, new_palette_for(key, kind, im)).save(os.path.join(DRAFT, os.path.basename(rel)))
+            sheet_of(new, fw, fh, im.size, new_palette_for(key, kind, im)).save(os.path.join(DRAFT, os.path.basename(rel)), bits=4)
         wdir = os.path.join(DRAFT, "weather")
         os.makedirs(wdir, exist_ok=True)
         for w, van, new, im in wdrawn:
             key, rel, fw, fh, n = w[:5]
-            sheet_of(new, fw, fh, im.size, WEATHER).save(os.path.join(wdir, os.path.basename(rel)))
+            sheet_of(new, fw, fh, im.size, WEATHER).save(os.path.join(wdir, os.path.basename(rel)), bits=4)
         lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in G0_NEW]
         open(os.path.join(DRAFT, "general_0.pal"), "wb").write(("\r\n".join(lines) + "\r\n").encode())
 
@@ -1353,14 +1355,14 @@ def main():
             if status_of(rel) != "VANILLA":
                 print("  !! %s is no longer vanilla; not overwritten" % rel)
                 continue
-            sheet_of(new, fw, fh, im.size, new_palette_for(key, kind, im)).save(os.path.join(GBA, rel))
+            sheet_of(new, fw, fh, im.size, new_palette_for(key, kind, im)).save(os.path.join(GBA, rel), bits=4)
             n += 1
         for w, van, new, im in wdrawn:
             key, rel, fw, fh = w[:4]
             if status_of(rel) != "VANILLA":
                 print("  !! %s is no longer vanilla; not overwritten" % rel)
                 continue
-            sheet_of(new, fw, fh, im.size, WEATHER).save(os.path.join(GBA, rel))
+            sheet_of(new, fw, fh, im.size, WEATHER).save(os.path.join(GBA, rel), bits=4)
             n += 1
         lines = ["JASC-PAL", "0100", "16"] + ["%d %d %d" % c for c in G0_NEW]
         open(os.path.join(GBA, FX, "palettes/general_0.pal"), "wb").write(("\r\n".join(lines) + "\r\n").encode())
