@@ -577,3 +577,93 @@ The game on an iPhone (the iOS Simulator, a real tap): with the ROM slow to arri
 The game on an iPhone (the iOS Simulator, a real tap): with the ROM slow to arrive, as a phone's first download is, the sound comes up interrupted and the game stands still -- TAP TO PLAY over it; one tap, and the title runs.
 
 ![21Oct2026 - T428 - the game on an iPhone, TAP TO PLAY - 96](21Oct2026%20-%20T428%20-%20the%20game%20on%20an%20iPhone%2C%20TAP%20TO%20PLAY%20-%2096.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 98
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 98](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%2098.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 99
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 99](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%2099.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 100
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 100](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20100.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 101
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 101](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20101.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 102
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 102](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20102.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 103
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 103](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20103.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 104
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 104](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20104.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 105
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 105](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20105.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 106
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 106](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20106.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 107
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 107](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20107.png)
+
+### 21Oct2026 - T431 - the daemon emoji and the slide - 108
+
+v11.309.1 T-431 P3: the daemon-emoji over the follower from its feelings (eyes calm-afraid, mouth sad-glad, MAD tint), greyed by friendship, in colour in HALFTONE; the feelings page slides; both editions
+
+![21Oct2026 - T431 - the daemon emoji and the slide - 108](21Oct2026%20-%20T431%20-%20the%20daemon%20emoji%20and%20the%20slide%20-%20108.png)
+
+### 21Oct2026 - T435 - the pier bridge options - 109
+
+T-435: three bridge options to the S.S. ANNE pier's fir; the user chose B, the wooden boardwalk
+
+![21Oct2026 - T435 - the pier bridge options - 109](21Oct2026%20-%20T435%20-%20the%20pier%20bridge%20options%20-%20109.png)
+
+### 21Oct2026 - T435 - the pier bridge options - 110
+
+T-435: three bridge options to the S.S. ANNE pier's fir; the user chose B, the wooden boardwalk
+
+![21Oct2026 - T435 - the pier bridge options - 110](21Oct2026%20-%20T435%20-%20the%20pier%20bridge%20options%20-%20110.png)
+
+### 21Oct2026 - T435 - the pier bridge options - 111
+
+T-435: three bridge options to the S.S. ANNE pier's fir; the user chose B, the wooden boardwalk
+
+![21Oct2026 - T435 - the pier bridge options - 111](21Oct2026%20-%20T435%20-%20the%20pier%20bridge%20options%20-%20111.png)
+
+### 21Oct2026 - T435 - the pier bridge options - 112
+
+T-435: three bridge options to the S.S. ANNE pier's fir; the user chose B, the wooden boardwalk
+
+![21Oct2026 - T435 - the pier bridge options - 112](21Oct2026%20-%20T435%20-%20the%20pier%20bridge%20options%20-%20112.png)
