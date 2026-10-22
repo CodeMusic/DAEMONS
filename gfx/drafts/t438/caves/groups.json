@@ -1,0 +1,3286 @@
+{
+ "ticket": "T-438 batch E",
+ "status": "DRAFT -- not in the engine",
+ "proposal": [
+  {
+   "ts": "cave",
+   "order": 8,
+   "drafted": true,
+   "places": [
+    [
+     "DEADSTACK",
+     "MtMoon_1F/B1F/B2F",
+     "Mt. Moon: a mountain of dead hardware; its fossils are legacy silicon (3.2)"
+    ],
+    [
+     "THREE ISLE PATH",
+     "ThreeIsland_DunsparceTunnel",
+     "a short tunnel; no name of its own"
+    ],
+    [
+     "UMBRAL ASCENT",
+     "VictoryRoad_1F/2F/3F",
+     "Victory Road: the climb into partial shadow toward UMBRA"
+    ],
+    [
+     "THE WRONG WAY",
+     "FiveIsland_LostCave x15",
+     "Lost Cave: named by somebody who took it (2.10)"
+    ]
+   ],
+   "look": "THE STACK. The rock is dead hardware piled up: every face reads as thin courses of slab -- boards, drives, casings -- laid one on another, every other one a shade darker, a joint here and there; one course a block carries a strip of tarnished gold: an edge connector. A ridge's top is the top board, seamed once a block. Light: dull sage and solder-mask green; the floor is ash-brown grit with a chip of board lying in it (ROUTE 3 is ASHFALL); the bright floor patches become pale drifts.",
+   "split": "SPLIT UMBRAL ASCENT (palette split now: a cold violet dusk, the same courses; its own tiles in batch G). THE WRONG WAY and the tunnel can keep the stack."
+  },
+  {
+   "ts": "digletts_cave",
+   "order": 19,
+   "drafted": true,
+   "places": [
+    [
+     "TAPPOINT'S CAVE",
+     "DiglettsCave_B1F + N/S entrances",
+     "TAPPOINT (Diglett) 'sits under the route everything takes and reads what goes past' -- a wiretap's burrow"
+    ],
+    [
+     "TANOBY KEY",
+     "SevenIsland_SevaultCanyon_TanobyKey",
+     "one small room (LONG DROP's)"
+    ]
+   ],
+   "look": "THE LINE. A long burrow of warm packed earth under the routes, and along the top of every cut runs the buried cable it was dug to reach: a red sheath over a dark core, two pixels deep, following the cut wherever it turns. The faces are packed clods; the ground above is calm earth with soft rises; TAPPOINT's holes are kept. Light: umber and ochre; the cable is the one colour that is not earth.",
+   "split": "No split: TANOBY KEY is one room and an earth room suits it."
+  },
+  {
+   "ts": "rock_tunnel",
+   "order": 22,
+   "drafted": true,
+   "places": [
+    [
+     "THE BLACKOUT",
+     "RockTunnel_1F/B1F (FLASH-dark)",
+     "'No light, no color, no context' (3.2); next door to the KEEPALIVE PLANT, so ROUTE 10 signposts the blackout and the thing still running"
+    ],
+    [
+     "OTHER CAVE",
+     "SixIsland_AlteringCave",
+     "Altering Cave: 'never holds the same thing twice' (2.10)"
+    ]
+   ],
+   "look": "THE OUTAGE. Basalt that grew in the dark: the walls are tall columns, cut vertically (the stack runs across; this runs down), each column a lit left edge and a dark right one. Light: night indigo and blue-black, deep but never grey -- HALFTONE and the unread DOLDRUM own grey. VERBOSE (FLASH) shows it; unlit it is a 24-pixel circle in black.",
+   "split": "SPLIT OTHER CAVE (palette split): the same columns in a palette that is not THE BLACKOUT's -- a pale mineral teal. A per-entry palette swap would make it never the same twice; that is a question."
+  },
+  {
+   "ts": "underground_path",
+   "order": 14,
+   "drafted": false,
+   "places": [
+    [
+     "UNDERGROUND PATH",
+     "UndergroundPath_NorthSouth/EastWest",
+     "officially UNDERGROUND PATH, locally THE TUNNEL: routing around a blocked path, as a VPN does (3.1)"
+    ]
+   ],
+   "look": "THE TUNNEL. Not a cave but a built bore: a concrete tube with a lit lane down the middle, conduit along both walls, a dashed centre line like a packet trace. Light: sodium-free white and cool concrete, the most ordered underground in the game, so the caves read as caves beside it.",
+   "split": "Its own tileset already; it draws primary/building (batch D's palettes sit under it)."
+  },
+  {
+   "ts": "power_plant",
+   "order": 23,
+   "drafted": false,
+   "places": [
+    [
+     "KEEPALIVE PLANT",
+     "PowerPlant",
+     "a building still running with nobody connected to it; SENTINEL lives there (3.3)"
+    ]
+   ],
+   "look": "STILL RUNNING. A plant left on: floor plates and machine housings, and the one motif is a status light on every housing, all green. Light: plant-green and machine grey-blue, with the living PLANT's second meaning in moss along the seams.",
+   "split": "Its own tileset; batch D left its machines for this batch or its town's."
+  },
+  {
+   "ts": "seafoam_islands",
+   "order": 44,
+   "drafted": false,
+   "places": [
+    [
+     "GLAUCOUS ISLES",
+     "SeafoamIslands_1F..B4F",
+     "Seafoam: named for its surface, and what matters is four floors under it (3.3)"
+    ],
+    [
+     "STILLFALL CAVE",
+     "FourIsland_IcefallCave x4",
+     "Icefall: a waterfall that stopped (2.10)"
+    ],
+    [
+     "SEVEN ISLAND",
+     "SevenIsland_House_Room1",
+     "one room"
+    ]
+   ],
+   "look": "THE BLOOM. GLAUCOUS (our reading) is the powdery blue-green bloom on a plum or a leaf: ice under a matte frosted skin, lit tops chalky, faces clear and deep. Its rows 8..12 were already recoloured (census).",
+   "split": "SPLIT STILLFALL (palette split): the ice gone glassy and still, frozen falls -- its own tiles later."
+  },
+  {
+   "ts": "mt_ember",
+   "order": 51,
+   "drafted": false,
+   "places": [
+    [
+     "MT. SMOULDER",
+     "MtEmber_RubyPath/SummitPath x11",
+     "burning without flame is what it does and what it looks like from the sea (2.10)"
+    ],
+    [
+     "KETTLE SPRING",
+     "OneIsland_KindleRoad_EmberSpa",
+     "Ember Spa"
+    ]
+   ],
+   "look": "EMBER UNDER ASH. Black cinder rock whose cracks glow a low orange from inside, never flame; the steam animation stays. Light: charcoal and banked-coal red.",
+   "split": "KETTLE SPRING shares it; no split."
+  },
+  {
+   "ts": "cerulean_cave",
+   "order": 95,
+   "drafted": false,
+   "places": [
+    [
+     "DOLDRUM CAVE",
+     "CeruleanCave_1F/2F/B1F",
+     "S.T.A.R.R. sleeps here; unread it is grey and wrongly arranged, read it is itself, in colour (8.6a, T-251)"
+    ]
+   ],
+   "look": "BECALMED (the read state only). Still water and slack rock: horizontal tidelines on every wall, a calm green-blue. The unread state is not this batch's: DaemonsIsHalftone greys it whatever its palette is, and the rearrangement is the map's, not the tiles'.",
+   "split": "Never drafted without the user: its grey and its 'itself' are a decided pair."
+  },
+  {
+   "ts": "navel_rock",
+   "order": 76,
+   "drafted": false,
+   "places": [
+    [
+     "THE DOTS",
+     "SixIsland_DottedHole x6",
+     "Dotted Hole: 'said by somebody who could see them and could not read them' (2.10)"
+    ],
+    [
+     "NAVEL ROCK",
+     "NavelRock x20",
+     "unnamed: no player of this game reaches it (2.10)"
+    ]
+   ],
+   "look": "BRAILLE. THE DOTS' walls carry raised dots in cells of six -- writing for the hand, unread by the eye. Light: sandstone and shadow. NAVEL ROCK is unreachable and can keep whatever THE DOTS gets.",
+   "split": "No split needed: NAVEL ROCK is never reached."
+  },
+  {
+   "ts": "tanoby_ruins",
+   "order": 85,
+   "drafted": false,
+   "places": [
+    [
+     "TANOBY CHAMBERS",
+     "SevenIsland_TanobyRuins x7",
+     "the chambers; vanilla's Unown walls"
+    ]
+   ],
+   "look": "An older script: the walls' glyphs redrawn as one of our own, carved, not lit. With batch G.",
+   "split": "Its own tileset."
+  }
+ ],
+ "drafted": {
+  "cave": {
+   "redrawn": {
+    "floor": [
+     1,
+     2,
+     17,
+     18,
+     136,
+     137,
+     138,
+     139,
+     144,
+     145,
+     146,
+     147,
+     152,
+     153,
+     154,
+     155,
+     160,
+     161,
+     162,
+     163,
+     168,
+     169,
+     170,
+     171,
+     176,
+     177,
+     178,
+     179,
+     184,
+     185,
+     186,
+     187,
+     198,
+     199,
+     200,
+     201,
+     202,
+     203,
+     204,
+     207,
+     214,
+     215,
+     216,
+     219,
+     220,
+     221,
+     222,
+     223,
+     240
+    ],
+    "hole": [
+     6,
+     7,
+     22,
+     23,
+     24,
+     25,
+     165
+    ],
+    "wood": [
+     8
+    ],
+    "dark": [
+     9
+    ],
+    "rock": [
+     14,
+     15,
+     30,
+     31,
+     33,
+     34,
+     35,
+     36,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     74,
+     75,
+     76,
+     77,
+     78,
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     95,
+     96,
+     97,
+     98,
+     99,
+     100,
+     101,
+     102,
+     103,
+     104,
+     105,
+     106,
+     107,
+     112,
+     113,
+     114,
+     115,
+     116,
+     117,
+     118,
+     119,
+     120,
+     121,
+     122,
+     123,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     148,
+     149,
+     150,
+     151,
+     156,
+     157,
+     164,
+     167,
+     172,
+     173,
+     180,
+     181,
+     182,
+     183,
+     188,
+     189,
+     194,
+     195,
+     196,
+     197,
+     210,
+     211,
+     212,
+     213,
+     230,
+     231,
+     232,
+     233,
+     246,
+     247,
+     248,
+     249
+    ],
+    "rung": [
+     79,
+     94
+    ],
+    "patch": [
+     205,
+     206,
+     217,
+     218,
+     224,
+     225,
+     241
+    ]
+   },
+   "kept_drawing": [
+    3,
+    4,
+    10,
+    11,
+    12,
+    13,
+    16,
+    19,
+    20,
+    26,
+    27,
+    28,
+    29,
+    32,
+    37,
+    110,
+    111,
+    126,
+    127,
+    142,
+    143,
+    158,
+    159,
+    166,
+    174,
+    175,
+    192,
+    193,
+    208,
+    209,
+    226,
+    227,
+    228,
+    229,
+    242,
+    243,
+    244,
+    245,
+    252,
+    253,
+    254,
+    255
+   ],
+   "objects": [
+    3,
+    4,
+    19,
+    20,
+    108,
+    109,
+    110,
+    111,
+    124,
+    125,
+    126,
+    127,
+    140,
+    141,
+    142,
+    143,
+    158,
+    159,
+    174,
+    175,
+    226,
+    227,
+    228,
+    229,
+    242,
+    243,
+    244,
+    245
+   ],
+   "compromises": [],
+   "maps": [
+    "FiveIsland_LostCave_Entrance",
+    "FiveIsland_LostCave_Room1",
+    "FiveIsland_LostCave_Room10",
+    "FiveIsland_LostCave_Room11",
+    "FiveIsland_LostCave_Room12",
+    "FiveIsland_LostCave_Room13",
+    "FiveIsland_LostCave_Room14",
+    "FiveIsland_LostCave_Room2",
+    "FiveIsland_LostCave_Room3",
+    "FiveIsland_LostCave_Room4",
+    "FiveIsland_LostCave_Room5",
+    "FiveIsland_LostCave_Room6",
+    "FiveIsland_LostCave_Room7",
+    "FiveIsland_LostCave_Room8",
+    "FiveIsland_LostCave_Room9",
+    "MtMoon_1F",
+    "MtMoon_B1F",
+    "MtMoon_B2F",
+    "ThreeIsland_DunsparceTunnel",
+    "ThreeIsland_DunsparceTunnel_DugOut",
+    "VictoryRoad_1F",
+    "VictoryRoad_2F",
+    "VictoryRoad_3F"
+   ],
+   "palette_proposal": {
+    "8": [
+     {
+      "index": 1,
+      "today": [
+       189,
+       189,
+       156
+      ],
+      "proposed": [
+       178,
+       170,
+       140
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       172,
+       139
+      ],
+      "proposed": [
+       152,
+       144,
+       118
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       148,
+       139,
+       115
+      ],
+      "proposed": [
+       126,
+       120,
+       98
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       123,
+       115,
+       90
+      ],
+      "proposed": [
+       98,
+       94,
+       78
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 5,
+      "today": [
+       32,
+       49,
+       57
+      ],
+      "proposed": [
+       28,
+       40,
+       38
+      ],
+      "role": "dark 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       222,
+       184,
+       88
+      ],
+      "role": "accent 0"
+     },
+     {
+      "index": 7,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       150,
+       116,
+       56
+      ],
+      "role": "accent 1"
+     },
+     {
+      "index": 8,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       184,
+       110,
+       70
+      ],
+      "role": "accent 2"
+     },
+     {
+      "index": 9,
+      "today": [
+       222,
+       197,
+       189
+      ],
+      "proposed": [
+       208,
+       218,
+       188
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       205,
+       180,
+       156
+      ],
+      "proposed": [
+       172,
+       190,
+       160
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       189,
+       148,
+       139
+      ],
+      "proposed": [
+       134,
+       158,
+       132
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       148,
+       115,
+       106
+      ],
+      "proposed": [
+       98,
+       126,
+       104
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       115,
+       65,
+       74
+      ],
+      "proposed": [
+       66,
+       92,
+       78
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       82,
+       49,
+       65
+      ],
+      "proposed": [
+       40,
+       60,
+       54
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       90,
+       90,
+       98
+      ],
+      "proposed": [
+       70,
+       78,
+       72
+      ],
+      "role": "shade 0"
+     }
+    ],
+    "9": [
+     {
+      "index": 1,
+      "today": [
+       189,
+       189,
+       156
+      ],
+      "proposed": [
+       178,
+       170,
+       140
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       172,
+       139
+      ],
+      "proposed": [
+       152,
+       144,
+       118
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       148,
+       139,
+       115
+      ],
+      "proposed": [
+       126,
+       120,
+       98
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       123,
+       115,
+       90
+      ],
+      "proposed": [
+       98,
+       94,
+       78
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 5,
+      "today": [
+       255,
+       238,
+       164
+      ],
+      "proposed": [
+       232,
+       234,
+       216
+      ],
+      "role": "wood 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       230,
+       197,
+       139
+      ],
+      "proposed": [
+       206,
+       210,
+       190
+      ],
+      "role": "wood 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       205,
+       172,
+       123
+      ],
+      "proposed": [
+       176,
+       182,
+       164
+      ],
+      "role": "wood 2"
+     },
+     {
+      "index": 8,
+      "today": [
+       164,
+       123,
+       90
+      ],
+      "proposed": [
+       146,
+       152,
+       138
+      ],
+      "role": "wood 3"
+     },
+     {
+      "index": 9,
+      "today": [
+       148,
+       115,
+       74
+      ],
+      "proposed": [
+       112,
+       118,
+       108
+      ],
+      "role": "wood 4"
+     },
+     {
+      "index": 10,
+      "today": [
+       106,
+       65,
+       41
+      ],
+      "proposed": [
+       80,
+       86,
+       80
+      ],
+      "role": "wood 5"
+     },
+     {
+      "index": 11,
+      "today": [
+       74,
+       74,
+       57
+      ],
+      "proposed": [
+       58,
+       62,
+       52
+      ],
+      "role": "dark 1"
+     },
+     {
+      "index": 12,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       8,
+       14,
+       14
+      ],
+      "role": "hole 0"
+     },
+     {
+      "index": 13,
+      "today": [
+       98,
+       139,
+       197
+      ],
+      "proposed": [
+       104,
+       150,
+       168
+      ],
+      "role": "water 0"
+     },
+     {
+      "index": 14,
+      "today": [
+       74,
+       115,
+       172
+      ],
+      "proposed": [
+       78,
+       122,
+       146
+      ],
+      "role": "water 1"
+     },
+     {
+      "index": 15,
+      "today": [
+       57,
+       98,
+       156
+      ],
+      "proposed": [
+       58,
+       98,
+       124
+      ],
+      "role": "water 2"
+     }
+    ],
+    "10": [
+     {
+      "index": 4,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       8,
+       14,
+       14
+      ],
+      "role": "hole 0"
+     },
+     {
+      "index": 5,
+      "today": [
+       255,
+       238,
+       164
+      ],
+      "proposed": [
+       232,
+       234,
+       216
+      ],
+      "role": "rung 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       230,
+       197,
+       139
+      ],
+      "proposed": [
+       196,
+       202,
+       184
+      ],
+      "role": "rung 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       205,
+       172,
+       123
+      ],
+      "proposed": [
+       156,
+       162,
+       148
+      ],
+      "role": "rung 2"
+     },
+     {
+      "index": 8,
+      "today": [
+       172,
+       139,
+       106
+      ],
+      "proposed": [
+       118,
+       124,
+       114
+      ],
+      "role": "rung 3"
+     },
+     {
+      "index": 9,
+      "today": [
+       213,
+       197,
+       189
+      ],
+      "proposed": [
+       208,
+       218,
+       188
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       205,
+       180,
+       156
+      ],
+      "proposed": [
+       172,
+       190,
+       160
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       189,
+       148,
+       139
+      ],
+      "proposed": [
+       134,
+       158,
+       132
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       148,
+       115,
+       106
+      ],
+      "proposed": [
+       98,
+       126,
+       104
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       115,
+       65,
+       74
+      ],
+      "proposed": [
+       66,
+       92,
+       78
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       82,
+       49,
+       65
+      ],
+      "proposed": [
+       40,
+       60,
+       54
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       90,
+       90,
+       98
+      ],
+      "proposed": [
+       70,
+       78,
+       72
+      ],
+      "role": "shade 0"
+     }
+    ],
+    "11": [
+     {
+      "index": 1,
+      "today": [
+       189,
+       189,
+       156
+      ],
+      "proposed": [
+       178,
+       170,
+       140
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       172,
+       139
+      ],
+      "proposed": [
+       152,
+       144,
+       118
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       148,
+       139,
+       115
+      ],
+      "proposed": [
+       126,
+       120,
+       98
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       123,
+       115,
+       90
+      ],
+      "proposed": [
+       98,
+       94,
+       78
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 12,
+      "today": [
+       238,
+       222,
+       148
+      ],
+      "proposed": [
+       210,
+       208,
+       172
+      ],
+      "role": "patch 0"
+     },
+     {
+      "index": 13,
+      "today": [
+       222,
+       205,
+       115
+      ],
+      "proposed": [
+       192,
+       190,
+       152
+      ],
+      "role": "patch 1"
+     },
+     {
+      "index": 14,
+      "today": [
+       205,
+       180,
+       98
+      ],
+      "proposed": [
+       174,
+       172,
+       136
+      ],
+      "role": "patch 2"
+     },
+     {
+      "index": 15,
+      "today": [
+       189,
+       172,
+       98
+      ],
+      "proposed": [
+       156,
+       154,
+       122
+      ],
+      "role": "patch 3"
+     }
+    ],
+    "12": [
+     {
+      "index": 15,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       8,
+       14,
+       14
+      ],
+      "role": "hole 0"
+     }
+    ]
+   }
+  },
+  "digletts_cave": {
+   "redrawn": {
+    "floor": [
+     1,
+     2,
+     6,
+     7,
+     8,
+     9,
+     17,
+     18,
+     38,
+     39,
+     42,
+     43,
+     54,
+     59,
+     136,
+     137,
+     138,
+     139,
+     145,
+     146,
+     147,
+     152,
+     153,
+     154,
+     155,
+     163,
+     168,
+     169,
+     170,
+     171,
+     184,
+     185,
+     186,
+     187,
+     198,
+     199,
+     200,
+     201,
+     202,
+     203,
+     204,
+     207,
+     214,
+     215,
+     216,
+     219,
+     220,
+     221,
+     222,
+     223,
+     240
+    ],
+    "hole": [
+     22,
+     23,
+     24,
+     25
+    ],
+    "rock": [
+     33,
+     34,
+     35,
+     36,
+     40,
+     41,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     55,
+     56,
+     57,
+     58,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     74,
+     75,
+     76,
+     77,
+     78,
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     95,
+     96,
+     97,
+     98,
+     99,
+     100,
+     101,
+     102,
+     103,
+     104,
+     105,
+     106,
+     107,
+     112,
+     113,
+     114,
+     115,
+     116,
+     117,
+     118,
+     119,
+     120,
+     121,
+     122,
+     123,
+     129,
+     130,
+     156,
+     157,
+     172,
+     173,
+     188,
+     189
+    ],
+    "rung": [
+     79,
+     94
+    ],
+    "patch": [
+     205,
+     206,
+     217,
+     218,
+     224,
+     225,
+     241
+    ]
+   },
+   "kept_drawing": [
+    3,
+    4,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    19,
+    20,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    110,
+    111,
+    126,
+    127,
+    132,
+    133,
+    134,
+    135,
+    142,
+    143,
+    148,
+    149,
+    150,
+    151,
+    158,
+    159,
+    164,
+    165,
+    166,
+    167,
+    174,
+    175,
+    180,
+    181,
+    182,
+    183,
+    192,
+    193,
+    194,
+    195,
+    196,
+    208,
+    209,
+    210,
+    211,
+    212,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247
+   ],
+   "objects": [
+    3,
+    4,
+    19,
+    20,
+    108,
+    109,
+    110,
+    111,
+    124,
+    125,
+    126,
+    127,
+    140,
+    141,
+    142,
+    143,
+    158,
+    159,
+    174,
+    175,
+    226,
+    227,
+    228,
+    229,
+    242,
+    243,
+    244,
+    245
+   ],
+   "compromises": [
+    [
+     68,
+     [
+      12
+     ]
+    ],
+    [
+     81,
+     [
+      12
+     ]
+    ],
+    [
+     97,
+     [
+      12
+     ]
+    ],
+    [
+     98,
+     [
+      12
+     ]
+    ],
+    [
+     99,
+     [
+      12
+     ]
+    ]
+   ],
+   "maps": [
+    "DiglettsCave_B1F",
+    "DiglettsCave_NorthEntrance",
+    "DiglettsCave_SouthEntrance",
+    "SevenIsland_SevaultCanyon_TanobyKey"
+   ],
+   "palette_proposal": {
+    "8": [
+     {
+      "index": 1,
+      "today": [
+       197,
+       172,
+       123
+      ],
+      "proposed": [
+       200,
+       154,
+       104
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       139,
+       90
+      ],
+      "proposed": [
+       174,
+       128,
+       82
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       148,
+       106,
+       65
+      ],
+      "proposed": [
+       146,
+       102,
+       64
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       123,
+       74,
+       41
+      ],
+      "proposed": [
+       114,
+       76,
+       46
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 5,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       40,
+       30,
+       26
+      ],
+      "role": "dark 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       34,
+       30,
+       34
+      ],
+      "role": "accent 0"
+     },
+     {
+      "index": 7,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       196,
+       84,
+       60
+      ],
+      "role": "accent 1"
+     },
+     {
+      "index": 8,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       220,
+       150,
+       84
+      ],
+      "role": "accent 2"
+     },
+     {
+      "index": 9,
+      "today": [
+       222,
+       222,
+       156
+      ],
+      "proposed": [
+       230,
+       198,
+       140
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       189,
+       189,
+       123
+      ],
+      "proposed": [
+       204,
+       170,
+       112
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       148,
+       148,
+       106
+      ],
+      "proposed": [
+       172,
+       138,
+       90
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       115,
+       106,
+       90
+      ],
+      "proposed": [
+       138,
+       106,
+       68
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       82,
+       74,
+       65
+      ],
+      "proposed": [
+       100,
+       74,
+       50
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       57,
+       49,
+       41
+      ],
+      "proposed": [
+       64,
+       46,
+       34
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       65,
+       65,
+       74
+      ],
+      "proposed": [
+       60,
+       46,
+       40
+      ],
+      "role": "shade 0"
+     }
+    ],
+    "9": [
+     {
+      "index": 1,
+      "today": [
+       197,
+       172,
+       123
+      ],
+      "proposed": [
+       200,
+       154,
+       104
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       139,
+       90
+      ],
+      "proposed": [
+       174,
+       128,
+       82
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       148,
+       106,
+       65
+      ],
+      "proposed": [
+       146,
+       102,
+       64
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       123,
+       74,
+       41
+      ],
+      "proposed": [
+       114,
+       76,
+       46
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 5,
+      "today": [
+       164,
+       180,
+       230
+      ],
+      "proposed": [
+       214,
+       168,
+       108
+      ],
+      "role": "wood 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       139,
+       156,
+       222
+      ],
+      "proposed": [
+       188,
+       140,
+       84
+      ],
+      "role": "wood 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       98,
+       106,
+       139
+      ],
+      "proposed": [
+       140,
+       98,
+       58
+      ],
+      "role": "wood 3"
+     },
+     {
+      "index": 8,
+      "today": [
+       65,
+       65,
+       57
+      ],
+      "proposed": [
+       84,
+       58,
+       36
+      ],
+      "role": "wood 5"
+     },
+     {
+      "index": 11,
+      "today": [
+       65,
+       65,
+       74
+      ],
+      "proposed": [
+       66,
+       52,
+       44
+      ],
+      "role": "dark 1"
+     },
+     {
+      "index": 12,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       12,
+       8,
+       6
+      ],
+      "role": "hole 0"
+     },
+     {
+      "index": 13,
+      "today": [
+       98,
+       139,
+       197
+      ],
+      "proposed": [
+       98,
+       132,
+       150
+      ],
+      "role": "water 0"
+     },
+     {
+      "index": 14,
+      "today": [
+       74,
+       115,
+       172
+      ],
+      "proposed": [
+       76,
+       108,
+       128
+      ],
+      "role": "water 1"
+     },
+     {
+      "index": 15,
+      "today": [
+       57,
+       98,
+       156
+      ],
+      "proposed": [
+       58,
+       86,
+       108
+      ],
+      "role": "water 2"
+     }
+    ],
+    "10": [
+     {
+      "index": 4,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       12,
+       8,
+       6
+      ],
+      "role": "hole 0"
+     },
+     {
+      "index": 5,
+      "today": [
+       255,
+       238,
+       180
+      ],
+      "proposed": [
+       226,
+       186,
+       128
+      ],
+      "role": "rung 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       222,
+       205,
+       148
+      ],
+      "proposed": [
+       196,
+       154,
+       98
+      ],
+      "role": "rung 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       197,
+       172,
+       123
+      ],
+      "proposed": [
+       164,
+       124,
+       76
+      ],
+      "role": "rung 2"
+     },
+     {
+      "index": 8,
+      "today": [
+       172,
+       139,
+       90
+      ],
+      "proposed": [
+       128,
+       94,
+       58
+      ],
+      "role": "rung 3"
+     },
+     {
+      "index": 9,
+      "today": [
+       222,
+       222,
+       156
+      ],
+      "proposed": [
+       230,
+       198,
+       140
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       189,
+       189,
+       123
+      ],
+      "proposed": [
+       204,
+       170,
+       112
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       148,
+       148,
+       106
+      ],
+      "proposed": [
+       172,
+       138,
+       90
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       115,
+       106,
+       90
+      ],
+      "proposed": [
+       138,
+       106,
+       68
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       82,
+       74,
+       65
+      ],
+      "proposed": [
+       100,
+       74,
+       50
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       57,
+       49,
+       41
+      ],
+      "proposed": [
+       64,
+       46,
+       34
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       65,
+       65,
+       74
+      ],
+      "proposed": [
+       60,
+       46,
+       40
+      ],
+      "role": "shade 0"
+     }
+    ],
+    "11": [
+     {
+      "index": 1,
+      "today": [
+       197,
+       172,
+       123
+      ],
+      "proposed": [
+       200,
+       154,
+       104
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       139,
+       90
+      ],
+      "proposed": [
+       174,
+       128,
+       82
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       148,
+       106,
+       65
+      ],
+      "proposed": [
+       146,
+       102,
+       64
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       123,
+       74,
+       41
+      ],
+      "proposed": [
+       114,
+       76,
+       46
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 12,
+      "today": [
+       230,
+       222,
+       164
+      ],
+      "proposed": [
+       222,
+       194,
+       138
+      ],
+      "role": "patch 0"
+     },
+     {
+      "index": 13,
+      "today": [
+       213,
+       197,
+       131
+      ],
+      "proposed": [
+       206,
+       174,
+       116
+      ],
+      "role": "patch 1"
+     },
+     {
+      "index": 14,
+      "today": [
+       197,
+       172,
+       106
+      ],
+      "proposed": [
+       188,
+       154,
+       98
+      ],
+      "role": "patch 2"
+     },
+     {
+      "index": 15,
+      "today": [
+       172,
+       148,
+       74
+      ],
+      "proposed": [
+       170,
+       134,
+       82
+      ],
+      "role": "patch 3"
+     }
+    ],
+    "12": [
+     {
+      "index": 5,
+      "today": [
+       255,
+       238,
+       180
+      ],
+      "proposed": [
+       226,
+       186,
+       128
+      ],
+      "role": "rung 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       222,
+       205,
+       148
+      ],
+      "proposed": [
+       196,
+       154,
+       98
+      ],
+      "role": "rung 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       197,
+       172,
+       123
+      ],
+      "proposed": [
+       164,
+       124,
+       76
+      ],
+      "role": "rung 2"
+     },
+     {
+      "index": 8,
+      "today": [
+       172,
+       139,
+       90
+      ],
+      "proposed": [
+       128,
+       94,
+       58
+      ],
+      "role": "rung 3"
+     },
+     {
+      "index": 9,
+      "today": [
+       222,
+       222,
+       156
+      ],
+      "proposed": [
+       230,
+       198,
+       140
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       189,
+       189,
+       123
+      ],
+      "proposed": [
+       204,
+       170,
+       112
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       148,
+       148,
+       82
+      ],
+      "proposed": [
+       172,
+       138,
+       90
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       115,
+       106,
+       49
+      ],
+      "proposed": [
+       138,
+       106,
+       68
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       90,
+       82,
+       41
+      ],
+      "proposed": [
+       100,
+       74,
+       50
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       57,
+       49,
+       41
+      ],
+      "proposed": [
+       64,
+       46,
+       34
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       65,
+       65,
+       74
+      ],
+      "proposed": [
+       60,
+       46,
+       40
+      ],
+      "role": "shade 0"
+     }
+    ]
+   }
+  },
+  "rock_tunnel": {
+   "redrawn": {
+    "floor": [
+     1,
+     2,
+     17,
+     18,
+     136,
+     137,
+     138,
+     139,
+     144,
+     145,
+     146,
+     147,
+     152,
+     153,
+     154,
+     155,
+     160,
+     161,
+     162,
+     163,
+     168,
+     169,
+     170,
+     171,
+     176,
+     177,
+     178,
+     179,
+     184,
+     185,
+     186,
+     187,
+     198,
+     199,
+     214,
+     215
+    ],
+    "hole": [
+     6,
+     22,
+     23,
+     24,
+     166
+    ],
+    "dark": [
+     7
+    ],
+    "wood": [
+     8,
+     9,
+     25
+    ],
+    "rock": [
+     14,
+     15,
+     30,
+     31,
+     33,
+     34,
+     35,
+     36,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     74,
+     75,
+     76,
+     77,
+     78,
+     80,
+     81,
+     82,
+     83,
+     84,
+     85,
+     86,
+     87,
+     88,
+     89,
+     90,
+     91,
+     92,
+     93,
+     95,
+     96,
+     97,
+     98,
+     99,
+     100,
+     101,
+     102,
+     103,
+     104,
+     105,
+     106,
+     107,
+     112,
+     113,
+     114,
+     115,
+     116,
+     117,
+     118,
+     119,
+     120,
+     121,
+     122,
+     123,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     148,
+     149,
+     150,
+     151,
+     156,
+     157,
+     164,
+     167,
+     172,
+     173,
+     180,
+     182,
+     183,
+     188,
+     189,
+     194,
+     195
+    ],
+    "rung": [
+     79,
+     94
+    ],
+    "shade": [
+     181
+    ],
+    "patch": [
+     200,
+     201,
+     202,
+     203,
+     204,
+     205,
+     206,
+     207,
+     216,
+     217,
+     218,
+     219,
+     220,
+     221,
+     222,
+     223,
+     224,
+     225,
+     240,
+     241
+    ]
+   },
+   "kept_drawing": [
+    3,
+    4,
+    10,
+    11,
+    12,
+    13,
+    16,
+    19,
+    20,
+    26,
+    27,
+    28,
+    29,
+    32,
+    37,
+    110,
+    111,
+    126,
+    127,
+    142,
+    143,
+    158,
+    159,
+    165,
+    174,
+    175,
+    192,
+    193,
+    208,
+    209,
+    226,
+    227,
+    228,
+    229,
+    242,
+    243,
+    244,
+    245,
+    252,
+    253,
+    254,
+    255
+   ],
+   "objects": [
+    3,
+    4,
+    19,
+    20,
+    108,
+    109,
+    110,
+    111,
+    124,
+    125,
+    126,
+    127,
+    140,
+    141,
+    142,
+    143,
+    158,
+    159,
+    174,
+    175,
+    226,
+    227,
+    228,
+    229,
+    242,
+    243,
+    244,
+    245
+   ],
+   "compromises": [],
+   "maps": [
+    "RockTunnel_1F",
+    "RockTunnel_B1F",
+    "SixIsland_AlteringCave"
+   ],
+   "palette_proposal": {
+    "8": [
+     {
+      "index": 1,
+      "today": [
+       205,
+       189,
+       115
+      ],
+      "proposed": [
+       96,
+       102,
+       134
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       172,
+       115
+      ],
+      "proposed": [
+       80,
+       86,
+       118
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       156,
+       156,
+       115
+      ],
+      "proposed": [
+       66,
+       70,
+       102
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       131,
+       131,
+       115
+      ],
+      "proposed": [
+       52,
+       56,
+       86
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 5,
+      "today": [
+       98,
+       106,
+       90
+      ],
+      "proposed": [
+       40,
+       42,
+       70
+      ],
+      "role": "floor 4"
+     },
+     {
+      "index": 9,
+      "today": [
+       197,
+       230,
+       230
+      ],
+      "proposed": [
+       140,
+       146,
+       192
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       180,
+       213,
+       213
+      ],
+      "proposed": [
+       112,
+       118,
+       166
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       172,
+       189,
+       197
+      ],
+      "proposed": [
+       88,
+       92,
+       140
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       131,
+       156,
+       156
+      ],
+      "proposed": [
+       66,
+       70,
+       114
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       90,
+       115,
+       115
+      ],
+      "proposed": [
+       48,
+       50,
+       90
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       74,
+       82,
+       82
+      ],
+      "proposed": [
+       32,
+       32,
+       66
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       49,
+       57,
+       57
+      ],
+      "proposed": [
+       24,
+       24,
+       46
+      ],
+      "role": "shade 0"
+     }
+    ],
+    "9": [
+     {
+      "index": 1,
+      "today": [
+       205,
+       189,
+       115
+      ],
+      "proposed": [
+       96,
+       102,
+       134
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 2,
+      "today": [
+       172,
+       172,
+       115
+      ],
+      "proposed": [
+       80,
+       86,
+       118
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 3,
+      "today": [
+       156,
+       156,
+       115
+      ],
+      "proposed": [
+       66,
+       70,
+       102
+      ],
+      "role": "floor 2"
+     },
+     {
+      "index": 4,
+      "today": [
+       131,
+       131,
+       115
+      ],
+      "proposed": [
+       52,
+       56,
+       86
+      ],
+      "role": "floor 3"
+     },
+     {
+      "index": 5,
+      "today": [
+       238,
+       222,
+       123
+      ],
+      "proposed": [
+       176,
+       182,
+       206
+      ],
+      "role": "wood 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       255,
+       0,
+       255
+      ],
+      "proposed": [
+       150,
+       156,
+       186
+      ],
+      "role": "wood 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       222,
+       180,
+       57
+      ],
+      "proposed": [
+       126,
+       132,
+       164
+      ],
+      "role": "wood 2"
+     },
+     {
+      "index": 8,
+      "today": [
+       189,
+       148,
+       57
+      ],
+      "proposed": [
+       104,
+       108,
+       142
+      ],
+      "role": "wood 3"
+     },
+     {
+      "index": 9,
+      "today": [
+       148,
+       115,
+       74
+      ],
+      "proposed": [
+       82,
+       86,
+       120
+      ],
+      "role": "wood 4"
+     },
+     {
+      "index": 10,
+      "today": [
+       106,
+       106,
+       82
+      ],
+      "proposed": [
+       60,
+       62,
+       96
+      ],
+      "role": "wood 5"
+     },
+     {
+      "index": 11,
+      "today": [
+       74,
+       74,
+       74
+      ],
+      "proposed": [
+       30,
+       30,
+       54
+      ],
+      "role": "dark 1"
+     },
+     {
+      "index": 12,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       4,
+       4,
+       12
+      ],
+      "role": "hole 0"
+     },
+     {
+      "index": 13,
+      "today": [
+       98,
+       139,
+       197
+      ],
+      "proposed": [
+       58,
+       86,
+       140
+      ],
+      "role": "water 0"
+     },
+     {
+      "index": 14,
+      "today": [
+       74,
+       115,
+       172
+      ],
+      "proposed": [
+       44,
+       68,
+       118
+      ],
+      "role": "water 1"
+     },
+     {
+      "index": 15,
+      "today": [
+       57,
+       98,
+       156
+      ],
+      "proposed": [
+       32,
+       52,
+       96
+      ],
+      "role": "water 2"
+     }
+    ],
+    "10": [
+     {
+      "index": 4,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       4,
+       4,
+       12
+      ],
+      "role": "hole 0"
+     },
+     {
+      "index": 5,
+      "today": [
+       238,
+       238,
+       180
+      ],
+      "proposed": [
+       176,
+       182,
+       206
+      ],
+      "role": "rung 0"
+     },
+     {
+      "index": 6,
+      "today": [
+       230,
+       213,
+       123
+      ],
+      "proposed": [
+       146,
+       152,
+       184
+      ],
+      "role": "rung 1"
+     },
+     {
+      "index": 7,
+      "today": [
+       205,
+       180,
+       98
+      ],
+      "proposed": [
+       116,
+       120,
+       156
+      ],
+      "role": "rung 2"
+     },
+     {
+      "index": 8,
+      "today": [
+       156,
+       156,
+       115
+      ],
+      "proposed": [
+       88,
+       92,
+       128
+      ],
+      "role": "rung 3"
+     },
+     {
+      "index": 9,
+      "today": [
+       197,
+       230,
+       230
+      ],
+      "proposed": [
+       140,
+       146,
+       192
+      ],
+      "role": "rock 0"
+     },
+     {
+      "index": 10,
+      "today": [
+       180,
+       213,
+       213
+      ],
+      "proposed": [
+       112,
+       118,
+       166
+      ],
+      "role": "rock 1"
+     },
+     {
+      "index": 11,
+      "today": [
+       172,
+       189,
+       197
+      ],
+      "proposed": [
+       88,
+       92,
+       140
+      ],
+      "role": "rock 2"
+     },
+     {
+      "index": 12,
+      "today": [
+       131,
+       156,
+       156
+      ],
+      "proposed": [
+       66,
+       70,
+       114
+      ],
+      "role": "rock 3"
+     },
+     {
+      "index": 13,
+      "today": [
+       90,
+       115,
+       115
+      ],
+      "proposed": [
+       48,
+       50,
+       90
+      ],
+      "role": "rock 4"
+     },
+     {
+      "index": 14,
+      "today": [
+       74,
+       82,
+       82
+      ],
+      "proposed": [
+       32,
+       32,
+       66
+      ],
+      "role": "rock 5"
+     },
+     {
+      "index": 15,
+      "today": [
+       49,
+       57,
+       57
+      ],
+      "proposed": [
+       24,
+       24,
+       46
+      ],
+      "role": "shade 0"
+     }
+    ],
+    "11": [
+     {
+      "index": 2,
+      "today": [
+       172,
+       172,
+       115
+      ],
+      "proposed": [
+       96,
+       102,
+       134
+      ],
+      "role": "floor 0"
+     },
+     {
+      "index": 3,
+      "today": [
+       156,
+       156,
+       115
+      ],
+      "proposed": [
+       80,
+       86,
+       118
+      ],
+      "role": "floor 1"
+     },
+     {
+      "index": 13,
+      "today": [
+       164,
+       156,
+       98
+      ],
+      "proposed": [
+       58,
+       60,
+       96
+      ],
+      "role": "patch 0"
+     },
+     {
+      "index": 14,
+      "today": [
+       148,
+       139,
+       98
+      ],
+      "proposed": [
+       50,
+       52,
+       86
+      ],
+      "role": "patch 1"
+     },
+     {
+      "index": 15,
+      "today": [
+       115,
+       123,
+       98
+      ],
+      "proposed": [
+       40,
+       42,
+       74
+      ],
+      "role": "patch 2"
+     }
+    ],
+    "12": [
+     {
+      "index": 15,
+      "today": [
+       0,
+       0,
+       0
+      ],
+      "proposed": [
+       4,
+       4,
+       12
+      ],
+      "role": "hole 0"
+     }
+    ]
+   }
+  }
+ }
+}
