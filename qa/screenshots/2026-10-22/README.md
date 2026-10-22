@@ -223,3 +223,183 @@ T-438 census: people done; doors, field effects, weather, the general ground, in
 T-438 census: people done; doors, field effects, weather, the general ground, interiors and caves still vanilla
 
 ![22Oct2026 - T438 - the overworld art census - 37](22Oct2026%20-%20T438%20-%20the%20overworld%20art%20census%20-%2037.png)
+
+### 22Oct2026 - T433 - items move feelings - 38
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 38](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2038.png)
+
+### 22Oct2026 - T433 - items move feelings - 39
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 39](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2039.png)
+
+### 22Oct2026 - T433 - items move feelings - 40
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 40](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2040.png)
+
+### 22Oct2026 - T433 - items move feelings - 41
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 41](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2041.png)
+
+### 22Oct2026 - T433 - items move feelings - 42
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 42](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2042.png)
+
+### 22Oct2026 - T433 - items move feelings - 43
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 43](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2043.png)
+
+### 22Oct2026 - T433 - items move feelings - 44
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 44](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2044.png)
+
+### 22Oct2026 - T433 - items move feelings - 45
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 45](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2045.png)
+
+### 22Oct2026 - T433 - items move feelings - 46
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 46](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2046.png)
+
+### 22Oct2026 - T433 - items move feelings - 47
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 47](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2047.png)
+
+### 22Oct2026 - T433 - items move feelings - 48
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 48](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2048.png)
+
+### 22Oct2026 - T433 - items move feelings - 49
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 49](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2049.png)
+
+### 22Oct2026 - T433 - items move feelings - 50
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 50](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2050.png)
+
+### 22Oct2026 - T433 - items move feelings - 51
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 51](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2051.png)
+
+### 22Oct2026 - T433 - items move feelings - 52
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 52](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2052.png)
+
+### 22Oct2026 - T433 - items move feelings - 53
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 53](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2053.png)
+
+### 22Oct2026 - T433 - items move feelings - 54
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 54](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2054.png)
+
+### 22Oct2026 - T433 - items move feelings - 55
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 55](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2055.png)
+
+### 22Oct2026 - T433 - items move feelings - 56
+
+v11.309.3 T-433: items and moments move feelings and friendship -- 14 stops CONTENT, 5 CONTEXT
+
+![22Oct2026 - T433 - items move feelings - 56](22Oct2026%20-%20T433%20-%20items%20move%20feelings%20-%2056.png)
+
+### 22Oct2026 - T439 - the cast drawn - 57
+
+T-439 draft: the cast drawn, the moth and secretary bird strengthened
+
+![22Oct2026 - T439 - the cast drawn - 57](22Oct2026%20-%20T439%20-%20the%20cast%20drawn%20-%2057.png)
+
+### 22Oct2026 - T439 - the cast drawn - 58
+
+T-439 draft: the cast drawn, the moth and secretary bird strengthened
+
+![22Oct2026 - T439 - the cast drawn - 58](22Oct2026%20-%20T439%20-%20the%20cast%20drawn%20-%2058.png)
+
+### 22Oct2026 - T439 - the cast drawn - 59
+
+T-439 draft: the cast drawn, the moth and secretary bird strengthened
+
+![22Oct2026 - T439 - the cast drawn - 59](22Oct2026%20-%20T439%20-%20the%20cast%20drawn%20-%2059.png)
+
+### 22Oct2026 - T439 - the cast drawn - 60
+
+T-439 draft: the cast drawn, the moth and secretary bird strengthened
+
+![22Oct2026 - T439 - the cast drawn - 60](22Oct2026%20-%20T439%20-%20the%20cast%20drawn%20-%2060.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 61
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 61](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2061.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 62
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 62](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2062.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 63
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 63](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2063.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 64
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 64](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2064.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 65
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 65](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2065.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 66
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 66](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2066.png)
+
+### 22Oct2026 - T438 - batch A doors draft - 67
+
+T-438 batch A draft: 30 doors and the arrow, approved
+
+![22Oct2026 - T438 - batch A doors draft - 67](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2067.png)
