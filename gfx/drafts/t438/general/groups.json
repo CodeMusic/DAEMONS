@@ -11782,7 +11782,7 @@
   "344: water left: its indices do not keep their order in every row that draws it",
   "347: water left: its indices do not keep their order in every row that draws it"
  ],
- "pass": 2,
+ "pass": 3,
  "recolour": {
   "count": 120,
   "from": {
@@ -11987,27 +11987,24 @@
    ]
   }
  },
+ "roof": "ribbed",
  "seams": {
-  "closed": 187845,
-  "opened": 140104,
+  "closed": 191358,
+  "opened": 118179,
   "pairs": 20986,
   "pixel_pairs": 3269952,
   "worst": [
-   [
-    "115 115 i gTileset_SeviiIslands67",
-    2380
-   ],
-   [
-    "851 851 i gTileset_SeviiIslands123",
-    1935
-   ],
    [
     "113 113 i gTileset_SeviiIslands67",
     1472
    ],
    [
+    "477 476 h gTileset_CinnabarIsland",
+    1330
+   ],
+   [
     "849 860 v gTileset_SeviiIslands123",
-    1422
+    1264
    ],
    [
     "113 124 v gTileset_SeviiIslands67",
@@ -12018,12 +12015,8 @@
     1133
    ],
    [
-    "860 860 h gTileset_SeviiIslands123",
-    1076
-   ],
-   [
-    "124 124 h gTileset_SeviiIslands67",
-    1064
+    "849 851 h gTileset_SeviiIslands123",
+    1030
    ],
    [
     "650 650 i gTileset_IndigoPlateau",
@@ -12038,8 +12031,16 @@
     971
    ],
    [
-    "849 820 v gTileset_SeviiIslands123",
-    940
+    "115 115 i gTileset_SeviiIslands67",
+    952
+   ],
+   [
+    "113 113 i gTileset_CeruleanCity",
+    894
+   ],
+   [
+    "821 821 i gTileset_SeviiIslands123",
+    845
    ]
   ]
  },
@@ -12096,6 +12097,62 @@
    [
     "113 113 v gTileset_SeviiIslands45",
     1088
+   ]
+  ]
+ },
+ "seams_pass2": {
+  "closed": 187845,
+  "opened": 140104,
+  "pairs": 20986,
+  "pixel_pairs": 3269952,
+  "worst": [
+   [
+    "115 115 i gTileset_SeviiIslands67",
+    2380
+   ],
+   [
+    "851 851 i gTileset_SeviiIslands123",
+    1935
+   ],
+   [
+    "113 113 i gTileset_SeviiIslands67",
+    1472
+   ],
+   [
+    "849 860 v gTileset_SeviiIslands123",
+    1422
+   ],
+   [
+    "113 124 v gTileset_SeviiIslands67",
+    1215
+   ],
+   [
+    "113 113 i gTileset_SeviiIslands123",
+    1133
+   ],
+   [
+    "860 860 h gTileset_SeviiIslands123",
+    1076
+   ],
+   [
+    "124 124 h gTileset_SeviiIslands67",
+    1064
+   ],
+   [
+    "650 650 i gTileset_IndigoPlateau",
+    1025
+   ],
+   [
+    "113 124 v gTileset_CeruleanCity",
+    981
+   ],
+   [
+    "849 849 i gTileset_SeviiIslands123",
+    971
+   ],
+   [
+    "849 820 v gTileset_SeviiIslands123",
+    940
    ]
   ]
  },

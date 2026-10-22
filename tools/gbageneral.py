@@ -10,9 +10,12 @@
     python3 tools/gbageneral.py --write --approved # into the engine -- NOT YET: batch C is a draft until the user
                                                    #   has seen the sheets; without --approved --write refuses
 
-PASS 2 (the user, 2026-10-22: "a bolder second pass -- rock that reads as solid stone with a look of our own, and
-motifs for fences, bushes, hedges and the blue house"). --draft now writes pass 2 into DIR (pass 1 beside it in
-DIR/pass1/) and --write --approved would write pass 2. What pass 2 adds over everything below:
+PASS 2 AND 3 (the user, 2026-10-22: "a bolder second pass -- rock that reads as solid stone with a look of our own, and
+motifs for fences, bushes, hedges and the blue house"; on pass 2: the motifs approved with the ribbed roof, the rock
+to go "chunkier" -- big irregular blocks and boulders, no long parallel stripes). --draft now writes PASS 3 into DIR
+(pass 1 and pass 2 beside it in DIR/pass1/ and DIR/pass2/) and --write --approved would write pass 3: pass 2's motifs,
+and the rock as redraw_rock3 draws it -- lumps of four sizes and boulders, lit tops, shaded feet, the planes read from
+each tile itself so a tile shared between blocks agrees with its neighbours in all of them. What pass 2 added:
 
     rock             DRAWN, not re-surfaced (redraw_rock): vanilla's light cut into three planes with hard edges --
                      a lit TOP (terraced: a few long shaded steps with a lit lip, running on over the blocks' edges),
@@ -24,8 +27,8 @@ DIR/pass1/) and --write --approved would write pass 2. What pass 2 adds over eve
                      signboard (planks in a frame) and SAFFRON GYM's sign (a plaque with a red header)
     a palette        PROPOSED, never written: row 1's rock ramp 9..14 as an ochre sandstone (ROCK_RECOLOUR); the map
                      sheets show it as a fourth panel and groups.json lists every tile it would touch
-    sheets           t438c2_maps_N.png (today | pass 1 | pass 2 | pass 2 recoloured, at 1x and 2x),
-                     t438c2_motifs.png (every motif's blocks at 4x), t438c2_ground_<group>.png
+    sheets           t438c3_maps_N.png (today | pass 2 | pass 3, at 1x and 2x), t438c3_rock_kit.png (the mountain
+                     kit's blocks at 5x), t438c3_motifs.png, t438c3_ground_<group>.png
 
 WHAT IS LEFT. The census (T-438) found 428 of General's 640 tiles still pixel-identical to pret's and drawn by some
 map. 56 of them sit in 416..481, which the water animations overwrite in VRAM every few frames (engine.md trap 39),
@@ -803,6 +806,171 @@ def redraw_rock(t, px, rows):
     return out
 
 
+# ================================================================== pass 3: chunky rock
+#  The user on pass 2 (2026-10-22): keep the lit tops, the dark faces and the bright rims, but "break the horizontal
+#  layers into big irregular blocks and boulders" -- varied sizes, angled cracks between masses, a few rounded
+#  boulders on the tops, no long parallel stripes; rock, not stacked planks or a mesa.
+#
+#  So: ONE pattern of stones for the whole mountain on the 16x16 torus (below), each stone one flat tone, a lit lip
+#  under the crack above it, shaded at its foot; the smallest are boulders.
+#
+#  The planes (top, shoulder or face) are read from vanilla's smoothed light as in pass 2, a scrap of one inside
+#  another joins it, and a lit plane against a darker one gets the bright rim. The light is read
+#  from the TILE ITSELF (a rock tile shared between blocks, 129 in 112 and 115, 132 in 114 and 117, is then the same
+#  wherever it is, and its edge agrees with its neighbour's because vanilla's light runs on across the joint), and a
+#  tile whose main block is an evenly lit fill (113) takes that block's one plane, from the block's mean light.
+#  The stones: four masses a block of four sizes, a weighted Voronoi on the torus with its seeds off the 8-pixel grid
+#  and off each other's half-period, so the cracks run at every angle and the masses do not fall into a lattice. Each
+#  mass is shaded as a LUMP: a lit band along its top, its body, a shaded band along its foot two pixels deep, and a
+#  dark crack under it -- so it reads as a block of stone standing up from the rest. The smallest masses are boulders:
+#  on a lit top they get a highlight inside their upper left as well.
+STONE_SEEDS = [(10.0, 9.5, 3.4), (17.5, 5.5, 1.4), (16.0, 14.5, 2.6), (7.0, 16.5, 1.2)]
+BOULDERS = {1, 3}
+MASS_TONE = {0: 0, 1: 0, 2: 1, 3: 0}
+
+
+def _stones():
+    lab = [[0] * 16 for _ in range(16)]
+    off = [[(0.0, 0.0)] * 16 for _ in range(16)]
+    for y in range(16):
+        for x in range(16):
+            best = None
+            for k, (a, b, w) in enumerate(STONE_SEEDS):
+                dx = (x + 0.5 - a + 8) % 16 - 8
+                dy = (y + 0.5 - b + 8) % 16 - 8
+                d = (dx * dx + dy * dy) ** 0.5 - w
+                if best is None or d < best[0]:
+                    best = (d, k, dx, dy)
+            lab[y][x] = best[1]
+            off[y][x] = best[2:]
+    crack = [[any(lab[y][x] < lab[(y + v) % 16][(x + u) % 16] for u, v in ((1, 0), (0, 1), (-1, 0), (0, -1)))
+              for x in range(16)] for y in range(16)]
+    same = lambda x, y, k: lab[y % 16][x % 16] == k and not crack[y % 16][x % 16]
+
+    def run(x, y, step):
+        n = 0
+        while n < 6 and same(x, y + step * (n + 1), lab[y][x]):
+            n += 1
+        return n
+    role = [[None] * 16 for _ in range(16)]
+    for y in range(16):
+        for x in range(16):
+            k = lab[y][x]
+            if crack[y][x]:
+                role[y][x] = "crack"
+                continue
+            up, down = run(x, y, -1), run(x, y, 1)
+            left = same(x - 1, y, k)
+            dx, dy = off[y][x]
+            if down == 0:
+                role[y][x] = "lo2"                    # the foot of the lump, in shadow
+            elif down == 1:
+                role[y][x] = "lo"
+            elif up == 0 or not left:
+                role[y][x] = "hi"                     # its lit top and left edge
+            elif k in BOULDERS and dx + dy < 0:
+                role[y][x] = "boulder"
+            else:
+                role[y][x] = "body"
+    return lab, role
+
+
+STONE_LAB, STONE_ROLE = _stones()
+FILL_BLOCKS = {}   # block -> the one plane its tiles take
+
+
+def find_fills():
+    """the general blocks that are rock all over and evenly lit (113): a tile drawn in one most takes one plane"""
+    R = ROCK_RAMP
+    for mid in range(len(GMT) // 16):
+        for L in (0, 1):
+            quad = entries(GMT, mid)[L * 4:L * 4 + 4]
+            means = []
+            for v in quad:
+                t = v & 0x3FF
+                px = CUR[t] if t < 640 and v >> 12 == 1 else []        # row 1's rock, not row 0's grass
+                rk = [R.index(c) for c in px if c in R]
+                means.append(sum(rk) / len(rk) if len(rk) > 56 else None)
+            if None not in means and max(means) - min(means) < 0.7:
+                FILL_BLOCKS[mid] = next(name for name, top in PLANES if sum(means) / 4 <= top)
+
+
+def redraw_rock3(t, px, rows):
+    """pass 3's stone for one tile; None when its rows do not keep the ramp's order"""
+    if not rock_rows_ok(rows):
+        return None
+    R = ROCK_RAMP
+    ox, oy = QUARTER2.get(t, (0, 0))
+    isrock = lambda x, y: 0 <= x < 8 and 0 <= y < 8 and px[y * 8 + x] in R
+    order = [p for p, _ in PLANES]
+    level = None
+    main = USE.get(t) and [b for b in USE[t]["blocks"].most_common() if b[0][0] == "general"]
+    if main and main[0][0][1] in FILL_BLOCKS:
+        level = FILL_BLOCKS[main[0][0][1]]
+    plane = {}
+    for y in range(8):
+        for x in range(8):
+            if not isrock(x, y):
+                continue
+            if level:
+                plane[(x, y)] = level
+                continue
+            acc = n = 0
+            for dy in range(-2, 3):
+                for dx in range(-2, 3):
+                    if isrock(x + dx, y + dy):
+                        acc += R.index(px[(y + dy) * 8 + x + dx])
+                        n += 1
+            plane[(x, y)] = next(name for name, top in PLANES if acc / n <= top)
+    # a scrap of one plane inside another, away from the tile's edge, joins it (block 179's light notch)
+    seen = set()
+    for c in list(plane):
+        if c in seen:
+            continue
+        comp, stack, border, nbr = [], [c], False, collections.Counter()
+        while stack:
+            x, y = stack.pop()
+            if (x, y) in seen:
+                continue
+            seen.add((x, y))
+            comp.append((x, y))
+            border |= x in (0, 7) or y in (0, 7)
+            for a, b in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if (a, b) in plane:
+                    if plane[(a, b)] == plane[(x, y)]:
+                        stack.append((a, b))
+                    else:
+                        nbr[plane[(a, b)]] += 1
+        if len(comp) < 12 and nbr and (not border or len(comp) < 5):
+            to = nbr.most_common(1)[0][0]
+            for q in comp:
+                plane[q] = to
+    sp = lambda x, y: plane[(x, y)]
+    out = list(px)
+    for y in range(8):
+        for x in range(8):
+            if not isrock(x, y):
+                continue
+            nb = [(x + dx, y + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)) if 0 <= x + dx < 8 and 0 <= y + dy < 8]
+            if any(not isrock(a, b) for a, b in nb):
+                continue                                   # the silhouette and every join: vanilla's
+            p = sp(x, y)
+            X, Y = (ox + x) % 16, (oy + y) % 16
+            role = STONE_ROLE[Y][X]
+            shift = MASS_TONE[STONE_LAB[Y][X]]
+            if role != "crack" and any(isrock(a, b) and order.index(sp(a, b)) > order.index(p) for a, b in nb):
+                role, shift = "rim", 0
+            if role == "boulder":
+                role = "hi" if p == "top" else "body"
+            if role == "lo2":
+                role, shift = "lo", shift + 1
+            v = PLANE_INDEX[p][role]
+            if shift and role in ("body", "hi", "lo"):
+                v = R[min(len(R) - 1, R.index(v) + shift)]
+            out[y * 8 + x] = v
+    return out
+
+
 QUARTER2 = {}      # pass 2: tile -> (x, y) of the quarter that draws it most (unflipped), when that is 75% of draws
 BLOCK_OF2 = {}
 
@@ -1154,7 +1322,35 @@ MAP_CROPS2 = [   # (map, x0, y0, w, h in cells, what it shows)
 ]
 
 
-def map_sheet2(crop, versions, path):
+MAP_CROPS3 = [   # pass 3's sheets: the rock
+    ("Route3", 44, 0, 40, 20, "ROUTE 3: cliffs and mountain rock"),
+    ("Route4", 0, 0, 40, 20, "ROUTE 4: MT MOON's flank"),
+    ("Route22", 0, 0, 30, 24, "ROUTE 22: cliffs and ledges"),
+    ("SevenIsland_SevaultCanyon", 0, 20, 24, 24, "SEVAULT CANYON (Sevii): a mountain in a town row"),
+]
+KIT_BLOCKS = [104, 105, 106, 112, 113, 114, 115, 117, 120, 121, 122, 124, 179]
+
+
+def kit_sheet(versions, path, Z=5):
+    """the mountain kit's blocks at 5x, one row a version: 112 and 114 beside 115 and 117 (their shared tiles), 179's
+    inner corner"""
+    F, f2 = font(15), font(12)
+    cell = 16 * Z + 6
+    im = Image.new("RGB", (130 + len(KIT_BLOCKS) * cell, 40 + len(versions) * (cell + 18)), (16, 16, 20))
+    dr = ImageDraw.Draw(im)
+    dr.text((8, 6), "T-438 C, third pass: the mountain kit, 5x   (DRAFT)", fill=(250, 214, 120), font=F)
+    y = 34
+    for label, tl in versions:
+        dr.text((8, y + 30), label, fill=(220, 220, 230), font=f2)
+        for k, b in enumerate(KIT_BLOCKS):
+            dr.text((130 + k * cell, y), str(b), fill=(200, 200, 210), font=f2)
+            im.paste(block_rgb("general", b, tl, Z), (130 + k * cell, y + 14))
+        y += cell + 18
+    im.save(path)
+    return path
+
+
+def map_sheet2(crop, versions, path, which="second"):
     """one map crop: every version side by side at 1x, then again at 2x"""
     name, x0, y0, w, h, why = crop
     F, f2 = font(15), font(12)
@@ -1170,7 +1366,7 @@ def map_sheet2(crop, versions, path):
         H = 40 + a.height + 30 + ((len(shots) + 1) // 2) * (a.height * 2 + 30) + 10
     im = Image.new("RGB", (W, H), (16, 16, 20))
     dr = ImageDraw.Draw(im)
-    dr.text((8, 6), "T-438 C, second pass   " + why + "   (DRAFT)", fill=(250, 214, 120), font=F)
+    dr.text((8, 6), "T-438 C, %s pass   %s   (DRAFT)" % (which, why), fill=(250, 214, 120), font=F)
     y = 30
     for k, (label, s) in enumerate(shots):
         dr.text((8 + k * (a.width + gap), y), label + "  1x", fill=(220, 220, 230), font=f2)
@@ -1501,13 +1697,13 @@ def motif_sheet(new_tiles, path, Z=4):
     return path
 
 
-def redraw2(t, px, rows, group, first):
-    """pass 2 over pass 1: px is vanilla's tile, first is pass 1's drawing of it. A motif is drawn whole; rock is
-    redrawn as stone, and everything else in the tile keeps pass 1"""
+def redraw2(t, px, rows, group, first, third=False):
+    """pass 2 (or 3) over pass 1: px is vanilla's tile, first is pass 1's drawing of it. A motif is drawn whole; rock
+    is redrawn as stone, and everything else in the tile keeps pass 1"""
     if t in MOTIFS:
         return MOTIFS[t](t, px, rows)
     if group in ("cliffs", "ledges", "water", "anim"):
-        r = redraw_rock(t, px, rows)
+        r = (redraw_rock3 if third else redraw_rock)(t, px, rows)
         if r is not None:
             return [r[i] if px[i] in ROCK_RAMP else first[i] for i in range(64)]
     return first
@@ -1532,11 +1728,12 @@ def prepare():
             if bl:
                 BLOCK_OF[t] = bl
     place_quarters(use)
+    find_fills()
     return use, nlay, mt_seen
 
 
-def build(use, vanilla, second):
-    """(by_group, new_tiles, strips, notes) for pass 1, or with second for pass 2"""
+def build(use, vanilla, second, third=False):
+    """(by_group, new_tiles, strips, notes) for pass 1, or with second for pass 2 (and third for pass 3)"""
     by_group = collections.defaultdict(list)
     new_tiles = [list(p) for p in CUR]
     all_notes = []
@@ -1549,7 +1746,7 @@ def build(use, vanilla, second):
         else:
             new, notes = redraw(t, CUR[t], u["rows"], g)
             if second:
-                new = redraw2(t, CUR[t], u["rows"], g, new)
+                new = redraw2(t, CUR[t], u["rows"], g, new, third)
             all_notes += ["%d: %s" % (t, n) for n in notes]
             new_tiles[t] = new
         by_group[g].append({"tile": t, "key": key, "nmaps": len(u["maps"]), "first": u["maps"][0] if u["maps"] else None,
@@ -1570,7 +1767,7 @@ def build(use, vanilla, second):
                     continue                     # gbawater.py's, already ours
                 new, notes = redraw(it["tile"], px, use[it["tile"]]["rows"], "anim")
                 if second:
-                    new = redraw2(it["tile"], px, use[it["tile"]]["rows"], "anim", new)
+                    new = redraw2(it["tile"], px, use[it["tile"]]["rows"], "anim", new, third)
                 put_tile(frames[f], k, new)
                 if f == 0:
                     it["new"] = new
@@ -1614,20 +1811,23 @@ def main():
           (nlay, len(drawn), len(vanilla)))
 
     by_group1, new1, strips1, _ = build(use, vanilla, False)
-    by_group, new_tiles, strips, all_notes = build(use, vanilla, True)
+    by_group2, new2, strips2, _ = build(use, vanilla, True)
+    by_group, new_tiles, strips, all_notes = build(use, vanilla, True, True)     # pass 3: the candidate
 
     order = [k for k, _, _ in GROUPS]
-    print("  %-10s %5s %6s %6s %8s  %-28s %s" % ("group", "tiles", "pass1", "pass2", "maps", "first seen", "what"))
+    print("  %-10s %5s %6s %6s %6s %8s  %-28s %s" % ("group", "tiles", "pass1", "pass2", "pass3", "maps", "first seen",
+                                                    "what"))
     for g in order:
         items = by_group.get(g, [])
         if not items:
             continue
         base = lambda it: it.get("van") or CUR[it["tile"]]
         n1 = sum(1 for it in by_group1[g] if it["new"] != base(it))
-        n2 = sum(1 for it in items if it["new"] != base(it))
+        n2 = sum(1 for it in by_group2[g] if it["new"] != base(it))
+        n3 = sum(1 for it in items if it["new"] != base(it))
         maps = set(m for it in items for m in it["maps"])
         firsts = sorted((it for it in items if it["first"]), key=lambda it: -len(it["maps"]))
-        print("  %-10s %5d %6d %6d %8d  %-28s %s" % (g, len(items), n1, n2, len(maps),
+        print("  %-10s %5d %6d %6d %6d %8d  %-28s %s" % (g, len(items), n1, n2, n3, len(maps),
                                                       firsts[0]["first"] if firsts else "-", TITLE[g]))
     print("  %d tiles in all; %d notes:" % (sum(len(v) for v in by_group.values()), len(all_notes)))
     for n in all_notes:
@@ -1654,11 +1854,13 @@ def main():
 
     os.makedirs(SHEETS, exist_ok=True)
     save_draft(new1, strips1, os.path.join(DRAFT, "pass1"))
-    draft_png = save_draft(new_tiles, strips, DRAFT)
+    save_draft(new2, strips2, os.path.join(DRAFT, "pass2"))
+    save_draft(new_tiles, strips, DRAFT)
     print("  measuring seams over every block pair the maps place ...")
     seams1 = seam_measure(new1, mt_seen)
+    seams2 = seam_measure(new2, mt_seen)
     seams = seam_measure(new_tiles, mt_seen)
-    for name, sm in (("pass 1", seams1), ("pass 2", seams)):
+    for name, sm in (("pass 1", seams1), ("pass 2", seams2), ("pass 3", seams)):
         print("  seams, %s: %d block pairs and joints, %d pixel pairs across them; %d opened, %d closed" %
               (name, sm["pairs"], sm["pixel_pairs"], sm["opened"], sm["closed"]))
     for k, n in seams["worst"]:
@@ -1667,7 +1869,8 @@ def main():
                    "changed": it["new"] != (it.get("van") or VAN[it["tile"]]), "motif": it["tile"] in MOTIFS}
                   for it in by_group.get(g, [])]
               for g in order}
-    json.dump({"pass": 2, "groups": groups, "titles": TITLE, "notes": all_notes, "seams": seams, "seams_pass1": seams1,
+    json.dump({"pass": 3, "groups": groups, "titles": TITLE, "notes": all_notes, "seams": seams, "seams_pass1": seams1,
+               "seams_pass2": seams2, "roof": ROOF_STYLE,
                "motifs": MOTIF_TILES, "recolour": RECOLOUR_REPORT()},
               open(os.path.join(DRAFT, "groups.json"), "w"), indent=1, sort_keys=True)
     names = []
@@ -1677,14 +1880,14 @@ def main():
             continue
         for part in range(0, len(items), 60):
             names.append(group_sheet(g, items[part:part + 60], 4,
-                                     os.path.join(SHEETS, "t438c2_ground_%s%s.png" % (g, "" if part == 0 else "_%d" % (part // 60 + 1)))))
-    versions = [("TODAY", CUR, None, None), ("PASS 1", new1, strips1, None), ("PASS 2", new_tiles, strips, None)]
-    if RECOLOUR:
-        versions.append(("PASS 2, RECOLOURED", new_tiles, strips, RECOLOUR))
-    for k, crop in enumerate(MAP_CROPS2):
-        names.append(map_sheet2(crop, versions, os.path.join(SHEETS, "t438c2_maps_%d.png" % (k + 1))))
-    names.append(motif_sheet(new_tiles, os.path.join(SHEETS, "t438c2_motifs.png")))
-    print("  drafts in %s (pass 1 in pass1/); sheets:\n    %s" % (DRAFT, "\n    ".join(names)))
+                                     os.path.join(SHEETS, "t438c3_ground_%s%s.png" % (g, "" if part == 0 else "_%d" % (part // 60 + 1)))))
+    versions = [("TODAY", CUR, None, None), ("PASS 2", new2, strips2, None), ("PASS 3", new_tiles, strips, None)]
+    for k, crop in enumerate(MAP_CROPS3):
+        names.append(map_sheet2(crop, versions, os.path.join(SHEETS, "t438c3_maps_%d.png" % (k + 1)), "third"))
+    names.append(kit_sheet([("TODAY", CUR), ("PASS 2", new2), ("PASS 3", new_tiles)],
+                           os.path.join(SHEETS, "t438c3_rock_kit.png")))
+    names.append(motif_sheet(new_tiles, os.path.join(SHEETS, "t438c3_motifs.png")))
+    print("  drafts in %s (pass 1 in pass1/, pass 2 in pass2/); sheets:\n    %s" % (DRAFT, "\n    ".join(names)))
     return 0
 
 
