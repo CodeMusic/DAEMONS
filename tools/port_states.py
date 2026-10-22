@@ -286,7 +286,10 @@ OVERRIDES = [
 
     #  ViridianCity_School is OUR writing and it still used the body words.
     ("Burned, it hits softer and loses HP", "Overheated, it hits softer and"),
-    ("each turn.", "loses HP each turn."),
+    #  T-433/T-441 drift: anchored to the START of a literal (\x02 joins them). Bare, it matched "each turn." inside
+    #  any later sentence -- the feelings' "checks behind you at each turn." and NIGHTMARE's "lose HP each turn." --
+    #  and wrote "loses HP" into the middle of them.
+    ("\x02each turn.", "\x02loses HP each turn."),
 
     #  Lurid gym, two literals of one sentence.
     ("Poison brings steady doom. Sleep", "LEAKING brings steady doom."),
