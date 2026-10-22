@@ -547,3 +547,33 @@ T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs 
 T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
 
 ![22Oct2026 - T438 - batch C ground draft - 91](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2091.png)
+
+### 22Oct2026 - T438 - the doors built - 92
+
+v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens gold; CRYSTAL's lab handles go with the leaves; no stale frames on CHECKPOINT 2F or SAFFRON
+
+![22Oct2026 - T438 - the doors built - 92](22Oct2026%20-%20T438%20-%20the%20doors%20built%20-%2092.png)
+
+### 22Oct2026 - T438 - the doors built - 93
+
+v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens gold; CRYSTAL's lab handles go with the leaves; no stale frames on CHECKPOINT 2F or SAFFRON
+
+![22Oct2026 - T438 - the doors built - 93](22Oct2026%20-%20T438%20-%20the%20doors%20built%20-%2093.png)
+
+### 22Oct2026 - T438 - the doors built - 94
+
+v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens gold; CRYSTAL's lab handles go with the leaves; no stale frames on CHECKPOINT 2F or SAFFRON
+
+![22Oct2026 - T438 - the doors built - 94](22Oct2026%20-%20T438%20-%20the%20doors%20built%20-%2094.png)
+
+### 22Oct2026 - T438 - the doors built - 95
+
+v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens gold; CRYSTAL's lab handles go with the leaves; no stale frames on CHECKPOINT 2F or SAFFRON
+
+![22Oct2026 - T438 - the doors built - 95](22Oct2026%20-%20T438%20-%20the%20doors%20built%20-%2095.png)
+
+### 22Oct2026 - T438 - the doors built - 96
+
+v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens gold; CRYSTAL's lab handles go with the leaves; no stale frames on CHECKPOINT 2F or SAFFRON
+
+![22Oct2026 - T438 - the doors built - 96](22Oct2026%20-%20T438%20-%20the%20doors%20built%20-%2096.png)
