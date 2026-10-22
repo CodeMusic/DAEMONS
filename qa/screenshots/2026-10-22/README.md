@@ -403,3 +403,57 @@ T-438 batch A draft: 30 doors and the arrow, approved
 T-438 batch A draft: 30 doors and the arrow, approved
 
 ![22Oct2026 - T438 - batch A doors draft - 67](22Oct2026%20-%20T438%20-%20batch%20A%20doors%20draft%20-%2067.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 68
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 68](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2068.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 69
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 69](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2069.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 70
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 70](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2070.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 71
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 71](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2071.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 72
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 72](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2072.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 73
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 73](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2073.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 74
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 74](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2074.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 75
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 75](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2075.png)
+
+### 22Oct2026 - T438 - batch B field effects draft - 76
+
+T-438 batch B draft: field effects and weather, vanilla beside ours, in place
+
+![22Oct2026 - T438 - batch B field effects draft - 76](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2076.png)
