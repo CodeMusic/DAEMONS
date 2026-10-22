@@ -53,6 +53,7 @@ TREE_BOT_OVER_TREE = {(True, True): (0x014, 0x015), (False, True): (0x016, 0x015
 TREE_BOT_OVER_GROUND = {(True, True): (0x024, 0x025), (False, True): (0x026, 0x025), (True, False): (0x024, 0x027),
                         (False, False): (0x026, 0x027)}
 LONE_TREE = (0x01E, 0x01F, 0x026, 0x027)                                        # top-left, top-right, bottom-left, -right
+CHANNEL_ROCK = (0x110, 0x111, 0x118, 0x119)                                     # T-434: a rock in a surfable channel
 BUSH = 0x005
 
 #  T-337 (the user, 2026-10-01): A GROVE'S TREE IS SUBTLY NOT LIKE THE OTHERS. Where an ordinary tree's trunk has two
@@ -75,7 +76,11 @@ TELL_TILES = {626: (0x57, {(7, 0): 6, (7, 1): 6, (7, 2): 6, (7, 3): 6}),        
               620: (0x1A7, {(x, y): 11 for x in (0, 1) for y in (4, 5, 6)})}
 #  The metatile: plain one -> (its grove twin, {tile it uses: tile the twin uses}). Flip and palette bits carry over.
 TELL = {0x026: (553, {0x57: 626}), 0x027: (554, {0x57: 626}), 0x025: (555, {0x57: 626}), BUSH: (556, {0x1C: 637, 0x1D: 597}),
-        0x21A: (557, {0x1A6: 605}), 0x21B: (558, {0x1A7: 620})}                   # the rock's lower half
+        0x21A: (557, {0x1A6: 605}), 0x21B: (558, {0x1A7: 620}),                   # the rock's lower half
+        #  T-434: the CHANNEL's rock, the same rock drawn on its own rounded patch of deep water (the outer sea's
+        #  0x21A/0x21B sit on a square one, which reads as a hole cut in the channel). Two slots past the last twin,
+        #  which only Emerald's unused SS TIDAL layouts (no map) name.
+        0x118: (559, {0x1A6: 605}), 0x119: (560, {0x1A7: 620})}
 
 #  The three doors that are their own area's art (T-337, second pass): VIRIDIAN FOREST's and the BERRY FOREST's big round
 #  tree (one drawing, two palettes) gets the same little door down its stub of a trunk (tile 84, the hollow's darkest
@@ -185,6 +190,18 @@ def mark_doors(raw, W, cells, table):
         if (old & 0x3FF) in table:
             struct.pack_into("<H", raw, (cy * W + cx) * 2, (old & ~0x3FF) | table[old & 0x3FF])
     return bytes(raw)
+
+
+def unmark_doors(raw, W, cells, table):
+    """RAW with each cell's grove twin turned back into its plain tree, bush or rock: a door that moved (T-434), so
+    the tell is not left on a tree, or a rock, that no longer leads anywhere."""
+    back = {twin: base for base, twin in table.items()}
+    raw = bytearray(raw)
+    for cx, cy in cells:
+        old = struct.unpack_from("<H", raw, (cy * W + cx) * 2)[0]
+        if (old & 0x3FF) in back:
+            struct.pack_into("<H", raw, (cy * W + cx) * 2, (old & ~0x3FF) | back[old & 0x3FF])
+    return bytes(raw)
 GRASS = ((0x008, 0x009), (0x010, 0x011))                                        # even rows, odd rows
 TALL = 0x00D
 COLLIDE = 0x0C00
@@ -202,7 +219,9 @@ CLEARING = [
 ]
 
 #  name, parent, how in, the way in (bg_events), where you stand after leaving, what lives there.
-#    plant  ("tree", x, y) a 2x2 at (x,y)..(x+1,y+1), or ("bush", x, y); None where a tree already stands alone
+#    plant  ("tree", x, y) a 2x2 at (x,y)..(x+1,y+1), or ("bush", x, y); None where a tree already stands alone;
+#           ("rock", x, y) a 2x2 rock in surfable water (T-434), its lower half the door, reached by Surf
+#    unmark cells where a door USED to be: their twin goes back to the plain metatile (T-434)
 GROVES = [
     dict(name="ViridianForest_Grove", parent="ViridianForest", parent_layout="LAYOUT_VIRIDIAN_FOREST",
          crop=(38, 39, 16, 17), enter_at=[(30, 57)], back_to=(30, 58), arrive=(4, 6), tell_at=[(29, 57)], fir=(10, 4),
@@ -221,8 +240,12 @@ GROVES = [
          enter_at=[(44, 10), (45, 10)], back_to=(44, 11), family="SHUPPET", levels=(24, 28)),
     dict(name="FiveIsland_Meadow_Grove", parent="FiveIsland_Meadow", synth=True, plant=None,
          enter_at=[(17, 14), (18, 14)], back_to=(17, 15), family="BELDUM", levels=(40, 44)),
-    dict(name="SixIsland_WaterPath_Grove", parent="SixIsland_WaterPath", synth=True, plant=None,
-         enter_at=[(21, 33), (22, 33)], back_to=(21, 34), family="NOSEPASS", levels=(42, 46)),
+    #  T-434 (the user, 2026-10-21): the door was vanilla's sea rock at (21,32), outside the rock wall on outer sea
+    #  that joins only GREEN PATH's top strip -- unreachable in play, and THE NEXUS's door 12 stranded you there. Now a
+    #  rock planted in the channel the WATER PATH is, at its north end; the old rock is a plain one again.
+    dict(name="SixIsland_WaterPath_Grove", parent="SixIsland_WaterPath", synth=True, plant=("rock", 11, 37),
+         enter_at=[(11, 38), (12, 38)], back_to=(11, 39), unmark=[(21, 33), (22, 33)],
+         family="NOSEPASS", levels=(42, 46)),
     dict(name="ThreeIsland_BerryForest_Grove", parent="ThreeIsland_BerryForest", synth=True, plant=None,
          enter_at=[(14, 9), (15, 9), (16, 9)], back_to=(15, 10), family="GULPIN", levels=(38, 42)),
     dict(name="OneIsland_Grove", parent="OneIsland", synth=True, plant=("bush", 16, 10),
@@ -366,7 +389,8 @@ def plant(parent_layout, how):
     W = parent_layout["width"]
     kind, x, y = how
     cells = [((x, y), BUSH)] if kind == "bush" else \
-        [((x + dx, y + dy), m) for (dx, dy), m in zip(((0, 0), (1, 0), (0, 1), (1, 1)), LONE_TREE)]
+        [((x + dx, y + dy), m) for (dx, dy), m in zip(((0, 0), (1, 0), (0, 1), (1, 1)),
+                                                      CHANNEL_ROCK if kind == "rock" else LONE_TREE)]
     changed = False
     for (cx, cy), base in cells:
         m = TELL[base][0] if base in TELL else base                             # T-337: a grove's tree, not a plain one
@@ -431,7 +455,8 @@ def main():
         praw = dict(planted).get(os.path.join(GBA, pl["blockdata_filepath"])) or \
             open(os.path.join(GBA, pl["blockdata_filepath"]), "rb").read()
         ppath = os.path.join(GBA, pl["blockdata_filepath"])
-        marked = mark_doors(praw, W, g["enter_at"] + g.get("tell_at", []), tell_for(pl))   # T-337 (tell_at: the trunk,
+        marked = mark_doors(unmark_doors(praw, W, g.get("unmark", []), tell_for(pl)),       # T-434: a door that moved
+                            W, g["enter_at"] + g.get("tell_at", []), tell_for(pl))   # T-337 (tell_at: the trunk,
         #  where the door's event stands on another cell of the tree, as VIRIDIAN FOREST's does)
         if marked != praw:
             planted = [p for p in planted if p[0] != ppath] + [(ppath, marked)]
@@ -504,11 +529,15 @@ def main():
         if not have_layout: todo.append("layout %dx%d %s" % (w, h, "drawn" if g.get("synth") else "cut from %s" % parent))
         elif layout_now != crop: todo.append("the clearing redrawn")
         if mapjson_now != mapjson: todo.append("map %s" % mapc)
+        sp = os.path.join(GBA, mdir, "scripts.inc")
+        if mapjson_now and (open(sp).read() if os.path.exists(sp) else None) != scripts:     # T-434: back_to moved
+            todo.append("its scripts (the way out lands at %s)" % (g["back_to"],))
         if not in_group: todo.append("appended to %s" % grp)
         if inc_s not in events: todo.append("scripts included")
         if not same: todo.append("its residents (%s)" % g["family"])
         if enter_label not in pscripts: todo.append("the way in, in %s's scripts" % parent)
-        if len(enter_events) != len(g["enter_at"]): todo.append("the tree's bg_event at %s" % g["enter_at"])
+        if sorted((b["x"], b["y"]) for b in enter_events) != sorted(g["enter_at"]):          # T-434: where, not how many
+            todo.append("the tree's bg_event at %s" % g["enter_at"])
         if any(p[0].endswith(pl["blockdata_filepath"]) for p in planted):
             todo.append("a %s planted at %s" % (g["plant"][0], g["plant"][1:]) if g.get("plant") else "the door's tell (T-337)")
         print("  %-30s %s" % (name, "; ".join(todo) if todo else "built, nothing to do"))

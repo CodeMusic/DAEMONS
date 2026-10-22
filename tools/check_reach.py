@@ -52,6 +52,13 @@ AND THE SEASON AND HOUR HOMES (T-407, the user, 2026-10-16). src/data/wild_shift
 daemon in some seasons and watches, on top of the map's own table -- so a row is only met if its map has grass in that
 edition, its slot is one of the twelve, and it names at least one season and one watch. Each row is read against
 wild_encounters.json, and a row that can never fire is reported.
+AND THE WORLD, ACROSS MAPS (T-434, T-435, the user, 2026-10-21: a NEXUS door left the player on outer sea). SIX ISLAND
+WATER PATH's grove door was a sea rock outside the rock wall, so its way out landed on water that joins only GREEN PATH's
+top strip, and every map-by-map walk above passed. So one walk crosses the whole world -- warps, connections, a sign
+whose script is only a warp, ledges, elevation, Surf -- and every grove's way out, every NEXUS door's arrival and its way
+home must reach a mainland town (on a Sevii island, its HARBOR); every grove's way in must be reached from there; and
+the S.S. ANNE pier's fir must be reached ON FOOT from VERMILION with the ship in port and after she sails (OnLoad's
+setmetatile patches applied by the scene var). `--world` runs this part alone, in about two seconds.
 """
 import json, os, re, struct, subprocess, sys
 from collections import deque
@@ -572,6 +579,283 @@ def legends_on_foot(root):
     return bad
 
 
+# ---- the world, across maps (T-434, T-435) ----------------------------------------------------------------------------
+
+MAINLAND_TOWNS = {"MAP_PALLET_TOWN", "MAP_VIRIDIAN_CITY", "MAP_PEWTER_CITY", "MAP_CERULEAN_CITY", "MAP_VERMILION_CITY",
+                  "MAP_LAVENDER_TOWN", "MAP_CELADON_CITY", "MAP_FUCHSIA_CITY", "MAP_SAFFRON_CITY", "MAP_CINNABAR_ISLAND"}
+SEVII = re.compile(r"MAP_(ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN)_ISLAND")
+#  The pier's two states, by the scene var the ship's departure sets (SSAnne_Exterior's OnLoad patches on it).
+PIER_SCENES = (("the ship in port", {"VAR_MAP_SCENE_VERMILION_CITY": 0}), ("the ship gone", {"VAR_MAP_SCENE_VERMILION_CITY": 2}))
+_CMP = {"lt": lambda a, b: a < b, "le": lambda a, b: a <= b, "eq": lambda a, b: a == b, "ne": lambda a, b: a != b,
+        "ge": lambda a, b: a >= b, "gt": lambda a, b: a > b}
+
+
+class World:
+    """Every map at once, as a player crosses it: on foot (elevation obeyed, ledges jumped their own way only -- before
+    collision is looked at, as CheckForObjectEventCollision does, since FireRed's ledges carry collision 1) and, unless
+    on_foot, by Surf; through warp tiles, map connections, and a sign whose script is only a warp (a grove's tree, its
+    way out). People who never move are walls. VARS sets script vars: an OnLoad `call_if_<op> VAR, n, Label` whose var
+    is named there patches the map with Label's setmetatile lines first (behaviour follows the patched metatile)."""
+
+    def __init__(self, root, vars=None, on_foot=False):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("gbaglobalindex", os.path.join(ROOT, "tools", "gbaglobalindex.py"))
+        g = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(g)
+        self.SURF, self.JUMP, self.ows = g.SURF, g.JUMP, g.mod("gbaowslots")
+        self.root, self.vars, self.on_foot = root, vars or {}, on_foot
+        load = lambda p: json.load(open(os.path.join(root, p)))
+        self.layouts = {l["id"]: l for l in load("data/layouts/layouts.json")["layouts"] if l and "id" in l}
+        self.maps, self.dir = {}, {}
+        for d in os.listdir(os.path.join(root, "data/maps")):
+            p = os.path.join(root, "data/maps", d, "map.json")
+            if os.path.exists(p):
+                j = json.load(open(p))
+                self.maps[j["id"]], self.dir[j["id"]] = j, d
+        self._m, self._tb = {}, {}
+
+    def scripts(self, mid):
+        p = os.path.join(self.root, "data/maps", self.dir[mid], "scripts.inc")
+        return open(p).read() if os.path.exists(p) else ""
+
+    @staticmethod
+    def labels(text):
+        return {m.group(1): m.group(2) for m in re.finditer(r"^(\w+)::\n(.*?)(?=^\w+::|\Z)", text, re.M | re.S)}
+
+    def patches(self, mid):
+        """{(x, y): (metatile, collision)} the OnLoad script lays under self.vars."""
+        out, lab = {}, self.labels(self.scripts(mid))
+        for name in re.findall(r"map_script MAP_SCRIPT_ON_LOAD,\s*(\w+)", self.scripts(mid)):
+            for op, var, n, to in re.findall(r"call_if_(\w+)\s+(VAR_\w+),\s*(\d+),\s*(\w+)", lab.get(name, "")):
+                if var in self.vars and op in _CMP and _CMP[op](self.vars[var], int(n)):
+                    for x, y, mt, c in re.findall(r"setmetatile\s+(\d+),\s*(\d+),\s*(\w+),\s*(\w+)", lab.get(to, "")):
+                        out[(int(x), int(y))] = (int(mt, 0) & 0x3FF, c == "TRUE")
+        return out
+
+    def behaviours(self, ts):
+        if ts not in self._tb:
+            self._tb[ts] = self.ows.tileset_behaviours(ts)
+        return self._tb[ts]
+
+    def M(self, mid):
+        if mid in self._m:
+            return self._m[mid]
+        j = self.maps[mid]
+        lay = self.layouts[j["layout"]]
+        W, H = lay["width"], lay["height"]
+        bd = bytearray(open(os.path.join(self.root, lay["blockdata_filepath"]), "rb").read())
+        for (x, y), (mt, c) in self.patches(mid).items():          # MapGridSetMetatileIdAt keeps the elevation
+            v = struct.unpack_from("<H", bd, (y * W + x) * 2)[0]
+            struct.pack_into("<H", bd, (y * W + x) * 2, (v & 0xF000) | (0x0C00 if c else 0) | mt)
+        pb, sb = self.behaviours(lay["primary_tileset"]), self.behaviours(lay["secondary_tileset"])
+        cell = lambda x, y: struct.unpack_from("<H", bd, (y * W + x) * 2)[0]
+
+        def beh(x, y):
+            mt = cell(x, y) & 0x3FF
+            return pb[mt] if mt < 640 else (sb[mt - 640] if mt - 640 < len(sb) else 0)
+        still = {(o["x"], o["y"]) for o in j.get("object_events") or []
+                 if str(o.get("flag", "0")) == "0" and "WANDER" not in str(o.get("movement_type", ""))}
+        warps = {(w["x"], w["y"]): (w["dest_map"], w["dest_warp_id"]) for w in j.get("warp_events") or []}
+        #  a sign whose script is nothing but a warp: stand where its facing says, press A, and you are there
+        lab, signs = self.labels(self.scripts(mid)), {}
+        face = {"BG_EVENT_PLAYER_FACING_NORTH": [(0, 1)], "BG_EVENT_PLAYER_FACING_SOUTH": [(0, -1)],
+                "BG_EVENT_PLAYER_FACING_EAST": [(-1, 0)], "BG_EVENT_PLAYER_FACING_WEST": [(1, 0)]}
+        for b in j.get("bg_events") or []:
+            body = lab.get(str(b.get("script")), "")
+            w = re.search(r"^\s*warp\w*\s+(MAP_\w+),\s*(\d+),\s*(\d+)\s*$", body, re.M)
+            if w and not re.search(r"\b(goto|call)", body):
+                for dx, dy in face.get(b.get("player_facing_dir"), [(0, 1), (0, -1), (1, 0), (-1, 0)]):
+                    signs.setdefault((b["x"] + dx, b["y"] + dy), []).append((w.group(1), int(w.group(2)), int(w.group(3))))
+        r = dict(j=j, W=W, H=H, cell=cell, beh=beh, still=still, warps=warps, signs=signs)
+        self._m[mid] = r
+        return r
+
+    def inside(self, m, x, y):
+        return 0 <= x < m["W"] and 0 <= y < m["H"]
+
+    def blocked(self, m, x, y):
+        return not self.inside(m, x, y) or (m["cell"](x, y) >> 10) & 3 or (x, y) in m["still"]
+
+    def state_at(self, mid, x, y):
+        if mid not in self.maps:
+            return None
+        m = self.M(mid)
+        if not self.inside(m, x, y):
+            return None
+        if m["beh"](x, y) in self.SURF:
+            return (mid, x, y, "surf")
+        return (mid, x, y, m["cell"](x, y) >> 12)
+
+    def land(self, to, nx, ny, ce):
+        """The state a step from elevation CE onto (nx, ny) of TO lands in, or None."""
+        t = self.M(to)
+        if self.blocked(t, nx, ny):
+            return None
+        if t["beh"](nx, ny) in self.SURF:
+            return None if self.on_foot else (to, nx, ny, "surf")
+        e = t["cell"](nx, ny) >> 12
+        if ce == "surf":
+            return (to, nx, ny, e)
+        if ce not in (0, 15) and e not in (0, 15) and e != ce:
+            return None
+        return (to, nx, ny, ce if e == 15 else e)
+
+    def cross(self, mid, x, y, d, ce):
+        m = self.M(mid)
+        for c in m["j"].get("connections") or []:
+            dirn, o, to = c["direction"], int(c["offset"]), c["map"]
+            if to not in self.maps:
+                continue
+            t = self.M(to)
+            if dirn == "down" and d == (0, 1) and y == m["H"] - 1: nx, ny = x - o, 0
+            elif dirn == "up" and d == (0, -1) and y == 0: nx, ny = x - o, t["H"] - 1
+            elif dirn == "right" and d == (1, 0) and x == m["W"] - 1: nx, ny = 0, y - o
+            elif dirn == "left" and d == (-1, 0) and x == 0: nx, ny = t["W"] - 1, y - o
+            else: continue
+            if not self.inside(t, nx, ny):          # a map may join several along one edge (the WATER PATH, three)
+                continue
+            return self.land(to, nx, ny, ce)
+        return None
+
+    def step(self, s, d):
+        mid, x, y, ce = s
+        m = self.M(mid)
+        nx, ny = x + d[0], y + d[1]
+        if not self.inside(m, nx, ny):
+            return self.cross(mid, x, y, d, ce)
+        b = m["beh"](nx, ny)
+        if b in self.JUMP and (nx, ny) not in m["still"]:              # the ledge first (see the class)
+            if self.JUMP[b] != d or ce == "surf":
+                return None
+            lx, ly = nx + d[0], ny + d[1]
+            if self.blocked(m, lx, ly) or m["beh"](lx, ly) in self.SURF or m["beh"](lx, ly) in self.JUMP:
+                return None
+            e = m["cell"](lx, ly) >> 12
+            return (mid, lx, ly, ce if e in (0, 15) else e)
+        return self.land(mid, nx, ny, ce)
+
+    def warp_to(self, mid, x, y):
+        dm, wid = self.M(mid)["warps"][(x, y)]
+        try:
+            w = (self.maps[dm].get("warp_events") or [])[int(wid)]
+        except (KeyError, IndexError, ValueError):
+            return None
+        return self.state_at(dm, w["x"], w["y"])
+
+    def flood(self, starts, done=lambda s: False, limit=600000):
+        """(the state DONE accepted or None, every state reached)."""
+        seen, q = set(), deque()
+        for s in starts:
+            if s and s not in seen:
+                seen.add(s)
+                q.append(s)
+        while q and len(seen) < limit:
+            s = q.popleft()
+            if done(s):
+                return s, seen
+            m = self.M(s[0])
+            nxt = [self.step(s, d) for d in ((1, 0), (-1, 0), (0, 1), (0, -1))]
+            if (s[1], s[2]) in m["warps"] and s[3] != "surf":
+                nxt.append(self.warp_to(s[0], s[1], s[2]))
+            nxt += [self.state_at(*w) for w in m["signs"].get((s[1], s[2]), [])]
+            for n in nxt:
+                if n and n not in seen:
+                    seen.add(n)
+                    q.append(n)
+        return None, seen
+
+
+def goal_maps(home):
+    """Where a player from HOME counts as safe: a mainland town, or on a Sevii island its HARBOR."""
+    m = SEVII.match(home)
+    return MAINLAND_TOWNS | ({"MAP_%s_ISLAND_HARBOR" % m.group(1)} if m else set())
+
+
+def ways_out(root):
+    """[(what, home map, start (map, x, y))]: every grove's way out (a map's own <Dir>_EventScript_Leave that warps),
+    every NEXUS door's arrival, and the NEXUS's way home."""
+    out = []
+    for d in sorted(os.listdir(os.path.join(root, "data/maps"))):
+        p = os.path.join(root, "data/maps", d, "scripts.inc")
+        if not os.path.exists(p):
+            continue
+        m = re.search(r"^%s_EventScript_Leave::.*?warp\w*\s+(MAP_\w+),\s*(\d+),\s*(\d+)" % re.escape(d), open(p).read(), re.M | re.S)
+        if m:
+            out.append(("%s's way out" % d, m.group(1), (m.group(1), int(m.group(2)), int(m.group(3)))))
+    p = os.path.join(root, "data/maps/Nexus/scripts.inc")
+    if os.path.exists(p):
+        groves = {}
+        for d in os.listdir(os.path.join(root, "data/maps")):
+            s = os.path.join(root, "data/maps", d, "scripts.inc")
+            m = os.path.exists(s) and re.search(r"^%s_EventScript_Leave::.*?warp\w*\s+(MAP_\w+)" % re.escape(d), open(s).read(), re.M | re.S)
+            if m:
+                groves[d] = m.group(1)
+        ids = {json.load(open(os.path.join(root, "data/maps", d, "map.json")))["id"]: h for d, h in groves.items()}
+        for k, (mp, x, y) in enumerate(re.findall(r"warp\w*\s+(MAP_\w+),\s*(\d+),\s*(\d+)", open(p).read())):
+            if mp == "MAP_NEXUS":                   # the fir's own way IN (EventScript_SingingFir_Door lives here)
+                continue
+            home = ids.get(mp, mp)
+            what = "THE NEXUS's door into %s" % mp if mp in ids else "THE NEXUS's way home to %s" % mp
+            out.append((what, home, (mp, int(x), int(y))))
+    return out
+
+
+def strandings(root=None):
+    """[problem] (T-434, T-435). (a) every grove's way out, every NEXUS door's arrival and the NEXUS's way home reaches a
+    mainland town, or on a Sevii island its HARBOR, with Surf (the way home on foot too, the ship in port and gone);
+    (b) every grove's way in is reached from where a player on its island or the mainland starts; (c) the pier's fir
+    is reached ON FOOT from VERMILION with the ship in port and after she sails. Ours only: vanilla has none of it."""
+    root = root or GBA
+    bad, n = [], 0
+    W = World(root)
+    for what, home, (mp, x, y) in ways_out(root):
+        n += 1
+        goals = goal_maps(home)
+        st = W.state_at(mp, x, y)
+        if not st or W.blocked(W.M(mp), x, y):
+            bad.append("%s lands on (%d,%d) of %s, which is %s" % (what, x, y, mp, "outside it" if not st else "blocked"))
+        hit, seen = W.flood([st], lambda s: s[0] in goals)
+        if not hit:
+            bad.append("%s strands the player at %s (%d,%d): no %s is reached, even with Surf -- %d maps reached"
+                       % (what, mp, x, y, "town or HARBOR" if SEVII.match(home) else "town", len({s[0] for s in seen})))
+        if "way home" in what:
+            for scene, vars in PIER_SCENES:
+                hit, _ = World(root, vars, on_foot=True).flood([W.state_at(mp, x, y)], lambda s: s[0] in goals)
+                if not hit:
+                    bad.append("%s strands a player without Surf with %s" % (what, scene))
+    #  (b) every grove's way in: a tile its sign is read from, reached from the harbor or the mainland
+    reach = {}
+    for d in sorted(W.dir.values()):
+        mid = next(k for k, v in W.dir.items() if v == d)
+        lab = W.labels(W.scripts(mid))
+        for b in W.maps[mid].get("bg_events") or []:
+            if not str(b.get("script", "")).endswith("_EventScript_Grove") or b["script"] not in lab:
+                continue
+            n += 1
+            sev = SEVII.match(mid)
+            start = ("MAP_%s_ISLAND_HARBOR" % sev.group(1)) if sev else "MAP_PALLET_TOWN"
+            if start not in reach:
+                w0 = W.maps[start]["warp_events"][0]
+                reach[start] = {(s[0], s[1], s[2]) for s in W.flood([W.state_at(start, w0["x"], w0["y"])])[1]}
+            stand = set(W.M(mid)["signs"]) & {(b["x"] + dx, b["y"] + dy) for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))}
+            if not any((mid, sx, sy) in reach[start] for sx, sy in stand):
+                bad.append("%s (%d,%d): the way into a grove is not reached from %s, even with Surf" % (d, b["x"], b["y"], start))
+    #  (c) the singing fir on the S.S. ANNE's pier, on foot
+    ss = "MAP_SSANNE_EXTERIOR"
+    if ss in W.maps:
+        firs = [(o["x"], o["y"]) for o in W.maps[ss].get("object_events") or [] if "SINGING_FIR" in o["graphics_id"]]
+        v = W.maps["MAP_VERMILION_CITY"]["warp_events"][0]
+        for scene, vars in PIER_SCENES:
+            n += 1
+            F = World(root, vars, on_foot=True)
+            beside = {(ss, fx + dx, fy + dy) for fx, fy in firs[:1] for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))}
+            hit, _ = F.flood([F.state_at("MAP_VERMILION_CITY", v["x"], v["y"])], lambda s: s[:3] in beside)
+            if not hit:
+                bad.append("the S.S. ANNE pier's fir %s is not reached on foot from VERMILION with %s" % (firs[:1], scene))
+    strandings.examined = n
+    return bad
+
+
 def main():
     up = upstream()
     rc = 0
@@ -651,6 +935,12 @@ def main():
     for b in lg_bad:
         print("  !! " + b)
         rc = 1
+    st_bad = strandings(GBA)
+    print("  %d ways out of a grove or THE NEXUS, ways in, and walks to the pier's fir read across the world (T-434, T-435)"
+          % strandings.examined)                                                       # trap 18
+    for b in st_bad:
+        print("  !! " + b)
+        rc = 1
     sh_bad, sh_rows = shift_problems(GBA)
     print("  %d season and hour rows read against the grass they sit on (T-407)" % sh_rows)   # trap 18
     for b in sh_bad:
@@ -665,4 +955,10 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--world" in sys.argv:                       # the T-434/T-435 walk alone, in a few seconds
+        problems = strandings(GBA)
+        print("  %d read across the world" % strandings.examined)
+        for b in problems:
+            print("  !! " + b)
+        sys.exit(1 if problems else 0)
     sys.exit(main())

@@ -1,0 +1,160 @@
+{
+ "rom": "debug",
+ "about": "T-434 and T-435 (2026-10-21): SIX ISLAND WATER PATH's grove door moved into the channel (surf up to the new rock, into the grove, out by its lone tree into the channel; THE NEXUS's door 12 in and out), and the S.S. ANNE pier's boardwalk (the fir walked to from VERMILION and back, with the ship in port by DEBUG's FIR IN PORT, and after she sails by FIR). Debug scratch save. The walker's `to` overshoots while surfing (a 12-frame hold carries a surfer two tiles), so on water this route holds: the rock itself stops the surfer below it.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "T-434: surf up the WATER PATH's channel to the new rock, and in",
+   "steps": [
+    "repel 250",
+    "goto SixIsland_WaterPath 11 42",
+    "shot surfing up the channel, the new rock ahead",
+    "hold UP 40",
+    "wait 30",
+    "hold UP 40",
+    "wait 30",
+    "expect SixIsland_WaterPath 11 39",
+    "shot below the new rock, facing it",
+    "look 11 38",
+    "wait 700",
+    "expect SixIsland_WaterPath_Grove 8 8",
+    "shot in the grove"
+   ]
+  },
+  {
+   "stop": "T-434: out by the grove's lone tree, into the channel",
+   "steps": [
+    "look 6 5",
+    "wait 700",
+    "expect SixIsland_WaterPath 11 39",
+    "shot landed in the channel, surfing",
+    "hold DOWN 30",
+    "wait 30",
+    "shot and on down the channel"
+   ]
+  },
+  {
+   "stop": "T-434: THE NEXUS door 12, into the WATER PATH's grove, out to the channel, and back by the fir",
+   "steps": [
+    "repel 250",
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 1",
+    "flag FLAG_FIR_IN_KEY 1",
+    "flag FLAG_NEXUS_VISITED 1",
+    "flag FLAG_SIX_ISLAND_WATER_PATH_GROVE_FOUND 1",
+    "goto Nexus 17 17",
+    "look 17 16 1",
+    "says \"stands open\"",
+    "press A",
+    "finish",
+    "wait 700",
+    "expect SixIsland_WaterPath_Grove 11 4",
+    "shot from THE NEXUS, beside the grove's fir",
+    "look 6 5",
+    "wait 700",
+    "expect SixIsland_WaterPath 11 39",
+    "shot out by the lone tree: the channel, not the outer sea",
+    "look 11 38",
+    "wait 700",
+    "expect SixIsland_WaterPath_Grove 8 8",
+    "talk 11,3 1",
+    "press A",
+    "wait 700",
+    "read",
+    "says \"like a door\"",
+    "press A",
+    "wait 700",
+    "expect Nexus 12 5",
+    "shot back in THE NEXUS"
+   ]
+  },
+  {
+   "stop": "T-435: DEBUG's FIR IN PORT -- the fir, the S.S. ANNE still in port",
+   "steps": [
+    "repel 250",
+    "poke sStartMenuCursorPos 8 6",
+    "poke sDbgPage 8 0",
+    "press START",
+    "press A",
+    "press DOWN 3",
+    "press A",
+    "press DOWN 6",
+    "press A",
+    "press DOWN 2",
+    "shot DEBUG -> JUMP -> MORE: FIR IN PORT",
+    "press A",
+    "press A 3",
+    "read",
+    "press B",
+    "wait 700",
+    "expect SSAnne_Exterior 57 27",
+    "flagis FLAG_HIDE_SS_ANNE 0",
+    "shot beside the fir, the ship in port"
+   ]
+  },
+  {
+   "stop": "T-435: along the boardwalk to VERMILION, the ship in port",
+   "steps": [
+    "to 45 9",
+    "shot on the boardwalk, the ship in port",
+    "warp MAP_VERMILION_CITY",
+    "expect VermilionCity",
+    "shot VERMILION"
+   ]
+  },
+  {
+   "stop": "T-435: VERMILION to the fir on foot, the ship in port",
+   "steps": [
+    "warp MAP_SSANNE_EXTERIOR",
+    "expect SSAnne_Exterior",
+    "to 45 8",
+    "shot the boardwalk again",
+    "to 57 27",
+    "expect SSAnne_Exterior 57 27",
+    "shot beside the fir on foot, the ship in port"
+   ]
+  },
+  {
+   "stop": "T-435: DEBUG's FIR -- the S.S. ANNE sailed",
+   "steps": [
+    "repel 250",
+    "poke sStartMenuCursorPos 8 6",
+    "poke sDbgPage 8 0",
+    "press START",
+    "press A",
+    "press DOWN 3",
+    "press A",
+    "press DOWN 6",
+    "press A",
+    "press DOWN 1",
+    "shot DEBUG -> JUMP -> MORE: FIR",
+    "press A",
+    "press A 3",
+    "read",
+    "press B",
+    "wait 700",
+    "expect SSAnne_Exterior 57 27",
+    "flagis FLAG_HIDE_SS_ANNE 1",
+    "shot beside the fir, the ship gone"
+   ]
+  },
+  {
+   "stop": "T-435: to VERMILION and back to the fir on foot, the ship gone",
+   "steps": [
+    "to 45 9",
+    "shot on the boardwalk, the ship gone",
+    "warp MAP_VERMILION_CITY",
+    "expect VermilionCity",
+    "warp MAP_SSANNE_EXTERIOR",
+    "expect SSAnne_Exterior",
+    "to 57 27",
+    "expect SSAnne_Exterior 57 27",
+    "shot beside the fir on foot, the ship gone"
+   ]
+  }
+ ]
+}

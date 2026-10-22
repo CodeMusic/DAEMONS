@@ -209,9 +209,12 @@ def walker(j, placed=(), keep_mine=False):
         """The state a step from c onto n (direction d) lands in, or None; water's elevation is 'surf'."""
         nx, ny = n
         ce = c[2]
-        if blocked(nx, ny):
+        if not inside(nx, ny) or (nx, ny) in still:
             return None
         b = beh(nx, ny)
+        #  T-434: a ledge is jumped before collision is looked at (CheckForObjectEventCollision,
+        #  field_player_avatar.c) -- FireRed's ledge metatiles carry collision 1, so testing blocked() first walled
+        #  every ledge off
         if b in JUMP:
             if JUMP[b] != d or ce == "surf":
                 return None
@@ -220,6 +223,8 @@ def walker(j, placed=(), keep_mine=False):
                 return None
             e = cell(lx, ly) >> 12
             return (lx, ly, ce if e in (0, 15) else e)
+        if blocked(nx, ny):
+            return None
         e = cell(nx, ny) >> 12
         if water(nx, ny):
             return (nx, ny, "surf")
