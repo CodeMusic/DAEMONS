@@ -1,0 +1,179 @@
+{
+  "rom": "debug",
+  "about": "T-438 batch B (the field effects and the weather, drawn to sit on our ground; tools/gbafieldfx.py) and T-441 (the grass you walk through wears the season). A ledge jumped onto a path (the shadow, the dust) and one into tall grass (jump_tall_grass); walking into ROUTE 1's tall grass in summer, then winter, spring and autumn (the DEBUG season override, poked; a map load repaints the tiles and the grass sprite's palette loads fresh) -- the blades over the feet must match the seasonal ground round them; sand prints and REVEAL's sparkle in VERMILION, the bike's tracks on the same sand; shallow water's splash on ROUTE 21; PRUNE on ROUTE 1's grass; rain, snow and fog through the weather override. The watch is held at day (gDaemonsWatchOverride 1) so every capture is in the same light. The theatre's debug scratch save; nothing is saved. Not here: the ripple -- FOUR ISLAND's puddles sit beside a person whose script the walk sets off, and SILPH's lobby fountain is where the follower steps; a route stop for it is still to find.",
+  "stops": [
+    {
+      "stop": "a ledge jumped onto ROUTE 1's path: the shadow under the jump, the dust where it lands",
+      "steps": [
+        "load debug",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto Route1 4 3",
+        "repel 999",
+        "to 4 4",
+        "close",
+        "wait 30",
+        "burst \"ledge onto the path\" 8 3 DOWN 6",
+        "wait 60",
+        "shot landed"
+      ]
+    },
+    {
+      "stop": "a ledge jumped into ROUTE 1's tall grass: jump_tall_grass where it lands",
+      "steps": [
+        "goto Route1 12 3",
+        "repel 999",
+        "to 12 4",
+        "close",
+        "wait 30",
+        "burst \"ledge into the grass\" 8 3 DOWN 6",
+        "wait 60",
+        "shot in the grass"
+      ]
+    },
+    {
+      "stop": "summer: walked into ROUTE 1's tall grass, the blades over the feet as drawn",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "wait 30",
+        "shot summer grass"
+      ]
+    },
+    {
+      "stop": "winter: the blades over the feet in the winter grass's colours",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "wait 30",
+        "shot winter grass"
+      ]
+    },
+    {
+      "stop": "spring: the blades over the feet in the spring grass's colours",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "wait 30",
+        "shot spring grass"
+      ]
+    },
+    {
+      "stop": "autumn: the blades over the feet in the autumn grass's colours",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 4",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "wait 30",
+        "shot autumn grass",
+        "poke gDaemonsSeasonOverride 8 3"
+      ]
+    },
+    {
+      "stop": "sand prints on VERMILION's sand (monkey feet), and REVEAL's sparkle over the hidden item at (14, 11)",
+      "steps": [
+        "close",
+        "flag FLAG_GOT_REVEAL 1",
+        "flag FLAG_HIDDEN_ITEM_VERMILION_CITY_MAX_ETHER 0",
+        "goto VermilionCity 8 9",
+        "repel 999",
+        "close",
+        "wait 30",
+        "burst \"sand prints\" 6 8 RIGHT 48",
+        "to 11 9",
+        "wait 90",
+        "burst \"the sparkle\" 8 12"
+      ]
+    },
+    {
+      "stop": "the bike's tracks on the same sand",
+      "steps": [
+        "keyitem ITEM_BICYCLE",
+        "register ITEM_BICYCLE",
+        "goto VermilionCity 8 9",
+        "repel 999",
+        "close",
+        "press SELECT",
+        "wait 60",
+        "shot on the bike",
+        "hold RIGHT 20",
+        "burst \"bike tracks\" 6 6",
+        "press SELECT",
+        "wait 40",
+        "close"
+      ]
+    },
+    {
+      "stop": "shallow water on ROUTE 21: the splash at the feet",
+      "steps": [
+        "close",
+        "goto Route21_North 16 24",
+        "repel 999",
+        "close",
+        "to 14 24",
+        "burst \"in the shallows\" 6 6"
+      ]
+    },
+    {
+      "stop": "PRUNE on ROUTE 1's tall grass (SEEKMUSAI, the kit's PRUNE carrier): the sprig",
+      "steps": [
+        "close",
+        "poke gDaemonsSeasonOverride 8 3",
+        "bag ITEM_HM01 1",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "open DAEMON",
+        "press DOWN 4",
+        "press A",
+        "press DOWN",
+        "shot PRUNE chosen",
+        "hold A 6",
+        "burst \"prune\" 30 8"
+      ]
+    },
+    {
+      "stop": "the weather over ROUTE 1: rain",
+      "steps": [
+        "close",
+        "poke gDaemonsWeatherOverride 8 2",
+        "goto Route1 14 29",
+        "repel 999",
+        "wait 90",
+        "shot rain"
+      ]
+    },
+    {
+      "stop": "the weather over ROUTE 1: snow",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 4",
+        "goto Route1 14 29",
+        "repel 999",
+        "wait 120",
+        "shot snow"
+      ]
+    },
+    {
+      "stop": "the weather over ROUTE 1: fog",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 5",
+        "goto Route1 14 29",
+        "repel 999",
+        "wait 120",
+        "shot fog",
+        "poke gDaemonsWeatherOverride 8 0",
+        "poke gDaemonsWatchOverride 8 0",
+        "poke gDaemonsSeasonOverride 8 0",
+        "goto Route1 14 29"
+      ]
+    }
+  ]
+}

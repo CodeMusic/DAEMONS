@@ -6,8 +6,9 @@
     python3 tools/gbafieldfx.py --draft [DIR]      # the new sheets as PNGs in DIR (gfx/drafts/t438/fieldfx/), the
                                                    #   proposed general_0.pal beside them, and the contact sheets
                                                    #   (or --sheets DIR to put those elsewhere)
-    python3 tools/gbafieldfx.py --write --approved # into the engine -- NOT YET: batch B is a draft until the user
-                                                   #   has seen the sheets; without --approved --write refuses
+    python3 tools/gbafieldfx.py --write --approved # into the engine (approved as drawn 2026-10-22, BUILT the same
+                                                   #   day); only sheets still vanilla are overwritten, so a second
+                                                   #   run writes general_0.pal alone, unchanged
 
 WHAT A FIELD EFFECT IS. A small sprite the overworld spawns where something happens on the ground: the grass parting
 round your feet, the dust when you land from a ledge, the prints you leave in sand, a ring on a pond. Each is a
