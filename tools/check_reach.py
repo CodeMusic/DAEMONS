@@ -335,6 +335,9 @@ KNOWN_UNREACHABLE = {("RocketHideout_B4F", "sign", x, y):
                      "T-427: SCORN's plants, in the office behind the door the two guards open by script -- vanilla's "
                      "SCORN, its item and its hidden items there are unreachable to the walk as well"
                      for x, y in ((16, 8), (16, 9), (22, 8), (22, 9))}
+KNOWN_UNREACHABLE[("BirthIsland_Exterior", "person", 15, 3)] = (
+    "T-439: PROTEUS is hidden on the far rock until the meteorite is solved, and walks down to (15,10) beside it "
+    "before its script can be reached -- vanilla's DEOXYS stood there with no script at all")
 
 KNOWN_SHARED = {("BirthIsland_Exterior", "PALSLOT_NPC_SPECIAL"):
                 "CRYSTAL stands only until she reads the PAYLOAD, and the meteorite is hidden until she has"}
@@ -371,7 +374,11 @@ def palette_clashes(root):
         tag, slot = re.search(r"\.paletteTag = (\w+)", body), re.search(r"\.paletteSlot = (\w+)", body)
         if tag and slot:
             info[name] = (tag.group(1), slot.group(1))
-    patched = lambda tag: tag.startswith("OBJ_EVENT_PAL_TAG_DAEMON_TYPE") or tag == "OBJ_EVENT_PAL_TAG_NPC_OWL"
+    #  patched into its slot at spawn (TryPatchDaemonTypePalette): the daemons' types, the OWL, the firs, and T-439's two
+    #  coats the season changes (the ERMINE, the PTARMIGAN)
+    patched = lambda tag: tag.startswith("OBJ_EVENT_PAL_TAG_DAEMON_TYPE") or tag in (
+        "OBJ_EVENT_PAL_TAG_NPC_OWL", "OBJ_EVENT_PAL_TAG_FIR_DIM", "OBJ_EVENT_PAL_TAG_FIR_GLOW",
+        "OBJ_EVENT_PAL_TAG_CAST_ERMINE", "OBJ_EVENT_PAL_TAG_CAST_PTARMIGAN")
     out = {}
     maps = os.path.join(root, "data/maps")
     for m in sorted(os.listdir(maps)):

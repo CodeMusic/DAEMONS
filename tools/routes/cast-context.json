@@ -1,0 +1,57 @@
+{
+ "rom": "debug",
+ "about": "T-439/T-440 in CONTEXT (LEAFGREEN debug, via scratchpad/ctxroot): PROTEUS's own shape and battle art, the grebe, the moth.",
+ "stops": [
+  {
+   "stop": "CONTEXT: THE ANNEX -- PROTEUS comes down as a shell, shifts at a touch, holds still on the third; the battle in CONTEXT's art",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsSeasonOverride 8 2",
+    "flag FLAG_CRYSTAL_READ_PAYLOAD 1",
+    "flag FLAG_FOUGHT_DEOXYS 0",
+    "flag FLAG_DEOXYS_FLEW_AWAY 0",
+    "goto BirthIsland_Exterior 15 14",
+    "repel 999",
+    "wait 30",
+    "var VAR_DEOXYS_INTERACTION_NUM 10",
+    "var VAR_DEOXYS_INTERACTION_STEP_COUNTER 0",
+    "talk 15,12",
+    "wait 60",
+    "shot PROTEUS a shell",
+    "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+    "says \"PROTEUS turns all edges.\"",
+    "shot all edges",
+    "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+    "says \"PROTEUS curls into a shell.\"",
+    "talk LOCALID_BIRTH_ISLAND_DEOXYS 1",
+    "says \"PROTEUS holds still.\"",
+    "press A",
+    "wait 400",
+    "shot the battle in CONTEXT",
+    "fight",
+    "finish",
+    "wait 60"
+   ]
+  },
+  {
+   "stop": "CONTEXT: ROUTE 20 in spring, the GREBE",
+   "steps": [
+    "goto Route20 25 8",
+    "repel 999",
+    "wait 30",
+    "burst \"the grebe in CONTEXT\" 4 40"
+   ]
+  },
+  {
+   "stop": "CONTEXT: HALFTONE's PEPPERED MOTH",
+   "steps": [
+    "goto LavenderTown 7 9",
+    "repel 999",
+    "talk LavenderTown_EventScript_PepperedMoth",
+    "says \"We're pale again. Fashion.\""
+   ]
+  }
+ ]
+}

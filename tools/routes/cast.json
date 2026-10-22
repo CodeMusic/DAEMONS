@@ -1,0 +1,254 @@
+{
+  "rom": "debug",
+  "about": "T-439 (the cast: the eleven unused sprites, placed and scripted), T-440 (PROTEUS's battle art) and T-442 (the follower after a field routine's banner). Each new person talked to -- lines and small jobs: the KINGFISHER's photograph and its NOTEBOOK page, the ERMINE's seasonal ask in summer and winter (his coat white), the PTARMIGAN's winter coat and line, the SLOTH and the MUSKRAT before and after DOLDRUM's MARK (he drifts), the MYNAH's tip, the SECRETARY BIRD, the GREBE in spring and gone in summer, PROTEUS's three touches and its battle (run from); then PRUNE and SMASH with the follower out. The theatre's debug scratch save; nothing is saved.",
+  "stops": [
+    {
+      "stop": "HALFTONE: the KINGFISHER photographs the follower (in colour) and files THE PHOTO in the NOTEBOOK",
+      "steps": [
+        "load debug",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_FLAREON",
+        "friendship 0 255",
+        "flag FLAG_NOTEBOOK_LOOSE_PHOTO 0",
+        "goto LavenderTown 16 10",
+        "repel 999",
+        "wait 60",
+        "shot the square",
+        "talk LavenderTown_EventScript_Kingfisher",
+        "says \"Hold still.\"",
+        "says \"It came out in colour.\"",
+        "says \"Nothing here ever does.\"",
+        "flagis FLAG_NOTEBOOK_LOOSE_PHOTO 1",
+        "talk LavenderTown_EventScript_Kingfisher",
+        "says \"Nothing here ever does.\""
+      ]
+    },
+    {
+      "stop": "HALFTONE: the PEPPERED MOTH",
+      "steps": [
+        "goto LavenderTown 7 9",
+        "repel 999",
+        "talk LavenderTown_EventScript_PepperedMoth",
+        "says \"Gran was pale. Then the soot.\"",
+        "says \"We're pale again. Fashion.\""
+      ]
+    },
+    {
+      "stop": "RESORT SUBLIME in summer: the ERMINE asks for this season's type and pays",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 3",
+        "var VAR_ERMINE_SEASON 0",
+        "mon 0 species SPECIES_PSYDUCK",
+        "goto FiveIsland_ResortGorgeous 35 13",
+        "repel 999",
+        "wait 30",
+        "shot the ermine in summer",
+        "talk FiveIsland_ResortGorgeous_EventScript_Ermine",
+        "says \"I paid them to paint the sea.\"",
+        "says \"This season: FLOW DAEMONS.\"",
+        "says \"Here, for looking.\"",
+        "says \"was paid\"",
+        "talk FiveIsland_ResortGorgeous_EventScript_Ermine",
+        "says \"Come back next season.\""
+      ]
+    },
+    {
+      "stop": "RESORT SUBLIME in winter: the ERMINE white, asking for FROZEN",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto FiveIsland_ResortGorgeous 35 13",
+        "repel 999",
+        "wait 30",
+        "shot the ermine in winter",
+        "talk FiveIsland_ResortGorgeous_EventScript_Ermine",
+        "says \"This season: FROZEN DAEMONS.\""
+      ]
+    },
+    {
+      "stop": "BLANCHE in winter: the PTARMIGAN white, and says so",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto PalletTown 10 13",
+        "repel 999",
+        "wait 30",
+        "shot the ptarmigan in winter",
+        "talk PalletTown_EventScript_Ptarmigan",
+        "says \"Come winter, I'm white too.\""
+      ]
+    },
+    {
+      "stop": "BLANCHE in summer: the PTARMIGAN brown, whitewashing the sign",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto PalletTown 10 13",
+        "repel 999",
+        "wait 30",
+        "shot the ptarmigan in summer",
+        "talk PalletTown_EventScript_Ptarmigan",
+        "says \"Never looked. Not my job.\"",
+        "unsaid \"Come winter\""
+      ]
+    },
+    {
+      "stop": "DOLDRUM before its MARK: the SLOTH on the pier, the MUSKRAT becalmed",
+      "steps": [
+        "flag FLAG_BADGE02_GET 0",
+        "goto CeruleanCity 23 4",
+        "repel 999",
+        "wait 30",
+        "shot the sloth",
+        "talk CeruleanCity_EventScript_Sloth",
+        "says \"I'm being still.\"",
+        "unsaid \"Mostly\"",
+        "goto CeruleanCity 3 13",
+        "repel 999",
+        "wait 30",
+        "shot the muskrat becalmed",
+        "hold RIGHT 3",
+        "wait 10",
+        "press A",
+        "press A",
+        "wait 400",
+        "shot surfing beside him",
+        "hold DOWN 8",
+        "wait 40",
+        "press A",
+        "close",
+        "says \"Been due since spring.\""
+      ]
+    },
+    {
+      "stop": "DOLDRUM with its MARK: the SLOTH's third line, the MUSKRAT drifting",
+      "steps": [
+        "close",
+        "flag FLAG_BADGE02_GET 1",
+        "goto CeruleanCity 23 4",
+        "repel 999",
+        "talk CeruleanCity_EventScript_Sloth",
+        "says \"It's different. Mostly.\"",
+        "goto CeruleanCity 3 13",
+        "repel 999",
+        "wait 30",
+        "burst \"the muskrat drifting\" 8 60"
+      ]
+    },
+    {
+      "stop": "CALLOW's CHECKPOINT: the MYNAH's tip",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 9 8",
+        "repel 999",
+        "wait 30",
+        "shot the mynah",
+        "talk ViridianCity_PokemonCenter_1F_EventScript_Mynah",
+        "says \"I've seen every STREAM. Twice.\""
+      ]
+    },
+    {
+      "stop": "UMBRA: the SECRETARY BIRD at the REVIEW BOARD's door",
+      "steps": [
+        "goto IndigoPlateau_PokemonCenter_1F 7 5",
+        "repel 999",
+        "wait 30",
+        "shot the secretary bird",
+        "talk IndigoPlateau_PokemonCenter_1F_EventScript_SecretaryBird"
+      ]
+    },
+    {
+      "stop": "ROUTE 20 in spring: the GREBE and her chick",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto Route20 25 8",
+        "repel 999",
+        "wait 30",
+        "burst \"the grebe swimming\" 6 40"
+      ]
+    },
+    {
+      "stop": "ROUTE 20 in summer: no GREBE",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto Route20 25 8",
+        "repel 999",
+        "wait 30",
+        "shot no grebe in summer"
+      ]
+    },
+    {
+      "stop": "THE ANNEX: PROTEUS comes down in CONTENT's shape, shifts at a touch, holds still on the third, and the battle starts",
+      "steps": [
+        "flag FLAG_CRYSTAL_READ_PAYLOAD 1",
+        "flag FLAG_FOUGHT_DEOXYS 0",
+        "flag FLAG_DEOXYS_FLEW_AWAY 0",
+        "goto BirthIsland_Exterior 15 14",
+        "repel 999",
+        "wait 30",
+        "var VAR_DEOXYS_INTERACTION_NUM 10",
+        "var VAR_DEOXYS_INTERACTION_STEP_COUNTER 0",
+        "talk 15,12",
+        "wait 60",
+        "shot PROTEUS all edges",
+        "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+        "says \"PROTEUS curls into a shell.\"",
+        "shot a shell",
+        "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+        "says \"PROTEUS turns all edges.\"",
+        "talk LOCALID_BIRTH_ISLAND_DEOXYS 1",
+        "says \"PROTEUS holds still.\"",
+        "press A",
+        "wait 400",
+        "shot the battle",
+        "fight",
+        "finish",
+        "wait 60",
+        "shot after"
+      ]
+    },
+    {
+      "stop": "T-442: PRUNE on ROUTE 1's grass with the follower out -- no black silhouette after the banner",
+      "steps": [
+        "close",
+        "poke gDaemonsSeasonOverride 8 3",
+        "bag ITEM_HM01 1",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "wait 30",
+        "shot follower before",
+        "open DAEMON",
+        "press DOWN 4",
+        "press A",
+        "press DOWN",
+        "shot PRUNE chosen",
+        "hold A 6",
+        "burst \"prune\" 20 10",
+        "wait 90",
+        "shot follower after PRUNE",
+        "follower shown"
+      ]
+    },
+    {
+      "stop": "T-442: SMASH on FOUR ISLAND's rock with the follower out",
+      "steps": [
+        "close",
+        "bag ITEM_HM06 1",
+        "flag FLAG_TEMP_12 0",
+        "goto FourIsland 5 13",
+        "repel 999",
+        "to 5 12",
+        "wait 30",
+        "shot follower before SMASH",
+        "hold UP 2",
+        "wait 10",
+        "press A",
+        "press A",
+        "burst \"smash\" 20 10",
+        "finish",
+        "wait 90",
+        "shot follower after SMASH",
+        "follower shown"
+      ]
+    }
+  ]
+}

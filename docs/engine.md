@@ -27,7 +27,7 @@ python3 tools/gbabudget.py --write   # and update the tables below
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 255.3 KB | **712 B** | 99.73% |
 | **IWRAM** | 32.0 KB | 29.3 KB | **2.7 KB** | 91.69% |
-| **ROM** | 16.0 MB | 9.8 MB | **6.2 MB** | 61.43% |
+| **ROM** | 16.0 MB | 9.8 MB | **6.2 MB** | 61.44% |
 
 ***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 6.2 MB free is in two places: what comes before it grows into a 4.9 MB gap below it, and it grows into the 1.2 MB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
@@ -52,19 +52,19 @@ The biggest tenants after it:
 
 | | vanilla | ours | we added | free now |
 |---|---|---|---|---|
-| **ROM** contents | 8.9 MB | 9.8 MB | **991.3 KB** | 6.2 MB |
+| **ROM** contents | 8.9 MB | 9.8 MB | **993.8 KB** | 6.2 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **392 B** | 712 B |
 | **IWRAM** | 29.1 KB | 29.3 KB | **220 B** | 2.7 KB |
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.6 MB | 832.2 KB |
-| `gfx_data` | 1.7 MB | 1.7 MB | -6.5 KB |
-| `.text` | 1.4 MB | 1.4 MB | 74.2 KB |
-| `script_data` | 496.9 KB | 533.7 KB | 36.8 KB |
+| `.rodata` | 4.8 MB | 5.6 MB | 831.4 KB |
+| `gfx_data` | 1.7 MB | 1.7 MB | -6.0 KB |
+| `.text` | 1.4 MB | 1.4 MB | 74.5 KB |
+| `script_data` | 496.9 KB | 535.4 KB | 38.6 KB |
 | `song_data` | 282.1 KB | 253.1 KB | -29.0 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
-| `extra` | 0 B | 83.5 KB | 83.5 KB |
+| `extra` | 0 B | 84.4 KB | 84.4 KB |
 | `lib_text` | 56.5 KB | 56.5 KB | 0 B |
 | `lib_rodata` | 1.6 KB | 1.6 KB | 0 B |
 
@@ -74,7 +74,7 @@ The biggest tenants after it:
 | `SaveBlock2` | 3876 B | 3876 B | 3968 B | **92 B** |
 | `PokemonStorage` | 33744 B | 33744 B | 35712 B | **1968 B** |
 
-**Story state:** 228 of our 1024 flags used (**796 free**); **68** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
+**Story state:** 229 of our 1024 flags used (**795 free**); **67** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
 
 ***Where the limit is:*** *ROM is not it -- text and scripts are cheap, and art is what spends it. EWRAM is: vanilla is already ~99.6% full, so anything that must stay resident while you walk (a follower, an always-on effect) has to find bytes, or borrow from `gHeap` as screens do.*
 

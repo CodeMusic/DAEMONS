@@ -491,6 +491,11 @@
    "seen": 102,
    "map": null,
    "about": null
+  },
+  "FLAG_NOTEBOOK_LOOSE_PHOTO": {
+   "seen": 103,
+   "map": "LavenderTown",
+   "about": "A photo of my daemon, in colour."
   }
  }
 }
