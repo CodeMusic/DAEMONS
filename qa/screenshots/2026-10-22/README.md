@@ -457,3 +457,93 @@ T-438 batch B draft: field effects and weather, vanilla beside ours, in place
 T-438 batch B draft: field effects and weather, vanilla beside ours, in place
 
 ![22Oct2026 - T438 - batch B field effects draft - 76](22Oct2026%20-%20T438%20-%20batch%20B%20field%20effects%20draft%20-%2076.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 77
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 77](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2077.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 78
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 78](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2078.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 79
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 79](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2079.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 80
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 80](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2080.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 81
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 81](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2081.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 82
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 82](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2082.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 83
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 83](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2083.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 84
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 84](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2084.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 85
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 85](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2085.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 86
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 86](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2086.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 87
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 87](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2087.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 88
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 88](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2088.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 89
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 89](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2089.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 90
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 90](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2090.png)
+
+### 22Oct2026 - T438 - batch C ground draft - 91
+
+T-438 batch C draft: the general ground -- rock, ledges, sand, paving; today vs draft
+
+![22Oct2026 - T438 - batch C ground draft - 91](22Oct2026%20-%20T438%20-%20batch%20C%20ground%20draft%20-%2091.png)
