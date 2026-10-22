@@ -577,3 +577,81 @@ v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens
 v11.309.4 T-438 batch A: 30 doors and the arrow in the game; the gold door opens gold; CRYSTAL's lab handles go with the leaves; no stale frames on CHECKPOINT 2F or SAFFRON
 
 ![22Oct2026 - T438 - the doors built - 96](22Oct2026%20-%20T438%20-%20the%20doors%20built%20-%2096.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 97
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 97](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%2097.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 98
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 98](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%2098.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 99
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 99](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%2099.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 100
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 100](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20100.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 101
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 101](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20101.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 102
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 102](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20102.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 103
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 103](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20103.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 104
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 104](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20104.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 105
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 105](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20105.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 106
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 106](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20106.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 107
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 107](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20107.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 108
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 108](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20108.png)
+
+### 22Oct2026 - T438 - batch C rock third pass - 109
+
+T-438 batch C third pass: chunky rock, the motifs (ribbed roof); today, pass 2, pass 3
+
+![22Oct2026 - T438 - batch C rock third pass - 109](22Oct2026%20-%20T438%20-%20batch%20C%20rock%20third%20pass%20-%20109.png)
