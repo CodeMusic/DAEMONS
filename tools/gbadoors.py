@@ -202,7 +202,7 @@ def door_table(src):
     out = []
     for lab, snd, size, t, p in re.findall(
             r"\{(METATILE_\w+),\s*DOOR_SOUND_(\w+),\s*DOOR_SIZE_(\w+),\s*sDoorAnimTiles_(\w+),\s*sDoorAnimPalettes_(\w+)\}", c):
-        out.append(dict(label=lab, sound=snd.lower(), size=size, png=tiles[t] + ".png", rows=pals[p], name=os.path.basename(tiles[t])))
+        out.append(dict(label=lab, sound=snd.lower(), size=size, png=tiles[t] + ".png", rows=pals[p], palsym=p, name=os.path.basename(tiles[t])))
     return out
 
 
@@ -443,12 +443,16 @@ def open_frames(closed, rows_of, spec):
     base = [[closed[y][x][2] if closed[y][x] else rows_of(x, y).void for x in range(16)] for y in range(h)]
     x0, y0, x1, y1 = spec["leaf"]
     lw, lh = x1 - x0 + 1, y1 - y0 + 1
+    #  The room is ONE room: its colours come from the row most of the leaf is drawn in, and a tile in another row
+    #  shows its nearest to them. Each tile's own darkest (cable_club, 2026-10-22) drew a black square in the one
+    #  tile of row 7 inside a room of row 9's slate.
+    ref = collections.Counter(tuple(rows_of(x, y).pal) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)).most_common(1)[0][0]
+    REF = next(rows_of(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1) if tuple(rows_of(x, y).pal) == ref)
 
     def room(f):
         for y in range(y0, y1 + 1):
             for x in range(x0, x1 + 1):
-                R = rows_of(x, y)
-                f[y][x] = R.spill if y == y1 else R.floor if y == y1 - 1 else R.void
+                f[y][x] = REF.spill if y == y1 else REF.floor if y == y1 - 1 else REF.void
 
     out = []
     kind = spec["kind"]
@@ -760,10 +764,293 @@ def stack(panels, path):
     im.save(path)
 
 
+# ================================================================== the tileset fixes the frames need (2026-10-22)
+#  Applied to the engine by --write --approved BEFORE the frames are drawn, and in report mode to the files as read
+#  (CUR's cache), so the report shows the doors as they will be.
+
+def png_bytes(img, bits4):
+    b = io.BytesIO()
+    if bits4:
+        img.save(b, format="PNG", bits=4)
+    else:
+        img.save(b, format="PNG")
+    return b.getvalue()
+
+
+def put(src, rel, data, changed):
+    """change a file in src's cache (and so in everything read after), and remember it for --write"""
+    src._cache[rel] = data
+    changed[rel] = data
+
+
+def tile_get(img, i):
+    px, W = img.load(), img.width // 8
+    return tuple(px[(i % W) * 8 + x, (i // W) * 8 + y] & 15 for y in range(8) for x in range(8))
+
+
+def tile_put(img, i, t):
+    px, W = img.load(), img.width // 8
+    for k, v in enumerate(t):
+        px[(i % W) * 8 + k % 8, (i // W) * 8 + k // 8] = v
+
+
+def hflip(t):
+    return tuple(t[(i // 8) * 8 + 7 - i % 8] for i in range(64))
+
+
+def vflip(t):
+    return tuple(t[(7 - i // 8) * 8 + i % 8] for i in range(64))
+
+
+FLIPS = {0: lambda t: t, 0x400: hflip, 0x800: vflip, 0xC00: lambda t: hflip(vflip(t))}
+
+
+#  ONE door whose CLOSED block was drawn in two rows: gbainterior.py's palette fitter put the cable club door's
+#  bottom-right tile in row 7 and the rest of the door in row 9, so its bottom-right quarter was a shade off the rest
+#  (the floor line under it a different grey) and no frame could open it in one room colour -- the dark of the
+#  doorway came out a square of row 7's nearest. The tile is the door block's alone; it is re-indexed into row 9 by
+#  what each colour IS in the door (its light, its glass, its teal, its frame, its sill), read off the tile beside it,
+#  not by nearest colour, which would turn the glass grey.
+CLOSED_FIX = {
+    "cable_club": dict(tileset="data/tilesets/secondary/checkpoint", block=0x2DE, entry=3, rows=(7, 9),
+                       remap={2: 1, 6: 5, 11: 14, 14: 15, 12: 12}),
+}
+
+
+def fix_closed(src, changed):
+    out = []
+    for name, f in CLOSED_FIX.items():
+        mrel, trel = f["tileset"] + "/metatiles.bin", f["tileset"] + "/tiles.png"
+        meta = bytearray(src.raw(mrel))
+        off = ((f["block"] - NUM_PRIMARY) * 8 + f["entry"]) * 2
+        e = struct.unpack_from("<H", meta, off)[0]
+        if e >> 12 == f["rows"][1]:
+            continue                                          # already done
+        if e >> 12 != f["rows"][0]:
+            raise SystemExit("  %s: block 0x%X entry %d is in row %d, not %d -- the tileset moved; look before fixing"
+                             % (name, f["block"], f["entry"], e >> 12, f["rows"][0]))
+        t = (e & 0x3FF) - NUM_PRIMARY
+        users = [k for k in range(len(meta) // 16) for q in range(8)
+                 if (struct.unpack_from("<H", meta, (k * 8 + q) * 2)[0] & 0x3FF) == e & 0x3FF]
+        if users != [f["block"] - NUM_PRIMARY]:
+            raise SystemExit("  %s: tile %d is drawn by other blocks too (%s) -- it cannot be re-indexed in place"
+                             % (name, t, ", ".join("0x%X" % (NUM_PRIMARY + k) for k in users)))
+        img = src.png(trel).copy()
+        old = tile_get(img, t)
+        if set(old) - set(f["remap"]):
+            raise SystemExit("  %s: tile %d holds indices %s the remap does not name" % (name, t, sorted(set(old) - set(f["remap"]))))
+        tile_put(img, t, tuple(f["remap"][v] for v in old))
+        struct.pack_into("<H", meta, off, (e & 0x0FFF) | (f["rows"][1] << 12))
+        put(src, trel, png_bytes(img, True), changed)
+        put(src, mrel, bytes(meta), changed)
+        out.append("  %s: the closed door's tile %d re-indexed from row %d into row %d (block 0x%X entry %d)"
+                   % (name, t, f["rows"][0], f["rows"][1], f["block"], f["entry"]))
+    return out
+
+
+#  THE TILES THE FRAMES OVERWRITE. A door's three frames are copied into the BG's last eight tiles (secondary
+#  376..383) every time it plays, so any block on that map that draws one of those tiles shows a door frame from then
+#  until the map reloads. Every such tile is moved below 376 into a slot found in this order, so nothing anyone sees
+#  changes, collision included (T-125):
+#    1. a secondary slot no block draws;
+#    2. a secondary slot whose every use another of its OWN tiles draws identically in some row (a solid colour is
+#       a solid colour in any row that holds it) -- never a tile of the primary, which batches C and D redraw;
+#    3. a secondary slot drawn only on BOTTOM layers of COVERED blocks (both layers under the sprites) whose top
+#       layer is empty, which the tileset's own tiles redraw as a bottom and a top;
+#    4. a slot of the PRIMARY that no block of it or of any secondary loaded with it draws, a leftover ink slot
+#       before a blank one (tools that hunt free slots look for blank ones), never an animated one.
+ANIMATED = {"gTileset_General": set(range(416, 482)) | set(range(508, 512))}
+
+
+def layer_type(attr, k):
+    return (struct.unpack_from("<I", attr, k * 4)[0] >> 29) & 3 if (k + 1) * 4 <= len(attr) else 0
+
+
+def move_door_tiles(src, table, changed):
+    found, _ = find_doors(src, table)
+    dirs = tileset_dirs(src)
+    layouts = json.loads(src.text("data/layouts/layouts.json"))["layouts"]
+    lab = labels(src)
+    protect = {lab[d["label"]] for d in table if d["label"] in lab}         # the doors themselves, and above them
+    for d in table:
+        if d["size"] == "1x2":
+            for o in found.get(d["name"], []):
+                m = block_at(o, o["x"], o["y"] - 1)
+                if m is not None:
+                    protect.add(m)
+    pairs = sorted({o["key"] for occ in found.values() for o in occ if o["warp"]})
+    out = []
+    done = set()
+    for prim_sym, sec_sym in pairs:
+        if sec_sym in done:
+            continue
+        done.add(sec_sym)
+        sdir, pdir = dirs[sec_sym][2], dirs[prim_sym][2]
+        stiles, ptiles = dirs[sec_sym][0], dirs[prim_sym][0]
+        mrel = sdir + "/metatiles.bin"
+        meta = bytearray(src.raw(mrel))
+        attr = src.raw(sdir + "/metatile_attributes.bin") or b""
+        nb = len(meta) // 16
+        E = lambda k, q: struct.unpack_from("<H", meta, (k * 8 + q) * 2)[0]
+        need = sorted({E(k, q) & 0x3FF for k in range(nb) for q in range(8)
+                       if TILE_START_DOOR <= (E(k, q) & 0x3FF) < 1024})
+        if not need:
+            continue
+        others = [l for l in layouts if l.get("primary_tileset") == prim_sym and l.get("secondary_tileset") != sec_sym]
+        if any(l.get("secondary_tileset") == sec_sym and l.get("primary_tileset") != prim_sym for l in layouts):
+            raise SystemExit("  %s is loaded with another primary too; its slots cannot be moved safely" % sec_sym)
+        simg, pimg = src.png(stiles + "/tiles.png").copy(), src.png(ptiles + "/tiles.png").copy()
+        nsec = (simg.width // 8) * (simg.height // 8)
+        tl = lambda i: tile_get(pimg, i) if i < NUM_PRIMARY else tile_get(simg, i - NUM_PRIMARY)
+        pal = {r: (src.pal(dirs[prim_sym if r < 7 else sec_sym][1] + "/palettes/%02d.pal" % r) or [(255, 0, 255)] * 16) for r in range(13)}
+
+        def uses_of(i):
+            return [(k, q) for k in range(nb) for q in range(8) if (E(k, q) & 0x3FF) == i]
+
+        freed, pinned, plan_lines, repoint = [], set(), [], {}
+        # 1. unreferenced secondary slots
+        refd = {E(k, q) & 0x3FF for k in range(nb) for q in range(8)}
+        free1 = [NUM_PRIMARY + i for i in range(TILE_START_DOOR - NUM_PRIMARY) if NUM_PRIMARY + i not in refd and NUM_PRIMARY + i < NUM_PRIMARY + nsec]
+        slots = [(s, "free") for s in free1]
+
+        tcache = {}
+
+        def colours(e):
+            if e & 0x3FF not in tcache:
+                tcache[e & 0x3FF] = tl(e & 0x3FF)
+            t = FLIPS[e & 0xC00](tcache[e & 0x3FF])
+            return tuple(pal[e >> 12][v] if v else None for v in t)
+
+        CL = [(i | fl | (r << 12), colours(i | fl | (r << 12)))     # every way the tileset's own tiles can draw
+              for i in range(NUM_PRIMARY, min(TILE_START_DOOR, NUM_PRIMARY + nsec)) for fl in FLIPS for r in range(13)]
+        by_colour = collections.defaultdict(list)
+        for c, v in CL:
+            by_colour[v].append(c)
+
+        if len(slots) < len(need):           # 2. a solid colour, or any tile, its own tileset draws identically
+            for i in range(NUM_PRIMARY, TILE_START_DOOR):
+                if len(slots) >= len(need):
+                    break
+                us = uses_of(i)
+                if not us or i in pinned or any(NUM_PRIMARY + k in protect for k, _ in us):
+                    continue
+                excl = {i} | {f for f, _ in slots}
+                rep = {}
+                for k, q in us:
+                    want = colours(E(k, q))
+                    alt = next((c for c in by_colour.get(want, []) if (c & 0x3FF) not in excl), None)
+                    if alt is None:
+                        break
+                    rep[(k, q)] = alt
+                else:
+                    if len(rep) == len(us):
+                        repoint.update(rep)
+                        pinned |= {c & 0x3FF for c in rep.values()}
+                        slots.append((i, "drawn by %s instead" % ", ".join(sorted({"%d row %d" % ((c & 0x3FF) - NUM_PRIMARY, c >> 12) for c in rep.values()}))))
+        if len(slots) < len(need):           # 3. a bottom and a top, in COVERED blocks with an empty top
+            blank = lambda e: not any(tl(e & 0x3FF))
+            for i in range(NUM_PRIMARY, TILE_START_DOOR):
+                if len(slots) >= len(need):
+                    break
+                us = uses_of(i)
+                if not us or i in pinned or i in {f for f, _ in slots}:
+                    continue
+                if any(NUM_PRIMARY + k in protect or q >= 4 or layer_type(attr, k) != 1 or not blank(E(k, q + 4)) for k, q in us):
+                    continue
+                excl = {i} | {f for f, _ in slots}
+                cl = [(c, v) for c, v in CL if (c & 0x3FF) not in excl]
+                tops = [(c, v) for c, v in cl if None in v and any(x is not None for x in v)]
+                bots = [(c, v) for c, v in cl if None not in v]
+                rep = {}
+                for k, q in us:
+                    want = colours(E(k, q))
+                    if None in want:
+                        break
+                    got = None
+                    for ct, vt in tops:
+                        if any(x is not None and x != y for x, y in zip(vt, want)):
+                            continue
+                        got = next(((cb, ct) for cb, vb in bots if all(vt[n] is not None or vb[n] == want[n] for n in range(64))), None)
+                        if got:
+                            break
+                    if not got:
+                        break
+                    rep[(k, q)], rep[(k, q + 4)] = got
+                if len(rep) == 2 * len(us):
+                    repoint.update(rep)
+                    pinned |= {c & 0x3FF for c in rep.values()}
+                    slots.append((i, "drawn as a bottom and a top"))
+        if len(slots) < len(need):           # 4. the primary's own leftover slots
+            pref = set()
+            for l in [l for l in layouts if l.get("primary_tileset") == prim_sym]:
+                s2 = l.get("secondary_tileset")
+                if s2 in dirs:
+                    b = src.raw(dirs[s2][2] + "/metatiles.bin") or b""
+                    pref |= {struct.unpack_from("<H", b, n * 2)[0] & 0x3FF for n in range(len(b) // 2)}
+            pb = src.raw(pdir + "/metatiles.bin") or b""
+            pref |= {struct.unpack_from("<H", pb, n * 2)[0] & 0x3FF for n in range(len(pb) // 2)}
+            free4 = [i for i in range(1, NUM_PRIMARY) if i not in pref and i not in ANIMATED.get(prim_sym, set())]
+            free4.sort(key=lambda i: (not any(tile_get(pimg, i)), i))
+            slots += [(i, "the primary's leftover slot") for i in free4[:len(need) - len(slots)]]
+        if len(slots) < len(need):
+            raise SystemExit("  %s: %d tiles at 376+ and only %d slots to move them to" % (sec_sym, len(need), len(slots)))
+        # apply: the freed tiles' uses first, then each needed tile into its slot
+        for (k, q), e in repoint.items():
+            struct.pack_into("<H", meta, (k * 8 + q) * 2, e)
+        moved = {}
+        for n, (s, how) in zip(need, slots):
+            px = tl(n)
+            if s < NUM_PRIMARY:
+                tile_put(pimg, s, px)
+            else:
+                tile_put(simg, s - NUM_PRIMARY, px)
+            moved[n] = s
+            plan_lines.append("    tile %d -> %s %d (%s)" % (n - NUM_PRIMARY, "primary" if s < NUM_PRIMARY else "slot", s if s < NUM_PRIMARY else s - NUM_PRIMARY, how))
+        for k in range(nb):
+            for q in range(8):
+                e = E(k, q)
+                if (e & 0x3FF) in moved:
+                    struct.pack_into("<H", meta, (k * 8 + q) * 2, (e & ~0x3FF) | moved[e & 0x3FF])
+        for n in need:                                   # the old slots blank, so nothing looks drawn there
+            tile_put(simg, n - NUM_PRIMARY, (0,) * 64)
+        put(src, mrel, bytes(meta), changed)
+        put(src, stiles + "/tiles.png", png_bytes(simg, True), changed)
+        if any(s < NUM_PRIMARY for s, _ in slots[:len(need)]):
+            put(src, ptiles + "/tiles.png", png_bytes(pimg, True), changed)
+        blocks = sorted({NUM_PRIMARY + k for k in range(nb) for q in range(8) if (E(k, q) & 0x3FF) in moved.values()})
+        out.append("  %s: %d tile%s at 376+ moved below the door frames (blocks %s):" % (
+            sec_sym, len(need), "s" if len(need) > 1 else "", ", ".join("0x%X" % b for b in blocks)))
+        out += plan_lines
+    return out
+
+
+def set_door_rows(src, plans, changed):
+    """field_door.c's sDoorAnimPalettes_* for every door the report says must change"""
+    c = src.text("src/field_door.c")
+    out = []
+    for p in plans:
+        prop = p["proposal"]
+        if prop is None or p["spec"].get("ours"):
+            continue
+        rows = [prop] * 8 if isinstance(prop, int) else list(prop[:8])
+        if len(rows) < 8:
+            rows += rows[-4:] * ((8 - len(rows)) // 4)
+        sym = p["d"]["palsym"]
+        new, n = re.subn(r"(sDoorAnimPalettes_%s\[\]\s*=\s*\{)[\d,\s]+(\})" % sym, lambda m: m.group(1) + ", ".join(map(str, rows)) + m.group(2), c)
+        if n != 1:
+            raise SystemExit("  sDoorAnimPalettes_%s not found in field_door.c" % sym)
+        if new != c:
+            out.append("  field_door.c: sDoorAnimPalettes_%s %s -> %s" % (sym, p["d"]["rows"], rows))
+            c = new
+    if out:
+        put(src, "src/field_door.c", c.encode(), changed)
+    return out
+
+
 # ================================================================== the run
 def indexed(frames_idx, pal, h):
     im = Image.new("P", (16, h * len(frames_idx)))
-    im.putpalette([v for c in pal for v in c] + [0] * (768 - 48))
+    im.putpalette([v for c in pal[:16] for v in c])
     px = im.load()
     for k, f in enumerate(frames_idx):
         for y in range(h):
@@ -775,10 +1062,12 @@ def indexed(frames_idx, pal, h):
 def main():
     if WRITE and "--approved" not in ARGS:
         print("  --write refused: T-438 batch A is a draft until the user has approved its sheets.")
-        print("  (When they have: --write --approved copies the frames into graphics/door_anims/ and the arrow into")
-        print("   graphics/field_effects/pics/, and any palette row this report says must change is changed in field_door.c by hand.)")
+        print("  (Approved 2026-10-22: --write --approved fixes the tilesets the frames need, sets field_door.c's palette rows,")
+        print("   and copies the frames into graphics/door_anims/ and the arrow into graphics/field_effects/pics/.)")
         return 0
     table = door_table(CUR)
+    changed = {}                                 # rel path -> bytes: the engine files --write puts back
+    fixes = fix_closed(CUR, changed) + move_door_tiles(CUR, table, changed)
     found, _ = find_doors(CUR, table)
     order = {n: i for i, n in enumerate(["pallet", "general", "sliding_single", "sliding_double"])}
     plans = []
@@ -798,6 +1087,9 @@ def main():
         for m, cells in vram_clash(p).items():
             print("  !! %s: %d cell%s on %s draw a tile the door frames overwrite in VRAM (first %s, block 0x%X)"
                   % (p["d"]["name"], len(cells), "s" if len(cells) > 1 else "", m, cells[0][:2], cells[0][2]))
+    fixes += set_door_rows(CUR, plans, changed)
+    for line in fixes:
+        print(line)
     ppal = read_pal(os.path.join(GBA, PLAYER_PAL))
     arrows = arrow_frames()
     drawn = [p for p in plans if p["quant"] and not p["spec"].get("ours")]
@@ -822,10 +1114,13 @@ def main():
         print("  drafts in %s; sheets:\n    %s" % (DRAFT, "\n    ".join(names)))
 
     if WRITE:
+        for rel, data in sorted(changed.items()):
+            open(os.path.join(GBA, rel), "wb").write(data)
+            print("  written: %s" % rel)
         for p in drawn:
             pal = p["rows"][0].pal
-            indexed([q[0] for q in p["quant"]], pal, p["h"]).save(os.path.join(GBA, p["d"]["png"]))
-        indexed(arrows, ppal, 16).save(os.path.join(GBA, ARROW_PNG))
+            indexed([q[0] for q in p["quant"]], pal, p["h"]).save(os.path.join(GBA, p["d"]["png"]), bits=4)
+        indexed(arrows, ppal, 16).save(os.path.join(GBA, ARROW_PNG), bits=4)
         print("  written: %d door animations and the arrow into the engine" % len(drawn))
     return 0
 

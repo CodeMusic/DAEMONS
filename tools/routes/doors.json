@@ -1,0 +1,150 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch A: the doors open as the buildings are drawn, in the order a player meets them, each filmed mid-open (a burst every 2 frames from the press); CHECKPOINT 2F and BRAZEN's south house are filmed after a door has played too, where the frames used to stay on blocks 0x303 and 0x392 until the map reloaded; and the door-mat arrow. Debug scratch save.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "BLANCHE: the player's house door",
+   "steps": [
+    "repel 250",
+    "goto PalletTown 6 9",
+    "to 6 8",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect PalletTown_PlayersHouse_1F"
+   ]
+  },
+  {
+   "stop": "BLANCHE: CRYSTAL's lab door (its handles go with the leaves)",
+   "steps": [
+    "repel 250",
+    "goto PalletTown 16 15",
+    "to 16 14",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect PalletTown_ProfessorOaksLab"
+   ]
+  },
+  {
+   "stop": "ROUTE 2: the general door, gold, opens gold (row 5)",
+   "steps": [
+    "repel 250",
+    "goto Route2 17 24",
+    "to 17 23",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect Route2_House"
+   ]
+  },
+  {
+   "stop": "CALLOW: the REPO's sliding door",
+   "steps": [
+    "repel 250",
+    "goto ViridianCity 36 21",
+    "to 36 20",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect ViridianCity_Mart"
+   ]
+  },
+  {
+   "stop": "CALLOW: the CHECKPOINT's door",
+   "steps": [
+    "repel 250",
+    "goto ViridianCity 26 28",
+    "to 26 27",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect ViridianCity_PokemonCenter_1F"
+   ]
+  },
+  {
+   "stop": "SLATE: the BENCHMARK's double sliding door",
+   "steps": [
+    "repel 250",
+    "goto PewterCity 15 18",
+    "to 15 17",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect PewterCity_Gym"
+   ]
+  },
+  {
+   "stop": "CHECKPOINT 2F: the cable club door, in and back (the plants at 0x303 keep their pots)",
+   "steps": [
+    "goto ViridianCity_PokemonCenter_2F 9 2",
+    "wait 30",
+    "shot before, the pots at (3,8) and (13,8)",
+    "burst opening 20 2 UP 3",
+    "wait 90",
+    "expect TradeCenter",
+    "shot the trade center, the mat's arrow under the player",
+    "poke *gSaveBlock1Ptr+0x14 8 5",
+    "poke *gSaveBlock1Ptr+0x15 8 5",
+    "poke *gSaveBlock1Ptr+0x16 8 2",
+    "poke *gSaveBlock1Ptr+0x18 16 0xFFFF",
+    "poke *gSaveBlock1Ptr+0x1A 16 0xFFFF",
+    "burst back_out 30 3 DOWN 16",
+    "wait 60",
+    "expect ViridianCity_PokemonCenter_2F",
+    "shot after the door played: the pots unchanged"
+   ]
+  },
+  {
+   "stop": "VERDIGRIS STORE: the lift",
+   "steps": [
+    "goto CeladonCity_DepartmentStore_1F 6 3",
+    "to 6 2",
+    "wait 12",
+    "shot closed",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect CeladonCity_DepartmentStore_Elevator"
+   ]
+  },
+  {
+   "stop": "BRAZEN: the south house's door, in and back (block 0x392 beside it keeps its stone)",
+   "steps": [
+    "repel 250",
+    "goto SaffronCity 43 40",
+    "to 43 39",
+    "wait 12",
+    "shot before, the door's right jamb and window at (44,38) (45,38)",
+    "burst opening 20 2 UP 3",
+    "wait 60",
+    "expect SaffronCity_MrPsychicsHouse",
+    "warp MAP_SAFFRON_CITY",
+    "burst back_out 20 3",
+    "wait 30",
+    "expect SaffronCity",
+    "shot after the door played: the jamb and window unchanged"
+   ]
+  },
+  {
+   "stop": "the door-mat arrow, in the player's house",
+   "steps": [
+    "goto PalletTown_PlayersHouse_1F 4 7",
+    "to 4 8",
+    "wait 4",
+    "burst arrow 16 4"
+   ]
+  }
+ ]
+}

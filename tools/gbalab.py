@@ -154,14 +154,23 @@ def door_frames(c):
     dx, dy = (DOOR_CELL[0] - X0) * 16, (DOOR_CELL[1] - 1 - Y0) * 16
     cell = [row[dx:dx + 16] for row in c[dy:dy + 32]]
     frames = [cell]
+    #  The two glazed leaves (x 53..55 and 56..58, rows 47..75) SLIDE apart into the frame, everything on them --
+    #  the glass's light, the divider, the handles -- going with them; what slides past the jamb is hidden, and the
+    #  room behind is dark. (T-438: the handles used to stay where they were, floating in the opening.)
     for gap in (2, 4):
         f = [r[:] for r in cell]
         for y in range(32):
+            gy = dy + y
+            if not 47 <= gy <= 75:
+                continue
             for x in range(16):
                 gx = dx + x
-                if 53 <= gx <= 58 and c[dy + y][gx] in (8, 9, 10):
-                    if 56 - gap <= gx <= 55 + gap:
-                        f[y][x] = 7                    # the room behind it is dark
+                if 53 <= gx <= 55:
+                    src = gx + gap                     # the left leaf moves left: what shows here came from the right
+                    f[y][x] = c[gy][src] if src <= 55 else 7
+                elif 56 <= gx <= 58:
+                    src = gx - gap                     # the right leaf moves right
+                    f[y][x] = c[gy][src] if src >= 56 else 7
         frames.append(f)
     for f in frames:                                   # a door frame is never see-through
         for y in range(32):
