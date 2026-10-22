@@ -685,3 +685,99 @@ v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked
 v11.309.5 T-438 batch B and T-441: field effects and weather in the game; walked-on grass wears the season
 
 ![22Oct2026 - T438 - field effects built - 114](22Oct2026%20-%20T438%20-%20field%20effects%20built%20-%20114.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 115
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 115](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20115.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 116
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 116](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20116.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 117
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 117](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20117.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 118
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 118](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20118.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 119
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 119](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20119.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 120
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 120](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20120.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 121
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 121](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20121.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 122
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 122](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20122.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 123
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 123](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20123.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 124
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 124](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20124.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 125
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 125](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20125.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 126
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 126](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20126.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 127
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 127](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20127.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 128
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 128](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20128.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 129
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 129](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20129.png)
+
+### 22Oct2026 - T438 - batch D interiors draft - 130
+
+T-438 batch D draft: the interiors (building primary), today | draft | draft in the proposed palette
+
+![22Oct2026 - T438 - batch D interiors draft - 130](22Oct2026%20-%20T438%20-%20batch%20D%20interiors%20draft%20-%20130.png)
