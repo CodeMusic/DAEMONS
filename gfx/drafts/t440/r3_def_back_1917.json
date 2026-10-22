@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t440/r3_def_back_1917",
+ "prompt": "pure white background, pixel art game sprite of a hooded creature closed up inside its own shell like a cocoon, an upright egg-shaped body of overlapping hard plates, its hood drawn shut at the pointed top, seen from directly behind, no core visible, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text",
+ "negative": "face, eyes, core, front view, arms, legs, human, person, humanoid, grey background, colored background, floor, ground, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "gfx/drafts/t440/ow_def_big.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.1,
+ "comfyui": "0.19.1",
+ "made": "2026-10-22 14:38:39"
+}

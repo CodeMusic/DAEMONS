@@ -474,7 +474,13 @@ for vanilla, ours in sorted(pairs.items()):
                 skipped.append("%s %s (%s)" % (ours, kind, src)); continue
             grid = place(s, legacy)
         if WRITE:
-            write_png4(os.path.join(outdir, kind + ".png"), grid, palette)
+            if d == "deoxys":
+                #  T-440: PROTEUS's sheets are 64x128 -- the form shown in battle is the BOTTOM half, which
+                #  DuplicateDeoxysTiles copies over the top (src/decompress.c). CONTENT's is the same drawing twice;
+                #  CONTEXT's _def sheets carry its shell below and are tools/genproteus.py's.
+                write_png4(os.path.join(outdir, kind + ".png"), grid + [r[:] for r in grid], palette, SIZE, 2 * SIZE)
+            else:
+                write_png4(os.path.join(outdir, kind + ".png"), grid, palette)
         done += 1
         #  Both derived assets come off the FRONT, which is the only view that
         #  shows the whole creature.

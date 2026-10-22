@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t440/atk_front_42_0.6",
+ "prompt": "pure white background, pixel art game sprite of the same hooded creature with its hood thrown back showing a bare angular head, both arms held out ending in long sharp blades, all edges, front view, facing the viewer, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "side view, rear view, hood over the head, human, person, humanoid face, grey background, colored background, floor, ground, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 42,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "gfx/drafts/t440/src_front.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 42.3,
+ "comfyui": "0.19.1",
+ "made": "2026-10-22 14:17:52"
+}
