@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-431 P2 + P4 (2026-10-21): the SUMMARY's fourth page, reached by R from KNOWN ROUTINES and left by L, its title blank. A 9x9 grid, axes unlabelled -- across GLAD minus SAD (right is glad), up CALM, down AFRAID -- and a dot whose hue is MAD (a cool slate to an ember) and whose saturation is friendship; under it one of the sixteen approved lines of behaviour (DRAFT in the game). Every line is shown once, every 3x3 reading, the friendship variants and the split between them, MAD's three, the corners, a daemon never stamped, an egg (no page), a boxed daemon from the PC, and HALFTONE (grey). Values are written outright with `feel` (stamped now) on the debug scratch save; UP/DOWN moves between daemons on the page and passes over the egg in slot 4.",
+  "about": "T-431 P2 + P4 (2026-10-21): the SUMMARY's fourth page, reached by R from KNOWN ROUTINES and left by L, sliding in and out as the other pages do, its title blank. A 9x9 grid, axes unlabelled -- across GLAD minus SAD (right is glad), up CALM, down AFRAID -- and a dot whose hue is MAD (a cool slate to an ember) and whose saturation is friendship; under it one of the sixteen approved lines of behaviour (DRAFT in the game). Every line is shown once, every 3x3 reading, the friendship variants and the split between them, MAD's three, the corners, a daemon never stamped, an egg (no page), a boxed daemon from the PC, and HALFTONE (grey). Values are written outright with `feel` (stamped now) on the debug scratch save; UP/DOWN moves between daemons on the page and passes over the egg in slot 4.",
   "stops": [
     {
       "stop": "the way there and back: R through INFO, SKILLS and KNOWN ROUTINES to the fourth page (title blank, four dots), L back to KNOWN ROUTINES and on to INFO, and R again",
@@ -27,6 +27,41 @@
         "shown page=MOVES",
         "keys R",
         "shown page=FEELINGS",
+        "close"
+      ]
+    },
+    {
+      "stop": "it SLIDES (the user, 2026-10-21): KNOWN ROUTINES -> the fourth page and back, frame by frame mid-slide; then on through SKILLS and INFO and back to it, a daemon changed on it by DOWN and UP, and A for the routine detail after coming back",
+      "steps": [
+        "goto ViridianCity 20 26",
+        "repel 999",
+        "friendship 0 200",
+        "friendship 1 200",
+        "feel 0 60 0 0 60 1 0 0 60 -60",
+        "summary 0 R R",
+        "shown page=MOVES",
+        "burst \"R: KNOWN ROUTINES -> the fourth page\" 12 1 R 2",
+        "shown page=FEELINGS \"line=It walks at your pace, unhurried.\" cell=7,1",
+        "burst \"L: the fourth page -> KNOWN ROUTINES\" 12 1 L 2",
+        "shown page=MOVES",
+        "keys L",
+        "shown page=SKILLS",
+        "keys L",
+        "shown page=INFO",
+        "keys R R R",
+        "shown page=FEELINGS",
+        "keys DOWN",
+        "shown page=FEELINGS cell=1,7",
+        "keys UP",
+        "shown page=FEELINGS cell=7,1",
+        "keys L A",
+        "shown page=MOVES_INFO",
+        "keys B",
+        "shown page=MOVES",
+        "keys R",
+        "shown page=FEELINGS",
+        "keys L L",
+        "shown page=SKILLS",
         "close"
       ]
     },

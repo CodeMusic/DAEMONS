@@ -24,6 +24,12 @@
 --                       every frame for 120 frames, one line of the values to <dir>/name.trace (8/16/32 bits;
 --                       d8 reads the 32-bit pointer at ADDR and then the byte it points to) -- for counting
 --                       frames: T-392 P2 measured each routine's signature past its picture this way
+--     load /abs/x.gba   another ROM (and its save), from the top; reset; savestate PATH / loadstate PATH
+--     reload            run this file again (a fix to the script, without a hand at the Scripting window)
+--
+-- REFUSED, not acted on (2026-10-21): a poke outside EWRAM, IWRAM, palette, VRAM or OAM; a peek or trace address
+-- outside the GBA's memory map; a `load` whose path is not absolute or not there. The batch stops and theatre.done
+-- reads "done N refused: why" (tools/theatre_walk.py raises it).
 --
 -- Why a file and not keystrokes: a key tapped into the window from outside lands on about half the
 -- frames the game polls, and a menu cannot be driven by input that may or may not arrive. A button
@@ -61,9 +67,38 @@ local function readBatch()
   console:log("theatre: batch " .. id .. ", " .. #queue .. " commands")
 end
 
-local function finish()
+local function finish(err)
   local f = io.open(DONE, "w")
-  if f then f:write("done " .. tostring(lastId) .. "\n"); f:close() end
+  if f then f:write("done " .. tostring(lastId) .. (err and (" refused: " .. err) or "") .. "\n"); f:close() end
+end
+
+-- Guards (2026-10-21: a `load` with a relative path took the theatre down, and it had to be started again by hand).
+-- A command that would act on something outside the GBA's memory map, or load a ROM by a path that is not absolute
+-- and present, is REFUSED: the rest of the batch is dropped and theatre.done says why ("done N refused: ..."), which
+-- tools/theatre_walk.py raises as an error. Nothing is read, written or loaded.
+local READABLE = {   -- {first, last}: EWRAM, IWRAM, I/O, palette, VRAM, OAM, ROM
+  {0x02000000, 0x0203FFFF}, {0x03000000, 0x03007FFF}, {0x04000000, 0x040003FF}, {0x05000000, 0x050003FF},
+  {0x06000000, 0x06017FFF}, {0x07000000, 0x070003FF}, {0x08000000, 0x09FFFFFF},
+}
+local function addrOK(a, size, writing)
+  if type(a) ~= "number" or a ~= math.floor(a) then return false end
+  local last = a + (size or 8) // 8 - 1
+  for i, r in ipairs(READABLE) do
+    if a >= r[1] and last <= r[2] then return not (writing and (i == 3 or i == 7)) end   -- never write I/O or ROM
+  end
+  return false
+end
+local function isFile(path)
+  local f = io.open(path, "rb")
+  if f then f:close() return true end
+  return false
+end
+local SELF = debug.getinfo(1, "S").source:gsub("^@", "")   -- this file, for `reload`
+local function refuse(why)
+  console:log("theatre: REFUSED " .. why)
+  queue = {}
+  busy = nil
+  finish(why)
 end
 
 -- Loading the script again replaces the running copy instead of adding a second frame callback beside it.
@@ -82,7 +117,9 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
       local vals = {}
       for _, sp in ipairs(busy.specs) do
         local v
-        if sp.deref then v = emu:read8(emu:read32(sp.addr))
+        if sp.deref then
+          local p = emu:read32(sp.addr)
+          v = addrOK(p, 8) and emu:read8(p) or 0   -- a pointer that is not (yet) one reads as 0, never followed
         elseif sp.size == 32 then v = emu:read32(sp.addr)
         elseif sp.size == 16 then v = emu:read16(sp.addr)
         else v = emu:read8(sp.addr) end
@@ -117,6 +154,13 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
     if #queue == 0 then finish() end
   elseif w[1] == "wait" then
     busy = { kind = "wait", left = tonumber(w[2]) or 1 }
+  elseif (w[1] == "poke16" or w[1] == "poke8") and not (addrOK(tonumber(w[2]), w[1] == "poke16" and 16 or 8, true)
+                                                     and tonumber(w[3])) then
+    refuse(table.concat(w, " ") .. ": not a writable GBA address and a value")
+  elseif w[1] == "peek" and not ((w[2] == "8" or w[2] == "16" or w[2] == "32") and addrOK(tonumber(w[3]), tonumber(w[2]))) then
+    refuse(table.concat(w, " ") .. ": not a GBA address (peek 8|16|32 ADDR NAME)")
+  elseif w[1] == "load" and not (w[2] and w[2]:sub(1, 1) == "/" and isFile(table.concat(w, " ", 2))) then
+    refuse(table.concat(w, " ") .. ": a ROM is loaded only by an absolute path to a file that is there")
   elseif w[1] == "poke16" then
     -- write a 16-bit value into the game's memory: `poke16 0x0203xxxx 105` sets the theatre's routine directly.
     -- Stepping to it with the D-pad drifts, because the theatre ignores input while an animation is still
@@ -143,6 +187,12 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
     if ok then emu:autoloadSave(); emu:reset() end
     console:log("theatre: load " .. path .. (ok and "" or " FAILED"))
     if #queue == 0 then finish() end
+  elseif w[1] == "reload" then
+    -- this script again, from its own file (a fix to it needs no hand at the Scripting window); the batch ends here
+    queue = {}
+    finish()
+    dofile(SELF)
+    return
   elseif w[1] == "reset" then
     emu:reset()
     if #queue == 0 then finish() end
@@ -162,7 +212,7 @@ THEATRE_CALLBACK = callbacks:add("frame", function()
       local kind, addr = w[i]:match("^(d?%d+):(.+)$")
       -- T-430: a spec that is not a number is dropped, not read: emu:read8(nil) raised every frame and stalled the
       -- remote until the script was loaded again by hand (2026-10-21, "8:0x0x030028f0")
-      if tonumber(addr) then
+      if tonumber(addr) and addrOK(tonumber(addr), (kind or ""):sub(1, 1) == "d" and 32 or tonumber((kind or "32"):match("%d+"))) then
         specs[#specs + 1] = { size = tonumber((kind or "32"):match("%d+")), deref = (kind or ""):sub(1, 1) == "d",
                               addr = tonumber(addr) }
       else

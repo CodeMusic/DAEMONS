@@ -68,6 +68,12 @@ step is one line, split like a shell line:
                                or its reflection in the water below it (or not)
     follower talk              T-18 P2: turn to the follower (it must stand a tile away), press A, capture each box
                                until the script lets go -- `says` then checks its words
+    follower emoji EYES MOUTH TINT [grey|colour] | follower emoji bubble   T-431 P3: fail unless the last `follower
+                               talk` drew that daemon-emoji (EYES calm|open|wide, MOUTH down|flat|up, TINT none|warm|hot;
+                               its OBJ palette all but grey, or in colour) -- or the trainers' bubble (the !! of a hidden
+                               item, or no palette slot for a face)
+    palettes full|free         T-431 P3: fill every free OBJ palette slot with a placeholder tag (and give them back)
+    follower probe             T-431 P3, DEBUG: press A on it and print the bubble's sprite frame by frame for 70 frames
     objectat WHO X Y|back      T-18 P3: put a person's coordinates on (X, Y) -- their sprite stays -- or back
     remember NAME SPEC 8|16|32 note a RAM value (SPEC as poke's) ...
     moved NAME                 ... and fail unless it has changed since (the GAME CORNER's take after a pull, T-427)
@@ -279,10 +285,17 @@ class RouteError(Exception):
     pass
 
 
+_NM = {}
+
+
 def elf_symbol(name, release):
-    """A static (sLockFieldControls, ...) is in the .elf's symbols, not the .map."""
+    """A static (sLockFieldControls, ...) is in the .elf's symbols, not the .map. The symbol table is read once per
+    build (T-431 P3: an nm per call took longer than the follower's one-second bubble lasts)."""
     elf = os.path.join(GBA, "daemonsContent.elf" if release else "daemonsContent_debug.elf")
-    out = subprocess.run(["arm-none-eabi-nm", elf], capture_output=True, text=True).stdout
+    key = (elf, os.path.getmtime(elf))
+    if key not in _NM:
+        _NM[key] = subprocess.run(["arm-none-eabi-nm", elf], capture_output=True, text=True).stdout
+    out = _NM[key]
     m = re.search(r"^([0-9a-f]{8}) \w %s$" % re.escape(name), out, re.M)
     if not m:
         raise RouteError("no symbol %s in %s" % (name, os.path.basename(elf)))
@@ -822,12 +835,16 @@ class Runner:
         return "absent", None, None
 
     def follower(self, args):
+        if args[0] == "emoji":                                            # T-431 P3: a check, no capture
+            return self.follower_emoji(args[1:])
         state, dx, dy = self.follower_state()
         where = "" if dx is None else " at %+d,%+d px from the player" % (dx, dy)
         self.capture("follower %s%s" % (state, where), read_text=False)
         want = args[0]
         if want == "talk":
             return self.follower_talk(state, dx, dy)
+        if want == "probe":                                               # T-431 P3, DEBUG
+            return self.follower_probe(state, dx, dy)
         if want in ("grass", "nograss", "reflection", "noreflection"):     # T-18 P3: what it stands on
             cb = elf_symbol("SpriteCB_FollowerGrass" if "grass" in want else "SpriteCB_FollowerReflection", self.release)
             sprites = tw.symbol("gSprites", self.release)
@@ -856,10 +873,103 @@ class Runner:
         facing = tw.peek([(8, self.objects + OBJECT_EVENT * obj + 0x18, "f")])["f"] & 0xF
         if facing != self.FACING[d]:
             tw.run("hold %s 4" % d, "wait 12")
-        tw.run("hold A 6", "wait 18")
+        self.bubble_symbols()                                             # before A: the bubble lasts a second
+        tw.run("hold A 6", "wait 10")
+        n = len(self.frames)
         self.capture("the bubble", read_text=False)                       # it lasts a second; the box outlasts it
+        self.bubble = self.bubble_state()                                 # T-431 P3: which face, in what colour
+        self.frames[n] = (self.frames[n][0], "the bubble: %s" % self.bubble["caption"], "")
+        with open(os.path.join(self.out, "bubbles.jsonl"), "a") as f:                     # for a close-up sheet
+            f.write(json.dumps({"frame": self.frames[-1][0], "stop": self.stop_no, **self.bubble}) + "\n")
         tw.run("wait 24")
         self.boxes()
+
+    def follower_probe(self, state, dx, dy):
+        """T-431 P3, DEBUG: press A on it and print, frame by frame for 70 frames (the theatre's trace), what the
+        bubble's sprite does -- in use, its callback, its anim delay -- with the face drawn (gFollowerDebugEmoji) and
+        the follower's own sprite: what takes a bubble away, and when. (It showed the bubble lives its 60 frames; the
+        route had been looking too late, after an nm per symbol.)"""
+        d = {(-16, 0): "LEFT", (16, 0): "RIGHT", (0, -16): "UP", (0, 16): "DOWN"}.get((dx, dy))
+        if state != "shown" or d is None:
+            raise RouteError("the follower is %s, not a tile from the player to probe" % state)
+        obj = tw.peek([(8, tw.symbol("gPlayerAvatar", self.release) + 5, "o")])["o"]
+        facing = tw.peek([(8, self.objects + OBJECT_EVENT * obj + 0x18, "f")])["f"] & 0xF
+        if facing != self.FACING[d]:
+            tw.run("hold %s 4" % d, "wait 12")
+        sprites = tw.symbol("gSprites", self.release)
+        face_at = elf_symbol("gFollowerDebugEmoji", self.release)
+        names = {elf_symbol(n, self.release): n for n in ("SpriteCB_FollowerEmoji", "SpriteCB_FollowerEmote",
+                                                          "SpriteCB_Follower", "SpriteCallbackDummy")}
+        base = elf_symbol("sFollower", self.release)
+        fid = tw.peek([(8, base + 33, "fid")])["fid"]
+        slot = sprites + self.SPRITE * (self.MAX_SPRITES - 4)          # CreateSpriteAtEnd's first free, below the box's
+        specs = ["32:%s" % hex(slot + 0x1C), "16:%s" % hex(slot + 0x3E), "8:%s" % hex(slot + 0x2C), "8:%s" % hex(face_at),
+                 "8:%s" % hex(base + 33), "32:%s" % hex(sprites + self.SPRITE * fid + 0x1C)]
+        tw.run("hold A 2", "trace probe 70 " + " ".join(specs))
+        lines = open(os.path.join(THEATRE, "probe.trace")).read().split("\n")
+        for k, line in enumerate(lines):
+            if not line.strip():
+                continue
+            cb, fl, delay, face, sid, fcb = [int(x, 16) for x in line.split()]
+            print("   probe f%02d: sprite60 %s flags %04x delay %d face %d | follower %d %s" % (
+                k, names.get(cb & ~1, hex(cb)), fl, delay & 0x3F, face - 1, sid, names.get(fcb & ~1, hex(fcb))))
+        tw.run("wait 60")
+        self.boxes()
+
+    EYES, MOUTHS, TINTS = ("calm", "open", "wide"), ("down", "flat", "up"), ("none", "warm", "hot")
+
+    def snapshot(self, reads):
+        """reads: [(bits, address, name)] -> {name: value}, all from ONE frame (the theatre's `trace` for a frame).
+        tw.peek runs a command a frame, so 193 reads took 193 frames -- three seconds, longer than a bubble lasts."""
+        tw.run("trace snapshot 1 " + " ".join("%d:%s" % (b, hex(a)) for b, a, _ in reads))
+        vals = open(os.path.join(THEATRE, "snapshot.trace")).read().split()
+        return {n: int(x, 16) for (_, _, n), x in zip(reads, vals)}
+
+    def bubble_symbols(self):
+        self.bsym = (tw.symbol("gSprites", self.release), elf_symbol("SpriteCB_FollowerEmoji", self.release),
+                     elf_symbol("SpriteCB_FollowerEmote", self.release), elf_symbol("gFollowerDebugEmoji", self.release))
+
+    def bubble_state(self):
+        """T-431 P3: the bubble over the follower now -- the daemon-emoji (its face from gFollowerDebugEmoji, the DEBUG
+        build's last face drawn, and its OBJ palette read out of palette RAM) or the trainers' bubble, or none."""
+        sprites, emoji, emote, face_at = self.bsym
+        v = self.snapshot([(32, sprites + self.SPRITE * i + 0x1C, "cb%d" % i) for i in range(self.MAX_SPRITES)] +
+                          [(16, sprites + self.SPRITE * i + 0x3E, "fl%d" % i) for i in range(self.MAX_SPRITES)] +
+                          [(16, sprites + self.SPRITE * i + 4, "a2%d" % i) for i in range(self.MAX_SPRITES)] +
+                          [(8, face_at, "face")])
+        for i in range(self.MAX_SPRITES):
+            if not v["fl%d" % i] & 1:
+                continue
+            cb = v["cb%d" % i] & ~1
+            if cb == emoji:
+                slot = v["a2%d" % i] >> 12
+                face = v["face"] - 1
+                base = 0x05000200 + 32 * slot
+                got = self.snapshot([(16, base + 2 * k, "c%d" % k) for k in range(1, 16)])
+                chroma = max(max(c & 31, (c >> 5) & 31, (c >> 10) & 31) - min(c & 31, (c >> 5) & 31, (c >> 10) & 31)
+                             for c in (got["c%d" % k] for k in range(1, 16)))
+                name = "%s %s %s" % (self.EYES[face // 3 % 3], self.MOUTHS[face % 3], self.TINTS[face // 9])
+                return {"kind": "emoji", "face": name, "slot": slot, "chroma": chroma,
+                        "caption": "face %d (%s), OBJ palette %d, chroma %d" % (face, name, slot, chroma)}
+            if cb == emote:
+                return {"kind": "bubble", "caption": "the trainers' bubble"}
+        return {"kind": None, "caption": "none"}
+
+    def follower_emoji(self, args):
+        """follower emoji EYES MOUTH TINT [grey|colour] | follower emoji bubble -- what the last `follower talk` drew."""
+        b = getattr(self, "bubble", None) or {"kind": None, "caption": "no talk yet"}
+        if args[0] == "bubble":
+            if b["kind"] != "bubble":
+                raise RouteError("the bubble was %s, not the trainers' bubble" % b["caption"])
+            return
+        if b["kind"] != "emoji":
+            raise RouteError("the bubble was %s, not a daemon-emoji" % b["caption"])
+        want = " ".join(args[:3])
+        if b["face"] != want:
+            raise RouteError("the face was %s, not %s" % (b["face"], want))
+        if len(args) > 3:                       # 5-bit channels: grey is all but flat, colour has some saturation
+            if args[3] == "grey" and b["chroma"] > 4 or args[3] == "colour" and b["chroma"] < 10:
+                raise RouteError("its palette is not %s: %s" % (args[3], b["caption"]))
 
     def poke(self, spec, bits, value):
         at = self.addr(spec)
@@ -867,6 +977,21 @@ class Runner:
             tw.run("poke16 %s %d" % (hex(at), value & 0xFFFF), "poke16 %s %d" % (hex(at + 2), value >> 16))
         else:
             tw.run("poke%d %s %d" % (bits, hex(at), value))
+
+    def palettes(self, how):
+        """palettes full|free -- T-431 P3: take every FREE OBJ palette slot (sSpritePaletteTags = TAG_NONE) with a
+        placeholder tag, so nothing new can load a palette; `free` gives back exactly the slots it took. Slots in use
+        (the follower's, a field effect's) are never touched -- poking fixed slots once took the follower's own."""
+        tags = elf_symbol("sSpritePaletteTags", self.release)
+        if how == "full":
+            v = tw.peek([(16, tags + 2 * i, "t%d" % i) for i in range(16)])
+            self.taken = [i for i in range(16) if v["t%d" % i] == 0xFFFF]
+            tw.run(*["poke16 %s %d" % (hex(tags + 2 * i), 0x7777) for i in self.taken])
+        elif how == "free":
+            tw.run(*["poke16 %s %d" % (hex(tags + 2 * i), 0xFFFF) for i in getattr(self, "taken", [])])
+            self.taken = []
+        else:
+            raise RouteError("palettes full|free")
 
     NOTE_BUTTONS = {"1": "DOWN", "2": "LEFT", "3": "UP", "4": "RIGHT", "5": "B", "6": "A", "7": "SELECT"}
 
@@ -1426,6 +1551,8 @@ class Runner:
                 raise RouteError("the battle is against species %d, not %s" % (got, args[0]))
         elif op == "poke":
             self.poke(args[0], int(args[1]), int(args[2], 0))
+        elif op == "palettes":                                              # T-431 P3
+            self.palettes(args[0])
         elif op == "register":
             self.poke("*gSaveBlock1Ptr+0x296", 16, const_item(args[0]))
         elif op == "play":

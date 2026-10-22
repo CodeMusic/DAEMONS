@@ -39,7 +39,17 @@ def symbol(name, release):
 
 
 def run(*cmds):
+    """One batch. A ROM path is made absolute before it is sent; theatre.lua refuses a relative one, and any address
+    outside the GBA's memory map, and says so in theatre.done ("done N refused: ..."), raised here (2026-10-21)."""
+    cmds = [("%s %s" % (c.split(" ", 1)[0], os.path.abspath(c.split(" ", 1)[1])))
+            if c.split(" ", 1)[0] in ("load", "savestate", "loadstate") and " " in c else c for c in cmds]
     subprocess.run([os.path.join(THEATRE, "run.sh"), *cmds], check=True)
+    try:
+        done = open(os.path.join(THEATRE, "theatre.done")).read()
+    except OSError:
+        return
+    if " refused: " in done:
+        raise RuntimeError("theatre: " + done.strip())
 
 
 def peek(reads):

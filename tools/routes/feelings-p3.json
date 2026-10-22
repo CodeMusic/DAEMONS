@@ -1,0 +1,165 @@
+{
+  "rom": "debug",
+  "about": "T-431 P3 (2026-10-21): the daemon-emoji over the follower. A on it draws a small screen with a tail whose face is built from the lead's feelings, none of them named: EYES from CALM (half-lidded at +20 or more, wide at -20 or less, open between), MOUTH from GLAD - SAD (up at +20, down at -20, flat between), TINT from MAD (none under 20, warm from 20, hot from 40) -- the SUMMARY page's own lines (FEELINGS_LEAN, FEELINGS_QUIET, FEELINGS_MAD_LINE). Its own OBJ palette while it shows, greyed by friendship as the follower is, kept in colour in HALFTONE; a hidden item still gets the trainers' !!, and with no palette slot free the friendship bubble of T-18 P2 shows instead. A never-stamped daemon is open, flat, cool. Values written outright with `feel` (stamped now), or pushed by DEBUG -> GAME EVENTS -> FEELINGS's PUSH rows. Debug scratch save.",
+  "stops": [
+    {
+      "stop": "never stamped: open, flat, cool -- at friendship 255, in colour",
+      "steps": [
+        "load debug",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "friendship 0 255",
+        "feel 0 unset",
+        "wait 20",
+        "follower talk",
+        "follower emoji open flat none colour"
+      ]
+    },
+    {
+      "stop": "calm / glad / none; afraid / sad / hot; open / flat / warm",
+      "steps": [
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "friendship 0 255",
+        "feel 0 60 0 0 60",
+        "follower talk",
+        "follower emoji calm up none colour",
+        "feel 0 0 60 60 -60",
+        "follower talk",
+        "follower emoji wide down hot colour",
+        "feel 0 0 25 0 0",
+        "follower talk",
+        "follower emoji open flat warm colour"
+      ]
+    },
+    {
+      "stop": "the lines: +20 is over (calm, up, warm at MAD 20), +19 is not (open, flat), MAD 40 is hot; calm / down / hot; wide / up / none",
+      "steps": [
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "friendship 0 255",
+        "feel 0 20 20 0 20",
+        "follower talk",
+        "follower emoji calm up warm colour",
+        "feel 0 0 40 19 -19",
+        "follower talk",
+        "follower emoji open flat hot colour",
+        "feel 0 0 19 0 -20",
+        "follower talk",
+        "follower emoji wide flat none colour",
+        "feel 0 10 90 50 80",
+        "follower talk",
+        "follower emoji calm down hot colour",
+        "feel 0 80 0 10 -70",
+        "follower talk",
+        "follower emoji wide up none colour"
+      ]
+    },
+    {
+      "stop": "pushed by DEBUG -> GAME EVENTS -> FEELINGS: SAD +30 and AFRAID (wide, down), then MAD +30 (warm), then GLAD +30 twice (flat, then up)",
+      "steps": [
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "friendship 0 255",
+        "feel 0 0 0 0 0",
+        "events \"FEELINGS >\" \"PUSH SAD +30\" \"PUSH AFRAID (CALM -30)\"",
+        "follower talk",
+        "follower emoji wide down none colour",
+        "events \"FEELINGS >\" \"PUSH MAD +30\"",
+        "follower talk",
+        "follower emoji wide down warm colour",
+        "events \"FEELINGS >\" \"PUSH GLAD +30\"",
+        "follower talk",
+        "follower emoji wide flat warm colour",
+        "events \"FEELINGS >\" \"PUSH GLAD +30\"",
+        "follower talk",
+        "follower emoji wide up warm colour"
+      ]
+    },
+    {
+      "stop": "friendship 0 greys the face as it greys the follower; 255 is in full colour",
+      "steps": [
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "friendship 0 0",
+        "feel 0 0 60 60 -60",
+        "wait 20",
+        "follower talk",
+        "follower emoji wide down hot grey",
+        "feel 0 60 0 0 60",
+        "follower talk",
+        "follower emoji calm up none grey",
+        "friendship 0 255",
+        "wait 20",
+        "follower talk",
+        "follower emoji calm up none colour",
+        "feel 0 0 60 60 -60",
+        "follower talk",
+        "follower emoji wide down hot colour"
+      ]
+    },
+    {
+      "stop": "HALFTONE (LAVENDER): the town grey, the face kept in colour as the follower is",
+      "steps": [
+        "goto LavenderTown 1 12",
+        "repel 999",
+        "to 4 12",
+        "follower shown -1 0",
+        "friendship 0 255",
+        "feel 0 0 60 60 -60",
+        "follower talk",
+        "follower emoji wide down hot colour",
+        "feel 0 60 0 0 60",
+        "follower talk",
+        "follower emoji calm up none colour"
+      ]
+    },
+    {
+      "stop": "a hidden item two tiles off (VERMILION's MAX ETHER): the friendship press shows the face, the mood press keeps the !!",
+      "steps": [
+        "flag FLAG_HIDDEN_ITEM_VERMILION_CITY_MAX_ETHER 0",
+        "goto VermilionCity 19 11",
+        "repel 999",
+        "to 16 11",
+        "follower shown 1 0",
+        "friendship 0 255",
+        "feel 0 60 0 0 60",
+        "follower talk",
+        "follower emoji calm up none colour",
+        "follower talk",
+        "follower emoji bubble",
+        "says \"keeps looking at the ground near here.\""
+      ]
+    },
+    {
+      "stop": "no OBJ palette slot free for the face: the friendship bubble of T-18 P2, never another's colours; the face again once one frees",
+      "steps": [
+        "goto PalletTown_PlayersHouse_1F 4 6",
+        "to 7 6",
+        "follower shown -1 0",
+        "friendship 0 255",
+        "feel 0 60 0 0 60",
+        "palettes full",
+        "follower shown -1 0",
+        "follower talk",
+        "follower emoji bubble",
+        "palettes free",
+        "follower talk",
+        "follower emoji calm up none colour",
+        "feel 0 unset"
+      ]
+    }
+  ]
+}
