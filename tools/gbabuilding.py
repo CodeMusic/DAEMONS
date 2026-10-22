@@ -40,10 +40,12 @@ pass lesson). Where an object carries meaning in DAEMONS it looks like our world
 terminal on a desk, as the player's own is), the TV is our set, the bookshelves are full of spines, the counters
 are CHECKPOINT-style. Generic pieces stay generic.
 
-PALETTES. --draft draws in today's palettes, and --write would write only tiles. The proposed palettes (PROPOSED:
-the mustard woods and lime greens of rows 0..2 moved onto gbahouse.py's timber and greens) are shown as a fourth
-panel and listed tile by tile in groups.json -- every tile that draws the index, in that row, anywhere -- for the
-user to decide; --write --approved --palettes would write them too.
+PALETTES. PROPOSED moves the mustard woods and lime greens of rows 0..2 onto gbahouse.py's timber and greens; it is
+shown as a fourth panel and listed tile by tile in groups.json (every tile that draws the index, in that row). The
+user APPROVED it with the drawing (2026-10-22: the timber palette, the cream fridge, the red check cloth, the tall
+TV), and asked for the stairs and banisters to be redrawn too; so --write --approved writes the tiles AND rows
+0..2's palettes. SILPH's two-row desk, the POWER PLANT's and labs' machines, SILPH 11F, the MANSION's pieces and the
+LEAGUE's statue wait for their towns' batches.
 """
 import collections, glob, importlib.util, io, json, os, re, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -198,7 +200,7 @@ ROLES = {
             BLACK=15),
 }
 
-#  PROPOSED (never written without --palettes): the mustard woods and the lime greens onto gbahouse.py's timber and
+#  PROPOSED (approved 2026-10-22; --write --approved writes it): the mustard woods and the lime greens onto gbahouse.py's timber and
 #  greens, the reds onto its quilt and pot, the blues softened -- index -> colour, per row. Nothing else moves.
 PROPOSED = {
     0: {5: (128, 86, 54), 6: (176, 122, 76), 7: (214, 166, 112), 8: (74, 104, 130), 9: (150, 186, 204),
@@ -984,6 +986,39 @@ def p_glass_table(K):
     K.remap({"STONE": "W2", "IRON": "W1", "LILAC": "SKYL"})
 
 
+
+STAIR_TILES = list(range(33, 47)) + list(range(49, 63)) + [65, 66, 67, 80, 81, 82, 83]
+
+
+def p_stairs(K):
+    """the stairs and banisters (BRAZEN's two-storey house; the user asked for them, 2026-10-22): every piece
+    turned to timber, tile by tile -- the treads keep vanilla's lit nosing, plain face and shadowed riser; the grey stairwell and landing become dark boards with seams every eight; the white landing rail
+    becomes a lit timber rail, its iron knobs turned balusters; the gold banister keeps its ramp"""
+    for y in range(K.h):
+        for x in range(K.w):
+            if not K.foot(x, y):
+                continue
+            v = K.van[y][x]
+            xx, yy = x % 8, y % 8
+            c = None
+            if v == K.i("WOODT"):
+                c = "WOODT"
+            elif v == K.i("WOODF"):
+                c = "WOODF"                                                     # the face plain: speckle won't read
+            elif v == K.i("WOODD"):
+                c = "WOODD"
+            elif v == K.i("STONE"):
+                c = "WOODD" if yy == 0 else ("WOODT" if yy == 1 and xx % 4 == 0 else "WOODF")   # landing boards
+            elif v in (K.i("IRON"), K.i("GREY")):
+                c = "WOODD"                                                     # the stairwell, in shade
+            elif v == K.i("WHITE"):
+                c = "WOODT"                                                     # the rail's lit top
+            elif v == K.i("PALE"):
+                c = "WOODF"
+            if c:
+                K.px(x, y, c)
+
+
 # ================================================================== the objects
 def L(*rows):
     return [list(r) for r in rows]
@@ -1065,6 +1100,8 @@ GROUPS = [
     ("port_tower", "the PORT's tower", 0, L([226], [242]), p_port_tower, "slate, a green light"),
     ("port_big", "the PORT console", 1, rect_layout(317, 2, 4), p_port_big, "the PC is the PORT"),
     ("port_lab", "the PORT (lab bench)", 0, rect_layout(452, 2, 2), p_port, "the PC is the PORT"),
+    ("stairs", "the stairs and banisters", 0, [STAIR_TILES[k:k + 7] for k in range(0, len(STAIR_TILES), 7)], p_stairs,
+     "timber treads, dark boarded stairwell, a timber rail and balusters"),
     ("port_desk", "the PORT (desk)", 0, rect_layout(224, 2, 2), p_port, "the PC is the PORT"),
     ("port_desk2", "the PORT (lab desk)", 0, rect_layout(211, 2, 2), p_port, "the PC is the PORT"),
 ]
@@ -1128,8 +1165,6 @@ def font(n):
 LEFT = [
     ("flat", {0, 16, 511}, "a single flat colour (the ground under everything, the void, TRAINER TOWER's roof): "
                            "nothing to redraw"),
-    ("stairs", set(range(33, 47)) | set(range(49, 63)) | {65, 66, 67, 80, 81, 82, 83},
-     "the stairs and banisters: generic, drawn as vanilla, take the timber in the proposed palette"),
     ("multirow", {324, 325, 326, 340, 341, 342, 356, 357, 358, 370, 371, 372, 373, 374},
      "SILPH's reception desk: drawn in rows 0 AND 1, whose indices mean different colours -- a redraw needs both"),
     ("partition", {171, 172, 180, 181, 187, 188, 196, 197, 247, 248, 249, 250},
@@ -1431,7 +1466,21 @@ def sheets(use, new, owner, groups, left, outdir):
         path = os.path.join(outdir, "t438d_room_%02d_%s.png" % (k, m))
         stack([body], "T-438 batch D (DRAFT): " + title).save(path)
         written.append(path)
+    # the stairs: the only rooms that place them (BRAZEN's two-storey house), today | draft | proposed, and the tiles
+    blocks = [group_block(next(g for g in GROUPS if g[0] == "stairs"), new, pals, ppals)]
+    for m in STAIR_ROOMS:
+        ims = [render_room(R, m, t, p) for t, p in ((CUR, pals), (new, pals), (new, ppals))]
+        x0, y0, w, h = STAIR_ROOMS[m]
+        ims = [i.crop((x0 * 16, y0 * 16, (x0 + w) * 16, (y0 + h) * 16)) for i in ims]
+        ims = [i.resize((i.size[0] * 4, i.size[1] * 4), Image.NEAREST) for i in ims]
+        blocks.append(panel_row(ims, ["%s at 4x, today" % m, "draft", "draft, proposed palette (approved)"], gap=16))
+    path = os.path.join(outdir, "t438d_stairs.png")
+    stack(blocks, "T-438 batch D (DRAFT): the stairs and banisters, in timber -- the only rooms that place them").save(path)
+    written.append(path)
     return written
+
+
+STAIR_ROOMS = {"SaffronCity_CopycatsHouse_1F": (7, 0, 5, 5), "SaffronCity_CopycatsHouse_2F": (4, 0, 6, 5)}   # cells
 
 
 def write_draft(use, new, owner, groups, left, stray, outdir):
@@ -1453,18 +1502,17 @@ def main():
     if WRITE and "--approved" not in ARGS:
         print("  --write refused: T-438 batch D is a draft until the user has approved its sheets.")
         print("  (When they have: --write --approved writes the redrawn tiles into %s/tiles.png -- only tiles a group"
-              " owns, never 262..266 -- and --palettes adds the proposed rows %s.)" % (B, sorted(PROPOSED)))
+              " owns, never 262..266 -- and the timber palettes, rows %s.)" % (B, sorted(PROPOSED)))
         return 0
     use, new, owner, groups, left, stray = report()
     if WRITE:
         changed = [t for t in owner if new[t] != CUR[t] and t not in KEEP]
         tiles_png(new).save(os.path.join(PD, "tiles.png"))
         print("  wrote %d tiles into %s/tiles.png" % (len(changed), B))
-        if "--palettes" in ARGS:
-            pp = palettes(True)
-            for row in sorted(PROPOSED):
-                write_pal(os.path.join(PD, "palettes/%02d.pal" % row), pp[row])
-            print("  wrote palettes %s" % sorted(PROPOSED))
+        pp = palettes(True)                    # the timber palettes: approved with the drawing (2026-10-22)
+        for row in sorted(PROPOSED):
+            write_pal(os.path.join(PD, "palettes/%02d.pal" % row), pp[row])
+        print("  wrote palettes %s (the timber rows)" % sorted(PROPOSED))
         return 0
     if DRAFT is not None:
         touch = write_draft(use, new, owner, groups, left, stray, DRAFT)
