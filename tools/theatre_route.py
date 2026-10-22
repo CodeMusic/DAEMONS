@@ -54,10 +54,16 @@ step is one line, split like a shell line:
     unsaid "TEXT"              fail the stop if a box captured in it said TEXT (a gift given once is not given twice)
     friendship SLOT N          set party daemon SLOT's (0-5) friendship to N: gPlayerParty decrypted, the byte set, the
                                checksum made again and encrypted back, as the game would have written it (T-424)
-    mon SLOT away|egg|hp|shiny|species VALUE   T-18 P3: the same for the rest of a party daemon -- AWAY (T-358's bit,
+    mon SLOT away|egg|hp|shiny|species|item|status VALUE   T-18 P3 (item and status T-433): the same for the rest of a party daemon -- AWAY (T-358's bit,
                                0|1), an egg (0|1), its hit points (0 HALTS it, max heals it), shiny (0|1: its OT ID set so it is, or
                                the player's own back, every secure word re-keyed), its species (SPECIES_X, a number, or back:
                                an evolution or a trade, as the follower sees one)
+    bag ITEM_X [N] [first]     T-433: put N (default 1) of an item in its pocket of the bag, or top it up to N; with
+                               first, in the pocket's top slot, and the bag set to open there with its cursor on it
+    open BAG|DAEMON            T-433: START, then that entry, opened (captured)
+    swap SLOT SLOT             T-433: two party daemons change places (their records swapped whole)
+    useitem ITEM_X             T-433, DEBUG: the item used on party daemon 1 as the party menu would (gSpecialVar_ItemId
+                               poked, then GAME EVENTS -> FEELINGS -> USE THE ITEM ON SLOT 1)
     coins N                    set the TOKEN CASE's count (stored XOR the save's key, src/coins.c)
     keyitem ITEM_X             put a key item in the bag if it is not there (its count stored XOR the save's key), so
                                `register` and `press SELECT` can use it -- the BICYCLE for T-18's follower
@@ -689,11 +695,17 @@ class Runner:
             flags = (flags | 0x10) if value else (flags & ~0x10)
             tw.run("poke8 %s %d" % (hex(base + 19), flags))
             return
+        if field == "status":                                             # T-433: status1 (1-7 asleep that many turns)
+            tw.run("poke16 %s %d" % (hex(base + 80), value & 0xFFFF), "poke16 %s %d" % (hex(base + 82), value >> 16))
+            return
         if field == "egg":
             word = 3 * order.index("M") + 1                               # misc: ivs, isEgg (bit 30), abilityNum
             secure[word] = (secure[word] | (1 << 30)) if value else (secure[word] & ~(1 << 30))
             flags = (flags | 0x04) if value else (flags & ~0x04)
             cmds.append("poke8 %s %d" % (hex(base + 19), flags))
+        elif field == "item":                                             # T-433: the item it holds (0: nothing)
+            word = 3 * order.index("G")
+            secure[word] = (secure[word] & 0xFFFF) | (value << 16)
         elif field == "species":                                          # -2 ("back"): the one it had first
             word = 3 * order.index("G")
             first = self.__dict__.setdefault("first_species", {}).setdefault(slot, secure[word] & 0xFFFF)
@@ -709,7 +721,7 @@ class Runner:
                 if ((tid >> 16) ^ (tid & 0xFFFF) ^ (pid >> 16) ^ (pid & 0xFFFF)) & 0xFFFF < 8:
                     new_otid ^= 0x80000
         else:
-            raise RouteError("mon: no field %s (away, egg, hp, shiny, species)" % field)
+            raise RouteError("mon: no field %s (away, egg, hp, shiny, species, item, status)" % field)
         halves = [h for x in secure for h in (x & 0xFFFF, x >> 16)]
         cmds.append("poke16 %s %d" % (hex(base + 28), sum(halves) & 0xFFFF))
         if new_otid != otid:
@@ -813,6 +825,52 @@ class Runner:
                 self.poke("*gSaveBlock1Ptr+0x%X" % (0x3B8 + 4 * i + 2), 16, 1 ^ key)
                 return
         raise RouteError("the KEY ITEMS pocket is full")
+
+    def swap(self, a, b):
+        """T-433: swap two party daemons' whole records (each is self-contained: its own key and checksum)."""
+        party = tw.symbol("gPlayerParty", self.release)
+        rec = {}
+        for slot in (a, b):
+            w = tw.peek([(32, party + 100 * slot + 4 * k, "w%d" % k) for k in range(25)])
+            rec[slot] = [w["w%d" % k] for k in range(25)]
+        cmds = []
+        for slot, other in ((a, b), (b, a)):
+            for k in range(25):
+                at, v = party + 100 * slot + 4 * k, rec[other][k]
+                cmds += ["poke16 %s %d" % (hex(at), v & 0xFFFF), "poke16 %s %d" % (hex(at + 2), v >> 16)]
+        hold = elf_symbol("sFollower", self.release)
+        tw.run("poke8 %s 255" % hex(hold + 35), "poke8 %s 255" % hex(hold + 36), *cmds,
+               "poke8 %s 0" % hex(hold + 35), "poke8 %s 1" % hex(hold + 36))
+
+    BAG_POCKETS = {"items": (0x310, 42, 0), "key": (0x3B8, 30, 1), "balls": (0x430, 13, 2), "tmhm": (0x464, 58, None),
+                   "berries": (0x54C, 43, None)}
+
+    def bag(self, item, count, first=False):
+        """T-433: put COUNT of an item in its pocket of the bag (a slot of SaveBlock1's ITEMS, KEY ITEMS, BALLS, TM CASE
+        or BERRY POUCH, its count stored XOR the save's key) -- topped up to COUNT if it is there. With first, it is
+        moved to the pocket's top slot (what was there swapped into its place) and the bag is set to open on that
+        pocket, its cursor on it (gBagMenuState: pocket +6, itemsAbove +8, cursorPos +14)."""
+        pocket = ("balls" if 1 <= item <= 12 else "berries" if 133 <= item <= 175 else "tmhm" if 289 <= item <= 346
+                  else "key" if 259 <= item <= 288 or 349 <= item <= 376 else "items")
+        start, n, menu = self.BAG_POCKETS[pocket]
+        key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
+        slot = lambda i: "*gSaveBlock1Ptr+0x%X" % (start + 4 * i)
+        have = [(self.read(slot(i), 16), self.read("*gSaveBlock1Ptr+0x%X" % (start + 4 * i + 2), 16)) for i in range(n)]
+        at = next((i for i, h in enumerate(have) if h[0] == item), None)
+        if at is None:
+            at = next((i for i, h in enumerate(have) if h[0] == 0), None)
+        if at is None:
+            raise RouteError("the %s pocket is full" % pocket)
+        put = {at: (item, count ^ key)}
+        if first and at != 0:
+            put = {0: (item, count ^ key), at: have[0]}
+        for i, (it, qty) in put.items():
+            self.poke(slot(i), 16, it)
+            self.poke("*gSaveBlock1Ptr+0x%X" % (start + 4 * i + 2), 16, qty)
+        if first and menu is not None:
+            state = tw.symbol("gBagMenuState", self.release)
+            tw.run("poke16 %s %d" % (hex(state + 6), menu), "poke16 %s 0" % hex(state + 8 + 2 * menu),
+                   "poke16 %s 0" % hex(state + 14 + 2 * menu))
 
     SPRITE, MAX_SPRITES = 0x44, 64
 
@@ -1527,7 +1585,21 @@ class Runner:
             self.objectat(args[0], args[1:])
         elif op == "mon":
             v = args[2]
-            self.mon(int(args[0]), args[1], const_species(v) if v.startswith("SPECIES_") else -1 if v == "max" else -2 if v == "back" else int(v, 0))
+            self.mon(int(args[0]), args[1], const_species(v) if v.startswith("SPECIES_") else const_item(v) if v.startswith("ITEM_")
+                     else -1 if v == "max" else -2 if v == "back" else int(v, 0))
+        elif op == "bag":                                                   # T-433
+            self.bag(const_item(args[0]), int(args[1]) if len(args) > 1 and args[1] != "first" else 1, "first" in args)
+        elif op == "swap":                                                  # T-433
+            self.swap(int(args[0]), int(args[1]))
+        elif op == "open":                                                  # T-433: START -> BAG or DAEMON
+            if not self.free():
+                raise RouteError("open needs the player free on the overworld")
+            self.start_menu({"BAG": 2, "DAEMON": 1}[args[0]])
+            tw.run("hold A 6", "wait 100")
+            self.capture("START: " + args[0], read_text=False)
+        elif op == "useitem":                                               # T-433
+            self.poke("gSpecialVar_ItemId", 16, const_item(args[0]))
+            self.events(["FEELINGS >", "USE THE ITEM ON SLOT 1"])
         elif op == "coins":
             key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
             self.poke("*gSaveBlock1Ptr+0x294", 16, int(args[0]) ^ key)

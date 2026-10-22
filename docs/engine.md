@@ -26,12 +26,12 @@ python3 tools/gbabudget.py --write   # and update the tables below
 | | size | used | free | %age |
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 255.3 KB | **712 B** | 99.73% |
-| **IWRAM** | 32.0 KB | 29.1 KB | **2.9 KB** | 91.05% |
-| **ROM** | 16.0 MB | 9.8 MB | **6.2 MB** | 61.11% |
+| **IWRAM** | 32.0 KB | 29.3 KB | **2.7 KB** | 91.69% |
+| **ROM** | 16.0 MB | 9.8 MB | **6.2 MB** | 61.41% |
 
-***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 6.2 MB free is in two places: what comes before it grows into a 4.9 MB gap below it, and it grows into the 1.3 MB after it. The GBA addresses 32 MB, so the file itself could grow.*
+***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 6.2 MB free is in two places: what comes before it grows into a 4.9 MB gap below it, and it grows into the 1.2 MB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
-*The debug ROM costs a further **116 bytes** of EWRAM and **64** of IWRAM.*
+*The debug ROM costs a further **140 bytes** of EWRAM and **64** of IWRAM.*
 
 **`gHeap` alone is 112.0 KB of EWRAM** — 44% of the whole region, reserved at address zero and carved up at runtime by `Alloc`.
 
@@ -52,20 +52,20 @@ The biggest tenants after it:
 
 | | vanilla | ours | we added | free now |
 |---|---|---|---|---|
-| **ROM** contents | 8.9 MB | 9.8 MB | **939.4 KB** | 6.2 MB |
+| **ROM** contents | 8.9 MB | 9.8 MB | **988.9 KB** | 6.2 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **392 B** | 712 B |
-| **IWRAM** | 29.1 KB | 29.1 KB | **12 B** | 2.9 KB |
+| **IWRAM** | 29.1 KB | 29.3 KB | **220 B** | 2.7 KB |
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.6 MB | 830.1 KB |
-| `gfx_data` | 1.7 MB | 1.7 MB | -6.7 KB |
-| `.text` | 1.4 MB | 1.4 MB | 68.7 KB |
-| `script_data` | 496.9 KB | 532.6 KB | 35.7 KB |
+| `.rodata` | 4.8 MB | 5.6 MB | 830.4 KB |
+| `gfx_data` | 1.7 MB | 1.7 MB | -6.5 KB |
+| `.text` | 1.4 MB | 1.4 MB | 73.7 KB |
+| `script_data` | 496.9 KB | 533.7 KB | 36.8 KB |
 | `song_data` | 282.1 KB | 253.1 KB | -29.0 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
+| `extra` | 0 B | 83.5 KB | 83.5 KB |
 | `lib_text` | 56.5 KB | 56.5 KB | 0 B |
-| `extra` | 0 B | 40.6 KB | 40.6 KB |
 | `lib_rodata` | 1.6 KB | 1.6 KB | 0 B |
 
 | save block | vanilla | ours | its fixed space | slack |
@@ -74,7 +74,7 @@ The biggest tenants after it:
 | `SaveBlock2` | 3876 B | 3876 B | 3968 B | **92 B** |
 | `PokemonStorage` | 33744 B | 33744 B | 35712 B | **1968 B** |
 
-**Story state:** 218 of our 1024 flags used (**806 free**); **69** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
+**Story state:** 228 of our 1024 flags used (**796 free**); **68** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
 
 ***Where the limit is:*** *ROM is not it -- text and scripts are cheap, and art is what spends it. EWRAM is: vanilla is already ~99.6% full, so anything that must stay resident while you walk (a follower, an always-on effect) has to find bytes, or borrow from `gHeap` as screens do.*
 
