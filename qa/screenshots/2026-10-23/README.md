@@ -613,3 +613,39 @@ v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on 
 v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
 
 ![23Oct2026 - T438 - the interiors built - 102](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%20102.png)
+
+### 23Oct2026 - T438 - the caves built - 103
+
+v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
+
+![23Oct2026 - T438 - the caves built - 103](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20103.png)
+
+### 23Oct2026 - T438 - the caves built - 104
+
+v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
+
+![23Oct2026 - T438 - the caves built - 104](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20104.png)
+
+### 23Oct2026 - T438 - the caves built - 105
+
+v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
+
+![23Oct2026 - T438 - the caves built - 105](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20105.png)
+
+### 23Oct2026 - T438 - the caves built - 106
+
+v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
+
+![23Oct2026 - T438 - the caves built - 106](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20106.png)
+
+### 23Oct2026 - T438 - the caves built - 107
+
+v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
+
+![23Oct2026 - T438 - the caves built - 107](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20107.png)
+
+### 23Oct2026 - T438 - the caves built - 108
+
+v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
+
+![23Oct2026 - T438 - the caves built - 108](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20108.png)
