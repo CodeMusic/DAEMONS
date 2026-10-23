@@ -476,9 +476,16 @@ for vanilla, ours in sorted(pairs.items()):
         if WRITE:
             if d == "deoxys":
                 #  T-440: PROTEUS's sheets are 64x128 -- the form shown in battle is the BOTTOM half, which
-                #  DuplicateDeoxysTiles copies over the top (src/decompress.c). CONTENT's is the same drawing twice;
-                #  CONTEXT's _def sheets carry its shell below and are tools/genproteus.py's.
-                write_png4(os.path.join(outdir, kind + ".png"), grid + [r[:] for r in grid], palette, SIZE, 2 * SIZE)
+                #  DuplicateDeoxysTiles copies over the top (src/decompress.c); the top is the Index's. Since the
+                #  user's 2026-10-23 follow-up a foe battles in that bottom half too, so CONTENT's front carries its
+                #  edition's shape below, ALL EDGES (proteus_front_attack.png, through the front's own palette, as
+                #  tools/genproteus.py draws it); its back, of which no edged drawing exists, is the same drawing
+                #  twice. CONTEXT's _def sheets carry its shell below and are tools/genproteus.py's.
+                below = grid
+                if kind == "front":
+                    below, _ = place_rich(os.path.join(ROOT, "gfx/daemons/proteus_front_attack.png"), TYPE_COLOR[t],
+                                          shared=palette)
+                write_png4(os.path.join(outdir, kind + ".png"), grid + [r[:] for r in below], palette, SIZE, 2 * SIZE)
             else:
                 write_png4(os.path.join(outdir, kind + ".png"), grid, palette)
         done += 1

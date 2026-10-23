@@ -171,7 +171,13 @@ def write_pal(path, cols):
 def frame(src_png, size, pal):
     """One object frame from a BUILT battle sprite: crop to the subject, fit to size, map to the type palette, outline."""
     from PIL import Image
-    im = Image.open(src_png); p = im.getpalette()[:48]; px = im.load()
+    im = Image.open(src_png); p = im.getpalette()[:48]
+    if im.size[1] > im.size[0]:
+        #  PROTEUS's sheets are 64x128 (T-440): the top half is the Index's picture, the bottom the edition's form,
+        #  and the form shapes on THE ANNEX (deoxys_a, deoxys_d) are T-439's own drawings. Its standing object is the
+        #  top: read the whole sheet and the two halves were cropped and shrunk together into one frame.
+        im = im.crop((0, 0, im.size[0], im.size[0]))
+    px = im.load()
     rgba = Image.new("RGBA", im.size)
     for y in range(im.size[1]):
         for x in range(im.size[0]):

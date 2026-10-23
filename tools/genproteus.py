@@ -18,9 +18,12 @@ WHAT THE ENGINE READS (src/data/graphics/pokemon.h, src/decompress.c, src/pokemo
 
 WHAT THIS WRITES
 
-  front.png, back.png         64x128: our hooded PROTEUS on top AND below, so CONTENT keeps the art the user approved
-                              in T-176 (gbasprite.py draws it from gfx/daemons/proteus_front.png / _back.png) and the
-                              copy has a picture to read.
+  front.png                   64x128: our hooded PROTEUS on top (the Index's), and CONTENT's shape below, ALL EDGES
+                              (gfx/daemons/proteus_front_attack.png) -- the half a foe PROTEUS battles in since the
+                              user's follow-up (2026-10-23: each edition's own shape, matching the overworld) and the
+                              half an owned one shows. gbasprite.py writes the same file the same way.
+  back.png                    64x128: the hooded back twice -- no edged back has been drawn (an owned CONTENT PROTEUS
+                              shows it from behind in battle).
   front_def.png, back_def.png 64x128: the hooded PROTEUS on top, and CONTEXT's SHELL below -- the hood drawn shut and
                               curled like a cocoon, redrawn at 512 from T-439's own deoxys_d frame (gfx/drafts/t440/
                               make2.sh; the picks are gfx/daemons/proteus_front_defense.png and _back_defense.png).
@@ -92,7 +95,7 @@ def files():
     pal, v = views()
     ipal = G.icon_palettes()[ICON_PALETTE]
     return pal, ipal, {
-        "front.png": (stack(v["front"], v["front"]), pal, 64, 128),
+        "front.png": (stack(v["front"], v["edges_f"]), pal, 64, 128),
         "back.png": (stack(v["back"], v["back"]), pal, 64, 128),
         "front_def.png": (stack(v["front"], v["shell_f"]), pal, 64, 128),
         "back_def.png": (stack(v["back"], v["shell_b"]), pal, 64, 128),
@@ -127,7 +130,7 @@ def sheet(path):
     out = Image.new("RGB", (W, H), (40, 40, 46))
     d = ImageDraw.Draw(out)
     d.text((12, 8), "T-440 PROTEUS -- top row: what the engine has now; bottom: what --write puts there (the game's "
-                    "own palettes). 64x128 = the top half shown by the Index, the BOTTOM in battle.", fill=(230, 230, 230), font=font)
+                    "own palettes). 64x128 = the top half shown by the Index, the BOTTOM in battle (foe and owned).", fill=(230, 230, 230), font=font)
     x = 24
     for name, o, n in cells:
         d.text((x, 26), name, fill=(240, 220, 120), font=font)

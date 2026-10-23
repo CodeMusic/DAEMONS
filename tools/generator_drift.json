@@ -156,12 +156,6 @@
    "engine:data/tilesets/primary/general/tiles.png"
   ]
  },
- "gbaowslots": {
-  "why": "T-439/T-440 (engine dd3553017, 3c56f1a9b) drew PROTEUS's two shapes (deoxys_a, deoxys_d) by hand; gbaowslots re-derives deoxys_n.png from its own reading of the DEOXYS sheets and would change T-291's PROTEUS. Found by check_generators --writes 2026-10-23 (T-438 C run); which side should move is a question for the next PROTEUS pass -- read git diff before any write.",
-  "files": [
-   "engine:graphics/object_events/pics/pokemon/deoxys_n.png"
-  ]
- },
  "gbarepo": {
   "why": "STALE -- not idempotent: a second run re-lays the REPO's bins and draws over tile 13, which metatiles 10 and 62 share (T-293); the tree is right",
   "files": [
