@@ -703,3 +703,51 @@ T-445 DRAFT: previews for the eleven batch E caves as top-down views, vanilla be
 T-445 DRAFT: previews for the eleven batch E caves as top-down views, vanilla beside. The user chose painted entrances instead.
 
 ![23Oct2026 - T445 - cave previews top-down draft - 117](23Oct2026%20-%20T445%20-%20cave%20previews%20top-down%20draft%20-%20117.png)
+
+### 23Oct2026 - T438 - batch F built - four towns - 118
+
+T-438 batch F built (v11.309.11): CALLOW, SLATE, DOLDRUM, THE UNDERTONE, today beside built; roofs calmed.
+
+![23Oct2026 - T438 - batch F built - four towns - 118](23Oct2026%20-%20T438%20-%20batch%20F%20built%20-%20four%20towns%20-%20118.png)
+
+### 23Oct2026 - T438 - batch F built - four towns - 119
+
+T-438 batch F built (v11.309.11): CALLOW, SLATE, DOLDRUM, THE UNDERTONE, today beside built; roofs calmed.
+
+![23Oct2026 - T438 - batch F built - four towns - 119](23Oct2026%20-%20T438%20-%20batch%20F%20built%20-%20four%20towns%20-%20119.png)
+
+### 23Oct2026 - T438 - batch F built - four towns - 120
+
+T-438 batch F built (v11.309.11): CALLOW, SLATE, DOLDRUM, THE UNDERTONE, today beside built; roofs calmed.
+
+![23Oct2026 - T438 - batch F built - four towns - 120](23Oct2026%20-%20T438%20-%20batch%20F%20built%20-%20four%20towns%20-%20120.png)
+
+### 23Oct2026 - T438 - batch F built - four towns - 121
+
+T-438 batch F built (v11.309.11): CALLOW, SLATE, DOLDRUM, THE UNDERTONE, today beside built; roofs calmed.
+
+![23Oct2026 - T438 - batch F built - four towns - 121](23Oct2026%20-%20T438%20-%20batch%20F%20built%20-%20four%20towns%20-%20121.png)
+
+### 23Oct2026 - T438 - batch F built - four towns - 122
+
+T-438 batch F built (v11.309.11): CALLOW, SLATE, DOLDRUM, THE UNDERTONE, today beside built; roofs calmed.
+
+![23Oct2026 - T438 - batch F built - four towns - 122](23Oct2026%20-%20T438%20-%20batch%20F%20built%20-%20four%20towns%20-%20122.png)
+
+### 23Oct2026 - T445 - painted cave entrances draft - 123
+
+T-445 DRAFT: the eleven cave entrances painted, OTHER CAVE in four lights. Approved with STILLFALL, THE DOTS and SMOULDER fixed first.
+
+![23Oct2026 - T445 - painted cave entrances draft - 123](23Oct2026%20-%20T445%20-%20painted%20cave%20entrances%20draft%20-%20123.png)
+
+### 23Oct2026 - T445 - painted cave entrances draft - 124
+
+T-445 DRAFT: the eleven cave entrances painted, OTHER CAVE in four lights. Approved with STILLFALL, THE DOTS and SMOULDER fixed first.
+
+![23Oct2026 - T445 - painted cave entrances draft - 124](23Oct2026%20-%20T445%20-%20painted%20cave%20entrances%20draft%20-%20124.png)
+
+### 23Oct2026 - T445 - painted cave entrances draft - 125
+
+T-445 DRAFT: the eleven cave entrances painted, OTHER CAVE in four lights. Approved with STILLFALL, THE DOTS and SMOULDER fixed first.
+
+![23Oct2026 - T445 - painted cave entrances draft - 125](23Oct2026%20-%20T445%20-%20painted%20cave%20entrances%20draft%20-%20125.png)
