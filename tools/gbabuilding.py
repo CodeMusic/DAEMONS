@@ -8,8 +8,8 @@
                                                     #   groups.json, and the contact sheets, in DIR
                                                     #   (gfx/drafts/t438/building/); --sheets DIR puts the sheets
                                                     #   elsewhere
-    python3 tools/gbabuilding.py --write --approved # into the engine -- NOT YET: batch D is a draft until the user has
-                                                    #   seen the sheets; without --approved --write refuses
+    python3 tools/gbabuilding.py --write --approved # into the engine: the tiles and the timber rows 0..2 (approved
+                                                    #   2026-10-22, BUILT 2026-10-23); without --approved it refuses
 
 THE ANSWER IT FOLLOWS (the user, 2026-10-22): "redraw primary/building IN PLACE -- every interior changes at once,
 collision never moves, one big contact sheet first". So nothing here moves a block, a layer, a flip, a palette row,
@@ -110,6 +110,10 @@ CUR = tiles_of(CUR_IM)
 VAN = tiles_of(Image.open(io.BytesIO(daemonslib.upstream(GBA, B + "/tiles.png", binary=True))))
 PALS = [read_pal(os.path.join(PD, "palettes/%02d.pal" % n)) for n in range(16)]
 NT = len(CUR)
+#  What the painters draw over: vanilla's own tile, never today's -- once batch D is in the engine, today's IS the
+#  redraw, and a painter that keeps or maps today's indices would draw over its own work (a second --write moved
+#  tile 193, the lab floor's edge, 2026-10-23). KEEP (CHECKPOINT 2F's pots) is read as it stands.
+BASE = [CUR[t] if t in KEEP else VAN[t] for t in range(NT)]
 
 HDR = open(os.path.join(GBA, "src/data/tilesets/headers.h")).read()
 MTS = open(os.path.join(GBA, "src/data/tilesets/metatiles.h")).read()
@@ -244,7 +248,7 @@ class Canvas:
                     x, y = k % 8, k // 8
                     sx = 7 - x if "h" in fl else x
                     sy = 7 - y if "v" in fl else y
-                    self.van[ty * 8 + y][tx * 8 + x] = CUR[t][sy * 8 + sx]
+                    self.van[ty * 8 + y][tx * 8 + x] = BASE[t][sy * 8 + sx]
                     self.hole[ty * 8 + y][tx * 8 + x] = False
         self.out = [r[:] for r in self.van]
 
@@ -1118,7 +1122,7 @@ def draft_tiles(proposed=False):
             if t in KEEP or t in owner:
                 continue
             # the footprint, exactly: transparent stays transparent, drawn stays drawn
-            fixed = [(p if p else (CUR[t][k] or 1)) if CUR[t][k] else 0 for k, p in enumerate(px)]
+            fixed = [(p if p else (BASE[t][k] or 1)) if BASE[t][k] else 0 for k, p in enumerate(px)]
             new[t] = fixed
             owner[t] = key
     return new, owner
@@ -1248,7 +1252,7 @@ def report():
             print("  %-10s %3d tiles %5d draws  %s" % (l["key"], len(l["tiles"]), l["draws"], l["why"]))
     if stray:
         print("  !! drawn and in no group: %s" % stray)
-    print("\n  palettes: none written; rows %s proposed (--draft lists every tile each index touches)."
+    print("\n  palettes: rows %s are the timber rows, approved and written with --write --approved (--draft lists every tile each index touches)."
           % ", ".join(map(str, sorted(PROPOSED))))
     return use, new, owner, groups, left, stray
 

@@ -41,14 +41,24 @@ def primary_tile(t):
 
 
 def variants():
+    """OUT and GAP from the tile as it is drawn NOW. T-438 batch D (2026-10-23) redrew the bookcase in place, and its
+    red book moved: vanilla's stood in column 3, rows 3-4, among three spines; ours is two columns wide at the foot of
+    the lower shelf. So the red book is FOUND (index d), not assumed: OUT raises it two pixels proud of its
+    neighbours, the light red (e) on its upper-left pixel; GAP fills every red pixel with the bookcase's dark back."""
     src = primary_tile(SOURCE_TILE)
-    assert src[3][3] == 0xD and src[4][3] == 0xD, "the red spine is not where it was: %r" % src[3:5]
+    red = [(y, x) for y in range(8) for x in range(8) if src[y][x] == 0xD]
+    assert red, "no red book in tile 0x%X: %r" % (SOURCE_TILE, src)
+    cols = sorted({x for _, x in red})
+    top = min(y for y, _ in red)
+    assert top >= 2, "the red book has no room to stand proud: %r" % src
     out = [row[:] for row in src]
-    for y in (2, 3, 4):
-        out[y][2] = out[y][3] = 0xD
-    out[2][2] = 0xE
+    for x in cols:
+        for y in (top - 2, top - 1):
+            out[y][x] = 0xD
+    out[top - 2][cols[0]] = 0xE
     gap = [row[:] for row in src]
-    gap[3][3] = gap[4][3] = 0x1
+    for y, x in red:
+        gap[y][x] = 0x1
     return out, gap
 
 
@@ -74,6 +84,21 @@ def main():
     print("  GenericBuilding2: %d tiles in the sheet (last drawn %d), %d metatiles" % (n_tiles, used, n_meta))
     if done:
         print("  already written: metatiles %d (out) and %d (gap)" % (640 + n_meta - 2, 640 + n_meta - 1))
+        #  ...but drawn from the bookcase as it was then: if the primary's tile has been redrawn since (T-438 batch D),
+        #  the two variants are redrawn from it in place -- the same tiles, the same metatiles.
+        w = tiles.width // 8
+        stale = [t for t, px in ((used - 1, out), (used, gap))
+                 if any(tiles.getpixel(((t % w) * 8 + x, (t // w) * 8 + y)) != px[y][x] for y in range(8) for x in range(8))]
+        if stale:
+            print("  %d of the two variants differ from the bookcase as it is drawn now%s"
+                  % (len(stale), "" if WRITE else "; --write redraws them"))
+            if WRITE:
+                for t, px in ((used - 1, out), (used, gap)):
+                    for y in range(8):
+                        for x in range(8):
+                            tiles.putpixel(((t % w) * 8 + x, (t // w) * 8 + y), px[y][x])
+                tiles.save(os.path.join(SECONDARY, "tiles.png"), bits=4)
+                print("  redrawn: tiles %d (out) and %d (gap)" % (used - 1, used))
         return 640 + n_meta - 2
     t_out, t_gap = used + 1, used + 2
     print("  will append tiles %d, %d and metatiles %d (out), %d (gap)" % (t_out, t_gap, 640 + n_meta, 640 + n_meta + 1))

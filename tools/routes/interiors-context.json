@@ -1,0 +1,39 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch D and T-440's follow-up in CONTEXT (LEAFGREEN debug, run from a root whose daemonsContent_debug.* are the CONTEXT build's): the rival's house and BRAZEN's stairs in timber, and THE ANNEX's PROTEUS holding still as a shell and battling as one.",
+ "stops": [
+  {"stop": "CONTEXT: the DEBUG build, continued", "steps": ["load debug"]},
+  {"stop": "CONTEXT: BLANCHE, the rival's house", "steps": ["goto PalletTown_RivalsHouse", "wait 60", "shot the rival's house in CONTEXT"]},
+  {"stop": "CONTEXT: BRAZEN's two-storey house 2F, the stairs", "steps": ["goto SaffronCity_CopycatsHouse_2F", "wait 60", "shot BRAZEN 2F in CONTEXT"]},
+  {
+   "stop": "CONTEXT: THE ANNEX -- PROTEUS comes down as a shell, shifts at a touch, holds still as a shell on the third, and battles as one",
+   "steps": [
+    "flag FLAG_CRYSTAL_READ_PAYLOAD 1",
+    "flag FLAG_FOUGHT_DEOXYS 0",
+    "flag FLAG_DEOXYS_FLEW_AWAY 0",
+    "goto BirthIsland_Exterior 15 14",
+    "repel 999",
+    "wait 30",
+    "var VAR_DEOXYS_INTERACTION_NUM 10",
+    "var VAR_DEOXYS_INTERACTION_STEP_COUNTER 0",
+    "talk 15,12",
+    "wait 60",
+    "shot PROTEUS a shell",
+    "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+    "says \"PROTEUS turns all edges.\"",
+    "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+    "says \"PROTEUS curls into a shell.\"",
+    "talk LOCALID_BIRTH_ISLAND_DEOXYS 1",
+    "says \"PROTEUS holds still.\"",
+    "shot holds still, a shell",
+    "press A",
+    "wait 400",
+    "foe SPECIES_DEOXYS",
+    "shot the battle: the foe a shell",
+    "fight",
+    "finish",
+    "wait 60"
+   ]
+  }
+ ]
+}
