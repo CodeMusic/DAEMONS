@@ -9,8 +9,9 @@
                                                    #   draft folder when not given): the plan, and per drafted town the
                                                    #   tiles and two or three real map crops, today beside the draft
     python3 tools/gbatowns.py --sheets DIR         # (with --draft) where the sheets go
-    python3 tools/gbatowns.py --write --approved   # into the engine: the approved towns' tiles.png. Refuses without
-                                                   #   --approved, and nothing is approved yet (batch F is a draft).
+    python3 tools/gbatowns.py --write --approved   # into the engine: the approved towns' tiles.png (CALLOW, SLATE,
+                                                   #   DOLDRUM, THE UNDERTONE, approved 2026-10-23). Refuses without
+                                                   #   --approved.
 
 WHAT IS LEFT. Batches A-E took the doors, field effects, the general ground, every interior and the caves. A town's
 SECONDARY tileset is part ours already -- gbacivic/gbacivictown (CHECKPOINTS, THE REPO, the BENCHMARKS), gbahouse,
@@ -180,7 +181,9 @@ PLAN = [
 SHORT = {"viridian_city": "callow", "pewter_city": "slate", "cerulean_city": "doldrum",
          "viridian_forest": "undertone"}
 DRAFTED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest"]
-APPROVED = []          # nothing yet: batch F is a draft
+#  the user, 2026-10-23: build these four (SLATE's museum roof and CALLOW's cottage roof calmed first); the rest stay
+#  drafts until approved
+APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest"]
 
 
 # ================================================================== reading the engine
@@ -299,10 +302,20 @@ class Town:
                 t = v & 0x3FF
                 if t >= 640:
                     self.draws[t - 640] += w
+        self.disk = [list(t) for t in self.now]
+        self._leftovers()
+
+    def _leftovers(self):
         nb = lambda t: any(self.now[t])
         self.left = {t for t in range(min(len(self.van), len(self.now)))
                      if self.now[t] == self.van[t] and nb(t) and self.draws[t]}
         self.targets = self.left - self.door_tiles
+
+    def as_before(self, tiles):
+        """read these tiles as vanilla's again (what they were before this tool drew them)"""
+        for t in tiles:
+            self.now[t] = list(self.van[t])
+        self._leftovers()
 
     def share(self):
         """(vanilla draws, all draws) over every non-blank secondary tile a reachable map draws"""
@@ -407,6 +420,17 @@ def m_ribs(x, y, w, h, X, Y, b):
     return 0.0 if X % 4 == 0 else 0.5
 
 
+def m_ribs_calm(x, y, w, h, X, Y, b):
+    """CALLOW's cottage roof (ROUTE 22's gate), calmed for 1x (the user, 2026-10-23): the same standing-seam roof,
+    but a seam every eight pixels instead of four, and one step of shade instead of three -- a pale sheet with a
+    soft groove, under the lit ridge cap"""
+    if y < 2:
+        return 0.0
+    if y == 2:
+        return 0.5
+    return 0.5 if X % 8 == 7 else 0.0
+
+
 def m_clapboard(x, y, w, h, X, Y, b):
     """boards laid level: a lit top edge, the body, a dark under-lap"""
     yy = Y % 4
@@ -481,6 +505,18 @@ def m_slates(x, y, w, h, X, Y, b):
         return 0.85
     tone = 0.5 if _h(row, (X + (4 if row % 2 else 0)) // 8) < 0.67 else 0.75
     return 0.2 if yy == 0 else tone
+
+
+def m_slates_calm(x, y, w, h, X, Y, b):
+    """SLATE's museum roof, calmed for 1x (the user, 2026-10-23): wide slates, 16 x 8 staggered by half, laid in
+    the body's own shade with only their lower edge and joints a step darker; vanilla's lit ridge band stays lit"""
+    if b < 0.5:
+        return b
+    row = Y // 8
+    xo, yy = (X + (8 if row % 2 else 0)) % 16, Y % 8
+    if yy == 7 or (xo == 0 and yy < 7):
+        return 1.0
+    return 2.0 / 3
 
 
 def m_ashlar(x, y, w, h, X, Y, b):
@@ -572,9 +608,9 @@ def m_bark(x, y, w, h, X, Y, b):
 
 
 STYLE = {
-    "viridian_city": dict(roof=m_ribs, wall=m_clapboard, glass=m_glass, awning=m_awning, slab=m_slab, fir=m_fir,
+    "viridian_city": dict(roof=m_ribs_calm, wall=m_clapboard, glass=m_glass, awning=m_awning, slab=m_slab, fir=m_fir,
                           wood=m_boards, leaf=m_leaf),
-    "pewter_city": dict(roof=m_slates, slates=m_slates, stone=m_ashlar, siding=m_ashlar, column=m_flutes,
+    "pewter_city": dict(roof=m_slates_calm, slates=m_slates, stone=m_ashlar, siding=m_ashlar, column=m_flutes,
                         glass=m_glass_chalk),
     "cerulean_city": dict(plank=m_plank_long, skylight=m_still, panel=m_panel, awning=m_awning, roof=m_swell,
                           siding=m_clapboard, skirt=m_tide, glass=m_glass),
@@ -582,6 +618,8 @@ STYLE = {
 }
 #  how much of vanilla's own light a material keeps (0: the motif alone; 0.5: half and half)
 KEEP_LIGHT = {"canopy": 0.0, "fir": 0.0, "glass": 0.2, "roof": 0.25, "slates": 0.2}
+#  ... and per town, where a calmed motif sets its own shades (it keeps vanilla's light itself, or none)
+KEEP_LIGHT_TOWN = {("viridian_city", "roof"): 0.0, ("pewter_city", "roof"): 0.0}
 
 
 def ladder(town, row, mat):
@@ -627,6 +665,27 @@ class Plane:
                                 continue
                             X, Y = cx * 16 + (q % 2) * 8 + tx, cy * 16 + (q // 2) * 8 + ty
                             self.px[Y][X] = (row, c, t - 640 if t >= 640 else None, sy * 8 + sx)
+
+
+def drawn_before(ts):
+    """a Town read as it was before this tool wrote it, and the tiles this tool drew there. A tile it drew no longer
+    matches vanilla's, so a second --write would see fewer leftovers, group them into smaller objects and draw them
+    differently; so the tiles whose pixels are exactly what this tool would draw over vanilla are read as vanilla
+    again -- found as a fixed point, since which tiles are leftovers decides how each is drawn -- and a second write
+    is a no-op (batch D's lesson)."""
+    town = Town(ts)
+    van = lambda t: t < len(town.van)
+    cand = {t for t in range(len(town.disk)) if van(t) and town.disk[t] != town.van[t] and any(town.van[t])
+            and town.draws[t] and all((a == 0) == (b == 0) for a, b in zip(town.disk[t], town.van[t]))}
+    while cand:
+        town = Town(ts)
+        town.as_before(cand)
+        new, _ = redraw(town)
+        keep = {t for t in cand if new[t] == town.disk[t]}
+        if keep == cand:
+            return town, cand
+        cand = keep
+    return Town(ts), set()
 
 
 def redraw(town):
@@ -708,7 +767,7 @@ def redraw(town):
                     base = lad.index(idx) / (len(lad) - 1)
                     rx, ry, rw, rh = region[(X, Y)]
                     lv = style[m](X - rx, Y - ry, rw, rh, X, Y, base)
-                    keep = KEEP_LIGHT.get(m, 0.35)
+                    keep = KEEP_LIGHT_TOWN.get((town.ts, m), KEEP_LIGHT.get(m, 0.35))
                     lv = max(0.0, min(1.0, (1 - keep) * lv + keep * base))
                     claimed.setdefault(t, {})[k] = lad[int(round(lv * (len(lad) - 1)))]
             for t, pix in claimed.items():
@@ -1013,14 +1072,15 @@ def write_draft(outdir):
         made.append(tiles_sheet(town, new, what, os.path.join(sheets_dir, "t438f_%s_tiles.png" % s)))
         for k, crop in enumerate(CROPS[ts], 1):
             made.append(map_sheet(town, new, crop, os.path.join(sheets_dir, "t438f_%s_%d.png" % (s, k))))
-    json.dump(dict(ticket="T-438 batch F", status="DRAFT -- not in the engine; --write needs --approved",
+    json.dump(dict(ticket="T-438 batch F", status="CALLOW, SLATE, DOLDRUM, THE UNDERTONE approved 2026-10-23 and built by --write "
+                   "--approved; the rest are drafts",
                    drafted=info, plan=[{k: v for k, v in p.items()} for p in PLAN]),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
     return made
 
 
 def report():
-    print("T-438 batch F -- the town leftovers and the forests (DRAFT; nothing approved, --write refuses)")
+    print("T-438 batch F -- the town leftovers and the forests (approved and built: %s)" % ", ".join(APPROVED))
     c = census()
     for k, p in enumerate(PLAN, 1):
         r = c[p["ts"]]
@@ -1042,21 +1102,23 @@ def report():
 def main():
     if WRITE:
         if "--approved" not in ARGS or not APPROVED:
-            print("  --write refused: T-438 batch F is a draft; the user has approved no town yet (APPROVED is "
-                  "empty), and --write needs --approved.")
+            print("  --write refused: --write needs --approved, and APPROVED must name the towns the user approved.")
             return 0
         for ts in APPROVED:
-            town = Town(ts)
+            town, _ = drawn_before(ts)
             new, what = redraw(town)
             if any((a == 0) != (b == 0) for t in range(len(new)) for a, b in zip(new[t], town.now[t])):
                 raise SystemExit("  !! %s: a tile's footprint moved -- nothing written" % ts)
+            if new == town.disk:
+                print("  %s: already drawn (%d tiles), nothing to write" % (ts, len(what)))
+                continue
             im = town.im.copy()
             px = im.load()
             for t, p in enumerate(new):
                 for k, v in enumerate(p):
                     px[(t % 16) * 8 + k % 8, (t // 16) * 8 + k // 8] = v
             im.save(os.path.join(town.dir, "tiles.png"), bits=4)
-            print("  wrote %s: %d tiles" % (ts, sum(1 for t in range(len(new)) if new[t] != town.now[t])))
+            print("  wrote %s: %d tiles" % (ts, sum(1 for t in range(len(new)) if new[t] != town.disk[t])))
         return 0
     if DRAFT is not None:
         for p in write_draft(DRAFT):

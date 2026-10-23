@@ -1,0 +1,27 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch F (the town leftovers, tools/gbatowns.py): CALLOW (ROUTE 22's gate with its calmed roof, the green house's hatch), SLATE (the ERRATA museum with its calmed roof, a slate-roofed house), DOLDRUM (ROUTE 24's bridge, the bike shop, ROUTE 25's sea cottage) and THE UNDERTONE (its mouth, deep in the maze; THE SAME BUSH shares the tileset). Watch held at day, clear weather, summer. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "CALLOW: ROUTE 22's gate to UMBRA, the calmed cottage roof", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1", "poke gDaemonsSeasonOverride 8 3",
+   "goto Route22 8 6", "repel 999", "close", "wait 40", "shot the gate to UMBRA"]},
+  {"stop": "CALLOW: the green house's hatch and the tower block", "steps": [
+   "goto ViridianCity 25 8", "close", "wait 40", "shot the hatch and the planters"]},
+  {"stop": "SLATE: the ERRATA museum, the calmed roof", "steps": [
+   "goto PewterCity 17 6", "close", "wait 40", "shot the museum from its door", "goto PewterCity 29 3", "close", "wait 40", "shot the annex and the museum's east end"]},
+  {"stop": "SLATE: a slate-roofed house", "steps": [
+   "goto PewterCity 9 25", "close", "wait 40", "shot a slate-roofed house"]},
+  {"stop": "DOLDRUM: the bike shop", "steps": [
+   "goto CeruleanCity 11 24", "close", "wait 40", "shot the bike shop"]},
+  {"stop": "DOLDRUM: ROUTE 24's long bridge", "steps": [
+   "goto Route24 11 22", "repel 999", "close", "wait 40", "shot the long bridge"]},
+  {"stop": "DOLDRUM: ROUTE 25's sea cottage", "steps": [
+   "goto Route25 51 5", "repel 999", "close", "wait 40", "shot the sea cottage"]},
+  {"stop": "THE UNDERTONE: its mouth and the maze", "steps": [
+   "goto ViridianForest 12 10", "repel 999", "close", "wait 40", "shot the mouth",
+   "goto ViridianForest 23 35", "close", "wait 40", "shot deep in the maze"]},
+  {"stop": "THE SAME BUSH (SIX ISLAND) shares THE UNDERTONE's tileset", "steps": [
+   "goto SixIsland_PatternBush 12 8", "repel 999", "close", "wait 40", "shot THE SAME BUSH"]}
+ ]
+}

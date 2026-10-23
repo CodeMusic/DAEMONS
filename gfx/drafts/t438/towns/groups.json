@@ -99,7 +99,7 @@
   "pewter_city": {
    "name": "SLATE CITY",
    "look": "SLATE: every roof laid in real slates, staggered, a shade apart; walls in dressed stone courses; the museum's glass dark like a slate with a chalk-stroke glint",
-   "tiles_redrawn": 73,
+   "tiles_redrawn": 68,
    "from_general": [],
    "by_role": {
     "56": "PewterCity @12,0",
@@ -178,11 +178,15 @@
     "23": "PewterCity @8,27"
    },
    "left_vanilla": [
+    11,
+    12,
     13,
     31,
     38,
     39,
     47,
+    69,
+    71,
     74,
     75,
     85,
@@ -191,6 +195,7 @@
     91,
     98,
     99,
+    102,
     104,
     105
    ],
