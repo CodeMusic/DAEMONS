@@ -6,9 +6,12 @@
     python3 tools/gbacaves.py --draft [DIR]         # the drafted caves' tiles.png and palettes, groups.json, and the
                                                     #   contact sheets, in DIR (gfx/drafts/t438/caves/); --sheets DIR
                                                     #   puts the sheets elsewhere
-    python3 tools/gbacaves.py --write --approved    # into the engine: the three the user approved (DEADSTACK, TAPPOINT'S
-                                                    #   CAVE, THE BLACKOUT) only; without --approved --write refuses.
-                                                    #   Batch E2 (the rest) is a draft: its sheets are t438e2_*.png
+    python3 tools/gbacaves.py --write --approved    # into the engine: every cave the user approved (batch E's three
+                                                    #   and E2's eight, 2026-10-23): tiles.png and the rows each look
+                                                    #   changes; the three palette splits' rows 7..12 beside their base
+                                                    #   (UMBRAL ASCENT, STILLFALL, and OTHER CAVE's four lights). The
+                                                    #   splits' Tileset headers and OTHER CAVE's cycle are engine code
+                                                    #   (headers.h, graphics.h, fieldmap.c). Without --approved it refuses.
 
 THE ANSWER IT FOLLOWS (the user, 2026-10-22): "a look per cave, matched to its name and what it is". A cave is a
 secondary tileset over primary/general, and several maps can share one (DEADSTACK, UMBRAL ASCENT, THE WRONG WAY and
@@ -212,14 +215,19 @@ class Cave:
         self.ts = ts
         self.dir = os.path.join(GBA, SEC + ts)
         self.im = Image.open(os.path.join(self.dir, "tiles.png"))
-        self.tiles = tiles_of(self.im)
+        self.now = tiles_of(self.im)
+        #  every look draws over VANILLA's tile, never today's, so a second --write is a no-op (batch D's lesson)
         self.van = tiles_of(Image.open(io.BytesIO(daemonslib.upstream(GBA, SEC + ts + "/tiles.png", binary=True))))
+        self.tiles = self.van
         self.pals = [read_pal(os.path.join(self.dir, "palettes/%02d.pal" % r)) for r in range(16)]
         self.mt = open(os.path.join(self.dir, "metatiles.bin"), "rb").read()
         self.attr = open(os.path.join(self.dir, "metatile_attributes.bin"), "rb").read()
         self.n = len(self.tiles)
+        #  a palette split's maps draw these tiles too (UMBRAL ASCENT's draw the stack), so they count here
+        own = {"gTileset_" + "".join(w.title() for w in ts.split("_"))} | \
+              {SPLIT_SYMBOL[k] for k in SPLIT_SYMBOL if k.split("/")[0] == ts}
         self.maps = sorted(n for n, l in layouts().items()
-                           if l["secondary_tileset"] == "gTileset_" + "".join(w.title() for w in ts.split("_"))
+                           if l["secondary_tileset"] in own
                            or l["secondary_tileset"].lower() == "gtileset_" + ts.replace("_", ""))
         self.use()
 
@@ -670,12 +678,18 @@ CINDER = _lumps(_voronoi([(3.0, 3.0, 0.6), (9.0, 2.0, 0.3), (14.0, 5.5, 0.5), (6
 FISSURE = [10, 10, 11, 11, 11, 10, 9, 9, 10, 10, 11, 12, 12, 11, 10, 10]   # its row at each column
 GLOW = range(3, 11)                                                         # where it is open enough to glow
 GLOW_CORE = range(5, 8)
-ASH = _marks([(2, 3, 6, 3), (9, 10, 5, 3)])                         # two drifts of ash lying on a top
+#  a top is ash lying in DRIFTS (the user, 2026-10-23: "a little less flat"): each heap lit on its crest and body and
+#  shaded at its foot, and here and there a cinder showing through where the ash lies thin
+ASH = _marks([(1, 2, 7, 3), (9, 7, 6, 4), (3, 12, 5, 3)])       # three drifts a block, wind-laid, none alike
+CINDERS_SHOWING = {(11, 3), (12, 3), (13, 13)}
 
 
 def m_ember(X, Y, plane):
     if plane == "top":
-        return ASH[Y][X] or "body", 0
+        if (X, Y) in CINDERS_SHOWING:
+            return "crack", 1
+        #  a drift is heaped ash, lighter than the ash it lies on: its crest and body lit, its foot in shade
+        return {"body": "hi", None: "body"}.get(ASH[Y][X], ASH[Y][X]), 0
     f = FISSURE[X]
     if Y == f:
         return ("accent0" if X in GLOW_CORE else "accent1" if X in GLOW else "crack"), 0
@@ -724,7 +738,9 @@ def _slab(x, y):
         return "crack", 0
     d = _dot_at(x, y)
     if d:
-        return {(0, 0): ("body", 1), (1, 0): ("lo", 1), (0, 1): ("lo", 1), (1, 1): ("crack", 2)}[d]
+        #  seen from above a dot is its shadow, and it has to read at 1x (the user, 2026-10-23): a mid corner and
+        #  three pixels four ranks down, so each cell's pattern is legible from across the screen
+        return {(0, 0): ("body", 2), (1, 0): ("lo", 3), (0, 1): ("lo", 3), (1, 1): ("crack", 3)}[d]
     return "body", 0
 
 
@@ -839,7 +855,29 @@ LOOKS.update({
              "rung": [(238, 232, 206), (206, 198, 170), (170, 162, 136), (134, 126, 104)],
              "water": [(80, 150, 176), (60, 126, 156), (44, 102, 134)],
              "patch": [(148, 124, 132), (136, 112, 122), (122, 100, 110)],
-             "accent": []}),
+             "accent": []},
+        #  OTHER CAVE never holds the same light twice running (the user, 2026-10-23): four lights in a cycle a player
+        #  can learn, one a visit, and its wild daemons follow the light (light n is VAR_ALTERING_CAVE_WILD_SET's set
+        #  n). Light 0 is the mineral teal above; these three are the same mineral idea in other stones -- each the
+        #  walls' crystal over a floor of the rock it grows in, the same value steps as the teal, never grey.
+        #  The ladders keep one colour in every light: a ladder is a thing the player looks for.
+        lights=[
+            dict(name="AMBER", stone="amber in slate",
+                 floor=[(150, 152, 164), (132, 134, 148), (114, 116, 132), (96, 98, 116), (78, 80, 98)],
+                 rock=[(246, 226, 170), (228, 196, 128), (204, 162, 88), (168, 124, 60), (124, 88, 44), (84, 58, 32)],
+                 dark=[(52, 36, 20), (74, 54, 32)], shade=[(64, 46, 28)], hole=[(20, 12, 6)],
+                 patch=[(114, 116, 132), (104, 106, 122), (92, 94, 110)]),
+            dict(name="CHRYSOPRASE", stone="chrysoprase in brown jasper",
+                 floor=[(168, 150, 140), (150, 132, 124), (132, 114, 108), (112, 96, 92), (94, 78, 76)],
+                 rock=[(226, 238, 190), (196, 218, 150), (160, 190, 114), (122, 156, 84), (88, 120, 62), (58, 86, 46)],
+                 dark=[(30, 46, 24), (48, 66, 36)], shade=[(40, 58, 32)], hole=[(10, 18, 8)],
+                 patch=[(132, 114, 108), (122, 104, 98), (108, 92, 88)]),
+            dict(name="ROSE QUARTZ", stone="rose quartz in green schist",
+                 floor=[(140, 166, 164), (122, 148, 148), (104, 130, 132), (88, 112, 116), (72, 94, 100)],
+                 rock=[(250, 222, 228), (236, 192, 204), (214, 156, 176), (184, 120, 146), (146, 88, 114), (104, 60, 82)],
+                 dark=[(56, 26, 40), (78, 44, 58)], shade=[(68, 36, 50)], hole=[(20, 6, 12)],
+                 patch=[(104, 130, 132), (94, 120, 122), (82, 106, 110)]),
+        ]),
     "seafoam_islands": dict(
         name="GLAUCOUS ISLES", motif="the bloom", rock=m_bloom, rim=None, floor=FLOOR_FROST, field=1, off=MARK_OFF,
         patch_field=0, top_at=2.6,
@@ -895,13 +933,16 @@ LOOKS.update({
 })
 
 
-def palettes(cave, proposed=True, key=None):
+def palettes(cave, proposed=True, key=None, light=0):
     """the secondary's sixteen rows: today's, or the look's -- each named index given its role's colour. `key` names a
-    look other than the tileset's own (a palette split: "cave/umbral")."""
+    look other than the tileset's own (a palette split: "cave/umbral"); `light`, one of OTHER CAVE's other lights."""
     pals = [list(p) for p in cave.pals]
     if not proposed:
         return pals
     look = LOOKS[key or cave.ts]
+    if light:
+        look = dict(look, pal=dict(look["pal"], **{k: v for k, v in look["lights"][light - 1].items()
+                                                   if k not in ("name", "stone")}))
     for r, plan in MATERIALS[cave.ts].items():
         for i, (mat, k) in plan.items():
             ramp = look.get("rows", {}).get(r, {}).get(mat) or look["pal"].get(mat)
@@ -1372,6 +1413,11 @@ def groups(cave, new, what, key=None):
 #  the batch E2 drafts, first met first. The first three (DRAFTED) are approved and are the only ones --write writes.
 DRAFTED_E2 = ["underground_path", "power_plant", "rock_tunnel/other", "seafoam_islands", "seafoam_islands/stillfall",
               "mt_ember", "navel_rock", "cave/umbral"]
+#  a palette split in the engine: its Tileset header (src/data/tilesets/headers.h) and where its rows 7..12 are kept
+SPLIT_SYMBOL = {"cave/umbral": "gTileset_CaveUmbral", "rock_tunnel/other": "gTileset_OtherCave",
+                "seafoam_islands/stillfall": "gTileset_Stillfall"}
+SPLIT_DIR = {"cave/umbral": "cave/palettes_umbral", "rock_tunnel/other": "rock_tunnel/palettes_other",
+             "seafoam_islands/stillfall": "seafoam_islands/palettes_stillfall"}
 SPLIT_MAPS = {"cave/umbral": "VictoryRoad_", "rock_tunnel/other": "SixIsland_AlteringCave",
               "seafoam_islands/stillfall": "FourIsland_IcefallCave"}
 
@@ -1380,8 +1426,9 @@ def split_maps(cave, key):
     return [m for m in cave.maps if m.startswith(SPLIT_MAPS[key])]
 
 
-#  OTHER CAVE, "never holds the same thing twice" (2.10): how a per-entry shift would work and what it costs. Drafted
-#  as words only -- not built, and not this tool's to build.
+#  OTHER CAVE, "never holds the same thing twice" (2.10): how the per-entry light works. The user approved it as a
+#  cycle of four (2026-10-23) with the wild daemons following the light; BUILT as described, the var VAR_OTHER_CAVE_LIGHT
+#  (0x40C5) and the palettes this tool writes, the code in fieldmap.c and the map's ON_TRANSITION.
 PER_ENTRY = [
     "HOW: OTHER CAVE gets its own Tileset header (the palette split above) whose palettes are a table of N lights "
     "instead of one -- the mineral teal and, say, three more (amber, rose quartz, lichen). LoadTilesetPalette() in "
@@ -1448,7 +1495,7 @@ def write_draft(outdir):
             write_pal(os.path.join(d, "palettes_proposed", "%02d.pal" % r), pp[r])
         info[key] = groups(cave, new, what, key)
         made.append((cave, new, what, pp, key))
-    json.dump(dict(ticket="T-438 batch E", status="DRAFT -- not in the engine",
+    json.dump(dict(ticket="T-438 batch E", status="approved 2026-10-23 -- --write --approved builds it",
                    proposal=[{k: v for k, v in p.items()} for p in PROPOSAL], drafted=info,
                    other_cave_per_entry=PER_ENTRY),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
@@ -1477,6 +1524,21 @@ def overview_sheet(made, path):
     return path
 
 
+def lights_sheet(cave, new, key, path):
+    """OTHER CAVE's four lights in their cycle, each over the wild set it brings"""
+    look = LOOKS[key]
+    f, F = font(13), font(17)
+    name, x0, y0, w, h, _ = CROPS[key][0]
+    names = ["TEAL (the approved light)"] + ["%s -- %s" % (l["name"], l["stone"]) for l in look["lights"]]
+    ims = [_label(render(cave, name, tiles=new, pals=palettes(cave, True, key, n), box=(x0, y0, 16, 12)).resize(
+               (512, 384), Image.NEAREST), "light %d: %s\nentry %d, %d, ...; wild set %d" % (n, names[n], n + 1, n + 5, n),
+               f) for n in range(1 + len(look["lights"]))]
+    rows = [_row(ims[:2]), _row(ims[2:])]
+    _col([_title("T-438 batch E2 -- OTHER CAVE's four lights, in the order they come (one a visit, then round again)",
+                 F, max(r.width for r in rows))] + rows).save(path)
+    return path
+
+
 def sheets(made, outdir):
     os.makedirs(outdir, exist_ok=True)
     out = [proposal_sheet(os.path.join(outdir, "t438e_proposal.png"))]
@@ -1486,13 +1548,16 @@ def sheets(made, outdir):
         out.append(tiles_sheet(cave, new, what, os.path.join(outdir, "%s_%s_tiles.png" % (pre, s)), key))
         for k, crop in enumerate(CROPS[key][:3 if key in DRAFTED else 2], 1):
             out.append(map_sheet(cave, new, pp, crop, os.path.join(outdir, "%s_%s_%d.png" % (pre, s, k)), key))
+    for cave, new, what, pp, key in made:
+        if LOOKS[key].get("lights"):
+            out.append(lights_sheet(cave, new, key, os.path.join(outdir, "t438e2_%s_lights.png" % SHORT[key])))
     out.append(overview_sheet(made, os.path.join(outdir, "t438e2_overview.png")))
     return out
 
 
 # ================================================================== the report
 def report():
-    print("T-438 batch E -- a look per cave (DRAFT; nothing here is in the engine)")
+    print("T-438 batch E -- a look per cave (approved 2026-10-23; --write --approved puts it in the engine)")
     for p in sorted(PROPOSAL, key=lambda p: p["order"]):
         print("\n  %-17s rank %-3d %s" % (p["ts"], p["order"], "DRAFTED" if p["drafted"] else "proposal only"))
         for pl in p["places"]:
@@ -1508,7 +1573,7 @@ def report():
         changed = sum(1 for t in range(cave.n) if new[t] != cave.tiles[t])
         touch = palette_touch(cave, key)
         print("\n  %s (%s)%s: %s%d palette entries proposed in rows %s; maps: %d" % (
-            look["name"], key, " APPROVED 2026-10-23" if key in DRAFTED else " batch E2, awaiting the user",
+            look["name"], key, " APPROVED 2026-10-23" if key in DRAFTED else " batch E2, APPROVED 2026-10-23",
             "a palette split over %s's tiles; " % LOOKS[look["base"]]["name"] if look.get("base") else
             "%d of %d tiles redrawn; " % (changed, cave.n), sum(len(v) for v in touch.values()), sorted(touch),
             len(split_maps(cave, key)) if look.get("base") else len(cave.maps)))
@@ -1520,29 +1585,48 @@ def report():
         moved = [t for t in range(cave.n) if any((a == 0) != (b == 0) for a, b in zip(new[t], cave.tiles[t]))]
         print("      footprint: %s" % ("every tile keeps its transparent pixels" if not moved else
                                        "!! tiles %s change their footprint" % moved))
-    print("\n  OTHER CAVE, a light per entry (described, not built):")
+    print("\n  OTHER CAVE, a light per entry (a cycle of four, built):")
     for l in PER_ENTRY:
         print("      " + "\n        ".join(_wrap(l, 108)))
 
 
+def write_engine():
+    """every approved cave into the engine: the drawn ones' tiles.png and the rows their look changes; each palette
+    split's rows 7..12 in its own folder beside its base (the Tileset header in headers.h names them), and OTHER CAVE's
+    other three lights in palettes_other_1..3. Nothing else: no metatile, attribute or map is touched."""
+    caves = {}
+    for key in DRAFTED + DRAFTED_E2:
+        ts = key.split("/")[0]
+        cave = caves.setdefault(ts, Cave(ts))
+        look = LOOKS[key]
+        pp = palettes(cave, True, key)
+        if look.get("base"):
+            sets = [(SPLIT_DIR[key], pp)] + [("%s_%d" % (SPLIT_DIR[key], n), palettes(cave, True, key, n))
+                                             for n in range(1, len(look.get("lights", [])) + 1)]
+            for rel, pals in sets:
+                d = os.path.join(GBA, SEC + rel)
+                os.makedirs(d, exist_ok=True)
+                for r in range(7, 13):
+                    write_pal(os.path.join(d, "%02d.pal" % r), pals[r])
+            print("  wrote %s: a palette split, rows 7..12 in %s" % (look["name"], ", ".join(r for r, _ in sets)))
+            continue
+        new, what = redraw(cave, key)
+        if any((a == 0) != (b == 0) for t in range(cave.n) for a, b in zip(new[t], cave.van[t])):
+            raise SystemExit("  !! %s: a tile's footprint moved -- nothing written" % key)
+        tiles_png(cave, new).save(os.path.join(cave.dir, "tiles.png"), bits=4)
+        rows = [r for r in range(7, 13) if pp[r] != cave.pals[r]]
+        for r in rows:
+            write_pal(os.path.join(cave.dir, "palettes/%02d.pal" % r), pp[r])
+        print("  wrote %s (%s): %d tiles redrawn, palette rows %s" % (look["name"], ts, len(what), rows or "none"))
+
+
 def main():
     if WRITE and "--approved" not in ARGS:
-        print("  --write refused: T-438 batch E is a draft until the user has approved its sheets.")
-        print("  (When they have: --write --approved writes the drafted caves' tiles.png and rows 8..12 of their "
-              "palettes into %s{%s}.)" % (SEC, ",".join(DRAFTED)))
+        print("  --write refused: T-438 batch E is written only with --approved (the user approved every cave here "
+              "on 2026-10-23).")
         return 0
     if WRITE:
-        #  only the three the user approved (2026-10-23). Batch E2's eight wait on the user, and its three palette
-        #  splits need a Tileset header, a palettes table and the layouts pointed at it -- engine work, not a write.
-        for ts in DRAFTED:
-            cave = Cave(ts)
-            new, what = redraw(cave)
-            tiles_png(cave, new).save(os.path.join(cave.dir, "tiles.png"))
-            pp = palettes(cave, True)
-            for r in range(8, 13):
-                write_pal(os.path.join(cave.dir, "palettes/%02d.pal" % r), pp[r])
-            print("  wrote %s: %d tiles, palettes 8..12" % (ts, len(what)))
-        print("  not written: batch E2 (%s) -- still a draft" % ", ".join(DRAFTED_E2))
+        write_engine()
         return 0
     if DRAFT is not None:
         made = write_draft(DRAFT)

@@ -31,7 +31,7 @@ keeps the player seven cells in from that side where they cross (gbasandbar.py).
 Reported per side: the map whose cells are wrong, the neighbour whose tileset
 draws them, and the rows or columns they sit in.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +43,7 @@ BORDER_KEPT_OFF = {"Route21_North": "gbasandbar.py: the arms keep the crossing s
 
 
 def tdir(symbol):
-    want = re.sub(r"[^a-z0-9]", "", symbol.replace("gTileset_", "").lower())
+    want = re.sub(r"[^a-z0-9]", "", daemonslib.tileset_base(GBA, symbol).replace("gTileset_", "").lower())
     for d in os.listdir(os.path.join(GBA, "data/tilesets/secondary")):
         if re.sub(r"[^a-z0-9]", "", d.lower()) == want:
             return os.path.join(GBA, "data/tilesets/secondary", d)

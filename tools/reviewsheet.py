@@ -11,6 +11,8 @@ draft. Send the sheet with SendUserFile and put it on the field-test page. It do
 takeover card goes unanswered when the user is away, and these do not wait on it.
 """
 import importlib.util, json, os, re, struct, sys, textwrap
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import daemonslib
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -157,8 +159,10 @@ def render(l, bd=None):
     prim = open(os.path.join(pd, "metatiles.bin"), "rb").read()
     meta = open(os.path.join(sd, "metatiles.bin"), "rb").read()
     pd, sd = gdir(l["primary_tileset"], "primary"), gdir(l["secondary_tileset"], "secondary")
+    #  a palette split (T-438: UMBRAL ASCENT, STILLFALL, OTHER CAVE) draws its base's tiles in rows of its own
+    own = daemonslib.tileset_palettes(GBA, l["secondary_tileset"])
     pals = [C.read_pal(os.path.join(pd, "palettes/%02d.pal" % n)) for n in range(7)] + \
-           [C.read_pal(os.path.join(sd, "palettes/%02d.pal" % n)) for n in range(7, 13)]
+           [C.read_pal(own[n] if own else os.path.join(sd, "palettes/%02d.pal" % n)) for n in range(7, 13)]
     pt, st = Image.open(os.path.join(pd, "tiles.png")), Image.open(os.path.join(sd, "tiles.png"))
     ptp, stp = pt.load(), st.load()
     W, H = l["width"], l["height"]

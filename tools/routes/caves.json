@@ -1,0 +1,34 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch E built: every approved cave, each from its DEBUG goto -- DEADSTACK, TAPPOINT'S CAVE, THE BLACKOUT dark and then lit by VERBOSE (FLASH, a field-move banner inside a cave), THE TUNNEL, the KEEPALIVE PLANT, GLAUCOUS ISLES, STILLFALL, MT. SMOULDER, THE DOTS, UMBRAL ASCENT; then OTHER CAVE entered four times from its first visit (teal, amber, chrysoprase, rose quartz, each with its wild set -- ECHO, TENSION, STARTLE, FIXATION), a battle inside and the light stays, ADVERTISE's fade inside and the light stays, and a fifth entry back to the teal; DOLDRUM CAVE and HALFTONE as they were. Debug scratch save; VAR_OTHER_CAVE_LIGHT is put back to 0 at the end.",
+ "stops": [
+  {"stop": "the DEBUG build, continued", "steps": ["load debug"]},
+  {"stop": "DEADSTACK 1F (MT. MOON): the stack", "steps": ["goto MtMoon_1F", "repel 999", "wait 60", "shot DEADSTACK 1F"]},
+  {"stop": "TAPPOINT'S CAVE B1F: the line", "steps": ["goto DiglettsCave_B1F", "repel 999", "wait 60", "shot TAPPOINT'S CAVE"]},
+  {"stop": "THE BLACKOUT: dark, then VERBOSE (FLASH) -- the banner inside a cave, no snap-back, no black", "steps": [
+   "goto RockTunnel_1F 17 4", "repel 999", "wait 60", "shot THE BLACKOUT dark",
+   "open DAEMON", "press A", "press DOWN 3", "shot VERBOSE chosen", "hold A 6",
+   "burst \"verbose\" 24 10", "finish", "wait 60", "shot THE BLACKOUT lit by VERBOSE", "to 21 4", "shot walked on, still lit"]},
+  {"stop": "THE TUNNEL (UNDERGROUND PATH)", "steps": ["goto UndergroundPath_NorthSouthTunnel", "wait 60", "shot THE TUNNEL"]},
+  {"stop": "the KEEPALIVE PLANT", "steps": ["goto PowerPlant", "repel 999", "wait 60", "shot KEEPALIVE PLANT"]},
+  {"stop": "GLAUCOUS ISLES 1F", "steps": ["goto SeafoamIslands_1F", "repel 999", "wait 60", "shot GLAUCOUS ISLES"]},
+  {"stop": "STILLFALL CAVE 1F (a palette split)", "steps": ["goto FourIsland_IcefallCave_1F", "repel 999", "wait 60", "shot STILLFALL"]},
+  {"stop": "MT. SMOULDER: the RUBY PATH", "steps": ["goto MtEmber_RubyPath_1F", "repel 999", "wait 60", "shot MT. SMOULDER"]},
+  {"stop": "THE DOTS 1F: braille that says hi", "steps": ["goto SixIsland_DottedHole_1F", "repel 999", "wait 60", "shot THE DOTS"]},
+  {"stop": "UMBRAL ASCENT 1F (a palette split)", "steps": ["goto VictoryRoad_1F", "repel 999", "wait 60", "shot UMBRAL ASCENT"]},
+  {"stop": "OTHER CAVE, first visit: the teal; a battle inside (ECHO) and the light stays", "steps": [
+   "var VAR_OTHER_CAVE_LIGHT 0", "var VAR_REPEL_STEP_COUNT 0", "goto SixIsland_AlteringCave", "wait 60", "shot visit 1: TEAL",
+   "wild SPECIES_ZUBAT 1", "foe SPECIES_ZUBAT", "wait 90", "shot after the battle: still TEAL"]},
+  {"stop": "OTHER CAVE, second visit: amber (TENSION)", "steps": [
+   "goto SixIsland_AlteringCave", "wait 60", "shot visit 2: AMBER", "wild SPECIES_MAREEP 1", "foe SPECIES_MAREEP", "wait 90", "shot after the battle: still AMBER"]},
+  {"stop": "OTHER CAVE, third visit: chrysoprase (STARTLE); ADVERTISE's fade inside", "steps": [
+   "goto SixIsland_AlteringCave", "wait 60", "shot visit 3: CHRYSOPRASE",
+   "open DAEMON", "press DOWN 4", "press A", "press DOWN 2", "shot ADVERTISE chosen", "hold A 6",
+   "burst \"advertise\" 20 10", "wait 400", "shot the battle ADVERTISE brought", "foe SPECIES_PINECO", "win", "wait 120", "shot after ADVERTISE and its battle: still CHRYSOPRASE"]},
+  {"stop": "OTHER CAVE, fourth visit: rose quartz (FIXATION)", "steps": [
+   "goto SixIsland_AlteringCave", "wait 60", "shot visit 4: ROSE QUARTZ", "wild SPECIES_HOUNDOUR 1", "foe SPECIES_HOUNDOUR", "wait 90", "shot after the battle: still ROSE QUARTZ"]},
+  {"stop": "OTHER CAVE, fifth visit: round again to the teal; then put back", "steps": [
+   "goto SixIsland_AlteringCave", "wait 60", "shot visit 5: TEAL again", "var VAR_OTHER_CAVE_LIGHT 0", "var VAR_ALTERING_CAVE_WILD_SET 0"]},
+  {"stop": "untouched: DOLDRUM CAVE and HALFTONE", "steps": ["goto CeruleanCave_1F", "repel 999", "wait 60", "shot DOLDRUM CAVE as it was", "goto LavenderTown", "wait 60", "shot HALFTONE as it was"]}
+ ]
+}

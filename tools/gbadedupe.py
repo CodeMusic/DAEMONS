@@ -23,7 +23,7 @@ another primary (Seafoam Islands), since its entries cannot be repointed; the
 animated tiles (water 416..481, flowers 508..511), which
 TilesetAnim_General writes over by slot number, and slot 0.
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +37,7 @@ ANIM = set(range(416, 482)) | set(range(508, 512))
 
 
 def tdir(symbol):
-    want = re.sub(r"[^a-z0-9]", "", symbol.replace("gTileset_", "").lower())
+    want = re.sub(r"[^a-z0-9]", "", daemonslib.tileset_base(GBA, symbol).replace("gTileset_", "").lower())
     for d in os.listdir(os.path.join(GBA, "data/tilesets/secondary")):
         if re.sub(r"[^a-z0-9]", "", d.lower()) == want:
             return os.path.join(GBA, "data/tilesets/secondary", d)

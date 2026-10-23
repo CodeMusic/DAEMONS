@@ -61,6 +61,7 @@ the S.S. ANNE pier's fir must be reached ON FOOT from VERMILION with the ship in
 setmetatile patches applied by the scene var). `--world` runs this part alone, in about two seconds.
 """
 import json, os, re, struct, subprocess, sys
+from daemonslib import tileset_base   # T-438: a palette split draws from its base's folder
 from collections import deque
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -133,7 +134,7 @@ JUMP = {0x38: (1, 0), 0x39: (-1, 0), 0x3A: (0, -1), 0x3B: (0, 1)}      # MB_JUMP
 
 
 def _tdir(root, symbol, kind):
-    want = re.sub(r"[^a-z0-9]", "", symbol.replace("gTileset_", "").lower())
+    want = re.sub(r"[^a-z0-9]", "", tileset_base(root, symbol).replace("gTileset_", "").lower())
     base = os.path.join(root, "data/tilesets", kind)
     for d in os.listdir(base):
         if re.sub(r"[^a-z0-9]", "", d.lower()) == want:

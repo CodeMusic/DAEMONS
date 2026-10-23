@@ -115,7 +115,7 @@ def type_ramp(rgb):
 
 
 def tdir(symbol, kind):
-    want = re.sub(r"[^a-z0-9]", "", symbol.replace("gTileset_", "").lower())
+    want = re.sub(r"[^a-z0-9]", "", daemonslib.tileset_base(GBA, symbol).replace("gTileset_", "").lower())
     for d in os.listdir(os.path.join(GBA, "data/tilesets", kind)):
         if re.sub(r"[^a-z0-9]", "", d.lower()) == want:
             return os.path.join(GBA, "data/tilesets", kind, d)

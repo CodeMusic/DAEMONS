@@ -29,7 +29,7 @@ WHAT IT WRITES (engineGba):
   src/data/notebook_finds.h                    where the placed pages lie, for REVEAL (T-297)
   data/maps/<map>/scripts.inc                  the silent and card hooks, each line marked '@ gbadocs'
 """
-import json, os, re, struct, sys
+import json, os, re, struct, sys, daemonslib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
@@ -92,7 +92,7 @@ def layout(name):
     m = json.loads(load("data/maps/%s/map.json" % name))
     lay = next(l for l in json.loads(load("data/layouts/layouts.json"))["layouts"] if l and l["id"] == m["layout"])
     def attrs(sym):
-        n = re.sub(r"(?<!^)(?=[A-Z])", "_", sym.replace("gTileset_", "")).lower()
+        n = re.sub(r"(?<!^)(?=[A-Z])", "_", daemonslib.tileset_base(GBA, sym).replace("gTileset_", "")).lower()
         for base in ("primary", "secondary"):
             for d in os.listdir(os.path.join(GBA, "data/tilesets", base)):
                 if d.replace("_", "") == n.replace("_", ""):
