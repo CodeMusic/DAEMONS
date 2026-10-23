@@ -529,3 +529,87 @@ T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -
 T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
 
 ![23Oct2026 - T438 - the caves draft - 88](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2088.png)
+
+### 23Oct2026 - T438 - the interiors built - 89
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 89](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2089.png)
+
+### 23Oct2026 - T438 - the interiors built - 90
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 90](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2090.png)
+
+### 23Oct2026 - T438 - the interiors built - 91
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 91](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2091.png)
+
+### 23Oct2026 - T438 - the interiors built - 92
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 92](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2092.png)
+
+### 23Oct2026 - T438 - the interiors built - 93
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 93](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2093.png)
+
+### 23Oct2026 - T438 - the interiors built - 94
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 94](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2094.png)
+
+### 23Oct2026 - T438 - the interiors built - 95
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 95](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2095.png)
+
+### 23Oct2026 - T438 - the interiors built - 96
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 96](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2096.png)
+
+### 23Oct2026 - T438 - the interiors built - 97
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 97](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2097.png)
+
+### 23Oct2026 - T438 - the interiors built - 98
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 98](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2098.png)
+
+### 23Oct2026 - T438 - the interiors built - 99
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 99](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%2099.png)
+
+### 23Oct2026 - T438 - the interiors built - 100
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 100](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%20100.png)
+
+### 23Oct2026 - T438 - the interiors built - 101
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 101](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%20101.png)
+
+### 23Oct2026 - T438 - the interiors built - 102
+
+v11.309.8 T-438 batch D and T-440: the interiors in timber; the timber reach on rooms not yet redrawn; PROTEUS battles in its edition's shape
+
+![23Oct2026 - T438 - the interiors built - 102](23Oct2026%20-%20T438%20-%20the%20interiors%20built%20-%20102.png)
