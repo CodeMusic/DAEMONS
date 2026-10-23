@@ -1,6 +1,6 @@
 {
  "ticket": "T-438 batch F",
- "status": "CALLOW, SLATE, DOLDRUM, THE UNDERTONE approved 2026-10-23 and built by --write --approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), waiting on the user; the rest not drafted",
+ "status": "CALLOW, SLATE, DOLDRUM, THE UNDERTONE approved 2026-10-23 and built by --write --approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), approved with revisions and revised (t438f3_*: palette moves, the roofs dotted whole, the pantiles calmed), not yet built; the rest not drafted",
  "drafted": {
   "viridian_city": {
    "name": "CALLOW CITY",
@@ -519,12 +519,62 @@
     "draft": 541,
     "added": []
    },
-   "palettes_changed": []
+   "palettes_changed": [
+    11
+   ],
+   "moves": [
+    {
+     "kind": "colours",
+     "row": 11,
+     "why": "ARDOR's own row 11 was empty (every index magenta, no block draws it): now warm iron -- vanilla's greys at 1..7 warmed to iron, the truck's teal box (8, 9) to rust, the lamp's red band (12) and the truck's stripe (13) as they were"
+    },
+    {
+     "kind": "rerow",
+     "blocks": [
+      653,
+      654,
+      655,
+      663,
+      671,
+      687,
+      719,
+      727,
+      735,
+      743
+     ],
+     "src": [
+      2,
+      3
+     ],
+     "dst": 11,
+     "why": "the harbour lights leave general's greys (rows 2/3, drawn on every map) for row 11",
+     "entries": 38
+    },
+    {
+     "kind": "rerow",
+     "blocks": [
+      787,
+      788,
+      789,
+      790,
+      791,
+      792,
+      793,
+      794
+     ],
+     "src": [
+      2
+     ],
+     "dst": 11,
+     "why": "the truck on the quay leaves general's row 2 for row 11",
+     "entries": 34
+    }
+   ]
   },
   "lavender_town": {
    "name": "HALFTONE TOWN",
    "look": "HALFTONE: every surface as a dot screen -- roofs, the boardwalks' planks, the KEEPALIVE PLANT's walls -- big dots on light, small on dark, so it reads as tone in grey and as dots up close",
-   "tiles_redrawn": 117,
+   "tiles_redrawn": 118,
    "from_general": [],
    "by_role": {
     "6": "Route12 @8,22",
@@ -660,6 +710,7 @@
     "59": "LavenderTown @3,13",
     "60": "LavenderTown @3,13",
     "61": "LavenderTown @3,13",
+    "336": "LavenderTown @3,13",
     "69": "LavenderTown @3,13",
     "1": "LavenderTown @3,13",
     "2": "LavenderTown @3,13",
@@ -773,7 +824,22 @@
     "draft": 541,
     "added": []
    },
-   "palettes_changed": []
+   "palettes_changed": [],
+   "moves": [
+    {
+     "kind": "tile",
+     "src": 702,
+     "blocks": [
+      656,
+      657,
+      660
+     ],
+     "row": 12,
+     "why": "the roofs' flat middle (702, vanilla's, all one index) is also the tower base's grey (row 9, ten blocks): the roofs get their own copy to dot, the tower keeps 702",
+     "new": 976,
+     "entries": 8
+    }
+   ]
   },
   "celadon_city": {
    "name": "VERDIGRIS CITY",
@@ -978,18 +1044,28 @@
     "draft": 541,
     "added": []
    },
-   "palettes_changed": []
+   "palettes_changed": [
+    9,
+    12
+   ],
+   "moves": [
+    {
+     "kind": "colours",
+     "row": 12,
+     "why": "the apartment blocks (row 12 is theirs alone): their flat roofs (general's grid, drawn here) from khaki to bronze gone green -- a verdigris patina, the grid's seams the deepest -- and the walls' pale mint a step deeper"
+    },
+    {
+     "kind": "colours",
+     "row": 9,
+     "why": "the mansion's bloom (row 9, 9..11: the mansion's alone) to the same verdigris"
+    }
+   ]
   },
   "saffron_city": {
    "name": "BRAZEN CITY",
    "look": "BRASS: plating works -- roofs in stamped brass panels, walls in rolled sheet with rivet lines, the tower's glass in a gold curtain wall; the plaza laid in a corporate grid",
    "tiles_redrawn": 76,
-   "from_general": [
-    149,
-    164,
-    165,
-    167
-   ],
+   "from_general": [],
    "by_role": {
     "173": "SaffronCity @14,9",
     "172": "SaffronCity @14,9",
@@ -1122,10 +1198,7 @@
     134,
     135,
     136,
-    137,
     138,
-    139,
-    142,
     143,
     148,
     153,
@@ -1185,7 +1258,37 @@
     "draft": 541,
     "added": []
    },
-   "palettes_changed": []
+   "palettes_changed": [
+    8,
+    11
+   ],
+   "moves": [
+    {
+     "kind": "colours",
+     "row": 11,
+     "why": "the green house roofs (general's ribbed roof, drawn in BRAZEN's row 11 at 10..14) in brass; 15 was free and keeps the old green for the two things that shared it (reindex below)"
+    },
+    {
+     "kind": "reindex",
+     "tiles": [
+      777,
+      779,
+      782,
+      1013
+     ],
+     "row": 11,
+     "map": {
+      "11": 15,
+      "13": 15
+     },
+     "why": "the PORT's green strip under its windows (777, 779, 782) and the dojo's weed (1013) keep the green (index 15) while their old indices turn brass"
+    },
+    {
+     "kind": "colours",
+     "row": 8,
+     "why": "the tower's purple wings (row 8, 13/14: drawn by its wings and nothing else; the doors' purple is 7..9 and stays) in gold"
+    }
+   ]
   }
  },
  "plan": [

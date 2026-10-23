@@ -11,8 +11,11 @@
     python3 tools/gbatowns.py --sheets DIR         # (with --draft) where the sheets go
     python3 tools/gbatowns.py --only TS,TS         # (with --draft) only these towns; no plan sheet, groups.json kept
     python3 tools/gbatowns.py --write --approved   # into the engine: the approved towns' tiles.png (CALLOW, SLATE,
-                                                   #   DOLDRUM, THE UNDERTONE, approved 2026-10-23). Refuses without
-                                                   #   --approved.
+                                                   #   DOLDRUM, THE UNDERTONE, approved 2026-10-23; ARDOR, HALFTONE,
+                                                   #   VERDIGRIS, BRAZEN approved 2026-10-23 with the revisions below).
+                                                   #   Refuses without --approved. A town with PALETTE MOVES is skipped
+                                                   #   unless --palettes is given too: then its moved .pal rows and its
+                                                   #   metatiles.bin are written beside its tiles.png.
 
 WHAT IS LEFT. Batches A-E took the doors, field effects, the general ground, every interior and the caves. A town's
 SECONDARY tileset is part ours already -- gbacivic/gbacivictown (CHECKPOINTS, THE REPO, the BENCHMARKS), gbahouse,
@@ -33,15 +36,30 @@ motif picks a rank light..dark and the material's own indices, sorted by their c
   * SILHOUETTE: a pixel of one material that touches another material, or nothing, keeps vanilla's index, so every
     outline, eave, sill and join is vanilla's and agrees with the tile beside it;
   * an index no material names (outlines, whites, the little red door, bikes, lamps) keeps vanilla's pixel;
-  * no block, layer, flip, palette row, behaviour or collision bit moves, and no palette changes. A palette change is
-    the user's call; the roles make one cheap later.
+  * no block, layer, flip, behaviour or collision bit moves. A palette change is the user's call: the ones the user
+    asked for (2026-10-23) are PALETTE MOVES, listed in MOVES below, each one checked against every block and map that
+    draws the indices it changes -- so a moved colour lands only where it was meant to.
+
+PALETTE MOVES (the user, 2026-10-23: "move palette rows so each theme comes true"). Four kinds, all in MOVES:
+  * "colours": a row's colours at some indices, each written before -> after (a Town read from disk after a write is
+    read back as before, so the redraw always sees one palette and a second write is a no-op). Light-to-dark order is
+    kept, so every ladder, and so every drawing, is the same before and after;
+  * "rerow": the entries of the named blocks that draw in one of `src` rows draw in `dst` instead -- ARDOR's harbour
+    lights and truck leave general's greys (rows 2/3, every map's) for ARDOR's own free row 11;
+  * "reindex": after the redraw, these tiles' pixels at one index take another -- the PORT's green strip and the
+    dojo's weed move to a free index so BRAZEN's green roofs can turn brass without them;
+  * "tile": a tile two objects share is copied to a new slot at the end of the tileset and the named blocks' entries
+    drawn in `row` point at the copy -- HALFTONE's flat roof middle (702) is also the tower base's grey, so the roofs
+    get a copy to dot. One tile row (16 slots) added; no block moves.
+They go into the draft folder (palettes/NN.pal, metatiles.bin beside tiles.png) and into the engine only with
+--write --approved --palettes.
 
 A tile vanilla copied from primary/general (a ledge's end, a fence post) and drew in rows 0..6 is not redrawn here: it
 takes batch C's current drawing of the same general tile, flips and all, so it matches the ground around it.
 
 NOT TOUCHED. A DOOR's tiles (field_door.c's table): gbadoors.py derives each door's animation from its closed block, so
 a door is redrawn by re-running gbadoors after a town is built. LAVENDER (HALFTONE) is grey by DaemonsIsHalftone() and
-keeps T-430's rules -- its look below must still read in grey. The palettes of every row.
+keeps T-430's rules -- its look below must still read in grey. Every palette row MOVES does not name.
 
 SEAMS (engine.md trap 14). A block within seven cells of a connection to another tileset must draw the same in both;
 the draft is checked with gbaseams.py's own comparison, run once on today's tiles and once on the draft, and any cell
@@ -61,6 +79,7 @@ SEC = "data/tilesets/secondary/"
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
+PALETTES = "--palettes" in ARGS
 
 
 def argval(flag):
@@ -185,12 +204,164 @@ SHORT = {"viridian_city": "callow", "pewter_city": "slate", "cerulean_city": "do
 DRAFTED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
            #  the next four, drafted 2026-10-23 in the order a player meets them (sheets t438f2_*)
            "vermilion_city", "lavender_town", "celadon_city", "saffron_city"]
-#  which sheet set each draft belongs to (the first four were t438f_, these t438f2_)
-SHEET_PREFIX = {"vermilion_city": "t438f2", "lavender_town": "t438f2", "celadon_city": "t438f2",
-                "saffron_city": "t438f2"}
+#  which sheet set each draft belongs to (the first four were t438f_, the next four t438f2_, revised as t438f3_)
+SHEET_PREFIX = {"vermilion_city": "t438f3", "lavender_town": "t438f3", "celadon_city": "t438f3",
+                "saffron_city": "t438f3"}
 #  the user, 2026-10-23: build these four (SLATE's museum roof and CALLOW's cottage roof calmed first); the rest stay
 #  drafts until approved
-APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest"]
+APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
+            #  the user, 2026-10-23: build ARDOR, HALFTONE, VERDIGRIS and BRAZEN with the revisions (MOVES below; the
+            #  roofs dotted whole; the pantiles calmed a step more)
+            "vermilion_city", "lavender_town", "celadon_city", "saffron_city"]
+
+
+# ================================================================== palette moves (the user, 2026-10-23)
+def _q(h):
+    """a colour as the GBA keeps it: five bits a channel, read back as the .pal files write them"""
+    return tuple(((int(h[k:k + 2], 16) >> 3) << 3) | (int(h[k:k + 2], 16) >> 5) for k in (0, 2, 4))
+
+
+def _cols(**kw):
+    """{index: (before, after)} from i<n>="before after" """
+    return {int(k.lstrip("i_"), 16): tuple(v.split()) for k, v in kw.items()}
+
+
+#  the harbour lights (VermilionCity, both lights at 20..21 / 25..26, 32..34) and the truck on the quay
+#  (SSAnne_Exterior 55..57, 1..3): every block of each, found by the cells that draw them
+ARDOR_LIGHTS = [0x28d, 0x28e, 0x28f, 0x297, 0x29f, 0x2af, 0x2cf, 0x2d7, 0x2df, 0x2e7]
+ARDOR_TRUCK = [0x313, 0x314, 0x315, 0x316, 0x317, 0x318, 0x319, 0x31a]
+MOVES = {
+    "vermilion_city": [
+        dict(kind="colours", row=11, why="ARDOR's own row 11 was empty (every index magenta, no block draws it): "
+                                         "now warm iron -- vanilla's greys at 1..7 warmed to iron, the truck's teal "
+                                         "box (8, 9) to rust, the lamp's red band (12) and the truck's stripe (13) "
+                                         "as they were",
+             colours=_cols(i1="ff00ff eee6dc", i2="ff00ff cdbfb0", i3="ff00ff ac9a88", i4="ff00ff 8f7b6a",
+                           i5="ff00ff 735f52", i6="ff00ff 584840", i7="ff00ff 3e322e", i8="ff00ff 7b3a24",
+                           i9="ff00ff a85634", ia="ff00ff ffcd8b", ib="ff00ff ee9473", ic="ff00ff de6a62",
+                           id="ff00ff cd524a", ie="ff00ff ac2029", i_f="ff00ff 9cdcd2")),
+        dict(kind="rerow", blocks=ARDOR_LIGHTS, src=(2, 3), dst=11,
+             why="the harbour lights leave general's greys (rows 2/3, drawn on every map) for row 11"),
+        dict(kind="rerow", blocks=ARDOR_TRUCK, src=(2,), dst=11,
+             why="the truck on the quay leaves general's row 2 for row 11"),
+    ],
+    "saffron_city": [
+        dict(kind="colours", row=11, why="the green house roofs (general's ribbed roof, drawn in BRAZEN's row 11 "
+                                         "at 10..14) in brass; 15 was free and keeps the old green for the two "
+                                         "things that shared it (reindex below)",
+             colours=_cols(ia="acdeb4 f6e69c", ib="8bbd94 e6c55a", ic="6a9c73 c59c39", id="52835a 9c7329",
+                           ie="41734a 6a4a1c", i_f="ff00ff 8bbd94")),
+        dict(kind="reindex", tiles=[777, 779, 782, 1013], row=11, map={11: 15, 13: 15},
+             why="the PORT's green strip under its windows (777, 779, 782) and the dojo's weed (1013) keep the "
+                 "green (index 15) while their old indices turn brass"),
+        dict(kind="colours", row=8, why="the tower's purple wings (row 8, 13/14: drawn by its wings and nothing "
+                                        "else; the doors' purple is 7..9 and stays) in gold",
+             colours=_cols(id="a483cd cd9c31", ie="cda4ff ffde6a")),
+    ],
+    "celadon_city": [
+        dict(kind="colours", row=12, why="the apartment blocks (row 12 is theirs alone): their flat roofs (general's "
+                                         "grid, drawn here) from khaki to bronze gone green -- a verdigris patina, "
+                                         "the grid's seams the deepest -- and the walls' pale mint a step deeper",
+             colours=_cols(i2="d5dea4 a4dcc4", i3="b4bd83 62bc9c", i4="8b945a 2f8670",
+                           ia="bde6de c4ecdc", ib="94cdb4 8bd5ba", ic="73ac94 5ab496", id="6a948b 41947c")),
+        dict(kind="colours", row=9, why="the mansion's bloom (row 9, 9..11: the mansion's alone) to the same "
+                                        "verdigris",
+             colours=_cols(i9="bde6de acecd5", ia="83bda4 52c4a0", ib="6a948b 31947b")),
+    ],
+    "lavender_town": [
+        dict(kind="tile", src=702, blocks=[0x290, 0x291, 0x294], row=12,
+             why="the roofs' flat middle (702, vanilla's, all one index) is also the tower base's grey (row 9, ten "
+                 "blocks): the roofs get their own copy to dot, the tower keeps 702"),
+    ],
+}
+for _ms in MOVES.values():                     # i_f: `if` is a keyword
+    for _m in _ms:
+        if "colours" in _m:
+            _m["colours"] = {k: (tuple(int(a[j:j + 2], 16) for j in (0, 2, 4)), _q(b))
+                             for k, (a, b) in _m["colours"].items()}
+
+
+#  tiles never redrawn, whatever they match: BRAZEN's PORT sign (789, 804, 805, 807) is drawn from tiles that copy
+#  general's signboard, so the general rule gave it batch C's signboard and scrambled the round sign (the first
+#  draft's PORT read "EP13"; the user, 2026-10-23: keep the PORT's round sign intact)
+KEEP_TILES = {"saffron_city": {789, 804, 805, 807}}
+
+
+def lum(c):
+    return 0.30 * c[0] + 0.59 * c[1] + 0.11 * c[2]
+
+
+def apply_pre(town):
+    """the moves that come before the redraw: colours (read back to `before` first, then set), rerows, tile copies.
+    Returns what each did, for the sheets"""
+    did = []
+    for mv in MOVES.get(town.ts, []):
+        if mv["kind"] == "colours":
+            pal = town.pals[mv["row"]]
+            five = lambda c: tuple(x >> 3 for x in c)
+            for i, (a, b) in mv["colours"].items():
+                if five(pal[i]) not in (five(a), five(b)):
+                    raise SystemExit("  !! %s row %d index %d is %s: neither the move's before nor after" % (
+                        town.ts, mv["row"], i, pal[i]))
+            #  every material's ladder keeps its light-to-dark order, so the redraw is the same before and after
+            for mat in set(MATERIALS.get(town.ts, {}).get(mv["row"], {}).values()):
+                ix = [i for i, m in MATERIALS[town.ts][mv["row"]].items() if m == mat]
+                col = lambda i, k: mv["colours"][i][k] if i in mv["colours"] else pal[i]
+                if sorted(ix, key=lambda i: (-lum(col(i, 0)), i)) != sorted(ix, key=lambda i: (-lum(col(i, 1)), i)):
+                    raise SystemExit("  !! %s row %d: the move reorders %s's ladder" % (town.ts, mv["row"], mat))
+            for i, (a, b) in mv["colours"].items():
+                pal[i] = b
+            did.append(mv)
+        elif mv["kind"] == "rerow":
+            mt = bytearray(town.mt)
+            n = 0
+            for blk in mv["blocks"]:
+                for q in range(8):
+                    o = (blk - 640) * 16 + q * 2
+                    v = struct.unpack_from("<H", mt, o)[0]
+                    if v >> 12 in mv["src"]:
+                        struct.pack_into("<H", mt, o, (v & 0x0FFF) | (mv["dst"] << 12))
+                        n += 1
+            town.mt = bytes(mt)
+            did.append(dict(mv, entries=n))
+        elif mv["kind"] == "tile":
+            src = mv["src"] - 640
+            mt = bytearray(town.mt)
+            new = None
+            for blk in mv["blocks"]:                    # already copied (read from disk after a write)?
+                for q in range(8):
+                    v = struct.unpack_from("<H", mt, (blk - 640) * 16 + q * 2)[0]
+                    if v >> 12 == mv["row"] and (v & 0x3FF) - 640 >= len(town.van):
+                        new = (v & 0x3FF) - 640
+            if new is None:
+                new = len(town.now)
+                town.now.append(list(town.now[src]))
+                town.disk.append(list(town.disk[src]))
+            while len(town.van) <= new:                 # the copy's vanilla is its source's
+                town.van.append(list(town.van[src]))
+            n = 0
+            for blk in mv["blocks"]:
+                for q in range(8):
+                    o = (blk - 640) * 16 + q * 2
+                    v = struct.unpack_from("<H", mt, o)[0]
+                    if v >> 12 == mv["row"] and (v & 0x3FF) == mv["src"]:
+                        struct.pack_into("<H", mt, o, (v & 0xFC00) | (640 + new))
+                        n += 1
+            town.mt = bytes(mt)
+            did.append(dict(mv, new=640 + new, entries=n))
+        elif mv["kind"] == "reindex":                   # done after the redraw (apply_post); listed for the sheets
+            did.append(mv)
+    return did
+
+
+def apply_post(town, new):
+    """the moves that come after the redraw: reindexed pixels. Idempotent (no target index is also a source)"""
+    for mv in MOVES.get(town.ts, []):
+        if mv["kind"] == "reindex":
+            assert not set(mv["map"].values()) & set(mv["map"])
+            for t in mv["tiles"]:
+                new[t - 640] = [mv["map"].get(c, c) for c in new[t - 640]]
+    return new
 
 
 # ================================================================== reading the engine
@@ -270,7 +441,9 @@ def door_blocks(ts):
 class Town:
     """one secondary tileset: its tiles as the engine has them, vanilla's, and where each is drawn"""
 
-    def __init__(self, ts):
+    def __init__(self, ts, moved=False):
+        """moved: with the town's PALETTE MOVES applied (its colours, rerows and tile copies; reindexes come after the
+        redraw). Without, the town as the engine has it today"""
         self.ts = ts
         self.dir = os.path.join(GBA, SEC + ts)
         self.im = Image.open(os.path.join(self.dir, "tiles.png"))
@@ -279,6 +452,9 @@ class Town:
         self.pals = [read_pal(os.path.join(self.dir, "palettes/%02d.pal" % r)) for r in range(16)]
         self.mt = open(os.path.join(self.dir, "metatiles.bin"), "rb").read()
         self.nblocks = len(self.mt) // 16
+        self.disk = [list(t) for t in self.now]
+        self.mt_disk = self.mt
+        self.moves = apply_pre(self) if moved else []
         sym = "gTileset_" + camel(ts)
         want = re.sub(r"[^a-z0-9]", "", ts)
         self.maps = sorted(n for n, l in layouts().items()
@@ -309,14 +485,13 @@ class Town:
                 t = v & 0x3FF
                 if t >= 640:
                     self.draws[t - 640] += w
-        self.disk = [list(t) for t in self.now]
         self._leftovers()
 
     def _leftovers(self):
         nb = lambda t: any(self.now[t])
         self.left = {t for t in range(min(len(self.van), len(self.now)))
                      if self.now[t] == self.van[t] and nb(t) and self.draws[t]}
-        self.targets = self.left - self.door_tiles
+        self.targets = self.left - self.door_tiles - {t - 640 for t in KEEP_TILES.get(self.ts, ())}
 
     def as_before(self, tiles):
         """read these tiles as vanilla's again (what they were before this tool drew them)"""
@@ -407,7 +582,7 @@ MATERIALS = {
     #  the second four (drafted 2026-10-23, in the order a player meets them)
     "vermilion_city": {
         8: {2: "roof", 3: "roof", 4: "roof", 10: "wall", 11: "wall", 12: "wall"},
-        12: {12: "roof", 13: "roof", 14: "roof", 15: "roof", 1: "wall", 2: "wall", 3: "wall"},
+        12: {12: "hallroof", 13: "hallroof", 14: "hallroof", 15: "hallroof", 1: "wall", 2: "wall", 3: "wall"},
         10: {2: "crate", 3: "crate", 4: "crate", 8: "leaf", 9: "leaf", 10: "leaf"},
         9: {1: "awning", 2: "awning", 3: "awning", 4: "awning"},
         #  the harbour lights (rows 2/3, general's greys) are left: "warm iron" needs a warm colour those rows do not
@@ -649,15 +824,20 @@ def m_bark(x, y, w, h, X, Y, b):
 #  ---- the second four. A motif may answer (level, other material): the pixel then takes that material's ladder in
 #  the same row -- how VERDIGRIS's bronze blooms green where the rain runs off it.
 def m_pantile(x, y, w, h, X, Y, b):
-    """ARDOR: hot glazed pantiles, calm at 1x -- a course every eight rows, a roll every eight pixels: a lit glaze
-    on the roll's crown, the body, a dark lap under each course. No stripe finer than eight, and no dark joint
-    between the rolls (the first draw had one and read as a grid)"""
+    """ARDOR: hot glazed pantiles, calmed a step more for 1x (the user, 2026-10-23: "closer to SLATE's calm") -- as
+    SLATE's museum roof: courses eight rows tall laid in the glaze's own light, and only one step of shade -- the lap
+    under each course, and a short shadow down the side of each roll in the lower half of the course. No stripe the
+    course's height, no joint, nothing two steps from the body"""
     xo, yy = X % 8, Y % 8
-    if yy == 7:
-        return 1.0
-    if xo in (1, 2, 3) and yy < 6:
-        return 0.0
-    return 0.4
+    if yy == 7 or (xo == 7 and yy >= 4):
+        return 0.34
+    return 0.0
+
+
+def m_pantile_deep(x, y, w, h, X, Y, b):
+    """the hall's green pantiles: the same calm courses one step deeper, so the green stays green (its lightest is
+    nearly white)"""
+    return m_pantile(x, y, w, h, X, Y, b) + 0.33
 
 
 def m_stucco(x, y, w, h, X, Y, b):
@@ -714,10 +894,15 @@ def m_streak(x, y, w, h, X, Y, b):
 
 
 def m_bronze(x, y, w, h, X, Y, b):
-    """VERDIGRIS: bronze sheet with a standing seam every eight, furred green where the rain runs -- along the drip
-    edge and down from each seam"""
-    if y >= h - 2 or (X % 8 == 7 and y >= h // 2 and _h(X // 8, 3) < 0.6):
-        return (0.67 if y >= h - 1 else 0.33 if y >= h - 2 else 0.5, "bloom")
+    """VERDIGRIS: bronze sheet with a standing seam every eight, furred green where the rain runs (the user,
+    2026-10-23: more verdigris) -- a deep bloom along the drip edge, a run down from every seam from a third of the
+    way down, and a second, shorter run beside every other one"""
+    if y >= h - 3:
+        return ((0.33, 0.5, 0.67)[y - (h - 3)], "bloom")
+    if X % 8 == 7 and y >= h // 3:
+        return (0.5, "bloom")
+    if X % 8 == 6 and y >= (2 * h) // 3 and _h(X // 8, 3) < 0.6:
+        return (0.33, "bloom")
     if X % 8 == 7:
         return 1.0
     if y < 2:
@@ -778,7 +963,7 @@ def m_stamped(x, y, w, h, X, Y, b):
 
 
 STYLE = {
-    "vermilion_city": dict(roof=m_pantile, wall=m_stucco, crate=m_boards, leaf=m_leaf, awning=m_awning_wide,
+    "vermilion_city": dict(roof=m_pantile, hallroof=m_pantile_deep, wall=m_stucco, crate=m_boards, leaf=m_leaf, awning=m_awning_wide,
                            ),
     "lavender_town": dict(plank=m_dots, roof=m_dots, wall=m_dots, glass=m_dots_light, dome=m_dots),
     "celadon_city": dict(road=m_streak, bronze=m_bronze, bloom=m_patina, trim=m_band, glass=m_glass),
@@ -795,7 +980,8 @@ STYLE = {
 KEEP_LIGHT = {"canopy": 0.0, "fir": 0.0, "glass": 0.2, "roof": 0.25, "slates": 0.2}
 #  ... and per town, where a calmed motif sets its own shades (it keeps vanilla's light itself, or none)
 KEEP_LIGHT_TOWN = {("viridian_city", "roof"): 0.0, ("pewter_city", "roof"): 0.0,
-                   ("vermilion_city", "roof"): 0.0, ("vermilion_city", "awning"): 0.0,
+                   ("vermilion_city", "roof"): 0.0, ("vermilion_city", "hallroof"): 0.0,
+                   ("vermilion_city", "awning"): 0.0,
                    ("celadon_city", "road"): 0.0, ("celadon_city", "bronze"): 0.0,
                    ("saffron_city", "plaza"): 0.0, ("saffron_city", "paving"): 0.0, ("saffron_city", "brass"): 0.0,
                    ("saffron_city", "curtain"): 0.0, ("saffron_city", "panels"): 0.0}
@@ -855,19 +1041,25 @@ def drawn_before(ts):
     differently; so the tiles whose pixels are exactly what this tool would draw over vanilla are read as vanilla
     again -- found as a fixed point, since which tiles are leftovers decides how each is drawn -- and a second write
     is a no-op (batch D's lesson)."""
-    town = Town(ts)
+    town = Town(ts, moved=True)
     van = lambda t: t < len(town.van)
     cand = {t for t in range(len(town.disk)) if van(t) and town.disk[t] != town.van[t] and any(town.van[t])
             and town.draws[t] and all((a == 0) == (b == 0) for a, b in zip(town.disk[t], town.van[t]))}
     while cand:
-        town = Town(ts)
+        town = Town(ts, moved=True)
         town.as_before(cand)
-        new, _ = redraw(town)
+        new, _ = draw(town)
         keep = {t for t in cand if new[t] == town.disk[t]}
         if keep == cand:
             return town, cand
         cand = keep
-    return Town(ts), set()
+    return Town(ts, moved=True), set()
+
+
+def draw(town):
+    """the redraw, then the moves that come after it (reindexed pixels)"""
+    new, what = redraw(town)
+    return apply_post(town, new), what
 
 
 def redraw(town):
@@ -1144,24 +1336,31 @@ def grey(im):
     return out
 
 
-def map_sheet(town, new, crop, path):
+def map_sheet(town, new, crop, path, today=None, prev=None):
+    """today | the draft, 1x and 2x (and grey for HALFTONE); `today` is the town as the engine has it when the draft
+    town carries palette moves; `prev`, the tiles of the draft this one revises (shown between, at 1x)"""
     name, x0, y0, w, h, what = crop
     p = plan_of(town.ts)
-    a = render(town, name, box=(x0, y0, w, h))
+    a = render(today or town, name, box=(x0, y0, w, h))
     b = render(town, name, tiles=new, box=(x0, y0, w, h))
     f, F = font(13), font(17)
+    D = "revised" if today is not None else "draft"
     z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
-    rows = [_row([_label(a, "today 1x", f), _label(b, "draft 1x", f)]),
-            _row([_label(z2(a), "today 2x", f), _label(z2(b), "draft 2x", f)])]
+    c = render(today or town, name, tiles=prev, box=(x0, y0, w, h)) if prev else None
+    rows = [_row([_label(a, "today 1x", f)] + ([_label(c, "first draft 1x (t438f2)", f)] if c else []) +
+                 [_label(b, D + " 1x", f)]),
+            _row([_label(z2(a), "today 2x", f), _label(z2(b), D + " 2x", f)])]
     if town.ts == "lavender_town":                    # as DaemonsIsHalftone() shows it
         g = ("grey -- as HALFTONE shows it" if name == "LavenderTown" else
              "grey -- for comparison: %s is not HALFTONE's mapsec, so it plays in colour" % name)
         rows.insert(1, _title(g, f, 1000))
-        rows.insert(2, _row([_label(grey(a), "today 1x, grey", f),
-                             _label(grey(b), "draft 1x, grey", f)]))
-        rows.append(_row([_label(z2(grey(a)), "today 2x, grey", f), _label(z2(grey(b)), "draft 2x, grey", f)]))
-    sheet = _col([_title("T-438 batch F DRAFT -- %s: %s\n%s, cells %d,%d %dx%d -- footprints, blocks, collision, "
-                         "palettes unchanged" % (p["name"], what, name, x0, y0, w, h), F,
+        rows.insert(2, _row([_label(grey(a), "today 1x, grey", f)] +
+                            ([_label(grey(c), "first draft 1x, grey", f)] if c else []) +
+                            [_label(grey(b), D + " 1x, grey", f)]))
+        rows.append(_row([_label(z2(grey(a)), "today 2x, grey", f), _label(z2(grey(b)), D + " 2x, grey", f)]))
+    pals = ("palette moves: see the _palette sheet" if MOVES.get(town.ts) and today else "palettes unchanged")
+    sheet = _col([_title("T-438 batch F DRAFT -- %s: %s\n%s, cells %d,%d %dx%d -- footprints, blocks, collision "
+                         "unchanged; %s" % (p["name"], what, name, x0, y0, w, h, pals), F,
                          max(r.width for r in rows))] + rows)
     sheet.save(path)
     return path
@@ -1204,6 +1403,103 @@ def tiles_sheet(town, new, what, path):
                     len(changed), ", ".join("%s %d" % kv for kv in sorted(by.items()))), f)])
     sheet = _col([_title("T-438 batch F DRAFT -- %s: the tileset (rows unchanged)\n%s" % (
         p["name"], "\n".join(_wrap(p["look"], 110))), F, top.width), top])
+    sheet.save(path)
+    return path
+
+
+def _swatches(pal, mark=(), Z=26, f=None):
+    im = Image.new("RGB", (16 * Z, Z + 14), BG)
+    d = ImageDraw.Draw(im)
+    for i, c in enumerate(pal):
+        d.rectangle([i * Z + 1, 1, i * Z + Z - 2, Z - 2], fill=c, outline=(220, 0, 0) if i in mark else (90, 90, 90))
+        d.text((i * Z + 8, Z), "%x" % i, font=f, fill=(30, 30, 30))
+    return im
+
+
+def move_cells(town, row, idx=None, blocks=None, tiles=None):
+    """{map: [cells]} for every reachable map: the cells whose block draws `idx` in `row` (or is one of `blocks`)"""
+    G = general()
+    hit = set(blocks or ())
+    if idx is not None:
+        src = lambda t: G["tiles"][t] if t < 640 else (tiles or town.now)[t - 640]
+        for b in range(town.nblocks):
+            for v in entries(town.mt, b):
+                if v >> 12 == row and set(src(v & 0x3FF)) & set(idx):
+                    hit.add(640 + b)
+    out = {}
+    for m in town.maps:
+        W = layouts()[m]["width"]
+        c = [(i % W, i // W) for i, v in enumerate(town.grid[m]) if v in hit]
+        if c:
+            out[m] = c
+    return out
+
+
+def palette_sheet(today, town, new, path):
+    """every moved row before and after, and every map that draws what moved, before | after"""
+    f, F, H = font(12), font(14), font(18)
+    p = plan_of(town.ts)
+    parts = [_title("T-438 batch F DRAFT -- %s: the palette moves (the user, 2026-10-23)\nred: the indices "
+                    "that move. Under each move, every reachable map that draws them: today | revised" % p["name"],
+                    H, 1400)]
+    for mv in town.moves:
+        k = mv["kind"]
+        lines = _wrap("%s -- %s" % (k.upper(), mv["why"]), 150)
+        parts.append(_title("\n".join(lines), F, 1400))
+        if k == "colours":
+            r = mv["row"]
+            parts.append(_row([_label(_swatches(today.pals[r], mv["colours"], f=f), "row %d today" % r, f),
+                               _label(_swatches(town.pals[r], mv["colours"], f=f), "row %d revised" % r, f)]))
+            where = move_cells(town, r, idx=mv["colours"], tiles=new)
+        elif k == "rerow":
+            r = mv["dst"]
+            sw = [_label(_swatches(today.palette(q), f=f), "row %d (general's, unchanged)" % q if q < 7 else
+                         "row %d" % q, f) for q in mv["src"]]
+            sw.append(_label(_swatches(town.pals[r], range(16), f=f), "row %d revised (they draw here now)" % r, f))
+            parts.append(_row(sw))
+            parts.append(_title("%d entries in %d blocks: %s" % (mv["entries"], len(mv["blocks"]), " ".join(
+                "%03x" % b for b in mv["blocks"])), f, 1400))
+            where = move_cells(town, r, blocks=mv["blocks"])
+        elif k == "reindex":
+            where = move_cells(town, mv["row"], blocks=[640 + b for b in range(town.nblocks)
+                                                        if any((v & 0x3FF) in mv["tiles"]
+                                                               for v in entries(town.mt, b))])
+            parts.append(_title("tiles %s: %s" % (", ".join(map(str, mv["tiles"])), ", ".join(
+                "%x -> %x" % kv for kv in sorted(mv["map"].items()))), f, 1400))
+        else:                                           # a tile copy
+            Z = 10
+            t0, t1 = mv["src"] - 640, mv["new"] - 640
+            pal = town.palette(mv["row"])
+            ims = []
+            for lbl, px in (("%d today" % mv["src"], today.now[t0]), ("%d revised" % mv["new"], new[t1])):
+                im = Image.new("RGB", (8 * Z, 8 * Z))
+                o = ImageDraw.Draw(im)
+                for q, c in enumerate(px):
+                    o.rectangle([(q % 8) * Z, (q // 8) * Z, (q % 8) * Z + Z - 1, (q // 8) * Z + Z - 1],
+                                fill=pal[c])
+                ims.append(_label(im, lbl, f))
+            parts.append(_row(ims))
+            parts.append(_title("%d entries in blocks %s now draw %d" % (mv["entries"], " ".join(
+                "%03x" % b for b in mv["blocks"]), mv["new"]), f, 1400))
+            where = move_cells(town, mv["row"], blocks=mv["blocks"])
+        if not where:
+            parts.append(_title("   (no reachable map draws it)", f, 1400))
+        for m, cells in where.items():
+            xs, ys = [x for x, _ in cells], [y for _, y in cells]
+            l = layouts()[m]
+            x0, y0 = max(0, min(xs) - 2), max(0, min(ys) - 2)
+            w, h = min(max(xs) - x0 + 3, l["width"] - x0), min(max(ys) - y0 + 3, l["height"] - y0)
+            if w * h > 60 * 40:
+                w, h = min(w, 60), min(h, 40)
+            a = render(today, m, box=(x0, y0, w, h))
+            b = render(town, m, tiles=new, box=(x0, y0, w, h))
+            if w * 16 < 500:
+                a, b = (i.resize((i.width * 2, i.height * 2), Image.NEAREST) for i in (a, b))
+            g = [] if town.ts != "lavender_town" else [_label(grey(a), "grey", f), _label(grey(b), "grey", f)]
+            parts.append(_title("%s: %d cells draw it (shown: cells %d,%d %dx%d)" % (m, len(cells), x0, y0, w, h),
+                                f, 1400))
+            parts.append(_row([_label(a, "today", f), _label(b, "revised", f)] + g))
+    sheet = _col(parts, gap=8)
     sheet.save(path)
     return path
 
@@ -1257,6 +1553,30 @@ def census(thumbs=False):
 
 
 # ================================================================== the work
+def save_tiles(town, new, path):
+    """tiles.png, 4-bit with sixteen colours (the engine's own PNG palette), a tile row longer if a move added a tile"""
+    im = Image.new("P", (128, ((len(new) + 15) // 16) * 8))
+    im.putpalette(town.im.convert("P").getpalette()[:48])
+    px = im.load()
+    for t, p in enumerate(new):
+        for k, v in enumerate(p):
+            px[(t % 16) * 8 + k % 8, (t // 16) * 8 + k // 8] = v
+    im.save(path, bits=4)
+
+
+def save_moves(town, d):
+    """a town's moved palette rows (palettes/NN.pal) and, if a move touched it, its metatiles.bin, into folder d.
+    Returns the rows written"""
+    rows = sorted({mv["row"] for mv in town.moves if mv["kind"] == "colours"})
+    if rows:
+        os.makedirs(os.path.join(d, "palettes"), exist_ok=True)
+    for r in rows:
+        daemonslib.write_pal(os.path.join(d, "palettes", "%02d.pal" % r), town.pals[r])
+    if town.mt != town.mt_disk:
+        open(os.path.join(d, "metatiles.bin"), "wb").write(town.mt)
+    return rows
+
+
 def write_draft(outdir):
     os.makedirs(outdir, exist_ok=True)
     sheets_dir = SHEETS
@@ -1266,36 +1586,38 @@ def write_draft(outdir):
     gj = os.path.join(outdir, "groups.json")
     info = json.load(open(gj)).get("drafted", {}) if only and os.path.exists(gj) else {}
     for ts in (only or DRAFTED):
-        town = Town(ts)
-        new, what = redraw(town)
+        today = Town(ts)
+        town = Town(ts, moved=True)
+        new, what = draw(town)
         moved = [t for t in range(len(new)) if any((a == 0) != (b == 0) for a, b in zip(new[t], town.now[t]))]
         if moved:
             raise SystemExit("  !! %s: tiles %s change their footprint" % (ts, moved[:10]))
         d = os.path.join(outdir, ts)
         os.makedirs(d, exist_ok=True)
-        im = town.im.copy().convert("P")
-        flat = [c for rgb in town.pals[8] for c in rgb]
-        im.putpalette(flat)
-        px = im.load()
-        for t, p in enumerate(new):
-            for k, v in enumerate(p):
-                px[(t % 16) * 8 + k % 8, (t // 16) * 8 + k // 8] = v
-        im.save(os.path.join(d, "tiles.png"), bits=4)
+        prev_path = os.path.join(d, "tiles.png")
+        prev = tiles_of(Image.open(prev_path)) if ts in SHEET_PREFIX and os.path.exists(prev_path) else None
+        save_tiles(town, new, prev_path)
+        pals_changed = save_moves(town, d)
         a, b, added = seams(town, new)
-        changed = sorted(t for t in range(len(new)) if new[t] != town.now[t])
+        changed = sorted(t for t in range(len(new)) if t >= len(today.now) or new[t] != today.now[t])
         info[ts] = dict(name=plan_of(ts)["name"], look=plan_of(ts)["look"], tiles_redrawn=len(changed),
                         from_general=sorted(t for t, w in what.items() if w == "general"),
                         by_role={t: w for t, w in what.items() if w != "general"},
                         left_vanilla=sorted(town.targets - set(changed)),
                         doors_kept=sorted(town.left & town.door_tiles),
-                        seams=dict(today=a, draft=b, added=added), palettes_changed=[])
+                        seams=dict(today=a, draft=b, added=added), palettes_changed=pals_changed,
+                        moves=[{k: v for k, v in mv.items() if k != "colours"} for mv in town.moves])
         s = SHEET_PREFIX.get(ts, "t438f") + "_" + SHORT[ts]
         made.append(tiles_sheet(town, new, what, os.path.join(sheets_dir, "%s_tiles.png" % s)))
         for k, crop in enumerate(CROPS[ts], 1):
-            made.append(map_sheet(town, new, crop, os.path.join(sheets_dir, "%s_%d.png" % (s, k))))
+            made.append(map_sheet(town, new, crop, os.path.join(sheets_dir, "%s_%d.png" % (s, k)),
+                                  today=today if town.moves else None, prev=prev))
+        if town.moves:
+            made.append(palette_sheet(today, town, new, os.path.join(sheets_dir, "%s_palette.png" % s)))
     json.dump(dict(ticket="T-438 batch F", status="CALLOW, SLATE, DOLDRUM, THE UNDERTONE approved 2026-10-23 and built by --write "
-                   "--approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), waiting on the "
-                   "user; the rest not drafted",
+                   "--approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), approved "
+                   "with revisions and revised (t438f3_*: palette moves, the roofs dotted whole, the pantiles "
+                   "calmed), not yet built; the rest not drafted",
                    drafted=info, plan=[{k: v for k, v in p.items()} for p in PLAN]),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
     return made
@@ -1314,8 +1636,8 @@ def report():
         print("        look: " + "\n              ".join(_wrap(p["look"], 100)))
     print("\n  scanned %d maps" % sum(len(v["maps"]) for v in c.values()))
     for ts in DRAFTED:
-        town = Town(ts)
-        new, what = redraw(town)
+        town = Town(ts, moved=True)
+        new, what = draw(town)
         changed = sum(1 for t in range(len(new)) if new[t] != town.now[t])
         print("  draft %-18s %d tiles redrawn (%d from general's own), %d leftovers not redrawn" % (
             ts, changed, sum(1 for w in what.values() if w == "general"), len(town.targets - set(what))))
@@ -1327,20 +1649,25 @@ def main():
             print("  --write refused: --write needs --approved, and APPROVED must name the towns the user approved.")
             return 0
         for ts in APPROVED:
+            if MOVES.get(ts) and not PALETTES:
+                print("  %s: skipped -- it carries palette moves (MOVES), which go into the engine only with "
+                      "--palettes" % ts)
+                continue
             town, _ = drawn_before(ts)
-            new, what = redraw(town)
+            new, what = draw(town)
             if any((a == 0) != (b == 0) for t in range(len(new)) for a, b in zip(new[t], town.now[t])):
                 raise SystemExit("  !! %s: a tile's footprint moved -- nothing written" % ts)
-            if new == town.disk:
+            pal_moved = any(town.pals[mv["row"]] != read_pal(os.path.join(town.dir, "palettes/%02d.pal" % mv["row"]))
+                            for mv in town.moves if mv["kind"] == "colours")
+            if new == town.disk and town.mt == town.mt_disk and not pal_moved:
                 print("  %s: already drawn (%d tiles), nothing to write" % (ts, len(what)))
                 continue
-            im = town.im.copy()
-            px = im.load()
-            for t, p in enumerate(new):
-                for k, v in enumerate(p):
-                    px[(t % 16) * 8 + k % 8, (t // 16) * 8 + k // 8] = v
-            im.save(os.path.join(town.dir, "tiles.png"), bits=4)
-            print("  wrote %s: %d tiles" % (ts, sum(1 for t in range(len(new)) if new[t] != town.disk[t])))
+            save_tiles(town, new, os.path.join(town.dir, "tiles.png"))
+            rows = save_moves(town, town.dir)
+            print("  wrote %s: %d tiles%s" % (ts, sum(1 for t in range(len(new)) if t >= len(town.disk) or
+                                                       new[t] != town.disk[t]),
+                                              "; palette rows %s%s" % (rows, ", metatiles.bin" if town.mt !=
+                                                                       town.mt_disk else "") if town.moves else ""))
         return 0
     if DRAFT is not None:
         for p in write_draft(DRAFT):
