@@ -1,6 +1,6 @@
 {
  "mapsec": "MAPSEC_DOTTED_HOLE",
  "name": "THE DOTS",
- "from": "painted, seed 4451, denoise 0.42",
- "num_tiles": 360
+ "from": "painted, seed 4451, denoise 0.40",
+ "num_tiles": 377
 }

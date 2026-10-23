@@ -1,0 +1,272 @@
+{
+ "rom": "debug",
+ "about": "T-445 built: each painted cave preview, the cave entered on foot from outside so the game shows it (a burst through the fade, the picture and the fade out), then the cave inside; and OTHER CAVE entered five times in a row from OUTCAST ISLAND, its preview's light the coming visit's (teal, amber, chrysoprase, rose quartz, teal again), the cave inside lit the same. Debug scratch save; VAR_OTHER_CAVE_LIGHT is put back to 0 at the end.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "DEADSTACK (MT. MOON), from ROUTE 4",
+   "steps": [
+    "goto Route4 19 6",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 19 6",
+    "wait 20",
+    "shot outside",
+    "burst \"DEADSTACK preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "THE WRONG WAY (LOST CAVE), from RESORT GORGEOUS",
+   "steps": [
+    "goto FiveIsland_ResortGorgeous 64 14",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 64 14",
+    "wait 20",
+    "shot outside",
+    "burst \"THE WRONG WAY preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "UMBRAL ASCENT (VICTORY ROAD), from ROUTE 23",
+   "steps": [
+    "goto Route23 5 29",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 5 29",
+    "wait 20",
+    "shot outside",
+    "burst \"UMBRAL ASCENT preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "TAPPOINT'S CAVE (DIGLETT'S CAVE), from ROUTE 2",
+   "steps": [
+    "goto Route2 17 12",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 17 12",
+    "wait 20",
+    "shot outside",
+    "burst \"TAPPOINT'S CAVE preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "THE BLACKOUT (ROCK TUNNEL), from ROUTE 10",
+   "steps": [
+    "goto Route10 8 20",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 8 20",
+    "wait 20",
+    "shot outside",
+    "burst \"THE BLACKOUT preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "the KEEPALIVE PLANT (POWER PLANT, a forest-type preview), from ROUTE 10",
+   "steps": [
+    "goto Route10 7 41",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 7 41",
+    "wait 20",
+    "shot outside",
+    "burst \"KEEPALIVE PLANT preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "GLAUCOUS ISLES (SEAFOAM), from ROUTE 20",
+   "steps": [
+    "goto Route20 60 9",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 60 9",
+    "wait 20",
+    "shot outside",
+    "burst \"GLAUCOUS ISLES preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "STILLFALL CAVE (ICEFALL), from FOUR ISLAND",
+   "steps": [
+    "goto FourIsland 38 13",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 38 13",
+    "wait 20",
+    "shot outside",
+    "burst \"STILLFALL CAVE preview\" 16 10 UP 16",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "MT. SMOULDER (MT. EMBER), from KINDLE ROAD",
+   "steps": [
+    "goto OneIsland_KindleRoad 11 7",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 11 7",
+    "wait 20",
+    "shot outside",
+    "burst \"MT. SMOULDER preview\" 18 10 UP 40",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "THE DOTS (DOTTED HOLE), from RUIN VALLEY: the door opened",
+   "steps": [
+    "flag FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE 1",
+    "flag FLAG_HIDE_RUIN_VALLEY_SCIENTIST 1",
+    "goto SixIsland_RuinValley 24 26",
+    "repel 999",
+    "wait 30",
+    "shot outside",
+    "burst \"THE DOTS preview\" 18 10 UP 34",
+    "wait 120",
+    "shot inside"
+   ]
+  },
+  {
+   "stop": "OTHER CAVE, visit 1 from OUTCAST ISLAND: the preview in TEAL, and inside the same",
+   "steps": [
+    "var VAR_OTHER_CAVE_LIGHT 0",
+    "goto SixIsland_OutcastIsland 7 22",
+    "repel 999",
+    "wait 30",
+    "shot outside, the count 0",
+    "burst \"visit 1 preview: TEAL\" 16 10 UP 16",
+    "wait 120",
+    "shot visit 1 inside: TEAL"
+   ]
+  },
+  {
+   "stop": "OTHER CAVE, visit 2 from OUTCAST ISLAND: the preview in AMBER, and inside the same",
+   "steps": [
+    "expect SixIsland_AlteringCave",
+    "warp MAP_SIX_ISLAND_OUTCAST_ISLAND",
+    "wait 60",
+    "expect SixIsland_OutcastIsland",
+    "to 7 22",
+    "wait 20",
+    "shot outside, the count 1",
+    "burst \"visit 2 preview: AMBER\" 16 10 UP 16",
+    "wait 120",
+    "shot visit 2 inside: AMBER"
+   ]
+  },
+  {
+   "stop": "OTHER CAVE, visit 3 from OUTCAST ISLAND: the preview in CHRYSOPRASE, and inside the same",
+   "steps": [
+    "expect SixIsland_AlteringCave",
+    "warp MAP_SIX_ISLAND_OUTCAST_ISLAND",
+    "wait 60",
+    "expect SixIsland_OutcastIsland",
+    "to 7 22",
+    "wait 20",
+    "shot outside, the count 2",
+    "burst \"visit 3 preview: CHRYSOPRASE\" 16 10 UP 16",
+    "wait 120",
+    "shot visit 3 inside: CHRYSOPRASE"
+   ]
+  },
+  {
+   "stop": "OTHER CAVE, visit 4 from OUTCAST ISLAND: the preview in ROSE QUARTZ, and inside the same",
+   "steps": [
+    "expect SixIsland_AlteringCave",
+    "warp MAP_SIX_ISLAND_OUTCAST_ISLAND",
+    "wait 60",
+    "expect SixIsland_OutcastIsland",
+    "to 7 22",
+    "wait 20",
+    "shot outside, the count 3",
+    "burst \"visit 4 preview: ROSE QUARTZ\" 16 10 UP 16",
+    "wait 120",
+    "shot visit 4 inside: ROSE QUARTZ"
+   ]
+  },
+  {
+   "stop": "OTHER CAVE, visit 5 from OUTCAST ISLAND: the preview in TEAL again, and inside the same",
+   "steps": [
+    "expect SixIsland_AlteringCave",
+    "warp MAP_SIX_ISLAND_OUTCAST_ISLAND",
+    "wait 60",
+    "expect SixIsland_OutcastIsland",
+    "to 7 22",
+    "wait 20",
+    "shot outside, the count 4",
+    "burst \"visit 5 preview: TEAL again\" 16 10 UP 16",
+    "wait 120",
+    "shot visit 5 inside: TEAL again",
+    "var VAR_OTHER_CAVE_LIGHT 0",
+    "var VAR_ALTERING_CAVE_WILD_SET 0"
+   ]
+  }
+ ]
+}
