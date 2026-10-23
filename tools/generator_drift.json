@@ -129,11 +129,25 @@
   ]
  },
  "gbadedupe": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 086598431 THE SCHOLAR'S HOUSE in Brazen is a stone study; fff879fe9 CORPUS never calls itself criminal; every signpost loses its red lette",
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 086598431 THE SCHOLAR'S HOUSE in Brazen is a stone study; fff879fe9 CORPUS never calls itself criminal; every signpost loses its red lette; T-438 batch C (engine 7d3697878) re-surfaced General's ground and so made 20 more tiles duplicates (890 entries it would repoint across General and 24 secondaries) -- C was to move no metatile (T-125), so freeing those slots is left for a batch that needs them",
   "files": [
    "engine:data/tilesets/primary/general/metatiles.bin",
    "engine:data/tilesets/primary/general/tiles.png",
-   "engine:data/tilesets/secondary/saffron_city/metatiles.bin"
+   "engine:data/tilesets/secondary/berry_forest/metatiles.bin",
+   "engine:data/tilesets/secondary/cerulean_cave/metatiles.bin",
+   "engine:data/tilesets/secondary/cerulean_city/metatiles.bin",
+   "engine:data/tilesets/secondary/cinnabar_island/metatiles.bin",
+   "engine:data/tilesets/secondary/fuchsia_city/metatiles.bin",
+   "engine:data/tilesets/secondary/indigo_plateau/metatiles.bin",
+   "engine:data/tilesets/secondary/lavender_town/metatiles.bin",
+   "engine:data/tilesets/secondary/saffron_city/metatiles.bin",
+   "engine:data/tilesets/secondary/sevii_islands_123/metatiles.bin",
+   "engine:data/tilesets/secondary/sevii_islands_45/metatiles.bin",
+   "engine:data/tilesets/secondary/sevii_islands_67/metatiles.bin",
+   "engine:data/tilesets/secondary/ss_anne/metatiles.bin",
+   "engine:data/tilesets/secondary/vermilion_city/metatiles.bin",
+   "engine:data/tilesets/secondary/viridian_city/metatiles.bin",
+   "engine:data/tilesets/secondary/viridian_forest/metatiles.bin"
   ]
  },
  "gbagrass": {
