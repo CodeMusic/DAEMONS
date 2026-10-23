@@ -301,3 +301,231 @@ v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass i
 v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
 
 ![23Oct2026 - T438 - the ground built - 50](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2050.png)
+
+### 23Oct2026 - T438 - the caves draft - 51
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 51](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2051.png)
+
+### 23Oct2026 - T438 - the caves draft - 52
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 52](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2052.png)
+
+### 23Oct2026 - T438 - the caves draft - 53
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 53](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2053.png)
+
+### 23Oct2026 - T438 - the caves draft - 54
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 54](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2054.png)
+
+### 23Oct2026 - T438 - the caves draft - 55
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 55](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2055.png)
+
+### 23Oct2026 - T438 - the caves draft - 56
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 56](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2056.png)
+
+### 23Oct2026 - T438 - the caves draft - 57
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 57](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2057.png)
+
+### 23Oct2026 - T438 - the caves draft - 58
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 58](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2058.png)
+
+### 23Oct2026 - T438 - the caves draft - 59
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 59](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2059.png)
+
+### 23Oct2026 - T438 - the caves draft - 60
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 60](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2060.png)
+
+### 23Oct2026 - T438 - the caves draft - 61
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 61](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2061.png)
+
+### 23Oct2026 - T438 - the caves draft - 62
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 62](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2062.png)
+
+### 23Oct2026 - T438 - the caves draft - 63
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 63](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2063.png)
+
+### 23Oct2026 - T438 - the caves draft - 64
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 64](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2064.png)
+
+### 23Oct2026 - T438 - the caves draft - 65
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 65](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2065.png)
+
+### 23Oct2026 - T438 - the caves draft - 66
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 66](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2066.png)
+
+### 23Oct2026 - T438 - the caves draft - 67
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 67](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2067.png)
+
+### 23Oct2026 - T438 - the caves draft - 68
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 68](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2068.png)
+
+### 23Oct2026 - T438 - the caves draft - 69
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 69](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2069.png)
+
+### 23Oct2026 - T438 - the caves draft - 70
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 70](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2070.png)
+
+### 23Oct2026 - T438 - the caves draft - 71
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 71](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2071.png)
+
+### 23Oct2026 - T438 - the caves draft - 72
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 72](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2072.png)
+
+### 23Oct2026 - T438 - the caves draft - 73
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 73](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2073.png)
+
+### 23Oct2026 - T438 - the caves draft - 74
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 74](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2074.png)
+
+### 23Oct2026 - T438 - the caves draft - 75
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 75](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2075.png)
+
+### 23Oct2026 - T438 - the caves draft - 76
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 76](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2076.png)
+
+### 23Oct2026 - T438 - the caves draft - 77
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 77](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2077.png)
+
+### 23Oct2026 - T438 - the caves draft - 78
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 78](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2078.png)
+
+### 23Oct2026 - T438 - the caves draft - 79
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 79](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2079.png)
+
+### 23Oct2026 - T438 - the caves draft - 80
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 80](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2080.png)
+
+### 23Oct2026 - T438 - the caves draft - 81
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 81](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2081.png)
+
+### 23Oct2026 - T438 - the caves draft - 82
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 82](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2082.png)
+
+### 23Oct2026 - T438 - the caves draft - 83
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 83](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2083.png)
+
+### 23Oct2026 - T438 - the caves draft - 84
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 84](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2084.png)
+
+### 23Oct2026 - T438 - the caves draft - 85
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 85](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2085.png)
+
+### 23Oct2026 - T438 - the caves draft - 86
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 86](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2086.png)
+
+### 23Oct2026 - T438 - the caves draft - 87
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 87](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2087.png)
+
+### 23Oct2026 - T438 - the caves draft - 88
+
+T-438 batch E draft: DEADSTACK, TAPPOINT, THE BLACKOUT (approved) and the rest -- THE TUNNEL, KEEPALIVE PLANT, OTHER CAVE, GLAUCOUS, STILLFALL, SMOULDER, THE DOTS, UMBRAL ASCENT
+
+![23Oct2026 - T438 - the caves draft - 88](23Oct2026%20-%20T438%20-%20the%20caves%20draft%20-%2088.png)
