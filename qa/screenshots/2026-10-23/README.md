@@ -679,3 +679,27 @@ T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then C
 T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then CALLOW, SLATE, DOLDRUM and THE UNDERTONE drawn, today beside draft. Not in the engine.
 
 ![23Oct2026 - T438 - batch F draft - town leftovers - 113](23Oct2026%20-%20T438%20-%20batch%20F%20draft%20-%20town%20leftovers%20-%20113.png)
+
+### 23Oct2026 - T440 - PROTEUS edged back in battle - 114
+
+T-440 built (v11.309.10): an owned CONTENT PROTEUS shows ALL EDGES from behind; the drafts it was picked from.
+
+![23Oct2026 - T440 - PROTEUS edged back in battle - 114](23Oct2026%20-%20T440%20-%20PROTEUS%20edged%20back%20in%20battle%20-%20114.png)
+
+### 23Oct2026 - T440 - PROTEUS edged back in battle - 115
+
+T-440 built (v11.309.10): an owned CONTENT PROTEUS shows ALL EDGES from behind; the drafts it was picked from.
+
+![23Oct2026 - T440 - PROTEUS edged back in battle - 115](23Oct2026%20-%20T440%20-%20PROTEUS%20edged%20back%20in%20battle%20-%20115.png)
+
+### 23Oct2026 - T445 - cave previews top-down draft - 116
+
+T-445 DRAFT: previews for the eleven batch E caves as top-down views, vanilla beside. The user chose painted entrances instead.
+
+![23Oct2026 - T445 - cave previews top-down draft - 116](23Oct2026%20-%20T445%20-%20cave%20previews%20top-down%20draft%20-%20116.png)
+
+### 23Oct2026 - T445 - cave previews top-down draft - 117
+
+T-445 DRAFT: previews for the eleven batch E caves as top-down views, vanilla beside. The user chose painted entrances instead.
+
+![23Oct2026 - T445 - cave previews top-down draft - 117](23Oct2026%20-%20T445%20-%20cave%20previews%20top-down%20draft%20-%20117.png)
