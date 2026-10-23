@@ -1758,6 +1758,15 @@ def check_vanilla_species_any_case():
 #  itself must be called with `special` -- through specialvar, VAR_RESULT gets whatever was left in r0, and the script
 #  goes on as if the answer were yes. The Five Witnesses' tile answered to nobody that way for one build (T-235,
 #  engine.md trap 37). Every specialvar target, looked up in src/ by its definition.
+def check_sizeof_palettes():
+    """T-444: a palette loaded by sizeof() that carries more colours than its picture draws (tools/check_palettes.py)."""
+    import importlib.util as _il
+    spec = _il.spec_from_file_location("check_palettes", os.path.join(ROOT, "tools/check_palettes.py"))
+    cp = _il.module_from_spec(spec)
+    spec.loader.exec_module(cp)
+    return cp.check()
+
+
 def check_specialvar():
     import glob as _glob
     src = "\n".join(open(f, encoding="utf-8", errors="ignore").read()
@@ -2064,6 +2073,14 @@ def main():
         for what, why in spbad:
             print("   %-48s %s" % (what, why))
 
+    plbad = check_sizeof_palettes()
+    if not plbad:
+        print("  every palette loaded by sizeof() is the size its picture draws.")
+    else:
+        print("\n  %d palette(s) loaded by sizeof() that reach past their own:\n" % len(plbad))
+        for what, why in plbad:
+            print("   %-48s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
@@ -2072,7 +2089,7 @@ def main():
             print("   %-16s %s" % (what, why))
     #  every check's failures reach the exit code (it had dropped tcopy, fbad and the near-collisions, whose count
     #  check_vetoed's overwrote -- found 2026-10-18 in the code-health review)
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or snbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or snbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad or plbad) else 0
 
 
 if __name__ == "__main__":

@@ -7,8 +7,8 @@
                                                    #   animation strips) in DIR (gfx/drafts/t438/general/), groups.json
                                                    #   beside them, the seam measure, and the contact sheets
                                                    #   (--sheets DIR puts the sheets elsewhere)
-    python3 tools/gbageneral.py --write --approved # into the engine -- NOT YET: batch C is a draft until the user
-                                                   #   has seen the sheets; without --approved --write refuses
+    python3 tools/gbageneral.py --write --approved # into the engine: pass 3, approved by the user 2026-10-22 and
+                                                   #   BUILT (T-438 batch C); without --approved --write refuses
 
 PASS 2 AND 3 (the user, 2026-10-22: "a bolder second pass -- rock that reads as solid stone with a look of our own, and
 motifs for fences, bushes, hedges and the blue house"; on pass 2: the motifs approved with the ribbed roof, the rock
@@ -1800,7 +1800,7 @@ def save_draft(new_tiles, strips, d):
 def main():
     if WRITE and "--approved" not in ARGS:
         print("  --write refused: T-438 batch C is a draft until the user has approved its sheets.")
-        print("  (When they have: --write --approved writes pass 2's tiles into %s/tiles.png and the two water-edge" % G)
+        print("  (When they have: --write --approved writes pass 3's tiles into %s/tiles.png and the two water-edge" % G)
         print("   strips into its anim/, overwriting only tiles that are still vanilla.)")
         return 0
 

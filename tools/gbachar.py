@@ -913,7 +913,13 @@ def main():
         prev.paste(out.convert("RGB").resize((64 * 6, job["size"][1] * 6), Image.NEAREST), (x, 0))
         x += 64 * 6 + 40
         if "--write" in sys.argv:
-            out.save(os.path.join(ROOT, job["dst"]))
+            #  T-444: where the PNG's own palette is the one that loads (no .pal: HEARSAY's portraits), save it with
+            #  the sixteen it has, 4-bit -- a 256-entry palette made a 512-byte .gbapal that ran past OBJ 6
+            if not job["pal"] and job["palsize"] <= 16:
+                out.putpalette(out.getpalette()[:3 * 16])
+                out.save(os.path.join(ROOT, job["dst"]), bits=4)
+            else:
+                out.save(os.path.join(ROOT, job["dst"]))
             if job["pal"]:
                 with open(os.path.join(ROOT, job["pal"]), "w") as f:
                     f.write("JASC-PAL\n0100\n%d\n" % job["palsize"])

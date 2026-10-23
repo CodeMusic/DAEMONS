@@ -142,6 +142,12 @@
    "engine:data/tilesets/primary/general/tiles.png"
   ]
  },
+ "gbaowslots": {
+  "why": "T-439/T-440 (engine dd3553017, 3c56f1a9b) drew PROTEUS's two shapes (deoxys_a, deoxys_d) by hand; gbaowslots re-derives deoxys_n.png from its own reading of the DEOXYS sheets and would change T-291's PROTEUS. Found by check_generators --writes 2026-10-23 (T-438 C run); which side should move is a question for the next PROTEUS pass -- read git diff before any write.",
+  "files": [
+   "engine:graphics/object_events/pics/pokemon/deoxys_n.png"
+  ]
+ },
  "gbarepo": {
   "why": "STALE -- not idempotent: a second run re-lays the REPO's bins and draws over tile 13, which metatiles 10 and 62 share (T-293); the tree is right",
   "files": [
@@ -156,6 +162,12 @@
    "engine:data/layouts/Route1/map.bin",
    "engine:data/tilesets/secondary/pallet_town/metatile_attributes.bin",
    "engine:data/tilesets/secondary/pallet_town/metatiles.bin"
+  ]
+ },
+ "gbashoes": {
+  "why": "T-439 (engine dd3553017) redrew green_surf.png as one of the cast (the unused sheets repurposed, drawn by tools/gencast.py); gbashoes would paint its shoe indices onto the new drawing. Never --write it over the cast.",
+  "files": [
+   "engine:graphics/object_events/pics/people/green_surf.png"
   ]
  },
  "gbastatues": {
@@ -204,9 +216,10 @@
   ]
  },
  "port_states": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 3de6857eb T-248: a state is explained in its own name; 4671607a1 T-219 (batch 4): 2F ATTENTION, 3F MEMORY, 4F CATEGORIES; 5d7cd6d95 T-223: the NOTEBOOK and the TEXTBOOK read like books (+2 more); T-383: PHLEGMATIC's 'deep-freeze' is ice, not the HANG state -- dialogue keeps ordinary words (check_lexicon's rule)",
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 3de6857eb T-248: a state is explained in its own name; 4671607a1 T-219 (batch 4): 2F ATTENTION, 3F MEMORY, 4F CATEGORIES; 5d7cd6d95 T-223: the NOTEBOOK and the TEXTBOOK read like books (+2 more); T-383: PHLEGMATIC's 'deep-freeze' is ice, not the HANG state -- dialogue keeps ordinary words (check_lexicon's rule); T-439 (dd3553017): the GREBE's 'Hush, he's asleep.' on ROUTE 20 is a chick asleep, not the state -- dialogue keeps ordinary words",
   "files": [
    "engine:data/maps/FourIsland_IcefallCave_Back/text.inc",
+   "engine:data/maps/Route20/text.inc",
    "engine:data/maps/ViridianCity_School_3F/text.inc",
    "engine:data/maps/ViridianCity_School_5F/text.inc",
    "engine:src/data/items.json",
@@ -215,7 +228,7 @@
   ]
  },
  "port_prompts": {
-  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pokémon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
+  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pok\u00e9mon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
   "files": [
    "ai:server/prompts/game.txt"
   ]

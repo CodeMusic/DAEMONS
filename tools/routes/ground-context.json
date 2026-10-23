@@ -1,0 +1,124 @@
+{
+  "rom": "debug",
+  "about": "T-438 C, T-443 and T-444 in CONTEXT (LEAFGREEN debug, via scratchpad/ctxroot): ROUTE 1, ROUTE 3's rock, CERULEAN's roofs, winter grass and the FAME CHECKER.",
+  "stops": [
+    {
+      "stop": "CONTEXT: ROUTE 1: the ledges and the path, the new ground in summer by day",
+      "steps": [
+        "load debug",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 3",
+        "flag FLAG_UNDERSTANDING_FIRST 1",
+        "flag FLAG_UNDERSTANDING_SCHOOL 1",
+        "flag FLAG_UNDERSTANDING_READING 1",
+        "flag FLAG_UNDERSTANDING_NOTES 1",
+        "flag FLAG_UNDERSTANDING_SCORN 1",
+        "flag FLAG_UNDERSTANDING_RETURN 1",
+        "flag FLAG_UNDERSTANDING_GUIDE 1",
+        "goto Route1 12 3",
+        "repel 999",
+        "close",
+        "wait 40",
+        "shot ledges, the north end",
+        "goto Route1 14 13",
+        "close",
+        "wait 40",
+        "shot ledges, the middle"
+      ]
+    },
+    {
+      "stop": "CONTEXT: ROUTE 3: cliffs and mountain rock",
+      "steps": [
+        "goto Route3 60 12",
+        "repel 999",
+        "close",
+        "wait 40",
+        "shot cliffs west",
+        "goto Route3 74 13",
+        "close",
+        "wait 40",
+        "shot cliffs by the sign"
+      ]
+    },
+    {
+      "stop": "CONTEXT: CERULEAN: the fences and the blue house",
+      "steps": [
+        "goto CeruleanCity 16 13",
+        "repel 999",
+        "close",
+        "wait 40",
+        "shot the north houses",
+        "goto CeruleanCity 20 30",
+        "close",
+        "wait 40",
+        "shot the south fences",
+        "goto CeruleanCity 31 13",
+        "close",
+        "wait 40",
+        "shot the east"
+      ]
+    },
+    {
+      "stop": "CONTEXT: T-443 winter: walked into ROUTE 1's tall grass, a faint frosted outline round the feet",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto Route1 17 4",
+        "repel 999",
+        "to 17 7",
+        "wait 30",
+        "shot winter grass",
+        "to 18 7",
+        "wait 20",
+        "shot winter grass, a step on",
+        "poke gDaemonsSeasonOverride 8 3"
+      ]
+    },
+    {
+      "stop": "CONTEXT: T-444 the FAME CHECKER (HEARSAY): its four portraits, then the field after it closes",
+      "steps": [
+        "load debug",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto ViridianCity 19 22",
+        "repel 999",
+        "close",
+        "keyitem ITEM_FAME_CHECKER",
+        "register ITEM_FAME_CHECKER",
+        "wait 20",
+        "shot before, the follower and the people",
+        "press SELECT",
+        "wait 120",
+        "press START",
+        "wait 60",
+        "shot CRYSTAL CLEAR's portrait (OAK's slot)",
+        "press START",
+        "wait 40",
+        "press DOWN",
+        "press START",
+        "wait 60",
+        "shot VERA's portrait (DAISY's slot)",
+        "press START",
+        "wait 40",
+        "press DOWN 12",
+        "press START",
+        "wait 60",
+        "shot HOLT's portrait (BILL's slot)",
+        "press START",
+        "wait 40",
+        "press DOWN",
+        "press START",
+        "wait 60",
+        "shot INIT's portrait (MR FUJI's slot)",
+        "press START",
+        "wait 40",
+        "press B",
+        "wait 90",
+        "shot after closing: no one black",
+        "wait 60",
+        "shot a second later"
+      ]
+    }
+  ]
+}

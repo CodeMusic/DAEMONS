@@ -4,7 +4,7 @@
 
 | sprites | vanilla shipped | redrawn | recoloured | still vanilla | added | done |
 |---|---|---|---|---|---|---|
-| overworld people | 89 | 89 | 0 | 0 | 60 | **100%** |
+| overworld people | 96 | 96 | 0 | 0 | 60 | **100%** |
 | trainer portraits | 146 | 146 | 0 | 0 | 10 | **100%** |
 | trainer back pics | 6 | 6 | 0 | 0 | 0 | **100%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
@@ -12,10 +12,10 @@
 | daemon fronts | 386 | 385 | 0 | 1 | 10 | **100%** |
 | daemon backs | 384 | 384 | 0 | 0 | 10 | **100%** |
 | daemon icons | 387 | 385 | 0 | 2 | 9 | **99%** |
-| overworld daemons | 42 | 40 | 0 | 2 | 0 | **95%** |
+| overworld daemons | 42 | 42 | 0 | 0 | 0 | **100%** |
 | overworld objects | 19 | 19 | 0 | 0 | 4 | **100%** |
-| ***the people*** | 251 | 251 | 0 | 0 | 70 | ***100.0%*** |
-| ***every sprite*** | 1469 | 1464 | 0 | 5 | 103 | ***99.7%*** |
+| ***the people*** | 258 | 258 | 0 | 0 | 70 | ***100.0%*** |
+| ***every sprite*** | 1476 | 1473 | 0 | 3 | 103 | ***99.8%*** |
 
 ## The towns
 
@@ -23,14 +23,14 @@
 
 | town | colour and theme | people sheets on screen | still vanilla | shared with other towns | done |
 |---|---|---|---|---|---|
-| **BLANCHE** | white, blank; home, the pre-colour state | 9 | 0 | 3 | 100% |
-| **CALLOW** | green, unripe, untested | 11 | 0 | 6 | 100% |
+| **BLANCHE** | white, blank; home, the pre-colour state | 10 | 0 | 3 | 100% |
+| **CALLOW** | green, unripe, untested | 12 | 0 | 6 | 100% |
 | **SLATE** | stone, a writing surface; the museum of dead hardware | 10 | 0 | 6 | 100% |
-| **DOLDRUM** | a becalmed sea, low spirits | 12 | 0 | 6 | 100% |
+| **DOLDRUM** | a becalmed sea, low spirits | 14 | 0 | 6 | 100% |
 | **ARDOR** | flush and heat, brash zeal; the port | 10 | 0 | 6 | 100% |
-| **HALFTONE** | dots that only look like grey; the tower | 8 | 0 | 5 | 100% |
+| **HALFTONE** | dots that only look like grey; the tower | 10 | 0 | 5 | 100% |
 | **VERDIGRIS** | green corrosion on bronze; Corpus rotting beneath | 12 | 0 | 8 | 100% |
 | **LURID** | garish glow; spectacle and toxicity | 9 | 0 | 5 | 100% |
 | **BRAZEN** | brass over base metal; corporate capture | 13 | 0 | 7 | 100% |
 | **QUICKSILVER** | mercury: alive, unstable; the ruined lab | 13 | 0 | 6 | 100% |
-| **UMBRA** | full shadow, all colour absorbed; the Review Board | 10 | 0 | 8 | 100% |
+| **UMBRA** | full shadow, all colour absorbed; the Review Board | 11 | 0 | 8 | 100% |
