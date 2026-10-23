@@ -649,3 +649,33 @@ v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in
 v11.309.9 T-438 batch E: every cave in its own look; OTHER CAVE's four lights in order
 
 ![23Oct2026 - T438 - the caves built - 108](23Oct2026%20-%20T438%20-%20the%20caves%20built%20-%20108.png)
+
+### 23Oct2026 - T438 - batch F draft - town leftovers - 109
+
+T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then CALLOW, SLATE, DOLDRUM and THE UNDERTONE drawn, today beside draft. Not in the engine.
+
+![23Oct2026 - T438 - batch F draft - town leftovers - 109](23Oct2026%20-%20T438%20-%20batch%20F%20draft%20-%20town%20leftovers%20-%20109.png)
+
+### 23Oct2026 - T438 - batch F draft - town leftovers - 110
+
+T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then CALLOW, SLATE, DOLDRUM and THE UNDERTONE drawn, today beside draft. Not in the engine.
+
+![23Oct2026 - T438 - batch F draft - town leftovers - 110](23Oct2026%20-%20T438%20-%20batch%20F%20draft%20-%20town%20leftovers%20-%20110.png)
+
+### 23Oct2026 - T438 - batch F draft - town leftovers - 111
+
+T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then CALLOW, SLATE, DOLDRUM and THE UNDERTONE drawn, today beside draft. Not in the engine.
+
+![23Oct2026 - T438 - batch F draft - town leftovers - 111](23Oct2026%20-%20T438%20-%20batch%20F%20draft%20-%20town%20leftovers%20-%20111.png)
+
+### 23Oct2026 - T438 - batch F draft - town leftovers - 112
+
+T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then CALLOW, SLATE, DOLDRUM and THE UNDERTONE drawn, today beside draft. Not in the engine.
+
+![23Oct2026 - T438 - batch F draft - town leftovers - 112](23Oct2026%20-%20T438%20-%20batch%20F%20draft%20-%20town%20leftovers%20-%20112.png)
+
+### 23Oct2026 - T438 - batch F draft - town leftovers - 113
+
+T-438 batch F DRAFT: the plan for every town's leftovers and the forests, then CALLOW, SLATE, DOLDRUM and THE UNDERTONE drawn, today beside draft. Not in the engine.
+
+![23Oct2026 - T438 - batch F draft - town leftovers - 113](23Oct2026%20-%20T438%20-%20batch%20F%20draft%20-%20town%20leftovers%20-%20113.png)
