@@ -9,6 +9,7 @@
                                                    #   draft folder when not given): the plan, and per drafted town the
                                                    #   tiles and two or three real map crops, today beside the draft
     python3 tools/gbatowns.py --sheets DIR         # (with --draft) where the sheets go
+    python3 tools/gbatowns.py --only TS,TS         # (with --draft) only these towns; no plan sheet, groups.json kept
     python3 tools/gbatowns.py --write --approved   # into the engine: the approved towns' tiles.png (CALLOW, SLATE,
                                                    #   DOLDRUM, THE UNDERTONE, approved 2026-10-23). Refuses without
                                                    #   --approved.
@@ -179,8 +180,14 @@ PLAN = [
          objects={"ThreeIsland_BerryForest@0,0": "the canopy", "*": "stumps, flowers, the clearing"}),
 ]
 SHORT = {"viridian_city": "callow", "pewter_city": "slate", "cerulean_city": "doldrum",
-         "viridian_forest": "undertone"}
-DRAFTED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest"]
+         "viridian_forest": "undertone", "vermilion_city": "ardor", "lavender_town": "halftone",
+         "celadon_city": "verdigris", "saffron_city": "brazen"}
+DRAFTED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
+           #  the next four, drafted 2026-10-23 in the order a player meets them (sheets t438f2_*)
+           "vermilion_city", "lavender_town", "celadon_city", "saffron_city"]
+#  which sheet set each draft belongs to (the first four were t438f_, these t438f2_)
+SHEET_PREFIX = {"vermilion_city": "t438f2", "lavender_town": "t438f2", "celadon_city": "t438f2",
+                "saffron_city": "t438f2"}
 #  the user, 2026-10-23: build these four (SLATE's museum roof and CALLOW's cottage roof calmed first); the rest stay
 #  drafts until approved
 APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest"]
@@ -397,6 +404,38 @@ MATERIALS = {
     "viridian_forest": {
         8: {1: "canopy", 2: "canopy", 3: "canopy", 4: "canopy", 5: "canopy", 6: "bark", 7: "bark", 8: "bark"},
     },
+    #  the second four (drafted 2026-10-23, in the order a player meets them)
+    "vermilion_city": {
+        8: {2: "roof", 3: "roof", 4: "roof", 10: "wall", 11: "wall", 12: "wall"},
+        12: {12: "roof", 13: "roof", 14: "roof", 15: "roof", 1: "wall", 2: "wall", 3: "wall"},
+        10: {2: "crate", 3: "crate", 4: "crate", 8: "leaf", 9: "leaf", 10: "leaf"},
+        9: {1: "awning", 2: "awning", 3: "awning", 4: "awning"},
+        #  the harbour lights (rows 2/3, general's greys) are left: "warm iron" needs a warm colour those rows do not
+        #  have -- a palette question for the user
+    },
+    "lavender_town": {
+        8: {7: "plank", 8: "plank", 9: "plank", 10: "plank", 11: "plank", 12: "plank"},
+        12: {2: "roof", 3: "roof", 4: "roof", 10: "roof", 11: "roof", 12: "roof", 13: "roof",
+             8: "wall", 9: "wall", 14: "wall", 15: "wall"},
+        10: {13: "roof", 14: "roof", 15: "roof", 7: "glass", 8: "glass", 9: "glass"},
+        11: {7: "glass", 8: "glass", 9: "glass"},
+        9: {9: "dome", 10: "dome", 11: "dome", 12: "dome", 13: "dome", 14: "dome", 15: "dome",
+            3: "wall", 4: "wall"},
+    },
+    "celadon_city": {
+        11: {7: "road", 8: "road", 10: "road"},
+        12: {2: "bronze", 3: "bronze", 4: "bronze", 10: "bloom", 11: "bloom", 12: "bloom", 13: "bloom"},
+        9: {12: "bronze", 13: "bronze", 15: "bronze", 9: "bloom", 10: "bloom", 11: "bloom"},
+        10: {14: "trim", 15: "trim", 10: "glass", 11: "glass", 12: "glass"},
+    },
+    "saffron_city": {
+        12: {6: "brass", 7: "brass", 9: "brass", 10: "brass", 11: "brass"},
+        10: {9: "plaza", 10: "plaza", 11: "plaza", 6: "paving", 7: "paving", 8: "paving"},
+        8: {13: "curtain", 14: "curtain"},
+        9: {12: "curtain", 13: "curtain", 14: "curtain"},
+        #  the north row's PORT roof (row 5, general's khaki) is left: its indices also draw the PORT's round sign,
+        #  which a motif would scramble
+    },
 }
 
 
@@ -607,7 +646,143 @@ def m_bark(x, y, w, h, X, Y, b):
     return (0.0, 0.6, 1.0)[X % 3] if b < 0.9 else 1.0
 
 
+#  ---- the second four. A motif may answer (level, other material): the pixel then takes that material's ladder in
+#  the same row -- how VERDIGRIS's bronze blooms green where the rain runs off it.
+def m_pantile(x, y, w, h, X, Y, b):
+    """ARDOR: hot glazed pantiles, calm at 1x -- a course every eight rows, a roll every eight pixels: a lit glaze
+    on the roll's crown, the body, a dark lap under each course. No stripe finer than eight, and no dark joint
+    between the rolls (the first draw had one and read as a grid)"""
+    xo, yy = X % 8, Y % 8
+    if yy == 7:
+        return 1.0
+    if xo in (1, 2, 3) and yy < 6:
+        return 0.0
+    return 0.4
+
+
+def m_stucco(x, y, w, h, X, Y, b):
+    """ARDOR's walls: sun on plaster -- a bleached top, a flat body, a warm shade along the foot"""
+    if y < 2:
+        return 0.0
+    if y >= h - 2:
+        return 1.0
+    return 0.35
+
+
+def m_awning_wide(x, y, w, h, X, Y, b):
+    """sun-bleached canvas, stripes four wide (vanilla's were two), a shaded hem"""
+    if y >= h - 1:
+        return 1.0
+    return 0.0 if (X // 4) % 2 == 0 else 0.67
+
+
+def m_iron(x, y, w, h, X, Y, b):
+    """warm iron (the harbour bollards and lights): lit from the left, a band every six rows"""
+    if Y % 6 == 5:
+        return 1.0
+    return 0.15 + 0.6 * (x / max(w - 1, 1))
+
+
+def m_dots(x, y, w, h, X, Y, b):
+    """HALFTONE: a dot screen -- light dots on the dark, big where vanilla is light and small where it is dark, so
+    it reads as vanilla's own tone from across the screen and as dots up close. Four-pixel pitch, every other row of
+    dots shifted by two. Vanilla's darkest (the gaps between planks, the outlines inside a surface) are kept, so the
+    boards stay boards"""
+    if b >= 0.9:
+        return b
+    j = Y // 4
+    cx = (X - (2 if j % 2 else 0)) % 4
+    cy = Y % 4
+    d = ((cx - 1.5) ** 2 + (cy - 1.5) ** 2) ** 0.5
+    r = 2.26 * max(0.0, 1.0 - b) ** 0.5                # a dot's area is the light vanilla had there
+    return 0.2 if d < r else 0.8
+
+
+def m_dots_light(x, y, w, h, X, Y, b):
+    """the dot screen on the light half only: a pale wall's louvres and panes, which are its drawing, are kept"""
+    return b if b >= 0.5 else m_dots(x, y, w, h, X, Y, b)
+
+
+def m_streak(x, y, w, h, X, Y, b):
+    """VERDIGRIS's cycling road, THE STREAK: lanes smeared lengthwise -- long unbroken streaks a lane wide, a few
+    lighter, a few darker, and the lanes marked by a dashed line every sixteen pixels. Nothing runs across, so the
+    block repeats down the road without a seam"""
+    if x % 16 == 0 and 0 < x < w - 1:
+        return 0.0 if Y % 16 < 8 else 0.5
+    k = _h(x // 3, 17)
+    return 0.15 if k < 0.2 else (0.85 if k > 0.85 else 0.5)
+
+
+def m_bronze(x, y, w, h, X, Y, b):
+    """VERDIGRIS: bronze sheet with a standing seam every eight, furred green where the rain runs -- along the drip
+    edge and down from each seam"""
+    if y >= h - 2 or (X % 8 == 7 and y >= h // 2 and _h(X // 8, 3) < 0.6):
+        return (0.67 if y >= h - 1 else 0.33 if y >= h - 2 else 0.5, "bloom")
+    if X % 8 == 7:
+        return 1.0
+    if y < 2:
+        return 0.0
+    return 0.45
+
+
+def m_patina(x, y, w, h, X, Y, b):
+    """green bloom on a wall: a wash, paler at the top, with the runs the rain leaves every eight pixels"""
+    if X % 8 == 3 and _h(X // 8, 5) < 0.7:
+        return 1.0
+    return 0.15 + 0.5 * (y / max(h - 1, 1))
+
+
+def m_band(x, y, w, h, X, Y, b):
+    """a bronze trim: a lit upper edge, a dark body"""
+    return 0.0 if y < max(1, h // 3) else 1.0
+
+
+def m_rivet(x, y, w, h, X, Y, b):
+    """BRAZEN: rolled brass sheet in courses of eight -- a lit roll along the top, a dark lap at the foot, and a
+    rivet every eight pixels on the second line"""
+    yy = Y % 8
+    if yy == 7:
+        return 0.75
+    if yy == 0:
+        return 0.0
+    if yy == 2 and X % 8 == 4:
+        return 1.0
+    return 0.25
+
+
+def m_grid(x, y, w, h, X, Y, b):
+    """the corporate grid: every slab an identical square, eight by eight, a joint one step darker on two sides
+    and nothing else (a full-dark joint read as graph paper over the whole plaza)"""
+    if X % 8 == 7 or Y % 8 == 7:
+        return 0.5
+    return 0.0
+
+
+def m_curtain(x, y, w, h, X, Y, b):
+    """a curtain wall: a dark mullion every eight pixels, a transom every sixteen rows, the panes level and light"""
+    if X % 8 == 0 or Y % 16 == 0:
+        return 1.0
+    return 0.0 if Y % 16 == 1 else 0.3
+
+
+def m_stamped(x, y, w, h, X, Y, b):
+    """stamped panels, 16 x 8: each a raised field, lit on its top and left, dark on its bottom and right"""
+    xo, yo = X % 16, Y % 8
+    if yo == 7 or xo == 15:
+        return 1.0
+    if yo == 0 or xo == 0:
+        return 0.0
+    if yo == 6 or xo == 14:
+        return 0.75
+    return 0.4
+
+
 STYLE = {
+    "vermilion_city": dict(roof=m_pantile, wall=m_stucco, crate=m_boards, leaf=m_leaf, awning=m_awning_wide,
+                           ),
+    "lavender_town": dict(plank=m_dots, roof=m_dots, wall=m_dots, glass=m_dots_light, dome=m_dots),
+    "celadon_city": dict(road=m_streak, bronze=m_bronze, bloom=m_patina, trim=m_band, glass=m_glass),
+    "saffron_city": dict(brass=m_rivet, plaza=m_grid, paving=m_grid, curtain=m_curtain, panels=m_stamped),
     "viridian_city": dict(roof=m_ribs_calm, wall=m_clapboard, glass=m_glass, awning=m_awning, slab=m_slab, fir=m_fir,
                           wood=m_boards, leaf=m_leaf),
     "pewter_city": dict(roof=m_slates_calm, slates=m_slates, stone=m_ashlar, siding=m_ashlar, column=m_flutes,
@@ -619,7 +794,14 @@ STYLE = {
 #  how much of vanilla's own light a material keeps (0: the motif alone; 0.5: half and half)
 KEEP_LIGHT = {"canopy": 0.0, "fir": 0.0, "glass": 0.2, "roof": 0.25, "slates": 0.2}
 #  ... and per town, where a calmed motif sets its own shades (it keeps vanilla's light itself, or none)
-KEEP_LIGHT_TOWN = {("viridian_city", "roof"): 0.0, ("pewter_city", "roof"): 0.0}
+KEEP_LIGHT_TOWN = {("viridian_city", "roof"): 0.0, ("pewter_city", "roof"): 0.0,
+                   ("vermilion_city", "roof"): 0.0, ("vermilion_city", "awning"): 0.0,
+                   ("celadon_city", "road"): 0.0, ("celadon_city", "bronze"): 0.0,
+                   ("saffron_city", "plaza"): 0.0, ("saffron_city", "paving"): 0.0, ("saffron_city", "brass"): 0.0,
+                   ("saffron_city", "curtain"): 0.0, ("saffron_city", "panels"): 0.0}
+#  HALFTONE's dot screen is two-tone by design: it carries vanilla's light in the dots' size, not in a blend
+for _m in ("plank", "roof", "wall", "glass", "dome"):
+    KEEP_LIGHT_TOWN[("lavender_town", _m)] = 0.0
 
 
 def ladder(town, row, mat):
@@ -768,6 +950,11 @@ def redraw(town):
                     rx, ry, rw, rh = region[(X, Y)]
                     lv = style[m](X - rx, Y - ry, rw, rh, X, Y, base)
                     keep = KEEP_LIGHT_TOWN.get((town.ts, m), KEEP_LIGHT.get(m, 0.35))
+                    if isinstance(lv, tuple):           # another material's ladder (VERDIGRIS's bloom)
+                        lv, other = lv
+                        lad2 = ladder(town, row, other)
+                        if len(lad2) >= 2:
+                            lad, keep = lad2, 0.0
                     lv = max(0.0, min(1.0, (1 - keep) * lv + keep * base))
                     claimed.setdefault(t, {})[k] = lad[int(round(lv * (len(lad) - 1)))]
             for t, pix in claimed.items():
@@ -925,11 +1112,36 @@ CROPS = {
     "viridian_forest": [("ViridianForest", 0, 0, 26, 16, "THE UNDERTONE's mouth"),
                         ("ViridianForest", 14, 28, 24, 18, "deep in the maze"),
                         ("SixIsland_PatternBush", 0, 0, 24, 14, "THE SAME BUSH (SIX ISLAND) shares it")],
+    "vermilion_city": [("VermilionCity", 4, 1, 32, 20, "the pantiled houses and the hall"),
+                       ("VermilionCity", 14, 26, 18, 12, "the S.S. ANNE pier"),
+                       ("SSAnne_Exterior", 26, 0, 38, 7, "the quay and the truck")],
+    "lavender_town": [("Route12", 4, 20, 16, 22, "ROUTE 12's boardwalks"),
+                      ("Route10", 0, 32, 15, 12, "the KEEPALIVE PLANT"),
+                      ("LavenderTown", 0, 0, 24, 19, "the houses and the tower's base"),
+                      ("Route10", 12, 70, 12, 11, "ROUTE 10's domed centre")],
+    "celadon_city": [("Route17", 0, 0, 20, 18, "THE STREAK (ROUTE 17)"),
+                     ("CeladonCity", 4, 2, 36, 22, "the department store, the blocks, the fountain"),
+                     ("CeladonCity", 28, 14, 16, 12, "the mansion")],
+    "saffron_city": [("SaffronCity", 12, 7, 28, 22, "the plaza, the houses and the tower"),
+                     ("SaffronCity", 33, 6, 22, 14, "the north row"),
+                     ("SaffronCity", 12, 27, 42, 14, "the south row and the dojo")],
 }
 
 
 def plan_of(ts):
     return next(p for p in PLAN if p["ts"] == ts)
+
+
+def grey(im):
+    """DaemonsHalftoneMix's grey (fieldmap.c): 0.3 R + 0.59 G + 0.1133 B, on the GBA's five bits"""
+    out = im.copy()
+    o = out.load()
+    for y in range(out.height):
+        for x in range(out.width):
+            r, g, b = (c >> 3 for c in o[x, y])
+            v = (r * 77 + g * 151 + b * 29) >> 8
+            o[x, y] = (v << 3 | v >> 2,) * 3
+    return out
 
 
 def map_sheet(town, new, crop, path):
@@ -941,6 +1153,13 @@ def map_sheet(town, new, crop, path):
     z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
     rows = [_row([_label(a, "today 1x", f), _label(b, "draft 1x", f)]),
             _row([_label(z2(a), "today 2x", f), _label(z2(b), "draft 2x", f)])]
+    if town.ts == "lavender_town":                    # as DaemonsIsHalftone() shows it
+        g = ("grey -- as HALFTONE shows it" if name == "LavenderTown" else
+             "grey -- for comparison: %s is not HALFTONE's mapsec, so it plays in colour" % name)
+        rows.insert(1, _title(g, f, 1000))
+        rows.insert(2, _row([_label(grey(a), "today 1x, grey", f),
+                             _label(grey(b), "draft 1x, grey", f)]))
+        rows.append(_row([_label(z2(grey(a)), "today 2x, grey", f), _label(z2(grey(b)), "draft 2x, grey", f)]))
     sheet = _col([_title("T-438 batch F DRAFT -- %s: %s\n%s, cells %d,%d %dx%d -- footprints, blocks, collision, "
                          "palettes unchanged" % (p["name"], what, name, x0, y0, w, h), F,
                          max(r.width for r in rows))] + rows)
@@ -1042,9 +1261,11 @@ def write_draft(outdir):
     os.makedirs(outdir, exist_ok=True)
     sheets_dir = SHEETS
     os.makedirs(sheets_dir, exist_ok=True)
-    made = [plan_sheet(census(True), os.path.join(sheets_dir, "t438f_plan.png"))]
-    info = {}
-    for ts in DRAFTED:
+    only = [t for t in (argval("--only") or "").split(",") if t]
+    made = [] if only else [plan_sheet(census(True), os.path.join(sheets_dir, "t438f_plan.png"))]
+    gj = os.path.join(outdir, "groups.json")
+    info = json.load(open(gj)).get("drafted", {}) if only and os.path.exists(gj) else {}
+    for ts in (only or DRAFTED):
         town = Town(ts)
         new, what = redraw(town)
         moved = [t for t in range(len(new)) if any((a == 0) != (b == 0) for a, b in zip(new[t], town.now[t]))]
@@ -1068,12 +1289,13 @@ def write_draft(outdir):
                         left_vanilla=sorted(town.targets - set(changed)),
                         doors_kept=sorted(town.left & town.door_tiles),
                         seams=dict(today=a, draft=b, added=added), palettes_changed=[])
-        s = SHORT[ts]
-        made.append(tiles_sheet(town, new, what, os.path.join(sheets_dir, "t438f_%s_tiles.png" % s)))
+        s = SHEET_PREFIX.get(ts, "t438f") + "_" + SHORT[ts]
+        made.append(tiles_sheet(town, new, what, os.path.join(sheets_dir, "%s_tiles.png" % s)))
         for k, crop in enumerate(CROPS[ts], 1):
-            made.append(map_sheet(town, new, crop, os.path.join(sheets_dir, "t438f_%s_%d.png" % (s, k))))
+            made.append(map_sheet(town, new, crop, os.path.join(sheets_dir, "%s_%d.png" % (s, k))))
     json.dump(dict(ticket="T-438 batch F", status="CALLOW, SLATE, DOLDRUM, THE UNDERTONE approved 2026-10-23 and built by --write "
-                   "--approved; the rest are drafts",
+                   "--approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), waiting on the "
+                   "user; the rest not drafted",
                    drafted=info, plan=[{k: v for k, v in p.items()} for p in PLAN]),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
     return made
