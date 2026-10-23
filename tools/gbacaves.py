@@ -6,8 +6,9 @@
     python3 tools/gbacaves.py --draft [DIR]         # the drafted caves' tiles.png and palettes, groups.json, and the
                                                     #   contact sheets, in DIR (gfx/drafts/t438/caves/); --sheets DIR
                                                     #   puts the sheets elsewhere
-    python3 tools/gbacaves.py --write --approved    # into the engine -- NOT YET: batch E is a draft until the user has
-                                                    #   seen the sheets; without --approved --write refuses
+    python3 tools/gbacaves.py --write --approved    # into the engine: the three the user approved (DEADSTACK, TAPPOINT'S
+                                                    #   CAVE, THE BLACKOUT) only; without --approved --write refuses.
+                                                    #   Batch E2 (the rest) is a draft: its sheets are t438e2_*.png
 
 THE ANSWER IT FOLLOWS (the user, 2026-10-22): "a look per cave, matched to its name and what it is". A cave is a
 secondary tileset over primary/general, and several maps can share one (DEADSTACK, UMBRAL ASCENT, THE WRONG WAY and
@@ -37,6 +38,11 @@ THE GREY RULE IS NOT OURS TO TOUCH. HALFTONE is grey, and the unread DOLDRUM CAV
 8.6a, T-251) -- DaemonsIsHalftone() greys gPlttBufferFaded once a frame, whatever the tileset's palettes are. So no
 cave here may be grey (THE BLACKOUT is dark and cold, never grey), and DOLDRUM CAVE's tileset is not drafted at all:
 its look waits on the user, and whatever it becomes, the unread state greys it on top.
+
+BATCH E2 (the rest, after the user approved the first three on 2026-10-23): UMBRAL ASCENT and OTHER CAVE as palette
+splits over the stack and the outage, STILLFALL as one over GLAUCOUS ISLES' bloom; THE TUNNEL and the KEEPALIVE PLANT
+(built rooms over primary/building, drawn by draw_tunnel and draw_plant); GLAUCOUS ISLES, MT. SMOULDER and THE DOTS
+(the cave method, each with its own index plan). TANOBY waits for batch G and DOLDRUM CAVE for the user.
 """
 import collections, io, json, os, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -72,7 +78,7 @@ SHEETS = argval("--sheets") or DRAFT
 # ================================================================== the proposal
 #  tileset -> its places. Names are the mapsecs' (region_map_sections.json); meanings are the bible's (vision.md
 #  3.2's table and 3.3, the KEEPALIVE section, 2.10's island table, 8.6a / T-251 for DOLDRUM). `order` is where a
-#  player first meets it (the census's rank). `drafted` marks the three this batch draws.
+#  player first meets it (the census's rank). `drafted` marks what is drawn; `drafted_e2`, what batch E2 added.
 PROPOSAL = [
     dict(ts="cave", order=8, drafted=True,
          places=[("DEADSTACK", "MtMoon_1F/B1F/B2F", "Mt. Moon: a mountain of dead hardware; its fossils are legacy "
@@ -105,22 +111,23 @@ PROPOSAL = [
               "blue-black, deep but never grey -- HALFTONE and the unread DOLDRUM own grey. VERBOSE (FLASH) shows it; "
               "unlit it is a 24-pixel circle in black.",
          split="SPLIT OTHER CAVE (palette split): the same columns in a palette that is not THE BLACKOUT's -- a "
-               "pale mineral teal. A per-entry palette swap would make it never the same twice; that is a question."),
-    dict(ts="underground_path", order=14, drafted=False,
+               "pale mineral teal. A per-entry palette swap would make it never the same twice: described (how, cost, risks) in --draft's "
+               "groups.json, not built; that is the user's question."),
+    dict(ts="underground_path", drafted=True, order=14, drafted_e2=True,
          places=[("UNDERGROUND PATH", "UndergroundPath_NorthSouth/EastWest", "officially UNDERGROUND PATH, locally "
                   "THE TUNNEL: routing around a blocked path, as a VPN does (3.1)")],
          look="THE TUNNEL. Not a cave but a built bore: a concrete tube with a lit lane down the middle, conduit along "
               "both walls, a dashed centre line like a packet trace. Light: sodium-free white and cool concrete, the "
               "most ordered underground in the game, so the caves read as caves beside it.",
          split="Its own tileset already; it draws primary/building (batch D's palettes sit under it)."),
-    dict(ts="power_plant", order=23, drafted=False,
+    dict(ts="power_plant", drafted=True, order=23, drafted_e2=True,
          places=[("KEEPALIVE PLANT", "PowerPlant", "a building still running with nobody connected to it; SENTINEL "
                   "lives there (3.3)")],
          look="STILL RUNNING. A plant left on: floor plates and machine housings, and the one motif is a status light "
               "on every housing, all green. Light: plant-green and machine grey-blue, with the living PLANT's second "
               "meaning in moss along the seams.",
          split="Its own tileset; batch D left its machines for this batch or its town's."),
-    dict(ts="seafoam_islands", order=44, drafted=False,
+    dict(ts="seafoam_islands", drafted=True, order=44, drafted_e2=True,
          places=[("GLAUCOUS ISLES", "SeafoamIslands_1F..B4F", "Seafoam: named for its surface, and what matters is "
                   "four floors under it (3.3)"),
                  ("STILLFALL CAVE", "FourIsland_IcefallCave x4", "Icefall: a waterfall that stopped (2.10)"),
@@ -128,7 +135,7 @@ PROPOSAL = [
          look="THE BLOOM. GLAUCOUS (our reading) is the powdery blue-green bloom on a plum or a leaf: ice under a matte "
               "frosted skin, lit tops chalky, faces clear and deep. Its rows 8..12 were already recoloured (census).",
          split="SPLIT STILLFALL (palette split): the ice gone glassy and still, frozen falls -- its own tiles later."),
-    dict(ts="mt_ember", order=51, drafted=False,
+    dict(ts="mt_ember", drafted=True, order=51, drafted_e2=True,
          places=[("MT. SMOULDER", "MtEmber_RubyPath/SummitPath x11", "burning without flame is what it does and what "
                   "it looks like from the sea (2.10)"),
                  ("KETTLE SPRING", "OneIsland_KindleRoad_EmberSpa", "Ember Spa")],
@@ -142,7 +149,7 @@ PROPOSAL = [
               "green-blue. The unread state is not this batch's: DaemonsIsHalftone greys it whatever its palette is, "
               "and the rearrangement is the map's, not the tiles'.",
          split="Never drafted without the user: its grey and its 'itself' are a decided pair."),
-    dict(ts="navel_rock", order=76, drafted=False,
+    dict(ts="navel_rock", drafted=True, order=76, drafted_e2=True,
          places=[("THE DOTS", "SixIsland_DottedHole x6", "Dotted Hole: 'said by somebody who could see them and could "
                   "not read them' (2.10)"),
                  ("NAVEL ROCK", "NavelRock x20", "unnamed: no player of this game reaches it (2.10)")],
@@ -155,7 +162,8 @@ PROPOSAL = [
          split="Its own tileset."),
 ]
 
-# the three this batch draws, first met first
+# the three batch E drew first, first met first -- APPROVED by the user 2026-10-23, and the only ones --write writes.
+# Batch E2 (the rest, DRAFTED_E2 below) is a draft until the user has seen its sheets.
 DRAFTED = ["cave", "digletts_cave", "rock_tunnel"]
 
 
@@ -182,18 +190,19 @@ def layouts():
     return _LAYOUTS
 
 
-_GENERAL = None
+_PRIMARY = {}
+PRIMARY_DIR = {"gTileset_General": GEN, "gTileset_Building": "data/tilesets/primary/building"}
 
 
-def general():
-    """primary/general as the engine has it now: its tiles, rows 0..6, its metatiles"""
-    global _GENERAL
-    if _GENERAL is None:
-        d = os.path.join(GBA, GEN)
-        _GENERAL = dict(tiles=tiles_of(Image.open(os.path.join(d, "tiles.png"))),
-                        pals=[read_pal(os.path.join(d, "palettes/%02d.pal" % r)) for r in range(16)],
-                        mt=open(os.path.join(d, "metatiles.bin"), "rb").read())
-    return _GENERAL
+def general(name="gTileset_General"):
+    """a primary tileset as the engine has it now (general, or building under THE TUNNEL and the KEEPALIVE PLANT):
+    its tiles, rows 0..6, its metatiles"""
+    if name not in _PRIMARY:
+        d = os.path.join(GBA, PRIMARY_DIR[name])
+        _PRIMARY[name] = dict(tiles=tiles_of(Image.open(os.path.join(d, "tiles.png"))),
+                              pals=[read_pal(os.path.join(d, "palettes/%02d.pal" % r)) for r in range(16)],
+                              mt=open(os.path.join(d, "metatiles.bin"), "rb").read())
+    return _PRIMARY[name]
 
 
 class Cave:
@@ -249,8 +258,8 @@ class Cave:
 
 def render(cave, mapname, tiles=None, pals=None, box=None):
     """a map (or a box of it, in cells) as the screen draws it, the secondary's tiles and rows from `tiles`/`pals`"""
-    G = general()
     l = layouts()[mapname]
+    G = general(l["primary_tileset"])
     tl = tiles or cave.tiles
     sp = pals or cave.pals
     allp = [G["pals"][r] for r in range(7)] + [sp[r] for r in range(7, 16)]
@@ -528,15 +537,374 @@ LOOKS = {
 }
 
 
-def palettes(cave, proposed=True):
-    """the secondary's sixteen rows: today's, or the look's -- each named index given its role's colour"""
+# ================================================================== batch E2: the rest of the caves
+#  The user approved DEADSTACK, TAPPOINT'S CAVE and THE BLACKOUT on 2026-10-23 and asked for the rest of the
+#  proposal: UMBRAL ASCENT and OTHER CAVE with palettes of their own, then the KEEPALIVE PLANT, GLAUCOUS ISLES (and
+#  STILLFALL), MT. SMOULDER, THE DOTS and THE TUNNEL. TANOBY (batch G) and DOLDRUM CAVE (the user's call) are not here.
+#
+#  seafoam_islands, mt_ember and navel_rock are cut from the same vanilla layout as cave -- ladders at 6..13/22..29,
+#  holes at 14/15, boulders at 3/4/19/20 -- so they take the same method with their own index plans. power_plant and
+#  underground_path are built rooms over primary/building, not caves: each is drawn by its own function (BUILT).
+#
+#  A PALETTE SPLIT is a look with `base`: it draws nothing, reuses the base look's tiles, and only gives the tileset's
+#  rows a light of its own (UMBRAL ASCENT over the stack; OTHER CAVE over the outage; STILLFALL over the bloom).
+
+#  GLAUCOUS ISLES (seafoam_islands). Row 8: floor 1..4; the ice 9 8 10 11 12 13 14 light to dark, 15 its outline;
+#  5..7 the bright glints of the slides. Row 10 repeats row 8's ice; row 11 carries the slides' water (8..12, kept),
+#  the glints and the moss (13, 14). The ladders keep vanilla's gold: a ladder is a thing the player looks for.
+_ICE = {9: ("rock", 0), 8: ("rock", 1), 10: ("rock", 2), 11: ("rock", 3), 12: ("rock", 4), 13: ("rock", 5),
+        14: ("rock", 6), 15: ("shade", 0)}
+_GLINT = {5: ("glint", 0), 6: ("glint", 1), 7: ("glint", 2)}
+MATERIALS["seafoam_islands"] = {
+    8: {**_plan([1, 2, 3, 4], []), **_ICE, **_GLINT},
+    9: _plan([1, 2, 3, 4], []),
+    10: dict(_ICE),
+    11: {**_plan([1, 2, 3, 4], []), **_GLINT, 13: ("patch", 0), 14: ("patch", 1)},
+}
+#  MT. SMOULDER (mt_ember): cave's plan in rows 8..10; rows 7 and 12 are the same rock a step and two steps deeper
+#  (the lower floors), row 11 the pale ground round KETTLE SPRING (12..15; the steam animation draws 12 and 13, so 12
+#  stays the lighter). Row 12's 1 and 2 are the spring's water, kept.
+_EMBER_ROCK = _plan([], ROCK, {15: ("shade", 0)})
+MATERIALS["mt_ember"] = {
+    7: dict(_EMBER_ROCK),
+    8: _plan([1, 2, 3, 4], ROCK, {15: ("shade", 0)}),
+    9: _plan([1, 2, 3, 4], []),
+    10: dict(_EMBER_ROCK),
+    11: _plan([1, 2, 3, 4], [], {12: ("patch", 0), 13: ("patch", 1), 14: ("patch", 2), 15: ("patch", 3)}),
+    12: dict(_EMBER_ROCK),
+}
+#  THE DOTS (navel_rock): row 8's floor is 2..4 (5, vanilla's worn spots, takes 4's colour), its rock 9/10 (both
+#  white) then 11..15; rows 7 and 12 the same
+#  rock in other light (row 12 is NAVEL ROCK's shadowed half); row 11's 12..15 the pale floor bands.
+_SAND = {9: ("rock", 0), 10: ("rock", 0), 11: ("rock", 1), 12: ("rock", 2), 13: ("rock", 3), 14: ("rock", 4),
+         15: ("rock", 5)}
+MATERIALS["navel_rock"] = {
+    7: {**_plan([2, 3, 4], []), 5: ("floor", 2), **_SAND},
+    8: {**_plan([2, 3, 4], []), 5: ("floor", 2), **_SAND},
+    9: _plan([2, 3, 4], []),
+    10: {8: ("floor", 0), **_SAND},
+    11: _plan([2, 3, 4], [], {12: ("patch", 0), 13: ("patch", 1), 14: ("patch", 2), 15: ("patch", 3)}),
+    12: {**_plan([2, 3, 4], []), 5: ("floor", 2), **_SAND},
+}
+#  THE KEEPALIVE PLANT (power_plant): row 7 is the room -- plates (9, seams 11), corridors (8, seams 10), the housings'
+#  body (10) and outlines (12, 13), the girders (4..6), the three conduit stripes (1 red, 2 green, 3 blue); 14 is
+#  free and becomes the STATUS LIGHT. Row 8 is the coils and the drums: 1..3 their metal, 5 and 6 the lamp each
+#  drum carries in its middle (vanilla's pink), which turns green.
+_PLANT_ROOM = {1: ("conduit", 0), 2: ("conduit", 1), 3: ("conduit", 2), 4: ("girder", 2), 5: ("girder", 1),
+               6: ("girder", 0), 7: ("trim", 0), 8: ("lane", 0), 9: ("plate", 0), 10: ("housing", 1),
+               11: ("plate", 1), 12: ("housing", 3), 13: ("housing", 2), 14: ("status", 0)}
+MATERIALS["power_plant"] = {
+    7: dict(_PLANT_ROOM),
+    8: {1: ("coil", 2), 2: ("coil", 1), 3: ("coil", 0), 5: ("status", 0), 6: ("status", 1), 10: ("housing", 1),
+        11: ("plate", 1), 12: ("housing", 3), 13: ("housing", 2)},
+}
+#  THE TUNNEL (underground_path): row 7 is the whole bore -- the walls (6 lit, 3, 5, 2, 1 the outline), the floor's
+#  planks (8 lit edge, 7, 9 the joint), and the two coloured bands vanilla runs down it: teal (11, 10, 12) becomes the
+#  LIT LANE, red (14, 13, 15) the lane with the PACKET TRACE on it, whose dashes take 4, which row 7 never draws.
+#  Row 8 is the ceiling lamps: 4..8 their glass and glow.
+_TUNNEL_BORE = {6: ("wall", 0), 3: ("wall", 1), 5: ("wall", 2), 2: ("wall", 3), 1: ("wall", 4),
+                8: ("floor", 0), 7: ("floor", 1), 9: ("floor", 2),
+                11: ("lane", 0), 10: ("lane", 1), 12: ("lane", 2),
+                14: ("trace", 0), 13: ("trace", 1), 15: ("trace", 2), 4: ("dash", 0)}
+MATERIALS["underground_path"] = {
+    7: dict(_TUNNEL_BORE),
+    8: {1: ("wall", 4), 2: ("wall", 3), 3: ("wall", 1), 4: ("lamp", 0), 5: ("lamp", 1), 6: ("lamp", 2),
+        7: ("lamp", 3), 8: ("lamp", 4)},
+}
+
+#  The accents: MT. SMOULDER's glow (the low orange and the banked red under it) takes 5 and 6, free in rows 7, 8
+#  and 12 alike, so a tile drawn in any of the three rock rows glows the same.
+ACCENT.update({"seafoam_islands": {}, "navel_rock": {}, "power_plant": {}, "underground_path": {},
+               "mt_ember": {7: [5, 6], 8: [5, 6], 12: [5, 6]}})
+
+#  More things standing on the floor, per tileset, beyond the shared OBJECTS: GLAUCOUS ISLES' cracked-ice floor and
+#  its slides (row 11) and the frozen puddles' rings; MT. SMOULDER's steam, which its animation redraws in VRAM
+#  (src/tileset_anims.c writes tiles 896.., secondary 256..263, every 16 frames).
+EXTRA_OBJECTS = {
+    "seafoam_islands": {14, 15, 30, 31, 156, 157, 172, 173, 188, 189} | set(range(230, 236)) | set(range(246, 252)) |
+                       set(range(256, 264)) | set(range(272, 280)),
+    "mt_ember": set(range(256, 264)),
+}
+
+
+def objects_of(ts):
+    return OBJECTS | EXTRA_OBJECTS.get(ts, set())
+
+
+# ---------------------------------------------------------------- GLAUCOUS ISLES: the bloom
+#  Ice under a matte frosted skin. Down a face, tall FACETS of clear ice: each lit along its upper and left edges,
+#  deep in the body, and crossed by one diagonal glint, the light inside clear ice; facets meet at a shaded edge,
+#  never a black crack. Across a top, the BLOOM: big soft chalky drifts with a shallow seam between them.
+_FAC = _voronoi([(4.0, 4.0, 0.0), (12.5, 7.0, 0.0), (6.0, 13.0, 0.0)])
+GLINTS = {(3, 6), (4, 5), (5, 4), (11, 10), (12, 9), (13, 8), (5, 15), (6, 14)}     # one short diagonal a facet
+
+
+def _facet(x, y):
+    k = _FAC[y][x]
+    if _FAC[y][(x + 1) % 16] != k or _FAC[(y + 1) % 16][x] != k:
+        return "lo", 0
+    if _FAC[y][(x - 1) % 16] != k or _FAC[(y - 1) % 16][x] != k:
+        return "hi", 0
+    if (x, y) in GLINTS:
+        return "hi", 0
+    return "body", (1 if k == 1 else 0)
+
+
+FACETS = _torus(_facet)
+#  a top is matte: flat, with one soft hollow in the powder a block, never a line
+BLOOM = _marks([(9, 4, 4, 2)])
+
+
+def m_bloom(X, Y, plane):
+    if plane == "top":
+        return ("lo" if BLOOM[Y][X] else "body"), 0
+    return FACETS[Y][X]
+
+
+# ---------------------------------------------------------------- MT. SMOULDER: ember under ash
+#  Black cinder, and fire that never shows as flame. Down a face, CINDER clots (round, shaded, cracked between) and one
+#  FISSURE a block, a jagged line across the face whose core glows low orange with a banked red under it -- the heat is
+#  inside the rock, seen only through a crack. Across a top, ash: soft drifts lying on the cinder, no glow.
+CINDER = _lumps(_voronoi([(3.0, 3.0, 0.6), (9.0, 2.0, 0.3), (14.0, 5.5, 0.5), (6.0, 8.5, 0.4), (12.0, 12.0, 0.6),
+                          (2.0, 13.0, 0.3), (8.0, 15.0, 0.2)]))
+FISSURE = [10, 10, 11, 11, 11, 10, 9, 9, 10, 10, 11, 12, 12, 11, 10, 10]   # its row at each column
+GLOW = range(3, 11)                                                         # where it is open enough to glow
+GLOW_CORE = range(5, 8)
+ASH = _marks([(2, 3, 6, 3), (9, 10, 5, 3)])                         # two drifts of ash lying on a top
+
+
+def m_ember(X, Y, plane):
+    if plane == "top":
+        return ASH[Y][X] or "body", 0
+    f = FISSURE[X]
+    if Y == f:
+        return ("accent0" if X in GLOW_CORE else "accent1" if X in GLOW else "crack"), 0
+    if Y == f + 1:
+        return ("accent1" if X in GLOW_CORE else "crack"), 0
+    if Y == f - 1:
+        return "lo", 0
+    return CINDER[Y][X], 0
+
+
+# ---------------------------------------------------------------- THE DOTS: braille
+#  Sandstone, and on it writing meant for the hand. Down a face, one tall course of smooth stone carrying a line of
+#  two BRAILLE CELLS a block (six positions each, 2 across and 3 down, a raised dot lit on its upper row and shaded on
+#  its lower), and a thin course under it. Across a top, the same cells seen from above -- each dot is its shadow --
+#  on a slab seamed once a block. The cells are "h" and "i" (dots 1-2-5 and 2-4): a greeting nobody sighted reads.
+BRAILLE = ({1, 2, 5}, {2, 4})                                  # dot numbers: 1-3 down the left, 4-6 down the right
+CELL_X, CELL_Y, PITCH = (2, 9), 1, 3
+
+
+def _dot_at(x, y):
+    """(dx, dy) inside a dot if (x, y) falls in a raised dot of one of the block's cells, else None"""
+    for cx, cell in zip(CELL_X, BRAILLE):
+        for n in cell:
+            col, row = (n - 1) // 3, (n - 1) % 3
+            x0, y0 = cx + col * PITCH, CELL_Y + row * PITCH
+            if x0 <= x < x0 + 2 and y0 <= y < y0 + 2:
+                return x - x0, y - y0
+    return None
+
+
+def _sandstone(x, y):
+    if y == 15 or y == 10:
+        return "crack", 0
+    if y == 0 or y == 11:
+        return "hi", 0
+    if y == 14:
+        return "lo", 0
+    d = _dot_at(x, y)
+    if d:
+        return ("hi" if d[1] == 0 else "lo"), 0
+    return "body", (1 if y > 10 else 0)
+
+
+def _slab(x, y):
+    if y == 15 or x == 15:
+        return "crack", 0
+    d = _dot_at(x, y)
+    if d:
+        return {(0, 0): ("body", 1), (1, 0): ("lo", 1), (0, 1): ("lo", 1), (1, 1): ("crack", 2)}[d]
+    return "body", 0
+
+
+BRAILLE_FACE, BRAILLE_TOP = _torus(_sandstone), _torus(_slab)
+
+
+def m_dots(X, Y, plane):
+    return (BRAILLE_TOP if plane == "top" else BRAILLE_FACE)[Y][X]
+
+
+FLOOR_FROST = _marks([(2, 3, 5, 2), (10, 11, 4, 2)])           # two frost drifts a block
+FLOOR_ASH = _marks([(4, 3, 2, 2), (11, 9, 3, 2), (2, 12, 2, 2)])    # cinders lying in the ash
+FLOOR_FLAGS = [[None] * 16 for _ in range(16)]                     # sandstone flags laid like brick, two a block
+for _k in range(16):
+    FLOOR_FLAGS[7][_k] = FLOOR_FLAGS[15][_k] = "crack"
+for _y in range(7):
+    FLOOR_FLAGS[_y][4] = FLOOR_FLAGS[_y + 8][12] = "crack"
+
+
+# ---------------------------------------------------------------- the two built rooms
+def draw_plant(cave):
+    """THE KEEPALIVE PLANT: still running. Every housing's face (tile 21, the panel under the conduits) is cut
+    into panels a tile wide, each with a STATUS LIGHT on -- a lit pixel pair in the free index with a dark bezel under
+    it; the drums' pink lamps turn green by palette. The floor plates keep vanilla's bevel; moss (the conduit's green:
+    the living PLANT) grows in the seam where the walkways meet the plates."""
+    new, what = [list(t) for t in cave.tiles], {}
+    for t in range(cave.n):
+        px = new[t]
+        rows = cave.rows[t]
+        if not rows or 7 not in rows:
+            continue
+        g = lambda x, y: px[y * 8 + x]
+        # a housing face: a conduit stripe (2, then 3) above a plain body of 10 at least four rows deep
+        body = [y for y in range(8) if all(g(x, y) == 10 for x in range(8))]
+        if len(body) >= 4 and any(g(x, 0) in (1, 2, 3) for x in range(8)):
+            top = body[0]
+            for y in body:
+                px[y * 8 + 7] = 13                           # the seam between two panels
+            px[(top + 1) * 8 + 2] = px[(top + 1) * 8 + 3] = 14      # the status light
+            px[(top + 2) * 8 + 2] = px[(top + 2) * 8 + 3] = 12      # its bezel's shadow
+            px[(top + 1) * 8 + 1] = 12
+            what[t] = "housing"
+        # the seam where a walkway meets the plates (a row of 9 over a row of 13): moss growing in it
+        elif all(g(x, 6) == 9 for x in range(8)) and all(g(x, 7) == 13 for x in range(8)) and \
+                all(g(x, y) == 11 for x in range(8) for y in range(6)):
+            for x, y in ((1, 6), (2, 6), (2, 5), (5, 6)):
+                px[y * 8 + x] = 2
+            what[t] = "seam"
+    return new, what
+
+
+def draw_tunnel(cave):
+    """THE TUNNEL: a built bore. Its planks become the ring joints of a concrete tube (same pixels, the palette's
+    work); vanilla's red band becomes the lane with the PACKET TRACE on it, a dashed line five on and three off in the
+    free index; the long wall faces carry two CONDUITS, each a lit row over a shaded one; the side walls' panels carry
+    one upright conduit."""
+    new, what = [list(t) for t in cave.tiles], {}
+    for t in range(cave.n):
+        px = new[t]
+        if not cave.rows[t] or 7 not in cave.rows[t]:
+            continue
+        g = lambda x, y: px[y * 8 + x]
+        n13 = sum(1 for v in px if v == 13)
+        if n13 >= 16:                                        # the red band: the trace
+            for y in (3, 4):
+                for x in range(1, 6):
+                    if g(x, y) == 13 and g(x - 1, y) in (13, 4) and g(x + 1, y) == 13:
+                        px[y * 8 + x] = 4
+            what[t] = "trace"
+            continue
+        rows3 = [y for y in range(8) if all(g(x, y) == 3 for x in range(8))]
+        rows2 = [y for y in range(8) if all(g(x, y) == 2 for x in range(8))]
+        if len(rows3) >= 4 or len(rows2) >= 5:              # a long wall face: two conduits along it
+            band, lit, dk = (rows3, 6, 2) if len(rows3) >= 4 else (rows2, 3, 1)
+            a = band[0] + (0 if band is rows3 else 1)
+            for y, v in ((a, lit), (a + 1, dk), (a + 3, lit), (a + 4, dk)):
+                if y in band:
+                    for x in range(8):
+                        px[y * 8 + x] = v
+            what[t] = "wall"
+            continue
+        cols = [x for x in range(8) if sum(1 for y in range(8) if g(x, y) == 3) >= 6]
+        if len(cols) >= 4 and g(0, 0) == 1:                  # a side wall's panel: one conduit up it
+            c = cols[len(cols) // 2 - 1]
+            for y in range(8):
+                if g(c, y) == 3 and g(c + 1, y) == 3:
+                    px[y * 8 + c], px[y * 8 + c + 1] = 6, 2
+            what[t] = "wall"
+    return new, what
+
+
+LOOKS.update({
+    #  palette splits: tiles from `base`, light of their own
+    "cave/umbral": dict(
+        base="cave", name="UMBRAL ASCENT", motif="the stack, at dusk",
+        pal={"floor": [(150, 140, 164), (128, 118, 146), (108, 98, 128), (86, 78, 106)],
+             "rock": [(196, 186, 222), (162, 150, 198), (128, 116, 170), (98, 86, 140), (70, 60, 108), (44, 38, 74)],
+             "dark": [(28, 24, 44), (52, 46, 70)], "shade": [(64, 58, 84)], "hole": [(10, 8, 18)],
+             "wood": [(226, 220, 236), (200, 192, 218), (172, 164, 196), (144, 136, 170), (112, 104, 140),
+                      (82, 76, 108)],
+             "rung": [(226, 220, 236), (190, 182, 210), (152, 144, 178), (116, 108, 142)],
+             "water": [(92, 104, 168), (70, 82, 146), (52, 62, 122)],
+             "patch": [(184, 176, 200), (168, 160, 186), (152, 144, 172), (136, 128, 158)],
+             "accent": [(206, 180, 132), (138, 112, 92), (168, 112, 128)]}),
+    "rock_tunnel/other": dict(
+        base="rock_tunnel", name="OTHER CAVE", motif="the outage, in mineral light",
+        pal={"floor": [(184, 160, 164), (166, 142, 148), (148, 124, 132), (128, 106, 116), (108, 88, 100)],
+             "rock": [(208, 238, 230), (170, 216, 208), (136, 190, 184), (104, 160, 158), (76, 128, 130), (52, 96, 100)],
+             "dark": [(26, 52, 56), (44, 74, 76)], "shade": [(40, 70, 72)], "hole": [(6, 18, 20)],
+             "wood": [(238, 232, 206), (214, 206, 178), (186, 178, 150), (160, 150, 124), (130, 120, 98),
+                      (100, 92, 76)],
+             "rung": [(238, 232, 206), (206, 198, 170), (170, 162, 136), (134, 126, 104)],
+             "water": [(80, 150, 176), (60, 126, 156), (44, 102, 134)],
+             "patch": [(148, 124, 132), (136, 112, 122), (122, 100, 110)],
+             "accent": []}),
+    "seafoam_islands": dict(
+        name="GLAUCOUS ISLES", motif="the bloom", rock=m_bloom, rim=None, floor=FLOOR_FROST, field=1, off=MARK_OFF,
+        patch_field=0, top_at=2.6,
+        pal={"floor": [(208, 224, 222), (190, 210, 210), (166, 190, 194), (138, 162, 172)],
+             "rock": [(234, 242, 236), (214, 230, 226), (176, 214, 214), (130, 188, 198), (94, 156, 176),
+                      (68, 124, 150), (48, 94, 122)],
+             "shade": [(34, 54, 72)],
+             "glint": [(168, 238, 232), (196, 248, 242), (228, 255, 250)],
+             "patch": [(200, 222, 180), (180, 206, 164)]}),
+    "seafoam_islands/stillfall": dict(
+        base="seafoam_islands", name="STILLFALL CAVE", motif="the bloom, gone glassy",
+        pal={"floor": [(198, 222, 238), (174, 204, 226), (148, 182, 210), (120, 154, 188)],
+             "rock": [(220, 242, 252), (180, 224, 244), (124, 192, 228), (80, 152, 204), (52, 116, 174),
+                      (36, 84, 140), (26, 58, 104)],
+             "shade": [(22, 40, 72)],
+             "glint": [(150, 236, 255), (192, 246, 255), (236, 255, 255)],
+             "patch": [(184, 214, 204), (164, 198, 190)]}),
+    "mt_ember": dict(
+        name="MT. SMOULDER", motif="ember under ash", rock=m_ember, rim=None, floor=FLOOR_ASH, field=1,
+        off=MARK_OFF, patch_field=1,
+        pal={"floor": [(136, 112, 100), (118, 96, 86), (100, 80, 72), (82, 64, 58)],
+             "rock": [(180, 164, 150), (148, 132, 122), (106, 92, 86), (64, 52, 50), (42, 32, 32), (26, 18, 20)],
+             "shade": [(34, 26, 28)],
+             "patch": [(216, 204, 186), (194, 182, 164), (174, 162, 146), (156, 144, 130)],
+             "accent": [(200, 92, 38), (120, 40, 28)]},
+        rows={7: {"rock": [(156, 140, 128), (122, 106, 98), (84, 70, 66), (50, 40, 40), (32, 24, 26), (18, 12, 14)],
+                  "shade": [(24, 18, 20)]},
+              12: {"rock": [(128, 112, 104), (96, 82, 78), (64, 52, 50), (38, 30, 30), (22, 16, 18), (10, 6, 8)],
+                   "shade": [(12, 8, 10)]}}),
+    "navel_rock": dict(
+        name="THE DOTS", motif="braille", rock=m_dots, rim=None, floor=FLOOR_FLAGS, field=1, off=CRACK_OFF,
+        patch_field=1,
+        pal={"floor": [(214, 190, 150), (194, 168, 130), (172, 146, 110), (142, 118, 88)],
+             "rock": [(244, 228, 194), (226, 204, 164), (198, 172, 130), (162, 134, 98), (122, 96, 70), (82, 62, 48)],
+             "patch": [(234, 216, 180), (218, 198, 162), (202, 180, 144), (162, 140, 108)]},
+        rows={12: {"rock": [(190, 160, 146), (164, 134, 122), (136, 108, 100), (108, 84, 80), (80, 60, 60),
+                            (54, 40, 42)],
+                   "floor": [(172, 150, 128), (152, 130, 110), (132, 112, 94), (110, 92, 78)]}}),
+    "power_plant": dict(
+        name="KEEPALIVE PLANT", motif="still running", built=draw_plant, home=7,
+        pal={"plate": [(200, 212, 200), (160, 178, 168)], "lane": [(182, 198, 188)],
+             "housing": [(150, 168, 178), (122, 140, 154), (90, 104, 122), (50, 58, 76)],
+             "girder": [(160, 180, 200), (120, 142, 166), (88, 110, 136)], "trim": [(176, 192, 162)],
+             "conduit": [(170, 100, 64), (82, 134, 62), (44, 66, 118)], "status": [(128, 250, 104), (62, 168, 72)],
+             "coil": [(214, 232, 196), (170, 196, 150), (118, 148, 108)]}),
+    "underground_path": dict(
+        name="THE TUNNEL", motif="the bore", built=draw_tunnel, home=7,
+        pal={"wall": [(198, 206, 214), (152, 162, 172), (130, 138, 150), (108, 118, 130), (54, 60, 74)],
+             "floor": [(196, 204, 202), (176, 186, 186), (138, 150, 154)],
+             "lane": [(250, 252, 246), (234, 240, 234), (184, 194, 194)],
+             "trace": [(250, 252, 246), (234, 240, 234), (184, 194, 194)], "dash": [(56, 156, 214)],
+             "lamp": [(250, 252, 255), (220, 240, 255), (188, 204, 214), (158, 172, 184), (128, 140, 152)]}),
+})
+
+
+def palettes(cave, proposed=True, key=None):
+    """the secondary's sixteen rows: today's, or the look's -- each named index given its role's colour. `key` names a
+    look other than the tileset's own (a palette split: "cave/umbral")."""
     pals = [list(p) for p in cave.pals]
     if not proposed:
         return pals
-    look = LOOKS[cave.ts]
+    look = LOOKS[key or cave.ts]
     for r, plan in MATERIALS[cave.ts].items():
         for i, (mat, k) in plan.items():
-            ramp = look["pal"].get(mat)
+            ramp = look.get("rows", {}).get(r, {}).get(mat) or look["pal"].get(mat)
             if ramp:
                 pals[r][i] = ramp[min(k, len(ramp) - 1)]
         for k, i in enumerate(ACCENT.get(cave.ts, {}).get(r, [])):
@@ -544,9 +912,9 @@ def palettes(cave, proposed=True):
     return pals
 
 
-def palette_touch(cave):
+def palette_touch(cave, key=None):
     """row -> [(index, today, proposed, its role)] for every index the look changes"""
-    now, new = palettes(cave, False), palettes(cave, True)
+    now, new = palettes(cave, False), palettes(cave, True, key)
     out = {}
     for r in range(16):
         ch = []
@@ -597,21 +965,26 @@ def _gmean(g, x, y, kind, rad):
     return acc / n if n else 0
 
 
-def redraw(cave):
+def redraw(cave, key=None):
     """every tile of the tileset in the look: (new tiles, {tile: what it is}), footprints and joins kept.
 
     Each tile is drawn where it is drawn most: in its main block's layer, so the light around a pixel, the joins and
     the rim are read across the tile's edges from the three tiles beside it, and the motif is laid at the tile's own
     place in the block (a block is 16x16, the motif's period, so it runs on across blocks)."""
-    look = LOOKS[cave.ts]
+    look = LOOKS[key or cave.ts]
+    look = LOOKS[look.get("base", key or cave.ts)]       # a palette split draws its base's tiles
+    if look.get("built"):
+        return look["built"](cave)
     plans = MATERIALS[cave.ts]
+    objs = objects_of(cave.ts)
+    top_at = look.get("top_at", TOP_AT)
     new, what = [], {}
     COMPROMISES.pop(cave.ts, None)
     for t in range(cave.n):
         px = cave.tiles[t]
         rows = [r for r in cave.rows[t] if r >= 7]
         where = placement(cave, t)
-        if not rows or not any(px) or t in OBJECTS or not where:
+        if not rows or not any(px) or t in objs or not where:
             new.append(list(px))
             continue
         b, j, f = where
@@ -632,8 +1005,8 @@ def redraw(cave):
         ox, oy = ((j % 4) % 2) * 8, ((j % 4) // 2) * 8
         base = [[_gmean(g, x, y, "rock", 2) if g[y][x] and g[y][x][0] == "rock" else None for x in range(16)]
                 for y in range(16)]
-        face = lambda x, y: 0 <= y < 16 and base[y][x] is not None and base[y][x] > TOP_AT
-        top = lambda x, y: 0 <= y < 16 and base[y][x] is not None and base[y][x] <= TOP_AT
+        face = lambda x, y: 0 <= y < 16 and base[y][x] is not None and base[y][x] > top_at
+        top = lambda x, y: 0 <= y < 16 and base[y][x] is not None and base[y][x] <= top_at
         out = list(px)
         drawn = 0
         kinds = collections.Counter()
@@ -678,7 +1051,7 @@ def redraw(cave):
                     continue                            # a join: vanilla's, so it meets what is beside it
                 if kind == "rock":
                     b0 = base[Y][X]
-                    plane = "top" if b0 <= TOP_AT else "face"
+                    plane = "top" if b0 <= top_at else "face"
                     if plane == "top" and m[1] >= b0 + 2.5:
                         continue                        # a hole or pit vanilla drew in a top: kept
                     role, shift = look["rock"](X, Y, plane)
@@ -718,7 +1091,10 @@ COMPROMISES = {}   # tileset -> [(tile, rows that show its accent index in their
 
 
 # ================================================================== the draft: files and sheets
-SHORT = {"cave": "deadstack", "digletts_cave": "tappoint", "rock_tunnel": "blackout"}
+SHORT = {"cave": "deadstack", "digletts_cave": "tappoint", "rock_tunnel": "blackout",
+         "cave/umbral": "umbral", "rock_tunnel/other": "othercave", "power_plant": "keepalive",
+         "seafoam_islands": "glaucous", "seafoam_islands/stillfall": "stillfall", "mt_ember": "smoulder",
+         "navel_rock": "dots", "underground_path": "tunnel"}
 FLASH = {"RockTunnel_1F", "RockTunnel_B1F"}             # requires_flash: dark until VERBOSE
 FLASH_DARK = 24                                         # field_screen_effect.c: sFlashLevelToRadius[4], no VERBOSE
 CROPS = {   # (map, x0, y0, w, h in cells, what it shows); a dark view is centred on (x0 + 7, y0 + 5)
@@ -731,6 +1107,23 @@ CROPS = {   # (map, x0, y0, w, h in cells, what it shows); a dark view is centre
     "rock_tunnel": [("RockTunnel_1F", 0, 0, 24, 20, "THE BLACKOUT 1F, lit by VERBOSE"),
                     ("RockTunnel_B1F", 0, 0, 24, 20, "THE BLACKOUT B1F, lit by VERBOSE"),
                     ("SixIsland_AlteringCave", 0, 0, 24, 20, "OTHER CAVE: the same tileset -- what sharing gives it")],
+    # batch E2
+    "cave/umbral": [("VictoryRoad_1F", 0, 0, 24, 20, "UMBRAL ASCENT 1F: boulders, ladders, the climb"),
+                    ("VictoryRoad_2F", 24, 0, 24, 20, "UMBRAL ASCENT 2F: ledges and switches")],
+    "rock_tunnel/other": [("SixIsland_AlteringCave", 0, 0, 24, 20, "OTHER CAVE: the entrance half"),
+                          ("SixIsland_AlteringCave", 8, 4, 24, 20, "OTHER CAVE: the far half")],
+    "power_plant": [("PowerPlant", 0, 0, 24, 20, "KEEPALIVE PLANT: the entrance, the first housings, the coils"),
+                    ("PowerPlant", 20, 16, 24, 20, "KEEPALIVE PLANT: the long housing, the drums, the generator")],
+    "seafoam_islands": [("SeafoamIslands_1F", 0, 0, 24, 20, "GLAUCOUS ISLES 1F: ice walls, boulders, ladders"),
+                        ("SeafoamIslands_B3F", 8, 2, 24, 20, "GLAUCOUS ISLES B3F: the currents, four floors down")],
+    "seafoam_islands/stillfall": [("FourIsland_IcefallCave_1F", 0, 0, 20, 20, "STILLFALL 1F: the cracked-ice floor"),
+                                  ("FourIsland_IcefallCave_Back", 0, 0, 25, 20, "STILLFALL: the back, the frozen falls")],
+    "mt_ember": [("MtEmber_RubyPath_1F", 0, 0, 27, 19, "MT. SMOULDER: the RUBY PATH's first floor"),
+                 ("OneIsland_KindleRoad_EmberSpa", 0, 0, 27, 24, "KETTLE SPRING: the spa, its steam, the pools")],
+    "navel_rock": [("SixIsland_DottedHole_1F", 0, 0, 16, 11, "THE DOTS 1F: tops, the walls' faces, the floor"),
+                   ("NavelRock_Base", 0, 0, 21, 23, "NAVEL ROCK (never reached): what it would inherit")],
+    "underground_path": [("UndergroundPath_EastWestTunnel", 0, 0, 30, 7, "THE TUNNEL, east-west: the lane and its trace"),
+                         ("UndergroundPath_NorthSouthTunnel", 0, 0, 8, 40, "THE TUNNEL, north-south: the bands, the walls")],
 }
 DARK_AT = {"RockTunnel_1F": (12, 10), "RockTunnel_B1F": (10, 9)}     # a floor cell to stand on, for the dark view
 
@@ -809,15 +1202,22 @@ def _col(ims, gap=12, bg=(236, 234, 226), pad=12):
     return out
 
 
-def map_sheet(cave, new, pals, crop, path):
+def map_sheet(cave, new, pals, crop, path, key=None):
     name, x0, y0, w, h, what = crop
-    look = LOOKS[cave.ts]
+    look = LOOKS[key or cave.ts]
     a = render(cave, name, box=(x0, y0, w, h))
     b = render(cave, name, tiles=new, pals=pals, box=(x0, y0, w, h))
     f, F = font(13), font(17)
     z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
-    rows = [_label(_row([_label(a, "today (vanilla) 1x", f), _label(b, "draft: %s 1x" % look["motif"], f)]), "", f),
-            _row([_label(z2(a), "today 2x", f), _label(z2(b), "draft 2x", f)])]
+    if look.get("base"):                # a palette split: also what it would be if it kept sharing its base's light
+        c = render(cave, name, tiles=new, pals=palettes(cave, True, look["base"]), box=(x0, y0, w, h))
+        rows = [_row([_label(a, "today (vanilla) 1x", f), _label(c, "shared: %s's light 1x" % LOOKS[look["base"]][
+                    "name"], f), _label(b, "draft: its own light 1x", f)]),
+                _row([_label(z2(a), "today 2x", f), _label(z2(b), "draft 2x", f)])]
+    else:
+        rows = [_label(_row([_label(a, "today (vanilla) 1x", f), _label(b, "draft: %s 1x" % look["motif"], f)]),
+                       "", f),
+                _row([_label(z2(a), "today 2x", f), _label(z2(b), "draft 2x", f)])]
     if name in FLASH:
         cx, cy = DARK_AT[name]
         box = (cx - 7, cy - 5, 15, 10)
@@ -828,18 +1228,18 @@ def map_sheet(cave, new, pals, crop, path):
                           _label(z2(dark(sa, *c)), "today, dark (24px)", f),
                           _label(z2(dark(sb, *c)), "draft, dark (24px)", f)]))
     sheet = _col([_title("T-438 batch E DRAFT -- %s (%s): %s\n%s, cells %d,%d %dx%d -- footprints, blocks, "
-                         "collision unchanged" % (look["name"], cave.ts, what, name, x0, y0, w, h), F,
+                         "collision unchanged" % (look["name"], key or cave.ts, what, name, x0, y0, w, h), F,
                          max(r.width for r in rows))] + rows)
     sheet.save(path)
     return path
 
 
 def swatch_rows(cave, pals_now, pals_new, f):
-    """rows 8..12, today over proposed, every index boxed and labelled with its role"""
+    """rows 8..12 (7..12 where the look names row 7), today over proposed, every index boxed and labelled"""
     Z = 26
     ims = []
     plans = MATERIALS[cave.ts]
-    for r in range(8, 13):
+    for r in range(7 if 7 in plans else 8, 13):
         im = Image.new("RGB", (60 + 16 * (Z + 52), Z * 2 + 22), (236, 234, 226))
         d = ImageDraw.Draw(im)
         d.text((4, Z // 2), "row %d" % r, font=f, fill=(30, 30, 30))
@@ -861,7 +1261,8 @@ def atlas(cave, tiles, pals, Z=3):
     im = Image.new("RGB", (w * 8 * Z, (cave.n // w) * 8 * Z), (255, 0, 255))
     o = im.load()
     for t in range(cave.n):
-        r = cave.home(t) or 8
+        r = cave.home(t)
+        r = r if r and r >= 7 else 8
         for k, v in enumerate(tiles[t]):
             if not v:
                 continue
@@ -872,18 +1273,20 @@ def atlas(cave, tiles, pals, Z=3):
     return im
 
 
-def tiles_sheet(cave, new, what, path):
+def tiles_sheet(cave, new, what, path, key=None):
     f, F = font(12), font(17)
-    look = LOOKS[cave.ts]
-    now, pp = palettes(cave, False), palettes(cave, True)
+    look = LOOKS[key or cave.ts]
+    now, pp = palettes(cave, False), palettes(cave, True, key)
     counts = collections.Counter(what.values())
     top = _row([_label(atlas(cave, cave.tiles, now), "tiles.png today, each tile in its own row", f),
-                _label(atlas(cave, new, pp), "draft: %d tiles redrawn (%s)\nboulders, rocks, ladders, holes, "
-                       "water keep their drawing" % (len(what), ", ".join("%s %d" % kv for kv in sorted(counts.items()))),
-                       f)])
+                _label(atlas(cave, new, pp), ("draft: %d tiles redrawn (%s)\nboulders, rocks, ladders, holes, "
+                       "water keep their drawing" % (len(what), ", ".join("%s %d" % kv for kv in sorted(counts.items())))
+                       if not look.get("base") else "draft: %s's tiles, in %s's own light\n(a palette split: no "
+                       "tile of its own)" % (LOOKS[look["base"]]["name"], look["name"])), f)])
     sw = swatch_rows(cave, now, pp, f)
-    sheet = _col([_title("T-438 batch E DRAFT -- %s: the tileset and its palettes\nrows 8..12: today above, "
-                         "proposed below, red where changed" % look["name"], F, max(top.width, sw[0].width)), top] + sw)
+    sheet = _col([_title("T-438 batch E DRAFT -- %s: the tileset and its palettes\nrows %d..12: today above, "
+                         "proposed below, red where changed" % (look["name"], 7 if 7 in MATERIALS[cave.ts] else 8), F,
+                         max(top.width, sw[0].width)), top] + sw)
     sheet.save(path)
     return path
 
@@ -907,7 +1310,7 @@ def proposal_sheet(path):
     lh = f.size + 4
     rows = []
     for p in sorted(PROPOSAL, key=lambda p: p["order"]):
-        cells = [_wrap("%s%s" % (p["ts"], "  [DRAFTED]" if p["drafted"] else ""), cols[0][1]) +
+        cells = [_wrap("%s%s" % (p["ts"], "  [DRAFTED%s]" % (" E2" if p.get("drafted_e2") else "") if p["drafted"] else ""), cols[0][1]) +
                  ["", "rank %d" % p["order"]],
                  sum((_wrap("%s -- %s -- %s" % pl, cols[1][1]) + [""] for pl in p["places"]), []),
                  _wrap(p["look"], cols[2][1]), _wrap(p["split"], cols[3][1])]
@@ -917,7 +1320,8 @@ def proposal_sheet(path):
     H = 70 + sum(n * lh + 14 for _, _, n in rows) + 30 + 60
     im = Image.new("RGB", (W, H), (244, 242, 236))
     d = ImageDraw.Draw(im)
-    d.text((12, 10), "T-438 batch E -- a look per cave (PROPOSAL; the first three drafted, nothing in the engine)",
+    d.text((12, 10), "T-438 batch E -- a look per cave (PROPOSAL; all but TANOBY and DOLDRUM drafted, nothing in the "
+                     "engine)",
            font=F, fill=(20, 20, 20))
     x = 12
     for (h, _), w in zip(cols, cw):
@@ -934,8 +1338,9 @@ def proposal_sheet(path):
             x += w
         if p["drafted"]:
             pp = palettes(Cave(p["ts"]), True)
-            for k, rgb in enumerate([pp[8][i] for i in (1, 2, 3, 4, 9, 10, 11, 12, 13, 14)] +
-                                    [pp[8][i] for i in ACCENT[p["ts"]].get(8, [])[:2]]):
+            hr = LOOKS[p["ts"]].get("home", 8)
+            for k, rgb in enumerate([pp[hr][i] for i in (1, 2, 3, 4, 9, 10, 11, 12, 13, 14)] +
+                                    [pp[hr][i] for i in ACCENT[p["ts"]].get(hr, [])[:2]]):
                 d.rectangle([12 + k * 14, y + n * lh - 16, 12 + k * 14 + 12, y + n * lh - 4], fill=rgb)
         y += n * lh + 14
     for k, l in enumerate(["Grey is not a look here: HALFTONE and the unread DOLDRUM CAVE own it (8.6a, T-251), and "
@@ -947,16 +1352,71 @@ def proposal_sheet(path):
     return path
 
 
-def groups(cave, new, what):
+def groups(cave, new, what, key=None):
+    look = LOOKS[key or cave.ts]
+    pal = {r: [dict(index=i, today=a, proposed=b, role=role) for i, a, b, role in v]
+           for r, v in palette_touch(cave, key).items()}
+    if look.get("base"):
+        return dict(tiles="shares %s's drafted tiles (%s/tiles.png): a palette split" % (
+                        LOOKS[look["base"]]["name"], look["base"]),
+                    maps=split_maps(cave, key), palette_proposal=pal)
     by = collections.defaultdict(list)
     for t, k in sorted(what.items()):
         by[k].append(t)
     kept = sorted(t for t in range(cave.n) if any(cave.tiles[t]) and t not in what and cave.rows[t])
     return dict(redrawn={k: v for k, v in by.items()}, kept_drawing=kept,
-                objects=sorted(OBJECTS), compromises=COMPROMISES.get(cave.ts, []),
-                maps=cave.maps,
-                palette_proposal={r: [dict(index=i, today=a, proposed=b, role=role) for i, a, b, role in v]
-                                  for r, v in palette_touch(cave).items()})
+                objects=sorted(objects_of(cave.ts)), compromises=COMPROMISES.get(cave.ts, []),
+                maps=cave.maps, palette_proposal=pal)
+
+
+#  the batch E2 drafts, first met first. The first three (DRAFTED) are approved and are the only ones --write writes.
+DRAFTED_E2 = ["underground_path", "power_plant", "rock_tunnel/other", "seafoam_islands", "seafoam_islands/stillfall",
+              "mt_ember", "navel_rock", "cave/umbral"]
+SPLIT_MAPS = {"cave/umbral": "VictoryRoad_", "rock_tunnel/other": "SixIsland_AlteringCave",
+              "seafoam_islands/stillfall": "FourIsland_IcefallCave"}
+
+
+def split_maps(cave, key):
+    return [m for m in cave.maps if m.startswith(SPLIT_MAPS[key])]
+
+
+#  OTHER CAVE, "never holds the same thing twice" (2.10): how a per-entry shift would work and what it costs. Drafted
+#  as words only -- not built, and not this tool's to build.
+PER_ENTRY = [
+    "HOW: OTHER CAVE gets its own Tileset header (the palette split above) whose palettes are a table of N lights "
+    "instead of one -- the mineral teal and, say, three more (amber, rose quartz, lichen). LoadTilesetPalette() in "
+    "src/fieldmap.c already special-cases gTileset_General; one more case, `if (tileset == &gTileset_OtherCave)`, "
+    "loads rows 7..12 from light number VAR_OTHER_CAVE_LIGHT instead of the header's own.",
+    "WHEN IT CHANGES: on ENTRY, never on a reload. LoadSecondaryTilesetPalette() also runs after a battle, after the "
+    "bag or the menu closes, on a load from the save and on the DEBUG menu's return -- a light picked there would "
+    "flicker mid-visit. So the map's ON_TRANSITION script (which runs once per warp in) steps the var: "
+    "`addvar VAR_OTHER_CAVE_LIGHT, 1` mod N, or a `random N`. Stepping in order makes it a cycle a player can learn; "
+    "random makes it never knowable (and can repeat the last one unless re-rolled).",
+    "COST: N x 192 bytes of palettes (rows 7..12; 768 B for four) plus about 40 bytes of code and one var (a free "
+    "VAR_ 0x40xx). No tile, no metatile, no map changes. The watch's dusk/night tint and DaemonsIsHalftone() work on "
+    "the loaded rows, so they apply on top unchanged.",
+    "RISKS: the field-move banners and the VERBOSE/FLASH fade reload palettes from the header (T-442's lesson): each "
+    "such reload must go through the same case, or the cave snaps back to light 0 mid-visit -- check every caller of "
+    "LoadSecondaryTilesetPalette and of gMapHeader.mapLayout->secondaryTileset->palettes. The wild encounters could "
+    "follow the light (a different table per light, which is what Altering Cave's name promised in vanilla); that is "
+    "a design question, not a palette one.",
+]
+
+
+def palette_lines(cave, key=None):
+    """every palette entry the look changes, and what draws it: how many tiles, how many placements"""
+    out = []
+    draws = collections.defaultdict(lambda: [0, 0])
+    for t in range(cave.n):
+        for r, w in cave.rows[t].items():
+            if r >= 7:
+                draws[r][0] += 1
+                draws[r][1] += w
+    for r, ch in sorted(palette_touch(cave, key).items()):
+        out.append("row %d (drawn by %d tiles, %d weighted placements):" % (r, draws[r][0], draws[r][1]))
+        out.append("    " + "  ".join("%d %s %02x%02x%02x->%02x%02x%02x" % ((i, role.replace(" ", "")) + tuple(a) + tuple(b))
+                                     for i, a, b, role in ch))
+    return out
 
 
 def write_draft(outdir):
@@ -972,21 +1432,61 @@ def write_draft(outdir):
         for r in range(8, 13):
             write_pal(os.path.join(d, "palettes_proposed", "%02d.pal" % r), pp[r])
         info[ts] = groups(cave, new, what)
-        made.append((cave, new, what, pp))
+        made.append((cave, new, what, pp, ts))
+    caves = {}
+    for key in DRAFTED_E2:
+        ts = key.split("/")[0]
+        cave = caves.setdefault(ts, Cave(ts))
+        look = LOOKS[key]
+        new, what = redraw(cave, key)
+        pp = palettes(cave, True, key)
+        d = os.path.join(outdir, key.replace("/", "_"))
+        os.makedirs(os.path.join(d, "palettes_proposed"), exist_ok=True)
+        if not look.get("base"):
+            tiles_png(cave, new, pp[look.get("home", 8)]).save(os.path.join(d, "tiles.png"))
+        for r in range(7, 13):
+            write_pal(os.path.join(d, "palettes_proposed", "%02d.pal" % r), pp[r])
+        info[key] = groups(cave, new, what, key)
+        made.append((cave, new, what, pp, key))
     json.dump(dict(ticket="T-438 batch E", status="DRAFT -- not in the engine",
-                   proposal=[{k: v for k, v in p.items()} for p in PROPOSAL], drafted=info),
+                   proposal=[{k: v for k, v in p.items()} for p in PROPOSAL], drafted=info,
+                   other_cave_per_entry=PER_ENTRY),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
     return made
+
+
+def overview_sheet(made, path):
+    """batch E2 on one page: each look's first crop, today beside the draft, at 1x"""
+    f, F = font(13), font(20)
+    tiles = []
+    for cave, new, what, pp, key in made:
+        if key not in DRAFTED_E2:
+            continue
+        name, x0, y0, w, h, _ = CROPS[key][0]
+        w, h = min(w, 24), min(h, 16)
+        a = render(cave, name, box=(x0, y0, w, h))
+        b = render(cave, name, tiles=new, pals=pp, box=(x0, y0, w, h))
+        look = LOOKS[key]
+        tiles.append(_label(_row([_label(a, "today", f), _label(b, "draft", f)]), "%s -- %s\n%s" % (
+            look["name"], look["motif"], name), font(14)))
+    rows = [_row(tiles[k:k + 2], gap=24) for k in range(0, len(tiles), 2)]
+    sheet = _col([_title("T-438 batch E2 DRAFT -- the remaining caves (not in the engine)\nUMBRAL ASCENT, OTHER CAVE and "
+                         "STILLFALL are palette splits over their base's tiles; TANOBY (batch G) and DOLDRUM CAVE are "
+                         "not here", F, max(r.width for r in rows))] + rows, gap=18)
+    sheet.save(path)
+    return path
 
 
 def sheets(made, outdir):
     os.makedirs(outdir, exist_ok=True)
     out = [proposal_sheet(os.path.join(outdir, "t438e_proposal.png"))]
-    for cave, new, what, pp in made:
-        s = SHORT[cave.ts]
-        out.append(tiles_sheet(cave, new, what, os.path.join(outdir, "t438e_%s_tiles.png" % s)))
-        for k, crop in enumerate(CROPS[cave.ts], 1):
-            out.append(map_sheet(cave, new, pp, crop, os.path.join(outdir, "t438e_%s_%d.png" % (s, k))))
+    for cave, new, what, pp, key in made:
+        s = SHORT[key]
+        pre = "t438e" if key in DRAFTED else "t438e2"
+        out.append(tiles_sheet(cave, new, what, os.path.join(outdir, "%s_%s_tiles.png" % (pre, s)), key))
+        for k, crop in enumerate(CROPS[key][:3 if key in DRAFTED else 2], 1):
+            out.append(map_sheet(cave, new, pp, crop, os.path.join(outdir, "%s_%s_%d.png" % (pre, s, k)), key))
+    out.append(overview_sheet(made, os.path.join(outdir, "t438e2_overview.png")))
     return out
 
 
@@ -999,19 +1499,30 @@ def report():
             print("      %-16s %-36s %s" % pl)
         print("      look:  " + "\n             ".join(_wrap(p["look"], 100)))
         print("      split: " + "\n             ".join(_wrap(p["split"], 100)))
-    for ts in DRAFTED:
-        cave = Cave(ts)
-        new, what = redraw(cave)
+    caves = {}
+    for key in DRAFTED + DRAFTED_E2:
+        ts = key.split("/")[0]
+        cave = caves.setdefault(ts, Cave(ts))
+        look = LOOKS[key]
+        new, what = redraw(cave, key)
         changed = sum(1 for t in range(cave.n) if new[t] != cave.tiles[t])
-        touch = palette_touch(cave)
-        print("\n  %s (%s): %d of %d tiles redrawn; %d palette entries proposed in rows %s; maps: %d" % (
-            LOOKS[ts]["name"], ts, changed, cave.n, sum(len(v) for v in touch.values()), sorted(touch),
-            len(cave.maps)))
-        if COMPROMISES.get(ts):
+        touch = palette_touch(cave, key)
+        print("\n  %s (%s)%s: %s%d palette entries proposed in rows %s; maps: %d" % (
+            look["name"], key, " APPROVED 2026-10-23" if key in DRAFTED else " batch E2, awaiting the user",
+            "a palette split over %s's tiles; " % LOOKS[look["base"]]["name"] if look.get("base") else
+            "%d of %d tiles redrawn; " % (changed, cave.n), sum(len(v) for v in touch.values()), sorted(touch),
+            len(split_maps(cave, key)) if look.get("base") else len(cave.maps)))
+        if key in DRAFTED_E2:
+            for l in palette_lines(cave, key):
+                print("      " + l)
+        if COMPROMISES.get(ts) and not look.get("base"):
             print("      accent shown in another row's colour on a few placements: %s" % COMPROMISES[ts])
         moved = [t for t in range(cave.n) if any((a == 0) != (b == 0) for a, b in zip(new[t], cave.tiles[t]))]
         print("      footprint: %s" % ("every tile keeps its transparent pixels" if not moved else
                                        "!! tiles %s change their footprint" % moved))
+    print("\n  OTHER CAVE, a light per entry (described, not built):")
+    for l in PER_ENTRY:
+        print("      " + "\n        ".join(_wrap(l, 108)))
 
 
 def main():
@@ -1021,6 +1532,8 @@ def main():
               "palettes into %s{%s}.)" % (SEC, ",".join(DRAFTED)))
         return 0
     if WRITE:
+        #  only the three the user approved (2026-10-23). Batch E2's eight wait on the user, and its three palette
+        #  splits need a Tileset header, a palettes table and the layouts pointed at it -- engine work, not a write.
         for ts in DRAFTED:
             cave = Cave(ts)
             new, what = redraw(cave)
@@ -1029,6 +1542,7 @@ def main():
             for r in range(8, 13):
                 write_pal(os.path.join(cave.dir, "palettes/%02d.pal" % r), pp[r])
             print("  wrote %s: %d tiles, palettes 8..12" % (ts, len(what)))
+        print("  not written: batch E2 (%s) -- still a draft" % ", ".join(DRAFTED_E2))
         return 0
     if DRAFT is not None:
         made = write_draft(DRAFT)
