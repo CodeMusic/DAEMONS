@@ -479,12 +479,12 @@ for vanilla, ours in sorted(pairs.items()):
                 #  DuplicateDeoxysTiles copies over the top (src/decompress.c); the top is the Index's. Since the
                 #  user's 2026-10-23 follow-up a foe battles in that bottom half too, so CONTENT's front carries its
                 #  edition's shape below, ALL EDGES (proteus_front_attack.png, through the front's own palette, as
-                #  tools/genproteus.py draws it); its back, of which no edged drawing exists, is the same drawing
-                #  twice. CONTEXT's _def sheets carry its shell below and are tools/genproteus.py's.
-                below = grid
-                if kind == "front":
-                    below, _ = place_rich(os.path.join(ROOT, "gfx/daemons/proteus_front_attack.png"), TYPE_COLOR[t],
-                                          shared=palette)
+                #  tools/genproteus.py draws it); its back carries ALL EDGES from behind below (proteus_back_attack.png,
+                #  the user's 2026-10-23 ask), what an owned CONTENT PROTEUS shows. CONTEXT's _def sheets carry its
+                #  shell below and are tools/genproteus.py's.
+                edged = "proteus_front_attack.png" if kind == "front" else "proteus_back_attack.png"
+                below, _ = place_rich(os.path.join(ROOT, "gfx/daemons", edged), TYPE_COLOR[t],
+                                      shared=palette if kind == "front" else front_pal)
                 write_png4(os.path.join(outdir, kind + ".png"), grid + [r[:] for r in below], palette, SIZE, 2 * SIZE)
             else:
                 write_png4(os.path.join(outdir, kind + ".png"), grid, palette)

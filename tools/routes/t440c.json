@@ -1,0 +1,13 @@
+{
+ "rom": "debug",
+ "about": "T-440's edged back: an owned CONTENT PROTEUS battles showing ALL EDGES from behind (deoxys/back.png's bottom half, gfx/daemons/proteus_back_attack.png). Run against CONTENT's debug build; the same route from a CONTEXT root shows the shell's back.",
+ "stops": [
+  {"stop": "the DEBUG build, continued", "steps": ["load debug", "continue"]},
+  {"stop": "an owned PROTEUS leads into a wild battle: its back", "steps": [
+   "goto Route22 15 9", "mon 0 species SPECIES_DEOXYS", "wait 30",
+   "wild keep", "wait 60", "shot the owned PROTEUS from behind",
+   "press A", "wait 40", "shot the move menu, PROTEUS from behind",
+   "press B", "win", "wait 120",
+   "mon 0 species back", "shot after, party put back"]}
+ ]
+}

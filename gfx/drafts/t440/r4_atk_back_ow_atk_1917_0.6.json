@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t440/r4_atk_back_ow_atk_1917_0.6",
+ "prompt": "pure white background, pixel art game sprite of a lean hooded creature with its hood thrown back from a bare angular head, both long arms raised high ending in sharp blades, a flared cloak below, rear view, seen from directly behind, facing away from the viewer, back of the head, the hood hanging down its back, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text",
+ "negative": "face, eyes, mouth, front view, facing the viewer, side view, human, person, humanoid, grey background, colored background, floor, ground, pedestal, base, frame, box, drop shadow, shadow, text, letters, watermark, multiple creatures, scenery, photorealistic, blurry, cropped",
+ "seed": 1917,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "gfx/drafts/t440/ow_atk.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-23 14:24:39"
+}

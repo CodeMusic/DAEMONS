@@ -22,8 +22,9 @@ WHAT THIS WRITES
                               (gfx/daemons/proteus_front_attack.png) -- the half a foe PROTEUS battles in since the
                               user's follow-up (2026-10-23: each edition's own shape, matching the overworld) and the
                               half an owned one shows. gbasprite.py writes the same file the same way.
-  back.png                    64x128: the hooded back twice -- no edged back has been drawn (an owned CONTENT PROTEUS
-                              shows it from behind in battle).
+  back.png                    64x128: the hooded back on top, and ALL EDGES from behind below (gfx/daemons/
+                              proteus_back_attack.png, drawn at 512 on the sprite server, gfx/drafts/t440/make4.sh) --
+                              what an owned CONTENT PROTEUS shows in battle. gbasprite.py writes it the same way.
   front_def.png, back_def.png 64x128: the hooded PROTEUS on top, and CONTEXT's SHELL below -- the hood drawn shut and
                               curled like a cocoon, redrawn at 512 from T-439's own deoxys_d frame (gfx/drafts/t440/
                               make2.sh; the picks are gfx/daemons/proteus_front_defense.png and _back_defense.png).
@@ -64,7 +65,8 @@ def views():
     shell_f, _ = G.place_rich(os.path.join(DAEMONS, "proteus_front_defense.png"), t, shared=pal)
     shell_b, _ = G.place_rich(os.path.join(DAEMONS, "proteus_back_defense.png"), t, shared=pal)
     edges_f, _ = G.place_rich(os.path.join(DAEMONS, "proteus_front_attack.png"), t, shared=pal)
-    return pal, dict(front=front, back=back, shell_f=shell_f, shell_b=shell_b, edges_f=edges_f)
+    edges_b, _ = G.place_rich(os.path.join(DAEMONS, "proteus_back_attack.png"), t, shared=pal)
+    return pal, dict(front=front, back=back, shell_f=shell_f, shell_b=shell_b, edges_f=edges_f, edges_b=edges_b)
 
 
 def icon(grid, pal):
@@ -96,7 +98,7 @@ def files():
     ipal = G.icon_palettes()[ICON_PALETTE]
     return pal, ipal, {
         "front.png": (stack(v["front"], v["edges_f"]), pal, 64, 128),
-        "back.png": (stack(v["back"], v["back"]), pal, 64, 128),
+        "back.png": (stack(v["back"], v["edges_b"]), pal, 64, 128),
         "front_def.png": (stack(v["front"], v["shell_f"]), pal, 64, 128),
         "back_def.png": (stack(v["back"], v["shell_b"]), pal, 64, 128),
         "icon_attack.png": (icon(v["edges_f"], pal), ipal, 32, 64),
