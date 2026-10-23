@@ -163,3 +163,141 @@ v11.309.6 T-439, T-440, T-442: the cast in the game; PROTEUS's art; nobody black
 v11.309.6 T-439, T-440, T-442: the cast in the game; PROTEUS's art; nobody black after a banner
 
 ![23Oct2026 - T439 - the cast built - 27](23Oct2026%20-%20T439%20-%20the%20cast%20built%20-%2027.png)
+
+### 23Oct2026 - T438 - the ground built - 28
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 28](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2028.png)
+
+### 23Oct2026 - T438 - the ground built - 29
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 29](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2029.png)
+
+### 23Oct2026 - T438 - the ground built - 30
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 30](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2030.png)
+
+### 23Oct2026 - T438 - the ground built - 31
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 31](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2031.png)
+
+### 23Oct2026 - T438 - the ground built - 32
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 32](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2032.png)
+
+### 23Oct2026 - T438 - the ground built - 33
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 33](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2033.png)
+
+### 23Oct2026 - T438 - the ground built - 34
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 34](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2034.png)
+
+### 23Oct2026 - T438 - the ground built - 35
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 35](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2035.png)
+
+### 23Oct2026 - T438 - the ground built - 36
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 36](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2036.png)
+
+### 23Oct2026 - T438 - the ground built - 37
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 37](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2037.png)
+
+### 23Oct2026 - T438 - the ground built - 38
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 38](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2038.png)
+
+### 23Oct2026 - T438 - the ground built - 39
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 39](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2039.png)
+
+### 23Oct2026 - T438 - the ground built - 40
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 40](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2040.png)
+
+### 23Oct2026 - T438 - the ground built - 41
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 41](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2041.png)
+
+### 23Oct2026 - T438 - the ground built - 42
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 42](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2042.png)
+
+### 23Oct2026 - T438 - the ground built - 43
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 43](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2043.png)
+
+### 23Oct2026 - T438 - the ground built - 44
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 44](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2044.png)
+
+### 23Oct2026 - T438 - the ground built - 45
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 45](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2045.png)
+
+### 23Oct2026 - T438 - the ground built - 46
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 46](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2046.png)
+
+### 23Oct2026 - T438 - the ground built - 47
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 47](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2047.png)
+
+### 23Oct2026 - T438 - the ground built - 48
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 48](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2048.png)
+
+### 23Oct2026 - T438 - the ground built - 49
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 49](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2049.png)
+
+### 23Oct2026 - T438 - the ground built - 50
+
+v11.309.7 T-438 batch C, T-443, T-444: the ground in the game; walked-on grass in winter, grove moods and the fade; the Fame Checker portraits
+
+![23Oct2026 - T438 - the ground built - 50](23Oct2026%20-%20T438%20-%20the%20ground%20built%20-%2050.png)
