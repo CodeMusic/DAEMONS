@@ -1,6 +1,6 @@
 {
  "mapsec": "MAPSEC_ROCK_TUNNEL",
  "name": "THE BLACKOUT",
- "from": "RockTunnel_B1F (2,0)",
- "num_tiles": 87
+ "from": "painted, seed 4451, denoise 0.50",
+ "num_tiles": 417
 }

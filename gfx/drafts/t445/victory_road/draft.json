@@ -1,6 +1,6 @@
 {
  "mapsec": "MAPSEC_KANTO_VICTORY_ROAD",
  "name": "UMBRAL ASCENT",
- "from": "VictoryRoad_1F (1,8)",
- "num_tiles": 89
+ "from": "painted, seed 4452, denoise 0.50",
+ "num_tiles": 395
 }

@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/power_plant/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, interior of an old power plant still running, machine housings and steel floor plates, small bright green status lights on every machine, moss growing along the seams of the floor, cool grey-blue metal and plant green, light from a high window, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated",
+ "seed": 4452,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/power_plant/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 43.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-23 15:52:55"
+}

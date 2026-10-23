@@ -1,6 +1,6 @@
 {
  "mapsec": "MAPSEC_MT_MOON",
  "name": "DEADSTACK",
- "from": "MtMoon_B2F (8,6)",
- "num_tiles": 79
+ "from": "painted, seed 4452, denoise 0.50",
+ "num_tiles": 402
 }

@@ -1,6 +1,6 @@
 {
  "mapsec": "MAPSEC_POWER_PLANT",
  "name": "KEEPALIVE PLANT",
- "from": "PowerPlant (0,8)",
- "num_tiles": 103
+ "from": "painted, seed 4452, denoise 0.50",
+ "num_tiles": 414
 }

@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/seafoam_islands/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, a cave mouth in icy rocks by the sea, the ice covered with a powdery blue-green frosted bloom, chalky pale tops, clear deep blue-green faces, sea and sky, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated",
+ "seed": 4452,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/seafoam_islands/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 42.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-23 15:53:41"
+}

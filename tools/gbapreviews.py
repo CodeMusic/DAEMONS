@@ -5,6 +5,11 @@
                                                          #   the game prints on it, and which T-438 batch E covered
     python3 tools/gbapreviews.py --draft [DIR]           # draft the batch E caves' previews into DIR (gfx/drafts/t445/),
                                                          #   and the contact sheets; --sheets DIR puts the sheets elsewhere
+    python3 tools/gbapreviews.py --paint [CAVE ...]      # PAINT each cave's mouth on the sprite server (spriteforge.py,
+                                                         #   roverbyteseer:8008): gfx/drafts/t445/<cave>/painted.png and
+                                                         #   its record, from a start image graded out of vanilla's
+                                                         #   picture in the cave's colours (painted_init.png)
+    python3 tools/gbapreviews.py --draft --top-down      # the old top-down drafts, even where a painting exists
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
                                                          #   Without --approved it refuses: nothing is approved yet.
@@ -31,6 +36,23 @@ small), or the one VIEW names -- and reduced
 to 15 colours in palette 13 (index 0 is left as vanilla's: BG0's colour 0 is transparent). Palette 14 and every tile
 of the letterbox and banner are vanilla's, byte for byte, so the name window looks exactly as it did.
 
+PAINTED, NOT TOP-DOWN (the user, 2026-10-23: "painted entrances, not top-down -- the sprite server paints each
+cave's mouth at 512 from these views, in each cave's colours"). Where gfx/drafts/t445/<cave>/painted.png exists it is
+the picture: --paint makes it. Its start image is vanilla's own painting (for the composition -- a mouth in a slope,
+a sea or a sky beyond), every region of it graded through the cave's colours (PAINT's ramps, by luminance: rock,
+sky, foliage, water), and the top-down view's light laid faintly into the rock so the cave's motif is in the paint
+(the stack's courses, the outage's columns). The server repaints that at 1088x512 (its wide size, 512 high) with
+the cave's prompt, image to image, at a denoise low enough that vanilla's composition survives. The painting is
+then fitted to 240x112 and reduced as the top-down view was: 15 colours, under 450 tiles (vanilla's banner is 7
+tiles, the picture at most 420, so a painting always fits).
+
+OTHER CAVE'S FOUR LIGHTS. Its preview is ONE set of tiles and FOUR palettes 13: the teal painting's colours that
+are its crystal (teal) or its rock (mauve) are moved onto each light's own ramps (the tileset's palettes_other_1..3,
+by luminance), the sky and sea kept. --draft writes light1..3.pal beside tiles.png and a preview per light. The
+engine does not use them yet: MapPreview_LoadGfx would have to lay the light's palette over palette 13 -- and the
+preview runs BEFORE the map's ON_TRANSITION steps VAR_OTHER_CAVE_LIGHT, so the light it shows is the coming
+visit's, VarGet(VAR_OTHER_CAVE_LIGHT) % 4, not fieldmap.c's (visit - 1) % 4.
+
 WHAT IS NOT DRAFTED: DOLDRUM CAVE (cerulean_cave -- its look waits on the user, T-251) and the TANOBY chambers
 (monean_chamber -- batch G), and the previews that are not caves (forests, the tower, the mansion, SILPH, the hideout
 and the warehouse, the SAFARI): T-445 is the caves, and those wait on their own batches. The report lists them all.
@@ -56,6 +78,8 @@ import fontwidth
 ap = argparse.ArgumentParser()
 ap.add_argument("--draft", nargs="?", const=DRAFT_DEFAULT)
 ap.add_argument("--sheets")
+ap.add_argument("--paint", nargs="*")
+ap.add_argument("--top-down", action="store_true", dest="top_down")
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 A = ap.parse_args()
@@ -92,6 +116,86 @@ NOT_DRAFTED = {
 VIEW = {
 }
 WIN_W, WIN_H = 15, 7          # metatiles in a 240x112 picture at 1x
+LIGHT_NAMES = ["teal", "AMBER in slate", "CHRYSOPRASE in brown jasper", "ROSE QUARTZ in green schist"]
+
+
+# the painted previews (T-445, the user's answer): each cave's colours as ramps, dark to light, that vanilla's
+# picture is graded through by region (rock takes the light parts too unless "white" has a ramp of its own, as
+# SMOULDER's steam and snow do, gone to ash); "motif" lays the cave's one idea into it (MOTIFS);
+# "skygrad" lays the sky as a top-to-bottom gradient instead (dusk, night, ash haze); "tex" is how strongly the
+# top-down view's light is laid into the rock. "prompt" is the cave's, "seed" and "denoise" the painting picked.
+PAINT_SIZE = (1088, 512)
+PAINT_STYLE = "pixel art, 16-bit game background, wide scene, %s, soft clean pixel shading"
+PAINT_NEG = ("text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, "
+             "blurry, photo, 3d render, ui, slime, neon, oversaturated")
+STACK = [(24, 40, 32), (40, 56, 48), (64, 88, 72), (96, 120, 104), (128, 152, 128), (168, 184, 160), (200, 208, 184)]
+ASH = [(64, 52, 40), (96, 82, 64), (140, 124, 96)]
+PAINT = {
+    "mt_moon": dict(rock=STACK, motif=["courses"], sky=[(176, 172, 150), (226, 220, 196)], skygrad=1, leaf=ASH,
+                    seed=4452, denoise=0.5,
+                    prompt="a dark cave mouth in a rocky hill, the rock is layered thin slabs like stacked old circuit "
+                           "boards and drive casings, thin tarnished gold connector strips along some layers, muted "
+                           "sage green and dull solder mask green, ash brown dusty ground, pale hazy sky"),
+    "lost_cave": dict(rock=STACK, motif=["courses"], leaf=ASH, seed=4451, denoise=0.5,
+                      prompt="a dark cave mouth in a slope of layered slab rock by a calm sea, the rock layered like "
+                             "stacked old circuit boards, muted sage green and solder mask green, ash brown ground, "
+                             "pale sky over the sea"),
+    "victory_road": dict(rock=[(40, 32, 72), (64, 56, 104), (96, 80, 136), (128, 112, 168), (160, 144, 192),
+                               (192, 184, 216)],
+                         sky=[(72, 56, 120), (214, 150, 160)], skygrad=1,
+                         leaf=[(20, 18, 40), (40, 36, 72), (70, 62, 108)], seed=4452, denoise=0.5,
+                         prompt="a cave entrance in a rocky cliff framed by a tall ruined stone gateway with pillars, "
+                                "pine trees in silhouette, cold violet dusk, lavender and deep violet rock in stacked "
+                                "layers, a rose glow low on the horizon, evening sky"),
+    "digletts_cave": dict(rock=[(32, 24, 32), (64, 40, 32), (96, 72, 48), (136, 104, 64), (168, 128, 80),
+                                (200, 152, 104), (224, 192, 136)],
+                          leaf=[(48, 56, 24), (88, 96, 40), (136, 136, 64)], motif=["cable"],
+                          water=[(14, 10, 14), (40, 28, 28)], seed=4453, denoise=0.5,
+                          prompt="a burrow entrance under a ridge of packed earth, a bright red cable with a dark core "
+                                 "running along the top edge of the earth bank, umber and ochre earth, warm brown tree "
+                                 "trunks behind, ferns in front"),
+    "rock_tunnel": dict(rock=[(12, 12, 30), (32, 32, 64), (48, 48, 88), (64, 64, 112), (88, 88, 136), (112, 112, 160),
+                              (136, 144, 184)],
+                        sky=[(10, 12, 36), (40, 48, 96)], skygrad=1,
+                        leaf=[(12, 26, 34), (24, 46, 56), (40, 64, 76)], motif=["columns"], seed=4451, denoise=0.5,
+                        prompt="a cave mouth at the foot of a cliff of tall basalt columns at night, deep indigo and "
+                               "blue-black, cold moonless night sky, faint blue rim light, dark shrubs, no light "
+                               "inside the cave"),
+    "altering_cave": dict(rock=[(60, 46, 56), (108, 88, 100), (128, 106, 116), (148, 124, 132), (166, 142, 148),
+                                (184, 160, 164), (214, 196, 198)], motif=["crystals"], seed=4452, denoise=0.5,
+                          prompt="a cave mouth in mauve rose-grey rock by the sea, pale teal mineral crystals growing "
+                                 "as columns out of the rock, glinting teal crystal clusters, blue sea and sky"),
+    "power_plant": dict(rock=[(20, 26, 36), (48, 56, 72), (88, 104, 120), (120, 136, 152), (160, 176, 200),
+                              (200, 212, 204)],
+                        sky=[(88, 104, 120), (200, 212, 204)], leaf=[(40, 80, 40), (80, 128, 72), (128, 200, 104)],
+                        motif=["lights"], seed=4452, denoise=0.5,
+                        prompt="interior of an old power plant still running, machine housings and steel floor "
+                               "plates, small bright green status lights on every machine, moss growing along the "
+                               "seams of the floor, cool grey-blue metal and plant green, light from a high window"),
+    "seafoam_islands": dict(rock=[(40, 72, 104), (64, 120, 152), (88, 152, 176), (136, 184, 192), (184, 208, 208),
+                                  (236, 244, 236)],
+                            leaf=[(48, 104, 112), (88, 152, 160), (150, 200, 200)], seed=4452, denoise=0.5,
+                            prompt="a cave mouth in icy rocks by the sea, the ice covered with a powdery blue-green "
+                                   "frosted bloom, chalky pale tops, clear deep blue-green faces, sea and sky"),
+    "icefall_cave": dict(rock=[(24, 48, 88), (32, 80, 136), (48, 112, 168), (80, 152, 200), (128, 184, 216),
+                               (176, 224, 240), (236, 250, 250)],
+                         leaf=[(40, 88, 120), (80, 140, 180), (150, 200, 220)], seed=4451, denoise=0.5,
+                         prompt="a cave mouth beside a frozen waterfall, the waterfall turned to clear glassy ice "
+                                "hanging still down the cliff, cold blue ice, pale winter sky, frosted shrubs"),
+    "mt_ember": dict(rock=[(20, 14, 14), (40, 30, 30), (60, 46, 44), (84, 66, 60), (116, 96, 84), (170, 152, 134)],
+                     white=[(150, 140, 130), (214, 204, 190)], motif=["cracks"],
+                     water=[(8, 4, 4), (28, 18, 18)], sky=[(150, 132, 120), (214, 198, 170)], skygrad=1,
+                     seed=4452, denoise=0.45,
+                     prompt="a cave mouth in black cinder rock, cracks in the rock glowing low orange from inside "
+                            "like banked coals, no flames, white steam rising, grey ash drifts, a smouldering volcano "
+                            "behind under an ash haze"),
+    "dotted_hole": dict(rock=[(72, 56, 48), (120, 96, 72), (160, 128, 96), (192, 168, 128), (216, 192, 160),
+                              (240, 224, 192)],
+                        leaf=[(80, 96, 48), (120, 136, 64), (168, 176, 96)], motif=["braille"], seed=4451, denoise=0.42,
+                        prompt="a cave mouth in a sandstone mound framed by two pale stone pillars, the stone covered "
+                               "with raised dots arranged in neat braille cells of six, warm sandstone and shadow, "
+                               "clear sky"),
+}
 
 
 # ================================================================== reading the engine
@@ -199,6 +303,319 @@ def draw_name(im, name, pal):
         x += w[b]
 
 
+# ================================================================== painting (T-445: painted entrances)
+def _lum(c):
+    return 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
+
+
+def _region(c):
+    """what a pixel of vanilla's painting is: rock (and the ground), white (a lit rock or a cloud), leaf, sky, water"""
+    import colorsys
+    h, sat, v = colorsys.rgb_to_hsv(*[x / 255 for x in c])
+    h *= 360
+    if sat < 0.12 and v > 0.85:
+        return "white"
+    if 75 <= h <= 170 and sat > 0.2:
+        return "leaf"
+    if 180 <= h <= 250 and sat > 0.15:
+        return "sky" if v > 0.75 else "water"
+    return "rock"
+
+
+def _ramp(r, t):
+    t = min(max(t, 0.0), 1.0) * (len(r) - 1)
+    i = min(int(t), len(r) - 2)
+    f = t - i
+    return tuple(int(r[i][k] + (r[i + 1][k] - r[i][k]) * f) for k in range(3))
+
+
+def paint_init(folder, sec):
+    """the start image: vanilla's picture (rows 3..16) graded through the cave's ramps, the top-down view's light laid
+    faintly into the rock, at the painting's size"""
+    c = PAINT[folder]
+    vt, vm, vpal = vanilla(folder)
+    v = compose(vt, vm, vpal).crop((0, 24, 240, 136))
+    td, _ = picture(folder, sec, painted=False)
+    px, dp = v.load(), td.convert("RGB").load()
+    W, H = v.size
+    lums = collections.defaultdict(list)
+    for y in range(H):
+        for x in range(W):
+            lums[_region(px[x, y])].append(_lum(px[x, y]))
+    rng = {k: (min(l), max(l)) for k, l in lums.items()}
+    rock_lo, rock_hi = rng["rock"][0], max(rng["rock"][1], rng.get("white", (0, 0))[1])
+    dl = [_lum(dp[x, y]) for y in range(H) for x in range(W)]
+    mu = sum(dl) / len(dl)
+    sd = (sum((l - mu) ** 2 for l in dl) / len(dl)) ** 0.5 or 1
+    out = v.copy()
+    op = out.load()
+    for y in range(H):
+        for x in range(W):
+            p = px[x, y]
+            k = _region(p)
+            if k == "white":
+                if c.get("white") == "keep":
+                    continue
+                if not isinstance(c.get("white"), list):
+                    k = "rock"
+            r = c.get(k)
+            if not r:
+                continue
+            if k == "sky" and c.get("skygrad"):
+                op[x, y] = _ramp(r, y / H)
+                continue
+            lo, hi = (rock_lo, rock_hi) if k == "rock" else rng[k]
+            if k == "white":
+                lo = min(lo, 200)
+            t = (_lum(p) - lo) / max(1, hi - lo)
+            if k == "rock":
+                t += c.get("tex", 0.22) * (_lum(dp[x, y]) - mu) / sd / 3
+            op[x, y] = _ramp(r, t)
+    for m in c.get("motif", []):
+        MOTIFS[m](out, v, c)
+    return out.resize(PAINT_SIZE, Image.BICUBIC)
+
+
+#  the cave's one idea, laid into the start image at 2px so it survives the painting (the server's own pixel is
+#  about 8px at 1088, near 2px here): what the top-down view says in tiles, said where the painting can keep it
+def _rockmask(v, ymin=0):
+    px = v.load()
+    return lambda x, y: (0 <= x < 240 and ymin <= y < 112 and _region(px[x, y]) in ("rock", "white")
+                         and _lum(px[x, y]) > 80 and px[x, y][2] <= px[x, y][0] + 6)     # not a pale sky
+
+
+def _shade(c, f):
+    return tuple(max(0, min(255, int(v * f))) for v in c)
+
+
+def motif_courses(out, v, c):
+    """THE STACK: thin courses of slab, every other a shade darker, a joint now and then, a gold connector strip"""
+    import random
+    rnd, op, rock = random.Random(445), out.load(), _rockmask(v)
+    for x in range(240):
+        off = (x // 22) * 3 % 7
+        for y in range(112):
+            if not rock(x, y):
+                continue
+            ph = (y + off) % 7
+            band = ((y + off) // 7) % 2
+            if ph == 0:
+                op[x, y] = _shade(op[x, y], 0.55)
+            elif ph == 1:
+                gold = (x // 11 * 7 + (y + off) // 7 * 13) % 9 == 0
+                op[x, y] = (196, 164, 76) if gold else _shade(op[x, y], 1.18)
+            elif band:
+                op[x, y] = _shade(op[x, y], 0.9)
+        if x % 22 == 0:
+            for y in range(112):
+                if rock(x, y) and rnd.random() < 0.5:
+                    op[x, y] = _shade(op[x, y], 0.6)
+
+
+def motif_cable(out, v, c):
+    """THE LINE: the buried cable along the top of the bank, a red sheath over a dark core"""
+    px, op = v.load(), out.load()
+    for x in range(240):
+        for y in range(14, 80):
+            if _region(px[x, y]) == "leaf":
+                for k, col in enumerate([(220, 110, 80), (192, 80, 56), (150, 56, 40), (48, 24, 24)]):
+                    if y + 2 + k < 112:
+                        op[x, y + 2 + k] = col
+                break
+
+
+def motif_columns(out, v, c):
+    """THE OUTAGE: basalt cut in tall columns, a lit left edge and a dark right one; the mouth gone fully black"""
+    px, op, rock = v.load(), out.load(), _rockmask(v)
+    for y in range(112):
+        for x in range(240):
+            if _region(px[x, y]) in ("rock", "water") and _lum(px[x, y]) < 80 and y > 50:
+                op[x, y] = (4, 4, 14)
+            elif rock(x, y):
+                ph = (x + (y // 40) * 4) % 10
+                if ph in (0, 1):
+                    op[x, y] = _shade(op[x, y], 1.35)
+                elif ph in (8, 9):
+                    op[x, y] = _shade(op[x, y], 0.5)
+
+
+def motif_crystals(out, v, c):
+    """OTHER CAVE: teal mineral columns grown out of the mauve rock"""
+    import random
+    rnd, op, rock = random.Random(4451), out.load(), _rockmask(v, 30)
+    d = ImageDraw.Draw(out)
+    placed = 0
+    while placed < 14:
+        x, y = rnd.randrange(130, 236), rnd.randrange(34, 104)
+        if not rock(x, y):
+            continue
+        placed += 1
+        for k in range(rnd.randint(2, 3)):
+            cx, h, w = x + k * 5 - 4, rnd.randint(8, 18), 4
+            top = y - h
+            d.polygon([(cx, y), (cx, top + 2), (cx + w // 2, top), (cx + w, top + 2), (cx + w, y)], fill=(104, 160, 152))
+            d.rectangle((cx, top + 2, cx + 1, y), fill=(168, 216, 208))
+            d.line((cx + w, top + 2, cx + w, y), fill=(40, 70, 72))
+
+
+def motif_cracks(out, v, c):
+    """EMBER UNDER ASH: cracks that glow low orange from inside, never flame"""
+    import random
+    rnd, op, rock = random.Random(4451), out.load(), _rockmask(v, 20)
+    px = v.load()
+    n = 0
+    while n < 16:
+        x, y = rnd.randrange(0, 240), rnd.randrange(20, 112)
+        if not (rock(x, y) or _region(px[x, y]) == "rock") or _lum(op[x, y]) > 70:      # the near rock, not the far
+            continue
+        n += 1
+        for _ in range(rnd.randint(14, 30)):
+            for dx, col in ((-1, (150, 56, 28)), (0, (252, 184, 72)), (1, (236, 128, 40)), (2, (150, 56, 28))):
+                if 0 <= x + dx < 240 and 0 <= y < 112:
+                    op[x + dx, y] = col
+            x += rnd.choice((-1, 0, 1))
+            y += rnd.choice((0, 1, 1))
+            if not (0 <= x < 239 and y < 111):
+                break
+
+
+def motif_braille(out, v, c):
+    """BRAILLE: raised dots in cells of six over the stone, writing for the hand"""
+    import random
+    rnd, op, rock = random.Random(4451), out.load(), _rockmask(v)
+    for cy in range(4, 104, 20):
+        for cx in range(4, 232, 15):
+            for r in range(3):
+                for q in range(2):
+                    if rnd.random() < 0.45:
+                        continue
+                    x, y = cx + q * 5, cy + r * 5
+                    if all(rock(x + a, y + b) for a in range(4) for b in range(4)):
+                        base = op[x + 1, y + 1]
+                        for a in range(4):
+                            for b in range(4):
+                                lit = a + b < 3
+                                op[x + a, y + b] = (250, 240, 214) if lit else _shade(base, 0.55 if a + b > 3 else 0.8)
+
+
+def motif_lights(out, v, c):
+    """STILL RUNNING: a green status light on every housing, nobody connected to see it"""
+    import random
+    rnd, op = random.Random(4451), out.load()
+    n = 0
+    while n < 22:
+        x, y = rnd.randrange(2, 236), rnd.randrange(8, 100)
+        if not (x < 110 or x > 170) or not all(30 < _lum(op[x + a, y + b]) < 150 for a in range(3) for b in range(2)):
+            continue
+        n += 1
+        for a in range(3):
+            for b in range(2):
+                op[x + a, y + b] = (200, 255, 176) if (a, b) == (0, 0) else (96, 232, 88)
+
+
+MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, columns=motif_columns, crystals=motif_crystals,
+              cracks=motif_cracks, braille=motif_braille)
+
+
+def paint(folder, sec, out_dir):
+    """--paint: the start image, then the sprite server's painting of it, with its record"""
+    import spriteforge
+    d = os.path.join(out_dir, folder)
+    os.makedirs(d, exist_ok=True)
+    init = os.path.join(d, "painted_init.png")
+    paint_init(folder, sec).save(init)
+    c = PAINT[folder]
+    p = dict(mode="i2i", out=os.path.join(d, "painted"), prompt=PAINT_STYLE % c["prompt"], negative=PAINT_NEG,
+             seed=c["seed"], steps=28, cfg=5.5, sampler="dpmpp_2m", scheduler="karras", denoise=c["denoise"],
+             stop_at=None, image=os.path.relpath(init, ROOT), size=list(PAINT_SIZE))
+    return spriteforge.run(p)
+
+
+def painted_path(folder):
+    return os.path.join(A.draft or DRAFT_DEFAULT, folder, "painted.png")
+
+
+def painted_picture(folder):
+    """the painting fitted to 240x112 (cropped to the picture's shape about its middle, then filtered down)"""
+    im = Image.open(painted_path(folder)).convert("RGB")
+    W, H = im.size
+    want = 240 / 112
+    if W / H > want:
+        w = int(H * want)
+        im = im.crop(((W - w) // 2, 0, (W - w) // 2 + w, H))
+    else:
+        h = int(W / want)
+        im = im.crop((0, (H - h) // 2, W, (H - h) // 2 + h))
+    return im.resize((240, 112), Image.LANCZOS)
+
+
+# ================================================================== OTHER CAVE's four lights
+def light_ramps():
+    """[(rock ramp, crystal ramp)] for lights 0..3: row 8 of palettes_other (teal) and palettes_other_1..3, the rock
+    its indices 1..5 and the crystal 9..15, each sorted dark to light"""
+    out = []
+    base = os.path.join(GBA, "data/tilesets/secondary/rock_tunnel")
+    for d in ("palettes_other", "palettes_other_1", "palettes_other_2", "palettes_other_3"):
+        lines = open(os.path.join(base, d, "08.pal")).read().split("\n")[3:19]
+        cols = [tuple(int(v) for v in l.split()) for l in lines]
+        out.append((sorted(cols[1:6], key=_lum), sorted(cols[9:16], key=_lum)))
+    return out
+
+
+def light_of(c):
+    """what a colour of the teal painting is: 'crystal' (teal), 'rock' (mauve) or None (sky, sea, foam: kept)"""
+    import colorsys
+    h, sat, v = colorsys.rgb_to_hsv(*[x / 255 for x in c])
+    h *= 360
+    if 150 <= h < 195 and sat > 0.12:
+        return "crystal"
+    if (h >= 280 or h < 40) and sat < 0.45:
+        return "rock"
+    if sat < 0.08 and v < 0.75:                                     # a near-grey shadow in the rock
+        return "rock"
+    return None
+
+
+def light_palettes(pal13, draft=None, van=None):
+    """palette 13 (index 0 then 15 colours) in each of the four lights; light 0 is the painting's own. A colour that
+    lies mostly where vanilla's picture has its sky and sea (draft and van: the two screens) is the open air and
+    keeps its colour in every light -- the cave's light is inside it, not over the sea"""
+    ramps = light_ramps()
+    out = [list(pal13)]
+    air = set()
+    if draft is not None:
+        dp, vp = draft.load(), van.load()
+        n, a = collections.Counter(), collections.Counter()
+        for y in range(24, 136):
+            for x in range(240):
+                c = dp[x, y]
+                n[c] += 1
+                if _region(vp[x, y]) in ("sky", "water"):
+                    a[c] += 1
+        air = {c for c in n if a[c] > 0.6 * n[c]}
+    #  where each teal colour sits on its own light-0 ramp, by luminance, so it lands at the same place on light k's
+    for k in (1, 2, 3):
+        pal = [pal13[0]]
+        for c in pal13[1:]:
+            role = None if c in air else light_of(c)
+            if role is None:
+                pal.append(c)
+                continue
+            r0, rk = ramps[0][0 if role == "rock" else 1], ramps[k][0 if role == "rock" else 1]
+            lo, hi = _lum(r0[0]), _lum(r0[-1])
+            t = (_lum(c) - lo) / max(1, hi - lo)
+            pal.append(tuple((v >> 3) << 3 for v in _ramp(rk, t)))
+        out.append(pal)
+    return out
+
+
+def write_pal(cols, path):
+    with open(path, "w", newline="\r\n") as f:
+        f.write("JASC-PAL\n0100\n%d\n" % len(cols))
+        for c in cols:
+            f.write("%d %d %d\n" % c)
+
+
 # ================================================================== drafting
 def layouts_for(folder, sec):
     out = []
@@ -243,8 +660,14 @@ def best_window(cands, ww=WIN_W, wh=WIN_H):
     return best
 
 
-def picture(folder, sec):
-    """the 240x112 RGB picture for this cave, and where it was taken"""
+def picture(folder, sec, painted=None):
+    """the 240x112 RGB picture for this cave, and where it was taken: the painting where there is one (unless
+    --top-down), else the top-down window"""
+    if painted is None:
+        painted = not A.top_down and os.path.exists(painted_path(folder))
+    if painted:
+        rec = json.load(open(painted_path(folder)[:-4] + ".json"))
+        return painted_picture(folder), "painted, seed %d, denoise %.2f" % (rec["seed"], rec["denoise"])
     cands = layouts_for(folder, sec)
     if folder in VIEW:
         v = VIEW[folder]
@@ -269,9 +692,39 @@ def picture(folder, sec):
     return crop, "%s (%d,%d) 2x" % (m, x0, y0)
 
 
-def reduce(pic, vpal):
-    """15 colours into palette 13's indices 1..15 (index 0 vanilla's: BG0 colour 0 is transparent)"""
+def _fixed(pic, cols):
+    """pic mapped onto exactly these colours, undithered"""
+    pi = Image.new("P", (1, 1))
+    flat = [v for c in cols for v in c]
+    pi.putpalette(flat + flat[:3] * (256 - len(cols)))
+    return pic.quantize(palette=pi, dither=Image.Dither.NONE)
+
+
+def keep_accents(pic, q, n=15, rounds=3):
+    """a painting's small bright accent (SMOULDER's glowing cracks, a status light, the cable) is a few hundred pixels
+    and median cut spends no colour on it; where pixels sit far from every colour chosen, the two closest colours are
+    merged and the accent takes the freed index"""
+    cols = [tuple(q.getpalette()[i * 3:i * 3 + 3]) for i in range(n)]
+    src = list(pic.getdata())
+    for _ in range(rounds):
+        d2 = lambda a, b: sum((a[k] - b[k]) ** 2 for k in range(3))
+        far = [c for c in src if min(d2(c, k) for k in cols) > 56 ** 2]
+        if len(far) < 0.002 * len(src):
+            break
+        acc = tuple(sorted(c[k] for c in far)[len(far) // 2] for k in range(3))
+        i, j = min(((i, j) for i in range(n) for j in range(i + 1, n)), key=lambda ij: d2(cols[ij[0]], cols[ij[1]]))
+        cols[i] = tuple((cols[i][k] + cols[j][k]) // 2 for k in range(3))
+        cols[j] = acc
+        q = _fixed(pic, cols)
+    return q
+
+
+def reduce(pic, vpal, accents=False):
+    """15 colours into palette 13's indices 1..15 (index 0 vanilla's: BG0 colour 0 is transparent); a painting keeps
+    its accents (keep_accents)"""
     q = pic.quantize(colors=15, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    if accents:
+        q = keep_accents(pic, q)
     qp = (q.getpalette()[:45] + [0] * 45)[:45]                      # a cave of fewer colours leaves the rest unused
     cols = [tuple(qp[i * 3:i * 3 + 3]) for i in range(15)]
     #  to the GBA's 5 bits, as the palette will hold them
@@ -289,7 +742,7 @@ def build(folder, sec):
     pic, where = picture(folder, sec)
     if pic is None:
         return None
-    idx, pal13 = reduce(pic, vpal)
+    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"))
     tiles, seen, m, tpal = [], {}, [0] * 640, []
 
     def add(t, p=14):
@@ -386,6 +839,12 @@ def main():
         print("  --write refuses without --approved: T-445's drafts have not been approved by the user.")
         return 1
     by_folder = report()
+    if A.paint is not None:
+        for folder in (A.paint or list(PAINT)):
+            key, sec, typ = by_folder[folder][0]
+            paint(folder, sec, A.draft or DRAFT_DEFAULT)
+        if not (A.draft or A.write):
+            return 0
     if not (A.draft or A.write):
         return 0
     nm = names()
@@ -406,9 +865,15 @@ def main():
         notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, BATCH_E[folder], "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
                  "palette 13: 15 colours + vanilla's 0", "palette 14, letterbox, banner: vanilla's"]
-        if folder == "altering_cave":
+        painted = where.startswith("painted")
+        lights = light_palettes(pal[:16], dra, van) if folder == "altering_cave" and painted else None
+        if lights:
+            notes += ["", "OTHER CAVE: one set of tiles, four", "palettes 13 (teal, AMBER, CHRYSOPRASE,",
+                      "ROSE QUARTZ) -- the rows below. The", "engine lays the coming visit's light",
+                      "over palette 13 (not built)."]
+        elif folder == "altering_cave":
             notes += ["", "OTHER CAVE cycles four lights;", "this preview shows one (teal).",
-                      "Following the light is engine code:", "a question for the user."]
+                      "Following the light is engine code."]
         if len(tiles) >= 450:
             notes += ["", "** TOO MANY TILES for baseBlock 0x1C2"]
         print("  %-17s %-16s %3d tiles  from %s" % (folder, nm[sec], len(tiles), where))
@@ -418,6 +883,11 @@ def main():
             tiles_png(png, pal, os.path.join(d, "tiles.png"))
             open(os.path.join(d, "tilemap.bin"), "wb").write(struct.pack("<640H", *m))
             dra.save(os.path.join(d, "preview.png"))
+            for n, lp in list(enumerate(lights or []))[1:]:
+                write_pal(lp, os.path.join(d, "light%d.pal" % n))
+                li = compose(tiles, m, lp + pal[16:32])
+                draw_name(li, nm[sec], pal)
+                li.save(os.path.join(d, "preview_light%d.png" % n))
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
         if A.write:
@@ -430,13 +900,31 @@ def main():
             open(RULES, "w").write(rules)
             print("      written %s" % d)
         rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van, draft=dra, notes=notes))
+        for n, lp in enumerate(lights or []):
+            if n == 0:
+                continue
+            li = compose(tiles, m, lp + pal[16:32])
+            draw_name(li, nm[sec], pal)
+            rows.append(dict(folder=folder, name="%s, light %d (%s)" % (nm[sec], n, LIGHT_NAMES[n]),
+                             where=where, vanilla=van, draft=li,
+                             notes=["light %d: %s" % (n, LIGHT_NAMES[n]), "the same tiles, palette 13 moved",
+                                    "onto this light's rock and crystal", "ramps (palettes_other_%d)" % n]))
     if A.draft:
         os.makedirs(sheets, exist_ok=True)
-        half = (len(rows) + 1) // 2
-        for i, part in enumerate((rows[:half], rows[half:]), 1):
-            p = sheet(part, os.path.join(sheets, "t445_previews_%d.png" % i),
-                      "T-445 DRAFT -- the cave previews, vanilla (left) and drawn from the batch E caves (right); the "
-                      "name is printed by the game, shown here in its own font. Sheet %d of 2." % i)
+        painted = any(r["where"].startswith("painted") for r in rows)
+        per = 5 if painted else (len(rows) + 1) // 2
+        parts = [rows[i:i + per] for i in range(0, len(rows), per)]
+        for i, part in enumerate(parts, 1):
+            if painted:
+                p = sheet(part, os.path.join(sheets, "t445p_%d.png" % i),
+                          "T-445 DRAFT -- the cave previews, vanilla (left) and PAINTED on the sprite server in each "
+                          "cave's colours (right); the name is the game's, in its own font. Sheet %d of %d."
+                          % (i, len(parts)))
+            else:
+                p = sheet(part, os.path.join(sheets, "t445_previews_%d.png" % i),
+                          "T-445 DRAFT -- the cave previews, vanilla (left) and drawn from the batch E caves (right); "
+                          "the name is printed by the game, shown here in its own font. Sheet %d of %d."
+                          % (i, len(parts)))
             print("  sheet -> %s" % p)
     return 0
 

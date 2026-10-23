@@ -1,6 +1,6 @@
 {
  "mapsec": "MAPSEC_ALTERING_CAVE",
  "name": "OTHER CAVE",
- "from": "SixIsland_AlteringCave (17,8)",
- "num_tiles": 79
+ "from": "painted, seed 4452, denoise 0.50",
+ "num_tiles": 376
 }
