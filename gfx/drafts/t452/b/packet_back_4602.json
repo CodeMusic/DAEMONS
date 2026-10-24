@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t452/b/packet_back_4602",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a plump round pigeon seen from behind, rear view, facing away from the viewer, back of the round head, folded wings crossed over its back, fanned tail feathers pointing at the viewer, two small feet, a white envelope corner peeking out beside its head, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "sparrow, owl, penguin, chick, duck, parrot, open wings, flying, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 4602,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 15:52:12"
+}

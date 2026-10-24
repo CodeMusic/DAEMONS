@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/b/artsai_back_i2i_4611",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a small rabbit sitting upright seen from behind, rear view, facing away from the viewer, back of the head and the backs of its long tall upright ears, a round fluffy cotton tail, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "carrot, clothes, human ears, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 4611,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "gfx/drafts/t452/b/src/artsai_back_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 16:00:05"
+}

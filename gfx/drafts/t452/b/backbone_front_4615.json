@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t452/b/backbone_front_4615",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a cute rock serpent: a chain of six big round grey boulders stacked like a spine, rising in an S curve out of a pile of rocks, the top boulder is its head with two big round cute eyes, simple round stones, no limbs, full body, cute chibi style, the whole long body visible, small cute face with two big round eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "rear view, big head, dragon, wings, horns, claws, legs, arms, scales, snake skin, fangs, spikes, fire, teeth, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 4615,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.3,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 15:43:12"
+}

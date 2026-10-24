@@ -1,0 +1,316 @@
+{
+ "packet": {
+  "name": "PACKET",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a pigeon carrying a sealed envelope (IN TRANSIT)",
+  "note": "i2i 0.6 from today's front: every t2i seed (8, two wordings, prop named first) drew a good pigeon and dropped the envelope. Back: i2i 0.6 from today's back, the only true back of 13 tries.",
+  "front": "packet_front_i2i_4611.png",
+  "back": "packet_back_i2i_4611.png",
+  "icon": "packet_icon_4643.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,37,50",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.8,
+    "accent_clean_after": 3.8,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1174
+   },
+   "front_accent_pct": 3.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "16,32,38,40",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1044
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1456
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    22,
+    24
+   ]
+  }
+ },
+ "backbone": {
+  "name": "BACKBONE",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a chain of stacked boulders forming a serpent, not a dragon (STRUCTURAL)",
+  "note": "i2i 0.62 from today's front: 8 t2i seeds over two wordings drew a big-headed blob on a rock, never the chain. Accents 26.6% -> 14.6% (213 px greyed by the cap).",
+  "front": "backbone_front_i2i_4619.png",
+  "back": "backbone_back_i2i_4611.png",
+  "icon": "backbone_icon_4643.png",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,31,57",
+    "painted": "[5, 3, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 26.6,
+    "accent_clean_after": 14.6,
+    "greyed_px": 213,
+    "streak_px": 17,
+    "creature_px": 1774
+   },
+   "front_accent_pct": 14.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,34,31,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.7,
+    "accent_clean_after": 7.7,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1645
+   },
+   "back_accent_pct": 7.7,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 2.9,
+    "accent_clean_after": 2.9,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2642
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    23
+   ]
+  }
+ },
+ "rovercub": {
+  "name": "ROVERCUB",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a small robot puppy (PORTABLE)",
+  "note": "t2i, third wording (riveted plates, lens eye, antenna). Back: t2i, its drawn frame painted out; head only, legs lost.",
+  "front": "rovercub_front_4613.png",
+  "back": "rovercub_back_4602_unframed.png",
+  "icon": "rovercub_icon_4642.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,47,55",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 2301
+   },
+   "front_accent_pct": 2.3,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,27,41,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 779
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 6.8,
+    "accent_clean_after": 6.8,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1119
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    22
+   ]
+  }
+ },
+ "spike": {
+  "name": "SPIKE",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a mouse with a zigzag lightning-bolt tail (FIRING)",
+  "note": "i2i 0.62 from today's front keeps the zigzag tail; 11 of 12 t2i seeds lost it. Back i2i 0.72 from today's back: a plain tail.",
+  "front": "spike_front_i2i_4619.png",
+  "back": "spike_back_i2i_4612.png",
+  "icon": "spike_icon_4643.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,34,51",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.1,
+    "accent_clean_after": 14.1,
+    "greyed_px": 0,
+    "streak_px": 22,
+    "creature_px": 1144
+   },
+   "front_accent_pct": 14.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "20,34,43,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1123
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 19.9,
+    "accent_clean_after": 13.8,
+    "greyed_px": 135,
+    "streak_px": 0,
+    "creature_px": 2181
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    23,
+    24
+   ]
+  }
+ },
+ "dangling": {
+  "name": "DANGLING",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a ghost blob with a face and a frilled hem (UNSURFACED)",
+  "note": "t2i. Back t2i: plain, reads as a bell more than a ghost.",
+  "front": "dangling_front_4603.png",
+  "back": "dangling_back_4602.png",
+  "icon": "dangling_icon_4641.png",
+  "measured": {
+   "front_streaks": {
+    "box": "15,34,48,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.3,
+    "accent_clean_after": 1.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1829
+   },
+   "front_accent_pct": 1.3,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "9,35,54,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2644
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2069
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    23,
+    24
+   ]
+  }
+ },
+ "artsai": {
+  "name": "ARTSAI",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a rabbit, tall ears, red eyes (CHANCE)",
+  "note": "t2i. The red eyes come out green: gbasprite.shift_off turns an accent near the type's hue to the far side, as it does in the build.",
+  "front": "artsai_front_4603.png",
+  "back": "artsai_back_4601.png",
+  "icon": "artsai_icon_4643.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,33,52",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.9,
+    "accent_clean_after": 9.9,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1248
+   },
+   "front_accent_pct": 9.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,33,40,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1088
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 852
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    23
+   ]
+  }
+ },
+ "_battles": [
+  [
+   "backbone",
+   "packet"
+  ],
+  [
+   "artsai",
+   "rovercub"
+  ],
+  [
+   "dangling",
+   "spike"
+  ]
+ ]
+}
