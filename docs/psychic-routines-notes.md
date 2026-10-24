@@ -65,7 +65,7 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 
 ### V. Verified 2026-10-18 — the four the review could not see, and two more
 
-1. **The contest-condition bytes are free, with two catches.** `cool beauty cute smart tough sheen` sit in every
+1. ***Taken since*** *(2026-10-24): T-431's feelings now hold these bytes, so T-454 needs another home.* **The contest-condition bytes were free, with two catches.** `cool beauty cute smart tough sheen` sit in every
    daemon's box substructure (`include/pokemon.h`), so they cost no save budget. Nothing reads them as a rule: the
    battle controllers only ferry them (`battle_controller_opponent.c`, `_pokedude.c`) and the roamer copies them
    (`roamer.c`). **The catches**: the in-game trades write them (`ingame_trades.h`: 5/5/5/30/5, sheen 10), so a
