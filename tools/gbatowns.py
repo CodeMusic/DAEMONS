@@ -202,13 +202,20 @@ PLAN = [
 ]
 SHORT = {"viridian_city": "callow", "pewter_city": "slate", "cerulean_city": "doldrum",
          "viridian_forest": "undertone", "vermilion_city": "ardor", "lavender_town": "halftone",
-         "celadon_city": "verdigris", "saffron_city": "brazen"}
+         "celadon_city": "verdigris", "saffron_city": "brazen", "fuchsia_city": "lurid",
+         "cinnabar_island": "quicksilver", "sevii_islands_123": "islands123", "sevii_islands_45": "islands45",
+         "sevii_islands_67": "islands67", "berry_forest": "densewood"}
 DRAFTED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
            #  the next four, drafted 2026-10-23 in the order a player meets them (sheets t438f2_*)
-           "vermilion_city", "lavender_town", "celadon_city", "saffron_city"]
+           "vermilion_city", "lavender_town", "celadon_city", "saffron_city",
+           #  batch H, drafted 2026-10-24 (sheets t438h_*): the rest of the places, first met first; not approved
+           "fuchsia_city", "cinnabar_island", "sevii_islands_123", "sevii_islands_45", "sevii_islands_67",
+           "berry_forest"]
 #  which sheet set each draft belongs to (the first four were t438f_, the next four t438f2_, revised as t438f3_)
 SHEET_PREFIX = {"vermilion_city": "t438f3", "lavender_town": "t438f3", "celadon_city": "t438f3",
-                "saffron_city": "t438f3"}
+                "saffron_city": "t438f3", "fuchsia_city": "t438h", "cinnabar_island": "t438h",
+                "sevii_islands_123": "t438h", "sevii_islands_45": "t438h", "sevii_islands_67": "t438h",
+                "berry_forest": "t438h"}
 #  the user, 2026-10-23: build these four (SLATE's museum roof and CALLOW's cottage roof calmed first); the rest stay
 #  drafts until approved
 APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
@@ -275,6 +282,28 @@ MOVES = {
              why="the roofs' flat middle (702, vanilla's, all one index) is also the tower base's grey (row 9, ten "
                  "blocks): the roofs get their own copy to dot, the tower keeps 702"),
     ],
+    #  batch H (drafted 2026-10-24, the rest of the places in the order a player meets them; NOT approved)
+    "fuchsia_city": [
+        dict(kind="colours", row=11, why="the SAFARI's canopy (row 11, 1..4: the SAFARI trees' leaves) from leaf "
+                                         "green to a sickly acid glow -- chartreuse lit, a poison green body, the "
+                                         "shade kept deep. The marsh teal (9, a, e) and the bark (6..8) stay",
+             colours=_cols(i1="b4ee52 e2ff4a", i2="8bd552 b8f22a", i3="5aa431 6cc818", i4="395a5a 2c5848")),
+        dict(kind="colours", row=9, why="the pens' mint walls (row 9, a..e: their tops, faces and dark rims) as "
+                                        "neon fuchsia -- LURID's own name for the colour, the tube lit pale, the "
+                                        "face hot pink, the rims deep plum; the pens' fences and plaques (1..9) "
+                                        "stay",
+             colours=_cols(ia="31625a 6a1a58", ib="4a9483 b0288f", ic="52c594 ee4ec8", id="6ae6ac ff8ae8",
+                           ie="a4eeac ffc8f4")),
+    ],
+    "cinnabar_island": [
+        dict(kind="colours", row=9, why="the lab's cream walls (row 9, 1..5) as quicksilver -- a cold bright "
+                                        "metal, white-lit, pooling dark at the foot",
+             colours=_cols(i1="fffff6 f8faff", i2="e6e6bd d8dee8", i3="c5c59c b0b8c6", i4="acac83 8e98aa",
+                           i5="7b7b52 5c6478")),
+        dict(kind="colours", row=8, why="the MANSION's roof (row 8, 1..3) scorched: brick-brown to soot and ash; "
+                                        "4 (its lit edge) stays, since ROUTE 21's jetty draws it too",
+             colours=_cols(i1="8b5239 3e3430", i2="a46a52 5c4c46", i3="cd947b 8c766a")),
+    ],
 }
 for _ms in MOVES.values():                     # i_f: `if` is a keyword
     for _m in _ms:
@@ -286,7 +315,15 @@ for _ms in MOVES.values():                     # i_f: `if` is a keyword
 #  tiles never redrawn, whatever they match: BRAZEN's PORT sign (789, 804, 805, 807) is drawn from tiles that copy
 #  general's signboard, so the general rule gave it batch C's signboard and scrambled the round sign (the first
 #  draft's PORT read "EP13"; the user, 2026-10-23: keep the PORT's round sign intact)
-KEEP_TILES = {"saffron_city": {789, 804, 805, 807}}
+KEEP_TILES = {"saffron_city": {789, 804, 805, 807},
+              #  the dark hollows under the canopy where a path enters the trees (BOND BRIDGE, GREEN PATH): their
+              #  tiles match general tiles batch C redrew for something else, and the rule flattened the hollow's
+              #  leafy rim (batch H draft, 2026-10-24) -- kept as vanilla drew them
+              "sevii_islands_123": {640 + 333, 640 + 336, 640 + 337, 640 + 338},
+              "sevii_islands_67": {640 + 333, 640 + 336, 640 + 338}}
+#  maps whose tiles are left for a later batch: every tile these maps draw is kept, wherever else it is drawn
+#  (TANOBY's seven chamber doors wait for batch G, the user 2026-10-23)
+KEEP_MAPS = {"sevii_islands_67": ["SevenIsland_TanobyRuins"]}
 
 
 def grove_tell(ts):
@@ -509,7 +546,16 @@ class Town:
         self.left = {t for t in range(min(len(self.van), len(self.now)))
                      if self.now[t] == self.van[t] and nb(t) and self.draws[t]}
         self.targets = self.left - self.door_tiles - {t - 640 for t in KEEP_TILES.get(self.ts, ())} - \
-            set(grove_tell(self.ts))
+            set(grove_tell(self.ts)) - self.kept_by_map()
+
+    def kept_by_map(self):
+        """every tile a KEEP_MAPS map draws (TANOBY's chamber doors, batch G)"""
+        out = set()
+        for m in KEEP_MAPS.get(self.ts, ()):
+            for b in set(self.grid.get(m, ())):
+                if 640 <= b < 640 + self.nblocks:
+                    out |= {(v & 0x3FF) - 640 for v in entries(self.mt, b - 640) if v & 0x3FF >= 640}
+        return out
 
     def as_before(self, tiles):
         """read these tiles as vanilla's again (what they were before this tool drew them)"""
@@ -1008,6 +1054,198 @@ for _m in ("plank", "roof", "wall", "glass", "dome"):
     KEEP_LIGHT_TOWN[("lavender_town", _m)] = 0.0
 
 
+# ================================================================== batch H: the rest, in the order a player meets them
+#  (drafted 2026-10-24 from the plan sheet's looks; NOT approved, so not in APPROVED and never written by --write)
+def _lobe(X, Y, lobes, P):
+    """the nearest leaf clump on a P-pixel grid: (distance / radius, dx, dy, radius)"""
+    xo, yo = X % P, Y % P
+    best = None
+    for cx, cy, r in lobes:
+        for ox in (-P, 0, P):
+            for oy in (-P, 0, P):
+                dx, dy = xo - cx - ox, yo - cy - oy
+                d = (dx * dx + dy * dy) ** 0.5 / r
+                if best is None or d < best[0]:
+                    best = (d, dx, dy, r)
+    return best
+
+
+LOBES_GLOSSY = [(10, 9, 11.0), (24, 12, 10.0), (8, 25, 10.0), (24, 26, 11.0)]
+
+
+def m_glossy(x, y, w, h, X, Y, b):
+    """LURID: the SAFARI's canopy keeps vanilla's soft leaf masses (the acid glow is the palette move) and takes a
+    glossy hot spot -- a bright oval at the upper left of each of four big clumps to every 32 pixels, as if the
+    leaves were lacquered. Calm at 1x: one shape per clump, nothing else redrawn"""
+    if b >= 0.9:
+        return b
+    d, dx, dy, r = _lobe(X, Y, LOBES_GLOSSY, 32)
+    lit = (dx + dy) / (2 * r)
+    if d < 0.42 and lit < -0.1:
+        return 0.0
+    return b
+
+
+LOBES_DENSE = [(4, 4, 4.2), (11, 3, 4.0), (8, 9, 4.4), (3, 12, 4.0), (13, 11, 4.2), (8, 15, 3.6)]
+
+
+def m_dense(x, y, w, h, X, Y, b):
+    """DENSE WOOD: THE UNDERTONE's clumps, but six smaller ones to every 16 pixels -- packed tight, each lit at its
+    upper left and rimmed one step darker at its foot, the body kept in the berry trees' own warm yellow, so they read
+    thicker than THE UNDERTONE's without going dark"""
+    if b >= 0.9:
+        return b
+    d, dx, dy, r = _lobe(X, Y, LOBES_DENSE, 16)
+    if d > 0.85 and dy > 0:
+        return 0.6
+    lit = (dx + dy) / (2 * r)
+    return 0.0 if lit < -0.1 else 0.3
+
+
+def m_weatherboard(x, y, w, h, X, Y, b):
+    """the islands' roofs in sea-weathered board: boards eight wide running down the roof, a joint one step darker,
+    one board in three bleached a step lighter by salt; vanilla's lit ridge kept (its light ribs go). Calm at 1x: one step, no stripe"""
+    if b < 0.3 and y < 10:
+        return b
+    if X % 8 == 7:
+        return 1.0
+    return 0.5 if _h(X // 8, 41) < 0.3 else 0.75
+
+
+def m_net(x, y, w, h, X, Y, b):
+    """the harbours' red roofs as nets drying: the roof flat in its body red under a lit ridge, a net draped over
+    the lower half as a loose diamond mesh one step darker; vanilla's light ribs go (a rib under a net is a stripe
+    too many), its dark eave stays. A small region (the red girders beside the house) keeps
+    vanilla's drawing"""
+    if w < 24 or b >= 0.9:
+        return b
+    if y < 2:
+        return 0.25
+    if y > h * 0.4 and ((X + Y) % 8 == 0 or (X - Y) % 8 == 0):
+        return 0.75
+    return 0.5
+
+
+def m_rings(x, y, w, h, X, Y, b):
+    """the NET centre's roof: the bright orange body, with the dish's signal running out over it as wide rings one
+    step darker, centred on the dish at the roof's foot"""
+    cx, cy = (w - 1) / 2.0, h + 2.0
+    r = ((x - cx) ** 2 + (y - cy) ** 2) ** 0.5
+    return 0.5 if int(r) % 7 == 0 else 0.0
+
+
+def m_facets(x, y, w, h, X, Y, b):
+    """THE ANNEX's triangle as shards: 16-pixel facets split on a diagonal, one half lit, one half a step deeper,
+    the diagonal turned by cell so it reads as broken glass laid flat -- no lines drawn"""
+    xo, yo = X % 16, Y % 16
+    flip = _h(X // 16, Y // 16, 7) < 0.5
+    up = (xo + yo < 16) if flip else (xo < yo)
+    return 0.25 if up else 0.6
+
+
+def m_curtain_glint(x, y, w, h, X, Y, b):
+    """USER TOWER's glass curtain: a dark mullion every eight pixels, a transom every sixteen rows, the panes level,
+    and a sky glint crossing them on the diagonal"""
+    if X % 8 == 0 or Y % 16 == 0:
+        return 1.0
+    if (X + Y) % 32 in (3, 4, 5):
+        return 0.2
+    return 0.6
+
+
+def m_cairn(x, y, w, h, X, Y, b):
+    """SOMEONE'S STONE as river stones stacked: courses five rows tall, each a rounded stone lit on top and dark
+    under its lip, the courses' ends turned in. Only a tall narrow region is the stone: the harbour house draws the
+    same greys in its walls, and keeps vanilla's drawing"""
+    if w > 40 or h < 24:
+        return b
+    yy = Y % 5
+    if yy == 4:
+        return 1.0
+    edge = min(x, w - 1 - x) < 2
+    return (0.0, 0.25, 0.5, 0.75)[yy] + (0.25 if edge and yy < 3 else 0.0)
+
+
+def m_pebble(x, y, w, h, X, Y, b):
+    """a smooth river stone: lit from the upper left, three steps"""
+    t = (x / max(w - 1, 1) + y / max(h - 1, 1)) / 2
+    return 0.0 if t < 0.3 else (0.5 if t < 0.7 else 1.0)
+
+
+def m_mercury(x, y, w, h, X, Y, b):
+    """QUICKSILVER's lab: liquid-bright metal -- a smooth body darkening down the wall, one bright sheen every
+    sixteen pixels, and at the foot a pool of it, its bright meniscus bulging over the darker metal beneath"""
+    top = h - 3 - (1 if _h(X // 6, 9) < 0.5 else 0)
+    if y >= top:
+        return 0.0 if y == top else 1.0
+    if X % 16 in (3, 4):
+        return 0.0
+    return 0.2 + 0.45 * (y / max(h - 1, 1))
+
+
+def m_scorch(x, y, w, h, X, Y, b):
+    """the MANSION's roof scorched: flat ash (the soot is the palette move), the eave burnt a step deeper. No burn
+    patches: the roof repeats one flat tile (34), so a blotch drawn into it repeats as stripes. Vanilla's lit edge
+    kept"""
+    if b < 0.2:
+        return b
+    return 0.67 if y >= h - 2 else 0.34
+
+
+MATERIALS.update({
+    "fuchsia_city": {
+        11: {1: "canopy", 2: "canopy", 3: "canopy", 4: "canopy"},
+        #  the pens (row 9, a..e) are not redrawn: their move is a colour, the neon (MOVES)
+    },
+    "cinnabar_island": {
+        8: {1: "roof", 2: "roof", 3: "roof", 4: "roof"},
+        9: {1: "metal", 2: "metal", 3: "metal", 4: "metal", 5: "metal"},
+        #  ROUTE 20's islet rocks and ROUTE 21's jetty draw general's row 1 (the sand and rock every map shares):
+        #  silvering them needs a palette this tileset cannot move -- left, a question for the user
+    },
+    "berry_forest": {
+        11: {1: "canopy", 2: "canopy", 9: "canopy", 10: "canopy"},
+    },
+})
+#  the island kit: ONE..SEVEN ISLAND share one look. Row 8 is the purple-roofed house in all three tilesets (the same
+#  palette); the harbour house draws general's rows 2 and 3 (its red roof is row 2's a..e)
+_ISLE_HOUSE = {9: "roof", 10: "roof", 11: "roof", 12: "roof", 13: "roof", 6: "siding", 7: "siding", 8: "siding"}
+_ISLE_HARBOUR = {10: "net", 11: "net", 12: "net", 13: "net", 14: "net"}
+MATERIALS["sevii_islands_123"] = {
+    8: dict(_ISLE_HOUSE), 2: dict(_ISLE_HARBOUR),
+    11: {11: "dishroof", 12: "dishroof", 13: "dishroof"},           # ONE ISLAND's NET centre
+    9: {1: "glass", 2: "glass", 6: "siding", 7: "siding", 8: "siding", 9: "siding", 10: "siding"},   # TWO's shop
+}
+MATERIALS["sevii_islands_45"] = {
+    8: dict(_ISLE_HOUSE), 2: dict(_ISLE_HARBOUR),
+    10: {9: "roof", 10: "roof", 11: "roof", 12: "roof", 6: "siding", 7: "siding", 8: "siding"},     # the barn
+    9: {9: "roof", 10: "roof", 11: "roof", 12: "roof", 13: "roof"},                               # the resort
+    11: {9: "pebble", 10: "pebble", 11: "pebble", 12: "pebble", 13: "pebble", 14: "pebble"},      # the stones
+}
+MATERIALS["sevii_islands_67"] = {
+    8: dict(_ISLE_HOUSE), 2: dict(_ISLE_HARBOUR),
+    10: {10: "shard", 11: "shard", 12: "shard", 13: "shard", 14: "shard"},                        # THE ANNEX
+    9: {7: "curtain", 8: "curtain", 9: "curtain", 10: "curtain", 14: "curtain", 15: "curtain"},   # USER TOWER
+}
+_ISLE_STYLE = dict(roof=m_weatherboard, siding=m_clapboard, net=m_net, dishroof=m_rings, glass=m_glass,
+                   pebble=m_pebble, shard=m_facets, curtain=m_curtain_glint)
+STYLE.update({
+    "fuchsia_city": dict(canopy=m_glossy),
+    "cinnabar_island": dict(roof=m_scorch, metal=m_mercury),
+    "berry_forest": dict(canopy=m_dense),
+    "sevii_islands_123": dict(_ISLE_STYLE), "sevii_islands_45": dict(_ISLE_STYLE),
+    "sevii_islands_67": dict(_ISLE_STYLE),
+})
+for _ts in ("fuchsia_city", "cinnabar_island", "berry_forest", "sevii_islands_123", "sevii_islands_45",
+            "sevii_islands_67"):
+    for _m in ("canopy", "roof", "metal", "net", "dishroof", "shard", "curtain", "pebble"):
+        KEEP_LIGHT_TOWN[(_ts, _m)] = 0.0
+#  SOMEONE'S STONE (FIVE ISLE, row 2 -- general's greys, drawn by its pillar alone in this tileset) as a cairn
+MATERIALS["sevii_islands_45"][2].update({2: "cairn", 3: "cairn", 4: "cairn", 5: "cairn", 6: "cairn"})
+STYLE["sevii_islands_45"]["cairn"] = m_cairn
+KEEP_LIGHT_TOWN[("sevii_islands_45", "cairn")] = 0.0
+
+
 def ladder(town, row, mat):
     """this material's indices in this row, light to dark"""
     plan = MATERIALS[town.ts].get(row, {})
@@ -1335,7 +1573,29 @@ CROPS = {
     "saffron_city": [("SaffronCity", 12, 7, 28, 22, "the plaza, the houses and the tower"),
                      ("SaffronCity", 33, 6, 22, 14, "the north row"),
                      ("SaffronCity", 12, 27, 42, 14, "the south row and the dojo")],
+    "fuchsia_city": [("SafariZone_Center", 0, 0, 24, 16, "the SAFARI's woods and marsh"),
+                     ("FuchsiaCity", 0, 0, 42, 14, "the SAFARI gate's frontage and the pens"),
+                     ("SafariZone_West", 30, 0, 18, 14, "a SAFARI rest house")],
+    "cinnabar_island": [("CinnabarIsland", 2, 0, 20, 14, "the MANSION's front and the lab (SCORN's)"),
+                        ("Route21_South", 2, 44, 14, 8, "ROUTE 21's jetty (left: general's row 1)")],
+    "sevii_islands_123": [("OneIsland", 5, 0, 20, 12, "ONE ISLAND: the NET centre and the houses"),
+                          ("TwoIsland", 28, 3, 16, 9, "TWO ISLAND's shop and house"),
+                          ("ThreeIsland_Port", 6, 11, 12, 9, "a harbour house (every port)")],
+    "sevii_islands_45": [("FiveIsland_Meadow", 6, 14, 12, 9, "the meadow's barn"),
+                         ("FiveIsland_MemorialPillar", 3, 38, 12, 12, "SOMEONE'S STONE and its stones"),
+                         ("FiveIsland_ResortGorgeous", 34, 2, 12, 8, "RESORT SUBLIME's house"),
+                         ("FourIsland", 20, 8, 16, 12, "FOUR ISLAND's houses")],
+    "sevii_islands_67": [("BirthIsland_Exterior", 6, 3, 20, 14, "THE ANNEX's triangle"),
+                         ("SevenIsland_TrainerTower", 50, 0, 16, 12, "USER TOWER"),
+                         ("SixIsland", 6, 10, 18, 20, "SIX ISLAND's house and harbour"),
+                         ("SevenIsland_TanobyRuins", 0, 0, 30, 10, "TANOBY: the chamber doors kept for batch G")],
+    "berry_forest": [("ThreeIsland_BerryForest", 0, 0, 24, 16, "DENSE WOOD's mouth"),
+                     ("ThreeIsland_BerryForest", 9, 14, 16, 10, "the clearing")],
 }
+
+
+def batch(ts):
+    return "batch H" if SHEET_PREFIX.get(ts) == "t438h" else "batch F"
 
 
 def plan_of(ts):
@@ -1377,7 +1637,7 @@ def map_sheet(town, new, crop, path, today=None, prev=None):
                             [_label(grey(b), D + " 1x, grey", f)]))
         rows.append(_row([_label(z2(grey(a)), "today 2x, grey", f), _label(z2(grey(b)), D + " 2x, grey", f)]))
     pals = ("palette moves: see the _palette sheet" if MOVES.get(town.ts) and today else "palettes unchanged")
-    sheet = _col([_title("T-438 batch F DRAFT -- %s: %s\n%s, cells %d,%d %dx%d -- footprints, blocks, collision "
+    sheet = _col([_title("T-438 " + batch(town.ts) + " DRAFT -- %s: %s\n%s, cells %d,%d %dx%d -- footprints, blocks, collision "
                          "unchanged; %s" % (p["name"], what, name, x0, y0, w, h, pals), F,
                          max(r.width for r in rows))] + rows)
     sheet.save(path)
@@ -1419,7 +1679,7 @@ def tiles_sheet(town, new, what, path):
                        "by a reachable map", f),
                 _label(atlas(town, new, changed), "draft: %d tiles redrawn (%s)" % (
                     len(changed), ", ".join("%s %d" % kv for kv in sorted(by.items()))), f)])
-    sheet = _col([_title("T-438 batch F DRAFT -- %s: the tileset (rows unchanged)\n%s" % (
+    sheet = _col([_title("T-438 " + batch(town.ts) + " DRAFT -- %s: the tileset (rows unchanged)\n%s" % (
         p["name"], "\n".join(_wrap(p["look"], 110))), F, top.width), top])
     sheet.save(path)
     return path
@@ -1457,8 +1717,9 @@ def palette_sheet(today, town, new, path):
     """every moved row before and after, and every map that draws what moved, before | after"""
     f, F, H = font(12), font(14), font(18)
     p = plan_of(town.ts)
-    parts = [_title("T-438 batch F DRAFT -- %s: the palette moves (the user, 2026-10-23)\nred: the indices "
-                    "that move. Under each move, every reachable map that draws them: today | revised" % p["name"],
+    who = "proposed 2026-10-24" if batch(town.ts) == "batch H" else "the user, 2026-10-23"
+    parts = [_title("T-438 %s DRAFT -- %s: the palette moves (%s)\nred: the indices that move. Under each move, "
+                    "every reachable map that draws them: today | revised" % (batch(town.ts), p["name"], who),
                     H, 1400)]
     for mv in town.moves:
         k = mv["kind"]
@@ -1570,6 +1831,88 @@ def census(thumbs=False):
     return out
 
 
+# ================================================================== THE SAME BUSH: a palette split (batch H)
+#  THE SAME BUSH (SIX ISLAND's PATTERN BUSH, "a maze where every corner looks like the last one, described honestly")
+#  shares THE UNDERTONE's tileset, so it wears THE UNDERTONE's green. The user (2026-10-23): give it its own palette
+#  split, with the islands -- the way batch E split UMBRAL ASCENT off the cave (gTileset_CaveUmbral): a Tileset header
+#  over gTileset_ViridianForest's tiles, metatiles and attributes with rows 7..12 of its own, and the one layout
+#  pointed at it; daemonslib.tileset_base() already leads every tool from the split's name to viridian_forest's folder.
+#  THE SAME BUSH draws rows 0 (general's) and 8 only, so only row 8 differs: the canopy (1..5) and the bark (6..8);
+#  the ground greens (12..15) stay, so its edges meet the grass as they do today. Two looks are proposed; the draft
+#  folder takes A. Nothing is drawn: the tiles are THE UNDERTONE's, the grove tell included.
+SPLITS = {
+    "same_bush": dict(
+        base="viridian_forest", symbol="gTileset_SameBush", maps=["SixIsland_PatternBush"],
+        dir="viridian_forest/palettes_samebush", row=8, name="THE SAME BUSH",
+        crops=[("SixIsland_PatternBush", 0, 0, 24, 14, "the mouth"), ("SixIsland_PatternBush", 30, 12, 24, 14,
+                                                                      "deep in it: every corner the last one")],
+        options=[
+            ("A  SALT SCRUB (drafted)", "the island's own scrub: the canopy a silvery sage, as if salt spray had "
+             "dried on every leaf, the bark weathered grey -- one even light, so the corners really do look alike",
+             _cols(i1="ccec84 d4e6c0", i2="84bc54 9cb88c", i3="42803a 5e8070", i4="2a522c 34504a",
+                   i5="397318 46644a", i6="62414a 5e5652", i7="836a52 847a6c", i8="4c362a 403a36")),
+            ("B  COPY OF A COPY", "the same canopy gone faint and faintly cyan, low in contrast, like a photocopy of "
+             "THE UNDERTONE -- the maze as a copy that has lost a generation of detail; the bark kept",
+             _cols(i1="ccec84 c4e4b4", i2="84bc54 94c49c", i3="42803a 5c9c84", i4="2a522c 3c6c60",
+                   i5="397318 4c8c74")),
+        ]),
+}
+
+
+def split_draft(key, outdir, sheets_dir):
+    """the split's proposed palettes (option A into the draft folder, as palettes_samebush/NN.pal) and its sheet"""
+    sp = SPLITS[key]
+    today = Town(sp["base"])
+    r = sp["row"]
+    looks = []
+    for title, why, cols in sp["options"]:
+        t = Town(sp["base"])
+        for i, (a, b) in cols.items():
+            five = lambda c: tuple(x >> 3 for x in c)
+            if five(t.pals[r][i]) != five(tuple(int(a[j:j + 2], 16) for j in (0, 2, 4))):
+                raise SystemExit("  !! %s row %d index %d is %s, not the option's before" % (key, r, i, t.pals[r][i]))
+            t.pals[r][i] = _q(b)
+        order = lambda pal: sorted(range(1, 6), key=lambda i: -lum(pal[i]))
+        if order(t.pals[r]) != order(today.pals[r]):
+            raise SystemExit("  !! %s %s reorders the canopy's light" % (key, title))
+        looks.append((title, why, t))
+    d = os.path.join(outdir, key, "palettes")
+    os.makedirs(d, exist_ok=True)
+    daemonslib.write_pal(os.path.join(d, "%02d.pal" % r), looks[0][2].pals[r])
+    f, F, H = font(12), font(14), font(18)
+    z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
+    parts = [_title("T-438 batch H DRAFT -- %s: its own palette split (proposed 2026-10-24)\n%s draws rows 0 "
+                    "(general's) and %d; a split changes rows 7..12, so only row %d moves. Tiles: THE UNDERTONE's "
+                    "as built (grove tell kept)" % (sp["name"], sp["maps"][0], r, r), H, 1500)]
+    sw = [_label(_swatches(today.pals[r], f=f), "row %d today (THE UNDERTONE's)" % r, f)]
+    for title, why, t in looks:
+        sw.append(_label(_swatches(t.pals[r], [i for i in range(16) if t.pals[r][i] != today.pals[r][i]], f=f),
+                         "row %d, %s" % (r, title.split("(")[0].strip()), f))
+    parts.append(_row(sw))
+    for title, why, t in looks:
+        parts.append(_title("%s -- %s" % (title, "\n   ".join(_wrap(why, 150))), F, 1500))
+    for name, x0, y0, w, h, what in sp["crops"]:
+        ims = [render(today, name, box=(x0, y0, w, h))] + [render(t, name, box=(x0, y0, w, h)) for _, _, t in looks]
+        lbl = ["today 1x"] + [ti.split("(")[0].strip() + " 1x" for ti, _, _ in looks]
+        parts.append(_title("%s, cells %d,%d %dx%d -- %s" % (name, x0, y0, w, h, what), F, 1500))
+        parts.append(_row([_label(im, l, f) for im, l in zip(ims, lbl)]))
+        parts.append(_row([_label(z2(ims[0]), "today 2x", f), _label(z2(ims[1]), lbl[1].replace("1x", "2x"), f)]))
+    parts.append(_title("\n".join([
+        "WIRING (as gTileset_CaveUmbral, engine 2007d739f) -- NOT written by this tool; the build does it once approved:",
+        "  src/data/tilesets/headers.h: gTileset_SameBush = { .tiles = gTilesetTiles_ViridianForest, .palettes = "
+        "gTilesetPalettes_SameBush,",
+        "      .metatiles = gMetatiles_ViridianForest, .metatileAttributes = gMetatileAttributes_ViridianForest }",
+        "  src/data/tilesets/graphics.h: gTilesetPalettes_SameBush -- rows 0..6 and 13..15 viridian_forest/palettes/, "
+        "7..12 %s/" % sp["dir"],
+        "  data/layouts/layouts.json: SixIsland_PatternBush_Layout's secondary_tileset -> gTileset_SameBush (the only "
+        "map that moves; THE UNDERTONE and its grove keep theirs)",
+        "  tools: tileset_base('gTileset_SameBush') -> viridian_forest (shared metatiles); gbagrove's tell is in the "
+        "shared tiles, so it holds"]), f, 1500))
+    path = os.path.join(sheets_dir, "t438h_samebush.png")
+    _col(parts, gap=8).save(path)
+    return [path]
+
+
 # ================================================================== the work
 def save_tiles(town, new, path):
     """tiles.png, 4-bit with sixteen colours (the engine's own PNG palette), a tile row longer if a move added a tile"""
@@ -1603,7 +1946,7 @@ def write_draft(outdir):
     made = [] if only else [plan_sheet(census(True), os.path.join(sheets_dir, "t438f_plan.png"))]
     gj = os.path.join(outdir, "groups.json")
     info = json.load(open(gj)).get("drafted", {}) if only and os.path.exists(gj) else {}
-    for ts in (only or DRAFTED):
+    for ts in [t for t in (only or DRAFTED) if t not in SPLITS]:
         today = Town(ts)
         town = Town(ts, moved=True)
         new, what = draw(town)
@@ -1613,7 +1956,8 @@ def write_draft(outdir):
         d = os.path.join(outdir, ts)
         os.makedirs(d, exist_ok=True)
         prev_path = os.path.join(d, "tiles.png")
-        prev = tiles_of(Image.open(prev_path)) if ts in SHEET_PREFIX and os.path.exists(prev_path) else None
+        prev = tiles_of(Image.open(prev_path)) if SHEET_PREFIX.get(ts) == "t438f3" and os.path.exists(prev_path) \
+            else None
         save_tiles(town, new, prev_path)
         pals_changed = save_moves(town, d)
         a, b, added = seams(town, new)
@@ -1632,10 +1976,17 @@ def write_draft(outdir):
                                   today=today if town.moves else None, prev=prev))
         if town.moves:
             made.append(palette_sheet(today, town, new, os.path.join(sheets_dir, "%s_palette.png" % s)))
+    for key in SPLITS:
+        if not only or key in only:
+            made += split_draft(key, outdir, sheets_dir)
+            info[key] = dict(name=SPLITS[key]["name"], split_of=SPLITS[key]["base"], symbol=SPLITS[key]["symbol"],
+                             maps=SPLITS[key]["maps"], options=[o[0] for o in SPLITS[key]["options"]],
+                             drafted="A: palettes/%02d.pal (row %d only)" % (SPLITS[key]["row"], SPLITS[key]["row"]))
     json.dump(dict(ticket="T-438 batch F", status="CALLOW, SLATE, DOLDRUM, THE UNDERTONE approved 2026-10-23 and built by --write "
                    "--approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), approved "
                    "with revisions and revised (t438f3_*: palette moves, the roofs dotted whole, the pantiles "
-                   "calmed), not yet built; the rest not drafted",
+                   "calmed) and built (engine f8fa96614); batch H (LURID, QUICKSILVER, the islands, DENSE WOOD, THE SAME BUSH's split) "
+                   "drafted 2026-10-24 (t438h_*), not approved",
                    drafted=info, plan=[{k: v for k, v in p.items()} for p in PLAN]),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
     return made
