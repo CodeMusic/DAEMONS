@@ -731,19 +731,17 @@ def marks_table():
     debug = read("src/daemons_debug_events.c")
     #  T-252: the user named them 2026-10-16; the debug labels carry the name and its place, "STILL (TANOBY)"
     named = {int(n): t.split(" (")[0] for n, t in re.findall(r"sName_Root(\d)\[\] = _\(\"([^\"]*)\"\)", debug)}
-    found = ["TANOBY CHAMBERS, its last inscription", "CALLOW SCHOOL: the TEXTBOOK and the DIPLOMA",
-             "BRAZEN's READING ROOM, with REVEAL", "QUICKSILVER's notes: the run logs and THE FILE",
-             "SCORN beaten, the eighth MARK", "TY met, and CRYSTAL found", "THE GUIDE, read to its end"]
+    #  where each understanding is found stays out: the companion is public, and the game asks the player to find
+    #  them (the user, 2026-10-24)
     unders = []
     for k, (flag, r, g, b, lobe, ty) in enumerate(lobes):
         unders.append({"n": k + 1, "flag": flags[flag], "flag_name": flag, "lobe": lobe, "type": ty,
                        "rgb": rgb8(int(r), int(g), int(b)), "name": named.get(k + 1, ""), "name_is_working": False,
-                       "found": found[k],
                        # T-405 (approved 2026-10-16): its STREAM lecture, as the MARKS' -- its two scripts
                        "lesson": [t for t in (text("gTeachyTvText_Root%dScript1" % (k + 1)),
                                               text("gTeachyTvText_Root%dScript2" % (k + 1))) if t] or None})
-    return {"_about": "C-126: the MARKS (badge art, STREAM lesson, town) and the UNDERSTANDINGS (brain lobe, colour, "
-                      "where arrived at). Understanding names are the user's (T-252, 2026-10-16); "
+    return {"_about": "C-126: the MARKS (badge art, STREAM lesson, town) and the UNDERSTANDINGS (brain lobe, colour)"
+                      ". Understanding names are the user's (T-252, 2026-10-16); "
                       "their lessons are T-405's STREAM lectures, as the MARKS' are. Order matches profile_layout's flags.understandings.",
             "marks": marks, "understandings": unders}
 
