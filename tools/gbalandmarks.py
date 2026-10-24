@@ -9,7 +9,7 @@
                                                         #   metatile_attributes.bin, the map's map.bin, the new .pal rows)
     python3 tools/gbalandmarks.py --draft --sheets DIR  # and the review sheets in DIR (t447b_*.png)
     python3 tools/gbalandmarks.py --write --approved    # into the engine -- REFUSES without --approved, and writes only
-                                                        #   the landmarks in APPROVED (none yet: the first pair is a draft)
+                                                        #   the landmarks in APPROVED (the first pair, approved 2026-10-24)
 
 THE FIRST PAIR (the user, 2026-10-24) -- QUICKSILVER IS., one tileset (secondary/cinnabar_island), one campus:
 
@@ -92,7 +92,7 @@ DRAFT = argval("--draft", DRAFTS)
 SHEETS = argval("--sheets")
 
 #  the landmarks the user has approved for --write; a draft is never written
-APPROVED = set()
+APPROVED = {"scorn_solutions", "mansion"}           # the user, 2026-10-24: "build it" (second draft, e559d4eb)
 
 NUM_PRIMARY = 640
 SECONDARY_TILES = 1024 - 640
@@ -540,22 +540,28 @@ def census(ts, ours):
     Returns (owned slots, free slots, what was examined)."""
     users = {}                                   # tile -> set of (layout, x, y) / ("border", layout)
     examined = 0
+    ours_set = {(TILESET["layout"], x, y) for x, y in ours}
+    #  the blocks this tool appended are drawn only by our cells: the three RS Safari layouts (unused by any map) carry
+    #  block ids past vanilla's count that were nothing before a --write and are ours after it -- counted as users,
+    #  they made a second --write see its own tiles as shared and refuse (2026-10-24)
+    limit = vanilla_block_count(ts)
     for name, m in ts.maps.items():
         for y in range(m["h"]):
             for x in range(m["w"]):
                 b = ts.cell(name, x, y) & 0x3FF
                 examined += 1
+                if b - NUM_PRIMARY >= limit and (name, x, y) not in ours_set:
+                    continue
                 if b >= NUM_PRIMARY and b - NUM_PRIMARY < ts.nblocks:
                     for e in ts.entries(b):
                         t = e & 0x3FF
                         if t >= NUM_PRIMARY:
                             users.setdefault(t - NUM_PRIMARY, set()).add((name, x, y))
         for b in m["border"]:
-            if b >= NUM_PRIMARY:
+            if b >= NUM_PRIMARY and b - NUM_PRIMARY < limit:
                 for e in ts.entries(b):
                     if (e & 0x3FF) >= NUM_PRIMARY:
                         users.setdefault((e & 0x3FF) - NUM_PRIMARY, set()).add(("border", name))
-    ours_set = {(TILESET["layout"], x, y) for x, y in ours}
     #  tiles any metatile references at all (placed or not): an unplaced block's tile is free to repaint, but a slot
     #  past num_tiles that a block references must not exist -- checked, never assumed
     referenced = set()
