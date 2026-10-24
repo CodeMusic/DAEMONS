@@ -5,6 +5,24 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.310 — 2026-10-24
+
+### A daemon carried can evolve away (C-184, T-448, T-455)
+
+- ***9.26 (the user)***: **a daemon on the companion evolves there by the game's own rules for level, friendship, the hour and WURMPLE's split** -- *never items or trades.* **The game finds it evolved and finishes it on load**: *stats, INDEX, ability, and the routines its new species learns offered the first time it is seen.*
+
+### The line that grows only while carried (C-185, T-450)
+
+- ***9.27 (the user)***: **HANDSHAKE → TETHERING → COROUTINE, a sugar glider; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485.** *bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3; `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397, MISSINGNO to 398 (3.4 amended).*
+
+### One app, iPad first (T-453)
+
+- ***9.28 (the user)***: **one self-contained iOS app -- the game patched on the device from the player's own ROM and never bundled, the companion, the LIBRARY and the NOTEBOOK**; *INDEX cards coloured by type match with the understandings held.*
+
+### The landmarks drawn from the story (T-447)
+
+- ***9.29 (the user)***: **the buildings the story turns on get art of their own, inferred from the story, rather than a retint of vanilla** -- *two at a time, a sheet and a yes before each pair.*
+
 ## v11.309 — 2026-10-21
 
 ### Items and moments move feelings (T-433)

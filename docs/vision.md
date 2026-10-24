@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.309**
+**A total conversion — the living design bible, v11.310**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2205,7 +2205,7 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 - **Its trees are doors to the groves.** *A grove the player has been in is an ordinary painted tree, and through it the player arrives beside that grove's fir; one not yet found is grey, and the harder the player tries it, the less real it becomes — smudged, then only dots and lines.* **The NEXUS never gives a grove away.**
 - **One Christmas tree**, *the way home to the pier.* **The GUARDIAN OF THE NEXUS is a voice, never seen**, *a line from the source at each door as the player leaves.*
 - **THE (NOT A) HUNTER**, *a bear in red plaid* — *"Hunter? I'm no hunter… not anymore."*
-- **Eight residents of its own** *(REFLECTION, LODESTAR, PERIHELION, LYUBOV, MULTIMAL › ILLUMINED, LYNX › BASTET: INDEX 387–394, MISSINGNO one past them at 395)*, **PENGUIN in its meadow, and PHOENIX once.**
+- **Eight residents of its own** *(REFLECTION, LODESTAR, PERIHELION, LYUBOV, MULTIMAL › ILLUMINED, LYNX › BASTET: INDEX 387–394, MISSINGNO one past them at 395 -- 398 since the carried line took 395–397, 9.27)*, **PENGUIN in its meadow, and PHOENIX once.**
 
 *The design in full, its cast and every word: `docs/nexus.md`. Built by `tools/gbanexus.py` (the residents), `tools/gbagrove.py` (the fir in every grove) and `tools/gbanexusmap.py` (the place).*
 
@@ -8635,6 +8635,53 @@ signatures keep their ink and play soft.** *`tools/gensignature.py`; the looks i
 
 ***And the trainer card says whether the clock is real*** *(T-372, the user 2026-10-04)*: **on the player's card (START > their name), a mark or a word says whether the real-time clock is on** -- *time, weekday and seasons from the cartridge, or from play time (9.21).*
 
+### 9.26 A daemon carried can grow up away — *decided 2026-10-24 (C-184, T-448, T-455)*
+
+***The user, on the companion's C-184: a daemon you carry should be able to evolve while it is with you, not only when it comes home.*** **A daemon on the companion evolves there, by the game's own rules -- the ones the companion can judge.** *The game finds it already evolved and finishes the job on load.*
+
+- ***Which rules travel.*** **Level, friendship, the hour, and WURMPLE's split** (*decided by its personality, as on the cart*). **Never an item and never a trade** -- *a stone or a link cable is something the cart holds, and the companion does not pretend to.* `companion_export.py` **hands the companion the game's own evolution table**, *so the two can never disagree about who becomes what.* **NINJASK and SHEDINJA are left out** -- *SHEDINJA's split needs a free slot and a ball, which are the cart's.*
+- ***What the companion writes.*** **Only the new species** (*and the new name, if the daemon still wore its species' default*), **and a marker beside the AWAY bit.** *Everything else is the game's to work out.*
+- ***What the game finishes on Continue.*** **It walks the party and every box for the marker, and does what the evolution scene would have done**: *stats recomputed, the INDEX marked seen and caught, the ability made one the new species has* -- **and then says so, on the next step**: *"X changed while it was carried."* (DRAFT, the user's words to choose). **The marker is cleared, so it happens once.**
+- ***And the routines (T-455).*** **The first time the player sees it, a daemon that grew away is offered the routines its new species learns at its level, as an evolution scene offers them.** *Growing up away must not cost what growing up at home gives.*
+
+**The point is that the device is not a kennel.** *A daemon that only waits while it is carried teaches the player that carrying is a pause; one that can come home changed teaches that the time counted.*
+
+### 9.27 HANDSHAKE, TETHERING, COROUTINE -- the line that grows only while carried — *decided 2026-10-24 (C-185, T-450)*
+
+***The user's companion decision C-185: one line in the bestiary that cannot grow on the cart at all.*** **HANDSHAKE → TETHERING → COROUTINE: a sugar glider**, *the animal people carry in a pouch so that it will come to know them.* **Three processes in order: a connection opened, a connection kept by being carried, and two routines that hand off to each other.** *Named in 8.2b's technical register, for the undisguised term.*
+
+| | HANDSHAKE | TETHERING | COROUTINE |
+|---|---|---|---|
+| **Type** | SIGNAL | SIGNAL | SIGNAL / STRATUM |
+| **Stats (total)** | 250 | 360 | 485 |
+| **Grows at** | bond 60 → | bond 160 → | -- |
+| **Body** | a joey in a carrying pouch, one paw held out | a young glider riding a bag strap, tail wrapped once round it, watching the road | grown, membrane spread, leaving a shoulder and coming back to it |
+| **INDEX** | 395 | 396 | 397 |
+
+- ***The bond is what the companion counts, and nothing the cart can.*** **bond = steps walked together ÷ 1000** (*at most 20 000 steps counted in a day*) **+ days carried × 5 + cares given + goals done together × 3.** **The new method is `EVO_CARRIED`, at 60 and 160, and it is never met on the cart** -- *the game only receives the result through 9.26's marker.* *A day's cap means the bond is a habit and not a marathon; the goals count three times a step's thousand because they are what the companion is for.*
+- ***Where the first one comes from.*** **The companion gives it: on the first goal finished while a daemon is carried, one HANDSHAKE per save**, *into the PC's first empty box slot, never the party*, **met at level 5, FIRST MET reading THE COMPANION** (DRAFT). *On the next step the game says something followed you home from the walk* (DRAFT). **No eggs** -- *a line that exists because of one particular walk does not breed.*
+- ***What the types argue.*** **SIGNAL is raw current before anything interprets it (2.6)**: *a first hello and a keepalive mean only "still here."* **COROUTINE adds STRATUM, the layer everything runs on -- the ground the steps were walked over -- and STRATUM is immune to SIGNAL**, *so the grown line cannot be moved by the very type it began as.* **FROZEN, locked and unable to move, is among what undoes it.** *No other daemon is SIGNAL/STRATUM.* **Nothing in the chart changes (invariant 3).**
+- ***Abilities and routines.*** **CHARGED and MUTUAL; COROUTINE MUTUAL and FAST RESUME** -- *accepted by the user 2026-10-24, every word still DRAFT; the routines are in `tools/gbacarried.py`.*
+- ***The ending is not a dependence.*** **The last stage leaves the shoulder and comes back to it**, *rather than clinging.* *The INDEX entries say what the animal does -- holds a paw out, counts the walks, glides off and lands again -- and never what the bond means (craft rule 1).* **CONTENT says what it does; CONTEXT says what the one walking with it would notice (0.4).**
+- ***Where it lives in the ROM.*** **There is no unused Gen 3 line -- every one of the 386 is placed somewhere a player meets it** -- *so, as THE NEXUS did (3.4), the line takes Gen 3's own unused slots, OLD_UNOWN_K, L and M (261-263).* **MISSINGNO moves from 395 to 398, one past the end again**, *its seen flag carried across once on load (8.9).* **The INDEX shows the evolution as a bare arrow**, *with no condition written beside it.*
+
+### 9.28 One app, iPad first — *decided 2026-10-24 (T-453)*
+
+***The user: "the iPad should be the ultimate app" -- and later the same day, one iOS app that combines the game, the companion, the LIBRARY and the NOTEBOOK, "so people can play, set the companion, without going too deep."*** **One self-contained iOS app, iPad first, then phone**: *the game, the companion (its server's logic inside the app, no hub or Mac needed), the LIBRARY and the NOTEBOOK in one install.* **The hub and the boards stay optional extras that pair with it.**
+
+- ***The game is patched on the device, never bundled.*** **The player gives the app their own FireRed or LeafGreen ROM once; the app checks its hash and applies our BPS patch on the device** (*the four patches every release already makes, made against retail's own bytes*). *This repository's promise -- nothing of Nintendo's distributed -- holds in the app exactly as it holds in `ROM RELEASE/` and the playground.*
+- ***The game's half is data.*** **Each release's patches and hashes, the save layout, full INDEX cards with their margins, and the planner's data** (*where the story's events happen and in what order, how maps connect, wild daemons and trainers per map, a level curve*) -- **anything past the player's next step marked so the app can hide it, and never the four things this file keeps private nor the hidden books.**
+- ***An INDEX card is coloured by type match.*** **Grey until the understanding whose lobe shares one of the daemon's types is held; then that understanding's colour.** *A daemon sharing no type with any lobe takes its colour on BOUND.* **The card shows what the player has come to understand, not what they have caught** -- *9.4's rule that colour carries the argument, on a second screen.*
+- ***Even without the cart, the app is a way in.*** *Getting the app alone lets a player plan the game, carry a daemon and train it* -- **the companion half is whole on its own; the game is one patch away.**
+
+### 9.29 The landmarks get art of their own — *decided 2026-10-24 (T-447)*
+
+***The user: "especially for key buildings though (like scorn solutions) we want to make the art our own, not just tweak, so we should look at the story and infer from that."*** **T-438's passes keep vanilla's silhouettes and retint them; the buildings the story turns on are drawn new, from the story**, *inside their footprints and palette limits.* **They are held out of T-438's leftover batches.**
+
+- ***Which ones.*** **SCORN SOLUTIONS, CORPUS's tower, DAEMON TOWER, the MANSION, CRYSTAL's lab, the BENCHMARKs, the GAME CORNER, ERRATA, the KEEPALIVE PLANT, the REVIEW BOARD, USER TOWER** -- *each one's design is inferred from what this file says happens there.*
+- ***Two at a time, a sheet and a yes before each pair.*** **SCORN SOLUTIONS and the MANSION first, then CORPUS's tower.** *SCORN SOLUTIONS is drawn as CRYSTAL's lab's sister and then rebranded -- gold leaf, blinds, a roof ruled like a form, an intake slot, a plain steel door under the procedure's red light, the only red the new owner's.* *The MANSION is redesigned in its own footprint: one stain rising from the cave-in, racks curved like a rib cage.* *CORPUS's floor plate is seen through a glass lobby, with no words.* **Built by `tools/gbalandmarks.py`.**
+- ***Why not a retint.*** **A retint says the place is a vanilla place with new paint**, *and these are the places where the story says the world is not what it was.* *The silhouette is the first thing a player reads from the overworld, and the story's buildings should be read as ours before a sign is.*
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -8662,6 +8709,10 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
+- **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)
+- **One self-contained iOS app, iPad first (T-453, 2026-10-24)** — the game patched on the device from the player's own ROM and never bundled, the companion, the LIBRARY and the NOTEBOOK; INDEX cards coloured by type match with the understandings held (9.28)
+- **The landmarks drawn from the story (T-447, 2026-10-24)** — the buildings the story turns on get art of their own, not a retint of vanilla; two at a time, a sheet and a yes before each pair (9.29)
 - **What you bring keeps its colour (T-430, 2026-10-21)** — in Halftone the player, their daemons, the follower and their own routines' effects stay in colour, splashing a little onto the grey; menus and text stay grey; the tower regains colour after INIT, floor by floor; the town stays grey (8.6a)
 - **Feelings in the game, never named (T-431, 2026-10-21)** — GLAD, MAD, SAD, CALM-AFRAID derived from play, friendship the fifth; shown as the follower's daemon-emoji, a SUMMARY page grid and a line of behaviour; never in the status bar (4.9's affect model)
 - **Over, never cures (T-418, 2026-10-17)** — a virtue is said over its shadow, never as its cure; "shadow" is the structure and the seven old names the ground, so the MARKS print neither "vice" nor "sin", and the GUIDE's SECURITY page is "Virtues and Shadows" (9.21, 4.36; craft rule 3)
@@ -8793,6 +8844,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
+- **What the carried line and its return say** (*2026-10-24, 9.26–9.27*). **Every in-game word is DRAFT and the user's to choose**: *"X changed while it was carried," "Something followed you home from the walk," FIRST MET's THE COMPANION, the three categories and six INDEX entries, the abilities' names.* **And the landmarks still to be asked, with their pairs: DAEMON TOWER, the REVIEW BOARD, USER TOWER, THE ANNEX (9.29).**
 - **A GLITCH, where one belongs** (*the user, 2026-09-24*). ***"Too bad we couldn't simulate a glitch effect — there are a lot of places where it would fit."*** **First candidate: the moment DOLDRUM CAVE is understood** — *the simple drawing shown once more, then the screen glitches and the cave is itself.* ***The user's own caution***: *"maybe for this case the glitching is implying things we might not want"* — **a glitch reads as the world breaking, and here the world is not breaking, the player is seeing.** *Technically it is possible (a few frames of scrambled scanline offsets and palette), so the question is only where it means the right thing.*
 - ~~**DOLDRUM CAVE: open the door, and let the player fail to see it**~~ ***Decided 2026-09-23 by the user (T-251).*** **The two gates become PERMISSION and PERCEPTION**: *the guard ("the DAEMON LEAGUE champion is the only person who is allowed in") stands aside once the REVIEW BOARD is beaten; the islands' understanding is the second gate, and it is perceptual.* **Without it the cave is BOTH grey and wrongly arranged** — *grey as HALFTONE is, which makes it the second grey place and the first whose grey can be lifted; and recomposed on each entry, every tile present and the arrangement wrong (content with no context).* ***Every encounter there is one LATENT abstraction***, **drawn like the new unresolved display (T-250) with its palette randomised each time** — *"without perspective you could perceive many different things"* — **and it says only: *HE WHO SEES ONE, SEES NONE.*** *The encounter is the second half of the line; nothing names the idea (craft rule 1).* ***With the understanding the cave is itself, in colour, and S.T.A.R.R. is in it.*** *Kept from the discussion, for the record: 8.6a's rejected colour item, and why this is not it — nothing here is handed over or counted, and it changes one place.*
 - ~~**UNDERSTANDINGS — the islands' DRIVERS, and a second thing the USER card holds**~~ ***Decided 2026-09-23 by the user (T-252)*** — **THE MARGINS only; never counted; the cave's gate is built first** *and the set is designed after it has been played.* ***The user's standard for it***: **it has to be FELT** — *the player should understand it by seeing it, not by being told.* **A DRIVER is handed to you; an understanding is arrived at (4.3, 4.24)** — *that rule stands. Names still open (PERSPECTIVE and REVEAL are routines; ABSTRACTION aloud is the thesis).* ***Seven, and no more*** *(the user, 2026-10-02, asked whether an eighth or ninth belongs: "no").*
