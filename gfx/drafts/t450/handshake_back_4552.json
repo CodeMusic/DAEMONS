@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t450/handshake_back_4552",
+ "prompt": "pure white background, pixel art game sprite of a single creature, a tiny baby sugar glider seen from behind peeking out of a small round cloth pouch bag, rear view, facing away from the viewer, back of the head and back of the round ears above the rim of the pouch, full body, soft shading, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "face, eyes, nose, mouth, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 4552,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 47.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 15:22:26"
+}

@@ -142,7 +142,8 @@ def species_table():
     # judges only what it can see (level, friendship, the hour, and the personality split Wurmple's line uses); items,
     # trades, BEAUTY and SHEDINJA's empty-slot copy stay the game's, marked "judged": false
     judged = {"LEVEL", "FRIENDSHIP", "FRIENDSHIP_DAY", "FRIENDSHIP_NIGHT", "LEVEL_ATK_GT_DEF", "LEVEL_ATK_EQ_DEF",
-              "LEVEL_ATK_LT_DEF", "LEVEL_SILCOON", "LEVEL_CASCOON", "LEVEL_NINJASK"}
+              "LEVEL_ATK_LT_DEF", "LEVEL_SILCOON", "LEVEL_CASCOON", "LEVEL_NINJASK",
+              "CARRIED"}   # T-450: the carried line grows only on the companion -- its param is the bond, not a level
     evos = {}
     for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{(.*?)\}\}", read("src/data/pokemon/evolution.h"), re.S):
         for method, param, target in re.findall(r"\{\s*EVO_(\w+)\s*,\s*(\w+)\s*,\s*SPECIES_(\w+)\s*\}?", m.group(2) + "}"):

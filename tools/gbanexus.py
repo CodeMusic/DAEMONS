@@ -275,6 +275,8 @@ def engine(made):
     def dex(t):
         names = ["    NATIONAL_DEX_%s," % name for _, name, *_ in RESIDENTS]
         t = put_block(t, "    NATIONAL_DEX_DEOXYS,", names)
+        if "BEGIN gbacarried" in t:     # T-450: the carried line comes after these eight, and the count is its last
+            return t
         return re.sub(r"#define NATIONAL_DEX_COUNT\s+NATIONAL_DEX_\w+",
                       "#define NATIONAL_DEX_COUNT  NATIONAL_DEX_%s" % RESIDENTS[-1][1], t)
     edit("include/constants/pokedex.h", dex)
