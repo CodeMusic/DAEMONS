@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t450/handshake_4501",
+ "prompt": "pure white background, pixel art game sprite of a single creature, full body, facing left three-quarter view, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text, a tiny round sugar glider baby curled up inside a small soft carrying pouch, big dark eyes, small ears, only its head and one tiny paw poking out of the pouch, the paw held out as if offering a handshake, shy and hopeful",
+ "negative": "photorealistic, 3d render, colorful, colored background, grey background, scenery, floor, ground, text, letters, watermark, multiple creatures, human, person, cropped, blurry, drop shadow, border",
+ "seed": 4501,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.6,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 10:42:40"
+}

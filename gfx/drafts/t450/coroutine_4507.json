@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t450/coroutine_4507",
+ "prompt": "pure white background, pixel art game sprite of a single creature, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, no shadow, no text, a flying squirrel gliding in mid air, spread eagle pose, arms and legs stretched wide apart, large furry skin flaps between wrists and ankles forming a wide square wing, big eyes, long fluffy tail, airborne, leaping",
+ "negative": "photorealistic, 3d render, colorful, colored background, grey background, dark background, green, grass, scenery, floor, ground, branch, hand, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, sitting, standing",
+ "seed": 4507,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.2,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 10:48:02"
+}

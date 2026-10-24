@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t450/coroutine_4503",
+ "prompt": "pure white background, pixel art game sprite of a single creature, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text, a flying squirrel style sugar glider seen from above mid-glide, all four legs stretched out wide to the sides with a broad flat skin membrane stretched between front and back legs like a square kite, a dark stripe down its back, long fluffy tail behind, head turned to look back",
+ "negative": "photorealistic, 3d render, colorful, colored background, grey background, dark background, green, grass, scenery, floor, ground, hand, fingers, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border",
+ "seed": 4503,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 10:45:10"
+}

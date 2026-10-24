@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t450/handshake_4505",
+ "prompt": "pure white background, pixel art game sprite of a single creature, full body, greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, small in the frame with empty space all around, no shadow, no text, a tiny baby sugar glider peeking out of a small round cloth pouch bag, only head and one small paw out of the pouch, the tiny paw reaching forward, huge dark eyes, a dark stripe on its forehead",
+ "negative": "photorealistic, 3d render, colorful, colored background, grey background, dark background, green, grass, scenery, floor, ground, hand, fingers, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border",
+ "seed": 4505,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.4,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 10:47:03"
+}
