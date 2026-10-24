@@ -131,6 +131,18 @@ def species_table():
         if all(got):
             base[m.group(1)] = [int(x.group(1)) for x in got]
 
+    # T-448 (C-184): how each species evolves, so a daemon carried on the companion can evolve there. The companion
+    # judges only what it can see (level, friendship, the hour, and the personality split Wurmple's line uses); items,
+    # trades, BEAUTY and SHEDINJA's empty-slot copy stay the game's, marked "judged": false
+    judged = {"LEVEL", "FRIENDSHIP", "FRIENDSHIP_DAY", "FRIENDSHIP_NIGHT", "LEVEL_ATK_GT_DEF", "LEVEL_ATK_EQ_DEF",
+              "LEVEL_ATK_LT_DEF", "LEVEL_SILCOON", "LEVEL_CASCOON", "LEVEL_NINJASK"}
+    evos = {}
+    for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{(.*?)\}\}", read("src/data/pokemon/evolution.h"), re.S):
+        for method, param, target in re.findall(r"\{\s*EVO_(\w+)\s*,\s*(\w+)\s*,\s*SPECIES_(\w+)\s*\}?", m.group(2) + "}"):
+            if target in ids:
+                evos.setdefault(m.group(1), []).append({
+                    "method": method, "param": int(param) if param.isdigit() else param,
+                    "target": ids[target], "judged": method in judged})
     native = native_values()
     out = {}
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
@@ -153,6 +165,7 @@ def species_table():
             "growth": growth.get(sp, 0),               # C-24: GROWTH_*, MEDIUM_FAST where a macro hides it
             "base": base.get(sp),                      # C-45: HP, Attack, Defense, Speed, Sp.Atk, Sp.Def
             "native": native_of(native.get("SPECIES_" + sp, 0)),   # T-407: the INDEX's NATIVE box, as data
+            "evolutions": evos.get(sp, []),            # T-448: method, param, target species id, judged by the companion?
         }
         out[str(sid)] = row
     # T-395: the save keeps an INDEX bit per national number up to NUM_SPECIES rounded to a byte (DEX_FLAGS_NO, 416);
