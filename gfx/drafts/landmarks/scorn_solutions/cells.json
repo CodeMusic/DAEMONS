@@ -1,0 +1,266 @@
+{
+ "title": "SCORN SOLUTIONS",
+ "map": "CinnabarIsland",
+ "footprint": [
+  5,
+  6,
+  7,
+  4
+ ],
+ "door": [
+  8,
+  9
+ ],
+ "kept": [
+  [
+   8,
+   9
+  ]
+ ],
+ "signs": [
+  [
+   9,
+   9
+  ],
+  [
+   10,
+   9
+  ]
+ ],
+ "row": 10,
+ "colours": {
+  "WHITE": "f0f2f8",
+  "STONE": "d8dce8",
+  "LINE": "b6bcd0",
+  "PLINTH": "96a0b4",
+  "SLATEL": "787a8c",
+  "SLATE": "585a70",
+  "OUT": "363c58",
+  "GLASSL": "a8c6ec",
+  "GLASS": "6892d2",
+  "BLIND": "dedac4",
+  "BLINDD": "aea892",
+  "LEAF": "fae280",
+  "GOLD": "d8ae48",
+  "GOLDD": "9c6c28",
+  "RED": "c6222c"
+ },
+ "cells": [
+  {
+   "cell": [
+    5,
+    6
+   ],
+   "was": 672,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    6
+   ],
+   "was": 701,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    6
+   ],
+   "was": 702,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    6
+   ],
+   "was": 683,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    6
+   ],
+   "was": 673,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    6
+   ],
+   "was": 674,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    6
+   ],
+   "was": 684,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    5,
+    7
+   ],
+   "was": 680,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    7
+   ],
+   "was": 681,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    7
+   ],
+   "was": 682,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    7
+   ],
+   "was": 691,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    7
+   ],
+   "was": 681,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    7
+   ],
+   "was": 682,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    7
+   ],
+   "was": 692,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    5,
+    8
+   ],
+   "was": 688,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    8
+   ],
+   "was": 689,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    8
+   ],
+   "was": 690,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    8
+   ],
+   "was": 699,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    8
+   ],
+   "was": 689,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    8
+   ],
+   "was": 690,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    8
+   ],
+   "was": 700,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    5,
+    9
+   ],
+   "was": 696,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    6,
+    9
+   ],
+   "was": 697,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    7,
+    9
+   ],
+   "was": 698,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    9,
+    9
+   ],
+   "was": 770,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    10,
+    9
+   ],
+   "was": 771,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    11,
+    9
+   ],
+   "was": 693,
+   "layer_type": 1
+  }
+ ]
+}

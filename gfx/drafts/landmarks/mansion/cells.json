@@ -1,0 +1,284 @@
+{
+ "title": "the MANSION",
+ "map": "CinnabarIsland",
+ "footprint": [
+  5,
+  0,
+  7,
+  5
+ ],
+ "door": [
+  8,
+  3
+ ],
+ "kept": [],
+ "signs": [],
+ "row": 11,
+ "colours": {
+  "ASHL": "ccc6bc",
+  "ASH": "a8a29a",
+  "ASHD": "807a76",
+  "SOOT": "585254",
+  "CHAR": "383238",
+  "VOID": "1e1a22",
+  "BRICK": "845442",
+  "RUST": "b27652",
+  "COIL": "d69c60",
+  "COILL": "f0ca8c",
+  "RACKD": "60687a",
+  "RACK": "929aaa",
+  "QSD": "707e96",
+  "QS": "bac6d8",
+  "QSL": "f6faff"
+ },
+ "cells": [
+  {
+   "cell": [
+    5,
+    0
+   ],
+   "was": 656,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    0
+   ],
+   "was": 655,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    0
+   ],
+   "was": 657,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    0
+   ],
+   "was": 655,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    0
+   ],
+   "was": 657,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    0
+   ],
+   "was": 655,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    0
+   ],
+   "was": 658,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    5,
+    1
+   ],
+   "was": 664,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    1
+   ],
+   "was": 663,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    1
+   ],
+   "was": 665,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    1
+   ],
+   "was": 663,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    1
+   ],
+   "was": 665,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    1
+   ],
+   "was": 663,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    1
+   ],
+   "was": 666,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    5,
+    2
+   ],
+   "was": 667,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    2
+   ],
+   "was": 668,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    2
+   ],
+   "was": 669,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    2
+   ],
+   "was": 651,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    2
+   ],
+   "was": 652,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    2
+   ],
+   "was": 653,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    2
+   ],
+   "was": 654,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    5,
+    3
+   ],
+   "was": 675,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    6,
+    3
+   ],
+   "was": 676,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    7,
+    3
+   ],
+   "was": 677,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    8,
+    3
+   ],
+   "was": 659,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    3
+   ],
+   "was": 660,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    10,
+    3
+   ],
+   "was": 661,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    11,
+    3
+   ],
+   "was": 662,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    7,
+    4
+   ],
+   "was": 670,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    8,
+    4
+   ],
+   "was": 671,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    9,
+    4
+   ],
+   "was": 678,
+   "layer_type": 1
+  }
+ ]
+}
