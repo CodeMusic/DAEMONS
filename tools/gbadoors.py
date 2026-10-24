@@ -376,12 +376,28 @@ DOORS = {
     "joyful_game_corner":     dict(kind="slide2", leaf=(1, 0, 14, 14)),
     "one_island_poke_center": dict(kind="slide2", leaf=(1, 0, 14, 14)),
     "rocket_warehouse":       dict(kind="slide2", leaf=(2, 1, 13, 14)),
-    "cinnabar_lab":           dict(kind="slide1", to="R", leaf=(0, 0, 15, 13)),
+    #  T-447 (the user, 2026-10-24): SCORN SOLUTIONS' glazed door becomes a plain steel one (gbalandmarks.py redraws
+    #  block 0x2AD in place, in the cinnabar tileset's row 10). Until that is built the closed door is today's glass
+    #  and slides as it always has; once every pixel of the closed door is in row 10, "redrawn" is taken instead --
+    #  a hinged steel leaf -- and plan() proposes row 10, so --write sets sDoorAnimPalettes_CinnabarLab to it.
+    "cinnabar_lab":           dict(kind="slide1", to="R", leaf=(0, 0, 15, 13),
+                                   redrawn=dict(row=10, kind="hinged", hinge="R", leaf=(2, 1, 13, 14),
+                                                room_avoid=[(198, 34, 44)])),
     "ss_anne":                dict(kind="hinged", hinge="R", leaf=(2, 13, 13, 30)),
     "teleporter":             dict(kind="slide1", to="L", leaf=(2, 12, 13, 27)),
     "cable_club":             dict(kind="slide1", to="R", leaf=(2, 12, 13, 30)),
     "dept_store_elevator":    dict(kind="lift", leaf=(0, 16, 15, 28)),
 }
+
+
+def redrawn_spec(spec, closed):
+    """a door another tool has redrawn (DOORS' "redrawn": the row its new closed block is drawn in, and how that one
+    opens) opens the new way only once its closed pixels are all in that row -- before then, as it always has"""
+    alt = spec.get("redrawn")
+    if alt and all(c[0] == alt["row"] for line in closed for c in line if c):
+        spec = dict(spec, **{k: v for k, v in alt.items() if k != "row"})
+        spec.pop("to", None)
+    return spec
 
 
 def spec_of(d):
@@ -407,17 +423,19 @@ def tile_of(x, y):
 class Row:
     """one palette row's fifteen usable colours (index 0 is transparent and never drawn into a door)"""
 
-    def __init__(self, pal):
+    def __init__(self, pal, avoid=()):
         self.pal = pal
         self.cols = [(i, pal[i]) for i in range(1, 16)]
-        by = sorted(self.cols, key=lambda ic: lum(ic[1]))
+        #  the room's colours are chosen from the row less any a door's spec keeps out of it ("room_avoid": T-447's
+        #  red is the procedure's light and nothing else, so it may not be the floor of the room behind the door)
+        by = sorted([ic for ic in self.cols if tuple(ic[1]) not in {tuple(a) for a in avoid}], key=lambda ic: lum(ic[1]))
         #  the room: the darkest colour, but not pure black where the row has a dark that is not -- a black hole
         #  reads as a hole in the picture, not a room
         dark = [c for _, c in by if lum(c) >= 20]
         self.void = dark[0] if dark and lum(dark[0]) < 90 else by[0][1]
         distinct = [c for _, c in by if dist(c, self.void) > 12 and lum(c) > lum(self.void)]
         self.floor = distinct[0] if distinct else self.void
-        lighter = [c for _, c in self.cols if lum(c) > lum(self.floor)] or [self.floor]
+        lighter = [c for _, c in by if lum(c) > lum(self.floor)] or [self.floor]
         self.spill = min(lighter, key=lambda c: abs(lum(c) - min(255, lum(self.floor) + 40)))   # light at the sill
 
     def nearest(self, c):
@@ -448,6 +466,8 @@ def open_frames(closed, rows_of, spec):
     #  tile of row 7 inside a room of row 9's slate.
     ref = collections.Counter(tuple(rows_of(x, y).pal) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)).most_common(1)[0][0]
     REF = next(rows_of(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1) if tuple(rows_of(x, y).pal) == ref)
+    if spec.get("room_avoid"):
+        REF = Row(REF.pal, avoid=spec["room_avoid"])
 
     def room(f):
         for y in range(y0, y1 + 1):
@@ -532,6 +552,7 @@ def plan(d, occ, vpng_cur):
     spec = spec_of(d)
     h = 16 if d["size"] == "1x1" else 32
     closed = closed_cells(o, d["size"])
+    spec = redrawn_spec(spec, closed)
     looks = {}
     for q in occ:
         k = tuple(tuple(c[2] if c else None for c in r) for r in closed_cells(q, d["size"]))
