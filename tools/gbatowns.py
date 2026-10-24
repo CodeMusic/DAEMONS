@@ -57,7 +57,9 @@ They go into the draft folder (palettes/NN.pal, metatiles.bin beside tiles.png) 
 A tile vanilla copied from primary/general (a ledge's end, a fence post) and drew in rows 0..6 is not redrawn here: it
 takes batch C's current drawing of the same general tile, flips and all, so it matches the ground around it.
 
-NOT TOUCHED. A DOOR's tiles (field_door.c's table): gbadoors.py derives each door's animation from its closed block, so
+NOT TOUCHED. A grove's TELL (T-337: gbagrove.py's SECONDARY_TELL, THE UNDERTONE's tile 10) is never redrawn here;
+after every redraw it is drawn again from its source tile's new pixels, so the little door stays on top of this art.
+A DOOR's tiles (field_door.c's table): gbadoors.py derives each door's animation from its closed block, so
 a door is redrawn by re-running gbadoors after a town is built. LAVENDER (HALFTONE) is grey by DaemonsIsHalftone() and
 keeps T-430's rules -- its look below must still read in grey. Every palette row MOVES does not name.
 
@@ -287,6 +289,19 @@ for _ms in MOVES.values():                     # i_f: `if` is a keyword
 KEEP_TILES = {"saffron_city": {789, 804, 805, 807}}
 
 
+def grove_tell(ts):
+    """T-337's grove tell in this tileset: {tile: (the tile it is drawn from, {(x, y): colour index})}, read from
+    tools/gbagrove.py's SECONDARY_TELL (THE UNDERTONE's and the BERRY FOREST's big tree, a little door down its trunk).
+    The tell is gbagrove's, not this tool's: its tiles are never redrawn here, and after every redraw each is drawn
+    again from its source tile's NEW pixels, so the door stays on top of this tool's art (batch F redrew the trunk,
+    tile 84, and left the tell a copy of vanilla's: check_generators --writes found gbagrove drifting)."""
+    import gbagrove
+    for sub, tiles, _ in gbagrove.SECONDARY_TELL.values():
+        if sub == "secondary/" + ts:
+            return tiles
+    return {}
+
+
 def lum(c):
     return 0.30 * c[0] + 0.59 * c[1] + 0.11 * c[2]
 
@@ -361,6 +376,8 @@ def apply_post(town, new):
             assert not set(mv["map"].values()) & set(mv["map"])
             for t in mv["tiles"]:
                 new[t - 640] = [mv["map"].get(c, c) for c in new[t - 640]]
+    for t, (src, edits) in grove_tell(town.ts).items():      # T-337: gbagrove's tell, over the new trunk
+        new[t] = [edits.get((k % 8, k // 8), new[src][k]) for k in range(64)]
     return new
 
 
@@ -491,7 +508,8 @@ class Town:
         nb = lambda t: any(self.now[t])
         self.left = {t for t in range(min(len(self.van), len(self.now)))
                      if self.now[t] == self.van[t] and nb(t) and self.draws[t]}
-        self.targets = self.left - self.door_tiles - {t - 640 for t in KEEP_TILES.get(self.ts, ())}
+        self.targets = self.left - self.door_tiles - {t - 640 for t in KEEP_TILES.get(self.ts, ())} - \
+            set(grove_tell(self.ts))
 
     def as_before(self, tiles):
         """read these tiles as vanilla's again (what they were before this tool drew them)"""

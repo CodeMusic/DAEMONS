@@ -1,0 +1,25 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch F's next four (tools/gbatowns.py, with palette moves): ARDOR (the pantiled houses, the pier), HALFTONE grey as it is and in colour (sDaemonsHalftoneInColour poked: no DEBUG event turns it on; the battle's PERSPECTIVE flash is the only caller), VERDIGRIS (the store and the blocks, the mansion), BRAZEN (the plaza and the tower, the south row and the dojo), and THE UNDERTONE's grove tree with its tell back (T-337). Watch held at day, clear weather, summer. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "ARDOR: the pantiled houses and the hall", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1", "poke gDaemonsSeasonOverride 8 3",
+   "goto VermilionCity 20 12", "repel 999", "close", "wait 40", "shot the pantiled houses and the hall"]},
+  {"stop": "ARDOR: the S.S. ANNE pier, the harbour lights", "steps": [
+   "goto VermilionCity 23 31", "close", "wait 40", "shot the pier"]},
+  {"stop": "HALFTONE: grey, as it always is", "steps": [
+   "goto LavenderTown 13 10", "close", "wait 40", "shot HALFTONE grey"]},
+  {"stop": "HALFTONE: in colour (poked)", "steps": [
+   "poke sDaemonsHalftoneInColour 8 1", "goto LavenderTown 12 8", "close", "wait 40", "shot HALFTONE in colour",
+   "poke sDaemonsHalftoneInColour 8 0"]},
+  {"stop": "VERDIGRIS: the store, the blocks, the fountain", "steps": [
+   "goto CeladonCity 22 13", "close", "wait 40", "shot VERDIGRIS's centre",
+   "goto CeladonCity 36 22", "close", "wait 40", "shot the mansion"]},
+  {"stop": "BRAZEN: the plaza and the tower", "steps": [
+   "goto SaffronCity 25 18", "close", "wait 40", "shot the plaza and the tower",
+   "goto SaffronCity 32 33", "close", "wait 40", "shot the south row and the dojo"]},
+  {"stop": "THE UNDERTONE: the grove tree's tell (T-337)", "steps": [
+   "goto ViridianForest 29 59", "repel 999", "close", "wait 40", "shot the grove tree, its little door"]}
+ ]
+}

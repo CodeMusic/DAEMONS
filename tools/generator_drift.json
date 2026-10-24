@@ -1,10 +1,4 @@
 {
- "ai_models": {
-  "why": "THE MACHINE, not the tree -- it asks LM Studio on roverbyteseer which vision models it has and in what order (loaded ones first), so its block in config.yaml follows whatever that machine holds that day; 2026-10-22 the same five models came back with gemma-3-4b (loaded) first, a reorder only. Write it on purpose when the machine's models change, never from a sweep.",
-  "files": [
-   "docs:ai/litellm/config.yaml"
-  ]
- },
  "gbablanche": {
   "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by fb6f7ec66 No seams on Route 1 and Route 21; the station; GOTO; no GYM (T-72..T-7",
   "files": [
