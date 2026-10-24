@@ -751,3 +751,45 @@ T-445 DRAFT: the eleven cave entrances painted, OTHER CAVE in four lights. Appro
 T-445 DRAFT: the eleven cave entrances painted, OTHER CAVE in four lights. Approved with STILLFALL, THE DOTS and SMOULDER fixed first.
 
 ![23Oct2026 - T445 - painted cave entrances draft - 125](23Oct2026%20-%20T445%20-%20painted%20cave%20entrances%20draft%20-%20125.png)
+
+### 23Oct2026 - T445 - cave previews built - 126
+
+T-445 built (v11.309.12): STILLFALL, THE DOTS and SMOULDER fixed; every cave's preview in the theatre; OTHER CAVE's five visits, the preview in each light.
+
+![23Oct2026 - T445 - cave previews built - 126](23Oct2026%20-%20T445%20-%20cave%20previews%20built%20-%20126.png)
+
+### 23Oct2026 - T445 - cave previews built - 127
+
+T-445 built (v11.309.12): STILLFALL, THE DOTS and SMOULDER fixed; every cave's preview in the theatre; OTHER CAVE's five visits, the preview in each light.
+
+![23Oct2026 - T445 - cave previews built - 127](23Oct2026%20-%20T445%20-%20cave%20previews%20built%20-%20127.png)
+
+### 23Oct2026 - T445 - cave previews built - 128
+
+T-445 built (v11.309.12): STILLFALL, THE DOTS and SMOULDER fixed; every cave's preview in the theatre; OTHER CAVE's five visits, the preview in each light.
+
+![23Oct2026 - T445 - cave previews built - 128](23Oct2026%20-%20T445%20-%20cave%20previews%20built%20-%20128.png)
+
+### 23Oct2026 - T445 - cave previews built - 129
+
+T-445 built (v11.309.12): STILLFALL, THE DOTS and SMOULDER fixed; every cave's preview in the theatre; OTHER CAVE's five visits, the preview in each light.
+
+![23Oct2026 - T445 - cave previews built - 129](23Oct2026%20-%20T445%20-%20cave%20previews%20built%20-%20129.png)
+
+### 23Oct2026 - T438 - batch F next four revised - 130
+
+T-438 batch F DRAFT revised: ARDOR, HALFTONE, VERDIGRIS, BRAZEN with the palette moves the user approved.
+
+![23Oct2026 - T438 - batch F next four revised - 130](23Oct2026%20-%20T438%20-%20batch%20F%20next%20four%20revised%20-%20130.png)
+
+### 23Oct2026 - T438 - batch F next four revised - 131
+
+T-438 batch F DRAFT revised: ARDOR, HALFTONE, VERDIGRIS, BRAZEN with the palette moves the user approved.
+
+![23Oct2026 - T438 - batch F next four revised - 131](23Oct2026%20-%20T438%20-%20batch%20F%20next%20four%20revised%20-%20131.png)
+
+### 23Oct2026 - T438 - batch F next four revised - 132
+
+T-438 batch F DRAFT revised: ARDOR, HALFTONE, VERDIGRIS, BRAZEN with the palette moves the user approved.
+
+![23Oct2026 - T438 - batch F next four revised - 132](23Oct2026%20-%20T438%20-%20batch%20F%20next%20four%20revised%20-%20132.png)
