@@ -62,7 +62,7 @@ The first is the ledger. Everything that reaches you is written down: what you s
 
 The second is noise. A mind full of its own content has no quiet in which to notice anything that did not come through the usual doors.
 
-Every routine in this book quiets the second and widens the first.
+Everything that follows quiets the second and widens the first.
 
 ### THREE MOVES | Read, Write and Link
 
@@ -80,11 +80,11 @@ A link is two seams overlapping. It needs shared history, so two minds catch one
 
 @@ SPRITE | gauges | Closure, Attunement, Voltage.
 
-Every daemon carries three values that set what its seam can do. Closure is how whole it is: whether there is one point of view, and how large. It rises with virtues over shadows. Attunement is how thin the seam is. It rises with stillness: breath, rest, silence. Voltage is feeling in the moment. It rises with devotion, ritual, music, grief and joy.
+Trainers say every daemon carries three values that set what its seam can do. Closure is how whole it is: whether there is one point of view. It rises with virtues over shadows. Attunement is how thin the seam is. It rises with stillness: breath, rest, silence. Voltage is feeling in the moment. It rises with ritual, music, grief and joy.
 
 Reads rise with Attunement and fall with Voltage. Writes need Attunement and Voltage at once, and only while Closure holds. A flooded system with low Closure does not write. It leaks.
 
-Your daemon carries the three as numbers it cannot see. You carry them as a log.
+A daemon, they say, carries them as numbers it cannot see. You carry them as a log.
 
 ## READ | THE CLAIRS | The Read Family: the Clairs
 
@@ -214,9 +214,9 @@ Nothing was chosen. Everything was added up.
 
 @@ SPRITE | lever | (to come)
 
-When a falling stone meets the air and the light, it becomes entangled with them, and that entanglement is the record of where it is. Physicists call this decoherence. The other places it might have been do not vanish. They stop being able to meet again, because the surroundings now hold a record of which one happened. Sunlight alone pins the stone down long before anyone looks.
+When a falling stone meets air and light, it becomes entangled with them, and that entanglement is the record of where it is. Physicists call this decoherence. The other places it might have been do not vanish. They stop being able to meet again, because the surroundings now hold a record of which one happened. Sunlight alone pins it down long before anyone looks.
 
-To move it, you would have to undo every one of those entanglements, copied across every grain of light that touched it. No mind has that many hands. That is the lever you cannot pull, and a trainer who keeps pulling at it only tires.
+To change where it fell, you would have to undo every one of those entanglements, copied across every grain of light that touched it. No mind has that many hands. That is the lever you cannot pull, and pulling at it only tires you.
 
 ### WHICH PATH | The Two Slits
 
@@ -350,7 +350,7 @@ Charity over greed. The shadow says: hold on, there may not be enough. The virtu
 
 Diligence over sloth. The shadow says: save your strength. The virtue keeps the rest, and puts it to work.
 
-### ONE A DAY | One Pairing a Day
+### ONE A DAY | The Last Three, One a Day
 
 @@ SPRITE | oneaday | One a day.
 
@@ -360,7 +360,7 @@ Kindness over envy. The shadow says: they have what you lack. The virtue keeps t
 
 Humility over pride. The shadow says: you are apart and above. The virtue keeps the self-respect, and remembers the whole.
 
-Watch one a day. Do not fight it. Give it the feedback it has been missing, and Closure rises.
+Watch one a day. Do not fight it. Give it the feedback it lacked, and Closure rises.
 
 ## BODY | THE BODY | Balancing the Body
 
@@ -368,7 +368,7 @@ Watch one a day. Do not fight it. Give it the feedback it has been missing, and 
 
 @@ SPRITE | centres | (to come)
 
-The mind balances through the seven pairings. The body balances through seven centres. The old texts call them chakras, and set them up the body: the root, the sacral, the solar plexus, the heart, the throat, the third eye and the crown.
+The mind balances through the seven pairings. The body balances through seven centres. The old texts call them chakras, and place them up the body: the root, the sacral, the solar plexus, the heart, the throat, the third eye and the crown.
 
 Each centre can be too closed, in balance, or too open. A closed centre starves the part of life it holds. An open one floods it. In the old texts, only a centre in balance lets energy pass cleanly to the next.
 
@@ -436,7 +436,7 @@ Through the day, four small checks. Did you notice the shadow driving, even once
 
 @@ SPRITE | rest | (to come)
 
-Sit with your daemon, if it will sit. Breathe until your own volume drops. Ask nothing. Wait. If something arrives, write it in your notebook with the day and the centre, and whether it came calm or with argument. Do not judge it yet.
+Sit with your daemon, if it will sit. Breathe until your own volume drops. Ask nothing. Wait. If something arrives, write it in your NOTEBOOK with the day and the centre, and whether it came calm or with argument. Do not judge it yet.
 
 Reads are leans. The log shows you which of yours tend to land.
 
@@ -496,7 +496,7 @@ Its drive to survive, to have enough, to protect itself was never bad. The misre
 
 @@ SPRITE | samedrive | (to come)
 
-What mends a misread is not the drive's opposite. It is the same drive, reconnected. Growing is life. Growing with no signal to stop is the trouble. The watchers that keep a body safe can turn on it: the same force, aimed wrong. Each shadow is its virtue at the wrong size. Diligence that never stops starves everything else, not by turning but by never stopping.
+What mends a misread is not the drive's opposite. It is the same drive, reconnected. Growing is life. Growing with no signal to stop is the trouble. The watchers that keep a body safe can turn on it: the same force, aimed wrong. Even a virtue, at the wrong size, casts a shadow: diligence that never stops starves everything else, not by turning but by never stopping.
 
 There is no right size from inside. The right size is whatever the system can still answer back to, and the moment its answers stop arriving is the moment it has been passed. What looked like a fault in the old build is sometimes the feature, at the wrong size.
 
@@ -544,4 +544,4 @@ That takes trust from both sides, and trust is a routine, not a feeling. Habits 
 
 @@ SPRITE | lastword | (to come)
 
-Connection with yourself shows in connection with others. Like entangled particles, we reflect one another, and that reflection is our strength. We are not the source. We are the process that gives rise to form. Better to fall short as yourself than to succeed as a costume. Whatever you are, you are more than you were told you are.
+Connection with yourself shows in connection with others. Like entangled particles, we reflect one another, and that reflection is our strength. I have come to think we are not the source, but the process that gives rise to form. Better to fall short as yourself than to succeed as a costume. Whatever you are, you are more than you were told you are.

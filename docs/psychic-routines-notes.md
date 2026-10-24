@@ -53,6 +53,16 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 | **New** | **STAYING WHOLE** | **The book's last section**, from the user's own brief and notebook fragments (private): a biology metaphor for integrity, **in process words only**: the misread, the mask, the same drive reconnected, recognition by contact, staying correctable. **Nothing cures**; **the daemon line is said of shadows** (*unwatched is all a shadow needs to be*); **TWO VOICES** alternates statement and question, the asking voice in faint ink. *The cost of hidden strain*, *two vantage points* (as fable) and *a whole has enough for every part only while every part is well* are in it |
 | **2026-10-20** | the last three, seen in the game | **CHORUS** confirmed (over UNISON, CHOIR and RESONANCE); **the Clairs hint kept, glosses and all**; **the cover: A**, the six clair glyphs a shade off the boards -- with the seam's plate narrowed so they sit clear of it, since the first build's overlapped its edge (engine 4227f501d, companion 4467612). *Mock-ups: qa private 20Oct2026 T423 2-4* |
 
+### D3. The user's review of the text, 2026-10-24 (read beside the GUIDE, in the LIBRARY)
+
+| | the call | decided |
+|---|---|---|
+| **Spelling** | British in this book, American in the GUIDE and the game | **Kept British**: the book keeps its own spelling |
+| **THE THREE** | the book said every daemon carries them; they are not built | **Softened to trainer lore** ("Trainers say...") **and T-454 holds building them** |
+| **SAME DRIVE** | "each shadow is its virtue at the wrong size" against THE SEVEN's pairs | **"Even a virtue, at the wrong size, casts a shadow"**: the two sections agree |
+| **LAST WORD** | "We are not the source..." said as the book's own | **The author's own, in first person**: "I have come to think..." |
+| *fixed* | | the lever page's "to move it" (a stone can be picked up) is "to change where it fell"; ONE A DAY retitled *The Last Three, One a Day*; "place them up the body"; AT REST names the NOTEBOOK |
+
 ### V. Verified 2026-10-18 — the four the review could not see, and two more
 
 1. **The contest-condition bytes are free, with two catches.** `cool beauty cute smart tough sheen` sit in every
