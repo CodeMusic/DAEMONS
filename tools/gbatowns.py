@@ -340,6 +340,12 @@ LANDMARKS = {
                         ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)")],
     "sevii_islands_67": [("SevenIsland_TrainerTower", 54, 0, 9, 9, "USER TOWER"),
                          ("BirthIsland_Exterior", 10, 7, 11, 9, "THE ANNEX's triangle")],
+    #  T-447's second pair (drafted 2026-10-24): CORPUS's tower, and its copy on the crossings' layout; DAEMON TOWER,
+    #  whose top is ROUTE 10's rows 72..79
+    "saffron_city": [("SaffronCity", 29, 16, 9, 15, "CORPUS's tower"),
+                     ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
+    "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
+                      ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],
 }
 
 

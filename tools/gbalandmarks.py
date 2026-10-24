@@ -8,6 +8,7 @@
                                                         #   gfx/drafts/landmarks/<tileset>/ (tiles.png, metatiles.bin,
                                                         #   metatile_attributes.bin, the map's map.bin, the new .pal rows)
     python3 tools/gbalandmarks.py --draft --sheets DIR  # and the review sheets in DIR (t447b_*.png)
+    python3 tools/gbalandmarks.py --only saffron_city ...  # one tileset's group only
     python3 tools/gbalandmarks.py --write --approved    # into the engine -- REFUSES without --approved, and writes only
                                                         #   the landmarks in APPROVED (the first pair, approved 2026-10-24)
 
@@ -58,6 +59,22 @@ WHERE IT GOES, measured rather than assumed (the census in the report proves eac
 
   NEIGHBOURS. ROUTE 21 South joins at the top edge and ROUTE 20 at the right; both draw with this same secondary
   tileset, so a new block draws the same from either side (engine.md trap 14).
+
+THE SECOND PAIR (drafted 2026-10-24, NOT approved; GROUPS below, one per tileset):
+
+  CORPUS's tower (BRAZEN, SaffronCity 9x15 at (29,16), and its copy on SaffronCity_Connection at (19,9)). Solid brass
+  sheet and rivets in BRAZEN's own brass, one grid of identical lit windows (one 8x16 module), a stepped crown of
+  three tiers with one thin red band, and a glass lobby through which the dark plate in the floor is seen -- with no
+  words on it, ever. The door (33,30) is KEPT whole (SILPH's sliding glass door, its frames unchanged). Its row 9 is
+  drawn by the tower alone, so the tower takes all of it. BRAZEN has no free tile: the tower owns 53, and draws 49.
+
+  DAEMON TOWER (HALFTONE, LavenderTown 7x7 at (15,0) + ROUTE 10's rows 72..79, its top). Black halftone dots on white
+  on a 45 degree screen, a speck at the top and merging at the foot; seven bands of identical niches, a light in each
+  (a columbarium or a rack); a flat roof and a mast with one light. The doorway (18,6) is drawn as the MANSION's. Row 7
+  (unused) indices 1..9; 10..15 and the free slots past -num_tiles are left for the KEEPALIVE PLANT.
+
+  Both pair-2 groups REUSE blocks: identical cells share a block, written first over the blocks only the landmark drew
+  (never one metatile_labels.h names), so a big footprint does not eat the tileset's 384.
 
   gbatowns.py's LANDMARKS table keeps these boxes out of T-438's town passes; OWNS below is this tool's claim on the
   same boxes, and the report fails if the two disagree (it reads the table, it does not import that tool: trap 16).
@@ -467,11 +484,316 @@ def draw_mansion():
     return k
 
 
-LANDMARKS_HERE = [(SCORN, draw_scorn), (MANSION, draw_mansion)]
-TILESET = dict(dir="cinnabar_island", symbol="gTileset_CinnabarIsland", layout="CinnabarIsland_Layout")
-#  this tool's claim; gbatowns.py's LANDMARKS keeps the same boxes out of its passes
+# ============================================================================================ CORPUS's tower
+#  9x15 cells: 144x240. Canvas rows 0..15 are the walkable row behind the crown (SaffronCity y 16); 16..239 the tower.
+#  THE BUDGET IS THE DESIGN: BRAZEN's tileset is full -- the tower owns 55 tiles and there is not one free slot -- so
+#  the whole tower is a handful of modules on the 8px grid, symmetric about its middle seam (x 72), so the right half
+#  is the left half's tiles flipped: one window module (8x16) repeated 16 across and 7 floors up, one pier, one deck
+#  panel, one face per tier. The door cell (33,30) is KEPT, block and tiles: METATILE_SaffronCity_SilphCoDoor, the
+#  glass sliding door, whose frames (silph_co, primary row 3) need no redraw; the lobby's glass is drawn in its colours.
+CORPUS_ROW = 9
+CORPUS_COLOURS = [  # row 9 is drawn by the tower and by nothing else on either layout, so the tower takes all of it
+    ("BRASSL", (247, 231, 156)),   # brass, lit -- BRAZEN's own brass (row 11's roofs, batch F), so it is one metal
+    ("BRASS",  (231, 198, 90)),    # brass
+    ("BRASSM", (198, 156, 57)),    # brass in shade, the sheets' seams
+    ("BRASSD", (156, 115, 41)),    # brass, deep; a rivet's shadow
+    ("BRONZE", (107, 74, 24)),     # the base metal under it, the plinth
+    ("OUT",    (58, 40, 26)),      # outline
+    ("LIGHTL", (255, 248, 214)),   # a lit window -- every one, all night
+    ("LIGHT",  (236, 218, 160)),   # its lower pane; the lit lobby's back wall
+    ("RED",    (198, 34, 44)),     # the one thin band (4.4: his red, never named)
+    ("GLASSL", (156, 213, 255)),   # the lobby's glass: primary row 3's, the door's own glass, so they are one pane
+    ("GLASS",  (115, 189, 246)),
+    ("GLASSD", (74, 131, 197)),
+    ("PLATE",  (34, 30, 38)),      # the plate cast into the floor. No words: nothing is drawn on it
+    ("FLOOR",  (226, 220, 200)),   # the lobby floor
+    ("FLOORD", (176, 168, 150)),   # its seams
+]
+CORPUS = dict(name="corpus_tower", title="CORPUS's tower", map="SaffronCity", x0=29, y0=16, w=9, h=15,
+              door=(33, 30), keep=[(33, 30)], inplace=[], signs=[], row=CORPUS_ROW, colours=CORPUS_COLOURS,
+              #  SaffronCity_Connection is the city again, offset (10, 7), drawn when the player stands on a crossing
+              #  route: its tower cells are pointed at the same new blocks, so the two can never disagree
+              mirrors=[("SaffronCity_Connection_Layout", 10, 7)],
+              crop=[("SaffronCity_Layout", 27, 15, 13, 17)],
+              caption=["Solid brass, sheet and rivets, no glass pretending to be anything: BRAZEN's own brass (row 11's), "
+                       "the purest in the city.",
+                       "One grid of identical windows -- sixteen across, seven floors -- and every one lit: running "
+                       "unattended.",
+                       "A stepped crown, three tiers, and one thin red band round the top one: the tower's only red.",
+                       "At street level a glass lobby, and through it, from the street, the dark plate cast into the "
+                       "floor. Nothing is written on it."],
+              door_note=["THE DOOR (33,30): KEPT, block 0x2BC and its tiles --",
+                         "SILPH's glass sliding door; its frames (silph_co,",
+                         "primary row 3) are unchanged, so nothing to redraw.",
+                         "The lobby's glass is drawn in the door's own blues."])
+#  the crown's three tiers, widest first: (x0, x1, the deck's back edge, the face's top, the face's height). Every edge
+#  is on the 8px grid, so a tier costs its corners and nothing else.
+CORPUS_TIERS = ((0, 143, 16, 80, 16), (24, 119, 8, 56, 8), (48, 95, 0, 32, 8))
+
+
+def draw_corpus():
+    W, H = 144, 240
+    k = Canvas(W, H, role_map(CORPUS_COLOURS))
+    R = k.rect
+
+    def rivet(x, y):                                          # a rivet: a 2px head lit on top, its shadow under it
+        k.hline(x, x + 1, y, "BRASSL")
+        k.hline(x, x + 1, y + 1, "BRASSD")
+
+    # --- THE CROWN: three tiers stepped back, each a deck of riveted sheet seen from above and a face, widest first
+    for x0, x1, top, face, fh in CORPUS_TIERS:
+        R(x0, top, x1, face - 1, "OUT")
+        for y in range(top + 1, face):                        # the sheets: 16px panels, seamed and riveted
+            for x in range(x0 + 1, x1):
+                py, px_ = y % 16, x % 16
+                role = "BRASS"
+                if py == 15:
+                    role = "BRASSM"                           # a seam across
+                elif px_ in (7, 8):
+                    role = "BRASSM" if py else "BRASSL"       # a seam down (two sheets' edges, about the middle)
+                elif py == 0:
+                    role = "BRASSL"                           # each sheet's lit back edge
+                elif py == 12 and x % 8 in (3, 4):
+                    role = "BRASSL"                           # a row of rivets along each sheet's front
+                elif py == 13 and x % 8 in (3, 4):
+                    role = "BRASSD"
+                k.px(x, y, role)
+        k.hline(x0 + 1, x1 - 1, top + 1, "BRASSL")            # the deck's lit back edge
+        # the face: a band of sheet, lit on its lip, riveted, shadowed at its foot
+        f0, f1 = face, face + fh - 1
+        R(x0, f0, x1, f1, "OUT")
+        R(x0 + 1, f0, x1 - 1, f1, "BRASSM")
+        k.hline(x0 + 1, x1 - 1, f0, "BRASSL")
+        k.hline(x0 + 1, x1 - 1, f0 + 1, "BRASS")
+        k.hline(x0 + 1, x1 - 1, f1, "BRASSD")
+        if fh >= 16:
+            for x in range(x0 + 3, x1 - 3, 8):
+                rivet(x, f0 + 5)
+                rivet(x, f0 + 10)
+        k.vline(x0, f0, f1, "OUT"); k.vline(x1, f0, f1, "OUT")
+    #  each upper tier's shadow on the deck in front of it
+    for x0, x1, top, face, fh in CORPUS_TIERS[1:]:
+        k.hline(x0, x1, face + fh, "BRASSD")
+        k.hline(x0 + 1, x1 - 1, face + fh + 1, "BRASSM")
+    #  THE ONE THIN RED BAND, round the top tier's face, and nowhere else in the city
+    x0, x1, top, face, fh = CORPUS_TIERS[2]
+    k.hline(x0 + 1, x1 - 1, face + 3, "RED")
+    k.hline(x0 + 1, x1 - 1, face + 4, "RED")
+
+    # --- THE FACE: one grid of identical windows, every one lit; brass between, riveted
+    F0, F1 = 96, 207
+    for y in range(F0, F1 + 1):
+        my = (y - F0) % 16
+        for x in range(8, 136):
+            mx = (x - 8) % 8
+            if my == 15:
+                role = "BRASSD"                                       # the floor's seam
+            elif my == 0:
+                role = "BRASSL"
+            elif 2 <= my <= 11 and 1 <= mx <= 6:
+                if my == 2 or mx in (1, 6):
+                    role = "OUT"                                      # the window's reveal
+                elif my >= 9:
+                    role = "LIGHT"                                    # the lower pane, warmer
+                else:
+                    role = "LIGHTL"
+            elif my == 12 and 1 <= mx <= 6:
+                role = "BRASSL"                                       # the sill
+            elif my == 14 and mx in (3, 4):
+                role = "BRASSD"
+            elif my == 13 and mx in (3, 4):
+                role = "BRASSL"                                       # a rivet under each window
+            else:
+                role = "BRASS"
+            k.px(x, y, role)
+    for x0 in (0, 136):                                               # the corner piers, and the outline
+        R(x0, F0, x0 + 7, 239, "BRASS")
+    for y in range(F0, 240):
+        k.px(0, y, "OUT"); k.px(143, y, "OUT")
+        k.px(1, y, "BRASSL"); k.px(142, y, "BRASSD")
+        k.px(7, y, "BRASSM"); k.px(136, y, "BRASSM")
+    for y in range(F0 + 4, 232, 8):
+        rivet(3, y); rivet(139, y)
+
+    # --- THE BASE: brass piers either side, and between them the glass lobby
+    B0 = 208
+    R(8, B0, 31, 239, "BRASS"); R(112, B0, 135, 239, "BRASS")
+    for y in range(B0, 240):
+        k.px(31, y, "BRASSD"); k.px(112, y, "BRASSD")
+    for y in range(B0 + 4, 232, 8):
+        for x in (11, 19, 27):
+            rivet(x, y); rivet(143 - x - 1, y)
+    k.hline(1, 142, B0, "BRASSD")                             # the last floor's seam, over the base
+    R(1, 232, 142, 239, "BRONZE")                             # the plinth: the base metal, unplated
+    k.hline(1, 142, 232, "BRASSD")
+    k.hline(0, 143, 239, "OUT")
+    #  the lobby: a brass fascia, then glass, and through the glass the lit hall and its floor
+    L0, L1 = 32, 111
+    R(L0 - 2, B0 + 1, L1 + 2, B0 + 5, "BRASSM")
+    k.hline(L0 - 2, L1 + 2, B0 + 1, "BRASSL")
+    k.hline(L0 - 2, L1 + 2, B0 + 5, "OUT")
+    for x in range(L0 + 2, L1 - 1, 8):
+        rivet(x, B0 + 2)
+    G0 = B0 + 6                                               # 214: the glass's top
+    R(L0, G0, L1, 239, "LIGHT")                               # the lit hall's back wall
+    k.hline(L0, L1, G0, "GLASSL"); k.hline(L0, L1, G0 + 1, "GLASS")   # the glass's lit head
+    FL = 226                                                  # where the floor meets the back wall
+    R(L0, FL, L1, 238, "FLOOR")
+    k.hline(L0, L1, FL, "FLOORD")
+    k.hline(L0, L1, 238, "FLOORD")
+    #  THE PLATE: dark, cast into the floor, seen from the street through the glass. Nothing is written on it.
+    cx, cy, rx, ry = 72, 232, 32, 5
+    for y in range(FL + 1, 238):
+        for x in range(L0, L1 + 1):
+            d = ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2
+            if d <= 0.62:
+                k.px(x, y, "PLATE")
+            elif d <= 1:
+                k.px(x, y, "BRONZE")                          # its cast rim, worn
+            elif d <= 1.4:
+                k.px(x, y, "OUT")                             # the joint where it is set into the floor
+    #  the mullions, the frame, the threshold
+    for x in (L0, L1):
+        k.vline(x, G0, 239, "OUT")
+    for x in (47, 48, 95, 96):
+        k.vline(x, G0, 238, "GLASSD")
+    k.hline(L0, L1, 239, "OUT")
+    return k
+
+
+# ============================================================================================ DAEMON TOWER
+#  7x15 cells: 112x240, ONE tower on two maps -- canvas cell rows 0..7 are ROUTE 10's rows 72..79 (its top: vanilla's
+#  dome, which ROUTE 10 draws and LAVENDER shows over the seam), 8..14 LAVENDER's rows 0..6. Rows 72-73 are walkable:
+#  the mast and the roof's back edge stand over the ground there, as the dome did. The door (18,6) is a plain doorway
+#  (MB 0x60, no animation): redrawn, its dark below and its frame above, as the MANSION's.
+#  HALFTONE greys the whole palette while the town is unperceived (DaemonsIsHalftone), so it must read in grey alone:
+#  two tones only, black dots on white, the dots growing down the tower. Its screen is one dot per 8px, on a 45 degree
+#  lattice (centres and corners), so each 8px row of the tower is ONE tile across and its mirror at the edges.
+DTOWER_ROW = 7
+DTOWER_COLOURS = [  # indices 1..9 of row 7 (unused, all 0000ff); 10..15 are left for the KEEPALIVE PLANT (same tileset)
+    ("PAPER",  (238, 236, 242)),   # the paper: the tower's white
+    ("PAPERS", (198, 194, 208)),   # paper in shade: the roof's parapet
+    ("INK",    (40, 36, 52)),      # the dots
+    ("OUT",    (22, 20, 30)),      # outline; the doorway's dark
+    ("NICHE",  (70, 64, 84)),      # inside a niche
+    ("SHELF",  (164, 160, 176)),   # the band the niches are cut into
+    ("SHELFD", (112, 106, 124)),   # its shadow
+    ("GLOW",   (252, 206, 120)),   # the light in each niche: a candle, or a status lamp
+    ("GLOWD",  (178, 124, 70)),    # its warmth on the niche's floor
+]
+DTOWER = dict(name="daemon_tower", title="DAEMON TOWER", map="LavenderTown", x0=15, y0=0, w=7, h=7, door=(18, 6),
+              keep=[], inplace=[], signs=[], row=DTOWER_ROW, colours=DTOWER_COLOURS, cy0=8,
+              #  the tower's top is ROUTE 10's (rows 72..79), drawn into the same canvas above
+              parts=[("Route10_Layout", 15, 72, 7, 8, 0, 0)],
+              lintel=lambda k, x, y: not (50 <= x <= 61 and y >= 225),
+              crop=[("Route10_Layout", 14, 70, 9, 10), ("LavenderTown_Layout", 14, 0, 9, 8)],
+              caption=["Built of halftone: black dots on white, a speck at the top and merging into black at the "
+                       "foot -- a grey gradient from the road, discrete marks up close.",
+                       "Seven bands of identical niches, a light in each: a columbarium, or a rack. The building does "
+                       "not settle it.",
+                       "A flat roof, and a mast with one light at its tip: a vigil, or an aircraft lamp.",
+                       "One tower on two maps: its top is ROUTE 10's rows 72..79 (vanilla's dome), redrawn with it.",
+                       "Grey while HALFTONE is unperceived (DaemonsHalftoneMix); its colours only after INIT. Row 7, "
+                       "1..9 only: 10..15 are the KEEPALIVE PLANT's."],
+              door_note=["THE DOOR (18,6): a plain doorway (MB 0x60,",
+                         "no animation), drawn as the MANSION's -- its dark",
+                         "below, its frame above the player. No frames."])
+DTOWER_BANDS = (64, 88, 112, 136, 160, 184, 208)     # the seven bands of niches, each one tile row
+DTOWER_F0 = 40                                        # the facade's top (the roof above it, seen from above)
+
+
+def dtower_r(y):
+    """the dot's radius at height y: a speck at the top, merging into black at the foot"""
+    t = min(1.0, max(0.0, (y - DTOWER_F0) / (232 - DTOWER_F0)))
+    return 0.6 + 3.6 * t ** 1.4
+
+
+def draw_dtower():
+    import math
+    W, H = 112, 240
+    k = Canvas(W, H, role_map(DTOWER_COLOURS))
+    R = k.rect
+    # --- the mast, over the walkable row, with one light at its tip (a vigil, or an aircraft lamp)
+    R(55, 6, 56, 25, "INK")
+    k.hline(54, 57, 13, "INK")
+    k.hline(55, 56, 4, "GLOW"); k.hline(55, 56, 5, "GLOWD")
+    # --- the roof, seen from above: plain paper inside a parapet
+    R(0, 24, W - 1, DTOWER_F0 - 1, "OUT")
+    R(1, 25, W - 2, DTOWER_F0 - 2, "PAPERS")
+    R(4, 28, W - 5, DTOWER_F0 - 3, "PAPER")
+    k.hline(4, W - 5, 28, "PAPERS")
+    k.hline(1, W - 2, DTOWER_F0 - 1, "OUT")
+    # --- the face: halftone, two tones only
+    for y in range(DTOWER_F0, 240):
+        for x in range(1, W - 1):
+            px, py = x + 0.5, y + 0.5
+            ink = False
+            for (dx, dy) in ((8 * round((px - 4) / 8) + 4, 8 * round((py - 4) / 8) + 4),
+                             (8 * round(px / 8), 8 * round(py / 8))):
+                if dy < DTOWER_F0:
+                    continue
+                if math.hypot(px - dx, py - dy) <= dtower_r(dy):
+                    ink = True
+            k.px(x, y, "INK" if ink else "PAPER")
+    k.vline(0, DTOWER_F0, 239, "OUT"); k.vline(W - 1, DTOWER_F0, 239, "OUT")
+    k.hline(0, W - 1, 239, "OUT")
+    # --- seven bands of identical niches, each band one tile row: a shelf, twelve niches, a light in each
+    for b in DTOWER_BANDS:
+        R(1, b, W - 2, b + 7, "SHELF")
+        k.hline(1, W - 2, b, "OUT")
+        k.hline(1, W - 2, b + 7, "SHELFD")
+        for x0 in range(8, W - 8, 8):
+            R(x0 + 2, b + 2, x0 + 5, b + 6, "NICHE")         # the niche: 4 wide, its top corners cut (an arch, or
+            k.px(x0 + 2, b + 2, "SHELFD"); k.px(x0 + 5, b + 2, "SHELFD")     # a bevelled slot)
+            k.hline(x0 + 3, x0 + 4, b + 5, "GLOW")            # the light
+            k.hline(x0 + 3, x0 + 4, b + 6, "GLOWD")
+        R(1, b + 1, 6, b + 6, "SHELF")                        # the band's ends, closed
+        R(W - 7, b + 1, W - 2, b + 6, "SHELF")
+    # --- the doorway: a white frame in the black, and the dark inside
+    R(46, 221, 65, 239, "PAPER")
+    k.hline(46, 65, 221, "OUT")
+    k.vline(46, 221, 239, "OUT"); k.vline(65, 221, 239, "OUT")
+    R(50, 225, 61, 239, "OUT")
+    k.hline(50, 61, 237, "SHELFD")                            # the threshold
+    k.hline(50, 61, 238, "SHELF")
+    return k
+
+
+# ============================================================================================ the tilesets
+#  One group per secondary tileset: its landmarks are drawn, cut and placed together, because they share its tiles,
+#  blocks and rows. The first pair keeps exactly the behaviour it was built with (a fresh block per cell, appended);
+#  the second pair's tilesets are fuller, so their groups REUSE blocks: identical cells share one block, and the
+#  blocks only the landmark drew (on every layout and border) are rewritten in place before any is appended.
+GROUPS = [
+    dict(dir="cinnabar_island", symbol="gTileset_CinnabarIsland", layout="CinnabarIsland_Layout",
+         place="QUICKSILVER IS. / CinnabarIsland", town="QUICKSILVER IS.", tag="t447b",
+         landmarks=[(SCORN, draw_scorn), (MANSION, draw_mansion)], reuse_blocks=False,
+         view=[("CinnabarIsland_Layout", 0, 0, 24, 20)]),
+    dict(dir="saffron_city", symbol="gTileset_SaffronCity", layout="SaffronCity_Layout",
+         place="BRAZEN / SaffronCity", town="BRAZEN", tag="t447d", landmarks=[(CORPUS, draw_corpus)],
+         reuse_blocks=True, view=[("SaffronCity_Layout", 17, 9, 32, 26)]),
+    dict(dir="lavender_town", symbol="gTileset_LavenderTown", layout="LavenderTown_Layout",
+         place="HALFTONE / LavenderTown (+ ROUTE 10's rows 72..79)", town="HALFTONE", tag="t447d",
+         landmarks=[(DTOWER, draw_dtower)], reuse_blocks=True, halftone=True,
+         #  the free slots past -num_tiles are shared with the KEEPALIVE PLANT: the tower draws into its own tiles
+         #  only, and 702 (gbatowns' source for the roofs' copy, batch F) is never repainted
+         free_slots=False, avoid={702 - NUM_PRIMARY},
+         view=[("Route10_Layout", 0, 66, 24, 14), ("LavenderTown_Layout", 0, 0, 24, 20)]),
+]
+#  this tool's claim; gbatowns.py's LANDMARKS keeps the same boxes out of its passes (by map name)
 OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
-                            ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)")]}
+                            ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)")],
+        "saffron_city": [("SaffronCity", 29, 16, 9, 15, "CORPUS's tower"),
+                         ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
+        "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
+                          ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")]}
+GROUP = TILESET = LANDMARKS_HERE = None
+
+
+def use(g):
+    """make `g` the group every function below works on"""
+    global GROUP, TILESET, LANDMARKS_HERE
+    GROUP, TILESET, LANDMARKS_HERE = g, g, g["landmarks"]
 
 
 # ============================================================================================ the tileset
@@ -534,13 +856,41 @@ def footprint_cells(lm):
     return sorted(cells, key=lambda p: (p[1], p[0]))
 
 
+def cells_of(lm):
+    """every cell the landmark draws: (layout, x, y, canvas cell x, canvas cell y) -- the main layout's footprint
+    (canvas row lm["cy0"] onwards), then each extra part on another layout (DAEMON TOWER's top is ROUTE 10's)"""
+    cy0 = lm.get("cy0", 0)
+    out = [(TILESET["layout"], x, y, x - lm["x0"], y - lm["y0"] + cy0) for x, y in footprint_cells(lm)]
+    for layout, x0, y0, w, h, cx0, cy0p in lm.get("parts", ()):
+        out += [(layout, x, y, x - x0 + cx0, y - y0 + cy0p) for y in range(y0, y0 + h) for x in range(x0, x0 + w)]
+    return out
+
+
+def mirror_cells(lm, x, y):
+    """the same cell on the layouts that copy the main one (SaffronCity_Connection: the city again, offset)"""
+    return [(layout, x - dx, y - dy) for layout, dx, dy in lm.get("mirrors", ())]
+
+
+def ours_of(landmarks):
+    """every (layout, x, y) the landmarks redraw, mirrors included (kept cells are not ours)"""
+    out = set()
+    for lm, _ in landmarks:
+        for layout, x, y, _, _ in cells_of(lm):
+            if layout == TILESET["layout"] and (x, y) in lm["keep"]:
+                continue
+            out.add((layout, x, y))
+            if layout == TILESET["layout"]:
+                out |= set(mirror_cells(lm, x, y))
+    return out
+
+
 def census(ts, ours):
     """{secondary tile: True} for every tile the landmarks may repaint: drawn ONLY by our cells (every layout, every
     border), not one of the kept cells' tiles, and below DOOR_TILE_START; plus the slots nothing draws.
     Returns (owned slots, free slots, what was examined)."""
     users = {}                                   # tile -> set of (layout, x, y) / ("border", layout)
     examined = 0
-    ours_set = {(TILESET["layout"], x, y) for x, y in ours}
+    ours_set = set(ours)
     #  the blocks this tool appended are drawn only by our cells: the three RS Safari layouts (unused by any map) carry
     #  block ids past vanilla's count that were nothing before a --write and are ours after it -- counted as users,
     #  they made a second --write see its own tiles as shared and refuse (2026-10-24)
@@ -612,8 +962,11 @@ def build(ts):
     drawings, cells = {}, []
     for lm, fn in LANDMARKS_HERE:
         drawings[lm["name"]] = fn()
-        cells += [c for c in footprint_cells(lm) if c not in lm["keep"]]
+    cells = ours_of(LANDMARKS_HERE)
     owned, free, users, examined, referenced = census(ts, cells)
+    if not GROUP.get("free_slots", True):
+        free = []                                # this tileset's free slots are another landmark's to share
+    owned = [t for t in owned if t not in GROUP.get("avoid", ())]
     #  tiles the kept cells draw are never ours, whatever the census says (the lab's door, the board)
     kept_tiles = set()
     for lm, _ in LANDMARKS_HERE:
@@ -636,14 +989,18 @@ def build(ts):
         n0 = len(cut.placed)
         k = drawings[lm["name"]]
         row = lm["row"]
-        for (x, y) in footprint_cells(lm):
-            if (x, y) in lm["keep"]:
+        for (layout, x, y, cx, cy) in cells_of(lm):
+            main = layout == TILESET["layout"]
+            if main and (x, y) in lm["keep"]:
                 continue
-            raw = ts.cell(TILESET["layout"], x, y)
+            raw = ts.cell(layout, x, y)
             old = raw & 0x3FF
-            ox, oy = (x - lm["x0"]) * 16, (y - lm["y0"]) * 16
-            art = [cut.tile(tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) for i in range(64)), row)
-                   for qy in (0, 1) for qx in (0, 1)]
+            ox, oy = cx * 16, cy * 16
+            keys = [tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) for i in range(64))
+                    for qy in (0, 1) for qx in (0, 1)]
+            if lm.get("parts") and old < NUM_PRIMARY and not any(any(key) for key in keys):
+                continue                            # plain ground the drawing leaves alone (the mast's neighbours)
+            art = [cut.tile(key, row) for key in keys]
             if old >= NUM_PRIMARY:
                 e = ts.entries(old)
                 attr = ts.attr(old)
@@ -651,25 +1008,49 @@ def build(ts):
                 e = list(struct.unpack_from("<8H", open(os.path.join(PRIMARY, "metatiles.bin"), "rb").read(), old * 16))
                 attr = None
             bottom = e[:4]
-            if (x, y) in lm["inplace"]:             # the door block, kept by id: its empty bottom kept, art on top
+            lin = lm.get("lintel", lintel)
+            if main and (x, y) in lm["inplace"]:    # the door block, kept by id: its empty bottom kept, art on top
                 entries = bottom + art
-            elif (x, y) in lm["signs"]:               # the board's own tiles stay on top; the wall is ours, below
+            elif main and (x, y) in lm["signs"]:      # the board's own tiles stay on top; the wall is ours, below
                 entries = art + [0, 0, e[6], e[7]]
-            elif (x, y) == lm["door"]:              # the mansion's doorway: all of it below, the lintel above
+            elif main and (x, y) == lm["door"]:     # a plain doorway: all of it below, the lintel above
                 lint = [cut.tile(tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8)
-                                       if lintel(k, ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) else 0
+                                       if lin(k, ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) else 0
                                        for i in range(64)), row) for qy in (0, 1) for qx in (0, 1)]
                 entries = art + lint
             else:
                 if not any(v & 0x3FF for v in bottom):
-                    bottom = ground_under(ts, lm, x, y)
+                    bottom = ground_under(ts, lm, x, y, layout)
                 entries = bottom + art
-            plan.append((x, y, raw, old, entries, attr, (x, y) in lm["inplace"]))
+            plan.append((x, y, raw, old, entries, attr, main and (x, y) in lm["inplace"], layout,
+                         mirror_cells(lm, x, y) if main else []))
         per[lm["name"]] = len(cut.placed) - n0
     #  place: a fresh block per cell, appended (or this tool's own block from an earlier write, rewritten)
-    for x, y, raw, old, entries, attr, inplace in plan:
+    reuse = owned_blocks(ts, cells, users_of_blocks(ts)) if GROUP.get("reuse_blocks") else None
+    shared = {}                                     # (entries, attributes) -> the block every such cell shares
+    for x, y, raw, old, entries, attr, inplace, layout, mirrors in plan:
         if inplace:                                 # a block kept by id: rewritten where it is, attributes untouched
             struct.pack_into("<8H", new_mt, (old - NUM_PRIMARY) * 16, *entries)
+            continue
+        if reuse is not None:
+            a = attr if attr is not None else bytes(ts.per_attr)
+            key = (tuple(entries), a)
+            if key not in shared:
+                if reuse:
+                    bid = reuse.pop(0)
+                else:
+                    bid = NUM_PRIMARY + nblocks
+                    nblocks += 1
+                    new_mt += bytes(16)
+                    new_at += bytes(ts.per_attr)
+                o = bid - NUM_PRIMARY
+                struct.pack_into("<8H", new_mt, o * 16, *entries)
+                new_at[o * ts.per_attr:(o + 1) * ts.per_attr] = a
+                shared[key] = bid
+            bid = shared[key]
+            ts.set_cell(layout, x, y, (raw & ~0x3FF) | bid)
+            for ml, mx, my in mirrors:
+                ts.set_cell(ml, mx, my, (ts.cell(ml, mx, my) & ~0x3FF) | bid)
             continue
         if old >= NUM_PRIMARY + first_ours:
             bid = old
@@ -693,10 +1074,38 @@ def build(ts):
             ip[sx + i % 8, sy + i // 8] = v
     pals = dict(ts.pals)
     for lm, _ in LANDMARKS_HERE:
-        pals[lm["row"]] = pal16(lm["colours"])
+        pals[lm["row"]] = row_pal(ts, lm)
     return dict(drawings=drawings, mt=new_mt, at=new_at, tiles=img, pals=pals, num_tiles=max(used_top, ts.num_tiles),
                 cut=cut, owned=owned, free=free, examined=examined, nblocks=nblocks, old_nblocks=ts.nblocks,
                 kept_tiles=kept_tiles, users=users, plan=plan, per=per)
+
+
+def users_of_blocks(ts):
+    """{secondary block id: every (layout, x, y) and ("border", layout) that draws it}"""
+    users = {}
+    for name, m in ts.maps.items():
+        for y in range(m["h"]):
+            for x in range(m["w"]):
+                users.setdefault(ts.cell(name, x, y) & 0x3FF, set()).add((name, x, y))
+        for b in m["border"]:
+            users.setdefault(b, set()).add(("border", name))
+    return users
+
+
+def labelled_blocks():
+    """this tileset's block ids the engine names (include/constants/metatile_labels.h, METATILE_<Tileset>_*): code or
+    a script may draw them by id, so they are never rewritten as something else"""
+    src = open(os.path.join(GBA, "include/constants/metatile_labels.h")).read()
+    pre = GROUP["symbol"][len("gTileset_"):]
+    return {int(v, 16) for v in re.findall(r"#define METATILE_%s_\w+\s+(0x[0-9A-Fa-f]+)" % pre, src)}
+
+
+def owned_blocks(ts, ours, users):
+    """the blocks only the landmark's cells draw (every layout, every border) and the engine never names: the
+    landmark's to rewrite, lowest first. A rerun finds the same blocks in the same order (they are ours by then)."""
+    named = labelled_blocks()
+    return [b for b in sorted(users) if NUM_PRIMARY <= b < NUM_PRIMARY + ts.nblocks and b not in named
+            and users[b] <= set(ours)]
 
 
 def lintel(k, x, y):
@@ -704,12 +1113,13 @@ def lintel(k, x, y):
     return not k.is_(x, y, "VOID") or y < 48
 
 
-def ground_under(ts, lm, x, y):
+def ground_under(ts, lm, x, y, layout=None):
     """a cell vanilla left with no bottom layer: borrow the nearest footprint cell's ground in the same row"""
+    layout = layout or TILESET["layout"]
     for dx in range(1, 8):
         for xx in (x - dx, x + dx):
             if lm["x0"] <= xx < lm["x0"] + lm["w"]:
-                b = ts.cell(TILESET["layout"], xx, y) & 0x3FF
+                b = ts.cell(layout, xx, y) & 0x3FF
                 e = ts.entries(b) if b >= NUM_PRIMARY else [0] * 8
                 if any(v & 0x3FF for v in e[:4]):
                     return e[:4]
@@ -880,7 +1290,7 @@ def sheets(ts, before, after, out):
            (n, len(after["owned"]), len(after["free"]), len(after["owned"]) + len(after["free"])), fill=FG, font=F)
     d.text((24, 40), "flipped repeats share a slot; 376..383 never used (door frames)", fill=DIM, font=Fs)
     rowof = {}
-    for _, _, _, _, entries, _, _ in after["plan"]:
+    for entries in (p[4] for p in after["plan"]):
         for v in entries:
             if v & 0x3FF >= NUM_PRIMARY:
                 rowof.setdefault((v & 0x3FF) - NUM_PRIMARY, (v >> 12) & 0xF)
@@ -918,97 +1328,316 @@ def gbatowns_landmarks():
     return {}
 
 
-def main():
-    if WRITE and not APPROVED_FLAG:
-        raise SystemExit("  --write refuses without --approved: T-447's landmarks are drafts until the user says yes")
-    gt = gbatowns_landmarks().get(TILESET["dir"], [])
-    if sorted(gt) != sorted(OWNS[TILESET["dir"]]):
-        raise SystemExit("  gbatowns.py's LANDMARKS and OWNS disagree for %s:\n    %s\n    %s" % (TILESET["dir"], gt, OWNS))
-    ts = Tileset(TILESET["dir"], TILESET["symbol"])
+def row_pal(ts, lm):
+    """the landmark's palette row: its colours from index 1; a row it shares (DAEMON TOWER's row 7, whose 10..15 are
+    left for the KEEPALIVE PLANT) keeps whatever stands past them"""
+    cols = [rgb for _, rgb in lm["colours"]]
+    if len(cols) == 15:
+        return pal16(lm["colours"])
+    return [TRANSPARENT] + cols + list(ts.pals[lm["row"]])[1 + len(cols):]
+
+
+def row_users(ts, row):
+    """every (layout, x, y) that draws a tile in palette row `row` (secondary or primary tiles)"""
+    pmt = primary()["mt"]
+    out = set()
+    for name, m in ts.maps.items():
+        for y in range(m["h"]):
+            for x in range(m["w"]):
+                b = ts.cell(name, x, y) & 0x3FF
+                e = struct.unpack_from("<8H", pmt, b * 16) if b < NUM_PRIMARY else \
+                    ts.entries(b) if b - NUM_PRIMARY < ts.nblocks else []
+                if any(v & 0x3FF and v >> 12 == row for v in e):
+                    out.add((name, x, y))
+    return out
+
+
+def row_check(ts, lm, ours):
+    """a landmark's row must be free (vanilla's unused rows are all black or all blue), already ours, or drawn by
+    the landmark's cells and nothing else -- never a row another block draws"""
+    cur, want = ts.pals[lm["row"]], row_pal(ts, lm)
+    n = len(lm["colours"])
+    if all(c in ((0, 0, 0), (0, 0, 255)) for c in cur[1:1 + n]):
+        return "free"
+    if list(cur[1:1 + n]) == list(want[1:1 + n]):
+        return "ours"
+    others = row_users(ts, lm["row"]) - set(ours)
+    if not others:
+        return "drawn by the landmark alone"
+    raise SystemExit("  row %d is not free and not ours: %d other cells draw it, e.g. %s"
+                     % (lm["row"], len(others), sorted(others)[:4]))
+
+
+# ============================================================================================ pair 2's sheets
+class MapState:
+    def __init__(self, maps):
+        self.maps = maps
+
+
+def render_pieces(state, mt, tiles_img, pals, pieces):
+    """map boxes rendered and stacked top to bottom (DAEMON TOWER: ROUTE 10's foot over LAVENDER's head)"""
+    ims = [render(state, mt, tiles_img, pals, *p) for p in pieces]
+    out = Image.new("RGB", (max(i.width for i in ims), sum(i.height for i in ims)))
+    y = 0
+    for im in ims:
+        out.paste(im, (0, y))
+        y += im.height
+    return out
+
+
+def halftone_grey(im):
+    """DaemonsHalftoneMix(c, 0) (fieldmap.c): Q_8_8 0.3 R + 0.59 G + 0.1133 B on the GBA's five bits"""
+    out = im.copy()
+    o = out.load()
+    for y in range(out.height):
+        for x in range(out.width):
+            r, g, b = (c >> 3 for c in o[x, y][:3])
+            v = (r * 76 + g * 151 + b * 29) >> 8
+            o[x, y] = (v << 3 | v >> 2,) * 3
+    return out
+
+
+def crop_of(lm):
+    if lm.get("crop"):
+        return lm["crop"]
+    y0 = max(0, lm["y0"] - 1)
+    return [(TILESET["layout"], lm["x0"] - 1, y0, lm["w"] + 2, lm["y0"] + lm["h"] + 1 - y0)]
+
+
+def label(d, xy, text, fill, f):
+    d.text(xy, text, fill=fill, font=f)
+
+
+def sheets_pair2(ts, before_maps, before, after, out):
+    """per landmark: TODAY | DRAFT at 3x (and in HALFTONE's grey), both at 1x, the town at 1x; then the tileset's
+    tiles, rows and budget"""
+    os.makedirs(out, exist_ok=True)
+    F, Fs, Fb = font(14), font(12), font(22)
+    today_s, draft_s = MapState(before_maps), MapState(ts.maps)
+    ht = GROUP.get("halftone")
+    paths = []
+    for lm, _ in LANDMARKS_HERE:
+        pieces = crop_of(lm)
+        t = render_pieces(today_s, before["mt"], before["tiles"], before["pals"], pieces)
+        d_ = render_pieces(draft_s, after["mt"], after["tiles"], after["pals"], pieces)
+        tv = render_pieces(today_s, before["mt"], before["tiles"], before["pals"], GROUP["view"])
+        dv = render_pieces(draft_s, after["mt"], after["tiles"], after["pals"], GROUP["view"])
+        rows3 = [("", t, d_)] + ([(" in HALFTONE's grey", halftone_grey(t), halftone_grey(d_))] if ht else [])
+        one = [t, d_] + ([halftone_grey(t), halftone_grey(d_)] if ht else [])
+        towns = [(tv, dv)] + ([(halftone_grey(tv), halftone_grey(dv))] if ht else [])
+        cap = lm.get("caption", [])
+        W = max(24 + t.width * 3 * 2 + 24 + 24 + 520, 24 + (tv.width + 16) * 2 * (2 if ht else 1) + 24)
+        Hh = 96 + 18 * len(cap) + len(rows3) * (t.height * 3 + 34) + t.height + 34 + tv.height + 50
+        s = Image.new("RGB", (W, Hh), BG)
+        d = ImageDraw.Draw(s)
+        label(d, (24, 16), "%s  --  T-447 DRAFT, pair 2 (gbalandmarks.py)" % lm["title"], FG, Fb)
+        label(d, (24, 48), "%s  |  footprint %dx%d at (%d,%d)%s  |  door (%d,%d)  |  row %d" % (
+            GROUP["place"], lm["w"], lm["h"], lm["x0"], lm["y0"],
+            "".join(" + %s %dx%d at (%d,%d)" % (l.replace("_Layout", ""), w, h, x, y)
+                    for l, x, y, w, h, _, _ in lm.get("parts", ())), lm["door"][0], lm["door"][1], lm["row"]), DIM, F)
+        y = 72
+        for line in cap:
+            label(d, (24, y), line, FG, Fs)
+            y += 18
+        y += 8
+        for what, a, b in rows3:
+            s.paste(up(a, 3), (24, y))
+            s.paste(up(b, 3), (24 + a.width * 3 + 24, y))
+            label(d, (24, y + a.height * 3 + 4), "TODAY (3x)%s" % what, DIM, F)
+            label(d, (48 + a.width * 3, y + a.height * 3 + 4), "DRAFT (3x)%s" % what, GOLD, F)
+            y += a.height * 3 + 34
+        x = 24
+        for i, im in enumerate(one):
+            s.paste(im, (x, y))
+            x += im.width + 12
+        label(d, (24, y + t.height + 4), "at 1x: today | draft" + (" | today grey | draft grey" if ht else ""), DIM, Fs)
+        y += t.height + 34
+        x = 24
+        for a, b in towns:
+            s.paste(a, (x, y)); s.paste(b, (x + a.width + 16, y))
+            x += (a.width + 16) * 2
+        label(d, (24, y + tv.height + 6), "%s at 1x: today | draft%s" % (
+            GROUP["town"], ("   ||   in grey: today | draft" if ht else "")), DIM, Fs)
+        #  the door, beside the 3x pair
+        xx, yy = 24 + t.width * 6 + 72, 80 + 18 * len(cap)
+        for line in lm.get("door_note", []):
+            label(d, (xx, yy), line, GOLD if line is lm["door_note"][0] else DIM, Fs)
+            yy += 18
+        p = os.path.join(out, "%s_%s.png" % (GROUP["tag"], lm["name"]))
+        s.save(p)
+        paths.append(p)
+    # the tiles, the rows, the budget
+    cut = after["cut"]
+    n = len(cut.placed)
+    cols = 16
+    rowsp = [(lm["row"], after["pals"][lm["row"]], lm["title"]) for lm, _ in LANDMARKS_HERE]
+    s = Image.new("RGB", (max(40 + cols * 40, 840), 130 + ((n + cols - 1) // cols) * 48 + 40 + len(rowsp) * 100), BG)
+    d = ImageDraw.Draw(s)
+    label(d, (24, 16), "T-447 pair 2 tiles -- secondary/%s" % GROUP["dir"], FG, F)
+    for i, line in enumerate(after["budget"]):
+        label(d, (24, 40 + i * 18), line, DIM, Fs)
+    rowof = {}
+    for entries in (p[4] for p in after["plan"]):
+        for v in entries:
+            if v & 0x3FF >= NUM_PRIMARY:
+                rowof.setdefault((v & 0x3FF) - NUM_PRIMARY, (v >> 12) & 0xF)
+    y0 = 40 + len(after["budget"]) * 18 + 12
+    for i, (slot, key) in enumerate(cut.placed):
+        pal = after["pals"].get(rowof.get(slot, rowsp[0][0]), rowsp[0][1])
+        tim = Image.new("RGB", (8, 8))
+        for j, v in enumerate(key):
+            tim.putpixel((j % 8, j // 8), tuple(pal[v]) if v else (60, 60, 70))
+        x, y = 24 + (i % cols) * 40, y0 + (i // cols) * 48
+        s.paste(up(tim, 4), (x, y))
+        label(d, (x, y + 33), str(slot), DIM, font(10))
+    y = y0 + ((n + cols - 1) // cols) * 48 + 16
+    for r, pal, title in rowsp:
+        label(d, (24, y), "row %d -- %s" % (r, title), GOLD, F)
+        names = ["0"] + [nm for nm, _ in next(lm for lm, _ in LANDMARKS_HERE if lm["row"] == r)["colours"]]
+        for i, rgb in enumerate(pal):
+            d.rectangle((24 + i * 40, y + 22, 24 + i * 40 + 34, y + 56), fill=tuple(rgb))
+            label(d, (24 + i * 40, y + 60), names[i] if i < len(names) else "(left)", DIM, font(9))
+        y += 100
+    p = os.path.join(out, "%s_tiles_%s.png" % (GROUP["tag"], GROUP["dir"]))
+    s.save(p)
+    paths.append(p)
+    return paths
+
+
+# ============================================================================================ main
+def run_group(g):
+    use(g)
+    gt = gbatowns_landmarks().get(g["dir"], [])
+    if sorted(gt) != sorted(OWNS[g["dir"]]):
+        raise SystemExit("  gbatowns.py's LANDMARKS and OWNS disagree for %s:\n    %s\n    %s" % (g["dir"], gt, OWNS[g["dir"]]))
+    ts = Tileset(g["dir"], g["symbol"])
     before = dict(mt=bytes(ts.mt), tiles=ts.tiles.copy(), pals=dict(ts.pals))
     before_bd = {k: bytes(v["bd"]) for k, v in ts.maps.items()}
     print("  %s: %d layouts draw it (%s); %d blocks, %d tiles (-num_tiles)" % (
-        TILESET["symbol"], len(ts.layouts), ", ".join(l["name"].replace("_Layout", "") for l in ts.layouts),
+        g["symbol"], len(ts.layouts), ", ".join(l["name"].replace("_Layout", "") for l in ts.layouts),
         ts.nblocks, ts.num_tiles))
-    for n in (SCORN_ROW, MANSION_ROW):
-        if any(c != (0, 0, 0) for c in ts.pals[n][1:]) and not all(
-                c == rgb for c, (_, rgb) in zip(ts.pals[n][1:], SCORN_COLOURS if n == SCORN_ROW else MANSION_COLOURS)):
-            raise SystemExit("  row %d is not free and not ours: %s" % (n, ts.pals[n]))
+    ours = ours_of(LANDMARKS_HERE)
+    rowsays = {lm["name"]: row_check(ts, lm, ours) for lm, _ in LANDMARKS_HERE}
     after = build(ts)
     cut = after["cut"]
     print("  census: %d cells examined across every layout and border" % after["examined"])
-    print("  owned tiles (drawn only by our cells): %d; free slots %d..%d: %d; kept (the lab's door, the board): %d"
+    print("  owned tiles (drawn only by our cells): %d; free slots %d..%d: %d; kept (doors, boards): %d"
           % (len(after["owned"]), ts.num_tiles, DOOR_TILE_START - 1, len(after["free"]), len(after["kept_tiles"])))
     for lm, _ in LANDMARKS_HERE:
-        cells = [c for c in footprint_cells(lm) if c not in lm["keep"]]
-        print("  %-16s %d cells redrawn, %d kept %s; row %d; %d new tiles" % (
-            lm["title"], len(cells), len(lm["keep"]), lm["keep"], lm["row"], after["per"][lm["name"]]))
+        cells = [c for c in cells_of(lm) if not (c[0] == g["layout"] and (c[1], c[2]) in lm["keep"])]
+        mine = [p for p in after["plan"] if (p[7], p[0], p[1]) in {c[:3] for c in cells}]
+        print("  %-16s %d cells redrawn%s, %d kept %s; row %d (%s); %d new tiles" % (
+            lm["title"], len(mine), " (+%d on its copies)" % sum(len(p[8]) for p in mine) if lm.get("mirrors") else "",
+            len(lm["keep"]), lm["keep"], lm["row"], rowsays[lm["name"]], after["per"][lm["name"]]))
+    room = len(after["owned"]) + len(after["free"])
     print("  drawn: %d unique tiles (flips shared) into %d slots; %s" % (
-        len(cut.placed), len(after["owned"]) + len(after["free"]),
-        "OVER BUDGET by %d" % cut.over if cut.over else "%d to spare" % (len(after["owned"]) + len(after["free"]) - len(cut.placed))))
-    print("  blocks: %d -> %d (of %d); -num_tiles %d -> %d" % (after["old_nblocks"], after["nblocks"],
-                                                             SECONDARY_METATILES, ts.num_tiles, after["num_tiles"]))
+        len(cut.placed), room, "OVER BUDGET by %d" % cut.over if cut.over else "%d to spare" % (room - len(cut.placed))))
+    used_blocks = sorted({ts.cell(l, x, y) & 0x3FF for (l, x, y) in ours})
+    after["budget"] = [
+        "tiles: %d drawn (flips shared) into %d owned%s slots -- %s" % (
+            len(cut.placed), len(after["owned"]),
+            " + %d free" % len(after["free"]) if after["free"] else
+            " (free slots left to the KEEPALIVE PLANT)" if not GROUP.get("free_slots", True) else " (no free slot in the tileset)",
+            "OVER by %d" % cut.over if cut.over else "%d to spare" % (room - len(cut.placed))),
+        "blocks: %d distinct cells' blocks; tileset %d -> %d (of %d); -num_tiles %d -> %d" % (
+            len(used_blocks), after["old_nblocks"], after["nblocks"], SECONDARY_METATILES, ts.num_tiles,
+            after["num_tiles"]),
+        "rows: " + "; ".join("%d (%s, %d colours)" % (lm["row"], rowsays[lm["name"]], len(lm["colours"]))
+                              for lm, _ in LANDMARKS_HERE),
+    ]
+    for line in after["budget"][1:]:
+        print("  " + line)
     if cut.over:
         print("  !! the drawings need %d more tiles than the landmarks own: previewed, never written" % cut.over)
         if WRITE:
             raise SystemExit("  not written")
     after_view = dict(mt=after["mt"], tiles=after["tiles"], pals=after["pals"], cut=cut, owned=after["owned"],
-                      free=after["free"], plan=after["plan"], drawings=after["drawings"])
+                      free=after["free"], plan=after["plan"], drawings=after["drawings"], budget=after["budget"])
+    changed = [k for k, v in ts.maps.items() if bytes(v["bd"]) != before_bd[k]]
     if DRAFT is not None:
-        tsd = os.path.join(DRAFT, TILESET["dir"])
+        tsd = os.path.join(DRAFT, g["dir"])
         os.makedirs(os.path.join(tsd, "palettes"), exist_ok=True)
         after["tiles"].save(os.path.join(tsd, "tiles.png"))
         open(os.path.join(tsd, "metatiles.bin"), "wb").write(after["mt"])
         open(os.path.join(tsd, "metatile_attributes.bin"), "wb").write(after["at"])
-        open(os.path.join(tsd, "map.bin"), "wb").write(ts.maps[TILESET["layout"]]["bd"])
+        open(os.path.join(tsd, "map.bin"), "wb").write(ts.maps[g["layout"]]["bd"])
+        for k in changed:
+            if k != g["layout"]:
+                open(os.path.join(tsd, "%s.map.bin" % k.replace("_Layout", "")), "wb").write(ts.maps[k]["bd"])
         for lm, _ in LANDMARKS_HERE:
-            write_pal(os.path.join(tsd, "palettes", "%02d.pal" % lm["row"]), pal16(lm["colours"]))
+            write_pal(os.path.join(tsd, "palettes", "%02d.pal" % lm["row"]), row_pal(ts, lm))
             d = os.path.join(DRAFT, lm["name"])
             os.makedirs(d, exist_ok=True)
             k = after["drawings"][lm["name"]]
             im = drawing_rgb(k, lm["colours"])
             im.save(os.path.join(d, "drawing_1x.png"))
             up(im, 3).save(os.path.join(d, "drawing_3x.png"))
+            mine = {c[:3] for c in cells_of(lm)}
+            cells = []
+            for p in after["plan"]:
+                if (p[7], p[0], p[1]) not in mine:
+                    continue
+                c = dict(cell=[p[0], p[1]], was=p[3], layer_type=(struct.unpack("<I", p[5])[0] >> 29) & 3
+                         if p[5] else None)
+                if p[7] != g["layout"]:
+                    c["layout"] = p[7]
+                cells.append(c)
             json.dump(dict(title=lm["title"], map=lm["map"], footprint=[lm["x0"], lm["y0"], lm["w"], lm["h"]],
                            door=lm["door"], kept=lm["keep"], signs=lm["signs"], row=lm["row"],
-                           colours={n: "%02x%02x%02x" % c for n, c in lm["colours"]},
-                           cells=[dict(cell=[x, y], was=old, layer_type=(struct.unpack("<I", attr)[0] >> 29) & 3
-                                       if attr else None)
-                                  for x, y, raw, old, _, attr, _ in after["plan"]
-                                  if (x, y) in set(footprint_cells(lm))]),
+                           colours={n: "%02x%02x%02x" % c for n, c in lm["colours"]}, cells=cells),
                       open(os.path.join(d, "cells.json"), "w"), indent=1)
-        json.dump(dict(tileset=TILESET["symbol"], tiles_drawn=len(cut.placed), owned=after["owned"], free=after["free"],
+        json.dump(dict(tileset=g["symbol"], tiles_drawn=len(cut.placed), owned=after["owned"], free=after["free"],
                        slots_used=[s for s, _ in cut.placed], blocks=[after["old_nblocks"], after["nblocks"]],
                        num_tiles=[ts.num_tiles, after["num_tiles"]]), open(os.path.join(tsd, "budget.json"), "w"), indent=1)
         print("  draft: %s (tileset) and %s" % (os.path.relpath(tsd, ROOT),
                                                ", ".join(os.path.relpath(os.path.join(DRAFT, lm["name"]), ROOT)
                                                          for lm, _ in LANDMARKS_HERE)))
         if SHEETS:
-            #  today is rendered from the untouched map, the draft from the repointed one
+            #  today is rendered from the untouched maps, the draft from the repointed ones
             before_maps = {k: dict(v, bd=bytearray(before_bd[k])) for k, v in ts.maps.items()}
-            paths = sheets_two(ts, before_maps, before, after_view, SHEETS)
+            if g["dir"] == "cinnabar_island":
+                paths = sheets_two(ts, before_maps, before, after_view, SHEETS)
+            else:
+                paths = sheets_pair2(ts, before_maps, before, after_view, SHEETS)
             for p in paths:
                 print("  sheet: %s" % p)
     if WRITE:
-        todo = [lm for lm, _ in LANDMARKS_HERE if lm["name"] in APPROVED]
-        if len(todo) != len(LANDMARKS_HERE):
-            raise SystemExit("  not written: approved %s of %s -- the pair is written together, as one tileset"
-                             % (sorted(APPROVED), [lm["name"] for lm, _ in LANDMARKS_HERE]))
+        names = [lm["name"] for lm, _ in LANDMARKS_HERE]
+        ok = [n for n in names if n in APPROVED]
+        if not ok:
+            print("  not written: %s %s a draft (not in APPROVED)" % (", ".join(names), "is" if len(names) == 1 else "are"))
+            return
+        if len(ok) != len(names):
+            raise SystemExit("  not written: approved %s of %s -- a tileset's landmarks are written together"
+                             % (sorted(ok), names))
         tsd = ts.dir
         after["tiles"].save(os.path.join(tsd, "tiles.png"))
         open(os.path.join(tsd, "metatiles.bin"), "wb").write(after["mt"])
         open(os.path.join(tsd, "metatile_attributes.bin"), "wb").write(after["at"])
-        m = ts.maps[TILESET["layout"]]
-        open(os.path.join(GBA, m["path"]), "wb").write(m["bd"])
+        for k in set(changed) | {g["layout"]}:
+            m = ts.maps[k]
+            open(os.path.join(GBA, m["path"]), "wb").write(m["bd"])
         for lm, _ in LANDMARKS_HERE:
-            write_pal(os.path.join(tsd, "palettes", "%02d.pal" % lm["row"]), pal16(lm["colours"]))
+            write_pal(os.path.join(tsd, "palettes", "%02d.pal" % lm["row"]), row_pal(ts, lm))
         rules = open(RULES).read()
-        new, n = re.subn(r"(secondary/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+" % TILESET["dir"],
+        new, n = re.subn(r"(secondary/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+" % g["dir"],
                          lambda mm: mm.group(1) + str(after["num_tiles"]), rules)
         assert n == 1
         open(RULES, "w").write(new)
-        print("  written: tiles.png, metatiles.bin, metatile_attributes.bin, palettes 10 and 11, the map, -num_tiles %d"
-              % after["num_tiles"])
+        print("  written: tiles.png, metatiles.bin, metatile_attributes.bin, rows %s, %s, -num_tiles %d" % (
+            ", ".join(str(lm["row"]) for lm, _ in LANDMARKS_HERE),
+            ", ".join(sorted(set(changed) | {g["layout"]})), after["num_tiles"]))
+
+
+def main():
+    if WRITE and not APPROVED_FLAG:
+        raise SystemExit("  --write refuses without --approved: T-447's landmarks are drafts until the user says yes")
+    only = argval("--only")
+    for g in GROUPS:
+        if only and only != g["dir"]:
+            continue
+        print("%s (secondary/%s)" % (g["town"], g["dir"]))
+        run_group(g)
 
 
 def sheets_two(ts, before_maps, before, after, out):
