@@ -1,0 +1,14 @@
+{
+ "rovercub": {"name": "ROVERCUB", "gametype": "GROWTH", "type": "GRASS", "front": "rovercub_front_4522.png",
+   "why": "the starter (BULBASAUR slot); a robot puppy, quadruped", "streak_box": "auto", "icon": true},
+ "packet": {"name": "PACKET", "gametype": "CONTENT", "type": "NORMAL", "front": "packet_front_i2i_4531.png",
+   "why": "the bird (PIDGEY slot), first route; the envelope is its identity", "streak_box": "auto"},
+ "spike": {"name": "SPIKE", "gametype": "SIGNAL", "type": "ELECTRIC", "front": "spike_front_4521.png", "back": "spike_back_4541.png",
+   "why": "small mammal (PIKACHU slot); the chibi style's home ground", "streak_box": {"front": "18,42,46,58", "back": "20,36,42,52"}, "icon": true},
+ "backbone": {"name": "BACKBONE", "gametype": "LEGACY", "type": "ROCK", "front": "backbone_front_4521.png",
+   "why": "something large and long (ONIX slot); tests a big body in a 64px frame", "streak_box": "auto"},
+ "dangling": {"name": "DANGLING", "gametype": "LATENT", "type": "GHOST", "front": "dangling_front_i2i_4531.png",
+   "why": "abstract: a dangling pointer, a blob with a face (GASTLY slot)", "streak_box": {"front": "10,28,56,46"}},
+ "artsai": {"name": "ARTSAI", "gametype": "CONTEXT", "type": "PSYCHIC", "front": "artsai_front_4523.png", "back": "artsai_back_4543.png",
+   "why": "the one the story leans on (MEW slot, its own station)", "streak_box": {"front": "18,40,44,58", "back": "40,34,54,50"}}
+}
