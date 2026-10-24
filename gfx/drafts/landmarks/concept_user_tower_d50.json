@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/landmarks/concept_user_tower_d50",
+ "prompt": "pixel art, GBA overworld building, top-down three-quarter view, Pokemon FireRed tileset style, crisp pixels, limited 16 colour palette, dark outlines, grey background, a slim modern glass tower, each floor a pale window band with a teal progress bar filling it to a different length, a lit beacon at the top, a small entrance at the bottom",
+ "negative": "text, letters, words, numbers, people, characters, photo, blurry, smooth gradient, isometric, multiple buildings, signature",
+ "seed": 4479,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/landmarks/rough512_user_tower.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 09:47:26"
+}

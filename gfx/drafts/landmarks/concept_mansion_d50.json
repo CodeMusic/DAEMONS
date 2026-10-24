@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/landmarks/concept_mansion_d50",
+ "prompt": "pixel art, GBA overworld building, top-down three-quarter view, Pokemon FireRed tileset style, crisp pixels, limited 16 colour palette, dark outlines, grey background, a burned ruined laboratory mansion, ash grey walls, roof caved in at the centre showing exposed metal server racks and cooling coils like ribs, blown out black windows with soot plumes above them, small beads of liquid silver mercury pooled in the gutters, scorched door",
+ "negative": "text, letters, words, numbers, people, characters, photo, blurry, smooth gradient, isometric, multiple buildings, signature",
+ "seed": 4473,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/landmarks/rough512_mansion.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.1,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 09:49:43"
+}
