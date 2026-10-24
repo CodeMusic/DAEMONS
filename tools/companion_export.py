@@ -22,6 +22,13 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
   items.json    every item by id, our name and description, for what an AWAY daemon holds (C-31)
   events.json   the GAME EVENTS, in story order, and the flags that say each is held (C-128)
   school.json   CALLOW SCHOOL: each floor's subject, syllabus and board, the paper, the DIPLOMA (C-129)
+  index_cards.json  the INDEX card whole, per species: number, name, types and their colours, category, HT and WT,
+                both entries, NATIVE, the workings, OPUS's margins; the seven understandings (flag, colour, the GUIDE
+                margin each writes in); and the rules a save decides (T-453, C-186)
+  patches.json  every published release from v11.309.1: its four BPS patches described (source ROM and its
+                SHA-1/CRC32/MD5, target SHA-1, the patch's size and hashes, its GitHub URL) -- never a patch (T-453)
+
+(and marks, regions, groves, guide, subtle, holidays, play, notebook, routines, streaks, moves, art/ -- see main())
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
 entries and our art only.
@@ -1069,6 +1076,266 @@ def holidays_table():
     return genholidays.companion_text(json.load(open(os.path.join(ROOT, "docs", "holidays.json"), encoding="utf-8")))
 
 
+def _height_text(dm):
+    """the INDEX's HT, as DexScreen_PrintMonHeight prints it: decimetres to feet and inches, rounded to the inch"""
+    tenths = 10000 * dm // 254
+    if tenths % 10 >= 5:
+        tenths += 10
+    feet = tenths // 120
+    return "%d'%02d\"" % (feet, (tenths - feet * 120) // 10)
+
+
+def _weight_text(hg):
+    """the INDEX's WT, as DexScreen_PrintMonWeight prints it: hectograms to pounds, to a tenth"""
+    lbs = hg * 100000 // 4536
+    if lbs % 10 >= 5:
+        lbs += 10
+    return "%d.%d lbs." % (lbs // 100, (lbs % 100) // 10)
+
+
+def index_cards_table(species, margins, marks, guide):
+    """T-453 (C-186): the INDEX card, whole, for the iPad app to draw from a save -- everything pokedex_screen.c shows
+    that is static (number, name, types and their colours, category, HT and WT, both editions' entries, NATIVE, the
+    workings' line and routines, OPUS's margins) and the rules for what a save decides (seen or bound, FIRST MET,
+    BOUND, which margin). With the seven UNDERSTANDINGS: their flags, names and colours, and the margin each writes
+    in -- which is the GUIDE's, not OPUS's: the game ties no OPUS margin to an understanding."""
+    entries = read("src/data/pokemon/pokedex_entries.h")
+    hw = {}
+    for m in re.finditer(r"\[NATIONAL_DEX_(\w+)\]\s*=\s*\{((?:(?!\[NATIONAL_DEX_).)*)", entries, re.S):
+        h, w = re.search(r"\.height\s*=\s*(\d+)", m.group(2)), re.search(r"\.weight\s*=\s*(\d+)", m.group(2))
+        if h and w:
+            hw[m.group(1)] = (int(h.group(1)), int(w.group(1)))
+    alias = {a: b for a, b in re.findall(r"#define SPECIES_(\w+)\s+SPECIES_(\w+)\b", read("include/constants/species.h"))}
+    by_slot = {b: a for a, b in alias.items()}
+    #  the workings (L on a bound daemon): the routines it learns, level by level
+    ls = read("src/data/pokemon/level_up_learnsets.h")
+    sets = {name: [(int(l), mv) for l, mv in re.findall(r"LEVEL_UP_MOVE\(\s*(\d+),\s*MOVE_(\w+)\)", body)]
+            for name, body in re.findall(r"static const u16 (s\w+LevelUpLearnset)\[\]\s*=\s*\{(.*?)\};", ls, re.S)}
+    ptr = dict(re.findall(r"\[SPECIES_(\w+)\]\s*=\s*(s\w+LevelUpLearnset)", read("src/data/pokemon/level_up_learnset_pointers.h")))
+    move_ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define MOVE_(\w+)\s+(\d+)\b", read("include/constants/moves.h"))}
+    move_names = dict(re.findall(r'\[MOVE_(\w+)\]\s*=\s*_\("([^"]*)"\)', read("src/data/text/move_names.h")))
+    #  the type words' colours (type_colours.h: the INDEX names both types in these, as the move menu does)
+    typename = dict(re.findall(r'\[TYPE_(\w+)\]\s*=\s*_\("([^"]*)"\)', read("src/battle_main.c")))
+    type_colours = {typename.get(t, t): hex5((int(r), int(g), int(b))) for t, r, g, b in
+                    re.findall(r"\[TYPE_(\w+)\s*\]\s*=\s*RGB\(\s*(\d+),\s*(\d+),\s*(\d+)\)", read("src/data/type_colours.h"))}
+    #  the party art companion_export writes (party_art's own test, without drawing it)
+    def party(row):
+        if not row["art"]["front"]:
+            return None
+        d = os.path.join(GBA, "graphics/pokemon", row["constant"].lower())
+        if not os.path.isdir(d):
+            d = os.path.join(GBA, "graphics/pokemon", "nexus_" + row["name"].lower())
+        if not (os.path.exists(os.path.join(d, "front.4bpp")) and os.path.exists(os.path.join(d, "normal.gbapal"))):
+            return None
+        return "art/" + os.path.basename(row["art"]["front"]).replace("_front.png", "") + ".png"
+    #  the understandings: marks.json's, with the GUIDE margin each writes in (book_reader.c sGuideMarginNotes), how it
+    #  is arrived at (sUnderstandingConditions) and the balance written under it once its MARK is held (T-410)
+    br = read("src/book_reader.c")
+    bs = _c_strings(br)
+    entry_no = {"GUIDE_ENTRY_DREAMS": int(re.search(r"#define GUIDE_ENTRY_DREAMS\s+(\d+)", br).group(1))}
+    notes = {f: (int(entry_no.get(e, e)), bs[t]) for f, e, t in
+             re.findall(r"\{\s*(FLAG_UNDERSTANDING_\w+),\s*(\w+),\s*(sText_Margin\w+)\s*\}", br)}
+    conds = {f: sorted(set(re.findall(r"FLAG_\w+", n))) for f, n in
+             re.findall(r"\{\s*(FLAG_UNDERSTANDING_\w+),\s*\{([^}]*)\}\s*\}", br)}
+    chapters = [(sec["key"], e["short"], e["title"]) for sec in guide["sections"] for e in sec["entries"]]
+    wis = {p["root"]: p for p in json.load(open(os.path.join(ROOT, "docs", "wisdom.json"), encoding="utf-8"))["pairs"]}
+    need = sorted({f for fs in conds.values() for f in fs} | {p["badge"] for p in wis.values()})
+    fv = flag_values(need)
+    unders = []
+    for u in marks["understandings"]:
+        e, note = notes[u["flag_name"]]
+        pair = wis.get(u["flag_name"])
+        unders.append({
+            "n": u["n"], "key": u["flag_name"][len("FLAG_UNDERSTANDING_"):], "name": u["name"],
+            "flag": u["flag"], "flag_name": u["flag_name"],
+            "rgb": u["rgb"], "hex": "#%02x%02x%02x" % tuple(u["rgb"]), "lobe": u["lobe"], "lobe_type": u["type"],
+            "found": u["found"],
+            "arrives_when": {"all_flags": [fv[f] for f in conds.get(u["flag_name"], [])],
+                             "flag_names": conds.get(u["flag_name"], [])} if u["flag_name"] in conds else None,
+            "guide_margin": {"entry": e, "section": chapters[e][0], "chapter": chapters[e][1], "title": chapters[e][2],
+                             "note": note},
+            "balance": {"text": pair["root_balance"], "mark_flag": fv[pair["badge"]], "mark_flag_name": pair["badge"]}
+                       if pair and pair.get("root_balance") else None})
+    by_type = {}
+    for u in unders:
+        by_type.setdefault(u["lobe_type"], []).append(u["n"])
+    #  the save's side: where a met location is a place, and the substruct bit a gift carries
+    rmh = read("include/constants/region_map_sections.h")
+    enum = re.findall(r"\b(MAPSEC_\w+),", re.search(r"enum\s*\{(.*?)\};", rmh, re.S).group(1))   # from 0, in order
+    rs = {k: int(v, 0) for k, v in re.findall(r"#define (METLOC_\w+)\s+(0x[0-9A-Fa-f]+|\d+)", rmh)}
+    rs["KANTO_MAPSEC_START"] = enum.index(re.search(r"#define KANTO_MAPSEC_START\s+(MAPSEC_\w+)", rmh).group(1))
+    rs["MAPSEC_NONE"] = enum.index("MAPSEC_NONE")
+    cards = {}
+    for sid, row in species.items():
+        if row["name"] == "?":                  # an unused slot: the INDEX never shows one
+            continue
+        sp = row["constant"]
+        nat_name = by_slot.get(sp, sp)
+        h, w = hw.get(nat_name, hw.get(sp, (None, None)))
+        learn = [{"level": l, "move": move_ids.get(mv), "name": move_names.get(mv, mv)}
+                 for l, mv in sets.get(ptr.get(sp), [])]
+        mg = margins["margins"].get(sid)
+        cards[sid] = {
+            "constant": sp, "national": row["national"], "number": "%03d" % row["national"] if row["national"] else None,
+            "name": row["name"], "types": row["types"],
+            "type_colours": [type_colours.get(t) for t in row["types"]],
+            "category": row["category"],
+            "height_dm": h, "weight_hg": w,
+            "height": _height_text(h) if h is not None else None, "weight": _weight_text(w) if w is not None else None,
+            "entry": row["entry"],
+            "art": {"front": row["art"]["front"], "back": row["art"]["back"], "party": party(row)},
+            "native": row["native"],
+            "evolutions": row["evolutions"],
+            "learnset": learn,
+            "margins": mg,
+            "shares_type_with_understandings": sorted({n for t in row["types"] for n in by_type.get(t, [])}),
+        }
+    return {
+        "_about": "T-453 (C-186): the INDEX card, one per species, keyed by the internal species id a save stores (as "
+                  "species.json). Everything static that pokedex_screen.c draws; the save decides the rest (rules). "
+                  "number is the No. as printed (three digits). type_colours are the type words' colours (type_colours.h), "
+                  "one per type. height/weight are as the card prints them (HT, WT), height_dm/weight_hg the raw values. "
+                  "entry: CONTENT for a FireRed-built save, CONTEXT for LeafGreen. art.front/back are DAEMONS-repo paths "
+                  "(gfx/daemons, ours), art.party the companion's own art/ file. native is the NATIVE box (species.json). "
+                  "evolutions and learnset are the WORKINGS page (L on a bound daemon): the line, and the routines by "
+                  "level (move ids as moves.json). margins: OPUS's four lines, or null where OPUS has none (margin_rule "
+                  "says which shows). understandings: the seven, each with its save flag, its colour (the USER card's "
+                  "brain lobe, trainer_card.c) and the margin it writes in -- a note in a GUIDE chapter "
+                  "(book_reader.c), never an OPUS margin: the game links no species or OPUS margin to an "
+                  "understanding. shares_type_with_understandings is only a join -- the understandings whose lobe is "
+                  "coloured as one of this species' types (each lobe IS a type's colour) -- not a rule the game has.",
+        "rules": {
+            "seen": "name, number and picture once SEEN (profile_layout: all three seen bitfields agree); types, "
+                    "HT, WT, the type mark and the entry only once BOUND (index_bound) -- before that the card prints "
+                    "?? for HT and WT and no types.",
+            "first_met": "on the area page once SEEN: FIRST MET over the place (profile_layout sb1.first_met, a map "
+                         "section by national number - 1; first_met_places names it); 0 prints BEFORE RECORDS.",
+            "bound": "the WORKINGS' first line, from the first held daemon of the species (the party in order, then "
+                     "the boxes in order, eggs skipped): BY TRADE if met_location is in_game_trade or its OT is not "
+                     "the player; FROM AN EGG if met level is 0 or met_location is special_egg; A GIFT if substruct 0's "
+                     "u16 at byte 10 has bit 0 set (gift_bit) or met_location is fateful_encounter; else the place "
+                     "named by met_location when kanto_mapsec_start <= it < mapsec_none. None held: no line.",
+            "met_locations": {"kanto_mapsec_start": rs["KANTO_MAPSEC_START"], "mapsec_none": rs["MAPSEC_NONE"],
+                              "special_egg": rs["METLOC_SPECIAL_EGG"], "in_game_trade": rs["METLOC_IN_GAME_TRADE"],
+                              "fateful_encounter": rs["METLOC_FATEFUL_ENCOUNTER"]},
+            "gift_bit": {"substruct": 0, "byte": 10, "bit": 0},
+            "margin_rule": "as margins.json: no margin without OPUS (item opus in the bag); CARRIED once any of the "
+                           "species in the party or a box has gained levels_carried levels since met; NEGLECTED if "
+                           "only boxed without; else none. INSTINCT's lines when player_gender is instinct_gender and "
+                           "the species has them. SELECT turns the entry to the margin on the card.",
+            "levels_carried": margins["levels_carried"], "instinct_gender": margins["instinct_gender"],
+            "guide_margin_rule": "an understanding's note shows under its GUIDE chapter once its flag is held; its "
+                                 "balance under the note once mark_flag is held too. arrives_when is the game's own "
+                                 "condition (all flags held, checked on a map load); null: set where it happens.",
+        },
+        "type_colours": type_colours,
+        "understandings": unders,
+        "cards": cards,
+    }
+
+
+#  T-453: the patches the app applies on the device. GitHub turns the spaces in an asset's name into dots.
+GH_REPO = "CodeMusic/DAEMONS"
+PATCHES_FROM = (11, 309, 1)
+PATCH_SOURCES = [   # (edition, game, revision, the patch's file, the retail ROM's pret .sha1 file)
+    ("CONTENT", "FireRed", "1.0", "DAEMONS CONTENT for FireRed 1.0.bps", "firered.sha1"),
+    ("CONTENT", "FireRed", "Rev 1", "DAEMONS CONTENT for FireRed Rev 1.bps", "firered_rev1.sha1"),
+    ("CONTEXT", "LeafGreen", "1.0", "DAEMONS CONTEXT for LeafGreen 1.0.bps", "leafgreen.sha1"),
+    ("CONTEXT", "LeafGreen", "Rev 1", "DAEMONS CONTEXT for LeafGreen Rev 1.bps", "leafgreen_rev1.sha1"),
+]
+
+
+def patches_table():
+    """T-453 (C-186): every release from v11.309.1 that is on GitHub, its four BPS patches described -- never the
+    patches themselves. Read from ROM RELEASE/ (the notes for the target ROMs' SHA-1, the local PATCHES/ for each
+    patch's size, hashes and the CRC32s in its footer) and checked against HOW_TO_PATCH.md's retail table. A sealed
+    group keeps only its last release's patches, so a release whose files are gone keeps the row the last export
+    wrote. Which releases are published is asked of gh once; without gh, the last export's list stands."""
+    import glob, hashlib, struct, subprocess, zlib
+    rel = os.path.join(ROOT, "ROM RELEASE")
+    old_path = os.path.join(OUT, "patches.json")
+    old = json.load(open(old_path, encoding="utf-8")) if os.path.exists(old_path) else {"releases": []}
+    kept = {r["version"]: r for r in old.get("releases", [])}
+    vt = lambda v: tuple(int(x) for x in v.split("."))
+    r = subprocess.run(["gh", "release", "list", "-R", GH_REPO, "--json", "tagName", "-L", "1000"],
+                       capture_output=True, text=True)
+    if r.returncode == 0:
+        published = {t["tagName"][1:] for t in json.loads(r.stdout) if re.fullmatch(r"v\d+\.\d+\.\d+", t["tagName"])}
+    else:
+        print("  !! gh could not list the releases; patches.json keeps the releases it had")
+        published = set(kept)
+    #  the retail ROMs, as the player's guide gives them (CRC32, SHA-1, MD5), checked against pret's .sha1 files
+    guide = open(os.path.join(rel, "HOW_TO_PATCH.md"), encoding="utf-8").read()
+    rows = re.findall(r"^\| Pok.mon (FireRed|LeafGreen) \(([^)]*)\) \*\*([^*]+)\*\* \| `([0-9A-F]{8})` \| `([0-9a-f]{40})` \|", guide, re.M)
+    md5 = {(g, rv): h for g, rv, h in re.findall(r"(FireRed|LeafGreen) (1\.0|Rev 1)\s+`([0-9a-f]{32})`", guide)}
+    retail = {}
+    for game, region, rev, crc, sha in rows:
+        retail[(game, rev)] = {"region": region, "crc32": crc, "sha1": sha, "md5": md5.get((game, rev))}
+    for ed, game, rev, _, sha_file in PATCH_SOURCES:
+        want = open(os.path.join(GBA, sha_file)).read().split()[0]
+        if retail.get((game, rev), {}).get("sha1") != want:
+            raise SystemExit("  refused: HOW_TO_PATCH.md's %s %s does not match pret's %s" % (game, rev, sha_file))
+    folders = {}
+    for meta in glob.glob(os.path.join(rel, "v*.x", "v*", ".release.json")) + glob.glob(os.path.join(rel, "v*.x", ".release.json")):
+        folders[json.load(open(meta))["version"]] = os.path.dirname(meta)
+    out, missing = [], []
+    for v in sorted(set(folders) | set(kept), key=vt):
+        if vt(v) < PATCHES_FROM or v not in published:
+            continue
+        folder = folders.get(v)
+        files = [os.path.join(folder, "PATCHES", p[3]) for p in PATCH_SOURCES] if folder else []
+        if not files or not all(os.path.exists(f) for f in files):
+            if v in kept:
+                out.append(kept[v])
+            else:
+                missing.append(v)
+            continue
+        notes_path = os.path.join(folder, "RELEASE_NOTES.md")
+        targets = dict(re.findall(r"^\| `(daemonsCon\w+\.gba)` \| \w+ \| `([0-9a-f]{40})` \|", open(notes_path, encoding="utf-8").read(), re.M))
+        meta = json.load(open(os.path.join(folder, ".release.json")))
+        patches = []
+        for (ed, game, rev, name, sha_file), f in zip(PATCH_SOURCES, files):
+            data = open(f, "rb").read()
+            crc_src, crc_tgt, crc_patch = struct.unpack("<III", data[-12:])
+            if zlib.crc32(data[:-4]) != crc_patch:
+                raise SystemExit("  refused: %s's own CRC is wrong" % f)
+            src = retail[(game, rev)]
+            if "%08X" % crc_src != src["crc32"]:
+                raise SystemExit("  refused: %s is made for CRC32 %08X, not %s %s's %s" % (f, crc_src, game, rev, src["crc32"]))
+            target = targets["daemonsContent.gba" if ed == "CONTENT" else "daemonsContext.gba"]
+            #  where pret's byte-identical retail builds are cached (romrelease.py), apply the patch and prove the
+            #  notes' SHA-1 is what it makes -- a ROM left in the folder can have been replaced by hand
+            cached = os.path.join(os.path.expanduser("~"), ".cache/daemons/pokefirered-upstream",
+                                  open(os.path.join(GBA, sha_file)).read().split()[1])
+            if os.path.exists(cached):
+                import bps
+                if hashlib.sha1(bps.apply(open(cached, "rb").read(), data)).hexdigest() != target:
+                    raise SystemExit("  refused: %s does not make the ROM %s's notes name" % (name, v))
+            asset = name.replace(" ", ".")
+            patches.append({
+                "edition": ed, "file": asset,
+                "source": {"game": game, "region": src["region"], "revision": rev,
+                           "name": "Pokemon %s (%s) %s" % (game, src["region"], rev),
+                           "sha1": src["sha1"], "crc32": src["crc32"], "md5": src["md5"]},
+                "target": {"sha1": target, "crc32": "%08X" % crc_tgt},
+                "patch": {"size": len(data), "sha1": hashlib.sha1(data).hexdigest(),
+                          "sha256": hashlib.sha256(data).hexdigest()},
+                "url": "https://github.com/%s/releases/download/v%s/%s" % (GH_REPO, v, asset)})
+        out.append({"version": v, "tag": "v" + v, "bible": meta["bible"], "engine": meta["engine"],
+                    "made": meta["made"], "page": "https://github.com/%s/releases/tag/v%s" % (GH_REPO, v),
+                    "patches": patches})
+    if missing:
+        print("  !! published but no patches on this machine to describe: " + ", ".join(missing))
+    out.sort(key=lambda r: vt(r["version"]), reverse=True)
+    return {"_about": "T-453 (C-186): DAEMONS' BPS patches, newest first, as published on GitHub (the assets of each "
+                      "release on %s). Nothing of Nintendo's is here: the app fetches url, checks patch.sha1 (or "
+                      "sha256, which GitHub also reports), checks the player's own ROM against source (sha1, or crc32 "
+                      "as a BPS patcher does; md5 for tools that show only that), applies the patch, and checks the "
+                      "result against target.sha1. A patch fits only its own source revision; 1.0 and Rev 1 are both "
+                      "common. CONTENT is FireRed's edition, CONTEXT LeafGreen's. latest is the newest version." % GH_REPO,
+            "repo": GH_REPO, "latest": out[0]["version"] if out else None, "releases": out}
+
+
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
@@ -1081,6 +1348,10 @@ def main():
              "subtle.json": subtle_table(),                                     # T-423: the LIBRARY's second book
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
+    #  T-453; the GUIDE's chapters as guide.json has them (gensubtle, imported since, reuses genguide's parser)
+    files["index_cards.json"] = index_cards_table(files["species.json"], files["margins.json"],
+                                                  files["marks.json"], files["guide.json"])
+    files["patches.json"] = patches_table()                                     # T-453
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
