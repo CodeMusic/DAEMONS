@@ -1288,6 +1288,12 @@ def patches_table():
                 missing.append(v)
             continue
         notes_path = os.path.join(folder, "RELEASE_NOTES.md")
+        if not os.path.exists(notes_path):          # a sealed group: its notes are one PDF now, its row already written
+            if v in kept:
+                out.append(kept[v])
+            else:
+                missing.append(v)
+            continue
         targets = dict(re.findall(r"^\| `(daemonsCon\w+\.gba)` \| \w+ \| `([0-9a-f]{40})` \|", open(notes_path, encoding="utf-8").read(), re.M))
         meta = json.load(open(os.path.join(folder, ".release.json")))
         patches = []
