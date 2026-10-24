@@ -121,3 +121,51 @@ T-452 DRAFT: six daemons in the sprite-server style, first pilot.
 T-452 DRAFT: six daemons in the sprite-server style, first pilot.
 
 ![24Oct2026 - T452 - daemon art pilot draft - 20](24Oct2026%20-%20T452%20-%20daemon%20art%20pilot%20draft%20-%2020.png)
+
+### 24Oct2026 - T447 - SCORN SOLUTIONS and MANSION built - 21
+
+T-447 built (v11.310.1): SCORN SOLUTIONS and the burned MANSION in game; the steel door opening.
+
+![24Oct2026 - T447 - SCORN SOLUTIONS and MANSION built - 21](24Oct2026%20-%20T447%20-%20SCORN%20SOLUTIONS%20and%20MANSION%20built%20-%2021.png)
+
+### 24Oct2026 - T447 - SCORN SOLUTIONS and MANSION built - 22
+
+T-447 built (v11.310.1): SCORN SOLUTIONS and the burned MANSION in game; the steel door opening.
+
+![24Oct2026 - T447 - SCORN SOLUTIONS and MANSION built - 22](24Oct2026%20-%20T447%20-%20SCORN%20SOLUTIONS%20and%20MANSION%20built%20-%2022.png)
+
+### 24Oct2026 - T447 - SCORN SOLUTIONS and MANSION built - 23
+
+T-447 built (v11.310.1): SCORN SOLUTIONS and the burned MANSION in game; the steel door opening.
+
+![24Oct2026 - T447 - SCORN SOLUTIONS and MANSION built - 23](24Oct2026%20-%20T447%20-%20SCORN%20SOLUTIONS%20and%20MANSION%20built%20-%2023.png)
+
+### 24Oct2026 - T450 - HANDSHAKE line and companion delivery - 24
+
+T-450/T-448/T-455 (v11.310.1): the HANDSHAKE line; a delivered HANDSHAKE finished on load; an evolved daemon offered its routine.
+
+![24Oct2026 - T450 - HANDSHAKE line and companion delivery - 24](24Oct2026%20-%20T450%20-%20HANDSHAKE%20line%20and%20companion%20delivery%20-%2024.png)
+
+### 24Oct2026 - T450 - HANDSHAKE line and companion delivery - 25
+
+T-450/T-448/T-455 (v11.310.1): the HANDSHAKE line; a delivered HANDSHAKE finished on load; an evolved daemon offered its routine.
+
+![24Oct2026 - T450 - HANDSHAKE line and companion delivery - 25](24Oct2026%20-%20T450%20-%20HANDSHAKE%20line%20and%20companion%20delivery%20-%2025.png)
+
+### 24Oct2026 - T450 - HANDSHAKE line and companion delivery - 26
+
+T-450/T-448/T-455 (v11.310.1): the HANDSHAKE line; a delivered HANDSHAKE finished on load; an evolved daemon offered its routine.
+
+![24Oct2026 - T450 - HANDSHAKE line and companion delivery - 26](24Oct2026%20-%20T450%20-%20HANDSHAKE%20line%20and%20companion%20delivery%20-%2026.png)
+
+### 24Oct2026 - T452 - daemon art round two draft - 27
+
+T-452 DRAFT round two: six daemons, props kept, accents under 15%, icons drawn.
+
+![24Oct2026 - T452 - daemon art round two draft - 27](24Oct2026%20-%20T452%20-%20daemon%20art%20round%20two%20draft%20-%2027.png)
+
+### 24Oct2026 - T452 - daemon art round two draft - 28
+
+T-452 DRAFT round two: six daemons, props kept, accents under 15%, icons drawn.
+
+![24Oct2026 - T452 - daemon art round two draft - 28](24Oct2026%20-%20T452%20-%20daemon%20art%20round%20two%20draft%20-%2028.png)
