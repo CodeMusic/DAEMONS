@@ -1149,9 +1149,8 @@ def index_cards_table(species, margins, marks, guide):
             "n": u["n"], "key": u["flag_name"][len("FLAG_UNDERSTANDING_"):], "name": u["name"],
             "flag": u["flag"], "flag_name": u["flag_name"],
             "rgb": u["rgb"], "hex": "#%02x%02x%02x" % tuple(u["rgb"]), "lobe": u["lobe"], "lobe_type": u["type"],
-            "found": u["found"],
-            "arrives_when": {"all_flags": [fv[f] for f in conds.get(u["flag_name"], [])],
-                             "flag_names": conds.get(u["flag_name"], [])} if u["flag_name"] in conds else None,
+            # where it is found and what makes it arrive stay out: the companion is public and the game asks the
+            # player to find them (the iOS lane's catch, 2026-10-24); the app only needs to know whether it is held
             "guide_margin": {"entry": e, "section": chapters[e][0], "chapter": chapters[e][1], "title": chapters[e][2],
                              "note": note},
             "balance": {"text": pair["root_balance"], "mark_flag": fv[pair["badge"]], "mark_flag_name": pair["badge"]}
@@ -1225,8 +1224,7 @@ def index_cards_table(species, margins, marks, guide):
                            "the species has them. SELECT turns the entry to the margin on the card.",
             "levels_carried": margins["levels_carried"], "instinct_gender": margins["instinct_gender"],
             "guide_margin_rule": "an understanding's note shows under its GUIDE chapter once its flag is held; its "
-                                 "balance under the note once mark_flag is held too. arrives_when is the game's own "
-                                 "condition (all flags held, checked on a map load); null: set where it happens.",
+                                 "balance under the note once mark_flag is held too.",
         },
         "type_colours": type_colours,
         "understandings": unders,
