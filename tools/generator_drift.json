@@ -106,10 +106,11 @@
   ]
  },
  "gbacivictown": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server; and b3cc6cb50 T-438 batch A: BRAZEN's blocks 0x392/0x393 moved onto four freed saffron_city slots so nothing draws tiles 376-383 (a write puts them back and the door frames return)",
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server; and b3cc6cb50 T-438 batch A: BRAZEN's blocks 0x392/0x393 moved onto four freed saffron_city slots so nothing draws tiles 376-383 (a write puts them back and the door frames return); and f8fa96614 T-438 batch F: HALFTONE's leftovers redrawn by gbatowns.py (the roofs dotted whole, a sixteen-slot tile row added for the roofs' copy of 702), which a write would undo (found by check_generators --writes 2026-10-24)",
   "files": [
    "engine:data/tilesets/secondary/cerulean_city/metatiles.bin",
    "engine:data/tilesets/secondary/cerulean_city/tiles.png",
+   "engine:data/tilesets/secondary/lavender_town/tiles.png",
    "engine:data/tilesets/secondary/saffron_city/metatiles.bin",
    "engine:data/tilesets/secondary/saffron_city/tiles.png"
   ]

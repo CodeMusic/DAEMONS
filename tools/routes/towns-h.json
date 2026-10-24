@@ -1,0 +1,23 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch H (tools/gbatowns.py, built 2026-10-24): LURID's SAFARI gate and its pens in neon fuchsia, the SAFARI's canopy in acid chartreuse, a harbour house under its drying net (THREE ISLAND PORT) and ONE ISLAND's NET centre, SOMEONE'S STONE's cairn, DENSE WOOD and THE SAME BUSH in its own salt-scrub split (gTileset_SameBush). Only goto and shots -- no warp steps, so the follower never stands on a doormat (T-451). Watch held at day, clear weather, summer. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "LURID: the SAFARI gate and the pens", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1", "poke gDaemonsSeasonOverride 8 3",
+   "goto FuchsiaCity 24 8", "repel 999", "close", "wait 40", "shot the SAFARI gate and the east pens",
+   "goto FuchsiaCity 8 9", "close", "wait 40", "shot the west pens"]},
+  {"stop": "LURID: the SAFARI's canopy", "steps": [
+   "goto SafariZone_Center 25 25", "repel 999", "close", "wait 40", "shot the SAFARI centre's canopy",
+   "goto SafariZone_East 15 20", "close", "wait 40", "shot the SAFARI east's canopy"]},
+  {"stop": "THE ISLANDS: a harbour house and the NET centre", "steps": [
+   "goto ThreeIsland_Port 12 12", "close", "wait 40", "shot THREE ISLAND PORT's harbour house, its drying net",
+   "goto OneIsland 16 11", "close", "wait 40", "shot ONE ISLAND's NET centre and houses"]},
+  {"stop": "SOMEONE'S STONE", "steps": [
+   "goto FiveIsland_MemorialPillar 9 46", "close", "wait 40", "shot the cairn"]},
+  {"stop": "DENSE WOOD", "steps": [
+   "goto ThreeIsland_BerryForest 26 22", "repel 999", "close", "wait 40", "shot DENSE WOOD's canopy"]},
+  {"stop": "THE SAME BUSH: salt scrub", "steps": [
+   "goto SixIsland_PatternBush 5 24", "repel 999", "close", "wait 40", "shot THE SAME BUSH in salt scrub"]}
+ ]
+}

@@ -15,7 +15,9 @@
                                                    #   VERDIGRIS, BRAZEN approved 2026-10-23 with the revisions below).
                                                    #   Refuses without --approved. A town with PALETTE MOVES is skipped
                                                    #   unless --palettes is given too: then its moved .pal rows and its
-                                                   #   metatiles.bin are written beside its tiles.png.
+                                                   #   metatiles.bin are written beside its tiles.png. Batch H (LURID,
+                                                   #   QUICKSILVER, the islands, DENSE WOOD) approved 2026-10-24, and
+                                                   #   with --palettes THE SAME BUSH's split (SPLITS_APPROVED).
 
 WHAT IS LEFT. Batches A-E took the doors, field effects, the general ground, every interior and the caves. A town's
 SECONDARY tileset is part ours already -- gbacivic/gbacivictown (CHECKPOINTS, THE REPO, the BENCHMARKS), gbahouse,
@@ -57,7 +59,8 @@ They go into the draft folder (palettes/NN.pal, metatiles.bin beside tiles.png) 
 A tile vanilla copied from primary/general (a ledge's end, a fence post) and drew in rows 0..6 is not redrawn here: it
 takes batch C's current drawing of the same general tile, flips and all, so it matches the ground around it.
 
-NOT TOUCHED. A grove's TELL (T-337: gbagrove.py's SECONDARY_TELL, THE UNDERTONE's tile 10) is never redrawn here;
+NOT TOUCHED. The LANDMARKS (SCORN SOLUTIONS, the MANSION, USER TOWER, THE ANNEX's triangle): T-447 redraws them from
+the story, so every tile their cells draw is kept, as KEEP_MAPS keeps TANOBY's. A grove's TELL (T-337: gbagrove.py's SECONDARY_TELL, THE UNDERTONE's tile 10) is never redrawn here;
 after every redraw it is drawn again from its source tile's new pixels, so the little door stays on top of this art.
 A DOOR's tiles (field_door.c's table): gbadoors.py derives each door's animation from its closed block, so
 a door is redrawn by re-running gbadoors after a town is built. LAVENDER (HALFTONE) is grey by DaemonsIsHalftone() and
@@ -221,7 +224,17 @@ SHEET_PREFIX = {"vermilion_city": "t438f3", "lavender_town": "t438f3", "celadon_
 APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
             #  the user, 2026-10-23: build ARDOR, HALFTONE, VERDIGRIS and BRAZEN with the revisions (MOVES below; the
             #  roofs dotted whole; the pantiles calmed a step more)
-            "vermilion_city", "lavender_town", "celadon_city", "saffron_city"]
+            "vermilion_city", "lavender_town", "celadon_city", "saffron_city",
+            #  the user, 2026-10-24: build batch H -- LURID (the SAFARI canopy acid chartreuse, the pens neon fuchsia:
+            #  both MOVES as drafted), QUICKSILVER (its sand left as it is; the MANSION and the lab are LANDMARKS, so
+            #  all that is left is one tile copied from general's), the island kit with the harbour roofs' drying net
+            #  (ONE..SEVEN; USER TOWER and THE ANNEX are LANDMARKS) and DENSE WOOD
+            "fuchsia_city", "cinnabar_island", "sevii_islands_123", "sevii_islands_45", "sevii_islands_67",
+            "berry_forest"]
+#  the palette splits the user approved, and which option (SPLITS below): THE SAME BUSH's salt scrub, option A
+#  (2026-10-24); --write --approved writes its rows 7..12 beside its base (the engine's header, palette table and
+#  layout were wired by hand, as gTileset_CaveUmbral's were)
+SPLITS_APPROVED = {"same_bush": 0}
 
 
 # ================================================================== palette moves (the user, 2026-10-23)
@@ -295,15 +308,8 @@ MOVES = {
              colours=_cols(ia="31625a 6a1a58", ib="4a9483 b0288f", ic="52c594 ee4ec8", id="6ae6ac ff8ae8",
                            ie="a4eeac ffc8f4")),
     ],
-    "cinnabar_island": [
-        dict(kind="colours", row=9, why="the lab's cream walls (row 9, 1..5) as quicksilver -- a cold bright "
-                                        "metal, white-lit, pooling dark at the foot",
-             colours=_cols(i1="fffff6 f8faff", i2="e6e6bd d8dee8", i3="c5c59c b0b8c6", i4="acac83 8e98aa",
-                           i5="7b7b52 5c6478")),
-        dict(kind="colours", row=8, why="the MANSION's roof (row 8, 1..3) scorched: brick-brown to soot and ash; "
-                                        "4 (its lit edge) stays, since ROUTE 21's jetty draws it too",
-             colours=_cols(i1="8b5239 3e3430", i2="a46a52 5c4c46", i3="cd947b 8c766a")),
-    ],
+    #  QUICKSILVER's two drafted moves (the lab's cream walls as quicksilver, row 9; the MANSION's roof scorched,
+    #  row 8) are not built: both are LANDMARKS, which T-447 redraws from the story (the user, 2026-10-24)
 }
 for _ms in MOVES.values():                     # i_f: `if` is a keyword
     for _m in _ms:
@@ -324,6 +330,17 @@ KEEP_TILES = {"saffron_city": {789, 804, 805, 807},
 #  maps whose tiles are left for a later batch: every tile these maps draw is kept, wherever else it is drawn
 #  (TANOBY's seven chamber doors wait for batch G, the user 2026-10-23)
 KEEP_MAPS = {"sevii_islands_67": ["SevenIsland_TanobyRuins"]}
+#  LANDMARKS: places T-447 redraws from the story later, so this tool leaves them exactly as they are (the user,
+#  2026-10-24, building batch H). Each is a box of cells on one map (the census's object for it); every tile a block in
+#  the box draws is kept, wherever else that tile is drawn, so no write of this tool can change a pixel of one -- and
+#  no palette move here touches a row they draw (QUICKSILVER's two drafted moves, the lab's quicksilver walls and the
+#  MANSION's ash roof, were dropped for that).
+LANDMARKS = {
+    "cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
+                        ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)")],
+    "sevii_islands_67": [("SevenIsland_TrainerTower", 54, 0, 9, 9, "USER TOWER"),
+                         ("BirthIsland_Exterior", 10, 7, 11, 9, "THE ANNEX's triangle")],
+}
 
 
 def grove_tell(ts):
@@ -511,8 +528,11 @@ class Town:
         self.moves = apply_pre(self) if moved else []
         sym = "gTileset_" + camel(ts)
         want = re.sub(r"[^a-z0-9]", "", ts)
+        #  a palette split's maps count as its base's (THE SAME BUSH, gTileset_SameBush, draws THE UNDERTONE's tiles
+        #  and metatiles), so the split leaves where each tile is drawn -- and so how it is drawn -- as it was
         self.maps = sorted(n for n, l in layouts().items()
-                           if re.sub(r"[^a-z0-9]", "", l["secondary_tileset"].replace("gTileset_", "").lower()) == want
+                           if re.sub(r"[^a-z0-9]", "", daemonslib.tileset_base(GBA, l["secondary_tileset"])
+                                     .replace("gTileset_", "").lower()) == want
                            and n in used_layouts())
         self.sym = sym
         self.placed = collections.Counter()
@@ -549,12 +569,17 @@ class Town:
             set(grove_tell(self.ts)) - self.kept_by_map()
 
     def kept_by_map(self):
-        """every tile a KEEP_MAPS map draws (TANOBY's chamber doors, batch G)"""
+        """every tile a KEEP_MAPS map draws (TANOBY's chamber doors, batch G), and every tile a LANDMARKS box draws"""
         out = set()
+        blocks = set()
         for m in KEEP_MAPS.get(self.ts, ()):
-            for b in set(self.grid.get(m, ())):
-                if 640 <= b < 640 + self.nblocks:
-                    out |= {(v & 0x3FF) - 640 for v in entries(self.mt, b - 640) if v & 0x3FF >= 640}
+            blocks |= set(self.grid.get(m, ()))
+        for m, x0, y0, w, h, _ in LANDMARKS.get(self.ts, ()):
+            W = layouts()[m]["width"]
+            blocks |= {self.grid[m][y * W + x] for y in range(y0, y0 + h) for x in range(x0, x0 + w)}
+        for b in blocks:
+            if 640 <= b < 640 + self.nblocks:
+                out |= {(v & 0x3FF) - 640 for v in entries(self.mt, b - 640) if v & 0x3FF >= 640}
         return out
 
     def as_before(self, tiles):
@@ -1055,7 +1080,7 @@ for _m in ("plank", "roof", "wall", "glass", "dome"):
 
 
 # ================================================================== batch H: the rest, in the order a player meets them
-#  (drafted 2026-10-24 from the plan sheet's looks; NOT approved, so not in APPROVED and never written by --write)
+#  (drafted 2026-10-24 from the plan sheet's looks; approved and built 2026-10-24, the landmarks left out)
 def _lobe(X, Y, lobes, P):
     """the nearest leaf clump on a P-pixel grid: (distance / radius, dx, dy, radius)"""
     xo, yo = X % P, Y % P
@@ -1898,7 +1923,7 @@ def split_draft(key, outdir, sheets_dir):
         parts.append(_row([_label(im, l, f) for im, l in zip(ims, lbl)]))
         parts.append(_row([_label(z2(ims[0]), "today 2x", f), _label(z2(ims[1]), lbl[1].replace("1x", "2x"), f)]))
     parts.append(_title("\n".join([
-        "WIRING (as gTileset_CaveUmbral, engine 2007d739f) -- NOT written by this tool; the build does it once approved:",
+        "WIRING (as gTileset_CaveUmbral, engine 2007d739f) -- by hand, done when built (2026-10-24); the tool writes the rows:",
         "  src/data/tilesets/headers.h: gTileset_SameBush = { .tiles = gTilesetTiles_ViridianForest, .palettes = "
         "gTilesetPalettes_SameBush,",
         "      .metatiles = gMetatiles_ViridianForest, .metatileAttributes = gMetatileAttributes_ViridianForest }",
@@ -1936,6 +1961,38 @@ def save_moves(town, d):
     if town.mt != town.mt_disk:
         open(os.path.join(d, "metatiles.bin"), "wb").write(town.mt)
     return rows
+
+
+def split_pals(key, option):
+    """a split's rows 7..12, {row: colours}: its base's own rows, with the option's colours in its row"""
+    sp = SPLITS[key]
+    base = Town(sp["base"])
+    r = sp["row"]
+    out = {k: list(base.pals[k]) for k in range(7, 13)}
+    five = lambda c: tuple(x >> 3 for x in c)
+    for i, (a, b) in sp["options"][option][2].items():
+        if five(out[r][i]) != five(tuple(int(a[j:j + 2], 16) for j in (0, 2, 4))):
+            raise SystemExit("  !! %s row %d index %d is %s, not the option's before" % (key, r, i, out[r][i]))
+        out[r][i] = _q(b)
+    return out
+
+
+def write_split(key, option):
+    """the split's rows 7..12 into SEC/<its dir> (the Tileset header in headers.h names them). Idempotent"""
+    sp = SPLITS[key]
+    d = os.path.join(GBA, SEC + sp["dir"])
+    os.makedirs(d, exist_ok=True)
+    rows = []
+    for r, pal in split_pals(key, option).items():
+        f = os.path.join(d, "%02d.pal" % r)
+        if not os.path.exists(f) or read_pal(f) != pal:
+            daemonslib.write_pal(f, pal)
+            rows.append(r)
+    if rows:
+        print("  wrote %s (%s, option %s): a palette split, rows %s in %s" % (
+            sp["name"], sp["symbol"], sp["options"][option][0].split()[0], rows, sp["dir"]))
+    else:
+        print("  %s: already written, nothing to write" % sp["name"])
 
 
 def write_draft(outdir):
@@ -1986,7 +2043,8 @@ def write_draft(outdir):
                    "--approved; ARDOR, HALFTONE, VERDIGRIS, BRAZEN drafted 2026-10-23 (t438f2_*), approved "
                    "with revisions and revised (t438f3_*: palette moves, the roofs dotted whole, the pantiles "
                    "calmed) and built (engine f8fa96614); batch H (LURID, QUICKSILVER, the islands, DENSE WOOD, THE SAME BUSH's split) "
-                   "drafted 2026-10-24 (t438h_*), not approved",
+                   "drafted 2026-10-24 (t438h_*), approved and built (engine c5078dca6) with the landmarks (SCORN SOLUTIONS, the "
+                   "MANSION, USER TOWER, THE ANNEX's triangle) kept for T-447 and QUICKSILVER's two moves dropped",
                    drafted=info, plan=[{k: v for k, v in p.items()} for p in PLAN]),
               open(os.path.join(outdir, "groups.json"), "w"), indent=1, default=list)
     return made
@@ -2037,6 +2095,11 @@ def main():
                                                        new[t] != town.disk[t]),
                                               "; palette rows %s%s" % (rows, ", metatiles.bin" if town.mt !=
                                                                        town.mt_disk else "") if town.moves else ""))
+        for key, option in SPLITS_APPROVED.items():
+            if not PALETTES:
+                print("  %s: skipped -- a palette split goes into the engine only with --palettes" % key)
+                continue
+            write_split(key, option)
         return 0
     if DRAFT is not None:
         for p in write_draft(DRAFT):
