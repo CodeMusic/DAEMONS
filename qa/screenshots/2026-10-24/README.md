@@ -169,3 +169,39 @@ T-452 DRAFT round two: six daemons, props kept, accents under 15%, icons drawn.
 T-452 DRAFT round two: six daemons, props kept, accents under 15%, icons drawn.
 
 ![24Oct2026 - T452 - daemon art round two draft - 28](24Oct2026%20-%20T452%20-%20daemon%20art%20round%20two%20draft%20-%2028.png)
+
+### 24Oct2026 - T449 - region map SCORE built - 29
+
+T-449 built (v11.310.2): the region map as a SCORE, its sea of bits and notes, the overworld water.
+
+![24Oct2026 - T449 - region map SCORE built - 29](24Oct2026%20-%20T449%20-%20region%20map%20SCORE%20built%20-%2029.png)
+
+### 24Oct2026 - T449 - region map SCORE built - 30
+
+T-449 built (v11.310.2): the region map as a SCORE, its sea of bits and notes, the overworld water.
+
+![24Oct2026 - T449 - region map SCORE built - 30](24Oct2026%20-%20T449%20-%20region%20map%20SCORE%20built%20-%2030.png)
+
+### 24Oct2026 - T449 - region map SCORE built - 31
+
+T-449 built (v11.310.2): the region map as a SCORE, its sea of bits and notes, the overworld water.
+
+![24Oct2026 - T449 - region map SCORE built - 31](24Oct2026%20-%20T449%20-%20region%20map%20SCORE%20built%20-%2031.png)
+
+### 24Oct2026 - T449 - region map SCORE built - 32
+
+T-449 built (v11.310.2): the region map as a SCORE, its sea of bits and notes, the overworld water.
+
+![24Oct2026 - T449 - region map SCORE built - 32](24Oct2026%20-%20T449%20-%20region%20map%20SCORE%20built%20-%2032.png)
+
+### 24Oct2026 - T447 - pair 2 first draft - 33
+
+T-447 DRAFT: CORPUS's tower and DAEMON TOWER, first pass (flat; being redrawn with depth).
+
+![24Oct2026 - T447 - pair 2 first draft - 33](24Oct2026%20-%20T447%20-%20pair%202%20first%20draft%20-%2033.png)
+
+### 24Oct2026 - T447 - pair 2 first draft - 34
+
+T-447 DRAFT: CORPUS's tower and DAEMON TOWER, first pass (flat; being redrawn with depth).
+
+![24Oct2026 - T447 - pair 2 first draft - 34](24Oct2026%20-%20T447%20-%20pair%202%20first%20draft%20-%2034.png)
