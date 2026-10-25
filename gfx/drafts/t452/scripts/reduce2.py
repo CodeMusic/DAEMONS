@@ -1,7 +1,7 @@
 """T-452 round two: a draft -> cleaned 64-grid -> accents capped -> the type's ramp -> 4bpp 64x64.
 
     reduce2.py NAME TYPE FRONT_DRAFT [--back=BACK_DRAFT] [--icon=ICON_DRAFT] [--cap=0.15]
-               [--box-front=x0,y0,x1,y1] [--box-back=...]
+               [--box-front=x0,y0,x1,y1] [--box-back=...] [--dir=b]
 
 Writes only under gfx/drafts/t452/b/ (clean/, reduced/) and prints one JSON line of measurements.
 
@@ -26,8 +26,9 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gbs
 R = "/Users/christopherhicks/Projects/DAEMONS"; PY = os.path.expanduser("~/.pyenv/versions/3.12.2/bin/python3")
-B = os.path.join(R, "gfx/drafts/t452/b")
 opt = {a.split("=", 1)[0][2:]: a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--") and "=" in a}
+#  --dir=c: batch.py's roll-out batches (round two's own drafts stay in b/, the default)
+B = os.path.join(R, "gfx/drafts/t452", opt.get("dir", "b"))
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 name, typ, front = args[:3]
 CAP = float(opt.get("cap", 0.15))

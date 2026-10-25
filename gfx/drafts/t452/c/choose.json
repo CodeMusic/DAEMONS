@@ -1,0 +1,102 @@
+{
+ "_": "batch 1 choices, made by eye on the candidates sheets (t452c_cand_*.png). Defaults: front_i2i_4711 (0.6), back_i2i_4711 (0.6), icon_4741.",
+ "roverseer": {
+  "back": "roverseer_back_i2i_4712.png",
+  "icon": "roverseer_icon_4741.png",
+  "note": "front i2i 0.6 kept the boxy hound and antenna; back 4711 put two eyes on the back panel, 4712 is a true back."
+ },
+ "roverbyte": {
+  "icon": "roverbyte_icon_4742.png",
+  "note": "front i2i 0.6 kept the floppy ears and leg plates; icon 4741 grew pointed ears, 4742 keeps the floppy ones."
+ },
+ "label": {
+  "back": "label_back_i2i_4712.png",
+  "note": "front 0.6 kept the string loop on its head (0.66 turned the body green); back 4711 drew a face, 4712 a true back."
+ },
+ "rubric": {
+  "back": "rubric_back_i2i_4712.png",
+  "note": "front 0.6 kept the ruled grid; back 4711 drew a face, 4712 the plain ruled back.",
+  "icon": "derived",
+  "failed": "icon: 4741 drew a face on a ruled grid and the clean kept only an arc of it; 4742 drew six faces in a grid -- derived icon used"
+ },
+ "canon": {
+  "front": "canon_front_i2i_4712.png",
+  "icon": "canon_icon_4742.png",
+  "note": "front 0.66 kept the open drawer of papers better than 0.6; back 0.6 is the plain cabinet back with its keyhole; icon 4742 is a cabinet with eyes."
+ },
+ "cluster": {
+  "icon": "derived",
+  "note": "front and back keep the packed spheres. ICON: all four busts (two wordings) drew one round face, never the cluster -- the icon derived from the new front stands in.",
+  "failed": "icon: every drawn bust (4741-4744) became a single round face; derived icon used"
+ },
+ "locus": {
+  "back": "locus_back_i2i_4712.png",
+  "icon": "derived",
+  "note": "front 0.6 keeps the bean-and-loop shape with a face; back 0.66 is the bare loop. ICON: the busts drew humans (4741, 4742) and a robot (4743, 4744) -- derived icon used.",
+  "failed": "icon: every drawn bust (4741-4744) lost the loop (two humans, two robots); derived icon used"
+ },
+ "manifold": {
+  "back": "manifold_back_i2i_4712.png",
+  "note": "front 0.6 kept the folded sheet with its tail. Back: both seeds turned it into a bat (today's back is half a bat already); 4712 the cleaner. Back cleaned on a key ground: on white its thin wings came apart and only a scrap was kept.",
+  "failed": "back: both i2i seeds read as a bat, not a folded sheet -- weak, worth a redraw",
+  "key-back": true
+ },
+ "crawler": {
+  "front": "crawler_front_i2i_4712.png",
+  "note": "front 0.66 kept the alternating segments and white head; back 0.6 kept the stacked segments. Cleaned on a key ground: on white, cleandraft wore its dark segments away as shadow and kept only the head; the back the same (it kept one segment).",
+  "key": true,
+  "key-back": true
+ },
+ "pending": {
+  "note": "front 0.6 kept the dark cloth and the sleeping face; back 0.6 is the wrapped pod."
+ },
+ "indexer": {
+  "icon": "indexer_icon_4742.png",
+  "note": "front 0.6 kept the card-panel wings and feathery antennae; icon 4742 is the whole moth (4741 a bunny-eared face)."
+ },
+ "scraper": {
+  "back": "scraper_back_i2i_4712.png",
+  "icon": "scraper_icon_4743.png",
+  "note": "front 0.6 kept the bands and the stinger; back 4711 drew a face, 4712 the banded rear. Icon from the second wording (4743, a small banded grub); the busts 4741/4742 lost the bands."
+ },
+ "buffer": {
+  "icon": "buffer_icon_4742.png",
+  "note": "front 0.6 kept the slit and red eye; icon 4742 the pod with its slit and eye."
+ },
+ "injector": {
+  "icon": "injector_icon_4742.png",
+  "note": "front 0.6 kept the clear wings and needle stinger; back 0.6 keeps the needle pointing down; icon 4742 the whole wasp."
+ },
+ "relay": {
+  "front": "relay_front_i2i_4712.png",
+  "icon": "relay_icon_4744.png",
+  "note": "front 0.66 kept the envelope under the wing (0.6 dropped it); icon from the second wording, 4744, the only one with the envelope."
+ },
+ "broadcast": {
+  "back": "broadcast_back_i2i_4712.png",
+  "note": "front 0.6 kept the spread wings; back 4712 the cleaner rear. Icon 4741 is a dove's bust without its wings."
+ },
+ "nibble": {
+  "front": "nibble_front_i2i_4712.png",
+  "icon": "nibble_icon_4742.png",
+  "note": "front 0.66 is the grey one (0.6 went green); back 0.6 keeps the stripe of bits down its back. Icons both drew big mouse ears."
+ },
+ "overflow": {
+  "front": "overflow_front_i2i_4714.png",
+  "back": "overflow_back_i2i_4711.png",
+  "icon": "overflow_icon_4741.png",
+  "note": "0.6 and 0.66 drew a plain rat and lost the lumpy overstuffed body and dark head; i2i 0.55 (4714, the lo stage) keeps both. Back 0.6 keeps the lumpy back. Icons are plain mice (no dark head).",
+  "failed": "front: lost its lumpy overstuffed body at 0.6/0.66 -- recovered at i2i 0.55 (4714); icon: both drew a plain pink-eared mouse"
+ },
+ "ping": {
+  "back": "ping_back_i2i_4712.png",
+  "icon": "ping_icon_4742.png",
+  "note": "front 0.6 kept the needle beak; icon 4742 is the whole hummingbird with its beak (4741 a teal head, beak short)."
+ },
+ "flood": {
+  "back": "flood_back_i2i_4712.png",
+  "icon": "flood_icon_4742.png",
+  "note": "front 0.6 kept the crest and long beak, swept wings; icon 4742 crest and beak. Streak box by hand (26,19,34,32): the thin diving body has no lower-body run wide enough for the automatic box, so a search over the whole figure placed it on the wing root.",
+  "box-front": "26,19,34,32"
+ }
+}

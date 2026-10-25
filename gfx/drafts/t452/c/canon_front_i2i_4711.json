@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/c/canon_front_i2i_4711",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a heavy steel filing cabinet creature, a square dark metal box with one drawer pulled half open showing stacked white papers, a drawer handle, two small stern eyes on its front, four short stubby legs, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "rear view, robot, television, computer, arms, safe dial, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 4711,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/src/canon_front_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-24 22:18:23"
+}
