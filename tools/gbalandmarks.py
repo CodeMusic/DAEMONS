@@ -88,6 +88,15 @@ above with a stepped outline, and the silhouette INSET so the ground shows at th
   Both pair-2 groups REUSE blocks: identical cells share a block, written first over the blocks only the landmark drew
   (never one metatile_labels.h names), so a big footprint does not eat the tileset's 384.
 
+THE THIRD PAIR (drafted 2026-10-25, NOT approved): the REVIEW BOARD (UMBRA, rows 7 and 8 -- its stone, and its four
+vessels in seat order I-IV, red, yellow, black, pale, the user's choice; a landmark may now draw in more than one row,
+each tile in the one row that holds its colours, see assign_row) and ERRATA with its annex (SLATE, row 12; the roof a
+writing slate in its frame, replacing batch F's calm roof; the pediment's struck line and red caret; columns of stacked
+dead hardware; the annex a pinned index card). Both doors that animate are kept by block (the Board's is primary
+0x15B, the annex's METATILE_PewterCity_Door), so gbadoors has nothing to redraw. Both groups take their cells' bottom
+layer from the grass (ground_always: vanilla drew both halls into both layers); SLATE's census leaves out
+RS_BattleTower, a layout no map uses (skip_unused_layouts), as gbatowns' counts do.
+
   gbatowns.py's LANDMARKS table keeps these boxes out of T-438's town passes; OWNS below is this tool's claim on the
   same boxes, and the report fails if the two disagree (it reads the table, it does not import that tool: trap 16).
 """
@@ -902,6 +911,573 @@ def draw_dtower():
     return k
 
 
+# ============================================================================================ pair 3: more than one row
+#  A landmark may draw in more than one palette row (the REVIEW BOARD: its stone in row 7, its four vessels in row 8).
+#  Its canvas names every role once; each 8x8 tile is then given the one row that holds every colour it uses, matched
+#  by RGB -- so a colour two rows share (the stone round a vessel) is written into both with the same RGB. A tile no
+#  single row can draw refuses. A landmark with one row is cut exactly as before.
+def lm_rows(lm):
+    """[(row, colours)]: the landmark's own row, then its extra rows"""
+    return [(lm["row"], lm["colours"])] + list(lm.get("extra_rows", ()))
+
+
+def lm_roles(lm):
+    """role -> canvas index: row n's colours at 16n+1.. (a role an earlier row already names keeps that index)"""
+    roles = role_map(lm["colours"])
+    for i, (_, cols) in enumerate(lm.get("extra_rows", ())):
+        for j, (name, _) in enumerate(cols):
+            roles.setdefault(name, 16 * (i + 1) + j + 1)
+    return roles
+
+
+def lm_rgb(lm):
+    """canvas index -> RGB, every row's"""
+    return {16 * i + j + 1: rgb for i, (_, cols) in enumerate(lm_rows(lm)) for j, (_, rgb) in enumerate(cols)}
+
+
+def assign_row(lm, key):
+    """(the tile's pixels in its row's own indices, the row) -- the first row holding every colour the tile uses"""
+    if not lm.get("extra_rows"):
+        return key, lm["row"]
+    rgb = lm_rgb(lm)
+    want = {rgb[v] for v in key if v}
+    for row, cols in lm_rows(lm):
+        idx = {c: j + 1 for j, (_, c) in enumerate(cols)}
+        if want <= set(idx):
+            return tuple(idx[rgb[v]] if v else 0 for v in key), row
+    raise SystemExit("  %s: a tile no one row can draw: %s" % (lm["title"], sorted(want)))
+
+
+# ============================================================================================ the REVIEW BOARD
+#  UMBRA, IndigoPlateau_Exterior 11x7 at (6,0), door (11,6). Section 6: four members, each a humour, each humour a
+#  coloured fluid -- and 8.6: the one place colour is real, by contrast with darkness. So the hall is near-black stone,
+#  neutral to the last pixel, under one long flat slab that overhangs it like a judges' bench; and in its front, in
+#  four lit alcoves, four vessels of fluid -- red, yellow, black, pale -- in SEAT ORDER, I to IV left to right (the
+#  user, 2026-10-25), each under a carved plate with its numeral. Not meeting order (IV, II, III, I): nobody remarks on
+#  it. Their colour spills a little onto each alcove's sill, and nowhere else.
+#  3/4: the slab is a deck seen from above (the map's top edge cuts its back) with a thick lit front edge and chamfered
+#  corners; the hall under it is INSET -- a chamfered box, its left chamfer lit and its right in shade, the plateau's
+#  grass showing at its sides and under the slab's overhang (cells (6,6) and (16,6) were always walkable ground).
+#  THE DOOR (11,6) is METATILE_General_SlidingDoubleDoor (0x15B), a PRIMARY block every sliding door in the game draws:
+#  it is kept exactly, and the portal is drawn round it.
+RB_ROW, RB_ROW2 = 7, 8
+RB_COLOURS = [  # row 7 (unused): the stone, all neutral -- a hint of blue in the darks, nothing else
+    ("OUT",    (14, 12, 18)),      # outline; the cast shadow's core
+    ("NICHE",  (24, 22, 30)),      # shadow: under the slab, inside the portal
+    ("STONED", (34, 32, 40)),      # the shaded chamfer; joints
+    ("STONE",  (46, 44, 54)),      # the hall's front face
+    ("STONEM", (60, 58, 68)),      # the lit chamfer; the plinth
+    ("STONEL", (78, 76, 88)),      # an alcove's lit back
+    ("DECKD",  (52, 50, 60)),      # the slab's moulding groove
+    ("DECK",   (64, 62, 74)),      # the slab, seen from above
+    ("DECKL",  (80, 78, 92)),      # its sheen
+    ("LIP",    (112, 110, 124)),   # the slab's lit front lip
+    ("EDGE",   (90, 88, 102)),     # the slab's front edge
+    ("CARVE",  (138, 136, 152)),   # the numerals, cut into each plate
+]
+RB_VESSEL_COLOURS = [  # row 8 (unused): the four humours, the glass, and the stone round them (the same RGB as row 7)
+    ("OUT",    (14, 12, 18)),
+    ("STONED", (34, 32, 40)),
+    ("STONE",  (46, 44, 54)),
+    ("STONEM", (60, 58, 68)),
+    ("STONEL", (78, 76, 88)),
+    ("GLASSL", (214, 220, 230)),   # the glass's glint
+    ("GLASS",  (128, 134, 148)),   # the glass
+    ("RED",    (192, 28, 36)),     # I    sanguine: blood
+    ("REDL",   (238, 96, 84)),
+    ("YEL",    (222, 178, 30)),    # II   choleric: yellow bile
+    ("YELL",   (252, 230, 112)),
+    ("BLK",    (6, 4, 8)),         # III  melancholic: black bile -- blacker than the hall
+    ("BLKL",   (66, 46, 78)),      #      its sheen
+    ("PALE",   (218, 220, 206)),   # IV   phlegmatic: phlegm, pale
+    ("PALEL",  (250, 250, 242)),
+]
+RB_SEATS = ((40, "RED", "REDL", "I"), (64, "YEL", "YELL", "II"),       # (centre: a tile seam, fluid, its light, numeral)
+            (112, "BLK", "BLKL", "III"), (136, "PALE", "PALEL", "IV"))
+RB_SLAB = (4, 171, -40, 40, 50)          # the slab: (xa, xb, its back -- off the map -- the front edge's top, its foot)
+RB_HALL = (16, 159, 50, 111)             # the hall under it: x, x, its top (in the slab's shadow), its foot
+RB = dict(name="review_board", title="the REVIEW BOARD", map="IndigoPlateau_Exterior", x0=6, y0=0, w=11, h=7,
+          door=(11, 6), keep=[(11, 6)], inplace=[], signs=[], row=RB_ROW, colours=RB_COLOURS,
+          extra_rows=[(RB_ROW2, RB_VESSEL_COLOURS)],
+          #  every cell's bottom layer is the plateau's grass (vanilla drew the hall into both layers), so the inset
+          #  shows ground; the art is the top layer
+          ground=lambda x, y: 0x001, ground_always=True,
+          crop=[("IndigoPlateau_Exterior_Layout", 5, 0, 13, 9)],
+          caption=["Near-black stone, neutral to the last pixel, under one long flat slab that overhangs the hall like "
+                   "a judges' bench: the slab a deck seen from above, its thick lit edge chamfered at the corners.",
+                   "The hall is inset under it -- left chamfer lit, right in shade -- and the plateau's grass shows at "
+                   "its sides and under the overhang (cells (6,6) and (16,6) were always walkable).",
+                   "The only colour on UMBRA: four vessels of fluid in four lit alcoves, red, yellow, black, pale, in "
+                   "SEAT order I-IV left to right (not meeting order), each under a plate cut with its numeral.",
+                   "Their colour spills a little onto each sill and nowhere else. The black is blacker than the hall."],
+          door_note=["THE DOOR (11,6): KEPT. It is 0x15B, the PRIMARY",
+                     "sliding double door every such door in the game",
+                     "draws, so it cannot be redrawn in place here;",
+                     "the portal is drawn round it. No frames change."])
+
+
+def draw_review_board():
+    W, H = 176, 112
+    k = Canvas(W, H, lm_roles(RB))
+    # --- the hall: a chamfered box, inset under the slab; its chamfers' feet rise, so the grass shows below them
+    hx0, hx1, htop, hbot = RB_HALL
+    for x in range(hx0, hx1 + 1):
+        L, side = lean(x, hx0, hx1), side_of(x, hx0, hx1)
+        for yf in range(htop, hbot + 1):
+            y = yf - L
+            joint = (yf - 58) % 12 == 11 or (yf >= 58 and (x + (12 if (yf - 58) // 12 % 2 else 0)) % 24 == 0
+                                              and side == "front")
+            if side == "lit":
+                role = "STONE" if joint else "STONEM"
+            elif side == "shade":
+                role = "NICHE" if joint else "STONED"
+            else:
+                role = "STONED" if joint else "STONE"
+            if yf >= 105:                                       # the plinth
+                role = {"lit": "STONEL", "shade": "STONE", "front": "STONEM"}[side] if yf == 105 else \
+                    {"lit": "STONEM", "shade": "STONED", "front": "STONE"}[side]
+            k.px(x, y, role)
+        k.px(x, hbot - L, "OUT")
+    for y in range(htop, hbot + 1):                              # the corners: lit where the lit chamfer meets the front
+        k.px(hx0 + CHAMFER - 1, y, "STONEL" if y < 105 else "STONEM")
+        k.px(hx1 - CHAMFER + 1, y, "NICHE")
+    hall = {(x, y) for x in range(hx0, hx1 + 1) for y in range(htop - lean(x, hx0, hx1), hbot - lean(x, hx0, hx1) + 1)}
+    outline(k, hall)
+
+    # --- the four plates, the four alcoves, the four vessels: I-IV, seat order, left to right
+    for c, fluid, light, num in RB_SEATS:
+        # the plate, cut with the numeral
+        k.rect(c - 6, 56, c + 5, 62, "STONED")
+        k.hline(c - 6, c + 5, 62, "STONEM")
+        n = {"I": [0], "II": [-1, 1], "III": [-2, 0, 2], "IV": [-3]}[num]
+        for dx in n:
+            k.vline(c - 1 + dx, 57, 61, "CARVE")
+        if num == "IV":                                          # the V: two arms meeting at its foot
+            for yy, dxs in ((57, (-1, 3)), (58, (-1, 3)), (59, (0, 2)), (60, (0, 2)), (61, (1,))):
+                for dx in dxs:
+                    k.px(c - 1 + dx, yy, "CARVE")
+        # the alcove: a round-headed recess, its back lit, its head in shadow
+        for y in range(64, 104):
+            for x in range(c - 7, c + 7):
+                arch = y < 67 and (x - (c - 0.5)) ** 2 + ((67 - y) * 2.2) ** 2 > 7.5 ** 2
+                if arch:
+                    continue
+                edge = x in (c - 7, c + 6) or y == 64 or (y < 67 and not ((x - (c - 0.5)) ** 2 + ((66 - y) * 2.2) ** 2
+                                                                              <= 7.5 ** 2))
+                k.px(x, y, "OUT" if edge else "STONED" if y < 68 or x == c + 5 else "STONEL")
+        # the sill: lit, and the vessel's colour spilt on it
+        k.hline(c - 7, c + 6, 104, "STONEM")
+        k.hline(c - 6, c + 5, 103, "STONEM")
+        for x in range(c - 6, c + 6):
+            if (x + c) % 2 == 0 or abs(x - c + 0.5) < 3:
+                k.px(x, 103, light if abs(x - c + 0.5) < 2 else fluid)
+            if abs(x - c + 0.5) < 4 and x % 2 == 0:
+                k.px(x, 104, fluid)
+        # the vessel: a stoppered glass cylinder, filled to the same mark as the others
+        body = {}
+        for y in range(66, 103):
+            if y <= 67:
+                half = 2                                         # the stopper
+            elif y <= 71:
+                half = 2                                         # the neck
+            elif y == 72:
+                half = 4                                         # the shoulder
+            elif y <= 100:
+                half = 5
+            else:
+                half = 4                                         # the foot
+            for x in range(c - half, c + half):
+                body[(x, y)] = True
+        for (x, y) in body:
+            inside = all((x + dx, y + dy) in body for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            if y <= 67:
+                k.px(x, y, "STONED" if y == 67 else "GLASS")    # the stopper
+            elif not inside:
+                k.px(x, y, "GLASS")
+            elif y >= 79:                                        # the fluid; a lit column, a meniscus
+                k.px(x, y, light if (y == 79 or x in (c - 4, c - 3)) else fluid)
+            else:
+                k.px(x, y, "STONEL")                             # empty glass: the alcove seen through it
+        k.vline(c - 3, 73, 77, "GLASSL")                         # the glint down the glass
+        k.px(c - 3, 69, "GLASSL")
+        k.vline(c + 3, 82, 97, "GLASS")                          # the glass's far wall, over the fluid
+        k.hline(c - 4, c + 3, 101, "OUT")                        # its foot on the sill
+        k.hline(c - 3, c + 2, 102, "OUT")
+
+    # --- the portal round the kept door: two pilasters, a dark recess up to the slab's shadow, a lit lintel
+    k.rect(76, 58, 99, 111, "NICHE")
+    for x0 in (76, 96):
+        k.rect(x0, 58, x0 + 3, 111, "STONEM")
+        k.vline(x0, 58, 111, "STONEL")
+        k.vline(x0 + 3, 58, 111, "STONED")
+    k.hline(76, 99, 58, "LIP")
+    k.hline(76, 99, 59, "EDGE")
+    k.rect(80, 60, 95, 63, "OUT")                                # the recess's head, in full shadow
+    k.hline(84, 91, 70, "STONED")                                # a blank transom: nothing is written over the door
+    k.hline(84, 91, 82, "STONED")
+
+    # --- the slab, last: a bench of stone over all of it. The deck seen from above, a groove along its front, its
+    #  thick front edge lit on top, its chamfers lit on the left and shaded on the right; its shadow on the hall.
+    xa, xb, back, top, bot = RB_SLAB
+    m = box_mask(xa, xb, back, top, bot)
+    for x in range(xa, xb + 1):                                  # the shadow it casts across the hall's head
+        L = lean(x, hx0, hx1) if hx0 <= x <= hx1 else 0
+        for y in range(bot - lean(x, xa, xb) + 1, bot - lean(x, xa, xb) + 5):
+            if (x, y) in hall:
+                k.px(x, y, "NICHE" if y < bot - lean(x, xa, xb) + 3 else k.get(x, y))
+    for (x, y), part in m.items():
+        L = lean(x, xa, xb)
+        if part == "deck":
+            d = top - L - y                                      # rows behind the front lip
+            k.px(x, y, "LIP" if d == 1 else "DECKD" if d == 6 else "DECKL" if d in (5, 7) else "DECK")
+        else:
+            yf = y + L
+            side = side_of(x, xa, xb)
+            r = yf - top
+            role = "LIP" if r == 0 else "OUT" if yf == bot else "EDGE" if r < 6 else "STONEM"
+            if side == "lit" and role in ("EDGE", "STONEM"):
+                role = "LIP" if role == "EDGE" else "EDGE"
+            elif side == "shade" and role in ("EDGE", "STONEM", "LIP"):
+                role = {"LIP": "EDGE", "EDGE": "STONEM", "STONEM": "STONE"}[role]
+            k.px(x, y, role)
+    for x in range(xa + 1, xb):
+        k.px(x, top - lean(x, xa, xb), "LIP")
+    outline(k, m)
+    return k
+
+
+# ============================================================================================ ERRATA
+#  SLATE, PewterCity 16x7 at (12,0): the museum (11x6 and its porch) and the annex (5x4, door (25,4)). 4.32: the
+#  museum of dead hardware renamed for what a printed edition got wrong -- a legacy mind, still running the faults it
+#  shipped with. So the building is a SLATE:
+#    * the roof is a writing slate laid flat in its timber frame, seen from above: ruled in chalk, and wiped clean --
+#      SLATE's own phrase, a clean slate -- with only the smears of what was rubbed out;
+#    * the porch's pediment carries the one line still written, struck through, and a red caret above it where the
+#      correction goes in (the erratum: the only red on the building);
+#    * the columns are stacked dead hardware -- cases, drives, cartridges, keyboards, chips -- in strata, like
+#      fossils, three stacks and their mirrors, between them the museum's glass dark as slate with a chalk glint;
+#    * the annex is one big index card pinned to its roof: a red header rule, faint blue rules, a heading and two lines
+#      of dashes (the card's form, KNOWN FAULTS, without a word on it), the pin, a dog-eared corner.
+#  BATCH F's ROOF IS REPLACED, not built on: its calm slates were a retint of vanilla's pitched roof, and the design
+#  needs the roof to be the slate itself.
+#  3/4: the slate's frame has a front edge and chamfered corners; the hall under it and the annex are chamfered boxes,
+#  inset, the grass showing between them and at their sides. Both doors keep their blocks: the museum's (17,6) is a
+#  plain doorway (MB 0x60, no animation), drawn as the MANSION's; the annex's (25,4) is METATILE_PewterCity_Door,
+#  animated from its closed block, KEPT exactly, so gbadoors has nothing to redraw.
+ERRATA_ROW = 12
+ERRATA_COLOURS = [  # row 12 (unused, all black)
+    ("OUT",    (30, 32, 42)),      # outline; inside the doorway
+    ("SLATED", (46, 54, 66)),      # the slate in shadow; the museum's dark glass
+    ("SLATE",  (62, 72, 86)),      # the slate
+    ("SLATEL", (88, 102, 118)),    # a slate's lit edge; the card's faint blue rules
+    ("CHALKD", (132, 142, 152)),   # chalk rules; a wiped smear
+    ("CHALK",  (236, 236, 226)),   # chalk; the card
+    ("PAPERD", (196, 194, 180)),   # the card's shade and edge; the annex walls' shade
+    ("WOODD",  (92, 62, 42)),      # the frame, in shade
+    ("WOOD",   (138, 96, 60)),     # the frame
+    ("WOODL",  (184, 138, 90)),    # the frame, lit
+    ("RED",    (204, 40, 44)),     # the caret, the card's header rule, the pin. Corrections are red.
+    ("BEIGED", (128, 120, 102)),   # dead plastic, in shade
+    ("BEIGE",  (176, 168, 144)),   # dead plastic
+    ("BEIGEL", (214, 208, 186)),   # dead plastic, lit; the architrave
+    ("PLATE",  (154, 162, 174)),   # the slate city's stone: the stylobate, the pediment's cornice
+]
+ERRATA = dict(name="errata", title="ERRATA (the museum and its annex)", map="PewterCity", x0=12, y0=0, w=16, h=7,
+              door=(17, 6), keep=[(25, 4)], inplace=[], signs=[], row=ERRATA_ROW, colours=ERRATA_COLOURS,
+              cells_only={(x, y) for x in range(12, 23) for y in range(6)} | {(16, 6), (17, 6), (18, 6)}
+              | {(x, y) for x in range(23, 28) for y in range(1, 5)},
+              ground=lambda x, y: 0x001, ground_always=True,
+              lintel=lambda k, x, y: not (82 <= x <= 93 and y >= 96),
+              crop=[("PewterCity_Layout", 11, 0, 18, 8)],
+              caption=["The museum as a SLATE: its roof a writing slate laid flat in a timber frame, seen from above, "
+                       "ruled in chalk and wiped clean -- a clean slate -- with only the smear of what was rubbed out.",
+                       "The porch's pediment keeps the one line still written: struck through, and a red caret above "
+                       "it where the correction goes in. The building's only red is the erratum's (and the card's).",
+                       "The columns are stacked dead hardware -- cases, drives, cartridges, keyboards, chips -- in "
+                       "strata like fossils; between them the museum's glass, dark as slate, a chalk glint on each.",
+                       "The annex is one big index card pinned to its roof: red header rule, faint blue rules, a "
+                       "heading and two lines of dashes (KNOWN FAULTS, without a word), the pin, a dog-eared corner.",
+                       "Batch F's calm roof is REPLACED, not built on. 3/4: both are chamfered boxes, inset; the grass "
+                       "shows between them and at their sides."],
+              door_note=["THE DOORS: (17,6) a plain doorway (MB 0x60, no",
+                         "animation), drawn as the MANSION's -- its dark",
+                         "below, the porch above the player. (25,4) the",
+                         "annex's animated door, METATILE_PewterCity_Door,",
+                         "KEPT exactly: gbadoors has nothing to redraw."])
+ERRATA_SLATE = (2, 173, 2, 46, 52)       # the slate in its frame: (xa, xb, the back, the front edge's top, its foot)
+ERRATA_HALL = (8, 167, 52, 95)
+ERRATA_ANNEX = (180, 251, 20, 56, 79)    # the card on the annex: (xa, xb, the card's back, the wall's top, its foot)
+ERRATA_COLS = ((16, "A", False), (32, "B", False), (48, "A", True),
+               (120, "A", False), (136, "B", True), (152, "A", True))
+
+
+def errata_stack(k, x0, y0, y1, kind, flip):
+    """one column of dead hardware, 8 wide, from y0 down to y1: boxes stacked in strata, each box's top a lit line
+    (seen from a little above), its left edge lit and its right in shade -- mirrored when `flip`"""
+    stacks = {  # bottom to top: (height, body, detail)
+        "A": [(12, "case"), (4, "floppy"), (7, "cart"), (4, "keys"), (5, "chip")],
+        "B": [(10, "crt"), (5, "modem"), (6, "tape"), (3, "disk"), (3, "disk"), (5, "keys")],
+        "C": [(8, "drive"), (6, "cart"), (4, "floppy"), (8, "case"), (6, "chip")],
+        "D": [(12, "case"), (6, "tape"), (8, "crt"), (4, "floppy"), (6, "cart"), (5, "keys")],
+        "E": [(8, "crt")],
+    }[kind]
+    canvas = {}
+    y = y1
+    for i, (h, what) in enumerate(stacks):
+        if y - h + 1 < y0:
+            break
+        top = y - h + 1
+        inset = 1 if what in ("cart", "tape", "disk", "chip") else 0   # the smaller things sit inside the column line
+        for yy in range(top, y + 1):
+            for xx in range(inset, 8 - inset):
+                r = "BEIGE"
+                if yy == top:
+                    r = "BEIGEL"                                 # its top, seen from a little above
+                elif xx == inset:
+                    r = "BEIGEL" if what != "crt" else "BEIGE"
+                elif xx == 7 - inset:
+                    r = "BEIGED"
+                canvas[(xx, yy)] = r
+        mid = (top + y) // 2
+        if what == "case":
+            for xx in range(2, 6):
+                canvas[(xx, top + 3)] = "OUT"                    # a drive bay
+                canvas[(xx, top + 6)] = "BEIGED"
+            canvas[(5, y - 2)] = "OUT"                           # the dead power light
+        elif what == "floppy":
+            for xx in range(1, 7):
+                canvas[(xx, mid + 1)] = "OUT"
+        elif what == "cart":
+            for xx in range(2, 6):
+                canvas[(xx, top + 2)] = "BEIGEL"                 # its label
+                canvas[(xx, top + 3)] = "CHALKD"
+            canvas[(1, y)] = "BEIGED"; canvas[(6, y)] = "BEIGED"
+        elif what == "keys":
+            for xx in range(1, 7, 2):
+                canvas[(xx, top + 2)] = "BEIGED"
+        elif what == "chip":
+            for xx in range(1, 7):
+                canvas[(xx, mid)] = "OUT"
+                canvas[(xx, mid - 1)] = "OUT"
+            for xx in (1, 3, 5):
+                canvas[(xx, y)] = "PLATE"                        # its legs
+        elif what == "crt":
+            for yy in range(top + 2, y - 1):
+                for xx in range(1, 6):
+                    canvas[(xx, yy)] = "SLATED"                  # the dead screen, slate-dark
+            canvas[(2, top + 3)] = "CHALKD"
+        elif what == "modem":
+            canvas[(2, mid)] = "OUT"; canvas[(4, mid)] = "OUT"
+        elif what == "tape":
+            canvas[(2, mid)] = "OUT"; canvas[(5, mid)] = "OUT"
+            canvas[(3, mid)] = "BEIGED"; canvas[(4, mid)] = "BEIGED"
+        elif what == "disk":
+            canvas[(3, top + 1)] = "BEIGED"
+        y = top - 1
+    for (xx, yy), r in canvas.items():
+        k.px(x0 + (7 - xx if flip else xx), yy, r)
+
+
+def draw_errata():
+    W, H = 256, 112
+    k = Canvas(W, H, role_map(ERRATA_COLOURS))
+    # --- the hall: a chamfered box under the slate; dark glass between the columns, the slate city's stone below
+    hx0, hx1, htop, hbot = ERRATA_HALL
+    hall = set()
+    for x in range(hx0, hx1 + 1):
+        L, side = lean(x, hx0, hx1), side_of(x, hx0, hx1)
+        for yf in range(htop, hbot + 1):
+            y = yf - L
+            hall.add((x, y))
+            if yf <= 57:
+                role = "BEIGEL" if yf == 53 else "BEIGE" if yf < 57 else "BEIGED"      # the architrave
+            elif yf >= 92:
+                role = "PLATE" if yf == 92 else "CHALKD" if yf < 95 else "OUT"         # the stylobate
+            else:
+                role = "SLATED"                                                       # the glass
+                if yf in (64, 80) or x % 8 == 4:
+                    role = "OUT"                                                      # its frames
+            if side == "lit":
+                role = {"SLATED": "SLATE", "OUT": "SLATED", "BEIGE": "BEIGEL", "BEIGED": "BEIGE",
+                        "CHALKD": "PLATE"}.get(role, role)
+            elif side == "shade":
+                role = {"SLATED": "OUT", "BEIGEL": "BEIGE", "BEIGE": "BEIGED", "PLATE": "CHALKD",
+                        "CHALK": "CHALKD"}.get(role, role)
+            k.px(x, y, role)
+    #  a chalk glint on each pane: one short diagonal stroke, the same in every pane
+    for x0 in range(hx0 + CHAMFER, hx1 - CHAMFER, 8):
+        for i in range(3):
+            if k.is_(x0 + 2 + i, 70 - i, "SLATED"):
+                k.px(x0 + 2 + i, 70 - i, "CHALKD")
+    for y in range(htop, hbot):
+        k.px(hx0 + CHAMFER - 1, y, "BEIGEL" if y < 58 or y >= 92 else "SLATE")
+        k.px(hx1 - CHAMFER + 1, y, "OUT")
+    outline(k, hall)
+    # --- the columns: stacked dead hardware, three stacks and their mirrors
+    for x0, kind, flip in ERRATA_COLS:
+        errata_stack(k, x0, 58, 91, kind, flip)
+
+    # --- the porch: two taller stacks either side of the doorway, a dark recess, the pediment over it
+    k.rect(64, 58, 111, 111, "SLATED")
+    k.rect(72, 60, 103, 111, "OUT")                             # in the porch's shadow
+    k.rect(74, 64, 101, 95, "SLATED")
+    for yy in range(72, 92, 8):                                  # the inner glass, dark, a frame every tile row
+        k.hline(74, 101, yy, "OUT")
+    k.rect(80, 92, 95, 111, "PLATE")                             # the threshold and its step
+    k.rect(82, 90, 93, 111, "OUT")                               # the doorway: dark, round-headed
+    k.px(82, 90, "PLATE"); k.px(93, 90, "PLATE")
+    k.hline(80, 95, 111, "CHALKD")
+    k.rect(64, 104, 79, 111, "PLATE"); k.rect(96, 104, 111, 111, "PLATE")     # the porch floor either side
+    k.hline(64, 79, 104, "CHALK"); k.hline(96, 111, 104, "CHALK")
+    k.hline(64, 111, 111, "CHALKD")
+    #  the porch's two stacks are the colonnade's A, set on the same tile rows (so they share its tiles), on a plinth,
+    #  a monitor on top of each
+    errata_stack(k, 64, 60, 99, "A", False)
+    errata_stack(k, 104, 60, 99, "A", True)
+    for x0 in (64, 104):
+        k.rect(x0, 100, x0 + 7, 103, "PLATE")
+        k.hline(x0, x0 + 7, 100, "CHALK")
+        errata_stack(k, x0, 60, 67, "E", x0 == 104)
+    k.vline(64, 58, 111, "OUT"); k.vline(111, 58, 111, "OUT")
+
+    # --- the slate, laid flat in its frame, seen from above: drawn over the hall's head
+    xa, xb, back, top, bot = ERRATA_SLATE
+    m = box_mask(xa, xb, back, top, bot, c=6)
+    for (x, y), part in m.items():
+        L = lean(x, xa, xb, 6)
+        if part == "deck":
+            k.px(x, y, "WOOD")
+        else:
+            yf = y + L
+            r = yf - top
+            side = side_of(x, xa, xb, 6)
+            role = "WOODL" if r == 0 else "WOOD" if r < 4 else "WOODD"
+            if side == "lit":
+                role = {"WOOD": "WOODL", "WOODD": "WOOD"}.get(role, role)
+            elif side == "shade":
+                role = {"WOODL": "WOOD", "WOOD": "WOODD", "WOODD": "OUT"}.get(role, role)
+            k.px(x, y, role)
+    #  the frame's grain, and its lit back and left edges (the light is from the upper left)
+    for (x, y), part in m.items():
+        if part == "deck" and (x % 8, y % 8) in ((1, 3), (5, 6), (6, 6)):
+            k.px(x, y, "WOODD")
+    k.hline(xa + 6, xb - 6, back, "WOODL")
+    SX0, SX1, SY0, SY1 = 9, 166, 8, 40                           # the slate inside the frame
+    k.rect(SX0, SY0, SX1, SY1, "SLATE")
+    k.hline(SX0, SX1, SY0, "OUT"); k.vline(SX0, SY0, SY1, "OUT")             # the frame's shadow, back and left
+    k.hline(SX0 + 1, SX1, SY0 + 1, "SLATED"); k.vline(SX0 + 1, SY0 + 1, SY1, "SLATED")
+    k.hline(SX0, SX1, SY1 + 1, "WOODL"); k.vline(SX1 + 1, SY0, SY1 + 1, "WOODL")   # the frame's lit inner lip
+    #  ruled in chalk, every 8 rows, on the tile rows: a clean slate
+    for y in range(15, SY1, 8):
+        k.hline(SX0 + 4, SX1 - 4, y, "CHALKD")
+    #  what was rubbed out: one smear, the chalk dragged thin, the slate a step lighter where the cloth went (inside
+    #  two tile columns: the budget)
+    for cx, cy, rx, ry in ((119.5, 24, 8.4, 6.5),):
+        for y in range(int(cy - ry), int(cy + ry) + 1):
+            for x in range(int(cx - rx), int(cx + rx) + 1):
+                d = ((x + 0.5 - cx) / rx) ** 2 + ((y - cy) / ry) ** 2
+                if d <= 1 and k.is_(x, y, "SLATE") and (BAYER[y % 4][x % 4] + 0.5) / 16 > 0.35 + d * 0.55:
+                    k.px(x, y, "SLATEL")
+                if d <= 1 and k.is_(x, y, "CHALKD") and (x + y) % 3:
+                    k.px(x, y, "SLATEL")                          # the rule wiped thin under it
+    #  the chalk's ledge along the slate's foot
+    k.hline(SX0 + 4, SX1 - 4, SY1 + 3, "WOODD")
+
+    # --- the pediment over the porch: a triangle of slate, ruled, its one written line struck through and the red
+    #  caret over it. The words are not words: chalk marks the shape of a line, never letters.
+    PX0, PX1, PB, PA = 62, 113, 61, 40                          # its left, right, base row, apex row
+    cxp = (PX0 + PX1) / 2
+    tri = set()
+    for y in range(PA, PB + 1):
+        half = (y - PA) / (PB - PA) * (PX1 - PX0) / 2
+        for x in range(PX0, PX1 + 1):
+            if abs(x + 0.5 - (cxp + 0.5)) <= half + 0.5:
+                tri.add((x, y))
+    for (x, y) in tri:
+        k.px(x, y, "SLATE")
+    for (x, y) in tri:                                           # the raking cornice: lit on the left, shaded right
+        if any((x + dx, y + dy) not in tri for dx, dy in ((1, 0), (-1, 0), (0, -1), (1, -1), (-1, -1))):
+            k.px(x, y, "PLATE" if x < cxp else "CHALKD")
+    for (x, y) in tri:
+        if (x, y - 1) not in tri and (x, y) in tri:
+            pass
+    k.hline(PX0, PX1, PB, "PLATE")
+    k.hline(PX0, PX1, PB + 1, "CHALKD")
+    k.hline(PX0, PX1, PB + 2, "OUT")
+    for y, (x0, x1) in ((54, (72, 103)), (59, (68, 107))):      # the rules
+        k.hline(x0, x1, y, "CHALKD")
+    #  the written line, on the lower rule: marks of chalk in clusters (the shape of words, not words)
+    marks = (70, 71, 73, 74, 75, 78, 79, 81, 82, 83, 84, 86, 89, 90, 91, 93, 94, 96, 97, 98, 99, 101, 102, 104, 105)
+    for i, x in enumerate(marks):
+        k.px(x, 58, "CHALK")
+        if i % 3 != 1:
+            k.px(x, 57, "CHALK")
+        if i % 5 == 0:
+            k.px(x, 56, "CHALK")
+    k.hline(69, 106, 57, "CHALK")                               # STRUCK THROUGH: one line of chalk across all of it
+    #  the red caret above the struck line, and the correction's mark over it, small, in chalk
+    for dx, dy in ((0, 0), (1, -1), (2, -2), (3, -1), (4, 0)):
+        k.px(86 + dx, 53 + dy, "RED")
+        k.px(86 + dx, 54 + dy, "RED")
+    for x in (85, 86, 88, 89, 90):
+        k.px(x, 49, "CHALK")
+    k.px(87, 48, "CHALK"); k.px(89, 48, "CHALK")
+    outline(k, tri)
+
+    # --- the annex: a chamfered box, a flat roof seen from above, and one big card pinned flat on it -- the roof's
+    #  stone showing round it, the card's shadow on the stone, so it reads as a card laid on a building
+    xa, xb, back, top, bot = ERRATA_ANNEX
+    m = box_mask(xa, xb, back, top, bot, c=4)
+    for (x, y), part in m.items():
+        L = lean(x, xa, xb, 4)
+        side = side_of(x, xa, xb, 4)
+        if part == "deck":
+            k.px(x, y, "PLATE" if top - L - y > 1 else "CHALK")           # the roof, its lit front lip
+        else:
+            yf = y + L
+            role = "OUT" if yf == top else "CHALK" if yf < bot else "OUT"
+            if side == "lit" and role == "PAPERD":
+                role = "CHALK"
+            elif side == "shade" and role != "OUT":
+                role = {"CHALK": "PAPERD", "PAPERD": "BEIGE"}[role]
+            k.px(x, y, role)
+    CX0, CX1, CY0, CY1 = 184, 247, 23, 51                       # the card: eight tiles across
+    k.rect(CX0 + 2, CY0 + 2, CX1 + 2, CY1 + 2, "CHALKD")         # its shadow on the roof
+    k.rect(CX0, CY0, CX1, CY1, "CHALK")
+    k.hline(CX0, CX1, CY1, "PAPERD")                             # its edge
+    k.vline(CX1, CY0, CY1, "PAPERD")
+    #  the card's face: the header rule in red, faint blue rules on the tile rows, a heading, two lines of dashes
+    k.hline(CX0 + 3, CX1 - 3, 31, "RED")
+    for y in (39, 47):
+        k.hline(CX0 + 3, CX1 - 3, y, "SLATEL")
+    k.rect(CX0 + 4, 26, CX0 + 15, 28, "OUT")                     # the heading: a dark block, a word's shape
+    for y, runs in ((37, ((0, 9), (12, 21), (24, 27), (30, 39))), (45, ((0, 9), (12, 21), (24, 27)))):
+        for a, b in runs:
+            k.hline(CX0 + 4 + a, CX0 + 4 + b, y, "SLATED")
+    #  the pin at the card's head, centred on a tile seam: a red head, its glint, its little shadow
+    k.rect(214, 21, 217, 24, "RED")
+    k.hline(215, 216, 20, "OUT"); k.hline(215, 216, 25, "OUT")
+    k.vline(213, 22, 23, "OUT"); k.vline(218, 22, 23, "OUT")
+    k.px(215, 22, "CHALK")
+    k.hline(217, 219, 26, "PAPERD")
+    #  the dog-ear: the card's lower right corner folded back on itself, the roof showing where it was
+    for i in range(6):
+        for j in range(6 - i):
+            x, y = CX1 - j, CY1 - i
+            k.px(x, y, "PLATE" if j + i < 5 else "OUT")
+            if j + i < 5:
+                k.px(CX1 - 5 + i, CY1 - 5 + j, "PAPERD")         # the flap, folded up over the card
+    #  two windows, dark as slate, each centred on a tile seam, a chalk glint on each
+    for wx in (186, 234):
+        k.rect(wx, 62, wx + 11, 73, "OUT")
+        k.rect(wx + 1, 63, wx + 10, 72, "SLATED")
+        k.vline(wx + 5, 63, 72, "OUT"); k.vline(wx + 6, 63, 72, "OUT")
+        k.px(wx + 2, 66, "CHALKD"); k.px(wx + 3, 65, "CHALKD"); k.px(wx + 9, 66, "CHALKD"); k.px(wx + 8, 65, "CHALKD")
+        k.hline(wx - 1, wx + 12, 74, "PAPERD")
+    outline(k, m)
+    return k
+
+
 # ============================================================================================ the tilesets
 #  One group per secondary tileset: its landmarks are drawn, cut and placed together, because they share its tiles,
 #  blocks and rows. The first pair keeps exactly the behaviour it was built with (a fresh block per cell, appended);
@@ -922,6 +1498,16 @@ GROUPS = [
          #  only, and 702 (gbatowns' source for the roofs' copy, batch F) is never repainted
          free_slots=False, avoid={702 - NUM_PRIMARY},
          view=[("Route10_Layout", 0, 66, 24, 14), ("LavenderTown_Layout", 0, 0, 24, 20)]),
+    #  pair 3 (drafted 2026-10-25): both tilesets are roomy, so the groups reuse blocks as pair 2's do and take free
+    #  slots too
+    dict(dir="indigo_plateau", symbol="gTileset_IndigoPlateau", layout="IndigoPlateau_Exterior_Layout",
+         place="UMBRA / IndigoPlateau_Exterior", town="UMBRA", tag="t447g", pair=3,
+         landmarks=[(RB, draw_review_board)], reuse_blocks=True,
+         view=[("IndigoPlateau_Exterior_Layout", 0, 0, 24, 20)]),
+    dict(dir="pewter_city", symbol="gTileset_PewterCity", layout="PewterCity_Layout",
+         place="SLATE / PewterCity", town="SLATE", tag="t447g", pair=3,
+         landmarks=[(ERRATA, draw_errata)], reuse_blocks=True, skip_unused_layouts=True,
+         view=[("PewterCity_Layout", 2, 0, 36, 20)]),
 ]
 #  this tool's claim; gbatowns.py's LANDMARKS keeps the same boxes out of its passes (by map name)
 OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
@@ -929,7 +1515,9 @@ OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
         "saffron_city": [("SaffronCity", 29, 16, 9, 15, "CORPUS's tower"),
                          ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
         "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
-                          ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")]}
+                          ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],
+        "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD")],
+        "pewter_city": [("PewterCity", 12, 0, 16, 7, "ERRATA, the museum and its annex")]}
 GROUP = TILESET = LANDMARKS_HERE = None
 
 
@@ -1038,7 +1626,12 @@ def census(ts, ours):
     #  block ids past vanilla's count that were nothing before a --write and are ours after it -- counted as users,
     #  they made a second --write see its own tiles as shared and refuse (2026-10-24)
     limit = vanilla_block_count(ts)
+    #  a group may leave out the layouts no map uses (SLATE's RS_BattleTower), as gbatowns' counts do: their cells
+    #  are never on screen, so a tile only they share with the landmark is the landmark's to repaint
+    unused = unused_layouts() if GROUP.get("skip_unused_layouts") else set()
     for name, m in ts.maps.items():
+        if name in unused:
+            continue
         for y in range(m["h"]):
             for x in range(m["w"]):
                 b = ts.cell(name, x, y) & 0x3FF
@@ -1065,6 +1658,16 @@ def census(ts, ours):
     owned = sorted(t for t, u in users.items() if u <= ours_set and t < DOOR_TILE_START)
     free = [t for t in range(ts.num_tiles, DOOR_TILE_START) if t not in users]
     return owned, free, users, examined, referenced
+
+
+def unused_layouts():
+    """the layouts no map's map.json names (RS_BattleTower and the other RS_* leftovers)"""
+    used = set()
+    for d in os.listdir(os.path.join(GBA, "data/maps")):
+        p = os.path.join(GBA, "data/maps", d, "map.json")
+        if os.path.exists(p):
+            used.add(json.load(open(p)).get("layout"))
+    return {l["name"] for l in layouts() if l.get("name") and l.get("id") not in used}
 
 
 # ============================================================================================ cutting and placing
@@ -1114,6 +1717,8 @@ def build(ts):
     kept_tiles = set()
     for lm, _ in LANDMARKS_HERE:
         for (x, y) in lm["keep"]:
+            if ts.cell(TILESET["layout"], x, y) & 0x3FF < NUM_PRIMARY:
+                continue                         # a kept primary block (the REVIEW BOARD's sliding door) has none
             kept_tiles |= {(e & 0x3FF) - NUM_PRIMARY for e in ts.entries(ts.cell(TILESET["layout"], x, y) & 0x3FF)
                            if (e & 0x3FF) >= NUM_PRIMARY}
         for (x, y) in lm["signs"]:
@@ -1143,7 +1748,7 @@ def build(ts):
                     for qy in (0, 1) for qx in (0, 1)]
             if lm.get("parts") and old < NUM_PRIMARY and not any(any(key) for key in keys):
                 continue                            # plain ground the drawing leaves alone (the mast's neighbours)
-            art = [cut.tile(key, row) for key in keys]
+            art = [cut.tile(*assign_row(lm, key)) for key in keys]
             if old >= NUM_PRIMARY:
                 e = ts.entries(old)
                 attr = ts.attr(old)
@@ -1159,12 +1764,12 @@ def build(ts):
             elif main and (x, y) in lm["signs"]:      # the board's own tiles stay on top; the wall is ours, below
                 entries = art + [0, 0, e[6], e[7]]
             elif main and (x, y) == lm["door"]:     # a plain doorway: all of it below, the lintel above
-                lint = [cut.tile(tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8)
-                                       if lin(k, ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) else 0
-                                       for i in range(64)), row) for qy in (0, 1) for qx in (0, 1)]
+                lint = [cut.tile(*assign_row(lm, tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8)
+                                                       if lin(k, ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) else 0
+                                                       for i in range(64)))) for qy in (0, 1) for qx in (0, 1)]
                 entries = art + lint
             else:
-                if not any(v & 0x3FF for v in bottom):
+                if lm.get("ground_always") or not any(v & 0x3FF for v in bottom):
                     bottom = ground_under(ts, lm, x, y, layout)
                 entries = bottom + art
             plan.append((x, y, raw, old, entries, attr, main and (x, y) in lm["inplace"], layout,
@@ -1219,7 +1824,8 @@ def build(ts):
             ip[sx + i % 8, sy + i // 8] = v
     pals = dict(ts.pals)
     for lm, _ in LANDMARKS_HERE:
-        pals[lm["row"]] = row_pal(ts, lm)
+        for row, cols in lm_rows(lm):
+            pals[row] = row_pal(ts, lm, row, cols)
     return dict(drawings=drawings, mt=new_mt, at=new_at, tiles=img, pals=pals, num_tiles=max(used_top, ts.num_tiles),
                 cut=cut, owned=owned, free=free, examined=examined, nblocks=nblocks, old_nblocks=ts.nblocks,
                 kept_tiles=kept_tiles, users=users, plan=plan, per=per)
@@ -1263,7 +1869,10 @@ def ground_under(ts, lm, x, y, layout=None):
     else borrow the nearest footprint cell's ground in the same row"""
     layout = layout or TILESET["layout"]
     if lm.get("ground"):
-        return ts.entries(lm["ground"](x, y))[:4]
+        b = lm["ground"](x, y)
+        if b < NUM_PRIMARY:                          # a primary ground block (UMBRA's and SLATE's grass)
+            return list(struct.unpack_from("<8H", primary()["mt"], b * 16))[:4]
+        return ts.entries(b)[:4]
     for dx in range(1, 8):
         for xx in (x - dx, x + dx):
             if lm["x0"] <= xx < lm["x0"] + lm["w"]:
@@ -1336,7 +1945,8 @@ def render(ts, mt, tiles_img, pals, mapname, x0, y0, w, h):
 
 
 def drawing_rgb(k, colours, keep_mask=None):
-    pal = pal16(colours)
+    """the drawing in its colours: `colours` a row's [(role, rgb)], or a landmark's canvas index -> RGB (lm_rgb)"""
+    pal = colours if isinstance(colours, dict) else pal16(colours)
     im = Image.new("RGBA", (k.w, k.h), (0, 0, 0, 0))
     p = im.load()
     for y in range(k.h):
@@ -1501,13 +2111,15 @@ def gbatowns_landmarks():
     return {}
 
 
-def row_pal(ts, lm):
-    """the landmark's palette row: its colours from index 1; a row it shares (DAEMON TOWER's row 7, whose 10..15 are
-    left for the KEEPALIVE PLANT) keeps whatever stands past them"""
-    cols = [rgb for _, rgb in lm["colours"]]
+def row_pal(ts, lm, row=None, colours=None):
+    """the landmark's palette row (or one of its extra rows): its colours from index 1; a row it shares (DAEMON
+    TOWER's row 7, whose 10..15 are left for the KEEPALIVE PLANT) keeps whatever stands past them"""
+    row = lm["row"] if row is None else row
+    colours = lm["colours"] if colours is None else colours
+    cols = [rgb for _, rgb in colours]
     if len(cols) == 15:
-        return pal16(lm["colours"])
-    return [TRANSPARENT] + cols + list(ts.pals[lm["row"]])[1 + len(cols):]
+        return pal16(colours)
+    return [TRANSPARENT] + cols + list(ts.pals[row])[1 + len(cols):]
 
 
 def row_users(ts, row):
@@ -1525,20 +2137,22 @@ def row_users(ts, row):
     return out
 
 
-def row_check(ts, lm, ours):
+def row_check(ts, lm, ours, row=None, colours=None):
     """a landmark's row must be free (vanilla's unused rows are all black or all blue), already ours, or drawn by
     the landmark's cells and nothing else -- never a row another block draws"""
-    cur, want = ts.pals[lm["row"]], row_pal(ts, lm)
-    n = len(lm["colours"])
+    row = lm["row"] if row is None else row
+    colours = lm["colours"] if colours is None else colours
+    cur, want = ts.pals[row], row_pal(ts, lm, row, colours)
+    n = len(colours)
     if all(c in ((0, 0, 0), (0, 0, 255)) for c in cur[1:1 + n]):
         return "free"
     if list(cur[1:1 + n]) == list(want[1:1 + n]):
         return "ours"
-    others = row_users(ts, lm["row"]) - set(ours)
+    others = row_users(ts, row) - set(ours)
     if not others:
         return "drawn by the landmark alone"
     raise SystemExit("  row %d is not free and not ours: %d other cells draw it, e.g. %s"
-                     % (lm["row"], len(others), sorted(others)[:4]))
+                     % (row, len(others), sorted(others)[:4]))
 
 
 # ============================================================================================ pair 2's sheets
@@ -1603,7 +2217,7 @@ def sheets_pair2(ts, before_maps, before, after, out):
         Hh = 96 + 18 * len(cap) + len(rows3) * (t.height * 3 + 34) + t.height + 34 + tv.height + 50
         s = Image.new("RGB", (W, Hh), BG)
         d = ImageDraw.Draw(s)
-        label(d, (24, 16), "%s  --  T-447 DRAFT, pair 2 (gbalandmarks.py)" % lm["title"], FG, Fb)
+        label(d, (24, 16), "%s  --  T-447 DRAFT, pair %d (gbalandmarks.py)" % (lm["title"], GROUP.get("pair", 2)), FG, Fb)
         label(d, (24, 48), "%s  |  footprint %dx%d at (%d,%d)%s  |  door (%d,%d)  |  row %d" % (
             GROUP["place"], lm["w"], lm["h"], lm["x0"], lm["y0"],
             "".join(" + %s %dx%d at (%d,%d)" % (l.replace("_Layout", ""), w, h, x, y)
@@ -1652,10 +2266,10 @@ def sheets_pair2(ts, before_maps, before, after, out):
     cut = after["cut"]
     n = len(cut.placed)
     cols = 16
-    rowsp = [(lm["row"], after["pals"][lm["row"]], lm["title"]) for lm, _ in LANDMARKS_HERE]
+    rowsp = [(row, after["pals"][row], lm["title"]) for lm, _ in LANDMARKS_HERE for row, _ in lm_rows(lm)]
     s = Image.new("RGB", (max(40 + cols * 40, 840), 130 + ((n + cols - 1) // cols) * 48 + 40 + len(rowsp) * 100), BG)
     d = ImageDraw.Draw(s)
-    label(d, (24, 16), "T-447 pair 2 tiles -- secondary/%s" % GROUP["dir"], FG, F)
+    label(d, (24, 16), "T-447 pair %d tiles -- secondary/%s" % (GROUP.get("pair", 2), GROUP["dir"]), FG, F)
     for i, line in enumerate(after["budget"]):
         label(d, (24, 40 + i * 18), line, DIM, Fs)
     rowof = {}
@@ -1675,7 +2289,8 @@ def sheets_pair2(ts, before_maps, before, after, out):
     y = y0 + ((n + cols - 1) // cols) * 48 + 16
     for r, pal, title in rowsp:
         label(d, (24, y), "row %d -- %s" % (r, title), GOLD, F)
-        names = ["0"] + [nm for nm, _ in next(lm for lm, _ in LANDMARKS_HERE if lm["row"] == r)["colours"]]
+        names = ["0"] + [nm for nm, _ in next(cols for lm, _ in LANDMARKS_HERE for row, cols in lm_rows(lm)
+                                              if row == r)]
         for i, rgb in enumerate(pal):
             d.rectangle((24 + i * 40, y + 22, 24 + i * 40 + 34, y + 56), fill=tuple(rgb))
             label(d, (24 + i * 40, y + 60), names[i] if i < len(names) else "(left)", DIM, font(9))
@@ -1700,6 +2315,9 @@ def run_group(g):
         ts.nblocks, ts.num_tiles))
     ours = ours_of(LANDMARKS_HERE)
     rowsays = {lm["name"]: row_check(ts, lm, ours) for lm, _ in LANDMARKS_HERE}
+    for lm, _ in LANDMARKS_HERE:
+        for row, cols in lm.get("extra_rows", ()):
+            rowsays[(lm["name"], row)] = row_check(ts, lm, ours, row, cols)
     after = build(ts)
     cut = after["cut"]
     print("  census: %d cells examined across every layout and border" % after["examined"])
@@ -1725,7 +2343,9 @@ def run_group(g):
             len(used_blocks), after["old_nblocks"], after["nblocks"], SECONDARY_METATILES, ts.num_tiles,
             after["num_tiles"]),
         "rows: " + "; ".join("%d (%s, %d colours)" % (lm["row"], rowsays[lm["name"]], len(lm["colours"]))
-                              for lm, _ in LANDMARKS_HERE),
+                              for lm, _ in LANDMARKS_HERE)
+        + "".join("; %d (%s, %d colours)" % (row, rowsays[(lm["name"], row)], len(cols))
+                  for lm, _ in LANDMARKS_HERE for row, cols in lm.get("extra_rows", ())),
     ]
     for line in after["budget"][1:]:
         print("  " + line)
@@ -1747,11 +2367,12 @@ def run_group(g):
             if k != g["layout"]:
                 open(os.path.join(tsd, "%s.map.bin" % k.replace("_Layout", "")), "wb").write(ts.maps[k]["bd"])
         for lm, _ in LANDMARKS_HERE:
-            write_pal(os.path.join(tsd, "palettes", "%02d.pal" % lm["row"]), row_pal(ts, lm))
+            for row, cols in lm_rows(lm):
+                write_pal(os.path.join(tsd, "palettes", "%02d.pal" % row), row_pal(ts, lm, row, cols))
             d = os.path.join(DRAFT, lm["name"])
             os.makedirs(d, exist_ok=True)
             k = after["drawings"][lm["name"]]
-            im = drawing_rgb(k, lm["colours"])
+            im = drawing_rgb(k, lm_rgb(lm) if lm.get("extra_rows") else lm["colours"])
             im.save(os.path.join(d, "drawing_1x.png"))
             up(im, 3).save(os.path.join(d, "drawing_3x.png"))
             mine = {c[:3] for c in cells_of(lm)}
@@ -1800,14 +2421,15 @@ def run_group(g):
             m = ts.maps[k]
             open(os.path.join(GBA, m["path"]), "wb").write(m["bd"])
         for lm, _ in LANDMARKS_HERE:
-            write_pal(os.path.join(tsd, "palettes", "%02d.pal" % lm["row"]), row_pal(ts, lm))
+            for row, cols in lm_rows(lm):
+                write_pal(os.path.join(tsd, "palettes", "%02d.pal" % row), row_pal(ts, lm, row, cols))
         rules = open(RULES).read()
         new, n = re.subn(r"(secondary/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+" % g["dir"],
                          lambda mm: mm.group(1) + str(after["num_tiles"]), rules)
         assert n == 1
         open(RULES, "w").write(new)
         print("  written: tiles.png, metatiles.bin, metatile_attributes.bin, rows %s, %s, -num_tiles %d" % (
-            ", ".join(str(lm["row"]) for lm, _ in LANDMARKS_HERE),
+            ", ".join(str(row) for lm, _ in LANDMARKS_HERE for row, _ in lm_rows(lm)),
             ", ".join(sorted(set(changed) | {g["layout"]})), after["num_tiles"]))
 
 

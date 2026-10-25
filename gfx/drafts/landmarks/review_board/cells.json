@@ -1,0 +1,646 @@
+{
+ "title": "the REVIEW BOARD",
+ "map": "IndigoPlateau_Exterior",
+ "footprint": [
+  6,
+  0,
+  11,
+  7
+ ],
+ "door": [
+  11,
+  6
+ ],
+ "kept": [
+  [
+   11,
+   6
+  ]
+ ],
+ "signs": [],
+ "row": 7,
+ "colours": {
+  "OUT": "0e0c12",
+  "NICHE": "18161e",
+  "STONED": "222028",
+  "STONE": "2e2c36",
+  "STONEM": "3c3a44",
+  "STONEL": "4e4c58",
+  "DECKD": "34323c",
+  "DECK": "403e4a",
+  "DECKL": "504e5c",
+  "LIP": "706e7c",
+  "EDGE": "5a5866",
+  "CARVE": "8a8898"
+ },
+ "cells": [
+  {
+   "cell": [
+    6,
+    0
+   ],
+   "was": 760,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    0
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    0
+   ],
+   "was": 762,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    1
+   ],
+   "was": 760,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    1
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    1
+   ],
+   "was": 762,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    2
+   ],
+   "was": 760,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    2
+   ],
+   "was": 761,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    2
+   ],
+   "was": 762,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    3
+   ],
+   "was": 768,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    3
+   ],
+   "was": 769,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    3
+   ],
+   "was": 770,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    4
+   ],
+   "was": 776,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    7,
+    4
+   ],
+   "was": 755,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    4
+   ],
+   "was": 777,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    4
+   ],
+   "was": 756,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    4
+   ],
+   "was": 779,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    4
+   ],
+   "was": 780,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    4
+   ],
+   "was": 781,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    4
+   ],
+   "was": 756,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    4
+   ],
+   "was": 777,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    4
+   ],
+   "was": 757,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    4
+   ],
+   "was": 778,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    6,
+    5
+   ],
+   "was": 784,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    7,
+    5
+   ],
+   "was": 763,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    8,
+    5
+   ],
+   "was": 785,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    9,
+    5
+   ],
+   "was": 764,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    10,
+    5
+   ],
+   "was": 787,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    11,
+    5
+   ],
+   "was": 788,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    12,
+    5
+   ],
+   "was": 789,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    5
+   ],
+   "was": 764,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    5
+   ],
+   "was": 785,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    15,
+    5
+   ],
+   "was": 765,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    5
+   ],
+   "was": 786,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    6,
+    6
+   ],
+   "was": 792,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    7,
+    6
+   ],
+   "was": 771,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    8,
+    6
+   ],
+   "was": 775,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    9,
+    6
+   ],
+   "was": 772,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    10,
+    6
+   ],
+   "was": 795,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    12,
+    6
+   ],
+   "was": 797,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    13,
+    6
+   ],
+   "was": 772,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    14,
+    6
+   ],
+   "was": 775,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    6
+   ],
+   "was": 773,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    6
+   ],
+   "was": 794,
+   "layer_type": 1
+  }
+ ]
+}

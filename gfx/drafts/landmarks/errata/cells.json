@@ -1,0 +1,745 @@
+{
+ "title": "ERRATA (the museum and its annex)",
+ "map": "PewterCity",
+ "footprint": [
+  12,
+  0,
+  16,
+  7
+ ],
+ "door": [
+  17,
+  6
+ ],
+ "kept": [
+  [
+   25,
+   4
+  ]
+ ],
+ "signs": [],
+ "row": 12,
+ "colours": {
+  "OUT": "1e202a",
+  "SLATED": "2e3642",
+  "SLATE": "3e4856",
+  "SLATEL": "586676",
+  "CHALKD": "848e98",
+  "CHALK": "ecece2",
+  "PAPERD": "c4c2b4",
+  "WOODD": "5c3e2a",
+  "WOOD": "8a603c",
+  "WOODL": "b88a5a",
+  "RED": "cc282c",
+  "BEIGED": "807866",
+  "BEIGE": "b0a890",
+  "BEIGEL": "d6d0ba",
+  "PLATE": "9aa2ae"
+ },
+ "cells": [
+  {
+   "cell": [
+    12,
+    0
+   ],
+   "was": 640,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    0
+   ],
+   "was": 641,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    14,
+    0
+   ],
+   "was": 642,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    15,
+    0
+   ],
+   "was": 641,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    16,
+    0
+   ],
+   "was": 642,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    17,
+    0
+   ],
+   "was": 641,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    18,
+    0
+   ],
+   "was": 642,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    19,
+    0
+   ],
+   "was": 641,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    20,
+    0
+   ],
+   "was": 642,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    21,
+    0
+   ],
+   "was": 641,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    22,
+    0
+   ],
+   "was": 646,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    1
+   ],
+   "was": 648,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    14,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    15,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    17,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    18,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    19,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    20,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    21,
+    1
+   ],
+   "was": 649,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    22,
+    1
+   ],
+   "was": 654,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    23,
+    1
+   ],
+   "was": 652,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    24,
+    1
+   ],
+   "was": 651,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    25,
+    1
+   ],
+   "was": 652,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    26,
+    1
+   ],
+   "was": 651,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    27,
+    1
+   ],
+   "was": 645,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    12,
+    2
+   ],
+   "was": 656,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    14,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    15,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    17,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    18,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    19,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    20,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    21,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    22,
+    2
+   ],
+   "was": 662,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    23,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    24,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    25,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    26,
+    2
+   ],
+   "was": 657,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    27,
+    2
+   ],
+   "was": 653,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    12,
+    3
+   ],
+   "was": 664,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    14,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    15,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    17,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    18,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    19,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    20,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    21,
+    3
+   ],
+   "was": 665,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    22,
+    3
+   ],
+   "was": 670,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    23,
+    3
+   ],
+   "was": 660,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    24,
+    3
+   ],
+   "was": 660,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    25,
+    3
+   ],
+   "was": 659,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    26,
+    3
+   ],
+   "was": 660,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    27,
+    3
+   ],
+   "was": 661,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    12,
+    4
+   ],
+   "was": 672,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    13,
+    4
+   ],
+   "was": 673,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    14,
+    4
+   ],
+   "was": 673,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    15,
+    4
+   ],
+   "was": 673,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    4
+   ],
+   "was": 674,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    17,
+    4
+   ],
+   "was": 675,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    18,
+    4
+   ],
+   "was": 676,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    19,
+    4
+   ],
+   "was": 677,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    20,
+    4
+   ],
+   "was": 677,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    21,
+    4
+   ],
+   "was": 677,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    22,
+    4
+   ],
+   "was": 678,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    23,
+    4
+   ],
+   "was": 668,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    24,
+    4
+   ],
+   "was": 667,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    26,
+    4
+   ],
+   "was": 668,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    27,
+    4
+   ],
+   "was": 669,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    12,
+    5
+   ],
+   "was": 680,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    13,
+    5
+   ],
+   "was": 681,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    14,
+    5
+   ],
+   "was": 681,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    15,
+    5
+   ],
+   "was": 681,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    5
+   ],
+   "was": 682,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    17,
+    5
+   ],
+   "was": 683,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    18,
+    5
+   ],
+   "was": 684,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    19,
+    5
+   ],
+   "was": 685,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    20,
+    5
+   ],
+   "was": 685,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    21,
+    5
+   ],
+   "was": 685,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    22,
+    5
+   ],
+   "was": 686,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    16,
+    6
+   ],
+   "was": 690,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    17,
+    6
+   ],
+   "was": 691,
+   "layer_type": 0
+  },
+  {
+   "cell": [
+    18,
+    6
+   ],
+   "was": 692,
+   "layer_type": 1
+  }
+ ]
+}
