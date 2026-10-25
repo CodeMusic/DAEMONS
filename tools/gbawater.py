@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The world's water in the pond's ripple dashes (T-61, vision.md 9.22).
+"""The world's water as a shuffle of bits and notes (T-449, after T-61's ripple dashes, vision.md 9.22).
 
     python3 tools/gbawater.py            # preview to /tmp/world_water.png (before | after)
     python3 tools/gbawater.py --write    # the two water groups' animation frames, and frame 0 in tiles.png
@@ -13,16 +13,18 @@ groups, placed in quadrant order and never flipped:
 Only those eight tiles are redrawn, in all eight frames. The rocks, sand edges,
 halos, currents and waterfalls that share the strips keep vanilla's drawing.
 
-THE PATTERN IS BLANCHE'S POND'S LANGUAGE -- short ripple dashes on a 16-pixel
-period -- given more to do at sea: three dashes of different lengths, each with
-a lighter middle, two drifting right and one left so the surface shimmers
-rather than slides, and a single speck. The pale water and the sea read as the
-same water, one of them drained.
+THE PATTERN IS THE TOWN MAP'S SEA (T-449, the user 2026-10-24: "the water itself
+is like a shuffle of binary or musical notes ... maybe this also applies to some
+general overworld sprites"): four small glyph slots in each 16-pixel block -- a
+0, a 1, a note, a note a step higher -- each slot on its OWN eight-frame
+schedule, so the surface shuffles rather than flipping in unison; and T-61's
+single speck. A glyph is drawn in the step-lighter index, a note's head a step
+lighter again, so the water stays water and the glyphs are read only up close.
 
 THE SAME TILE DRAWS IN TWO ROWS. Blocks put these tiles in row 4 (the blues) or
 row 6 (the deeper blues), so the pattern only uses indices that mean the same
 thing in both: 6 the body, 5 a step lighter, 3 lighter again, 1 the speck.
-Open water is 6 with 5 dashes; shallow water is 5 with 3 dashes and 6 beneath.
+Open water is 6 with glyphs in 5; shallow water is 5 with glyphs in 3.
 """
 import importlib.util, json, os, re, struct, sys, daemonslib
 from daemonslib import read_pal   # T-421: one copy, not one per tool
@@ -43,20 +45,31 @@ GROUPS = [
     (416, "water_current_landwatersedge", {BODY: 6, DASH: 5, CREST: 3, SPECK: 1}),
     (464, "sandwatersedge", {BODY: 5, DASH: 3, CREST: 1, SPECK: 1}),
 ]
-# (row, first u, last u, crest u's, drift per frame)
-DASHES = [(2, 2, 7, (4, 5), 2), (7, 10, 13, (), -2), (12, 5, 9, (7,), 2)]
+# the glyphs, 3x5: '#' a stroke (DASH), '@' a note's head (CREST)
+GLYPHS = {"0": ["###", "#.#", "#.#", "#.#", "###"], "1": [".#.", "##.", ".#.", ".#.", "###"],
+          "n": ["..#", "..#", "..#", "@@#", "@@."], "N": ["..#", "..##", "..#", "@@#", "@@."], " ": []}
+# four slots in the 16x16 block, each (x, y) of its top-left and its own eight frames
+SLOTS = [((1, 1), "001 nN  "), ((9, 3), " nN  011"), ((4, 9), "1  0 0nN"), ((12, 10), "N 1 1 0 ")]
 SPECKS = [(13, 4)]
 
 
 def ripple(x, y, f):
-    for v, u0, u1, crests, drift in DASHES:
-        if y % 16 == v:
-            u = (x - drift * f) % 16
-            if u0 <= u <= u1:
-                return CREST if u in crests else DASH
-    if any((x % 16, y % 16) == (sx, sy) for sx, sy in SPECKS) and f % 4 < 2:
+    """the role of pixel (x, y) of the 16x16 block in frame f (the name kept from T-61: what calls it is unchanged)"""
+    u, v = x % 16, y % 16
+    for (x0, y0), sched in SLOTS:
+        rows = GLYPHS[sched[f % len(sched)]]
+        gy, gx = v - y0, u - x0
+        if 0 <= gy < len(rows) and 0 <= gx < len(rows[gy]):
+            ch = rows[gy][gx]
+            if ch == "#":
+                return DASH
+            if ch == "@":
+                return CREST
+    if any((u, v) == (sx, sy) for sx, sy in SPECKS) and f % 4 < 2:
         return SPECK
     return BODY
+
+
 PREVIEW_MAPS = [("SSAnne_Exterior_Layout", 0, 0, 24, 14), ("FourIsland_Layout", 0, 0, 24, 14)]
 
 
