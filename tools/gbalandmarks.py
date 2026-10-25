@@ -97,6 +97,14 @@ dead hardware; the annex a pinned index card). Both doors that animate are kept 
 layer from the grass (ground_always: vanilla drew both halls into both layers); SLATE's census leaves out
 RS_BattleTower, a layout no map uses (skip_unused_layouts), as gbatowns' counts do.
 
+  TWEAKED (the user, 2026-10-25: "build with tweaks"): the REVIEW BOARD's pale semicircle porch, (10..12, 7) and its
+  lip on (10..12, 8), redrawn in the hall's dark stone so the kept blue door sits in black -- six cells added to the
+  footprint (and to gbatowns' LANDMARKS), attributes and collision kept, their own bottom layer kept (keep_bottom);
+  four faint seat places inlaid along the bench top over the four vessels. ERRATA's erratum moved up onto the slate
+  roof, where it reads at 1x (the struck line on the lowest rule, the red caret standing in it, the correction's mark
+  over it), with an echo on the pediment (one struck rule and a small caret, mirrored on its seam: one tile). To fit
+  SLATE's 123 slots, the slate's smear of what was rubbed out is cut and the pediment's written line goes.
+
   gbatowns.py's LANDMARKS table keeps these boxes out of T-438's town passes; OWNS below is this tool's claim on the
   same boxes, and the report fails if the two disagree (it reads the table, it does not import that tool: trap 16).
 """
@@ -996,12 +1004,20 @@ RB_SEATS = ((40, "RED", "REDL", "I"), (64, "YEL", "YELL", "II"),       # (centre
             (112, "BLK", "BLKL", "III"), (136, "PALE", "PALEL", "IV"))
 RB_SLAB = (4, 171, -40, 40, 50)          # the slab: (xa, xb, its back -- off the map -- the front edge's top, its foot)
 RB_HALL = (16, 159, 50, 111)             # the hall under it: x, x, its top (in the slab's shadow), its foot
+#  THE PORCH (the user, 2026-10-25): vanilla's pale semicircle in front of the door, cells (10..12, 7) and the lip
+#  that runs onto (10..12, 8), redrawn in the hall's dark stone so the kept blue door sits in black. These six cells
+#  are outside the 11x7 box: they join the footprint (gbatowns' LANDMARKS has them too), keep their attributes and
+#  collision, and keep their own bottom layer (the grass, and on row 8 the path) -- vanilla drew the porch in the top
+#  layer only, and so does this.
+RB_PORCH = {(x, y) for x in (10, 11, 12) for y in (7, 8)}
+RB_PORCH_DISC = (87.5, 111.5, 24.0, 20.5)  # its centre (on the door's axis, at the hall's foot), rx, ry
 RB = dict(name="review_board", title="the REVIEW BOARD", map="IndigoPlateau_Exterior", x0=6, y0=0, w=11, h=7,
           door=(11, 6), keep=[(11, 6)], inplace=[], signs=[], row=RB_ROW, colours=RB_COLOURS,
           extra_rows=[(RB_ROW2, RB_VESSEL_COLOURS)],
+          cells_only={(x, y) for x in range(6, 17) for y in range(7)} | RB_PORCH,
           #  every cell's bottom layer is the plateau's grass (vanilla drew the hall into both layers), so the inset
-          #  shows ground; the art is the top layer
-          ground=lambda x, y: 0x001, ground_always=True,
+          #  shows ground; the art is the top layer. The porch keeps its own bottom layer.
+          ground=lambda x, y: 0x001, ground_always=True, keep_bottom=RB_PORCH,
           crop=[("IndigoPlateau_Exterior_Layout", 5, 0, 13, 9)],
           caption=["Near-black stone, neutral to the last pixel, under one long flat slab that overhangs the hall like "
                    "a judges' bench: the slab a deck seen from above, its thick lit edge chamfered at the corners.",
@@ -1009,7 +1025,9 @@ RB = dict(name="review_board", title="the REVIEW BOARD", map="IndigoPlateau_Exte
                    "its sides and under the overhang (cells (6,6) and (16,6) were always walkable).",
                    "The only colour on UMBRA: four vessels of fluid in four lit alcoves, red, yellow, black, pale, in "
                    "SEAT order I-IV left to right (not meeting order), each under a plate cut with its numeral.",
-                   "Their colour spills a little onto each sill and nowhere else. The black is blacker than the hall."],
+                   "Their colour spills a little onto each sill and nowhere else. The black is blacker than the hall.",
+                   "Tweaked (2026-10-25): four faint seat places inlaid along the bench top over the four vessels; the "
+                   "pale porch redrawn in dark stone, so the kept blue door sits in black."],
           door_note=["THE DOOR (11,6): KEPT. It is 0x15B, the PRIMARY",
                      "sliding double door every such door in the game",
                      "draws, so it cannot be redrawn in place here;",
@@ -1017,7 +1035,7 @@ RB = dict(name="review_board", title="the REVIEW BOARD", map="IndigoPlateau_Exte
 
 
 def draw_review_board():
-    W, H = 176, 112
+    W, H = 176, 144                                              # the 11x7 box, and the porch's two rows below it
     k = Canvas(W, H, lm_roles(RB))
     # --- the hall: a chamfered box, inset under the slab; its chamfers' feet rise, so the grass shows below them
     hx0, hx1, htop, hbot = RB_HALL
@@ -1143,7 +1161,45 @@ def draw_review_board():
     for x in range(xa + 1, xb):
         k.px(x, top - lean(x, xa, xb), "LIP")
     outline(k, m)
+    #  the four seat places, inlaid in the bench top over the four vessels: faint, a recess one step darker at its back
+    #  and left, one step lighter at its front and right (the light from the upper left). Each is centred on its seat's
+    #  tile seam, all four alike, on one tile row.
+    for c, _, _, _ in RB_SEATS:
+        x0, x1, y0, y1 = c - 6, c + 5, 25, 30
+        for x in range(x0, x1 + 1):
+            for y in range(y0, y1 + 1):
+                if (x in (x0, x1)) and (y in (y0, y1)):
+                    continue                                     # rounded corners
+                if y == y0 or x == x0:
+                    k.px(x, y, "DECKD")
+                elif y == y1 or x == x1:
+                    k.px(x, y, "DECKL")
+    draw_rb_porch(k)
     return k
+
+
+def draw_rb_porch(k):
+    """the porch: vanilla's semicircle, in the hall's stone -- a dark step, its tread lit, and within it a disc of
+    shadow that runs on from the portal, so the kept blue door stands in black"""
+    cx, cy, rx, ry = RB_PORCH_DISC
+    for y in range(112, 144):
+        for x in range(64, 112):
+            r = (((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2) ** 0.5
+            if r > 1:
+                continue
+            if r > 0.92:
+                role = "OUT"                                     # its edge on the grass
+            elif r > 0.82:
+                role = "STONED"                                  # the step's riser
+            elif r > 0.77:
+                role = "EDGE" if x < cx else "STONEL"            # the tread's lit nosing
+            elif r > 0.64:
+                role = "STONEL" if x < cx else "STONEM"          # the tread
+            elif r > 0.60:
+                role = "STONED"
+            else:
+                role = "NICHE"                                   # the black the door stands in
+            k.px(x, y, role)
 
 
 # ============================================================================================ ERRATA
@@ -1209,6 +1265,52 @@ ERRATA_HALL = (8, 167, 52, 95)
 ERRATA_ANNEX = (180, 251, 20, 56, 79)    # the card on the annex: (xa, xb, the card's back, the wall's top, its foot)
 ERRATA_COLS = ((16, "A", False), (32, "B", False), (48, "A", True),
                (120, "A", False), (136, "B", True), (152, "A", True))
+
+
+#  the erratum on the slate: the words' letter counts (0 is the caret's gap), and the caret's centre (a tile seam, on the
+#  door's axis); the line is laid out round the caret
+ERRATA_ECHO = True             # the pediment's small echo of the erratum: it costs one tile, and fits
+ERRATA_LINE = dict(words=(3, 2, 0, 4, 2), caret=88)
+ERRATA_GLYPHS = ("n", "o", "l", "u", "n", "c", "o", "h", "u", "l")   # chalk shapes, 3x4 (an ascender 3x5) -- not letters
+ERRATA_SHAPES = {"n": [(0, 0), (1, 0), (0, 1), (2, 1), (0, 2), (2, 2), (0, 3), (2, 3)],
+                 "u": [(0, 0), (2, 0), (0, 1), (2, 1), (0, 2), (2, 2), (1, 3), (2, 3)],
+                 "o": [(1, 0), (0, 1), (2, 1), (0, 2), (2, 2), (1, 3)],
+                 "c": [(1, 0), (2, 0), (0, 1), (0, 2), (1, 3), (2, 3)],
+                 "h": [(0, -1), (0, 0), (1, 0), (0, 1), (2, 1), (0, 2), (2, 2), (0, 3), (2, 3)],
+                 "l": [(0, -1), (0, 0), (0, 1), (0, 2), (0, 3)]}
+
+
+def errata_line(k, spec, base):
+    """the struck line: chalk shapes sitting on the rule under `base` (x-height base-3..base, ascenders base-4), word
+    gaps 5px, the caret's gap 11px; one chalk strike through the middle, past both ends; the caret in red standing in
+    its gap, the correction's mark over it"""
+    marks, x, g, gap = [], 0, 0, None
+    for n in spec["words"]:
+        if n == 0:
+            gap = x + 2                                          # the gap's centre seam, relative
+            x += 4                                               # (with the word gaps either side: 12px clear)
+            continue
+        for _ in range(n):
+            gl = ERRATA_GLYPHS[g % len(ERRATA_GLYPHS)]
+            g += 1
+            marks.append((x, gl))
+            x += 2 if gl == "l" else 4
+        x += 4
+    width = x - 4
+    ox = spec["caret"] - gap                                     # lay the line out round the caret
+    for mx, gl in marks:
+        for dx, dy in ERRATA_SHAPES[gl]:
+            k.px(ox + mx + dx, base - 3 + dy, "CHALK")
+    k.hline(ox - 3, ox + width + 2, base - 2, "CHALK")          # STRUCK THROUGH, past both ends
+    c = spec["caret"]                                            # the caret, on a tile seam: its halves mirror
+    for i in range(4):
+        for dy in (0, 1):
+            k.px(c - 1 - i, base - 5 + i + dy, "RED")
+            k.px(c + i, base - 5 + i + dy, "RED")
+    #  the correction, in chalk over the caret: a short mark, not struck
+    for dx, dy in ((-4, 0), (-3, -1), (-2, 0), (-1, -1), (0, 0), (1, -1), (2, 0), (3, -1)):
+        k.px(c + dx, base - 8 + dy, "CHALK")
+    return ox, ox + width
 
 
 def errata_stack(k, x0, y0, y1, kind, flip):
@@ -1370,16 +1472,12 @@ def draw_errata():
     #  ruled in chalk, every 8 rows, on the tile rows: a clean slate
     for y in range(15, SY1, 8):
         k.hline(SX0 + 4, SX1 - 4, y, "CHALKD")
-    #  what was rubbed out: one smear, the chalk dragged thin, the slate a step lighter where the cloth went (inside
-    #  two tile columns: the budget)
-    for cx, cy, rx, ry in ((119.5, 24, 8.4, 6.5),):
-        for y in range(int(cy - ry), int(cy + ry) + 1):
-            for x in range(int(cx - rx), int(cx + rx) + 1):
-                d = ((x + 0.5 - cx) / rx) ** 2 + ((y - cy) / ry) ** 2
-                if d <= 1 and k.is_(x, y, "SLATE") and (BAYER[y % 4][x % 4] + 0.5) / 16 > 0.35 + d * 0.55:
-                    k.px(x, y, "SLATEL")
-                if d <= 1 and k.is_(x, y, "CHALKD") and (x + y) % 3:
-                    k.px(x, y, "SLATEL")                          # the rule wiped thin under it
+    #  THE ERRATUM (the user, 2026-10-25: moved up from the pediment, where it was too small to read at 1x): the one
+    #  line still written on the clean slate, on its lowest rule, centred on the door's axis -- chalk marks in the shape
+    #  of words, never letters -- struck through with one line of chalk that runs past both ends; and in it, at the
+    #  insertion point, a red caret standing on the line, the correction's mark in chalk over it. The smear of what was
+    #  rubbed out is cut (the budget: SLATE had two tiles to spare).
+    errata_line(k, ERRATA_LINE, base=38)
     #  the chalk's ledge along the slate's foot
     k.hline(SX0 + 4, SX1 - 4, SY1 + 3, "WOODD")
 
@@ -1404,24 +1502,13 @@ def draw_errata():
     k.hline(PX0, PX1, PB, "PLATE")
     k.hline(PX0, PX1, PB + 1, "CHALKD")
     k.hline(PX0, PX1, PB + 2, "OUT")
-    for y, (x0, x1) in ((54, (72, 103)), (59, (68, 107))):      # the rules
-        k.hline(x0, x1, y, "CHALKD")
-    #  the written line, on the lower rule: marks of chalk in clusters (the shape of words, not words)
-    marks = (70, 71, 73, 74, 75, 78, 79, 81, 82, 83, 84, 86, 89, 90, 91, 93, 94, 96, 97, 98, 99, 101, 102, 104, 105)
-    for i, x in enumerate(marks):
-        k.px(x, 58, "CHALK")
-        if i % 3 != 1:
-            k.px(x, 57, "CHALK")
-        if i % 5 == 0:
-            k.px(x, 56, "CHALK")
-    k.hline(69, 106, 57, "CHALK")                               # STRUCK THROUGH: one line of chalk across all of it
-    #  the red caret above the struck line, and the correction's mark over it, small, in chalk
-    for dx, dy in ((0, 0), (1, -1), (2, -2), (3, -1), (4, 0)):
-        k.px(86 + dx, 53 + dy, "RED")
-        k.px(86 + dx, 54 + dy, "RED")
-    for x in (85, 86, 88, 89, 90):
-        k.px(x, 49, "CHALK")
-    k.px(87, 48, "CHALK"); k.px(89, 48, "CHALK")
+    #  the echo of the slate's erratum (tweaked 2026-10-25): no written line any more, only one struck rule and the
+    #  red caret on it, on the door's axis
+    if ERRATA_ECHO:
+        k.hline(70, 105, 58, "CHALKD")
+        for i in range(3):                                       # the caret, its halves mirrored on the seam
+            for dy in (0, 1):
+                k.px(87 - i, 54 + i + dy, "RED"); k.px(88 + i, 54 + i + dy, "RED")
     outline(k, tri)
 
     # --- the annex: a chamfered box, a flat roof seen from above, and one big card pinned flat on it -- the roof's
@@ -1516,7 +1603,8 @@ OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
                          ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
         "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
                           ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],
-        "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD")],
+        "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD"),
+                           ("IndigoPlateau_Exterior", 10, 7, 3, 2, "the REVIEW BOARD's porch")],
         "pewter_city": [("PewterCity", 12, 0, 16, 7, "ERRATA, the museum and its annex")]}
 GROUP = TILESET = LANDMARKS_HERE = None
 
@@ -1768,6 +1856,8 @@ def build(ts):
                                                        if lin(k, ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) else 0
                                                        for i in range(64)))) for qy in (0, 1) for qx in (0, 1)]
                 entries = art + lint
+            elif main and (x, y) in lm.get("keep_bottom", ()):
+                entries = bottom + art                  # the cell's own bottom layer kept (the REVIEW BOARD's porch)
             else:
                 if lm.get("ground_always") or not any(v & 0x3FF for v in bottom):
                     bottom = ground_under(ts, lm, x, y, layout)

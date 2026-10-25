@@ -347,7 +347,8 @@ LANDMARKS = {
     "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
                       ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],
     #  T-447's third pair (drafted 2026-10-25): the REVIEW BOARD on UMBRA, and ERRATA with its annex in SLATE
-    "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD")],
+    "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD"),
+                       ("IndigoPlateau_Exterior", 10, 7, 3, 2, "the REVIEW BOARD's porch")],
     "pewter_city": [("PewterCity", 12, 0, 16, 7, "ERRATA, the museum and its annex")],
 }
 

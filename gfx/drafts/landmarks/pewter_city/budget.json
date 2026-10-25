@@ -1,6 +1,6 @@
 {
  "tileset": "gTileset_PewterCity",
- "tiles_drawn": 121,
+ "tiles_drawn": 123,
  "owned": [
   8,
   9,
@@ -249,14 +249,16 @@
   370,
   371,
   372,
-  373
+  373,
+  374,
+  375
  ],
  "blocks": [
   146,
-  185
+  186
  ],
  "num_tiles": [
   312,
-  374
+  376
  ]
 }
