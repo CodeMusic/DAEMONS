@@ -1,0 +1,129 @@
+{
+ "_": "batch 1 redone for charm (the user, 2026-10-25: 'more charm, accept drift'), chosen by eye on t452d_cand_*.png. Seeds: t2i chibi fronts 4801/4802 (4803/4804 second wording), i2i from today's front 0.8 = 4821, 0.85 = 4822 (0.72 = 4823, 0.76 = 4824 where the key prop was lost), backs from today's back 0.66 = 4831, 0.75 = 4832, backs from the new front 0.75 = 4851, 0.85 = 4852, chibi icons 4841/4842. Backs from the new front (4851/4852) mostly redrew the front with its face; kept only where they turned (rubric, canon, cluster, pending). Elsewhere today's back at 0.66 (4831) or 0.75 (4832).",
+ "crawler": {
+  "front": "crawler_front_i2i_4821.png",
+  "back": "crawler_back_i2i_4831.png",
+  "icon": "derived",
+  "key": true,
+  "key-back": true,
+  "note": "i2i 0.8 keeps the row of round segments, each with a little face; the t2i chibis (4801/4802) became one round blob and lost the segments. Icons tiled four to a frame (first prompt) -- derived."
+ },
+ "roverseer": {
+  "front": "roverseer_front_i2i_4822.png",
+  "back": "roverseer_back_i2i_4831.png",
+  "icon": "roverseer_icon_4841.png",
+  "note": "i2i 0.85 is a round-headed robot pup with the antenna and light on its head and a boxy plated body. 4802 is the cuter face but lost the boxy body; 4801 is a real puppy."
+ },
+ "roverbyte": {
+  "front": "roverbyte_front_i2i_4822.png",
+  "back": "roverbyte_back_i2i_4832.png",
+  "icon": "roverbyte_icon_4841.png",
+  "note": "i2i 0.85: a chibi puppy with big floppy ears and a lens on its collar; the leg plates went soft. 4801 is the most charming but a plain brown spaniel."
+ },
+ "label": {
+  "front": "label_front_i2i_4822.png",
+  "back": "label_back_i2i_4831.png",
+  "icon": "derived",
+  "note": "i2i 0.85: a soft tag with a string loop on top and a sleepy face. Both t2i lost the tag (a girl in a hood, a robot). Icons: 4841 tiled, 4842 a mushroom -- derived."
+ },
+ "rubric": {
+  "front": "rubric_front_i2i_4824.png",
+  "back": "rubric_back_fromfront_4851.png",
+  "icon": "derived",
+  "note": "i2i 0.76 (charmlo): a sleepy paper cube with ruled lines across its lower half. At 0.8 the grid all but vanished; the second wording drew a cat on graph paper or a penguin. Back turned from the new front (4851), faceless, so it matches."
+ },
+ "canon": {
+  "front": "canon_front_i2i_4823.png",
+  "back": "canon_back_fromfront_4851.png",
+  "icon": "canon_icon_4841.png",
+  "note": "i2i 0.72 (charmlo): a soft cabinet with a sleepy face and its drawers pulled open on papers at the side. At 0.8+ and in t2i the open drawer was always lost (4802 winked, but shut). Back turned from the new front (4851), faceless, so it matches.",
+  "failed": ""
+ },
+ "cluster": {
+  "front": "cluster_front_4804.png",
+  "back": "cluster_back_fromfront_4852.png",
+  "icon": "derived",
+  "note": "second wording (t2i 4804, 'seven small round balls stuck together'): a pile of little round balls, each with a face -- the packed spheres AND the charm. The first wording and every i2i drew one ball (4801/4802/4821/4822) or today's ball unchanged (0.72/0.76). Back turned from the new front (4852), faceless, so it matches."
+ },
+ "locus": {
+  "front": "locus_front_i2i_4822.png",
+  "back": "locus_back_i2i_4831.png",
+  "icon": "derived",
+  "note": "i2i 0.85: a little grey critter whose tail curls into a thick loop. 4803 (second wording) is the ring itself, one big eye in its hole -- the key shape, less charm.",
+  "failed": "front: the loop is a tail, not the body; the ring-bodied draft (4803) is a single staring eye -- choose between them"
+ },
+ "manifold": {
+  "front": "manifold_front_4803.png",
+  "back": "manifold_back_i2i_4831.png",
+  "icon": "manifold_icon_4842.png",
+  "key-back": true,
+  "note": "second wording (t2i 4803): a big-eyed creature on two wide pointed fin-wings. 4804 is a true origami manta but drawn inside a frame. The folded sheet itself is not there.",
+  "failed": "front: the folded-sheet body is lost in every charming draft -- 4803 keeps the fin wings only; the origami manta (4804) came framed and the i2i ones (4821/4823/4824) are flat sheets without charm"
+ },
+ "pending": {
+  "front": "pending_front_i2i_4821.png",
+  "back": "pending_back_fromfront_4852.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a sleepy face in a hooded cloth cocoon -- the key prop and the charm together. Icons: four copies, two copies -- derived. Back turned from the new front (4852), faceless, so it matches."
+ },
+ "indexer": {
+  "front": "indexer_front_i2i_4822.png",
+  "back": "indexer_back_i2i_4832.png",
+  "icon": "indexer_icon_4841.png",
+  "note": "i2i 0.85: a big-eyed little moth with panelled wings and antennae. Icon 4841 a round moth."
+ },
+ "scraper": {
+  "front": "scraper_front_4803.png",
+  "back": "scraper_back_i2i_4831.png",
+  "icon": "derived",
+  "note": "second wording (t2i 4803): a chubby grub with a banded tail curling up behind; the stinger is a small hook at its tip. i2i 0.72/0.76 kept the spike but not the charm."
+ },
+ "buffer": {
+  "front": "buffer_front_i2i_4821.png",
+  "back": "buffer_back_i2i_4831.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a hard pod with a seam and two red eyes peering from the top; t2i drew a ladybird and a robot. Icons: faces in rows -- derived."
+ },
+ "injector": {
+  "front": "injector_front_4803.png",
+  "back": "injector_back_i2i_4831.png",
+  "icon": "injector_icon_4842.png",
+  "note": "second wording (t2i 4803): a big-eyed little wasp with clear wings and a long needle, held up like a wand rather than at its tail."
+ },
+ "relay": {
+  "front": "relay_front_4803.png",
+  "back": "relay_back_i2i_4832.png",
+  "icon": "relay_icon_4842.png",
+  "note": "second wording (t2i 4803, envelope in its beak): a round pigeon beside a big envelope -- the only draft of 14 with the envelope."
+ },
+ "broadcast": {
+  "front": "broadcast_front_4801.png",
+  "back": "broadcast_back_i2i_4831.png",
+  "icon": "broadcast_icon_4842.png",
+  "note": "t2i 4801: a round chibi dove calling out, one wing flung wide (the other folded); i2i 0.8 spreads both but loses the charm. Icon 4842 both wings spread."
+ },
+ "nibble": {
+  "front": "nibble_front_4801.png",
+  "back": "nibble_back_i2i_4831.png",
+  "icon": "nibble_icon_4841.png",
+  "note": "t2i 4801: a big-eyed rat with its long tail curled up behind (pink pushed into the ramp). Icon 4841 a round mouse."
+ },
+ "overflow": {
+  "front": "overflow_front_4802.png",
+  "back": "overflow_back_i2i_4831.png",
+  "icon": "overflow_icon_4841.png",
+  "note": "t2i 4802: a rat so round it fills the frame -- the overstuffed body as one bulge, not lumps; the dark head is gone. i2i 0.8/0.85 drew a plain rat."
+ },
+ "ping": {
+  "front": "ping_front_4801.png",
+  "back": "ping_back_i2i_4831.png",
+  "icon": "ping_icon_4841.png",
+  "note": "t2i 4801: a big-eyed hummingbird with the long needle beak -- both. Icon 4841 all beak."
+ },
+ "flood": {
+  "front": "flood_front_4801.png",
+  "back": "flood_back_i2i_4831.png",
+  "icon": "flood_icon_4841.png",
+  "note": "t2i 4801: a crested chibi bird with a sharp beak, wings swept back; it stands on a tuft of grass the clean may keep. Icon 4841 crest and beak."
+ }
+}

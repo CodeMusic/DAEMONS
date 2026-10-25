@@ -1,0 +1,976 @@
+{
+ "roverseer": {
+  "name": "ROVERSEER",
+  "national": 2,
+  "slot": "ivysaur",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a big four-legged robot hound, boxy metal body, antenna on its back (PREDICTIVE)",
+  "note": "i2i 0.85 is a round-headed robot pup with the antenna and light on its head and a boxy plated body. 4802 is the cuter face but lost the boxy body; 4801 is a real puppy.",
+  "failed": "",
+  "front": "roverseer_front_i2i_4822.png",
+  "back": "roverseer_back_i2i_4831.png",
+  "icon": "roverseer_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,31,36,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 21.3,
+    "accent_clean_after": 13.4,
+    "greyed_px": 90,
+    "streak_px": 21,
+    "creature_px": 1131
+   },
+   "front_accent_pct": 13.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "20,37,23,51",
+    "painted": "FAILED, no streaks"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 835
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 6,
+   "icon_cap": {
+    "accent_clean_before": 3.5,
+    "accent_clean_after": 3.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 918
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    24
+   ]
+  }
+ },
+ "roverbyte": {
+  "name": "ROVERBYTE",
+  "national": 3,
+  "slot": "venusaur",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a fluffy robot puppy with floppy ears and jointed leg plates (EMBODIED)",
+  "note": "i2i 0.85: a chibi puppy with big floppy ears and a lens on its collar; the leg plates went soft. 4801 is the most charming but a plain brown spaniel.",
+  "failed": "",
+  "front": "roverbyte_front_i2i_4822.png",
+  "back": "roverbyte_back_i2i_4832.png",
+  "icon": "roverbyte_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "25,33,42,48",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 11.7,
+    "accent_clean_after": 11.7,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1124
+   },
+   "front_accent_pct": 11.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "17,32,43,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.4,
+    "accent_clean_after": 6.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1086
+   },
+   "back_accent_pct": 6.4,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2281
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    24
+   ]
+  }
+ },
+ "label": {
+  "name": "LABEL",
+  "national": 4,
+  "slot": "charmander",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a paper luggage tag with a string loop on its head (EXAMPLE)",
+  "note": "i2i 0.85: a soft tag with a string loop on top and a sleepy face. Both t2i lost the tag (a girl in a hood, a robot). Icons: 4841 tiled, 4842 a mushroom -- derived.",
+  "failed": "",
+  "front": "label_front_i2i_4822.png",
+  "back": "label_back_i2i_4831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,33,37,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 705
+   },
+   "front_accent_pct": 3.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,34,39,50",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.2,
+    "accent_clean_after": 2.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 803
+   },
+   "back_accent_pct": 2.2,
+   "back_colours": 11
+  }
+ },
+ "rubric": {
+  "name": "RUBRIC",
+  "national": 5,
+  "slot": "charmeleon",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a square score sheet: a grid of ruled rows and columns for a body (CRITERION)",
+  "note": "i2i 0.76 (charmlo): a sleepy paper cube with ruled lines across its lower half. At 0.8 the grid all but vanished; the second wording drew a cat on graph paper or a penguin. Back turned from the new front (4851), faceless, so it matches.",
+  "failed": "",
+  "front": "rubric_front_i2i_4824.png",
+  "back": "rubric_back_fromfront_4851.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,33,49,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.3,
+    "accent_clean_after": 11.2,
+    "greyed_px": 92,
+    "streak_px": 20,
+    "creature_px": 1500
+   },
+   "front_accent_pct": 11.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "15,33,48,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 11.6,
+    "accent_clean_after": 11.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1496
+   },
+   "back_accent_pct": 11.6,
+   "back_colours": 12
+  }
+ },
+ "canon": {
+  "name": "CANON",
+  "national": 6,
+  "slot": "charizard",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a steel filing cabinet, its drawer open on stacked papers (SETTLED)",
+  "note": "i2i 0.72 (charmlo): a soft cabinet with a sleepy face and its drawers pulled open on papers at the side. At 0.8+ and in t2i the open drawer was always lost (4802 winked, but shut). Back turned from the new front (4851), faceless, so it matches.",
+  "failed": "",
+  "front": "canon_front_i2i_4823.png",
+  "back": "canon_back_fromfront_4851.png",
+  "icon": "src/canon_icon_4841_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "12,29,51,42",
+    "painted": "[5, 5, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 13.9,
+    "accent_clean_after": 13.9,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1418
+   },
+   "front_accent_pct": 13.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "12,34,35,49",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1573
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 6.5,
+    "accent_clean_after": 6.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1797
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    23,
+    24
+   ]
+  }
+ },
+ "cluster": {
+  "name": "CLUSTER",
+  "national": 7,
+  "slot": "squirtle",
+  "gametype": "VECTOR",
+  "type": "FLYING",
+  "props": "a ball of many grey spheres packed together, one bright one among them (GROUPING)",
+  "note": "second wording (t2i 4804, 'seven small round balls stuck together'): a pile of little round balls, each with a face -- the packed spheres AND the charm. The first wording and every i2i drew one ball (4801/4802/4821/4822) or today's ball unchanged (0.72/0.76). Back turned from the new front (4852), faceless, so it matches.",
+  "failed": "",
+  "front": "cluster_front_4804.png",
+  "back": "cluster_back_fromfront_4852.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,34,27,54",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 16.0,
+    "accent_clean_after": 14.7,
+    "greyed_px": 28,
+    "streak_px": 17,
+    "creature_px": 2157
+   },
+   "front_accent_pct": 14.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,33,39,51",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 2065
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10
+  }
+ },
+ "locus": {
+  "name": "LOCUS",
+  "national": 8,
+  "slot": "wartortle",
+  "gametype": "VECTOR",
+  "type": "FLYING",
+  "props": "a thick bent loop, a curved ring of tube (CONDITION)",
+  "note": "i2i 0.85: a little grey critter whose tail curls into a thick loop. 4803 (second wording) is the ring itself, one big eye in its hole -- the key shape, less charm.",
+  "failed": "front: the loop is a tail, not the body; the ring-bodied draft (4803) is a single staring eye -- choose between them",
+  "front": "locus_front_i2i_4822.png",
+  "back": "locus_back_i2i_4831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,40,46",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.8,
+    "accent_clean_after": 1.8,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 939
+   },
+   "front_accent_pct": 1.8,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "16,33,38,46",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.8,
+    "accent_clean_after": 1.8,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 998
+   },
+   "back_accent_pct": 1.8,
+   "back_colours": 13
+  }
+ },
+ "manifold": {
+  "name": "MANIFOLD",
+  "national": 9,
+  "slot": "blastoise",
+  "gametype": "VECTOR",
+  "type": "FLYING",
+  "props": "a flat folded sheet, a manta shape with fin wings and a long tail (SURFACE)",
+  "note": "second wording (t2i 4803): a big-eyed creature on two wide pointed fin-wings. 4804 is a true origami manta but drawn inside a frame. The folded sheet itself is not there.",
+  "failed": "front: the folded-sheet body is lost in every charming draft -- 4803 keeps the fin wings only; the origami manta (4804) came framed and the i2i ones (4821/4823/4824) are flat sheets without charm",
+  "front": "manifold_front_4803.png",
+  "back": "src/manifold_back_i2i_4831_key.png",
+  "icon": "manifold_icon_4842.png",
+  "measured": {
+   "front_streaks": {
+    "box": "29,37,41,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.5,
+    "accent_clean_after": 8.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 997
+   },
+   "front_accent_pct": 8.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,27,29,33",
+    "painted": "FAILED, no streaks"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.4,
+    "accent_clean_after": 8.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 367
+   },
+   "back_accent_pct": 8.4,
+   "back_colours": 9,
+   "icon_cap": {
+    "accent_clean_before": 1.3,
+    "accent_clean_after": 1.3,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 670
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    20
+   ]
+  }
+ },
+ "crawler": {
+  "name": "CRAWLER",
+  "national": 10,
+  "slot": "caterpie",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a caterpillar of round segments, light and dark, a round white head (COLLECTOR)",
+  "note": "i2i 0.8 keeps the row of round segments, each with a little face; the t2i chibis (4801/4802) became one round blob and lost the segments. Icons tiled four to a frame (first prompt) -- derived.",
+  "failed": "",
+  "front": "src/crawler_front_i2i_4821_key.png",
+  "back": "src/crawler_back_i2i_4831_key.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "5,31,21,39",
+    "painted": "[3, 4, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.4,
+    "accent_clean_after": 4.4,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 682
+   },
+   "front_accent_pct": 4.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,33,36,48",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 530
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10
+  }
+ },
+ "pending": {
+  "name": "PENDING",
+  "national": 11,
+  "slot": "metapod",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a cocoon wrapped in dark cloth, a pale sleeping face peeking out (QUEUED)",
+  "note": "i2i 0.8: a sleepy face in a hooded cloth cocoon -- the key prop and the charm together. Icons: four copies, two copies -- derived. Back turned from the new front (4852), faceless, so it matches.",
+  "failed": "",
+  "front": "pending_front_i2i_4821.png",
+  "back": "pending_back_fromfront_4852.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,34,43,50",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.1,
+    "accent_clean_after": 3.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 972
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,34,39,51",
+    "painted": "[5, 3, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1211
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10
+  }
+ },
+ "indexer": {
+  "name": "INDEXER",
+  "national": 12,
+  "slot": "butterfree",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a moth with wide wings of file-card panels, feathery antennae (FILING)",
+  "note": "i2i 0.85: a big-eyed little moth with panelled wings and antennae. Icon 4841 a round moth.",
+  "failed": "",
+  "front": "indexer_front_i2i_4822.png",
+  "back": "indexer_back_i2i_4832.png",
+  "icon": "indexer_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "28,32,35,43",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.7,
+    "accent_clean_after": 1.7,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 922
+   },
+   "front_accent_pct": 1.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "15,32,43,40",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.0,
+    "accent_clean_after": 4.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 947
+   },
+   "back_accent_pct": 4.0,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1137
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    19
+   ]
+  }
+ },
+ "scraper": {
+  "name": "SCRAPER",
+  "national": 13,
+  "slot": "weedle",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a banded grub with a dark sharp stinger at its tail (UNLICENSED)",
+  "note": "second wording (t2i 4803): a chubby grub with a banded tail curling up behind; the stinger is a small hook at its tip. i2i 0.72/0.76 kept the spike but not the charm.",
+  "failed": "",
+  "front": "scraper_front_4803.png",
+  "back": "scraper_back_i2i_4831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "6,39,38,57",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1985
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "17,30,29,38",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 22.4,
+    "accent_clean_after": 7.9,
+    "greyed_px": 129,
+    "streak_px": 27,
+    "creature_px": 888
+   },
+   "back_accent_pct": 7.9,
+   "back_colours": 13
+  }
+ },
+ "buffer": {
+  "name": "BUFFER",
+  "national": 14,
+  "slot": "kakuna",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a hard oval pod, a shell with a slit and two small red eyes (HELD)",
+  "note": "i2i 0.8: a hard pod with a seam and two red eyes peering from the top; t2i drew a ladybird and a robot. Icons: faces in rows -- derived.",
+  "failed": "",
+  "front": "buffer_front_i2i_4821.png",
+  "back": "buffer_back_i2i_4831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,41,51",
+    "painted": "[3, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.0,
+    "accent_clean_after": 4.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 973
+   },
+   "front_accent_pct": 4.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "23,33,39,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.7,
+    "accent_clean_after": 1.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 923
+   },
+   "back_accent_pct": 1.7,
+   "back_colours": 12
+  }
+ },
+ "injector": {
+  "name": "INJECTOR",
+  "national": 15,
+  "slot": "beedrill",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a wasp with clear wings and a long needle stinger like a syringe (UNCHECKED)",
+  "note": "second wording (t2i 4803): a big-eyed little wasp with clear wings and a long needle, held up like a wand rather than at its tail.",
+  "failed": "",
+  "front": "injector_front_4803.png",
+  "back": "injector_back_i2i_4831.png",
+  "icon": "injector_icon_4842.png",
+  "measured": {
+   "front_streaks": {
+    "box": "30,33,38,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 34.1,
+    "accent_clean_after": 13.9,
+    "greyed_px": 194,
+    "streak_px": 23,
+    "creature_px": 963
+   },
+   "front_accent_pct": 13.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "25,31,38,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 31.5,
+    "accent_clean_after": 14.5,
+    "greyed_px": 130,
+    "streak_px": 20,
+    "creature_px": 764
+   },
+   "back_accent_pct": 14.5,
+   "back_colours": 15,
+   "icon_cap": {
+    "accent_clean_before": 21.4,
+    "accent_clean_after": 11.1,
+    "greyed_px": 59,
+    "streak_px": 0,
+    "creature_px": 574
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    16
+   ]
+  }
+ },
+ "relay": {
+  "name": "RELAY",
+  "national": 17,
+  "slot": "pidgeotto",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a pigeon carrying an envelope tucked under its wing (HANDOFF)",
+  "note": "second wording (t2i 4803, envelope in its beak): a round pigeon beside a big envelope -- the only draft of 14 with the envelope.",
+  "failed": "",
+  "front": "relay_front_4803.png",
+  "back": "relay_back_i2i_4832.png",
+  "icon": "relay_icon_4842.png",
+  "measured": {
+   "front_streaks": {
+    "box": "6,35,41,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.0,
+    "accent_clean_after": 5.0,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 1627
+   },
+   "front_accent_pct": 5.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "23,33,35,41",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 725
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 1,
+    "creature_px": 797
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    21
+   ]
+  }
+ },
+ "broadcast": {
+  "name": "BROADCAST",
+  "national": 18,
+  "slot": "pidgeot",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big dove with wide spread wings, sending to all (TO ALL)",
+  "note": "t2i 4801: a round chibi dove calling out, one wing flung wide (the other folded); i2i 0.8 spreads both but loses the charm. Icon 4842 both wings spread.",
+  "failed": "",
+  "front": "broadcast_front_4801.png",
+  "back": "broadcast_back_i2i_4831.png",
+  "icon": "broadcast_icon_4842.png",
+  "measured": {
+   "front_streaks": {
+    "box": "14,34,42,53",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.6,
+    "accent_clean_after": 5.6,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1763
+   },
+   "front_accent_pct": 5.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "31,30,43,38",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.2,
+    "accent_clean_after": 3.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 632
+   },
+   "back_accent_pct": 3.2,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 800
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    21
+   ]
+  }
+ },
+ "nibble": {
+  "name": "NIBBLE",
+  "national": 19,
+  "slot": "rattata",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a small plump rat, pink ear and nose, long thin tail (UNIT)",
+  "note": "t2i 4801: a big-eyed rat with its long tail curled up behind (pink pushed into the ramp). Icon 4841 a round mouse.",
+  "failed": "",
+  "front": "nibble_front_4801.png",
+  "back": "nibble_back_i2i_4831.png",
+  "icon": "nibble_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,35,38,56",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 28.8,
+    "accent_clean_after": 12.0,
+    "greyed_px": 351,
+    "streak_px": 18,
+    "creature_px": 2090
+   },
+   "front_accent_pct": 12.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "14,33,38,50",
+    "painted": "[5, 5, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1478
+   },
+   "back_accent_pct": 1.6,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 13.6,
+    "accent_clean_after": 13.6,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1257
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    23
+   ]
+  }
+ },
+ "overflow": {
+  "name": "OVERFLOW",
+  "national": 20,
+  "slot": "raticate",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big rat whose lumpy body bulges past itself, dark head, long tail (EXCEEDED)",
+  "note": "t2i 4802: a rat so round it fills the frame -- the overstuffed body as one bulge, not lumps; the dark head is gone. i2i 0.8/0.85 drew a plain rat.",
+  "failed": "",
+  "front": "overflow_front_4802.png",
+  "back": "overflow_back_i2i_4831.png",
+  "icon": "overflow_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "18,35,43,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.6,
+    "accent_clean_after": 14.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 3008
+   },
+   "front_accent_pct": 14.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "17,33,26,48",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.8,
+    "accent_clean_after": 4.8,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1241
+   },
+   "back_accent_pct": 4.8,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 14.4,
+    "accent_clean_after": 14.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1237
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    23,
+    24
+   ]
+  }
+ },
+ "ping": {
+  "name": "PING",
+  "national": 21,
+  "slot": "spearow",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a hummingbird with a very long needle beak (DEMAND)",
+  "note": "t2i 4801: a big-eyed hummingbird with the long needle beak -- both. Icon 4841 all beak.",
+  "failed": "",
+  "front": "ping_front_4801.png",
+  "back": "ping_back_i2i_4831.png",
+  "icon": "ping_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,33,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.8,
+    "accent_clean_after": 13.4,
+    "greyed_px": 59,
+    "streak_px": 20,
+    "creature_px": 1333
+   },
+   "front_accent_pct": 13.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,32,40,46",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 934
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 719
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    23,
+    24
+   ]
+  }
+ },
+ "flood": {
+  "name": "FLOOD",
+  "national": 22,
+  "slot": "fearow",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a diving bird with swept-back wings, long sharp beak and a crest (DENIAL)",
+  "note": "t2i 4801: a crested chibi bird with a sharp beak, wings swept back; it stands on a tuft of grass the clean may keep. Icon 4841 crest and beak.",
+  "failed": "",
+  "front": "flood_front_4801.png",
+  "back": "flood_back_i2i_4831.png",
+  "icon": "flood_icon_4841.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,32,40,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.6,
+    "accent_clean_after": 9.5,
+    "greyed_px": 125,
+    "streak_px": 21,
+    "creature_px": 1530
+   },
+   "front_accent_pct": 9.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,32,39,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 708
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 4.5,
+    "accent_clean_after": 4.5,
+    "greyed_px": 0,
+    "streak_px": 1,
+    "creature_px": 1344
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    20,
+    24
+   ]
+  }
+ },
+ "_battles": [
+  [
+   "canon",
+   "relay"
+  ],
+  [
+   "injector",
+   "roverseer"
+  ]
+ ]
+}

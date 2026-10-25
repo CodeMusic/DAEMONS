@@ -15,6 +15,9 @@ STAGE  gen      a front by image-to-image from today's front at 0.6 and 0.66, a 
                 two text-to-image chibi fronts (SEED+1, +2; the pilot's recipe, the ONE key prop from subjects.CHARM
                 named first), two fronts by image-to-image from today's at 0.8 and 0.85 (SEED+21, +22), two backs
                 from today's back at 0.66 and 0.75 (SEED+31, +32), two chibi icons (SEED+41, +42)
+       charmlo  for one whose key prop the charm stage lost: two fronts from today's at 0.72 and 0.76 (SEED+23, +24),
+                nearer today's than charm's 0.8, still well past batch 1's 0.6; and, where subjects.CHARM has front2,
+                two text-to-image fronts from that second wording (SEED+3, +4)
        charmback  two more backs, image-to-image from the CHOSEN new front (choose.json) at 0.75 and 0.85, rear-view
                 prompt (SEED+51, +52): the model turning the new chibi rather than repainting today's back
 
@@ -30,14 +33,16 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from subjects import S, CHARM
-R = "/Users/christopherhicks/Projects/DAEMONS"; T = R + "/gfx/drafts/t452"
+R = "/Users/christopherhicks/Projects/DAEMONS"
+#  T452_ROOT: work outside the tree (a release once needed it clean for half an hour); copy the files in afterwards
+T = os.environ.get("T452_ROOT", R + "/gfx/drafts/t452")
 PY = os.path.expanduser("~/.pyenv/versions/3.12.2/bin/python3")
 SP = "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/"
 os.chdir(R)
 opt = {a.split("=", 1)[0][2:]: a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--") and "=" in a}
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 stage, names = args[0], args[1:]
-DIRN = opt.get("dir", "c"); D = f"{T}/{DIRN}"; REL = f"gfx/drafts/t452/{DIRN}"
+DIRN = opt.get("dir", "c"); D = f"{T}/{DIRN}"; REL = f"gfx/drafts/t452/{DIRN}" if "T452_ROOT" not in os.environ else D
 SEED = int(opt.get("seed", 4700)); PREFIX = opt.get("prefix", "t452" + DIRN); LABEL = opt.get("label", DIRN.upper())
 os.makedirs(D + "/src", exist_ok=True)
 SPEC = json.load(open(R + "/companion/server/data/species.json"))
@@ -126,6 +131,17 @@ def charm(n):
              "--prompt", HEAD + c["key"] + ", " + c["icon"] + ", " + GIC,
              "--negative", "sprite sheet, grid of icons, tiled pattern, repeated, many copies, four creatures, human, girl, "
              "boy, person, frame, border, " + s["neg"] + ", " + N])
+
+def charmlo(n):
+    s, c = S[n], CHARM[n]; fneg = "rear view, " + s["neg"] + ", " + N
+    fp = HEAD + c["key"] + ", " + c["front"] + ", " + GC
+    for k, dn in enumerate((0.72, 0.76)):
+        run(["i2i", "--seed", str(SEED + 23 + k), "--denoise", str(dn), "--image", src512(n, "front"),
+             "--out", f"{REL}/{n}_front_i2i_{SEED + 23 + k}", "--prompt", fp, "--negative", fneg])
+    if "front2" in c:
+        for k in range(2):
+            run(["t2i", "--size", "512x512", "--seed", str(SEED + 3 + k), "--out", f"{REL}/{n}_front_{SEED + 3 + k}",
+                 "--prompt", HEAD + c["front2"] + ", " + GC, "--negative", fneg + ", " + c.get("neg2", "")])
 
 def charmback(n):
     """the chosen new front, turned: image-to-image from it with the rear-view prompt, at 0.75 and 0.85"""
@@ -271,13 +287,13 @@ def reduce(n):
     return rec
 
 def sheets(P):
-    items = [(n, p) for n, p in P.items() if not n.startswith("_")]
+    items = sorted(((n, p) for n, p in P.items() if not n.startswith("_")), key=lambda t: t[1]["national"])
     #  overview: today 1x 2x | (--prev=DIR: that batch's 1x 2x |) new 1x 2x; four to a row, three with --prev
     PREV = opt.get("prev"); PD = f"{T}/{PREV}" if PREV else None
     pair = 64 + 8 + 128 + 24; ncol = 3 if PREV else 2; cw = ncol * pair + 16; per = 3 if PREV else 4
     rows = (len(items) + per - 1) // per
     s = Image.new("RGB", (24 + per * cw, 60 + rows * 200), PAPER); d = ImageDraw.Draw(s)
-    d.text((24, 12), f"T-452 roll-out batch {LABEL}, DRAFT: today | " + (f"batch {PREV.upper()} | " if PREV else "") +
+    d.text((24, 12), f"T-452 roll-out batch {LABEL}, DRAFT: today | " + (opt.get("prevlabel", f"batch {PREV.upper()}") + " | " if PREV else "") +
            "new, each 1x and 2x on the battle ground, coloured by type; accent % of the new front's pixels (cap 15)",
            fill=INKC, font=F)
     for i, (n, p) in enumerate(items):
@@ -335,7 +351,9 @@ def sheets(P):
     if not fails: d.text((24, 60), "nothing failed", fill=INKC, font=F)
     for i, (n, p) in enumerate(fails):
         y = 50 + i * 220
-        d.text((24, y), p["name"] + ": " + p["failed"], fill=RED, font=FS)
+        import textwrap
+        d.text((24, y - 6), "\n".join(textwrap.wrap(p["name"] + ": " + p["failed"], 150)), fill=RED, font=FS)
+        y += 10
         s.paste(on(today(n), GAMEBG, 2), (24, y + 24)); s.paste(on(today(n, "back"), GAMEBG, 2), (160, y + 24))
         s.paste(Image.open(f"{D}/{p['front']}").convert("RGB").resize((160, 160)), (310, y + 24))
         s.paste(Image.open(f"{D}/{p['back']}").convert("RGB").resize((160, 160)), (480, y + 24))
@@ -350,6 +368,8 @@ if stage == "t2i":
     for n in names: t2i(n)
 if stage == "charm":
     for n in names: charm(n)
+if stage == "charmlo":
+    for n in names: charmlo(n)
 if stage == "charmback":
     for n in names: charmback(n)
 if stage == "lo":

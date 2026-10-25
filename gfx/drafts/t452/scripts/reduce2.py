@@ -28,7 +28,7 @@ import gbs
 R = "/Users/christopherhicks/Projects/DAEMONS"; PY = os.path.expanduser("~/.pyenv/versions/3.12.2/bin/python3")
 opt = {a.split("=", 1)[0][2:]: a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--") and "=" in a}
 #  --dir=c: batch.py's roll-out batches (round two's own drafts stay in b/, the default)
-B = os.path.join(R, "gfx/drafts/t452", opt.get("dir", "b"))
+B = os.path.join(os.environ.get("T452_ROOT", os.path.join(R, "gfx/drafts/t452")), opt.get("dir", "b"))
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 name, typ, front = args[:3]
 CAP = float(opt.get("cap", 0.15))
