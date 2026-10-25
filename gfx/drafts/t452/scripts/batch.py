@@ -11,6 +11,12 @@ STAGE  gen      a front by image-to-image from today's front at 0.6 and 0.66, a 
        reduce   reduce2.py on the chosen drafts (DIR/choose.json overrides the defaults), into DIR/picks.json
        sheets   the overview (today | new, 1x and 2x, accent %), the icons, two battle mocks, the failures
        all      gen, reduce, sheets
+       charm    batch 1 redone for charm (the user, 2026-10-25: "more charm, accept drift"; --dir=d --seed=4800):
+                two text-to-image chibi fronts (SEED+1, +2; the pilot's recipe, the ONE key prop from subjects.CHARM
+                named first), two fronts by image-to-image from today's at 0.8 and 0.85 (SEED+21, +22), two backs
+                from today's back at 0.66 and 0.75 (SEED+31, +32), two chibi icons (SEED+41, +42)
+       charmback  two more backs, image-to-image from the CHOSEN new front (choose.json) at 0.75 and 0.85, rear-view
+                prompt (SEED+51, +52): the model turning the new chibi rather than repainting today's back
 
 --next=N takes the first N daemons in INDEX order that no earlier round or batch has drawn (b/picks2.json and every
 */picks.json beside DIR), skipping the HANDSHAKE line (261-263, drawn by T-450). Writes only under
@@ -23,7 +29,7 @@ import json, os, subprocess, sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-from subjects import S
+from subjects import S, CHARM
 R = "/Users/christopherhicks/Projects/DAEMONS"; T = R + "/gfx/drafts/t452"
 PY = os.path.expanduser("~/.pyenv/versions/3.12.2/bin/python3")
 SP = "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/"
@@ -94,6 +100,43 @@ def gen(n):
     for k in range(2):
         run(["t2i", "--size", "512x512", "--seed", str(SEED + 41 + k), "--out", f"{REL}/{n}_icon_{SEED + 41 + k}",
              "--prompt", HEAD + s["icon"] + ", " + GI, "--negative", "full body, legs, feet, " + s["neg"] + ", " + N])
+
+#  the charm recipe: the pilot's (round one, *_4521) and T-450's -- the key prop first, then a chibi subject
+GC = "facing left three-quarter view, " + G
+GIC = ("chibi, big round head, large expressive eyes, the whole creature filling the frame, very simple, large shapes, "
+       "few details, thick black outline, soft shading, mostly greyscale, medium grey with light grey highlights, "
+       "isolated on white, centered, no text, no frame, no border")
+GBC = "rear view, seen from behind, facing away from the viewer, " + GB
+
+def charm(n):
+    s, c = S[n], CHARM[n]
+    fp = HEAD + c["key"] + ", " + c["front"] + ", " + GC; fneg = "rear view, " + s["neg"] + ", " + N
+    for k in range(2):
+        run(["t2i", "--size", "512x512", "--seed", str(SEED + 1 + k), "--out", f"{REL}/{n}_front_{SEED + 1 + k}",
+             "--prompt", fp, "--negative", fneg])
+    for k, dn in enumerate((0.8, 0.85)):
+        run(["i2i", "--seed", str(SEED + 21 + k), "--denoise", str(dn), "--image", src512(n, "front"),
+             "--out", f"{REL}/{n}_front_i2i_{SEED + 21 + k}", "--prompt", fp, "--negative", fneg])
+    bp = HEAD + c["key"] + ", " + s["back"] + ", " + GBC; bneg = "girl, long hair, hair, " + s["neg"] + ", " + NB
+    for k, dn in enumerate((0.66, 0.75)):
+        run(["i2i", "--seed", str(SEED + 31 + k), "--denoise", str(dn), "--image", src512(n, "back"),
+             "--out", f"{REL}/{n}_back_i2i_{SEED + 31 + k}", "--prompt", bp, "--negative", bneg])
+    for k in range(2):
+        run(["t2i", "--size", "512x512", "--seed", str(SEED + 41 + k), "--out", f"{REL}/{n}_icon_{SEED + 41 + k}",
+             "--prompt", HEAD + c["key"] + ", " + c["icon"] + ", " + GIC,
+             "--negative", "sprite sheet, grid of icons, tiled pattern, repeated, many copies, four creatures, human, girl, "
+             "boy, person, frame, border, " + s["neg"] + ", " + N])
+
+def charmback(n):
+    """the chosen new front, turned: image-to-image from it with the rear-view prompt, at 0.75 and 0.85"""
+    s, c = S[n], CHARM[n]
+    fr = choose().get(n, {}).get("front")
+    if not fr: print(n, "charmback: no front chosen in choose.json"); return
+    a = Image.open(f"{D}/{fr}").convert("RGB"); src = f"{D}/src/{n}_newfront_512.png"; a.save(src)
+    bp = HEAD + c["key"] + ", " + s["back"] + ", " + GBC; bneg = "girl, long hair, hair, " + s["neg"] + ", " + NB
+    for k, dn in enumerate((0.75, 0.85)):
+        run(["i2i", "--seed", str(SEED + 51 + k), "--denoise", str(dn), "--image", src,
+             "--out", f"{REL}/{n}_back_fromfront_{SEED + 51 + k}", "--prompt", bp, "--negative", bneg])
 
 def lo(n):
     """nearer today's front, for one whose props 0.6 lost: 0.5 and 0.55"""
@@ -229,21 +272,24 @@ def reduce(n):
 
 def sheets(P):
     items = [(n, p) for n, p in P.items() if not n.startswith("_")]
-    #  overview: four to a row; today 1x 2x | new 1x 2x
-    cw = 64 + 8 + 128 + 24 + 64 + 8 + 128 + 40; per = 4; rows = (len(items) + per - 1) // per
+    #  overview: today 1x 2x | (--prev=DIR: that batch's 1x 2x |) new 1x 2x; four to a row, three with --prev
+    PREV = opt.get("prev"); PD = f"{T}/{PREV}" if PREV else None
+    pair = 64 + 8 + 128 + 24; ncol = 3 if PREV else 2; cw = ncol * pair + 16; per = 3 if PREV else 4
+    rows = (len(items) + per - 1) // per
     s = Image.new("RGB", (24 + per * cw, 60 + rows * 200), PAPER); d = ImageDraw.Draw(s)
-    d.text((24, 12), f"T-452 roll-out batch {LABEL}, DRAFT: today (left) | new (right), 1x and 2x on the battle "
-           "ground, coloured by type; accent % of the new front's pixels (cap 15)", fill=INKC, font=F)
+    d.text((24, 12), f"T-452 roll-out batch {LABEL}, DRAFT: today | " + (f"batch {PREV.upper()} | " if PREV else "") +
+           "new, each 1x and 2x on the battle ground, coloured by type; accent % of the new front's pixels (cap 15)",
+           fill=INKC, font=F)
     for i, (n, p) in enumerate(items):
         x = 24 + (i % per) * cw; y = 50 + (i // per) * 200
         m = p["measured"]
         d.text((x, y), "%d %s  %s/%s" % (p["national"], p["name"], p["gametype"], p["type"]), fill=INKC, font=FS)
         d.text((x, y + 16), "accents %.1f%% (back %.1f%%)%s" % (m["front_accent_pct"], m["back_accent_pct"],
                "  FAILED: see list" if p["failed"] else ""), fill=RED if p["failed"] else INKC, font=FS)
-        t = today(n); nw = sprite(f"{D}/reduced/{n}_front.png")
-        s.paste(on(t, GAMEBG, 1), (x, y + 40)); s.paste(on(t, GAMEBG, 2), (x + 72, y + 40))
-        xx = x + 64 + 8 + 128 + 24
-        s.paste(on(nw, GAMEBG, 1), (xx, y + 40)); s.paste(on(nw, GAMEBG, 2), (xx + 72, y + 40))
+        cols = [today(n)] + ([sprite(f"{PD}/reduced/{n}_front.png")] if PREV else []) + [sprite(f"{D}/reduced/{n}_front.png")]
+        for j, im in enumerate(cols):
+            xx = x + j * pair
+            s.paste(on(im, GAMEBG, 1), (xx, y + 40)); s.paste(on(im, GAMEBG, 2), (xx + 72, y + 40))
     s.save(SP + f"{PREFIX}_overview.png")
     #  backs, the same way (not asked for by name; the backs are half the work)
     s = Image.new("RGB", (24 + per * cw, 60 + rows * 200), PAPER); d = ImageDraw.Draw(s)
@@ -302,6 +348,10 @@ if stage in ("gen", "all"):
     for n in names: gen(n)
 if stage == "t2i":
     for n in names: t2i(n)
+if stage == "charm":
+    for n in names: charm(n)
+if stage == "charmback":
+    for n in names: charmback(n)
 if stage == "lo":
     for n in names: lo(n)
 if stage == "icon2":
