@@ -16,14 +16,14 @@
  "row": 7,
  "colours": {
   "PAPER": "eeecf2",
-  "PAPERS": "c6c2d0",
+  "PAPERS": "ccc8d6",
   "INK": "282434",
   "OUT": "16141e",
-  "NICHE": "464054",
-  "SHELF": "a4a0b0",
-  "SHELFD": "706a7c",
+  "NICHE": "3e384e",
+  "MID": "8c869a",
   "GLOW": "fcce78",
-  "GLOWD": "b27c46"
+  "GLOWD": "b27c46",
+  "PAPERL": "fcfcff"
  },
  "cells": [
   {

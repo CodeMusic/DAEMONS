@@ -60,18 +60,30 @@ WHERE IT GOES, measured rather than assumed (the census in the report proves eac
   NEIGHBOURS. ROUTE 21 South joins at the top edge and ROUTE 20 at the right; both draw with this same secondary
   tileset, so a new block draws the same from either side (engine.md trap 14).
 
-THE SECOND PAIR (drafted 2026-10-24, NOT approved; GROUPS below, one per tileset):
+THE SECOND PAIR (drafted 2026-10-24, NOT approved; GROUPS below, one per tileset). The first draft was flat slabs;
+the user (2026-10-24): redraw both with 3/4 overworld depth. Both are now chamfered boxes seen from the south and
+above (box_mask, lean): the front square on, the left chamfer lit and the right shaded, every roof a deck seen from
+above with a stepped outline, and the silhouette INSET so the ground shows at the sides, as vanilla's did.
 
-  CORPUS's tower (BRAZEN, SaffronCity 9x15 at (29,16), and its copy on SaffronCity_Connection at (19,9)). Solid brass
-  sheet and rivets in BRAZEN's own brass, one grid of identical lit windows (one 8x16 module), a stepped crown of
-  three tiers with one thin red band, and a glass lobby through which the dark plate in the floor is seen -- with no
-  words on it, ever. The door (33,30) is KEPT whole (SILPH's sliding glass door, its frames unchanged). Its row 9 is
-  drawn by the tower alone, so the tower takes all of it. BRAZEN has no free tile: the tower owns 53, and draws 49.
+  CORPUS's tower (BRAZEN, SaffronCity 9x15 at (29,16), and its copy on SaffronCity_Connection at (19,9)). Riveted
+  brass a step deeper than BRAZEN's houses, outlined near-black; one grid of identical windows, small and amber, carried
+  round onto both chamfers; a stepped crown (the shaft's deck and two tiers, each casting its shadow) with one thin
+  red band round the top tier; a full-width glass lobby through which the dark plate in the floor is seen -- with no
+  words on it, ever. Its cells had no bottom layer (vanilla drew the paving into the tower's own tiles), so they take
+  BRAZEN's paving block as their bottom layer and the inset costs no tile. THE DOOR (33,30) is redrawn IN PLACE,
+  block 0x2BC kept by id, its pixels in row 9 on the bottom layer, so the plate continues through its glass; its
+  frames are gbadoors.py's: the build adds CORPUS_DOOR as DOORS["silph_co"]["redrawn"], whose --write then redraws
+  graphics/door_anims/silph_co.png and sets sDoorAnimPalettes_SilphCo 3 -> 9 (corpus_door_preview() shows them).
+  Row 9 is drawn by the tower alone, so the tower takes all of it. BRAZEN has no free tile: the tower owns 55 (its
+  53 and the old door's two) and draws 55.
 
-  DAEMON TOWER (HALFTONE, LavenderTown 7x7 at (15,0) + ROUTE 10's rows 72..79, its top). Black halftone dots on white
-  on a 45 degree screen, a speck at the top and merging at the foot; seven bands of identical niches, a light in each
-  (a columbarium or a rack); a flat roof and a mast with one light. The doorway (18,6) is drawn as the MANSION's. Row 7
-  (unused) indices 1..9; 10..15 and the free slots past -num_tiles are left for the KEEPALIVE PLANT.
+  DAEMON TOWER (HALFTONE, LavenderTown 7x7 at (15,0) + ROUTE 10's rows 72..79, its top). A chamfered drum in black
+  halftone dots on white, the DOT SIZE the shading: specks on the lit chamfer, heavy dots on the shaded one, sparse at
+  the top and dense at the foot. Vanilla's dome kept as a silhouette on a rounder octagonal deck, drawn in the dot
+  screen, a mast with one light over it. Seven bands of arched niches cut straight into the dots, no shelves, a small
+  amber light in each. The doorway (18,6) is drawn as the MANSION's. Its cells keep their own bottom layer (the cliff
+  and grass), which shows through the inset. Row 7 (unused) indices 1..9; 10..15 and the free slots past -num_tiles
+  are left for the KEEPALIVE PLANT.
 
   Both pair-2 groups REUSE blocks: identical cells share a block, written first over the blocks only the landmark drew
   (never one metatile_labels.h names), so a big footprint does not eat the tileset's 384.
@@ -484,278 +496,408 @@ def draw_mansion():
     return k
 
 
+# ============================================================================================ 3/4 depth (pair 2, redrawn)
+#  The user (2026-10-24) on the first pair-2 drafts: flat slabs. Both towers are now drawn as vanilla's buildings
+#  are: a plan with CHAMFERED corners, seen from the south and above, so the front face is square on, the two chamfer
+#  faces either side of it lean back (their edges rise 1px in 2), the left one lit and the right one shaded, and each
+#  roof is a plane seen from above with its own stepped outline. The silhouette is INSET: the ground (BRAZEN's
+#  paving, HALFTONE's cliff) shows at the sides as it did round vanilla's. Every horizontal on a face is drawn once,
+#  as if on the front, and FACE_SIDE turns it to the lit or shaded side's colour where it lands on a chamfer.
+CHAMFER = 8                       # one tile column: a chamfer face is one tile wide, so it costs one tile a row
+
+
+def lean(x, xa, xb, c=CHAMFER):
+    """how far a chamfer face's edges rise at x (0 across the front face): 1px in 2, from the corner outwards"""
+    if x < xa + c:
+        return (xa + c - x) // 2
+    if x > xb - c:
+        return (x - (xb - c)) // 2
+    return 0
+
+
+def side_of(x, xa, xb, c=CHAMFER):
+    return "lit" if x < xa + c else "shade" if x > xb - c else "front"
+
+
+def box_mask(xa, xb, back, top, bot, c=CHAMFER, cb=None):
+    """an octagonal box seen from the south and above: {(x, y): "deck" | "face"} -- the deck from its back edge (its
+    back corners stepped in as the front's are, or by `cb` for a rounder plan) down to the face's top edge, the face
+    down to its foot"""
+    m = {}
+    for x in range(xa, xb + 1):
+        L = lean(x, xa, xb, c)
+        for y in range(back + lean(x, xa, xb, cb or c), top - L):
+            m[(x, y)] = "deck"
+        for y in range(top - L, bot - L + 1):
+            m[(x, y)] = "face"
+    return m
+
+
+def outline(k, m, role="OUT"):
+    for (x, y) in m:
+        if any((x + dx, y + dy) not in m for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+            k.px(x, y, role)
+
+
 # ============================================================================================ CORPUS's tower
 #  9x15 cells: 144x240. Canvas rows 0..15 are the walkable row behind the crown (SaffronCity y 16); 16..239 the tower.
-#  THE BUDGET IS THE DESIGN: BRAZEN's tileset is full -- the tower owns 55 tiles and there is not one free slot -- so
-#  the whole tower is a handful of modules on the 8px grid, symmetric about its middle seam (x 72), so the right half
-#  is the left half's tiles flipped: one window module (8x16) repeated 16 across and 7 floors up, one pier, one deck
-#  panel, one face per tier. The door cell (33,30) is KEPT, block and tiles: METATILE_SaffronCity_SilphCoDoor, the
-#  glass sliding door, whose frames (silph_co, primary row 3) need no redraw; the lobby's glass is drawn in its colours.
+#  THE BUDGET IS THE DESIGN: BRAZEN's tileset is full -- the tower owns 53 tiles and there is not one free slot -- so
+#  everything that repeats is on the 8px grid: one window module (8x16) fourteen across and seven floors up, the same
+#  module carried round onto the chamfers (lit on the left, shaded on the right), one deck sheet, one cornice.
+#  Under the inset (the paving at its sides) the cells had no bottom layer -- vanilla drew its paving into the
+#  building's own tiles -- so the tower's cells take BRAZEN's paving block (0x2E9) as their bottom layer: no new tile.
+#  THE DOOR (33,30) is redrawn IN PLACE, block 0x2BC (METATILE_SaffronCity_SilphCoDoor) kept by id, so field_door.c
+#  still finds its frames: its glass now shows the lobby, and the dark plate continues through it. Its pixels move
+#  from the bottom layer of primary row 3 into row 9 (bottom layer still, top empty, as vanilla's), so its frames
+#  must follow: gbadoors.py's DOORS["silph_co"] needs a "redrawn" spec (CORPUS_DOOR below) and --write then redraws
+#  graphics/door_anims/silph_co.png from the new door and sets sDoorAnimPalettes_SilphCo 3 -> 9.
 CORPUS_ROW = 9
-CORPUS_COLOURS = [  # row 9 is drawn by the tower and by nothing else on either layout, so the tower takes all of it
-    ("BRASSL", (247, 231, 156)),   # brass, lit -- BRAZEN's own brass (row 11's roofs, batch F), so it is one metal
-    ("BRASS",  (231, 198, 90)),    # brass
-    ("BRASSM", (198, 156, 57)),    # brass in shade, the sheets' seams
-    ("BRASSD", (156, 115, 41)),    # brass, deep; a rivet's shadow
-    ("BRONZE", (107, 74, 24)),     # the base metal under it, the plinth
-    ("OUT",    (58, 40, 26)),      # outline
-    ("LIGHTL", (255, 248, 214)),   # a lit window -- every one, all night
-    ("LIGHT",  (236, 218, 160)),   # its lower pane; the lit lobby's back wall
+CORPUS_COLOURS = [  # row 9 is drawn by the tower and by nothing else on either layout, so the tower takes all of it.
+    #  The brass is a step deeper than BRAZEN's house brass (row 11) and the whole tower has a near-black outline, so
+    #  at 1x it is the darkest, heaviest thing in the city and never one of its yellow houses.
+    ("BRASSL", (236, 206, 124)),   # the decks, seen from above: brass catching the sky
+    ("BRASS",  (204, 160, 72)),    # the lit chamfer; a floor's lip
+    ("BRASSM", (162, 118, 46)),    # the front face
+    ("BRASSD", (116, 80, 34)),     # the shaded chamfer; seams, reveals
+    ("BRONZE", (78, 52, 28)),      # the base metal: the plinth, the shaded side's seams
+    ("OUT",    (40, 26, 20)),      # the outline
+    ("LIGHTL", (255, 226, 150)),   # a lit window -- every one, all night: amber, small, square
+    ("LIGHT",  (226, 164, 78)),    # its lower pane; the shaded side's windows; the lobby's back wall
     ("RED",    (198, 34, 44)),     # the one thin band (4.4: his red, never named)
-    ("GLASSL", (156, 213, 255)),   # the lobby's glass: primary row 3's, the door's own glass, so they are one pane
+    ("GLASSL", (156, 213, 255)),   # the lobby's glass and the door's
     ("GLASS",  (115, 189, 246)),
     ("GLASSD", (74, 131, 197)),
-    ("PLATE",  (34, 30, 38)),      # the plate cast into the floor. No words: nothing is drawn on it
-    ("FLOOR",  (226, 220, 200)),   # the lobby floor
-    ("FLOORD", (176, 168, 150)),   # its seams
+    ("PLATE",  (24, 20, 30)),      # the plate cast into the floor -- the darkest colour, so it is the room behind the
+                                   #   door when it opens (gbadoors' room). No words: nothing is drawn on it
+    ("FLOOR",  (214, 206, 184)),   # the lobby floor
+    ("FLOORD", (160, 150, 130)),   # its seams
 ]
+CORPUS_LIT = {"BRASSM": "BRASS", "BRASS": "BRASSL", "BRASSD": "BRASSM", "BRONZE": "BRASSD"}
+CORPUS_SHADE = {"BRASSL": "BRASS", "BRASS": "BRASSM", "BRASSM": "BRASSD", "BRASSD": "BRONZE", "BRONZE": "OUT",
+                "LIGHTL": "LIGHT", "LIGHT": "BRASSM"}
+#  gbadoors.py's spec for the redrawn door (the build adds it to DOORS["silph_co"] as "redrawn"): the two glass leaves
+#  part from the middle (x 1..14 of the cell, the threshold below them kept)
+CORPUS_DOOR = dict(block=0x2BC, row=CORPUS_ROW, kind="slide2", leaf=(1, 0, 14, 14))
 CORPUS = dict(name="corpus_tower", title="CORPUS's tower", map="SaffronCity", x0=29, y0=16, w=9, h=15,
-              door=(33, 30), keep=[(33, 30)], inplace=[], signs=[], row=CORPUS_ROW, colours=CORPUS_COLOURS,
+              door=(33, 30), keep=[], inplace=[(33, 30)], inplace_layer="bottom", signs=[], row=CORPUS_ROW,
+              colours=CORPUS_COLOURS,
+              #  the paving under the inset: BRAZEN's own (0x2E9 round the tower; the plaza's 0x2EC on the street row)
+              ground=lambda x, y: 0x2EC if y >= 30 else 0x2E9,
               #  SaffronCity_Connection is the city again, offset (10, 7), drawn when the player stands on a crossing
               #  route: its tower cells are pointed at the same new blocks, so the two can never disagree
               mirrors=[("SaffronCity_Connection_Layout", 10, 7)],
               crop=[("SaffronCity_Layout", 27, 15, 13, 17)],
-              caption=["Solid brass, sheet and rivets, no glass pretending to be anything: BRAZEN's own brass (row 11's), "
-                       "the purest in the city.",
-                       "One grid of identical windows -- sixteen across, seven floors -- and every one lit: running "
-                       "unattended.",
+              caption=["Riveted brass in 3/4: a chamfered tower, the front square on, the left chamfer lit and the "
+                       "right in shade, each roof a deck seen from above; BRAZEN's paving shows at its sides.",
+                       "One grid of identical windows, small and amber, every one lit (running unattended), carried "
+                       "round onto both chamfers. A deeper brass and a dark outline: never one of the yellow houses.",
                        "A stepped crown, three tiers, and one thin red band round the top one: the tower's only red.",
-                       "At street level a glass lobby, and through it, from the street, the dark plate cast into the "
-                       "floor. Nothing is written on it."],
-              door_note=["THE DOOR (33,30): KEPT, block 0x2BC and its tiles --",
-                         "SILPH's glass sliding door; its frames (silph_co,",
-                         "primary row 3) are unchanged, so nothing to redraw.",
-                         "The lobby's glass is drawn in the door's own blues."])
-#  the crown's three tiers, widest first: (x0, x1, the deck's back edge, the face's top, the face's height). Every edge
-#  is on the 8px grid, so a tier costs its corners and nothing else.
-CORPUS_TIERS = ((0, 143, 16, 80, 16), (24, 119, 8, 56, 8), (48, 95, 0, 32, 8))
+                       "At street level a glass lobby, and through it -- and now through the door's glass too -- "
+                       "the dark plate cast into the floor. Nothing is written on it."],
+              door_note=["THE DOOR (33,30): REDRAWN in place, block 0x2BC kept",
+                         "by id; its glass shows the lobby, the plate",
+                         "running on through it. Row 3 -> 9, so the build",
+                         "also needs gbadoors' silph_co frames redrawn",
+                         "(\"redrawn\" spec) and sDoorAnimPalettes_SilphCo",
+                         "{3 x8} -> {9 x8}. Frames below, as it will open."])
+#  the boxes, widest first: (xa, xb, the deck's back edge, the face's top, the face's foot)
+CORPUS_SHAFT = (8, 135, 40, 80, 239)
+CORPUS_TIERS = ((32, 111, 24, 56, 71), (48, 95, 8, 32, 47))
+CORPUS_F0, CORPUS_F1 = 96, 207            # the seven floors of windows
+CORPUS_LOBBY = (16, 127, 214)             # the glass lobby: x0, x1, the glass's top
+
+
+def corpus_face(k, xa, xb, y0, y1, fn):
+    """paint a face as if square on: fn(x, yf) gives the role at front-row yf; on a chamfer it lands lean(x) higher
+    and in the lit or shaded side's colour"""
+    for x in range(xa + 1, xb):
+        L, side = lean(x, xa, xb), side_of(x, xa, xb)
+        for yf in range(y0, y1 + 1):
+            role = fn(x, yf)
+            if role is None:
+                continue
+            if side == "lit":
+                role = CORPUS_LIT.get(role, role)
+            elif side == "shade":
+                role = CORPUS_SHADE.get(role, role)
+            k.px(x, yf - L, role)
+
+
+def corpus_box(k, box, face_fn):
+    xa, xb, back, top, bot = box
+    m = box_mask(xa, xb, back, top, bot)
+    for (x, y), part in m.items():
+        if part == "deck":                                   # the deck: brass sheet from above, its back lip lit
+            k.px(x, y, "BRASSL")
+    corpus_face(k, xa, xb, top, bot, face_fn)
+    for x in range(xa + 1, xb):                              # the eave: a dark crease where the deck meets the face
+        k.px(x, top - lean(x, xa, xb), "OUT")
+    #  the corners, each in its chamfer's own tile column: the lit one catching the light, the shaded one dark
+    k.vline(xa + CHAMFER - 1, top + 1, bot, "BRASSL")
+    k.vline(xb - CHAMFER + 1, top + 1, bot, "BRONZE")
+    outline(k, m)
+    return m
+
+
+def corpus_shadow(k, box, dx=4, dy=3):
+    """an upper tier's shadow, cast down and to the right onto the deck below it"""
+    xa, xb, back, top, bot = box
+    m = box_mask(xa, xb, back, top, bot)
+    for (x, y) in m:
+        sx, sy = x + dx, y + dy
+        if (sx, sy) not in m and k.is_(sx, sy, "BRASSL"):
+            k.px(sx, sy, "BRASS")
+        elif (sx, sy) not in m and k.is_(sx, sy, "BRASS"):
+            k.px(sx, sy, "BRASSM")
 
 
 def draw_corpus():
     W, H = 144, 240
     k = Canvas(W, H, role_map(CORPUS_COLOURS))
-    R = k.rect
 
-    def rivet(x, y):                                          # a rivet: a 2px head lit on top, its shadow under it
-        k.hline(x, x + 1, y, "BRASSL")
-        k.hline(x, x + 1, y + 1, "BRASSD")
-
-    # --- THE CROWN: three tiers stepped back, each a deck of riveted sheet seen from above and a face, widest first
-    for x0, x1, top, face, fh in CORPUS_TIERS:
-        R(x0, top, x1, face - 1, "OUT")
-        for y in range(top + 1, face):                        # the sheets: 16px panels, seamed and riveted
-            for x in range(x0 + 1, x1):
-                py, px_ = y % 16, x % 16
-                role = "BRASS"
-                if py == 15:
-                    role = "BRASSM"                           # a seam across
-                elif px_ in (7, 8):
-                    role = "BRASSM" if py else "BRASSL"       # a seam down (two sheets' edges, about the middle)
-                elif py == 0:
-                    role = "BRASSL"                           # each sheet's lit back edge
-                elif py == 12 and x % 8 in (3, 4):
-                    role = "BRASSL"                           # a row of rivets along each sheet's front
-                elif py == 13 and x % 8 in (3, 4):
-                    role = "BRASSD"
-                k.px(x, y, role)
-        k.hline(x0 + 1, x1 - 1, top + 1, "BRASSL")            # the deck's lit back edge
-        # the face: a band of sheet, lit on its lip, riveted, shadowed at its foot
-        f0, f1 = face, face + fh - 1
-        R(x0, f0, x1, f1, "OUT")
-        R(x0 + 1, f0, x1 - 1, f1, "BRASSM")
-        k.hline(x0 + 1, x1 - 1, f0, "BRASSL")
-        k.hline(x0 + 1, x1 - 1, f0 + 1, "BRASS")
-        k.hline(x0 + 1, x1 - 1, f1, "BRASSD")
-        if fh >= 16:
-            for x in range(x0 + 3, x1 - 3, 8):
-                rivet(x, f0 + 5)
-                rivet(x, f0 + 10)
-        k.vline(x0, f0, f1, "OUT"); k.vline(x1, f0, f1, "OUT")
-    #  each upper tier's shadow on the deck in front of it
-    for x0, x1, top, face, fh in CORPUS_TIERS[1:]:
-        k.hline(x0, x1, face + fh, "BRASSD")
-        k.hline(x0 + 1, x1 - 1, face + fh + 1, "BRASSM")
-    #  THE ONE THIN RED BAND, round the top tier's face, and nowhere else in the city
-    x0, x1, top, face, fh = CORPUS_TIERS[2]
-    k.hline(x0 + 1, x1 - 1, face + 3, "RED")
-    k.hline(x0 + 1, x1 - 1, face + 4, "RED")
-
-    # --- THE FACE: one grid of identical windows, every one lit; brass between, riveted
-    F0, F1 = 96, 207
-    for y in range(F0, F1 + 1):
-        my = (y - F0) % 16
-        for x in range(8, 136):
-            mx = (x - 8) % 8
+    def shaft(x, yf):
+        if yf < CORPUS_F0:                                   # the cornice: a lit lip, riveted brass, a seam
+            r = yf - CORPUS_SHAFT[3]
+            if r == 1:
+                return "BRASS"
+            if r == 7 and x % 8 in (3, 4):
+                return "BRASS"
+            if r == 8 and x % 8 in (3, 4):
+                return "BRASSD"
+            return "BRASSD" if r >= 14 else "BRASSM"
+        if yf <= CORPUS_F1:                                  # the window module, 8x16, the same everywhere
+            my, mx = (yf - CORPUS_F0) % 16, (x - 16) % 8
+            if my == 0:
+                return "BRASS"
             if my == 15:
-                role = "BRASSD"                                       # the floor's seam
-            elif my == 0:
-                role = "BRASSL"
-            elif 2 <= my <= 11 and 1 <= mx <= 6:
-                if my == 2 or mx in (1, 6):
-                    role = "OUT"                                      # the window's reveal
-                elif my >= 9:
-                    role = "LIGHT"                                    # the lower pane, warmer
-                else:
-                    role = "LIGHTL"
-            elif my == 12 and 1 <= mx <= 6:
-                role = "BRASSL"                                       # the sill
-            elif my == 14 and mx in (3, 4):
-                role = "BRASSD"
-            elif my == 13 and mx in (3, 4):
-                role = "BRASSL"                                       # a rivet under each window
-            else:
-                role = "BRASS"
-            k.px(x, y, role)
-    for x0 in (0, 136):                                               # the corner piers, and the outline
-        R(x0, F0, x0 + 7, 239, "BRASS")
-    for y in range(F0, 240):
-        k.px(0, y, "OUT"); k.px(143, y, "OUT")
-        k.px(1, y, "BRASSL"); k.px(142, y, "BRASSD")
-        k.px(7, y, "BRASSM"); k.px(136, y, "BRASSM")
-    for y in range(F0 + 4, 232, 8):
-        rivet(3, y); rivet(139, y)
+                return "BRASSD"
+            if 2 <= my <= 8 and 1 <= mx <= 5:
+                if my == 2 or mx == 1:
+                    return "BRASSD"                          # the reveal, in shadow at its top and left
+                return "LIGHTL" if my <= 6 else "LIGHT"
+            if my == 9 and 1 <= mx <= 6:
+                return "BRASS"                               # the sill
+            if my == 12 and mx in (3, 4):
+                return "BRASS"                               # a rivet under each window
+            if my == 13 and mx in (3, 4):
+                return "BRASSD"
+            return "BRASSM"
+        r = yf - (CORPUS_F1 + 1)                             # the base: a fascia, riveted piers, a bronze plinth
+        if r == 0:
+            return "BRASS"
+        if r == 5:
+            return "BRASSD"
+        if yf >= 232:
+            return "BRASSD" if yf == 232 else "BRONZE"
+        if (yf - 214) % 8 == 3 and x % 8 in (3, 4):
+            return "BRASS"
+        if (yf - 214) % 8 == 4 and x % 8 in (3, 4):
+            return "BRASSD"
+        return "BRASSM"
 
-    # --- THE BASE: brass piers either side, and between them the glass lobby
-    B0 = 208
-    R(8, B0, 31, 239, "BRASS"); R(112, B0, 135, 239, "BRASS")
-    for y in range(B0, 240):
-        k.px(31, y, "BRASSD"); k.px(112, y, "BRASSD")
-    for y in range(B0 + 4, 232, 8):
-        for x in (11, 19, 27):
-            rivet(x, y); rivet(143 - x - 1, y)
-    k.hline(1, 142, B0, "BRASSD")                             # the last floor's seam, over the base
-    R(1, 232, 142, 239, "BRONZE")                             # the plinth: the base metal, unplated
-    k.hline(1, 142, 232, "BRASSD")
-    k.hline(0, 143, 239, "OUT")
-    #  the lobby: a brass fascia, then glass, and through the glass the lit hall and its floor
-    L0, L1 = 32, 111
-    R(L0 - 2, B0 + 1, L1 + 2, B0 + 5, "BRASSM")
-    k.hline(L0 - 2, L1 + 2, B0 + 1, "BRASSL")
-    k.hline(L0 - 2, L1 + 2, B0 + 5, "OUT")
-    for x in range(L0 + 2, L1 - 1, 8):
-        rivet(x, B0 + 2)
-    G0 = B0 + 6                                               # 214: the glass's top
-    R(L0, G0, L1, 239, "LIGHT")                               # the lit hall's back wall
-    k.hline(L0, L1, G0, "GLASSL"); k.hline(L0, L1, G0 + 1, "GLASS")   # the glass's lit head
+    corpus_box(k, CORPUS_SHAFT, shaft)
+    for i, t in enumerate(CORPUS_TIERS):
+        top = t[3]
+
+        def fn(x, yf, top=top, last=(i == len(CORPUS_TIERS) - 1), bot=t[4]):
+            r = yf - top
+            if r == 1:
+                return "BRASS"
+            if last and r in (4, 5):
+                return "RED"                                 # THE ONE THIN RED BAND, round the top tier only
+            if yf == bot - 1:
+                return "BRASSD"
+            if not last and r == 7 and x % 8 in (3, 4):
+                return "BRASS"
+            if not last and r == 8 and x % 8 in (3, 4):
+                return "BRASSD"
+            return "BRASSM"
+        corpus_shadow(k, t)
+        corpus_box(k, t, fn)
+
+    # --- THE LOBBY: the whole front at street level, set back under the fascia: glass, and through the glass the lit
+    #  hall and the plate in its floor. Mirrored about the door's seam (x 72), so its right half is its left half's
+    #  tiles flipped; its mullions stand in pairs on the cell seams, so every pane between them is one tile and its flip.
+    L0, L1, G0 = CORPUS_LOBBY
+    k.rect(L0, G0, L1, 238, "LIGHT")                          # the lit hall's back wall
+    k.hline(L0, L1, G0, "BRASSD")                            # the fascia's shadow on the glass's head
+    k.hline(L0, L1, G0 + 1, "GLASSL")
+    k.hline(L0, L1, G0 + 2, "GLASS")
     FL = 226                                                  # where the floor meets the back wall
-    R(L0, FL, L1, 238, "FLOOR")
+    k.rect(L0, FL, L1, 238, "FLOOR")
     k.hline(L0, L1, FL, "FLOORD")
-    k.hline(L0, L1, 238, "FLOORD")
-    #  THE PLATE: dark, cast into the floor, seen from the street through the glass. Nothing is written on it.
-    cx, cy, rx, ry = 72, 232, 32, 5
-    for y in range(FL + 1, 238):
-        for x in range(L0, L1 + 1):
-            d = ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2
-            if d <= 0.62:
-                k.px(x, y, "PLATE")
-            elif d <= 1:
-                k.px(x, y, "BRONZE")                          # its cast rim, worn
-            elif d <= 1.4:
-                k.px(x, y, "OUT")                             # the joint where it is set into the floor
-    #  the mullions, the frame, the threshold
-    for x in (L0, L1):
-        k.vline(x, G0, 239, "OUT")
-    for x in (47, 48, 95, 96):
-        k.vline(x, G0, 238, "GLASSD")
-    k.hline(L0, L1, 239, "OUT")
+    #  THE PLATE: a long dark slab cast into the floor, its rim worn, set in a joint -- seen from the street through the
+    #  glass, and now through the door's glass too. Nothing is written on it.
+    P0, P1, PY0, PY1 = 36, 107, 229, 236
+    k.rect(P0 - 1, PY0 - 1, P1 + 1, PY1 + 1, "OUT")
+    k.rect(P0, PY0, P1, PY1, "BRONZE")
+    k.rect(P0 + 1, PY0 + 1, P1 - 1, PY1, "PLATE")
+    for x in range(L0 + 15, L1, 16):
+        k.vline(x, G0 + 1, 238, "GLASSD")                     # the mullions, in pairs on the cell seams
+        k.vline(x + 1, G0 + 1, 238, "GLASSD")
+    k.vline(L0, G0, 238, "BRASSD")                           # the reveals: the glass is set back in the brass
+    k.vline(L1, G0, 238, "BRASSD")
+    #  the door: two glass leaves meeting at the cell's middle, framed, a glint on each, the plate seen on through them
+    k.hline(64, 79, 224, "GLASSD")
+    for x in (71, 72):
+        k.vline(x, 225, 238, "GLASSD")
+    for i in range(4):
+        k.px(66 + i, 231 - i, "GLASSL")
+        k.px(74 + i, 231 - i, "GLASSL")
+    k.hline(L0, L1, 239, "OUT")                               # the threshold
     return k
 
 
 # ============================================================================================ DAEMON TOWER
 #  7x15 cells: 112x240, ONE tower on two maps -- canvas cell rows 0..7 are ROUTE 10's rows 72..79 (its top: vanilla's
 #  dome, which ROUTE 10 draws and LAVENDER shows over the seam), 8..14 LAVENDER's rows 0..6. Rows 72-73 are walkable:
-#  the mast and the roof's back edge stand over the ground there, as the dome did. The door (18,6) is a plain doorway
+#  the mast and the dome's crown stand over the ground there, as vanilla's did. The door (18,6) is a plain doorway
 #  (MB 0x60, no animation): redrawn, its dark below and its frame above, as the MANSION's.
-#  HALFTONE greys the whole palette while the town is unperceived (DaemonsIsHalftone), so it must read in grey alone:
-#  two tones only, black dots on white, the dots growing down the tower. Its screen is one dot per 8px, on a 45 degree
-#  lattice (centres and corners), so each 8px row of the tower is ONE tile across and its mirror at the edges.
+#  HALFTONE greys the whole palette while the town is unperceived (DaemonsIsHalftone), so it must read in grey alone,
+#  and it does it the way a halftone does: the DOT SIZE is the shading. Sparse specks at the top, dense at the foot;
+#  smaller on the lit chamfer, bigger on the shaded one. The screen is a 45 degree lattice whose rows sit in the tile
+#  rows (centres in one row, on the seams in the next), so a row of dots is ONE tile across, and its chamfers one each.
+#  Its cells keep their own bottom layer -- ROUTE 10's and LAVENDER's cliff and grass -- so the inset shows the cliff.
 DTOWER_ROW = 7
 DTOWER_COLOURS = [  # indices 1..9 of row 7 (unused, all 0000ff); 10..15 are left for the KEEPALIVE PLANT (same tileset)
     ("PAPER",  (238, 236, 242)),   # the paper: the tower's white
-    ("PAPERS", (198, 194, 208)),   # paper in shade: the roof's parapet
+    ("PAPERS", (204, 200, 214)),   # paper turned from the light: the shaded chamfer, the deck
     ("INK",    (40, 36, 52)),      # the dots
     ("OUT",    (22, 20, 30)),      # outline; the doorway's dark
-    ("NICHE",  (70, 64, 84)),      # inside a niche
-    ("SHELF",  (164, 160, 176)),   # the band the niches are cut into
-    ("SHELFD", (112, 106, 124)),   # its shadow
+    ("NICHE",  (62, 56, 78)),      # inside a niche
+    ("MID",    (140, 134, 154)),   # the parapet's inner shadow, the dome's foot, a niche's arch
     ("GLOW",   (252, 206, 120)),   # the light in each niche: a candle, or a status lamp
     ("GLOWD",  (178, 124, 70)),    # its warmth on the niche's floor
+    ("PAPERL", (252, 252, 255)),   # paper in full light: the lit chamfer, the parapet's lip
 ]
 DTOWER = dict(name="daemon_tower", title="DAEMON TOWER", map="LavenderTown", x0=15, y0=0, w=7, h=7, door=(18, 6),
               keep=[], inplace=[], signs=[], row=DTOWER_ROW, colours=DTOWER_COLOURS, cy0=8,
               #  the tower's top is ROUTE 10's (rows 72..79), drawn into the same canvas above
               parts=[("Route10_Layout", 15, 72, 7, 8, 0, 0)],
-              lintel=lambda k, x, y: not (50 <= x <= 61 and y >= 225),
+              lintel=lambda k, x, y: not (50 <= x <= 61 and y >= 227),
               crop=[("Route10_Layout", 14, 70, 9, 10), ("LavenderTown_Layout", 14, 0, 9, 8)],
-              caption=["Built of halftone: black dots on white, a speck at the top and merging into black at the "
-                       "foot -- a grey gradient from the road, discrete marks up close.",
-                       "Seven bands of identical niches, a light in each: a columbarium, or a rack. The building does "
-                       "not settle it.",
-                       "A flat roof, and a mast with one light at its tip: a vigil, or an aircraft lamp.",
-                       "One tower on two maps: its top is ROUTE 10's rows 72..79 (vanilla's dome), redrawn with it.",
+              caption=["Halftone in 3/4: a chamfered drum, the lit chamfer in specks, the shaded one in heavy dots, "
+                       "the front between -- the dot size is the shading, so it reads in grey alone.",
+                       "Dense at the foot, sparse at the top; vanilla's dome kept as a silhouette and drawn in the dot "
+                       "screen, a mast with one light over it. The cliff shows at its sides.",
+                       "Seven bands of arched niches cut straight into the dots -- no shelves -- a small amber light "
+                       "in each: a columbarium as much as a rack.",
+                       "One tower on two maps: its top is ROUTE 10's rows 72..79, redrawn with it.",
                        "Grey while HALFTONE is unperceived (DaemonsHalftoneMix); its colours only after INIT. Row 7, "
                        "1..9 only: 10..15 are the KEEPALIVE PLANT's."],
               door_note=["THE DOOR (18,6): a plain doorway (MB 0x60,",
                          "no animation), drawn as the MANSION's -- its dark",
                          "below, its frame above the player. No frames."])
-DTOWER_BANDS = (64, 88, 112, 136, 160, 184, 208)     # the seven bands of niches, each one tile row
-DTOWER_F0 = 40                                        # the facade's top (the roof above it, seen from above)
+DTOWER_DRUM = (8, 103, 36, 96, 239)
+DTOWER_BACK_CHAMFER = 26                 # the deck's back corners: vanilla's octagon, rounder than the drum's       # the drum: (xa, xb, the deck's back edge, the face's top, its foot)
+DTOWER_NICHES = (104, 120, 136, 152, 168, 184, 200)   # the seven bands, each one tile row
+DTOWER_DOME = (56.0, 72, 42, 46, 13)      # centre x (the tile seam), the equator's y, rx, the crown's ry, the foot's ry
 
 
 def dtower_r(y):
-    """the dot's radius at height y: a speck at the top, merging into black at the foot"""
-    t = min(1.0, max(0.0, (y - DTOWER_F0) / (232 - DTOWER_F0)))
-    return 0.6 + 3.6 * t ** 1.4
+    """the dot's radius on the front at height y: specks under the dome, merging toward the foot"""
+    t = min(1.0, max(0.0, (y - 96) / (236 - 96)))
+    return 0.9 + 3.7 * t ** 1.25
+
+
+def dot_ink(x, y, r, y_lo=None, y_hi=None):
+    """is pixel (x, y) inside a dot of radius r on the 45 degree lattice? Each lattice row sits in one tile row: centres
+    at x 8i+4 in even tile rows, on the seams (8i) in odd ones -- clipped to its tile row, so dots merge sideways only"""
+    j = y // 8
+    cy = j * 8 + 4
+    cxs = (4,) if j % 2 == 0 else (0, 8)
+    lx = x % 8
+    return any(((lx + 0.5 - c) ** 2 + (y + 0.5 - cy) ** 2) ** 0.5 <= r for c in cxs)
 
 
 def draw_dtower():
-    import math
     W, H = 112, 240
     k = Canvas(W, H, role_map(DTOWER_COLOURS))
-    R = k.rect
-    # --- the mast, over the walkable row, with one light at its tip (a vigil, or an aircraft lamp)
-    R(55, 6, 56, 25, "INK")
-    k.hline(54, 57, 13, "INK")
-    k.hline(55, 56, 4, "GLOW"); k.hline(55, 56, 5, "GLOWD")
-    # --- the roof, seen from above: plain paper inside a parapet
-    R(0, 24, W - 1, DTOWER_F0 - 1, "OUT")
-    R(1, 25, W - 2, DTOWER_F0 - 2, "PAPERS")
-    R(4, 28, W - 5, DTOWER_F0 - 3, "PAPER")
-    k.hline(4, W - 5, 28, "PAPERS")
-    k.hline(1, W - 2, DTOWER_F0 - 1, "OUT")
-    # --- the face: halftone, two tones only
-    for y in range(DTOWER_F0, 240):
-        for x in range(1, W - 1):
-            px, py = x + 0.5, y + 0.5
-            ink = False
-            for (dx, dy) in ((8 * round((px - 4) / 8) + 4, 8 * round((py - 4) / 8) + 4),
-                             (8 * round(px / 8), 8 * round(py / 8))):
-                if dy < DTOWER_F0:
-                    continue
-                if math.hypot(px - dx, py - dy) <= dtower_r(dy):
-                    ink = True
-            k.px(x, y, "INK" if ink else "PAPER")
-    k.vline(0, DTOWER_F0, 239, "OUT"); k.vline(W - 1, DTOWER_F0, 239, "OUT")
-    k.hline(0, W - 1, 239, "OUT")
-    # --- seven bands of identical niches, each band one tile row: a shelf, twelve niches, a light in each
-    for b in DTOWER_BANDS:
-        R(1, b, W - 2, b + 7, "SHELF")
-        k.hline(1, W - 2, b, "OUT")
-        k.hline(1, W - 2, b + 7, "SHELFD")
-        for x0 in range(8, W - 8, 8):
-            R(x0 + 2, b + 2, x0 + 5, b + 6, "NICHE")         # the niche: 4 wide, its top corners cut (an arch, or
-            k.px(x0 + 2, b + 2, "SHELFD"); k.px(x0 + 5, b + 2, "SHELFD")     # a bevelled slot)
-            k.hline(x0 + 3, x0 + 4, b + 5, "GLOW")            # the light
+    xa, xb, back, top, bot = DTOWER_DRUM
+    # --- the drum's top, seen from above: a deck inside a parapet, its octagon stepped like the drum below it
+    m = box_mask(xa, xb, back, top, bot, cb=DTOWER_BACK_CHAMFER)
+    for (x, y), part in m.items():
+        if part == "deck":
+            k.px(x, y, "PAPERS")
+    for x in range(xa, xb + 1):                               # the parapet: a lit lip, its inner shadow on the deck
+        L = lean(x, xa, xb)
+        Lb = lean(x, xa, xb, DTOWER_BACK_CHAMFER)
+        k.px(x, back + Lb + 1, "PAPERL")
+        k.px(x, back + Lb + 2, "MID")
+        k.px(x, top - L - 1, "PAPERL")                        # the front lip, over the face
+    for y in range(back, top):
+        for x in (xa + 1, xb - 1):
+            if (x, y) in m and m[(x, y)] == "deck" and (x, y - 1) in m:
+                k.px(x, y, "PAPERL" if x == xa + 1 else "MID")
+    # --- the face: halftone, the dot size by height and by side
+    for (x, y), part in m.items():
+        if part != "face":
+            continue
+        L = lean(x, xa, xb)
+        yf = y + L                                             # the front row this pixel is drawn as
+        side = side_of(x, xa, xb)
+        r = dtower_r(yf)
+        #  the chamfers' dots step in whole levels, so a level repeats down the side (two tile rows share a tile)
+        if side == "lit":
+            r, paper = max(0.5, int(r - 0.6) + 0.5), "PAPERL"
+        elif side == "shade":
+            r, paper = int(r + 1.4) + 0.5, "PAPERS"
+        else:
+            paper = "PAPER"
+        k.px(x, y, "INK" if dot_ink(x, yf, r) else paper)
+    #  THE NICHES: seven bands of arched niches cut straight into the dots -- no shelf, no band -- each with a small
+    #  amber light. Every niche the same, one per tile, on the front only; the paper round each arch is kept clear.
+    for b in DTOWER_NICHES:
+        for x0 in range(xa + CHAMFER + 1, xb - CHAMFER, 8):   # 16, 24, .. 88: ten across
+            for ly in range(8):
+                for lx in range(8):
+                    x, y = x0 + lx, b + ly
+                    arch = (2 <= lx <= 5 and 2 <= ly <= 7) or (3 <= lx <= 4 and ly == 1)
+                    margin = (1 <= lx <= 6 and 1 <= ly <= 7) or (2 <= lx <= 5 and ly == 0)
+                    if arch:
+                        k.px(x, y, "NICHE")
+                    elif margin:
+                        k.px(x, y, "PAPER")
+            k.px(x0 + 2, b + 2, "MID"); k.px(x0 + 5, b + 2, "MID")    # the arch's springing
+            k.hline(x0 + 3, x0 + 4, b + 5, "GLOW")                    # the light
             k.hline(x0 + 3, x0 + 4, b + 6, "GLOWD")
-        R(1, b + 1, 6, b + 6, "SHELF")                        # the band's ends, closed
-        R(W - 7, b + 1, W - 2, b + 6, "SHELF")
-    # --- the doorway: a white frame in the black, and the dark inside
-    R(46, 221, 65, 239, "PAPER")
-    k.hline(46, 65, 221, "OUT")
-    k.vline(46, 221, 239, "OUT"); k.vline(65, 221, 239, "OUT")
-    R(50, 225, 61, 239, "OUT")
-    k.hline(50, 61, 237, "SHELFD")                            # the threshold
-    k.hline(50, 61, 238, "SHELF")
+            k.hline(x0 + 2, x0 + 5, b + 7, "GLOWD")                   # its warmth on the niche's floor
+    #  the corners: a lit edge where the lit chamfer meets the front, a dark one where the shaded one does
+    for y in range(top + 1, bot + 1):
+        k.px(xa + CHAMFER - 1, y - lean(xa + CHAMFER - 1, xa, xb) + 0, "PAPERL")
+        k.px(xb - CHAMFER + 1, y - lean(xb - CHAMFER + 1, xa, xb), "MID")
+    for x in range(xa + 1, xb):                                # the eave: the parapet's shadow on the face's head
+        k.px(x, top - lean(x, xa, xb), "OUT")
+    outline(k, m)
+    # --- THE DOME: vanilla's silhouette -- a dome on the drum, its crown up over ROUTE 10's walkable row -- in the
+    #  dot screen: specks at its crown, heavier toward its foot. Symmetric about the tile seam at x 56.
+    cx, eq, rx, ryt, ryb = DTOWER_DOME
+    dome = set()
+    for y in range(eq - ryt, eq + ryb + 1):
+        for x in range(W):
+            ry = ryt if y < eq else ryb
+            if ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - eq) / ry) ** 2 <= 1:
+                dome.add((x, y))
+    for (x, y) in dome:
+        t = max(0.0, (y - (eq - ryt)) / (ryt + ryb))
+        r = 0.35 + 2.4 * t ** 1.6
+        k.px(x, y, "INK" if dot_ink(x, y, r) else "PAPER")
+    for (x, y) in dome:
+        if (x, y + 1) not in dome and y > eq:
+            k.px(x, y, "MID")                                  # its foot on the deck
+            k.px(x, y + 1, "MID")
+    outline(k, dome)
+    # --- the mast on its crown, one light at its tip (a vigil, or an aircraft lamp)
+    k.rect(55, 6, 56, eq - ryt, "INK")
+    k.hline(54, 57, 14, "INK")
+    k.hline(55, 56, 3, "GLOW"); k.hline(55, 56, 4, "GLOWD")
+    # --- the doorway: a white frame in the dark foot, and the dark inside
+    k.rect(46, 223, 65, 239, "PAPERL")
+    k.hline(46, 65, 223, "OUT")
+    k.vline(46, 223, 239, "OUT"); k.vline(65, 223, 239, "OUT")
+    k.rect(50, 227, 61, 239, "OUT")
+    k.hline(50, 61, 237, "MID")                               # the threshold
+    k.hline(50, 61, 238, "PAPERS")
     return k
 
 
@@ -770,10 +912,10 @@ GROUPS = [
          landmarks=[(SCORN, draw_scorn), (MANSION, draw_mansion)], reuse_blocks=False,
          view=[("CinnabarIsland_Layout", 0, 0, 24, 20)]),
     dict(dir="saffron_city", symbol="gTileset_SaffronCity", layout="SaffronCity_Layout",
-         place="BRAZEN / SaffronCity", town="BRAZEN", tag="t447d", landmarks=[(CORPUS, draw_corpus)],
+         place="BRAZEN / SaffronCity", town="BRAZEN", tag="t447e", landmarks=[(CORPUS, draw_corpus)],
          reuse_blocks=True, view=[("SaffronCity_Layout", 17, 9, 32, 26)]),
     dict(dir="lavender_town", symbol="gTileset_LavenderTown", layout="LavenderTown_Layout",
-         place="HALFTONE / LavenderTown (+ ROUTE 10's rows 72..79)", town="HALFTONE", tag="t447d",
+         place="HALFTONE / LavenderTown (+ ROUTE 10's rows 72..79)", town="HALFTONE", tag="t447e",
          landmarks=[(DTOWER, draw_dtower)], reuse_blocks=True, halftone=True,
          #  the free slots past -num_tiles are shared with the KEEPALIVE PLANT: the tower draws into its own tiles
          #  only, and 702 (gbatowns' source for the roofs' copy, batch F) is never repainted
@@ -1009,7 +1151,9 @@ def build(ts):
                 attr = None
             bottom = e[:4]
             lin = lm.get("lintel", lintel)
-            if main and (x, y) in lm["inplace"]:    # the door block, kept by id: its empty bottom kept, art on top
+            if main and (x, y) in lm["inplace"] and lm.get("inplace_layer") == "bottom":
+                entries = art + [0, 0, 0, 0]        # a door drawn in its bottom layer (CORPUS's): art below, top empty
+            elif main and (x, y) in lm["inplace"]:  # the door block, kept by id: its empty bottom kept, art on top
                 entries = bottom + art
             elif main and (x, y) in lm["signs"]:      # the board's own tiles stay on top; the wall is ours, below
                 entries = art + [0, 0, e[6], e[7]]
@@ -1114,8 +1258,11 @@ def lintel(k, x, y):
 
 
 def ground_under(ts, lm, x, y, layout=None):
-    """a cell vanilla left with no bottom layer: borrow the nearest footprint cell's ground in the same row"""
+    """a cell vanilla left with no bottom layer: the landmark's own ground block if it names one (CORPUS's paving),
+    else borrow the nearest footprint cell's ground in the same row"""
     layout = layout or TILESET["layout"]
+    if lm.get("ground"):
+        return ts.entries(lm["ground"](x, y))[:4]
     for dx in range(1, 8):
         for xx in (x - dx, x + dx):
             if lm["x0"] <= xx < lm["x0"] + lm["w"]:
@@ -1229,6 +1376,31 @@ def door_preview(k):
     ox, oy = (SCORN["door"][0] - SCORN["x0"]) * 16, (SCORN["door"][1] - SCORN["y0"]) * 16
     closed = [[(SCORN_ROW, k.get(ox + x, oy + y), pal[k.get(ox + x, oy + y)]) for x in range(16)] for y in range(16)]
     spec = gbadoors.redrawn_spec(dict(gbadoors.DOORS["cinnabar_lab"]), closed)
+    row = gbadoors.Row(pal)
+    off, _ = gbadoors.fit(closed, [row] * 4)
+    frames = gbadoors.open_frames(closed, lambda x, y: row, spec)
+    return [[[c[2] for c in line] for line in closed]] + frames, spec, off
+
+
+def corpus_door_preview(k):
+    """CORPUS's door opening, as gbadoors.py will draw it once its DOORS["silph_co"] carries CORPUS_DOOR as its
+    "redrawn" spec and the closed door is built in row 9: its own redrawn_spec(), fit() and open_frames() on the
+    closed cell, imported the house way (argv swapped round the import, so its --write can never be armed from here).
+    Returns (frames: closed + ajar, half, open; the spec taken; pixels of the closed door not in row 9)."""
+    import contextlib, io as _io
+    argv, sys.argv = sys.argv, ["gbadoors"]
+    try:
+        with contextlib.redirect_stdout(_io.StringIO()):
+            import gbadoors
+    finally:
+        sys.argv = argv
+    pal = pal16(CORPUS_COLOURS)
+    ox, oy = (CORPUS["door"][0] - CORPUS["x0"]) * 16, (CORPUS["door"][1] - CORPUS["y0"]) * 16
+    closed = [[(CORPUS_ROW, k.get(ox + x, oy + y), pal[k.get(ox + x, oy + y)]) for x in range(16)] for y in range(16)]
+    assert all(c[1] for line in closed for c in line), "the door cell must be opaque: its frames repaint all of it"
+    spec = dict(gbadoors.DOORS["silph_co"])
+    spec.setdefault("redrawn", {n: v for n, v in CORPUS_DOOR.items() if n != "block"})
+    spec = gbadoors.redrawn_spec(spec, closed)
     row = gbadoors.Row(pal)
     off, _ = gbadoors.fit(closed, [row] * 4)
     frames = gbadoors.open_frames(closed, lambda x, y: row, spec)
@@ -1463,6 +1635,15 @@ def sheets_pair2(ts, before_maps, before, after, out):
         for line in lm.get("door_note", []):
             label(d, (xx, yy), line, GOLD if line is lm["door_note"][0] else DIM, Fs)
             yy += 18
+        if lm is CORPUS:                                    # the redrawn door's frames, as gbadoors will draw them
+            frames, spec, off = corpus_door_preview(after["drawings"]["corpus_tower"])
+            assert spec["kind"] == CORPUS_DOOR["kind"] and tuple(spec["leaf"]) == CORPUS_DOOR["leaf"] and off == 0, spec
+            yy += 8
+            for i, f in enumerate(frames):
+                im = Image.new("RGB", (16, 16))
+                im.putdata([c for line in f for c in line])
+                s.paste(up(im, 5), (xx + i * 88, yy))
+                label(d, (xx + i * 88, yy + 84), ("closed", "ajar", "half", "open")[i], DIM, Fs)
         p = os.path.join(out, "%s_%s.png" % (GROUP["tag"], lm["name"]))
         s.save(p)
         paths.append(p)

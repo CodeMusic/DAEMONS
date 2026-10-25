@@ -11,30 +11,25 @@
   33,
   30
  ],
- "kept": [
-  [
-   33,
-   30
-  ]
- ],
+ "kept": [],
  "signs": [],
  "row": 9,
  "colours": {
-  "BRASSL": "f7e79c",
-  "BRASS": "e7c65a",
-  "BRASSM": "c69c39",
-  "BRASSD": "9c7329",
-  "BRONZE": "6b4a18",
-  "OUT": "3a281a",
-  "LIGHTL": "fff8d6",
-  "LIGHT": "ecdaa0",
+  "BRASSL": "ecce7c",
+  "BRASS": "cca048",
+  "BRASSM": "a2762e",
+  "BRASSD": "745022",
+  "BRONZE": "4e341c",
+  "OUT": "281a14",
+  "LIGHTL": "ffe296",
+  "LIGHT": "e2a44e",
   "RED": "c6222c",
   "GLASSL": "9cd5ff",
   "GLASS": "73bdf6",
   "GLASSD": "4a83c5",
-  "PLATE": "221e26",
-  "FLOOR": "e2dcc8",
-  "FLOORD": "b0a896"
+  "PLATE": "18141e",
+  "FLOOR": "d6ceb8",
+  "FLOORD": "a09682"
  },
  "cells": [
   {
@@ -1075,6 +1070,14 @@
     30
    ],
    "was": 699,
+   "layer_type": 1
+  },
+  {
+   "cell": [
+    33,
+    30
+   ],
+   "was": 700,
    "layer_type": 1
   },
   {
