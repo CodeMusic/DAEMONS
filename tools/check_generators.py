@@ -46,6 +46,9 @@ ARGS = {
     "genanims":  [[f] for f in ("CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL "
                                 "CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE LATENT").split()],
     "genstates": [["--wave", "1"]],
+    #  T-446: gbadoors refuses a plain --write, so --writes saw nothing of it; with --approved its sandboxed write is
+    #  real. (Its report needs no flag: it compares the engine with the approved write itself and exits 1 on a difference.)
+    "gbadoors":  [["--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

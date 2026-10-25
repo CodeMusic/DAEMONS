@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Every door's opening, drawn to match the building it opens (T-438 batch A; the door-mat arrow too).
 
-    python3 tools/gbadoors.py                 # report: every door animation, where it opens, does its frame fit
+    python3 tools/gbadoors.py                 # report: every door animation, where it opens, does its frame fit --
+                                              #   and does the engine match `--write --approved`; exit 1 if not (T-446)
     python3 tools/gbadoors.py --draft DIR     # the new frames as PNGs in DIR (gfx/drafts/t438/doors/), and the
                                               #   contact sheets beside them (or --sheets DIR to put those elsewhere)
-    python3 tools/gbadoors.py --write         # graphics/door_anims/*.png and the arrow into the engine -- NOT YET:
-                                              #   batch A is a draft until the user has seen the sheets
+    python3 tools/gbadoors.py --write --approved  # graphics/door_anims/*.png, the arrow, the tileset fixes and
+                                              #   field_door.c's rows into the engine (approved 2026-10-22)
 
 HOW A DOOR OPENS ON THE GBA (src/field_door.c). A door is a block with the WARP_DOOR behaviour whose id is in
 sDoorGraphics. The CLOSED door is not in the animation at all: it is the block itself, drawn from the map. The
@@ -372,7 +373,14 @@ DOORS = {
     "sliding_double":         dict(kind="slide2", leaf=(1, 1, 14, 14)),
     "silph_co":               dict(kind="slide2", leaf=(1, 0, 14, 13)),
     "dept_store":             dict(kind="slide2", leaf=(1, 0, 14, 13)),
-    "safari_zone":            dict(kind="slide2", leaf=(1, 0, 14, 14)),
+    #  T-446 (2026-10-24): the room behind these doors is pinned to the entries it was approved in (batch A, 2026-10-22)
+    #  -- a slate room (1), the line of floor (9 / 10) and the lit sill (2). Left to the darkest colour, batch D's timber
+    #  brown (building row 2, entry 9) and batch H's LURID magenta (fuchsia row 9, entry 10) became the room.
+    "safari_zone":            dict(kind="slide2", leaf=(1, 0, 14, 14), room=(1, 10, 2)),
+    "hideout_elevator":             dict(DEFAULT_1x2, room=(1, 9, 2)),
+    "silph_co_elevator":            dict(DEFAULT_1x2, room=(1, 9, 2)),
+    "trainer_tower_lobby_elevator": dict(DEFAULT_1x2, room=(1, 9, 2)),
+    "trainer_tower_roof_elevator":  dict(DEFAULT_1x2, room=(1, 9, 2)),
     "joyful_game_corner":     dict(kind="slide2", leaf=(1, 0, 14, 14)),
     "one_island_poke_center": dict(kind="slide2", leaf=(1, 0, 14, 14)),
     "rocket_warehouse":       dict(kind="slide2", leaf=(2, 1, 13, 14)),
@@ -423,9 +431,16 @@ def tile_of(x, y):
 class Row:
     """one palette row's fifteen usable colours (index 0 is transparent and never drawn into a door)"""
 
-    def __init__(self, pal, avoid=()):
+    def __init__(self, pal, avoid=(), room=None):
         self.pal = pal
         self.cols = [(i, pal[i]) for i in range(1, 16)]
+        if room:
+            #  T-446: a door whose room is PINNED by palette index (DOORS' "room": void, floor, sill). A palette pass
+            #  recolours a row by index, and the approved frames hold indices, so they follow it as the closed block
+            #  does; choosing the room by luminance instead re-derives it, and the darkest entry changes whenever a
+            #  pass repaints one (batch D's timber in building row 2, batch H's LURID magenta in fuchsia row 9).
+            self.void, self.floor, self.spill = (tuple(pal[i]) for i in room)
+            return
         #  the room's colours are chosen from the row less any a door's spec keeps out of it ("room_avoid": T-447's
         #  red is the procedure's light and nothing else, so it may not be the floor of the room behind the door)
         by = sorted([ic for ic in self.cols if tuple(ic[1]) not in {tuple(a) for a in avoid}], key=lambda ic: lum(ic[1]))
@@ -468,6 +483,8 @@ def open_frames(closed, rows_of, spec):
     REF = next(rows_of(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1) if tuple(rows_of(x, y).pal) == ref)
     if spec.get("room_avoid"):
         REF = Row(REF.pal, avoid=spec["room_avoid"])
+    if spec.get("room"):
+        REF = Row(REF.pal, room=spec["room"])
 
     def room(f):
         for y in range(y0, y1 + 1):
@@ -1080,6 +1097,49 @@ def indexed(frames_idx, pal, h):
     return im
 
 
+def png_differs(rel, img):
+    """how an image this tool would write differs from the engine's file: None, "pixels" or "palette" (the PNG's own
+    palette is only what an editor shows -- the game draws the indices in field_door.c's rows -- but it is written)"""
+    path = os.path.join(GBA, rel)
+    if not os.path.exists(path):
+        return "missing"
+    old = Image.open(path)
+    if old.mode != "P" or old.size != img.size or old.tobytes() != img.tobytes():
+        return "pixels"
+    if (old.getpalette() or [])[:48] != img.getpalette()[:48]:
+        return "palette"
+    return None
+
+
+def report_drift(changed, drawn, arrows, ppal):
+    """T-446: REPORT MODE COMPARES THE ENGINE WITH THE APPROVED WRITE, and exits 1 if they differ. check_generators.py
+    runs every tool in report mode and fails on a non-zero exit, so a door whose frames no longer match what
+    `--write --approved` would draw -- a palette pass that moved the darkest colour, a closed block redrawn without its
+    frames -- fails the check instead of waiting for the next write to find it. Nothing is written."""
+    out = []
+    for rel, data in sorted(changed.items()):
+        disk = os.path.join(GBA, rel)
+        if not os.path.exists(disk) or open(disk, "rb").read() != data:
+            out.append((rel, "the tileset fix or palette row above"))
+    for p in drawn:
+        img = indexed([q[0] for q in p["quant"]], p["rows"][0].pal, p["h"])
+        why = png_differs(p["d"]["png"], img)
+        if why:
+            out.append((p["d"]["png"], why))
+    why = png_differs(ARROW_PNG, indexed(arrows, ppal, 16))
+    if why:
+        out.append((ARROW_PNG, why))
+    if not out:
+        print("  the engine matches `--write --approved` exactly: every frame, the arrow, the tilesets and the rows")
+        return 0
+    print("  !! the engine differs from what `--write --approved` would write (%d file%s) -- find which side is right"
+          % (len(out), "s" if len(out) > 1 else ""))
+    print("     before writing: a frame drawn for an older palette, or a closed block redrawn without its frames (T-446):")
+    for rel, why in out:
+        print("       %-52s %s" % (rel, why))
+    return 1
+
+
 def main():
     if WRITE and "--approved" not in ARGS:
         print("  --write refused: T-438 batch A is a draft until the user has approved its sheets.")
@@ -1134,6 +1194,8 @@ def main():
         names.append(path)
         print("  drafts in %s; sheets:\n    %s" % (DRAFT, "\n    ".join(names)))
 
+    if not WRITE:
+        return report_drift(changed, drawn, arrows, ppal)
     if WRITE:
         for rel, data in sorted(changed.items()):
             open(os.path.join(GBA, rel), "wb").write(data)
