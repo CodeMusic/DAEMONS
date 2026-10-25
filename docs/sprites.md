@@ -9,13 +9,13 @@
 | trainer back pics | 6 | 6 | 0 | 0 | 0 | **100%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
 | hearsay portraits | 6 | 6 | 0 | 0 | 0 | **100%** |
-| daemon fronts | 386 | 385 | 0 | 1 | 10 | **100%** |
-| daemon backs | 384 | 384 | 0 | 0 | 10 | **100%** |
-| daemon icons | 387 | 385 | 0 | 2 | 9 | **99%** |
+| daemon fronts | 386 | 385 | 0 | 1 | 13 | **100%** |
+| daemon backs | 384 | 384 | 0 | 0 | 13 | **100%** |
+| daemon icons | 387 | 385 | 0 | 2 | 12 | **99%** |
 | overworld daemons | 42 | 42 | 0 | 0 | 0 | **100%** |
 | overworld objects | 19 | 19 | 0 | 0 | 4 | **100%** |
 | ***the people*** | 258 | 258 | 0 | 0 | 70 | ***100.0%*** |
-| ***every sprite*** | 1476 | 1473 | 0 | 3 | 103 | ***99.8%*** |
+| ***every sprite*** | 1476 | 1473 | 0 | 3 | 112 | ***99.8%*** |
 
 ## The towns
 
