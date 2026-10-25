@@ -408,6 +408,22 @@ def derive_icon(grid, palette):
             out[32 + oy + y][ICON_X + x] = v       # frame 2, the bob
     return out, (pi, err)
 
+def drawn_icon(path):
+    """A DRAWN party icon (T-452, the user 2026-10-24: "party icons drawn separately as 32px head-and-shoulders"),
+    filed as gfx/daemons/<name>_icon.png: already 32x64, 4bpp, in one of the three shared icon palettes, which is
+    how gfx/drafts/t452/scripts/reduce2.py makes it. It is copied index for index -- deriving it from the front
+    instead would put back the reduction of the whole body the user turned down. Returns (grid, (palette, 0))."""
+    im = Image.open(path)
+    if im.mode != "P" or im.size != (32, 64):
+        raise SystemExit("%s: a drawn icon must be a 32x64 indexed PNG, not %s %s" % (path, im.mode, im.size))
+    plte = im.getpalette()[:48]
+    pals = icon_palettes()
+    for pi, pal in enumerate(pals):
+        if [c for col in pal for c in col][:len(plte)] == plte[:len(pal) * 3]:
+            px = im.load()
+            return [[px[x, y] for x in range(32)] for y in range(64)], (pi, 0)
+    raise SystemExit("%s: its palette is none of the three shared icon palettes" % path)
+
 def write_pal(path, palette):
     # JASC-PAL is a CRLF format and .gitattributes says so; writing LF makes git
     # rewrite all 66 of these on every checkout. Padded to sixteen with black.
@@ -536,14 +552,15 @@ for vanilla, ours in sorted(pairs.items()):
             #  a graphics-info field are engine data, and they should appear in
             #  a diff somebody reads.
             ow_todo.append((ours, d))
-        ic, info = derive_icon(front_grid, front_pal)
+        drawn = rich_src(ours, "icon")
+        ic, info = drawn_icon(drawn) if drawn else derive_icon(front_grid, front_pal)
         if ic:
             if WRITE:
                 write_png4(os.path.join(outdir, "icon.png"), ic, icon_palettes()[info[0]], 32, 64)
             #  The palette index is a per-species field, so say which one fits.
             #  It is NOT written here: gMonIconPaletteIndices is C, and editing
             #  it belongs to whoever is reading the diff.
-            extra += "  +icon(pal %d, err %.0f)" % info
+            extra += ("  +icon(drawn, pal %d)" % info[0]) if drawn else ("  +icon(pal %d, err %.0f)" % info)
 
     print("  %-11s %-12s %-9s %s%s%s" % (ours, d, t, "written" if WRITE else "ready", note, extra))
 print("  %d sprites, %d skipped" % (done, len(skipped)))

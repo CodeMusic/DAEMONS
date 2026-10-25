@@ -1,0 +1,7 @@
+{
+ "rom": "debug",
+ "about": "T-452's art in the game (2026-10-25): the six pilots and batch 1's nineteen, at 1x -- fronts and backs in battle, the party menu's icons, the INDEX, the follower. Probe stop first.",
+ "stops": [
+  {"stop": "the DEBUG build, continued; the party as it stands", "steps": ["load debug", "continue", "shot overworld", "open DAEMON", "close"]}
+ ]
+}
