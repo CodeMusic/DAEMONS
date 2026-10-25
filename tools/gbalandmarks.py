@@ -121,7 +121,8 @@ DRAFT = argval("--draft", DRAFTS)
 SHEETS = argval("--sheets")
 
 #  the landmarks the user has approved for --write; a draft is never written
-APPROVED = {"scorn_solutions", "mansion"}           # the user, 2026-10-24: "build it" (second draft, e559d4eb)
+APPROVED = {"scorn_solutions", "mansion",           # the user, 2026-10-24: "build it" (second draft, e559d4eb)
+            "corpus_tower", "daemon_tower"}          # the user, 2026-10-25: "build both" (pair 2 with depth, a219855f)
 
 NUM_PRIMARY = 640
 SECONDARY_TILES = 1024 - 640

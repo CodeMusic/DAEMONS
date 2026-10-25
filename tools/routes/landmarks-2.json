@@ -1,0 +1,26 @@
+{
+ "rom": "debug",
+ "about": "T-447 pair 2 (tools/gbalandmarks.py and gbadoors.py, built 2026-10-25): CORPUS's tower in BRAZEN, its glass door opening on the floor plate as the player walks in; DAEMON TOWER in HALFTONE, grey and in colour (sDaemonsHalftoneInColour poked), its dotted dome on ROUTE 10, and walking into it. Only goto, holds and shots -- no walker steps, so nobody stands on a doormat (T-451). Watch held at day, clear weather, summer. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "BRAZEN: CORPUS's tower", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1", "poke gDaemonsSeasonOverride 8 3",
+   "goto SaffronCity 27 23", "repel 999", "close", "wait 40", "shot CORPUS's tower, its upper floors",
+   "goto SaffronCity 33 33", "close", "wait 40", "shot CORPUS's lobby and door from the plaza"]},
+  {"stop": "BRAZEN: walking into CORPUS", "steps": [
+   "goto SaffronCity 33 31", "close", "wait 20", "shot at the door",
+   "burst \"the glass door opening\" 20 2 UP 2",
+   "wait 60", "shot inside", "expect SilphCo_1F"]},
+  {"stop": "HALFTONE: DAEMON TOWER grey", "steps": [
+   "goto LavenderTown 17 7", "close", "wait 40", "shot DAEMON TOWER grey",
+   "goto Route10 13 76", "repel 999", "close", "wait 40", "shot the dotted dome on ROUTE 10"]},
+  {"stop": "HALFTONE: DAEMON TOWER in colour (poked)", "steps": [
+   "poke sDaemonsHalftoneInColour 8 1", "goto LavenderTown 17 7", "close", "wait 40", "shot DAEMON TOWER in colour",
+   "goto Route10 13 76", "close", "wait 40", "shot the dome in colour",
+   "poke sDaemonsHalftoneInColour 8 0"]},
+  {"stop": "HALFTONE: walking into DAEMON TOWER", "steps": [
+   "goto LavenderTown 18 7", "close", "wait 20", "shot at the door",
+   "burst \"the tower's door\" 12 4 UP 20",
+   "wait 60", "shot inside", "expect PokemonTower_1F"]}
+ ]
+}

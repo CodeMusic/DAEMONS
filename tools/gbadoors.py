@@ -371,7 +371,10 @@ DOORS = {
     "pallet":                 dict(kind="hinged", hinge="R", leaf=(2, 1, 13, 14)),
     "sliding_single":         dict(kind="slide1", to="R", leaf=(1, 1, 14, 14)),
     "sliding_double":         dict(kind="slide2", leaf=(1, 1, 14, 14)),
-    "silph_co":               dict(kind="slide2", leaf=(1, 0, 14, 13)),
+    #  T-447 (the user, 2026-10-25: build pair 2): CORPUS's lobby is glass with the floor plate seen through it
+    #  (gbalandmarks.py's CORPUS_DOOR, block 0x2BC redrawn in saffron's row 9); its frames are drawn from that block.
+    "silph_co":               dict(kind="slide2", leaf=(1, 0, 14, 13),
+                                   redrawn=dict(row=9, kind="slide2", leaf=(1, 0, 14, 14))),
     "dept_store":             dict(kind="slide2", leaf=(1, 0, 14, 13)),
     #  T-446 (2026-10-24): the room behind these doors is pinned to the entries it was approved in (batch A, 2026-10-22)
     #  -- a slate room (1), the line of floor (9 / 10) and the lit sill (2). Left to the darkest colour, batch D's timber
