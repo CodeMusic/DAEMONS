@@ -1,0 +1,758 @@
+{
+ "packet": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   126,
+   178,
+   235
+  ],
+  "accent_cells": 0,
+  "size": [
+   25,
+   28
+  ],
+  "src": "gfx/drafts/t452/b/clean/packet_icon.png"
+ },
+ "backbone": {
+  "icon_palette": 0,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    189
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   130,
+   190,
+   227
+  ],
+  "accent_cells": 7,
+  "size": [
+   28,
+   27
+  ],
+  "src": "gfx/drafts/t452/b/clean/backbone_icon.png"
+ },
+ "rovercub": {
+  "icon_palette": 1,
+  "ramp": [
+   14,
+   5,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    156,
+    205,
+    74
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   109,
+   164,
+   237
+  ],
+  "accent_cells": 1,
+  "size": [
+   28,
+   25
+  ],
+  "src": "gfx/drafts/t452/b/clean/rovercub_icon.png"
+ },
+ "spike": {
+  "icon_palette": 0,
+  "ramp": [
+   14,
+   12,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    164,
+    197,
+    255
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   138,
+   172,
+   223
+  ],
+  "accent_cells": 11,
+  "size": [
+   27,
+   28
+  ],
+  "src": "gfx/drafts/t452/b/clean/spike_icon.png"
+ },
+ "dangling": {
+  "icon_palette": 2,
+  "ramp": [
+   4,
+   5,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    115,
+    115,
+    205
+   ],
+   [
+    164,
+    172,
+    246
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   144,
+   198,
+   240
+  ],
+  "accent_cells": 0,
+  "size": [
+   27,
+   28
+  ],
+  "src": "gfx/drafts/t452/b/clean/dangling_icon.png"
+ },
+ "artsai": {
+  "icon_palette": 1,
+  "ramp": [
+   14,
+   8,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    246,
+    148,
+    246
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   112,
+   179,
+   241
+  ],
+  "accent_cells": 6,
+  "size": [
+   28,
+   27
+  ],
+  "src": "gfx/drafts/t452/b/clean/artsai_icon.png"
+ },
+ "roverbyte": {
+  "icon_palette": 1,
+  "ramp": [
+   14,
+   5,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    156,
+    205,
+    74
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   128,
+   196,
+   239
+  ],
+  "accent_cells": 4,
+  "size": [
+   28,
+   28
+  ],
+  "src": "gfx/drafts/t452/d/clean/roverbyte_icon.png"
+ },
+ "label": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   110,
+   173,
+   236
+  ],
+  "accent_cells": 4,
+  "size": [
+   22,
+   28
+  ],
+  "src": "gfx/daemons/label_front.png"
+ },
+ "rubric": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   103,
+   163,
+   231
+  ],
+  "accent_cells": 11,
+  "size": [
+   25,
+   28
+  ],
+  "src": "gfx/daemons/rubric_front.png"
+ },
+ "canon": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   109,
+   198,
+   238
+  ],
+  "accent_cells": 11,
+  "size": [
+   26,
+   28
+  ],
+  "src": "gfx/drafts/t452/d/clean/canon_icon.png"
+ },
+ "cluster": {
+  "icon_palette": 0,
+  "ramp": [
+   6,
+   11,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    213,
+    98,
+    65
+   ],
+   [
+    255,
+    180,
+    164
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   150,
+   195,
+   234
+  ],
+  "accent_cells": 11,
+  "size": [
+   28,
+   26
+  ],
+  "src": "gfx/daemons/cluster_front.png"
+ },
+ "locus": {
+  "icon_palette": 0,
+  "ramp": [
+   6,
+   11,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    213,
+    98,
+    65
+   ],
+   [
+    255,
+    180,
+    164
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   103,
+   160,
+   230
+  ],
+  "accent_cells": 7,
+  "size": [
+   28,
+   23
+  ],
+  "src": "gfx/daemons/locus_front.png"
+ },
+ "pending": {
+  "icon_palette": 1,
+  "ramp": [
+   4,
+   12,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    123,
+    156,
+    74
+   ],
+   [
+    213,
+    213,
+    106
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   68,
+   131,
+   219
+  ],
+  "accent_cells": 0,
+  "size": [
+   21,
+   28
+  ],
+  "src": "gfx/daemons/pending_front.png"
+ },
+ "scraper": {
+  "icon_palette": 1,
+  "ramp": [
+   4,
+   12,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    123,
+    156,
+    74
+   ],
+   [
+    213,
+    213,
+    106
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   105,
+   180,
+   238
+  ],
+  "accent_cells": 1,
+  "size": [
+   28,
+   23
+  ],
+  "src": "gfx/daemons/scraper_front.png"
+ },
+ "buffer": {
+  "icon_palette": 1,
+  "ramp": [
+   4,
+   12,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    123,
+    156,
+    74
+   ],
+   [
+    213,
+    213,
+    106
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   119,
+   159,
+   203
+  ],
+  "accent_cells": 5,
+  "size": [
+   19,
+   28
+  ],
+  "src": "gfx/daemons/buffer_front.png"
+ },
+ "relay": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   104,
+   166,
+   214
+  ],
+  "accent_cells": 1,
+  "size": [
+   28,
+   24
+  ],
+  "src": "gfx/drafts/t452/d/clean/relay_icon.png"
+ },
+ "broadcast": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   128,
+   161,
+   220
+  ],
+  "accent_cells": 1,
+  "size": [
+   28,
+   24
+  ],
+  "src": "gfx/drafts/t452/d/clean/broadcast_icon.png"
+ },
+ "nibble": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   116,
+   182,
+   227
+  ],
+  "accent_cells": 21,
+  "size": [
+   28,
+   27
+  ],
+  "src": "gfx/drafts/t452/d/clean/nibble_icon.png"
+ },
+ "overflow": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   117,
+   191,
+   241
+  ],
+  "accent_cells": 13,
+  "size": [
+   27,
+   28
+  ],
+  "src": "gfx/drafts/t452/d/clean/overflow_icon.png"
+ },
+ "ping": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   118,
+   182,
+   234
+  ],
+  "accent_cells": 1,
+  "size": [
+   27,
+   28
+  ],
+  "src": "gfx/drafts/t452/d/clean/ping_icon.png"
+ },
+ "flood": {
+  "icon_palette": 2,
+  "ramp": [
+   14,
+   2,
+   3
+  ],
+  "ramp_rgb": [
+   [
+    98,
+    98,
+    90
+   ],
+   [
+    189,
+    189,
+    180
+   ],
+   [
+    255,
+    255,
+    255
+   ]
+  ],
+  "bands": [
+   150,
+   195,
+   240
+  ],
+  "accent_cells": 7,
+  "size": [
+   23,
+   28
+  ],
+  "src": "gfx/drafts/t452/d/clean/flood_icon.png"
+ }
+}
