@@ -61,3 +61,15 @@ DRAFT: CORPUS HIDEOUT and WAREHOUSE name cards from the current maps, beside van
 DRAFT T-452 round two: batch 1 fixes, MANIFOLD A and B, batch 2 WORM to SPRAWL
 
 ![26Oct2026 - T452 - round two draft - 10](26Oct2026%20-%20T452%20-%20round%20two%20draft%20-%2010.png)
+
+### 26Oct2026 - T445 - hideout card built - 11
+
+Built (engine 4f24d5d37): CORPUS HIDEOUT's name card beside vanilla
+
+![26Oct2026 - T445 - hideout card built - 11](26Oct2026%20-%20T445%20-%20hideout%20card%20built%20-%2011.png)
+
+### 26Oct2026 - T445 - warehouse card repaint - 12
+
+DRAFT: CORPUS WAREHOUSE's card repainted, candidates A-E with a bigger spin floor
+
+![26Oct2026 - T445 - warehouse card repaint - 12](26Oct2026%20-%20T445%20-%20warehouse%20card%20repaint%20-%2012.png)
