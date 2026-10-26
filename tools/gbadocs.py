@@ -72,6 +72,13 @@ DOCS = [
     ("PROSPECTUS_6",     ("sign", "SaffronCity_Gym", 14, 9, ("set", "FLAG_DEFEATED_SABRINA"))),
     ("PEER_REVIEW_3",    ("sign", "SaffronCity_MrPsychicsHouse", 5, 5, ("unset_or_unread", "FLAG_OWL_CONCEDED"))),   # T-401: READ AGAIN needs it
     ("PEER_REVIEW_4",    ("sign", "SaffronCity_MrPsychicsHouse", 5, 5, ("set", "FLAG_OWL_CONCEDED"))),
+    #  T-457 (bible 4.37, the second joining): two undated papers, appended LAST because a document's flag is its
+    #  place in this list (0x33F, 0x340) -- inserting them among PROSPECTUS would renumber every flag after them and
+    #  break saves. school.md's PROSPECTUS 4-6 are taken (the engraving, the chip order, the plan), so the bible's
+    #  "PROSPECTUS 4 and 5" are keyed 7 and 8 here. Both on CRYSTAL's shelf beside the INDEX unit, once she is home
+    #  and the GLOBAL INDEX is held. 7: her new work (its name is the user's to choose); 8: the joining.
+    ("PROSPECTUS_7",     ("sign", "PalletTown_ProfessorOaksLab", 9, 1, ("set", "FLAG_SECOND_JOINING"))),
+    ("PROSPECTUS_8",     ("sign", "PalletTown_ProfessorOaksLab", 9, 1, ("set", "FLAG_SECOND_JOINING"))),
 ]
 READABLE = {0x81, 0x83, 0x89, 0x93, 0x94, 0x95, 0x97, 0x98, 0x9A, 0xA0, 0x8F}
 
