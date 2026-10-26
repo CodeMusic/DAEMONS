@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/pokemon_tower/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, looking up at a pale round stone tower made of halftone dots, dense dark dots at its foot thinning to sparse dots at the top, seven bands of small arched niches each holding a tiny candle flame, a dotted dome with a thin spire, a dark doorway, grey rocks and grey pines at the sides, overcast grey sky, monochrome grey with only the small warm candle flames, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, colour, green, blue sky, pagoda, tiers, roof eaves, candle on the ground, flame at the door, fire",
+ "seed": 4467,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/pokemon_tower/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 44.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 12:07:28"
+}

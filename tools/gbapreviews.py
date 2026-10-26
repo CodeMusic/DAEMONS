@@ -10,6 +10,9 @@
                                                          #   its record, from a start image graded out of vanilla's
                                                          #   picture in the cave's colours (painted_init.png)
     python3 tools/gbapreviews.py --draft --top-down      # the old top-down drafts, even where a painting exists
+    python3 tools/gbapreviews.py --landmarks --paint     # the landmarks' cards (LANDMARK: CORPUS's tower, DAEMON TOWER,
+    python3 tools/gbapreviews.py --landmarks --draft     #   the MANSION), painted from T-447's buildings as built; their
+                                                         #   --write writes only what LANDMARK_APPROVED names
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
                                                          #   OTHER CAVE's light1..3.pal too. Without --approved it refuses.
@@ -84,6 +87,7 @@ ap.add_argument("--paint", nargs="*")
 ap.add_argument("--top-down", action="store_true", dest="top_down")
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
+ap.add_argument("--landmarks", action="store_true")      # the landmarks' cards (LANDMARK) instead of the caves
 A = ap.parse_args()
 
 # the caves T-438 batch E redrew (gbacaves.py: approved 2026-10-23, BUILT engine 2007d739f) -> their tileset look
@@ -105,9 +109,9 @@ NOT_DRAFTED = {
     "monean_chamber": "the TANOBY chambers (seven mapsecs share it): their tileset is batch G's",
     "viridian_forest": "a forest, not a cave (and PATTERN BUSH shares it): its own batch",
     "berry_forest": "a forest, not a cave: its own batch",
-    "pokemon_tower": "the tower: its own batch",
-    "pokemon_mansion": "the mansion: its own batch",
-    "silph_co": "SILPH: its own batch",
+    "pokemon_tower": "the tower: a landmark (LANDMARK, --landmarks)",
+    "pokemon_mansion": "the mansion: a landmark (LANDMARK, --landmarks)",
+    "silph_co": "SILPH (CORPUS's tower): a landmark (LANDMARK, --landmarks)",
     "rocket_hideout": "the hideout: its own batch",
     "rocket_warehouse": "the warehouse: its own batch",
     "safari_zone": "the SAFARI: its own batch",
@@ -557,14 +561,167 @@ MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, col
               cracks=motif_cracks, braille=motif_braille, mouth=motif_mouth)
 
 
+# ================================================================== the landmarks' cards (T-445, 2026-10-25)
+#  The user (2026-10-25): "the name card on entering still shows vanilla's pictures for the landmarks -- FOUNDRY CO.
+#  over SILPH CO.'s, DAEMON TOWER over POKEMON TOWER's; paint them from the new buildings (and SCORN SOLUTIONS' / the
+#  MANSION's if they have cards)." Three of T-447's landmarks have a card: CORPUS's tower (silph_co), DAEMON TOWER
+#  (pokemon_tower) and the MANSION (pokemon_mansion). SCORN SOLUTIONS (the lab), the REVIEW BOARD (INDIGO PLATEAU)
+#  and ERRATA (the museum) have none: sMapPreviewScreenData has no entry for their mapsecs.
+#
+#  The cave method, with the building in place of vanilla's: the start image is vanilla's card graded through the
+#  town's colours (its trees, rocks and sky keep vanilla's composition), with a column cleared to sky where vanilla's
+#  building stood, and the NEW building -- exactly as the engine draws it (gbalandmarks' drawing, checked pixel for
+#  pixel against reviewsheet's render of the built map, or cut from that render) -- laid in seen from below: a
+#  homography takes its rectangle to a keystone (wide at the foot, narrow at the crown), so the floors foreshorten as
+#  vanilla's painted towers do. The MANSION's card is vanilla's hall INSIDE; there is no outside to grade, so its scene
+#  is drawn (an ash sky, CINNABAR's sea behind, the sand) and the burned facade laid over it. The sprite server then
+#  repaints it, image to image, at a denoise low enough that our building survives. Nothing here is written to the
+#  engine until the user approves a card (LANDMARK_APPROVED).
+LANDMARK_APPROVED = set()
+LANDMARK_DRAWINGS = os.path.join(ROOT, "gfx", "drafts", "landmarks")
+GREYS = [(40, 40, 46), (72, 72, 80), (108, 108, 116), (148, 148, 156), (188, 188, 194), (222, 222, 226)]
+LANDMARK = {
+    "silph_co": dict(
+        source="corpus_tower", title="CORPUS's tower (FOUNDRY CO.)",
+        clear=(46, 206), floor=104, quad=((46, 114), (194, 114), (166, 2), (74, 2)),
+        sky=[(150, 176, 196), (214, 222, 220), (238, 232, 212)], skygrad=1,
+        leaf=[(36, 52, 34), (66, 84, 48), (104, 118, 64), (150, 156, 96)],
+        rock=[(80, 72, 60), (128, 116, 96), (176, 164, 140), (212, 202, 180)],
+        seed=4464, denoise=0.46, post=["redband"], force=[(198, 34, 44)],
+        prompt="looking up at a tall office tower clad in brass sheet with rows of rivets, one strict grid of identical "
+               "small square windows all lit warm, a stepped octagonal brass crown with one thin red band, a glass "
+               "lobby at its foot, dark bronze trees at the sides, pale warm sky",
+        neg="glass curtain wall, blue glass, sign, lettering"),
+    "pokemon_tower": dict(
+        source="daemon_tower", title="DAEMON TOWER",
+        clear=(52, 200), floor=108, quad=((48, 122), (192, 122), (160, 0), (80, 0)),
+        sky=[(168, 168, 178), (214, 214, 220), (236, 236, 240)], skygrad=1,
+        leaf=[(52, 56, 58), (88, 92, 94), (128, 132, 132), (168, 170, 170)], rock=GREYS,
+        seed=4467, denoise=0.50,
+        prompt="looking up at a pale round stone tower made of halftone dots, dense dark dots at its foot thinning "
+               "to sparse dots at the top, seven bands of small arched niches each holding a tiny candle flame, a "
+               "dotted dome with a thin spire, a dark doorway, grey rocks and grey pines at the sides, overcast grey "
+               "sky, monochrome grey with only the small warm candle flames",
+        neg="colour, green, blue sky, pagoda, tiers, roof eaves, candle on the ground, flame at the door, fire"),
+    "pokemon_mansion": dict(
+        source="mansion", title="the MANSION", drawn_scene=True,
+        quad=((30, 122), (210, 122), (198, 8), (42, 8)),
+        sky=[(122, 112, 108), (170, 160, 150), (208, 198, 184)], sea=[(40, 64, 88), (72, 104, 128)],
+        sand=[(150, 132, 98), (196, 178, 136)],
+        seed=4468, denoise=0.45,
+        prompt="looking up at a burned grey stone mansion, its roof caved in at the middle where curved grey metal "
+               "racks show like the ribs of a rib cage against the black, one big black soot stain spreading up the "
+               "wall from the doorway to the cave-in, four dark square windows, worn stone steps to a black doorway, "
+               "cold and long burnt out, an ash grey hazy sky, a dark sea behind, sand in front",
+        neg="fire, flames, glow, embers, orange light, arched windows, green grass, bright colours, sign"),
+}
+
+
+def _homography(src, dst):
+    """the 8 coefficients PIL's PERSPECTIVE wants: each OUTPUT point (dst) to its INPUT point (src)"""
+    import numpy as np
+    a, b = [], []
+    for (x, y), (u, v) in zip(dst, src):
+        a.append([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.append(u)
+        a.append([0, 0, 0, x, y, 1, -v * x, -v * y]); b.append(v)
+    return list(np.linalg.solve(np.array(a, float), np.array(b, float)))
+
+
+def landmark_drawing(src):
+    """(RGBA) the building as the engine draws it now. corpus_tower and daemon_tower: gbalandmarks' 1x drawing (the
+    whole tower on one canvas, DAEMON TOWER's dome from ROUTE 10's rows), which this checks against reviewsheet's
+    render of the built map, pixel for pixel where the drawing is opaque. The MANSION: cut from that render (its 7x4
+    cells and the three cells of its steps)."""
+    if src == "mansion":
+        l = RS.layout_of("CinnabarIsland")
+        img = RS.render(l).convert("RGBA").crop((5 * 16, 0, 12 * 16, 5 * 16))
+        px = img.load()
+        for y in range(64, 80):
+            for x in range(112):
+                r, g, b_, _ = px[x, y]
+                if not 32 <= x < 80 or g > r + 16:                  # the steps, not the grass round them
+                    px[x, y] = (0, 0, 0, 0)
+        return img
+    im = Image.open(os.path.join(LANDMARK_DRAWINGS, src, "drawing_1x.png")).convert("RGBA")
+    mp, x0, y0 = {"corpus_tower": ("SaffronCity", 29, 16), "daemon_tower": ("LavenderTown", 15, 0)}[src]
+    cut = {"daemon_tower": 128}.get(src, 0)                       # the drawing's rows above the town map are ROUTE 10's
+    r = RS.render(RS.layout_of(mp)).convert("RGB")
+    a, b = im.load(), r.load()
+    bad = sum(1 for y in range(cut, im.size[1]) for x in range(im.size[0])
+              if a[x, y][3] == 255 and a[x, y][:3] != b[x0 * 16 + x, y0 * 16 + y - cut])
+    if bad:
+        sys.exit("  !! %s: gbalandmarks' drawing differs from the built map at %d pixels -- redraw from the map" % (src, bad))
+    return im
+
+
+def _grade(c, k, p, lo, hi):
+    r = c.get(k)
+    return _ramp(r, (_lum(p) - lo) / max(1, hi - lo)) if r else p
+
+
+def landmark_init(folder):
+    """the start image for a landmark's card, at the painting's size"""
+    c = LANDMARK[folder]
+    K = PAINT_SIZE[0] / 240
+    if c.get("drawn_scene"):
+        bg = Image.new("RGB", (240, 112))
+        px = bg.load()
+        for y in range(112):
+            for x in range(240):
+                if y < 58:
+                    px[x, y] = _ramp(c["sky"], y / 58)
+                elif y < 92:
+                    px[x, y] = _ramp(c["sea"], (y - 58) / 34 + 0.15 * ((x * 7 + y * 3) % 5 == 0))
+                else:
+                    px[x, y] = _ramp(c["sand"], (y - 92) / 20)
+    else:
+        vt, vm, vpal = vanilla(folder)
+        v = compose(vt, vm, vpal).crop((0, 24, 240, 136))
+        bg, vp = v.copy(), v.load()
+        px = bg.load()
+        lums = collections.defaultdict(list)
+        for y in range(112):
+            for x in range(240):
+                lums[_region(vp[x, y])].append(_lum(vp[x, y]))
+        rng = {k: (min(l), max(l)) for k, l in lums.items()}
+        xa, xb = c["clear"]
+        for y in range(112):
+            for x in range(240):
+                p = vp[x, y]
+                k = _region(p)
+                if xa <= x < xb and not (k == "leaf" and _lum(p) < 150):   # vanilla's building gone: sky, ground
+                    px[x, y] = _ramp(c["rock"], 0.55) if y >= c["floor"] else _ramp(c["sky"], y / 112)
+                    continue
+                if k == "white" and not c.get("white"):
+                    k = "sky" if y < 60 else "rock"
+                if k == "sky" and c.get("skygrad"):
+                    px[x, y] = _ramp(c["sky"], y / 112)
+                    continue
+                if k == "water":
+                    k = "leaf"
+                lo, hi = rng.get(k, (0, 255))
+                px[x, y] = _grade(c, k, p, lo, hi)
+    out = bg.resize(PAINT_SIZE, Image.BICUBIC).convert("RGBA")
+    b = landmark_drawing(c["source"])
+    W, H = b.size
+    quad = [(x * K, y * K) for x, y in c["quad"]]                    # foot-left, foot-right, crown-right, crown-left
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], quad)
+    warped = b.transform(PAINT_SIZE, Image.PERSPECTIVE, co, Image.NEAREST)
+    out.alpha_composite(warped)
+    #  softened, so the server paints it rather than sharpening a blown-up 1x drawing (at the painting's size a 1x
+    #  pixel is 4.5 wide; the caves' start images were bicubic and came back painted, the hard ones came back blocky)
+    from PIL import ImageFilter
+    return out.convert("RGB").filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
+
+
 def paint(folder, sec, out_dir):
     """--paint: the start image, then the sprite server's painting of it, with its record"""
     import spriteforge
     d = os.path.join(out_dir, folder)
     os.makedirs(d, exist_ok=True)
     init = os.path.join(d, "painted_init.png")
-    paint_init(folder, sec).save(init)
-    c = PAINT[folder]
+    (landmark_init(folder) if folder in LANDMARK else paint_init(folder, sec)).save(init)
+    c = LANDMARK.get(folder) or PAINT[folder]
     p = dict(mode="i2i", out=os.path.join(d, "painted"), prompt=PAINT_STYLE % c["prompt"],
              negative=PAINT_NEG + (", " + c["neg"] if c.get("neg") else ""),
              seed=c["seed"], steps=28, cfg=5.5, sampler="dpmpp_2m", scheduler="karras", denoise=c["denoise"],
@@ -588,7 +745,7 @@ def painted_picture(folder):
         h = int(W / want)
         im = im.crop((0, (H - h) // 2, W, (H - h) // 2 + h))
     im = im.resize((240, 112), Image.LANCZOS)
-    for m in PAINT.get(folder, {}).get("post", []):
+    for m in (LANDMARK.get(folder) or PAINT.get(folder, {})).get("post", []):
         POSTS[m](im)
     return im
 
@@ -627,7 +784,27 @@ def post_braille(im):
                 px[x + 2, y + 1] = px[x + 1, y + 2] = px[x + 2, y + 2] = _shade(base, 0.6)
 
 
-POSTS = dict(braille=post_braille)
+def post_redband(im, folder="silph_co"):
+    """CORPUS's tower, after the painting: the crown's one thin red band (the server paints it out at any denoise
+    that leaves the brass painted) laid back from the building's own drawing, warped to the card at 1x"""
+    c = LANDMARK[folder]
+    b = landmark_drawing(c["source"])
+    W, H = b.size
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], c["quad"])
+    #  the band is two pixels of the drawing; near the crown the keystone squeezes rows to a third, so NEAREST would
+    #  drop it -- the band is warped as a mask, bilinear, and kept wherever it covers a third of a pixel
+    red = (198, 34, 44)
+    mask = Image.new("L", b.size)
+    mask.putdata([255 if p[:3] == red and p[3] == 255 else 0 for p in b.getdata()])
+    w = mask.transform((240, 112), Image.PERSPECTIVE, co, Image.BILINEAR).load()
+    px = im.load()
+    for y in range(112):
+        for x in range(240):
+            if w[x, y] > 80:
+                px[x, y] = red
+
+
+POSTS = dict(braille=post_braille, redband=post_redband)
 
 
 # ================================================================== OTHER CAVE's four lights
@@ -800,12 +977,15 @@ def keep_accents(pic, q, n=15, rounds=3):
     return q
 
 
-def reduce(pic, vpal, accents=False):
+def reduce(pic, vpal, accents=False, force=()):
     """15 colours into palette 13's indices 1..15 (index 0 vanilla's: BG0 colour 0 is transparent); a painting keeps
-    its accents (keep_accents)"""
-    q = pic.quantize(colors=15, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    its accents (keep_accents); a colour in force (a landmark's, too few pixels for keep_accents to see: CORPUS's red
+    band) takes an index of its own"""
+    q = pic.quantize(colors=15 - len(force), method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
     if accents:
-        q = keep_accents(pic, q)
+        q = keep_accents(pic, q, n=15 - len(force))
+    if force:
+        q = _fixed(pic, [tuple(q.getpalette()[i * 3:i * 3 + 3]) for i in range(15 - len(force))] + list(force))
     qp = (q.getpalette()[:45] + [0] * 45)[:45]                      # a cave of fewer colours leaves the rest unused
     cols = [tuple(qp[i * 3:i * 3 + 3]) for i in range(15)]
     #  to the GBA's 5 bits, as the palette will hold them
@@ -823,7 +1003,7 @@ def build(folder, sec):
     pic, where = picture(folder, sec)
     if pic is None:
         return None
-    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"))
+    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"), force=LANDMARK.get(folder, {}).get("force", ()))
     tiles, seen, m, tpal = [], {}, [0] * 640, []
 
     def add(t, p=14):
@@ -906,7 +1086,10 @@ def report():
     print("  %d preview entries, %d pictures (graphics/map_preview/)" % (sum(len(v) for v in by_folder.values()),
                                                                          len(by_folder)))
     for folder, ents in by_folder.items():
-        status = ("batch E: " + BATCH_E[folder]) if folder in BATCH_E else ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
+        status = ("batch E: " + BATCH_E[folder]) if folder in BATCH_E else \
+            ("landmark (T-447's %s): drafted with --landmarks%s" % (LANDMARK[folder]["source"],
+             ", APPROVED" if folder in LANDMARK_APPROVED else ", waits on the user")) if folder in LANDMARK else \
+            ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
         print("  %-17s %s" % (folder, status))
         for key, sec, typ in ents:
             n = nm.get(sec, "?")
@@ -921,7 +1104,7 @@ def main():
         return 1
     by_folder = report()
     if A.paint is not None:
-        for folder in (A.paint or list(PAINT)):
+        for folder in (A.paint or list(LANDMARK if A.landmarks else PAINT)):
             key, sec, typ = by_folder[folder][0]
             paint(folder, sec, A.draft or DRAFT_DEFAULT)
         if not (A.draft or A.write):
@@ -932,7 +1115,10 @@ def main():
     out_dir = A.draft or DRAFT_DEFAULT
     sheets = A.sheets or out_dir
     rows = []
-    for folder in BATCH_E:
+    for folder in (LANDMARK if A.landmarks else BATCH_E):
+        if A.landmarks and A.write and folder not in LANDMARK_APPROVED and not A.draft:
+            print("  %-17s not approved (LANDMARK_APPROVED): not written" % folder)
+            continue
         key, sec, typ = by_folder[folder][0]
         made = build(folder, sec)
         if not made:
@@ -943,7 +1129,8 @@ def main():
         van, dra = compose(vt, vm, vpal), compose(tiles, m, pal)
         for im in (van, dra):
             draw_name(im, nm[sec], (vpal if im is van else pal))
-        notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, BATCH_E[folder], "",
+        what = ("from T-447's %s, as built" % LANDMARK[folder]["source"]) if A.landmarks else BATCH_E[folder]
+        notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, what, "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
                  "palette 13: 15 colours + vanilla's 0", "palette 14, letterbox, banner: vanilla's"]
         painted = where.startswith("painted")
@@ -971,7 +1158,7 @@ def main():
                 li.save(os.path.join(d, "preview_light%d.png" % n))
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
-        if A.write:
+        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED):
             d = os.path.join(MPS, folder)
             tiles_png(png, pal, os.path.join(d, "tiles.png"))
             open(os.path.join(d, "tilemap.bin"), "wb").write(struct.pack("<640H", *m))
@@ -998,7 +1185,11 @@ def main():
         per = 5 if painted else (len(rows) + 1) // 2
         parts = [rows[i:i + per] for i in range(0, len(rows), per)]
         for i, part in enumerate(parts, 1):
-            if painted:
+            if A.landmarks:
+                p = sheet(part, os.path.join(sheets, "t445n_%d.png" % i),
+                          "T-445 DRAFT -- the landmarks' name cards, vanilla (left) and PAINTED from T-447's buildings "
+                          "(right); the name is the game's, in its own font. Sheet %d of %d." % (i, len(parts)))
+            elif painted:
                 p = sheet(part, os.path.join(sheets, "t445p_%d.png" % i),
                           "T-445 DRAFT -- the cave previews, vanilla (left) and PAINTED on the sprite server in each "
                           "cave's colours (right); the name is the game's, in its own font. Sheet %d of %d."

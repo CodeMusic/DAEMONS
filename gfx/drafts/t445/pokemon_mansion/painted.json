@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/pokemon_mansion/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, looking up at a burned grey stone mansion, its roof caved in at the middle where curved grey metal racks show like the ribs of a rib cage against the black, one big black soot stain spreading up the wall from the doorway to the cave-in, four dark square windows, worn stone steps to a black doorway, cold and long burnt out, an ash grey hazy sky, a dark sea behind, sand in front, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, fire, flames, glow, embers, orange light, arched windows, green grass, bright colours, sign",
+ "seed": 4468,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/pokemon_mansion/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 44.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 12:08:13"
+}
