@@ -55,3 +55,9 @@ Built (engine 3e7dd26bc): FOUNDRY CO., DAEMON TOWER and the MANSION name cards, 
 DRAFT: CORPUS HIDEOUT and WAREHOUSE name cards from the current maps, beside vanilla
 
 ![26Oct2026 - T445 - hideout and warehouse cards draft - 9](26Oct2026%20-%20T445%20-%20hideout%20and%20warehouse%20cards%20draft%20-%209.png)
+
+### 26Oct2026 - T452 - round two draft - 10
+
+DRAFT T-452 round two: batch 1 fixes, MANIFOLD A and B, batch 2 WORM to SPRAWL
+
+![26Oct2026 - T452 - round two draft - 10](26Oct2026%20-%20T452%20-%20round%20two%20draft%20-%2010.png)
