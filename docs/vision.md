@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.310**
+**A total conversion — the living design bible, v11.311**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4810,6 +4810,46 @@ take off.*
 - ***The USER card's BENCHMARKS*** (T-272): **R turns the card's figures into the eight MARKS, each with what it certifies** — *the concept of 5's table said without its name, DRAFT; one not yet held says so.* ***There is no UNDERSTANDINGS tab***: *a list of them would be the count T-252 rules out, and the margins already hold them.*
 - *T-269's seven-day table is built as 9.21's week: the name on leaving a building, the note at the terminal, the colour on the CHECKPOINT's trim.*
 
+### 4.37 The second joining — a merger that holds both (T-457, the user, 2026-10-26)
+
+***Lineage: private*** (`docs/private/draft-full-circle-2026-10-23.md`). **The first merger is Brazen's**: *CLEAR LABORATORY under gold leaf, SCORN SOLUTIONS on top, and the metric changed* (4.4, 4.10). **4.18a says what it did in one line — he raised one perspective's vote.** ***This is its rhyme, and the rhyme is the inverse operation***: *not one name laid over another, but two halves made apart and joined side by side, neither on top* — **which is what CELIO's machine already teaches as a term of art** (8.2a's key pair: *two halves made together, useless singly*).
+
+#### What CRYSTAL does after THE ANNEX
+
+***4.34 ends with a re-reading, not a rescue, and this keeps that.*** **She goes back to work.** *The work is the network in THE MARGINS* — **the one the player helped finish in Act 2** — *so the passion she takes up is something the player built without knowing whose it would be.* **The INDEX was the record that could not hold what matters; the network is a way of listening to someone who is not in the room.** ***The joining puts the two together*** — **her INDEX and CELIO's machine** — *and the GLOBAL INDEX (9.17) is what that looks like in the player's hands.*
+
+*Read through 0.5:* **the signals are CONTENT** (raw, unread), **the record is CONTEXT** (history, framing), **and the joining is the third stage that holds both** — *4.18a's clarifier with its votes even again.* **Nobody in the game says so.**
+
+#### Seeded early, pays off late
+
+- **Act 2 (THE MARGINS):** *CELIO's network carries signals once its two halves meet.* **The seed is small** (*a line from CELIO, a sign on ONE ISLAND, or a keeper — open*).
+- **After THE ANNEX, four pieces and no new maps:**
+
+| | | |
+|---|---|---|
+| **The receiver** | *on CRYSTAL's lab desk, picking up one daemon far away, on an island, doing fine* | **She does not explain it** |
+| **PROSPECTUS 4** | *her new work, named from the margins' own words* (**the name is open**) | **Undated** |
+| **PROSPECTUS 5** | *the joining: her INDEX and CELIO's machine, two names side by side, neither on top* | **Undated** |
+| **Brazen's board** | *the posted scores (three at 30, one at 94) give way, after the GLOBAL INDEX, to a posting with no scores* | **One sign, one flag** |
+| **The CHECKPOINT keepers** | *a line that shows they are listening to someone not in the room* | ***Tending between the fights where you are judged*** |
+
+- **CRYSTAL hands over the GLOBAL INDEX almost silently**: *one line, about something else.* **The merger is on the papers and the signs, never in her mouth.**
+
+#### What is deliberately not here
+
+- ***Nobody is rescued, and it is not a happy ending stated.*** **It is still a merger, and Brazen is right there**: *the player may wonder whether it goes the same way. Only details show the difference — two names, no scores.*
+- ***SCORN is unchanged.*** **He is still in Brazen and nothing happens to him** — *no punishment, no redemption. The joining is not about him.*
+- ***Nothing is repainted.*** **The Quicksilver gold keeps lifting** (*4.34's last beat*), **so the second joining sits beside the first rather than undoing it.**
+- ***No dates.*** **Both papers are undated**, *unlike PROSPECTUS 3* — **and the rule that each date belongs to one document (SECRETS §4) is untouched.**
+- ***Tending, never medical*** (craft rule 3): **a signal, a check-in, a keeper's ledger** — *never a reading, a vital, a condition.*
+- ***Ty is not in it.*** **4.17's not-visiting stays a choice on both sides.**
+
+#### Open
+
+- **The name of her work** (*candidates: THE MARGIN WATCH, BETWEEN*).
+- **How the Act 2 seed shows.**
+- **The words**: *her line at the receiver, her handover line, PROSPECTUS 4 and 5, Brazen's posting, the keepers' lines* — **the user is writing some of them**; *every new line DRAFT.*
+
 ## 5. THE BENCHMARKS
 
 | # | City | Type | Concept | Mechanical lesson |
@@ -8709,6 +8749,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; she hands over the GLOBAL INDEX almost silently; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
 - **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)
 - **One self-contained iOS app, iPad first (T-453, 2026-10-24)** — the game patched on the device from the player's own ROM and never bundled, the companion, the LIBRARY and the NOTEBOOK; INDEX cards coloured by type match with the understandings held (9.28)

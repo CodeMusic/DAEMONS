@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.311 — 2026-10-26
+
+### The second joining (T-457)
+
+- ***4.37 (the user)***: **after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish, and her INDEX joins CELIO's machine side by side, neither on top** -- *the inverse of Brazen's gold leaf.* **Seeded in Act 2, paid off after:** *a receiver on her desk picking up one daemon far away, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening to someone not in the room; she hands over the GLOBAL INDEX almost silently.* **SCORN unchanged, the gold never repainted, nobody rescued.** *The name of her work, the Act 2 seed and the words are open; the user is writing some of them.*
+
 ## v11.310 — 2026-10-24
 
 ### A daemon carried can evolve away (C-184, T-448, T-455)
