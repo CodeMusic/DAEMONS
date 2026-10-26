@@ -43,3 +43,15 @@ v11.310.4: eight of the 25 new daemons noted for another look
 DRAFT: FOUNDRY CO., DAEMON TOWER and the MANSION name cards painted from T-447's buildings, beside vanilla's
 
 ![26Oct2026 - T445 - landmark name cards draft - 7](26Oct2026%20-%20T445%20-%20landmark%20name%20cards%20draft%20-%207.png)
+
+### 26Oct2026 - T445 - landmark name cards built - 8
+
+Built (engine 3e7dd26bc): FOUNDRY CO., DAEMON TOWER and the MANSION name cards, decoded from the built files
+
+![26Oct2026 - T445 - landmark name cards built - 8](26Oct2026%20-%20T445%20-%20landmark%20name%20cards%20built%20-%208.png)
+
+### 26Oct2026 - T445 - hideout and warehouse cards draft - 9
+
+DRAFT: CORPUS HIDEOUT and WAREHOUSE name cards from the current maps, beside vanilla
+
+![26Oct2026 - T445 - hideout and warehouse cards draft - 9](26Oct2026%20-%20T445%20-%20hideout%20and%20warehouse%20cards%20draft%20-%209.png)
