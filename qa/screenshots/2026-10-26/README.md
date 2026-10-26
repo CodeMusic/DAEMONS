@@ -73,3 +73,9 @@ Built (engine 4f24d5d37): CORPUS HIDEOUT's name card beside vanilla
 DRAFT: CORPUS WAREHOUSE's card repainted, candidates A-E with a bigger spin floor
 
 ![26Oct2026 - T445 - warehouse card repaint - 12](26Oct2026%20-%20T445%20-%20warehouse%20card%20repaint%20-%2012.png)
+
+### 26Oct2026 - C187 - the GAME tab on the iPhone, before a game - 13
+
+The new GAME tab on the iPhone: Choose your game, before any ROM is given
+
+![26Oct2026 - C187 - the GAME tab on the iPhone, before a game - 13](26Oct2026%20-%20C187%20-%20the%20GAME%20tab%20on%20the%20iPhone%2C%20before%20a%20game%20-%2013.png)
