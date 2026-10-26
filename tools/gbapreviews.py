@@ -577,7 +577,7 @@ MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, col
 #  is drawn (an ash sky, CINNABAR's sea behind, the sand) and the burned facade laid over it. The sprite server then
 #  repaints it, image to image, at a denoise low enough that our building survives. Nothing here is written to the
 #  engine until the user approves a card (LANDMARK_APPROVED).
-LANDMARK_APPROVED = set()
+LANDMARK_APPROVED = {"silph_co", "pokemon_tower", "pokemon_mansion"}   # the user, 2026-10-26: build all three as drawn
 LANDMARK_DRAWINGS = os.path.join(ROOT, "gfx", "drafts", "landmarks")
 GREYS = [(40, 40, 46), (72, 72, 80), (108, 108, 116), (148, 148, 156), (188, 188, 194), (222, 222, 226)]
 LANDMARK = {
