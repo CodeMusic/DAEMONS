@@ -579,7 +579,8 @@ MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, col
 #  repaints it, image to image, at a denoise low enough that our building survives. Nothing here is written to the
 #  engine until the user approves a card (LANDMARK_APPROVED).
 LANDMARK_APPROVED = {"silph_co", "pokemon_tower", "pokemon_mansion",   # the user, 2026-10-26: build all three as drawn
-                     "rocket_hideout"}                                 # the user, 2026-10-26: CORPUS HIDEOUT as drawn
+                     "rocket_hideout",                                 # the user, 2026-10-26: CORPUS HIDEOUT as drawn
+                     "rocket_warehouse"}                               # the user, 2026-10-26: CORPUS WAREHOUSE, candidate B
 LANDMARK_DRAWINGS = os.path.join(ROOT, "gfx", "drafts", "landmarks")
 GREYS = [(40, 40, 46), (72, 72, 80), (108, 108, 116), (148, 148, 156), (188, 188, 194), (222, 222, 226)]
 LANDMARK = {
@@ -637,7 +638,7 @@ LANDMARK = {
         #  was a 12px strip of ten tiles a row and washed out; the room is lifted 12 rows (its ceiling strip goes) and
         #  the floor laid 26px deep, eight tiles a row at the foot, painted at 0.40. post=["spinfloor"] (with the two
         #  arrow greens in force) lays them back crisp after the painting instead -- the other candidates on sheet
-        #  t445w_repaint. DRAFT: not in LANDMARK_APPROVED.
+        #  t445w_repaint. The user approved candidate B (2026-10-26): in LANDMARK_APPROVED.
         lift=12, floor_tiles=dict(quad=((-8, 112), (248, 112), (222, 86), (18, 86)), cols=8, rows=2),
         seed=4472, denoise=0.40,
         prompt="inside a corporate warehouse, riveted teal metal wall panels, a wooden cage of white bars, a white "
