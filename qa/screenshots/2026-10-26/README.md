@@ -37,3 +37,9 @@ v11.310.4: the REVIEW BOARD and ERRATA as built, decoded from the ROM; ERRATA's 
 v11.310.4: eight of the 25 new daemons noted for another look
 
 ![26Oct2026 - T452 - batch 1 to revisit - 6](26Oct2026%20-%20T452%20-%20batch%201%20to%20revisit%20-%206.png)
+
+### 26Oct2026 - T445 - landmark name cards draft - 7
+
+DRAFT: FOUNDRY CO., DAEMON TOWER and the MANSION name cards painted from T-447's buildings, beside vanilla's
+
+![26Oct2026 - T445 - landmark name cards draft - 7](26Oct2026%20-%20T445%20-%20landmark%20name%20cards%20draft%20-%207.png)
