@@ -79,3 +79,33 @@ DRAFT: CORPUS WAREHOUSE's card repainted, candidates A-E with a bigger spin floo
 The new GAME tab on the iPhone: Choose your game, before any ROM is given
 
 ![26Oct2026 - C187 - the GAME tab on the iPhone, before a game - 13](26Oct2026%20-%20C187%20-%20the%20GAME%20tab%20on%20the%20iPhone%2C%20before%20a%20game%20-%2013.png)
+
+### 26Oct2026 - T452 - round two built - 14
+
+v11.311.1: T-452 round two as built, 46 daemons and every changed icon
+
+![26Oct2026 - T452 - round two built - 14](26Oct2026%20-%20T452%20-%20round%20two%20built%20-%2014.png)
+
+### 26Oct2026 - T452 - round two built - 15
+
+v11.311.1: T-452 round two as built, 46 daemons and every changed icon
+
+![26Oct2026 - T452 - round two built - 15](26Oct2026%20-%20T452%20-%20round%20two%20built%20-%2015.png)
+
+### 26Oct2026 - T452 - round two built - 16
+
+v11.311.1: T-452 round two as built, 46 daemons and every changed icon
+
+![26Oct2026 - T452 - round two built - 16](26Oct2026%20-%20T452%20-%20round%20two%20built%20-%2016.png)
+
+### 26Oct2026 - T452 - round two built - 17
+
+v11.311.1: T-452 round two as built, 46 daemons and every changed icon
+
+![26Oct2026 - T452 - round two built - 17](26Oct2026%20-%20T452%20-%20round%20two%20built%20-%2017.png)
+
+### 26Oct2026 - T445 - warehouse card built - 18
+
+v11.311.1: CORPUS WAREHOUSE's name card as built (B)
+
+![26Oct2026 - T445 - warehouse card built - 18](26Oct2026%20-%20T445%20-%20warehouse%20card%20built%20-%2018.png)
