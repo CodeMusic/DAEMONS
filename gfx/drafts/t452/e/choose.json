@@ -1,0 +1,135 @@
+{
+ "_": "batch 2 (2026-10-26), the charm recipe from the start (dir e, seed 4900), chosen by eye on t452r2_cand_*.png. Seeds: t2i chibi fronts 4901/4902 (4903/4904 a second wording), i2i from today's front 0.8 = 4921, 0.85 = 4922 (0.72 = 4923, 0.76 = 4924 where charmlo ran), backs from today's back 0.66 = 4931, 0.75 = 4932, chibi icons 4941/4942. Icons are reduced by icon3.py (round two), not reduce2's icon step.",
+ "manifold": {
+  "front": "src/manifold_front_4903_pre.png",
+  "back": "src/manifold_back_fromfront_4951_pre.png",
+  "icon": "manifold_icon_4941.png",
+  "note": "A: t2i 4903 (second wording, 'folded grey paper'): a paper manta with creased wings and one eye, gliding -- the folded sheet at last; its grey card taken off by round2.preclean. Back turned from it (4951). B (gfx/drafts/t452/m): one quarter of 4902 (drawn four to a frame), re-detailed at i2i 0.4 (4925) -- a chibi manta face, cuter, but drawn at half resolution (its pixels are 2x2)."
+ },
+ "worm": {
+  "front": "worm_front_i2i_4922.png",
+  "back": "worm_back_i2i_4932.png",
+  "icon": "worm_icon_4942.png",
+  "note": "i2i 0.85: a flat coiled ring with a round-headed little snake peeking out of the front. Back: the coil from behind, no face. Icon: a dark big-eyed snake in a ring."
+ },
+ "outbreak": {
+  "front": "outbreak_front_4902.png",
+  "back": "outbreak_back_i2i_4931.png",
+  "icon": "outbreak_icon_4942.png",
+  "note": "t2i 4902: a big-eyed sitting cobra whose hood is a wide dark cowl framing its face -- the hood read as a hood. i2i kept a cobra but no hood.",
+  "failed": "back: both backs are side views (the model would not turn the cobra); today's back is also a side view"
+ },
+ "surge": {
+  "front": "surge_front_i2i_4921.png",
+  "back": "surge_back_i2i_4931.png",
+  "icon": "surge_icon_4941.png",
+  "note": "i2i 0.8: a small mouse with an arrowhead lightning tail -- the only one with the bolt (the t2i chibis are cuter, with plain tails). Icon: a pale mouse, no bolt (neither icon drew one)."
+ },
+ "sector": {
+  "front": "sector_front_4901.png",
+  "back": "sector_back_i2i_4931.png",
+  "icon": "sector_icon_4941.png",
+  "note": "t2i 4901: a big-eyed armadillo peering out from under a dome of square plates."
+ },
+ "partition": {
+  "front": "partition_front_i2i_4922.png",
+  "back": "partition_back_i2i_4931.png",
+  "icon": "partition_icon_4941.png",
+  "note": "i2i 0.85: a plated pangolin with a big eye; the back is the split dome -- one seam down the middle -- which is the key prop. 4901 (an owl-faced pangolin) is cuter but drifts further."
+ },
+ "fork": {
+  "front": "fork_front_i2i_4922.png",
+  "back": "fork_back_i2i_4931.png",
+  "icon": "fork_icon_4942.png",
+  "note": "i2i 0.85: a big-eyed blushing bunny with long pointed ears.",
+  "failed": "front: the split tail is in no draft of 12 (two wordings, i2i 0.72-0.85) -- a plain bunny, so FORK, THREAD, BRANCH and PREDICTOR (one line of four bunnies) tell apart by their props only"
+ },
+ "thread": {
+  "front": "thread_front_4901.png",
+  "back": "thread_back_i2i_4931.png",
+  "icon": "thread_icon_4941.png",
+  "note": "t2i 4901: a lop bunny with green eyes holding a little green twist of yarn; the icon (4941) trails a green thread loop. The long trailing thread itself was not drawn."
+ },
+ "scheduler": {
+  "front": "scheduler_front_4901.png",
+  "back": "scheduler_back_i2i_4932.png",
+  "icon": "scheduler_icon_4941.png",
+  "note": "t2i 4901: a stout round armoured brute, spiked helmet and spiked pauldrons, glowing eyes. Back: the spiked helmet from behind."
+ },
+ "branch": {
+  "front": "branch_front_4901.png",
+  "back": "branch_back_i2i_4932.png",
+  "icon": "branch_icon_4942.png",
+  "note": "t2i 4901: a bunny with leafy sprigs growing from its ears (the twig became leaves); the back has the sprig on its head; icon 4942 a sapling on its head. Leaves green over the cap go to the type's ramp."
+ },
+ "predictor": {
+  "front": "predictor_front_4902.png",
+  "back": "predictor_back_i2i_4932.png",
+  "icon": "predictor_icon_4942.png",
+  "note": "t2i 4902: a bunny with pink-lined ears and a tuft on its brow.",
+  "failed": "front: the horn is in no draft of 12 (two wordings, 'unicorn horn' included) -- a tuft is all that is left"
+ },
+ "pipeline": {
+  "front": "pipeline_front_4901.png",
+  "back": "pipeline_back_i2i_4931.png",
+  "icon": "pipeline_icon_4942.png",
+  "note": "t2i 4901: a chibi goat with big curled horns and a shaggy fringe -- both kept."
+ },
+ "anomaly": {
+  "front": "anomaly_front_i2i_4921.png",
+  "back": "anomaly_back_i2i_4932.png",
+  "icon": "anomaly_icon_4942.png",
+  "note": "i2i 0.8: a round puff with curved antennae-horns and small wings, both kept; back the wings from behind."
+ },
+ "outlier": {
+  "front": "outlier_back_fromfront_4951.png",
+  "back": "outlier_back_i2i_4932.png",
+  "icon": "outlier_icon_4942.png",
+  "note": "a round grey cyclops, one huge eye: the 'back' turned from the drawn icon 4942 at 0.75 (4951) redrew it as a front instead, cleaner than the icon -- the only drafts of 16 with the one eye (every front, both wordings, drew two). Back: today's back repainted at 0.75 (round, two ears). Icon 4942, the winged cyclops.",
+  "failed": "back has two pointed ears the new front lacks (no draft turned the cyclops round); front comes from an icon draft by way of the back stage"
+ },
+ "flicker": {
+  "front": "flicker_front_i2i_4922.png",
+  "back": "flicker_back_i2i_4931.png",
+  "icon": "flicker_icon_4941.png",
+  "note": "i2i 0.85: a sitting grey fox with big blue eyes and a big dark-tipped tail; t2i 4901 was an orange fox."
+ },
+ "overrun": {
+  "front": "overrun_front_4902.png",
+  "back": "overrun_back_i2i_4932.png",
+  "icon": "overrun_icon_4941.png",
+  "note": "t2i 4902: a sitting fox whose big tail streams up taller than itself. i2i 4921 has the longer body and tail but less charm."
+ },
+ "suspend": {
+  "front": "suspend_front_i2i_4921.png",
+  "back": "suspend_back_i2i_4932.png",
+  "icon": "suspend_icon_4941.png",
+  "note": "i2i 0.8: a round puffball with a little sprig-tuft and a worried face; the one shut eye was lost everywhere (both open)."
+ },
+ "hibernate": {
+  "front": "hibernate_front_4904.png",
+  "back": "hibernate_back_i2i_4932.png",
+  "icon": "hibernate_icon_4942.png",
+  "note": "t2i 4904 (second wording): a round grey blob with long floppy ears hanging to the ground -- eyes open (not asleep); the asleep one (4921) lay in a puddle and lost the ears. Back: the floppy ears from behind. Icon 4942 is asleep."
+ },
+ "echo": {
+  "front": "echo_front_i2i_4922.png",
+  "back": "echo_back_i2i_4932.png",
+  "icon": "echo_icon_4942.png",
+  "note": "i2i 0.85: a white bat with wide wings, big pink-lined ears and an open mouth calling."
+ },
+ "tracer": {
+  "front": "tracer_front_4902.png",
+  "back": "tracer_back_i2i_4931.png",
+  "icon": "tracer_icon_4942.png",
+  "note": "t2i 4902: a round bat with a wide fanged open mouth and dark wings. Icon 4942 dark, mouth wide open. Cleaned on a key ground: the plain clean wore its dark wings away.",
+  "key": true
+ },
+ "sprawl": {
+  "front": "src/sprawl_front_i2i_4922_grey.png",
+  "back": "src/sprawl_back_i2i_4931_grey.png",
+  "icon": "sprawl_icon_4942.png",
+  "note": "i2i 0.85: a round radish bulb with a tuft of long leaves and a little face. t2i 4901 is cuter but its leaves wrap all round it. Its green leaves greyed before reduction so they take GRASS's own ramp: kept as accents they were turned off the type's hue, to purple. Back: 4931 (a full leafy tuft from behind), greyed the same way and cleaned on a key ground. The pale ground patch under its feet taken off the clean grid afterwards (round2.unground).",
+  "key-back": true
+ }
+}

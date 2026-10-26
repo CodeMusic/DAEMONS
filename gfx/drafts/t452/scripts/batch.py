@@ -32,7 +32,7 @@ import json, os, subprocess, sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-from subjects import S, CHARM
+from subjects import S, CHARM, CHARM2
 R = "/Users/christopherhicks/Projects/DAEMONS"
 #  T452_ROOT: work outside the tree (a release once needed it clean for half an hour); copy the files in afterwards
 T = os.environ.get("T452_ROOT", R + "/gfx/drafts/t452")
@@ -114,7 +114,7 @@ GIC = ("chibi, big round head, large expressive eyes, the whole creature filling
 GBC = "rear view, seen from behind, facing away from the viewer, " + GB
 
 def charm(n):
-    s, c = S[n], CHARM[n]
+    s, c = S[n], CHARM2.get(n, CHARM[n])
     fp = HEAD + c["key"] + ", " + c["front"] + ", " + GC; fneg = "rear view, " + s["neg"] + ", " + N
     for k in range(2):
         run(["t2i", "--size", "512x512", "--seed", str(SEED + 1 + k), "--out", f"{REL}/{n}_front_{SEED + 1 + k}",
@@ -133,7 +133,7 @@ def charm(n):
              "boy, person, frame, border, " + s["neg"] + ", " + N])
 
 def charmlo(n):
-    s, c = S[n], CHARM[n]; fneg = "rear view, " + s["neg"] + ", " + N
+    s, c = S[n], CHARM2.get(n, CHARM[n]); fneg = "rear view, " + s["neg"] + ", " + N
     fp = HEAD + c["key"] + ", " + c["front"] + ", " + GC
     for k, dn in enumerate((0.72, 0.76)):
         run(["i2i", "--seed", str(SEED + 23 + k), "--denoise", str(dn), "--image", src512(n, "front"),
@@ -145,7 +145,7 @@ def charmlo(n):
 
 def charmback(n):
     """the chosen new front, turned: image-to-image from it with the rear-view prompt, at 0.75 and 0.85"""
-    s, c = S[n], CHARM[n]
+    s, c = S[n], CHARM2.get(n, CHARM[n])
     fr = choose().get(n, {}).get("front")
     if not fr: print(n, "charmback: no front chosen in choose.json"); return
     a = Image.open(f"{D}/{fr}").convert("RGB"); src = f"{D}/src/{n}_newfront_512.png"; a.save(src)
@@ -236,7 +236,7 @@ def keyed(f):
             p, r = y + dy, x + dx
             if 0 <= p < h and 0 <= r < w and white[p, r] and not seen[p, r]: seen[p, r] = True; q.append((p, r))
     a[seen] = (0, 200, 0)
-    out = "src/" + f[:-4] + "_key.png"
+    out = "src/" + os.path.basename(f)[:-4] + "_key.png"
     Image.fromarray(a.astype(np.uint8)).save(f"{D}/{out}")
     return out
 

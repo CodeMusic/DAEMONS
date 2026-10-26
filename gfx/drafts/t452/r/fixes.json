@@ -1,0 +1,172 @@
+{
+ "rovercub": {
+  "ground_cells_removed": 235,
+  "note": "the pale ground ellipse under the feet and between the legs, off the built front"
+ },
+ "locus": {
+  "back": "locus_back_fromfront_5011.png",
+  "note": "the new front turned: a round grey critter from behind, its tail curled up beside it in a loop. 5012 the same with a fluffier tail; 5002 shows the loop best but is a black-eared cat in profile; 5001/5004 came framed.",
+  "back_accent_pct": 1.8,
+  "front_accent_pct": 1.8
+ },
+ "relay": {
+  "back": "src/relay_back_zoom.png",
+  "note": "the built back's draft cropped to its subject and scaled so it stands 58 cells tall (was 42), feet on the ground line; the plain zoom, not re-gridded -- the i2i passes (5021 at 0.3, 5022 at 0.4) tinted it blue and the reduction kept the tint as violet fringes.",
+  "back_accent_pct": 0.3,
+  "front_accent_pct": 5.0
+ },
+ "buffer": {
+  "back": "src/buffer_back_zoom.png",
+  "note": "the built back's draft cropped to its subject and scaled so it stands 58 cells tall (was 42), feet on the ground line; the plain zoom, not re-gridded -- the i2i passes (5021 at 0.3, 5022 at 0.4) tinted it blue and the reduction kept the tint as violet fringes.",
+  "back_accent_pct": 1.4,
+  "front_accent_pct": 4.0
+ },
+ "roverseer": {
+  "icon": {
+   "icon_palette": 1,
+   "ramp": [
+    14,
+    5,
+    3
+   ],
+   "ramp_rgb": [
+    [
+     98,
+     98,
+     90
+    ],
+    [
+     156,
+     205,
+     74
+    ],
+    [
+     255,
+     255,
+     255
+    ]
+   ],
+   "bands": [
+    105,
+    175,
+    237
+   ],
+   "accent_cells": 8,
+   "size": [
+    28,
+    28
+   ]
+  }
+ },
+ "indexer": {
+  "icon": {
+   "icon_palette": 1,
+   "ramp": [
+    4,
+    12,
+    3
+   ],
+   "ramp_rgb": [
+    [
+     123,
+     156,
+     74
+    ],
+    [
+     213,
+     213,
+     106
+    ],
+    [
+     255,
+     255,
+     255
+    ]
+   ],
+   "bands": [
+    124,
+    199,
+    238
+   ],
+   "accent_cells": 0,
+   "size": [
+    28,
+    23
+   ]
+  }
+ },
+ "injector": {
+  "icon": {
+   "icon_palette": 1,
+   "ramp": [
+    4,
+    12,
+    3
+   ],
+   "ramp_rgb": [
+    [
+     123,
+     156,
+     74
+    ],
+    [
+     213,
+     213,
+     106
+    ],
+    [
+     255,
+     255,
+     255
+    ]
+   ],
+   "bands": [
+    115,
+    186,
+    228
+   ],
+   "accent_cells": 8,
+   "size": [
+    28,
+    18
+   ]
+  }
+ },
+ "crawler": {
+  "icon": {
+   "icon_palette": 1,
+   "ramp": [
+    4,
+    12,
+    3
+   ],
+   "ramp_rgb": [
+    [
+     123,
+     156,
+     74
+    ],
+    [
+     213,
+     213,
+     106
+    ],
+    [
+     255,
+     255,
+     255
+    ]
+   ],
+   "bands": [
+    164,
+    200,
+    242
+   ],
+   "accent_cells": 9,
+   "size": [
+    28,
+    23
+   ]
+  }
+ }
+}

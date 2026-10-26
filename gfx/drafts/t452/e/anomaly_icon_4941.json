@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "gfx/drafts/t452/e/anomaly_icon_4941",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, two curled antennae and two small feathered wings, a cute round fluffy puff with big eyes, two curled antennae and two small wings, chibi, big round head, large expressive eyes, the whole creature filling the frame, very simple, large shapes, few details, thick black outline, soft shading, mostly greyscale, medium grey with light grey highlights, isolated on white, centered, no text, no frame, no border",
+ "negative": "sprite sheet, grid of icons, tiled pattern, repeated, many copies, four creatures, human, girl, boy, person, frame, border, angel, human, halo, bee, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 4941,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.3,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 13:07:24"
+}

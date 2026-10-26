@@ -1,0 +1,1850 @@
+{
+ "manifold": {
+  "name": "MANIFOLD",
+  "national": 9,
+  "slot": "blastoise",
+  "gametype": "VECTOR",
+  "type": "FLYING",
+  "props": "a flat folded sheet, a manta shape with fin wings and a long tail (SURFACE)",
+  "note": "A: t2i 4903 (second wording, 'folded grey paper'): a paper manta with creased wings and one eye, gliding -- the folded sheet at last; its grey card taken off by round2.preclean. Back turned from it (4951). B (gfx/drafts/t452/m): one quarter of 4902 (drawn four to a frame), re-detailed at i2i 0.4 (4925) -- a chibi manta face, cuter, but drawn at half resolution (its pixels are 2x2).",
+  "failed": "",
+  "front": "src/manifold_front_4903_pre.png",
+  "back": "src/manifold_back_fromfront_4951_pre.png",
+  "icon": "src/manifold_icon_4941_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,30,41,40",
+    "painted": "[4, 5, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 750
+   },
+   "front_accent_pct": 0.3,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "11,31,39,39",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.9,
+    "accent_clean_after": 8.9,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 496
+   },
+   "back_accent_pct": 8.9,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1029
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     6,
+     11,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      213,
+      98,
+      65
+     ],
+     [
+      255,
+      180,
+      164
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     181,
+     222,
+     247
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     20
+    ]
+   }
+  }
+ },
+ "worm": {
+  "name": "WORM",
+  "national": 23,
+  "slot": "ekans",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a serpent coiled flat into a ring of banded segments, its head in the middle (PROPAGATE)",
+  "note": "i2i 0.85: a flat coiled ring with a round-headed little snake peeking out of the front. Back: the coil from behind, no face. Icon: a dark big-eyed snake in a ring.",
+  "failed": "",
+  "front": "worm_front_i2i_4922.png",
+  "back": "worm_back_i2i_4932.png",
+  "icon": "worm_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,31,37,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1367
+   },
+   "front_accent_pct": 0.6,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "23,35,38,55",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 2249
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1609
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    20,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     97,
+     167,
+     235
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "outbreak": {
+  "name": "OUTBREAK",
+  "national": 24,
+  "slot": "arbok",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a tall upright cobra with a wide spread hood (SPREADING)",
+  "note": "t2i 4902: a big-eyed sitting cobra whose hood is a wide dark cowl framing its face -- the hood read as a hood. i2i kept a cobra but no hood.",
+  "failed": "back: both backs are side views (the model would not turn the cobra); today's back is also a side view",
+  "front": "outbreak_front_4902.png",
+  "back": "outbreak_back_i2i_4931.png",
+  "icon": "outbreak_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "29,35,37,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.9,
+    "accent_clean_after": 1.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1957
+   },
+   "front_accent_pct": 1.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "15,33,23,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 22.0,
+    "accent_clean_after": 14.6,
+    "greyed_px": 80,
+    "streak_px": 20,
+    "creature_px": 1077
+   },
+   "back_accent_pct": 14.6,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1319
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    18,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     190,
+     234
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "surge": {
+  "name": "SURGE",
+  "national": 26,
+  "slot": "raichu",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a mouse with a long zigzag lightning-bolt tail (SUSTAINED)",
+  "note": "i2i 0.8: a small mouse with an arrowhead lightning tail -- the only one with the bolt (the t2i chibis are cuter, with plain tails). Icon: a pale mouse, no bolt (neither icon drew one).",
+  "failed": "",
+  "front": "surge_front_i2i_4921.png",
+  "back": "surge_back_i2i_4931.png",
+  "icon": "src/surge_icon_4941_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,31,35,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.0,
+    "accent_clean_after": 7.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 525
+   },
+   "front_accent_pct": 7.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "16,33,26,44",
+    "painted": "[3, 3, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.6,
+    "accent_clean_after": 13.6,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 529
+   },
+   "back_accent_pct": 13.6,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 740
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     117,
+     192,
+     241
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "sector": {
+  "name": "SECTOR",
+  "national": 27,
+  "slot": "sandshrew",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "an armadillo under a domed shell of square plates (ALLOCATED)",
+  "note": "t2i 4901: a big-eyed armadillo peering out from under a dome of square plates.",
+  "failed": "",
+  "front": "sector_front_4901.png",
+  "back": "sector_back_i2i_4931.png",
+  "icon": "sector_icon_4941.png",
+  "measured": {
+   "front_streaks": {
+    "box": "30,34,47,54",
+    "painted": "[3, 4, 3, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.8,
+    "accent_clean_after": 6.8,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 2178
+   },
+   "front_accent_pct": 6.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "8,31,44,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1766
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 2.2,
+    "accent_clean_after": 2.2,
+    "greyed_px": 0,
+    "streak_px": 1,
+    "creature_px": 1984
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     176,
+     242
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "partition": {
+  "name": "PARTITION",
+  "national": 28,
+  "slot": "sandslash",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "an armoured pangolin, its plates split down the middle by one clean seam (DIVIDED)",
+  "note": "i2i 0.85: a plated pangolin with a big eye; the back is the split dome -- one seam down the middle -- which is the key prop. 4901 (an owl-faced pangolin) is cuter but drifts further.",
+  "failed": "",
+  "front": "partition_front_i2i_4922.png",
+  "back": "partition_back_i2i_4931.png",
+  "icon": "src/partition_icon_4941_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,32,30,47",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 15.7,
+    "accent_clean_after": 14.0,
+    "greyed_px": 24,
+    "streak_px": 16,
+    "creature_px": 1388
+   },
+   "front_accent_pct": 14.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,35,29,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 10.5,
+    "accent_clean_after": 10.5,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1546
+   },
+   "back_accent_pct": 10.5,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 886
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     89,
+     190,
+     244
+    ],
+    "accent_cells": 0,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "fork": {
+  "name": "FORK",
+  "national": 29,
+  "slot": "nidoran_f",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a long-eared bunny whose tail splits into two (SPLIT OFF)",
+  "note": "i2i 0.85: a big-eyed blushing bunny with long pointed ears.",
+  "failed": "front: the split tail is in no draft of 12 (two wordings, i2i 0.72-0.85) -- a plain bunny, so FORK, THREAD, BRANCH and PREDICTOR (one line of four bunnies) tell apart by their props only",
+  "front": "fork_front_i2i_4922.png",
+  "back": "fork_back_i2i_4931.png",
+  "icon": "fork_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,38,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1311
+   },
+   "front_accent_pct": 1.5,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "25,35,41,53",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1305
+   },
+   "back_accent_pct": 1.2,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1264
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    17,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     129,
+     192,
+     236
+    ],
+    "accent_cells": 2,
+    "size": [
+     20,
+     28
+    ]
+   }
+  }
+ },
+ "thread": {
+  "name": "THREAD",
+  "national": 30,
+  "slot": "nidorina",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a long-eared bunny trailing a long thread of yarn (CONCURRENT)",
+  "note": "t2i 4901: a lop bunny with green eyes holding a little green twist of yarn; the icon (4941) trails a green thread loop. The long trailing thread itself was not drawn.",
+  "failed": "",
+  "front": "thread_front_4901.png",
+  "back": "thread_back_i2i_4931.png",
+  "icon": "src/thread_icon_4941_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "15,31,51,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1793
+   },
+   "front_accent_pct": 3.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "26,33,41,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 14.9,
+    "accent_clean_after": 14.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1081
+   },
+   "back_accent_pct": 14.9,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 4.6,
+    "accent_clean_after": 4.6,
+    "greyed_px": 0,
+    "streak_px": 3,
+    "creature_px": 904
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     125,
+     197,
+     244
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "scheduler": {
+  "name": "SCHEDULER",
+  "national": 31,
+  "slot": "nidoqueen",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a big armoured brute in spiked shoulder plates and helmet (ORDERING)",
+  "note": "t2i 4901: a stout round armoured brute, spiked helmet and spiked pauldrons, glowing eyes. Back: the spiked helmet from behind.",
+  "failed": "",
+  "front": "scheduler_front_4901.png",
+  "back": "scheduler_back_i2i_4932.png",
+  "icon": "scheduler_icon_4941.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,33,37,55",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 2233
+   },
+   "front_accent_pct": 2.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,34,33,54",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 39.6,
+    "accent_clean_after": 14.5,
+    "greyed_px": 315,
+    "streak_px": 13,
+    "creature_px": 1256
+   },
+   "back_accent_pct": 14.5,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1824
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     185,
+     240
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "branch": {
+  "name": "BRANCH",
+  "national": 32,
+  "slot": "nidoran_m",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a long-eared bunny with a small forked twig sprouting from its head (UNTAKEN)",
+  "note": "t2i 4901: a bunny with leafy sprigs growing from its ears (the twig became leaves); the back has the sprig on its head; icon 4942 a sapling on its head. Leaves green over the cap go to the type's ramp.",
+  "failed": "",
+  "front": "branch_front_4901.png",
+  "back": "branch_back_i2i_4932.png",
+  "icon": "branch_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "28,34,39,53",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 33.6,
+    "accent_clean_after": 13.6,
+    "greyed_px": 319,
+    "streak_px": 31,
+    "creature_px": 1594
+   },
+   "front_accent_pct": 13.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "30,37,38,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 42.8,
+    "accent_clean_after": 12.0,
+    "greyed_px": 289,
+    "streak_px": 20,
+    "creature_px": 939
+   },
+   "back_accent_pct": 12.0,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 26.7,
+    "accent_clean_after": 12.8,
+    "greyed_px": 160,
+    "streak_px": 2,
+    "creature_px": 1144
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    18,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     196,
+     235
+    ],
+    "accent_cells": 7,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "predictor": {
+  "name": "PREDICTOR",
+  "national": 33,
+  "slot": "nidorino",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a long-eared bunny with a sharp horn on its forehead (SPECULATIVE)",
+  "note": "t2i 4902: a bunny with pink-lined ears and a tuft on its brow.",
+  "failed": "front: the horn is in no draft of 12 (two wordings, 'unicorn horn' included) -- a tuft is all that is left",
+  "front": "predictor_front_4902.png",
+  "back": "predictor_back_i2i_4932.png",
+  "icon": "src/predictor_icon_4942_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,40,54",
+    "painted": "[3, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.6,
+    "accent_clean_after": 4.6,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1532
+   },
+   "front_accent_pct": 4.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "26,35,39,54",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1018
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 955
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     143,
+     207,
+     242
+    ],
+    "accent_cells": 1,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "pipeline": {
+  "name": "PIPELINE",
+  "national": 34,
+  "slot": "nidoking",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a goat with long curved horns and a shaggy mane (IN FLIGHT)",
+  "note": "t2i 4901: a chibi goat with big curled horns and a shaggy fringe -- both kept.",
+  "failed": "",
+  "front": "pipeline_front_4901.png",
+  "back": "pipeline_back_i2i_4931.png",
+  "icon": "pipeline_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,36,56",
+    "painted": "[4, 3, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1764
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "14,32,42,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1360
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 1.9,
+    "accent_clean_after": 1.9,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1429
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     89,
+     180,
+     239
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "anomaly": {
+  "name": "ANOMALY",
+  "national": 35,
+  "slot": "clefairy",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round fluffy puff with two small wings and two curled antennae (DEVIANT)",
+  "note": "i2i 0.8: a round puff with curved antennae-horns and small wings, both kept; back the wings from behind.",
+  "failed": "",
+  "front": "anomaly_front_i2i_4921.png",
+  "back": "anomaly_back_i2i_4932.png",
+  "icon": "anomaly_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,31,38,49",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.1,
+    "accent_clean_after": 6.1,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1304
+   },
+   "front_accent_pct": 6.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "24,31,38,42",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 800
+   },
+   "back_accent_pct": 3.6,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 1.7,
+    "accent_clean_after": 1.7,
+    "greyed_px": 0,
+    "streak_px": 4,
+    "creature_px": 1162
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     121,
+     171,
+     236
+    ],
+    "accent_cells": 2,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "outlier": {
+  "name": "OUTLIER",
+  "national": 36,
+  "slot": "clefable",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round grey blob with two pointed ears and one big eye (EXCLUDED)",
+  "note": "a round grey cyclops, one huge eye: the 'back' turned from the drawn icon 4942 at 0.75 (4951) redrew it as a front instead, cleaner than the icon -- the only drafts of 16 with the one eye (every front, both wordings, drew two). Back: today's back repainted at 0.75 (round, two ears). Icon 4942, the winged cyclops.",
+  "failed": "back has two pointed ears the new front lacks (no draft turned the cyclops round); front comes from an icon draft by way of the back stage",
+  "front": "outlier_back_fromfront_4951.png",
+  "back": "outlier_back_i2i_4932.png",
+  "icon": "outlier_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "14,34,50,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2033
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "20,34,43,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1292
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1740
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     160,
+     229
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "flicker": {
+  "name": "FLICKER",
+  "national": 37,
+  "slot": "vulpix",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a little fox with a big fluffy dark-tipped tail (UNSTEADY)",
+  "note": "i2i 0.85: a sitting grey fox with big blue eyes and a big dark-tipped tail; t2i 4901 was an orange fox.",
+  "failed": "",
+  "front": "flicker_front_i2i_4922.png",
+  "back": "flicker_back_i2i_4931.png",
+  "icon": "flicker_icon_4941.png",
+  "measured": {
+   "front_streaks": {
+    "box": "14,31,35,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1360
+   },
+   "front_accent_pct": 1.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "29,33,39,52",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1059
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1423
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     121,
+     189,
+     240
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "overrun": {
+  "name": "OVERRUN",
+  "national": 38,
+  "slot": "ninetales",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a fox with one enormously long streaming tail (UNBOUNDED)",
+  "note": "t2i 4902: a sitting fox whose big tail streams up taller than itself. i2i 4921 has the longer body and tail but less charm.",
+  "failed": "",
+  "front": "overrun_front_4902.png",
+  "back": "overrun_back_i2i_4932.png",
+  "icon": "overrun_icon_4941.png",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,37,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1569
+   },
+   "front_accent_pct": 4.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "19,36,24,55",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1281
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 1.9,
+    "accent_clean_after": 1.9,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1386
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     155,
+     211,
+     243
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "suspend": {
+  "name": "SUSPEND",
+  "national": 39,
+  "slot": "jigglypuff",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a perfectly round puffball with a little tuft on top, one eye shut (UNSCHEDULED)",
+  "note": "i2i 0.8: a round puffball with a little sprig-tuft and a worried face; the one shut eye was lost everywhere (both open).",
+  "failed": "",
+  "front": "suspend_front_i2i_4921.png",
+  "back": "suspend_back_i2i_4932.png",
+  "icon": "suspend_icon_4941.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,49,50",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.1,
+    "accent_clean_after": 3.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1306
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "16,33,43,50",
+    "painted": "[5, 3, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.7,
+    "accent_clean_after": 0.7,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1281
+   },
+   "back_accent_pct": 0.7,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1689
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     180,
+     201,
+     241
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "hibernate": {
+  "name": "HIBERNATE",
+  "national": 40,
+  "slot": "wigglytuff",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round sleeping lump with long floppy ears drooping over it (DORMANT)",
+  "note": "t2i 4904 (second wording): a round grey blob with long floppy ears hanging to the ground -- eyes open (not asleep); the asleep one (4921) lay in a puddle and lost the ears. Back: the floppy ears from behind. Icon 4942 is asleep.",
+  "failed": "",
+  "front": "hibernate_front_4904.png",
+  "back": "hibernate_back_i2i_4932.png",
+  "icon": "hibernate_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,47,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2095
+   },
+   "front_accent_pct": 1.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "27,34,34,48",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.7,
+    "accent_clean_after": 1.7,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1140
+   },
+   "back_accent_pct": 1.7,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1664
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     74,
+     147,
+     227
+    ],
+    "accent_cells": 0,
+    "size": [
+     24,
+     28
+    ]
+   }
+  }
+ },
+ "echo": {
+  "name": "ECHO",
+  "national": 41,
+  "slot": "zubat",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a little white bat with wide wings and big round ears (REPLYING)",
+  "note": "i2i 0.85: a white bat with wide wings, big pink-lined ears and an open mouth calling.",
+  "failed": "",
+  "front": "echo_front_i2i_4922.png",
+  "back": "echo_back_i2i_4932.png",
+  "icon": "echo_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "27,33,36,43",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.9,
+    "accent_clean_after": 8.9,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 851
+   },
+   "front_accent_pct": 8.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "27,32,36,44",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1079
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 7.8,
+    "accent_clean_after": 7.8,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1414
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    21
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     186,
+     236
+    ],
+    "accent_cells": 11,
+    "size": [
+     28,
+     23
+    ]
+   }
+  }
+ },
+ "tracer": {
+  "name": "TRACER",
+  "national": 42,
+  "slot": "golbat",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a dark bat with huge wings and a wide open mouth (FOLLOWING)",
+  "note": "t2i 4902: a round bat with a wide fanged open mouth and dark wings. Icon 4942 dark, mouth wide open. Cleaned on a key ground: the plain clean wore its dark wings away.",
+  "failed": "",
+  "front": "src/tracer_front_4902_key.png",
+  "back": "tracer_back_i2i_4931.png",
+  "icon": "tracer_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,39,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.7,
+    "accent_clean_after": 1.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2179
+   },
+   "front_accent_pct": 1.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "10,29,22,37",
+    "painted": "[3, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 837
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 705
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    17,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     67,
+     130,
+     227
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "sprawl": {
+  "name": "SPRAWL",
+  "national": 43,
+  "slot": "oddish",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a round bulb with a sprouting tuft of dark leaves on top (VOLUNTEER)",
+  "note": "i2i 0.85: a round radish bulb with a tuft of long leaves and a little face. t2i 4901 is cuter but its leaves wrap all round it. Its green leaves greyed before reduction so they take GRASS's own ramp: kept as accents they were turned off the type's hue, to purple. Back: 4931 (a full leafy tuft from behind), greyed the same way and cleaned on a key ground.",
+  "failed": "",
+  "front": "src/sprawl_front_i2i_4922_grey.png",
+  "back": "src/sprawl_back_i2i_4931_grey_key.png",
+  "icon": "sprawl_icon_4942.png",
+  "measured": {
+   "front_streaks": {
+    "box": "27,35,35,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1105
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "25,33,38,52",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.5,
+    "accent_clean_after": 14.4,
+    "greyed_px": 21,
+    "streak_px": 19,
+    "creature_px": 986
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 38.6,
+    "accent_clean_after": 5.9,
+    "greyed_px": 425,
+    "streak_px": 5,
+    "creature_px": 1301
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    20
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     162,
+     237
+    ],
+    "accent_cells": 11,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ }
+}

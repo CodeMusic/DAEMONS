@@ -1,0 +1,15 @@
+{
+ "_": "round two part A (2026-10-26), chosen by eye on the candidates sheet. Seeds: LOCUS back t2i 5001-5004, from the mirrored new front 0.7 = 5011, 0.8 = 5012; RELAY/BUFFER backs zoomed to 58 cells and re-gridded at 0.3 = 5021, 0.4 = 5022.",
+ "locus": {
+  "back": "locus_back_fromfront_5011.png",
+  "note": "the new front turned: a round grey critter from behind, its tail curled up beside it in a loop. 5012 the same with a fluffier tail; 5002 shows the loop best but is a black-eared cat in profile; 5001/5004 came framed."
+ },
+ "relay": {
+  "back": "src/relay_back_zoom.png",
+  "note": "the built back's draft cropped to its subject and scaled so it stands 58 cells tall (was 42), feet on the ground line; the plain zoom, not re-gridded -- the i2i passes (5021 at 0.3, 5022 at 0.4) tinted it blue and the reduction kept the tint as violet fringes."
+ },
+ "buffer": {
+  "back": "src/buffer_back_zoom.png",
+  "note": "the built back's draft cropped to its subject and scaled so it stands 58 cells tall (was 42), feet on the ground line; the plain zoom, not re-gridded -- the i2i passes (5021 at 0.3, 5022 at 0.4) tinted it blue and the reduction kept the tint as violet fringes."
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/r/relay_back_zoom_i2i_5021",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a grey pigeon seen from behind, rear view, facing away from the viewer, the back of its round head, folded grey wings, a short fanned tail pointing at the viewer, a white envelope corner peeking out beside it, rear view, seen from behind, facing away from the viewer, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "owl, parrot, penguin, flying, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5021,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.3,
+ "stop_at": null,
+ "image": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/r/src/relay_back_zoom.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 12:21:43"
+}
