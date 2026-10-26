@@ -578,7 +578,8 @@ MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, col
 #  is drawn (an ash sky, CINNABAR's sea behind, the sand) and the burned facade laid over it. The sprite server then
 #  repaints it, image to image, at a denoise low enough that our building survives. Nothing here is written to the
 #  engine until the user approves a card (LANDMARK_APPROVED).
-LANDMARK_APPROVED = {"silph_co", "pokemon_tower", "pokemon_mansion"}   # the user, 2026-10-26: build all three as drawn
+LANDMARK_APPROVED = {"silph_co", "pokemon_tower", "pokemon_mansion",   # the user, 2026-10-26: build all three as drawn
+                     "rocket_hideout"}                                 # the user, 2026-10-26: CORPUS HIDEOUT as drawn
 LANDMARK_DRAWINGS = os.path.join(ROOT, "gfx", "drafts", "landmarks")
 GREYS = [(40, 40, 46), (72, 72, 80), (108, 108, 116), (148, 148, 156), (188, 188, 194), (222, 222, 226)]
 LANDMARK = {
@@ -632,8 +633,13 @@ LANDMARK = {
     "rocket_warehouse": dict(
         source="FiveIsland_RocketWarehouse", title="CORPUS WAREHOUSE", interior=True,
         erase=[((0, 33, 29, 93), (2, 30)), ((29, 33, 43, 93), (35, 30))],
-        floor_tiles=dict(quad=((64, 112), (236, 112), (214, 100), (84, 100)), cols=10, rows=2),
-        seed=4471, denoise=0.45,
+        #  the user (2026-10-26): "repaint with a bigger spin-tile floor that reads at 1x". The first draft's floor
+        #  was a 12px strip of ten tiles a row and washed out; the room is lifted 12 rows (its ceiling strip goes) and
+        #  the floor laid 26px deep, eight tiles a row at the foot, painted at 0.40. post=["spinfloor"] (with the two
+        #  arrow greens in force) lays them back crisp after the painting instead -- the other candidates on sheet
+        #  t445w_repaint. DRAFT: not in LANDMARK_APPROVED.
+        lift=12, floor_tiles=dict(quad=((-8, 112), (248, 112), (222, 86), (18, 86)), cols=8, rows=2),
+        seed=4472, denoise=0.40,
         prompt="inside a corporate warehouse, riveted teal metal wall panels, a wooden cage of white bars, a white "
                "steel door, cardboard boxes, an olive floor laid with green arrow floor tiles, fluorescent ceiling "
                "light",
@@ -695,6 +701,10 @@ def interior_scene(folder):
             k = region(x, y)
             lo, hi = rng[k]
             px[x, y] = _ramp(INTERIOR_RAMPS[k], (_lum(vp[x, y]) - lo) / max(1, hi - lo))
+    lift = c.get("lift", 0)
+    if lift:                    # the room raised LIFT rows (its ceiling strip goes), so the floor has room to be seen
+        bg.paste(bg.crop((0, lift, 240, 112)), (0, 0))
+        ImageDraw.Draw(bg).rectangle((0, 112 - lift, 239, 111), fill=_ramp(INTERIOR_RAMPS["floor"], 0.55))
     return bg
 
 
@@ -709,12 +719,14 @@ def interior_floor(folder):
     bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
     green = {(82, 222, 123), (131, 255, 164)}
     arrows, floor, seen = [], collections.Counter(), set()
+    #  a spin tile is 56 of its 256 pixels green; a computer or a door carries 2 (their screens' LEDs), so a block is
+    #  an arrow only where green is a real share of it
     for yy in range(H):
         for xx in range(W):
             m = struct.unpack_from("<H", bd, (yy * W + xx) * 2)[0] & 0x3FF
             cell = img.crop((xx * 16, yy * 16, xx * 16 + 16, yy * 16 + 16))
             cols = set(cell.getdata())
-            if cols & green:
+            if sum(p in green for p in cell.getdata()) >= 16:
                 if m not in seen:
                     seen.add(m)
                     arrows.append(cell)
@@ -923,7 +935,18 @@ def post_redband(im, folder="silph_co"):
                 px[x, y] = red
 
 
-POSTS = dict(braille=post_braille, redband=post_redband)
+def post_spinfloor(im, folder="rocket_warehouse"):
+    """CORPUS WAREHOUSE, after the painting: the spin tiles laid back on the floor from the built map, warped to the
+    card at 1x (the server washes a green chevron this small into the olive at any denoise that paints the room)"""
+    c = LANDMARK[folder]
+    b, q = interior_floor(folder), c["floor_tiles"]["quad"]
+    W, H = b.size
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], q)
+    w = b.transform((240, 112), Image.PERSPECTIVE, co, Image.NEAREST)
+    im.paste(w.convert("RGB"), (0, 0), w)
+
+
+POSTS = dict(braille=post_braille, redband=post_redband, spinfloor=post_spinfloor)
 
 
 # ================================================================== OTHER CAVE's four lights
