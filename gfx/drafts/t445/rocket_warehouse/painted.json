@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/rocket_warehouse/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, inside a corporate warehouse, riveted teal metal wall panels, a wooden cage of white bars, a white steel door, cardboard boxes, an olive floor laid with green arrow floor tiles, fluorescent ceiling light, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, letter R, logo, emblem, red, people",
+ "seed": 4471,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/rocket_warehouse/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 59.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 12:38:57"
+}

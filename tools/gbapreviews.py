@@ -11,7 +11,8 @@
                                                          #   picture in the cave's colours (painted_init.png)
     python3 tools/gbapreviews.py --draft --top-down      # the old top-down drafts, even where a painting exists
     python3 tools/gbapreviews.py --landmarks --paint     # the landmarks' cards (LANDMARK: CORPUS's tower, DAEMON TOWER,
-    python3 tools/gbapreviews.py --landmarks --draft     #   the MANSION), painted from T-447's buildings as built; their
+    python3 tools/gbapreviews.py --landmarks --draft     #   the MANSION), painted from T-447's buildings as built, and
+                                                         #   CORPUS HIDEOUT's and WAREHOUSE's rooms from the maps; their
                                                          #   --write writes only what LANDMARK_APPROVED names
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
@@ -112,8 +113,8 @@ NOT_DRAFTED = {
     "pokemon_tower": "the tower: a landmark (LANDMARK, --landmarks)",
     "pokemon_mansion": "the mansion: a landmark (LANDMARK, --landmarks)",
     "silph_co": "SILPH (CORPUS's tower): a landmark (LANDMARK, --landmarks)",
-    "rocket_hideout": "the hideout: its own batch",
-    "rocket_warehouse": "the warehouse: its own batch",
+    "rocket_hideout": "CORPUS HIDEOUT: an interior (LANDMARK, --landmarks), from the current map",
+    "rocket_warehouse": "CORPUS WAREHOUSE: an interior (LANDMARK, --landmarks), from the current map",
     "safari_zone": "the SAFARI: its own batch",
 }
 
@@ -614,7 +615,118 @@ LANDMARK = {
                "wall from the doorway to the cave-in, four dark square windows, worn stone steps to a black doorway, "
                "cold and long burnt out, an ash grey hazy sky, a dark sea behind, sand in front",
         neg="fire, flames, glow, embers, orange light, arched windows, green grass, bright colours, sign"),
+    #  CORPUS's two interiors (the user, 2026-10-26: "draft CORPUS HIDEOUT's and the WAREHOUSE's cards now from the
+    #  current maps"). Neither has a T-447 building and both cards are vanilla's rooms INSIDE, so the start image is
+    #  vanilla's room graded through the colours the rooms are drawn in now (the SilphCo tileset both maps use: teal
+    #  wall, slate machines, olive floor, white desks, wood), vanilla's ROCKET "R" taken off the wall (ERASE: each box
+    #  filled with the panel's own colour, sampled at FILL), and for the WAREHOUSE its one idea laid on the floor: the
+    #  spin tiles, cut from the built map. DRAFTS: not in LANDMARK_APPROVED.
+    "rocket_hideout": dict(
+        source="RocketHideout_B1F", title="CORPUS HIDEOUT", interior=True,
+        erase=[((0, 36, 20, 64), (3, 30))], floor_from=95,      # vanilla's pale floor: olive, as the map's is
+        seed=4470, denoise=0.45,
+        prompt="inside a quiet underground office, pale teal metal wall panels, an open doorway into a small room "
+               "with a computer on a desk and a swivel chair, a plain white wall, a slate grey elevator door at the "
+               "right with a small stairs sign, olive green floor, a strip of fluorescent ceiling light",
+        neg="letter R, logo, emblem, red, people"),
+    "rocket_warehouse": dict(
+        source="FiveIsland_RocketWarehouse", title="CORPUS WAREHOUSE", interior=True,
+        erase=[((0, 33, 29, 93), (2, 30)), ((29, 33, 43, 93), (35, 30))],
+        floor_tiles=dict(quad=((64, 112), (236, 112), (214, 100), (84, 100)), cols=10, rows=2),
+        seed=4471, denoise=0.45,
+        prompt="inside a corporate warehouse, riveted teal metal wall panels, a wooden cage of white bars, a white "
+               "steel door, cardboard boxes, an olive floor laid with green arrow floor tiles, fluorescent ceiling "
+               "light",
+        neg="letter R, logo, emblem, red, people"),
 }
+#  the SilphCo tileset's colours as the two CORPUS interiors draw them (sampled from reviewsheet's render)
+INTERIOR_RAMPS = dict(
+    wall=[(52, 82, 90), (82, 124, 132), (106, 164, 172), (156, 196, 200), (197, 205, 213)],
+    slate=[(57, 57, 74), (82, 82, 106), (98, 98, 123), (139, 139, 148), (180, 180, 190)],
+    floor=[(98, 98, 60), (131, 131, 82), (164, 164, 98), (197, 197, 156)],
+    white=[(164, 164, 172), (197, 205, 213), (238, 238, 246), (255, 255, 255)],
+    wood=[(132, 90, 58), (164, 116, 74), (220, 178, 128), (246, 230, 190)])
+
+
+def landmark_source(folder):
+    c = LANDMARK[folder]
+    return ("the current %s" % c["source"]) if c.get("interior") else ("T-447's %s" % c["source"])
+
+
+def _interior_region(p):
+    import colorsys
+    h, sat, v = colorsys.rgb_to_hsv(*[x / 255 for x in p])
+    h *= 360
+    if sat < 0.10:
+        return "white"
+    if 10 <= h < 38 and sat >= 0.15:
+        return "wood"
+    if 38 <= h < 75:
+        return "floor"
+    if 75 <= h < 200:
+        return "wall"
+    return "slate" if v < 0.7 else "white"
+
+
+def interior_scene(folder):
+    """CORPUS's rooms: vanilla's room, the R taken off, graded through INTERIOR_RAMPS region by region"""
+    c = LANDMARK[folder]
+    vt, vm, vpal = vanilla(folder)
+    v = compose(vt, vm, vpal).crop((0, 24, 240, 136))
+    vp = v.load()
+    for (x0, y0, x1, y1), (fx, fy) in c.get("erase", []):
+        fill = vp[fx, fy]
+        for y in range(y0, y1):
+            for x in range(x0, x1):
+                vp[x, y] = fill
+    def region(x, y):
+        k = _interior_region(vp[x, y])
+        return "floor" if k == "white" and y >= c.get("floor_from", 112) else k
+
+    lums = collections.defaultdict(list)
+    for y in range(112):
+        for x in range(240):
+            lums[region(x, y)].append(_lum(vp[x, y]))
+    rng = {k: (min(l), max(l)) for k, l in lums.items()}
+    bg = Image.new("RGB", (240, 112))
+    px = bg.load()
+    for y in range(112):
+        for x in range(240):
+            k = region(x, y)
+            lo, hi = rng[k]
+            px[x, y] = _ramp(INTERIOR_RAMPS[k], (_lum(vp[x, y]) - lo) / max(1, hi - lo))
+    return bg
+
+
+def interior_floor(folder):
+    """(RGBA) the WAREHOUSE's floor as the built map draws it: its own floor block, and the spin tiles cut from the
+    map (every block of the map drawn with the arrows' green), laid COLS x ROWS in their order on the map"""
+    c = LANDMARK[folder]
+    ft = c["floor_tiles"]
+    l = RS.layout_of(c["source"])
+    img = RS.render(l).convert("RGB")
+    W, H = l["width"], l["height"]
+    bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+    green = {(82, 222, 123), (131, 255, 164)}
+    arrows, floor, seen = [], collections.Counter(), set()
+    for yy in range(H):
+        for xx in range(W):
+            m = struct.unpack_from("<H", bd, (yy * W + xx) * 2)[0] & 0x3FF
+            cell = img.crop((xx * 16, yy * 16, xx * 16 + 16, yy * 16 + 16))
+            cols = set(cell.getdata())
+            if cols & green:
+                if m not in seen:
+                    seen.add(m)
+                    arrows.append(cell)
+            elif cols <= {(131, 131, 82), (164, 164, 98), (197, 197, 156)}:
+                floor[cell.tobytes()] += 1
+    base = Image.frombytes("RGB", (16, 16), floor.most_common(1)[0][0])
+    out = Image.new("RGBA", (ft["cols"] * 16, ft["rows"] * 16))
+    for r in range(ft["rows"]):
+        for q in range(ft["cols"]):
+            t = arrows[(q + 2 * r) % len(arrows)] if arrows and (q + r) % 3 else base
+            out.paste(t, (q * 16, r * 16))
+    return out
 
 
 def _homography(src, dst):
@@ -661,9 +773,12 @@ def _grade(c, k, p, lo, hi):
 
 def landmark_init(folder):
     """the start image for a landmark's card, at the painting's size"""
+    from PIL import ImageFilter
     c = LANDMARK[folder]
     K = PAINT_SIZE[0] / 240
-    if c.get("drawn_scene"):
+    if c.get("interior"):
+        bg = interior_scene(folder)
+    elif c.get("drawn_scene"):
         bg = Image.new("RGB", (240, 112))
         px = bg.load()
         for y in range(112):
@@ -702,15 +817,19 @@ def landmark_init(folder):
                 lo, hi = rng.get(k, (0, 255))
                 px[x, y] = _grade(c, k, p, lo, hi)
     out = bg.resize(PAINT_SIZE, Image.BICUBIC).convert("RGBA")
-    b = landmark_drawing(c["source"])
+    if c.get("interior"):
+        if not c.get("floor_tiles"):
+            return out.convert("RGB").filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
+        b, q = interior_floor(folder), c["floor_tiles"]["quad"]
+    else:
+        b, q = landmark_drawing(c["source"]), c["quad"]
     W, H = b.size
-    quad = [(x * K, y * K) for x, y in c["quad"]]                    # foot-left, foot-right, crown-right, crown-left
+    quad = [(x * K, y * K) for x, y in q]                            # foot-left, foot-right, crown-right, crown-left
     co = _homography([(0, H), (W, H), (W, 0), (0, 0)], quad)
     warped = b.transform(PAINT_SIZE, Image.PERSPECTIVE, co, Image.NEAREST)
     out.alpha_composite(warped)
     #  softened, so the server paints it rather than sharpening a blown-up 1x drawing (at the painting's size a 1x
     #  pixel is 4.5 wide; the caves' start images were bicubic and came back painted, the hard ones came back blocky)
-    from PIL import ImageFilter
     return out.convert("RGB").filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
 
 
@@ -1087,7 +1206,7 @@ def report():
                                                                          len(by_folder)))
     for folder, ents in by_folder.items():
         status = ("batch E: " + BATCH_E[folder]) if folder in BATCH_E else \
-            ("landmark (T-447's %s): drafted with --landmarks%s" % (LANDMARK[folder]["source"],
+            ("landmark (%s): drafted with --landmarks%s" % (landmark_source(folder),
              ", APPROVED" if folder in LANDMARK_APPROVED else ", waits on the user")) if folder in LANDMARK else \
             ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
         print("  %-17s %s" % (folder, status))
@@ -1129,7 +1248,7 @@ def main():
         van, dra = compose(vt, vm, vpal), compose(tiles, m, pal)
         for im in (van, dra):
             draw_name(im, nm[sec], (vpal if im is van else pal))
-        what = ("from T-447's %s, as built" % LANDMARK[folder]["source"]) if A.landmarks else BATCH_E[folder]
+        what = ("from %s, as built" % landmark_source(folder)) if A.landmarks else BATCH_E[folder]
         notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, what, "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
                  "palette 13: 15 colours + vanilla's 0", "palette 14, letterbox, banner: vanilla's"]
