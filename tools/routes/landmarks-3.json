@@ -1,0 +1,24 @@
+{
+ "rom": "debug",
+ "about": "T-447 pair 3 (tools/gbalandmarks.py, built 2026-10-26): the REVIEW BOARD at the top of the plateau -- four vessels I-IV, red, yellow, black, pale, in a near-black hall under the bench slab, the porch in dark stone round the kept door -- and ERRATA in SLATE, the struck chalk line and red caret on its slate roof (the chalk a scrawl, no word), and the annex's pinned card; walking into each. Only goto, holds and shots -- no walker steps, so nobody stands on a doormat (T-451). Watch held at day, clear weather, summer. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "UMBRA: the REVIEW BOARD", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1", "poke gDaemonsSeasonOverride 8 3",
+   "goto IndigoPlateau_Exterior 11 10", "repel 999", "close", "wait 40", "shot the REVIEW BOARD from the plaza"]},
+  {"stop": "UMBRA: walking into the REVIEW BOARD", "steps": [
+   "goto IndigoPlateau_Exterior 11 7", "close", "wait 20", "shot at the door",
+   "burst \"the door\" 12 4 UP 20",
+   "wait 60", "shot inside", "expect IndigoPlateau_PokemonCenter_1F"]},
+  {"stop": "SLATE: ERRATA", "steps": [
+   "goto PewterCity 20 9", "repel 999", "close", "wait 40", "shot ERRATA and the annex's card"]},
+  {"stop": "SLATE: walking into ERRATA", "steps": [
+   "goto PewterCity 17 7", "close", "wait 20", "shot at the museum's door",
+   "burst \"the museum's door\" 12 4 UP 20",
+   "wait 60", "shot inside", "expect PewterCity_Museum_1F"]},
+  {"stop": "SLATE: walking into the annex", "steps": [
+   "goto PewterCity 25 5", "close", "wait 20", "shot at the annex's door",
+   "burst \"the annex's door\" 12 4 UP 20",
+   "wait 60", "shot inside", "expect PewterCity_Museum_1F"]}
+ ]
+}

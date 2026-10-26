@@ -139,7 +139,8 @@ SHEETS = argval("--sheets")
 
 #  the landmarks the user has approved for --write; a draft is never written
 APPROVED = {"scorn_solutions", "mansion",           # the user, 2026-10-24: "build it" (second draft, e559d4eb)
-            "corpus_tower", "daemon_tower"}          # the user, 2026-10-25: "build both" (pair 2 with depth, a219855f)
+            "corpus_tower", "daemon_tower",          # the user, 2026-10-25: "build both" (pair 2 with depth, a219855f)
+            "review_board", "errata"}                # the user, 2026-10-25: "build pair 3" (tweaked 9283f477, chalk scrambled)
 
 NUM_PRIMARY = 640
 SECONDARY_TILES = 1024 - 640
@@ -1271,13 +1272,13 @@ ERRATA_COLS = ((16, "A", False), (32, "B", False), (48, "A", True),
 #  door's axis); the line is laid out round the caret
 ERRATA_ECHO = True             # the pediment's small echo of the erratum: it costs one tile, and fits
 ERRATA_LINE = dict(words=(3, 2, 0, 4, 2), caret=88)
-ERRATA_GLYPHS = ("n", "o", "l", "u", "n", "c", "o", "h", "u", "l")   # chalk shapes, 3x4 (an ascender 3x5) -- not letters
-ERRATA_SHAPES = {"n": [(0, 0), (1, 0), (0, 1), (2, 1), (0, 2), (2, 2), (0, 3), (2, 3)],
-                 "u": [(0, 0), (2, 0), (0, 1), (2, 1), (0, 2), (2, 2), (1, 3), (2, 3)],
-                 "o": [(1, 0), (0, 1), (2, 1), (0, 2), (2, 2), (1, 3)],
-                 "c": [(1, 0), (2, 0), (0, 1), (0, 2), (1, 3), (2, 3)],
-                 "h": [(0, -1), (0, 0), (1, 0), (0, 1), (2, 1), (0, 2), (2, 2), (0, 3), (2, 3)],
-                 "l": [(0, -1), (0, 0), (0, 1), (0, 2), (0, 3)]}
+ERRATA_GLYPHS = ("n", "o", "l", "u", "n", "c", "o", "h", "u", "l")   # the marks' widths: 3 (an "l" 1) -- the layout only
+#  the chalk itself is a scrawl, not shapes (the user, 2026-10-25: "scramble ERRATA's chalk line so no word can be picked
+#  out (at 3x it read 'why'), same tiles"): each word's span keeps its place and width, so the same cells hold chalk,
+#  and is drawn as one pen path whose height per column (0 the x-height's top .. 3 the rule) follows this sequence --
+#  steps of at most two, no repeat of a glyph's outline, joined column to column so it reads as a hand, never a letter
+ERRATA_SCRAWL = (2, 1, 3, 2, 0, 1, 3, 3, 1, 2, 0, 2, 3, 1, 1, 2, 3, 2, 0, 1, 2, 3, 1, 0, 2, 3, 2, 1, 3, 2, 0, 2)
+ERRATA_TICKS = (5, 17, 26)     # columns of the line where the pen lifts a stroke above the x-height (one pixel)
 
 
 def errata_line(k, spec, base):
@@ -1298,9 +1299,27 @@ def errata_line(k, spec, base):
         x += 4
     width = x - 4
     ox = spec["caret"] - gap                                     # lay the line out round the caret
+    words, w0, prev = [], None, None                             # each word's span, from its marks
     for mx, gl in marks:
-        for dx, dy in ERRATA_SHAPES[gl]:
-            k.px(ox + mx + dx, base - 3 + dy, "CHALK")
+        end = mx + (1 if gl == "l" else 3)
+        if w0 is None or mx - prev > 1:
+            if w0 is not None:
+                words.append((w0, prev))
+            w0 = mx
+        prev = end
+    words.append((w0, prev))
+    col = 0
+    for a, b in words:                                           # the scrawl: one pen path a word
+        last = None
+        for x in range(a, b):
+            y = ERRATA_SCRAWL[col % len(ERRATA_SCRAWL)]
+            if col in ERRATA_TICKS:
+                k.px(ox + x, base - 4, "CHALK")
+            col += 1
+            lo, hi = (y, y) if last is None else (min(y, last), max(y, last))
+            for yy in range(lo, hi + 1):
+                k.px(ox + x, base - 3 + yy, "CHALK")
+            last = y
     k.hline(ox - 3, ox + width + 2, base - 2, "CHALK")          # STRUCK THROUGH, past both ends
     c = spec["caret"]                                            # the caret, on a tile seam: its halves mirror
     for i in range(4):
