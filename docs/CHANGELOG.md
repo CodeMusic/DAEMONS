@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.312 — 2026-10-26
+
+### The second joining, as built (T-457)
+
+- ***4.37 (the user, after the build)***: **her aide hands over the GLOBAL INDEX with nothing from CRYSTAL** -- *in play it comes before THE ANNEX, so the record arrives while she is away* -- **and her one quiet line moves to the receiver, when the player finds her at it after THE ANNEX.** *The papers are PROSPECTUS 7 and 8 (school.md holds 4 to 6), on the lab shelf beside the INDEX unit. Built in v11.311.1, every word a DRAFT placeholder.*
+
 ## v11.311 — 2026-10-26
 
 ### The second joining (T-457)

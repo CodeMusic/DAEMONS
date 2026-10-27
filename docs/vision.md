@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.311**
+**A total conversion — the living design bible, v11.312**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4827,13 +4827,15 @@ take off.*
 
 | | | |
 |---|---|---|
-| **The receiver** | *on CRYSTAL's lab desk, picking up one daemon far away, on an island, doing fine* | **She does not explain it** |
-| **PROSPECTUS 4** | *her new work, named from the margins' own words* (**the name is open**) | **Undated** |
-| **PROSPECTUS 5** | *the joining: her INDEX and CELIO's machine, two names side by side, neither on top* | **Undated** |
+| **The receiver** | *on CRYSTAL's lab desk, picking up one daemon far away, on an island, doing fine* | **She does not explain it; her one line is here.** *It gets a sprite of its own, drafted on a sheet first* |
+| **PROSPECTUS 7** | *her new work, named from the margins' own words* (**the name is open**) | **Undated; on the lab shelf beside the INDEX unit** |
+| **PROSPECTUS 8** | *the joining: her INDEX and CELIO's machine, two names side by side, neither on top* | **Undated; beside PROSPECTUS 7** |
 | **Brazen's board** | *the posted scores (three at 30, one at 94) give way, after the GLOBAL INDEX, to a posting with no scores* | **One sign, one flag** |
-| **The CHECKPOINT keepers** | *a line that shows they are listening to someone not in the room* | ***Tending between the fights where you are judged*** |
+| **The CHECKPOINT keepers** | *a line that shows they are listening to someone not in the room* | ***Tending between the fights where you are judged*** — **one heal in three** |
 
-- **CRYSTAL hands over the GLOBAL INDEX almost silently**: *one line, about something else.* **The merger is on the papers and the signs, never in her mouth.**
+- ***Her aide hands over the GLOBAL INDEX, with nothing from CRYSTAL*** (*the user, 2026-10-26, after the build*). **In play the GLOBAL INDEX comes before THE ANNEX** — *CELIO's RUBY errand waits on it* — **so the record arrives while she is still away, and that is right: it is given without her.** ***Her one quiet line, about something else, moves to the receiver***: *when the player finds her at it after THE ANNEX.* **The merger is on the papers and the signs, never in her mouth.**
+- ***PROSPECTUS 7 and 8, not 4 and 5***: *`school.md` already uses 4 to 6, and now lists 7 and 8.* **Both sit on the lab shelf beside the INDEX unit.**
+- ***Built 2026-10-26 in v11.311.1*** (*engine `cc13f6633`*): **every word a DRAFT placeholder**; `FLAG_SECOND_JOINING` *is set on map load once CRYSTAL is home and the GLOBAL INDEX is held; the receiver has its own hide flag.*
 
 #### What is deliberately not here
 
@@ -4848,7 +4850,7 @@ take off.*
 
 - **The name of her work** (*candidates: THE MARGIN WATCH, BETWEEN*).
 - **How the Act 2 seed shows.**
-- **The words**: *her line at the receiver, her handover line, PROSPECTUS 4 and 5, Brazen's posting, the keepers' lines* — **the user is writing some of them**; *every new line DRAFT.*
+- **The words**: *her line at the receiver, PROSPECTUS 7 and 8, the ONE ISLAND sign, Brazen's posting, the keepers' line* — **the user is writing some of them**; *every new line DRAFT.*
 
 ## 5. THE BENCHMARKS
 
@@ -8749,7 +8751,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
-- **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; she hands over the GLOBAL INDEX almost silently; SCORN unchanged, nothing repainted, nobody rescued (4.37)
+- **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
 - **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)
 - **One self-contained iOS app, iPad first (T-453, 2026-10-24)** — the game patched on the device from the player's own ROM and never bundled, the companion, the LIBRARY and the NOTEBOOK; INDEX cards coloured by type match with the understandings held (9.28)

@@ -644,6 +644,8 @@ from her own laboratory.* **Songs: Nine Breaches, Nine Scars · Crystal's Last S
 | 4 | **the lobby engraving**, photographed for the brochure — ***unattributed*** | **BRAZEN**, the lobby floor | 4.4 |
 | 5 | **the chip order** — *a hardware requisition, approved, then a second line: **declined, and kept*** | **HALFTONE TOWER** (4.18) | *Betrayal's Sting* |
 | 6 | **"but do I control it, or does it control me?"** — ***a margin note in his own hand on a document he wrote.*** *The only unofficial thing in the section* | **BRAZEN**, after Benchmark 6 | *Empire of Scorn* |
+| 7 | **her new work** — *CRYSTAL's, after THE ANNEX: the network in THE MARGINS, named from the margins' own words (the name is the user's to choose).* **Undated** | **her lab**, the shelf beside the INDEX unit | 4.37 (T-457) |
+| 8 | **the joining** — *her INDEX and CELIO's machine, two names side by side, neither on top.* ***The rhyme of 3, with no date and no gold*** | **her lab**, beside 7 | 4.37 (T-457) |
 
 > ***Entry 6 is the beat 4.31 and 8.2a already call for*** — **the sentence he says without hearing
 > himself say it** — *and here it is a thing he wrote down and filed.* **He filed it. That is worse.**
