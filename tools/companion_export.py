@@ -306,6 +306,9 @@ def week_table():
 #  blockBoxRS, then unused:4) that carry the companion's link. T-358 defines them in the engine; until then they are
 #  named here, and both must agree.
 AWAY_BIT, ASKED_BIT = 4, 5
+#  C-195 / T-458 (SOUNDINGS): bits 6-7 of the same byte, `signal:2` in include/pokemon.h -- 0 no signal yet, 1 quiet,
+#  2 fine, 3 well. The companion writes it at each SYNC; the game only reads it.
+SOUNDING_SHIFT = 6
 
 
 def save_layout():
@@ -336,6 +339,7 @@ def save_layout():
             "party_count_offset": off("playerPartyCount"), "party_offset": off("playerParty"),
             "pokemon_size": 100, "box_pokemon_size": 80, "level_offset": 84,
             "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT,
+            "sounding_shift": SOUNDING_SHIFT,   # two bits, values 0-3 (T-458)
             # C-45: sNatureStatTable (pokemon.c), by nature: Attack, Defense, Speed, Sp.Atk, Sp.Def, each +1, -1 or 0
             "natures": natures_table()}
 
@@ -884,7 +888,8 @@ def _inc_text(rel, label):
 EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
                    "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
                    "EV_YEAR_ALL", "EV_GIFTS_AGAIN",                                        # T-416
-                   "EV_CRYSTAL_AGAIN"}                                                     # T-457: a reset, not an event
+                   "EV_CRYSTAL_AGAIN",                                                     # T-457: a reset, not an event
+                   "EV_SOUNDING"}                                                          # T-458: the companion's signal, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS"}                    # T-431: the feelings' debug view and its clock
 
