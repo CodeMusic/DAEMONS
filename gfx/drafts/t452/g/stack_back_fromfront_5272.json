@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/g/stack_back_fromfront_5272",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, its whole body one big round cracked grey boulder, a round rocky boulder creature seen from behind, the round cracked back of the boulder, two big round boulder fists at its sides, stubby stone feet, rear view, seen from behind, facing away from the viewer, full body, chibi proportions, seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "girl, hair, muscles, muscular, abs, bodybuilder, humanoid, tall, robot, girl, human, face, eyes, nose, mouth, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5272,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.85,
+ "stop_at": null,
+ "image": "gfx/drafts/t452/g/src/stack_newfront5_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-27 16:57:03"
+}

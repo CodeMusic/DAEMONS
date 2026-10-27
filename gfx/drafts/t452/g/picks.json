@@ -774,50 +774,38 @@
   "gametype": "LEGACY",
   "type": "ROCK",
   "props": "a boulder creature with big round boulder fists (LAST FIRST)",
-  "note": "i2i 0.8: a boulder brute with big round boulder fists -- the key kept, but close to today's and little chibi (5222 went round and lost the fists). LOOK-ALIKE with THEOREM's draft (both grey brutes). Back: from today's back (5231); turned 5251 grew horns, 5252 kept the face.",
+  "note": "The user (2026-10-27): rounder and rockier, a boulder, apart from THEOREM. fix4.py: i2i 0.85 from today's front with the boulder wording (5264): one round cracked boulder with a face -- the fists lost in all eight drafts, so drawn in by hand (hand5.py). Back: turned from the new front (5272). Icon: icon3 from the new front.",
   "failed": "",
-  "front": "stack_front_i2i_5221.png",
-  "back": "stack_back_i2i_5231.png",
-  "icon": "stack_icon_5242.png",
+  "front": "stack_front_i2i_5264.png",
+  "back": "stack_back_fromfront_5272.png",
+  "icon": "derived",
   "measured": {
    "front_streaks": {
-    "box": "8,32,54,40",
-    "painted": "[5, 5, 5, 5]"
+    "box": "18,38,40,57",
+    "painted": "[3, 4, 5, 3]"
    },
    "front_cap": {
-    "accent_clean_before": 0.1,
-    "accent_clean_after": 0.1,
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
     "greyed_px": 0,
-    "streak_px": 20,
-    "creature_px": 1746
+    "streak_px": 15,
+    "creature_px": 1845
    },
-   "front_accent_pct": 0.1,
+   "front_accent_pct": 1.1,
    "front_colours": 12,
    "back_streaks": {
-    "box": "25,35,38,56",
-    "painted": "[3, 3, 4, 3]"
+    "box": "12,37,50,56",
+    "painted": "[3, 4, 4, 4]"
    },
    "back_cap": {
-    "accent_clean_before": 0.1,
-    "accent_clean_after": 0.1,
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
     "greyed_px": 0,
-    "streak_px": 13,
-    "creature_px": 1921
+    "streak_px": 15,
+    "creature_px": 1906
    },
-   "back_accent_pct": 0.1,
-   "back_colours": 11,
-   "icon_cap": {
-    "accent_clean_before": 4.6,
-    "accent_clean_after": 4.6,
-    "greyed_px": 0,
-    "streak_px": 1,
-    "creature_px": 1897
-   },
-   "icon_palette": 1,
-   "icon_size": [
-    24,
-    24
-   ],
+   "back_accent_pct": 0.6,
+   "back_colours": 12,
    "icon3": {
     "icon_palette": 0,
     "ramp": [
@@ -843,14 +831,14 @@
      ]
     ],
     "bands": [
-     75,
-     192,
-     230
+     115,
+     162,
+     233
     ],
-    "accent_cells": 12,
+    "accent_cells": 0,
     "size": [
-     27,
-     28
+     28,
+     24
     ]
    }
   }
@@ -1423,14 +1411,14 @@
      ]
     ],
     "bands": [
-     102,
+     106,
      164,
-     222
+     220
     ],
-    "accent_cells": 6,
+    "accent_cells": 3,
     "size": [
      28,
-     28
+     26
     ]
    }
   }

@@ -37,10 +37,10 @@
   "back": "heap_back_i2i_5231.png"
  },
  "stack": {
-  "front": "stack_front_i2i_5221.png",
-  "icon": "stack_icon_5242.png",
-  "note": "i2i 0.8: a boulder brute with big round boulder fists -- the key kept, but close to today's and little chibi (5222 went round and lost the fists). LOOK-ALIKE with THEOREM's draft (both grey brutes). Back: from today's back (5231); turned 5251 grew horns, 5252 kept the face.",
-  "back": "stack_back_i2i_5231.png"
+  "front": "stack_front_i2i_5264.png",
+  "back": "stack_back_fromfront_5272.png",
+  "icon": "derived",
+  "note": "The user (2026-10-27): rounder and rockier, a boulder, apart from THEOREM. fix4.py: i2i 0.85 from today's front with the boulder wording (5264): one round cracked boulder with a face -- the fists lost in all eight drafts, so drawn in by hand (hand5.py). Back: turned from the new front (5272). Icon: icon3 from the new front."
  },
  "monolith": {
   "front": "monolith_front_i2i_5221.png",
@@ -87,7 +87,7 @@
  "quorum": {
   "front": "quorum_front_i2i_5223.png",
   "icon": "derived",
-  "note": "i2i 0.72 (second pass): four round pods in a diamond, each with its own little face -- the cluster kept; they read as faces more than lenses. The first pass made one blob every time. Back: turned from the new front (5252): four pods, but the lower two still show eyes.",
+  "note": "i2i 0.72 (second pass): four round pods in a diamond, each with its own little face -- the cluster kept; they read as faces more than lenses. The first pass made one blob every time. Back: turned from the new front (5252): four pods, but the lower two still show eyes. The user (2026-10-27): three pods, to match its entry -- no draft in eight drew three (fix4.py 5265-5268, 5285-5288), so the pods are drawn by hand (hand5.py) on front and back, the icon icon3 from the new front.",
   "back": "quorum_back_fromfront_5252.png"
  },
  "overdrive": {
