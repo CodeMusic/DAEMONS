@@ -63,6 +63,14 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 | **LAST WORD** | "We are not the source..." said as the book's own | **The author's own, in first person**: "I have come to think..." |
 | *fixed* | | the lever page's "to move it" (a stone can be picked up) is "to change where it fell"; ONE A DAY retitled *The Last Three, One a Day*; "place them up the body"; AT REST names the NOTEBOOK |
 
+### D4. Intuitions in the world, 2026-10-27 (T-459)
+
+| | the call | decided |
+|---|---|---|
+| **What you notice** | once the book is held | **All four**: your daemon notices first (a purple ripple, it turns toward something unfound); a read, logged in the NOTEBOOK; a lean in battle (T-454's values); words under words (the user writes them) |
+| **Its purple** | which | **CONTEXT's hue, the book's own**, over a softer violet: the intuitions visibly come from the book |
+| **Honesty** | do they always land | **The log decides**, as in D row 3: most land, some lead nowhere, the NOTEBOOK keeps the count |
+
 ### V. Verified 2026-10-18 — the four the review could not see, and two more
 
 1. ***Taken since*** *(2026-10-24): T-431's feelings now hold these bytes, so T-454 needs another home.* **The contest-condition bytes were free, with two catches.** `cool beauty cute smart tough sheen` sit in every

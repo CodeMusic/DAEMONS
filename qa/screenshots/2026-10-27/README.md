@@ -31,3 +31,9 @@ v11.313.1: T-452 batch 3 as built, SKEW to CONJECTURE, and its icons
 v11.313.1: T-458's receiver and keeper lines with the widest name (DRAFT)
 
 ![27Oct2026 - T458 - soundings lines - 8](27Oct2026%20-%20T458%20-%20soundings%20lines%20-%208.png)
+
+### 27Oct2026 - T459 - the purple intuitions mock-ups - 9
+
+Mock-ups of THE SUBTLE LAYER's intuitions in purple, drawn from the game's own map, sprites and font; every word DRAFT. A-C in CONTEXT's hue (the book's), the fourth a softer violet. The user chose all four and CONTEXT's hue, 2026-10-27.
+
+![27Oct2026 - T459 - the purple intuitions mock-ups - 9](27Oct2026%20-%20T459%20-%20the%20purple%20intuitions%20mock-ups%20-%209.png)
