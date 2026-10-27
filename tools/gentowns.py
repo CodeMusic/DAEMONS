@@ -631,6 +631,42 @@ def revert_plan():
     return out
 
 
+def take_gfx_id(s, const):
+    """Give CONST a graphics id in event_objects.h's text S, and return the new text (T-461).
+
+    graphicsId is a u8 the save keeps, and 240-255 are the VAR graphics, so the table cannot grow past
+    OBJ_EVENT_GFX_VARS. A new id takes the lowest OBJ_EVENT_GFX_FREE_<n> -- a number vanilla defined that nothing
+    in the game uses -- renaming its define and striking it from the header's `FREE:` line; register_one() then
+    repoints that slot in the pointer table. Only when none is left does it append at NUM_OBJ_EVENT_GFX, and it
+    refuses to append into the VAR range (the old behaviour, which would have numbered the next sprite 240 and made
+    it OBJ_EVENT_GFX_VAR_0's graphic)."""
+    free = sorted(int(n) for n, n2 in re.findall(r"\n#define OBJ_EVENT_GFX_FREE_(\d+) (\d+)\b", s) if n == n2)
+    if free:
+        n = free[0]
+        s, k = re.subn(r"\n#define OBJ_EVENT_GFX_FREE_%d %d\b[^\n]*" % (n, n),
+                       "\n#define %s %d // T-461: took FREE id %d" % (const, n, n), s, count=1)
+        assert k == 1
+        s, k = re.subn(r"\n//  FREE:[^\n]*\n",
+                       "\n//  FREE: %s\n" % (" ".join(map(str, free[1:])) or "none left -- read T-461 before adding one"),
+                       s, count=1)
+        assert k == 1, "event_objects.h has no `//  FREE:` line (T-461)"
+        return s
+    m = re.search(r"\n#define NUM_OBJ_EVENT_GFX\s+(\d+)\n", s); n = int(m.group(1))
+    v = int(re.search(r"\n#define OBJ_EVENT_GFX_VARS\s+(\d+)", s).group(1))
+    if n >= v:
+        raise SystemExit("%s: no FREE graphics id is left and %d is OBJ_EVENT_GFX_VARS -- graphicsId is a u8 the save "
+                         "keeps; free one (T-461) or decide on widening it first" % (const, n))
+    return s[:m.start()] + "\n#define %s %d" % (const, n) + "\n\n#define NUM_OBJ_EVENT_GFX     %d\n" % (n + 1) + s[m.end():]
+
+
+def colour_row_free(body, n, ev):
+    """True when sTextColorTable (BODY) has no row yet for graphics id N. A row is [id / 2] and covers an id and its
+    odd partner, so a FREE id taken later already has one under its partner's name (T-461): adding a second
+    designated initializer for the same row would silently re-colour the partner."""
+    ids = {c: int(v) for c, v in re.findall(r"#define (OBJ_EVENT_GFX_\w+) (\d+)", ev)}
+    return n // 2 not in {ids[c] // 2 for c in re.findall(r"\[(OBJ_EVENT_GFX_\w+) / 2\]", body) if c in ids}
+
+
 GEOM_16x32 = dict(size=256, w=16, h=32, tiles=(2, 4), oam="16x32", tracks="TRACKS_FOOT")
 GEOM_32x32 = dict(size=512, w=32, h=32, tiles=(4, 4), oam="32x32", tracks="TRACKS_BIKE_TIRE")
 
@@ -652,8 +688,7 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALS
     def constants(s):
         if ("#define %s " % const) in s:
             return s
-        m = re.search(r"\n#define NUM_OBJ_EVENT_GFX\s+(\d+)\n", s); n = int(m.group(1))
-        return s[:m.start()] + "\n#define %s %d" % (const, n) + "\n\n#define NUM_OBJ_EVENT_GFX     %d\n" % (n + 1) + s[m.end():]
+        return take_gfx_id(s, const)        # T-461: a FREE id first; never into the VAR range
     edit("include/constants/event_objects.h", constants)
 
     def graphics(s):
@@ -693,8 +728,16 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALS
         decl = "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BenchmarkGuide;\n"
         entry_re = re.search(r"    \[OBJ_EVENT_GFX_BENCHMARK_GUIDE\s*\]\s*= &gObjectEventGraphicsInfo_BenchmarkGuide,\n", s)
         assert s.count(decl) == 1 and entry_re
-        last = max(m.end() for m in re.finditer(r"    \[OBJ_EVENT_GFX_\w+\s*\]\s*= &gObjectEventGraphicsInfo_\w+,\n", s))
-        s = s[:last] + "    [%s]%s = &gObjectEventGraphicsInfo_%s,\n" % (const, " " * max(1, 40 - len(const)), cname) + s[last:]
+        entry = "    [%s]%s = &gObjectEventGraphicsInfo_%s,\n" % (const, " " * max(1, 40 - len(const)), cname)
+        #  T-461: a FREE id taken keeps its place in the table; its slot is repointed, not added twice
+        ev = open(os.path.join(GBA, "include/constants/event_objects.h")).read()
+        m = re.search(r"#define %s (\d+)" % const, ev)
+        slot = m and re.search(r"    \[OBJ_EVENT_GFX_FREE_%s\]\s*= &gObjectEventGraphicsInfo_\w+,[^\n]*\n" % m.group(1), s)
+        if slot:
+            s = s[:slot.start()] + entry + s[slot.end():]
+        else:
+            last = max(m.end() for m in re.finditer(r"    \[OBJ_EVENT_GFX_\w+\s*\]\s*= &gObjectEventGraphicsInfo_\w+,\n", s))
+            s = s[:last] + entry + s[last:]
         return s.replace(decl, decl + "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s;\n" % cname, 1)
     edit("src/data/object_events/object_event_graphics_info_pointers.h", pointers)
 
@@ -761,7 +804,7 @@ def register():
         for const, n in sorted(ids.items(), key=lambda kv: kv[1]):
             if n % 2 == 1:
                 continue                        # the odd id shares its even partner's line (or the guide's)
-            if ("[%s / 2]" % const) not in body:
+            if ("[%s / 2]" % const) not in body and colour_row_free(body, n, ev):
                 body += "    [%s / 2] = COLORS(NPC_TEXT_COLOR_NEUTRAL, NPC_TEXT_COLOR_NEUTRAL),\n" % const
         return s[:start] + body + s[end:]
     edit("src/dynamic_placeholder_text_util.c", colours)

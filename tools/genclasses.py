@@ -39,7 +39,7 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import overlay, figure, check, sheet, read_pal, ensure_rule, PEOPLE, GBA, WHITE, GREEN
 from genleaders import BLUE, PINK
-from gentowns import mammal, bird, fig, put, pad, TAIL, register_one, camel
+from gentowns import mammal, bird, fig, put, pad, TAIL, register_one, camel, colour_row_free
 
 PREVIEW = daemonslib.preview("classes_ow.png")   # /tmp/classes_ow.png (T-421)
 WRITE = "--write" in sys.argv
@@ -337,7 +337,7 @@ def register():
         end = s.index("};", start)
         body = s[start:end]
         for const, n in sorted(ids.items(), key=lambda kv: kv[1]):
-            if n % 2 == 0 and ("[%s / 2]" % const) not in body:
+            if n % 2 == 0 and ("[%s / 2]" % const) not in body and colour_row_free(body, n, ev):
                 body += "    [%s / 2] = COLORS(NPC_TEXT_COLOR_NEUTRAL, NPC_TEXT_COLOR_NEUTRAL),\n" % const
         return s[:start] + body + s[end:]
     edit("src/dynamic_placeholder_text_util.c", colours)

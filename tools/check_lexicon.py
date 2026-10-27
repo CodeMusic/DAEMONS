@@ -1767,6 +1767,15 @@ def check_sizeof_palettes():
     return cp.check()
 
 
+def check_objgfx():
+    """T-461: object graphics ids -- one number each, none in the VAR range, no FREE id used (tools/check_objgfx.py)."""
+    import importlib.util as _il
+    spec = _il.spec_from_file_location("check_objgfx", os.path.join(ROOT, "tools/check_objgfx.py"))
+    co = _il.module_from_spec(spec)
+    spec.loader.exec_module(co)
+    return co.check(), co.free_ids()
+
+
 def check_specialvar():
     import glob as _glob
     src = "\n".join(open(f, encoding="utf-8", errors="ignore").read()
@@ -2081,6 +2090,14 @@ def main():
         for what, why in plbad:
             print("   %-48s %s" % (what, why))
 
+    ogbad, ogfree = check_objgfx()
+    if not ogbad:
+        print("  every object graphics id has one number and one slot; FREE: %s." % (" ".join(map(str, ogfree)) or "none"))
+    else:
+        print("\n  %d object graphics id problem(s):\n" % len(ogbad))
+        for what, why in ogbad:
+            print("   %-48s %s" % (what, why))
+
     if not tbad:
         print("  every ticket id is used once.")
     else:
@@ -2089,7 +2106,7 @@ def main():
             print("   %-16s %s" % (what, why))
     #  every check's failures reach the exit code (it had dropped tcopy, fbad and the near-collisions, whose count
     #  check_vetoed's overwrote -- found 2026-10-18 in the code-health review)
-    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or snbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad or plbad) else 0
+    return 1 if (bad or vbad or tbad or pbad or cbad or nbad or ncbad or tcopy or fbad or wbad or dbad or gbad or xbad or obad or ibad or rbad or snbad or abad or jbad or mbad or dbad2 or pbad2 or hbad or sbad or gbad2 or vbad2 or spbad or vibad or kbad or plbad or ogbad) else 0
 
 
 if __name__ == "__main__":

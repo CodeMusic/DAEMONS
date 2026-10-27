@@ -34,7 +34,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from genfolk import ensure_rule, PEOPLE, GBA
-from gentowns import register_one, GEOM_32x32
+from gentowns import register_one, GEOM_32x32, colour_row_free
 
 PREVIEW = daemonslib.preview("rhino.png")   # /tmp/rhino.png (T-421)
 WRITE = "--write" in sys.argv
@@ -219,7 +219,7 @@ def main():
                 start = s.index("static const u8 sTextColorTable[] =")
                 end = s.index("};", start)
                 body = s[start:end]
-                if ("[%s / 2]" % CONST) not in body:
+                if ("[%s / 2]" % CONST) not in body and colour_row_free(body, n, ev):
                     body += "    [%s / 2] = COLORS(NPC_TEXT_COLOR_NEUTRAL, NPC_TEXT_COLOR_NEUTRAL),\n" % CONST
                 return s[:start] + body + s[end:]
             edit("src/dynamic_placeholder_text_util.c", colours)
