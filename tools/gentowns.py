@@ -634,12 +634,12 @@ def revert_plan():
 def take_gfx_id(s, const):
     """Give CONST a graphics id in event_objects.h's text S, and return the new text (T-461).
 
-    graphicsId is a u8 the save keeps, and 240-255 are the VAR graphics, so the table cannot grow past
-    OBJ_EVENT_GFX_VARS. A new id takes the lowest OBJ_EVENT_GFX_FREE_<n> -- a number vanilla defined that nothing
-    in the game uses -- renaming its define and striking it from the header's `FREE:` line; register_one() then
-    repoints that slot in the pointer table. Only when none is left does it append at NUM_OBJ_EVENT_GFX, and it
-    refuses to append into the VAR range (the old behaviour, which would have numbered the next sprite 240 and made
-    it OBJ_EVENT_GFX_VAR_0's graphic)."""
+    A new id takes the lowest OBJ_EVENT_GFX_FREE_<n> -- a number vanilla defined that nothing in the game uses --
+    renaming its define and striking it from the header's `FREE:` line; register_one() then repoints that slot in the
+    pointer table. When none is left it appends at NUM_OBJ_EVENT_GFX -- but never into 240-255, the VAR graphics:
+    since phase 2 (2026-10-27) the id is 12 bits, so the next one after 239 is OBJ_EVENT_GFX_WIDE_START (256), and it
+    refuses at OBJ_EVENT_GFX_ID_LIMIT (4096). A wide id is recorded in the recap as its stand-in (register_one's
+    STAND_IN; quest_log_objects.c)."""
     free = sorted(int(n) for n, n2 in re.findall(r"\n#define OBJ_EVENT_GFX_FREE_(\d+) (\d+)\b", s) if n == n2)
     if free:
         n = free[0]
@@ -653,9 +653,12 @@ def take_gfx_id(s, const):
         return s
     m = re.search(r"\n#define NUM_OBJ_EVENT_GFX\s+(\d+)\n", s); n = int(m.group(1))
     v = int(re.search(r"\n#define OBJ_EVENT_GFX_VARS\s+(\d+)", s).group(1))
-    if n >= v:
-        raise SystemExit("%s: no FREE graphics id is left and %d is OBJ_EVENT_GFX_VARS -- graphicsId is a u8 the save "
-                         "keeps; free one (T-461) or decide on widening it first" % (const, n))
+    wide = int(re.search(r"\n#define OBJ_EVENT_GFX_WIDE_START\s+(\d+)", s).group(1))
+    limit = int(re.search(r"\n#define OBJ_EVENT_GFX_ID_LIMIT\s+(\d+)", s).group(1))
+    if v <= n < wide:
+        n = wide                    # T-461 phase 2: past the sixteen VARs
+    if n >= limit:
+        raise SystemExit("%s: graphics id %d is OBJ_EVENT_GFX_ID_LIMIT -- an object event keeps 12 bits (T-461)" % (const, n))
     return s[:m.start()] + "\n#define %s %d" % (const, n) + "\n\n#define NUM_OBJ_EVENT_GFX     %d\n" % (n + 1) + s[m.end():]
 
 
@@ -672,7 +675,7 @@ GEOM_32x32 = dict(size=512, w=32, h=32, tiles=(4, 4), oam="32x32", tracks="TRACK
 
 
 def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALSLOT_NPC_SPECIAL",
-                 geom=None):
+                 geom=None, stand_in=None):
     """one graphics id: the constant, the sheet, its frame table, its info and its pointer
 
     SLOT is not free. The engine patches the palette named by the tag INTO the slot named here, so
@@ -683,6 +686,10 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALS
     GEOM is the sprite's shape and it is NOT cosmetic either: .size, .width/.height, the oam and
     subsprite tables, and the (mwidth, mheight) the pic table cuts frames with all have to agree
     with the PNG on disk. A 32x32 sheet cut 2x4 is trap 15 with more tiles.
+
+    STAND_IN (T-461) is the narrow OBJ_EVENT_GFX_* the recap replays in this sprite's place if it is given a wide id
+    (256 and up: the quest log keeps a u8). Pick a like-shaped one; left None, the recap shows
+    OBJ_EVENT_GFX_QL_STAND_IN, a generic person.
     """
     geom = geom or GEOM_16x32
     def constants(s):
@@ -740,6 +747,18 @@ def register_one(edit, const, cname, fname, tag_name, note, frames=9, slot="PALS
             s = s[:last] + entry + s[last:]
         return s.replace(decl, decl + "const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_%s;\n" % cname, 1)
     edit("src/data/object_events/object_event_graphics_info_pointers.h", pointers)
+
+    def stand_ins(s):
+        #  T-461: a wide id's row in the recap's stand-in table, when the caller named one
+        ev = open(os.path.join(GBA, "include/constants/event_objects.h")).read()
+        m = re.search(r"#define %s (\d+)" % const, ev)
+        row = "    [%s - OBJ_EVENT_GFX_WIDE_START] = %s,\n" % (const, stand_in)
+        if not stand_in or not m or int(m.group(1)) < 256 or ("[%s - OBJ_EVENT_GFX_WIDE_START]" % const) in s:
+            return s
+        anchor = "    // [OBJ_EVENT_GFX_<NEW> - OBJ_EVENT_GFX_WIDE_START] = OBJ_EVENT_GFX_<a like-shaped narrow id>,\n"
+        assert s.count(anchor) == 1, "quest_log_objects.c lost its stand-in table's anchor (T-461)"
+        return s.replace(anchor, anchor + row)
+    edit("src/quest_log_objects.c", stand_ins)
 
 
 def register():
