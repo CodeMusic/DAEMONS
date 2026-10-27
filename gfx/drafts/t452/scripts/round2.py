@@ -25,7 +25,7 @@ from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from subjects import S
 import icon3
-R = "/Users/christopherhicks/Projects/DAEMONS"; T = R + "/gfx/drafts/t452"; D = T + "/r"; REL = "gfx/drafts/t452/r"
+R = "/Users/christopherhicks/Projects/DAEMONS"; T = os.environ.get("T452_ROOT", R + "/gfx/drafts/t452"); D = T + "/r"; REL = "gfx/drafts/t452/r"
 PY = os.path.expanduser("~/.pyenv/versions/3.12.2/bin/python3"); SEED = 5000
 os.chdir(R)
 for d in ("src", "clean", "reduced"): os.makedirs(f"{D}/{d}", exist_ok=True)

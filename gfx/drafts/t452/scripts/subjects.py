@@ -553,3 +553,20 @@ CHARM2 = {
   neg2="frame, border, box, card, bat, ears, fur",
   icon="a cute little folded paper manta ray with wide wings and big eyes"),
 }
+
+# ---- batch 3's second wordings (2026-10-27): keys the first charm pass lost ----
+CHARM2.update({
+ "skew": dict(CHARM["skew"], front2="a cute little plant creature bent over on a long curved stem, its big flower head hanging heavily upside down, wilted petals drooping towards its feet, a sad little face on the hanging flower, leafy root feet",
+  neg2="upright flower, sunflower, girl, red hair"),
+ "resident": dict(CHARM["resident"], front2="a cute round little beetle bug with a smooth round grey shell, two long thin antennae each ending in a small round ring loop like a key ring, big eyes, tiny legs",
+  neg2="rabbit, bunny ears, curled antennae, horns"),
+ "spyware": dict(CHARM["spyware"], front2="a cute fuzzy little moth with big wide pale wings, each wing marked with one big round dark eye spot like a staring eye, feathery antennae, big eyes",
+  neg2="butterfly bright colours, plain wings"),
+ "wiretap": dict(CHARM["wiretap"], front2="three cute round plump grey moles with pink noses and big eyes huddled together in a little pyramid, two at the bottom and one on top, floating on white, nothing underneath",
+  neg2="ground, dirt, mound, grass, base, platform, bricks, penguins, hamsters"),
+})
+S["badseed"]["icon2"] = "a cute round chubby creature with big eyes and two round seed pods on tall stalks on its head"
+S["skew"]["icon2"] = "a cute little plant creature with a sad face and a big drooping wilted flower head"
+CHARM2["spinlock"] = dict(CHARM["spinlock"], front2="a cute round frog standing with a big round white belly marked with one bold black spiral swirl like a whirlpool, big eyes, small hands held out",
+  neg2="plain belly, toad, warts")
+S["spinlock"]["icon2"] = "a cute round frog with big eyes and a bold black spiral swirl on its round white belly"

@@ -12,7 +12,7 @@ Seeds: t2i chibi fronts 5101/5102 (5103/5104 a second wording), i2i from today's
 or the engine."""
 import json, os, sys, subprocess
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-R = "/Users/christopherhicks/Projects/DAEMONS"; T = R + "/gfx/drafts/t452"; D = T + "/f"
+R = "/Users/christopherhicks/Projects/DAEMONS"; T = os.environ.get("T452_ROOT", R + "/gfx/drafts/t452"); D = T + "/f"
 PY = os.path.expanduser("~/.pyenv/versions/3.12.2/bin/python3")
 SP = "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/"
 NAMES = ("skew badseed payload rootkit resident spyware tappoint wiretap cookie tracker fault handler preempt livelock "
@@ -24,7 +24,11 @@ def icons():
     ch = json.load(open(D + "/choose.json")); P = json.load(open(D + "/picks.json"))
     for n in NAMES:
         if n not in P: continue
-        P[n]["measured"]["icon3"] = round2.icon_from_draft("f", n, ch[n]["icon"], P[n]["type"])
+        if ch[n]["icon"] == "derived":   # icon3 from the clean new front (round two's rule for a lost bust)
+            import icon3
+            P[n]["measured"]["icon3"] = icon3.make(n, P[n]["type"], f"{D}/clean/{n}_front.png", f"{D}/reduced/{n}_icon.png")
+        else:
+            P[n]["measured"]["icon3"] = round2.icon_from_draft("f", n, ch[n]["icon"], P[n]["type"])
         print(n, P[n]["measured"]["icon3"]["icon_palette"], P[n]["measured"]["icon3"]["size"], flush=True)
     json.dump(P, open(D + "/picks.json", "w"), indent=1)
 

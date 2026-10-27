@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gbs
 sys.path.insert(0, "/Users/christopherhicks/Projects/DAEMONS/tools")
 import genshiny
-R = "/Users/christopherhicks/Projects/DAEMONS"; T = R + "/gfx/drafts/t452"; G = R + "/engineGba/graphics/pokemon/"
+R = "/Users/christopherhicks/Projects/DAEMONS"; T = os.environ.get("T452_ROOT", R + "/gfx/drafts/t452"); G = R + "/engineGba/graphics/pokemon/"
 SPEC = json.load(open(R + "/companion/server/data/species.json")); BY = {v["name"].lower(): v for v in SPEC.values()}
 F = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 15); FS = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 12)
 PAPER = (236, 234, 226); INK = (30, 30, 34); GROUND = (205, 205, 172); PARTY = (98, 156, 131); RED = (170, 40, 40)

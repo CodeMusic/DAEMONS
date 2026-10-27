@@ -1,0 +1,1878 @@
+{
+ "skew": {
+  "name": "SKEW",
+  "national": 44,
+  "slot": "gloom",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a plant creature whose big flower head droops, its petals wilting down (SPOILING)",
+  "note": "t2i 5103 (second wording): a little sprout creature whose bud hangs over heavy on a bent stem -- the droop kept, drawn small (the frame is mostly white). The first wording's flowers all stood upright (i2i 5121 is the best of them). Drawn icons: a girl, a flower pot, an upright daisy -- icon3 from the new front. Back: from today's back (5131), a drooping head: the turned ones were the front again and a flower pot",
+  "failed": "",
+  "front": "skew_front_5103.png",
+  "back": "skew_back_i2i_5131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,32,37,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 51.3,
+    "accent_clean_after": 14.8,
+    "greyed_px": 284,
+    "streak_px": 95,
+    "creature_px": 778
+   },
+   "front_accent_pct": 14.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,33,42,45",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 47.3,
+    "accent_clean_after": 14.4,
+    "greyed_px": 307,
+    "streak_px": 21,
+    "creature_px": 933
+   },
+   "back_accent_pct": 14.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     96,
+     155,
+     199
+    ],
+    "accent_cells": 22,
+    "size": [
+     16,
+     28
+    ]
+   }
+  }
+ },
+ "badseed": {
+  "name": "BADSEED",
+  "national": 45,
+  "slot": "vileplume",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a round chubby creature with two round seed pods on stalks for antennae (CONTAMINANT)",
+  "note": "i2i 0.8: a chubby big-eyed creature with two leafy seed pods on stalks -- the key kept. No drawn icon kept the stalks (four tries); icon3 from the new front. Watch: a pale strip under its feet. Back: from today's back (5131): stalks without pods; the turned ones kept a face",
+  "failed": "",
+  "front": "badseed_front_i2i_5121.png",
+  "back": "badseed_back_i2i_5131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,38,55",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 27.4,
+    "accent_clean_after": 12.8,
+    "greyed_px": 222,
+    "streak_px": 19,
+    "creature_px": 1521
+   },
+   "front_accent_pct": 12.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "20,32,42,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.8,
+    "accent_clean_after": 4.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1291
+   },
+   "back_accent_pct": 4.8,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     178,
+     232
+    ],
+    "accent_cells": 9,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "payload": {
+  "name": "PAYLOAD",
+  "national": 46,
+  "slot": "paras",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a little crab-legged bug carrying a big spotted mushroom cap on its back (CARRIED)",
+  "note": "t2i 5102: a big-eyed critter under a big spotted mushroom cap, thin crab legs below -- the cap kept (its red goes to the type's ramp). Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "payload_front_5102.png",
+  "back": "payload_back_fromfront_5152.png",
+  "icon": "payload_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "27,34,37,56",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 13.9,
+    "accent_clean_after": 13.9,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 2209
+   },
+   "front_accent_pct": 13.9,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "24,35,36,56",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 21.6,
+    "accent_clean_after": 2.7,
+    "greyed_px": 389,
+    "streak_px": 19,
+    "creature_px": 2051
+   },
+   "back_accent_pct": 2.7,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 17.9,
+    "accent_clean_after": 3.9,
+    "greyed_px": 224,
+    "streak_px": 0,
+    "creature_px": 1598
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     91,
+     182,
+     240
+    ],
+    "accent_cells": 3,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "rootkit": {
+  "name": "ROOTKIT",
+  "national": 47,
+  "slot": "parasect",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a crab whose whole body is hidden under one enormous flat mushroom cap (PRIVILEGED)",
+  "note": "i2i 0.8: a crab under one enormous flat grey dome cap, eyes peeking out -- the cap kept, close to today's. Both drawn icons were red-capped mushrooms (PAYLOAD's look), so the icon is icon3 from the new front. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "rootkit_front_i2i_5121.png",
+  "back": "rootkit_back_fromfront_5152.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "8,30,32,38",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1139
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "22,34,40,50",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1377
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     175,
+     226
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     20
+    ]
+   }
+  }
+ },
+ "resident": {
+  "name": "RESIDENT",
+  "national": 48,
+  "slot": "venonat",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a round little bug with two long antennae ending in round loops (UNNOTICED)",
+  "note": "i2i 0.76 (charmlo): a round little shell bug with two curling antennae. Back: from today's back (5131), which KEPT the antenna loops the front lost",
+  "failed": "front: the round loops at the antenna tips are in no draft of 10 (two wordings, i2i 0.72-0.85) -- curls, hooks or plain feelers; propose two small rings drawn by hand on the tips",
+  "front": "resident_front_i2i_5124.png",
+  "back": "resident_back_i2i_5131.png",
+  "icon": "resident_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,39,36,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.8,
+    "accent_clean_after": 8.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 882
+   },
+   "front_accent_pct": 8.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "23,38,40,50",
+    "painted": "[3, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 736
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1478
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    20
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     90,
+     201,
+     240
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     23
+    ]
+   }
+  }
+ },
+ "spyware": {
+  "name": "SPYWARE",
+  "national": 49,
+  "slot": "venomoth",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a moth with big wide wings marked with eye spots (UNDECLARED)",
+  "note": "t2i 5102: a fluffy round moth with big soft wings and big eyes. Back: turned from the new front (5152).",
+  "failed": "front: the eye spots on the wings are in no draft of 10 (two wordings) -- plain pale wings; propose one dark spot per wing by hand",
+  "front": "spyware_front_5102.png",
+  "back": "spyware_back_fromfront_5152.png",
+  "icon": "spyware_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "19,34,40,56",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.9,
+    "accent_clean_after": 2.9,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2550
+   },
+   "front_accent_pct": 2.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "23,35,39,56",
+    "painted": "[5, 5, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1831
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1372
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     144,
+     198,
+     238
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "tappoint": {
+  "name": "TAPPOINT",
+  "national": 50,
+  "slot": "diglett",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a round mole poking up out of a small dark hole (INTERPOSED)",
+  "note": "t2i 5101: a round plump big-eyed mole. Back: turned from the new front (5152).",
+  "failed": "front: the hole is in no draft (5121 stood it on a grey plate instead) -- drawn as a round mole with no hole; the hole would be a baked ground",
+  "front": "tappoint_front_5101.png",
+  "back": "tappoint_back_fromfront_5152.png",
+  "icon": "src/tappoint_icon_5141_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "12,34,50,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.0,
+    "accent_clean_after": 5.0,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 2385
+   },
+   "front_accent_pct": 5.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "18,32,45,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2045
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 478
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     104,
+     170,
+     235
+    ],
+    "accent_cells": 4,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "wiretap": {
+  "name": "WIRETAP",
+  "national": 51,
+  "slot": "dugtrio",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "three little round moles huddled together side by side (LISTENING)",
+  "note": "t2i 5104 (second wording, 'nothing underneath'): three round moles in a little pyramid, no ground -- the three kept; every other three stood on a dirt, grass or brick mound (a baked ground). Drawn small. Drawn icons showed two or four; icon3 from the new front. Back: turned (5152) but the three faces still show: flagged",
+  "failed": "back: the turned back still shows three faces (the model would not turn three at once); today's-back drafts stand on a dirt mound",
+  "front": "wiretap_front_5104.png",
+  "back": "wiretap_back_fromfront_5152.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,32,47,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.3,
+    "accent_clean_after": 10.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 716
+   },
+   "front_accent_pct": 10.3,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "16,32,26,40",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 685
+   },
+   "back_accent_pct": 3.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     87,
+     185,
+     239
+    ],
+    "accent_cells": 21,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "cookie": {
+  "name": "COOKIE",
+  "national": 52,
+  "slot": "meowth",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a kitten wearing a round cookie charm on its collar (PERSISTENT)",
+  "note": "i2i 0.8: a sitting kitten with a round gold charm on its collar -- the charm kept. Drawn icons: one on a cookie disc (a card), one a cat-eared girl; icon3 from the new front. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "cookie_front_i2i_5121.png",
+  "back": "cookie_back_fromfront_5152.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,35,54",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 13.8,
+    "accent_clean_after": 13.8,
+    "greyed_px": 0,
+    "streak_px": 29,
+    "creature_px": 1394
+   },
+   "front_accent_pct": 13.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "26,34,38,55",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 21.8,
+    "accent_clean_after": 12.1,
+    "greyed_px": 134,
+    "streak_px": 19,
+    "creature_px": 1375
+   },
+   "back_accent_pct": 12.1,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     177,
+     231
+    ],
+    "accent_cells": 9,
+    "size": [
+     19,
+     28
+    ]
+   }
+  }
+ },
+ "tracker": {
+  "name": "TRACKER",
+  "national": 53,
+  "slot": "persian",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a tall slender cat with a long curling tail and a tag on its collar (CORRELATED)",
+  "note": "t2i 5102: a slender green-eyed cat on all fours with a long curling tail held high -- the tail kept, the collar tag not drawn. Stands apart from COOKIE (sitting kitten). Back: turned (5152); watch for a ring under it",
+  "failed": "",
+  "front": "tracker_front_5102.png",
+  "back": "tracker_back_fromfront_5152.png",
+  "icon": "tracker_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "19,34,38,57",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1878
+   },
+   "front_accent_pct": 2.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "23,30,35,38",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 951
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 7.3,
+    "accent_clean_after": 7.3,
+    "greyed_px": 0,
+    "streak_px": 3,
+    "creature_px": 1306
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     109,
+     163,
+     228
+    ],
+    "accent_cells": 17,
+    "size": [
+     24,
+     28
+    ]
+   }
+  }
+ },
+ "fault": {
+  "name": "FAULT",
+  "national": 54,
+  "slot": "psyduck",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a puzzled duck holding its stubby wings out wide (UNHANDLED)",
+  "note": "i2i 0.85: a chubby puzzled duck holding both wings straight out -- the key kept. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "fault_front_i2i_5122.png",
+  "back": "fault_back_fromfront_5152.png",
+  "icon": "fault_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,42,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 26.7,
+    "accent_clean_after": 13.7,
+    "greyed_px": 189,
+    "streak_px": 20,
+    "creature_px": 1443
+   },
+   "front_accent_pct": 13.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "21,35,40,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 21.9,
+    "accent_clean_after": 11.2,
+    "greyed_px": 167,
+    "streak_px": 20,
+    "creature_px": 1558
+   },
+   "back_accent_pct": 11.2,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 17.8,
+    "accent_clean_after": 12.8,
+    "greyed_px": 76,
+    "streak_px": 0,
+    "creature_px": 1502
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     149,
+     203,
+     241
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "handler": {
+  "name": "HANDLER",
+  "national": 55,
+  "slot": "golduck",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a sleek duck with a long neck catching, wings spread to catch (CATCHING)",
+  "note": "i2i 0.8: a sleek long-necked duck with both wings spread wide -- the key kept; less chibi than the rest. Back: turned from the front (5152), but its head still shows the beak side-on",
+  "failed": "",
+  "front": "handler_front_i2i_5121.png",
+  "back": "handler_back_fromfront_5152.png",
+  "icon": "handler_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,32,38,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.2,
+    "accent_clean_after": 5.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1187
+   },
+   "front_accent_pct": 5.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,29,33,45",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.3,
+    "accent_clean_after": 4.3,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 956
+   },
+   "back_accent_pct": 4.3,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 13.0,
+    "accent_clean_after": 13.0,
+    "greyed_px": 0,
+    "streak_px": 5,
+    "creature_px": 1396
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    20
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     126,
+     182,
+     240
+    ],
+    "accent_cells": 10,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "preempt": {
+  "name": "PREEMPT",
+  "national": 56,
+  "slot": "mankey",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "an impatient little monkey with two big round fists raised (IMPATIENT)",
+  "note": "i2i 0.8: a cross little monkey, both fists raised. Back: from today's back (5131): the turned ones were fronts",
+  "failed": "",
+  "front": "preempt_front_i2i_5121.png",
+  "back": "preempt_back_i2i_5131.png",
+  "icon": "preempt_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,38,52",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.3,
+    "accent_clean_after": 11.9,
+    "greyed_px": 76,
+    "streak_px": 17,
+    "creature_px": 1419
+   },
+   "front_accent_pct": 11.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "26,31,38,43",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.0,
+    "accent_clean_after": 5.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1339
+   },
+   "back_accent_pct": 5.0,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 16.1,
+    "accent_clean_after": 6.7,
+    "greyed_px": 152,
+    "streak_px": 0,
+    "creature_px": 1612
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     91,
+     161,
+     240
+    ],
+    "accent_cells": 30,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "livelock": {
+  "name": "LIVELOCK",
+  "national": 57,
+  "slot": "primeape",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "an angry red-faced monkey in big orange boxing gloves (NO PROGRESS)",
+  "note": "t2i 5101: a furious chibi monkey in big red boxing gloves -- the gloves kept (they are the accent). Back: from today's back (5132), its orange gloves kept: the turned ones were fronts",
+  "failed": "",
+  "front": "livelock_front_5101.png",
+  "back": "livelock_back_i2i_5132.png",
+  "icon": "src/livelock_icon_5142_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "19,33,44,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 21.5,
+    "accent_clean_after": 12.6,
+    "greyed_px": 223,
+    "streak_px": 21,
+    "creature_px": 2519
+   },
+   "front_accent_pct": 12.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "20,35,35,54",
+    "painted": "[5, 5, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 12.3,
+    "accent_clean_after": 12.3,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1428
+   },
+   "back_accent_pct": 12.3,
+   "back_colours": 15,
+   "icon_cap": {
+    "accent_clean_before": 66.3,
+    "accent_clean_after": 13.0,
+    "greyed_px": 799,
+    "streak_px": 0,
+    "creature_px": 1497
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    19
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     167,
+     221
+    ],
+    "accent_cells": 25,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "sentry": {
+  "name": "SENTRY",
+  "national": 58,
+  "slot": "growlithe",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "an alert wolf pup with tall pointed ears and a curled tail (WATCHING)",
+  "note": "t2i 5102: a chibi wolf pup, tall pointed ears, curled tail -- the key kept. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "sentry_front_5102.png",
+  "back": "sentry_back_fromfront_5152.png",
+  "icon": "sentry_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "29,35,34,57",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.4,
+    "accent_clean_after": 2.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1570
+   },
+   "front_accent_pct": 2.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,34,36,56",
+    "painted": "[5, 5, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.3,
+    "accent_clean_after": 5.3,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1463
+   },
+   "back_accent_pct": 5.3,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 3.5,
+    "accent_clean_after": 3.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1065
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    18,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     181,
+     232
+    ],
+    "accent_cells": 2,
+    "size": [
+     21,
+     28
+    ]
+   }
+  }
+ },
+ "guardian": {
+  "name": "GUARDIAN",
+  "national": 59,
+  "slot": "arcanine",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a big shaggy dog with a huge thick mane (STANDING BY)",
+  "note": "t2i 5101: a fluffy big-maned dog sitting tall -- the mane kept. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "guardian_front_5101.png",
+  "back": "guardian_back_fromfront_5152.png",
+  "icon": "guardian_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "15,34,32,55",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1898
+   },
+   "front_accent_pct": 0.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "11,36,33,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1502
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1620
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    22,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     118,
+     195,
+     242
+    ],
+    "accent_cells": 0,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "loop": {
+  "name": "LOOP",
+  "national": 60,
+  "slot": "poliwag",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round tadpole with a long thin wiggly tail (REPEATING)",
+  "note": "i2i 0.85: a big-eyed tadpole whose thin tail curls into a spiral, little fins -- the tail kept. Back: turned from the new front (5151).",
+  "failed": "",
+  "front": "loop_front_i2i_5122.png",
+  "back": "loop_back_fromfront_5151.png",
+  "icon": "loop_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "16,32,26,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 32.2,
+    "accent_clean_after": 11.7,
+    "greyed_px": 183,
+    "streak_px": 34,
+    "creature_px": 892
+   },
+   "front_accent_pct": 11.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "19,35,33,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 15.4,
+    "accent_clean_after": 10.5,
+    "greyed_px": 53,
+    "streak_px": 20,
+    "creature_px": 1100
+   },
+   "back_accent_pct": 10.5,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1873
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     107,
+     149,
+     189
+    ],
+    "accent_cells": 3,
+    "size": [
+     20,
+     28
+    ]
+   }
+  }
+ },
+ "spinlock": {
+  "name": "SPINLOCK",
+  "national": 61,
+  "slot": "poliwhirl",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round frog with a spiral swirl on its belly (BUSY)",
+  "note": "t2i 5101: a chibi frog with a big pale belly. Back: turned from the new front (5152).",
+  "failed": "front: the belly swirl is in no draft of 10 (two wordings) -- a plain pale belly; propose a spiral drawn by hand on the belly (it is the one thing that tells SPINLOCK from MUTEX's frog)",
+  "front": "spinlock_front_5101.png",
+  "back": "spinlock_back_fromfront_5152.png",
+  "icon": "spinlock_icon_5144.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,42,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 45.9,
+    "accent_clean_after": 11.0,
+    "greyed_px": 618,
+    "streak_px": 21,
+    "creature_px": 1774
+   },
+   "front_accent_pct": 11.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "19,34,43,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 54.7,
+    "accent_clean_after": 13.1,
+    "greyed_px": 817,
+    "streak_px": 20,
+    "creature_px": 1967
+   },
+   "back_accent_pct": 13.1,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 37.0,
+    "accent_clean_after": 11.1,
+    "greyed_px": 462,
+    "streak_px": 12,
+    "creature_px": 1784
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     95,
+     171,
+     243
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "mutex": {
+  "name": "MUTEX",
+  "national": 62,
+  "slot": "poliwrath",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big muscular frog with broad arms and a swirl on its chest (EXCLUSIVE)",
+  "note": "i2i 0.85: a stout frog flexing one big arm -- the arms kept; the chest swirl not drawn. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "mutex_front_i2i_5122.png",
+  "back": "mutex_back_fromfront_5152.png",
+  "icon": "src/mutex_icon_5142_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,36,38,56",
+    "painted": "[3, 4, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 63.0,
+    "accent_clean_after": 8.2,
+    "greyed_px": 1027,
+    "streak_px": 14,
+    "creature_px": 1874
+   },
+   "front_accent_pct": 8.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,36,38,56",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 63.1,
+    "accent_clean_after": 11.7,
+    "greyed_px": 963,
+    "streak_px": 15,
+    "creature_px": 1874
+   },
+   "back_accent_pct": 11.7,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 37.6,
+    "accent_clean_after": 11.3,
+    "greyed_px": 377,
+    "streak_px": 1,
+    "creature_px": 1431
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     102,
+     157,
+     224
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "hunch": {
+  "name": "HUNCH",
+  "national": 63,
+  "slot": "abra",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a little fox dozing with its eyes closed, a big white-tipped tail (UNSHOWN)",
+  "note": "t2i 5101: a dozing fox, eyes half shut, a huge white tail -- the doze kept. Icon: a fox with eyes closed. Back: turned from the new front (5152).",
+  "failed": "",
+  "front": "hunch_front_5101.png",
+  "back": "hunch_back_fromfront_5152.png",
+  "icon": "hunch_icon_5142.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,53,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.4,
+    "accent_clean_after": 5.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1985
+   },
+   "front_accent_pct": 5.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,37,40,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1606
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 29.4,
+    "accent_clean_after": 5.3,
+    "greyed_px": 712,
+    "streak_px": 0,
+    "creature_px": 2957
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     149,
+     228
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "inference": {
+  "name": "INFERENCE",
+  "national": 64,
+  "slot": "kadabra",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a fox standing upright holding a big spoon (DERIVED)",
+  "note": "i2i 0.85: a fox standing upright holding a big wooden spoon -- the spoon kept and readable. (t2i 5101 is cuter but its spoon is small.) Back: from today's back (5131): the turned ones kept a face",
+  "failed": "",
+  "front": "inference_front_i2i_5122.png",
+  "back": "inference_back_i2i_5131.png",
+  "icon": "inference_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "25,30,35,45",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.0,
+    "accent_clean_after": 10.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 851
+   },
+   "front_accent_pct": 10.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "18,33,30,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 730
+   },
+   "back_accent_pct": 1.2,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1219
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    19,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     183,
+     238
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "conjecture": {
+  "name": "CONJECTURE",
+  "national": 65,
+  "slot": "alakazam",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a fox standing upright holding a spoon in each paw (UNPROVEN)",
+  "note": "t2i 5101: a fox holding a spoon -- ONE spoon, no moustache; the second spoon was not drawn by any draft. Back: from today's back (5131): the turned ones kept a face",
+  "failed": "",
+  "front": "conjecture_front_5101.png",
+  "back": "conjecture_back_i2i_5131.png",
+  "icon": "conjecture_icon_5141.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,31,37,49",
+    "painted": "[5, 5, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 28.3,
+    "accent_clean_after": 13.9,
+    "greyed_px": 199,
+    "streak_px": 18,
+    "creature_px": 1376
+   },
+   "front_accent_pct": 13.9,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "40,34,52,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 944
+   },
+   "back_accent_pct": 1.0,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 50.2,
+    "accent_clean_after": 8.8,
+    "greyed_px": 444,
+    "streak_px": 0,
+    "creature_px": 1072
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    21
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     150,
+     223
+    ],
+    "accent_cells": 12,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ }
+}

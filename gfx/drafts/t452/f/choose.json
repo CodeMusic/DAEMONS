@@ -1,0 +1,140 @@
+{
+ "_": "batch 3 (2026-10-26/27), the charm recipe (dir f, seed 5100), chosen by eye on t452b3_cand_*.png. Seeds: t2i chibi fronts 5101/5102 (5103/5104 a second wording), i2i from today's front 0.8 = 5121, 0.85 = 5122 (0.72 = 5123, 0.76 = 5124 where charmlo ran), backs from today's back 0.66 = 5131, 0.75 = 5132, chibi icons 5141/5142 (5143/5144 icon2), backs turned from the chosen front 0.75 = 5151, 0.85 = 5152. Icons by icon3 (round2.icon_from_draft); 'derived' = icon3 from the clean new front.",
+ "payload": {
+  "front": "payload_front_5102.png",
+  "icon": "payload_icon_5141.png",
+  "note": "t2i 5102: a big-eyed critter under a big spotted mushroom cap, thin crab legs below -- the cap kept (its red goes to the type's ramp). Back: turned from the new front (5152).",
+  "back": "payload_back_fromfront_5152.png"
+ },
+ "rootkit": {
+  "front": "rootkit_front_i2i_5121.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a crab under one enormous flat grey dome cap, eyes peeking out -- the cap kept, close to today's. Both drawn icons were red-capped mushrooms (PAYLOAD's look), so the icon is icon3 from the new front. Back: turned from the new front (5152).",
+  "back": "rootkit_back_fromfront_5152.png"
+ },
+ "tappoint": {
+  "front": "tappoint_front_5101.png",
+  "icon": "derived",
+  "note": "t2i 5101: a round plump big-eyed mole. Back: turned from the new front (5152). Icon: icon3 from the new front -- its drawn icon (5141) carried a dark strip down one side.",
+  "failed": "front: the hole is in no draft (5121 stood it on a grey plate instead) -- drawn as a round mole with no hole; the hole would be a baked ground",
+  "back": "tappoint_back_fromfront_5152.png"
+ },
+ "cookie": {
+  "front": "cookie_front_i2i_5121.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a sitting kitten with a round gold charm on its collar -- the charm kept. Drawn icons: one on a cookie disc (a card), one a cat-eared girl; icon3 from the new front. Back: turned from the new front (5152).",
+  "back": "cookie_back_fromfront_5152.png"
+ },
+ "tracker": {
+  "front": "tracker_front_5102.png",
+  "icon": "tracker_icon_5141.png",
+  "note": "t2i 5102: a slender green-eyed cat on all fours with a long curling tail held high -- the tail kept, the collar tag not drawn. Stands apart from COOKIE (sitting kitten). Back: turned (5152); watch for a ring under it",
+  "back": "tracker_back_fromfront_5152.png"
+ },
+ "fault": {
+  "front": "fault_front_i2i_5122.png",
+  "icon": "fault_icon_5141.png",
+  "note": "i2i 0.85: a chubby puzzled duck holding both wings straight out -- the key kept. Back: turned from the new front (5152).",
+  "back": "fault_back_fromfront_5152.png"
+ },
+ "handler": {
+  "front": "handler_front_i2i_5121.png",
+  "icon": "handler_icon_5141.png",
+  "note": "i2i 0.8: a sleek long-necked duck with both wings spread wide -- the key kept; less chibi than the rest. Back: turned from the front (5152), but its head still shows the beak side-on",
+  "back": "handler_back_fromfront_5152.png"
+ },
+ "preempt": {
+  "front": "preempt_front_i2i_5121.png",
+  "icon": "preempt_icon_5141.png",
+  "note": "i2i 0.8: a cross little monkey, both fists raised. Back: from today's back (5131): the turned ones were fronts",
+  "back": "preempt_back_i2i_5131.png"
+ },
+ "livelock": {
+  "front": "livelock_front_5101.png",
+  "icon": "livelock_icon_5142.png",
+  "note": "t2i 5101: a furious chibi monkey in big red boxing gloves -- the gloves kept (they are the accent). Back: from today's back (5132), its orange gloves kept: the turned ones were fronts",
+  "back": "livelock_back_i2i_5132.png"
+ },
+ "sentry": {
+  "front": "sentry_front_5102.png",
+  "icon": "sentry_icon_5141.png",
+  "note": "t2i 5102: a chibi wolf pup, tall pointed ears, curled tail -- the key kept. Back: turned from the new front (5152).",
+  "back": "sentry_back_fromfront_5152.png"
+ },
+ "guardian": {
+  "front": "guardian_front_5101.png",
+  "icon": "guardian_icon_5141.png",
+  "note": "t2i 5101: a fluffy big-maned dog sitting tall -- the mane kept. Back: turned from the new front (5152).",
+  "back": "guardian_back_fromfront_5152.png"
+ },
+ "loop": {
+  "front": "loop_front_i2i_5122.png",
+  "icon": "derived",
+  "note": "i2i 0.85: a big-eyed tadpole whose thin tail curls into a spiral, little fins -- the tail kept. Back: turned from the new front (5151). Icon: icon3 from the new front -- its drawn icon (5141) reduced to a dark crescent.",
+  "back": "loop_back_fromfront_5151.png"
+ },
+ "mutex": {
+  "front": "mutex_front_i2i_5122.png",
+  "icon": "derived",
+  "note": "i2i 0.85: a stout frog flexing one big arm -- the arms kept; the chest swirl not drawn. Back: turned from the new front (5152). Icon: icon3 from the new front -- its drawn icon (5142) kept its pink card through cardoff.",
+  "back": "mutex_back_fromfront_5152.png"
+ },
+ "hunch": {
+  "front": "hunch_front_5101.png",
+  "icon": "derived",
+  "note": "t2i 5101: a dozing fox, eyes half shut, a huge white tail -- the doze kept. Icon: a fox with eyes closed. Back: turned from the new front (5152). Icon: icon3 from the new front -- its drawn icon (5142) kept its pink card through cardoff.",
+  "back": "hunch_back_fromfront_5152.png"
+ },
+ "inference": {
+  "front": "inference_front_i2i_5122.png",
+  "icon": "inference_icon_5141.png",
+  "note": "i2i 0.85: a fox standing upright holding a big wooden spoon -- the spoon kept and readable. (t2i 5101 is cuter but its spoon is small.) Back: from today's back (5131): the turned ones kept a face",
+  "back": "inference_back_i2i_5131.png"
+ },
+ "conjecture": {
+  "front": "conjecture_front_5101.png",
+  "icon": "conjecture_icon_5141.png",
+  "note": "t2i 5101: a fox holding a spoon -- ONE spoon, no moustache; the second spoon was not drawn by any draft. Back: from today's back (5131): the turned ones kept a face",
+  "back": "conjecture_back_i2i_5131.png"
+ },
+ "skew": {
+  "front": "skew_front_5103.png",
+  "icon": "derived",
+  "note": "t2i 5103 (second wording): a little sprout creature whose bud hangs over heavy on a bent stem -- the droop kept, drawn small (the frame is mostly white). The first wording's flowers all stood upright (i2i 5121 is the best of them). Drawn icons: a girl, a flower pot, an upright daisy -- icon3 from the new front. Back: from today's back (5131), a drooping head: the turned ones were the front again and a flower pot",
+  "back": "skew_back_i2i_5131.png"
+ },
+ "badseed": {
+  "front": "badseed_front_i2i_5121.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a chubby big-eyed creature with two leafy seed pods on stalks -- the key kept. No drawn icon kept the stalks (four tries); icon3 from the new front. Watch: a pale strip under its feet. Back: from today's back (5131): stalks without pods; the turned ones kept a face",
+  "back": "badseed_back_i2i_5131.png"
+ },
+ "resident": {
+  "front": "resident_front_i2i_5124.png",
+  "icon": "resident_icon_5141.png",
+  "note": "i2i 0.76 (charmlo): a round little shell bug with two curling antennae. Back: from today's back (5131), which KEPT the antenna loops the front lost",
+  "failed": "front: the round loops at the antenna tips are in no draft of 10 (two wordings, i2i 0.72-0.85) -- curls, hooks or plain feelers; propose two small rings drawn by hand on the tips",
+  "back": "resident_back_i2i_5131.png"
+ },
+ "spyware": {
+  "front": "spyware_front_5102.png",
+  "icon": "spyware_icon_5141.png",
+  "note": "t2i 5102: a fluffy round moth with big soft wings and big eyes. Back: turned from the new front (5152).",
+  "failed": "front: the eye spots on the wings are in no draft of 10 (two wordings) -- plain pale wings; propose one dark spot per wing by hand",
+  "back": "spyware_back_fromfront_5152.png"
+ },
+ "wiretap": {
+  "front": "wiretap_front_5104.png",
+  "icon": "derived",
+  "note": "t2i 5104 (second wording, 'nothing underneath'): three round moles in a little pyramid, no ground -- the three kept; every other three stood on a dirt, grass or brick mound (a baked ground). Drawn small. Drawn icons showed two or four; icon3 from the new front. Back: turned (5152) but the three faces still show: flagged",
+  "back": "wiretap_back_fromfront_5152.png",
+  "failed": "back: the turned back still shows three faces (the model would not turn three at once); today's-back drafts stand on a dirt mound"
+ },
+ "spinlock": {
+  "front": "spinlock_front_5101.png",
+  "icon": "spinlock_icon_5144.png",
+  "note": "t2i 5101: a chibi frog with a big pale belly. Back: turned from the new front (5152).",
+  "failed": "front: the belly swirl is in no draft of 10 (two wordings) -- a plain pale belly; propose a spiral drawn by hand on the belly (it is the one thing that tells SPINLOCK from MUTEX's frog)",
+  "back": "spinlock_back_fromfront_5152.png"
+ }
+}

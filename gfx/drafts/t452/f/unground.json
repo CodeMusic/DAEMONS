@@ -1,0 +1,7 @@
+{
+ "_": "baked grounds taken off the REDUCED sprites by scripts/unground3.py, after batch.py reduce (the reductions before it are not kept). Each row: the file, its arguments, the cells removed.",
+ "livelock_front": ["", 204], "resident_front": ["", 178], "badseed_front": ["", 155], "mutex_front": ["", 189],
+ "livelock_back": ["--lo=0.9 --norim", 78], "spyware_back": ["--lo=0.8 --norim --dark", 266],
+ "mutex_back": ["--lo=0.9 --norim --dark", 150], "conjecture_back": ["--lo=0.93 --norim", 44],
+ "wiretap_front": ["--lo=0.8 --norim --dark", 84], "sentry_back": ["--lo=0.92 --norim --dark", 73]
+}
