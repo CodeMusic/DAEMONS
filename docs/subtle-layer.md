@@ -84,7 +84,7 @@ Every daemon carries three values that set what its seam can do. Closure is how 
 
 Reads rise with Attunement and fall with Voltage. Writes need Attunement and Voltage at once, and only while Closure holds. A flooded system with low Closure does not write. It leaks.
 
-A daemon, they say, carries them as numbers it cannot see. You carry them as a log.
+A daemon carries them as numbers it cannot see. You carry them as a log.
 
 ## READ | THE CLAIRS | The Read Family: the Clairs
 
