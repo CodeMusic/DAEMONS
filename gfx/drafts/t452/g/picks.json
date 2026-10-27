@@ -1,0 +1,1678 @@
+{
+ "proof": {
+  "name": "PROOF",
+  "national": 66,
+  "slot": "machop",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a stocky little muscle creature flexing both big arms (ESTABLISHED)",
+  "note": "i2i 0.85: a big-eyed chibi flexing both arms -- the key kept. Drawn icons lost the arms (a panda-ish critter, a bald ghost). Back: turned from the new front (5252), both arms flexed.",
+  "failed": "",
+  "front": "proof_front_i2i_5222.png",
+  "back": "proof_back_fromfront_5252.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,31,37,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.7,
+    "accent_clean_after": 14.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1309
+   },
+   "front_accent_pct": 14.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,35,38,50",
+    "painted": "[4, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.4,
+    "accent_clean_after": 2.4,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1160
+   },
+   "back_accent_pct": 2.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     165,
+     209
+    ],
+    "accent_cells": 7,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "theorem": {
+  "name": "THEOREM",
+  "national": 67,
+  "slot": "machoke",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a broad muscle creature in a heavy belt with a big buckle (HOLDING)",
+  "note": "i2i 0.85: a broad stone-grey chibi brute, the belt and its square buckle kept. Icon 5242: a round face over a big square buckle. Back: turned from the new front (5251).",
+  "failed": "",
+  "front": "theorem_front_i2i_5222.png",
+  "back": "theorem_back_fromfront_5251.png",
+  "icon": "theorem_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,37,36,53",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1538
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "29,33,35,51",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.9,
+    "accent_clean_after": 6.9,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1534
+   },
+   "back_accent_pct": 6.9,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 3.3,
+    "accent_clean_after": 3.3,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1510
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     133,
+     195,
+     242
+    ],
+    "accent_cells": 0,
+    "size": [
+     24,
+     28
+    ]
+   }
+  }
+ },
+ "lemma mind": {
+  "name": "LEMMA MIND",
+  "national": 68,
+  "slot": "machamp",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a huge four-armed muscle creature with two curled ram horns (STEPWISE)",
+  "note": "t2i 5203 (second wording): a stocky grey brute with two big curled ram horns, a belt -- the horns kept. Icon 5241: a round face between curled horns. Back: turned from the new front (5252): horns, broad back, the red trunks.",
+  "failed": "front: the four arms -- every draft drew two; the horns survive and carry the shape. A hand edit could add a second pair of arms below the first",
+  "front": "lemma mind_front_5203.png",
+  "back": "lemma mind_back_fromfront_5252.png",
+  "icon": "lemma mind_icon_5241.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,36,55",
+    "painted": "[5, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.9,
+    "accent_clean_after": 3.9,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 2039
+   },
+   "front_accent_pct": 3.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "21,34,35,55",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.9,
+    "accent_clean_after": 7.9,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1833
+   },
+   "back_accent_pct": 7.9,
+   "back_colours": 15,
+   "icon_cap": {
+    "accent_clean_before": 29.9,
+    "accent_clean_after": 2.3,
+    "greyed_px": 440,
+    "streak_px": 0,
+    "creature_px": 1593
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    20
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     125,
+     166,
+     225
+    ],
+    "accent_cells": 24,
+    "size": [
+     28,
+     23
+    ]
+   }
+  }
+ },
+ "snare": {
+  "name": "SNARE",
+  "national": 69,
+  "slot": "bellsprout",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a little mandrake sprout with a big shaggy tuft of leaves for hair and twig arms (WAITING)",
+  "note": "i2i 0.8: a mandrake sprite under a big shaggy drooping leaf tuft, twig arms -- the key kept. Icon 5242: a face in a leaf ruff. Back: from today's back (5231): both turned ones kept a face.",
+  "failed": "",
+  "front": "snare_front_i2i_5221.png",
+  "back": "snare_back_i2i_5231.png",
+  "icon": "snare_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "29,34,34,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 62.7,
+    "accent_clean_after": 10.0,
+    "greyed_px": 664,
+    "streak_px": 12,
+    "creature_px": 1259
+   },
+   "front_accent_pct": 10.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "29,26,34,42",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 34.5,
+    "accent_clean_after": 14.3,
+    "greyed_px": 162,
+    "streak_px": 12,
+    "creature_px": 799
+   },
+   "back_accent_pct": 14.3,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 34.7,
+    "accent_clean_after": 14.4,
+    "greyed_px": 394,
+    "streak_px": 0,
+    "creature_px": 1945
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     75,
+     185,
+     242
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "honeypot": {
+  "name": "HONEYPOT",
+  "national": 70,
+  "slot": "weepinbell",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a pitcher plant: a deep striped cup body under one big leaf lid (INVITING)",
+  "note": "i2i 0.72: a little face on a cup under a spray of leaves -- the cup kept, but it reads as a teacup (a handle, no stripes, no lid). Icon 5242: a jug with a leaf lid and a face (closer to the key than the front). Back: turned from the new front (5252): a striped pot under its leaves, no face.",
+  "failed": "",
+  "front": "honeypot_front_i2i_5223.png",
+  "back": "honeypot_back_fromfront_5252.png",
+  "icon": "src/honeypot_icon_5242_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,32,37,40",
+    "painted": "[5, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 25.8,
+    "accent_clean_after": 12.0,
+    "greyed_px": 126,
+    "streak_px": 18,
+    "creature_px": 912
+   },
+   "front_accent_pct": 12.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,34,38,50",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 58.6,
+    "accent_clean_after": 13.0,
+    "greyed_px": 502,
+    "streak_px": 19,
+    "creature_px": 1100
+   },
+   "back_accent_pct": 13.0,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 8.8,
+    "accent_clean_after": 8.8,
+    "greyed_px": 0,
+    "streak_px": 4,
+    "creature_px": 718
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     182,
+     241
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "tarpit": {
+  "name": "TARPIT",
+  "national": 71,
+  "slot": "victreebel",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a big drooping pitcher pod hanging from curled leaves (SLOWING)",
+  "note": "i2i 0.72: a teardrop pod hanging from curled leaves, a face, trailing tendrils -- the key kept (a green ground line under it to take off). Back: from today's back (5232), a pod under leaves: the turned ones kept the face or became an urn.",
+  "failed": "",
+  "front": "tarpit_front_i2i_5223.png",
+  "back": "tarpit_back_i2i_5232.png",
+  "icon": "tarpit_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,31,32,49",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 36.2,
+    "accent_clean_after": 14.9,
+    "greyed_px": 204,
+    "streak_px": 12,
+    "creature_px": 955
+   },
+   "front_accent_pct": 14.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,32,42,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 83.2,
+    "accent_clean_after": 14.4,
+    "greyed_px": 798,
+    "streak_px": 20,
+    "creature_px": 1160
+   },
+   "back_accent_pct": 14.4,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 19.4,
+    "accent_clean_after": 8.2,
+    "greyed_px": 225,
+    "streak_px": 0,
+    "creature_px": 2008
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    22,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     144,
+     204,
+     243
+    ],
+    "accent_cells": 5,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "driftnet": {
+  "name": "DRIFTNET",
+  "national": 72,
+  "slot": "tentacool",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a jellyfish: a clear round bell over long trailing thread tentacles (PASSIVE)",
+  "note": "i2i 0.8: a round bell with a little face, long thin trailing threads -- the key kept. Icon 5242 (on a dark card, card taken off). Back: from today's back (5231): the turned ones kept the face.",
+  "failed": "",
+  "front": "driftnet_front_i2i_5221.png",
+  "back": "driftnet_back_i2i_5231.png",
+  "icon": "src/driftnet_icon_5242_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "10,32,54,40",
+    "painted": "[3, 5, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 979
+   },
+   "front_accent_pct": 3.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "27,29,37,37",
+    "painted": "[4, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.6,
+    "accent_clean_after": 6.6,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 858
+   },
+   "back_accent_pct": 6.6,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 39.0,
+    "accent_clean_after": 11.4,
+    "greyed_px": 178,
+    "streak_px": 0,
+    "creature_px": 643
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     166,
+     216,
+     241
+    ],
+    "accent_cells": 19,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "dragnet": {
+  "name": "DRAGNET",
+  "national": 73,
+  "slot": "tentacruel",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big jellyfish whose thick tentacles spread wide like a net (UNSORTED)",
+  "note": "i2i 0.8: a wide bell, thick tentacles splayed out wide -- the key kept. LOOK-ALIKE with DRIFTNET (same line): they differ in the tentacles only. Back: from today's back (5231), tentacles spread: the turned ones kept the face.",
+  "failed": "",
+  "front": "dragnet_front_i2i_5221.png",
+  "back": "dragnet_back_i2i_5231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,31,55",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 54.9,
+    "accent_clean_after": 12.5,
+    "greyed_px": 487,
+    "streak_px": 12,
+    "creature_px": 1149
+   },
+   "front_accent_pct": 12.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "12,27,46,35",
+    "painted": "[4, 5, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1073
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     106,
+     148,
+     194
+    ],
+    "accent_cells": 8,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "heap": {
+  "name": "HEAP",
+  "national": 74,
+  "slot": "geodude",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a body that is a loose pile of round stones, a face on the top one (UNORDERED)",
+  "note": "i2i 0.8: a pile of flat round stones, a face on the top one -- the key kept. Its bottom stones are the body, not a ground. Back: from today's back (5231), a pile with no face: the turned ones kept the face.",
+  "failed": "",
+  "front": "heap_front_i2i_5221.png",
+  "back": "heap_back_i2i_5231.png",
+  "icon": "src/heap_icon_5242_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,41,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1476
+   },
+   "front_accent_pct": 0.1,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "14,32,34,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1200
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1433
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     180,
+     245
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "stack": {
+  "name": "STACK",
+  "national": 75,
+  "slot": "graveler",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a boulder creature with big round boulder fists (LAST FIRST)",
+  "note": "i2i 0.8: a boulder brute with big round boulder fists -- the key kept, but close to today's and little chibi (5222 went round and lost the fists). LOOK-ALIKE with THEOREM's draft (both grey brutes). Back: from today's back (5231); turned 5251 grew horns, 5252 kept the face.",
+  "failed": "",
+  "front": "stack_front_i2i_5221.png",
+  "back": "stack_back_i2i_5231.png",
+  "icon": "stack_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "8,32,54,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1746
+   },
+   "front_accent_pct": 0.1,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "25,35,38,56",
+    "painted": "[3, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1921
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 4.6,
+    "accent_clean_after": 4.6,
+    "greyed_px": 0,
+    "streak_px": 1,
+    "creature_px": 1897
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     75,
+     192,
+     230
+    ],
+    "accent_cells": 12,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "monolith": {
+  "name": "MONOLITH",
+  "national": 76,
+  "slot": "golem",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a round stone ball shell with one round glass window (ONE PIECE)",
+  "note": "i2i 0.8: a cracked stone ball with one round window, a big eye behind it -- the key kept. Icon 5242: a face behind a round window. Back: turned from the new front (5252): a plain dome, no window.",
+  "failed": "",
+  "front": "monolith_front_i2i_5221.png",
+  "back": "monolith_back_fromfront_5252.png",
+  "icon": "monolith_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "13,31,27,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.8,
+    "accent_clean_after": 5.8,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 2013
+   },
+   "front_accent_pct": 5.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "8,33,54,49",
+    "painted": "[3, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 14.1,
+    "accent_clean_after": 14.1,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1722
+   },
+   "back_accent_pct": 14.1,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2121
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    22,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     89,
+     157,
+     236
+    ],
+    "accent_cells": 0,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "hotpath": {
+  "name": "HOTPATH",
+  "national": 77,
+  "slot": "ponyta",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a horse galloping full stretch, mane and tail streaming (WELL WORN)",
+  "note": "i2i 0.85: a big-eyed grey pony at full gallop, mane and tail streaming -- the key kept. Drawn icons were a standing pony on a card and an orange-maned one. Back: from today's back (5231), a side-on gallop as today's is; the turned ones kept the face.",
+  "failed": "",
+  "front": "hotpath_front_i2i_5222.png",
+  "back": "hotpath_back_i2i_5231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,29,38,37",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1085
+   },
+   "front_accent_pct": 1.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "27,25,41,33",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.6,
+    "accent_clean_after": 9.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1108
+   },
+   "back_accent_pct": 9.6,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     94,
+     158,
+     212
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "overdrive": {
+  "name": "OVERDRIVE",
+  "national": 78,
+  "slot": "rapidash",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a prancing pony with one small horn on its forehead (PAST RATED)",
+  "note": "The FRONT is a 'back' that would not turn: i2i 0.85 from t2i 5203 with the rear-view prompt came back a chibi pony facing left with a clear pointed horn -- the horn, which no front draft kept, is there. Back: from today's back (5231), a side-on prance with a horn tip, as today's is. Icon 5242: a pony head (horn hidden in the mane). LOOK-ALIKE with HOTPATH (same line, both grey ponies): the horn and the stance tell them apart.",
+  "failed": "",
+  "front": "overdrive_back_fromfront_5252.png",
+  "back": "overdrive_back_i2i_5231.png",
+  "icon": "overdrive_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "18,35,40,55",
+    "painted": "[5, 5, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1757
+   },
+   "front_accent_pct": 1.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "14,31,50,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 817
+   },
+   "back_accent_pct": 2.3,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2044
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     182,
+     235
+    ],
+    "accent_cells": 2,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "latency": {
+  "name": "LATENCY",
+  "national": 79,
+  "slot": "slowpoke",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a lazy seal-like creature lying curled with a long thick tail (DELAYED)",
+  "note": "i2i 0.72: a plump seal lying curled, its thick tail wrapped round in front -- the key kept (the first pass shortened the tail). Back: turned from the new front (5252): the curled seal, but its face still shows.",
+  "failed": "",
+  "front": "latency_front_i2i_5223.png",
+  "back": "latency_back_fromfront_5252.png",
+  "icon": "latency_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "15,33,48,47",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1574
+   },
+   "front_accent_pct": 0.1,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "10,31,38,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1445
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2105
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     109,
+     180,
+     238
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "shell": {
+  "name": "SHELL",
+  "national": 80,
+  "slot": "slowbro",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a soft round body under a big spiral shell (WRAPPING)",
+  "note": "i2i 0.8: a soft blushing blob under a big spiral shell -- the key kept. Icon 5242: the spiral shell alone (no face). Back: from today's back (5231): the spiral from behind; the turned ones were the snail side-on with a face.",
+  "failed": "",
+  "front": "shell_front_i2i_5221.png",
+  "back": "shell_back_i2i_5231.png",
+  "icon": "shell_icon_5242.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,33,49,48",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.3,
+    "accent_clean_after": 1.3,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1655
+   },
+   "front_accent_pct": 1.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "27,33,43,47",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1566
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1984
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     84,
+     173,
+     236
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "sentinel": {
+  "name": "SENTINEL",
+  "national": 81,
+  "slot": "magnemite",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a round metal pod with one big lens eye and two side clamps (OBSERVER)",
+  "note": "i2i 0.8: a round pod, one big lens eye, side clamps -- the key kept. Both drawn icons were faces without the lens. Back: from today's back (5231): a dome with one side clamp; the turned ones kept the eye.",
+  "failed": "",
+  "front": "sentinel_front_i2i_5221.png",
+  "back": "sentinel_back_i2i_5231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,33,36,52",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1734
+   },
+   "front_accent_pct": 4.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,26,38,38",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1133
+   },
+   "back_accent_pct": 2.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     90,
+     172,
+     221
+    ],
+    "accent_cells": 8,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "quorum": {
+  "name": "QUORUM",
+  "national": 82,
+  "slot": "magneton",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "four round eye pods clustered together, each with one eye (THRESHOLD)",
+  "note": "i2i 0.72 (second pass): four round pods in a diamond, each with its own little face -- the cluster kept; they read as faces more than lenses. The first pass made one blob every time. Back: turned from the new front (5252): four pods, but the lower two still show eyes.",
+  "failed": "",
+  "front": "quorum_front_i2i_5223.png",
+  "back": "quorum_back_fromfront_5252.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,37,53",
+    "painted": "[3, 3, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1516
+   },
+   "front_accent_pct": 2.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,33,36,52",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1556
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     164,
+     222
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "edgecase": {
+  "name": "EDGECASE",
+  "national": 83,
+  "slot": "farfetchd",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a lanky shorebird on long thin stilt legs (UNTESTED)",
+  "note": "t2i 5201: a chibi stork on long thin stilt legs -- the key kept. Icon 5242 (card off). Back: turned from the new front (5251) but it is the stork side-on, face showing (today's back is side-on too); from today's back the legs went short.",
+  "failed": "",
+  "front": "edgecase_front_5201.png",
+  "back": "edgecase_back_fromfront_5251.png",
+  "icon": "src/edgecase_icon_5242_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "28,23,47,37",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.3,
+    "accent_clean_after": 8.3,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 686
+   },
+   "front_accent_pct": 8.3,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "27,22,42,35",
+    "painted": "[4, 5, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.7,
+    "accent_clean_after": 4.7,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 645
+   },
+   "back_accent_pct": 4.7,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 9.9,
+    "accent_clean_after": 9.9,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1031
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     100,
+     189,
+     244
+    ],
+    "accent_cells": 13,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "dualcore": {
+  "name": "DUALCORE",
+  "national": 84,
+  "slot": "doduo",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "two round birds standing side by side, one body each (TWO WAY)",
+  "note": "i2i 0.8: two birds side by side -- the key kept, close to today's. Both drawn icons were one bird. Back: from today's back (5231), two birds from behind; the turned ones kept faces.",
+  "failed": "",
+  "front": "dualcore_front_i2i_5221.png",
+  "back": "dualcore_back_i2i_5231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "32,32,44,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 16.1,
+    "accent_clean_after": 11.5,
+    "greyed_px": 73,
+    "streak_px": 20,
+    "creature_px": 1568
+   },
+   "front_accent_pct": 11.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "8,35,28,54",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1936
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     163,
+     227
+    ],
+    "accent_cells": 16,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "triplecore": {
+  "name": "TRIPLECORE",
+  "national": 85,
+  "slot": "dodrio",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "three long-necked geese standing together (THREE WAY)",
+  "note": "t2i 5201: three chibi geese in a row -- the key kept (watch the line under their feet). Drawn icons: two geese, one goose. Back: from today's back (5231), three geese from behind; the turned ones were fronts.",
+  "failed": "",
+  "front": "triplecore_front_5201.png",
+  "back": "triplecore_back_i2i_5231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,34,52,52",
+    "painted": "[5, 5, 3, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 15.4,
+    "accent_clean_after": 12.4,
+    "greyed_px": 59,
+    "streak_px": 18,
+    "creature_px": 1955
+   },
+   "front_accent_pct": 12.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "23,37,39,55",
+    "painted": "[4, 3, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 32.7,
+    "accent_clean_after": 14.9,
+    "greyed_px": 243,
+    "streak_px": 16,
+    "creature_px": 1364
+   },
+   "back_accent_pct": 14.9,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     123,
+     180,
+     237
+    ],
+    "accent_cells": 19,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ }
+}

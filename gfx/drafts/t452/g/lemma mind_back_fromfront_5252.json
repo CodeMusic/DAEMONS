@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/g/lemma mind_back_fromfront_5252",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, four muscular arms and two curled ram horns, a huge muscular grey creature seen from behind, rear view, two curled ram horns, four arms, a black belt, no face, rear view, seen from behind, facing away from the viewer, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "girl, long hair, hair, girl, woman, realistic man, goat, sheep, demon wings, pedestal, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5252,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.85,
+ "stop_at": null,
+ "image": "gfx/drafts/t452/g/src/lemma mind_newfront_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-27 15:34:31"
+}

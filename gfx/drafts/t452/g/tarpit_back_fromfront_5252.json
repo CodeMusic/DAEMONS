@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/g/tarpit_back_fromfront_5252",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a big heavy drooping pitcher pod body with curled leaves on top, a big drooping pitcher pod creature seen from behind, rear view, curled leaves on top, no face, rear view, seen from behind, facing away from the viewer, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "girl, long hair, hair, vase, flower pot, human, girl, bucket, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5252,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.85,
+ "stop_at": null,
+ "image": "gfx/drafts/t452/g/src/tarpit_newfront_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.2,
+ "comfyui": "0.19.1",
+ "made": "2026-10-27 15:36:02"
+}

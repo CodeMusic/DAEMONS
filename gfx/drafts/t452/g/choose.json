@@ -1,0 +1,124 @@
+{
+ "_": "batch 4 (2026-10-27), the charm recipe (dir g, seed 5200), chosen by eye on t452b4_cand_*.png. Seeds: t2i chibi fronts 5201/5202 (5203/5204 a second wording), i2i from today's front 0.8 = 5221, 0.85 = 5222 (0.72 = 5223, 0.76 = 5224 where charmlo ran), backs from today's back 0.66 = 5231, 0.75 = 5232, chibi icons 5241/5242, backs turned from the chosen front 0.75 = 5251, 0.85 = 5252. Icons by icon3 (round2.icon_from_draft); 'derived' = icon3 from the clean new front.",
+ "proof": {
+  "front": "proof_front_i2i_5222.png",
+  "icon": "derived",
+  "note": "i2i 0.85: a big-eyed chibi flexing both arms -- the key kept. Drawn icons lost the arms (a panda-ish critter, a bald ghost). Back: turned from the new front (5252), both arms flexed.",
+  "back": "proof_back_fromfront_5252.png"
+ },
+ "theorem": {
+  "front": "theorem_front_i2i_5222.png",
+  "icon": "theorem_icon_5242.png",
+  "note": "i2i 0.85: a broad stone-grey chibi brute, the belt and its square buckle kept. Icon 5242: a round face over a big square buckle. Back: turned from the new front (5251).",
+  "back": "theorem_back_fromfront_5251.png"
+ },
+ "snare": {
+  "front": "snare_front_i2i_5221.png",
+  "icon": "snare_icon_5242.png",
+  "note": "i2i 0.8: a mandrake sprite under a big shaggy drooping leaf tuft, twig arms -- the key kept. Icon 5242: a face in a leaf ruff. Back: from today's back (5231): both turned ones kept a face.",
+  "back": "snare_back_i2i_5231.png"
+ },
+ "driftnet": {
+  "front": "driftnet_front_i2i_5221.png",
+  "icon": "driftnet_icon_5242.png",
+  "note": "i2i 0.8: a round bell with a little face, long thin trailing threads -- the key kept. Icon 5242 (on a dark card, card taken off). Back: from today's back (5231): the turned ones kept the face.",
+  "back": "driftnet_back_i2i_5231.png"
+ },
+ "dragnet": {
+  "front": "dragnet_front_i2i_5221.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a wide bell, thick tentacles splayed out wide -- the key kept. LOOK-ALIKE with DRIFTNET (same line): they differ in the tentacles only. Back: from today's back (5231), tentacles spread: the turned ones kept the face.",
+  "back": "dragnet_back_i2i_5231.png"
+ },
+ "heap": {
+  "front": "heap_front_i2i_5221.png",
+  "icon": "heap_icon_5242.png",
+  "note": "i2i 0.8: a pile of flat round stones, a face on the top one -- the key kept. Its bottom stones are the body, not a ground. Back: from today's back (5231), a pile with no face: the turned ones kept the face.",
+  "back": "heap_back_i2i_5231.png"
+ },
+ "stack": {
+  "front": "stack_front_i2i_5221.png",
+  "icon": "stack_icon_5242.png",
+  "note": "i2i 0.8: a boulder brute with big round boulder fists -- the key kept, but close to today's and little chibi (5222 went round and lost the fists). LOOK-ALIKE with THEOREM's draft (both grey brutes). Back: from today's back (5231); turned 5251 grew horns, 5252 kept the face.",
+  "back": "stack_back_i2i_5231.png"
+ },
+ "monolith": {
+  "front": "monolith_front_i2i_5221.png",
+  "icon": "monolith_icon_5242.png",
+  "note": "i2i 0.8: a cracked stone ball with one round window, a big eye behind it -- the key kept. Icon 5242: a face behind a round window. Back: turned from the new front (5252): a plain dome, no window.",
+  "back": "monolith_back_fromfront_5252.png"
+ },
+ "hotpath": {
+  "front": "hotpath_front_i2i_5222.png",
+  "icon": "derived",
+  "note": "i2i 0.85: a big-eyed grey pony at full gallop, mane and tail streaming -- the key kept. Drawn icons were a standing pony on a card and an orange-maned one. Back: from today's back (5231), a side-on gallop as today's is; the turned ones kept the face.",
+  "back": "hotpath_back_i2i_5231.png"
+ },
+ "shell": {
+  "front": "shell_front_i2i_5221.png",
+  "icon": "shell_icon_5242.png",
+  "note": "i2i 0.8: a soft blushing blob under a big spiral shell -- the key kept. Icon 5242: the spiral shell alone (no face). Back: from today's back (5231): the spiral from behind; the turned ones were the snail side-on with a face.",
+  "back": "shell_back_i2i_5231.png"
+ },
+ "sentinel": {
+  "front": "sentinel_front_i2i_5221.png",
+  "icon": "derived",
+  "note": "i2i 0.8: a round pod, one big lens eye, side clamps -- the key kept. Both drawn icons were faces without the lens. Back: from today's back (5231): a dome with one side clamp; the turned ones kept the eye.",
+  "back": "sentinel_back_i2i_5231.png"
+ },
+ "edgecase": {
+  "front": "edgecase_front_5201.png",
+  "icon": "edgecase_icon_5242.png",
+  "note": "t2i 5201: a chibi stork on long thin stilt legs -- the key kept. Icon 5242 (card off). Back: turned from the new front (5251) but it is the stork side-on, face showing (today's back is side-on too); from today's back the legs went short.",
+  "back": "edgecase_back_fromfront_5251.png"
+ },
+ "dualcore": {
+  "front": "dualcore_front_i2i_5221.png",
+  "icon": "derived",
+  "note": "i2i 0.8: two birds side by side -- the key kept, close to today's. Both drawn icons were one bird. Back: from today's back (5231), two birds from behind; the turned ones kept faces.",
+  "back": "dualcore_back_i2i_5231.png"
+ },
+ "triplecore": {
+  "front": "triplecore_front_5201.png",
+  "icon": "derived",
+  "note": "t2i 5201: three chibi geese in a row -- the key kept (watch the line under their feet). Drawn icons: two geese, one goose. Back: from today's back (5231), three geese from behind; the turned ones were fronts.",
+  "back": "triplecore_back_i2i_5231.png"
+ },
+ "quorum": {
+  "front": "quorum_front_i2i_5223.png",
+  "icon": "derived",
+  "note": "i2i 0.72 (second pass): four round pods in a diamond, each with its own little face -- the cluster kept; they read as faces more than lenses. The first pass made one blob every time. Back: turned from the new front (5252): four pods, but the lower two still show eyes.",
+  "back": "quorum_back_fromfront_5252.png"
+ },
+ "overdrive": {
+  "front": "overdrive_back_fromfront_5252.png",
+  "back": "overdrive_back_i2i_5231.png",
+  "icon": "overdrive_icon_5242.png",
+  "note": "The FRONT is a 'back' that would not turn: i2i 0.85 from t2i 5203 with the rear-view prompt came back a chibi pony facing left with a clear pointed horn -- the horn, which no front draft kept, is there. Back: from today's back (5231), a side-on prance with a horn tip, as today's is. Icon 5242: a pony head (horn hidden in the mane). LOOK-ALIKE with HOTPATH (same line, both grey ponies): the horn and the stance tell them apart."
+ },
+ "lemma mind": {
+  "front": "lemma mind_front_5203.png",
+  "icon": "lemma mind_icon_5241.png",
+  "note": "t2i 5203 (second wording): a stocky grey brute with two big curled ram horns, a belt -- the horns kept. Icon 5241: a round face between curled horns. Back: turned from the new front (5252): horns, broad back, the red trunks.",
+  "failed": "front: the four arms -- every draft drew two; the horns survive and carry the shape. A hand edit could add a second pair of arms below the first",
+  "back": "lemma mind_back_fromfront_5252.png"
+ },
+ "honeypot": {
+  "front": "honeypot_front_i2i_5223.png",
+  "icon": "honeypot_icon_5242.png",
+  "note": "i2i 0.72: a little face on a cup under a spray of leaves -- the cup kept, but it reads as a teacup (a handle, no stripes, no lid). Icon 5242: a jug with a leaf lid and a face (closer to the key than the front). Back: turned from the new front (5252): a striped pot under its leaves, no face.",
+  "back": "honeypot_back_fromfront_5252.png"
+ },
+ "tarpit": {
+  "front": "tarpit_front_i2i_5223.png",
+  "icon": "tarpit_icon_5242.png",
+  "note": "i2i 0.72: a teardrop pod hanging from curled leaves, a face, trailing tendrils -- the key kept (a green ground line under it to take off). Back: from today's back (5232), a pod under leaves: the turned ones kept the face or became an urn.",
+  "back": "tarpit_back_i2i_5232.png"
+ },
+ "latency": {
+  "front": "latency_front_i2i_5223.png",
+  "icon": "latency_icon_5242.png",
+  "note": "i2i 0.72: a plump seal lying curled, its thick tail wrapped round in front -- the key kept (the first pass shortened the tail). Back: turned from the new front (5252): the curled seal, but its face still shows.",
+  "back": "latency_back_fromfront_5252.png"
+ }
+}
