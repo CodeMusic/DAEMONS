@@ -883,7 +883,8 @@ def _inc_text(rel, label):
 #  C-128 (the companion session, for the PROFILE, 2026-10-16): the GAME EVENTS page's rows, less the debug's own kit.
 EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
                    "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
-                   "EV_YEAR_ALL", "EV_GIFTS_AGAIN"}                                        # T-416
+                   "EV_YEAR_ALL", "EV_GIFTS_AGAIN",                                        # T-416
+                   "EV_CRYSTAL_AGAIN"}                                                     # T-457: a reset, not an event
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS"}                    # T-431: the feelings' debug view and its clock
 

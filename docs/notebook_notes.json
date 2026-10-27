@@ -496,6 +496,14 @@
    "seen": 103,
    "map": "LavenderTown",
    "about": "A photo of my daemon, in colour."
+  },
+  "FLAG_NOTEBOOK_DOC_PROSPECTUS_7": {
+   "seen": 104,
+   "placed": "PROSPECTUS_7"
+  },
+  "FLAG_NOTEBOOK_DOC_PROSPECTUS_8": {
+   "seen": 105,
+   "placed": "PROSPECTUS_8"
   }
  }
 }
