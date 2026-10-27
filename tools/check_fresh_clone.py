@@ -32,6 +32,13 @@ def sha1(path):
 
 def main():
     url, branch = git("remote", "get-url", "origin"), git("rev-parse", "--abbrev-ref", "HEAD")
+    if branch == "HEAD":
+        # A detached release worktree: take the origin branch whose tip is this commit.
+        tips = [r for r in git("branch", "-r", "--points-at", "HEAD", "--format=%(refname:short)").split()
+                if r.startswith("origin/") and r != "origin/HEAD"]
+        if not tips:
+            raise SystemExit("  detached HEAD is not the tip of any origin branch: push first")
+        branch = tips[0][len("origin/"):]
     local = git("rev-parse", "--short=9", "HEAD")
     tmp = tempfile.mkdtemp(prefix="daemons-fresh-")
     dest = os.path.join(tmp, "engine")
