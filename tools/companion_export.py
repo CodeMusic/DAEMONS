@@ -27,6 +27,9 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
                 margin each writes in); and the rules a save decides (T-453, C-186)
   patches.json  every published release from v11.309.1: its four BPS patches described (source ROM and its
                 SHA-1/CRC32/MD5, target SHA-1, the patch's size and hashes, its GitHub URL) -- never a patch (T-453)
+  planner_story.json, planner_maps.json, planner_wild.json, planner_trainers.json, planner_curve.json
+                the PLANNER (T-453): the story's steps and where each happens, how the maps join, what is wild and
+                who fights on each, and the level curve -- every record with the step it is reachable after
 
 (and marks, regions, groves, guide, subtle, holidays, play, notebook, routines, streaks, moves, art/ -- see main())
 
@@ -1345,6 +1348,446 @@ def patches_table():
             "repo": GH_REPO, "latest": out[0]["version"] if out else None, "releases": out}
 
 
+#  ---------------------------------------------------------------------------------------------------------------------
+#  T-453: THE PLANNER's data, in the iOS lane's order -- (1) the story's steps, where each happens and in what order;
+#  (2) how the maps join; (3) what is wild on each; (4) who fights on each; (5) the level curve along the story. Every
+#  record carries `step`: how many of the story's steps are DONE before it is reachable, so the app shows a record once
+#  the save has done that many and hides the rest. Five files, so the app loads a tab's data and not the whole planner.
+#
+#  THE STEPS are the CHECKPOINT attendant's (T-347): docs/attendant_dreams.json, in the AI harness's own order
+#  (engineAi/server/progress_steps.json, less its `_skip`), each done by the flag tools/gbadreams.py reads it by -- so the
+#  planner, the attendant and the playtester agree on what comes next. The GUIDE and the first UNDERSTANDING are not
+#  steps there, and are not here: a hidden find and an arrived-at understanding are never pointed at.
+#
+#  WHERE: the script that sets a step's flag, followed up through whatever calls it to the person, trigger or sign in
+#  map.json that runs it; a flag that hides a person or an item (FLAG_HIDE_*) is that object's own spot; a flag set on
+#  arriving (FLAG_WORLD_MAP_*) is the map. Where two maps set it, the one the step's SECOND dream names wins.
+#
+#  REACHABLE: map.json's connections and warps, every `warp` a map's own script makes, and the ferry, joined both ways;
+#  a walk from the player's room where a map or a join behind a gate (PLANNER_GATES) opens once its step is done. The
+#  walk is a map's, not a tile's: it knows no ledge, and where a map is cut in two (ROUTE 12's sleeper) the gate is on
+#  the join. The tool refuses if a step's own place would open after the step.
+
+PLANNER_START = "MAP_PALLET_TOWN_PLAYERS_HOUSE_2F"      # new_game.c, WarpToPlayersRoom
+#  Never in the planner: a grove, THE NEXUS, BREATHVERSE (found blind, T-297/T-337/T-408), ARTSAI's station, and the two
+#  far islands the SCHOLAR's house and the ticket reach (when in doubt). Their maps, the ways into them and everything
+#  in them are left out.
+PLANNER_HIDDEN = re.compile(r"_Grove$|^Nexus$|^Breathverse$|^Route21_North_Station$|^BirthIsland_|^NavelRock_")
+#  DOLDRUM CAVE: its place on the map after the REVIEW BOARD, nothing of what is in it (T-251: its second gate is seen).
+PLANNER_QUIET = re.compile(r"^CeruleanCave_")
+#  (a map id, a prefix ending in *, or "A|B" the join between two maps; the step that must be DONE; what stands there)
+PLANNER_GATES = [
+    ("MAP_ROUTE2", "get_pokedex", "the old man across CALLOW's north road until the parcel is home"),
+    ("MAP_ROUTE2|MAP_DIGLETTS_CAVE_NORTH_ENTRANCE", "ss_anne", "a tree only PRUNE clears (DRIVER01)"),
+    ("MAP_ROUTE3", "boulder_badge", "SLATE's east road is held until CAIRN's MARK"),
+    ("MAP_ROUTE9", "ss_anne", "a tree only PRUNE clears (DRIVER01)"),
+    ("MAP_VERMILION_CITY_GYM", "ss_anne", "a tree only PRUNE clears (DRIVER01)"),
+    ("MAP_ROUTE11|MAP_ROUTE12", "pokemon_tower", "the sleeper across ROUTE 12, woken by the INTERRUPT"),
+    ("MAP_ROUTE12|MAP_ROUTE13", "pokemon_tower", "the sleeper across ROUTE 12, woken by the INTERRUPT"),
+    ("MAP_ROUTE16", "pokemon_tower", "the sleeper across ROUTE 16, woken by the INTERRUPT"),
+    ("MAP_POKEMON_TOWER_7F", "rocket_hideout", "the RESOLVER, to see what haunts the stair"),
+    ("MAP_SAFFRON_CITY*", "rainbow_badge", "BRAZEN's gate guards, until they have TEA"),
+    ("MAP_SAFFRON_CITY_GYM", "silph_co", "CORPUS at the BENCHMARK's door until FOUNDRY CO. is free"),
+    ("MAP_ROUTE19", "safari_zone", "water (DRIVER03)"), ("MAP_ROUTE20", "safari_zone", "water (DRIVER03)"),
+    ("MAP_ROUTE21_*", "safari_zone", "water (DRIVER03)"), ("MAP_SEAFOAM_ISLANDS_*", "safari_zone", "water (DRIVER03)"),
+    ("MAP_CINNABAR_ISLAND*", "safari_zone", "water (DRIVER03)"), ("MAP_POKEMON_MANSION_*", "safari_zone", "water (DRIVER03)"),
+    ("MAP_POWER_PLANT", "safari_zone", "water (DRIVER03)"),
+    ("MAP_CINNABAR_ISLAND_GYM", "pokemon_mansion", "the SECRET KEY from the MANSION's cellar"),
+    ("MAP_VIRIDIAN_CITY_GYM", "volcano_badge", "CALLOW's BENCHMARK opens to seven MARKS"),
+    ("MAP_ROUTE23", "earth_badge", "a gate for every MARK"), ("MAP_VICTORY_ROAD_*", "earth_badge", "a gate for every MARK"),
+    ("MAP_INDIGO_PLATEAU_*", "earth_badge", "a gate for every MARK"),
+    ("MAP_CERULEAN_CAVE_*", "champion", "the guard lets only the champion in"),
+    ("MAP_ONE_ISLAND*", "volcano_badge", "the ferry, once QUICKSILVER's MARK is held"),
+    ("MAP_TWO_ISLAND*", "volcano_badge", "the ferry"), ("MAP_THREE_ISLAND*", "volcano_badge", "the ferry"),
+    ("MAP_FOUR_ISLAND*", "champion", "the ferry's later pass"), ("MAP_FIVE_ISLAND*", "champion", "the ferry's later pass"),
+    ("MAP_SIX_ISLAND*", "champion", "the ferry's later pass"), ("MAP_SEVEN_ISLAND*", "champion", "the ferry's later pass"),
+]
+#  The ferry (data/scripts/seagallop.inc) is a menu, not a warp a map names: it joins VERMILION and QUICKSILVER to each
+#  island's harbor. The ticket islands (NAVEL ROCK, BIRTH ISLAND) are not on it here.
+PLANNER_FERRY_FROM = ["MAP_VERMILION_CITY", "MAP_CINNABAR_ISLAND"]
+PLANNER_FERRY_TO = ["MAP_%s_ISLAND_HARBOR" % n for n in ("ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN")]
+#  Where a step is worked for, when its flag is set somewhere else: the S.S. ANNE is left once its captain has given
+#  DRIVER01, and the planner points at the captain, not the pier.
+PLANNER_SPOT_FLAG = {"ss_anne": "FLAG_GOT_HM01"}
+#  The harness's labels, less the four that are still vanilla's words
+PLANNER_LABELS = {"ss_anne": "S.S. ANNE", "safari_zone": "SAFARI ZONE", "silph_co": "FOUNDRY CO.", "champion": "CHAMPION"}
+#  T-407's season, hour and weather homes (wild_shifts.h): left out until the user says they are not found by playing
+PLANNER_SHIFTS = False
+PLANNER_AREAS = [["north-west", "north", "north-east"], ["west", "centre", "east"], ["south-west", "south", "south-east"]]
+
+
+def _planner_steps():
+    """[(id, label, flag)] in the harness's order, the attendant's `_skip` left out (tools/gbadreams.py's flags)."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import gbadreams
+    words = json.load(open(os.path.join(ROOT, "docs", "attendant_dreams.json"), encoding="utf-8"))
+    harness = json.load(open(gbadreams.STEPS, encoding="utf-8"))
+    out = []
+    for s in harness:
+        if s["id"] in words["_skip"]:
+            continue
+        if s["id"] not in words["steps"]:
+            raise SystemExit("  refused: the harness's step %s has no dream (tools/gbadreams.py)" % s["id"])
+        flag = gbadreams.flag_for(s)
+        if not flag:
+            raise SystemExit("  refused: no flag for the step %s" % s["id"])
+        second = " ".join(" ".join(box) for box in words["steps"][s["id"]]["second"])
+        out.append((s["id"], PLANNER_LABELS.get(s["id"], s["label"]), flag, second))
+    return out
+
+
+class _PlannerWorld:
+    """every map's map.json, scripts and layout size, by its MAP_ id"""
+    def __init__(self):
+        lay = {l["id"]: l for l in json.loads(read("data/layouts/layouts.json"))["layouts"] if "id" in l}
+        self.maps, self.dir = {}, {}
+        for d in sorted(os.listdir(os.path.join(GBA, "data/maps"))):
+            p = os.path.join(GBA, "data/maps", d, "map.json")
+            if not os.path.exists(p):
+                continue
+            m = json.load(open(p, encoding="utf-8"))
+            l = lay.get(m.get("layout"), {})
+            m["_w"], m["_h"] = l.get("width", 0), l.get("height", 0)
+            sp = os.path.join(GBA, "data/maps", d, "scripts.inc")
+            m["_scripts"] = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
+            self.maps[m["id"]], self.dir[m["id"]] = m, d
+        #  the link rooms (trading, battling, the UNION ROOM) sit upstairs in every CHECKPOINT: not a way across the world
+        self.link = set(json.loads(read("data/maps/map_groups.json"))["gMapGroup_Link"])
+
+    def hidden(self, mid):
+        return mid not in self.maps or self.dir[mid] in self.link or bool(PLANNER_HIDDEN.search(self.dir[mid]))
+
+    def quiet(self, mid):
+        return bool(PLANNER_QUIET.search(self.dir[mid]))
+
+    @staticmethod
+    def blocks(text):
+        """{label: its lines up to the next label}"""
+        out, cur = {}, None
+        for line in text.split("\n"):
+            m = re.match(r"^(\w+)::?\s*$", line)
+            if m:
+                cur = m.group(1); out[cur] = ""
+            elif cur:
+                out[cur] += line + "\n"
+        return out
+
+    def spot(self, mid, needle):
+        """(kind, x, y) of the person, trigger or sign whose script reaches a line matching NEEDLE, followed up through
+        every label that names the one below it; ("arrival", None, None) for a map script; None if nothing does."""
+        m = self.maps[mid]
+        blocks = self.blocks(m["_scripts"])
+        events, self.event = {}, None
+        for kind, key in (("person", "object_events"), ("trigger", "coord_events"), ("sign", "bg_events")):
+            for e in m.get(key) or []:
+                if e.get("script") and e["script"] not in events:
+                    events[e["script"]] = (kind, e["x"], e["y"], e)
+        frontier = [l for l, b in blocks.items() if re.search(needle, b)]
+        seen = set(frontier)
+        for _ in range(8):
+            for l in frontier:
+                if l in events:
+                    self.event = events[l][3]          # the event itself, for a trigger's var
+                    return events[l][:3]
+            nxt = []
+            for l in frontier:
+                for k, b in blocks.items():
+                    if k not in seen and re.search(r"\b%s\b" % re.escape(l), b):
+                        seen.add(k); nxt.append(k)
+                if re.search(r"map_script\w*\s+MAP_SCRIPT_\w+,\s*%s\b|map_script_2\s+\w+,\s*\w+,\s*%s\b" % (l, l), m["_scripts"]):
+                    return ("arrival", None, None)
+            frontier = nxt
+            if not frontier:
+                break
+        return None
+
+    def area(self, mid, x, y):
+        m = self.maps[mid]
+        if x is None or not m["_w"] or not m["_h"]:
+            return None
+        return PLANNER_AREAS[min(2, y * 3 // m["_h"])][min(2, x * 3 // m["_w"])]
+
+    def joins(self):
+        """{(a, b)} both ways, hidden maps left out: connections, warps, scripts' own warps and the ferry"""
+        out = set()
+        for mid, m in self.maps.items():
+            to = [c["map"] for c in m.get("connections") or []]
+            to += [w["dest_map"] for w in m.get("warp_events") or []]
+            to += re.findall(r"^\s*warp\w*\s+(MAP_\w+)", m["_scripts"], re.M)
+            for t in to:
+                if t != mid and not self.hidden(mid) and not self.hidden(t):
+                    out |= {(mid, t), (t, mid)}
+        for a in PLANNER_FERRY_FROM:
+            for b in PLANNER_FERRY_TO:
+                out |= {(a, b), (b, a)}
+        return out
+
+
+def _planner_reach(W, order):
+    """{map: the fewest steps done before the walk from PLANNER_START reaches it}, through PLANNER_GATES"""
+    import heapq
+    idx = {sid: k for k, sid in enumerate(order)}
+    map_gate, join_gate = {}, {}
+    for what, sid, _ in PLANNER_GATES:
+        if sid not in idx:
+            raise SystemExit("  refused: PLANNER_GATES names a step the harness has not: %s" % sid)
+        need = idx[sid] + 1
+        if "|" in what:
+            a, b = what.split("|")
+            for k in ((a, b), (b, a)):
+                join_gate[k] = max(join_gate.get(k, 0), need)
+            continue
+        hits = [m for m in W.maps if (m.startswith(what[:-1]) if what.endswith("*") else m == what)]
+        if not hits:
+            raise SystemExit("  refused: PLANNER_GATES names no map: %s" % what)
+        for m in hits:
+            map_gate[m] = max(map_gate.get(m, 0), need)
+    adj = {}
+    for a, b in W.joins():
+        adj.setdefault(a, set()).add(b)
+    best, heap = {PLANNER_START: 0}, [(0, PLANNER_START)]
+    while heap:
+        k, m = heapq.heappop(heap)
+        if k > best.get(m, 99):
+            continue
+        for n in adj.get(m, ()):
+            s = max(k, join_gate.get((m, n), 0), map_gate.get(n, 0))
+            if s < best.get(n, 99):
+                best[n] = s
+                heapq.heappush(heap, (s, n))
+    return best
+
+
+def _planner_place(W, names, mid):
+    return names.get(W.maps[mid].get("region_map_section", ""), "")
+
+
+def planner_tables(species):
+    """T-453: the planner's five files -- {name: table}"""
+    W = _PlannerWorld()
+    names = _section_names()
+    steps = _planner_steps()
+    order = [s[0] for s in steps]
+    reach = _planner_reach(W, order)
+    byconst = {v["constant"]: (int(k), v["name"]) for k, v in species.items() if isinstance(v, dict) and v.get("constant")}
+    def mon(const):
+        c = const.replace("SPECIES_", "")
+        if c not in byconst:
+            raise SystemExit("  refused: %s is in no species.json row" % const)
+        return {"species": byconst[c][0], "name": byconst[c][1]}
+    def where(mid, spot):
+        kind, x, y = spot or (None, None, None)
+        return {"map": W.dir[mid], "place": _planner_place(W, names, mid), "spot": kind,
+                "x": x, "y": y, "area": W.area(mid, x, y)}
+    flags = flag_values([s[2] for s in steps])
+    shown = {m for m in reach if not W.hidden(m)}
+
+    #  (1) the story's steps
+    story = []
+    for k, (sid, label, flag, second) in enumerate(steps):
+        want = PLANNER_SPOT_FLAG.get(sid, flag)
+        cands = []
+        wm = re.match(r"FLAG_WORLD_MAP_(\w+)$", want)
+        if wm and "MAP_" + wm.group(1) in W.maps:
+            cands = [("MAP_" + wm.group(1), ("arrival", None, None))]
+        if not cands:
+            for mid in W.maps:
+                if mid in shown and re.search(r"^\s*setflag\s+%s\b" % want, W.maps[mid]["_scripts"], re.M):
+                    cands.append((mid, W.spot(mid, r"setflag\s+%s\b" % want)))
+        if not cands:
+            for mid, m in W.maps.items():
+                for o in m.get("object_events") or []:
+                    if mid in shown and o.get("flag") == want and want.startswith("FLAG_HIDE_"):
+                        cands.append((mid, ("person", o["x"], o["y"])))
+        if not cands:       # set in a shared script (data/scripts/, the DEBUG's left out): the maps that call it
+            shared = W.blocks("".join(open(os.path.join(GBA, "data/scripts", f), encoding="utf-8").read()
+                                      for f in sorted(os.listdir(os.path.join(GBA, "data/scripts")))
+                                      if f.endswith(".inc") and "debug" not in f))
+            chain = {l for l, b in shared.items() if re.search(r"^\s*setflag\s+%s\b" % want, b, re.M)}
+            for _ in range(6):
+                chain |= {l for l, b in shared.items() if any(re.search(r"\b%s\b" % c, b) for c in chain)}
+            needle = r"\b(%s)\b" % "|".join(sorted(chain)) if chain else None
+            for mid in W.maps:
+                if needle and mid in shown and re.search(needle, W.maps[mid]["_scripts"]):
+                    cands.append((mid, W.spot(mid, needle)))
+        if not cands:
+            raise SystemExit("  refused: nothing on any map sets %s (the step %s)" % (want, sid))
+        cands.sort(key=lambda c: (_planner_place(W, names, c[0]).split(" ")[0] not in second, c[1] is None))
+        mid, spot = cands[0]
+        if reach.get(mid, 99) > k:
+            raise SystemExit("  refused: the step %s (%d) happens in %s, which the walk opens only after %s steps -- "
+                             "PLANNER_GATES disagrees with the story's order" % (sid, k, W.dir[mid], reach.get(mid)))
+        row = {"step": k, "id": sid, "label": label, "done_flag": flags[flag], "done_flag_name": flag}
+        if sid in PLANNER_LABELS:
+            row["draft"] = True                         # the planner's own word for it, not the harness's
+        row.update(where(mid, spot))
+        story.append(row)
+
+    #  (2) the maps and how they join
+    maps, joins = {}, {}
+    for a, b in sorted(W.joins()):
+        if a in shown and b in shown:
+            joins.setdefault(a, set()).add(b)
+    gates = {}
+    for what, sid, why in PLANNER_GATES:
+        gates.setdefault(what, (order.index(sid) + 1, why))
+    for mid in sorted(shown, key=lambda m: (reach[m], W.dir[m])):
+        m = W.maps[mid]
+        gate = max(((v[0], what, v) for what, v in gates.items() if "|" not in what and
+                    (mid.startswith(what[:-1]) if what.endswith("*") else mid == what)), default=None)
+        gate = gate and gate[1:]                    # the gate that holds it longest
+        maps[W.dir[mid]] = {"id": mid, "place": _planner_place(W, names, mid), "section": m.get("region_map_section"),
+                            "type": m.get("map_type", "").replace("MAP_TYPE_", "").lower(), "width": m["_w"],
+                            "height": m["_h"], "step": reach[mid],
+                            "edges": {c["direction"]: W.dir[c["map"]] for c in m.get("connections") or []
+                                      if c["map"] in shown},
+                            "joins": sorted(W.dir[n] for n in joins.get(mid, ()))}
+        if gate:
+            maps[W.dir[mid]]["gate"] = gate[1][1]
+            maps[W.dir[mid]]["draft"] = True            # the gate's reason is the planner's wording
+    join_gates = [{"between": [W.dir[a] for a in what.split("|")], "step": order.index(sid) + 1, "why": why, "draft": True}
+                  for what, sid, why in PLANNER_GATES if "|" in what]
+
+    #  (3) what is wild
+    enc = json.loads(read("src/data/wild_encounters.json"))["wild_encounter_groups"][0]
+    rates = {f["type"]: f["encounter_rates"] for f in enc["fields"]}
+    rods = next(f for f in enc["fields"] if f["type"] == "fishing_mons")["groups"]
+    def table(field, mons, idx):
+        got = {}
+        for i in idx:
+            r, sm = rates[field][i], mons[i]
+            k = sm["species"]
+            g = got.setdefault(k, dict(mon(k), min=sm["min_level"], max=sm["max_level"], rate=0))
+            g["min"], g["max"], g["rate"] = min(g["min"], sm["min_level"]), max(g["max"], sm["max_level"]), g["rate"] + r
+        return sorted(got.values(), key=lambda g: -g["rate"])
+    def header(h):
+        out = {}
+        for field, key in (("land_mons", "land"), ("water_mons", "water"), ("rock_smash_mons", "rock_smash")):
+            if field in h:
+                out[key] = {"rate": h[field]["encounter_rate"],
+                            "mons": table(field, h[field]["mons"], range(len(h[field]["mons"])))}
+        if "fishing_mons" in h:
+            out["fishing"] = {"rate": h["fishing_mons"]["encounter_rate"],
+                              **{rod: table("fishing_mons", h["fishing_mons"]["mons"], ix) for rod, ix in rods.items()}}
+        return out
+    wild = {}
+    for h in enc["encounters"]:
+        mid = h["map"]
+        if mid not in shown or W.quiet(mid):
+            continue
+        ed = "CONTENT" if "_FireRed" in h["base_label"] else "CONTEXT" if "_LeafGreen" in h["base_label"] else None
+        if not ed:
+            raise SystemExit("  refused: %s is neither edition's" % h["base_label"])
+        rec = wild.setdefault(W.dir[mid], {"place": _planner_place(W, names, mid), "step": reach[mid]})
+        slot = rec.setdefault(ed, {})
+        when = "night" if h["base_label"].endswith("_Night") else "day" if "day" not in slot else None
+        if when:
+            slot[when] = header(h)
+        else:
+            slot.setdefault("other", []).append(header(h))      # SIX ISLAND's ALTERING CAVE: its other tables
+    if PLANNER_SHIFTS:
+        raise SystemExit("  refused: PLANNER_SHIFTS is not built yet")
+
+    #  (4) who fights
+    tsrc, psrc = read("src/data/trainers.h"), read("src/data/trainer_parties.h")
+    tnum = {n: int(v) for n, v in re.findall(r"#define (TRAINER_\w+)\s+(\d+)\b", read("include/constants/opponents.h"))}
+    classes = dict(re.findall(r"\[(TRAINER_CLASS_\w+)\]\s*=\s*_\(\"([^\"]*)\"\)", read("src/data/text/trainer_class_names.h")))
+    tinfo = {t: b for t, b in re.findall(r"\[(TRAINER_\w+)\]\s*=\s*\{(.*?)\n    \},", tsrc, re.S)}
+    parties = {m.group(1): m.group(2) for m in (re.match(r"\w+ (sParty_\w+)\[\]\s*=\s*\{(.*)", c, re.S)
+                                                for c in psrc.split("static const struct TrainerMon")[1:]) if m}
+    start = flag_values(["TRAINER_FLAGS_START"])["TRAINER_FLAGS_START"]
+    trainers, seen = [], set()
+    for mid in sorted(shown, key=lambda m: (reach[m], W.dir[m])):
+        if W.quiet(mid):
+            continue
+        for t in dict.fromkeys(re.findall(r"^\s*trainerbattle\w*\s+(TRAINER_\w+)", W.maps[mid]["_scripts"], re.M)):
+            if (mid, t) in seen or t not in tinfo:
+                continue
+            seen.add((mid, t))
+            b = tinfo[t]
+            cls = re.search(r"\.trainerClass\s*=\s*(\w+)", b).group(1)
+            party = parties[re.search(r"\.party\s*=\s*\w+\((sParty_\w+)\)", b).group(1)]
+            row = {"trainer": t, "number": tnum[t], "flag": start + tnum[t], "class": classes.get(cls, ""),
+                   "name": gba_string(re.search(r"\.trainerName\s*=\s*_\((.*?)\)", b).group(1)),
+                   "double": "TRUE" in (re.search(r"\.doubleBattle\s*=\s*(\w+)", b) or ["", ""])[1],
+                   "party": [dict(mon(sp), level=int(lv)) for lv, sp in
+                             re.findall(r"\.lvl\s*=\s*(\d+),.*?\.species\s*=\s*(SPECIES_\w+)", party, re.S)],
+                   "boss": cls in ("TRAINER_CLASS_LEADER", "TRAINER_CLASS_BOSS", "TRAINER_CLASS_ELITE_FOUR",
+                                   "TRAINER_CLASS_CHAMPION", "TRAINER_CLASS_RIVAL_EARLY", "TRAINER_CLASS_RIVAL_LATE")}
+            rv = re.search(r"_(SQUIRTLE|BULBASAUR|CHARMANDER)$", t)
+            if cls.startswith("TRAINER_CLASS_RIVAL") or cls == "TRAINER_CLASS_CHAMPION":
+                row["rival"], row["name"] = True, None          # the save's own name for the rival
+                if rv:
+                    row["rival_starter"] = mon("SPECIES_" + rv.group(1))["name"]
+            spot = W.spot(mid, r"trainerbattle\w*\s+%s\b" % t)
+            row.update(where(mid, spot))
+            row["step"] = reach[mid]
+            #  a trigger that waits on a scene var fires once some map's script sets it: no sooner than that map opens
+            #  (ROUTE 22's second rival waits on CALLOW's BENCHMARK)
+            if spot and spot[0] == "trigger":
+                for e in [W.event]:
+                    if e.get("var", "0") != "0" and not e["var"].startswith("VAR_TEMP"):
+                        setters = [reach[o] for o in shown if re.search(r"^\s*setvar\s+%s,\s*%s\b" % (e["var"], e["var_value"]),
+                                                                        W.maps[o]["_scripts"], re.M)]
+                        if setters:
+                            row["step"] = max(row["step"], min(setters))
+            if re.search(r"_REMATCH_|^TRAINER_ELITE_FOUR_\w+_2$", t):      # a second round: after the story
+                row["step"], row["rematch"] = len(steps), True
+            trainers.append(row)
+
+    #  (5) the level curve: for each count of steps done, what that count newly opens, and the fights in it
+    curve = []
+    for k in range(len(steps) + 1):
+        lv_wild = [(g["min"], g["max"]) for w in wild.values() if w["step"] == k for ed in ("CONTENT", "CONTEXT")
+                   for h in (w.get(ed, {}).get("day"), w.get(ed, {}).get("night")) if h and "land" in h
+                   for g in h["land"]["mons"]]
+        lv_tr = [p["level"] for t in trainers if t["step"] == k for p in t["party"]]
+        bosses = [{"name": t["name"], "class": t["class"], "map": t["map"], "max": max(p["level"] for p in t["party"]),
+                   **({"rival_starter": t["rival_starter"]} if "rival_starter" in t else {})}
+                  for t in trainers if t["step"] == k and t["boss"] and t["party"]]
+        curve.append({"step": k, "next": steps[k][1] if k < len(steps) else None,
+                      **({"draft": True} if k < len(steps) and steps[k][0] in PLANNER_LABELS else {}),
+                      "opens": sorted(m for m, v in maps.items() if v["step"] == k),
+                      "wild": [min(a for a, _ in lv_wild), max(b for _, b in lv_wild)] if lv_wild else None,
+                      "trainers": [min(lv_tr), max(lv_tr)] if lv_tr else None, "bosses": bosses})
+
+    about = ("T-453: the planner. step on every record = how many of the story's steps are done before it is "
+             "reachable; show a record when the save has done at least that many (count the done_flag of each step "
+             "in planner_story.json, bits as profile_layout explains). ")
+    #  (said without naming them: the companion is public, and a list of what is hidden is a map to it)
+    #  T-453 (the user, 2026-10-27): the planner's own words -- a gate's reason, a step label it renamed -- are DRAFT
+    draft = ("DRAFT: a record with draft: true carries the planner's own wording (a gate's reason, a renamed step "
+             "label), which awaits the user's approval.")
+    left_out = ("Left out on purpose: every place the game means to be found by playing, the islands only a ticket "
+                "reaches, what lives in DOLDRUM CAVE, hidden items, fixed encounters, the GUIDE and the "
+                "UNDERSTANDINGS, the NOTEBOOK and its books, and any line of the game's text.")
+    return {
+        "planner_story.json": {"_draft": draft, "_about": about + "Steps are the CHECKPOINT attendant's (T-347), the AI harness's own "
+                               "order; spot is the person, trigger or sign that does it (arrival: on arriving), area "
+                               "a ninth of the map. " + left_out, "steps": story},
+        "planner_maps.json": {"_draft": draft, "_about": about + "Each map (by its folder, as maps.json names it) with its place, its "
+                              "type, its size in tiles, its edges (the maps beside it) and joins (every map a warp, "
+                              "edge, script or the ferry leads to, both ways); gate says what holds it until step. "
+                              "join_gates hold the way between two maps instead. " + left_out,
+                              "start": W.dir[PLANNER_START], "join_gates": join_gates, "maps": maps},
+        "planner_wild.json": {"_about": about + "Each map's wild tables by edition (CONTENT, CONTEXT): day, and night "
+                              "where the map has one (T-268); land, water, rock_smash and fishing (old_rod, good_rod, "
+                              "super_rod), each daemon's slots summed into one rate (percent of that table) with its "
+                              "level range. The season, hour and weather homes (T-407, T-415) are not here. " + left_out,
+                              "maps": wild},
+        "planner_trainers.json": {"_about": about + "Every trainer a map's scripts battle, with our class and name, "
+                                  "party (species and level), and flag (set once beaten; bits as profile_layout "
+                                  "explains). A rival battle is three rows, one per starter the rival may hold "
+                                  "(rival_starter); its name is the save's. boss marks leaders, rivals, the REVIEW "
+                                  "BOARD, the champion and CORPUS's boss; rematch, a second round after the story. " + left_out, "trainers": trainers},
+        "planner_curve.json": {"_draft": draft, "_about": about + "One row per count of steps done: next (the step ahead), the maps "
+                               "that count opens, the level ranges on them -- wild is the land tables (grass and "
+                               "caves; water and rods are in planner_wild.json), trainers every party -- and the boss "
+                               "fights that count opens (each one's highest level). A rematch is after the story.",
+                               "curve": curve},
+    }
+
+
 def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
@@ -1361,6 +1804,7 @@ def main():
     files["index_cards.json"] = index_cards_table(files["species.json"], files["margins.json"],
                                                   files["marks.json"], files["guide.json"])
     files["patches.json"] = patches_table()                                     # T-453
+    files.update(planner_tables(files["species.json"]))                         # T-453: the planner
     layout = save_layout()
     if layout:
         files["save_layout.json"] = layout
