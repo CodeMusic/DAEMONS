@@ -17,6 +17,9 @@ HOW A DOCUMENT IS FOUND. Each has one spot, proposed 2026-09-23 on the private f
   card       an existing sign (the SORTING FRAME card): its own words first, then the page folded behind it
   silent     a line inside a scene, the way the Owl's two pages are filed -- nothing interrupts the scene
   sign       a NEW bg_event where a map has nothing free to read, optionally gated on a flag
+  object     a thing standing on a desk (T-460's card): an object_event the map already has at the spot, whose script is
+             the spot's NotebookDoc_<map>_<x>_<y>; gated like a sign, and shown or hidden by its own flag. REVEAL
+             shimmers signs only, so it has no row there
 A spot that holds several documents (the Scholar's desk) reads each one its gate allows, in number order.
 Reading a page opens it full screen (Notebook_ReadFlagEntry) and files it with the NOTEBOOK's own line, so no
 wording is added but the documents' own.
@@ -79,6 +82,11 @@ DOCS = [
     #  and the GLOBAL INDEX is held. 7: her new work (its name is the user's to choose); 8: the joining.
     ("PROSPECTUS_7",     ("sign", "PalletTown_ProfessorOaksLab", 9, 1, ("set", "FLAG_SECOND_JOINING"))),
     ("PROSPECTUS_8",     ("sign", "PalletTown_ProfessorOaksLab", 9, 1, ("set", "FLAG_SECOND_JOINING"))),
+    #  T-460 (the arc around SOUNDINGS closes): a card on CRYSTAL's desk, beside the receiver, once the joining has
+    #  happened -- appended LAST for the same reason (0x341). The object (the clipboard's art) is in the lab's map.json
+    #  and hides with the receiver (FLAG_HIDE_CRYSTAL_RECEIVER). T-460, DRAFT: the user's words (2026-10-27), title
+    #  AT THE DOOR, in the private notebook_docs.json.
+    ("CORRESPONDENCE_7", ("object", "PalletTown_ProfessorOaksLab", 4, 1, ("set", "FLAG_SECOND_JOINING"))),
 ]
 READABLE = {0x81, 0x83, 0x89, 0x93, 0x94, 0x95, 0x97, 0x98, 0x9A, 0xA0, 0x8F}
 
@@ -127,6 +135,15 @@ def check_spot(spot):
     if not (0 <= x < W and 0 <= y + 1 < H):
         return "(%d,%d) is off the map" % (x, y)
     cell = lambda cx, cy: struct.unpack_from("<H", bd, (cy * W + cx) * 2)[0]
+    ours = "NotebookDoc_%s_%d_%d" % (name, x, y)
+    if kind == "object":
+        if not any((o["x"], o["y"]) == (x, y) and o.get("script") == ours for o in m.get("object_events") or []):
+            return "(%d,%d) has no object_event whose script is %s" % (x, y, ours)
+        if any((b["x"], b["y"]) == (x, y) for b in m.get("bg_events") or []):
+            return "(%d,%d) has a sign under the object" % (x, y)
+        if not reachable(name, m, W, H, cell, (x, y + 1)):
+            return "(%d,%d) cannot be reached from the map's doors" % (x, y)
+        return None
     v = cell(x, y)
     beh = struct.unpack_from("<I", pa if (v & 0x3FF) < 640 else sa, ((v & 0x3FF) % 640) * 4)[0] & 0x1FF
     if kind == "furniture" and beh not in READABLE:
@@ -135,7 +152,6 @@ def check_spot(spot):
         return "(%d,%d) is open floor: a sign there would be read by walking into nothing" % (x, y)
     if (cell(x, y + 1) >> 10) & 3:
         return "(%d,%d) cannot be reached from below" % (x, y)
-    ours = "NotebookDoc_%s_%d_%d" % (name, x, y)
     for b in m.get("bg_events") or []:
         if (b["x"], b["y"]) == (x, y) and b.get("script") != ours:
             return "(%d,%d) already has %s" % (x, y, b.get("script"))
@@ -309,8 +325,8 @@ def main():
                 "\treturn", ""]
     spots = {}
     for k, s in placed:
-        if s[0] in ("furniture", "sign"):
-            spots.setdefault((s[1], s[2], s[3]), []).append((k, s[4] if s[0] == "sign" else None))
+        if s[0] in ("furniture", "sign", "object"):
+            spots.setdefault((s[1], s[2], s[3]), []).append((k, s[4] if s[0] in ("sign", "object") else None))
         elif s[0] == "card":
             inc += ["NotebookDoc_%s_Card::" % k, "\tlockall", "\tcall NotebookDoc_%s" % k, "\treleaseall", "\tend", ""]
     for (name, x, y), docs in sorted(spots.items()):
@@ -351,8 +367,10 @@ def main():
     for name in maps:
         mpath = "data/maps/%s/map.json" % name
         raw = load(mpath); m = json.loads(raw)
+        objects = {(s[1], s[2], s[3]) for _, s in placed if s[0] == "object"}   # an object's spot is no sign
         add = [{"type": "sign", "x": x, "y": y, "elevation": 0, "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-                "script": "NotebookDoc_%s_%d_%d" % (name, x, y)} for (mn, x, y) in sorted(spots) if mn == name]
+                "script": "NotebookDoc_%s_%d_%d" % (name, x, y)} for (mn, x, y) in sorted(spots)
+               if mn == name and (mn, x, y) not in objects]
         #  A spot already in the map keeps its place in the list; only a new one goes at the end. Removing and
         #  appending moved our sign behind any bg_event added by hand since (T-381's plants), and every write
         #  reordered five maps for nothing (found 2026-10-15).

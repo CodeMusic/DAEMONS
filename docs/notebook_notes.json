@@ -504,6 +504,10 @@
   "FLAG_NOTEBOOK_DOC_PROSPECTUS_8": {
    "seen": 105,
    "placed": "PROSPECTUS_8"
+  },
+  "FLAG_NOTEBOOK_DOC_CORRESPONDENCE_7": {
+   "seen": 106,
+   "placed": "CORRESPONDENCE_7"
   }
  }
 }
