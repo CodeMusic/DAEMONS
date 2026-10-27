@@ -55,3 +55,9 @@ YOU > THE ROAD AHEAD on the iPad simulator, synthetic save
 DAEMON > SOUNDINGS after a SYNC, iPad simulator, synthetic save
 
 ![27Oct2026 - C195 - SOUNDINGS - 12](27Oct2026%20-%20C195%20-%20SOUNDINGS%20-%2012.png)
+
+### 27Oct2026 - T436 - surf moves - 15
+
+Filmed: to 10 19 then to 7 18 while surfing, the player moves (T-451's tap)
+
+![27Oct2026 - T436 - surf moves - 15](27Oct2026%20-%20T436%20-%20surf%20moves%20-%2015.png)
