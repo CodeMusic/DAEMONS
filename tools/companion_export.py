@@ -894,7 +894,7 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_CRYSTAL_AGAIN",                                                     # T-457: a reset, not an event
                    "EV_SOUNDING"}                                                          # T-458: the companion's signal, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
-PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS"}                    # T-431: the feelings' debug view and its clock
+PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE"}        # T-431: the feelings' debug view and its clock; T-454: THE THREE's
 
 
 def events_table():

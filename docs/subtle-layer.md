@@ -80,7 +80,7 @@ A link is two seams overlapping. It needs shared history, so two minds catch one
 
 @@ SPRITE | gauges | Closure, Attunement, Voltage.
 
-Trainers say every daemon carries three values that set what its seam can do. Closure is how whole it is: whether there is one point of view. It rises with virtues over shadows. Attunement is how thin the seam is. It rises with stillness: breath, rest, silence. Voltage is feeling in the moment. It rises with ritual, music, grief and joy.
+Every daemon carries three values that set what its seam can do. Closure is how whole it is: whether there is one point of view. It rises with virtues over shadows. Attunement is how thin the seam is. It rises with stillness: breath, rest, silence. Voltage is feeling in the moment. It rises with ritual, music, grief and joy.
 
 Reads rise with Attunement and fall with Voltage. Writes need Attunement and Voltage at once, and only while Closure holds. A flooded system with low Closure does not write. It leaks.
 
