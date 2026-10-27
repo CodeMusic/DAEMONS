@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.313**
+**A total conversion — the living design bible, v11.314**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4846,7 +4846,7 @@ take off.*
 - ***Tending, never medical*** (craft rule 3): **a signal, a check-in, a keeper's ledger** — *never a reading, a vital, a condition.*
 - ***Ty is not in it.*** **4.17's not-visiting stays a choice on both sides.**
 
-#### Settled after the build (the user, 2026-10-27) — every word DRAFT
+#### Settled after the build (the user, 2026-10-27) — every word approved after the play-through
 
 ***Her work is SOUNDINGS.*** **A sounding is a depth taken by line from a boat between ports, and a sounding is a listening** — *both the margins' own words.* **The Act 2 seed is a sign** — *the NETWORK NOTICE beside CELIO's machine on ONE ISLAND.*
 
@@ -4861,6 +4861,23 @@ take off.*
 | **PROSPECTUS 8, SIGNAGE, AGAIN** | *two letterheads side by side, SOUNDINGS and CELIO'S MACHINE; "Nothing is laid over anything"; blanks where the dates were; "Two signatures at the foot. Both are careful."* |
 
 ***PROSPECTUS 8 answers PROSPECTUS 3 line for line*** — **gold laid straight over the board / nothing laid over anything; "a fact with a date" / blanks where the dates were** — *and its last line answers PEER REVIEW 3's "Three signatures at the foot. One is careful."* **Nobody says what any of it means.** ***And SOUNDINGS hears the player's own daemon***: **9.30.**
+
+***CELIO's name is written two ways on purpose***: **PROSPECTUS 7 says "CELIO's machine" in a sentence; PROSPECTUS 8's letterhead prints CELIO'S MACHINE, as a letterhead does.**
+
+#### The arc closes (T-460, the user, 2026-10-27)
+
+***Four small things join the arc to what came before it, all decided by multiple choice; lineage private*** (`docs/private/draft-arc-joined-2026-10-27.md`). **Nobody explains any of them, and nothing names a date's meaning.**
+
+| | | |
+|---|---|---|
+| **CORRESPONDENCE 7, AT THE DOOR** | *on CRYSTAL's desk once the joining is set, filed in the NOTEBOOK* | *A card, crowded to the edges with signatures. Some are careful. Most are not.* / *In the middle, in a hand you do not know, one line:* / *"We never got to say it at the door."* / *There is no date on it.* |
+| **The receiver's tag** | *only once THE FILE 4 (NINE ITEMS) has been read* | *An old evidence tag / is still tied to it.* — **the evidence becomes the instrument** |
+| **THE ANNEX's bench** | *a rough receiver, once she has gone home; no page* | *A receiver, half built, / from whatever was to hand. / It is listening anyway.* — **SOUNDINGS began while she was away** |
+| **OCT 3** | *flowers on her desk, that day only by the cartridge clock, after the joining* | *Flowers. / There is no card.* |
+
+***The card closes the signatures motif***: **PEER REVIEW 3's "One is careful", PROSPECTUS 8's "Both are careful", and now "Some are careful. Most are not."** ***The signatures are unreadable and the one hand is unknown***: *no names, and undated like PROSPECTUS 7 and 8.*
+
+***Played through and approved*** (*the user, 2026-10-27*): **the SOUNDINGS route's 21 theatre stops pass, and every word of T-457, T-458 and T-460 is approved, so the DRAFT marks come off.** ***The desk props move so the player's hat no longer hides them*** — **the receiver, the card, the flowers and THE ANNEX's bench** — *where each goes is the game lane's to place and check.*
 
 ## 5. THE BENCHMARKS
 
@@ -8773,6 +8790,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 ### Settled
 
 - **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
+- **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
 - **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)

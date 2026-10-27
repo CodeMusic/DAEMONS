@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.314 — 2026-10-27
+
+### The arc around SOUNDINGS closes (T-460), and it is approved
+
+- ***4.37 (the user, by multiple choice)***: **four small things join the arc** -- *CORRESPONDENCE 7 AT THE DOOR, a card of signatures on CRYSTAL's desk ("We never got to say it at the door."); an evidence tag on the receiver once THE FILE 4 is read; a half-built receiver on THE ANNEX's bench; flowers on her desk on OCT 3.* **The card closes the signatures motif: "Some are careful. Most are not."**
+- ***Played through and approved (the user)***: **the SOUNDINGS route passes all 21 stops; every word of T-457, T-458 and T-460 is approved and the DRAFT marks come off.** *The desk props move so the player's hat no longer hides them. CELIO's name is "CELIO's machine" in a sentence and CELIO'S MACHINE on a letterhead, on purpose.*
+
 ## v11.313 — 2026-10-27
 
 ### SOUNDINGS (T-457, T-458, C-195)
