@@ -37,3 +37,21 @@ v11.313.1: T-458's receiver and keeper lines with the widest name (DRAFT)
 Mock-ups of THE SUBTLE LAYER's intuitions in purple, drawn from the game's own map, sprites and font; every word DRAFT. A-C in CONTEXT's hue (the book's), the fourth a softer violet. The user chose all four and CONTEXT's hue, 2026-10-27.
 
 ![27Oct2026 - T459 - the purple intuitions mock-ups - 9](27Oct2026%20-%20T459%20-%20the%20purple%20intuitions%20mock-ups%20-%209.png)
+
+### 27Oct2026 - C189 - iPad game beside the companion - 10
+
+iPad simulator, synthetic save: DAEMONS beside the companion, the speed line under the game
+
+![27Oct2026 - C189 - iPad game beside the companion - 10](27Oct2026%20-%20C189%20-%20iPad%20game%20beside%20the%20companion%20-%2010.png)
+
+### 27Oct2026 - C191 - the planner - 11
+
+YOU > THE ROAD AHEAD on the iPad simulator, synthetic save
+
+![27Oct2026 - C191 - the planner - 11](27Oct2026%20-%20C191%20-%20the%20planner%20-%2011.png)
+
+### 27Oct2026 - C195 - SOUNDINGS - 12
+
+DAEMON > SOUNDINGS after a SYNC, iPad simulator, synthetic save
+
+![27Oct2026 - C195 - SOUNDINGS - 12](27Oct2026%20-%20C195%20-%20SOUNDINGS%20-%2012.png)
