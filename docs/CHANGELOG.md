@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.313 — 2026-10-27
+
+### SOUNDINGS (T-457, T-458, C-195)
+
+- ***4.37 settled (the user)***: **CRYSTAL's work is SOUNDINGS**, *the Act 2 seed a sign on ONE ISLAND, and every word approved as DRAFT* -- **PROSPECTUS 8 answers PROSPECTUS 3 line for line.**
+- ***9.30 (the user, by multiple choice)***: **SOUNDINGS hears your daemon** -- *the receiver and the keepers name the player's AWAY daemon; the companion writes a four-level signal into the flags byte's two spare bits at each SYNC (doing well, fine, quiet today, no signal yet), one `sounding_shift` key serving both sides; the app gets a SOUNDINGS view, heard and never ranked.*
+
 ## v11.312 — 2026-10-26
 
 ### The second joining, as built (T-457)

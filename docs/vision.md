@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.312**
+**A total conversion — the living design bible, v11.313**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4846,11 +4846,21 @@ take off.*
 - ***Tending, never medical*** (craft rule 3): **a signal, a check-in, a keeper's ledger** — *never a reading, a vital, a condition.*
 - ***Ty is not in it.*** **4.17's not-visiting stays a choice on both sides.**
 
-#### Open
+#### Settled after the build (the user, 2026-10-27) — every word DRAFT
 
-- **The name of her work** (*candidates: THE MARGIN WATCH, BETWEEN*).
-- **How the Act 2 seed shows.**
-- **The words**: *her line at the receiver, PROSPECTUS 7 and 8, the ONE ISLAND sign, Brazen's posting, the keepers' line* — **the user is writing some of them**; *every new line DRAFT.*
+***Her work is SOUNDINGS.*** **A sounding is a depth taken by line from a boat between ports, and a sounding is a listening** — *both the margins' own words.* **The Act 2 seed is a sign** — *the NETWORK NOTICE beside CELIO's machine on ONE ISLAND.*
+
+| | |
+|---|---|
+| **The NETWORK NOTICE** | *One half in place. / Waiting on the other.* → *Both halves in place. / Signals are coming in.* |
+| **The receiver** | *A receiver, turned low. / One daemon, far away, / on an island. / It is doing fine.* |
+| **CRYSTAL, once, at it** | *It is raining on the islands, I hear.* — **about something else, and she only knows it by listening** |
+| **Brazen's board** | *CORPUS NOTICE: REVIEWS / Four candidates reviewed. / Notes went to each of them, / not to this board.* |
+| **A keeper, one heal in three** | *Excuse me, one moment. / …Yes, I hear you. / Good to hear from you.* |
+| **PROSPECTUS 7, SOUNDINGS** | *her proposal: a daemon is seen at a CHECKPOINT for a few minutes, then goes home, and the rest of its life happens out of sight. "Proposal: listen in between." Cost: one desk. No date anywhere on it* |
+| **PROSPECTUS 8, SIGNAGE, AGAIN** | *two letterheads side by side, SOUNDINGS and CELIO'S MACHINE; "Nothing is laid over anything"; blanks where the dates were; "Two signatures at the foot. Both are careful."* |
+
+***PROSPECTUS 8 answers PROSPECTUS 3 line for line*** — **gold laid straight over the board / nothing laid over anything; "a fact with a date" / blanks where the dates were** — *and its last line answers PEER REVIEW 3's "Three signatures at the foot. One is careful."* **Nobody says what any of it means.** ***And SOUNDINGS hears the player's own daemon***: **9.30.**
 
 ## 5. THE BENCHMARKS
 
@@ -8724,6 +8734,17 @@ signatures keep their ink and play soft.** *`tools/gensignature.py`; the looks i
 - ***Two at a time, a sheet and a yes before each pair.*** **SCORN SOLUTIONS and the MANSION first, then CORPUS's tower.** *SCORN SOLUTIONS is drawn as CRYSTAL's lab's sister and then rebranded -- gold leaf, blinds, a roof ruled like a form, an intake slot, a plain steel door under the procedure's red light, the only red the new owner's.* *The MANSION is redesigned in its own footprint: one stain rising from the cave-in, racks curved like a rib cage.* *CORPUS's floor plate is seen through a glass lobby, with no words.* **Built by `tools/gbalandmarks.py`.**
 - ***Why not a retint.*** **A retint says the place is a vanilla place with new paint**, *and these are the places where the story says the world is not what it was.* *The silhouette is the first thing a player reads from the overworld, and the story's buildings should be read as ours before a sign is.*
 
+### 9.30 SOUNDINGS hears your daemon — *decided 2026-10-27 (T-458, C-195)*
+
+***The companion already is SOUNDINGS*** (4.37). **PROSPECTUS 7 proposes listening to a daemon between visits; 9.25's AWAY daemon lives its life on a device between visits, and the companion's rule is that it never pesters.** *The link was built; the two sides only had to hear each other.* **The user chose all four by multiple choice:**
+
+- ***The receiver names your daemon.*** **While one is AWAY, CRYSTAL's receiver says** *It is picking up [NAME], / far away.* — **and its last line follows the signal.** *With more than one AWAY (a daemon per device), it names the first found, party first.*
+- ***A signal in the save, four gentle levels.*** **The two spare bits of the daemon's flags byte (bits 6–7, after `away` and `asked`) carry how it is doing: 3 *doing well*, 2 *doing fine*, 1 *quiet today*, 0 *no signal yet*.** ***The companion writes them at each SYNC; the game only reads them.*** **One layout key, `sounding_shift`, exported by `companion_export.py`, serves both.** ***Never worse than quiet*** — *nothing alarms, on either side.*
+- ***The keepers name it too***, **when one is AWAY**: *…Yes, I hear you. / [NAME] is doing fine.* — *the same four levels.* **With nothing AWAY their line stays as 4.37 built it.**
+- ***A SOUNDINGS view in the app***: **one quiet card per carried daemon, its last check-in and how it is doing** — *nothing to fix, no score, no streak.* ***A sounding is heard, never ranked*** — **Brazen's board is the other thing.**
+
+***Tending, never medical*** (craft rule 3): **no reading, vital or condition, here or in the public companion.**
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -8751,6 +8772,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
 - **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)
