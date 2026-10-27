@@ -84,7 +84,7 @@ DOCS = [
     ("PROSPECTUS_8",     ("sign", "PalletTown_ProfessorOaksLab", 9, 1, ("set", "FLAG_SECOND_JOINING"))),
     #  T-460 (the arc around SOUNDINGS closes): a card on CRYSTAL's desk, beside the receiver, once the joining has
     #  happened -- appended LAST for the same reason (0x341). The object (the clipboard's art) is in the lab's map.json
-    #  and hides with the receiver (FLAG_HIDE_CRYSTAL_RECEIVER). T-460, DRAFT: the user's words (2026-10-27), title
+    #  and hides with the receiver (FLAG_HIDE_CRYSTAL_RECEIVER). T-460: the user's words (approved 2026-10-27), title
     #  AT THE DOOR, in the private notebook_docs.json.
     ("CORRESPONDENCE_7", ("object", "PalletTown_ProfessorOaksLab", 4, 1, ("set", "FLAG_SECOND_JOINING"))),
 ]
