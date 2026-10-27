@@ -586,24 +586,24 @@
   "gametype": "STRATUM",
   "type": "GROUND",
   "props": "three little round moles huddled together side by side (LISTENING)",
-  "note": "t2i 5104 (second wording, 'nothing underneath'): three round moles in a little pyramid, no ground -- the three kept; every other three stood on a dirt, grass or brick mound (a baked ground). Drawn small. Drawn icons showed two or four; icon3 from the new front. Back: turned (5152) but the three faces still show: flagged",
+  "note": "t2i 5104 (second wording, 'nothing underneath'): three round moles in a little pyramid, no ground -- the three kept; every other three stood on a dirt, grass or brick mound (a baked ground). Drawn small. Drawn icons showed two or four; icon3 from the new front. Back: turned (5152) but the three faces still show: flagged BUILT (the user, 2026-10-27): zoomed to 52 cells (t2i 5104 cropped and scaled, then cleaned), today's back with its mound taken off.",
   "failed": "back: the turned back still shows three faces (the model would not turn three at once); today's-back drafts stand on a dirt mound",
-  "front": "wiretap_front_5104.png",
+  "front": "src/wiretap_front_zoom.png",
   "back": "wiretap_back_fromfront_5152.png",
   "icon": "derived",
   "measured": {
    "front_streaks": {
-    "box": "19,32,47,42",
-    "painted": "[5, 5, 5, 5]"
+    "box": "35,39,54,57",
+    "painted": "[4, 5, 5, 5]"
    },
    "front_cap": {
-    "accent_clean_before": 10.3,
-    "accent_clean_after": 10.3,
+    "accent_clean_before": 10.6,
+    "accent_clean_after": 10.6,
     "greyed_px": 0,
-    "streak_px": 20,
-    "creature_px": 716
+    "streak_px": 19,
+    "creature_px": 1589
    },
-   "front_accent_pct": 10.3,
+   "front_accent_pct": 10.6,
    "front_colours": 15,
    "back_streaks": {
     "box": "16,32,26,40",
@@ -643,11 +643,11 @@
      ]
     ],
     "bands": [
-     87,
-     185,
-     239
+     102,
+     180,
+     230
     ],
-    "accent_cells": 21,
+    "accent_cells": 15,
     "size": [
      28,
      26
@@ -1442,10 +1442,10 @@
   "gametype": "FLOW",
   "type": "WATER",
   "props": "a round frog with a spiral swirl on its belly (BUSY)",
-  "note": "t2i 5101: a chibi frog with a big pale belly. Back: turned from the new front (5152).",
+  "note": "t2i 5101: a chibi frog with a big pale belly. Back: turned from the new front (5152). BUILT: the turned back (5152) was a second front (eyes, mouth, belly), so the back is today's back repainted (i2i 5131), the frog from behind; the belly spiral drawn by hand on front and icon.",
   "failed": "front: the belly swirl is in no draft of 10 (two wordings) -- a plain pale belly; propose a spiral drawn by hand on the belly (it is the one thing that tells SPINLOCK from MUTEX's frog)",
   "front": "spinlock_front_5101.png",
-  "back": "spinlock_back_fromfront_5152.png",
+  "back": "spinlock_back_i2i_5131.png",
   "icon": "spinlock_icon_5144.png",
   "measured": {
    "front_streaks": {
@@ -1462,18 +1462,18 @@
    "front_accent_pct": 11.0,
    "front_colours": 14,
    "back_streaks": {
-    "box": "19,34,43,53",
+    "box": "21,32,41,40",
     "painted": "[5, 5, 5, 5]"
    },
    "back_cap": {
-    "accent_clean_before": 54.7,
-    "accent_clean_after": 13.1,
-    "greyed_px": 817,
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
     "streak_px": 20,
-    "creature_px": 1967
+    "creature_px": 1068
    },
-   "back_accent_pct": 13.1,
-   "back_colours": 14,
+   "back_accent_pct": 0.4,
+   "back_colours": 13,
    "icon_cap": {
     "accent_clean_before": 37.0,
     "accent_clean_after": 11.1,

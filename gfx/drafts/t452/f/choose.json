@@ -124,17 +124,17 @@
   "back": "spyware_back_fromfront_5152.png"
  },
  "wiretap": {
-  "front": "wiretap_front_5104.png",
+  "front": "src/wiretap_front_zoom.png",
   "icon": "derived",
-  "note": "t2i 5104 (second wording, 'nothing underneath'): three round moles in a little pyramid, no ground -- the three kept; every other three stood on a dirt, grass or brick mound (a baked ground). Drawn small. Drawn icons showed two or four; icon3 from the new front. Back: turned (5152) but the three faces still show: flagged",
+  "note": "t2i 5104 (second wording, 'nothing underneath'): three round moles in a little pyramid, no ground -- the three kept; every other three stood on a dirt, grass or brick mound (a baked ground). Drawn small. Drawn icons showed two or four; icon3 from the new front. Back: turned (5152) but the three faces still show: flagged BUILT (the user, 2026-10-27): zoomed to 52 cells (t2i 5104 cropped and scaled, then cleaned), today's back with its mound taken off.",
   "back": "wiretap_back_fromfront_5152.png",
   "failed": "back: the turned back still shows three faces (the model would not turn three at once); today's-back drafts stand on a dirt mound"
  },
  "spinlock": {
   "front": "spinlock_front_5101.png",
   "icon": "spinlock_icon_5144.png",
-  "note": "t2i 5101: a chibi frog with a big pale belly. Back: turned from the new front (5152).",
+  "note": "t2i 5101: a chibi frog with a big pale belly. Back: turned from the new front (5152). BUILT: the turned back (5152) was a second front (eyes, mouth, belly), so the back is today's back repainted (i2i 5131), the frog from behind; the belly spiral drawn by hand on front and icon.",
   "failed": "front: the belly swirl is in no draft of 10 (two wordings) -- a plain pale belly; propose a spiral drawn by hand on the belly (it is the one thing that tells SPINLOCK from MUTEX's frog)",
-  "back": "spinlock_back_fromfront_5152.png"
+  "back": "spinlock_back_i2i_5131.png"
  }
 }
