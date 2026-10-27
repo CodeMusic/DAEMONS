@@ -98,6 +98,9 @@ a stop that needs longer than --stop-timeout (T-451):
                                every EVERY frames, in one batch -- a routine in flight, a flicker
     palette BG|OBJ SLOT grey|colour   T-430: fail unless that palette slot on screen (palette RAM) is all grey, or holds
                                some colour (entry 0, the transparent one, is not counted)
+    debug ROW [ROW ...]        T-458: START -> DEBUG, then each row by its START-menu name on the page it is on (ENCOUNTER,
+                               DEVICE, HEAL: src/start_menu.c's STARTMENU_DBG_<ROW>), each pressed with A; the page left
+                               open is captured, then B closes the lot -- `debug ENCOUNTER DEVICE` answers a SEND
     events "ROW" ["ROW" ...]   T-431: DEBUG -> GAME EVENTS, then each row by its label on the page it is on (a "NAME >"
                                row opens its page; "#N" is the page's Nth row, from 0), each pressed with A; the page
                                left open is captured, then B closes the lot. Read from src/daemons_debug_events.c.
@@ -324,6 +327,15 @@ def elf_symbol(name, release):
 # (FLY) while the GOTO DRIVER is in the bag (T-199). So `fly` plays it as a player would: START, DAEMON, a daemon, GOTO,
 # and then the region map, whose cursor is steered by reading it out of RAM (sMapCursor) until the town is under it.
 STARTMENU_POKEMON, STARTMENU_SAVE = 1, 4                                     # src/start_menu.c's enum: DAEMON's, SAVE's
+
+
+def start_menu_entries():
+    """{STARTMENU_X: its number}, counted down src/start_menu.c's enum (the DEBUG rows included, as the debug build has
+    them): the debug pages are lists of these, like the START menu itself (T-458)."""
+    src = open(os.path.join(GBA, "src/start_menu.c")).read()
+    body = re.search(r"enum StartMenuOption\s*\{\s*(STARTMENU_POKEDEX.*?)MAX_STARTMENU_ITEMS", src, re.S).group(1)
+    names = re.findall(r"^\s*(STARTMENU_\w+)\s*(?:=\s*0\s*)?,", body, re.M)
+    return {n: i for i, n in enumerate(names)}
 
 
 def mapsec_id(name):
@@ -1250,6 +1262,19 @@ class Runner:
             out[pg] = [(names.get(n), k, g) for n, k, g in re.findall(r"\{\s*(\w+),\s*(R_\w+),\s*([^}]+?)\s*\}", body)]
         return out, pages
 
+    def list_cursor(self):
+        """T-458: the row a ListMenu's cursor is on (its scroll + its row on screen), read from the task the list menu
+        runs as (ListMenuDummyTask's data is the struct ListMenu: cursorPos at +0x18, itemsAbove at +0x1A); None when
+        no list is open."""
+        S = lambda n: elf_symbol(n, self.release)
+        tasks, dummy = tw.symbol("gTasks", self.release), S("ListMenuDummyTask") & ~1
+        st = tw.peek([(32, tasks + 40 * i, "f%d" % i) for i in range(16)] + [(8, tasks + 40 * i + 4, "a%d" % i) for i in range(16)])
+        for i in range(16):
+            if st["a%d" % i] and st["f%d" % i] & ~1 == dummy:
+                c = tw.peek([(16, tasks + 40 * i + 8 + 0x18, "scroll"), (16, tasks + 40 * i + 8 + 0x1A, "row")])
+                return c["scroll"] + c["row"]
+        return None
+
     def events(self, labels):
         pages, order = self.event_pages()
         S = lambda n: elf_symbol(n, self.release)
@@ -1268,8 +1293,20 @@ class Runner:
                 if len(hits) != 1:
                     raise RouteError("GAME EVENTS: no row %s on %s" % (label, page))
                 idx = hits[0]
-            for _ in range(abs(idx - cursor)):
-                tw.run("hold %s 4" % ("DOWN" if idx > cursor else "UP"), "wait 12")
+            #  T-458: read the list's own cursor and step until it is on the row -- a DOWN dropped in a 12-frame gap put
+            #  A on the row above, and GLOBAL INDEX (a toggle) was taken away instead of CRYSTAL'S LINE AGAIN given
+            for tries in range(3 * len(rows) + 6):
+                at = self.list_cursor()
+                if at is None:
+                    at = cursor
+                if at == idx:
+                    break
+                tw.run("hold %s 4" % ("DOWN" if idx > at else "UP"), "wait 20")
+                if self.list_cursor() is None:
+                    cursor += 1 if idx > at else -1
+            if self.list_cursor() not in (idx, None):
+                self.close()
+                raise RouteError("GAME EVENTS: the cursor never reached %s" % label)
             tw.run("hold A 6", "wait 90")
             name, kind, arg = rows[idx]
             if kind == "R_PAGE":
@@ -1283,6 +1320,39 @@ class Runner:
             tw.run("hold B 6", "wait 60")
         if not self.free():
             raise RouteError("GAME EVENTS did not close")
+
+    def debug(self, rows):
+        """T-458: START -> DEBUG, then each row by name. The debug pages are ONE column (StartMenuIsTwoColumns), and
+        each opens with its cursor on the top row; the cursor is read back before every A all the same."""
+        entries = start_menu_entries()
+        want = []
+        for r in rows:
+            name = "STARTMENU_DBG_" + r.upper()
+            if name not in entries:
+                raise RouteError("the DEBUG menu has no row %s" % r)
+            want.append(entries[name])
+        S = lambda n: elf_symbol(n, self.release)
+        cur, num, order = S("sStartMenuCursorPos"), S("sNumStartMenuItems"), S("sStartMenuOrder")
+        self.start_menu(entries["STARTMENU_DEBUG"])
+        tw.run("hold A 6", "wait 50")
+        for r, entry in zip(rows, want):
+            for tries in range(4):
+                st = tw.peek([(8, cur, "cur"), (8, num, "num")] + [(8, order + i, "o%d" % i) for i in range(12)])
+                items = [st["o%d" % i] for i in range(st["num"])]
+                if entry in items:
+                    break
+                tw.run("wait 20")
+            if entry not in items:
+                self.close()
+                raise RouteError("DEBUG: no row %s on this page" % r)
+            for _ in range(abs(items.index(entry) - st["cur"])):
+                tw.run("hold %s 4" % ("DOWN" if items.index(entry) > st["cur"] else "UP"), "wait 14")
+            if tw.peek([(8, cur, "c")])["c"] != items.index(entry):
+                self.close()
+                raise RouteError("DEBUG: the cursor did not reach %s" % r)
+            tw.run("hold A 6", "wait 50")
+        self.capture("DEBUG: " + " / ".join(rows))
+        self.close()
 
     FADE = [round(255 * 2 ** (-d / 18)) for d in range(145)]              # src/daemons_feelings.c's sFade
 
@@ -1675,6 +1745,8 @@ class Runner:
             self.burst(args[0], int(args[1]), int(args[2]), args[3:])
         elif op == "palette":                                               # T-430
             self.palette(args[0].upper(), int(args[1]), args[2].lower())
+        elif op == "debug":                                                 # T-458
+            self.debug(args)
         elif op == "events":                                                # T-431
             self.events(args)
         elif op == "feelings":                                              # T-431
@@ -1771,12 +1843,21 @@ def load(path):
 
 def check(route):
     """Resolve every name a route uses, without the theatre: the maps, the flags and vars, the people."""
-    bad, folder = [], None
+    bad, folder, states = [], None, {}
     for i, stop in enumerate(route["stops"], 1):
         for line in stop["steps"]:
             a = words(line)
             try:
-                if a[0] in ("goto", "expect"):
+                if a[0] == "savestate":                                   # a saved moment is where it was saved
+                    states[a[1]] = folder
+                elif a[0] == "loadstate":
+                    folder = states.get(a[1])
+                elif a[0] in ("load", "continue"):
+                    folder = None                                         # wherever the save stands: not known here
+                elif a[0] == "fly":                                       # GOTO lands in the town's own map
+                    map_index(a[1])
+                    folder = a[1]
+                elif a[0] in ("goto", "expect"):
                     map_index(a[1])
                     folder = a[1]                                         # an expect says where a script's warp landed
                     if a[0] == "goto" and len(a) > 3 and not tw.Map(a[1]).open(int(a[2]), int(a[3]), None):
@@ -1792,6 +1873,24 @@ def check(route):
                     if not any((b["x"], b["y"]) == (int(a[1]), int(a[2])) for b in lay.get("bg_events") or []):
                         print("  (stop %d: nothing is placed at %s,%s on %s -- a metatile, like a PC?)"
                               % (i, a[1], a[2], folder))
+                elif a[0] == "debug":
+                    entries = start_menu_entries()
+                    for r in a[1:]:
+                        if "STARTMENU_DBG_" + r.upper() not in entries:
+                            raise RouteError("the DEBUG menu has no row %s" % r)
+                elif a[0] == "events":
+                    pages, _ = Runner.event_pages(None)
+                    page = "PG_EVENTS"
+                    for label in a[1:]:
+                        if label.startswith("#"):
+                            continue
+                        hits = [r for r in pages[page] if r[0] and fold(r[0]) == fold(label)]
+                        if len(hits) != 1:
+                            raise RouteError("GAME EVENTS: no row %s on %s" % (label, page))
+                        if hits[0][1] == "R_PAGE":
+                            page = hits[0][2]
+                elif a[0] == "mon" and a[2].startswith("SPECIES_"):
+                    const_species(a[2])
                 elif a[0] == "edge":
                     folder = None                                         # the next map is the connection's
                 elif a[0] == "warp" and folder:

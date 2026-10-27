@@ -1,0 +1,356 @@
+{
+  "rom": "debug",
+  "stop_timeout": 900,
+  "about": "SOUNDINGS played through (T-457, T-458), every word DRAFT, for the user to play before approving them: the NETWORK NOTICE by CELIO's machine before and after FLAG_SYS_CAN_LINK_WITH_RS; the receiver on CRYSTAL's desk once she is home from THE ANNEX with the GLOBAL INDEX held (the game sets FLAG_SECOND_JOINING itself on the map load), her line once and then not; a CHECKPOINT keeper's check-in (one heal in three, so up to nine heals); BRAZEN's board with no scores; PROSPECTUS 7 SOUNDINGS and 8 SIGNAGE, AGAIN filed at the shelf and opened in the NOTEBOOK; T-460's arc around it (the evidence tag after THE FILE 4, CORRESPONDENCE 7's card, OCT 3's flowers and not on another day, THE ANNEX's half-built receiver); then the lead SENT from the party menu and answered by DEBUG -> ENCOUNTER -> DEVICE, and the receiver naming it at each signal level 0-3 (GAME EVENTS -> AWAY'S SIGNAL), and the keeper naming it. The theatre's debug scratch save (.theatre/rom/theatre_debug.sav, never the user's): SEND saves into it, so back it up first and put it back after.",
+  "stops": [
+    {
+      "stop": "the DEBUG build, continued; the world set for SOUNDINGS (CRYSTAL home from THE ANNEX, the GLOBAL INDEX held, the NOTEBOOK's six parts before PROSPECTUS), nothing AWAY in the party",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "poke gPlayerParty+19 8 0x02",
+        "mon 1 away 0",
+        "mon 2 away 0",
+        "mon 3 away 0",
+        "mon 4 away 0",
+        "mon 5 away 0",
+        "flag FLAG_CRYSTAL_READ_PAYLOAD 1",
+        "flag FLAG_SYS_NATIONAL_DEX 1",
+        "var VAR_NATIONAL_DEX 0x6258",
+        "poke *gSaveBlock2Ptr+0x1B 8 0xB9",
+        "flag FLAG_HIDE_POKEDEX 1",
+        "flag FLAG_HIDE_OAK_IN_HIS_LAB 0",
+        "var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 9",
+        "var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 7",
+        "flag FLAG_GOT_NOTEBOOK 1",
+        "keyitem ITEM_NOTEBOOK",
+        "flag FLAG_SCHOOL_SYLLABUS_LANGUAGE 1",
+        "flag FLAG_NOTEBOOK_DOC_LOOSE_PAGES_2 1",
+        "flag FLAG_NOTEBOOK_LAB_OBSERVER 1",
+        "flag FLAG_NOTEBOOK_RUN_MAR4 1",
+        "flag FLAG_NOTEBOOK_DOC_CORRESPONDENCE_1 1",
+        "flag FLAG_NOTEBOOK_DOC_THE_FILE_4 1",
+        "shot the overworld"
+      ]
+    },
+    {
+      "stop": "ONE ISLAND: the NETWORK NOTICE by CELIO's machine, one half in place",
+      "steps": [
+        "flag FLAG_SYS_CAN_LINK_WITH_RS 0",
+        "goto OneIsland_PokemonCenter_1F 18 5",
+        "shot the machine, its screens dark",
+        "look 18 4",
+        "says \"NETWORK NOTICE\"",
+        "says \"One half in place. Waiting on the other.\"",
+        "unsaid \"Signals are coming in.\""
+      ]
+    },
+    {
+      "stop": "ONE ISLAND: the NETWORK NOTICE, both halves in place (FLAG_SYS_CAN_LINK_WITH_RS)",
+      "steps": [
+        "flag FLAG_SYS_CAN_LINK_WITH_RS 1",
+        "goto OneIsland_PokemonCenter_1F 18 5",
+        "shot the machine, its screens on",
+        "look 18 4",
+        "says \"Both halves in place. Signals are coming in.\"",
+        "unsaid \"Waiting on the other.\""
+      ]
+    },
+    {
+      "stop": "THE ANNEX -> CRYSTAL at the receiver: its words, then her one line, the first time",
+      "steps": [
+        "flag FLAG_SECOND_JOINING 0",
+        "events \"CRYSTAL'S LINE AGAIN\"",
+        "flagis FLAG_HEARD_CRYSTAL_AT_RECEIVER 0",
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "flagis FLAG_SECOND_JOINING 1",
+        "flagis FLAG_HIDE_CRYSTAL_RECEIVER 0",
+        "goto PalletTown_ProfessorOaksLab 5 3",
+        "shot the receiver on her desk",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"A receiver, turned low.\"",
+        "says \"One daemon, far away, on an island.\"",
+        "says \"It is doing fine.\"",
+        "says \"CRYSTAL: It is raining on the islands, I hear.\"",
+        "unsaid \"It is picking up\"",
+        "flagis FLAG_HEARD_CRYSTAL_AT_RECEIVER 1"
+      ]
+    },
+    {
+      "stop": "the receiver read again: its words, and nothing from her",
+      "steps": [
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"A receiver, turned low.\"",
+        "says \"It is doing fine.\"",
+        "unsaid \"raining\""
+      ]
+    },
+    {
+      "stop": "a CHECKPOINT keeper listens to someone not in the room (nothing AWAY; one heal in three, up to nine)",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "says \"Excuse me, one moment.\"",
+        "says \"Yes, I hear you. Good to hear from you.\""
+      ]
+    },
+    {
+      "stop": "BRAZEN: the board carries a posting with no scores (and still files PROSPECTUS 2 behind it, unread)",
+      "steps": [
+        "flag FLAG_NOTEBOOK_PROSPECTUS_SCORES 1",
+        "goto SaffronCity 13 26",
+        "look 13 25",
+        "says \"CORPUS NOTICE: REVIEWS\"",
+        "says \"Four candidates reviewed.\"",
+        "says \"Notes went to each of them, not to this board.\"",
+        "flag FLAG_NOTEBOOK_PROSPECTUS_SCORES 0",
+        "look 13 25",
+        "says \"Four candidates reviewed.\"",
+        "flagis FLAG_NOTEBOOK_PROSPECTUS_SCORES 1"
+      ]
+    },
+    {
+      "stop": "the papers on the shelf: PROSPECTUS 7 SOUNDINGS and 8 SIGNAGE, AGAIN, filed",
+      "steps": [
+        "flag FLAG_NOTEBOOK_DOC_PROSPECTUS_7 0",
+        "flag FLAG_NOTEBOOK_DOC_PROSPECTUS_8 0",
+        "goto PalletTown_ProfessorOaksLab 9 2",
+        "look 9 1",
+        "says \"The heading reads SOUNDINGS.\"",
+        "says \"Proposal: listen in between.\"",
+        "says \"Two letterheads, side by side: SOUNDINGS and CELIO'S MACHINE.\"",
+        "says \"Approved: (blank). Goes up: (blank).\"",
+        "flagis FLAG_NOTEBOOK_DOC_PROSPECTUS_7 1",
+        "flagis FLAG_NOTEBOOK_DOC_PROSPECTUS_8 1"
+      ]
+    },
+    {
+      "stop": "the NOTEBOOK: PROSPECTUS 7 and 8 opened from its PROSPECTUS section",
+      "steps": [
+        "close",
+        "goto PalletTown_ProfessorOaksLab 9 2",
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "shot PROSPECTUS, the seventh part (the six before it held)",
+        "press A",
+        "wait 40",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold DOWN 4",
+        "wait 20",
+        "hold UP 4",
+        "wait 20",
+        "hold UP 4",
+        "wait 20",
+        "shot PROSPECTUS 7 under the cursor",
+        "press A",
+        "wait 40",
+        "press A 2",
+        "says \"The heading reads SOUNDINGS.\"",
+        "shot back at the list",
+        "hold DOWN 4",
+        "wait 20",
+        "press A",
+        "wait 40",
+        "press A 2",
+        "says \"RE: SIGNAGE.\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "T-460: the receiver before THE FILE 4: no tag",
+      "steps": [
+        "flag FLAG_NOTEBOOK_DOC_THE_FILE_4 0",
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"A receiver, turned low.\"",
+        "unsaid \"An old evidence tag\"",
+        "says \"It is doing fine.\""
+      ]
+    },
+    {
+      "stop": "T-460: the receiver after THE FILE 4: the evidence tag",
+      "steps": [
+        "flag FLAG_NOTEBOOK_DOC_THE_FILE_4 1",
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"A receiver, turned low.\"",
+        "says \"An old evidence tag is still tied to it.\"",
+        "says \"It is doing fine.\""
+      ]
+    },
+    {
+      "stop": "T-460: CORRESPONDENCE 7, AT THE DOOR",
+      "steps": [
+        "flag FLAG_NOTEBOOK_DOC_CORRESPONDENCE_7 0",
+        "goto PalletTown_ProfessorOaksLab 4 2",
+        "goto PalletTown_ProfessorOaksLab 4 3",
+        "shot the card beside the receiver",
+        "talk LOCALID_CRYSTAL_DOOR_CARD",
+        "wait 60",
+        "shot the page",
+        "says \"We never got to say it at the door.\"",
+        "flagis FLAG_NOTEBOOK_DOC_CORRESPONDENCE_7 1"
+      ]
+    },
+    {
+      "stop": "T-460: OCT 3: flowers",
+      "steps": [
+        "poke gDaemonsDateOverride 8 38",
+        "wait 70",
+        "goto PalletTown_ProfessorOaksLab 1 2",
+        "flagis FLAG_HIDE_CRYSTAL_FLOWERS 0",
+        "goto PalletTown_ProfessorOaksLab 1 3",
+        "shot the flowers",
+        "talk LOCALID_CRYSTAL_FLOWERS",
+        "says \"Flowers.\"",
+        "says \"There is no card.\""
+      ]
+    },
+    {
+      "stop": "T-460: any other day: no flowers",
+      "steps": [
+        "poke gDaemonsDateOverride 8 0",
+        "wait 70",
+        "goto PalletTown_ProfessorOaksLab 1 2",
+        "flagis FLAG_HIDE_CRYSTAL_FLOWERS 1",
+        "goto PalletTown_ProfessorOaksLab 1 3",
+        "shot the desk without them"
+      ]
+    },
+    {
+      "stop": "T-460: THE ANNEX: the half-built receiver",
+      "steps": [
+        "goto BirthIsland_Exterior 24 16",
+        "flagis FLAG_HIDE_ANNEX_WORKBENCH 0",
+        "goto BirthIsland_Exterior 23 16",
+        "shot the receiver on the grass",
+        "talk LOCALID_ANNEX_WORKBENCH",
+        "says \"A receiver, half built, from whatever was to hand.\"",
+        "says \"It is listening anyway.\""
+      ]
+    },
+    {
+      "stop": "SEND from the party menu, answered by DEBUG -> ENCOUNTER -> DEVICE: the lead goes AWAY",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "poke gPlayerParty+19 8 0x02",
+        "mon 0 hp max",
+        "mon 0 status 0",
+        "flag FLAG_COMPANION_RECALLED 0",
+        "flag FLAG_COMPANION_LINKED 1",
+        "remember LEAD gPlayerParty+19 8",
+        "open DAEMON",
+        "press A",
+        "press UP 4",
+        "press A",
+        "wait 60",
+        "shot SEND asked",
+        "press A",
+        "wait 240",
+        "shot saved",
+        "close",
+        "moved LEAD",
+        "debug ENCOUNTER DEVICE",
+        "events"
+      ]
+    },
+    {
+      "stop": "the receiver names the AWAY lead: signal 0, no signal yet",
+      "steps": [
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"It is picking up\"",
+        "says \"far away.\"",
+        "says \"No signal yet.\"",
+        "unsaid \"raining\""
+      ]
+    },
+    {
+      "stop": "AWAY'S SIGNAL to 1: it is quiet today",
+      "steps": [
+        "events \"AWAY'S SIGNAL\"",
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"It is picking up\"",
+        "says \"It is quiet today.\""
+      ]
+    },
+    {
+      "stop": "AWAY'S SIGNAL to 2: it is doing fine",
+      "steps": [
+        "events \"AWAY'S SIGNAL\"",
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"It is picking up\"",
+        "says \"It is doing fine.\""
+      ]
+    },
+    {
+      "stop": "AWAY'S SIGNAL to 3: it is doing well",
+      "steps": [
+        "events \"AWAY'S SIGNAL\"",
+        "goto PalletTown_ProfessorOaksLab 5 2",
+        "talk LOCALID_CRYSTAL_RECEIVER",
+        "says \"It is picking up\"",
+        "says \"It is doing well.\""
+      ]
+    },
+    {
+      "stop": "a CHECKPOINT keeper names the AWAY lead (signal 3; one heal in three, up to nine)",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "talk LOCALID_VIRIDIAN_NURSE",
+        "says \"Excuse me, one moment.\"",
+        "says \"is doing well.\"",
+        "unsaid \"Good to hear from you.\""
+      ]
+    }
+  ]
+}

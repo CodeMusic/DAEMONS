@@ -219,6 +219,7 @@
    "steps": [
     "loadstate release-start",
     "fly CinnabarIsland",
+    "expect CinnabarIsland",
     "warp MAP_CINNABAR_ISLAND_POKEMON_LAB_ENTRANCE",
     "look 16 5",
     "look 12 5"
@@ -229,6 +230,7 @@
    "steps": [
     "loadstate release-start",
     "fly CinnabarIsland",
+    "expect CinnabarIsland",
     "warp MAP_POKEMON_MANSION_1F",
     "look 7 6"
    ]
