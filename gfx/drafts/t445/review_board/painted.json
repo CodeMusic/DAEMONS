@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/review_board/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, looking up at a long low hall of near-black stone under one heavy flat stone slab that overhangs it like a judges' bench, four small lit alcoves in its front each holding a tall glass vessel of fluid, red, yellow, black, pale, left to right, a dark doorway in the middle with a small blue door, a dark stone step in front, dark green trees at the sides, grass, a dusk sky pale at the horizon, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, windows, columns, pediment, roof tiles, sign, lettering, fire, bright colours",
+ "seed": 4475,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/review_board/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 0.5,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 21:26:01"
+}

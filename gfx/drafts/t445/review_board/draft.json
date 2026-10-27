@@ -1,0 +1,6 @@
+{
+ "mapsec": "MAPSEC_INDIGO_PLATEAU",
+ "name": "UMBRA PLATEAU",
+ "from": "painted, seed 4475, denoise 0.45",
+ "num_tiles": 320
+}

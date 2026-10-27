@@ -14,6 +14,10 @@
     python3 tools/gbapreviews.py --landmarks --draft     #   the MANSION), painted from T-447's buildings as built, and
                                                          #   CORPUS HIDEOUT's and WAREHOUSE's rooms from the maps; their
                                                          #   --write writes only what LANDMARK_APPROVED names
+    python3 tools/gbapreviews.py --landmarks --only review_board --paint review_board --seed N --draft DIR
+                                                         # T-456: one card, one seed, drafted into DIR (a NEW card --
+                                                         #   UMBRA PLATEAU has no sMapPreviewScreenData entry -- is
+                                                         #   drafted, never written)
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
                                                          #   OTHER CAVE's light1..3.pal too. Without --approved it refuses.
@@ -89,6 +93,8 @@ ap.add_argument("--top-down", action="store_true", dest="top_down")
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--landmarks", action="store_true")      # the landmarks' cards (LANDMARK) instead of the caves
+ap.add_argument("--only", nargs="+")                     # draft only these folders (T-456: one card, its seeds)
+ap.add_argument("--seed", type=int)                      # --paint with this seed instead of the entry's
 A = ap.parse_args()
 
 # the caves T-438 batch E redrew (gbacaves.py: approved 2026-10-23, BUILT engine 2007d739f) -> their tileset look
@@ -254,6 +260,12 @@ def _pret(rel):
     if r.returncode:
         sys.exit("  !! git show upstream/master:%s failed: %s" % (rel, r.stderr.decode().strip()))
     return r.stdout
+
+
+def van(folder):
+    """vanilla(folder), or for a NEW card (T-456: no vanilla picture) the card it borrows its letterbox, banner and
+    palette 14 from"""
+    return vanilla(LANDMARK.get(folder, {}).get("banner_from", folder))
 
 
 def vanilla(folder):
@@ -645,6 +657,31 @@ LANDMARK = {
                "steel door, cardboard boxes, an olive floor laid with green arrow floor tiles, fluorescent ceiling "
                "light",
         neg="letter R, logo, emblem, red, people"),
+    #  T-456 (the user, 2026-10-26): the REVIEW BOARD gets a card. UMBRA PLATEAU (MAPSEC_INDIGO_PLATEAU) has NO entry
+    #  in sMapPreviewScreenData and no vanilla picture, so this one is NEW: "mapsec" names it, "banner_from" lends the
+    #  letterbox, the banner and palette 14 (every card but the SAFARI's has the same ones, byte for byte), and the
+    #  scene is drawn ("plateau": a dusk sky pale at the horizon so the near-black hall reads against it, the
+    #  plateau's trees at the sides in UMBRA's greens, its grass at the foot). The hall is cut from reviewsheet's
+    #  render of the built map (engine 2332f9e44) -- the 11x7 box and the dark porch, the kept blue door in it --
+    #  and laid in seen from below. The four vessels are the only colour: after the painting the fluids and the kept
+    #  door are laid back crisp (post_vessels), and "force" gives the red, the yellow, the pale, the door's blue, the
+    #  black fluid and the hall's own stone (46,44,54) an index each -- without the last two, median cut shared the
+    #  trees' dark greens with the hall and tinted it, and vessel III went green. DRAFT: not in LANDMARK_APPROVED,
+    #  and the engine has no entry to write it into until the plan in T-456 is applied (--write skips a "new" card).
+    "review_board": dict(
+        source="review_board", title="the REVIEW BOARD", new=True, mapsec="MAPSEC_INDIGO_PLATEAU",
+        mps="MPS_INDIGO_PLATEAU", type="MPS_TYPE_CAVE", banner_from="pokemon_tower", drawn_scene="plateau",
+        quad=((44, 114), (196, 114), (184, 0), (56, 0)),
+        sky=[(58, 52, 76), (98, 90, 118), (150, 144, 168), (202, 198, 212)],
+        leaf=[(22, 40, 26), (38, 64, 36), (62, 92, 46), (96, 124, 58)],
+        grass=[(46, 78, 38), (74, 110, 50), (104, 140, 66)],
+        seed=4475, denoise=0.45, post=["vessels"],     # seeds 4473 and 4474 on sheet t456_draft; 4475 picked
+        force=[(192, 28, 36), (222, 178, 30), (218, 220, 206), (98, 164, 222), (6, 4, 8), (46, 44, 54)],
+        prompt="looking up at a long low hall of near-black stone under one heavy flat stone slab that overhangs it "
+               "like a judges' bench, four small lit alcoves in its front each holding a tall glass vessel of "
+               "fluid, red, yellow, black, pale, left to right, a dark doorway in the middle with a small blue door, "
+               "a dark stone step in front, dark green trees at the sides, grass, a dusk sky pale at the horizon",
+        neg="windows, columns, pediment, roof tiles, sign, lettering, fire, bright colours"),
 }
 #  the SilphCo tileset's colours as the two CORPUS interiors draw them (sampled from reviewsheet's render)
 INTERIOR_RAMPS = dict(
@@ -757,6 +794,19 @@ def landmark_drawing(src):
     whole tower on one canvas, DAEMON TOWER's dome from ROUTE 10's rows), which this checks against reviewsheet's
     render of the built map, pixel for pixel where the drawing is opaque. The MANSION: cut from that render (its 7x4
     cells and the three cells of its steps)."""
+    if src == "review_board":
+        #  T-456: cut from the built map, the 11x7 box at (6,0) and the porch's 3x2 cells below it; the plateau's
+        #  grass (under the overhang, at the hall's sides, round the porch) left out, so the scene shows through
+        l = RS.layout_of("IndigoPlateau_Exterior")
+        img = RS.render(l).convert("RGBA").crop((6 * 16, 0, 17 * 16, 9 * 16))
+        px = img.load()
+        for y in range(144):
+            for x in range(176):
+                r, g, b_, _ = px[x, y]
+                #  below the box only the porch's dark stone: not the grass round it, not the path on its row 8
+                if (y >= 112 and (not 64 <= x < 112 or y > 132 or r + g + b_ > 330)) or (g > r + 16 and g > b_):
+                    px[x, y] = (0, 0, 0, 0)
+        return img
     if src == "mansion":
         l = RS.layout_of("CinnabarIsland")
         img = RS.render(l).convert("RGBA").crop((5 * 16, 0, 12 * 16, 5 * 16))
@@ -784,6 +834,32 @@ def _grade(c, k, p, lo, hi):
     return _ramp(r, (_lum(p) - lo) / max(1, hi - lo)) if r else p
 
 
+def plateau_scene(c):
+    """T-456's drawn scene: UMBRA PLATEAU at dusk -- the sky graded down to a pale horizon (so the near-black hall
+    reads against it), the plateau's grass from the horizon down, and the trees that flank the hall on the map as
+    dark rounded masses at both sides, stepping down towards the middle"""
+    bg = Image.new("RGB", (240, 112))
+    px = bg.load()
+    HZ = 86
+    for y in range(112):
+        for x in range(240):
+            px[x, y] = _ramp(c["sky"], y / HZ) if y < HZ else _ramp(c["grass"], 1 - (y - HZ) / 26)
+    d = ImageDraw.Draw(bg)
+    import random
+    rnd = random.Random(456)
+    for side in (0, 1):
+        for k in range(14):
+            cx = rnd.randint(-10, 44)
+            cy = rnd.randint(18, 96) + int(cx * 0.3)
+            r = rnd.randint(12, 22)
+            x = cx if side == 0 else 239 - cx
+            for j, f in enumerate((0.0, 0.35, 0.7)):
+                rr = r - j * 4
+                ox = (-3 if side else 3) * j
+                d.ellipse((x - rr + ox, cy - rr - j * 3, x + rr + ox, cy + rr - j * 3), fill=_ramp(c["leaf"], f))
+    return bg
+
+
 def landmark_init(folder):
     """the start image for a landmark's card, at the painting's size"""
     from PIL import ImageFilter
@@ -791,6 +867,8 @@ def landmark_init(folder):
     K = PAINT_SIZE[0] / 240
     if c.get("interior"):
         bg = interior_scene(folder)
+    elif c.get("drawn_scene") == "plateau":
+        bg = plateau_scene(c)
     elif c.get("drawn_scene"):
         bg = Image.new("RGB", (240, 112))
         px = bg.load()
@@ -856,7 +934,7 @@ def paint(folder, sec, out_dir):
     c = LANDMARK.get(folder) or PAINT[folder]
     p = dict(mode="i2i", out=os.path.join(d, "painted"), prompt=PAINT_STYLE % c["prompt"],
              negative=PAINT_NEG + (", " + c["neg"] if c.get("neg") else ""),
-             seed=c["seed"], steps=28, cfg=5.5, sampler="dpmpp_2m", scheduler="karras", denoise=c["denoise"],
+             seed=A.seed or c["seed"], steps=28, cfg=5.5, sampler="dpmpp_2m", scheduler="karras", denoise=c["denoise"],
              stop_at=None, image=os.path.relpath(init, ROOT), size=list(PAINT_SIZE))
     return spriteforge.run(p)
 
@@ -947,7 +1025,26 @@ def post_spinfloor(im, folder="rocket_warehouse"):
     im.paste(w.convert("RGB"), (0, 0), w)
 
 
-POSTS = dict(braille=post_braille, redband=post_redband, spinfloor=post_spinfloor)
+#  the REVIEW BOARD's four fluids (gbalandmarks' RB_VESSEL_COLOURS: each body and its light) and the kept door's blues
+RB_CRISP = {(192, 28, 36), (238, 96, 84), (222, 178, 30), (252, 230, 112), (6, 4, 8), (66, 46, 78), (218, 220, 206),
+            (250, 250, 242), (98, 164, 222), (74, 131, 197), (156, 213, 255)}
+
+
+def post_vessels(im, folder="review_board"):
+    """the REVIEW BOARD, after the painting: the four fluids (the only colour on UMBRA) and the kept blue door laid
+    back crisp from the built map, warped to the card at 1x -- the server greys a 3px column of red at any denoise
+    that leaves the stone painted, and paints the door out"""
+    c = LANDMARK[folder]
+    b = landmark_drawing(c["source"])
+    W, H = b.size
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], c["quad"])
+    keep = Image.new("RGBA", b.size)
+    keep.putdata([p if p[3] == 255 and p[:3] in RB_CRISP else (0, 0, 0, 0) for p in b.getdata()])
+    w = keep.transform((240, 112), Image.PERSPECTIVE, co, Image.NEAREST)
+    im.paste(w.convert("RGB"), (0, 0), w)
+
+
+POSTS = dict(braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels)
 
 
 # ================================================================== OTHER CAVE's four lights
@@ -1142,7 +1239,7 @@ def reduce(pic, vpal, accents=False, force=()):
 
 def build(folder, sec):
     """(tiles, tilemap, palette32, note): vanilla's letterbox and banner kept, the picture rows redrawn"""
-    vt, vm, vpal = vanilla(folder)
+    vt, vm, vpal = van(folder)
     pic, where = picture(folder, sec)
     if pic is None:
         return None
@@ -1221,6 +1318,14 @@ def sheet(rows, path, title):
 
 
 # ================================================================== main
+def entry(by_folder, folder):
+    """(MPS key, MAPSEC, type) of a card: sMapPreviewScreenData's, or a NEW card's own (T-456)"""
+    c = LANDMARK.get(folder, {})
+    if folder not in by_folder and c.get("new"):
+        return c["mps"], c["mapsec"], c["type"]
+    return by_folder[folder][0]
+
+
 def report():
     nm = names()
     by_folder = collections.OrderedDict()
@@ -1238,6 +1343,12 @@ def report():
             n = nm.get(sec, "?")
             w = name_width(n)
             print("      %-22s %-34s %-16s %3dpx%s" % (key, sec, n, w, "  ** wider than the 104px window" if w > 104 else ""))
+    for folder, c in LANDMARK.items():
+        if c.get("new") and folder not in by_folder:
+            n = nm.get(c["mapsec"], "?")
+            print("  %-17s NEW card (%s, no vanilla picture): drafted with --landmarks, waits on the user and on "
+                  "T-456's engine entry" % (folder, landmark_source(folder)))
+            print("      %-22s %-34s %-16s %3dpx" % (c["mps"], c["mapsec"], n, name_width(n)))
     return by_folder
 
 
@@ -1248,7 +1359,7 @@ def main():
     by_folder = report()
     if A.paint is not None:
         for folder in (A.paint or list(LANDMARK if A.landmarks else PAINT)):
-            key, sec, typ = by_folder[folder][0]
+            key, sec, typ = entry(by_folder, folder)
             paint(folder, sec, A.draft or DRAFT_DEFAULT)
         if not (A.draft or A.write):
             return 0
@@ -1259,19 +1370,29 @@ def main():
     sheets = A.sheets or out_dir
     rows = []
     for folder in (LANDMARK if A.landmarks else BATCH_E):
+        if A.only and folder not in A.only:
+            continue
+        if A.write and LANDMARK.get(folder, {}).get("new"):
+            print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet (T-456's plan): "
+                  "not written" % folder)
+            continue
         if A.landmarks and A.write and folder not in LANDMARK_APPROVED and not A.draft:
             print("  %-17s not approved (LANDMARK_APPROVED): not written" % folder)
             continue
-        key, sec, typ = by_folder[folder][0]
+        key, sec, typ = entry(by_folder, folder)
         made = build(folder, sec)
         if not made:
             print("  %-17s nothing drawn" % folder)
             continue
         tiles, m, pal, where, png = made
-        vt, vm, vpal = vanilla(folder)
-        van, dra = compose(vt, vm, vpal), compose(tiles, m, pal)
-        for im in (van, dra):
-            draw_name(im, nm[sec], (vpal if im is van else pal))
+        vt, vm, vpal = van(folder)
+        van_, dra = compose(vt, vm, vpal), compose(tiles, m, pal)
+        if LANDMARK.get(folder, {}).get("new"):             # no vanilla card: the building as the engine draws it
+            van_ = Image.new("RGB", (240, 160))
+            b = landmark_drawing(LANDMARK[folder]["source"])
+            van_.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
+        for im in (van_, dra):
+            draw_name(im, nm[sec], (vpal if im is van_ else pal))
         what = ("from %s, as built" % landmark_source(folder)) if A.landmarks else BATCH_E[folder]
         notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, what, "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
@@ -1312,14 +1433,14 @@ def main():
                            % folder, lambda mm: mm.group(1) + str(len(tiles)), rules)
             open(RULES, "w").write(rules)
             print("      written %s" % d)
-        rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van, draft=dra, notes=notes))
+        rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van_, draft=dra, notes=notes))
         for n, lp in enumerate(lights or []):
             if n == 0:
                 continue
             li = compose(tiles, m, lp + pal[16:32])
             draw_name(li, nm[sec], pal)
             rows.append(dict(folder=folder, name="%s, light %d (%s)" % (nm[sec], n, LIGHT_NAMES[n]),
-                             where=where, vanilla=van, draft=li,
+                             where=where, vanilla=van_, draft=li,
                              notes=["light %d: %s" % (n, LIGHT_NAMES[n]), "the same tiles, palette 13 moved",
                                     "onto this light's rock and crystal", "ramps (palettes_other_%d)" % n]))
     if A.draft:
