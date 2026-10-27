@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t452/f/tappoint_back_i2i_5132",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, poking up out of a small dark round hole, a round plump mole seen from behind, rear view, poking up out of a small dark hole, a smooth round grey back, no face, rear view, seen from behind, facing away from the viewer, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "girl, long hair, hair, human, worm, rock, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5132,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.75,
+ "stop_at": null,
+ "image": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/f/src/tappoint_back_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.3,
+ "comfyui": "0.19.1",
+ "made": "2026-10-26 21:46:30"
+}
