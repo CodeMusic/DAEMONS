@@ -5,9 +5,11 @@
     python3 tools/theatre_route.py tools/routes/field-test.json --from 4   # from the fourth stop on
     python3 tools/theatre_route.py tools/routes/field-test.json --only 2,5
     python3 tools/theatre_route.py --check tools/routes/field-test.json    # parse it and resolve every name; no theatre
+    python3 tools/theatre_route.py tools/routes/field-test.json --stop-timeout 600   # each stop's limit (default 900 s)
 
 A route is JSON: {"rom": "debug" | "release", "about": "...", "stops": [{"stop": "a name", "steps": [...]}]}, and each
-step is one line, split like a shell line:
+step is one line, split like a shell line. A stop may carry "timeout": SECONDS, and a route "stop_timeout": SECONDS, for
+a stop that needs longer than --stop-timeout (T-451):
 
     goto MAP_FOLDER [X Y]      the DEBUG build's theatre warp (gDaemonsDebugWarp): to (X, Y), or the map's first warp;
                                on a RELEASE route, fly
@@ -126,6 +128,13 @@ What it writes, in .theatre/routes/<route>/ (gitignored): each stop's frames, on
 and why, and every box's text. A stop that fails is reported and the run goes on to the next stop, which usually
 starts with a goto. Exit status is the number of stops that failed.
 
+NOTHING WAITS FOREVER (T-451). The run starts with a ping (tools/theatre_walk.py): a theatre whose script is not running
+fails in seconds -- "the theatre is not answering: re-run theatre.lua in mGBA" -- instead of after every stop's first
+batch. Each stop runs inside its own wall-clock limit (STOP_SECONDS, a stop's "timeout", --stop-timeout) and fails with
+"stop N ran past its limit" when it is up; each walk inside it has WALK_SECONDS, each batch its own frames' worth; every
+retry loop counts its tries. A batch the theatre never answers stops the whole run there (the rest is reported "not
+played"): nothing after it could have worked.
+
 WHY. The field test's route was walked by hand, by screenshot, once per release. A route file makes it replayable
 after every release, and reading each box's text out of gStringVar4 (where every field message is expanded before it
 prints) means a stop can check the words, not only show them.
@@ -134,6 +143,8 @@ import json, os, re, shlex, shutil, subprocess, sys, textwrap
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import theatre_walk as tw                                                 # noqa: E402
+
+STOP_SECONDS = 900                                                        # one stop's wall clock (T-451)
 
 ROOT, GBA, THEATRE = tw.ROOT, tw.GBA, tw.THEATRE
 OBJECT_EVENT, OBJECT_EVENTS = 0x24, 16
@@ -354,6 +365,7 @@ class Runner:
         self.var4 = tw.symbol("gStringVar4", release)
         self.objects = tw.symbol("gObjectEvents", release)
         self.out = os.path.join(THEATRE, "routes", route_name)
+        self.stop_seconds = STOP_SECONDS
         os.makedirs(self.out, exist_ok=True)
         if check_build:                   # a route that starts by loading its own ROM is checked after the load
             self.same_build()
@@ -1522,18 +1534,21 @@ class Runner:
             tw.walk(self.g, (int(args[0]), int(args[1])))
         elif op == "warp":
             folder, here = self.where()
-            m = tw.Map(folder)
-            hits = [w for w in m.json.get("warp_events") or [] if w["dest_map"] == args[0]]
-            if not hits:
+            m = tw.Map(folder, walking=True)
+            m.on_foot = not self.g.state()["surfing"]
+            best = tw.choose_warp(m, here, args[0])                         # the tile that fires (T-451)
+            if not best:
                 raise RouteError("%s has no warp to %s" % (folder, args[0]))
-            tiles = {(w["x"], w["y"]) for w in hits}
-            best = min(hits, key=lambda w: (m.path(here, (w["x"], w["y"])) is None,
-                                            -sum((w["x"] + dx, w["y"]) in tiles for dx in (-1, 1)),
-                                            len(m.path(here, (w["x"], w["y"])) or ())))
             tw.walk(self.g, (best["x"], best["y"]), into_warp=True)
         elif op == "edge":
-            subprocess.run([sys.executable, os.path.join(ROOT, "tools/theatre_walk.py"), "edge", args[0]]
-                           + (["--release"] if self.release else []), check=True)
+            left = tw.remaining()
+            try:
+                subprocess.run([sys.executable, os.path.join(ROOT, "tools/theatre_walk.py"), "edge", args[0]]
+                               + (["--release"] if self.release else [])
+                               + (["--timeout", "%d" % max(1, left)] if left is not None else []),
+                               check=True, timeout=None if left is None else max(1, left) + 15)
+            except subprocess.TimeoutExpired:
+                raise tw.TheatreTimeout("edge %s ran past the stop's limit" % args[0])
         elif op == "walkto":
             self.walkto(args[0])
         elif op == "talk":
@@ -1690,19 +1705,27 @@ class Runner:
         self.stop_dir = os.path.join(self.out, "%02d" % no)
         shutil.rmtree(self.stop_dir, ignore_errors=True)
         os.makedirs(self.stop_dir)
-        failed = None
-        for line in stop["steps"]:
-            try:
-                self.step(line)
-            except (RouteError, SystemExit, subprocess.CalledProcessError) as e:
-                failed = "%s -- %s" % (line, e)
+        failed, down = None, None
+        seconds = stop.get("timeout") or self.stop_seconds
+        with tw.limit(seconds, "stop %d" % no):
+            for line in stop["steps"]:
                 try:
-                    self.capture("FAILED here")
-                except Exception:
-                    pass
-                break
+                    self.step(line)
+                except tw.TheatreDown as e:                              # nothing after this can work
+                    failed = down = "%s -- %s" % (line, e)
+                    break
+                except (RouteError, SystemExit, subprocess.CalledProcessError, tw.TheatreError) as e:
+                    failed = "%s -- %s" % (line, e)
+                    break
+        if failed and not down:
+            try:
+                self.capture("FAILED here")                              # outside the stop's limit: it may be spent
+            except (Exception, SystemExit):
+                pass
         sheet = os.path.join(self.out, "%02d - %s.png" % (no, re.sub(r"[^\w ,.'-]+", "", stop["stop"])[:60]))
         contact_sheet(sheet, stop["stop"], self.frames, failed)
+        if down:
+            raise tw.TheatreDown(down)
         return failed, sheet, list(self.said)
 
 
@@ -1793,6 +1816,11 @@ def main():
         k = args.index("--from")
         start = int(args[k + 1])
         del args[k:k + 2]
+    stop_seconds = None
+    if "--stop-timeout" in args:
+        k = args.index("--stop-timeout")
+        stop_seconds = float(args[k + 1])
+        del args[k:k + 2]
     dry = "--check" in args
     args = [a for a in args if a != "--check"]
     if not args:
@@ -1805,14 +1833,30 @@ def main():
     name = os.path.splitext(os.path.basename(args[0]))[0]
     first = next((st for i, st in enumerate(route["stops"], 1) if i >= start and (not only or i in only)), None)
     loads_first = bool(first and first["steps"] and words(first["steps"][0])[0].lower() == "load")
-    r = Runner(name, route.get("rom") == "release", check_build=not loads_first)
+    try:
+        tw.ping()                                       # seconds, not five minutes a stop, when nothing is listening
+    except tw.TheatreDown as e:
+        sys.exit("theatre_route: %s" % e)
+    try:
+        r = Runner(name, route.get("rom") == "release", check_build=not loads_first)
+    except tw.TheatreError as e:
+        sys.exit("theatre_route: %s" % e)
+    r.stop_seconds = stop_seconds or route.get("stop_timeout") or STOP_SECONDS
     report = ["# %s" % name, "", route.get("about", ""), ""]
-    failures = 0
+    failures, down = 0, None
     for i, stop in enumerate(route["stops"], 1):
         if i < start or (only and i not in only):
             continue
+        if down:
+            report += ["## %d. %s -- not played: the theatre stopped answering" % (i, stop["stop"]), ""]
+            continue
         print("%2d. %s ..." % (i, stop["stop"]), end=" ", flush=True)
-        failed, sheet, said = r.play(i, stop)
+        try:
+            failed, sheet, said = r.play(i, stop)
+        except tw.TheatreDown as e:
+            down = failed = str(e)
+            sheet = os.path.join(r.out, "%02d - %s.png" % (i, re.sub(r"[^\w ,.'-]+", "", stop["stop"])[:60]))
+            said = list(r.said)
         failures += bool(failed)
         print("FAILED: %s" % failed if failed else "ok")
         report += ["## %d. %s -- %s" % (i, stop["stop"], "FAILED: " + failed if failed else "ok"), "",
@@ -1835,6 +1879,8 @@ def main():
     else:
         open(path, "w").write("\n".join(report) + "\n")
     print("%d stops failed; report and sheets in %s" % (failures, os.path.relpath(r.out, ROOT)))
+    if down:
+        print("theatre_route: the run stopped at the first batch the theatre did not answer: %s" % down, file=sys.stderr)
     sys.exit(failures)
 
 

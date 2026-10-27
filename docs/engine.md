@@ -558,9 +558,25 @@ back after each:**
 
 ***What it handles***: **a wild battle** (*two RUN tries, then it fights, cycling the routine slots so a slot at 0 MP
 is passed over*), **a trainer battle** (*fought: a trainer cannot be run from*), **a text box** (*closed with B*),
-**a door mat** (*Gen 3's mats warp only from their middle tile, pressing out through the closed side -- an end tile
-or an 8-frame press only turns the player*), **FireRed's sideways stairs** (*pressed along, LEFT or RIGHT, not up*),
-**and a scene that holds the player** (*it waits for the script to let go before planning*).
+**a door mat** (*only the mat tile whose BEHAVIOUR is an arrow warp fires, pressing the arrow's way -- usually the
+middle, but the GAME CORNER's is its LEFT end (9,13); see T-451 below*), **FireRed's sideways stairs** (*pressed along,
+LEFT or RIGHT, not up*), **and a scene that holds the player** (*it waits for the script to let go before planning*).
+
+**Nothing waits forever, and warps fire where the game says** (*T-451, 2026-10-27*). ***`warp MAP_X` looped for half an
+hour at the GAME CORNER and VERDIGRIS's restaurant*** *-- not the follower's doing (`src/daemons_follower.c`: a sprite,
+not an object event; it blocks nothing, so the walker rightly plans through it). The walker chose "the mat's middle"
+and, arriving on it sideways, pressed once more the way it came: on a mat that is a step OFF it, and back, four hundred
+times. The GAME CORNER's middle never fires at all.* **It now walks to the tile `Map.fires()` says fires** (*arrow and
+stair warps by their way, `src/field_control_avatar.c`'s TryArrowWarp; doors, ladders and pads on being stepped on*)
+**and presses only that way.** *Paths go around step-on warps they are not aiming for, and, on foot, around water
+(a path along a shore, QUICKSILVER's, could press into the sea a tile at a time, three refusals each).* **Every batch has a limit worked out from its own frames** (*the
+transport is Python now: `run.sh` waited five silent minutes a batch*), **every walk 300 s, every route stop 900 s**
+(*a stop's `"timeout"`, a route's `"stop_timeout"`, `--stop-timeout`*), **every loop a count, and a walk that returns to
+one tile twelve times stops as "going in a circle".** **Every route and walk command pings first** (*`theatre_walk.py
+ping`, a one-frame batch, 5 s*): *"the theatre is not answering: re-run theatre.lua in mGBA" -- or, when no mGBA has
+`.theatre` in its command line, "start it with tools/theatre_start.sh". A batch unanswered mid-route ends the run there;
+the stops after it are reported "not played".* ***Surfing*** *(T-436, not yet walked): a 4-frame tap a step while
+SURFING (`gPlayerAvatar.flags` bit 3), not the 12-frame hold that carried the player two tiles.*
 
 **Ice** (*2026-10-06*): **a step onto `MB_ICE` is planned to where the slide stops** -- *the next tile blocked or not
 ice, as `ForcedMovement_Slip` does -- and the walker waits out the slide before reading where it is;* **cracked ice is a
@@ -568,7 +584,7 @@ wall** (*it drops you a floor*). *It solves STILLFALL B1F's field in ten moves, 
 ***Each floor of STILLFALL is several separate regions*** *joined by the floors above and below, so a* `to` *across
 one floor can rightly answer "no way".*
 
-***What it cannot do yet***: **Strength boulders**, **Surf and Cut**, *and the START menu's GOTO, which remembers its cursor and refuses
+***What it cannot do yet***: **Strength boulders**, **Cut**, **the bike's speeds** (*T-436*), *and the START menu's GOTO, which remembers its cursor and refuses
 indoors -- GOTO from outdoors, by screenshot.* **`gMain.inBattle` is BIT 1 of `gMain + 0x439`** (*bit 0 is
 `oamLoadDisabled`*): *reading bit 0 said "no battle" mid-battle and cost two ten-minute walks.*
 
