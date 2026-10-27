@@ -592,7 +592,8 @@ MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, col
 #  engine until the user approves a card (LANDMARK_APPROVED).
 LANDMARK_APPROVED = {"silph_co", "pokemon_tower", "pokemon_mansion",   # the user, 2026-10-26: build all three as drawn
                      "rocket_hideout",                                 # the user, 2026-10-26: CORPUS HIDEOUT as drawn
-                     "rocket_warehouse"}                               # the user, 2026-10-26: CORPUS WAREHOUSE, candidate B
+                     "rocket_warehouse",                               # the user, 2026-10-26: CORPUS WAREHOUSE, candidate B
+                     "review_board"}                                   # the user, 2026-10-26 (T-456): seed C, the hall neutral
 LANDMARK_DRAWINGS = os.path.join(ROOT, "gfx", "drafts", "landmarks")
 GREYS = [(40, 40, 46), (72, 72, 80), (108, 108, 116), (148, 148, 156), (188, 188, 194), (222, 222, 226)]
 LANDMARK = {
@@ -666,8 +667,8 @@ LANDMARK = {
     #  and laid in seen from below. The four vessels are the only colour: after the painting the fluids and the kept
     #  door are laid back crisp (post_vessels), and "force" gives the red, the yellow, the pale, the door's blue, the
     #  black fluid and the hall's own stone (46,44,54) an index each -- without the last two, median cut shared the
-    #  trees' dark greens with the hall and tinted it, and vessel III went green. DRAFT: not in LANDMARK_APPROVED,
-    #  and the engine has no entry to write it into until the plan in T-456 is applied (--write skips a "new" card).
+    #  trees' dark greens with the hall and tinted it, and vessel III went green. BUILT (engine 64d79bbf4): the
+    #  engine has its entry now (MPS_INDIGO_PLATEAU); --write skips a "new" card only while the engine has none.
     "review_board": dict(
         source="review_board", title="the REVIEW BOARD", new=True, mapsec="MAPSEC_INDIGO_PLATEAU",
         mps="MPS_INDIGO_PLATEAU", type="MPS_TYPE_CAVE", banner_from="pokemon_tower", drawn_scene="plateau",
@@ -677,6 +678,10 @@ LANDMARK = {
         grass=[(46, 78, 38), (74, 110, 50), (104, 140, 66)],
         seed=4475, denoise=0.45, post=["vessels"],     # seeds 4473 and 4474 on sheet t456_draft; 4475 picked
         force=[(192, 28, 36), (222, 178, 30), (218, 220, 206), (98, 164, 222), (6, 4, 8), (46, 44, 54)],
+        #  the user (2026-10-26, building seed C): keep the hall neutral -- its front shared the trees' darkest shade
+        #  (a teal-green near-black) and read faintly green; that shade is given up for a neutral near-black, and the
+        #  trees' deepest shadows take it too
+        neutral=(18, 18, 22),
         prompt="looking up at a long low hall of near-black stone under one heavy flat stone slab that overhangs it "
                "like a judges' bench, four small lit alcoves in its front each holding a tall glass vessel of "
                "fluid, red, yellow, black, pale, left to right, a dark doorway in the middle with a small blue door, "
@@ -1217,15 +1222,21 @@ def keep_accents(pic, q, n=15, rounds=3):
     return q
 
 
-def reduce(pic, vpal, accents=False, force=()):
+def reduce(pic, vpal, accents=False, force=(), neutral=None):
     """15 colours into palette 13's indices 1..15 (index 0 vanilla's: BG0 colour 0 is transparent); a painting keeps
     its accents (keep_accents); a colour in force (a landmark's, too few pixels for keep_accents to see: CORPUS's red
-    band) takes an index of its own"""
+    band) takes an index of its own; neutral (T-456) gives up the darkest green-cast colour median cut chose for this
+    grey, so a dark front that shared the trees' deepest shade is neutral and the trees lose that shade"""
     q = pic.quantize(colors=15 - len(force), method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
     if accents:
         q = keep_accents(pic, q, n=15 - len(force))
-    if force:
-        q = _fixed(pic, [tuple(q.getpalette()[i * 3:i * 3 + 3]) for i in range(15 - len(force))] + list(force))
+    if force or neutral:
+        cols = [tuple(q.getpalette()[i * 3:i * 3 + 3]) for i in range(15 - len(force))]
+        if neutral:
+            green = [c for c in cols if c[1] > c[0] + 8]
+            if green:
+                cols[cols.index(min(green, key=sum))] = tuple(neutral)
+        q = _fixed(pic, cols + list(force))
     qp = (q.getpalette()[:45] + [0] * 45)[:45]                      # a cave of fewer colours leaves the rest unused
     cols = [tuple(qp[i * 3:i * 3 + 3]) for i in range(15)]
     #  to the GBA's 5 bits, as the palette will hold them
@@ -1243,7 +1254,8 @@ def build(folder, sec):
     pic, where = picture(folder, sec)
     if pic is None:
         return None
-    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"), force=LANDMARK.get(folder, {}).get("force", ()))
+    c = LANDMARK.get(folder, {})
+    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"), force=c.get("force", ()), neutral=c.get("neutral"))
     tiles, seen, m, tpal = [], {}, [0] * 640, []
 
     def add(t, p=14):
@@ -1318,6 +1330,21 @@ def sheet(rows, path, title):
 
 
 # ================================================================== main
+def new_rule(rules, folder, n):
+    """graphics_file_rules.mk with a NEW card's -num_tiles rule (T-456), laid in among the others in name order; a
+    card that has one is left as it is"""
+    if "$(MAPPREVIEWGFXDIR)/%s/tiles.4bpp:" % folder in rules:
+        return rules
+    rule = "$(MAPPREVIEWGFXDIR)/%s/tiles.4bpp: %%.4bpp: %%.png\n\t$(GFX) $< $@ -num_tiles %d -Wnum_tiles\n\n" % (folder, n)
+    at = [(mm.group(1), mm.start()) for mm in re.finditer(r"^\$\(MAPPREVIEWGFXDIR\)/(\w+)/tiles\.4bpp:", rules, re.M)]
+    after = [i for f, i in at if f > folder]
+    if after:
+        return rules[:after[0]] + rule + rules[after[0]:]
+    last = at[-1][1]
+    end = rules.index("\n\n", last) + 2
+    return rules[:end] + rule + rules[end:]
+
+
 def entry(by_folder, folder):
     """(MPS key, MAPSEC, type) of a card: sMapPreviewScreenData's, or a NEW card's own (T-456)"""
     c = LANDMARK.get(folder, {})
@@ -1372,9 +1399,8 @@ def main():
     for folder in (LANDMARK if A.landmarks else BATCH_E):
         if A.only and folder not in A.only:
             continue
-        if A.write and LANDMARK.get(folder, {}).get("new"):
-            print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet (T-456's plan): "
-                  "not written" % folder)
+        if A.write and LANDMARK.get(folder, {}).get("new") and folder not in by_folder and not A.draft:
+            print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet: not written" % folder)
             continue
         if A.landmarks and A.write and folder not in LANDMARK_APPROVED and not A.draft:
             print("  %-17s not approved (LANDMARK_APPROVED): not written" % folder)
@@ -1398,7 +1424,7 @@ def main():
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
                  "palette 13: 15 colours + vanilla's 0", "palette 14, letterbox, banner: vanilla's"]
         painted = where.startswith("painted")
-        lights = light_palettes(pal[:16], dra, van) if folder == "altering_cave" and painted else None
+        lights = light_palettes(pal[:16], dra, van_) if folder == "altering_cave" and painted else None
         if lights:
             notes += ["", "OTHER CAVE: one set of tiles, four", "palettes 13 (teal, AMBER, CHRYSOPRASE,",
                       "ROSE QUARTZ) -- the rows below. The", "engine lays the coming visit's light",
@@ -1424,11 +1450,12 @@ def main():
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
         if A.write and (not A.landmarks or folder in LANDMARK_APPROVED):
             d = os.path.join(MPS, folder)
+            os.makedirs(d, exist_ok=True)                                # a NEW card's folder (T-456)
             tiles_png(png, pal, os.path.join(d, "tiles.png"))
             open(os.path.join(d, "tilemap.bin"), "wb").write(struct.pack("<640H", *m))
             for n, lp in list(enumerate(lights or []))[1:]:          # OTHER CAVE: map_preview_screen.c INCBINs these
                 write_pal(lp, os.path.join(d, "light%d.pal" % n))
-            rules = open(RULES).read()
+            rules = new_rule(open(RULES).read(), folder, len(tiles))
             rules = re.sub(r"(\$\(MAPPREVIEWGFXDIR\)/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+"
                            % folder, lambda mm: mm.group(1) + str(len(tiles)), rules)
             open(RULES, "w").write(rules)
