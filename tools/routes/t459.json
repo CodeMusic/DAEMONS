@@ -1,0 +1,50 @@
+{
+  "rom": "debug",
+  "about": "T-459 A: once THE SUBTLE LAYER is held, the follower notices first -- standing still, it turns toward the nearest unfound thing within a screen, a purple ripple rises from it and a faint purple glint shows where it looks; and its NOTICE line, A on it within two tiles of a hidden item, is said in the book's purple. CERULEAN CITY's hidden RARE CANDY in the flowers above the houses (18, 7), its flag cleared. Then the same without the book: no ripple, the line in grey. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "the book held: in CERULEAN's flower bed, level with the hidden RARE CANDY four tiles east, the follower notices it (walked in from the east, so it turns back to it)",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "keyitem ITEM_SUBTLE_LAYER",
+        "flag FLAG_HIDDEN_ITEM_CERULEAN_CITY_RARE_CANDY 0",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "remember SENSE gFollowerDebugSense 8",
+        "burst the-noticing 24 12",
+        "moved SENSE"
+      ]
+    },
+    {
+      "stop": "the book held: A on the follower in the flowers -- its NOTICE line in purple",
+      "steps": [
+        "goto CeruleanCity 15 7",
+        "to 17 7",
+        "follower shown",
+        "follower talk",
+        "follower talk",
+        "says \"keeps looking\""
+      ]
+    },
+    {
+      "stop": "without the book: the same spot, no ripple; the NOTICE line in grey",
+      "steps": [
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "burst no-noticing 6 50",
+        "goto CeruleanCity 15 7",
+        "to 17 7",
+        "follower talk",
+        "follower talk",
+        "says \"keeps looking\"",
+        "flag FLAG_GOT_SUBTLE_LAYER 1"
+      ]
+    }
+  ]
+}

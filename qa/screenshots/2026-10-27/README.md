@@ -61,3 +61,15 @@ DAEMON > SOUNDINGS after a SYNC, iPad simulator, synthetic save
 Filmed: to 10 19 then to 7 18 while surfing, the player moves (T-451's tap)
 
 ![27Oct2026 - T436 - surf moves - 15](27Oct2026%20-%20T436%20-%20surf%20moves%20-%2015.png)
+
+### 27Oct2026 - T459 - the follower notices, in the ROM - 16
+
+T-459 A in the ROM (theatre, CERULEAN's hidden RARE CANDY): with THE SUBTLE LAYER held the follower notices first -- a purple ripple over it, a purple glint where it looks -- and its NOTICE line is said in the book's purple; without the book, the same words in grey. Every word is T-18's, unchanged.
+
+![27Oct2026 - T459 - the follower notices, in the ROM - 16](27Oct2026%20-%20T459%20-%20the%20follower%20notices%2C%20in%20the%20ROM%20-%2016.png)
+
+### 27Oct2026 - T459 - the ripple and glint frames - 17
+
+tools/gensense.py's seven frames (ripple 0-3, glint 4-6) in the book's colours, and a line in the dialogue's purple on its grey shadow.
+
+![27Oct2026 - T459 - the ripple and glint frames - 17](27Oct2026%20-%20T459%20-%20the%20ripple%20and%20glint%20frames%20-%2017.png)
