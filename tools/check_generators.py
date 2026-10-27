@@ -24,7 +24,7 @@ import os, subprocess, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TOOLS = os.path.join(ROOT, "tools")
-LIMIT = 180
+LIMIT = int(os.environ.get("CHECK_GEN_LIMIT", "180"))   # seconds per tool; raise it when the machine is busy
 SELF = os.path.basename(__file__)
 
 #  name -> why it may not pass in report mode. Keep this short; every line is a tool nobody is watching.
