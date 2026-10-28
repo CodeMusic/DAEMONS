@@ -70,7 +70,8 @@ def species_table():
 
 
 def entry(path, stem):
-    m = re.search(r'g%sPokedexText\[\] = _\(\n(.*?)\);' % stem, open(path).read(), re.S)
+    # The text's stem is not always the slot's capitalised name (MR_MIME is Mrmime, HO_OH is HoOh): match without case or "_".
+    m = re.search(r'g%sPokedexText\[\] = _\(\n(.*?)\);' % stem.replace("_", ""), open(path).read(), re.S | re.I)
     return "".join(re.findall(r'"([^"]*)"', m.group(1))).replace("\\n", " ") if m else ""
 
 
