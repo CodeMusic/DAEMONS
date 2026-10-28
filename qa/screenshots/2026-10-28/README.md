@@ -361,3 +361,15 @@ Batch 19 (SINGLETON to OVERTONE), the last regular daemons, on the recommended c
 SYMBOL's 28 letter forms redrawn as glyph creatures, read from the build, with their followers beside the player. v11.316.8.
 
 ![28Oct2026 - T452 - SYMBOLs 28 forms - 60](28Oct2026%20-%20T452%20-%20SYMBOLs%2028%20forms%20-%2060.png)
+
+### 28Oct2026 - T452 - PROTEUS and OVERLOADED forms - 61
+
+PROTEUS's three forms and OVERLOADED's four, read from the build; OVERLOADED's battle rows and streaks fixed (T-475). v11.316.9.
+
+![28Oct2026 - T452 - PROTEUS and OVERLOADED forms - 61](28Oct2026%20-%20T452%20-%20PROTEUS%20and%20OVERLOADED%20forms%20-%2061.png)
+
+### 28Oct2026 - T452 - PROTEUS and OVERLOADED forms - 62
+
+PROTEUS's three forms and OVERLOADED's four, read from the build; OVERLOADED's battle rows and streaks fixed (T-475). v11.316.9.
+
+![28Oct2026 - T452 - PROTEUS and OVERLOADED forms - 62](28Oct2026%20-%20T452%20-%20PROTEUS%20and%20OVERLOADED%20forms%20-%2062.png)
