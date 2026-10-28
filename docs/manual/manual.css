@@ -1,0 +1,151 @@
+/* The DAEMONS player's manual (tools/manual.py). A5, paper and ink; each chapter opens on a band in the colour of
+   the type it names (data-type on its heading), as the game colours a daemon by its type. */
+@page { size: 148mm 210mm; margin: 13mm 12mm 16mm 12mm; }
+@page cover { margin: 0; }
+
+:root { --ink: #16161a; --paper: #fbfaf6; --soft: #5a5a64; --rule: #d8d6ce; --tc: #6b5aa6; --purple: #8a5cc8; }
+html { font-size: 9.2pt; }
+body {
+  margin: 0; color: var(--ink); background: var(--paper);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.42;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+h1, h2, h3, .chapnum, figcaption, table, .lab, .tochead, .toc1, .toc2, .callout b, .dname, .dcat {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+img { image-rendering: pixelated; }
+
+/* -- the cover -- */
+.cover {
+  page: cover; break-after: page; height: 210mm; box-sizing: border-box; padding: 18mm 14mm 14mm; position: relative;
+  background: var(--ink); color: #f4f2ea; display: flex; flex-direction: column;
+}
+.ced { font: 600 10pt "Avenir Next", sans-serif; letter-spacing: .32em; color: #c7b6ec; }
+.ctitle { font: 800 46pt/1 "Avenir Next", sans-serif; letter-spacing: .04em; margin-top: 4mm; }
+.csub { font: italic 15pt "Iowan Old Style", serif; color: #d9d4c4; margin-top: 3mm; }
+.cstrip { display: flex; justify-content: center; gap: 1.2mm; margin: 0 0 8mm; }
+.cstrip img { width: 13mm; height: 13mm; background: #2c2b33; border-radius: 1.5mm; }
+.cspr { flex: 1; display: flex; align-items: center; justify-content: center; gap: 2mm; }
+.cspr img { width: 38mm; height: 38mm; background: #f4f2ea; border-radius: 3mm; padding: 1mm; }
+.cbot { font: 8pt "Avenir Next", sans-serif; color: #b9b5aa; line-height: 1.6; }
+.cbot b { color: #f4f2ea; }
+
+/* -- contents -- */
+.toc { break-after: page; }
+.tochead { font-size: 20pt; margin: 0 0 4mm; padding: 2mm 3.5mm 2.5mm; border-radius: 2.5pt; }
+/* Never let anything reach past the page's margins: Chrome would shrink every page to fit it. */
+.toc a { display: flex; align-items: baseline; text-decoration: none; color: var(--ink); }
+.toc1 { font-weight: 700; font-size: 8.8pt; margin-top: 1.5mm; border-bottom: .6pt solid var(--ink); padding-bottom: .2mm; }
+.toc1 .tn { width: 6mm; color: var(--soft); }
+.toc2 { font-size: 7.1pt; padding-left: 6mm; color: #33333a !important; line-height: 1.32; }
+.toc .tt { flex: 1; }
+.toc .tp { min-width: 7mm; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* -- chapters -- */
+section.level1 { break-before: page; }
+.chapnum {
+  font-size: 7pt; font-weight: 700; letter-spacing: .3em; color: var(--tink, #fff); background: var(--tc);
+  margin: 0; padding: 2.5mm 3.5mm 0; border-radius: 2.5pt 2.5pt 0 0;
+}
+h1 {
+  font-size: 19pt; font-weight: 800; line-height: 1.1; color: var(--tink, #fff); background: var(--tc);
+  margin: 0 0 4mm; padding: .6mm 3.5mm 3mm; border-radius: 0 0 2.5pt 2.5pt;
+}
+h1 + p { font-size: 10.4pt; color: #33333a; }
+h2 {
+  font-size: 11pt; font-weight: 700; margin: 5mm 0 1.6mm; padding-bottom: .8mm; border-bottom: 1.2pt solid var(--tc);
+  break-after: avoid;
+}
+h3 { font-size: 9.2pt; font-weight: 700; margin: 3.5mm 0 1mm; break-after: avoid; color: #2b2b31; }
+p { margin: 0 0 2mm; orphans: 3; widows: 3; }
+/* a line that leads into a block stays on its page */
+p:has(+ pre), p:has(+ table), p:has(+ figure), p:has(+ .typelist) { break-after: avoid; break-inside: avoid; }
+table:has(thead th:nth-child(2):last-child) td:first-child { width: 32%; }
+ul, ol { margin: 0 0 2.2mm; padding-left: 4.5mm; }
+li { margin-bottom: .7mm; }
+strong { font-weight: 700; }
+a { color: inherit; text-decoration: none; }
+code { font-family: Menlo, monospace; font-size: .82em; background: #eeece4; padding: .1em .3em; border-radius: 1.5pt; }
+pre { background: #eeece4; padding: 2mm 3mm; border-radius: 2pt; font-size: 7.4pt; line-height: 1.4; break-inside: avoid;
+      white-space: pre-wrap; }
+pre code { background: none; padding: 0; }
+blockquote { margin: 2mm 0; padding: 1mm 0 1mm 3mm; border-left: 2pt solid var(--tc); color: #33333a; font-style: italic; }
+
+table { border-collapse: collapse; width: 100%; font-size: 7.5pt; margin: 1.5mm 0 3mm; break-inside: avoid; }
+th, td { border-bottom: .5pt solid var(--rule); padding: 1mm 1.4mm; text-align: left; vertical-align: top; }
+thead th { border-bottom: 1pt solid var(--ink); font-weight: 700; }
+td code { font-size: .9em; }
+
+/* -- callouts -- */
+.callout, .tip, .note, .safe {
+  break-inside: avoid; border-radius: 2.5pt; padding: 2mm 3mm; margin: 2.5mm 0; font-size: 8.4pt;
+  background: #f0eee6; border-left: 2.5pt solid var(--tc);
+}
+.tip { background: #eef4ec; border-left-color: #5c9e60; }
+.safe { background: #f6ecec; border-left-color: #b8524f; }
+.note { background: #f0eef7; border-left-color: var(--purple); }
+.callout p:last-child, .tip p:last-child, .note p:last-child, .safe p:last-child { margin: 0; }
+
+/* -- the ways to play: a card for each -- */
+.way { break-inside: avoid; border: .8pt solid var(--rule); border-top: 3pt solid var(--tc); border-radius: 2.5pt;
+       padding: 2mm 3mm 1mm; margin: 2.5mm 0; background: #fff; }
+.way h3 { margin-top: 0; }
+
+/* -- game screens -- */
+figure { margin: 2.5mm 0 3mm; break-inside: avoid; }
+figcaption { font-size: 7pt; color: var(--soft); margin-top: 1mm; line-height: 1.35; }
+.screens .row { display: flex; gap: 2mm; }
+.scr { flex: 1; min-width: 0; }
+.scr img { width: 100%; display: block; border: .8pt solid var(--ink); border-radius: 1.5pt; }
+.screens.n1 .scr { flex: none; width: 82mm; margin: 0 auto; }
+.screens.n1 figcaption { text-align: center; }
+.lab { display: block; font-size: 6.6pt; font-weight: 600; color: #33333a; margin-top: .6mm; }
+
+/* -- daemons -- */
+.daemons .dcard { display: flex; gap: 3mm; align-items: flex-start; padding: 2mm 0; border-bottom: .5pt solid var(--rule); }
+.spr { width: 22mm; height: 22mm; flex: none; background: #fff; border: .6pt solid var(--rule); border-radius: 2pt; }
+.dtext { font-size: 7.8pt; }
+.dtext p { margin: .6mm 0 0; }
+.dtext p b { font-family: "Avenir Next", sans-serif; font-size: 6.4pt; letter-spacing: .06em; color: var(--soft); margin-right: 1mm; }
+.dname { font-weight: 800; font-size: 9.4pt; }
+.dno { font-weight: 500; color: var(--soft); font-size: 7.4pt; margin-left: 1mm; }
+.dcat { font-size: 7pt; font-weight: 600; color: #33333a; margin-top: .4mm; }
+.sprites { display: flex; flex-wrap: wrap; gap: 2mm; justify-content: center; }
+.sprites .sp { text-align: center; font: 600 6.4pt "Avenir Next", sans-serif; }
+.sprites img { width: 18mm; height: 18mm; display: block; background: #fff; border: .6pt solid var(--rule); border-radius: 2pt; }
+.sprites figcaption { width: 100%; text-align: center; }
+
+.chip { display: inline-block; font: 700 6pt "Avenir Next", sans-serif; letter-spacing: .04em; padding: .3mm 1.2mm;
+        border-radius: 1.5pt; margin-left: .8mm; vertical-align: .5pt; }
+
+/* -- types -- */
+.typelist td { padding: .7mm 1mm; font-size: 7.6pt; }
+.typelist td:first-child { width: 20mm; }
+.typelist .chip { margin: 0; min-width: 15mm; text-align: center; }
+.typechart table { table-layout: fixed; font-size: 6.2pt; margin: 0; }
+.typechart th, .typechart td { padding: 0; border: .4pt solid #e2e0d8; text-align: center; vertical-align: middle; height: 4.4mm; }
+.typechart th.h { width: 17mm; text-align: right; padding-right: .6mm; border: 0; }
+.typechart th.h .chip { font-size: 5.2pt; min-width: 14mm; text-align: center; margin: 0; padding: .2mm .4mm; }
+.typechart th.corner { width: 17mm; font-size: 4.6pt; font-weight: 500; color: var(--soft); border: 0; vertical-align: bottom; }
+.typechart th.v { height: 15mm; border: 0; vertical-align: bottom; position: relative; }
+.typechart th.v div { height: 1.6mm; margin: 0 .3mm; border-radius: .8pt; }
+.typechart th.v span { position: absolute; bottom: 2.4mm; left: 50%; transform-origin: 0 50%; transform: rotate(-90deg);
+                       font-size: 5pt; white-space: nowrap; font-weight: 700; }
+.typechart td.m2_0 { background: #5c9e60; color: #fff; font-weight: 800; }
+.typechart td.m0_5 { background: #e9c8c4; color: #7a2a24; font-weight: 700; }
+.typechart td.m0_0 { background: #2b2b31; color: #fff; font-weight: 800; }
+
+.patches td:first-child { width: 33%; }
+.pictures .row { display: flex; gap: 2.5mm; align-items: flex-start; }
+.pictures .pic { flex: 1; min-width: 0; }
+.pictures .pic img { width: 100%; display: block; border: .6pt solid var(--rule); border-radius: 2pt; image-rendering: auto; }
+.pictures.n1 .pic { flex: none; width: 100%; }
+.gloss { font-size: 8.2pt; line-height: 1.3; }
+.two table td, .two table th { padding: .55mm 1.2mm; }
+.gloss p { margin-bottom: 1.3mm; }
+.bookcover { float: right; width: 34mm; margin: 0 0 2mm 3mm; border-radius: 2pt; image-rendering: auto; }
+.clear { clear: both; }
+.two { columns: 2; column-gap: 5mm; }
+.two > * { break-inside: avoid; }
+.purple { color: var(--purple); font-weight: 600; }
+.small { font-size: 7.6pt; color: var(--soft); }

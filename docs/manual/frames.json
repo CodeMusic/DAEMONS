@@ -1,0 +1,207 @@
+{
+ "about": "The game screens in the manual: each a 240x160 frame the theatre captured from a built ROM (.theatre/routes/<route>/<stop>/<frame>.png, gitignored), copied into docs/manual/frames/ so the manual rebuilds anywhere. tools/manual.py --refresh copies them again from the theatre when it holds them; a route re-run with tools/routes/manual.json refreshes the ones it names. The pictures are the companion's own screens, filed in qa/screenshots/ (public), cropped.",
+ "frames": {
+  "battle": {
+   "from": "manual/04/s04_00",
+   "captured": "2026-10-28"
+  },
+  "battle-routines": {
+   "from": "manual/04/s04_02",
+   "captured": "2026-10-28"
+  },
+  "bedroom": {
+   "from": "mom-tour/01/s01_06",
+   "captured": "2026-10-24"
+  },
+  "checkpoint": {
+   "from": "t459d/02/s02_03",
+   "captured": "2026-10-28"
+  },
+  "controls": {
+   "from": "mom-tour/01/s01_00",
+   "captured": "2026-10-24"
+  },
+  "crystal": {
+   "from": "mom-tour/01/s01_03",
+   "captured": "2026-10-24"
+  },
+  "debug-events": {
+   "from": "t448/04/s04_00",
+   "captured": "2026-10-24"
+  },
+  "debug-page": {
+   "from": "t418-guide/02/s02_01",
+   "captured": "2026-10-17"
+  },
+  "follower-talk": {
+   "from": "manual/01/s01_04",
+   "captured": "2026-10-28"
+  },
+  "hello": {
+   "from": "mom-tour/01/s01_01",
+   "captured": "2026-10-24"
+  },
+  "index-toc": {
+   "from": "native/01/s01_01",
+   "captured": "2026-10-16"
+  },
+  "keywheel": {
+   "from": "field-test-context/04/s04_00",
+   "captured": "2026-10-19"
+  },
+  "lean": {
+   "from": "t459c/01/s01_04",
+   "captured": "2026-10-27"
+  },
+  "notice": {
+   "from": "t459/01/s01_02_b_01",
+   "captured": "2026-10-27"
+  },
+  "notice-line": {
+   "from": "t459/02/s02_05",
+   "captured": "2026-10-27"
+  },
+  "party": {
+   "from": "manual/05/s05_00",
+   "captured": "2026-10-28"
+  },
+  "party-send": {
+   "from": "soundings/16/s16_06",
+   "captured": "2026-10-27"
+  },
+  "port": {
+   "from": "field-test/03/s03_01",
+   "captured": "2026-10-19"
+  },
+  "read": {
+   "from": "t459b/01/s01_03",
+   "captured": "2026-10-27"
+  },
+  "reason": {
+   "from": "mom-tour/01/s01_04",
+   "captured": "2026-10-24"
+  },
+  "send-ask": {
+   "from": "soundings/16/s16_07",
+   "captured": "2026-10-27"
+  },
+  "sitemap": {
+   "from": "manual/06/s06_01",
+   "captured": "2026-10-28"
+  },
+  "sky-autumn": {
+   "from": "manual/03/s03_04",
+   "captured": "2026-10-28"
+  },
+  "sky-clear": {
+   "from": "manual/01/s01_00",
+   "captured": "2026-10-28"
+  },
+  "sky-dusk": {
+   "from": "manual/03/s03_01",
+   "captured": "2026-10-28"
+  },
+  "sky-fog": {
+   "from": "manual/02/s02_02",
+   "captured": "2026-10-28"
+  },
+  "sky-night": {
+   "from": "manual/03/s03_00",
+   "captured": "2026-10-28"
+  },
+  "sky-rain": {
+   "from": "manual/02/s02_00",
+   "captured": "2026-10-28"
+  },
+  "sky-snow": {
+   "from": "manual/02/s02_04",
+   "captured": "2026-10-28"
+  },
+  "sky-spring": {
+   "from": "manual/03/s03_03",
+   "captured": "2026-10-28"
+  },
+  "sky-storm": {
+   "from": "manual/02/s02_01",
+   "captured": "2026-10-28"
+  },
+  "sky-wind": {
+   "from": "manual/02/s02_03",
+   "captured": "2026-10-28"
+  },
+  "sky-winter": {
+   "from": "manual/03/s03_02",
+   "captured": "2026-10-28"
+  },
+  "slot-ask": {
+   "from": "new6/01/s01_01",
+   "captured": "2026-10-19"
+  },
+  "slots": {
+   "from": "new6/01/s01_03",
+   "captured": "2026-10-19"
+  },
+  "songbook-write": {
+   "from": "field-test-context/04/s04_02",
+   "captured": "2026-10-19"
+  },
+  "start-menu": {
+   "from": "manual/07/s07_00",
+   "captured": "2026-10-28"
+  },
+  "sum-feelings": {
+   "from": "manual/05/s05_04",
+   "captured": "2026-10-28"
+  },
+  "sum-info": {
+   "from": "manual/05/s05_01",
+   "captured": "2026-10-28"
+  },
+  "sum-routines": {
+   "from": "manual/05/s05_03",
+   "captured": "2026-10-28"
+  },
+  "sum-skills": {
+   "from": "manual/05/s05_02",
+   "captured": "2026-10-28"
+  },
+  "town": {
+   "from": "t386rel/01/s01_00",
+   "captured": "2026-10-07"
+  },
+  "under": {
+   "from": "t459d/01/s01_06",
+   "captured": "2026-10-28"
+  },
+  "usercard": {
+   "from": "manual/07/s07_02",
+   "captured": "2026-10-28"
+  }
+ },
+ "pictures": {
+  "app-game": {
+   "from": "qa/screenshots/2026-10-26/26Oct2026 - C187 - the GAME tab on the iPhone, before a game - 13.png",
+   "crop": [
+    0,
+    0,
+    644,
+    720
+   ]
+  },
+  "ipad": {
+   "from": "qa/screenshots/2026-10-27/27Oct2026 - C189 - iPad game beside the companion - 10.png"
+  },
+  "watch": {
+   "from": "qa/screenshots/2026-10-28/28Oct2026 - C203 - watch mock-up - 6.png",
+   "crop": [
+    0,
+    110,
+    2040,
+    670
+   ]
+  },
+  "widget": {
+   "from": "qa/screenshots/2026-10-09/9Oct2026 - C100 - the home-screen widget - 3.png"
+  }
+ }
+}

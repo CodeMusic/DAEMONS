@@ -1,0 +1,143 @@
+{
+  "rom": "debug",
+  "about": "The player's manual's game screens (tools/manual.py, docs/manual/frames.json), captured again from the current build: the daemon behind you at the player's size (T-464) in each sky, watch and season on ROUTE 1; a wild battle and its routines in the new art (T-452); the party and a daemon's four pages; the SITEMAP; the USER card. The DEBUG overrides are set by poke (gDaemonsWatchOverride 1 day 2 dusk 3 night 4 dawn; gDaemonsWeatherOverride 1 clear 2 rain 3 storm 4 snow 5 fog 6 wind; gDaemonsSeasonOverride 1 winter 2 spring 3 summer 4 autumn) and put back at the end. The theatre's debug scratch save, never the user's. After it runs, `python3 tools/manual.py --refresh` copies the frames frames.json names.",
+  "stops": [
+    {
+      "stop": "the daemon behind you, ROUTE 1 by day in summer, clear",
+      "steps": [
+        "load debug",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto Route1 10 29",
+        "repel 999",
+        "to 14 29",
+        "follower shown -1 0",
+        "wait 30",
+        "shot summer, day, clear",
+        "follower talk"
+      ]
+    },
+    {
+      "stop": "the sky over ROUTE 1",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 2",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 60",
+        "shot rain",
+        "poke gDaemonsWeatherOverride 8 3",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 60",
+        "shot storm",
+        "poke gDaemonsWeatherOverride 8 5",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 60",
+        "shot fog",
+        "poke gDaemonsWeatherOverride 8 6",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 60",
+        "shot wind",
+        "poke gDaemonsSeasonOverride 8 1",
+        "poke gDaemonsWeatherOverride 8 4",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 60",
+        "shot snow, in winter"
+      ]
+    },
+    {
+      "stop": "the watch and the seasons on ROUTE 1, clear",
+      "steps": [
+        "poke gDaemonsWeatherOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 3",
+        "poke gDaemonsWatchOverride 8 3",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 30",
+        "shot night",
+        "poke gDaemonsWatchOverride 8 2",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 30",
+        "shot dusk",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 30",
+        "shot winter",
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 30",
+        "shot spring",
+        "poke gDaemonsSeasonOverride 8 4",
+        "goto Route1 10 29",
+        "to 14 29",
+        "wait 30",
+        "shot autumn"
+      ]
+    },
+    {
+      "stop": "a wild battle on ROUTE 22: the first menu, then the routines",
+      "steps": [
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "wait 150",
+        "shot the first menu",
+        "press A",
+        "wait 20",
+        "shot the routines",
+        "press B",
+        "win",
+        "finish"
+      ]
+    },
+    {
+      "stop": "the party, and the lead's four pages",
+      "steps": [
+        "open DAEMON",
+        "close",
+        "summary 0 R R R",
+        "close"
+      ]
+    },
+    {
+      "stop": "the SITEMAP",
+      "steps": [
+        "goto PalletTown 6 8",
+        "keyitem ITEM_TOWN_MAP",
+        "register ITEM_TOWN_MAP",
+        "press SELECT",
+        "wait 90",
+        "shot the SITEMAP",
+        "press B",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "the USER card, front and back",
+      "steps": [
+        "poke sStartMenuCursorPos 8 3",
+        "press START",
+        "wait 20",
+        "press A",
+        "wait 90",
+        "shot the front",
+        "press A",
+        "wait 60",
+        "shot the back",
+        "close",
+        "poke gDaemonsWatchOverride 8 0",
+        "poke gDaemonsWeatherOverride 8 0",
+        "poke gDaemonsSeasonOverride 8 0"
+      ]
+    }
+  ]
+}
