@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.319 — 2026-10-28
+
+### ITS DREAMS' titles approved (T-462)
+
+- ***3.8 (the user, by multiple choice)***: **all sixteen titles approved as drafted, and the hum kept as a motif** -- *three titles hum, as a suspended process might hear one.* **The DRAFT marks come off once the user has seen them on the device.**
+
 ## v11.318 — 2026-10-28
 
 ### ITS DREAMS (T-462, C-200)
