@@ -265,3 +265,27 @@ T-473 in the theatre (debug ROM, scratch save): A TRADE ARRIVES, where the dream
 T-473 in the theatre (debug ROM, scratch save): A TRADE ARRIVES, where the dream comes first and HAUNTER from TRADER became GENGAR in the PC; A LOAN ARRIVES, 'INFERENCE arrived in a trade.', where the borrowed KADABRA did not evolve. Read from RAM: TRADED_IN cleared on both, LOAN kept on the loan, FIRST MET 0xFE (A TRADE). DRAFT words.
 
 ![28Oct2026 - T473 - a trade and a loan arrive - 44](28Oct2026%20-%20T473%20-%20a%20trade%20and%20a%20loan%20arrive%20-%2044.png)
+
+### 28Oct2026 - T452 - batch 16 daemons - 45
+
+Batch 16 (SINKHOLE to CATHODE) on the recommended choices; questions in gfx/drafts/t452/u/questions.md. v11.316.4.
+
+![28Oct2026 - T452 - batch 16 daemons - 45](28Oct2026%20-%20T452%20-%20batch%2016%20daemons%20-%2045.png)
+
+### 28Oct2026 - T452 - batch 16 daemons - 46
+
+Batch 16 (SINKHOLE to CATHODE) on the recommended choices; questions in gfx/drafts/t452/u/questions.md. v11.316.4.
+
+![28Oct2026 - T452 - batch 16 daemons - 46](28Oct2026%20-%20T452%20-%20batch%2016%20daemons%20-%2046.png)
+
+### 28Oct2026 - T452 - batch 16 daemons - 47
+
+Batch 16 (SINKHOLE to CATHODE) on the recommended choices; questions in gfx/drafts/t452/u/questions.md. v11.316.4.
+
+![28Oct2026 - T452 - batch 16 daemons - 47](28Oct2026%20-%20T452%20-%20batch%2016%20daemons%20-%2047.png)
+
+### 28Oct2026 - T452 - batch 16 daemons - 48
+
+Batch 16 (SINKHOLE to CATHODE) on the recommended choices; questions in gfx/drafts/t452/u/questions.md. v11.316.4.
+
+![28Oct2026 - T452 - batch 16 daemons - 48](28Oct2026%20-%20T452%20-%20batch%2016%20daemons%20-%2048.png)
