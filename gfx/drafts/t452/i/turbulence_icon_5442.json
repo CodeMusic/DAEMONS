@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452b6_work/i/turbulence_icon_5442",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, curling swirled fins on its head and back like water eddies, a cute sea dragon head with big eyes and curling swirled fins, chibi, big round head, large expressive eyes, the whole creature filling the frame, very simple, large shapes, few details, thick black outline, soft shading, mostly greyscale, medium grey with light grey highlights, isolated on white, centered, no text, no frame, no border",
+ "negative": "sprite sheet, grid of icons, tiled pattern, repeated, many copies, four creatures, human, girl, boy, person, frame, border, human, girl, horse, wings, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5442,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 85.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-27 19:09:21"
+}

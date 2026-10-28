@@ -1,0 +1,129 @@
+{
+ "slurp": {
+  "front": "slurp_front_i2i_5424.png",
+  "back": "slurp_back_i2i_5431.png",
+  "icon": "slurp_icon_5441.png",
+  "note": "i2i 0.76 (charmlo): plump and upright like today's, the curling tail; back its front mirrored, face out",
+  "key": true
+ },
+ "exhaust": {
+  "front": "exhaust_front_i2i_5422.png",
+  "back": "exhaust_back_i2i_5431.png",
+  "icon": "derived",
+  "note": "the valve a small knob on top; the back keeps the drip"
+ },
+ "smogstack": {
+  "front": "smogstack_front_i2i_5422.png",
+  "back": "smogstack_back_i2i_5431.png",
+  "icon": "smogstack_icon_5442.png",
+  "note": "the chimney on its head"
+ },
+ "hardcode": {
+  "front": "hardcode_front_i2i_5421.png",
+  "back": "hardcode_back_i2i_5431.png",
+  "icon": "hardcode_icon_5442.png",
+  "note": "four-legged, the nose horn; its saddle greyed by the cap"
+ },
+ "migrate": {
+  "front": "migrate_front_i2i_5421.png",
+  "back": "migrate_back_i2i_5431.png",
+  "icon": "derived",
+  "note": "upright, the drill horn; its back is the front mirrored with the face painted out (neither turned back would turn: both kept a face; today's back is four-legged)"
+ },
+ "uptime": {
+  "front": "uptime_front_i2i_5423.png",
+  "back": "uptime_back_i2i_5431.png",
+  "icon": "uptime_icon_5442.png",
+  "note": "i2i 0.72 (charmlo): hugging one big round egg"
+ },
+ "heartbeat": {
+  "front": "heartbeat_front_i2i_5421.png",
+  "back": "heartbeat_back_i2i_5431.png",
+  "icon": "heartbeat_icon_5441.png",
+  "note": "the cracked eggshell skirt kept"
+ },
+ "spaghetti": {
+  "front": "spaghetti_front_i2i_5422.png",
+  "back": "spaghetti_back_i2i_5431.png",
+  "icon": "spaghetti_icon_5441.png",
+  "note": "a tangle of tendrils round big eyes"
+ },
+ "keeper": {
+  "front": "keeper_front_5402.png",
+  "back": "keeper_back_i2i_5432.png",
+  "icon": "keeper_icon_5442.png",
+  "note": "the horned helmet and plates"
+ },
+ "bottleneck": {
+  "front": "src/bottleneck_front_i2i_5422_m.png",
+  "back": "bottleneck_back_i2i_5431.png",
+  "icon": "bottleneck_icon_5441.png",
+  "note": "a seahorse on a thin neck (i2i 0.85, mirrored to face left); 5421 read as a question mark"
+ },
+ "backpress": {
+  "front": "backpress_front_5402.png",
+  "back": "backpress_back_i2i_5431.png",
+  "icon": "backpress_icon_5442.png",
+  "note": "the spikes down its back and the curled tail"
+ },
+ "turbulence": {
+  "front": "turbulence_front_i2i_5422.png",
+  "back": "turbulence_back_i2i_5431.png",
+  "icon": "turbulence_icon_5441.png",
+  "note": "the swirled fins; back from today's back (the backs turned from the new front kept a face)"
+ },
+ "spawn": {
+  "front": "spawn_front_i2i_5422.png",
+  "back": "spawn_back_i2i_5432.png",
+  "icon": "spawn_icon_5442.png",
+  "note": "the veil fins and tail"
+ },
+ "upstream": {
+  "front": "upstream_front_i2i_5422.png",
+  "back": "upstream_back_i2i_5432.png",
+  "icon": "derived",
+  "note": "the spiky dorsal fin (today's has no horn either)"
+ },
+ "beacon": {
+  "front": "beacon_front_i2i_5421.png",
+  "back": "beacon_back_i2i_5431.png",
+  "icon": "derived",
+  "note": "the star and its centre gem, near today's"
+ },
+ "cron": {
+  "front": "cron_front_i2i_5421.png",
+  "back": "cron_back_i2i_5431.png",
+  "icon": "cron_icon_5441.png",
+  "note": "eight points round the gem; the draft gave it a face above the gem (today's has none)"
+ },
+ "reaper": {
+  "front": "reaper_front_i2i_5422.png",
+  "back": "reaper_back_i2i_5431.png",
+  "icon": "derived",
+  "note": "the thin stick body and wide clear wings"
+ },
+ "sigkill": {
+  "front": "sigkill_front_5402.png",
+  "back": "sigkill_back_i2i_5431.png",
+  "icon": "sigkill_icon_5442.png",
+  "note": "two big pincer claws held up (t2i); the back from today's has no claws"
+ },
+ "coldread": {
+  "front": "coldread_front_5402.png",
+  "back": "coldread_back_i2i_5431.png",
+  "icon": "coldread_icon_5442.png",
+  "note": "snowy owl, big round staring eyes"
+ },
+ "tell": {
+  "front": "tell_front_i2i_5422.png",
+  "back": "tell_back_i2i_5431.png",
+  "icon": "tell_icon_5441.png",
+  "note": "little round owl chick, goggle eyes"
+ },
+ "mime": {
+  "front": "mime_front_i2i_5423.png",
+  "back": "mime_back_i2i_5431.png",
+  "icon": "mime_icon_5441.png",
+  "note": "i2i 0.72: open white gloves held out; no draft of 14 pressed its palms flat on a wall"
+ }
+}

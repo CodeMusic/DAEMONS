@@ -1,0 +1,1790 @@
+{
+ "slurp": {
+  "name": "SLURP",
+  "national": 108,
+  "slot": "lickitung",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a plump upright creature with a long thick tail curling high over its back (BULK READ)",
+  "note": "i2i 0.76 (charmlo): plump and upright like today's, the curling tail; back its front mirrored, face out",
+  "failed": "",
+  "front": "src/slurp_front_i2i_5424_key.png",
+  "back": "slurp_back_i2i_5431.png",
+  "icon": "slurp_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "16,33,39,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1632
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "18,38,31,56",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.0,
+    "accent_clean_after": 7.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1208
+   },
+   "back_accent_pct": 7.0,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1414
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    18,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     152,
+     208,
+     238
+    ],
+    "accent_cells": 1,
+    "size": [
+     20,
+     28
+    ]
+   }
+  }
+ },
+ "exhaust": {
+  "name": "EXHAUST",
+  "national": 109,
+  "slot": "koffing",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a round floating ball with a little leaking valve on top (ESCAPING)",
+  "note": "the valve a small knob on top; the back keeps the drip",
+  "failed": "",
+  "front": "exhaust_front_i2i_5422.png",
+  "back": "exhaust_back_i2i_5431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "30,33,46,50",
+    "painted": "[5, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.4,
+    "accent_clean_after": 9.4,
+    "greyed_px": 0,
+    "streak_px": 22,
+    "creature_px": 1639
+   },
+   "front_accent_pct": 9.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,31,39,47",
+    "painted": "[3, 5, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.1,
+    "accent_clean_after": 4.1,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1414
+   },
+   "back_accent_pct": 4.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     168,
+     234
+    ],
+    "accent_cells": 15,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "smogstack": {
+  "name": "SMOGSTACK",
+  "national": 110,
+  "slot": "weezing",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a round studded ball with a little smokestack chimney puffing on top (VENTING)",
+  "note": "the chimney on its head",
+  "failed": "",
+  "front": "smogstack_front_i2i_5422.png",
+  "back": "smogstack_back_i2i_5431.png",
+  "icon": "smogstack_icon_5442.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,32,38,51",
+    "painted": "[4, 5, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.2,
+    "accent_clean_after": 7.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1569
+   },
+   "front_accent_pct": 7.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "35,29,49,43",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1166
+   },
+   "back_accent_pct": 0.9,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 8.1,
+    "accent_clean_after": 8.1,
+    "greyed_px": 0,
+    "streak_px": 23,
+    "creature_px": 1932
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    22,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     164,
+     212
+    ],
+    "accent_cells": 9,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "hardcode": {
+  "name": "HARDCODE",
+  "national": 111,
+  "slot": "rhyhorn",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a stocky four-legged rhino with one big nose horn (DIRECT)",
+  "note": "four-legged, the nose horn; its saddle greyed by the cap",
+  "failed": "",
+  "front": "hardcode_front_i2i_5421.png",
+  "back": "hardcode_back_i2i_5431.png",
+  "icon": "src/hardcode_icon_5442_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,33,32,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.5,
+    "accent_clean_after": 6.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1784
+   },
+   "front_accent_pct": 6.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,35,32,54",
+    "painted": "[4, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1641
+   },
+   "back_accent_pct": 1.6,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 8.2,
+    "accent_clean_after": 8.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1516
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     109,
+     166,
+     209
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "heartbeat": {
+  "name": "HEARTBEAT",
+  "national": 242,
+  "slot": "blissey",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round white creature sitting in a cracked eggshell skirt (KEEPALIVE)",
+  "note": "the cracked eggshell skirt kept",
+  "failed": "",
+  "front": "heartbeat_front_i2i_5421.png",
+  "back": "heartbeat_back_i2i_5431.png",
+  "icon": "heartbeat_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "17,33,40,51",
+    "painted": "[3, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1561
+   },
+   "front_accent_pct": 2.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,34,47,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1560
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1464
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     183,
+     237
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "spaghetti": {
+  "name": "SPAGHETTI",
+  "national": 114,
+  "slot": "tangela",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a big tangled mass of noodle vines with eyes peering out (TANGLED)",
+  "note": "a tangle of tendrils round big eyes",
+  "failed": "",
+  "front": "spaghetti_front_i2i_5422.png",
+  "back": "spaghetti_back_i2i_5431.png",
+  "icon": "spaghetti_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "3,32,61,40",
+    "painted": "[3, 4, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1706
+   },
+   "front_accent_pct": 0.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "29,32,39,40",
+    "painted": "[3, 5, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 43.7,
+    "accent_clean_after": 14.5,
+    "greyed_px": 456,
+    "streak_px": 14,
+    "creature_px": 1564
+   },
+   "back_accent_pct": 14.5,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 27.4,
+    "accent_clean_after": 11.2,
+    "greyed_px": 301,
+    "streak_px": 0,
+    "creature_px": 1863
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     144,
+     203,
+     239
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "keeper": {
+  "name": "KEEPER",
+  "national": 115,
+  "slot": "kangaskhan",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big armoured brute in heavy plates with a horned helmet (CUSTODIAL)",
+  "note": "the horned helmet and plates",
+  "failed": "",
+  "front": "keeper_front_5402.png",
+  "back": "keeper_back_i2i_5432.png",
+  "icon": "src/keeper_icon_5442_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,39,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.4,
+    "accent_clean_after": 8.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1885
+   },
+   "front_accent_pct": 8.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,34,36,55",
+    "painted": "[5, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 24.2,
+    "accent_clean_after": 11.7,
+    "greyed_px": 188,
+    "streak_px": 16,
+    "creature_px": 1498
+   },
+   "back_accent_pct": 11.7,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 4.1,
+    "accent_clean_after": 4.1,
+    "greyed_px": 0,
+    "streak_px": 2,
+    "creature_px": 1324
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    19,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     122,
+     170,
+     212
+    ],
+    "accent_cells": 1,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "bottleneck": {
+  "name": "BOTTLENECK",
+  "national": 116,
+  "slot": "horsea",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a little seahorse with a very thin narrow neck and a curled tail (NARROWING)",
+  "note": "a seahorse on a thin neck (i2i 0.85, mirrored to face left); 5421 read as a question mark",
+  "failed": "",
+  "front": "src/bottleneck_front_i2i_5422_m.png",
+  "back": "bottleneck_back_i2i_5431.png",
+  "icon": "bottleneck_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "29,31,41,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 59.1,
+    "accent_clean_after": 6.8,
+    "greyed_px": 470,
+    "streak_px": 20,
+    "creature_px": 899
+   },
+   "front_accent_pct": 6.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "29,34,33,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 848
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1195
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    17,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     135,
+     190,
+     238
+    ],
+    "accent_cells": 0,
+    "size": [
+     19,
+     28
+    ]
+   }
+  }
+ },
+ "backpress": {
+  "name": "BACKPRESS",
+  "national": 117,
+  "slot": "seadra",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a seahorse with a row of spikes down its back and a curled tail (DIRECTED)",
+  "note": "the spikes down its back and the curled tail",
+  "failed": "",
+  "front": "backpress_front_5402.png",
+  "back": "backpress_back_i2i_5431.png",
+  "icon": "backpress_icon_5442.png",
+  "measured": {
+   "front_streaks": {
+    "box": "23,44,39,60",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1866
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "31,32,41,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 937
+   },
+   "back_accent_pct": 4.2,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 11.7,
+    "accent_clean_after": 11.7,
+    "greyed_px": 0,
+    "streak_px": 2,
+    "creature_px": 1109
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     153,
+     201,
+     238
+    ],
+    "accent_cells": 6,
+    "size": [
+     24,
+     28
+    ]
+   }
+  }
+ },
+ "spawn": {
+  "name": "SPAWN",
+  "national": 118,
+  "slot": "goldeen",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a little goldfish with long flowing veil fins and tail (ORIGIN)",
+  "note": "the veil fins and tail",
+  "failed": "",
+  "front": "spawn_front_i2i_5422.png",
+  "back": "spawn_back_i2i_5432.png",
+  "icon": "spawn_icon_5442.png",
+  "measured": {
+   "front_streaks": {
+    "box": "12,30,22,38",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 27.3,
+    "accent_clean_after": 14.0,
+    "greyed_px": 158,
+    "streak_px": 16,
+    "creature_px": 1189
+   },
+   "front_accent_pct": 14.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "17,35,22,54",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 57.2,
+    "accent_clean_after": 14.1,
+    "greyed_px": 322,
+    "streak_px": 26,
+    "creature_px": 747
+   },
+   "back_accent_pct": 14.1,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 54.9,
+    "accent_clean_after": 14.5,
+    "greyed_px": 635,
+    "streak_px": 7,
+    "creature_px": 1571
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     108,
+     153,
+     223
+    ],
+    "accent_cells": 19,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "upstream": {
+  "name": "UPSTREAM",
+  "national": 119,
+  "slot": "seaking",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big fish leaping with a tall spiky dorsal fin and one horn (HEADWATER)",
+  "note": "the spiky dorsal fin (today's has no horn either)",
+  "failed": "",
+  "front": "upstream_front_i2i_5422.png",
+  "back": "upstream_back_i2i_5432.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "10,31,30,39",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 997
+   },
+   "front_accent_pct": 2.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "8,27,28,35",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.2,
+    "accent_clean_after": 3.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 894
+   },
+   "back_accent_pct": 3.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     147,
+     204,
+     237
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     22
+    ]
+   }
+  }
+ },
+ "beacon": {
+  "name": "BEACON",
+  "national": 120,
+  "slot": "staryu",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a five-pointed star with one glowing round gem in its centre (SIGNALLING)",
+  "note": "the star and its centre gem, near today's",
+  "failed": "",
+  "front": "beacon_front_i2i_5421.png",
+  "back": "beacon_back_i2i_5431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,34,51",
+    "painted": "[5, 5, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.9,
+    "accent_clean_after": 10.9,
+    "greyed_px": 0,
+    "streak_px": 77,
+    "creature_px": 1251
+   },
+   "front_accent_pct": 10.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "11,31,37,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 26.5,
+    "accent_clean_after": 13.0,
+    "greyed_px": 142,
+    "streak_px": 42,
+    "creature_px": 1052
+   },
+   "back_accent_pct": 13.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     125,
+     180,
+     219
+    ],
+    "accent_cells": 4,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "cron": {
+  "name": "CRON",
+  "national": 121,
+  "slot": "starmie",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a double star of eight points with a round gem in the centre (PERIODIC)",
+  "note": "eight points round the gem; the draft gave it a face above the gem (today's has none)",
+  "failed": "",
+  "front": "cron_front_i2i_5421.png",
+  "back": "cron_back_i2i_5431.png",
+  "icon": "cron_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "29,32,34,50",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.7,
+    "accent_clean_after": 3.7,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1363
+   },
+   "front_accent_pct": 3.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,34,39,53",
+    "painted": "[4, 3, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1069
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 8.6,
+    "accent_clean_after": 8.6,
+    "greyed_px": 0,
+    "streak_px": 36,
+    "creature_px": 1349
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     81,
+     172,
+     237
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "reaper": {
+  "name": "REAPER",
+  "national": 123,
+  "slot": "scyther",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a thin insect with wide clear wings and long spindly legs (CULLING)",
+  "note": "the thin stick body and wide clear wings",
+  "failed": "",
+  "front": "reaper_front_i2i_5422.png",
+  "back": "reaper_back_i2i_5431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,31,36,43",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 19.0,
+    "accent_clean_after": 14.1,
+    "greyed_px": 33,
+    "streak_px": 17,
+    "creature_px": 673
+   },
+   "front_accent_pct": 14.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,36,37,53",
+    "painted": "[4, 3, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.8,
+    "accent_clean_after": 4.8,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 964
+   },
+   "back_accent_pct": 4.8,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     133,
+     189,
+     230
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "sigkill": {
+  "name": "SIGKILL",
+  "national": 212,
+  "slot": "scizor",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "an armoured beetle with two big pincer claws (HARD STOP)",
+  "note": "two big pincer claws held up (t2i); the back from today's has no claws",
+  "failed": "",
+  "front": "sigkill_front_5402.png",
+  "back": "sigkill_back_i2i_5431.png",
+  "icon": "sigkill_icon_5442.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,36,35,54",
+    "painted": "[4, 4, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.1,
+    "accent_clean_after": 3.1,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1810
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "24,42,36,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 872
+   },
+   "back_accent_pct": 2.8,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 7.7,
+    "accent_clean_after": 7.7,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1717
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    21
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     167,
+     227
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "coldread": {
+  "name": "COLDREAD",
+  "national": 124,
+  "slot": "jynx",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a snowy owl with big round staring eyes (GUESSING)",
+  "note": "snowy owl, big round staring eyes",
+  "failed": "",
+  "front": "coldread_front_5402.png",
+  "back": "coldread_back_i2i_5431.png",
+  "icon": "coldread_icon_5442.png",
+  "measured": {
+   "front_streaks": {
+    "box": "18,36,45,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.9,
+    "accent_clean_after": 8.9,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 2334
+   },
+   "front_accent_pct": 8.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,32,37,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 11.2,
+    "accent_clean_after": 11.2,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 1520
+   },
+   "back_accent_pct": 11.2,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 10.0,
+    "accent_clean_after": 10.0,
+    "greyed_px": 0,
+    "streak_px": 1,
+    "creature_px": 2926
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     176,
+     233
+    ],
+    "accent_cells": 14,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "tell": {
+  "name": "TELL",
+  "national": 238,
+  "slot": "smoochum",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a little round owl with huge goggle eyes (GIVEAWAY)",
+  "note": "little round owl chick, goggle eyes",
+  "failed": "",
+  "front": "tell_front_i2i_5422.png",
+  "back": "tell_back_i2i_5431.png",
+  "icon": "tell_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "16,34,37,53",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.9,
+    "accent_clean_after": 5.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1609
+   },
+   "front_accent_pct": 5.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,35,39,56",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.9,
+    "accent_clean_after": 8.9,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1525
+   },
+   "back_accent_pct": 8.9,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 10.3,
+    "accent_clean_after": 10.3,
+    "greyed_px": 0,
+    "streak_px": 8,
+    "creature_px": 1970
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     123,
+     196
+    ],
+    "accent_cells": 13,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "uptime": {
+  "name": "UPTIME",
+  "national": 113,
+  "slot": "chansey",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round egg-shaped creature holding a big egg in its arms (AVAILABLE)",
+  "note": "i2i 0.72 (charmlo): hugging one big round egg",
+  "failed": "",
+  "front": "uptime_front_i2i_5423.png",
+  "back": "uptime_back_i2i_5431.png",
+  "icon": "uptime_icon_5442.png",
+  "measured": {
+   "front_streaks": {
+    "box": "16,33,31,51",
+    "painted": "[3, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.7,
+    "accent_clean_after": 12.7,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1365
+   },
+   "front_accent_pct": 12.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,34,38,52",
+    "painted": "[5, 3, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1414
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 5.2,
+    "accent_clean_after": 5.2,
+    "greyed_px": 0,
+    "streak_px": 1,
+    "creature_px": 1914
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     171,
+     205,
+     240
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "migrate": {
+  "name": "MIGRATE",
+  "national": 112,
+  "slot": "rhydon",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a hulking upright rhino with a drill horn on its nose (CLEARING)",
+  "note": "upright, the drill horn; its back is the front mirrored with the face painted out (neither turned back would turn: both kept a face; today's back is four-legged)",
+  "failed": "",
+  "front": "migrate_front_i2i_5421.png",
+  "back": "migrate_back_i2i_5431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,36,35,56",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1757
+   },
+   "front_accent_pct": 0.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,32,33,40",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 14.1,
+    "accent_clean_after": 14.1,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1361
+   },
+   "back_accent_pct": 14.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     173,
+     224
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "turbulence": {
+  "name": "TURBULENCE",
+  "national": 230,
+  "slot": "kingdra",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a sea dragon with curling swirled fins like eddies (CASCADE)",
+  "note": "the swirled fins; back from today's back (the backs turned from the new front kept a face)",
+  "failed": "",
+  "front": "turbulence_front_i2i_5422.png",
+  "back": "turbulence_back_i2i_5431.png",
+  "icon": "turbulence_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "16,34,22,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 59.3,
+    "accent_clean_after": 11.3,
+    "greyed_px": 481,
+    "streak_px": 37,
+    "creature_px": 1002
+   },
+   "front_accent_pct": 11.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "33,34,40,53",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.2,
+    "accent_clean_after": 7.2,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1130
+   },
+   "back_accent_pct": 7.2,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 67.7,
+    "accent_clean_after": 7.8,
+    "greyed_px": 934,
+    "streak_px": 155,
+    "creature_px": 1558
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     130,
+     174,
+     227
+    ],
+    "accent_cells": 31,
+    "size": [
+     24,
+     28
+    ]
+   }
+  }
+ },
+ "mime": {
+  "name": "MIME",
+  "national": 122,
+  "slot": "mr_mime",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a little mime with both hands pressed flat on an invisible wall (IMITATIVE)",
+  "note": "i2i 0.72: open white gloves held out; no draft of 14 pressed its palms flat on a wall",
+  "failed": "",
+  "front": "mime_front_i2i_5423.png",
+  "back": "mime_back_i2i_5431.png",
+  "icon": "mime_icon_5441.png",
+  "measured": {
+   "front_streaks": {
+    "box": "6,31,58,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.9,
+    "accent_clean_after": 7.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1147
+   },
+   "front_accent_pct": 7.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "26,31,36,39",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.0,
+    "accent_clean_after": 4.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 521
+   },
+   "back_accent_pct": 4.0,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1033
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     145,
+     194,
+     240
+    ],
+    "accent_cells": 0,
+    "size": [
+     21,
+     28
+    ]
+   }
+  }
+ }
+}
