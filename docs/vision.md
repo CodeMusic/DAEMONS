@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.315**
+**A total conversion — the living design bible, v11.316**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8804,6 +8804,17 @@ signatures keep their ink and play soft.** *`tools/gensignature.py`; the looks i
 
 ***Tending, never medical*** (craft rule 3): **no reading, vital or condition, here or in the public companion.**
 
+### 9.31 The daemons redrawn, with charm — *decided 2026-10-24/25, rolling out (T-452); followers at their own size (T-464)*
+
+***The user, on the sugar-glider concepts (T-450)***: *"I like the style ... I think they would be perfect for daemons."* **Every daemon is redrawn in that style — a big, readable pixel portrait, drawn at 512 on the sprite server and reduced to the GBA's 64×64 and sixteen colours** — *in batches of about twenty, a sheet each, after a pilot of six and a second round.*
+
+- ***Charm over fidelity*** (*the user, 2026-10-25: "more charm, accept drift"*). **The first batch kept too much of today's art and lost the charm, so it was redrawn further from it, keeping only each daemon's one key prop or shape.** *Where the model lost that prop, it is drawn in by hand* — **and where an INDEX entry counts something (four arms, six eggs, three pods), the art is made to agree with the entry, never the reverse.**
+- ***Colour still carries the argument*** (**invariant 5, 9.4**): **each daemon is coloured by its type**, *accents capped at about 15% of the pixels and the rest pushed into the type's ramp.* ***The type-hue trap***: **an accent that would read as another type's hue (gold in CONTENT's, orange beside FIRE's crimson) is moved off it.**
+- ***Backs and icons.*** **A back is turned from the new front where the model will turn it; otherwise it is the front mirrored with the face painted out, or today's back where that reads better.** ***Party icons are drawn separately***, *as 32-pixel head-and-shoulders portraits, three values apart in the type's hue.*
+- ***THE NEXUS keeps its painted art*** (*1A, the user*): **its eight residents were painted as a set (T-395) and stay that way** — *drafted in the new style for reference only.*
+- ***Followers walk at their own size*** (*T-464, the user: CODEMUSAI "looked odd" beside the player*). **The follower used to draw the party icon, and the new icons fill their cell; now each daemon walks as its own small picture, at most about 22 pixels tall**, *in the icon's palette so its type colours hold.* ***A tool's report fails on any follower that would tower over the player.***
+- ***Rolling out***: **thirteen batches built by 2026-10-28, up to UNBRANCHED (289)**; *the user answers each batch's questions by multiple choice, or the recommended choices are built while they are away and asked after.* **What the batches decide, sprite by sprite, is in T-452; this section holds only the rules.**
+
 ### 9.2 Order of operations
 
 1. Toolchain and a **vanilla matching build**. If the checksum matches, your toolchain is sound and every later break is yours.
@@ -8834,6 +8845,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
 - **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)
 - **THE SUBTLE LAYER gets its section: the book, THE THREE values and what the player notices (T-423, T-454, T-459, recorded 2026-10-28)** — a handbook of practice, found in BRAZEN; three battle-only values that wake with it; once held, the daemon notices first, reads and leans are logged and the log decides, and four people's words carry a line beneath, all in CONTEXT's purple, which marks the noticing and never a feeling (4.38)
+- **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
 - **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)

@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.316 — 2026-10-28
+
+### The daemons redrawn, with charm (T-452, T-464)
+
+- ***9.31***: **the redraw's rules, which had lived only in T-452's row** -- *the sprite-server style at 512 reduced to 64x64; charm over fidelity, one key prop kept, the art agreeing with each INDEX entry; coloured by type, accents near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (T-464).* **Thirteen batches built, up to 289.**
+
 ## v11.315 — 2026-10-28
 
 ### THE SUBTLE LAYER gets its section (T-423, T-454, T-459)
