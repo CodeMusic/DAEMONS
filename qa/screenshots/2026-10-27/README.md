@@ -73,3 +73,27 @@ T-459 A in the ROM (theatre, CERULEAN's hidden RARE CANDY): with THE SUBTLE LAYE
 tools/gensense.py's seven frames (ripple 0-3, glint 4-6) in the book's colours, and a line in the dialogue's purple on its grey shadow.
 
 ![27Oct2026 - T459 - the ripple and glint frames - 17](27Oct2026%20-%20T459%20-%20the%20ripple%20and%20glint%20frames%20-%2017.png)
+
+### 27Oct2026 - T452 - batch 5 daemons and icons - 18
+
+Built: daemon batch 5 (HEATSINK to the PREMISE line, 22 daemons), hand-drawn to their entries: BOOTSTRAP's six eggs, ENSEMBLE's heads, ACQUIRE's claw, AXIOMKICK's kick. v11.314.2.
+
+![27Oct2026 - T452 - batch 5 daemons and icons - 18](27Oct2026%20-%20T452%20-%20batch%205%20daemons%20and%20icons%20-%2018.png)
+
+### 27Oct2026 - T452 - batch 5 daemons and icons - 19
+
+Built: daemon batch 5 (HEATSINK to the PREMISE line, 22 daemons), hand-drawn to their entries: BOOTSTRAP's six eggs, ENSEMBLE's heads, ACQUIRE's claw, AXIOMKICK's kick. v11.314.2.
+
+![27Oct2026 - T452 - batch 5 daemons and icons - 19](27Oct2026%20-%20T452%20-%20batch%205%20daemons%20and%20icons%20-%2019.png)
+
+### 27Oct2026 - T452 - batch 5 daemons and icons - 20
+
+Built: daemon batch 5 (HEATSINK to the PREMISE line, 22 daemons), hand-drawn to their entries: BOOTSTRAP's six eggs, ENSEMBLE's heads, ACQUIRE's claw, AXIOMKICK's kick. v11.314.2.
+
+![27Oct2026 - T452 - batch 5 daemons and icons - 20](27Oct2026%20-%20T452%20-%20batch%205%20daemons%20and%20icons%20-%2020.png)
+
+### 27Oct2026 - T452 - batch 5 daemons and icons - 21
+
+Built: daemon batch 5 (HEATSINK to the PREMISE line, 22 daemons), hand-drawn to their entries: BOOTSTRAP's six eggs, ENSEMBLE's heads, ACQUIRE's claw, AXIOMKICK's kick. v11.314.2.
+
+![27Oct2026 - T452 - batch 5 daemons and icons - 21](27Oct2026%20-%20T452%20-%20batch%205%20daemons%20and%20icons%20-%2021.png)
