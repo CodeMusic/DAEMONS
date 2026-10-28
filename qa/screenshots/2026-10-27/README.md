@@ -97,3 +97,15 @@ Built: daemon batch 5 (HEATSINK to the PREMISE line, 22 daemons), hand-drawn to 
 Built: daemon batch 5 (HEATSINK to the PREMISE line, 22 daemons), hand-drawn to their entries: BOOTSTRAP's six eggs, ENSEMBLE's heads, ACQUIRE's claw, AXIOMKICK's kick. v11.314.2.
 
 ![27Oct2026 - T452 - batch 5 daemons and icons - 21](27Oct2026%20-%20T452%20-%20batch%205%20daemons%20and%20icons%20-%2021.png)
+
+### 27Oct2026 - T452 - batch 5 follow-ups - 22
+
+Batch 5 follow-ups, before and after: ACQUIRE's pincer, AXIOMKICK's leg, ARCHIVER frosted, BREAKER cracked and sparking, CIRCULAR's headstand, BOOTSTRAP's six-egg back.
+
+![27Oct2026 - T452 - batch 5 follow-ups - 22](27Oct2026%20-%20T452%20-%20batch%205%20follow-ups%20-%2022.png)
+
+### 27Oct2026 - T452 - batch 5 follow-ups - 23
+
+Batch 5 follow-ups, before and after: ACQUIRE's pincer, AXIOMKICK's leg, ARCHIVER frosted, BREAKER cracked and sparking, CIRCULAR's headstand, BOOTSTRAP's six-egg back.
+
+![27Oct2026 - T452 - batch 5 follow-ups - 23](27Oct2026%20-%20T452%20-%20batch%205%20follow-ups%20-%2023.png)
