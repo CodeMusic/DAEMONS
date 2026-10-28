@@ -253,3 +253,15 @@ Batch 15 (PARTICLE to RIPTIDE, PENGUIN) on the recommended choices; questions in
 Batch 15 (PARTICLE to RIPTIDE, PENGUIN) on the recommended choices; questions in gfx/drafts/t452/t/questions.md. v11.316.3.
 
 ![28Oct2026 - T452 - batch 15 daemons - 42](28Oct2026%20-%20T452%20-%20batch%2015%20daemons%20-%2042.png)
+
+### 28Oct2026 - T473 - a trade and a loan arrive - 43
+
+T-473 in the theatre (debug ROM, scratch save): A TRADE ARRIVES, where the dream comes first and HAUNTER from TRADER became GENGAR in the PC; A LOAN ARRIVES, 'INFERENCE arrived in a trade.', where the borrowed KADABRA did not evolve. Read from RAM: TRADED_IN cleared on both, LOAN kept on the loan, FIRST MET 0xFE (A TRADE). DRAFT words.
+
+![28Oct2026 - T473 - a trade and a loan arrive - 43](28Oct2026%20-%20T473%20-%20a%20trade%20and%20a%20loan%20arrive%20-%2043.png)
+
+### 28Oct2026 - T473 - a trade and a loan arrive - 44
+
+T-473 in the theatre (debug ROM, scratch save): A TRADE ARRIVES, where the dream comes first and HAUNTER from TRADER became GENGAR in the PC; A LOAN ARRIVES, 'INFERENCE arrived in a trade.', where the borrowed KADABRA did not evolve. Read from RAM: TRADED_IN cleared on both, LOAN kept on the loan, FIRST MET 0xFE (A TRADE). DRAFT words.
+
+![28Oct2026 - T473 - a trade and a loan arrive - 44](28Oct2026%20-%20T473%20-%20a%20trade%20and%20a%20loan%20arrive%20-%2044.png)
