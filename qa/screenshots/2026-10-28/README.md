@@ -31,3 +31,9 @@ Batch 7 (DYNAMO to MAINFRAME, with CRON's pale gem; v11.314.5) and batch 8 (DRUM
 T-459 D in the ROM (debug, the theatre's t459d route): once THE SUBTLE LAYER is held, a purple line after MOM's ship line (Come back.) and the CHECKPOINT's goodbye (Not too soon.). The user chose every line and where it sits.
 
 ![28Oct2026 - T459 - words under words - 5](28Oct2026%20-%20T459%20-%20words%20under%20words%20-%205.png)
+
+### 28Oct2026 - C203 - watch mock-up - 6
+
+C-203 on the watches, a mock-up drawn from the firmware's own geometry and colours (not a screenshot): the daemon notices first (a purple ripple and a glint), A read: and its line, A lean: at the reels while they turn. Every word DRAFT.
+
+![28Oct2026 - C203 - watch mock-up - 6](28Oct2026%20-%20C203%20-%20watch%20mock-up%20-%206.png)
