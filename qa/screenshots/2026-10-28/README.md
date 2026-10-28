@@ -217,3 +217,21 @@ The player's manual (T-467, v11.316.2, docs/DAEMONS-manual.pdf, 47 A5 sides): th
 The player's manual (T-467, v11.316.2, docs/DAEMONS-manual.pdf, 47 A5 sides): the cover, the contents, the ways to play and patching your own cartridge; the seasons, the type chart, the subtle layer in play and the companion. Game screens from the theatre on built ROMs; every game word DRAFT.
 
 ![28Oct2026 - T467 - the players manual, eight samples - 36](28Oct2026%20-%20T467%20-%20the%20players%20manual%2C%20eight%20samples%20-%2036.png)
+
+### 28Oct2026 - C219 - trading phase 1 - 37
+
+C-219 TRADE on YOU, using two test companions on synthetic saves: offering one, a loan agreed, and the loan called home with both daemons back. Every word is DRAFT.
+
+![28Oct2026 - C219 - trading phase 1 - 37](28Oct2026%20-%20C219%20-%20trading%20phase%201%20-%2037.jpg)
+
+### 28Oct2026 - C219 - trading phase 1 - 38
+
+C-219 TRADE on YOU, using two test companions on synthetic saves: offering one, a loan agreed, and the loan called home with both daemons back. Every word is DRAFT.
+
+![28Oct2026 - C219 - trading phase 1 - 38](28Oct2026%20-%20C219%20-%20trading%20phase%201%20-%2038.jpg)
+
+### 28Oct2026 - C219 - trading phase 1 - 39
+
+C-219 TRADE on YOU, using two test companions on synthetic saves: offering one, a loan agreed, and the loan called home with both daemons back. Every word is DRAFT.
+
+![28Oct2026 - C219 - trading phase 1 - 39](28Oct2026%20-%20C219%20-%20trading%20phase%201%20-%2039.jpg)
