@@ -115,3 +115,15 @@ Batch 5 follow-ups, before and after: ACQUIRE's pincer, AXIOMKICK's leg, ARCHIVE
 T-459 C in the ROM (debug, the theatre's t459c route): with THE SUBTLE LAYER held, a lean in the book's purple stands where What will X do? stood; without the book, the question as it was. C_MARGIN on the battle box's dark ground; every word DRAFT.
 
 ![27Oct2026 - T459 - the lean in battle - 24](27Oct2026%20-%20T459%20-%20the%20lean%20in%20battle%20-%2024.png)
+
+### 27Oct2026 - T452 - batch 6 daemons - 26
+
+Batch 6 (SLURP to TELL) built on the user's answers: KEEPER's pouch, CRON's gem (gold for now), MIME's palms, BOTTLENECK's thin neck, HARDCODE without its saddle, SIGKILL's blunt claws, SLURP plumper, new backs. v11.314.4.
+
+![27Oct2026 - T452 - batch 6 daemons - 26](27Oct2026%20-%20T452%20-%20batch%206%20daemons%20-%2026.png)
+
+### 27Oct2026 - T452 - batch 6 daemons - 27
+
+Batch 6 (SLURP to TELL) built on the user's answers: KEEPER's pouch, CRON's gem (gold for now), MIME's palms, BOTTLENECK's thin neck, HARDCODE without its saddle, SIGKILL's blunt claws, SLURP plumper, new backs. v11.314.4.
+
+![27Oct2026 - T452 - batch 6 daemons - 27](27Oct2026%20-%20T452%20-%20batch%206%20daemons%20-%2027.png)
