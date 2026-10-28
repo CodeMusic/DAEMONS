@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.318 — 2026-10-28
+
+### ITS DREAMS (T-462, C-200)
+
+- ***3.8 (the user, by multiple choice)***: **the DREAM LOG gains a third part, the carried daemon's dreams** -- *the companion writes only a dream's number and how the night went; the words are a fixed DRAFT set in the ROM, so nothing the companion's AI writes is ever printed. Filed at the first dawn after it arrives -- "Far away, [NAME] resumed. / It had been dreaming." -- under a title of its own, its page ending as the night did.* **Never explained. Titles to be approved one by one.**
+
 ## v11.317 — 2026-10-28
 
 ### The two books, asked: one by reason, one by instinct (C-209, C-229, C-230)
