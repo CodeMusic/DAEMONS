@@ -50,8 +50,10 @@ def icon_rows():
         paths.setdefault(sym, p)                      # DEOXYS: both editions' first frame is icon.4bpp
     out = []
     for sp, sym in rows:
-        #  The follower is a party daemon: never an EGG, never an UNOWN letter (its species is SPECIES_UNOWN).
-        if sp in ("SPECIES_NONE", "SPECIES_EGG") or re.match(r"SPECIES_UNOWN_", sp) or sym not in paths:
+        #  The follower is a party daemon: never an EGG. SYMBOL's letters ARE followed: daemons_follower.c reads the lead
+        #  through GetIconSpecies, which turns SPECIES_UNOWN into the letter's SPECIES_UNOWN_B..QMARK (T-452 SYMBOL,
+        #  2026-10-28 -- with 28px icons, every lettered SYMBOL would otherwise walk larger than the player).
+        if sp in ("SPECIES_NONE", "SPECIES_EGG") or sym not in paths:
             continue
         out.append((sp, paths[sym].replace(".4bpp", ".png"), int(palidx.get(sp, 0))))
     return out
@@ -151,11 +153,19 @@ def voted(g, pal):
     return place(cells)
 
 
-def reduced(d, name, pi):
+#  SYMBOL's 28 forms are filed by form, gfx/daemons/symbol/<form>_front.png (T-452: a subfolder gbasprite never sees),
+#  and their icons are graphics/pokemon/unown/<form>/icon.png
+SYMBOL = os.path.join(ROOT, "gfx", "daemons", "symbol")
+
+
+def reduced(d, name, pi, icon=""):
     """The clean redrawn front, reduced again by icon3 to fit 20x22 in the icon's own shared palette; None if there is
     no clean front (a PNG with transparency) or the palette holds no ramp for the type."""
     import gbs, icon3
     src = gbs.rich_src(name, "front") if name else None
+    if "/unown/" in icon:
+        f = os.path.join(SYMBOL, "%s_front.png" % d)
+        src, d = (f if os.path.exists(f) else None), "unown"
     if not src or not src.endswith(".png"):
         return None
     im = Image.open(src)
@@ -188,7 +198,7 @@ def plan():
         if h <= MAX_H and w <= MAX_W:
             out[sp] = (os.path.dirname(icon), shifted(g), "shifted", pi)
             continue
-        r = reduced(d, names.get(sp), pi)
+        r = reduced(d, names.get(sp), pi, icon)
         if r is not None:
             out[sp] = (os.path.dirname(icon), r, "reduced", pi)
         else:
@@ -205,7 +215,9 @@ def render(p):
            ""]
     for sp in sorted(p):
         out.append('static const u8 %s[] = INCBIN_U8("%s/follower.4bpp");' % (sym(sp), p[sp][0]))
-    out += ["", "static const u8 *const sFollowerPics[NUM_SPECIES] = {"]
+    #  past NUM_SPECIES: SYMBOL's letters are SPECIES_UNOWN_B..QMARK (NUM_SPECIES + 1..27), and FollowerPic bounds the
+    #  look-up by ARRAY_COUNT, so a table sized NUM_SPECIES would never find them
+    out += ["", "static const u8 *const sFollowerPics[SPECIES_UNOWN_QMARK + 1] = {"]
     out += ["    [%s] = %s," % (sp, sym(sp)) for sp in sorted(p)]
     out.append("};")
     return "\n".join(out) + "\n"
@@ -244,7 +256,10 @@ def run(write):
             if write:
                 write_png(path, grid, pals[pi])
     wanted = {os.path.join(GBA, d, "follower.png") for d, *_ in p.values()}
-    for d in sorted(os.listdir(os.path.join(GBA, "graphics", "pokemon"))):
+    mon = os.path.join(GBA, "graphics", "pokemon")
+    dirs = sorted(os.listdir(mon)) + ["unown/" + f for f in sorted(os.listdir(os.path.join(mon, "unown")))
+                                      if os.path.isdir(os.path.join(mon, "unown", f))]
+    for d in dirs:
         f = os.path.join(GBA, "graphics", "pokemon", d, "follower.png")
         if os.path.exists(f) and f not in wanted:
             stale.append(d)

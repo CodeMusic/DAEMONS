@@ -1,0 +1,31 @@
+{
+ "b": {
+  "front": "b_front_i2i_6823.png",
+  "note": "0.66 (6823): messy right edge on 0.6"
+ },
+ "d": {
+  "front": "d_front_i2i_6823.png",
+  "note": "0.66 (6823): cleaner bowl"
+ },
+ "l": {
+  "front": "l_front_i2i_6823.png",
+  "note": "0.66 (6823): 0.6 browned, odd pupil"
+ },
+ "o": {
+  "front": "o_front_i2i_6823.png",
+  "note": "0.66 (6823): cleaner ring"
+ },
+ "p": {
+  "front": "p_front_i2i_6823.png",
+  "note": "0.66 (6823): cleaner bowl"
+ },
+ "u": {
+  "front": "u_front_i2i_6823.png",
+  "note": "0.66 (6823): cleaner arms"
+ },
+ "g": {
+  "front": "g_front_i2i_6821.png",
+  "grow": 3.0,
+  "note": "the eye drawn bigger than the guide's, a spiral in the counter: the back's patch grown 3 cells"
+ }
+}

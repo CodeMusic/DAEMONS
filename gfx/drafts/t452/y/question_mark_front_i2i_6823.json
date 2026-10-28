@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452sym_work/y/question_mark_front_i2i_6823",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a little living glyph, its whole body is a thick rounded question mark '?', the shape of the question mark is clearly readable, one big round eye on it, two tiny stubby feet, a cute small creature, chibi, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow",
+ "negative": "photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, frame, white body, pale body, pink, purple, many eyes, two eyes, mouth full of teeth, words, caption, small letters",
+ "seed": 6823,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.66,
+ "stop_at": null,
+ "image": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452sym_work/y/src/question_mark_guide.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.0,
+ "comfyui": "0.19.1",
+ "made": "2026-10-28 16:26:55"
+}
