@@ -396,10 +396,11 @@ def notebook_table():
     nb, docs, wis = read("src/notebook.c"), read("src/data/notebook_documents.h"), read("src/data/wisdom.h")
     dreams = read("src/data/dream_log.h")                                                   # T-412: the DREAM LOG
     hers = read("src/data/attendant_dreams.h")                                              # T-412: HER DREAMS
+    its = read("src/data/its_dreams.h")                                                     # T-462: ITS DREAMS
     hol, holl = read("src/data/daemons_holidays.h"), read("src/data/holiday_lines.h")    # T-416: THE YEAR
     notes = read("src/data/notebook_notes.h")
     strings = {}
-    for src in (nb, docs, wis, hol, dreams, hers):
+    for src in (nb, docs, wis, hol, dreams, hers, its):
         for name, body in re.findall(r"(?:static )?const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", src, re.S):
             strings[name] = gba_string(body)
     import glob
@@ -422,6 +423,11 @@ def notebook_table():
     body = body.replace("NB_DREAM_ENTRIES", dream.replace("\\", ""))
     her = re.search(r"#define NB_HER_DREAM_ENTRIES \\\n(.*?)(?:\n\n|\Z)", hers, re.S).group(1)   # T-412: HER DREAMS
     body = body.replace("NB_HER_DREAM_ENTRIES", her.replace("\\", ""))
+    itsr = re.search(r"#define NB_ITS_DREAM_ENTRIES \\\n(.*?)(?:\n\n|\Z)", its, re.S).group(1)   # T-462: ITS DREAMS
+    body = body.replace("NB_ITS_DREAM_ENTRIES", itsr.replace("\\", ""))
+    #  each image's three endings, broken, quiet, vivid (quality 1, 2, 3)
+    endings = [list(e) for e in re.findall(r"\{\s*(\w+),\s*(\w+),\s*(\w+)\s*\},\s*//",
+                                           re.search(r"sItsDreamEndings\[.*?\{(.*?)\n\};", its, re.S).group(1))]
     #  each of her steps: the flag that says it is done, and where it led (shown once that flag is held)
     led = {told: (done, ledname) for done, told, first, second, ledname in
            re.findall(r"\{\s*(FLAG_\w+),\s*(FLAG_\w+),\s*(\w+),\s*(\w+),\s*(\w+)\s*\}", hers)}
@@ -458,7 +464,7 @@ def notebook_table():
     pages = []
     for sec, kind, arg, flag, flag2, title, text in rows:
         words = None
-        if kind in ("NB_KIND_TEXT", "NB_KIND_HER_DREAM"):
+        if kind in ("NB_KIND_TEXT", "NB_KIND_HER_DREAM", "NB_KIND_ITS_DREAM"):
             words = strings.get(text) if text in strings else labels.get(text)
             if words is None:
                 raise SystemExit("  refused: the NOTEBOOK's %s has no words the export can find (%s)" % (title, text))
@@ -470,6 +476,8 @@ def notebook_table():
                       "about": abouts.get(flag[5:]), "text": words,
                       "seen": found.get(flag, (None, None))[0], "place": found.get(flag, (None, None))[1],
                       "link": links.get(flag)}
+        if kind == "NB_KIND_ITS_DREAM":                     # T-462: the ending is the night last received for it
+            page.update(image=int(arg), endings=[strings[e] for e in endings[int(arg)]])
         if kind == "NB_KIND_HER_DREAM":                     # T-412: where it led, once its step is done
             done, ledname = led[flag]
             page.update(led=strings[ledname], led_flag=fv[done])
@@ -489,7 +497,7 @@ def notebook_table():
                       "includes. A page is held when the save has flag and (if not 0) flag2 -- notebook.c's own rule. "
                       "{RIVAL} and {PLAYER} are the names from the save. kind exam/choices: written by the game from "
                       "the save when opened; no words here. kind song (T-417, the SONGBOOK): drawn by the game as coloured note heads on a staff; song names the tune, key the major key it counts in, notes the motif as heard (C4 middle C, sharps or flats), frames each note's length at 60 fps as the game plays it when heard, heard the flag set once it is heard at its place (learned is flag). seen: the flag set once the page is opened in the game (unread until "
-                      "then, T-403); key_colours: the twelve note colours C..B and outline the notes' outline, as the GBA shows them (T-417); place: where it was found; link: the song or post its QR code opens (T-402). kind her_dream (T-412): one of the CHECKPOINT attendant's dreams, under HER DREAMS after YOUR DREAMS in the DREAM LOG; led is where it led, shown under it once the save holds led_flag (its step done).",
+                      "then, T-403); key_colours: the twelve note colours C..B and outline the notes' outline, as the GBA shows them (T-417); place: where it was found; link: the song or post its QR code opens (T-402). kind her_dream (T-412): one of the CHECKPOINT attendant's dreams, under HER DREAMS after YOUR DREAMS in the DREAM LOG; led is where it led, shown under it once the save holds led_flag (its step done). kind its_dream (T-462): one of the carried daemon's dreams, under ITS DREAMS after HER DREAMS; text is its opening, and its page ends with endings[quality - 1] -- broken, quiet, vivid -- for the quality last filed for its image (profile_layout's its_dreams.kinds; quiet when none).",
             "sections": [strings[names[s]] for s in sections], "pages": pages,
             #  T-417: the twelve key colours, C..B, and the note outline, as the GBA shows them (tools/genplaynotes.py)
             "key_colours": [hex5(c) for c in genplaynotes.KEYS], "outline": hex5(genplaynotes.PALETTE[genplaynotes.OUTLINE])}
@@ -628,7 +636,44 @@ def profile_layout():
                       "understandings": [flags[f] for f in UNDERSTANDINGS],
                       "insights": [flags[f] for f in INSIGHTS]},
             "items": {"opus": int(items["ITEM_OPUS"])},
-            "reads": reads_layout(sb1)}
+            "reads": reads_layout(sb1),
+            "its_dreams": its_dreams_layout(sb1, sb2, flags["DAEMONS_FLAGS_START"])}
+
+
+def its_dreams_layout(sb1, sb2, daemons_start):
+    """T-462 / C-200: ITS DREAMS -- the vars a SYNC writes for a new dream, the game's own record of what it has filed,
+    and the sixteen images' titles (docs/its_dreams.json, as the ROM holds them in src/data/its_dreams.h)."""
+    names = ["VARS_START", "VAR_ITS_DREAM", "VAR_ITS_DREAM_HOURS", "VAR_ITS_DREAM_NIGHTS", "VAR_ITS_DREAM_DAY",
+             "VAR_ITS_DREAM_FILED", "VAR_ITS_DREAM_STAMP", "VAR_ITS_DREAM_KINDS", "VAR_ITS_DREAM_KINDS_2"]
+    v = flag_values(names, header="constants/vars.h")
+    first = flag_values(["FLAG_ITS_DREAM_GRASS"])["FLAG_ITS_DREAM_GRASS"]
+    at = lambda n: sb1["vars"] + (v[n] - v["VARS_START"]) * 2
+    its = read("src/data/its_dreams.h")
+    titles = [gba_string(b) for b in re.findall(r"static const u8 sItsDreamTitle_\w+\[\]\s*=\s*_\((.*?)\);", its, re.S)]
+    count = int(re.search(r"#define ITS_DREAM_COUNT\s+(\d+)", its).group(1))
+    if len(titles) != count:
+        raise SystemExit("  refused: its_dreams.h has %d titles for %d images" % (len(titles), count))
+    return {"_about": "T-462 / C-200: ITS DREAMS. Each var is a u16 (little-endian) in SaveBlock1 at the sb1 offset "
+                      "given (vars + (var - vars_start) * 2). The COMPANION writes the four under 'write' at a SYNC "
+                      "that brings a new dream and leaves them as they are when there is none: dream = quality "
+                      "(1 broken, 2 quiet, 3 vivid) | 4 if tucked in | image << 8; hours in tenths; nights = nights "
+                      "since the last SYNC | rested nights << 8 (each capped 255); day = days since 2026-01-01. The "
+                      "GAME treats a day it has not filed as a new dream and files it at the first dawn after it sees "
+                      "it (or on the first load on a later day). The rest is the game's and never written by a "
+                      "writer: filed = the day + 1 of the last dream filed (0 none); kinds / kinds_2 = the quality "
+                      "last filed for images 0-7 / 8-15, two bits each, image 0 lowest (0 never filed); and "
+                      "image n is filed when DAEMONS flag filed_flag_first + n is set (a bit in sb2 daemons_flags, as "
+                      "profile_layout explains). titles: each image's title in the NOTEBOOK, in image order. DRAFT.",
+            "vars_start": v["VARS_START"], "vars": sb1["vars"],
+            "write": {n: {"var": v[k], "sb1": at(k)} for n, k in
+                      (("dream", "VAR_ITS_DREAM"), ("hours", "VAR_ITS_DREAM_HOURS"),
+                       ("nights", "VAR_ITS_DREAM_NIGHTS"), ("day", "VAR_ITS_DREAM_DAY"))},
+            "game": {n: {"var": v[k], "sb1": at(k)} for n, k in
+                     (("filed", "VAR_ITS_DREAM_FILED"), ("stamp", "VAR_ITS_DREAM_STAMP"),
+                      ("kinds", "VAR_ITS_DREAM_KINDS"), ("kinds_2", "VAR_ITS_DREAM_KINDS_2"))},
+            "filed_flag_first": first, "filed_flag_sb2_bit": first - daemons_start,
+            "daemons_flags_sb2": sb2["daemonsFlags"],
+            "titles": titles}
 
 
 def reads_layout(sb1):
@@ -927,7 +972,8 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
                    "EV_YEAR_ALL", "EV_GIFTS_AGAIN",                                        # T-416
                    "EV_CRYSTAL_AGAIN",                                                     # T-457: a reset, not an event
-                   "EV_SOUNDING"}                                                          # T-458: the companion's signal, faked
+                   "EV_SOUNDING",                                                          # T-458: the companion's signal, faked
+                   "EV_ITS_DREAM"}                                                         # T-462: the companion's dream, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE"}        # T-431: the feelings' debug view and its clock; T-454: THE THREE's
 

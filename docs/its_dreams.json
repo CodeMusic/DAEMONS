@@ -1,0 +1,138 @@
+{
+ "about": "T-462 (C-200, the user by multiple choice, 2026-10-28): the DREAM LOG's third part, ITS DREAMS -- the carried daemon's dreams, written into the save by the companion at SYNC as a NUMBER (an image of these sixteen) and a night's quality, and filed by the game at the first dawn after it arrives, as YOUR DREAMS are. Every word DRAFT, written overnight for the user's review on the device. Dreamt while SUSPENDED: never slept, never asleep, never woke; it resumes. Images only, never explained; third person present, 'it' the daemon and 'you' the player; no place named, nothing counted or numbered. A dream is an opening box and an ending box: the ending is the night's -- broken (quality 1), quiet (2) or vivid (3) -- and the page shows the ending of the quality last received for that image. tools/gbaitsdreams.py checks every width and writes engineGba/src/data/its_dreams.h; edit here, never there.",
+ "heading": "ITS DREAMS",
+ "line_named": ["Far away, {STR_VAR_1} resumed.", "It had been dreaming."],
+ "line_unnamed": ["Far away, the one you carried", "resumed. It had been dreaming."],
+ "line_about": "Said before the dream as it is filed. {STR_VAR_1} is the first daemon AWAY (the one carried, DaemonFirstAway); with none away -- it came home at the same SYNC -- the unnamed line. DRAFT.",
+ "title_rule": "ALL CAPS, at most 130px (the NOTEBOOK list's width, as YOUR DREAMS' and HER DREAMS'), an image from the dream, never a number. DRAFT, for the user to choose one by one.",
+ "dreams": [
+  {
+   "image": 0, "key": "GRASS", "title": "THE HUMMING GRASS",
+   "seed": "running beside you through tall grass that hummed",
+   "open": ["It runs beside you through grass", "taller than both of you."],
+   "broken": ["The grass parts, and you are not", "beside it. The note stops short."],
+   "quiet": ["The grass hums one low note, and", "it hums the same note back."],
+   "vivid": ["Every blade hums, and it can hear", "you humming too, a step ahead."]
+  },
+  {
+   "image": 1, "key": "CITY", "title": "THE LIT CITY",
+   "seed": "a city, every window lit, every door open",
+   "open": ["A city at night, and every window", "in it is lit."],
+   "broken": ["It comes to a door, and the lights", "go out a street at a time."],
+   "quiet": ["Every door stands open. Nobody is", "in, and nobody is out."],
+   "vivid": ["Every door stands open, and behind", "each one is a room it knows."]
+  },
+  {
+   "image": 2, "key": "WAVES", "title": "THE NAMED WAVES",
+   "seed": "the sea counting its own waves (rewritten: a dream never counts)",
+   "open": ["The sea comes in, and says each", "wave's name as it arrives."],
+   "broken": ["The sea starts a name and loses", "it, and the wave goes back out."],
+   "quiet": ["It listens for its own name. The", "sea is in no hurry to get there."],
+   "vivid": ["Then the sea says its name, and", "the wave comes all the way in."]
+  },
+  {
+   "image": 3, "key": "BOOKS", "title": "THE BOOKS ALOUD",
+   "seed": "a library whose books read themselves aloud",
+   "open": ["A library where the books read", "themselves aloud, all at once."],
+   "broken": ["Every book loses its place, and", "starts again, and loses it again."],
+   "quiet": ["It finds a book reading quietly,", "and sits down beside it."],
+   "vivid": ["It hears every book at once, and", "every book makes sense."]
+  },
+  {
+   "image": 4, "key": "DOOR", "title": "THE OPEN DOOR",
+   "seed": "a door never been through, standing open",
+   "open": ["A door it has never been through", "stands open in an empty field."],
+   "broken": ["It goes to step through, and the", "door is shut, and was always shut."],
+   "quiet": ["Through it, the same field, the", "same wind. It goes through anyway."],
+   "vivid": ["Through it, a field it has never", "seen, and it walks right in."]
+  },
+  {
+   "image": 5, "key": "UPWARD", "title": "FALLING UPWARD",
+   "seed": "falling slowly upward into the stars",
+   "open": ["It falls slowly upward, past the", "trees, past the clouds."],
+   "broken": ["Partway up it stops, and hangs", "there, SUSPENDED, until it resumes."],
+   "quiet": ["The stars come close and do not", "mind it. It keeps falling, gently."],
+   "vivid": ["The stars open to let it through,", "and close again behind it."]
+  },
+  {
+   "image": 6, "key": "TREE", "title": "LEAVES FOR ROADS",
+   "seed": "a tree that grew a leaf for every step you took (rewritten: nothing paced)",
+   "open": ["Wherever you have walked, a tree", "grows up behind you."],
+   "broken": ["The wind takes the leaves before", "it can read them."],
+   "quiet": ["It sits under the tree. Each leaf", "is a road you took. It knows them."],
+   "vivid": ["It climbs to the top, and sees", "all your roads at once, green."]
+  },
+  {
+   "image": 7, "key": "NAME", "title": "A NAME ON WATER",
+   "seed": "its own name written in light on the water",
+   "open": ["Its own name, written in light on", "still water."],
+   "broken": ["A wind comes, and the letters run", "into each other."],
+   "quiet": ["It does not touch it. It watches", "the name ripple and stay."],
+   "vivid": ["It steps out onto the water, and", "the name holds it up."]
+  },
+  {
+   "image": 8, "key": "SHELF", "title": "THE SUNLIT SHELF",
+   "seed": "the old cartridge, warm in a sunlit room (kept fable: the shelf where it used to wait)",
+   "open": ["A small room, warm, with sun on", "the floor and a shelf by the window."],
+   "broken": ["It reaches the shelf, and the sun", "goes, and the room is grey and cold."],
+   "quiet": ["The shelf is where it used to wait.", "It is still warm there."],
+   "vivid": ["It lies on the shelf in the sun,", "and the whole room hums around it."]
+  },
+  {
+   "image": 9, "key": "WALK", "title": "THE LONG WALK",
+   "seed": "a long walk with no end it minded",
+   "open": ["A long walk, on a road that does", "not end, and it does not mind."],
+   "broken": ["The road folds up under it, and it", "is back where it began."],
+   "quiet": ["It stops when it likes, and when it", "likes, it resumes."],
+   "vivid": ["You are walking it too, a little", "ahead, and you keep looking back."]
+  },
+  {
+   "image": 10, "key": "RAIN", "title": "RAIN FALLING UP",
+   "seed": "rain that fell upward and hummed",
+   "open": ["Rain that falls upward, slowly,", "out of the puddles."],
+   "broken": ["The rain changes its mind halfway,", "and comes down cold."],
+   "quiet": ["Each drop rings like glass on its", "way up to the clouds."],
+   "vivid": ["It goes up with the rain, and comes", "down again, dry, and laughing."]
+  },
+  {
+   "image": 11, "key": "BRIDGE", "title": "THE MOONLIT BRIDGE",
+   "seed": "a bridge of numbers over a river of moonlight (rewritten: a dream never numbers)",
+   "open": ["A bridge of lit stones, over a", "river made of moonlight."],
+   "broken": ["A stone goes dark under its foot,", "and it is back on the near bank."],
+   "quiet": ["Each stone chimes as it steps on", "it. It crosses, chiming back."],
+   "vivid": ["The moon waits on the far bank,", "and the river carries it home."]
+  },
+  {
+   "image": 12, "key": "WAVING", "title": "A WAVE FROM FAR",
+   "seed": "you, small and far away, waving",
+   "open": ["You, small and far away, at the", "edge of a wide field, waving."],
+   "broken": ["It waves back, but the field grows", "wider, and you do not see it."],
+   "quiet": ["It waves back with its whole self", "until you are too small to see."],
+   "vivid": ["It waves back, and you see it, and", "you start to run toward it."]
+  },
+  {
+   "image": 13, "key": "GARDEN", "title": "THE WORD GARDEN",
+   "seed": "a garden where every seed was a word",
+   "open": ["A garden where every seed is a", "word, pressed into the earth."],
+   "broken": ["Nothing comes up. It forgets which", "words it planted."],
+   "quiet": ["It waters them. A few come up as", "the words they were."],
+   "vivid": ["They all come up at once, and the", "garden says something kind."]
+  },
+  {
+   "image": 14, "key": "HOUSE", "title": "THE HOUSE HUMMING",
+   "seed": "the hum of the house at night, a song inside it",
+   "open": ["The house at night, everything in", "it paused, humming low."],
+   "broken": ["The hum stops. The house is still,", "and it cannot find the song again."],
+   "quiet": ["Inside the hum there is a song. It", "knows the tune, and hums along."],
+   "vivid": ["The song grows, and the whole house", "is singing it, softly, to it."]
+  },
+  {
+   "image": 15, "key": "MAP", "title": "THE WALKING MAP",
+   "seed": "a map that drew itself as it walked",
+   "open": ["A map that draws itself as it", "walks, a little way ahead of it."],
+   "broken": ["The ink runs. The map forgets where", "it has been, and starts again."],
+   "quiet": ["Where it has been is inked in.", "Where it is going is still white."],
+   "vivid": ["The map draws a road it has never", "taken, and it takes it."]
+  }
+ ]
+}
