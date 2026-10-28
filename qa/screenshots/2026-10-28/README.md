@@ -37,3 +37,21 @@ T-459 D in the ROM (debug, the theatre's t459d route): once THE SUBTLE LAYER is 
 C-203 on the watches, a mock-up drawn from the firmware's own geometry and colours (not a screenshot): the daemon notices first (a purple ripple and a glint), A read: and its line, A lean: at the reels while they turn. Every word DRAFT.
 
 ![28Oct2026 - C203 - watch mock-up - 6](28Oct2026%20-%20C203%20-%20watch%20mock-up%20-%206.png)
+
+### 28Oct2026 - T452 - batch 9 daemons - 7
+
+Batch 9 (ALARM to RELEASE) built on the user's answers: RELEASE's lamp, rose ears and chartreuse eyes out of CONTENT's hue trap, MULTICAST's four wings, BUILDUP bare, ENTRAPMENT's web. v11.315.1.
+
+![28Oct2026 - T452 - batch 9 daemons - 7](28Oct2026%20-%20T452%20-%20batch%209%20daemons%20-%207.png)
+
+### 28Oct2026 - T452 - batch 9 daemons - 8
+
+Batch 9 (ALARM to RELEASE) built on the user's answers: RELEASE's lamp, rose ears and chartreuse eyes out of CONTENT's hue trap, MULTICAST's four wings, BUILDUP bare, ENTRAPMENT's web. v11.315.1.
+
+![28Oct2026 - T452 - batch 9 daemons - 8](28Oct2026%20-%20T452%20-%20batch%209%20daemons%20-%208.png)
+
+### 28Oct2026 - T452 - batch 9 daemons - 9
+
+Batch 9 (ALARM to RELEASE) built on the user's answers: RELEASE's lamp, rose ears and chartreuse eyes out of CONTENT's hue trap, MULTICAST's four wings, BUILDUP bare, ENTRAPMENT's web. v11.315.1.
+
+![28Oct2026 - T452 - batch 9 daemons - 9](28Oct2026%20-%20T452%20-%20batch%209%20daemons%20-%209.png)
