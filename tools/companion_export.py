@@ -40,7 +40,7 @@ import json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
-OUT = os.path.join(ROOT, "companion", "server", "data")
+OUT = os.environ.get("COMPANION_DATA") or os.path.join(ROOT, "companion", "server", "data")   # C-203: a worktree's data/ instead
 WRITE = "--write" in sys.argv
 
 
@@ -627,7 +627,42 @@ def profile_layout():
                       "notebook": flags["FLAG_GOT_NOTEBOOK"],
                       "understandings": [flags[f] for f in UNDERSTANDINGS],
                       "insights": [flags[f] for f in INSIGHTS]},
-            "items": {"opus": int(items["ITEM_OPUS"])}}
+            "items": {"opus": int(items["ITEM_OPUS"])},
+            "reads": reads_layout(sb1)}
+
+
+def reads_layout(sb1):
+    """C-203: THE LOG (DAEMONS T-459 B and C), the NOTEBOOK's READS page, as the game composes it from the save's vars
+    (daemons_reads.c Daemons_WriteReadsLog) -- so the companion can write it the same way, words and all."""
+    v = flag_values(["VARS_START", "VAR_READS_GIVEN", "VAR_READS_LANDED", "VAR_LEANS_TOLD", "VAR_LEANS_LANDED",
+                     "VAR_READ_LOG_WHERE", "VAR_READ_LOG_THING"], header="constants/vars.h")
+    rc = read("src/daemons_reads.c")
+    rh = read("include/daemons_reads.h")
+    num = lambda pat, text: int(re.search(pat, text).group(1), 0)
+    order = re.findall(r"(PHRASE_\w+)", re.search(r"enum\s*\{(.*?)PHRASE_COUNT", rc, re.S).group(1))
+    table = dict(re.findall(r"\[(PHRASE_\w+)\]\s*=\s*(sPhrase_\w+)", rc))
+    words = dict(re.findall(r'static const u8 (s(?:Phrase|Log)_\w+)\[\]\s*=\s*_\("(.*?)"\);', rc))
+    plain = lambda w: w.replace("{STR_VAR_1}", "{1}").replace("{STR_VAR_2}", "{2}").replace("\\p", "")
+    if len(order) != len(table) or any(o not in table for o in order):
+        raise SystemExit("  refused: daemons_reads.c's phrases and their table disagree")
+    return {"_about": "C-203: THE LOG's vars, each u16 at sb1 vars + (var - vars_start) * 2. where: newest first, "
+                      "log of them -- the map section in the low byte (first_met_places names it; 0: an empty row, "
+                      "the log ends), the phrase at phrase_shift (phrase_mask wide), landed at landed_bit. thing: the "
+                      "flag that says that read's thing was found, 0 for a read about nothing; a read whose flag is "
+                      "set has landed even before the game marks it (the game marks it, and counts it, on the next "
+                      "arrival or when the page is opened). Lines: reads and leans with {1} {2}, then each read "
+                      "'<place><colon><phrase>' and landed after it when it has.",
+            "vars": sb1["vars"], "vars_start": v["VARS_START"],
+            "given": v["VAR_READS_GIVEN"], "landed": v["VAR_READS_LANDED"],
+            "leans_told": v["VAR_LEANS_TOLD"], "leans_landed": v["VAR_LEANS_LANDED"],
+            "where": v["VAR_READ_LOG_WHERE"], "thing": v["VAR_READ_LOG_THING"],
+            "log": num(r"#define\s+READ_LOG\s+(\d+)", rh),
+            "landed_bit": num(r"#define\s+READ_LANDED\s+\(1\s*<<\s*(\d+)\)", rc),
+            "phrase_shift": num(r"#define\s+READ_PHRASE\(w\)\s+\(\(\(w\)\s*>>\s*(\d+)\)", rc),
+            "phrase_mask": num(r"#define\s+READ_PHRASE\(w\).*?&\s*(0x[0-9A-Fa-f]+)\)", rc),
+            "phrases": [words[table[o]] for o in order],
+            "words": {"reads": plain(words["sLog_Reads"]), "leans": plain(words["sLog_Leans"]),
+                      "colon": words["sLog_Colon"], "landed": words["sLog_Landed"]}}
 
 
 def maps_table():
