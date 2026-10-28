@@ -55,3 +55,33 @@ Batch 9 (ALARM to RELEASE) built on the user's answers: RELEASE's lamp, rose ear
 Batch 9 (ALARM to RELEASE) built on the user's answers: RELEASE's lamp, rose ears and chartreuse eyes out of CONTENT's hue trap, MULTICAST's four wings, BUILDUP bare, ENTRAPMENT's web. v11.315.1.
 
 ![28Oct2026 - T452 - batch 9 daemons - 9](28Oct2026%20-%20T452%20-%20batch%209%20daemons%20-%209.png)
+
+### 28Oct2026 - T452 - batch 10 daemons - 10
+
+Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the user was away; questions in gfx/drafts/t452/n/questions.md. v11.315.3.
+
+![28Oct2026 - T452 - batch 10 daemons - 10](28Oct2026%20-%20T452%20-%20batch%2010%20daemons%20-%2010.png)
+
+### 28Oct2026 - T452 - batch 10 daemons - 11
+
+Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the user was away; questions in gfx/drafts/t452/n/questions.md. v11.315.3.
+
+![28Oct2026 - T452 - batch 10 daemons - 11](28Oct2026%20-%20T452%20-%20batch%2010%20daemons%20-%2011.png)
+
+### 28Oct2026 - T452 - batch 10 daemons - 12
+
+Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the user was away; questions in gfx/drafts/t452/n/questions.md. v11.315.3.
+
+![28Oct2026 - T452 - batch 10 daemons - 12](28Oct2026%20-%20T452%20-%20batch%2010%20daemons%20-%2012.png)
+
+### 28Oct2026 - T452 - batch 10 daemons - 13
+
+Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the user was away; questions in gfx/drafts/t452/n/questions.md. v11.315.3.
+
+![28Oct2026 - T452 - batch 10 daemons - 13](28Oct2026%20-%20T452%20-%20batch%2010%20daemons%20-%2013.png)
+
+### 28Oct2026 - T452 - batch 10 daemons - 14
+
+Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the user was away; questions in gfx/drafts/t452/n/questions.md. v11.315.3.
+
+![28Oct2026 - T452 - batch 10 daemons - 14](28Oct2026%20-%20T452%20-%20batch%2010%20daemons%20-%2014.png)
