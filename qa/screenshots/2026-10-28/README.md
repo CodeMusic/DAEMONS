@@ -85,3 +85,63 @@ Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the use
 Batch 10 (GOLDSET to RESENTMENT), built on the recommended choices while the user was away; questions in gfx/drafts/t452/n/questions.md. v11.315.3.
 
 ![28Oct2026 - T452 - batch 10 daemons - 14](28Oct2026%20-%20T452%20-%20batch%2010%20daemons%20-%2014.png)
+
+### 28Oct2026 - T464 - followers at the players size - 15
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 15](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2015.png)
+
+### 28Oct2026 - T464 - followers at the players size - 16
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 16](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2016.png)
+
+### 28Oct2026 - T464 - followers at the players size - 17
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 17](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2017.png)
+
+### 28Oct2026 - T464 - followers at the players size - 18
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 18](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2018.png)
+
+### 28Oct2026 - T464 - followers at the players size - 19
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 19](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2019.png)
+
+### 28Oct2026 - T464 - followers at the players size - 20
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 20](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2020.png)
+
+### 28Oct2026 - T464 - followers at the players size - 21
+
+T-464: every oversized follower gets its own art, at most 20 tall and 22 wide, feet level with the player; before | after beside red_normal. v11.315.4.
+
+![28Oct2026 - T464 - followers at the players size - 21](28Oct2026%20-%20T464%20-%20followers%20at%20the%20players%20size%20-%2021.png)
+
+### 28Oct2026 - T452 - batch 11 daemons - 22
+
+Batch 11 (DUPLEX to CLINGING) on the recommended choices; questions in gfx/drafts/t452/o/questions.md. v11.315.4.
+
+![28Oct2026 - T452 - batch 11 daemons - 22](28Oct2026%20-%20T452%20-%20batch%2011%20daemons%20-%2022.png)
+
+### 28Oct2026 - T452 - batch 11 daemons - 23
+
+Batch 11 (DUPLEX to CLINGING) on the recommended choices; questions in gfx/drafts/t452/o/questions.md. v11.315.4.
+
+![28Oct2026 - T452 - batch 11 daemons - 23](28Oct2026%20-%20T452%20-%20batch%2011%20daemons%20-%2023.png)
+
+### 28Oct2026 - T452 - batch 11 daemons - 24
+
+Batch 11 (DUPLEX to CLINGING) on the recommended choices; questions in gfx/drafts/t452/o/questions.md. v11.315.4.
+
+![28Oct2026 - T452 - batch 11 daemons - 24](28Oct2026%20-%20T452%20-%20batch%2011%20daemons%20-%2024.png)
