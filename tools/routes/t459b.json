@@ -1,0 +1,97 @@
+{
+  "rom": "debug",
+  "about": "T-459 B: once THE SUBTLE LAYER is held, now and then the first step on a map brings a read in the book's purple -- \"A read: / something by the water.\" -- about something still unfound there (or about nothing), written in the NOTEBOOK's READS -> THE LOG, and marked Landed. once found. gReadsDebugAlways 2 brings one on every arrival, always about something real; CERULEAN CITY's hidden RARE CANDY (18, 7), its flag cleared, is the one thing unfound there. The theatre's debug scratch save, never the user's. The theatre's save has a dream waiting, and the first step after a load is the dream's (the step hook asks for it first), so the read comes on the second. The find is approached from above (a warp to (17, 6), then a step down), so that turning to face it is a turn and not a step onto its flowers.",
+  "stops": [
+    {
+      "stop": "the book held: the first step in CERULEAN CITY brings a read, in purple, about the hidden RARE CANDY",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "keyitem ITEM_SUBTLE_LAYER",
+        "flag FLAG_GOT_NOTEBOOK 1",
+        "keyitem ITEM_NOTEBOOK",
+        "flag FLAG_HIDDEN_ITEM_CERULEAN_CITY_RARE_CANDY 0",
+        "var VAR_READS_GIVEN 0",
+        "var VAR_READS_LANDED 0",
+        "var VAR_READ_LOG_WHERE 0",
+        "var VAR_READ_LOG_WHERE_1 0",
+        "var VAR_READ_LOG_WHERE_2 0",
+        "var VAR_READ_LOG_WHERE_3 0",
+        "var VAR_LEANS_TOLD 7",
+        "var VAR_LEANS_LANDED 5",
+        "poke gReadsDebugAlways 8 2",
+        "goto CeruleanCity 17 7",
+        "to 16 7",
+        "finish",
+        "to 15 7",
+        "finish",
+        "says \"A read:\"",
+        "says \"something\"",
+        "remember GIVEN *gSaveBlock1Ptr+0x1190 16",
+        "remember LANDED *gSaveBlock1Ptr+0x1192 16"
+      ]
+    },
+    {
+      "stop": "THE LOG before the find: one read, not landed; the leans' count beside it",
+      "steps": [
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "press DOWN 20",
+        "press UP",
+        "press A",
+        "wait 40",
+        "press A",
+        "wait 60",
+        "says \"Reads: 1 given, 0 landed.\"",
+        "says \"Leans: 7 told, 5 landed.\"",
+        "says \"DOLDRUM CITY: something\"",
+        "shot THE LOG, the read not landed",
+        "press B 4",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "the RARE CANDY found; the next arrival marks the read landed, and THE LOG says so",
+      "steps": [
+        "goto CeruleanCity 17 6",
+        "to 17 7",
+        "look 18 7",
+        "flagis FLAG_HIDDEN_ITEM_CERULEAN_CITY_RARE_CANDY 1",
+        "poke gReadsDebugAlways 8 0",
+        "goto CeruleanCity_House1 3 5",
+        "to 3 4",
+        "moved LANDED",
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "press DOWN 20",
+        "press UP",
+        "press A",
+        "wait 40",
+        "press A",
+        "wait 60",
+        "says \"Reads: 1 given, 1 landed.\"",
+        "says \"Landed.\"",
+        "shot THE LOG, the read landed",
+        "press B 4",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "without the book: the first step on a map, no read",
+      "steps": [
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "poke gReadsDebugAlways 8 2",
+        "remember GIVEN2 *gSaveBlock1Ptr+0x1190 16",
+        "goto CeruleanCity 17 7",
+        "to 16 7",
+        "wait 60",
+        "shot no read",
+        "poke gReadsDebugAlways 8 0",
+        "flag FLAG_GOT_SUBTLE_LAYER 1"
+      ]
+    }
+  ]
+}
