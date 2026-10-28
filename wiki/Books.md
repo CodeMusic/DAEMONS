@@ -64,6 +64,11 @@ second, asking voice is printed faint. 51 pages in ten sections:
   for Looking Back · Before You Steer
 - **Staying Correctable:** A Misread · The Mask · The Same Drive · Two Voices · Recognition, Not Force · A Last Word
 
+**Once you carry it**, you start to notice things, each marked in the book's purple: your daemon sometimes turns
+toward something you have not found yet, a read comes to you as you arrive somewhere, a lean before a turn in battle
+hints at what the other side will do, and now and then there is a faint line beneath what someone says. Not every
+read lands. The NOTEBOOK keeps a log of what you were told and what came true, and only the log decides.
+
 **Full text:** [docs/subtle-layer.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/subtle-layer.md)
 
 ## The covers

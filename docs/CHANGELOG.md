@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.315 — 2026-10-28
+
+### THE SUBTLE LAYER gets its section (T-423, T-454, T-459)
+
+- ***4.38***: **the book had lived only in `docs/subtle-layer.md` and its notes; the bible now holds it** -- *a handbook of practice, found on an INTERPRETER's shelf in BRAZEN, in CONTEXT's hue; THE THREE values (CLOSURE, ATTUNEMENT, VOLTAGE), battle-only and unsaved, waking only once it is held; and what the player notices after: the daemon notices first, a read, a lean in battle, and words under words.* **The log decides: the NOTEBOOK counts what landed, and the game never vouches that intuition works** (4.33). *The four lines beneath, as the user chose them, are in a table.*
+- ***Reports regenerated***: *`engine.md`'s budgets (the census was already current).*
+
 ## v11.314 — 2026-10-27
 
 ### The arc around SOUNDINGS closes (T-460), and it is approved

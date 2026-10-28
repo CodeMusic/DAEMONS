@@ -131,7 +131,8 @@ find out of issues and pull requests.
 ## SEND
 
 A party daemon can be **SENT** out of the game to the companion, where your phone or a board hosts it -- and it comes
-home with what it learned. See [The companion](The-companion).
+home with what it learned. While it is away, the people who tend daemons between battles sometimes hear how it is
+doing: well, fine or quiet, never worse. See [The companion](The-companion).
 
 ## Not built yet
 

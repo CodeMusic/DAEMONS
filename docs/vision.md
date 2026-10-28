@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.314**
+**A total conversion — the living design bible, v11.315**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4879,6 +4879,48 @@ take off.*
 
 ***Played through and approved*** (*the user, 2026-10-27*): **the SOUNDINGS route's 21 theatre stops pass, and every word of T-457, T-458 and T-460 is approved, so the DRAFT marks come off.** ***The desk props move so the player's hat no longer hides them*** — **the receiver, the card, the flowers and THE ANNEX's bench** — *where each goes is the game lane's to place and check.*
 
+
+### 4.38 THE SUBTLE LAYER — a trainer's handbook, and what the player notices once it is carried (T-423, T-454, T-459)
+
+***Lineage: `lineage.md` 3d.*** **The user's own book, *Developing Psychic Routines*, with passages from its first draft *Becoming Heroic*, rewritten for the game** (*the full text and its rules: `docs/subtle-layer.md`; the reasoning and every call: `docs/psychic-routines-notes.md` sections D to D4*). **It is the GUIDE's sibling (4.36)**: *found, not given, on an INTERPRETER's shelf in BRAZEN; read in the book reader, picture left and text right; in the companion's LIBRARY too.* ***Its hue is CONTEXT's***, **the same as the NOTEBOOK's cover**, *so the book matches the log it points to.*
+
+#### The book (T-423, built 2026-10-18, its last calls 2026-10-20)
+
+- ***A handbook of practice, not of cosmology.*** **It says what a trainer does and notices, never what the world is made of** — *with one exception, THE CONTAINER, which is attributed ("some trainers say") and ends* "Only you can answer whether that is so." **That attribution is what lets 4.33's scientist connect to it without the book agreeing with him.**
+- ***It only ever says "like".*** **"Content" and "context" are ordinary words in it, never the names of the two layers** (*craft rule 1*). ***No colour beside a feeling***, **the seven centres never coloured**, *and a virtue is said over its shadow, never as its cure (9.21, T-418).*
+- ***Fifty entries in ten sections***: **the read family (the Clairs, kept as a hint), the write family (steering, never writing), what the physics allows, the bonds (CHORUS), belief and spelling, the mind (virtues over shadows), the body (the seven centres, attributed and without colours or symptoms), the week, and STAYING WHOLE** — *integrity in process words only, the asking voice printed faint.* ***Its own spelling is British***; *the game and the GUIDE keep American (D3).*
+
+#### THE THREE values (T-454, built 2026-10-27)
+
+**Every daemon carries three values, as numbers it cannot see**: ***CLOSURE*** (*how whole it is*), ***ATTUNEMENT*** (*how thin its seam*) ***and VOLTAGE*** (*the feeling in the moment*). ***They wake only once THE SUBTLE LAYER is held*** — **before the book every battle is vanilla's.**
+
+- ***Battle only, and nowhere saved.*** **Each battle derives them for each party daemon from its friendship and its feelings (T-431), and drops them when the battle ends**: *0 bytes of save, so the companion needs nothing.*
+- ***The book's own formula is the rule***: **a read rises with ATTUNEMENT and falls with VOLTAGE; a write needs both, and only while CLOSURE holds; a low CLOSURE under high VOLTAGE leaks.** *Only the player's own CONTEXT routines are tuned, never in a link battle.* ***Never a read that comes true in the world*** — **4.33's rule.**
+
+#### What the player notices (T-459, built 2026-10-27/28)
+
+***Once the book is held, the player starts to notice things, each marked in the book's purple*** (*the user: "you notice more subtle intuitive things"*). **The purple marks the noticing, never a feeling.**
+
+| | | |
+|---|---|---|
+| **The daemon notices first** | *standing still, the follower turns toward something unfound within a screen; a ripple rises from it and a glint shows where it looks* | **What it points at is really there, and findable without it** (T-297) |
+| **A read** | *now and then, on arriving: "A read: / something by the water."* — **the book's own word** (*"every read is a lean, not a fact"*) | **Most are about something unfound; some are about nothing, worded the same** |
+| **A lean in battle** | *where "What will X do?" stood: "A lean: this turn, / it will strike."* — *or hold back, or turn away* | **Read from what the foe has really chosen, and right more often as ATTUNEMENT rises and VOLTAGE falls** — *THE THREE's first visible use* |
+| **Words under words** | *a faint line under four people's lines: what they mean beneath what they say* | **Every line and its place chosen by the user** (*below*) |
+
+***The log decides*** (*D row 3*): **the NOTEBOOK's READS → THE LOG counts reads given and landed, leans told and landed, and keeps the last four reads, each marked "Landed." once the thing it was about is found.** ***A read about nothing never lands.*** *So a player learns which of theirs tend to land* — **the game never vouches that intuition works** (4.33).
+
+***Words under words, as the user chose them*** (2026-10-28): *each sits under a line said once the book can be held.*
+
+| Who | Under | Beneath |
+|---|---|---|
+| **MOM** | *the ship line, from the S.S. TICKET to the eighth MARK* | *Come back.* |
+| **A CHECKPOINT keeper** | *every goodbye* | *Not too soon.* |
+| **CRYSTAL** | *"You will go further than I did."* | *I cannot always be there.* |
+| **The CHAMPION** | *"I thought it would be you."* | *Before you can.* |
+
+**No feeling is named in any of them.** ***Nobody says what the purple is.***
+
 ## 5. THE BENCHMARKS
 
 | # | City | Type | Concept | Mechanical lesson |
@@ -8791,6 +8833,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 - **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
 - **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)
+- **THE SUBTLE LAYER gets its section: the book, THE THREE values and what the player notices (T-423, T-454, T-459, recorded 2026-10-28)** — a handbook of practice, found in BRAZEN; three battle-only values that wake with it; once held, the daemon notices first, reads and leans are logged and the log decides, and four people's words carry a line beneath, all in CONTEXT's purple, which marks the noticing and never a feeling (4.38)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
 - **HANDSHAKE → TETHERING → COROUTINE (C-185, T-450, 2026-10-24)** — a sugar glider that grows only while carried; SIGNAL, SIGNAL, SIGNAL/STRATUM; stats 250/360/485; bond = steps/1000 (20 000 a day at most) + days carried × 5 + cares + goals together × 3, `EVO_CARRIED` at 60 and 160, never met on the cart; the first from the companion on the first goal finished while carrying, one per save; Gen 3's unused slots, INDEX 395–397 (9.27)
