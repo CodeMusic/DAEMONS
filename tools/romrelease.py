@@ -5,6 +5,7 @@
     python3 tools/romrelease.py --write            # build all four ROMs and file a release (sealing older groups)
     python3 tools/romrelease.py --write --no-build # file the ROMs already built, without rebuilding
     python3 tools/romrelease.py seal v11.280.x --write   # seal one group by hand
+    python3 tools/romrelease.py --debug-patches-only v11.315.4 --write   # DEBUG patches for a release already filed
 
 THE VERSION IS THE DESIGN BIBLE'S, PLUS A RELEASE NUMBER. There was no ROM version before this, and the one version
 the project has is `vision.md`'s (v11.281) -- the specification the ROM implements. So a release is
@@ -22,6 +23,7 @@ commit what it wrote; the ROMs are ignored by pattern and will not follow.
           daemonsContent.gba          CONTENT
           daemonsContext.gba          CONTEXT
           DEBUG/                      the two testing builds
+            PATCHES/                  their four BPS patches and debug_patches.json -- PRIVATE (T-466, below)
           PATCHES/                    four BPS patches, one per retail ROM (below)
           RELEASE_NOTES.md            what changed since the release before it, and each ROM's SHA-1
         v11.281.2/ ...
@@ -41,6 +43,15 @@ FireRed 1.0 and Rev 1, CONTEXT for LeafGreen 1.0 and Rev 1 -- since a patch appl
 from and both revisions are common. The sources are pret's own builds of upstream, which are byte-identical to
 retail (each checked against pret's .sha1), kept in ~/.cache/daemons and never in any repo. The patches are
 gitignored for their size (2.5MB each, four a release); they are what gets published, not the ROMs.
+
+AND, PRIVATELY, A PATCH FOR EACH TESTING BUILD (T-466, C-216; the user, 2026-10-28: "Private for now, I may add it
+public where some access code is needed"). `DEBUG/PATCHES/` holds the same four patches made from the two DEBUG ROMs
+against the same cached retail bases -- "DAEMONS CONTENT DEBUG for FireRed 1.0.bps" and so on -- and
+`debug_patches.json`, which describes them in companion_export's patches.json shape (no url: they are not on GitHub)
+plus `debug: true`. The companion's hub serves them to paired devices only. They are never committed (.gitignore),
+never uploaded (ghrelease.py takes only PATCHES/*.bps and refuses anything under DEBUG/), and never in the public
+patches.json (companion_export reads only PATCHES/). A seal moves the last release's DEBUG/ up whole, so the group
+folder keeps the NEWEST release's debug patches and the rest go with their releases.
 
 A RELEASE IS REFUSED from a dirty engine or docs tree -- its notes list commits, and uncommitted work would be in
 the ROM and not in the notes.
@@ -72,6 +83,10 @@ PATCHES = [
 #  patch is proved on the ROM a player actually owns, not only on pret's rebuild of it. The folder is gitignored and
 #  its .sav files are never opened.
 CARTS = os.path.join(REL, "CART BACKUPS")
+#  T-466: the testing builds' patches, private -- the same bases, the DEBUG ROMs, " DEBUG" in the name
+DEBUG_PATCHES = [("DEBUG/" + ours.replace(".gba", "_debug.gba"), name.replace(" for ", " DEBUG for "), rom, h, owned)
+                 for ours, name, rom, h, owned in PATCHES]
+DEBUG_MANIFEST = "debug_patches.json"
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bps
 
@@ -251,6 +266,57 @@ def make_patches(dest):
     return rows
 
 
+def make_debug_patches(dest, version):
+    """T-466: DEBUG/PATCHES/ -- four patches from the testing builds, and debug_patches.json. Private: gitignored, never
+    uploaded. Each is proved by applying it to its base and comparing the SHA-1 with the DEBUG ROM's."""
+    import struct, zlib
+    out_dir = os.path.join(dest, "DEBUG", "PATCHES")
+    for ours, *_ in DEBUG_PATCHES:
+        if not os.path.exists(os.path.join(dest, ours)):
+            raise SystemExit("  refused: %s has no %s -- no DEBUG patches without the DEBUG ROMs" % (dest, ours))
+    os.makedirs(out_dir, exist_ok=True)
+    dumps = cart_dumps()
+    patches = []
+    for ours, name, rom, hashfile, owned in DEBUG_PATCHES:
+        base = open(os.path.join(CACHE, rom), "rb").read()
+        tgt = open(os.path.join(dest, ours), "rb").read()
+        patch = bps.create(base, tgt)
+        made = bps.apply(base, patch)
+        if hashlib.sha1(made).hexdigest() != hashlib.sha1(tgt).hexdigest():
+            raise SystemExit("  refused: %s does not reproduce %s" % (name, ours))
+        open(os.path.join(out_dir, name), "wb").write(patch)
+        digest = open(os.path.join(CACHE, hashfile)).read().split()[0]
+        on_cart = prove_on_cart(name, patch, tgt, digest, dumps)
+        crc_src, crc_tgt, _ = struct.unpack("<III", patch[-12:])
+        game, region, rev = re.fullmatch(r"Pokemon (\w+) \(([^)]*)\) (1\.0|Rev 1)", owned).groups()
+        patches.append({
+            "name": name, "file": name, "edition": "CONTENT" if "Content" in ours else "CONTEXT", "debug": True,
+            "version": version,
+            "source": {"game": game, "region": region, "revision": rev, "name": owned, "sha1": digest, "crc32": "%08X" % crc_src,
+                       "md5": hashlib.md5(base).hexdigest()},
+            "target": {"rom": ours, "sha1": hashlib.sha1(tgt).hexdigest(), "crc32": "%08X" % crc_tgt},
+            "patch": {"size": len(patch), "sha1": hashlib.sha1(patch).hexdigest(),
+                      "sha256": hashlib.sha256(patch).hexdigest()},
+            "proved": "a real cart, dumped" if on_cart else "pret's byte-identical rebuild"})
+        print("  patched %s (%d KB, checked by applying it%s)" % (os.path.join("DEBUG/PATCHES", name), len(patch) // 1024,
+              " -- and on the user's own cart" if on_cart else ""))
+    meta = os.path.join(dest, ".release.json")
+    rec = json.load(open(meta)) if os.path.exists(meta) else {}
+    manifest = {"_about": "T-466 (C-216): DAEMONS' TESTING BUILD patches -- PRIVATE: never committed, never on GitHub, "
+                          "never in the public patches.json; the hub serves them to paired devices only. Same shape as "
+                          "patches.json's entries, plus debug: true; file is relative to this folder. Apply one to the "
+                          "retail ROM its source names (sha1 or crc32) and check the result against target.sha1.",
+                "version": version, "tag": "v" + version, "bible": rec.get("bible"), "engine": rec.get("engine"),
+                "made": rec.get("made"), "debug": True, "patches": patches}
+    tmp = os.path.join(out_dir, "." + DEBUG_MANIFEST + ".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=1)
+        f.write("\n")
+    os.replace(tmp, os.path.join(out_dir, DEBUG_MANIFEST))
+    print("  wrote %s" % os.path.join("DEBUG/PATCHES", DEBUG_MANIFEST))
+    return manifest
+
+
 def patch_notes(rows):
     out = ["## Patches", "",
            "*Apply one to the ROM it names, in any BPS patcher (Rom Patcher JS works in a browser). Each checks the "
@@ -307,11 +373,39 @@ def release():
     json.dump({"version": version, "bible": bible, "engine": engine, "docs": docs,
                "made": datetime.datetime.now().isoformat(timespec="seconds")},
               open(os.path.join(dest, ".release.json"), "w"), indent=1)
+    make_debug_patches(dest, version)      # T-466: private; after .release.json, which its manifest reads
     print("  released v%s -> %s  (commit its notes; the ROMs stay out of git)" % (version, os.path.relpath(dest, ROOT)))
     return 0
 
 
+def release_dir(arg):
+    """A release named (v11.315.4) or given as a folder."""
+    if os.path.isdir(arg):
+        return os.path.abspath(arg)
+    name = arg if arg.startswith("v") else "v" + arg
+    return os.path.join(REL, "v%s.x" % name[1:].rsplit(".", 1)[0], name)
+
+
 def main():
+    if "--debug-patches-only" in sys.argv:
+        #  T-466: the private DEBUG patches for a release already filed: `--debug-patches-only v11.315.4 --write`
+        i = sys.argv.index("--debug-patches-only")
+        if i + 1 >= len(sys.argv) or sys.argv[i + 1].startswith("--"):
+            raise SystemExit("  usage: romrelease.py --debug-patches-only <release or its folder> [--write]")
+        dest = release_dir(sys.argv[i + 1])
+        version = os.path.basename(dest)[1:]
+        if not os.path.isdir(dest):
+            raise SystemExit("  refused: no release folder %s" % dest)
+        have = [ours for ours, *_ in DEBUG_PATCHES if os.path.exists(os.path.join(dest, ours))]
+        print("  DEBUG patches for %s (%d of 2 DEBUG ROMs there)" % (os.path.relpath(dest, ROOT), len(set(have))))
+        for _, name, *_ in DEBUG_PATCHES:
+            print("    DEBUG/PATCHES/%s" % name)
+        print("    DEBUG/PATCHES/%s" % DEBUG_MANIFEST)
+        if WRITE and retail_sources(True):
+            make_debug_patches(dest, version)
+        elif not WRITE:
+            print("  report only; pass --write to make them")
+        return 0
     if len(sys.argv) > 1 and sys.argv[1] == "seal":
         seal(sys.argv[2])
         return 0

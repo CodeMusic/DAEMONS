@@ -10,7 +10,7 @@
 committed: the ROMs are Nintendo's engine with our work in it, and the patches are too large for git). This is the
 step after it. It tags the commit that filed the notes, uses the notes as the page, puts the player's guide
 (`ROM RELEASE/HOW_TO_PATCH.md`) at the top, and uploads the four `.bps` files. Nothing else in the folder is
-uploaded, and it refuses outright if a `.gba` would be.
+uploaded -- never DEBUG/PATCHES/, the testing build's private patches (T-466) --, and it refuses outright if a `.gba` would be.
 
 It refuses a release whose patches are missing (the folder of a sealed group keeps only its last ROMs), a tag that
 already exists, and a dirty tree -- the tag must point at what is published.
@@ -56,6 +56,9 @@ def main():
                          % (name, len(patches), "its" if os.path.exists(notes_path) else "no"))
     if any(p.lower().endswith(".gba") for p in patches):
         raise SystemExit("  refused: a ROM is in the upload list")
+    #  T-466: the testing build's patches (DEBUG/PATCHES/, debug_patches.json) are private and never uploaded
+    if any("DEBUG" in os.path.relpath(p, folder).split(os.sep) or " DEBUG " in os.path.basename(p) for p in patches):
+        raise SystemExit("  refused: a DEBUG patch is in the upload list -- those are private (T-466)")
 
     rel = os.path.relpath(notes_path, ROOT)
     commit = run("git", "log", "-1", "--format=%H", "--", rel).stdout.strip()
