@@ -1,0 +1,1042 @@
+{
+ "singleton": {
+  "name": "SINGLETON",
+  "national": 374,
+  "slot": "beldum",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a small round metal orb with ONE big eye, the only one there is (INSTANCE)",
+  "note": "the chibi icon draft 6741 used as the front: the only one of 14 drafts that drew ONE eye; cut to its circle, ringed in ink (orbs19.py). Two small claws drawn by hand.",
+  "failed": "front: one eye lost in every front draft (12); taken from the icon draft",
+  "front": "src/singleton_orb.png",
+  "back": "singleton_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,41,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.1,
+    "accent_clean_after": 9.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1915
+   },
+   "front_accent_pct": 5.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "28,31,42,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1611
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     113,
+     163,
+     232
+    ],
+    "accent_cells": 13,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "pairwise": {
+  "name": "PAIRWISE",
+  "national": 375,
+  "slot": "metang",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "TWO metal orbs fused into one body, each with its own eye, a seam between them (COUPLED)",
+  "note": "two of SINGLETON's orb, fused side by side (orbs19.py): no draft of 8 drew two joined. Two small claws drawn by hand.",
+  "failed": "front: two fused orbs lost in every draft; composed from SINGLETON's",
+  "front": "src/pairwise_orbs.png",
+  "back": "pairwise_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "35,35,48,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.5,
+    "accent_clean_after": 9.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1691
+   },
+   "front_accent_pct": 5.9,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "13,31,37,39",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.0,
+    "accent_clean_after": 7.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1652
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     134,
+     179,
+     235
+    ],
+    "accent_cells": 10,
+    "size": [
+     28,
+     18
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "federated": {
+  "name": "FEDERATED",
+  "national": 376,
+  "slot": "metagross",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a heavy metal walker with FOUR separate glowing cores set apart on its body (COLLECTIVE)",
+  "note": "i2i 0.85: a round metal body on short legs with ONE glowing core; four cores drawn by hand.",
+  "failed": "front: the four cores lost (one drawn)",
+  "front": "federated_front_i2i_6722.png",
+  "back": "federated_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,39,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.3,
+    "accent_clean_after": 7.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1335
+   },
+   "front_accent_pct": 6.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,39,39,61",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1597
+   },
+   "back_accent_pct": 6.5,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     144,
+     223
+    ],
+    "accent_cells": 10,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "deucalion": {
+  "name": "DEUCALION",
+  "national": 377,
+  "slot": "regirock",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a goat made of rough cracked stone, a thrown stone that stood up (STONE KIN)",
+  "note": "t2i 6701: a sitting chibi goat with curled horns (its grey ground flooded off). Stone cracks drawn by hand.",
+  "failed": "front: the cracked stone lost in every draft (8)",
+  "front": "src/deucalion_front_6701_unframed.png",
+  "back": "deucalion_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,35,53",
+    "painted": "[3, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1519
+   },
+   "front_accent_pct": 0.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,35,34,54",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1187
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     104,
+     162,
+     215
+    ],
+    "accent_cells": 4,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "khione": {
+  "name": "KHIONE",
+  "national": 378,
+  "slot": "regice",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a slender stag with big branching antlers of clear ice, snowflakes kept in them (KEPT SNOW)",
+  "note": "t2i 6701: a chibi white stag with big blue branching antlers (its beige ground flooded off, then only pure white keyed out so the white body stays). Snowflakes drawn in the antlers by hand.",
+  "failed": "front: the snowflakes lost",
+  "front": "src/khione_front_6701_key.png",
+  "back": "khione_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "29,34,39,53",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 52.0,
+    "accent_clean_after": 14.3,
+    "greyed_px": 368,
+    "streak_px": 19,
+    "creature_px": 977
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,33,41,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 786
+   },
+   "back_accent_pct": 0.9,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     98,
+     161,
+     206
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "talos": {
+  "name": "TALOS",
+  "national": 379,
+  "slot": "registeel",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a riveted bronze bull, a watchman that never stops walking its rounds (WATCHMAN)",
+  "note": "i2i 0.76: a grey bull standing four-square, horns up. A riveted bolt plate drawn on its chest by hand.",
+  "failed": "front: the bolt and rivets lost",
+  "front": "talos_front_i2i_6724.png",
+  "back": "talos_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,35,39,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.7,
+    "accent_clean_after": 3.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1253
+   },
+   "front_accent_pct": 3.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "11,34,49,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1568
+   },
+   "back_accent_pct": 2.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     172,
+     223
+    ],
+    "accent_cells": 1,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "pontus": {
+  "name": "PONTUS",
+  "national": 382,
+  "slot": "kyogre",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a great whale with a curling wave rolling along its back, the first sea (FIRST SEA)",
+  "note": "i2i 0.76: a round whale with a splash of spray over its head. A white curling wave crest drawn along its back by hand.",
+  "failed": "front: the curling wave lost (12 drafts; only the icon drew one)",
+  "front": "pontus_front_i2i_6724.png",
+  "back": "pontus_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,31,51",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.9,
+    "accent_clean_after": 14.9,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1378
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "34,36,44,52",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1100
+   },
+   "back_accent_pct": 1.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     120,
+     169,
+     224
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     24
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "gaia": {
+  "name": "GAIA",
+  "national": 383,
+  "slot": "groudon",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a great tortoise with a rocky mountain growing out of its shell, the first land (FIRST LAND)",
+  "note": "i2i 0.72: a tortoise with a grey rocky shell and a small peak. A two-peaked rock mountain and a tiny tree drawn on its shell by hand.",
+  "failed": "front: the mountain lost (green shells or a small rock)",
+  "front": "gaia_front_i2i_6723.png",
+  "back": "gaia_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,34,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.1,
+    "accent_clean_after": 9.1,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1640
+   },
+   "front_accent_pct": 8.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "6,32,32,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 24.2,
+    "accent_clean_after": 13.2,
+    "greyed_px": 159,
+    "streak_px": 20,
+    "creature_px": 1457
+   },
+   "back_accent_pct": 8.8,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     96,
+     149,
+     208
+    ],
+    "accent_cells": 2,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "ouranos": {
+  "name": "OURANOS",
+  "national": 384,
+  "slot": "rayquaza",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a crescent moon creature with a calm face on its inner curve, above the weather (OVER BOTH)",
+  "note": "i2i 0.85: a crescent moon with a calm sleepy face and a small star. A small cloud drawn under its lower tip by hand.",
+  "failed": "",
+  "front": "ouranos_front_i2i_6722.png",
+  "back": "ouranos_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,35,32,49",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.1,
+    "accent_clean_after": 7.1,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 701
+   },
+   "front_accent_pct": 6.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "28,32,50,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 824
+   },
+   "back_accent_pct": 3.9,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     140,
+     198,
+     229
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "polydeuces": {
+  "name": "POLYDEUCES",
+  "national": 380,
+  "slot": "latias",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a WHITE swan, wings half raised, the twin who gave half of what it had (OTHER TWIN)",
+  "note": "i2i 0.8: a white swan, wings half raised. A small star drawn above its head by hand.",
+  "failed": "front: the star lost",
+  "front": "polydeuces_front_i2i_6721.png",
+  "back": "polydeuces_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "11,32,39,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.1,
+    "accent_clean_after": 4.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1366
+   },
+   "front_accent_pct": 4.4,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "22,32,42,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1182
+   },
+   "back_accent_pct": 3.3,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     144,
+     198,
+     232
+    ],
+    "accent_cells": 4,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "castor": {
+  "name": "CASTOR",
+  "national": 381,
+  "slot": "latios",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a DARK-necked swan, wings spread, the elder twin (ELDER TWIN)",
+  "note": "i2i 0.8: a swan, wings spread wide, a small gold star above its head. Its neck and head darkened by hand.",
+  "failed": "front: the black neck lost (every draft white or grey)",
+  "front": "castor_front_i2i_6721.png",
+  "back": "castor_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,31,35,39",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1092
+   },
+   "front_accent_pct": 1.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "28,32,40,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 941
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     174,
+     227
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "elpis": {
+  "name": "ELPIS",
+  "national": 385,
+  "slot": "jirachi",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a small winged sprite still sitting inside an open clay jar, the last thing left (LAST THING)",
+  "note": "i2i 0.8: a small winged sprite sitting in a round clay jar, as asked.",
+  "failed": "",
+  "front": "elpis_front_i2i_6721.png",
+  "back": "elpis_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,33,33,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1661
+   },
+   "front_accent_pct": 1.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,31,49,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 11.6,
+    "accent_clean_after": 11.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1693
+   },
+   "back_accent_pct": 0.7,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     118,
+     176,
+     228
+    ],
+    "accent_cells": 0,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "overtone": {
+  "name": "OVERTONE",
+  "national": 358,
+  "slot": "chimecho",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a small round songbird singing one clear note, rings of sound from its open beak (SAME NOTE)",
+  "note": "t2i 6701: a round songbird, beak wide open, singing (its grey ground flooded off). Two arcs of sound drawn at its beak by hand.",
+  "failed": "front: the rings of sound lost",
+  "front": "src/overtone_front_6701_unframed.png",
+  "back": "overtone_back_i2i_6731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,37,50",
+    "painted": "[3, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.4,
+    "accent_clean_after": 7.4,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 935
+   },
+   "front_accent_pct": 6.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "31,34,51,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.0,
+    "accent_clean_after": 4.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1210
+   },
+   "back_accent_pct": 4.3,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     167,
+     228
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}

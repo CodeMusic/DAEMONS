@@ -1,0 +1,94 @@
+{
+ "_": "batch 19 (2026-10-28), the charm recipe (charm8 + charmlo, dir x, seed 6700), chosen by eye on cand/g0-g6.png. Seeds: t2i chibi fronts 6701/6702, second wordings 6703/6704, i2i from today's front 0.8 = 6721, 0.85 = 6722, 0.72 = 6723, 0.76 = 6724, one back from today's back 0.66 = 6731, one chibi icon 6741. Icons 'derived' = icon3 from the hand front. Every back is the front mirrored, face out (hand_b19.py). PROTEUS (410) set aside: T-440's three forms.",
+ "singleton": {
+  "front": "src/singleton_orb.png",
+  "icon": "derived",
+  "back": "singleton_back_i2i_6731.png",
+  "note": "the chibi icon draft 6741 used as the front: the only one of 14 drafts that drew ONE eye; cut to its circle, ringed in ink (orbs19.py). Its orange iris crimson (STEEL's hue trap).",
+  "failed": "front: one eye lost in every front draft (12); taken from the icon draft"
+ },
+ "pairwise": {
+  "front": "src/pairwise_orbs.png",
+  "icon": "derived",
+  "back": "pairwise_back_i2i_6731.png",
+  "note": "two of SINGLETON's orb, fused side by side (orbs19.py): no draft of 8 drew two joined. Irises crimson as SINGLETON's.",
+  "failed": "front: two fused orbs lost in every draft; composed from SINGLETON's"
+ },
+ "federated": {
+  "front": "federated_front_i2i_6722.png",
+  "icon": "derived",
+  "back": "federated_back_i2i_6731.png",
+  "note": "i2i 0.85: a round metal body on short legs with ONE glowing core; four cores drawn by hand.",
+  "failed": "front: the four cores lost (one drawn)"
+ },
+ "deucalion": {
+  "front": "src/deucalion_front_6701_unframed.png",
+  "icon": "derived",
+  "back": "deucalion_back_i2i_6731.png",
+  "note": "t2i 6701: a sitting chibi goat with curled horns (its grey ground flooded off). Stone cracks drawn by hand.",
+  "failed": "front: the cracked stone lost in every draft (8)"
+ },
+ "khione": {
+  "front": "src/khione_front_6701_key.png",
+  "icon": "derived",
+  "back": "khione_back_i2i_6731.png",
+  "note": "t2i 6701: a chibi white stag with big blue branching antlers (its beige ground flooded off, then only pure white keyed out so the white body stays). Snowflakes drawn in the antlers by hand.",
+  "failed": "front: the snowflakes lost"
+ },
+ "talos": {
+  "front": "talos_front_i2i_6724.png",
+  "icon": "derived",
+  "back": "talos_back_i2i_6731.png",
+  "note": "i2i 0.76: a grey bull standing four-square, horns up. A riveted bolt plate drawn on its chest by hand.",
+  "failed": "front: the bolt and rivets lost"
+ },
+ "pontus": {
+  "front": "pontus_front_i2i_6724.png",
+  "icon": "derived",
+  "back": "pontus_back_i2i_6731.png",
+  "note": "i2i 0.76: a round whale; the blue spray drawn over its head and back curls like a wave crest, kept as the wave.",
+  "failed": ""
+ },
+ "gaia": {
+  "front": "gaia_front_i2i_6723.png",
+  "icon": "derived",
+  "back": "gaia_back_i2i_6731.png",
+  "note": "i2i 0.72: a tortoise with a grey rocky shell and a small peak. A two-peaked rock mountain and a tiny tree drawn on its shell by hand.",
+  "failed": "front: the mountain lost (green shells or a small rock)"
+ },
+ "ouranos": {
+  "front": "ouranos_front_i2i_6722.png",
+  "icon": "derived",
+  "back": "ouranos_back_i2i_6731.png",
+  "note": "i2i 0.85: a crescent moon with a calm sleepy face and a small star. A small cloud drawn under its lower tip by hand.",
+  "failed": ""
+ },
+ "polydeuces": {
+  "front": "polydeuces_front_i2i_6721.png",
+  "icon": "derived",
+  "back": "polydeuces_back_i2i_6731.png",
+  "note": "i2i 0.8: a white swan, wings half raised. A small star drawn above its head by hand.",
+  "failed": "front: the star lost"
+ },
+ "castor": {
+  "front": "castor_front_i2i_6721.png",
+  "icon": "derived",
+  "back": "castor_back_i2i_6731.png",
+  "note": "i2i 0.8: a swan, wings spread wide, a small gold star above its head. Its neck and head darkened by hand.",
+  "failed": "front: the black neck lost (every draft white or grey)"
+ },
+ "elpis": {
+  "front": "elpis_front_i2i_6721.png",
+  "icon": "derived",
+  "back": "elpis_back_i2i_6731.png",
+  "note": "i2i 0.8: a small winged sprite sitting in a round clay jar, as asked.",
+  "failed": ""
+ },
+ "overtone": {
+  "front": "src/overtone_front_6701_unframed.png",
+  "icon": "derived",
+  "back": "overtone_back_i2i_6731.png",
+  "note": "t2i 6701: a round songbird, beak wide open, singing (its grey ground flooded off). Two arcs of sound drawn at its beak by hand.",
+  "failed": "front: the rings of sound lost"
+ }
+}
