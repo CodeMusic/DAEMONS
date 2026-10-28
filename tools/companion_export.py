@@ -314,6 +314,34 @@ AWAY_BIT, ASKED_BIT = 4, 5
 SOUNDING_SHIFT = 6
 
 
+#  T-473 (C-219): a trade's bits, read from struct BoxPokemon in include/pokemon.h, never typed -- each field's bit
+#  offset counted from the top (the arrays by their length constants, the bitfields in order): TRADING in the flags
+#  byte beside AWAY, LOAN and TRADED_IN in the u16 at 0x1E (bits 2-15 reserved).
+def trade_bits():
+    h = read("include/pokemon.h")
+    body = re.search(r"struct BoxPokemon\s*\{(.*?)\n\s*union", h, re.S).group(1)
+    lengths = {"POKEMON_NAME_LENGTH": 10, "PLAYER_NAME_LENGTH": 7}
+    size = {"u8": 8, "u16": 16, "u32": 32}
+    bit, at = 0, {}
+    for m in re.finditer(r"^\s*(u8|u16|u32)\s+(\w+)(?:\[(\w+)\])?(?::(\d+))?;", body, re.M):
+        kind, name, length, width = m.groups()
+        unit = size[kind]
+        if width:                                   # a bitfield: packed into its unit, a new unit when it will not fit
+            if bit % unit + int(width) > unit:
+                bit += unit - bit % unit
+            at[name] = (bit // unit * (unit // 8), bit % unit, int(width), unit)
+            bit += int(width)
+        else:
+            bit += -bit % unit
+            at[name] = (bit // 8, 0, unit, unit)
+            bit += unit * ((lengths[length] if length in lengths else int(length)) if length else 1)
+    trading, loan, traded_in = at["trading"], at["daemonsLoan"], at["daemonsTradedIn"]
+    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or loan[0] != traded_in[0]:
+        raise SystemExit("  refused: struct BoxPokemon's trade bits are not where the companion reads them")
+    return {"trading_bit": trading[1], "trade_flags_offset": loan[0],
+            "loan_mask": 1 << loan[1], "traded_in_mask": 1 << traded_in[1]}
+
+
 def save_layout():
     """C-02: what a save reader needs, read from the BUILT game (the ELF's symbol sizes, global.h's offsets), so a
     change to the save blocks reaches the companion. Both editions must agree; without a build, nothing is written."""
@@ -343,6 +371,7 @@ def save_layout():
             "pokemon_size": 100, "box_pokemon_size": 80, "level_offset": 84,
             "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT,
             "sounding_shift": SOUNDING_SHIFT,   # two bits, values 0-3 (T-458)
+            **trade_bits(),                     # T-473: TRADING beside AWAY; LOAN and TRADED_IN at 0x1E
             # C-45: sNatureStatTable (pokemon.c), by nature: Attack, Defense, Speed, Sp.Atk, Sp.Def, each +1, -1 or 0
             "natures": natures_table()}
 
@@ -972,7 +1001,8 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_YEAR_ALL", "EV_GIFTS_AGAIN",                                        # T-416
                    "EV_CRYSTAL_AGAIN",                                                     # T-457: a reset, not an event
                    "EV_SOUNDING",                                                          # T-458: the companion's signal, faked
-                   "EV_ITS_DREAM"}                                                         # T-462: the companion's dream, faked
+                   "EV_ITS_DREAM",                                                         # T-462: the companion's dream, faked
+                   "EV_TRADE_IN", "EV_LOAN_IN"}                                            # T-473: the companion's trade, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE"}        # T-431: the feelings' debug view and its clock; T-454: THE THREE's
 
