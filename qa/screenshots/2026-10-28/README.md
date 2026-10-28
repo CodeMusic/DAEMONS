@@ -163,3 +163,21 @@ Batch 12 (REPAY to KAIROS) on the recommended choices; MISSINGNO set aside; ques
 Batch 12 (REPAY to KAIROS) on the recommended choices; MISSINGNO set aside; questions in gfx/drafts/t452/p/questions.md. v11.315.5.
 
 ![28Oct2026 - T452 - batch 12 daemons - 27](28Oct2026%20-%20T452%20-%20batch%2012%20daemons%20-%2027.png)
+
+### 28Oct2026 - T452 - batch 13 daemons - 28
+
+Batch 13 (STUMP to UNBRANCHED) on the recommended choices; THE NEXUS keeps its painted art; questions in gfx/drafts/t452/q/questions.md. v11.316.1.
+
+![28Oct2026 - T452 - batch 13 daemons - 28](28Oct2026%20-%20T452%20-%20batch%2013%20daemons%20-%2028.png)
+
+### 28Oct2026 - T452 - batch 13 daemons - 29
+
+Batch 13 (STUMP to UNBRANCHED) on the recommended choices; THE NEXUS keeps its painted art; questions in gfx/drafts/t452/q/questions.md. v11.316.1.
+
+![28Oct2026 - T452 - batch 13 daemons - 29](28Oct2026%20-%20T452%20-%20batch%2013%20daemons%20-%2029.png)
+
+### 28Oct2026 - T452 - batch 13 daemons - 30
+
+Batch 13 (STUMP to UNBRANCHED) on the recommended choices; THE NEXUS keeps its painted art; questions in gfx/drafts/t452/q/questions.md. v11.316.1.
+
+![28Oct2026 - T452 - batch 13 daemons - 30](28Oct2026%20-%20T452%20-%20batch%2013%20daemons%20-%2030.png)
