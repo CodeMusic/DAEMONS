@@ -1,0 +1,41 @@
+{
+  "rom": "debug",
+  "about": "T-459 D: words under words -- once THE SUBTLE LAYER is held, a purple line after some people's lines, what is meant under what is said. The user chose four (2026-10-28): MOM's ship line, \"Come back.\"; the CHECKPOINT's goodbye, \"Not too soon.\"; CRYSTAL's \"...further than I did\", \"I cannot always be there.\"; the CHAMPION's \"I thought it would be you.\", \"Before you can.\" MOM and the CHECKPOINT are played here; CRYSTAL's rating scene and the CHAMPION's room are read from the ROM. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "the book held: MOM, between the S.S. TICKET and the eighth MARK -- her ship line, then \"Come back.\" in purple",
+      "steps": [
+        "load debug",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "flag FLAG_MOM_SAW_YOU_OFF 1",
+        "flag FLAG_GOT_SS_TICKET 1",
+        "flag FLAG_BADGE08_GET 0",
+        "goto PalletTown_PlayersHouse_1F 4 5",
+        "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
+        "says \"Tell him to call his mother.\"",
+        "says \"Come back.\""
+      ]
+    },
+    {
+      "stop": "the book held: a CHECKPOINT heals, says goodbye, then \"Not too soon.\" in purple",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 6",
+        "to 7 5",
+        "finish",
+        "talk ViridianCity_PokemonCenter_1F_EventScript_Nurse",
+        "says \"We hope to see you again!\"",
+        "says \"Not too soon.\""
+      ]
+    },
+    {
+      "stop": "without the book: MOM's ship line, and nothing under it",
+      "steps": [
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "goto PalletTown_PlayersHouse_1F 4 5",
+        "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
+        "says \"Tell him to call his mother.\"",
+        "flag FLAG_GOT_SUBTLE_LAYER 1"
+      ]
+    }
+  ]
+}
