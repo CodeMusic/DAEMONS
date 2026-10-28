@@ -30,10 +30,18 @@ passed.
 The release page is the release's notes, with [how to patch](Playing) at the top: each ROM's SHA-1, the engine and
 design commits it was built from, and every commit since the release before.
 
+## Where else a release goes
+
+- **The companion's one app** reads the list of releases and the patches' hashes as data
+  (`patches.json` in daemons-companion), so it can patch a player's own ROM on the device and offer each new release
+  with one tap ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app)).
+- **daemons-playground** always serves the newest release from a local `ROM RELEASE/`, and its WHAT'S NEW tab shows the
+  last twelve releases' notes ([its wiki](https://github.com/CodeMusic/daemons-playground/wiki)).
+
 ## In the repository
 
 [`ROM RELEASE/`](https://github.com/CodeMusic/DAEMONS/tree/main/ROM%20RELEASE) files every release by bible version,
-`v11.299.x/<release>/`, with its `RELEASE_NOTES.md`. **The notes are committed; the ROMs and patches are not** (ROMs
+`v11.315.x/<release>/`, with its `RELEASE_NOTES.md`. **The notes are committed; the ROMs and patches are not** (ROMs
 never, patches for size -- they are published as downloads). When the bible moves on, the first release after it
 **seals** the old group: every note set as one `ReleaseNotes_v11.NNN.x.pdf`.
 

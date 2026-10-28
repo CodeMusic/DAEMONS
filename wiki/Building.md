@@ -106,6 +106,9 @@ debug run never touches a playthrough.
 - Held with **SELECT** on the map: A heals, B restocks, UP plays the next song, DOWN puts the map's own back.
 - **Hold B** to walk through grass.
 
+The engine's own wiki has more on the GBA debug build and on the tree itself:
+[pokefirered-daemons wiki](https://github.com/CodeMusic/pokefirered-daemons/wiki).
+
 The Game Boy debug build is upstream's own, and a different thing: **SELECT** on the title screen opens its menu, and
 holding B skips trainer battles. Its starting party is upstream's, so expect Kanto names in it.
 

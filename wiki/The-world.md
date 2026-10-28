@@ -88,6 +88,31 @@ What you play is written in the **SONGBOOK**, in the notes' colours.
 A daemon's colours fill as it comes to trust you: nearly grey with a hint of its type at first, half its colour by
 the time it is friendly, the full ramp at the most. People stay in colour; some trainers' daemons never warm to anyone.
 
+## The daemons, drawn again
+
+Every daemon was redrawn for DAEMONS and coloured by its type. Now they are being **drawn again**, in a style of their
+own: big, readable pixel portraits -- front, back and a party icon -- each with the one prop or shape that says what it
+is. They arrive in batches of about twenty; about two hundred are in so far, and the rest are in progress.
+
+**The daemon at the head of your party walks behind you** as a small picture of its own, at the player's size.
+
+## Feelings, never named
+
+Your daemons feel things -- glad, cross, low, calm or afraid -- from what happens to them in play, and you see it in how
+the one behind you looks and acts, and on a page of its summary. The game never names a feeling and never makes one a
+status.
+
+## Routines, signed
+
+Every routine carries a signature of its own in battle: a few glyphs of bits and a three-note figure in its type's key.
+On a holiday, the signature wears the month's colour.
+
+## The map
+
+The TOWN MAP keeps its shape, so finding your way is unchanged, but it is drawn in the game's own look: paper and ink,
+routes like a score, and the sea a shuffle of bits and notes. The water in the world moves the same way. Some of the
+buildings the story turns on have art of their own, drawn from the story rather than retinted.
+
 ## The GAME CORNER
 
 The GAME CORNER's machines play as the companion's CASINO does: reels of the daemons you have seen, a coin and the
@@ -104,7 +129,12 @@ YEAR and more. A page not yet read carries a dot, and each says where it was fou
 opens a song.
 
 **The DREAM LOG.** After a milestone, at the next dawn, you say *"I had a dream."* -- and the dream is filed, as an
-image, with a title and no interpretation. Someone else's dreams are kept there too.
+image, with a title and no interpretation. Someone else's dreams are kept there too. And a daemon carried on a watch
+dreams while it sleeps there: at the next SYNC its dream comes home, and is filed under **ITS DREAMS** at the next dawn
+-- titled, never explained (draft).
+
+**THE LOG**, once you hold [THE SUBTLE LAYER](Books#the-subtle-layer-a-trainers-handbook), counts the reads and leans
+you were given and which of them landed.
 
 ## CALLOW SCHOOL
 
@@ -119,7 +149,7 @@ other balances it; and when every pair is held, a last note arrives.
 
 ## The INDEX
 
-The INDEX has **395 entries**, and every one is written twice -- the two editions say something different about each
+The INDEX has **398 entries**, and every one is written twice -- the two editions say something different about each
 daemon. Its area page says where a daemon is **NATIVE**: its region and, when it keeps to them, its edition, hours,
 seasons and weathers.
 
@@ -132,10 +162,11 @@ find out of issues and pull requests.
 
 A party daemon can be **SENT** out of the game to the companion, where your phone or a board hosts it -- and it comes
 home with what it learned. While it is away, the people who tend daemons between battles sometimes hear how it is
-doing: well, fine or quiet, never worse. See [The companion](The-companion).
+doing: well, fine or quiet, never worse. A daemon can **evolve** while it is away, by the game's own rules, and the game
+finishes the change when it comes home; one line of daemons grows only that way. See [The companion](The-companion).
 
 ## Not built yet
 
-Decided, and still to come: routine animations that carry the game's own signature -- its binary and its notes --
-and the HARP and FLUTE taking the project's own voices, as the companion already plays them. The
-[TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md) has them and more.
+Decided, and still to come: the rest of the daemons' new art, the rest of the landmarks, and the cave preview
+screens, which are still the original's. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md)
+has them and more.

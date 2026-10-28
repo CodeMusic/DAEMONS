@@ -15,4 +15,6 @@
 - [Releases page](https://github.com/CodeMusic/DAEMONS/releases)
 - [How to patch](https://github.com/CodeMusic/DAEMONS/blob/main/ROM%20RELEASE/HOW_TO_PATCH.md)
 - [Design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md)
-- [Companion](https://github.com/CodeMusic/daemons-companion)
+- [Companion](https://github.com/CodeMusic/daemons-companion) ([wiki](https://github.com/CodeMusic/daemons-companion/wiki))
+- [Engine wiki](https://github.com/CodeMusic/pokefirered-daemons/wiki)
+- [Playground](https://github.com/CodeMusic/daemons-playground) ([wiki](https://github.com/CodeMusic/daemons-playground/wiki))

@@ -11,9 +11,16 @@ Machines evolved into creatures. This is a game about what happened next, and it
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.304.6**
-(2026-10-18), and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing, building and the
-two editions.
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.315.4**
+(2026-10-28); each one on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
+*LeafGreen* 1.0 and Rev 1 — and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing,
+building and the two editions.
+
+**In a browser:** [daemons-playground](https://github.com/CodeMusic/daemons-playground) serves the game from a DAEMONS
+checkout to the people on your own network, with the companion in a tab beside it. **On an iPhone or iPad:** the
+companion's [one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app) takes your own *FireRed* or
+*LeafGreen*, applies the patch on the device and plays it beside the companion (internal and in testing; a Mac
+version is coming).
 
 ---
 
@@ -26,7 +33,13 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 | [**CodeMusic/pokefirered-daemons**](https://github.com/CodeMusic/pokefirered-daemons) | the engine — **this is where the work is** |
 | [**CodeMusic/pokered-daemons**](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, where the vertical slice was made. Kept as a reference, not updated further |
 | [**CodeMusic/gpt-play-pokemon-firered-daemons**](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a **model play it** — fork of [Clad3815](https://github.com/Clad3815/gpt-play-pokemon-firered) |
-| [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — your phone or a board hosts a daemon you SEND from your party, one to each device, and it helps you get things done; its app, server and firmware. Ours from the first line, no fork |
+| [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — your phone, a watch or a board hosts a daemon you SEND from your party, one to each device, and it helps you get things done; its app, its server (on a computer or a small hub at home, with an AI board of its own) and firmware. Ours from the first line, no fork |
+| [**CodeMusic/daemons-playground**](https://github.com/CodeMusic/daemons-playground) | the game **in a browser**, for demos and beta tests on your own network, with the companion and each release's notes in tabs. Holds no ROM |
+
+Each has a wiki: [this one](https://github.com/CodeMusic/DAEMONS/wiki) for the game,
+[the engine's](https://github.com/CodeMusic/pokefirered-daemons/wiki) for the fork,
+[the companion's](https://github.com/CodeMusic/daemons-companion/wiki) and
+[the playground's](https://github.com/CodeMusic/daemons-playground/wiki).
 
 **Why the move.** A spike was run to answer one question — are abilities, item descriptions and a real scripting language worth rebuilding 334 files for? Gen 1 stores **no item descriptions at all**, which is a writing-led project running on the one generation with nowhere to write. Abilities give the chart a second axis. The Index went from six lines of eighteen characters to three of forty-two.
 
@@ -70,9 +83,13 @@ A few rules the project holds itself to, in case they're useful to anyone buildi
 **Design is still ahead of implementation, and the whole game is playable** — both editions, start to finish, from
 BLANCHE TOWN to the REVIEW BOARD.
 
-**Every daemon is ours.** All 386 species carry our names, plus nine new ones in slots the original left empty; the
-INDEX's 395 entries are rewritten, and the two editions say something different about every one. 1,464 of the
-original's 1,469 sprites are redrawn, daemons coloured by their type. The type chart is in and complete, the routes
+**Every daemon is ours.** All 386 species carry our names, plus twelve new ones in slots the original left empty --
+three of them a line that grows only while carried on the companion; the INDEX's 398 entries are rewritten, and the
+two editions say something different about every one. 1,464 of the original's 1,469 sprites are redrawn, daemons
+coloured by their type — and the daemons are now being **drawn again**, as big, readable pixel portraits with a party
+icon each, in batches of about twenty: about two hundred so far, the rest in progress. The daemon that follows you
+walks as a small picture of its own, at the player's size. The landmarks the story turns on are getting art drawn from
+the story, and the region map has a look of its own: paper and ink, the sea a shuffle of bits and notes. The type chart is in and complete, the routes
 carry both their names, several towns have their own music, and the story's documents are where they belong — a
 requisition, a set of minutes, a carving, an engraving, none of them signed and none of them explained.
 
@@ -83,17 +100,24 @@ colour and note. Each edition has an **instrument** — a HARP in CONTENT, a FLU
 colour, with seven songs to hear in the world and learn, and a SONGBOOK for what you play. A daemon's **colour is its
 friendship**, nearly grey until it trusts you. There is a NOTEBOOK for what you find (a DREAM LOG among it), a school
 with a DIPLOMA, a GAME CORNER that plays like the companion's CASINO, and places the game never points to, each with
-music of its own.
+music of its own. Every routine carries a **signature** of its own in battle, bits and a three-note figure. Daemons
+have **feelings** the game reads from play and never names. And there are books to find: once THE SUBTLE LAYER is
+held, you start to **notice** things, marked in its purple, and the NOTEBOOK keeps an honest log of what landed.
 
 **Your daemons can leave.** SEND one from your party and the
-[companion](https://github.com/CodeMusic/daemons-companion) hosts it on your phone or a board; it comes home at the
-next SYNC with what it learned.
+[companion](https://github.com/CodeMusic/daemons-companion) hosts it on your phone, a watch or a board; it comes home
+at the next SYNC with what it learned. While it is away the game can hear how it is doing (**SOUNDINGS**). On a watch
+it sleeps when you do and dreams, and the dream comes home too, into the NOTEBOOK (**ITS DREAMS**, draft). It can even
+evolve while it is carried. At home, a small hub can serve the companion with an **AX630** AI board on it, which
+talks as your daemon, tells its dreams and answers as the GUIDE, all in the house; the **T-Watch Ultra** keeps its
+nights, its walks and its alarms — and a spike will try the classic Game Boy build on it (DAEMONS T-465,
+companion C-214).
 
 **And a model plays it.** [`engineAi/`](ai/README.md) drives mGBA over a Lua socket, reads the game out of RAM by symbol name, and decides. It keeps a self-model, four humor axes derived from what happens to it, and dreams at every summary fold — and any of it can be spoken aloud.
 
 **What is not done:** every new word in the game is still a draft until it is approved, and some decided work is not
-built yet — routine animations that carry the game's own signature, and the HARP and FLUTE taking the project's own
-voices (the companion already plays them). The [TODO list](docs/TODO.md) is the honest picture of what is next.
+built yet — the rest of the daemons' new art, the rest of the landmarks, the cave preview screens. The
+[TODO list](docs/TODO.md) is the honest picture of what is next.
 
 See [`docs/`](docs/) for the design bible, which is the honest picture of where this stands — including the decisions that were reversed and why.
 
@@ -216,9 +240,10 @@ engine/       -> pokered-daemons        Game Boy, reference
 engineGba/    -> pokefirered-daemons    GBA, where the work happens
 engineAi/     -> gpt-play-...-daemons   the harness that lets a model play it
 companion/    -> daemons-companion      the goal companion: app, server, devices
+playground/   -> daemons-playground     the game in a browser, for demos and beta tests
 ```
 
-The three `engine*` entries and `companion/` are **gitignored symlinks**. Nothing is ever
+The three `engine*` entries, `companion/` and `playground/` are **gitignored symlinks**. Nothing is ever
 vendored in here.
 
 The bible is [`docs/vision.md`](docs/vision.md). It is the only document that

@@ -76,6 +76,17 @@ A flash cartridge (an EZ-Flash, an EverDrive and the like) plays the patched fil
 | A white screen, or it won't start | Usually a bad dump. Dump the cartridge again. |
 
 Found a bug in the game? Please [open an issue](https://github.com/CodeMusic/DAEMONS/issues) and say which release you
-are playing (it is in the release's name, like `v11.302.3`).
+are playing (it is in the release's name, like `v11.315.3`).
+
+## Other ways to play
+
+- **The one app, on an iPhone or iPad.** The companion's app takes your own *FireRed* or *LeafGreen* from Files, fetches
+  the matching patch from the newest release, applies it on the device and checks the result. It plays the game with
+  the companion beside it, sharing one save, and offers each new release with one tap. Internal and in testing for
+  now; a Mac version is coming ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app)).
+- **In a browser, on your own network.** [daemons-playground](https://github.com/CodeMusic/daemons-playground) serves
+  the game from a DAEMONS checkout you built yourself, to this machine, a private network and a tailnet only -- with the
+  companion and each release's notes in tabs. It is for demos and beta tests, never a public site
+  ([its wiki](https://github.com/CodeMusic/daemons-playground/wiki)).
 
 Rather build it yourself? See [Building](Building).
