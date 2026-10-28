@@ -355,3 +355,9 @@ Batch 19 (SINGLETON to OVERTONE), the last regular daemons, on the recommended c
 Batch 19 (SINGLETON to OVERTONE), the last regular daemons, on the recommended choices; questions in gfx/drafts/t452/x/questions.md. v11.316.7.
 
 ![28Oct2026 - T452 - batch 19 daemons - 59](28Oct2026%20-%20T452%20-%20batch%2019%20daemons%20-%2059.png)
+
+### 28Oct2026 - T452 - SYMBOLs 28 forms - 60
+
+SYMBOL's 28 letter forms redrawn as glyph creatures, read from the build, with their followers beside the player. v11.316.8.
+
+![28Oct2026 - T452 - SYMBOLs 28 forms - 60](28Oct2026%20-%20T452%20-%20SYMBOLs%2028%20forms%20-%2060.png)
