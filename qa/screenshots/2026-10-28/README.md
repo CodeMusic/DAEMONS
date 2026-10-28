@@ -235,3 +235,21 @@ C-219 TRADE on YOU, using two test companions on synthetic saves: offering one, 
 C-219 TRADE on YOU, using two test companions on synthetic saves: offering one, a loan agreed, and the loan called home with both daemons back. Every word is DRAFT.
 
 ![28Oct2026 - C219 - trading phase 1 - 39](28Oct2026%20-%20C219%20-%20trading%20phase%201%20-%2039.jpg)
+
+### 28Oct2026 - T452 - batch 15 daemons - 40
+
+Batch 15 (PARTICLE to RIPTIDE, PENGUIN) on the recommended choices; questions in gfx/drafts/t452/t/questions.md. v11.316.3.
+
+![28Oct2026 - T452 - batch 15 daemons - 40](28Oct2026%20-%20T452%20-%20batch%2015%20daemons%20-%2040.png)
+
+### 28Oct2026 - T452 - batch 15 daemons - 41
+
+Batch 15 (PARTICLE to RIPTIDE, PENGUIN) on the recommended choices; questions in gfx/drafts/t452/t/questions.md. v11.316.3.
+
+![28Oct2026 - T452 - batch 15 daemons - 41](28Oct2026%20-%20T452%20-%20batch%2015%20daemons%20-%2041.png)
+
+### 28Oct2026 - T452 - batch 15 daemons - 42
+
+Batch 15 (PARTICLE to RIPTIDE, PENGUIN) on the recommended choices; questions in gfx/drafts/t452/t/questions.md. v11.316.3.
+
+![28Oct2026 - T452 - batch 15 daemons - 42](28Oct2026%20-%20T452%20-%20batch%2015%20daemons%20-%2042.png)
