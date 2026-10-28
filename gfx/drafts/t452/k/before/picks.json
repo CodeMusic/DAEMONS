@@ -1,0 +1,1522 @@
+{
+ "drum": {
+  "name": "DRUM",
+  "national": 140,
+  "slot": "kabuto",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a round flat sealed drum canister on two stubby feet (STORAGE)",
+  "note": "i2i 0.8: a sealed drum canister with a big-eyed face on its band, stubby feet -- the key kept. The drawn icon was a jar. Back: from today's back (5631), the lid and band, no face.",
+  "failed": "",
+  "front": "drum_front_i2i_5621.png",
+  "back": "drum_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,36,48",
+    "painted": "[4, 4, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.1,
+    "accent_clean_after": 7.1,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1154
+   },
+   "front_accent_pct": 7.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "28,34,35,48",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1006
+   },
+   "back_accent_pct": 3.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     135,
+     182,
+     231
+    ],
+    "accent_cells": 8,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "fossilnet": {
+  "name": "FOSSILNET",
+  "national": 142,
+  "slot": "aerodactyl",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a skeletal fossil pterodactyl with bony bat wings and a long bone tail (RECOVERED)",
+  "note": "i2i 0.8: a big-skulled bone pterodactyl, bony bat wings, a long bone tail -- the key kept. Back: from today's back (5631), wings spread.",
+  "failed": "",
+  "front": "fossilnet_front_i2i_5621.png",
+  "back": "fossilnet_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "33,34,37,55",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1640
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "21,28,37,36",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 634
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     170,
+     222
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "deadlock": {
+  "name": "DEADLOCK",
+  "national": 143,
+  "slot": "snorlax",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a huge round stone sitter with a padlock hanging on its chest (BLOCKED)",
+  "note": "i2i 0.8: a big round stone sitter, big eyes, a lock on a cord down its chest -- the key kept.",
+  "failed": "",
+  "front": "deadlock_front_i2i_5621.png",
+  "back": "deadlock_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,44,58",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2545
+   },
+   "front_accent_pct": 0.9,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "13,36,50,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2322
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     118,
+     161,
+     199
+    ],
+    "accent_cells": 1,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "orpheus": {
+  "name": "ORPHEUS",
+  "national": 144,
+  "slot": "articuno",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a slender singing bird with a crest plume and a very long trailing tail (LAMENT)",
+  "note": "i2i 0.8: a big-eyed slender bird, a curling crest plume, a long trailing tail -- the key kept.",
+  "failed": "",
+  "front": "orpheus_front_i2i_5621.png",
+  "back": "orpheus_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,37,30,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.4,
+    "accent_clean_after": 12.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 994
+   },
+   "front_accent_pct": 12.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "14,32,26,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 25.5,
+    "accent_clean_after": 14.7,
+    "greyed_px": 79,
+    "streak_px": 21,
+    "creature_px": 734
+   },
+   "back_accent_pct": 14.7,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     177,
+     232
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "asclepius": {
+  "name": "ASCLEPIUS",
+  "national": 145,
+  "slot": "zapdos",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a stout eagle with a jagged spiky white crest (RECOVERY)",
+  "note": "i2i 0.8: a stout eagle with a jagged white crest -- the key kept (5622 drew the crest orange, PROMETHEUS's).",
+  "failed": "",
+  "front": "asclepius_front_i2i_5621.png",
+  "back": "asclepius_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,30,56",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 24.1,
+    "accent_clean_after": 14.6,
+    "greyed_px": 115,
+    "streak_px": 12,
+    "creature_px": 1217
+   },
+   "front_accent_pct": 14.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "22,31,34,39",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.1,
+    "accent_clean_after": 12.8,
+    "greyed_px": 42,
+    "streak_px": 18,
+    "creature_px": 1252
+   },
+   "back_accent_pct": 12.8,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     157,
+     223
+    ],
+    "accent_cells": 5,
+    "size": [
+     19,
+     28
+    ]
+   }
+  }
+ },
+ "prometheus": {
+  "name": "PROMETHEUS",
+  "national": 146,
+  "slot": "moltres",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a proud eagle with a crest of flame on its head (CRAFT)",
+  "note": "i2i 0.8: a proud eagle with a crest of flame -- the key kept.",
+  "failed": "",
+  "front": "prometheus_front_i2i_5621.png",
+  "back": "prometheus_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,36,29,57",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 18.9,
+    "accent_clean_after": 11.8,
+    "greyed_px": 94,
+    "streak_px": 12,
+    "creature_px": 1329
+   },
+   "front_accent_pct": 11.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "12,32,32,40",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.7,
+    "accent_clean_after": 4.9,
+    "greyed_px": 177,
+    "streak_px": 18,
+    "creature_px": 1500
+   },
+   "back_accent_pct": 4.9,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     93,
+     144,
+     218
+    ],
+    "accent_cells": 8,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "canary": {
+  "name": "CANARY",
+  "national": 147,
+  "slot": "dratini",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a little serpent with small white fins on its head, curled (NASCENT)",
+  "note": "i2i 0.8: a little upright serpent, big eyes, two white fins at its head, a finned tail -- the key kept.",
+  "failed": "",
+  "front": "canary_front_i2i_5621.png",
+  "back": "canary_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,35,24,54",
+    "painted": "[4, 4, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 38.0,
+    "accent_clean_after": 14.8,
+    "greyed_px": 327,
+    "streak_px": 15,
+    "creature_px": 1410
+   },
+   "front_accent_pct": 14.8,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "18,33,33,51",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 10.3,
+    "accent_clean_after": 10.3,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 936
+   },
+   "back_accent_pct": 10.3,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     135,
+     172,
+     225
+    ],
+    "accent_cells": 29,
+    "size": [
+     26,
+     28
+    ]
+   }
+  }
+ },
+ "emergence": {
+  "name": "EMERGENCE",
+  "national": 148,
+  "slot": "dragonair",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a long elegant coiling serpent dragon with one small horn (UNACCOUNTED)",
+  "note": "i2i 0.8: a pale serpent dragon with a small horn and a long curling tail -- the key kept, close to today's.",
+  "failed": "",
+  "front": "emergence_front_i2i_5621.png",
+  "back": "emergence_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,30,56",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1083
+   },
+   "front_accent_pct": 0.5,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "6,33,26,53",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 801
+   },
+   "back_accent_pct": 1.4,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     185,
+     230
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "singular": {
+  "name": "SINGULAR",
+  "national": 149,
+  "slot": "dragonite",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a big friendly dragon with small wings and two thin antennae (UNIQUE)",
+  "note": "i2i 0.8: a big-eyed grey dragon with small wings and two horn-like antennae -- the key kept.",
+  "failed": "",
+  "front": "singular_front_i2i_5621.png",
+  "back": "singular_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,40,56",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1358
+   },
+   "front_accent_pct": 2.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "26,30,39,47",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 37.9,
+    "accent_clean_after": 13.7,
+    "greyed_px": 269,
+    "streak_px": 18,
+    "creature_px": 1114
+   },
+   "back_accent_pct": 13.7,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     162,
+     216
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "starr": {
+  "name": "STARR",
+  "national": 150,
+  "slot": "mewtwo",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a slender stag with very large branching antlers (INTENT)",
+  "note": "t2i 5601: a big-eyed stag under very large branching antlers -- the key kept; the antlers are what keep it apart from the PRIMER line.",
+  "failed": "",
+  "front": "starr_front_5601.png",
+  "back": "starr_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,32,34,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 967
+   },
+   "front_accent_pct": 2.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,32,45,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 566
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     169,
+     212
+    ],
+    "accent_cells": 0,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "primer": {
+  "name": "PRIMER",
+  "national": 152,
+  "slot": "chikorita",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a little spotted fawn with huge ears (FIRST PAGE)",
+  "note": "i2i 0.8: a big-eyed fawn with huge ears and a spotted back -- the key kept.",
+  "failed": "",
+  "front": "primer_front_i2i_5621.png",
+  "back": "primer_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,41,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.7,
+    "accent_clean_after": 1.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1291
+   },
+   "front_accent_pct": 1.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "18,33,38,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1345
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     158,
+     213
+    ],
+    "accent_cells": 3,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "syllabus": {
+  "name": "SYLLABUS",
+  "national": 153,
+  "slot": "bayleef",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a young deer with short new antlers and a spotted back (ORDERED)",
+  "note": "i2i 0.8: a young deer with short antlers and a spotted back -- the key kept.",
+  "failed": "",
+  "front": "syllabus_front_i2i_5621.png",
+  "back": "syllabus_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,32,35,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 929
+   },
+   "front_accent_pct": 0.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "18,32,38,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1016
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     124,
+     168,
+     222
+    ],
+    "accent_cells": 0,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "curriculum": {
+  "name": "CURRICULUM",
+  "national": 154,
+  "slot": "meganium",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a tall stately deer with tall upright antlers and a tufted tail (SEQUENCE)",
+  "note": "i2i 0.8: a stately deer with upright antlers and a tufted tail -- the key kept; it stood on grass (off the clean grid).",
+  "failed": "",
+  "front": "curriculum_front_i2i_5621.png",
+  "back": "curriculum_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "30,37,35,57",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 16.8,
+    "accent_clean_after": 4.9,
+    "greyed_px": 135,
+    "streak_px": 12,
+    "creature_px": 1131
+   },
+   "front_accent_pct": 4.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,35,40,57",
+    "painted": "[5, 4, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.6,
+    "accent_clean_after": 7.9,
+    "greyed_px": 99,
+    "streak_px": 17,
+    "creature_px": 1145
+   },
+   "back_accent_pct": 7.9,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     175,
+     218
+    ],
+    "accent_cells": 2,
+    "size": [
+     19,
+     28
+    ]
+   }
+  }
+ },
+ "tepid": {
+  "name": "TEPID",
+  "national": 155,
+  "slot": "cyndaquil",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a little crouching gecko with a ridged back (WARMUP)",
+  "note": "i2i 0.8: a crouching big-eyed gecko, a faint ridge down its back -- the key kept. Back: from today's back (5631), upright and faceless as today's is.",
+  "failed": "",
+  "front": "tepid_front_i2i_5621.png",
+  "back": "tepid_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "9,32,43,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1096
+   },
+   "front_accent_pct": 1.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "32,34,42,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.2,
+    "accent_clean_after": 5.2,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1080
+   },
+   "back_accent_pct": 5.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     169,
+     221
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     22
+    ]
+   }
+  }
+ },
+ "seethe": {
+  "name": "SEETHE",
+  "national": 156,
+  "slot": "quilava",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "an upright grinning lizard with little flames flickering along its back (BOIL)",
+  "note": "t2i 5601: a grinning lizard with a row of orange flames along its back and tail -- the key (and its INDEX entry's flames) kept; it crouches rather than stands.",
+  "failed": "",
+  "front": "seethe_front_5601.png",
+  "back": "seethe_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,35,42,50",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 24.3,
+    "accent_clean_after": 14.5,
+    "greyed_px": 138,
+    "streak_px": 29,
+    "creature_px": 1397
+   },
+   "front_accent_pct": 14.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "32,33,40,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 681
+   },
+   "back_accent_pct": 3.4,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     156,
+     214
+    ],
+    "accent_cells": 27,
+    "size": [
+     28,
+     22
+    ]
+   }
+  }
+ },
+ "heatdeath": {
+  "name": "HEATDEATH",
+  "national": 157,
+  "slot": "typhlosion",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a flat, calm salamander lying spread out (EQUILIBRIUM)",
+  "note": "i2i 0.8: a flat calm salamander lying spread out, half-closed eyes -- the key kept. Back: from today's back (5631).",
+  "failed": "",
+  "front": "heatdeath_front_i2i_5621.png",
+  "back": "heatdeath_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,29,31,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.1,
+    "accent_clean_after": 3.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 912
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "26,31,38,49",
+    "painted": "[3, 4, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 561
+   },
+   "back_accent_pct": 1.2,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     128,
+     189,
+     233
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     17
+    ]
+   }
+  }
+ },
+ "learnrate": {
+  "name": "LEARNRATE",
+  "national": 158,
+  "slot": "totodile",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a little beaver with big buck teeth, biting (STEP SIZE)",
+  "note": "i2i 0.8: a little beaver-otter with two big buck teeth -- the key kept. Back: from today's back (5631), faceless.",
+  "failed": "",
+  "front": "learnrate_front_i2i_5621.png",
+  "back": "learnrate_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,31,41,47",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1198
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "22,35,40,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1291
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     104,
+     141,
+     220
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "momentum": {
+  "name": "MOMENTUM",
+  "national": 159,
+  "slot": "croconaw",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a long low ferret stretched out mid-run (CARRY)",
+  "note": "i2i 0.8: a long low ferret stretched out mid-run -- the key kept.",
+  "failed": "",
+  "front": "momentum_front_i2i_5621.png",
+  "back": "momentum_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,28,40,37",
+    "painted": "[4, 3, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 744
+   },
+   "front_accent_pct": 2.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "15,27,43,35",
+    "painted": "[3, 3, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 596
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     89,
+     160,
+     211
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     14
+    ]
+   }
+  }
+ },
+ "punchcard": {
+  "name": "PUNCHCARD",
+  "national": 141,
+  "slot": "kabutops",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a tall paper card body punched with rows of square holes, a clipped corner, little arms (CUTTER)",
+  "note": "i2i 0.76 (charmlo): a tall card body with a clipped top corner, flat arms, short legs and one big eye -- the shape kept, the holes lost. Back: from today's back (5631), rows of holes and the clipped corner kept.",
+  "failed": "front: the rows of punched square holes -- no draft in ten drew them (two wordings, t2i and i2i 0.72-0.85); to draw by hand",
+  "front": "punchcard_front_i2i_5624.png",
+  "back": "punchcard_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,37,43,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1386
+   },
+   "front_accent_pct": 1.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,36,43,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1453
+   },
+   "back_accent_pct": 3.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     121,
+     170,
+     206
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "steepest": {
+  "name": "STEEPEST",
+  "national": 160,
+  "slot": "feraligatr",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "an otter standing tall on its hind legs, long tail, whiskers (DESCENT)",
+  "note": "i2i 0.85: a big-eyed otter standing upright on its hind legs, paws at its chest, a long tapered tail -- the key kept. Back: from today's back (5631), upright, faceless; it stood on a baked oval (off the clean grid if reduce leaves it).",
+  "failed": "",
+  "front": "steepest_front_i2i_5622.png",
+  "back": "steepest_back_i2i_5631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "16,35,30,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 22,
+    "creature_px": 1216
+   },
+   "front_accent_pct": 3.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,33,32,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1119
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     111,
+     162,
+     229
+    ],
+    "accent_cells": 4,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ }
+}

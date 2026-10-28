@@ -1,0 +1,124 @@
+{
+ "_": "batch 8 (2026-10-27), the charm recipe (dir k, seed 5600), chosen by eye on t452b8_cand_*.png. Seeds: t2i chibi fronts 5601/5602 (5603/5604 a second wording), i2i from today's front 0.8 = 5621, 0.85 = 5622 (0.72 = 5623, 0.76 = 5624 where charmlo ran), one back from today's back 0.66 = 5631, one chibi icon 5641 (charm8: four batches shared the server), backs turned from the chosen front 0.75 = 5651, 0.85 = 5652. Icons by icon3 (round2.icon_from_draft); 'derived' = icon3 from the clean new front.",
+ "drum": {
+  "front": "drum_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "drum_back_i2i_5631.png",
+  "note": "i2i 0.8: a sealed drum canister with a big-eyed face on its band, stubby feet -- the key kept. The drawn icon was a jar. Back: from today's back (5631), the lid and band, no face."
+ },
+ "fossilnet": {
+  "front": "fossilnet_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "fossilnet_back_i2i_5631.png",
+  "note": "i2i 0.8: a big-skulled bone pterodactyl, bony bat wings, a long bone tail -- the key kept. Back: from today's back (5631), wings spread."
+ },
+ "deadlock": {
+  "front": "deadlock_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "deadlock_back_i2i_5631.png",
+  "note": "i2i 0.8: a big round stone sitter, big eyes, a lock on a cord down its chest -- the key kept."
+ },
+ "orpheus": {
+  "front": "orpheus_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "orpheus_back_i2i_5631.png",
+  "note": "i2i 0.8: a big-eyed slender bird, a curling crest plume, a long trailing tail -- the key kept."
+ },
+ "asclepius": {
+  "front": "asclepius_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "asclepius_back_i2i_5631.png",
+  "note": "i2i 0.8: a stout eagle with a jagged white crest -- the key kept (5622 drew the crest orange, PROMETHEUS's)."
+ },
+ "prometheus": {
+  "front": "prometheus_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "prometheus_back_i2i_5631.png",
+  "note": "i2i 0.8: a proud eagle with a crest of flame -- the key kept."
+ },
+ "canary": {
+  "front": "canary_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "canary_back_i2i_5631.png",
+  "note": "i2i 0.8: a little upright serpent, big eyes, two white fins at its head, a finned tail -- the key kept."
+ },
+ "emergence": {
+  "front": "emergence_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "emergence_back_i2i_5631.png",
+  "note": "i2i 0.8: a pale serpent dragon with a small horn and a long curling tail -- the key kept, close to today's."
+ },
+ "singular": {
+  "front": "singular_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "singular_back_i2i_5631.png",
+  "note": "i2i 0.8: a big-eyed grey dragon with small wings and two horn-like antennae -- the key kept."
+ },
+ "starr": {
+  "front": "starr_front_5601.png",
+  "icon": "derived",
+  "back": "starr_back_i2i_5631.png",
+  "note": "t2i 5601: a big-eyed stag under very large branching antlers -- the key kept; the antlers are what keep it apart from the PRIMER line."
+ },
+ "primer": {
+  "front": "primer_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "primer_back_i2i_5631.png",
+  "note": "i2i 0.8: a big-eyed fawn with huge ears and a spotted back -- the key kept."
+ },
+ "syllabus": {
+  "front": "syllabus_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "syllabus_back_i2i_5631.png",
+  "note": "i2i 0.8: a young deer with short antlers and a spotted back -- the key kept."
+ },
+ "curriculum": {
+  "front": "curriculum_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "curriculum_back_i2i_5631.png",
+  "note": "i2i 0.8: a stately deer with upright antlers and a tufted tail -- the key kept; it stood on grass (off the clean grid)."
+ },
+ "tepid": {
+  "front": "tepid_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "tepid_back_i2i_5631.png",
+  "note": "i2i 0.8: a crouching big-eyed gecko, a faint ridge down its back -- the key kept. Back: from today's back (5631), upright and faceless as today's is."
+ },
+ "seethe": {
+  "front": "seethe_front_5601.png",
+  "icon": "derived",
+  "back": "seethe_back_i2i_5631.png",
+  "note": "t2i 5601: a grinning lizard with a row of orange flames along its back and tail -- the key (and its INDEX entry's flames) kept; it crouches rather than stands."
+ },
+ "heatdeath": {
+  "front": "heatdeath_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "heatdeath_back_i2i_5631.png",
+  "note": "i2i 0.8: a flat calm salamander lying spread out, half-closed eyes -- the key kept. Back: from today's back (5631)."
+ },
+ "learnrate": {
+  "front": "learnrate_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "learnrate_back_i2i_5631.png",
+  "note": "i2i 0.8: a little beaver-otter with two big buck teeth -- the key kept. Back: from today's back (5631), faceless."
+ },
+ "momentum": {
+  "front": "momentum_front_i2i_5621.png",
+  "icon": "derived",
+  "back": "momentum_back_i2i_5631.png",
+  "note": "i2i 0.8: a long low ferret stretched out mid-run -- the key kept."
+ },
+ "punchcard": {
+  "front": "punchcard_front_i2i_5624.png",
+  "icon": "derived",
+  "back": "punchcard_back_i2i_5631.png",
+  "failed": "front: the rows of punched square holes -- no draft in ten drew them (two wordings, t2i and i2i 0.72-0.85); to draw by hand",
+  "note": "i2i 0.76 (charmlo): a tall card body with a clipped top corner, flat arms, short legs and one big eye -- the shape kept, the holes lost. Back: from today's back (5631), rows of holes and the clipped corner kept."
+ },
+ "steepest": {
+  "front": "steepest_front_i2i_5622.png",
+  "icon": "derived",
+  "back": "steepest_back_i2i_5631.png",
+  "note": "i2i 0.85: a big-eyed otter standing upright on its hind legs, paws at its chest, a long tapered tail -- the key kept. Back: from today's back (5631), upright, faceless; it stood on a baked oval (off the clean grid if reduce leaves it)."
+ }
+}

@@ -128,7 +128,7 @@ GIC = ("chibi, big round head, large expressive eyes, the whole creature filling
        "isolated on white, centered, no text, no frame, no border")
 GBC = "rear view, seen from behind, facing away from the viewer, " + GB
 
-def charm(n):
+def charm(n, lean=False):
     s, c = S[n], CHARM2.get(n, CHARM[n])
     fp = HEAD + c["key"] + ", " + c["front"] + ", " + GC; fneg = "rear view, " + s["neg"] + ", " + N
     for k in range(2):
@@ -138,10 +138,10 @@ def charm(n):
         run(["i2i", "--seed", str(SEED + 21 + k), "--denoise", str(dn), "--image", src512(n, "front"),
              "--out", f"{REL}/{n}_front_i2i_{SEED + 21 + k}", "--prompt", fp, "--negative", fneg])
     bp = HEAD + c["key"] + ", " + s["back"] + ", " + GBC; bneg = "girl, long hair, hair, " + s["neg"] + ", " + NB
-    for k, dn in enumerate((0.66, 0.75)):
+    for k, dn in enumerate((0.66,) if lean else (0.66, 0.75)):
         run(["i2i", "--seed", str(SEED + 31 + k), "--denoise", str(dn), "--image", src512(n, "back"),
              "--out", f"{REL}/{n}_back_i2i_{SEED + 31 + k}", "--prompt", bp, "--negative", bneg])
-    for k in range(2):
+    for k in range(1 if lean else 2):
         run(["t2i", "--size", "512x512", "--seed", str(SEED + 41 + k), "--out", f"{REL}/{n}_icon_{SEED + 41 + k}",
              "--prompt", HEAD + c["key"] + ", " + c["icon"] + ", " + GIC,
              "--negative", "sprite sheet, grid of icons, tiled pattern, repeated, many copies, four creatures, human, girl, "
@@ -383,6 +383,8 @@ if stage == "t2i":
     for n in names: t2i(n)
 if stage == "charm":
     for n in names: charm(n)
+if stage == "charm8":   # batch 8 (shared server, four batches at once): one back from today's, one icon
+    for n in names: charm(n, lean=True)
 if stage == "charmlo":
     for n in names: charmlo(n)
 if stage == "charmback":

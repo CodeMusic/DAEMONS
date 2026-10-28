@@ -1,0 +1,22 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452b8_work/k/deadlock_front_two_5661",
+ "prompt": "pure white background, pixel art game sprite, two cute round stone creatures sitting side by side pressed together shoulder to shoulder, each with a big padlock hanging on its chest, one chain looped round both of them, sleepy closed eyes, stubby arms folded, full body, chibi proportions, big round heads, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text, facing left three-quarter view",
+ "negative": "photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, human, person, cropped, blurry, drop shadow, border, three creatures, girl, bear, snorlax",
+ "seed": 5661,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.7,
+ "comfyui": "0.19.1",
+ "made": "2026-10-27 22:41:40"
+}
