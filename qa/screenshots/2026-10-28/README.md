@@ -205,3 +205,15 @@ Batch 14 (HASHSEED to JACOBIAN) on the recommended choices; questions in gfx/dra
 Batch 14 (HASHSEED to JACOBIAN) on the recommended choices; questions in gfx/drafts/t452/s/questions.md. v11.316.2.
 
 ![28Oct2026 - T452 - batch 14 daemons - 34](28Oct2026%20-%20T452%20-%20batch%2014%20daemons%20-%2034.png)
+
+### 28Oct2026 - T467 - the players manual, eight samples - 35
+
+The player's manual (T-467, v11.316.2, docs/DAEMONS-manual.pdf, 47 A5 sides): the cover, the contents, the ways to play and patching your own cartridge; the seasons, the type chart, the subtle layer in play and the companion. Game screens from the theatre on built ROMs; every game word DRAFT.
+
+![28Oct2026 - T467 - the players manual, eight samples - 35](28Oct2026%20-%20T467%20-%20the%20players%20manual%2C%20eight%20samples%20-%2035.png)
+
+### 28Oct2026 - T467 - the players manual, eight samples - 36
+
+The player's manual (T-467, v11.316.2, docs/DAEMONS-manual.pdf, 47 A5 sides): the cover, the contents, the ways to play and patching your own cartridge; the seasons, the type chart, the subtle layer in play and the companion. Game screens from the theatre on built ROMs; every game word DRAFT.
+
+![28Oct2026 - T467 - the players manual, eight samples - 36](28Oct2026%20-%20T467%20-%20the%20players%20manual%2C%20eight%20samples%20-%2036.png)
