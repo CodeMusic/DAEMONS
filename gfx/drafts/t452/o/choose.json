@@ -1,0 +1,152 @@
+{
+ "_": "batch 11 (2026-10-28), the charm recipe (dir o, seed 5900), chosen by eye on t452b11_cand_*.png. Seeds: t2i chibi fronts 5901/5902 (5903/5904 a second wording), i2i from today's front 0.8 = 5921, 0.85 = 5922 (0.72 = 5923, 0.76 = 5924 where charmlo ran), one back from today's back 0.66 = 5931, one chibi icon 5941. Icons 'derived' = icon3 from the hand (or clean) front.",
+ "duplex": {
+  "front": "duplex_front_i2i_5922.png",
+  "icon": "derived",
+  "back": "duplex_back_i2i_5931.png",
+  "note": "i2i 0.85: a round body, two long necks in a U, a goose-like head at each end facing opposite ways -- the key kept. Back the front mirrored, faces out.",
+  "failed": ""
+ },
+ "startle": {
+  "front": "startle_front_5902.png",
+  "icon": "derived",
+  "back": "startle_back_i2i_5931.png",
+  "note": "t2i 5902: a round pinecone of overlapping scales, wary eyes, a stalk on top (the thread). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "withdrawal": {
+  "front": "withdrawal_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "withdrawal_back_i2i_5931.png",
+  "note": "i2i 0.8: a round riveted armoured ball, a small face peeking out of its porthole, short spikes. Back: today's sealed dome (it has no window, which is the point).",
+  "failed": ""
+ },
+ "blindspot": {
+  "front": "blindspot_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "blindspot_back_i2i_5931.png",
+  "note": "i2i 0.8: a plain curled worm, small eyes, a curled tail tip (the drill tail lost; its entry asks only that it be plain). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "hardline": {
+  "front": "hardline_front_5902.png",
+  "icon": "derived",
+  "back": "hardline_back_i2i_5931.png",
+  "note": "t2i 5902: an armoured serpent, a helmet-plug head, a segmented coiled body. Back the front mirrored, face out (today's back is a ring of coils).",
+  "failed": ""
+ },
+ "warning": {
+  "front": "warning_front_5902.png",
+  "icon": "derived",
+  "back": "warning_back_i2i_5931.png",
+  "note": "t2i 5902: a small chubby bulldog, mouth wide open barking. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "crywolf": {
+  "front": "crywolf_front_5902.png",
+  "icon": "derived",
+  "back": "crywolf_back_i2i_5931.png",
+  "note": "t2i 5902: a big dark bulldog, a huge underbite and fangs. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "bristle": {
+  "front": "bristle_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "bristle_back_i2i_5931.png",
+  "note": "i2i 0.8: a round puffed-up pufferfish, spines all over. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "hoarding": {
+  "front": "hoarding_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "hoarding_back_i2i_5931.png",
+  "note": "i2i 0.8: a small creature peeking out of a big round dome shell. Back: today's dome (it matches: the shell from behind).",
+  "failed": ""
+ },
+ "cunning": {
+  "front": "cunning_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "cunning_back_i2i_5931.png",
+  "note": "i2i 0.8: a sly slim creature, huge pointed ears, sharp claws (the ear feather lost). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "craving": {
+  "front": "craving_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "craving_back_i2i_5931.png",
+  "note": "i2i 0.8: a big grey standing bear. The ring on its belly drawn by hand (lost by every draft). Back the front mirrored, face out.",
+  "failed": "front: the belly ring lost"
+ },
+ "simmer": {
+  "front": "simmer_front_5902.png",
+  "icon": "derived",
+  "back": "simmer_back_i2i_5931.png",
+  "note": "t2i 5902: a soft melting slug, drips running off its underside; the green sprout greyed. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "callous": {
+  "front": "callous_front_5902.png",
+  "icon": "derived",
+  "back": "callous_back_i2i_5931.png",
+  "note": "t2i 5902: a slug under a big thick rocky snail shell. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "instinct": {
+  "front": "instinct_front_i2i_5922.png",
+  "icon": "derived",
+  "back": "instinct_back_i2i_5931.png",
+  "note": "i2i 0.85: a grey piglet, snout forward and low. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "impulse": {
+  "front": "impulse_front_5902.png",
+  "icon": "derived",
+  "back": "impulse_back_i2i_5931.png",
+  "note": "t2i 5902: a big shaggy boar charging, tusks; its eyes painted over with its fringe by hand (its entry: it cannot see past its own hair). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "attachment": {
+  "front": "attachment_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "attachment_back_i2i_5931.png",
+  "note": "i2i 0.8: a round fish, big eyes, a back fin. A round sucker mouth drawn by hand (lost). Back the front mirrored, face out.",
+  "failed": "front: the sucker mouth lost"
+ },
+ "clinging": {
+  "front": "clinging_front_i2i_5921.png",
+  "icon": "derived",
+  "back": "clinging_back_i2i_5931.png",
+  "note": "i2i 0.8: an octopus, its arms wrapped round the rocks it sits on (the rocks are the key, kept). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "glidepath": {
+  "front": "glidepath_front_5902.png",
+  "icon": "derived",
+  "back": "glidepath_back_i2i_5931.png",
+  "note": "t2i 5902: a small big-eyed creature with wide membrane wings raised behind it (no draft of ten spread a glider's membrane between its limbs). Back the front mirrored, face out (today's back is an owl on a branch).",
+  "failed": "front: the limb-to-limb glide membrane (wings drawn instead)"
+ },
+ "drive": {
+  "front": "src/drive_front_5904_unframed.png",
+  "icon": "derived",
+  "back": "drive_back_i2i_5931.png",
+  "note": "t2i 5904 (second wording, frame off): a grey rhinoceros beetle, head down pushing, a horn up from its head. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "comfort": {
+  "front": "src/comfort_front_5901_unframed.png",
+  "icon": "derived",
+  "back": "comfort_back_i2i_5931.png",
+  "note": "t2i 5901 (grey ground flooded off): a pale bear cub sitting with one paw up at its mouth, tongue out -- the only draft of twelve that licks its paw. Back the front mirrored, face out.",
+  "failed": "",
+  "key": true
+ },
+ "oldbranch": {
+  "front": "src/oldbranch_front_5904_unframed.png",
+  "icon": "derived",
+  "back": "oldbranch_back_i2i_5931.png",
+  "note": "t2i 5904 (second wording, frame and teal ground off): a small round big-eyed creature with branching coral antlers -- the only draft of twelve whose branches fork like coral. Antler tips touched the frame and are flat on top. Back the front mirrored, face out (today's back is a coral tree).",
+  "failed": "",
+  "key": true
+ }
+}

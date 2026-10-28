@@ -92,13 +92,13 @@ def idle():
 
 def run(a):
     out = a[a.index("--out") + 1]
-    for k in range(4):
+    for k in range(30):   # batch 11: the network may drop for a while (laptop moving, hub updating) -- retry every 60 s for up to 30 min
         if os.path.exists(out + ".png"): return
         idle()
         t = subprocess.run([PY, "tools/spriteforge.py"] + a, capture_output=True, text=True)
         print(out, t.stdout.strip()[-60:], t.stderr.strip()[-300:], flush=True)
         if not os.path.exists(out + ".png"):
-            import time; time.sleep(30)
+            import time; time.sleep(60)
 
 def src512(n, kind):
     dst = f"{D}/src/{n}_{kind}_512.png"

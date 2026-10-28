@@ -1,0 +1,1682 @@
+{
+ "duplex": {
+  "name": "DUPLEX",
+  "national": 203,
+  "slot": "girafarig",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "two long necks in a U, a head at each end facing opposite ways (TWO-WAY)",
+  "note": "i2i 0.85: a round body, two long necks in a U, a goose-like head at each end facing opposite ways -- the key kept. Back the front mirrored, faces out.",
+  "failed": "",
+  "front": "duplex_front_i2i_5922.png",
+  "back": "duplex_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,48,53",
+    "painted": "[5, 3, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1075
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "24,33,37,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1223
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     97,
+     152,
+     205
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "startle": {
+  "name": "STARTLE",
+  "national": 204,
+  "slot": "pineco",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a hanging pinecone bagworm, scales shut, a tripwire (TRIPWIRE)",
+  "note": "t2i 5902: a round pinecone of overlapping scales, wary eyes, a stalk on top (the thread). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "startle_front_5902.png",
+  "back": "startle_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "16,31,46,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.3,
+    "accent_clean_after": 7.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1677
+   },
+   "front_accent_pct": 6.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "37,32,51,40",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1394
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     127,
+     181,
+     230
+    ],
+    "accent_cells": 4,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "withdrawal": {
+  "name": "WITHDRAWAL",
+  "national": 205,
+  "slot": "forretress",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a round sealed armoured shell with one small window, a face peeking out (SEALED IN)",
+  "note": "i2i 0.8: a round riveted armoured ball, a small face peeking out of its porthole, short spikes. Back: today's sealed dome (it has no window, which is the point).",
+  "failed": "",
+  "front": "withdrawal_front_i2i_5921.png",
+  "back": "withdrawal_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "29,34,35,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1675
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "16,27,46,40",
+    "painted": "[4, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1261
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     170,
+     235
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "blindspot": {
+  "name": "BLINDSPOT",
+  "national": 206,
+  "slot": "dunsparce",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a small plain worm creature with a little drill tail, easy to miss (OVERLOOKED)",
+  "note": "i2i 0.8: a plain curled worm, small eyes, a curled tail tip (the drill tail lost; its entry asks only that it be plain). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "blindspot_front_i2i_5921.png",
+  "back": "blindspot_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,47,48",
+    "painted": "[4, 5, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 50.4,
+    "accent_clean_after": 13.8,
+    "greyed_px": 356,
+    "streak_px": 17,
+    "creature_px": 972
+   },
+   "front_accent_pct": 13.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "7,31,35,39",
+    "painted": "[3, 4, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 501
+   },
+   "back_accent_pct": 13.6,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     94,
+     153,
+     227
+    ],
+    "accent_cells": 11,
+    "size": [
+     28,
+     24
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "hardline": {
+  "name": "HARDLINE",
+  "national": 208,
+  "slot": "steelix",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a long thick armoured cable serpent, a plug for a head (DIRECT LINE)",
+  "note": "t2i 5902: an armoured serpent, a helmet-plug head, a segmented coiled body. Back the front mirrored, face out (today's back is a ring of coils).",
+  "failed": "",
+  "front": "hardline_front_5902.png",
+  "back": "hardline_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "37,34,45,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.0,
+    "accent_clean_after": 8.0,
+    "greyed_px": 0,
+    "streak_px": 23,
+    "creature_px": 1487
+   },
+   "front_accent_pct": 6.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "13,32,27,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1794
+   },
+   "back_accent_pct": 2.7,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     165,
+     221
+    ],
+    "accent_cells": 5,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "warning": {
+  "name": "WARNING",
+  "national": 209,
+  "slot": "snubbull",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a small loud bulldog, mouth open, barking (HARMLESS)",
+  "note": "t2i 5902: a small chubby bulldog, mouth wide open barking. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "warning_front_5902.png",
+  "back": "warning_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,35,23,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.0,
+    "accent_clean_after": 4.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1656
+   },
+   "front_accent_pct": 3.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "26,32,32,46",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 10.0,
+    "accent_clean_after": 10.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1433
+   },
+   "back_accent_pct": 1.1,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     122,
+     188,
+     234
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "crywolf": {
+  "name": "CRYWOLF",
+  "national": 210,
+  "slot": "granbull",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big bulldog with a huge underbite and fangs, howling (FALSE ALARM)",
+  "note": "t2i 5902: a big dark bulldog, a huge underbite and fangs. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "crywolf_front_5902.png",
+  "back": "crywolf_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,32,26,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.1,
+    "accent_clean_after": 10.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1848
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "11,33,39,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1349
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     100,
+     161,
+     219
+    ],
+    "accent_cells": 8,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bristle": {
+  "name": "BRISTLE",
+  "national": 211,
+  "slot": "qwilfish",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round pufferfish puffed up, spines all over (PUFFED UP)",
+  "note": "i2i 0.8: a round puffed-up pufferfish, spines all over. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "bristle_front_i2i_5921.png",
+  "back": "bristle_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,32,36,48",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.4,
+    "accent_clean_after": 2.4,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1429
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "22,31,47,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1468
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     104,
+     181,
+     232
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     24
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "hoarding": {
+  "name": "HOARDING",
+  "national": 213,
+  "slot": "shuckle",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a small creature in a big round shell dome, keeps everything inside (FERMENT)",
+  "note": "i2i 0.8: a small creature peeking out of a big round dome shell. Back: today's dome (it matches: the shell from behind).",
+  "failed": "",
+  "front": "hoarding_front_i2i_5921.png",
+  "back": "hoarding_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,36,50",
+    "painted": "[5, 5, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1733
+   },
+   "front_accent_pct": 0.5,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "21,34,29,50",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1069
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     155,
+     201,
+     236
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "cunning": {
+  "name": "CUNNING",
+  "national": 215,
+  "slot": "sneasel",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a sly big-eared creature, sharp claws, a tail feather (OPPORTUNIST)",
+  "note": "i2i 0.8: a sly slim creature, huge pointed ears, sharp claws (the ear feather lost). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "cunning_front_i2i_5921.png",
+  "back": "cunning_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,32,41,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.1,
+    "accent_clean_after": 4.1,
+    "greyed_px": 0,
+    "streak_px": 25,
+    "creature_px": 1192
+   },
+   "front_accent_pct": 1.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "19,38,29,49",
+    "painted": "[3, 4, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 586
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     152,
+     192
+    ],
+    "accent_cells": 2,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "craving": {
+  "name": "CRAVING",
+  "national": 217,
+  "slot": "ursaring",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big standing bear with a ring mark on its belly (HABIT)",
+  "note": "i2i 0.8: a big grey standing bear. The ring on its belly drawn by hand (lost by every draft). Back the front mirrored, face out.",
+  "failed": "front: the belly ring lost",
+  "front": "craving_front_i2i_5921.png",
+  "back": "craving_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,36,53",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1440
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "25,35,40,53",
+    "painted": "[3, 3, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1152
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     161,
+     220
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "simmer": {
+  "name": "SIMMER",
+  "national": 218,
+  "slot": "slugma",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a soft melting slug that drips behind it (SLOW BURN)",
+  "note": "t2i 5902: a soft melting slug, drips running off its underside; the green sprout greyed. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "simmer_front_5902.png",
+  "back": "simmer_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,34,47,53",
+    "painted": "[3, 3, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 11.7,
+    "accent_clean_after": 11.7,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1995
+   },
+   "front_accent_pct": 7.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,32,49,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 856
+   },
+   "back_accent_pct": 6.4,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     100,
+     167,
+     218
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "callous": {
+  "name": "CALLOUS",
+  "national": 219,
+  "slot": "magcargo",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a slug inside a thick cracked snail shell (THICK SKIN)",
+  "note": "t2i 5902: a slug under a big thick rocky snail shell. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "callous_front_5902.png",
+  "back": "callous_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "29,35,52,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2025
+   },
+   "front_accent_pct": 1.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "13,35,35,54",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.5,
+    "accent_clean_after": 3.5,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2065
+   },
+   "back_accent_pct": 1.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     106,
+     161,
+     218
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     24
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "instinct": {
+  "name": "INSTINCT",
+  "national": 220,
+  "slot": "swinub",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a small piglet snouting the ground, nose first (GUT FEEL)",
+  "note": "i2i 0.85: a grey piglet, snout forward and low. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "instinct_front_i2i_5922.png",
+  "back": "instinct_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "33,29,43,44",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.4,
+    "accent_clean_after": 12.4,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1496
+   },
+   "front_accent_pct": 12.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,41,32,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.6,
+    "accent_clean_after": 5.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 878
+   },
+   "back_accent_pct": 5.9,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     109,
+     167,
+     220
+    ],
+    "accent_cells": 22,
+    "size": [
+     28,
+     20
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "impulse": {
+  "name": "IMPULSE",
+  "national": 221,
+  "slot": "piloswine",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a big shaggy boar, hair over its eyes, tusks, charging (HEADLONG)",
+  "note": "t2i 5902: a big shaggy boar charging, tusks; its eyes painted over with its fringe by hand (its entry: it cannot see past its own hair). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "impulse_front_5902.png",
+  "back": "impulse_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "11,33,23,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.7,
+    "accent_clean_after": 0.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1662
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "10,33,46,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1909
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     104,
+     165,
+     219
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "attachment": {
+  "name": "ATTACHMENT",
+  "national": 223,
+  "slot": "remoraid",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a small fish with a sucker mouth, hitching a ride (HITCHHIKER)",
+  "note": "i2i 0.8: a round fish, big eyes, a back fin. A round sucker mouth drawn by hand (lost). Back the front mirrored, face out.",
+  "failed": "front: the sucker mouth lost",
+  "front": "attachment_front_i2i_5921.png",
+  "back": "attachment_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,32,43,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.3,
+    "accent_clean_after": 5.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1351
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "15,32,25,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1049
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     109,
+     177,
+     230
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "clinging": {
+  "name": "CLINGING",
+  "national": 224,
+  "slot": "octillery",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "an octopus holding on with every arm (HOLD TIGHT)",
+  "note": "i2i 0.8: an octopus, its arms wrapped round the rocks it sits on (the rocks are the key, kept). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "clinging_front_i2i_5921.png",
+  "back": "clinging_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,28,56",
+    "painted": "[4, 3, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.3,
+    "accent_clean_after": 5.3,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 2064
+   },
+   "front_accent_pct": 3.2,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "12,31,34,39",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1478
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     112,
+     189,
+     237
+    ],
+    "accent_cells": 8,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "glidepath": {
+  "name": "GLIDEPATH",
+  "national": 207,
+  "slot": "gligar",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a gliding creature with wide wing membranes, it only ever comes down (DESCENT)",
+  "note": "t2i 5902: a small big-eyed creature with wide membrane wings raised behind it (no draft of ten spread a glider's membrane between its limbs). Back the front mirrored, face out (today's back is an owl on a branch).",
+  "failed": "front: the limb-to-limb glide membrane (wings drawn instead)",
+  "front": "glidepath_front_5902.png",
+  "back": "glidepath_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,31,33,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 964
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "10,36,48,44",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1401
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     156,
+     222
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     24
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "drive": {
+  "name": "DRIVE",
+  "national": 214,
+  "slot": "heracross",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a beetle with a big horn, pushing (PERSISTENCE)",
+  "note": "t2i 5904 (second wording, frame off): a grey rhinoceros beetle, head down pushing, a horn up from its head. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "src/drive_front_5904_unframed.png",
+  "back": "drive_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "4,34,48,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2123
+   },
+   "front_accent_pct": 1.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,31,39,47",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1051
+   },
+   "back_accent_pct": 0.7,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     175,
+     217
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "comfort": {
+  "name": "COMFORT",
+  "national": 216,
+  "slot": "teddiursa",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a teddy bear cub licking a paw (SELF-SOOTHE)",
+  "note": "t2i 5901 (grey ground flooded off): a pale bear cub sitting with one paw up at its mouth, tongue out -- the only draft of twelve that licks its paw. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "src/comfort_front_5901_unframed_key.png",
+  "back": "comfort_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,35,34,56",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 2092
+   },
+   "front_accent_pct": 0.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,34,42,53",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1041
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     131,
+     206,
+     242
+    ],
+    "accent_cells": 2,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "oldbranch": {
+  "name": "OLDBRANCH",
+  "national": 222,
+  "slot": "corsola",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a coral creature with branches on its head, grows alone (UNMERGED)",
+  "note": "t2i 5904 (second wording, frame and teal ground off): a small round big-eyed creature with branching coral antlers -- the only draft of twelve whose branches fork like coral. Antler tips touched the frame and are flat on top. Back the front mirrored, face out (today's back is a coral tree).",
+  "failed": "",
+  "front": "src/oldbranch_front_5904_unframed_key.png",
+  "back": "oldbranch_back_i2i_5931.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,35,54",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "front_cap": {
+    "accent_clean_before": 52.0,
+    "accent_clean_after": 12.6,
+    "greyed_px": 662,
+    "streak_px": 24,
+    "creature_px": 1680
+   },
+   "front_accent_pct": 10.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,35,36,54",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.2,
+    "accent_clean_after": 7.2,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1546
+   },
+   "back_accent_pct": 10.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     163,
+     215,
+     241
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}
