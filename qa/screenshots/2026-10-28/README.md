@@ -145,3 +145,21 @@ Batch 11 (DUPLEX to CLINGING) on the recommended choices; questions in gfx/draft
 Batch 11 (DUPLEX to CLINGING) on the recommended choices; questions in gfx/drafts/t452/o/questions.md. v11.315.4.
 
 ![28Oct2026 - T452 - batch 11 daemons - 24](28Oct2026%20-%20T452%20-%20batch%2011%20daemons%20-%2024.png)
+
+### 28Oct2026 - T452 - batch 12 daemons - 25
+
+Batch 12 (REPAY to KAIROS) on the recommended choices; MISSINGNO set aside; questions in gfx/drafts/t452/p/questions.md. v11.315.5.
+
+![28Oct2026 - T452 - batch 12 daemons - 25](28Oct2026%20-%20T452%20-%20batch%2012%20daemons%20-%2025.png)
+
+### 28Oct2026 - T452 - batch 12 daemons - 26
+
+Batch 12 (REPAY to KAIROS) on the recommended choices; MISSINGNO set aside; questions in gfx/drafts/t452/p/questions.md. v11.315.5.
+
+![28Oct2026 - T452 - batch 12 daemons - 26](28Oct2026%20-%20T452%20-%20batch%2012%20daemons%20-%2026.png)
+
+### 28Oct2026 - T452 - batch 12 daemons - 27
+
+Batch 12 (REPAY to KAIROS) on the recommended choices; MISSINGNO set aside; questions in gfx/drafts/t452/p/questions.md. v11.315.5.
+
+![28Oct2026 - T452 - batch 12 daemons - 27](28Oct2026%20-%20T452%20-%20batch%2012%20daemons%20-%2027.png)
