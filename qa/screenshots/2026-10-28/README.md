@@ -181,3 +181,27 @@ Batch 13 (STUMP to UNBRANCHED) on the recommended choices; THE NEXUS keeps its p
 Batch 13 (STUMP to UNBRANCHED) on the recommended choices; THE NEXUS keeps its painted art; questions in gfx/drafts/t452/q/questions.md. v11.316.1.
 
 ![28Oct2026 - T452 - batch 13 daemons - 30](28Oct2026%20-%20T452%20-%20batch%2013%20daemons%20-%2030.png)
+
+### 28Oct2026 - T452 - batch 14 daemons - 31
+
+Batch 14 (HASHSEED to JACOBIAN) on the recommended choices; questions in gfx/drafts/t452/s/questions.md. v11.316.2.
+
+![28Oct2026 - T452 - batch 14 daemons - 31](28Oct2026%20-%20T452%20-%20batch%2014%20daemons%20-%2031.png)
+
+### 28Oct2026 - T452 - batch 14 daemons - 32
+
+Batch 14 (HASHSEED to JACOBIAN) on the recommended choices; questions in gfx/drafts/t452/s/questions.md. v11.316.2.
+
+![28Oct2026 - T452 - batch 14 daemons - 32](28Oct2026%20-%20T452%20-%20batch%2014%20daemons%20-%2032.png)
+
+### 28Oct2026 - T452 - batch 14 daemons - 33
+
+Batch 14 (HASHSEED to JACOBIAN) on the recommended choices; questions in gfx/drafts/t452/s/questions.md. v11.316.2.
+
+![28Oct2026 - T452 - batch 14 daemons - 33](28Oct2026%20-%20T452%20-%20batch%2014%20daemons%20-%2033.png)
+
+### 28Oct2026 - T452 - batch 14 daemons - 34
+
+Batch 14 (HASHSEED to JACOBIAN) on the recommended choices; questions in gfx/drafts/t452/s/questions.md. v11.316.2.
+
+![28Oct2026 - T452 - batch 14 daemons - 34](28Oct2026%20-%20T452%20-%20batch%2014%20daemons%20-%2034.png)
