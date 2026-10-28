@@ -345,24 +345,71 @@ def main():
                 species_by_const[c] = re.sub(r"[^A-Z0-9]+", "_", o.upper()).strip("_")
     except Exception:
         species_by_const = {}
+    #  T-319 (2026-10-28): the table is now BUILT from the engine's own constants, then renamed. It only ever renamed
+    #  vanilla's 153 ids, and the engine has moved on: T-461 freed ids vanilla had (63 was CAPTAIN, 104 TRAINER_TIPS)
+    #  for new people, and the cast, CRYSTAL's receiver and the desk (229-239) were never in it -- so the agent was
+    #  told CAPTAIN for whoever is drawn as 63 and nothing at all for the rest. Every `OBJ_EVENT_GFX_<NAME> <number>`
+    #  in include/constants/event_objects.h names its id (an id's first name wins over an alias); FREE_* and the VAR_*
+    #  stand-ins are left out, since nothing is drawn as them, and CAST_ is dropped (the KINGFISHER, not CAST_...).
+    class_by_const = {}
+    try:
+        cls = re.findall(r"\[TRAINER_CLASS_(\w+)\]\s*=\s*_\(\"([^\"]*)\"\)",
+                         open(os.path.join(GBA, "src/data/text/trainer_class_names.h"), encoding="utf-8").read())
+        van_cls = dict(re.findall(r"\[TRAINER_CLASS_(\w+)\]\s*=\s*_\(\"([^\"]*)\"\)",
+                                  upstream_header("src/data/text/trainer_class_names.h")))
+        for c, o in cls:
+            if c.startswith("RS_") or not o.strip() or van_cls.get(c) == o:
+                continue                     # Ruby/Sapphire's leftovers, and a class we did not rename
+            class_by_const.setdefault(c.replace("_", ""), re.sub(r"[^A-Z0-9]+", "_", o.upper()).strip("_"))
+    except Exception:
+        class_by_const = {}
     if isinstance(raw.get("EVENT_OBJECT_NAME"), dict):
         objs = raw["EVENT_OBJECT_NAME"]
+        header = open(os.path.join(GBA, "include/constants/event_objects.h"), encoding="utf-8").read()
+        defs = {}
+        for name, num in re.findall(r"^#define OBJ_EVENT_GFX_(\w+)\s+(\d+)\b", header, re.M):
+            if name.startswith(("FREE_", "VAR_")) or name in ("VARS", "WIDE_START", "ID_LIMIT"):
+                continue
+            defs.setdefault(int(num), name[len("CAST_"):] if name.startswith("CAST_") else name)
+        if len(defs) < 150:
+            sys.exit("  !! event_objects.h gave %d object ids -- the header's shape changed; not rebuilding" % len(defs))
+        before = dict(objs)
+        objs.clear()
+        objs.update({str(i): defs[i] for i in sorted(defs)})
         nchanged = 0
         for k, name in list(objs.items()):
             if not isinstance(name, str):
                 continue
             new_name = OBJECT_NAMES.get(name, name)
-            #  a daemon's overworld object, by its species (LAPRAS_DOLL, DEOXYS_D)
+            #  a daemon's overworld object, by its species (LAPRAS_DOLL, DEOXYS_D) -- and T-319 (2026-10-28) the
+            #  seasonal ones, DAEMON_PIKACHU_S2 or DAEMON_NIDORAN_F_SSPECIAL, by the longest species after DAEMON_
             head, _, tail = new_name.partition("_")
             for cand in (new_name, head):
                 if cand in species_by_const:
                     new_name = species_by_const[cand] + (new_name[len(cand):])
                     break
+            else:
+                if new_name.startswith("DAEMON_"):
+                    rest = new_name[len("DAEMON_"):]
+                    for c in sorted(species_by_const, key=len, reverse=True):
+                        if rest == c or rest.startswith(c + "_"):
+                            new_name = "DAEMON_" + species_by_const[c] + rest[len(c):]
+                            break
+            #  T-319 (2026-10-28): a person drawn as a trainer class is told by the game's name for it -- ARCHIVIST,
+            #  not POKE_MANIAC (which put POKE in front of the model); TINKERER, not SUPER_NERD. Matched without
+            #  underscores (the sprite is POKE_MANIAC, the class POKEMANIAC), and with an _M or _F kept.
+            base, sex = (new_name[:-2], new_name[-2:]) if new_name.endswith(("_M", "_F")) else (new_name, "")
+            ours_class = class_by_const.get(base.replace("_", ""))
+            if ours_class:
+                new_name = ours_class + sex
             for old_w, rep in sorted(PLACES, key=lambda p: -len(p[0])):
                 new_name = new_name.replace(old_w, rep)
             if new_name != name:
                 objs[k] = new_name; nchanged += 1
-        report.append(("EVENT_OBJECT_NAME", nchanged, "%d objects" % len(objs)))
+        nchanged = sum(1 for k in set(objs) | set(before) if before.get(k) != objs.get(k))   # against the table as it was
+        report.append(("EVENT_OBJECT_NAME", nchanged, "%d objects, from the engine's constants" % len(objs)))
+        globals()["_OBJ_DIFF"] = sorted(((int(k), before.get(k), objs.get(k)) for k in set(objs) | set(before)
+                                         if before.get(k) != objs.get(k)))
 
     port_progress()
 
