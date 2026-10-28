@@ -62,7 +62,7 @@ a stop that needs longer than --stop-timeout (T-451):
                                an evolution or a trade, as the follower sees one)
     bag ITEM_X [N] [first]     T-433: put N (default 1) of an item in its pocket of the bag, or top it up to N; with
                                first, in the pocket's top slot, and the bag set to open there with its cursor on it
-    open BAG|DAEMON            T-433: START, then that entry, opened (captured)
+    open BAG|DAEMON|INDEX      T-433: START, then that entry, opened (captured)
     swap SLOT SLOT             T-433: two party daemons change places (their records swapped whole)
     useitem ITEM_X             T-433, DEBUG: the item used on party daemon 1 as the party menu would (gSpecialVar_ItemId
                                poked, then GAME EVENTS -> FEELINGS -> USE THE ITEM ON SLOT 1)
@@ -1385,7 +1385,8 @@ class Runner:
         signed = cond[3] - 256 if cond[3] > 127 else cond[3]
         f = {"glad": 0, "mad": 0, "sad": 0, "calm": 0}
         if ribbons & 1 and not egg:
-            f = {"glad": fade(cond[0]), "mad": fade(cond[1]), "sad": fade(cond[2]),
+            #  T-471: MAD is the byte's low seven bits; the top one keeps a BEAUTY that would evolve FEEBAS
+            f = {"glad": fade(cond[0]), "mad": fade(cond[1] & 0x7F), "sad": fade(cond[2]),
                  "calm": -fade(-signed) if signed < 0 else fade(signed)}
         f.update({"set": int(bool(ribbons & 1)), "friendship": raw[g + 9], "egg": egg, "stamp": stamp,
                   "ticks": ticks, "raw": list(cond), "clock": nowv["clock"]})
@@ -1501,6 +1502,8 @@ class Runner:
                     ribbons &= ~1
                 else:
                     g, md, s, c = vals
+                    old = raw[e + 7]                                      # T-471: keep BEAUTY's kept bit, as Store does
+                    md = (md & 0x7F) | ((old & 0x80) if ribbons & 1 else (0x80 if old >= 170 else 0))
                     raw[e + 6: e + 12] = bytes([g, md, s, c & 0xFF, nowv["now"] & 0xFF, nowv["now"] >> 8])
                     ribbons = (ribbons & ~3) | 1 | (2 if nowv["clock"] else 0)
                 word = (word & ~(0xF << 27)) | (ribbons << 27)
@@ -1676,10 +1679,10 @@ class Runner:
             self.bag(const_item(args[0]), int(args[1]) if len(args) > 1 and args[1] != "first" else 1, "first" in args)
         elif op == "swap":                                                  # T-433
             self.swap(int(args[0]), int(args[1]))
-        elif op == "open":                                                  # T-433: START -> BAG or DAEMON
+        elif op == "open":                                                  # T-433: START -> BAG or DAEMON (T-470: or INDEX)
             if not self.free():
                 raise RouteError("open needs the player free on the overworld")
-            self.start_menu({"BAG": 2, "DAEMON": 1}[args[0]])
+            self.start_menu({"INDEX": 0, "BAG": 2, "DAEMON": 1}[args[0]])
             tw.run("hold A 6", "wait 100")
             self.capture("START: " + args[0], read_text=False)
         elif op == "useitem":                                               # T-433
