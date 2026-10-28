@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452b9_work/l/poll_front_i2i_5721",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, standing on one thin leg, a cute round little owl with big round staring eyes, small ear tufts, round wings, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "rear view, girl, human, penguin, cat, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 5721,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.8,
+ "stop_at": null,
+ "image": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452b9_work/l/src/poll_front_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.8,
+ "comfyui": "0.19.1",
+ "made": "2026-10-28 00:29:15"
+}

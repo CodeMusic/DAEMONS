@@ -1,0 +1,150 @@
+{
+ "_": "batch 9 (2026-10-28), the charm recipe (dir l, seed 5700), chosen by eye on t452b9_cand_*.png. Seeds: t2i chibi fronts 5701/5702 (5703/5704 a second wording), i2i from today's front 0.8 = 5721, 0.85 = 5722 (0.72 = 5723, 0.76 = 5724 where charmlo ran), one back from today's back 0.66 = 5731, one chibi icon 5741, backs turned from the chosen front 0.75 = 5751, 0.85 = 5752. Icons 'derived' = icon3 from the clean new front.",
+ "alarm": {
+  "front": "alarm_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "alarm_back_i2i_5731.png",
+  "note": "i2i 0.8: an upright big-eared mouse calling out, a paw raised, its long striped tail -- not standing ON the tail (no draft of ten did). Back from today's; ground bars off.",
+  "failed": "front: standing on its tail lost"
+ },
+ "lookout": {
+  "front": "lookout_front_i2i_5722.png",
+  "icon": "derived",
+  "back": "lookout_back_fromfront_5752.png",
+  "note": "i2i 0.85: a long ferret rearing up. Back turned from the new front (5752), no face; ground off.",
+  "failed": ""
+ },
+ "poll": {
+  "front": "poll_front_5701.png",
+  "icon": "derived",
+  "back": "poll_back_i2i_5731.png",
+  "note": "t2i 5701: a round big-eyed owl -- one leg lost (none drew it; today's has two). Back the front mirrored, face out; ground bar off.",
+  "failed": ""
+ },
+ "supervisor": {
+  "front": "supervisor_front_i2i_5722.png",
+  "icon": "derived",
+  "back": "supervisor_back_i2i_5731.png",
+  "note": "i2i 0.85: a stern owl, long ear tufts, wings half spread -- the key kept. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "huddle": {
+  "front": "huddle_front_i2i_5722.png",
+  "icon": "derived",
+  "back": "src/huddle_back_unframed.png",
+  "note": "i2i 0.85: a round spotted ladybug with curly antennae -- the key kept. Back turned from the new front (5752), its drawn frame painted out.",
+  "failed": ""
+ },
+ "gathering": {
+  "front": "gathering_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "gathering_back_i2i_5731.png",
+  "note": "i2i 0.8: an upright spotted beetle, wings out -- no fists. Back from today's.",
+  "failed": ""
+ },
+ "ambush": {
+  "front": "ambush_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "ambush_back_i2i_5731.png",
+  "note": "i2i 0.8: a big round dome body on short legs -- the key kept, close to today's. Back from today's.",
+  "failed": ""
+ },
+ "entrapment": {
+  "front": "src/entrapment_front_zoom.png",
+  "icon": "derived",
+  "back": "entrapment_back_i2i_5731.png",
+  "note": "i2i 0.8 zoomed 1.75x (drawn small): a big-headed spider; the thin legs mostly lost in the clean and no draft drew the web. Back from today's (the web lines).",
+  "failed": "front: long legs thin, web lost"
+ },
+ "multicast": {
+  "front": "multicast_front_5701.png",
+  "icon": "derived",
+  "back": "multicast_back_i2i_5731.png",
+  "note": "t2i 5701: a big-eyed bat -- two wings, not four (no draft of ten drew four). Back from today's.",
+  "failed": "front: four wings lost"
+ },
+ "pilot": {
+  "front": "pilot_front_5704.png",
+  "icon": "derived",
+  "back": "pilot_back_i2i_5731.png",
+  "note": "t2i 5704: a round tentacled thing with glowing lights on its crown -- the key kept in part (lights, not stalks). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "sounding": {
+  "front": "sounding_front_i2i_5722.png",
+  "icon": "derived",
+  "back": "sounding_back_i2i_5731.png",
+  "note": "i2i 0.85: an anglerfish with a glowing lantern lure -- the key kept. Back the front mirrored, face out (today's back is an eel).",
+  "failed": ""
+ },
+ "static": {
+  "front": "static_front_5704.png",
+  "icon": "derived",
+  "back": "static_back_i2i_5731.png",
+  "note": "t2i 5704: a big-eared mouse with a spiky crest -- fur on end only on its crown. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "residual": {
+  "front": "residual_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "residual_back_i2i_5731.png",
+  "note": "i2i 0.8: two curled antennae, floppy ears -- the key kept (not star-shaped; nor is today's). Back from today's, ground off.",
+  "failed": ""
+ },
+ "standby": {
+  "front": "standby_front_5701.png",
+  "icon": "derived",
+  "back": "standby_back_i2i_5731.png",
+  "note": "t2i 5701: a round sleepy puffball, a small tuft on top -- the key kept. Back the front mirrored, face out; ground off.",
+  "failed": ""
+ },
+ "trust": {
+  "front": "trust_front_5702.png",
+  "icon": "derived",
+  "back": "trust_back_i2i_5731.png",
+  "note": "t2i 5702: a hatchling in the bottom half of its eggshell -- the key kept. Back the front mirrored, face out; ground off.",
+  "failed": ""
+ },
+ "hope": {
+  "front": "hope_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "hope_back_i2i_5731.png",
+  "note": "i2i 0.8: a little bird with two white wings, aloft -- the key kept. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "vigilance": {
+  "front": "vigilance_front_5701.png",
+  "icon": "derived",
+  "back": "vigilance_back_i2i_5731.png",
+  "note": "t2i 5701: a round bird with huge staring eyes -- the key kept. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "prescience": {
+  "front": "prescience_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "prescience_back_i2i_5731.png",
+  "note": "i2i 0.8: a tall still white bird, wings folded at its side (not a cloak). Back the front mirrored, face out. Its brown perch still under its feet.",
+  "failed": ""
+ },
+ "tension": {
+  "front": "tension_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "tension_back_i2i_5731.png",
+  "note": "i2i 0.8: a lamb in a huge puff of wool -- the key kept. Back from today's.",
+  "failed": ""
+ },
+ "buildup": {
+  "front": "buildup_front_i2i_5721.png",
+  "icon": "derived",
+  "back": "buildup_back_fromfront_5751.png",
+  "note": "i2i 0.8: a sheep with a wool mane and a long tail -- the bare body and the ball-tipped tail lost (ten drafts kept the wool); close to TENSION. Back the front mirrored, face out; puddle off.",
+  "failed": "front: bare body, ball tail lost"
+ },
+ "release": {
+  "front": "release_front_5701.png",
+  "icon": "derived",
+  "back": "release_back_i2i_5731.png",
+  "note": "t2i 5701: an upright bare creature with a curled tail and a yellow head -- no lamp (none of ten drew one where it belongs). Back the front mirrored, face out.",
+  "failed": "front: lamp lost"
+ }
+}

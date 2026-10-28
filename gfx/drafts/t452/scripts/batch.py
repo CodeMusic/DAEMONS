@@ -85,7 +85,7 @@ def idle():
     for _ in range(240):
         try:
             q = json.loads(urllib.request.urlopen("http://roverbyteseer:8008/queue", timeout=15).read())
-            if len(q["queue_pending"]) <= 2: return   # FIFO: wait for a short queue, one job of ours in flight (an empty one never came: four batches share it)
+            if len(q["queue_pending"]) + len(q["queue_running"]) == 0: return   # batch 9: an idle queue before each job (chain8's rule)
         except Exception as e:
             print("queue?", e, flush=True)
         time.sleep(8 + random.random() * 6)

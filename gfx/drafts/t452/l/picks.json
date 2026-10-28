@@ -1,0 +1,1663 @@
+{
+ "gathering": {
+  "name": "GATHERING",
+  "national": 166,
+  "slot": "ledian",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "an upright beetle with a spotted shell and little fists, flying (BANDWAGON)",
+  "note": "i2i 0.8: an upright spotted beetle, wings out -- no fists. Back from today's.",
+  "failed": "",
+  "front": "gathering_front_i2i_5721.png",
+  "back": "gathering_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,33,30,50",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1222
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "23,33,29,46",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 736
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     168,
+     232
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": []
+ },
+ "ambush": {
+  "name": "AMBUSH",
+  "national": 167,
+  "slot": "spinarak",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a little spider with a big round dome body, waiting still (LIE IN WAIT)",
+  "note": "i2i 0.8: a big round dome body on short legs -- the key kept, close to today's. Back from today's.",
+  "failed": "",
+  "front": "ambush_front_i2i_5721.png",
+  "back": "ambush_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,28,37,36",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.7,
+    "accent_clean_after": 0.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1149
+   },
+   "front_accent_pct": 0.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "28,32,35,49",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1306
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     129,
+     186,
+     216
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     23
+    ]
+   }
+  },
+  "hand": []
+ },
+ "residual": {
+  "name": "RESIDUAL",
+  "national": 173,
+  "slot": "cleffa",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a small round star-shaped creature with two curled antennae (UNSMOOTHED)",
+  "note": "i2i 0.8: two curled antennae, floppy ears -- the key kept (not star-shaped; nor is today's). Back from today's, ground off.",
+  "failed": "",
+  "front": "residual_front_i2i_5721.png",
+  "back": "residual_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,33,37,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1244
+   },
+   "front_accent_pct": 4.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,33,37,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 989
+   },
+   "back_accent_pct": 1.3,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     142,
+     183,
+     232
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     23
+    ]
+   }
+  },
+  "hand": [
+   "back"
+  ]
+ },
+ "tension": {
+  "name": "TENSION",
+  "national": 179,
+  "slot": "mareep",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a little lamb with a huge puff of wool (CHARGE)",
+  "note": "i2i 0.8: a lamb in a huge puff of wool -- the key kept. Back from today's.",
+  "failed": "",
+  "front": "tension_front_i2i_5721.png",
+  "back": "tension_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,46,55",
+    "painted": "[3, 4, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 11.2,
+    "accent_clean_after": 11.2,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1915
+   },
+   "front_accent_pct": 11.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,35,47,51",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1455
+   },
+   "back_accent_pct": 1.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     138,
+     191,
+     235
+    ],
+    "accent_cells": 5,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": []
+ },
+ "alarm": {
+  "name": "ALARM",
+  "national": 161,
+  "slot": "sentret",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a little mouse standing up tall on its striped tail, big ears, calling out (OVERCALL)",
+  "note": "i2i 0.8: an upright big-eared mouse calling out, a paw raised, its long striped tail -- not standing ON the tail (no draft of ten did). Back from today's; ground bars off.",
+  "failed": "front: standing on its tail lost",
+  "front": "alarm_front_i2i_5721.png",
+  "back": "alarm_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,34,27,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.0,
+    "accent_clean_after": 12.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1145
+   },
+   "front_accent_pct": 13.3,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "16,37,30,54",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.7,
+    "accent_clean_after": 5.7,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1218
+   },
+   "back_accent_pct": 6.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     125,
+     176,
+     224
+    ],
+    "accent_cells": 13,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lookout": {
+  "name": "LOOKOUT",
+  "national": 162,
+  "slot": "furret",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a very long slender ferret rearing up tall, striped (NIGHT WATCH)",
+  "note": "i2i 0.85: a long ferret rearing up. Back turned from the new front (5752), no face; ground off.",
+  "failed": "",
+  "front": "lookout_front_i2i_5722.png",
+  "back": "lookout_back_fromfront_5752.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,30,46,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 32.7,
+    "accent_clean_after": 14.7,
+    "greyed_px": 220,
+    "streak_px": 21,
+    "creature_px": 1225
+   },
+   "front_accent_pct": 7.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,35,42,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 43.3,
+    "accent_clean_after": 4.0,
+    "greyed_px": 415,
+    "streak_px": 20,
+    "creature_px": 1056
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     97,
+     161,
+     225
+    ],
+    "accent_cells": 6,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "poll": {
+  "name": "POLL",
+  "national": 163,
+  "slot": "hoothoot",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round owl standing on one leg, big round eyes (ASKING)",
+  "note": "t2i 5701: a round big-eyed owl -- one leg lost (none drew it; today's has two). Back the front mirrored, face out; ground bar off.",
+  "failed": "",
+  "front": "poll_front_5701.png",
+  "back": "poll_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,35,39,51",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.7,
+    "accent_clean_after": 6.7,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1493
+   },
+   "front_accent_pct": 7.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "14,31,48,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.0,
+    "accent_clean_after": 6.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1276
+   },
+   "back_accent_pct": 3.1,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     167,
+     234
+    ],
+    "accent_cells": 19,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "supervisor": {
+  "name": "SUPERVISOR",
+  "national": 164,
+  "slot": "noctowl",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a tall owl with long ear tufts, wings spread, watching (WATCHING)",
+  "note": "i2i 0.85: a stern owl, long ear tufts, wings half spread -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "supervisor_front_i2i_5722.png",
+  "back": "supervisor_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,34,41,52",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 27.6,
+    "accent_clean_after": 14.6,
+    "greyed_px": 173,
+    "streak_px": 19,
+    "creature_px": 1334
+   },
+   "front_accent_pct": 14.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,30,44,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 12.9,
+    "accent_clean_after": 12.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1421
+   },
+   "back_accent_pct": 10.3,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     106,
+     161,
+     207
+    ],
+    "accent_cells": 8,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "huddle": {
+  "name": "HUDDLE",
+  "national": 165,
+  "slot": "ledyba",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a round spotted ladybug pod with two antennae, curled small (SWARM)",
+  "note": "i2i 0.85: a round spotted ladybug with curly antennae -- the key kept. Back turned from the new front (5752), its drawn frame painted out.",
+  "failed": "",
+  "front": "huddle_front_i2i_5722.png",
+  "back": "src/huddle_back_unframed.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,38,37,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.8,
+    "accent_clean_after": 14.7,
+    "greyed_px": 44,
+    "streak_px": 20,
+    "creature_px": 1416
+   },
+   "front_accent_pct": 14.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "21,33,42,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 15.9,
+    "accent_clean_after": 11.7,
+    "greyed_px": 78,
+    "streak_px": 20,
+    "creature_px": 1834
+   },
+   "back_accent_pct": 11.7,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     113,
+     190,
+     228
+    ],
+    "accent_cells": 27,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": []
+ },
+ "entrapment": {
+  "name": "ENTRAPMENT",
+  "national": 168,
+  "slot": "ariados",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a long-legged spider hanging in a little web (DECOY PATH)",
+  "note": "t2i 5701 (the user, 2026-10-28): a big-eyed spider, legs kept; a web drawn behind it by hand. Back the front mirrored, face out, the web behind.",
+  "failed": "",
+  "front": "entrapment_front_5701.png",
+  "back": "entrapment_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,40,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.7,
+    "accent_clean_after": 4.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1029
+   },
+   "front_accent_pct": 4.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "19,31,47,39",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 865
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     205,
+     237
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "multicast": {
+  "name": "MULTICAST",
+  "national": 169,
+  "slot": "crobat",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a bat with FOUR wings spread, two up two down (FANNED OUT)",
+  "note": "t2i 5701: a big-eyed bat -- two wings, not four (no draft of ten drew four). Back from today's.",
+  "failed": "front: four wings lost",
+  "front": "multicast_front_5701.png",
+  "back": "multicast_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,28,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.3,
+    "accent_clean_after": 3.3,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1254
+   },
+   "front_accent_pct": 2.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "4,29,38,37",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 991
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     84,
+     148,
+     198
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     21
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "pilot": {
+  "name": "PILOT",
+  "national": 170,
+  "slot": "chinchou",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round little fish with two glowing lights on antenna stalks (STANDBY)",
+  "note": "i2i 0.8 (the user, 2026-10-28): today's dome with tentacles, no light. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "pilot_front_i2i_5721.png",
+  "back": "pilot_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,31,34,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1375
+   },
+   "front_accent_pct": 2.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,35,37,43",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 700
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     124,
+     168,
+     215
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "back"
+  ]
+ },
+ "sounding": {
+  "name": "SOUNDING",
+  "national": 171,
+  "slot": "lanturn",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big anglerfish with a glowing lure on a stalk over its head (MEASURING)",
+  "note": "i2i 0.85: an anglerfish with a glowing lantern lure -- the key kept. Back the front mirrored, face out (today's back is an eel).",
+  "failed": "",
+  "front": "sounding_front_i2i_5722.png",
+  "back": "sounding_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,31,32,39",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 51.4,
+    "accent_clean_after": 12.3,
+    "greyed_px": 307,
+    "streak_px": 40,
+    "creature_px": 786
+   },
+   "front_accent_pct": 14.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "19,36,32,53",
+    "painted": "[4, 4, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.8,
+    "accent_clean_after": 8.8,
+    "greyed_px": 0,
+    "streak_px": 34,
+    "creature_px": 808
+   },
+   "back_accent_pct": 8.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     98,
+     149,
+     203
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     18
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "static": {
+  "name": "STATIC",
+  "national": 172,
+  "slot": "pichu",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a tiny mouse with spiky charged fur standing on end (FRICTION)",
+  "note": "i2i 0.8 (the user, 2026-10-28): the plain mouse, today's shape. Back from today's.",
+  "failed": "",
+  "front": "static_front_i2i_5721.png",
+  "back": "static_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,35,49",
+    "painted": "[5, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.7,
+    "accent_clean_after": 5.7,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1018
+   },
+   "front_accent_pct": 5.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "22,34,31,51",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1127
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     169,
+     229
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": []
+ },
+ "standby": {
+  "name": "STANDBY",
+  "national": 174,
+  "slot": "igglybuff",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round sleepy puffball with one curl of fluff on top, eyes half closed (LOW POWER)",
+  "note": "t2i 5701: a round sleepy puffball, a small tuft on top -- the key kept. Back the front mirrored, face out; ground off.",
+  "failed": "",
+  "front": "standby_front_5701.png",
+  "back": "standby_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "16,33,47,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1276
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "16,34,44,50",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.1,
+    "accent_clean_after": 9.1,
+    "greyed_px": 0,
+    "streak_px": 26,
+    "creature_px": 1255
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     125,
+     173,
+     226
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "trust": {
+  "name": "TRUST",
+  "national": 175,
+  "slot": "togepi",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a little hatchling sitting in the bottom half of its eggshell (FIRST)",
+  "note": "t2i 5702: a hatchling in the bottom half of its eggshell -- the key kept. Back the front mirrored, face out; ground off.",
+  "failed": "",
+  "front": "trust_front_5702.png",
+  "back": "trust_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,41,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1062
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "32,33,37,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.7,
+    "accent_clean_after": 9.7,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1272
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     96,
+     174,
+     235
+    ],
+    "accent_cells": 3,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "hope": {
+  "name": "HOPE",
+  "national": 176,
+  "slot": "togetic",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a little floating creature with two small white wings (ALOFT)",
+  "note": "i2i 0.8: a little bird with two white wings, aloft -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "hope_front_i2i_5721.png",
+  "back": "hope_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,31,53",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.6,
+    "accent_clean_after": 4.6,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1295
+   },
+   "front_accent_pct": 4.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "16,29,32,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1233
+   },
+   "back_accent_pct": 2.2,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     122,
+     174,
+     231
+    ],
+    "accent_cells": 2,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "back"
+  ]
+ },
+ "vigilance": {
+  "name": "VIGILANCE",
+  "national": 177,
+  "slot": "natu",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a small round bird with huge unblinking staring eyes (FIXED GAZE)",
+  "note": "t2i 5701: a round bird with huge staring eyes -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "vigilance_front_5701.png",
+  "back": "vigilance_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,32,41,50",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.1,
+    "accent_clean_after": 8.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1440
+   },
+   "front_accent_pct": 8.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "21,35,41,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 10.2,
+    "accent_clean_after": 10.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1762
+   },
+   "back_accent_pct": 2.5,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     106,
+     169,
+     228
+    ],
+    "accent_cells": 11,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "back"
+  ]
+ },
+ "prescience": {
+  "name": "PRESCIENCE",
+  "national": 178,
+  "slot": "xatu",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a tall still bird with its wings folded round it like a cloak, staring ahead (PREDICTION)",
+  "note": "i2i 0.8: a tall still white bird, wings folded at its side (not a cloak). Back the front mirrored, face out. Its brown perch still under its feet.",
+  "failed": "",
+  "front": "prescience_front_i2i_5721.png",
+  "back": "prescience_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,32,41,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.8,
+    "accent_clean_after": 4.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1611
+   },
+   "front_accent_pct": 4.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "8,33,40,41",
+    "painted": "[3, 3, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.6,
+    "accent_clean_after": 4.6,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1185
+   },
+   "back_accent_pct": 3.2,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     130,
+     176,
+     229
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "buildup": {
+  "name": "BUILDUP",
+  "national": 180,
+  "slot": "flaaffy",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "an upright sheep with only a collar of wool left, a bare tail with a ball on its tip (PRESSURE)",
+  "note": "i2i 0.8: a sheep with a wool mane and a long tail -- the bare body and the ball-tipped tail lost (ten drafts kept the wool); close to TENSION. Back the front mirrored, face out; puddle off.",
+  "failed": "front: bare body, ball tail lost",
+  "front": "buildup_front_i2i_5721.png",
+  "back": "buildup_back_fromfront_5751.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,32,42,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.4,
+    "accent_clean_after": 2.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1664
+   },
+   "front_accent_pct": 2.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "22,34,37,53",
+    "painted": "[5, 5, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 26.7,
+    "accent_clean_after": 11.9,
+    "greyed_px": 241,
+    "streak_px": 18,
+    "creature_px": 1627
+   },
+   "back_accent_pct": 2.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     152,
+     222
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "release": {
+  "name": "RELEASE",
+  "national": 181,
+  "slot": "ampharos",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a tall bare upright creature with a big glowing lamp on its tail tip and forehead (FLASHPOINT)",
+  "note": "t2i 5701: an upright bare creature with a curled tail and a yellow head -- no lamp (none of ten drew one where it belongs). Back the front mirrored, face out.",
+  "failed": "front: lamp lost",
+  "front": "release_front_5701.png",
+  "back": "release_back_i2i_5731.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,34,42,51",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.0,
+    "accent_clean_after": 6.0,
+    "greyed_px": 0,
+    "streak_px": 358,
+    "creature_px": 1361
+   },
+   "front_accent_pct": 14.1,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "13,33,44,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 38.6,
+    "accent_clean_after": 12.3,
+    "greyed_px": 465,
+    "streak_px": 20,
+    "creature_px": 1765
+   },
+   "back_accent_pct": 13.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     83,
+     156,
+     220
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}
