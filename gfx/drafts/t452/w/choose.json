@@ -1,0 +1,157 @@
+{
+ "_": "batch 18 (2026-10-28), the charm recipe (charm8, dir w, seed 6600), chosen by eye on cand/g0-g5.png. Seeds: t2i chibi fronts 6601/6602, i2i from today's front 0.8 = 6621, 0.85 = 6622, one back from today's back 0.66 = 6631, one chibi icon 6641. Icons 'derived' = icon3 from the hand front. Every back is the front mirrored, face out (hand_b18.py).",
+ "redacted": {
+  "front": "redacted_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "redacted_back_i2i_6631.png",
+  "note": "i2i 0.85: a round grey fox sitting. A black bar drawn across its eyes by hand.",
+  "failed": "front: the black bar lost"
+ },
+ "unspoken": {
+  "front": "unspoken_front_i2i_6621.png",
+  "icon": "derived",
+  "back": "unspoken_back_i2i_6631.png",
+  "note": "i2i 0.8: a pointed-hood sheet ghost, its face a dark hollow with no mouth.",
+  "failed": ""
+ },
+ "subtext": {
+  "front": "subtext_front_i2i_6621.png",
+  "icon": "derived",
+  "back": "subtext_back_i2i_6631.png",
+  "note": "i2i 0.8: a small grey hooded doll. A zipper mouth and stitches drawn by hand.",
+  "failed": "front: the zipper mouth lost"
+ },
+ "forgery": {
+  "front": "forgery_front_i2i_6621.png",
+  "icon": "derived",
+  "back": "forgery_back_i2i_6631.png",
+  "note": "i2i 0.8: a snake in today's S coil. A pen nib drawn on its tail tip by hand.",
+  "failed": "front: the pen-nib tail lost"
+ },
+ "pristine": {
+  "front": "pristine_front_6602.png",
+  "icon": "derived",
+  "back": "pristine_back_i2i_6631.png",
+  "note": "t2i: a grey mongoose standing upright and proud. A monocle drawn by hand.",
+  "failed": "front: the monocle lost"
+ },
+ "stillrun": {
+  "front": "stillrun_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "stillrun_back_i2i_6631.png",
+  "note": "i2i 0.85: a round fish in thick old armour scales, lobed fins.",
+  "failed": ""
+ },
+ "bootrom": {
+  "front": "bootrom_front_6602.png",
+  "icon": "derived",
+  "back": "bootrom_back_i2i_6631.png",
+  "note": "t2i: a tiny round creature under a big steel helmet.",
+  "failed": ""
+ },
+ "firmware": {
+  "front": "firmware_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "firmware_back_i2i_6631.png",
+  "note": "i2i 0.85: a stout horned beast on four legs, armour plates on its body.",
+  "failed": ""
+ },
+ "bigiron": {
+  "front": "bigiron_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "bigiron_back_i2i_6631.png",
+  "note": "i2i 0.85: a round armoured beast, a riveted iron shell.",
+  "failed": ""
+ },
+ "overloaded": {
+  "front": "overloaded_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "overloaded_back_i2i_6631.png",
+  "note": "i2i 0.85: a round fluffy cloud creature. A small sun, a raindrop and a snowflake drawn round it by hand.",
+  "failed": "front: the sun, raindrop and snowflake lost"
+ },
+ "syn": {
+  "front": "syn_front_i2i_6621.png",
+  "icon": "derived",
+  "back": "syn_back_i2i_6631.png",
+  "note": "i2i 0.8: a small winged firefly with a lit antenna. A glowing tail light drawn by hand.",
+  "failed": "front: the tail light lost"
+ },
+ "ack": {
+  "front": "ack_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "ack_back_i2i_6631.png",
+  "note": "i2i 0.85: a round bug with both antennae raised. A glowing tail light drawn by hand.",
+  "failed": "front: the tail light lost"
+ },
+ "savestate": {
+  "front": "savestate_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "savestate_back_i2i_6631.png",
+  "note": "i2i 0.85: a little face under a crown of tentacles on a stalk.",
+  "failed": ""
+ },
+ "warmstart": {
+  "front": "warmstart_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "warmstart_back_i2i_6631.png",
+  "note": "i2i 0.85: a tall sea lily, long tendrils from its base.",
+  "failed": ""
+ },
+ "tokenring": {
+  "front": "tokenring_front_6602.png",
+  "icon": "derived",
+  "back": "tokenring_back_i2i_6631.png",
+  "note": "t2i: a shelled sea bug holding a round token.",
+  "failed": ""
+ },
+ "trunkline": {
+  "front": "trunkline_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "trunkline_back_i2i_6631.png",
+  "note": "i2i 0.85: a big armoured sea bug standing, two big claws.",
+  "failed": ""
+ },
+ "guesswork": {
+  "front": "src/guesswork_front_6601_unframed.png",
+  "icon": "derived",
+  "back": "guesswork_back_i2i_6631.png",
+  "note": "t2i (frame painted off): a small sprite peeking from a horned hood.",
+  "failed": ""
+ },
+ "attune": {
+  "front": "attune_front_i2i_6621.png",
+  "icon": "derived",
+  "back": "attune_back_i2i_6631.png",
+  "note": "i2i 0.8: a ballerina sprite twirling on tiptoe, arms out, a tutu, two horns.",
+  "failed": ""
+ },
+ "mentalize": {
+  "front": "mentalize_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "mentalize_back_i2i_6631.png",
+  "note": "i2i 0.85: a graceful sprite in a long gown. A gem drawn on its chest by hand.",
+  "failed": "front: the chest gem lost"
+ },
+ "inkling": {
+  "front": "inkling_front_6602.png",
+  "icon": "derived",
+  "back": "inkling_back_i2i_6631.png",
+  "note": "t2i: a baby dragon with a big round head.",
+  "failed": ""
+ },
+ "gestalt": {
+  "front": "gestalt_front_i2i_6621.png",
+  "icon": "derived",
+  "back": "gestalt_back_i2i_6631.png",
+  "note": "i2i 0.8: a round stone shell, its eyes peeking out.",
+  "failed": ""
+ },
+ "epiphany": {
+  "front": "epiphany_front_i2i_6622.png",
+  "icon": "derived",
+  "back": "epiphany_back_i2i_6631.png",
+  "note": "i2i 0.85: a small dragon with crescent wings spread wide.",
+  "failed": ""
+ }
+}

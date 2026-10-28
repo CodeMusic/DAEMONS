@@ -1,0 +1,1762 @@
+{
+ "redacted": {
+  "name": "REDACTED",
+  "national": 359,
+  "slot": "absol",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a fox that brings a warning, a black bar over its eyes like a censored word (WARNING)",
+  "note": "i2i 0.85: a round grey fox sitting. A black bar drawn across its eyes by hand.",
+  "failed": "front: the black bar lost",
+  "front": "redacted_front_i2i_6622.png",
+  "back": "redacted_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,34,39,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1243
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "12,30,34,38",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.8,
+    "accent_clean_after": 1.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 815
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     192,
+     236
+    ],
+    "accent_cells": 3,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "unspoken": {
+  "name": "UNSPOKEN",
+  "national": 353,
+  "slot": "shuppet",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a little hooded sheet ghost with no mouth, hanging back (UNSAID)",
+  "note": "i2i 0.8: a pointed-hood sheet ghost, its face a dark hollow with no mouth.",
+  "failed": "",
+  "front": "unspoken_front_i2i_6621.png",
+  "back": "unspoken_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,39,50",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 752
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "27,34,38,52",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 976
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     177,
+     227
+    ],
+    "accent_cells": 1,
+    "size": [
+     18,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "subtext": {
+  "name": "SUBTEXT",
+  "national": 354,
+  "slot": "banette",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a rag doll whose mouth is a closed zipper, stitches across its body (UNDERNEATH)",
+  "note": "i2i 0.8: a small grey hooded doll. A zipper mouth and stitches drawn by hand.",
+  "failed": "front: the zipper mouth lost",
+  "front": "subtext_front_i2i_6621.png",
+  "back": "subtext_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,33,36,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 578
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,31,36,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 697
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     99,
+     150,
+     221
+    ],
+    "accent_cells": 7,
+    "size": [
+     15,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "forgery": {
+  "name": "FORGERY",
+  "national": 336,
+  "slot": "seviper",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a snake whose tail ends in a pen nib, its signature (FAKE)",
+  "note": "i2i 0.8: a snake in today's S coil. A pen nib drawn on its tail tip by hand.",
+  "failed": "front: the pen-nib tail lost",
+  "front": "forgery_front_i2i_6621.png",
+  "back": "forgery_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,24,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1040
+   },
+   "front_accent_pct": 3.5,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "36,42,46,52",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 609
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     174,
+     229
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "pristine": {
+  "name": "PRISTINE",
+  "national": 335,
+  "slot": "zangoose",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a spotless mongoose standing tall, a monocle to tell a copy (ORIGINAL)",
+  "note": "t2i: a grey mongoose standing upright and proud. A monocle drawn by hand.",
+  "failed": "front: the monocle lost",
+  "front": "pristine_front_6602.png",
+  "back": "pristine_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "32,32,37,51",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 23.0,
+    "accent_clean_after": 8.1,
+    "greyed_px": 186,
+    "streak_px": 12,
+    "creature_px": 1242
+   },
+   "front_accent_pct": 0.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "15,33,27,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 912
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     156,
+     210
+    ],
+    "accent_cells": 1,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "stillrun": {
+  "name": "STILLRUN",
+  "national": 369,
+  "slot": "relicanth",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "an ancient armoured fish, thick old scales and lobed fins (LIVING OLD)",
+  "note": "i2i 0.85: a round fish in thick old armour scales, lobed fins.",
+  "failed": "",
+  "front": "stillrun_front_i2i_6622.png",
+  "back": "stillrun_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,32,37,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.1,
+    "accent_clean_after": 3.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1559
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "40,32,52,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 33.7,
+    "accent_clean_after": 14.6,
+    "greyed_px": 289,
+    "streak_px": 31,
+    "creature_px": 1512
+   },
+   "back_accent_pct": 1.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     96,
+     172,
+     231
+    ],
+    "accent_cells": 2,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bootrom": {
+  "name": "BOOTROM",
+  "national": 304,
+  "slot": "aron",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a tiny hard steel creature, a steel helmet plate over its head (READ ONLY)",
+  "note": "t2i: a tiny round creature under a big steel helmet.",
+  "failed": "",
+  "front": "bootrom_front_6602.png",
+  "back": "bootrom_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,32,44,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.8,
+    "accent_clean_after": 9.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2288
+   },
+   "front_accent_pct": 0.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "31,34,47,48",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.2,
+    "accent_clean_after": 13.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1067
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     161,
+     233
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "firmware": {
+  "name": "FIRMWARE",
+  "national": 305,
+  "slot": "lairon",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a stout armoured beast, steel plates grown into its body (BURNED IN)",
+  "note": "i2i 0.85: a stout horned beast on four legs, armour plates on its body.",
+  "failed": "",
+  "front": "firmware_front_i2i_6622.png",
+  "back": "firmware_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,34,42,42",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 820
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "24,31,34,41",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1069
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     173,
+     231
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bigiron": {
+  "name": "BIGIRON",
+  "national": 306,
+  "slot": "aggron",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "an enormous old armoured beast, a riveted iron shell never broken (OLD GIANT)",
+  "note": "i2i 0.85: a round armoured beast, a riveted iron shell.",
+  "failed": "",
+  "front": "bigiron_front_i2i_6622.png",
+  "back": "bigiron_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "12,32,24,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1426
+   },
+   "front_accent_pct": 0.1,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "24,31,40,39",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1451
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     155,
+     193
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "overloaded": {
+  "name": "OVERLOADED",
+  "national": 351,
+  "slot": "castform",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a fluffy cloud with a sun, a raindrop and a snowflake round it -- a body for each weather (OVERLOAD)",
+  "note": "i2i 0.85: a round fluffy cloud creature. A small sun, a raindrop and a snowflake drawn round it by hand.",
+  "failed": "front: the sun, raindrop and snowflake lost",
+  "front": "overloaded_front_i2i_6622.png",
+  "back": "overloaded_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,37,37,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.5,
+    "accent_clean_after": 12.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 696
+   },
+   "front_accent_pct": 14.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,42,41,50",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 235
+   },
+   "back_accent_pct": 14.2,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     100,
+     167,
+     230
+    ],
+    "accent_cells": 13,
+    "size": [
+     28,
+     24
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "syn": {
+  "name": "SYN",
+  "national": 313,
+  "slot": "volbeat",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a firefly flashing one light from its tail and waiting (CALL)",
+  "note": "i2i 0.8: a small winged firefly with a lit antenna. A glowing tail light drawn by hand.",
+  "failed": "front: the tail light lost",
+  "front": "syn_front_i2i_6621.png",
+  "back": "syn_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,34,41,42",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 18.9,
+    "accent_clean_after": 13.2,
+    "greyed_px": 45,
+    "streak_px": 18,
+    "creature_px": 790
+   },
+   "front_accent_pct": 13.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "17,34,47,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 17.1,
+    "accent_clean_after": 13.5,
+    "greyed_px": 33,
+    "streak_px": 20,
+    "creature_px": 898
+   },
+   "back_accent_pct": 10.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     99,
+     164,
+     221
+    ],
+    "accent_cells": 12,
+    "size": [
+     28,
+     20
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "ack": {
+  "name": "ACK",
+  "national": 314,
+  "slot": "illumise",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a firefly answering a flash with its own, both antennae up (ANSWER)",
+  "note": "i2i 0.85: a round bug with both antennae raised. A glowing tail light drawn by hand.",
+  "failed": "front: the tail light lost",
+  "front": "ack_front_i2i_6622.png",
+  "back": "ack_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "29,36,41,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 814
+   },
+   "front_accent_pct": 3.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "28,40,34,54",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 14.2,
+    "accent_clean_after": 14.2,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 948
+   },
+   "back_accent_pct": 2.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     165,
+     227
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     19
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "savestate": {
+  "name": "SAVESTATE",
+  "national": 345,
+  "slot": "lileep",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a fossil sea lily kept in stone, a crown of petal tentacles on a stalk (PRESERVED)",
+  "note": "i2i 0.85: a little face under a crown of tentacles on a stalk.",
+  "failed": "",
+  "front": "savestate_front_i2i_6622.png",
+  "back": "savestate_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,43,38,57",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.3,
+    "accent_clean_after": 1.3,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 603
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "30,34,33,54",
+    "painted": "FAILED, no streaks"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.6,
+    "accent_clean_after": 6.6,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 809
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 9,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     99,
+     183,
+     235
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "warmstart": {
+  "name": "WARMSTART",
+  "national": 346,
+  "slot": "cradily",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a grown sea lily, many long tendrils reaching up from a stone base (RESUMED)",
+  "note": "i2i 0.85: a tall sea lily, long tendrils from its base.",
+  "failed": "",
+  "front": "warmstart_front_i2i_6622.png",
+  "back": "warmstart_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,42,37,58",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 47.7,
+    "accent_clean_after": 12.1,
+    "greyed_px": 307,
+    "streak_px": 15,
+    "creature_px": 862
+   },
+   "front_accent_pct": 8.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,33,46,51",
+    "painted": "[4, 5, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 29.6,
+    "accent_clean_after": 11.7,
+    "greyed_px": 158,
+    "streak_px": 14,
+    "creature_px": 882
+   },
+   "back_accent_pct": 7.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     170,
+     220
+    ],
+    "accent_cells": 3,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "tokenring": {
+  "name": "TOKENRING",
+  "national": 347,
+  "slot": "anorith",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "an old shelled sea bug holding the round token it must pass on (TAKE TURNS)",
+  "note": "t2i: a shelled sea bug holding a round token.",
+  "failed": "",
+  "front": "tokenring_front_6602.png",
+  "back": "tokenring_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "30,31,50,39",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 11.1,
+    "accent_clean_after": 11.1,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 2085
+   },
+   "front_accent_pct": 10.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,33,37,51",
+    "painted": "[4, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1282
+   },
+   "back_accent_pct": 5.5,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     117,
+     192,
+     236
+    ],
+    "accent_cells": 11,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "trunkline": {
+  "name": "TRUNKLINE",
+  "national": 348,
+  "slot": "armaldo",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a big armoured sea bug, a long ridged back that every message ran along (CORE LINK)",
+  "note": "i2i 0.85: a big armoured sea bug standing, two big claws.",
+  "failed": "",
+  "front": "trunkline_front_i2i_6622.png",
+  "back": "trunkline_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,35,37,52",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.2,
+    "accent_clean_after": 6.2,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1127
+   },
+   "front_accent_pct": 6.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "28,34,35,51",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1256
+   },
+   "back_accent_pct": 5.3,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     130,
+     181,
+     228
+    ],
+    "accent_cells": 9,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "guesswork": {
+  "name": "GUESSWORK",
+  "national": 280,
+  "slot": "ralts",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a small hooded sprite peeking out from under its hood, two little horns (GUESSER)",
+  "note": "t2i (frame painted off): a small sprite peeking from a horned hood.",
+  "failed": "",
+  "front": "src/guesswork_front_6601_unframed.png",
+  "back": "guesswork_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,36,52",
+    "painted": "[5, 4, 3, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.3,
+    "accent_clean_after": 12.3,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1229
+   },
+   "front_accent_pct": 11.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "24,34,38,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 11.5,
+    "accent_clean_after": 11.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1262
+   },
+   "back_accent_pct": 6.3,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     183,
+     241
+    ],
+    "accent_cells": 3,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "attune": {
+  "name": "ATTUNE",
+  "national": 281,
+  "slot": "kirlia",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a little dancing sprite in a tutu, arms out, twirling in time (ATTUNER)",
+  "note": "i2i 0.8: a ballerina sprite twirling on tiptoe, arms out, a tutu, two horns.",
+  "failed": "",
+  "front": "attune_front_i2i_6621.png",
+  "back": "attune_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,32,36,40",
+    "painted": "[3, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 68.6,
+    "accent_clean_after": 14.3,
+    "greyed_px": 311,
+    "streak_px": 17,
+    "creature_px": 573
+   },
+   "front_accent_pct": 13.3,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "23,30,41,46",
+    "painted": "[3, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 25.8,
+    "accent_clean_after": 12.5,
+    "greyed_px": 95,
+    "streak_px": 16,
+    "creature_px": 712
+   },
+   "back_accent_pct": 8.7,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     86,
+     135,
+     201
+    ],
+    "accent_cells": 5,
+    "size": [
+     19,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "mentalize": {
+  "name": "MENTALIZE",
+  "national": 282,
+  "slot": "gardevoir",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a tall graceful sprite in a long gown, a glowing gem on its chest (MINDREADER)",
+  "note": "i2i 0.85: a graceful sprite in a long gown. A gem drawn on its chest by hand.",
+  "failed": "front: the chest gem lost",
+  "front": "mentalize_front_i2i_6622.png",
+  "back": "mentalize_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,35,57",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 26.7,
+    "accent_clean_after": 11.8,
+    "greyed_px": 138,
+    "streak_px": 19,
+    "creature_px": 924
+   },
+   "front_accent_pct": 10.3,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,35,34,56",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.0,
+    "accent_clean_after": 7.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 774
+   },
+   "back_accent_pct": 8.0,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     149,
+     205
+    ],
+    "accent_cells": 1,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "inkling": {
+  "name": "INKLING",
+  "national": 371,
+  "slot": "bagon",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a small round dragon with a big hard head it butts against rocks (HUNCH)",
+  "note": "t2i: a baby dragon with a big round head.",
+  "failed": "",
+  "front": "inkling_front_6602.png",
+  "back": "inkling_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,35,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 31.9,
+    "accent_clean_after": 14.5,
+    "greyed_px": 329,
+    "streak_px": 20,
+    "creature_px": 1897
+   },
+   "front_accent_pct": 13.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "31,33,36,44",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 22.9,
+    "accent_clean_after": 14.6,
+    "greyed_px": 89,
+    "streak_px": 12,
+    "creature_px": 1076
+   },
+   "back_accent_pct": 11.7,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     97,
+     162,
+     211
+    ],
+    "accent_cells": 16,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "gestalt": {
+  "name": "GESTALT",
+  "national": 372,
+  "slot": "shelgon",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a creature shut inside a round stone shell, holding still (WHOLE)",
+  "note": "i2i 0.8: a round stone shell, its eyes peeking out.",
+  "failed": "",
+  "front": "gestalt_front_i2i_6621.png",
+  "back": "gestalt_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "12,32,44,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1461
+   },
+   "front_accent_pct": 3.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "33,33,38,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.3,
+    "accent_clean_after": 6.3,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1465
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     109,
+     166,
+     208
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     19
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "epiphany": {
+  "name": "EPIPHANY",
+  "national": 373,
+  "slot": "salamence",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a dragon breaking out all at once, big crescent wings spread (ALL AT ONCE)",
+  "note": "i2i 0.85: a small dragon with crescent wings spread wide.",
+  "failed": "",
+  "front": "epiphany_front_i2i_6622.png",
+  "back": "epiphany_back_i2i_6631.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,44,36,52",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 34.8,
+    "accent_clean_after": 5.4,
+    "greyed_px": 191,
+    "streak_px": 18,
+    "creature_px": 650
+   },
+   "front_accent_pct": 5.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "15,45,47,53",
+    "painted": "[3, 4, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 422
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     167,
+     213
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     16
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}
