@@ -1,0 +1,59 @@
+{
+  "rom": "debug",
+  "about": "T-459 C: once THE SUBTLE LAYER is held, some turns of a battle open with a lean in the book's purple where \"What will X do?\" stood -- what the foe will do, read from what it has really chosen, right more often as READ (ATTUNEMENT - VOLTAGE) rises. Counted once the foe's turn comes (VAR_LEANS_TOLD, VAR_LEANS_LANDED). gThreeDebugLean makes one come every turn; the player's daemon's ATTACK and SP. ATK are set to 1 so the wild one lives to take its turns. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "the book held: a wild battle on ROUTE 22, its first menu -- after the two-second button hint, a lean where the question stood",
+      "steps": [
+        "load debug",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "poke gThreeDebugLean 8 1",
+        "var VAR_LEANS_TOLD 0",
+        "var VAR_LEANS_LANDED 0",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "wait 150",
+        "shot the lean, where the question stood",
+        "poke gBattleMons+0x02 16 1",
+        "poke gBattleMons+0x08 16 1",
+        "remember TOLD *gSaveBlock1Ptr+0x118C 16",
+        "press A",
+        "wait 20",
+        "shot the routines (the lean gone with the question)",
+        "press A",
+        "wait 600",
+        "shot the next turn's lean",
+        "moved TOLD"
+      ]
+    },
+    {
+      "stop": "a second turn: the count moves again, once the foe has had its turn",
+      "steps": [
+        "remember LANDED *gSaveBlock1Ptr+0x118E 16",
+        "remember TOLD2 *gSaveBlock1Ptr+0x118C 16",
+        "press A",
+        "wait 20",
+        "press A",
+        "wait 600",
+        "shot a third turn's lean",
+        "moved TOLD2",
+        "win",
+        "finish"
+      ]
+    },
+    {
+      "stop": "without the book: the same battle, the question as it was",
+      "steps": [
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "wait 150",
+        "shot the question, no lean",
+        "win",
+        "finish",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "poke gThreeDebugLean 8 0"
+      ]
+    }
+  ]
+}

@@ -109,3 +109,9 @@ Batch 5 follow-ups, before and after: ACQUIRE's pincer, AXIOMKICK's leg, ARCHIVE
 Batch 5 follow-ups, before and after: ACQUIRE's pincer, AXIOMKICK's leg, ARCHIVER frosted, BREAKER cracked and sparking, CIRCULAR's headstand, BOOTSTRAP's six-egg back.
 
 ![27Oct2026 - T452 - batch 5 follow-ups - 23](27Oct2026%20-%20T452%20-%20batch%205%20follow-ups%20-%2023.png)
+
+### 27Oct2026 - T459 - the lean in battle - 24
+
+T-459 C in the ROM (debug, the theatre's t459c route): with THE SUBTLE LAYER held, a lean in the book's purple stands where What will X do? stood; without the book, the question as it was. C_MARGIN on the battle box's dark ground; every word DRAFT.
+
+![27Oct2026 - T459 - the lean in battle - 24](27Oct2026%20-%20T459%20-%20the%20lean%20in%20battle%20-%2024.png)

@@ -26,8 +26,13 @@ not touched, because the MAIL prints in slots 10 and 11 of it (mail.c sTextColor
 lobes into 10-15 of the same palette after the frame (trainer_card.c LoadBrainLobeColors). The shadow is the box's own
 LIGHT_GRAY: the dialogue palette has one slot to spare, not two.
 
+IN BATTLE (T-459 C, the lean). The battle's message box is dark, and C_RULE reads at 1.8:1 on it, so the lean prints in
+C_MARGIN, the hue lit, with the box's own shadow: slot 12 of BG palette 0 (daemons_three.c sLeanPurple, loaded each time
+a lean prints), a magenta placeholder in textbox.gbapal that textbox.png never draws.
+
 THE CHECKS, in report mode: the frames and palette on disk are what this draws; menu_message.png draws nothing in 10;
-the RGB() in new_menu_helpers.c is C_RULE; charmap.txt names 0A PURPLE.
+the RGB() in new_menu_helpers.c is C_RULE; charmap.txt names 0A PURPLE; daemons_three.c's sLeanPurple is C_MARGIN and
+textbox.png draws nothing in slot 12.
 
 Drawn directly at 16x16, pixel by pixel, as every small icon in this project is (genemoji, genopusicon): a ring two
 pixels across is a pixel decision, not a reduction.
@@ -41,6 +46,10 @@ OUT_PNG = os.path.join(GBA, "graphics", "misc", "subtle_sense.png")
 OUT_PAL = os.path.join(GBA, "graphics", "misc", "subtle_sense.pal")
 FRAME_PNG = os.path.join(GBA, "graphics", "text_window", "menu_message.png")
 MENU_C = os.path.join(GBA, "src", "new_menu_helpers.c")
+THREE_C = os.path.join(GBA, "src", "daemons_three.c")
+TEXTBOX_PAL = os.path.join(GBA, "graphics", "battle_interface", "textbox.gbapal")
+TEXTBOX_PNG = os.path.join(GBA, "graphics", "battle_interface", "textbox.png")
+LEAN_SLOT = 12
 CHARMAP = os.path.join(GBA, "charmap.txt")
 WRITE = "--write" in sys.argv
 
@@ -141,6 +150,14 @@ def checks():
         bad.append("new_menu_helpers.c's sSubtlePurple is RGB%s, gensubtle's C_RULE is %s" % (m.groups(), RULE))
     if not re.search(r"^PURPLE\s*=\s*0A\b", open(CHARMAP).read(), re.M):
         bad.append("charmap.txt does not name 0A PURPLE")
+    m = re.search(r"sLeanPurple\[\]\s*=\s*\{\s*RGB\((\d+),\s*(\d+),\s*(\d+)\)", open(THREE_C).read())
+    if not m:
+        bad.append("daemons_three.c has no sLeanPurple")
+    elif tuple(int(v) for v in m.groups()) != MARGIN:
+        bad.append("daemons_three.c's sLeanPurple is RGB%s, gensubtle's C_MARGIN is %s" % (m.groups(), MARGIN))
+    drawn = list(Image.open(TEXTBOX_PNG).getdata()).count(LEAN_SLOT)
+    if drawn:
+        bad.append("textbox.png draws %d pixels in slot %d, the lean's purple" % (drawn, LEAN_SLOT))
     return bad
 
 
@@ -173,6 +190,7 @@ def report():
         print("  ! " + b)
     if not bad:
         print("  the dialogue's purple is C_RULE, in slot 10, named PURPLE; the frame no longer draws there.")
+        print("  the lean's purple is C_MARGIN, in the battle box's slot 12, which nothing draws.")
     return 1 if bad else 0
 
 
