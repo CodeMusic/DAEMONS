@@ -1,0 +1,1770 @@
+{
+ "heatsink": {
+  "name": "HEATSINK",
+  "national": 86,
+  "slot": "seel",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round seal pup sitting up, white belly, flipper tail (ABSORBING)",
+  "note": "i2i 0.8: a round seal pup sitting up on its flipper tail, white belly -- the key kept. Icon 5341 (card off). Back: from today's back (5332), grey with a pale belly showing through.",
+  "failed": "",
+  "front": "heatsink_front_i2i_5321.png",
+  "back": "heatsink_back_i2i_5332.png",
+  "icon": "heatsink_icon_5341.png",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,38,48",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.2,
+    "accent_clean_after": 8.2,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1128
+   },
+   "front_accent_pct": 8.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,34,48,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1825
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1220
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     115,
+     185,
+     242
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "archiver": {
+  "name": "ARCHIVER",
+  "national": 87,
+  "slot": "dewgong",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a long sleek seal lying stretched out flat (PRESERVING)",
+  "note": "i2i 0.85: a sleek seal lying long, tail flipper stretched out -- the key kept. LOOK-ALIKE: HEATSINK (same line) and batch 4's LATENCY (a seal).",
+  "failed": "",
+  "front": "archiver_front_i2i_5322.png",
+  "back": "archiver_back_i2i_5332.png",
+  "icon": "src/archiver_icon_5342_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "15,34,35,50",
+    "painted": "[3, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.4,
+    "accent_clean_after": 2.4,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1275
+   },
+   "front_accent_pct": 2.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "21,32,36,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 30.3,
+    "accent_clean_after": 14.2,
+    "greyed_px": 152,
+    "streak_px": 20,
+    "creature_px": 943
+   },
+   "back_accent_pct": 14.2,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 955
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     167,
+     223,
+     244
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     21
+    ]
+   }
+  }
+ },
+ "landfill": {
+  "name": "LANDFILL",
+  "national": 89,
+  "slot": "muk",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a big dark sludge heap with a wide red grinning mouth, ragged drips (ACCUMULATED)",
+  "note": "i2i 0.8: a dark sludge monster with a wide red toothy grin and ragged drips -- the key kept. Icon 5342: a round blob all grin. Back: from today's back (5331), ragged drips.",
+  "failed": "",
+  "front": "landfill_front_i2i_5321.png",
+  "back": "landfill_back_i2i_5331.png",
+  "icon": "src/landfill_icon_5342_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "11,32,33,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 52.9,
+    "accent_clean_after": 12.4,
+    "greyed_px": 588,
+    "streak_px": 20,
+    "creature_px": 1454
+   },
+   "front_accent_pct": 12.4,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "13,32,35,40",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1168
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 36.0,
+    "accent_clean_after": 0.9,
+    "greyed_px": 303,
+    "streak_px": 0,
+    "creature_px": 865
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    17
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     81,
+     150,
+     239
+    ],
+    "accent_cells": 4,
+    "size": [
+     27,
+     28
+    ]
+   }
+  }
+ },
+ "capsule": {
+  "name": "CAPSULE",
+  "national": 90,
+  "slot": "shellder",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a closed ridged clam shell with a face peeking out (SEALED)",
+  "note": "i2i 0.8: a ridged clam shell closed almost shut, a little face peeking out -- the key kept. Back: from today's back (5332), the shell's two halves and hinge.",
+  "failed": "",
+  "front": "capsule_front_i2i_5321.png",
+  "back": "capsule_back_i2i_5332.png",
+  "icon": "src/capsule_icon_5342_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "17,33,38,47",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1641
+   },
+   "front_accent_pct": 0.4,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "14,33,31,52",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1546
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 958
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     134,
+     198,
+     240
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "coldvault": {
+  "name": "COLDVAULT",
+  "national": 91,
+  "slot": "cloyster",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round dark spiked shell, shut, two eyes glinting in the gap (UNREAD)",
+  "note": "i2i 0.8: a frosty spiked dome shut over two eyes in the gap -- the key kept. Icon 5342: a spiked round shell with big eyes.",
+  "failed": "",
+  "front": "coldvault_front_i2i_5321.png",
+  "back": "coldvault_back_i2i_5331.png",
+  "icon": "src/coldvault_icon_5342_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,33,36,52",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 67.2,
+    "accent_clean_after": 11.4,
+    "greyed_px": 937,
+    "streak_px": 24,
+    "creature_px": 1679
+   },
+   "front_accent_pct": 11.4,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "19,33,30,51",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.5,
+    "accent_clean_after": 13.5,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1546
+   },
+   "back_accent_pct": 13.5,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 22.4,
+    "accent_clean_after": 10.0,
+    "greyed_px": 118,
+    "streak_px": 0,
+    "creature_px": 957
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    20
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     133,
+     193,
+     241
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "hauntproc": {
+  "name": "HAUNTPROC",
+  "national": 94,
+  "slot": "gengar",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a round dark shadow blob with glowing red eyes (UNPARENTED)",
+  "note": "i2i 0.85: a round dark shadow blob with two big glowing red eyes -- the key kept. Drawn icons were one big eyeball and a white blob. Back: from today's back (5332), a dark rounded hood, no face.",
+  "failed": "",
+  "front": "hauntproc_front_i2i_5322.png",
+  "back": "hauntproc_back_i2i_5332.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,42,51",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.0,
+    "accent_clean_after": 6.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1283
+   },
+   "front_accent_pct": 6.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "23,32,38,46",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.7,
+    "accent_clean_after": 0.7,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 672
+   },
+   "back_accent_pct": 0.7,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     80,
+     144,
+     219
+    ],
+    "accent_cells": 9,
+    "size": [
+     24,
+     28
+    ]
+   }
+  }
+ },
+ "lull": {
+  "name": "LULL",
+  "national": 96,
+  "slot": "drowzee",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a tapir with a long drooping snout (DEFERRING)",
+  "note": "i2i 0.8: a plump tapir with its long drooping snout -- the key kept, close to today's. Back: from today's back (5332), the pale saddle from behind.",
+  "failed": "",
+  "front": "lull_front_i2i_5321.png",
+  "back": "lull_back_i2i_5332.png",
+  "icon": "src/lull_icon_5342_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "12,32,34,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1003
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "10,34,38,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1687
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 26.1,
+    "accent_clean_after": 1.2,
+    "greyed_px": 303,
+    "streak_px": 0,
+    "creature_px": 1213
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     84,
+     167,
+     235
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     22
+    ]
+   }
+  }
+ },
+ "busywait": {
+  "name": "BUSYWAIT",
+  "national": 97,
+  "slot": "hypno",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a pendulum on a string held out in front (HELD OPEN)",
+  "note": "t2i 5301: a chibi tapir-ish creature holding a pendulum out on its string -- the key kept. Icon 5341: a face under a pendulum string. Back: from today's back (5332), side-on as today's, the pendulum strings above.",
+  "failed": "",
+  "front": "busywait_front_5301.png",
+  "back": "busywait_back_i2i_5332.png",
+  "icon": "busywait_icon_5341.png",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,36,49",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.6,
+    "accent_clean_after": 10.6,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1088
+   },
+   "front_accent_pct": 10.6,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "26,32,41,53",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 12.7,
+    "accent_clean_after": 12.7,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 663
+   },
+   "back_accent_pct": 12.7,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 2.4,
+    "accent_clean_after": 2.4,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 999
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     185,
+     241
+    ],
+    "accent_cells": 2,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "lockup": {
+  "name": "LOCKUP",
+  "national": 99,
+  "slot": "kingler",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a crab with two huge claws raised and clamped (CLOSED)",
+  "note": "i2i 0.85: a crab with both claws raised high -- the key kept, though the claws are not huge. Back: from today's back (5331), both claws up. Icon 5342: a crab with big claws.",
+  "failed": "",
+  "front": "lockup_front_i2i_5322.png",
+  "back": "lockup_back_i2i_5331.png",
+  "icon": "src/lockup_icon_5342_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "20,31,46,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.2,
+    "accent_clean_after": 2.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1471
+   },
+   "front_accent_pct": 2.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,33,39,50",
+    "painted": "[4, 5, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1052
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 340
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    12
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     133,
+     183,
+     236
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "fuse": {
+  "name": "FUSE",
+  "national": 100,
+  "slot": "voltorb",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a round ball with a band round its middle, angry eyes (BOX)",
+  "note": "i2i 0.8: a round ball with angry slanted eyes; its band round the middle is lost (hand_b5 draws it). Back: from today's back (5332), a dome with the band.",
+  "failed": "front: the band round its middle (drawn by hand)",
+  "front": "fuse_front_i2i_5321.png",
+  "back": "fuse_back_i2i_5332.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,41,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1728
+   },
+   "front_accent_pct": 1.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "21,34,41,52",
+    "painted": "[4, 4, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1652
+   },
+   "back_accent_pct": 2.3,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     166,
+     206
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "breaker": {
+  "name": "BREAKER",
+  "national": 101,
+  "slot": "electrode",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a bigger round ball with a heavy seam band, a sharp grin (BOX)",
+  "note": "i2i 0.8: a round ball with angry eyes and a toothy grin; its seam band is lost (hand_b5 draws it). Back: from today's back (5332), a dome with the band. LOOK-ALIKE: FUSE (same line) and SENTINEL.",
+  "failed": "front: the seam band round its middle (drawn by hand)",
+  "front": "breaker_front_i2i_5321.png",
+  "back": "breaker_back_i2i_5332.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,34,41,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.9,
+    "accent_clean_after": 6.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1690
+   },
+   "front_accent_pct": 6.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "23,30,42,44",
+    "painted": "[5, 4, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1478
+   },
+   "back_accent_pct": 0.1,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     186,
+     233
+    ],
+    "accent_cells": 18,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "bootstrap": {
+  "name": "BOOTSTRAP",
+  "national": 102,
+  "slot": "exeggcute",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "SIX eggs huddled together, each with a little face (COLLECTIVE; the entry says six)",
+  "note": "i2i 0.85: a huddle of eggs, each with a face (six, to match the entry). Back: from today's back (5332), the eggs plain.",
+  "failed": "",
+  "front": "bootstrap_front_i2i_5322.png",
+  "back": "bootstrap_back_i2i_5332.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,33,36,51",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.9,
+    "accent_clean_after": 9.9,
+    "greyed_px": 0,
+    "streak_px": 23,
+    "creature_px": 1489
+   },
+   "front_accent_pct": 9.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "26,32,37,43",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 929
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     127,
+     175,
+     234
+    ],
+    "accent_cells": 27,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "rebuttal": {
+  "name": "REBUTTAL",
+  "national": 107,
+  "slot": "hitmonchan",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "big boxing gloves (ANSWERING)",
+  "note": "i2i 0.85: a grey bulldog boxer with two big round gloves raised -- the key kept. Back: from today's back (5332), broad shoulders and gloves.",
+  "failed": "",
+  "front": "rebuttal_front_i2i_5322.png",
+  "back": "rebuttal_back_i2i_5332.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,35,27,55",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.8,
+    "accent_clean_after": 7.8,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1722
+   },
+   "front_accent_pct": 7.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "30,34,41,53",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1788
+   },
+   "back_accent_pct": 3.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     190,
+     230
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "premise": {
+  "name": "PREMISE",
+  "national": 236,
+  "slot": "tyrogue",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a squat stocky creature planted on a wide flat base, arms out (FOUNDATION)",
+  "note": "i2i 0.85: a squat round grey creature, thick arms out, a frown -- squat kept, the wide flat base lost. Back: from today's back (5332).",
+  "failed": "",
+  "front": "premise_front_i2i_5322.png",
+  "back": "premise_back_i2i_5332.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,31,37,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1401
+   },
+   "front_accent_pct": 0.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "20,26,43,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 27.9,
+    "accent_clean_after": 6.9,
+    "greyed_px": 260,
+    "streak_px": 20,
+    "creature_px": 1241
+   },
+   "back_accent_pct": 6.9,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     91,
+     149,
+     217
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     20
+    ]
+   }
+  }
+ },
+ "deadletter": {
+  "name": "DEADLETTER",
+  "national": 88,
+  "slot": "grimer",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a sludge blob with a grimace, dripping, an envelope stuck in it (DISCARDED)",
+  "note": "charmlo i2i 0.76: a lumpy sludge blob with a grimace, drips and goo arms -- close to today's. The envelope (the second wording's key) was lost by every draft: drawn by hand (hand_b5). Back: from today's back (5331), drips and a paper stuck in it.",
+  "failed": "front: the envelope (drawn by hand)",
+  "front": "deadletter_front_i2i_5324.png",
+  "back": "deadletter_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,32,50,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1299
+   },
+   "front_accent_pct": 2.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "26,42,38,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1443
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     159,
+     209
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     23
+    ]
+   }
+  }
+ },
+ "respawn": {
+  "name": "RESPAWN",
+  "national": 93,
+  "slot": "haunter",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a ghost with two floating detached hands (ORPHANED)",
+  "note": "charmlo i2i 0.72: a white ghost with a wispy tail and big hands out at its sides -- every draft joined the hands to the body, so hand_b5 cuts them free. Back: from today's back (5331).",
+  "failed": "front: the hands detached (cut free by hand)",
+  "front": "respawn_front_i2i_5323.png",
+  "back": "respawn_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "8,30,56,38",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1201
+   },
+   "front_accent_pct": 1.1,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "23,38,41,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1421
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     175,
+     226
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     23
+    ]
+   }
+  }
+ },
+ "acquire": {
+  "name": "ACQUIRE",
+  "national": 98,
+  "slot": "krabby",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a crab with ONE big claw, much bigger than the other (GRIPPING)",
+  "note": "charmlo i2i 0.72: a grey crab, claws up, spindly legs. Every draft drew the claws matching; hand_b5 doubles its right claw (the entry: it leads with the big claw, lopsided). Back: from today's back (5331).",
+  "failed": "front: one oversized claw (drawn by hand)",
+  "front": "acquire_front_i2i_5323.png",
+  "back": "acquire_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "3,32,19,40",
+    "painted": "[4, 4, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.5,
+    "accent_clean_after": 3.5,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1003
+   },
+   "front_accent_pct": 3.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "8,28,20,38",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 936
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     92,
+     151,
+     199
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "ensemble": {
+  "name": "ENSEMBLE",
+  "national": 103,
+  "slot": "exeggutor",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a walking palm-tree creature with SEVERAL heads in its leaf crown (AGGREGATE; the entry says several heads)",
+  "note": "charmlo i2i 0.76: a stocky trunk creature under a crown of palm leaves. Every draft drew one head; hand_b5 adds two small heads in the crown (the entry: several heads). Back: from today's back (5331).",
+  "failed": "front: several heads (drawn by hand)",
+  "front": "ensemble_front_i2i_5324.png",
+  "back": "ensemble_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,35,34,56",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.2,
+    "accent_clean_after": 14.2,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1503
+   },
+   "front_accent_pct": 14.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,32,40,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1663
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     98,
+     162,
+     233
+    ],
+    "accent_cells": 11,
+    "size": [
+     21,
+     28
+    ]
+   }
+  }
+ },
+ "axiomkick": {
+  "name": "AXIOMKICK",
+  "national": 106,
+  "slot": "hitmonlee",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "one long leg kicking high (ASSUMED)",
+  "note": "charmlo i2i 0.72: a round stout grey creature, arms out, big eyes. Every draft stood on two feet; hand_b5 draws one long leg kicking high (the user: a high kick). Back: from today's back (5331). LOOK-ALIKE: PREMISE (same line) and batch 4's PROOF.",
+  "failed": "front: the high kick (drawn by hand)",
+  "front": "axiomkick_front_i2i_5323.png",
+  "back": "axiomkick_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,28,42,45",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 9.3,
+    "accent_clean_after": 9.3,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 1391
+   },
+   "front_accent_pct": 9.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,28,43,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1385
+   },
+   "back_accent_pct": 0.3,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     185,
+     225
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "circular": {
+  "name": "CIRCULAR",
+  "national": 237,
+  "slot": "hitmontop",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "spinning upside down on its head, legs up (ROUND TRIP)",
+  "note": "charmlo i2i 0.72: a lanky creature in a headstand, its long legs straight up, arms curved round like a hoop -- the key kept. Back: from today's back (5331), upside down, legs up.",
+  "failed": "",
+  "front": "circular_front_i2i_5323.png",
+  "back": "circular_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,33,35,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 724
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "29,34,33,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 581
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     113,
+     153,
+     215
+    ],
+    "accent_cells": 1,
+    "size": [
+     20,
+     28
+    ]
+   }
+  }
+ },
+ "artefact": {
+  "name": "ARTEFACT",
+  "national": 104,
+  "slot": "cubone",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a small creature wearing a skull as a helmet, holding a bone (INHERITED)",
+  "note": "i2i 0.85: a small creature in a horned skull helmet -- the key kept (the bone club lost). Back: the front mirrored, its face's features painted out (the turned drafts kept a face; today's back is a mouse).",
+  "failed": "",
+  "front": "artefact_front_i2i_5322.png",
+  "back": "artefact_back_i2i_5331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,32,39,40",
+    "painted": "[4, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 899
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "24,34,38,53",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1433
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     169,
+     230
+    ],
+    "accent_cells": 3,
+    "size": [
+     21,
+     28
+    ]
+   }
+  }
+ },
+ "corefile": {
+  "name": "COREFILE",
+  "national": 105,
+  "slot": "marowak",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a bigger skull-helmeted creature carrying a bone, a cracked helmet (RECORDING)",
+  "note": "t2i 5302: a sturdier creature in a big horned skull -- the key kept (the bone lost). Its ground ellipse taken off. Back: turned from the new front (5352), the horned skull from behind.",
+  "failed": "",
+  "front": "corefile_front_5302.png",
+  "back": "corefile_back_fromfront_5352.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,34,34,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1357
+   },
+   "front_accent_pct": 0.6,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "27,33,33,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 12.6,
+    "accent_clean_after": 12.6,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1240
+   },
+   "back_accent_pct": 12.6,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     173,
+     226
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ }
+}

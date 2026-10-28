@@ -1,0 +1,142 @@
+{
+ "_": "batch 5 (2026-10-27), the charm recipe (dir h, seed 5300), chosen by eye on t452b5_cand_*.png. Seeds: t2i chibi fronts 5301/5302 (5303/5304 a second wording), i2i from today's front 0.8 = 5321, 0.85 = 5322 (0.72 = 5323, 0.76 = 5324 where charmlo ran), backs from today's back 0.66 = 5331, 0.75 = 5332, chibi icons 5341/5342, backs turned from the chosen front 0.75 = 5351, 0.85 = 5352. Icons by icon3 (round2.icon_from_draft); 'derived' = icon3 from the clean new front.",
+ "heatsink": {
+  "front": "heatsink_front_i2i_5321.png",
+  "icon": "heatsink_icon_5341.png",
+  "back": "heatsink_back_i2i_5332.png",
+  "note": "i2i 0.8: a round seal pup sitting up on its flipper tail, white belly -- the key kept. Icon 5341 (card off). Back: from today's back (5332), grey with a pale belly showing through."
+ },
+ "archiver": {
+  "front": "archiver_front_i2i_5322.png",
+  "icon": "archiver_icon_5342.png",
+  "back": "archiver_back_i2i_5332.png",
+  "note": "i2i 0.85: a sleek seal lying long, tail flipper stretched out -- the key kept. LOOK-ALIKE: HEATSINK (same line) and batch 4's LATENCY (a seal). Back: the front mirrored, face painted out (the drafts from today's back kept a face)."
+ },
+ "landfill": {
+  "front": "landfill_front_i2i_5321.png",
+  "icon": "landfill_icon_5342.png",
+  "back": "landfill_back_i2i_5331.png",
+  "note": "i2i 0.8: a dark sludge monster with a wide red toothy grin and ragged drips -- the key kept. Icon 5342: a round blob all grin. Back: from today's back (5331), ragged drips."
+ },
+ "capsule": {
+  "front": "capsule_front_i2i_5321.png",
+  "icon": "capsule_icon_5342.png",
+  "back": "capsule_back_i2i_5332.png",
+  "note": "i2i 0.8: a ridged clam shell closed almost shut, a little face peeking out -- the key kept. Back: from today's back (5332), the shell's two halves and hinge."
+ },
+ "coldvault": {
+  "front": "coldvault_front_i2i_5321.png",
+  "icon": "coldvault_icon_5342.png",
+  "back": "coldvault_back_i2i_5331.png",
+  "note": "i2i 0.8: a frosty spiked dome shut over two eyes in the gap -- the key kept. Icon 5342: a spiked round shell with big eyes. Back: the front mirrored, its eyes painted out (the drafts from today's back kept a face)."
+ },
+ "hauntproc": {
+  "front": "hauntproc_front_i2i_5322.png",
+  "icon": "derived",
+  "back": "hauntproc_back_i2i_5332.png",
+  "note": "i2i 0.85: a round dark shadow blob with two big glowing red eyes -- the key kept. Drawn icons were one big eyeball and a white blob. Back: from today's back (5332), a dark rounded hood, no face."
+ },
+ "lull": {
+  "front": "lull_front_i2i_5321.png",
+  "icon": "lull_icon_5342.png",
+  "back": "lull_back_i2i_5332.png",
+  "note": "i2i 0.8: a plump tapir with its long drooping snout -- the key kept, close to today's. Back: from today's back (5332), the pale saddle from behind."
+ },
+ "busywait": {
+  "front": "busywait_front_5301.png",
+  "icon": "busywait_icon_5341.png",
+  "back": "busywait_back_i2i_5332.png",
+  "note": "t2i 5301: a chibi tapir-ish creature holding a pendulum out on its string -- the key kept. Icon 5341: a face under a pendulum string. Back: from today's back (5332), side-on as today's, the pendulum strings above. Its pendulum, lost in the clean, drawn back by hand; back: the front mirrored, its face's features painted out."
+ },
+ "lockup": {
+  "front": "lockup_front_i2i_5322.png",
+  "icon": "derived",
+  "back": "lockup_back_i2i_5331.png",
+  "note": "i2i 0.85: a crab with both claws raised high -- the key kept, though the claws are not huge. Back: from today's back (5331), both claws up. Icon 5342: a crab with big claws. Icon: derived (the drawn one kept its dark card)."
+ },
+ "fuse": {
+  "front": "fuse_front_i2i_5321.png",
+  "icon": "derived",
+  "back": "fuse_back_i2i_5332.png",
+  "note": "i2i 0.8: a round ball with angry slanted eyes; its band round the middle is lost (hand_b5 draws it). Back: from today's back (5332), a dome with the band.",
+  "failed": "front: the band round its middle (drawn by hand)"
+ },
+ "breaker": {
+  "front": "breaker_front_i2i_5321.png",
+  "icon": "derived",
+  "back": "breaker_back_i2i_5332.png",
+  "note": "i2i 0.8: a round ball with angry eyes and a toothy grin; its seam band is lost (hand_b5 draws it). Back: from today's back (5332), a dome with the band. LOOK-ALIKE: FUSE (same line) and SENTINEL.",
+  "failed": "front: the seam band round its middle (drawn by hand)"
+ },
+ "bootstrap": {
+  "front": "bootstrap_front_i2i_5322.png",
+  "icon": "derived",
+  "back": "bootstrap_back_i2i_5332.png",
+  "note": "i2i 0.85: a huddle of eggs, each with a face (six, to match the entry). Back: from today's back (5332), the eggs plain. The draft drew four eggs; hand_b5 adds two behind (six, as the entry says)."
+ },
+ "ensemble": {
+  "front": "ensemble_front_i2i_5324.png",
+  "icon": "derived",
+  "back": "ensemble_back_i2i_5331.png",
+  "note": "charmlo i2i 0.76: a stocky trunk creature under a crown of palm leaves. Every draft drew one head; hand_b5 adds two small heads in the crown (the entry: several heads). Back: from today's back (5331).",
+  "failed": "front: several heads (drawn by hand)"
+ },
+ "artefact": {
+  "front": "artefact_front_i2i_5322.png",
+  "icon": "derived",
+  "back": "artefact_back_i2i_5331.png",
+  "note": "i2i 0.85: a small creature in a horned skull helmet -- the key kept (the bone club lost). Back: the front mirrored, its face's features painted out (the turned drafts kept a face; today's back is a mouse)."
+ },
+ "corefile": {
+  "front": "corefile_front_5302.png",
+  "icon": "derived",
+  "back": "corefile_back_fromfront_5352.png",
+  "note": "t2i 5302: a sturdier creature in a big horned skull -- the key kept (the bone lost). Its ground ellipse taken off. Back: turned from the new front (5352), the horned skull from behind."
+ },
+ "axiomkick": {
+  "front": "axiomkick_front_i2i_5323.png",
+  "icon": "derived",
+  "back": "axiomkick_back_i2i_5331.png",
+  "note": "charmlo i2i 0.72: a round stout grey creature, arms out, big eyes. Every draft stood on two feet; hand_b5 draws one long leg kicking high (the user: a high kick). Back: from today's back (5331). LOOK-ALIKE: PREMISE (same line) and batch 4's PROOF.",
+  "failed": "front: the high kick (drawn by hand)"
+ },
+ "rebuttal": {
+  "front": "rebuttal_front_i2i_5322.png",
+  "icon": "derived",
+  "back": "rebuttal_back_i2i_5332.png",
+  "note": "i2i 0.85: a grey bulldog boxer with two big round gloves raised -- the key kept. Back: from today's back (5332), broad shoulders and gloves."
+ },
+ "premise": {
+  "front": "premise_front_i2i_5322.png",
+  "icon": "derived",
+  "back": "premise_back_i2i_5332.png",
+  "note": "i2i 0.85: a squat round grey creature, thick arms out, a frown -- squat kept, the wide flat base lost. Back: from today's back (5332)."
+ },
+ "circular": {
+  "front": "circular_front_i2i_5323.png",
+  "icon": "derived",
+  "back": "circular_back_i2i_5331.png",
+  "note": "charmlo i2i 0.72: a lanky creature in a headstand, its long legs straight up, arms curved round like a hoop -- the key kept. Back: from today's back (5331), upside down, legs up."
+ },
+ "deadletter": {
+  "front": "deadletter_front_i2i_5324.png",
+  "icon": "derived",
+  "back": "deadletter_back_i2i_5331.png",
+  "note": "charmlo i2i 0.76: a lumpy sludge blob with a grimace, drips and goo arms -- close to today's. The envelope (the second wording's key) was lost by every draft: drawn by hand (hand_b5). Back: from today's back (5331), drips and a paper stuck in it.",
+  "failed": "front: the envelope (drawn by hand)"
+ },
+ "respawn": {
+  "front": "respawn_front_i2i_5323.png",
+  "icon": "derived",
+  "back": "respawn_back_i2i_5331.png",
+  "note": "charmlo i2i 0.72: a white ghost with a wispy tail and big hands out at its sides -- every draft joined the hands to the body, so hand_b5 cuts them free. Back: from today's back (5331).",
+  "failed": "front: the hands detached (cut free by hand)"
+ },
+ "acquire": {
+  "front": "acquire_front_i2i_5323.png",
+  "icon": "derived",
+  "back": "acquire_back_i2i_5331.png",
+  "note": "charmlo i2i 0.72: a grey crab, claws up, spindly legs. Every draft drew the claws matching; hand_b5 doubles its right claw (the entry: it leads with the big claw, lopsided). Back: from today's back (5331).",
+  "failed": "front: one oversized claw (drawn by hand)"
+ }
+}

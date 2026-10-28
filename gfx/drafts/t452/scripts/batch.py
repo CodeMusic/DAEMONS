@@ -79,11 +79,26 @@ GI = ("bust portrait, head and shoulders only, big round head filling the frame,
       "thick black outline, flat shading, mostly greyscale, medium grey with light grey highlights, isolated on white, "
       "centered, no text")
 
+def idle():
+    """the sprite server is SHARED (batch 5, 2026-10-27): wait for its queue to empty before submitting, politely"""
+    import urllib.request, time, random
+    for _ in range(240):
+        try:
+            q = json.loads(urllib.request.urlopen("http://roverbyteseer:8008/queue", timeout=15).read())
+            if len(q["queue_pending"]) <= 2: return   # FIFO: wait for a short queue, one job of ours in flight (an empty one never came: four batches share it)
+        except Exception as e:
+            print("queue?", e, flush=True)
+        time.sleep(8 + random.random() * 6)
+
 def run(a):
     out = a[a.index("--out") + 1]
-    if os.path.exists(out + ".png"): return
-    t = subprocess.run([PY, "tools/spriteforge.py"] + a, capture_output=True, text=True)
-    print(out, t.stdout.strip()[-60:], t.stderr.strip()[-300:], flush=True)
+    for k in range(4):
+        if os.path.exists(out + ".png"): return
+        idle()
+        t = subprocess.run([PY, "tools/spriteforge.py"] + a, capture_output=True, text=True)
+        print(out, t.stdout.strip()[-60:], t.stderr.strip()[-300:], flush=True)
+        if not os.path.exists(out + ".png"):
+            import time; time.sleep(30)
 
 def src512(n, kind):
     dst = f"{D}/src/{n}_{kind}_512.png"
