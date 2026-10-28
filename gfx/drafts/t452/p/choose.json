@@ -1,0 +1,137 @@
+{
+ "_": "batch 12 (2026-10-28), the charm recipe (dir p, seed 6000), chosen by eye on t452b12_cand_*.png. Seeds: t2i chibi fronts 6001/6002 (6003/6004 a second wording), i2i from today's front 0.8 = 6021, 0.85 = 6022 (0.72 = 6023, 0.76 = 6024 where charmlo ran), one back from today's back 0.66 = 6031, one chibi icon 6041. Icons 'derived' = icon3 from the hand (or clean) front.",
+ "repay": {
+  "front": "repay_front_i2i_6022.png",
+  "icon": "derived",
+  "back": "repay_back_i2i_6031.png",
+  "note": "i2i 0.85: a round chubby penguin holding a wrapped gift box in front of it (the drafts gave the gift to its hands, not its tail). Gift re-hued rose (cyan sits in ICE's reach). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "buoyancy": {
+  "front": "buoyancy_front_i2i_6021.png",
+  "icon": "derived",
+  "back": "buoyancy_back_i2i_6031.png",
+  "note": "i2i 0.8: a round manta-ray creature with big eyes, a wing fin up and a tail fin (t2i 6001, the flat manta, reduced to a 36x14 sliver). Back mirrored, face out.",
+  "failed": ""
+ },
+ "fixation": {
+  "front": "src/fixation_front_6002_unframed.png",
+  "icon": "derived",
+  "back": "fixation_back_i2i_6031.png",
+  "note": "t2i 6002 (flat grey ground off): a puppy with one dark ear, big fixed staring eyes. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "recall": {
+  "front": "recall_front_i2i_6021.png",
+  "icon": "derived",
+  "back": "recall_back_i2i_6031.png",
+  "note": "i2i 0.8: a baby elephant with big round ears, trunk down, nearer today's (t2i 6001, the sitting chibi, lost its ear linings in the clean: the pale insides flooded out as ground). A pebble drawn by hand at its trunk tip (no draft drew one). Back mirrored, face out.",
+  "failed": "front: the pebble lost"
+ },
+ "engram": {
+  "front": "engram_front_i2i_6021.png",
+  "icon": "derived",
+  "back": "engram_back_i2i_6031.png",
+  "note": "i2i 0.8: an armoured elephant, plated legs and trunk, two tusks. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "cache": {
+  "front": "cache_front_i2i_6021.png",
+  "icon": "derived",
+  "back": "cache_back_i2i_6031.png",
+  "note": "i2i 0.8: a spotted cow with a pink udder, small horns. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "typhon": {
+  "front": "src/typhon_front_6001_unframed.png",
+  "icon": "derived",
+  "back": "typhon_back_i2i_6031.png",
+  "note": "t2i 6001 (grey ground off): a lion cub with a big shaggy mane and a small crown; the crown's gem greyed so it reads as stone, not a king's. Back mirrored, face out.",
+  "failed": ""
+ },
+ "ruminate": {
+  "front": "src/ruminate_front_6001_unframed.png",
+  "icon": "derived",
+  "back": "ruminate_back_i2i_6031.png",
+  "note": "t2i 6001 (grey ground off): a small grey larva with a horn crest and big eyes. A rock drawn by hand at its mouth (no draft chewed one). Back mirrored, face out.",
+  "failed": "front: the rock in its mouth lost"
+ },
+ "brooding": {
+  "front": "brooding_front_i2i_6022.png",
+  "icon": "derived",
+  "back": "brooding_back_i2i_6031.png",
+  "note": "i2i 0.85: a sealed shell pod with a ridge; its big round eyes narrowed by hand to two slits (its key). Back: today's sealed shell, halo off.",
+  "failed": "front: the eye slits drawn round"
+ },
+ "grievance": {
+  "front": "src/grievance_front_6001_unframed.png",
+  "icon": "derived",
+  "back": "grievance_back_i2i_6031.png",
+  "note": "t2i 6001 (grey ground off): a chunky armoured kaiju with a horn and a pale belly. A dark diamond hole drawn on its chest plate by hand. Back mirrored, face out.",
+  "failed": "front: the chest-plate hole lost"
+ },
+ "triton": {
+  "front": "src/triton_front_6002_unframed.png",
+  "icon": "derived",
+  "back": "triton_back_i2i_6031.png",
+  "note": "t2i 6002 (teal ground off): a white sea guardian with big hand-like wings. Back mirrored, face out.",
+  "failed": ""
+ },
+ "phoenix": {
+  "front": "src/phoenix_front_6001_unframed.png",
+  "icon": "derived",
+  "back": "phoenix_back_i2i_6031.png",
+  "note": "t2i 6001 (grey ground off): a proud bird with flame wings and a crest. The flames CRIMSON (FIRE's reach would turn red, orange and yellow blue). Back mirrored, face out.",
+  "failed": ""
+ },
+ "kairos": {
+  "front": "kairos_front_i2i_6022.png",
+  "icon": "derived",
+  "back": "kairos_back_i2i_6031.png",
+  "note": "i2i 0.85: a hovering hummingbird, long thin beak, wings up. Pale blur arcs drawn behind its wings. Back mirrored, face out.",
+  "failed": ""
+ },
+ "armouring": {
+  "front": "armouring_front_i2i_6021.png",
+  "icon": "derived",
+  "back": "armouring_back_i2i_6031.png",
+  "note": "i2i 0.8: a steel secretary-bird, crest, a wing half spread, long legs. Its blades are only the wing's sharp primaries (14 drafts, none drew blade feathers). Back mirrored, face out.",
+  "failed": "front: the blade feathers lost"
+ },
+ "obsession": {
+  "front": "src/obsession_front_6004_unframed.png",
+  "icon": "derived",
+  "back": "obsession_back_i2i_6031.png",
+  "note": "t2i 6004 (second wording): a lean hound with two big curled ram horns, head up, mouth open crying. Back mirrored, face out.",
+  "failed": ""
+ },
+ "illusion": {
+  "front": "illusion_front_i2i_6022.png",
+  "icon": "derived",
+  "back": "illusion_back_i2i_6031.png",
+  "note": "i2i 0.85: a small deer with big dark antlers, big eyes. Two spiral orbs drawn by hand in its antlers (16 drafts, none). Antlers greyed (maroon would take the accent room). Back mirrored, face out. Cleaned on a key ground (the plain clean wore its dark antlers away).",
+  "failed": "front: the spiral orbs lost",
+  "key": true
+ },
+ "imitation": {
+  "front": "src/imitation_front_6004_unframed.png",
+  "icon": "derived",
+  "back": "imitation_back_i2i_6031.png",
+  "note": "t2i 6004 (second wording): a small grey creature with big ears, its long tail ending in a paintbrush tip -- the key kept; reads mousey. Back mirrored, face out.",
+  "failed": ""
+ },
+ "brontes": {
+  "front": "brontes_front_i2i_6024.png",
+  "icon": "derived",
+  "back": "brontes_back_i2i_6031.png",
+  "note": "i2i 0.76: a striped tiger cub. A dark storm cloud drawn by hand on its back (16 drafts, none). Back mirrored, face out.",
+  "failed": "front: the storm cloud lost"
+ },
+ "boreas": {
+  "front": "src/boreas_front_6003_unframed.png",
+  "icon": "derived",
+  "back": "boreas_back_i2i_6031.png",
+  "note": "t2i 6003 (second wording): a fluffy wolf cub with a diamond gem at its chest, re-hued teal (blue sits in WATER's reach). The two ribbon tails lost (16 drafts, none). Back mirrored, face out.",
+  "failed": "front: the ribbon tails lost"
+ }
+}

@@ -1,0 +1,1522 @@
+{
+ "repay": {
+  "name": "REPAY",
+  "national": 225,
+  "slot": "delibird",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a little penguin-bird carrying a sack of gifts in its curled tail (OBLIGATION)",
+  "note": "i2i 0.85: a round chubby penguin holding a wrapped gift box in front of it (the drafts gave the gift to its hands, not its tail). Gift re-hued rose (cyan sits in ICE's reach). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "repay_front_i2i_6022.png",
+  "back": "repay_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,30,37,38",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 20.8,
+    "accent_clean_after": 13.3,
+    "greyed_px": 75,
+    "streak_px": 60,
+    "creature_px": 1005
+   },
+   "front_accent_pct": 12.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "17,31,55,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.5,
+    "accent_clean_after": 7.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1136
+   },
+   "back_accent_pct": 10.3,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     185,
+     235
+    ],
+    "accent_cells": 13,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "buoyancy": {
+  "name": "BUOYANCY",
+  "national": 226,
+  "slot": "mantine",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a manta ray with wide wing fins, always rising (UNSINKABLE)",
+  "note": "i2i 0.8: a round manta-ray creature with big eyes, a wing fin up and a tail fin (t2i 6001, the flat manta, reduced to a 36x14 sliver). Back mirrored, face out.",
+  "failed": "",
+  "front": "buoyancy_front_i2i_6021.png",
+  "back": "buoyancy_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,31,28,50",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 35.4,
+    "accent_clean_after": 13.1,
+    "greyed_px": 308,
+    "streak_px": 20,
+    "creature_px": 1386
+   },
+   "front_accent_pct": 3.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "12,32,24,40",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 33.4,
+    "accent_clean_after": 14.7,
+    "greyed_px": 165,
+    "streak_px": 19,
+    "creature_px": 882
+   },
+   "back_accent_pct": 1.7,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     92,
+     142,
+     213
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "fixation": {
+  "name": "FIXATION",
+  "national": 228,
+  "slot": "houndour",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a lean little hound locked on one target, a bony skull cap (ONE TARGET)",
+  "note": "t2i 6002 (flat grey ground off): a puppy with one dark ear, big fixed staring eyes. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "src/fixation_front_6002_unframed.png",
+  "back": "fixation_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,33,27,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.2,
+    "accent_clean_after": 2.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1768
+   },
+   "front_accent_pct": 0.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "18,34,38,56",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 46.5,
+    "accent_clean_after": 13.6,
+    "greyed_px": 387,
+    "streak_px": 17,
+    "creature_px": 1173
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     97,
+     174,
+     237
+    ],
+    "accent_cells": 1,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "recall": {
+  "name": "RECALL",
+  "national": 231,
+  "slot": "phanpy",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a small elephant with big round ears, a pebble curled in its trunk (VERBATIM)",
+  "note": "i2i 0.8: a baby elephant with big round ears, trunk down, nearer today's (t2i 6001, the sitting chibi, lost its ear linings in the clean: the pale insides flooded out as ground). A pebble drawn by hand at its trunk tip (no draft drew one). Back mirrored, face out.",
+  "failed": "front: the pebble lost",
+  "front": "recall_front_i2i_6021.png",
+  "back": "recall_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,31,46,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1564
+   },
+   "front_accent_pct": 0.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,33,31,52",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.9,
+    "accent_clean_after": 5.9,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1449
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     154,
+     212
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "engram": {
+  "name": "ENGRAM",
+  "national": 232,
+  "slot": "donphan",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "an armoured elephant, hard ridged plates on its back, two tusks (TEMPLATE)",
+  "note": "i2i 0.8: an armoured elephant, plated legs and trunk, two tusks. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "engram_front_i2i_6021.png",
+  "back": "engram_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "34,34,39,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.0,
+    "accent_clean_after": 14.5,
+    "greyed_px": 46,
+    "streak_px": 13,
+    "creature_px": 1861
+   },
+   "front_accent_pct": 14.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "18,34,34,48",
+    "painted": "[3, 4, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.3,
+    "accent_clean_after": 13.3,
+    "greyed_px": 38,
+    "streak_px": 15,
+    "creature_px": 1281
+   },
+   "back_accent_pct": 12.7,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     145,
+     207,
+     236
+    ],
+    "accent_cells": 20,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "cache": {
+  "name": "CACHE",
+  "national": 241,
+  "slot": "miltank",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a round cow with a full udder, it gives at once (KEEPING)",
+  "note": "i2i 0.8: a spotted cow with a pink udder, small horns. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "cache_front_i2i_6021.png",
+  "back": "cache_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,32,50,51",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 49.6,
+    "accent_clean_after": 10.8,
+    "greyed_px": 694,
+    "streak_px": 18,
+    "creature_px": 1790
+   },
+   "front_accent_pct": 10.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "17,33,57,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.2,
+    "accent_clean_after": 6.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1505
+   },
+   "back_accent_pct": 10.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     85,
+     143,
+     216
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "typhon": {
+  "name": "TYPHON",
+  "national": 244,
+  "slot": "entei",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a lion with a mane of smoke and a crown of rock plates (BURIED FIRE)",
+  "note": "t2i 6001 (grey ground off): a lion cub with a big shaggy mane and a small crown; the crown's gem greyed so it reads as stone, not a king's. Back mirrored, face out.",
+  "failed": "",
+  "front": "src/typhon_front_6001_unframed.png",
+  "back": "typhon_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "30,34,40,55",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.7,
+    "accent_clean_after": 4.7,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1516
+   },
+   "front_accent_pct": 3.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,34,38,54",
+    "painted": "[4, 4, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1414
+   },
+   "back_accent_pct": 2.6,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     123,
+     185,
+     234
+    ],
+    "accent_cells": 2,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "ruminate": {
+  "name": "RUMINATE",
+  "national": 246,
+  "slot": "larvitar",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a little rock-skinned larva chewing a rock (OVERTHINK)",
+  "note": "t2i 6001 (grey ground off): a small grey larva with a horn crest and big eyes. A rock drawn by hand at its mouth (no draft chewed one). Back mirrored, face out.",
+  "failed": "front: the rock in its mouth lost",
+  "front": "src/ruminate_front_6001_unframed.png",
+  "back": "ruminate_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,35,39,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1550
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "35,31,39,46",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.8,
+    "accent_clean_after": 9.8,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1097
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     192,
+     232
+    ],
+    "accent_cells": 2,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "brooding": {
+  "name": "BROODING",
+  "national": 247,
+  "slot": "pupitar",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a sealed hard shell cocoon, two narrow eye slits (DARK MOOD)",
+  "note": "i2i 0.85: a sealed shell pod with a ridge; its big round eyes narrowed by hand to two slits (its key). Back: today's sealed shell, halo off.",
+  "failed": "front: the eye slits drawn round",
+  "front": "brooding_front_i2i_6022.png",
+  "back": "brooding_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,29,53",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1463
+   },
+   "front_accent_pct": 0.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "16,34,39,52",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1467
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     152,
+     201
+    ],
+    "accent_cells": 0,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "grievance": {
+  "name": "GRIEVANCE",
+  "national": 248,
+  "slot": "tyranitar",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a heavy armoured monster with spiked plates and a hole in its chest plate (OLD DEBT)",
+  "note": "t2i 6001 (grey ground off): a chunky armoured kaiju with a horn and a pale belly. A dark diamond hole drawn on its chest plate by hand. Back mirrored, face out.",
+  "failed": "front: the chest-plate hole lost",
+  "front": "src/grievance_front_6001_unframed.png",
+  "back": "grievance_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,35,37,56",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1525
+   },
+   "front_accent_pct": 2.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "27,33,33,48",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.5,
+    "accent_clean_after": 3.5,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1342
+   },
+   "back_accent_pct": 1.8,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     148,
+     199,
+     239
+    ],
+    "accent_cells": 3,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "triton": {
+  "name": "TRITON",
+  "national": 249,
+  "slot": "lugia",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a sea-sky guardian with broad wings like hands and plates down its back (ACCORD)",
+  "note": "t2i 6002 (teal ground off): a white sea guardian with big hand-like wings. Back mirrored, face out.",
+  "failed": "",
+  "front": "src/triton_front_6002_unframed.png",
+  "back": "triton_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,35,43,57",
+    "painted": "[4, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1879
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,34,38,53",
+    "painted": "[5, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.9,
+    "accent_clean_after": 2.9,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 968
+   },
+   "back_accent_pct": 2.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     141,
+     193,
+     240
+    ],
+    "accent_cells": 2,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "phoenix": {
+  "name": "PHOENIX",
+  "national": 250,
+  "slot": "ho_oh",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a great bird with a long flame-feather tail and a crest, it starts itself (RETURN)",
+  "note": "t2i 6001 (grey ground off): a proud bird with flame wings and a crest. The flames CRIMSON (FIRE's reach would turn red, orange and yellow blue). Back mirrored, face out.",
+  "failed": "",
+  "front": "src/phoenix_front_6001_unframed.png",
+  "back": "phoenix_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,37,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 40.7,
+    "accent_clean_after": 4.8,
+    "greyed_px": 618,
+    "streak_px": 20,
+    "creature_px": 1724
+   },
+   "front_accent_pct": 4.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,34,30,56",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.9,
+    "accent_clean_after": 3.9,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1455
+   },
+   "back_accent_pct": 2.8,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     171,
+     224
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "kairos": {
+  "name": "KAIROS",
+  "national": 251,
+  "slot": "celebi",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a tiny hovering hummingbird, its wings a blur, there only for a moment (RIGHT TIME)",
+  "note": "i2i 0.85: a hovering hummingbird, long thin beak, wings up. Pale blur arcs drawn behind its wings. Back mirrored, face out.",
+  "failed": "",
+  "front": "kairos_front_i2i_6022.png",
+  "back": "kairos_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,32,36,40",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 48.2,
+    "accent_clean_after": 11.2,
+    "greyed_px": 219,
+    "streak_px": 135,
+    "creature_px": 591
+   },
+   "front_accent_pct": 5.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,32,36,40",
+    "painted": "[4, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 636
+   },
+   "back_accent_pct": 4.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     163,
+     226
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "armouring": {
+  "name": "ARMOURING",
+  "national": 227,
+  "slot": "skarmory",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a steel bird whose wing feathers are sharp blades (ALL EDGES)",
+  "note": "i2i 0.8: a steel secretary-bird, crest, a wing half spread, long legs. Its blades are only the wing's sharp primaries (14 drafts, none drew blade feathers). Back mirrored, face out.",
+  "failed": "front: the blade feathers lost",
+  "front": "armouring_front_i2i_6021.png",
+  "back": "armouring_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,35,33,56",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 16.4,
+    "accent_clean_after": 9.7,
+    "greyed_px": 93,
+    "streak_px": 13,
+    "creature_px": 1388
+   },
+   "front_accent_pct": 9.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "7,27,19,35",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.5,
+    "accent_clean_after": 4.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1154
+   },
+   "back_accent_pct": 7.3,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     148,
+     215
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "obsession": {
+  "name": "OBSESSION",
+  "national": 229,
+  "slot": "houndoom",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a big hound with curved horns, howling one cry (EARWORM)",
+  "note": "t2i 6004 (second wording): a lean hound with two big curled ram horns, head up, mouth open crying. Back mirrored, face out.",
+  "failed": "",
+  "front": "src/obsession_front_6004_unframed.png",
+  "back": "obsession_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "5,32,43,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.2,
+    "accent_clean_after": 3.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1819
+   },
+   "front_accent_pct": 2.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "19,33,39,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 715
+   },
+   "back_accent_pct": 1.4,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     104,
+     154,
+     200
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "illusion": {
+  "name": "ILLUSION",
+  "national": 234,
+  "slot": "stantler",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a deer with big curling antlers holding round spiral orbs that make the ground tilt (VERTIGO)",
+  "note": "i2i 0.85: a small deer with big dark antlers, big eyes. Two spiral orbs drawn by hand in its antlers (16 drafts, none). Antlers greyed (maroon would take the accent room). Back mirrored, face out. Cleaned on a key ground (the plain clean wore its dark antlers away).",
+  "failed": "front: the spiral orbs lost",
+  "front": "src/illusion_front_i2i_6022_key.png",
+  "back": "illusion_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,32,40,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 39.3,
+    "accent_clean_after": 14.8,
+    "greyed_px": 259,
+    "streak_px": 20,
+    "creature_px": 1057
+   },
+   "front_accent_pct": 9.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "17,32,45,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.6,
+    "accent_clean_after": 14.4,
+    "greyed_px": 18,
+    "streak_px": 20,
+    "creature_px": 838
+   },
+   "back_accent_pct": 9.3,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     109,
+     171,
+     220
+    ],
+    "accent_cells": 4,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "imitation": {
+  "name": "IMITATION",
+  "national": 235,
+  "slot": "smeargle",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a dog-like painter with a paintbrush tail (COPYCAT)",
+  "note": "t2i 6004 (second wording): a small grey creature with big ears, its long tail ending in a paintbrush tip -- the key kept; reads mousey. Back mirrored, face out.",
+  "failed": "",
+  "front": "src/imitation_front_6004_unframed.png",
+  "back": "imitation_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,29,48",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.2,
+    "accent_clean_after": 6.2,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1033
+   },
+   "front_accent_pct": 6.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,30,38,47",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.2,
+    "accent_clean_after": 2.2,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 987
+   },
+   "back_accent_pct": 3.7,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     161,
+     211
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "brontes": {
+  "name": "BRONTES",
+  "national": 243,
+  "slot": "raikou",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a thunder tiger with a storm cloud on its back (AFTERCLAP)",
+  "note": "i2i 0.76: a striped tiger cub. A dark storm cloud drawn by hand on its back (16 drafts, none). Back mirrored, face out.",
+  "failed": "front: the storm cloud lost",
+  "front": "brontes_front_i2i_6024.png",
+  "back": "brontes_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,33,20,52",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.7,
+    "accent_clean_after": 3.7,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1755
+   },
+   "front_accent_pct": 2.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "5,32,57,40",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1801
+   },
+   "back_accent_pct": 1.7,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     176,
+     228
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "boreas": {
+  "name": "BOREAS",
+  "national": 245,
+  "slot": "suicune",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a slim wolf with two long ribbon tails and a diamond crest, running over water (NORTH WIND)",
+  "note": "t2i 6003 (second wording): a fluffy wolf cub with a diamond gem at its chest, re-hued teal (blue sits in WATER's reach). The two ribbon tails lost (16 drafts, none). Back mirrored, face out.",
+  "failed": "front: the ribbon tails lost",
+  "front": "src/boreas_front_6003_unframed.png",
+  "back": "boreas_back_i2i_6031.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,35,33,57",
+    "painted": "[5, 3, 3, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.1,
+    "accent_clean_after": 4.1,
+    "greyed_px": 0,
+    "streak_px": 25,
+    "creature_px": 1795
+   },
+   "front_accent_pct": 2.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,34,38,54",
+    "painted": "[4, 5, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1836
+   },
+   "back_accent_pct": 1.9,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     133,
+     189,
+     231
+    ],
+    "accent_cells": 6,
+    "size": [
+     20,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}
