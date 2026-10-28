@@ -79,6 +79,10 @@ def scan():
             if os.path.exists(pal):
                 rel, n, top = stem + ".pal", jasc_count(pal), None
                 data = open(pal, "rb").read()
+                #  T-472: a .pal beside a picture still has to fit the picture -- make takes the .pal, but the pixels
+                #  are the picture's, so a new 256-entry JASC .pal over a 4bpp picture was passing unseen (T-442's trap)
+                if os.path.exists(png):
+                    top = png_info(open(png, "rb").read())[1]
             elif os.path.exists(png):
                 rel = stem + ".png"
                 data = open(png, "rb").read()
@@ -95,7 +99,13 @@ def scan():
             if up is not None and not vanilla:
                 upn = jasc_count_bytes(up) if rel.endswith(".pal") else png_info(up)[0]
             #  a 4bpp picture carrying more than one palette, or a palette of ours grown past vanilla's own
-            wrong = (top is not None and top < 16) or (upn is not None and n > upn)
+            #  T-472: a .pal is judged against pret's own when there is one -- a tilemap picks palettes per tile, so a
+            #  4bpp picture's pixels never pass 15 yet REGION_MAP and the intro's backgrounds load 32 to 80 colours, as
+            #  vanilla does. A NEW .pal of more than 16 has no such precedent: WRONG over a 4bpp picture, or over none.
+            if rel.endswith(".pal"):
+                wrong = (upn is not None and n > upn) or (up is None and (top is None or top < 16))
+            else:
+                wrong = (top is not None and top < 16) or (upn is not None and n > upn)
             found.append({"sym": name, "src": rel, "colours": n, "top": top, "vanilla": vanilla, "wrong": wrong,
                           "where": where, "vanilla_colours": upn})
     return len(syms), sum(len(v) for v in loads.values()), found

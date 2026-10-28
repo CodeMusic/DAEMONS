@@ -168,7 +168,7 @@
   ]
  },
  "gbashoes": {
-  "why": "T-439 (engine dd3553017) redrew green_surf.png as one of the cast (the unused sheets repurposed, drawn by tools/gencast.py); gbashoes would paint its shoe indices onto the new drawing. Never --write it over the cast.",
+  "why": "STALE -- never --write it on the whole tree: T-439 (engine dd3553017) redrew the unused green_surf.png as the GREBE and her chick (tools/gencast.py, npc_white.pal under its own tag, never PLAYER_GREEN); gbashoes still takes it for a player sheet and would move its 12s and 13s to 8 and 9 (1040 pixels), recolouring the bird. Read both ways (T-472): the tree is right and the tool is the stale side.",
   "files": [
    "engine:graphics/object_events/pics/people/green_surf.png"
   ]

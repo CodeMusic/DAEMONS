@@ -21,6 +21,9 @@ the surf sheet's arms are 6 too, and neither is ever the bottom of a column in t
 import glob, os, sys
 from PIL import Image
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 PEOPLE = os.path.join(GBA, "graphics/object_events/pics/people")
@@ -50,6 +53,7 @@ def shoe_positions(im):
 
 
 def main():
+    refuse_over_later_work("gbashoes")            # T-472: its files carry later work; generator_drift.json says what
     total = 0
     for path in sorted(glob.glob(os.path.join(PEOPLE, "red_*.png")) + glob.glob(os.path.join(PEOPLE, "green_*.png"))):
         im = Image.open(path)
