@@ -588,3 +588,11 @@ if ow_todo:
         print("      ..._graphics_info.h       .paletteTag = OBJ_EVENT_PAL_TAG_DAEMON_%s," % d.upper())
 for s in skipped:
     print("     skip %s" % s)
+
+#  T-464: THE FOLLOWER'S OWN PICTURE. The icons written above are 28px busts for the party menu, and the follower used
+#  to walk as one, larger than the player. tools/gbafollower.py makes each oversized icon's follower picture (at most
+#  20x22, on row 28) and src/data/follower_gfx.h; it runs here after every write so a follower is never staler than
+#  its icon. In report mode it is its own check (check_generators runs it).
+if WRITE:
+    import gbafollower
+    gbafollower.run(True)

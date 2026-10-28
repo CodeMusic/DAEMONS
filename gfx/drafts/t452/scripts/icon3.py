@@ -19,8 +19,14 @@ given three colours of ONE shared palette chosen so that:
   * nothing within 45 of the party screen's teal (palette index 0) -- a body that colour is a hole;
   * small saturated patches of the draft (eyes, a light, a stinger; at most 6 cells each) keep a saturated
     palette colour of their own -- an accent, not the body.
-The whole is drawn at SIZE+2 (26 + its outline = 28, against reduce2's 24: vanilla's own icons use most of the
-cell) on the bottom of the 32px frame, frame 2 one pixel lower (the bob)."""
+The whole is drawn at SIZE+2 (26 + its outline = 28, against reduce2's 24) on the bottom of the 32px frame, frame 2
+one pixel lower (the bob).
+
+CORRECTED (T-464, 2026-10-28): this used to say "vanilla's own icons use most of the cell". They do not: measured
+over all 387, vanilla's icons are 20 tall at the median and 23 at most, standing on rows 28-30. A 28px bust is right
+for the party menu the user chose it for, and wrong anywhere the icon stands beside a person -- the follower walking
+behind the player came out larger than the player (16x22). The follower has its own art now, reduced here by
+reduce() to fit 20 tall by 22 wide (tools/gbafollower.py)."""
 import sys, os, json
 import numpy as np
 from PIL import Image
@@ -58,11 +64,34 @@ def ramp(pal, type_rgb):
     return best
 
 def make(name, typ, src, out, size=26):
+    r = reduce(typ, src, size=size)
+    big, pal = r.pop("grid"), r.pop("pal")
+    out_g = [[0] * 32 for _ in range(64)]
+    oy, ox = 31 - big.shape[0], (32 - big.shape[1]) // 2
+    for y in range(big.shape[0]):
+        for x in range(big.shape[1]):
+            if 0 <= oy + y < 32: out_g[oy + y][ox + x] = int(big[y, x])
+            if 32 + oy + y + 1 < 64 and oy + y + 1 >= 0: out_g[32 + oy + y + 1][ox + x] = int(big[y, x])
+    gbs.write_png4(out, out_g, pal, 32, 64)
+    return r
+
+def reduce(typ, src, size=26, fit=None, pal_index=None):
+    """make()'s reduction, returned instead of filed: {"grid": the outlined index array, "pal": its shared icon
+    palette, and make()'s report}. fit=(H, W) scales the creature so that it AND its outline fit H x W, in place of
+    size (T-464: the follower is 20x22 at most). pal_index forces one of the three shared palettes: the follower's
+    pixels must mean what its party icon's do, because its colours are remapped from that palette
+    (tools/gbafollowerpal.py). Returns None when that palette holds no usable ramp for the type."""
     a = np.asarray(Image.open(src).convert("RGBA")).astype(float)
     subj = a[..., 3] > 127
     ys, xs = np.where(subj); a = a[ys.min():ys.max() + 1, xs.min():xs.max() + 1]; subj = a[..., 3] > 127
     rgb = a[..., :3]; L = lum(rgb); sat = rgb.max(2) - rgb.min(2)
-    sc = size / max(subj.shape); h, w = max(1, round(subj.shape[0] * sc)), max(1, round(subj.shape[1] * sc))
+    if fit:
+        sc = min((fit[0] - 2) / subj.shape[0], (fit[1] - 2) / subj.shape[1])
+        while round(subj.shape[0] * sc) > fit[0] - 2 or round(subj.shape[1] * sc) > fit[1] - 2:
+            sc *= 0.99
+    else:
+        sc = size / max(subj.shape)
+    h, w = max(1, round(subj.shape[0] * sc)), max(1, round(subj.shape[1] * sc))
     cell_l = np.full((h, w), -1.0); ink = np.zeros((h, w), bool); acc = np.zeros((h, w, 3)); is_acc = np.zeros((h, w), bool)
     for y in range(h):
         for x in range(w):
@@ -100,8 +129,10 @@ def make(name, typ, src, out, size=26):
     band = b2
     best = None
     for pi, pal in enumerate(gbs.icon_palettes()):
+        if pal_index is not None and pi != pal_index: continue
         r = ramp(pal, gbs.TYPE_COLOR[typ])
         if r and (best is None or r[0] < best[0]): best = (r[0], pi, r[1])
+    if best is None: return None
     _, pi, (dk, md, lt) = best; pal = gbs.icon_palettes()[pi]; P = np.array(pal, float)
     g = np.zeros((h, w), int)
     g[ink] = 15; g[band == 0] = dk; g[band == 1] = md; g[band == 2] = lt
@@ -112,14 +143,7 @@ def make(name, typ, src, out, size=26):
     op = big > 0
     ring = ~op & (np.roll(op, 1, 0) | np.roll(op, -1, 0) | np.roll(op, 1, 1) | np.roll(op, -1, 1))
     big[ring] = 15
-    out_g = [[0] * 32 for _ in range(64)]
-    oy, ox = 31 - big.shape[0], (32 - big.shape[1]) // 2
-    for y in range(big.shape[0]):
-        for x in range(big.shape[1]):
-            if 0 <= oy + y < 32: out_g[oy + y][ox + x] = int(big[y, x])
-            if 32 + oy + y + 1 < 64 and oy + y + 1 >= 0: out_g[32 + oy + y + 1][ox + x] = int(big[y, x])
-    gbs.write_png4(out, out_g, pal, 32, 64)
-    return {"icon_palette": pi, "ramp": [dk, md, lt], "ramp_rgb": [pal[dk], pal[md], pal[lt]], "bands": [round(x) for x in c],
+    return {"grid": big, "pal": pal, "icon_palette": pi, "ramp": [dk, md, lt], "ramp_rgb": [pal[dk], pal[md], pal[lt]], "bands": [round(x) for x in c],
             "accent_cells": int(is_acc.sum()), "size": [big.shape[1], big.shape[0]]}
 
 if __name__ == "__main__":
