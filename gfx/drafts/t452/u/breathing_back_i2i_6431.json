@@ -1,0 +1,19 @@
+{
+ "mode": "i2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452b16_work/u/breathing_back_i2i_6431",
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, bouncing on its springy coiled tail, a small round pearl on top of its head, a small round piglet seen from behind, rear view, a springy coiled tail, a small pearl on its head, no face, rear view, seen from behind, facing away from the viewer, full body, chibi proportions, big round head seen from behind, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "negative": "girl, long hair, hair, girl, human, two pigs, face, eyes, nose, mouth, beak tip, whiskers, front view, facing the viewer, side view, profile, photorealistic, 3d render, colorful, rainbow, colored background, grey background, dark background, scenery, floor, ground, text, letters, watermark, multiple creatures, two creatures, duplicate, human, person, cropped, blurry, drop shadow, border, white body, pale body",
+ "seed": 6431,
+ "steps": 28,
+ "cfg": 6.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.66,
+ "stop_at": null,
+ "image": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t452b16_work/u/src/breathing_back_512.png",
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 21.9,
+ "comfyui": "0.19.1",
+ "made": "2026-10-28 13:14:05"
+}

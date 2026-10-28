@@ -1,0 +1,153 @@
+{
+ "_": "batch 16 (2026-10-28), the charm recipe (charm8, dir u, seed 6400), chosen by eye on cand/g0-g5.png. Seeds: t2i chibi fronts 6401/6402, i2i from today's front 0.8 = 6421, 0.85 = 6422, charmlo for SINKHOLE, DEDUCTION, DUSTDEVIL and BREATHING (i2i 0.72 = 6423, 0.76 = 6424, second wording t2i 6403/6404), one back from today's back 0.66 = 6431, one chibi icon 6441. Icons 'derived' = icon3 from the hand front. Every back is the front mirrored, face out (hand_b16.py).",
+ "sinkhole": {
+  "front": "sinkhole_front_i2i_6423.png",
+  "icon": "derived",
+  "back": "sinkhole_back_i2i_6431.png",
+  "note": "charmlo i2i 0.72: a plump segmented larva sitting on a pale pit (the pit painted off). Two curved pincer jaws drawn by hand.",
+  "failed": "front: the pincer jaws lost",
+  "box-front": "18,34,38,44"
+ },
+ "shimmer": {
+  "front": "shimmer_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "shimmer_back_i2i_6431.png",
+  "note": "i2i 0.8: a slim insect, four clear veined wings spread, as asked.",
+  "failed": ""
+ },
+ "dustdevil": {
+  "front": "src/dustdevil_front_i2i_6421_ground.png",
+  "icon": "derived",
+  "back": "dustdevil_back_i2i_6431.png",
+  "note": "i2i 0.8: a round-eyed dragonfly on a dust puddle (painted off). A small dust swirl drawn by hand round its tail.",
+  "failed": "front: the whirlwind lost"
+ },
+ "postulate": {
+  "front": "postulate_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "postulate_back_i2i_6431.png",
+  "note": "i2i 0.8: a stout bear cub standing square, feet planted.",
+  "failed": ""
+ },
+ "deduction": {
+  "front": "src/deduction_front_6403_unframed.png",
+  "icon": "derived",
+  "back": "deduction_back_i2i_6431.png",
+  "note": "second wording t2i 6403: a round bear standing upright, both arms straight out to the sides, palms open (its grey ground painted off).",
+  "failed": ""
+ },
+ "crackle": {
+  "front": "crackle_front_i2i_6422.png",
+  "icon": "derived",
+  "back": "crackle_back_i2i_6431.png",
+  "note": "i2i 0.85: a wolf pup, fur ruffed up. Small sparks drawn by hand off its fur.",
+  "failed": "front: the sparks lost"
+ },
+ "arcflash": {
+  "front": "arcflash_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "arcflash_back_i2i_6431.png",
+  "note": "i2i 0.8: a wolf with a big spiky mane. A white arc drawn by hand between two mane spikes.",
+  "failed": "front: the arc lost"
+ },
+ "pixelbyte": {
+  "front": "pixelbyte_front_i2i_6422.png",
+  "icon": "derived",
+  "back": "pixelbyte_back_i2i_6431.png",
+  "note": "i2i 0.85: a sitting puppy, floppy ears. Square pixels drawn by hand breaking off its tail.",
+  "failed": "front: the pixel static lost"
+ },
+ "reforge": {
+  "front": "reforge_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "reforge_back_i2i_6431.png",
+  "note": "i2i 0.8: a stout bull beside a brick forge chimney (chimney beside it, not on its back).",
+  "failed": ""
+ },
+ "stopgrad": {
+  "front": "stopgrad_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "stopgrad_back_i2i_6431.png",
+  "note": "i2i 0.8: a woolly mammoth calf, short tusks. Icicles drawn by hand hanging from its coat.",
+  "failed": "front: the icicles lost"
+ },
+ "permafrost": {
+  "front": "permafrost_front_i2i_6422.png",
+  "icon": "derived",
+  "back": "permafrost_back_i2i_6431.png",
+  "note": "i2i 0.85: a mammoth with huge curving brown tusks, as asked; its green-blue coat greyed into ICE's ramp.",
+  "failed": ""
+ },
+ "fewshot": {
+  "front": "fewshot_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "fewshot_back_i2i_6431.png",
+  "note": "i2i 0.8: a spiky horned lizard. A water drop drawn by hand held in front of it.",
+  "failed": "front: the water drop lost"
+ },
+ "zeroshot": {
+  "front": "zeroshot_front_i2i_6422.png",
+  "icon": "derived",
+  "back": "zeroshot_back_i2i_6431.png",
+  "note": "i2i 0.85: a thorny lizard with a tall spiky crest.",
+  "failed": ""
+ },
+ "lockfile": {
+  "front": "lockfile_front_6401.png",
+  "icon": "derived",
+  "back": "lockfile_back_i2i_6431.png",
+  "note": "t2i 6401: a big-eyed round owl sitting still. A padlock drawn by hand on its chest.",
+  "failed": "front: the padlock lost"
+ },
+ "stalemate": {
+  "front": "stalemate_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "stalemate_back_i2i_6431.png",
+  "note": "i2i 0.8: a snowy owl, wings folded, heavy-lidded. Icicles drawn by hand under its wings.",
+  "failed": "front: the icicles lost"
+ },
+ "lilendian": {
+  "front": "lilendian_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "lilendian_back_i2i_6431.png",
+  "note": "i2i 0.8: a round sitting bear holding an egg in an egg cup, as asked.",
+  "failed": ""
+ },
+ "bigendian": {
+  "front": "bigendian_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "bigendian_back_i2i_6431.png",
+  "note": "i2i 0.8: a dark standing bear holding an egg, as asked.",
+  "failed": "",
+  "key": true
+ },
+ "breathing": {
+  "front": "src/breathing_front_6403_unframed.png",
+  "icon": "derived",
+  "back": "breathing_back_i2i_6431.png",
+  "note": "second wording t2i 6403: a round piglet on a little coil (its ground painted off). A small pearl drawn by hand on its head.",
+  "failed": "front: the pearl lost"
+ },
+ "gutfeel": {
+  "front": "gutfeel_front_i2i_6421.png",
+  "icon": "derived",
+  "back": "gutfeel_back_i2i_6431.png",
+  "note": "i2i 0.8: a round pig standing, both hands raised. A black pearl drawn by hand on its belly.",
+  "failed": "front: the black pearl lost"
+ },
+ "anode": {
+  "front": "anode_front_i2i_6422.png",
+  "icon": "derived",
+  "back": "anode_back_i2i_6431.png",
+  "note": "i2i 0.85: a standing mouse with big round ears. A red plus sign drawn by hand on its belly.",
+  "failed": "front: the plus sign lost",
+  "box-front": "22,38,36,47"
+ },
+ "cathode": {
+  "front": "cathode_front_i2i_6422.png",
+  "icon": "derived",
+  "back": "cathode_back_i2i_6431.png",
+  "note": "i2i 0.85: a standing mouse with big round ears. An indigo minus sign drawn by hand on its belly.",
+  "failed": "front: the minus sign lost"
+ }
+}

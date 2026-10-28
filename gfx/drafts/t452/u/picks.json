@@ -1,0 +1,1682 @@
+{
+ "sinkhole": {
+  "name": "SINKHOLE",
+  "national": 328,
+  "slot": "trapinch",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "an antlion larva with big curved pincer jaws, waiting at the bottom of a sand pit (PIT)",
+  "note": "charmlo i2i 0.72: a plump segmented larva sitting on a pale pit (the pit painted off). Two curved pincer jaws drawn by hand.",
+  "failed": "front: the pincer jaws lost",
+  "front": "sinkhole_front_i2i_6423.png",
+  "back": "sinkhole_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,38,44",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1669
+   },
+   "front_accent_pct": 0.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "13,33,49,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.9,
+    "accent_clean_after": 13.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1110
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     164,
+     195
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     21
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "shimmer": {
+  "name": "SHIMMER",
+  "national": 329,
+  "slot": "vibrava",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a slim insect with four long clear wings, riding rising heat (UPDRAFT)",
+  "note": "i2i 0.8: a slim insect, four clear veined wings spread, as asked.",
+  "failed": "",
+  "front": "shimmer_front_i2i_6421.png",
+  "back": "shimmer_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,30,44,38",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.1,
+    "accent_clean_after": 7.1,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1027
+   },
+   "front_accent_pct": 7.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "18,28,25,39",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 749
+   },
+   "back_accent_pct": 6.5,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     168,
+     217
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     23
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "dustdevil": {
+  "name": "DUSTDEVIL",
+  "national": 330,
+  "slot": "flygon",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a dragonfly creature in a spinning whirlwind of dust (WHIRLWIND)",
+  "note": "i2i 0.8: a round-eyed dragonfly on a dust puddle (painted off). A small dust swirl drawn by hand round its tail.",
+  "failed": "front: the whirlwind lost",
+  "front": "src/dustdevil_front_i2i_6421_ground.png",
+  "back": "dustdevil_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,28,40,36",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 28.7,
+    "accent_clean_after": 14.8,
+    "greyed_px": 119,
+    "streak_px": 16,
+    "creature_px": 857
+   },
+   "front_accent_pct": 13.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "9,34,21,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1081
+   },
+   "back_accent_pct": 10.7,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     174,
+     221
+    ],
+    "accent_cells": 10,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "postulate": {
+  "name": "POSTULATE",
+  "national": 296,
+  "slot": "makuhita",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a stout bear cub standing with its feet planted wide, immovable (GIVEN)",
+  "note": "i2i 0.8: a stout bear cub standing square, feet planted.",
+  "failed": "",
+  "front": "postulate_front_i2i_6421.png",
+  "back": "postulate_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,39,53",
+    "painted": "[5, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1175
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "24,33,36,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1225
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     84,
+     130,
+     196
+    ],
+    "accent_cells": 0,
+    "size": [
+     18,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "deduction": {
+  "name": "DEDUCTION",
+  "national": 297,
+  "slot": "hariyama",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a big bear pushing forward with both open palms out (PROVEN)",
+  "note": "second wording t2i 6403: a round bear standing upright, both arms straight out to the sides, palms open (its grey ground painted off).",
+  "failed": "",
+  "front": "src/deduction_front_6403_unframed.png",
+  "back": "deduction_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,34,43,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1713
+   },
+   "front_accent_pct": 1.1,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "26,35,31,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1534
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     175,
+     235
+    ],
+    "accent_cells": 4,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "crackle": {
+  "name": "CRACKLE",
+  "national": 309,
+  "slot": "electrike",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a wolf pup whose fur stands on end, little sparks crackling (CHARGE)",
+  "note": "i2i 0.85: a wolf pup, fur ruffed up. Small sparks drawn by hand off its fur.",
+  "failed": "front: the sparks lost",
+  "front": "crackle_front_i2i_6422.png",
+  "back": "crackle_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "16,34,32,56",
+    "painted": "[5, 3, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1474
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,34,38,53",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1302
+   },
+   "back_accent_pct": 1.3,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     161,
+     220
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "arcflash": {
+  "name": "ARCFLASH",
+  "national": 310,
+  "slot": "manectric",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a wolf with a big spiky mane, a white arc jumping across it (ARC)",
+  "note": "i2i 0.8: a wolf with a big spiky mane. A white arc drawn by hand between two mane spikes.",
+  "failed": "front: the arc lost",
+  "front": "arcflash_front_i2i_6421.png",
+  "back": "arcflash_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,45,56",
+    "painted": "[5, 5, 3, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.4,
+    "accent_clean_after": 5.4,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1885
+   },
+   "front_accent_pct": 6.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "16,35,25,57",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1941
+   },
+   "back_accent_pct": 5.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     157,
+     222
+    ],
+    "accent_cells": 3,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "pixelbyte": {
+  "name": "PIXELBYTE",
+  "national": 322,
+  "slot": "numel",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a puppy whose tail breaks up into little square pixels, like static (STATIC)",
+  "note": "i2i 0.85: a sitting puppy, floppy ears. Square pixels drawn by hand breaking off its tail.",
+  "failed": "front: the pixel static lost",
+  "front": "pixelbyte_front_i2i_6422.png",
+  "back": "pixelbyte_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,34,39,56",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1643
+   },
+   "front_accent_pct": 1.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,35,41,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1170
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     166,
+     221
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "reforge": {
+  "name": "REFORGE",
+  "national": 323,
+  "slot": "camerupt",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a stout bull with a smoking forge chimney on its back (SPRITEFORGE)",
+  "note": "i2i 0.8: a stout bull beside a brick forge chimney (chimney beside it, not on its back).",
+  "failed": "",
+  "front": "reforge_front_i2i_6421.png",
+  "back": "reforge_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,33,43,51",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 18.4,
+    "accent_clean_after": 13.8,
+    "greyed_px": 58,
+    "streak_px": 18,
+    "creature_px": 1271
+   },
+   "front_accent_pct": 6.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "19,34,35,51",
+    "painted": "[5, 4, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1288
+   },
+   "back_accent_pct": 4.4,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     82,
+     141,
+     212
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "stopgrad": {
+  "name": "STOPGRAD",
+  "national": 364,
+  "slot": "sealeo",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a woolly mammoth calf, icicles hanging from its shaggy coat (HELD STILL)",
+  "note": "i2i 0.8: a woolly mammoth calf, short tusks. Icicles drawn by hand hanging from its coat.",
+  "failed": "front: the icicles lost",
+  "front": "stopgrad_front_i2i_6421.png",
+  "back": "stopgrad_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "32,33,52,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.7,
+    "accent_clean_after": 6.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1858
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,34,31,56",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1955
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     99,
+     165,
+     226
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "permafrost": {
+  "name": "PERMAFROST",
+  "national": 365,
+  "slot": "walrein",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a great mammoth with huge curving tusks, frost on its coat (FROZEN FLOW)",
+  "note": "i2i 0.85: a mammoth with huge curving brown tusks, as asked; its green-blue coat greyed into ICE's ramp.",
+  "failed": "",
+  "front": "permafrost_front_i2i_6422.png",
+  "back": "permafrost_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "37,35,53,57",
+    "painted": "[5, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 71.5,
+    "accent_clean_after": 4.4,
+    "greyed_px": 1323,
+    "streak_px": 19,
+    "creature_px": 1972
+   },
+   "front_accent_pct": 3.5,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "21,34,27,55",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1743
+   },
+   "back_accent_pct": 3.4,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     93,
+     150,
+     213
+    ],
+    "accent_cells": 4,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "fewshot": {
+  "name": "FEWSHOT",
+  "national": 331,
+  "slot": "cacnea",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a spiky little horned lizard like a cactus, holding one water drop (SPARSE DIET)",
+  "note": "i2i 0.8: a spiky horned lizard. A water drop drawn by hand held in front of it.",
+  "failed": "front: the water drop lost",
+  "front": "fewshot_front_i2i_6421.png",
+  "back": "fewshot_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,32,41,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 52.7,
+    "accent_clean_after": 11.7,
+    "greyed_px": 505,
+    "streak_px": 39,
+    "creature_px": 1231
+   },
+   "front_accent_pct": 13.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "33,35,43,53",
+    "painted": "[4, 4, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.8,
+    "accent_clean_after": 8.8,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1390
+   },
+   "back_accent_pct": 12.6,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     174,
+     218
+    ],
+    "accent_cells": 12,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "zeroshot": {
+  "name": "ZEROSHOT",
+  "national": 332,
+  "slot": "cacturne",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a tall thorny lizard with a spiky crown, eyes glowing at night (UNTAUGHT)",
+  "note": "i2i 0.85: a thorny lizard with a tall spiky crest.",
+  "failed": "",
+  "front": "zeroshot_front_i2i_6422.png",
+  "back": "zeroshot_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,36,29,57",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 55.1,
+    "accent_clean_after": 11.6,
+    "greyed_px": 664,
+    "streak_px": 53,
+    "creature_px": 1529
+   },
+   "front_accent_pct": 10.5,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "35,32,47,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 44.7,
+    "accent_clean_after": 12.3,
+    "greyed_px": 422,
+    "streak_px": 21,
+    "creature_px": 1302
+   },
+   "back_accent_pct": 7.8,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     166,
+     214
+    ],
+    "accent_cells": 12,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lockfile": {
+  "name": "LOCKFILE",
+  "national": 361,
+  "slot": "snorunt",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a small owl with a big padlock hanging on its chest (HOLD)",
+  "note": "t2i 6401: a big-eyed round owl sitting still. A padlock drawn by hand on its chest.",
+  "failed": "front: the padlock lost",
+  "front": "lockfile_front_6401.png",
+  "back": "lockfile_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,35,43,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.0,
+    "accent_clean_after": 5.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1915
+   },
+   "front_accent_pct": 6.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "30,37,43,55",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1361
+   },
+   "back_accent_pct": 3.4,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     123,
+     189,
+     237
+    ],
+    "accent_cells": 14,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "stalemate": {
+  "name": "STALEMATE",
+  "national": 362,
+  "slot": "glalie",
+  "gametype": "FROZEN",
+  "type": "ICE",
+  "props": "a snowy owl frozen to the spot, icicles hanging from its folded wings (STANDSTILL)",
+  "note": "i2i 0.8: a snowy owl, wings folded, heavy-lidded. Icicles drawn by hand under its wings.",
+  "failed": "front: the icicles lost",
+  "front": "stalemate_front_i2i_6421.png",
+  "back": "stalemate_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,33,31,43",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 13.0,
+    "accent_clean_after": 13.0,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 1435
+   },
+   "front_accent_pct": 0.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "33,35,45,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.6,
+    "accent_clean_after": 5.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1387
+   },
+   "back_accent_pct": 0.3,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     175,
+     221
+    ],
+    "accent_cells": 2,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lilendian": {
+  "name": "LILENDIAN",
+  "national": 337,
+  "slot": "lunatone",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a bear sitting with a boiled egg in an egg cup, cracked at its small end (SMALL FIRST)",
+  "note": "i2i 0.8: a round sitting bear holding an egg in an egg cup, as asked.",
+  "failed": "",
+  "front": "lilendian_front_i2i_6421.png",
+  "back": "lilendian_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,39,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.2,
+    "accent_clean_after": 14.2,
+    "greyed_px": 0,
+    "streak_px": 26,
+    "creature_px": 1948
+   },
+   "front_accent_pct": 12.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "25,36,39,54",
+    "painted": "[5, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.3,
+    "accent_clean_after": 1.3,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1033
+   },
+   "back_accent_pct": 11.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     173,
+     229
+    ],
+    "accent_cells": 8,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bigendian": {
+  "name": "BIGENDIAN",
+  "national": 338,
+  "slot": "solrock",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a bear standing with a boiled egg in an egg cup, cracked at its big end (BIG FIRST)",
+  "note": "i2i 0.8: a dark standing bear holding an egg, as asked.",
+  "failed": "",
+  "front": "src/bigendian_front_i2i_6421_key.png",
+  "back": "bigendian_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,35,36,54",
+    "painted": "[3, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.2,
+    "accent_clean_after": 3.2,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1147
+   },
+   "front_accent_pct": 3.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "20,29,45,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1291
+   },
+   "back_accent_pct": 2.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     98,
+     137,
+     220
+    ],
+    "accent_cells": 4,
+    "size": [
+     16,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "breathing": {
+  "name": "BREATHING",
+  "national": 325,
+  "slot": "spoink",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a piglet bouncing on its springy curled tail, a small pearl on its head (RHYTHM)",
+  "note": "second wording t2i 6403: a round piglet on a little coil (its ground painted off). A small pearl drawn by hand on its head.",
+  "failed": "front: the pearl lost",
+  "front": "src/breathing_front_6403_unframed.png",
+  "back": "breathing_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,38,53",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.3,
+    "accent_clean_after": 10.3,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1779
+   },
+   "front_accent_pct": 4.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,33,38,51",
+    "painted": "[4, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 11.3,
+    "accent_clean_after": 11.3,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1351
+   },
+   "back_accent_pct": 1.4,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     199,
+     227
+    ],
+    "accent_cells": 7,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "gutfeel": {
+  "name": "GUTFEEL",
+  "national": 326,
+  "slot": "grumpig",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a pig standing with both hands raised, a black pearl set in its round belly (INSIDE)",
+  "note": "i2i 0.8: a round pig standing, both hands raised. A black pearl drawn by hand on its belly.",
+  "failed": "front: the black pearl lost",
+  "front": "gutfeel_front_i2i_6421.png",
+  "back": "gutfeel_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,41,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.4,
+    "accent_clean_after": 4.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1485
+   },
+   "front_accent_pct": 3.4,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,34,41,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1280
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     99,
+     148,
+     191
+    ],
+    "accent_cells": 1,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "anode": {
+  "name": "ANODE",
+  "national": 311,
+  "slot": "plusle",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a round mouse with a big plus sign on its cheeks (POSITIVE)",
+  "note": "i2i 0.85: a standing mouse with big round ears. A red plus sign drawn by hand on its belly.",
+  "failed": "front: the plus sign lost",
+  "front": "anode_front_i2i_6422.png",
+  "back": "anode_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,38,36,47",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 16.3,
+    "accent_clean_after": 10.0,
+    "greyed_px": 71,
+    "streak_px": 19,
+    "creature_px": 1120
+   },
+   "front_accent_pct": 7.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,34,42,53",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1379
+   },
+   "back_accent_pct": 4.5,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     115,
+     167,
+     232
+    ],
+    "accent_cells": 15,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "cathode": {
+  "name": "CATHODE",
+  "national": 312,
+  "slot": "minun",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a round mouse with a big minus sign on its cheeks (NEGATIVE)",
+  "note": "i2i 0.85: a standing mouse with big round ears. An indigo minus sign drawn by hand on its belly.",
+  "failed": "front: the minus sign lost",
+  "front": "cathode_front_i2i_6422.png",
+  "back": "cathode_back_i2i_6431.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,36,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 19.4,
+    "accent_clean_after": 14.8,
+    "greyed_px": 39,
+    "streak_px": 21,
+    "creature_px": 846
+   },
+   "front_accent_pct": 10.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,34,44,48",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.5,
+    "accent_clean_after": 6.5,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1184
+   },
+   "back_accent_pct": 3.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     157,
+     225
+    ],
+    "accent_cells": 14,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}
