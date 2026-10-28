@@ -1,0 +1,141 @@
+{
+ "dynamo": {
+  "front": "dynamo_front_i2i_5522.png",
+  "back": "dynamo_back_i2i_5531.png",
+  "icon": "dynamo_icon_5541.png",
+  "note": "grumpy robot bear, striped belly plate; antennae drawn back on by hand (the draft lost them); back keeps them"
+ },
+ "crank": {
+  "front": "crank_front_i2i_5521.png",
+  "back": "crank_back_i2i_5531.png",
+  "icon": "crank_icon_5541.png",
+  "note": "robot bear cub, the square chest panel; back from today's (antennae, as today's back)"
+ },
+ "forge": {
+  "front": "forge_front_i2i_5521.png",
+  "back": "forge_back_i2i_5531.png",
+  "icon": "forge_icon_5542.png",
+  "note": "furnace, the open door and the fire inside"
+ },
+ "cinder": {
+  "front": "cinder_front_i2i_5521.png",
+  "back": "cinder_back_fromfront_5551.png",
+  "icon": "cinder_icon_5542.png",
+  "note": "tall stove pot, embers glowing in its belly, red eyes; back turned from the new front"
+ },
+ "blocking": {
+  "front": "blocking_front_i2i_5521.png",
+  "back": "blocking_back_i2i_5531.png",
+  "icon": "blocking_icon_5541.png",
+  "note": "stag beetle, the two curved pincer horns"
+ },
+ "stampede": {
+  "front": "stampede_front_i2i_5521.png",
+  "back": "stampede_back_i2i_5531.png",
+  "icon": "stampede_icon_5541.png",
+  "note": "charging bull, big curved horns, white mane"
+ },
+ "stub": {
+  "front": "stub_front_i2i_5521.png",
+  "back": "stub_back_i2i_5531.png",
+  "icon": "stub_icon_5541.png",
+  "note": "limp fish, pouting lips; back = the front mirrored, eye painted out"
+ },
+ "escalate": {
+  "front": "escalate_back_i2i_5532.png",
+  "back": "escalate_back_i2i_5531.png",
+  "icon": "escalate_icon_5541.png",
+  "note": "the serpent coiled into a ring (a 'back' draft that faced us, used as the front); back = the front mirrored, its face painted out (every turned back kept a face)",
+  "hand-back": [
+   10,
+   12,
+   32,
+   30
+  ]
+ },
+ "ferry": {
+  "front": "ferry_front_i2i_5521.png",
+  "back": "ferry_back_fromfront_5551.png",
+  "icon": "ferry_icon_5541.png",
+  "note": "sea turtle, big domed shell, paddle flippers; back = the front mirrored, head features off (today's back stood on four legs; the turned one kept a face)",
+  "hand-back": [
+   42,
+   14,
+   64,
+   36
+  ]
+ },
+ "mock": {
+  "front": "mock_front_i2i_5521.png",
+  "back": "mock_back_i2i_5532.png",
+  "icon": "mock_icon_5541.png",
+  "note": "soft dome, simple dot face; back's dot eye painted out"
+ },
+ "musai": {
+  "front": "musai_front_i2i_5521.png",
+  "back": "musai_back_i2i_5531.png",
+  "icon": "musai_icon_5541.png",
+  "note": "little astronaut robot, dark visor, one antenna and ear discs"
+ },
+ "caremusai": {
+  "front": "caremusai_front_i2i_5521.png",
+  "back": "caremusai_back_i2i_5531.png",
+  "icon": "caremusai_icon_5541.png",
+  "note": "astronaut robot, big round headphones"
+ },
+ "seekmusai": {
+  "front": "seekmusai_front_i2i_5524.png",
+  "back": "seekmusai_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "i2i 0.76 (charmlo), near today's; the two wide flat helmet fins drawn on by hand; icon from the hand front, so it keeps the fins",
+  "failed": "front: no draft of 8 (two wordings) drew the wide flat fins; drawn by hand"
+ },
+ "codemusai": {
+  "front": "codemusai_front_i2i_5522.png",
+  "back": "codemusai_back_i2i_5532.png",
+  "icon": "derived",
+  "note": "round robot, a dark visor band across its helmet (two red eye-lights in it); icon from the clean front (both drawn busts grew horns)"
+ },
+ "lensmusai": {
+  "front": "lensmusai_front_i2i_5522.png",
+  "back": "lensmusai_back_i2i_5532.png",
+  "icon": "derived",
+  "note": "little robot, its face one big round dark lens; icon from the clean front (the drawn busts had two eyes or a visor)"
+ },
+ "maskmusai": {
+  "front": "maskmusai_front_i2i_5521.png",
+  "back": "maskmusai_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "lanky robot, headphones, a face plate made blank by hand (the dot eyes and mouth painted off); back = the blank front mirrored",
+  "hand-back": [
+   0,
+   0,
+   1,
+   1
+  ]
+ },
+ "substrate": {
+  "front": "substrate_front_i2i_5521.png",
+  "back": "substrate_back_i2i_5531.png",
+  "icon": "substrate_icon_5541.png",
+  "note": "stacked square blocks, a block on a block, a small face"
+ },
+ "overlay": {
+  "front": "overlay_front_i2i_5522.png",
+  "back": "overlay_back_fromfront_5552.png",
+  "icon": "derived",
+  "note": "a thin grey creature with heavy plates over its shoulders; back turned from the new front"
+ },
+ "magtape": {
+  "front": "src/magtape_back_i2i_5532_m.png",
+  "back": "magtape_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "the spiral shell (a 'back' draft, mirrored to face left, no face, as today's); every front draft lost the spiral"
+ },
+ "mainframe": {
+  "front": "mainframe_front_i2i_5521.png",
+  "back": "mainframe_back_i2i_5531.png",
+  "icon": "mainframe_icon_5542.png",
+  "note": "a heavy cabinet, three round tape reels in a row on its front"
+ }
+}

@@ -71,12 +71,21 @@ def keeper():
     o = Image.fromarray(x, "P"); o.putpalette(ic.getpalette()); o.save(f"{H}/keeper_icon.png")
 
 # ---- CRON: the face off, one big gem
-GEM = ((24, 60, 110, 255), (60, 130, 196, 255), (128, 190, 236, 255), (230, 246, 255, 255))
+#  the gem PALE WHITE-CYAN (the user, batch 7's answers, 2026-10-27): gbasprite turned the first blues gold-brown -- an
+#  accent within 40 degrees of WATER's hue (220) is rotated to the far side. Low saturation alone would make it body,
+#  and body takes WATER's ramp (a periwinkle highlight, not cyan); so the gem is three accents at hue ~170 (50 degrees
+#  off WATER, kept as drawn), saturation just over SAT_ACCENT, the lightest near white. Each pair over 45 apart, so
+#  the quantiser keeps all three.
+GEM = ((90, 160, 148, 255), (140, 222, 206, 255), (194, 255, 246, 255), (194, 255, 246, 255))
 def cron():
     a = load_any("cron", "front"); fill = body_grey(a, (14, 16, 50, 46))
     hb.features_off(a, (20, 18, 46, 44))
     disc(a, 33, 32, 10.5, INK); disc(a, 33, 32, 9.5, GEM[0]); disc(a, 33, 32, 8.5, GEM[1])
     disc(a, 31, 30, 5.5, GEM[2]); disc(a, 29, 28, 2.2, GEM[3])
+    #  any other saturated cell (two stray blues at the top point) to grey at its own value, or it is a fourth accent
+    sat = a[..., :3].max(-1) - a[..., :3].min(-1); mk = is_mark(a); L = lum(a)
+    for y, x in zip(*np.where(op(a) & (sat >= 60) & ~mk)):
+        if tuple(a[y, x]) not in GEM: a[y, x, :3] = int(L[y, x])
     save(a, "cron", "front")
 
 # ---- MIME: the gloves raised, palms out

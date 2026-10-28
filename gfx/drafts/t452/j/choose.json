@@ -1,0 +1,141 @@
+{
+ "dynamo": {
+  "front": "dynamo_front_i2i_5522.png",
+  "back": "dynamo_back_i2i_5531.png",
+  "icon": "dynamo_icon_5541.png",
+  "note": "grumpy robot bear, striped belly plate; antennae drawn back on by hand (the draft lost them); back keeps them"
+ },
+ "crank": {
+  "front": "crank_front_i2i_5521.png",
+  "back": "crank_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "robot bear cub, smaller and rounder (scaled squat), a hand crank drawn on its side, the square chest panel; back = the front mirrored, face out (crank on the far side); icon from the hand front"
+ },
+ "forge": {
+  "front": "forge_front_i2i_5521.png",
+  "back": "forge_back_i2i_5531.png",
+  "icon": "forge_icon_5542.png",
+  "note": "furnace, the open door and the fire inside; back = the front mirrored, the porthole 'face' painted out, fire door kept"
+ },
+ "cinder": {
+  "front": "cinder_front_i2i_5521.png",
+  "back": "cinder_back_fromfront_5551.png",
+  "icon": "cinder_icon_5542.png",
+  "note": "tall stove pot, embers glowing in its belly, red eyes; back turned from the new front; NOTE the little foot at the bottom right of the front may read as ground"
+ },
+ "blocking": {
+  "front": "blocking_front_i2i_5521.png",
+  "back": "blocking_back_i2i_5531.png",
+  "icon": "blocking_icon_5541.png",
+  "note": "stag beetle, the two curved pincer horns"
+ },
+ "stampede": {
+  "front": "stampede_front_i2i_5521.png",
+  "back": "stampede_back_i2i_5531.png",
+  "icon": "stampede_icon_5541.png",
+  "note": "charging bull, big curved horns, white mane"
+ },
+ "stub": {
+  "front": "stub_front_i2i_5521.png",
+  "back": "stub_back_i2i_5531.png",
+  "icon": "stub_icon_5541.png",
+  "note": "limp fish, pouting lips; back = the front mirrored, eye painted out"
+ },
+ "escalate": {
+  "front": "escalate_back_i2i_5532.png",
+  "back": "escalate_back_i2i_5531.png",
+  "icon": "escalate_icon_5541.png",
+  "note": "the serpent coiled into a ring; head simplified by hand (three greys by value, one green crest, majority pass); back = the front mirrored, face out",
+  "hand-back": [
+   10,
+   12,
+   32,
+   30
+  ]
+ },
+ "ferry": {
+  "front": "ferry_front_i2i_5521.png",
+  "back": "ferry_back_fromfront_5551.png",
+  "icon": "ferry_icon_5541.png",
+  "note": "sea turtle, big domed shell, paddle flippers; back = the front mirrored, head features off (today's back stood on four legs; the turned one kept a face)",
+  "hand-back": [
+   42,
+   14,
+   64,
+   36
+  ]
+ },
+ "mock": {
+  "front": "mock_front_i2i_5521.png",
+  "back": "mock_back_i2i_5532.png",
+  "icon": "mock_icon_5541.png",
+  "note": "soft dome, simple dot face; back's dot eye painted out"
+ },
+ "musai": {
+  "front": "musai_front_i2i_5521.png",
+  "back": "musai_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "little astronaut robot, dark visor, the antenna mirrored to make two, ear discs; icon from the hand front"
+ },
+ "caremusai": {
+  "front": "caremusai_front_i2i_5521.png",
+  "back": "caremusai_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "astronaut robot, bigger headphones drawn by hand (cups and a band) on front and back; back scaled to 38 rows; icon from the hand front"
+ },
+ "seekmusai": {
+  "front": "seekmusai_front_i2i_5524.png",
+  "back": "seekmusai_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "i2i 0.76 (charmlo), near today's; the two flat helmet fins drawn by hand, now shorter (11 cells each side); icon from the hand front",
+  "failed": "front: no draft of 8 (two wordings) drew the wide flat fins; drawn by hand"
+ },
+ "codemusai": {
+  "front": "codemusai_front_i2i_5522.png",
+  "back": "codemusai_back_i2i_5532.png",
+  "icon": "derived",
+  "note": "round robot, the visor band drawn wider and deeper by hand with two red eye-lights; icon from the hand front"
+ },
+ "lensmusai": {
+  "front": "lensmusai_front_i2i_5522.png",
+  "back": "lensmusai_back_i2i_5532.png",
+  "icon": "derived",
+  "note": "little robot, the lens drawn bigger by hand (ring, dark glass, a shine); back = the front mirrored, lens painted out; icon from the hand front"
+ },
+ "maskmusai": {
+  "front": "maskmusai_front_i2i_5521.png",
+  "back": "maskmusai_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "lanky robot, headphones, one big smooth pale mask plate drawn over the face; back = the front mirrored before the plate (no mask from behind)",
+  "hand-back": [
+   0,
+   0,
+   1,
+   1
+  ]
+ },
+ "substrate": {
+  "front": "substrate_front_i2i_5521.png",
+  "back": "substrate_back_i2i_5531.png",
+  "icon": "substrate_icon_5541.png",
+  "note": "stacked square blocks, a block on a block, a small face"
+ },
+ "overlay": {
+  "front": "overlay_front_i2i_5521.png",
+  "back": "overlay_back_fromfront_5552.png",
+  "icon": "derived",
+  "note": "the chunky spiky-plated shell (5521, the user's pick), halo arc and ground bar cleaned off; back turned from 5522 (an armoured dome from behind)"
+ },
+ "magtape": {
+  "front": "src/magtape_back_i2i_5532_m.png",
+  "back": "magtape_back_i2i_5531.png",
+  "icon": "derived",
+  "note": "the spiral shell (a 'back' draft mirrored to face left), two small eyes at the shell's opening by hand"
+ },
+ "mainframe": {
+  "front": "mainframe_front_i2i_5521.png",
+  "back": "mainframe_back_i2i_5531.png",
+  "icon": "mainframe_icon_5542.png",
+  "note": "a heavy cabinet, three round tape reels in a row on its front"
+ }
+}

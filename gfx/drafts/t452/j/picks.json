@@ -1,0 +1,1702 @@
+{
+ "dynamo": {
+  "name": "DYNAMO",
+  "national": 125,
+  "slot": "electabuzz",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a grumpy robot bear with two curly antennae and a striped belly plate (GENERATING)",
+  "note": "grumpy robot bear, striped belly plate; antennae drawn back on by hand (the draft lost them); back keeps them",
+  "failed": "",
+  "front": "dynamo_front_i2i_5522.png",
+  "back": "dynamo_back_i2i_5531.png",
+  "icon": "dynamo_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "25,31,38,50",
+    "painted": "[4, 5, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.4,
+    "accent_clean_after": 6.4,
+    "greyed_px": 0,
+    "streak_px": 36,
+    "creature_px": 1434
+   },
+   "front_accent_pct": 6.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "30,32,39,49",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.4,
+    "accent_clean_after": 5.4,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 816
+   },
+   "back_accent_pct": 5.4,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2048
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    20
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     163,
+     233
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "crank": {
+  "name": "CRANK",
+  "national": 239,
+  "slot": "elekid",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a little robot bear cub with round ears and a square chest panel (KICKSTART)",
+  "note": "robot bear cub, the square chest panel; back from today's (antennae, as today's back)",
+  "failed": "",
+  "front": "crank_front_i2i_5521.png",
+  "back": "crank_back_i2i_5531.png",
+  "icon": "crank_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "11,28,51,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.9,
+    "accent_clean_after": 2.9,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1465
+   },
+   "front_accent_pct": 2.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "30,32,39,49",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.8,
+    "accent_clean_after": 1.8,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 848
+   },
+   "back_accent_pct": 1.8,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 2.0,
+    "accent_clean_after": 2.0,
+    "greyed_px": 0,
+    "streak_px": 7,
+    "creature_px": 1779
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    23,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     158,
+     205
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "forge": {
+  "name": "FORGE",
+  "national": 126,
+  "slot": "magmar",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a furnace creature with an open door and fire burning inside (SHAPING)",
+  "note": "furnace, the open door and the fire inside",
+  "failed": "",
+  "front": "forge_front_i2i_5521.png",
+  "back": "forge_back_i2i_5531.png",
+  "icon": "src/forge_icon_5542_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "24,31,32,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 17.2,
+    "accent_clean_after": 8.0,
+    "greyed_px": 80,
+    "streak_px": 24,
+    "creature_px": 871
+   },
+   "front_accent_pct": 8.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "30,29,34,43",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 621
+   },
+   "back_accent_pct": 2.3,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 20.3,
+    "accent_clean_after": 6.6,
+    "greyed_px": 233,
+    "streak_px": 4,
+    "creature_px": 1701
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    20,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     170,
+     236
+    ],
+    "accent_cells": 21,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "cinder": {
+  "name": "CINDER",
+  "national": 240,
+  "slot": "magby",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a little stove pot creature with glowing embers in its belly (RESIDUE)",
+  "note": "tall stove pot, embers glowing in its belly, red eyes; back turned from the new front",
+  "failed": "",
+  "front": "cinder_front_i2i_5521.png",
+  "back": "cinder_back_fromfront_5551.png",
+  "icon": "cinder_icon_5542.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,28,32,44",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.5,
+    "accent_clean_after": 14.5,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 972
+   },
+   "front_accent_pct": 14.5,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "20,26,32,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.4,
+    "accent_clean_after": 8.4,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 1048
+   },
+   "back_accent_pct": 8.4,
+   "back_colours": 11,
+   "icon_cap": {
+    "accent_clean_before": 24.5,
+    "accent_clean_after": 9.6,
+    "greyed_px": 147,
+    "streak_px": 0,
+    "creature_px": 983
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    21,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     85,
+     111,
+     204
+    ],
+    "accent_cells": 25,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "blocking": {
+  "name": "BLOCKING",
+  "national": 127,
+  "slot": "pinsir",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a stag beetle with two huge curved pincer horns on its head (UNRELEASING)",
+  "note": "stag beetle, the two curved pincer horns",
+  "failed": "",
+  "front": "blocking_front_i2i_5521.png",
+  "back": "blocking_back_i2i_5531.png",
+  "icon": "blocking_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,42,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 857
+   },
+   "front_accent_pct": 2.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "23,30,41,38",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.9,
+    "accent_clean_after": 1.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 794
+   },
+   "back_accent_pct": 1.9,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 14.8,
+    "accent_clean_after": 14.8,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1705
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     118,
+     170,
+     210
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "stampede": {
+  "name": "STAMPEDE",
+  "national": 128,
+  "slot": "tauros",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a charging bull with big curved horns (UNSTOPPING)",
+  "note": "charging bull, big curved horns, white mane",
+  "failed": "",
+  "front": "stampede_front_i2i_5521.png",
+  "back": "stampede_back_i2i_5531.png",
+  "icon": "stampede_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "36,34,43,55",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1663
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,34,31,50",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1049
+   },
+   "back_accent_pct": 2.5,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 40.0,
+    "accent_clean_after": 13.9,
+    "greyed_px": 427,
+    "streak_px": 0,
+    "creature_px": 1637
+   },
+   "icon_palette": 1,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     182,
+     221
+    ],
+    "accent_cells": 16,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "stub": {
+  "name": "STUB",
+  "national": 129,
+  "slot": "magikarp",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a limp floppy fish with big pouting lips, flopping (PLACEHOLDER)",
+  "note": "limp fish, pouting lips; back = the front mirrored, eye painted out",
+  "failed": "",
+  "front": "stub_front_i2i_5521.png",
+  "back": "stub_back_i2i_5531.png",
+  "icon": "stub_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,33,46,47",
+    "painted": "[4, 3, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.3,
+    "accent_clean_after": 6.3,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 1342
+   },
+   "front_accent_pct": 6.3,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,33,32,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1234
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1908
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    21
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     96,
+     166,
+     229
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     24
+    ]
+   }
+  }
+ },
+ "escalate": {
+  "name": "ESCALATE",
+  "national": 130,
+  "slot": "gyarados",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a long sea serpent coiled into a big ring (RAISED)",
+  "note": "the serpent coiled into a ring (a 'back' draft that faced us, used as the front)",
+  "failed": "",
+  "front": "escalate_back_i2i_5532.png",
+  "back": "escalate_back_i2i_5531.png",
+  "icon": "escalate_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "16,35,32,54",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 53.6,
+    "accent_clean_after": 6.4,
+    "greyed_px": 743,
+    "streak_px": 19,
+    "creature_px": 1575
+   },
+   "front_accent_pct": 6.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,34,32,54",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 30.1,
+    "accent_clean_after": 14.4,
+    "greyed_px": 255,
+    "streak_px": 14,
+    "creature_px": 1630
+   },
+   "back_accent_pct": 14.4,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 68.8,
+    "accent_clean_after": 7.4,
+    "greyed_px": 976,
+    "streak_px": 0,
+    "creature_px": 1589
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    22
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     98,
+     140,
+     186
+    ],
+    "accent_cells": 38,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "ferry": {
+  "name": "FERRY",
+  "national": 131,
+  "slot": "lapras",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a sea turtle with a big round domed shell and paddle flippers (CARRYING)",
+  "note": "sea turtle, big domed shell, paddle flippers; back turned from the new front (today's back stood on four legs)",
+  "failed": "",
+  "front": "ferry_front_i2i_5521.png",
+  "back": "ferry_back_fromfront_5551.png",
+  "icon": "ferry_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "18,32,34,40",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 71.1,
+    "accent_clean_after": 3.5,
+    "greyed_px": 715,
+    "streak_px": 18,
+    "creature_px": 1057
+   },
+   "front_accent_pct": 3.5,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,33,33,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 74.0,
+    "accent_clean_after": 11.9,
+    "greyed_px": 658,
+    "streak_px": 20,
+    "creature_px": 1059
+   },
+   "back_accent_pct": 11.9,
+   "back_colours": 15,
+   "icon_cap": {
+    "accent_clean_before": 71.4,
+    "accent_clean_after": 8.6,
+    "greyed_px": 878,
+    "streak_px": 5,
+    "creature_px": 1399
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    18
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     119,
+     172,
+     218
+    ],
+    "accent_cells": 23,
+    "size": [
+     28,
+     21
+    ]
+   }
+  }
+ },
+ "mock": {
+  "name": "MOCK",
+  "national": 132,
+  "slot": "ditto",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a soft dome-shaped blob with a simple dot face (PERSPECTIVE)",
+  "note": "soft dome, simple dot face; back's dot eye painted out",
+  "failed": "",
+  "front": "mock_front_i2i_5521.png",
+  "back": "mock_back_i2i_5532.png",
+  "icon": "mock_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,38,49",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.0,
+    "accent_clean_after": 3.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1513
+   },
+   "front_accent_pct": 3.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "15,34,46,53",
+    "painted": "[5, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1719
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 3566
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     149,
+     191,
+     238
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     28
+    ]
+   }
+  }
+ },
+ "musai": {
+  "name": "MUSAI",
+  "national": 133,
+  "slot": "eevee",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a little astronaut robot with a dark visor and two little antennae (UNSET)",
+  "note": "little astronaut robot, dark visor, one antenna and ear discs",
+  "failed": "",
+  "front": "musai_front_i2i_5521.png",
+  "back": "musai_back_i2i_5531.png",
+  "icon": "musai_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "20,31,40,47",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 22.6,
+    "accent_clean_after": 14.7,
+    "greyed_px": 79,
+    "streak_px": 25,
+    "creature_px": 1005
+   },
+   "front_accent_pct": 14.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "23,34,40,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.8,
+    "accent_clean_after": 13.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1050
+   },
+   "back_accent_pct": 13.8,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 2295
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    22,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     175,
+     233
+    ],
+    "accent_cells": 9,
+    "size": [
+     22,
+     28
+    ]
+   }
+  }
+ },
+ "caremusai": {
+  "name": "CAREMUSAI",
+  "national": 134,
+  "slot": "vaporeon",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a little astronaut robot wearing big round headphones (AFFECTIVE)",
+  "note": "astronaut robot, big round headphones",
+  "failed": "",
+  "front": "caremusai_front_i2i_5521.png",
+  "back": "caremusai_back_i2i_5531.png",
+  "icon": "caremusai_icon_5541.png",
+  "measured": {
+   "front_streaks": {
+    "box": "28,34,34,48",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.1,
+    "accent_clean_after": 6.1,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 934
+   },
+   "front_accent_pct": 6.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "17,34,27,46",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.2,
+    "accent_clean_after": 9.2,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 641
+   },
+   "back_accent_pct": 9.2,
+   "back_colours": 13,
+   "icon_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1258
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    24
+   ],
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     160,
+     218
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "seekmusai": {
+  "name": "SEEKMUSAI",
+  "national": 135,
+  "slot": "jolteon",
+  "gametype": "VECTOR",
+  "type": "FLYING",
+  "props": "a little astronaut robot with two wide flat fins sticking out sideways from its helmet (RETRIEVAL)",
+  "note": "i2i 0.76 (charmlo), near today's; the two wide flat helmet fins drawn on by hand",
+  "failed": "front: no draft of 8 (two wordings) drew the wide flat fins; drawn by hand",
+  "front": "seekmusai_front_i2i_5524.png",
+  "back": "seekmusai_back_i2i_5531.png",
+  "icon": "seekmusai_icon_5542.png",
+  "measured": {
+   "front_streaks": {
+    "box": "26,31,34,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.1,
+    "accent_clean_after": 5.1,
+    "greyed_px": 0,
+    "streak_px": 61,
+    "creature_px": 1014
+   },
+   "front_accent_pct": 5.1,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "16,34,27,45",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.7,
+    "accent_clean_after": 8.7,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 517
+   },
+   "back_accent_pct": 8.7,
+   "back_colours": 14,
+   "icon_cap": {
+    "accent_clean_before": 5.1,
+    "accent_clean_after": 5.1,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1888
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     6,
+     11,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      213,
+      98,
+      65
+     ],
+     [
+      255,
+      180,
+      164
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     120,
+     188,
+     235
+    ],
+    "accent_cells": 8,
+    "size": [
+     28,
+     26
+    ]
+   }
+  }
+ },
+ "codemusai": {
+  "name": "CODEMUSAI",
+  "national": 136,
+  "slot": "flareon",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a little round robot with a narrow dark visor slit across its helmet (DEDUCTIVE)",
+  "note": "round robot, a dark visor band across its helmet (two red eye-lights in it); icon from the clean front (both drawn busts grew horns)",
+  "failed": "",
+  "front": "codemusai_front_i2i_5522.png",
+  "back": "codemusai_back_i2i_5532.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,35,33,49",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1134
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "18,36,23,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 562
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     164,
+     219
+    ],
+    "accent_cells": 1,
+    "size": [
+     25,
+     28
+    ]
+   }
+  }
+ },
+ "lensmusai": {
+  "name": "LENSMUSAI",
+  "national": 196,
+  "slot": "espeon",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a little robot whose face is one big round camera lens (FOCUS)",
+  "note": "little robot, its face one big round dark lens; icon from the clean front (the drawn busts had two eyes or a visor)",
+  "failed": "",
+  "front": "lensmusai_front_i2i_5522.png",
+  "back": "lensmusai_back_i2i_5532.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,38,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1020
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "27,36,36,51",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 759
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     164,
+     233
+    ],
+    "accent_cells": 3,
+    "size": [
+     23,
+     28
+    ]
+   }
+  }
+ },
+ "maskmusai": {
+  "name": "MASKMUSAI",
+  "national": 197,
+  "slot": "umbreon",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a lanky little robot with a blank mask plate over its face and headphones (COVER)",
+  "note": "lanky robot, headphones, a face plate; its dot features painted out by hand so the mask is blank",
+  "failed": "",
+  "front": "maskmusai_front_i2i_5521.png",
+  "back": "maskmusai_back_i2i_5531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,35,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1310
+   },
+   "front_accent_pct": 2.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,36,38,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1038
+   },
+   "back_accent_pct": 1.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     175,
+     236
+    ],
+    "accent_cells": 1,
+    "size": [
+     19,
+     28
+    ]
+   }
+  }
+ },
+ "substrate": {
+  "name": "SUBSTRATE",
+  "national": 137,
+  "slot": "porygon",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a boxy creature built of stacked square blocks (MATERIAL)",
+  "note": "stacked square blocks, a block on a block, a small face",
+  "failed": "",
+  "front": "substrate_front_i2i_5521.png",
+  "back": "substrate_back_i2i_5531.png",
+  "icon": "src/substrate_icon_5541_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "17,26,47,40",
+    "painted": "[5, 3, 3, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1228
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "13,32,33,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1302
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon_cap": {
+    "accent_clean_before": 19.4,
+    "accent_clean_after": 0.0,
+    "greyed_px": 20,
+    "streak_px": 0,
+    "creature_px": 103
+   },
+   "icon_palette": 2,
+   "icon_size": [
+    24,
+    15
+   ],
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     129,
+     184,
+     238
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ },
+ "overlay": {
+  "name": "OVERLAY",
+  "national": 233,
+  "slot": "porygon2",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a thin creature wearing heavy armour plates laid over its body (PATCH)",
+  "note": "the chunky spiky-plated shell (5521, the user's pick), halo arc and ground bar cleaned off; back turned from 5522 (an armoured dome from behind)",
+  "failed": "",
+  "front": "overlay_front_i2i_5521.png",
+  "back": "overlay_back_fromfront_5552.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,36,41,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.1,
+    "accent_clean_after": 5.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 936
+   },
+   "front_accent_pct": 5.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "12,33,40,41",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1091
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     153,
+     207
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     21
+    ]
+   }
+  }
+ },
+ "magtape": {
+  "name": "MAGTAPE",
+  "national": 138,
+  "slot": "omanyte",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a spiral shell wound like a reel of tape (TAPE)",
+  "note": "the spiral shell (a 'back' draft, mirrored to face left, no face, as today's); every front draft lost the spiral",
+  "failed": "",
+  "front": "src/magtape_back_i2i_5532_m.png",
+  "back": "magtape_back_i2i_5531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "35,29,47,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 734
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "16,32,33,47",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.7,
+    "accent_clean_after": 7.7,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 988
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     110,
+     148,
+     193
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     25
+    ]
+   }
+  }
+ },
+ "mainframe": {
+  "name": "MAINFRAME",
+  "national": 139,
+  "slot": "omastar",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a tall heavy cabinet with three round tape reels on its front (LEGACY)",
+  "note": "a heavy cabinet, three round tape reels in a row on its front",
+  "failed": "",
+  "front": "mainframe_front_i2i_5521.png",
+  "back": "mainframe_back_i2i_5531.png",
+  "icon": "src/mainframe_icon_5542_unframed.png",
+  "measured": {
+   "front_streaks": {
+    "box": "9,32,53,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 22,
+    "creature_px": 2853
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "14,33,26,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2859
+   },
+   "back_accent_pct": 2.1,
+   "back_colours": 12,
+   "icon_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 1518
+   },
+   "icon_palette": 0,
+   "icon_size": [
+    24,
+    23
+   ],
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     130,
+     194,
+     241
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     27
+    ]
+   }
+  }
+ }
+}
