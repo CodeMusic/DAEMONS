@@ -1,0 +1,1602 @@
+{
+ "goldset": {
+  "name": "GOLDSET",
+  "national": 182,
+  "slot": "bellossom",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a small flower creature, one big golden flower for a head, leaf skirt (REFERENCE)",
+  "note": "i2i 0.85: a flower on a stem with a calm face in its middle -- the key kept (t2i drew girls). Back from today's (a flower from behind).",
+  "failed": "",
+  "front": "goldset_front_i2i_5822.png",
+  "back": "goldset_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,34,47,42",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 35.1,
+    "accent_clean_after": 7.8,
+    "greyed_px": 174,
+    "streak_px": 12,
+    "creature_px": 639
+   },
+   "front_accent_pct": 13.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,34,29,53",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 626
+   },
+   "back_accent_pct": 12.5,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     145,
+     222
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "valence": {
+  "name": "VALENCE",
+  "national": 298,
+  "slot": "azurill",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a tiny round mouse, a long springy tail ending in a big round ball (TOWARD)",
+  "note": "i2i 0.76: a grey big-eared mouse, a long curling tail. The ball on the tail tip drawn by hand (its entry: the tail decides first; no draft of ten drew it). Back the front mirrored, face out. Cleaned on a key ground (the plain clean wore the tail away).",
+  "failed": "front: the ball on its tail lost",
+  "front": "src/valence_front_i2i_5824_key.png",
+  "back": "valence_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,33,32,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.6,
+    "accent_clean_after": 6.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 963
+   },
+   "front_accent_pct": 9.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "13,33,45,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1151
+   },
+   "back_accent_pct": 8.1,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     177,
+     214
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "mood": {
+  "name": "MOOD",
+  "national": 183,
+  "slot": "marill",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round water mouse, round ears, a thin tail ending in a ball float (WATERLINE)",
+  "note": "t2i 5801: a round water mouse, round pink ears, a tail. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "mood_front_5801.png",
+  "back": "mood_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,33,35,51",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 18.0,
+    "accent_clean_after": 11.6,
+    "greyed_px": 104,
+    "streak_px": 28,
+    "creature_px": 1635
+   },
+   "front_accent_pct": 11.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "20,34,39,48",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 25.2,
+    "accent_clean_after": 12.4,
+    "greyed_px": 152,
+    "streak_px": 17,
+    "creature_px": 1188
+   },
+   "back_accent_pct": 9.6,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     155,
+     203,
+     238
+    ],
+    "accent_cells": 5,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "elation": {
+  "name": "ELATION",
+  "national": 184,
+  "slot": "azumarill",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big round rabbit with long ears, floating, buoyant (UPLIFT)",
+  "note": "t2i 5802 (frame off): a big round chubby rabbit, long ears. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "src/elation_front_5802_unframed_key.png",
+  "back": "elation_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,42,54",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.9,
+    "accent_clean_after": 3.9,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1372
+   },
+   "front_accent_pct": 3.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,32,36,46",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1047
+   },
+   "back_accent_pct": 1.8,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     143,
+     201,
+     240
+    ],
+    "accent_cells": 6,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "fakeroot": {
+  "name": "FAKEROOT",
+  "national": 185,
+  "slot": "sudowoodo",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a stiff little creature pretending to be a tree, round leaf clumps on its arms and head (PRETENDING)",
+  "note": "i2i 0.8: an owl-faced thing standing as a tree, a trunk for legs, roots, leaf-clump arms -- the pretence kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "fakeroot_front_i2i_5821.png",
+  "back": "fakeroot_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,35,33,57",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 15.6,
+    "accent_clean_after": 9.3,
+    "greyed_px": 104,
+    "streak_px": 12,
+    "creature_px": 1650
+   },
+   "front_accent_pct": 8.5,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "26,33,37,47",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 8.5,
+    "accent_clean_after": 8.5,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 825
+   },
+   "back_accent_pct": 5.7,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     136,
+     186,
+     233
+    ],
+    "accent_cells": 8,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "semaphore": {
+  "name": "SEMAPHORE",
+  "national": 186,
+  "slot": "politoed",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a frog holding up a signal flag (COUNTED)",
+  "note": "t2i 5801: a frog holding up a signal flag -- the key kept. Back the front mirrored, face out. Cleaned on a key ground (the plain clean wore the flag and its pole away).",
+  "failed": "",
+  "front": "src/semaphore_front_5801_key.png",
+  "back": "semaphore_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,40,40,54",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 49.2,
+    "accent_clean_after": 4.6,
+    "greyed_px": 395,
+    "streak_px": 23,
+    "creature_px": 887
+   },
+   "front_accent_pct": 10.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "25,33,35,51",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 32.6,
+    "accent_clean_after": 9.8,
+    "greyed_px": 135,
+    "streak_px": 19,
+    "creature_px": 592
+   },
+   "back_accent_pct": 9.2,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     101,
+     203,
+     237
+    ],
+    "accent_cells": 15,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "whim": {
+  "name": "WHIM",
+  "national": 187,
+  "slot": "hoppip",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a tiny round puff with two big leaves on its head, drifting (DRIFT)",
+  "note": "t2i 5801: a tiny round puff, leaf sprouts on its head. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "whim_front_5801.png",
+  "back": "whim_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,35,36,52",
+    "painted": "[3, 4, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 21.2,
+    "accent_clean_after": 13.8,
+    "greyed_px": 84,
+    "streak_px": 15,
+    "creature_px": 1144
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,35,39,53",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.8,
+    "accent_clean_after": 5.8,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1791
+   },
+   "back_accent_pct": 0.3,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     157,
+     238
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "caprice": {
+  "name": "CAPRICE",
+  "national": 188,
+  "slot": "skiploom",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a round creature with a big flower on top of its head, opening (WEATHERVANE)",
+  "note": "t2i 5802 (frame off): a round creature under a big open flower hat -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "src/caprice_front_5802_unframed.png",
+  "back": "caprice_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,34,35,53",
+    "painted": "[5, 4, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 20.3,
+    "accent_clean_after": 12.0,
+    "greyed_px": 147,
+    "streak_px": 18,
+    "creature_px": 1776
+   },
+   "front_accent_pct": 10.1,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "27,34,35,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 17.4,
+    "accent_clean_after": 10.7,
+    "greyed_px": 69,
+    "streak_px": 20,
+    "creature_px": 1022
+   },
+   "back_accent_pct": 8.9,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     183,
+     237
+    ],
+    "accent_cells": 17,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "abandon": {
+  "name": "ABANDON",
+  "national": 189,
+  "slot": "jumpluff",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a round creature drifting away under three big cotton puffs (NO RETURN)",
+  "note": "i2i 0.85: a round creature with a cloud-puff head. Two more cotton puffs drawn by hand, held up at its sides (no draft of ten drew three). Back the front mirrored, face out.",
+  "failed": "front: the three cotton puffs lost",
+  "front": "abandon_front_i2i_5822.png",
+  "back": "abandon_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,42,52",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1734
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "19,38,42,50",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 856
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     106,
+     183,
+     237
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     21
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "grasp": {
+  "name": "GRASP",
+  "national": 190,
+  "slot": "aipom",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a monkey whose long tail ends in a big hand (RELOCATE)",
+  "note": "i2i 0.8: a grey monkey with a long curling tail. A three-fingered hand drawn by hand on the tail tip (its entry: a hand where a tail should be; no draft of ten drew it). Back the front mirrored, face out. Cleaned on a key ground (the plain clean wore the thin tail away).",
+  "failed": "front: the hand on its tail lost",
+  "front": "src/grasp_front_i2i_5821_key.png",
+  "back": "grasp_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,35,32,43",
+    "painted": "[3, 3, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 819
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "24,35,36,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 554
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     124,
+     192,
+     232
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "starved": {
+  "name": "STARVED",
+  "national": 191,
+  "slot": "sunkern",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a round seed with a small sprout on top, waiting (WAITING)",
+  "note": "t2i 5802 (frame off): a round seed with a two-leaf sprout, big hopeful eyes -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "src/starved_front_5802_unframed.png",
+  "back": "starved_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,34,47,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.5,
+    "accent_clean_after": 5.5,
+    "greyed_px": 0,
+    "streak_px": 26,
+    "creature_px": 2021
+   },
+   "front_accent_pct": 2.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "22,33,35,47",
+    "painted": "[4, 5, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.5,
+    "accent_clean_after": 7.5,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1480
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     113,
+     184,
+     236
+    ],
+    "accent_cells": 11,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "quota": {
+  "name": "QUOTA",
+  "national": 192,
+  "slot": "sunflora",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a sunflower creature, a ring of petals round its face, leaf arms (GRANTED)",
+  "note": "t2i 5801: a sunflower, a ring of petals round its face, leaf arms. Leaf ground off. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "quota_front_5801.png",
+  "back": "quota_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,37,55",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 38.8,
+    "accent_clean_after": 14.7,
+    "greyed_px": 438,
+    "streak_px": 62,
+    "creature_px": 1813
+   },
+   "front_accent_pct": 14.5,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "26,35,34,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 27.4,
+    "accent_clean_after": 12.0,
+    "greyed_px": 166,
+    "streak_px": 20,
+    "creature_px": 1080
+   },
+   "back_accent_pct": 13.1,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     173,
+     235
+    ],
+    "accent_cells": 16,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "periphery": {
+  "name": "PERIPHERY",
+  "national": 193,
+  "slot": "yanma",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a dragonfly with huge round compound eyes and four long clear wings (WIDE ANGLE)",
+  "note": "t2i 5801: a big-eyed dragonfly with four clear wings (huge red compound eyes). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "periphery_front_5801.png",
+  "back": "periphery_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,32,38,40",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 39.1,
+    "accent_clean_after": 14.7,
+    "greyed_px": 327,
+    "streak_px": 24,
+    "creature_px": 1343
+   },
+   "front_accent_pct": 14.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "6,31,22,39",
+    "painted": "[3, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 23.8,
+    "accent_clean_after": 14.6,
+    "greyed_px": 104,
+    "streak_px": 23,
+    "creature_px": 1136
+   },
+   "back_accent_pct": 12.3,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     154,
+     202,
+     236
+    ],
+    "accent_cells": 7,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "apathy": {
+  "name": "APATHY",
+  "national": 194,
+  "slot": "wooper",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a little axolotl sitting in the mud, branching gills on its head (UNMOVED)",
+  "note": "t2i 5801: an axolotl with branching red gills, blank calm eyes. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "apathy_front_5801.png",
+  "back": "apathy_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,41,52",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 29.4,
+    "accent_clean_after": 13.2,
+    "greyed_px": 246,
+    "streak_px": 18,
+    "creature_px": 1519
+   },
+   "front_accent_pct": 10.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "25,34,41,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.7,
+    "accent_clean_after": 9.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1314
+   },
+   "back_accent_pct": 6.7,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     113,
+     186,
+     241
+    ],
+    "accent_cells": 12,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "torpor": {
+  "name": "TORPOR",
+  "national": 195,
+  "slot": "quagsire",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big slumped salamander, wide flat face, blank eyes, drifting (POST HOC)",
+  "note": "i2i 0.8: a wide flat-faced squat salamander, blank eyes -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "torpor_front_i2i_5821.png",
+  "back": "torpor_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,41,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.2,
+    "accent_clean_after": 6.2,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1378
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "17,33,28,44",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.8,
+    "accent_clean_after": 7.8,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 768
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     127,
+     183,
+     235
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "omen": {
+  "name": "OMEN",
+  "national": 198,
+  "slot": "murkrow",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a black crow with a pointed witch hat crest (BAD SIGN)",
+  "note": "t2i 5801: a round black crow in a pointed witch hat -- the key kept. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "omen_front_5801.png",
+  "back": "omen_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,32,34,51",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.6,
+    "accent_clean_after": 5.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1595
+   },
+   "front_accent_pct": 6.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "33,34,42,56",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 24,
+    "creature_px": 1116
+   },
+   "back_accent_pct": 1.1,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     132,
+     221
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "kernel": {
+  "name": "KERNEL",
+  "national": 199,
+  "slot": "slowking",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a seated creature wearing a crown, a shell on its head (PRIVILEGED)",
+  "note": "t2i 5801: a hooded creature sitting with a gold crown, a little spiral shell at its side. Back from today's (crowned, from behind).",
+  "failed": "",
+  "front": "kernel_front_5801.png",
+  "back": "kernel_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,33,35,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.2,
+    "accent_clean_after": 10.2,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 1400
+   },
+   "front_accent_pct": 10.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,34,38,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 18.7,
+    "accent_clean_after": 14.9,
+    "greyed_px": 34,
+    "streak_px": 20,
+    "creature_px": 894
+   },
+   "back_accent_pct": 8.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     141,
+     186,
+     240
+    ],
+    "accent_cells": 9,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "dread": {
+  "name": "DREAD",
+  "national": 200,
+  "slot": "misdreavus",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a little ghost with a wavy hem and long dangling tendrils (SUSPENSE)",
+  "note": "i2i 0.85: a little ghost, a long wavy tendril hem. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "dread_front_i2i_5822.png",
+  "back": "dread_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,37,54",
+    "painted": "[4, 5, 5, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1252
+   },
+   "front_accent_pct": 1.5,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "26,34,37,55",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 6.7,
+    "accent_clean_after": 6.7,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 992
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     188,
+     236
+    ],
+    "accent_cells": 4,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "rankle": {
+  "name": "RANKLE",
+  "national": 360,
+  "slot": "wynaut",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a small round blob, always smiling, one sore spot (SMILING)",
+  "note": "i2i 0.85: a grey dome blob, smiling. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "rankle_front_i2i_5822.png",
+  "back": "rankle_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,42,51",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1678
+   },
+   "front_accent_pct": 1.7,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "8,32,36,40",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1685
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     117,
+     179,
+     217
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "resentment": {
+  "name": "RESENTMENT",
+  "national": 202,
+  "slot": "wobbuffet",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "a big upright punching bag blob, arms at its sides, never moves first (RETALIATE)",
+  "note": "i2i 0.8: a grey dome blob, a flat stubborn mouth (a look-alike of RANKLE within its line). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "resentment_front_i2i_5821.png",
+  "back": "resentment_back_i2i_5831.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,33,40,51",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1602
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "24,35,38,53",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.4,
+    "accent_clean_after": 3.4,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1728
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     164,
+     217
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}

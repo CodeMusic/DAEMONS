@@ -1,0 +1,147 @@
+{
+ "_": "batch 10 (2026-10-28), the charm recipe (dir n, seed 5800), chosen by eye on t452b10_cand_*.png. Seeds: t2i chibi fronts 5801/5802 (5803/5804 a second wording), i2i from today's front 0.8 = 5821, 0.85 = 5822 (0.72 = 5823, 0.76 = 5824 where charmlo ran), one back from today's back 0.66 = 5831, one chibi icon 5841. 5802 drew a frame round every draft: those picks go through prep10.py (src/*_unframed.png). Icons 'derived' = icon3 from the hand (or clean) front.",
+ "goldset": {
+  "front": "goldset_front_i2i_5822.png",
+  "icon": "derived",
+  "back": "goldset_back_i2i_5831.png",
+  "note": "i2i 0.85: a flower on a stem with a calm face in its middle -- the key kept (t2i drew girls). Petals gold (by hand, under the cap). Back the front mirrored, face out (today's back is a plain white flower).",
+  "failed": ""
+ },
+ "valence": {
+  "front": "valence_front_i2i_5824.png",
+  "icon": "derived",
+  "back": "valence_back_i2i_5831.png",
+  "note": "i2i 0.76: a grey big-eared mouse, a long curling tail. The ball on the tail tip drawn by hand (its entry: the tail decides first; no draft of ten drew it). Back the front mirrored, face out. Cleaned on a key ground (the plain clean wore the tail away). Ears rose, brown eyes ink (CONTENT's hue trap).",
+  "failed": "front: the ball on its tail lost",
+  "key": true
+ },
+ "mood": {
+  "front": "mood_front_5801.png",
+  "icon": "derived",
+  "back": "mood_back_i2i_5831.png",
+  "note": "t2i 5801: a round water mouse, round pink ears, a tail. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "elation": {
+  "front": "src/elation_front_5802_unframed.png",
+  "icon": "derived",
+  "back": "elation_back_i2i_5831.png",
+  "note": "t2i 5802 (frame off): a big round chubby rabbit, long ears. Back the front mirrored, face out.",
+  "failed": "",
+  "key": true
+ },
+ "fakeroot": {
+  "front": "fakeroot_front_i2i_5821.png",
+  "icon": "derived",
+  "back": "fakeroot_back_i2i_5831.png",
+  "note": "i2i 0.8: an owl-faced thing standing as a tree, a trunk for legs, roots, leaf-clump arms -- the pretence kept. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "semaphore": {
+  "front": "semaphore_front_5801.png",
+  "icon": "derived",
+  "back": "semaphore_back_i2i_5831.png",
+  "note": "t2i 5801: a frog holding up a signal flag -- the key kept. Back the front mirrored, face out. Cleaned on a key ground (the plain clean wore the flag and its pole away).",
+  "failed": "",
+  "key": true
+ },
+ "whim": {
+  "front": "whim_front_5801.png",
+  "icon": "derived",
+  "back": "whim_back_i2i_5831.png",
+  "note": "t2i 5801: a tiny round puff, leaf sprouts on its head. Back the front mirrored, face out. Leaves greyed into GRASS's ramp (the hue trap had turned them magenta).",
+  "failed": ""
+ },
+ "caprice": {
+  "front": "src/caprice_front_5802_unframed.png",
+  "icon": "derived",
+  "back": "caprice_back_i2i_5831.png",
+  "note": "t2i 5802 (frame off): a round creature under a big open flower hat -- the key kept. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "abandon": {
+  "front": "abandon_front_i2i_5822.png",
+  "icon": "derived",
+  "back": "abandon_back_i2i_5831.png",
+  "note": "i2i 0.85: a round creature with a cloud-puff head. Two more cotton puffs drawn by hand, held up at its sides (no draft of ten drew three). Back the front mirrored, face out.",
+  "failed": "front: the three cotton puffs lost"
+ },
+ "grasp": {
+  "front": "grasp_front_i2i_5821.png",
+  "icon": "derived",
+  "back": "grasp_back_i2i_5831.png",
+  "note": "i2i 0.8: a grey monkey with a long curling tail. A three-fingered hand drawn by hand on the tail tip (its entry: a hand where a tail should be; no draft of ten drew it). Back the front mirrored, face out. Cleaned on a key ground (the plain clean wore the thin tail away).",
+  "failed": "front: the hand on its tail lost",
+  "key": true
+ },
+ "starved": {
+  "front": "src/starved_front_5802_unframed.png",
+  "icon": "derived",
+  "back": "starved_back_i2i_5831.png",
+  "note": "t2i 5802 (frame off): a round seed with a two-leaf sprout, big hopeful eyes -- the key kept. Back the front mirrored, face out. Sprout greyed into GRASS's ramp, teal eyes blue (the hue trap).",
+  "failed": ""
+ },
+ "quota": {
+  "front": "quota_front_5801.png",
+  "icon": "derived",
+  "back": "quota_back_i2i_5831.png",
+  "note": "t2i 5801: a sunflower, a ring of petals round its face, leaf arms. Leaf ground off. Back the front mirrored, face out. Petal ring gold by hand (the cap had greyed it), white sticker halo off.",
+  "failed": ""
+ },
+ "periphery": {
+  "front": "periphery_front_5801.png",
+  "icon": "derived",
+  "back": "periphery_back_i2i_5831.png",
+  "note": "t2i 5801: a big-eyed dragonfly with four clear wings (huge red compound eyes). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "apathy": {
+  "front": "apathy_front_5801.png",
+  "icon": "derived",
+  "back": "apathy_back_i2i_5831.png",
+  "note": "t2i 5801: an axolotl with branching red gills, blank calm eyes. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "torpor": {
+  "front": "torpor_front_i2i_5821.png",
+  "icon": "derived",
+  "back": "torpor_back_i2i_5831.png",
+  "note": "i2i 0.8: a wide flat-faced squat salamander, blank eyes -- the key kept. Back the front mirrored, face out. Its pale cyan eyes greyed (blank; WATER's hue trap would turn them orange).",
+  "failed": ""
+ },
+ "omen": {
+  "front": "omen_front_5801.png",
+  "icon": "derived",
+  "back": "omen_back_i2i_5831.png",
+  "note": "t2i 5801: a round black crow in a pointed witch hat -- the key kept. Back the front mirrored, face out. White sticker halo off; the back's face filled with its dark feathers.",
+  "failed": ""
+ },
+ "kernel": {
+  "front": "kernel_front_5801.png",
+  "icon": "derived",
+  "back": "kernel_back_i2i_5831.png",
+  "note": "t2i 5801: a hooded creature sitting with a gold crown, a little spiral shell at its side. Back the front mirrored, face out (today's back: a robed figure on a cushion).",
+  "failed": ""
+ },
+ "dread": {
+  "front": "dread_front_i2i_5822.png",
+  "icon": "derived",
+  "back": "dread_back_i2i_5831.png",
+  "note": "i2i 0.85: a little ghost, a long wavy tendril hem. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "rankle": {
+  "front": "rankle_front_i2i_5822.png",
+  "icon": "derived",
+  "back": "rankle_back_i2i_5831.png",
+  "note": "i2i 0.85: a grey dome blob, smiling. Back the front mirrored, face out. Pink blush re-hued red (PSYCHIC's hue trap turned it green).",
+  "failed": ""
+ },
+ "resentment": {
+  "front": "resentment_front_i2i_5821.png",
+  "icon": "derived",
+  "back": "resentment_back_i2i_5831.png",
+  "note": "i2i 0.8: a grey dome blob, a flat stubborn mouth (a look-alike of RANKLE within its line). Back the front mirrored, face out.",
+  "failed": ""
+ }
+}
