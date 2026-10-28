@@ -805,11 +805,10 @@ def marks_table():
     wf = flag_values([f for pr in wis["pairs"] for f in (pr["root"], pr["given"], pr["insight_flag"])])
     for pr in wis["pairs"]:
         n = int(pr["badge"][-6:-4])
-        marks[n - 1]["wisdom"] = {"leader": pr["leader"], "virtue": pr["virtue"], "root_flag_name": pr["root"],
+        marks[n - 1]["wisdom"] = {"leader": pr["leader"], "virtue": pr["virtue"], 
                                   "without": pr["without"], "with": pr["with"], "explain": pr["explain"],
                                   "union_plugin": pr["plugin_name"], "union_routine": pr["routine"],
-                                  "given_flag_name": pr["given"], "insight": pr["insight"],
-                                  "insight_flag_name": pr["insight_flag"],
+                                  "insight": pr["insight"],
                                   #  numbers, as the save reader works from them (the companion session, 2026-10-16)
                                   "root_flag": wf[pr["root"]], "given_flag": wf[pr["given"]],
                                   "insight_flag": wf[pr["insight_flag"]]}
@@ -822,7 +821,7 @@ def marks_table():
     #  them (the user, 2026-10-24)
     unders = []
     for k, (flag, r, g, b, lobe, ty) in enumerate(lobes):
-        unders.append({"n": k + 1, "flag": flags[flag], "flag_name": flag, "lobe": lobe, "type": ty,
+        unders.append({"n": k + 1, "flag": flags[flag], "_flag_name": flag, "lobe": lobe, "type": ty,
                        "rgb": rgb8(int(r), int(g), int(b)), "name": named.get(k + 1, ""), "name_is_working": False,
                        # T-405 (approved 2026-10-16): its STREAM lecture, as the MARKS' -- its two scripts
                        "lesson": [t for t in (text("gTeachyTvText_Root%dScript1" % (k + 1)),
@@ -1064,12 +1063,13 @@ def events_table():
     sb1, sb2, dex = struct_offsets(g, "SaveBlock1"), struct_offsets(g, "SaveBlock2"), struct_offsets(g, "Pokedex")
     events = []
     for k, (sec, name, flags, var, items, note) in enumerate(plan):
-        row = {"n": k + 1, "name": strings[name], "section": sec}
+        #  a debug label carries its place, "STILL (TANOBY)": the companion is public, so only the name goes (review 2026-10-28)
+        row = {"n": k + 1, "name": strings[name].split(" (")[0], "section": sec}
         if flags is None:
             row["held"] = None
             row["items"] = [{"name": i if not o else "%s + %d" % (i, o), "id": it[i] + o} for i, o in items]
         else:
-            row["held"] = {"all_flags": [fl[f] for f in flags], "flag_names": flags}
+            row["held"] = {"all_flags": [fl[f] for f in flags]}     # numbers only: a flag's name says where
             if var:
                 row["held"]["var"] = {"name": var[0], "number": vr[var[0]], "op": var[1], "value": var[2]}
             if name == "sName_GlobalIndex":
@@ -1232,11 +1232,10 @@ def index_cards_table(species, margins, marks, guide):
     fv = flag_values(need)
     unders = []
     for u in marks["understandings"]:
-        e, note = notes[u["flag_name"]]
-        pair = wis.get(u["flag_name"])
+        e, note = notes[u["_flag_name"]]
+        pair = wis.get(u["_flag_name"])
         unders.append({
-            "n": u["n"], "key": u["flag_name"][len("FLAG_UNDERSTANDING_"):], "name": u["name"],
-            "flag": u["flag"], "flag_name": u["flag_name"],
+            "n": u["n"], "name": u["name"], "flag": u["flag"],    # no flag NAME: FLAG_UNDERSTANDING_<place> says where
             "rgb": u["rgb"], "hex": "#%02x%02x%02x" % tuple(u["rgb"]), "lobe": u["lobe"], "lobe_type": u["type"],
             # where it is found and what makes it arrive stay out: the companion is public and the game asks the
             # player to find them (the iOS lane's catch, 2026-10-24); the app only needs to know whether it is held
@@ -1884,6 +1883,8 @@ def main():
     #  T-453; the GUIDE's chapters as guide.json has them (gensubtle, imported since, reuses genguide's parser)
     files["index_cards.json"] = index_cards_table(files["species.json"], files["margins.json"],
                                                   files["marks.json"], files["guide.json"])
+    for u in files["marks.json"]["understandings"]:
+        u.pop("_flag_name")     # used above to join the tables; its name says where, and the companion is public
     files["patches.json"] = patches_table()                                     # T-453
     files.update(planner_tables(files["species.json"]))                         # T-453: the planner
     layout = save_layout()
