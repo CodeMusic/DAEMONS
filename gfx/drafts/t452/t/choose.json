@@ -1,0 +1,158 @@
+{
+ "_": "batch 15 (2026-10-28), the charm recipe (charm8, dir t, seed 6300), chosen by eye on cand/g0-g6.png. Seeds: t2i chibi fronts 6301/6302, i2i from today's front 0.8 = 6321, 0.85 = 6322, charmlo for PENPHIN and LOOPBACK (i2i 0.72 = 6323, 0.76 = 6324, second wording t2i 6303/6304), one back from today's back 0.66 = 6331, one chibi icon 6341. Icons 'derived' = icon3 from the hand front. Every back is the front mirrored, face out (hand_b15.py).",
+ "particle": {
+  "front": "particle_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "particle_back_i2i_6331.png",
+  "note": "i2i 0.8: a slim winged pond skater on long legs, drips at its feet. A small sparkle drawn by hand above its head (its best spot).",
+  "failed": "front: the sparkle lost"
+ },
+ "flocking": {
+  "front": "flocking_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "flocking_back_i2i_6331.png",
+  "note": "i2i 0.8: a broad-winged moth, four wings spread. An eye spot drawn by hand on each wing.",
+  "failed": "front: the eye spots lost"
+ },
+ "dolphin": {
+  "front": "dolphin_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "dolphin_back_i2i_6331.png",
+  "note": "i2i 0.8: a small dolphin leaping in an arc, as asked.",
+  "failed": ""
+ },
+ "penphin": {
+  "front": "penphin_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "penphin_back_i2i_6331.png",
+  "note": "i2i 0.8: a sleek upright penguin. A dolphin tail fluke drawn by hand behind it (no draft of eight drew one).",
+  "failed": "front: the dolphin tail lost"
+ },
+ "penguin": {
+  "front": "src/penguin_front_6302_unframed.png",
+  "icon": "derived",
+  "back": "penguin_back_i2i_6331.png",
+  "note": "t2i 6302: a chubby round penguin chick, orange beak and feet; the ice under it painted off.",
+  "failed": ""
+ },
+ "loopback": {
+  "front": "loopback_front_i2i_6322.png",
+  "icon": "derived",
+  "back": "loopback_back_i2i_6331.png",
+  "note": "i2i 0.85: a sitting kitten, its striped tail curled high; no draft of eight curled it round to chase its tail (left as drawn).",
+  "failed": "front: chasing its own tail lost"
+ },
+ "quine": {
+  "front": "quine_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "quine_back_i2i_6331.png",
+  "note": "i2i 0.8: an elegant sitting cat, tail curled. A small round hand mirror drawn by hand at its feet.",
+  "failed": "front: the mirror lost"
+ },
+ "unnoticed": {
+  "front": "src/unnoticed_front_6302_unframed.png",
+  "icon": "derived",
+  "back": "unnoticed_back_i2i_6331.png",
+  "note": "t2i 6302: a big-eyed chameleon with its tail rolled into a spiral, as asked.",
+  "failed": ""
+ },
+ "likelihood": {
+  "front": "likelihood_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "likelihood_back_i2i_6331.png",
+  "note": "i2i 0.8: a clay doll with a spinning-top head and stubby arms, sitting; not balanced on a point (as today's).",
+  "failed": ""
+ },
+ "posterior": {
+  "front": "posterior_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "posterior_back_i2i_6331.png",
+  "note": "i2i 0.8: a clay robot-doll with raised arms ending in round hands, on a small base.",
+  "failed": ""
+ },
+ "gradient": {
+  "front": "gradient_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "gradient_back_i2i_6331.png",
+  "note": "i2i 0.8: a round stone with a big red eye at its centre and a point on top. A downward needle nose drawn by hand under the eye.",
+  "failed": "front: the needle nose lost"
+ },
+ "slowburn": {
+  "front": "slowburn_front_i2i_6322.png",
+  "icon": "derived",
+  "back": "slowburn_back_i2i_6331.png",
+  "note": "i2i 0.85: a compact grey tortoise with a lumpy shell. A puff of smoke drawn by hand rising from the shell.",
+  "failed": "front: the smoke lost"
+ },
+ "backdoor": {
+  "front": "backdoor_front_i2i_6322.png",
+  "icon": "derived",
+  "back": "backdoor_back_i2i_6331.png",
+  "note": "i2i 0.85: a dark crouching imp with big pointed ears and big pale eyes.",
+  "failed": ""
+ },
+ "seepage": {
+  "front": "seepage_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "seepage_back_i2i_6331.png",
+  "note": "i2i 0.8: a round baby turtle. A water drop drawn by hand on its head.",
+  "failed": "front: the water drop lost"
+ },
+ "aquifer": {
+  "front": "aquifer_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "aquifer_back_i2i_6331.png",
+  "note": "i2i 0.8: a big sturdy turtle with a rocky shell. A small pool drawn by hand in a dip on top of the shell.",
+  "failed": "front: the pool lost"
+ },
+ "confluence": {
+  "front": "confluence_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "confluence_back_i2i_6331.png",
+  "note": "i2i 0.8: a round fish with big eyes; the two joining streams of its tail did not survive (left as drawn).",
+  "failed": "front: the two-stream tail lost"
+ },
+ "backflow": {
+  "front": "backflow_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "backflow_back_i2i_6331.png",
+  "note": "i2i 0.8: a round shelled water beetle. Two small gripping claws drawn by hand at its front.",
+  "failed": "front: the claws lost"
+ },
+ "blackwater": {
+  "front": "blackwater_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "blackwater_back_i2i_6331.png",
+  "note": "i2i 0.8: a hard-shelled dark beetle with spiky legs; the dark water round its feet was not drawn (a ground, left off).",
+  "failed": ""
+ },
+ "saddle": {
+  "front": "saddle_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "saddle_back_i2i_6331.png",
+  "note": "i2i 0.8: a plain round fish with one big eye and droopy fins.",
+  "failed": ""
+ },
+ "optimum": {
+  "front": "src/optimum_front_6302_unframed.png",
+  "icon": "derived",
+  "back": "optimum_back_i2i_6331.png",
+  "note": "t2i 6302: a chibi sea serpent coiled in an S, long ribbon fins at its head.",
+  "failed": ""
+ },
+ "undertow": {
+  "front": "undertow_front_i2i_6321.png",
+  "icon": "derived",
+  "back": "undertow_back_i2i_6331.png",
+  "note": "i2i 0.8: an eel curled into a C, nearly a ring.",
+  "failed": ""
+ },
+ "riptide": {
+  "front": "src/riptide_front_6302_unframed.png",
+  "icon": "derived",
+  "back": "riptide_back_i2i_6331.png",
+  "note": "t2i 6302: a narrow grinning shark, swept fins, sharp nose; the drawn frame and its ground cut off. Its streak marks moved off the face onto the flank.",
+  "failed": "",
+  "box-front": "28,36,48,45"
+ }
+}

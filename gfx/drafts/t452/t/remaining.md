@@ -1,0 +1,14 @@
+# T-452: daemons not yet in the sprite-server style (2026-10-28, after batch 15's drafts)
+
+Batch 15 (this draft, not built): **22** -- 311 PARTICLE, 312 FLOCKING, 313 DOLPHIN, 314 PENPHIN, 341 PENGUIN,
+315 LOOPBACK, 316 QUINE, 317 UNNOTICED, 318 LIKELIHOOD, 319 POSTERIOR, 320 GRADIENT, 321 SLOWBURN, 322 BACKDOOR,
+323 SEEPAGE, 324 AQUIFER, 325 CONFLUENCE, 326 BACKFLOW, 327 BLACKWATER, 328 SADDLE, 329 OPTIMUM, 330 UNDERTOW, 331 RIPTIDE.
+
+Left after batch 15: **77** (MISSINGNO, SYMBOL and the HANDSHAKE line not counted; THE NEXUS counted as drawn in
+batch 13; batch 14 counted as drawn), about 4 more batches of ~20. Next starts at 332: SINKHOLE 332 -> SHIMMER 333 ->
+DUSTDEVIL 334, POSTULATE 335-336, CRACKLE 337-338, PIXELBYTE 339-340, STOPGRAD 342-343, FEWSHOT 344-345,
+LOCKFILE 346-347, LILENDIAN 348, BIGENDIAN 349, BREATHING 351-352, ANODE 353, CATHODE 354 -- 21, every line whole
+(341 PENGUIN drawn here, 350 VALENCE in batch 10). After that: HONEYTRAP 355, WITNESS 356-357, and 358-411.
+
+Set aside, unchanged: 201 SYMBOL (28 letter forms, its own question); 252 MISSINGNO (batch 12's questions.md 1);
+261-263 the HANDSHAKE line (T-450).

@@ -1,0 +1,1762 @@
+{
+ "particle": {
+  "name": "PARTICLE",
+  "national": 283,
+  "slot": "surskit",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a pond skater on long thin splayed legs, a small sparkle above it: its best spot (SEARCHER)",
+  "note": "i2i 0.8: a slim winged pond skater on long legs, drips at its feet. A small sparkle drawn by hand above its head (its best spot).",
+  "failed": "front: the sparkle lost",
+  "front": "particle_front_i2i_6321.png",
+  "back": "particle_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,31,36,39",
+    "painted": "[3, 3, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 60.3,
+    "accent_clean_after": 13.4,
+    "greyed_px": 297,
+    "streak_px": 13,
+    "creature_px": 633
+   },
+   "front_accent_pct": 14.2,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "20,26,40,34",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 15.0,
+    "accent_clean_after": 15.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 662
+   },
+   "back_accent_pct": 13.8,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     140,
+     190,
+     230
+    ],
+    "accent_cells": 3,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "flocking": {
+  "name": "FLOCKING",
+  "national": 284,
+  "slot": "masquerain",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a moth with four wide wings, a big eye spot on each wing (MURMURATION)",
+  "note": "i2i 0.8: a broad-winged moth, four wings spread. An eye spot drawn by hand on each wing.",
+  "failed": "front: the eye spots lost",
+  "front": "flocking_front_i2i_6321.png",
+  "back": "flocking_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,16,26,24",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 612
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,43,27,50",
+    "painted": "FAILED, no streaks"
+   },
+   "back_cap": {
+    "accent_clean_before": 12.1,
+    "accent_clean_after": 12.1,
+    "greyed_px": 0,
+    "streak_px": 0,
+    "creature_px": 522
+   },
+   "back_accent_pct": 0.7,
+   "back_colours": 9,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     165,
+     212
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     14
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "dolphin": {
+  "name": "DOLPHIN",
+  "national": 320,
+  "slot": "wailmer",
+  "gametype": "VECTOR",
+  "type": "FLYING",
+  "props": "a dolphin leaping in a curved arc (RECKONING)",
+  "note": "i2i 0.8: a small dolphin leaping in an arc, as asked.",
+  "failed": "",
+  "front": "dolphin_front_i2i_6321.png",
+  "back": "dolphin_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "32,33,42,47",
+    "painted": "[4, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.3,
+    "accent_clean_after": 12.3,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 571
+   },
+   "front_accent_pct": 12.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "4,40,16,54",
+    "painted": "[4, 5, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 998
+   },
+   "back_accent_pct": 8.1,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     6,
+     11,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      213,
+      98,
+      65
+     ],
+     [
+      255,
+      180,
+      164
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     172,
+     217
+    ],
+    "accent_cells": 1,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "penphin": {
+  "name": "PENPHIN",
+  "national": 321,
+  "slot": "wailord",
+  "gametype": "CONTEXT",
+  "type": "PSYCHIC",
+  "props": "half penguin, half dolphin in one body: a penguin front with flippers, a dolphin tail (CONCORD)",
+  "note": "i2i 0.8: a sleek upright penguin. A dolphin tail fluke drawn by hand behind it (no draft of eight drew one).",
+  "failed": "front: the dolphin tail lost",
+  "front": "penphin_front_i2i_6321.png",
+  "back": "penphin_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,38,50",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.3,
+    "accent_clean_after": 7.3,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 711
+   },
+   "front_accent_pct": 5.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "31,34,48,52",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 18.2,
+    "accent_clean_after": 14.7,
+    "greyed_px": 42,
+    "streak_px": 18,
+    "creature_px": 1215
+   },
+   "back_accent_pct": 4.2,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     8,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      246,
+      148,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     86,
+     153,
+     213
+    ],
+    "accent_cells": 10,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "penguin": {
+  "name": "PENGUIN",
+  "national": 363,
+  "slot": "spheal",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a penguin chick, head up into the wind, sensing a storm before it comes (INKLING)",
+  "note": "t2i 6302: a chubby round penguin chick, orange beak and feet; the ice under it painted off.",
+  "failed": "",
+  "front": "src/penguin_front_6302_unframed.png",
+  "back": "penguin_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,34,42,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 11.6,
+    "accent_clean_after": 11.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1436
+   },
+   "front_accent_pct": 11.3,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "35,34,46,52",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.5,
+    "accent_clean_after": 4.5,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1120
+   },
+   "back_accent_pct": 7.6,
+   "back_colours": 15,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     105,
+     159,
+     234
+    ],
+    "accent_cells": 11,
+    "size": [
+     20,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "loopback": {
+  "name": "LOOPBACK",
+  "national": 300,
+  "slot": "skitty",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a kitten curled round chasing its own tail (OWN TAIL)",
+  "note": "i2i 0.85: a sitting kitten, its striped tail curled high; no draft of eight curled it round to chase its tail (left as drawn).",
+  "failed": "front: chasing its own tail lost",
+  "front": "loopback_front_i2i_6322.png",
+  "back": "loopback_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,34,38,50",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.6,
+    "accent_clean_after": 3.6,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1212
+   },
+   "front_accent_pct": 2.3,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,35,45,53",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1737
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     182,
+     224
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "quine": {
+  "name": "QUINE",
+  "national": 301,
+  "slot": "delcatty",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a cat sitting tall, a small round hand mirror at its feet (OWN SOURCE)",
+  "note": "i2i 0.8: an elegant sitting cat, tail curled. A small round hand mirror drawn by hand at its feet.",
+  "failed": "front: the mirror lost",
+  "front": "quine_front_i2i_6321.png",
+  "back": "quine_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,36,40,54",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.6,
+    "accent_clean_after": 4.6,
+    "greyed_px": 0,
+    "streak_px": 27,
+    "creature_px": 1336
+   },
+   "front_accent_pct": 4.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,34,49,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1671
+   },
+   "back_accent_pct": 1.6,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     164,
+     226
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "unnoticed": {
+  "name": "UNNOTICED",
+  "national": 352,
+  "slot": "kecleon",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a chameleon with a curled spiral tail, half see-through (UNSEEN)",
+  "note": "t2i 6302: a big-eyed chameleon with its tail rolled into a spiral, as asked.",
+  "failed": "",
+  "front": "src/unnoticed_front_6302_unframed.png",
+  "back": "unnoticed_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "8,34,20,57",
+    "painted": "[4, 5, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 14.5,
+    "accent_clean_after": 14.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 2102
+   },
+   "front_accent_pct": 14.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "22,41,34,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 12.2,
+    "accent_clean_after": 12.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 747
+   },
+   "back_accent_pct": 8.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     131,
+     181,
+     232
+    ],
+    "accent_cells": 5,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "likelihood": {
+  "name": "LIKELIHOOD",
+  "national": 343,
+  "slot": "baltoy",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a small clay figure spinning on one point, leaning to one side (PRIOR)",
+  "note": "i2i 0.8: a clay doll with a spinning-top head and stubby arms, sitting; not balanced on a point (as today's).",
+  "failed": "",
+  "front": "likelihood_front_i2i_6321.png",
+  "back": "likelihood_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,37,39,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1191
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "24,34,39,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1314
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     101,
+     167,
+     230
+    ],
+    "accent_cells": 2,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "posterior": {
+  "name": "POSTERIOR",
+  "national": 344,
+  "slot": "claydol",
+  "gametype": "STRATUM",
+  "type": "GROUND",
+  "props": "a tall clay figure with four floating round hands around it (UPDATED)",
+  "note": "i2i 0.8: a clay robot-doll with raised arms ending in round hands, on a small base.",
+  "failed": "",
+  "front": "posterior_front_i2i_6321.png",
+  "back": "posterior_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,35,36,57",
+    "painted": "[4, 5, 3, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1489
+   },
+   "front_accent_pct": 0.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,36,40,44",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 353
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     6,
+     7,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      180,
+      131,
+      90
+     ],
+     [
+      238,
+      197,
+      139
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     112,
+     168,
+     226
+    ],
+    "accent_cells": 0,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "gradient": {
+  "name": "GRADIENT",
+  "national": 299,
+  "slot": "nosepass",
+  "gametype": "LEGACY",
+  "type": "ROCK",
+  "props": "a stone creature whose big pointed nose points the way down like a compass needle (SLOPE)",
+  "note": "i2i 0.8: a round stone with a big red eye at its centre and a point on top. A downward needle nose drawn by hand under the eye.",
+  "failed": "front: the needle nose lost",
+  "front": "gradient_front_i2i_6321.png",
+  "back": "gradient_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "34,32,50,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.8,
+    "accent_clean_after": 12.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1119
+   },
+   "front_accent_pct": 12.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,31,40,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.5,
+    "accent_clean_after": 3.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1226
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      189
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     90,
+     151,
+     213
+    ],
+    "accent_cells": 20,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "slowburn": {
+  "name": "SLOWBURN",
+  "national": 324,
+  "slot": "torkoal",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a tortoise with a coal shell, smoke puffing from the top (SOOTY)",
+  "note": "i2i 0.85: a compact grey tortoise with a lumpy shell. A puff of smoke drawn by hand rising from the shell.",
+  "failed": "front: the smoke lost",
+  "front": "slowburn_front_i2i_6322.png",
+  "back": "slowburn_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "30,32,50,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.3,
+    "accent_clean_after": 1.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 900
+   },
+   "front_accent_pct": 1.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,38,34,54",
+    "painted": "[3, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.6,
+    "accent_clean_after": 1.6,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1499
+   },
+   "back_accent_pct": 0.5,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     87,
+     145,
+     210
+    ],
+    "accent_cells": 4,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "backdoor": {
+  "name": "BACKDOOR",
+  "national": 302,
+  "slot": "sableye",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a crouching creature with huge eyes that shine in the dark (UNSEEN)",
+  "note": "i2i 0.85: a dark crouching imp with big pointed ears and big pale eyes.",
+  "failed": "",
+  "front": "backdoor_front_i2i_6322.png",
+  "back": "backdoor_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,30,31,46",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.7,
+    "accent_clean_after": 3.7,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1167
+   },
+   "front_accent_pct": 2.2,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "18,35,30,54",
+    "painted": "[3, 3, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 859
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     169,
+     231
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "seepage": {
+  "name": "SEEPAGE",
+  "national": 339,
+  "slot": "barboach",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a baby turtle, a water drop on its head, water seeping from its shell (SOAK)",
+  "note": "i2i 0.8: a round baby turtle. A water drop drawn by hand on its head.",
+  "failed": "front: the water drop lost",
+  "front": "seepage_front_i2i_6321.png",
+  "back": "seepage_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,39,51",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.9,
+    "accent_clean_after": 12.9,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1686
+   },
+   "front_accent_pct": 4.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,40,37,56",
+    "painted": "[3, 4, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 26.3,
+    "accent_clean_after": 12.0,
+    "greyed_px": 256,
+    "streak_px": 13,
+    "creature_px": 1797
+   },
+   "back_accent_pct": 2.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     120,
+     177,
+     225
+    ],
+    "accent_cells": 10,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "aquifer": {
+  "name": "AQUIFER",
+  "national": 340,
+  "slot": "whiscash",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big turtle holding a small pool of water in a dip on its rocky shell (GROUNDWATER)",
+  "note": "i2i 0.8: a big sturdy turtle with a rocky shell. A small pool drawn by hand in a dip on top of the shell.",
+  "failed": "front: the pool lost",
+  "front": "aquifer_front_i2i_6321.png",
+  "back": "aquifer_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,30,41,38",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.2,
+    "accent_clean_after": 3.2,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1718
+   },
+   "front_accent_pct": 2.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "37,36,47,44",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.4,
+    "accent_clean_after": 13.4,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1595
+   },
+   "back_accent_pct": 1.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     106,
+     160,
+     209
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "confluence": {
+  "name": "CONFLUENCE",
+  "national": 370,
+  "slot": "luvdisc",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a round fish whose two swirling tail streams join into one (MEETING)",
+  "note": "i2i 0.8: a round fish with big eyes; the two joining streams of its tail did not survive (left as drawn).",
+  "failed": "front: the two-stream tail lost",
+  "front": "confluence_front_i2i_6321.png",
+  "back": "confluence_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,32,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.6,
+    "accent_clean_after": 2.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1098
+   },
+   "front_accent_pct": 1.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "34,33,44,49",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1021
+   },
+   "back_accent_pct": 1.4,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     110,
+     169,
+     223
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "backflow": {
+  "name": "BACKFLOW",
+  "national": 341,
+  "slot": "corphish",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a water beetle swimming backward, two big gripping claws (REVERSAL)",
+  "note": "i2i 0.8: a round shelled water beetle. Two small gripping claws drawn by hand at its front.",
+  "failed": "front: the claws lost",
+  "front": "backflow_front_i2i_6321.png",
+  "back": "backflow_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,32,45,40",
+    "painted": "[4, 4, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.1,
+    "accent_clean_after": 7.1,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 990
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "17,34,29,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1692
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     101,
+     170,
+     213
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     20
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "blackwater": {
+  "name": "BLACKWATER",
+  "national": 342,
+  "slot": "crawdaunt",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a hard dark beetle with inky dark water swirling round its feet (DARK RIVER)",
+  "note": "i2i 0.8: a hard-shelled dark beetle with spiky legs; the dark water round its feet was not drawn (a ground, left off).",
+  "failed": "",
+  "front": "blackwater_front_i2i_6321.png",
+  "back": "blackwater_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,35,43,43",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1338
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "23,38,29,54",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1138
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     90,
+     161,
+     225
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "saddle": {
+  "name": "SADDLE",
+  "national": 349,
+  "slot": "feebas",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a plain flat fish with a saddle-shaped dip in its back (FLAT POINT)",
+  "note": "i2i 0.8: a plain round fish with one big eye and droopy fins.",
+  "failed": "",
+  "front": "saddle_front_i2i_6321.png",
+  "back": "saddle_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,33,36,47",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1103
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "18,34,46,48",
+    "painted": "[3, 4, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1015
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     108,
+     171,
+     215
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     20
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "optimum": {
+  "name": "OPTIMUM",
+  "national": 350,
+  "slot": "milotic",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a long elegant sea serpent coiled in an S, flowing fins (BEST POINT)",
+  "note": "t2i 6302: a chibi sea serpent coiled in an S, long ribbon fins at its head.",
+  "failed": "",
+  "front": "src/optimum_front_6302_unframed.png",
+  "back": "optimum_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,36,32,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 50.1,
+    "accent_clean_after": 9.6,
+    "greyed_px": 776,
+    "streak_px": 20,
+    "creature_px": 1915
+   },
+   "front_accent_pct": 5.2,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "40,33,48,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 713
+   },
+   "back_accent_pct": 3.1,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     117,
+     177,
+     230
+    ],
+    "accent_cells": 3,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "undertow": {
+  "name": "UNDERTOW",
+  "national": 318,
+  "slot": "carvanha",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "an eel curled into a ring, pulling (PULL)",
+  "note": "i2i 0.8: an eel curled into a C, nearly a ring.",
+  "failed": "",
+  "front": "undertow_front_i2i_6321.png",
+  "back": "undertow_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,31,28,49",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1049
+   },
+   "front_accent_pct": 0.1,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "12,31,32,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1067
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     119,
+     160,
+     212
+    ],
+    "accent_cells": 1,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "riptide": {
+  "name": "RIPTIDE",
+  "national": 319,
+  "slot": "sharpedo",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a fast narrow shark with a sharp pointed nose and swept fins (RUNAWAY)",
+  "note": "t2i 6302: a narrow grinning shark, swept fins, sharp nose; the drawn frame and its ground cut off. Its streak marks moved off the face onto the flank.",
+  "failed": "",
+  "front": "src/riptide_front_6302_unframed.png",
+  "back": "riptide_back_i2i_6331.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "8,33,28,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 25.3,
+    "accent_clean_after": 11.9,
+    "greyed_px": 106,
+    "streak_px": 20,
+    "creature_px": 792
+   },
+   "front_accent_pct": 5.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "39,34,43,48",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1130
+   },
+   "back_accent_pct": 1.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     84,
+     179,
+     235
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}
