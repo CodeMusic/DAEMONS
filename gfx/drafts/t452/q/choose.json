@@ -1,0 +1,150 @@
+{
+ "_": "batch 13 (2026-10-28), the charm recipe (dir q, seed 6100), chosen by eye on cand/t452b13_cand_*.png. Seeds: t2i chibi fronts 6101/6102 (6103/6104 a second wording), i2i from today's front 0.8 = 6121, 0.85 = 6122 (0.72 = 6123, 0.76 = 6124 where charmlo ran), one back from today's back 0.66 = 6131, one chibi icon 6141. Every t2i at 6101/6102 came back framed. Icons 'derived' = icon3 from the hand (or clean) front.",
+ "reflection": {
+  "front": "reflection_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "reflection_back_i2i_6131.png",
+  "note": "i2i 0.8: a sitting grey wolf with a fluffy ruff, nearer today's painted wolf. The mirror drawn by hand at its mouth (no draft kept it). Back the front mirrored, face out.",
+  "failed": "front: the mirror lost"
+ },
+ "lodestar": {
+  "front": "lodestar_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "lodestar_back_i2i_6131.png",
+  "note": "i2i 0.8: a standing deer with branching antlers. The star between its antlers drawn by hand (no draft drew one). Back the front mirrored, face out.",
+  "failed": "front: the star lost"
+ },
+ "perihelion": {
+  "front": "perihelion_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "perihelion_back_i2i_6131.png",
+  "note": "i2i 0.85: a striped cat-tiger with little stars round it; the comet tail did not survive (stars kept as its comet look). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "lyubov": {
+  "front": "lyubov_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "lyubov_back_i2i_6131.png",
+  "note": "i2i 0.8: a lioness lying with her tail curled round, nearest today's. A garland of small flowers drawn by hand at her neck (6122 drew one but on a grass mound). Back the front mirrored, face out.",
+  "failed": "front: the garland lost"
+ },
+ "multimal": {
+  "front": "multimal_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "multimal_back_i2i_6131.png",
+  "note": "i2i 0.85: a dark creature of many animals -- ram horns, fox ears, glowing fins for wings, a long tail. The light in its chest drawn by hand. Back the front mirrored, face out.",
+  "failed": "front: the chest light lost"
+ },
+ "illumined": {
+  "front": "illumined_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "illumined_back_i2i_6131.png",
+  "note": "i2i 0.85: a white fluffy kitten. The halo of light drawn by hand as a pale ring behind its head. Back the front mirrored, face out.",
+  "failed": "front: the halo lost"
+ },
+ "lynx": {
+  "front": "lynx_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "lynx_back_i2i_6131.png",
+  "note": "i2i 0.8: a big-eared Siamese kitten, dark points, big eyes. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "bastet": {
+  "front": "bastet_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "bastet_back_i2i_6131.png",
+  "note": "i2i 0.8: a slender sitting cat, tall ears and a long tail, nearest today's statue cat. A dark collar band drawn by hand. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "stump": {
+  "front": "stump_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "stump_back_i2i_6131.png",
+  "note": "i2i 0.85: a stump with big eyes, a leafy twig sprouting from its top (the split sprout). Ground shadow off. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "boosting": {
+  "front": "boosting_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "boosting_back_i2i_6131.png",
+  "note": "i2i 0.8: a sapling with a leafy crown, a face in its trunk and root feet; leaves in clumps. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "canopy": {
+  "front": "canopy_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "canopy_back_i2i_6131.png",
+  "note": "i2i 0.8: a great tree guardian, its crown many leaf clumps, a face in its trunk. Grass ground off. Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "coinflip": {
+  "front": "coinflip_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "coinflip_back_i2i_6131.png",
+  "note": "i2i 0.85: a round chick with its wings up. The coin drawn by hand, half light and half dark, held up by a wing. Back the front mirrored, face out.",
+  "failed": "front: the coin lost"
+ },
+ "montecarlo": {
+  "front": "montecarlo_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "montecarlo_back_i2i_6131.png",
+  "note": "i2i 0.85: a lanky young bird with a crest and a long tail. A string of small dice drawn by hand round its neck. Back the front mirrored, face out.",
+  "failed": "front: the dice lost"
+ },
+ "lasvegas": {
+  "front": "lasvegas_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "lasvegas_back_i2i_6131.png",
+  "note": "i2i 0.8: a tall proud bird with a crest, standing on long legs. One big die drawn by hand at its wing. Back the front mirrored, face out.",
+  "failed": "front: the die lost"
+ },
+ "runoff": {
+  "front": "runoff_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "runoff_back_i2i_6131.png",
+  "note": "i2i 0.8: a little upright otter cub, round belly. Water drops drawn by hand running off its head. Back the front mirrored, face out.",
+  "failed": "front: the drops lost"
+ },
+ "alluvium": {
+  "front": "alluvium_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "alluvium_back_i2i_6131.png",
+  "note": "i2i 0.85: an upright mud creature with a crest, its belly in layered bands (the key kept). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "delta": {
+  "front": "delta_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "delta_back_i2i_6131.png",
+  "note": "i2i 0.8: a big round river creature with a broad fanned tail; the branching channels did not survive (the fan stands in). Back the front mirrored, face out.",
+  "failed": ""
+ },
+ "smudge": {
+  "front": "smudge_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "smudge_back_i2i_6131.png",
+  "note": "i2i 0.8: a scruffy hyena pup. A dark smear drawn by hand across its face. Back the front mirrored, face out.",
+  "failed": "front: the smudge lost"
+ },
+ "eclipse": {
+  "front": "eclipse_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "eclipse_back_i2i_6131.png",
+  "note": "i2i 0.8: a lean dark hound. The black disc with a bright ring drawn by hand behind its head. Back the front mirrored, face out.",
+  "failed": "front: the eclipse disc lost"
+ },
+ "detour": {
+  "front": "detour_front_i2i_6122.png",
+  "icon": "derived",
+  "back": "detour_back_i2i_6131.png",
+  "note": "i2i 0.85: a raccoon with a ringed tail. Zigzag stripes drawn by hand across its body. Back the front mirrored, face out.",
+  "failed": "front: the zigzag stripes lost"
+ },
+ "unbranched": {
+  "front": "unbranched_front_i2i_6121.png",
+  "icon": "derived",
+  "back": "unbranched_back_i2i_6131.png",
+  "note": "i2i 0.8: a long low ferret with a ringed tail, running. A straight stripe down its back and a small tied bundle drawn by hand. Back the front mirrored, face out.",
+  "failed": "front: the stripe and bundle lost"
+ }
+}

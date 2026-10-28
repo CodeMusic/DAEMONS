@@ -104,6 +104,19 @@ def src512(n, kind):
     dst = f"{D}/src/{n}_{kind}_512.png"
     im = Image.open(f"{R}/{BYNAME[n]['art'][kind]}").convert("RGBA")
     if im.width != 64: im = im.resize((64, 64), Image.LANCZOS)
+    a = np.array(im)
+    if (a[..., 3] < 128).mean() < 0.01:   # batch 13: THE NEXUS's painted art is opaque on black -- flood the black ground from the edges to transparent
+        from collections import deque
+        dk = a[..., :3].max(-1) < 40; seen = np.zeros(dk.shape, bool); q = deque()
+        for y in range(64):
+            for x in range(64):
+                if (y in (0, 63) or x in (0, 63)) and dk[y, x]: seen[y, x] = True; q.append((y, x))
+        while q:
+            y, x = q.popleft()
+            for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                p_, r_ = y + dy, x + dx
+                if 0 <= p_ < 64 and 0 <= r_ < 64 and dk[p_, r_] and not seen[p_, r_]: seen[p_, r_] = True; q.append((p_, r_))
+        a[seen, 3] = 0; im = Image.fromarray(a)
     bg = Image.new("RGBA", im.size, (255, 255, 255, 255)); bg.alpha_composite(im)
     bg.convert("RGB").resize((512, 512), Image.NEAREST).save(dst)
     return dst
@@ -225,7 +238,7 @@ def contact(n):
         x = 20 + (i + 2) * 212
         s.paste(Image.open(f"{D}/{f}").convert("RGB").resize((192, 192)), (x, 30))
         d.text((x, 228), f.replace(n + "_", "")[:-4], fill=INKC, font=FS)
-    s.save(SP + f"{PREFIX}_cand_{n}.png")
+    os.makedirs(T + "/cand", exist_ok=True); s.save(T + f"/cand/{PREFIX}_cand_{n}.png")
 
 def choose():
     p = f"{D}/choose.json"

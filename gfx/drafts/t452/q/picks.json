@@ -1,0 +1,1682 @@
+{
+ "reflection": {
+  "name": "REFLECTION",
+  "national": 387,
+  "slot": "old_unown_c",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a small wolf carrying a little painted mirror in its mouth, black glass with a white glint (CANVAS)",
+  "note": "i2i 0.8: a sitting grey wolf with a fluffy ruff, nearer today's painted wolf. The mirror drawn by hand at its mouth (no draft kept it). Back the front mirrored, face out.",
+  "failed": "front: the mirror lost",
+  "front": "reflection_front_i2i_6121.png",
+  "back": "reflection_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,35,37,57",
+    "painted": "[5, 5, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1599
+   },
+   "front_accent_pct": 0.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "32,38,47,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.8,
+    "accent_clean_after": 13.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1178
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     177,
+     218
+    ],
+    "accent_cells": 1,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lodestar": {
+  "name": "LODESTAR",
+  "national": 388,
+  "slot": "old_unown_d",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a deer with a star's light in it, a glowing star between its antlers (GUIDESTAR)",
+  "note": "i2i 0.8: a standing deer with branching antlers. The star between its antlers drawn by hand (no draft drew one). Back the front mirrored, face out.",
+  "failed": "front: the star lost",
+  "front": "lodestar_front_i2i_6121.png",
+  "back": "lodestar_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,32,44,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 62.1,
+    "accent_clean_after": 8.6,
+    "greyed_px": 607,
+    "streak_px": 20,
+    "creature_px": 1133
+   },
+   "front_accent_pct": 5.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "22,36,32,59",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 87.6,
+    "accent_clean_after": 3.8,
+    "greyed_px": 917,
+    "streak_px": 46,
+    "creature_px": 1093
+   },
+   "back_accent_pct": 5.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     98,
+     153,
+     192
+    ],
+    "accent_cells": 0,
+    "size": [
+     20,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "perihelion": {
+  "name": "PERIHELION",
+  "national": 389,
+  "slot": "old_unown_e",
+  "gametype": "SIGNAL",
+  "type": "ELECTRIC",
+  "props": "a tiger with a comet's look, a comet tail of stars streaming behind it (COMET)",
+  "note": "i2i 0.85: a striped cat-tiger with little stars round it; the comet tail did not survive (stars kept as its comet look). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "perihelion_front_i2i_6122.png",
+  "back": "perihelion_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,32,55",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 23.0,
+    "accent_clean_after": 14.1,
+    "greyed_px": 136,
+    "streak_px": 16,
+    "creature_px": 1529
+   },
+   "front_accent_pct": 5.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "19,35,37,58",
+    "painted": "[5, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 71.9,
+    "accent_clean_after": 2.3,
+    "greyed_px": 2110,
+    "streak_px": 24,
+    "creature_px": 3035
+   },
+   "back_accent_pct": 3.9,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     142,
+     192,
+     232
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lyubov": {
+  "name": "LYUBOV",
+  "national": 390,
+  "slot": "old_unown_f",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a proud lioness wearing a garland of folk flowers (DEVOTION)",
+  "note": "i2i 0.8: a lioness lying with her tail curled round, nearest today's. A garland of small flowers drawn by hand at her neck (6122 drew one but on a grass mound). Back the front mirrored, face out.",
+  "failed": "front: the garland lost",
+  "front": "lyubov_front_i2i_6121.png",
+  "back": "lyubov_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "13,35,48,57",
+    "painted": "[5, 5, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 67.6,
+    "accent_clean_after": 0.7,
+    "greyed_px": 1554,
+    "streak_px": 20,
+    "creature_px": 2325
+   },
+   "front_accent_pct": 0.7,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "16,35,44,58",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 66.7,
+    "accent_clean_after": 5.2,
+    "greyed_px": 993,
+    "streak_px": 20,
+    "creature_px": 1614
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     121,
+     162,
+     197
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "multimal": {
+  "name": "MULTIMAL",
+  "national": 391,
+  "slot": "old_unown_g",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a shadow of many animals at once, a small light glowing in its chest (SHADOWS)",
+  "note": "i2i 0.85: a dark creature of many animals -- ram horns, fox ears, glowing fins for wings, a long tail. The light in its chest drawn by hand. Back the front mirrored, face out.",
+  "failed": "front: the chest light lost",
+  "front": "multimal_front_i2i_6122.png",
+  "back": "multimal_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,35,41,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 20.9,
+    "accent_clean_after": 12.8,
+    "greyed_px": 100,
+    "streak_px": 219,
+    "creature_px": 1238
+   },
+   "front_accent_pct": 14.7,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "30,37,58,59",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 82.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 1138,
+    "streak_px": 43,
+    "creature_px": 1422
+   },
+   "back_accent_pct": 14.7,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     99,
+     151,
+     230
+    ],
+    "accent_cells": 19,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "illumined": {
+  "name": "ILLUMINED",
+  "national": 392,
+  "slot": "old_unown_h",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a white cat in a halo of light, the light within grown (RADIANT)",
+  "note": "i2i 0.85: a white fluffy kitten. The halo of light drawn by hand as a pale ring behind its head. Back the front mirrored, face out.",
+  "failed": "front: the halo lost",
+  "front": "illumined_front_i2i_6122.png",
+  "back": "illumined_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,35,47,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 43.2,
+    "accent_clean_after": 13.9,
+    "greyed_px": 501,
+    "streak_px": 20,
+    "creature_px": 1709
+   },
+   "front_accent_pct": 2.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,37,52,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 79.6,
+    "accent_clean_after": 2.5,
+    "greyed_px": 1242,
+    "streak_px": 20,
+    "creature_px": 1612
+   },
+   "back_accent_pct": 0.7,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     132,
+     185,
+     233
+    ],
+    "accent_cells": 5,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lynx": {
+  "name": "LYNX",
+  "national": 393,
+  "slot": "old_unown_i",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a lynx point Siamese kitten with tufted ears (FAMILIAR)",
+  "note": "i2i 0.8: a big-eared Siamese kitten, dark points, big eyes. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "lynx_front_i2i_6121.png",
+  "back": "lynx_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,35,41,58",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 37.8,
+    "accent_clean_after": 5.8,
+    "greyed_px": 651,
+    "streak_px": 22,
+    "creature_px": 2036
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "11,35,41,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 61.1,
+    "accent_clean_after": 11.6,
+    "greyed_px": 912,
+    "streak_px": 20,
+    "creature_px": 1840
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     134,
+     190,
+     226
+    ],
+    "accent_cells": 3,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bastet": {
+  "name": "BASTET",
+  "national": 394,
+  "slot": "old_unown_j",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "an Egyptian cat sitting still as a temple statue, a gold collar (BOUNDLESS)",
+  "note": "i2i 0.8: a slender sitting cat, tall ears and a long tail, nearest today's statue cat. A dark collar band drawn by hand. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "bastet_front_i2i_6121.png",
+  "back": "bastet_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,34,48,57",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 53.8,
+    "accent_clean_after": 9.2,
+    "greyed_px": 671,
+    "streak_px": 21,
+    "creature_px": 1503
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,35,29,57",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 66.3,
+    "accent_clean_after": 13.7,
+    "greyed_px": 507,
+    "streak_px": 18,
+    "creature_px": 964
+   },
+   "back_accent_pct": 0.3,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     127,
+     189,
+     232
+    ],
+    "accent_cells": 1,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "stump": {
+  "name": "STUMP",
+  "national": 252,
+  "slot": "treecko",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a tree stump creature with one sprout that splits in two (ONE SPLIT)",
+  "note": "i2i 0.85: a stump with big eyes, a leafy twig sprouting from its top (the split sprout). Ground shadow off. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "stump_front_i2i_6122.png",
+  "back": "stump_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,33,31,48",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 59.6,
+    "accent_clean_after": 13.2,
+    "greyed_px": 527,
+    "streak_px": 21,
+    "creature_px": 1136
+   },
+   "front_accent_pct": 7.7,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "23,33,29,47",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 29.6,
+    "accent_clean_after": 3.4,
+    "greyed_px": 343,
+    "streak_px": 14,
+    "creature_px": 1311
+   },
+   "back_accent_pct": 6.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     81,
+     129,
+     197
+    ],
+    "accent_cells": 12,
+    "size": [
+     28,
+     21
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "boosting": {
+  "name": "BOOSTING",
+  "national": 253,
+  "slot": "grovyle",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a sapling creature whose leaves grow in clusters where it was wrong (WEIGHTED)",
+  "note": "i2i 0.8: a sapling with a leafy crown, a face in its trunk and root feet; leaves in clumps. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "boosting_front_i2i_6121.png",
+  "back": "boosting_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,34,35,53",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 34.3,
+    "accent_clean_after": 14.3,
+    "greyed_px": 245,
+    "streak_px": 16,
+    "creature_px": 1225
+   },
+   "front_accent_pct": 9.9,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,32,40,58",
+    "painted": "[3, 5, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 29.9,
+    "accent_clean_after": 14.7,
+    "greyed_px": 158,
+    "streak_px": 14,
+    "creature_px": 1041
+   },
+   "back_accent_pct": 7.2,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     156,
+     212
+    ],
+    "accent_cells": 7,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "canopy": {
+  "name": "CANOPY",
+  "national": 254,
+  "slot": "sceptile",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a great tree guardian whose crown is many small trees (MANY TREES)",
+  "note": "i2i 0.8: a great tree guardian, its crown many leaf clumps, a face in its trunk. Grass ground off. Back the front mirrored, face out.",
+  "failed": "",
+  "front": "canopy_front_i2i_6121.png",
+  "back": "canopy_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,35,33,58",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 53.1,
+    "accent_clean_after": 14.2,
+    "greyed_px": 726,
+    "streak_px": 13,
+    "creature_px": 1863
+   },
+   "front_accent_pct": 7.6,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "28,35,35,57",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 31.7,
+    "accent_clean_after": 13.6,
+    "greyed_px": 326,
+    "streak_px": 16,
+    "creature_px": 1793
+   },
+   "back_accent_pct": 6.2,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     150,
+     195
+    ],
+    "accent_cells": 2,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "coinflip": {
+  "name": "COINFLIP",
+  "national": 255,
+  "slot": "torchic",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a little chick holding up a coin, light on one side and dark on the other (FAIR TOSS)",
+  "note": "i2i 0.85: a round chick with its wings up. The coin drawn by hand, half light and half dark, held up by a wing. Back the front mirrored, face out.",
+  "failed": "front: the coin lost",
+  "front": "coinflip_front_i2i_6122.png",
+  "back": "coinflip_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,34,37,53",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.5,
+    "accent_clean_after": 5.5,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1569
+   },
+   "front_accent_pct": 5.8,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "25,36,37,44",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.7,
+    "accent_clean_after": 2.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1068
+   },
+   "back_accent_pct": 2.6,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     182,
+     235
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "montecarlo": {
+  "name": "MONTECARLO",
+  "national": 256,
+  "slot": "combusken",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a lanky young fighting bird wearing a string of many little dice (SAMPLER)",
+  "note": "i2i 0.85: a lanky young bird with a crest and a long tail. A string of small dice drawn by hand round its neck. Back the front mirrored, face out.",
+  "failed": "front: the dice lost",
+  "front": "montecarlo_front_i2i_6122.png",
+  "back": "montecarlo_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,37,34,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.5,
+    "accent_clean_after": 7.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1110
+   },
+   "front_accent_pct": 8.2,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "29,36,41,55",
+    "painted": "[5, 4, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1007
+   },
+   "back_accent_pct": 4.5,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     121,
+     186,
+     237
+    ],
+    "accent_cells": 4,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lasvegas": {
+  "name": "LASVEGAS",
+  "national": 257,
+  "slot": "blaziken",
+  "gametype": "ENTROPY",
+  "type": "FIRE",
+  "props": "a tall proud fighting bird holding one big die (CERTAINTY)",
+  "note": "i2i 0.8: a tall proud bird with a crest, standing on long legs. One big die drawn by hand at its wing. Back the front mirrored, face out.",
+  "failed": "front: the die lost",
+  "front": "lasvegas_front_i2i_6121.png",
+  "back": "lasvegas_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,33,38,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.7,
+    "accent_clean_after": 6.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1381
+   },
+   "front_accent_pct": 6.7,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "16,32,44,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1389
+   },
+   "back_accent_pct": 4.3,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     9,
+     10,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      246,
+      230,
+      41
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     157,
+     228
+    ],
+    "accent_cells": 3,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "runoff": {
+  "name": "RUNOFF",
+  "national": 258,
+  "slot": "mudkip",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a little round mud otter with rain running off its head in drops (FIRST RAIN)",
+  "note": "i2i 0.8: a little upright otter cub, round belly. Water drops drawn by hand running off its head. Back the front mirrored, face out.",
+  "failed": "front: the drops lost",
+  "front": "runoff_front_i2i_6121.png",
+  "back": "runoff_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,31,40,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.3,
+    "accent_clean_after": 0.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1298
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "22,35,29,54",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 9.0,
+    "accent_clean_after": 9.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1317
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     108,
+     157,
+     234
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "alluvium": {
+  "name": "ALLUVIUM",
+  "national": 259,
+  "slot": "marshtomp",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "an upright mud creature with its body in layered bands, oldest at the bottom (DEPOSIT)",
+  "note": "i2i 0.85: an upright mud creature with a crest, its belly in layered bands (the key kept). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "alluvium_front_i2i_6122.png",
+  "back": "alluvium_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,29,39,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1152
+   },
+   "front_accent_pct": 2.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "16,34,38,53",
+    "painted": "[4, 4, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1624
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     93,
+     153,
+     225
+    ],
+    "accent_cells": 3,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "delta": {
+  "name": "DELTA",
+  "national": 260,
+  "slot": "swampert",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a big river creature whose tail spreads into many branching channels (RIVERMOUTH)",
+  "note": "i2i 0.8: a big round river creature with a broad fanned tail; the branching channels did not survive (the fan stands in). Back the front mirrored, face out.",
+  "failed": "",
+  "front": "delta_front_i2i_6121.png",
+  "back": "delta_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,35,41,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.1,
+    "accent_clean_after": 2.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1588
+   },
+   "front_accent_pct": 1.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "19,32,30,51",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.3,
+    "accent_clean_after": 2.3,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1536
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     87,
+     135,
+     221
+    ],
+    "accent_cells": 2,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "smudge": {
+  "name": "SMUDGE",
+  "national": 261,
+  "slot": "poochyena",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a small hyena pup with a dark smear across its face (SMEAR)",
+  "note": "i2i 0.8: a scruffy hyena pup. A dark smear drawn by hand across its face. Back the front mirrored, face out.",
+  "failed": "front: the smudge lost",
+  "front": "smudge_front_i2i_6121.png",
+  "back": "smudge_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,31,35,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.1,
+    "accent_clean_after": 1.1,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1118
+   },
+   "front_accent_pct": 0.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,35,40,54",
+    "painted": "[5, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 992
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     102,
+     152,
+     194
+    ],
+    "accent_cells": 1,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "eclipse": {
+  "name": "ECLIPSE",
+  "national": 262,
+  "slot": "mightyena",
+  "gametype": "OPAQUE",
+  "type": "DARK",
+  "props": "a lean dark hound with a black disc and bright ring behind its head (TOTAL COVER)",
+  "note": "i2i 0.8: a lean dark hound. The black disc with a bright ring drawn by hand behind its head. Back the front mirrored, face out.",
+  "failed": "front: the eclipse disc lost",
+  "front": "eclipse_front_i2i_6121.png",
+  "back": "eclipse_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,29,42,37",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 661
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "20,31,30,39",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 712
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      197,
+      164,
+      205
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     89,
+     130,
+     237
+    ],
+    "accent_cells": 1,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "detour": {
+  "name": "DETOUR",
+  "national": 263,
+  "slot": "zigzagoon",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a raccoon with zigzag stripes running every which way (WANDERING)",
+  "note": "i2i 0.85: a raccoon with a ringed tail. Zigzag stripes drawn by hand across its body. Back the front mirrored, face out.",
+  "failed": "front: the zigzag stripes lost",
+  "front": "detour_front_i2i_6122.png",
+  "back": "detour_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,34,29,51",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1011
+   },
+   "front_accent_pct": 0.5,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "15,34,30,49",
+    "painted": "[5, 5, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 886
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     167,
+     219
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "unbranched": {
+  "name": "UNBRANCHED",
+  "national": 264,
+  "slot": "linoone",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a long low ferret with one straight stripe, carrying a bundle on its back (STRAIGHT)",
+  "note": "i2i 0.8: a long low ferret with a ringed tail, running. A straight stripe down its back and a small tied bundle drawn by hand. Back the front mirrored, face out.",
+  "failed": "front: the stripe and bundle lost",
+  "front": "unbranched_front_i2i_6121.png",
+  "back": "unbranched_back_i2i_6131.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "13,32,38,46",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.5,
+    "accent_clean_after": 6.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1002
+   },
+   "front_accent_pct": 0.3,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "13,33,33,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 3.3,
+    "accent_clean_after": 3.3,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 779
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     98,
+     167,
+     223
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     23
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}

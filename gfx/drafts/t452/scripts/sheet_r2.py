@@ -32,7 +32,9 @@ def on(im, bg, s):
 
 def panel(name, d, what):
     v = BY[name]; slot = v["constant"].lower(); typ = gbs.primary_type(slot)
-    rom = G + slot; npal = readpal(rom + "/normal.pal"); spal = readpal(rom + "/shiny.pal")
+    rom = G + slot
+    if not os.path.isdir(rom): rom = G + "nexus_" + name   # batch 13: THE NEXUS's eight live in nexus_<name>
+    npal = readpal(rom + "/normal.pal"); spal = readpal(rom + "/shiny.pal")
     nd = f"{T}/{d}/reduced/{name}_"
     def new(k):
         f = nd + k + ".png"; return f if os.path.exists(f) else None
