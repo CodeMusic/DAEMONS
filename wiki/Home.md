@@ -6,6 +6,10 @@ argument about consciousness.**
 Machines evolved into creatures. This is a game about what happened next, and it makes its argument in damage
 numbers rather than dialogue. Nothing in the game explains it; that is the rule the whole project runs on.
 
+**New to it? Start with [the player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf)**: every way to play, getting started,
+the world, the daemons and the types, the BENCHMARKS, the INDEX, the NOTEBOOK, PLAY, the GAME CORNER and the companion,
+and a glossary, in one PDF. Like this wiki, it says how things work, never where.
+
 > **Your daemons can leave the game.** The [companion](The-companion) lets your phone, a watch -- or most LilyGO and
 > M5Stack boards -- **host** a daemon you **SEND** away from your party. It lives there, you look after it, it helps
 > you get one thing done at a time, it sleeps and dreams when you do, and it comes home to your save with what it
@@ -61,10 +65,10 @@ Boy build still compiles and runs its vertical slice, and is kept as a reference
 **The whole game is playable**, both editions, start to finish. Every daemon carries a DAEMONS name and a DAEMONS
 INDEX entry; the world keeps time, turns through the seasons in two hemispheres, has weather that follows them, and
 follows the real calendar's holidays, and gives each edition an instrument to play ([The world](The-world)). The
-daemons are being drawn again in a style of their own -- about 265 so far.
+daemons are being drawn again in a style of their own -- about 349 so far.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.315.5**, from 2026-10-28. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.316.5**, from 2026-10-28. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 

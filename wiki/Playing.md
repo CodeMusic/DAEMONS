@@ -1,5 +1,7 @@
 # Playing
 
+*The whole of it, with the game's own screens: [the player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf) (PDF).*
+
 DAEMONS is released as **patches**, not as a game file. A patch is a small list of differences: applied to a
 *FireRed* or *LeafGreen* ROM that **you made from your own cartridge**, it turns that ROM into DAEMONS. You supply the
 ROM; the project supplies only its own work.

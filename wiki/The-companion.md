@@ -18,8 +18,13 @@ things done, it thrives.
    friendship and the hour, and the game finishes the change when the save is next loaded.
 
 In the game an AWAY daemon is shown washed out -- in the party, the PORT and its summary -- so it is never lost. It
-can't battle, be traded or be released while it is away, and if the companion can ever not be reached, the game can
-call it home on its own.
+can't battle, be traded over a cable or be released while it is away, and if the companion can ever not be reached, the
+game can call it home on its own.
+
+**Trading between players** happens there instead: a daemon away can be offered to another player at the hub's
+EXCHANGE -- traded, or lent -- and the swap is written into the save at SYNC. While it is on offer the game will not
+call it home. The daemon that arrives is finished when the save next loads: in the INDEX, first met in a trade, and
+evolved if it evolves by trade -- except a loan, which stays as it is and cannot be released or traded on.
 
 ## Where it can live
 

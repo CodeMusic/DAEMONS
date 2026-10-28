@@ -92,7 +92,7 @@ the time it is friendly, the full ramp at the most. People stay in colour; some 
 
 Every daemon was redrawn for DAEMONS and coloured by its type. Now they are being **drawn again**, in a style of their
 own: big, readable pixel portraits -- front, back and a party icon -- each with the one prop or shape that says what it
-is. They arrive in batches of about twenty; about 265 are in so far, and the rest are in progress.
+is. They arrive in batches of about twenty; about 349 are in so far, and the rest are in progress.
 
 **The daemon at the head of your party walks behind you** as a small picture of its own, at the player's size.
 
@@ -163,7 +163,12 @@ find out of issues and pull requests.
 A party daemon can be **SENT** out of the game to the companion, where your phone or a board hosts it -- and it comes
 home with what it learned. While it is away, the people who tend daemons between battles sometimes hear how it is
 doing: well, fine or quiet, never worse. A daemon can **evolve** while it is away, by the game's own rules, and the game
-finishes the change when it comes home; one line of daemons grows only that way. See [The companion](The-companion).
+finishes the change when it comes home; one line of daemons grows only that way.
+
+**Trading.** A daemon away can be traded with another player, or lent, through the companion. While it is on offer the
+game will not call it home; one that arrives is written into your INDEX, says it was first met in a trade, and makes
+a trade evolution on arrival -- unless it is only on loan: a borrowed daemon never evolves by trade, and cannot be
+released or traded on. See [The companion](The-companion).
 
 ## Not built yet
 
