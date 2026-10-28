@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.317 — 2026-10-28
+
+### The two books, asked: one by reason, one by instinct (C-209, C-229, C-230)
+
+- ***4.38 (the user, by multiple choice)***: **on the companion either book, once held, can be asked anything** -- *the GUIDE answers as REASON would, from the page nearest the question; THE SUBTLE LAYER as INSTINCT would, one line from its nearest page and a question back that turns the asker to what they notice; TWO VOICES (the book's own entry) a mode answered only in the asking voice.* ***Player-facing words never say logic and intuition*** -- *LOGIC is a type (9.10).* **Each book has its part of the day**: *THE SUBTLE LAYER the centre, word and note; the GUIDE the virtue over its shadow, in some answers.* **A daily question from THE SUBTLE LAYER, kept in a journal with the day and the centre** (*TRUE OR NOT*). *The book teaches developing a trainer's own potential from inside its perspective, and never vouches that a read is true (4.33).*
+- ***4.36***: *a pointer to it.* ***Settled***: *the entry.*
+
 ## v11.316 — 2026-10-28
 
 ### The daemons redrawn, with charm (T-452, T-464)

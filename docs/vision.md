@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.316**
+**A total conversion — the living design bible, v11.317**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4809,6 +4809,7 @@ take off.*
 - ***The world shows understanding as a faded print*** (T-317, ***decided by the user 2026-10-02***, from three mock-ups): **every tileset colour is drawn part of the way to its own grey -- 40% while four or more understandings are still to come, 18% while one to three are, as painted once all seven are held.** *Tiles only: people and daemons keep their full colour, so the player and their daemons stand a little clearer than the world until it catches up. Never a count, and the same rule as the TOWN MAP's and the INDEX's sharpening -- "was it always like that, or did it change?" HALFTONE's grey outranks it. Rejected: fewer inks (it banded the paving cyan) and thin light (it read as dusk).*
 - ***The USER card's BENCHMARKS*** (T-272): **R turns the card's figures into the eight MARKS, each with what it certifies** — *the concept of 5's table said without its name, DRAFT; one not yet held says so.* ***There is no UNDERSTANDINGS tab***: *a list of them would be the count T-252 rules out, and the margins already hold them.*
 - *T-269's seven-day table is built as 9.21's week: the name on leaving a building, the note at the terminal, the colour on the CHECKPOINT's trim.*
+- ***Asked, it answers as REASON would*** (*C-209, C-229, the user 2026-10-28*): **on the companion the GUIDE, once held, answers a question from the page nearest it, and now and then sets its answer in the day's virtue over its shadow** -- *its sibling answers as INSTINCT would; 4.38's last part.*
 
 ### 4.37 The second joining — a merger that holds both (T-457, the user, 2026-10-26)
 
@@ -4920,6 +4921,15 @@ take off.*
 | **The CHAMPION** | *"I thought it would be you."* | *Before you can.* |
 
 **No feeling is named in any of them.** ***Nobody says what the purple is.***
+
+#### Asked, the two books answer differently (C-209, C-229, C-230, the user, 2026-10-28)
+
+***The GUIDE reasons; THE SUBTLE LAYER notices.*** **On the companion either book, once held, can be asked anything** -- *typed, held and spoken in the app, or by voice on the Ultra* -- **and the two answer as the player's own two ways from the opening do (9.10): the GUIDE as REASON would, from the page nearest the question; THE SUBTLE LAYER as INSTINCT would, one line from its nearest page and then a question back that turns the asker to what they notice.** ***Neither is the careful one*** (*9.10's own rule*), ***and where players read, the two are never called logic and intuition***: **LOGIC is a type's name, and naming one book after a column of the chart would say which of them loses** (*9.10's amendment of 2026-09-06*).
+
+- ***THE SUBTLE LAYER teaches developing a trainer's own potential, from inside the book's perspective*** -- *a handbook of practice, as above, never of cosmology; its answers never vouch that a read is true (4.33): the log decides.*
+- ***TWO VOICES becomes a way to ask it***: **the book's own entry -- "one says a thing, the other asks what it means" -- is a mode of its own**, *answered only in the asking voice, printed faint, a clarifying question each turn.*
+- ***Each book has its part of the day*** (*9.21's week*): **THE SUBTLE LAYER the centre, the day's word and its note; the GUIDE the virtue said over its shadow** -- *woven into some answers, not every one.*
+- ***Once a day THE SUBTLE LAYER asks a question of its own*** (*THE ROUTINE's moments, set in the day's centre, word and note*), **and what is answered is kept in a journal "with the day and the centre"**, *as TRUE OR NOT tells a trainer to keep a log.*
 
 ## 5. THE BENCHMARKS
 
@@ -8842,6 +8852,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **The two books asked: the GUIDE reasons, THE SUBTLE LAYER notices (C-209, C-229, C-230, 2026-10-28)** — either, once held, answered on the companion: the GUIDE as REASON would, from its page; THE SUBTLE LAYER as INSTINCT would, a line from its page and a question back, with TWO VOICES a mode of its own; never called logic and intuition where players read (LOGIC is a type, 9.10); each its part of the day -- the centre, word and note; the virtue over its shadow -- and a daily question kept in a journal with the day and the centre (4.36, 4.38)
 - **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
 - **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)
 - **THE SUBTLE LAYER gets its section: the book, THE THREE values and what the player notices (T-423, T-454, T-459, recorded 2026-10-28)** — a handbook of practice, found in BRAZEN; three battle-only values that wake with it; once held, the daemon notices first, reads and leans are logged and the log decides, and four people's words carry a line beneath, all in CONTEXT's purple, which marks the noticing and never a feeling (4.38)
