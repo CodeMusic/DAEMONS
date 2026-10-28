@@ -1,0 +1,1682 @@
+{
+ "hashseed": {
+  "name": "HASHSEED",
+  "national": 265,
+  "slot": "wurmple",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a little caterpillar with a seed on its tail, criss-cross marked (UNCHOSEN NUMBER)",
+  "note": "t2i 6201: a chubby caterpillar with a segmented shell back and two antennae. The criss-cross seed on its tail drawn by hand (no draft drew one).",
+  "failed": "front: the seed lost",
+  "front": "src/hashseed_front_6201_unframed.png",
+  "back": "hashseed_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,34,35,53",
+    "painted": "[6, 6, 6, 6]"
+   },
+   "front_cap": {
+    "accent_clean_before": 42.6,
+    "accent_clean_after": 2.0,
+    "greyed_px": 789,
+    "streak_px": 24,
+    "creature_px": 1940
+   },
+   "front_accent_pct": 0.7,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "27,33,52,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.6,
+    "accent_clean_after": 0.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1063
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     92,
+     151,
+     224
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "iftrue": {
+  "name": "IFTRUE",
+  "national": 266,
+  "slot": "silcoon",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a cocoon sealed in pale silk, a small tick mark on it (CONDITION HELD)",
+  "note": "i2i 0.8: a small face peeking from a hood of pale silk. The tick mark drawn by hand on the silk.",
+  "failed": "front: the tick mark lost",
+  "front": "iftrue_front_i2i_6221.png",
+  "back": "iftrue_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "11,34,47,56",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 2662
+   },
+   "front_accent_pct": 0.9,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "21,25,37,33",
+    "painted": "[3, 3, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 223
+   },
+   "back_accent_pct": 0.3,
+   "back_colours": 9,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     118,
+     177,
+     229
+    ],
+    "accent_cells": 2,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "thencase": {
+  "name": "THENCASE",
+  "national": 267,
+  "slot": "beautifly",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a bright butterfly whose wings carry forward-pointing arrow marks (EXPECTED PATH)",
+  "note": "i2i 0.85: a chubby butterfly with big pale wings. Forward-pointing arrow marks drawn by hand on the wings.",
+  "failed": "front: the arrow marks lost",
+  "front": "thencase_front_i2i_6222.png",
+  "back": "thencase_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,31,49,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1169
+   },
+   "front_accent_pct": 1.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "33,30,45,38",
+    "painted": "[4, 5, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1103
+   },
+   "back_accent_pct": 0.8,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     129,
+     189,
+     233
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     18
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "iffalse": {
+  "name": "IFFALSE",
+  "national": 268,
+  "slot": "cascoon",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a cocoon sealed in dark silk, one eye peeking out (CONDITION FAILED)",
+  "note": "i2i 0.85: a dark silk cocoon with one big eye peeking out, as asked.",
+  "failed": "",
+  "front": "iffalse_front_i2i_6222.png",
+  "back": "iffalse_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,34,40,52",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.2,
+    "accent_clean_after": 6.2,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 948
+   },
+   "front_accent_pct": 6.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "22,34,42,55",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1188
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     106,
+     145,
+     203
+    ],
+    "accent_cells": 9,
+    "size": [
+     19,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "otherwise": {
+  "name": "OTHERWISE",
+  "national": 269,
+  "slot": "dustox",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a night moth whose feathery antennae end in little lights (OWN WAY)",
+  "note": "i2i 0.8: a chubby moth with round wings and red antennae. Small pale lights drawn by hand at the antenna tips.",
+  "failed": "front: the antenna lights lost",
+  "front": "otherwise_front_i2i_6221.png",
+  "back": "otherwise_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,34,34,49",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.6,
+    "accent_clean_after": 12.6,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1346
+   },
+   "front_accent_pct": 12.4,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "9,30,49,40",
+    "painted": "[4, 5, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 970
+   },
+   "back_accent_pct": 8.8,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     173,
+     227
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     23
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "tempo": {
+  "name": "TEMPO",
+  "national": 270,
+  "slot": "lotad",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a little duckweed creature with a lily pad on its head, drifting (ONE STEP A PULSE)",
+  "note": "t2i 6201: a round creature with a lily pad on its head, sitting on a second pad (kept: it drifts on the water).",
+  "failed": "",
+  "front": "src/tempo_front_6201_unframed.png",
+  "back": "tempo_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "17,34,39,54",
+    "painted": "[3, 5, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 56.7,
+    "accent_clean_after": 13.6,
+    "greyed_px": 925,
+    "streak_px": 18,
+    "creature_px": 2148
+   },
+   "front_accent_pct": 12.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,35,42,51",
+    "painted": "[3, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 36.0,
+    "accent_clean_after": 14.2,
+    "greyed_px": 335,
+    "streak_px": 13,
+    "creature_px": 1534
+   },
+   "back_accent_pct": 11.9,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     101,
+     153,
+     228
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "cadence": {
+  "name": "CADENCE",
+  "national": 271,
+  "slot": "lombre",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a lanky pond imp with a lily pad cap, mid-stride (SLOWING STEPS)",
+  "note": "i2i 0.85: a lanky imp with a lily pad cap, standing; the long stride did not survive (left as drawn).",
+  "failed": "",
+  "front": "cadence_front_i2i_6222.png",
+  "back": "cadence_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "29,31,41,43",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 13.5,
+    "accent_clean_after": 13.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1267
+   },
+   "front_accent_pct": 11.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,32,39,40",
+    "painted": "[4, 3, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 13.9,
+    "accent_clean_after": 13.9,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 790
+   },
+   "back_accent_pct": 10.9,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     100,
+     149,
+     190
+    ],
+    "accent_cells": 15,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "cyclical": {
+  "name": "CYCLICAL",
+  "national": 272,
+  "slot": "ludicolo",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a dancing pond creature in a big lily pad sombrero (DANCE)",
+  "note": "i2i 0.85: a dancing pond creature in a wide leaf sombrero, arms out, one foot up.",
+  "failed": "",
+  "front": "cyclical_front_i2i_6222.png",
+  "back": "cyclical_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,29,38,47",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 69.1,
+    "accent_clean_after": 3.7,
+    "greyed_px": 648,
+    "streak_px": 22,
+    "creature_px": 991
+   },
+   "front_accent_pct": 1.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "27,34,35,55",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 58.2,
+    "accent_clean_after": 13.4,
+    "greyed_px": 664,
+    "streak_px": 20,
+    "creature_px": 1483
+   },
+   "back_accent_pct": 1.8,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     85,
+     144,
+     211
+    ],
+    "accent_cells": 3,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "warmup": {
+  "name": "WARMUP",
+  "national": 273,
+  "slot": "seedot",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a little acorn rodent hanging from a twig by one paw (PRACTICE)",
+  "note": "i2i 0.85: a small mouse sitting on its twig (today's pose); hanging by one paw did not survive (left as drawn).",
+  "failed": "",
+  "front": "warmup_front_i2i_6222.png",
+  "back": "warmup_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "16,38,22,59",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.8,
+    "accent_clean_after": 10.8,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1187
+   },
+   "front_accent_pct": 10.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "16,36,23,54",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 10.6,
+    "accent_clean_after": 10.6,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 855
+   },
+   "back_accent_pct": 9.7,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     103,
+     161,
+     216
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "shaping": {
+  "name": "SHAPING",
+  "national": 274,
+  "slot": "nuzleaf",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a sly chipmunk holding up the acorn it earned (REWARD)",
+  "note": "t2i 6202: a sly chipmunk holding up a small treat in both paws.",
+  "failed": "",
+  "front": "src/shaping_front_6202_unframed.png",
+  "back": "shaping_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,35,34,54",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 65.1,
+    "accent_clean_after": 4.3,
+    "greyed_px": 906,
+    "streak_px": 28,
+    "creature_px": 1491
+   },
+   "front_accent_pct": 4.0,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "32,36,50,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 16.4,
+    "accent_clean_after": 11.2,
+    "greyed_px": 56,
+    "streak_px": 20,
+    "creature_px": 1085
+   },
+   "back_accent_pct": 3.8,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     160,
+     221
+    ],
+    "accent_cells": 5,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "policy": {
+  "name": "POLICY",
+  "national": 275,
+  "slot": "shiftry",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a squirrel elder standing firm, holding a big leaf fan (SAME IN EVERY WIND)",
+  "note": "i2i 0.85: a squirrel elder with a huge tail, one hand out. The leaf fan drawn by hand in that hand.",
+  "failed": "front: the leaf fan lost",
+  "front": "policy_front_i2i_6222.png",
+  "back": "policy_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,35,32,57",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.7,
+    "accent_clean_after": 12.7,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2082
+   },
+   "front_accent_pct": 12.4,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "30,35,42,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 2058
+   },
+   "back_accent_pct": 10.4,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     95,
+     184,
+     230
+    ],
+    "accent_cells": 9,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "prefork": {
+  "name": "PREFORK",
+  "national": 290,
+  "slot": "nincada",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a burrowing beetle nymph holding three identical eggs (COPIES IN WAITING)",
+  "note": "i2i 0.8: a round beetle nymph with clear wings, a row of round eggs under it.",
+  "failed": "",
+  "front": "prefork_front_i2i_6221.png",
+  "back": "prefork_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,29,48",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 13.3,
+    "accent_clean_after": 13.3,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1272
+   },
+   "front_accent_pct": 12.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "19,38,29,52",
+    "painted": "[4, 3, 3, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.8,
+    "accent_clean_after": 5.8,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 1024
+   },
+   "back_accent_pct": 11.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     206,
+     234
+    ],
+    "accent_cells": 12,
+    "size": [
+     28,
+     21
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "burstmode": {
+  "name": "BURSTMODE",
+  "national": 291,
+  "slot": "ninjask",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a darting hornet with blurred wings and speed lines (BURST)",
+  "note": "i2i 0.8: a small fly with clear wings. Speed lines drawn by hand behind it.",
+  "failed": "front: the speed lines lost",
+  "front": "burstmode_front_i2i_6221.png",
+  "back": "burstmode_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,31,38,39",
+    "painted": "[3, 4, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 4.3,
+    "accent_clean_after": 4.3,
+    "greyed_px": 0,
+    "streak_px": 14,
+    "creature_px": 506
+   },
+   "front_accent_pct": 3.0,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "28,32,34,45",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 748
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     180,
+     219
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     15
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "defunct": {
+  "name": "DEFUNCT",
+  "national": 292,
+  "slot": "shedinja",
+  "gametype": "SWARM",
+  "type": "BUG",
+  "props": "a hollow bug husk, a split down its back and nothing inside (HUSK)",
+  "note": "i2i 0.85: a round bug husk with wings. A dark open split drawn by hand down its body, the eyes blanked.",
+  "failed": "front: the split lost",
+  "front": "defunct_front_i2i_6222.png",
+  "back": "defunct_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,31,37,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1138
+   },
+   "front_accent_pct": 0.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "21,33,29,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 5.8,
+    "accent_clean_after": 5.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1060
+   },
+   "back_accent_pct": 0.4,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     104,
+     167,
+     225
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     22
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "shortjump": {
+  "name": "SHORTJUMP",
+  "national": 276,
+  "slot": "taillow",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a little swallow chick mid-hop, both feet off the ground (NEAR HOP)",
+  "note": "t2i 6201: a round swallow chick; the hop did not survive (left as drawn).",
+  "failed": "",
+  "front": "src/shortjump_front_6201_unframed.png",
+  "back": "shortjump_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "13,35,40,57",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 10.1,
+    "accent_clean_after": 10.1,
+    "greyed_px": 0,
+    "streak_px": 21,
+    "creature_px": 2035
+   },
+   "front_accent_pct": 8.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "40,39,48,59",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.0,
+    "accent_clean_after": 1.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1174
+   },
+   "back_accent_pct": 4.6,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     85,
+     153,
+     230
+    ],
+    "accent_cells": 6,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "longjump": {
+  "name": "LONGJUMP",
+  "national": 277,
+  "slot": "swellow",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a swallow with a long forked tail and a little house locket on its chest (WAY HOME)",
+  "note": "i2i 0.85: a swallow in flight with a forked tail. The house locket drawn by hand at its neck.",
+  "failed": "front: the locket lost",
+  "front": "longjump_front_i2i_6222.png",
+  "back": "longjump_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,28,33,43",
+    "painted": "[5, 5, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 8.9,
+    "accent_clean_after": 8.9,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 874
+   },
+   "front_accent_pct": 6.9,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "36,27,48,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.8,
+    "accent_clean_after": 1.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1005
+   },
+   "back_accent_pct": 3.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     175,
+     230
+    ],
+    "accent_cells": 6,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "sparring": {
+  "name": "SPARRING",
+  "national": 285,
+  "slot": "shroomish",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a little rabbit sparring in boxing gloves (EVERY ROUND)",
+  "note": "i2i 0.85: a round grey rabbit with two boxing gloves up, as asked.",
+  "failed": "",
+  "front": "sparring_front_i2i_6222.png",
+  "back": "sparring_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "28,31,44,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.2,
+    "accent_clean_after": 2.2,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 920
+   },
+   "front_accent_pct": 4.4,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "24,24,40,38",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 7.1,
+    "accent_clean_after": 7.1,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 624
+   },
+   "back_accent_pct": 3.2,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     178,
+     226
+    ],
+    "accent_cells": 6,
+    "size": [
+     21,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "checkmate": {
+  "name": "CHECKMATE",
+  "national": 286,
+  "slot": "breloom",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a tall boxing kangaroo with a checkerboard belly (FORCED END)",
+  "note": "i2i 0.85: a lean kangaroo boxer with gloves. A checkerboard drawn by hand on its belly.",
+  "failed": "front: the checkerboard lost",
+  "front": "checkmate_front_i2i_6222.png",
+  "back": "checkmate_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "26,35,34,57",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 42.7,
+    "accent_clean_after": 13.3,
+    "greyed_px": 349,
+    "streak_px": 20,
+    "creature_px": 1186
+   },
+   "front_accent_pct": 13.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,35,36,58",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 26.6,
+    "accent_clean_after": 11.0,
+    "greyed_px": 173,
+    "streak_px": 16,
+    "creature_px": 1107
+   },
+   "back_accent_pct": 6.3,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     160,
+     224
+    ],
+    "accent_cells": 8,
+    "size": [
+     18,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "hashcode": {
+  "name": "HASHCODE",
+  "national": 327,
+  "slot": "spinda",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a panda cub with unique irregular spots all over (SPOTS)",
+  "note": "t2i 6201: a sitting panda cub with irregular grey patches, as asked.",
+  "failed": "",
+  "front": "src/hashcode_front_6201_unframed.png",
+  "back": "hashcode_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,32,42,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1861
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "35,29,47,41",
+    "painted": "[5, 5, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 689
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     145,
+     197,
+     240
+    ],
+    "accent_cells": 0,
+    "size": [
+     25,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "tangent": {
+  "name": "TANGENT",
+  "national": 278,
+  "slot": "wingull",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a gull flying with an arrow crest pointing its heading (HEADING)",
+  "note": "i2i 0.85: a gull with wings raised. An arrow crest drawn by hand on its head.",
+  "failed": "front: the arrow crest lost",
+  "front": "tangent_front_i2i_6222.png",
+  "back": "tangent_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,35,39,53",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 12.9,
+    "accent_clean_after": 12.9,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1297
+   },
+   "front_accent_pct": 7.8,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "25,32,53,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.9,
+    "accent_clean_after": 4.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1133
+   },
+   "back_accent_pct": 3.4,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     148,
+     188,
+     233
+    ],
+    "accent_cells": 5,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "jacobian": {
+  "name": "JACOBIAN",
+  "national": 279,
+  "slot": "pelipper",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a pelican whose bill pouch holds many little arrows pointing every way (EVERY SLOPE)",
+  "note": "t2i 6201: a pelican with a big bill. Little arrows drawn by hand in its bill pouch.",
+  "failed": "front: the arrows lost",
+  "front": "src/jacobian_front_6201_unframed.png",
+  "back": "jacobian_back_i2i_6231.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "31,34,38,56",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 16.9,
+    "accent_clean_after": 4.6,
+    "greyed_px": 174,
+    "streak_px": 21,
+    "creature_px": 1420
+   },
+   "front_accent_pct": 5.4,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "29,34,35,57",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1363
+   },
+   "back_accent_pct": 5.4,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     100,
+     165,
+     235
+    ],
+    "accent_cells": 2,
+    "size": [
+     24,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}

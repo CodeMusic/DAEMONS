@@ -1,0 +1,150 @@
+{
+ "_": "batch 14 (2026-10-28), the charm recipe (dir r, seed 6200), chosen by eye on cand/grp1-4.png. Seeds: t2i chibi fronts 6201/6202 (grey grounds, painted white by prep14.py), i2i from today's front 0.8 = 6221, 0.85 = 6222, one back from today's back 0.66 = 6231, one chibi icon 6241. Icons 'derived' = icon3 from the hand front. Every back is the front mirrored, face out (hand_b14.py).",
+ "hashseed": {
+  "front": "src/hashseed_front_6201_unframed.png",
+  "icon": "derived",
+  "back": "hashseed_back_i2i_6231.png",
+  "note": "t2i 6201: a chubby caterpillar with a segmented shell back and two antennae. The criss-cross seed on its tail drawn by hand (no draft drew one).",
+  "failed": "front: the seed lost"
+ },
+ "iftrue": {
+  "front": "iftrue_front_i2i_6221.png",
+  "icon": "derived",
+  "back": "iftrue_back_i2i_6231.png",
+  "note": "i2i 0.8: a small face peeking from a hood of pale silk. The tick mark drawn by hand on the silk.",
+  "failed": "front: the tick mark lost"
+ },
+ "thencase": {
+  "front": "thencase_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "thencase_back_i2i_6231.png",
+  "note": "i2i 0.85: a chubby butterfly with big pale wings. Forward-pointing arrow marks drawn by hand on the wings.",
+  "failed": "front: the arrow marks lost"
+ },
+ "iffalse": {
+  "front": "iffalse_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "iffalse_back_i2i_6231.png",
+  "note": "i2i 0.85: a dark silk cocoon with one big eye peeking out, as asked.",
+  "failed": ""
+ },
+ "otherwise": {
+  "front": "otherwise_front_i2i_6221.png",
+  "icon": "derived",
+  "back": "otherwise_back_i2i_6231.png",
+  "note": "i2i 0.8: a chubby moth with round wings and red antennae. Small pale lights drawn by hand at the antenna tips.",
+  "failed": "front: the antenna lights lost"
+ },
+ "tempo": {
+  "front": "src/tempo_front_6201_unframed.png",
+  "icon": "derived",
+  "back": "tempo_back_i2i_6231.png",
+  "note": "t2i 6201: a round creature with a lily pad on its head, sitting on a second pad (kept: it drifts on the water).",
+  "failed": ""
+ },
+ "cadence": {
+  "front": "cadence_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "cadence_back_i2i_6231.png",
+  "note": "i2i 0.85: a lanky imp with a lily pad cap, standing; the long stride did not survive (left as drawn).",
+  "failed": ""
+ },
+ "cyclical": {
+  "front": "cyclical_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "cyclical_back_i2i_6231.png",
+  "note": "i2i 0.85: a dancing pond creature in a wide leaf sombrero, arms out, one foot up.",
+  "failed": ""
+ },
+ "warmup": {
+  "front": "warmup_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "warmup_back_i2i_6231.png",
+  "note": "i2i 0.85: a small mouse sitting on its twig (today's pose); hanging by one paw did not survive (left as drawn).",
+  "failed": ""
+ },
+ "shaping": {
+  "front": "src/shaping_front_6202_unframed.png",
+  "icon": "derived",
+  "back": "shaping_back_i2i_6231.png",
+  "note": "t2i 6202: a sly chipmunk holding up a small treat in both paws.",
+  "failed": ""
+ },
+ "policy": {
+  "front": "policy_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "policy_back_i2i_6231.png",
+  "note": "i2i 0.85: a squirrel elder with a huge tail, one hand out. The leaf fan drawn by hand in that hand.",
+  "failed": "front: the leaf fan lost"
+ },
+ "prefork": {
+  "front": "prefork_front_i2i_6221.png",
+  "icon": "derived",
+  "back": "prefork_back_i2i_6231.png",
+  "note": "i2i 0.8: a round beetle nymph with clear wings, a row of round eggs under it.",
+  "failed": ""
+ },
+ "burstmode": {
+  "front": "burstmode_front_i2i_6221.png",
+  "icon": "derived",
+  "back": "burstmode_back_i2i_6231.png",
+  "note": "i2i 0.8: a small fly with clear wings. Speed lines drawn by hand behind it.",
+  "failed": "front: the speed lines lost"
+ },
+ "defunct": {
+  "front": "defunct_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "defunct_back_i2i_6231.png",
+  "note": "i2i 0.85: a round bug husk with wings. A dark open split drawn by hand down its body, the eyes blanked.",
+  "failed": "front: the split lost"
+ },
+ "shortjump": {
+  "front": "src/shortjump_front_6201_unframed.png",
+  "icon": "derived",
+  "back": "shortjump_back_i2i_6231.png",
+  "note": "t2i 6201: a round swallow chick; the hop did not survive (left as drawn).",
+  "failed": ""
+ },
+ "longjump": {
+  "front": "longjump_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "longjump_back_i2i_6231.png",
+  "note": "i2i 0.85: a swallow in flight with a forked tail. The house locket drawn by hand at its neck.",
+  "failed": "front: the locket lost"
+ },
+ "sparring": {
+  "front": "sparring_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "sparring_back_i2i_6231.png",
+  "note": "i2i 0.85: a round grey rabbit with two boxing gloves up, as asked.",
+  "failed": ""
+ },
+ "checkmate": {
+  "front": "checkmate_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "checkmate_back_i2i_6231.png",
+  "note": "i2i 0.85: a lean kangaroo boxer with gloves. A checkerboard drawn by hand on its belly.",
+  "failed": "front: the checkerboard lost"
+ },
+ "hashcode": {
+  "front": "src/hashcode_front_6201_unframed.png",
+  "icon": "derived",
+  "back": "hashcode_back_i2i_6231.png",
+  "note": "t2i 6201: a sitting panda cub with irregular grey patches, as asked.",
+  "failed": ""
+ },
+ "tangent": {
+  "front": "tangent_front_i2i_6222.png",
+  "icon": "derived",
+  "back": "tangent_back_i2i_6231.png",
+  "note": "i2i 0.85: a gull with wings raised. An arrow crest drawn by hand on its head.",
+  "failed": "front: the arrow crest lost"
+ },
+ "jacobian": {
+  "front": "src/jacobian_front_6201_unframed.png",
+  "icon": "derived",
+  "back": "jacobian_back_i2i_6231.png",
+  "note": "t2i 6201: a pelican with a big bill. Little arrows drawn by hand in its bill pouch.",
+  "failed": "front: the arrows lost"
+ }
+}
