@@ -11,7 +11,7 @@ Machines evolved into creatures. This is a game about what happened next, and it
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.315.4**
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.315.5**
 (2026-10-28); each one on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
 *LeafGreen* 1.0 and Rev 1 — and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing,
 building and the two editions.
@@ -87,7 +87,7 @@ BLANCHE TOWN to the REVIEW BOARD.
 three of them a line that grows only while carried on the companion; the INDEX's 398 entries are rewritten, and the
 two editions say something different about every one. 1,464 of the original's 1,469 sprites are redrawn, daemons
 coloured by their type — and the daemons are now being **drawn again**, as big, readable pixel portraits with a party
-icon each, in batches of about twenty: about two hundred so far, the rest in progress. The daemon that follows you
+icon each, in batches of about twenty: about 265 so far, the rest in progress. The daemon that follows you
 walks as a small picture of its own, at the player's size. The landmarks the story turns on are getting art drawn from
 the story, and the region map has a look of its own: paper and ink, the sea a shuffle of bits and notes. The type chart is in and complete, the routes
 carry both their names, several towns have their own music, and the story's documents are where they belong — a

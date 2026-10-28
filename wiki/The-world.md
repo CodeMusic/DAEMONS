@@ -92,7 +92,7 @@ the time it is friendly, the full ramp at the most. People stay in colour; some 
 
 Every daemon was redrawn for DAEMONS and coloured by its type. Now they are being **drawn again**, in a style of their
 own: big, readable pixel portraits -- front, back and a party icon -- each with the one prop or shape that says what it
-is. They arrive in batches of about twenty; about two hundred are in so far, and the rest are in progress.
+is. They arrive in batches of about twenty; about 265 are in so far, and the rest are in progress.
 
 **The daemon at the head of your party walks behind you** as a small picture of its own, at the player's size.
 
