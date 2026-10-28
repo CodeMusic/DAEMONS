@@ -313,3 +313,27 @@ Batch 17 (HONEYTRAP to SHALLOWS) on the recommended choices; questions in gfx/dr
 Batch 17 (HONEYTRAP to SHALLOWS) on the recommended choices; questions in gfx/drafts/t452/v/questions.md. v11.316.5.
 
 ![28Oct2026 - T452 - batch 17 daemons - 52](28Oct2026%20-%20T452%20-%20batch%2017%20daemons%20-%2052.png)
+
+### 28Oct2026 - T452 - batch 18 daemons - 53
+
+Batch 18 (REDACTED to EPIPHANY) on the recommended choices; OVERLOADED's art now reaches the ROM; questions in gfx/drafts/t452/w/questions.md. v11.316.6.
+
+![28Oct2026 - T452 - batch 18 daemons - 53](28Oct2026%20-%20T452%20-%20batch%2018%20daemons%20-%2053.png)
+
+### 28Oct2026 - T452 - batch 18 daemons - 54
+
+Batch 18 (REDACTED to EPIPHANY) on the recommended choices; OVERLOADED's art now reaches the ROM; questions in gfx/drafts/t452/w/questions.md. v11.316.6.
+
+![28Oct2026 - T452 - batch 18 daemons - 54](28Oct2026%20-%20T452%20-%20batch%2018%20daemons%20-%2054.png)
+
+### 28Oct2026 - T452 - batch 18 daemons - 55
+
+Batch 18 (REDACTED to EPIPHANY) on the recommended choices; OVERLOADED's art now reaches the ROM; questions in gfx/drafts/t452/w/questions.md. v11.316.6.
+
+![28Oct2026 - T452 - batch 18 daemons - 55](28Oct2026%20-%20T452%20-%20batch%2018%20daemons%20-%2055.png)
+
+### 28Oct2026 - T452 - batch 18 daemons - 56
+
+Batch 18 (REDACTED to EPIPHANY) on the recommended choices; OVERLOADED's art now reaches the ROM; questions in gfx/drafts/t452/w/questions.md. v11.316.6.
+
+![28Oct2026 - T452 - batch 18 daemons - 56](28Oct2026%20-%20T452%20-%20batch%2018%20daemons%20-%2056.png)
