@@ -169,7 +169,10 @@ def species_table():
             "types": types.get(sp, []),
             "category": cat.get(sp, cat.get(by_slot.get(sp))),
             "entry": {ed: texts[ed].get(sym) for ed in ("CONTENT", "CONTEXT")},
-            "art": {view: ("gfx/daemons/%s_%s.png" % (stem, view)) if ("%s_%s.png" % (stem, view)) in art else None
+            "art": {view: ("gfx/daemons/%s_%s.png" % (stem, view)) if ("%s_%s.png" % (stem, view)) in art
+                    #  SYMBOL's 28 forms live in gfx/daemons/symbol/<form>_*.png (T-452); its A form stands for it
+                    else ("gfx/daemons/symbol/a_%s.png" % view) if stem == "symbol" and
+                    os.path.exists(os.path.join(ROOT, "gfx/daemons/symbol/a_%s.png" % view)) else None
                     for view in ("front", "back")},
             "bodyType": body.get(sp),                  # C-18: the type its palette ramp was built from
             "streaks": sp in streaky,                  # C-18: palette 11..14 carry its four routines' streaks
@@ -248,6 +251,8 @@ def party_art(species):
         if not os.path.isdir(d):        # T-395: a NEXUS resident's folder is named for it (nexus_reflection)
             d = os.path.join(GBA, "graphics/pokemon", "nexus_" + row["name"].lower())
         tiles, pal = os.path.join(d, "front.4bpp"), os.path.join(d, "normal.gbapal")
+        if not os.path.exists(tiles) and os.path.exists(os.path.join(d, "a", "front.4bpp")):
+            tiles = os.path.join(d, "a", "front.4bpp")      # SYMBOL (UNOWN): its A form, one palette for all 28
         if not (os.path.exists(tiles) and os.path.exists(pal)):
             continue
         raw, praw = open(tiles, "rb").read(), open(pal, "rb").read()
@@ -264,6 +269,8 @@ def party_art(species):
                     px[(t % 8) * 8 + x, (t // 8) * 8 + y] = (b >> 4) if x & 1 else b & 15
         im.putpalette(colours + [0] * (768 - len(colours)))
         name = os.path.basename(row["art"]["front"]).replace("_front.png", "") + ".png"
+        if "/symbol/" in row["art"]["front"]:
+            name = "symbol.png"
         out[name] = im
     return out
 
@@ -1246,6 +1253,8 @@ def index_cards_table(species, margins, marks, guide):
             d = os.path.join(GBA, "graphics/pokemon", "nexus_" + row["name"].lower())
         if not (os.path.exists(os.path.join(d, "front.4bpp")) and os.path.exists(os.path.join(d, "normal.gbapal"))):
             return None
+        if "/symbol/" in row["art"]["front"]:
+            return "art/symbol.png"
         return "art/" + os.path.basename(row["art"]["front"]).replace("_front.png", "") + ".png"
     #  the understandings: marks.json's, with the GUIDE margin each writes in (book_reader.c sGuideMarginNotes), how it
     #  is arrived at (sUnderstandingConditions) and the balance written under it once its MARK is held (T-410)
