@@ -28,13 +28,20 @@ WHAT THIS WRITES
   front_def.png, back_def.png 64x128: the hooded PROTEUS on top, and CONTEXT's SHELL below -- the hood drawn shut and
                               curled like a cocoon, redrawn at 512 from T-439's own deoxys_d frame (gfx/drafts/t440/
                               make2.sh; the picks are gfx/daemons/proteus_front_defense.png and _back_defense.png).
-  icon_attack.png             two 32x32 frames, the idle bob: ALL EDGES (gfx/daemons/proteus_front_attack.png).
-  icon_defense.png            the same, the SHELL.
+  icon_attack.png             two 32x32 frames, the idle bob: ALL EDGES -- DRAWN since T-452 (gfx/daemons/
+                              proteus_icon_attack.png, icon3's, copied index for index as gbasprite.drawn_icon copies
+                              proteus_icon.png into icon.png); derived from proteus_front_attack.png only if it is missing.
+  icon_defense.png            the same, the SHELL (gfx/daemons/proteus_icon_defense.png).
 
 Every view draws through PROTEUS's one species palette (normal.pal, which gbasprite.py writes from the front), so
-the shell's pixels are mapped onto it exactly as gbasprite maps a back onto its front (place_rich's `shared`). The
-icons are reduced from the same drawings by gbasprite's own derive_icon, onto icon palette 0 -- the one
-gMonIconPaletteIndices gives SPECIES_DEOXYS -- so the creature in battle and in the menu is the same drawing.
+the shell's pixels are mapped onto it exactly as gbasprite maps a back onto its front (place_rich's `shared`).
+
+THE ICONS (T-452 forms, the user 2026-10-28: PROTEUS's three forms redrawn). icon.png is gbasprite's, from the drawn
+gfx/daemons/proteus_icon.png; the two form icons are drawn the same way (icon3, from each form's front) and copied
+here. All three must sit on ONE shared icon palette, the one gMonIconPaletteIndices gives SPECIES_DEOXYS (ICON_PALETTE,
+1 since T-452: icon3's best fit for PSYCHIC) -- the species has one index, and a form icon on another palette would draw
+in the wrong colours. A drawn icon on any other palette is refused. Without a drawn icon the old reduction stands in:
+gbasprite's derive_icon held to ICON_PALETTE.
 """
 import contextlib, io, os, sys
 from PIL import Image, ImageDraw, ImageFont
@@ -54,8 +61,9 @@ try:
         import gbasprite as G
 finally:
     sys.argv = argv
+import daemonslib
 
-ICON_PALETTE = 0          # gMonIconPaletteIndices[SPECIES_DEOXYS] (src/pokemon_icon.c)
+ICON_PALETTE = 1          # gMonIconPaletteIndices[SPECIES_DEOXYS] (src/pokemon_icon.c); 0 until T-452's drawn icons
 
 
 def views():
@@ -89,6 +97,17 @@ def icon(grid, pal):
     return out
 
 
+def drawn_or_icon(stem, grid, pal):
+    """the drawn form icon gfx/daemons/STEM.png when there is one (T-452), else the reduction"""
+    p = os.path.join(DAEMONS, stem + ".png")
+    if not os.path.exists(p):
+        return icon(grid, pal)
+    out, (pi, _) = G.drawn_icon(p)
+    if pi != ICON_PALETTE:
+        raise SystemExit("%s: drawn on icon palette %d; SPECIES_DEOXYS's is %d (ICON_PALETTE)" % (p, pi, ICON_PALETTE))
+    return out
+
+
 def stack(a, b):
     return [row[:] for row in a] + [row[:] for row in b]
 
@@ -101,8 +120,8 @@ def files():
         "back.png": (stack(v["back"], v["edges_b"]), pal, 64, 128),
         "front_def.png": (stack(v["front"], v["shell_f"]), pal, 64, 128),
         "back_def.png": (stack(v["back"], v["shell_b"]), pal, 64, 128),
-        "icon_attack.png": (icon(v["edges_f"], pal), ipal, 32, 64),
-        "icon_defense.png": (icon(v["shell_f"], pal), ipal, 32, 64),
+        "icon_attack.png": (drawn_or_icon("proteus_icon_attack", v["edges_f"], pal), ipal, 32, 64),
+        "icon_defense.png": (drawn_or_icon("proteus_icon_defense", v["shell_f"], pal), ipal, 32, 64),
     }
 
 
@@ -148,7 +167,7 @@ def main():
     for name, (grid, p, w, h) in fs.items():
         old = Image.open(os.path.join(OUT, name))
         print("  %-17s %dx%d -> %dx%d  %d colours" % (name, old.width, old.height, w, h, len({c for r in grid for c in r})))
-    path = SHEET or os.path.join("/tmp", "t440_proteus.png")
+    path = SHEET or daemonslib.preview("t440_proteus.png")
     print("  sheet -> %s" % sheet(path))
     if WRITE:
         for name, (grid, p, w, h) in fs.items():
