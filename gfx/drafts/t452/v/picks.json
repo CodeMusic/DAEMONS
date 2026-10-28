@@ -1,0 +1,1602 @@
+{
+ "honeytrap": {
+  "name": "HONEYTRAP",
+  "national": 303,
+  "slot": "mawile",
+  "gametype": "HARDENED",
+  "type": "STEEL",
+  "props": "a snapping turtle lying still, its mouth open with something sweet inside (DECOY)",
+  "note": "i2i 0.85: a squat snapping-turtle creature, jaws open, a shell on its back. A honey drop drawn by hand on its tongue.",
+  "failed": "front: the honey drop lost",
+  "front": "honeytrap_front_i2i_6522.png",
+  "back": "honeytrap_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,33,48",
+    "painted": "[3, 3, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 23.2,
+    "accent_clean_after": 14.8,
+    "greyed_px": 89,
+    "streak_px": 15,
+    "creature_px": 1062
+   },
+   "front_accent_pct": 0.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "24,32,36,40",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.4,
+    "accent_clean_after": 4.4,
+    "greyed_px": 0,
+    "streak_px": 16,
+    "creature_px": 1895
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     9,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      164,
+      90
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     115,
+     161,
+     216
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     23
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "witness": {
+  "name": "WITNESS",
+  "national": 307,
+  "slot": "meditite",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a small creature sitting cross-legged in meditation, calmly watching its thoughts (OBSERVER)",
+  "note": "i2i 0.85: a big-eared creature sitting cross-legged, hands together, as asked.",
+  "failed": "",
+  "front": "witness_front_i2i_6522.png",
+  "back": "witness_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,26,54",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1363
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "23,34,41,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1587
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     127,
+     187,
+     234
+    ],
+    "accent_cells": 0,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "mindsight": {
+  "name": "MINDSIGHT",
+  "national": 308,
+  "slot": "medicham",
+  "gametype": "LOGIC",
+  "type": "FIGHTING",
+  "props": "a lanky creature in a balanced meditation pose, a calm third eye on its brow (INSIGHT)",
+  "note": "t2i 6502: a slender grey figure with a third-eye mark on its brow (its frame painted off); not balanced on one leg.",
+  "failed": "",
+  "front": "src/mindsight_front_6502_unframed.png",
+  "back": "mindsight_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,31,42,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.4,
+    "accent_clean_after": 6.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1172
+   },
+   "front_accent_pct": 1.1,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "23,34,42,54",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 2.5,
+    "accent_clean_after": 2.5,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1072
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     8,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     160,
+     213
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "datagram": {
+  "name": "DATAGRAM",
+  "national": 333,
+  "slot": "swablu",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a pigeon with a small bundle tied to its foot (ADDRESSED)",
+  "note": "i2i 0.8: a plump pigeon. A tied bundle drawn by hand at its foot.",
+  "failed": "front: the parcel lost",
+  "front": "datagram_front_i2i_6521.png",
+  "back": "datagram_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "15,34,37,53",
+    "painted": "[3, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 5.1,
+    "accent_clean_after": 5.1,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1318
+   },
+   "front_accent_pct": 5.2,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "31,34,45,53",
+    "painted": "[5, 4, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1289
+   },
+   "back_accent_pct": 4.9,
+   "back_colours": 14,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     162,
+     229
+    ],
+    "accent_cells": 3,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "tradewind": {
+  "name": "TRADEWIND",
+  "national": 334,
+  "slot": "altaria",
+  "gametype": "EMERGENT",
+  "type": "DRAGON",
+  "props": "a dove whose wings are fluffy clouds (STEADY WIND)",
+  "note": "i2i 0.8: a dove, wings raised. Cloud puffs drawn by hand along its wings.",
+  "failed": "front: the cloud wings lost",
+  "front": "tradewind_front_i2i_6521.png",
+  "back": "tradewind_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "25,34,36,54",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 2.8,
+    "accent_clean_after": 2.8,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1182
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "30,34,46,55",
+    "painted": "[5, 5, 4, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.2,
+    "accent_clean_after": 1.2,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1530
+   },
+   "back_accent_pct": 2.5,
+   "back_colours": 13,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     14,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      164,
+      197,
+      255
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     107,
+     159,
+     198
+    ],
+    "accent_cells": 2,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "fading": {
+  "name": "FADING",
+  "national": 355,
+  "slot": "duskull",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a small hooded ghost, its lower body fading into mist (DECAY)",
+  "note": "i2i 0.85: a small hooded ghost. Its hem faded by hand into broken pale cells.",
+  "failed": "front: the fade into mist lost",
+  "front": "fading_front_i2i_6522.png",
+  "back": "fading_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,37,49",
+    "painted": "[4, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.5,
+    "accent_clean_after": 1.5,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 862
+   },
+   "front_accent_pct": 1.5,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "26,32,38,51",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 956
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     126,
+     199,
+     230
+    ],
+    "accent_cells": 6,
+    "size": [
+     19,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "forgetting": {
+  "name": "FORGETTING",
+  "national": 356,
+  "slot": "dusclops",
+  "gametype": "LATENT",
+  "type": "GHOST",
+  "props": "a wrapped figure whose loose bandages unravel and trail away (ERASURE)",
+  "note": "i2i 0.8: a tall hooded wrapped figure, arms open. Two loose wraps drawn trailing from its hands.",
+  "failed": "front: the trailing wraps lost",
+  "front": "forgetting_front_i2i_6521.png",
+  "back": "forgetting_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "30,35,35,57",
+    "painted": "[3, 3, 3, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 12,
+    "creature_px": 1441
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "26,35,38,57",
+    "painted": "[5, 5, 5, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.9,
+    "accent_clean_after": 1.9,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 1137
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     4,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      115,
+      115,
+      205
+     ],
+     [
+      164,
+      172,
+      246
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     114,
+     170,
+     220
+    ],
+    "accent_cells": 1,
+    "size": [
+     28,
+     27
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "laced": {
+  "name": "LACED",
+  "national": 315,
+  "slot": "roselia",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a pretty flower creature with one dark drop of poison on a petal (DOCTORED)",
+  "note": "t2i 6501: a flower creature with a leafy crown (its blue ground painted off). A dark poison drop drawn on a leaf.",
+  "failed": "front: the poison drop lost",
+  "front": "laced_front_6501.png",
+  "back": "laced_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "27,33,34,53",
+    "painted": "[4, 4, 4, 4]"
+   },
+   "front_cap": {
+    "accent_clean_before": 30.3,
+    "accent_clean_after": 10.2,
+    "greyed_px": 341,
+    "streak_px": 20,
+    "creature_px": 1697
+   },
+   "front_accent_pct": 2.3,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "29,33,32,48",
+    "painted": "FAILED, no streaks"
+   },
+   "back_cap": {
+    "accent_clean_before": 29.6,
+    "accent_clean_after": 9.9,
+    "greyed_px": 140,
+    "streak_px": 0,
+    "creature_px": 709
+   },
+   "back_accent_pct": 0.6,
+   "back_colours": 9,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     105,
+     190,
+     243
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "daydream": {
+  "name": "DAYDREAM",
+  "national": 287,
+  "slot": "slakoth",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a sloth lying flat on its belly, a little thought bubble above its head (DRIFTER)",
+  "note": "i2i 0.85: a round sloth lying flat, sleepy. A thought bubble drawn by hand above it.",
+  "failed": "front: the thought bubble lost",
+  "front": "daydream_front_i2i_6522.png",
+  "back": "daydream_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "20,34,43,48",
+    "painted": "[4, 5, 5, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 6.1,
+    "accent_clean_after": 6.1,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1477
+   },
+   "front_accent_pct": 2.9,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "14,37,26,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 763
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     108,
+     165,
+     236
+    ],
+    "accent_cells": 8,
+    "size": [
+     28,
+     26
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "restless": {
+  "name": "RESTLESS",
+  "national": 288,
+  "slot": "vigoroth",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a wiry ape mid-jump, arms flailing, unable to keep still (FIDGETER)",
+  "note": "i2i 0.85: a wiry ape mid-jump, arms out, as asked.",
+  "failed": "",
+  "front": "restless_front_i2i_6522.png",
+  "back": "restless_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "9,31,35,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1107
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "26,32,36,40",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 999
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     106,
+     166,
+     225
+    ],
+    "accent_cells": 2,
+    "size": [
+     22,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "mindwander": {
+  "name": "MINDWANDER",
+  "national": 289,
+  "slot": "slaking",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big gorilla lying back relaxed, a big thought cloud above its head (WANDERER)",
+  "note": "i2i 0.85: a big gorilla sitting, sleepy eyes (not lying back). A thought cloud drawn by hand above it.",
+  "failed": "front: the thought cloud lost",
+  "front": "mindwander_front_i2i_6522.png",
+  "back": "mindwander_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "21,34,39,55",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.2,
+    "accent_clean_after": 0.2,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2187
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 12,
+   "back_streaks": {
+    "box": "13,35,27,51",
+    "painted": "[5, 5, 4, 4]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.1,
+    "accent_clean_after": 0.1,
+    "greyed_px": 0,
+    "streak_px": 18,
+    "creature_px": 1412
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     116,
+     160,
+     209
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "greedy": {
+  "name": "GREEDY",
+  "national": 316,
+  "slot": "gulpin",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a round blob that is mostly a wide gulping mouth (SWALLOWER)",
+  "note": "i2i 0.85: a round blob with its mouth wide open, as asked.",
+  "failed": "",
+  "front": "greedy_front_i2i_6522.png",
+  "back": "greedy_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "19,34,47,48",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.8,
+    "accent_clean_after": 3.8,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1331
+   },
+   "front_accent_pct": 3.8,
+   "front_colours": 14,
+   "back_streaks": {
+    "box": "24,21,36,29",
+    "painted": "[3, 4, 5, 3]"
+   },
+   "back_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 496
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     189,
+     234
+    ],
+    "accent_cells": 5,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bloatware": {
+  "name": "BLOATWARE",
+  "national": 317,
+  "slot": "swalot",
+  "gametype": "CORRUPT",
+  "type": "POISON",
+  "props": "a huge swollen round blob with a wide grin and stubby feet (BLOAT)",
+  "note": "i2i 0.8: a huge round blob with a wide toothy grin, stubby feet.",
+  "failed": "",
+  "front": "bloatware_front_i2i_6521.png",
+  "back": "bloatware_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "13,34,45,54",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2354
+   },
+   "front_accent_pct": 0.0,
+   "front_colours": 10,
+   "back_streaks": {
+    "box": "11,34,50,54",
+    "painted": "[4, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 19,
+    "creature_px": 2224
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     4,
+     12,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      123,
+      156,
+      74
+     ],
+     [
+      213,
+      213,
+      106
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     186,
+     234
+    ],
+    "accent_cells": 0,
+    "size": [
+     27,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "transfer": {
+  "name": "TRANSFER",
+  "national": 357,
+  "slot": "tropius",
+  "gametype": "GROWTH",
+  "type": "GRASS",
+  "props": "a long-necked giraffe-like creature with a bunch of fruit growing under its chin (CARRIED)",
+  "note": "i2i 0.8: a grey long-necked giraffe, an apple at its feet. A bunch of fruit drawn by hand under its chin.",
+  "failed": "front: the fruit under the chin lost",
+  "front": "transfer_front_i2i_6521.png",
+  "back": "transfer_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "29,31,41,39",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 1.4,
+    "accent_clean_after": 1.4,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 657
+   },
+   "front_accent_pct": 3.6,
+   "front_colours": 11,
+   "back_streaks": {
+    "box": "22,36,32,57",
+    "painted": "[4, 3, 3, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 4.2,
+    "accent_clean_after": 4.2,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 874
+   },
+   "back_accent_pct": 3.6,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 1,
+    "ramp": [
+     14,
+     5,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      156,
+      205,
+      74
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     111,
+     160,
+     221
+    ],
+    "accent_cells": 3,
+    "size": [
+     16,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "lowbit": {
+  "name": "LOWBIT",
+  "national": 293,
+  "slot": "whismur",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a tiny round rabbit making the smallest squeak (QUIET BIT)",
+  "note": "t2i 6501: a chibi baby rabbit sitting, a tiny open mouth (its grey ground painted off).",
+  "failed": "",
+  "front": "lowbit_front_6501.png",
+  "back": "lowbit_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "23,34,42,56",
+    "painted": "[3, 5, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 7.0,
+    "accent_clean_after": 7.0,
+    "greyed_px": 0,
+    "streak_px": 15,
+    "creature_px": 2016
+   },
+   "front_accent_pct": 1.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "20,33,44,52",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1208
+   },
+   "back_accent_pct": 0.2,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     132,
+     191,
+     237
+    ],
+    "accent_cells": 3,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "shiftleft": {
+  "name": "SHIFTLEFT",
+  "national": 294,
+  "slot": "loudred",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a rabbit shouting with its mouth wide open (DOUBLING)",
+  "note": "i2i 0.85: a stout rabbit standing, mouth open (cheering more than shouting).",
+  "failed": "",
+  "front": "shiftleft_front_i2i_6522.png",
+  "back": "shiftleft_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "24,34,35,52",
+    "painted": "[7, 7, 7, 7]"
+   },
+   "front_cap": {
+    "accent_clean_before": 3.3,
+    "accent_clean_after": 3.3,
+    "greyed_px": 0,
+    "streak_px": 28,
+    "creature_px": 1299
+   },
+   "front_accent_pct": 2.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "19,33,44,53",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1387
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     121,
+     181,
+     229
+    ],
+    "accent_cells": 4,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "wraparound": {
+  "name": "WRAPAROUND",
+  "national": 295,
+  "slot": "exploud",
+  "gametype": "CONTENT",
+  "type": "NORMAL",
+  "props": "a big hare whose huge open roar lets out only a tiny wisp of breath (ROLLOVER)",
+  "note": "i2i 0.8: a big long-eared hare. A tiny wisp of breath drawn by hand at its mouth.",
+  "failed": "front: the wisp of breath lost",
+  "front": "wraparound_front_i2i_6521.png",
+  "back": "wraparound_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "18,34,43,55",
+    "painted": "[3, 5, 4, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.8,
+    "accent_clean_after": 0.8,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1377
+   },
+   "front_accent_pct": 0.8,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "25,35,43,56",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1171
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 2,
+    "ramp": [
+     14,
+     2,
+     3
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      98,
+      90
+     ],
+     [
+      189,
+      189,
+      180
+     ],
+     [
+      255,
+      255,
+      255
+     ]
+    ],
+    "bands": [
+     119,
+     176,
+     216
+    ],
+    "accent_cells": 1,
+    "size": [
+     23,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "bifurcate": {
+  "name": "BIFURCATE",
+  "national": 366,
+  "slot": "clamperl",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a clam with its shell open just enough to show one round pearl (FORK)",
+  "note": "t2i 6502: a round face under a ridged shell (its frame painted off). A pearl drawn by hand at its front.",
+  "failed": "front: the pearl lost",
+  "front": "src/bifurcate_front_6502_unframed.png",
+  "back": "bifurcate_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "22,35,41,49",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.7,
+    "accent_clean_after": 0.7,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1433
+   },
+   "front_accent_pct": 0.6,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "22,33,39,47",
+    "painted": "[4, 4, 4, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.5,
+    "accent_clean_after": 0.5,
+    "greyed_px": 0,
+    "streak_px": 17,
+    "creature_px": 1487
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 11,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     126,
+     186,
+     236
+    ],
+    "accent_cells": 0,
+    "size": [
+     28,
+     20
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "deepwell": {
+  "name": "DEEPWELL",
+  "national": 367,
+  "slot": "huntail",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a long deep-sea eel with a sharp toothy jaw (SHARP LOW)",
+  "note": "t2i 6502: a shark-like fish, a wide toothy open jaw (its frame painted off). A small glowing lure drawn by hand on its tail tip.",
+  "failed": "front: the lure lost",
+  "front": "src/deepwell_front_6502_unframed.png",
+  "back": "deepwell_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "32,33,42,41",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "front_cap": {
+    "accent_clean_before": 49.5,
+    "accent_clean_after": 10.4,
+    "greyed_px": 475,
+    "streak_px": 20,
+    "creature_px": 1214
+   },
+   "front_accent_pct": 1.2,
+   "front_colours": 15,
+   "back_streaks": {
+    "box": "37,31,49,45",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.0,
+    "accent_clean_after": 0.0,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 982
+   },
+   "back_accent_pct": 0.3,
+   "back_colours": 10,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     107,
+     170,
+     230
+    ],
+    "accent_cells": 4,
+    "size": [
+     28,
+     25
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ },
+ "shallows": {
+  "name": "SHALLOWS",
+  "national": 368,
+  "slot": "gorebyss",
+  "gametype": "FLOW",
+  "type": "WATER",
+  "props": "a slender pink fish with wide gentle flowing fins (FLAT LOW)",
+  "note": "i2i 0.8: a slender fish with wide flowing fins, as asked.",
+  "failed": "",
+  "front": "shallows_front_i2i_6521.png",
+  "back": "shallows_back_i2i_6531.png",
+  "icon": "derived",
+  "measured": {
+   "front_streaks": {
+    "box": "14,30,32,40",
+    "painted": "[3, 3, 4, 3]"
+   },
+   "front_cap": {
+    "accent_clean_before": 0.4,
+    "accent_clean_after": 0.4,
+    "greyed_px": 0,
+    "streak_px": 13,
+    "creature_px": 1032
+   },
+   "front_accent_pct": 0.2,
+   "front_colours": 13,
+   "back_streaks": {
+    "box": "19,32,41,42",
+    "painted": "[5, 5, 5, 5]"
+   },
+   "back_cap": {
+    "accent_clean_before": 0.9,
+    "accent_clean_after": 0.9,
+    "greyed_px": 0,
+    "streak_px": 20,
+    "creature_px": 1372
+   },
+   "back_accent_pct": 0.0,
+   "back_colours": 12,
+   "icon3": {
+    "icon_palette": 0,
+    "ramp": [
+     9,
+     8,
+     2
+    ],
+    "ramp_rgb": [
+     [
+      98,
+      74,
+      205
+     ],
+     [
+      139,
+      123,
+      255
+     ],
+     [
+      189,
+      189,
+      189
+     ]
+    ],
+    "bands": [
+     105,
+     162,
+     229
+    ],
+    "accent_cells": 0,
+    "size": [
+     26,
+     28
+    ]
+   }
+  },
+  "hand": [
+   "front",
+   "back"
+  ]
+ }
+}

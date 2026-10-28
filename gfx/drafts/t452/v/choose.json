@@ -1,0 +1,144 @@
+{
+ "_": "batch 17 (2026-10-28), the charm recipe (charm8, dir v, seed 6500), chosen by eye on cand/g0-g4.png. Seeds: t2i chibi fronts 6501/6502, i2i from today's front 0.8 = 6521, 0.85 = 6522, one back from today's back 0.66 = 6531, one chibi icon 6541. Icons 'derived' = icon3 from the hand front. Every back is the front mirrored, face out (hand_b17.py).",
+ "honeytrap": {
+  "front": "honeytrap_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "honeytrap_back_i2i_6531.png",
+  "note": "i2i 0.85: a squat snapping-turtle creature, jaws open, a shell on its back. A honey drop drawn by hand on its tongue.",
+  "failed": "front: the honey drop lost"
+ },
+ "witness": {
+  "front": "witness_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "witness_back_i2i_6531.png",
+  "note": "i2i 0.85: a big-eared creature sitting cross-legged, hands together, as asked.",
+  "failed": ""
+ },
+ "mindsight": {
+  "front": "src/mindsight_front_6502_unframed.png",
+  "icon": "derived",
+  "back": "mindsight_back_i2i_6531.png",
+  "note": "t2i 6502: a slender grey figure with a third-eye mark on its brow (its frame painted off); not balanced on one leg.",
+  "failed": ""
+ },
+ "datagram": {
+  "front": "datagram_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "datagram_back_i2i_6531.png",
+  "note": "i2i 0.8: a plump pigeon. A tied bundle drawn by hand at its foot.",
+  "failed": "front: the parcel lost"
+ },
+ "tradewind": {
+  "front": "tradewind_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "tradewind_back_i2i_6531.png",
+  "note": "i2i 0.8: a dove, wings raised. Cloud puffs drawn by hand along its wings.",
+  "failed": "front: the cloud wings lost"
+ },
+ "fading": {
+  "front": "fading_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "fading_back_i2i_6531.png",
+  "note": "i2i 0.85: a small hooded ghost. Its hem faded by hand into broken pale cells.",
+  "failed": "front: the fade into mist lost"
+ },
+ "forgetting": {
+  "front": "forgetting_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "forgetting_back_i2i_6531.png",
+  "note": "i2i 0.8: a tall hooded wrapped figure, arms open. Two loose wraps drawn trailing from its hands.",
+  "failed": "front: the trailing wraps lost"
+ },
+ "laced": {
+  "front": "laced_front_6501.png",
+  "icon": "derived",
+  "back": "laced_back_i2i_6531.png",
+  "note": "t2i 6501: a flower creature with a leafy crown (its blue ground painted off). A dark poison drop drawn on a leaf.",
+  "failed": "front: the poison drop lost"
+ },
+ "daydream": {
+  "front": "daydream_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "daydream_back_i2i_6531.png",
+  "note": "i2i 0.85: a round sloth lying flat, sleepy. A thought bubble drawn by hand above it.",
+  "failed": "front: the thought bubble lost"
+ },
+ "restless": {
+  "front": "restless_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "restless_back_i2i_6531.png",
+  "note": "i2i 0.85: a wiry ape mid-jump, arms out, as asked.",
+  "failed": ""
+ },
+ "mindwander": {
+  "front": "mindwander_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "mindwander_back_i2i_6531.png",
+  "note": "i2i 0.85: a big gorilla sitting, sleepy eyes (not lying back). A thought cloud drawn by hand above it.",
+  "failed": "front: the thought cloud lost"
+ },
+ "greedy": {
+  "front": "greedy_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "greedy_back_i2i_6531.png",
+  "note": "i2i 0.85: a round blob with its mouth wide open, as asked.",
+  "failed": ""
+ },
+ "bloatware": {
+  "front": "bloatware_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "bloatware_back_i2i_6531.png",
+  "note": "i2i 0.8: a huge round blob with a wide toothy grin, stubby feet.",
+  "failed": ""
+ },
+ "transfer": {
+  "front": "transfer_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "transfer_back_i2i_6531.png",
+  "note": "i2i 0.8: a grey long-necked giraffe, an apple at its feet. A bunch of fruit drawn by hand under its chin.",
+  "failed": "front: the fruit under the chin lost"
+ },
+ "lowbit": {
+  "front": "lowbit_front_6501.png",
+  "icon": "derived",
+  "back": "lowbit_back_i2i_6531.png",
+  "note": "t2i 6501: a chibi baby rabbit sitting, a tiny open mouth (its grey ground painted off).",
+  "failed": ""
+ },
+ "shiftleft": {
+  "front": "shiftleft_front_i2i_6522.png",
+  "icon": "derived",
+  "back": "shiftleft_back_i2i_6531.png",
+  "note": "i2i 0.85: a stout rabbit standing, mouth open (cheering more than shouting).",
+  "failed": ""
+ },
+ "wraparound": {
+  "front": "wraparound_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "wraparound_back_i2i_6531.png",
+  "note": "i2i 0.8: a big long-eared hare. A tiny wisp of breath drawn by hand at its mouth.",
+  "failed": "front: the wisp of breath lost"
+ },
+ "bifurcate": {
+  "front": "src/bifurcate_front_6502_unframed.png",
+  "icon": "derived",
+  "back": "bifurcate_back_i2i_6531.png",
+  "note": "t2i 6502: a round face under a ridged shell (its frame painted off). A pearl drawn by hand at its front.",
+  "failed": "front: the pearl lost"
+ },
+ "deepwell": {
+  "front": "src/deepwell_front_6502_unframed.png",
+  "icon": "derived",
+  "back": "deepwell_back_i2i_6531.png",
+  "note": "t2i 6502: a shark-like fish, a wide toothy open jaw (its frame painted off). A small glowing lure drawn by hand on its tail tip.",
+  "failed": "front: the lure lost"
+ },
+ "shallows": {
+  "front": "shallows_front_i2i_6521.png",
+  "icon": "derived",
+  "back": "shallows_back_i2i_6531.png",
+  "note": "i2i 0.8: a slender fish with wide flowing fins, as asked.",
+  "failed": "",
+  "box-front": "14,30,32,40"
+ }
+}
