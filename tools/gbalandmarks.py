@@ -140,7 +140,8 @@ SHEETS = argval("--sheets")
 #  the landmarks the user has approved for --write; a draft is never written
 APPROVED = {"scorn_solutions", "mansion",           # the user, 2026-10-24: "build it" (second draft, e559d4eb)
             "corpus_tower", "daemon_tower",          # the user, 2026-10-25: "build both" (pair 2 with depth, a219855f)
-            "review_board", "errata"}                # the user, 2026-10-25: "build pair 3" (tweaked 9283f477, chalk scrambled)
+            "review_board", "errata",                # the user, 2026-10-25: "build pair 3" (tweaked 9283f477, chalk scrambled)
+            "osric_hatter"}                          # the user, 2026-10-29: "the hat 3x3 as drawn" (T-485, 5ac9524d)
 
 NUM_PRIMARY = 640
 SECONDARY_TILES = 1024 - 640
@@ -514,6 +515,147 @@ def draw_mansion():
     k.hline(61, 66, py0 + 11, "QSD")
     return k
 
+
+# ============================================================================================ OSRIC HATTER's hat
+#  T-485 (the user, 2026-10-29, by multiple choice; bible 4.39): THE HERMETIC LAYER's author lives on QUICKSILVER in a
+#  tall LEANING TOP HAT with a 10/6 price card in its band -- a key building, so its own art (9.29), on new ground:
+#  the south sand at (9..11, 11..13), drawn as gfx/drafts/t485/draw_t485.py drew it for the user's sheet (approved
+#  3x3, "as drawn"). The body 3x2 at (9..11, 12..13) is made SOLID (the sand was open), the crown 2x1 at (9..10, 11)
+#  is walk-behind like every vanilla roof's top row (its art on the top layer, collision kept 0), and (11,11) is not
+#  drawn at all: the old man stands there and the crown leans away from him. THE DOOR (10,13) is a non-animated
+#  doorway, MB_CAVE_DOOR as the MANSION's (8,3), so gbadoors has nothing to redraw -- its art on the TOP layer over the
+#  sand, so the player steps in under the brim. Row 12 (unused: no block in either tileset draws it), band in THE
+#  SUBTLE LAYER's purple, 15 colours; its tiles go into the free slots 346..375 (never 376..383).
+HAT_ROW = 12
+HAT_COLOURS = [
+    ("OUT",    (40, 34, 48)),      # outline and the card's ink
+    ("FELTD",  (58, 52, 70)),      # felt, shaded side
+    ("FELT",   (84, 76, 100)),     # felt
+    ("FELTL",  (112, 104, 130)),   # felt, lit side and the crown's top
+    ("SHEEN",  (150, 142, 170)),   # the sheen on the nap
+    ("BANDD",  (112, 50, 104)),    # band, dark
+    ("BAND",   (176, 86, 158)),    # band: THE SUBTLE LAYER's purple, #B0569E (4.39's pulse midpoint)
+    ("CARD",   (240, 232, 208)),   # the price card
+    ("CARDD",  (200, 186, 150)),   # the card's shade
+    ("DOOR",   (132, 84, 66)),     # door wood
+    ("DOORD",  (84, 54, 46)),      # door, dark
+    ("LAMP",   (236, 201, 140)),   # the porthole's lamp
+    ("QS",     (226, 232, 240)),   # quicksilver
+    ("QSD",    (160, 170, 186)),   # quicksilver, shade
+    ("SHADOW", (197, 172, 106)),   # the hat's shadow on the sand (the sand's own shade)
+]
+HAT = dict(name="osric_hatter", title="OSRIC HATTER's hat", map="CinnabarIsland", x0=9, y0=11, w=3, h=3,
+           door=(10, 13), keep=[], inplace=[], signs=[], row=HAT_ROW, colours=HAT_COLOURS,
+           cells_only={(9, 11), (10, 11)} | {(x, y) for x in (9, 10, 11) for y in (12, 13)},
+           door_layer="top", door_attr=0x60,                   # MB_CAVE_DOOR, the MANSION's: a doorway, no frames
+           solid={(9, 12), (10, 12), (11, 12), (9, 13), (11, 13)})
+
+
+def draw_hat():
+    """48x48; cell (2,0) -- x 32..47, y 0..15 -- stays empty (the old man's square). The draft's hat() exactly."""
+    import math as _m
+    k = Canvas(48, 48, role_map(HAT_COLOURS))
+    c = k.c
+
+    def put(x, y, v):
+        if 0 <= x < 48 and 0 <= y < 48 and not (x >= 32 and y < 16):
+            c[y][x] = v
+
+    for y in range(40, 48):                     # the shadow first, lower right (the light is from the upper left)
+        for x in range(30, 48):
+            if ((x - 38) / 10.0) ** 2 + ((y - 45) / 3.2) ** 2 <= 1:
+                put(x, y, 15)
+    bcx, bcy, brx, bry = 24, 42, 22, 5          # the brim: an ellipse seen from above
+    for y in range(36, 48):
+        for x in range(48):
+            if ((x - bcx) / brx) ** 2 + ((y - bcy) / bry) ** 2 <= 1:
+                put(x, y, 4 if y < bcy else (3 if y < bcy + 3 else 2))
+    for y in range(36, 48):
+        for x in range(48):
+            if ((x - bcx) / brx) ** 2 + ((y - bcy) / bry) ** 2 <= 1:
+                if not all(((x + dx - bcx) / brx) ** 2 + ((y + dy - bcy) / bry) ** 2 <= 1
+                           for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                    put(x, y, 1)
+
+    def edges(y):                               # the crown leans left as it rises, a little flared
+        t = (41 - y) / 35.0
+        return 12 + (4 - 12) * t, 35 + (27 - 35) * t
+
+    for y in range(6, 42):
+        l, r = edges(y)
+        L, R = int(round(l)), int(round(r))
+        for x in range(L, R + 1):
+            u = (x - l) / max(1.0, (r - l))
+            v = 4 if u < 0.24 else (3 if u < 0.72 else 2)
+            if 0.10 <= u < 0.16:
+                v = 5
+            put(x, y, v)
+        put(L, y, 1); put(R, y, 1)
+    tcx, tcy, trx, try_ = 15.5, 6, 11.5, 3      # the crown's top, seen from above
+    for y in range(2, 11):
+        for x in range(32):
+            if ((x - tcx) / trx) ** 2 + ((y - tcy) / try_) ** 2 <= 1:
+                ins = all(((x + dx - tcx) / trx) ** 2 + ((y + dy - tcy) / try_) ** 2 <= 1
+                          for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                put(x, y, 4 if ins else 1)
+    for x in range(8, 15):
+        put(x, 5, 5)
+    for y in range(27, 32):                     # the band, above the door, following the lean
+        l, r = edges(y)
+        L, R = int(round(l)), int(round(r))
+        for x in range(L + 1, R):
+            u = (x - l) / (r - l)
+            put(x, y, 6 if (y in (27, 31) or u > 0.72) else 7)
+    cx0, cy0, cw, ch = 17, 19, 17, 10           # the price card, tucked into the band at the front right: 10/6
+    for y in range(cy0, cy0 + ch):
+        for x in range(cx0, cx0 + cw):
+            edge = x in (cx0, cx0 + cw - 1) or y == cy0
+            put(x, y, 1 if edge else (9 if y == cy0 + ch - 2 else 8))
+    glyph = {"1": [".#", "##", ".#", ".#", ".#"], "0": ["###", "#.#", "#.#", "#.#", "###"],
+             "/": ["..#", "..#", ".#.", "#..", "#.."], "6": ["###", "#..", "###", "#.#", "###"]}
+    gx = cx0 + 2
+    for ch_ in "10/6":
+        g = glyph[ch_]
+        for yy, row in enumerate(g):
+            for xx, v in enumerate(row):
+                if v == "#":
+                    put(gx + xx, cy0 + 2 + yy, 1)
+        gx += len(g[0]) + 1
+    for y in range(27, 32):                     # the band passes in front of the card's foot
+        for x in range(cx0, cx0 + cw):
+            l, r = edges(y)
+            if l < x < r:
+                put(x, y, 6 if y in (27, 31) else 7)
+            elif x >= r:
+                put(x, y, 1 if y in (27, 31) else 9)
+    for y in range(12, 21):                     # the porthole, on the lit side, a lamp lit inside
+        for x in range(4, 15):
+            dd = (x - 11) ** 2 + (y - 15) ** 2
+            if dd <= 9:
+                put(x, y, 12)
+            elif dd <= 16:
+                put(x, y, 1)
+    put(10, 14, 13); put(9, 15, 13)
+    for y in range(32, 46):                     # the door: an arch cut into the crown's foot, the brim its step
+        for x in range(19, 29):
+            if y >= 35 or ((x - 23.5) / 5.0) ** 2 + ((y - 35) / 3.0) ** 2 <= 1:
+                put(x, y, 11 if (x in (19, 28) or y == 32) else 10)
+    for y in range(32, 46):
+        for x in range(18, 30):
+            if c[y][x] not in (10, 11):
+                if any(0 <= a < 48 and 0 <= b < 48 and c[b][a] in (10, 11)
+                       for a, b in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1))):
+                    put(x, y, 1)
+    for y in range(38, 46):                     # planks, and a knob
+        put(23, y, 11)
+    put(26, 40, 12)
+    for x in range(18, 30):                     # the step: the brim runs on under the door, lit
+        put(x, 45, 4); put(x, 46, 3)
+    for x in range(17, 31):
+        put(x, 47, 1)
+    for (x, y) in ((6, 42), (40, 43), (13, 45), (35, 46)):   # quicksilver, beaded on the brim
+        put(x, y, 13); put(x + 1, y, 14)
+    return k
 
 # ============================================================================================ 3/4 depth (pair 2, redrawn)
 #  The user (2026-10-24) on the first pair-2 drafts: flat slabs. Both towers are now drawn as vanilla's buildings
@@ -1592,7 +1734,7 @@ def draw_errata():
 GROUPS = [
     dict(dir="cinnabar_island", symbol="gTileset_CinnabarIsland", layout="CinnabarIsland_Layout",
          place="QUICKSILVER IS. / CinnabarIsland", town="QUICKSILVER IS.", tag="t447b",
-         landmarks=[(SCORN, draw_scorn), (MANSION, draw_mansion)], reuse_blocks=False,
+         landmarks=[(SCORN, draw_scorn), (MANSION, draw_mansion), (HAT, draw_hat)], reuse_blocks=False,
          view=[("CinnabarIsland_Layout", 0, 0, 24, 20)]),
     dict(dir="saffron_city", symbol="gTileset_SaffronCity", layout="SaffronCity_Layout",
          place="BRAZEN / SaffronCity", town="BRAZEN", tag="t447e", landmarks=[(CORPUS, draw_corpus)],
@@ -1617,7 +1759,9 @@ GROUPS = [
 ]
 #  this tool's claim; gbatowns.py's LANDMARKS keeps the same boxes out of its passes (by map name)
 OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
-                            ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)")],
+                            ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)"),
+                            ("CinnabarIsland", 9, 11, 2, 1, "OSRIC HATTER's hat (its crown)"),
+                            ("CinnabarIsland", 9, 12, 3, 2, "OSRIC HATTER's hat")],
         "saffron_city": [("SaffronCity", 29, 16, 9, 15, "CORPUS's tower"),
                          ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
         "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
@@ -1850,6 +1994,8 @@ def build(ts):
                 continue
             raw = ts.cell(layout, x, y)
             old = raw & 0x3FF
+            if main and (x, y) in lm.get("solid", ()):
+                raw = (raw & ~0xC00) | 0x400            # T-485: open sand made solid under a new building
             ox, oy = cx * 16, cy * 16
             keys = [tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) for i in range(64))
                     for qy in (0, 1) for qx in (0, 1)]
@@ -1863,6 +2009,8 @@ def build(ts):
                 e = list(struct.unpack_from("<8H", open(os.path.join(PRIMARY, "metatiles.bin"), "rb").read(), old * 16))
                 attr = None
             bottom = e[:4]
+            if main and (x, y) == lm["door"] and lm.get("door_attr") is not None:
+                attr = struct.pack("<I", lm["door_attr"]) + bytes(ts.per_attr - 4)   # T-485: sand made a doorway
             lin = lm.get("lintel", lintel)
             if main and (x, y) in lm["inplace"] and lm.get("inplace_layer") == "bottom":
                 entries = art + [0, 0, 0, 0]        # a door drawn in its bottom layer (CORPUS's): art below, top empty
@@ -1870,7 +2018,7 @@ def build(ts):
                 entries = bottom + art
             elif main and (x, y) in lm["signs"]:      # the board's own tiles stay on top; the wall is ours, below
                 entries = art + [0, 0, e[6], e[7]]
-            elif main and (x, y) == lm["door"]:     # a plain doorway: all of it below, the lintel above
+            elif main and (x, y) == lm["door"] and lm.get("door_layer") != "top":   # all of it below, the lintel above
                 lint = [cut.tile(*assign_row(lm, tuple(k.get(ox + qx * 8 + i % 8, oy + qy * 8 + i // 8)
                                                        if lin(k, ox + qx * 8 + i % 8, oy + qy * 8 + i // 8) else 0
                                                        for i in range(64)))) for qy in (0, 1) for qx in (0, 1)]

@@ -386,7 +386,11 @@ KEEP_MAPS = {}
 #  MANSION's ash roof, were dropped for that).
 LANDMARKS = {
     "cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
-                        ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)")],
+                        ("CinnabarIsland", 5, 6, 7, 4, "SCORN SOLUTIONS (the lab)"),
+                        #  T-485: OSRIC HATTER's leaning hat, its crown 2x1 over the body 3x2 ((11,11) is the old
+                        #  man's square, not drawn)
+                        ("CinnabarIsland", 9, 11, 2, 1, "OSRIC HATTER's hat (its crown)"),
+                        ("CinnabarIsland", 9, 12, 3, 2, "OSRIC HATTER's hat")],
     "sevii_islands_67": [("SevenIsland_TrainerTower", 54, 0, 9, 9, "USER TOWER"),
                          ("BirthIsland_Exterior", 10, 7, 11, 9, "THE ANNEX's triangle")],
     #  T-447's second pair (drafted 2026-10-24): CORPUS's tower, and its copy on the crossings' layout; DAEMON TOWER,

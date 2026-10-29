@@ -44,6 +44,7 @@ old tileset it shared.
     python3 tools/gbainterior.py brazen --write       # MATTE's gallery of mounts (T-111)
     python3 tools/gbainterior.py quicksilver --write  # ANNEAL's silver lab (T-112)
     python3 tools/gbainterior.py callow --write       # SCORN's survey floor, its spinner maze redrawn (T-113)
+    python3 tools/gbainterior.py hatters_house --write  # OSRIC HATTER's room of stopped clocks (T-485)
 
 Statue heads are drawn on the top layer, as vanilla does, so the player walks behind them (T-110).
 
@@ -2479,6 +2480,108 @@ def reading_room(old_img, statues=True):
     return r.im
 
 
+# ---------------------------------------------------------------- OSRIC HATTER's house (T-485)
+#  The user, 2026-10-29 (bible 4.39): inside the leaning hat on QUICKSILVER every clock is stopped at half past three,
+#  and a long tea table is laid for many, where only he sits, talking to the empty chairs. Drawn as the user's sheet
+#  drew it (gfx/drafts/t485/draw_t485.py's room(), 5ac9524d), on LAYOUT_HOUSE1's 11x9 plan copied into a layout of its
+#  own (its door mat and the warps at (3..5,7) kept): ten clocks along the back wall, a mantel and a carriage clock
+#  on the sideboard and a pocket watch fallen by the door, all at 3:30; the table on (2..8, 4..5), chair backs along
+#  row 3 and seats along row 6, the foot chair (1,4..5), his tall chair at (9,3..4) where he stands (the object, on
+#  (9,4)), a hat stand at (10,2..3). He is not drawn here: he is an object (OBJ_EVENT_GFX_OSRIC_HATTER). Changed from
+#  the sheet only so nothing sits under the player: his chair ends at row 4, not row 5 where he is spoken to from.
+import math as _math
+from PIL import ImageDraw as _ImageDraw
+
+
+def _hand(d, cx, cy, ang, ln, col, w=1):
+    a = _math.radians(ang - 90)
+    d.line([(cx, cy), (cx + ln * _math.cos(a), cy + ln * _math.sin(a))], fill=col, width=w)
+
+
+def _clockface(d, cx, cy, r, rim, face=(240, 232, 208), ink=(40, 34, 48)):
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=face, outline=rim)
+    if r >= 5:
+        for k in range(12):
+            a = _math.radians(k * 30 - 90)
+            d.point((cx + (r - 1.5) * _math.cos(a), cy + (r - 1.5) * _math.sin(a)), fill=ink)
+    _hand(d, cx, cy, 180, r - 1.5, ink)                  # half past three: the minute hand at the six,
+    _hand(d, cx, cy, 105, max(2, r * 0.55), ink)         # the hour hand halfway from three to four
+
+
+def hatters_house(old_img=None, statues=True):
+    W, H = 176, 144
+    im = Image.new("RGB", (W, H), (0, 0, 0))
+    d = _ImageDraw.Draw(im)
+    INK = (40, 34, 48)
+    for x in range(W):                                   # the back wall, rows 0..1: plum paper in stripes, a wainscot
+        d.line([(x, 0), (x, 31)], fill=(98, 62, 92) if (x // 4) % 2 else (112, 72, 104))
+    d.rectangle([0, 24, W - 1, 31], fill=(132, 84, 66)); d.line([(0, 24), (W, 24)], fill=(170, 120, 86))
+    d.line([(0, 31), (W, 31)], fill=INK)
+    for y in range(32, 128):                             # the floor, rows 2..7: boards
+        for x in range(W):
+            c = (176, 132, 88) if ((y - 32) // 6) % 2 == 0 else (164, 122, 80)
+            if (x + ((y - 32) // 6) * 23) % 40 == 0:
+                c = (128, 92, 62)
+            im.putpixel((x, y), c)
+    for y in range(38, 128, 6):
+        d.line([(0, y), (W, y)], fill=(140, 102, 70))
+    d.rectangle([0, 128, W - 1, H - 1], fill=(40, 34, 48))   # the bottom wall, row 8, and the mat at (3..5,7)
+    d.rectangle([52, 114, 91, 126], fill=(150, 60, 70), outline=INK)
+    d.rectangle([64, 116, 79, 124], outline=(200, 130, 110))
+    #  the clocks, every one at half past three: a grandfather clock (1, 0..1), then round, oval, square, cuckoo
+    d.rectangle([17, 0, 30, 33], fill=(92, 58, 44), outline=INK)
+    d.rectangle([19, 18, 28, 30], fill=(70, 44, 36), outline=INK)
+    d.line([(23.5, 18), (23.5, 27)], fill=(200, 170, 90)); d.ellipse([21, 25, 26, 30], fill=(220, 186, 96), outline=INK)
+    _clockface(d, 23.5, 9, 6, INK)
+    _clockface(d, 56, 10, 6, INK)
+    d.ellipse([83, 2, 92, 20], fill=(150, 142, 170), outline=INK); _clockface(d, 87.5, 9, 4, INK)
+    d.rectangle([115, 4, 126, 15], fill=(132, 84, 66), outline=INK); _clockface(d, 120.5, 9.5, 4, INK)
+    d.polygon([(146, 2), (154, 6), (154, 20), (138, 20), (138, 6)], fill=(116, 76, 56), outline=INK)
+    _clockface(d, 146, 12, 4, INK)
+    d.rectangle([144, 3, 147, 5], fill=(40, 34, 48))     # the cuckoo's door, shut
+    _clockface(d, 6, 9, 3, INK); _clockface(d, 166, 18, 3, INK); _clockface(d, 70, 19, 3, INK)
+    _clockface(d, 101, 18, 3, INK)
+    d.rectangle([80, 22, 127, 31], fill=(110, 70, 54), outline=INK)   # the sideboard: a mantel and a carriage clock
+    _clockface(d, 92, 19, 3, INK); _clockface(d, 112, 19, 3, INK)
+    _clockface(d, 132, 112, 3, INK)                      # a pocket watch fallen by the door, still at half past three
+    d.line([(135, 112), (142, 116)], fill=(226, 232, 240))
+    tx0, tx1, ty0, ty1 = 34, 141, 64, 93                 # the long table, cells (2..8, 4..5): a cloth, laid for many
+    d.rectangle([tx0, ty0, tx1, ty1], fill=(240, 236, 226), outline=INK)
+    d.rectangle([tx0, ty1 - 4, tx1, ty1], fill=(210, 204, 196), outline=INK)
+    for x in range(tx0 + 6, tx1, 9):
+        d.point((x, ty1 - 2), fill=(176, 86, 158))
+    for i, cx in enumerate(range(2, 9)):                 # chair backs along row 3, seats along row 6
+        x = cx * 16
+        d.rectangle([x + 3, 44, x + 12, 62], fill=(132, 84, 66), outline=INK)
+        d.rectangle([x + 5, 47, x + 10, 58], fill=(176, 86, 158) if i % 2 else (112, 50, 104))
+        d.rectangle([x + 3, 96, x + 12, 104], fill=(132, 84, 66), outline=INK)
+        d.line([(x + 4, 105), (x + 4, 109)], fill=INK); d.line([(x + 11, 105), (x + 11, 109)], fill=INK)
+    d.rectangle([19, 70, 30, 88], fill=(132, 84, 66), outline=INK)    # the foot, (1,4..5)
+    d.rectangle([146, 50, 159, 79], fill=(84, 54, 46), outline=INK)   # his, (9,3..4): tall-backed
+    d.rectangle([148, 53, 157, 68], fill=(176, 86, 158), outline=INK)
+    for cx in range(2, 9):                               # a cup and saucer at every place
+        x = cx * 16 + 8
+        for y in (70, 87):
+            d.ellipse([x - 4, y - 2, x + 4, y + 2], fill=(226, 232, 240), outline=(160, 170, 186))
+            d.rectangle([x - 2, y - 4, x + 2, y], fill=(250, 250, 250), outline=(120, 122, 140))
+    for x in (60, 108):                                  # teapots, a cake, an empty plate turned over
+        d.ellipse([x - 5, 74, x + 5, 83], fill=(84, 130, 112), outline=INK)
+        d.line([(x + 5, 77), (x + 9, 74)], fill=INK); d.rectangle([x - 1, 72, x + 1, 74], fill=INK)
+    d.ellipse([78, 74, 92, 84], fill=(236, 201, 140), outline=INK); d.line([(85, 74), (85, 84)], fill=(176, 86, 158))
+    d.ellipse([124, 75, 134, 82], fill=(200, 186, 150), outline=INK)
+    d.ellipse([133, 76, 141, 82], fill=(226, 232, 240), outline=INK); d.point((137, 79), fill=(132, 84, 66))  # his cup
+    d.line([(168, 34), (168, 60)], fill=INK, width=2); d.ellipse([160, 26, 175, 34], fill=(84, 76, 100), outline=INK)
+    d.rectangle([163, 18, 172, 29], fill=(84, 76, 100), outline=INK)  # a hat stand by the wall, a hat on it
+    return im
+
+
+#  every cell's collision and behaviour, but the mat's three (kept from LAYOUT_HOUSE1: the warp arrow at (4,7))
+HH_SOLID = ({(x, y) for x in range(11) for y in (0, 1, 8)} | {(x, 3) for x in range(2, 9)} | {(9, 3), (9, 4)}
+            | {(x, y) for x in range(2, 9) for y in (4, 5)} | {(1, 4), (1, 5)} | {(x, 6) for x in range(2, 9)}
+            | {(10, 2), (10, 3)})
+HH_PLAN = {(x, y): ((x, y) in HH_SOLID, 0) for x in range(11) for y in range(9) if not (y == 7 and 3 <= x <= 5)}
+
+
 BUILDINGS = {
     # THE SCHOOL, SPLIT PER TOWN (T-125): one room each, as checkpoint_indigo already is.
     #  T-218..T-219: now SEVEN FLOORS on the one tileset, each re-planned from pret's pristine room every time the
@@ -2638,6 +2741,15 @@ BUILDINGS = {
         theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={}, plan={},
         states=quicksilver_states, tops={"LAYOUT_CINNABAR_ISLAND_GYM": [(23, 19), (27, 19)]},
     ),    # CALLOW BENCHMARK: a new spinner maze through the plan, checked by sliding it before it is built
+    # OSRIC HATTER's house (T-485): the room drawn from the user's sheet, on a layout of its own copied from
+    #  LAYOUT_HOUSE1 (python3 tools/gbainterior.py hatters_house --write)
+    "hatters_house": dict(
+        old="generic_building_1", symbol="gTileset_HattersHouse", dir="hatters_house",
+        layouts=[("LAYOUT_CINNABAR_ISLAND_HATTERS_HOUSE", hatters_house)],
+        reset="data/layouts/House1/map.bin",
+        theme={}, recoloured=[], forced=set(), recolour_cells={}, from_cells={},
+        plan={"LAYOUT_CINNABAR_ISLAND_HATTERS_HOUSE": HH_PLAN},
+    ),
     "callow": dict(
         old="viridian_gym", symbol="gTileset_CallowBenchmark", dir="callow_benchmark",
         layouts=[("LAYOUT_VIRIDIAN_CITY_GYM", callow)],
