@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.324 — 2026-10-29
+
+### The backgrounds, the map, the hour in battle, the hatter's house
+
+- ***3.10, new***: **the backgrounds keep the calendar (T-481)** -- the hour and season outdoors, the hour at a quarter indoors, caves their own; one 1px weekday line; a holiday's glints; built battle, windows, field, in that order. **The map is a score (T-449)**, as built and kept.
+- ***4.38, the witching hour***: **in battle, with THE SUBTLE LAYER held, red to blue through purple (T-482).**
+- ***4.39, OSRIC HATTER***: **anyone may visit; riddles at the tea table, more with the book, something else at 3:30 AM (T-485).**
+
 ## v11.323 — 2026-10-29
 
 ### OSRIC HATTER, and THE LAYERS (4.39)
