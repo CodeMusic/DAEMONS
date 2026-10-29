@@ -163,3 +163,33 @@ v11.322.1, T-484: the plateau's and ROUTE 23's paths without the magenta specks 
 v11.322.1, T-484: the plateau's and ROUTE 23's paths without the magenta specks (before | after); theatre retakes with CRYSTAL's reflection in her own colours
 
 ![29Oct2026 - T484 - the paths and CRYSTALs reflection - 31](29Oct2026%20-%20T484%20-%20the%20paths%20and%20CRYSTALs%20reflection%20-%2031.png)
+
+### 29Oct2026 - T483 - the world breathing at 3 AM with the book - 32
+
+T-483: THE HERMETIC LAYER held, DEBUG WATCH 3 AM -- the map's palettes breathe red to blue through purple at ~30%, the follower shimmers on the same breath (theatre, tools/routes/t483.json stop 1)
+
+![29Oct2026 - T483 - the world breathing at 3 AM with the book - 32](29Oct2026%20-%20T483%20-%20the%20world%20breathing%20at%203%20AM%20with%20the%20book%20-%2032.png)
+
+### 29Oct2026 - T483 - Halloween costume and unmask - 33
+
+T-483: DEBUG DATE MASK NIGHT by day, the book held -- the follower goes as UNSPOKEN (a type that beats its own), the pulse all day; A takes the mask off for the day (DRAFT line)
+
+![29Oct2026 - T483 - Halloween costume and unmask - 33](29Oct2026%20-%20T483%20-%20Halloween%20costume%20and%20unmask%20-%2033.png)
+
+### 29Oct2026 - T483 - the book by day - 34
+
+T-483: by day THE HERMETIC LAYER will not open (DRAFT line)
+
+![29Oct2026 - T483 - the book by day - 34](29Oct2026%20-%20T483%20-%20the%20book%20by%20day%20-%2034.png)
+
+### 29Oct2026 - T482 - the battle ground breathing at 3 AM - 35
+
+T-482: 3 AM with THE SUBTLE LAYER held -- the battle's ground breathes red to blue through purple; the battlers keep their colours, the player's daemon shimmers on the same breath
+
+![29Oct2026 - T482 - the battle ground breathing at 3 AM - 35](29Oct2026%20-%20T482%20-%20the%20battle%20ground%20breathing%20at%203%20AM%20-%2035.png)
+
+### 29Oct2026 - T483 - the book at night, the warning and the glitch - 36
+
+T-483 / T-486: at night the cover, OSRIC HATTER's warning, the one glitch on the first page turned past it, the contents, and an inscription in emerald breathing; the backdrop pulses. Pictures are a placeholder frame (none drawn yet). The caption 'pages will not part' under some frames is the route tool's last box, not on screen.
+
+![29Oct2026 - T483 - the book at night, the warning and the glitch - 36](29Oct2026%20-%20T483%20-%20the%20book%20at%20night%2C%20the%20warning%20and%20the%20glitch%20-%2036.png)

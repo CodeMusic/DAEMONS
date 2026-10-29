@@ -1,0 +1,92 @@
+{
+  "rom": "debug",
+  "about": "T-483 / T-482 / T-486: THE HERMETIC LAYER in the game. With the book held at 3 AM (DEBUG's WATCH, gDaemonsWatchOverride 5) the map breathes red to blue through purple and the follower shimmers on the same breath; on Halloween (DEBUG's DATE, gDaemonsDateOverride 10, MASK NIGHT) by day the follower wears a costume and A takes it off; by day the book will not open; at night it opens on its cover, then its warning, and the first page turned past the warning glitches once; at 3 AM in a wild battle the ground breathes. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "3 AM, the book held: the world breathes, the follower shimmers",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_GOT_GUIDE 1",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "keyitem ITEM_HERMETIC_LAYER",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 5",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "burst \"the world breathing\" 9 30"
+      ]
+    },
+    {
+      "stop": "Halloween by day: the costume, and A takes the mask off",
+      "steps": [
+        "flag FLAG_HERMETIC_UNMASKED 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke gDaemonsDateOverride 8 10",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "wait 60",
+        "burst \"in its costume, the pulse all day\" 5 40",
+        "follower talk",
+        "says \"mask\"",
+        "flagis FLAG_HERMETIC_UNMASKED 1",
+        "wait 60",
+        "shot \"itself again\""
+      ]
+    },
+    {
+      "stop": "by day the book will not open",
+      "steps": [
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "goto CeruleanCity 17 7",
+        "register ITEM_HERMETIC_LAYER",
+        "press SELECT",
+        "read",
+        "says \"reads by night\"",
+        "press A"
+      ]
+    },
+    {
+      "stop": "night: the cover, the warning, and the glitch past it",
+      "steps": [
+        "flag FLAG_HERMETIC_GLITCHED 0",
+        "poke gDaemonsWatchOverride 8 3",
+        "goto CeruleanCity 17 7",
+        "press SELECT",
+        "wait 90",
+        "shot \"the cover\"",
+        "press A",
+        "shot \"the warning\"",
+        "press A 3",
+        "burst \"the glitch past the warning\" 14 1 A 2",
+        "wait 30",
+        "shot \"the contents\"",
+        "flagis FLAG_HERMETIC_GLITCHED 1",
+        "press DOWN 2",
+        "press A",
+        "burst \"an inscription breathing\" 6 60",
+        "press B",
+        "press B",
+        "press B",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "3 AM in a wild battle: the ground breathes (T-482)",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 5",
+        "goto Route22 15 9",
+        "wild keep",
+        "wait 30",
+        "burst \"the battle's ground breathing\" 9 30",
+        "win",
+        "wait 120"
+      ]
+    }
+  ]
+}
