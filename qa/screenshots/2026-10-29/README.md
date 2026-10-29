@@ -247,3 +247,9 @@ entering at 3:00, 3:15 and 3:30 (DEBUG WATCH): 4, 7 and 12 frames, the strength 
 FOUR ISLAND with the GLOBAL INDEX held: AL's one crack after his lines, once (DRAFT; a seven-letter rival name, the widest case)
 
 ![29Oct2026 - T487 - ALs one crack - 64](29Oct2026%20-%20T487%20-%20ALs%20one%20crack%20-%2064.png)
+
+### 29Oct2026 - C247 - GAME tab title - 65
+
+C-247: the GAME tab's title (CONTENT), at phone width in a browser -- the game's own logo, word and face-off daemons; PLAY, UPDATE, DEBUG, ANOTHER GAME (DRAFT)
+
+![29Oct2026 - C247 - GAME tab title - 65](29Oct2026%20-%20C247%20-%20GAME%20tab%20title%20-%2065.jpg)
