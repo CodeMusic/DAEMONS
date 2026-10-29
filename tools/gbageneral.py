@@ -271,6 +271,11 @@ def lum(c):
     return 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
 
 
+def unfilled(c):
+    """a palette slot nobody filled: pret leaves them magenta (T-484)"""
+    return tuple(c[:3]) == (255, 0, 255)
+
+
 def families_of(pal, row):
     """index -> material name, for one palette row; town rows (7..12) are read by hue"""
     if row in ROW_MATERIALS:
@@ -562,6 +567,10 @@ def redraw(t, px, rows, group, texmap=None):
         if not ok:
             notes.append("%s left: its indices do not keep their order in every row that draws it" % m)
             continue
+        # an index vanilla did not use here must be a real colour in EVERY row that draws the tile: UMBRA PLATEAU's
+        # row 12 leaves 5 and 9..12 unfilled (magenta), and the paving's step to 9 showed there as pink specks
+        # (T-484). A pixel that lands on one takes the nearest step that is filled everywhere instead
+        holes = {i for i in ramp if i not in idxs and any(unfilled(palette(k)[i]) for k in rows)}
         if len(ramp) < 2:
             continue
         tone = {v: k for k, v in enumerate(ramp)}
@@ -610,7 +619,11 @@ def redraw(t, px, rows, group, texmap=None):
                 b = (1 - k) * plane(x, y) + k * acc / wsum
                 lit = lum(pal[ramp[max(0, min(len(ramp) - 1, int(round(b))))]]) >= mid_lum   # the same test in every tile
                 n = int(round(b + f(x, y, t, b, lit)))
-                out[y * 8 + x] = ramp[max(lo_t, min(hi_t, n))]
+                j = max(lo_t, min(hi_t, n))
+                if ramp[j] in holes:
+                    j = min((q for q in range(lo_t, hi_t + 1) if ramp[q] not in holes),
+                            key=lambda q: (abs(q - j), abs(q - b)))
+                out[y * 8 + x] = ramp[j]
     return out, notes
 
 

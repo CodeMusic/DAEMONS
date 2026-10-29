@@ -16,8 +16,14 @@ WRONG when the source holds more than 16 colours but the picture draws only indi
 a 256-colour palette. A source byte-identical to pret's is vanilla and is listed with --all, never failed: vanilla's
 multi-palette screens (32, 48 ... colours) load several palettes on purpose. A source of ours is also WRONG when it
 holds more colours than pret's own version of the same file.
+
+HOLES (T-484). A map tile we redrew must not draw an index its palette row leaves UNFILLED (pret's magenta): batch
+C's paving stepped one shade past vanilla's into index 9, a real grey in general's rows and magenta in UMBRA
+PLATEAU's row 12, and the plateau's path showed pink specks for a week. Every block a reachable layout places, every
+tile it draws (primary or secondary) in the row it draws it with: a pixel that differs from pret's tile and lands on
+an unfilled colour is WRONG. A pixel vanilla drew the same way is vanilla's and is never failed.
 """
-import glob, io, os, re, subprocess, sys
+import glob, io, json, os, re, struct, subprocess, sys
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -111,13 +117,92 @@ def scan():
     return len(syms), sum(len(v) for v in loads.values()), found
 
 
+# ================================================================== holes: a redrawn pixel on an unfilled colour
+def _jasc(path):
+    lines = open(path, encoding="utf-8", errors="replace").read().splitlines()
+    return [tuple(int(v) for v in l.split()[:3]) for l in lines[3:19]]
+
+
+def _tiles(data):
+    im = Image.open(io.BytesIO(data))
+    w, h = im.size
+    px = im.tobytes()
+    return [[px[(ty * 8 + r) * w + tx * 8 + c] & 15 for r in range(8) for c in range(8)]
+            for ty in range(h // 8) for tx in range(w // 8)]
+
+
+def holes():
+    """[(tileset dir, tile, row, unfilled indices, a layout that shows it)] over every reachable layout"""
+    hdr = open(os.path.join(GBA, "src/data/tilesets/headers.h")).read()
+    gfx = open(os.path.join(GBA, "src/data/tilesets/graphics.h")).read() + \
+        open(os.path.join(GBA, "src/graphics.c")).read()          # the primaries' tiles and palettes are there
+    mts = open(os.path.join(GBA, "src/data/tilesets/metatiles.h")).read()
+    sets = {}
+
+    def tileset(sym):
+        if sym in sets:
+            return sets[sym]
+        body = re.search(r"const struct Tileset %s =\s*\{(.*?)\};" % re.escape(sym or "-"), hdr, re.S)
+        out = None
+        if body:
+            b = body.group(1)
+            m = re.search(r"\.metatiles = (\w+)", b)
+            t = re.search(r"\.tiles = (\w+)", b)
+            p = re.search(r"\.palettes = (\w+)", b)
+            md = m and re.search(r'%s\[\] = INCBIN_U16\("(data/tilesets/[^"]+)/metatiles\.bin' % re.escape(m.group(1)), mts)
+            td = t and re.search(r'%s\[\] = INCBIN_U32\("(data/tilesets/[^"]+)/tiles\.' % re.escape(t.group(1)), gfx)
+            pt = p and re.search(r"%s\[\]\[16\] =\s*\{(.*?)\};" % re.escape(p.group(1)), gfx, re.S)
+            if md and td and pt and os.path.exists(os.path.join(GBA, td.group(1), "tiles.png")):
+                rel = td.group(1) + "/tiles.png"
+                up = upstream(rel)
+                pals = [os.path.join(GBA, f[:-len(".gbapal")] + ".pal")
+                        for f in re.findall(r'INCBIN_U16\("([^"]+)"\)', pt.group(1))]
+                out = dict(dir=td.group(1), mt=open(os.path.join(GBA, md.group(1), "metatiles.bin"), "rb").read(),
+                           now=_tiles(open(os.path.join(GBA, rel), "rb").read()), van=_tiles(up) if up else [],
+                           pals=[_jasc(f) if os.path.exists(f) else [] for f in pals])
+        sets[sym] = out
+        return out
+
+    lays = {l["id"]: l for l in json.load(open(os.path.join(GBA, "data/layouts/layouts.json")))["layouts"] if "id" in l}
+    used = set()
+    for mj in glob.glob(os.path.join(GBA, "data/maps/*/map.json")):
+        if not os.path.basename(os.path.dirname(mj)).startswith("Prototype_"):
+            used.add(json.load(open(mj)).get("layout"))
+    found = {}
+    for lid in sorted(used & set(lays)):
+        l = lays[lid]
+        pri, sec = tileset(l.get("primary_tileset")), tileset(l.get("secondary_tileset"))
+        bp = os.path.join(GBA, l.get("blockdata_filepath", ""))
+        if not pri or not sec or not os.path.exists(bp):
+            continue
+        data = open(bp, "rb").read()
+        for b in set(struct.unpack_from("<%dH" % (len(data) // 2), data)):
+            b &= 0x3FF
+            buf, k = (pri["mt"], b) if b < 640 else (sec["mt"], b - 640)
+            if (k + 1) * 16 > len(buf):
+                continue
+            for v in struct.unpack_from("<8H", buf, k * 16):
+                t, row = v & 0x3FF, v >> 12
+                ts, i = (pri, t) if t < 640 else (sec, t - 640)
+                pal = (pri if row < 7 else sec)["pals"]
+                if i >= len(ts["now"]) or row >= len(pal) or len(pal[row]) < 16:
+                    continue
+                van = ts["van"][i] if i < len(ts["van"]) else [None] * 64
+                bad = sorted({a for a, w in zip(ts["now"][i], van) if a and a != w and pal[row][a] == (255, 0, 255)})
+                if bad:
+                    found.setdefault((ts["dir"], i, row), (bad, l["name"]))
+    return [(d, i, r, bad, name) for (d, i, r), (bad, name) in sorted(found.items())]
+
+
 def check():
     """For check_lexicon: [(what, why)] for every palette of ours that loads more colours than its picture draws."""
     _, _, found = scan()
     return [(f["src"], "%d colours%s, loaded by sizeof(%s) at %s -- re-save it with the colours it draws" %
              (f["colours"], ", pixels 0..%d" % f["top"] if f["top"] is not None else " (vanilla's has %s)" %
               f["vanilla_colours"], f["sym"], ", ".join(f["where"])))
-            for f in found if f["wrong"] and not f["vanilla"]]
+            for f in found if f["wrong"] and not f["vanilla"]] + \
+        [("%s/tiles.png tile %d" % (d, i), "drawn in row %d (%s) on index %s, which that row leaves unfilled (magenta) "
+          "-- redraw it on a filled index (T-484)" % (r, name, ",".join(map(str, bad)))) for d, i, r, bad, name in holes()]
 
 
 def main():
@@ -138,7 +223,13 @@ def main():
     if not bad:
         print("  every palette loaded by sizeof() is the size its picture draws (%d over 16 colours, all on purpose)"
               % len(found))
-    return 1 if bad else 0
+    hs = holes()
+    for d, i, r, idx, name in hs:
+        print("  HOLE   %s/tiles.png tile %d, row %d (%s): index %s is unfilled there" %
+              (d, i, r, name, ",".join(map(str, idx))))
+    if not hs:
+        print("  no redrawn map tile draws an index its palette row leaves unfilled")
+    return 1 if bad or hs else 0
 
 
 if __name__ == "__main__":
