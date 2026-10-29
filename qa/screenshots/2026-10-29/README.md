@@ -289,3 +289,63 @@ C-223: TRADE's FRIENDS on a scratch companion -- ROVER asks KIT, then friends af
 C-223: TRADE's FRIENDS on a scratch companion -- ROVER asks KIT, then friends after ACCEPT (DRAFT)
 
 ![29Oct2026 - C223 - FRIENDS on TRADE - 74](29Oct2026%20-%20C223%20-%20FRIENDS%20on%20TRADE%20-%2074.jpg)
+
+### 29Oct2026 - T488 - SLATE MART sells sinks after MARK 1 - 76
+
+T-488 (DRAFT): SLATE CITY's MART with MARK 1 held sells LEGACY, FLOW, GROWTH, LOGIC, STRATUM and HARDENED SINK at 2000; one heat-sink icon in each type's disc palette; descriptions within 198px
+
+![29Oct2026 - T488 - SLATE MART sells sinks after MARK 1 - 76](29Oct2026%20-%20T488%20-%20SLATE%20MART%20sells%20sinks%20after%20MARK%201%20-%2076.png)
+
+### 29Oct2026 - T488 - SLATE MART sells sinks after MARK 1 - 77
+
+T-488 (DRAFT): SLATE CITY's MART with MARK 1 held sells LEGACY, FLOW, GROWTH, LOGIC, STRATUM and HARDENED SINK at 2000; one heat-sink icon in each type's disc palette; descriptions within 198px
+
+![29Oct2026 - T488 - SLATE MART sells sinks after MARK 1 - 77](29Oct2026%20-%20T488%20-%20SLATE%20MART%20sells%20sinks%20after%20MARK%201%20-%2077.png)
+
+### 29Oct2026 - T488 - SLATE MART sells sinks after MARK 1 - 78
+
+T-488 (DRAFT): SLATE CITY's MART with MARK 1 held sells LEGACY, FLOW, GROWTH, LOGIC, STRATUM and HARDENED SINK at 2000; one heat-sink icon in each type's disc palette; descriptions within 198px
+
+![29Oct2026 - T488 - SLATE MART sells sinks after MARK 1 - 78](29Oct2026%20-%20T488%20-%20SLATE%20MART%20sells%20sinks%20after%20MARK%201%20-%2078.png)
+
+### 29Oct2026 - T488 - a sink takes the hit - 79
+
+T-488 (DRAFT): a wild GYARADOS holding SIGNAL SINK, hit by THUNDERBOLT (super-effective): the DRAFT line, the hit halved and the item spent; the second hit lands whole with no line
+
+![29Oct2026 - T488 - a sink takes the hit - 79](29Oct2026%20-%20T488%20-%20a%20sink%20takes%20the%20hit%20-%2079.png)
+
+### 29Oct2026 - T488 - a sink takes the hit - 80
+
+T-488 (DRAFT): a wild GYARADOS holding SIGNAL SINK, hit by THUNDERBOLT (super-effective): the DRAFT line, the hit halved and the item spent; the second hit lands whole with no line
+
+![29Oct2026 - T488 - a sink takes the hit - 80](29Oct2026%20-%20T488%20-%20a%20sink%20takes%20the%20hit%20-%2080.png)
+
+### 29Oct2026 - T488 - a sink takes the hit - 81
+
+T-488 (DRAFT): a wild GYARADOS holding SIGNAL SINK, hit by THUNDERBOLT (super-effective): the DRAFT line, the hit halved and the item spent; the second hit lands whole with no line
+
+![29Oct2026 - T488 - a sink takes the hit - 81](29Oct2026%20-%20T488%20-%20a%20sink%20takes%20the%20hit%20-%2081.png)
+
+### 29Oct2026 - T492 - a gift arrives - 82
+
+T-492 (DRAFT): DEBUG -> GAME EVENTS -> A GIFT ARRIVES (GIFTED + TRADED_IN, partner 0, as C-223 writes it): the line says it arrived as a gift, it trade-evolved THEOREM -> LEMMA MIND, and its INDEX area page says FIRST MET: A GIFT
+
+![29Oct2026 - T492 - a gift arrives - 82](29Oct2026%20-%20T492%20-%20a%20gift%20arrives%20-%2082.png)
+
+### 29Oct2026 - T492 - a gift arrives - 83
+
+T-492 (DRAFT): DEBUG -> GAME EVENTS -> A GIFT ARRIVES (GIFTED + TRADED_IN, partner 0, as C-223 writes it): the line says it arrived as a gift, it trade-evolved THEOREM -> LEMMA MIND, and its INDEX area page says FIRST MET: A GIFT
+
+![29Oct2026 - T492 - a gift arrives - 83](29Oct2026%20-%20T492%20-%20a%20gift%20arrives%20-%2083.png)
+
+### 29Oct2026 - T492 - a gift arrives - 84
+
+T-492 (DRAFT): DEBUG -> GAME EVENTS -> A GIFT ARRIVES (GIFTED + TRADED_IN, partner 0, as C-223 writes it): the line says it arrived as a gift, it trade-evolved THEOREM -> LEMMA MIND, and its INDEX area page says FIRST MET: A GIFT
+
+![29Oct2026 - T492 - a gift arrives - 84](29Oct2026%20-%20T492%20-%20a%20gift%20arrives%20-%2084.png)
+
+### 29Oct2026 - T492 - a gift arrives - 85
+
+T-492 (DRAFT): DEBUG -> GAME EVENTS -> A GIFT ARRIVES (GIFTED + TRADED_IN, partner 0, as C-223 writes it): the line says it arrived as a gift, it trade-evolved THEOREM -> LEMMA MIND, and its INDEX area page says FIRST MET: A GIFT
+
+![29Oct2026 - T492 - a gift arrives - 85](29Oct2026%20-%20T492%20-%20a%20gift%20arrives%20-%2085.png)

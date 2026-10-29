@@ -347,11 +347,30 @@ def trade_bits():
             bit += unit * ((lengths[length] if length in lengths else int(length)) if length else 1)
     trading, loan, traded_in = at["trading"], at["daemonsLoan"], at["daemonsTradedIn"]
     partner = at["daemonsTradePartner"]                                                     # T-474
-    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or not loan[0] == traded_in[0] == partner[0]:
+    gifted = at["daemonsGifted"]                                                            # T-492 (C-223)
+    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or not loan[0] == traded_in[0] == partner[0] == gifted[0]:
         raise SystemExit("  refused: struct BoxPokemon's trade bits are not where the companion reads them")
     return {"trading_bit": trading[1], "trade_flags_offset": loan[0],
             "loan_mask": 1 << loan[1], "traded_in_mask": 1 << traded_in[1],
-            "trade_partner_shift": partner[1], "trade_partner_mask": ((1 << partner[2]) - 1) << partner[1]}
+            "trade_partner_shift": partner[1], "trade_partner_mask": ((1 << partner[2]) - 1) << partner[1],
+            #  T-492: GIVEN, nothing back -- set with traded_in_mask (partner 0); the game says "a gift", FIRST MET: A GIFT
+            "gifted_shift": gifted[1], "gifted_mask": 1 << gifted[1]}
+
+
+def first_met_specials():
+    rs = dict((k, int(v, 0)) for k, v in re.findall(r"#define\s+(METLOC_\w+)\s+(0x[0-9A-Fa-f]+|\d+)",
+                                                     read("include/constants/region_map_sections.h")))
+    fs = read("src/daemons_first_seen.c")
+    dex = read("src/pokedex_screen.c")
+    out = {}
+    for define, text in (("FIRST_SEEN_COMPANION", "sText_FirstMetCompanion"), ("FIRST_SEEN_TRADE", "sText_FirstMetTrade"),
+                         ("FIRST_SEEN_GIFT", "sText_FirstMetGift")):
+        metloc = re.search(r"#define\s+%s\s+(METLOC_\w+)" % define, fs)
+        words = re.search(r"%s\[\]\s*=\s*_\(\"([^\"]*)\"\)" % text, dex)
+        if not metloc or not words or metloc.group(1) not in rs:
+            raise SystemExit("  refused: %s or %s not found" % (define, text))
+        out[str(rs[metloc.group(1)])] = words.group(1)
+    return out
 
 
 def save_layout():
@@ -629,6 +648,9 @@ def profile_layout():
     first_met_places = {str(n): sec["name"] for n, sec in
                         enumerate(json.loads(read("src/data/region_map/region_map_sections.json"))["map_sections"])
                         if sec.get("name")}
+    #  T-448, T-473, T-492: the bytes that are no map section -- met through the companion, by a trade, as a gift -- read
+    #  from daemons_first_seen.c's defines and named as the INDEX names them (pokedex_screen.c's sText_FirstMet*)
+    first_met_places.update(first_met_specials())
     return {"_about": "C-23: offsets into SaveBlock2 (section 0) and SaveBlock1 (sections 1-4, end to end), read from "
                       "global.h's own struct comments; flag numbers resolved from flags.h. A flag below "
                       "daemons_flags_start is a bit in SaveBlock1's flags, one at or above it a bit in SaveBlock2's "
@@ -640,7 +662,8 @@ def profile_layout():
                       "house_take_at_fall is the take as it stood when CORPUS fell (the game freezes it there, once; "
                       "VERDIGRIS names it), same width and sign -- the game's to write, never a writer's. "
                       "T-406: sb1 first_met is where each daemon was first SEEN, first_met_bytes bytes, one per national "
-                      "number (number - 1), each a map section first_met_places names (0: not recorded); trust them only "
+                      "number (number - 1), each a map section first_met_places names (0: not recorded; it also names the "
+                      "three bytes that are no place -- THE COMPANION, A TRADE, A GIFT, T-492); trust them only "
                       "when the u32 at first_met_magic is first_met_magic_value (an older save holds a recap scene there). "
                       "A SEEN daemon with 0 was seen before the game kept them: the INDEX says BEFORE RECORDS.",
             "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
@@ -1095,7 +1118,8 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_SOUNDING",                                                          # T-458: the companion's signal, faked
                    "EV_ITS_DREAM",                                                         # T-462: the companion's dream, faked
                    "EV_TRADE_IN", "EV_LOAN_IN",                                            # T-473: the companion's trade, faked
-                   "EV_PAIR_PENGUIN", "EV_PAIR_DOLPHIN", "EV_PAIR_OTHER", "EV_PAIR_LOAN"}  # T-474: its pair trade, faked
+                   "EV_PAIR_PENGUIN", "EV_PAIR_DOLPHIN", "EV_PAIR_OTHER", "EV_PAIR_LOAN",  # T-474: its pair trade, faked
+                   "EV_GIFT_IN"}                                                           # T-492: its gift, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE"}        # T-431: the feelings' debug view and its clock; T-454: THE THREE's
 
