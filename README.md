@@ -15,7 +15,7 @@ PLAY, the GAME CORNER and the companion, and a glossary, in one PDF. It says how
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.326.1**
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.328.1**
 (2026-10-28); each one on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
 *LeafGreen* 1.0 and Rev 1 — and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing,
 building and the two editions.

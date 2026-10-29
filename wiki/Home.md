@@ -68,7 +68,7 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.326.1**, from 2026-10-29. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.328.1**, from 2026-10-29. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
