@@ -91,3 +91,9 @@ T-480 (DRAFT): CERULEAN at night with DEBUG's WATCH on NIGHT, then on 3 AM -- th
 T-480 (DRAFT): 3 AM with THE SUBTLE LAYER held, a wild battle on ROUTE 22. R in the move menu opens the hour's second screen: CODEMUSAI's routine for its first type, THIN SEAM (CONTEXT), 5/5 uses; chosen, the hour's purple light and moonlit chime, then PSYCHIC's strike, and the foe's HP falls. The moveset (OCCLUDE, CRACK, FALSIFY, INSPECT) is untouched.
 
 ![29Oct2026 - T480 - the hours page and THIN SEAM - 15](29Oct2026%20-%20T480%20-%20the%20hours%20page%20and%20THIN%20SEAM%20-%2015.png)
+
+### 29Oct2026 - T480 - the hours mark - 16
+
+T-480 (DRAFT): 3 AM with THE SUBTLE LAYER held. Left, the moveset: a faint purple arrow (the book's lit purple) after MP points down to the hour's second screen; right, that screen: THIN SEAM, 5/5, and the arrow turned up, pointing back. No words. Theatre, the debug scratch save.
+
+![29Oct2026 - T480 - the hours mark - 16](29Oct2026%20-%20T480%20-%20the%20hours%20mark%20-%2016.png)
