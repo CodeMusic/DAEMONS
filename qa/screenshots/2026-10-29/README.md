@@ -277,3 +277,15 @@ T-491 (DRAFT): CONSENSUS with a high-overlap party -- the one other standing dae
 T-491 (DRAFT): CONSENSUS with a low-overlap party -- the other standing daemon runs EMBER, WATER GUN, THUNDERSHOCK, VINE WHIP, none of the user's types (SHARED 0, DIFFERING 4): gBattleMovePower read back as 90.
 
 ![29Oct2026 - T491 - CONSENSUS low overlap - 69](29Oct2026%20-%20T491%20-%20CONSENSUS%20low%20overlap%20-%2069.png)
+
+### 29Oct2026 - C223 - FRIENDS on TRADE - 73
+
+C-223: TRADE's FRIENDS on a scratch companion -- ROVER asks KIT, then friends after ACCEPT (DRAFT)
+
+![29Oct2026 - C223 - FRIENDS on TRADE - 73](29Oct2026%20-%20C223%20-%20FRIENDS%20on%20TRADE%20-%2073.jpg)
+
+### 29Oct2026 - C223 - FRIENDS on TRADE - 74
+
+C-223: TRADE's FRIENDS on a scratch companion -- ROVER asks KIT, then friends after ACCEPT (DRAFT)
+
+![29Oct2026 - C223 - FRIENDS on TRADE - 74](29Oct2026%20-%20C223%20-%20FRIENDS%20on%20TRADE%20-%2074.jpg)
