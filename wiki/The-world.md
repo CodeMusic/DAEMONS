@@ -28,7 +28,9 @@ On fifteen of the early roads the grass changes with them: **one slot belongs to
 dawn, dusk or night -- so some daemons are met only at a time of year, or a time of day.
 
 The battles keep the calendar too: their backgrounds take the season, the hour, the weekday's colour and, on a
-holiday, the holiday's own.
+holiday, the holiday's own. So do the menus, the INDEX and SUMMARY panes and the text boxes, and the light over the
+map. The weekday's colour is only ever a detail -- a line, a few glints -- the kind of thing noticed on the seventh
+day rather than the first.
 
 ## The weather
 
