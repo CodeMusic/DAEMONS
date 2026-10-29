@@ -73,3 +73,21 @@ T-479 in the theatre (debug, routes/t474_index.json): PENPHIN's workings draw a 
 The witching hour on the watches, a mock-up from the firmware's own numbers (not a screenshot): from 3 to 4 AM a thin purple shimmer and no shadow; ROUTINES > THE HOUR > its type's routine, once the book is held. Every word DRAFT.
 
 ![29Oct2026 - C236 - the witching hour mock-up - 12](29Oct2026%20-%20C236%20-%20the%20witching%20hour%20mock-up%20-%2012.png)
+
+### 29Oct2026 - T480 - the follower at night and at 3 AM - 13
+
+T-480 (DRAFT): CERULEAN at night with DEBUG's WATCH on NIGHT, then on 3 AM -- the follower wears the book's purple, faint and flickering frame to frame, and casts no reflection while the hour lasts. Theatre, the debug scratch save.
+
+![29Oct2026 - T480 - the follower at night and at 3 AM - 13](29Oct2026%20-%20T480%20-%20the%20follower%20at%20night%20and%20at%203%20AM%20-%2013.png)
+
+### 29Oct2026 - T480 - the follower at night and at 3 AM - 14
+
+T-480 (DRAFT): CERULEAN at night with DEBUG's WATCH on NIGHT, then on 3 AM -- the follower wears the book's purple, faint and flickering frame to frame, and casts no reflection while the hour lasts. Theatre, the debug scratch save.
+
+![29Oct2026 - T480 - the follower at night and at 3 AM - 14](29Oct2026%20-%20T480%20-%20the%20follower%20at%20night%20and%20at%203%20AM%20-%2014.png)
+
+### 29Oct2026 - T480 - the hours page and THIN SEAM - 15
+
+T-480 (DRAFT): 3 AM with THE SUBTLE LAYER held, a wild battle on ROUTE 22. R in the move menu opens the hour's second screen: CODEMUSAI's routine for its first type, THIN SEAM (CONTEXT), 5/5 uses; chosen, the hour's purple light and moonlit chime, then PSYCHIC's strike, and the foe's HP falls. The moveset (OCCLUDE, CRACK, FALSIFY, INSPECT) is untouched.
+
+![29Oct2026 - T480 - the hours page and THIN SEAM - 15](29Oct2026%20-%20T480%20-%20the%20hours%20page%20and%20THIN%20SEAM%20-%2015.png)

@@ -1497,11 +1497,22 @@ UNION = {"LEGACY": "FLUENCY", "FLOW": "STILLPOINT", "SIGNAL": "RECONNECT", "GROW
          "CONTEXT": "PANORAMA", "ENTROPY": "HINDSIGHT"}
 
 
+#  T-480: the witching hour's routines, one per type, are filed by their type too, and drawn by hand: the hour's light
+#  (Move_WITCHING_HOUR_LIGHT) and then a distinct existing strike of the type, so nothing here writes them either.
+WITCHING = {"CONTENT": "BLANK_PAGE", "LOGIC": "LAST_PROOF", "VECTOR": "NIGHT_COURSE", "CORRUPT": "BITROT_MOON",
+            "STRATUM": "UNDERLAYER", "LEGACY": "OLD_GHOSTS", "SWARM": "QUIET_HIVE", "LATENT": "WHAT_SLEEPS",
+            "HARDENED": "NIGHT_WATCH", "ENTROPY": "EMBER_HOUR", "FLOW": "UNDERTOW", "GROWTH": "DARK_ROOTS",
+            "SIGNAL": "DEAD_AIR", "CONTEXT": "THIN_SEAM", "FROZEN": "BLACK_ICE", "EMERGENT": "BEFORE_DAWN",
+            "OPAQUE": "VEIL"}
+
+
 def _with_union(fam, fn):
     def table():
         t = fn()
         if fam in UNION:
             t[UNION[fam]] = None
+        if fam in WITCHING:
+            t[WITCHING[fam]] = None
         return t
     return table
 

@@ -1,0 +1,52 @@
+{
+  "rom": "debug",
+  "about": "T-480: the witching hour, the game's half. DEBUG's WATCH forced to NIGHT and then to 3 AM (gDaemonsWatchOverride 3, then 5): at 3 AM the follower wears a faint purple shimmer and casts no reflection; with THE SUBTLE LAYER held, a wild battle's move menu has the hour's page (R, or DOWN past the bottom row) with the lead's routine, named for its first type, and choosing it plays the hour's light and the strike. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "NIGHT, no hour: the follower as it always is",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "poke gDaemonsWatchOverride 8 3",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "wait 30",
+        "shot night without the hour"
+      ]
+    },
+    {
+      "stop": "3 AM, no book: the shimmer, flickering",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 5",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "burst shimmer 8 6"
+      ]
+    },
+    {
+      "stop": "3 AM, the book held: a wild battle, the hour's page and the routine",
+      "steps": [
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "keyitem ITEM_SUBTLE_LAYER",
+        "goto Route22 15 9",
+        "wild keep",
+        "wait 30",
+        "shot the action menu at 3 AM",
+        "press A",
+        "shot the moveset",
+        "press R",
+        "shot the hour's page",
+        "hold A 6",
+        "burst routine 24 10",
+        "wait 200",
+        "shot after the routine",
+        "win",
+        "wait 120"
+      ]
+    }
+  ]
+}
