@@ -211,3 +211,39 @@ The player's manual, chapter 10: the two books side by side, and THE HERMETIC LA
 T-486: the glitch modelled at three strengths over OSRIC HATTER's room draft -- 3:30 strongest, 3:15/3:45 middle, 3:00/3:59 weakest
 
 ![29Oct2026 - T486 - the glitch by strength - 51](29Oct2026%20-%20T486%20-%20the%20glitch%20by%20strength%20-%2051.png)
+
+### 29Oct2026 - T485 - the hat on QUICKSILVER - 59
+
+OSRIC HATTER's leaning top hat on QUICKSILVER's south sand, door (10,13), by day (DEBUG build, theatre)
+
+![29Oct2026 - T485 - the hat on QUICKSILVER - 59](29Oct2026%20-%20T485%20-%20the%20hat%20on%20QUICKSILVER%20-%2059.png)
+
+### 29Oct2026 - T485 - the room and A1 - 60
+
+the room of stopped clocks; OSRIC at his chair; the first visit's riddle, A1 (DRAFT)
+
+![29Oct2026 - T485 - the room and A1 - 60](29Oct2026%20-%20T485%20-%20the%20room%20and%20A1%20-%2060.png)
+
+### 29Oct2026 - T485 - A3 then B1 with the book - 61
+
+with THE HERMETIC LAYER held: the visit's riddle (A3), then the next book riddle (B1) (DRAFT)
+
+![29Oct2026 - T485 - A3 then B1 with the book - 61](29Oct2026%20-%20T485%20-%20A3%20then%20B1%20with%20the%20book%20-%2061.png)
+
+### 29Oct2026 - T486 - the entry glitch by the clock - 62
+
+entering at 3:00, 3:15 and 3:30 (DEBUG WATCH): 4, 7 and 12 frames, the strength following the clock
+
+![29Oct2026 - T486 - the entry glitch by the clock - 62](29Oct2026%20-%20T486%20-%20the%20entry%20glitch%20by%20the%20clock%20-%2062.png)
+
+### 29Oct2026 - T486 - the glitch in the 3-30 line - 63
+
+3:30: 'for once every clock in the house is right', the glitch between the second and third boxes (DRAFT)
+
+![29Oct2026 - T486 - the glitch in the 3-30 line - 63](29Oct2026%20-%20T486%20-%20the%20glitch%20in%20the%203-30%20line%20-%2063.png)
+
+### 29Oct2026 - T487 - ALs one crack - 64
+
+FOUR ISLAND with the GLOBAL INDEX held: AL's one crack after his lines, once (DRAFT; a seven-letter rival name, the widest case)
+
+![29Oct2026 - T487 - ALs one crack - 64](29Oct2026%20-%20T487%20-%20ALs%20one%20crack%20-%2064.png)
