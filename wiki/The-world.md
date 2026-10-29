@@ -90,9 +90,10 @@ the time it is friendly, the full ramp at the most. People stay in colour; some 
 
 ## The daemons, drawn again
 
-Every daemon was redrawn for DAEMONS and coloured by its type. Now they are being **drawn again**, in a style of their
-own: big, readable pixel portraits -- front, back and a party icon -- each with the one prop or shape that says what it
-is. They arrive in batches of about twenty; about 349 are in so far, and the rest are in progress.
+Every daemon was redrawn for DAEMONS and coloured by its type, and since v11.316.7 every one has been **drawn again**,
+in a style of their own: big, readable pixel portraits -- front, back and a party icon -- each with the one prop or
+shape that says what it is. A daemon with other forms has each of them drawn too, its weathers or its letters. The
+residents of one painted place keep the art they were painted in.
 
 **The daemon at the head of your party walks behind you** as a small picture of its own, at the player's size.
 
@@ -153,6 +154,9 @@ The INDEX has **398 entries**, and every one is written twice -- the two edition
 daemon. Its area page says where a daemon is **NATIVE**: its region and, when it keeps to them, its edition, hours,
 seasons and weathers.
 
+**The cart alone earns the diploma.** Binding every daemon the cartridge can give completes the INDEX: the line that
+grows only on the companion is a bonus, and so are the few daemons met just once.
+
 ## Places the game never points to
 
 There are places in DAEMONS that no sign and no character mentions. Finding them is the game. Please keep what you
@@ -172,6 +176,6 @@ released or traded on. See [The companion](The-companion).
 
 ## Not built yet
 
-Decided, and still to come: the rest of the daemons' new art, the rest of the landmarks, and the cave preview
-screens, which are still the original's. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md)
+Decided, and still to come: the rest of the landmarks, the cave preview screens, which are still the original's, and
+a pair of daemons that evolve only when traded for each other. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md)
 has them and more.

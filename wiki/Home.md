@@ -65,10 +65,10 @@ Boy build still compiles and runs its vertical slice, and is kept as a reference
 **The whole game is playable**, both editions, start to finish. Every daemon carries a DAEMONS name and a DAEMONS
 INDEX entry; the world keeps time, turns through the seasons in two hemispheres, has weather that follows them, and
 follows the real calendar's holidays, and gives each edition an instrument to play ([The world](The-world)). The
-daemons are being drawn again in a style of their own -- about 349 so far.
+daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.316.5**, from 2026-10-28. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.319.1**, from 2026-10-28. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
