@@ -559,6 +559,113 @@ def switch_menu():
     return out, clash
 
 
+# ---------------------------------------------------------------------------------------------------- the sprites
+#  T-449's leftover (the user chose it 2026-10-29): the cursor, the GOTO (fly) icon and the dungeon icon were still
+#  vanilla's white, yellow and blue. They keep vanilla's sizes, frames and timings (sAnim_MapCursor, sAnim_FlyIcon,
+#  sAnims_DungeonIcon are untouched) and their two OBJ palettes (cursor.pal, tag 0; misc_icon.pal, tag 10, shared by
+#  the fly and dungeon icons), rewritten in place: no palette is added.
+#
+#  THE CURSOR is navigation, so legibility comes first: a measure's four brackets in a TWO-TONE stroke -- an ink core
+#  with a paper halo, then (its second frame, the brackets breathing a pixel out as vanilla's do) a paper core with an
+#  ink halo. Nothing else on the page is drawn in two tones or blinks between them, so it reads on the paper, on the
+#  slate sea and on the ink routes alike, where vanilla's white vanished on the paper.
+#  THE GOTO ICON marks a town you can GOTO: the town's notehead lit in FLOW's blue inside an ink-rimmed paper ring,
+#  then (where vanilla went blank) the ring alone -- so a GOTO-able town reads differently from one you cannot GOTO to
+#  in every frame, not only on the blink, and the one you cannot is the page's bare ink notehead.
+#  THE DUNGEON ICON: not yet found, a small open notehead (ink ring, paper centre); found, a filled one (FLOW's blue in
+#  an ink rim, a paper halo).
+C_INK, C_LIGHT = 1, 2
+CURSOR_PAL = [vjasc("cursor.pal")[0], INK, LIGHT] + [INK] * 13
+M_INK, M_LIGHT, M_FLOW, M_PAPER = 1, 2, 3, 4
+MISC_PAL = [vjasc("misc_icon.pal")[0], INK, LIGHT, FLOW, PAPER] + [INK] * 11
+
+
+def halo(core, w, h, core_i, halo_i):
+    """a stroke: the core's pixels, and a one-pixel halo round them (4-neighbour, so its corners stay round)"""
+    t = [[0] * w for _ in range(h)]
+    for (x, y) in core:
+        for dx, dy in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)):
+            if 0 <= x + dx < w and 0 <= y + dy < h:
+                t[y + dy][x + dx] = halo_i
+    for (x, y) in core:
+        t[y][x] = core_i
+    return t
+
+
+def brackets(a, b, arm=4):
+    """four corners, two thick, from a to b on both axes. With its halo it spans 1..14, then 0..15 -- a pixel wider
+    than vanilla's, so it closes round the GOTO icon's ring instead of sitting on it"""
+    pts = set()
+    for (x0, sx) in ((a, 1), (b, -1)):
+        for (y0, sy) in ((a, 1), (b, -1)):
+            for i in range(arm):
+                for j in range(2):
+                    pts.add((x0 + sx * i, y0 + sy * j))
+                    pts.add((x0 + sx * j, y0 + sy * i))
+    return pts
+
+
+def cursor_frames():
+    out = []
+    for (a, b), core, hal in (((2, 13), C_INK, C_LIGHT), ((1, 14), C_LIGHT, C_INK)):
+        t = halo(brackets(a, b), 16, 16, core, hal)
+        for y in range(16):           # the halo never bridges the middle, so it reads as four brackets, never a box
+            for x in range(16):
+                if (x in (7, 8) or y in (7, 8)) and t[y][x] == hal:
+                    t[y][x] = 0
+        out.append(t)
+    return out
+
+
+def disk(cx, cy, r0, r1, w=16, h=16):
+    return {(x, y) for y in range(h) for x in range(w) if r0 <= ((x - cx) ** 2 + (y - cy) ** 2) ** .5 < r1}
+
+
+NOTEHEAD = ["..###..", ".#####.", "#######", "#######", ".#####.", "..###.."]
+
+
+def fly_frames():
+    c = 7.5
+    lit = [[0] * 16 for _ in range(16)]
+    for (x, y) in disk(c, c, 5.2, 6.4): lit[y][x] = M_INK
+    for (x, y) in disk(c, c, 0, 5.2): lit[y][x] = M_LIGHT
+    for y, r in enumerate(NOTEHEAD):       # the page's notehead (cell + 1..7, 1..6) is at sprite 5..11, 5..10
+        for x, ch in enumerate(r):
+            if ch == "#": lit[5 + y][5 + x] = M_FLOW
+    for y, r in enumerate(NOTEHEAD):       # its rim in ink, so the blue sits on the paper
+        for x, ch in enumerate(r):
+            if ch != "#": continue
+            if any(not (0 <= y + dy < 6 and 0 <= x + dx < 7) or NOTEHEAD[y + dy][x + dx] != "#"
+                   for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                lit[5 + y][5 + x] = M_INK
+    lit[6][7] = lit[6][8] = M_LIGHT          # the shine the page's notehead has
+    ring = [[0] * 16 for _ in range(16)]
+    for (x, y) in disk(c, c, 5.2, 6.4): ring[y][x] = M_INK
+    for (x, y) in disk(c, c, 4.4, 5.2): ring[y][x] = M_LIGHT
+    return [lit, ring]
+
+
+def dungeon_frames():
+    found = [[0] * 8 for _ in range(8)]
+    for (x, y) in disk(3.5, 3.5, 2.6, 3.7, 8, 8): found[y][x] = M_LIGHT
+    for (x, y) in disk(3.5, 3.5, 1.6, 2.6, 8, 8): found[y][x] = M_INK
+    for (x, y) in disk(3.5, 3.5, 0, 1.6, 8, 8): found[y][x] = M_FLOW
+    unfound = [[0] * 8 for _ in range(8)]
+    for (x, y) in disk(3.5, 3.5, 1.0, 2.2, 8, 8): unfound[y][x] = M_INK
+    for (x, y) in disk(3.5, 3.5, 0, 1.0, 8, 8): unfound[y][x] = M_LIGHT
+    return [unfound, found]                   # frame 0 not visited, frame 1 visited (sAnims_DungeonIcon)
+
+
+def sprite_png(frames, pal):
+    w, hh = len(frames[0][0]), len(frames[0])
+    im = Image.new("P", (w, hh * len(frames))); im.putpalette([v for c in pal for v in c]); o = im.load()
+    for k, f in enumerate(frames):
+        for y in range(hh):
+            for x in range(w):
+                o[x, k * hh + y] = f[y][x]
+    return im
+
+
 # ---------------------------------------------------------------------------------------------------- files
 def png16(tiles, pal, width=16):
     n = len(tiles)
@@ -607,6 +714,11 @@ def outputs():
         "background.png": png_bytes(png16(bts.slots[:bts.used()], FRAME, width=bts.used())),
         "background.bin": bin_bytes(bg_bin),
         "switch_map_menu.png": png_bytes(menu),
+        "cursor.png": png_bytes(sprite_png(cursor_frames(), CURSOR_PAL)),
+        "cursor.pal": jasc(CURSOR_PAL),
+        "fly_icon.png": png_bytes(sprite_png(fly_frames(), MISC_PAL)),
+        "dungeon_icon.png": png_bytes(sprite_png(dungeon_frames(), MISC_PAL)),
+        "misc_icon.pal": jasc(MISC_PAL),
     }
     for p in PAGES:
         files[p + ".bin"] = bin_bytes(bins[p])
@@ -646,13 +758,14 @@ def render_page(bins, tiles, pal80, row5, page_bin, bg1_bin, bg1_tiles, bg1_pal,
     return im
 
 
-def today_screen(page):
+def today_screen(page, goto=False):
     T = VTILES
-    me = vtiles("map_edge.png")
+    me = vtiles("background.png" if goto else "map_edge.png")
     row2 = [tuple(int(v * 95 / 100) for v in c) for c in VPAL[32:48]]
     pal = {p: VPAL[p * 16:p * 16 + 16] for p in range(5)}
     pal[2] = row2[:15] + [VPAL[47]]
-    im = render_page(None, T, VPAL, None, vbin(page + ".bin"), vbin("map_edge.bin"), me, pal, (16, 115, 230))
+    im = render_page(None, T, VPAL, None, vbin(page + ".bin"), vbin("background.bin" if goto else "map_edge.bin"),
+                     me, pal, (16, 115, 230))
     o = im.load()
     for y in range(16):
         for x in range(240):
@@ -743,6 +856,126 @@ def sheets(state, out):
     frames = [built_screen(state, "sevii_45", n).resize((480, 320), Image.NEAREST) for n in range(0, 480, 4)]
     f = os.path.join(out, "t449b_sea.gif")
     frames[0].save(f, save_all=True, append_images=frames[1:], duration=67, loop=0); written.append(f)
+    written += icon_sheets(state, out)
+    return written
+
+
+# ---------------------------------------------------------------------------------------------------- the sprites, shown
+def goto_towns():
+    """the mapsecs GetMapsecType can call VISITED: the cells CreateFlyIcons puts a GOTO icon on"""
+    s = open(os.path.join(GBA, "src/region_map.c")).read()
+    body = s[s.index("static u8 GetMapsecType(u8 mapsec)\n{"):]
+    body = body[:body.index("\n}\n")]
+    return set(re.findall(r"case (MAPSEC_\w+):\s*return[^;]*MAPSECTYPE_VISITED", body))
+
+
+def dungeon_layer(page):
+    s = open(os.path.join(L, HDR[page])).read()
+    body = s[s.index("[LAYER_DUNGEON]"):]
+    rows = re.findall(r"\{([^{}]*)\}", body)
+    return [[t.strip() for t in r.split(",") if t.strip()] for r in rows][:15]
+
+
+def sprite_frames(png, pal, fw, fh):
+    """an icon PNG as frames of (r, g, b) or None, read from bytes"""
+    im = Image.open(io.BytesIO(png)); px = im.load()
+    return [[[pal[px[x, k * fh + y] & 15] if px[x, k * fh + y] & 15 else None for x in range(fw)] for y in range(fh)]
+            for k in range(im.size[1] // fh)]
+
+
+def blit(im, f, x0, y0):
+    o = im.load()
+    for y, r in enumerate(f):
+        for x, c in enumerate(r):
+            if c is not None and 0 <= x0 + x < 240 and 0 <= y0 + y < 160:
+                o[x0 + x, y0 + y] = c
+
+
+def icon_sets(today):
+    """(cursor frames, fly frames, dungeon frames), vanilla's or ours, as colours"""
+    if today:
+        cp, mp = vjasc("cursor.pal"), vjasc("misc_icon.pal")
+        c, f, d = vbytes("cursor.png"), vbytes("fly_icon.png"), vbytes("dungeon_icon.png")
+    else:
+        cp, mp = CURSOR_PAL, MISC_PAL
+        c, f, d = (png_bytes(sprite_png(cursor_frames(), CURSOR_PAL)), png_bytes(sprite_png(fly_frames(), MISC_PAL)),
+                   png_bytes(sprite_png(dungeon_frames(), MISC_PAL)))
+    return sprite_frames(c, cp, 16, 16), sprite_frames(f, mp, 16, 16), sprite_frames(d, mp, 8, 8)
+
+
+SHEET_UNVISITED = {"MAPSEC_CINNABAR_ISLAND", "MAPSEC_INDIGO_PLATEAU", "MAPSEC_THREE_ISLAND", "MAPSEC_FIVE_ISLAND"}
+SHEET_CURSOR = {"kanto": ("MAPSEC_CERULEAN_CITY", "MAPSEC_ROUTE_9"),
+                "sevii_123": ("MAPSEC_TWO_ISLAND", "MAPSEC_BOND_BRIDGE")}
+
+
+def goto_screen(state, page, today, cursor_sec, t=0):
+    """the GOTO map at rest after t frames: the page, the dungeon icons, the GOTO icons, the cursor on cursor_sec
+    (CreateSprite's centre is 8*x+36, 8*y+36; subpriority puts the cursor over the GOTO icons over the dungeons)"""
+    im = today_screen(page, goto=True) if today else built_screen(state, page, frame=t, goto=True)
+    cur, fly, dun = icon_sets(today)
+    lay, dl, towns = layout(page), dungeon_layer(page), goto_towns()
+    for cy in range(15):
+        for cx in range(22):
+            sec = dl[cy][cx]
+            if sec == "MAPSEC_NONE": continue
+            off = 2 if lay[cy][cx] in towns and lay[cy][cx] != "MAPSEC_ROUTE_10_POKECENTER" else 0
+            found = h(sec, "found") % 2 == 0
+            blit(im, dun[1 if found else 0], 8 * cx + 32 + off, 8 * cy + 32 + off)
+    fk = 0 if (t % 90) < 30 else 1                           # sAnim_FlyIcon: 30 frames, then 60
+    for cy in range(15):
+        for cx in range(22):
+            if lay[cy][cx] in towns and lay[cy][cx] not in SHEET_UNVISITED:
+                blit(im, fly[fk], 8 * cx + 28, 8 * cy + 28)
+    cells = [(cx, cy) for cy in range(15) for cx in range(22) if lay[cy][cx] == cursor_sec]
+    cx, cy = cells[len(cells) // 2]
+    blit(im, cur[(t // 20) % 2], 8 * cx + 28, 8 * cy + 28)  # sAnim_MapCursor: 20 and 20
+    return im
+
+
+def icon_sheets(state, out):
+    written = []
+    names = {"kanto": "THE MAINLAND", "sevii_123": "SEVII 1-2-3"}
+    W = 12 + 720 + 12 + 720 + 12 + 240 + 12
+    rows = [(p, k) for p in ("kanto", "sevii_123") for k in (0, 1)]
+    H = 34 + len(rows) * (480 + 30) + 300
+    sh = Image.new("RGB", (W, H), (24, 24, 28))
+    label(sh, "T-449  the GOTO map's cursor and icons  --  TODAY | DRAFT, 3x and 1x (decoded from what the ROM is "
+              "built from; %s not visited)" % ", ".join(s[7:] for s in sorted(SHEET_UNVISITED)), (12, 8))
+    for i, (p, k) in enumerate(rows):
+        sec = SHEET_CURSOR[p][k]
+        y0 = 34 + i * 510
+        a, b = goto_screen(state, p, True, sec), goto_screen(state, p, False, sec)
+        sh.paste(a.resize((720, 480), Image.NEAREST), (12, y0))
+        sh.paste(b.resize((720, 480), Image.NEAREST), (744, y0))
+        sh.paste(a, (1476, y0)); sh.paste(b, (1476, y0 + 170))
+        label(sh, "%s -- the cursor on %s (%s)" % (names[p], sec[7:], "a town" if k == 0 else "a route"),
+              (12, y0 + 484), (180, 180, 190))
+    # every frame, 8x, on the paper and on the sea: TODAY above, DRAFT below
+    y0 = 34 + len(rows) * 510
+    label(sh, "every frame at 8x, on the paper and on the sea: cursor A B | GOTO icon A B | dungeon not found, found"
+              "  --  TODAY above, DRAFT below", (12, y0))
+    for j, today in enumerate((True, False)):
+        cur, fly, dun = icon_sets(today)
+        x = 12
+        for ground in (PAPER, SEA):
+            for f in cur + fly + dun:
+                n = len(f)
+                tile = Image.new("RGB", (16, 16), ground)
+                if n == 8:
+                    blit(tile, f, 4, 4)
+                else:
+                    blit(tile, f, 0, 0)
+                if n == 16 and f in fly:      # the page's own notehead under the GOTO icon
+                    pass
+                sh.paste(tile.resize((112, 112), Image.NEAREST), (x, y0 + 22 + j * 130))
+                x += 118
+            x += 24
+    f = os.path.join(out, "t449i_icons.png"); sh.save(f); written.append(f)
+    # animated, at the engine's timings: the mainland, 2x, the cursor on a town
+    frames = [goto_screen(state, "kanto", False, SHEET_CURSOR["kanto"][0], t).resize((480, 320), Image.NEAREST)
+              for t in range(0, 180, 5)]
+    f = os.path.join(out, "t449i_goto.gif")
+    frames[0].save(f, save_all=True, append_images=frames[1:], duration=83, loop=0); written.append(f)
     return written
 
 
