@@ -55,3 +55,15 @@ v11.320.2 theatre, after DEBUG PENGUIN FOR DOLPHIN: PENGUIN's workings (L: BOUND
 v11.320.2 theatre, after DEBUG PENGUIN FOR DOLPHIN: PENGUIN's workings (L: BOUND BLANCHE TOWN, PENGUIN ->DOLPHIN PENPHIN; its routines) and area page (FIRST MET: A TRADE)
 
 ![29Oct2026 - T474 - PENGUIN INDEX workings and FIRST MET - 9](29Oct2026%20-%20T474%20-%20PENGUIN%20INDEX%20workings%20and%20FIRST%20MET%20-%209.png)
+
+### 29Oct2026 - T479 - PENPHIN both ways in, FIRST MET kept - 10
+
+T-479 in the theatre (debug, routes/t474_index.json): PENPHIN's workings draw a line from each root -- DOLPHIN ->PENGUIN PENPHIN, then PENGUIN ->DOLPHIN PENPHIN; PENGUIN's own page unchanged. The kit's PENGUIN and PENPHIN were seen before T-406's records, so the trade no longer writes A TRADE over that: FIRST MET reads BEFORE RECORDS beside BOUND: BLANCHE TOWN.
+
+![29Oct2026 - T479 - PENPHIN both ways in, FIRST MET kept - 10](29Oct2026%20-%20T479%20-%20PENPHIN%20both%20ways%20in%2C%20FIRST%20MET%20kept%20-%2010.png)
+
+### 29Oct2026 - T479 - PENPHIN both ways in, FIRST MET kept - 11
+
+T-479 in the theatre (debug, routes/t474_index.json): PENPHIN's workings draw a line from each root -- DOLPHIN ->PENGUIN PENPHIN, then PENGUIN ->DOLPHIN PENPHIN; PENGUIN's own page unchanged. The kit's PENGUIN and PENPHIN were seen before T-406's records, so the trade no longer writes A TRADE over that: FIRST MET reads BEFORE RECORDS beside BOUND: BLANCHE TOWN.
+
+![29Oct2026 - T479 - PENPHIN both ways in, FIRST MET kept - 11](29Oct2026%20-%20T479%20-%20PENPHIN%20both%20ways%20in%2C%20FIRST%20MET%20kept%20-%2011.png)
