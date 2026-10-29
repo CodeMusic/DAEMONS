@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.320**
+**A total conversion — the living design bible, v11.321**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4933,6 +4933,28 @@ take off.*
 - ***Each book has its part of the day*** (*9.21's week*): **THE SUBTLE LAYER the centre, the day's word and its note; the GUIDE the virtue said over its shadow** -- *woven into some answers, not every one.*
 - ***Once a day THE SUBTLE LAYER asks a question of its own*** (*THE ROUTINE's moments, set in the day's centre, word and note*), **and what is answered is kept in a journal "with the day and the centre"**, *as TRUE OR NOT tells a trainer to keep a log.*
 
+#### The witching hour (T-480, C-236, the user, 2026-10-29)
+
+***Between three and four in the morning, by the cartridge's clock, the seam between the layers is thin.*** *The user's brief: "if you happen to wake up at that time and check the daemons... there's something very unique... a routine or skill they have... it only shows up during that time."*
+
+- ***The shimmer shows to anyone awake at three***: **a faint purple, the book's purple, over the daemon behind you, its summary picture, the party icons and its battlers** -- *it flickers a little and casts no shadow (no reflection).* **Nothing explains it.**
+- ***The routine needs THE SUBTLE LAYER held.*** **Each daemon knows one extra routine for the hour only, named for its first type** -- *an ordinary attack of that type, a little stronger than its usual ones (90 power, 100 accuracy, five uses a battle), with the hour's purple light and a moonlit chime, then a strike of its type and a signature tune of its own.* **It is never in a moveset or the save**: *at four it is gone.* **A small purple mark, no words, says the move menu has the hour's page.**
+- ***One set of names for the game and the companion*** (*12 characters or fewer, DRAFT*):
+
+| type | the hour's routine | type | the hour's routine |
+|---|---|---|---|
+| VECTOR | NIGHT COURSE | STRATUM | UNDERLAYER |
+| ENTROPY | EMBER HOUR | FLOW | UNDERCURRENT |
+| GROWTH | DARK ROOTS | CONTEXT | THIN SEAM |
+| CONTENT | BLANK PAGE | LATENT | WHAT SLEEPS |
+| LOGIC | LAST PROOF | LEGACY | OLD GHOSTS |
+| SWARM | QUIET HIVE | HARDENED | NIGHT WATCH |
+| CORRUPT | BITROT MOON | FROZEN | BLACK ICE |
+| SIGNAL | DEAD AIR | OPAQUE | VEIL |
+| EMERGENT | BEFORE DAWN | ORACLE | SECOND SIGHT *(dormant: no daemon is ORACLE first, the ??? rule)* |
+
+*FLOW's is UNDERCURRENT because UNDERTOW and RIPTIDE were already daemons' names.* **It costs nothing in memory (EWRAM and IWRAM 0, about 5 KB of ROM), and the DEBUG WATCH reaches 3 AM.** ***The companion keeps the same hour (C-236)***, **on the device's own clock**: *the same shimmer -- two faint flickering rings with motes, and no shadow -- on the watch face, the watch's den and the app's den; the routine, once the save holds THE SUBTLE LAYER, under ROUTINES → THE HOUR on the watch and THE HOUR in the daemon's care in the app, with the same eighteen names (a test keeps every one off the species list) and SECOND SIGHT dormant there too.* **Its tune falls slowly from the day's note, one half step that does not belong, then lower; and after it: "[NAME] did [ROUTINE]. It does not, by day."** ***Nobody says what the hour is.***
+
 ## 5. THE BENCHMARKS
 
 | # | City | Type | Concept | Mechanical lesson |
@@ -8862,6 +8884,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **THE SUBTLE LAYER gets its section: the book, THE THREE values and what the player notices (T-423, T-454, T-459, recorded 2026-10-28)** — a handbook of practice, found in BRAZEN; three battle-only values that wake with it; once held, the daemon notices first, reads and leans are logged and the log decides, and four people's words carry a line beneath, all in CONTEXT's purple, which marks the noticing and never a feeling (4.38)
 - **ITS DREAMS: the carried daemon's dreams reach the game (T-462, C-200, 2026-10-28)** — the DREAM LOG's third part; the companion writes only a dream's number and the night's quality, the words are fixed in the ROM, filed at the first dawn as "Far away, [NAME] resumed.", never explained; all sixteen titles approved as drafted, the hum kept as a motif (3.8)
 - **PENPHIN only by a pair trade (T-474, 2026-10-28)** — DOLPHIN and PENGUIN each evolve only when traded for the other, and both become PENPHIN; any other trade does nothing; the only pair trade in the game (8.2, Penphin)
+- **The witching hour (T-480, C-236, 2026-10-29)** — 3 to 4 AM by the cartridge's (or the device's) clock: a faint purple shimmer anyone awake sees, and with THE SUBTLE LAYER held one extra routine per daemon named for its first type, gone at four and never saved; eighteen names shared with the companion, SECOND SIGHT dormant; DRAFT (4.38)
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)

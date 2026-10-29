@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.321 — 2026-10-29
+
+### The witching hour (T-480, C-236)
+
+- ***4.38, a closing part (recorded as built, v11.320.4)***: **3 to 4 AM by the cartridge's clock (the device's on the companion), a faint flickering purple shimmer with no shadow, shown to anyone awake; with THE SUBTLE LAYER held, one extra routine per daemon named for its first type** (90/100, five uses, never in a moveset or the save), **the eighteen names shared by game and companion**, SECOND SIGHT dormant. The companion's tune and line ("[NAME] did [ROUTINE]. It does not, by day.") recorded. Every word DRAFT.
+
 ## v11.320 — 2026-10-28
 
 ### PENPHIN only by a pair trade (T-474)
