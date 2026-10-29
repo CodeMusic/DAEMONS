@@ -259,3 +259,21 @@ C-247: the GAME tab's title (CONTENT), at phone width in a browser -- the game's
 C-242/C-243: the watch's BATTERY in PLACES (scratch companion, phone width) -- LOW POWER turned on, carried in its state (DRAFT)
 
 ![29Oct2026 - C242 - watch BATTERY settings - 66](29Oct2026%20-%20C242%20-%20watch%20BATTERY%20settings%20-%2066.jpg)
+
+### 29Oct2026 - T489 - ALIGN in battle - 67
+
+T-489 (DRAFT): CODEMUSAI, taught ALIGN by the THEATRE, uses it on a wild ROVERCUB -- 'Wild ROVERCUB came round to the CONTEXT type!'; RAM afterwards: the foe's type1 and type2 are both CONTEXT (14). DEBUG build, scratch save.
+
+![29Oct2026 - T489 - ALIGN in battle - 67](29Oct2026%20-%20T489%20-%20ALIGN%20in%20battle%20-%2067.png)
+
+### 29Oct2026 - T491 - CONSENSUS high overlap - 68
+
+T-491 (DRAFT): CONSENSUS with a high-overlap party -- the one other standing daemon carries the user's four routines (SHARED 4, DIFFERING 0): gBattleMovePower read back as 120.
+
+![29Oct2026 - T491 - CONSENSUS high overlap - 68](29Oct2026%20-%20T491%20-%20CONSENSUS%20high%20overlap%20-%2068.png)
+
+### 29Oct2026 - T491 - CONSENSUS low overlap - 69
+
+T-491 (DRAFT): CONSENSUS with a low-overlap party -- the other standing daemon runs EMBER, WATER GUN, THUNDERSHOCK, VINE WHIP, none of the user's types (SHARED 0, DIFFERING 4): gBattleMovePower read back as 90.
+
+![29Oct2026 - T491 - CONSENSUS low overlap - 69](29Oct2026%20-%20T491%20-%20CONSENSUS%20low%20overlap%20-%2069.png)
