@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.325**
+**A total conversion — the living design bible, v11.326**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2434,6 +2434,12 @@ So the family runs three deep, and the argument runs down it.
 Your age. Your peer. Same starting daemon, raised on pure content optimization, beats you early, plateaus hard. Waiting past the Review Board as the incumbent, still arguing the whole thing is decorative.
 
 **He is not a brat and he is not a villain. He is doing exactly what he was taught, faithfully.**
+
+***After the REVIEW BOARD: a plateau, with one crack*** (*the user, by multiple choice, 2026-10-29; T-487*). **He stays the incumbent and goes on arguing the whole thing is decorative. No arc, no apology, no rescue (4.34).** *But once, late, he nearly notices -- craft rule 2's "wrong, but wrong in the right direction" -- and then explains it away in his own terms:*
+
+> AL: The INDEX had you down / as a long shot. / ...It was wrong about that. / Probably a rounding error.
+
+*DRAFT, for the user (the widest line 154 of 208px). **The method holds him; the door is left ajar, and nobody walks through it.***
 
 *So he calls her **CRYSTAL**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer. ~~**Gran**~~ *was the first answer and read oddly on playtest (2026-09-14).* **Her name is the right one, and 4.1 had already said why: every other authority has a role, and she is just her name** — *family included.* **It is familiar, faintly impatient, and not contemptuous**, *and a family whose children use a grandmother's first name is one that treats her as a colleague.* His sister says **CRYSTAL's lab** for the same reason. **T-81.**
 
@@ -8939,6 +8945,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **OSRIC HATTER and THE LAYERS (2026-10-29)** — the grimoire's author is OSRIC HATTER, a stoat, the Hatter of QUICKSILVER, mad (or through) from the quicksilver in the felt; his top-hat house with every clock at half past three and a tea table laid for many; the book gains THE LAYERS (the thesis, shadowed) and keeps ten sections (4.39)
 - **The backgrounds keep the calendar; the map is a score; the hour in battle (T-481, T-449, T-482, 2026-10-24/29)** — battle, window and field backgrounds take the hour, the season, a weekday line and a holiday's glints; the TOWN MAP in ink on paper, its sea of bits and notes; with THE SUBTLE LAYER held, the battle background breathes red to blue through purple at the witching hour (3.10, 4.38)
 - **The only glitch is THE HERMETIC LAYER's; LAB NOTES 4 stays struck (T-486, T-224, 2026-10-29)** — a few frames of scrambled scanlines when the book first opens past the warning and once at 3:30 in the hatter's house, nowhere else; LAB NOTES 4 keeps its struck lines, the redaction the story (4.39; Open closed)
+- **Al after the REVIEW BOARD: a plateau, with one crack (T-487, 2026-10-29)** — he stays the incumbent; once, late, he nearly notices the INDEX was wrong about the player, and calls it a rounding error; no arc, no rescue (4.4)
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
@@ -9140,11 +9147,11 @@ Kept here because the reasoning is worth more than the outcome.
 - ~~The STREAM has no overworld notification~~ **Built 2026-09-10 (T-12).** *Nine told-flags out of T-17's block and the same per-step hook the VS SEEKER uses* — **told, not seen: a show you skipped does not nag, and a new MARK still announces**
 - ~~`PC` → `PORT` is decided and not swept~~ ***Decided is not a question.*** **Moved to TODO T-31** — *four menu strings, ~25 dialogue lines, and `\nPC` has no word boundary in front of it*
 - **PKRS still says PKRS** (9.15). Its tile no longer borrows LEAKING's colour, but the name is vanilla and the condition has no place in the lexicon yet
-- Does the player meet Scorn before Halftone Tower?
+- ~~Does the player meet Scorn before Halftone Tower?~~ ***Settled long ago and left here by mistake: yes, at the bottom of the Verdigris basement, where he hands over the RESOLVER (8.6, closed 2026-10-29).***
 - ~~Does RECURSION justify engine work in the slice, or defer?~~ **Built 2026-09-13 (4.7)**, *and it was never engine work on GBA: Fury Cutter's counter already did it*
 - How legible is S.T.A.R.R.'s SHC backstory to a player who has not heard the rock opera — and does it need to be?
 - Are the humors too neat? Four is convenient; the real theory had temperaments blending.
-- Does **Al** get a redemption, a plateau, or neither — and does the family tie make redemption too cheap?
+- ~~Does **Al** get a redemption, a plateau, or neither~~ ***decided 2026-10-29 by multiple choice: a plateau, with one crack (4.4's Al Clear, T-487).***
 - ~~Ty is absent from the endgame by design. Does that read as a statement or a loose thread?~~ ***It reads as a loose thread, and 8.2a is the answer: Act 2 is the islands.*** **Closed twice over** — *4.34 then put him in the Warehouse handing you something for Crystal ([private: SECRETS §2]), and 4.17's not-visiting is still a choice on both sides*
 - Is the Quicksilver terminal missable enough to soft-lock the Five Witnesses puzzle, and is that acceptable?
 - Does Brazen ever read as the game *sneering* at Scorn? If playtesters hear that, swap to Brass immediately — the whole point of him is that the game does not sneer.

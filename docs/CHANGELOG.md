@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.326 — 2026-10-29
+
+### Al: a plateau, with one crack
+
+- ***Al Clear (Open since the start), the user by multiple choice***: **after the REVIEW BOARD he stays the incumbent, and once, late, nearly notices** -- *"...It was wrong about that. / Probably a rounding error."* (DRAFT). No arc, no rescue. T-487.
+- ***Open log***: "Does the player meet Scorn before Halftone Tower?" struck -- 8.6 had settled it (the Verdigris basement).
+
 ## v11.325 — 2026-10-29
 
 ### Two open questions closed
