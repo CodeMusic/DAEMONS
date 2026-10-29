@@ -27,7 +27,7 @@ python3 tools/gbabudget.py --write   # and update the tables below
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 255.3 KB | **696 B** | 99.73% |
 | **IWRAM** | 32.0 KB | 29.4 KB | **2.6 KB** | 91.78% |
-| **ROM** | 16.0 MB | 10.2 MB | **5.8 MB** | 63.74% |
+| **ROM** | 16.0 MB | 10.2 MB | **5.8 MB** | 63.75% |
 
 ***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 5.8 MB free is in two places: what comes before it grows into a 4.8 MB gap below it, and it grows into the 1008.9 KB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
@@ -58,10 +58,10 @@ The biggest tenants after it:
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.7 MB | 941.4 KB |
+| `.rodata` | 4.8 MB | 5.7 MB | 941.6 KB |
 | `gfx_data` | 1.7 MB | 1.7 MB | 14.9 KB |
-| `.text` | 1.4 MB | 1.5 MB | 83.2 KB |
-| `script_data` | 496.9 KB | 539.9 KB | 43.0 KB |
+| `.text` | 1.4 MB | 1.5 MB | 83.8 KB |
+| `script_data` | 496.9 KB | 540.0 KB | 43.1 KB |
 | `extra` | 0 B | 317.5 KB | 317.5 KB |
 | `song_data` | 282.1 KB | 253.1 KB | -29.0 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
