@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.322 — 2026-10-29
+
+### THE HERMETIC LAYER: SPELLCRAFT, and the one exception
+
+- ***4.39, new (the user's brief and two multiple-choice answers)***: **a third book, a grimoire drawing on the GUIDE and THE SUBTLE LAYER, unlocks SPELLCRAFT**; SPELLBOOK in the game, readable only at night. **It is the one exception to 0.1**: its words may say some of the thesis, shadowed, behind a warning and an author who may be mad, and its spells may bend play; the type chart, the four secrets and the user's story stay fixed. Its contents (As Above So Below, THE TABLET OF THE HANDS and OF GRAVITY, the Folds, entanglement, THE BOOK OF THIRTEEN, the Blank Tablet), its pulse, its two unlocks, the hour's inverted pairs and Halloween recorded. **Built book first, the spells in steps.** Every word DRAFT.
+- ***0.1***: a line naming the exception.
+
 ## v11.321 — 2026-10-29
 
 ### The witching hour (T-480, C-236)

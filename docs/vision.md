@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.321**
+**A total conversion — the living design bible, v11.322**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -34,6 +34,8 @@ The game argues this in five registers and never once in dialogue.
 6. **Comedy is the best cover for a thesis.** A game that is funny in its ordinary moments earns the right to be serious in three or four of them. Corpus employees are cheerful and absurd; the horror is what they are cheerful *about*. Nothing protects rule 1 better than a joke — a player who is laughing is a player who is not being lectured.
 
 ***And the form has a name.*** **A fable ends with the moral** — *story, then the sentence.* **Craft rule 1 is the refusal of that sentence.** *So the shape of this game is* ***a fable with its last line removed***, and that is what every craft rule below is **for**. Nobody says the moral because the form is defined by withholding it. *(Named by the second external review, 2026-09-06.)*
+
+***The one exception: THE HERMETIC LAYER (4.39).*** **A grimoire the player reaches only awake between three and four and holding both other books may say what these rules keep unsaid** -- *shadowed, under a warning, by an author who may be mad.* **Nothing else in the game may.**
 
 ### 0.2 The pigment throughline
 
@@ -4955,6 +4957,38 @@ take off.*
 
 *FLOW's is UNDERCURRENT because UNDERTOW and RIPTIDE were already daemons' names.* **It costs nothing in memory (EWRAM and IWRAM 0, about 5 KB of ROM), and the DEBUG WATCH reaches 3 AM.** ***The companion keeps the same hour (C-236)***, **on the device's own clock**: *the same shimmer -- two faint flickering rings with motes, and no shadow -- on the watch face, the watch's den and the app's den; the routine, once the save holds THE SUBTLE LAYER, under ROUTINES → THE HOUR on the watch and THE HOUR in the daemon's care in the app, with the same eighteen names (a test keeps every one off the species list) and SECOND SIGHT dormant there too.* **Its tune falls slowly from the day's note, one half step that does not belong, then lower; and after it: "[NAME] did [ROUTINE]. It does not, by day."** ***Nobody says what the hour is.***
 
+### 4.39 THE HERMETIC LAYER — SPELLCRAFT, and the one exception (the user, 2026-10-29)
+
+***A third book, a grimoire, and the only place in the game where the rules of 0.1 bend.*** *The user's words: "since this book is unique it is okay if it strongly bends (or side-steps) some original design bible rules -- it is the one exception."* **It takes from both other books** -- *the GUIDE's reason (9.10) and THE SUBTLE LAYER's noticing (4.38)* -- **and unlocks SPELLCRAFT.** *The book is THE HERMETIC LAYER; its menu entry in the game is SPELLBOOK.* **Every word is DRAFT; the book's text is `docs/hermetic-layer.md`, one file for the game and the companion, as `docs/subtle-layer.md` is.**
+
+#### What the exception covers (the user, by multiple choice, 2026-10-29)
+
+- ***Words and spells.*** **Its pages may say outright what the rest of the game never does** (*craft rule 1, the fable's missing last line*), **and write CALLOW SCHOOL's jokes as if true** -- *words are spells, which is why it is called spelling.* **Its spells may bend play**: *the clock, paths, scripted scenes.*
+- ***Some of the thesis, shadowed so it stays a little encrypted.*** *The user's examples, which the book may say in its own voice:* **we are sub-systems of one information processor; separation is the illusion that gives form; to hold vast information a sub-system represents it, as vibrations in air become sound and in the field become light; abstraction plus representation is perception, and perception has many forms; feeling is awareness with context abstracted and represented; language and culture objectify the process, so a verb comes to seem a noun; proto-feeling is the building block of every other percept, re-abstracted and re-represented layer on layer.** *Representation and abstraction get a section of their own.*
+- ***It opens with a warning*** **that it is not from the game's ordinary realm** -- *some have gone mad reading it; if you want your world to stay solid, stop here; if you want to see the subtle layer underneath that steers everything else, read on.* **And it names an author whose name hints he is a little mad**, *so anything in it can be taken with a grain of salt* (*the name to draft*).
+- ***Why this much is allowed***: **the gate is hard.** *In the app a player must be up between three and four to see the hour; in the game they must be up then and hold both other books.* **So the book reaches the player who went looking, and says what the game around it will not.**
+- ***Still fixed, inside the book too***: **the type chart is byte-identical in both editions (invariant 3); the four secrets stay out (`[private: SECRETS]`); the user's own story reaches it only as fable.**
+
+#### What is in it (the user's brief)
+
+- ***As Above, So Below***, **the Emerald Tablet's saying, gamified**, *then* ***THE TABLET OF THE HANDS*** (*the user's text: one hand folded into many without ceasing to be one; free will is the view from the fingertip, fate the view from the palm; it opens on the maxim and closes on it inverted*) **and** ***THE TABLET OF GRAVITY*** (*the half-saying, spoken at the half-hour: gravity gives belonging, "we are not clutched, we are drawn"*). **Both pulse.**
+- ***The Folds of Awareness*** (*lineage: Seeing Sharp, 2025*): **awareness, change, space, gravity at 3½, consciousness, intelligence, wisdom.** *Matter is a process, not a noun; separation is an illusion the folds produce; transformation, prima materia, the One Thing, the alchemical stages, all gamified.*
+- ***Reflection and the representative state***: **entanglement** -- *once two things are entangled, an act on one moves the other, person and daemon, person and item, both ways* -- *in modern words where they help and the ancient ones where they ring.*
+- ***THE BOOK OF THIRTEEN***: **twelve spells on the wheel and one in the crease**, *each leaning on two axes, reason or intuition and content or context, each with a cost that rhymes with its lesson* (*the Mirror costs you self, the Seam your separateness*). **The thirteenth, THE WITCHING HOUR, is castable only from 3:00 to 3:30, only once all twelve have been cast, and once a playthrough.**
+- ***The Blank Tablet***: **a stone with nothing on it that the player writes without knowing**, *each spell cast adding or reshaping a line in the voice their casting leans toward; at 3:00 to 3:30 a thirteenth line with the player's name, then never again.* **A quiet ledger counts the leans and is never shown as a bar.**
+
+#### How it looks and how it is found
+
+- ***One pulse, everywhere***: **red to blue through purple** -- *CONTENT's red and CONTEXT's blue made one, its midpoint THE SUBTLE LAYER's purple* -- **with emerald for the tablet's ink.** *The background pulses faintly; inscriptions pulse emerald.*
+- ***Two ways in***: **in the game, the first time a daemon does its witching-hour routine (4.38) while the save holds the GUIDE and THE SUBTLE LAYER; in the app, by seeing the hour, reading the message that explains it and acknowledging it** -- *then the save carries it to the game at the next SYNC.* **And a preview, as the other two books have.**
+- ***In the game***: **SPELLBOOK in the menu, readable only at night**; *with the book held, the whole world pulses from 3 to 4 AM and the party shimmers as on the companion.*
+- ***The hour's lines turn over***: **"{shadow} under {virtue}" in the folk craft's words** -- *SUN THRALL under CIRCLE · MON DEVOURING under MEASURE · TUE BINDING under OFFERING · WED SLUMBER under VIGIL · THU HEX under UNCROSSING · FRI EVIL EYE under BLESSING · SAT GLAMOUR under GROUNDING* (*9.21's week, inverted*).
+- ***Halloween with the book***: **the pulse all day, a costume** (*a daemon in the face of one of its opposite type; a tap takes the mask off*), **trick or treat** (*every daemon met leaves a treat*), **the thirteen as cards, and every clock without hands.** *A SPELLCRAFT tarot deck joins THE SUBTLE LAYER's, both in the game too.*
+
+#### Build order (the user, by multiple choice, 2026-10-29)
+
+***The book first, the spells in steps.*** **First the book, its SPELLBOOK pages, the two unlocks, the night rule and the 3 AM pulse; then the spells a ticket at a time, the cheap first** (*THE AWAKENING, THE CONTRAST, THE LENS, THE FIELD*) **and the heavy last** (*THE MIRROR, THE ROOM, THE SMALL HAND*). *Section 8's warning holds even here: a book the player can open beats thirteen spells half-built.* **The game's half is the game lane's; the companion's (the hour's face, the deck, spells read aloud) the companion's.**
+
 ## 5. THE BENCHMARKS
 
 | # | City | Type | Concept | Mechanical lesson |
@@ -8885,6 +8919,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **ITS DREAMS: the carried daemon's dreams reach the game (T-462, C-200, 2026-10-28)** — the DREAM LOG's third part; the companion writes only a dream's number and the night's quality, the words are fixed in the ROM, filed at the first dawn as "Far away, [NAME] resumed.", never explained; all sixteen titles approved as drafted, the hum kept as a motif (3.8)
 - **PENPHIN only by a pair trade (T-474, 2026-10-28)** — DOLPHIN and PENGUIN each evolve only when traded for the other, and both become PENPHIN; any other trade does nothing; the only pair trade in the game (8.2, Penphin)
 - **The witching hour (T-480, C-236, 2026-10-29)** — 3 to 4 AM by the cartridge's (or the device's) clock: a faint purple shimmer anyone awake sees, and with THE SUBTLE LAYER held one extra routine per daemon named for its first type, gone at four and never saved; eighteen names shared with the companion, SECOND SIGHT dormant; DRAFT (4.38)
+- **THE HERMETIC LAYER, SPELLCRAFT and the one exception (2026-10-29)** — a third book, a grimoire from both others, unlocked at the witching hour (in the game with both books held; in the app by seeing the hour); the only place the craft rules bend: it may say some of the thesis, shadowed, behind a warning and a possibly mad author; its spells may bend play; the type chart, the four secrets and the user's story stay fixed; one pulse red to blue through purple, emerald ink; SPELLBOOK at night; the book first, the thirteen spells in steps (4.39, 0.1)
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
