@@ -15,7 +15,7 @@ and Blue, and FireRed and LeafGreen, always were.
 |---|---|---|
 | made from | *FireRed* | *LeafGreen* |
 | leans toward, early | CONTENT, LOGIC, STRATUM, LEGACY | CONTEXT, LATENT, VECTOR, ENTROPY |
-| its year | a northern one | a southern one, two seasons on |
+| its year | the **northern** hemisphere's | the **southern** hemisphere's, two seasons on |
 | its instrument | the HARP | the FLUTE |
 | its INDEX | every entry, in its own words | every entry, in other words |
 
@@ -87,6 +87,7 @@ every one, and a save can move between most of them.
 | your own *FireRed* or *LeafGreen* cartridge | [patch your own ROM](#patch), then any of the ways below |
 | a computer | [mGBA](#mgba) |
 | an iPhone or iPad | [Delta](#delta), or [the one app](#oneapp) (in testing) |
+| a GameSir Pocket Taco on an iPhone | [the one app](#controls), with real buttons (in testing) |
 | a Game Boy Advance | [a flash cartridge](#gba) |
 | a browser, on a network someone runs it on | [the playground](#playground) |
 | the source, and a Mac or Linux machine | [build it yourself](#build), the [DEBUG builds](#debug) and the [classic Game Boy build](#classic) |
@@ -192,6 +193,16 @@ just filed or the INDEX card of a daemon just met opens next to the game.
 
 *Internal and in testing for now: it is built and run on the project's own iPhone and iPads, and is not on the App
 Store or TestFlight. A Mac version is planned.* More in [the companion](#companion).
+
+### Buttons on the screen, or in your hands {#controls}
+
+On an iPhone or an iPad the game draws a Game Boy Advance's buttons on the screen: the cross, A and B, L and R, START
+and SELECT.
+
+Or clip on a **GameSir Pocket Taco** -- a controller shaped like the lower half of a Game Boy Advance, which plugs into
+the iPhone's USB-C. While it is on, the game moves up into the top half of the screen, the half the Taco leaves in view,
+and the buttons on the screen hide; take it off and they come back. *In testing: this is built and has not yet been
+tried with a Taco in hand, so which of its buttons does what may still change.*
 
 ## The playground, in a browser {#playground}
 
@@ -370,15 +381,16 @@ keep unbound daemons away for a while; **GREP**, which finds hidden items nearby
 
 # The world {#world .t-FLOW}
 
-The world keeps time, turns through the seasons, has weather and keeps the real calendar's holidays. Nothing in the
-game explains any of it -- you notice.
+The world keeps time, gives every day of the week its own note and colour, turns through the seasons of its own
+hemisphere, has weather and keeps the real calendar's holidays. Nothing in the game explains any of it -- you notice.
 
 {{screen town | A town by day.}}
 
 ## The clock {#clock}
 
-With a clock (an emulator's, or a cartridge's switched on) the game follows the real hour. Without one, an hour of play
-is a day.
+With a clock (an emulator's, or a cartridge's switched on) the game follows the real hour. Without one, play time is
+the clock: each part of the day lasts fifteen minutes of play, so an hour of play is a day. Your USER card says which
+clock you are on.
 
 | | hours |
 |---|---|
@@ -387,16 +399,48 @@ is a day.
 | **dusk** | 18 to 20 |
 | **night** | 20 to 5 |
 
-The light tints the outdoor maps as the day goes. The weekday is on your USER card.
+The light tints the outdoor maps as the day goes.
 
 {{screens sky-clear=Day sky-dusk=Dusk sky-night=Night | The same road by day, at dusk and at night.}}
 
+## The week {#week}
+
+Every day of the week is its own, Sunday first, and the game carries each one in three places without ever saying
+what it means:
+
+- **its name**, when you step outside -- the sign that names the town slides in again: *F · WEDNESDAY · NIGHT*;
+- **its note**, C on Sunday up the scale to B on Saturday, which TUNE at your bedroom terminal sounds before its song;
+- **its colour**, the rainbow in order from Sunday's red to Saturday's violet, on the trim round every CHECKPOINT's dome.
+
+**What a day means is for the books to suggest, and for you to notice.** The companion's TODAY says it outright, and
+each of the two books keeps its part of it -- THE GUIDE the day's virtue over its shadow, THE SUBTLE LAYER its centre,
+its word and its note:
+
+{{week}}
+
+A virtue is always said **over** its shadow, never as its cure: a shadow is something to light and balance, not
+something to cut out. Your [MARKS](#marks-each) print the same pairs, and on your USER card each of the seven
+bands waits in shadow until its virtue lights it. The centres are the body's seven, as THE SUBTLE LAYER sets them out
+(the chakras), from the Root up to the Crown.
+
 ## The seasons {#seasons}
 
-The seasons repaint the world, and the two editions live in **two hemispheres**: CONTENT keeps a northern year and
-CONTEXT a southern one, so in the same week one player's world is in spring and the other's in autumn. On many early
-roads the tall grass changes with them -- one of its daemons belongs to the season and one to the hour -- so some are
-met only at a time of year, or a time of day.
+The seasons repaint the world, and **the two editions keep the two hemispheres' years**: CONTENT the northern and
+CONTEXT the southern, two seasons on. So in the same week one player's world is in spring and the other's in autumn,
+and while it snows in one, the other is in high summer.
+
+| from | CONTENT, the north | CONTEXT, the south |
+|---|---|---|
+| 21 March | spring | autumn |
+| 21 June | summer | winter |
+| 22 September | autumn | spring |
+| 21 December | winter | summer |
+
+Without a clock, a season lasts seven hours of play, and a new game begins in CONTENT's summer -- which is CONTEXT's
+winter. On many early roads the tall grass changes with the seasons -- one of its daemons belongs to the season and
+one to the hour -- so some are met only at a time of year, or a time of day. The INDEX's NATIVE line says when. The
+companion keeps your edition's year too, by the real date -- so when your game has a clock, the season on your watch is
+the one in your game.
 
 {{screens sky-winter=Winter sky-spring=Spring}}
 
@@ -404,9 +448,9 @@ met only at a time of year, or a time of day.
 
 ## The weather {#weather}
 
-The weather follows the season, over the ordinary outdoor maps. It is drawn from the date, so two players in the same
-edition on the same day see the same sky. A spell can begin at any minute, last from ten minutes to a whole day, and
-cover one town or the whole region. Most of the time the sky is clear.
+The weather follows the season, over the ordinary outdoor maps -- so it follows your edition's hemisphere too. It is
+drawn from the date, so two players in the same edition on the same day see the same sky. A spell can begin at any
+minute, last from ten minutes to a whole day, and cover one town or the whole region. Most of the time the sky is clear.
 
 {{screens sky-rain=Rain sky-storm=Storm sky-snow=Snow | Spring brings rain and storms; winter, snow.}}
 
@@ -422,16 +466,28 @@ cover one town or the whole region. Most of the time the sky is clear.
 The weather reaches into battle too -- see [battles](#weather-battle) -- and some daemons come out only in one. The
 INDEX says so.
 
+**Out here, the companion follows the real sky.** Set your city on the companion's site and its watches and boards
+wear the weather where you are -- clear, cloudy, fog, rain, snow or a storm -- along with the hour, your edition's
+season and the day's holiday. At the [CASINO](#companion-casino) each of them leans the day's luck a little, one way or
+the other, and **Why** opens each reason.
+
 ## Holidays {#holidays}
 
 The game keeps the real calendar's holidays, under the world's own names: **three a month**, one shared by both
-editions, one for CONTENT's northern year and one for CONTEXT's southern. Playing on one changes the game a little and
-never gates it: its own light and sky, some daemons turning up more on their day, fireworks, and a gift once a year.
-On two days a year each edition lets in the other's daemons.
+editions, one for CONTENT's northern year and one for CONTEXT's southern -- so midsummer's LONGEST DAY comes in June
+in one and in December in the other. Playing on one changes the game a little and never gates it: its own light and
+sky, some daemons turning up more on their day, fireworks, and a gift once a year. On two days a year each edition lets
+in the other's daemons. A *quiet* day is named and left as it is: no colour, and no fireworks.
 
 **Every month has a colour and a note.** The months run up the scale from January's C, red, to December's B, purple.
 The day's banner and your USER card show them, and on the 1st the banner plays the month's note. What you are told on
 a holiday is kept in **THE YEAR**, in your NOTEBOOK.
+
+{{holidays}}
+
+Without a clock the year is twenty-eight hours of play, beginning at the north's midsummer, and each holiday lasts one
+part of a day -- fifteen minutes. The companion keeps the same days, under their everyday names, and its watches,
+boards and CASINO dress for them.
 
 ## The SITEMAP {#map}
 
@@ -676,6 +732,11 @@ Each stays hidden until you find it. The game never says where, and neither does
 Once your save holds a book, you read it from your POOL's key items, a page at a time -- and the companion's LIBRARY
 opens it too, as a book: its cover, its contents, then each page in turn, with READ ALOUD.
 
+**The two books are your two ways from the opening.** At the start CRYSTAL asked which you follow when the two
+disagree, [REASON or INSTINCT](#newgame). On the companion either book, once held, can be asked anything -- and **THE
+GUIDE answers as REASON would, THE SUBTLE LAYER as INSTINCT would.** Neither is the careful one; they answer
+differently, and both are yours.
+
 ## THE PROGRAMMER'S GUIDE TO THE HUMAN MIND {#guide}
 
 {{cover guide}}
@@ -684,9 +745,15 @@ The mind treated as software, written as an engineer's manual: the brain is the 
 habits are code that can be read, debugged and rewritten. Its tools come from NLP, CBT, mindfulness, hypnotherapy and
 journaling, each set out as a way of working on the system, in 28 chapters from *Understanding the Mind as Software*
 to *The Path Forward*. Its page on security sets out each day's **virtue over its shadow** -- the same pairs your
-MARKS print.
+MARKS print, and the ones in [the week](#week).
 
 []{.clear}
+
+### ASK THE GUIDE: REASON
+
+In the companion's LIBRARY, open THE GUIDE and type a question -- or, on a phone, **HOLD TO ASK ALOUD** and say it. On
+a T-Watch Ultra, ask it by voice from BOOKS. **It answers as REASON would**: from the page nearest your question, in
+its own voice, read aloud if you like. About one answer in three it ends on **the day's virtue over its shadow**.
 
 ## THE SUBTLE LAYER {#subtlebook}
 
@@ -697,10 +764,58 @@ It holds the craft and the physics side by side and chooses neither -- reading (
 bonding, what the physics allows, belief and the words that shape it, balancing mind and body, a routine for the week,
 and how to stay correctable. Every page has a picture, and in **TWO VOICES** a second, asking voice is printed faint.
 
-**Once you carry it, you start to notice things.** The next chapter is about them.
+**Once you carry it, you start to notice things.** [The next chapter](#subtle) is about them.
 
 []{.clear}
 
+### ASK THE SUBTLE LAYER: INSTINCT
+
+Open it in the LIBRARY and **ASK** -- typed, or held and said aloud on a phone, or by voice from a T-Watch Ultra's
+BOOKS. **It answers as INSTINCT would**: one line from the page nearest your question, and then **a question back**,
+printed faint, that turns you to what you notice. Now and then the question is set in the day's **centre, word or
+note** ([the week](#week)).
+
+**TWO VOICES** is the book's own entry made a way to ask it: *one says a thing, the other asks what it means.* Asked in
+TWO VOICES, it answers only in that asking voice, a clarifying question each turn.
+
+### TODAY'S QUESTION, and THE JOURNAL
+
+Once a day the book asks you something of its own, from its routine -- at waking, at rest, before steering -- set in
+the day's centre, word and note. What you answer is kept in **THE JOURNAL**, with the day and the centre, as the book
+tells a trainer to keep a log. On a T-Watch Ultra you can answer it aloud.
+
+## THE SUBTLE LAYER's cards {#cards}
+
+Carry THE SUBTLE LAYER and the companion gives you its cards: **twenty-two**, numbered 0 to XXI, each on the book's
+purple and each with **two faces** -- one for each of your two ways.
+
+| | |
+|----|-----------|
+| **REASON** | a circuit board under green, and a daemon of machines and learning; a keyword at the top and, under the daemon, a phrase for reason |
+| **INSTINCT** | a living net of nodes under gold, and a daemon of the mind; a keyword and a phrase for instinct |
+
+{{pictures cards-reason | The REASON faces of cards 0 to III: BOOTSTRAP, COMPILE, LATENT and GROWTH.}}
+
+{{pictures cards-instinct | The same four cards' INSTINCT faces: FIRST STEP, FOCUS, SUBTEXT and NURTURE. Drawn from the companion's own files; every word DRAFT.}}
+
+A card comes up on either face, and always upright. Now and then one is **SHINY**: its colours turned over, a gold foil
+edge, and a glint. There are three ways to draw, and no more:
+
+| | |
+|----|-----------|
+| **THE DAY'S CARD** | the same all day, and yours alone -- another trainer has their own; it is kept in THE JOURNAL beside the day's answer |
+| **DRAW A CARD** | whenever you want one: out and about, or one each with a friend |
+| **PAST · PRESENT · FUTURE** | a spread of three, never the same card twice |
+
+**A card is a prompt for noticing, never a prediction.** As with every read, THE LOG decides. In the app the cards are
+in THE SUBTLE LAYER's book, above TODAY'S QUESTION; on the watches, in BOOKS.
+
+::: note
+**Where the answers come from.** Every answer is drawn from the book's own pages. A phone on its own answers with the
+page's own sentence; with the companion's hub and its AI board, the hub can put it in the book's voice. The books are
+asked on the companion only -- the game's copies are for reading. *All of this is new: built, and still being tried on
+the watches.*
+:::
 
 # The subtle layer, in play {#subtle .t-CONTEXT}
 
@@ -737,7 +852,8 @@ And now and then there is a faint purple line beneath what someone says: a few w
 
 Once your save holds the book, the companion's watches notice too: the daemon on the face stops and turns, a purple
 **"A read:"** comes with a soft tap, and at the CASINO's reels, sometimes, **"A lean:"** while they turn. The companion
-judges each by what happens after and keeps the count; it never says a read was right before it lands.
+judges each by what happens after and keeps the count; it never says a read was right before it lands. There too the
+book can be asked, asks its question of the day, and draws [its cards](#cards).
 
 {{pictures watch | On a watch: the daemon notices first, two reads, and a lean at the reels. A mock-up drawn from the watch's own firmware, not a photograph; every word DRAFT.}}
 
@@ -820,15 +936,15 @@ never write one the game is about to write over. Every SYNC makes a backup first
 ## Where a daemon can live {#hosts}
 
 | | |
-|---|---|
+|----|-----------|
 | **your phone** | the companion's app, on an iPhone or iPad, with a **home-screen widget** of its own: DRINK, FEED, TRAIN and, at bedtime, SLEEP |
 | **a browser** | the companion's site, on the computer that runs it -- the same screens as the app |
 | **the one app** | the game and the companion together on an iPhone or iPad ([above](#oneapp)) |
-| **a watch** | the LilyGO **T-Watch S3**, and the bigger **T-Watch Ultra**, which knows when you sleep and walk, wakes you gently, reads you the books, and takes a card to its NFC |
+| **a watch** | the LilyGO **T-Watch S3**, and the bigger **T-Watch Ultra**, which knows when you sleep and walk, wakes you gently, reads you the books and answers when you ask them, draws THE SUBTLE LAYER's cards, and takes a card to its NFC |
 | **a board** | most LilyGO and M5Stack boards: the T-Embed family, the T-Deck, the T-Display-S3 Pro and AMOLED, the M5StickS3 and StickC-Plus, the CoreS3, M5GO, Fire, Dial and Cardputer -- the daemon drawn as the game draws it, its routines with it |
 | **a control center** | the M5Stack **Tab5** |
 | **your home** | an ESP32-S3-BOX-3 running Home Assistant's voice assistant can wear the daemon as its face |
-| **a hub that never sleeps** | a small Linux board (an M5Stack CoreMP135) can be the companion's server; with an AI board stacked on it, it talks as your daemon, tells its dreams, and answers as THE GUIDE once you have found it |
+| **a hub that never sleeps** | a small Linux board (an M5Stack CoreMP135) can be the companion's server; with an AI board stacked on it, it talks as your daemon, tells its dreams, and answers as THE GUIDE and THE SUBTLE LAYER once you have found them |
 
 {{pictures widget | The daemon on an iPhone's home screen: the widget, drawn from its real views, before and after FEED, small, and with no daemon chosen.}}
 
@@ -838,11 +954,11 @@ The app, the site and the Tab5 share six tabs, and **show only what your save ha
 earned, a place not yet found or a book not yet in your hands shows as *not yet*, and nothing more.
 
 | | |
-|---|---|
-| **TODAY** | the day's virtue over its shadow, its note and season, **THE ONE THING** -- the next step -- your daemon's care, and your game: where you saved, your MARKS, your money |
+|----|-----------|
+| **TODAY** | the day -- its note, its word, its virtue over its shadow, its centre and your edition's season ([the week](#week)) -- **THE ONE THING**, the next step, your daemon's care, and your game: where you saved, your MARKS, your money |
 | **DAEMON** | yours and its care, your party as the game draws it, the **INDEX** with each daemon's NATIVE line, **SOUNDINGS**, **DREAMS** and, once the book is held, **READS** |
 | **GOALS** | one goal, its steps and milestones, and walking |
-| **LIBRARY** | CALLOW SCHOOL and your DIPLOMA, THE GUIDE and THE SUBTLE LAYER once found, the NOTEBOOK, the SONGBOOK with your instrument, and STREAM's lessons |
+| **LIBRARY** | **THE PLAYER'S MANUAL** -- this book, kept on your phone -- CALLOW SCHOOL and your DIPLOMA, THE GUIDE and THE SUBTLE LAYER once found (each to read and to [ask](#books), and THE SUBTLE LAYER's [cards](#cards)), the NOTEBOOK, the SONGBOOK with your instrument, and STREAM's lessons |
 | **YOU** | you as the game draws you, your MARKS and ROOTS, the region maps, the story so far, and **THE ROAD AHEAD** -- the next step, and never anything past it |
 | **PLACES** | your devices, which daemon each hosts, and your home |
 
@@ -906,6 +1022,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 
 **BINDING** -- catching an UNBOUND daemon in a box.
 
+**CENTRE** -- the day's place in the body, in THE SUBTLE LAYER: the Root up to the Crown.
+
 **CHECKPOINT** -- where your daemons are restored, free.
 
 **COLD STORAGE** -- where daemons wait past your six, through a PORT.
@@ -923,6 +1041,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 **HEARSAY** -- what people say about the people you meet.
 
 **INDEX** -- the record of every daemon you meet.
+
+**INSTINCT** -- one of your two ways; THE SUBTLE LAYER answers as it would.
 
 **KEY WHEEL** -- where your instrument's key is chosen.
 
@@ -942,6 +1062,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 
 **PORT** -- a PC.
 
+**REASON** -- the other of your two ways; THE GUIDE answers as it would.
+
 **RECOMPILE** -- what a daemon does when it becomes the next in its line.
 
 **ROLL CALL** -- finds trainers who want a rematch.
@@ -952,6 +1074,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 
 **SEND** -- out of the party, to the companion.
 
+**SHADOW** -- what a virtue is said over: something to light and balance, never to cure.
+
 **SITEMAP** -- the map of everywhere.
 
 **SONGBOOK** -- the songs you have learned.
@@ -960,6 +1084,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 
 **SUPPRESS** -- keeps unbound daemons away for a while.
 
+**THE DAY'S CARD** -- THE SUBTLE LAYER's card for today, on the companion.
+
 **THE REPO** -- the shop.
 
 **THE REVIEW BOARD** -- the last four, and the one after them.
@@ -967,6 +1093,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 **TOKEN CASE** -- holds the GAME CORNER's coins.
 
 **TRAP TABLE** -- holds what you grow and pick.
+
+**TWO VOICES** -- THE SUBTLE LAYER asked in its asking voice.
 
 **UNBOUND** -- wild.
 
@@ -980,7 +1108,8 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 
 This manual describes **{{release}}**, built against the design bible **{{bible}}** ({{date}}). It is made by
 `tools/manual.py` from `docs/manual/` in the DAEMONS repository, and printed again with each release: the daemons,
-their INDEX entries, the types, the chart and the patches are read from the build itself, and the game screens are
+their INDEX entries, the types, the chart, the week, the holidays and the patches are read from the build itself, and
+the game screens are
 frames captured from built ROMs in the project's test emulator. Every word quoted from the game is a draft.
 
 **DAEMONS is a fan project**, unaffiliated with and unendorsed by Nintendo, Creatures Inc. or GAME FREAK Inc. Pokémon

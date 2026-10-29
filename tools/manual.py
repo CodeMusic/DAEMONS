@@ -20,13 +20,15 @@ WHAT IT READS
   ROM RELEASE/                the newest release, and HOW_TO_PATCH.md's table of the four patches
   docs/vision.md              the design bible's version
   wiki/images/                the two books' covers, titled in a common typeface (wiki/covers.py) -- never the game's
+  docs/holidays.json          the year's holidays by their in-world names, and each month's note and colour (T-416)
+  tools/companion_export.py   the week: each day's note, word, virtue over its shadow and centre, as the companion has it
 
 THE SHORTCODES, each alone on its line except the inline three
   {{screen NAME | caption}}           one game screen
   {{screens A B=Its_label C | caption}}   two to four in a row, each with an optional label (underscores are spaces)
   {{daemons NAME NAME ...}}           a card for each: front sprite, number, types, category, both editions' entries
   {{sprites NAME NAME ...}}           a row of front sprites and names
-  {{typechart}}  {{typelist}}  {{patches}}  {{cover guide|subtle}}
+  {{typechart}}  {{typelist}}  {{patches}}  {{cover guide|subtle}}  {{week}}  {{holidays}}
   inline: {{release}}  {{bible}}  {{date}}
 
 HOW IT PRINTS. pandoc turns the words into HTML; Google Chrome prints it (as docs/build-pdf.sh does) on A5. It prints
@@ -52,6 +54,7 @@ COVER_STRIP = ("PING", "NIBBLE", "CRAWLER", "PACKET", "SPIKE", "FORK", "HUNCH", 
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gbachart                                  # noqa: E402  the seventeen types, their relations and hues
+import companion_export                          # noqa: E402  the week, as the companion's TODAY shows it
 from PIL import Image                            # noqa: E402
 
 
@@ -263,6 +266,48 @@ class Build:
                        for rom, crc, sha, p in patch_rows())
         return ('<table class="patches"><thead><tr><th>your ROM</th><th>CRC32</th><th>SHA-1 begins</th>'
                 '<th>the patch</th></tr></thead><tbody>%s</tbody></table>' % rows)
+
+    def sc_week(self, args, caption):
+        """The seven days, Sunday first. No colour beside a centre (vision 4.38), and a virtue over its shadow (9.21)."""
+        rows = "".join("<tr><td><b>%s</b></td><td>%s</td><td>%s</td><td><b>%s</b> over %s</td><td>%s</td></tr>"
+                       % tuple(H.escape(d[k]) for k in ("day", "note", "theme", "virtue", "shadow", "chakra"))
+                       for d in companion_export.week_table()["days"])
+        return ('<table class="week"><thead><tr><th>day</th><th>note</th><th>its word</th><th>its virtue, over its '
+                'shadow</th><th>its centre</th></tr></thead><tbody>%s</tbody></table>' % rows)
+
+    def sc_holidays(self, args, caption):
+        """The year, three a month, by the game's own names (real names are the companion's only, T-416)."""
+        src = json.load(open(os.path.join(ROOT, "docs/holidays.json"), encoding="utf-8"))
+        nth = {1: "1st", 2: "2nd", 3: "3rd", 4: "4th"}
+        wd = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+        def when(h):
+            r = h["rule"]
+            if r["kind"] == "fixed":
+                w = "the %d%s" % (r["day"], {1: "st", 2: "nd", 3: "rd", 21: "st", 22: "nd", 23: "rd", 31: "st"}.get(r["day"], "th"))
+            elif r["kind"] == "nth_weekday":
+                w = "the %s %s" % (nth[r["n"]], wd[r["weekday"]])
+            elif r["kind"] == "easter":
+                w = "Easter Sunday" if not r["offset"] else "%d days %s Easter" % (abs(r["offset"]), "before" if r["offset"] < 0 else "after")
+            elif r["kind"] == "season_start":
+                w = "the first day of %s" % r["season"]
+            else:
+                w = "the harvest moon"
+            if h["days"] > 1:
+                w += ", %d days" % h["days"]
+            return "<b>%s</b> <span class=\"when\">%s%s</span>" % (H.escape(h["name"]), w, ", quiet" if h.get("quiet") else "")
+
+        rows = []
+        for i, m in enumerate(src["months"], 1):
+            cell = {e: "<br>".join(when(h) for h in src["holidays"] if h["month"] == i and h["edition"] == e)
+                    for e in ("COMMON", "CONTENT", "CONTEXT")}
+            r, g, b = (int(m["hex"][k:k + 2], 16) for k in (1, 3, 5))
+            ink = "#16161a" if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else "#fff"
+            rows.append('<tr><td><span class="chip" style="background:%s;color:%s">%s · %s</span></td><td>%s</td>'
+                        '<td>%s</td><td>%s</td></tr>' % (m["hex"], ink, m["month"], m["note"], cell["COMMON"],
+                                                          cell["CONTENT"], cell["CONTEXT"]))
+        return ('<table class="holidays"><thead><tr><th>the month</th><th>both</th><th>CONTENT, the north</th>'
+                '<th>CONTEXT, the south</th></tr></thead><tbody>%s</tbody></table>' % "".join(rows))
 
     def sc_cover(self, args, caption):
         path = os.path.join(ROOT, "wiki/images", {"guide": "guide_cover.png", "subtle": "subtle_cover.png"}[args[0]])

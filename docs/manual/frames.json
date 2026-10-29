@@ -202,6 +202,24 @@
   },
   "widget": {
    "from": "qa/screenshots/2026-10-09/9Oct2026 - C100 - the home-screen widget - 3.png"
+  },
+  "cards-reason": {
+   "from": "qa/screenshots/2026-10-28/28Oct2026 - C232 - the cards, reason and instinct - 63.png",
+   "crop": [
+    10,
+    116,
+    1018,
+    524
+   ]
+  },
+  "cards-instinct": {
+   "from": "qa/screenshots/2026-10-28/28Oct2026 - C232 - the cards, reason and instinct - 63.png",
+   "crop": [
+    10,
+    944,
+    1018,
+    1352
+   ]
   }
  }
 }
