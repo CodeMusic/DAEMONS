@@ -95,7 +95,8 @@ a stop that needs longer than --stop-timeout (T-451):
     music [MUS_NAME]           fail the stop unless that song is playing (default: the one the map's map.json names)
     says "TEXT"                fail the stop unless a box captured in it said TEXT (spaces and line breaks folded)
     burst LABEL COUNT EVERY [BUTTON [FRAMES]]   T-430: hold BUTTON (6 frames by default), then COUNT captures, one
-                               every EVERY frames, in one batch -- a routine in flight, a flicker
+                               every EVERY frames, in one batch -- a routine in flight, a flicker; a LABEL with
+                               spaces is quoted, burst "the sun rising" 30 2 (--check fails an unquoted one)
     palette BG|OBJ SLOT grey|colour   T-430: fail unless that palette slot on screen (palette RAM) is all grey, or holds
                                some colour (entry 0, the transparent one, is not counted)
     debug ROW [ROW ...]        T-458: START -> DEBUG, then each row by its START-menu name on the page it is on (ENCOUNTER,
@@ -1836,6 +1837,45 @@ def words(line):
     return shlex.split(line)
 
 
+# What each step's arguments are, as step() reads them: s a word, i a number (int), n one in any base (int(v, 0)), a ?
+# before one when it may be left off, * the rest of the line, anything. --check holds every step to its shape, so a step
+# the run would crash on (`burst 30 (sun) ...`, a label with spaces left unquoted) fails the check instead.
+SHAPES = {
+    "goto": "s ?i ?i", "fly": "s ?i ?i", "save": "", "continue": "", "load": "s", "savestate": "s", "loadstate": "s",
+    "to": "i i", "warp": "s", "edge": "s", "walkto": "s", "talk": "s ?i", "trigger": "i i ?i", "look": "i i ?i",
+    "finish": "", "read": "", "press": "s ?i", "hold": "s i", "wait": "i", "shot": "*", "flag": "s i", "trainer": "s i",
+    "flagis": "s i", "var": "s n", "repel": "?i", "bump": "s *", "wild": "*", "unsaid": "*", "friendship": "i i",
+    "objectat": "s *", "mon": "i s s", "bag": "s *", "swap": "i i", "open": "s", "useitem": "s", "coins": "i",
+    "keyitem": "s", "follower": "*", "remember": "s s i", "moved": "s", "foe": "s", "poke": "s i n", "palettes": "s",
+    "register": "s", "play": "*", "fight": "", "win": "", "lose": "", "expect": "s ?i ?i", "music": "?s",
+    "burst": "s i i ?s ?i", "palette": "s i s", "debug": "*", "events": "*", "feelings": "*",
+    "conditions": "i i i i i i i", "feel": "*", "summary": "i *", "boxsummary": "*", "keys": "*", "shown": "*",
+    "close": "", "says": "*",
+}
+
+
+def shape(a):
+    """Fail unless a step's words have the shape step() reads them in (SHAPES): the count, and every number a number."""
+    op, args, spec = a[0].lower(), a[1:], SHAPES.get(a[0].lower())
+    if spec is None:
+        raise RouteError("no step called %s" % op)
+    spec = spec.split()
+    for k, t in enumerate(spec):
+        if t == "*":
+            return
+        if k >= len(args):
+            if t.startswith("?"):
+                return
+            raise RouteError("%s takes %d arguments, not %d: %s" % (op, len(spec), len(args), " ".join(a)))
+        try:
+            int(args[k], 0) if t.endswith("n") else int(args[k]) if t.endswith("i") else None
+        except ValueError:
+            raise RouteError('%s: "%s" is not a number -- quote a label with spaces: %s' % (op, args[k], " ".join(a)))
+    if len(args) > len(spec):
+        raise RouteError("%s takes %d arguments, not %d -- quote a label with spaces: %s"
+                         % (op, len(spec), len(args), " ".join(a)))
+
+
 def load(path):
     route = json.load(open(path))
     for i, stop in enumerate(route["stops"], 1):
@@ -1849,8 +1889,12 @@ def check(route):
     bad, folder, states = [], None, {}
     for i, stop in enumerate(route["stops"], 1):
         for line in stop["steps"]:
-            a = words(line)
             try:
+                try:
+                    a = words(line)
+                except ValueError as e:                                   # shlex: an unclosed quote
+                    raise RouteError("%s: %s" % (line, e))
+                shape(a)                                                  # every step parsed as the run parses it
                 if a[0] == "savestate":                                   # a saved moment is where it was saved
                     states[a[1]] = folder
                 elif a[0] == "loadstate":
