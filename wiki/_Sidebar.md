@@ -4,6 +4,7 @@
 - [Playing](Playing)
 - [The world](The-world)
 - [Books](Books)
+  - [THE HERMETIC LAYER](The-Hermetic-Layer)
 - [Editions](Editions)
 - [The companion](The-companion)
 - [Building](Building)

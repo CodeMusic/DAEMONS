@@ -71,6 +71,12 @@ read lands. The NOTEBOOK keeps a log of what you were told and what came true, a
 
 **Full text:** [docs/subtle-layer.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/subtle-layer.md)
 
+## A third?
+
+There is talk of one more: a grimoire called **THE HERMETIC LAYER**, said to bend the rules the other two keep. Whether
+it is there to be found is for each player to decide. What is said of it, and the real history behind it:
+[THE HERMETIC LAYER](The-Hermetic-Layer).
+
 ## The covers
 
 The covers' art carries no lettering: the game's font belongs to Nintendo, and nothing of Nintendo's is published. So

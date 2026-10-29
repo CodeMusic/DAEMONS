@@ -172,10 +172,10 @@ finishes the change when it comes home; one line of daemons grows only that way.
 **Trading.** A daemon away can be traded with another player, or lent, through the companion. While it is on offer the
 game will not call it home; one that arrives is written into your INDEX, says it was first met in a trade, and makes
 a trade evolution on arrival -- unless it is only on loan: a borrowed daemon never evolves by trade, and cannot be
-released or traded on. See [The companion](The-companion).
+released or traded on. And one pair of daemons becomes something new only when the two are traded for each other.
+See [The companion](The-companion).
 
 ## Not built yet
 
-Decided, and still to come: the rest of the landmarks, the cave preview screens, which are still the original's, and
-a pair of daemons that evolve only when traded for each other. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md)
+Decided, and still to come: the rest of the landmarks and the cave preview screens, which are still the original's. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md)
 has them and more.

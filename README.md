@@ -15,7 +15,7 @@ PLAY, the GAME CORNER and the companion, and a glossary, in one PDF. It says how
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.319.1**
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.322.1**
 (2026-10-28); each one on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
 *LeafGreen* 1.0 and Rev 1 — and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing,
 building and the two editions.
@@ -107,6 +107,8 @@ with a DIPLOMA, a GAME CORNER that plays like the companion's CASINO, and places
 music of its own. Every routine carries a **signature** of its own in battle, bits and a three-note figure. Daemons
 have **feelings** the game reads from play and never names. And there are books to find: once THE SUBTLE LAYER is
 held, you start to **notice** things, marked in its purple, and the NOTEBOOK keeps an honest log of what landed.
+Some players talk of a third, a grimoire, though no one agrees where it came from
+([THE HERMETIC LAYER](https://github.com/CodeMusic/DAEMONS/wiki/The-Hermetic-Layer), on the wiki).
 
 **Your daemons can leave.** SEND one from your party and the
 [companion](https://github.com/CodeMusic/daemons-companion) hosts it on your phone, a watch or a board; it comes home

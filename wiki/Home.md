@@ -68,7 +68,7 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.319.1**, from 2026-10-28. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.322.1**, from 2026-10-29. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
@@ -80,7 +80,7 @@ Releases come often, each one named for the version of the design bible it was b
 - [Playing](Playing) -- patch your own cartridge's ROM and play, on an emulator, an iPhone or a real GBA
 - [The world](The-world) -- the clock, the seasons, the weather, the holidays, the instruments, the NOTEBOOK
 - [Editions](Editions) -- CONTENT and CONTEXT: what differs, and what never does
-- [Books](Books) -- THE GUIDE and THE SUBTLE LAYER, the two books to find
+- [Books](Books) -- THE GUIDE and THE SUBTLE LAYER, the two books to find, and [a rumour of a third](The-Hermetic-Layer)
 - [The companion](The-companion) -- a daemon hosted on your phone, a watch or a board; the one app; the hub
 - [Building](Building) -- build both editions from source
 - [Releases](Releases) -- how a release is named and what it holds
