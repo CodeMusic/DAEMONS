@@ -133,3 +133,15 @@ T-447 pair 3 (landmarks-3.json, first play): the REVIEW BOARD from the plaza and
 T-475: OVERLOADED as the FOE (film_t475_foe.json), NORMAL, SUN, RAIN and HAIL forms after the player's HEATSOAK, DELUGE and FROST; the strip below is each form at 3x.
 
 ![29Oct2026 - T475 - OVERLOADED as the foe in sun rain and hail - 22](29Oct2026%20-%20T475%20-%20OVERLOADED%20as%20the%20foe%20in%20sun%20rain%20and%20hail%20-%2022.png)
+
+### 29Oct2026 - C237 - the witching hours face, SPELLCRAFT, Halloween - 23
+
+A mock-up of the watch drawn from the firmware's own numbers, not a screenshot. In the hour: the date, the minutes left, the emerald pie filling counter-clockwise, the line turned under, and the clock face with no hands. Also shown: a touch opening AS ABOVE SO BELOW, the one-time SPELLCRAFT message, and Halloween's costume. All words are DRAFT.
+
+![29Oct2026 - C237 - the witching hours face, SPELLCRAFT, Halloween - 23](29Oct2026%20-%20C237%20-%20the%20witching%20hours%20face%2C%20SPELLCRAFT%2C%20Halloween%20-%2023.png)
+
+### 29Oct2026 - C239 - the SPELLCRAFT card face - 24
+
+SPELLCRAFT's card face (left), its SHINY (middle), beside an INSTINCT face for comparison: emerald rising through the book's purple, a magic circle, the old work's signs, and the hour's red and blue rings where the daemon stands, with no shadow. DRAFT.
+
+![29Oct2026 - C239 - the SPELLCRAFT card face - 24](29Oct2026%20-%20C239%20-%20the%20SPELLCRAFT%20card%20face%20-%2024.png)
