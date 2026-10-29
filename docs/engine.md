@@ -74,7 +74,7 @@ The biggest tenants after it:
 | `SaveBlock2` | 3876 B | 3876 B | 3968 B | **92 B** |
 | `PokemonStorage` | 33744 B | 33744 B | 35712 B | **1968 B** |
 
-**Story state:** 254 of our 1024 flags used (**770 free**); **46** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
+**Story state:** 255 of our 1024 flags used (**769 free**); **44** of vanilla's spare `VAR_0x40xx` referenced nowhere. *The save has not grown: our flags live in `SaveBlock2`'s filler (T-17).*
 
 ***Where the limit is:*** *ROM is not it -- text and scripts are cheap, and art is what spends it. EWRAM is: vanilla is already ~99.6% full, so anything that must stay resident while you walk (a follower, an always-on effect) has to find bytes, or borrow from `gHeap` as screens do.*
 

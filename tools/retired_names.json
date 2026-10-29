@@ -49,6 +49,14 @@
     "SPECIES_PORYGON"
    ]
   },
+  "UNDERTOW": {
+   "now": [
+    "SPECIES_CARVANHA"
+   ],
+   "was": [
+    "MOVE_UNDERTOW"
+   ]
+  },
   "WATCHDOG": {
    "now": [
     "ITEM_ICE_HEAL"

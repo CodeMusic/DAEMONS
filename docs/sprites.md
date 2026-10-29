@@ -4,7 +4,7 @@
 
 | sprites | vanilla shipped | redrawn | recoloured | still vanilla | added | done |
 |---|---|---|---|---|---|---|
-| overworld people | 96 | 96 | 0 | 0 | 60 | **100%** |
+| overworld people | 96 | 96 | 0 | 0 | 61 | **100%** |
 | trainer portraits | 146 | 146 | 0 | 0 | 10 | **100%** |
 | trainer back pics | 6 | 6 | 0 | 0 | 0 | **100%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
@@ -14,8 +14,8 @@
 | daemon icons | 387 | 385 | 0 | 2 | 12 | **99%** |
 | overworld daemons | 42 | 42 | 0 | 0 | 0 | **100%** |
 | overworld objects | 19 | 19 | 0 | 0 | 6 | **100%** |
-| ***the people*** | 258 | 258 | 0 | 0 | 70 | ***100.0%*** |
-| ***every sprite*** | 1476 | 1473 | 0 | 3 | 114 | ***99.8%*** |
+| ***the people*** | 258 | 258 | 0 | 0 | 71 | ***100.0%*** |
+| ***every sprite*** | 1476 | 1473 | 0 | 3 | 115 | ***99.8%*** |
 
 ## The towns
 
@@ -32,5 +32,5 @@
 | **VERDIGRIS** | green corrosion on bronze; Corpus rotting beneath | 12 | 0 | 8 | 100% |
 | **LURID** | garish glow; spectacle and toxicity | 9 | 0 | 5 | 100% |
 | **BRAZEN** | brass over base metal; corporate capture | 13 | 0 | 7 | 100% |
-| **QUICKSILVER** | mercury: alive, unstable; the ruined lab | 13 | 0 | 6 | 100% |
+| **QUICKSILVER** | mercury: alive, unstable; the ruined lab | 14 | 0 | 6 | 100% |
 | **UMBRA** | full shadow, all colour absorbed; the Review Board | 11 | 0 | 8 | 100% |
