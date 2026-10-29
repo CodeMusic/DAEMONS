@@ -113,6 +113,9 @@ status.
 Every routine carries a signature of its own in battle: a few glyphs of bits and a three-note figure in its type's key.
 On a holiday, the signature wears the month's colour.
 
+Some routines read the whole party. **CONSENSUS** grows stronger the more your party's streaks overlap, and **SLANT**
+the more they differ; **ALIGN** hands the foe your own type, weaknesses and all. All three are DRAFT.
+
 ## The map
 
 The TOWN MAP keeps its shape, so finding your way is unchanged, but it is drawn in the game's own look: paper and ink,
