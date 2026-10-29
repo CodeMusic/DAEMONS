@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.328 — 2026-10-29
+
+### Four mechanics from 2.12, decided
+
+- ***The user, by multiple choice***: **seventeen type-resist items** (T-488); **ALIGN, the reverse of the frame family** (T-489); **the physical / special split, in steps** (T-490); **CONSENSUS grows with overlap, a CONTEXT routine with divergence** (T-491). Every new name DRAFT.
+
 ## v11.327 — 2026-10-29
 
 ### The Open log audited
