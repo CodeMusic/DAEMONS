@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.322**
+**A total conversion — the living design bible, v11.323**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4985,6 +4985,12 @@ take off.*
 - ***The hour's lines turn over***: **"{shadow} under {virtue}" in the folk craft's words** -- *SUN THRALL under CIRCLE · MON DEVOURING under MEASURE · TUE BINDING under OFFERING · WED SLUMBER under VIGIL · THU HEX under UNCROSSING · FRI EVIL EYE under BLESSING · SAT GLAMOUR under GROUNDING* (*9.21's week, inverted*).
 - ***Halloween with the book***: **the pulse all day, a costume** (*a daemon in the face of one of its opposite type; a tap takes the mask off*), **trick or treat** (*every daemon met leaves a treat*), **the thirteen as cards, and every clock without hands.** *A SPELLCRAFT tarot deck joins THE SUBTLE LAYER's, both in the game too.*
 
+#### OSRIC HATTER, and THE LAYERS (the user, by multiple choice, 2026-10-29)
+
+- ***The author is OSRIC HATTER, the Hatter of QUICKSILVER*** -- **a stoat** (*actors are animals*). *The user wanted a name a search ties to the Mad Hatter, and tied to QUICKSILVER because hatters went mad from the quicksilver they set felt with.* **The warning: he made hats there "until the quicksilver in the felt began to talk to him. Some say he went mad. He says he went through."** *Then: some who read to the end went a little mad as well; stop here if you want your world to stay solid; turn the page to see the subtle layer underneath.* **The book's question back ends "Take it with a grain of salt."** *Only QUICKSILVER's public name is in the book -- never 4.10's sequence or its order.*
+- ***His house on QUICKSILVER***: **a leaning top hat with a 10/6 price card in its band; inside, every clock stopped at half past three, and a long tea table laid for many where only he sits.** *Half past three is the Tablet of Gravity's hour.* (*Built by the game lane.*)
+- ***THE LAYERS (SENSE)***, **a section after the alchemy and before REFLECTION** -- *SUBSTRATE, REPRESENT, ABSTRACT, FEELING, NOUN, INTERFACE: the thesis, shadowed, as the exception allows* -- **"ABSTRACTION AND REPRESENTATION MAKE A PERCEPTION."** *·* **"A noun is a verb that has been told to hold still."** *The Work folds into THE ONE THING, so the book keeps ten sections; the Resonance Fractal keeps its name.*
+
 #### Build order (the user, by multiple choice, 2026-10-29)
 
 ***The book first, the spells in steps.*** **First the book, its SPELLBOOK pages, the two unlocks, the night rule and the 3 AM pulse; then the spells a ticket at a time, the cheap first** (*THE AWAKENING, THE CONTRAST, THE LENS, THE FIELD*) **and the heavy last** (*THE MIRROR, THE ROOM, THE SMALL HAND*). *Section 8's warning holds even here: a book the player can open beats thirteen spells half-built.* **The game's half is the game lane's; the companion's (the hour's face, the deck, spells read aloud) the companion's.**
@@ -8920,6 +8926,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **PENPHIN only by a pair trade (T-474, 2026-10-28)** — DOLPHIN and PENGUIN each evolve only when traded for the other, and both become PENPHIN; any other trade does nothing; the only pair trade in the game (8.2, Penphin)
 - **The witching hour (T-480, C-236, 2026-10-29)** — 3 to 4 AM by the cartridge's (or the device's) clock: a faint purple shimmer anyone awake sees, and with THE SUBTLE LAYER held one extra routine per daemon named for its first type, gone at four and never saved; eighteen names shared with the companion, SECOND SIGHT dormant; DRAFT (4.38)
 - **THE HERMETIC LAYER, SPELLCRAFT and the one exception (2026-10-29)** — a third book, a grimoire from both others, unlocked at the witching hour (in the game with both books held; in the app by seeing the hour); the only place the craft rules bend: it may say some of the thesis, shadowed, behind a warning and a possibly mad author; its spells may bend play; the type chart, the four secrets and the user's story stay fixed; one pulse red to blue through purple, emerald ink; SPELLBOOK at night; the book first, the thirteen spells in steps (4.39, 0.1)
+- **OSRIC HATTER and THE LAYERS (2026-10-29)** — the grimoire's author is OSRIC HATTER, a stoat, the Hatter of QUICKSILVER, mad (or through) from the quicksilver in the felt; his top-hat house with every clock at half past three and a tea table laid for many; the book gains THE LAYERS (the thesis, shadowed) and keeps ten sections (4.39)
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)

@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.323 — 2026-10-29
+
+### OSRIC HATTER, and THE LAYERS (4.39)
+
+- ***The user, by multiple choice***: **the author is OSRIC HATTER, the Hatter of QUICKSILVER**, a stoat, and the warning tells how; **his house** (a leaning top hat, the 10/6 card, clocks stopped at half past three, a tea table laid for many); **THE LAYERS (SENSE)** joins the book (SUBSTRATE, REPRESENT, ABSTRACT, FEELING, NOUN, INTERFACE), the Work folds into THE ONE THING, the Resonance Fractal keeps its name. Only QUICKSILVER's public name appears, never 4.10's order. DRAFT.
+
 ## v11.322 — 2026-10-29
 
 ### THE HERMETIC LAYER: SPELLCRAFT, and the one exception
