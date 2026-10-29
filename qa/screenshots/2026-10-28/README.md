@@ -403,3 +403,9 @@ C-233 (DRAFT): THE PLAYER'S MANUAL first on the LIBRARY shelf, and open in the c
 C-233 (DRAFT) in the iOS app: a Release build on an iPhone 17 Pro simulator, on a copy of the theatre's test save. The manual first on the LIBRARY shelf, fetched and kept on the device (v11.316.9), opened in the app's own page, scrolled page by page ('2 of 47'), and Share offering the 2.5 MB PDF.
 
 ![28Oct2026 - C233 - the manual in the iOS app - 67](28Oct2026%20-%20C233%20-%20the%20manual%20in%20the%20iOS%20app%20-%2067.png)
+
+### 28Oct2026 - T467 - the manual, the week, holidays, books asked and cards - 68
+
+The player's manual with the user's additions (54 pages, v11.319.1): the Pocket Taco and the buttons on screen; THE WEEK; the year's 36 holidays, north and south; the books' REASON and INSTINCT and ASK THE GUIDE; the cards' two faces. Every word quoted from the game is a DRAFT.
+
+![28Oct2026 - T467 - the manual, the week, holidays, books asked and cards - 68](28Oct2026%20-%20T467%20-%20the%20manual%2C%20the%20week%2C%20holidays%2C%20books%20asked%20and%20cards%20-%2068.png)
