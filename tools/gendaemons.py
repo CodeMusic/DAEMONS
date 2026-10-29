@@ -33,6 +33,7 @@ and the four STREAK MARKERS painted on the body in its own marker colours, one p
 """
 import ast, os, sys, daemonslib
 from PIL import Image, ImageDraw
+from driftguard import refuse_over_later_work
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "gfx/daemons")
@@ -199,6 +200,7 @@ SHEETS = [("punchcard", punchcard), ("substrate", substrate), ("outlier", outlie
 
 
 def main():
+    refuse_over_later_work("gendaemons")          # T-476: T-452 redrew all five; generator_drift.json says what
     cells = []
     for name, make in SHEETS:
         for back in (False, True):

@@ -183,6 +183,8 @@ SANDBOX_EXCUSED = {
     "port_gamedata": "writes into the AI playtester's fork (engineAi), which is never sandboxed",
     "port_prompts":  "writes into the AI playtester's fork (engineAi), which is never sandboxed",
     "check_reach":   "a check, not a generator",
+    #  T-476: it draws each daemon from the BUILT front.4bpp and normal.gbapal, which a fresh worktree has none of.
+    "manual":        "reads the build's .4bpp and .gbapal pictures (gitignored), and writes the manual's PDF",
 }
 
 

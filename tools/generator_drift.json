@@ -106,10 +106,11 @@
   ]
  },
  "gbacivictown": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server; and b3cc6cb50 T-438 batch A: BRAZEN's blocks 0x392/0x393 moved onto four freed saffron_city slots so nothing draws tiles 376-383 (a write puts them back and the door frames return); and f8fa96614 T-438 batch F: HALFTONE's leftovers redrawn by gbatowns.py (the roofs dotted whole, a sixteen-slot tile row added for the roofs' copy of 702), which a write would undo (found by check_generators --writes 2026-10-24)",
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server; and b3cc6cb50 T-438 batch A: BRAZEN's blocks 0x392/0x393 moved onto four freed saffron_city slots so nothing draws tiles 376-383 (a write puts them back and the door frames return); and f8fa96614 T-438 batch F: HALFTONE's leftovers redrawn by gbatowns.py (the roofs dotted whole, a sixteen-slot tile row added for the roofs' copy of 702), which a write would undo (found by check_generators --writes 2026-10-24); and 27e785a73 T-447 pair 2: DAEMON TOWER took tile slots in lavender_town, so a write lays the CHECKPOINT/REPO detail tiles into other slots and renumbers metatiles 226-260 (the same picture; T-476 checked it block by block), while its tiles.png write still redraws blocks 16, 17 and 20",
   "files": [
    "engine:data/tilesets/secondary/cerulean_city/metatiles.bin",
    "engine:data/tilesets/secondary/cerulean_city/tiles.png",
+   "engine:data/tilesets/secondary/lavender_town/metatiles.bin",
    "engine:data/tilesets/secondary/lavender_town/tiles.png",
    "engine:data/tilesets/secondary/saffron_city/metatiles.bin",
    "engine:data/tilesets/secondary/saffron_city/tiles.png"
@@ -194,6 +195,21 @@
    "engine:graphics/trainers/back_pics/red_back_pic.png"
   ]
  },
+ "gendaemons": {
+  "why": "STALE -- never --write it on the whole tree: T-452 redrew all five of its code-drawn daemons in the new style as gbasprite's sources (OUTLIER 00407fff, SUBSTRATE 19f52f28, PUNCHCARD 7cf3ee8e, RELEASE 4dcb9686, DUPLEX fb26572e); a write puts the T-176/T-131 drawings back (T-476)",
+  "files": [
+   "docs:gfx/daemons/duplex_back.png",
+   "docs:gfx/daemons/duplex_front.png",
+   "docs:gfx/daemons/outlier_back.png",
+   "docs:gfx/daemons/outlier_front.png",
+   "docs:gfx/daemons/punchcard_back.png",
+   "docs:gfx/daemons/punchcard_front.png",
+   "docs:gfx/daemons/release_back.png",
+   "docs:gfx/daemons/release_front.png",
+   "docs:gfx/daemons/substrate_back.png",
+   "docs:gfx/daemons/substrate_front.png"
+  ]
+ },
  "port_ecsort": {
   "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 980854334 T-31, and six lines that sent the player to a place that no longer exi",
   "files": [
@@ -231,7 +247,7 @@
   ]
  },
  "port_prompts": {
-  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pok\u00e9mon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
+  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pokémon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
   "files": [
    "ai:server/prompts/game.txt"
   ]
