@@ -737,6 +737,14 @@ disagree, [REASON or INSTINCT](#newgame). On the companion either book, once hel
 GUIDE answers as REASON would, THE SUBTLE LAYER as INSTINCT would.** Neither is the careful one; they answer
 differently, and both are yours.
 
+| | THE GUIDE | THE SUBTLE LAYER |
+|----|----------|----------|
+| **what it is** | the mind as software, an engineer's manual | a trainer's handbook of the layer under the solid world |
+| **in the game** | POOL → key items, a page at a time | the same, with a picture on every page |
+| **in the LIBRARY** | its cover, its contents, each page, READ ALOUD | the same, and TWO VOICES |
+| **asked** | it answers as REASON would | it answers as INSTINCT would, and asks back |
+| **carried** | its margins fill as you come to understand things | you start to notice things, and it gives you its cards |
+
 ## THE PROGRAMMER'S GUIDE TO THE HUMAN MIND {#guide}
 
 {{cover guide}}
@@ -748,6 +756,13 @@ to *The Path Forward*. Its page on security sets out each day's **virtue over it
 MARKS print, and the ones in [the week](#week).
 
 []{.clear}
+
+### Carrying it: the margins
+
+Reading the GUIDE grants nothing, and it asks nothing of you. But it is not finished. When you come to understand
+something out in the world -- one of the seven [ROOTS](#roots) -- a note appears under the chapter it concerns,
+indented and in the GUIDE's cyan, as if someone had written it in the margin. Go back to a chapter you have read, and
+see what has been added.
 
 ### ASK THE GUIDE: REASON
 
@@ -764,7 +779,8 @@ It holds the craft and the physics side by side and chooses neither -- reading (
 bonding, what the physics allows, belief and the words that shape it, balancing mind and body, a routine for the week,
 and how to stay correctable. Every page has a picture, and in **TWO VOICES** a second, asking voice is printed faint.
 
-**Once you carry it, you start to notice things.** [The next chapter](#subtle) is about them.
+**Once you carry it, you start to notice things**, each marked in the book's purple. [The next chapter](#subtle) is
+about them. And on the companion it gives you [its cards](#cards).
 
 []{.clear}
 
@@ -816,6 +832,40 @@ page's own sentence; with the companion's hub and its AI board, the hub can put 
 asked on the companion only -- the game's copies are for reading. *All of this is new: built, and still being tried on
 the watches.*
 :::
+
+## THE HERMETIC LAYER, a rumour {#rumour}
+
+::: rumour
+Trainers tell of a third book. Nobody who wrote this manual has held it, and the game will not say whether it is real.
+
+They call it **THE HERMETIC LAYER**, and they say it is a grimoire: not a guide and not a handbook but a book of
+workings, which does what the other two only describe and bends rules the rest of the game keeps. Some say the GUIDE's
+reason and THE SUBTLE LAYER's noticing were only ever its two halves. **Some say it finds only those who have read the
+other two. It is said to keep an hour of its own.** It is said to open with a warning, and that some who read it to
+the end went a little mad. Its author is said to have made hats. Some say he went mad; he says he went through.
+:::
+
+### Where the story comes from
+
+The rumour borrows from things that are true.
+
+- **The Hermetica.** Greek writings from Roman Egypt, of the first centuries AD, set down under the name of **Hermes
+  Trismegistus**, "thrice-great Hermes": the Greek messenger god joined to Thoth, Egypt's god of writing and wisdom.
+  Renaissance Florence took them for older than Moses -- Marsilio Ficino translated them for Cosimo de' Medici in
+  1463 -- until Isaac Casaubon dated them in 1614. Their name is still on the alchemists' airtight seal: *hermetic*.
+- **The Emerald Tablet.** A few lines of alchemy, said to have been carved by Hermes himself on a slab of emerald,
+  first known in Arabic and later in Latin. Isaac Newton translated it. Its best-known line comes down to four words:
+  **as above, so below** -- what runs in the small runs like what runs in the great.
+- **Grimoires.** The word is the old French for *grammar*: a book of spells was a book of how words go together.
+  *Glamour* comes from *grammar* too, by way of the Scots *gramarye*, magic learned from books.
+- **Mercury, and the hatters.** For the alchemists, mercury -- the metal that runs like water, named for Hermes' Roman
+  self -- was the go-between, the spirit of change in every working. Felt hatters of the 1700s and 1800s set their fur
+  with a mercury compound and breathed its vapour for years; it shook their hands and their nerves, and "mad as a
+  hatter" was said of them before Lewis Carroll ever wrote his Hatter.
+- **The witching hour.** Folk belief kept one hour of the night as the one when the boundary is thinnest and witches
+  and spirits are most abroad -- Hamlet's "very witching time of night". The tellers never agreed which hour.
+
+If the book is real, the game will not say so, and neither will this manual.
 
 # The subtle layer, in play {#subtle .t-CONTEXT}
 

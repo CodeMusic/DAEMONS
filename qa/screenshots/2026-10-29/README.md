@@ -193,3 +193,15 @@ T-482: 3 AM with THE SUBTLE LAYER held -- the battle's ground breathes red to bl
 T-483 / T-486: at night the cover, OSRIC HATTER's warning, the one glitch on the first page turned past it, the contents, and an inscription in emerald breathing; the backdrop pulses. Pictures are a placeholder frame (none drawn yet). The caption 'pages will not part' under some frames is the route tool's last box, not on screen.
 
 ![29Oct2026 - T483 - the book at night, the warning and the glitch - 36](29Oct2026%20-%20T483%20-%20the%20book%20at%20night%2C%20the%20warning%20and%20the%20glitch%20-%2036.png)
+
+### 29Oct2026 - T467 - the books and a rumour - 37
+
+The player's manual, chapter 10: the two books side by side, and THE HERMETIC LAYER as a rumour with its real history (v11.325.1). Drawn from docs/DAEMONS-manual.pdf.
+
+![29Oct2026 - T467 - the books and a rumour - 37](29Oct2026%20-%20T467%20-%20the%20books%20and%20a%20rumour%20-%2037.png)
+
+### 29Oct2026 - T467 - the books and a rumour - 38
+
+The player's manual, chapter 10: the two books side by side, and THE HERMETIC LAYER as a rumour with its real history (v11.325.1). Drawn from docs/DAEMONS-manual.pdf.
+
+![29Oct2026 - T467 - the books and a rumour - 38](29Oct2026%20-%20T467%20-%20the%20books%20and%20a%20rumour%20-%2038.png)

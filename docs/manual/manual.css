@@ -84,6 +84,10 @@ td code { font-size: .9em; }
 .tip { background: #eef4ec; border-left-color: #5c9e60; }
 .safe { background: #f6ecec; border-left-color: #b8524f; }
 .note { background: #f0eef7; border-left-color: var(--purple); }
+/* a rumour: the pulse's red, purple and blue faint behind it, the tablet's emerald at its edge (bible 4.39) */
+.rumour { break-inside: avoid; border-radius: 2.5pt; padding: 2mm 3mm; margin: 2.5mm 0; font-style: italic;
+          background: linear-gradient(90deg, #f7ebe9, #f5edef, #edeff4); border-left: 2.5pt solid #1f8f5f; }
+.rumour p:last-child { margin: 0; }
 .callout p:last-child, .tip p:last-child, .note p:last-child, .safe p:last-child { margin: 0; }
 
 /* -- the ways to play: a card for each -- */
