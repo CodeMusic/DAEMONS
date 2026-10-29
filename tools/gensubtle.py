@@ -4,6 +4,12 @@
     python3 tools/gensubtle.py                       # report: every entry measured, every rule checked
     python3 tools/gensubtle.py --write                # engineGba/src/data/subtle_layer.h and graphics/book/subtle/
     python3 tools/gensubtle.py --write --engine DIR   # the same, into another engine checkout (a worktree)
+    python3 tools/gensubtle.py --book hermetic        # one book only (subtle, hermetic); without it, both
+
+THE HERMETIC LAYER (T-483) is read by the same parser into the same open book: docs/hermetic-layer.md, written to
+src/data/hermetic_layer.h and graphics/book/hermetic/. Its own rules are the four that file's header keeps (it is the
+one exception to the rest); a paragraph opening '^ ' is an INSCRIPTION, printed in the tablet's emerald (C_RING, which
+the reader breathes), and its pictures are not drawn yet -- every entry shows one plain placeholder frame.
 
 WHAT IT IS. The user's own book, *Developing Psychic Routines*, rewritten for the game as a trainer's handbook
 (docs/subtle-layer.md). It is read as an OPEN BOOK (the user, 2026-10-18): a contents spread, then each entry opens
@@ -29,6 +35,8 @@ import subtle_sprites as sp
 ROOT = os.path.dirname(HERE)
 SRC = os.path.join(ROOT, "docs/subtle-layer.md")
 WRITE = "--write" in sys.argv
+ONLY = sys.argv[sys.argv.index("--book") + 1] if "--book" in sys.argv else None
+BOOK = "subtle"
 ENGINE = sys.argv[sys.argv.index("--engine") + 1] if "--engine" in sys.argv else os.path.join(ROOT, "engineGba")
 
 # ---------------------------------------------------------------- the spread, as book_reader.c draws it
@@ -81,6 +89,68 @@ RGB8 = {name: tuple((c << 3) | (c >> 2) for c in v) for name, v in PALETTE}
 SPRITE_ROLE = {sp.PAPER: "C_PAPER", sp.INK: "C_INK", sp.FAINT: "C_FAINT", sp.DIM: "C_HIGHLIGHT",
                sp.HUE: "C_RULE", sp.HUE_LIGHT: "C_MARGIN", sp.SHADE: "C_EDGE_DARK"}
 
+# ---------------------------------------------------------------- T-483: THE HERMETIC LAYER, the one exception
+# docs/hermetic-layer.md's header: what the book still keeps, word by word. The rest of THE SUBTLE LAYER's rules are
+# the ones this book is allowed to break (bible 4.39); the four secrets are kept by the writer, not by a pattern here.
+HERMETIC_RULES = [
+    ("process, not pathology", RULES[4][1], False, ()),
+    ("over, never cures (T-418)", r"\bcur(e|es|ed|ing)\b|\billness\b|\bsick\b", False, ()),
+    ("reason and instinct (9.10)", r"\bintuition\b|\blogic and\b", False, ()),
+    ("the world does not know its name", r"\bDAEMONS\b", True, ()),
+    ("no device in the game's copy", r"\bdevice|\bscreen", False, ()),
+    ("nobody's real name", RULES[12][1], False, ()),
+]
+
+# A night page; INSCRIPTIONS in the tablet's emerald (C_RING, which the reader breathes toward C_MARGIN, the emerald lit);
+# the rules in THE SUBTLE LAYER's purple; the backdrop (C_COVER) is where the reader lays the pulse, about 30%.
+HERMETIC_PALETTE = [
+    ("C_NONE",        (0, 0, 0)),
+    ("C_PAPER",       (4, 3, 6)),       # the page: a night
+    ("C_INK",         (29, 28, 30)),
+    ("C_SHADOW",      (1, 1, 2)),
+    ("C_FAINT",       (17, 15, 20)),    # folios, captions, the asking voice
+    ("C_RULE",        (22, 10, 19)),    # THE SUBTLE LAYER's purple: the pulse's middle
+    ("C_MARGIN",      (10, 25, 15)),    # the emerald, lit (#50C878): the marks, and an inscription at its height
+    ("C_EDGE",        (8, 6, 10)),
+    ("C_EDGE_DARK",   (2, 1, 3)),
+    ("C_HIGHLIGHT",   (9, 6, 12)),      # the cursor's bar
+    ("C_RING",        (3, 17, 11)),     # an INSCRIPTION: the tablet's emerald (#1F8F5F), breathed by the reader
+    ("C_FRAME",       (1, 1, 1)),
+    ("C_SLATE",       (5, 3, 7)),       # the cover's boards
+    ("C_CHALK",       (31, 30, 30)),    # the cover's lettering
+    ("C_CHALK_FAINT", (16, 13, 18)),
+    ("C_COVER",       (2, 1, 3)),       # the backdrop, pulsed
+]
+SUBTLE_RULES, SUBTLE_PALETTE = RULES, PALETTE
+BOOKS = {
+    "subtle":   {"src": "docs/subtle-layer.md", "prefix": "Subtle", "define": "SUBTLE", "header": "subtle_layer.h",
+                 "gfx": "subtle", "icon": "subtle_layer", "title": "THE SUBTLE LAYER", "subtitle": "a trainer's handbook"},
+    "hermetic": {"src": "docs/hermetic-layer.md", "prefix": "Hermetic", "define": "HERMETIC", "header": "hermetic_layer.h",
+                 "gfx": "hermetic", "icon": "hermetic_layer", "title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT"},
+}
+
+
+def use(book):
+    """Point the module at one book: its text, its rules and its sixteen colours."""
+    global BOOK, SRC, RULES, PALETTE, IDX, RGB8
+    BOOK = book
+    SRC = os.path.join(ROOT, BOOKS[book]["src"])
+    RULES, PALETTE = (SUBTLE_RULES, SUBTLE_PALETTE) if book == "subtle" else (HERMETIC_RULES, HERMETIC_PALETTE)
+    IDX = {name: i for i, (name, _) in enumerate(PALETTE)}
+    RGB8 = {name: tuple((c << 3) | (c >> 2) for c in v) for name, v in PALETTE}
+
+
+def inscribe(sections):
+    """T-483: each entry's INSCRIPTIONS ('^ '), taken out of the text and kept as a set like the asking voice; 'voices'
+    is both, which the reader does not indent. Not in parse(): companion_export reads the '^ ' itself."""
+    for s in sections:
+        for e in s["entries"]:
+            e["inscribed"] = {k for k, q in enumerate(e["paras"]) if q.startswith("^ ")}
+            e["paras"] = [q[2:] if k in e["inscribed"] else q for k, q in enumerate(e["paras"])]
+            e["text"] = "\n\n".join(e["paras"])
+            e["voices"] = e["faint"] | e["inscribed"]
+    return sections
+
 # ---------------------------------------------------------------- the text
 def parse():
     """genguide's parse, with each entry's @@ SPRITE line taken out and its asking voice ('~ ') kept as a flag."""
@@ -126,7 +196,7 @@ def layout(e):
     """Its pages: the opening spread's right page under the title, then left and right pages of nine lines."""
     title = g.reflow(e["title"], TW, small=True)
     start = 19 + len(title) * 10 + 9
-    lines = lines_of(e["text"], faint_paras=e["faint"])
+    lines = lines_of(e["text"], faint_paras=e.get("voices", e["faint"]))
     first = (BOTTOM - start) // PITCH
     per = (BOTTOM - TOP) // PITCH
     pages = [lines[:first]] + [lines[i:i + per] for i in range(first, len(lines), per)]
@@ -135,6 +205,9 @@ def layout(e):
 
 def spreads(e):
     return 1 + -(-(len(layout(e)[2]) - 1) // 2)
+
+
+NOTES = []
 
 
 def check(sections):
@@ -151,8 +224,13 @@ def check(sections):
             if sum(len(p) for p in pages) > g.MAX_LINES:
                 bad.append("%s: more lines than the reader holds (%d)" % (e["short"], g.MAX_LINES))
             if len(pages) > 1 and len(pages[-1]) <= 2:
-                bad.append("%s: its last page holds %d line(s)" % (e["short"], len(pages[-1])))
-            if e["sprite"] not in sp.SPRITES:
+                # T-483: THE HERMETIC LAYER's text is the companion lane's draft, so its short last pages are told,
+                # not failed -- the writer fixes them in docs/hermetic-layer.md.
+                (NOTES if BOOK == "hermetic" else bad).append("%s: its last page holds %d line(s)" % (e["short"], len(pages[-1])))
+            if BOOK == "hermetic":
+                if not e["sprite"]:
+                    bad.append("%s: no @@ SPRITE line" % e["short"])
+            elif e["sprite"] not in sp.SPRITES:
                 bad.append("%s: no picture %r in subtle_sprites.py" % (e["short"], e["sprite"]))
             if len(g.reflow(e["caption"], TW, small=True)) > CAPTION_LINES:
                 bad.append("%s: its caption takes more than %d small lines" % (e["short"], CAPTION_LINES))
@@ -256,7 +334,57 @@ def icon():
     return im
 
 
+def placeholder():
+    """T-483: the one picture every HERMETIC LAYER entry shows until its own is drawn (51 are named, none drawn): an
+    empty plate on the page, a hairline frame in the rule's purple and a small emerald mark at its heart. Plain on
+    purpose -- it says a picture belongs here, not what it is."""
+    im = Image.new("RGB", (PIC_W, PIC_H), RGB8["C_PAPER"])
+    d = ImageDraw.Draw(im)
+    d.rectangle((6, 4, PIC_W - 7, PIC_H - 5), outline=RGB8["C_RULE"])
+    d.rectangle((8, 6, PIC_W - 9, PIC_H - 7), outline=RGB8["C_EDGE"])
+    cx, cy = PIC_W // 2, PIC_H // 2
+    d.polygon([(cx, cy - 6), (cx + 5, cy), (cx, cy + 6), (cx - 5, cy)], outline=RGB8["C_RING"])
+    return im
+
+
+def cover_hermetic(letters=True):
+    """T-483: THE HERMETIC LAYER's cover (240x160): night boards, the title in the game's font, and a green tablet with
+    two triangles on it, one pointing up and one down. No byline."""
+    im = Image.new("RGB", (240, 160), RGB8["C_COVER"])
+    d = ImageDraw.Draw(im)
+    d.rectangle((50, 5, 191, 154), fill=RGB8["C_EDGE_DARK"])
+    d.rectangle((48, 4, 188, 152), fill=RGB8["C_SLATE"])
+    d.rectangle((48, 4, 53, 152), fill=RGB8["C_EDGE_DARK"])
+    d.rectangle((58, 8, 184, 148), outline=RGB8["C_RULE"])
+    title, sub = BOOKS["hermetic"]["title"], BOOKS["hermetic"]["subtitle"]
+    if letters:
+        glyphs(im, title, 121 - g.width(title) // 2, 12, False, RGB8["C_CHALK"])
+        glyphs(im, sub, 121 - g.width(sub, True) // 2, 27, True, RGB8["C_CHALK_FAINT"])
+    x0, y0, x1, y1 = 93, 50, 149, 138                    # the tablet, its head rounded off
+    d.rectangle((x0, y0 + 6, x1, y1), fill=RGB8["C_EDGE_DARK"], outline=RGB8["C_RING"])
+    d.pieslice((x0, y0, x1, y0 + 12), 180, 360, fill=RGB8["C_EDGE_DARK"], outline=RGB8["C_RING"])
+    d.line((x0 + 1, y0 + 6, x1 - 1, y0 + 6), fill=RGB8["C_EDGE_DARK"])
+    cx = (x0 + x1) // 2
+    d.polygon([(cx, 66), (cx + 14, 90), (cx - 14, 90)], outline=RGB8["C_MARGIN"])     # above
+    d.line((x0 + 8, 94, x1 - 8, 94), fill=RGB8["C_RING"])
+    d.polygon([(cx, 122), (cx + 14, 98), (cx - 14, 98)], outline=RGB8["C_RING"])      # so below
+    return im
+
+
+def icon_hermetic():
+    """The bag's icon (24x24): a closed book on the night boards, the tablet's emerald down its spine."""
+    im = Image.new("RGB", (24, 24), RGB8["C_NONE"])
+    d = ImageDraw.Draw(im)
+    d.rectangle((5, 3, 19, 21), fill=RGB8["C_SLATE"], outline=RGB8["C_INK"])
+    d.rectangle((5, 3, 7, 21), fill=RGB8["C_RING"])
+    d.polygon([(13, 7), (16, 12), (10, 12)], outline=RGB8["C_MARGIN"])
+    d.line((10, 15, 16, 15), fill=RGB8["C_CHALK_FAINT"])
+    return im
+
+
 def pictures(sections):
+    if BOOK == "hermetic":
+        return ["placeholder"]
     keys = []
     for s in sections:
         for e in s["entries"]:
@@ -266,52 +394,61 @@ def pictures(sections):
 
 # ---------------------------------------------------------------- the C the reader prints
 def header(sections, keys, nframes):
-    out = ["// Generated by DAEMONS tools/gensubtle.py from docs/subtle-layer.md -- edit those, not this.",
-           "// T-423: THE SUBTLE LAYER. DRAFT WORDING, every string, until the user approves it on the private",
-           "// field-test page. Its rules are in docs/subtle-layer.md's header.", ""]
+    b = BOOKS[BOOK]
+    P, D = b["prefix"], b["define"]
+    out = ["// Generated by DAEMONS tools/gensubtle.py from %s -- edit those, not this." % b["src"],
+           "// %s: %s. DRAFT WORDING, every string, until the user approves it on the private"
+           % ("T-423" if BOOK == "subtle" else "T-483", b["title"]),
+           "// field-test page. Its rules are in %s's header." % b["src"], ""]
     n = sum(len(s["entries"]) for s in sections)
-    out += ["#define SUBTLE_SECTIONS %d" % len(sections), "#define SUBTLE_ENTRIES  %d" % n,
-            "#define SUBTLE_PICTURES %d" % len(keys), "",
+    out += ["#define %s_SECTIONS %d" % (D, len(sections)), "#define %s_ENTRIES  %d" % (D, n),
+            "#define %s_PICTURES %d" % (D, len(keys)), "",
+            "#ifndef GUARD_LAYER_BOOK_TYPES   // one set of types for every book this tool writes (T-483)",
+            "#define GUARD_LAYER_BOOK_TYPES",
             "struct SubtleSection { const u8 *label; const u8 *heading; u8 first; u8 count; };",
             "struct SubtleEntry { const u8 *shortTitle; const u8 *title; const u8 *text; const u8 *caption; "
-            "u8 picture; u16 faint; u16 folio; };",
-            "struct SubtlePicture { const u32 *frame[3]; u8 w; u8 h; u8 frames; };", "",
-            "static const u16 sSubtlePal[16] =", "{"]
+            "u8 picture; u16 faint; u16 folio; u16 inscribed; };",
+            "struct SubtlePicture { const u32 *frame[3]; u8 w; u8 h; u8 frames; };",
+            "#endif", "",
+            "static const u16 s%sPal[16] =" % P, "{"]
     out += ["    [%s] = RGB(%d, %d, %d)," % (name, *c) for name, c in PALETTE]
-    out += ["};", "", 'static const u32 sSubtleCover[] = INCBIN_U32("graphics/book/subtle/cover.4bpp");']
+    out += ["};", "", 'static const u32 s%sCover[] = INCBIN_U32("graphics/book/%s/cover.4bpp");' % (P, b["gfx"])]
     for key in keys:
         for f in range(nframes[key]):
-            out.append('static const u32 sSubtlePic_%s_%d[] = INCBIN_U32("graphics/book/subtle/%s_%d.4bpp");'
-                       % (key, f, key, f))
-    out += ["", "static const struct SubtlePicture sSubtlePictures[SUBTLE_PICTURES] =", "{"]
+            out.append('static const u32 s%sPic_%s_%d[] = INCBIN_U32("graphics/book/%s/%s_%d.4bpp");'
+                       % (P, key, f, b["gfx"], key, f))
+    out += ["", "static const struct SubtlePicture s%sPictures[%s_PICTURES] =" % (P, D), "{"]
     for key in keys:
-        fr = ["sSubtlePic_%s_%d" % (key, f) for f in range(nframes[key])] + ["NULL"] * (3 - nframes[key])
+        fr = ["s%sPic_%s_%d" % (P, key, f) for f in range(nframes[key])] + ["NULL"] * (3 - nframes[key])
         out.append("    { { %s }, %d, %d, %d },   // %s" % (", ".join(fr), PIC_W, PIC_H, nframes[key], key))
     out += ["};", ""]
     k, folio = 0, 2
     rows = []
     for i, s in enumerate(sections):
-        out.append('static const u8 sSubtleLabel_%d[] = _("%s");' % (i, g.c_string(s["label"])))
-        out.append('static const u8 sSubtleHeading_%d[] = _("%s");' % (i, g.c_string(s["heading"])))
+        out.append('static const u8 s%sLabel_%d[] = _("%s");' % (P, i, g.c_string(s["label"])))
+        out.append('static const u8 s%sHeading_%d[] = _("%s");' % (P, i, g.c_string(s["heading"])))
         for e in s["entries"]:
-            out.append('static const u8 sSubtleShort_%d[] = _("%s");' % (k, g.c_string(e["short"])))
-            out.append('static const u8 sSubtleTitle_%d[] = _("%s");' % (k, g.c_string(e["title"])))
-            out.append('static const u8 sSubtleText_%d[] = _("%s");' % (k, g.c_string(e["text"])))
-            out.append('static const u8 sSubtleCaption_%d[] = _("%s");' % (k, g.c_string(e["caption"])))
+            out.append('static const u8 s%sShort_%d[] = _("%s");' % (P, k, g.c_string(e["short"])))
+            out.append('static const u8 s%sTitle_%d[] = _("%s");' % (P, k, g.c_string(e["title"])))
+            out.append('static const u8 s%sText_%d[] = _("%s");' % (P, k, g.c_string(e["text"])))
+            out.append('static const u8 s%sCaption_%d[] = _("%s");' % (P, k, g.c_string(e["caption"])))
             mask = sum(1 << p for p in e["faint"])
-            if mask >= 1 << 16:
-                raise SystemExit("gensubtle: %s's asking voice reaches past paragraph 16" % e["short"])
-            rows.append("    { sSubtleShort_%d, sSubtleTitle_%d, sSubtleText_%d, sSubtleCaption_%d, %d, 0x%04X, %d },"
-                        % (k, k, k, k, keys.index(e["sprite"]), mask, folio))
+            ins = sum(1 << p for p in e.get("inscribed", ()))
+            if mask >= 1 << 16 or ins >= 1 << 16:
+                raise SystemExit("gensubtle: %s's voices reach past paragraph 16" % e["short"])
+            pic = 0 if BOOK == "hermetic" else keys.index(e["sprite"])
+            row = "    { s%sShort_%d, s%sTitle_%d, s%sText_%d, s%sCaption_%d, %d, 0x%04X, %d" % (
+                P, k, P, k, P, k, P, k, pic, mask, folio)
+            rows.append(row + (", 0x%04X },   // %s" % (ins, e["sprite"]) if BOOK == "hermetic" else " },"))
             folio += 2 * spreads(e)
             k += 1
         out.append("")
-    out += ["static const struct SubtleSection sSubtleSections[SUBTLE_SECTIONS] =", "{"]
+    out += ["static const struct SubtleSection s%sSections[%s_SECTIONS] =" % (P, D), "{"]
     k = 0
     for i, s in enumerate(sections):
-        out.append("    { sSubtleLabel_%d, sSubtleHeading_%d, %d, %d }," % (i, i, k, len(s["entries"])))
+        out.append("    { s%sLabel_%d, s%sHeading_%d, %d, %d }," % (P, i, P, i, k, len(s["entries"])))
         k += len(s["entries"])
-    out += ["};", "", "static const struct SubtleEntry sSubtleEntries[SUBTLE_ENTRIES] =", "{"] + rows + ["};"]
+    out += ["};", "", "static const struct SubtleEntry s%sEntries[%s_ENTRIES] =" % (P, D), "{"] + rows + ["};"]
     return "\n".join(out) + "\n"
 
 # ---------------------------------------------------------------- the companion's copy (tools/companion_export.py)
@@ -319,6 +456,7 @@ def subtle_book():
     """The book for the companion's library, in the game's order: each paragraph plain text, the asking voice marked,
     each entry's picture by key and its frame count (the phone cannot list the art), and as 'labels' the words
     the game letters onto a picture (the week's notes on its steps, C to B), since the art carries no font. DRAFT, as in the game."""
+    use("subtle")
     out = []
     for s in parse():
         out.append({"label": s["label"], "heading": s["heading"], "entries": [
@@ -335,6 +473,7 @@ def subtle_images():
     """{name: picture} for the companion: each picture as the game draws it (native size, RGB), its frames numbered,
     and the cover. RGB on purpose: the page colour is part of the picture. Nothing in them is set in the game's font
     (FireRed's): the cover's title and the week's note names are left for the app to set in its own type."""
+    use("subtle")
     out = {}
     for key in pictures(parse()):
         for f, fr in enumerate(frames_of(key, letters=False)):
@@ -344,33 +483,59 @@ def subtle_images():
 
 
 # ---------------------------------------------------------------- report, or write
-def main():
+def run(book):
+    use(book)
+    b = BOOKS[book]
     sections = parse()
+    if book == "hermetic":
+        inscribe(sections)
     bad = check(sections)
     keys = pictures(sections)
-    nframes = {k: len(frames_of(k)) for k in keys}
+    nframes = {k: 1 for k in keys} if book == "hermetic" else {k: len(frames_of(k)) for k in keys}
     n = sum(len(s["entries"]) for s in sections)
     total = sum(spreads(e) for s in sections for e in s["entries"])
-    print("gensubtle: %d sections, %d entries, %d pictures (%d frames), %d spreads"
-          % (len(sections), n, len(keys), sum(nframes.values()), total))
+    print("gensubtle %s: %d sections, %d entries, %d pictures (%d frames), %d spreads"
+          % (book, len(sections), n, len(keys), sum(nframes.values()), total))
+    if book == "hermetic":
+        named = {e["sprite"] for s in sections for e in s["entries"]}
+        print("  %d pictures named, none drawn yet: every entry shows the placeholder frame" % len(named))
+    for note in NOTES:
+        print("  note: " + note)
+    del NOTES[:]
     if bad:
         print("\n".join(bad))
-        sys.exit(1)
-    print("every line fits and every rule holds")
+        return False
+    print("  every line fits and every rule holds")
     if not WRITE:
-        return
-    gfx = os.path.join(ENGINE, "graphics/book/subtle")
+        return True
+    gfx = os.path.join(ENGINE, "graphics/book", b["gfx"])
     os.makedirs(gfx, exist_ok=True)
-    for key in keys:
-        for f, fr in enumerate(frames_of(key)):
-            indexed(fr, PIC_W, PIC_H).save(os.path.join(gfx, "%s_%d.png" % (key, f)))
-    indexed(cover(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
-    indexed(icon(), 24, 24, fill="C_NONE").save(os.path.join(ENGINE, "graphics/items/icons/subtle_layer.png"))
-    with open(os.path.join(ENGINE, "graphics/items/icon_palettes/subtle_layer.pal"), "w", newline="") as f:
+    if book == "hermetic":
+        indexed(placeholder(), PIC_W, PIC_H).save(os.path.join(gfx, "placeholder_0.png"))
+        indexed(cover_hermetic(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
+        ic = icon_hermetic()
+    else:
+        for key in keys:
+            for f, fr in enumerate(frames_of(key)):
+                indexed(fr, PIC_W, PIC_H).save(os.path.join(gfx, "%s_%d.png" % (key, f)))
+        indexed(cover(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
+        ic = icon()
+    indexed(ic, 24, 24, fill="C_NONE").save(os.path.join(ENGINE, "graphics/items/icons/%s.png" % b["icon"]))
+    with open(os.path.join(ENGINE, "graphics/items/icon_palettes/%s.pal" % b["icon"]), "w", newline="") as f:
         f.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % RGB8[n] for n, _ in PALETTE))
-    with open(os.path.join(ENGINE, "src/data/subtle_layer.h"), "w", encoding="utf-8") as f:
+    with open(os.path.join(ENGINE, "src/data", b["header"]), "w", encoding="utf-8") as f:
         f.write(header(sections, keys, nframes))
-    print("wrote src/data/subtle_layer.h, %d pictures, the cover and the icon into %s" % (sum(nframes.values()), ENGINE))
+    print("  wrote src/data/%s, %d pictures, the cover and the icon into %s" % (b["header"], sum(nframes.values()), ENGINE))
+    return True
+
+
+def main():
+    ok = True
+    for book in ([ONLY] if ONLY else list(BOOKS)):
+        ok = run(book) and ok
+    use("subtle")
+    if not ok:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
