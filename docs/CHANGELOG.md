@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.327 — 2026-10-29
+
+### The Open log audited
+
+- ***10, Open***: **thirteen entries struck as already answered** -- the GLOBAL INDEX placement, Halftone, THRASHING, PKRS, S.T.A.R.R.'s legibility, the humors, the Quicksilver terminal, Brazen (now a playtest tripwire), the supervised starter, ORPHAN, Gen1Recomp, how many entries disagree, edition-exclusivity -- each with where it was answered. Eleven remain open.
+
 ## v11.326 — 2026-10-29
 
 ### Al: a plateau, with one crack
