@@ -43,7 +43,7 @@ import base64, datetime, glob, hashlib, html as H, json, os, re, shutil, subproc
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 SRC = os.path.join(ROOT, "docs/manual")
-OUT = os.path.join(ROOT, "docs/DAEMONS-manual.pdf")
+OUT = os.path.join(ROOT, "docs/DAEMONS-manual.pdf")   # the companion app reads it here, on main (C-233): never move it
 THEATRE = os.path.join(ROOT, ".theatre/routes")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SCREEN_SCALE, SPRITE_SCALE = 4, 8           # nearest-neighbour, so no PDF reader smooths a pixel
@@ -400,6 +400,7 @@ def stamp(pdf_path, out_path, rel, digest):
         right = "DRAFT  ·  %s" % rel
         page.insert_text((r.width - 34 - fitz.get_text_length(right, "helv", 6.5), y), right, fontsize=6.5,
                          fontname="helv", color=(0.45, 0.45, 0.5))
+    # the subject ends "(v<release>)": the companion's LIBRARY reads the release from it (C-233, app/manual.ts)
     doc.set_metadata({"title": "DAEMONS: the player's manual", "author": "the DAEMONS project",
                       "subject": "How to play DAEMONS: CONTEXT / CONTENT, and every way to play it (%s)" % rel,
                       "keywords": "sources %s" % digest, "creator": "tools/manual.py", "producer": "Chrome, PyMuPDF"})

@@ -385,3 +385,21 @@ THE SUBTLE LAYER's 22 cards in their two versions: REASON (a circuit board under
 Now and then a card comes shiny: its colours inverted, a gold foil edge, glints.
 
 ![28Oct2026 - C232 - shiny cards - 64](28Oct2026%20-%20C232%20-%20shiny%20cards%20-%2064.png)
+
+### 28Oct2026 - C233 - the manual on the companion site - 65
+
+C-233 (DRAFT): THE PLAYER'S MANUAL first on the LIBRARY shelf, and open in the companion site with all 47 pages of v11.316.9 -- fetched from DAEMONS, never in the companion's repository. Both taken with no companion server running, which is why the 'Failed to fetch' line shows.
+
+![28Oct2026 - C233 - the manual on the companion site - 65](28Oct2026%20-%20C233%20-%20the%20manual%20on%20the%20companion%20site%20-%2065.jpg)
+
+### 28Oct2026 - C233 - the manual on the companion site - 66
+
+C-233 (DRAFT): THE PLAYER'S MANUAL first on the LIBRARY shelf, and open in the companion site with all 47 pages of v11.316.9 -- fetched from DAEMONS, never in the companion's repository. Both taken with no companion server running, which is why the 'Failed to fetch' line shows.
+
+![28Oct2026 - C233 - the manual on the companion site - 66](28Oct2026%20-%20C233%20-%20the%20manual%20on%20the%20companion%20site%20-%2066.jpg)
+
+### 28Oct2026 - C233 - the manual in the iOS app - 67
+
+C-233 (DRAFT) in the iOS app: a Release build on an iPhone 17 Pro simulator, on a copy of the theatre's test save. The manual first on the LIBRARY shelf, fetched and kept on the device (v11.316.9), opened in the app's own page, scrolled page by page ('2 of 47'), and Share offering the 2.5 MB PDF.
+
+![28Oct2026 - C233 - the manual in the iOS app - 67](28Oct2026%20-%20C233%20-%20the%20manual%20in%20the%20iOS%20app%20-%2067.png)
