@@ -58,11 +58,11 @@ The biggest tenants after it:
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
-| `.rodata` | 4.8 MB | 5.7 MB | 881.8 KB |
+| `.rodata` | 4.8 MB | 5.7 MB | 882.5 KB |
 | `gfx_data` | 1.7 MB | 1.7 MB | 14.7 KB |
-| `.text` | 1.4 MB | 1.5 MB | 79.7 KB |
+| `.text` | 1.4 MB | 1.5 MB | 79.9 KB |
 | `script_data` | 496.9 KB | 537.3 KB | 40.5 KB |
-| `extra` | 0 B | 306.4 KB | 306.4 KB |
+| `extra` | 0 B | 306.5 KB | 306.5 KB |
 | `song_data` | 282.1 KB | 253.1 KB | -29.0 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
 | `lib_text` | 56.5 KB | 56.5 KB | 0 B |
