@@ -26,7 +26,9 @@ PALDIR = os.path.join(ROOT, "engineGba/graphics/items/icon_palettes")
 WRITE = "--write" in sys.argv
 FIRST, LAST = 3, 9            # the type's own entries; the rest of the palette is the disc
 
-FILES = {"dark": "DARK", "dragon": "DRAGON", "electric": "ELECTRIC", "fighting": "FIGHTING",
+#  T-488: "bug" has no disc (FireRed has no SWARM PLUGIN); its palette exists for SWARM SINK, which shares the
+#  sixteen sinks' drawing with the discs' palettes, so a sink is coloured by its type as a disc is.
+FILES = {"bug": "BUG", "dark": "DARK", "dragon": "DRAGON", "electric": "ELECTRIC", "fighting": "FIGHTING",
          "fire": "FIRE", "flying": "FLYING", "ghost": "GHOST", "grass": "GRASS", "ground": "GROUND",
          "ice": "ICE", "normal": "NORMAL", "poison": "POISON", "psychic": "PSYCHIC", "rock": "ROCK",
          "steel": "STEEL", "water": "WATER"}

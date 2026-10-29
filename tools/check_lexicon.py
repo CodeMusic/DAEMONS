@@ -54,6 +54,11 @@ ALLOWED = {
     "OVERHEAT": "the ENTROPY move and the OVERHEATED state agreeing is the point (2.8)",
     "REFLECTION": "the NEXUS wolf carries a painted mirror, and the stone LYNX grows by is one; the user kept both "
                   "on purpose, 2026-10-09 (T-395)",
+    #  T-488 (the user, 2026-10-29): the * SINK family kept although SINK is MINUS's ability (abilities.h:222, beside
+    #  PLUS's SOURCE) -- "one idea: the ability soaks power and the item one hit". The only exact double it makes is
+    #  LIGHTNING ROD's ability, SIGNAL SINK, which soaks SIGNAL as the item soaks one SIGNAL hit: the same idea again.
+    "SIGNAL SINK": "LIGHTNING ROD's ability and the SIGNAL item of the * SINK family: both soak SIGNAL, one by drawing "
+                   "it in, one by halving one hit; the user kept SINK beside MINUS's ability on purpose, 2026-10-29 (T-488)",
 }
 
 #  Same idea as ALLOWED, for the version. A number here is a fault that has

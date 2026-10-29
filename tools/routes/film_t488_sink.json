@@ -1,0 +1,76 @@
+{
+ "rom": "debug",
+ "about": "T-488: the * SINK items. A wild GYARADOS (FLOW and VECTOR, so SIGNAL is super-effective on it) is invoked through DEBUG -> ENCOUNTER, handed a SIGNAL SINK in battle (gBattleMons[1].item poked; its HP raised to 999 so it lives to be hit twice), and the lead is taught THUNDERBOLT (SIGNAL) by the THEATRE. The first hit is halved with the DRAFT line and the item is spent; the second lands whole. Then PewterCity_Mart with MARK 1 held: the stock gains the LEGACY sinks and those that beat LEGACY. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build: GYARADOS invoked on Route 22",
+   "steps": [
+    "load debug",
+    "goto Route22 15 9",
+    "repel 999",
+    "close",
+    "poke sDbgDex 16 130",
+    "poke sDbgLevel 8 30",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "T-488: SIGNAL SINK halves the first super-effective SIGNAL hit and is spent",
+   "steps": [
+    "foe SPECIES_GYARADOS",
+    "wait 200",
+    "poke gBattleMons+134 16 244",
+    "poke gBattleMons+128 16 999",
+    "poke gBattleMons+132 16 999",
+    "remember sink gBattleMons+134 16",
+    "shot the foe holds SIGNAL SINK",
+    "press START",
+    "wait 40",
+    "poke sTheatreSlot 8 0",
+    "poke sTheatreMove 16 85",
+    "press SELECT",
+    "wait 30",
+    "press B",
+    "wait 40",
+    "press A",
+    "wait 30",
+    "shot THUNDERBOLT in slot 1",
+    "press A",
+    "burst \"the first SIGNAL hit\" 40 20",
+    "wait 200",
+    "shot after the first hit",
+    "moved sink",
+    "wait 300",
+    "press A",
+    "wait 30",
+    "press A",
+    "burst \"the second SIGNAL hit\" 40 20",
+    "wait 200",
+    "shot after the second hit"
+   ]
+  },
+  {
+   "stop": "T-488: SLATE CITY's MART after MARK 1 -- the sinks of LEGACY and of what beats it",
+   "steps": [
+    "load debug",
+    "flag FLAG_BADGE01_GET 1",
+    "goto PewterCity_Mart",
+    "talk Clerk 5",
+    "wait 60",
+    "press UP 2",
+    "wait 30",
+    "shot the clerk's menu",
+    "press A",
+    "wait 150",
+    "shot the BUY list",
+    "press DOWN 7",
+    "wait 30",
+    "shot the sinks",
+    "press DOWN 6",
+    "wait 30",
+    "shot the last sinks",
+    "close"
+   ]
+  }
+ ]
+}
