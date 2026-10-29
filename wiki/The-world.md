@@ -24,11 +24,11 @@ bedroom answers **TIME** with a CLOCK line when it is reading a clock.
 The seasons **repaint the world**, and the two editions live in **two hemispheres**: CONTENT keeps a northern year and
 CONTEXT a southern one, so in the same week one player's world is in spring and the other's in autumn.
 
-The battles keep the calendar too: their backgrounds take the season, the hour, the weekday's colour and, on a
-holiday, the holiday's own.
-
 On fifteen of the early roads the grass changes with them: **one slot belongs to the season and one to the hour** --
 dawn, dusk or night -- so some daemons are met only at a time of year, or a time of day.
+
+The battles keep the calendar too: their backgrounds take the season, the hour, the weekday's colour and, on a
+holiday, the holiday's own.
 
 ## The weather
 
