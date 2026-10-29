@@ -409,3 +409,9 @@ C-233 (DRAFT) in the iOS app: a Release build on an iPhone 17 Pro simulator, on 
 The player's manual with the user's additions (54 pages, v11.319.1): the Pocket Taco and the buttons on screen; THE WEEK; the year's 36 holidays, north and south; the books' REASON and INSTINCT and ASK THE GUIDE; the cards' two faces. Every word quoted from the game is a DRAFT.
 
 ![28Oct2026 - T467 - the manual, the week, holidays, books asked and cards - 68](28Oct2026%20-%20T467%20-%20the%20manual%2C%20the%20week%2C%20holidays%2C%20books%20asked%20and%20cards%20-%2068.png)
+
+### 28Oct2026 - C220 - OUT TOGETHER meeting - 69
+
+C-220: OUT TOGETHER on TRADE, two scratch companions; SPARKY out, MOSS met, four written lines (DRAFT)
+
+![28Oct2026 - C220 - OUT TOGETHER meeting - 69](28Oct2026%20-%20C220%20-%20OUT%20TOGETHER%20meeting%20-%2069.jpg)
