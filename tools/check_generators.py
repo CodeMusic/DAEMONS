@@ -49,6 +49,9 @@ ARGS = {
     #  T-446: gbadoors refuses a plain --write, so --writes saw nothing of it; with --approved its sandboxed write is
     #  real. (Its report needs no flag: it compares the engine with the approved write itself and exits 1 on a difference.)
     "gbadoors":  [["--approved"]],
+    #  T-481 A: the same shape -- --write refuses without --approved, and the report exits 1 when the engine's
+    #  battle_calendar.h is not what the approved write would make.
+    "gbabattlebg": [["--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

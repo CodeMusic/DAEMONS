@@ -1,0 +1,190 @@
+{
+ "rom": "debug",
+ "about": "T-481 A (2026-10-29): the battle backgrounds that keep the calendar, as built. DEBUG's overrides poked (gDaemonsWatchOverride 1 day 2 dusk 3 night 4 dawn; gDaemonsSeasonOverride 1 winter 4 autumn; gDaemonsWeatherOverride 1 clear, so T-415's wash stays out of it; gDaemonsDateOverride 37 a quiet Tuesday, 10 MASK NIGHT). A grass battle at each watch in two seasons (and once back from the BAG, the reload path), MASK NIGHT's glints, a cave, a building and a BENCHMARK arena. The theatre's debug scratch save, never the user's; the overrides are put back at the end.",
+ "stops": [
+  {
+   "stop": "grass in winter at dawn",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 1",
+    "poke gDaemonsWatchOverride 8 4",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, WINTER, DAWN (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in winter at day",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 1",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, WINTER, DAY (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in winter at dusk",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 1",
+    "poke gDaemonsWatchOverride 8 2",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, WINTER, DUSK (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in winter at night",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 1",
+    "poke gDaemonsWatchOverride 8 3",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, WINTER, NIGHT (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in autumn at dawn",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 4",
+    "poke gDaemonsWatchOverride 8 4",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, AUTUMN, DAWN (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in autumn at day",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 4",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, AUTUMN, DAY (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in autumn at dusk",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 4",
+    "poke gDaemonsWatchOverride 8 2",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, AUTUMN, DUSK (a quiet Tuesday)\"",
+    "press RIGHT",
+    "press A",
+    "wait 60",
+    "press B",
+    "wait 90",
+    "shot \"the same battle back from the BAG: the line survives the reload\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "grass in autumn at night",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 4",
+    "poke gDaemonsWatchOverride 8 3",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, AUTUMN, NIGHT (a quiet Tuesday)\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "MASK NIGHT by day: the platform glints in OCT's colour",
+   "steps": [
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsDateOverride 8 10",
+    "goto Route22 15 9",
+    "wild keep",
+    "wait 30",
+    "shot \"GRASS, MASK NIGHT (Saturday 31 Oct), day\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "a cave at night: its own light, the line and no hour",
+   "steps": [
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsSeasonOverride 8 1",
+    "poke gDaemonsWatchOverride 8 3",
+    "goto MtMoon_1F",
+    "repel 999",
+    "close",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "the cave's battle",
+   "steps": [
+    "wait 200",
+    "shot \"CAVE (MT. MOON), winter night\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "a building at night: the hour at a quarter",
+   "steps": [
+    "goto ViridianCity_PokemonCenter_1F",
+    "close",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "the building's battle",
+   "steps": [
+    "wait 200",
+    "shot \"BUILDING (a CHECKPOINT), winter night\"",
+    "win",
+    "wait 120"
+   ]
+  },
+  {
+   "stop": "a BENCHMARK arena at night: the line and the glints only",
+   "steps": [
+    "trainer TRAINER_LEADER_BROCK 0",
+    "goto PewterCity_Gym 6 6",
+    "talk EventScript_Brock 1",
+    "press A 6",
+    "wait 120",
+    "shot \"BENCHMARK SLATE, winter night\"",
+    "win",
+    "wait 120",
+    "finish",
+    "poke gDaemonsWatchOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsDateOverride 8 0",
+    "poke gDaemonsWeatherOverride 8 0"
+   ]
+  }
+ ]
+}
