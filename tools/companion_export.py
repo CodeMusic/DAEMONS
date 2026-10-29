@@ -997,6 +997,52 @@ def subtle_table():
     return book
 
 
+def title_files():
+    """The GAME tab's launcher (the user, 2026-10-29: "go to a menu ... themed like the game"; the phone lane's): the
+    title screen's own art, from what the ROM is built from, each on a clear ground -- the DAEMONS wordmark and each
+    edition's word (BG0's logo, split at its blank rows), the two face-off daemons as each edition places them
+    (CODEMUSAI left in CONTENT, CAREMUSAI left in CONTEXT, the right one mirrored), and title.json: the splash's
+    binary teal and its note colours (graphics/intro/game_freak/sparkles.pal) and the mark. All ours: Gemini-drawn
+    and redrawn art, no Nintendo pixel (CLAUDE.md). {relative path: bytes}."""
+    import io
+    import gbatitleview as tv
+    from PIL import Image
+    out = {}
+    def png(im, scale):
+        im = im.resize((im.width * scale, im.height * scale), Image.NEAREST)
+        buf = io.BytesIO(); im.save(buf, "PNG", optimize=True); return buf.getvalue()
+    for ed, sub in (("content", "firered"), ("context", "leafgreen")):
+        E = os.path.join(tv.GFX, sub)
+        logo_pal = tv.pal(os.path.join(E, "game_title_logo.pal"))
+        bg0, a0 = tv.layer(os.path.join(E, "game_title_logo.8bpp"), os.path.join(E, "game_title_logo.bin"), 8, logo_pal)
+        rgba = bg0.convert("RGBA"); rgba.putalpha(a0)
+        l, t, r, bot = a0.getbbox()
+        rows = [any(a0.getpixel((x, y)) for x in range(l, r)) for y in range(t, bot)]
+        gap = max((k for k in range(1, len(rows)) if not rows[k] and rows[k - 1]), default=None)
+        if gap is None:
+            raise SystemExit("  refused: the %s logo has no blank row between DAEMONS and its word" % ed)
+        word = rgba.crop((l, t + gap, r, bot)); word = word.crop(word.getbbox())
+        mark = rgba.crop((l, t, r, t + gap))
+        out["logo_%s.png" % ed] = png(mark.crop(mark.getbbox()), 2)    # each edition colours DAEMONS its own way
+        out["%s.png" % ed] = png(word, 2)
+        left, right = ("codemusai", "caremusai") if ed == "content" else ("caremusai", "codemusai")
+        for k, (name, flip) in enumerate(((left, False), (right, True)), 1):
+            im, _ = tv.sprite(os.path.join(tv.GFX, "faceoff", name + ".png"), 0, 0, flip)
+            out["%s_%d.png" % (ed, k)] = png(im, 2)
+    sp = [tuple(int(v) for v in line.split()) for line in
+          open(os.path.join(GBA, "graphics/intro/game_freak/sparkles.pal")).read().split("\n")[3:19] if line.strip()]
+    hexc = lambda c: "#%02x%02x%02x" % c
+    meta = {"_about": "The GAME tab's launcher (the user, 2026-10-29). The art is the title screen's, from the built "
+                      "graphics; green is the splash's 0s and 1s (sparkles.pal teal ramp, bright to trail), noteColours "
+                      "its notes. daemons: who stands left and right on each edition's title, by name.",
+            "green": hexc(sp[4]), "greenRamp": [hexc(c) for c in sp[2:6]][::-1],
+            "noteColours": [hexc(c) for c in sp[6:13]],
+            "daemons": {"content": ["CODEMUSAI", "CAREMUSAI"], "context": ["CAREMUSAI", "CODEMUSAI"]},
+            "mark": "\u00a9'11-'26 CODEMUSIC", "scale": 2}
+    out["title.json"] = (json.dumps(meta, indent=1, ensure_ascii=False) + "\n").encode()
+    return out
+
+
 def hermetic_table():
     """T-483 / C-238: THE HERMETIC LAYER for the companion's LIBRARY -- docs/hermetic-layer.md, in docs/subtle-layer.md's
     format, read by gensubtle's own parser: each paragraph plain text, the asking voice ('~ ') and the INSCRIPTION ('^ ',
@@ -2015,8 +2061,16 @@ def main():
             if WRITE:
                 os.makedirs(art_dir, exist_ok=True)
                 open(path, "wb").write(buf.getvalue())
+    title = title_files()                                               # the GAME tab's launcher
+    for name, data in title.items():
+        path = os.path.join(art_dir, "title", name)
+        if not os.path.exists(path) or open(path, "rb").read() != data:
+            art_changed += 1
+            if WRITE:
+                os.makedirs(os.path.dirname(path), exist_ok=True)
+                open(path, "wb").write(data)
     if art_changed:
-        changed.append("art/ (%d of %d)" % (art_changed, len(art) + 1 + len(subtle)))
+        changed.append("art/ (%d of %d)" % (art_changed, len(art) + 1 + len(subtle) + len(title)))
     sp = files["species.json"]
     with_art = sum(1 for r in sp.values() if r["art"]["front"])
     with_entry = sum(1 for r in sp.values() if r["entry"]["CONTENT"] and r["entry"]["CONTEXT"])
