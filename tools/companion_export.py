@@ -151,9 +151,11 @@ def species_table():
     for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{(.*?)\}\}", read("src/data/pokemon/evolution.h"), re.S):
         for method, param, target in re.findall(r"\{\s*EVO_(\w+)\s*,\s*(\w+)\s*,\s*SPECIES_(\w+)\s*\}?", m.group(2) + "}"):
             if target in ids:
-                evos.setdefault(m.group(1), []).append({
-                    "method": method, "param": int(param) if param.isdigit() else param,
-                    "target": ids[target], "judged": method in judged})
+                evo = {"method": method, "param": int(param) if param.isdigit() else param,
+                       "target": ids[target], "judged": method in judged}
+                if method == "TRADE_PARTNER":   # T-474: param is the species it must be traded FOR, as its id
+                    evo["param"] = evo["partner"] = ids[param[len("SPECIES_"):]]
+                evos.setdefault(m.group(1), []).append(evo)
     native = native_values()
     out = {}
     for sp, sid in sorted(ids.items(), key=lambda kv: kv[1]):
@@ -323,7 +325,8 @@ SOUNDING_SHIFT = 6
 
 #  T-473 (C-219): a trade's bits, read from struct BoxPokemon in include/pokemon.h, never typed -- each field's bit
 #  offset counted from the top (the arrays by their length constants, the bitfields in order): TRADING in the flags
-#  byte beside AWAY, LOAN and TRADED_IN in the u16 at 0x1E (bits 2-15 reserved).
+#  byte beside AWAY, LOAN and TRADED_IN in the u16 at 0x1E. T-474: bits 2-10 of that u16 are the species it was traded
+#  FOR (the companion writes it with TRADED_IN; the game judges EVO_TRADE_PARTNER by it); bits 11-15 reserved.
 def trade_bits():
     h = read("include/pokemon.h")
     body = re.search(r"struct BoxPokemon\s*\{(.*?)\n\s*union", h, re.S).group(1)
@@ -343,10 +346,12 @@ def trade_bits():
             at[name] = (bit // 8, 0, unit, unit)
             bit += unit * ((lengths[length] if length in lengths else int(length)) if length else 1)
     trading, loan, traded_in = at["trading"], at["daemonsLoan"], at["daemonsTradedIn"]
-    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or loan[0] != traded_in[0]:
+    partner = at["daemonsTradePartner"]                                                     # T-474
+    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or not loan[0] == traded_in[0] == partner[0]:
         raise SystemExit("  refused: struct BoxPokemon's trade bits are not where the companion reads them")
     return {"trading_bit": trading[1], "trade_flags_offset": loan[0],
-            "loan_mask": 1 << loan[1], "traded_in_mask": 1 << traded_in[1]}
+            "loan_mask": 1 << loan[1], "traded_in_mask": 1 << traded_in[1],
+            "trade_partner_shift": partner[1], "trade_partner_mask": ((1 << partner[2]) - 1) << partner[1]}
 
 
 def save_layout():
@@ -378,7 +383,7 @@ def save_layout():
             "pokemon_size": 100, "box_pokemon_size": 80, "level_offset": 84,
             "flags_byte": 19, "away_bit": AWAY_BIT, "asked_bit": ASKED_BIT,
             "sounding_shift": SOUNDING_SHIFT,   # two bits, values 0-3 (T-458)
-            **trade_bits(),                     # T-473: TRADING beside AWAY; LOAN and TRADED_IN at 0x1E
+            **trade_bits(),                     # T-473: TRADING beside AWAY; LOAN and TRADED_IN at 0x1E; T-474 the partner
             # C-45: sNatureStatTable (pokemon.c), by nature: Attack, Defense, Speed, Sp.Atk, Sp.Def, each +1, -1 or 0
             "natures": natures_table()}
 
@@ -1009,7 +1014,8 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_CRYSTAL_AGAIN",                                                     # T-457: a reset, not an event
                    "EV_SOUNDING",                                                          # T-458: the companion's signal, faked
                    "EV_ITS_DREAM",                                                         # T-462: the companion's dream, faked
-                   "EV_TRADE_IN", "EV_LOAN_IN"}                                            # T-473: the companion's trade, faked
+                   "EV_TRADE_IN", "EV_LOAN_IN",                                            # T-473: the companion's trade, faked
+                   "EV_PAIR_PENGUIN", "EV_PAIR_DOLPHIN", "EV_PAIR_OTHER", "EV_PAIR_LOAN"}  # T-474: its pair trade, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE"}        # T-431: the feelings' debug view and its clock; T-454: THE THREE's
 
