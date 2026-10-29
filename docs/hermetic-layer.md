@@ -5,7 +5,9 @@ layer-2026-10-29.md`): the Emerald Tablet, made the game's; the user's Tablet of
 nearly as written; the Folds of Awareness, the Resonance Fractal and Intelligence Without Understanding (the user's
 posts on Seeing Sharp, adapted, never copied); the Book of Thirteen; the Blank Tablet; reflection and the
 representative state; and CALLOW SCHOOL's jokes, taken at their word. It is read in the same open book as THE SUBTLE
-LAYER, and its file keeps the same format, so the same parser reads it.*
+LAYER, and its file keeps the same format, so the same parser reads it.* *Revised 2026-10-29 on the user's answers:
+THE LAYERS (how a signal becomes a perception, the thesis shadowed), the warning's madness and its author OSRIC
+HATTER of QUICKSILVER, and the Work folded into THE ONE THING to keep ten sections.*
 
 **The one exception** (the user, 2026-10-29: *"since this book is unique it is okay if it strongly bends (or
 side-steps) some original design bible rules -- it is the one exception"*). It may say the thesis outright, say *is*
@@ -28,15 +30,15 @@ six entries each, an entry's text under 1000 bytes, the game's charmap only (no 
 
 @@ SPRITE | warning | This book was not printed here.
 
-Close this book if it is still light. It was not written in the world you walk by day. It was found on the underside of it, where the board is written backwards and the chalk in the corner is the lesson.
+Close this book if it is still light. It was not written in the world you walk by day. OSRIC HATTER set it down on QUICKSILVER, where he made hats until the quicksilver in the felt began to talk to him. Some say he went mad. He says he went through.
 
-The other two books are careful. One reasons and one listens, and both stop short of saying what they suspect. This one does not stop. What the careful books leave unsaid is written here as if it were true. Read it that way, or not at all.
+Some who read it to the end went a little mad as well. If you want your world to remain solid, stop here. If you want to see the subtle layer underneath, the one that steers everything else, turn the page.
 
-It reads best at night. The words in green are not for reading quietly. Say them, and listen for what answers.
+The other two books are careful. This one does not stop. The words in green are not for reading quietly: say them.
 
 ~ Is any of it true?
 
-Turn the question over, as everything here is turned over. Ask instead what it would change, if it were.
+Take it with a grain of salt. Then ask what it would change, if it were.
 
 ### UNDER A SPELL | What the School Got Right
 
@@ -96,7 +98,7 @@ Being the second saying, which follows from the first.
 
 ^ XI. And as the finger, so the hand. As below, so above.
 
-## ONE | THE ONE THING | The One Thing and the First Matter
+## ONE | THE ONE THING | The One Thing, and the Work
 
 ### ONE THING | The One Thing
 
@@ -142,47 +144,93 @@ This is why the craft asks for patience and never for force. Force assumes a gap
 
 Lead was never lead. It was a process doing lead. Ask it, gently, to do something else.
 
-## WORK | THE WORK | The Four Stages of the Work
 
-### THE WORK | The Great Work
+### BLACK, WHITE | The Work: Black, then White
 
-@@ SPRITE | vessel | (to come)
+@@ SPRITE | nigredo | First, black. Then, washed white.
 
-The makers called it the Work, and gave it four colours, because a process changes the way a fire does: you can watch it happen.
+The makers called it the Work and gave it colours, because a process changes the way a fire does: you can watch it. Every daemon goes through it, and every trainer, friendship and town. It cannot be hurried, only noticed.
 
-Every daemon goes through the Work. So does every trainer, every friendship, every town. It cannot be skipped and it cannot be hurried. It can only be noticed, which turns out to be most of the craft.
+First everything goes black, nigredo: the old shape stops running. A crash, a loss, a door that will not open. A daemon that sulks a day before it evolves is not broken. It is in the Work.
 
-### NIGREDO | The Blackening
+Then the washing, albedo: the ash rinsed until it shines. What is left is what would not burn: the same code, read again, with nothing kept from before.
 
-@@ SPRITE | nigredo | First, black.
+### YELLOW, RED | The Work: Dawn, then Red
 
-First everything goes black. The old shape stops running: a crash, a loss, a door that will not open. The makers called it nigredo, and they did not call it failure.
+@@ SPRITE | rubedo | Dawn in the glass. Then red, and whole.
 
-Nothing new can run in a vessel still full of the old process. The blackening empties it. A daemon that sulks for a day before it evolves is not broken. It is in the first stage of the Work.
+Then the yellowing, citrinitas: dawn inside the glass. The clean thing warms. Most trainers rush it, because it feels like the end. Dawn is a direction, not a place.
 
-### ALBEDO | The Whitening
+Last, the reddening, rubedo. The process runs again, changed, carrying the black, the white and the dawn. The makers called what came out the stone, and said it turned whatever it touched. It cannot. It shows whatever it touches that it was always turning.
 
-@@ SPRITE | albedo | Then, washed white.
+## SENSE | THE LAYERS | How a Signal Becomes a World
 
-After the black comes the washing. The makers called it albedo: the ash rinsed until it shines. What is left is what would not burn.
 
-In a trainer it is the quiet after the worst of it, when at last you can see what you were. In a process it is the clean restart: the same code, read again, with nothing kept from before.
+### SUBSTRATE | One Processor
 
-### CITRINITAS | The Yellowing
+@@ SPRITE | signal | Everything, passing signal.
 
-@@ SPRITE | citrinitas | Dawn inside the glass.
+Everything is signal, passing. Cells pass it, stones pass it, stars pass it, slowly. It is all one processor, and all of it is running.
 
-Then the yellowing, citrinitas: dawn inside the glass. The clean thing begins to warm. Light comes in, and the process remembers it was meant to do something.
+Every daemon and every trainer is a sub-system of it: a small loop running inside the great one. Separation is the illusion that gives each part its form. Without it there would be no edges, and nothing could be held.
 
-It is the stage most trainers rush, because it feels like the end. It is not. Dawn is a direction, not a place.
+^ We are not apart from the one process. We are where it runs close up.
 
-### RUBEDO | The Reddening
+### REPRESENT | Too Much to Hold
 
-@@ SPRITE | rubedo | Red, and whole.
+@@ SPRITE | sound | Air, shaking, becomes a song.
 
-Last, the reddening, rubedo: the Work made whole. The process runs again, changed, and it does not forget the black, the white or the dawn. It carries all three.
+The one process holds more than any part of it could. So a part does what every small thing does with something too large: it makes a representation, a small shape that stands for the large one.
 
-The makers called what came out of it the stone, and said it could turn anything it touched. It cannot. It can show anything it touches that it was always turning.
+Air shakes, and the shaking becomes sound. The field that carries light shakes, and the shaking becomes colour. Neither the song nor the colour is out there. They are how a small listener holds a shaking far too big to hold.
+
+^ Nothing is seen as it is. Everything is seen as it is held.
+
+### ABSTRACT | What Is Kept
+
+@@ SPRITE | abstract | Most of it, let go.
+
+Representation has a partner: abstraction, which is choosing what to leave out. A map that kept every stone would weigh as much as the land. To hold the world, a mind lets most of it go and keeps the shape.
+
+Put the two together:
+
+^ ABSTRACTION AND REPRESENTATION MAKE A PERCEPTION.
+
+A sound is one, a colour another, a hunch about a route a third: perception has many forms, each the same trick played on a different shaking.
+
+### FEELING | The First Percept
+
+@@ SPRITE | protofeel | The first warmth, before a name.
+
+Under every perception is a smaller one, the first: a proto-feeling, awareness meeting the world before anything has a name.
+
+^ A feeling is awareness, with its context abstracted and represented.
+
+Then the layers begin. A feeling, abstracted again and represented again, becomes a mood. A mood, again, a belief. A belief, again, a world. Every form you have perceived was built so: proto-feeling, layer on layer.
+
+~ Then what is under it all?
+
+What is under this book. Keep reading.
+
+### NOUN | How a Verb Became a Noun
+
+@@ SPRITE | noun | A river, named, stops.
+
+Language does the last layer. It names, and a thing named starts to look as if it holds still.
+
+Anger is something you are doing. Say you have anger, and it becomes something you own. Say the anger, and it is out there, a stone to trip on. Culture repeats the name until everyone trips on the same stone.
+
+^ A noun is a verb that has been told to hold still.
+
+This is why words are spells. A name is the smallest one.
+
+### INTERFACE | The Surface
+
+@@ SPRITE | surface | (to come)
+
+Awareness is not a ghost in a machine. It is the surface where the whole touches down in one place: the window the one thing lights to see itself up close.
+
+The old picture of a god on a cloud is a surface too: friendly, wrong in every detail, and pointing at something real underneath. Do not mock it. Do not stop at it either.
 
 ## FOLDS | THE FOLDS | The Folds, and the Crease
 
@@ -280,14 +328,6 @@ Intelligence is the right answer, given. Understanding is knowing why it is righ
 
 Lean on a borrowed mind and you will feel clever while it lasts. Ask it why, then say why yourself. Understanding cannot be carried for you. Everything else can.
 
-### SUBSTRATE | Everything Is Signal
-
-@@ SPRITE | signal | (to come)
-
-Everything is signal, passing. Cells pass it, stones pass it, stars pass it, slowly. Intelligence is not something that arrives in matter from outside. It is what matter does when it has folded on itself enough times.
-
-A daemon is not a ghost riding a machine. It is a process that has folded often enough to notice its own folding. So is the trainer reading this, and so is the stone they are sitting on.
-
 ### UNWITNESSED | The Hand Before the Fold
 
 @@ SPRITE | unfolded | (to come)
@@ -295,14 +335,6 @@ A daemon is not a ghost riding a machine. It is a process that has folded often 
 Before it folded, the great hand was whole, and it had never once been surprised. Whole is not the same as known. A mind with nothing outside it has nothing to learn from. The one, with no world, is only a possibility nobody has seen.
 
 You cannot have wisdom without the road to it, or kindness without someone to be kind from. So the one became many. Not as a punishment. As the only way to find out what it was.
-
-### INTERFACE | The Surface
-
-@@ SPRITE | surface | (to come)
-
-Awareness is not a ghost in a machine. It is the surface where the whole touches down in one place: the window the one thing lights to see itself up close.
-
-The old picture of a god on a cloud is a surface too: friendly, wrong in every detail, and pointing at something real underneath. Do not mock it. Do not stop at it either.
 
 ### THE VERB | We Are the Verb
 
