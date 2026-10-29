@@ -373,3 +373,15 @@ PROTEUS's three forms and OVERLOADED's four, read from the build; OVERLOADED's b
 PROTEUS's three forms and OVERLOADED's four, read from the build; OVERLOADED's battle rows and streaks fixed (T-475). v11.316.9.
 
 ![28Oct2026 - T452 - PROTEUS and OVERLOADED forms - 62](28Oct2026%20-%20T452%20-%20PROTEUS%20and%20OVERLOADED%20forms%20-%2062.png)
+
+### 28Oct2026 - C232 - the cards, reason and instinct - 63
+
+THE SUBTLE LAYER's 22 cards in their two versions: REASON (a circuit board under green, mainland daemons) and INSTINCT (a living net under gold, island daemons); drawn from the companion's own files; every word DRAFT.
+
+![28Oct2026 - C232 - the cards, reason and instinct - 63](28Oct2026%20-%20C232%20-%20the%20cards%2C%20reason%20and%20instinct%20-%2063.png)
+
+### 28Oct2026 - C232 - shiny cards - 64
+
+Now and then a card comes shiny: its colours inverted, a gold foil edge, glints.
+
+![28Oct2026 - C232 - shiny cards - 64](28Oct2026%20-%20C232%20-%20shiny%20cards%20-%2064.png)
