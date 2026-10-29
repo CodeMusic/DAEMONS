@@ -1,0 +1,108 @@
+{
+ "rom": "debug",
+ "about": "T-474 play-test (2026-10-28, v11.320.1): DEBUG -> GAME EVENTS' four pair-trade rows, each faking a SYNC's write. PENGUIN for DOLPHIN and DOLPHIN for PENGUIN become PENPHIN; PENGUIN for another (RESPAWN) and PENGUIN LENT do not. The party holds five, so each arrival is slot 6. The theatre's debug scratch save, never the user's. The scratch save's party is full (five shown, a sixth AWAY with the companion), so each stop first pokes gPlayerPartyCount to 5: the arrival takes slot 6 in the party (the AWAY record overwritten on the scratch save only) and its SUMMARY can be read.",
+ "stops": [
+  {
+   "stop": "T-474: PENGUIN FOR DOLPHIN -- becomes PENPHIN",
+   "steps": [
+    "load debug",
+    "goto ViridianCity_PokemonCenter_1F 7 5",
+    "repel 999",
+    "poke gPlayerPartyCount 8 5",
+    "events \"PENGUIN FOR DOLPHIN\"",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold UP 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "summary 5 R R",
+    "close",
+    "says \"PENPHIN arrived in a trade\""
+   ]
+  },
+  {
+   "stop": "T-474: DOLPHIN FOR PENGUIN -- becomes PENPHIN",
+   "steps": [
+    "load debug",
+    "goto ViridianCity_PokemonCenter_1F 7 5",
+    "repel 999",
+    "poke gPlayerPartyCount 8 5",
+    "events \"DOLPHIN FOR PENGUIN\"",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold UP 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "summary 5 R R",
+    "close",
+    "says \"PENPHIN arrived in a trade\""
+   ]
+  },
+  {
+   "stop": "T-474: PENGUIN FOR ANOTHER -- stays PENGUIN",
+   "steps": [
+    "load debug",
+    "goto ViridianCity_PokemonCenter_1F 7 5",
+    "repel 999",
+    "poke gPlayerPartyCount 8 5",
+    "events \"PENGUIN FOR ANOTHER\"",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold UP 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "summary 5 R R",
+    "close",
+    "says \"PENGUIN arrived in a trade\"",
+    "unsaid \"PENPHIN\""
+   ]
+  },
+  {
+   "stop": "T-474: PENGUIN LENT -- stays PENGUIN, on loan",
+   "steps": [
+    "load debug",
+    "goto ViridianCity_PokemonCenter_1F 7 5",
+    "repel 999",
+    "poke gPlayerPartyCount 8 5",
+    "events \"PENGUIN LENT\"",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold UP 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "summary 5 R R",
+    "close",
+    "says \"PENGUIN arrived in a trade\"",
+    "unsaid \"PENPHIN\""
+   ]
+  }
+ ]
+}

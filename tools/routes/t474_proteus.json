@@ -1,0 +1,20 @@
+{
+ "rom": "debug",
+ "about": "T-452 forms play-test (2026-10-28, v11.320.1): PROTEUS battled on THE ANNEX (BIRTH ISLAND), its front and an owned one's back both on the shared row (y_offset 11; CONTENT shows ALL EDGES). CRYSTAL's payload marked read so the island holds PROTEUS; three touches start the battle -- PROTEUS stands at (15,3) on the cliff until the triangle walks it down, so its coordinates are put on (15,8) (objectat; the sprite stays) to be reached. CONTENT only: a route loads only CONTENT's debug build. The theatre's debug scratch save, never the user's.",
+ "stops": [
+  {"stop": "T-452: PROTEUS on THE ANNEX -- the foe's front and an owned back, on row 11", "steps": [
+   "load debug",
+   "flag FLAG_CRYSTAL_READ_PAYLOAD 1", "flag FLAG_FOUGHT_DEOXYS 0", "flag FLAG_DEOXYS_FLEW_AWAY 0", "flag FLAG_HIDE_DEOXYS 0",
+   "goto BirthIsland_Exterior 15 10",
+   "mon 0 species SPECIES_DEOXYS", "wait 30",
+   "shot THE ANNEX, PROTEUS standing", "objectat LOCALID_BIRTH_ISLAND_DEOXYS 15 8",
+   "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+   "talk LOCALID_BIRTH_ISLAND_DEOXYS",
+   "talk LOCALID_BIRTH_ISLAND_DEOXYS 1",
+   "press A", "wait 500", "shot the battle opens",
+   "wait 300", "shot PROTEUS (foe front) and the owned PROTEUS (back)",
+   "press B 2", "wait 60", "shot at the first menu",
+   "win", "finish", "mon 0 species back", "shot after"
+  ]}
+ ]
+}

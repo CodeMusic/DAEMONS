@@ -1,0 +1,45 @@
+{
+ "rom": "debug",
+ "about": "T-473 leftovers, play-tested 2026-10-28 on v11.320.1: PENGUIN LENT arrives (DEBUG -> GAME EVENTS, faking a SYNC's LOAN) and the PC refuses to RELEASE it. The scratch save's party is full (a sixth AWAY), so gPlayerPartyCount is poked to 5 and the loan takes slot 6. The theatre's debug scratch save, never the user's.",
+ "stops": [
+  {
+   "stop": "T-473: the PC will not RELEASE a borrowed PENGUIN",
+   "steps": [
+    "load debug",
+    "goto ViridianCity_PokemonCenter_1F 7 5",
+    "repel 999",
+    "poke gPlayerPartyCount 8 5",
+    "events \"PENGUIN LENT\"",
+    "hold DOWN 16",
+    "wait 90",
+    "read",
+    "finish",
+    "hold UP 16",
+    "wait 90",
+    "read",
+    "finish",
+    "look 11 1 1",
+    "press A 3",
+    "shot the storage menu",
+    "press DOWN",
+    "press A",
+    "wait 90",
+    "shot DEPOSIT: the party",
+    "press DOWN 5",
+    "press A",
+    "wait 30",
+    "shot slot 6's menu",
+    "press DOWN 3",
+    "shot RELEASE chosen?",
+    "press A",
+    "wait 60",
+    "shot the answer",
+    "press A",
+    "wait 30",
+    "shot after",
+    "press B 6",
+    "finish"
+   ]
+  }
+ ]
+}

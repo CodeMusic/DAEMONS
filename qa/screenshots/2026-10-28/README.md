@@ -415,3 +415,63 @@ The player's manual with the user's additions (54 pages, v11.319.1): the Pocket 
 C-220: OUT TOGETHER on TRADE, two scratch companions; SPARKY out, MOSS met, four written lines (DRAFT)
 
 ![28Oct2026 - C220 - OUT TOGETHER meeting - 69](28Oct2026%20-%20C220%20-%20OUT%20TOGETHER%20meeting%20-%2069.jpg)
+
+### 28Oct2026 - T474 - pair trades in the theatre - 70
+
+v11.320.1 debug, DEBUG -> GAME EVENTS: PENGUIN FOR DOLPHIN and DOLPHIN FOR PENGUIN arrive as PENPHIN; PENGUIN FOR ANOTHER and PENGUIN LENT stay PENGUIN (tools/routes/t474_trade.json)
+
+![28Oct2026 - T474 - pair trades in the theatre - 70](28Oct2026%20-%20T474%20-%20pair%20trades%20in%20the%20theatre%20-%2070.png)
+
+### 28Oct2026 - T474 - pair trades in the theatre - 71
+
+v11.320.1 debug, DEBUG -> GAME EVENTS: PENGUIN FOR DOLPHIN and DOLPHIN FOR PENGUIN arrive as PENPHIN; PENGUIN FOR ANOTHER and PENGUIN LENT stay PENGUIN (tools/routes/t474_trade.json)
+
+![28Oct2026 - T474 - pair trades in the theatre - 71](28Oct2026%20-%20T474%20-%20pair%20trades%20in%20the%20theatre%20-%2071.png)
+
+### 28Oct2026 - T474 - pair trades in the theatre - 72
+
+v11.320.1 debug, DEBUG -> GAME EVENTS: PENGUIN FOR DOLPHIN and DOLPHIN FOR PENGUIN arrive as PENPHIN; PENGUIN FOR ANOTHER and PENGUIN LENT stay PENGUIN (tools/routes/t474_trade.json)
+
+![28Oct2026 - T474 - pair trades in the theatre - 72](28Oct2026%20-%20T474%20-%20pair%20trades%20in%20the%20theatre%20-%2072.png)
+
+### 28Oct2026 - T474 - pair trades in the theatre - 73
+
+v11.320.1 debug, DEBUG -> GAME EVENTS: PENGUIN FOR DOLPHIN and DOLPHIN FOR PENGUIN arrive as PENPHIN; PENGUIN FOR ANOTHER and PENGUIN LENT stay PENGUIN (tools/routes/t474_trade.json)
+
+![28Oct2026 - T474 - pair trades in the theatre - 73](28Oct2026%20-%20T474%20-%20pair%20trades%20in%20the%20theatre%20-%2073.png)
+
+### 28Oct2026 - T473 - PC refuses to release a loan - 74
+
+v11.320.1 debug: PENGUIN LENT in the party; DEPOSIT -> RELEASE answers 'PENGUIN is borrowed.' and it stays (tools/routes/t474_loan.json)
+
+![28Oct2026 - T473 - PC refuses to release a loan - 74](28Oct2026%20-%20T473%20-%20PC%20refuses%20to%20release%20a%20loan%20-%2074.png)
+
+### 28Oct2026 - T473 - PC refuses to release a loan - 75
+
+v11.320.1 debug: PENGUIN LENT in the party; DEPOSIT -> RELEASE answers 'PENGUIN is borrowed.' and it stays (tools/routes/t474_loan.json)
+
+![28Oct2026 - T473 - PC refuses to release a loan - 75](28Oct2026%20-%20T473%20-%20PC%20refuses%20to%20release%20a%20loan%20-%2075.png)
+
+### 28Oct2026 - T475 - OVERLOADED sun rain hail - 76
+
+v11.320.1 debug: OVERLOADED casts HEATSOAK, DELUGE, FROST; each form transforms with its streaks drawn and stands on the ground line (zoom: normal, sun, rain, hail) (tools/routes/t474_overloaded.json)
+
+![28Oct2026 - T475 - OVERLOADED sun rain hail - 76](28Oct2026%20-%20T475%20-%20OVERLOADED%20sun%20rain%20hail%20-%2076.png)
+
+### 28Oct2026 - T475 - OVERLOADED sun rain hail - 77
+
+v11.320.1 debug: OVERLOADED casts HEATSOAK, DELUGE, FROST; each form transforms with its streaks drawn and stands on the ground line (zoom: normal, sun, rain, hail) (tools/routes/t474_overloaded.json)
+
+![28Oct2026 - T475 - OVERLOADED sun rain hail - 77](28Oct2026%20-%20T475%20-%20OVERLOADED%20sun%20rain%20hail%20-%2077.png)
+
+### 28Oct2026 - T452 - PROTEUS on THE ANNEX - 78
+
+v11.320.1 CONTENT debug: PROTEUS battled on THE ANNEX, foe front ALL EDGES and an owned back on row 11 (tools/routes/t474_proteus.json)
+
+![28Oct2026 - T452 - PROTEUS on THE ANNEX - 78](28Oct2026%20-%20T452%20-%20PROTEUS%20on%20THE%20ANNEX%20-%2078.png)
+
+### 28Oct2026 - T452 - PROTEUS on THE ANNEX - 79
+
+v11.320.1 CONTENT debug: PROTEUS battled on THE ANNEX, foe front ALL EDGES and an owned back on row 11 (tools/routes/t474_proteus.json)
+
+![28Oct2026 - T452 - PROTEUS on THE ANNEX - 79](28Oct2026%20-%20T452%20-%20PROTEUS%20on%20THE%20ANNEX%20-%2079.png)
