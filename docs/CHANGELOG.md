@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.330 — 2026-10-29
+
+- **9.32, Traded, lent and given (new section).** It brings together the trading the companion does (T-473, C-219), loans and the PENPHIN pair, and it adds the gift (C-223, T-492; the user chose by multiple choice). A gift arrives with "[NAME] arrived as a gift." and FIRST MET: A GIFT, and it still trade-evolves. Both lines are DRAFT.
+- **3.10:** all three surfaces now keep the calendar. The menus and the field were released in v11.329.1 (T-481 B, C).
+- A Settled entry in section 10.
+
 ## v11.329 — 2026-10-29
 
 - **2.12 §2, the type-resist handlers: DECIDED (T-488).** The family is `* SINK` (a heat sink soaks one hit and is spent): sixteen, one per type but ORACLE. Each town's MART sells its leader's type and the types that beat it once that MARK is held, and a few are hidden on routes. The bible notes that `SINK` is already MINUS's ability name. Every name is DRAFT.

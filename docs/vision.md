@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.329**
+**A total conversion — the living design bible, v11.330**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2267,7 +2267,7 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 
 ### 3.10 The backgrounds keep the calendar, and the map is a score (T-481, T-449, the user, 2026-10-24/29)
 
-***The backgrounds keep the calendar*** (*T-481, the user: "the background should also change based on the time of day ... the day of the week colour ... the season ... a regular day or a holiday"*). **Three surfaces, built in this order: the battle backgrounds, then the menu and window backgrounds, then the overworld's sky and light (9.21's hour tint gains the rest).** *By multiple choice:* **outdoors takes the hour and the season in full; buildings take the hour at a quarter, as if through the windows, and no season; caves keep their own light.** **The weekday is one 1px horizon line** -- *a fine accent, never a wash, noticed on the seventh day rather than the first* -- **and a holiday lights the platforms' glints in the month's colour (3.6).** *BENCHMARK arenas and the Elite rooms take only the line and the glints. Summer bleaches the ground lightly; winter snows it.* **Colour carries the argument here as everywhere (invariant 5): the background tells you when you are.** *The battle half is built and released (v11.326.1); the menus and windows, then the overworld, come next (T-481 B and C).*
+***The backgrounds keep the calendar*** (*T-481, the user: "the background should also change based on the time of day ... the day of the week colour ... the season ... a regular day or a holiday"*). **Three surfaces, built in this order: the battle backgrounds, then the menu and window backgrounds, then the overworld's sky and light (9.21's hour tint gains the rest).** *By multiple choice:* **outdoors takes the hour and the season in full; buildings take the hour at a quarter, as if through the windows, and no season; caves keep their own light.** **The weekday is one 1px horizon line** -- *a fine accent, never a wash, noticed on the seventh day rather than the first* -- **and a holiday lights the platforms' glints in the month's colour (3.6).** *BENCHMARK arenas and the Elite rooms take only the line and the glints. Summer bleaches the ground lightly; winter snows it.* **Colour carries the argument here as everywhere (invariant 5): the background tells you when you are.** *All three are built and released: the battles in v11.326.1, and the menus and the field in v11.329.1 (T-481 B and C).* **The panes take the day's trim on one sparse slot and a holiday's month colour on another, and the hour tints only frames and backdrops, never the paper or the ink**, *so the words always read the same; T-318's wash is retired. Outdoors, the water's crest takes the day's trim, and on a holiday with no look of its own one petal takes the month's colour.*
 
 ***The map is a score*** (*T-449, the user: "same shape ... the thesis looks and feel (elements of music and code)"*). **The TOWN MAP keeps vanilla's layout and cursor grid, so finding the way is unchanged, and is redrawn on paper in ink: staff-line terrain, beamed routes, towns as noteheads, and the sea a shuffle of bits and notes cycling against the paper islands.** *The cursor is four ink brackets; a town you can GOTO is a notehead lit in FLOW's blue inside an ink ring; a dungeon an open notehead, filled once found.* **The water in the world moves the same way, each tile on its own timing.** *Built and released; the user kept it as drawn (2026-10-29).*
 
@@ -8934,6 +8934,17 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ---
 
+### 9.32 Traded, lent and given -- *decided 2026-10-28/29 (T-473, C-219, C-223, T-492)*
+
+***Trading happens through the companion and only for a daemon that is AWAY*** (*the user, by multiple choice: send it AWAY and swap at SYNC, faithful to FireRed*). **The whole daemon goes to the exchange, and the one received is written into the slot it left, still AWAY.** *While a daemon is on offer the game will not call it home: a TRADING bit beside AWAY, and a DRAFT line that says so.*
+
+- ***What the game does with an arrival.*** **It is written into the INDEX as seen and caught, its FIRST MET says A TRADE, and a trade evolution happens as it arrives** -- *the cable's evolution, honoured without a cable.*
+- ***A loan is not a trade.*** **A borrowed daemon carries a LOAN bit the game can see: it never evolves by trade, and it cannot be released or traded on.** *The INDEX and the summary say it is borrowed (DRAFT).*
+- ***One pair evolves only for each other*** -- **DOLPHIN and PENGUIN become PENPHIN** (8.2, T-474).
+- ***A daemon given (C-223, T-492; the user, by multiple choice: "its own GIFT mark").*** **A daemon can be GIVEN with nothing back, to anyone or to one player.** *It leaves the giver's save at their next SYNC and arrives in the receiver's first empty box slot, AWAY, as a trade's does, with no partner named.* **The game says "[NAME] arrived as a gift." and its FIRST MET reads A GIFT** (*both DRAFT*), **so the INDEX can tell a gift from a trade -- and a gift still makes its trade evolution as it arrives** (*the user*). *A restored save cannot be given the same daemon twice: the companion's ledger remembers.*
+
+**The point is that a daemon can change hands three ways and the game keeps each one's word.** *A trade is an exchange, a loan comes back, a gift is kept -- and the record says which, because the record is the INDEX's whole job.*
+
 ## 10. DECISION LOG
 
 ### Settled
@@ -8953,6 +8964,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **The Open log audited (2026-10-29)** — thirteen questions already answered by later sections or the build struck with where each was answered; eleven remain, all mechanics, balance or the agent's method
 - **Four mechanics decided (T-488 to T-491, 2026-10-29)** — seventeen one-use resist items, one per type; ALIGN, the frame family's reverse; the physical / special split, in steps; CONSENSUS grows with the party's overlap, a CONTEXT routine with divergence (2.12, 10 Open)
 - **The resist items are the `* SINK` family, sold by type late (T-488, 2026-10-29)** — sixteen, one per type but ORACLE; each MART sells its leader's type and the types that beat it once that MARK is held, a few hidden on routes; the word is also MINUS's ability name. OSRIC HATTER's house, the clock-following glitch and Al's one crack released in v11.328.1 (T-485 to T-487); 3.10's battle half released in v11.326.1.
+- **A daemon given carries its own mark (T-492, C-223, 2026-10-29)** — "[NAME] arrived as a gift.", FIRST MET: A GIFT, and it still trade-evolves on arrival; trading, loans and gifts written up as 9.32. The menus and the field keep the calendar, released in v11.329.1 (T-481 B, C).
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)

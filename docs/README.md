@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.329, working |
-| [`CONTEXT-CONTENT-design-bible-v11.329.pdf`](CONTEXT-CONTENT-design-bible-v11.329.pdf) | Typeset **snapshot** at v11.329 — the resist items named as sinks, a stoat's house that keeps one hour, and a glitch that follows the clock. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.330, working |
+| [`CONTEXT-CONTENT-design-bible-v11.330.pdf`](CONTEXT-CONTENT-design-bible-v11.330.pdf) | Typeset **snapshot** at v11.330 — a daemon traded, lent or given, each with its own word, and a world whose every pane keeps the calendar. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
