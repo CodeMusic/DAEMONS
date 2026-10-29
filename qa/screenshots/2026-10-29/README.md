@@ -151,3 +151,15 @@ SPELLCRAFT's card face (left), its SHINY (middle), beside an INSTINCT face for c
 T-449 (engine adf935265, DRAFT): the region map's cursor, GOTO icon and dungeon icon in SCORE ink, today beside draft
 
 ![29Oct2026 - T449 - map icons and cursor in ink - 29](29Oct2026%20-%20T449%20-%20map%20icons%20and%20cursor%20in%20ink%20-%2029.png)
+
+### 29Oct2026 - T484 - the paths and CRYSTALs reflection - 30
+
+v11.322.1, T-484: the plateau's and ROUTE 23's paths without the magenta specks (before | after); theatre retakes with CRYSTAL's reflection in her own colours
+
+![29Oct2026 - T484 - the paths and CRYSTALs reflection - 30](29Oct2026%20-%20T484%20-%20the%20paths%20and%20CRYSTALs%20reflection%20-%2030.png)
+
+### 29Oct2026 - T484 - the paths and CRYSTALs reflection - 31
+
+v11.322.1, T-484: the plateau's and ROUTE 23's paths without the magenta specks (before | after); theatre retakes with CRYSTAL's reflection in her own colours
+
+![29Oct2026 - T484 - the paths and CRYSTALs reflection - 31](29Oct2026%20-%20T484%20-%20the%20paths%20and%20CRYSTALs%20reflection%20-%2031.png)
