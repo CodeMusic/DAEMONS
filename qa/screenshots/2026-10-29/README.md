@@ -67,3 +67,9 @@ T-479 in the theatre (debug, routes/t474_index.json): PENPHIN's workings draw a 
 T-479 in the theatre (debug, routes/t474_index.json): PENPHIN's workings draw a line from each root -- DOLPHIN ->PENGUIN PENPHIN, then PENGUIN ->DOLPHIN PENPHIN; PENGUIN's own page unchanged. The kit's PENGUIN and PENPHIN were seen before T-406's records, so the trade no longer writes A TRADE over that: FIRST MET reads BEFORE RECORDS beside BOUND: BLANCHE TOWN.
 
 ![29Oct2026 - T479 - PENPHIN both ways in, FIRST MET kept - 11](29Oct2026%20-%20T479%20-%20PENPHIN%20both%20ways%20in%2C%20FIRST%20MET%20kept%20-%2011.png)
+
+### 29Oct2026 - C236 - the witching hour mock-up - 12
+
+The witching hour on the watches, a mock-up from the firmware's own numbers (not a screenshot): from 3 to 4 AM a thin purple shimmer and no shadow; ROUTINES > THE HOUR > its type's routine, once the book is held. Every word DRAFT.
+
+![29Oct2026 - C236 - the witching hour mock-up - 12](29Oct2026%20-%20C236%20-%20the%20witching%20hour%20mock-up%20-%2012.png)
