@@ -1,0 +1,65 @@
+{
+  "rom": "debug",
+  "about": "T-477 and T-478 (2026-10-28): the INDEX's A TO Z MODE in our names' order (tools/genatoz.py), and the descriptions an old port pass broke with \\l -- the START menu's INDEX line, and the region map's dungeon descriptions (THE UNDERTONE and TAPPOINT'S CAVE, north of CALLOW CITY). The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "T-477: the INDEX in A TO Z MODE reads A to Z by our names",
+      "steps": [
+        "load debug",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 10",
+        "press A",
+        "wait 200",
+        "shot A-Z, its start",
+        "press RIGHT",
+        "wait 30",
+        "shot A-Z, its second page",
+        "hold RIGHT 900",
+        "wait 60",
+        "shot A-Z, its end",
+        "close"
+      ]
+    },
+    {
+      "stop": "T-478: the START menu's INDEX description on two lines",
+      "steps": [
+        "load debug",
+        "press START",
+        "wait 30",
+        "shot START menu, where its cursor was",
+        "press UP",
+        "wait 30",
+        "shot START menu, cursor moved up",
+        "press UP",
+        "wait 30",
+        "shot START menu, up again",
+        "close"
+      ]
+    },
+    {
+      "stop": "T-478: the TOWN MAP's descriptions print all four lines -- THE UNDERTONE and TAPPOINT'S CAVE",
+      "steps": [
+        "load debug",
+        "goto ViridianCity",
+        "keyitem ITEM_TOWN_MAP",
+        "register ITEM_TOWN_MAP",
+        "press SELECT",
+        "wait 200",
+        "press UP",
+        "wait 20",
+        "press A",
+        "wait 60",
+        "shot THE UNDERTONE (VIRIDIAN FOREST): four lines",
+        "press B",
+        "wait 60",
+        "press UP",
+        "wait 20",
+        "press A",
+        "wait 60",
+        "shot TAPPOINT'S CAVE (DIGLETT'S CAVE): four lines",
+        "close"
+      ]
+    }
+  ]
+}
