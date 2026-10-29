@@ -18,6 +18,13 @@
                                                    #   metatiles.bin are written beside its tiles.png. Batch H (LURID,
                                                    #   QUICKSILVER, the islands, DENSE WOOD) approved 2026-10-24, and
                                                    #   with --palettes THE SAME BUSH's split (SPLITS_APPROVED).
+                                                   #   Batch G (the S.S. ANNE, UMBRA PLATEAU / ROUTE 23, the DAEMON
+                                                   #   LEAGUE, the HALL OF FAME, the SEAGALLOP harbours, the TANOBY
+                                                   #   CHAMBERS and doors) built 2026-10-28 as a DRAFT, the user away.
+                                                   #   A room over primary/building reads building's tiles and rows
+                                                   #   (Town.prim). A REVISED motif cannot redraw its own earlier
+                                                   #   output (drawn_before only recognises the current drawing):
+                                                   #   restore the tileset's tiles.png from git first, then --write.
 
 WHAT IS LEFT. Batches A-E took the doors, field effects, the general ground, every interior and the caves. A town's
 SECONDARY tileset is part ours already -- gbacivic/gbacivictown (CHECKPOINTS, THE REPO, the BENCHMARKS), gbahouse,
@@ -202,23 +209,61 @@ PLAN = [
     dict(ts="berry_forest", name="DENSE WOOD", theme="THREE ISLAND's forest (2.10)",
          look="as THE UNDERTONE, but denser: the berry trees' own drawing in the same clumps",
          objects={"ThreeIsland_BerryForest@0,0": "the canopy", "*": "stumps, flowers, the clearing"}),
+    #  batch G (drafted and built as a DRAFT 2026-10-28, the user away): the endgame and the ships, first met first
+    dict(ts="ss_anne", name="S.S. ANNE", theme="the liner at ARDOR's pier; navy-hulled, one funnel (genships); the "
+                                            "same sailor becomes the SEAGALLOP's (vision 9.17)",
+         look="THE LINER: teak decks in caulked planks, the butt joints staggered; the corridors' white bulkheads "
+              "lap-seamed and riveted; the cabins' carpet a woven diamond",
+         objects={"SSAnne_Deck@*": "the deck", "SSAnne_Kitchen@*": "the galley", "*": "corridors and cabins"}),
+    dict(ts="indigo_plateau", name="UMBRA PLATEAU / ROUTE 23", theme="full shadow; all colour absorbed (3.1); the "
+                                                                    "REVIEW BOARD (a LANDMARK, T-447)",
+         look="UMBRA: every gatehouse, pillar and paving stone of ROUTE 23 and the plateau laid in dressed blocks, "
+              "each carrying its own long shadow cut on the diagonal -- the route into full shadow; the gates' glass "
+              "panes darkened below",
+         objects={"Route23@*": "ROUTE 23's BENCHMARK gates, pillars and paving",
+                  "IndigoPlateau_Exterior@*": "the plateau's steps and posts (the REVIEW BOARD kept)",
+                  "*": "small bits"}),
+    dict(ts="pokemon_league", name="DAEMON LEAGUE", theme="the REVIEW BOARD's four humours, met IV, II, III, I, "
+                                                        "then AL CLEAR (section 6)",
+         look="THE HEARING ROOMS: each floor a ruled page in its room's humour (the colours vanilla gave each room), "
+              "the walls raised panels; the pillars, the emblems and the doors kept",
+         objects={"*": "the five rooms"}),
+    dict(ts="hall_of_fame", name="HALL OF FAME", theme="she records you into a system that flattens you into stats "
+                                                      "(4.x); the UNION ROOM shares the tileset",
+         look="THE RECORD: the floor laid as index cards, each with a ruled header -- a person filed as fields; the "
+              "walls panelled",
+         objects={"*": "the HALL OF FAME and the UNION ROOM"}),
+    dict(ts="island_harbor", name="SEAGALLOP HARBOURS", theme="the ferry's harbours on every island (2.10)",
+         look="THE QUAY: the harbour's grey walk in dressed stone courses, as the islands' own stone",
+         objects={"*": "the harbour (every island's)"}),
+    dict(ts="tanoby_ruins", name="TANOBY CHAMBERS", theme="an alphabet nobody reads (4.24; the names transliterated, "
+                                                         "9.17)",
+         look="AN OLDER SCRIPT: sandstone flags each carved with one letter of an invented script, the maze walls in "
+              "long courses with a line of it along every other one; carved, never lit. The seven doors on SEVEN "
+              "ISLAND get the same courses",
+         objects={"*": "the seven chambers"}),
 ]
 SHORT = {"viridian_city": "callow", "pewter_city": "slate", "cerulean_city": "doldrum",
          "viridian_forest": "undertone", "vermilion_city": "ardor", "lavender_town": "halftone",
          "celadon_city": "verdigris", "saffron_city": "brazen", "fuchsia_city": "lurid",
          "cinnabar_island": "quicksilver", "sevii_islands_123": "islands123", "sevii_islands_45": "islands45",
-         "sevii_islands_67": "islands67", "berry_forest": "densewood"}
+         "sevii_islands_67": "islands67", "berry_forest": "densewood",
+         "ss_anne": "ssanne", "indigo_plateau": "umbra", "pokemon_league": "league", "hall_of_fame": "halloffame",
+         "island_harbor": "harbour", "tanoby_ruins": "tanoby"}
 DRAFTED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
            #  the next four, drafted 2026-10-23 in the order a player meets them (sheets t438f2_*)
            "vermilion_city", "lavender_town", "celadon_city", "saffron_city",
            #  batch H, drafted 2026-10-24 (sheets t438h_*): the rest of the places, first met first; not approved
            "fuchsia_city", "cinnabar_island", "sevii_islands_123", "sevii_islands_45", "sevii_islands_67",
-           "berry_forest"]
+           "berry_forest",
+           #  batch G, drafted 2026-10-28 (sheets t438j_*): the endgame and the ships
+           "ss_anne", "indigo_plateau", "pokemon_league", "hall_of_fame", "island_harbor", "tanoby_ruins"]
 #  which sheet set each draft belongs to (the first four were t438f_, the next four t438f2_, revised as t438f3_)
 SHEET_PREFIX = {"vermilion_city": "t438f3", "lavender_town": "t438f3", "celadon_city": "t438f3",
                 "saffron_city": "t438f3", "fuchsia_city": "t438h", "cinnabar_island": "t438h",
                 "sevii_islands_123": "t438h", "sevii_islands_45": "t438h", "sevii_islands_67": "t438h",
-                "berry_forest": "t438h"}
+                "berry_forest": "t438h", "ss_anne": "t438j", "indigo_plateau": "t438j", "pokemon_league": "t438j",
+                "hall_of_fame": "t438j", "island_harbor": "t438j", "tanoby_ruins": "t438j"}
 #  the user, 2026-10-23: build these four (SLATE's museum roof and CALLOW's cottage roof calmed first); the rest stay
 #  drafts until approved
 APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
@@ -230,7 +275,11 @@ APPROVED = ["viridian_city", "pewter_city", "cerulean_city", "viridian_forest",
             #  all that is left is one tile copied from general's), the island kit with the harbour roofs' drying net
             #  (ONE..SEVEN; USER TOWER and THE ANNEX are LANDMARKS) and DENSE WOOD
             "fuchsia_city", "cinnabar_island", "sevii_islands_123", "sevii_islands_45", "sevii_islands_67",
-            "berry_forest"]
+            "berry_forest",
+            #  batch G, 2026-10-28: built as a DRAFT while the user was away (their rule: build the recommended look,
+            #  review it on the device) -- the S.S. ANNE, UMBRA PLATEAU / ROUTE 23, the DAEMON LEAGUE, the HALL OF
+            #  FAME, the SEAGALLOP harbours, the TANOBY CHAMBERS and their seven doors (sevii_islands_67 above)
+            "ss_anne", "indigo_plateau", "pokemon_league", "hall_of_fame", "island_harbor", "tanoby_ruins"]
 #  the palette splits the user approved, and which option (SPLITS below): THE SAME BUSH's salt scrub, option A
 #  (2026-10-24); --write --approved writes its rows 7..12 beside its base (the engine's header, palette table and
 #  layout were wired by hand, as gTileset_CaveUmbral's were)
@@ -328,8 +377,8 @@ KEEP_TILES = {"saffron_city": {789, 804, 805, 807},
               "sevii_islands_123": {640 + 333, 640 + 336, 640 + 337, 640 + 338},
               "sevii_islands_67": {640 + 333, 640 + 336, 640 + 338}}
 #  maps whose tiles are left for a later batch: every tile these maps draw is kept, wherever else it is drawn
-#  (TANOBY's seven chamber doors wait for batch G, the user 2026-10-23)
-KEEP_MAPS = {"sevii_islands_67": ["SevenIsland_TanobyRuins"]}
+#  (TANOBY's seven chamber doors waited for batch G, the user 2026-10-23; batch G draws them, 2026-10-28)
+KEEP_MAPS = {}
 #  LANDMARKS: places T-447 redraws from the story later, so this tool leaves them exactly as they are (the user,
 #  2026-10-24, building batch H). Each is a box of cells on one map (the census's object for it); every tile a block in
 #  the box draws is kept, wherever else that tile is drawn, so no write of this tool can change a pixel of one -- and
@@ -487,14 +536,18 @@ def used_layouts():
 _GEN = {}
 
 
-def general():
-    if not _GEN:
-        d = os.path.join(GBA, GEN)
-        _GEN.update(tiles=tiles_of(Image.open(os.path.join(d, "tiles.png"))),
-                    van=tiles_of(Image.open(io.BytesIO(daemonslib.upstream(GBA, GEN + "/tiles.png", binary=True)))),
-                    pals=[read_pal(os.path.join(d, "palettes/%02d.pal" % r)) for r in range(16)],
-                    mt=open(os.path.join(d, "metatiles.bin"), "rb").read())
-    return _GEN
+def general(prim="general"):
+    """a primary tileset as the engine has it (tiles, vanilla's tiles, palettes, metatiles): primary/general under
+    every town, primary/building under the rooms batch G reaches (the DAEMON LEAGUE, the S.S. ANNE...)"""
+    if prim not in _GEN:
+        rel = "data/tilesets/primary/" + prim
+        d = os.path.join(GBA, rel)
+        _GEN[prim] = dict(tiles=tiles_of(Image.open(os.path.join(d, "tiles.png"))),
+                          van=tiles_of(Image.open(io.BytesIO(daemonslib.upstream(GBA, rel + "/tiles.png",
+                                                                                 binary=True)))),
+                          pals=[read_pal(os.path.join(d, "palettes/%02d.pal" % r)) for r in range(16)],
+                          mt=open(os.path.join(d, "metatiles.bin"), "rb").read())
+    return _GEN[prim]
 
 
 def camel(ts):
@@ -545,6 +598,10 @@ class Town:
                                      .replace("gTileset_", "").lower()) == want
                            and n in used_layouts())
         self.sym = sym
+        #  the primary under it: general for a town, building for a room (batch G's interiors)
+        prims = collections.Counter(layouts()[m]["primary_tileset"] for m in self.maps)
+        self.prim = "building" if prims and prims.most_common(1)[0][0] == "gTileset_Building" else "general"
+        self.G = general(self.prim)
         self.placed = collections.Counter()
         self.grid = {}
         for m in self.maps:
@@ -642,7 +699,7 @@ class Town:
         return out
 
     def palette(self, row):
-        return general()["pals"][row] if row < 7 else self.pals[row]
+        return self.G["pals"][row] if row < 7 else self.pals[row]
 
 
 # ================================================================== drawing by role
@@ -1281,6 +1338,178 @@ STYLE["sevii_islands_45"]["cairn"] = m_cairn
 KEEP_LIGHT_TOWN[("sevii_islands_45", "cairn")] = 0.0
 
 
+# ================================================================== batch G: the endgame and the ships (2026-10-28)
+#  UMBRA PLATEAU and ROUTE 23 (the REVIEW BOARD is a LANDMARK, T-447's), the DAEMON LEAGUE's four hearing rooms and
+#  the champion's, the HALL OF FAME (and the UNION ROOM, which shares it), the S.S. ANNE, the SEAGALLOP harbours, and
+#  the TANOBY CHAMBERS with their seven doors on SEVEN ISLAND. DOLDRUM CAVE is the user's (gbacaves: never drafted
+#  without them), USER TOWER's rooms wait for its landmark (T-447), and no palette row moves: drawn by the user's
+#  away rule (built as a DRAFT, the recommended look, for review on the device).
+def m_umbra(x, y, w, h, X, Y, b):
+    """UMBRA, full shadow: dressed blocks 16 x 8, staggered by half, and every block carries its own long shadow --
+    the lower-right half, cut on the diagonal, a step darker than the lit upper-left"""
+    row = Y // 8
+    xo, yy = (X + (8 if row % 2 else 0)) % 16, Y % 8
+    if yy == 7 or xo == 15:
+        return 1.0
+    if yy == 0:
+        return 0.0
+    return 0.65 if xo + 2 * yy > 13 else 0.3
+
+
+def m_ledger(x, y, w, h, X, Y, b):
+    """the REVIEW BOARD's hearing rooms: the floor a ruled page in the room's own humour -- a pale sheet, one rule
+    every eight rows, and a faint second rule under it, so it reads as writing paper, never graph paper. Vanilla's
+    shadow under the walls is kept"""
+    if b >= 0.6:
+        return b
+    yy = Y % 8
+    if yy == 6:
+        return 0.75
+    if yy == 7:
+        return 0.35
+    return 0.0
+
+
+def m_wainscot(x, y, w, h, X, Y, b):
+    """the hearing rooms' walls: raised panels sixteen wide, a lit stile on the left, a shadowed one on the right"""
+    xo = X % 16
+    if xo == 0:
+        return 0.0
+    if xo == 15 or xo == 14:
+        return 1.0
+    return 0.45
+
+
+def m_cards(x, y, w, h, X, Y, b):
+    """the HALL OF FAME records you: the floor laid as index cards, eight by eight, each with a ruled header line --
+    a person filed as a row of fields. Vanilla's shadows are kept"""
+    if b >= 0.6:
+        return b
+    xo, yy = X % 8, Y % 8
+    if yy == 7 or (xo == 7 and yy < 7):
+        return 0.75
+    if yy == 2 and 1 <= xo <= 4:
+        return 0.75
+    return 0.0
+
+
+def m_deck(x, y, w, h, X, Y, b):
+    """the S.S. ANNE's deck: scrubbed teak, every plank one clean tone, and vanilla's seams -- whichever way the planks
+    run, along the deck or across a side passage -- paid with black caulking"""
+    if b >= 0.6:
+        return 1.0
+    return 0.3 if b >= 0.3 else 0.1
+
+
+def m_bulkhead(x, y, w, h, X, Y, b):
+    """a liner's bulkheads: white-painted plate, a lap seam every eight rows, a rivet line under it"""
+    yy = Y % 8
+    if yy == 7:
+        return 0.75
+    if yy == 1 and X % 4 == 1:
+        return 0.5
+    return 0.0
+
+
+def m_carpet(x, y, w, h, X, Y, b):
+    """the cabins' carpet: a woven diamond, eight wide"""
+    d = (X + Y) % 8 == 0 or (X - Y) % 8 == 0
+    return 0.85 if d else 0.45
+
+
+#  the TANOBY script: an alphabet nobody reads (vision 4.24 / 9.17). Twelve invented letters, three by five, carved
+#  -- the stroke cut dark, its lower lip catching the light -- never lit, never a letter of ours
+GLYPHS = ["111010010010111", "101101111101101", "110101110100100", "011100010001110", "111100110100111",
+          "010101111101101", "100100100100111", "111001010100100", "101010010010101", "110001010100011",
+          "010110010010010", "111101101101010"]
+
+
+def _glyph(gx, gy, k):
+    g = GLYPHS[k % len(GLYPHS)]
+    return 0 <= gx < 3 and 0 <= gy < 5 and g[gy * 3 + gx] == "1"
+
+
+def m_flags(x, y, w, h, X, Y, b):
+    """TANOBY's floor: worn sandstone flags sixteen square, a joint a step darker; vanilla's shadows kept (the floor
+    is a few tiles repeated, so a letter here would repeat as a pattern, not read as writing)"""
+    if b >= 0.6:
+        return b
+    return 0.4 if X % 16 == 15 or Y % 16 == 15 else 0.0
+
+
+def m_inscribed(x, y, w, h, X, Y, b):
+    """a line of the script carved into vanilla's own stonework: every other eight-row course carries letters, four
+    pixels apart, cut dark with the light caught under each stroke; everything else is vanilla's"""
+    row, yy = Y // 8, Y % 8
+    if row % 2 or not 1 <= yy <= 6 or h - y < 6:
+        return b
+    k = int(_h(X // 4, row, 3) * 997)
+    if _glyph(X % 4, yy - 1, k):
+        return 1.0
+    if _glyph(X % 4, yy - 2, k):
+        return 0.0
+    return b
+
+
+def m_courses(x, y, w, h, X, Y, b):
+    """TANOBY's maze walls: long dressed courses, eight high, with a line of the script carved along every other
+    course"""
+    row = Y // 8
+    xo, yy = (X + (8 if row % 2 else 0)) % 24, Y % 8
+    if yy == 7 or xo == 23:
+        return 1.0
+    if yy == 0:
+        return 0.0
+    if row % 2 == 0 and 1 <= yy <= 5:
+        k = int(_h(X // 4, row, 3) * 997)
+        if _glyph(X % 4, yy - 1, k):
+            return 1.0
+    return 0.4
+
+
+MATERIALS.update({
+    "indigo_plateau": {
+        11: {2: "stone", 3: "stone", 4: "stone", 5: "stone"},
+        12: {2: "stone", 3: "stone", 4: "stone"},
+        10: {1: "glass", 2: "glass", 15: "glass", 3: "glass"},
+    },
+    #  the four hearing rooms draw one floor in rows 8..11 (IV blue, II yellow, III violet, I teal), the champion's
+    #  in row 12
+    "pokemon_league": {8: {13: "floor", 14: "floor", 15: "floor"}, 9: {13: "floor", 14: "floor", 15: "floor"},
+                       10: {13: "floor", 14: "floor", 15: "floor"}, 11: {13: "floor", 14: "floor", 15: "floor"},
+                       7: {4: "wall", 5: "wall", 6: "wall", 7: "wall"}, 12: {3: "page", 9: "page"}},
+    #  the HALL's floor is row 7's 8/9 (the UNION ROOM's green is row 9's 5..7)
+    "hall_of_fame": {9: {5: "floor", 6: "floor", 7: "floor"}, 7: {8: "floor", 9: "floor"}},
+    "ss_anne": {7: {13: "deck", 14: "deck", 15: "deck", 5: "bulkhead", 4: "bulkhead", 3: "bulkhead"},
+                8: {5: "carpet", 6: "carpet", 7: "carpet", 8: "carpet", 9: "carpet"}},
+    "island_harbor": {8: {3: "quay", 4: "quay", 5: "quay", 6: "quay"}},
+    "tanoby_ruins": {7: {12: "flags", 9: "flags", 13: "flags", 14: "flags", 4: "walls", 5: "walls"},
+                     8: {2: "brick", 3: "brick", 5: "brick", 6: "brick", 7: "brick"}},
+})
+#  the seven chamber doors on SEVEN ISLAND (row 5: their sandstone fronts, drawn by TANOBY RUINS alone in the tileset)
+MATERIALS["sevii_islands_67"][5] = {6: "sandstone", 11: "sandstone", 8: "sandstone", 9: "sandstone"}
+STYLE["sevii_islands_67"]["sandstone"] = m_inscribed
+STYLE.update({
+    "indigo_plateau": dict(stone=m_umbra, glass=m_glass),
+    #  AL CLEAR's floor ("page"): its own two shades only, so the pale rim (index 4) stays apart from the page
+    "pokemon_league": dict(floor=m_ledger, page=m_ledger, wall=m_wainscot),
+    "hall_of_fame": dict(floor=m_cards),
+    "ss_anne": dict(deck=m_deck, bulkhead=m_bulkhead, carpet=m_carpet),
+    "island_harbor": dict(quay=m_ashlar),
+    "tanoby_ruins": dict(flags=m_flags, walls=m_courses, brick=m_inscribed),
+})
+for _ts, _ms in (("indigo_plateau", ("stone",)), ("pokemon_league", ("floor", "page", "wall")),
+                 ("hall_of_fame", ("floor",)), ("ss_anne", ("deck", "bulkhead", "carpet")),
+                 ("island_harbor", ("quay",)), ("tanoby_ruins", ("flags", "walls", "brick")),
+                 ("sevii_islands_67", ("sandstone",))):
+    for _m in _ms:
+        KEEP_LIGHT_TOWN[(_ts, _m)] = 0.0
+#  ... but the panelled walls, the deck's grain and TANOBY's maze walls keep half of vanilla's light: their lit caps
+#  and shaded faces are vanilla's, the motif runs over them
+for _k in (("pokemon_league", "wall"), ("tanoby_ruins", "walls")):
+    KEEP_LIGHT_TOWN[_k] = 0.5
+
+
 def ladder(town, row, mat):
     """this material's indices in this row, light to dark"""
     plan = MATERIALS[town.ts].get(row, {})
@@ -1302,7 +1531,7 @@ class Plane:
         w, h = min(w + 2, W - x0), min(h + 2, H - y0)
         self.x0, self.y0, self.w, self.h = x0, y0, w * 16, h * 16
         self.px = [[None] * self.w for _ in range(self.h)]
-        G = general()
+        G = town.G
         g = town.grid[m]
         for cy in range(h):
             for cx in range(w):
@@ -1358,7 +1587,7 @@ def redraw(town):
     their home object by role. Returns (tiles, what) -- `what` names how each changed tile was drawn."""
     new = [list(t) for t in town.now]
     what = {}
-    G = general()
+    G = town.G
     rows = collections.defaultdict(collections.Counter)
     for b in range(town.nblocks):
         for v in entries(town.mt, b):
@@ -1490,7 +1719,7 @@ def seams(town, new):
 # ================================================================== pictures
 def render(town, mapname, tiles=None, box=None):
     l = layouts()[mapname]
-    G = general()
+    G = town.G
     tl = tiles or town.now
     allp = [G["pals"][r] for r in range(7)] + [town.pals[r] for r in range(7, 16)]
     W, H = l["width"], l["height"]
@@ -1623,14 +1852,29 @@ CROPS = {
     "sevii_islands_67": [("BirthIsland_Exterior", 6, 3, 20, 14, "THE ANNEX's triangle"),
                          ("SevenIsland_TrainerTower", 50, 0, 16, 12, "USER TOWER"),
                          ("SixIsland", 6, 10, 18, 20, "SIX ISLAND's house and harbour"),
-                         ("SevenIsland_TanobyRuins", 0, 0, 30, 10, "TANOBY: the chamber doors kept for batch G")],
+                         ("SevenIsland_TanobyRuins", 0, 0, 30, 10, "TANOBY: the chamber doors (batch G)")],
     "berry_forest": [("ThreeIsland_BerryForest", 0, 0, 24, 16, "DENSE WOOD's mouth"),
                      ("ThreeIsland_BerryForest", 9, 14, 16, 10, "the clearing")],
+    "ss_anne": [("SSAnne_Deck", 0, 2, 24, 14, "the deck"), ("SSAnne_1F_Corridor", 0, 4, 31, 10, "a corridor"),
+                ("SSAnne_Kitchen", 0, 0, 16, 14, "the galley"), ("SSAnne_Room1", 0, 0, 12, 10, "a cabin")],
+    "indigo_plateau": [("Route23", 0, 0, 24, 20, "ROUTE 23's last gate and the plateau's foot"),
+                       ("Route23", 0, 50, 24, 20, "a BENCHMARK gate"),
+                       ("IndigoPlateau_Exterior", 0, 0, 24, 20, "UMBRA PLATEAU (the REVIEW BOARD kept)")],
+    "pokemon_league": [("PokemonLeague_LoreleisRoom", 0, 0, 13, 13, "IV, PHLEGMATIC"),
+                       ("PokemonLeague_BrunosRoom", 0, 0, 13, 13, "II, CHOLERIC"),
+                       ("PokemonLeague_AgathasRoom", 0, 0, 13, 13, "III, MELANCHOLIC"),
+                       ("PokemonLeague_LancesRoom", 0, 0, 27, 24, "I, SANGUINE"),
+                       ("PokemonLeague_ChampionsRoom", 0, 0, 13, 20, "AL CLEAR's room")],
+    "hall_of_fame": [("PokemonLeague_HallOfFame", 0, 0, 11, 13, "the HALL OF FAME"),
+                     ("UnionRoom", 0, 0, 15, 12, "the UNION ROOM (shares it)")],
+    "island_harbor": [("Island_Harbor", 0, 0, 17, 13, "a SEAGALLOP harbour (every island's)")],
+    "tanoby_ruins": [("SevenIsland_TanobyRuins_MoneanChamber", 0, 0, 23, 17, "a chamber"),
+                     ("SevenIsland_TanobyRuins_LiptooChamber", 0, 0, 23, 17, "another chamber")],
 }
 
 
 def batch(ts):
-    return "batch H" if SHEET_PREFIX.get(ts) == "t438h" else "batch F"
+    return {"t438h": "batch H", "t438j": "batch G"}.get(SHEET_PREFIX.get(ts), "batch F")
 
 
 def plan_of(ts):
@@ -1731,7 +1975,7 @@ def _swatches(pal, mark=(), Z=26, f=None):
 
 def move_cells(town, row, idx=None, blocks=None, tiles=None):
     """{map: [cells]} for every reachable map: the cells whose block draws `idx` in `row` (or is one of `blocks`)"""
-    G = general()
+    G = town.G
     hit = set(blocks or ())
     if idx is not None:
         src = lambda t: G["tiles"][t] if t < 640 else (tiles or town.now)[t - 640]
