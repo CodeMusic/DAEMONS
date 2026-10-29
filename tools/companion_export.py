@@ -1008,6 +1008,10 @@ def title_files():
     import gbatitleview as tv
     from PIL import Image
     out = {}
+    need = [os.path.join(tv.GFX, sub, f) for sub in ("firered", "leafgreen")
+            for f in ("game_title_logo.8bpp", "game_title_logo.bin", "game_title_logo.pal")]
+    if not all(os.path.exists(f) for f in need):
+        return out                  # a tree never built (check_generators' sandbox): the 8bpp is made by the build
     def png(im, scale):
         im = im.resize((im.width * scale, im.height * scale), Image.NEAREST)
         buf = io.BytesIO(); im.save(buf, "PNG", optimize=True); return buf.getvalue()
