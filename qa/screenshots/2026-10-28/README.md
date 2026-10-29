@@ -475,3 +475,21 @@ v11.320.1 CONTENT debug: PROTEUS battled on THE ANNEX, foe front ALL EDGES and a
 v11.320.1 CONTENT debug: PROTEUS battled on THE ANNEX, foe front ALL EDGES and an owned back on row 11 (tools/routes/t474_proteus.json)
 
 ![28Oct2026 - T452 - PROTEUS on THE ANNEX - 79](28Oct2026%20-%20T452%20-%20PROTEUS%20on%20THE%20ANNEX%20-%2079.png)
+
+### 28Oct2026 - T438 - batch G endgame and ships - 80
+
+v11.320.2, T-438 batch G (a DRAFT): before and after, read from what the ROM is built from -- S.S. ANNE, the DAEMON LEAGUE with the HALL OF FAME and UNION ROOM, UMBRA PLATEAU with a SEAGALLOP harbour and a TANOBY chamber
+
+![28Oct2026 - T438 - batch G endgame and ships - 80](28Oct2026%20-%20T438%20-%20batch%20G%20endgame%20and%20ships%20-%2080.png)
+
+### 28Oct2026 - T438 - batch G endgame and ships - 81
+
+v11.320.2, T-438 batch G (a DRAFT): before and after, read from what the ROM is built from -- S.S. ANNE, the DAEMON LEAGUE with the HALL OF FAME and UNION ROOM, UMBRA PLATEAU with a SEAGALLOP harbour and a TANOBY chamber
+
+![28Oct2026 - T438 - batch G endgame and ships - 81](28Oct2026%20-%20T438%20-%20batch%20G%20endgame%20and%20ships%20-%2081.png)
+
+### 28Oct2026 - T438 - batch G endgame and ships - 82
+
+v11.320.2, T-438 batch G (a DRAFT): before and after, read from what the ROM is built from -- S.S. ANNE, the DAEMON LEAGUE with the HALL OF FAME and UNION ROOM, UMBRA PLATEAU with a SEAGALLOP harbour and a TANOBY chamber
+
+![28Oct2026 - T438 - batch G endgame and ships - 82](28Oct2026%20-%20T438%20-%20batch%20G%20endgame%20and%20ships%20-%2082.png)
