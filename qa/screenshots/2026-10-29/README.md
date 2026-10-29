@@ -253,3 +253,9 @@ FOUR ISLAND with the GLOBAL INDEX held: AL's one crack after his lines, once (DR
 C-247: the GAME tab's title (CONTENT), at phone width in a browser -- the game's own logo, word and face-off daemons; PLAY, UPDATE, DEBUG, ANOTHER GAME (DRAFT)
 
 ![29Oct2026 - C247 - GAME tab title - 65](29Oct2026%20-%20C247%20-%20GAME%20tab%20title%20-%2065.jpg)
+
+### 29Oct2026 - C242 - watch BATTERY settings - 66
+
+C-242/C-243: the watch's BATTERY in PLACES (scratch companion, phone width) -- LOW POWER turned on, carried in its state (DRAFT)
+
+![29Oct2026 - C242 - watch BATTERY settings - 66](29Oct2026%20-%20C242%20-%20watch%20BATTERY%20settings%20-%2066.jpg)
