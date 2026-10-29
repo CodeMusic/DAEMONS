@@ -97,3 +97,39 @@ T-480 (DRAFT): 3 AM with THE SUBTLE LAYER held, a wild battle on ROUTE 22. R in 
 T-480 (DRAFT): 3 AM with THE SUBTLE LAYER held. Left, the moveset: a faint purple arrow (the book's lit purple) after MP points down to the hour's second screen; right, that screen: THIN SEAM, 5/5, and the arrow turned up, pointing back. No words. Theatre, the debug scratch save.
 
 ![29Oct2026 - T480 - the hours mark - 16](29Oct2026%20-%20T480%20-%20the%20hours%20mark%20-%2016.png)
+
+### 29Oct2026 - T438 - batch G walked in the theatre - 17
+
+T-438 batch G walked in the theatre (film_t438g.json): S.S. ANNE, UMBRA PLATEAU, ROUTE 23, each DAEMON LEAGUE room, the HALL OF FAME, the UNION ROOM, ONE ISLAND's harbour, five TANOBY doors and the MONEAN chamber. Magenta specks in UMBRA's and ROUTE 23's paved paths; the kitchen's cooks are flat white; the MONEAN card is still vanilla's painting.
+
+![29Oct2026 - T438 - batch G walked in the theatre - 17](29Oct2026%20-%20T438%20-%20batch%20G%20walked%20in%20the%20theatre%20-%2017.png)
+
+### 29Oct2026 - T438 - batch G walked in the theatre - 18
+
+T-438 batch G walked in the theatre (film_t438g.json): S.S. ANNE, UMBRA PLATEAU, ROUTE 23, each DAEMON LEAGUE room, the HALL OF FAME, the UNION ROOM, ONE ISLAND's harbour, five TANOBY doors and the MONEAN chamber. Magenta specks in UMBRA's and ROUTE 23's paved paths; the kitchen's cooks are flat white; the MONEAN card is still vanilla's painting.
+
+![29Oct2026 - T438 - batch G walked in the theatre - 18](29Oct2026%20-%20T438%20-%20batch%20G%20walked%20in%20the%20theatre%20-%2018.png)
+
+### 29Oct2026 - T445 - the CORPUS cards in the theatre - 19
+
+T-445: CORPUS HIDEOUT's and CORPUS WAREHOUSE's name cards, filmed in the theatre on arrival from another mapsec (film_cards.json): each shows, holds and dissolves into the map.
+
+![29Oct2026 - T445 - the CORPUS cards in the theatre - 19](29Oct2026%20-%20T445%20-%20the%20CORPUS%20cards%20in%20the%20theatre%20-%2019.png)
+
+### 29Oct2026 - T456 - the REVIEW BOARD card in the theatre - 20
+
+T-456: UMBRA PLATEAU's card on a warp in, full screen then the white flash and fade (film_cards.json); walking up from ROUTE 23 shows no card.
+
+![29Oct2026 - T456 - the REVIEW BOARD card in the theatre - 20](29Oct2026%20-%20T456%20-%20the%20REVIEW%20BOARD%20card%20in%20the%20theatre%20-%2020.png)
+
+### 29Oct2026 - T447 - pair 3 played in the theatre - 21
+
+T-447 pair 3 (landmarks-3.json, first play): the REVIEW BOARD from the plaza and its door opening and closing; ERRATA's chalk roof walked into; the annex's door.
+
+![29Oct2026 - T447 - pair 3 played in the theatre - 21](29Oct2026%20-%20T447%20-%20pair%203%20played%20in%20the%20theatre%20-%2021.png)
+
+### 29Oct2026 - T475 - OVERLOADED as the foe in sun rain and hail - 22
+
+T-475: OVERLOADED as the FOE (film_t475_foe.json), NORMAL, SUN, RAIN and HAIL forms after the player's HEATSOAK, DELUGE and FROST; the strip below is each form at 3x.
+
+![29Oct2026 - T475 - OVERLOADED as the foe in sun rain and hail - 22](29Oct2026%20-%20T475%20-%20OVERLOADED%20as%20the%20foe%20in%20sun%20rain%20and%20hail%20-%2022.png)

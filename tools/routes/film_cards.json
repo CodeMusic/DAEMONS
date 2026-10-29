@@ -1,0 +1,86 @@
+{
+ "rom": "debug",
+ "about": "T-445's two CORPUS name cards (CORPUS HIDEOUT, built engine 4f24d5d37; CORPUS WAREHOUSE, 49eb0d574) and T-456's REVIEW BOARD card (UMBRA PLATEAU, 64d79bbf4), each filmed through its whole showing: the theatre warp poked by hand from a map in another mapsec, so the burst starts with the fade and nothing waits for the landing first. Then ROUTE 23's walk-up onto the plateau, which T-456 says keeps the name popup and shows no card. Watch held at day, clear weather. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "T-445: CORPUS HIDEOUT's card, warped in from the GAME CORNER",
+   "steps": [
+    "goto CeladonCity_GameCorner 10 8",
+    "close",
+    "wait 30",
+    "shot in the GAME CORNER",
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 42",
+    "poke gDaemonsDebugWarp+4 16 12",
+    "poke gDaemonsDebugWarp+6 16 4",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"CORPUS HIDEOUT card\" 30 8",
+    "wait 60",
+    "close",
+    "shot CORPUS HIDEOUT B1F",
+    "expect RocketHideout_B1F"
+   ]
+  },
+  {
+   "stop": "T-445: CORPUS WAREHOUSE's card, warped in from the MEADOW",
+   "steps": [
+    "goto FiveIsland_Meadow 11 11",
+    "repel 999",
+    "close",
+    "wait 30",
+    "shot on the MEADOW",
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 114",
+    "poke gDaemonsDebugWarp+4 16 24",
+    "poke gDaemonsDebugWarp+6 16 22",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"CORPUS WAREHOUSE card\" 30 8",
+    "wait 60",
+    "close",
+    "shot CORPUS WAREHOUSE",
+    "expect FiveIsland_RocketWarehouse"
+   ]
+  },
+  {
+   "stop": "T-456: the REVIEW BOARD's card, warped in from ROUTE 22",
+   "steps": [
+    "goto Route22 15 9",
+    "repel 999",
+    "close",
+    "wait 30",
+    "shot on ROUTE 22",
+    "poke gDaemonsDebugWarp+1 8 3",
+    "poke gDaemonsDebugWarp+2 8 9",
+    "poke gDaemonsDebugWarp+4 16 11",
+    "poke gDaemonsDebugWarp+6 16 14",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"UMBRA PLATEAU card\" 30 8",
+    "wait 60",
+    "close",
+    "shot UMBRA PLATEAU",
+    "expect IndigoPlateau_Exterior"
+   ]
+  },
+  {
+   "stop": "T-456: walking up from ROUTE 23 keeps the name popup (no card)",
+   "steps": [
+    "goto Route23 11 1",
+    "repel 999",
+    "close",
+    "wait 30",
+    "shot at ROUTE 23's top",
+    "burst \"walking up onto the plateau\" 24 8 UP 40",
+    "wait 30",
+    "shot after the walk-up"
+   ]
+  }
+ ]
+}

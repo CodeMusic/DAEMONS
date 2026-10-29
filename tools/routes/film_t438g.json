@@ -1,0 +1,254 @@
+{
+ "rom": "debug",
+ "about": "T-438 batch G (v11.320.2, a DRAFT, built 2026-10-28 and never walked): one clean frame per place -- the S.S. ANNE (quay, deck, 1F corridor, kitchen), UMBRA PLATEAU's exterior and ROUTE 23, each DAEMON LEAGUE room and the HALL OF FAME, the UNION ROOM, ONE ISLAND's SEAGALLOP harbour, and TANOBY: the MONEAN chamber's door walked into, and four more doors. The CHAMPION's room, the HALL OF FAME and the UNION ROOM run a scene (or the link code) on arrival, so they are reached by poking the theatre warp and filmed in a burst, the scene left unanswered, and the ROM loaded again after. Watch held at day, clear weather. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "S.S. ANNE: outside, at the quay",
+   "steps": [
+    "goto SSAnne_Exterior 29 13",
+    "repel 999",
+    "close",
+    "wait 40",
+    "shot the S.S. ANNE from the quay"
+   ]
+  },
+  {
+   "stop": "S.S. ANNE: the deck",
+   "steps": [
+    "goto SSAnne_Deck 10 8",
+    "close",
+    "wait 40",
+    "shot the deck"
+   ]
+  },
+  {
+   "stop": "S.S. ANNE: 1F corridor",
+   "steps": [
+    "goto SSAnne_1F_Corridor 15 4",
+    "close",
+    "wait 40",
+    "shot the 1F corridor"
+   ]
+  },
+  {
+   "stop": "S.S. ANNE: the kitchen",
+   "steps": [
+    "goto SSAnne_Kitchen 6 5",
+    "close",
+    "wait 40",
+    "shot the kitchen"
+   ]
+  },
+  {
+   "stop": "UMBRA PLATEAU: the exterior, from the foot of the stairs",
+   "steps": [
+    "goto IndigoPlateau_Exterior 11 14",
+    "close",
+    "wait 40",
+    "shot UMBRA PLATEAU from the stairs"
+   ]
+  },
+  {
+   "stop": "ROUTE 23: the north, below UMBRAL ASCENT",
+   "steps": [
+    "goto Route23 8 40",
+    "close",
+    "wait 40",
+    "shot ROUTE 23 north"
+   ]
+  },
+  {
+   "stop": "ROUTE 23: the south gate",
+   "steps": [
+    "goto Route23 9 141",
+    "close",
+    "wait 40",
+    "shot ROUTE 23 south"
+   ]
+  },
+  {
+   "stop": "DAEMON LEAGUE: room I (LORELEI's)",
+   "steps": [
+    "goto PokemonLeague_LoreleisRoom 6 7",
+    "wait 60",
+    "finish",
+    "close",
+    "wait 30",
+    "shot room I"
+   ]
+  },
+  {
+   "stop": "DAEMON LEAGUE: room II (BRUNO's)",
+   "steps": [
+    "goto PokemonLeague_BrunosRoom 6 7",
+    "wait 60",
+    "finish",
+    "close",
+    "wait 30",
+    "shot room II"
+   ]
+  },
+  {
+   "stop": "DAEMON LEAGUE: room III (AGATHA's)",
+   "steps": [
+    "goto PokemonLeague_AgathasRoom 6 7",
+    "wait 60",
+    "finish",
+    "close",
+    "wait 30",
+    "shot room III"
+   ]
+  },
+  {
+   "stop": "DAEMON LEAGUE: room IV (LANCE's)",
+   "steps": [
+    "goto PokemonLeague_LancesRoom 11 10",
+    "wait 60",
+    "finish",
+    "close",
+    "wait 30",
+    "shot room IV"
+   ]
+  },
+  {
+   "stop": "DAEMON LEAGUE: the CHAMPION's room (warped in, the scene left unplayed)",
+   "steps": [
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 79",
+    "poke gDaemonsDebugWarp+4 16 5",
+    "poke gDaemonsDebugWarp+6 16 8",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"the CHAMPION's room\" 20 10",
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "DAEMON LEAGUE: the HALL OF FAME (warped in, the scene left unplayed, then reloaded)",
+   "steps": [
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 80",
+    "poke gDaemonsDebugWarp+4 16 5",
+    "poke gDaemonsDebugWarp+6 16 8",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"the HALL OF FAME\" 24 10",
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "the UNION ROOM (warped in, then reloaded)",
+   "steps": [
+    "poke gDaemonsDebugWarp+1 8 0",
+    "poke gDaemonsDebugWarp+2 8 4",
+    "poke gDaemonsDebugWarp+4 16 7",
+    "poke gDaemonsDebugWarp+6 16 7",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"the UNION ROOM\" 20 10",
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "a SEAGALLOP harbour: ONE ISLAND's",
+   "steps": [
+    "goto OneIsland_Harbor 8 5",
+    "wait 60",
+    "finish",
+    "close",
+    "wait 30",
+    "shot ONE ISLAND's harbour"
+   ]
+  },
+  {
+   "stop": "TANOBY: the MONEAN chamber's door, walked into",
+   "steps": [
+    "goto SevenIsland_TanobyRuins 120 11",
+    "repel 999",
+    "close",
+    "wait 30",
+    "shot at the MONEAN chamber's door",
+    "burst \"the chamber door\" 12 4 UP 20",
+    "wait 60",
+    "shot inside the MONEAN chamber",
+    "expect SevenIsland_TanobyRuins_MoneanChamber"
+   ]
+  },
+  {
+   "stop": "TANOBY: the LIPTOO and WEEPTH doors",
+   "steps": [
+    "goto SevenIsland_TanobyRuins 103 11",
+    "close",
+    "wait 30",
+    "shot the LIPTOO chamber's door",
+    "goto SevenIsland_TanobyRuins 88 9",
+    "close",
+    "wait 30",
+    "shot the WEEPTH chamber's door"
+   ]
+  },
+  {
+   "stop": "TANOBY: the DILFORD and SCUFIB doors",
+   "steps": [
+    "goto SevenIsland_TanobyRuins 44 12",
+    "close",
+    "wait 30",
+    "shot the DILFORD chamber's door",
+    "goto SevenIsland_TanobyRuins 32 10",
+    "close",
+    "wait 30",
+    "shot the SCUFIB chamber's door"
+   ]
+  },
+  {
+   "stop": "retake: S.S. ANNE from the quay, on land",
+   "steps": [
+    "goto SSAnne_Exterior 32 12",
+    "close",
+    "wait 40",
+    "shot the S.S. ANNE from the quay (32,12)"
+   ]
+  },
+  {
+   "stop": "retake: ROUTE 23's south, on land",
+   "steps": [
+    "goto Route23 7 140",
+    "close",
+    "wait 40",
+    "shot ROUTE 23 south (7,140)"
+   ]
+  },
+  {
+   "stop": "retake: room IV, inside the hearing room",
+   "steps": [
+    "goto PokemonLeague_LancesRoom 6 10",
+    "wait 60",
+    "finish",
+    "close",
+    "wait 30",
+    "shot room IV (6,10)"
+   ]
+  },
+  {
+   "stop": "retake: inside the MONEAN chamber, after its card",
+   "steps": [
+    "goto SevenIsland_TanobyRuins_MoneanChamber 11 10",
+    "wait 120",
+    "close",
+    "wait 30",
+    "shot inside the MONEAN chamber (11,10)"
+   ]
+  }
+ ]
+}
