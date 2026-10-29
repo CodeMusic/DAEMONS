@@ -616,7 +616,8 @@ def profile_layout():
     sb2, sb1, dex = struct_offsets(g, "SaveBlock2"), struct_offsets(g, "SaveBlock1"), struct_offsets(g, "Pokedex")
     flags = flag_values(["FLAG_BADGE01_GET", "FLAG_BADGE08_GET", "FLAG_SYS_POKEDEX_GET", "FLAG_SYS_GAME_CLEAR",
                          "FLAG_GOT_DIPLOMA", "DAEMONS_FLAGS_START", "FLAG_COMPANION_LINKED", "FLAG_COMPANION_RECALLED",
-                         "FLAG_SYS_B_DASH", "FLAG_SHOES_FROM_DAD", "FLAG_GOT_NOTEBOOK"] + UNDERSTANDINGS + INSIGHTS)
+                         "FLAG_SYS_B_DASH", "FLAG_SHOES_FROM_DAD", "FLAG_GOT_NOTEBOOK", "FLAG_GOT_HERMETIC_LAYER"]
+                        + UNDERSTANDINGS + INSIGHTS)
     items = dict(re.findall(r"^#define\s+(ITEM_OPUS)\s+(\d+)", read("include/constants/items.h"), re.M))
     kcount = re.search(r"#define\s+BAG_KEYITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)
     first_met_count = int(re.search(r"#define\s+DAEMONS_FIRST_SEEN_COUNT\s+(\d+)", read("include/constants/global.h")).group(1))
@@ -674,6 +675,7 @@ def profile_layout():
                       # C-125: the PROFILE's more -- whose shoes, the understandings and insights held, the NOTEBOOK
                       "shoes": flags["FLAG_SYS_B_DASH"], "shoes_from_dad": flags["FLAG_SHOES_FROM_DAD"],
                       "notebook": flags["FLAG_GOT_NOTEBOOK"],
+                      "hermetic_layer": flags["FLAG_GOT_HERMETIC_LAYER"],     # T-483 / C-238: SPELLCRAFT, written at a sync
                       "understandings": [flags[f] for f in UNDERSTANDINGS],
                       "insights": [flags[f] for f in INSIGHTS]},
             "items": {"opus": int(items["ITEM_OPUS"])},
@@ -993,6 +995,34 @@ def subtle_table():
     book["flag"] = flag_values(["FLAG_GOT_SUBTLE_LAYER"])["FLAG_GOT_SUBTLE_LAYER"]
     book["cover"] = "art/subtle_cover.png"
     return book
+
+
+def hermetic_table():
+    """T-483 / C-238: THE HERMETIC LAYER for the companion's LIBRARY -- docs/hermetic-layer.md, in docs/subtle-layer.md's
+    format, read by gensubtle's own parser: each paragraph plain text, the asking voice ('~ ') and the INSCRIPTION ('^ ',
+    the tablet's emerald, read aloud on its own) marked. Each entry names its picture; the game has not drawn them yet, so
+    there are no frames. Held once FLAG_GOT_HERMETIC_LAYER is set (written by the companion at a sync, or in the game).
+    DRAFT, every word."""
+    import gensubtle
+    keep = gensubtle.SRC
+    gensubtle.SRC = os.path.join(ROOT, "docs/hermetic-layer.md")
+    try:
+        sections = gensubtle.parse()
+    finally:
+        gensubtle.SRC = keep
+    out = []
+    for s in sections:
+        entries = []
+        for e in s["entries"]:
+            paras = []
+            for k, q in enumerate(e["paras"]):
+                voice = "asking" if k in e["faint"] else "inscription" if q.startswith("^ ") else "telling"
+                paras.append({"text": q[2:] if voice == "inscription" else q, "voice": voice})
+            entries.append({"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0,
+                            "caption": e["caption"], "paragraphs": paras})
+        out.append({"label": s["label"], "heading": s["heading"], "entries": entries})
+    flag = flag_values(["FLAG_GOT_HERMETIC_LAYER"])["FLAG_GOT_HERMETIC_LAYER"]
+    return {"title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT", "draft": True, "flag": flag, "sections": out}
 
 
 def _c_strings(src):
@@ -1923,6 +1953,7 @@ def main():
              "groves.json": groves_table(),                                     # T-408       # C-128, C-129
              "guide.json": guide_table(),                                       # the reading tab
              "subtle.json": subtle_table(),                                     # T-423: the LIBRARY's second book
+             "hermetic.json": hermetic_table(),                                 # T-483 / C-238: the LIBRARY's third book
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
     #  T-453; the GUIDE's chapters as guide.json has them (gensubtle, imported since, reuses genguide's parser)
