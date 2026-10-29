@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.329 — 2026-10-29
+
+- **2.12 §2, the type-resist handlers: DECIDED (T-488).** The family is `* SINK` (a heat sink soaks one hit and is spent): sixteen, one per type but ORACLE. Each town's MART sells its leader's type and the types that beat it once that MARK is held, and a few are hidden on routes. The bible notes that `SINK` is already MINUS's ability name. Every name is DRAFT.
+- **v11.328.1 released, so the bible records it:** OSRIC HATTER's house on QUICKSILVER (T-485). The only glitch now follows the clock (T-486): strongest at 3:30, faint toward 3:00 and 3:59. Al's one crack happens once, after the GLOBAL INDEX (T-487).
+- **3.10:** the battle backgrounds were released in v11.326.1. The menus and the overworld come next (T-481 B, C).
+- A Settled entry in section 10.
+
 ## v11.328 — 2026-10-29
 
 ### Four mechanics from 2.12, decided

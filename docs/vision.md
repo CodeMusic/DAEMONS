@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.328**
+**A total conversion — the living design bible, v11.329**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1964,7 +1964,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 ***Recommendation: yes, and not alone.*** **The code is not the job; the 354 rulings are**, *and they belong with the routine work 2.10 left open rather than as a pass of their own.*
 
-#### 2. Type-resist handlers — <span>OPEN</span>, and this is the best fit in the question
+#### 2. Type-resist handlers — DECIDED (T-488), and this is the best fit in the question
 
 ***The premise wants correcting first: Gen 3 IS the berry generation.*** **FireRed already ships 43 of them, the pinch berries, the nature-confusion berries and `HOLD_EFFECT_RESTORE_STATS`** — *and 1.6d already named the lot as `TRAP` handlers, which is a better design than vanilla's.* **Berries are not a thing to add. They are in, and they are ours.**
 
@@ -1976,6 +1976,8 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 - **The register needs no decision.** *1.6d already derived it:* **a berry is a handler, a handler installed against a machine condition is a trap, and the bag pocket is a trap table**
 
 **Cost: one new hold effect, one check where `TypeCalc` lands (`battle_script_commands.c:1458`), and seventeen item entries.** *Smaller than the split by an order of magnitude.*
+
+***Decided 2026-10-29 by multiple choice (T-488): the family is `* SINK`*** -- **like a heat sink, it soaks one hit and is spent**: *`VECTOR SINK` through `EMERGENT SINK`, the longest 13 letters, and **sixteen, not seventeen**: ORACLE has none, because nothing is ORACLE first.* **Sold by type, late**: *each town's MART sells the sinks of its leader's type and of the types that beat it once that MARK is held, and a few more lie hidden on routes.* ***The word is already MINUS's ability name (`SINK`, beside PLUS's `SOURCE`)***; *both soak what comes at them, so the overlap reads as one idea, but it is noted here in case a player's eye snags on it.* **DRAFT, every name and description.**
 
 #### 3. The overfit state — <span>OPEN</span>, and it is Benchmark 4's own lesson
 
@@ -2265,7 +2267,7 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 
 ### 3.10 The backgrounds keep the calendar, and the map is a score (T-481, T-449, the user, 2026-10-24/29)
 
-***The backgrounds keep the calendar*** (*T-481, the user: "the background should also change based on the time of day ... the day of the week colour ... the season ... a regular day or a holiday"*). **Three surfaces, built in this order: the battle backgrounds, then the menu and window backgrounds, then the overworld's sky and light (9.21's hour tint gains the rest).** *By multiple choice:* **outdoors takes the hour and the season in full; buildings take the hour at a quarter, as if through the windows, and no season; caves keep their own light.** **The weekday is one 1px horizon line** -- *a fine accent, never a wash, noticed on the seventh day rather than the first* -- **and a holiday lights the platforms' glints in the month's colour (3.6).** *BENCHMARK arenas and the Elite rooms take only the line and the glints. Summer bleaches the ground lightly; winter snows it.* **Colour carries the argument here as everywhere (invariant 5): the background tells you when you are.** *The battle half is drafted; the rest to come.*
+***The backgrounds keep the calendar*** (*T-481, the user: "the background should also change based on the time of day ... the day of the week colour ... the season ... a regular day or a holiday"*). **Three surfaces, built in this order: the battle backgrounds, then the menu and window backgrounds, then the overworld's sky and light (9.21's hour tint gains the rest).** *By multiple choice:* **outdoors takes the hour and the season in full; buildings take the hour at a quarter, as if through the windows, and no season; caves keep their own light.** **The weekday is one 1px horizon line** -- *a fine accent, never a wash, noticed on the seventh day rather than the first* -- **and a holiday lights the platforms' glints in the month's colour (3.6).** *BENCHMARK arenas and the Elite rooms take only the line and the glints. Summer bleaches the ground lightly; winter snows it.* **Colour carries the argument here as everywhere (invariant 5): the background tells you when you are.** *The battle half is built and released (v11.326.1); the menus and windows, then the overworld, come next (T-481 B and C).*
 
 ***The map is a score*** (*T-449, the user: "same shape ... the thesis looks and feel (elements of music and code)"*). **The TOWN MAP keeps vanilla's layout and cursor grid, so finding the way is unchanged, and is redrawn on paper in ink: staff-line terrain, beamed routes, towns as noteheads, and the sea a shuffle of bits and notes cycling against the paper islands.** *The cursor is four ink brackets; a town you can GOTO is a notehead lit in FLOW's blue inside an ink ring; a dungeon an open notehead, filled once found.* **The water in the world moves the same way, each tile on its own timing.** *Built and released; the user kept it as drawn (2026-10-29).*
 
@@ -2439,7 +2441,7 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 > AL: The INDEX had you down / as a long shot. / ...It was wrong about that. / Probably a rounding error.
 
-*DRAFT, for the user (the widest line 154 of 208px). **The method holds him; the door is left ajar, and nobody walks through it.***
+*DRAFT, for the user (the widest line 154 of 208px). **The method holds him; the door is left ajar, and nobody walks through it.*** ***Built and released in v11.328.1***: *he says it once, the first time he speaks after the GLOBAL INDEX is held -- FOUR ISLAND, SIX ISLAND's CHECKPOINT or the champion's room on a return visit -- and never again.*
 
 *So he calls her **CRYSTAL**.* Vanilla's rival calls Oak **Gramps** — dismissive, and part of Blue's brattiness. Al has no brattiness to carry, so the word had to lose the sneer. ~~**Gran**~~ *was the first answer and read oddly on playtest (2026-09-14).* **Her name is the right one, and 4.1 had already said why: every other authority has a role, and she is just her name** — *family included.* **It is familiar, faintly impatient, and not contemptuous**, *and a family whose children use a grandmother's first name is one that treats her as a colleague.* His sister says **CRYSTAL's lab** for the same reason. **T-81.**
 
@@ -5006,6 +5008,8 @@ take off.*
 #### The only glitch in the game (the user, by multiple choice, 2026-10-29; T-486)
 
 ***DAEMONS glitches on purpose in one place: THE HERMETIC LAYER.*** **A few frames of scrambled scanlines and palette when the book is first opened past OSRIC HATTER's warning, and once at half past three in his house.** *Elsewhere a glitch would read as the world breaking when the player is only seeing -- the user's own caution about DOLDRUM CAVE (2026-09-24). Here the world's solidity is exactly what the book is taking apart, so the glitch means the right thing.* **DOLDRUM CAVE stays as built.**
+
+***Built and released in v11.328.1, with OSRIC HATTER's house (T-485)***: **the glitch's strength follows the clock** -- *twelve frames and a wide tear with the palette swapping every other frame at half past three; four faint frames toward 3:00 and 3:59; the book's warning page glitches at whatever night minute it is turned, weakest outside the hour.* **The house stands on QUICKSILVER as drawn above: the leaning hat, the room of stopped clocks on a tileset of its own, the stoat in his own palette, a riddle a visit.**
 
 #### Build order (the user, by multiple choice, 2026-10-29)
 
@@ -8948,6 +8952,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **Al after the REVIEW BOARD: a plateau, with one crack (T-487, 2026-10-29)** — he stays the incumbent; once, late, he nearly notices the INDEX was wrong about the player, and calls it a rounding error; no arc, no rescue (4.3)
 - **The Open log audited (2026-10-29)** — thirteen questions already answered by later sections or the build struck with where each was answered; eleven remain, all mechanics, balance or the agent's method
 - **Four mechanics decided (T-488 to T-491, 2026-10-29)** — seventeen one-use resist items, one per type; ALIGN, the frame family's reverse; the physical / special split, in steps; CONSENSUS grows with the party's overlap, a CONTEXT routine with divergence (2.12, 10 Open)
+- **The resist items are the `* SINK` family, sold by type late (T-488, 2026-10-29)** — sixteen, one per type but ORACLE; each MART sells its leader's type and the types that beat it once that MARK is held, a few hidden on routes; the word is also MINUS's ability name. OSRIC HATTER's house, the clock-following glitch and Al's one crack released in v11.328.1 (T-485 to T-487); 3.10's battle half released in v11.326.1.
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
