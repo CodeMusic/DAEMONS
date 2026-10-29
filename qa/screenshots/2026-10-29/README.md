@@ -145,3 +145,9 @@ A mock-up of the watch drawn from the firmware's own numbers, not a screenshot. 
 SPELLCRAFT's card face (left), its SHINY (middle), beside an INSTINCT face for comparison: emerald rising through the book's purple, a magic circle, the old work's signs, and the hour's red and blue rings where the daemon stands, with no shadow. DRAFT.
 
 ![29Oct2026 - C239 - the SPELLCRAFT card face - 24](29Oct2026%20-%20C239%20-%20the%20SPELLCRAFT%20card%20face%20-%2024.png)
+
+### 29Oct2026 - T449 - map icons and cursor in ink - 29
+
+T-449 (engine adf935265, DRAFT): the region map's cursor, GOTO icon and dungeon icon in SCORE ink, today beside draft
+
+![29Oct2026 - T449 - map icons and cursor in ink - 29](29Oct2026%20-%20T449%20-%20map%20icons%20and%20cursor%20in%20ink%20-%2029.png)
