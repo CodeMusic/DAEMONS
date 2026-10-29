@@ -52,6 +52,8 @@ ARGS = {
     #  T-481 A: the same shape -- --write refuses without --approved, and the report exits 1 when the engine's
     #  battle_calendar.h is not what the approved write would make.
     "gbabattlebg": [["--approved"]],
+    #  T-481 B and C: the same again -- calendar_panes.h, the panes' table.
+    "gbacalendar_ui": [["--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

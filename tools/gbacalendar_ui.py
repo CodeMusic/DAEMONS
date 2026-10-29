@@ -1,8 +1,26 @@
 #!/usr/bin/env python3
-"""T-481 parts B and C, DRAFTED: THE MENUS AND THE FIELD THAT KEEP THE CALENDAR. Sheets only: no write mode until the user answers.
+"""T-481 parts B and C: THE MENUS AND THE FIELD THAT KEEP THE CALENDAR.
 
-    python3 tools/gbacalendar_ui.py                  # report: what exists, each surface's slots, the cost, the 9.4 check
-    python3 tools/gbacalendar_ui.py --sheet OUTDIR   # the sheets: B (START, text box, SUMMARY, INDEX), C (a town)
+    python3 tools/gbacalendar_ui.py                     # report: what exists, each surface's slots, the cost, the 9.4
+                                                        #   check, and whether the engine holds what --write would write
+    python3 tools/gbacalendar_ui.py --write --approved  # src/data/calendar_panes.h into the engine (approved 2026-10-29)
+    python3 tools/gbacalendar_ui.py --sheet OUTDIR      # the sheets: B (START, text box, SUMMARY, INDEX), C (a town)
+
+THE USER'S ANSWERS (2026-10-29, by multiple choice, on the draft's sheets -- qa private 29Oct2026 T481 52-58), which
+--write builds and the engine's src/daemons_calendar_pane.c and fieldmap.c follow:
+  START    T-318's wash RETIRED: the frame keeps its style's own colours, and the day goes on the eight inner-corner
+           pixels only (index 12; styles 1, 3, 4 and 5, the one drawing that has them -- the others are other
+           drawings and take the hour alone); the hour and the holiday (the inner bevel, 11) as drafted.
+  HOUR     in menus and panes at HALF strength (sWatchTint at two quarters), on frames and backdrops only -- never the
+           paper or any ink, so the text's contrast is the day's.
+  WEEKDAY  the text box: the outer-corner flecks (15.14); SUMMARY: the 1px line under the title bar (0.6); INDEX: the
+           box's corners (0.8). The draft's slots. NO SEASON IN THE MENUS.
+  HOLIDAY  the text box's inner corner flecks (15.11), START's inner bevel (14.11) and SUMMARY's title pip (0.14) take
+           the month colour as drafted; the INDEX's corners take the month for that day (the day yields); in the field,
+           on a non-quiet holiday with no field look of its own, petal 11 takes the month colour.
+  FIELD    beside T-275's rotunda, the water's crest (option W: General rows 4 and 6, index 1) takes the day's trim, at
+           the palette load and before the faded print and the watch, so T-483's pulse, the weather and the fades stay
+           on top and nothing compounds. (Option F and the season's paper whisper were declined.)
 
 The rules are part A's, as the user set them by multiple choice (2026-10-29, TODO T-481): the hour, the season and
 the holidays; and THE WEEKDAY AS A FINE ACCENT, ONE DETAIL, NEVER A WASH -- "noticed on the seventh day, not the
@@ -87,10 +105,12 @@ MONTHS = A.month_colours()
 HOLS = A.holiday_months()
 
 
-def pal5_gbapal(path, rows=None):
-    d = open(path, "rb").read()
-    w = struct.unpack("<%dH" % (len(d) // 2), d)
-    out = [(c & 31, c >> 5 & 31, c >> 10 & 31) for c in w]
+def pal5_png(path, rows=None):
+    """A picture's own palette in five bits, as gbagfx makes its .gbapal (c >> 3) -- read from the .png, which git
+    holds, rather than the .gbapal the build makes and ignores (a fresh clone, or check_generators' sandbox, has none)."""
+    im = Image.open(path)
+    p = im.getpalette()
+    out = [(p[3 * i] >> 3, p[3 * i + 1] >> 3, p[3 * i + 2] >> 3) for i in range(len(p) // 3)]
     return out if rows is None else out[:rows * 16]
 
 
@@ -200,7 +220,7 @@ def startmenu(frame=1):
     """The START menu's window in user frame style `frame` (type1.png .. type10.png), as WindowFunc_DrawStandardFrame
     draws it: 7 tiles wide, 14 tall, the paper PIXEL_FILL(1), seven rows of ink."""
     tile = tiles_of(os.path.join(GFX, "text_window/type%d.png" % frame))
-    row = pal5_gbapal(os.path.join(GFX, "text_window/type%d.gbapal" % frame), 1)
+    row = pal5_png(os.path.join(GFX, "text_window/type%d.png" % frame), 1)
     W, H, L, T = 7, 14, 1, 1
     cells = [[None] * ((W + 2) * 8) for _ in range((H + 2) * 8)]
     put = lambda t, x, y: blit(cells, tile, t, x, y, 14)
@@ -235,7 +255,7 @@ def summary():
     """The SUMMARY's INFO page behind its text: BG3 moves_page.bin under BG2 page_info.bin, bg.png, bg.gbapal rows
     0-4 (PokeSum_HandleLoadBgGfx). Row 0 is BG-only (every palette-0 window is a 0x0 dummy); the text is in 6-8."""
     tile = tiles_of(os.path.join(GFX, "summary_screen/bg.png"))
-    pal = pal5_gbapal(os.path.join(GFX, "summary_screen/bg.gbapal"))
+    pal = pal5_png(os.path.join(GFX, "summary_screen/bg.png"))
     cells = [[None] * 240 for _ in range(160)]
     for f in ("moves_page", "page_info"):
         d = open(os.path.join(GFX, "summary_screen/%s.bin" % f), "rb").read()
@@ -251,8 +271,8 @@ def summary():
     return Surface("SUMMARY (INFO)", cells, rows, accent=(0, 6), hour_slots=[(0, 3), (0, 8), (0, 10), (0, 2)],
                    paper=[(2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6)], holiday=(0, 14),
                    note="BG row 0: the weekday on 6 (the 1px line under the title bar); the hour on the lavender "
-                        "backdrop 3, 8, 10 and the title bar 2; the panes' paper (rows 2-4, 5/6) the season's "
-                        "whisper; a holiday on 14 (the title bar's white pip)")
+                        "backdrop 3, 8, 10 and the title bar 2; a holiday on 14 (the title bar's white pip); the "
+                        "panes' paper (rows 2-4, 5/6) kept")
 
 
 def index_page():
@@ -375,7 +395,7 @@ def tried_and_failed():
 
 
 def report():
-    print("T-481 B and C -- DRAFT (no write mode yet). What exists is in the docstring; the slots, measured:\n")
+    print("T-481 B and C -- APPROVED 2026-10-29. What exists is in the docstring; the slots, measured:\n")
     for s in surfaces():
         n = s.count()
         print("  %-22s %s" % (s.name, s.note))
@@ -407,19 +427,121 @@ def report():
     print("\nTried and dropped (blends fail 9.4's line, so every accent is a colour A already holds):")
     for label, n, k in tried_and_failed():
         print("  %-58s %2d of %2d under %d" % (label, n, k, MIN))
-    print("\nCOST (proposed): EWRAM 0, IWRAM 0, SAVE 0.")
-    print("  B  a 4-row table (surface: palette row, the weekday slot, the hour slots as a mask, the paper slots, the "
-          "holiday slot) ~40 B, the season's 3 paper tones 6 B, ~250 B of code (DaemonsCalendarPane), 4 call sites: "
-          "LoadStdWindowFrameGfx (text box), DoDrawStartMenu (beside T-318), PokeSum_HandleLoadBgGfx case 0, "
-          "the INDEX's LoadPalette (pokedex_screen.c ~965).")
-    print("  C  ~80 B of code beside T-275's line in LoadTilesetPalette (two or three colour writes), and "
-          "DaemonsBloomHere/DaemonsHolidayBloomColour given the month. No table.")
+    print("\nCOST: EWRAM 0, IWRAM 0, SAVE 0.")
+    print("  B  (measured 2026-10-29, CONTENT, against the build before) src/daemons_calendar_pane.c 232 B of code and "
+          "this table 32 B; the call sites +100 B (text box and its relight with the field, START, SUMMARY twice, the "
+          "INDEX and its flip's fade colour); T-318's wash retired from start_menu.c, -303 B.")
+    print("  C  fieldmap.c +76 B: the water's crest beside T-275's line in LoadTilesetPalette, and DaemonsBloomHere's "
+          "month petal. No table. NET ROM about +140 B.")
     if bad:
         print("\n  !! %d added colours under %d: %s" % (len(bad), MIN, ", ".join(bad)))
         return 1
-    print("\n  every added colour clears %d.%s" % (MIN, "" if not near else
-          " The season's paper whisper does not hold (%d of %d): a question for the user, drawn on the sheets so it "
-          "can be seen." % (len(near), len(moved_colours()))))
+    print("\n  every added colour clears %d. (The season's paper whisper, %d of %d nearer a hue, was declined: no season "
+          "in the menus.)" % (MIN, len(near), len(moved_colours())))
+    print("\nTHE TABLE (--write --approved, %s): START's day and holiday on frame styles %s (1-based), the drawing "
+          "they share" % (OUT_REL, ", ".join(str(k + 1) for k in start_styles())))
+    for name, day, hol, mask, styles, note in table():
+        print("  %-24s day %2d  holiday %2d  hour 0x%04X  styles 0x%04X" % (name, day, hol, mask, styles))
+    want, path, have = engine_state()
+    if have == want:
+        print("  the engine matches `--write --approved` exactly (%s)" % OUT_REL)
+        return 0
+    print("  !! %s %s what `--write --approved` would write -- run it, or find which side is right"
+          % (OUT_REL, "is missing:" if have is None else "differs from"))
+    return 1
+
+
+# --- the write: the panes' table (T-481 B, approved 2026-10-29) ------------------------------------------------------
+
+OUT_REL = "src/data/calendar_panes.h"
+PANES = (("CALENDAR_PANE_TEXT_BOX", textbox), ("CALENDAR_PANE_START", startmenu), ("CALENDAR_PANE_SUMMARY", summary),
+         ("CALENDAR_PANE_INDEX", index_page))
+FRAME_STYLES = 10
+
+
+def frame_drawing(n):
+    im = Image.open(os.path.join(GFX, "text_window/type%d.png" % n))
+    px = im.load()
+    return [px[x, y] & 15 for y in range(im.height) for x in range(im.width)]
+
+
+def start_styles():
+    """The frame styles (0-based, as optionsWindowFrameType counts) that are style 1's drawing pixel for pixel -- the
+    ones whose index 12 is the eight inner-corner pixels and 11 the inner bevel. Measured, not listed."""
+    one = frame_drawing(1)
+    return [n - 1 for n in range(1, FRAME_STYLES + 1) if frame_drawing(n) == one]
+
+
+def table():
+    """{pane: (day slot, holiday slot, hour mask, style mask)} -- the hour mask holds the frame or backdrop slots and
+    the day's and the holiday's, which take the hour as A's horizon line does; the paper and the ink are never in it."""
+    out = []
+    for name, make in PANES:
+        s = make()
+        n = s.count()
+        for slot in [s.accent, s.holiday] + s.hour_slots:
+            if slot and n.get(slot, 0) == 0:
+                raise SystemExit("  refused: %s draws nothing in %s -- the drawing moved" % (name, slot))
+        for slot in s.hour_slots + [s.accent, s.holiday]:
+            if slot in s.paper:
+                raise SystemExit("  refused: %s would tint its paper %s" % (name, slot))
+        mask = 0
+        for slot in s.hour_slots + [s.accent, s.holiday]:
+            mask |= 1 << slot[1]
+        if name == "CALENDAR_PANE_START":
+            styles = sum(1 << k for k in start_styles())
+            mask |= sum(1 << k for k in range(10, 16))     # every style's frame is 10-15 (styles 6-10 included)
+        else:
+            styles = 0xFFFF
+        out.append((name, s.accent[1], s.holiday[1], mask, styles, s.note))
+    return out
+
+
+def header():
+    bad = [(n, c) + A.type_distance(c) for n, c in added_colours()]
+    bad = [b for b in bad if b[2] < MIN]
+    if bad:
+        raise SystemExit("  refused: %s" % "; ".join("%s %s is %.1f from %s" % b for b in bad))
+    L = ["// Generated by DAEMONS tools/gbacalendar_ui.py --write --approved -- do not edit. T-481 B: the menus and panes",
+         "// that keep the calendar (approved by the user 2026-10-29, by multiple choice). Read by",
+         "// src/daemons_calendar_pane.c only. Each pane's slots, measured from its drawing: the day's trim on one",
+         "// sparse slot, the month colour on one on a holiday that is not QUIET, and sWatchTint at a half on the frame",
+         "// or backdrop slots (the mask) -- never the paper, never an ink. No season in the menus.",
+         "",
+         "struct CalendarPane",
+         "{",
+         "    u8 day;           // the slot that takes the day's trim (day_trims.h)",
+         "    u8 holiday;       // the slot that takes the holiday's month colour (the day's, when they are one slot)",
+         "    u16 hourMask;     // the slots the hour falls on, bit n for colour n",
+         "    u16 styleMask;    // START: the frame styles (bit n, optionsWindowFrameType n) that have the day's slots",
+         "};",
+         "",
+         "static const struct CalendarPane sCalendarPanes[CALENDAR_PANE_COUNT] =",
+         "{"]
+    for name, day, hol, mask, styles, note in table():
+        L.append("    // " + note)
+        L.append("    [%s] = { %d, %d, 0x%04X, 0x%04X }," % (name, day, hol, mask, styles))
+    L.append("};")
+    return "\n".join(L) + "\n"
+
+
+def engine_state():
+    want = header()
+    path = os.path.join(GBA, OUT_REL)
+    have = open(path).read() if os.path.exists(path) else None
+    return want, path, have
+
+
+def write():
+    want, path, have = engine_state()
+    if have == want:
+        print("  %s already holds this; nothing written" % OUT_REL)
+        return 0
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        f.write(want)
+    os.replace(tmp, path)
+    print("  wrote %s (%d lines)" % (OUT_REL, want.count("\n")))
     return 0
 
 
@@ -597,6 +719,12 @@ def main():
     if "--sheet" in sys.argv:
         sheets(sys.argv[sys.argv.index("--sheet") + 1])
         return 0
+    if "--write" in sys.argv:
+        if "--approved" not in sys.argv:
+            print("  --write refused without --approved: the look is the one the user answered on 2026-10-29 "
+                  "(T-481 B and C); --write --approved writes it.")
+            return 1
+        return write()
     return report()
 
 

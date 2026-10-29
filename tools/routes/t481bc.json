@@ -1,0 +1,166 @@
+{
+ "rom": "debug",
+ "about": "T-481 B and C (2026-10-29), as built: START, the text box, SUMMARY and the INDEX, Route 24's water and CERULEAN's flowers, on a quiet Tuesday and a Saturday, by day, at dusk and at night, and on MASK NIGHT. DEBUG overrides poked; the theatre's debug scratch save, never the user's; put back at the end.",
+ "stops": [
+  {
+   "stop": "a quiet TUESDAY by day",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto Route24 11 32",
+    "wait 120",
+    "shot \"ROUTE 24's water, A QUIET TUESDAY BY DAY\"",
+    "goto CeruleanCity 14 23",
+    "wait 120",
+    "shot \"CERULEAN's flowers, A QUIET TUESDAY BY DAY\"",
+    "talk Policeman 1",
+    "close",
+    "press START",
+    "close",
+    "summary 0",
+    "close",
+    "open INDEX",
+    "press A 3",
+    "close"
+   ]
+  },
+  {
+   "stop": "SATURDAY by day",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsWeekdayOverride 8 7",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto Route24 11 32",
+    "wait 120",
+    "shot \"ROUTE 24's water, SATURDAY BY DAY\"",
+    "goto CeruleanCity 14 23",
+    "wait 120",
+    "shot \"CERULEAN's flowers, SATURDAY BY DAY\"",
+    "talk Policeman 1",
+    "close",
+    "press START",
+    "close",
+    "summary 0",
+    "close",
+    "open INDEX",
+    "press A 3",
+    "close"
+   ]
+  },
+  {
+   "stop": "SATURDAY at night",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsWeekdayOverride 8 7",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 3",
+    "goto Route24 11 32",
+    "wait 120",
+    "shot \"ROUTE 24's water, SATURDAY AT NIGHT\"",
+    "goto CeruleanCity 14 23",
+    "wait 120",
+    "shot \"CERULEAN's flowers, SATURDAY AT NIGHT\"",
+    "talk Policeman 1",
+    "close",
+    "press START",
+    "close",
+    "summary 0",
+    "close",
+    "open INDEX",
+    "press A 3",
+    "close"
+   ]
+  },
+  {
+   "stop": "a quiet TUESDAY at dusk",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 2",
+    "goto Route24 11 32",
+    "wait 120",
+    "shot \"ROUTE 24's water, A QUIET TUESDAY AT DUSK\"",
+    "goto CeruleanCity 14 23",
+    "wait 120",
+    "shot \"CERULEAN's flowers, A QUIET TUESDAY AT DUSK\"",
+    "talk Policeman 1",
+    "close",
+    "press START",
+    "close",
+    "summary 0",
+    "close",
+    "open INDEX",
+    "press A 3",
+    "close"
+   ]
+  },
+  {
+   "stop": "MASK NIGHT at dusk",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 10",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 2",
+    "goto Route24 11 32",
+    "wait 120",
+    "shot \"ROUTE 24's water, MASK NIGHT AT DUSK\"",
+    "goto CeruleanCity 14 23",
+    "wait 120",
+    "shot \"CERULEAN's flowers, MASK NIGHT AT DUSK\"",
+    "talk Policeman 1",
+    "close",
+    "press START",
+    "close",
+    "summary 0",
+    "close",
+    "open INDEX",
+    "press A 3",
+    "close"
+   ]
+  },
+  {
+   "stop": "MASK NIGHT by day",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 10",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto Route24 11 32",
+    "wait 120",
+    "shot \"ROUTE 24's water, MASK NIGHT BY DAY\"",
+    "goto CeruleanCity 14 23",
+    "wait 120",
+    "shot \"CERULEAN's flowers, MASK NIGHT BY DAY\"",
+    "talk Policeman 1",
+    "close",
+    "press START",
+    "close",
+    "summary 0",
+    "close",
+    "open INDEX",
+    "press A 3",
+    "close"
+   ]
+  },
+  {
+   "stop": "put back",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 0",
+    "poke gDaemonsDateOverride 8 0",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsWatchOverride 8 0"
+   ]
+  }
+ ]
+}
