@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.331 — 2026-10-29
+
+- **ALIGN, released in v11.330.1 (T-489).** ALIGN is routine 382, typed CONTEXT. The foe becomes wholly the user's first type. SCORN's ace knows it in the two CORPUS battles only, which is what the user chose. PLUGIN49 (formerly SNATCH) teaches it and lies on CORPUS HIDEOUT B4F. The frame family's table now marks the reverse as built.
+- **CONSENSUS and SLANT, released in v11.330.1 (T-491).** CONSENSUS runs from 90 to 120 as the party's types overlap. SLANT, the CONTEXT routine, runs from 65 to 95 as they diverge. Whether this rewards SCORN's kind of convergence is left to playtest.
+- A Settled entry in section 10. Every word is DRAFT.
+
 ## v11.330 — 2026-10-29
 
 - **9.32, Traded, lent and given (new section).** It brings together the trading the companion does (T-473, C-219), loans and the PENPHIN pair, and it adds the gift (C-223, T-492; the user chose by multiple choice). A gift arrives with "[NAME] arrived as a gift." and FIRST MET: A GIFT, and it still trade-evolves. Both lines are DRAFT.
