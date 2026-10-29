@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.320 — 2026-10-28
+
+### PENPHIN only by a pair trade (T-474)
+
+- ***Penphin (the user, by multiple choice)***: **DOLPHIN and PENGUIN each evolve only when traded for the other**, and both arrive as PENPHIN; any other trade leaves them as they are (T-234 had either half evolve on any trade). **The only pair trade**: no other species gets one. Built by the game lane (T-473 b) and the companion (C-219).
+
 ## v11.319 — 2026-10-28
 
 ### ITS DREAMS' titles approved (T-462)

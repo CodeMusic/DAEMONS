@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.319**
+**A total conversion — the living design bible, v11.320**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -6279,6 +6279,8 @@ Everything the player handles is technical on top — USER, BENCHMARK, CHECKPOIN
 
 *And Gen 1 permits the shape the idea wants:* **two different species can evolve into the same species.** So a penguin-ish line and a dolphin-ish line can both terminate in Penphin — two halves, each of which only becomes whole through another person. Neither half is complete and neither is the *real* one.
 
+***Traded for each other, never alone (T-474, the user by multiple choice, 2026-10-28).*** *"If Penguin and Dolphin are traded they each evolve into Penphins."* **Each half evolves only when it is traded FOR the other**: a DOLPHIN sent for a PENGUIN, the PENGUIN sent for the DOLPHIN, and both arrive as PENPHIN, one for each player. Any other trade leaves either half as it is. *That is the argument made exact*: the logical self becomes whole only by meeting the creative one, and the meeting takes two people. **It is the only pair**: no other species gets a pair trade, so it stays the one the theory cites. The game judges it when a trade arrives (an evolution method that names its partner species, T-473 b), and the companion's trade sends both species (C-219).
+
 *Its name is already correct.* PENPHIN is penguin + dolphin, which is precisely the Gen 1 convention the starters are currently missing — a portmanteau of whole words that sounds like a creature.
 
 ***And the two animals are not arbitrary — they are cited.*** **`lineage.md` 3b records the source**: *The Painted Mirror*, a seven-episode audio drama from **November 2022**, where **the dolphin is the logical self** — *"vocalized, confident, and accomplished… yet very time-focused, mechanical, and sometimes cold"* — and **the penguin is the creative one**, *"quiet, organized, spiritual, and feeling."* **The trade requirement is in there too**: *"Alone, neither mirror image of the self will hear clearly."* ***This creature is a memoir, and the bible had been quoting it from memory for weeks without knowing it.***
@@ -7451,7 +7453,7 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 
 #### Adopted, not yet built
 
-***Status, 2026-10-01***: *the whole list is built or settled — Ty is in the ROM (T-19), the post-game triangle is the ending as built (T-261), THE HOLDOUT's TOKEN is in (T-260) and ORPHAN is a routine's name. **Penphin is built** (T-234): DOLPHIN VECTOR/FLOW in WAILMER's slot, PENGUIN FLOW in SPHEAL's, either one traded becoming PENPHIN CONTEXT/FLOW in WAILORD's, which learns **RESONANCE** as it evolves — LOGIC and CONTEXT together, √(Attack × Sp. Atk) against √(Defense × Sp. Def), so balance is what it rewards.*
+***Status, 2026-10-01***: *the whole list is built or settled — Ty is in the ROM (T-19), the post-game triangle is the ending as built (T-261), THE HOLDOUT's TOKEN is in (T-260) and ORPHAN is a routine's name. **Penphin is built** (T-234): DOLPHIN VECTOR/FLOW in WAILMER's slot, PENGUIN FLOW in SPHEAL's, either one traded becoming PENPHIN CONTEXT/FLOW in WAILORD's *(since v11.320, only when traded for each other, T-474)*, which learns **RESONANCE** as it evolves — LOGIC and CONTEXT together, √(Attack × Sp. Atk) against √(Defense × Sp. Def), so balance is what it rewards.*
 
 ~~**Ty is not in the ROM at all.**~~ ***No longer true (noted 2026-09-24): T-19 put him in the FIVE ISLAND warehouse, where he hands over the payload.*** The bible places him at Quicksilver; no NPC has been written. **So his line and the post-game triangle are new content, not edits** — a larger job than the review implies. *Whether the triangle is still owed is T-261.*
 
@@ -8859,6 +8861,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)
 - **THE SUBTLE LAYER gets its section: the book, THE THREE values and what the player notices (T-423, T-454, T-459, recorded 2026-10-28)** — a handbook of practice, found in BRAZEN; three battle-only values that wake with it; once held, the daemon notices first, reads and leans are logged and the log decides, and four people's words carry a line beneath, all in CONTEXT's purple, which marks the noticing and never a feeling (4.38)
 - **ITS DREAMS: the carried daemon's dreams reach the game (T-462, C-200, 2026-10-28)** — the DREAM LOG's third part; the companion writes only a dream's number and the night's quality, the words are fixed in the ROM, filed at the first dawn as "Far away, [NAME] resumed.", never explained; all sixteen titles approved as drafted, the hum kept as a motif (3.8)
+- **PENPHIN only by a pair trade (T-474, 2026-10-28)** — DOLPHIN and PENGUIN each evolve only when traded for the other, and both become PENPHIN; any other trade does nothing; the only pair trade in the game (8.2, Penphin)
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
