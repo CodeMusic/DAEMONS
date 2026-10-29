@@ -205,3 +205,9 @@ The player's manual, chapter 10: the two books side by side, and THE HERMETIC LA
 The player's manual, chapter 10: the two books side by side, and THE HERMETIC LAYER as a rumour with its real history (v11.325.1). Drawn from docs/DAEMONS-manual.pdf.
 
 ![29Oct2026 - T467 - the books and a rumour - 38](29Oct2026%20-%20T467%20-%20the%20books%20and%20a%20rumour%20-%2038.png)
+
+### 29Oct2026 - T486 - the glitch by strength - 51
+
+T-486: the glitch modelled at three strengths over OSRIC HATTER's room draft -- 3:30 strongest, 3:15/3:45 middle, 3:00/3:59 weakest
+
+![29Oct2026 - T486 - the glitch by strength - 51](29Oct2026%20-%20T486%20-%20the%20glitch%20by%20strength%20-%2051.png)
