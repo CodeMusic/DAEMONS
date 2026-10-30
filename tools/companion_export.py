@@ -665,7 +665,14 @@ def profile_layout():
                       "number (number - 1), each a map section first_met_places names (0: not recorded; it also names the "
                       "three bytes that are no place -- THE COMPANION, A TRADE, A GIFT, T-492); trust them only "
                       "when the u32 at first_met_magic is first_met_magic_value (an older save holds a recap scene there). "
-                      "A SEEN daemon with 0 was seen before the game kept them: the INDEX says BEFORE RECORDS.",
+                      "A SEEN daemon with 0 was seen before the game kept them: the INDEX says BEFORE RECORDS. "
+                      "C-223: every item slot (sb1 key_items, tmhm, items_pocket, balls_pocket, berries_pocket, "
+                      "pc_items; each *_count slots long) is 4 bytes: itemId u16 little-endian, then quantity u16. A BAG "
+                      "pocket's quantity is stored XOR the low 16 bits of sb2 encryption_key (item.c's "
+                      "GetBagItemQuantity); the PC's (pc_items) is stored plain (GetPcItemQuantity XORs with 0). An empty "
+                      "slot is itemId 0 with quantity 0 (in a pocket: 0 XOR the key's low half). A stack holds at most "
+                      "999. items.json names each item's pocket and importance; a writer puts an item only in its own "
+                      "pocket.",
             "sb2": {"player_name": sb2["playerName"], "player_gender": sb2["playerGender"],
                     "trainer_id": sb2["playerTrainerId"], "play_time_hours": sb2["playTimeHours"],
                     "play_time_minutes": sb2["playTimeMinutes"], "play_time_seconds": sb2["playTimeSeconds"],
@@ -681,6 +688,10 @@ def profile_layout():
                     #  C-128: the PLUGIN pocket holds the eight DRIVERS (and every PLUGIN), the items pocket TEA
                     "tmhm": sb1["bagPocket_TMHM"], "tmhm_count": int(re.search(r"#define\s+BAG_TMHM_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
                     "items_pocket": sb1["bagPocket_Items"], "items_count": int(re.search(r"#define\s+BAG_ITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
+                    #  C-223: the rest of the item slots, so the companion can give an item with nothing back
+                    "balls_pocket": sb1["bagPocket_PokeBalls"], "balls_count": int(re.search(r"#define\s+BAG_POKEBALLS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
+                    "berries_pocket": sb1["bagPocket_Berries"], "berries_count": int(re.search(r"#define\s+BAG_BERRIES_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
+                    "pc_items": sb1["pcItems"], "pc_items_count": int(re.search(r"#define\s+PC_ITEMS_COUNT\s+(\d+)", read("include/constants/global.h")).group(1)),
                     # C-15: the INDEX's seen flags are kept three times; the game believes them only when all agree
                     "seen1": sb1["seen1"], "seen2": sb1["seen2"],
                     # T-406: where each daemon was first met -- a byte per national number (index = number - 1), its
@@ -814,11 +825,15 @@ def items_table():
     """C-31: every item by the id a save stores, with our name and description (src/data/items.json, which the game's
     items.h is generated from) -- so the app and the device name what an AWAY daemon is holding as the game does."""
     ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define (ITEM_\w+)\s+(\d+)\b", read("include/constants/items.h"))}
-    out = {"_about": "C-31: item id -> our name and description, from src/data/items.json."}
+    out = {"_about": "C-31: item id -> our name and description, from src/data/items.json. C-223: pocket is "
+                     "the BAG pocket it goes in (POCKET_ITEMS, POCKET_KEY_ITEMS, POCKET_POKE_BALLS, POCKET_TM_CASE, "
+                     "POCKET_BERRY_POUCH); importance is nonzero for a key item."}
     for it in json.loads(read("src/data/items.json"))["items"]:
         if it.get("itemId") in ids and ids[it["itemId"]]:
             out[str(ids[it["itemId"]])] = {"name": it.get("english", ""),
-                                           "description": it.get("description_english", "").replace("\\n", " ")}
+                                           "description": it.get("description_english", "").replace("\\n", " "),
+                                           #  C-223: which BAG pocket it goes in, and 1 for a key item (never given)
+                                           "pocket": it.get("pocket", ""), "importance": it.get("importance", 0)}
     return out
 
 
