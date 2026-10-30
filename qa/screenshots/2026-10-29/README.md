@@ -349,3 +349,15 @@ T-492 (DRAFT): DEBUG -> GAME EVENTS -> A GIFT ARRIVES (GIFTED + TRADED_IN, partn
 T-492 (DRAFT): DEBUG -> GAME EVENTS -> A GIFT ARRIVES (GIFTED + TRADED_IN, partner 0, as C-223 writes it): the line says it arrived as a gift, it trade-evolved THEOREM -> LEMMA MIND, and its INDEX area page says FIRST MET: A GIFT
 
 ![29Oct2026 - T492 - a gift arrives - 85](29Oct2026%20-%20T492%20-%20a%20gift%20arrives%20-%2085.png)
+
+### 29Oct2026 - C223 - GIVE AN ITEM - 86
+
+C-223: TRADE's GIVE AN ITEM on a scratch companion -- ONE, FIVE or ALL, to anyone, friends or one player; the bag and PC's giftable items (DRAFT)
+
+![29Oct2026 - C223 - GIVE AN ITEM - 86](29Oct2026%20-%20C223%20-%20GIVE%20AN%20ITEM%20-%2086.jpg)
+
+### 29Oct2026 - C223 - an item given - 87
+
+C-223: 5 RESUME given to KIT -- the giver's SYNC took them out of the bag (12 to 7); KIT's next SYNC puts them in the PC (DRAFT)
+
+![29Oct2026 - C223 - an item given - 87](29Oct2026%20-%20C223%20-%20an%20item%20given%20-%2087.jpg)
