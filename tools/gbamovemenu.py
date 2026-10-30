@@ -26,6 +26,12 @@ WHAT IT WRITES
       seven font cells nothing in the game uses, redrawn as the marks.
       FONT_SMALL only; the build regenerates latin_small.hwlatfont from this.
 
+T-490: A ROUTINE'S CATEGORY. Each routine now carries its own side (.split in
+battle_moves.h -- the source, judged by hand; this tool only reads it). Two
+more cells are redrawn as the PHYSICAL and SPECIAL marks, which the battle's
+move info prints after the type; the header gains their glyph table, and the
+report counts the routines whose category is no longer their type's.
+
 --text-step lightest writes each type in its lightest colour that still clears
 4.5:1 on white -- the hue itself for the dark types -- instead of step 4. The
 chart measures both; this is the switch.
@@ -105,14 +111,16 @@ def png_save(p, w, h, bd, plte, px):
         + ch(b"PLTE", plte) + ch(b"IDAT", zlib.compress(bytes(raw), 9)) + ch(b"IEND", b""))
 
 
-def cell_pixels(cls):
-    """The 8x16 cell exactly as the font's own 4px cells are laid out: ground
-    in rows 1-12 of the first four columns, ink, and a shadow cast right, down
-    and down-right -- the rule read off the font's own letters."""
-    top, rows = C.MARK_BITMAP[cls]
+def cell_pixels(cls, width=4):
+    """The 8x16 cell exactly as the font's own cells are laid out: ground
+    in rows 1-12 of the cell's own width (4 for the move marks), ink, and a
+    shadow cast right, down and down-right -- the rule read off the font's
+    own letters. A category mark (T-490) is named in SPLIT_BITMAP instead."""
+    top, rows = C.MARK_BITMAP[cls] if cls in C.MARK_BITMAP else C.SPLIT_BITMAP[cls]
+    cols = range(0, width)
     g = [[CLEAR] * CELL_W for _ in range(CELL_H)]
     for y in GROUND_ROWS:
-        for x in GROUND_COLS:
+        for x in cols:
             g[y][x] = GROUND
     ink = {(x, top + r) for r, line in enumerate(rows) for x, chx in enumerate(line) if chx == "#"}
     for x, y in ink:
@@ -120,9 +128,21 @@ def cell_pixels(cls):
     for x, y in ink:
         for dx, dy in ((1, 0), (0, 1), (1, 1)):
             nx, ny = x + dx, y + dy
-            if (nx, ny) not in ink and nx in GROUND_COLS and ny in GROUND_ROWS:
+            if (nx, ny) not in ink and nx in cols and ny in GROUND_ROWS:
                 g[ny][nx] = SHADOW
     return g
+
+
+def load_splits(tn):
+    """{MOVE: (split, type key)} from battle_moves.h, the source of each routine's category (T-490)."""
+    out = {}
+    src = open(os.path.join(GBA, "src/data/battle_moves.h"), encoding="utf-8").read()
+    for mv, body in re.findall(r"\[MOVE_(\w+)\] =\s*\{(.*?)\n    \},", src, re.S):
+        s = re.search(r"\.split = SPLIT_(\w+)", body)
+        t = re.search(r"\.type = TYPE_(\w+)", body)
+        p = re.search(r"\.power = (\d+)", body)
+        out[mv] = (s.group(1) if s else None, t.group(1), int(p.group(1)))
+    return out
 
 
 def rgb5(c):
@@ -169,7 +189,7 @@ def main():
             for f in fs:
                 if f.endswith((".inc", ".s", ".c", ".h", ".json")) and os.path.join(dp, f) != HEADER:
                     t = open(os.path.join(dp, f), encoding="utf-8", errors="ignore").read()
-                    for cls, ch in C.CLASS_GLYPH.items():
+                    for cls, ch in list(C.CLASS_GLYPH.items()) + list(C.SPLIT_GLYPH.items()):
                         if ch in t:
                             used.setdefault(ch, []).append(os.path.relpath(os.path.join(dp, f), GBA))
     if used:
@@ -177,6 +197,43 @@ def main():
             print("  !!  %r is already used in %s" % (ch, ", ".join(where[:3])))
         sys.exit(1)
     print("  glyphs: " + ", ".join("%s 0x%02X" % (c, glyph[c]) for c in C.CATEGORY_ORDER) + "; none used by any text")
+
+    # ---------------------------------------------- T-490: the category marks
+    swidth = {}
+    for sp in C.SPLIT_ORDER:
+        ch = C.SPLIT_GLYPH[sp]
+        code = cm.get(ch)
+        if code is None:
+            sys.exit("  !!  %s's glyph %r is not in charmap.txt" % (sp, ch))
+        if small[code] not in (4, 5):
+            sys.exit("  !!  %s's glyph %r is %dpx in FONT_SMALL, not 4 or 5" % (sp, ch, small[code]))
+        if code in glyph.values():
+            sys.exit("  !!  %s's glyph %r is a move mark's cell" % (sp, ch))
+        glyph[sp], swidth[sp] = code, small[code]
+    print("  category marks: " + ", ".join("%s 0x%02X (%dpx)" % (s, glyph[s], swidth[s]) for s in C.SPLIT_ORDER))
+    #  The type line: the widest type name and a space, in the line's own font (DisplayMoveTypeFor switches to
+    #  FONT_NORMAL_COPY_1), then the widest mark in FONT_SMALL, must fit B_WIN_MOVE_TYPE's 64px.
+    copy1 = tables["sFontNormalCopy1LatinGlyphWidths"]
+    tw = max(sum(copy1[cm[c]] for c in o if c in cm) for o in tn.values())
+    line = tw + copy1[cm[" "]] + max(swidth.values())
+    if line > 64:
+        sys.exit("  !!  the type line would be %dpx with its mark, past the box's 64" % line)
+    print("  type line: widest %dpx with its mark, of 64" % line)
+    splits = load_splits(tn)
+    #  Gen 3's rule, by the type's VALUE in the engine (IS_TYPE_PHYSICAL: below TYPE_MYSTERY), not by any list order.
+    tval = {k: int(v) for k, v in re.findall(r"#define TYPE_(\w+)\s+(\d+)",
+            open(os.path.join(GBA, "include/constants/pokemon.h"), encoding="utf-8").read())}
+    def by_type(key):
+        i, m = tval[key], tval["MYSTERY"]
+        return "PHYSICAL" if i < m else "SPECIAL" if i > m else "STATUS"
+    missing = sorted(m for m, (s, _, _) in splits.items() if s is None)
+    if missing:
+        sys.exit("  !!  %d routines have no .split: %s" % (len(missing), ", ".join(missing[:8])))
+    judged = sorted(m for m, (s, t, _) in splits.items() if s != "STATUS" and s != by_type(t))
+    sc = {s: sum(1 for v in splits.values() if v[0] == s) for s in ("PHYSICAL", "SPECIAL", "STATUS")}
+    print("  categories: %d routines, PHYSICAL %d, SPECIAL %d, STATUS %d; %d no longer their type's%s"
+          % (len(splits), sc["PHYSICAL"], sc["SPECIAL"], sc["STATUS"], len(judged),
+             (" (" + ", ".join(judged) + ")") if judged else ""))
 
     counts = {c: sum(1 for m in moves.values() if m[0] == c) for c in C.CATEGORY_ORDER}
     print("  moves: %d, " % len(moves) + ", ".join("%s %d" % (c, counts[c]) for c in C.CATEGORY_ORDER))
@@ -200,6 +257,10 @@ def main():
           "// redrawn as the marks; HIT's is blank so the names stay in one column.",
           "static const u8 sMoveClassGlyph[MOVE_CLASS_COUNT] =", "{"]
     L += ["    [MOVE_CLASS_%-7s] = 0x%02X," % (c, glyph[c]) for c in C.CATEGORY_ORDER]
+    L += ["};", "",
+          "// T-490: the mark after the TYPE in the move info, for a routine's own category. STATUS has none.",
+          "static const u8 sMoveSplitGlyph[] =", "{"]
+    L += ["    [SPLIT_%-8s] = 0x%02X," % (s, glyph[s]) for s in C.SPLIT_ORDER]
     L += ["};", "",
           "// What every move does. A move not listed hits (MOVE_CLASS_HIT is 0).",
           "static const u8 sMoveClass[MOVES_COUNT] =", "{"]
@@ -272,10 +333,11 @@ def main():
     # --------------------------------------------------------------- font
     w, h, bd, plte, px = png_load(FONT)
     changed = 0
-    for cls in C.CATEGORY_ORDER:
+    marks = [(c, 4) for c in C.CATEGORY_ORDER] + [(s, swidth[s]) for s in C.SPLIT_ORDER]
+    for cls, cw in marks:
         code = glyph[cls]
         cx, cy = (code % PER_ROW) * CELL_W, (code // PER_ROW) * CELL_H
-        want = cell_pixels(cls)
+        want = cell_pixels(cls, cw)
         for y in range(CELL_H):
             for x in range(CELL_W):
                 if px[cy + y][cx + x] != want[y][x]:
@@ -287,9 +349,9 @@ def main():
             png_save(FONT, w, h, bd, plte, px)
         #  Read it back rather than trusting the writer.
         _, _, bd2, _, px2 = png_load(FONT)
-        bad = [cls for cls in C.CATEGORY_ORDER
+        bad = [cls for cls, cw in marks
                if [[px2[(glyph[cls] // PER_ROW) * CELL_H + y][(glyph[cls] % PER_ROW) * CELL_W + x]
-                    for x in range(CELL_W)] for y in range(CELL_H)] != cell_pixels(cls)]
+                    for x in range(CELL_W)] for y in range(CELL_H)] != cell_pixels(cls, cw)]
         if bad or bd2 != bd:
             sys.exit("  !!  font read back wrong: %s, depth %d" % (bad, bd2))
         print("  font: %d pixels redrawn in %d cells, read back at %d-bit and verified" % (changed, len(glyph), bd2))

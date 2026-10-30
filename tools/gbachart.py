@@ -211,6 +211,18 @@ FREE_GLYPHS = "ÌÍÎÏìíîï"
 CLASS_GLYPH = {"HIT": "Ì", "RAISE": "Í", "LOWER": "Î", "AFFLICT": "Ï",
                "MEND": "ì", "GUARD": "í", "OTHER": "î"}
 
+#  T-490: A ROUTINE'S CATEGORY, its own and no longer its type's. The two sides a routine can strike with get a
+#  mark each, drawn after the TYPE in the battle's move info (the class marks above go before the NAME, so the
+#  two never share a line). STATUS is unmarked: it has no power, and its class mark already says what it does.
+#  PHYSICAL is a strike; SPECIAL is a channel's two walls -- 1.6d's WATTAGE against BANDWIDTH. DRAFT shapes.
+#  The last free 4px cell and one 5px cell nothing uses (an unused accented capital); same layout as the marks.
+SPLIT_ORDER = ["PHYSICAL", "SPECIAL"]
+SPLIT_BITMAP = {
+    "PHYSICAL": (5, ["..#", "..#", ".#.", "#..", "#.."]),
+    "SPECIAL":  (5, ["#.#", "#.#", "#.#", "#.#", "#.#"]),
+}
+SPLIT_GLYPH = {"PHYSICAL": "ï", "SPECIAL": "Ò"}
+
 #  The four moves from the author's screenshot of the move menu, 2026-09-13.
 SAMPLE, SAMPLE_CURSOR, SAMPLE_MP = ("OCCLUDE", "THERMAL", "POLLUTE", "INSPECT"), "THERMAL", "15/15"
 

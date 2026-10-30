@@ -198,11 +198,13 @@ def reserved(gba):
     m = re.search(r"^GLYPH\s*=\s*(0x[0-9A-Fa-f]+)", open(os.path.join(HERE, "gbamana.py"), encoding="utf-8").read(), re.M)
     if m:
         out[int(m.group(1), 16)] = "the MP cell (gbamana.py)"
-    m = re.search(r"CLASS_GLYPH\s*=\s*\{(.*?)\}", open(os.path.join(HERE, "gbachart.py"), encoding="utf-8").read(), re.S)
+    chart = open(os.path.join(HERE, "gbachart.py"), encoding="utf-8").read()
     cm = charmap(gba)
-    for cls, ch in re.findall(r'"(\w+)":\s*"(.)"', m.group(1) if m else ""):
-        if ch in cm:
-            out[cm[ch]] = "the %s move mark (gbamovemenu.py)" % cls
+    for table in ("CLASS_GLYPH", "SPLIT_GLYPH"):   # T-490: the category marks are drawn by gbamovemenu too
+        m = re.search(table + r"\s*=\s*\{(.*?)\}", chart, re.S)
+        for cls, ch in re.findall(r'"(\w+)":\s*"(.)"', m.group(1) if m else ""):
+            if ch in cm:
+                out[cm[ch]] = "the %s move mark (gbamovemenu.py)" % cls
     return out
 
 

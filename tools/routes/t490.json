@@ -1,0 +1,136 @@
+{
+ "rom": "debug",
+ "about": "T-490 step 1: the routine's own category decides which of the user's sides it strikes with. A wild GYARADOS at 999 HP whose routines are all no-ops; the lead fast, its ATTACK and SP. ATK poked to 250/10 and then 10/250 from one saved moment. POUND (CONTENT, physical by Gen 3's type rule) must hit hard with ATTACK 250 and softly with 10; EMBER (ENTROPY, special) the reverse. The move info shows each routine's category mark after its type. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build: GYARADOS invoked on Route 22",
+   "steps": [
+    "load debug",
+    "goto Route22 15 9",
+    "repel 999",
+    "close",
+    "poke sDbgDex 16 130",
+    "poke sDbgLevel 8 30",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "the battle set level",
+   "steps": [
+    "foe SPECIES_GYARADOS",
+    "wait 200",
+    "poke gBattleMons+128 16 999",
+    "poke gBattleMons+132 16 999",
+    "poke gBattleMons+134 16 0",
+    "poke gBattleMons+120 8 0",
+    "poke gBattleMons+94 16 1",
+    "poke gBattleMons+92 16 100",
+    "poke gBattleMons+98 16 100",
+    "poke gBattleMons+100 32 9830550",
+    "poke gBattleMons+104 32 9830550",
+    "poke gBattleMons+6 16 999",
+    "poke gBattleMons+46 16 0",
+    "poke gBattleMons+32 8 0",
+    "poke gBattleMons+24 32 101058054",
+    "poke gBattleMons+28 32 101058054",
+    "savestate t490_base"
+   ]
+  },
+  {
+   "stop": "POUND with ATTACK 250, SP. ATK 10",
+   "steps": [
+    "loadstate t490_base",
+    "wait 10",
+    "poke gBattleMons+2 16 250",
+    "poke gBattleMons+8 16 10",
+    "press START",
+    "wait 40",
+    "poke sTheatreSlot 8 0",
+    "poke sTheatreMove 16 1",
+    "press SELECT",
+    "wait 30",
+    "press B",
+    "wait 40",
+    "press A",
+    "wait 30",
+    "shot the move info",
+    "press A",
+    "burst hit 12 20",
+    "wait 60",
+    "remember hp gBattleMons+128 16"
+   ]
+  },
+  {
+   "stop": "POUND with ATTACK 10, SP. ATK 250",
+   "steps": [
+    "loadstate t490_base",
+    "wait 10",
+    "poke gBattleMons+2 16 10",
+    "poke gBattleMons+8 16 250",
+    "press START",
+    "wait 40",
+    "poke sTheatreSlot 8 0",
+    "poke sTheatreMove 16 1",
+    "press SELECT",
+    "wait 30",
+    "press B",
+    "wait 40",
+    "press A",
+    "wait 30",
+    "shot the move info",
+    "press A",
+    "burst hit 12 20",
+    "wait 60",
+    "remember hp gBattleMons+128 16"
+   ]
+  },
+  {
+   "stop": "EMBER with ATTACK 250, SP. ATK 10",
+   "steps": [
+    "loadstate t490_base",
+    "wait 10",
+    "poke gBattleMons+2 16 250",
+    "poke gBattleMons+8 16 10",
+    "press START",
+    "wait 40",
+    "poke sTheatreSlot 8 0",
+    "poke sTheatreMove 16 52",
+    "press SELECT",
+    "wait 30",
+    "press B",
+    "wait 40",
+    "press A",
+    "wait 30",
+    "shot the move info",
+    "press A",
+    "burst hit 12 20",
+    "wait 60",
+    "remember hp gBattleMons+128 16"
+   ]
+  },
+  {
+   "stop": "EMBER with ATTACK 10, SP. ATK 250",
+   "steps": [
+    "loadstate t490_base",
+    "wait 10",
+    "poke gBattleMons+2 16 10",
+    "poke gBattleMons+8 16 250",
+    "press START",
+    "wait 40",
+    "poke sTheatreSlot 8 0",
+    "poke sTheatreMove 16 52",
+    "press SELECT",
+    "wait 30",
+    "press B",
+    "wait 40",
+    "press A",
+    "wait 30",
+    "shot the move info",
+    "press A",
+    "burst hit 12 20",
+    "wait 60",
+    "remember hp gBattleMons+128 16"
+   ]
+  }
+ ]
+}
