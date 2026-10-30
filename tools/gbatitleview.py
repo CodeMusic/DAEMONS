@@ -151,4 +151,6 @@ def main():
     out.resize((W * 3, H * 3), Image.NEAREST).save(dst)
     print("    written %s" % dst)
 
-main()
+#  run only as a script: companion_export imports this for its layers, and an import must neither draw nor need a built tree
+if __name__ == "__main__":
+    main()
