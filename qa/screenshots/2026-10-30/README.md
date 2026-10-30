@@ -25,3 +25,9 @@ docs/books/the-subtle-layer.pdf: THE SUBTLE LAYER, 49 pages, each entry with its
 v11.332.1 is out: T-490 step 1 adds the two DRAFT category marks the battle's move info prints after the type. Nothing hits differently yet.
 
 ![30Oct2026 - T490 - the two category marks - 5](30Oct2026%20-%20T490%20-%20the%20two%20category%20marks%20-%205.png)
+
+### 30Oct2026 - C256 - the TV setup in PLACES - 6
+
+C-256: the TV card on the hub's site -- a Roku added by its address (a test row, removed after), TEST, rename, remove
+
+![30Oct2026 - C256 - the TV setup in PLACES - 6](30Oct2026%20-%20C256%20-%20the%20TV%20setup%20in%20PLACES%20-%206.jpg)
