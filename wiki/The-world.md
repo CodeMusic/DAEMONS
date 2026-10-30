@@ -116,6 +116,10 @@ On a holiday, the signature wears the month's colour.
 Some routines read the whole party. **CONSENSUS** grows stronger the more your party's streaks overlap, and **SLANT**
 the more they differ; **ALIGN** hands the foe your own type, weaknesses and all. All three are DRAFT.
 
+**Each routine has its own category** -- PHYSICAL, SPECIAL or STATUS -- rather than one fixed by its type, as later
+games did it; the routines are being judged one by one, the first few already moved. And the weather now follows the
+type of the hit itself.
+
 Sixteen held items, the **SINKs**, each soak up one super-effective hit of their own type, halving it, and are spent
 doing it (DRAFT).
 
