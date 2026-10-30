@@ -19,3 +19,9 @@ docs/books/guide.pdf: the GUIDE, 21 pages, printed from the text the game prints
 docs/books/the-subtle-layer.pdf: THE SUBTLE LAYER, 49 pages, each entry with its picture
 
 ![30Oct2026 - THE SUBTLE LAYER as a PDF - 4](30Oct2026%20-%20THE%20SUBTLE%20LAYER%20as%20a%20PDF%20-%204.png)
+
+### 30Oct2026 - T490 - the two category marks - 5
+
+v11.332.1 is out: T-490 step 1 adds the two DRAFT category marks the battle's move info prints after the type. Nothing hits differently yet.
+
+![30Oct2026 - T490 - the two category marks - 5](30Oct2026%20-%20T490%20-%20the%20two%20category%20marks%20-%205.png)
