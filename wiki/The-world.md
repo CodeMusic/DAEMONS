@@ -116,6 +116,9 @@ On a holiday, the signature wears the month's colour.
 Some routines read the whole party. **CONSENSUS** grows stronger the more your party's streaks overlap, and **SLANT**
 the more they differ; **ALIGN** hands the foe your own type, weaknesses and all. All three are DRAFT.
 
+Sixteen held items, the **SINKs**, each soak up one super-effective hit of their own type, halving it, and are spent
+doing it (DRAFT).
+
 ## The map
 
 The TOWN MAP keeps its shape, so finding your way is unchanged, but it is drawn in the game's own look: paper and ink,
@@ -180,7 +183,8 @@ finishes the change when it comes home; one line of daemons grows only that way.
 **Trading.** A daemon away can be traded with another player, or lent, through the companion. While it is on offer the
 game will not call it home; one that arrives is written into your INDEX, says it was first met in a trade, and makes
 a trade evolution on arrival -- unless it is only on loan: a borrowed daemon never evolves by trade, and cannot be
-released or traded on. And one pair of daemons becomes something new only when the two are traded for each other.
+released or traded on. A daemon can also be **given**, with nothing asked back: the one that arrives says it was first
+met as a gift. And one pair of daemons becomes something new only when the two are traded for each other.
 See [The companion](The-companion).
 
 ## Not built yet
