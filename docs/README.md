@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.331, working |
-| [`CONTEXT-CONTENT-design-bible-v11.331.pdf`](CONTEXT-CONTENT-design-bible-v11.331.pdf) | Typeset **snapshot** at v11.331 — a routine that hands the foe your frame, and two that grow with how alike, or unlike, a party is. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.332, working |
+| [`CONTEXT-CONTENT-design-bible-v11.332.pdf`](CONTEXT-CONTENT-design-bible-v11.332.pdf) | Typeset **snapshot** at v11.332 — sixteen sinks that each soak one hit, and a daemon that arrives as a gift. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

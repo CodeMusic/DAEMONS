@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.332 — 2026-10-29
+
+- **2.12 §2, the `* SINK` items, released in v11.331.1 (T-488).** There are sixteen. Neither ORACLE nor CONTENT has one, because CONTENT is super-effective against nothing. Two of the names overlap ability names: SINK is MINUS's ability and SIGNAL SINK is LIGHTNING ROD's. The user chose to keep both. The bible also lists where each is sold and the four hidden on routes.
+- **9.32, the GIFT, released in v11.331.1 (T-492).**
+- A Settled entry in section 10. Every word is DRAFT.
+
 ## v11.331 — 2026-10-29
 
 - **ALIGN, released in v11.330.1 (T-489).** ALIGN is routine 382, typed CONTEXT. The foe becomes wholly the user's first type. SCORN's ace knows it in the two CORPUS battles only, which is what the user chose. PLUGIN49 (formerly SNATCH) teaches it and lies on CORPUS HIDEOUT B4F. The frame family's table now marks the reverse as built.
