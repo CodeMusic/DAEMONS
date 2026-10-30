@@ -35,7 +35,7 @@ journaling, each set out as a way of working on the system. 28 chapters:
 - **Conclusion:** The Future of Mental Programming · Ethical Considerations · The Path Forward: Continuous Development
 - **Appendices:** Glossary of Terms · Case Studies · Further Reading and Resources
 
-**Full text:** [docs/guide.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/guide.md)
+**Full text:** [docs/guide.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/guide.md) · **as a PDF:** [docs/books/guide.pdf](https://github.com/CodeMusic/DAEMONS/blob/main/docs/books/guide.pdf)
 
 ## THE SUBTLE LAYER: a trainer's handbook
 
@@ -69,7 +69,7 @@ toward something you have not found yet, a read comes to you as you arrive somew
 hints at what the other side will do, and now and then there is a faint line beneath what someone says. Not every
 read lands. The NOTEBOOK keeps a log of what you were told and what came true, and only the log decides.
 
-**Full text:** [docs/subtle-layer.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/subtle-layer.md)
+**Full text:** [docs/subtle-layer.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/subtle-layer.md) · **as a PDF:** [docs/books/the-subtle-layer.pdf](https://github.com/CodeMusic/DAEMONS/blob/main/docs/books/the-subtle-layer.pdf)
 
 ## A third?
 
