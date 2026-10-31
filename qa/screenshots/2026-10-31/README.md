@@ -49,3 +49,51 @@ WHO ANSWERS WHEN YOU TALK with the Tiiny chosen and answering, on a test compani
 A BIGGER MIND, the Tiiny setup manual: 15 pages, five quest steps, four diagrams
 
 ![31Oct2026 - C249 - the Tiiny manual, every page - 8](31Oct2026%20-%20C249%20-%20the%20Tiiny%20manual%2C%20every%20page%20-%208.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 9
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 9](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%209.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 10
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 10](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2010.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 11
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 11](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2011.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 12
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 12](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2012.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 13
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 13](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2013.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 14
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 14](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2014.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 15
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 15](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2015.png)
+
+### 31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 16
+
+T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
+
+![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 16](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2016.png)
