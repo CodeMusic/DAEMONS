@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.334 — 2026-10-31
+
+- **4.39, the thin half-hour is 3:30 to 3:59 (T-501, the user, by multiple choice).** What is built already makes half past three the moment: OSRIC HATTER's clocks come right and the glitch peaks at :30. THE BOOK OF THIRTEEN's last spell, THE WITCHING HOUR, and the Blank Tablet's thirteenth line move from 3:00-3:30 to 3:30-3:59 to match. Nothing in the ROM changes; neither is built yet (T-483).
+- A Settled entry in section 10.
+
 ## v11.333 — 2026-10-31
 
 - **9.33, The lioness, the letter and the pair of paintings (new section; T-493 to T-496).** The same lioness is met four times before the S.S. ANNE sails: at VIRIDIAN's center, at CERULEAN's, at the gangway and on the deck. On the deck she asks the player to post a letter, and MOM hands over the one-line reply once the ship has gone. A painting's scrambled words, filed from the ship, are read beside its mirrored twin in THE NEXUS. CALLOW SCHOOL's 5F teacher says it isn't hard, only unfamiliar.

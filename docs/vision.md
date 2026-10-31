@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.333**
+**A total conversion — the living design bible, v11.334**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4990,8 +4990,8 @@ take off.*
 - ***As Above, So Below***, **the Emerald Tablet's saying, gamified**, *then* ***THE TABLET OF THE HANDS*** (*the user's text: one hand folded into many without ceasing to be one; free will is the view from the fingertip, fate the view from the palm; it opens on the maxim and closes on it inverted*) **and** ***THE TABLET OF GRAVITY*** (*the half-saying, spoken at the half-hour: gravity gives belonging, "we are not clutched, we are drawn"*). **Both pulse.**
 - ***The Folds of Awareness*** (*lineage: Seeing Sharp, 2025*): **awareness, change, space, gravity at 3½, consciousness, intelligence, wisdom.** *Matter is a process, not a noun; separation is an illusion the folds produce; transformation, prima materia, the One Thing, the alchemical stages, all gamified.*
 - ***Reflection and the representative state***: **entanglement** -- *once two things are entangled, an act on one moves the other, person and daemon, person and item, both ways* -- *in modern words where they help and the ancient ones where they ring.*
-- ***THE BOOK OF THIRTEEN***: **twelve spells on the wheel and one in the crease**, *each leaning on two axes, reason or intuition and content or context, each with a cost that rhymes with its lesson* (*the Mirror costs you self, the Seam your separateness*). **The thirteenth, THE WITCHING HOUR, is castable only from 3:00 to 3:30, only once all twelve have been cast, and once a playthrough.**
-- ***The Blank Tablet***: **a stone with nothing on it that the player writes without knowing**, *each spell cast adding or reshaping a line in the voice their casting leans toward; at 3:00 to 3:30 a thirteenth line with the player's name, then never again.* **A quiet ledger counts the leans and is never shown as a bar.**
+- ***THE BOOK OF THIRTEEN***: **twelve spells on the wheel and one in the crease**, *each leaning on two axes, reason or intuition and content or context, each with a cost that rhymes with its lesson* (*the Mirror costs you self, the Seam your separateness*). **The thirteenth, THE WITCHING HOUR, is castable only from 3:30 to 3:59 -- the half-hour OSRIC HATTER's clocks keep -- only once all twelve have been cast, and once a playthrough** (*T-501, the user, 2026-10-31: it was 3:00 to 3:30*).
+- ***The Blank Tablet***: **a stone with nothing on it that the player writes without knowing**, *each spell cast adding or reshaping a line in the voice their casting leans toward; at 3:30 to 3:59 a thirteenth line with the player's name, then never again.* **A quiet ledger counts the leans and is never shown as a bar.**
 
 #### How it looks and how it is found
 
@@ -8964,6 +8964,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 ### Settled
 
+- **The thin half-hour is 3:30 to 3:59 (T-501, 2026-10-31)** — the user, by multiple choice: half past three is the moment, as built (OSRIC HATTER's clocks come right, the glitch peaks); THE BOOK OF THIRTEEN's last spell and the Blank Tablet's thirteenth line move from 3:00-3:30 to 3:30-3:59 (4.39)
 - **Wrath has one answer (T-498, 2026-10-31)** — the sixth MARK brings FORGIVENESS over WRATH, as the week does, so every virtue-shadow pair is the same everywhere; the MARKS keep their own order, one per BENCHMARK (9.21)
 - **The lioness, the letter and the pair of paintings (T-493 to T-496, 2026-10-30)** — the same lioness met four times before the ship, her work changing; a letter she asks the player to post, answered at home once the ship has sailed; a painting on the S.S. ANNE whose words will not hold still and its mirrored twin in THE NEXUS that holds them; and CALLOW SCHOOL's 5F teacher on unfamiliar, not hard; every word DRAFT (9.33)
 - **The two books asked: the GUIDE reasons, THE SUBTLE LAYER notices (C-209, C-229, C-230, 2026-10-28)** — either, once held, answered on the companion: the GUIDE as REASON would, from its page; THE SUBTLE LAYER as INSTINCT would, a line from its page and a question back, with TWO VOICES a mode of its own; never called logic and intuition where players read (LOGIC is a type, 9.10); each its part of the day -- the centre, word and note; the virtue over its shadow -- and a daily question kept in a journal with the day and the centre (4.36, 4.38)
