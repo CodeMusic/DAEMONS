@@ -1,0 +1,136 @@
+/* DAEMONS, MICRO-START (tools/manual.py --book micro): QUICK START's look a little smaller, five pages at most --
+   the cover, then one page each: what it is, the buttons, playing, and the words. */
+@page { size: 148mm 210mm; margin: 14mm 13mm 17mm 13mm; }
+@page cover { margin: 0; }
+
+:root { --ink: #16161a; --paper: #fbfaf6; --soft: #5a5a64; --rule: #d8d6ce; --tc: #6b5aa6; --purple: #8a5cc8; }
+html { font-size: 10.6pt; }
+body {
+  margin: 0; color: var(--ink); background: var(--paper);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.5;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+h1, h2, h3, .chapnum, figcaption, table, .lab, .tochead, .toc1, .toc2, .btn, .sprites, .step-no {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+img { image-rendering: pixelated; }
+
+/* -- the cover, as the player's manual's -- */
+.cover {
+  page: cover; break-after: page; height: 210mm; box-sizing: border-box; padding: 18mm 14mm 14mm; position: relative;
+  background: var(--ink); color: #f4f2ea; display: flex; flex-direction: column;
+}
+.ced { font: 600 10pt "Avenir Next", sans-serif; letter-spacing: .32em; color: #c7b6ec; }
+.ctitle { font: 800 46pt/1 "Avenir Next", sans-serif; letter-spacing: .04em; margin-top: 4mm; }
+/* the book's name, large, under the title: QUICK-START */
+.ctag { display: inline-block; font: 800 24pt/1 "Avenir Next", sans-serif; letter-spacing: .1em; color: #16161a;
+        background: #a8dcb0; padding: 2.2mm 4mm 2.6mm; border-radius: 2mm; margin-top: 5mm; }
+.csub { font: italic 15pt "Iowan Old Style", serif; color: #d9d4c4; margin-top: 3mm; }
+.cstrip { display: flex; justify-content: center; gap: 1.2mm; margin: 0 0 8mm; }
+.cstrip img { width: 13mm; height: 13mm; background: #2c2b33; border-radius: 1.5mm; }
+.cspr { flex: 1; display: flex; align-items: center; justify-content: center; gap: 2mm; }
+.cspr img { width: 38mm; height: 38mm; background: #f4f2ea; border-radius: 3mm; padding: 1mm; }
+.cbot { font: 8pt "Avenir Next", sans-serif; color: #b9b5aa; line-height: 1.6; }
+.cbot b { color: #f4f2ea; }
+
+/* -- contents -- */
+.toc { break-after: page; }
+.tochead { font-size: 22pt; margin: 0 0 5mm; padding: 2mm 3.5mm 2.5mm; border-radius: 2.5pt; }
+.toc a { display: flex; align-items: baseline; text-decoration: none; color: var(--ink); }
+.toc1 { font-weight: 700; font-size: 12pt; margin-top: 3mm; border-bottom: .8pt solid var(--ink); padding-bottom: .4mm; }
+.toc1 .tn { width: 8mm; color: var(--soft); }
+.toc2 { font-size: 10pt; padding-left: 8mm; color: #33333a !important; line-height: 1.55; }
+.toc .tt { flex: 1; }
+.toc .tp { min-width: 8mm; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* -- chapters, each on its band in its type's colour -- */
+section.level1 { break-before: page; }
+.chapnum {
+  font-size: 8pt; font-weight: 700; letter-spacing: .3em; color: var(--tink, #fff); background: var(--tc);
+  margin: 0; padding: 3mm 4mm 0; border-radius: 3pt 3pt 0 0;
+}
+h1 {
+  font-size: 18pt; font-weight: 800; line-height: 1.1; color: var(--tink, #fff); background: var(--tc);
+  margin: 0 0 4mm; padding: .6mm 4mm 3mm; border-radius: 0 0 3pt 3pt;
+}
+h1 + p { font-size: 11.4pt; color: #2b2b31; }
+h2 {
+  font-size: 12.4pt; font-weight: 700; margin: 4mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.6pt solid var(--tc);
+  break-after: avoid;
+}
+h3 { font-size: 12.4pt; font-weight: 700; margin: 4mm 0 1.5mm; break-after: avoid; }
+p { margin: 0 0 2.2mm; orphans: 3; widows: 3; }
+p:has(+ figure), p:has(+ table), p:has(+ ol) { break-after: avoid; }
+ul, ol { margin: 0 0 3.5mm; padding-left: 6.5mm; }
+li { margin-bottom: .9mm; }
+ol > li::marker { font: 700 1em "Avenir Next", sans-serif; color: var(--tc); }
+strong { font-weight: 700; }
+a { color: inherit; text-decoration: none; }
+em { font-style: italic; }
+
+/* one step a page: How to play's sections each open a fresh page, with its number large */
+section.step, section.newpage { break-before: page; }
+section.step > h2, section.newpage > h2 { margin-top: 0; }
+.step-no { display: block; font-size: 8pt; font-weight: 700; letter-spacing: .3em; color: var(--soft); margin-bottom: 1mm; }
+
+table { border-collapse: collapse; width: 100%; font-size: 9.4pt; margin: 2mm 0 4mm; break-inside: avoid; line-height: 1.4; }
+th, td { border-bottom: .6pt solid var(--rule); padding: 1mm 1.6mm; text-align: left; vertical-align: middle; }
+thead th { border-bottom: 1.2pt solid var(--ink); font-weight: 700; }
+td:first-child { white-space: nowrap; }
+
+/* a button, drawn as the Game Boy Advance's own: round for A and B, a pill for START and SELECT */
+.btn { display: inline-block; min-width: 6.2mm; height: 6.2mm; line-height: 6.2mm; text-align: center; font-size: 8.6pt;
+       font-weight: 800; border-radius: 50%; background: #2b2b31; color: #fff; padding: 0 .6mm; margin-right: 1mm;
+       box-shadow: 0 .5mm 0 #000; vertical-align: middle; }
+.btn.pill { border-radius: 3.1mm; padding: 0 2.4mm; font-size: 8pt; letter-spacing: .06em; background: #7d7b86; }
+.btn.shoulder { border-radius: 1.5mm 1.5mm 3mm 3mm; background: #4a4955; }
+.btn.cross { border-radius: 1mm; font-size: 12pt; }
+.btn.key { border-radius: 1.4mm; background: #fff; color: var(--ink); border: .6pt solid #9a98a2; box-shadow: 0 .5mm 0 #9a98a2;
+           font-size: 9pt; min-width: 9mm; }
+
+/* -- callouts -- */
+.tip, .note, .remember {
+  break-inside: avoid; border-radius: 3pt; padding: 2mm 3mm; margin: 2.5mm 0; font-size: 9.8pt;
+  background: #eef4ec; border-left: 3pt solid #5c9e60;
+}
+.note { background: #f0eef7; border-left-color: var(--purple); }
+.remember { background: #f0eee6; border-left-color: var(--tc); font-size: 10.6pt; }
+.tip p:last-child, .note p:last-child, .remember p:last-child { margin: 0; }
+/* the rumour of a third book, as the player's manual frames it: the pulse faint behind, emerald at its edge */
+.rumour { break-inside: avoid; border-radius: 3pt; padding: 2.6mm 3.6mm; margin: 3.5mm 0; font-style: italic;
+          background: linear-gradient(90deg, #f7ebe9, #f5edef, #edeff4); border-left: 3pt solid #1f8f5f; }
+.rumour p:last-child { margin: 0; }
+
+/* -- game screens: large, one or two to a row -- */
+figure { margin: 3mm 0 4mm; break-inside: avoid; }
+figcaption { font-size: 7.8pt; color: var(--soft); margin-top: 1.4mm; line-height: 1.4; }
+.screens .row { display: flex; gap: 3mm; }
+.scr { flex: 1; min-width: 0; }
+.scr img { width: 100%; display: block; border: 1pt solid var(--ink); border-radius: 2pt; }
+.screens.n1 .scr { flex: none; width: 78mm; margin: 0 auto; }
+.screens.n1 figcaption { text-align: center; }
+.lab { display: block; font-size: 8.4pt; font-weight: 600; color: #33333a; margin-top: .8mm; }
+.pictures .row { display: flex; gap: 3mm; align-items: flex-start; }
+.pictures .pic { flex: 1; min-width: 0; }
+.pictures.n1 .pic { flex: none !important; width: 112mm; margin: 0 auto; }
+.pictures.n1 figcaption { text-align: center; }
+.pictures .pic img { width: 100%; display: block; border-radius: 2.5pt; image-rendering: auto; box-shadow: 0 0 0 .6pt #cfcbbf; }
+
+figure.diagram { margin: 2mm 0; break-inside: avoid; }
+figure.diagram svg { width: 100%; height: auto; display: block; }
+figure.diagram figcaption { text-align: center; }
+
+/* -- daemons, and the two books' covers -- */
+.sprites { display: flex; flex-wrap: wrap; gap: 4mm; justify-content: center; margin: 3mm 0 4mm; }
+.sprites .sp { text-align: center; font: 700 9pt "Avenir Next", sans-serif; }
+.sprites img { width: 19mm; height: 19mm; display: block; background: #fff; border: .8pt solid var(--rule); border-radius: 3pt; margin-bottom: 1mm; }
+.covers { display: flex; gap: 6mm; justify-content: center; margin: 3mm 0 4mm; break-inside: avoid; }
+.covers .bookcover { width: 33mm; border-radius: 2.5pt; image-rendering: auto; box-shadow: 0 1mm 2.5mm rgba(0,0,0,.18); }
+.chip { display: inline-block; font: 700 7.4pt "Avenir Next", sans-serif; letter-spacing: .04em; padding: .4mm 1.6mm;
+        border-radius: 1.5pt; vertical-align: 1pt; }
+
+/* -- words to know -- */
+.words { columns: 2; column-gap: 5mm; font-size: 9.6pt; line-height: 1.35; }
+.words p { margin-bottom: 1.5mm; break-inside: avoid; }
+.words strong { font-family: "Avenir Next", sans-serif; letter-spacing: .02em; }
+.small { font-size: 9.6pt; color: var(--soft); }

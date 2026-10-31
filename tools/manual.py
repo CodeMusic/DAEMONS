@@ -9,6 +9,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --refresh     # copy docs/manual/frames/ again from the theatre's captures (and --write)
     python3 tools/manual.py --book social --write   # the second book: PLAYING TOGETHER, the social features (C-219..)
     python3 tools/manual.py --book quick --write    # QUICK START: what DAEMONS is and how to play, in large type
+    python3 tools/manual.py --book micro --write    # MICRO-START: the same, in five pages at most
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -71,9 +72,15 @@ BOOKS = {
     # the fourth: QUICK START, short and in large type (the user, 2026-10-31: "much shorter started with the context of
     # what this is ... and then a how to play ... written such that my 77 year old Mom could understand it and play it")
     "quick": {"src": "docs/manual-quick", "out": "docs/DAEMONS-quickstart.pdf", "title": "DAEMONS: quick start",
-              "sub": "Quick start: what it is, and how to play", "foot": "quick start",
+              "tag": "QUICK-START", "sub": "What it is, and how to play", "foot": "quick start",
               "subject": "DAEMONS, quickly: what it is, and how to play it, step by step",
               "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None},
+    # the fifth: MICRO-START, the quick start again in five pages at most, a little smaller (the user, 2026-10-31: "a
+    # third potion, to represent an even quicker micro version, taht one is at max 5 pages, with a bit smaller text")
+    "micro": {"src": "docs/manual-micro", "out": "docs/DAEMONS-microstart.pdf", "title": "DAEMONS: micro start",
+              "tag": "MICRO-START", "sub": "Five pages, and you are playing", "foot": "micro start",
+              "subject": "DAEMONS in five pages: what it is, and how to play it",
+              "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None, "toc": False, "max_pages": 5},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
@@ -432,18 +439,20 @@ def page_html(build, body, toc, css, rel, date):
     style = "\n".join(band(t) for t in build.order)
     strip = "".join('<img src="%s" alt="">' % build.image("sprite:" + n, build.daemons.sprite(n), SPRITE_SCALE)
                     for n in (BOOK["strip"] or COVER_STRIP))
+    tag = '<div class="ctag">%s</div>' % H.escape(BOOK["tag"]) if BOOK.get("tag") else ""   # QUICK-START, large
+    contents_page = '<section class="toc"><h1 class="tochead">Contents</h1>%s</section>' % toc if BOOK.get("toc", True) else ""
     return """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>%s</title>
 <style>%s
 %s</style></head><body>
 <section class="cover"><div class="ctop"><div class="ced">CONTEXT / CONTENT</div><div class="ctitle">DAEMONS</div>
-<div class="csub">%s</div></div>
+%s<div class="csub">%s</div></div>
 <div class="cspr">%s</div><div class="cstrip">%s</div>
 <div class="cbot"><div>For release <b>%s</b>%s &middot; every word quoted from the game is a DRAFT</div>
 <div>A fan project for the Game Boy Advance. No ROM is in it, or anywhere in DAEMONS.</div></div></section>
-<section class="toc"><h1 class="tochead">Contents</h1>%s</section>
 %s
-</body></html>""" % (H.escape(BOOK["title"]), css, style, H.escape(BOOK["sub"]), sprites, strip, rel,
-                        (", " + date) if date else "", toc, body)
+%s
+</body></html>""" % (H.escape(BOOK["title"]), css, style, tag, H.escape(BOOK["sub"]), sprites, strip, rel,
+                        (", " + date) if date else "", contents_page, body)
 
 
 def build_html(work):
@@ -560,15 +569,23 @@ def main():
         open(html_path, "w", encoding="utf-8").write(page_html(b, body, contents(body), css, rel, date))
         first = os.path.join(work, "first.pdf")
         chrome(html_path, first)
-        pages = landing_pages(first)
-        missing = [i for i, _, _ in HEADS.findall(body) if i not in pages]
-        if missing:
-            raise SystemExit("manual: the first print did not place %s" % ", ".join(missing[:5]))
-        open(html_path, "w", encoding="utf-8").write(page_html(b, body, contents(body, pages), css, rel, date))
-        second = os.path.join(work, "second.pdf")
-        chrome(html_path, second)
-        if landing_pages(second) != pages:
-            raise SystemExit("manual: the page numbers moved between the two prints")
+        second = first
+        if BOOK.get("toc", True):        # a book with no contents page prints once: there are no numbers to place
+            pages = landing_pages(first)
+            missing = [i for i, _, _ in HEADS.findall(body) if i not in pages]
+            if missing:
+                raise SystemExit("manual: the first print did not place %s" % ", ".join(missing[:5]))
+            open(html_path, "w", encoding="utf-8").write(page_html(b, body, contents(body, pages), css, rel, date))
+            second = os.path.join(work, "second.pdf")
+            chrome(html_path, second)
+            if landing_pages(second) != pages:
+                raise SystemExit("manual: the page numbers moved between the two prints")
+        if BOOK.get("max_pages"):
+            import fitz
+            with fitz.open(second) as doc:
+                if len(doc) > BOOK["max_pages"]:
+                    raise SystemExit("manual: %s came to %d pages; it may have %d at most"
+                                     % (BOOK["out"], len(doc), BOOK["max_pages"]))
         tmp = OUT + ".tmp"
         stamp(second, tmp, rel, digest)
         os.replace(tmp, OUT)
