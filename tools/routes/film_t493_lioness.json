@@ -64,7 +64,7 @@
     "var VAR_MAP_SCENE_VERMILION_CITY 3",
     "goto PalletTown_PlayersHouse_1F 4 6",
     "talk Mom",
-    "says \"IT ARRIVED. THANK YOU.\"",
+    "says \"IT GOT THERE.\"",
     "unsaid \"how does home look\"",
     "flagis FLAG_LIONESS_REPLY_GIVEN 1"
    ]
