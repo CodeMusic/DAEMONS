@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.334**
+**A total conversion — the living design bible, v11.335**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8958,12 +8958,15 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - ***A pair of paintings (T-493).*** **A painting on an easel in the S.S. ANNE's corridor, where anyone may look: words along its frame in letters that will not hold still.** *Looking files them in LOOSE PAGES just as they are.* **Its twin stands on an easel in THE NEXUS, beside the Christmas tree -- the same sprite facing the other way, which the engine draws mirrored** -- *and standing before it with the NOTEBOOK open, the page is filed again with the words held still.* **The scramble is the alphabet in a mirror (A for Z)**, *so a patient player can read it before THE NEXUS; nothing rewards that and nothing stops it.* ***One half locks and only the other opens; the game never says key.***
 - ***Not hard, unfamiliar (T-495).*** **CALLOW SCHOOL's 5F teacher adds three lines: nobody on LEARNING says hard; it isn't hard, it's unfamiliar; do it twice and it is less so.** *True of a mind and of a model alike -- the less familiar, the less predictable -- and, under 4.35's rule, never joined up.*
 
+***The user's words and choices (2026-10-31, by multiple choice).*** **The painting reads IT'S REAL. IT'S YOURS.** *(the closing promise of an assignment, returned)*; **the card reads IT GOT THERE.** *(her own words on the deck, handed back)*; **at the gangway she passes the teacher's line on** -- *"Somebody told me once: it isn't hard. It's unfamiliar. They were right."*; **and on the deck, only there, she holds an orange ball, the same in both editions** -- *her own sheet, the game's first graphics id past 255 (OBJ_EVENT_GFX_LIONESS_BALL, 256; the recap shows her plain sheet in its place).* *Her other lines stay DRAFT.*
+
 *Four flags at the top of the game lane's block (0x3F7-0x3FA), two LOOSE PAGES (SEEN 107 and 108), two graphics ids (the lioness took FREE 104, the easel FREE 140; the easel is in npc_pink because THE PHOENIX holds slot 1 in THE NEXUS). Played in the theatre: `tools/routes/film_t493_lioness.json`.*
 
 ## 10. DECISION LOG
 
 ### Settled
 
+- **The lioness, the user's words (T-493 to T-496, 2026-10-31)** — the painting IT'S REAL. IT'S YOURS.; the card IT GOT THERE.; the teacher's line passed on at the gangway; an orange ball on the deck only, the game's first wide graphics id (9.33)
 - **The thin half-hour is 3:30 to 3:59 (T-501, 2026-10-31)** — the user, by multiple choice: half past three is the moment, as built (OSRIC HATTER's clocks come right, the glitch peaks); THE BOOK OF THIRTEEN's last spell and the Blank Tablet's thirteenth line move from 3:00-3:30 to 3:30-3:59 (4.39)
 - **Wrath has one answer (T-498, 2026-10-31)** — the sixth MARK brings FORGIVENESS over WRATH, as the week does, so every virtue-shadow pair is the same everywhere; the MARKS keep their own order, one per BENCHMARK (9.21)
 - **The lioness, the letter and the pair of paintings (T-493 to T-496, 2026-10-30)** — the same lioness met four times before the ship, her work changing; a letter she asks the player to post, answered at home once the ship has sailed; a painting on the S.S. ANNE whose words will not hold still and its mirrored twin in THE NEXUS that holds them; and CALLOW SCHOOL's 5F teacher on unfamiliar, not hard; every word DRAFT (9.33)

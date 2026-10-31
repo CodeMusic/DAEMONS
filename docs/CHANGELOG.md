@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.335 — 2026-10-31
+
+- **9.33, the user's choices for the lioness (T-493 to T-496).** The painting reads IT'S REAL. IT'S YOURS. and the card reads IT GOT THERE. At the gangway she passes on the teacher's line. On the deck only, she holds an orange ball, the same in both editions, on the game's first graphics id past 255.
+- A Settled entry in section 10.
+
 ## v11.334 — 2026-10-31
 
 - **4.39, the thin half-hour is 3:30 to 3:59 (T-501, the user, by multiple choice).** What is built already makes half past three the moment: OSRIC HATTER's clocks come right and the glitch peaks at :30. THE BOOK OF THIRTEEN's last spell, THE WITCHING HOUR, and the Blank Tablet's thirteenth line move from 3:00-3:30 to 3:30-3:59 to match. Nothing in the ROM changes; neither is built yet (T-483).

@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.334, working |
-| [`CONTEXT-CONTENT-design-bible-v11.334.pdf`](CONTEXT-CONTENT-design-bible-v11.334.pdf) | Typeset **snapshot** at v11.334 — the thin half-hour set at half past three, where OSRIC HATTER's clocks come right; before it, forgiveness on the sixth MARK, a lioness met four times before the ship, a letter answered at home, and a painting read in its mirror | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.335, working |
+| [`CONTEXT-CONTENT-design-bible-v11.335.pdf`](CONTEXT-CONTENT-design-bible-v11.335.pdf) | Typeset **snapshot** at v11.335 — the lioness in the user's words: IT'S REAL. IT'S YOURS., IT GOT THERE., and an orange ball on the deck | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

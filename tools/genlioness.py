@@ -8,8 +8,8 @@ the user, 2026-10-30; the design in docs/private, never in a tracked file).
 
 THE LIONESS: every person is an animal (fable-actors-animals). Drawn with the town folk's own figure (gentowns.fig,
 genfolk.figure) in npc_blue: gold fur, a cream muzzle, a lavender top and indigo trousers. The same sheet every time
-she is met, so a player who is looking knows her. Her ball is not on the sheet: she is met with it only once, and the
-deck's lines carry it.
+she is met, so a player who is looking knows her. Her ball is not on the sheet: she is met with it only on the deck, and
+there she has a sheet of her own (OBJ_EVENT_GFX_LIONESS_BALL, the user 2026-10-31: an orange ball, both editions).
 
 THE EASEL: one canvas on its stand, a meadow at night under a white moon, the moon to the left and a tree to the right.
 Every frame is the same picture, so it reads the same from any side; the engine draws an object facing EAST as its
@@ -60,6 +60,24 @@ def lioness():
     back = g.overlay(back, g.TAIL, ["KyK", "KyK", "KyK", "KoK", " KK"], 7)     # the tail, its dark tuft
     frames = f.figure(front, back, side)
     f.check("lioness", frames, BLUE)
+    return frames
+
+
+#  T-494 (the user, 2026-10-31, option B): on the deck only, she holds her ball -- orange, the same in both editions,
+#  her own game's ball. A ball of six by six at her hip facing south, in front of her chest facing west (east is that
+#  flipped); facing north her body hides it.
+BALL = [".KKKK.", "KOnOOK", "KnnnnK", "KOnOOK", "KOnOOK", ".KKKK."]
+
+
+def lioness_ball():
+    frames = [list(fr) for fr in lioness()]
+    for n, (x0, y0) in [(0, (10, 21)), (3, (10, 21)), (4, (10, 21)), (2, (0, 18)), (7, (0, 18)), (8, (0, 18))]:
+        rows = [list(r) for r in frames[n]]
+        for dy, row in enumerate(BALL):
+            for dx, ch in enumerate(row):
+                if ch != ".":
+                    rows[y0 + dy][x0 + dx] = ch
+        frames[n] = ["".join(r) for r in rows]
     return frames
 
 
@@ -121,6 +139,9 @@ SPRITES = [  # (const, cname, fname, frames, letters, palette, tag, slot, note, 
     ("OBJ_EVENT_GFX_LIONESS", "Lioness", "lioness", lioness, BLUE, "npc_blue", "OBJ_EVENT_PAL_TAG_NPC_BLUE",
      "PALSLOT_NPC_1", "T-496: the lioness, met four times before the ship (DAEMONS tools/genlioness.py), npc_blue",
      "OBJ_EVENT_GFX_NURSE"),
+    ("OBJ_EVENT_GFX_LIONESS_BALL", "LionessBall", "lioness_ball", lioness_ball, BLUE, "npc_blue",
+     "OBJ_EVENT_PAL_TAG_NPC_BLUE", "PALSLOT_NPC_1", "T-494: the lioness on the S.S. ANNE's deck, holding her ball "
+     "(DAEMONS tools/genlioness.py), npc_blue", "OBJ_EVENT_GFX_LIONESS"),
     ("OBJ_EVENT_GFX_EASEL", "Easel", "easel", easel, PINK, "npc_pink", "OBJ_EVENT_PAL_TAG_NPC_PINK", "PALSLOT_NPC_2",
      "T-493: the pair of paintings on their easel (DAEMONS tools/genlioness.py), npc_pink; faces west on the S.S. "
      "ANNE and east in THE NEXUS, which the engine draws mirrored", "OBJ_EVENT_GFX_SIGN"),
