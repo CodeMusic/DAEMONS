@@ -283,3 +283,15 @@ DAEMONS companion at App Store sizes, iPad 13in (2064x2752): TODAY, the party, t
 DAEMONS companion at App Store sizes, iPad 13in (2064x2752): TODAY, the party, the INDEX, the LIBRARY
 
 ![31Oct2026 - C210 - App Store screenshots iPad - 51](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPad%20-%2051.png)
+
+### 31Oct2026 - T508 - micro start, all five pages - 52
+
+MICRO-START (docs/DAEMONS-microstart.pdf, v11.334.1): all five pages -- the cover, what it is and getting it going, the buttons, playing, the words and where next.
+
+![31Oct2026 - T508 - micro start, all five pages - 52](31Oct2026%20-%20T508%20-%20micro%20start%2C%20all%20five%20pages%20-%2052.png)
+
+### 31Oct2026 - T508 - quick start cover - 53
+
+QUICK-START now on the quick start's cover, large, with its contents beside it.
+
+![31Oct2026 - T508 - quick start cover - 53](31Oct2026%20-%20T508%20-%20quick%20start%20cover%20-%2053.png)
