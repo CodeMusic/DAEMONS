@@ -151,3 +151,75 @@ T-483 (5): the PATTERN names the foe's routine at the prompt (This turn it runs 
 T-483 (5): the PATTERN names the foe's routine at the prompt (This turn it runs FLIP.); the LENS shows HP 19/19 and LEGACY hits x2, then x1 100% in the routine menu; the FIELD hides HP and PP (DRAFT; the PATTERN's set-line has since been reworded)
 
 ![31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 25](31Oct2026%20-%20T483%20-%20the%20PATTERN%2C%20LENS%20and%20FIELD%20in%20battle%20-%2025.png)
+
+### 31Oct2026 - T500 - OSRIC HATTERs sign - 26
+
+T-500 (DRAFT): the sign at OSRIC HATTER's hat, QUICKSILVER (11,13): OSRIC HATTER / HATS, then In this style 10/6. Filmed in the theatre, film_t50x.json stop 1.
+
+![31Oct2026 - T500 - OSRIC HATTERs sign - 26](31Oct2026%20-%20T500%20-%20OSRIC%20HATTERs%20sign%20-%2026.png)
+
+### 31Oct2026 - T502 - CRYSTAL in the lab after the eighth MARK - 27
+
+T-502 (DRAFT): CRYSTAL in the lab, eighth MARK held, book held: You will go further than I did. / I mean that kindly. then the purple I cannot always be there.; spoken to again, not said. t459d.json stops 3-4.
+
+![31Oct2026 - T502 - CRYSTAL in the lab after the eighth MARK - 27](31Oct2026%20-%20T502%20-%20CRYSTAL%20in%20the%20lab%20after%20the%20eighth%20MARK%20-%2027.png)
+
+### 31Oct2026 - T502 - CRYSTAL in the lab after the eighth MARK - 28
+
+T-502 (DRAFT): CRYSTAL in the lab, eighth MARK held, book held: You will go further than I did. / I mean that kindly. then the purple I cannot always be there.; spoken to again, not said. t459d.json stops 3-4.
+
+![31Oct2026 - T502 - CRYSTAL in the lab after the eighth MARK - 28](31Oct2026%20-%20T502%20-%20CRYSTAL%20in%20the%20lab%20after%20the%20eighth%20MARK%20-%2028.png)
+
+### 31Oct2026 - T503 - MATTE and the Gym Guy - 29
+
+T-503 (DRAFT): BRAZEN BENCHMARK's Gym Guy (They read you, and steer you!) and MATTE's intro and MARK (It was a cheap spoon.). film_t50x.json stops 2-3.
+
+![31Oct2026 - T503 - MATTE and the Gym Guy - 29](31Oct2026%20-%20T503%20-%20MATTE%20and%20the%20Gym%20Guy%20-%2029.png)
+
+### 31Oct2026 - T503 - MATTE and the Gym Guy - 30
+
+T-503 (DRAFT): BRAZEN BENCHMARK's Gym Guy (They read you, and steer you!) and MATTE's intro and MARK (It was a cheap spoon.). film_t50x.json stops 2-3.
+
+![31Oct2026 - T503 - MATTE and the Gym Guy - 30](31Oct2026%20-%20T503%20-%20MATTE%20and%20the%20Gym%20Guy%20-%2030.png)
+
+### 31Oct2026 - T503 - THREE ISLANDs spoon-bender - 31
+
+T-503 (DRAFT): THREE ISLAND's spoon-bender: Maybe it was never the spoon. Maybe it was who was watching. film_t50x.json stop 4.
+
+![31Oct2026 - T503 - THREE ISLANDs spoon-bender - 31](31Oct2026%20-%20T503%20-%20THREE%20ISLANDs%20spoon-bender%20-%2031.png)
+
+### 31Oct2026 - T504 - MOMs ship line and DAVID called - 32
+
+T-504 (DRAFT): MOM's ship line with the purple Come back. while the ship is in port; after it sails, Your brother called. / From the ship. / He never calls. I did not say so. / ...He sounded well., once. t459d.json stops 1, 6, 7.
+
+![31Oct2026 - T504 - MOMs ship line and DAVID called - 32](31Oct2026%20-%20T504%20-%20MOMs%20ship%20line%20and%20DAVID%20called%20-%2032.png)
+
+### 31Oct2026 - T504 - MOMs ship line and DAVID called - 33
+
+T-504 (DRAFT): MOM's ship line with the purple Come back. while the ship is in port; after it sails, Your brother called. / From the ship. / He never calls. I did not say so. / ...He sounded well., once. t459d.json stops 1, 6, 7.
+
+![31Oct2026 - T504 - MOMs ship line and DAVID called - 33](31Oct2026%20-%20T504%20-%20MOMs%20ship%20line%20and%20DAVID%20called%20-%2033.png)
+
+### 31Oct2026 - T504 - MOMs ship line and DAVID called - 34
+
+T-504 (DRAFT): MOM's ship line with the purple Come back. while the ship is in port; after it sails, Your brother called. / From the ship. / He never calls. I did not say so. / ...He sounded well., once. t459d.json stops 1, 6, 7.
+
+![31Oct2026 - T504 - MOMs ship line and DAVID called - 34](31Oct2026%20-%20T504%20-%20MOMs%20ship%20line%20and%20DAVID%20called%20-%2034.png)
+
+### 31Oct2026 - T505 - the WAREHOUSEs remnants - 35
+
+T-505 (DRAFT): FIVE ISLAND's WAREHOUSE: Grunt3 and both admins as remnants who do not know what happened to SCORN, who stays at (22,4). film_t50x.json stops 5-7.
+
+![31Oct2026 - T505 - the WAREHOUSEs remnants - 35](31Oct2026%20-%20T505%20-%20the%20WAREHOUSEs%20remnants%20-%2035.png)
+
+### 31Oct2026 - T505 - the WAREHOUSEs remnants - 36
+
+T-505 (DRAFT): FIVE ISLAND's WAREHOUSE: Grunt3 and both admins as remnants who do not know what happened to SCORN, who stays at (22,4). film_t50x.json stops 5-7.
+
+![31Oct2026 - T505 - the WAREHOUSEs remnants - 36](31Oct2026%20-%20T505%20-%20the%20WAREHOUSEs%20remnants%20-%2036.png)
+
+### 31Oct2026 - T505 - the WAREHOUSEs remnants - 37
+
+T-505 (DRAFT): FIVE ISLAND's WAREHOUSE: Grunt3 and both admins as remnants who do not know what happened to SCORN, who stays at (22,4). film_t50x.json stops 5-7.
+
+![31Oct2026 - T505 - the WAREHOUSEs remnants - 37](31Oct2026%20-%20T505%20-%20the%20WAREHOUSEs%20remnants%20-%2037.png)

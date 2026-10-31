@@ -1,0 +1,83 @@
+{
+  "rom": "debug",
+  "about": "Filming v11.334.1's story fixes (all DRAFT): T-500 OSRIC HATTER's sign on QUICKSILVER's south sand; T-503 MATTE's intro, the Gym Guy's advice and THREE ISLAND's spoon-bender, reads and steering, not force; T-505 the WAREHOUSE's remnants, Grunt3's and both admins' intros. T-502 and T-504 are tools/routes/t459d.json. Every trainer and scene flag is cleared first, so the route replays. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "T-500: the sign at OSRIC HATTER's hat, QUICKSILVER (11,13)",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "goto CinnabarIsland 11 14",
+        "shot the hat's door and the sign",
+        "look 11 13",
+        "says \"OSRIC HATTER\"",
+        "says \"In this style 10/6\""
+      ]
+    },
+    {
+      "stop": "T-503: BRAZEN BENCHMARK's Gym Guy, before MATTE is beaten",
+      "steps": [
+        "flag FLAG_DEFEATED_SABRINA 0",
+        "goto SaffronCity_Gym 14 21",
+        "talk GymGuy",
+        "says \"They read you, and steer you!\""
+      ]
+    },
+    {
+      "stop": "T-503: MATTE's intro",
+      "steps": [
+        "trainer TRAINER_LEADER_SABRINA 0",
+        "goto SaffronCity_Gym 14 12",
+        "talk EventScript_Sabrina",
+        "says \"I watched you cross the floor.\"",
+        "says \"It was a cheap spoon.\"",
+        "says \"I see where people are about to look.\""
+      ]
+    },
+    {
+      "stop": "T-503: THREE ISLAND's spoon-bender",
+      "steps": [
+        "goto ThreeIsland_House2 4 6",
+        "talk Rocker",
+        "says \"Maybe it was who was watching.\""
+      ]
+    },
+    {
+      "stop": "T-505: the WAREHOUSE, Grunt3",
+      "steps": [
+        "flag FLAG_HIDE_FIVE_ISLAND_ROCKETS 0",
+        "flag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE 0",
+        "var VAR_MAP_SCENE_ROCKET_WAREHOUSE 1",
+        "trainer TRAINER_TEAM_ROCKET_GRUNT_48 0",
+        "trainer TRAINER_TEAM_ROCKET_ADMIN 0",
+        "trainer TRAINER_TEAM_ROCKET_ADMIN_2 0",
+        "goto FiveIsland_RocketWarehouse 18 15",
+        "talk LOCALID_WAREHOUSE_GRUNT3",
+        "says \"He checks something. None of us know what.\""
+      ]
+    },
+    {
+      "stop": "T-505: the WAREHOUSE, the first admin",
+      "steps": [
+        "goto FiveIsland_RocketWarehouse 27 17",
+        "talk LOCALID_WAREHOUSE_ADMIN1",
+        "says \"Then the telling stopped.\""
+      ]
+    },
+    {
+      "stop": "T-505: the WAREHOUSE, the second admin, and SCORN still at (22,4) (his defeat line is said in the battle, which `win` skips: read it from text.inc)",
+      "steps": [
+        "flag FLAG_HIDE_FIVE_ISLAND_ROCKETS 0",
+        "flag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE 0",
+        "trainer TRAINER_TEAM_ROCKET_ADMIN_2 0",
+        "goto FiveIsland_RocketWarehouse 25 12",
+        "shot the second admin",
+        "talk LOCALID_WAREHOUSE_ADMIN2",
+        "says \"Not one order since he came in.\"",
+        "says \"He won't notice we've gone.\"",
+        "goto FiveIsland_RocketWarehouse 22 6",
+        "shot SCORN, still at (22,4)"
+      ]
+    }
+  ]
+}
