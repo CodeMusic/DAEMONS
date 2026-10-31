@@ -235,3 +235,51 @@ QUICK START (docs/DAEMONS-quickstart.pdf, v11.334.1): the cover, what DAEMONS is
 QUICK START: four of the ten steps, a page each -- the buttons (with a drawing of a Game Boy Advance), a new game, a battle, and resting at a CHECKPOINT.
 
 ![31Oct2026 - T507 - quick start, how to play - 39](31Oct2026%20-%20T507%20-%20quick%20start%2C%20how%20to%20play%20-%2039.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPhone - 44
+
+DAEMONS companion at App Store sizes, iPhone 6.9in (1320x2868): TODAY, the party, the INDEX, the LIBRARY -- the playground's CONTEXT companion, nothing personal
+
+![31Oct2026 - C210 - App Store screenshots iPhone - 44](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPhone%20-%2044.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPhone - 45
+
+DAEMONS companion at App Store sizes, iPhone 6.9in (1320x2868): TODAY, the party, the INDEX, the LIBRARY -- the playground's CONTEXT companion, nothing personal
+
+![31Oct2026 - C210 - App Store screenshots iPhone - 45](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPhone%20-%2045.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPhone - 46
+
+DAEMONS companion at App Store sizes, iPhone 6.9in (1320x2868): TODAY, the party, the INDEX, the LIBRARY -- the playground's CONTEXT companion, nothing personal
+
+![31Oct2026 - C210 - App Store screenshots iPhone - 46](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPhone%20-%2046.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPhone - 47
+
+DAEMONS companion at App Store sizes, iPhone 6.9in (1320x2868): TODAY, the party, the INDEX, the LIBRARY -- the playground's CONTEXT companion, nothing personal
+
+![31Oct2026 - C210 - App Store screenshots iPhone - 47](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPhone%20-%2047.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPad - 48
+
+DAEMONS companion at App Store sizes, iPad 13in (2064x2752): TODAY, the party, the INDEX, the LIBRARY
+
+![31Oct2026 - C210 - App Store screenshots iPad - 48](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPad%20-%2048.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPad - 49
+
+DAEMONS companion at App Store sizes, iPad 13in (2064x2752): TODAY, the party, the INDEX, the LIBRARY
+
+![31Oct2026 - C210 - App Store screenshots iPad - 49](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPad%20-%2049.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPad - 50
+
+DAEMONS companion at App Store sizes, iPad 13in (2064x2752): TODAY, the party, the INDEX, the LIBRARY
+
+![31Oct2026 - C210 - App Store screenshots iPad - 50](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPad%20-%2050.png)
+
+### 31Oct2026 - C210 - App Store screenshots iPad - 51
+
+DAEMONS companion at App Store sizes, iPad 13in (2064x2752): TODAY, the party, the INDEX, the LIBRARY
+
+![31Oct2026 - C210 - App Store screenshots iPad - 51](31Oct2026%20-%20C210%20-%20App%20Store%20screenshots%20iPad%20-%2051.png)
