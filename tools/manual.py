@@ -138,12 +138,18 @@ class Daemons:
         rd = lambda p: open(os.path.join(GBA, p), encoding="utf-8").read()
         self.name = dict(re.findall(r'\[SPECIES_(\w+)\]\s*=\s*_\("([^"]*)"\)', rd("src/data/text/species_names.h")))
         self.slot = {v: k for k, v in self.name.items()}
-        alias = {b: a for a, b in re.findall(r"#define SPECIES_(\w+)\s+SPECIES_(\w+)\b", rd("include/constants/species.h"))}
-        self.key = {slot: alias.get(slot, slot) for slot in self.name}
-        self.cat = dict(re.findall(r'\[NATIONAL_DEX_(\w+)\]\s*=\s*\{\s*\.categoryName = _\("([^"]*)"\)',
-                                   rd("src/data/pokemon/pokedex_entries.h")))
+        entries = rd("src/data/pokemon/pokedex_entries.h")
+        self.cat = dict(re.findall(r'\[NATIONAL_DEX_(\w+)\]\s*=\s*\{\s*\.categoryName = _\("([^"]*)"\)', entries))
+        # the text each INDEX row points at, read rather than guessed (OLD_UNOWN_B's is gMissingnoPokedexText, T-499)
+        self.desc = dict(re.findall(r"\[NATIONAL_DEX_(\w+)\]\s*=\s*\{[^}]*?\.description\s*=\s*(g\w+)\s*,", entries))
         enum = re.search(r"enum\s*\{\s*NATIONAL_DEX_NONE,(.*?)\};", rd("include/constants/pokedex.h"), re.S).group(1)
         self.number = {n: i + 1 for i, n in enumerate(re.findall(r"NATIONAL_DEX_(\w+)", enum))}
+        # An alias is the INDEX's key only when the INDEX has a row by that name: T-395's NEXUS residents do
+        # (SPECIES_REFLECTION is OLD_UNOWN_C, numbered NATIONAL_DEX_REFLECTION), but T-234's are C nicknames for the
+        # slot they took (SPECIES_DOLPHIN is WAILMER, still NATIONAL_DEX_WAILMER and gWailmerPokedexText, T-499).
+        alias = {b: a for a, b in re.findall(r"#define SPECIES_(\w+)\s+SPECIES_(\w+)\b", rd("include/constants/species.h"))
+                 if a in self.number}
+        self.key = {slot: alias.get(slot, slot) for slot in self.name}
         info = rd("src/data/pokemon/species_info.h")
         self.types = {}
         for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=", info):
@@ -154,8 +160,9 @@ class Daemons:
         self.text = {ed: rd("src/data/pokemon/pokedex_text_%s.h" % ed) for ed in ("fr", "lg")}
 
     def entry(self, slot, ed):
-        stem = self.key[slot].capitalize().replace("_", "")
-        m = re.search(r"g%sPokedexText\[\] = _\(\n(.*?)\);" % stem, self.text[ed], re.S | re.I)
+        key = self.key[slot]
+        sym = self.desc.get(key) or "g%sPokedexText" % key.replace("_", "")   # a stem matched without case (MR_MIME is Mrmime)
+        m = re.search(r"%s\[\] = _\(\n(.*?)\);" % sym, self.text[ed], re.S | re.I)
         return "".join(re.findall(r'"([^"]*)"', m.group(1))).replace("\\n", " ").strip() if m else ""
 
     def sprite(self, name):
