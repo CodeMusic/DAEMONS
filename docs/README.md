@@ -3,7 +3,7 @@
 | File | What it is | Status |
 |---|---|---|
 | [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.333, working |
-| [`CONTEXT-CONTENT-design-bible-v11.333.pdf`](CONTEXT-CONTENT-design-bible-v11.333.pdf) | Typeset **snapshot** at v11.333 — a lioness met four times before the ship, a letter answered at home, and a painting read in its mirror | frozen |
+| [`CONTEXT-CONTENT-design-bible-v11.333.pdf`](CONTEXT-CONTENT-design-bible-v11.333.pdf) | Typeset **snapshot** at v11.333 — wrath met by forgiveness on the sixth MARK as in the week, a lioness met four times before the ship, a letter answered at home, and a painting read in its mirror | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

@@ -10,6 +10,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - **9.33, The lioness, the letter and the pair of paintings (new section; T-493 to T-496).** The same lioness is met four times before the S.S. ANNE sails: at VIRIDIAN's center, at CERULEAN's, at the gangway and on the deck. On the deck she asks the player to post a letter, and MOM hands over the one-line reply once the ship has gone. A painting's scrambled words, filed from the ship, are read beside its mirrored twin in THE NEXUS. CALLOW SCHOOL's 5F teacher says it isn't hard, only unfamiliar.
 - A Settled entry in section 10. Every word is DRAFT.
 
+### Wrath has one answer (T-498)
+
+- ***9.21, the week (the user)***: **the sixth MARK, MATTE's FRAME, brings FORGIVENESS over WRATH, as the GUIDE, THE SUBTLE LAYER and the companion's week say; it brought PATIENCE.** *Every virtue-shadow pair is now the same everywhere; the MARKS keep their own order, one per BENCHMARK. MATTE: "I saw this moment a long time ago. I forgave it then." -- "That is forgiveness. Most people stop at the frame." The insight: "A frame shows what someone did. Forgiveness sees what was there all along, just outside it." DRAFT.*
+- ***10, Settled***: **Wrath has one answer.**
+
 ## v11.332 — 2026-10-29
 
 - **2.12 §2, the `* SINK` items, released in v11.331.1 (T-488).** There are sixteen. Neither ORACLE nor CONTENT has one, because CONTENT is super-effective against nothing. Two of the names overlap ability names: SINK is MINUS's ability and SIGNAL SINK is LIGHTNING ROD's. The user chose to keep both. The bible also lists where each is sold and the four hidden on routes.
