@@ -1,0 +1,79 @@
+{
+  "rom": "debug",
+  "about": "T-490 step 2 in play: TRELLIS's BENCHMARK (CeladonCity_Gym), her lead SPAGHETTI (level 27, SP. DEF base 40, DEF base 115). Our lead made a level-30 CORRUPT daemon with ATTACK 80 and SP. ATK 80, fast enough to go first and too sturdy to fall. GARBAGE (65, now SPECIAL) against FALSETAIL (50, still PHYSICAL), each from the same saved moment. The theatre's debug scratch save; nothing is saved.",
+  "stops": [
+    {
+      "stop": "TRELLIS's BENCHMARK, her battle begun",
+      "steps": [
+        "load debug",
+        "trainer TRAINER_LEADER_ERIKA 0",
+        "goto CeladonCity_Gym 6 5",
+        "repel 999",
+        "talk Erika 1",
+        "press A 6",
+        "wait 200",
+        "foe SPECIES_TANGELA",
+        "shot SPAGHETTI leads",
+        "press B 4",
+        "wait 300",
+        "shot the prompt",
+        "poke gBattleMons+2 16 80",
+        "poke gBattleMons+8 16 80",
+        "poke gBattleMons+6 16 300",
+        "poke gBattleMons+32 8 0",
+        "poke gBattleMons+33 8 3",
+        "poke gBattleMons+34 8 3",
+        "poke gBattleMons+40 16 999",
+        "poke gBattleMons+44 16 999",
+        "poke gBattleMons+42 8 30",
+        "savestate trellis_base"
+      ]
+    },
+    {
+      "stop": "GARBAGE, now SPECIAL, against SPAGHETTI's SP. DEF",
+      "steps": [
+        "loadstate trellis_base",
+        "wait 10",
+        "press START",
+        "wait 40",
+        "poke sTheatreSlot 8 0",
+        "poke sTheatreMove 16 124",
+        "press SELECT",
+        "wait 30",
+        "press B",
+        "wait 40",
+        "press A",
+        "wait 30",
+        "shot GARBAGE's move info",
+        "press A",
+        "burst hit 12 20",
+        "wait 120",
+        "shot after GARBAGE",
+        "remember hp gBattleMons+128 16"
+      ]
+    },
+    {
+      "stop": "FALSETAIL, still PHYSICAL, against SPAGHETTI's DEF",
+      "steps": [
+        "loadstate trellis_base",
+        "wait 10",
+        "press START",
+        "wait 40",
+        "poke sTheatreSlot 8 0",
+        "poke sTheatreMove 16 342",
+        "press SELECT",
+        "wait 30",
+        "press B",
+        "wait 40",
+        "press A",
+        "wait 30",
+        "shot FALSETAIL's move info",
+        "press A",
+        "burst hit 12 20",
+        "wait 120",
+        "shot after FALSETAIL",
+        "remember hp gBattleMons+128 16"
+      ]
+    }
+  ]
+}
