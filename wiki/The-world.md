@@ -191,6 +191,10 @@ released or traded on. A daemon can also be **given**, with nothing asked back: 
 met as a gift. And one pair of daemons becomes something new only when the two are traded for each other.
 See [The companion](The-companion).
 
+**Small things that wait.** Some people turn up more than once, doing something different each time. A letter posted
+can be answered after you have gone. And a painting's words may not hold still until you find what reads them --
+the NOTEBOOK keeps them as they were until then.
+
 ## Not built yet
 
 Decided, and still to come: the rest of the landmarks and the cave preview screens, which are still the original's. The [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md)
