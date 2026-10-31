@@ -295,3 +295,21 @@ MICRO-START (docs/DAEMONS-microstart.pdf, v11.334.1): all five pages -- the cove
 QUICK-START now on the quick start's cover, large, with its contents beside it.
 
 ![31Oct2026 - T508 - quick start cover - 53](31Oct2026%20-%20T508%20-%20quick%20start%20cover%20-%2053.png)
+
+### 31Oct2026 - T496 - her line passed on and her ball - 54
+
+v11.335.1: at the gangway she passes the teacher's line on; on the deck she holds the orange ball; her sheet with it, every facing.
+
+![31Oct2026 - T496 - her line passed on and her ball - 54](31Oct2026%20-%20T496%20-%20her%20line%20passed%20on%20and%20her%20ball%20-%2054.png)
+
+### 31Oct2026 - T496 - her line passed on and her ball - 55
+
+v11.335.1: at the gangway she passes the teacher's line on; on the deck she holds the orange ball; her sheet with it, every facing.
+
+![31Oct2026 - T496 - her line passed on and her ball - 55](31Oct2026%20-%20T496%20-%20her%20line%20passed%20on%20and%20her%20ball%20-%2055.png)
+
+### 31Oct2026 - T496 - her line passed on and her ball - 56
+
+v11.335.1: at the gangway she passes the teacher's line on; on the deck she holds the orange ball; her sheet with it, every facing.
+
+![31Oct2026 - T496 - her line passed on and her ball - 56](31Oct2026%20-%20T496%20-%20her%20line%20passed%20on%20and%20her%20ball%20-%2056.png)
