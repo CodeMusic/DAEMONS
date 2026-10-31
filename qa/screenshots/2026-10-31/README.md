@@ -97,3 +97,9 @@ T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven s
 T-493 to T-496 as built (DRAFT): the two new sprites, then the theatre's seven stops in play order. Every word is a placeholder for the user's.
 
 ![31Oct2026 - T493 - the lioness, the letter and the pair of paintings - 16](31Oct2026%20-%20T493%20-%20the%20lioness%2C%20the%20letter%20and%20the%20pair%20of%20paintings%20-%2016.png)
+
+### 31Oct2026 - T498 - MATTE says forgiveness, words before and after - 17
+
+T-498 (DRAFT): every line that changed, before and after, in the game's font -- MATTE as the MARK is given (two boxes), his third box with the understanding, the insight's arrival and the USER card's sixth page. The sixth MARK now says FORGIVENESS over WRATH, as the week does.
+
+![31Oct2026 - T498 - MATTE says forgiveness, words before and after - 17](31Oct2026%20-%20T498%20-%20MATTE%20says%20forgiveness%2C%20words%20before%20and%20after%20-%2017.png)
