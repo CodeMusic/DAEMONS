@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4a7fb5"/></marker>
+        <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c8693c"/></marker></defs>
+  <!-- base tray -->
+  <path d="M60 180 L60 150 L330 150 L330 180 Z" fill="#efe9dc" stroke="#16161a"/>
+  <g fill="#16161a"><rect x="80" y="172" width="16" height="4"/><rect x="110" y="172" width="16" height="4"/><rect x="140" y="172" width="16" height="4"/><rect x="170" y="172" width="16" height="4"/><rect x="200" y="172" width="16" height="4"/><rect x="230" y="172" width="16" height="4"/><rect x="260" y="172" width="16" height="4"/><rect x="290" y="172" width="16" height="4"/></g>
+  <!-- feet -->
+  <rect x="64" y="180" width="18" height="10" fill="#16161a"/><rect x="308" y="180" width="18" height="10" fill="#16161a"/>
+  <!-- tiiny -->
+  <rect x="88" y="126" width="214" height="20" rx="4" fill="#e6f0ea" stroke="#3f7a52" stroke-width="1.6"/>
+  <text x="195" y="140" text-anchor="middle" font-weight="700" fill="#2e5a3c">THE TIINY  142 × 80 × 22 mm</text>
+  <!-- gap marks -->
+  <path d="M316 126L316 146" stroke="#5a5a64"/><text x="322" y="139" fill="#5a5a64">22</text>
+  <path d="M84 146L84 150" stroke="#5a5a64"/>
+  <!-- posts -->
+  <rect x="96" y="84" width="8" height="66" fill="#16161a"/><rect x="286" y="70" width="8" height="80" fill="#16161a"/>
+  <!-- hub, tilted -->
+  <g transform="rotate(-15 195 74)"><rect x="110" y="64" width="170" height="20" rx="3" fill="#16161a"/><rect x="128" y="58" width="134" height="6" fill="#6b3fa0"/></g>
+  <text x="20" y="30" font-weight="700">THE HUB, its screen tilted 15° to you</text>
+  <!-- air -->
+  <path d="M100 205 L100 186" stroke="#4a7fb5" stroke-width="1.6" fill="none" marker-end="url(#ab)"/>
+  <path d="M190 205 L190 186" stroke="#4a7fb5" stroke-width="1.6" fill="none" marker-end="url(#ab)"/>
+  <path d="M280 205 L280 186" stroke="#4a7fb5" stroke-width="1.6" fill="none" marker-end="url(#ab)"/>
+  <path d="M150 122 C 150 108, 160 104, 160 92" stroke="#c8693c" stroke-width="1.6" fill="none" marker-end="url(#ao)"/>
+  <path d="M240 122 C 240 108, 250 104, 250 96" stroke="#c8693c" stroke-width="1.6" fill="none" marker-end="url(#ao)"/>
+  <!-- notes -->
+  <g font-size="8.5">
+    <text x="352" y="76" font-weight="700">AT LEAST 8 mm</text><text x="352" y="88" fill="#5a5a64">under it and over it</text>
+    <text x="352" y="110" font-weight="700">PETG or ASA</text><text x="352" y="122" fill="#5a5a64">where it touches the Tiiny</text><text x="352" y="134" fill="#5a5a64">(PLA softens at 55-60 °C)</text>
+    <text x="352" y="156" font-weight="700">ITS PORTS CLEAR</text><text x="352" y="168" fill="#5a5a64">To PC, power, the hub's card</text>
+    <text x="352" y="190" font-weight="700">ONE BRICK</text><text x="352" y="202" fill="#5a5a64">a two-port GaN, 100 W class</text>
+  </g>
+  <text x="104" y="216" fill="#4a7fb5" font-size="8">cool air in</text><text x="168" y="116" fill="#c8693c" font-size="8">warm air out</text>
+</svg>

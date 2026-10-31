@@ -1,0 +1,9 @@
+{
+ "about": "A BIGGER MIND's pictures: the companion's own screens, taken from a test companion on a synthetic save with a stand-in Tiiny (docs/manual-tiiny/pictures/); it has no game screens.",
+ "frames": {},
+ "pictures": {
+  "talk-tiiny": {
+   "from": "docs/manual-tiiny/pictures/talk-tiiny.png"
+  }
+ }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <!-- the road -->
+  <path d="M40 120 C 90 60, 130 60, 160 110 S 240 160, 270 100 S 350 50, 380 110 S 460 150, 490 90" stroke="#c9bfa8" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M40 120 C 90 60, 130 60, 160 110 S 240 160, 270 100 S 350 50, 380 110 S 460 150, 490 90" stroke="#fbfaf6" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+  <g font-weight="700" text-anchor="middle">
+    <circle cx="40" cy="120" r="15" fill="#16161a"/><text x="40" y="124" fill="#fff">1</text>
+    <circle cx="160" cy="110" r="15" fill="#16161a"/><text x="160" y="114" fill="#fff">2</text>
+    <circle cx="270" cy="100" r="15" fill="#16161a"/><text x="270" y="104" fill="#fff">3</text>
+    <circle cx="380" cy="110" r="15" fill="#16161a"/><text x="380" y="114" fill="#fff">4</text>
+    <circle cx="490" cy="90" r="15" fill="#3f7a52"/><text x="490" y="94" fill="#fff">5</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="40" y="152" font-weight="700">UNBOX</text><text x="40" y="164" fill="#5a5a64">measure it,</text><text x="40" y="175" fill="#5a5a64">find its brick</text>
+    <text x="110" y="34" font-weight="700">AWAKEN</text><text x="110" y="46" fill="#5a5a64">TiinyOS on the</text><text x="110" y="57" fill="#5a5a64">computer, activate</text>
+    <text x="270" y="150" font-weight="700">STOCK</text><text x="270" y="162" fill="#5a5a64">download its</text><text x="270" y="173" fill="#5a5a64">models, Wi-Fi on</text>
+    <text x="350" y="34" font-weight="700">GIVE IT A ROAD</text><text x="350" y="46" fill="#5a5a64">a fixed address,</text><text x="350" y="57" fill="#5a5a64">LiteLLM, its key</text>
+    <text x="470" y="34" font-weight="700" fill="#2e5a3c">FIRST WORDS</text><text x="470" y="46" fill="#5a5a64">tell the hub,</text><text x="470" y="57" fill="#5a5a64">talk to your daemon</text>
+  </g>
+</svg>

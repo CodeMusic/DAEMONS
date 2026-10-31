@@ -60,6 +60,13 @@ BOOKS = {
                "subject": "DAEMONS with other players: trading, loans, gifts, meetings and friends' homes",
                "sprites": ("PENGUIN", "PENPHIN", "DOLPHIN"),
                "strip": ("ROVERCUB", "LABEL", "CLUSTER", "INFERENCE", "HAUNTPROC", "LEMMA MIND", "THEOREM", "PING")},
+    # the third: THE TIINY, setting up the house's bigger mind for the companion (the user, 2026-10-31: "a short pdf for
+    # how to set up the tiiny to a computer and have it communicate with the hub ... a bit daemon gamified")
+    "tiiny": {"src": "docs/manual-tiiny", "out": "docs/DAEMONS-tiiny-manual.pdf", "title": "DAEMONS: a bigger mind",
+              "sub": "A bigger mind: the Tiiny", "foot": "a bigger mind",
+              "subject": "Setting up the Tiiny Pocket for the DAEMONS companion: the computer, the network and the hub",
+              "sprites": ("ROVERBYTE", "INFERENCE", "MAINFRAME"),
+              "strip": ("HUNCH", "CONJECTURE", "PROOF", "THEOREM", "LEMMA MIND", "HEATSINK", "DUALCORE", "ECHO")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
