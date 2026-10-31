@@ -48,12 +48,12 @@
       ]
     },
     {
-      "stop": "BRAZEN: PATIENCE",
+      "stop": "BRAZEN: FORGIVENESS",
       "steps": [
         "trainer TRAINER_LEADER_SABRINA 0",
         "goto SaffronCity_Gym 14 12",
         "talk EventScript_Sabrina",
-        "says \"PATIENCE, over WRATH.\""
+        "says \"FORGIVENESS, over WRATH.\""
       ]
     },
     {

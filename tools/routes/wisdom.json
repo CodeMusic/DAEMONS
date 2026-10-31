@@ -128,7 +128,7 @@
     "flag FLAG_GOT_NOTEBOOK 1",
     "flag FLAG_UNDERSTANDING_READING 0",
     "flag FLAG_GOT_UNION_MATTE 0",
-    "flag FLAG_INSIGHT_PATIENCE 1",
+    "flag FLAG_INSIGHT_FORGIVENESS 1",
     "goto SaffronCity_Gym 14 12",
     "talk EventScript_Sabrina",
     "says \"That MARK taught you what a \"",
@@ -136,7 +136,7 @@
     "talk EventScript_Sabrina",
     "says \"received PLUGIN43\"",
     "talk EventScript_Sabrina",
-    "flag FLAG_INSIGHT_PATIENCE 0",
+    "flag FLAG_INSIGHT_FORGIVENESS 0",
     "trigger 14 13",
     "says \"An insight arrives.\"",
     "flag FLAG_UNDERSTANDING_READING 0"

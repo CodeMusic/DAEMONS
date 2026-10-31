@@ -60,13 +60,13 @@
       "root_balance": "Knowing where I stand can turn to thinking I stand at the centre. The skew keeps it honest. Every view leans, and mine is a view."
     },
     {
-      "leader": "MATTE", "mark": "FRAME", "virtue": "PATIENCE", "badge": "FLAG_BADGE06_GET",
-      "map": "SaffronCity_Gym", "root": "FLAG_UNDERSTANDING_READING", "given": "FLAG_GOT_UNION_MATTE", "insight_flag": "FLAG_INSIGHT_PATIENCE",
+      "leader": "MATTE", "mark": "FRAME", "virtue": "FORGIVENESS", "badge": "FLAG_BADGE06_GET",
+      "map": "SaffronCity_Gym", "root": "FLAG_UNDERSTANDING_READING", "given": "FLAG_GOT_UNION_MATTE", "insight_flag": "FLAG_INSIGHT_FORGIVENESS",
       "plugin": "ITEM_TM43", "plugin_name": "PLUGIN43", "routine": "PANORAMA", "type": "CONTEXT",
       "without": ["That MARK taught you what a frame holds.", "It cannot show you what was outside it all along.", "This city has a room that will not let you in yet. Come back when it has."],
-      "with": ["You were let in, and came out seeing more.", "Not more inside the frame. Around it.", "That took patience. Most people only wait. Take this."],
+      "with": ["You were let in, and came out seeing more.", "Not more inside the frame. Around it.", "That is forgiveness. Most people stop at the frame. Take this."],
       "explain": ["PLUGIN43 is PANORAMA. It takes in everything around the frame: it hits both of them, and never misses.", "Any DAEMON can run it."],
-      "insight": "A frame shows what it holds. Patience shows what was there all along, just outside it.",
+      "insight": "A frame shows what someone did. Forgiveness sees what was there all along, just outside it.",
       "mark_balance": "A frame holds what it holds, and holds it well. NOTICE looks past the edge. It was never all of it.",
       "root_balance": "Noticing everything is noticing nothing. The frame gives attention an edge: one thing, then the next, then what is around it."
     },
