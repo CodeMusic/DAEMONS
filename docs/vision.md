@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.332**
+**A total conversion — the living design bible, v11.333**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8947,10 +8947,22 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 **The point is that a daemon can change hands three ways and the game keeps each one's word.** *A trade is an exchange, a loan comes back, a gift is kept -- and the record says which, because the record is the INDEX's whole job.*
 
+### 9.33 The lioness, the letter and the pair of paintings -- *decided 2026-10-30 (T-493 to T-496)*
+
+***Four small things that sit around the S.S. ANNE, built together*** (*the user, 2026-10-30, by multiple choice; every word DRAFT and the user's to rewrite*).
+
+- ***The lioness, met four times before the ship (T-496).*** **The same lioness, never named, the same sprite each time, her work changing**: *the helper beside the NURSE in VIRIDIAN's center (gone once the first MARK is held); keeping CERULEAN's center as her own (gone once the S.S. TICKET is held); checking everything that comes aboard at the S.S. ANNE's gangway; and on its deck, with the game she built.* **Nothing explains the thread**; *a player who is looking sees it.* *Her sheet is the town folk's figure in npc_blue, gold fur and a lavender top (`tools/genlioness.py`).*
+- ***The letter that answers later (T-494).*** **On the deck she asks the player to post a letter in the ship's post.** *The ship sails and she is not seen again. Home, once it has, MOM has something with a ship's stamp on it: a card in a hand the player doesn't know, one line saying it arrived.* **Nothing else is said.**
+- ***A pair of paintings (T-493).*** **A painting on an easel in the S.S. ANNE's corridor, where anyone may look: words along its frame in letters that will not hold still.** *Looking files them in LOOSE PAGES just as they are.* **Its twin stands on an easel in THE NEXUS, beside the Christmas tree -- the same sprite facing the other way, which the engine draws mirrored** -- *and standing before it with the NOTEBOOK open, the page is filed again with the words held still.* **The scramble is the alphabet in a mirror (A for Z)**, *so a patient player can read it before THE NEXUS; nothing rewards that and nothing stops it.* ***One half locks and only the other opens; the game never says key.***
+- ***Not hard, unfamiliar (T-495).*** **CALLOW SCHOOL's 5F teacher adds three lines: nobody on LEARNING says hard; it isn't hard, it's unfamiliar; do it twice and it is less so.** *True of a mind and of a model alike -- the less familiar, the less predictable -- and, under 4.35's rule, never joined up.*
+
+*Four flags at the top of the game lane's block (0x3F7-0x3FA), two LOOSE PAGES (SEEN 107 and 108), two graphics ids (the lioness took FREE 104, the easel FREE 140; the easel is in npc_pink because THE PHOENIX holds slot 1 in THE NEXUS). Played in the theatre: `tools/routes/film_t493_lioness.json`.*
+
 ## 10. DECISION LOG
 
 ### Settled
 
+- **The lioness, the letter and the pair of paintings (T-493 to T-496, 2026-10-30)** — the same lioness met four times before the ship, her work changing; a letter she asks the player to post, answered at home once the ship has sailed; a painting on the S.S. ANNE whose words will not hold still and its mirrored twin in THE NEXUS that holds them; and CALLOW SCHOOL's 5F teacher on unfamiliar, not hard; every word DRAFT (9.33)
 - **The two books asked: the GUIDE reasons, THE SUBTLE LAYER notices (C-209, C-229, C-230, 2026-10-28)** — either, once held, answered on the companion: the GUIDE as REASON would, from its page; THE SUBTLE LAYER as INSTINCT would, a line from its page and a question back, with TWO VOICES a mode of its own; never called logic and intuition where players read (LOGIC is a type, 9.10); each its part of the day -- the centre, word and note; the virtue over its shadow -- and a daily question kept in a journal with the day and the centre (4.36, 4.38)
 - **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
 - **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)

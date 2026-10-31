@@ -1,0 +1,92 @@
+{
+ "rom": "debug",
+ "about": "T-493, T-494, T-495, T-496 (DRAFT): the lioness met four times before the ship (VIRIDIAN's center, CERULEAN's, the S.S. ANNE's gangway, the deck), the letter she asks the player to post and the reply MOM hands over once the ship has sailed, the painting whose words will not hold still and its mirrored twin in THE NEXUS that reads them, and CALLOW SCHOOL's teacher on 5F. Every flag the scenes set is cleared first, so the route replays. The theatre's debug scratch save, never the user's.",
+ "stops": [
+  {
+   "stop": "T-496: the lioness in VIRIDIAN's center, beside the NURSE",
+   "steps": [
+    "load debug",
+    "repel 999",
+    "flag FLAG_LIONESS_LETTER_SENT 0",
+    "flag FLAG_LIONESS_REPLY_GIVEN 0",
+    "flag FLAG_NOTEBOOK_LOOSE_PAINTING 0",
+    "flag FLAG_NOTEBOOK_LOOSE_PAINTING_READ 0",
+    "flag FLAG_GOT_NOTEBOOK 1",
+    "flag FLAG_BADGE01_GET 0",
+    "goto ViridianCity_PokemonCenter_1F 7 6",
+    "shot VIRIDIAN's center",
+    "talk Lioness",
+    "says \"what all the machines do\"",
+    "flag FLAG_BADGE01_GET 1"
+   ]
+  },
+  {
+   "stop": "T-496: the lioness in CERULEAN's center, keeping it",
+   "steps": [
+    "flag FLAG_GOT_SS_TICKET 0",
+    "goto CeruleanCity_PokemonCenter_1F 7 6",
+    "shot CERULEAN's center",
+    "talk Lioness",
+    "says \"mine to run now\"",
+    "flag FLAG_GOT_SS_TICKET 1"
+   ]
+  },
+  {
+   "stop": "T-496 and T-493: the S.S. ANNE's gangway, and the painting",
+   "steps": [
+    "goto SSAnne_1F_Corridor 19 6",
+    "shot the gangway",
+    "talk Lioness",
+    "says \"I check first\"",
+    "talk Painting",
+    "says \"SVB, BLF! OLLP ZTZRM.\"",
+    "flagis FLAG_NOTEBOOK_LOOSE_PAINTING 1",
+    "shot the painting, facing west"
+   ]
+  },
+  {
+   "stop": "T-494 and T-496: the deck -- her game, and the letter",
+   "steps": [
+    "goto SSAnne_Deck 10 10",
+    "shot the deck",
+    "talk Lioness 3",
+    "press A",
+    "finish",
+    "says \"ship's post\"",
+    "flagis FLAG_LIONESS_LETTER_SENT 1",
+    "talk Lioness",
+    "says \"better with two\""
+   ]
+  },
+  {
+   "stop": "T-494: home, once the ship has sailed -- the reply",
+   "steps": [
+    "var VAR_MAP_SCENE_VERMILION_CITY 3",
+    "goto PalletTown_PlayersHouse_1F 4 6",
+    "talk Mom",
+    "says \"IT ARRIVED. THANK YOU.\"",
+    "unsaid \"how does home look\"",
+    "flagis FLAG_LIONESS_REPLY_GIVEN 1"
+   ]
+  },
+  {
+   "stop": "T-493: THE NEXUS -- the twin, mirrored, and the words held still",
+   "steps": [
+    "goto Nexus 12 5",
+    "shot the easel beside the Christmas tree, mirrored",
+    "talk Easel",
+    "says \"HEY, YOU! LOOK AGAIN.\"",
+    "flagis FLAG_NOTEBOOK_LOOSE_PAINTING_READ 1",
+    "flagis FLAG_NOTEBOOK_LOOSE_PAINTING 0"
+   ]
+  },
+  {
+   "stop": "T-495: CALLOW SCHOOL 5F -- the teacher",
+   "steps": [
+    "goto ViridianCity_School_5F 6 4",
+    "talk Teacher",
+    "says \"It isn't hard. It's unfamiliar.\""
+   ]
+  }
+ ]
+}

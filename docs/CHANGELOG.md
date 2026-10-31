@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.333 — 2026-10-31
+
+- **9.33, The lioness, the letter and the pair of paintings (new section; T-493 to T-496).** The same lioness is met four times before the S.S. ANNE sails: at VIRIDIAN's center, at CERULEAN's, at the gangway and on the deck. On the deck she asks the player to post a letter, and MOM hands over the one-line reply once the ship has gone. A painting's scrambled words, filed from the ship, are read beside its mirrored twin in THE NEXUS. CALLOW SCHOOL's 5F teacher says it isn't hard, only unfamiliar.
+- A Settled entry in section 10. Every word is DRAFT.
+
 ## v11.332 — 2026-10-29
 
 - **2.12 §2, the `* SINK` items, released in v11.331.1 (T-488).** There are sixteen. Neither ORACLE nor CONTENT has one, because CONTENT is super-effective against nothing. Two of the names overlap ability names: SINK is MINUS's ability and SIGNAL SINK is LIGHTNING ROD's. The user chose to keep both. The bible also lists where each is sold and the four hidden on routes.

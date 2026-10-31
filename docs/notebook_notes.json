@@ -508,6 +508,16 @@
   "FLAG_NOTEBOOK_DOC_CORRESPONDENCE_7": {
    "seen": 106,
    "placed": "CORRESPONDENCE_7"
+  },
+  "FLAG_NOTEBOOK_LOOSE_PAINTING": {
+   "seen": 107,
+   "map": "SSAnne_1F_Corridor",
+   "about": "Words from a painting, scrambled."
+  },
+  "FLAG_NOTEBOOK_LOOSE_PAINTING_READ": {
+   "seen": 108,
+   "map": "Nexus",
+   "about": "The same words, held still."
   }
  }
 }

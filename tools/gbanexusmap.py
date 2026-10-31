@@ -124,6 +124,7 @@ def sign_at(x, y):
 
 HUNTER = (12, 14)
 PHOENIX = (12, 10)
+EASEL = (15, 4)             # T-493: the twin painting, right of the Christmas tree, facing east (so drawn mirrored)
 PIER = ("MAP_SSANNE_EXTERIOR", 57, 27)                    # beside the pier's fir, on the strip north of it
 MUSIC = "MUS_NEXUS"         # T-409 (DRAFT): its own, on the fir's notes (tools/gennexustheme.py); was MUS_SLOW_PALLET
 
@@ -175,6 +176,11 @@ TEXT = {
     "Nexus_Text_Hunter": "These DAEMONS are precious.\nMind how you walk among them.",
     "Nexus_Text_HunterAll": "Every door here is open to you now.\nThey always were.",
     "Nexus_Text_Phoenix": "Its cry rings out, and the shadows\nin the paint come clear!",
+    #  T-493 (DRAFT, awaiting the user's words): the twin of the S.S. ANNE's painting. Its words are the user's.
+    "Nexus_Text_Easel": "A painting on an easel. A meadow at\nnight, a lone tree, a white moon.",
+    "Nexus_Text_EaselTwin": "The S.S. ANNE's painting, the other\nway round, like a mirror.\\p"
+                            "{PLAYER} opened the NOTEBOOK beside\nit. The letters held still.",
+    "Nexus_Text_EaselWords": "HEY, YOU! LOOK AGAIN.",
 }
 TEXT.update({"Nexus_Text_Guardian%d" % k: g for k, g in enumerate(GUARDIAN)})
 TEXT.update({"Nexus_Text_Sign%d" % k: "%s\\p%s" % UNIVERSES[name] for k, (name, _) in enumerate(DOORS)})   # T-408
@@ -683,6 +689,24 @@ def scripts(states, ts):
                 "\treleaseall", "\tend", ""]
     found = [grove.found_flag(grove.map_const(rows[n])) for n, _ in DOORS]
     out += ["%s_EventScript_Stay::" % NAME, "\treleaseall", "\tend", "",
+            "@ T-493 (DRAFT): the twin of the S.S. ANNE's painting, facing east, so the engine draws it mirrored. With the",
+            "@ painting's scrambled words in the NOTEBOOK, standing before it files the page that reads them.",
+            "%s_EventScript_Easel::" % NAME,
+            "\tlockall",
+            "\tmsgbox %s_Text_Easel" % NAME,
+            "\tgoto_if_set FLAG_NOTEBOOK_LOOSE_PAINTING_READ, %s_EventScript_EaselWords" % NAME,
+            "\tgoto_if_unset FLAG_NOTEBOOK_LOOSE_PAINTING, %s_EventScript_EaselDone" % NAME,
+            "\tgoto_if_unset FLAG_GOT_NOTEBOOK, %s_EventScript_EaselDone" % NAME,
+            "\tmsgbox %s_Text_EaselTwin" % NAME,
+            "\tclearflag FLAG_NOTEBOOK_LOOSE_PAINTING",
+            "\tsetflag FLAG_NOTEBOOK_LOOSE_PAINTING_READ",
+            "\tplayse SE_SELECT",
+            "%s_EventScript_EaselWords::" % NAME,
+            "\tmsgbox %s_Text_EaselWords" % NAME,
+            "%s_EventScript_EaselDone::" % NAME,
+            "\treleaseall",
+            "\tend",
+            "",
             "@ The one Christmas tree: the way home, to the S.S. ANNE's pier.",
             "%s_EventScript_ChristmasTree::" % NAME,
             "\tlockall",
@@ -843,7 +867,9 @@ def map_json():
         "object_events": [obj("OBJ_EVENT_GFX_NEXUS_HUNTER", HUNTER, "MOVEMENT_TYPE_LOOK_AROUND",
                               "%s_EventScript_Hunter" % NAME, "0"),
                           obj("OBJ_EVENT_GFX_HO_OH", PHOENIX, "MOVEMENT_TYPE_FACE_DOWN",
-                              "%s_EventScript_Phoenix" % NAME, "FLAG_NEXUS_PHOENIX_GONE")] +
+                              "%s_EventScript_Phoenix" % NAME, "FLAG_NEXUS_PHOENIX_GONE"),
+                          obj("OBJ_EVENT_GFX_EASEL", EASEL, "MOVEMENT_TYPE_FACE_RIGHT",            # T-493
+                              "%s_EventScript_Easel" % NAME, "0")] +
                          [obj("OBJ_EVENT_GFX_SIGN", sign_at(x, y), "MOVEMENT_TYPE_FACE_DOWN",       # T-408
                               "%s_EventScript_Sign%d" % (NAME, k), "0") for k, (_, (x, y)) in enumerate(DOORS)],
         "warp_events": [], "coord_events": [], "bg_events": bg}

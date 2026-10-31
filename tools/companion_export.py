@@ -49,9 +49,9 @@ def read(rel):
 
 
 def gba_string(body):
-    """the text of a _("...") or a run of "..." lines, with the line breaks as \\n"""
+    """the text of a _("...") or a run of "..." lines, with the line breaks (\\n and \\l, a scroll) as \\n"""
     parts = re.findall(r'"((?:[^"\\]|\\.)*)"', body)
-    return "".join(parts).replace("\\n", "\n").replace("\\p", "\n\n")
+    return "".join(parts).replace("\\n", "\n").replace("\\l", "\n").replace("\\p", "\n\n")
 
 
 def native_values():

@@ -647,7 +647,7 @@ def take_gfx_id(s, const):
                        "\n#define %s %d // T-461: took FREE id %d" % (const, n, n), s, count=1)
         assert k == 1
         s, k = re.subn(r"\n//  FREE:[^\n]*\n",
-                       "\n//  FREE: %s\n" % (" ".join(map(str, free[1:])) or "none left -- read T-461 before adding one"),
+                       "\n//  FREE: %s\n" % (" ".join(map(str, free[1:])) or "none left -- read the numbers above before adding one"),
                        s, count=1)
         assert k == 1, "event_objects.h has no `//  FREE:` line (T-461)"
         return s
