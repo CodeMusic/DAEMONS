@@ -1,4 +1,4 @@
-# T-485 -- OSRIC HATTER's lines (DRAFT, every word)
+# T-485 -- OSRIC HATTER's lines (approved by the user, 2026-10-31)
 
 *Drafted 2026-10-29 for the user's sheet. Measured with `tools/fontwidth.py` (the message box's own glyph widths,
 sFontNormalLatinGlyphWidths, apostrophe 3px): every line is at most 208px. A blank line between pairs is a `\p`
