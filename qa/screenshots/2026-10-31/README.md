@@ -115,3 +115,39 @@ T-498 in the ROM (CONTENT debug, engine 1f232e012, released in v11.333.1), playe
 v11.333.2: the twin in THE NEXUS now reads IT'S REAL. IT'S YOURS. (on the ship it's RG'H IVZO. RG'H BLFIH.)
 
 ![31Oct2026 - T493 - the twin reads the users words - 19](31Oct2026%20-%20T493%20-%20the%20twin%20reads%20the%20users%20words%20-%2019.png)
+
+### 31Oct2026 - T483 - the SPELLBOOK and the AWAKENING - 20
+
+T-483 (5): SPELLBOOK in the START menu with THE HERMETIC LAYER held; by night the list, each spell with its Book of Thirteen line in green; the AWAKENING counts what is still hidden here (DRAFT)
+
+![31Oct2026 - T483 - the SPELLBOOK and the AWAKENING - 20](31Oct2026%20-%20T483%20-%20the%20SPELLBOOK%20and%20the%20AWAKENING%20-%2020.png)
+
+### 31Oct2026 - T483 - the SPELLBOOK and the AWAKENING - 21
+
+T-483 (5): SPELLBOOK in the START menu with THE HERMETIC LAYER held; by night the list, each spell with its Book of Thirteen line in green; the AWAKENING counts what is still hidden here (DRAFT)
+
+![31Oct2026 - T483 - the SPELLBOOK and the AWAKENING - 21](31Oct2026%20-%20T483%20-%20the%20SPELLBOOK%20and%20the%20AWAKENING%20-%2021.png)
+
+### 31Oct2026 - T483 - the CONTRAST turns night to dawn - 22
+
+T-483 (5): the CONTRAST turns the light one watch on, night to dawn; the clock keeps its hour (DRAFT)
+
+![31Oct2026 - T483 - the CONTRAST turns night to dawn - 22](31Oct2026%20-%20T483%20-%20the%20CONTRAST%20turns%20night%20to%20dawn%20-%2022.png)
+
+### 31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 23
+
+T-483 (5): the PATTERN names the foe's routine at the prompt (This turn it runs FLIP.); the LENS shows HP 19/19 and LEGACY hits x2, then x1 100% in the routine menu; the FIELD hides HP and PP (DRAFT; the PATTERN's set-line has since been reworded)
+
+![31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 23](31Oct2026%20-%20T483%20-%20the%20PATTERN%2C%20LENS%20and%20FIELD%20in%20battle%20-%2023.png)
+
+### 31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 24
+
+T-483 (5): the PATTERN names the foe's routine at the prompt (This turn it runs FLIP.); the LENS shows HP 19/19 and LEGACY hits x2, then x1 100% in the routine menu; the FIELD hides HP and PP (DRAFT; the PATTERN's set-line has since been reworded)
+
+![31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 24](31Oct2026%20-%20T483%20-%20the%20PATTERN%2C%20LENS%20and%20FIELD%20in%20battle%20-%2024.png)
+
+### 31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 25
+
+T-483 (5): the PATTERN names the foe's routine at the prompt (This turn it runs FLIP.); the LENS shows HP 19/19 and LEGACY hits x2, then x1 100% in the routine menu; the FIELD hides HP and PP (DRAFT; the PATTERN's set-line has since been reworded)
+
+![31Oct2026 - T483 - the PATTERN, LENS and FIELD in battle - 25](31Oct2026%20-%20T483%20-%20the%20PATTERN%2C%20LENS%20and%20FIELD%20in%20battle%20-%2025.png)

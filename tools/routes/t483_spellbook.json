@@ -1,0 +1,148 @@
+{
+  "rom": "debug",
+  "about": "T-483 (5): THE SPELLBOOK and the gentle spells. With THE HERMETIC LAYER held, the START menu has SPELLBOOK. By night it lists each spell with its line from the Book of Thirteen. AWAKENING makes a tunnel's hidden things glint. CONTRAST turns the light from night to dawn. PATTERN names the foe's routine at the battle prompt. LENS shows the foe's HP and weakness at the prompt, and the multiplier and hit chance in the routine menu. FIELD hides HP and PP. By day the SPELLBOOK will not open. Uses the theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "by day the SPELLBOOK will not open",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_SYS_POKEDEX_GET 1",
+        "flag FLAG_SYS_POKEMON_GET 1",
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "keyitem ITEM_HERMETIC_LAYER",
+        "flag FLAG_GOT_REVEAL 0",
+        "var VAR_SPELLS_KNOWN 16383",
+        "var VAR_SPELL_STATE 0",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "goto CeruleanCity 17 7",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "shot \"SPELLBOOK in the START menu\"",
+        "press A",
+        "read",
+        "says \"wait for night\"",
+        "press A"
+      ]
+    },
+    {
+      "stop": "night: the list, and the AWAKENING in a tunnel of hidden things",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "goto UndergroundPath_NorthSouthTunnel",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "wait 30",
+        "shot \"the SPELLBOOK: AWAKENING\"",
+        "press DOWN",
+        "shot \"the SPELLBOOK: CONTRAST\"",
+        "press UP",
+        "press A",
+        "read",
+        "says \"AWAKENING opens\"",
+        "press A",
+        "press A",
+        "burst \"the hidden things glint\" 6 20"
+      ]
+    },
+    {
+      "stop": "night outdoors: the CONTRAST turns the light to dawn",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "goto CeruleanCity 17 7",
+        "wait 60",
+        "shot \"night\"",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "press DOWN",
+        "press A",
+        "read",
+        "says \"turns to DAWN\"",
+        "press A",
+        "press A",
+        "wait 90",
+        "shot \"dawn, by the CONTRAST\"",
+        "var VAR_SPELL_STATE 0"
+      ]
+    },
+    {
+      "stop": "the PATTERN names the foe's routine",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "goto Route22 15 9",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "press DOWN 2",
+        "press A",
+        "read",
+        "says \"PATTERN is set\"",
+        "press A",
+        "press A",
+        "repel 0",
+        "wild keep",
+        "wait 90",
+        "shot \"the PATTERN at the prompt\"",
+        "win",
+        "wait 120"
+      ]
+    },
+    {
+      "stop": "the LENS: HP and weakness, then the odds in the routine menu",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "goto Route22 15 9",
+        "repel 999",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "press DOWN 3",
+        "press A",
+        "read",
+        "says \"LENS is set\"",
+        "press A",
+        "repel 0",
+        "wild keep",
+        "wait 90",
+        "shot \"the LENS at the prompt\"",
+        "press A",
+        "wait 30",
+        "shot \"the LENS in the routine menu\"",
+        "press DOWN",
+        "shot \"the LENS, the second routine\"",
+        "press B",
+        "win",
+        "wait 120"
+      ]
+    },
+    {
+      "stop": "the FIELD: no numbers",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "goto Route22 15 9",
+        "repel 999",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "press DOWN 4",
+        "press A",
+        "read",
+        "says \"FIELD is set\"",
+        "press A",
+        "repel 0",
+        "wild keep",
+        "wait 90",
+        "shot \"the FIELD: HP gone dark\"",
+        "press A",
+        "wait 30",
+        "shot \"the FIELD: no PP\"",
+        "press B",
+        "win",
+        "wait 120"
+      ]
+    }
+  ]
+}
