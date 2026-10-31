@@ -65,6 +65,8 @@ def species_table():
     out = {}
     for slot, ours in names.items():
         key = alias.get(slot, slot)
+        if key not in cats:         # T-499: a define that is only a C nickname (DOLPHIN = WAILMER) keeps its slot's INDEX row
+            key = slot
         out[ours] = (slot, key.capitalize(), cats.get(key, ""))
     return out
 
