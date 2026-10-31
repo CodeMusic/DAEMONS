@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-459 D: words under words -- once THE SUBTLE LAYER is held, a purple line after some people's lines, what is meant under what is said. The user chose four (2026-10-28): MOM's ship line, \"Come back.\"; the CHECKPOINT's goodbye, \"Not too soon.\"; CRYSTAL's \"...further than I did\", \"I cannot always be there.\"; the CHAMPION's \"I thought it would be you.\", \"Before you can.\" MOM and the CHECKPOINT are played here; CRYSTAL's rating scene and the CHAMPION's room are read from the ROM. The theatre's debug scratch save, never the user's.",
+  "about": "T-459 D: words under words -- once THE SUBTLE LAYER is held, a purple line after some people's lines, what is meant under what is said. The user chose four (2026-10-28): MOM's ship line, \"Come back.\"; the CHECKPOINT's goodbye, \"Not too soon.\"; CRYSTAL's \"...further than I did\", \"I cannot always be there.\"; the CHAMPION's \"I thought it would be you.\", \"Before you can.\" MOM, the CHECKPOINT and CRYSTAL are played here (T-502 moved CRYSTAL's line from PALLET's never-played rating scene to the lab, once the eighth MARK is held; T-504 keeps MOM's ship line only while the ship is in port); the CHAMPION's room is read from the ROM. The theatre's debug scratch save, never the user's.",
   "stops": [
     {
       "stop": "the book held: MOM, between the S.S. TICKET and the eighth MARK -- her ship line, then \"Come back.\" in purple",
@@ -9,6 +9,7 @@
         "flag FLAG_GOT_SUBTLE_LAYER 1",
         "flag FLAG_MOM_SAW_YOU_OFF 1",
         "flag FLAG_GOT_SS_TICKET 1",
+        "var VAR_MAP_SCENE_VERMILION_CITY 1",
         "flag FLAG_BADGE08_GET 0",
         "goto PalletTown_PlayersHouse_1F 4 5",
         "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
@@ -28,6 +29,30 @@
       ]
     },
     {
+      "stop": "the book held: CRYSTAL in the lab, the eighth MARK held, the REVIEW BOARD not yet sat -- her last words, then \"I cannot always be there.\" in purple; once (T-502)",
+      "steps": [
+        "flag FLAG_BADGE08_GET 1",
+        "flag FLAG_SYS_GAME_CLEAR 0",
+        "flag FLAG_CRYSTAL_READ_PAYLOAD 0",
+        "flag FLAG_HIDE_OAK_IN_HIS_LAB 0",
+        "flag FLAG_CRYSTAL_SAID_FURTHER 0",
+        "var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 9",
+        "flag FLAG_HIDE_RIVAL_IN_LAB 1",
+        "goto PalletTown_ProfessorOaksLab 6 4",
+        "talk PalletTown_ProfessorOaksLab_EventScript_ProfOak",
+        "says \"You will go further than I did.\"",
+        "says \"I cannot always be there.\""
+      ]
+    },
+    {
+      "stop": "... and only once: spoken to again, she does not say it (T-502)",
+      "steps": [
+        "talk PalletTown_ProfessorOaksLab_EventScript_ProfOak",
+        "unsaid \"further than I did\"",
+        "flag FLAG_BADGE08_GET 0"
+      ]
+    },
+    {
       "stop": "without the book: MOM's ship line, and nothing under it",
       "steps": [
         "flag FLAG_GOT_SUBTLE_LAYER 0",
@@ -35,6 +60,26 @@
         "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
         "says \"Tell him to call his mother.\"",
         "flag FLAG_GOT_SUBTLE_LAYER 1"
+      ]
+    },
+    {
+      "stop": "the ship has sailed: MOM says DAVID called, once, and the ship line is gone (T-504)",
+      "steps": [
+        "var VAR_MAP_SCENE_VERMILION_CITY 3",
+        "flag FLAG_MOM_SAID_DAVID_CALLED 0",
+        "flag FLAG_LIONESS_LETTER_SENT 0",
+        "goto PalletTown_PlayersHouse_1F 4 5",
+        "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
+        "says \"Your brother called.\""
+      ]
+    },
+    {
+      "stop": "... and only once: the second visit, neither the DAVID line nor the ship line (T-504)",
+      "steps": [
+        "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
+        "unsaid \"Your brother called.\"",
+        "unsaid \"Tell him to call his mother.\"",
+        "var VAR_MAP_SCENE_VERMILION_CITY 1"
       ]
     }
   ]

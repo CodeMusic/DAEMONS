@@ -88,9 +88,12 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
 5. **Three of the book's words are already taken** (`check_lexicon.py`'s surfaces): **CHARGE** is an item (the Ether
    ladder: CHARGE, FULL CHARGE, CHARGE ALL, FULL RECHARGE); **RESONANCE**, the crowd bond, is MIST BALL's routine;
    **ATTUNEMENT** stands next to **ATTUNE**, KIRLIA's name. **CLOSURE** is free.
-6. **PSYCHIC is not printed anywhere in the ROM.** §7 below is out of date: the routine is CONSTRUE, the type
-   CONTEXT, the class INTERPRETER, and the word survives only in code comments. The title collides with nothing; the
-   question is only whether a word the game renamed comes back on a cover.
+6. **PSYCHIC is not printed anywhere in the ROM** -- *and since T-503 (2026-10-31) neither is* psychic. §7 below
+   is out of date: the routine is CONSTRUE, the type CONTEXT, the class INTERPRETER. ***This line once said the word
+   survived only in code comments, and it was wrong***: `port_vocab.py` swaps only the uppercase word, so the
+   lowercase one stood in five of BRAZEN BENCHMARK's lines and THREE ISLAND's spoon-bender until T-503 rewrote them
+   as reads and steering. Only PRESTON's "telepathy", the INTERPRETERs' confident joke, is kept. The title
+   collides with nothing; the question is only whether a word the game renamed comes back on a cover.
 
 ---
 
