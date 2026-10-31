@@ -1311,6 +1311,8 @@ class Runner:
         for p in ptrs:
             if p >= 0x08000000:
                 raw = rom[p - 0x08000000: p - 0x08000000 + 64]
+            elif p < 0x02000000:                                          # no label (NULL): nothing to read
+                raw = b"\xff"
             else:
                 got = tw.peek([(32, p + 4 * k, "w%d" % k) for k in range(16)])
                 raw = b"".join(got["w%d" % k].to_bytes(4, "little") for k in range(16))
