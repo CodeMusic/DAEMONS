@@ -1,0 +1,85 @@
+{
+  "rom": "debug",
+  "about": "T-483 (5), part three: THE PULL and THE GREAT HAND. With THE HERMETIC LAYER held and every spell known, the SPELLBOOK lists 3.5 PULL and 8 GREAT HAND in the book's order. By night in BLANCHE, PULL draws the nearest wanderer a step toward the player (two at 3:30, DEBUG's WATCH) and says the next foe will come calm. GREAT HAND names the road: the attendant's plain dream of the earliest step undone. Uses the theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "night in BLANCHE: the PULL draws the nearest wanderer",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_SYS_POKEDEX_GET 1",
+        "flag FLAG_SYS_POKEMON_GET 1",
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "keyitem ITEM_HERMETIC_LAYER",
+        "var VAR_SPELLS_KNOWN 16383",
+        "var VAR_SPELL_STATE 0",
+        "var VAR_SPELL_STATE_2 0",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 3",
+        "goto PalletTown 10 14",
+        "wait 60",
+        "shot \"BLANCHE by night, before\"",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "wait 30",
+        "press DOWN 2",
+        "shot \"the SPELLBOOK: 3.5 PULL\"",
+        "burst \"the PULL: the wanderer drawn\" 8 4 A",
+        "read",
+        "says \"comes closer\"",
+        "press A",
+        "read",
+        "says \"come calm\"",
+        "press A",
+        "wait 30",
+        "shot \"after: the one drawn faces the player\""
+      ]
+    },
+    {
+      "stop": "the GREAT HAND names the road",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "wait 30",
+        "press DOWN 4",
+        "shot \"the SPELLBOOK: 8 GREAT HAND\"",
+        "press A",
+        "read",
+        "says \"dreamt your road\"",
+        "press A",
+        "read",
+        "press A",
+        "read",
+        "press A",
+        "read",
+        "says \"walk lighter\"",
+        "press A"
+      ]
+    },
+    {
+      "stop": "half past three: the PULL is strong tonight",
+      "steps": [
+        "var VAR_SPELL_STATE_2 0",
+        "poke gDaemonsWatchOverride 8 7",
+        "goto PalletTown 10 14",
+        "wait 60",
+        "poke sStartMenuCursorPos 8 8",
+        "press START",
+        "press A",
+        "wait 30",
+        "press DOWN 2",
+        "burst \"the PULL at 3:30: two steps\" 12 4 A",
+        "read",
+        "press A",
+        "read",
+        "says \"strong tonight\"",
+        "press A",
+        "wait 30",
+        "shot \"after, at 3:30\""
+      ]
+    }
+  ]
+}

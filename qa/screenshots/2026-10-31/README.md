@@ -313,3 +313,21 @@ v11.335.1: at the gangway she passes the teacher's line on; on the deck she hold
 v11.335.1: at the gangway she passes the teacher's line on; on the deck she holds the orange ball; her sheet with it, every facing.
 
 ![31Oct2026 - T496 - her line passed on and her ball - 56](31Oct2026%20-%20T496%20-%20her%20line%20passed%20on%20and%20her%20ball%20-%2056.png)
+
+### 31Oct2026 - T483 - THE PULL and THE GREAT HAND - 59
+
+T-483 (5) part three, DEBUG build, theatre t483_pull 3/3: by night in BLANCHE the SPELLBOOK lists 3.5 PULL and 8 GREAT HAND; PULL draws the nearest wanderer a tile toward the player (frames 7-10) and says the next foe comes calm; GREAT HAND names the road with the attendant's plain dream; at 3:30 the wanderer comes two steps (west, then north) and the calm lasts two turns. DRAFT words.
+
+![31Oct2026 - T483 - THE PULL and THE GREAT HAND - 59](31Oct2026%20-%20T483%20-%20THE%20PULL%20and%20THE%20GREAT%20HAND%20-%2059.png)
+
+### 31Oct2026 - T483 - THE PULL and THE GREAT HAND - 60
+
+T-483 (5) part three, DEBUG build, theatre t483_pull 3/3: by night in BLANCHE the SPELLBOOK lists 3.5 PULL and 8 GREAT HAND; PULL draws the nearest wanderer a tile toward the player (frames 7-10) and says the next foe comes calm; GREAT HAND names the road with the attendant's plain dream; at 3:30 the wanderer comes two steps (west, then north) and the calm lasts two turns. DRAFT words.
+
+![31Oct2026 - T483 - THE PULL and THE GREAT HAND - 60](31Oct2026%20-%20T483%20-%20THE%20PULL%20and%20THE%20GREAT%20HAND%20-%2060.png)
+
+### 31Oct2026 - T483 - THE PULL and THE GREAT HAND - 61
+
+T-483 (5) part three, DEBUG build, theatre t483_pull 3/3: by night in BLANCHE the SPELLBOOK lists 3.5 PULL and 8 GREAT HAND; PULL draws the nearest wanderer a tile toward the player (frames 7-10) and says the next foe comes calm; GREAT HAND names the road with the attendant's plain dream; at 3:30 the wanderer comes two steps (west, then north) and the calm lasts two turns. DRAFT words.
+
+![31Oct2026 - T483 - THE PULL and THE GREAT HAND - 61](31Oct2026%20-%20T483%20-%20THE%20PULL%20and%20THE%20GREAT%20HAND%20-%2061.png)
