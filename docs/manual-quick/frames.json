@@ -1,0 +1,50 @@
+{
+ "about": "QUICK START's game screens: copies of the player's manual's own (docs/manual/frames/), each captured in the theatre from a built ROM; refresh them there, then copy them here.",
+ "frames": {
+  "hello": {
+   "from": "mom-tour/01/s01_01",
+   "captured": "2026-10-24"
+  },
+  "crystal": {
+   "from": "mom-tour/01/s01_03",
+   "captured": "2026-10-24"
+  },
+  "reason": {
+   "from": "mom-tour/01/s01_04",
+   "captured": "2026-10-24"
+  },
+  "bedroom": {
+   "from": "mom-tour/01/s01_06",
+   "captured": "2026-10-24"
+  },
+  "town": {
+   "from": "t386rel/01/s01_00",
+   "captured": "2026-10-07"
+  },
+  "battle": {
+   "from": "manual/04/s04_00",
+   "captured": "2026-10-28"
+  },
+  "battle-routines": {
+   "from": "manual/04/s04_02",
+   "captured": "2026-10-28"
+  },
+  "party": {
+   "from": "manual/05/s05_00",
+   "captured": "2026-10-28"
+  },
+  "checkpoint": {
+   "from": "t459d/02/s02_03",
+   "captured": "2026-10-28"
+  },
+  "start-menu": {
+   "from": "manual/07/s07_00",
+   "captured": "2026-10-28"
+  }
+ },
+ "pictures": {
+  "ipad": {
+   "from": "qa/screenshots/2026-10-27/27Oct2026 - C189 - iPad game beside the companion - 10.png"
+  }
+ }
+}

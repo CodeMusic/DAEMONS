@@ -8,6 +8,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --html OUT.html       # the page before printing, to look at in a browser
     python3 tools/manual.py --refresh     # copy docs/manual/frames/ again from the theatre's captures (and --write)
     python3 tools/manual.py --book social --write   # the second book: PLAYING TOGETHER, the social features (C-219..)
+    python3 tools/manual.py --book quick --write    # QUICK START: what DAEMONS is and how to play, in large type
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -67,6 +68,12 @@ BOOKS = {
               "subject": "Setting up the Tiiny Pocket for the DAEMONS companion: the computer, the network and the hub",
               "sprites": ("ROVERBYTE", "INFERENCE", "MAINFRAME"),
               "strip": ("HUNCH", "CONJECTURE", "PROOF", "THEOREM", "LEMMA MIND", "HEATSINK", "DUALCORE", "ECHO")},
+    # the fourth: QUICK START, short and in large type (the user, 2026-10-31: "much shorter started with the context of
+    # what this is ... and then a how to play ... written such that my 77 year old Mom could understand it and play it")
+    "quick": {"src": "docs/manual-quick", "out": "docs/DAEMONS-quickstart.pdf", "title": "DAEMONS: quick start",
+              "sub": "Quick start: what it is, and how to play", "foot": "quick start",
+              "subject": "DAEMONS, quickly: what it is, and how to play it, step by step",
+              "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
