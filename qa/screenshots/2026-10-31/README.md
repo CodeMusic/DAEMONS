@@ -37,3 +37,15 @@ v11.332.2 in the theatre, against TRELLIS: one GARBAGE hit (now special) takes S
 C-233: the second manual, PLAYING TOGETHER, beside the player's manual in LIBRARY (the hub's site)
 
 ![31Oct2026 - C233 - PLAYING TOGETHER on the shelf - 6](31Oct2026%20-%20C233%20-%20PLAYING%20TOGETHER%20on%20the%20shelf%20-%206.jpg)
+
+### 31Oct2026 - C249 - THE TIINY in SETTINGS - 7
+
+WHO ANSWERS WHEN YOU TALK with the Tiiny chosen and answering, on a test companion with a stand-in Tiiny
+
+![31Oct2026 - C249 - THE TIINY in SETTINGS - 7](31Oct2026%20-%20C249%20-%20THE%20TIINY%20in%20SETTINGS%20-%207.png)
+
+### 31Oct2026 - C249 - the Tiiny manual, every page - 8
+
+A BIGGER MIND, the Tiiny setup manual: 15 pages, five quest steps, four diagrams
+
+![31Oct2026 - C249 - the Tiiny manual, every page - 8](31Oct2026%20-%20C249%20-%20the%20Tiiny%20manual%2C%20every%20page%20-%208.png)
