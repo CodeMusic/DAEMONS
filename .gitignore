@@ -71,3 +71,6 @@ docs/private/
 
 # T-350: drafts drawn over the original game's frames stay local (nothing of Nintendo's in this repo)
 gfx/drafts/crystal_back_*
+
+# the vault (docs/books/the-vault.zip) unzipped beside itself: the sealed third book, never committed (the user, 2026-10-31)
+/docs/books/sealed.pdf
