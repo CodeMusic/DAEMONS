@@ -31,3 +31,9 @@ v11.332.2 in the theatre: TRICKLE at SP. ATK 100 does 9 dry and 11 in rain -- a 
 v11.332.2 in the theatre, against TRELLIS: one GARBAGE hit (now special) takes SPAGHETTI from 72 HP to 0. FALSETAIL (still physical) leaves it on 6.
 
 ![31Oct2026 - T490 - TRELLISs SPAGHETTI, one CORRUPT hit - 5](31Oct2026%20-%20T490%20-%20TRELLISs%20SPAGHETTI%2C%20one%20CORRUPT%20hit%20-%205.png)
+
+### 31Oct2026 - C233 - PLAYING TOGETHER on the shelf - 6
+
+C-233: the second manual, PLAYING TOGETHER, beside the player's manual in LIBRARY (the hub's site)
+
+![31Oct2026 - C233 - PLAYING TOGETHER on the shelf - 6](31Oct2026%20-%20C233%20-%20PLAYING%20TOGETHER%20on%20the%20shelf%20-%206.jpg)
