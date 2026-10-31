@@ -223,3 +223,15 @@ T-505 (DRAFT): FIVE ISLAND's WAREHOUSE: Grunt3 and both admins as remnants who d
 T-505 (DRAFT): FIVE ISLAND's WAREHOUSE: Grunt3 and both admins as remnants who do not know what happened to SCORN, who stays at (22,4). film_t50x.json stops 5-7.
 
 ![31Oct2026 - T505 - the WAREHOUSEs remnants - 37](31Oct2026%20-%20T505%20-%20the%20WAREHOUSEs%20remnants%20-%2037.png)
+
+### 31Oct2026 - T507 - quick start, what it is - 38
+
+QUICK START (docs/DAEMONS-quickstart.pdf, v11.334.1): the cover, what DAEMONS is, the two books with the third only as rumour, and a few daemons met early.
+
+![31Oct2026 - T507 - quick start, what it is - 38](31Oct2026%20-%20T507%20-%20quick%20start%2C%20what%20it%20is%20-%2038.png)
+
+### 31Oct2026 - T507 - quick start, how to play - 39
+
+QUICK START: four of the ten steps, a page each -- the buttons (with a drawing of a Game Boy Advance), a new game, a battle, and resting at a CHECKPOINT.
+
+![31Oct2026 - T507 - quick start, how to play - 39](31Oct2026%20-%20T507%20-%20quick%20start%2C%20how%20to%20play%20-%2039.png)
