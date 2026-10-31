@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 170" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9.5">
+  <text x="6" y="14" font-weight="700" font-size="9" letter-spacing="1.5" fill="#6b3fa0">A DAEMON'S RECORD: THE FLAGS BYTE (0x13)</text>
+  <g stroke="#16161a" font-size="8.5" text-anchor="middle">
+    <rect x="6" y="22" width="62" height="34" fill="#eee"/><text x="37" y="43" stroke="none">bad egg</text>
+    <rect x="68" y="22" width="62" height="34" fill="#eee"/><text x="99" y="43" stroke="none">has one</text>
+    <rect x="130" y="22" width="62" height="34" fill="#eee"/><text x="161" y="43" stroke="none">egg</text>
+    <rect x="192" y="22" width="62" height="34" fill="#e6d8f6"/><text x="223" y="38" stroke="none" font-weight="700">TRADING</text><text x="223" y="50" stroke="none">locked</text>
+    <rect x="254" y="22" width="62" height="34" fill="#dce8f8"/><text x="285" y="43" stroke="none" font-weight="700">AWAY</text>
+    <rect x="316" y="22" width="62" height="34" fill="#dce8f8"/><text x="347" y="43" stroke="none">ASKED</text>
+    <rect x="378" y="22" width="124" height="34" fill="#dce8f8"/><text x="440" y="43" stroke="none">SOUNDINGS</text>
+  </g>
+  <text x="6" y="82" font-weight="700" font-size="9" letter-spacing="1.5" fill="#6b3fa0">AND THE WORD AT 0x1E</text>
+  <g stroke="#16161a" font-size="8.5" text-anchor="middle">
+    <rect x="6" y="90" width="62" height="34" fill="#e6d8f6"/><text x="37" y="106" stroke="none" font-weight="700">LOAN</text><text x="37" y="118" stroke="none">borrowed</text>
+    <rect x="68" y="90" width="62" height="34" fill="#e6d8f6"/><text x="99" y="106" stroke="none" font-weight="700">TRADED IN</text><text x="99" y="118" stroke="none">just came</text>
+    <rect x="130" y="90" width="186" height="34" fill="#e6d8f6"/><text x="223" y="106" stroke="none" font-weight="700">PARTNER</text><text x="223" y="118" stroke="none">the kind given for it</text>
+    <rect x="316" y="90" width="62" height="34" fill="#e6d8f6"/><text x="347" y="106" stroke="none" font-weight="700">GIFTED</text><text x="347" y="118" stroke="none">a gift</text>
+    <rect x="378" y="90" width="124" height="34" fill="#eee"/><text x="440" y="111" stroke="none">kept for later</text>
+  </g>
+  <text x="6" y="146" fill="#33333a">Written by the companion at SYNC; read by the game when it loads, which finishes an arrival once and</text>
+  <text x="6" y="160" fill="#33333a">clears TRADED IN, PARTNER and GIFTED. Outside the daemon's sealed record, so a SYNC never reseals it.</text>
+</svg>

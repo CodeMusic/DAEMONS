@@ -1,0 +1,105 @@
+{
+ "about": "PLAYING TOGETHER's game screens: 240x160 frames the theatre captured from built ROMs (T-473, T-474, T-492), copied here so the book rebuilds anywhere; its pictures are the companion app's own screens, taken from test companions on synthetic saves (docs/manual-social/pictures/).",
+ "frames": {
+  "trade-arrives": {
+   "from": "t474_trade/01/s01_06",
+   "captured": "2026-10-29",
+   "shows": "PENPHIN arrived in a trade."
+  },
+  "trade-info": {
+   "from": "t474_trade/01/s01_08",
+   "captured": "2026-10-29",
+   "shows": "its summary: met by TRADER"
+  },
+  "penphin-entry": {
+   "from": "t474_index/02/s02_33",
+   "captured": "2026-10-29",
+   "shows": "PENPHIN's INDEX entry"
+  },
+  "penphin-bound": {
+   "from": "t474_index/02/s02_35",
+   "captured": "2026-10-29",
+   "shows": "BOUND: BY TRADE"
+  },
+  "penguin-workings": {
+   "from": "t474_index/02/s02_55",
+   "captured": "2026-10-29",
+   "shows": "PENGUIN's workings"
+  },
+  "loan-arrives": {
+   "from": "t473/02/s02_01",
+   "captured": "2026-10-28",
+   "shows": "a loan arrives"
+  },
+  "loan-release": {
+   "from": "t474_loan/01/s01_25",
+   "captured": "2026-10-29",
+   "shows": "RELEASE chosen"
+  },
+  "loan-refused": {
+   "from": "t474_loan/01/s01_26",
+   "captured": "2026-10-29",
+   "shows": "PENGUIN is borrowed."
+  },
+  "gift-arrives": {
+   "from": "film_t492_gift/01/s01_05",
+   "captured": "2026-10-29",
+   "shows": "LEMMA MIND arrived as a gift."
+  },
+  "gift-firstmet": {
+   "from": "film_t492_gift/02/s02_72",
+   "captured": "2026-10-29",
+   "shows": "FIRST MET: A GIFT"
+  }
+ },
+ "pictures": {
+  "commons": {
+   "from": "docs/manual-social/pictures/commons.png"
+  },
+  "dreams": {
+   "from": "docs/manual-social/pictures/dreams.png"
+  },
+  "friend-meeting": {
+   "from": "docs/manual-social/pictures/friend-meeting.png"
+  },
+  "friends-offer": {
+   "from": "docs/manual-social/pictures/friends-offer.png"
+  },
+  "friends": {
+   "from": "docs/manual-social/pictures/friends.png"
+  },
+  "give-item": {
+   "from": "docs/manual-social/pictures/give-item.png"
+  },
+  "give": {
+   "from": "docs/manual-social/pictures/give.png"
+  },
+  "hello": {
+   "from": "docs/manual-social/pictures/hello.png"
+  },
+  "invite": {
+   "from": "docs/manual-social/pictures/invite.png"
+  },
+  "join": {
+   "from": "docs/manual-social/pictures/join.png"
+  },
+  "offer-scope": {
+   "from": "docs/manual-social/pictures/offer-scope.png"
+  },
+  "offer": {
+   "from": "docs/manual-social/pictures/offer.png"
+  },
+  "offers": {
+   "from": "docs/manual-social/pictures/offers.png"
+  },
+  "out-together": {
+   "from": "docs/manual-social/pictures/out-together.png"
+  },
+  "take": {
+   "from": "docs/manual-social/pictures/take.png"
+  },
+  "trades": {
+   "from": "docs/manual-social/pictures/trades.png"
+  }
+ }
+}

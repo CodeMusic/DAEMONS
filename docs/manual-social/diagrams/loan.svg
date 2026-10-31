@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 190" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="10.5">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <text x="70" y="18" text-anchor="middle" font-weight="700" font-size="10" letter-spacing="2" fill="#6b3fa0">YOU</text>
+  <text x="450" y="18" text-anchor="middle" font-weight="700" font-size="10" letter-spacing="2" fill="#3f6b33">THEY</text>
+  <g stroke="#16161a"><line x1="70" y1="26" x2="70" y2="180"/><line x1="450" y1="26" x2="450" y2="180"/></g>
+  <g fill="#16161a">
+    <text x="260" y="40" text-anchor="middle" font-weight="700">LEND IT: you each lend one</text>
+    <path d="M78 48L442 62" stroke="#8a5cc8" stroke-width="1.6" fill="none" marker-end="url(#ar)"/><path d="M442 70L78 84" stroke="#5b8a4e" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+    <text x="260" y="104" text-anchor="middle">Each of you plays with the other's: battle with it, level it.</text>
+    <text x="260" y="118" text-anchor="middle">It cannot be released, traded on, or trade-evolved.</text>
+    <text x="260" y="140" text-anchor="middle" font-weight="700">CALL MINE HOME: either of you, at any time</text>
+    <path d="M442 150L78 164" stroke="#8a5cc8" stroke-width="1.6" fill="none" marker-end="url(#ar)"/><path d="M78 172L442 180" stroke="#5b8a4e" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+  </g>
+  <rect x="0" y="0" width="0" height="0"/>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 210" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <g font-weight="700" font-size="9" letter-spacing="1.5" fill="#6b3fa0">
+    <text x="8" y="16">1  SEND IT</text><text x="138" y="16">2  OFFER IT</text><text x="268" y="16">3  TAKEN</text><text x="398" y="16">4  EACH SYNC</text>
+  </g>
+  <g fill="#fff" stroke="#16161a"><rect x="6" y="26" width="112" height="120" rx="8"/><rect x="136" y="26" width="112" height="120" rx="8"/><rect x="266" y="26" width="112" height="120" rx="8"/><rect x="396" y="26" width="118" height="120" rx="8"/></g>
+  <g fill="#16161a">
+    <text x="13" y="44">In the game, SEND a</text><text x="13" y="56">daemon from your</text><text x="13" y="68">party, and SYNC.</text>
+    <text x="13" y="94" font-weight="700">It is AWAY now:</text><text x="13" y="106">on your companion,</text><text x="13" y="118">not in your game.</text>
+    <text x="143" y="44">On TRADE, OFFER</text><text x="143" y="56">ONE OF YOURS:</text><text x="143" y="68">trade, lend or give,</text><text x="143" y="80">to anyone or one.</text>
+    <text x="143" y="106" font-weight="700">It is locked:</text><text x="143" y="118">the game will not</text><text x="143" y="130">call it home now.</text>
+    <text x="273" y="44">Another player</text><text x="273" y="56">takes it with one</text><text x="273" y="68">of theirs.</text>
+    <text x="273" y="94" font-weight="700">Agreed at once:</text><text x="273" y="106">nobody else can take</text><text x="273" y="118">it, and the two</text><text x="273" y="130">daemons say hello.</text>
+    <text x="403" y="44">Your next SYNC puts</text><text x="403" y="56">theirs in the slot</text><text x="403" y="68">yours left, AWAY.</text>
+    <text x="403" y="94" font-weight="700">Load your game:</text><text x="403" y="106">"arrived in a trade",</text><text x="403" y="118">and it may evolve.</text>
+  </g>
+  <path d="M118 86L136 86" stroke="#16161a" marker-end="url(#ar)"/><path d="M248 86L266 86" stroke="#16161a" marker-end="url(#ar)"/><path d="M378 86L396 86" stroke="#16161a" marker-end="url(#ar)"/>
+  <rect x="6" y="160" width="508" height="40" rx="8" fill="#f1ecf8"/>
+  <text x="16" y="177" fill="#16161a" font-size="10">Nobody needs to be online at the same time. Each game changes at its own SYNC,</text>
+  <text x="16" y="192" fill="#16161a" font-size="10">and nothing is ever in two games at once.</text>
+</svg>

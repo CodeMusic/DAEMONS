@@ -7,6 +7,8 @@ Machines evolved into creatures. This is a game about what happened next, and it
 **New to it? Start with [the player's manual](docs/DAEMONS-manual.pdf)** — every way to play, getting started, the
 world, the daemons and the seventeen types with the chart, the BENCHMARKS, MARKS and ROOTS, the INDEX, the NOTEBOOK,
 PLAY, the GAME CORNER and the companion, and a glossary, in one PDF. It says how things work, never where.
+**Playing with others? [Playing together](docs/DAEMONS-social-manual.pdf)** — trading, lending and giving daemons,
+evolving by trade, OUT TOGETHER meetings, friends and shared dreams, and friends' homes through THE COMMONS.
 
 ---
 

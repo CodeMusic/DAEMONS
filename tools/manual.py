@@ -7,6 +7,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --write --force       # print it even if they did not
     python3 tools/manual.py --html OUT.html       # the page before printing, to look at in a browser
     python3 tools/manual.py --refresh     # copy docs/manual/frames/ again from the theatre's captures (and --write)
+    python3 tools/manual.py --book social --write   # the second book: PLAYING TOGETHER, the social features (C-219..)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -46,6 +47,21 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 SRC = os.path.join(ROOT, "docs/manual")
 OUT = os.path.join(ROOT, "docs/DAEMONS-manual.pdf")   # the companion app reads it here, on main (C-233): never move it
+#  The books this prints: the player's manual (the default, unchanged), and PLAYING TOGETHER -- trading, loans, gifts,
+#  meetings and friends' homes (the user, 2026-10-31: "a separate manual ... about the social features of daemons
+#  specifically, still with diagrams and artwork"). --book NAME chooses; each has its own folder and PDF.
+BOOKS = {
+    "main": {"src": "docs/manual", "out": "docs/DAEMONS-manual.pdf", "title": "DAEMONS: the player's manual",
+             "sub": "The player's manual", "foot": "the player's manual",
+             "subject": "How to play DAEMONS: CONTEXT / CONTENT, and every way to play it",
+             "sprites": ("ROVERCUB", "LABEL", "CLUSTER"), "strip": None},
+    "social": {"src": "docs/manual-social", "out": "docs/DAEMONS-social-manual.pdf", "title": "DAEMONS: playing together",
+               "sub": "Playing together", "foot": "playing together",
+               "subject": "DAEMONS with other players: trading, loans, gifts, meetings and friends' homes",
+               "sprites": ("PENGUIN", "PENPHIN", "DOLPHIN"),
+               "strip": ("ROVERCUB", "LABEL", "CLUSTER", "INFERENCE", "HAUNTPROC", "LEMMA MIND", "THEOREM", "PING")},
+}
+BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SCREEN_SCALE, SPRITE_SCALE = 4, 8           # nearest-neighbour, so no PDF reader smooths a pixel
@@ -309,6 +325,17 @@ class Build:
         return ('<table class="holidays"><thead><tr><th>the month</th><th>both</th><th>CONTENT, the north</th>'
                 '<th>CONTEXT, the south</th></tr></thead><tbody>%s</tbody></table>' % "".join(rows))
 
+    def sc_diagram(self, args, caption):
+        """A drawing of how something works: an SVG from the book's diagrams/ folder, inline, so it prints sharp."""
+        path = os.path.join(SRC, "diagrams", args[0] + ".svg")
+        if not os.path.exists(path):
+            raise SystemExit("manual: no diagram %s" % path)
+        svg = open(path, encoding="utf-8").read()
+        self.digest.update(svg.encode())
+        svg = re.sub(r"<\?xml[^>]*>\s*", "", svg)
+        cap = "<figcaption>%s</figcaption>" % caption if caption else ""
+        return '<figure class="diagram">%s%s</figure>' % (svg, cap)
+
     def sc_cover(self, args, caption):
         path = os.path.join(ROOT, "wiki/images", {"guide": "guide_cover.png", "subtle": "subtle_cover.png"}[args[0]])
         im = Image.open(path).convert("RGB")
@@ -376,25 +403,26 @@ def chapters(body):
 
 def page_html(build, body, toc, css, rel, date):
     sprites = "".join('<img src="%s" alt="">' % build.image("sprite:" + n, build.daemons.sprite(n), SPRITE_SCALE)
-                      for n in ("ROVERCUB", "LABEL", "CLUSTER"))
+                      for n in BOOK["sprites"])
     def band(t):
         r, g, b = build.hue.get(t, (128,) * 3)
         ink = "#16161a" if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else "#fff"
         return ".t-%s{--tc:rgb(%d,%d,%d);--tink:%s}" % (t, r, g, b, ink)
     style = "\n".join(band(t) for t in build.order)
     strip = "".join('<img src="%s" alt="">' % build.image("sprite:" + n, build.daemons.sprite(n), SPRITE_SCALE)
-                    for n in COVER_STRIP)
-    return """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>DAEMONS: the player's manual</title>
+                    for n in (BOOK["strip"] or COVER_STRIP))
+    return """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>%s</title>
 <style>%s
 %s</style></head><body>
 <section class="cover"><div class="ctop"><div class="ced">CONTEXT / CONTENT</div><div class="ctitle">DAEMONS</div>
-<div class="csub">The player's manual</div></div>
+<div class="csub">%s</div></div>
 <div class="cspr">%s</div><div class="cstrip">%s</div>
 <div class="cbot"><div>For release <b>%s</b>%s &middot; every word quoted from the game is a DRAFT</div>
 <div>A fan project for the Game Boy Advance. No ROM is in it, or anywhere in DAEMONS.</div></div></section>
 <section class="toc"><h1 class="tochead">Contents</h1>%s</section>
 %s
-</body></html>""" % (css, style, sprites, strip, rel, (", " + date) if date else "", toc, body)
+</body></html>""" % (H.escape(BOOK["title"]), css, style, H.escape(BOOK["sub"]), sprites, strip, rel,
+                        (", " + date) if date else "", toc, body)
 
 
 def build_html(work):
@@ -438,7 +466,7 @@ def stamp(pdf_path, out_path, rel, digest):
             continue
         r = page.rect
         y = r.height - 20
-        page.insert_text((34, y), "DAEMONS  ·  the player's manual", fontsize=6.5, fontname="helv", color=(0.45, 0.45, 0.5))
+        page.insert_text((34, y), "DAEMONS  ·  " + BOOK["foot"], fontsize=6.5, fontname="helv", color=(0.45, 0.45, 0.5))
         num = str(i + 1)
         page.insert_text((r.width / 2 - fitz.get_text_length(num, "helv", 7.5) / 2, y), num, fontsize=7.5,
                          fontname="helv", color=(0.1, 0.1, 0.12))
@@ -446,8 +474,8 @@ def stamp(pdf_path, out_path, rel, digest):
         page.insert_text((r.width - 34 - fitz.get_text_length(right, "helv", 6.5), y), right, fontsize=6.5,
                          fontname="helv", color=(0.45, 0.45, 0.5))
     # the subject ends "(v<release>)": the companion's LIBRARY reads the release from it (C-233, app/manual.ts)
-    doc.set_metadata({"title": "DAEMONS: the player's manual", "author": "the DAEMONS project",
-                      "subject": "How to play DAEMONS: CONTEXT / CONTENT, and every way to play it (%s)" % rel,
+    doc.set_metadata({"title": BOOK["title"], "author": "the DAEMONS project",
+                      "subject": "%s (%s)" % (BOOK["subject"], rel),
                       "keywords": "sources %s" % digest, "creator": "tools/manual.py", "producer": "Chrome, PyMuPDF"})
     doc.save(out_path, garbage=3, deflate=True)
     doc.close()
@@ -475,7 +503,14 @@ def refresh_frames():
 
 
 def main():
+    global BOOK, SRC, OUT
     args = sys.argv[1:]
+    if "--book" in args:
+        name = args[args.index("--book") + 1]
+        if name not in BOOKS:
+            raise SystemExit("manual: no book '%s' (%s)" % (name, ", ".join(BOOKS)))
+        BOOK = BOOKS[name]
+        SRC, OUT = os.path.join(ROOT, BOOK["src"]), os.path.join(ROOT, BOOK["out"])
     write, force = "--write" in args, "--force" in args
     if "--refresh" in args:
         refresh_frames()
@@ -495,11 +530,11 @@ def main():
         print("  release %s, design bible v%s; %d pictures (%d game screens); sources %s"
               % (rel, bible_version(), len(b.images), sum(k.startswith("frame:") for k in b.images), digest))
         if not write:
-            print("  docs/DAEMONS-manual.pdf is %s" % ("current" if current else
-                  "missing" if not os.path.exists(OUT) else "out of date: --write prints it again"))
+            print("  %s is %s" % (BOOK["out"], ("current" if current else
+                  "missing" if not os.path.exists(OUT) else "out of date: --write prints it again")))
             return 0
         if current and not force:
-            print("  docs/DAEMONS-manual.pdf is current; nothing to print (--force prints it anyway)")
+            print("  %s is current; nothing to print (--force prints it anyway)" % BOOK["out"])
             return 0
         open(html_path, "w", encoding="utf-8").write(page_html(b, body, contents(body), css, rel, date))
         first = os.path.join(work, "first.pdf")
@@ -519,7 +554,7 @@ def main():
         import fitz
         with fitz.open(OUT) as doc:
             n = len(doc)
-        print("  wrote docs/DAEMONS-manual.pdf: %d pages, %.1f MB" % (n, os.path.getsize(OUT) / 1e6))
+        print("  wrote %s: %d pages, %.1f MB" % (BOOK["out"], n, os.path.getsize(OUT) / 1e6))
     return 0
 
 
