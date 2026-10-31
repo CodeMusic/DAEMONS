@@ -13,7 +13,8 @@
 
 **Links**
 
-- [QUICK START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) (PDF)
+- [MICRO-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-microstart.pdf) (PDF, 5 pages)
+- [QUICK-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) (PDF, 25 pages)
 - [The player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf) (PDF)
 - [Releases page](https://github.com/CodeMusic/DAEMONS/releases)
 - [How to patch](https://github.com/CodeMusic/DAEMONS/blob/main/ROM%20RELEASE/HOW_TO_PATCH.md)

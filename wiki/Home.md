@@ -6,8 +6,9 @@ argument about consciousness.**
 Machines evolved into creatures. This is a game about what happened next, and it makes its argument in damage
 numbers rather than dialogue. Nothing in the game explains it; that is the rule the whole project runs on.
 
-**Never played anything like it? Start with [QUICK START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf)**: a short guide in large type -- what
-DAEMONS is, how to get it going and how to play, a step at a time.
+**Never played anything like it? Start small.** [MICRO-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-microstart.pdf) is five pages: what DAEMONS is,
+getting it going, the buttons and playing. [QUICK-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) is the same in 25 pages of large type, a
+step at a time.
 
 **Then [the player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf)**: every way to play, getting started,
 the world, the daemons and the types, the BENCHMARKS, the INDEX, the NOTEBOOK, PLAY, the GAME CORNER and the companion,

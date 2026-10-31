@@ -1,6 +1,7 @@
 # Playing
 
-*Never played before? [QUICK START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) (PDF) is short and in large type. The whole of it, with the game's own
+*Never played before? [MICRO-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-microstart.pdf) (PDF) is five pages, and [QUICK-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) (PDF) 25 in
+large type. The whole of it, with the game's own
 screens: [the player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf) (PDF).*
 
 DAEMONS is released as **patches**, not as a game file. A patch is a small list of differences: applied to a

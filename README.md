@@ -4,8 +4,9 @@
 
 Machines evolved into creatures. This is a game about what happened next, and it makes its argument in damage numbers rather than dialogue.
 
-**Never played anything like it? Start with [QUICK START](docs/DAEMONS-quickstart.pdf)** — a short guide in large
-type: what DAEMONS is, how to get it going and how to play, a step at a time.
+**Never played anything like it? Start small.** [MICRO-START](docs/DAEMONS-microstart.pdf) is five pages: what
+DAEMONS is, getting it going, the buttons and playing. [QUICK-START](docs/DAEMONS-quickstart.pdf) is the same in 25
+pages of large type, a step at a time.
 
 **Then [the player's manual](docs/DAEMONS-manual.pdf)** — every way to play, getting started, the
 world, the daemons and the seventeen types with the chart, the BENCHMARKS, MARKS and ROOTS, the INDEX, the NOTEBOOK,
