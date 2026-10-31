@@ -27,6 +27,9 @@ a stop that needs longer than --stop-timeout (T-451):
     read                       capture the box on screen now, without pressing anything
     finish                     play out whatever script is running, capturing each box (a scene a battle broke into)
     press BUTTON [N]           press it N times (default 1), forty frames apart, capturing after each
+    choose "LABEL"             on the list menu open now, step its cursor to the row labelled LABEL (the rows read out
+                               of RAM, as start_menu reads the START menu) and press A, capturing after it -- a part
+                               added above (the NOTEBOOK's) moves no press after it
     hold BUTTON FRAMES         hold it for exact frames, capturing nothing
     wait FRAMES
     shot LABEL                 a screenshot into this stop's sheet
@@ -85,6 +88,9 @@ a stop that needs longer than --stop-timeout (T-451):
     objectat WHO X Y|back      T-18 P3: put a person's coordinates on (X, Y) -- their sprite stays -- or back
     remember NAME SPEC 8|16|32 note a RAM value (SPEC as poke's) ...
     moved NAME                 ... and fail unless it has changed since (the GAME CORNER's take after a pull, T-427)
+    kept NAME COINS            ... or fail unless it has moved by just what the TOKEN CASE lost since `coins COINS`, at
+                               the counter's price (HOUSE_COIN_PRICE): a loss adds the bet, a win takes off the pay less
+                               the bet, and a pull that paid the bet back (BET BACK, about one in six) moves neither
     poke SYMBOL[+OFF] 8|16|32 VALUE   write RAM: SYMBOL from the build's .map (a static from the .elf); *SYMBOL+OFF
                                follows the pointer first (*gSaveBlock1Ptr+0x296) -- the DEBUG overrides (the date,
                                the weather, the watch) are EWRAM globals, set this way instead of through the menu
@@ -1270,18 +1276,68 @@ class Runner:
             out[pg] = [(names.get(n), k, g) for n, k, g in re.findall(r"\{\s*(\w+),\s*(R_\w+),\s*([^}]+?)\s*\}", body)]
         return out, pages
 
-    def list_cursor(self):
-        """T-458: the row a ListMenu's cursor is on (its scroll + its row on screen), read from the task the list menu
-        runs as (ListMenuDummyTask's data is the struct ListMenu: cursorPos at +0x18, itemsAbove at +0x1A); None when
-        no list is open."""
+    def list_menu(self):
+        """The struct ListMenu open now: the data of the task the list menu runs as (ListMenuDummyTask's), or None."""
         S = lambda n: elf_symbol(n, self.release)
         tasks, dummy = tw.symbol("gTasks", self.release), S("ListMenuDummyTask") & ~1
         st = tw.peek([(32, tasks + 40 * i, "f%d" % i) for i in range(16)] + [(8, tasks + 40 * i + 4, "a%d" % i) for i in range(16)])
         for i in range(16):
             if st["a%d" % i] and st["f%d" % i] & ~1 == dummy:
-                c = tw.peek([(16, tasks + 40 * i + 8 + 0x18, "scroll"), (16, tasks + 40 * i + 8 + 0x1A, "row")])
-                return c["scroll"] + c["row"]
+                return tasks + 40 * i + 8
         return None
+
+    def list_cursor(self):
+        """T-458: the row a ListMenu's cursor is on (its scroll + its row on screen: cursorPos at +0x18, itemsAbove at
+        +0x1A); None when no list is open."""
+        at = self.list_menu()
+        if at is None:
+            return None
+        c = tw.peek([(16, at + 0x18, "scroll"), (16, at + 0x1A, "row")])
+        return c["scroll"] + c["row"]
+
+    def list_rows(self):
+        """The labels of the ListMenu open now, in order (its template's items at +0, totalItems at +0xC; an item is a
+        label pointer and an index), each read from the ROM or from RAM where it points; None when no list is open."""
+        at = self.list_menu()
+        if at is None:
+            return None
+        head = tw.peek([(32, at, "items"), (16, at + 0xC, "n")])
+        ptrs = []
+        for k in range(0, head["n"], 32):
+            got = tw.peek([(32, head["items"] + 8 * j, "l%d" % j) for j in range(k, min(k + 32, head["n"]))])
+            ptrs += [got["l%d" % j] for j in range(k, min(k + 32, head["n"]))]
+        rom = open(os.path.join(GBA, "daemonsContent.gba" if self.release else "daemonsContent_debug.gba"), "rb").read()
+        rows = []
+        for p in ptrs:
+            if p >= 0x08000000:
+                raw = rom[p - 0x08000000: p - 0x08000000 + 64]
+            else:
+                got = tw.peek([(32, p + 4 * k, "w%d" % k) for k in range(16)])
+                raw = b"".join(got["w%d" % k].to_bytes(4, "little") for k in range(16))
+            rows.append(decode(raw))
+        return rows
+
+    def choose(self, label):
+        rows = None
+        for tries in range(10):                                           # a list takes a few frames to put up
+            rows = self.list_rows()
+            if rows:
+                break
+            tw.run("wait 20")
+        if not rows:
+            raise RouteError('no list is open to choose "%s" from' % label)
+        hits = [k for k, r in enumerate(rows) if fold(r) == fold(label)]
+        if len(hits) != 1:
+            raise RouteError('the list has %s "%s": %s' % ("no row" if not hits else "two rows", label, " / ".join(rows)))
+        for tries in range(2 * len(rows) + 6):
+            at = self.list_cursor()
+            if at is None or at == hits[0]:
+                break
+            tw.run("hold %s 4" % ("DOWN" if hits[0] > at else "UP"), "wait 20")
+        if self.list_cursor() != hits[0]:
+            raise RouteError('the cursor never reached "%s"' % label)
+        tw.run("hold A 6", "wait 50")
+        self.capture("chose " + label)
 
     def events(self, labels):
         pages, order = self.event_pages()
@@ -1713,6 +1769,16 @@ class Runner:
             self.capture("%s: %d -> %d" % (args[0], was, now), read_text=False)
             if now == was:
                 raise RouteError("%s is still %d" % (args[0], now))
+        elif op == "kept":                                                  # T-427: the take is what the coins lost
+            spec, bits, was = self.memory[args[0]]
+            key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
+            coins = tw.peek([(16, self.addr("*gSaveBlock1Ptr+0x294"), "c")])["c"] ^ key
+            now, lost, price = self.read(spec, bits), int(args[1]) - coins, _numbers("daemons_house.h")["HOUSE_COIN_PRICE"]
+            self.capture("%s: %d -> %d; the coins: %s -> %d" % (args[0], was, now, args[1], coins), read_text=False)
+            if now - was != lost * price:
+                raise RouteError("%s moved by %d, not by the %d coins lost at %d" % (args[0], now - was, lost, price))
+        elif op == "choose":
+            self.choose(" ".join(args))
         elif op == "foe":
             got = self.foe()
             if got != const_species(args[0]):
@@ -1853,7 +1919,8 @@ SHAPES = {
     "finish": "", "read": "", "press": "s ?i", "hold": "s i", "wait": "i", "shot": "*", "flag": "s i", "trainer": "s i",
     "flagis": "s i", "var": "s n", "repel": "?i", "bump": "s *", "wild": "*", "unsaid": "*", "friendship": "i i",
     "objectat": "s *", "mon": "i s s", "bag": "s *", "swap": "i i", "open": "s", "useitem": "s", "coins": "i",
-    "keyitem": "s", "follower": "*", "remember": "s s i", "moved": "s", "foe": "s", "poke": "s i n", "palettes": "s",
+    "keyitem": "s", "follower": "*", "remember": "s s i", "moved": "s", "kept": "s i", "choose": "*", "foe": "s",
+    "poke": "s i n", "palettes": "s",
     "register": "s", "play": "*", "fight": "", "win": "", "lose": "", "expect": "s ?i ?i", "music": "?s",
     "burst": "s i i ?s ?i", "palette": "s i s", "debug": "*", "events": "*", "feelings": "*",
     "conditions": "i i i i i i i", "feel": "*", "summary": "i *", "boxsummary": "*", "keys": "*", "shown": "*",

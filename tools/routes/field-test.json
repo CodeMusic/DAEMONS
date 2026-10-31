@@ -188,6 +188,7 @@
       "stop": "PLAY: the HARP from the LYREBIRD",
       "steps": [
         "flag FLAG_GOT_INSTRUMENT 0",
+        "flag FLAG_HIDE_LYREBIRD 0",
         "goto ViridianCity 27 21",
         "repel 999",
         "talk 27,19",
@@ -269,14 +270,12 @@
     {
       "stop": "the SONGBOOK: TWELVE DAYS' page, in its key",
       "steps": [
-        "flag FLAG_SONG_FIR 0",
         "register ITEM_NOTEBOOK",
         "press SELECT",
         "wait 40",
-        "press DOWN 6",
-        "press A",
+        "choose SONGBOOK",
         "wait 40",
-        "press A",
+        "choose \"TWELVE DAYS OF DECEMBER\"",
         "wait 60",
         "says \"Heard at CALLOW SCHOOL.\"",
         "says \"In the key of E.\"",
@@ -413,7 +412,7 @@
       ]
     },
     {
-      "stop": "the GAME CORNER: a pull, and the take moving",
+      "stop": "the GAME CORNER: a pull, and the take keeping count",
       "steps": [
         "flag FLAG_GOT_COIN_CASE 1",
         "coins 500",
@@ -434,11 +433,12 @@
         "press A",
         "wait 200",
         "shot the pull",
+        "wait 400",
         "press B",
         "wait 60",
         "shot leaving",
         "finish",
-        "moved take"
+        "kept take 500"
       ]
     },
     {
