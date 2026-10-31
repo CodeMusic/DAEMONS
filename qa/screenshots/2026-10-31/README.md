@@ -109,3 +109,9 @@ T-498 (DRAFT): every line that changed, before and after, in the game's font -- 
 T-498 in the ROM (CONTENT debug, engine 1f232e012, released in v11.333.1), played in the theatre: MATTE gives the FRAME MARK (FORGIVENESS, over WRATH; I forgave it then), his line with the understanding, the insight's arrival, and the USER card's sixth MARK page. DRAFT words.
 
 ![31Oct2026 - T498 - MATTE says forgiveness, in the ROM - 18](31Oct2026%20-%20T498%20-%20MATTE%20says%20forgiveness%2C%20in%20the%20ROM%20-%2018.png)
+
+### 31Oct2026 - T493 - the twin reads the users words - 19
+
+v11.333.2: the twin in THE NEXUS now reads IT'S REAL. IT'S YOURS. (on the ship it's RG'H IVZO. RG'H BLFIH.)
+
+![31Oct2026 - T493 - the twin reads the users words - 19](31Oct2026%20-%20T493%20-%20the%20twin%20reads%20the%20users%20words%20-%2019.png)
