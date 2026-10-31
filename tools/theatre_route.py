@@ -1099,7 +1099,14 @@ class Runner:
             # the outcome is read at the end of a TURN: so take one -- ROUTINES (top left), then the first routine.
             # A on DETACH takes none ("You cannot DETACH from a USER engagement!"), and that loop never ends.
             tw.run("poke8 %s %d" % (hex(outcome), result), "hold B 8", "wait 30", "hold UP 6", "wait 10", "hold LEFT 6", "wait 10",
-                   "hold A 8", "wait 40", "hold A 8", "wait 150", "hold A 6", "wait 60")
+                   "hold A 8", "wait 40", "hold A 8", "wait 150")
+            # then the battle's closing boxes, one A at a time, and not one A after it hands back: a fixed trailing A
+            # landed on the field and turned past the first box of the script after the battle -- a leader's MARK line
+            # (T-346), so BRAZEN's FORGIVENESS was in the ROM and never read (T-498, 2026-10-31)
+            for _ in range(20):
+                if not self.g.state()["battle"]:
+                    return
+                tw.run("hold A 6", "wait 40")
         raise RouteError("still in a battle after thirty turns")
 
     def var(self, v, value):
