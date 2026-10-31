@@ -39,7 +39,7 @@
     "talk Lioness",
     "says \"I check first\"",
     "talk Painting",
-    "says \"SVB, BLF! OLLP ZTZRM.\"",
+    "says \"RG'H IVZO. RG'H BLFIH.\"",
     "flagis FLAG_NOTEBOOK_LOOSE_PAINTING 1",
     "shot the painting, facing west"
    ]
@@ -75,7 +75,7 @@
     "goto Nexus 12 5",
     "shot the easel beside the Christmas tree, mirrored",
     "talk Easel",
-    "says \"HEY, YOU! LOOK AGAIN.\"",
+    "says \"IT'S REAL. IT'S YOURS.\"",
     "flagis FLAG_NOTEBOOK_LOOSE_PAINTING_READ 1",
     "flagis FLAG_NOTEBOOK_LOOSE_PAINTING 0"
    ]

@@ -180,7 +180,7 @@ TEXT = {
     "Nexus_Text_Easel": "A painting on an easel. A meadow at\nnight, a lone tree, a white moon.",
     "Nexus_Text_EaselTwin": "The S.S. ANNE's painting, the other\nway round, like a mirror.\\p"
                             "{PLAYER} opened the NOTEBOOK beside\nit. The letters held still.",
-    "Nexus_Text_EaselWords": "HEY, YOU! LOOK AGAIN.",
+    "Nexus_Text_EaselWords": "IT'S REAL. IT'S YOURS.",   # the user's choice, 2026-10-31
 }
 TEXT.update({"Nexus_Text_Guardian%d" % k: g for k, g in enumerate(GUARDIAN)})
 TEXT.update({"Nexus_Text_Sign%d" % k: "%s\\p%s" % UNIVERSES[name] for k, (name, _) in enumerate(DOORS)})   # T-408
