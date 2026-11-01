@@ -97,9 +97,14 @@ td:first-child { white-space: nowrap; }
 .remember { background: #f0eee6; border-left-color: var(--tc); font-size: 10.6pt; }
 .tip p:last-child, .note p:last-child, .remember p:last-child { margin: 0; }
 /* the rumour of a third book, as the player's manual frames it: the pulse faint behind, emerald at its edge */
-.rumour { break-inside: avoid; border-radius: 3pt; padding: 2.6mm 3.6mm; margin: 3.5mm 0; font-style: italic;
+.rumour { break-inside: avoid; border-radius: 3pt; padding: 2mm 3.6mm; margin: 2.5mm 0; font-style: italic;
           background: linear-gradient(90deg, #f7ebe9, #f5edef, #edeff4); border-left: 3pt solid #1f8f5f; }
 .rumour p:last-child { margin: 0; }
+/* the first chapter runs to the foot of its page (its DAY-mons line, 2026-11-01): a little closer set than the rest */
+section#what { line-height: 1.44; }
+section#what p { margin-bottom: 1.8mm; }
+section#what h2 { margin-top: 3mm; }
+section#what li { margin-bottom: .5mm; }
 
 /* -- game screens: large, one or two to a row -- */
 figure { margin: 3mm 0 4mm; break-inside: avoid; }

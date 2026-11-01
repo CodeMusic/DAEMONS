@@ -79,3 +79,9 @@ DAEMONS is said DAY-mons in all three books -- the Greeks' daimon, a guiding spi
 T-509 first frames: REASON's green circuit, INSTINCT's gold net, SPELLCRAFT emerald on the purple, each with a shiny version; one shared back; PAST/PRESENT/FUTURE on a GBA screen.
 
 ![1Nov2026 - T509 - tarot card frames - 16](1Nov2026%20-%20T509%20-%20tarot%20card%20frames%20-%2016.png)
+
+### 1Nov2026 - T508 - DAY-mons, not the similarly spelt word - 17
+
+DAEMONS said DAY-mons in all three books: the Greeks' daimon, a guiding spirit -- not the similarly spelt, frightening word that forked from it much later, which is never printed (the user's wording, 2026-11-01)
+
+![1Nov2026 - T508 - DAY-mons, not the similarly spelt word - 17](1Nov2026%20-%20T508%20-%20DAY-mons%2C%20not%20the%20similarly%20spelt%20word%20-%2017.png)

@@ -10,8 +10,8 @@ Game Boy Advance, and you go at your own pace.
 Long ago, the machines in this world began to live. They grew into creatures, each with a shape, a way of thinking
 and a mind of its own. They are called **DAEMONS** (say it [*DAY-mons*]{style="white-space: nowrap"}).
 It is a very old word: to the ancient Greeks, a *daimon* was a guiding spirit, one that keeps you company and helps
-you along. Much later the word forked into a second, very similar one for a particular class of them: the helpers
-that work quietly inside a computer.
+you along. Much later a similarly spelt but frightening word forked from it; this is not that one. Later still, programmers
+took the old word for the helpers that work quietly inside a computer.
 
 Some live wild, out in the long grass and in caves. Others live alongside people, as partners.
 

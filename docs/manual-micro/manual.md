@@ -1,7 +1,8 @@
 # What DAEMONS is {#what .t-CONTEXT}
 
 A game about a world where the machines came alive. They grew into creatures called **DAEMONS** (say it
-[*DAY-mons*]{style="white-space: nowrap"}: an old Greek word for a guiding spirit), and everyone you meet is an animal. You are a **USER**: you travel with DAEMONS, make friends with them,
+[*DAY-mons*]{style="white-space: nowrap"}: an old Greek word for a guiding spirit, not the similarly spelt, frightening word that forked from it
+much later), and everyone you meet is an animal. You are a **USER**: you travel with DAEMONS, make friends with them,
 and keep a record of every one you meet, called the **INDEX**. Eight town leaders test you along the way; pass a test
 and you earn a **MARK**, like a badge.
 
