@@ -49,3 +49,21 @@ T-483 (5) part six, theatre route t483_process_seam 4/4 (DRAFT words): MIRROR th
 C-266 (DRAFT): AXIOMKICK as it has been cared for -- shadows after a short night, bloodshot after three, thin and sad when hungry for days, plump when never trained, and its heaviest, the bound. Drawn by the server's BOX-3 renderer; the eyes use a corrected box (faces.json predates the redrawn art).
 
 ![1Nov2026 - C266 - care looks - 8](1Nov2026%20-%20C266%20-%20care%20looks%20-%208.png)
+
+### 1Nov2026 - C267 - app icon options - 9
+
+C-267: four icon options for the app now named DAEMONS, beside the current icon, at full size, 180, 60 and 29 px.
+
+![1Nov2026 - C267 - app icon options - 9](1Nov2026%20-%20C267%20-%20app%20icon%20options%20-%209.png)
+
+### 1Nov2026 - C267 - app icon round two - 10
+
+C-267 round two: A's field with the title's notes rising and red and blue notes crossing in purple; E MUSAI, F the dog from the current icon, G CODEMUSAI.
+
+![1Nov2026 - C267 - app icon round two - 10](1Nov2026%20-%20C267%20-%20app%20icon%20round%20two%20-%2010.png)
+
+### 1Nov2026 - C267 - app icon round three - 11
+
+C-267 round three: DAEMONS in the logo's letters with the crossing notes as its M; H MUSAI, I the dog, J the word alone; E and F beside.
+
+![1Nov2026 - C267 - app icon round three - 11](1Nov2026%20-%20C267%20-%20app%20icon%20round%20three%20-%2011.png)
