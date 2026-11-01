@@ -72,7 +72,10 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.335.6**, from 2026-11-01. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.335.6**, from 2026-11-01, and
+the newest thing in it that can be told about came in v11.335.1: a lioness, met more than once
+before the ship, now passes on a teacher's line and waits on deck with a ball. Next, THE SUBTLE LAYER's tarot CARDS
+come to the game as the companion has them. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
