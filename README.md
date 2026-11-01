@@ -63,7 +63,7 @@ FireRed and LeafGreen — so **CONTENT** and **CONTEXT** cost three lines of
 Makefile, and the split survived the port unchanged, which was the first good
 sign the move was affordable. The type chart is byte-identical in both — it's the argument, and an argument that changes by cartridge isn't one. What differs is which daemons you meet, and what the Index says about them.
 
-Creatures are **daemons** — background processes that run unattended, and the older sense too: the *daimon*, the voice that speaks to you from somewhere you don't control. They are not robots and nobody in the world calls them AI. They just live there.
+Creatures are **daemons** (said *DAY-mons*) — background processes that run unattended, and the older sense too: the *daimon*, the voice that speaks to you from somewhere you don't control. They are not robots and nobody in the world calls them AI. They just live there.
 
 ## The idea
 

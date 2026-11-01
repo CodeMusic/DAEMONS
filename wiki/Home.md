@@ -1,6 +1,6 @@
 # DAEMONS: CONTEXT / CONTENT
 
-**A total conversion of *Pokémon FireRed* and *LeafGreen* where the creatures are daemons and the type chart is an
+**A total conversion of *Pokémon FireRed* and *LeafGreen* where the creatures are daemons (said *DAY-mons*) and the type chart is an
 argument about consciousness.**
 
 Machines evolved into creatures. This is a game about what happened next, and it makes its argument in damage
