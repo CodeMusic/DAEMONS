@@ -91,3 +91,27 @@ DAEMONS said DAY-mons in all three books: the Greeks' daimon, a guiding spirit -
 T-509 round two (approved): The Deck Above and The Deck Below replace SPELLCRAFT; the deck selectors in the game's font; a card's words on a second page.
 
 ![1Nov2026 - T509 - tarot frames round two - 18](1Nov2026%20-%20T509%20-%20tarot%20frames%20round%20two%20-%2018.png)
+
+### 1Nov2026 - C272 - the tarot words as prophecy - 19
+
+C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, its type and its INDEX entry -- The Deck of Reason, The Deck of Instinct (THE SUBTLE LAYER), The Deck Above and The Deck Below (THE HERMETIC LAYER, 22 new daemons); the old words small beneath. Every word DRAFT.
+
+![1Nov2026 - C272 - the tarot words as prophecy - 19](1Nov2026%20-%20C272%20-%20the%20tarot%20words%20as%20prophecy%20-%2019.png)
+
+### 1Nov2026 - C272 - the tarot words as prophecy - 20
+
+C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, its type and its INDEX entry -- The Deck of Reason, The Deck of Instinct (THE SUBTLE LAYER), The Deck Above and The Deck Below (THE HERMETIC LAYER, 22 new daemons); the old words small beneath. Every word DRAFT.
+
+![1Nov2026 - C272 - the tarot words as prophecy - 20](1Nov2026%20-%20C272%20-%20the%20tarot%20words%20as%20prophecy%20-%2020.png)
+
+### 1Nov2026 - C272 - the tarot words as prophecy - 21
+
+C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, its type and its INDEX entry -- The Deck of Reason, The Deck of Instinct (THE SUBTLE LAYER), The Deck Above and The Deck Below (THE HERMETIC LAYER, 22 new daemons); the old words small beneath. Every word DRAFT.
+
+![1Nov2026 - C272 - the tarot words as prophecy - 21](1Nov2026%20-%20C272%20-%20the%20tarot%20words%20as%20prophecy%20-%2021.png)
+
+### 1Nov2026 - C272 - the tarot words as prophecy - 22
+
+C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, its type and its INDEX entry -- The Deck of Reason, The Deck of Instinct (THE SUBTLE LAYER), The Deck Above and The Deck Below (THE HERMETIC LAYER, 22 new daemons); the old words small beneath. Every word DRAFT.
+
+![1Nov2026 - C272 - the tarot words as prophecy - 22](1Nov2026%20-%20C272%20-%20the%20tarot%20words%20as%20prophecy%20-%2022.png)
