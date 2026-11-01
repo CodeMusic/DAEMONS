@@ -373,6 +373,113 @@ def main2():
     sheet(items, HERE / "sheet2.png")
 
 
+# ================================================================ round 3
+# The user (2026-11-01): the crossing notes look like an M -- so behind the
+# daemon, the whole title in A's letters and green, with the notes as its M.
+
+def green_logo():
+    """The native CONTENT logo (all capitals, DAEMONS), recoloured as A's D was."""
+    a = np.array(native(ART / "title/logo_content.png")).astype(int)
+    lum = a[:, :, :3].sum(2)
+    op = a[:, :, 3] > 0
+    body = sorted(set(lum[op & (lum >= 200)].tolist()))
+    out = np.zeros_like(a)
+    for y, x in zip(*np.nonzero(op)):
+        l = lum[y, x]
+        if l < 200:
+            c = rgb("#02201e")
+        else:
+            t = body.index(l) / max(1, len(body) - 1)
+            c = rgb(GREEN[0]) if t > 0.75 else rgb(GREEN[1]) if t > 0.3 else rgb(GREEN[2])
+        out[y, x] = c + (255,)
+    return Image.fromarray(out.astype(np.uint8))
+
+
+def letter_runs(im):
+    cols = np.array(im)[:, :, 3].any(0)
+    runs, s = [], None
+    for i, c in enumerate(list(cols) + [False]):
+        if c and s is None:
+            s = i
+        if not c and s is not None:
+            runs.append((s, i)); s = None
+    return runs
+
+
+def logo_parts():
+    """(DAE, ONS) cut from the logo either side of its M, at native scale."""
+    g = green_logo()
+    r = letter_runs(g)                      # D A E M O N S
+    return g.crop((0, 0, r[2][1], g.height)), g.crop((r[4][0], 0, g.width, g.height))
+
+
+def word_with_notes(k, nk, gap):
+    """D A E <notes> O N S on one line: letters x k, notes x nk, centred on the letters."""
+    dae, ons = logo_parts()
+    dae, ons = nn(dae, k), nn(ons, k)
+    notes = pulse_notes(nk)
+    h = dae.height
+    w = dae.width + gap + notes.width + gap + ons.width
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    im.alpha_composite(dae, (0, 0))
+    im.alpha_composite(notes, (dae.width + gap, (h - notes.height) // 2 - k * 2))
+    im.alpha_composite(ons, (dae.width + gap + notes.width + gap, 0))
+    return im
+
+
+def word_behind(sp, target, dy):
+    bg = rising_field()
+    word = word_with_notes(3, 9, 9)          # 3 x the logo: ~750 px wide, inside the safe area
+    paste_center(bg, word, N // 2, 330)
+    big = nn(sp, max(1, target // max(sp.size)))
+    paste_center(bg, big, N // 2, N // 2 + dy)
+    return flat(bg)
+
+
+def icon_h():
+    return word_behind(bbox_crop(load(ART / "musai.png")), 520, 115)
+
+
+def icon_i():
+    return word_behind(current_dog(), 560, 120)
+
+
+def icon_j():
+    """The word alone, large enough to read: DAE over <notes>ONS, letters x5."""
+    bg = rising_field()
+    dae, ons = logo_parts()
+    k = 5
+    dae, ons = nn(dae, k), nn(ons, k)
+    notes = pulse_notes(15)
+    gap = 15
+    line2 = Image.new("RGBA", (notes.width + gap + ons.width, ons.height), (0, 0, 0, 0))
+    line2.alpha_composite(notes, (0, (ons.height - notes.height) // 2 - k * 2))
+    line2.alpha_composite(ons, (notes.width + gap, 0))
+    lead = 30
+    top = (N - (dae.height + lead + line2.height)) // 2
+    x2 = (N - line2.width) // 2
+    bg.alpha_composite(line2, (x2, top + dae.height + lead))
+    bg.alpha_composite(dae, (x2, top))          # flush left with the line below
+    return flat(bg)
+
+
+def main3():
+    icons = {"h": icon_h(), "i": icon_i(), "j": icon_j()}
+    for k, im in icons.items():
+        assert im.size == (N, N) and im.mode == "RGB"
+        im.save(HERE / f"icon_{k}.png")
+    old = {k: Image.open(HERE / f"icon_{k}.png").convert("RGB") for k in "ef"}
+    items = [
+        ("E  MUSAI", "Round 2's E, for comparison.", old["e"]),
+        ("F  the dog", "Round 2's F, for comparison.", old["f"]),
+        ("H  MUSAI + title", "DAEMONS in the logo's letters x3 and A's green, the crossing notes as its M; MUSAI in front.", icons["h"]),
+        ("I  dog + title", "The same title behind the current icon's robot dog.", icons["i"]),
+        ("J  the title", "No daemon: DAE over (notes)ONS, letters x5, so the word still reads small.", icons["j"]),
+    ]
+    sheet(items, HERE / "sheet3.png")
+
+
 if __name__ == "__main__":
     main()
     main2()
+    main3()
