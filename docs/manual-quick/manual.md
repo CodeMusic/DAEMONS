@@ -8,7 +8,8 @@ Game Boy Advance, and you go at your own pace.
 ## A world of creatures {#world}
 
 Long ago, the machines in this world began to live. They grew into creatures, each with a shape, a way of thinking
-and a mind of its own. They are called **DAEMONS** (say it *DEE-muns*).
+and a mind of its own. They are called **DAEMONS** (say it [*DAY-mons*]{style="white-space: nowrap"}).
+The word is not "demons": it is an older one, for a guiding spirit -- the friendly kind.
 
 Some live wild, out in the long grass and in caves. Others live alongside people, as partners.
 
