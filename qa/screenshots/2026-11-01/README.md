@@ -73,3 +73,9 @@ C-267 round three: DAEMONS in the logo's letters with the crossing notes as its 
 DAEMONS is said DAY-mons in all three books -- the Greeks' daimon, a guiding spirit, that later forked into a second, similar word for a particular class of them; the other word appears nowhere (the user, 2026-11-01)
 
 ![1Nov2026 - T508 - DAY-mons and the Greek daimon - 12](1Nov2026%20-%20T508%20-%20DAY-mons%20and%20the%20Greek%20daimon%20-%2012.png)
+
+### 1Nov2026 - T509 - tarot card frames - 16
+
+T-509 first frames: REASON's green circuit, INSTINCT's gold net, SPELLCRAFT emerald on the purple, each with a shiny version; one shared back; PAST/PRESENT/FUTURE on a GBA screen.
+
+![1Nov2026 - T509 - tarot card frames - 16](1Nov2026%20-%20T509%20-%20tarot%20card%20frames%20-%2016.png)
