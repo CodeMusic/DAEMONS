@@ -85,3 +85,9 @@ T-509 first frames: REASON's green circuit, INSTINCT's gold net, SPELLCRAFT emer
 DAEMONS said DAY-mons in all three books: the Greeks' daimon, a guiding spirit -- not the similarly spelt, frightening word that forked from it much later, which is never printed (the user's wording, 2026-11-01)
 
 ![1Nov2026 - T508 - DAY-mons, not the similarly spelt word - 17](1Nov2026%20-%20T508%20-%20DAY-mons%2C%20not%20the%20similarly%20spelt%20word%20-%2017.png)
+
+### 1Nov2026 - T509 - tarot frames round two - 18
+
+T-509 round two (approved): The Deck Above and The Deck Below replace SPELLCRAFT; the deck selectors in the game's font; a card's words on a second page.
+
+![1Nov2026 - T509 - tarot frames round two - 18](1Nov2026%20-%20T509%20-%20tarot%20frames%20round%20two%20-%2018.png)
