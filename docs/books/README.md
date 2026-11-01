@@ -21,3 +21,16 @@ collects what is said about it, and the real history the rumour grew from.
 
 **A hint, in case it does exist:** in the game, a strange man lives on QUICKSILVER island. His first and last name,
 written in title case with a space between them (`Firstname Lastname`), might open the vault.
+
+## Audio
+
+The same books read aloud (Kokoro TTS, voice `af_heart`), with chapter markers at every entry. Each `.chapters.json`
+gives every section's and entry's start and end in seconds, so a chapter can be cut from the MP3 without re-rendering.
+Made by `python3 tools/bookaudio.py <book> <out_dir>` from the companion's `server/data/<book>.json`; like the PDFs,
+they are DRAFT and go stale when the words change.
+
+| File | The book |
+|---|---|
+| [`audio/guide.mp3`](audio/guide.mp3) | THE PROGRAMMER'S GUIDE TO THE HUMAN MIND, 17 min |
+| [`audio/the-subtle-layer.mp3`](audio/the-subtle-layer.mp3) | THE SUBTLE LAYER, 31 min |
+| [`audio/the-vault-audio.zip`](audio/the-vault-audio.zip) | **Sealed**, by the same name as the vault. |

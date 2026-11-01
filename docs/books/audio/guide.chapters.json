@@ -1,0 +1,235 @@
+{
+ "book": "guide",
+ "voice": "af_heart",
+ "duration": 1034.85,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Programmer's Guide To The Human Mind",
+   "start": 0.0,
+   "end": 6.49
+  },
+  {
+   "kind": "section",
+   "title": "Introduction",
+   "start": 6.49,
+   "end": 9.08
+  },
+  {
+   "kind": "entry",
+   "title": "Understanding the Mind as Software",
+   "start": 9.08,
+   "end": 47.6
+  },
+  {
+   "kind": "entry",
+   "title": "Overview of Tools and Techniques",
+   "start": 47.6,
+   "end": 81.89
+  },
+  {
+   "kind": "entry",
+   "title": "The Programmer's Role in Re-architecting the Mind",
+   "start": 81.89,
+   "end": 118.94
+  },
+  {
+   "kind": "section",
+   "title": "Understanding the System",
+   "start": 118.94,
+   "end": 122.68
+  },
+  {
+   "kind": "entry",
+   "title": "The Human Brain: Hardware for the Mind",
+   "start": 122.68,
+   "end": 167.09
+  },
+  {
+   "kind": "entry",
+   "title": "The Mind as Software: An Introduction to Mental Programming",
+   "start": 167.09,
+   "end": 201.94
+  },
+  {
+   "kind": "entry",
+   "title": "Feelings in Parallel: the Machine Learning Perspective",
+   "start": 201.94,
+   "end": 238.69
+  },
+  {
+   "kind": "entry",
+   "title": "Awareness as a Feedback Loop",
+   "start": 238.69,
+   "end": 272.19
+  },
+  {
+   "kind": "section",
+   "title": "Core Programming Techniques",
+   "start": 272.19,
+   "end": 276.06
+  },
+  {
+   "kind": "entry",
+   "title": "Rewriting the Mental Code (NLP)",
+   "start": 276.06,
+   "end": 308.99
+  },
+  {
+   "kind": "entry",
+   "title": "Debugging Thought Processes (CBT)",
+   "start": 308.99,
+   "end": 348.19
+  },
+  {
+   "kind": "entry",
+   "title": "Mindfulness: System Monitoring and Maintenance",
+   "start": 348.19,
+   "end": 381.89
+  },
+  {
+   "kind": "entry",
+   "title": "Energy Flow and Chakras: Optimizing the Power Supply",
+   "start": 381.89,
+   "end": 417.19
+  },
+  {
+   "kind": "section",
+   "title": "Advanced Mental Engineering",
+   "start": 417.19,
+   "end": 421.16
+  },
+  {
+   "kind": "entry",
+   "title": "Virtues and Shadows: Securing the System",
+   "start": 421.16,
+   "end": 463.35
+  },
+  {
+   "kind": "entry",
+   "title": "Habit Formation: Automating Positive Routines",
+   "start": 463.35,
+   "end": 498.97
+  },
+  {
+   "kind": "entry",
+   "title": "Thought and Emotion Integration",
+   "start": 498.97,
+   "end": 530.36
+  },
+  {
+   "kind": "section",
+   "title": "System Failures and Recovery",
+   "start": 530.36,
+   "end": 534.57
+  },
+  {
+   "kind": "entry",
+   "title": "Recovering from System Crashes",
+   "start": 534.57,
+   "end": 570.79
+  },
+  {
+   "kind": "entry",
+   "title": "Hypnotherapy: Direct Access Programming",
+   "start": 570.79,
+   "end": 607.63
+  },
+  {
+   "kind": "entry",
+   "title": "System Overhauls and Safe Operating",
+   "start": 607.63,
+   "end": 646.89
+  },
+  {
+   "kind": "section",
+   "title": "Ongoing Maintenance and Optimization",
+   "start": 646.89,
+   "end": 651.63
+  },
+  {
+   "kind": "entry",
+   "title": "Flow States: Optimizing the Processor",
+   "start": 651.63,
+   "end": 683.03
+  },
+  {
+   "kind": "entry",
+   "title": "Journaling: System Logs and Version Control",
+   "start": 683.03,
+   "end": 713.48
+  },
+  {
+   "kind": "entry",
+   "title": "Lucid Dreaming: Nighttime Debugging and Testing",
+   "start": 713.48,
+   "end": 748.82
+  },
+  {
+   "kind": "section",
+   "title": "Real-World Applications",
+   "start": 748.82,
+   "end": 752.88
+  },
+  {
+   "kind": "entry",
+   "title": "Interpersonal Dynamics: Networking Protocols",
+   "start": 752.88,
+   "end": 786.94
+  },
+  {
+   "kind": "entry",
+   "title": "Conflict Resolution: Debugging Relationships",
+   "start": 786.94,
+   "end": 823.75
+  },
+  {
+   "kind": "section",
+   "title": "Conclusion",
+   "start": 823.75,
+   "end": 826.3
+  },
+  {
+   "kind": "entry",
+   "title": "The Future of Mental Programming",
+   "start": 826.3,
+   "end": 857.78
+  },
+  {
+   "kind": "entry",
+   "title": "Ethical Considerations",
+   "start": 857.78,
+   "end": 892.65
+  },
+  {
+   "kind": "entry",
+   "title": "The Path Forward: Continuous Development",
+   "start": 892.65,
+   "end": 927.46
+  },
+  {
+   "kind": "section",
+   "title": "Appendices",
+   "start": 927.46,
+   "end": 930.11
+  },
+  {
+   "kind": "entry",
+   "title": "Glossary of Terms",
+   "start": 930.11,
+   "end": 961.67
+  },
+  {
+   "kind": "entry",
+   "title": "Case Studies",
+   "start": 961.67,
+   "end": 1000.69
+  },
+  {
+   "kind": "entry",
+   "title": "Further Reading and Resources",
+   "start": 1000.69,
+   "end": 1034.85
+  }
+ ]
+}
