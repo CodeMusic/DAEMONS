@@ -253,5 +253,126 @@ def main():
     sheet(items, HERE / "sheet.png")
 
 
+# ================================================================ round 2
+# The user on the sheet (2026-11-01): A's background, with the musical notes
+# coming up; the daemon from B, or the robot dog from the current icon; and
+# red and blue notes that cross in purple.
+
+NOTE_COLOURS = ["#d83078", "#f87840", "#f8d848", "#78d860", "#48a8f8", "#a870f8", "#f8a8c8"]  # title.json
+
+
+def title_notes():
+    """The title screen's twelve 16x16 eighth notes (play_notes.png), as RGBA cells."""
+    sh = load(ART / "play_notes.png")
+    return [sh.crop((0, 16 * i, 16, 16 * i + 16)) for i in range(sh.height // 16)]
+
+
+def note_mask():
+    a = np.array(title_notes()[0])
+    return a[:, :, 3] > 0, a[:, :, :3].astype(int).sum(2)
+
+
+def rising_field(seed=11):
+    """A's teal field of faint 0s and 1s, with the title's notes rising through it:
+    each note faint, in a noteColour, with a short dotted trail below it."""
+    bg = Image.new("RGBA", (N, N), rgb("#071615") + (255,))
+    bg.alpha_composite(binary_field(16, 64, GREEN[3], 150, 267))
+    rng = np.random.default_rng(seed)
+    m, _ = note_mask()
+    k = 4
+    spots = [(120, 210), (300, 90), (520, 170), (760, 110), (900, 300), (160, 520), (880, 560),
+             (110, 820), (330, 700), (700, 760), (520, 900), (860, 860)]
+    layer = Image.new("RGBA", (N, N), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    for i, (x, y) in enumerate(spots):
+        c = rgb(NOTE_COLOURS[i % len(NOTE_COLOURS)])
+        a = int(70 + 40 * rng.random())
+        flip = rng.random() < 0.5
+        cell = np.fliplr(m) if flip else m
+        for yy, xx in zip(*np.nonzero(cell)):
+            d.rectangle([x + xx * k, y + yy * k, x + xx * k + k - 1, y + yy * k + k - 1], fill=c + (a,))
+        # the trail: three dots below, fading -- the note is going up
+        hx = x + (12 if flip else 3) * k
+        for t in range(3):
+            ty = y + 16 * k + 10 + t * 22
+            d.rectangle([hx, ty, hx + k * 2 - 1, ty + k * 2 - 1], fill=c + (int(a * (0.6 - 0.18 * t)),))
+    bg.alpha_composite(layer)
+    return bg
+
+
+def pulse_notes(k):
+    """Two of the title's eighth notes facing each other, red and blue; where
+    they cross, purple. Drawn on the note's own 16-pixel grid, scaled x k."""
+    m, lum = note_mask()
+    W, o = 25, 9                             # red at 0, blue mirrored at +9: each flag crosses the other stem
+    red = np.zeros((16, W), bool); blue = np.zeros((16, W), bool)
+    red[:, 0:16] = m
+    blue[:, o:o + 16] = np.fliplr(m)
+    lred = np.zeros((16, W), int); lblue = np.zeros((16, W), int)
+    lred[:, 0:16] = lum; lblue[:, o:o + 16] = np.fliplr(lum)
+    out = np.zeros((16, W, 4), np.uint8)
+
+    def shade(base, l):
+        r, g, b = rgb(base)
+        f = 0.55 if l < 200 else 1.0 if l < 520 else 1.25    # the glyph's own outline / body / shine
+        return tuple(min(255, int(v * f)) for v in (r, g, b)) + (255,)
+    for y in range(16):
+        for x in range(W):
+            if red[y, x] and blue[y, x]:
+                out[y, x] = shade(PURPLE, min(lred[y, x], lblue[y, x]) if min(lred[y, x], lblue[y, x]) < 200 else 400)
+            elif red[y, x]:
+                out[y, x] = shade(RED, lred[y, x])
+            elif blue[y, x]:
+                out[y, x] = shade(BLUE, lblue[y, x])
+    return nn(bbox_crop(Image.fromarray(out)), k)
+
+
+def current_dog():
+    """The robot dog on the current icon (drawn when it was ROVERCUB, 2026-10-04),
+    recovered from its 13-pixel grid; the two blues of its disc and field dropped."""
+    a = np.array(Image.open(CURRENT).convert("RGB"))
+    s = a[np.ix_(np.arange(4 + 6, N, 13), np.arange(5 + 6, N, 13))]
+    rgba = np.dstack([s, np.full(s.shape[:2], 255, np.uint8)])
+    for c in [(20, 38, 64), (32, 64, 106)]:
+        rgba[(s == c).all(2)] = 0
+    return bbox_crop(Image.fromarray(rgba))
+
+
+def daemon_on_field(sp, target=560, notes_k=16, notes_y=225, dy=125):
+    bg = rising_field()
+    notes = pulse_notes(notes_k)
+    paste_center(bg, notes, N // 2, notes_y)
+    big = nn(sp, max(1, target // max(sp.size)))
+    paste_center(bg, big, N // 2, N // 2 + dy)
+    return flat(bg)
+
+
+def icon_e():
+    return daemon_on_field(bbox_crop(load(ART / "musai.png")))
+
+
+def icon_f():
+    return daemon_on_field(current_dog(), target=600, dy=140)
+
+
+def icon_g():
+    return daemon_on_field(bbox_crop(load(ART / "codemusai.png")))
+
+
+def main2():
+    icons = {"e": icon_e(), "f": icon_f(), "g": icon_g()}
+    for k, im in icons.items():
+        assert im.size == (N, N) and im.mode == "RGB"
+        im.save(HERE / f"icon_{k}.png")
+    items = [
+        ("A  monogram", "Round 1's A, for comparison.", Image.open(HERE / "icon_a.png").convert("RGB")),
+        ("E  MUSAI", "B's daemon (MUSAI) under red and blue notes crossing in purple; the title's notes rising through A's field.", icons["e"]),
+        ("F  the dog", "The current icon's robot dog (ROVERCUB as drawn 2026-10-04) on the same field and notes.", icons["f"]),
+        ("G  CODEMUSAI", "CODEMUSAI, the name the user gave, on the same field and notes.", icons["g"]),
+    ]
+    sheet(items, HERE / "sheet2.png")
+
+
 if __name__ == "__main__":
     main()
+    main2()
