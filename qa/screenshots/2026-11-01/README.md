@@ -115,3 +115,9 @@ C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, 
 C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, its type and its INDEX entry -- The Deck of Reason, The Deck of Instinct (THE SUBTLE LAYER), The Deck Above and The Deck Below (THE HERMETIC LAYER, 22 new daemons); the old words small beneath. Every word DRAFT.
 
 ![1Nov2026 - C272 - the tarot words as prophecy - 22](1Nov2026%20-%20C272%20-%20the%20tarot%20words%20as%20prophecy%20-%2022.png)
+
+### 1Nov2026 - C264 - HOW TO PLAY from the iPad menu bar Help - 23
+
+C-264 on the iPad simulator: Help on the menu bar has How to Play DAEMONS; choosing it opens HOW TO PLAY, here over the Pair screen; MICRO-START opens in the reader.
+
+![1Nov2026 - C264 - HOW TO PLAY from the iPad menu bar Help - 23](1Nov2026%20-%20C264%20-%20HOW%20TO%20PLAY%20from%20the%20iPad%20menu%20bar%20Help%20-%2023.png)
