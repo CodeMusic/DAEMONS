@@ -43,3 +43,9 @@ T-483 (5) part six, theatre route t483_process_seam 4/4 (DRAFT words): MIRROR th
 T-483 (5) part six, theatre route t483_process_seam 4/4 (DRAFT words): MIRROR through LABEL (CONTENT), then CLUSTER (VECTOR), opens nothing; through GEODUDE (LEGACY, which VECTOR fears) THE PROCESS and THE SEAM come off the page; THE PROCESS walks the player through one fence in PALLET TOWN to (7,10), a tile an 8-step walk already reaches; THE SEAM on ROUTE 22: the foe halts, and the lead feels half of it through the SEAM (in RAM 16 dealt, 8 felt; the scratch save's healthbox reads its 160-HP record, the battle's own max is 140).
 
 ![1Nov2026 - T483 - THE PROCESS and THE SEAM - 7](1Nov2026%20-%20T483%20-%20THE%20PROCESS%20and%20THE%20SEAM%20-%207.png)
+
+### 1Nov2026 - C266 - care looks - 8
+
+C-266 (DRAFT): AXIOMKICK as it has been cared for -- shadows after a short night, bloodshot after three, thin and sad when hungry for days, plump when never trained, and its heaviest, the bound. Drawn by the server's BOX-3 renderer; the eyes use a corrected box (faces.json predates the redrawn art).
+
+![1Nov2026 - C266 - care looks - 8](1Nov2026%20-%20C266%20-%20care%20looks%20-%208.png)
