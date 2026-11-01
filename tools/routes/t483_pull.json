@@ -44,7 +44,7 @@
         "press START",
         "press A",
         "wait 30",
-        "press DOWN 6",
+        "press DOWN 8",
         "shot \"the SPELLBOOK: 8 GREAT HAND\"",
         "press A",
         "read",
