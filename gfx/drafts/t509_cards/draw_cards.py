@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """T-509 DRAFT: the tarot card frames, drawn for the GBA.
 
-Three faces -- REASON (a green circuit), INSTINCT (a gold net), SPELLCRAFT
-(emerald on the breathing purple) -- each with a shiny palette (1 in 16), and
-one shared back that never shows the type.
+Four faces -- REASON (a green circuit) and INSTINCT (a gold net) for THE SUBTLE
+LAYER, ABOVE and BELOW (emerald on the breathing purple) for THE HERMETIC LAYER,
+which replaced round one's single SPELLCRAFT face -- each with a shiny palette
+(1 in 16), and one shared back that never shows the type. Also the mocks: the
+spread, the deck selectors, and the page a turned card's words go on (sheet2.png).
+sheet.png is round one's sheet, kept as it was (commit cc85f3c0 reproduces it).
 
 How it is drawn: every card is a 72x104 grid of palette indices (9x13 tiles,
 4bpp). Index 0 is transparent; each frame uses at most 15 colours more, so it is
@@ -12,7 +15,7 @@ palette (an OBJ, or a second BG palette), so the frame never shares its colours.
 
   * shiny is a PALETTE SWAP of the same tiles, plus a few sparkle pixels on
     index 15 (a handful of extra tiles);
-  * SPELLCRAFT's pulse ring is index 14 alone, so the "breathing" is one palette
+  * the hermetic pulse is index 14 alone, so the "breathing" is one palette
     write per beat (red #C8405A <-> blue #4F6BD8), no tiles touched;
   * the back has its own palette and is the same bytes for every deck.
 
@@ -320,51 +323,135 @@ def face_instinct() -> np.ndarray:
     return a
 
 
-# ---------------------------------------------------------------- SPELLCRAFT
+# ---------------------------------------------------------------- THE HERMETIC LAYER: ABOVE and BELOW
+# Round two (the user, 2026-11-01): SPELLCRAFT's single face becomes a pair, "as above, so below".
+# Both keep the hermetic family -- emerald ink on the breathing purple, the pulse on index 14 alone -- and
+# mirror each other top for bottom: BELOW is weighted at the base (courses laid one at a time, the top one
+# unfinished, roots through the joints, strata of time above it), ABOVE at the crown (one star, its rays
+# coming down, a pattern that arrives whole). Each carries its elements opposite its weight: BELOW's two
+# downward triangles (water, earth) sit at the top of the window, ABOVE's two upward ones (fire, air) at the
+# bottom, so each card points at the other.
 GLYPHS = {
     "fire":  ["00100", "01010", "01010", "10001", "11111"],
+    "air":   ["00100", "01010", "11111", "10001", "11111"],
     "water": ["11111", "10001", "01010", "01010", "00100"],
-    "sun":   ["01110", "10001", "10101", "10001", "01110"],
-    "moon":  ["00110", "01100", "01000", "01100", "00110"],
+    "earth": ["11111", "10001", "11111", "01010", "00100"],
 }
 
 
-def face_spellcraft() -> np.ndarray:
-    a, inner = base_card(glow_cy=46)
-    xs, ys, edge, corner = card_geometry()
-    wm = window_mask()
-    cx, cy = 35.5, (WIN[0] + WIN[1]) / 2           # the circle sits on the daemon
-    ring(a, cx, cy, 30.5, MM, wm)
-    ring(a, cx, cy, 28.5, PULSE, wm)               # index 14: the breath
-    ring(a, cx, cy, 26.0, MD, wm)
-    ring(a, cx, cy, 15.0, MD, wm)
-    pts = [(cx + 24.5 * math.sin(math.radians(k * 72)), cy - 24.5 * math.cos(math.radians(k * 72))) for k in range(5)]
-    for k in range(5):                             # the star, in ink
-        p, q = pts[k], pts[(k + 2) % 5]
-        line(a, p[0], p[1], q[0], q[1], MM, wm)
-    for k in range(12):                            # twelve ticks between the rings
-        t = math.radians(k * 30 + 15)
-        put(a, cx + 29.5 * math.sin(t), cy - 29.5 * math.cos(t), ML, wm)
-    for (gx, gy, g) in ((5, WIN[0] + 1, "fire"), (62, WIN[0] + 1, "water"),
-                        (5, WIN[1] - 5, "sun"), (62, WIN[1] - 5, "moon")):
-        for r, row in enumerate(GLYPHS[g]):
-            for c, bit in enumerate(row):
-                if bit == "1":
-                    put(a, gx + c, gy + r, ML, wm)
-    # the frame: emerald, a lit inner line, and a pulse gem top and bottom
+def _glyph(a, gx, gy, g, wm):
+    for r, row in enumerate(GLYPHS[g]):
+        for c, bit in enumerate(row):
+            if bit == "1":
+                put(a, gx + c, gy + r, ML, wm)
+
+
+def hermetic_frame(a, corner, edge, gem_top: bool):
     a[(edge == 1) & (corner >= 2)] = FM
     a[(edge == 2) & (corner >= 2)] = FD
     a[(edge == 3) & (corner >= 2)] = FL
-    for (gx, gy) in ((35, 1), (35, H - 4)):
-        for dy in range(3):
-            for dx in range(4):
-                if (dy == 1) or dx in (1, 2):
-                    put(a, gx - 1 + dx, gy + dy, PULSE)
-        put(a, gx - 1, gy + 1, OUT)
-        put(a, gx + 2, gy + 1, OUT)
+    gy = 1 if gem_top else H - 4                   # the pulse gem: at the crown above, at the base below
+    for dy in range(3):
+        for dx in range(4):
+            if (dy == 1) or dx in (1, 2):
+                put(a, 34 + dx, gy + dy, PULSE)
+    put(a, 34, gy + 1, OUT)
+    put(a, 37, gy + 1, OUT)
     for (px, py) in ((2, 2), (W - 3, 2), (2, H - 3), (W - 3, H - 3)):
         put(a, px, py, FL)
     _round(a, corner)
+
+
+def face_below() -> np.ndarray:
+    a, inner = base_card(glow_cy=74)               # the glow rises from the ground
+    xs, ys, edge, corner = card_geometry()
+    wm = window_mask()
+    rnd = random.Random(509_4)
+    base = WIN[1]
+    courses = 7
+    for k in range(courses):                       # brick by brick, from the base
+        yb = base - 5 * k
+        top = yb - 4
+        last = k == courses - 1
+        offs = 4 if k % 2 else 0
+        laid = 4 + 8 * 3 + offs if last else 68    # the top course is still being laid
+        for x in range(4, laid):
+            put(a, x, top, MD, wm)
+        for x0 in range(4 - offs, laid, 8):
+            for y in range(top + 1, yb + 1):
+                put(a, x0, y, MD, wm)
+            if x0 + 1 >= 4 and rnd.random() < 0.55:
+                put(a, x0 + 1, top + 1, MM, wm)
+                put(a, x0 + 2, top + 1, MM, wm)
+        if last:                                   # the next brick, held just above its place
+            bx, by = laid + 2, top - 4
+            for x in range(bx, bx + 8):
+                put(a, x, by, MM, wm)
+                put(a, x, by + 4, MM, wm)
+            for y in range(by, by + 5):
+                put(a, bx, y, MM, wm)
+                put(a, bx + 7, y, MM, wm)
+            put(a, bx + 1, by + 1, ML, wm)
+    for (rx, drift) in ((14, -1), (49, 1), (31, 0)):   # roots, down through the joints
+        x, y = rx, base - 5 * (courses - 2) - 4
+        for step in range(34):
+            put(a, x, y, MM, wm)
+            y += 1
+            if rnd.random() < 0.35:
+                x += drift if drift else rnd.choice((-1, 1))
+            if step in (12, 22) and rnd.random() < 0.8:          # a side root
+                bx, bdir = x, rnd.choice((-1, 1))
+                for by in range(y, min(base, y + 7)):
+                    bx += bdir if rnd.random() < 0.6 else 0
+                    put(a, bx, by, MD, wm)
+    top_of_wall = base - 5 * (courses - 1) - 4
+    for i, sy in enumerate(range(top_of_wall - 6, WIN[0] + 2, -7)):  # strata: time, laid down in lines
+        v = PULSE if i == 0 else MD
+        for x in range(4 + (i % 2), 68, 2 if i else 1):
+            put(a, x, sy, v, wm)
+    for k in range(courses):                       # a tally up the side: one notch a course
+        put(a, 66, base - 5 * k - 2, ML, wm)
+    _glyph(a, 6, WIN[0] + 2, "water", wm)
+    _glyph(a, 61, WIN[0] + 2, "earth", wm)
+    hermetic_frame(a, corner, edge, gem_top=False)
+    panels(a, inner)
+    return a
+
+
+def face_above() -> np.ndarray:
+    a, inner = base_card(glow_cy=18)               # the glow comes down from the crown
+    xs, ys, edge, corner = card_geometry()
+    wm = window_mask()
+    rnd = random.Random(509_3)
+    cx, cy = 35.5, WIN[0] + 5
+    for k in range(-5, 6):                         # rays, all at once, from the top
+        t = math.radians(90 + k * 14)
+        x0, y0 = cx + 10 * math.cos(t), cy + 10 * math.sin(t)
+        x1, y1 = cx + 80 * math.cos(t), cy + 80 * math.sin(t)
+        line(a, x0, y0, x1, y1, MD, wm)
+    ring(a, cx, cy, 7.5, PULSE, wm)                # the halo breathes
+    ring(a, cx, cy, 10.5, MM, wm)
+    for (dx, dy) in ((0, 0), (1, 0), (0, 1), (1, 1)):
+        put(a, cx - 0.5 + dx, cy - 0.5 + dy, ML, wm)
+    for r in range(2, 5):                          # an eight-point star
+        for (ux, uy) in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            put(a, cx - 0.5 + (ux * r if ux > 0 else ux * r + 1), cy - 0.5 + (uy * r if uy > 0 else uy * r + 1), ML, wm)
+    for r in (2, 3):
+        for (ux, uy) in ((1, 1), (-1, 1), (1, -1), (-1, -1)):
+            put(a, cx + ux * r, cy + uy * r, MM, wm)
+    # the pattern that descends whole: a downward triangle of six stars, tied, arriving at once
+    tri = [(18, 32), (36, 32), (54, 32), (27, 44), (45, 44), (36, 56)]
+    for (i, j) in ((0, 1), (1, 2), (0, 3), (1, 3), (1, 4), (2, 4), (3, 4), (3, 5), (4, 5)):
+        line(a, *tri[i], *tri[j], MM, wm)
+    for (x, y) in tri:
+        for (dx, dy) in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)):
+            put(a, x + dx, y + dy, ML if (dx, dy) == (0, 0) else MM, wm)
+    for _ in range(18):                            # and the field of stars around it
+        x, y = rnd.randint(5, 66), rnd.randint(WIN[0] + 1, WIN[1] - 14)
+        put(a, x, y, ML if rnd.random() < 0.5 else MM, wm)
+    _glyph(a, 6, WIN[1] - 6, "fire", wm)
+    _glyph(a, 61, WIN[1] - 6, "air", wm)
+    hermetic_frame(a, corner, edge, gem_top=True)
     panels(a, inner)
     return a
 
@@ -527,10 +614,174 @@ def mock_screen(back: Image.Image, turned: Image.Image | None) -> Image.Image:
     return im
 
 
+# ---------------------------------------------------------------- the game's own font
+# The engine's message font, read from its sheet and measured with its width table (tools/fontwidth.py), so a
+# line measured here is a line the game draws. 16x16 cells, byte b at (b % 16, b // 16); index 1 ink, 2 shadow.
+# The engine has no bold Latin face, so "bold" here is the glyph struck twice, one pixel apart, and measured as
+# one pixel wider per letter -- a real cost the game would pay (or it sets the titles in a colour instead).
+import sys as _sys
+_sys.path.insert(0, str(HERE.parents[2] / "tools"))
+from fontwidth import font as _engine_font  # noqa: E402
+
+GBA_FONT = np.array(Image.open(HERE.parents[2] / "engineGba/graphics/fonts/latin_normal.png"))
+GBA_W, GBA_CM = _engine_font()
+MSG_W = 208
+LINE_H = 16
+
+
+def gw(s: str, bold=False) -> int:
+    return sum(GBA_W[GBA_CM[c]] + (1 if bold else 0) for c in s)
+
+
+def runs_w(runs) -> int:
+    return sum(gw(s, b) for s, b, *_ in runs)
+
+
+def gba_text(img: np.ndarray, s: str, x: int, y: int, ink, shadow, bold=False) -> int:
+    for ch in s:
+        b = GBA_CM[ch]
+        adv = GBA_W[b]
+        cell = GBA_FONT[(b // 16) * 16:(b // 16) * 16 + 16, (b % 16) * 16:(b % 16) * 16 + adv]
+        for strike in ((0, 1) if bold else (0,)):
+            for (idx, col) in ((2, shadow), (1, ink)):
+                if col is None:
+                    continue
+                yy, xx = np.nonzero(cell == idx)
+                yy, xx = yy + y, xx + x + strike
+                ok = (yy >= 0) & (yy < img.shape[0]) & (xx >= 0) & (xx < img.shape[1])
+                img[yy[ok], xx[ok]] = col
+        x += adv + (1 if bold else 0)
+    return x
+
+
+def gba_runs(img, runs, x, y, shadow):
+    for (s, bold, ink) in runs:
+        x = gba_text(img, s, x, y, ink, shadow, bold)
+    return x
+
+
+def wrap(text: str, width=MSG_W) -> list[str]:
+    out, cur = [], ""
+    for word in text.split(" "):
+        t = (cur + " " + word) if cur else word
+        if gw(t) <= width:
+            cur = t
+        else:
+            out.append(cur)
+            cur = word
+    return out + [cur]
+
+
+def box(img, x0, y0, x1, y1, fill, border, inner=None):
+    img[y0:y1 + 1, x0:x1 + 1] = border
+    img[y0 + 2:y1 - 1, x0 + 2:x1 - 1] = inner if inner is not None else fill
+    img[y0 + 3:y1 - 2, x0 + 3:x1 - 2] = fill
+    for (cx, cy) in ((x0, y0), (x1, y0), (x0, y1), (x1, y1)):
+        img[cy, cx] = img[min(max(cy, 0), img.shape[0] - 1), cx] * 0  # square the corners off to black
+    return img
+
+
+def board() -> np.ndarray:
+    s = np.zeros((160, 240, 3), np.uint8)
+    ys, xs = np.mgrid[0:160, 0:240]
+    s[:] = SCREEN_PAL["board0"]
+    s[((xs // 2 + ys // 2) % 2 == 0) & ((xs + ys) % 4 == 0)] = SCREEN_PAL["board1"]
+    return s
+
+
+def paste(s: np.ndarray, im: Image.Image, x: int, y: int) -> np.ndarray:
+    base = Image.fromarray(s, "RGB").convert("RGBA")
+    base.alpha_composite(im, (x, y))
+    return np.array(base.convert("RGB"))
+
+
+SUBTLE_UI = dict(fill=hexrgb("#24142A"), border=hexrgb("#8A7894"), inner=hexrgb("#46284C"),
+                 ink=hexrgb("#F2EAF2"), plain=hexrgb("#9A86A0"), bold=hexrgb("#F2EAF2"), shadow=hexrgb("#46284C"))
+HERMETIC_UI = dict(fill=hexrgb("#2A1028"), border=hexrgb("#1F8F5F"), inner=hexrgb("#C8405A"),
+                   ink=hexrgb("#F2F0E8"), plain=hexrgb("#9A86A0"), bold=hexrgb("#50C878"), shadow=hexrgb("#0F4A30"))
+
+# The options, as lines: (text, bold, selectable). Plain words sit between the bold titles, so the menu
+# reads down as the sentence it is.
+COMBINED = "Both, as One"          # suggested; the alternative is "The One Thing" (the Tablet's own)
+SELECTORS = {
+    "subtle": ("THE SUBTLE LAYER", SUBTLE_UI, [("The Deck of Reason", True, True), ("The Deck of Instinct", True, True),
+                                              ("A Combined Deck", True, True)],
+               [[("The Deck of Reason / The Deck of Instinct / A Combined Deck", False, "ink")]]),
+    "hermetic": ("THE HERMETIC LAYER", HERMETIC_UI, [("so,", False, False), ("The Deck Above", True, True),
+                                                    ("as", False, False), ("The Deck Below", True, True),
+                                                    ("or", False, False), (COMBINED, True, True)],
+                 [[("so, ", False, "plain"), ("The Deck Above", True, "bold"), (", as ", False, "plain"),
+                   ("The Deck Below", True, "bold"), (", or ", False, "plain"), (COMBINED, True, "bold")]]),
+    "hermetic_thin": ("THE HERMETIC LAYER", HERMETIC_UI, [("so,", False, False), ("The Deck Within", True, True),
+                                                         ("as", False, False), ("The Deck Without", True, True),
+                                                         ("or", False, False), (COMBINED, True, True)],
+                      [[("so, ", False, "plain"), ("The Deck Within", True, "bold"), (", as ", False, "plain"),
+                        ("The Deck Without", True, "bold"), (", or ", False, "plain"), (COMBINED, True, "bold")]]),
+}
+
+
+def selector_screen(key: str, back_rgba: Image.Image, cursor: int, measures: list) -> Image.Image:
+    title, ui, menu, sentence = SELECTORS[key]
+    s = board()
+    for i in (2, 1, 0):                                     # the deck tile: three backs, squared up
+        s = paste(s, back_rgba, 4 + 2 * i, 3 + 2 * (2 - i))
+    mx0, my0, mx1 = 86, 3, 236
+    rows = len(menu)
+    gap = LINE_H if rows > 3 else LINE_H + 8
+    my1 = my0 + 10 + (rows - 1) * gap + LINE_H
+    box(s, mx0, my0, mx1, my1, ui["fill"], ui["border"], ui["inner"])
+    sel = [i for i, m in enumerate(menu) if m[2]]
+    for i, (text, bold, selectable) in enumerate(menu):
+        y = my0 + 5 + i * gap
+        x = mx0 + 14 if selectable else mx0 + 8
+        gba_text(s, text, x, y, ui["bold"] if bold else ui["plain"], ui["shadow"], bold)
+        measures.append((key, "menu", text, gw(text, bold), mx1 - 3 - (mx0 + 14)))
+        if i == sel[cursor]:                                # the cursor, a small arrow
+            for r in range(7):
+                w = 4 - abs(r - 3)
+                s[y + 3 + r, mx0 + 6:mx0 + 6 + w] = ui["bold"]
+    bx0, by0, bx1, by1 = 8, 120, 231, 151                   # the message box (208px inside) names the book
+    box(s, bx0, by0, bx1, by1, ui["fill"], ui["border"], ui["inner"])
+    gba_text(s, title, 120 - gw(title, True) // 2, by0 + 8, ui["ink"], ui["shadow"], True)
+    measures.append((key, "box", title, gw(title, True), MSG_W))
+    for runs in sentence:                                   # the sentence on one line: measured, not drawn
+        r = [(t, b, ui[c]) for (t, b, c) in runs]
+        measures.append((key, "1-line", "".join(t for t, *_ in runs), runs_w(r), MSG_W))
+    return Image.fromarray(s, "RGB")
+
+
+SAMPLE_WORDS = ("Something in you lies still while the day hurries past it. Do not shake it awake. Behind its "
+                "closed eyes a road is being drawn, and when it rises it will already know the way.")
+
+
+def reading_screen(card_rgba: Image.Image, keyword: str, place: int, measures: list) -> Image.Image:
+    """Page two of a turned card: the phrase has 4-6 lines, so it gets the whole screen's width (208px),
+    under a header naming the card; the spread's three places run along the foot, this one lit."""
+    s = board()
+    ui = SUBTLE_UI
+    small = card_rgba.crop((4, 32, 68, 58))                 # the daemon's face, from its window
+    box(s, 4, 1, 235, 31, ui["fill"], ui["border"], ui["inner"])
+    s = paste(s, small, 7, 4)
+    gba_text(s, keyword, 80, 3, ui["ink"], ui["shadow"], True)
+    gba_text(s, "REASON", 80, 16, ui["plain"], ui["shadow"])
+    lines = wrap(SAMPLE_WORDS)
+    assert 4 <= len(lines) <= 6, lines
+    box(s, 4, 34, 235, 34 + 9 + 6 * LINE_H, ui["fill"], ui["border"], ui["inner"])
+    for i, ln in enumerate(lines):
+        gba_text(s, ln, 16, 39 + i * LINE_H, ui["ink"], ui["shadow"])
+        measures.append(("reading", "phrase", ln, gw(ln), MSG_W))
+    for i, lab in enumerate(("Past", "Present", "Future")):
+        cx = 40 + i * 80
+        lit = i == place
+        gba_text(s, lab, cx - gw(lab) // 2, 144 + 1, SCREEN_PAL["lit"] if lit else SCREEN_PAL["line_dim"], None, lit)
+    return Image.fromarray(s, "RGB"), len(lines)
+
+
 def main() -> None:
-    faces = {"reason": face_reason(), "instinct": face_instinct(), "spellcraft": face_spellcraft()}
+    faces = {"reason": face_reason(), "instinct": face_instinct(), "above": face_above(), "below": face_below()}
+    family = {"reason": "reason", "instinct": "instinct", "above": "spellcraft", "below": "spellcraft"}
     back = card_back()
-    counts = {}
+    counts, cards = {}, {}
 
     def save(name, a, palette):
         to_indexed(a, palette).save(HERE / f"frame_{name}.png", transparency=0)
@@ -540,15 +791,17 @@ def main() -> None:
         counts[name] = len(set(palette[i] for i in used))
         return rgba
 
-    cards = {}
-    for f, a in list(faces.items()):
-        cards[f] = save(f, a, PALETTES[f])
-        sh = add_sparkles(a)
-        cards[f + "_shiny"] = save(f + "_shiny", sh, PALETTES[f + "_shiny"])
-        faces[f + "_shiny"] = sh
+    pals = {}
+    for f in list(faces):
+        pals[f] = PALETTES[family[f]]
+        pals[f + "_shiny"] = PALETTES[family[f] + "_shiny"]
+        cards[f] = save(f, faces[f], pals[f])
+        faces[f + "_shiny"] = add_sparkles(faces[f])
+        cards[f + "_shiny"] = save(f + "_shiny", faces[f + "_shiny"], pals[f + "_shiny"])
     pb = list(PALETTES["spellcraft"])
     pb[PULSE] = PULSE_BLUE
-    to_indexed(faces["spellcraft"], pb).save(HERE / "frame_spellcraft_pulse_blue.png", transparency=0)
+    for f in ("above", "below"):
+        to_indexed(faces[f], pb).save(HERE / f"frame_{f}_pulse_blue.png", transparency=0)
     back_rgba = to_rgba(back, BACK_PAL)
     to_indexed(back, BACK_PAL).save(HERE / "back.png", transparency=0)
     master_of(back_rgba).save(HERE / "master_back.png")
@@ -556,77 +809,104 @@ def main() -> None:
 
     daydream, phoenix = sprite("daydream"), sprite("phoenix")
     sample = {"reason": (daydream, "XVIII DREAMING"), "instinct": (daydream, "XVIII DREAMING"),
-              "spellcraft": (phoenix, "XX INVOCATION")}
+              "above": (phoenix, "XX INVOCATION"), "below": (phoenix, "XX INVOCATION")}
     filled = {}
     for k in cards:
-        f = k.replace("_shiny", "")
-        spr, kw = sample[f]
-        filled[k] = with_daemon(cards[k], faces[k], PALETTES[k], spr, kw)
-    filled["spellcraft_blue"] = with_daemon(None, faces["spellcraft"], pb, phoenix, "XX INVOCATION")
+        spr, kw = sample[k.replace("_shiny", "")]
+        filled[k] = with_daemon(None, faces[k], pals[k], spr, kw)
+    for f in ("above", "below"):
+        filled[f + "_blue"] = with_daemon(None, faces[f], pb, phoenix, "XX INVOCATION")
 
     mock_down = mock_screen(back_rgba, None)
     mock_up = mock_screen(back_rgba, filled["reason"])
     mock_down.save(HERE / "mock_spread.png")
     mock_up.save(HERE / "mock_spread_turned.png")
+    measures = []
+    sel = {k: selector_screen(k, back_rgba, 0, measures) for k in SELECTORS}
+    for k, im in sel.items():
+        im.save(HERE / f"mock_select_{k}.png")
+    reading, nlines = reading_screen(filled["reason"], "XVIII DREAMING", 1, measures)
+    reading.save(HERE / "mock_reading.png")
+    over = [m for m in measures if m[3] > m[4] and m[1] != "1-line"]
+    assert not over, over
 
-    # ---------------- the sheet
+    # ---------------- sheet2
     G = 24
-    gx = G + MASTER + G + MASTER + 40
-    SW = max(gx + 3 * 144 + 2 * 16 + G, G + 2 * (720 + G) + 240 + G)
-    rows_h = [44] + [MASTER + 40] * 4 + [480 + 70]
-    SH = sum(rows_h) + 120
+    f_big, f_mid, f_small = font(22), font(18), font(14)
+    SW = max(G + 4 * (MASTER + G), G + 3 * (720 + G) + 60)
+    SH = 3400
     sheet = Image.new("RGBA", (SW, SH), (30, 28, 36, 255))
     dr = ImageDraw.Draw(sheet)
-    f_big, f_mid, f_small = font(26), font(18), font(14)
-    dr.text((G, 12), "T-509  DRAFT  tarot card frames  --  72x104 (9x13 tiles), 4bpp, one 16-colour palette per frame; master = 4x on 512",
-            fill=(236, 230, 240), font=f_mid)
-    y = 44 + 16
-    names = {"reason": "REASON  -  green circuit", "instinct": "INSTINCT  -  gold net",
-             "spellcraft": "SPELLCRAFT  -  emerald on the breathing purple"}
-    for f in ("reason", "instinct", "spellcraft"):
-        dr.text((G, y), f"{names[f]}     (normal {counts[f]} colours, shiny {counts[f + '_shiny']} colours + transparent)",
-                fill=(236, 230, 240), font=f_mid)
-        yy = y + 30
-        sheet.alpha_composite(master_of(filled[f]), (G, yy))
-        sheet.alpha_composite(master_of(filled[f + "_shiny"]), (G + MASTER + G, yy))
-        dr.text((G + 6, yy + 4), "master", fill=(160, 150, 170), font=f_small)
-        dr.text((G + MASTER + G + 6, yy + 4), "master, shiny (1 in 16)", fill=(160, 150, 170), font=f_small)
-        dr.text((gx, yy), "GBA 1x", fill=(160, 150, 170), font=f_small)
-        sheet.alpha_composite(filled[f], (gx, yy + 22))
-        sheet.alpha_composite(filled[f + "_shiny"], (gx + 72 + 16, yy + 22))
-        dr.text((gx, yy + 140), "GBA 2x (preview)", fill=(160, 150, 170), font=f_small)
-        sheet.alpha_composite(nn(filled[f], 2), (gx, yy + 162))
-        sheet.alpha_composite(nn(filled[f + "_shiny"], 2), (gx + 160, yy + 162))
-        if f == "spellcraft":
-            sheet.alpha_composite(nn(filled["spellcraft_blue"], 2), (gx + 320, yy + 162))
-            dr.text((gx, yy + 380), "pulse = palette index 14 only:\nred #C8405A <-> blue #4F6BD8\n(one palette write per beat)",
-                    fill=(160, 150, 170), font=f_small)
-        y += MASTER + 40
-    dr.text((G, y), f"THE BACK  -  shared by all three decks, its own palette ({counts['back']} colours), 4-fold symmetric, no type in it",
-            fill=(236, 230, 240), font=f_mid)
-    yy = y + 30
-    sheet.alpha_composite(master_of(back_rgba), (G, yy))
-    for i, f in enumerate(("REASON", "INSTINCT", "SPELLCRAFT")):
-        x = G + MASTER + G + i * (72 * 2 + 24)
-        dr.text((x, yy), f"{f} deck", fill=(160, 150, 170), font=f_small)
-        sheet.alpha_composite(nn(back_rgba, 2), (x, yy + 22))
-    dr.text((G + MASTER + G, yy + 240), "the same bytes for every deck (back.png)", fill=(160, 150, 170), font=f_small)
-    sheet.alpha_composite(back_rgba, (gx, yy + 22))
-    y += MASTER + 40
-    dr.text((G, y), "GBA screen 240x160 (shown 3x)  -  PAST / PRESENT / FUTURE face down, then PRESENT turned",
-            fill=(236, 230, 240), font=f_mid)
-    yy = y + 30
-    sheet.alpha_composite(nn(mock_down, 3), (G, yy))
-    sheet.alpha_composite(nn(mock_up, 3), (G + 720 + G, yy))
-    sheet.alpha_composite(mock_down, (G + 2 * (720 + G), yy))
-    sheet.alpha_composite(mock_up, (G + 2 * (720 + G), yy + 180))
-    dr.text((G + 2 * (720 + G), yy + 350), "1x", fill=(160, 150, 170), font=f_small)
-    dr.text((G, yy + 490), "sample: RED12345, 2026-11-01  -  subtle XVIII DREAMING (DAYDREAM), spellcraft XX INVOCATION (PHOENIX).  "
-            "Phrase lines are placeholders; the words come from arcana.json.", fill=(160, 150, 170), font=f_small)
-    sheet = sheet.crop((0, 0, SW, yy + 520))
-    sheet.save(HERE / "sheet.png")
+    hi, lo = (236, 230, 240), (160, 150, 170)
+    dr.text((G, 12), "T-509  DRAFT  round two  --  THE HERMETIC LAYER's pair: The Deck Above & The Deck Below "
+            "(replacing SPELLCRAFT's one face)", fill=hi, font=f_big)
+    y = 52
+    dr.text((G, y), f"ABOVE  (top-down: one star, rays coming down, a pattern arriving whole; fire and air at the foot)   "
+            f"normal {counts['above']} / shiny {counts['above_shiny']} colours + transparent", fill=hi, font=f_mid)
+    dr.text((G, y + 24), f"BELOW  (bottom-up: courses laid from the base, the top one unfinished, roots, strata of time; "
+            f"water and earth at the crown)   normal {counts['below']} / shiny {counts['below_shiny']} colours + transparent",
+            fill=hi, font=f_mid)
+    yy = y + 56
+    for i, k in enumerate(("above", "below", "above_shiny", "below_shiny")):
+        x = G + i * (MASTER + G)
+        sheet.alpha_composite(master_of(filled[k]), (x, yy))
+        dr.text((x + 6, yy + 4), "master" + (", shiny (1 in 16)" if "shiny" in k else ""), fill=lo, font=f_small)
+    yy += MASTER + 10
+    dr.text((G, yy), "GBA 1x and 2x  --  the pair side by side, then the pulse (palette index 14 only): red #C8405A, blue #4F6BD8",
+            fill=lo, font=f_small)
+    yy += 22
+    x = G
+    for k in ("above", "below", "above_shiny", "below_shiny"):
+        sheet.alpha_composite(filled[k], (x, yy))
+        x += 72 + 12
+    x += 20
+    for k in ("above", "below", "above_shiny", "below_shiny", "above_blue", "below_blue"):
+        sheet.alpha_composite(nn(filled[k], 2), (x, yy))
+        x += 144 + 12
+    yy += 208 + 30
+    dr.text((G, yy), "The whole set at 2x: REASON, INSTINCT (unchanged), ABOVE, BELOW, and the one back (unchanged)", fill=hi, font=f_mid)
+    yy += 28
+    x = G
+    for k in ("reason", "instinct", "above", "below"):
+        sheet.alpha_composite(nn(filled[k], 2), (x, yy))
+        x += 144 + 16
+    sheet.alpha_composite(nn(back_rgba, 2), (x, yy))
+    yy += 208 + 30
+    dr.text((G, yy), "Deck selectors, GBA 240x160 at 3x, in the game's own font (bold = struck twice, +1px a letter). "
+            "No sentence fits one 208px line, so the menu stacks it and reads down as the sentence.", fill=hi, font=f_mid)
+    yy += 28
+    for i, k in enumerate(("subtle", "hermetic", "hermetic_thin")):
+        x = G + i * (720 + G)
+        lab = {"subtle": "THE SUBTLE LAYER", "hermetic": "THE HERMETIC LAYER",
+               "hermetic_thin": "THE HERMETIC LAYER, in the thin half-hour"}[k]
+        dr.text((x, yy), lab, fill=lo, font=f_small)
+        sheet.alpha_composite(nn(sel[k].convert("RGBA"), 3), (x, yy + 20))
+    yy += 20 + 480 + 30
+    dr.text((G, yy), f"Where the phrase goes: a second page. A turned card's 2-3 sentences ({len(SAMPLE_WORDS)} characters "
+            f"here) wrap to {nlines} lines at 208px:\ntoo many for a box under a 104px card, so A on a turned card opens this page "
+            "and B returns to the spread.", fill=hi, font=f_mid)
+    yy += 48
+    sheet.alpha_composite(nn(mock_up, 3), (G, yy + 20))
+    dr.text((G, yy), "the spread, PRESENT turned", fill=lo, font=f_small)
+    sheet.alpha_composite(nn(reading.convert("RGBA"), 3), (G + 720 + G, yy + 20))
+    dr.text((G + 720 + G, yy), "A: its page (sample words, NOT the card's -- those come from arcana.json)", fill=lo, font=f_small)
+    tx = G + 2 * (720 + G)
+    dr.text((tx, yy), "every line measured (engine widths, px)", fill=lo, font=f_small)
+    ty = yy + 22
+    for (k, where, text, w, lim) in measures:
+        dr.text((tx, ty), f"{w:3d}/{lim}  {where:6s} {text}", fill=hi if w <= lim else (255, 120, 90), font=font(12))
+        ty += 16
+    yy += 20 + 480 + 20
+    dr.text((G, yy), "Sample: RED12345, 2026-11-01 -- subtle XVIII DREAMING (DAYDREAM), hermetic XX INVOCATION (PHOENIX). "
+            f"Combined hermetic deck: '{COMBINED}' suggested; 'The One Thing' the alternative. Every word DRAFT.",
+            fill=lo, font=f_small)
+    sheet = sheet.crop((0, 0, SW, yy + 30))
+    sheet.save(HERE / "sheet2.png")
     for k, v in counts.items():
-        print(f"{k:18s} {v:2d} colours (+ transparent)")
+        print(f"{k:16s} {v:2d} colours (+ transparent)")
+    for m in measures:
+        print(f"{m[3]:3d}/{m[4]}  {m[0]:14s} {m[1]:6s} {m[2]}")
+    print("phrase lines:", nlines)
 
 
 if __name__ == "__main__":
