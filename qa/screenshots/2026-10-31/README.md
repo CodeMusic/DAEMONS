@@ -349,3 +349,15 @@ T-483 (5) part four, from the debug ROM by the theatre (t483_room_mirror 3/3): T
 T-483 (5) part four, from the debug ROM by the theatre (t483_room_mirror 3/3): THE ROOM keeps here in BLANCHE by night, folds back to it from (6,9) behind a white fade, refuses a way too far and makes where you stand the new here; THE MIRROR washes the field in the lead daemon's type colour, drops SAVE from the START menu, makes {PLAYER} say its name (the house sign), and on ROUTE 3 puts a ! over the unbeaten trainer on screen. Every word DRAFT.
 
 ![31Oct2026 - T483 - ROOM and MIRROR - 64](31Oct2026%20-%20T483%20-%20ROOM%20and%20MIRROR%20-%2064.png)
+
+### 31Oct2026 - C262 - companion GLASSES card - 65
+
+C-262: the companion's GLASSES card on a scratch server -- the preview of what the glasses should show (a note), SHOW, CARE, and the notes with the one on the glasses selected (DRAFT)
+
+![31Oct2026 - C262 - companion GLASSES card - 65](31Oct2026%20-%20C262%20-%20companion%20GLASSES%20card%20-%2065.jpg)
+
+### 31Oct2026 - C262 - companion GLASSES card - 66
+
+C-262: the companion's GLASSES card on a scratch server -- the preview of what the glasses should show (a note), SHOW, CARE, and the notes with the one on the glasses selected (DRAFT)
+
+![31Oct2026 - C262 - companion GLASSES card - 66](31Oct2026%20-%20C262%20-%20companion%20GLASSES%20card%20-%2066.jpg)
