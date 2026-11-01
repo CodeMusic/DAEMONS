@@ -198,3 +198,50 @@ T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INS
 T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INSIGHT (CLOSURE one more, 4 at most); the INTERPRETER once the book is taken; the USER card with MARK 2 alone (the root lit) and MARK 1 alone (the heart lit)
 
 ![1Nov2026 - T510 - loose ends - 41](1Nov2026%20-%20T510%20-%20loose%20ends%20-%2041.png)
+### 1Nov2026 - C271 - faces on the redrawn art - 12
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 12](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2012.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 13
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 13](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2013.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 14
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 14](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2014.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 15
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 15](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2015.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 16
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 16](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2016.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 17
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 17](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2017.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 18
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 18](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2018.png)
+
+### 1Nov2026 - C271 - faces on the redrawn art - 19
+
+Faces on the redrawn art, all 44 (6 a sheet): the proposed eyes in green, mouth in magenta, old boxes thin red; then asleep, worn (C-266), worn asleep and speaking, by renderFace.
+
+![1Nov2026 - C271 - faces on the redrawn art - 19](1Nov2026%20-%20C271%20-%20faces%20on%20the%20redrawn%20art%20-%2019.png)
