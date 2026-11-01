@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.337 — 2026-11-01
+
+- **4.39, two texts on every card (T-509, the user).** Each face keeps a short phrase on the card itself, and that is what the game and the watches show. Underneath it, a prophecy of two or three sentences in the voice of the user's universe cards is shown in the iOS app only.
+- The Settled entry in section 10 now says the same.
+
 ## v11.336 — 2026-11-01
 
 - **4.39, the two tarot decks in both books (T-509, the user, by multiple choice and in their own words).** Each book ends on a collapsed CARDS section, opened by a tile shaped like a tarot deck. THE SUBTLE LAYER deals REASON and INSTINCT, or both combined. THE HERMETIC LAYER deals The Deck Above and The Deck Below ("as above, so below"), replacing SPELLCRAFT's single face; the choice reads "as The Deck Above, so The Deck Below, or Both as One", and Within / Without in the thin half-hour. There are four ways to draw: the card of the day, one card, PAST/PRESENT/FUTURE and MIND/BODY/SPIRIT. A card still changes nothing in play, but its words now speak prophetically, drawn from the card's daemon, its type and its INDEX entry.
