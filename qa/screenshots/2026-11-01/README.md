@@ -121,3 +121,9 @@ C-272 (DAEMONS T-509): every arcana face rewritten as prophecy from its daemon, 
 C-264 on the iPad simulator: Help on the menu bar has How to Play DAEMONS; choosing it opens HOW TO PLAY, here over the Pair screen; MICRO-START opens in the reader.
 
 ![1Nov2026 - C264 - HOW TO PLAY from the iPad menu bar Help - 23](1Nov2026%20-%20C264%20-%20HOW%20TO%20PLAY%20from%20the%20iPad%20menu%20bar%20Help%20-%2023.png)
+
+### 1Nov2026 - T509 - the decks - 24
+
+T-509 the tarot decks in both books on the GBA (DRAFT): the deck tile, the day's card matching cardOfDay, a single draw, three cards, the hermetic selector
+
+![1Nov2026 - T509 - the decks - 24](1Nov2026%20-%20T509%20-%20the%20decks%20-%2024.png)
