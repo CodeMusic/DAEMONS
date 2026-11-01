@@ -331,3 +331,21 @@ T-483 (5) part three, DEBUG build, theatre t483_pull 3/3: by night in BLANCHE th
 T-483 (5) part three, DEBUG build, theatre t483_pull 3/3: by night in BLANCHE the SPELLBOOK lists 3.5 PULL and 8 GREAT HAND; PULL draws the nearest wanderer a tile toward the player (frames 7-10) and says the next foe comes calm; GREAT HAND names the road with the attendant's plain dream; at 3:30 the wanderer comes two steps (west, then north) and the calm lasts two turns. DRAFT words.
 
 ![31Oct2026 - T483 - THE PULL and THE GREAT HAND - 61](31Oct2026%20-%20T483%20-%20THE%20PULL%20and%20THE%20GREAT%20HAND%20-%2061.png)
+
+### 31Oct2026 - T483 - ROOM and MIRROR - 62
+
+T-483 (5) part four, from the debug ROM by the theatre (t483_room_mirror 3/3): THE ROOM keeps here in BLANCHE by night, folds back to it from (6,9) behind a white fade, refuses a way too far and makes where you stand the new here; THE MIRROR washes the field in the lead daemon's type colour, drops SAVE from the START menu, makes {PLAYER} say its name (the house sign), and on ROUTE 3 puts a ! over the unbeaten trainer on screen. Every word DRAFT.
+
+![31Oct2026 - T483 - ROOM and MIRROR - 62](31Oct2026%20-%20T483%20-%20ROOM%20and%20MIRROR%20-%2062.png)
+
+### 31Oct2026 - T483 - ROOM and MIRROR - 63
+
+T-483 (5) part four, from the debug ROM by the theatre (t483_room_mirror 3/3): THE ROOM keeps here in BLANCHE by night, folds back to it from (6,9) behind a white fade, refuses a way too far and makes where you stand the new here; THE MIRROR washes the field in the lead daemon's type colour, drops SAVE from the START menu, makes {PLAYER} say its name (the house sign), and on ROUTE 3 puts a ! over the unbeaten trainer on screen. Every word DRAFT.
+
+![31Oct2026 - T483 - ROOM and MIRROR - 63](31Oct2026%20-%20T483%20-%20ROOM%20and%20MIRROR%20-%2063.png)
+
+### 31Oct2026 - T483 - ROOM and MIRROR - 64
+
+T-483 (5) part four, from the debug ROM by the theatre (t483_room_mirror 3/3): THE ROOM keeps here in BLANCHE by night, folds back to it from (6,9) behind a white fade, refuses a way too far and makes where you stand the new here; THE MIRROR washes the field in the lead daemon's type colour, drops SAVE from the START menu, makes {PLAYER} say its name (the house sign), and on ROUTE 3 puts a ! over the unbeaten trainer on screen. Every word DRAFT.
+
+![31Oct2026 - T483 - ROOM and MIRROR - 64](31Oct2026%20-%20T483%20-%20ROOM%20and%20MIRROR%20-%2064.png)
