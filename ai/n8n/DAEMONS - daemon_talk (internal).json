@@ -362,7 +362,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ text: String($json.answer || '').slice(0, 600), voice: $json.voice || 'index' }) }}",
+        "jsonBody": "={{ JSON.stringify({ text: String($json.answer || '').replace(/\\bdaemon(s?)\\b/gi, (w, s) => (w[0] === 'd' ? 'daymon' : 'Daymon') + s.toLowerCase()).slice(0, 600), voice: $json.voice || 'index' }) }}",
         "options": {
           "response": {
             "response": {

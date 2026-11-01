@@ -11,6 +11,11 @@ a thrown node leaves the caller hanging).
 import json, os
 OUT = os.path.expanduser("~/Projects/DAEMONS/ai/n8n")
 
+# C-270 (companion; the user, 2026-11-01: "the TTS returns the pronouciation of daemon as (DEE-MON)"): what a voice is
+# handed, never what is shown -- DAEMON respelled as it is said, DAY-mon (the companion's server/src/ai/say.ts, the same rule)
+SAYABLE = r".replace(/\bdaemon(s?)\b/gi, (w, s) => (w[0] === 'd' ? 'daymon' : 'Daymon') + s.toLowerCase())"
+
+
 def node(i, name, typ, ver, pos, params, **extra):
     n = {"parameters": params, "id": i, "name": name, "type": "n8n-nodes-base." + typ, "typeVersion": ver, "position": pos}
     n.update(extra); return n
@@ -165,7 +170,7 @@ nodes = [
         "url": "={{ $env.DEXTER_TTS_URL || 'http://host.docker.internal:8880/tts' }}", "sendHeaders": True,
         "headerParameters": {"parameters": [{"name": "X-Dex-Key", "value": "={{ $env.DEX_KEY }}"}, {"name": "Content-Type", "value": "application/json"}]},
         "sendBody": True, "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ text: String($json.answer || '').slice(0, 600), voice: $json.voice || 'index' }) }}",
+        "jsonBody": "={{ JSON.stringify({ text: String($json.answer || '')" + SAYABLE + ".slice(0, 600), voice: $json.voice || 'index' }) }}",
         "options": {"response": {"response": {"responseFormat": "file"}}, "timeout": 90000}}, continueOnFail=True),
     node("t16", "Assemble", "code", 2, [3080, 0], {"jsCode": ASSEMBLE}),
     node("t17", "Respond", "respondToWebhook", 1, [3300, 0], {"respondWith": "json", "responseBody": "={{ JSON.stringify($json) }}", "options": {}}),

@@ -114,7 +114,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ text: $json.thought, voice: $json.voice || 'index' }) }}",
+        "jsonBody": "={{ JSON.stringify({ text: String($json.thought || '').replace(/\\bdaemon(s?)\\b/gi, (w, s) => (w[0] === 'd' ? 'daymon' : 'Daymon') + s.toLowerCase()), voice: $json.voice || 'index' }) }}",
         "options": {
           "response": {
             "response": {

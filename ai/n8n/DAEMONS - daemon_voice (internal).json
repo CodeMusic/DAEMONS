@@ -51,7 +51,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ text: $json.text, voice: $json.voice, exaggeration: $json.exaggeration, cfg_weight: $json.cfg_weight, raw: $json.raw }) }}",
+        "jsonBody": "={{ JSON.stringify({ text: String($json.text || '').replace(/\\bdaemon(s?)\\b/gi, (w, s) => (w[0] === 'd' ? 'daymon' : 'Daymon') + s.toLowerCase()), voice: $json.voice, exaggeration: $json.exaggeration, cfg_weight: $json.cfg_weight, raw: $json.raw }) }}",
         "options": {
           "response": {
             "response": {
