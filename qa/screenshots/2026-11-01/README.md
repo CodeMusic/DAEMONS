@@ -127,3 +127,9 @@ C-264 on the iPad simulator: Help on the menu bar has How to Play DAEMONS; choos
 T-509 the tarot decks in both books on the GBA (DRAFT): the deck tile, the day's card matching cardOfDay, a single draw, three cards, the hermetic selector
 
 ![1Nov2026 - T509 - the decks - 24](1Nov2026%20-%20T509%20-%20the%20decks%20-%2024.png)
+
+### 1Nov2026 - C273 - the hermetic cards in the app - 26
+
+C-273 on the companion's site (a save copy, preview): THE HERMETIC LAYER's CARDS opened from its deck tile -- 'as The Deck Above, so The Deck Below, or Both as One', a MIND / BODY / SPIRIT reading drawn from the spread and turned on the board (XVI CALCINATION shiny, X THE MOMENT, I INCANTATION), the prophecy under each. SYMBOL's picture does not draw yet. DRAFT.
+
+![1Nov2026 - C273 - the hermetic cards in the app - 26](1Nov2026%20-%20C273%20-%20the%20hermetic%20cards%20in%20the%20app%20-%2026.jpg)
