@@ -67,3 +67,9 @@ C-267 round two: A's field with the title's notes rising and red and blue notes 
 C-267 round three: DAEMONS in the logo's letters with the crossing notes as its M; H MUSAI, I the dog, J the word alone; E and F beside.
 
 ![1Nov2026 - C267 - app icon round three - 11](1Nov2026%20-%20C267%20-%20app%20icon%20round%20three%20-%2011.png)
+
+### 1Nov2026 - T508 - DAY-mons and the Greek daimon - 12
+
+DAEMONS is said DAY-mons in all three books -- the Greeks' daimon, a guiding spirit, that later forked into a second, similar word for a particular class of them; the other word appears nowhere (the user, 2026-11-01)
+
+![1Nov2026 - T508 - DAY-mons and the Greek daimon - 12](1Nov2026%20-%20T508%20-%20DAY-mons%20and%20the%20Greek%20daimon%20-%2012.png)

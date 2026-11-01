@@ -56,8 +56,9 @@ DAEMONS renames almost everything. The game never stops to explain its words; th
 | Prof. Oak | **CRYSTAL CLEAR** |
 :::
 
-**DAEMON** is said [*DAY-mon*]{style="white-space: nowrap"} -- not demon. To a programmer a daemon is a process that runs by itself in the
-background; to the ancient Greeks a *daimon* was a guiding spirit. The game means both.
+**DAEMON** is said [*DAY-mon*]{style="white-space: nowrap"}. To the ancient Greeks a *daimon* was a guiding spirit. Much later the word
+forked into a second, similar one for a particular class of them: to a programmer, a daemon is a process that runs
+by itself in the background. The game means both.
 
 The [glossary](#glossary) at the back has the rest.
 
