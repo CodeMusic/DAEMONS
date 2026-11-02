@@ -24,6 +24,7 @@ def speakable(t: str) -> str:
         if w in KEEP_CAPS: return w
         return w.capitalize() if w.isupper() and len(w) > 1 else w
     t = re.sub(r"\b[A-Z][A-Z']+\b", fix, t)
+    t = re.sub(r"\b([Dd])aemon", r"\1aymon", t)  # said DAY-mons, as the hub's voices say it (companion C-270)
     return re.sub(r"\s+", " ", t.replace("—", ", ").replace("–", ", ")).strip()
 
 
