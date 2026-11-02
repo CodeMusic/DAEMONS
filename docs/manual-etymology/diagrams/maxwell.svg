@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 236" font-family="Avenir Next, Helvetica Neue, Helvetica, Arial, sans-serif">
+  <!-- THE OLD WORD: Maxwell's sorting being (1867), drawn plain: two rooms of gas, a wall, a small door, and the being
+       that opens it for the fast ones going one way and the slow ones going the other -->
+  <defs>
+    <marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#16161a"/>
+    </marker>
+  </defs>
+  <!-- the two rooms -->
+  <rect x="14" y="20" width="190" height="150" rx="8" fill="#e6eef8" stroke="#16161a" stroke-width="2"/>
+  <rect x="236" y="20" width="190" height="150" rx="8" fill="#fbe6df" stroke="#16161a" stroke-width="2"/>
+  <!-- the wall between, and its door ajar -->
+  <rect x="204" y="20" width="32" height="150" fill="#4a4955"/>
+  <rect x="204" y="84" width="32" height="26" fill="#fbfaf6"/>
+  <path d="M236 84 L250 74" stroke="#4a4955" stroke-width="5" stroke-linecap="round"/>
+  <!-- the slow ones, gathering on the left: short trails -->
+  <g fill="#3a6fb0">
+    <circle cx="48" cy="48" r="6"/><circle cx="96" cy="70" r="6"/><circle cx="150" cy="44" r="6"/>
+    <circle cx="60" cy="118" r="6"/><circle cx="130" cy="140" r="6"/><circle cx="170" cy="104" r="6"/>
+    <circle cx="36" cy="150" r="6"/>
+  </g>
+  <g stroke="#3a6fb0" stroke-width="2" stroke-linecap="round" opacity=".55">
+    <path d="M38 46 L30 44"/><path d="M106 74 L113 77"/><path d="M150 54 L150 61"/>
+    <path d="M50 118 L43 118"/><path d="M140 136 L146 132"/><path d="M180 104 L187 104"/><path d="M36 140 L36 133"/>
+  </g>
+  <!-- the fast ones, gathering on the right: long trails -->
+  <g fill="#c8452c">
+    <circle cx="290" cy="50" r="6"/><circle cx="360" cy="40" r="6"/><circle cx="400" cy="90" r="6"/>
+    <circle cx="300" cy="126" r="6"/><circle cx="372" cy="148" r="6"/><circle cx="270" cy="152" r="6"/>
+    <circle cx="340" cy="96" r="6"/>
+  </g>
+  <g stroke="#c8452c" stroke-width="2" stroke-linecap="round" opacity=".55">
+    <path d="M280 52 L258 58"/><path d="M370 36 L392 28"/><path d="M400 100 L398 122"/>
+    <path d="M290 122 L270 112"/><path d="M382 152 L404 160"/><path d="M280 150 L300 144"/><path d="M330 92 L310 84"/>
+  </g>
+  <!-- one of each, going through: a fast one to the right, a slow one to the left -->
+  <circle cx="190" cy="90" r="6" fill="#c8452c"/>
+  <path d="M190 90 L252 90" stroke="#16161a" stroke-width="1.6" fill="none" marker-end="url(#tip)"/>
+  <circle cx="250" cy="106" r="6" fill="#3a6fb0"/>
+  <path d="M250 106 L196 106" stroke="#16161a" stroke-width="1.6" fill="none" marker-end="url(#tip)"/>
+  <!-- the being, small and watchful, above the door with a hand on it -->
+  <g transform="translate(220 52)">
+    <ellipse cx="0" cy="8" rx="15" ry="13" fill="#f2c94c" stroke="#16161a" stroke-width="1.6"/>
+    <circle cx="-5" cy="5" r="2.4" fill="#16161a"/><circle cx="5" cy="5" r="2.4" fill="#16161a"/>
+    <path d="M-4 12 Q0 15 4 12" stroke="#16161a" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <path d="M12 14 Q22 22 24 30" stroke="#16161a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- what follows -->
+  <text x="109" y="196" fill="#16161a" font-size="13" font-weight="700" text-anchor="middle">the slow ones</text>
+  <text x="109" y="214" fill="#5a5a64" font-size="12" text-anchor="middle">this side grows cooler</text>
+  <text x="331" y="196" fill="#16161a" font-size="13" font-weight="700" text-anchor="middle">the fast ones</text>
+  <text x="331" y="214" fill="#5a5a64" font-size="12" text-anchor="middle">this side grows warmer</text>
+  <text x="220" y="232" fill="#5a5a64" font-size="11.5" font-style="italic" text-anchor="middle">and nobody seems to have done any work</text>
+</svg>

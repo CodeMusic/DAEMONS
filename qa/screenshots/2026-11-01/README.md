@@ -133,3 +133,27 @@ T-509 the tarot decks in both books on the GBA (DRAFT): the deck tile, the day's
 C-273 on the companion's site (a save copy, preview): THE HERMETIC LAYER's CARDS opened from its deck tile -- 'as The Deck Above, so The Deck Below, or Both as One', a MIND / BODY / SPIRIT reading drawn from the spread and turned on the board (XVI CALCINATION shiny, X THE MOMENT, I INCANTATION), the prophecy under each. SYMBOL's picture does not draw yet. DRAFT.
 
 ![1Nov2026 - C273 - the hermetic cards in the app - 26](1Nov2026%20-%20C273%20-%20the%20hermetic%20cards%20in%20the%20app%20-%2026.jpg)
+
+### 1Nov2026 - T517 - THE OLD WORD - 29
+
+THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the fork (the similarly spelt, frightening word never printed), Maxwell's sorting being, the background helpers, and DAEMONS said DAY-mons; 19 pages, every fact checked, its sources at the back (the user's choices, 2026-11-01)
+
+![1Nov2026 - T517 - THE OLD WORD - 29](1Nov2026%20-%20T517%20-%20THE%20OLD%20WORD%20-%2029.png)
+
+### 1Nov2026 - T517 - THE OLD WORD - 30
+
+THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the fork (the similarly spelt, frightening word never printed), Maxwell's sorting being, the background helpers, and DAEMONS said DAY-mons; 19 pages, every fact checked, its sources at the back (the user's choices, 2026-11-01)
+
+![1Nov2026 - T517 - THE OLD WORD - 30](1Nov2026%20-%20T517%20-%20THE%20OLD%20WORD%20-%2030.png)
+
+### 1Nov2026 - T517 - THE OLD WORD - 31
+
+THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the fork (the similarly spelt, frightening word never printed), Maxwell's sorting being, the background helpers, and DAEMONS said DAY-mons; 19 pages, every fact checked, its sources at the back (the user's choices, 2026-11-01)
+
+![1Nov2026 - T517 - THE OLD WORD - 31](1Nov2026%20-%20T517%20-%20THE%20OLD%20WORD%20-%2031.png)
+
+### 1Nov2026 - T517 - THE OLD WORD - 32
+
+THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the fork (the similarly spelt, frightening word never printed), Maxwell's sorting being, the background helpers, and DAEMONS said DAY-mons; 19 pages, every fact checked, its sources at the back (the user's choices, 2026-11-01)
+
+![1Nov2026 - T517 - THE OLD WORD - 32](1Nov2026%20-%20T517%20-%20THE%20OLD%20WORD%20-%2032.png)

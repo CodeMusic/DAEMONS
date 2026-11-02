@@ -1,0 +1,13 @@
+{
+  "about": "THE OLD WORD's game screens: copies of the player's manual's own (docs/manual/frames/), each captured in the theatre from a built ROM; refresh them there, then copy them here.",
+  "frames": {
+    "crystal": {
+      "from": "mom-tour/01/s01_03",
+      "captured": "2026-10-24"
+    },
+    "hello": {
+      "from": "mom-tour/01/s01_01",
+      "captured": "2026-10-24"
+    }
+  }
+}

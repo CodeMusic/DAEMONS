@@ -10,6 +10,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book social --write   # the second book: PLAYING TOGETHER, the social features (C-219..)
     python3 tools/manual.py --book quick --write    # QUICK START: what DAEMONS is and how to play, in large type
     python3 tools/manual.py --book micro --write    # MICRO-START: the same, in five pages at most
+    python3 tools/manual.py --book etymology --write   # THE OLD WORD: how daimon branched, and why it is said DAY-mons
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -81,6 +82,14 @@ BOOKS = {
               "tag": "MICRO-START", "sub": "Five pages, and you are playing", "foot": "micro start",
               "subject": "DAEMONS in five pages: what it is, and how to play it",
               "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None, "toc": False, "max_pages": 5},
+    # the sixth: THE OLD WORD, the history of the word (the user, 2026-11-01: "maybe lets have a full etomoly book on how
+    # daemons and demons branched?" -- a PDF like the manuals; the frightening word that forked from it never printed)
+    "etymology": {"src": "docs/manual-etymology", "out": "docs/DAEMONS-etymology.pdf", "title": "DAEMONS: the old word",
+                  "tag": "THE OLD WORD", "sub": "How daimon branched, and why it is said DAY-mons", "foot": "the old word",
+                  "subject": "The history of the word daemon: the Greek daimon, Maxwell's sorting being, the computer's "
+                             "background helpers, and the game",
+                  "sprites": ("GUARDIAN", "LODESTAR", "CRON"),
+                  "strip": ("PING", "ECHO", "HEARTBEAT", "SCHEDULER", "SENTINEL", "KEEPER", "LOOKOUT", "RELAY")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
