@@ -1,235 +1,242 @@
 {
  "book": "guide",
- "voice": "af_heart",
- "duration": 1034.85,
+ "voice": "reason",
+ "blend": {
+  "am_michael": 0.6,
+  "bm_george": 0.4
+ },
+ "speed": 0.97,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "0b32d889c4983ace",
+ "duration": 1140.19,
  "chapters": [
   {
    "kind": "section",
    "title": "The Programmer's Guide To The Human Mind",
    "start": 0.0,
-   "end": 6.49
+   "end": 10.27
   },
   {
    "kind": "section",
    "title": "Introduction",
-   "start": 6.49,
-   "end": 9.08
+   "start": 10.27,
+   "end": 13.03
   },
   {
    "kind": "entry",
    "title": "Understanding the Mind as Software",
-   "start": 9.08,
-   "end": 47.6
+   "start": 13.03,
+   "end": 56.0
   },
   {
    "kind": "entry",
    "title": "Overview of Tools and Techniques",
-   "start": 47.6,
-   "end": 81.89
+   "start": 56.0,
+   "end": 93.82
   },
   {
    "kind": "entry",
    "title": "The Programmer's Role in Re-architecting the Mind",
-   "start": 81.89,
-   "end": 118.94
+   "start": 93.82,
+   "end": 134.98
   },
   {
    "kind": "section",
    "title": "Understanding the System",
-   "start": 118.94,
-   "end": 122.68
+   "start": 134.98,
+   "end": 139.0
   },
   {
    "kind": "entry",
    "title": "The Human Brain: Hardware for the Mind",
-   "start": 122.68,
-   "end": 167.09
+   "start": 139.0,
+   "end": 186.63
   },
   {
    "kind": "entry",
    "title": "The Mind as Software: An Introduction to Mental Programming",
-   "start": 167.09,
-   "end": 201.94
+   "start": 186.63,
+   "end": 225.36
   },
   {
    "kind": "entry",
    "title": "Feelings in Parallel: the Machine Learning Perspective",
-   "start": 201.94,
-   "end": 238.69
+   "start": 225.36,
+   "end": 265.93
   },
   {
    "kind": "entry",
    "title": "Awareness as a Feedback Loop",
-   "start": 238.69,
-   "end": 272.19
+   "start": 265.93,
+   "end": 303.1
   },
   {
    "kind": "section",
    "title": "Core Programming Techniques",
-   "start": 272.19,
-   "end": 276.06
+   "start": 303.1,
+   "end": 307.17
   },
   {
    "kind": "entry",
    "title": "Rewriting the Mental Code (NLP)",
-   "start": 276.06,
-   "end": 308.99
+   "start": 307.17,
+   "end": 343.53
   },
   {
    "kind": "entry",
    "title": "Debugging Thought Processes (CBT)",
-   "start": 308.99,
-   "end": 348.19
+   "start": 343.53,
+   "end": 386.42
   },
   {
    "kind": "entry",
    "title": "Mindfulness: System Monitoring and Maintenance",
-   "start": 348.19,
-   "end": 381.89
+   "start": 386.42,
+   "end": 423.69
   },
   {
    "kind": "entry",
    "title": "Energy Flow and Chakras: Optimizing the Power Supply",
-   "start": 381.89,
-   "end": 417.19
+   "start": 423.69,
+   "end": 462.69
   },
   {
    "kind": "section",
    "title": "Advanced Mental Engineering",
-   "start": 417.19,
-   "end": 421.16
+   "start": 462.69,
+   "end": 466.97
   },
   {
    "kind": "entry",
    "title": "Virtues and Shadows: Securing the System",
-   "start": 421.16,
-   "end": 463.35
+   "start": 466.97,
+   "end": 512.76
   },
   {
    "kind": "entry",
    "title": "Habit Formation: Automating Positive Routines",
-   "start": 463.35,
-   "end": 498.97
+   "start": 512.76,
+   "end": 551.26
   },
   {
    "kind": "entry",
    "title": "Thought and Emotion Integration",
-   "start": 498.97,
-   "end": 530.36
+   "start": 551.26,
+   "end": 585.62
   },
   {
    "kind": "section",
    "title": "System Failures and Recovery",
-   "start": 530.36,
-   "end": 534.57
+   "start": 585.62,
+   "end": 590.19
   },
   {
    "kind": "entry",
    "title": "Recovering from System Crashes",
-   "start": 534.57,
-   "end": 570.79
+   "start": 590.19,
+   "end": 630.33
   },
   {
    "kind": "entry",
    "title": "Hypnotherapy: Direct Access Programming",
-   "start": 570.79,
-   "end": 607.63
+   "start": 630.33,
+   "end": 670.56
   },
   {
    "kind": "entry",
    "title": "System Overhauls and Safe Operating",
-   "start": 607.63,
-   "end": 646.89
+   "start": 670.56,
+   "end": 713.56
   },
   {
    "kind": "section",
    "title": "Ongoing Maintenance and Optimization",
-   "start": 646.89,
-   "end": 651.63
+   "start": 713.56,
+   "end": 718.73
   },
   {
    "kind": "entry",
    "title": "Flow States: Optimizing the Processor",
-   "start": 651.63,
-   "end": 683.03
+   "start": 718.73,
+   "end": 753.92
   },
   {
    "kind": "entry",
    "title": "Journaling: System Logs and Version Control",
-   "start": 683.03,
-   "end": 713.48
+   "start": 753.92,
+   "end": 787.92
   },
   {
    "kind": "entry",
    "title": "Lucid Dreaming: Nighttime Debugging and Testing",
-   "start": 713.48,
-   "end": 748.82
+   "start": 787.92,
+   "end": 826.88
   },
   {
    "kind": "section",
    "title": "Real-World Applications",
-   "start": 748.82,
-   "end": 752.88
+   "start": 826.88,
+   "end": 831.22
   },
   {
    "kind": "entry",
    "title": "Interpersonal Dynamics: Networking Protocols",
-   "start": 752.88,
-   "end": 786.94
+   "start": 831.22,
+   "end": 868.5
   },
   {
    "kind": "entry",
    "title": "Conflict Resolution: Debugging Relationships",
-   "start": 786.94,
-   "end": 823.75
+   "start": 868.5,
+   "end": 908.58
   },
   {
    "kind": "section",
    "title": "Conclusion",
-   "start": 823.75,
-   "end": 826.3
+   "start": 908.58,
+   "end": 911.29
   },
   {
    "kind": "entry",
    "title": "The Future of Mental Programming",
-   "start": 826.3,
-   "end": 857.78
+   "start": 911.29,
+   "end": 946.16
   },
   {
    "kind": "entry",
    "title": "Ethical Considerations",
-   "start": 857.78,
-   "end": 892.65
+   "start": 946.16,
+   "end": 984.24
   },
   {
    "kind": "entry",
    "title": "The Path Forward: Continuous Development",
-   "start": 892.65,
-   "end": 927.46
+   "start": 984.24,
+   "end": 1023.07
   },
   {
    "kind": "section",
    "title": "Appendices",
-   "start": 927.46,
-   "end": 930.11
+   "start": 1023.07,
+   "end": 1025.83
   },
   {
    "kind": "entry",
    "title": "Glossary of Terms",
-   "start": 930.11,
-   "end": 961.67
+   "start": 1025.83,
+   "end": 1060.12
   },
   {
    "kind": "entry",
    "title": "Case Studies",
-   "start": 961.67,
-   "end": 1000.69
+   "start": 1060.12,
+   "end": 1102.89
   },
   {
    "kind": "entry",
    "title": "Further Reading and Resources",
-   "start": 1000.69,
-   "end": 1034.85
+   "start": 1102.89,
+   "end": 1140.19
   }
  ]
 }

@@ -24,13 +24,15 @@ written in title case with a space between them (`Firstname Lastname`), might op
 
 ## Audio
 
-The same books read aloud (Kokoro TTS, voice `af_heart`), with chapter markers at every entry. Each `.chapters.json`
-gives every section's and entry's start and end in seconds, so a chapter can be cut from the MP3 without re-rendering.
-Made by `python3 tools/bookaudio.py <book> <out_dir>` from the companion's `server/data/<book>.json`; like the PDFs,
-they are DRAFT and go stale when the words change.
+The same books read aloud by Kokoro TTS, **each in its own voice, chosen for what the book is**, and every daemon said
+DAY-mon. There are chapter markers at every entry. Each `.chapters.json` gives every section's and entry's start and
+end in seconds, so a chapter can be cut from the MP3 without re-rendering. It also names the voice the book was read in.
+Made by `python3 tools/bookaudio.py <book> <out_dir>` from the companion's `server/data/<book>.json`.
+`python3 tools/bookaudio.py --check` says which recordings are behind their words. Like the PDFs they are DRAFT, and
+each says so at its start and in its tags.
 
-| File | The book |
-|---|---|
-| [`audio/guide.mp3`](audio/guide.mp3) | THE PROGRAMMER'S GUIDE TO THE HUMAN MIND, 17 min |
-| [`audio/the-subtle-layer.mp3`](audio/the-subtle-layer.mp3) | THE SUBTLE LAYER, 31 min |
-| [`audio/the-vault-audio.zip`](audio/the-vault-audio.zip) | **Sealed**, by the same name as the vault. |
+| File | The book | Its voice |
+|---|---|---|
+| [`audio/guide.mp3`](audio/guide.mp3) | THE PROGRAMMER'S GUIDE TO THE HUMAN MIND, 19 min | Reason: a blend made for it (`am_michael` and `bm_george`), even and unhurried |
+| [`audio/the-subtle-layer.mp3`](audio/the-subtle-layer.mp3) | THE SUBTLE LAYER, 32 min | Instinct: `af_bella`, warm and full |
+| [`audio/the-vault-audio.zip`](audio/the-vault-audio.zip) | **Sealed**, by the same name as the vault. | Its own |
