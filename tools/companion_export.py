@@ -783,8 +783,14 @@ def reads_layout(sb1):
             "phrase_shift": num(r"#define\s+READ_PHRASE\(w\)\s+\(\(\(w\)\s*>>\s*(\d+)\)", rc),
             "phrase_mask": num(r"#define\s+READ_PHRASE\(w\).*?&\s*(0x[0-9A-Fa-f]+)\)", rc),
             "phrases": [words[table[o]] for o in order],
+            "day_shift": num(r"#define\s+READ_DAY\(w\)\s+\(\(\(w\)\s*>>\s*(\d+)\)", rc),   # T-511: the weekday + 1, 0 none
+            "day_mask": num(r"#define\s+READ_DAY\(w\).*?&\s*(0x[0-9A-Fa-f]+)\)", rc),
+            "days": [dict(re.findall(r'const u8 (gText_Day\w+)\[\]\s*=\s*_\("(.*?)"\);', read("src/strings.c")))[d]
+                     for d in re.findall(r"gText_Day\w+",
+                                         re.search(r"sDayNames\[WEEKDAY_COUNT\]\s*=\s*\{(.*?)\};", rc, re.S).group(1))],
             "words": {"reads": plain(words["sLog_Reads"]), "leans": plain(words["sLog_Leans"]),
-                      "colon": words["sLog_Colon"], "landed": words["sLog_Landed"]}}
+                      "colon": words["sLog_Colon"], "landed": words["sLog_Landed"],
+                      "day_comma": words["sLog_DayComma"]}}
 
 
 def maps_table():
