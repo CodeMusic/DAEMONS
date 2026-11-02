@@ -1,0 +1,64 @@
+{
+  "rom": "debug",
+  "about": "T-513 and T-516 (DRAFT): THE SUBTLE LAYER, held. T-513: Ty, beaten in the Warehouse, hands over the ENVELOPE, and under \"...No. I am not coming.\" a purple \"Not yet.\"; the rest of his speech goes on. T-516 A3: the INTERPRETER in SAFFRON, THE LOG holding ten reads given, goes on \"Did they agree to it?\". M2: a CHECKPOINT heal; under \"We hope to see you again!\" the purple box reads \"Not too soon.\" and then \"It was already mending.\". S1: on a SATURDAY (gDaemonsWeekdayOverride 7) THE LOG opens \"SATURDAY. Who was looking?\" above the counts. B1 (no WRITE until seven reads given) changes a number in a battle's damage and says nothing, so it has no stop. The theatre's debug scratch save, never the user's; the day is put back at the end.",
+  "stops": [
+    {
+      "stop": "T-513: Ty's refusal, and the line beneath it",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "keyitem ITEM_SUBTLE_LAYER",
+        "flag FLAG_GOT_NOTEBOOK 1",
+        "keyitem ITEM_NOTEBOOK",
+        "trainer TRAINER_SCIENTIST_GIDEON 0",
+        "goto FiveIsland_RocketWarehouse 27 6",
+        "talk Gideon",
+        "says \"No. I am not coming.\"",
+        "says \"Not yet.\"",
+        "says \"I saw what was happening\""
+      ]
+    },
+    {
+      "stop": "T-516 A3: the INTERPRETER, THE LOG holding ten reads given",
+      "steps": [
+        "var VAR_READS_GIVEN 10",
+        "goto SaffronCity_House 8 3",
+        "talk Interpreter",
+        "says \"Ask before you read anyone.\"",
+        "says \"Did they agree to it?\""
+      ]
+    },
+    {
+      "stop": "T-516 M2: a CHECKPOINT heal, the book held",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 6",
+        "talk Nurse 1",
+        "press A",
+        "finish",
+        "says \"We hope to see you again!\"",
+        "says \"It was already mending.\""
+      ]
+    },
+    {
+      "stop": "T-516 S1: THE LOG on a SATURDAY",
+      "steps": [
+        "poke gDaemonsWeekdayOverride 8 7",
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "press DOWN 20",
+        "press UP",
+        "press A",
+        "wait 40",
+        "press A",
+        "wait 60",
+        "says \"SATURDAY. Who was looking?\"",
+        "shot THE LOG on a SATURDAY",
+        "press B 4",
+        "wait 60",
+        "poke gDaemonsWeekdayOverride 8 0"
+      ]
+    }
+  ]
+}
