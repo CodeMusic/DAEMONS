@@ -31,7 +31,7 @@ VOICES = {  # picked with the user from samples, 2026-11-01
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night"}   # its counterbalance takes "dawn"
 FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio"}
-SEALED = {"hermetic"}
+SEALED = {"hermetic"}             # and its counterbalance, until that is decided otherwise
 SEAL_INSIDE = "sealed"            # the names a closed zip shows (sealed.mp3, sealed.chapters.json): they say nothing
 DRAFT = "DRAFT · every word, until it is approved"                              # as the PDFs' covers say it
 ROMAN = {"I": "one", "II": "two", "III": "three", "IV": "four", "V": "five", "VI": "six", "VII": "seven",
@@ -46,7 +46,7 @@ def speakable(t: str) -> str:
         if w in KEEP_CAPS: return w
         return w.capitalize() if w.isupper() and len(w) > 1 else w
     t = re.sub(r"\b[A-Z][A-Z']+\b", fix, t)
-    t = re.sub(r"\b([Dd])aemon", r"\1aymon", t)  # said DAY-mons, as the hub's voices say it (companion C-270)
+    t = re.sub(r"([Dd])aemon", r"\1aymon", t)  # said DAY-mons, as the hub's voices say it (companion C-270); eudaemon too
     return re.sub(r"\s+", " ", t.replace("—", ", ").replace("–", ", ")).strip()
 
 
