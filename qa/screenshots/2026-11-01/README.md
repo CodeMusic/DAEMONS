@@ -168,3 +168,33 @@ THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the
 THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the fork (the similarly spelt, frightening word never printed), Maxwell's sorting being, the background helpers, and DAEMONS said DAY-mons; 19 pages, every fact checked, its sources at the back (the user's choices, 2026-11-01)
 
 ![1Nov2026 - T517 - THE OLD WORD - 32](1Nov2026%20-%20T517%20-%20THE%20OLD%20WORD%20-%2032.png)
+
+### 1Nov2026 - T510 - loose ends - 37
+
+T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INSIGHT (CLOSURE one more, 4 at most); the INTERPRETER once the book is taken; the USER card with MARK 2 alone (the root lit) and MARK 1 alone (the heart lit)
+
+![1Nov2026 - T510 - loose ends - 37](1Nov2026%20-%20T510%20-%20loose%20ends%20-%2037.png)
+
+### 1Nov2026 - T510 - loose ends - 38
+
+T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INSIGHT (CLOSURE one more, 4 at most); the INTERPRETER once the book is taken; the USER card with MARK 2 alone (the root lit) and MARK 1 alone (the heart lit)
+
+![1Nov2026 - T510 - loose ends - 38](1Nov2026%20-%20T510%20-%20loose%20ends%20-%2038.png)
+
+### 1Nov2026 - T510 - loose ends - 39
+
+T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INSIGHT (CLOSURE one more, 4 at most); the INTERPRETER once the book is taken; the USER card with MARK 2 alone (the root lit) and MARK 1 alone (the heart lit)
+
+![1Nov2026 - T510 - loose ends - 39](1Nov2026%20-%20T510%20-%20loose%20ends%20-%2039.png)
+
+### 1Nov2026 - T510 - loose ends - 40
+
+T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INSIGHT (CLOSURE one more, 4 at most); the INTERPRETER once the book is taken; the USER card with MARK 2 alone (the root lit) and MARK 1 alone (the heart lit)
+
+![1Nov2026 - T510 - loose ends - 40](1Nov2026%20-%20T510%20-%20loose%20ends%20-%2040.png)
+
+### 1Nov2026 - T510 - loose ends - 41
+
+T-510/T-512/T-514 (DRAFT): THE THREE on a SUNDAY without and with CHASTITY's INSIGHT (CLOSURE one more, 4 at most); the INTERPRETER once the book is taken; the USER card with MARK 2 alone (the root lit) and MARK 1 alone (the heart lit)
+
+![1Nov2026 - T510 - loose ends - 41](1Nov2026%20-%20T510%20-%20loose%20ends%20-%2041.png)

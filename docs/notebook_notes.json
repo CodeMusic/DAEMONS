@@ -518,6 +518,11 @@
    "seen": 108,
    "map": "Nexus",
    "about": "The same words, held still."
+  },
+  "FLAG_LIONESS_REPLY_GIVEN": {
+   "seen": 109,
+   "map": "PalletTown_PlayersHouse_1F",
+   "about": "A card that came home from the ship."
   }
  }
 }

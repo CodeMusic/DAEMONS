@@ -1,0 +1,150 @@
+{
+  "rom": "debug",
+  "about": "T-510, T-511, T-512, T-514, T-515 (DRAFT): THE SUBTLE LAYER's loose ends, each where it shows. T-510: DEBUG -> GAME EVENTS -> THE THREE shows each party daemon's CLOSURE as the next battle starts it, on a SUNDAY (gDaemonsWeekdayOverride 1), without and then with the INSIGHT of SUNDAY's virtue (CHASTITY) -- one more with it. T-511: on a FRIDAY (6) a read comes on arriving in CERULEAN CITY, and THE LOG prints it with its day. T-512: the INTERPRETER in SAFFRON, the book held. T-514: the USER card with only MARK 2 (CHASTITY) held -- the root, the bottom band, is the one lit -- then MARK 1 (DILIGENCE) alone, the heart. T-515: MOM hands over the card from the ship and it is copied into the NOTEBOOK; LOOSE PAGES shows THE CARD HOME. The theatre's debug scratch save, never the user's; the day and the flags are put back at the end.",
+  "stops": [
+    {
+      "stop": "T-510: SUNDAY, CHASTITY's INSIGHT not held -- each daemon's CLOSURE",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "keyitem ITEM_SUBTLE_LAYER",
+        "flag FLAG_INSIGHT_CHASTITY 0",
+        "poke gDaemonsWeekdayOverride 8 1",
+        "goto PalletTown 6 8",
+        "events \"THE THREE >\"",
+        "shot THE THREE on a SUNDAY, CHASTITY's INSIGHT not held"
+      ]
+    },
+    {
+      "stop": "T-510: SUNDAY, CHASTITY's INSIGHT held -- CLOSURE one more (to 4 at most)",
+      "steps": [
+        "flag FLAG_INSIGHT_CHASTITY 1",
+        "events \"THE THREE >\"",
+        "shot THE THREE on a SUNDAY, CHASTITY's INSIGHT held"
+      ]
+    },
+    {
+      "stop": "T-511: a FRIDAY's read, on arriving in CERULEAN CITY",
+      "steps": [
+        "flag FLAG_GOT_NOTEBOOK 1",
+        "keyitem ITEM_NOTEBOOK",
+        "flag FLAG_HIDDEN_ITEM_CERULEAN_CITY_RARE_CANDY 0",
+        "var VAR_READ_LOG_WHERE 0",
+        "var VAR_READ_LOG_WHERE_1 0",
+        "var VAR_READ_LOG_WHERE_2 0",
+        "var VAR_READ_LOG_WHERE_3 0",
+        "poke gDaemonsWeekdayOverride 8 6",
+        "poke gReadsDebugAlways 8 2",
+        "goto CeruleanCity 17 7",
+        "to 16 7",
+        "finish",
+        "to 15 7",
+        "finish",
+        "says \"A read:\"",
+        "poke gReadsDebugAlways 8 0"
+      ]
+    },
+    {
+      "stop": "T-511: THE LOG keeps the read's day",
+      "steps": [
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "press DOWN 20",
+        "press UP",
+        "press A",
+        "wait 40",
+        "press A",
+        "wait 60",
+        "says \"FRIDAY, DOLDRUM CITY: something\"",
+        "shot THE LOG, the read with its day",
+        "press B 4",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "T-512: the INTERPRETER, once THE SUBTLE LAYER is taken",
+      "steps": [
+        "goto SaffronCity_House 8 3",
+        "talk Interpreter",
+        "says \"Ask before you read anyone.\""
+      ]
+    },
+    {
+      "stop": "T-514: the USER card, MARK 2 (CHASTITY) alone -- the root lit",
+      "steps": [
+        "flag FLAG_BADGE01_GET 0",
+        "flag FLAG_BADGE02_GET 1",
+        "flag FLAG_BADGE03_GET 0",
+        "flag FLAG_BADGE04_GET 0",
+        "flag FLAG_BADGE05_GET 0",
+        "flag FLAG_BADGE06_GET 0",
+        "flag FLAG_BADGE07_GET 0",
+        "close",
+        "poke sStartMenuCursorPos 8 3",
+        "press START",
+        "wait 20",
+        "press A",
+        "wait 90",
+        "shot USER card, MARK 2 CHASTITY only: the root (bottom band) lit",
+        "close"
+      ]
+    },
+    {
+      "stop": "T-514: the USER card, MARK 1 (DILIGENCE) alone -- the heart lit",
+      "steps": [
+        "flag FLAG_BADGE01_GET 1",
+        "flag FLAG_BADGE02_GET 0",
+        "poke sStartMenuCursorPos 8 3",
+        "press START",
+        "wait 20",
+        "press A",
+        "wait 90",
+        "shot USER card, MARK 1 DILIGENCE only: the heart (fourth band up) lit",
+        "close",
+        "flag FLAG_BADGE02_GET 1",
+        "flag FLAG_BADGE03_GET 1",
+        "flag FLAG_BADGE04_GET 1",
+        "flag FLAG_BADGE05_GET 1",
+        "flag FLAG_BADGE06_GET 1",
+        "flag FLAG_BADGE07_GET 1"
+      ]
+    },
+    {
+      "stop": "T-515: home, once the ship has sailed -- the card, copied into the NOTEBOOK",
+      "steps": [
+        "flag FLAG_LIONESS_LETTER_SENT 1",
+        "flag FLAG_LIONESS_REPLY_GIVEN 0",
+        "var VAR_MAP_SCENE_VERMILION_CITY 3",
+        "goto PalletTown_PlayersHouse_1F 4 6",
+        "to 5 6",
+        "finish",
+        "talk Mom",
+        "says \"IT GOT THERE.\"",
+        "says \"copied it into the\"",
+        "flagis FLAG_LIONESS_REPLY_GIVEN 1"
+      ]
+    },
+    {
+      "stop": "T-515: LOOSE PAGES -- THE CARD HOME",
+      "steps": [
+        "register ITEM_NOTEBOOK",
+        "press SELECT",
+        "wait 40",
+        "shot the NOTEBOOK's sections",
+        "press DOWN",
+        "press A",
+        "wait 40",
+        "shot LOOSE PAGES",
+        "press DOWN 3",
+        "press A",
+        "wait 60",
+        "says \"There is no name on it.\"",
+        "shot THE CARD HOME",
+        "close",
+        "poke gDaemonsWeekdayOverride 8 0"
+      ]
+    }
+  ]
+}

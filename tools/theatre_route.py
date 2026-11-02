@@ -1346,7 +1346,7 @@ class Runner:
         S = lambda n: elf_symbol(n, self.release)
         rows_at, scroll_at = S("sRow"), S("sScroll")
         tw.run(*["poke16 %s 0" % hex(a + 2 * k) for a in (rows_at, scroll_at) for k in range(len(order) - 1)])
-        self.start_menu(10)                                               # STARTMENU_DEBUG
+        self.start_menu(start_menu_entries()["STARTMENU_DEBUG"])          # counted, not 10: SPELLBOOK came before it (T-483 (5))
         tw.run("hold A 6", "wait 50")                                     # its main page, the cursor on GAME EVENTS
         tw.run("hold A 6", "wait 90")                                     # GAME EVENTS: the title, then the list
         page, cursor = "PG_EVENTS", 0
