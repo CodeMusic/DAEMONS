@@ -305,7 +305,9 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 test on a copy in the scratchpad; mark every new in-game word DRAFT; a message box line is at most 208px; draw
 sprites at `--size 512x512`; never run the paid AI playtester (a local one on the Tiiny may run without asking, the user 2026-10-31); never decide what a ticket reserves for the user;
 the user's personal story stays in `docs/private/` and reaches the game only as fable -- no real names, company,
-medical detail or emails.
+medical detail or emails; DAEMONS is said **DAY-mons** -- never write the frightening word it is taken for in
+anything a reader sees, and every line handed to a voice is respelled daymon(s) first (the companion's `sayable()`,
+`ai/n8n/make_workflows.py` `SAYABLE`, `tools/bookaudio.py`; its app/AGENTS.md lists every speech path).
 
 ## Releasing ROMs
 

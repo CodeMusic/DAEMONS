@@ -13,7 +13,8 @@ OUT = os.path.expanduser("~/Projects/DAEMONS/ai/n8n")
 
 # C-270 (companion; the user, 2026-11-01: "the TTS returns the pronouciation of daemon as (DEE-MON)"): what a voice is
 # handed, never what is shown -- DAEMON respelled as it is said, DAY-mon (the companion's server/src/ai/say.ts, the same rule)
-SAYABLE = r".replace(/\bdaemon(s?)\b/gi, (w, s) => (w[0] === 'd' ? 'daymon' : 'Daymon') + s.toLowerCase())"
+# A word ending in daemon keeps its front (eudaemon -> eudaymon, 2026-11-01); no braces, so n8n's {{ }} cannot misread it
+SAYABLE = r".replace(/\b(\w*?)daemon(s?)\b/gi, (w) => ((d) => w[0] === w[0].toLowerCase() ? d : d[0].toUpperCase() + d.slice(1))(w.toLowerCase().replace(/daemon(s?)$/, 'daymon$1')))"
 
 
 def node(i, name, typ, ver, pos, params, **extra):
