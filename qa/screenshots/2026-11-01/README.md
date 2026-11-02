@@ -134,6 +134,17 @@ C-273 on the companion's site (a save copy, preview): THE HERMETIC LAYER's CARDS
 
 ![1Nov2026 - C273 - the hermetic cards in the app - 26](1Nov2026%20-%20C273%20-%20the%20hermetic%20cards%20in%20the%20app%20-%2026.jpg)
 
+### 1Nov2026 - T483 - FIELD intent - 27
+
+T-483 FIELD's intent, filmed from the ROM: with THE FIELD set and the numbers dark, the foe (WARNING) breathes toward its routine's type colour and lunges before the player chooses; one breath across the menu, then the battle.
+
+![1Nov2026 - T483 - FIELD intent - 27](1Nov2026%20-%20T483%20-%20FIELD%20intent%20-%2027.png)
+
+### 1Nov2026 - T483 - FIELD intent - 28
+
+T-483 FIELD's intent, filmed from the ROM: with THE FIELD set and the numbers dark, the foe (WARNING) breathes toward its routine's type colour and lunges before the player chooses; one breath across the menu, then the battle.
+
+![1Nov2026 - T483 - FIELD intent - 28](1Nov2026%20-%20T483%20-%20FIELD%20intent%20-%2028.png)
 ### 1Nov2026 - T517 - THE OLD WORD - 29
 
 THE OLD WORD, the illustrated book of how daimon branched: the Greeks, Rome, the fork (the similarly spelt, frightening word never printed), Maxwell's sorting being, the background helpers, and DAEMONS said DAY-mons; 19 pages, every fact checked, its sources at the back (the user's choices, 2026-11-01)
