@@ -14,6 +14,8 @@ step at a time.
 the world, the daemons and the types, the BENCHMARKS, the INDEX, the NOTEBOOK, PLAY, the GAME CORNER and the companion,
 and a glossary, in one PDF. Like this wiki, it says how things work, never where.
 
+**Why the name? [THE OLD WORD](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-etymology.pdf)** (19 pages) tells how the Greek *daimon* branched, and why it is said *DAY-mons*.
+
 > **Your daemons can leave the game.** The [companion](The-companion) lets your phone, a watch -- or most LilyGO and
 > M5Stack boards -- **host** a daemon you **SEND** away from your party. It lives there, you look after it, it helps
 > you get one thing done at a time, it sleeps and dreams when you do, and it comes home to your save with what it
