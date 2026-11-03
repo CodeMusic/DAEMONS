@@ -15,6 +15,7 @@ the world, the daemons and the types, the BENCHMARKS, the INDEX, the NOTEBOOK, P
 and a glossary, in one PDF. Like this wiki, it says how things work, never where.
 
 **Why the name? [THE OLD WORD](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-etymology.pdf)** (19 pages) tells how the Greek *daimon* branched, and why it is said *DAY-mons*.
+**From CALLOW SCHOOL: [PRINCIPLES OF MIND](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-textbook.pdf)** (82 pages), its TEXTBOOK written out as a university textbook -- seven floors, Language to Error, each taught from the research.
 
 > **Your daemons can leave the game.** The [companion](The-companion) lets your phone, a watch -- or most LilyGO and
 > M5Stack boards -- **host** a daemon you **SEND** away from your party. It lives there, you look after it, it helps
