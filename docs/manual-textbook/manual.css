@@ -1,0 +1,138 @@
+/* DAEMONS, CALLOW SCHOOL's TEXTBOOK (tools/manual.py --book textbook): PRINCIPLES OF MIND, set as a university press
+   sets an introductory text. A trade trim, a serif text face, sans heads, a chapter opener with a large numeral, the
+   floor's board quoted on slate, and the boxes an introductory course uses: objectives, spotlights, try-its, review. */
+@page { size: 7.5in 9.25in; margin: 19mm 20mm 21mm 20mm; }
+@page cover { margin: 0; }
+:root {
+  --ink: #1b1c20; --paper: #fdfcf8; --soft: #5b5d66; --rule: #d9d6cc; --navy: #1f2d4d; --ochre: #c4932f;
+  --slate: #2e3b36; --chalk: #eef1ea; --fc: #1f2d4d; --paper: #ffffff;
+}
+html { font-size: 10.6pt; }
+body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.52; hyphens: auto;
+       font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+h1, h2, h3, .chapnum, figcaption, table, .tochead, .toc1, .toc2, .box .bh, .blab, .tp-sans, .objectives h3 {
+  font-family: "Gill Sans", "Gill Sans MT", "Avenir Next", "Helvetica Neue", sans-serif; }
+p { margin: 0 0 2.2mm; text-align: justify; }
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ---- the cover ---- */
+.cover { page: cover; break-after: page; width: 7.5in; height: 9.25in; position: relative; overflow: hidden;
+         background: var(--navy); color: #f3eedf; }
+.cover .band { position: absolute; left: 0; right: 0; top: 0; height: 9mm; background: var(--ochre); }
+.cover .series { position: absolute; top: 15mm; left: 18mm; right: 18mm; font: 600 8.5pt "Gill Sans", sans-serif;
+                 letter-spacing: .32em; text-transform: uppercase; color: #c9cfdd; display: flex; justify-content: space-between; }
+.cover .art { position: absolute; left: 0; right: 0; top: 36mm; height: 104mm; }
+.cover .art svg { width: 100%; height: 100%; display: block; }
+.cover .titles { position: absolute; left: 18mm; right: 18mm; top: 146mm; }
+.cover .ttl { font: 400 40pt/0.98 "Baskerville", "Hoefler Text", "Iowan Old Style", serif; letter-spacing: .01em; }
+.cover .ttl b { display: block; font-weight: 600; letter-spacing: .06em; font-size: 43pt; }
+.cover .st { font: italic 15pt "Baskerville", "Hoefler Text", serif; color: #e2c88d; margin-top: 3mm; }
+.cover .rule { height: .8pt; background: #e2c88d; width: 52mm; margin: 6mm 0 4mm; }
+.cover .auth { font: 600 10.5pt "Gill Sans", sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.cover .ed { font: italic 10pt "Baskerville", serif; color: #c9cfdd; margin-top: 1mm; }
+.cover .press { position: absolute; left: 18mm; right: 18mm; bottom: 13mm; display: flex; align-items: flex-end;
+                justify-content: space-between; font: 600 8pt "Gill Sans", sans-serif; letter-spacing: .2em;
+                text-transform: uppercase; color: #c9cfdd; }
+.cover .press .mark { display: flex; align-items: center; gap: 3mm; }
+.cover .press .draft { font: 400 7pt "Gill Sans", sans-serif; letter-spacing: .06em; text-transform: none; text-align: right; }
+
+/* ---- the pages before the contents ---- */
+.half, .titlepage, .copyright, .dedication { break-after: page; }
+.half { padding-top: 62mm; text-align: center; }
+.half .ttl { font: 400 24pt "Baskerville", serif; letter-spacing: .04em; }
+.half .st { font: italic 12pt "Baskerville", serif; color: var(--soft); margin-top: 2mm; }
+.titlepage { text-align: center; padding-top: 22mm; }
+.titlepage .ttl { font: 600 30pt/1.05 "Baskerville", serif; letter-spacing: .05em; }
+.titlepage .st { font: italic 15pt "Baskerville", serif; margin-top: 3mm; color: #3d3f48; }
+.titlepage .ed { font: 600 9pt "Gill Sans", sans-serif; letter-spacing: .25em; text-transform: uppercase; margin-top: 14mm; color: var(--soft); }
+.titlepage .auth { font: 400 13pt "Baskerville", serif; margin-top: 18mm; }
+.titlepage .auth small { display: block; font: italic 10pt "Baskerville", serif; color: var(--soft); margin-top: 1.5mm; }
+.titlepage .pr { margin-top: 62mm; font: 600 9pt "Gill Sans", sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+.titlepage .pr small { display: block; font: 400 8pt "Gill Sans", sans-serif; letter-spacing: .12em; margin-top: 1.4mm; color: var(--soft); }
+.copyright { padding-top: 92mm; font-size: 8.2pt; line-height: 1.5; color: #3d3f48; }
+.copyright p { text-align: left; margin-bottom: 2.4mm; }
+.copyright .cip { border: .6pt solid var(--rule); padding: 3mm 4mm; margin: 4mm 0; font-family: "Gill Sans", sans-serif; font-size: 7.8pt; }
+.dedication { padding-top: 70mm; text-align: center; font: italic 13pt/1.6 "Baskerville", serif; color: #3d3f48; }
+
+/* ---- the contents ---- */
+.toc { break-after: page; }
+.tochead { font-size: 22pt; font-weight: 400; letter-spacing: .04em; margin: 0 0 6mm; padding-bottom: 2mm;
+           border-bottom: 1.4pt solid var(--ink); }
+.toc a { display: flex; align-items: baseline; color: var(--ink); }
+.toc1 { font-weight: 600; font-size: 11pt; margin-top: 3.4mm; }
+.toc1 .tn { width: 9mm; color: var(--ochre); font-weight: 700; }
+.toc1.plain .tn { width: 0; }
+.toc2 { font-size: 9.6pt; margin-left: 9mm; color: #3d3f48; padding: .3mm 0; }
+.toc .tt { flex: 1; }
+.toc .tp { min-width: 9mm; text-align: right; font-variant-numeric: tabular-nums; }
+.toc2 .tt::after { content: ""; }
+
+/* ---- a chapter ---- */
+section.level1 { break-before: page; }
+.chapnum { font-size: 9pt; font-weight: 600; letter-spacing: .34em; color: var(--fc); margin-top: 8mm; }
+section.level1 > h1 { font-size: 27pt; font-weight: 400; line-height: 1.1; margin: 1.5mm 0 6mm; padding-bottom: 3mm;
+                      border-bottom: 2.4pt solid var(--fc); letter-spacing: .01em; }
+section.level1.unnumbered > h1 { margin-top: 12mm; }
+h2 { font-size: 14pt; font-weight: 600; color: var(--fc); margin: 7mm 0 2.4mm; break-after: avoid; }
+h3 { font-size: 10.6pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin: 5mm 0 1.6mm;
+     color: var(--ink); break-after: avoid; }
+h4 { font: italic 600 10.6pt "Iowan Old Style", serif; margin: 3.4mm 0 1mm; break-after: avoid; }
+ul, ol { margin: 0 0 2.4mm; padding-left: 6mm; }
+li { margin-bottom: 1mm; }
+section.level2 > p:first-of-type::first-line { font-variant: normal; }
+
+/* the seven floors, seven colours */
+#language { --fc: #9c3b2f; } #attention { --fc: #b8662a; } #memory { --fc: #9a7b1c; } #categories { --fc: #3f7a3a; }
+#learning { --fc: #2e6f86; } #bias { --fc: #3c4f97; } #error { --fc: #6e4590; }
+
+/* the placard, and a board topic quoted word for word: slate, chalk */
+blockquote.placard { margin: 0 0 5mm; padding: 3.4mm 5mm; border-left: 3pt solid var(--fc); background: #f3f1ea;
+                     font-style: italic; }
+blockquote.placard p { margin: 0 0 1mm; text-align: left; }
+blockquote.board { margin: 2mm 0 4mm; padding: 4mm 6mm 3.4mm; background: var(--slate); color: var(--chalk);
+                   border-radius: 1.4mm; border: 2.2pt solid #8a6a43; break-inside: avoid;
+                   font-family: "Chalkboard SE", "Chalkboard", "Bradley Hand", "Iowan Old Style", serif; font-size: 10.4pt; }
+blockquote.board p { margin: 0 0 1.4mm; text-align: left; }
+.blab { font-size: 7.4pt; letter-spacing: .16em; text-transform: uppercase; color: #b9c4b5; margin-bottom: 2mm;
+        font-style: normal; }
+.blab b { color: #f2e6b8; }
+blockquote.placard .blab { color: var(--soft); }
+
+/* the boxes */
+.box { margin: 4mm 0; padding: 3.4mm 4.5mm 2mm; border-radius: 1mm; break-inside: avoid; font-size: 9.8pt; }
+.box .bh { display: block; font-size: 8pt; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1.8mm; }
+.box p { text-align: left; }
+.objectives { background: #eef0f5; border-top: 2.4pt solid var(--fc); padding: 3.4mm 4.5mm 2mm; margin: 0 0 5mm; font-size: 9.8pt; }
+.objectives .bh { color: var(--fc); }
+.objectives ol { margin-bottom: 1mm; }
+.spotlight { background: #f6efe0; border-left: 3pt solid var(--ochre); }
+.spotlight .bh { color: #8a6418; }
+.tryit { background: #eaf2ee; border-left: 3pt solid #3f7a3a; }
+.tryit .bh { color: #2f6a2b; }
+.caution { background: #f4ecee; border-left: 3pt solid #9c3b2f; }
+.caution .bh { color: #8a2f25; }
+
+/* the chapter's review */
+.review { border-top: 1.4pt solid var(--fc); margin-top: 8mm; padding-top: 1mm; }
+.terms { columns: 2; column-gap: 8mm; font-size: 9.6pt; }
+.terms p { text-align: left; margin: 0 0 .8mm; break-inside: avoid; }
+.questions ol li { margin-bottom: 1.6mm; }
+.reading p { text-align: left; font-size: 9.6pt; padding-left: 5mm; text-indent: -5mm; }
+
+/* diagrams */
+figure { margin: 4mm 0; break-inside: avoid; }
+figure.diagram svg { width: 100%; height: auto; display: block; max-height: 92mm; }
+figcaption { font-size: 8.6pt; color: var(--soft); margin-top: 1.6mm; line-height: 1.4; }
+figcaption b { color: var(--ink); }
+
+/* the back of the book */
+.glossary p { text-align: left; font-size: 9.6pt; margin-bottom: 1.6mm; }
+.glossary p strong { font-family: "Gill Sans", sans-serif; }
+.refs p { text-align: left; font-size: 9pt; padding-left: 6mm; text-indent: -6mm; margin-bottom: 1.4mm; }
+.names { columns: 2; column-gap: 8mm; }
+.names p { text-align: left; font-size: 9pt; margin-bottom: .8mm; break-inside: avoid; }
+.small { font-size: 8.4pt; color: var(--soft); }
+.small p { text-align: left; }
+code { font-family: Menlo, monospace; font-size: .86em; }

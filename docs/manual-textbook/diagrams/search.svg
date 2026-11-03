@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 336" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- PRINCIPLES OF MIND: Treisman and Gelade's feature and conjunction search -->
+<rect x="10" y="10" width="236" height="170" rx="6" fill="#f3f1ea" stroke="#cfccc2"/>
+<rect x="274" y="10" width="236" height="170" rx="6" fill="#f3f1ea" stroke="#cfccc2"/>
+<text x="39" y="45" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="76" y="53" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="106" y="44" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="150" y="44" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="183" y="52" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="214" y="51" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="37" y="79" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="71" y="85" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="112" y="80" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="145" y="80" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="186" y="85" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="214" y="88" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="35" y="118" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="80" y="125" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="115" y="115" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="151" y="124" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">X</text>
+<text x="184" y="115" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="217" y="115" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="42" y="153" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="74" y="157" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="108" y="159" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="143" y="160" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="182" y="159" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="224" y="153" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="303" y="45" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="340" y="53" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="370" y="44" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="414" y="44" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="447" y="52" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="478" y="51" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="301" y="79" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="335" y="85" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="376" y="80" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="409" y="80" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="450" y="85" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="478" y="88" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="299" y="118" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="344" y="125" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="379" y="115" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="415" y="124" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">X</text>
+<text x="448" y="115" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="481" y="115" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="306" y="153" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="338" y="157" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="372" y="159" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="407" y="160" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="446" y="159" font-size="22" fill="#3f7a3a" text-anchor="middle" font-weight="700">X</text>
+<text x="488" y="153" font-size="22" fill="#b0352b" text-anchor="middle" font-weight="700">O</text>
+<text x="128" y="204" font-size="13" fill="#1b1c20" text-anchor="middle" font-weight="700">feature search</text>
+<text x="128" y="221" font-size="11.5" fill="#5b5d66" text-anchor="middle" font-weight="400">the red X differs in colour alone</text>
+<text x="392" y="204" font-size="13" fill="#1b1c20" text-anchor="middle" font-weight="700">conjunction search</text>
+<text x="392" y="221" font-size="11.5" fill="#5b5d66" text-anchor="middle" font-weight="400">red, and an X: no single feature finds it</text>
+<path d="M40 312 V244 M40 312 H220" stroke="#1b1c20" stroke-width="1.2" fill="none"/>
+<path d="M50 300 L210 294.8" stroke="#3f7a3a" stroke-width="2.6"/>
+<text x="130" y="328" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">number of items</text>
+<text x="34" y="278" font-size="10.5" fill="#5b5d66" text-anchor="end" font-weight="400">time</text>
+<text x="216" y="286.8" font-size="11" fill="#1b1c20" text-anchor="end" font-weight="600">flat: it pops out</text>
+<path d="M304 312 V244 M304 312 H484" stroke="#1b1c20" stroke-width="1.2" fill="none"/>
+<path d="M314 300 L474 242.8" stroke="#b0352b" stroke-width="2.6"/>
+<text x="394" y="328" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">number of items</text>
+<text x="298" y="278" font-size="10.5" fill="#5b5d66" text-anchor="end" font-weight="400">time</text>
+<text x="480" y="234.8" font-size="11" fill="#1b1c20" text-anchor="end" font-weight="600">rising: item by item</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 256" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- PRINCIPLES OF MIND: Posner's spatial cueing paradigm: valid, neutral and invalid cues -->
+<text x="20" y="22" font-size="11" fill="#5b5d66" text-anchor="start" font-weight="600">the cue</text>
+<text x="140" y="22" font-size="11" fill="#5b5d66" text-anchor="start" font-weight="600">then the target</text>
+<text x="300" y="22" font-size="11" fill="#5b5d66" text-anchor="start" font-weight="600">time to respond (illustrative)</text>
+<rect x="20" y="34" width="96" height="56" rx="4" fill="#f3f1ea" stroke="#1b1c20" stroke-width="1.4"/>
+<rect x="30" y="50" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<rect x="82" y="50" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<text x="68" y="67" font-size="14" fill="#1b1c20" text-anchor="middle" font-weight="400">+</text>
+<path d="M74 78h-12m0 0l5 -4m-5 4l5 4" stroke="#b8662a" stroke-width="2" fill="none"/>
+<path d="M122 62 h12" stroke="#5b5d66" stroke-width="1.4"/>
+<rect x="140" y="34" width="96" height="56" rx="4" fill="#f3f1ea" stroke="#1b1c20" stroke-width="1.4"/>
+<rect x="150" y="50" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<rect x="202" y="50" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<text x="188" y="67" font-size="14" fill="#1b1c20" text-anchor="middle" font-weight="400">+</text>
+<circle cx="162" cy="62" r="6" fill="#1b1c20"/>
+<rect x="300" y="51" width="60" height="22" rx="2" fill="#b8662a" opacity="1"/>
+<text x="368" y="67" font-size="12" fill="#1b1c20" text-anchor="start" font-weight="600">250 ms</text>
+<text x="300" y="46" font-size="11.5" fill="#1b1c20" text-anchor="start" font-weight="600">valid cue</text>
+<text x="424" y="67" font-size="12" fill="#b8662a" text-anchor="start" font-weight="700" font-style="italic">benefit</text>
+<rect x="20" y="108" width="96" height="56" rx="4" fill="#f3f1ea" stroke="#1b1c20" stroke-width="1.4"/>
+<rect x="30" y="124" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<rect x="82" y="124" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<text x="68" y="141" font-size="14" fill="#1b1c20" text-anchor="middle" font-weight="400">+</text>
+<path d="M66 152h-10m0 0l4 -3m-4 3l4 3M70 152h10m0 0l-4 -3m4 3l-4 3" stroke="#5b5d66" stroke-width="1.6" fill="none"/>
+<path d="M122 136 h12" stroke="#5b5d66" stroke-width="1.4"/>
+<rect x="140" y="108" width="96" height="56" rx="4" fill="#f3f1ea" stroke="#1b1c20" stroke-width="1.4"/>
+<rect x="150" y="124" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<rect x="202" y="124" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<text x="188" y="141" font-size="14" fill="#1b1c20" text-anchor="middle" font-weight="400">+</text>
+<circle cx="162" cy="136" r="6" fill="#1b1c20"/>
+<rect x="300" y="125" width="102" height="22" rx="2" fill="#b8662a" opacity=".45"/>
+<text x="410" y="141" font-size="12" fill="#1b1c20" text-anchor="start" font-weight="600">285 ms</text>
+<text x="300" y="120" font-size="11.5" fill="#1b1c20" text-anchor="start" font-weight="600">neutral cue</text>
+<rect x="20" y="182" width="96" height="56" rx="4" fill="#f3f1ea" stroke="#1b1c20" stroke-width="1.4"/>
+<rect x="30" y="198" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<rect x="82" y="198" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<text x="68" y="215" font-size="14" fill="#1b1c20" text-anchor="middle" font-weight="400">+</text>
+<path d="M62 226h12m0 0l-5 -4m5 4l-5 4" stroke="#b8662a" stroke-width="2" fill="none"/>
+<path d="M122 210 h12" stroke="#5b5d66" stroke-width="1.4"/>
+<rect x="140" y="182" width="96" height="56" rx="4" fill="#f3f1ea" stroke="#1b1c20" stroke-width="1.4"/>
+<rect x="150" y="198" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<rect x="202" y="198" width="24" height="24" fill="none" stroke="#5b5d66" stroke-width="1.2"/>
+<text x="188" y="215" font-size="14" fill="#1b1c20" text-anchor="middle" font-weight="400">+</text>
+<circle cx="162" cy="210" r="6" fill="#1b1c20"/>
+<rect x="300" y="199" width="156" height="22" rx="2" fill="#b8662a" opacity="1"/>
+<text x="464" y="215" font-size="12" fill="#1b1c20" text-anchor="start" font-weight="600">330 ms</text>
+<text x="300" y="194" font-size="11.5" fill="#1b1c20" text-anchor="start" font-weight="600">invalid cue</text>
+<text x="520" y="215" font-size="12" fill="#b8662a" text-anchor="start" font-weight="700" font-style="italic">cost</text>
+</svg>

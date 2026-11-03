@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 236" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- PRINCIPLES OF MIND: Rosch's three levels of a taxonomy, with the basic level marked -->
+<text x="10" y="46" font-size="11" fill="#5b5d66" text-anchor="start" font-weight="600">superordinate</text>
+<text x="10" y="116" font-size="11" fill="#3f7a3a" text-anchor="start" font-weight="700">basic</text>
+<text x="10" y="186" font-size="11" fill="#5b5d66" text-anchor="start" font-weight="600">subordinate</text>
+<rect x="155" y="26" width="120" height="30" rx="4" fill="#f3f1ea" stroke="#3f7a3a" stroke-width="1.4"/><text x="215" y="46" font-size="12.5" fill="#1b1c20" text-anchor="middle" font-weight="500">furniture</text>
+<rect x="165" y="96" width="100" height="30" rx="4" fill="#3f7a3a" stroke="#3f7a3a" stroke-width="1.4"/><text x="215" y="116" font-size="12.5" fill="#fff" text-anchor="middle" font-weight="700">chair</text>
+<path d="M215 56 V96" stroke="#3f7a3a" stroke-width="1.4"/>
+<rect x="115" y="166" width="96" height="30" rx="4" fill="#f3f1ea" stroke="#3f7a3a" stroke-width="1.4"/><text x="163" y="186" font-size="12.5" fill="#1b1c20" text-anchor="middle" font-weight="500">kitchen chair</text>
+<path d="M215 126 L163 166" stroke="#3f7a3a" stroke-width="1.4"/>
+<rect x="219" y="166" width="96" height="30" rx="4" fill="#f3f1ea" stroke="#3f7a3a" stroke-width="1.4"/><text x="267" y="186" font-size="12.5" fill="#1b1c20" text-anchor="middle" font-weight="500">armchair</text>
+<path d="M215 126 L267 166" stroke="#3f7a3a" stroke-width="1.4"/>
+<rect x="355" y="26" width="120" height="30" rx="4" fill="#f3f1ea" stroke="#3f7a3a" stroke-width="1.4"/><text x="415" y="46" font-size="12.5" fill="#1b1c20" text-anchor="middle" font-weight="500">animal</text>
+<rect x="365" y="96" width="100" height="30" rx="4" fill="#3f7a3a" stroke="#3f7a3a" stroke-width="1.4"/><text x="415" y="116" font-size="12.5" fill="#fff" text-anchor="middle" font-weight="700">dog</text>
+<path d="M415 56 V96" stroke="#3f7a3a" stroke-width="1.4"/>
+<rect x="315" y="166" width="96" height="30" rx="4" fill="#f3f1ea" stroke="#3f7a3a" stroke-width="1.4"/><text x="363" y="186" font-size="12.5" fill="#1b1c20" text-anchor="middle" font-weight="500">beagle</text>
+<path d="M415 126 L363 166" stroke="#3f7a3a" stroke-width="1.4"/>
+<rect x="419" y="166" width="96" height="30" rx="4" fill="#f3f1ea" stroke="#3f7a3a" stroke-width="1.4"/><text x="467" y="186" font-size="12.5" fill="#1b1c20" text-anchor="middle" font-weight="500">sheepdog</text>
+<path d="M415 126 L467 166" stroke="#3f7a3a" stroke-width="1.4"/>
+<text x="315" y="226" font-size="11.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">named first, learned first, recognised fastest: the middle row</text>
+</svg>

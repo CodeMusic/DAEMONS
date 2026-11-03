@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 276" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- PRINCIPLES OF MIND: Ebbinghaus's savings after delays, from his 1885 tables -->
+<path d="M60 24 V230 H500" stroke="#1b1c20" stroke-width="1.2" fill="none"/>
+<path d="M60 230 H500" stroke="#cfccc2" stroke-width=".8"/>
+<text x="52" y="234" font-size="10.5" fill="#5b5d66" text-anchor="end" font-weight="400">0%</text>
+<path d="M60 172.857 H500" stroke="#cfccc2" stroke-width=".8"/>
+<text x="52" y="176.857" font-size="10.5" fill="#5b5d66" text-anchor="end" font-weight="400">20%</text>
+<path d="M60 115.714 H500" stroke="#cfccc2" stroke-width=".8"/>
+<text x="52" y="119.714" font-size="10.5" fill="#5b5d66" text-anchor="end" font-weight="400">40%</text>
+<path d="M60 58.5714 H500" stroke="#cfccc2" stroke-width=".8"/>
+<text x="52" y="62.5714" font-size="10.5" fill="#5b5d66" text-anchor="end" font-weight="400">60%</text>
+<path d="M75.3 63.7 L133.5 103.7 L248.9 127.7 L302.1 133.7 L338.9 150.6 L397.2 157.4 L484.3 169.7" stroke="#9a7b1c" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
+<circle cx="75.3" cy="63.7" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="75.2616" y="53.7143" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">58.2</text>
+<text x="75.2616" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">20 min</text>
+<circle cx="133.5" cy="103.7" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="133.543" y="93.7143" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">44.2</text>
+<text x="133.543" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">1 hour</text>
+<circle cx="248.9" cy="127.7" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="248.914" y="117.714" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">35.8</text>
+<text x="248.914" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">9 hours</text>
+<circle cx="302.1" cy="133.7" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="302.139" y="123.714" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">33.7</text>
+<text x="302.139" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">1 day</text>
+<circle cx="338.9" cy="150.6" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="338.911" y="140.571" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">27.8</text>
+<text x="338.911" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">2 days</text>
+<circle cx="397.2" cy="157.4" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="397.192" y="147.429" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">25.4</text>
+<text x="397.192" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">6 days</text>
+<circle cx="484.3" cy="169.7" r="4.2" fill="#9a7b1c" stroke="#fff" stroke-width="1.2"/>
+<text x="484.312" y="159.714" font-size="10.5" fill="#1b1c20" text-anchor="middle" font-weight="600">21.1</text>
+<text x="484.312" y="248" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400">31 days</text>
+<text x="16" y="18" font-size="11" fill="#5b5d66" text-anchor="start" font-weight="600">savings in relearning</text>
+<text x="280" y="268" font-size="11" fill="#5b5d66" text-anchor="middle" font-weight="400">time since learning (drawn on a stretching scale)</text>
+</svg>

@@ -11,6 +11,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book quick --write    # QUICK START: what DAEMONS is and how to play, in large type
     python3 tools/manual.py --book micro --write    # MICRO-START: the same, in five pages at most
     python3 tools/manual.py --book etymology --write   # THE OLD WORD: how daimon branched, and why it is said DAY-mons
+    python3 tools/manual.py --book textbook --write    # CALLOW SCHOOL's TEXTBOOK, as a university textbook
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -90,6 +91,15 @@ BOOKS = {
                              "background helpers, and the game",
                   "sprites": ("GUARDIAN", "LODESTAR", "CRON"),
                   "strip": ("PING", "ECHO", "HEARTBEAT", "SCHEDULER", "SENTINEL", "KEEPER", "LOOKOUT", "RELAY")},
+    # the seventh: CALLOW SCHOOL's TEXTBOOK, its seven floors taught as a university textbook would (the user, 2026-11-03:
+    # "the look and feel of a real school text book and properly teach the topics", each floor's board quoted to study
+    # from). Its own cover and title pages (cover.html, front.html); every board quoted word for word from the build.
+    "textbook": {"src": "docs/manual-textbook", "out": "docs/DAEMONS-textbook.pdf",
+                 "title": "Principles of Mind: An Introduction in Seven Floors", "chapter": "CHAPTER",
+                 "sub": "CALLOW SCHOOL's TEXTBOOK", "foot": "principles of mind",
+                 "subject": "CALLOW SCHOOL's TEXTBOOK as a university textbook: language, attention, memory, categories, "
+                            "learning, bias and error",
+                 "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
@@ -362,6 +372,40 @@ class Build:
         return ('<table class="holidays"><thead><tr><th>the month</th><th>both</th><th>CONTENT, the north</th>'
                 '<th>CONTEXT, the south</th></tr></thead><tbody>%s</tbody></table>' % "".join(rows))
 
+    def school(self, floor):
+        """CALLOW SCHOOL's floor as the build has it: the companion's export of the game's own boards (C-129)."""
+        if not hasattr(self, "_school"):
+            self._school = json.load(open(os.path.join(ROOT, "companion/server/data/school.json"), encoding="utf-8"))
+        for f in self._school["floors"]:
+            if f["floor"] == floor:
+                return f
+        raise SystemExit("manual: CALLOW SCHOOL has no floor %s" % floor)
+
+    @staticmethod
+    def chalk(text):
+        """The game's lines, wrapped for a message box, as paragraphs: a blank line parts them, a newline is a space."""
+        return "".join("<p>%s</p>" % H.escape(" ".join(p.split("\n")))
+                       for p in text.split("\n\n") if p.strip())
+
+    def sc_board(self, args, caption):
+        """One board topic, word for word, as the TEXTBOOK quotes it to study from (T-520)."""
+        floor, topic = args[0], " ".join(args[1:])
+        f = self.school(floor)
+        for b in f["board"]:
+            if b["topic"] == topic:
+                self.digest.update(b["text"].encode())
+                return ('<blockquote class="board"><div class="blab">On the board &middot; %s %s &middot; <b>%s</b></div>'
+                        '%s</blockquote>' % (floor, H.escape(f["subject"]), H.escape(topic), self.chalk(b["text"])))
+        raise SystemExit("manual: %s's board has no topic %s" % (floor, topic))
+
+    def sc_placard(self, args, caption):
+        """A floor's placard by its stairs, word for word: what the floor is for."""
+        f = self.school(args[0])
+        self.digest.update(f["placard"].encode())
+        text = f["placard"].split("\n\n", 1)[1] if "\n\n" in f["placard"] else f["placard"]
+        return ('<blockquote class="placard"><div class="blab">The placard by the stairs &middot; %s</div>%s</blockquote>'
+                % (H.escape(args[0]), self.chalk(text)))
+
     def sc_diagram(self, args, caption):
         """A drawing of how something works: an SVG from the book's diagrams/ folder, inline, so it prints sharp."""
         path = os.path.join(SRC, "diagrams", args[0] + ".svg")
@@ -414,13 +458,16 @@ HEADS = re.compile(r'<section id="([^"]+)" class="level([12])[^"]*">\s*(?:<div c
 def contents(body, pages=None):
     """The contents: every chapter (h1) and its sections (h2), each a link -- with its page once the first print says."""
     rows, n = [], 0
-    for ident, lvl, title in HEADS.findall(body):
+    for m in HEADS.finditer(body):
+        ident, lvl, title = m.groups()
         title = re.sub(r"<[^>]+>", "", title)
         page = str(pages.get(ident, "")) if pages else "00"
         if lvl == "1":
-            n += 1
-            rows.append('<a class="toc1" href="#%s"><span class="tn">%d</span><span class="tt">%s</span>'
-                        '<span class="tp">%s</span></a>' % (ident, n, title, page))
+            plain = "unnumbered" in m.group(0).split(">", 1)[0]     # a preface, a glossary: in the contents, no number
+            n += 0 if plain else 1
+            rows.append('<a class="toc1%s" href="#%s"><span class="tn">%s</span><span class="tt">%s</span>'
+                        '<span class="tp">%s</span></a>' % (" plain" if plain else "", ident, "" if plain else n,
+                                                            title, page))
         else:
             rows.append('<a class="toc2" href="#%s"><span class="tt">%s</span><span class="tp">%s</span></a>'
                         % (ident, title, page))
@@ -432,9 +479,11 @@ def chapters(body):
     n = [0]
 
     def h1(m):
-        n[0] += 1
         attrs, title = m.group(1), m.group(2)
-        return '<div class="chapnum">CHAPTER %d</div><h1%s>%s</h1>' % (n[0], attrs, title)
+        if "unnumbered" in attrs:
+            return '<h1%s>%s</h1>' % (attrs, title)
+        n[0] += 1
+        return '<div class="chapnum">%s %d</div><h1%s>%s</h1>' % (BOOK.get("chapter", "CHAPTER"), n[0], attrs, title)
     return re.sub(r"<h1([^>]*)>(.*?)</h1>", h1, body, flags=re.S)
 
 
@@ -450,6 +499,23 @@ def page_html(build, body, toc, css, rel, date):
                     for n in (BOOK["strip"] or COVER_STRIP))
     tag = '<div class="ctag">%s</div>' % H.escape(BOOK["tag"]) if BOOK.get("tag") else ""   # QUICK-START, large
     contents_page = '<section class="toc"><h1 class="tochead">Contents</h1>%s</section>' % toc if BOOK.get("toc", True) else ""
+    # a book may bring its own cover and the pages before its contents (cover.html, front.html beside its words): the
+    # TEXTBOOK's is a university press's, not the game's (T-520). {release} and {date} are filled in.
+    own = {}
+    for part in ("cover", "front"):
+        f = os.path.join(SRC, part + ".html")
+        if os.path.exists(f):
+            own[part] = open(f, encoding="utf-8").read().replace("{release}", H.escape(rel)).replace(
+                "{date}", H.escape(date or ""))
+    if "cover" in own:
+        return """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>%s</title>
+<style>%s
+%s</style></head><body>
+%s
+%s
+%s
+%s
+</body></html>""" % (H.escape(BOOK["title"]), css, style, own["cover"], own.get("front", ""), contents_page, body)
     return """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>%s</title>
 <style>%s
 %s</style></head><body>
@@ -470,7 +536,9 @@ def build_html(work):
     body = chapters(pandoc(b.expand(md)))
     css = open(os.path.join(SRC, "manual.css"), encoding="utf-8").read()
     rel, date = newest_release()
-    b.digest.update((md + css + rel).encode())
+    own = "".join(open(os.path.join(SRC, f), encoding="utf-8").read() for f in ("cover.html", "front.html")
+                  if os.path.exists(os.path.join(SRC, f)))
+    b.digest.update((md + css + own + rel).encode())
     return b, body, css, rel, date
 
 
@@ -489,7 +557,7 @@ def landing_pages(pdf_path):
     import fitz
     out = {}
     with fitz.open(pdf_path) as doc:
-        for p in range(min(6, len(doc))):
+        for p in range(min(12, len(doc))):     # a textbook's front pages push its contents later
             for link in doc[p].get_links():
                 if link.get("nameddest") and link.get("page", -1) >= 0:
                     out.setdefault(link["nameddest"], link["page"] + 1)
