@@ -37,3 +37,15 @@ CALLOW SCHOOL's TEXTBOOK as a university textbook: PRINCIPLES OF MIND, 82 pages 
 CALLOW SCHOOL's TEXTBOOK as a university textbook: PRINCIPLES OF MIND, 82 pages -- cover, title pages, contents, preface, seven chapters (each floor's five boards quoted word for word, then taught from the research), conclusion, glossary, references (the user, 2026-11-03)
 
 ![3Nov2026 - T520 - PRINCIPLES OF MIND - 6](3Nov2026%20-%20T520%20-%20PRINCIPLES%20OF%20MIND%20-%206.png)
+
+### 3Nov2026 - T520 - PRINCIPLES OF MIND in the companion - 7
+
+C-276: CALLOW SCHOOL's library tile shows the textbook's cover, and FULL TEXTBOOK sits under 7F ERROR in THE TEXTBOOK box, opening the PDF (the user, 2026-11-03)
+
+![3Nov2026 - T520 - PRINCIPLES OF MIND in the companion - 7](3Nov2026%20-%20T520%20-%20PRINCIPLES%20OF%20MIND%20in%20the%20companion%20-%207.png)
+
+### 3Nov2026 - T520 - PRINCIPLES OF MIND in the companion - 8
+
+C-276: CALLOW SCHOOL's library tile shows the textbook's cover, and FULL TEXTBOOK sits under 7F ERROR in THE TEXTBOOK box, opening the PDF (the user, 2026-11-03)
+
+![3Nov2026 - T520 - PRINCIPLES OF MIND in the companion - 8](3Nov2026%20-%20T520%20-%20PRINCIPLES%20OF%20MIND%20in%20the%20companion%20-%208.png)
