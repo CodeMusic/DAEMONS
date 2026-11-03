@@ -5,15 +5,16 @@ seperate pdf ... some of the pages I could take on their own for social media").
 
     python3 tools/reviewpdf.py review            # report: what would be printed
     python3 tools/reviewpdf.py review --write    # docs/The-Fourth-Review.pdf
-    python3 tools/reviewpdf.py press --write     # docs/DAEMONS-press-kit.pdf, and its social cards as PNGs
+    python3 tools/reviewpdf.py press --write     # docs/marketing/DAEMONS-press-kit.pdf, and its social cards as PNGs
 
-Each book is a folder: `review.md` (pandoc markdown, fenced divs for callouts), `book.css` (laid over the manual's
+Each book is its words (`docs/daemons-review-4.md`, `docs/marketing/press-kit.md`: pandoc markdown, fenced divs for
+callouts) and a folder holding `book.css` (laid over the manual's
 own `docs/manual/manual.css`), and `cover.html`. In the words, `{{sprite NAME ...}}` puts daemons in a row, drawn
 from engineGba's own front sprites at a whole-number scale, and `{{frame NAME ...}}` puts game screens from
 `docs/manual/frames/`, so the pictures are the build's and never redrawn.
 
 A page with class `card` is a social card: square (1080 x 1080 px at 2x). The press kit prints them inside the PDF
-and, with --write, also as PNGs in `docs/press-kit/cards/`, one file each, ready to post.
+and, with --write, also as PNGs in `docs/marketing/cards/`, one file each, ready to post.
 
 HOW IT PRINTS. pandoc turns the words into HTML; Chrome prints it; PyMuPDF stamps a running foot on every page but
 the cover and the cards. Chrome is found on macOS or Linux.
@@ -32,10 +33,10 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 BOOKS = {
-    "review": {"src": "docs/review-4", "out": "docs/The-Fourth-Review.pdf",
+    "review": {"src": "docs/review-4", "md": "docs/daemons-review-4.md", "out": "docs/The-Fourth-Review.pdf",
                "title": "DAEMONS: The Fourth Review", "foot": "THE FOURTH REVIEW"},
-    "press": {"src": "docs/press-kit", "out": "docs/DAEMONS-press-kit.pdf",
-              "title": "DAEMONS: press kit", "foot": "PRESS KIT", "cards": "docs/press-kit/cards"},
+    "press": {"src": "docs/marketing", "md": "docs/marketing/press-kit.md", "out": "docs/marketing/DAEMONS-press-kit.pdf",
+              "title": "DAEMONS: press kit", "foot": "PRESS KIT", "cards": "docs/marketing/cards"},
 }
 CHROMES = ["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "/usr/bin/google-chrome",
            "/usr/bin/chromium", "/opt/pw-browsers/chromium"]
@@ -166,7 +167,7 @@ def build(key, write):
     src = os.path.join(ROOT, book["src"])
     work = tempfile.mkdtemp(prefix="reviewpdf_")
     pics = Pictures(work)
-    md = pics.expand(open(os.path.join(src, "review.md"), encoding="utf-8").read())
+    md = pics.expand(open(os.path.join(ROOT, book["md"]), encoding="utf-8").read())
     toc, body = pandoc(md)
     body = section_types(chapters(body))
     css = open(os.path.join(ROOT, "docs/manual/manual.css"), encoding="utf-8").read()

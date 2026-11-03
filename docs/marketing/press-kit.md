@@ -13,7 +13,7 @@ Three kinds of page are in here:
 - **The words** -- the pitch at three lengths, the three pillars, a fact sheet, who it is for and how to talk about it.
 - **The rules** -- what never goes in a post (some of them legal, some of them the game's own).
 - **The cards** -- square pages at the back, one idea each, **made to be posted on their own**. Each is also saved as a
-  1080 x 1080 PNG in `docs/press-kit/cards/`, with a caption for it on the page *Captions for the cards*.
+  1080 x 1080 PNG in `docs/marketing/cards/`, with a caption for it on the page *Captions for the cards*.
 
 ::: note
 **Every word quoted from the game is a DRAFT**, as everywhere in DAEMONS. If a line is rewritten in the game, rewrite
@@ -189,7 +189,7 @@ A suggestion, not a schedule. One card a day is plenty; the replies matter more 
 
 # The cards {.t-VECTOR .unnumbered}
 
-Each page that follows is square and stands on its own. They are also in `docs/press-kit/cards/` as 1080 x 1080
+Each page that follows is square and stands on its own. They are also in `docs/marketing/cards/` as 1080 x 1080
 PNGs. The colour band at the top of each is the type its idea belongs to.
 
 <div class="card" style="--tc:#c7b6ec">
