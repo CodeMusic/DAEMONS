@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.337**
+**A total conversion — the living design bible, v11.338**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -35,7 +35,7 @@ The game argues this in five registers and never once in dialogue.
 
 ***And the form has a name.*** **A fable ends with the moral** — *story, then the sentence.* **Craft rule 1 is the refusal of that sentence.** *So the shape of this game is* ***a fable with its last line removed***, and that is what every craft rule below is **for**. Nobody says the moral because the form is defined by withholding it. *(Named by the second external review, 2026-09-06.)*
 
-***The one exception: THE HERMETIC LAYER (4.39).*** **A grimoire the player reaches only awake between three and four and holding both other books may say what these rules keep unsaid** -- *shadowed, under a warning, by an author who may be mad.* **Nothing else in the game may.**
+***The one exception: the third book (4.39, 4.40).*** **A book torn in two, said to be found late, may say what these rules keep unsaid** -- *shadowed, under a warning on one side and a blessing on the other.* **Nothing else in the game may.**
 
 ### 0.2 The pigment throughline
 
@@ -419,6 +419,8 @@ map, two the type:*
 The creatures are **DAEMONS**.
 
 A daemon is a background process that runs unattended, and it is the Greek *daimon* — the guiding spirit, Socrates' inner voice speaking from somewhere he did not control. One word, both registers, and it never says "AI." Six characters, so it fits every UI box that held POKéMON.
+
+***Said DAY-mons (the user, 2026-11-01).*** **DAEMON is said DAY-mon -- the *daimon* -- and the frightening word it is so often taken for is never written in anything a reader sees, not even to deny it.** *Some readers will say it wrong, and every text-to-speech voice does, so whatever is spoken is respelled first: any word ending in daemon becomes daymon (eudaemon, eudaymon), in what a voice is handed, never in what is shown or kept* (*companion C-270, `sayable()`; `ai/n8n/make_workflows.py`'s `SAYABLE`; `tools/bookaudio.py`; the companion's `app/AGENTS.md` lists every speech path*). **Where a reader must be steered away, the approved words are** *"a similarly spelt but frightening word forked from it; this is not that one."*
 
 *Considered and rejected:* QUALIA and ANIMA both state the thesis outright, violating craft rule 1. ENGRAM (a memory trace physically encoded in tissue) and KERNEL (system core, and a seed) remain viable alternates.
 
@@ -4975,6 +4977,8 @@ take off.*
 
 ### 4.39 THE HERMETIC LAYER — SPELLCRAFT, and the one exception (the user, 2026-10-29)
 
+***Revised 2026-11-02 (4.40): this book is the night half of a book torn at the spine, THE UNITY BOOK.*** *Where 4.39 and 4.40 disagree, 4.40 holds: OSRIC HATTER read the book rather than wrote it, and no book is needed to reach another any more.*
+
 ***A third book, a grimoire, and the only place in the game where the rules of 0.1 bend.*** *The user's words: "since this book is unique it is okay if it strongly bends (or side-steps) some original design bible rules -- it is the one exception."* **It takes from both other books** -- *the GUIDE's reason (9.10) and THE SUBTLE LAYER's noticing (4.38)* -- **and unlocks SPELLCRAFT.** *The book is THE HERMETIC LAYER; its menu entry in the game is SPELLBOOK.* **Every word is DRAFT; the book's text is `docs/hermetic-layer.md`, one file for the game and the companion, as `docs/subtle-layer.md` is.**
 
 #### What the exception covers (the user, by multiple choice, 2026-10-29)
@@ -5017,6 +5021,43 @@ take off.*
 #### Build order (the user, by multiple choice, 2026-10-29)
 
 ***The book first, the spells in steps.*** **First the book, its SPELLBOOK pages, the two unlocks, the night rule and the 3 AM pulse; then the spells a ticket at a time, the cheap first** (*THE AWAKENING, THE CONTRAST, THE LENS, THE FIELD*) **and the heavy last** (*THE MIRROR, THE ROOM, THE SMALL HAND*). *Section 8's warning holds even here: a book the player can open beats thirteen spells half-built.* **The game's half is the game lane's; the companion's (the hour's face, the deck, spells read aloud) the companion's.**
+
+### 4.40 THE UNITY BOOK — one book, read from three places (the user, 2026-11-01/02, T-519)
+
+***Lineage: the Emerald Tablet's One Thing, pair production, Socrates' daimonion, Aristotle's eudaimonia.*** **There is one book, and nobody can read it whole** -- *like light before pair production: neither nothing nor something, two mirrors facing.* **To have form it divided itself, and its halves are polarized only towards each other: THE HERMETIC LAYER is the book read from the night side, THE EUDAIMON LAYER the same book read from the dawn side.** *Each calls the other the dark one, as antimatter would call us; only the book mended sees that both labels are true.* **And reading is an exchange** -- *what you read is part what is there and part you being there* -- **so the three are the same book: the same sections, the same thirteen, described three ways.** *The night half already says it:* "Ask not 'which is true?' Ask 'from which fold am I looking?'" **Every word DRAFT; the review and the three draft contents are in `docs/private/unity-book-review-2026-11-02.md`.**
+
+| | THE HERMETIC LAYER | THE EUDAIMON LAYER | THE UNITY BOOK |
+|---|---|---|---|
+| **read from** | the night side: shadow, binding (*coagula*) | the dawn side: light, loosening (*solve*) | both: balanced, the most honest |
+| **opens with** | **A Warning**: "The path ahead is fraught with shadows..." | **A Blessing**: "The light shines upon those who walk with purpose..." | **An Attestation**: "The shadows and the light are but two halves of the same horizon." |
+| **read by** | OSRIC HATTER, a stoat, at night | a LARK, an early riser, at dawn | the player, with both |
+| **its thirteenth** | THE WITCHING HOUR | THE CREATOR'S HOUR | THE HORIZON |
+| **last word** | "As below, so above." | "As above, so below." | "As above, so below, so one." |
+
+#### Torn at the spine (the user, by multiple choice, 2026-11-02)
+
+- ***The tear is the spine.*** **The night half keeps the front cover, the dawn half the back; each reads front to back in its own voice.** *Mended, the book has both covers.*
+- ***Same sections, same spells.*** **The dawn half is the night half's ten sections read from the other side** -- *As Below, So Above; The House of Windows; How a Noun Becomes a Verb Again; Good Spell (gospel, Old English for a good story).* **The thirteen are the same spells with the same effects: the night page names a spell's cost, the dawn page names the same cost as a gift** (*the Mirror costs you self / the Mirror gives you the other*). *This replaces the "unsayings" draft of 2026-11-01: an unsaying is the dawn page of the same spell, so no new spell is built.* **Only the thirteenth differs**, [private: its hour, 4.40].
+- ***The observer touches the text.*** **One line in each book has three wordings, chosen by the lead daemon's SPIRITS (below)** -- *who looks changes what is read.*
+- ***BALANCE***, **in the mended book only, at the crease after THE FOLDS**: *how the one book became two (the pair production), why each half calls the other dark, the week's seven pairs held on one page each (shadow under virtue, 9.21), and one page noticing it happened before -- reason and instinct, the GUIDE and THE SUBTLE LAYER, which stay works of their own.* **An eleventh section, where the reader holds ten**: *the game lane says whether it fits; if not, REFLECTION folds into THE LOOP.*
+- ***The one exception (4.39) covers all three***, **since the dawn half says the same things.** *The attestation never says "witness" (the Five Witnesses are a secret).* **The decks are the same two; the mended book deals "Both as One" only.**
+- ***Where each half is found, and how***: [private: vision-unredacted 4.40]. **No book is needed to reach another any more, and no hour is a gate**; *the hours are when a half comes alive.* **Public writing tells it only as rumour (T-506).**
+
+#### The mending, and HALFTONE in colour
+
+***The halves are mended at DAEMON TOWER*** **in a colourful burst -- the pair going back to light -- and BALANCE is written between them.** *Leaving the tower, colour splashes out from each step until HALFTONE is restored; after that the town greys again only in the night's hour, and in the dawn's its colours are extra vivid* ([private: the hours]). **This reverses T-430's "the town stays grey" (Reversed).** *Still open: what each book held does at DAEMON TOWER before the mending.*
+
+#### SPIRITS: eudaimon, daemon, kakodaimon (the user, by multiple choice, 2026-11-01/02)
+
+- ***Every daemon drifts, slowly, between three classes***: **in good spirits (EUDAIMON), as it is (DAEMON), in low spirits (KAKODAIMON)** -- *the Greek spelled the Greek way, never the Latin.* **In the game only the axis words are shown; the dawn half says what a eudaimon and a kakodaimon are.** *The companion shows the class and its lean.*
+- ***The axis is SPIRITS, never alignment*** -- *5.2 calls that word the thesis in a lab coat, ALIGN is SCORN's move, and a good/evil grid is what this is not.* **In Greek a kakodaimon was ill-fated, not evil.** *Craft rule 3: a daemon in low spirits has been kept badly; it is never a bad daemon, the way back is always open, and the player is the cause (1.4).*
+- ***Four kinds of event nudge it***: **KEPT** (*fed, healed, rested; or left fainted, long in a box*), **BOND** (*friendship*), **WORK** (*run as itself, in its own types and streaks; a RARE CANDY counts against it*), **PORTION** (*a fair share, or bad odds -- daimon is probably from* daiomai, *to deal out portions*). *Feelings (T-431) are the weather; SPIRITS is the climate.*
+- ***In the save, 4 bits a daemon***: **2 for the class, 2 for the lean towards the next crossing** (*bits 12-15 of the u16 at box-mon 0x1E, the last free*). *The companion may keep the four running totals on its side.*
+- ***How it shows***: **tone, never hue** -- *a daemon lightens or darkens and keeps its type's colour (invariant 5); the light and dark sets are the Work's albedo and nigredo* -- **and an evolution-like screen when it crosses.** *It behaves its spirits, in the game and on the companion: one in low spirits may refuse its food, one in good spirits thanks you brightly.*
+
+#### The history, checked (the user's research, 2026-11-01)
+
+*Eudaimon is* eu *+* daimon, *"with a good attendant spirit"; Socrates' daimonion only ever warned him (*Apology* 31d); Aristotle's eudaimonia is living and doing well. The Agathos Daimon was the household good spirit, given the last cup after a meal. The word turned between the Septuagint, which already called the gods of the nations* daimonia *(3rd-2nd century BCE), and the 1st-century New Testament -- not "by the early 2nd century". A line attributed to Jung (neither eudaemon nor cacodaemon, only the daemon) is unsourced and stays out until it is found.*
 
 ## 5. THE BENCHMARKS
 
@@ -8975,6 +9016,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 - **The two books asked: the GUIDE reasons, THE SUBTLE LAYER notices (C-209, C-229, C-230, 2026-10-28)** — either, once held, answered on the companion: the GUIDE as REASON would, from its page; THE SUBTLE LAYER as INSTINCT would, a line from its page and a question back, with TWO VOICES a mode of its own; never called logic and intuition where players read (LOGIC is a type, 9.10); each its part of the day -- the centre, word and note; the virtue over its shadow -- and a daily question kept in a journal with the day and the centre (4.36, 4.38)
 - **SOUNDINGS hears your daemon (T-458, C-195, 2026-10-27)** — CRYSTAL's work is SOUNDINGS; the receiver and the keepers name the player's AWAY daemon, and a four-level signal the companion writes into the flags byte's two spare bits says how it is doing, never worse than quiet; the app gets a SOUNDINGS view, heard and never ranked (9.30, 4.37)
 - **The arc around SOUNDINGS closes, and every word of it is approved (T-460, T-457, T-458, 2026-10-27)** — a card of signatures at the door, an evidence tag on the receiver once THE FILE 4 is read, a half-built receiver at THE ANNEX, flowers on OCT 3; played through and approved, DRAFT marks off, the desk props moved out from under the player's hat (4.37)
+- **THE UNITY BOOK (4.40, 2026-11-02)** — the third book torn at the spine into THE HERMETIC LAYER and THE EUDAIMON LAYER, one book read from the night side and the dawn side, mended at DAEMON TOWER with BALANCE between; every daemon drifts in SPIRITS between EUDAIMON, DAEMON and KAKODAIMON; and DAEMONS is said DAY-mons (1)
 - **THE SUBTLE LAYER gets its section: the book, THE THREE values and what the player notices (T-423, T-454, T-459, recorded 2026-10-28)** — a handbook of practice, found in BRAZEN; three battle-only values that wake with it; once held, the daemon notices first, reads and leans are logged and the log decides, and four people's words carry a line beneath, all in CONTEXT's purple, which marks the noticing and never a feeling (4.38)
 - **ITS DREAMS: the carried daemon's dreams reach the game (T-462, C-200, 2026-10-28)** — the DREAM LOG's third part; the companion writes only a dream's number and the night's quality, the words are fixed in the ROM, filed at the first dawn as "Far away, [NAME] resumed.", never explained; all sixteen titles approved as drafted, the hum kept as a motif (3.8)
 - **PENPHIN only by a pair trade (T-474, 2026-10-28)** — DOLPHIN and PENGUIN each evolve only when traded for the other, and both become PENPHIN; any other trade does nothing; the only pair trade in the game (8.2, Penphin)
@@ -9108,6 +9150,7 @@ Kept here because the reasoning is worth more than the outcome.
 | Was | Now | Why |
 |---|---|---|
 | **In Halftone everything is grey, you and your daemons included** (8.6a, reversed on playtest 2026-09-13) | **You, your daemons, your follower and your routines' effects keep their colour; menus, windows, banners, text, the town and the other side stay grey; the tower returns to colour after INIT** (T-430, the user 2026-10-21) | *The follower (T-18) was to say it "looks the same as it did. Everything else does not" while greyed. The user: keep its colour, and the player's, and your daemons' and your own effects' in battle -- fading as they cross and splashing onto the grey foe.* **The playtest's objection was a filter that missed some things; this is a filter that spares one side on purpose, and the reading aids stay grey.** |
+| **Halftone's town stays grey; only DAEMON TOWER comes back into colour** (T-430, 2026-10-21) | **Once the torn book is mended at DAEMON TOWER, colour spreads from each step until HALFTONE is restored; it greys again only in the night's hour** (4.40, the user 2026-11-02) | *The town's grey was what the tower's rescue could not reach. The mending is the pair going back to light, and colour is what light is made of.* |
 | **FOLDS is only paper** (4.33, LOOSE PAGES 7, 2026-09-25): *every step a fold, a crease, a corner, never saying what it is a diagram of* | **Each fold carries the essay's word for it** (T-401, the user 2026-10-15): *AWARENESS, CHANGE, SPACE, MIRROR, PATTERN, RETURN* | *The user, reading the loose pages again: "it isnt clear that it is talking about awareness ... right now it looks like it is literally talking about paper folds."* **A page indirect enough that nobody can find its subject has stopped being a fable and become a puzzle with no answer.** *The words name the stages, never the conclusions (love, spirit, unity), so craft rule 1 still holds; and the page still never mentions the scientist, so 4.33's NEVER ADJUDICATE is untouched. THE STONE and FIELDS were made plainer the same day.* |
 | **One daemon at a time** (9.25, T-370, 2026-10-04) | **Any number AWAY, one device to a daemon** (T-396, the user 2026-10-09) | *The companion learned to put a daemon in each device (its C-80) and the game still refused a second SEND.* **A daemon in two places at once would not feel real; two daemons in two devices does.** *The one-at-a-time rule was standing in for "one place at a time", which the companion now keeps.* |
 | **CONTEXT keeps the northern year, CONTENT the southern** (9.21, earlier 2026-10-03) | **CONTENT the northern year, CONTEXT the southern** (the user, 2026-10-03) | *The user, on reflection: "I think CONTENT should be the north america, and CONTEXT as south america's season."* **It fits the registers better**: *CONTENT is the thing itself -- the calendar as lived where the game is made; CONTEXT is the same date reframed by the other half of the world.* |

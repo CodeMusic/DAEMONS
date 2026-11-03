@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.338 — 2026-11-02
+
+- **4.40 THE UNITY BOOK (T-519, the user).** The third book is torn at the spine into THE HERMETIC LAYER and THE EUDAIMON LAYER. They are one book, read from the night side and the dawn side, opening with a warning, a blessing and an attestation. The thirteen spells are the same in both, and the dawn page names each cost as a gift. Only the thirteenth differs: THE WITCHING HOUR, THE CREATOR'S HOUR, THE HORIZON. The halves are mended at DAEMON TOWER, and BALANCE is written between them. OSRIC HATTER read the night half; a LARK read the dawn half.
+- **4.40 SPIRITS.** Every daemon drifts between EUDAIMON, DAEMON and KAKODAIMON (in good spirits, as it is, in low spirits), nudged by four kinds of event (KEPT, BOND, WORK, PORTION) and stored in 4 bits. It shows in tone, never hue, with an evolution-like screen at each crossing.
+- **Reversed: HALFTONE's town comes back into colour** once the book is mended, and greys again only in the night's hour.
+- **1, said DAY-mons.** The frightening word is never written anywhere a reader sees, and whatever is spoken is respelled daymon(s) first (C-270).
+- **0.1's exception** now names the torn book, not the gate. 4.39 points to 4.40.
+
 ## v11.337 — 2026-11-01
 
 - **4.39, two texts on every card (T-509, the user).** Each face keeps a short phrase on the card itself, and that is what the game and the watches show. Underneath it, a prophecy of two or three sentences in the voice of the user's universe cards is shown in the iOS app only.
