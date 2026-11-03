@@ -1,0 +1,453 @@
+{
+ "book": "textbook",
+ "voice": "professor",
+ "blend": {
+  "bm_fable": 0.5,
+  "bm_lewis": 0.5
+ },
+ "speed": 0.94,
+ "tone": "alimiter=limit=0.89:level=disabled",
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "613c790fb122bf17",
+ "duration": 6992.3,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "Principles of Mind",
+   "start": 0.0,
+   "end": 13.49
+  },
+  {
+   "kind": "section",
+   "title": "Preface",
+   "start": 13.49,
+   "end": 16.14
+  },
+  {
+   "kind": "entry",
+   "title": "To the Student",
+   "start": 16.14,
+   "end": 93.82
+  },
+  {
+   "kind": "entry",
+   "title": "What This Book Teaches",
+   "start": 93.82,
+   "end": 229.83
+  },
+  {
+   "kind": "entry",
+   "title": "How to Use This Book",
+   "start": 229.83,
+   "end": 340.25
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 1: Language",
+   "start": 340.25,
+   "end": 457.34
+  },
+  {
+   "kind": "entry",
+   "title": "1.1 Names",
+   "start": 457.34,
+   "end": 610.05
+  },
+  {
+   "kind": "entry",
+   "title": "1.2 Pieces",
+   "start": 610.05,
+   "end": 774.72
+  },
+  {
+   "kind": "entry",
+   "title": "1.3 Order",
+   "start": 774.72,
+   "end": 909.68
+  },
+  {
+   "kind": "entry",
+   "title": "1.4 Ambiguity",
+   "start": 909.68,
+   "end": 1074.91
+  },
+  {
+   "kind": "entry",
+   "title": "1.5 Spelling",
+   "start": 1074.91,
+   "end": 1261.92
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 1261.92,
+   "end": 1314.23
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 1314.23,
+   "end": 1346.51
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 1346.51,
+   "end": 1393.03
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 2: Attention",
+   "start": 1393.03,
+   "end": 1479.94
+  },
+  {
+   "kind": "entry",
+   "title": "2.1 Limits",
+   "start": 1479.94,
+   "end": 1597.26
+  },
+  {
+   "kind": "entry",
+   "title": "2.2 Cues",
+   "start": 1597.26,
+   "end": 1709.38
+  },
+  {
+   "kind": "entry",
+   "title": "2.3 Search",
+   "start": 1709.38,
+   "end": 1828.43
+  },
+  {
+   "kind": "entry",
+   "title": "2.4 Switching",
+   "start": 1828.43,
+   "end": 1940.41
+  },
+  {
+   "kind": "entry",
+   "title": "2.5 Missed",
+   "start": 1940.41,
+   "end": 2054.68
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 2054.68,
+   "end": 2106.86
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 2106.86,
+   "end": 2134.5
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 2134.5,
+   "end": 2176.09
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 3: Memory",
+   "start": 2176.09,
+   "end": 2259.67
+  },
+  {
+   "kind": "entry",
+   "title": "3.1 Storing",
+   "start": 2259.67,
+   "end": 2379.59
+  },
+  {
+   "kind": "entry",
+   "title": "3.2 Fading",
+   "start": 2379.59,
+   "end": 2488.59
+  },
+  {
+   "kind": "entry",
+   "title": "3.3 Crowding",
+   "start": 2488.59,
+   "end": 2626.89
+  },
+  {
+   "kind": "entry",
+   "title": "3.4 Recall",
+   "start": 2626.89,
+   "end": 2810.04
+  },
+  {
+   "kind": "entry",
+   "title": "3.5 Spacing",
+   "start": 2810.04,
+   "end": 2938.58
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 2938.58,
+   "end": 2984.14
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 2984.14,
+   "end": 3008.24
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 3008.24,
+   "end": 3040.79
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 4: Categories",
+   "start": 3040.79,
+   "end": 3149.13
+  },
+  {
+   "kind": "entry",
+   "title": "4.1 Middles",
+   "start": 3149.13,
+   "end": 3240.48
+  },
+  {
+   "kind": "entry",
+   "title": "4.2 Edges",
+   "start": 3240.48,
+   "end": 3345.68
+  },
+  {
+   "kind": "entry",
+   "title": "4.3 Features",
+   "start": 3345.68,
+   "end": 3457.47
+  },
+  {
+   "kind": "entry",
+   "title": "4.4 Levels",
+   "start": 3457.47,
+   "end": 3579.26
+  },
+  {
+   "kind": "entry",
+   "title": "4.5 Other",
+   "start": 3579.26,
+   "end": 3678.96
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 3678.96,
+   "end": 3720.0
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 3720.0,
+   "end": 3739.59
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 3739.59,
+   "end": 3779.35
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 5: Learning",
+   "start": 3779.35,
+   "end": 3856.51
+  },
+  {
+   "kind": "entry",
+   "title": "5.1 Connections",
+   "start": 3856.51,
+   "end": 3970.23
+  },
+  {
+   "kind": "entry",
+   "title": "5.2 Practice",
+   "start": 3970.23,
+   "end": 4129.97
+  },
+  {
+   "kind": "entry",
+   "title": "5.3 Threshold",
+   "start": 4129.97,
+   "end": 4280.01
+  },
+  {
+   "kind": "entry",
+   "title": "5.4 Feedback",
+   "start": 4280.01,
+   "end": 4427.21
+  },
+  {
+   "kind": "entry",
+   "title": "5.5 Pruning",
+   "start": 4427.21,
+   "end": 4569.8
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 4569.8,
+   "end": 4622.07
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 4622.07,
+   "end": 4657.46
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 4657.46,
+   "end": 4699.72
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 6: Bias",
+   "start": 4699.72,
+   "end": 4789.5
+  },
+  {
+   "kind": "entry",
+   "title": "6.1 Framing",
+   "start": 4789.5,
+   "end": 4909.47
+  },
+  {
+   "kind": "entry",
+   "title": "6.2 Anchors",
+   "start": 4909.47,
+   "end": 5033.57
+  },
+  {
+   "kind": "entry",
+   "title": "6.3 Confirming",
+   "start": 5033.57,
+   "end": 5170.24
+  },
+  {
+   "kind": "entry",
+   "title": "6.4 Hindsight",
+   "start": 5170.24,
+   "end": 5271.13
+  },
+  {
+   "kind": "entry",
+   "title": "6.5 Fallacies",
+   "start": 5271.13,
+   "end": 5404.21
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 5404.21,
+   "end": 5455.09
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 5455.09,
+   "end": 5485.01
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 5485.01,
+   "end": 5526.2
+  },
+  {
+   "kind": "section",
+   "title": "Chapter 7: Error",
+   "start": 5526.2,
+   "end": 5596.52
+  },
+  {
+   "kind": "entry",
+   "title": "7.1 Surprise",
+   "start": 5596.52,
+   "end": 5688.13
+  },
+  {
+   "kind": "entry",
+   "title": "7.2 Correction",
+   "start": 5688.13,
+   "end": 5830.52
+  },
+  {
+   "kind": "entry",
+   "title": "7.3 Steps",
+   "start": 5830.52,
+   "end": 5960.83
+  },
+  {
+   "kind": "entry",
+   "title": "7.4 Mistakes",
+   "start": 5960.83,
+   "end": 6064.21
+  },
+  {
+   "kind": "entry",
+   "title": "7.5 Certainty",
+   "start": 6064.21,
+   "end": 6193.15
+  },
+  {
+   "kind": "entry",
+   "title": "Chapter Summary",
+   "start": 6193.15,
+   "end": 6236.98
+  },
+  {
+   "kind": "entry",
+   "title": "Key Terms",
+   "start": 6236.98,
+   "end": 6260.97
+  },
+  {
+   "kind": "entry",
+   "title": "Review Questions",
+   "start": 6260.97,
+   "end": 6300.8
+  },
+  {
+   "kind": "section",
+   "title": "Conclusion: What Happens to a Piece of Information",
+   "start": 6300.8,
+   "end": 6305.75
+  },
+  {
+   "kind": "entry",
+   "title": "The Seven Floors Together",
+   "start": 6305.75,
+   "end": 6410.32
+  },
+  {
+   "kind": "entry",
+   "title": "Studying for the Examination",
+   "start": 6410.32,
+   "end": 6479.18
+  },
+  {
+   "kind": "entry",
+   "title": "A Last Word",
+   "start": 6479.18,
+   "end": 6507.02
+  },
+  {
+   "kind": "section",
+   "title": "Glossary",
+   "start": 6507.02,
+   "end": 6992.3
+  }
+ ]
+}

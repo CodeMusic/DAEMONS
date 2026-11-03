@@ -27,7 +27,8 @@ written in title case with a space between them (`Firstname Lastname`), might op
 The same books read aloud by Kokoro TTS, **each in its own voice, chosen for what the book is**, and every daemon said
 DAY-mon. There are chapter markers at every entry. Each `.chapters.json` gives every section's and entry's start and
 end in seconds, so a chapter can be cut from the MP3 without re-rendering. It also names the voice the book was read in.
-Made by `python3 tools/bookaudio.py <book> <out_dir>` from the companion's `server/data/<book>.json`.
+Made by `python3 tools/bookaudio.py <book> <out_dir>` from the companion's `server/data/<book>.json`; the TEXTBOOK from
+[`../manual-textbook/manual.md`](../manual-textbook/manual.md), its placards and boards from the companion's `school.json`.
 `python3 tools/bookaudio.py --check` says which recordings are behind their words. Like the PDFs they are DRAFT, and
 each says so at its start and in its tags.
 
@@ -35,4 +36,7 @@ each says so at its start and in its tags.
 |---|---|---|
 | [`audio/guide.mp3`](audio/guide.mp3) | THE PROGRAMMER'S GUIDE TO THE HUMAN MIND, 19 min | Reason: a blend made for it (`am_michael` and `bm_george`), even and unhurried |
 | [`audio/the-subtle-layer.mp3`](audio/the-subtle-layer.mp3) | THE SUBTLE LAYER, 32 min | Instinct: `af_bella`, warm and full |
+| [`audio/principles-of-mind.mp3`](audio/principles-of-mind.mp3) | PRINCIPLES OF MIND, CALLOW SCHOOL's TEXTBOOK ([`../DAEMONS-textbook.pdf`](../DAEMONS-textbook.pdf)), 117 min | A professor: a blend made for it (`bm_fable` and `bm_lewis`), grave and warm. The References and each chapter's Further Reading are left to the page. |
 | [`audio/the-vault-audio.zip`](audio/the-vault-audio.zip) | **Sealed**, by the same name as the vault. | Its own |
+
+The companion plays each one inside its book (LISTEN, with its chapters, and SHARE to keep it), streamed from here.
