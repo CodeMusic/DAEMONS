@@ -49,3 +49,27 @@ C-276: CALLOW SCHOOL's library tile shows the textbook's cover, and FULL TEXTBOO
 C-276: CALLOW SCHOOL's library tile shows the textbook's cover, and FULL TEXTBOOK sits under 7F ERROR in THE TEXTBOOK box, opening the PDF (the user, 2026-11-03)
 
 ![3Nov2026 - T520 - PRINCIPLES OF MIND in the companion - 8](3Nov2026%20-%20T520%20-%20PRINCIPLES%20OF%20MIND%20in%20the%20companion%20-%208.png)
+
+### 3Nov2026 - T518 - LISTEN inside the books - 9
+
+Companion C-277 on the site: LISTEN inside THE GUIDE (playing, then going on from where it was left), THE SUBTLE LAYER and the TEXTBOOK, each streamed from DAEMONS on GitHub, with its chapters and SHARE (Open in a tab on the site). DRAFT.
+
+![3Nov2026 - T518 - LISTEN inside the books - 9](3Nov2026%20-%20T518%20-%20LISTEN%20inside%20the%20books%20-%209.jpg)
+
+### 3Nov2026 - T518 - LISTEN inside the books - 10
+
+Companion C-277 on the site: LISTEN inside THE GUIDE (playing, then going on from where it was left), THE SUBTLE LAYER and the TEXTBOOK, each streamed from DAEMONS on GitHub, with its chapters and SHARE (Open in a tab on the site). DRAFT.
+
+![3Nov2026 - T518 - LISTEN inside the books - 10](3Nov2026%20-%20T518%20-%20LISTEN%20inside%20the%20books%20-%2010.jpg)
+
+### 3Nov2026 - T518 - LISTEN inside the books - 11
+
+Companion C-277 on the site: LISTEN inside THE GUIDE (playing, then going on from where it was left), THE SUBTLE LAYER and the TEXTBOOK, each streamed from DAEMONS on GitHub, with its chapters and SHARE (Open in a tab on the site). DRAFT.
+
+![3Nov2026 - T518 - LISTEN inside the books - 11](3Nov2026%20-%20T518%20-%20LISTEN%20inside%20the%20books%20-%2011.jpg)
+
+### 3Nov2026 - T518 - LISTEN inside the books - 12
+
+Companion C-277 on the site: LISTEN inside THE GUIDE (playing, then going on from where it was left), THE SUBTLE LAYER and the TEXTBOOK, each streamed from DAEMONS on GitHub, with its chapters and SHARE (Open in a tab on the site). DRAFT.
+
+![3Nov2026 - T518 - LISTEN inside the books - 12](3Nov2026%20-%20T518%20-%20LISTEN%20inside%20the%20books%20-%2012.jpg)
