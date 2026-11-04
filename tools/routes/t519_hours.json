@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-519 item 4 (DRAFT): the two hours. THE CATCH-UP: a save continued (play begins) with DEBUG's TIME on the witching hour's half past (gDaemonsWatchOverride 7) and the book held -- calm for play's first minute (no pulse over the map, no shimmer, no glitch on OSRIC HATTER's door), easing up over the next two, then the clock's own level, glitch and all. THE CREATOR'S HOUR through DEBUG's TIME: rising (8, 4:28), at full with its motes and its tone (9, 4:48), resolving (10, 5:08) -- a pale gold bloom on the map's layers, text and menus plain. Then the early baker in BLANCHE TOWN and the hint. The theatre's debug scratch save, never the user's; TIME is put back at the end. Private when filed: it shows the witching hour's effect and names its time.",
+  "about": "T-519 item 4 (DRAFT): the two hours. THE CATCH-UP: a save continued (play begins) with DEBUG's TIME on the witching hour's half past (gDaemonsWatchOverride 7) and the book held -- calm for play's first minute (no pulse over the map, no shimmer, no glitch on OSRIC HATTER's door), easing up over the next two, then the clock's own level, glitch and all. THE CREATOR'S HOUR through DEBUG's TIME: rising (8, 4:28), at full with its motes and its tone (9, 4:48), resolving (10, 5:08) -- a pale gold bloom on the map's layers, text and menus plain. Then the LARK by DAEMON TOWER in HALFTONE and the hint. The theatre's debug scratch save, never the user's; TIME is put back at the end. Private when filed: it shows the witching hour's effect and names its time.",
   "stop_timeout": 1200,
   "stops": [
     {
@@ -71,11 +71,11 @@
       ]
     },
     {
-      "stop": "The early baker in BLANCHE TOWN",
+      "stop": "The LARK by DAEMON TOWER in HALFTONE",
       "steps": [
         "poke gDaemonsWatchOverride 8 0",
-        "goto PalletTown 20 9",
-        "talk Baker",
+        "goto LavenderTown 19 7",
+        "talk Lark",
         "says \"Set your alarm early one morning.\"",
         "says \"Something is awake then that isn't,\""
       ]
