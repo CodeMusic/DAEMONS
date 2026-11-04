@@ -60,6 +60,8 @@ holds nothing of Nintendo's, reads a DAEMONS save (copies only, never the user's
 with `C-` ids; its plan is `companion/docs/PLAN.md`. Public at CodeMusic/daemons-companion (C-12): **nothing personal
 goes in it.** `companion/bindCompanion.sh` starts its server and app (a site by default; `ios`, `android`, `server`, `test`);
 `updateCompanion.sh` flashes the handheld and `linkCompanion.sh` links it to the server over its USB cable.
+**Before adding or moving code there, read `companion/LAYOUT.md`** (C-292): the map of where each kind of code lives,
+kept true in the same commit as any folder change (`companion/CLAUDE.md`; its server test checks it).
 
 `playground/` is **daemons-playground** (2026-10-19, T-428): an all-in-one harness to demo and beta test the game from
 one URL -- the edition, DEBUG or not, a `.sav` or a new game, played in the browser (EmulatorJS's mGBA core, from its
