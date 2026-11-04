@@ -19,3 +19,39 @@ BLANCHE TOWN, drawn from the built layout: the early baker (DRAFT, the CHEF spri
 HALFTONE, drawn from the built layout (the map sheet draws no people, nor the town's grey): the LARK (DRAFT, the GREBE cast sprite) stands at (20, 7), the red box, beside DAEMON TOWER's door, facing it. It replaces BLANCHE TOWN's baker.
 
 ![4Nov2026 - T519 - the lark - 3](4Nov2026%20-%20T519%20-%20the%20lark%20-%203.png)
+
+### 4Nov2026 - T519 - spirits - 4
+
+T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
+
+![4Nov2026 - T519 - spirits - 4](4Nov2026%20-%20T519%20-%20spirits%20-%204.png)
+
+### 4Nov2026 - T519 - spirits - 5
+
+T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
+
+![4Nov2026 - T519 - spirits - 5](4Nov2026%20-%20T519%20-%20spirits%20-%205.png)
+
+### 4Nov2026 - T519 - spirits - 6
+
+T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
+
+![4Nov2026 - T519 - spirits - 6](4Nov2026%20-%20T519%20-%20spirits%20-%206.png)
+
+### 4Nov2026 - T519 - spirits - 7
+
+T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
+
+![4Nov2026 - T519 - spirits - 7](4Nov2026%20-%20T519%20-%20spirits%20-%207.png)
+
+### 4Nov2026 - T519 - spirits - 8
+
+T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
+
+![4Nov2026 - T519 - spirits - 8](4Nov2026%20-%20T519%20-%20spirits%20-%208.png)
+
+### 4Nov2026 - T519 - spirits - 9
+
+T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
+
+![4Nov2026 - T519 - spirits - 9](4Nov2026%20-%20T519%20-%20spirits%20-%209.png)

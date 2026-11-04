@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-519 item 1 (DRAFT): SPIRITS. The lead is set by hand through DEBUG -> GAME EVENTS -> SPIRITS (a crossing plays on the next step): into good spirits (the screen rising: pulses to white, the lighter tone, the fanfare), the summary's fourth page with its words under the day's line, a potion in good spirits and its thanks; into low spirits (pulses to black, the darker tone, a hush), its words, a potion refused and kept; then back to as it is (no longer in low spirits). FOOD ALWAYS makes the food's chances certain, so the refusal and the thanks show every time. Not yet run: the theatre was down when it was written (2026-11-04). The theatre's debug scratch save, never the user's; nothing is saved.",
+  "about": "T-519 item 1 (DRAFT): SPIRITS. The lead is set by hand through DEBUG -> GAME EVENTS -> SPIRITS (a crossing plays on the next step): into good spirits (the screen rising: pulses to white, the lighter tone, the fanfare), the summary's fourth page with its words under the day's line, a potion in good spirits and its thanks; into low spirits (pulses to black, the darker tone, a hush), its words, a potion refused and kept; then back to as it is (no longer in low spirits). FOOD ALWAYS makes the food's chances certain, so the refusal and the thanks show every time. First filmed 2026-11-04; a step first plays out whatever the load brings (a dream), as T-515's route does. The theatre's debug scratch save, never the user's; nothing is saved.",
   "stop_timeout": 900,
   "stops": [
     {
@@ -10,6 +10,10 @@
         "repel 999",
         "flag FLAG_FOLLOWER_OFF 1",
         "goto CeruleanCity 17 7",
+        "hold LEFT 16",
+        "finish",
+        "hold RIGHT 16",
+        "finish",
         "events \"SPIRITS >\" \"LEAD: IN GOOD SPIRITS\"",
         "close",
         "hold LEFT 16",
@@ -67,7 +71,9 @@
         "press A",
         "press A",
         "press A",
+        "shot \"refused: the line held for A\"",
         "press A",
+        "shot \"back in the bag: still three\"",
         "close",
         "says \"turns away from it.\""
       ]
