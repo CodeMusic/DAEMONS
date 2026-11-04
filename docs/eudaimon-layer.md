@@ -1,6 +1,6 @@
 # THE EUDAIMON LAYER — the text the game prints (T-519)
 
-*DRAFT, every word, until the user approves it. Drafted 2026-11-04 from the user's design (vision 4.40): the third book
+*DRAFT, every word (as every new word in the game is). **Approved by the user as drafted, 2026-11-04.** Drafted 2026-11-04 from the user's design (vision 4.40): the third book
 is one book read from two sides, and this is its dawn half. It follows `docs/hermetic-layer.md`, the night half, entry
 for entry: the same ten sections, the same sayings and the same thirteen spells, each described from the other side.
 Where the night half warns, this one blesses; where it names a cost, this one names the same cost as a gift. Its titles

@@ -1121,6 +1121,37 @@ def hermetic_table():
     return {"title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT", "draft": True, "flag": flag, "sections": out}
 
 
+def eudaimon_table():
+    """T-519: THE EUDAIMON LAYER, the third book's dawn half -- docs/eudaimon-layer.md, approved by the user 2026-11-04,
+    read by the same parser as the night half. One voice more: the OBSERVER line ('% '), three wordings split by ' | ',
+    printed by the lead daemon's SPIRITS (in good spirits, as it is, in low spirits). No flag yet: the game has not
+    placed the half, so 'flag' is null until it does. DRAFT, every word."""
+    import gensubtle
+    keep = gensubtle.SRC
+    gensubtle.SRC = os.path.join(ROOT, "docs/eudaimon-layer.md")
+    try:
+        sections = gensubtle.parse()
+    finally:
+        gensubtle.SRC = keep
+    out = []
+    for s in sections:
+        entries = []
+        for e in s["entries"]:
+            paras = []
+            for k, q in enumerate(e["paras"]):
+                if q.startswith("% "):
+                    good, as_is, low = [w.strip() for w in q[2:].split(" | ")]
+                    paras.append({"text": as_is, "voice": "observer", "readings": {"good": good, "as_is": as_is,
+                                                                                   "low": low}})
+                    continue
+                voice = "asking" if k in e["faint"] else "inscription" if q.startswith("^ ") else "telling"
+                paras.append({"text": q[2:] if voice == "inscription" else q, "voice": voice})
+            entries.append({"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0,
+                            "caption": e["caption"], "paragraphs": paras})
+        out.append({"label": s["label"], "heading": s["heading"], "entries": entries})
+    return {"title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING", "draft": True, "flag": None, "sections": out}
+
+
 def _c_strings(src):
     """{symbol: text} for every _("...") constant in a C file, the scroll break (\\l) a line break, no $"""
     return {s: gba_string(b).replace("\\l", "\n").rstrip("$")
@@ -2052,6 +2083,7 @@ def main():
              "guide.json": guide_table(),                                       # the reading tab
              "subtle.json": subtle_table(),                                     # T-423: the LIBRARY's second book
              "hermetic.json": hermetic_table(),                                 # T-483 / C-238: the LIBRARY's third book
+             "eudaimon.json": eudaimon_table(),                                 # T-519: the third book's dawn half
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
     #  T-453; the GUIDE's chapters as guide.json has them (gensubtle, imported since, reuses genguide's parser)
