@@ -1144,7 +1144,8 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_PAIR_PENGUIN", "EV_PAIR_DOLPHIN", "EV_PAIR_OTHER", "EV_PAIR_LOAN",  # T-474: its pair trade, faked
                    "EV_GIFT_IN"}                                                           # T-492: its gift, faked
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
-PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE"}        # T-431: the feelings' debug view and its clock; T-454: THE THREE's
+PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE",       # T-431: the feelings' debug view and its clock; T-454: THE THREE's
+                  "PG_SPIRITS"}                                   # T-519: SPIRITS set by hand, to film a crossing
 
 
 def events_table():

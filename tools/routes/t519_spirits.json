@@ -1,0 +1,89 @@
+{
+  "rom": "debug",
+  "about": "T-519 item 1 (DRAFT): SPIRITS. The lead is set by hand through DEBUG -> GAME EVENTS -> SPIRITS (a crossing plays on the next step): into good spirits (the screen rising: pulses to white, the lighter tone, the fanfare), the summary's fourth page with its words under the day's line, a potion in good spirits and its thanks; into low spirits (pulses to black, the darker tone, a hush), its words, a potion refused and kept; then back to as it is (no longer in low spirits). FOOD ALWAYS makes the food's chances certain, so the refusal and the thanks show every time. Not yet run: the theatre was down when it was written (2026-11-04). The theatre's debug scratch save, never the user's; nothing is saved.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "Into good spirits: the crossing screen, rising",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "goto CeruleanCity 17 7",
+        "events \"SPIRITS >\" \"LEAD: IN GOOD SPIRITS\"",
+        "close",
+        "hold LEFT 16",
+        "burst \"the crossing, rising: its cry, the pulses to white, the lighter tone\" 14 24",
+        "finish",
+        "says \"is in good spirits.\""
+      ]
+    },
+    {
+      "stop": "The summary's words: in good spirits, under the day's line, and the picture lighter",
+      "steps": [
+        "summary 0 R R R",
+        "shot \"the fourth page: In good spirits.\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "A potion in good spirits: it thanks you",
+      "steps": [
+        "events \"SPIRITS >\" \"FOOD ALWAYS REFUSED/THANKED\"",
+        "close",
+        "mon 0 hp 1",
+        "bag ITEM_POTION 3 first",
+        "open BAG",
+        "press A",
+        "press A",
+        "press A",
+        "press A",
+        "press A",
+        "close",
+        "says \"thanks you, brightly.\""
+      ]
+    },
+    {
+      "stop": "Into low spirits: the crossing screen, falling",
+      "steps": [
+        "goto CeruleanCity 17 7",
+        "events \"SPIRITS >\" \"LEAD: IN LOW SPIRITS\"",
+        "close",
+        "hold LEFT 16",
+        "burst \"the crossing, falling: the pulses to black, the darker tone, a hush\" 14 24",
+        "finish",
+        "says \"is in low spirits.\"",
+        "summary 0 R R R",
+        "shot \"the fourth page: In low spirits.\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "A potion in low spirits: refused, and the potion kept",
+      "steps": [
+        "mon 0 hp 1",
+        "bag ITEM_POTION 3 first",
+        "open BAG",
+        "press A",
+        "press A",
+        "press A",
+        "press A",
+        "close",
+        "says \"turns away from it.\""
+      ]
+    },
+    {
+      "stop": "Back to as it is: no longer in low spirits",
+      "steps": [
+        "goto CeruleanCity 17 7",
+        "events \"SPIRITS >\" \"LEAD: AS IT IS\" \"FOOD ALWAYS REFUSED/THANKED\"",
+        "close",
+        "hold LEFT 16",
+        "burst \"the crossing back: the pulses to white, its own tone again\" 14 24",
+        "finish",
+        "says \"no longer\"",
+        "mon 0 hp max"
+      ]
+    }
+  ]
+}
