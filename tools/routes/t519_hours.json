@@ -1,0 +1,84 @@
+{
+  "rom": "debug",
+  "about": "T-519 item 4 (DRAFT): the two hours. THE CATCH-UP: a save continued (play begins) with DEBUG's TIME on the witching hour's half past (gDaemonsWatchOverride 7) and the book held -- calm for play's first minute (no pulse over the map, no shimmer, no glitch on OSRIC HATTER's door), easing up over the next two, then the clock's own level, glitch and all. THE CREATOR'S HOUR through DEBUG's TIME: rising (8, 4:28), at full with its motes and its tone (9, 4:48), resolving (10, 5:08) -- a pale gold bloom on the map's layers, text and menus plain. Then the early baker in BLANCHE TOWN and the hint. The theatre's debug scratch save, never the user's; TIME is put back at the end. Private when filed: it shows the witching hour's effect and names its time.",
+  "stop_timeout": 1200,
+  "stops": [
+    {
+      "stop": "The catch-up: a load inside the witching hour, calm, then easing up, then the clock's",
+      "timeout": 1200,
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_GOT_GUIDE 1",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "keyitem ITEM_HERMETIC_LAYER",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 7",
+        "debug SOUND CATCHUP",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "burst \"play's first minute: calm\" 5 40",
+        "goto CinnabarIsland_HattersHouse",
+        "burst \"the hatter's door in the first minute: no glitch\" 8 2",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "wait 3000",
+        "burst \"a minute and a half in: easing up\" 5 40",
+        "wait 4800",
+        "burst \"three minutes in: the clock's own level\" 9 30",
+        "goto CinnabarIsland_HattersHouse",
+        "burst \"the hatter's door after the catch-up: the glitch\" 8 2"
+      ]
+    },
+    {
+      "stop": "The creator's hour rising (DEBUG TIME 4:28)",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 8",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "wait 120",
+        "burst \"the creator's hour, rising\" 4 120"
+      ]
+    },
+    {
+      "stop": "The creator's hour at full: the bloom, the motes, the tone (DEBUG TIME 4:48)",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 9",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "follower shown",
+        "wait 600",
+        "burst \"at full, the motes rising\" 8 60",
+        "press START",
+        "wait 40",
+        "shot \"a menu over it stays plain\"",
+        "press B",
+        "wait 40"
+      ]
+    },
+    {
+      "stop": "The creator's hour resolving (DEBUG TIME 5:08)",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 10",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "wait 300",
+        "burst \"resolving into the dawn\" 4 120"
+      ]
+    },
+    {
+      "stop": "The early baker in BLANCHE TOWN",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 0",
+        "goto PalletTown 20 9",
+        "talk Baker",
+        "says \"Set your alarm early one morning.\"",
+        "says \"Something is awake then that isn't,\""
+      ]
+    }
+  ]
+}
