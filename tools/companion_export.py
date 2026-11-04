@@ -348,13 +348,19 @@ def trade_bits():
     trading, loan, traded_in = at["trading"], at["daemonsLoan"], at["daemonsTradedIn"]
     partner = at["daemonsTradePartner"]                                                     # T-474
     gifted = at["daemonsGifted"]                                                            # T-492 (C-223)
-    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or not loan[0] == traded_in[0] == partner[0] == gifted[0]:
+    spirits, lean = at["daemonsSpirits"], at["daemonsLean"]                                 # T-519 SPIRITS
+    if trading[0] != 19 or at["away"][:2] != (19, AWAY_BIT) or \
+            not loan[0] == traded_in[0] == partner[0] == gifted[0] == spirits[0] == lean[0]:
         raise SystemExit("  refused: struct BoxPokemon's trade bits are not where the companion reads them")
     return {"trading_bit": trading[1], "trade_flags_offset": loan[0],
             "loan_mask": 1 << loan[1], "traded_in_mask": 1 << traded_in[1],
             "trade_partner_shift": partner[1], "trade_partner_mask": ((1 << partner[2]) - 1) << partner[1],
             #  T-492: GIVEN, nothing back -- set with traded_in_mask (partner 0); the game says "a gift", FIRST MET: A GIFT
-            "gifted_shift": gifted[1], "gifted_mask": 1 << gifted[1]}
+            "gifted_shift": gifted[1], "gifted_mask": 1 << gifted[1],
+            #  T-519 SPIRITS: the class (0 as it is, 1 good spirits, 2 low spirits; 3 reads as 0) and the lean, read by
+            #  class (src/daemons_spirits.c). The companion reads these and never writes them.
+            "spirits_shift": spirits[1], "spirits_mask": ((1 << spirits[2]) - 1) << spirits[1],
+            "lean_shift": lean[1], "lean_mask": ((1 << lean[2]) - 1) << lean[1]}
 
 
 def first_met_specials():
