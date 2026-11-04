@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-519 item 4 (DRAFT): the two hours. THE CATCH-UP: a save continued (play begins) with DEBUG's TIME on the witching hour's half past (gDaemonsWatchOverride 7) and the book held -- calm for play's first minute (no pulse over the map, no shimmer, no glitch on OSRIC HATTER's door), easing up over the next two, then the clock's own level, glitch and all. THE CREATOR'S HOUR through DEBUG's TIME: rising (8, 4:28), at full with its motes and its tone (9, 4:48), resolving (10, 5:08) -- a pale gold bloom on the map's layers, text and menus plain. Then the LARK by DAEMON TOWER in HALFTONE and the hint. The theatre's debug scratch save, never the user's; TIME is put back at the end. Private when filed: it shows the witching hour's effect and names its time.",
+  "about": "T-519 item 4 (DRAFT): the two hours. THE CATCH-UP: a save continued (play begins) with DEBUG's TIME on the witching hour's half past (gDaemonsWatchOverride 7) and the book held -- calm for play's first minute (no pulse over the map, no shimmer, no glitch on OSRIC HATTER's door), easing up over the next two, then the clock's own level, glitch and all. THE CREATOR'S HOUR through DEBUG's TIME: rising (8, 4:28), at full with its motes and its tone (9, 4:48), resolving (10, 5:08) -- a pale gold bloom on the map's layers, text and menus plain. Then the LARK by DAEMON TOWER in HALFTONE and the hint. The theatre's debug scratch save, never the user's; TIME is put back at the end. Stop 2 loads again and marks play as begun long ago (sPlayBeganAt 0xFFFF0000, about 18 minutes before the frame counter began), so stops 2-5 can be played alone. The first stop is private when filed: it shows the witching hour's effect and names its time.",
   "stop_timeout": 1200,
   "stops": [
     {
@@ -16,6 +16,7 @@
         "keyitem ITEM_HERMETIC_LAYER",
         "poke gDaemonsDateOverride 8 0",
         "poke gDaemonsWatchOverride 8 7",
+        "finish",
         "debug SOUND CATCHUP",
         "goto CeruleanCity 17 7",
         "to 14 7",
@@ -36,6 +37,11 @@
     {
       "stop": "The creator's hour rising (DEBUG TIME 4:28)",
       "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "poke gDaemonsDateOverride 8 0",
+        "poke sPlayBeganAt 32 4294901760",
         "poke gDaemonsWatchOverride 8 8",
         "goto CeruleanCity 17 7",
         "to 14 7",

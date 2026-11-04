@@ -55,3 +55,27 @@ T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good s
 T-519 item 1, SPIRITS (DRAFT), filmed from the DEBUG ROM: a crossing into good spirits (the cry, pulses to white, the lighter tone, the line), the summary's fourth page saying In good spirits., a RECOVER thanked, a crossing into low spirits (pulses to black, the darker tone), a RECOVER refused and kept, and back to as it is. The lead set through DEBUG -> GAME EVENTS -> SPIRITS; FOOD ALWAYS makes the food's chances certain.
 
 ![4Nov2026 - T519 - spirits - 9](4Nov2026%20-%20T519%20-%20spirits%20-%209.png)
+
+### 4Nov2026 - T519 - the two hours - 11
+
+T-519 (DRAFT): THE CREATOR'S HOUR rising (DEBUG TIME): the night's light easing toward dawn, the first gold motes.
+
+![4Nov2026 - T519 - the two hours - 11](4Nov2026%20-%20T519%20-%20the%20two%20hours%20-%2011.png)
+
+### 4Nov2026 - T519 - the two hours - 12
+
+T-519 (DRAFT): THE CREATOR'S HOUR at full: an early dawn's light, a warm gold over the map, gold motes rising; the START menu and its words stay plain.
+
+![4Nov2026 - T519 - the two hours - 12](4Nov2026%20-%20T519%20-%20the%20two%20hours%20-%2012.png)
+
+### 4Nov2026 - T519 - the two hours - 13
+
+T-519 (DRAFT): THE CREATOR'S HOUR resolving into the dawn, the last motes.
+
+![4Nov2026 - T519 - the two hours - 13](4Nov2026%20-%20T519%20-%20the%20two%20hours%20-%2013.png)
+
+### 4Nov2026 - T519 - the two hours - 14
+
+T-519 (DRAFT): the LARK by DAEMON TOWER in HALFTONE, and its line.
+
+![4Nov2026 - T519 - the two hours - 14](4Nov2026%20-%20T519%20-%20the%20two%20hours%20-%2014.png)
