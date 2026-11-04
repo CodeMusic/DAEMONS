@@ -790,7 +790,9 @@ def reads_layout(sb1):
                                          re.search(r"sDayNames\[WEEKDAY_COUNT\]\s*=\s*\{(.*?)\};", rc, re.S).group(1))],
             "words": {"reads": plain(words["sLog_Reads"]), "leans": plain(words["sLog_Leans"]),
                       "colon": words["sLog_Colon"], "landed": words["sLog_Landed"],
-                      "day_comma": words["sLog_DayComma"]}}
+                      "day_comma": words["sLog_DayComma"],
+                      # T-516 S1: THE LOG's Saturday line, its colour codes and page break dropped
+                      "saturday": re.sub(r"\{[^}]*\}", "", words["sLog_Saturday"]).replace("\\p", "")}}
 
 
 def maps_table():
