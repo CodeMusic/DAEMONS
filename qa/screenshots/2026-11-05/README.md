@@ -73,3 +73,9 @@ C-298: JOURNEY's JOURNAL on the site (a chapter laid out as written), and the on
 THE UNITY BOOK (DRAFT): its placeholder cover with both spines, the ATTESTATION's opening spread, and the contents with 11 sections at an 11px pitch, BALANCE at the crease.
 
 ![5Nov2026 - T519 - the mending - THE UNITY BOOK - 25](5Nov2026%20-%20T519%20-%20the%20mending%20-%20THE%20UNITY%20BOOK%20-%2025.png)
+
+### 5Nov2026 - C299 - the unity book in the companion - 26
+
+C-299 (DAEMONS T-519 item 3): THE UNITY BOOK in the companion's LIBRARY, on the site against a synthetic mended save (never the user's). 1 the shelf once mended: THE UNITY BOOK, the two halves gone as in the game; 2 both covers laid flat, stitched at the spine in green and gold; 3 its deck deals Both as One only; 4 BALANCE at the crease, both halves' colours under its heading. DRAFT.
+
+![5Nov2026 - C299 - the unity book in the companion - 26](5Nov2026%20-%20C299%20-%20the%20unity%20book%20in%20the%20companion%20-%2026.png)
