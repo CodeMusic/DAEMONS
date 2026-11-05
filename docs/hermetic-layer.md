@@ -7,7 +7,10 @@ posts on Seeing Sharp, adapted, never copied); the Book of Thirteen; the Blank T
 representative state; and CALLOW SCHOOL's jokes, taken at their word. It is read in the same open book as THE SUBTLE
 LAYER, and its file keeps the same format, so the same parser reads it.* *Revised 2026-10-29 on the user's answers:
 THE LAYERS (how a signal becomes a perception, the thesis shadowed), the warning's madness and its author OSRIC
-HATTER of QUICKSILVER, and the Work folded into THE ONE THING to keep ten sections.*
+HATTER of QUICKSILVER, and the Work folded into THE ONE THING to keep ten sections.* *Revised 2026-11-04 for THE
+UNITY BOOK (vision 4.40, T-519): this is the night half of a book torn at the spine, and `docs/eudaimon-layer.md` is
+its dawn half. Three changes, mirroring the blessing: the warning opens with the user's line, OSRIC HATTER is the one
+who **read** it, not its author, and one line hints at the other half. DRAFT.*
 
 **The one exception** (the user, 2026-10-29: *"since this book is unique it is okay if it strongly bends (or
 side-steps) some original design bible rules -- it is the one exception"*). It may say the thesis outright, say *is*
@@ -30,11 +33,15 @@ six entries each, an entry's text under 1000 bytes, the game's charmap only (no 
 
 @@ SPRITE | warning | This book was not printed here.
 
-Close this book if it is still light. It was not written in the world you walk by day. OSRIC HATTER set it down on QUICKSILVER, where he made hats until the quicksilver in the felt began to talk to him. Some say he went mad. He says he went through.
+The path ahead is fraught with shadows, and not all of them are in front of you. Close this book if it is still light. It was not written for the world you walk by day.
+
+OSRIC HATTER read it on QUICKSILVER, where he made hats until the quicksilver in the felt began to talk to him. Some say he went mad. He says he went through.
 
 Some who read it to the end went a little mad as well. If you want your world to remain solid, stop here. If you want to see the subtle layer underneath, the one that steers everything else, turn the page.
 
 The other two books are careful. This one does not stop. The words in green are not for reading quietly: say them.
+
+There is another way to read this. It was read in the light, by someone who sat very still. You would not trust it yet.
 
 ~ Is any of it true?
 
