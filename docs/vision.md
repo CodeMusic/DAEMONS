@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.339**
+**A total conversion — the living design bible, v11.340**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5047,7 +5047,17 @@ take off.*
 
 ***The halves are mended at DAEMON TOWER*** **in a colourful burst -- the pair going back to light -- and BALANCE is written between them.** *Leaving the tower, colour splashes out from each step until HALFTONE is restored; after that the town greys again only in the night's hour, and in the dawn's its colours are extra vivid* ([private: the hours]). **This reverses T-430's "the town stays grey" (Reversed).**
 
-- ***One half at the tower shows its side of the town*** (*the user, by multiple choice, 2026-11-05*): **opened at DAEMON TOWER before the mending, the night half greys HALFTONE further for a moment and the dawn half lets a little colour through; both pages end torn mid-sentence at the spine.** *It hints at the mending and does not give it away.*
+- ***HALFTONE's tone follows the halves you hold*** (*the user, 2026-11-05, with three edges by multiple choice; supersedes the same day's "greyer for the night half, a little colour for the dawn half"*):
+
+  | held | HALFTONE is |
+|---|---|
+  | neither half | **greyscale**, as built (T-430) |
+  | the night half (THE HERMETIC LAYER) | **emerald sepia** -- *the tablet's green, in sepia's place* |
+  | the dawn half (THE EUDAIMON LAYER) | **sapphire sepia, like a cyanotype** |
+  | both, not yet mended | **follows the hour**: *emerald sepia at night, sapphire cyanotype by day -- the halves take turns, and the town looks unsettled until you go to the tower* |
+  | THE UNITY BOOK, mended | **full colour flows back** (*the splash from each step, above*); *then grey only in the witching hour and extra vivid in THE CREATOR'S HOUR, as decided -- the tints belong to before the mending* |
+
+  **Opened at DAEMON TOWER before the mending, a half deepens its tint for a moment -- deep emerald or deep sapphire -- then it settles, and its page ends torn mid-sentence at the spine.** *Tone carries the argument (invariant 5): each half sees the town in its own light, and only the two together see it as it is.*
 - ***THE HORIZON is cast in either hour, once*** (*the user, by multiple choice, 2026-11-05*): **once the book is mended and the other twelve have been cast, in either thin hour (the night's or the dawn's), once a playthrough, as THE WITCHING HOUR is.** *Its effect is the two thirteenths together: nothing owed, nothing lost.* **Its page (`docs/unity-book.md`) already reads true of this.**
 
 #### SPIRITS: eudaimon, daemon, kakodaimon (the user, by multiple choice, 2026-11-01/02)

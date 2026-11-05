@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.339, working |
-| [`CONTEXT-CONTENT-design-bible-v11.339.pdf`](CONTEXT-CONTENT-design-bible-v11.339.pdf) | Typeset **snapshot** at v11.339 — THE UNITY BOOK: one half at DAEMON TOWER shows its side of the town, and THE HORIZON is cast in either hour, once | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.340, working |
+| [`CONTEXT-CONTENT-design-bible-v11.340.pdf`](CONTEXT-CONTENT-design-bible-v11.340.pdf) | Typeset **snapshot** at v11.340 — THE UNITY BOOK: HALFTONE tinted by the half you hold (emerald, sapphire), full colour once mended, and THE HORIZON cast in either hour | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

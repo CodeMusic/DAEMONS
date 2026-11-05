@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.340 — 2026-11-05
+
+- **4.40, HALFTONE's tone follows the halves you hold (T-519, the user).** Greyscale with neither; emerald sepia with the night half; sapphire sepia, like a cyanotype, with the dawn half; with both unmended it follows the hour (emerald at night, sapphire by day); mended, full colour flows back. Opening a half at DAEMON TOWER deepens its tint for a moment. The mended town's hours stay grey and vivid. This replaces v11.339's tower moment.
+
 ## v11.339 — 2026-11-05
 
 - **4.40, the user's two open choices (T-519, by multiple choice).** One half opened at DAEMON TOWER before the mending shows its side of the town: the night half greys HALFTONE further for a moment, the dawn half lets a little colour through, and both pages end torn mid-sentence at the spine. THE HORIZON is cast in either thin hour once the book is mended and the other twelve are cast, once a playthrough, its effect the two thirteenths together.
