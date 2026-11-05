@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.338**
+**A total conversion — the living design bible, v11.339**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5045,7 +5045,10 @@ take off.*
 
 #### The mending, and HALFTONE in colour
 
-***The halves are mended at DAEMON TOWER*** **in a colourful burst -- the pair going back to light -- and BALANCE is written between them.** *Leaving the tower, colour splashes out from each step until HALFTONE is restored; after that the town greys again only in the night's hour, and in the dawn's its colours are extra vivid* ([private: the hours]). **This reverses T-430's "the town stays grey" (Reversed).** *Still open: what each book held does at DAEMON TOWER before the mending.*
+***The halves are mended at DAEMON TOWER*** **in a colourful burst -- the pair going back to light -- and BALANCE is written between them.** *Leaving the tower, colour splashes out from each step until HALFTONE is restored; after that the town greys again only in the night's hour, and in the dawn's its colours are extra vivid* ([private: the hours]). **This reverses T-430's "the town stays grey" (Reversed).**
+
+- ***One half at the tower shows its side of the town*** (*the user, by multiple choice, 2026-11-05*): **opened at DAEMON TOWER before the mending, the night half greys HALFTONE further for a moment and the dawn half lets a little colour through; both pages end torn mid-sentence at the spine.** *It hints at the mending and does not give it away.*
+- ***THE HORIZON is cast in either hour, once*** (*the user, by multiple choice, 2026-11-05*): **once the book is mended and the other twelve have been cast, in either thin hour (the night's or the dawn's), once a playthrough, as THE WITCHING HOUR is.** *Its effect is the two thirteenths together: nothing owed, nothing lost.* **Its page (`docs/unity-book.md`) already reads true of this.**
 
 #### SPIRITS: eudaimon, daemon, kakodaimon (the user, by multiple choice, 2026-11-01/02)
 

@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.338, working |
-| [`CONTEXT-CONTENT-design-bible-v11.338.pdf`](CONTEXT-CONTENT-design-bible-v11.338.pdf) | Typeset **snapshot** at v11.338 — THE UNITY BOOK: the third book torn in two and mended, SPIRITS, and DAEMONS said DAY-mons | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.339, working |
+| [`CONTEXT-CONTENT-design-bible-v11.339.pdf`](CONTEXT-CONTENT-design-bible-v11.339.pdf) | Typeset **snapshot** at v11.339 — THE UNITY BOOK: one half at DAEMON TOWER shows its side of the town, and THE HORIZON is cast in either hour, once | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

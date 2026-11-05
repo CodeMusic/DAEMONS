@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.339 — 2026-11-05
+
+- **4.40, the user's two open choices (T-519, by multiple choice).** One half opened at DAEMON TOWER before the mending shows its side of the town: the night half greys HALFTONE further for a moment, the dawn half lets a little colour through, and both pages end torn mid-sentence at the spine. THE HORIZON is cast in either thin hour once the book is mended and the other twelve are cast, once a playthrough, its effect the two thirteenths together.
+
 ## v11.338 — 2026-11-02
 
 - **4.40 THE UNITY BOOK (T-519, the user).** The third book is torn at the spine into THE HERMETIC LAYER and THE EUDAIMON LAYER. They are one book, read from the night side and the dawn side, opening with a warning, a blessing and an attestation. The thirteen spells are the same in both, and the dawn page names each cost as a gift. Only the thirteenth differs: THE WITCHING HOUR, THE CREATOR'S HOUR, THE HORIZON. The halves are mended at DAEMON TOWER, and BALANCE is written between them. OSRIC HATTER read the night half; a LARK read the dawn half.
