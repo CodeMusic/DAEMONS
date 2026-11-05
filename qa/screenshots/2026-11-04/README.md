@@ -85,3 +85,21 @@ T-519 (DRAFT): the LARK by DAEMON TOWER in HALFTONE, and its line.
 T-519 item 1, SPIRITS (DRAFT): the tone made plainer (the user, 2026-11-04), 10/32 of the way to white in good spirits (was 6/32) -- the summary with the lead set in good spirits through DEBUG -> GAME EVENTS -> SPIRITS, its picture lighter over its type's colours, and the fourth page's words.
 
 ![4Nov2026 - T519 - spirits tone - 15](4Nov2026%20-%20T519%20-%20spirits%20tone%20-%2015.png)
+
+### 4Nov2026 - T521 - PLAYs button strip - 16
+
+T-521: PLAY's BUTTON STRIP in D (the debug build, in a browser): the key's seven notes as heads of their colours beside their buttons -- DOWN LEFT UP RIGHT B A SELECT -- then L-, R+ and START, on a dark bar; FORGIVENESS OFFERED (re-taken from the user's recording) matched and echoing, the strip stepped aside; the strip back after the echo.
+
+![4Nov2026 - T521 - PLAYs button strip - 16](4Nov2026%20-%20T521%20-%20PLAYs%20button%20strip%20-%2016.png)
+
+### 4Nov2026 - T521 - PLAYs button strip - 17
+
+T-521: PLAY's BUTTON STRIP in D (the debug build, in a browser): the key's seven notes as heads of their colours beside their buttons -- DOWN LEFT UP RIGHT B A SELECT -- then L-, R+ and START, on a dark bar; FORGIVENESS OFFERED (re-taken from the user's recording) matched and echoing, the strip stepped aside; the strip back after the echo.
+
+![4Nov2026 - T521 - PLAYs button strip - 17](4Nov2026%20-%20T521%20-%20PLAYs%20button%20strip%20-%2017.png)
+
+### 4Nov2026 - T521 - PLAYs button strip - 18
+
+T-521: PLAY's BUTTON STRIP in D (the debug build, in a browser): the key's seven notes as heads of their colours beside their buttons -- DOWN LEFT UP RIGHT B A SELECT -- then L-, R+ and START, on a dark bar; FORGIVENESS OFFERED (re-taken from the user's recording) matched and echoing, the strip stepped aside; the strip back after the echo.
+
+![4Nov2026 - T521 - PLAYs button strip - 18](4Nov2026%20-%20T521%20-%20PLAYs%20button%20strip%20-%2018.png)
