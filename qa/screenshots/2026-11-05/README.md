@@ -67,3 +67,9 @@ C-298: JOURNEY's JOURNAL on the site (a chapter laid out as written), and the on
 C-298: JOURNEY's JOURNAL on the site (a chapter laid out as written), and the one-page PDF of a chapter the Tiiny wrote on its slow path (sample entries)
 
 ![5Nov2026 - C298 - JOURNEY JOURNAL and its printed page - 14](5Nov2026%20-%20C298%20-%20JOURNEY%20JOURNAL%20and%20its%20printed%20page%20-%2014.png)
+
+### 5Nov2026 - T519 - the mending - THE UNITY BOOK - 25
+
+THE UNITY BOOK (DRAFT): its placeholder cover with both spines, the ATTESTATION's opening spread, and the contents with 11 sections at an 11px pitch, BALANCE at the crease.
+
+![5Nov2026 - T519 - the mending - THE UNITY BOOK - 25](5Nov2026%20-%20T519%20-%20the%20mending%20-%20THE%20UNITY%20BOOK%20-%2025.png)

@@ -1127,6 +1127,38 @@ def hermetic_table():
     return {"title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT", "draft": True, "flag": flag, "sections": out}
 
 
+def layer_paragraphs(e):
+    """one entry's paragraphs as the companion's LIBRARY holds them: telling, asking, inscription, or the observer's
+    line with its three readings"""
+    paras = []
+    for k, q in enumerate(e["paras"]):
+        if q.startswith("% "):
+            good, as_is, low = [w.strip() for w in q[2:].split(" | ")]
+            paras.append({"text": as_is, "voice": "observer", "readings": {"good": good, "as_is": as_is, "low": low}})
+            continue
+        voice = "asking" if k in e["faint"] else "inscription" if q.startswith("^ ") else "telling"
+        paras.append({"text": q[2:] if voice == "inscription" else q, "voice": voice})
+    return paras
+
+
+def unity_table():
+    """T-519 item 3: THE UNITY BOOK, the third book mended -- docs/unity-book.md, read by the same parser as its halves:
+    eleven sections (BALANCE at the crease), the ATTESTATION's observer line by SPIRITS. 'flag' is FLAG_UNITY_MENDED's
+    number (the game mends it at DAEMON TOWER). Not yet approved by the user: DRAFT, every word."""
+    import gensubtle
+    keep = gensubtle.SRC
+    gensubtle.SRC = os.path.join(ROOT, "docs/unity-book.md")
+    try:
+        sections = gensubtle.parse()
+    finally:
+        gensubtle.SRC = keep
+    out = [{"label": s["label"], "heading": s["heading"], "entries": [
+        {"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0, "caption": e["caption"],
+         "paragraphs": layer_paragraphs(e)} for e in s["entries"]]} for s in sections]
+    flag = flag_values(["FLAG_UNITY_MENDED"])["FLAG_UNITY_MENDED"]
+    return {"title": "THE UNITY BOOK", "subtitle": "AN ATTESTATION", "draft": True, "flag": flag, "sections": out}
+
+
 def eudaimon_table():
     """T-519: THE EUDAIMON LAYER, the third book's dawn half -- docs/eudaimon-layer.md, approved by the user 2026-11-04,
     read by the same parser as the night half. One voice more: the OBSERVER line ('% '), three wordings split by ' | ',
@@ -1180,7 +1212,8 @@ EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", 
                    "EV_ITS_DREAM",                                                         # T-462: the companion's dream, faked
                    "EV_TRADE_IN", "EV_LOAN_IN",                                            # T-473: the companion's trade, faked
                    "EV_PAIR_PENGUIN", "EV_PAIR_DOLPHIN", "EV_PAIR_OTHER", "EV_PAIR_LOAN",  # T-474: its pair trade, faked
-                   "EV_GIFT_IN"}                                                           # T-492: its gift, faked
+                   "EV_GIFT_IN",                                                           # T-492: its gift, faked
+                   "EV_HORIZON"}                                                           # T-519: a spell's once, reset by hand
 #  T-18: a page that is a debug SETTING, not the story -- the follower on or off, the lead's friendship set.
 PAGES_LEFT_OUT = {"PG_FOLLOWER", "PG_FEELINGS", "PG_THREE",       # T-431: the feelings' debug view and its clock; T-454: THE THREE's
                   "PG_SPIRITS"}                                   # T-519: SPIRITS set by hand, to film a crossing
@@ -2091,6 +2124,7 @@ def main():
              "subtle.json": subtle_table(),                                     # T-423: the LIBRARY's second book
              "hermetic.json": hermetic_table(),                                 # T-483 / C-238: the LIBRARY's third book
              "eudaimon.json": eudaimon_table(),                                 # T-519: the third book's dawn half
+             "unity.json": unity_table(),                                       # T-519 item 3: the third book mended
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
     #  T-453; the GUIDE's chapters as guide.json has them (gensubtle, imported since, reuses genguide's parser)
