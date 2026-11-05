@@ -4,12 +4,20 @@
     python3 tools/gensubtle.py                       # report: every entry measured, every rule checked
     python3 tools/gensubtle.py --write                # engineGba/src/data/subtle_layer.h and graphics/book/subtle/
     python3 tools/gensubtle.py --write --engine DIR   # the same, into another engine checkout (a worktree)
-    python3 tools/gensubtle.py --book hermetic        # one book only (subtle, hermetic); without it, both
+    python3 tools/gensubtle.py --book hermetic        # one book only (subtle, hermetic, eudaimon); without it, all three
 
 THE HERMETIC LAYER (T-483) is read by the same parser into the same open book: docs/hermetic-layer.md, written to
 src/data/hermetic_layer.h and graphics/book/hermetic/. Its own rules are the four that file's header keeps (it is the
 one exception to the rest); a paragraph opening '^ ' is an INSCRIPTION, printed in the tablet's emerald (C_RING, which
 the reader breathes), and its pictures are not drawn yet -- every entry shows one plain placeholder frame.
+
+THE EUDAIMON LAYER (T-519 item 2), the third book's dawn half, is the night half read from the other side:
+docs/eudaimon-layer.md, written to src/data/eudaimon_layer.h and graphics/book/eudaimon/ on a warm dawn page. It keeps
+the night half's rules and two more (the frightening word, and the attestation's word), and one voice more: a paragraph
+opening '% ' is the OBSERVER's line, three wordings split by ' | ' (in good spirits, as it is, in low spirits). The entry
+keeps the middle wording in its text, and EUDAIMON_OBSERVER holds the entry's whole text three times, by SPIRITS class
+(0 as it is, 1 good, 2 low -- daemons_spirits.h), so the reader prints the lead daemon's. Every reading is measured.
+Its pictures and cover are placeholders in the night half's style, recoloured for dawn, until they are drawn.
 
 WHAT IT IS. The user's own book, *Developing Psychic Routines*, rewritten for the game as a trainer's handbook
 (docs/subtle-layer.md). It is read as an OPEN BOOK (the user, 2026-10-18): a contents spread, then each entry opens
@@ -121,13 +129,43 @@ HERMETIC_PALETTE = [
     ("C_CHALK_FAINT", (16, 13, 18)),
     ("C_COVER",       (2, 1, 3)),       # the backdrop, pulsed
 ]
+# T-519 item 2: THE EUDAIMON LAYER keeps the night half's rules and the two its own header adds.
+EUDAIMON_RULES = HERMETIC_RULES + [
+    ("the frightening word is never written", r"\bdemon", False, ()),
+    ("the attestation's word is never used here", r"\bwitness", False, ()),
+]
+
+# A dawn page: the night half's palette roles, recoloured warm. The page an umber before sunrise, the ink a warm white,
+# the rules the first light's gold, an INSCRIPTION the same tablet's green seen in the morning. The reader does not
+# breathe this book (BreatheHermetic is the night half's).
+EUDAIMON_PALETTE = [
+    ("C_NONE",        (0, 0, 0)),
+    ("C_PAPER",       (7, 4, 4)),       # the page: an umber before sunrise
+    ("C_INK",         (31, 29, 25)),    # a warm white
+    ("C_SHADOW",      (2, 1, 1)),
+    ("C_FAINT",       (22, 17, 14)),    # folios, captions, the asking voice
+    ("C_RULE",        (27, 18, 8)),     # the first light's gold
+    ("C_MARGIN",      (31, 25, 13)),    # the gold, lit: the marks, the next-page corner
+    ("C_EDGE",        (11, 7, 6)),
+    ("C_EDGE_DARK",   (4, 2, 2)),
+    ("C_HIGHLIGHT",   (13, 8, 7)),      # the cursor's bar
+    ("C_RING",        (12, 24, 15)),    # an INSCRIPTION: the tablet's green, in the morning
+    ("C_FRAME",       (1, 1, 1)),
+    ("C_SLATE",       (12, 7, 6)),      # the cover's boards: a rose-brown
+    ("C_CHALK",       (31, 30, 27)),    # the cover's lettering
+    ("C_CHALK_FAINT", (24, 18, 14)),
+    ("C_COVER",       (9, 5, 5)),       # the backdrop: the sky before the sun
+]
 SUBTLE_RULES, SUBTLE_PALETTE = RULES, PALETTE
 BOOKS = {
     "subtle":   {"src": "docs/subtle-layer.md", "prefix": "Subtle", "define": "SUBTLE", "header": "subtle_layer.h",
                  "gfx": "subtle", "icon": "subtle_layer", "title": "THE SUBTLE LAYER", "subtitle": "a trainer's handbook"},
     "hermetic": {"src": "docs/hermetic-layer.md", "prefix": "Hermetic", "define": "HERMETIC", "header": "hermetic_layer.h",
                  "gfx": "hermetic", "icon": "hermetic_layer", "title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT"},
+    "eudaimon": {"src": "docs/eudaimon-layer.md", "prefix": "Eudaimon", "define": "EUDAIMON", "header": "eudaimon_layer.h",
+                 "gfx": "eudaimon", "icon": "eudaimon_layer", "title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING"},
 }
+NIGHT_AND_DAWN = ("hermetic", "eudaimon")   # the torn book's two halves: placeholder pictures, inscriptions
 
 
 def use(book):
@@ -135,7 +173,8 @@ def use(book):
     global BOOK, SRC, RULES, PALETTE, IDX, RGB8
     BOOK = book
     SRC = os.path.join(ROOT, BOOKS[book]["src"])
-    RULES, PALETTE = (SUBTLE_RULES, SUBTLE_PALETTE) if book == "subtle" else (HERMETIC_RULES, HERMETIC_PALETTE)
+    RULES, PALETTE = {"subtle": (SUBTLE_RULES, SUBTLE_PALETTE), "hermetic": (HERMETIC_RULES, HERMETIC_PALETTE),
+                      "eudaimon": (EUDAIMON_RULES, EUDAIMON_PALETTE)}[book]
     IDX = {name: i for i, (name, _) in enumerate(PALETTE)}
     RGB8 = {name: tuple((c << 3) | (c >> 2) for c in v) for name, v in PALETTE}
 
@@ -149,6 +188,32 @@ def inscribe(sections):
             e["paras"] = [q[2:] if k in e["inscribed"] else q for k, q in enumerate(e["paras"])]
             e["text"] = "\n\n".join(e["paras"])
             e["voices"] = e["faint"] | e["inscribed"]
+    return sections
+
+def observe(sections):
+    """T-519 item 2: the OBSERVER's line ('% good | as is | low'), at most one a book. The entry keeps the middle
+    wording in its text; e['readings'] is its whole text three times, by SPIRITS class (0 as it is, 1 good, 2 low).
+    Not in parse(): companion_export reads the '% ' itself."""
+    found = []
+    for s in sections:
+        for e in s["entries"]:
+            ks = [k for k, q in enumerate(e["paras"]) if q.startswith("% ")]
+            if not ks:
+                continue
+            if len(ks) > 1:
+                raise SystemExit("gensubtle: %s has %d observer lines; a book holds one" % (e["short"], len(ks)))
+            words = [w.strip() for w in e["paras"][ks[0]][2:].split(" | ")]
+            if len(words) != 3 or not all(words):
+                raise SystemExit("gensubtle: %s's observer line needs three wordings split by ' | '" % e["short"])
+            good, as_is, low = words
+            texts = []
+            for w in (as_is, good, low):
+                e["paras"][ks[0]] = w
+                texts.append("\n\n".join(e["paras"]))
+            e["text"], e["readings"], e["observer_para"] = texts[0], texts, ks[0]
+            found.append(e["short"])
+    if len(found) > 1:
+        raise SystemExit("gensubtle: observer lines in %s; a book holds one" % ", ".join(found))
     return sections
 
 # ---------------------------------------------------------------- the text
@@ -220,27 +285,35 @@ def check(sections):
         if len(s["entries"]) > 6:
             bad.append("section %s: %d entries, the contents page holds 6" % (s["label"], len(s["entries"])))
         for e in s["entries"]:
-            title, start, pages = layout(e)
-            if sum(len(p) for p in pages) > g.MAX_LINES:
-                bad.append("%s: more lines than the reader holds (%d)" % (e["short"], g.MAX_LINES))
-            if len(pages) > 1 and len(pages[-1]) <= 2:
-                # T-483: THE HERMETIC LAYER's text is the companion lane's draft, so its short last pages are told,
-                # not failed -- the writer fixes them in docs/hermetic-layer.md.
-                (NOTES if BOOK == "hermetic" else bad).append("%s: its last page holds %d line(s)" % (e["short"], len(pages[-1])))
-            if BOOK == "hermetic":
+            readings = e.get("readings") or [e["text"]]
+            for r, text in enumerate(readings):
+                tag = e["short"] + ("" if len(readings) == 1 else " (%s)" % ("as it is", "good spirits", "low spirits")[r])
+                title, start, pages = layout(dict(e, text=text))
+                if sum(len(p) for p in pages) > g.MAX_LINES:
+                    bad.append("%s: more lines than the reader holds (%d)" % (tag, g.MAX_LINES))
+                if len(pages) > 1 and len(pages[-1]) <= 2:
+                    # T-483: THE HERMETIC LAYER's text is the companion lane's draft, so its short last pages are told,
+                    # not failed -- the writer fixes them in docs/hermetic-layer.md. The dawn half's the same (T-519).
+                    (NOTES if BOOK in NIGHT_AND_DAWN else bad).append("%s: its last page holds %d line(s)" % (tag, len(pages[-1])))
+                if len(g.c_string(text).encode("utf-8")) > 1000:
+                    bad.append("%s: its text is %d bytes; one game string holds 1024 (preproc), so split the entry"
+                               % (tag, len(g.c_string(text).encode("utf-8"))))
+                for ch in g.c_string(text).replace("\\p", ""):
+                    if r and ch not in g.CM and ch != " ":
+                        bad.append("%s: %r is not in the charmap" % (tag, ch))
+            if len({spreads(dict(e, text=t)) for t in readings}) > 1:
+                bad.append("%s: its readings take different spreads, so the folios after it would not agree" % e["short"])
+            if BOOK in NIGHT_AND_DAWN:
                 if not e["sprite"]:
                     bad.append("%s: no @@ SPRITE line" % e["short"])
             elif e["sprite"] not in sp.SPRITES:
                 bad.append("%s: no picture %r in subtle_sprites.py" % (e["short"], e["sprite"]))
             if len(g.reflow(e["caption"], TW, small=True)) > CAPTION_LINES:
                 bad.append("%s: its caption takes more than %d small lines" % (e["short"], CAPTION_LINES))
-            if len(g.c_string(e["text"]).encode("utf-8")) > 1000:
-                bad.append("%s: its text is %d bytes; one game string holds 1024 (preproc), so split the entry"
-                           % (e["short"], len(g.c_string(e["text"]).encode("utf-8"))))
             for ch in g.c_string(e["caption"]):
                 if ch not in g.CM and ch != " ":
                     bad.append("%s: %r in its caption is not in the charmap" % (e["short"], ch))
-            flat = " ".join([e["title"], e["text"], e["caption"]])
+            flat = " ".join([e["title"], e["caption"]] + readings)
             for name, pat, cs, excused in RULES:
                 if e["short"] in excused:
                     continue
@@ -382,8 +455,46 @@ def icon_hermetic():
     return im
 
 
+def cover_eudaimon(letters=True):
+    """T-519 item 2: THE EUDAIMON LAYER's cover (240x160), a placeholder in the night half's style until it is drawn:
+    the same boards, recoloured for dawn, the spine on the right (the dawn half keeps the back cover), and on the plate
+    the sun half over a horizon, its rays in the first light's gold. No byline."""
+    im = Image.new("RGB", (240, 160), RGB8["C_COVER"])
+    d = ImageDraw.Draw(im)
+    d.rectangle((50, 5, 191, 154), fill=RGB8["C_EDGE_DARK"])
+    d.rectangle((48, 4, 188, 152), fill=RGB8["C_SLATE"])
+    d.rectangle((183, 4, 188, 152), fill=RGB8["C_EDGE_DARK"])               # the spine, on the back cover's side
+    d.rectangle((54, 8, 179, 148), outline=RGB8["C_RULE"])
+    title, sub = BOOKS["eudaimon"]["title"], BOOKS["eudaimon"]["subtitle"]
+    if letters:
+        glyphs(im, title, 116 - g.width(title) // 2, 12, False, RGB8["C_CHALK"])
+        glyphs(im, sub, 116 - g.width(sub, True) // 2, 27, True, RGB8["C_CHALK_FAINT"])
+    x0, y0, x1, y1 = 88, 50, 144, 138                    # the plate: the same tablet, its head rounded off
+    d.rectangle((x0, y0 + 6, x1, y1), fill=RGB8["C_EDGE_DARK"], outline=RGB8["C_RING"])
+    d.pieslice((x0, y0, x1, y0 + 12), 180, 360, fill=RGB8["C_EDGE_DARK"], outline=RGB8["C_RING"])
+    d.line((x0 + 1, y0 + 6, x1 - 1, y0 + 6), fill=RGB8["C_EDGE_DARK"])
+    cx, hy = (x0 + x1) // 2, 100
+    for k in range(-3, 4):                               # the rays
+        d.line((cx + k * 4, hy - 16, cx + k * 9, hy - 32 + abs(k) * 3), fill=RGB8["C_RULE"])
+    d.pieslice((cx - 14, hy - 14, cx + 14, hy + 14), 180, 360, fill=RGB8["C_MARGIN"])   # the sun, half risen
+    d.line((x0 + 8, hy, x1 - 8, hy), fill=RGB8["C_RING"])                               # the horizon
+    d.polygon([(cx, 124), (cx + 14, 106), (cx - 14, 106)], outline=RGB8["C_FAINT"])      # below, faint: the other half
+    return im
+
+
+def icon_eudaimon():
+    """The bag's icon (24x24): a closed book on the dawn boards, the first light's gold down its spine."""
+    im = Image.new("RGB", (24, 24), RGB8["C_NONE"])
+    d = ImageDraw.Draw(im)
+    d.rectangle((5, 3, 19, 21), fill=RGB8["C_SLATE"], outline=RGB8["C_INK"])
+    d.rectangle((17, 3, 19, 21), fill=RGB8["C_RULE"])
+    d.pieslice((8, 8, 16, 16), 180, 360, fill=RGB8["C_MARGIN"])
+    d.line((8, 12, 15, 12), fill=RGB8["C_CHALK_FAINT"])
+    return im
+
+
 def pictures(sections):
-    if BOOK == "hermetic":
+    if BOOK in NIGHT_AND_DAWN:
         return ["placeholder"]
     keys = []
     for s in sections:
@@ -398,7 +509,7 @@ def header(sections, keys, nframes):
     P, D = b["prefix"], b["define"]
     out = ["// Generated by DAEMONS tools/gensubtle.py from %s -- edit those, not this." % b["src"],
            "// %s: %s. DRAFT WORDING, every string, until the user approves it on the private"
-           % ("T-423" if BOOK == "subtle" else "T-483", b["title"]),
+           % ({"subtle": "T-423", "hermetic": "T-483", "eudaimon": "T-519"}[BOOK], b["title"]),
            "// field-test page. Its rules are in %s's header." % b["src"], ""]
     n = sum(len(s["entries"]) for s in sections)
     out += ["#define %s_SECTIONS %d" % (D, len(sections)), "#define %s_ENTRIES  %d" % (D, n),
@@ -423,7 +534,7 @@ def header(sections, keys, nframes):
         out.append("    { { %s }, %d, %d, %d },   // %s" % (", ".join(fr), PIC_W, PIC_H, nframes[key], key))
     out += ["};", ""]
     k, folio = 0, 2
-    rows = []
+    rows, observer = [], None
     for i, s in enumerate(sections):
         out.append('static const u8 s%sLabel_%d[] = _("%s");' % (P, i, g.c_string(s["label"])))
         out.append('static const u8 s%sHeading_%d[] = _("%s");' % (P, i, g.c_string(s["heading"])))
@@ -436,10 +547,12 @@ def header(sections, keys, nframes):
             ins = sum(1 << p for p in e.get("inscribed", ()))
             if mask >= 1 << 16 or ins >= 1 << 16:
                 raise SystemExit("gensubtle: %s's voices reach past paragraph 16" % e["short"])
-            pic = 0 if BOOK == "hermetic" else keys.index(e["sprite"])
+            pic = 0 if BOOK in NIGHT_AND_DAWN else keys.index(e["sprite"])
             row = "    { s%sShort_%d, s%sTitle_%d, s%sText_%d, s%sCaption_%d, %d, 0x%04X, %d" % (
                 P, k, P, k, P, k, P, k, pic, mask, folio)
-            rows.append(row + (", 0x%04X },   // %s" % (ins, e["sprite"]) if BOOK == "hermetic" else " },"))
+            rows.append(row + (", 0x%04X },   // %s" % (ins, e["sprite"]) if BOOK in NIGHT_AND_DAWN else " },"))
+            if e.get("readings"):
+                observer = (k, e)
             folio += 2 * spreads(e)
             k += 1
         out.append("")
@@ -449,6 +562,15 @@ def header(sections, keys, nframes):
         out.append("    { s%sLabel_%d, s%sHeading_%d, %d, %d }," % (P, i, P, i, k, len(s["entries"])))
         k += len(s["entries"])
     out += ["};", "", "static const struct SubtleEntry s%sEntries[%s_ENTRIES] =" % (P, D), "{"] + rows + ["};"]
+    if observer:
+        # T-519 item 2: the observer's line -- the entry's whole text three times, by the lead daemon's SPIRITS class
+        k, e = observer
+        out += ["", "// T-519 item 2: the OBSERVER's line in %s (paragraph %d): the entry's whole text by the lead daemon's"
+                % (e["short"], e["observer_para"]), "// SPIRITS class (daemons_spirits.h: 0 as it is, 1 good spirits, 2 low spirits).",
+                "#define %s_OBSERVER_ENTRY %d" % (D, k)]
+        for r in (1, 2):
+            out.append('static const u8 s%sObserver_%d[] = _("%s");' % (P, r, g.c_string(e["readings"][r])))
+        out += ["static const u8 *const s%sObserver[3] = { s%sText_%d, s%sObserver_1, s%sObserver_2 };" % (P, P, k, P, P)]
     return "\n".join(out) + "\n"
 
 # ---------------------------------------------------------------- the companion's copy (tools/companion_export.py)
@@ -487,16 +609,17 @@ def run(book):
     use(book)
     b = BOOKS[book]
     sections = parse()
-    if book == "hermetic":
+    if book in NIGHT_AND_DAWN:
         inscribe(sections)
+        observe(sections)
     bad = check(sections)
     keys = pictures(sections)
-    nframes = {k: 1 for k in keys} if book == "hermetic" else {k: len(frames_of(k)) for k in keys}
+    nframes = {k: 1 for k in keys} if book in NIGHT_AND_DAWN else {k: len(frames_of(k)) for k in keys}
     n = sum(len(s["entries"]) for s in sections)
     total = sum(spreads(e) for s in sections for e in s["entries"])
     print("gensubtle %s: %d sections, %d entries, %d pictures (%d frames), %d spreads"
           % (book, len(sections), n, len(keys), sum(nframes.values()), total))
-    if book == "hermetic":
+    if book in NIGHT_AND_DAWN:
         named = {e["sprite"] for s in sections for e in s["entries"]}
         print("  %d pictures named, none drawn yet: every entry shows the placeholder frame" % len(named))
     for note in NOTES:
@@ -510,10 +633,11 @@ def run(book):
         return True
     gfx = os.path.join(ENGINE, "graphics/book", b["gfx"])
     os.makedirs(gfx, exist_ok=True)
-    if book == "hermetic":
+    if book in NIGHT_AND_DAWN:
         indexed(placeholder(), PIC_W, PIC_H).save(os.path.join(gfx, "placeholder_0.png"))
-        indexed(cover_hermetic(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
-        ic = icon_hermetic()
+        indexed((cover_hermetic if book == "hermetic" else cover_eudaimon)(), 240, 160, fill="C_COVER").save(
+            os.path.join(gfx, "cover.png"))
+        ic = icon_hermetic() if book == "hermetic" else icon_eudaimon()
     else:
         for key in keys:
             for f, fr in enumerate(frames_of(key)):

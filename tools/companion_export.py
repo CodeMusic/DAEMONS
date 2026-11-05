@@ -1130,8 +1130,8 @@ def hermetic_table():
 def eudaimon_table():
     """T-519: THE EUDAIMON LAYER, the third book's dawn half -- docs/eudaimon-layer.md, approved by the user 2026-11-04,
     read by the same parser as the night half. One voice more: the OBSERVER line ('% '), three wordings split by ' | ',
-    printed by the lead daemon's SPIRITS (in good spirits, as it is, in low spirits). No flag yet: the game has not
-    placed the half, so 'flag' is null until it does. DRAFT, every word."""
+    printed by the lead daemon's SPIRITS (in good spirits, as it is, in low spirits). 'flag' is FLAG_GOT_EUDAIMON_LAYER's
+    number (T-519 item 2: the game gives the half now). DRAFT, every word."""
     import gensubtle
     keep = gensubtle.SRC
     gensubtle.SRC = os.path.join(ROOT, "docs/eudaimon-layer.md")
@@ -1155,7 +1155,8 @@ def eudaimon_table():
             entries.append({"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0,
                             "caption": e["caption"], "paragraphs": paras})
         out.append({"label": s["label"], "heading": s["heading"], "entries": entries})
-    return {"title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING", "draft": True, "flag": None, "sections": out}
+    flag = flag_values(["FLAG_GOT_EUDAIMON_LAYER"])["FLAG_GOT_EUDAIMON_LAYER"]
+    return {"title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING", "draft": True, "flag": flag, "sections": out}
 
 
 def _c_strings(src):

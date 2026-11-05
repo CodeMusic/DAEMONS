@@ -1679,7 +1679,8 @@ def check_articles():
                     #  U is a vowel unless it is said "you": a USER, a UNION -- but an UPTIME (T-242: "a UPTIME" shipped,
                     #  because this line used to call every U a consonant).
                     you = word.startswith(("USE", "USU", "UNI", "UTI", "URA", "URI", "UBI", "UFO", "UKU"))
-                    vowel = word[0] in "AEIO" or (word[0] == "U" and not you) or word.startswith("HONEST") or word.startswith("HOUR")
+                    #  T-519: and an EU said "you" takes "a" too (a EUDAIMON, as the dawn half writes it)
+                    vowel = (word[0] in "AEIO" and not word.startswith("EU")) or (word[0] == "U" and not you) or word.startswith("HONEST") or word.startswith("HOUR")
                     if (art == "an") != vowel:
                         n = joined[:line_start].count("\n") + joined[:line_start].count("\x01") + 1
                         out.append(("%s:%d" % (os.path.relpath(f, GBA), n), "%s %s" % (m.group(1), word)))
