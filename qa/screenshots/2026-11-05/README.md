@@ -55,3 +55,15 @@ T-445 built (engine d4a691fd9, not pushed): the four place cards as the DEBUG RO
 T-445 built (engine d4a691fd9, not pushed): the four place cards as the DEBUG ROM shows them on entering each place on foot -- THE UNDERTONE (reseeded, 4493) from ROUTE 2's south gate, THE SAME BUSH's own card from GREEN PATH (it showed THE UNDERTONE's), DENSE WOOD from BOND BRIDGE, SAFARI ZONE from its gate. Then each stop's full burst through the fade (route tools/routes/t445_place_previews.json).
 
 ![5Nov2026 - T445 - place previews built - 12](5Nov2026%20-%20T445%20-%20place%20previews%20built%20-%2012.png)
+
+### 5Nov2026 - C298 - JOURNEY JOURNAL and its printed page - 13
+
+C-298: JOURNEY's JOURNAL on the site (a chapter laid out as written), and the one-page PDF of a chapter the Tiiny wrote on its slow path (sample entries)
+
+![5Nov2026 - C298 - JOURNEY JOURNAL and its printed page - 13](5Nov2026%20-%20C298%20-%20JOURNEY%20JOURNAL%20and%20its%20printed%20page%20-%2013.jpg)
+
+### 5Nov2026 - C298 - JOURNEY JOURNAL and its printed page - 14
+
+C-298: JOURNEY's JOURNAL on the site (a chapter laid out as written), and the one-page PDF of a chapter the Tiiny wrote on its slow path (sample entries)
+
+![5Nov2026 - C298 - JOURNEY JOURNAL and its printed page - 14](5Nov2026%20-%20C298%20-%20JOURNEY%20JOURNAL%20and%20its%20printed%20page%20-%2014.png)
