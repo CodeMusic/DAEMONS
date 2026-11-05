@@ -80,6 +80,12 @@ C-299 (DAEMONS T-519 item 3): THE UNITY BOOK in the companion's LIBRARY, on the 
 
 ![5Nov2026 - C299 - the unity book in the companion - 26](5Nov2026%20-%20C299%20-%20the%20unity%20book%20in%20the%20companion%20-%2026.png)
 
+### 5Nov2026 - T519 - THE UNITY BOOKs cards - 29
+
+THE UNITY BOOK's CARDS (DRAFT): the tile on its cover, the day's card turned and read, a selector of one entry (Both as One), PAST / PRESENT / FUTURE, MIND / BODY / SPIRIT and a single draw.
+
+![5Nov2026 - T519 - THE UNITY BOOKs cards - 29](5Nov2026%20-%20T519%20-%20THE%20UNITY%20BOOKs%20cards%20-%2029.png)
+
 ### 5Nov2026 - C302 - glass and fruit stages - 30
 
 C-302 (DRAFT): what DRINK and FEED give in the app's den -- full, 2/3, 1/3, empty over the care's phrase, then gone
