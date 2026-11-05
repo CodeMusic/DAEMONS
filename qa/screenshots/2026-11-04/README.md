@@ -79,3 +79,9 @@ T-519 (DRAFT): THE CREATOR'S HOUR resolving into the dawn, the last motes.
 T-519 (DRAFT): the LARK by DAEMON TOWER in HALFTONE, and its line.
 
 ![4Nov2026 - T519 - the two hours - 14](4Nov2026%20-%20T519%20-%20the%20two%20hours%20-%2014.png)
+
+### 4Nov2026 - T519 - spirits tone - 15
+
+T-519 item 1, SPIRITS (DRAFT): the tone made plainer (the user, 2026-11-04), 10/32 of the way to white in good spirits (was 6/32) -- the summary with the lead set in good spirits through DEBUG -> GAME EVENTS -> SPIRITS, its picture lighter over its type's colours, and the fourth page's words.
+
+![4Nov2026 - T519 - spirits tone - 15](4Nov2026%20-%20T519%20-%20spirits%20tone%20-%2015.png)
