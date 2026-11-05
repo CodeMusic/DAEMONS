@@ -76,8 +76,8 @@ the forests and the SAFARI, and --places paints them by the caves' method (vanil
 colours the places are built in now -- THE UNDERTONE's deep understory, DENSE WOOD's golden canopy, the SAFARI's
 grass under LURID's chartreuse -- then painted on the server). THE SAME BUSH (MAPSEC_PATTERN_BUSH) shows THE
 UNDERTONE's picture in the engine; since batch H it is salt scrub on a tileset of its own, so it is drafted as a NEW
-card (pattern_bush, borrowing viridian_forest's letterbox and banner) -- building it is a new INCBIN and a repointed
-MPS_PATTERN_BUSH entry, engine code the user approves first.
+card (pattern_bush, borrowing viridian_forest's letterbox and banner). BUILT 2026-11-05: the user approved all four;
+the engine has pattern_bush's own INCBINs and MPS_PATTERN_BUSH points at them, so --write writes it like the others.
 """
 import argparse, collections, contextlib, io, json, os, re, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -233,8 +233,10 @@ PAINT = {
 #  the forests and the SAFARI (--places, drafted 2026-11-05): vanilla's composition graded through the colours each
 #  place is built in now (sampled from reviewsheet's render of its maps), then painted as the caves were. "what" is the
 #  look it is graded from; pattern_bush is a NEW card (THE SAME BUSH shows THE UNDERTONE's picture in the engine).
-#  DRAFTS: nothing is in PLACES_APPROVED, so --write writes none of them.
-PLACES_APPROVED = set()
+#  the user (2026-11-05): "They all look good, and we want to replace all Nintendo art, so I'd say all of them" -- with
+#  THE UNDERTONE redrawn first, its light shaft clean of the olive-brown streaks (white_sat, and a new seed). THE SAME
+#  BUSH's card is its own INCBIN now (sPatternBushMapPreview*, MPS_PATTERN_BUSH repointed to it).
+PLACES_APPROVED = {"viridian_forest", "pattern_bush", "berry_forest", "safari_zone"}
 UNDERTONE = [(16, 30, 22), (28, 52, 34), (42, 82, 44), (58, 112, 56), (88, 150, 80), (132, 188, 84)]
 PLACES = {
     "viridian_forest": dict(
@@ -242,7 +244,8 @@ PLACES = {
         leaf=UNDERTONE, water=[(14, 26, 22), (30, 56, 44), (56, 92, 66)],
         sky=[(82, 112, 78), (150, 176, 120)], white=[(120, 150, 100), (186, 204, 150)],
         rock=[(20, 16, 14), (40, 32, 26), (66, 54, 40), (98, 84, 60), (134, 120, 86)], tex=0.10,
-        seed=4480, denoise=0.48,
+        white_sat=0.21,                 # the shaft's mint edge is light, not rock (it painted olive-brown streaks)
+        seed=4493, denoise=0.48,        # 4480 drafted; 4490-4495 repainted on the clean start image, 4493 picked
         prompt="deep in a forest understory under a heavy dark green canopy, thick dark trunks with twisting "
                "branches, the light from above muted and low, faint dim green shafts, ferns and undergrowth in "
                "shadow, deep green and near-black, a quiet hum of shade",
@@ -405,12 +408,15 @@ def _lum(c):
     return 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
 
 
-def _region(c):
-    """what a pixel of vanilla's painting is: rock (and the ground), white (a lit rock or a cloud), leaf, sky, water"""
+def _region(c, white_sat=0.12):
+    """what a pixel of vanilla's painting is: rock (and the ground), white (a lit rock or a cloud), leaf, sky, water.
+    white_sat (a place's "white_sat"): how grey a bright pixel may be and still be light -- vanilla's forest edges its
+    light shaft in a pale mint (200, 240, 192: saturation 0.20) that the default reads as rock, and the rock ramp
+    graded it into olive-brown streaks down the shaft (the user, 2026-11-05)"""
     import colorsys
     h, sat, v = colorsys.rgb_to_hsv(*[x / 255 for x in c])
     h *= 360
-    if sat < 0.12 and v > 0.85:
+    if sat < white_sat and v > 0.85:
         return "white"
     if 75 <= h <= 170 and sat > 0.2:
         return "leaf"
@@ -438,7 +444,7 @@ def paint_init(folder, sec):
     lums = collections.defaultdict(list)
     for y in range(H):
         for x in range(W):
-            lums[_region(px[x, y])].append(_lum(px[x, y]))
+            lums[_region(px[x, y], c.get("white_sat", 0.12))].append(_lum(px[x, y]))
     rng = {k: (min(l), max(l)) for k, l in lums.items()}
     rock_lo, rock_hi = rng["rock"][0], max(rng["rock"][1], rng.get("white", (0, 0))[1])
     dl = [_lum(dp[x, y]) for y in range(H) for x in range(W)]
@@ -449,7 +455,7 @@ def paint_init(folder, sec):
     for y in range(H):
         for x in range(W):
             p = px[x, y]
-            k = _region(p)
+            k = _region(p, c.get("white_sat", 0.12))
             if k == "white":
                 if c.get("white") == "keep":
                     continue

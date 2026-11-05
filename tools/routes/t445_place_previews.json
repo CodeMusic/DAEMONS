@@ -1,0 +1,101 @@
+{
+  "rom": "debug",
+  "about": "T-445 built: the forests' and the SAFARI's name cards, each place entered on foot from the overworld so the game shows its card over the map as it fades in (a burst through it), then the place inside: THE UNDERTONE from ROUTE 2's south gate (the reseeded painting), THE SAME BUSH from GREEN PATH (its own card now, no longer THE UNDERTONE's), DENSE WOOD from BOND BRIDGE, the SAFARI from its gate, walked in past the counter's trigger (no SAFARI game started). The theatre's debug scratch save; nothing is saved. The follower is put away (FLAG_FOLLOWER_OFF) so its bubble does not cover the player. GREEN PATH's and BOND BRIDGE's mouths are arrow warps (behaviour 0x64): the player stands on one and holds UP 24 frames, as theatre_walk's enter() does. A dream can play on the first steps after a load (as T-519's routes say), so each place's walk is finished before its card is filmed.",
+  "stops": [
+    {
+      "stop": "the DEBUG build, continued",
+      "steps": [
+        "load debug",
+        "flag FLAG_FOLLOWER_OFF 1"
+      ]
+    },
+    {
+      "stop": "THE UNDERTONE (VIRIDIAN FOREST), from ROUTE 2's south gate",
+      "steps": [
+        "goto Route2_ViridianForest_SouthEntrance 7 2",
+        "repel 999",
+        "wait 30",
+        "finish",
+        "wait 90",
+        "finish",
+        "wait 120",
+        "finish",
+        "to 7 2",
+        "finish",
+        "wait 60",
+        "finish",
+        "wait 20",
+        "shot outside",
+        "burst \"THE UNDERTONE card\" 24 10 UP 16",
+        "wait 120",
+        "shot inside"
+      ]
+    },
+    {
+      "stop": "THE SAME BUSH (PATTERN BUSH), from GREEN PATH",
+      "steps": [
+        "goto SixIsland_GreenPath 63 11",
+        "repel 999",
+        "wait 30",
+        "finish",
+        "wait 90",
+        "finish",
+        "wait 120",
+        "finish",
+        "to 63 10",
+        "finish",
+        "wait 60",
+        "finish",
+        "wait 20",
+        "shot outside",
+        "burst \"THE SAME BUSH card\" 24 10 UP 24",
+        "wait 120",
+        "shot inside"
+      ]
+    },
+    {
+      "stop": "DENSE WOOD (BERRY FOREST), from BOND BRIDGE",
+      "steps": [
+        "goto ThreeIsland_BondBridge 12 7",
+        "repel 999",
+        "wait 30",
+        "finish",
+        "wait 90",
+        "finish",
+        "wait 120",
+        "finish",
+        "to 12 6",
+        "finish",
+        "wait 60",
+        "finish",
+        "wait 20",
+        "shot outside",
+        "burst \"DENSE WOOD card\" 24 10 UP 24",
+        "wait 120",
+        "shot inside"
+      ]
+    },
+    {
+      "stop": "the SAFARI, from its gate",
+      "steps": [
+        "goto FuchsiaCity_SafariZone_Entrance 4 2",
+        "repel 999",
+        "wait 30",
+        "finish",
+        "wait 90",
+        "finish",
+        "wait 120",
+        "finish",
+        "to 4 2",
+        "finish",
+        "wait 60",
+        "finish",
+        "wait 20",
+        "shot outside",
+        "burst \"SAFARI ZONE card\" 24 10 UP 16",
+        "wait 120",
+        "shot inside"
+      ]
+    }
+  ]
+}
