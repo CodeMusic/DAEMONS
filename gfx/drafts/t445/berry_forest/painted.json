@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/berry_forest/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, inside a dense wood of crowded round golden yellow trees, thick canopies of yellow leaves pressed together, olive shadows between them, warm light through small gaps, green grass at the foot, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, autumn red, orange leaves, blue sky, mountains",
+ "seed": 4482,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.48,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/berry_forest/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 44.9,
+ "comfyui": "0.19.1",
+ "made": "2026-11-05 01:05:42"
+}

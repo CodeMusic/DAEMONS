@@ -1,0 +1,23 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/pattern_bush/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, a thicket of low salt scrub by the sea, dense round bushes of pale silvery grey-green all exactly alike, repeating, salt-white tips on the leaves, grey twisted stems, a pale sea haze behind, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, tall trees, dark forest, bright green, sunbeams, mountains",
+ "seed": 4481,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/pattern_bush/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "host": "http://roverbyteseer:8008",
+ "seconds": 42.9,
+ "comfyui": "0.19.1",
+ "made": "2026-11-05 01:04:55"
+}

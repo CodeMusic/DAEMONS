@@ -18,6 +18,10 @@
                                                          # T-456: one card, one seed, drafted into DIR (a NEW card --
                                                          #   UMBRA PLATEAU has no sMapPreviewScreenData entry -- is
                                                          #   drafted, never written)
+    python3 tools/gbapreviews.py --places --paint        # the forests' and the SAFARI's cards (PLACES: THE UNDERTONE,
+    python3 tools/gbapreviews.py --places --draft        #   DENSE WOOD, the SAFARI, and THE SAME BUSH as a card of its
+                                                         #   own), painted as the caves were; --write writes only what
+                                                         #   PLACES_APPROVED names, and never a NEW card
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
                                                          #   OTHER CAVE's light1..3.pal too. Without --approved it refuses.
@@ -66,6 +70,14 @@ script), so the light it shows is the coming visit's, VarGet(VAR_OTHER_CAVE_LIGH
 WHAT IS NOT DRAFTED: DOLDRUM CAVE (cerulean_cave -- its look waits on the user, T-251) and the TANOBY chambers
 (monean_chamber -- batch G), and the previews that are not caves (forests, the tower, the mansion, SILPH, the hideout
 and the warehouse, the SAFARI): T-445 is the caves, and those wait on their own batches. The report lists them all.
+
+THE PLACES (2026-11-05, drafted): the landmarks are --landmarks; what is left vanilla but the two waiting caves is
+the forests and the SAFARI, and --places paints them by the caves' method (vanilla's composition graded through the
+colours the places are built in now -- THE UNDERTONE's deep understory, DENSE WOOD's golden canopy, the SAFARI's
+grass under LURID's chartreuse -- then painted on the server). THE SAME BUSH (MAPSEC_PATTERN_BUSH) shows THE
+UNDERTONE's picture in the engine; since batch H it is salt scrub on a tileset of its own, so it is drafted as a NEW
+card (pattern_bush, borrowing viridian_forest's letterbox and banner) -- building it is a new INCBIN and a repointed
+MPS_PATTERN_BUSH entry, engine code the user approves first.
 """
 import argparse, collections, contextlib, io, json, os, re, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -93,6 +105,7 @@ ap.add_argument("--top-down", action="store_true", dest="top_down")
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--landmarks", action="store_true")      # the landmarks' cards (LANDMARK) instead of the caves
+ap.add_argument("--places", action="store_true")         # the forests' and the SAFARI's cards (PLACES)
 ap.add_argument("--only", nargs="+")                     # draft only these folders (T-456: one card, its seeds)
 ap.add_argument("--seed", type=int)                      # --paint with this seed instead of the entry's
 A = ap.parse_args()
@@ -114,14 +127,14 @@ BATCH_E = {
 NOT_DRAFTED = {
     "cerulean_cave": "DOLDRUM CAVE: its look waits on the user (T-251, gbacaves.py), so its preview does too",
     "monean_chamber": "the TANOBY chambers (seven mapsecs share it): their tileset is batch G's",
-    "viridian_forest": "a forest, not a cave (and PATTERN BUSH shares it): its own batch",
-    "berry_forest": "a forest, not a cave: its own batch",
+    "viridian_forest": "a forest (PLACES, --places)",
+    "berry_forest": "a forest (PLACES, --places)",
     "pokemon_tower": "the tower: a landmark (LANDMARK, --landmarks)",
     "pokemon_mansion": "the mansion: a landmark (LANDMARK, --landmarks)",
     "silph_co": "SILPH (CORPUS's tower): a landmark (LANDMARK, --landmarks)",
     "rocket_hideout": "CORPUS HIDEOUT: an interior (LANDMARK, --landmarks), from the current map",
     "rocket_warehouse": "CORPUS WAREHOUSE: an interior (LANDMARK, --landmarks), from the current map",
-    "safari_zone": "the SAFARI: its own batch",
+    "safari_zone": "the SAFARI (PLACES, --places)",
 }
 
 # a view chosen by eye where the search would pick a duller one: (map, x0, y0) in metatiles, a 15x7 window at 1x
@@ -217,6 +230,53 @@ PAINT = {
 }
 
 
+#  the forests and the SAFARI (--places, drafted 2026-11-05): vanilla's composition graded through the colours each
+#  place is built in now (sampled from reviewsheet's render of its maps), then painted as the caves were. "what" is the
+#  look it is graded from; pattern_bush is a NEW card (THE SAME BUSH shows THE UNDERTONE's picture in the engine).
+#  DRAFTS: nothing is in PLACES_APPROVED, so --write writes none of them.
+PLACES_APPROVED = set()
+UNDERTONE = [(16, 30, 22), (28, 52, 34), (42, 82, 44), (58, 112, 56), (88, 150, 80), (132, 188, 84)]
+PLACES = {
+    "viridian_forest": dict(
+        what="THE UNDERTONE (batch F: its trunks, the grove's tell)",
+        leaf=UNDERTONE, water=[(14, 26, 22), (30, 56, 44), (56, 92, 66)],
+        sky=[(82, 112, 78), (150, 176, 120)], white=[(120, 150, 100), (186, 204, 150)],
+        rock=[(20, 16, 14), (40, 32, 26), (66, 54, 40), (98, 84, 60), (134, 120, 86)], tex=0.10,
+        seed=4480, denoise=0.48,
+        prompt="deep in a forest understory under a heavy dark green canopy, thick dark trunks with twisting "
+               "branches, the light from above muted and low, faint dim green shafts, ferns and undergrowth in "
+               "shadow, deep green and near-black, a quiet hum of shade",
+        neg="bright sunlight, white light, blue sky, mountains, snow"),
+    "pattern_bush": dict(
+        what="THE SAME BUSH (batch H: salt scrub, gTileset_SameBush)", new=True, banner_from="viridian_forest",
+        mps="MPS_PATTERN_BUSH", mapsec="MAPSEC_PATTERN_BUSH", type="MPS_TYPE_FOREST",
+        leaf=[(40, 66, 60), (66, 99, 84), (98, 136, 116), (142, 176, 140), (186, 212, 180), (220, 234, 210)],
+        water=[(52, 80, 76), (96, 128, 116), (150, 176, 160)], sky=[(176, 196, 192), (226, 234, 228)],
+        white=[(206, 220, 210), (240, 244, 236)],
+        rock=[(52, 48, 44), (88, 84, 74), (130, 126, 110), (176, 172, 150)], tex=0.10,
+        seed=4481, denoise=0.50,
+        prompt="a thicket of low salt scrub by the sea, dense round bushes of pale silvery grey-green all exactly "
+               "alike, repeating, salt-white tips on the leaves, grey twisted stems, a pale sea haze behind",
+        neg="tall trees, dark forest, bright green, sunbeams, mountains"),
+    "berry_forest": dict(
+        what="DENSE WOOD (batch H: the golden canopy)",
+        rock=[(48, 38, 22), (92, 76, 34), (150, 138, 48), (206, 196, 88), (250, 244, 150)],
+        leaf=[(40, 82, 38), (66, 128, 58), (88, 160, 84), (124, 192, 104)],
+        white=[(236, 228, 150), (255, 252, 200)], sky=[(220, 212, 150), (250, 246, 206)], tex=0.10,
+        seed=4482, denoise=0.48,
+        prompt="inside a dense wood of crowded round golden yellow trees, thick canopies of yellow leaves pressed "
+               "together, olive shadows between them, warm light through small gaps, green grass at the foot",
+        neg="autumn red, orange leaves, blue sky, mountains"),
+    "safari_zone": dict(
+        what="the SAFARI (batch H: the grass, LURID's chartreuse canopy)",
+        leaf=[(42, 82, 44), (66, 128, 58), (112, 204, 41), (189, 242, 74), (231, 255, 74)],
+        rock=[(96, 84, 60), (150, 140, 110), (196, 192, 170), (224, 224, 212)], tex=0.10,
+        seed=4483, denoise=0.48,
+        prompt="a wide savanna park, one flat-topped acacia tree with an acid chartreuse canopy, tall bright green "
+               "grass, a sandy path with a row of wooden fence posts, a pond far off, low hills and a pale blue sky",
+        neg="buildings, cars, animals, people"),
+}
+
 # ================================================================== reading the engine
 def previews():
     """[(MPS key, MAPSEC, type, folder)] from sMapPreviewScreenData, in its order"""
@@ -262,10 +322,15 @@ def _pret(rel):
     return r.stdout
 
 
+def cfg(folder):
+    """a card's entry: LANDMARK's, PLACES' or PAINT's (a cave's)"""
+    return LANDMARK.get(folder) or PLACES.get(folder) or PAINT.get(folder, {})
+
+
 def van(folder):
     """vanilla(folder), or for a NEW card (T-456: no vanilla picture) the card it borrows its letterbox, banner and
     palette 14 from"""
-    return vanilla(LANDMARK.get(folder, {}).get("banner_from", folder))
+    return vanilla(cfg(folder).get("banner_from", folder))
 
 
 def vanilla(folder):
@@ -364,8 +429,8 @@ def _ramp(r, t):
 def paint_init(folder, sec):
     """the start image: vanilla's picture (rows 3..16) graded through the cave's ramps, the top-down view's light laid
     faintly into the rock, at the painting's size"""
-    c = PAINT[folder]
-    vt, vm, vpal = vanilla(folder)
+    c = cfg(folder)
+    vt, vm, vpal = van(folder)
     v = compose(vt, vm, vpal).crop((0, 24, 240, 136))
     td, _ = picture(folder, sec, painted=False)
     px, dp = v.load(), td.convert("RGB").load()
@@ -936,7 +1001,7 @@ def paint(folder, sec, out_dir):
     os.makedirs(d, exist_ok=True)
     init = os.path.join(d, "painted_init.png")
     (landmark_init(folder) if folder in LANDMARK else paint_init(folder, sec)).save(init)
-    c = LANDMARK.get(folder) or PAINT[folder]
+    c = cfg(folder)
     p = dict(mode="i2i", out=os.path.join(d, "painted"), prompt=PAINT_STYLE % c["prompt"],
              negative=PAINT_NEG + (", " + c["neg"] if c.get("neg") else ""),
              seed=A.seed or c["seed"], steps=28, cfg=5.5, sampler="dpmpp_2m", scheduler="karras", denoise=c["denoise"],
@@ -960,7 +1025,7 @@ def painted_picture(folder):
         h = int(W / want)
         im = im.crop((0, (H - h) // 2, W, (H - h) // 2 + h))
     im = im.resize((240, 112), Image.LANCZOS)
-    for m in (LANDMARK.get(folder) or PAINT.get(folder, {})).get("post", []):
+    for m in cfg(folder).get("post", []):
         POSTS[m](im)
     return im
 
@@ -1254,7 +1319,7 @@ def build(folder, sec):
     pic, where = picture(folder, sec)
     if pic is None:
         return None
-    c = LANDMARK.get(folder, {})
+    c = cfg(folder)
     idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"), force=c.get("force", ()), neutral=c.get("neutral"))
     tiles, seen, m, tpal = [], {}, [0] * 640, []
 
@@ -1347,7 +1412,7 @@ def new_rule(rules, folder, n):
 
 def entry(by_folder, folder):
     """(MPS key, MAPSEC, type) of a card: sMapPreviewScreenData's, or a NEW card's own (T-456)"""
-    c = LANDMARK.get(folder, {})
+    c = cfg(folder)
     if folder not in by_folder and c.get("new"):
         return c["mps"], c["mapsec"], c["type"]
     return by_folder[folder][0]
@@ -1364,17 +1429,23 @@ def report():
         status = ("batch E: " + BATCH_E[folder]) if folder in BATCH_E else \
             ("landmark (%s): drafted with --landmarks%s" % (landmark_source(folder),
              ", APPROVED" if folder in LANDMARK_APPROVED else ", waits on the user")) if folder in LANDMARK else \
+            ("place (%s): drafted with --places%s" % (PLACES[folder]["what"],
+             ", APPROVED" if folder in PLACES_APPROVED else ", waits on the user")) if folder in PLACES else \
             ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
         print("  %-17s %s" % (folder, status))
         for key, sec, typ in ents:
             n = nm.get(sec, "?")
             w = name_width(n)
             print("      %-22s %-34s %-16s %3dpx%s" % (key, sec, n, w, "  ** wider than the 104px window" if w > 104 else ""))
-    for folder, c in LANDMARK.items():
+    for folder, c in list(LANDMARK.items()) + list(PLACES.items()):
         if c.get("new") and folder not in by_folder:
             n = nm.get(c["mapsec"], "?")
-            print("  %-17s NEW card (%s, no vanilla picture): drafted with --landmarks, waits on the user and on "
-                  "T-456's engine entry" % (folder, landmark_source(folder)))
+            if folder in PLACES:
+                print("  %-17s NEW card (%s; the engine shows %s's): drafted with --places, waits on the user and on "
+                      "its engine entry" % (folder, c["what"], c["banner_from"]))
+            else:
+                print("  %-17s NEW card (%s, no vanilla picture): drafted with --landmarks, waits on the user and on "
+                      "T-456's engine entry" % (folder, landmark_source(folder)))
             print("      %-22s %-34s %-16s %3dpx" % (c["mps"], c["mapsec"], n, name_width(n)))
     return by_folder
 
@@ -1385,7 +1456,7 @@ def main():
         return 1
     by_folder = report()
     if A.paint is not None:
-        for folder in (A.paint or list(LANDMARK if A.landmarks else PAINT)):
+        for folder in (A.paint or list(LANDMARK if A.landmarks else PLACES if A.places else PAINT)):
             key, sec, typ = entry(by_folder, folder)
             paint(folder, sec, A.draft or DRAFT_DEFAULT)
         if not (A.draft or A.write):
@@ -1396,14 +1467,17 @@ def main():
     out_dir = A.draft or DRAFT_DEFAULT
     sheets = A.sheets or out_dir
     rows = []
-    for folder in (LANDMARK if A.landmarks else BATCH_E):
+    for folder in (LANDMARK if A.landmarks else PLACES if A.places else BATCH_E):
         if A.only and folder not in A.only:
             continue
-        if A.write and LANDMARK.get(folder, {}).get("new") and folder not in by_folder and not A.draft:
+        if A.write and cfg(folder).get("new") and folder not in by_folder and not A.draft:
             print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet: not written" % folder)
             continue
         if A.landmarks and A.write and folder not in LANDMARK_APPROVED and not A.draft:
             print("  %-17s not approved (LANDMARK_APPROVED): not written" % folder)
+            continue
+        if A.places and A.write and folder not in PLACES_APPROVED and not A.draft:
+            print("  %-17s not approved (PLACES_APPROVED): not written" % folder)
             continue
         key, sec, typ = entry(by_folder, folder)
         made = build(folder, sec)
@@ -1419,7 +1493,8 @@ def main():
             van_.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
         for im in (van_, dra):
             draw_name(im, nm[sec], (vpal if im is van_ else pal))
-        what = ("from %s, as built" % landmark_source(folder)) if A.landmarks else BATCH_E[folder]
+        what = ("from %s, as built" % landmark_source(folder)) if A.landmarks else \
+            PLACES[folder]["what"] if A.places else BATCH_E[folder]
         notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, what, "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
                  "palette 13: 15 colours + vanilla's 0", "palette 14, letterbox, banner: vanilla's"]
@@ -1448,7 +1523,7 @@ def main():
                 li.save(os.path.join(d, "preview_light%d.png" % n))
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
-        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED):
+        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED):
             d = os.path.join(MPS, folder)
             os.makedirs(d, exist_ok=True)                                # a NEW card's folder (T-456)
             tiles_png(png, pal, os.path.join(d, "tiles.png"))
@@ -1476,7 +1551,12 @@ def main():
         per = 5 if painted else (len(rows) + 1) // 2
         parts = [rows[i:i + per] for i in range(0, len(rows), per)]
         for i, part in enumerate(parts, 1):
-            if A.landmarks:
+            if A.places:
+                p = sheet(part, os.path.join(sheets, "t445f_%d.png" % i),
+                          "T-445 DRAFT -- the forests' and the SAFARI's cards, vanilla (left) and PAINTED in the "
+                          "colours they are built in now (right); the name is the game's, in its own font. Sheet %d "
+                          "of %d." % (i, len(parts)))
+            elif A.landmarks:
                 p = sheet(part, os.path.join(sheets, "t445n_%d.png" % i),
                           "T-445 DRAFT -- the landmarks' name cards, vanilla (left) and PAINTED from T-447's buildings "
                           "(right); the name is the game's, in its own font. Sheet %d of %d." % (i, len(parts)))
