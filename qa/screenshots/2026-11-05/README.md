@@ -79,3 +79,9 @@ THE UNITY BOOK (DRAFT): its placeholder cover with both spines, the ATTESTATION'
 C-299 (DAEMONS T-519 item 3): THE UNITY BOOK in the companion's LIBRARY, on the site against a synthetic mended save (never the user's). 1 the shelf once mended: THE UNITY BOOK, the two halves gone as in the game; 2 both covers laid flat, stitched at the spine in green and gold; 3 its deck deals Both as One only; 4 BALANCE at the crease, both halves' colours under its heading. DRAFT.
 
 ![5Nov2026 - C299 - the unity book in the companion - 26](5Nov2026%20-%20C299%20-%20the%20unity%20book%20in%20the%20companion%20-%2026.png)
+
+### 5Nov2026 - C302 - glass and fruit stages - 30
+
+C-302 (DRAFT): what DRINK and FEED give in the app's den -- full, 2/3, 1/3, empty over the care's phrase, then gone
+
+![5Nov2026 - C302 - glass and fruit stages - 30](5Nov2026%20-%20C302%20-%20glass%20and%20fruit%20stages%20-%2030.png)
