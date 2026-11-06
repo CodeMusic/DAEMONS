@@ -1,0 +1,642 @@
+{
+ "rom": "debug",
+ "about": "T-452 (2026-11-06): the redrawn roster in play, never seen until now. Twenty-two daemons, at least one from every batch (the pilot and 1-19) and every one the static audit flagged worst (back far smaller than the front, elevation kept from vanilla's table under a standing drawing, clipped at the frame, accents over the cap). For each: the lead's species set to it and the DEBUG ENCOUNTER page poked to it, INVOKE, so one battle shows its front (the foe) and its back (the lead) at 1x on the real ground; the battle won; then, once per batch, the lead walks Route 1 with it as the follower. Each INVOKE ends its own stop (the DEBUG step closes with B, which a battle swallows), the battle is the next. The theatre's debug scratch save; nothing is saved. The engine's current debug build, as built.",
+ "stop_timeout": 420,
+ "stops": [
+  {
+   "stop": "the DEBUG build as built, the GLOBAL INDEX given (the ENCOUNTER page past 151)",
+   "steps": [
+    "load debug",
+    "goto Route1 10 29",
+    "repel 999",
+    "close",
+    "events \"GLOBAL INDEX\"",
+    "shot ready"
+   ]
+  },
+  {
+   "stop": "ROVERCUB (batch pilot): lead and foe made ROVERCUB, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_BULBASAUR",
+    "mon 0 hp max",
+    "poke sDbgDex 16 1",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "ROVERCUB (batch pilot): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_BULBASAUR",
+    "wait 200",
+    "shot ROVERCUB in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot ROVERCUB follows, walking east",
+    "to 14 27",
+    "shot ROVERCUB follows, walking north"
+   ]
+  },
+  {
+   "stop": "BROADCAST (batch 1): lead and foe made BROADCAST, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_PIDGEOT",
+    "mon 0 hp max",
+    "poke sDbgDex 16 18",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "BROADCAST (batch 1): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_PIDGEOT",
+    "wait 200",
+    "shot BROADCAST in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot BROADCAST follows, walking east",
+    "to 14 27",
+    "shot BROADCAST follows, walking north"
+   ]
+  },
+  {
+   "stop": "TRACER (batch 2): lead and foe made TRACER, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_GOLBAT",
+    "mon 0 hp max",
+    "poke sDbgDex 16 42",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "TRACER (batch 2): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_GOLBAT",
+    "wait 200",
+    "shot TRACER in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot TRACER follows, walking east",
+    "to 14 27",
+    "shot TRACER follows, walking north"
+   ]
+  },
+  {
+   "stop": "SKEW (batch 3): lead and foe made SKEW, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_GLOOM",
+    "mon 0 hp max",
+    "poke sDbgDex 16 44",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "SKEW (batch 3): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_GLOOM",
+    "wait 200",
+    "shot SKEW in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot SKEW follows, walking east",
+    "to 14 27",
+    "shot SKEW follows, walking north"
+   ]
+  },
+  {
+   "stop": "HEAP (batch 4): lead and foe made HEAP, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_GEODUDE",
+    "mon 0 hp max",
+    "poke sDbgDex 16 74",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "HEAP (batch 4): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_GEODUDE",
+    "wait 200",
+    "shot HEAP in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot HEAP follows, walking east",
+    "to 14 27",
+    "shot HEAP follows, walking north"
+   ]
+  },
+  {
+   "stop": "BREAKER (batch 5): lead and foe made BREAKER, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_ELECTRODE",
+    "mon 0 hp max",
+    "poke sDbgDex 16 101",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "BREAKER (batch 5): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_ELECTRODE",
+    "wait 200",
+    "shot BREAKER in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot BREAKER follows, walking east",
+    "to 14 27",
+    "shot BREAKER follows, walking north"
+   ]
+  },
+  {
+   "stop": "SMOGSTACK (batch 6): lead and foe made SMOGSTACK, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_WEEZING",
+    "mon 0 hp max",
+    "poke sDbgDex 16 110",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "SMOGSTACK (batch 6): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_WEEZING",
+    "wait 200",
+    "shot SMOGSTACK in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot SMOGSTACK follows, walking east",
+    "to 14 27",
+    "shot SMOGSTACK follows, walking north"
+   ]
+  },
+  {
+   "stop": "MAINFRAME (batch 7): lead and foe made MAINFRAME, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_OMASTAR",
+    "mon 0 hp max",
+    "poke sDbgDex 16 139",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "MAINFRAME (batch 7): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_OMASTAR",
+    "wait 200",
+    "shot MAINFRAME in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot MAINFRAME follows, walking east",
+    "to 14 27",
+    "shot MAINFRAME follows, walking north"
+   ]
+  },
+  {
+   "stop": "FOSSILNET (batch 8): lead and foe made FOSSILNET, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_AERODACTYL",
+    "mon 0 hp max",
+    "poke sDbgDex 16 142",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "FOSSILNET (batch 8): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_AERODACTYL",
+    "wait 200",
+    "shot FOSSILNET in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot FOSSILNET follows, walking east",
+    "to 14 27",
+    "shot FOSSILNET follows, walking north"
+   ]
+  },
+  {
+   "stop": "DEADLOCK (batch 8): lead and foe made DEADLOCK, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_SNORLAX",
+    "mon 0 hp max",
+    "poke sDbgDex 16 143",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "DEADLOCK (batch 8): the battle",
+   "steps": [
+    "foe SPECIES_SNORLAX",
+    "wait 200",
+    "shot DEADLOCK in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "GATHERING (batch 9): lead and foe made GATHERING, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_LEDIAN",
+    "mon 0 hp max",
+    "poke sDbgDex 16 166",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "GATHERING (batch 9): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_LEDIAN",
+    "wait 200",
+    "shot GATHERING in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot GATHERING follows, walking east",
+    "to 14 27",
+    "shot GATHERING follows, walking north"
+   ]
+  },
+  {
+   "stop": "CAPRICE (batch 10): lead and foe made CAPRICE, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_SKIPLOOM",
+    "mon 0 hp max",
+    "poke sDbgDex 16 188",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "CAPRICE (batch 10): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_SKIPLOOM",
+    "wait 200",
+    "shot CAPRICE in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot CAPRICE follows, walking east",
+    "to 14 27",
+    "shot CAPRICE follows, walking north"
+   ]
+  },
+  {
+   "stop": "STARTLE (batch 11): lead and foe made STARTLE, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_PINECO",
+    "mon 0 hp max",
+    "poke sDbgDex 16 204",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "STARTLE (batch 11): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_PINECO",
+    "wait 200",
+    "shot STARTLE in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot STARTLE follows, walking east",
+    "to 14 27",
+    "shot STARTLE follows, walking north"
+   ]
+  },
+  {
+   "stop": "OBSESSION (batch 12): lead and foe made OBSESSION, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_HOUNDOOM",
+    "mon 0 hp max",
+    "poke sDbgDex 16 229",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "OBSESSION (batch 12): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_HOUNDOOM",
+    "wait 200",
+    "shot OBSESSION in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot OBSESSION follows, walking east",
+    "to 14 27",
+    "shot OBSESSION follows, walking north"
+   ]
+  },
+  {
+   "stop": "LODESTAR (batch 13): lead and foe made LODESTAR, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_OLD_UNOWN_D",
+    "mon 0 hp max",
+    "poke sDbgDex 16 388",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "LODESTAR (batch 13): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_OLD_UNOWN_D",
+    "wait 200",
+    "shot LODESTAR in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot LODESTAR follows, walking east",
+    "to 14 27",
+    "shot LODESTAR follows, walking north"
+   ]
+  },
+  {
+   "stop": "PERIHELION (batch 13): lead and foe made PERIHELION, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_OLD_UNOWN_E",
+    "mon 0 hp max",
+    "poke sDbgDex 16 389",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "PERIHELION (batch 13): the battle",
+   "steps": [
+    "foe SPECIES_OLD_UNOWN_E",
+    "wait 200",
+    "shot PERIHELION in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "TANGENT (batch 14): lead and foe made TANGENT, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_WINGULL",
+    "mon 0 hp max",
+    "poke sDbgDex 16 278",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "TANGENT (batch 14): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_WINGULL",
+    "wait 200",
+    "shot TANGENT in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot TANGENT follows, walking east",
+    "to 14 27",
+    "shot TANGENT follows, walking north"
+   ]
+  },
+  {
+   "stop": "POSTERIOR (batch 15): lead and foe made POSTERIOR, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_CLAYDOL",
+    "mon 0 hp max",
+    "poke sDbgDex 16 344",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "POSTERIOR (batch 15): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_CLAYDOL",
+    "wait 200",
+    "shot POSTERIOR in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot POSTERIOR follows, walking east",
+    "to 14 27",
+    "shot POSTERIOR follows, walking north"
+   ]
+  },
+  {
+   "stop": "LILENDIAN (batch 16): lead and foe made LILENDIAN, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_LUNATONE",
+    "mon 0 hp max",
+    "poke sDbgDex 16 337",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "LILENDIAN (batch 16): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_LUNATONE",
+    "wait 200",
+    "shot LILENDIAN in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot LILENDIAN follows, walking east",
+    "to 14 27",
+    "shot LILENDIAN follows, walking north"
+   ]
+  },
+  {
+   "stop": "DATAGRAM (batch 17): lead and foe made DATAGRAM, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_SWABLU",
+    "mon 0 hp max",
+    "poke sDbgDex 16 333",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "DATAGRAM (batch 17): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_SWABLU",
+    "wait 200",
+    "shot DATAGRAM in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot DATAGRAM follows, walking east",
+    "to 14 27",
+    "shot DATAGRAM follows, walking north"
+   ]
+  },
+  {
+   "stop": "OVERLOADED (batch 18): lead and foe made OVERLOADED, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_CASTFORM",
+    "mon 0 hp max",
+    "poke sDbgDex 16 351",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "OVERLOADED (batch 18): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_CASTFORM",
+    "wait 200",
+    "shot OVERLOADED in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot OVERLOADED follows, walking east",
+    "to 14 27",
+    "shot OVERLOADED follows, walking north"
+   ]
+  },
+  {
+   "stop": "CASTOR (batch 19): lead and foe made CASTOR, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 species SPECIES_LATIOS",
+    "mon 0 hp max",
+    "poke sDbgDex 16 381",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "CASTOR (batch 19): the battle, then the follower walk",
+   "steps": [
+    "foe SPECIES_LATIOS",
+    "wait 200",
+    "shot CASTOR in battle -- front as the foe, back as the lead",
+    "win",
+    "wait 90",
+    "close",
+    "goto Route1 10 29",
+    "repel 999",
+    "to 14 29",
+    "follower shown -1 0",
+    "shot CASTOR follows, walking east",
+    "to 14 27",
+    "shot CASTOR follows, walking north"
+   ]
+  }
+ ]
+}

@@ -25,3 +25,141 @@ T-522 / C-303, on a local site with a made-up save: the card with the record and
 T-522 / C-303, on a local site with a made-up save: the card with the record and the cog LISTEN; the sprite tapped, THINKING in its type's den; the daemon telling of itself; a mouth open mid-word (MOOD).
 
 ![6Nov2026 - T522 - the daemon speaks over its card - 15](6Nov2026%20-%20T522%20-%20the%20daemon%20speaks%20over%20its%20card%20-%2015.png)
+
+### 6Nov2026 - T452 - roster walk - 16
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 16](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2016.png)
+
+### 6Nov2026 - T452 - roster walk - 17
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 17](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2017.png)
+
+### 6Nov2026 - T452 - roster walk - 18
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 18](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2018.png)
+
+### 6Nov2026 - T452 - roster walk - 19
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 19](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2019.png)
+
+### 6Nov2026 - T452 - roster walk - 20
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 20](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2020.png)
+
+### 6Nov2026 - T452 - roster walk - 21
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 21](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2021.png)
+
+### 6Nov2026 - T452 - roster walk - 22
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 22](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2022.png)
+
+### 6Nov2026 - T452 - roster walk - 23
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 23](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2023.png)
+
+### 6Nov2026 - T452 - roster walk - 24
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 24](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2024.png)
+
+### 6Nov2026 - T452 - roster walk - 25
+
+T-452 roster walk: the whole redrawn roster (392) in ten audit sheets of 40 -- 1x and 2x front and back, the party icon, a 1x battle composite at the real y-offsets and elevation, and every flag
+
+![6Nov2026 - T452 - roster walk - 25](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2025.png)
+
+### 6Nov2026 - T452 - roster walk - 26
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 26](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2026.png)
+
+### 6Nov2026 - T452 - roster walk - 27
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 27](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2027.png)
+
+### 6Nov2026 - T452 - roster walk - 28
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 28](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2028.png)
+
+### 6Nov2026 - T452 - roster walk - 29
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 29](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2029.png)
+
+### 6Nov2026 - T452 - roster walk - 30
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 30](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2030.png)
+
+### 6Nov2026 - T452 - roster walk - 31
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 31](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2031.png)
+
+### 6Nov2026 - T452 - roster walk - 32
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 32](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2032.png)
+
+### 6Nov2026 - T452 - roster walk - 33
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 33](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2033.png)
+
+### 6Nov2026 - T452 - roster walk - 34
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 34](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2034.png)
+
+### 6Nov2026 - T452 - roster walk - 35
+
+T-452 roster walk: tools/reviewsheet.py daemons for the whole roster, sheets of 40 (front, back, INDEX entries), read from what the ROM is built from
+
+![6Nov2026 - T452 - roster walk - 35](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2035.png)
+
+### 6Nov2026 - T452 - roster walk - 36
+
+T-452 roster walk in the theatre: 22 daemons, one or more per batch and the worst flagged, each fought as both foe and lead (the lead keeps CODEMUSAI's nickname; TRACER's frame caught the send-out)
+
+![6Nov2026 - T452 - roster walk - 36](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2036.png)
+
+### 6Nov2026 - T452 - roster walk - 37
+
+T-452 roster walk: the overworld follower, one walk per batch (east, then north) on ROUTE 1 -- batch 1's walk did not run
+
+![6Nov2026 - T452 - roster walk - 37](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2037.png)
+
+### 6Nov2026 - T452 - roster walk - 38
+
+T-452 roster walk: the 58 daemons vanilla's elevation table still lifts in battle, composited at 1x -- about 29 of them are standing drawings left floating
+
+![6Nov2026 - T452 - roster walk - 38](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2038.png)
