@@ -1,6 +1,6 @@
 """Render a DAEMONS book (companion server/data/<book>.json) to an MP3 audiobook with chapter markers, in its own voice.
 
-Usage: python3 tools/bookaudio.py <guide|subtle|hermetic|textbook> <out_dir> [--voice NAME]
+Usage: python3 tools/bookaudio.py <guide|subtle|hermetic|eudaimon|unity|textbook> <out_dir> [--voice NAME]
        python3 tools/bookaudio.py --check <out_dir>        # which books on disk are current
 Needs kokoro-onnx, soundfile and ffmpeg (with rubberband), plus kokoro-v1.0.onnx and voices-v1.0.bin in KOKORO_DIR
 (default ~/.cache/daemons/kokoro, from github.com/thewh1teagle/kokoro-onnx's releases).
@@ -28,13 +28,19 @@ VOICES = {  # picked with the user from samples, 2026-11-01
               "tone": "bass=g=3:f=140,lowpass=f=6500"},                            # low, close, drawn down
     "dawn": {"blend": {"bf_isabella": 0.75, "bf_alice": 0.25}, "speed": 0.86, "pitch": 0.8, "sentence": 0.9,
              "clause": 0.3, "pause": 1.5, "tone": "highpass=f=110,treble=g=2:f=5000"},  # lighter, slower, leaves room
+    #  THE UNITY BOOK (C-299): the same voice leaned neither way, no pitch and no tone -- picked by ear by the user,
+    #  2026-11-05 21:20, from three samples ("A: one voice"), these values exactly
+    "whole": {"blend": {"bf_isabella": 0.72, "af_nicole": 0.14, "bf_alice": 0.14}, "speed": 0.88, "sentence": 0.6,
+              "clause": 0.2, "pause": 1.25},
     "professor": {"blend": {"bm_fable": 0.5, "bm_lewis": 0.5}, "speed": 0.94,     # the TEXTBOOK (2026-11-03): grave, warm
                   "tone": "alimiter=limit=0.89:level=disabled"},             # its loudest syllables touched 0 dB
 }
-BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "textbook": "professor"}   # its counterbalance takes "dawn"
-FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "textbook": "principles-of-mind"}
+BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
+              "textbook": "professor"}
+FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "eudaimon": "the-vault-audio-2",
+        "unity": "the-vault-audio-3", "textbook": "principles-of-mind"}   # -2, -3: the names the companion fetches (C-299)
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
-SEALED = {"hermetic"}             # and its counterbalance, until that is decided otherwise
+SEALED = {"hermetic", "eudaimon", "unity"}   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
 SEAL_INSIDE = "sealed"            # the names a closed zip shows (sealed.mp3, sealed.chapters.json): they say nothing
 DRAFT = "DRAFT · every word, until it is approved"                              # as the PDFs' covers say it
 ROMAN = {"I": "one", "II": "two", "III": "three", "IV": "four", "V": "five", "VI": "six", "VII": "seven",
@@ -204,12 +210,12 @@ def silence(s): return np.zeros(int(s * SR), np.float32)
 def ffescape(t): return re.sub(r"([=;#\\\n])", r"\\\1", t)
 
 
-def seal(paths, zip_path, digest):
-    """As tools/bookpdf.py seals the vault: its key (the author's name as the book's warning gives it), names that
-    say nothing, ZipCrypto, the hash in the comment. The key is never printed."""
+def seal(paths, zip_path, digest, book):
+    """As tools/bookpdf.py seals its vaults: the book's key (read from its own first page, bookpdf.vault_key), names
+    that say nothing, ZipCrypto, the hash in the comment. The key is never printed."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import bookpdf
-    key = bookpdf.author_of_hermetic(bookpdf.layer_book("hermetic"))
+    key = bookpdf.vault_key(book, bookpdf.layer_book(book))
     with tempfile.TemporaryDirectory(prefix="daemons-vault-") as work:
         tmp = os.path.join(work, "vault.zip")
         # -0: kept, not deflated (an MP3 does not shrink), so the companion opens it with ZipCrypto alone (C-277)
@@ -279,7 +285,7 @@ def main(book, out_dir, voice):
                         "-ac", "1", "-c:a", "libmp3lame", "-b:a", RATE.get(book, "64k"), f"{work}/{name}.mp3"], check=True)
         os.makedirs(out_dir, exist_ok=True)
         if book in SEALED:
-            seal(files, f"{out_dir}/{FILE.get(book, book)}.zip", digest)
+            seal(files, f"{out_dir}/{FILE.get(book, book)}.zip", digest, book)
         else:
             for p in files:
                 os.replace(p, f"{out_dir}/{os.path.basename(p)}")

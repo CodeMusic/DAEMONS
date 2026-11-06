@@ -51,5 +51,7 @@ each says so at its start and in its tags.
 | [`audio/the-subtle-layer.mp3`](audio/the-subtle-layer.mp3) | THE SUBTLE LAYER, 32 min | Instinct: `af_bella`, warm and full |
 | [`audio/principles-of-mind.mp3`](audio/principles-of-mind.mp3) | PRINCIPLES OF MIND, CALLOW SCHOOL's TEXTBOOK ([`../DAEMONS-textbook.pdf`](../DAEMONS-textbook.pdf)), 117 min | A professor: a blend made for it (`bm_fable` and `bm_lewis`), grave and warm. The References and each chapter's Further Reading are left to the page. |
 | [`audio/the-vault-audio.zip`](audio/the-vault-audio.zip) | **Sealed**, by the same name as the vault. | Its own |
+| [`audio/the-vault-audio-2.zip`](audio/the-vault-audio-2.zip) | **Sealed**, by the same name as the second vault. | Its own |
+| [`audio/the-vault-audio-3.zip`](audio/the-vault-audio-3.zip) | **Sealed**, by the same name as the third vault. | Its own |
 
 The companion plays each one inside its book (LISTEN, with its chapters, and SHARE to keep it), streamed from here.
