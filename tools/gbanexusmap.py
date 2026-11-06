@@ -826,7 +826,11 @@ def scripts(states, ts):
             "\tend",
             "",
             "@ On every arrival where a fir stands: the bright one stays hidden until the key.",
+            "@ T-519 item 2: and the LARK beside a grove's fir (local id 3, FLAG_TEMP_1) only in THE CREATOR'S HOUR, and only",
+            "@ until she has given the dawn half (src/daemons_eudaimon.c).",
             "EventScript_FirKeyFlags::",
+            "\tspecialvar VAR_RESULT, Eudaimon_LarkSits",
+            "\tcall_if_eq VAR_RESULT, FALSE, EventScript_LarkAtFir_Hide",
             "\tgoto_if_set FLAG_FIR_IN_KEY, EventScript_FirKeyFlags_Keyed",
             "\tsetflag FLAG_HIDE_FIR_UNKEYED",
             "\treturn",
@@ -835,6 +839,7 @@ def scripts(states, ts):
             "\tclearflag FLAG_HIDE_FIR_UNKEYED",
             "\treturn",
             ""]
+    out += LARK_SCRIPTS.split("\n")[:-1]
     #  T-408: the universes' signs, one beside every door, read whether or not the grove has been found
     for k, (name, _) in enumerate(DOORS):
         out += ["%s_EventScript_Sign%d::" % (NAME, k), "\tmsgbox %s_Text_Sign%d, MSGBOX_SIGN" % (NAME, k), "\tend", ""]
@@ -845,7 +850,87 @@ def text_inc():
     out = ["@ T-395: THE NEXUS's words, and the singing fir's (tools/gbanexusmap.py). Every word approved by the user, 2026-10-10.", ""]
     for label, t in TEXT.items():
         out.append("%s::\n%s" % (label, gba_string(t)))
-    return "\n".join(out)
+    return "\n".join(out) + "\n" + LARK_TEXT
+
+
+#  T-519 item 2 (engine 545de140f): the LARK under the singing FIR in THE CREATOR'S HOUR, beside the fir in all fourteen
+#  groves (object 3, OBJ_EVENT_GFX_CAST_GREBE, FLAG_TEMP_1). Written in the engine by hand after this tool last ran, and
+#  a write took it out again (found by check_generators --writes 2026-11-06); carried here as it stands, every word
+#  DRAFT. The scripts follow EventScript_FirKeyFlags_Keyed; the words follow the universes' signs.
+LARK_SCRIPTS = r"""EventScript_LarkAtFir_Hide::
+	setflag FLAG_TEMP_1
+	return
+
+@ T-519 item 2 (the brief): THE EUDAIMON LAYER, under the singing FIR in THE CREATOR'S HOUR. The LARK sits there with
+@ it and gives it only to a player who sits too and waits -- about ten seconds, no button pressed. DRAFT, every word.
+EventScript_LarkAtFir::
+	lock
+	goto_if_set FLAG_GOT_EUDAIMON_LAYER, EventScript_LarkAtFir_Morning
+	msgbox Text_LarkAtFir_Sitting
+	msgbox Text_LarkAtFir_SitWithHer, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_LarkAtFir_NotYet
+	msgbox Text_LarkAtFir_YouSit
+	closemessage
+	special Eudaimon_LarkWait
+	waitstate
+	goto_if_eq VAR_RESULT, FALSE, EventScript_LarkAtFir_Stirred
+	msgbox Text_LarkAtFir_ItCame
+	giveitem ITEM_EUDAIMON_LAYER
+	setflag FLAG_GOT_EUDAIMON_LAYER
+	msgbox Text_LarkAtFir_Flies
+	closemessage
+	playse SE_M_FLY
+	removeobject VAR_LAST_TALKED
+	release
+	end
+
+EventScript_LarkAtFir_NotYet::
+	msgbox Text_LarkAtFir_NotYet
+	release
+	end
+
+EventScript_LarkAtFir_Stirred::
+	msgbox Text_LarkAtFir_Stirred
+	release
+	end
+
+EventScript_LarkAtFir_Morning::
+	msgbox Text_LarkAtFir_Flies
+	release
+	end
+
+"""
+LARK_TEXT = r"""@ T-519 item 2: the LARK under the singing FIR, in THE CREATOR'S HOUR. DRAFT, every word.
+Text_LarkAtFir_Sitting::
+    .string "The LARK is sitting under the fir,\n"
+    .string "very still. A book lies by her.\p"
+    .string "She does not look up. She only\n"
+    .string "moves over a little, to make room.$"
+
+Text_LarkAtFir_SitWithHer::
+    .string "Sit with her?$"
+
+Text_LarkAtFir_YouSit::
+    .string "You sit down beside the LARK.$"
+
+Text_LarkAtFir_NotYet::
+    .string "The LARK keeps sitting, as if the\n"
+    .string "morning had all the time there is.$"
+
+Text_LarkAtFir_Stirred::
+    .string "You moved. The LARK did not mind.\n"
+    .string "She is still sitting.$"
+
+Text_LarkAtFir_ItCame::
+    .string "The light comes up a little.\p"
+    .string "The LARK says she did not go\n"
+    .string "anywhere. She stayed, and it came.\p"
+    .string "She pushes the book over to you.$"
+
+Text_LarkAtFir_Flies::
+    .string "The LARK flies up into the fir,\n"
+    .string "to meet the morning.$"
+"""
 
 
 def map_json():
