@@ -193,8 +193,11 @@ PASS2_EXT  = (".c", ".inc")
 PASS2_ALSO = ["src/data/text/teachy_tv.h", "src/data/text/abilities.h"]
 #  Owned by other passes, or not English: move names are the ROUTINES pass,
 #  pokedex entries are species classifications, easy chat is a word list.
+#  The third book's spells (T-519) are named by the book, not the bag: its first card and spell is THE AWAKENING, which
+#  is not Gen 3's sleep cure, and ITEM_WORDS would rename it RESUME (found by check_generators --writes 2026-11-06).
 PASS2_SKIP = ("move_names.h", "pokedex_entries.h", "easy_chat", "species_info",
-              "pokedex_text_", "/build/", "battle_message.c")
+              "pokedex_text_", "/build/", "battle_message.c",
+              "daemons_hermetic.c", "daemons_spellbook.c")
 
 #  A word is not always a state. These literals are checked FIRST and put back
 #  untouched -- idiom, flavour, and the two trainer defeat lines that are jokes.
