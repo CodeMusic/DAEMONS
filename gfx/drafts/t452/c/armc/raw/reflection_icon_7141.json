@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/armc/raw/reflection_icon_7141",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image drawn as a tiny party menu icon: a head and shoulders bust, a cute small wolf head with big eyes holding a little round black mirror in its mouth, its big head filling the picture, bold simple shapes, strong contrast between light, mid and dark grey, only small touches of colour, a thick black outline, facing the viewer, pure white background, centered, no text, game asset",
+ "negative": "",
+ "seed": 7141,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/armc/raw/reflection_front_7102.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 28.0,
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 16:29:23"
+}

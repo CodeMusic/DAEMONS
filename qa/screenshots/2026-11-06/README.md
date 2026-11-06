@@ -259,3 +259,21 @@ C-303: ROVERCUB over its card, its name kept at the top, THINKING while the Tiin
 C-303: settings -- MAKE THE VOICES AGAIN moves the voices' generation, and every phone forgets the voices it kept
 
 ![6Nov2026 - T522 - make the voices again - 54](6Nov2026%20-%20T522%20-%20make%20the%20voices%20again%20-%2054.png)
+
+### 6Nov2026 - T452 - redraws in C - 55
+
+T-452 redraws in arm C (klein 4B + pixel-art LoRA), DRAFTS: the worst ten, batch 13 restyled, the ten mismatched backs -- ROM beside the draft's front, back and icon at 1x and 2x, and both in battle at 1x
+
+![6Nov2026 - T452 - redraws in C - 55](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20-%2055.png)
+
+### 6Nov2026 - T452 - redraws in C - 56
+
+T-452 redraws in arm C (klein 4B + pixel-art LoRA), DRAFTS: the worst ten, batch 13 restyled, the ten mismatched backs -- ROM beside the draft's front, back and icon at 1x and 2x, and both in battle at 1x
+
+![6Nov2026 - T452 - redraws in C - 56](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20-%2056.png)
+
+### 6Nov2026 - T452 - redraws in C - icons - 57
+
+T-452 icons redrawn in arm C as 32px head-and-shoulders busts, then icon3, DRAFTS: ROM beside the draft, 1x and 2x, with the walk's muddy test
+
+![6Nov2026 - T452 - redraws in C - icons - 57](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20-%20icons%20-%2057.png)

@@ -1,0 +1,35 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/armc/raw/unbranched_front_7101",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, one straight stripe from nose to tail and a small tied bundle on its back, a cute long low ferret creature with big eyes, running, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7101,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 20.6,
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 15:41:49"
+}

@@ -1,0 +1,35 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/armc/raw/lyubov_front_7102",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, a garland of round folk flowers round her neck, a cute proud lioness with big eyes sitting tall, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7102,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 15.0,
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 15:32:30"
+}

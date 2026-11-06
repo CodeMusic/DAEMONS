@@ -1,0 +1,478 @@
+{
+ "perihelion": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "seethe": {
+  "seed": 7101,
+  "by": "score"
+ },
+ "lodestar": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "illumined": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "broadcast": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "tracer": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "fossilnet": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "rovercub": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "smogstack": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "overloaded": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "obsession": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "reflection": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "lyubov": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "multimal": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "lynx": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "bastet": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "stump": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "boosting": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "canopy": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "coinflip": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "montecarlo": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "lasvegas": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "runoff": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "alluvium": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "delta": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "smudge": {
+  "seed": 7102,
+  "by": "eye",
+  "icon_seed": 7141,
+  "icon_by": "score",
+  "why": "7101's back still shows its face"
+ },
+ "eclipse": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "detour": {
+  "seed": 7101,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "unbranched": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "heatdeath": {
+  "seed": 7102,
+  "by": "score"
+ },
+ "ensemble": {
+  "seed": 7102,
+  "by": "score",
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "crawler": {
+  "seed": 7103,
+  "by": "score"
+ },
+ "wiretap": {
+  "seed": 7101,
+  "by": "score"
+ },
+ "manifold": {
+  "seed": 7102,
+  "by": "score"
+ },
+ "monolith": {
+  "seed": 7103,
+  "by": "eye",
+  "why": "7101/7102's backs kept the eye; 7103 is the sphere's back"
+ },
+ "outlier": {
+  "seed": 7102,
+  "by": "score"
+ },
+ "heartbeat": {
+  "seed": 7101,
+  "by": "score"
+ },
+ "corefile": {
+  "seed": 7101,
+  "by": "score"
+ },
+ "posterior": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "singular": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "castor": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "skew": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "blocking": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "khione": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "indexer": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "multicast": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "burstmode": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "flocking": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "dustdevil": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "relay": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "worm": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "scheduler": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "snare": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "landfill": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "rebuttal": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "acquire": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "circular": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "keeper": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "backpress": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "sigkill": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "cinder": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "stampede": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "escalate": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "caremusai": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "codemusai": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "lensmusai": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "magtape": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "emergence": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "starr": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "syllabus": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "entrapment": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "sounding": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "fakeroot": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "grasp": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "omen": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "startle": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "hardline": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "crywolf": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "oldbranch": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "repay": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "engram": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "grievance": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "armouring": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "illusion": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "cadence": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "prefork": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "sparring": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "particle": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "gradient": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "backdoor": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "blackwater": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "sinkhole": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "reforge": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "fewshot": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "zeroshot": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "forgetting": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "transfer": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "forgery": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "firmware": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "syn": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "ack": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "savestate": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ },
+ "guesswork": {
+  "icon_seed": 7141,
+  "icon_by": "score"
+ },
+ "epiphany": {
+  "icon_seed": 7142,
+  "icon_by": "score"
+ }
+}
