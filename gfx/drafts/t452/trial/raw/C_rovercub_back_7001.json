@@ -1,0 +1,198 @@
+{
+ "arm": "C",
+ "model": "FLUX.2 klein 4B + Limbicnation pixel-art LoRA",
+ "daemon": "rovercub",
+ "view": "back",
+ "seed": 7001,
+ "prompt": "pixel art sprite, chibi, Turn this exact creature around: the same creature seen from directly behind, rear view, facing away from the viewer, the back of its head, no face visible, its big round robot head, floppy metal ears, boxy metal body, four legs and short antenna tail, the same size in the frame, the same proportions, the same grey body and colours, the same pixel art style, black outline, centered on a plain white background, full body, no shadow, game asset",
+ "size": [
+  512,
+  512
+ ],
+ "reference": "gfx/drafts/t452/trial/raw/C_rovercub_front_7001.png",
+ "seconds": 30.6,
+ "vram_free_gb_after": 6.5,
+ "comfy_rss_gb_after": 2.1,
+ "memory_pressure_after": "System-wide memory free percentage: 57%",
+ "graph": {
+  "1": {
+   "class_type": "UNETLoader",
+   "inputs": {
+    "unet_name": "flux-2-klein-4b.safetensors",
+    "weight_dtype": "default"
+   }
+  },
+  "2": {
+   "class_type": "CLIPLoader",
+   "inputs": {
+    "clip_name": "qwen_3_4b.safetensors",
+    "type": "flux2"
+   }
+  },
+  "3": {
+   "class_type": "VAELoader",
+   "inputs": {
+    "vae_name": "flux2-vae.safetensors"
+   }
+  },
+  "4": {
+   "class_type": "CLIPTextEncode",
+   "inputs": {
+    "text": "pixel art sprite, chibi, Turn this exact creature around: the same creature seen from directly behind, rear view, facing away from the viewer, the back of its head, no face visible, its big round robot head, floppy metal ears, boxy metal body, four legs and short antenna tail, the same size in the frame, the same proportions, the same grey body and colours, the same pixel art style, black outline, centered on a plain white background, full body, no shadow, game asset",
+    "clip": [
+     "2",
+     0
+    ]
+   }
+  },
+  "9": {
+   "class_type": "EmptyFlux2LatentImage",
+   "inputs": {
+    "width": 512,
+    "height": 512,
+    "batch_size": 1
+   }
+  },
+  "10": {
+   "class_type": "Flux2Scheduler",
+   "inputs": {
+    "steps": 4,
+    "width": 512,
+    "height": 512
+   }
+  },
+  "11": {
+   "class_type": "KSamplerSelect",
+   "inputs": {
+    "sampler_name": "euler"
+   }
+  },
+  "12": {
+   "class_type": "RandomNoise",
+   "inputs": {
+    "noise_seed": 7001
+   }
+  },
+  "14": {
+   "class_type": "VAEDecode",
+   "inputs": {
+    "samples": [
+     "13",
+     0
+    ],
+    "vae": [
+     "3",
+     0
+    ]
+   }
+  },
+  "15": {
+   "class_type": "SaveImage",
+   "inputs": {
+    "images": [
+     "14",
+     0
+    ],
+    "filename_prefix": "t452trial"
+   }
+  },
+  "20": {
+   "class_type": "LoraLoaderModelOnly",
+   "inputs": {
+    "model": [
+     "1",
+     0
+    ],
+    "lora_name": "klein4b_pixelart_limbicnation.safetensors",
+    "strength_model": 1.0
+   }
+  },
+  "30": {
+   "class_type": "LoadImage",
+   "inputs": {
+    "image": "t452trial_C_rovercub_front_7001.png"
+   }
+  },
+  "31": {
+   "class_type": "VAEEncode",
+   "inputs": {
+    "pixels": [
+     "30",
+     0
+    ],
+    "vae": [
+     "3",
+     0
+    ]
+   }
+  },
+  "32": {
+   "class_type": "ReferenceLatent",
+   "inputs": {
+    "conditioning": [
+     "4",
+     0
+    ],
+    "latent": [
+     "31",
+     0
+    ]
+   }
+  },
+  "5": {
+   "class_type": "ConditioningZeroOut",
+   "inputs": {
+    "conditioning": [
+     "32",
+     0
+    ]
+   }
+  },
+  "6": {
+   "class_type": "CFGGuider",
+   "inputs": {
+    "model": [
+     "20",
+     0
+    ],
+    "positive": [
+     "32",
+     0
+    ],
+    "negative": [
+     "5",
+     0
+    ],
+    "cfg": 1.0
+   }
+  },
+  "13": {
+   "class_type": "SamplerCustomAdvanced",
+   "inputs": {
+    "noise": [
+     "12",
+     0
+    ],
+    "guider": [
+     "6",
+     0
+    ],
+    "sampler": [
+     "11",
+     0
+    ],
+    "sigmas": [
+     "10",
+     0
+    ],
+    "latent_image": [
+     "9",
+     0
+    ]
+   }
+  }
+ },
+ "host": "http://roverbyteseer:8008",
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 12:38:10"
+}

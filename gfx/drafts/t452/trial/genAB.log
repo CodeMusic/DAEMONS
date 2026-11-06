@@ -1,0 +1,21 @@
+== arm A spriteShaper (SDXL) -- today free before 19.2 GB
+A_rovercub_front_7001                   35.5s  free 11.1 GB  rss 2.1 GB  System-wide memory free percentage: 78%
+A_rovercub_back_7001                    23.1s  free 10.8 GB  rss 2.1 GB  System-wide memory free percentage: 80%
+A_rovercub_front_7002                   21.7s  free 10.7 GB  rss 2.1 GB  System-wide memory free percentage: 80%
+A_rovercub_back_7002                    22.8s  free 10.8 GB  rss 2.1 GB  System-wide memory free percentage: 80%
+A_rovercub_front_7003                   22.7s  free 10.7 GB  rss 2.1 GB  System-wide memory free percentage: 80%
+A_rovercub_back_7003                    22.7s  free 10.8 GB  rss 2.1 GB  System-wide memory free percentage: 80%
+A_lodestar_front_7001                   23.0s  free 11.3 GB  rss 2.1 GB  System-wide memory free percentage: 82%
+A_lodestar_back_7001                    22.9s  free 11.0 GB  rss 2.1 GB  System-wide memory free percentage: 82%
+A_lodestar_front_7002                   22.8s  free 10.9 GB  rss 2.1 GB  System-wide memory free percentage: 82%
+A_lodestar_back_7002                    29.3s  free 11.0 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+A_lodestar_front_7003                   22.9s  free 10.9 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+A_lodestar_back_7003                    22.4s  free 11.2 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+A_illumined_front_7001                  22.7s  free 11.1 GB  rss 2.2 GB  System-wide memory free percentage: 77%
+A_illumined_back_7001                   23.0s  free 11.1 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+A_illumined_front_7002                  23.1s  free 11.1 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+A_illumined_back_7002                   22.5s  free 11.1 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+A_illumined_front_7003                  22.7s  free 11.1 GB  rss 2.2 GB  System-wide memory free percentage: 78%
+A_illumined_back_7003                   21.7s  free 11.1 GB  rss 2.2 GB  System-wide memory free percentage: 82%
+== arm B FLUX.2 klein 9B fp8 -- zero download free before 18.8 GB
+ComfyUI error /Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/trial/raw/B_rovercub_front_7001: {"status_str": "error", "completed": false, "messages": [["execution_start", {"prompt_id": "e2d297fc-2ef1-43e1-8a6e-2a8e39b399ad", "timestamp": 1793986529969}], ["execution_cached", {"nodes": [], "prompt_id": "e2d297fc-2ef1-43e1-8a6e-2a8e39b399ad", "timestamp": 1793986529972}], ["execution_error", {"prompt_id": "e2d297fc-2ef1-43e1-8a6e-2a8e39b399ad", "node_id": "13", "node_type": "SamplerCustomAdvanced", "executed": ["9", "11", "3", "2", "1", "5", "4", "10", "6", "12"], "exception_message": "Undefined type Float8_e4m3fn\n", "exception_type": "RuntimeError", "traceback": ["  File \"/Users/roverbyte/musai-services/comfyui/src/execution.py\", line 534, in execute\n    output_data, output_ui, has_subgraph, has_pending_tasks = await get_output_data(prompt_id, unique_id, obj, input_data_all, exe

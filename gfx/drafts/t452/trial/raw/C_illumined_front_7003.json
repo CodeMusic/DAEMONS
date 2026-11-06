@@ -1,0 +1,165 @@
+{
+ "arm": "C",
+ "model": "FLUX.2 klein 4B + Limbicnation pixel-art LoRA",
+ "daemon": "illumined",
+ "view": "front",
+ "seed": 7003,
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, a big round halo ring of light behind it, a cute white fluffy cat sitting with big calm eyes, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text, game asset",
+ "size": [
+  512,
+  512
+ ],
+ "seconds": 19.8,
+ "vram_free_gb_after": 12.0,
+ "comfy_rss_gb_after": 7.6,
+ "memory_pressure_after": "System-wide memory free percentage: 82%",
+ "graph": {
+  "1": {
+   "class_type": "UNETLoader",
+   "inputs": {
+    "unet_name": "flux-2-klein-4b.safetensors",
+    "weight_dtype": "default"
+   }
+  },
+  "2": {
+   "class_type": "CLIPLoader",
+   "inputs": {
+    "clip_name": "qwen_3_4b.safetensors",
+    "type": "flux2"
+   }
+  },
+  "3": {
+   "class_type": "VAELoader",
+   "inputs": {
+    "vae_name": "flux2-vae.safetensors"
+   }
+  },
+  "4": {
+   "class_type": "CLIPTextEncode",
+   "inputs": {
+    "text": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, a big round halo ring of light behind it, a cute white fluffy cat sitting with big calm eyes, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text, game asset",
+    "clip": [
+     "2",
+     0
+    ]
+   }
+  },
+  "9": {
+   "class_type": "EmptyFlux2LatentImage",
+   "inputs": {
+    "width": 512,
+    "height": 512,
+    "batch_size": 1
+   }
+  },
+  "10": {
+   "class_type": "Flux2Scheduler",
+   "inputs": {
+    "steps": 4,
+    "width": 512,
+    "height": 512
+   }
+  },
+  "11": {
+   "class_type": "KSamplerSelect",
+   "inputs": {
+    "sampler_name": "euler"
+   }
+  },
+  "12": {
+   "class_type": "RandomNoise",
+   "inputs": {
+    "noise_seed": 7003
+   }
+  },
+  "14": {
+   "class_type": "VAEDecode",
+   "inputs": {
+    "samples": [
+     "13",
+     0
+    ],
+    "vae": [
+     "3",
+     0
+    ]
+   }
+  },
+  "15": {
+   "class_type": "SaveImage",
+   "inputs": {
+    "images": [
+     "14",
+     0
+    ],
+    "filename_prefix": "t452trial"
+   }
+  },
+  "20": {
+   "class_type": "LoraLoaderModelOnly",
+   "inputs": {
+    "model": [
+     "1",
+     0
+    ],
+    "lora_name": "klein4b_pixelart_limbicnation.safetensors",
+    "strength_model": 1.0
+   }
+  },
+  "5": {
+   "class_type": "ConditioningZeroOut",
+   "inputs": {
+    "conditioning": [
+     "4",
+     0
+    ]
+   }
+  },
+  "6": {
+   "class_type": "CFGGuider",
+   "inputs": {
+    "model": [
+     "20",
+     0
+    ],
+    "positive": [
+     "4",
+     0
+    ],
+    "negative": [
+     "5",
+     0
+    ],
+    "cfg": 1.0
+   }
+  },
+  "13": {
+   "class_type": "SamplerCustomAdvanced",
+   "inputs": {
+    "noise": [
+     "12",
+     0
+    ],
+    "guider": [
+     "6",
+     0
+    ],
+    "sampler": [
+     "11",
+     0
+    ],
+    "sigmas": [
+     "10",
+     0
+    ],
+    "latent_image": [
+     "9",
+     0
+    ]
+   }
+  }
+ },
+ "host": "http://roverbyteseer:8008",
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 12:45:00"
+}

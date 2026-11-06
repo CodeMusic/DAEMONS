@@ -205,3 +205,21 @@ T-452 follow-up: the elevation table rewritten from each drawing (tools/gbaeleva
 C-303 / T-522: 14 more mouths from the second pass, each daemon as drawn and with its mouth open. Not yet checked by a person.
 
 ![6Nov2026 - T522 - mouths found, second pass - 45](6Nov2026%20-%20T522%20-%20mouths%20found%2C%20second%20pass%20-%2045.png)
+
+### 6Nov2026 - T452 - pixel model trial - 46
+
+T-452 pixel-model trial (DRAFTS): LODESTAR, ROVERCUB, ILLUMINED by spriteShaper (A), klein 9B fp8 (B, cannot run on MPS), klein 4B + pixel LoRA (C), Z-Image Turbo (D), reduced by the existing reducer; C draws the same creature front and back in all nine
+
+![6Nov2026 - T452 - pixel model trial - 46](6Nov2026%20-%20T452%20-%20pixel%20model%20trial%20-%2046.png)
+
+### 6Nov2026 - T452 - pixel model trial - 47
+
+T-452 pixel-model trial (DRAFTS): LODESTAR, ROVERCUB, ILLUMINED by spriteShaper (A), klein 9B fp8 (B, cannot run on MPS), klein 4B + pixel LoRA (C), Z-Image Turbo (D), reduced by the existing reducer; C draws the same creature front and back in all nine
+
+![6Nov2026 - T452 - pixel model trial - 47](6Nov2026%20-%20T452%20-%20pixel%20model%20trial%20-%2047.png)
+
+### 6Nov2026 - T452 - pixel model trial - 48
+
+T-452 pixel-model trial (DRAFTS): LODESTAR, ROVERCUB, ILLUMINED by spriteShaper (A), klein 9B fp8 (B, cannot run on MPS), klein 4B + pixel LoRA (C), Z-Image Turbo (D), reduced by the existing reducer; C draws the same creature front and back in all nine
+
+![6Nov2026 - T452 - pixel model trial - 48](6Nov2026%20-%20T452%20-%20pixel%20model%20trial%20-%2048.png)

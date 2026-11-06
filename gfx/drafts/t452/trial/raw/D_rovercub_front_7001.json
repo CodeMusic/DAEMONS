@@ -1,0 +1,128 @@
+{
+ "arm": "D",
+ "model": "Z-Image Turbo, no LoRA",
+ "daemon": "rovercub",
+ "view": "front",
+ "seed": 7001,
+ "prompt": "pure white background, pixel art game sprite of a single cute creature, a small robot puppy, a four-legged robot dog standing on all four legs, a boxy grey metal body, four short jointed metal legs with round paw feet, a big round robot head with floppy metal puppy ears and one big round camera lens eye, a short antenna tail, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+ "size": [
+  512,
+  512
+ ],
+ "seconds": 147.9,
+ "vram_free_gb_after": 9.0,
+ "comfy_rss_gb_after": 0.5,
+ "memory_pressure_after": "System-wide memory free percentage: 78%",
+ "graph": {
+  "1": {
+   "class_type": "UNETLoader",
+   "inputs": {
+    "unet_name": "z_image_turbo_bf16.safetensors",
+    "weight_dtype": "default"
+   }
+  },
+  "2": {
+   "class_type": "CLIPLoader",
+   "inputs": {
+    "clip_name": "qwen_3_4b.safetensors",
+    "type": "lumina2"
+   }
+  },
+  "3": {
+   "class_type": "VAELoader",
+   "inputs": {
+    "vae_name": "ae.safetensors"
+   }
+  },
+  "4": {
+   "class_type": "CLIPTextEncode",
+   "inputs": {
+    "text": "pure white background, pixel art game sprite of a single cute creature, a small robot puppy, a four-legged robot dog standing on all four legs, a boxy grey metal body, four short jointed metal legs with round paw feet, a big round robot head with floppy metal puppy ears and one big round camera lens eye, a short antenna tail, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, no shadow, no text",
+    "clip": [
+     "2",
+     0
+    ]
+   }
+  },
+  "5": {
+   "class_type": "ConditioningZeroOut",
+   "inputs": {
+    "conditioning": [
+     "4",
+     0
+    ]
+   }
+  },
+  "6": {
+   "class_type": "ModelSamplingAuraFlow",
+   "inputs": {
+    "model": [
+     "1",
+     0
+    ],
+    "shift": 3.0
+   }
+  },
+  "7": {
+   "class_type": "EmptySD3LatentImage",
+   "inputs": {
+    "width": 512,
+    "height": 512,
+    "batch_size": 1
+   }
+  },
+  "8": {
+   "class_type": "KSampler",
+   "inputs": {
+    "model": [
+     "6",
+     0
+    ],
+    "positive": [
+     "4",
+     0
+    ],
+    "negative": [
+     "5",
+     0
+    ],
+    "seed": 7001,
+    "steps": 8,
+    "cfg": 1.0,
+    "sampler_name": "res_multistep",
+    "scheduler": "simple",
+    "denoise": 1.0,
+    "latent_image": [
+     "7",
+     0
+    ]
+   }
+  },
+  "9": {
+   "class_type": "VAEDecode",
+   "inputs": {
+    "samples": [
+     "8",
+     0
+    ],
+    "vae": [
+     "3",
+     0
+    ]
+   }
+  },
+  "10": {
+   "class_type": "SaveImage",
+   "inputs": {
+    "images": [
+     "9",
+     0
+    ],
+    "filename_prefix": "t452trial"
+   }
+  }
+ },
+ "host": "http://roverbyteseer:8008",
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 12:48:02"
+}
