@@ -260,7 +260,16 @@ def write(dm, maps):
     consts = re.sub(r"\n%s variants[^\n]*" % re.escape(MARK), "", consts)
     consts = re.sub(r"\n#define OBJ_EVENT_GFX_DAEMON_\w+ \d+", "", consts)
     first = int(re.search(r"#define OBJ_EVENT_GFX_CUE_BALL (\d+)", consts).group(1)) + 1
-    ptrs = read(PTRS); ptrs = re.sub(r"\n    %s variants.*?(?=\n\};)" % re.escape(MARK), "", ptrs, flags=re.S)
+    ptrs = read(PTRS)
+    #  Take out only OUR lines from the tail. Rows added below the variants after this tool last ran -- T-496's
+    #  LIONESS_BALL, by genlioness.py -- are kept and put back after the new variants (a write deleted it, found by
+    #  check_generators --writes 2026-11-06).
+    tail = re.search(r"\n    %s variants(.*?)(?=\n\};)" % re.escape(MARK), ptrs, flags=re.S)
+    later = []
+    if tail:
+        later = [l for l in tail.group(1).split("\n") if l.strip() and not re.match(
+            r"\s*\[OBJ_EVENT_GFX_DAEMON_\w+\] = &gObjectEventGraphicsInfo_Daemon_\w+,$", l)]
+        ptrs = ptrs[:tail.start()] + ptrs[tail.end():]
     variants, vid, vdefs, vinfos, vptrs = {}, first, [], [], []
     for sp in sorted(need):
         for sl in sorted(set(need[sp]) - {base[sp]}):
@@ -284,7 +293,7 @@ def write(dm, maps):
     else:
         gi = gi[:vat].rstrip() + "\n" + block + "\n" + gi[vat:].lstrip("\n")
     open(GI, "w").write(gi.rstrip() + "\n")
-    ptrs = re.sub(r"\n\};\s*$", "\n    %s variants\n%s\n};\n" % (MARK, "\n".join(vptrs)), ptrs.rstrip() + "\n")
+    ptrs = re.sub(r"\n\};\s*$", lambda _: "\n    %s variants\n%s\n};\n" % (MARK, "\n".join(vptrs + later)), ptrs.rstrip() + "\n")
     #  the table is included BEFORE the infos, so each needs a forward declaration at the top, as vanilla's do
     ptrs = re.sub(r"^%s declarations\n(?:const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Daemon_\w+;\n)*" % re.escape(MARK), "", ptrs)
     decl = "".join("const struct ObjectEventGraphicsInfo %s;\n" % re.search(r"&(\w+),", v).group(1) for v in vptrs)
