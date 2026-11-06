@@ -9,7 +9,8 @@
 THE HERMETIC LAYER (T-483) is read by the same parser into the same open book: docs/hermetic-layer.md, written to
 src/data/hermetic_layer.h and graphics/book/hermetic/. Its own rules are the four that file's header keeps (it is the
 one exception to the rest); a paragraph opening '^ ' is an INSCRIPTION, printed in the tablet's emerald (C_RING, which
-the reader breathes), and its pictures are not drawn yet -- every entry shows one plain placeholder frame.
+the reader breathes). Its frontispiece, its opening section's five pictures and its bag icon are drawn
+(tools/thirdbook_art.py, T-519, DRAFT); every other entry shows the frontispiece until its own picture is drawn.
 
 THE EUDAIMON LAYER (T-519 item 2), the third book's dawn half, is the night half read from the other side:
 docs/eudaimon-layer.md, written to src/data/eudaimon_layer.h and graphics/book/eudaimon/ on a warm dawn page. It keeps
@@ -17,12 +18,15 @@ the night half's rules and two more (the frightening word, and the attestation's
 opening '% ' is the OBSERVER's line, three wordings split by ' | ' (in good spirits, as it is, in low spirits). The entry
 keeps the middle wording in its text, and EUDAIMON_OBSERVER holds the entry's whole text three times, by SPIRITS class
 (0 as it is, 1 good, 2 low -- daemons_spirits.h), so the reader prints the lead daemon's. Every reading is measured.
-Its pictures and cover are placeholders in the night half's style, recoloured for dawn, until they are drawn.
+Its frontispiece, opening pictures and icon are drawn as the night half's are; its boards are sapphire (C_SLATE and
+C_CHALK_FAINT, two roles only the cover and the icon print -- the user's pick, 2026-11-05).
 
 THE UNITY BOOK (T-519 item 3), the third book mended: docs/unity-book.md, written to src/data/unity_layer.h and
 graphics/book/unity/ on a page between night and dawn. It keeps the dawn half's rules and voices (its ATTESTATION carries
 the observer's line), and it alone may hold ELEVEN sections -- BALANCE at the crease -- since the reader draws its
-contents at an 11px pitch (book_reader.c). Its pictures and cover are placeholders too.
+contents at an 11px pitch (book_reader.c). Its frontispiece, opening pictures and icon are drawn as the halves' are.
+The three covers are the user's picks, bundled in tools/thirdbook_covers/ (third_cover); the placeholders below
+are what a missing one falls back to.
 
 THE TEAR (T-519 item 2, the user 2026-11-05): before the mending, a half opened at DAEMON TOWER ends its last page torn
 mid-sentence at the spine. TORN holds, for each half, the entry, the sentence its last page ends on and the words left
@@ -160,9 +164,9 @@ EUDAIMON_PALETTE = [
     ("C_HIGHLIGHT",   (13, 8, 7)),      # the cursor's bar
     ("C_RING",        (12, 24, 15)),    # an INSCRIPTION: the tablet's green, in the morning
     ("C_FRAME",       (1, 1, 1)),
-    ("C_SLATE",       (12, 7, 6)),      # the cover's boards: a rose-brown
+    ("C_SLATE",       (5, 8, 17)),      # the cover's boards: sapphire (the user's pick, 2026-11-05) -- the morning's blue
     ("C_CHALK",       (31, 30, 27)),    # the cover's lettering
-    ("C_CHALK_FAINT", (24, 18, 14)),
+    ("C_CHALK_FAINT", (17, 21, 29)),    # cover and icon only: book_reader.c prints neither on a page
     ("C_COVER",       (9, 5, 5)),       # the backdrop: the sky before the sun
 ]
 # T-519 item 3: THE UNITY BOOK keeps the dawn half's rules (it opens with an attestation, and never says the word).
@@ -201,7 +205,7 @@ BOOKS = {
                  "gfx": "unity", "icon": "unity_book", "title": "THE UNITY BOOK", "subtitle": "AN ATTESTATION"},
 }
 NIGHT_AND_DAWN = ("hermetic", "eudaimon")   # the torn book's two halves
-THIRD_BOOK = NIGHT_AND_DAWN + ("unity",)    # ... and mended: placeholder pictures, inscriptions, the observer's line
+THIRD_BOOK = NIGHT_AND_DAWN + ("unity",)    # ... and mended: drawn pictures, inscriptions, the observer's line
 SECTIONS_HELD = {"unity": 11}               # the contents page holds 10 sections; the mended book's, at 11px, 11
 # T-519 item 2: each half's last page, torn mid-sentence at the spine (DRAFT): (entry, its last sentence, what is left)
 TORN = {
@@ -464,19 +468,6 @@ def icon():
     return im
 
 
-def placeholder():
-    """T-483: the one picture every HERMETIC LAYER entry shows until its own is drawn (51 are named, none drawn): an
-    empty plate on the page, a hairline frame in the rule's purple and a small emerald mark at its heart. Plain on
-    purpose -- it says a picture belongs here, not what it is."""
-    im = Image.new("RGB", (PIC_W, PIC_H), RGB8["C_PAPER"])
-    d = ImageDraw.Draw(im)
-    d.rectangle((6, 4, PIC_W - 7, PIC_H - 5), outline=RGB8["C_RULE"])
-    d.rectangle((8, 6, PIC_W - 9, PIC_H - 7), outline=RGB8["C_EDGE"])
-    cx, cy = PIC_W // 2, PIC_H // 2
-    d.polygon([(cx, cy - 6), (cx + 5, cy), (cx, cy + 6), (cx - 5, cy)], outline=RGB8["C_RING"])
-    return im
-
-
 def cover_hermetic(letters=True):
     """T-483: THE HERMETIC LAYER's cover (240x160): night boards, the title in the game's font, and a green tablet with
     two triangles on it, one pointing up and one down. No byline."""
@@ -498,17 +489,6 @@ def cover_hermetic(letters=True):
     d.polygon([(cx, 66), (cx + 14, 90), (cx - 14, 90)], outline=RGB8["C_MARGIN"])     # above
     d.line((x0 + 8, 94, x1 - 8, 94), fill=RGB8["C_RING"])
     d.polygon([(cx, 122), (cx + 14, 98), (cx - 14, 98)], outline=RGB8["C_RING"])      # so below
-    return im
-
-
-def icon_hermetic():
-    """The bag's icon (24x24): a closed book on the night boards, the tablet's emerald down its spine."""
-    im = Image.new("RGB", (24, 24), RGB8["C_NONE"])
-    d = ImageDraw.Draw(im)
-    d.rectangle((5, 3, 19, 21), fill=RGB8["C_SLATE"], outline=RGB8["C_INK"])
-    d.rectangle((5, 3, 7, 21), fill=RGB8["C_RING"])
-    d.polygon([(13, 7), (16, 12), (10, 12)], outline=RGB8["C_MARGIN"])
-    d.line((10, 15, 16, 15), fill=RGB8["C_CHALK_FAINT"])
     return im
 
 
@@ -536,17 +516,6 @@ def cover_eudaimon(letters=True):
     d.pieslice((cx - 14, hy - 14, cx + 14, hy + 14), 180, 360, fill=RGB8["C_MARGIN"])   # the sun, half risen
     d.line((x0 + 8, hy, x1 - 8, hy), fill=RGB8["C_RING"])                               # the horizon
     d.polygon([(cx, 124), (cx + 14, 106), (cx - 14, 106)], outline=RGB8["C_FAINT"])      # below, faint: the other half
-    return im
-
-
-def icon_eudaimon():
-    """The bag's icon (24x24): a closed book on the dawn boards, the first light's gold down its spine."""
-    im = Image.new("RGB", (24, 24), RGB8["C_NONE"])
-    d = ImageDraw.Draw(im)
-    d.rectangle((5, 3, 19, 21), fill=RGB8["C_SLATE"], outline=RGB8["C_INK"])
-    d.rectangle((17, 3, 19, 21), fill=RGB8["C_RULE"])
-    d.pieslice((8, 8, 16, 16), 180, 360, fill=RGB8["C_MARGIN"])
-    d.line((8, 12, 15, 12), fill=RGB8["C_CHALK_FAINT"])
     return im
 
 
@@ -579,20 +548,63 @@ def cover_unity(letters=True):
     return im
 
 
-def icon_unity():
-    """The bag's icon (24x24): a closed book with both spines, the emerald on one and the gold on the other."""
-    im = Image.new("RGB", (24, 24), RGB8["C_NONE"])
-    d = ImageDraw.Draw(im)
-    d.rectangle((5, 3, 19, 21), fill=RGB8["C_SLATE"], outline=RGB8["C_INK"])
-    d.rectangle((5, 3, 7, 21), fill=RGB8["C_MARGIN"])
-    d.rectangle((17, 3, 19, 21), fill=RGB8["C_RULE"])
-    d.line((12, 6, 12, 18), fill=RGB8["C_CHALK_FAINT"])
-    return im
+def third_art(book):
+    """T-519: the third book's drawn art, from tools/thirdbook_art.py: {"icon": fn, "pictures": {key: fn}}. The
+    frontispiece is "frontis", every other key an entry's sprite; the dawn half's frontispiece is its sapphire one."""
+    import thirdbook_art as ta
+    ta.gs = sys.modules[__name__]          # draw with this module's palette, run as a script or imported
+    pics = dict((key, fn) for key, _, fn in ta.PICTURES[book])
+    if book == "eudaimon":
+        pics["frontis"] = lambda: ta.e_frontis(True)
+    return ta, {"icon": ta.ICONS[book], "pictures": pics}
+
+
+def third_frames(book, keys):
+    """{key: [indexed frames]} for the third book's drawn pictures, and its icon, in this book's own roles."""
+    ta, art = third_art(book)
+    ta.use(book)
+    frames = {}
+    for key in keys:
+        f = ta.render_indexed(art["pictures"][key], PIC_W, PIC_H)
+        frames[key] = f if isinstance(f, list) else [f]
+        if len(frames[key]) > 3:
+            raise SystemExit("gensubtle: %s's %s has %d frames; the reader holds 3" % (book, key, len(frames[key])))
+    return frames, ta.render_indexed(art["icon"], 24, 24, "C_NONE")
+
+
+COVERS_DIR = os.path.join(HERE, "thirdbook_covers")
+
+
+def third_cover(book):
+    """T-519: the third book's cover -- the user's pick (2026-11-05: night V4, dawn V2, mended V2), each the chosen
+    composition repainted on the sprite server with a painted plate's light (docs/private/art/t519/forge/blend.py)
+    and quantized into the book's roles. Bundled as indexed PNGs in tools/thirdbook_covers/ so this tool needs no
+    server; written with this book's palette, so a palette change carries. The placeholder if one is missing."""
+    path = os.path.join(COVERS_DIR, "%s.png" % book)
+    if not os.path.exists(path):
+        return indexed({"hermetic": cover_hermetic, "eudaimon": cover_eudaimon, "unity": cover_unity}[book](), 240, 160,
+                       fill="C_COVER")
+    im = Image.open(path)
+    if im.mode != "P" or im.size != (240, 160) or max(im.getdata()) > 15:
+        raise SystemExit("gensubtle: %s is not a 240x160 cover in sixteen roles" % path)
+    for y in range(85, 153):                     # the CARDS tile's corner stays clear (the night half and the mended)
+        for x in range(195, 240):
+            if book != "eudaimon" and im.getpixel((x, y)) != IDX["C_COVER"]:
+                raise SystemExit("gensubtle: %s draws in the CARDS corner at %d,%d" % (path, x, y))
+    out = im.copy()
+    out.putpalette([v for n, _ in PALETTE for v in RGB8[n]] + [0] * (768 - 48))
+    return out
 
 
 def pictures(sections):
     if BOOK in THIRD_BOOK:
-        return ["placeholder"]
+        drawn = third_art(BOOK)[1]["pictures"]
+        keys = ["frontis"]
+        for s in sections:
+            for e in s["entries"]:
+                if e["sprite"] in drawn and e["sprite"] not in keys:
+                    keys.append(e["sprite"])
+        return keys
     keys = []
     for s in sections:
         for e in s["entries"]:
@@ -644,7 +656,8 @@ def header(sections, keys, nframes):
             ins = sum(1 << p for p in e.get("inscribed", ()))
             if mask >= 1 << 16 or ins >= 1 << 16:
                 raise SystemExit("gensubtle: %s's voices reach past paragraph 16" % e["short"])
-            pic = 0 if BOOK in THIRD_BOOK else keys.index(e["sprite"])
+            # T-519: a third-book entry whose own picture is not drawn yet shows the frontispiece
+            pic = keys.index(e["sprite"] if e["sprite"] in keys or BOOK not in THIRD_BOOK else "frontis")
             row = "    { s%sShort_%d, s%sTitle_%d, s%sText_%d, s%sCaption_%d, %d, 0x%04X, %d" % (
                 P, k, P, k, P, k, P, k, pic, mask, folio)
             rows.append(row + (", 0x%04X },   // %s" % (ins, e["sprite"]) if BOOK in THIRD_BOOK else " },"))
@@ -718,14 +731,19 @@ def run(book):
         observe(sections)
     bad = check(sections)
     keys = pictures(sections)
-    nframes = {k: 1 for k in keys} if book in THIRD_BOOK else {k: len(frames_of(k)) for k in keys}
+    if book in THIRD_BOOK:
+        drawn, ic = third_frames(book, keys)
+        nframes = {k: len(drawn[k]) for k in keys}
+    else:
+        nframes = {k: len(frames_of(k)) for k in keys}
     n = sum(len(s["entries"]) for s in sections)
     total = sum(spreads(e) for s in sections for e in s["entries"])
     print("gensubtle %s: %d sections, %d entries, %d pictures (%d frames), %d spreads"
           % (book, len(sections), n, len(keys), sum(nframes.values()), total))
     if book in THIRD_BOOK:
         named = {e["sprite"] for s in sections for e in s["entries"]}
-        print("  %d pictures named, none drawn yet: every entry shows the placeholder frame" % len(named))
+        print("  %d pictures named, %d drawn and the frontispiece; the rest show the frontispiece"
+              % (len(named), len([k for k in keys if k in named])))
     for note in NOTES:
         print("  note: " + note)
     del NOTES[:]
@@ -738,17 +756,19 @@ def run(book):
     gfx = os.path.join(ENGINE, "graphics/book", b["gfx"])
     os.makedirs(gfx, exist_ok=True)
     if book in THIRD_BOOK:
-        indexed(placeholder(), PIC_W, PIC_H).save(os.path.join(gfx, "placeholder_0.png"))
-        indexed({"hermetic": cover_hermetic, "eudaimon": cover_eudaimon, "unity": cover_unity}[book](), 240, 160,
-                fill="C_COVER").save(os.path.join(gfx, "cover.png"))
-        ic = {"hermetic": icon_hermetic, "eudaimon": icon_eudaimon, "unity": icon_unity}[book]()
+        for key in keys:
+            for f, fr in enumerate(drawn[key]):
+                fr.save(os.path.join(gfx, "%s_%d.png" % (key, f)))
+        third_cover(book).save(os.path.join(gfx, "cover.png"))
     else:
         for key in keys:
             for f, fr in enumerate(frames_of(key)):
                 indexed(fr, PIC_W, PIC_H).save(os.path.join(gfx, "%s_%d.png" % (key, f)))
         indexed(cover(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
         ic = icon()
-    indexed(ic, 24, 24, fill="C_NONE").save(os.path.join(ENGINE, "graphics/items/icons/%s.png" % b["icon"]))
+    if book not in THIRD_BOOK:
+        ic = indexed(ic, 24, 24, fill="C_NONE")
+    ic.save(os.path.join(ENGINE, "graphics/items/icons/%s.png" % b["icon"]))
     with open(os.path.join(ENGINE, "graphics/items/icon_palettes/%s.pal" % b["icon"]), "w", newline="") as f:
         f.write("JASC-PAL\r\n0100\r\n16\r\n" + "".join("%d %d %d\r\n" % RGB8[n] for n, _ in PALETTE))
     with open(os.path.join(ENGINE, "src/data", b["header"]), "w", encoding="utf-8") as f:

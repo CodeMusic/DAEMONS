@@ -48,6 +48,35 @@ def use(book, tweak=None):
     C.update(gs.RGB8)
 
 
+def render_indexed(fn, w, h, fill="C_PAPER"):
+    """FN's drawing as the indexed PNG(s) the build converts -- a list when it has frames. Drawn in one unique
+    sentinel colour per role, then mapped back, so two roles that share a colour keep their own index: in the night
+    half C_EDGE_DARK and C_COVER are both (2,1,3), and a picture mapped by colour alone would breathe with the
+    backdrop (gs.indexed keeps the last role of a colour). Call after use()."""
+    real = dict(C)
+    names = [n for n, _ in gs.PALETTE]
+    sentinel = {n: (251, 3 + 9 * i, 7 + 11 * i) for i, n in enumerate(names)}
+    back = {v: gs.IDX[n] for n, v in sentinel.items()}
+    C.clear(); C.update(sentinel)
+    try:
+        drawn = fn()
+    finally:
+        C.clear(); C.update(real)
+    out = []
+    for im in (drawn if isinstance(drawn, list) else [drawn]):
+        ind = Image.new("P", (w, h), gs.IDX[fill])
+        ind.putpalette([v for n, _ in gs.PALETTE for v in gs.RGB8[n]] + [0] * (768 - 48))
+        ox, oy = (w - im.width) // 2, (h - im.height) // 2
+        src = im.load()
+        for y in range(im.height):
+            for x in range(im.width):
+                if src[x, y] not in back:
+                    raise SystemExit("thirdbook_art: %s draws %s, which is no palette role" % (fn.__name__, src[x, y]))
+                ind.putpixel((ox + x, oy + y), back[src[x, y]])
+        out.append(ind)
+    return out if isinstance(drawn, list) else out[0]
+
+
 def px(im, x, y, c):
     if 0 <= x < im.width and 0 <= y < im.height:
         im.putpixel((int(x), int(y)), C[c] if isinstance(c, str) else c)
@@ -778,7 +807,8 @@ def main():
     for book in ("hermetic", "eudaimon", "unity"):
         gfx = os.path.join(ENGINE, "graphics/book", gs.BOOKS[book]["gfx"])
         ph_cover = Image.open(os.path.join(gfx, "cover.png")).convert("RGB")
-        ph_pic = Image.open(os.path.join(gfx, "placeholder_0.png")).convert("RGB")
+        ph_pic = Image.open(os.path.join(gfx, "placeholder_0.png" if os.path.exists(os.path.join(gfx, "placeholder_0.png"))
+                                         else "frontis_0.png")).convert("RGB")     # what the book shows now
         ph_icon = Image.open(os.path.join(ENGINE, "graphics/items/icons/%s.png" % gs.BOOKS[book]["icon"])).convert("RGB")
         for key, label, fn, tweak in COVERS[book]:
             use(book, tweak)
