@@ -9,8 +9,9 @@
 THE HERMETIC LAYER (T-483) is read by the same parser into the same open book: docs/hermetic-layer.md, written to
 src/data/hermetic_layer.h and graphics/book/hermetic/. Its own rules are the four that file's header keeps (it is the
 one exception to the rest); a paragraph opening '^ ' is an INSCRIPTION, printed in the tablet's emerald (C_RING, which
-the reader breathes). Its frontispiece, its opening section's five pictures and its bag icon are drawn
-(tools/thirdbook_art.py, T-519, DRAFT); every other entry shows the frontispiece until its own picture is drawn.
+the reader breathes). Its frontispiece, its bag icon and most of its entries' pictures are drawn (tools/thirdbook_art.py,
+T-519, DRAFT: the opening section, then batches 2 and 3); every other entry shows the frontispiece until its own is
+drawn. third_images() gives the companion the same pictures and a letterless cover.
 
 THE EUDAIMON LAYER (T-519 item 2), the third book's dawn half, is the night half read from the other side:
 docs/eudaimon-layer.md, written to src/data/eudaimon_layer.h and graphics/book/eudaimon/ on a warm dawn page. It keeps
@@ -595,6 +596,55 @@ def third_cover(book):
     out.putpalette([v for n, _ in PALETTE for v in RGB8[n]] + [0] * (768 - 48))
     return out
 
+
+# the draft each bundled cover was painted over (docs/private/art/t519/forge/blend.py): its title came from it
+THIRD_DRAFT = {"hermetic": ("h_cover_a", None), "eudaimon": ("e_cover_b", "SAPPHIRE"), "unity": ("u_cover_b", None)}
+
+
+def third_cover_plain(book):
+    """The cover with no title set in the game's font, for the companion (which sets the title in its own type): the
+    bundled cover with every pixel its draft's title() drew put back to what the draft has under it. The pixels
+    are found by drawing the draft twice, with its title and without."""
+    cov = third_cover(book).copy()
+    ta, _ = third_art(book)
+    name, tweak = THIRD_DRAFT[book]
+    fn = getattr(ta, name)
+    ta.use(book, getattr(ta, tweak) if tweak else None)
+    try:
+        lettered = ta.render_indexed(fn, 240, 160, "C_COVER")
+        keep = ta.title
+        ta.title = lambda *a, **k: None
+        try:
+            plain = ta.render_indexed(fn, 240, 160, "C_COVER")
+        finally:
+            ta.title = keep
+    finally:
+        use(book)
+    c, l, p = cov.load(), lettered.load(), plain.load()
+    for y in range(160):
+        for x in range(240):
+            if l[x, y] != p[x, y]:
+                if c[x, y] != l[x, y]:
+                    raise SystemExit("gensubtle: %s's cover is not its draft's under the title at %d,%d" % (book, x, y))
+                c[x, y] = p[x, y]
+    return cov
+
+
+def third_images(book):
+    """{name: picture} for the companion, as subtle_images() is: the third book's cover (letterless) and every drawn
+    picture's frames, RGB at native size in the book's own palette, as the game shows them. An entry whose own
+    picture is not drawn shows the frontispiece, as in the game. Nothing in them is set in the game's font."""
+    use(book)
+    sections = parse()
+    keys = pictures(sections)
+    drawn, _ = third_frames(book, keys)
+    use(book)
+    out = {}
+    for key in keys:
+        for f, fr in enumerate(drawn[key]):
+            out["%s_%s_%d.png" % (book, key, f)] = fr.convert("RGB")
+    out["%s_cover.png" % book] = third_cover_plain(book).convert("RGB")
+    return out
 
 def pictures(sections):
     if BOOK in THIRD_BOOK:

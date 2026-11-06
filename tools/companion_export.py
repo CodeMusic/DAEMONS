@@ -1153,11 +1153,37 @@ def title_files():
     return out
 
 
+THIRD_ART = {}
+
+
+def third_art(book):
+    """T-519: the third book's drawn art for the companion, once per run: ({name: RGB picture}, {key: frames}). The
+    pictures and the letterless cover are gensubtle.third_images(book)'s, as the game shows them."""
+    if book not in THIRD_ART:
+        import gensubtle
+        images = gensubtle.third_images(book)
+        gensubtle.use("subtle")                 # the state the tables below read the books in
+        frames = {}
+        for name in images:
+            if name != "%s_cover.png" % book:
+                key = name[len(book) + 1:-4].rsplit("_", 1)[0]
+                frames[key] = frames.get(key, 0) + 1
+        THIRD_ART[book] = (images, frames)
+    return THIRD_ART[book]
+
+
+def third_picture(book, sprite):
+    """an entry's picture and frame count as the game shows it: its own when drawn, else the frontispiece's"""
+    frames = third_art(book)[1]
+    key = sprite if sprite in frames else "frontis"
+    return {"picture": key, "frames": frames[key]}
+
+
 def hermetic_table():
     """T-483 / C-238: THE HERMETIC LAYER for the companion's LIBRARY -- docs/hermetic-layer.md, in docs/subtle-layer.md's
     format, read by gensubtle's own parser: each paragraph plain text, the asking voice ('~ ') and the INSCRIPTION ('^ ',
-    the tablet's emerald, read aloud on its own) marked. Each entry names its picture; the game has not drawn them yet, so
-    there are no frames. Held once FLAG_GOT_HERMETIC_LAYER is set (written by the companion at a sync, or in the game).
+    the tablet's emerald, read aloud on its own) marked. Each entry names its picture and its frame count as the game
+    shows it (T-519: an entry not drawn yet shows the frontispiece, as in the game). Held once FLAG_GOT_HERMETIC_LAYER is set (written by the companion at a sync, or in the game).
     DRAFT, every word."""
     import gensubtle
     keep = gensubtle.SRC
@@ -1174,11 +1200,12 @@ def hermetic_table():
             for k, q in enumerate(e["paras"]):
                 voice = "asking" if k in e["faint"] else "inscription" if q.startswith("^ ") else "telling"
                 paras.append({"text": q[2:] if voice == "inscription" else q, "voice": voice})
-            entries.append({"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0,
+            entries.append({"short": e["short"], "title": e["title"], **third_picture("hermetic", e["sprite"]),
                             "caption": e["caption"], "paragraphs": paras})
         out.append({"label": s["label"], "heading": s["heading"], "entries": entries})
     flag = flag_values(["FLAG_GOT_HERMETIC_LAYER"])["FLAG_GOT_HERMETIC_LAYER"]
-    return {"title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT", "draft": True, "flag": flag, "sections": out}
+    return {"title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT", "draft": True, "flag": flag, "sections": out,
+            "cover": "art/hermetic_cover.png", "frontispiece": "frontis"}
 
 
 def layer_paragraphs(e):
@@ -1207,10 +1234,11 @@ def unity_table():
     finally:
         gensubtle.SRC = keep
     out = [{"label": s["label"], "heading": s["heading"], "entries": [
-        {"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0, "caption": e["caption"],
+        {"short": e["short"], "title": e["title"], **third_picture("unity", e["sprite"]), "caption": e["caption"],
          "paragraphs": layer_paragraphs(e)} for e in s["entries"]]} for s in sections]
     flag = flag_values(["FLAG_UNITY_MENDED"])["FLAG_UNITY_MENDED"]
-    return {"title": "THE UNITY BOOK", "subtitle": "AN ATTESTATION", "draft": True, "flag": flag, "sections": out}
+    return {"title": "THE UNITY BOOK", "subtitle": "AN ATTESTATION", "draft": True, "flag": flag, "sections": out,
+            "cover": "art/unity_cover.png", "frontispiece": "frontis"}
 
 
 def eudaimon_table():
@@ -1238,11 +1266,12 @@ def eudaimon_table():
                     continue
                 voice = "asking" if k in e["faint"] else "inscription" if q.startswith("^ ") else "telling"
                 paras.append({"text": q[2:] if voice == "inscription" else q, "voice": voice})
-            entries.append({"short": e["short"], "title": e["title"], "picture": e["sprite"], "frames": 0,
+            entries.append({"short": e["short"], "title": e["title"], **third_picture("eudaimon", e["sprite"]),
                             "caption": e["caption"], "paragraphs": paras})
         out.append({"label": s["label"], "heading": s["heading"], "entries": entries})
     flag = flag_values(["FLAG_GOT_EUDAIMON_LAYER"])["FLAG_GOT_EUDAIMON_LAYER"]
-    return {"title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING", "draft": True, "flag": flag, "sections": out}
+    return {"title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING", "draft": True, "flag": flag, "sections": out,
+            "cover": "art/eudaimon_cover.png", "frontispiece": "frontis"}
 
 
 def _c_strings(src):
@@ -2240,6 +2269,18 @@ def main():
             if WRITE:
                 os.makedirs(art_dir, exist_ok=True)
                 open(path, "wb").write(buf.getvalue())
+    #  T-519: the third book's three forms, the same way: each drawn picture's frames and the letterless cover.
+    for book in ("hermetic", "eudaimon", "unity"):
+        for name, im in third_art(book)[0].items():
+            subtle[name] = im
+            buf = io.BytesIO()
+            im.save(buf, "PNG", optimize=True)
+            path = os.path.join(art_dir, name)
+            if not os.path.exists(path) or open(path, "rb").read() != buf.getvalue():
+                art_changed += 1
+                if WRITE:
+                    os.makedirs(art_dir, exist_ok=True)
+                    open(path, "wb").write(buf.getvalue())
     title = title_files()                                               # the GAME tab's launcher
     for name, data in title.items():
         path = os.path.join(art_dir, "title", name)
