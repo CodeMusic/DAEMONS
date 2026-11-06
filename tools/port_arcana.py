@@ -31,7 +31,11 @@ import fontwidth
 ROOT = os.path.dirname(HERE)
 WRITE = "--write" in sys.argv
 ENGINE = sys.argv[sys.argv.index("--engine") + 1] if "--engine" in sys.argv else os.path.join(ROOT, "engineGba")
-COMPANION = os.path.join(ROOT, "companion", "server", "data")
+#  The companion as setup.sh links it, or where it is cloned when this checkout has no link (a worktree, or
+#  check_generators --writes' sandbox, which crashed here 2026-11-06). Only ever READ.
+COMPANION = next((p for p in (os.path.join(ROOT, "companion", "server", "data"),
+                              os.path.expanduser("~/Projects/daemons-companion/server/data"))
+                  if os.path.isfile(os.path.join(p, "arcana.json"))), os.path.join(ROOT, "companion", "server", "data"))
 ART = os.path.join(ROOT, "gfx", "drafts", "t509_cards")
 OUT_H = "src/data/arcana_cards.h"
 OUT_GFX = "graphics/book/cards"
