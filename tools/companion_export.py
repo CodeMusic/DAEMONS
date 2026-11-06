@@ -1198,7 +1198,7 @@ def layer_paragraphs(e):
 def unity_table():
     """T-519 item 3: THE UNITY BOOK, the third book mended -- docs/unity-book.md, read by the same parser as its halves:
     eleven sections (BALANCE at the crease), the ATTESTATION's observer line by SPIRITS. 'flag' is FLAG_UNITY_MENDED's
-    number (the game mends it at DAEMON TOWER). Not yet approved by the user: DRAFT, every word."""
+    number (the game mends it at DAEMON TOWER). Approved by the user as drafted 2026-11-05; DRAFT, every word."""
     import gensubtle
     keep = gensubtle.SRC
     gensubtle.SRC = os.path.join(ROOT, "docs/unity-book.md")

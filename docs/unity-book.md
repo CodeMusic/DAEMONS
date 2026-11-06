@@ -1,6 +1,6 @@
 # THE UNITY BOOK — the text the game prints (T-519)
 
-*DRAFT, every word, until the user approves it. Drafted 2026-11-04 from the user's design (vision 4.40): the third book,
+*DRAFT, every word (as every new word in the game is). **Approved by the user as drafted, 2026-11-05.** Drafted 2026-11-04 from the user's design (vision 4.40): the third book,
 mended. `docs/hermetic-layer.md` is its night half and `docs/eudaimon-layer.md` its dawn half; this is the same book
 read from both sides at once. It follows the contents the user approved on 2026-11-02
 (`docs/private/unity-book-review-2026-11-02.md`): the whole book's titles plain and settled, an eleventh section,
