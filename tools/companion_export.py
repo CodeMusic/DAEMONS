@@ -206,7 +206,7 @@ SPOKEN_MARK = "<!-- tellings -->"
 #  A telling names no feeling, claims nothing about an inside, and does not know there is a record (vision 4.2)
 SPOKEN_BANNED = (r"feel\w*|felt|alive|conscious\w*|soul\w*|happy|sad|angry|afraid|lonely|love\w*|hate\w*|"
                  r"index|record\w*|d[e]mon\w*")
-SPOKEN_SILENT = {"MISSINGNO."}     # no record was written, and there is nobody to ask
+SPOKEN_SILENT = {"MISSINGNO"}     # no record was written, and there is nobody to ask
 
 
 def spoken_table(rows):

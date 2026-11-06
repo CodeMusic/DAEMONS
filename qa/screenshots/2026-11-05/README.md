@@ -127,3 +127,63 @@ T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says o
 T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
 
 ![5Nov2026 - T522 - in its own words - 38](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2038.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 39
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 39](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2039.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 40
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 40](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2040.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 41
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 41](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2041.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 42
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 42](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2042.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 43
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 43](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2043.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 44
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 44](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2044.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 45
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 45](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2045.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 46
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 46](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2046.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 47
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 47](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2047.png)
+
+### 5Nov2026 - T522 - in its own words, the rest - 48
+
+T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
+
+![5Nov2026 - T522 - in its own words, the rest - 48](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2048.png)
