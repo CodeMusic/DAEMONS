@@ -187,3 +187,21 @@ T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what 
 T-522 (DRAFT): the other 243 daemons' two INDEX records, unchanged, beside what each says of itself in the companion. Sheets 7 to 16 of 16; the eight NEXUS residents are on the last.
 
 ![5Nov2026 - T522 - in its own words, the rest - 48](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%2C%20the%20rest%20-%2048.png)
+
+### 5Nov2026 - T519 - book art - 49
+
+T-519 DRAFT, THE HERMETIC LAYER filmed in the theatre at night: the chosen cover (V4), WARNING's drawn picture, and the frontispiece ONE THING shows (every entry after the opening section).
+
+![5Nov2026 - T519 - book art - 49](5Nov2026%20-%20T519%20-%20book%20art%20-%2049.png)
+
+### 5Nov2026 - T519 - book art - 50
+
+T-519 DRAFT, THE HERMETIC LAYER filmed in the theatre at night: the chosen cover (V4), WARNING's drawn picture, and the frontispiece ONE THING shows (every entry after the opening section).
+
+![5Nov2026 - T519 - book art - 50](5Nov2026%20-%20T519%20-%20book%20art%20-%2050.png)
+
+### 5Nov2026 - T519 - book art - 51
+
+T-519 DRAFT, THE HERMETIC LAYER filmed in the theatre at night: the chosen cover (V4), WARNING's drawn picture, and the frontispiece ONE THING shows (every entry after the opening section).
+
+![5Nov2026 - T519 - book art - 51](5Nov2026%20-%20T519%20-%20book%20art%20-%2051.png)
