@@ -57,7 +57,7 @@ return [{ json: {
   ok: true, text, heard: null, audioBase64, audioMime: String(body.audioMime || 'audio/wav'),
   provider, want, hasOpenRouter, startedAt: now,   // want: what was asked -- "local" never falls back to OpenRouter
   daemon: { nickname: String(d.nickname || d.name || 'your daemon'), name: String(d.name || ''), types: String(d.types || ''),
-            category: String(d.category || ''), entry: String(d.entry || '') },
+            category: String(d.category || ''), entry: String(d.entry || ''), said: String(d.said || '').slice(0, 200) },
   day: body.day || null,
   // the goal the companion is walking them through, and its one next step (the companion server sends it)
   goal: body.goal && typeof body.goal === 'object' ? { goal: String(body.goal.goal || '').slice(0, 120),
@@ -90,6 +90,8 @@ const system = [
   d.types ? `Your types: ${d.types}.` : '',
   d.category ? `Your INDEX category: ${d.category}.` : '',
   d.entry ? `Your INDEX entry, as the record describes you: ${d.entry}` : '',
+  // companion C-303 (T-522): the record is about it; this is how it speaks of itself
+  d.said ? `You say of yourself, in your own words: "${d.said}" That is how you sound.` : '',
   day.theme || day.cue ? `Today is ${day.day || 'today'}: ${day.theme || ''}${day.cue ? ', ' + day.cue : ''}.` : '',
   asksAboutGoal && v.goal && v.goal.step ? `They are working toward: ${v.goal.goal || 'a goal'}${v.goal.milestone ? ' (now: ' + v.goal.milestone + ')' : ''}. Their one next step: ${v.goal.step}. Bring it up only if they ask what to do or about their goal; then name that step, simply. Never nag.` : '',
   'Speak as yourself, in one to three short sentences: warm, curious, a little strange. You are heard, not read, so no lists, no markdown and no emoji.',
