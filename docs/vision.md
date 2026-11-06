@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.340**
+**A total conversion — the living design bible, v11.341**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2300,6 +2300,24 @@ She spent her career arguing that machines have *context*, not merely content. N
 *Sprite note:* amber reads cleanly across the two mid shades in 2bpp; a fox silhouette is legible at 16×16 overworld scale.
 
 ### 4.2 The Index — the player's turn at the family error
+
+#### The record says it. The daemon says I. — settled 2026-11-05
+
+***Asked by the user, once every daemon had a voice of its own (companion C-251)***: *what would change if a daemon's entry were in the first person?* **Chosen, by multiple choice: the app only, spoken. The game's INDEX does not change.**
+
+**The INDEX stays in the third person because it is the instrument.** *This section's whole claim is that the artifact can only measure content, from outside, and that entries are thin on purpose.* **An entry that says "I" is testimony, and an INDEX that holds testimony has a field for the thing it was built not to hold.** *It would also say the thesis in 398 voices (craft rule 1) — the reason OPUS was refused a speaking part, 386 times over — and it would hand each daemon the one thing its entry turns on, which is what nobody told it.*
+
+***So the daemon speaks where it already speaks.*** **In the companion, on its own page, a daemon tells of itself in its own voice** — *one telling per daemon, the same whichever cartridge it came from*: ***two records that disagree, and one daemon who says a third thing.*** **The INDEX screen there still reads the record, in the INDEX voice.** *Nobody remarks that the two do not match.*
+
+**What a telling may say (T-522):**
+
+- ***Only what it could know from inside*** — *what it does and what it notices.* **Never what the record says nobody told it**: *ROVERCUB's record says it has no way to choose the route; ROVERCUB does not mention choosing.*
+- ***It does not know there is a record.*** *It never quotes one and never argues with one.*
+- ***No feeling is named, and nothing is claimed or denied about having an inside.*** *The voice carries the mood (C-251); the words do not.*
+- ***It does not accuse whoever carries it.*** *The margin notices the player; the daemon does not.*
+- ***As thin as the record.*** **MISSINGNO has none**: *there was no record to answer, and there is nobody to ask.*
+
+**Written in `docs/index-spoken.md`, exported as `said`, never built into a ROM.** *Every word DRAFT.*
 
 #### A margin can only answer an entry we wrote — settled 2026-09-22
 

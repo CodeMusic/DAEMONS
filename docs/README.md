@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.340, working |
-| [`CONTEXT-CONTENT-design-bible-v11.340.pdf`](CONTEXT-CONTENT-design-bible-v11.340.pdf) | Typeset **snapshot** at v11.340 — THE UNITY BOOK: HALFTONE tinted by the half you hold (emerald, sapphire), full colour once mended, and THE HORIZON cast in either hour | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.341, working |
+| [`CONTEXT-CONTENT-design-bible-v11.341.pdf`](CONTEXT-CONTENT-design-bible-v11.341.pdf) | Typeset **snapshot** at v11.341 — the record says it and the daemon says I: the INDEX stays in the third person, and each daemon tells of itself in the companion only | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

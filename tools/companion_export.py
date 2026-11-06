@@ -11,6 +11,8 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
   species.json  every species the save can hold, keyed by the game's INTERNAL species id (what a save stores), with
                 its national INDEX number, our name, our types, the INDEX category, both editions' entries (CONTENT is
                 FireRed's pokedex_text_fr.h, CONTEXT LeafGreen's pokedex_text_lg.h), and its art in gfx/daemons/
+                and, where one is written, `said`: what the daemon says of itself, from docs/index-spoken.md --
+                the companion's only, never in a ROM (T-522)
   charmap.json  the game's text encoding, byte -> character, for reading nicknames and names out of a save
   week.json     the week as the game keeps it: Sunday first, each day's colour (day_trims.h, the CHECKPOINT's trim)
                 and its note, C to B (vision 9.21)
@@ -190,7 +192,59 @@ def species_table():
     for row in out.values():
         if row["national"] and row["national"] > flag_bits:
             row["national"] = None
+    # T-522: what a daemon says of itself, on the companion only -- on the rows that have a telling, so every other
+    # row stays as it was
+    said = spoken_table(out)
+    for row in out.values():
+        if row["name"] in said:
+            row["said"] = said[row["name"]]
     return out
+
+
+SPOKEN = os.path.join(ROOT, "docs", "index-spoken.md")
+SPOKEN_MARK = "<!-- tellings -->"
+#  A telling names no feeling, claims nothing about an inside, and does not know there is a record (vision 4.2)
+SPOKEN_BANNED = (r"feel\w*|felt|alive|conscious\w*|soul\w*|happy|sad|angry|afraid|lonely|love\w*|hate\w*|"
+                 r"index|record\w*|d[e]mon\w*")
+SPOKEN_SILENT = {"MISSINGNO."}     # no record was written, and there is nobody to ask
+
+
+def spoken_table(rows):
+    """T-522 (vision 4.2): {name: telling} from docs/index-spoken.md -- each daemon's first-person telling, one for
+    both editions, spoken on the companion only and never built into a ROM. Every rule a tool can check is checked
+    here, and one broken telling stops the export: a `### NAME` that is no daemon's name, a telling that is not in
+    the first person, one longer than the longer of its two records, or one with a word it may not say."""
+    if not os.path.exists(SPOKEN):
+        return {}
+    text = open(SPOKEN, encoding="utf-8").read()
+    if SPOKEN_MARK not in text:
+        raise SystemExit("docs/index-spoken.md has no %s line; the tellings start under it" % SPOKEN_MARK)
+    longest = {}
+    for row in rows.values():
+        flat = [" ".join((row["entry"][ed] or "").split()) for ed in ("CONTENT", "CONTEXT")]
+        longest[row["name"]] = max(longest.get(row["name"], 0), max(len(f) for f in flat))
+    said, wrong = {}, []
+    for m in re.finditer(r"^### (.+?)[ \t]*\n(.*?)(?=^### |\Z)", text.split(SPOKEN_MARK, 1)[1], re.S | re.M):
+        name, telling = m.group(1).strip(), " ".join(m.group(2).split())
+        if name not in longest:
+            wrong.append("%s: no daemon in the INDEX has that name" % name)
+        elif name in SPOKEN_SILENT:
+            wrong.append("%s: has no telling (vision 4.2)" % name)
+        elif name in said:
+            wrong.append("%s: told twice" % name)
+        elif not telling:
+            wrong.append("%s: nothing under its heading" % name)
+        elif not re.search(r"\b(I|me|my|mine|myself|we|us|our|ours)\b", telling, re.I):
+            wrong.append("%s: not in the first person" % name)
+        elif len(telling) > longest[name]:
+            wrong.append("%s: %d characters, and its longer record is %d" % (name, len(telling), longest[name]))
+        elif re.search(r"\b(?:%s)\b" % SPOKEN_BANNED, telling, re.I):
+            wrong.append("%s: says \"%s\"" % (name, re.search(r"\b(?:%s)\b" % SPOKEN_BANNED, telling, re.I).group(0)))
+        else:
+            said[name] = telling
+    if wrong:
+        raise SystemExit("docs/index-spoken.md (T-522):\n  " + "\n  ".join(wrong))
+    return said
 
 
 TYPE_ORDER = ["NORMAL", "FIGHTING", "FLYING", "POISON", "GROUND", "ROCK", "BUG", "GHOST", "STEEL", "MYSTERY",
@@ -2201,6 +2255,7 @@ def main():
     with_entry = sum(1 for r in sp.values() if r["entry"]["CONTENT"] and r["entry"]["CONTEXT"])
     print("  %d species (%d with both editions' entries, %d with art), %d characters, %d days, 4 seasons"
           % (len(sp), with_entry, with_art, len(files["charmap.json"]["bytes"]), len(files["week.json"]["days"])))
+    print("  %d daemons tell of themselves (docs/index-spoken.md, T-522)" % sum(1 for r in sp.values() if r.get("said")))
     if not changed:
         print("  companion/server/data/ agrees")
     elif WRITE:

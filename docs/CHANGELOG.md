@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.341 — 2026-11-05
+
+- **4.2, the record says it and the daemon says I (T-522, the user, by multiple choice: "App only, spoken").** The game's INDEX stays in the third person: it is the instrument, and an entry that says "I" would hold the thing 4.2 says it cannot. In the companion, on its own page, a daemon tells of itself in its own voice (C-303, C-251): one telling per daemon, the same in both editions, written in `docs/index-spoken.md` and never built into a ROM. A telling says only what the daemon could know from inside, names no feeling, does not know there is a record, and does not accuse whoever carries it. MISSINGNO has none. Every word DRAFT.
+
 ## v11.340 — 2026-11-05
 
 - **4.40, HALFTONE's tone follows the halves you hold (T-519, the user).** Greyscale with neither; emerald sepia with the night half; sapphire sepia, like a cyanotype, with the dawn half; with both unmended it follows the hour (emerald at night, sapphire by day); mended, full colour flows back. Opening a half at DAEMON TOWER deepens its tint for a moment. The mended town's hours stay grey and vivid. This replaces v11.339's tower moment.

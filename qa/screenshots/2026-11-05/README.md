@@ -91,3 +91,39 @@ THE UNITY BOOK's CARDS (DRAFT): the tile on its cover, the day's card turned and
 C-302 (DRAFT): what DRINK and FEED give in the app's den -- full, 2/3, 1/3, empty over the care's phrase, then gone
 
 ![5Nov2026 - C302 - glass and fruit stages - 30](5Nov2026%20-%20C302%20-%20glass%20and%20fruit%20stages%20-%2030.png)
+
+### 5Nov2026 - T522 - in its own words - 33
+
+T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
+
+![5Nov2026 - T522 - in its own words - 33](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2033.png)
+
+### 5Nov2026 - T522 - in its own words - 34
+
+T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
+
+![5Nov2026 - T522 - in its own words - 34](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2034.png)
+
+### 5Nov2026 - T522 - in its own words - 35
+
+T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
+
+![5Nov2026 - T522 - in its own words - 35](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2035.png)
+
+### 5Nov2026 - T522 - in its own words - 36
+
+T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
+
+![5Nov2026 - T522 - in its own words - 36](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2036.png)
+
+### 5Nov2026 - T522 - in its own words - 37
+
+T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
+
+![5Nov2026 - T522 - in its own words - 37](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2037.png)
+
+### 5Nov2026 - T522 - in its own words - 38
+
+T-522 (DRAFT): each daemon's two INDEX records, unchanged, beside what it says of itself in the companion. The Kanto 151 and the carried line, six sheets.
+
+![5Nov2026 - T522 - in its own words - 38](5Nov2026%20-%20T522%20-%20in%20its%20own%20words%20-%2038.png)
