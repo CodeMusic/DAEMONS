@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.341**
+**A total conversion — the living design bible, v11.342**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2307,7 +2307,9 @@ She spent her career arguing that machines have *context*, not merely content. N
 
 **The INDEX stays in the third person because it is the instrument.** *This section's whole claim is that the artifact can only measure content, from outside, and that entries are thin on purpose.* **An entry that says "I" is testimony, and an INDEX that holds testimony has a field for the thing it was built not to hold.** *It would also say the thesis in 398 voices (craft rule 1) — the reason OPUS was refused a speaking part, 386 times over — and it would hand each daemon the one thing its entry turns on, which is what nobody told it.*
 
-***So the daemon speaks where it already speaks.*** **In the companion, on its own page, a daemon tells of itself in its own voice** — *one telling per daemon, the same whichever cartridge it came from*: ***two records that disagree, and one daemon who says a third thing.*** **The INDEX screen there still reads the record, in the INDEX voice.** *Nobody remarks that the two do not match.*
+***So the daemon speaks where it already speaks.*** **In the companion a daemon tells of itself in its own voice** — *one telling per daemon, the same whichever cartridge it came from*: ***two records that disagree, and one daemon who says a third thing.*** *Nobody remarks that the two do not match.* ***Approved as drafted by the user, 2026-11-06.***
+
+***The record is read; the telling is only heard*** (*the user's design, 2026-11-06*). **A card in the companion shows the INDEX entry, and its LISTEN — a play mark in a cog — reads it in the device's voice: flat, robotic, a little glitchy.** *The record is an instrument's, and it sounds like one.* **The daemon's own words are never printed.** *Opened, its sprite shimmers a little; tapped, the daemon comes forward over its card, as large as the card, in its type's own place (its den); it says it is thinking; then it tells of itself, its mouth moving; and then it goes back to being a picture beside a record.* **So the two voices are never on the page together**: *one is what the card says, and the other is what happens when you stop reading the card and look at the daemon.*
 
 **What a telling may say (T-522):**
 

@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.341, working |
-| [`CONTEXT-CONTENT-design-bible-v11.341.pdf`](CONTEXT-CONTENT-design-bible-v11.341.pdf) | Typeset **snapshot** at v11.341 — the record says it and the daemon says I: the INDEX stays in the third person, and each daemon tells of itself in the companion only | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.342, working |
+| [`CONTEXT-CONTENT-design-bible-v11.342.pdf`](CONTEXT-CONTENT-design-bible-v11.342.pdf) | Typeset **snapshot** at v11.342 — the record is read and the telling is only heard: the INDEX entry in the device's voice, the daemon's own words spoken when it is tapped | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

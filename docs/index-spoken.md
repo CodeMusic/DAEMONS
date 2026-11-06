@@ -1,10 +1,10 @@
 # IN ITS OWN WORDS
 
-**What each daemon says of itself, in the companion only (T-522, vision 4.2). Every word DRAFT.**
+**What each daemon says of itself, in the companion only (T-522, vision 4.2). Approved as drafted by the user, 2026-11-06; any line may still be rewritten.**
 
-The game's INDEX is a record: it says *it*, from outside, and it stays that way. This file is the other half. On
-its own page in the companion a daemon tells of itself, in its own voice, and what it says does not match the
-record. Nobody remarks on that.
+The game's INDEX is a record: it says *it*, from outside, and it stays that way. This file is the other half. In
+the companion a daemon tells of itself, in its own voice, when its picture is tapped. These words are heard there and
+never printed, and what they say does not match the record. Nobody remarks on that.
 
 `tools/companion_export.py` reads this file and writes each telling into the companion's `species.json` as `said`.
 Nothing here is built into a ROM.

@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.342 — 2026-11-06
+
+- **4.2, the record is read and the telling is only heard (T-522, the user's design).** The tellings are approved as drafted. In the companion a card shows the INDEX entry, and LISTEN (a play mark in a cog) reads it in the device's voice: flat, robotic, a little glitchy. The daemon's own words are never printed: its sprite shimmers, and a tap brings the daemon forward over its card, in its type's den, to say it is thinking and then tell of itself in its own voice, its mouth moving, before it shrinks back (C-303).
+
 ## v11.341 — 2026-11-05
 
 - **4.2, the record says it and the daemon says I (T-522, the user, by multiple choice: "App only, spoken").** The game's INDEX stays in the third person: it is the instrument, and an entry that says "I" would hold the thing 4.2 says it cannot. In the companion, on its own page, a daemon tells of itself in its own voice (C-303, C-251): one telling per daemon, the same in both editions, written in `docs/index-spoken.md` and never built into a ROM. A telling says only what the daemon could know from inside, names no feeling, does not know there is a record, and does not accuse whoever carries it. MISSINGNO has none. Every word DRAFT.
