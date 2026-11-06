@@ -241,3 +241,21 @@ T-437 DRAFT: FireRed's face (left) beside SCREEN (right) on the same screens, 1 
 T-437 DRAFT: FireRed's face (left) beside SCREEN (right), 2 of 2: the summary's skills and routines, a battle's HP boxes and routine menu, two GUIDE pages. The summary's heavy look in FireRed came from its rightward shadow; SCREEN's falls straight down, so the summary reads lighter.
 
 ![6Nov2026 - T437 - SCREEN draft - 51](6Nov2026%20-%20T437%20-%20SCREEN%20draft%20-%2051.png)
+
+### 6Nov2026 - T522 - play mark on the shimmering sprite - 52
+
+C-303: an opened INDEX card -- the sprite shimmers and a play mark comes up on its corner, so the tap is offered; LISTEN below reads the record in the device's voice
+
+![6Nov2026 - T522 - play mark on the shimmering sprite - 52](6Nov2026%20-%20T522%20-%20play%20mark%20on%20the%20shimmering%20sprite%20-%2052.png)
+
+### 6Nov2026 - T522 - the name over the overlay - 53
+
+C-303: ROVERCUB over its card, its name kept at the top, THINKING while the Tiiny makes its voice
+
+![6Nov2026 - T522 - the name over the overlay - 53](6Nov2026%20-%20T522%20-%20the%20name%20over%20the%20overlay%20-%2053.png)
+
+### 6Nov2026 - T522 - make the voices again - 54
+
+C-303: settings -- MAKE THE VOICES AGAIN moves the voices' generation, and every phone forgets the voices it kept
+
+![6Nov2026 - T522 - make the voices again - 54](6Nov2026%20-%20T522%20-%20make%20the%20voices%20again%20-%2054.png)
