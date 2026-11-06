@@ -251,11 +251,5 @@
   "files": [
    "ai:server/prompts/game.txt"
   ]
- },
- "port_dialogue": {
-  "why": "STALE for SaffronGym -- T-503 (engine ca737bf0f, 2026-10-31) rewrote GymGuyAdvice and PrestonIntro by hand, and ExplainMarshBadgeTakeThis was hand-written before it; `port_dialogue.py --write SaffronGym` would map Gen 1's SaffronGym.asm back over them (trap 32). Never --write that file.",
-  "files": [
-   "engine:data/maps/SaffronCity_Gym/text.inc"
-  ]
  }
 }

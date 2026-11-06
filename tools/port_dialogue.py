@@ -36,6 +36,11 @@ if WRITE and not ONLY:
     #  writing done in the GBA files directly -- have been layered on this tool's output, so re-writing EVERYTHING
     #  reverts 89 files of that work. Name the Gen 1 text files to carry (e.g. pokedex_ratings ChampionsRoom).
     raise SystemExit("  refused: --write re-writes all 158 files it owns and undoes later passes; name the files")
+if WRITE and any(o.lower() == "saffrongym" for o in ONLY) and "--over-later-work" not in sys.argv:
+    #  T-503 (engine ca737bf0f, 2026-10-31) rewrote GymGuyAdvice and PrestonIntro in SaffronCity_Gym/text.inc by hand,
+    #  and ExplainMarshBadgeTakeThis was hand-written before it: carrying SaffronGym.asm would map Gen 1 back over all
+    #  three (trap 32). This lived in generator_drift.json until --writes stopped seeing it (it names no file there).
+    raise SystemExit("  refused: SaffronGym's GBA text carries T-503's hand work; --over-later-work writes it anyway")
 BUDGET = 196
 MARGIN = 0.04   # the winner must beat the runner-up by this much
 SURE   = 0.85   # ...unless it is this good, when a tie is between twins
