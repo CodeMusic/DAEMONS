@@ -252,7 +252,7 @@ The second fold bends the sheet back towards itself and makes a pair: this, and 
 
 ### SPACE | The Third Fold, Opened
 
-@@ SPRITE | room | (to come)
+@@ SPRITE | space | (to come)
 
 The third fold opens the second out until one thing after another becomes one thing beside another. Time, laid down to rest, is space: room enough for two.
 
