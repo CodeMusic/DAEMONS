@@ -18,8 +18,8 @@ WHAT IT WRITES (the engine's graphics/fonts/, 2-bit PNGs, at their own bit depth
     latin_normal.png, latin_male.png, latin_female.png   from screen_normal.txt -- one face, three identical
                                                          sheets, as FireRed ships them
     latin_small.png                                      from screen_small.txt
-Only the cells of the glyphs in the source files. Every other cell -- the symbols, the F9 compressed cells, the LV
-and arrow cells, the MP cell 0x106 (tools/gbamana.py) and the seven move-class marks in latin_small
+Only the cells of the glyphs in the source files, less KEEP_FIRERED (below). Every other cell -- the symbols
+(♂ ♀ ▶ > ¥ × stay FireRed's for now), the F9 compressed cells, the LV and arrow cells, the MP cell 0x106 (tools/gbamana.py) and the seven move-class marks in latin_small
 (tools/gbamovemenu.py) -- is left byte for byte, and the write is read back to prove it. The space cell is not
 drawn (it has nothing to draw), and neither is `$`, which is the string terminator 0xFF, not a glyph.
 
@@ -35,6 +35,10 @@ Cells: index 0 outside the glyph, 3 the ground (advance wide, the ground rows ta
 import os, re, struct, sys, zlib
 
 DRAFT = True
+
+#  The user, 2026-10-22: "symbols keep FireRed's for now". These are drawn in the source files and are not written
+#  until that changes: the cells stay FireRed's. Letters, digits, é and the punctuation (with & + % ·) are SCREEN's.
+KEEP_FIRERED = set("♂♀▶>¥×")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -223,7 +227,7 @@ def main():
 
     plan, problems = [], []
     for face, (src, sheets, cw, per, ground, names) in FACES.items():
-        glyphs = parse(os.path.join(SRC, src))
+        glyphs = [g for g in parse(os.path.join(SRC, src)) if g[0] not in KEEP_FIRERED]
         bad = check(face, glyphs, cm, tables)
         bad += ["%r lands on %s" % (c, res[cm[c]]) for c, _, _ in glyphs if cm.get(c) in res]
         problems += ["%s: %s" % (face, b) for b in bad]

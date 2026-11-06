@@ -1,0 +1,86 @@
+{
+  "rom": "debug",
+  "about": "T-437 (DRAFT): SCREEN, the DAEMONS typeface, set on real screens -- a dialogue box, the START menu, the BAG, the summary, a battle (the HP boxes and the routines) and a page of the GUIDE in the book reader. Run once on the draft build (the t437-screen-font branch, through a shim whose engineGba is that worktree) and once on the current build, for the side-by-side. The theatre's debug scratch save; nothing is saved.",
+  "stop_timeout": 600,
+  "stops": [
+    {
+      "stop": "A dialogue box: CALLOW SCHOOL 2F's teacher",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "goto ViridianCity_School_2F",
+        "talk LOCALID_SCHOOL_2F_TEACHER"
+      ]
+    },
+    {
+      "stop": "The START menu, and the BAG",
+      "steps": [
+        "goto CeruleanCity 17 7",
+        "press START",
+        "shot \"the START menu\"",
+        "close",
+        "open BAG",
+        "shot \"the BAG\"",
+        "press RIGHT",
+        "shot \"the BAG, the next pocket\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "The summary",
+      "steps": [
+        "summary 0 R R",
+        "close"
+      ]
+    },
+    {
+      "stop": "A battle: invoked on Route 22 (the DEBUG menu is left behind the battle, so its B is not the way back)",
+      "steps": [
+        "load debug",
+        "goto Route22 15 9",
+        "repel 999",
+        "close",
+        "poke sDbgDex 16 25",
+        "poke sDbgLevel 8 20",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "A battle: the HP boxes and the routines",
+      "steps": [
+        "wait 120",
+        "shot \"the battle: what will it do\"",
+        "press A",
+        "wait 30",
+        "shot \"the routines\"",
+        "press B",
+        "win",
+        "finish"
+      ]
+    },
+    {
+      "stop": "A book page: the GUIDE",
+      "steps": [
+        "keyitem ITEM_GUIDE",
+        "flag FLAG_GOT_GUIDE 1",
+        "register ITEM_GUIDE",
+        "goto PalletTown 10 14",
+        "wait 30",
+        "press SELECT",
+        "wait 90",
+        "press A",
+        "wait 40",
+        "shot \"the GUIDE: its contents\"",
+        "press A",
+        "wait 40",
+        "press A",
+        "wait 60",
+        "shot \"the GUIDE: a page\"",
+        "press A",
+        "wait 40",
+        "shot \"the GUIDE: the next page\"",
+        "close"
+      ]
+    }
+  ]
+}

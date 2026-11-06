@@ -25,6 +25,8 @@ ROM RELEASE/CART BACKUPS/*
 # QA screenshots not ready to be public (qa/README.md); only the README is tracked
 qa/screenshots/private/*
 !qa/screenshots/private/README.md
+# Draft ROMs to try on a real screen before they ship (T-437): never committed, they run Nintendo's engine
+qa/draft-roms/
 engine/*.gbc
 engine/*.sav
 engineGba/*.gba

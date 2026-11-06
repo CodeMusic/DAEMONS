@@ -223,3 +223,21 @@ T-452 pixel-model trial (DRAFTS): LODESTAR, ROVERCUB, ILLUMINED by spriteShaper 
 T-452 pixel-model trial (DRAFTS): LODESTAR, ROVERCUB, ILLUMINED by spriteShaper (A), klein 9B fp8 (B, cannot run on MPS), klein 4B + pixel LoRA (C), Z-Image Turbo (D), reduced by the existing reducer; C draws the same creature front and back in all nine
 
 ![6Nov2026 - T452 - pixel model trial - 48](6Nov2026%20-%20T452%20-%20pixel%20model%20trial%20-%2048.png)
+
+### 6Nov2026 - T437 - SCREEN draft - 49
+
+T-437 DRAFT: SCREEN, the DAEMONS typeface, on real screens of the draft build (branch t437-screen-font, not shipped): a dialogue box, the START menu, the BAG, the summary, a battle's HP boxes and routines, and a page of the GUIDE. Letters, digits, é and punctuation are SCREEN's at FireRed's exact widths; the symbols stay FireRed's.
+
+![6Nov2026 - T437 - SCREEN draft - 49](6Nov2026%20-%20T437%20-%20SCREEN%20draft%20-%2049.png)
+
+### 6Nov2026 - T437 - SCREEN draft - 50
+
+T-437 DRAFT: FireRed's face (left) beside SCREEN (right) on the same screens, 1 of 2: the dialogue box, the START menu, the BAG, the summary's first page. Same widths, so every line breaks where it did.
+
+![6Nov2026 - T437 - SCREEN draft - 50](6Nov2026%20-%20T437%20-%20SCREEN%20draft%20-%2050.png)
+
+### 6Nov2026 - T437 - SCREEN draft - 51
+
+T-437 DRAFT: FireRed's face (left) beside SCREEN (right), 2 of 2: the summary's skills and routines, a battle's HP boxes and routine menu, two GUIDE pages. The summary's heavy look in FireRed came from its rightward shadow; SCREEN's falls straight down, so the summary reads lighter.
+
+![6Nov2026 - T437 - SCREEN draft - 51](6Nov2026%20-%20T437%20-%20SCREEN%20draft%20-%2051.png)
