@@ -1,0 +1,270 @@
+{
+ "rom": "debug",
+ "about": "T-452 follow-up (2026-11-06): the elevation table rewritten from each daemon's drawing (tools/gbaelevation.py, tools/daemon_float.json). Ten daemons that stood or sat over a shadow at vanilla's lift, each met as the foe (the DEBUG ENCOUNTER page poked to it, INVOKE) to show it on the ground with no shadow, and two drawn in the air (UNSPOKEN, a ghost; KAIROS, a hummingbird) to show the lift and shadow kept. As t452_roster_walk.json: each INVOKE ends its own stop (its closing B is swallowed by the battle), the battle is the next. The theatre's debug scratch save; nothing is saved.",
+ "stop_timeout": 420,
+ "stops": [
+  {
+   "stop": "the DEBUG build with the elevation table from tools/daemon_float.json, the GLOBAL INDEX given",
+   "steps": [
+    "load debug",
+    "goto Route1 10 29",
+    "repel 999",
+    "close",
+    "events \"GLOBAL INDEX\"",
+    "shot ready"
+   ]
+  },
+  {
+   "stop": "HEAP: the foe made HEAP, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 74",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "HEAP: the battle",
+   "steps": [
+    "foe SPECIES_GEODUDE",
+    "wait 200",
+    "shot HEAP as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "SENTINEL: the foe made SENTINEL, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 81",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "SENTINEL: the battle",
+   "steps": [
+    "foe SPECIES_MAGNEMITE",
+    "wait 200",
+    "shot SENTINEL as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "TANGENT: the foe made TANGENT, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 278",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "TANGENT: the battle",
+   "steps": [
+    "foe SPECIES_WINGULL",
+    "wait 200",
+    "shot TANGENT as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "LILENDIAN: the foe made LILENDIAN, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 337",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "LILENDIAN: the battle",
+   "steps": [
+    "foe SPECIES_LUNATONE",
+    "wait 200",
+    "shot LILENDIAN as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "BREAKER: the foe made BREAKER, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 101",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "BREAKER: the battle",
+   "steps": [
+    "foe SPECIES_ELECTRODE",
+    "wait 200",
+    "shot BREAKER as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "CAPRICE: the foe made CAPRICE, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 188",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "CAPRICE: the battle",
+   "steps": [
+    "foe SPECIES_SKIPLOOM",
+    "wait 200",
+    "shot CAPRICE as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "STALEMATE: the foe made STALEMATE, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 362",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "STALEMATE: the battle",
+   "steps": [
+    "foe SPECIES_GLALIE",
+    "wait 200",
+    "shot STALEMATE as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "DATAGRAM: the foe made DATAGRAM, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 333",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "DATAGRAM: the battle",
+   "steps": [
+    "foe SPECIES_SWABLU",
+    "wait 200",
+    "shot DATAGRAM as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "ELPIS: the foe made ELPIS, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 385",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "ELPIS: the battle",
+   "steps": [
+    "foe SPECIES_JIRACHI",
+    "wait 200",
+    "shot ELPIS as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "OVERTONE: the foe made OVERTONE, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 358",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "OVERTONE: the battle",
+   "steps": [
+    "foe SPECIES_CHIMECHO",
+    "wait 200",
+    "shot OVERTONE as the foe -- on the ground, no shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "UNSPOKEN: the foe made UNSPOKEN, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 353",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "UNSPOKEN: the battle",
+   "steps": [
+    "foe SPECIES_SHUPPET",
+    "wait 200",
+    "shot UNSPOKEN as the foe -- still floats 12px, over its shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  },
+  {
+   "stop": "KAIROS: the foe made KAIROS, INVOKE",
+   "steps": [
+    "goto Route1 10 29",
+    "repel 999",
+    "mon 0 hp max",
+    "poke sDbgDex 16 251",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "KAIROS: the battle",
+   "steps": [
+    "foe SPECIES_CELEBI",
+    "wait 200",
+    "shot KAIROS as the foe -- still floats 15px, over its shadow",
+    "win",
+    "wait 90",
+    "close"
+   ]
+  }
+ ]
+}

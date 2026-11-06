@@ -193,3 +193,9 @@ C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon a
 C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon as drawn and with its mouth open as the speaking overlay draws it. Not yet checked by a person: strike any that is wrong.
 
 ![6Nov2026 - T522 - mouths found - 43](6Nov2026%20-%20T522%20-%20mouths%20found%20-%2043.png)
+
+### 6Nov2026 - T452 - on the ground - 44
+
+T-452 follow-up: the elevation table rewritten from each drawing (tools/gbaelevation.py). Ten daemons that stood or sat over a shadow at vanilla's lift now stand on the ground with no shadow (HEAP, SENTINEL, TANGENT, LILENDIAN, BREAKER, CAPRICE, STALEMATE, DATAGRAM, ELPIS, OVERTONE); UNSPOKEN (a ghost) and KAIROS (a hummingbird) are drawn in the air and keep their lift and shadow. Filmed with tools/routes/t452_ground.json on the debug build.
+
+![6Nov2026 - T452 - on the ground - 44](6Nov2026%20-%20T452%20-%20on%20the%20ground%20-%2044.png)

@@ -1,0 +1,425 @@
+{
+ "_about": "Which daemons float in battle (T-452, 2026-11-06). Each row is decided from the daemon's FRONT drawing: only one drawn flying, hovering or levitating (wings spread off the ground, ghosts, orbs, a moon) keeps a lift; anything standing, sitting or perched is 0, and 0 when in doubt. tools/gbaelevation.py writes the engine's src/data/pokemon_graphics/enemy_mon_elevation.h from this file and fails when they disagree. 'front' is a hash of the drawing's silhouette when it was decided: a floater redrawn since must be looked at again. A species not listed is 0.",
+ "species": {
+  "BUTTERFREE": {
+   "daemon": "INDEXER",
+   "floats": true,
+   "lift": 8,
+   "why": "a moth with all four wings spread and no feet under it: in the air",
+   "front": "5fb3d7993ce1"
+  },
+  "BEEDRILL": {
+   "daemon": "INJECTOR",
+   "floats": false,
+   "lift": 0,
+   "why": "stands upright on two feet on a patch of ground; the wings are folded behind",
+   "front": "bcb7e9a68c26"
+  },
+  "PIDGEOT": {
+   "daemon": "BROADCAST",
+   "floats": false,
+   "lift": 0,
+   "why": "a dove standing on its pink feet with one wing raised: grounded",
+   "front": "e935123f217d"
+  },
+  "FEAROW": {
+   "daemon": "FLOOD",
+   "floats": false,
+   "lift": 0,
+   "why": "a bird standing on a drawn patch of ground",
+   "front": "271effe226ea"
+  },
+  "ZUBAT": {
+   "daemon": "ECHO",
+   "floats": true,
+   "lift": 8,
+   "why": "a bat with both wings spread wide and the body hanging between them: flying",
+   "front": "04d9fc4d7aa2"
+  },
+  "GOLBAT": {
+   "daemon": "TRACER",
+   "floats": false,
+   "lift": 0,
+   "why": "a round cat-bat standing on two feet, wings folded down at its sides",
+   "front": "f61425df1013"
+  },
+  "VENOMOTH": {
+   "daemon": "SPYWARE",
+   "floats": false,
+   "lift": 0,
+   "why": "a moth-creature standing on two red feet; the wings are raised but it is not in the air",
+   "front": "586aa143237c"
+  },
+  "GEODUDE": {
+   "daemon": "HEAP",
+   "floats": false,
+   "lift": 0,
+   "why": "a stack of stones on a wide flat base",
+   "front": "5b90ffbbae0e"
+  },
+  "MAGNEMITE": {
+   "daemon": "SENTINEL",
+   "floats": false,
+   "lift": 0,
+   "why": "a diving-helmet orb resting on its flat base and feet",
+   "front": "4d4708ee3582"
+  },
+  "MAGNETON": {
+   "daemon": "QUORUM",
+   "floats": false,
+   "lift": 0,
+   "why": "three orbs piled two over one, the bottom pair resting on the ground",
+   "front": "20745ab5e91d"
+  },
+  "GASTLY": {
+   "daemon": "DANGLING",
+   "floats": true,
+   "lift": 4,
+   "why": "a ghost: a sheet with a ragged hem and nothing under it",
+   "front": "635d436dcd4e"
+  },
+  "HAUNTER": {
+   "daemon": "RESPAWN",
+   "floats": true,
+   "lift": 4,
+   "why": "a ghost tapering to a tail, hands spread: no feet",
+   "front": "45bcd2f2c3ad"
+  },
+  "VOLTORB": {
+   "daemon": "FUSE",
+   "floats": false,
+   "lift": 0,
+   "why": "a round body sitting on two small feet",
+   "front": "78f39d29d23f"
+  },
+  "ELECTRODE": {
+   "daemon": "BREAKER",
+   "floats": false,
+   "lift": 0,
+   "why": "a big round face sitting on its feet",
+   "front": "0c34c8ac9117"
+  },
+  "KOFFING": {
+   "daemon": "EXHAUST",
+   "floats": false,
+   "lift": 0,
+   "why": "a round body sitting on two small feet",
+   "front": "dad0cfccd1db"
+  },
+  "WEEZING": {
+   "daemon": "SMOGSTACK",
+   "floats": false,
+   "lift": 0,
+   "why": "a round body on small feet, the smoke beside it on the ground",
+   "front": "365f6c400857"
+  },
+  "AERODACTYL": {
+   "daemon": "FOSSILNET",
+   "floats": false,
+   "lift": 0,
+   "why": "a skeletal wyvern standing on its two clawed feet, wings up",
+   "front": "afd8a64eacc3"
+  },
+  "ARTICUNO": {
+   "daemon": "ORPHEUS",
+   "floats": false,
+   "lift": 0,
+   "why": "a bird standing on its feet",
+   "front": "e633902ee462"
+  },
+  "ZAPDOS": {
+   "daemon": "ASCLEPIUS",
+   "floats": false,
+   "lift": 0,
+   "why": "a bird standing on its feet",
+   "front": "f09cac94a145"
+  },
+  "MOLTRES": {
+   "daemon": "PROMETHEUS",
+   "floats": false,
+   "lift": 0,
+   "why": "a bird standing on its feet",
+   "front": "61e6034c4547"
+  },
+  "DRAGONITE": {
+   "daemon": "SINGULAR",
+   "floats": false,
+   "lift": 0,
+   "why": "a dragon standing on four legs",
+   "front": "b149eb72babe"
+  },
+  "MEW": {
+   "daemon": "ARTSAI",
+   "floats": false,
+   "lift": 0,
+   "why": "sitting on its haunches",
+   "front": "c44c5971c2b9"
+  },
+  "LEDIAN": {
+   "daemon": "GATHERING",
+   "floats": false,
+   "lift": 0,
+   "why": "a beetle standing on six legs",
+   "front": "0adf670fde79"
+  },
+  "CROBAT": {
+   "daemon": "MULTICAST",
+   "floats": true,
+   "lift": 6,
+   "why": "a bat with both wings raised and spread above it, the body hanging: flying",
+   "front": "ac8b03dce8f2"
+  },
+  "HOPPIP": {
+   "daemon": "WHIM",
+   "floats": false,
+   "lift": 0,
+   "why": "a small creature standing on its feet",
+   "front": "9b10502a18c8"
+  },
+  "SKIPLOOM": {
+   "daemon": "CAPRICE",
+   "floats": false,
+   "lift": 0,
+   "why": "a flower-headed creature standing on its feet",
+   "front": "37e07e766a08"
+  },
+  "JUMPLUFF": {
+   "daemon": "ABANDON",
+   "floats": false,
+   "lift": 0,
+   "why": "a leafy creature standing on its feet",
+   "front": "6ee197293ce8"
+  },
+  "UNOWN": {
+   "daemon": "SYMBOL",
+   "floats": false,
+   "lift": 0,
+   "why": "every letter stands on small feet or a base (A, B and ! looked at)",
+   "front": "671b6b15a53b"
+  },
+  "YANMA": {
+   "daemon": "PERIPHERY",
+   "floats": true,
+   "lift": 8,
+   "why": "a dragonfly with four wings spread, the tail hanging: hovering",
+   "front": "4e748a505483"
+  },
+  "MISDREAVUS": {
+   "daemon": "DREAD",
+   "floats": true,
+   "lift": 8,
+   "why": "a ghost trailing tendrils to a point: no feet",
+   "front": "8df0487a7ad7"
+  },
+  "GLIGAR": {
+   "daemon": "GLIDEPATH",
+   "floats": false,
+   "lift": 0,
+   "why": "sitting, its gliding membrane spread flat on the ground",
+   "front": "1e6cb2f68b5b"
+  },
+  "LUGIA": {
+   "daemon": "TRITON",
+   "floats": false,
+   "lift": 0,
+   "why": "standing on its legs, the wing-fins at its sides",
+   "front": "e4c7798d78d7"
+  },
+  "HO_OH": {
+   "daemon": "PHOENIX",
+   "floats": false,
+   "lift": 0,
+   "why": "a bird standing on two red feet, wings raised behind it",
+   "front": "c7bbc7481a22"
+  },
+  "CELEBI": {
+   "daemon": "KAIROS",
+   "floats": true,
+   "lift": 15,
+   "why": "a hummingbird in flight, wings up, the feet tucked",
+   "front": "c80b5b6ea105"
+  },
+  "BEAUTIFLY": {
+   "daemon": "THENCASE",
+   "floats": false,
+   "lift": 0,
+   "why": "sitting on its feet with its wings out to the sides",
+   "front": "31ba87363f03"
+  },
+  "DUSTOX": {
+   "daemon": "OTHERWISE",
+   "floats": true,
+   "lift": 10,
+   "why": "a moth with its wings spread wide and the legs dangling: in the air",
+   "front": "edf1f4c40768"
+  },
+  "NINJASK": {
+   "daemon": "BURSTMODE",
+   "floats": true,
+   "lift": 10,
+   "why": "flying, drawn with speed lines either side",
+   "front": "6d9fe9a57b44"
+  },
+  "SHEDINJA": {
+   "daemon": "DEFUNCT",
+   "floats": true,
+   "lift": 8,
+   "why": "an empty shell held up by its wings, the legs dangling",
+   "front": "e6ee60ee004f"
+  },
+  "WINGULL": {
+   "daemon": "TANGENT",
+   "floats": false,
+   "lift": 0,
+   "why": "a gull standing on its orange feet",
+   "front": "4d2619fdbb1b"
+  },
+  "PELIPPER": {
+   "daemon": "JACOBIAN",
+   "floats": false,
+   "lift": 0,
+   "why": "a pelican standing on its feet",
+   "front": "2973082bc4b3"
+  },
+  "MASQUERAIN": {
+   "daemon": "FLOCKING",
+   "floats": true,
+   "lift": 10,
+   "why": "a moth seen flat with all four wings spread: in the air",
+   "front": "04726e31e06b"
+  },
+  "BALTOY": {
+   "daemon": "LIKELIHOOD",
+   "floats": false,
+   "lift": 0,
+   "why": "sitting on a wide base",
+   "front": "f4d68906be20"
+  },
+  "CLAYDOL": {
+   "daemon": "POSTERIOR",
+   "floats": false,
+   "lift": 0,
+   "why": "a robot standing on its legs",
+   "front": "f9bf9c1f5835"
+  },
+  "FLYGON": {
+   "daemon": "DUSTDEVIL",
+   "floats": true,
+   "lift": 7,
+   "why": "a winged insect in the air above its own dust whirl",
+   "front": "e6a330e1369d"
+  },
+  "GLALIE": {
+   "daemon": "STALEMATE",
+   "floats": false,
+   "lift": 0,
+   "why": "an owl perched, its feet on the ground",
+   "front": "83b3d338fcf7"
+  },
+  "LUNATONE": {
+   "daemon": "LILENDIAN",
+   "floats": false,
+   "lift": 0,
+   "why": "a bear sitting with a bowl in its lap",
+   "front": "d969ddf6351e"
+  },
+  "SOLROCK": {
+   "daemon": "BIGENDIAN",
+   "floats": false,
+   "lift": 0,
+   "why": "a bear standing on its feet",
+   "front": "6618f394b0c0"
+  },
+  "SWABLU": {
+   "daemon": "DATAGRAM",
+   "floats": false,
+   "lift": 0,
+   "why": "a dove standing on its feet",
+   "front": "38b8a6f71a67"
+  },
+  "ALTARIA": {
+   "daemon": "TRADEWIND",
+   "floats": false,
+   "lift": 0,
+   "why": "a heron-like bird with its wings raised but its feet down on the ground",
+   "front": "115f7e526999"
+  },
+  "DUSKULL": {
+   "daemon": "FADING",
+   "floats": true,
+   "lift": 9,
+   "why": "a hooded ghost whose robe frays away at the hem: no feet",
+   "front": "f9da844491a8"
+  },
+  "SHUPPET": {
+   "daemon": "UNSPOKEN",
+   "floats": true,
+   "lift": 12,
+   "why": "a hooded ghost, the robe ending in a ragged hem: no feet",
+   "front": "cf937510e6b8"
+  },
+  "BANETTE": {
+   "daemon": "SUBTEXT",
+   "floats": false,
+   "lift": 0,
+   "why": "a figure standing on two legs",
+   "front": "74f75b5ca9e0"
+  },
+  "CASTFORM": {
+   "daemon": "OVERLOADED",
+   "floats": true,
+   "lift": 16,
+   "why": "a cloud; its battle height is sCastformElevations', a nonzero row here only turns its shadow on",
+   "front": "2d55425b49e1"
+  },
+  "BELDUM": {
+   "daemon": "SINGLETON",
+   "floats": true,
+   "lift": 8,
+   "why": "a single round eye-orb with nothing under it: levitating",
+   "front": "304f841bed66"
+  },
+  "RAYQUAZA": {
+   "daemon": "OURANOS",
+   "floats": true,
+   "lift": 6,
+   "why": "a crescent moon",
+   "front": "72831b37e315"
+  },
+  "LATIAS": {
+   "daemon": "POLYDEUCES",
+   "floats": false,
+   "lift": 0,
+   "why": "a swan standing on its feet",
+   "front": "ff6d731962b2"
+  },
+  "LATIOS": {
+   "daemon": "CASTOR",
+   "floats": false,
+   "lift": 0,
+   "why": "a swan standing on its feet",
+   "front": "d2f42c89a46d"
+  },
+  "JIRACHI": {
+   "daemon": "ELPIS",
+   "floats": false,
+   "lift": 0,
+   "why": "sitting in a pot that rests on the ground",
+   "front": "51915744a2dc"
+  },
+  "DEOXYS": {
+   "daemon": "PROTEUS",
+   "floats": true,
+   "lift": 8,
+   "why": "a robed figure whose tattered hem hangs over nothing: levitating",
+   "front": "46368471fce3"
+  },
+  "CHIMECHO": {
+   "daemon": "OVERTONE",
+   "floats": false,
+   "lift": 0,
+   "why": "a bird standing on its feet",
+   "front": "d5412da41d02"
+  }
+ }
+}
