@@ -9,9 +9,9 @@
 THE HERMETIC LAYER (T-483) is read by the same parser into the same open book: docs/hermetic-layer.md, written to
 src/data/hermetic_layer.h and graphics/book/hermetic/. Its own rules are the four that file's header keeps (it is the
 one exception to the rest); a paragraph opening '^ ' is an INSCRIPTION, printed in the tablet's emerald (C_RING, which
-the reader breathes). Its frontispiece, its bag icon and most of its entries' pictures are drawn (tools/thirdbook_art.py,
-T-519, DRAFT: the opening section, then batches 2 and 3); every other entry shows the frontispiece until its own is
-drawn. third_images() gives the companion the same pictures and a letterless cover.
+the reader breathes). Its frontispiece, its bag icon and every entry's picture are drawn (tools/thirdbook_art.py,
+T-519, DRAFT: the opening section, then batches 2 to 4); an entry whose own picture is missing would show the
+frontispiece. third_images() gives the companion the same pictures and a letterless cover.
 
 THE EUDAIMON LAYER (T-519 item 2), the third book's dawn half, is the night half read from the other side:
 docs/eudaimon-layer.md, written to src/data/eudaimon_layer.h and graphics/book/eudaimon/ on a warm dawn page. It keeps
@@ -792,8 +792,9 @@ def run(book):
           % (book, len(sections), n, len(keys), sum(nframes.values()), total))
     if book in THIRD_BOOK:
         named = {e["sprite"] for s in sections for e in s["entries"]}
-        print("  %d pictures named, %d drawn and the frontispiece; the rest show the frontispiece"
-              % (len(named), len([k for k in keys if k in named])))
+        own = len([k for k in keys if k in named])
+        print("  %d pictures named, %d drawn and the frontispiece; %d show the frontispiece"
+              % (len(named), own, len(named) - own))
     for note in NOTES:
         print("  note: " + note)
     del NOTES[:]
