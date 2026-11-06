@@ -163,3 +163,33 @@ T-452 roster walk: the overworld follower, one walk per batch (east, then north)
 T-452 roster walk: the 58 daemons vanilla's elevation table still lifts in battle, composited at 1x -- about 29 of them are standing drawings left floating
 
 ![6Nov2026 - T452 - roster walk - 38](6Nov2026%20-%20T452%20-%20roster%20walk%20-%2038.png)
+
+### 6Nov2026 - T522 - mouths found - 39
+
+C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon as drawn and with its mouth open as the speaking overlay draws it. Not yet checked by a person: strike any that is wrong.
+
+![6Nov2026 - T522 - mouths found - 39](6Nov2026%20-%20T522%20-%20mouths%20found%20-%2039.png)
+
+### 6Nov2026 - T522 - mouths found - 40
+
+C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon as drawn and with its mouth open as the speaking overlay draws it. Not yet checked by a person: strike any that is wrong.
+
+![6Nov2026 - T522 - mouths found - 40](6Nov2026%20-%20T522%20-%20mouths%20found%20-%2040.png)
+
+### 6Nov2026 - T522 - mouths found - 41
+
+C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon as drawn and with its mouth open as the speaking overlay draws it. Not yet checked by a person: strike any that is wrong.
+
+![6Nov2026 - T522 - mouths found - 41](6Nov2026%20-%20T522%20-%20mouths%20found%20-%2041.png)
+
+### 6Nov2026 - T522 - mouths found - 42
+
+C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon as drawn and with its mouth open as the speaking overlay draws it. Not yet checked by a person: strike any that is wrong.
+
+![6Nov2026 - T522 - mouths found - 42](6Nov2026%20-%20T522%20-%20mouths%20found%20-%2042.png)
+
+### 6Nov2026 - T522 - mouths found - 43
+
+C-303 / T-522: the 101 mouths found by a tool and accepted by eye, each daemon as drawn and with its mouth open as the speaking overlay draws it. Not yet checked by a person: strike any that is wrong.
+
+![6Nov2026 - T522 - mouths found - 43](6Nov2026%20-%20T522%20-%20mouths%20found%20-%2043.png)
