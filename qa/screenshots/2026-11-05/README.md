@@ -205,3 +205,39 @@ T-519 DRAFT, THE HERMETIC LAYER filmed in the theatre at night: the chosen cover
 T-519 DRAFT, THE HERMETIC LAYER filmed in the theatre at night: the chosen cover (V4), WARNING's drawn picture, and the frontispiece ONE THING shows (every entry after the opening section).
 
 ![5Nov2026 - T519 - book art - 51](5Nov2026%20-%20T519%20-%20book%20art%20-%2051.png)
+
+### 5Nov2026 - T519 - spirits on the follower - 61
+
+SPIRITS' tone on the follower and the party icons (DRAFT): the follower as it is, in good spirits (lighter, 10/32 to white over its own colours), in low spirits (darker, 10/32 to black); the creator's hour's gold over the low tone, and low spirits plain again after it; the party menu with the lead in good spirits and slot 2 in low, the rest their own.
+
+![5Nov2026 - T519 - spirits on the follower - 61](5Nov2026%20-%20T519%20-%20spirits%20on%20the%20follower%20-%2061.png)
+
+### 5Nov2026 - T519 - spirits on the follower - 62
+
+SPIRITS' tone on the follower and the party icons (DRAFT): the follower as it is, in good spirits (lighter, 10/32 to white over its own colours), in low spirits (darker, 10/32 to black); the creator's hour's gold over the low tone, and low spirits plain again after it; the party menu with the lead in good spirits and slot 2 in low, the rest their own.
+
+![5Nov2026 - T519 - spirits on the follower - 62](5Nov2026%20-%20T519%20-%20spirits%20on%20the%20follower%20-%2062.png)
+
+### 5Nov2026 - T519 - spirits on the follower - 63
+
+SPIRITS' tone on the follower and the party icons (DRAFT): the follower as it is, in good spirits (lighter, 10/32 to white over its own colours), in low spirits (darker, 10/32 to black); the creator's hour's gold over the low tone, and low spirits plain again after it; the party menu with the lead in good spirits and slot 2 in low, the rest their own.
+
+![5Nov2026 - T519 - spirits on the follower - 63](5Nov2026%20-%20T519%20-%20spirits%20on%20the%20follower%20-%2063.png)
+
+### 5Nov2026 - T519 - spirits on the follower - 64
+
+SPIRITS' tone on the follower and the party icons (DRAFT): the follower as it is, in good spirits (lighter, 10/32 to white over its own colours), in low spirits (darker, 10/32 to black); the creator's hour's gold over the low tone, and low spirits plain again after it; the party menu with the lead in good spirits and slot 2 in low, the rest their own.
+
+![5Nov2026 - T519 - spirits on the follower - 64](5Nov2026%20-%20T519%20-%20spirits%20on%20the%20follower%20-%2064.png)
+
+### 5Nov2026 - T519 - spirits on the follower - 65
+
+SPIRITS' tone on the follower and the party icons (DRAFT): the follower as it is, in good spirits (lighter, 10/32 to white over its own colours), in low spirits (darker, 10/32 to black); the creator's hour's gold over the low tone, and low spirits plain again after it; the party menu with the lead in good spirits and slot 2 in low, the rest their own.
+
+![5Nov2026 - T519 - spirits on the follower - 65](5Nov2026%20-%20T519%20-%20spirits%20on%20the%20follower%20-%2065.png)
+
+### 5Nov2026 - T519 - spirits on the follower - 66
+
+SPIRITS' tone on the follower and the party icons (DRAFT): the follower as it is, in good spirits (lighter, 10/32 to white over its own colours), in low spirits (darker, 10/32 to black); the creator's hour's gold over the low tone, and low spirits plain again after it; the party menu with the lead in good spirits and slot 2 in low, the rest their own.
+
+![5Nov2026 - T519 - spirits on the follower - 66](5Nov2026%20-%20T519%20-%20spirits%20on%20the%20follower%20-%2066.png)

@@ -1,0 +1,92 @@
+{
+  "rom": "debug",
+  "about": "T-519 item 1 (DRAFT): SPIRITS' tone on the follower and the party icons. By DEBUG's WATCH at day, the lead walks behind the player as it is, then in good spirits (lighter, 10/32 of the way to white over its own colours) and in low spirits (darker, 10/32 to black) -- set by hand through DEBUG -> GAME EVENTS -> SPIRITS, each crossing played out on the next step. Then the creator's hour at full (DEBUG TIME 4:48) over the low-spirited follower: its gold goes on after the tone. Then the party menu with one daemon in each state: the lead in good spirits, slot 2 in low (the low lead swapped down), the rest as they are. The icons share a palette per colour group, so a toned one is pointed at a toned copy of its group's palette (one per group and tone). The theatre's debug scratch save, never the user's; nothing is saved and TIME is put back at the end.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "The follower as it is",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "finish",
+        "follower shown",
+        "wait 60",
+        "burst \"the follower as it is: its own colours\" 1 1"
+      ]
+    },
+    {
+      "stop": "The follower in good spirits: lighter",
+      "steps": [
+        "events \"SPIRITS >\" \"LEAD: IN GOOD SPIRITS\"",
+        "close",
+        "hold LEFT 16",
+        "finish",
+        "says \"is in good spirits.\"",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "finish",
+        "follower shown",
+        "wait 60",
+        "burst \"the follower in good spirits: lighter over the same colours\" 1 1"
+      ]
+    },
+    {
+      "stop": "The follower in low spirits: darker",
+      "steps": [
+        "events \"SPIRITS >\" \"LEAD: IN LOW SPIRITS\"",
+        "close",
+        "hold LEFT 16",
+        "finish",
+        "says \"is in low spirits.\"",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "finish",
+        "follower shown",
+        "wait 60",
+        "burst \"the follower in low spirits: darker over the same colours\" 1 1"
+      ]
+    },
+    {
+      "stop": "Low spirits under the creator's hour: the gold over the tone (DEBUG TIME 4:48)",
+      "steps": [
+        "poke gDaemonsDateOverride 8 0",
+        "poke sPlayBeganAt 32 4294901760",
+        "poke gDaemonsWatchOverride 8 9",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "finish",
+        "follower shown",
+        "wait 300",
+        "burst \"the creator's hour's gold on the low-spirited follower\" 1 1",
+        "poke gDaemonsWatchOverride 8 1",
+        "goto CeruleanCity 17 7",
+        "to 14 7",
+        "finish",
+        "follower shown",
+        "wait 60",
+        "burst \"the hour gone: low spirits by day again\" 1 1"
+      ]
+    },
+    {
+      "stop": "The party menu: the lead in good spirits, slot 2 in low, the rest as they are",
+      "steps": [
+        "swap 0 1",
+        "events \"SPIRITS >\" \"LEAD: IN GOOD SPIRITS\"",
+        "close",
+        "hold LEFT 16",
+        "finish",
+        "says \"is in good spirits.\"",
+        "goto CeruleanCity 17 7",
+        "open DAEMON",
+        "wait 60",
+        "burst \"the party: slot 1 lighter, slot 2 darker, the rest their own\" 1 1",
+        "close",
+        "poke gDaemonsWatchOverride 8 0"
+      ]
+    }
+  ]
+}
