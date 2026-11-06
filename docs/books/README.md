@@ -9,8 +9,10 @@ these by hand.** Every word in them is still a DRAFT, as it is in the game.
 | [`guide.pdf`](guide.pdf) | **THE PROGRAMMER'S GUIDE TO THE HUMAN MIND**, by Christopher Art Hicks. The mind read *like* software: its routines, its bugs, and how a habit gets rewritten one line at a time. 28 entries in nine chapters, from [`../guide.md`](../guide.md). |
 | [`the-subtle-layer.pdf`](the-subtle-layer.pdf) | **THE SUBTLE LAYER**, *a trainer's handbook*. Reading, writing and linking, the seven centres and a daily routine, taught as practice rather than doctrine. 51 entries, each with its picture, from [`../subtle-layer.md`](../subtle-layer.md). |
 | [`the-vault.zip`](the-vault.zip) | **Sealed.** See below. |
+| [`the-second-vault.zip`](the-second-vault.zip) | **Sealed.** See below. |
+| [`the-third-vault.zip`](the-third-vault.zip) | **Sealed.** See below. |
 
-## The vault
+## The vaults
 
 People who have read both books sometimes talk about a third one. They call it THE HERMETIC LAYER, or just the
 spellbook, and no two of them describe it the same way. It is said to open with a warning, to treat words as spells,
@@ -21,6 +23,17 @@ collects what is said about it, and the real history the rumour grew from.
 
 **A hint, in case it does exist:** in the game, a strange man lives on QUICKSILVER island. His first and last name,
 written in title case with a space between them (`Firstname Lastname`), might open the vault.
+
+Some say the spellbook was torn in two, and that the other half was read by someone else, somewhere brighter, who
+thought the first half was the bad one. Some say that once, somebody put the two halves back together.
+
+`the-second-vault.zip` and `the-third-vault.zip` are locked too.
+
+**If the second holds anything**, it was read by an early riser in the game, a bird. What she is, with "The"
+in front, in title case with a space (`The Something`), might open it.
+
+**If the third holds anything**, it is read by whoever knows who read the other two. What each reader *is*, not
+their name, the man's first, in title case and joined by "and" (`Something and Something`), might open it.
 
 ## Audio
 

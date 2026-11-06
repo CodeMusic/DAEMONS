@@ -14,11 +14,15 @@ WHAT IT WRITES, in docs/books/
   the-vault.zip          sealed (the user, 2026-10-30): a zip with a password, which may or may not hold the third book.
                          The key is its author's name as the book's own warning gives it, in title case with a space,
                          so it is written nowhere but in the book. docs/books/README.md tells the rumour, and the hint.
+  the-second-vault.zip   sealed (the user, 2026-11-05: "seal them like the vault"): THE EUDAIMON LAYER, the torn book's
+                         dawn half. Its key is its reader as its blessing names her, "The Lark".
+  the-third-vault.zip    sealed the same day: THE UNITY BOOK, the book mended. Its key is both readers, as its
+                         attestation names them, "Hatter and Lark".
 
 REVIEW (T-519, the user, 2026-11-05: "the same book, written by different authors' view points"): --review DIR prints
-THE HERMETIC LAYER, THE EUDAIMON LAYER and THE UNITY BOOK unsealed, and compare.pdf with the three side by side, entry
-against entry, as the approved contents align them. Only into DIR -- docs/private/, never docs/books/: the night half is
-sealed there, and where the other two go is the user's to decide.
+THE HERMETIC LAYER, THE EUDAIMON LAYER and THE UNITY BOOK unsealed, and one-book-three-readings.pdf with the three side
+by side, entry against entry, as the approved contents align them. Only into DIR -- docs/private/, never docs/books/,
+where all three are sealed.
 
 Each book is printed as the game prints it: its sections and entries in order, the asking voice faint, an inscription
 in the tablet's emerald, every picture at whole-pixel scale. The covers carry no lettering of the game's (the font is
@@ -54,14 +58,15 @@ BOOKS = {
                "src": "docs/subtle-layer.md", "night": "#1d1424", "accent": "#8a5cc8", "foot": "THE SUBTLE LAYER"},
     "hermetic": {"file": "the-vault.zip", "title": "The Hermetic Layer", "sub": "SPELLCRAFT",
                  "src": "docs/hermetic-layer.md", "night": "#0c1712", "accent": "#1f8f5f", "foot": "THE HERMETIC LAYER"},
+    #  T-519: the torn book's other two readings, sealed as the night half is (the user, 2026-11-05)
+    "eudaimon": {"file": "the-second-vault.zip", "review": "the-eudaimon-layer.pdf", "title": "The Eudaimon Layer",
+                 "sub": "A BLESSING", "src": "docs/eudaimon-layer.md", "night": "#0f1d3a", "accent": "#2f62c8",
+                 "foot": "THE EUDAIMON LAYER"},
+    "unity": {"file": "the-third-vault.zip", "review": "the-unity-book.pdf", "title": "The Unity Book",
+              "sub": "AN ATTESTATION", "src": "docs/unity-book.md", "night": "#1f1c18", "accent": "#a8842c",
+              "foot": "THE UNITY BOOK"},
 }
-#  T-519: the other two readings of the torn book, printed only by --review
-REVIEW = {
-    "eudaimon": {"file": "the-eudaimon-layer.pdf", "title": "The Eudaimon Layer", "sub": "A BLESSING",
-                 "src": "docs/eudaimon-layer.md", "night": "#0f1d3a", "accent": "#2f62c8", "foot": "THE EUDAIMON LAYER"},
-    "unity": {"file": "the-unity-book.pdf", "title": "The Unity Book", "sub": "AN ATTESTATION",
-              "src": "docs/unity-book.md", "night": "#1f1c18", "accent": "#a8842c", "foot": "THE UNITY BOOK"},
-}
+REVIEW = {k: BOOKS[k] for k in ("eudaimon", "unity")}  # the readings with no art of their own on the page yet
 OPENS = ("hermetic", "eudaimon", "unity")       # each opens with its warning, blessing or attestation, before the contents
 
 
@@ -116,13 +121,24 @@ def layer_book(book):
     return out
 
 
-def author_of_hermetic(sections):
-    """The vault's key: the name the warning gives ("OSRIC HATTER read it", T-519; it was "set it down"), title case."""
+def vault_key(book, sections):
+    """A vault's key, read from the book's own first page, so it is written nowhere else (title case, a space):
+    the night half's, the name its warning gives ("OSRIC HATTER read it", T-519; it was "set it down"); the dawn
+    half's, its reader as its blessing names her ("A LARK read it": "The Lark"); the mended book's, both readers as
+    its attestation names them ("by a hatter, and one at first light by a lark": "Hatter and Lark")."""
     text = " ".join(p for p, _ in sections[0]["entries"][0]["paras"])
-    m = re.search(r"\b([A-Z]{2,}) ([A-Z]{2,}) (?:set it down|read it)\b", text)
-    if not m:
-        raise SystemExit("bookpdf: the third book's warning no longer names its author; the vault has no key")
-    return "%s %s" % (m.group(1).title(), m.group(2).title())
+    if book == "hermetic":
+        m = re.search(r"\b([A-Z]{2,}) ([A-Z]{2,}) (?:set it down|read it)\b", text)
+        key = m and "%s %s" % (m.group(1).title(), m.group(2).title())
+    elif book == "eudaimon":
+        m = re.search(r"\bA ([A-Z]{2,}) read it\b", text)
+        key = m and "The %s" % m.group(1).title()
+    else:
+        m = re.search(r"\bby an? (\w+), and one [^.]*? by an? (\w+)\.", text)
+        key = m and "%s and %s" % (m.group(1).title(), m.group(2).title())
+    if not key:
+        raise SystemExit("bookpdf: %s's first page no longer names its reader; its vault has no key" % book)
+    return key
 
 
 def cover(book):
@@ -441,8 +457,8 @@ def compare_html(books):
 def review(out_dir):
     os.makedirs(out_dir, exist_ok=True)
     books = {}
-    for book, name in (("hermetic", "the-hermetic-layer.pdf"), ("eudaimon", REVIEW["eudaimon"]["file"]),
-                       ("unity", REVIEW["unity"]["file"])):
+    for book, name in (("hermetic", "the-hermetic-layer.pdf"), ("eudaimon", REVIEW["eudaimon"]["review"]),
+                       ("unity", REVIEW["unity"]["review"])):
         gensubtle.use("hermetic" if book in REVIEW else book)
         if book in REVIEW:
             gensubtle.SRC = os.path.join(ROOT, REVIEW[book]["src"])
@@ -513,8 +529,8 @@ def main():
             done = os.path.join(work, "book.pdf")
             stamp(second, done, book, digest)
             os.makedirs(OUT, exist_ok=True)
-            if book == "hermetic":
-                seal(done, os.path.join(OUT, b["file"]), author_of_hermetic(sections), digest)
+            if b["file"].endswith(".zip"):
+                seal(done, os.path.join(OUT, b["file"]), vault_key(book, sections), digest)
             else:
                 os.replace(done, os.path.join(OUT, b["file"]))
             import fitz
