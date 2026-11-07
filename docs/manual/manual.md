@@ -743,7 +743,7 @@ differently, and both are yours.
 
 | | THE GUIDE | THE SUBTLE LAYER |
 |----|----------|----------|
-| **what it is** | the mind as software, an engineer's manual | a trainer's handbook of the layer under the solid world |
+| **what it is** | the mind as software, an engineer's manual | a USER's handbook of the layer under the solid world |
 | **in the game** | POOL → key items, a page at a time | the same, with a picture on every page |
 | **in the LIBRARY** | its cover, its contents, each page, READ ALOUD | the same, and TWO VOICES |
 | **asked** | it answers as REASON would | it answers as INSTINCT would, and asks back |
@@ -778,7 +778,7 @@ its own voice, read aloud if you like. About one answer in three it ends on **th
 
 {{cover subtle}}
 
-A trainer's handbook: what trainers do with the layer under the solid world, and what they notice when they do it.
+A USER's handbook: what USERS do with the layer under the solid world, and what they notice when they do it.
 It holds the craft and the physics side by side and chooses neither -- reading (the clairs), steering (the psi) and
 bonding, what the physics allows, belief and the words that shape it, balancing mind and body, a routine for the week,
 and how to stay correctable. Every page has a picture, and in **TWO VOICES** a second, asking voice is printed faint.

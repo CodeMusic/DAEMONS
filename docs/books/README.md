@@ -7,7 +7,7 @@ these by hand.** Every word in them is still a DRAFT, as it is in the game.
 | File | The book |
 |---|---|
 | [`guide.pdf`](guide.pdf) | **THE PROGRAMMER'S GUIDE TO THE HUMAN MIND**, by Christopher Art Hicks. The mind read *like* software: its routines, its bugs, and how a habit gets rewritten one line at a time. 28 entries in nine chapters, from [`../guide.md`](../guide.md). |
-| [`the-subtle-layer.pdf`](the-subtle-layer.pdf) | **THE SUBTLE LAYER**, *a trainer's handbook*. Reading, writing and linking, the seven centres and a daily routine, taught as practice rather than doctrine. 51 entries, each with its picture, from [`../subtle-layer.md`](../subtle-layer.md). |
+| [`the-subtle-layer.pdf`](the-subtle-layer.pdf) | **THE SUBTLE LAYER**, *a USER's handbook*. Reading, writing and linking, the seven centres and a daily routine, taught as practice rather than doctrine. 51 entries, each with its picture, from [`../subtle-layer.md`](../subtle-layer.md). |
 | [`the-vault.zip`](the-vault.zip) | **Sealed.** See below. |
 | [`the-second-vault.zip`](the-second-vault.zip) | **Sealed.** See below. |
 | [`the-third-vault.zip`](the-third-vault.zip) | **Sealed.** See below. |

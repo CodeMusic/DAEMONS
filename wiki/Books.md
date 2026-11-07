@@ -37,11 +37,11 @@ journaling, each set out as a way of working on the system. 28 chapters:
 
 **Full text:** [docs/guide.md](https://github.com/CodeMusic/DAEMONS/blob/main/docs/guide.md) · **as a PDF:** [docs/books/guide.pdf](https://github.com/CodeMusic/DAEMONS/blob/main/docs/books/guide.pdf)
 
-## THE SUBTLE LAYER: a trainer's handbook
+## THE SUBTLE LAYER: a USER's handbook
 
 <img src="https://raw.githubusercontent.com/CodeMusic/DAEMONS/main/wiki/images/subtle_cover.png" width="396" alt="THE SUBTLE LAYER's cover">
 
-A handbook of practice, not of cosmology: what trainers do with the layer under the solid world, and what they notice
+A handbook of practice, not of cosmology: what USERS do with the layer under the solid world, and what they notice
 when they do it. It holds the craft and the physics side by side and chooses neither. It covers reading (the clairs),
 steering (the psi) and bonding, what the physics allows, belief and the words that shape it, balancing mind and body,
 a routine for the week, and how to stay correctable. Every page has a picture beside its words, and in TWO VOICES a
