@@ -277,3 +277,9 @@ T-528 part 2 (d), DRAFT: ROUTE 1's grove in THE CREATOR'S HOUR after a night of 
 T-528 part 2 (e), DRAFT: TULIKKO's nine 32x32 frames at 6x, drawn by hand in code (tools/gentulikko.py) in npc_white -- south, north, west, then the sweep: the tail low across the snow and swung high, a puff where it strikes
 
 ![7Nov2026 - T528 - TULIKKO sprite sheet - 47](7Nov2026%20-%20T528%20-%20TULIKKO%20sprite%20sheet%20-%2047.png)
+
+### 7Nov2026 - T528 - the conjugate light in the companion den - 48
+
+C-306 (T-528 part 2) DRAFT: the companion's den with the book mended and its carried daemon met in LeafGreen, read from the save's party -- the red crowning the top band, the green below, one line to a band -- and the same den with no daemon from the other side, CONTENT's red alone; on the site with a test save
+
+![7Nov2026 - T528 - the conjugate light in the companion den - 48](7Nov2026%20-%20T528%20-%20the%20conjugate%20light%20in%20the%20companion%20den%20-%2048.png)
