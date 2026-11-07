@@ -583,6 +583,8 @@ def notebook_table():
     fv.update(flag_values(sorted({t["heard"] for t in songs.values() if t.get("heard")})))
     pages = []
     for sec, kind, arg, flag, flag2, title, text in rows:
+        if kind == "NB_KIND_SONG" and not songs.get(arg[len("PLAY_SONG_"):], {}).get("notes", "?").split():
+            continue   # T-528 (f): a slot with no tune yet (the DUET) is never shown, so the companion has no page for it
         words = None
         if kind in ("NB_KIND_TEXT", "NB_KIND_HER_DREAM", "NB_KIND_ITS_DREAM"):
             words = strings.get(text) if text in strings else labels.get(text)
@@ -634,6 +636,7 @@ def play_table():
     note sprites are the game's own (tools/genplaynotes.py draws them; ours): art/play_notes.png, art/play_small.png."""
     import genplaynotes
     songs = json.load(open(os.path.join(ROOT, "docs/play_songs.json"), encoding="utf-8"))["songs"]
+    songs = [t for t in songs if t["notes"].split()]   # T-528 (f): a slot waiting for its tune (the DUET) is left out
     fl = flag_values(["FLAG_GOT_INSTRUMENT"] + sorted({t[k] for t in songs for k in ("learned", "heard") if t.get(k)}))
     it = flag_values(["ITEM_HARP", "ITEM_FLUTE"], "constants/items.h")
     out = []

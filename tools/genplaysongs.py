@@ -16,6 +16,12 @@ Each song's notes are written three ways in the header:
     pcs     pitch classes, C 0 .. B 11, which is what is listened for
     steps   staff steps (letters from middle C) for the SONGBOOK's page, moved by whole octaves so the tune sits on
             the staff's lines, and spelled as the key would (flats in a flat key)
+
+T-528 (f): a song with 'shown' is a SLOT (DUET, the ninth): the SONGBOOK holds it, and PLAY listens for it, only while
+the engine's function of that name says TRUE, and only once it has notes -- its tune is the user's, chosen by ear, so
+until then its 'notes' are empty and it is written with none. Its 'part' is the other edition's line, played faintly
+under the instrument held as it echoes, with 'part_frames' its own lengths; it is never listened for, so it is not
+in the shape check.
 """
 import json, os, re, sys
 
@@ -30,7 +36,7 @@ KEYS = {"C": 0, "Db": 1, "C#": 1, "D": 2, "Eb": 3, "D#": 3, "E": 4, "F": 5, "F#"
 FLAT_KEYS = {1, 3, 5, 8, 10}            # D FLAT, E FLAT, F, A FLAT, B FLAT: an accidental is written as a flat
 MAJOR = (0, 2, 4, 5, 7, 9, 11)
 MOTIF_MAX = 12                          # src/play.c
-FIRST_SONG_IDS = ["FIR", "NAMING", "STILL", "MEND", "PRACTICE", "STANCE", "NOTICE", "REFLECT"]   # include/constants/play.h
+SONG_IDS = ["FIR", "NAMING", "STILL", "MEND", "PRACTICE", "STANCE", "NOTICE", "REFLECT", "DUET"]   # include/constants/play.h
 
 
 def parse(note):
@@ -71,27 +77,39 @@ def load():
         semis = [parse(n) for n in s["notes"].split()]
         pcs = [x % 12 for x in semis]
         steps = [step(x, key) for x in semis]
-        mean = sum(steps) / len(steps)
+        mean = sum(steps) / len(steps) if steps else 6   # an empty slot (T-528 f) has no notes to place
         while mean < 3:   # the staff's lines are steps 2-10, the middle one 6
             steps = [x + 7 for x in steps]
             mean += 7
         while mean > 9:
             steps = [x - 7 for x in steps]
             mean -= 7
-        frames = s.get("frames") or [s["beat"]] * (len(semis) - 1) + [s["last"]]
-        songs.append(dict(s, keyNum=key, semis=semis, pcs=pcs, steps=steps, frames=frames))
+        frames = s.get("frames") if "frames" in s else [s["beat"]] * (len(semis) - 1) + [s["last"]]
+        part = [parse(n) for n in s.get("part", "").split()]
+        songs.append(dict(s, keyNum=key, semis=semis, pcs=pcs, steps=steps, frames=frames, partSemis=part,
+                          partFrames=s.get("part_frames", [])))
     return songs
 
 
 def check(songs):
     errors = []
     ids = [s["id"] for s in songs]
-    if ids != FIRST_SONG_IDS:
-        errors.append("songs must be in include/constants/play.h's order %s, not %s" % (FIRST_SONG_IDS, ids))
+    if ids != SONG_IDS:
+        errors.append("songs must be in include/constants/play.h's order %s, not %s" % (SONG_IDS, ids))
     for s in songs:
         n = len(s["semis"])
-        if not 3 <= n <= MOTIF_MAX:
-            errors.append("%s: %d notes (3 to %d)" % (s["id"], n, MOTIF_MAX))
+        if not (3 <= n <= MOTIF_MAX or (n == 0 and s.get("shown"))):
+            errors.append("%s: %d notes (3 to %d; none only for a slot, which has 'shown')" % (s["id"], n, MOTIF_MAX))
+        if len(s["partFrames"]) != len(s["partSemis"]):
+            errors.append("%s: %d part frames for %d part notes" % (s["id"], len(s["partFrames"]), len(s["partSemis"])))
+        if s["partSemis"] and not n:
+            errors.append("%s: a part with no tune over it" % s["id"])
+        if len(s["partSemis"]) > MOTIF_MAX * 2:
+            errors.append("%s: %d part notes (%d at most)" % (s["id"], len(s["partSemis"]), MOTIF_MAX * 2))
+        if s["partSemis"] and (min(s["partSemis"]) < -12 or max(s["partSemis"]) > 24):
+            errors.append("%s: its part goes beyond the three octaves the instruments bend to" % s["id"])
+        if not n:
+            continue
         if len(s["frames"]) != n:
             errors.append("%s: %d frames for %d notes" % (s["id"], len(s["frames"]), n))
         outside = [x for x in s["pcs"] if (x - s["keyNum"]) % 12 not in MAJOR]
@@ -102,8 +120,9 @@ def check(songs):
     titles = notebook_titles()
     if titles != [s["title"] for s in songs]:
         errors.append("src/notebook.c's SONGBOOK titles %s are not the json's %s" % (titles, [s["title"] for s in songs]))
-    for a in songs:
-        for b in songs:
+    heard = [s for s in songs if s["semis"]]   # an empty slot is never listened for
+    for a in heard:
+        for b in heard:
             if a is not b and inside(intervals(a["pcs"]), intervals(b["pcs"])):
                 errors.append("%s's shape is inside %s's: %s would be heard before %s ends"
                               % (a["id"], b["id"], a["title"], b["title"]))
@@ -125,12 +144,20 @@ def header(songs):
            "// edit the json and run the tool. Every page is DRAFT; the titles are src/notebook.c's.", ""]
     for s in songs:
         name = "sSong_" + s["id"].title()
-        out.append("// %s -- %s, in %s major%s" % (s["title"], s["pair"], s["key"],
-                                                     " (motif %s, chosen by the user by ear)" % s["motif"] if s.get("motif") else ""))
-        out.append("static const s8 %s_Notes[] = {%s};" % (name, ", ".join(map(str, s["semis"]))))
-        out.append("static const u8 %s_Pcs[] = {%s};" % (name, ", ".join(map(str, s["pcs"]))))
-        out.append("static const s8 %s_Steps[] = {%s};" % (name, ", ".join(map(str, s["steps"]))))
-        out.append("static const u8 %s_Frames[] = {%s};" % (name, ", ".join(map(str, s["frames"]))))
+        if s.get("shown") and not s["semis"]:
+            out.append("// %s -- %s: a slot, its tune the user's to choose by ear; shown only while %s() (T-528 f)"
+                       % (s["title"], s["pair"], s["shown"]))
+        else:
+            out.append("// %s -- %s, in %s major%s" % (s["title"], s["pair"], s["key"],
+                                                         " (motif %s, chosen by the user by ear)" % s["motif"] if s.get("motif") else ""))
+        if s["semis"]:
+            out.append("static const s8 %s_Notes[] = {%s};" % (name, ", ".join(map(str, s["semis"]))))
+            out.append("static const u8 %s_Pcs[] = {%s};" % (name, ", ".join(map(str, s["pcs"]))))
+            out.append("static const s8 %s_Steps[] = {%s};" % (name, ", ".join(map(str, s["steps"]))))
+            out.append("static const u8 %s_Frames[] = {%s};" % (name, ", ".join(map(str, s["frames"]))))
+        if s["partSemis"]:
+            out.append("static const s8 %s_PartNotes[] = {%s};" % (name, ", ".join(map(str, s["partSemis"]))))
+            out.append("static const u8 %s_PartFrames[] = {%s};" % (name, ", ".join(map(str, s["partFrames"]))))
         if s.get("page"):
             out.append("static const u8 %s_Page[] = %s;" % (name, c_str(s["page"])))
         out.append("")
@@ -138,9 +165,15 @@ def header(songs):
     out.append("{")
     for s in songs:
         name = "sSong_" + s["id"].title()
-        out.append("    [PLAY_SONG_%s] = {%s, %s, %s, %d, %d, %s_Notes, %s_Pcs, %s_Steps, %s_Frames, %s},"
-                   % (s["id"], s["learned"], s["heard"] or "0", s["understanding"] or "0", s["keyNum"], len(s["semis"]),
-                      name, name, name, name, name + "_Page" if s.get("page") else "NULL"))
+        arrays = ", ".join((name + x) if s["semis"] else "NULL" for x in ("_Notes", "_Pcs", "_Steps", "_Frames"))
+        row = "%s, %s, %s, %d, %d, %s, %s" % (s["learned"], s.get("heard") or "0", s.get("understanding") or "0",
+                                               s["keyNum"], len(s["semis"]), arrays,
+                                               name + "_Page" if s.get("page") else "NULL")
+        if s.get("shown") or s["partSemis"]:   # T-528 (f): the test that shows it, and the other edition's part
+            row += ", %s, %d, %s, %s" % (s.get("shown") or "NULL", len(s["partSemis"]),
+                                         name + "_PartNotes" if s["partSemis"] else "NULL",
+                                         name + "_PartFrames" if s["partSemis"] else "NULL")
+        out.append("    [PLAY_SONG_%s] = {%s}," % (s["id"], row))
     out.append("};")
     return "\n".join(out) + "\n"
 
@@ -149,13 +182,15 @@ def main():
     write = "--write" in sys.argv
     songs = load()
     for s in songs:
-        print("  %-8s %-24s %-2s  %s" % (s["id"], s["title"], s["key"], " ".join(s["notes"].split())))
+        print("  %-8s %-24s %-2s  %s" % (s["id"], s["title"], s["key"],
+                                        " ".join(s["notes"].split()) or "(a slot: its tune is the user's, by ear)"))
     errors = check(songs)
     for e in errors:
         print("  FAIL: " + e)
     if errors:
         return 1
-    print("  check: no song's shape sits inside another's (%d songs, O CHRISTMAS TREE among them)" % len(songs))
+    print("  check: no song's shape sits inside another's (%d songs, O CHRISTMAS TREE among them)"
+          % len([s for s in songs if s["semis"]]))
     text = header(songs)
     old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else None
     if old == text:

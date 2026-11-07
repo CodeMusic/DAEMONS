@@ -322,6 +322,11 @@
    "map": null,
    "about": "Heard where REFLECT is learned."
   },
+  "FLAG_SONG_DUET": {
+   "seen": 110,
+   "map": null,
+   "about": "A tune for two instruments."
+  },
   "FLAG_YEAR_LINE_ROLLOVER": {
    "seen": 69,
    "map": null,
