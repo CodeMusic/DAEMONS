@@ -1,0 +1,234 @@
+{
+ "rom": "debug",
+ "about": "T-527 (built 2026-11-07, the user: \"A outdoors, B indoors\"): one battle per terrain the maps reach, each a wild level-5 foe through DEBUG -> ENCOUNTER on a tile of that terrain (the terrain is read off the tile the player stands on, battle_setup.c), INVOKE ending its own stop (the DEBUG step closes with B, which a battle swallows) and the battle the next: the backdrop and the platforms under the daemons. The entry strips slide in while that B is pressed, so they are decoded from the ROM with the two terrains no map reaches; PLAIN (the building drawing in PLAIN's palette) on Route 1's path; PEWTER's BENCHMARK room through its trainer; and the grass again at night. LONG GRASS (no map uses its tile) and UNDERWATER (no map reaches it) are decoded from the ROM instead. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, the day forced, the weather clear",
+   "steps": [
+    "load debug",
+    "repel 999",
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsWatchOverride 8 1"
+   ]
+  },
+  {
+   "stop": "GRASS (A): Route 1's tall grass: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto Route1 10 6",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "GRASS (A): Route 1's tall grass: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"GRASS: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "SAND (A): TREASURE BEACH's sand: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto OneIsland_TreasureBeach 11 20",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "SAND (A): TREASURE BEACH's sand: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"SAND: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "WATER (A): TREASURE BEACH's open sea (the player set on the water): set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto OneIsland_TreasureBeach 7 9",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "WATER (A): TREASURE BEACH's open sea (the player set on the water): the battle",
+   "steps": [
+    "wait 30",
+    "shot \"WATER: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "POND (A): Route 22's pond (the player set on the water): set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto Route22 24 8",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "POND (A): Route 22's pond (the player set on the water): the battle",
+   "steps": [
+    "wait 30",
+    "shot \"POND: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "MOUNTAIN (A): MT. EMBER's mountain top: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto MtEmber_Exterior 13 7",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "MOUNTAIN (A): MT. EMBER's mountain top: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"MOUNTAIN: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "CAVE (A): MT. MOON 1F: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto MtMoon_1F",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "CAVE (A): MT. MOON 1F: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"CAVE: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "BUILDING (B): a house indoors: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto PalletTown_PlayersHouse_1F",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "BUILDING (B): a house indoors: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"BUILDING: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "PLAIN (the building drawing, B, in PLAIN's palette): Route 1's path, off the grass: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto Route1 14 11",
+    "close",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "PLAIN (the building drawing, B, in PLAIN's palette): Route 1's path, off the grass: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"PLAIN: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "a BENCHMARK room (B in SLATE's palette): PEWTER's trainer CAMPER LIAM",
+   "steps": [
+    "trainer TRAINER_CAMPER_LIAM 0",
+    "repel 999",
+    "goto PewterCity_Gym 5 9",
+    "close",
+    "hold UP 20",
+    "wait 150",
+    "hold A 6",
+    "wait 60",
+    "hold A 6",
+    "wait 60",
+    "hold A 6",
+    "wait 600",
+    "shot \"SLATE's BENCHMARK room under the daemons, at the first menu\"",
+    "win",
+    "wait 200",
+    "finish",
+    "close"
+   ]
+  },
+  {
+   "stop": "GRASS at night (the watch forced to night): the hour's navy sky: set up, and INVOKE (the DEBUG step ends its stop: the battle swallows its B)",
+   "steps": [
+    "repel 999",
+    "goto Route1 10 6",
+    "close",
+    "poke gDaemonsWatchOverride 8 3",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "GRASS at night (the watch forced to night): the hour's navy sky: the battle",
+   "steps": [
+    "wait 30",
+    "shot \"GRASS at night: the backdrop and both platforms under the daemons\"",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "put back",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 0",
+    "poke gDaemonsWatchOverride 8 0"
+   ]
+  }
+ ]
+}

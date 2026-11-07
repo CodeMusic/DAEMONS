@@ -187,3 +187,15 @@ T-527 DRAFT: the nine battle terrains drawn again from our own map tiles and cod
 T-527 DRAFT: T-481's run-time calendar on the drafts (autumn, SATURDAY's line, dawn/day/dusk/night) for GRASS and WATER, and the building drawing under PLAIN, a gym, LORELEI's room and SLATE's arena.
 
 ![7Nov2026 - T527 - battle backgrounds under the calendar - 31](7Nov2026%20-%20T527%20-%20battle%20backgrounds%20under%20the%20calendar%20-%2031.png)
+
+### 7Nov2026 - T527 - battle backgrounds in play - 33
+
+T-527 built (A outdoors, B indoors): one battle per terrain the maps reach, filmed in the theatre on the debug build -- GRASS (in autumn's palette), SAND, WATER, POND, MOUNTAIN, CAVE, BUILDING, PLAIN (B's drawing) on Route 1's path, SLATE's BENCHMARK room in PEWTER (B's drawing in T-16's pale palette), and GRASS at night
+
+![7Nov2026 - T527 - battle backgrounds in play - 33](7Nov2026%20-%20T527%20-%20battle%20backgrounds%20in%20play%20-%2033.png)
+
+### 7Nov2026 - T527 - every terrain and entry strip decoded - 34
+
+T-527 built: all nine terrains decoded from the debug ROM -- each backdrop with both platforms, and the entry strip that slides in (LONG GRASS and UNDERWATER are reached by no map, so this is the only way to see them)
+
+![7Nov2026 - T527 - every terrain and entry strip decoded - 34](7Nov2026%20-%20T527%20-%20every%20terrain%20and%20entry%20strip%20decoded%20-%2034.png)

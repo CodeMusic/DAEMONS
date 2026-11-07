@@ -9,6 +9,8 @@
     python3 tools/gbabattleart.py --write --approved --pick grass=A cave=B ...
                                                        # write the picked drafts into the engine. Refuses without
                                                        #   --approved, and refuses a terrain APPROVED does not name.
+    python3 tools/gbabattleart.py --write --approved --all   # every pick APPROVED holds (check_generators runs this)
+    python3 tools/gbabattleart.py --approved           # report, and exit 1 if the engine is not what that write makes
 
 DRAFT, 2026-11-07 (the user picked "Battle backgrounds" from the vanilla-art census, gap 2). Every pixel is drawn in
 code or taken from OUR map tilesets (the T-438 ground, the cave, the beach, the sea's bits, the house) as the maps
@@ -67,13 +69,17 @@ DIRS = ("A", "B")
 # (most trainer battles off the grass, and the evolution scene) wears outdoors, where A's rug reads as a target
 RECOMMENDED = {"grass": "A", "longgrass": "A", "sand": "A", "underwater": "B", "water": "A", "pond": "A",
                "mountain": "A", "cave": "A", "building": "B"}
-APPROVED = {}                    # {terrain: "A" | "B"} -- the user's pick, set when the user answers. Empty: no write.
+# the user, 2026-11-07: "A outdoors, B indoors" -- the recommendation, every terrain
+APPROVED = {"grass": "A", "longgrass": "A", "sand": "A", "water": "A", "pond": "A", "mountain": "A", "cave": "A",
+            "building": "B", "underwater": "B"}
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--draft", nargs="?", const=DRAFT_DEFAULT)
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--pick", nargs="*", default=[])
+ap.add_argument("--all", action="store_true", help="--pick every terrain APPROVED names")
+ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes really runs the write")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
 
@@ -1342,8 +1348,38 @@ def report():
                 print("  %-10s %s  tiles %3d/%-3d strip %3d/%-3d grey gap %4.1f  %s" % (
                     name, d, nt, vanilla_budget(name), ns, vanilla_budget(name, "anim"), grey_gap(T),
                     "keeps the contract" if not b else "! " + "; ".join(b)))
-    print("  APPROVED: %s" % (APPROVED or "nothing yet -- the drafts wait on the user (--draft makes them)"))
+        print("  APPROVED: %s" % (APPROVED or "nothing yet -- the drafts wait on the user (--draft makes them)"))
+        if A.approved and APPROVED:
+            off = differs(tmp)
+            for f in off:
+                print("  ! the engine's %s is not what the approved write makes" % f)
+            if off:
+                print("  the engine drifts from the picks (%d files): --write --approved --all puts them back" % len(off))
+                bad += len(off)
+            else:
+                print("  the engine holds every approved pick")
     return 1 if bad else 0
+
+
+def targets_of(name):
+    """(engine folder, files) the write puts a terrain's pick into: building's drawing goes into indoor/ as well."""
+    out = [(name, ("terrain.png", "terrain.bin", "terrain.pal", "anim.png", "anim.bin"))]
+    if name == "building":
+        out.append(("indoor", ("terrain.png", "terrain.bin")))
+    return out
+
+
+def differs(tmp):
+    """Every engine file that is not byte for byte what the approved write makes (the drafts already made in tmp)."""
+    off = []
+    for name, d in sorted(APPROVED.items()):
+        dd = os.path.join(tmp, d, name)
+        for tgt, files in targets_of(name):
+            for f in files:
+                src, dst = os.path.join(dd, f), os.path.join(TERR, tgt, f)
+                if not os.path.exists(dst) or open(src, "rb").read() != open(dst, "rb").read():
+                    off.append(os.path.join(tgt, f))
+    return off
 
 
 def write(picks):
@@ -1364,15 +1400,9 @@ def write(picks):
         if bad:
             print("  %s %s breaks the contract: %s" % (name, d, bad))
             return 1
-        targets = [name] + (["indoor"] if name == "building" else [])
-        for tgt in targets:
-            dst = os.path.join(TERR, tgt)
-            shutil.copyfile(os.path.join(dd, "terrain.png"), os.path.join(dst, "terrain.png"))
-            shutil.copyfile(os.path.join(dd, "terrain.bin"), os.path.join(dst, "terrain.bin"))
-            if tgt == name:
-                shutil.copyfile(os.path.join(dd, "terrain.pal"), os.path.join(dst, "terrain.pal"))
-                shutil.copyfile(os.path.join(dd, "anim.png"), os.path.join(dst, "anim.png"))
-                shutil.copyfile(os.path.join(dd, "anim.bin"), os.path.join(dst, "anim.bin"))
+        for tgt, files in targets_of(name):
+            for f in files:
+                shutil.copyfile(os.path.join(dd, f), os.path.join(TERR, tgt, f))
         print("  wrote %s (%s)" % (name, d))
     # the calendar's tables are measured off the art: regenerate them now
     return subprocess.call([sys.executable, os.path.join(TOOLS, "gbabattlebg.py"), "--write", "--approved"])
@@ -1380,7 +1410,8 @@ def write(picks):
 
 def main():
     if A.write:
-        picks = dict(p.split("=", 1) for p in A.pick)
+        picks = dict(APPROVED) if A.all else {}
+        picks.update(p.split("=", 1) for p in A.pick)
         return write(picks)
     if A.draft:
         return draft(A.draft)
