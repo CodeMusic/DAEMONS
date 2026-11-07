@@ -12,7 +12,8 @@
 
 DRAFT, 2026-11-07, the user away ("Item icons" next, from the vanilla-art census, gap 4). BUILT the same day: the user, "Build all
 41" -- and batch 2's forty-seven the same day too: the user, "Build all 47". APPROVED holds every icon of both batches, `--all`
-writes both, and the report exits 1 when the engine is not what that write makes. Every pixel here is drawn in
+writes both, and the report exits 1 when the engine is not what that write makes. Batch 3 (ICONS3, `--draft --batch 3`:
+the held items and the TRAP TABLE's TRAPs) is DRAFT and not in APPROVED, so `--all` leaves it out. Every pixel here is drawn in
 code, by hand, on the 24x24 grid: no AI image, nothing traced. The engine's own icons are read only to show them
 beside ours on the sheet.
 
@@ -1644,6 +1645,596 @@ APPROVED = APPROVED + [e[0] for e in ICONS2]      # the user, 2026-11-07: "Build
 #  Not drawn: MYSTICTICKET and AURORATICKET -- only a Mystery Gift gives them, and nothing in this game does.
 
 
+# ================================================================================================= batch 3
+#  Drafted 2026-11-07, the user away, after batch 2 was built (the user: "Icons batch 3"). `--draft --batch 3` draws
+#  them. NOT in APPROVED: nothing here reaches the engine until the user picks from the sheet, item by item
+#  (`--write --approved ITEM ...`). The held items and the TRAP TABLE's TRAPs.
+#  Not drawn, because no player can get them (no gift, ball, hidden item, prize, mart, wild hold or holiday gives
+#  them; only the unused battle tower and the TRAINER TOWER's own trainers hold them): INNER STATE (SOUL DEW), DEEP
+#  FEATURE and DEEP LAYER (only a trade evolution names them), SUPPLY RAIL (LIGHT BALL), RECLAIM (SHELL BELL), and
+#  the seven AUTOs (LIECHI ... STARF).
+
+#  ---- the GAINs: "Gain lifts one channel." One form for all seventeen, an amplifier: a small signal in, a large one
+#  out. The type is the only difference, and it is said in its hue (9.4).
+def amp(vanilla, small=False):
+    L, M, D = tc(vanilla)
+    c = C()
+    x0, x1, cy, hh = (3, 13, 9.5, 6.5) if small else (5, 17, 11.5, 8.5)
+    for x in range(x0, x1 + 1):
+        h = (x1 - x) * hh / (x1 - x0)
+        y0, y1 = int(round(cy - h)), int(round(cy + h))
+        c.vline(x, y0, y1, M)
+        c.px(x, y0, L)
+        c.px(x, y1, D)
+    c.vline(x0, int(round(cy - hh)), int(round(cy + hh)), L)
+    p = x0 + 3                                          # the + of a gain, on its face
+    c.hline(p - 1, p + 1, int(cy), W), c.vline(p, int(cy) - 1, int(cy) + 1, W)
+    c.outline()
+    return c
+
+
+def waves(c, x0, x1, cy, amp_, col=INK, period=6.0):
+    last = None
+    for x in range(x0, x1 + 1):
+        y = int(round(cy - amp_ * math.sin((x - x0) * 2 * math.pi / period)))
+        if last is not None and abs(y - last) > 1:
+            for yy in range(min(y, last) + 1, max(y, last)):
+                c.px(x, yy, col)
+        c.px(x, y, col)
+        last = y
+
+
+def gain(vanilla):
+    c = amp(vanilla)
+    c.hline(0, 3, 11, INK)                                # in: a flat, small signal
+    c.px(1, 10, INK), c.px(2, 12, INK)
+    waves(c, 19, 23, 11.5, 4, INK, 5.0)                    # out: the same, large
+    return c
+
+
+def i_swarm_gain(): return gain("BUG")
+def i_hardened_gain(): return gain("STEEL")
+def i_stratum_gain(): return gain("GROUND")
+def i_legacy_gain(): return gain("ROCK")
+def i_growth_gain(): return gain("GRASS")
+def i_opaque_gain(): return gain("DARK")
+def i_logic_gain(): return gain("FIGHTING")
+def i_signal_gain(): return gain("ELECTRIC")
+def i_flow_gain(): return gain("WATER")
+def i_vector_gain(): return gain("FLYING")
+def i_corrupt_gain(): return gain("POISON")
+def i_frozen_gain(): return gain("ICE")
+def i_latent_gain(): return gain("GHOST")
+def i_context_gain(): return gain("PSYCHIC")
+def i_entropy_gain(): return gain("FIRE")
+def i_emergent_gain(): return gain("DRAGON")
+def i_content_gain(): return gain("NORMAL")
+
+
+def i_flow_trim():
+    """A trim is a small gain: the amplifier, smaller, in FLOW's hue, and the trim screw that sets it."""
+    c = amp("WATER", small=True)
+    waves(c, 15, 21, 9.5, 2, INK, 6.0)
+    c.disc(15.5, 17.5, 4, G1)                            # the trim pot
+    c.ring(15.5, 17.5, 3.2, 4.4, lambda a: W if 45 < a < 225 else G2)
+    c.line(13, 20, 18, 15, G3)                            # its slot, turned a little
+    c.outline()
+    return c
+
+
+#  ---- DITHER: noise added on purpose, so nothing can be pinned. A crosshair over a field of dither, its centre
+#  lost in the pattern. DITHER TRIM: the same at a lower setting, the pattern sparser.
+def dither(level):
+    c = C()
+    c.box(2, 2, 21, 21, G3)
+    for y in range(3, 21):
+        for x in range(3, 21):
+            k = (x + y) % 2 == 0 if level == 2 else (x % 2 == 0 and y % 2 == 0)
+            if k and (x * 5 + y * 3) % 7:
+                c.px(x, y, G1 if (x * 7 + y * 3) % 5 else W)
+    for i in list(range(4, 9)) + list(range(15, 20)):    # the crosshair, which can no longer find its point
+        c.px(i, 11, INK), c.px(11, i, INK)
+    c.ring(11, 11, 4.0, 4.9, lambda a: INK if int(a / 30) % 2 == 0 else None)
+    return c
+
+
+def i_dither(): return dither(2)
+def i_dither_trim(): return dither(1)
+
+
+def i_revert():
+    """Puts a value back the way it was: a stat bar knocked down, and an arrow carrying it back up to its mark."""
+    c = C()
+    c.rect(4, 13, 8, 21, G2), c.vline(4, 13, 21, G1)       # the bar, lowered
+    c.outline()
+    for x in range(3, 10, 2):                            # where it was
+        c.px(x, 4, G3)
+    c.ring(13, 12, 4.4, 6.0, lambda a: W if (a > 300 or a < 180) else None)
+    c.ascii(4, 3, ["   X", "  XX", " XXX", "XXXX", " XXX", "  XX", "   X"], {"X": W})
+    c.outline()
+    return c
+
+
+def i_debug_build():
+    """Every step instrumented: a chip with probes clipped to its pins, their leads running off. It learns, and it is
+    slower for it."""
+    c = C()
+    c.box(4, 10, 17, 20, G4, round_=False)
+    c.hline(5, 16, 11, G3)
+    for x in range(5, 17, 3):                            # the pins
+        c.vline(x, 21, 22, G1), c.vline(x, 8, 9, G1)
+    c.outline()
+    for i, x in enumerate((5, 11, 14)):                  # the probes: hooks on three pins, the leads looping away
+        c.rect(x - 1, 5, x + 1, 7, W)
+        c.px(x, 4, G1)
+        c.line(x, 3, 19 - i, 1 + i * 2, G2)
+    c.ascii(8, 14, ["X X", " X ", "X X"], {"X": G2})       # the label a debug build carries
+    c.px(20, 1, G2), c.px(21, 3, G2), c.px(22, 5, G2)
+    return c
+
+
+def i_weight_share():
+    """Two models trained as one: two grids of weights, the same pattern in each, joined so what teaches one teaches
+    the other."""
+    c = C()
+    pat = ["XoX", "oXX", "XXo"]
+    for x0 in (1, 13):
+        c.box(x0, 6, x0 + 9, 15, G4, round_=False)
+        for j, row in enumerate(pat):
+            for i, ch in enumerate(row):
+                c.rect(x0 + 1 + i * 3, 7 + j * 3, x0 + 2 + i * 3, 8 + j * 3, W if ch == "X" else G2)
+    c.rect(10, 9, 13, 12, G1)                            # the bar that ties them
+    c.hline(10, 13, 9, W)
+    c.outline()
+    return c
+
+
+def i_queue_jump():
+    """The scheduler takes it out of turn: a queue of four, and one leaping from the back over all of them."""
+    c = C()
+    for i, x in enumerate((3, 8, 13)):
+        c.rect(x, 15, x + 3, 20, G2), c.hline(x, x + 3, 15, G1)
+    c.rect(18, 15, 21, 20, W2), c.hline(18, 21, 15, W)   # the front, now free
+    c.rect(1, 7, 4, 11, G1), c.hline(1, 4, 7, W)         # the one jumping
+    c.outline()
+    c.ring(12, 15, 8.6, 9.6, lambda a: G3 if 20 < a < 150 else None)
+    c.ascii(18, 9, ["XXXXX", " XXX ", "  X  "], {"X": INK})
+    return c
+
+
+def i_affinity():
+    """Binds a process to one host: a small process tied by a short line to one core, the knot made fast."""
+    c = C()
+    c.box(9, 7, 22, 20, G2, round_=False)                 # the host's core
+    c.rect(12, 10, 19, 17, G3)
+    c.rect(13, 11, 18, 16, G1), c.hline(13, 18, 11, W)
+    for y in range(8, 20, 3):
+        c.px(8, y, G1), c.px(23, y, G1)
+    c.box(1, 2, 6, 7, W2)                                # the process
+    c.outline()
+    c.line(5, 7, 13, 13, INK)                            # bound to it
+    c.rect(14, 13, 15, 14, INK)
+    return c
+
+
+def i_unpair():
+    """Drops a binding nobody asked for: a plug and its socket pulled apart, the gap between them."""
+    c = C()
+    c.rect(0, 9, 6, 14, G3)                              # the cable and plug
+    c.rect(6, 8, 10, 15, G1), c.hline(6, 10, 8, W)
+    c.rect(11, 9, 12, 10, G2), c.rect(11, 13, 12, 14, G2)  # its pins
+    c.rect(16, 8, 20, 15, G1), c.hline(16, 20, 8, W)     # the socket
+    c.rect(20, 9, 23, 14, G3)
+    c.outline()
+    c.rect(17, 10, 17, 10, INK), c.rect(17, 13, 17, 13, INK)
+    for x, y in ((14, 6), (14, 17), (14, 4), (14, 19)):   # the parting
+        c.px(x, y, G2)
+    return c
+
+
+def i_hard_coded():
+    """One value written in, with no way to pass another: a riveted plate, a single value stamped into it."""
+    c = C()
+    c.box(2, 4, 21, 19, G1)
+    c.hline(3, 20, 5, W), c.vline(3, 5, 18, W)
+    c.hline(3, 20, 18, G2), c.vline(20, 5, 18, G2)
+    for x, y in ((5, 7), (18, 7), (5, 16), (18, 16)):
+        c.px(x, y, G3)
+    c.ascii(8, 7, ["  XX  ", " XXX  ", "  XX  ", "  XX  ", "  XX  ", "  XX  ", "  XX  ", " XXXX "], {"X": G4})
+    c.outline()
+    return c
+
+
+def i_bubble():
+    """A gap pushed into a pipeline: four stages stepping down, and one slot in the run left empty, a bubble."""
+    c = C()
+    for j in range(4):
+        for i in range(3):
+            x, y = 2 + (i + j) * 4, 3 + j * 5
+            if (i, j) == (1, 2):
+                c.ring(x + 1.5, y + 1.5, 1.6, 2.6, lambda a: W)
+                continue
+            c.rect(x, y, x + 3, y + 3, G2)
+            c.hline(x, x + 3, y, G1)
+    c.outline()
+    return c
+
+
+def i_surcharge():
+    """Charged on top of the agreed rate: a price tag, and a coin set on it with a + struck in."""
+    c = C()
+    c.rect(2, 5, 15, 20, PAPER), c.vline(15, 5, 20, PAPER2)
+    c.px(2, 5, None), c.px(15, 5, None)
+    for y in (9, 12):
+        c.hline(4, 12, y, G2)
+    c.hline(4, 9, 17, G3)
+    c.disc(16.5, 14.5, 5.2, GOLD)
+    c.ring(16.5, 14.5, 4.2, 5.8, lambda a: GOLD_L if 60 < a < 210 else GOLD_D)
+    c.hline(15, 18, 14, GOLD_D), c.vline(16, 13, 16, GOLD_D), c.vline(17, 13, 16, GOLD_D)
+    c.hline(15, 18, 15, GOLD_D)
+    c.outline()
+    return c
+
+
+def i_mute():
+    """Mutes the channel wild daemons listen on: a channel strip, its fader down and its M key lit."""
+    c = C()
+    c.box(6, 1, 17, 22, G3, round_=False)
+    c.vline(11, 4, 15, G4), c.vline(12, 4, 15, G4)      # the fader's slot
+    c.rect(9, 13, 14, 15, G1), c.hline(9, 14, 13, W)     # the fader, all the way down
+    c.box(7, 16, 16, 22, W)                              # the MUTE key, lit
+    c.ascii(9, 17, ["X   X", "XX XX", "X X X", "X   X", "X   X"], {"X": INK})
+    for y in range(4, 13, 2):
+        c.px(8, y, G2), c.px(15, y, G2)
+    c.outline()
+    return c
+
+
+def i_escape_hatch():
+    """A way out that is always open: a hatch in the floor, its lid thrown back, the ladder going up and out."""
+    c = C()
+    c.rect(2, 11, 21, 21, G2), c.hline(2, 21, 11, G1)    # the frame
+    c.rect(5, 13, 18, 20, G4)                            # the way down
+    for y in (14, 17, 20):
+        c.hline(8, 15, y, G3)
+    c.vline(8, 13, 20, G3), c.vline(15, 13, 20, G3)
+    c.rect(4, 3, 19, 9, G1), c.hline(4, 19, 3, W)        # the lid, open
+    c.hline(4, 19, 9, G2)
+    c.outline()
+    c.ascii(10, 0, ["  XX  ", " XXXX ", "XXXXXX", "  XX  ", "  XX  "], {"X": W})
+    return c
+
+
+def i_version_lock():
+    """Pins a thing to the version it is at: a tag reading v1, a pin driven through it."""
+    c = C()
+    for y in range(6, 19):                               # the tag, its pointed end left
+        x0 = max(3, 9 - min(y - 6, 18 - y))
+        c.hline(x0, 20, y, PAPER)
+    c.vline(20, 6, 18, PAPER2), c.hline(5, 20, 18, PAPER2)
+    c.disc(8, 12, 1.0, None)                             # the eyelet
+    c.ascii(11, 9, ["X X X", "X X X", "X X X", " X  X", " X  X"], {"X": G4})
+    c.outline()
+    c.rect(7, 2, 9, 4, G2), c.hline(7, 9, 2, G1)         # the pin's head, through the eyelet
+    c.vline(8, 5, 20, G1)
+    c.px(8, 21, G3)
+    return c
+
+
+def i_failsafe():
+    """What stops the fall when everything else has: a net strung under a falling bar, one sliver of HP left in it."""
+    c = C()
+    for x in range(1, 23):                               # the net's sag
+        y = 16 + int(round(3 * math.sin(math.pi * (x - 1) / 21)))
+        c.px(x, y, KRAFT_D)
+        if x % 3 == 1:
+            c.line(x, y, x, y - 3, KRAFT)
+    c.hline(1, 22, 15, KRAFT), c.vline(1, 12, 16, WOOD), c.vline(22, 12, 16, WOOD)
+    c.box(5, 4, 18, 9, G4, round_=False)                  # the health bar, caught
+    c.vline(6, 5, 8, HP_L)
+    c.outline()
+    c.vline(11, 1, 2, G2), c.vline(14, 0, 2, G2)
+    return c
+
+
+def i_learning_rate():
+    """How large a step each lesson takes, turned up: a loss curve, and big strides down it to the bottom."""
+    c = C()
+    def y_at(x):
+        return 20 - int(round(16 * ((x - 13) / 11.0) ** 2))
+    for x in range(2, 23):
+        c.px(x, y_at(x), G2)
+        if x > 2 and abs(y_at(x) - y_at(x - 1)) > 1:
+            c.vline(x, min(y_at(x), y_at(x - 1)) + 1, max(y_at(x), y_at(x - 1)) - 1, G2)
+    c.outline()
+    pts = [(3, y_at(3) - 3), (8, y_at(8) - 3), (13, y_at(13) - 3)]
+    for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
+        c.line(xa, ya, xb, yb, W)
+    for x, y in pts:
+        c.rect(x - 1, y - 1, x, y, W)
+    return c
+
+
+def i_long_tail():
+    """The far end of a distribution, where the rare large values are: a steep fall and the long tail after it,
+    its far end lit."""
+    c = C()
+    c.vline(1, 2, 21, G3), c.hline(1, 22, 21, G3)
+    for x in range(2, 23):
+        h = int(round(18 / (1 + (x - 2) * 0.9)))
+        c.vline(x, 20 - h, 20, G1 if x < 15 else W)
+    c.outline()
+    c.disc(19, 14, 3.4, None)
+    c.ring(19, 14, 3.0, 4.2, lambda a: G2)               # the lens on it
+    c.line(16, 17, 14, 19, G2)
+    for x in range(16, 23):
+        c.px(x, 19, W)
+    return c
+
+
+def i_headroom():
+    """The margin before anything clips: a level meter filled in HP green, the clip line above it, and the room
+    between kept; a little back each turn."""
+    c = C()
+    c.box(7, 1, 16, 22, G4, round_=False)
+    for y in range(9, 22):
+        for x in range(8, 16):
+            c.px(x, y, HP if y > 9 else HP_L)
+    c.vline(15, 10, 21, HP_D)
+    for x in range(8, 16, 2):                            # the clip line
+        c.px(x, 3, W)
+    c.outline()
+    c.ascii(18, 3, ["X", "XX", "X X"], {"X": W})          # the room, measured
+    c.vline(19, 3, 9, W2)
+    c.ascii(18, 8, ["X X", "XX", "X"], {"X": W})
+    c.ascii(1, 13, [" X ", "XXX", " X "], {"X": HP})       # and back, a little
+    return c
+
+
+def i_scaling_law():
+    """What happens when you only make it bigger: a straight line on log paper, three things on it, each larger."""
+    c = C()
+    c.vline(1, 1, 22, G3), c.hline(1, 22, 22, G3)
+    for v in (5, 11, 17):
+        c.px(v + 1, 21, G2), c.px(2, v, G2)
+    c.line(3, 20, 21, 3, G2)
+    c.rect(4, 17, 5, 18, W)
+    c.disc(11, 12, 2, G1), c.px(10, 11, W)
+    c.disc(18, 5, 3.4, G1), c.rect(16, 3, 17, 4, W)
+    c.outline()
+    return c
+
+
+def i_service_pack():
+    """Everything fixed since the release, in one bundle: a shrink-wrapped box, its band, the patches stacked in it."""
+    c = C()
+    c.rect(3, 6, 18, 21, KRAFT), c.vline(3, 6, 21, KRAFT_L), c.vline(18, 6, 21, KRAFT_D)
+    c.rect(18, 4, 20, 19, KRAFT_D)                      # its side
+    c.rect(5, 4, 20, 5, KRAFT_L)
+    c.hline(3, 18, 12, G1), c.hline(3, 18, 13, G1)      # the band
+    for i, y in enumerate((8, 15, 18)):                 # three patches, the same patch drawn small
+        c.rect(6 + i * 2, y, 10 + i * 2, y + 1, PAPER)
+    c.outline()
+    c.px(20, 4, None)
+    return c
+
+
+def i_fluke():
+    """A result nothing predicted and nothing repeats: points along a fitted line, and one far off it, lit."""
+    c = C()
+    for x, y in ((2, 19), (6, 18), (10, 15), (14, 14), (18, 11), (21, 10)):
+        c.rect(x - 1, y - 1, x, y, G1)
+    c.outline()
+    c.line(1, 21, 22, 9, G3)
+    c.disc(17, 4, 2.6, W), c.ring(17, 4, 3.2, 4.0, lambda a: W if int(a / 45) % 2 == 0 else None)
+    c.outline()
+    return c
+
+
+def i_strict_mode():
+    """Refuses anything it was not promised: a wall with one shape cut through it, and a piece of the wrong shape
+    turned back."""
+    c = C()
+    c.rect(12, 1, 21, 22, G2), c.vline(12, 1, 22, G1), c.vline(21, 1, 22, G3)
+    c.ascii(13, 9, ["   XX   ", "  XXXX  ", " XXXXXX ", "XXXXXXXX"], {"X": G4})   # the promised shape, cut through
+    c.rect(2, 12, 8, 18, G1), c.hline(2, 8, 12, W)       # the square that came instead
+    c.outline()
+    c.ascii(3, 3, ["X   X", " X X ", "  X  ", " X X ", "X   X"], {"X": INK})
+    c.ascii(9, 19, ["  X", " X ", "XXX"], {"X": G3})
+    return c
+
+
+def i_bare_metal():
+    """Nothing between you and the hardware: a chip with its lid off, the die bare, its bond wires."""
+    c = C()
+    c.box(2, 2, 21, 21, G3, round_=False)
+    for i in range(4, 20, 3):
+        c.px(i, 1, G1), c.px(i, 22, G1), c.px(1, i, G1), c.px(22, i, G1)
+    c.rect(7, 7, 16, 16, G1)                            # the die, bare
+    c.hline(7, 16, 7, W), c.vline(7, 7, 16, W)
+    for x in range(9, 15, 2):
+        for y in range(9, 15, 2):
+            c.px(x, y, G2)
+    for a, b in (((5, 5), (8, 8)), ((18, 5), (15, 8)), ((5, 18), (8, 15)), ((18, 18), (15, 15))):
+        c.line(*a, *b, GOLD)
+    c.outline()
+    return c
+
+
+def i_off_by_one():
+    """The error at the edge: a row of cells, and the pointer resting one past the last of them."""
+    c = C()
+    for i in range(4):
+        x = 1 + i * 4
+        c.rect(x, 10, x + 3, 15, G2), c.rect(x + 1, 11, x + 2, 14, G1)
+    c.outline()
+    for y in (10, 15):                                  # the cell that is not there
+        for x in range(18, 22, 2):
+            c.px(x, y, G2)
+    c.ascii(17, 2, ["XXXXX", " XXX ", "  X  "], {"X": W})
+    c.vline(19, 5, 8, W)
+    c.outline()
+    return c
+
+
+#  ---- the TRAPs, and what the TRAP TABLE holds. A trap is armed against one thing and spent on it: an armed snap
+#  trap, its bar cocked, its trigger plate in front. The plate says what it fires on, in the colour of the STATE it
+#  ends, as the cures do (THRASHING has no tile colour, so its plate is neutral); EXHAUST's plate is MP's blue, the
+#  two MARKs' the HP bar's green, CATCH ALL's all five. The five flavour TRAPs are a family of their own: each
+#  restores health (an HP-green + on a white plate) and carries a taste, drawn as the thing it tastes of.
+SPICY = ((240, 120, 84), (210, 60, 40), (128, 30, 22))
+DRY = ((228, 204, 150), (196, 160, 98), (128, 98, 54))
+SWEET = ((250, 176, 210), (230, 112, 168), (150, 56, 104))
+BITTER = ((150, 104, 74), (98, 62, 40), (56, 34, 22))
+SOUR = ((250, 240, 120), (226, 204, 48), (150, 128, 20))
+PLATE_W = (W, W2, G1)
+
+
+def trap(plate, glyph=None, gcol=W, stripes=None):
+    c = C()
+    c.rect(1, 17, 22, 20, WOOD), c.hline(1, 22, 17, WOOD_L), c.hline(1, 22, 20, WOOD_D)
+    c.rect(3, 4, 4, 16, G1), c.vline(4, 4, 16, G2)      # the bar, cocked
+    c.hline(3, 8, 4, G1)
+    c.rect(2, 13, 5, 16, G2), c.hline(2, 5, 14, G1), c.hline(2, 5, 16, G3)   # its spring
+    L, M, D = plate
+    c.rect(9, 7, 21, 16, M)
+    c.hline(9, 21, 7, L), c.vline(9, 7, 16, L)
+    c.hline(9, 21, 16, D), c.vline(21, 7, 16, D)
+    if stripes:
+        for i, col in enumerate(stripes):
+            c.rect(10 + i * 2 + (1 if i else 0), 8, 11 + i * 2 + 1, 15, col)
+    c.outline()
+    c.line(8, 4, 11, 7, INK)                              # the catch, holding the bar down to the plate
+    if glyph:
+        c.ascii(glyph[0], glyph[1], glyph[2], gcol if isinstance(gcol, dict) else {"X": gcol})
+    return c
+
+
+G_UP = (13, 9, ["  X  ", " XXX ", "XXXXX", "  X  ", "  X  ", "  X  "])
+G_PLAY = (13, 9, ["X    ", "XX   ", "XXX  ", "XXXX ", "XXX  ", "XX   ", "X    "][0:6])
+G_DROP = (13, 9, ["  X  ", "  X  ", " XXX ", "XXXXX", "XXXXX", " XXX "])
+G_DOWN = (13, 9, ["  X  ", "  X  ", "  X  ", "XXXXX", " XXX ", "  X  "])
+G_CLOCK = (12, 9, [" XXXXX ", "XXXoXXX", "XXXoXXX", "XXXooXX", "XXXXXXX", " XXXXX "])
+G_CELL = (11, 9, ["XXXXXXXX ", "X     XXX", "XoooX XXX", "XoooX XXX", "X     XXX", "XXXXXXXX "])
+G_LOOP = (12, 9, [" XXXX  ", "X    X ", "X   XXX", "X    X ", " X     ", "  XXX  "])
+G_STAR = (13, 9, ["X X X", " XXX ", "XXXXX", " XXX ", "X X X"])
+
+
+def i_throttle_trap(): return trap(THROTTLED, G_UP)
+def i_suspend_trap(): return trap(SUSPENDED, G_PLAY)
+def i_leak_trap(): return trap(LEAKING, G_DROP)
+def i_heat_trap(): return trap(OVERHEATED, G_DOWN)
+def i_hang_trap(): return trap(HUNG, G_CLOCK, {"X": W, "o": INK})
+def i_exhaust_trap(): return trap((MP_L, MP, MP_D), G_CELL, {"X": W, "o": MP_L})
+def i_thrash_trap(): return trap(PLATE_W, G_LOOP, INK)
+def i_catch_all(): return trap(PLATE_W, G_STAR, W, stripes=FIVE)
+
+
+def mark(high):
+    """The level at which something is done about it: a gauge on an HP-green plate, its line set low or high, and
+    the + it gives back."""
+    y = 9 if high else 14
+    g = ["X      ", "X      ", "X      ", "X      ", "X      ", "X      ", "X      "]
+    g[y - 8] = "XXXXXXX"
+    c = trap((HP_L, HP, HP_D), (11, 8, g), W)
+    c.ascii(18, 10 if not high else 11, [" X ", "XXX", " X "], {"X": INK})
+    return c
+
+
+def i_low_mark(): return mark(False)
+def i_high_mark(): return mark(True)
+
+
+TASTES = {
+    "spicy": (10, 9, ["     g", "    gX", "   XXX", "  XXXo", " XXXo ", "XXXo  ", "Xo    "]),
+    "dry": (11, 9, ["  XXX  ", " XXoXX ", "XXXoXXX", "XoXXoXX", " XXXoX ", "  XXX  "]),
+    "sweet": (10, 10, ["X  XXX  X", "XXXXXXXXX", "XXXXoXXXX", "X  XXX  X"]),
+    "bitter": (11, 9, ["  XXX  ", " XXXXX ", "XXXoXXX", "XXoXXXX", "XXoXXXX", " XoXXX ", "  XXX  "][0:7]),
+    "sour": (10, 9, ["ooooooooo", " XXwXwXX ", "  XXwXX  ", "   XwX   ", "    X    "]),
+}
+
+
+def flavour(taste, cols):
+    L, M, D = cols
+    x, y, rows = TASTES[taste]
+    c = trap(PLATE_W)
+    legend = {"X": M, "o": D, "g": G3, "w": L}
+    if taste == "sweet":
+        legend = {"X": M, "o": L}
+    c.ascii(x, y, rows, legend)
+    c.ascii(18, 8, [" X ", "XXX", " X "], {"X": HP_D})
+    return c
+
+
+def i_spicy_trap(): return flavour("spicy", SPICY)
+def i_dry_trap(): return flavour("dry", DRY)
+def i_sweet_trap(): return flavour("sweet", SWEET)
+def i_bitter_trap(): return flavour("bitter", BITTER)
+def i_sour_trap(): return flavour("sour", SOUR)
+
+
+ICONS3 = [
+    ("dither", "DITHER", ["ITEM_BRIGHT_POWDER"], i_dither, "own", "a crosshair lost in a field of dither, its centre unfindable"),
+    ("revert", "REVERT", ["ITEM_WHITE_HERB"], i_revert, "own", "a stat bar knocked down, an arrow carrying it back to its mark"),
+    ("debug_build", "DEBUG BUILD", ["ITEM_MACHO_BRACE"], i_debug_build, "own", "a chip, probes clipped to its pins, their leads off"),
+    ("weight_share", "WEIGHT SHARE", ["ITEM_EXP_SHARE"], i_weight_share, "own", "two grids of weights, one pattern, tied together"),
+    ("queue_jump", "QUEUE JUMP", ["ITEM_QUICK_CLAW"], i_queue_jump, "own", "a queue, one leaping from the back to the free front"),
+    ("affinity", "AFFINITY", ["ITEM_SOOTHE_BELL"], i_affinity, "own", "a small process tied fast to one core"),
+    ("unpair", "UNPAIR", ["ITEM_MENTAL_HERB"], i_unpair, "own", "a plug and its socket pulled apart"),
+    ("hard_coded", "HARD CODED", ["ITEM_CHOICE_BAND"], i_hard_coded, "own", "a riveted plate, one value stamped in"),
+    ("bubble", "BUBBLE", ["ITEM_KINGS_ROCK"], i_bubble, "own", "a pipeline's stages stepping down, one slot an empty bubble"),
+    ("surcharge", "SURCHARGE", ["ITEM_AMULET_COIN"], i_surcharge, "own", "a price tag, a gold coin with a + set on it"),
+    ("mute", "MUTE", ["ITEM_CLEANSE_TAG"], i_mute, "own", "a channel strip, fader down, its M key lit"),
+    ("escape_hatch", "ESCAPE HATCH", ["ITEM_SMOKE_BALL"], i_escape_hatch, "own", "a floor hatch, lid thrown back, the ladder, an arrow out"),
+    ("version_lock", "VERSION LOCK", ["ITEM_EVERSTONE"], i_version_lock, "own", "a tag reading v1, a pin driven through it"),
+    ("failsafe", "FAILSAFE", ["ITEM_FOCUS_BAND"], i_failsafe, "own", "a net under a falling bar, one sliver of HP green left"),
+    ("learning_rate", "LEARNING RATE", ["ITEM_LUCKY_EGG"], i_learning_rate, "own", "a loss curve, big strides down it"),
+    ("long_tail", "LONG TAIL", ["ITEM_SCOPE_LENS"], i_long_tail, "own", "a steep fall and a long tail, a lens on its lit far end"),
+    ("headroom", "HEADROOM", ["ITEM_LEFTOVERS"], i_headroom, "own", "a meter in HP green, the clip line above, the room kept; + a little"),
+    ("scaling_law", "SCALING LAW", ["ITEM_DRAGON_SCALE"], i_scaling_law, "own", "a straight line on log paper, three things on it, each bigger"),
+    ("service_pack", "SERVICE PACK", ["ITEM_UP_GRADE"], i_service_pack, "own", "a banded box, the patches stacked in it"),
+    ("flow_trim", "FLOW TRIM", ["ITEM_SEA_INCENSE"], i_flow_trim, "own", "the GAIN's amplifier, small, FLOW's hue, its trim screw"),
+    ("dither_trim", "DITHER TRIM", ["ITEM_LAX_INCENSE"], i_dither_trim, "own", "DITHER at a lower setting: the pattern sparser"),
+    ("fluke", "FLUKE", ["ITEM_LUCKY_PUNCH"], i_fluke, "own", "points along a fitted line, one far off it, lit"),
+    ("strict_mode", "STRICT MODE", ["ITEM_METAL_POWDER"], i_strict_mode, "own", "a wall with one shape cut in, a square turned back"),
+    ("bare_metal", "BARE METAL", ["ITEM_THICK_CLUB"], i_bare_metal, "own", "a chip with its lid off: the die, its bond wires"),
+    ("off_by_one", "OFF BY ONE", ["ITEM_STICK"], i_off_by_one, "own", "a row of cells, the pointer one past the last"),
+    ("swarm_gain", "SWARM GAIN", ["ITEM_SILVER_POWDER"], i_swarm_gain, "own", "an amplifier, small signal in, large out; SWARM's hue"),
+    ("hardened_gain", "HARDENED GAIN", ["ITEM_METAL_COAT"], i_hardened_gain, "own", "the amplifier; HARDENED's hue"),
+    ("stratum_gain", "STRATUM GAIN", ["ITEM_SOFT_SAND"], i_stratum_gain, "own", "the amplifier; STRATUM's hue"),
+    ("legacy_gain", "LEGACY GAIN", ["ITEM_HARD_STONE"], i_legacy_gain, "own", "the amplifier; LEGACY's hue"),
+    ("growth_gain", "GROWTH GAIN", ["ITEM_MIRACLE_SEED"], i_growth_gain, "own", "the amplifier; GROWTH's hue"),
+    ("opaque_gain", "OPAQUE GAIN", ["ITEM_BLACK_GLASSES"], i_opaque_gain, "own", "the amplifier; OPAQUE's hue"),
+    ("logic_gain", "LOGIC GAIN", ["ITEM_BLACK_BELT"], i_logic_gain, "own", "the amplifier; LOGIC's hue"),
+    ("signal_gain", "SIGNAL GAIN", ["ITEM_MAGNET"], i_signal_gain, "own", "the amplifier; SIGNAL's hue"),
+    ("flow_gain", "FLOW GAIN", ["ITEM_MYSTIC_WATER"], i_flow_gain, "own", "the amplifier; FLOW's hue"),
+    ("vector_gain", "VECTOR GAIN", ["ITEM_SHARP_BEAK"], i_vector_gain, "own", "the amplifier; VECTOR's hue"),
+    ("corrupt_gain", "CORRUPT GAIN", ["ITEM_POISON_BARB"], i_corrupt_gain, "own", "the amplifier; CORRUPT's hue"),
+    ("frozen_gain", "FROZEN GAIN", ["ITEM_NEVER_MELT_ICE"], i_frozen_gain, "own", "the amplifier; FROZEN's hue"),
+    ("latent_gain", "LATENT GAIN", ["ITEM_SPELL_TAG"], i_latent_gain, "own", "the amplifier; LATENT's hue"),
+    ("context_gain", "CONTEXT GAIN", ["ITEM_TWISTED_SPOON"], i_context_gain, "own", "the amplifier; CONTEXT's hue"),
+    ("entropy_gain", "ENTROPY GAIN", ["ITEM_CHARCOAL"], i_entropy_gain, "own", "the amplifier; ENTROPY's hue"),
+    ("emergent_gain", "EMERGENT GAIN", ["ITEM_DRAGON_FANG"], i_emergent_gain, "own", "the amplifier; EMERGENT's hue"),
+    ("content_gain", "CONTENT GAIN", ["ITEM_SILK_SCARF"], i_content_gain, "own", "the amplifier; CONTENT's hue"),
+    ("throttle_trap", "THROTTLE TRAP", ["ITEM_CHERI_BERRY"], i_throttle_trap, "own", "an armed snap trap, its plate THROTTLED's yellow, an arrow up"),
+    ("suspend_trap", "SUSPEND TRAP", ["ITEM_CHESTO_BERRY"], i_suspend_trap, "own", "the trap; SUSPENDED's slate, a play key"),
+    ("leak_trap", "LEAK TRAP", ["ITEM_PECHA_BERRY"], i_leak_trap, "own", "the trap; LEAKING's green, a drop"),
+    ("heat_trap", "HEAT TRAP", ["ITEM_RAWST_BERRY"], i_heat_trap, "own", "the trap; OVERHEATED's ember, temperature down"),
+    ("hang_trap", "HANG TRAP", ["ITEM_ASPEAR_BERRY"], i_hang_trap, "own", "the trap; HUNG's blue, a clock"),
+    ("exhaust_trap", "EXHAUST TRAP", ["ITEM_LEPPA_BERRY"], i_exhaust_trap, "own", "the trap; MP's blue, a cell with a segment"),
+    ("low_mark", "LOW MARK", ["ITEM_ORAN_BERRY"], i_low_mark, "own", "the trap; HP green, a gauge marked low, a +"),
+    ("thrash_trap", "THRASH TRAP", ["ITEM_PERSIM_BERRY"], i_thrash_trap, "own", "the trap; a neutral plate (THRASHING has no colour), a loop"),
+    ("catch_all", "CATCH ALL", ["ITEM_LUM_BERRY"], i_catch_all, "own", "the trap; all five states' colours, a wildcard *"),
+    ("high_mark", "HIGH MARK", ["ITEM_SITRUS_BERRY"], i_high_mark, "own", "the trap; HP green, the gauge marked high, a +"),
+    ("spicy_trap", "SPICY TRAP", ["ITEM_FIGY_BERRY"], i_spicy_trap, "own", "the trap, white plate, HP +; a red chilli"),
+    ("dry_trap", "DRY TRAP", ["ITEM_WIKI_BERRY"], i_dry_trap, "own", "the same; a dry, cracked crumb"),
+    ("sweet_trap", "SWEET TRAP", ["ITEM_MAGO_BERRY"], i_sweet_trap, "own", "the same; a pink wrapped sweet"),
+    ("bitter_trap", "BITTER TRAP", ["ITEM_AGUAV_BERRY"], i_bitter_trap, "own", "the same; a dark coffee bean"),
+    ("sour_trap", "SOUR TRAP", ["ITEM_IAPAPA_BERRY"], i_sour_trap, "own", "the same; a lemon wedge"),
+]
+#  ICONS3 is NOT in APPROVED: the user picks from the sheet first.
+
+
 # ================================================================================================= the engine's files
 def jasc_read(p):
     v = [int(t) for t in open(p).read().split()[3:]]
@@ -1847,7 +2438,7 @@ def item_texts():
 
 
 def draft(out, batch=1):
-    icons = ICONS if batch == 1 else ICONS2
+    icons = {1: ICONS, 2: ICONS2, 3: ICONS3}[batch]
     if batch != 1:
         out = os.path.join(out, "batch%d" % batch)
     os.makedirs(out, exist_ok=True)
@@ -1862,9 +2453,12 @@ def draft(out, batch=1):
     if batch == 1:
         sheet(out, made, texts)
         mocks(out, made, texts)
-    else:
+    elif batch == 2:
         sheet(out, made, texts, icons, batch)
         mocks2(out, made, texts)
+    else:
+        sheet(out, made, texts, icons, batch)
+        mocks3(out, made, texts)
     print("  drafted %d icons into %s, the sheet and the BAG mocks" % (len(made), os.path.relpath(out, ROOT)))
 
 
@@ -1884,6 +2478,9 @@ def sheet(out, made, texts, icons=None, batch=1):
                      "palette.", fill=(190, 190, 196), font=F)
     d.text((14, 54), ("Nothing is in the engine. Approve some or all: gbaitemicons.py --write --approved ITEM ... "
                       "(an unnamed item keeps its row).") if batch == 1 else
+           ("Batches 1 and 2 are built. Nothing here is in the engine. GAINs: one amplifier, the type's hue the only "
+            "difference. TRAPs: the STATE's colour; flavours: HP + and a taste. Approve: --write --approved ITEM ...")
+           if batch == 3 else
            ("Batch 1 is built. Nothing here is in the engine. The inputs AXIOM, EMBEDDING, AFFECT, REWARD wear the type "
             "their MUSAI branch becomes; the rest neutrals. Approve: --write --approved ITEM ..."),
            fill=(190, 190, 196), font=F)
@@ -1996,11 +2593,120 @@ def mocks2(out, made, texts):
     frames[0][0].resize((480, 320), Image.NEAREST).save(os.path.join(out, "bag_mock_batch2_2x.png"))
 
 
+def print_small(im, x, y, s, ink, shadow):
+    """The engine's latin_small sheet and widths: what the TRAP TABLE numbers its rows in."""
+    import fontwidth
+    sheet = Image.open(os.path.join(GBA, "graphics/fonts/latin_small.png"))
+    w, cm = fontwidth.glyph_widths("sFontSmallLatinGlyphWidths"), fontwidth.charmap(GBA)
+    fp, px = sheet.load(), im.load()
+    for ch in s:
+        b = cm.get(ch)
+        if b is None:
+            continue
+        gx, gy = (b % 32) * 8, (b // 32) * 16          # the small sheet's cells are 8x16, 32 to a row
+        for yy in range(16):
+            for xx in range(min(8, w[b])):
+                v = fp[gx + xx, gy + yy]
+                if 0 <= x + xx < im.width and 0 <= y + yy < im.height:
+                    if v == 1:
+                        px[x + xx, y + yy] = ink
+                    elif v == 2:
+                        px[x + xx, y + yy] = shadow
+        x += w[b]
+    return x
+
+
+def pouch_mock(icon_for, rows, selected, description):
+    """240x160: the TRAP TABLE as the engine draws it (src/berry_pouch.c): graphics/berry_pouch/background.png + .bin +
+    .gbapal, the pouch sprite centred at (40,76), the list in window 0 (11,1) -- "No" and the two-digit number in the
+    small font, the name in the normal, x3 at 110 -- DARK_GRAY on LIGHT_GRAY (the list's cursorPal 2, shadow 3), the
+    description in window 1 (5,16), the header in window 2, and the icon where CreateBerryPouchItemIcon puts it (centre
+    24,147: the 24x24 icon's top left at 8,131)."""
+    bp = os.path.join(GBA, "graphics/berry_pouch")
+    im = Image.new("RGB", (240, 160), (0, 0, 0))
+    tiles = Image.open(os.path.join(bp, "background.png"))
+    tp, tw = tiles.load(), tiles.width // 8
+    pal = gbapal(os.path.join(bp, "background.gbapal"))
+    tm = open(os.path.join(bp, "background.bin"), "rb").read()
+    px = im.load()
+    for ty in range(20):
+        for tx in range(30):
+            e = tm[(ty * 32 + tx) * 2] | tm[(ty * 32 + tx) * 2 + 1] << 8
+            t, hf, vf, pn = e & 0x3FF, e >> 10 & 1, e >> 11 & 1, e >> 12
+            for y in range(8):
+                for x in range(8):
+                    sx, sy = (7 - x if hf else x), (7 - y if vf else y)
+                    v = tp[(t % tw) * 8 + sx, (t // tw) * 8 + sy] if t // tw < tiles.height // 8 else 0
+                    px[tx * 8 + x, ty * 8 + y] = pal[(pn * 16 + v) % len(pal)] if v else pal[0]
+    spr = Image.open(os.path.join(bp, "berry_pouch.png"))
+    sp = gbapal(os.path.join(bp, "berry_pouch.gbapal"))
+    spx = spr.load()
+    for y in range(64):
+        for x in range(64):
+            if spx[x, y]:
+                px[8 + x, 44 + y] = sp[spx[x, y]]
+    std = jasc_read(os.path.join(GBA, "graphics/interface/std_menu.pal"))
+    WHITE, DARK, LIGHT = std[1], std[2], std[3]
+    import fontwidth
+    w, cm = fontwidth.font(GBA)
+    head = "TRAP TABLE"
+    print_text(im, 8 + (72 - sum(w[cm[ch]] for ch in head if ch in cm)) // 2, 9, head, WHITE, DARK)
+    for i, (num, nm, qty) in enumerate(rows):
+        y = 8 + 2 + i * 16
+        if i == selected:
+            print_text(im, 88 + 1, y, "\u25b6", DARK, LIGHT)
+        x = print_small(im, 88 + 9, y, "No%02d " % num, DARK, LIGHT)
+        print_text(im, x, y, nm, DARK, LIGHT)
+        print_small(im, 88 + 110, y, "\u00d7%3d" % qty, DARK, LIGHT)
+    for j, line in enumerate(description):
+        print_text(im, 40, 128 + 2 + j * 14, line, WHITE, DARK)
+    ic = icon_for(rows[selected][1])
+    im.paste(ic, (8, 131), ic)
+    return im
+
+
+def mocks3(out, made, texts):
+    """Batch 3 at 240x160: the held items in the BAG's ITEMS pocket, and the TRAPs in the TRAP TABLE (the berry pouch,
+    where they live), ours above the engine's now."""
+    by_name = {e[1]: e for e in ICONS3}
+
+    def ours(nm):
+        return rgba(*made[by_name[nm][0]])
+
+    def now(nm):
+        return engine_icon(by_name[nm][2][0])[0]
+
+    held = [("HEADROOM", 1), ("LOGIC GAIN", 1), ("QUEUE JUMP", 1), ("FAILSAFE", 1), ("FLOW GAIN", 1), ("DITHER", 1)]
+    held2 = [("WEIGHT SHARE", 1), ("VERSION LOCK", 1), ("SIGNAL GAIN", 1), ("HARD CODED", 1), ("MUTE", 1), ("SURCHARGE", 1)]
+    traps = [(n, nm, q) for n, nm, q in [(1, "THROTTLE TRAP", 2), (3, "LEAK TRAP", 1), (5, "HANG TRAP", 1),
+                                         (7, "LOW MARK", 4), (9, "CATCH ALL", 1), (12, "DRY TRAP", 2)]]
+    frames = []
+    for rows, s in ((held, 0), (held, 1), (held2, 0)):
+        e = by_name[rows[s][0]]
+        desc = wrap208(texts[e[2][0]]["description_english"].replace("\\n", " "))
+        frames.append((bag_mock(ours, rows, s, desc, "ITEMS", 0), bag_mock(now, rows, s, desc, "ITEMS", 0)))
+    for s in (0, 3, 5):
+        e = by_name[traps[s][1]]
+        desc = texts[e[2][0]]["description_english"].split("\\n")    # as authored: the window prints its own breaks
+        frames.append((pouch_mock(ours, traps, s, desc), pouch_mock(now, traps, s, desc)))
+    strip = Image.new("RGB", (3 * 248 + 8, 4 * 168 + 8 + 40), (28, 30, 36))
+    d = ImageDraw.Draw(strip)
+    d.text((8, 6), "Batch 3 at 240x160: held items in the BAG (top), the TRAPs in the TRAP TABLE (bottom); each pair ours "
+                   "above, the engine's now below. Only the icon changes.", fill=(220, 220, 224), font=label_font(12))
+    for i, (a, b) in enumerate(frames):
+        x, y = 8 + (i % 3) * 248, 40 + (i // 3) * 2 * 168
+        strip.paste(a, (x, y))
+        strip.paste(b, (x, y + 168))
+    strip.save(os.path.join(out, "bag_mocks_batch3.png"))
+    frames[0][0].resize((480, 320), Image.NEAREST).save(os.path.join(out, "bag_mock_batch3_2x.png"))
+    frames[3][0].resize((480, 320), Image.NEAREST).save(os.path.join(out, "trap_table_mock_batch3_2x.png"))
+
+
 def report():
     rows, files, vfiles = table_rows(), symbol_files(), vanilla_files()
-    print("  T-525 item icons, batches 1 and 2: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\")"
-          % (len(ICONS) + len(ICONS2), len(APPROVED)))
-    for e in ICONS + ICONS2:
+    print("  T-525 item icons, batches 1-3: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\"); "
+          "batch 3's %d are DRAFT" % (len(ICONS) + len(ICONS2) + len(ICONS3), len(APPROVED), len(ICONS3)))
+    for e in ICONS + ICONS2 + ICONS3:
         key, name, items, _, mode, what = e
         idx, pal = make(e)
         stem = files[rows[items[0]][0]]
@@ -2022,7 +2728,7 @@ def _png_same(path, im):
 def plan(keys):
     """What a write of the named items makes: ({png path: image}, {text path: contents}, [what each is]).
     Nothing is written here, so the report can say whether the engine already holds it."""
-    chosen = [e for e in ICONS + ICONS2 if e[0] in keys or e[1] in keys or any(i in keys for i in e[2])]
+    chosen = [e for e in ICONS + ICONS2 + ICONS3 if e[0] in keys or e[1] in keys or any(i in keys for i in e[2])]
     pngs, texts, said = {}, {}, []
     items_h, graphics_h, table = open(ITEMS_H).read(), open(GRAPHICS_H).read(), open(TABLE).read()
     for e in chosen:

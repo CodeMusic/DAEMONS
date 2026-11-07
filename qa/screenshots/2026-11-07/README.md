@@ -79,3 +79,27 @@ T-525 batch 2 built (engine 04fd4b517, the user: Build all 47), filmed in the th
 T-525: VERDIGRIS DEPT. STORE 2F's PLUGIN counter (PLUGIN15, 28, 31). Its BUY list shows the routine's number and name at the bottom left, not the item icon, so the PLUGIN card is not seen in a MART; the card is shown decoded from the ROM in the batch 1 sheets.
 
 ![7Nov2026 - T525 - the PLUGIN counter shows no icon - 13](7Nov2026%20-%20T525%20-%20the%20PLUGIN%20counter%20shows%20no%20icon%20-%2013.png)
+
+### 7Nov2026 - T525 - batch 3 drafted - 14
+
+T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine's now at 1x and 4x; the GAINs one amplifier in their type's hue, the TRAPs a snap trap whose plate wears the state it ends. Nothing in the engine.
+
+![7Nov2026 - T525 - batch 3 drafted - 14](7Nov2026%20-%20T525%20-%20batch%203%20drafted%20-%2014.png)
+
+### 7Nov2026 - T525 - batch 3 drafted - 15
+
+T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine's now at 1x and 4x; the GAINs one amplifier in their type's hue, the TRAPs a snap trap whose plate wears the state it ends. Nothing in the engine.
+
+![7Nov2026 - T525 - batch 3 drafted - 15](7Nov2026%20-%20T525%20-%20batch%203%20drafted%20-%2015.png)
+
+### 7Nov2026 - T525 - batch 3 drafted - 16
+
+T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine's now at 1x and 4x; the GAINs one amplifier in their type's hue, the TRAPs a snap trap whose plate wears the state it ends. Nothing in the engine.
+
+![7Nov2026 - T525 - batch 3 drafted - 16](7Nov2026%20-%20T525%20-%20batch%203%20drafted%20-%2016.png)
+
+### 7Nov2026 - T525 - batch 3 drafted - 17
+
+T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine's now at 1x and 4x; the GAINs one amplifier in their type's hue, the TRAPs a snap trap whose plate wears the state it ends. Nothing in the engine.
+
+![7Nov2026 - T525 - batch 3 drafted - 17](7Nov2026%20-%20T525%20-%20batch%203%20drafted%20-%2017.png)
