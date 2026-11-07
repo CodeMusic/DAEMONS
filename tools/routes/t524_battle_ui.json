@@ -1,0 +1,78 @@
+{
+ "rom": "debug",
+ "about": "T-524 (built 2026-11-06, the user chose 2 Readout): the battle UI in the TERMINAL family as built. A wild battle through DEBUG -> ENCOUNTER (a level-5 foe, every daemon marked owned on the scratch save so the foe's box shows the CAUGHT USERBOX), the lead's HP set low (its bar red) and its exp one point short of its next level (mon 0 exp next) so the win shows the level-up banner; the message box, What will X do?, the move menu, the foe's bar draining through yellow and red; then a trainer battle in VIRIDIAN FOREST for the party rows. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, every daemon owned, the lead low and one point short of its level, a wild level-5 foe invoked",
+   "steps": [
+    "load debug",
+    "repel 999",
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto Route22 15 9",
+    "close",
+    "poke *gSaveBlock2Ptr+0x28 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x2c 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x30 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x34 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x38 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x3c 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x40 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x44 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x48 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x4c 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x50 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x54 32 4294967295",
+    "poke *gSaveBlock2Ptr+0x58 32 4294967295",
+    "mon 0 exp next",
+    "mon 0 hp 5",
+    "poke sDbgDex 16 19",
+    "poke sDbgLevel 8 5",
+    "debug ENCOUNTER INVOKE"
+   ]
+  },
+  {
+   "stop": "the wild battle: the foe's box and its CAUGHT mark, What will X do?, a move landing, the level-up banner",
+   "steps": [
+    "burst \"the battle opening: the message box and both boxes\" 12 25",
+    "wait 120",
+    "shot \"What will X do? (the lead's bar red, the foe's box with CAUGHT)\"",
+    "press A",
+    "shot \"the move menu\"",
+    "press A",
+    "burst \"the move lands: the foe's bar drains through yellow and red\" 40 5",
+    "burst \"the win: exp and the level-up banner\" 40 10",
+    "press A",
+    "press A",
+    "press A",
+    "press A",
+    "win",
+    "wait 200",
+    "close"
+   ]
+  },
+  {
+   "stop": "a trainer battle: the party rows",
+   "steps": [
+    "trainer TRAINER_BUG_CATCHER_RICK 0",
+    "repel 999",
+    "goto ViridianForest 41 45",
+    "hold RIGHT 20",
+    "wait 150",
+    "burst \"the trainer battle's opening: the party rows\" 80 5 A",
+    "win",
+    "wait 200",
+    "finish",
+    "close"
+   ]
+  },
+  {
+   "stop": "put back",
+   "steps": [
+    "mon 0 hp max",
+    "poke gDaemonsWeatherOverride 8 0",
+    "poke gDaemonsWatchOverride 8 0"
+   ]
+  }
+ ]
+}

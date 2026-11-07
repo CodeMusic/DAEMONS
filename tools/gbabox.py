@@ -462,19 +462,11 @@ def main():
     jobs.append(("graphics/trade/pokeball.png", spin(), None))
     jobs.append(("graphics/fame_checker/spinning_pokeball.png", fame(), None))
 
-    # the four battle party slots, in place inside the healthbox sheet
-    hb = os.path.join(GBA, "graphics/battle_interface/healthbox_elements.png")
-    src_hb = Image.open(hb)
-    a_hb = np.asarray(src_hb).copy()
-    for i, tile in enumerate(party_balls()):
-        n = 66 + i
-        oy, ox = (n // 40) * 8, (n % 40) * 8
-        a_hb[oy:oy+8, ox:ox+8] = np.array(tile)
-    print("  %-52s four 8x8 slots at tile 66"
+    # the four battle party slots (tiles 66-69 of the healthbox sheet) are no longer drawn here: T-524 redrew them with
+    # the CAUGHT marker (tile 70) in the battle UI's own family, and tools/gbabattleui.py owns all five now. Writing
+    # party_balls() here would undo that. party_balls() is kept as the record of what they were.
+    print("  %-52s tiles 66-70 are gbabattleui.py's (T-524), not written here"
           % "graphics/battle_interface/healthbox_elements.png")
-    if WRITE:
-        im = Image.new("P", src_hb.size); im.putdata(a_hb.flatten().tolist())
-        im.putpalette(src_hb.getpalette()); im.save(hb)
 
     # the Index list icon, blitted from the type-badge sheet
     mi = os.path.join(GBA, "graphics/interface/menu_info.png")

@@ -34,7 +34,7 @@ WHAT THE ENGINE DRAWS, AND HOW (graphics/battle_interface/, src/battle_bg.c, src
   BANNER            palette from the PNG -> BG palette 6. The daemon's icon covers x 0-31.
   THE PARTY ROW     party_summary_bar.png (128x8: a 64x16 sprite, healthbox.pal), and the markers -- tiles 66-69 of
                     healthbox_elements.png on healthbar.pal (whole, empty, in a state, down) -- and tile 70, the CAUGHT
-                    marker on a wild daemon's box, on healthbox.pal. 66-69 were redrawn as USERBOXes (a2eb623cf);
+                    marker on a wild daemon's box, copied into the HP bar's sprite and so on healthbar.pal too. 66-69 were redrawn as USERBOXes (a2eb623cf);
                     70 is still FireRed's POKe BALL.
 
 THE RUN-TIME CONTRACT EACH DROP-IN KEEPS
@@ -78,7 +78,7 @@ ap.add_argument("--main", choices="12")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
 MAIN_RECOMMENDED = "2"
-APPROVED = None                      # the user's pick, when there is one
+APPROVED = "2"                       # the user's pick, 2026-11-06: "2 Readout"
 
 
 def q5(c):
@@ -430,7 +430,7 @@ def exp_bar(frac):
 
 # ================================================================================================ the party row
 def markers(d):
-    """Tiles 66-69 (healthbar.pal: whole, empty, in a state, down) and 70 (the CAUGHT marker, healthbox.pal): a USERBOX
+    """Tiles 66-69 (healthbar.pal: whole, empty, in a state, down) and 70 (the CAUGHT marker, healthbar.pal too): a USERBOX
     seen from the front, its top-right corner cut at 45 degrees, the screen showing the state. Same slot roles as the
     USERBOXes they replace (5 the case, 3 the lit screen, 1 a line on it, 6 a state, 4 a dark screen)."""
     def box(screen, line):
@@ -464,7 +464,10 @@ def markers(d):
     down = box(4, 0)
     for x in range(2, 6):
         down[4][x] = 1                        # flat: a line across a dark screen
-    # 70, on healthbox.pal: the USERBOX the daemon was caught into (7 the outline, 5 the case, 2 the screen, 9 the LED)
+    # 70: the USERBOX the daemon was caught into. It is copied into the HP BAR's sprite (battle_interface.c,
+    # B_INTERFACE_GFX_BALL_CAUGHT -> healthBarSpriteId's tile 8), so it wears healthbar.pal, not healthbox.pal (the
+    # draft assumed the latter, and the built screen lit its LED in slot 9's red -- found filming T-524): 7 the outline,
+    # 5 the case, 2 the screen, 8 the LED (the trim's teal), 4 a grey key
     caught = [[0] * 8 for _ in range(8)]
     for y in range(1, 8):
         for x in range(0, 7):
@@ -478,8 +481,8 @@ def markers(d):
     for y in range(2, 5):
         for x in range(1, 5):
             caught[y][x] = 2
-    caught[6][4] = 9
-    caught[6][2] = 6
+    caught[6][4] = 8
+    caught[6][2] = 4
     return [whole, empty, state, down], caught
 
 
@@ -1064,7 +1067,7 @@ def party_row(d):
     for i, s in enumerate(order):
         m = idx_rgba(four[s], bar_pal(d))
         im.paste(m, (8 + 2 + 10 * i, 2), m)
-    c = idx_rgba(caught, hb_pal(d))
+    c = idx_rgba(caught, bar_pal(d))
     im.paste(c, (80, 2), c)
     return im
 
@@ -1080,7 +1083,10 @@ def write(main):
         for s, c in DIRS[main][key].items():
             cur[s] = c
         write_jasc(cur, os.path.join(BI, n))
-    shutil.copyfile(os.path.join(DRAFT_DEFAULT, "healthbox_elements.png"), os.path.join(BI, "healthbox_elements.png"))
+    # the elements sheet: only tiles 66-70 are this tool's; splice them into the engine's own sheet rather than copy
+    # the draft's whole, so a later write never undoes another tool's tiles (genthrashicon's 36-38, the status words)
+    w, h, bd, epal, epx = elements()
+    save_png(os.path.join(BI, "healthbox_elements.png"), elements_png(), epal, bd)
     print("  written direction %s into %s" % (main, BI))
 
 

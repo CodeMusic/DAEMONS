@@ -59,7 +59,8 @@ a stop that needs longer than --stop-timeout (T-451):
     unsaid "TEXT"              fail the stop if a box captured in it said TEXT (a gift given once is not given twice)
     friendship SLOT N          set party daemon SLOT's (0-5) friendship to N: gPlayerParty decrypted, the byte set, the
                                checksum made again and encrypted back, as the game would have written it (T-424)
-    mon SLOT away|egg|hp|shiny|species|item|status VALUE   T-18 P3 (item and status T-433): the same for the rest of a party daemon -- AWAY (T-358's bit,
+    mon SLOT away|egg|hp|shiny|species|item|status|exp VALUE   T-18 P3 (item and status T-433, exp T-524: a number, or next --
+                               one point short of its next level): the same for the rest of a party daemon -- AWAY (T-358's bit,
                                0|1), an egg (0|1), its hit points (0 HALTS it, max heals it), shiny (0|1: its OT ID set so it is, or
                                the player's own back, every secure word re-keyed), its species (SPECIES_X, a number, or back:
                                an evolution or a trade, as the follower sees one)
@@ -737,6 +738,16 @@ class Runner:
         elif field == "item":                                             # T-433: the item it holds (0: nothing)
             word = 3 * order.index("G")
             secure[word] = (secure[word] & 0xFFFF) | (value << 16)
+        elif field == "exp":                                              # T-524: -3 ("next"): one point short of its
+            word = 3 * order.index("G") + 1                               #   next level, so the next win levels it up
+            if value == -3:
+                species = secure[3 * order.index("G")] & 0xFFFF
+                level = tw.peek([(8, base + 84, "l")])["l"]
+                info = tw.symbol("gSpeciesInfo", self.release) + 28 * species
+                growth = tw.peek([(8, info + 0x13, "g")])["g"]
+                table = tw.symbol("gExperienceTables", self.release) + 404 * growth
+                value = tw.peek([(32, table + 4 * min(level + 1, 100), "x")])["x"] - 1
+            secure[word] = value
         elif field == "species":                                          # -2 ("back"): the one it had first
             word = 3 * order.index("G")
             first = self.__dict__.setdefault("first_species", {}).setdefault(slot, secure[word] & 0xFFFF)
@@ -752,7 +763,7 @@ class Runner:
                 if ((tid >> 16) ^ (tid & 0xFFFF) ^ (pid >> 16) ^ (pid & 0xFFFF)) & 0xFFFF < 8:
                     new_otid ^= 0x80000
         else:
-            raise RouteError("mon: no field %s (away, egg, hp, shiny, species, item, status)" % field)
+            raise RouteError("mon: no field %s (away, egg, hp, shiny, species, item, status, exp)" % field)
         halves = [h for x in secure for h in (x & 0xFFFF, x >> 16)]
         cmds.append("poke16 %s %d" % (hex(base + 28), sum(halves) & 0xFFFF))
         if new_otid != otid:
@@ -1740,7 +1751,7 @@ class Runner:
         elif op == "mon":
             v = args[2]
             self.mon(int(args[0]), args[1], const_species(v) if v.startswith("SPECIES_") else const_item(v) if v.startswith("ITEM_")
-                     else -1 if v == "max" else -2 if v == "back" else int(v, 0))
+                     else -1 if v == "max" else -2 if v == "back" else -3 if v == "next" else int(v, 0))
         elif op == "bag":                                                   # T-433
             self.bag(const_item(args[0]), int(args[1]) if len(args) > 1 and args[1] != "first" else 1, "first" in args)
         elif op == "swap":                                                  # T-433

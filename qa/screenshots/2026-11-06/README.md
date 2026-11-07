@@ -343,3 +343,21 @@ T-523 built: the same box and START on a SATURDAY at night -- the hour's tint st
 T-524 DRAFT: the battle UI in the TERMINAL family -- 1 plain (slate on paper) and 2 readout (a dark screen, graticule, the HP bar a meter), beside the engine's, with a mock battle at real size
 
 ![6Nov2026 - T524 - battle UI drafts - 68](6Nov2026%20-%20T524%20-%20battle%20UI%20drafts%20-%2068.png)
+
+### 6Nov2026 - T524 - battle UI built, filmed - 69
+
+T-524 built (2 Readout), filmed in the theatre: What will X do?, the move menu, the foe's bar green to yellow to red, exp and LV. 51, a trainer battle opening -- the debug build
+
+![6Nov2026 - T524 - battle UI built, filmed - 69](6Nov2026%20-%20T524%20-%20battle%20UI%20built%2C%20filmed%20-%2069.png)
+
+### 6Nov2026 - T524 - battle UI built, filmed - 70
+
+T-524 built (2 Readout), filmed in the theatre: What will X do?, the move menu, the foe's bar green to yellow to red, exp and LV. 51, a trainer battle opening -- the debug build
+
+![6Nov2026 - T524 - battle UI built, filmed - 70](6Nov2026%20-%20T524%20-%20battle%20UI%20built%2C%20filmed%20-%2070.png)
+
+### 6Nov2026 - T524 - party row and level-up banner, decoded - 71
+
+T-524: the party row with the CAUGHT USERBOX and the level-up banner, decoded from the built engine files (the theatre auto-plays a trainer's intro, so the row was not filmed; the banner shows only for a daemon not on the field)
+
+![6Nov2026 - T524 - party row and level-up banner, decoded - 71](6Nov2026%20-%20T524%20-%20party%20row%20and%20level-up%20banner%2C%20decoded%20-%2071.png)
