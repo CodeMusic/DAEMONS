@@ -313,3 +313,9 @@ T-445 built (the user, 2026-11-06: "Build the top one"): the TANOBY chambers' pa
 T-445 built (the user, 2026-11-06: "Build the top one"): the TANOBY chambers' painted card (seed 4451, 325 tiles) filmed from the debug build, entering MONEAN CHAMBER and then LIPTOO CHAMBER from TANOBY RUINS -- one card for all seven chambers.
 
 ![6Nov2026 - T445 - TANOBY chambers card built - 63](6Nov2026%20-%20T445%20-%20TANOBY%20chambers%20card%20built%20-%2063.png)
+
+### 6Nov2026 - T523 - text window frames draft - 64
+
+T-523 DRAFT (the user away; "Text boxes first"): new text window frames drawn by hand in code on the engine's own tile grid and palette slots -- the message box and sign in three directions (A TERMINAL, B MANUSCRIPT, C CIRCUIT), the ten OPTIONS frames as one family, and a new more-text arrow; each beside the engine's, and at real size with two lines in the game's font. Nothing in the engine; waits on the user's pick (recommended: A).
+
+![6Nov2026 - T523 - text window frames draft - 64](6Nov2026%20-%20T523%20-%20text%20window%20frames%20draft%20-%2064.png)
