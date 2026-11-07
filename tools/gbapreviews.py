@@ -67,8 +67,7 @@ steps VAR_OTHER_CAVE_LIGHT (fldeff_flash.c's CB2_DoChangeMap shows it, then CB2_
 script), so the light it shows is the coming visit's, VarGet(VAR_OTHER_CAVE_LIGHT) % 4, not fieldmap.c's
 (visit - 1) % 4.
 
-WHAT IS NOT DRAFTED: DOLDRUM CAVE (cerulean_cave -- its look waits on the user, T-251) and the TANOBY chambers
-(monean_chamber -- batch G), and the previews that are not caves (forests, the tower, the mansion, SILPH, the hideout
+WHAT IS NOT DRAFTED: DOLDRUM CAVE (cerulean_cave -- its look waits on the user, T-251), and the previews that are not caves (forests, the tower, the mansion, SILPH, the hideout
 and the warehouse, the SAFARI): T-445 is the caves, and those wait on their own batches. The report lists them all.
 
 THE PLACES (2026-11-05, drafted): the landmarks are --landmarks; what is left vanilla but the two waiting caves is
@@ -78,6 +77,10 @@ grass under LURID's chartreuse -- then painted on the server). THE SAME BUSH (MA
 UNDERTONE's picture in the engine; since batch H it is salt scrub on a tileset of its own, so it is drafted as a NEW
 card (pattern_bush, borrowing viridian_forest's letterbox and banner). BUILT 2026-11-05: the user approved all four;
 the engine has pattern_bush's own INCBINs and MPS_PATTERN_BUSH points at them, so --write writes it like the others.
+
+THE TANOBY CHAMBERS (2026-11-06, drafted, the user away): batch G built them (engine d45f8c799), so their one card
+(monean_chamber, shown by all seven chamber mapsecs) is drafted as the caves were -- `--paint monean_chamber`, then
+`--draft --only monean_chamber`. BATCH_G_APPROVED is empty until the user says, and --write skips it until then.
 """
 import argparse, collections, contextlib, io, json, os, re, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -124,9 +127,14 @@ BATCH_E = {
     "mt_ember": "mt_ember (EMBER UNDER ASH)",
     "dotted_hole": "navel_rock (BRAILLE)",
 }
+# the caves T-438 batch G redrew (gbatowns.py: BUILT as a DRAFT engine d45f8c799, the user away) -> their look. Drafted
+# 2026-11-06, the user away: never written until the user approves (BATCH_G_APPROVED), --write skips them otherwise
+BATCH_G = {
+    "monean_chamber": "tanoby_ruins (the seven TANOBY chambers: dressed ochre stone, an invented script carved in it)",
+}
+BATCH_G_APPROVED = set()
 NOT_DRAFTED = {
     "cerulean_cave": "DOLDRUM CAVE: its look waits on the user (T-251, gbacaves.py), so its preview does too",
-    "monean_chamber": "the TANOBY chambers (seven mapsecs share it): their tileset is batch G's",
     "viridian_forest": "a forest (PLACES, --places)",
     "berry_forest": "a forest (PLACES, --places)",
     "pokemon_tower": "the tower: a landmark (LANDMARK, --landmarks)",
@@ -227,6 +235,16 @@ PAINT = {
                         prompt="a cave mouth in a sandstone mound framed by two pale stone pillars, lines of braille "
                                "carved on the stone, small round raised dots in separate cells of six, two columns "
                                "of three, a gap between cells, warm sandstone and shadow, clear sky"),
+    # T-438 batch G's TANOBY chambers (2026-11-06, a DRAFT, the user away): vanilla's ruined facade graded through the
+    # chambers' own dressed stone -- ochre and gold courses, slate shadow -- with a line of the invented script
+    "monean_chamber": dict(rock=[(40, 40, 56), (82, 82, 106), (123, 115, 115), (156, 148, 90), (189, 172, 90),
+                                 (205, 197, 106), (230, 222, 164), (246, 246, 222)],
+                           leaf=[(56, 84, 64), (98, 131, 98), (150, 172, 120)], white="keep", motif=["script"], post=["script"],
+                           seed=4451, denoise=0.45, neg="hieroglyphs, egyptian, letters, alphabet, runes glowing",
+                           prompt="an ancient ruined shrine of dressed ochre and gold sandstone blocks on a small "
+                                  "island, a dark square doorway with low steps, a band of small carved unknown "
+                                  "glyphs along the stone, slate grey shadows, tufts of grass on the ruin, clear sky "
+                                  "with soft clouds"),
 }
 
 
@@ -641,8 +659,30 @@ def motif_lights(out, v, c):
                 op[x + a, y + b] = (200, 255, 176) if (a, b) == (0, 0) else (96, 232, 88)
 
 
+def motif_script(out, v, c):
+    """THE TANOBY CHAMBERS (batch G): lines of an invented script carved in the stone -- each glyph a few incised
+    strokes in a 5x7 cell (dark cut, lit lower lip), a gap between glyphs and between lines, never a letter's shape"""
+    import random
+    rnd, op, rock = random.Random(4451), out.load(), _rockmask(v)
+    STROKES = [[(0, y) for y in range(7)], [(4, y) for y in range(7)], [(x, 0) for x in range(5)],
+               [(x, 3) for x in range(5)], [(x, 6) for x in range(5)], [(x, x + 1) for x in range(5)],
+               [(2, y) for y in range(2, 7)], [(x, 4 - x) for x in range(5)]]
+    for cy in range(38, 90, 24):
+        for cx in range(4, 232, 9):
+            pts = set()
+            for st in rnd.sample(STROKES, rnd.choice((2, 3))):
+                pts.update(st)
+            if not all(rock(cx + a, cy + b) for a in range(-1, 6) for b in range(-1, 8)):
+                continue
+            for a, b in pts:
+                base = op[cx + a, cy + b]
+                op[cx + a, cy + b] = _shade(base, 0.45)
+                if (a, b + 1) not in pts and b + 1 < 8:
+                    op[cx + a, cy + b + 1] = _shade(op[cx + a, cy + b + 1], 1.18)
+
+
 MOTIFS = dict(lights=motif_lights, courses=motif_courses, cable=motif_cable, columns=motif_columns, crystals=motif_crystals,
-              cracks=motif_cracks, braille=motif_braille, mouth=motif_mouth)
+              cracks=motif_cracks, braille=motif_braille, mouth=motif_mouth, script=motif_script)
 
 
 # ================================================================== the landmarks' cards (T-445, 2026-10-25)
@@ -1120,7 +1160,35 @@ def post_vessels(im, folder="review_board"):
     im.paste(w.convert("RGB"), (0, 0), w)
 
 
-POSTS = dict(braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels)
+def post_script(im):
+    """THE TANOBY CHAMBERS, after the painting (the server smooths the start image's glyphs away, as it did THE DOTS'):
+    two lines of the invented script cut into the ochre stone at 1x -- each glyph two or three strokes in a 3x5 cell,
+    a dark cut with a lit lip below, a glyph only where its whole cell is lit dressed stone"""
+    import random
+    rnd, px = random.Random(4451), im.load()
+    def stone(x, y):
+        if not (0 <= x < 240 and 0 <= y < 112):
+            return False
+        r, g, b = px[x, y]
+        return 100 <= _lum((r, g, b)) <= 235 and r >= g * 0.8 and b <= g * 0.85
+    STROKES = [[(0, y) for y in range(5)], [(2, y) for y in range(5)], [(x, 0) for x in range(3)],
+               [(x, 2) for x in range(3)], [(x, 4) for x in range(3)], [(0, 0), (1, 1), (2, 2)],
+               [(1, y) for y in range(2, 5)], [(2, 0), (1, 1), (0, 2)]]
+    for cy in (24, 44, 64):
+        for cx in range(100, 236, 5):
+            if sum(stone(cx + a, cy + b) for a in range(3) for b in range(6)) < 16:
+                continue
+            pts = set()
+            for st in rnd.sample(STROKES, rnd.choice((2, 3))):
+                pts.update(st)
+            for a, b in pts:
+                px[cx + a, cy + b] = _shade(px[cx + a, cy + b], 0.5)
+            for a, b in pts:
+                if (a, b + 1) not in pts:
+                    px[cx + a, cy + b + 1] = _shade(px[cx + a, cy + b + 1], 1.15)
+
+
+POSTS = dict(script=post_script, braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels)
 
 
 # ================================================================== OTHER CAVE's four lights
@@ -1433,6 +1501,8 @@ def report():
                                                                          len(by_folder)))
     for folder, ents in by_folder.items():
         status = ("batch E: " + BATCH_E[folder]) if folder in BATCH_E else \
+            ("batch G: %s, drafted%s" % (BATCH_G[folder], ", APPROVED" if folder in BATCH_G_APPROVED else
+                                         ", waits on the user")) if folder in BATCH_G else \
             ("landmark (%s): drafted with --landmarks%s" % (landmark_source(folder),
              ", APPROVED" if folder in LANDMARK_APPROVED else ", waits on the user")) if folder in LANDMARK else \
             ("place (%s): drafted with --places%s" % (PLACES[folder]["what"],
@@ -1473,8 +1543,11 @@ def main():
     out_dir = A.draft or DRAFT_DEFAULT
     sheets = A.sheets or out_dir
     rows = []
-    for folder in (LANDMARK if A.landmarks else PLACES if A.places else BATCH_E):
+    for folder in (LANDMARK if A.landmarks else PLACES if A.places else {**BATCH_E, **BATCH_G}):
         if A.only and folder not in A.only:
+            continue
+        if A.write and folder in BATCH_G and folder not in BATCH_G_APPROVED and not A.draft:
+            print("  %-17s batch G, not approved (BATCH_G_APPROVED): not written" % folder)
             continue
         if A.write and cfg(folder).get("new") and folder not in by_folder and not A.draft:
             print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet: not written" % folder)
@@ -1500,7 +1573,7 @@ def main():
         for im in (van_, dra):
             draw_name(im, nm[sec], (vpal if im is van_ else pal))
         what = ("from %s, as built" % landmark_source(folder)) if A.landmarks else \
-            PLACES[folder]["what"] if A.places else BATCH_E[folder]
+            PLACES[folder]["what"] if A.places else {**BATCH_E, **BATCH_G}[folder]
         notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, what, "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
                  "palette 13: 15 colours + vanilla's 0", "palette 14, letterbox, banner: vanilla's"]
@@ -1529,7 +1602,8 @@ def main():
                 li.save(os.path.join(d, "preview_light%d.png" % n))
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
-        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED):
+        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED) \
+                and (folder not in BATCH_G or folder in BATCH_G_APPROVED):
             d = os.path.join(MPS, folder)
             os.makedirs(d, exist_ok=True)                                # a NEW card's folder (T-456)
             tiles_png(png, pal, os.path.join(d, "tiles.png"))

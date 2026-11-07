@@ -295,3 +295,9 @@ T-452 arm C, BUILT: LASVEGAS to UNBRANCHED, then the seven mismatched backs redr
 T-452 arm C: the 74 icons built, before and after, read from the built icon.4bpp in its shared icon palette. Held: the ten held daemons' icons, the eight still muddy, the five that drifted from their fronts, and SMUDGE's (kept from the ROM)
 
 ![6Nov2026 - T452 - redraws in C built - 60](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20built%20-%2060.png)
+
+### 6Nov2026 - T445 - TANOBY chambers card draft - 61
+
+T-445 DRAFT (batch G): the TANOBY chambers' card, one picture shown by all seven chambers -- vanilla's ruin painted in batch G's dressed ochre stone with two lines of the invented script cut in; a lower-denoise alternative and the top-down card below. Not built: waits on the user.
+
+![6Nov2026 - T445 - TANOBY chambers card draft - 61](6Nov2026%20-%20T445%20-%20TANOBY%20chambers%20card%20draft%20-%2061.png)

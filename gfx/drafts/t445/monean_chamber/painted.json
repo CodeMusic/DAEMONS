@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t445/monean_chamber/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, an ancient ruined shrine of dressed ochre and gold sandstone blocks on a small island, a dark square doorway with low steps, a band of small carved unknown glyphs along the stone, slate grey shadows, tufts of grass on the ruin, clear sky with soft clouds, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, hieroglyphs, egyptian, letters, alphabet, runes glowing",
+ "seed": 4451,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "stop_at": null,
+ "image": "gfx/drafts/t445/monean_chamber/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 56.1,
+ "comfyui": "0.19.1",
+ "made": "2026-11-06 21:11:47"
+}
