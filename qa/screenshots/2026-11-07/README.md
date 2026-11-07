@@ -223,3 +223,9 @@ T-528 (c): DEBUG's EVERY GROVE LIT, then ROUTE 1 at night on a night of light (f
 T-527: SLATE's room before and after (decoded from benchmark_slate.pal; the drawing is T-527's B), and filmed in CAMPER LIAM's battle in PEWTER's BENCHMARK.
 
 ![7Nov2026 - T527 - SLATE room darkened - 38](7Nov2026%20-%20T527%20-%20SLATE%20room%20darkened%20-%2038.png)
+
+### 7Nov2026 - T528 - the auroras nights in the companion den - 39
+
+C-305 (T-528 part 1) DRAFT: the companion's den on a night of light with the book mended -- CONTENT's red in the top band at breath high and low, CONTEXT's green a band lower, and no light by the date at 5 PM; on the site with a test save
+
+![7Nov2026 - T528 - the auroras nights in the companion den - 39](7Nov2026%20-%20T528%20-%20the%20auroras%20nights%20in%20the%20companion%20den%20-%2039.png)
