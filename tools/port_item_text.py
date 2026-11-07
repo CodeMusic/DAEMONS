@@ -2,6 +2,8 @@
 """Write the item descriptions Gen 1 had nowhere to put.
 
     python3 tools/port_item_text.py [--write]
+    python3 tools/port_item_text.py --sheet OUT.png              # T-526: the drafts against the engine, in its font
+    python3 tools/port_item_text.py --write --approved ITEM ...  # T-526: write only those DRAFT descriptions
 
 This is not a port. The Game Boy build has no descriptions to carry over --
 Gen 1 stores none at all -- so these are new writing, and vision.md 9.3 named
@@ -684,6 +686,151 @@ BERRIES = {
 }
 NAMED.update(BERRIES)
 
+
+#  ---------------------------------------------------------------------------
+#  T-526 (2026-11-07) -- DRAFT, every line, and NOTHING here reaches the engine until the user approves it.
+#  A sweep of all 376 rows of items.json for what still reads as FireRed's: a Hoenn place, a POKeMON plural the
+#  vocabulary pass took as singular, a type or verb it missed, or vanilla's object where the item is ours. 2.10's
+#  reachability rule decided the scope: a row is drafted when the player can hold the item (a map, a mart, a
+#  gift, a holiday in daemons_holidays.h, a wild daemon's held item); the Hoenn items nothing hands out are left
+#  as they are. docs/t526-item-descriptions-draft.md is the table; `--sheet OUT.png` draws it in the BAG's font.
+#
+#      python3 tools/port_item_text.py --write --approved ITEM [ITEM ...]   # write ONLY those drafts' descriptions
+#      python3 tools/port_item_text.py --write --approved                   # every row in T526_APPROVED
+#
+#  An approved row goes into T526_APPROVED as well, so the whole-table --write below writes it too rather than
+#  putting the old words back. Names are untouched: only description_english moves.
+T526 = {
+    "ITEM_COIN_CASE":    (["A token spends only where it was",
+                           "issued. Holds the GAME CORNER's",
+                           "COINS, up to 9,999."],
+                          "it said 'tokens', and the GAME CORNER deals in COINS"),
+    "ITEM_SS_TICKET":    (["Passage on the S.S. ANNE, at",
+                           "ARDOR CITY. Made out to HOLT,",
+                           "who gave it to you instead."],
+                          "vanilla's ferry ticket; HOLT gives it, and it was his invitation"),
+    "ITEM_BIKE_VOUCHER": (["One BICYCLE, owed to whoever",
+                           "holds this. The BIKE SHOP in",
+                           "DOLDRUM CITY pays it out."],
+                          "vanilla's instruction, town renamed and nothing else"),
+    "ITEM_LAVA_COOKIE":  (["A cookie baked on hot stone, sold",
+                           "on TWO ISLAND. Ends every state",
+                           "of one DAEMON."],
+                          "LAVARIDGE TOWN is Hoenn's; TWO ISLAND sells it, and 'status problems' are states"),
+    "ITEM_RED_SCARF":    (["A red scarf, handed out on a",
+                           "holiday. It changes nothing in",
+                           "battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; PARADE DAYS hands it out, and it does nothing"),
+    "ITEM_BLUE_SCARF":   (["A blue scarf, handed out on a",
+                           "holiday. It changes nothing in",
+                           "battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; PARADE DAYS hands it out, and it does nothing"),
+    "ITEM_PINK_SCARF":   (["A pink scarf, handed out on a",
+                           "holiday. It changes nothing in",
+                           "battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; nothing hands this one out, drafted to match its set"),
+    "ITEM_GREEN_SCARF":  (["A green scarf, handed out on a",
+                           "holiday. It changes nothing in",
+                           "battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; CLOVER DAY and PARADE DAYS hand it out, and it does nothing"),
+    "ITEM_YELLOW_SCARF": (["A yellow scarf, handed out on a",
+                           "holiday. It changes nothing in",
+                           "battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; PARADE DAYS hands it out, and it does nothing"),
+    "ITEM_NET_BALL":     (["A somewhat different BOX that",
+                           "works especially well on",
+                           "FLOW- and SWARM-type DAEMONS."],
+                          "WATER is FLOW; the plural was read as one"),
+    "ITEM_NEST_BALL":    (["A somewhat different BOX that",
+                           "works especially well on weaker",
+                           "DAEMONS."],
+                          "the plural was read as one"),
+    "ITEM_REPEAT_BALL":  (["A somewhat different BOX that",
+                           "works especially well on DAEMONS",
+                           "bound before."],
+                          "the plural was read as one"),
+    "ITEM_DIVE_BALL":    (["A somewhat different BOX that",
+                           "works especially well on DAEMONS",
+                           "deep in the sea."],
+                          "the plural was read as one (nothing hands it out; drafted with its set)"),
+    "ITEM_LUXURY_BALL":  (["A comfortable BOX that makes a",
+                           "bound wild DAEMON quickly grow",
+                           "friendly."],
+                          "'captured' is the one capture verb the vocabulary pass never had"),
+    "ITEM_RETRO_MAIL":   (["A piece of MAIL featuring a print",
+                           "of three cute DAEMONS. It is to",
+                           "be held by a DAEMON."],
+                          "the plural was read as one"),
+    "ITEM_SUBTLE_LAYER": (["THE SUBTLE LAYER. A USER's",
+                           "handbook of the craft: read,",
+                           "write and link."],
+                          "TRAINER is USER everywhere else; the book's cover says 'a trainer's handbook' too"),
+}
+#  The user approves rows by name; until then this is empty and nothing of T-526 is written by anything.
+T526_APPROVED = []
+for _k in T526_APPROVED:
+    TEXT[_k] = T526[_k][0]
+    if _k in NAMED:
+        NAMED[_k] = (NAMED[_k][0], T526[_k][0])
+
+
+def _t526_sheet(out, engine_items, measure):
+    """Current against draft, in the engine's latin_normal sheet at its own pixels, one row per draft: the
+    description window is 200x48 (src/bag.c, window 1) and the text starts at y=3, so that is what is drawn."""
+    from PIL import Image, ImageDraw, ImageFont
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fontwidth
+    font = Image.open(os.path.join(GBA, "graphics/fonts/latin_normal.png"))
+    w, cm = fontwidth.font(GBA)
+    fp = font.load()
+    PAPER, INK, SHADOW, EDGE = (255, 255, 255), (98, 98, 98), (213, 213, 205), (232, 120, 120)
+
+    def pane(lines):
+        im = Image.new("RGB", (200, 48), PAPER)
+        px = im.load()
+        for row, s in enumerate(lines[:3]):
+            x, y = 0, 3 + row * 14
+            for ch in s:
+                b = cm.get(ch)
+                if b is None:
+                    continue
+                gx, gy = (b % 16) * 16, (b // 16) * 16
+                for yy in range(16):
+                    for xx in range(min(16, w[b])):
+                        v = fp[gx + xx, gy + yy]
+                        if 0 <= x + xx < 200 and 0 <= y + yy < 48 and v in (1, 2):
+                            px[x + xx, y + yy] = INK if v == 1 else SHADOW
+                x += w[b]
+        for yy in range(0, 48, 2):                      # the 198px budget, dotted
+            px[198, yy] = EDGE
+        return im
+
+    try:
+        label = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 11)
+    except Exception:
+        label = ImageFont.load_default()
+    S, ROW, LEFT = 2, 48 * 2 + 18, 150
+    keys = list(T526)
+    sheet = Image.new("RGB", (LEFT + 2 * (200 * S + 16) + 8, 44 + len(keys) * ROW), (28, 30, 36))
+    d = ImageDraw.Draw(sheet)
+    d.text((8, 6), "T-526 item descriptions, DRAFT -- the BAG's own font and 200x48 window, at 2x. Left: the engine "
+                   "now. Right: the draft. Dotted: the 198px budget.", fill=(220, 220, 224), font=label)
+    d.text((LEFT, 24), "NOW", fill=(160, 160, 170), font=label)
+    d.text((LEFT + 200 * S + 16, 24), "DRAFT", fill=(240, 200, 120), font=label)
+    for i, k in enumerate(keys):
+        y = 40 + i * ROW
+        it = engine_items[k]
+        d.text((8, y + 4), it["english"], fill=(230, 230, 234), font=label)
+        d.text((8, y + 20), k.replace("ITEM_", ""), fill=(140, 140, 150), font=label)
+        now = it["description_english"].split("\\n")
+        new = T526[k][0]
+        d.text((8, y + 36), "%dpx max" % max(measure(l) for l in new), fill=(140, 140, 150), font=label)
+        sheet.paste(pane(now).resize((200 * S, 48 * S), Image.NEAREST), (LEFT, y))
+        sheet.paste(pane(new).resize((200 * S, 48 * S), Image.NEAREST), (LEFT + 200 * S + 16, y))
+    sheet.save(out)
+    print("  sheet: %s (%d rows)" % (out, len(keys)))
+
+
 #  WIDTH was a character count, which is a proxy for the thing that actually
 #  matters. The face is variable width, so the real ceiling is PIXELS -- and
 #  vanilla's own widest description line, measured across all 375 of them, is
@@ -743,6 +890,54 @@ for item_id, (name, _lines) in NAMED.items():
 
 print("  %d descriptions, widest %dpx of %d" % (len(TEXT), widest, BUDGET))
 print("  %d held items named" % len(NAMED))
+
+#  T-526: the drafts are measured on every run, and written only as --write --approved names them.
+engine_items = {it["itemId"]: it for it in json.loads(open(PATH).read())["items"]}
+def _measure(ln):
+    return textwidth(ln) if textwidth else len(ln) * 6
+for item_id, (lines, _why) in T526.items():
+    if item_id not in engine_items:
+        print("  !! T-526 %s not in items.json" % item_id); rc = 1
+    if len(lines) > 3:
+        print("  !! T-526 %s: %d lines > 3" % (item_id, len(lines))); rc = 1
+    for ln in lines:
+        if _measure(ln) > BUDGET:
+            print("  !! T-526 %s: %dpx > %d -- %s" % (item_id, _measure(ln), BUDGET, ln)); rc = 1
+held = [k for k in T526 if engine_items.get(k, {}).get("description_english") == "\\n".join(T526[k][0])]
+print("  T-526: %d DRAFT descriptions, %d approved, %d in the engine" % (len(T526), len(T526_APPROVED), len(held)))
+if "--sheet" in sys.argv:
+    _t526_sheet(sys.argv[sys.argv.index("--sheet") + 1], engine_items, _measure)
+
+if "--approved" in sys.argv:
+    named = []
+    for a in sys.argv[sys.argv.index("--approved") + 1:]:
+        if a.startswith("--"):
+            break
+        named.append(a if a.startswith("ITEM_") else "ITEM_" + a)
+    named = named or list(T526_APPROVED)
+    unknown = [k for k in named if k not in T526]
+    if unknown:
+        print("  !! --approved names rows T-526 does not hold: %s" % " ".join(unknown)); sys.exit(1)
+    if not named:
+        print("  --approved names no rows, and none is approved yet: nothing written.")
+        sys.exit(rc)
+    if "--write" not in sys.argv or rc:
+        print("  would write %d T-526 rows: %s" % (len(named), " ".join(named)))
+        sys.exit(rc)
+    #  ONLY those rows' descriptions, read fresh from the engine, so nothing else in the file moves.
+    raw = open(PATH).read()
+    for item_id in named:
+        body = json.dumps("\\n".join(T526[item_id][0]))[1:-1]
+        pat = re.compile(r'("itemId": "%s".*?"description_english": ")(.*?)(")' % re.escape(item_id), re.S)
+        raw, n = pat.subn(lambda m: m.group(1) + body + m.group(3), raw, count=1)
+        if not n:
+            print("  !! %s not found" % item_id); sys.exit(1)
+    tmp = PATH + ".tmp"
+    open(tmp, "w").write(raw)
+    os.replace(tmp, PATH)
+    print("  written: %d T-526 rows -- add them to T526_APPROVED so a whole-table --write keeps them" % len(named))
+    sys.exit(0)
+
 if "--write" in sys.argv and rc == 0:
     open(PATH, "w").write(raw); print("  written")
 sys.exit(rc)

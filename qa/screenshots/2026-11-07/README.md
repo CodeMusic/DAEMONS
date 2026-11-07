@@ -103,3 +103,9 @@ T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine'
 T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine's now at 1x and 4x; the GAINs one amplifier in their type's hue, the TRAPs a snap trap whose plate wears the state it ends. Nothing in the engine.
 
 ![7Nov2026 - T525 - batch 3 drafted - 17](7Nov2026%20-%20T525%20-%20batch%203%20drafted%20-%2017.png)
+
+### 7Nov2026 - T526 - item descriptions now against DRAFT - 18
+
+T-526 DRAFT: 16 item descriptions that still read as FireRed's, the engine's words beside the drafts, in the BAG's font and 200x48 window at 2x; nothing is in the engine yet
+
+![7Nov2026 - T526 - item descriptions now against DRAFT - 18](7Nov2026%20-%20T526%20-%20item%20descriptions%20now%20against%20DRAFT%20-%2018.png)
