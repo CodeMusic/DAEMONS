@@ -1287,7 +1287,8 @@ def _inc_text(rel, label):
 
 
 #  C-128 (the companion session, for the PROFILE, 2026-10-16): the GAME EVENTS page's rows, less the debug's own kit.
-EVENTS_LEFT_OUT = {"EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
+EVENTS_LEFT_OUT = {"EV_LIGHT_NIGHTS",  # T-528: a DEBUG-only override (gAuroraDebugNights, EWRAM), not save state
+                   "EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
                    "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
                    "EV_YEAR_ALL", "EV_GIFTS_AGAIN",                                        # T-416
                    "EV_CRYSTAL_AGAIN",                                                     # T-457: a reset, not an event
@@ -1367,6 +1368,8 @@ def events_table():
             plan.append((sec, name, [], by_var[ev], None, None))
         elif ev == "EV_GROVES":
             plan.append((sec, name, groves, None, None, None))
+        elif ev == "EV_GROVES_LIT":     # T-528: each grove's light is its FOUND flag + 0x10 (FLAG_*_GROVE_LIT)
+            plan.append((sec, name, [g.replace("_GROVE_FOUND", "_GROVE_LIT") for g in groves], None, None, None))
         elif ev == "EV_GLOBAL_INDEX":
             plan.append((sec, name, ["FLAG_SYS_NATIONAL_DEX"], ("VAR_NATIONAL_DEX", "==", 0x6258), None,
                          "IsNationalPokedexEnabled: also sb2 pokedex.nationalMagic == 0xB9 (sb2_byte)"))
