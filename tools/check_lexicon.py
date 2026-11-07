@@ -1097,7 +1097,8 @@ def check_plugin_colours():
     if blk:
         moves = _re.findall(r"\b(MOVE_\w+)", blk.group(1))
         types = dict(_re.findall(r"\[(MOVE_\w+)\]\s*=\s*\{.*?\.type\s*=\s*TYPE_(\w+)", bm, _re.S))
-        pal = dict(_re.findall(r"\[(ITEM_(?:TM|HM)\d+)\]\s*=\s*\{gItemIcon_TMHM,\s*gItemIconPalette_(\w+)TMHM\}", it))
+        #  T-525: a DRIVER row draws driver.png (gItemIcon_DDriver), a PLUGIN row tm_hm.png; each keeps its type's palette
+        pal = dict(_re.findall(r"\[(ITEM_(?:TM|HM)\d+)\]\s*=\s*\{gItemIcon_\w+,\s*gItemIconPalette_(\w+)TMHM\}", it))
         for i, m in enumerate(moves):
             item = "ITEM_TM%02d" % (i + 1) if i < 50 else "ITEM_HM%02d" % (i - 49)
             want, got = types.get(m, "?"), pal.get(item, "?").upper()

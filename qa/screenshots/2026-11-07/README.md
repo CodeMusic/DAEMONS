@@ -19,3 +19,39 @@ T-525 DRAFT: forty-one item icons drawn by hand in code, each beside the engine'
 T-525 DRAFT: the BAG at 240x160 with its own background, font and windows: ours on top, the engine's now below.
 
 ![7Nov2026 - T525 - item icons in the BAG - 3](7Nov2026%20-%20T525%20-%20item%20icons%20in%20the%20BAG%20-%203.png)
+
+### 7Nov2026 - T525 - batch 1 built in the BAG - 4
+
+T-525 batch 1 built (the user: Build all 41): the BAG's ITEMS and KEY ITEMS pockets in the theatre, the new icons drawn from the built debug ROM; the TOOLKIT opened (its discs are the case's own art); PLUGIN and DRIVER icons decoded from daemonsContent.gba in their type palettes
+
+![7Nov2026 - T525 - batch 1 built in the BAG - 4](7Nov2026%20-%20T525%20-%20batch%201%20built%20in%20the%20BAG%20-%204.png)
+
+### 7Nov2026 - T525 - batch 1 built in the BAG - 5
+
+T-525 batch 1 built (the user: Build all 41): the BAG's ITEMS and KEY ITEMS pockets in the theatre, the new icons drawn from the built debug ROM; the TOOLKIT opened (its discs are the case's own art); PLUGIN and DRIVER icons decoded from daemonsContent.gba in their type palettes
+
+![7Nov2026 - T525 - batch 1 built in the BAG - 5](7Nov2026%20-%20T525%20-%20batch%201%20built%20in%20the%20BAG%20-%205.png)
+
+### 7Nov2026 - T525 - batch 1 built in the BAG - 6
+
+T-525 batch 1 built (the user: Build all 41): the BAG's ITEMS and KEY ITEMS pockets in the theatre, the new icons drawn from the built debug ROM; the TOOLKIT opened (its discs are the case's own art); PLUGIN and DRIVER icons decoded from daemonsContent.gba in their type palettes
+
+![7Nov2026 - T525 - batch 1 built in the BAG - 6](7Nov2026%20-%20T525%20-%20batch%201%20built%20in%20the%20BAG%20-%206.png)
+
+### 7Nov2026 - T525 - batch 1 built in the BAG - 7
+
+T-525 batch 1 built (the user: Build all 41): the BAG's ITEMS and KEY ITEMS pockets in the theatre, the new icons drawn from the built debug ROM; the TOOLKIT opened (its discs are the case's own art); PLUGIN and DRIVER icons decoded from daemonsContent.gba in their type palettes
+
+![7Nov2026 - T525 - batch 1 built in the BAG - 7](7Nov2026%20-%20T525%20-%20batch%201%20built%20in%20the%20BAG%20-%207.png)
+
+### 7Nov2026 - T525 - batch 2 drafted - 8
+
+T-525 batch 2 DRAFT (47 icons, nothing in the engine): each beside the engine's icon now, and in the BAG at 240x160, ours above the engine's
+
+![7Nov2026 - T525 - batch 2 drafted - 8](7Nov2026%20-%20T525%20-%20batch%202%20drafted%20-%208.png)
+
+### 7Nov2026 - T525 - batch 2 drafted - 9
+
+T-525 batch 2 DRAFT (47 icons, nothing in the engine): each beside the engine's icon now, and in the BAG at 240x160, ours above the engine's
+
+![7Nov2026 - T525 - batch 2 drafted - 9](7Nov2026%20-%20T525%20-%20batch%202%20drafted%20-%209.png)
