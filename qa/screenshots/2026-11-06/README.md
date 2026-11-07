@@ -337,3 +337,9 @@ T-523 built: OPTIONS' FRAME cycled TYPE 1 to 10 and back -- TERMINAL, MANUSCRIPT
 T-523 built: the same box and START on a SATURDAY at night -- the hour's tint still reaches the new frame (12, 13, 15) and the weekday's trim the corner glyph (14).
 
 ![6Nov2026 - T523 - built frames - Saturday at night - 67](6Nov2026%20-%20T523%20-%20built%20frames%20-%20Saturday%20at%20night%20-%2067.png)
+
+### 6Nov2026 - T524 - battle UI drafts - 68
+
+T-524 DRAFT: the battle UI in the TERMINAL family -- 1 plain (slate on paper) and 2 readout (a dark screen, graticule, the HP bar a meter), beside the engine's, with a mock battle at real size
+
+![6Nov2026 - T524 - battle UI drafts - 68](6Nov2026%20-%20T524%20-%20battle%20UI%20drafts%20-%2068.png)
