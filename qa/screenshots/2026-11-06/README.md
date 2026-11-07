@@ -301,3 +301,15 @@ T-452 arm C: the 74 icons built, before and after, read from the built icon.4bpp
 T-445 DRAFT (batch G): the TANOBY chambers' card, one picture shown by all seven chambers -- vanilla's ruin painted in batch G's dressed ochre stone with two lines of the invented script cut in; a lower-denoise alternative and the top-down card below. Not built: waits on the user.
 
 ![6Nov2026 - T445 - TANOBY chambers card draft - 61](6Nov2026%20-%20T445%20-%20TANOBY%20chambers%20card%20draft%20-%2061.png)
+
+### 6Nov2026 - T445 - TANOBY chambers card built - 62
+
+T-445 built (the user, 2026-11-06: "Build the top one"): the TANOBY chambers' painted card (seed 4451, 325 tiles) filmed from the debug build, entering MONEAN CHAMBER and then LIPTOO CHAMBER from TANOBY RUINS -- one card for all seven chambers.
+
+![6Nov2026 - T445 - TANOBY chambers card built - 62](6Nov2026%20-%20T445%20-%20TANOBY%20chambers%20card%20built%20-%2062.png)
+
+### 6Nov2026 - T445 - TANOBY chambers card built - 63
+
+T-445 built (the user, 2026-11-06: "Build the top one"): the TANOBY chambers' painted card (seed 4451, 325 tiles) filmed from the debug build, entering MONEAN CHAMBER and then LIPTOO CHAMBER from TANOBY RUINS -- one card for all seven chambers.
+
+![6Nov2026 - T445 - TANOBY chambers card built - 63](6Nov2026%20-%20T445%20-%20TANOBY%20chambers%20card%20built%20-%2063.png)

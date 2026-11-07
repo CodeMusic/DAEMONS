@@ -80,7 +80,7 @@ the engine has pattern_bush's own INCBINs and MPS_PATTERN_BUSH points at them, s
 
 THE TANOBY CHAMBERS (2026-11-06, drafted, the user away): batch G built them (engine d45f8c799), so their one card
 (monean_chamber, shown by all seven chamber mapsecs) is drafted as the caves were -- `--paint monean_chamber`, then
-`--draft --only monean_chamber`. BATCH_G_APPROVED is empty until the user says, and --write skips it until then.
+`--draft --only monean_chamber`. APPROVED and BUILT 2026-11-06 (the user: "Build the top one"; engine 77e6e2044).
 """
 import argparse, collections, contextlib, io, json, os, re, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -132,7 +132,7 @@ BATCH_E = {
 BATCH_G = {
     "monean_chamber": "tanoby_ruins (the seven TANOBY chambers: dressed ochre stone, an invented script carved in it)",
 }
-BATCH_G_APPROVED = set()
+BATCH_G_APPROVED = {"monean_chamber"}           # the user, 2026-11-06: "Build the top one" (seed 4451)
 NOT_DRAFTED = {
     "cerulean_cave": "DOLDRUM CAVE: its look waits on the user (T-251, gbacaves.py), so its preview does too",
     "viridian_forest": "a forest (PLACES, --places)",
