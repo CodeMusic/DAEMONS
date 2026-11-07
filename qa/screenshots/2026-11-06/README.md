@@ -277,3 +277,21 @@ T-452 redraws in arm C (klein 4B + pixel-art LoRA), DRAFTS: the worst ten, batch
 T-452 icons redrawn in arm C as 32px head-and-shoulders busts, then icon3, DRAFTS: ROM beside the draft, 1x and 2x, with the walk's muddy test
 
 ![6Nov2026 - T452 - redraws in C - icons - 57](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20-%20icons%20-%2057.png)
+
+### 6Nov2026 - T452 - redraws in C built - 58
+
+T-452 arm C, BUILT (engine worktree, all four ROMs exit 0): front and back as the ROM carries them, read from the built 4bpp -- the 21 redraws (BROADCAST to MONTECARLO here; LODESTAR, REFLECTION and BASTET leave THE NEXUS's painted art for the type ramp)
+
+![6Nov2026 - T452 - redraws in C built - 58](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20built%20-%2058.png)
+
+### 6Nov2026 - T452 - redraws in C built - 59
+
+T-452 arm C, BUILT: LASVEGAS to UNBRANCHED, then the seven mismatched backs redrawn against their kept fronts (ENSEMBLE, WIRETAP, MANIFOLD, MONOLITH, OUTLIER, HEARTBEAT, COREFILE). Held for a redraw round: ECLIPSE, CRAWLER, OVERLOADED, PERIHELION, LYUBOV, MULTIMAL, LYNX, ILLUMINED, HEATDEATH, SEETHE
+
+![6Nov2026 - T452 - redraws in C built - 59](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20built%20-%2059.png)
+
+### 6Nov2026 - T452 - redraws in C built - 60
+
+T-452 arm C: the 74 icons built, before and after, read from the built icon.4bpp in its shared icon palette. Held: the ten held daemons' icons, the eight still muddy, the five that drifted from their fronts, and SMUDGE's (kept from the ROM)
+
+![6Nov2026 - T452 - redraws in C built - 60](6Nov2026%20-%20T452%20-%20redraws%20in%20C%20built%20-%2060.png)

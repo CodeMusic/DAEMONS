@@ -193,10 +193,43 @@ def coords(img):
     return w, h, 64 - box[3]
 
 
+#  T-452 (the user, 2026-11-06, "Build the good ones"): three residents leave the painted exception for the roster's
+#  chibi style, drawn in arm C (FLUX.2 klein 4B + the pixel-art LoRA, gfx/drafts/t452/scripts/armc.py) and reduced
+#  there into the type ramp -- front, back and party icon. Their built art is taken as reduced (the back already
+#  draws through the front's palette, the icon is icon3's in a shared icon palette); the shiny is genshiny's, as for
+#  every type-ramp daemon. The other five keep their painted art.
+T452 = os.path.join(ROOT, "gfx/drafts/t452/c/armc")
+REDRAWN = {"REFLECTION": ("reflection_7102", 7142), "LODESTAR": ("lodestar_7101", 7142), "BASTET": ("bastet_7101", 7142)}
+
+
+def redrawn_art(name):
+    key, iseed = REDRAWN[name]
+    r = lambda *p: os.path.join(T452, "reduced", *p)
+    colours = read_jasc(r(key + "_normal.pal"))
+    flat = [v for c in colours for v in c]
+    fimg, bimg = (Image.open(r("%s_%s.png" % (key, v))) for v in ("front", "back"))
+    for im in (fimg, bimg):
+        assert im.mode == "P" and im.size == (64, 64), (name, im.mode, im.size)
+        im.putpalette(flat + [0] * (768 - len(flat)))
+    ico = Image.open(r("%s_icon_%d.png" % (name.lower(), iseed)))
+    pals = [read_jasc(gpath("graphics/pokemon/icon_palettes/icon_palette_%d.pal" % i)) for i in range(3)]
+    ip = ico.getpalette()[:48]
+    ipal = [i for i, p in enumerate(pals) if [v for c in p for v in c] == ip]
+    assert ico.mode == "P" and ico.size == (32, 64) and len(ipal) == 1, (name, "icon is not 32x64 in one icon palette")
+    import genshiny
+    sh = genshiny.make_shiny(colours)[1]
+    return dict(front=fimg, back=bimg, normal=colours, shiny=sh if sh is not None else shiny(colours), icon=ico,
+                iconpal=ipal[0], fcoords=coords(fimg), bcoords=coords(bimg),
+                clean={v: os.path.join(T452, "clean", "%s_%s.png" % (key, v)) for v in ("front", "back")})
+
+
 def make_art():
     made = {}
     for letter, name, ident, model, cry in RESIDENTS:
         n = name.lower()
+        if name in REDRAWN:
+            made[letter] = redrawn_art(name)
+            continue
         front = fit(Image.open(os.path.join(SRC, n + "_cut.png")).convert("RGBA"), 2)
         back = fit(Image.open(os.path.join(SRC, n + "_back_cut.png")).convert("RGBA"), 0)
         (fimg, bimg), colours = shared_palette(front, back)
@@ -215,7 +248,10 @@ def write_art(made, report):
         m["icon"].save(os.path.join(d, "icon.png"))
         #  and beside every other daemon's drawing, where the companion and the review sheets look
         for view in ("front", "back"):
-            m[view].convert("RGBA").save(os.path.join(ROOT, "gfx/daemons", "%s_%s.png" % (n, view)))
+            if "clean" in m:     # a T-452 redraw: its cleaned drawing, as every other redrawn daemon's is filed
+                shutil.copyfile(m["clean"][view], os.path.join(ROOT, "gfx/daemons", "%s_%s.png" % (n, view)))
+            else:
+                m[view].convert("RGBA").save(os.path.join(ROOT, "gfx/daemons", "%s_%s.png" % (n, view)))
         open(os.path.join(d, "normal.pal"), "w", newline="").write(jasc(m["normal"]))
         open(os.path.join(d, "shiny.pal"), "w", newline="").write(jasc(m["shiny"]))
         e = gpath("graphics/pokemon/nexus_" + n)
