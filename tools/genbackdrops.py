@@ -26,6 +26,15 @@ the town's key is against Lorelei's own, and takes the town's HUE. The scale is 
 QUICKSILVER grey: a first mock kept every town at Lorelei's saturation and put SLATE and DOLDRUM in the
 same blue, because a stone and a sea differ in how much colour they have, not only in which.
 
+ONE ROOM IS RAMPED BY LIGHTNESS INSTEAD: SLATE (T-527, the user, 2026-11-07: "darken it"). The tint above keeps each
+index's HSV value, and a key with little colour then leaves nothing to tell the indices apart -- SLATE's warm stone came
+out 197-255 in every colour, so in T-527's new room the wall and the platforms barely showed. LUMA_RAMP gives such a
+room Lorelei's LIGHTNESS order instead, spread over a range of real slate greys (the darkest index to `lo`, the
+lightest to `hi`, value in HSV), in the hue of the town's own slate (SLATE_PAL's roof ramp, `key`), at no more than
+`sat` saturation: cool and pale still, but the rims, the wall's bands and the seams read. The roles T-527 keeps (2 the
+platform's fill, 3 its rim, 5 its ring, 4 its top and bottom, 10-14 the wall's bands, 15 the floor, 1 its seams) are
+Lorelei's indices, so they carry over. QUICKSILVER, the other grey town, is left as it is: only SLATE was asked.
+
 WHICH ROOM IS WHICH IS DERIVED TOO: `gbainterior.py` pairs each `LAYOUT_*_GYM` with the town it draws, and
 the C looks the backdrop up by the MAP the battle happens on, so a BENCHMARK's trainers and its leader
 share it and nothing outside the eight rooms changes.
@@ -79,6 +88,31 @@ def tint(lorelei, key):
     for c in lorelei:
         _, s, v = hsv(c)
         out.append(tuple(snap(x * 255) for x in colorsys.hsv_to_rgb(kh, min(1.0, s * (ks / ref if ref else 0)), v)))
+    return out
+
+
+LUMA_RAMP = {"SLATE": dict(key=7, lo=0.40, hi=0.92, sat=0.14)}   # T-527: SLATE_PAL[7] is (104, 120, 136)
+
+
+def luma(c):
+    return (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255
+
+
+def luma_ramp(lorelei, key, lo, hi, sat):
+    """Lorelei's lightness order over lo..hi (HSV value) in the key's hue, saturation scaled as tint() scales it and
+    capped at sat; black (the backdrop and the unused tail) stays black"""
+    lums = [luma(c) for c in lorelei if c != (0, 0, 0)]
+    lmin, lmax = min(lums), max(lums)
+    ref = max(hsv(c)[1] for c in lorelei)
+    kh, ks, _ = hsv(key)
+    out = []
+    for c in lorelei:
+        if c == (0, 0, 0):
+            out.append(c)
+            continue
+        v = lo + (luma(c) - lmin) / (lmax - lmin) * (hi - lo)
+        s = min(sat, hsv(c)[1] * (ks / ref if ref else 0))
+        out.append(tuple(snap(x * 255) for x in colorsys.hsv_to_rgb(kh, s, v)))
     return out
 
 
@@ -161,8 +195,13 @@ def main():
     lorelei = read_pal(os.path.join(INDOOR, "lorelei.pal"))
     built = []
     for lid, town in rooms:
-        key = key_colour(towns[town])
-        pal = tint(lorelei, key)
+        if town in LUMA_RAMP:
+            r = LUMA_RAMP[town]
+            key = tuple(towns[town][r["key"]])
+            pal = luma_ramp(lorelei, key, r["lo"], r["hi"], r["sat"])
+        else:
+            key = key_colour(towns[town])
+            pal = tint(lorelei, key)
         built.append((lid, town, key, pal))
         print("  %-28s %-12s key %-16s -> benchmark_%s.pal" % (lid, town, key, town.lower()))
     S = 2
