@@ -39,8 +39,13 @@ WHAT THE ENGINE DRAWS, AND HOW (graphics/battle_interface/, src/battle_bg.c, src
 
 THE RUN-TIME CONTRACT EACH DROP-IN KEEPS
   BG palette 0 (message box): 1 the ink, 6 its shadow, 15 the fill (sTextOnWindowsInfo B_WIN_MSG/ACTION_PROMPT); the
-    frame is drawn in 9, 11, 13, 14 and here also 12 (vanilla's magenta, unused). Nothing recolours BG 0 in a battle:
-    T-481 A tints rows 2-4 (the terrain) only, T-482's pulse rows 2-4, T-415's weather rows 2-4.
+    frame is drawn in 9, 11, 13, 14 and here also 10 (vanilla's second magenta, which nothing in a battle writes or
+    prints in: {COLOR PURPLE} is 0A only in the field's box, and the more-text arrow draws in 2, 4 and 9). Slot 12 is
+    NOT free: it is RESERVED, never drawn -- T-459 C's lean (daemons_three.c sLeanPurple) and THE LENS / PATTERN's
+    prompt (daemons_spellbook.c sEmerald) load their colour into it each time they print, so a frame pixel there would
+    turn purple or green mid-battle; textbox1.pal keeps a magenta placeholder in it (gensense.py checks textbox.png).
+    Nothing else recolours BG 0 in a battle: T-481 A tints rows 2-4 (the terrain) only, T-482's pulse rows 2-4,
+    T-415's weather rows 2-4.
   healthbox.pal: 1 ink, 2 the plate the text is printed on (FillWindowPixelBuffer(PIXEL_FILL(2))) -- every text zone
     must stay 2 -- and 3 its shadow; 10 the female mark and 11 the male mark (TEXT_DYNAMIC_COLOR_1/2), 11 also the
     EXP fill; 12-15 are WRITTEN AT RUN TIME, one per battler, with the status badge's colour (sStatusIconColors,
@@ -124,12 +129,16 @@ def copy(px):
 OUT, MID, LIGHT, TEAL = (32, 40, 52), (88, 104, 120), (176, 192, 204), (112, 208, 184)
 PAPER, INK, SHADE = (248, 248, 248), (96, 96, 96), (208, 208, 200)          # stdpal_0's 1, 2, 3 (the field box)
 SCREEN, PHOS, PHOS_SH = (20, 32, 36), (184, 240, 208), (40, 72, 64)         # the readout's screen and its text
+# BG palette 0 slot 12 is loaded at run time (T-459 C's lean, the spellbook's prompt): never drawn, and kept magenta so
+# a stray pixel shows. The frame's teal is slot 10 instead.
+BRACKET, LEAN_SLOT, LEAN_PLACEHOLDER = 10, 12, (248, 0, 248)
 
 DIRS = {
     "1": dict(name="TERMINAL plain",
               said="the slate rule of the field's box, 45-degree corners, the teal bracket; paper and ink",
-              # BG palette 0: 1 ink, 6 shadow, 15 fill; 9 11 12 13 14 the frame
-              box={1: INK, 6: SHADE, 15: PAPER, 9: (128, 144, 160), 11: LIGHT, 12: TEAL, 13: OUT, 14: MID},
+              # BG palette 0: 1 ink, 6 shadow, 15 fill; 9 10 11 13 14 the frame; 12 the lean's, never drawn
+              box={1: INK, 6: SHADE, 15: PAPER, 9: (128, 144, 160), 10: TEAL, 11: LIGHT, 12: LEAN_PLACEHOLDER,
+                   13: OUT, 14: MID},
               hb={1: (48, 56, 64), 2: (240, 244, 240), 3: (200, 208, 208), 4: LIGHT, 5: (128, 144, 160), 6: MID,
                   7: OUT, 8: (60, 72, 88), 9: TEAL, 10: (240, 128, 136), 11: (88, 184, 240)},
               bar={1: (40, 48, 56), 2: (240, 244, 240), 3: (200, 208, 208), 4: (128, 136, 144), 5: MID,
@@ -139,8 +148,8 @@ DIRS = {
     "2": dict(name="TERMINAL readout",
               said="an instrument: a dark screen, phosphor text, a graticule on every rule, the HP bar a meter, "
                    "the level a register",
-              box={1: PHOS, 6: PHOS_SH, 15: SCREEN, 9: (64, 96, 96), 11: (96, 168, 152), 12: TEAL, 13: (12, 16, 20),
-                   14: (64, 76, 92)},
+              box={1: PHOS, 6: PHOS_SH, 15: SCREEN, 9: (64, 96, 96), 10: TEAL, 11: (96, 168, 152),
+                   12: LEAN_PLACEHOLDER, 13: (12, 16, 20), 14: (64, 76, 92)},
               hb={1: PHOS, 2: SCREEN, 3: PHOS_SH, 4: (96, 168, 152), 5: (112, 128, 144), 6: (64, 76, 92),
                   7: (12, 16, 20), 8: (40, 48, 60), 9: TEAL, 10: (248, 144, 160), 11: (104, 200, 248)},
               bar={1: (16, 20, 24), 2: (40, 64, 64), 3: (96, 168, 152), 4: (112, 120, 128), 5: (28, 40, 44),
@@ -207,10 +216,10 @@ def msgbox(d):
                 ring = [13, 14, 14, 11, 14, 13, 15, 15]
             g[y][x] = 0 if dd < 0 else ring[dd]
             if d == "1" and dd == 2 and xx < 8 and yy < 8:
-                g[y][x] = 12                      # the corner bracket, on the rule
+                g[y][x] = BRACKET                 # the corner bracket, on the rule
             if d == "2":
                 if dd in (1, 2) and xx <= 7 and yy <= 7:
-                    g[y][x] = 12                  # the bracket, fuller on an instrument
+                    g[y][x] = BRACKET             # the bracket, fuller on an instrument
                 elif dd == 1 and ((yy < 8 and xx >= 8 and x % 8 == 4) or (xx < 8 and yy >= 8 and y % 8 == 4)):
                     g[y][x] = 11                  # the graticule: a tick every 8px
     if d == "2":
@@ -218,7 +227,7 @@ def msgbox(d):
         for x, y in ((9, 45), (10, 44), (11, 45)):
             pass
         for x, y in ((10, 43), (11, 44), (10, 45)):
-            g[y][x] = 12
+            g[y][x] = BRACKET
     return g
 
 
@@ -869,6 +878,9 @@ def report():
     for k, D in DIRS.items():
         bad = check_msgbox(msgbox(k))
         print("  direction %s %-17s message box repeats agree: %s" % (k, D["name"], "yes" if not bad else bad[:4]))
+        lean = sum(r.count(LEAN_SLOT) for r in textbox_png(k))
+        print("  direction %s %-17s textbox.png pixels in slot %d (the lean's, loaded at run time): %d%s"
+              % (k, D["name"], LEAN_SLOT, lean, "" if not lean else "  ! must be 0"))
         for name in BOXES:
             B = BOXES[name]
             if B.get("recolour_only"):
