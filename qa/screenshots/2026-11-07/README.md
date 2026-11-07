@@ -199,3 +199,27 @@ T-527 built (A outdoors, B indoors): one battle per terrain the maps reach, film
 T-527 built: all nine terrains decoded from the debug ROM -- each backdrop with both platforms, and the entry strip that slides in (LONG GRASS and UNDERWATER are reached by no map, so this is the only way to see them)
 
 ![7Nov2026 - T527 - every terrain and entry strip decoded - 34](7Nov2026%20-%20T527%20-%20every%20terrain%20and%20entry%20strip%20decoded%20-%2034.png)
+
+### 7Nov2026 - T528 - the aurora part 1 - 35
+
+T-528 part 1, the aurora, filmed from the DEBUG ROM in the theatre (CONTENT): (a) DAEMON TOWER's stones breathing red at night once the book is mended, none by day or unmended; (b) ROUTE 1's grove battle sky on a night of light, CONTEXT's green decoded beside it by the engine's own sum, and no band on a dark night; (c) ROUTE 1's faint breath once every grove is lit, none on a dark night, none in MT. MOON.
+
+![7Nov2026 - T528 - the aurora part 1 - 35](7Nov2026%20-%20T528%20-%20the%20aurora%20part%201%20-%2035.png)
+
+### 7Nov2026 - T528 - DAEMON TOWER breathing - 36
+
+T-528 (a): DAEMON TOWER at night, mended, eight frames two seconds apart over one sixteen-second breath (CONTENT's red, 630.0 nm).
+
+![7Nov2026 - T528 - DAEMON TOWER breathing - 36](7Nov2026%20-%20T528%20-%20DAEMON%20TOWER%20breathing%20-%2036.png)
+
+### 7Nov2026 - T528 - night outdoors every grove lit - 37
+
+T-528 (c): DEBUG's EVERY GROVE LIT, then ROUTE 1 at night on a night of light (four frames over one breath) and on a dark night.
+
+![7Nov2026 - T528 - night outdoors every grove lit - 37](7Nov2026%20-%20T528%20-%20night%20outdoors%20every%20grove%20lit%20-%2037.png)
+
+### 7Nov2026 - T527 - SLATE room darkened - 38
+
+T-527: SLATE's room before and after (decoded from benchmark_slate.pal; the drawing is T-527's B), and filmed in CAMPER LIAM's battle in PEWTER's BENCHMARK.
+
+![7Nov2026 - T527 - SLATE room darkened - 38](7Nov2026%20-%20T527%20-%20SLATE%20room%20darkened%20-%2038.png)

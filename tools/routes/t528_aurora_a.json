@@ -1,0 +1,99 @@
+{
+  "rom": "debug",
+  "about": "T-528 part 1: the aurora -- over DAEMON TOWER every night once the book is mended (CONTENT's red), in a lit grove's battle sky on a night of light and not on a dark one, outdoors at night once every grove is lit and never in a cave; and T-527's SLATE room, darkened. DEBUG's WATCH (gDaemonsWatchOverride: 1 day, 3 night) and NIGHTS OF LIGHT (gAuroraDebugNights: 1 every night, 2 none) are poked. The theatre's debug scratch save, never the user's.",
+  "stops": [
+    {
+      "stop": "the build",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "poke gAuroraDebugNights 8 0",
+        "poke gDaemonsWatchOverride 8 1"
+      ]
+    },
+    {
+      "stop": "(a) DAEMON TOWER at night, the book not mended: no light",
+      "steps": [
+        "flag FLAG_UNITY_MENDED 0",
+        "poke gDaemonsWatchOverride 8 3",
+        "goto LavenderTown 18 9",
+        "shot the tower at night, not mended"
+      ]
+    },
+    {
+      "stop": "(a) DAEMON TOWER at night, mended: the red line breathing on its stones",
+      "steps": [
+        "flag FLAG_UNITY_MENDED 1",
+        "goto LavenderTown 18 9",
+        "burst \"the tower at night, mended, over one breath\" 8 120"
+      ]
+    },
+    {
+      "stop": "(a) DAEMON TOWER by day, mended: no light",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 1",
+        "goto LavenderTown 18 9",
+        "shot the tower by day, mended"
+      ]
+    },
+    {
+      "stop": "(b) ROUTE 1's grove entered at night after the mending: it and ONE ISLAND's take the light; its battle sky on a night of light",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "poke gAuroraDebugNights 8 1",
+        "flag FLAG_ROUTE1_GROVE_LIT 0",
+        "flag FLAG_ONE_ISLAND_GROVE_LIT 0",
+        "goto Route1_Grove 3 7",
+        "flagis FLAG_ROUTE1_GROVE_LIT 1",
+        "flagis FLAG_ONE_ISLAND_GROVE_LIT 1",
+        "flagis FLAG_ROUTE24_GROVE_LIT 0",
+        "wild 1 keep",
+        "burst \"a night of light: the band, over one breath\" 8 120",
+        "win"
+      ]
+    },
+    {
+      "stop": "(b) the same grove on a dark night: no band",
+      "steps": [
+        "poke gAuroraDebugNights 8 2",
+        "goto Route1_Grove 3 7",
+        "wild 1 keep",
+        "burst \"a dark night: no band\" 3 120",
+        "win"
+      ]
+    },
+    {
+      "stop": "(c) outdoors at night once every grove is lit: the faint breath, and none on a dark night",
+      "steps": [
+        "events \"EVERY GROVE LIT\"",
+        "flagis FLAG_SEVEN_ISLAND_GROVE_LIT 1",
+        "poke gAuroraDebugNights 8 1",
+        "goto Route1 10 10",
+        "burst \"ROUTE 1, a night of light, over one breath\" 4 240",
+        "poke gAuroraDebugNights 8 2",
+        "shot ROUTE 1, a dark night"
+      ]
+    },
+    {
+      "stop": "(c) a cave at night, every grove lit, a night of light: no tint",
+      "steps": [
+        "poke gAuroraDebugNights 8 1",
+        "goto MtMoon_1F",
+        "burst \"MT. MOON at night: the cave keeps its own light\" 3 240"
+      ]
+    },
+    {
+      "stop": "T-527: SLATE's room, darkened (PEWTER's BENCHMARK, a trainer battle)",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 1",
+        "trainer TRAINER_CAMPER_LIAM 0",
+        "goto PewterCity_Gym 6 9",
+        "burst \"CAMPER LIAM looks up\" 2 60 UP 12",
+        "burst \"his line\" 2 60 A",
+        "burst \"SLATE's room\" 6 90 A",
+        "win",
+        "close"
+      ]
+    }
+  ]
+}
