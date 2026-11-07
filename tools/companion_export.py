@@ -1291,6 +1291,7 @@ def _inc_text(rel, label):
 
 #  C-128 (the companion session, for the PROFILE, 2026-10-16): the GAME EVENTS page's rows, less the debug's own kit.
 EVENTS_LEFT_OUT = {"EV_LIGHT_NIGHTS",  # T-528: a DEBUG-only override (gAuroraDebugNights, EWRAM), not save state
+                   "EV_OTHER_EDITION",  # T-528 (f): the lead's met game set to the other edition's -- the party, not a flag
                    "EV_EVERYTHING", "EV_ROSTER", "EV_EVERY_DAEMON", "EV_STOCK", "EV_NOTEBOOK_FULL", "EV_INSIGHTS_AGAIN",
                    "EV_MARKS_ALL", "EV_DRIVERS_ALL", "EV_ROOTS_ALL", "EV_SONGS_ALL",
                    "EV_YEAR_ALL", "EV_GIFTS_AGAIN",                                        # T-416

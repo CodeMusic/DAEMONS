@@ -229,3 +229,51 @@ T-527: SLATE's room before and after (decoded from benchmark_slate.pal; the draw
 C-305 (T-528 part 1) DRAFT: the companion's den on a night of light with the book mended -- CONTENT's red in the top band at breath high and low, CONTEXT's green a band lower, and no light by the date at 5 PM; on the site with a test save
 
 ![7Nov2026 - T528 - the auroras nights in the companion den - 39](7Nov2026%20-%20T528%20-%20the%20auroras%20nights%20in%20the%20companion%20den%20-%2039.png)
+
+### 7Nov2026 - T528 - TULIKKO sweeping, before the mending - 40
+
+T-528 part 2 (e), DRAFT: TULIKKO, the arctic fox drawn by hand in code, sweeping by STILLFALL CAVE on FOUR ISLAND (its walk frames are the sweep), and its line before the mending; played in the theatre (debug build)
+
+![7Nov2026 - T528 - TULIKKO sweeping, before the mending - 40](7Nov2026%20-%20T528%20-%20TULIKKO%20sweeping%2C%20before%20the%20mending%20-%2040.png)
+
+### 7Nov2026 - T528 - TULIKKO after the mending and the south wind line - 41
+
+T-528 part 2 (e), DRAFT: TULIKKO after the mending, and the islands' name for the light from the man by the cave
+
+![7Nov2026 - T528 - TULIKKO after the mending and the south wind line - 41](7Nov2026%20-%20T528%20-%20TULIKKO%20after%20the%20mending%20and%20the%20south%20wind%20line%20-%2041.png)
+
+### 7Nov2026 - T528 - TULIKKO on a night of light - 42
+
+T-528 part 2 (e), DRAFT: TULIKKO on a night of light
+
+![7Nov2026 - T528 - TULIKKO on a night of light - 42](7Nov2026%20-%20T528%20-%20TULIKKO%20on%20a%20night%20of%20light%20-%2042.png)
+
+### 7Nov2026 - T528 - TULIKKO under the conjugate light - 43
+
+T-528 part 2 (f), DRAFT: DEBUG FROM THE OTHER SIDE sets the lead's met game to the other edition's; TULIKKO under the conjugate light
+
+![7Nov2026 - T528 - TULIKKO under the conjugate light - 43](7Nov2026%20-%20T528%20-%20TULIKKO%20under%20the%20conjugate%20light%20-%2043.png)
+
+### 7Nov2026 - T528 - DAEMON TOWER conjugate light and the north wind line - 44
+
+T-528 part 2 (f), DRAFT: DAEMON TOWER under the conjugate light over one breath, the palest stone red and the rest green; and the mainland's name for the light at LAVENDER
+
+![7Nov2026 - T528 - DAEMON TOWER conjugate light and the north wind line - 44](7Nov2026%20-%20T528%20-%20DAEMON%20TOWER%20conjugate%20light%20and%20the%20north%20wind%20line%20-%2044.png)
+
+### 7Nov2026 - T528 - grove battle sky conjugate light - 45
+
+T-528 part 2 (f): a lit grove's battle sky under the conjugate light on a night of light, red crowning the top band and green below, over one breath
+
+![7Nov2026 - T528 - grove battle sky conjugate light - 45](7Nov2026%20-%20T528%20-%20grove%20battle%20sky%20conjugate%20light%20-%2045.png)
+
+### 7Nov2026 - T528 - dawn chorus and the LARK singing - 46
+
+T-528 part 2 (d), DRAFT: ROUTE 1's grove in THE CREATOR'S HOUR after a night of light -- SE_DAWN_CHORUS plays under the choir in SE_AAH_PAD's place (the screen cannot show it; the chirp is in the scratchpad's .wav), and the LARK back at the fir singing along
+
+![7Nov2026 - T528 - dawn chorus and the LARK singing - 46](7Nov2026%20-%20T528%20-%20dawn%20chorus%20and%20the%20LARK%20singing%20-%2046.png)
+
+### 7Nov2026 - T528 - TULIKKO sprite sheet - 47
+
+T-528 part 2 (e), DRAFT: TULIKKO's nine 32x32 frames at 6x, drawn by hand in code (tools/gentulikko.py) in npc_white -- south, north, west, then the sweep: the tail low across the snow and swung high, a puff where it strikes
+
+![7Nov2026 - T528 - TULIKKO sprite sheet - 47](7Nov2026%20-%20T528%20-%20TULIKKO%20sprite%20sheet%20-%2047.png)

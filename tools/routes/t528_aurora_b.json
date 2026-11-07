@@ -1,0 +1,101 @@
+{
+  "rom": "debug",
+  "about": "T-528 part 2: TULIKKO the arctic fox at STILLFALL CAVE on FOUR ISLAND, sweeping (its walk frames), and its four lines -- before the mending, after it, on a night of light, under the conjugate light; the islands' line at FOUR ISLAND and the mainland's at LAVENDER; the conjugate light (DEBUG -> GAME EVENTS -> FROM THE OTHER SIDE: the lead's met game set to the other edition's) over DAEMON TOWER and in a lit grove's battle sky, green below and red crowning it; and the dawn chorus -- a lit grove in THE CREATOR'S HOUR (DEBUG TIME 4:48) after a night of light, the LARK back at the fir singing along. DEBUG's WATCH (gDaemonsWatchOverride: 1 day, 3 night, 9 the creator's hour full) and NIGHTS OF LIGHT (gAuroraDebugNights: 1 every night, 2 none) are poked. The theatre's debug scratch save, never the user's.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "the build",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "poke gAuroraDebugNights 8 0",
+        "poke gDaemonsWatchOverride 8 1"
+      ]
+    },
+    {
+      "stop": "(e) TULIKKO before the mending, sweeping",
+      "steps": [
+        "flag FLAG_UNITY_MENDED 0",
+        "goto FourIsland 38 13",
+        "burst \"TULIKKO sweeping, by day\" 6 10",
+        "talk Tulikko",
+        "says \"Snow likes to go back where it came from.\""
+      ]
+    },
+    {
+      "stop": "(e) TULIKKO after the mending, by day; and the islands' name for the light",
+      "steps": [
+        "flag FLAG_UNITY_MENDED 1",
+        "goto FourIsland 38 13",
+        "talk Tulikko",
+        "says \"The sky noticed.\"",
+        "talk FatMan",
+        "says \"the dawn the south wind brings.\""
+      ]
+    },
+    {
+      "stop": "(e) TULIKKO on a night of light",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "poke gAuroraDebugNights 8 1",
+        "goto FourIsland 38 13",
+        "talk Tulikko",
+        "says \"They think it's the wind.\""
+      ]
+    },
+    {
+      "stop": "(f) the conjugate light: the lead from the other edition; TULIKKO under it",
+      "steps": [
+        "events \"FROM THE OTHER SIDE\"",
+        "goto FourIsland 38 13",
+        "talk Tulikko",
+        "says \"Both colours!\""
+      ]
+    },
+    {
+      "stop": "(f) DAEMON TOWER under the conjugate light; and the mainland's name for the light",
+      "steps": [
+        "goto LavenderTown 18 9",
+        "burst \"the tower under the conjugate light, over one breath\" 8 120",
+        "poke gDaemonsWatchOverride 8 1",
+        "goto LavenderTown 13 12",
+        "talk WorkerM",
+        "says \"the dawn the north wind brings.\""
+      ]
+    },
+    {
+      "stop": "(f) a lit grove's battle sky under the conjugate light, on a night of light",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "events \"EVERY GROVE LIT\"",
+        "flagis FLAG_ROUTE1_GROVE_LIT 1",
+        "goto Route1_Grove 3 7",
+        "wild 1 keep",
+        "burst \"the conjugate sky: red crowning, green below, over one breath\" 8 120",
+        "win"
+      ]
+    },
+    {
+      "stop": "(d) the dawn chorus: ROUTE 1's grove in THE CREATOR'S HOUR after a night of light, the LARK singing along",
+      "timeout": 900,
+      "steps": [
+        "flag FLAG_GOT_EUDAIMON_LAYER 1",
+        "poke sPlayBeganAt 32 4294901760",
+        "poke gDaemonsWatchOverride 8 9",
+        "goto Route1_Grove 3 7",
+        "wait 2400",
+        "shot the grove in the creator's hour, the chorus under the choir",
+        "talk LarkAtFir",
+        "says \"Thin whistles, rising\""
+      ]
+    },
+    {
+      "stop": "put back: the lead this edition's again, the watch and the nights by the date",
+      "steps": [
+        "events \"FROM THE OTHER SIDE\"",
+        "poke gDaemonsWatchOverride 8 0",
+        "poke gAuroraDebugNights 8 0"
+      ]
+    }
+  ]
+}
