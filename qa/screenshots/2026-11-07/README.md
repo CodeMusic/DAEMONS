@@ -175,3 +175,15 @@ T-526: the ten TRAP descriptions before and after, in the TRAP TABLE's own 200x3
 T-526: the 16 item descriptions, the engine before and the built draft, in the BAG's 200x48 window at 2x (DRAFT)
 
 ![7Nov2026 - T526 - item descriptions before and after - 29](7Nov2026%20-%20T526%20-%20item%20descriptions%20before%20and%20after%20-%2029.png)
+
+### 7Nov2026 - T527 - battle backgrounds A and B drafts - 30
+
+T-527 DRAFT: the nine battle terrains drawn again from our own map tiles and code (no AI image). Each row: the engine now, A OUR PLACE, B QUIET FIELD, as mock battles at real size with the built Readout, plus both entry strips. Nothing is in the engine.
+
+![7Nov2026 - T527 - battle backgrounds A and B drafts - 30](7Nov2026%20-%20T527%20-%20battle%20backgrounds%20A%20and%20B%20drafts%20-%2030.png)
+
+### 7Nov2026 - T527 - battle backgrounds under the calendar - 31
+
+T-527 DRAFT: T-481's run-time calendar on the drafts (autumn, SATURDAY's line, dawn/day/dusk/night) for GRASS and WATER, and the building drawing under PLAIN, a gym, LORELEI's room and SLATE's arena.
+
+![7Nov2026 - T527 - battle backgrounds under the calendar - 31](7Nov2026%20-%20T527%20-%20battle%20backgrounds%20under%20the%20calendar%20-%2031.png)
