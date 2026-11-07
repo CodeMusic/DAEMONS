@@ -71,6 +71,8 @@ Chosen by the user, 2026-10-09 -- still to be cleaned to the 64px sprite and app
 - **MULTIMAL**: `round7/multimal_9201` -- facing right, a light glowing in its chest (chosen).
 - **ILLUMINED**: `round7/illumined_9101_lit` -- the white cat in a halo of light (chosen).
 
+**Redrawn 2026-11-06 (T-452, arm C):** LODESTAR, REFLECTION and BASTET left the painted set. The user chose batch 13 in the chibi style and approved these three drafts, so they now come from `gfx/drafts/t452/c/armc/` in type colours, with their streaks on, and `tools/gbanexus.py` keeps them. PERIHELION, LYNX, LYUBOV, MULTIMAL and ILLUMINED keep the painted art above until their redraws are approved.
+
 ## In the game: eight NEW daemons (the user, 2026-10-09)
 
 The slots first proposed above (ABSOL, JIRACHI, RAIKOU, ENTEI, FEEBAS, MILOTIC, SKITTY, DELCATTY) were already named
