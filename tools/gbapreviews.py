@@ -107,6 +107,7 @@ ap.add_argument("--paint", nargs="*")
 ap.add_argument("--top-down", action="store_true", dest="top_down")
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
+ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes really runs the write")
 ap.add_argument("--landmarks", action="store_true")      # the landmarks' cards (LANDMARK) instead of the caves
 ap.add_argument("--places", action="store_true")         # the forests' and the SAFARI's cards (PLACES)
 ap.add_argument("--only", nargs="+")                     # draft only these folders (T-456: one card, its seeds)

@@ -79,6 +79,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--draft", nargs="?", const=DRAFT_DEFAULT)
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
+ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes really runs the write")
 ap.add_argument("--main", choices="12")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
