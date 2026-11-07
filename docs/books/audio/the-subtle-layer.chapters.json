@@ -6,380 +6,380 @@
  },
  "speed": 0.96,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "4e40bf621d0042d7",
- "duration": 1948.31,
+ "sources": "68f4eb1d0d57e763",
+ "duration": 1948.24,
  "chapters": [
   {
    "kind": "section",
    "title": "The Subtle Layer",
    "start": 0.0,
-   "end": 7.9
+   "end": 7.83
   },
   {
    "kind": "section",
    "title": "Introduction",
-   "start": 7.9,
-   "end": 10.4
+   "start": 7.83,
+   "end": 10.34
   },
   {
    "kind": "entry",
    "title": "A Word First",
-   "start": 10.4,
-   "end": 44.14
+   "start": 10.34,
+   "end": 44.08
   },
   {
    "kind": "entry",
    "title": "The Container",
-   "start": 44.14,
-   "end": 90.24
+   "start": 44.08,
+   "end": 90.17
   },
   {
    "kind": "entry",
    "title": "The Solid and the Subtle",
-   "start": 90.24,
-   "end": 130.61
+   "start": 90.17,
+   "end": 130.55
   },
   {
    "kind": "entry",
    "title": "What Keeps the Seam Narrow",
-   "start": 130.61,
-   "end": 161.33
+   "start": 130.55,
+   "end": 161.26
   },
   {
    "kind": "entry",
    "title": "Read, Write and Link",
-   "start": 161.33,
-   "end": 205.03
+   "start": 161.26,
+   "end": 204.97
   },
   {
    "kind": "entry",
    "title": "Closure, Attunement and Voltage",
-   "start": 205.03,
-   "end": 249.59
+   "start": 204.97,
+   "end": 249.52
   },
   {
    "kind": "section",
    "title": "The Read Family: the Clairs",
-   "start": 249.59,
-   "end": 253.69
+   "start": 249.52,
+   "end": 253.63
   },
   {
    "kind": "entry",
    "title": "The Read Family: the Clairs",
-   "start": 253.69,
-   "end": 296.95
+   "start": 253.63,
+   "end": 296.88
   },
   {
    "kind": "entry",
    "title": "Clairvoyance and Clairaudience",
-   "start": 296.95,
-   "end": 322.13
+   "start": 296.88,
+   "end": 322.07
   },
   {
    "kind": "entry",
    "title": "Clairsentience and Claircognizance",
-   "start": 322.13,
-   "end": 356.96
+   "start": 322.07,
+   "end": 356.89
   },
   {
    "kind": "entry",
    "title": "Clairtangency and Clairalience",
-   "start": 356.96,
-   "end": 389.01
+   "start": 356.89,
+   "end": 388.95
   },
   {
    "kind": "entry",
    "title": "Telling a Read from Imagination",
-   "start": 389.01,
-   "end": 431.29
+   "start": 388.95,
+   "end": 431.22
   },
   {
    "kind": "entry",
    "title": "Reading Another",
-   "start": 431.29,
-   "end": 457.39
+   "start": 431.22,
+   "end": 457.33
   },
   {
    "kind": "section",
    "title": "The Write Family: the Psi",
-   "start": 457.39,
-   "end": 461.39
+   "start": 457.33,
+   "end": 461.32
   },
   {
    "kind": "entry",
    "title": "Steering, Not Writing",
-   "start": 461.39,
-   "end": 521.22
+   "start": 461.32,
+   "end": 521.16
   },
   {
    "kind": "entry",
    "title": "What Comes Back",
-   "start": 521.22,
-   "end": 541.71
+   "start": 521.16,
+   "end": 541.65
   },
   {
    "kind": "entry",
    "title": "Telekinesis and Pyrokinesis",
-   "start": 541.71,
-   "end": 577.18
+   "start": 541.65,
+   "end": 577.12
   },
   {
    "kind": "entry",
    "title": "Mending",
-   "start": 577.18,
-   "end": 597.95
+   "start": 577.12,
+   "end": 597.89
   },
   {
    "kind": "entry",
    "title": "Fortune and Weathering",
-   "start": 597.95,
-   "end": 634.89
+   "start": 597.89,
+   "end": 634.82
   },
   {
    "kind": "section",
    "title": "What the Physics Allows",
-   "start": 634.89,
-   "end": 638.78
+   "start": 634.82,
+   "end": 638.71
   },
   {
    "kind": "entry",
    "title": "Ripples",
-   "start": 638.78,
-   "end": 664.15
+   "start": 638.71,
+   "end": 664.09
   },
   {
    "kind": "entry",
    "title": "All Paths",
-   "start": 664.15,
-   "end": 679.59
+   "start": 664.09,
+   "end": 679.52
   },
   {
    "kind": "entry",
    "title": "The Lever You Cannot Pull",
-   "start": 679.59,
-   "end": 720.33
+   "start": 679.52,
+   "end": 720.26
   },
   {
    "kind": "entry",
    "title": "The Two Slits",
-   "start": 720.33,
-   "end": 752.76
+   "start": 720.26,
+   "end": 752.7
   },
   {
    "kind": "entry",
    "title": "No One Spoon",
-   "start": 752.76,
-   "end": 774.27
+   "start": 752.7,
+   "end": 774.21
   },
   {
    "kind": "section",
    "title": "The Link Family: the Bonds",
-   "start": 774.27,
-   "end": 778.38
+   "start": 774.21,
+   "end": 778.31
   },
   {
    "kind": "entry",
    "title": "Two Seams on One Lean",
-   "start": 778.38,
-   "end": 823.11
+   "start": 778.31,
+   "end": 823.04
   },
   {
    "kind": "entry",
    "title": "Telepathy and the Empathic Bond",
-   "start": 823.11,
-   "end": 863.5
+   "start": 823.04,
+   "end": 863.44
   },
   {
    "kind": "entry",
    "title": "The Kindred Bond",
-   "start": 863.5,
-   "end": 906.52
+   "start": 863.44,
+   "end": 906.46
   },
   {
    "kind": "entry",
    "title": "The Chorus",
-   "start": 906.52,
-   "end": 931.41
+   "start": 906.46,
+   "end": 931.34
   },
   {
    "kind": "section",
    "title": "Belief and Spelling",
-   "start": 931.41,
-   "end": 934.98
+   "start": 931.34,
+   "end": 934.91
   },
   {
    "kind": "entry",
    "title": "Belief",
-   "start": 934.98,
-   "end": 972.77
+   "start": 934.91,
+   "end": 972.71
   },
   {
    "kind": "entry",
    "title": "The Cost of Hacking Belief",
-   "start": 972.77,
-   "end": 1014.77
+   "start": 972.71,
+   "end": 1014.71
   },
   {
    "kind": "entry",
    "title": "Spelling",
-   "start": 1014.77,
-   "end": 1059.77
+   "start": 1014.71,
+   "end": 1059.71
   },
   {
    "kind": "entry",
    "title": "Things Are Processes",
-   "start": 1059.77,
-   "end": 1100.17
+   "start": 1059.71,
+   "end": 1100.11
   },
   {
    "kind": "entry",
    "title": "Better Spelling",
-   "start": 1100.17,
-   "end": 1142.34
+   "start": 1100.11,
+   "end": 1142.27
   },
   {
    "kind": "section",
    "title": "Balancing the Mind",
-   "start": 1142.34,
-   "end": 1146.04
+   "start": 1142.27,
+   "end": 1145.97
   },
   {
    "kind": "entry",
    "title": "Virtues and Shadows",
-   "start": 1146.04,
-   "end": 1186.9
+   "start": 1145.97,
+   "end": 1186.84
   },
   {
    "kind": "entry",
    "title": "The Seven Pairings",
-   "start": 1186.9,
-   "end": 1228.07
+   "start": 1186.84,
+   "end": 1228.01
   },
   {
    "kind": "entry",
    "title": "The Last Three, One a Day",
-   "start": 1228.07,
-   "end": 1263.03
+   "start": 1228.01,
+   "end": 1262.96
   },
   {
    "kind": "section",
    "title": "Balancing the Body",
-   "start": 1263.03,
-   "end": 1266.68
+   "start": 1262.96,
+   "end": 1266.62
   },
   {
    "kind": "entry",
    "title": "The Seven Centres",
-   "start": 1266.68,
-   "end": 1309.02
+   "start": 1266.62,
+   "end": 1308.96
   },
   {
    "kind": "entry",
    "title": "Root, Sacral and Solar Plexus",
-   "start": 1309.02,
-   "end": 1362.65
+   "start": 1308.96,
+   "end": 1362.58
   },
   {
    "kind": "entry",
    "title": "Heart and Throat",
-   "start": 1362.65,
-   "end": 1398.09
+   "start": 1362.58,
+   "end": 1398.03
   },
   {
    "kind": "entry",
    "title": "Third Eye and Crown",
-   "start": 1398.09,
-   "end": 1440.92
+   "start": 1398.03,
+   "end": 1440.86
   },
   {
    "kind": "entry",
    "title": "The Third Eye and the Crown",
-   "start": 1440.92,
-   "end": 1490.53
+   "start": 1440.86,
+   "end": 1490.47
   },
   {
    "kind": "section",
    "title": "The Daily Routine",
-   "start": 1490.53,
-   "end": 1494.25
+   "start": 1490.47,
+   "end": 1494.19
   },
   {
    "kind": "entry",
    "title": "The Week Is a Climb",
-   "start": 1494.25,
-   "end": 1539.34
+   "start": 1494.19,
+   "end": 1539.28
   },
   {
    "kind": "entry",
    "title": "At Waking, and Through the Day",
-   "start": 1539.34,
-   "end": 1572.65
+   "start": 1539.28,
+   "end": 1572.59
   },
   {
    "kind": "entry",
    "title": "At Rest",
-   "start": 1572.65,
-   "end": 1594.55
+   "start": 1572.59,
+   "end": 1594.49
   },
   {
    "kind": "entry",
    "title": "The Day for Reads",
-   "start": 1594.55,
-   "end": 1611.72
+   "start": 1594.49,
+   "end": 1611.65
   },
   {
    "kind": "entry",
    "title": "The Day for Looking Back",
-   "start": 1611.72,
-   "end": 1642.39
+   "start": 1611.65,
+   "end": 1642.32
   },
   {
    "kind": "entry",
    "title": "Before You Steer",
-   "start": 1642.39,
-   "end": 1682.89
+   "start": 1642.32,
+   "end": 1682.82
   },
   {
    "kind": "section",
    "title": "Staying Correctable",
-   "start": 1682.89,
-   "end": 1686.8
+   "start": 1682.82,
+   "end": 1686.74
   },
   {
    "kind": "entry",
    "title": "A Misread",
-   "start": 1686.8,
-   "end": 1725.21
+   "start": 1686.74,
+   "end": 1725.15
   },
   {
    "kind": "entry",
    "title": "The Mask",
-   "start": 1725.21,
-   "end": 1772.87
+   "start": 1725.15,
+   "end": 1772.8
   },
   {
    "kind": "entry",
    "title": "The Same Drive",
-   "start": 1772.87,
-   "end": 1816.55
+   "start": 1772.8,
+   "end": 1816.48
   },
   {
    "kind": "entry",
    "title": "Two Voices",
-   "start": 1816.55,
-   "end": 1879.11
+   "start": 1816.48,
+   "end": 1879.04
   },
   {
    "kind": "entry",
    "title": "Recognition, Not Force",
-   "start": 1879.11,
-   "end": 1925.86
+   "start": 1879.04,
+   "end": 1925.8
   },
   {
    "kind": "entry",
    "title": "A Last Word",
-   "start": 1925.86,
-   "end": 1948.31
+   "start": 1925.8,
+   "end": 1948.24
   }
  ]
 }
