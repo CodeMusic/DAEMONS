@@ -64,7 +64,7 @@ ap.add_argument("--main", choices="ABC")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
 MAIN_RECOMMENDED = "A"
-APPROVED = None                      # the user's pick, once made: "A", "B" or "C"
+APPROVED = "A"                       # the user's pick, 2026-11-06: A TERMINAL, and the whole family with it
 
 
 def q5(c):

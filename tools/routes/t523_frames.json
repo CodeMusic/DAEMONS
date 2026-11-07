@@ -1,0 +1,61 @@
+{
+ "rom": "debug",
+ "about": "T-523 (built 2026-11-06, the user chose A TERMINAL and the whole family): the new message box and its more-text arrow, a sign, the START menu, OPTIONS' FRAME cycled through all ten, and the box and START again on a SATURDAY at night, so the weekday's trim and the hour's tint still reach the new frames. DEBUG overrides poked and put back; the theatre's debug scratch save, never the user's.",
+ "stops": [
+  {
+   "stop": "a quiet TUESDAY by day: a dialogue box with the arrow, a sign, START",
+   "steps": [
+    "load debug",
+    "repel 999",
+    "poke gDaemonsWeatherOverride 8 1",
+    "poke gDaemonsDateOverride 8 37",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsSeasonOverride 8 0",
+    "poke gDaemonsWatchOverride 8 1",
+    "goto CeruleanCity 14 23",
+    "wait 60",
+    "talk Policeman",
+    "close",
+    "goto ViridianCity 20 18",
+    "look 20 16",
+    "close",
+    "press START",
+    "close"
+   ]
+  },
+  {
+   "stop": "OPTIONS: the FRAME picker, all ten",
+   "steps": [
+    "open OPTION",
+    "press DOWN 5",
+    "press RIGHT 10",
+    "press B",
+    "close",
+    "press START",
+    "close"
+   ]
+  },
+  {
+   "stop": "SATURDAY at night: the box and START, the day's trim and the hour's tint",
+   "steps": [
+    "poke gDaemonsWeekdayOverride 8 7",
+    "poke gDaemonsWatchOverride 8 3",
+    "goto CeruleanCity 14 23",
+    "wait 60",
+    "talk Policeman",
+    "close",
+    "press START",
+    "close"
+   ]
+  },
+  {
+   "stop": "put back",
+   "steps": [
+    "poke gDaemonsWeatherOverride 8 0",
+    "poke gDaemonsDateOverride 8 0",
+    "poke gDaemonsWeekdayOverride 8 0",
+    "poke gDaemonsWatchOverride 8 0"
+   ]
+  }
+ ]
+}

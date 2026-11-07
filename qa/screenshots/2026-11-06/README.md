@@ -319,3 +319,21 @@ T-445 built (the user, 2026-11-06: "Build the top one"): the TANOBY chambers' pa
 T-523 DRAFT (the user away; "Text boxes first"): new text window frames drawn by hand in code on the engine's own tile grid and palette slots -- the message box and sign in three directions (A TERMINAL, B MANUSCRIPT, C CIRCUIT), the ten OPTIONS frames as one family, and a new more-text arrow; each beside the engine's, and at real size with two lines in the game's font. Nothing in the engine; waits on the user's pick (recommended: A).
 
 ![6Nov2026 - T523 - text window frames draft - 64](6Nov2026%20-%20T523%20-%20text%20window%20frames%20draft%20-%2064.png)
+
+### 6Nov2026 - T523 - built frames - box, arrow, sign, START - 65
+
+T-523 built (A TERMINAL, the user 2026-11-06), the debug ROM in the theatre: the message box with the new more-text arrow (CERULEAN's policeman), a sign (CALLOW CITY) and the START menu, on a quiet Tuesday by day.
+
+![6Nov2026 - T523 - built frames - box, arrow, sign, START - 65](6Nov2026%20-%20T523%20-%20built%20frames%20-%20box%2C%20arrow%2C%20sign%2C%20START%20-%2065.png)
+
+### 6Nov2026 - T523 - built frames - OPTIONS FRAME, all ten - 66
+
+T-523 built: OPTIONS' FRAME cycled TYPE 1 to 10 and back -- TERMINAL, MANUSCRIPT, CIRCUIT, PHOSPHOR, AMBER, VELLUM, BRASS, NIGHT, SALT, HERMETIC -- each redrawn round the options window as it is picked.
+
+![6Nov2026 - T523 - built frames - OPTIONS FRAME, all ten - 66](6Nov2026%20-%20T523%20-%20built%20frames%20-%20OPTIONS%20FRAME%2C%20all%20ten%20-%2066.png)
+
+### 6Nov2026 - T523 - built frames - Saturday at night - 67
+
+T-523 built: the same box and START on a SATURDAY at night -- the hour's tint still reaches the new frame (12, 13, 15) and the weekday's trim the corner glyph (14).
+
+![6Nov2026 - T523 - built frames - Saturday at night - 67](6Nov2026%20-%20T523%20-%20built%20frames%20-%20Saturday%20at%20night%20-%2067.png)

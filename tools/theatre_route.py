@@ -65,7 +65,7 @@ a stop that needs longer than --stop-timeout (T-451):
                                an evolution or a trade, as the follower sees one)
     bag ITEM_X [N] [first]     T-433: put N (default 1) of an item in its pocket of the bag, or top it up to N; with
                                first, in the pocket's top slot, and the bag set to open there with its cursor on it
-    open BAG|DAEMON|INDEX|SPELLBOOK   T-433: START, then that entry, opened (captured); T-519 the SPELLBOOK
+    open BAG|DAEMON|INDEX|SPELLBOOK|OPTION   T-433: START, then that entry, opened (captured); T-519 the SPELLBOOK, T-523 OPTION
     swap SLOT SLOT             T-433: two party daemons change places (their records swapped whole)
     useitem ITEM_X             T-433, DEBUG: the item used on party daemon 1 as the party menu would (gSpecialVar_ItemId
                                poked, then GAME EVENTS -> FEELINGS -> USE THE ITEM ON SLOT 1)
@@ -1749,7 +1749,8 @@ class Runner:
             if not self.free():
                 raise RouteError("open needs the player free on the overworld")
             self.start_menu({"INDEX": 0, "BAG": 2, "DAEMON": 1}.get(args[0])
-                            if args[0] != "SPELLBOOK" else start_menu_entries()["STARTMENU_SPELLBOOK"])   # T-519
+                            if args[0] in ("INDEX", "BAG", "DAEMON")
+                            else start_menu_entries()["STARTMENU_" + args[0]])   # T-519 SPELLBOOK, T-523 OPTION
             tw.run("hold A 6", "wait 100")
             self.capture("START: " + args[0], read_text=False)
         elif op == "useitem":                                               # T-433

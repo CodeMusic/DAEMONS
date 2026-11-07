@@ -466,10 +466,20 @@ def frame_drawing(n):
 
 
 def start_styles():
-    """The frame styles (0-based, as optionsWindowFrameType counts) that are style 1's drawing pixel for pixel -- the
-    ones whose index 12 is the eight inner-corner pixels and 11 the inner bevel. Measured, not listed."""
+    """The frame styles (0-based, as optionsWindowFrameType counts) that keep style 1's contract -- index 12 is the
+    eight inner-corner pixels and nothing else, and the inner bevel (the ring round the paper, 11 with 12 at its
+    corners) is style 1's pixel for pixel. Measured, not listed. T-523: until the frames were redrawn as one family
+    this asked for style 1's whole drawing, which was the same thing in vanilla (styles 1, 3, 4, 5 were one drawing
+    recoloured); the redrawn ten differ outside the ring and keep the contract inside it, so the ring is what is
+    measured now."""
+    w = 24
+    ring = [(x, y) for y in range(5, 19) for x in range(5, 19) if x in (5, 18) or y in (5, 18)]
     one = frame_drawing(1)
-    return [n - 1 for n in range(1, FRAME_STYLES + 1) if frame_drawing(n) == one]
+    def keeps(d):
+        if any(d[y * w + x] != one[y * w + x] for x, y in ring):
+            return False
+        return all(v != 12 or (i % w, i // w) in ring for i, v in enumerate(d))
+    return [n - 1 for n in range(1, FRAME_STYLES + 1) if keeps(frame_drawing(n))]
 
 
 def table():
