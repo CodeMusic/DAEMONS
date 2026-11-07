@@ -11,9 +11,9 @@
     python3 tools/gbaitemicons.py --write --approved --all             #   (or every one); refuses without --approved
 
 DRAFT, 2026-11-07, the user away ("Item icons" next, from the vanilla-art census, gap 4). BUILT the same day: the user, "Build all
-41" -- and batch 2's forty-seven the same day too: the user, "Build all 47". APPROVED holds every icon of both batches, `--all`
-writes both, and the report exits 1 when the engine is not what that write makes. Batch 3 (ICONS3, `--draft --batch 3`:
-the held items and the TRAP TABLE's TRAPs) is DRAFT and not in APPROVED, so `--all` leaves it out. Every pixel here is drawn in
+41" -- and batch 2's forty-seven the same day too: the user, "Build all 47", and batch 3's fifty-seven (ICONS3, `--draft
+--batch 3`: the held items and the TRAP TABLE's TRAPs) the same day: the user, "Build all 57". APPROVED holds every icon of
+all three batches, `--all` writes all three, and the report exits 1 when the engine is not what that write makes. Every pixel here is drawn in
 code, by hand, on the 24x24 grid: no AI image, nothing traced. The engine's own icons are read only to show them
 beside ours on the sheet.
 
@@ -1647,8 +1647,8 @@ APPROVED = APPROVED + [e[0] for e in ICONS2]      # the user, 2026-11-07: "Build
 
 # ================================================================================================= batch 3
 #  Drafted 2026-11-07, the user away, after batch 2 was built (the user: "Icons batch 3"). `--draft --batch 3` draws
-#  them. NOT in APPROVED: nothing here reaches the engine until the user picks from the sheet, item by item
-#  (`--write --approved ITEM ...`). The held items and the TRAP TABLE's TRAPs.
+#  them. APPROVED the same day (the user: "Build all 57"), so `--all` writes them with batches 1 and 2.
+#  The held items and the TRAP TABLE's TRAPs.
 #  Not drawn, because no player can get them (no gift, ball, hidden item, prize, mart, wild hold or holiday gives
 #  them; only the unused battle tower and the TRAINER TOWER's own trainers hold them): INNER STATE (SOUL DEW), DEEP
 #  FEATURE and DEEP LAYER (only a trade evolution names them), SUPPLY RAIL (LIGHT BALL), RECLAIM (SHELL BELL), and
@@ -2232,7 +2232,7 @@ ICONS3 = [
     ("bitter_trap", "BITTER TRAP", ["ITEM_AGUAV_BERRY"], i_bitter_trap, "own", "the same; a dark coffee bean"),
     ("sour_trap", "SOUR TRAP", ["ITEM_IAPAPA_BERRY"], i_sour_trap, "own", "the same; a lemon wedge"),
 ]
-#  ICONS3 is NOT in APPROVED: the user picks from the sheet first.
+APPROVED = APPROVED + [e[0] for e in ICONS3]      # the user, 2026-11-07: "Build all 57"
 
 
 # ================================================================================================= the engine's files
@@ -2704,8 +2704,8 @@ def mocks3(out, made, texts):
 
 def report():
     rows, files, vfiles = table_rows(), symbol_files(), vanilla_files()
-    print("  T-525 item icons, batches 1-3: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\"); "
-          "batch 3's %d are DRAFT" % (len(ICONS) + len(ICONS2) + len(ICONS3), len(APPROVED), len(ICONS3)))
+    print("  T-525 item icons, batches 1-3: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\", \"Build all 57\")"
+          % (len(ICONS) + len(ICONS2) + len(ICONS3), len(APPROVED)))
     for e in ICONS + ICONS2 + ICONS3:
         key, name, items, _, mode, what = e
         idx, pal = make(e)
@@ -2803,7 +2803,7 @@ def main():
         if not A.approved:
             print("  --write refuses without --approved: the user picks from the sheet first (T-525).")
             return 0
-        keys = [e[0] for e in ICONS + ICONS2] if A.all else (A.items or APPROVED)
+        keys = [e[0] for e in ICONS + ICONS2 + ICONS3] if A.all else (A.items or APPROVED)
         if not keys:
             print("  --write --approved names no items, and none is approved yet: nothing written.")
             return 0
@@ -2818,7 +2818,7 @@ def main():
             print("  the engine is NOT what the approved write makes: %d files (%s%s) -- run --write --approved --all"
                   % (len(d), ", ".join(d[:4]), " ..." if len(d) > 4 else ""))
             return 1
-        print("  the engine holds every approved icon (%d of %d)" % (len(APPROVED), len(ICONS) + len(ICONS2)))
+        print("  the engine holds every approved icon (%d of %d)" % (len(APPROVED), len(ICONS) + len(ICONS2) + len(ICONS3)))
     return 0
 
 

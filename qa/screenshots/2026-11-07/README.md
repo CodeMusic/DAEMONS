@@ -109,3 +109,27 @@ T-525 batch 3 DRAFT: 57 icons (42 held items, 15 TRAPs), each beside the engine'
 T-526 DRAFT: 16 item descriptions that still read as FireRed's, the engine's words beside the drafts, in the BAG's font and 200x48 window at 2x; nothing is in the engine yet
 
 ![7Nov2026 - T526 - item descriptions now against DRAFT - 18](7Nov2026%20-%20T526%20-%20item%20descriptions%20now%20against%20DRAFT%20-%2018.png)
+
+### 7Nov2026 - T525 - batch 3 built - ITEMS pocket held items - 19
+
+T-525 batch 3 built (engine cfa651de8): the ITEMS pocket in the theatre, DEBUG build -- DITHER to OFF BY ONE, each held item with its icon, stopped at the last one (DRAFT words)
+
+![7Nov2026 - T525 - batch 3 built - ITEMS pocket held items - 19](7Nov2026%20-%20T525%20-%20batch%203%20built%20-%20ITEMS%20pocket%20held%20items%20-%2019.png)
+
+### 7Nov2026 - T525 - batch 3 built - ITEMS pocket the GAINs - 20
+
+T-525 batch 3 built (engine cfa651de8): the seventeen GAINs in the ITEMS pocket, each one amplifier in its type's hue, stopped at CONTENT GAIN (DRAFT words)
+
+![7Nov2026 - T525 - batch 3 built - ITEMS pocket the GAINs - 20](7Nov2026%20-%20T525%20-%20batch%203%20built%20-%20ITEMS%20pocket%20the%20GAINs%20-%2020.png)
+
+### 7Nov2026 - T525 - batch 3 built - TRAP TABLE the TRAPs - 21
+
+T-525 batch 3 built (engine cfa651de8): the TRAP TABLE's fifteen TRAPs in the theatre, stopped at SOUR TRAP (DRAFT words)
+
+![7Nov2026 - T525 - batch 3 built - TRAP TABLE the TRAPs - 21](7Nov2026%20-%20T525%20-%20batch%203%20built%20-%20TRAP%20TABLE%20the%20TRAPs%20-%2021.png)
+
+### 7Nov2026 - T525 - TRAP TABLE text bugs - 22
+
+T-525/T-526: the TRAP TABLE at 3x -- THROTTLE TRAP's row runs into row 2 (No02 SU..., its x 2 lost: a 13-letter name overflows the pouch's 27-byte row), and a three-line TRAP description loses its third line in the 32px window
+
+![7Nov2026 - T525 - TRAP TABLE text bugs - 22](7Nov2026%20-%20T525%20-%20TRAP%20TABLE%20text%20bugs%20-%2022.png)
