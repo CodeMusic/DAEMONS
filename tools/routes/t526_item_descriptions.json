@@ -1,0 +1,104 @@
+{
+ "rom": "debug",
+ "about": "T-526 (built 2026-11-07, the user: \"Build all 16\"): the redrafted item descriptions in the BAG -- the KEY ITEMS pocket's TOKEN CASE, S.S. TICKET and BIKE VOUCHER, the ITEMS pocket's LAVA COOKIE and the scarves naming their day -- and THE SUBTLE LAYER's cover, \"a USER's handbook\". Items put in the theatre's debug scratch save with `bag`; nothing is saved, never the user's. And the TRAP TABLE (the user, 2026-11-07): THROTTLE TRAP's row whole with its x2 and the row below it intact (src/berry_pouch.c, a 32-byte row), and the ten TRAP descriptions in two lines. DRAFT words.",
+ "stops": [
+  {
+   "stop": "KEY ITEMS: TOKEN CASE, S.S. TICKET, BIKE VOUCHER",
+   "timeout": 1200,
+   "steps": [
+    "load debug",
+    "repel 999",
+    "goto ViridianCity 20 18",
+    "bag ITEM_SS_TICKET 1",
+    "bag ITEM_BIKE_VOUCHER 1",
+    "bag ITEM_COIN_CASE 1 first",
+    "open BAG",
+    "press DOWN 1",
+    "press DOWN 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "ITEMS: LAVA COOKIE and the scarves",
+   "timeout": 1200,
+   "steps": [
+    "load debug",
+    "repel 999",
+    "goto ViridianCity 20 18",
+    "bag ITEM_RED_SCARF 1",
+    "bag ITEM_GREEN_SCARF 1",
+    "bag ITEM_PINK_SCARF 1",
+    "bag ITEM_LAVA_COOKIE 1 first",
+    "open BAG",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "THE SUBTLE LAYER: its description, and its cover",
+   "timeout": 1200,
+   "steps": [
+    "load debug",
+    "repel 999",
+    "goto ViridianCity 20 18",
+    "flag FLAG_GOT_SUBTLE_LAYER 1",
+    "bag ITEM_SUBTLE_LAYER 1 first",
+    "open BAG",
+    "press A",
+    "wait 30",
+    "shot the item's menu",
+    "press A",
+    "wait 150",
+    "shot the cover",
+    "close"
+   ]
+  },
+  {
+   "stop": "the TRAP TABLE: THROTTLE TRAP's x2, the row below it, and the ten TRAPs in two lines",
+   "timeout": 1800,
+   "steps": [
+    "load debug",
+    "repel 999",
+    "goto ViridianCity 20 18",
+    "bag ITEM_CHERI_BERRY 2",
+    "bag ITEM_CHESTO_BERRY 2",
+    "bag ITEM_PECHA_BERRY 2",
+    "bag ITEM_RAWST_BERRY 2",
+    "bag ITEM_ASPEAR_BERRY 2",
+    "bag ITEM_LEPPA_BERRY 2",
+    "bag ITEM_ORAN_BERRY 2",
+    "bag ITEM_PERSIM_BERRY 2",
+    "bag ITEM_LUM_BERRY 2",
+    "bag ITEM_SITRUS_BERRY 2",
+    "bag ITEM_FIGY_BERRY 2",
+    "bag ITEM_WIKI_BERRY 2",
+    "bag ITEM_MAGO_BERRY 2",
+    "bag ITEM_AGUAV_BERRY 2",
+    "bag ITEM_IAPAPA_BERRY 2",
+    "bag ITEM_BERRY_POUCH 1 first",
+    "open BAG",
+    "press A 1",
+    "press A 1",
+    "wait 90",
+    "shot the TRAP TABLE, THROTTLE TRAP",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "press DOWN 1",
+    "close"
+   ]
+  }
+ ]
+}

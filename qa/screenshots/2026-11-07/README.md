@@ -133,3 +133,45 @@ T-525 batch 3 built (engine cfa651de8): the TRAP TABLE's fifteen TRAPs in the th
 T-525/T-526: the TRAP TABLE at 3x -- THROTTLE TRAP's row runs into row 2 (No02 SU..., its x 2 lost: a 13-letter name overflows the pouch's 27-byte row), and a three-line TRAP description loses its third line in the 32px window
 
 ![7Nov2026 - T525 - TRAP TABLE text bugs - 22](7Nov2026%20-%20T525%20-%20TRAP%20TABLE%20text%20bugs%20-%2022.png)
+
+### 7Nov2026 - T526 - key items in the BAG - 23
+
+T-526 built (DRAFT words): TOKEN CASE and S.S. TICKET in the KEY ITEMS pocket, from the debug ROM in the theatre
+
+![7Nov2026 - T526 - key items in the BAG - 23](7Nov2026%20-%20T526%20-%20key%20items%20in%20the%20BAG%20-%2023.png)
+
+### 7Nov2026 - T526 - LAVA COOKIE and RED SCARF - 24
+
+T-526 built (DRAFT words): LAVA COOKIE baked on hot stone and sold on TWO ISLAND; the RED SCARF names PARADE DAYS
+
+![7Nov2026 - T526 - LAVA COOKIE and RED SCARF - 24](7Nov2026%20-%20T526%20-%20LAVA%20COOKIE%20and%20RED%20SCARF%20-%2024.png)
+
+### 7Nov2026 - T526 - SUBTLE LAYER a USERs handbook - 25
+
+T-526 built (DRAFT words): THE SUBTLE LAYER's description and its cover, both now a USER's handbook
+
+![7Nov2026 - T526 - SUBTLE LAYER a USERs handbook - 25](7Nov2026%20-%20T526%20-%20SUBTLE%20LAYER%20a%20USERs%20handbook%20-%2025.png)
+
+### 7Nov2026 - T526 - SUBTLE LAYER cover before and after - 26
+
+T-526: the book's cover art from gensubtle, before (a trainer's handbook) and after (a USER's handbook), 4x
+
+![7Nov2026 - T526 - SUBTLE LAYER cover before and after - 26](7Nov2026%20-%20T526%20-%20SUBTLE%20LAYER%20cover%20before%20and%20after%20-%2026.png)
+
+### 7Nov2026 - T526 - TRAP TABLE in the theatre - 27
+
+T-526: the TRAP TABLE in the theatre -- THROTTLE TRAP keeps its x2 and SUSPEND TRAP's row is intact (berry_pouch.c rows now 32 bytes); the ten TRAP descriptions in two lines (DRAFT)
+
+![7Nov2026 - T526 - TRAP TABLE in the theatre - 27](7Nov2026%20-%20T526%20-%20TRAP%20TABLE%20in%20the%20theatre%20-%2027.png)
+
+### 7Nov2026 - T526 - TRAP descriptions before and after - 28
+
+T-526: the ten TRAP descriptions before and after, in the TRAP TABLE's own 200x32 two-line window at real size (1x) and 3x; the user: Rewrite to 2 lines (DRAFT)
+
+![7Nov2026 - T526 - TRAP descriptions before and after - 28](7Nov2026%20-%20T526%20-%20TRAP%20descriptions%20before%20and%20after%20-%2028.png)
+
+### 7Nov2026 - T526 - item descriptions before and after - 29
+
+T-526: the 16 item descriptions, the engine before and the built draft, in the BAG's 200x48 window at 2x (DRAFT)
+
+![7Nov2026 - T526 - item descriptions before and after - 29](7Nov2026%20-%20T526%20-%20item%20descriptions%20before%20and%20after%20-%2029.png)

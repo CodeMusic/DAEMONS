@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Write the item descriptions Gen 1 had nowhere to put.
 
-    python3 tools/port_item_text.py [--write]
+    python3 tools/port_item_text.py [--write]       # report exits 1 when the engine is not what --write makes
     python3 tools/port_item_text.py --sheet OUT.png              # T-526: the drafts against the engine, in its font
+    python3 tools/port_item_text.py --trap-sheet OUT.png         # T-526: the TRAP TABLE's rows in its two-line window
     python3 tools/port_item_text.py --write --approved ITEM ...  # T-526: write only those DRAFT descriptions
 
 This is not a port. The Game Boy build has no descriptions to carry over --
@@ -132,33 +133,30 @@ TEXT = {
     #  The TMs. "move" is NO LONGER left alone: the ROUTINES pass (T-37)
     #  swept prose to ROUTINE, and this table is authored, so a re-run was
     #  reverting it. Anything port_vocab sweeps has to be current HERE too.
-    "ITEM_TM06":         ["A ROUTINE that leaves the foe",
-                          "CASCADING. Its damage worsens",
+    "ITEM_TM06":         ["Leaves them CASCADING,",
+                          "and the loss grows with",
                           "every turn."],
-    "ITEM_TM13":         ["An icy-cold beam is shot at the",
-                          "foe. It may leave the",
-                          "target HUNG."],
-    "ITEM_TM14":         ["A vicious snow-and-wind attack that",
-                          "strikes all foe in battle. It",
-                          "may cause a HANG."],
-    "ITEM_TM24":         ["A massive jolt of electricity is",
-                          "launched at the foe. It may",
-                          "cause THROTTLING."],
-    "ITEM_TM25":         ["Strikes the foe with a",
-                          "huge thunderbolt. It may",
-                          "cause THROTTLING."],
-    "ITEM_TM35":         ["The foe is roasted with a",
-                          "heavy blast of fire. It may",
-                          "leave the target OVERHEATED."],
-    "ITEM_TM36":         ["Toxic sludge is hurled at the",
-                          "foe with great force. It may",
-                          "leave the target LEAKING."],
-    "ITEM_TM38":         ["The foe is incinerated with",
-                          "an intense flame. It may leave",
-                          "the target OVERHEATED."],
-    "ITEM_TM42":         ["An attack ROUTINE that becomes",
-                          "very powerful if the user is",
-                          "LEAKING, OVERHEATED or THROTTLED."],
+    "ITEM_TM13":         ["Stops the weights",
+                          "updating. They may",
+                          "end up HUNG."],
+    "ITEM_TM14":         ["Everything stops",
+                          "updating at once. May",
+                          "leave them HUNG."],
+    "ITEM_TM24":         ["Lets the whole stored charge go at",
+                          "once. It may leave them throttled."],
+    "ITEM_TM25":         ["A spike too sudden to plan for.",
+                          "Often misses. May leave them",
+                          "throttled."],
+    "ITEM_TM35":         ["Gives off heat in every direction.",
+                          "It may leave them overheating."],
+    "ITEM_TM36":         ["Everything unwanted,",
+                          "all at once. May",
+                          "cause LEAKING."],
+    "ITEM_TM38":         ["Everything in reach ignites at once.",
+                          "It may leave them overheating."],
+    "ITEM_TM42":         ["Running degraded, it hits twice as",
+                          "hard: overheating, leaking,",
+                          "throttled."],
 
     #  Three of OUR OWN descriptions had no line break at all and ran to 290,
     #  288 and 245 pixels in a box whose ceiling is 198 -- found by measuring
@@ -304,9 +302,9 @@ NAMED = {
     # The rest of the desk.
     "ITEM_BRIGHT_POWDER":  ("DITHER",        ["Noise added on purpose, so that",
                                               "nothing can be pinned exactly.",
-                                              "The foe's aim slips."]),
+                                              "Their aim slips."]),
     "ITEM_LAX_INCENSE":    ("DITHER TRIM",   ["Dither, at a lower setting.",
-                                              "The foe's aim slips a little."]),
+                                              "Their aim slips a little."]),
     "ITEM_LEFTOVERS":      ("HEADROOM",      ["The margin left before anything",
                                               "clips. The holder recovers a",
                                               "little each turn."]),
@@ -352,7 +350,7 @@ NAMED = {
                                               "use. The holder recovers HP on",
                                               "striking."]),
     "ITEM_KINGS_ROCK":     ("BUBBLE",        ["A gap pushed into a pipeline",
-                                              "where nothing issues. The foe",
+                                              "where nothing issues. They",
                                               "may flinch."]),
     "ITEM_CHOICE_BAND":    ("HARD CODED",    ["One value, written in, with no",
                                               "way to pass another. Powers up",
@@ -365,7 +363,7 @@ NAMED = {
                                               "bundle. Made by FOUNDRY CO."]),
     "ITEM_DRAGON_SCALE":   ("SCALING LAW",   ["What happens to a thing when",
                                               "you only make it bigger.",
-                                              "A JETSTREAM may be holding it."]),
+                                              "A BACKPRESS may be holding it."]),
 
     # The ones that only work on one host. A device that fits nothing else is
     # still a configuration -- it just has a very short compatibility list.
@@ -375,7 +373,7 @@ NAMED = {
     "ITEM_DEEP_SEA_SCALE": ("DEEP LAYER",    ["The layers nothing outside gets",
                                               "at directly. It raises the",
                                               "SP. DEF stat."]),
-    "ITEM_SOUL_DEW":       ("INNER STATE",   ["An orb for a LATIOS or LATIAS.",
+    "ITEM_SOUL_DEW":       ("INNER STATE",   ["An orb for CASTOR or POLYDEUCES.",
                                               "What it holds, nothing outside",
                                               "can read. Raises both SP. stats."]),
     "ITEM_LIGHT_BALL":     ("SUPPLY RAIL",   ["The line every other part draws",
@@ -388,8 +386,8 @@ NAMED = {
                                               "promised. It raises MOCK's",
                                               "DEFENSE stat."]),
     "ITEM_THICK_CLUB":     ("BARE METAL",    ["Nothing at all between you and",
-                                              "the hardware. It raises RELIC's",
-                                              "and CAIRNLING's ATTACK stat."]),
+                                              "the hardware. It raises",
+                                              "ARTEFACT's and COREFILE's ATTACK."]),
     "ITEM_STICK":          ("OFF BY ONE",    ["The error at the edge that",
                                               "everything else survives. Raises",
                                               "EDGECASE's critical-hit ratio."]),
@@ -681,7 +679,7 @@ BERRIES = {
                                            "random stat in a pinch."]),
 
     "ITEM_BERRY_POUCH":  ("TRAP TABLE",   ["Where the handlers are installed.",
-                                           "It attaches to the BAG's pocket",
+                                           "It attaches to the POOL's pocket",
                                            "for important items."]),
 }
 NAMED.update(BERRIES)
@@ -700,6 +698,10 @@ NAMED.update(BERRIES)
 #
 #  An approved row goes into T526_APPROVED as well, so the whole-table --write below writes it too rather than
 #  putting the old words back. Names are untouched: only description_english moves.
+#  2026-11-07, building it: the whole-table --write had fallen behind the engine on 16 rows written after it last ran
+#  (TM06/13/14/24/25/35/36/38/42 rewritten, the 'they' pass on DITHER, DITHER TRIM and BUBBLE, the species renames
+#  in INNER STATE, SCALING LAW and BARE METAL, POOL in TRAP TABLE). Those rows were brought into the tables above
+#  as the engine has them, so a plain --write now changes nothing -- and main() reports any row it would move.
 T526 = {
     "ITEM_COIN_CASE":    (["A token spends only where it was",
                            "issued. Holds the GAME CORNER's",
@@ -717,26 +719,26 @@ T526 = {
                            "on TWO ISLAND. Ends every state",
                            "of one DAEMON."],
                           "LAVARIDGE TOWN is Hoenn's; TWO ISLAND sells it, and 'status problems' are states"),
-    "ITEM_RED_SCARF":    (["A red scarf, handed out on a",
-                           "holiday. It changes nothing in",
-                           "battle. It is worn for the day."],
-                          "CONTESTS are Hoenn's; PARADE DAYS hands it out, and it does nothing"),
-    "ITEM_BLUE_SCARF":   (["A blue scarf, handed out on a",
-                           "holiday. It changes nothing in",
-                           "battle. It is worn for the day."],
-                          "CONTESTS are Hoenn's; PARADE DAYS hands it out, and it does nothing"),
-    "ITEM_PINK_SCARF":   (["A pink scarf, handed out on a",
-                           "holiday. It changes nothing in",
-                           "battle. It is worn for the day."],
-                          "CONTESTS are Hoenn's; nothing hands this one out, drafted to match its set"),
-    "ITEM_GREEN_SCARF":  (["A green scarf, handed out on a",
-                           "holiday. It changes nothing in",
-                           "battle. It is worn for the day."],
-                          "CONTESTS are Hoenn's; CLOVER DAY and PARADE DAYS hand it out, and it does nothing"),
-    "ITEM_YELLOW_SCARF": (["A yellow scarf, handed out on a",
-                           "holiday. It changes nothing in",
-                           "battle. It is worn for the day."],
-                          "CONTESTS are Hoenn's; PARADE DAYS hands it out, and it does nothing"),
+    "ITEM_RED_SCARF":    (["A red scarf, handed out on",
+                           "PARADE DAYS. It changes nothing",
+                           "in battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; PARADE DAYS hands it out (the user: name the day), and it does nothing"),
+    "ITEM_BLUE_SCARF":   (["A blue scarf, handed out on",
+                           "PARADE DAYS. It changes nothing",
+                           "in battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; PARADE DAYS hands it out (the user: name the day), and it does nothing"),
+    "ITEM_PINK_SCARF":   (["A pink scarf, like the ones handed",
+                           "out on PARADE DAYS. It changes",
+                           "nothing in battle."],
+                          "CONTESTS are Hoenn's; nothing hands this one out, so it names the day its set comes from"),
+    "ITEM_GREEN_SCARF":  (["A green scarf, handed out on",
+                           "CLOVER DAY and PARADE DAYS. It",
+                           "changes nothing in battle."],
+                          "CONTESTS are Hoenn's; CLOVER DAY and PARADE DAYS hand it out (the user: name the day), and it does nothing"),
+    "ITEM_YELLOW_SCARF": (["A yellow scarf, handed out on",
+                           "PARADE DAYS. It changes nothing",
+                           "in battle. It is worn for the day."],
+                          "CONTESTS are Hoenn's; PARADE DAYS hands it out (the user: name the day), and it does nothing"),
     "ITEM_NET_BALL":     (["A somewhat different BOX that",
                            "works especially well on",
                            "FLOW- and SWARM-type DAEMONS."],
@@ -765,18 +767,60 @@ T526 = {
                            "handbook of the craft: read,",
                            "write and link."],
                           "TRAINER is USER everywhere else; the book's cover says 'a trainer's handbook' too"),
+    #  The TRAP TABLE's description window is two lines (src/berry_pouch.c, window 1: 200x32, FONT_NORMAL at y=2), so
+    #  a third line was never seen (T-525 batch 3, qa 7Nov2026 T525 22). The user, 2026-11-07: "Rewrite to 2 lines".
+    "ITEM_CHERI_BERRY":  (["Armed against one condition, spent",
+                           "on it. Ends THROTTLED, once."],
+                          "THROTTLE TRAP: 'once.' fell to a third line the TRAP TABLE never shows"),
+    "ITEM_CHESTO_BERRY": (["Fires when the daemon stops being",
+                           "scheduled. Ends SUSPENDED, once."],
+                          "SUSPEND TRAP: 'once.' fell to a third line"),
+    "ITEM_PERSIM_BERRY": (["Catches a daemon working against",
+                           "itself. Ends THRASHING, once."],
+                          "THRASH TRAP: 'THRASHING, once.' fell to a third line"),
+    "ITEM_ORAN_BERRY":   (["A mark set low. When health falls,",
+                           "it restores 10 HP, once."],
+                          "LOW MARK: 'when health falls, once.' fell to a third line"),
+    "ITEM_SITRUS_BERRY": (["The same, set higher. When health",
+                           "falls, it restores 30 HP, once."],
+                          "HIGH MARK: 'health falls, once.' fell to a third line"),
+    "ITEM_FIGY_BERRY":   (["Restores health. Whether it causes",
+                           "THRASHING depends on the daemon."],
+                          "SPICY TRAP: 'depends on the daemon.' fell to a third line"),
+    "ITEM_WIKI_BERRY":   (["Restores health. Whether it causes",
+                           "THRASHING depends on the daemon."],
+                          "DRY TRAP: the same"),
+    "ITEM_MAGO_BERRY":   (["Restores health. Whether it causes",
+                           "THRASHING depends on the daemon."],
+                          "SWEET TRAP: the same"),
+    "ITEM_AGUAV_BERRY":  (["Restores health. Whether it causes",
+                           "THRASHING depends on the daemon."],
+                          "BITTER TRAP: the same"),
+    "ITEM_IAPAPA_BERRY": (["Restores health. Whether it causes",
+                           "THRASHING depends on the daemon."],
+                          "SOUR TRAP: the same"),
 }
-#  The user approves rows by name; until then this is empty and nothing of T-526 is written by anything.
-T526_APPROVED = []
+#  The rows the TRAP TABLE shows, in its two-line window: each checked at two lines, and drawn so by --trap-sheet.
+T526_TWO_LINES = ["ITEM_CHERI_BERRY", "ITEM_CHESTO_BERRY", "ITEM_PERSIM_BERRY", "ITEM_ORAN_BERRY", "ITEM_SITRUS_BERRY",
+                  "ITEM_FIGY_BERRY", "ITEM_WIKI_BERRY", "ITEM_MAGO_BERRY", "ITEM_AGUAV_BERRY", "ITEM_IAPAPA_BERRY"]
+#  Their three-line words as they stood before, kept for the sheet's NOW column (NAMED is overwritten just below).
+T526_BEFORE = {k: list(NAMED[k][1]) for k in T526_TWO_LINES}
+#  The user approves rows by name. The user, 2026-11-07: "Build all 16" -- every row above, with SUBTLE LAYER's
+#  USER (the book's cover follows: gensubtle.py, bookpdf.py), HOLT's ticket and the cookie's hot stone kept, and the
+#  scarves naming the day. The ten TRAP TABLE rows: the user, "Rewrite to 2 lines", 2026-11-07. Still DRAFT words,
+#  every one.
+T526_APPROVED = list(T526)
 for _k in T526_APPROVED:
     TEXT[_k] = T526[_k][0]
     if _k in NAMED:
         NAMED[_k] = (NAMED[_k][0], T526[_k][0])
 
 
-def _t526_sheet(out, engine_items, measure):
-    """Current against draft, in the engine's latin_normal sheet at its own pixels, one row per draft: the
-    description window is 200x48 (src/bag.c, window 1) and the text starts at y=3, so that is what is drawn."""
+def _t526_sheet(out, engine_items, measure, trap=False):
+    """Current against draft, in the engine's latin_normal sheet at its own pixels, one row per draft: the BAG's
+    description window is 200x48 (src/bag.c, window 1) and the text starts at y=3, so that is what is drawn. With
+    trap, the TRAP TABLE's rows in ITS window -- 200x32 (src/berry_pouch.c, window 1), text at y=2, two lines, so a
+    third line is cut as the game cuts it -- at real size (1x) and at 3x."""
     from PIL import Image, ImageDraw, ImageFont
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import fontwidth
@@ -784,12 +828,13 @@ def _t526_sheet(out, engine_items, measure):
     w, cm = fontwidth.font(GBA)
     fp = font.load()
     PAPER, INK, SHADOW, EDGE = (255, 255, 255), (98, 98, 98), (213, 213, 205), (232, 120, 120)
+    H, TOP = (32, 2) if trap else (48, 3)
 
     def pane(lines):
-        im = Image.new("RGB", (200, 48), PAPER)
+        im = Image.new("RGB", (200, H), PAPER)
         px = im.load()
         for row, s in enumerate(lines[:3]):
-            x, y = 0, 3 + row * 14
+            x, y = 0, TOP + row * 14
             for ch in s:
                 b = cm.get(ch)
                 if b is None:
@@ -798,10 +843,10 @@ def _t526_sheet(out, engine_items, measure):
                 for yy in range(16):
                     for xx in range(min(16, w[b])):
                         v = fp[gx + xx, gy + yy]
-                        if 0 <= x + xx < 200 and 0 <= y + yy < 48 and v in (1, 2):
+                        if 0 <= x + xx < 200 and 0 <= y + yy < H and v in (1, 2):
                             px[x + xx, y + yy] = INK if v == 1 else SHADOW
                 x += w[b]
-        for yy in range(0, 48, 2):                      # the 198px budget, dotted
+        for yy in range(0, H, 2):                       # the 198px budget, dotted
             px[198, yy] = EDGE
         return im
 
@@ -809,24 +854,35 @@ def _t526_sheet(out, engine_items, measure):
         label = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 11)
     except Exception:
         label = ImageFont.load_default()
-    S, ROW, LEFT = 2, 48 * 2 + 18, 150
-    keys = list(T526)
-    sheet = Image.new("RGB", (LEFT + 2 * (200 * S + 16) + 8, 44 + len(keys) * ROW), (28, 30, 36))
+    LEFT = 150
+    scales = (1, 3) if trap else (2,)
+    keys = list(T526_TWO_LINES) if trap else [k for k in T526 if k not in T526_TWO_LINES]
+    ROW = max(H * max(scales), 40) + 18
+    cols = [(sc, which) for sc in scales for which in ("NOW", "DRAFT")]
+    xs, x = [], LEFT
+    for sc, _ in cols:
+        xs.append(x)
+        x += 200 * sc + 16
+    sheet = Image.new("RGB", (x + 8, 44 + len(keys) * ROW), (28, 30, 36))
     d = ImageDraw.Draw(sheet)
-    d.text((8, 6), "T-526 item descriptions, DRAFT -- the BAG's own font and 200x48 window, at 2x. Left: the engine "
-                   "now. Right: the draft. Dotted: the 198px budget.", fill=(220, 220, 224), font=label)
-    d.text((LEFT, 24), "NOW", fill=(160, 160, 170), font=label)
-    d.text((LEFT + 200 * S + 16, 24), "DRAFT", fill=(240, 200, 120), font=label)
+    d.text((8, 6), ("T-526 TRAP TABLE descriptions, DRAFT -- its own font and 200x32 window (two lines), at 1x (real "
+                    "size) and 3x. NOW is cut where the game cuts it." if trap else
+                    "T-526 item descriptions, DRAFT -- the BAG's own font and 200x48 window, at 2x. Left: the engine "
+                    "now. Right: the draft.") + " Dotted: the 198px budget.", fill=(220, 220, 224), font=label)
+    for (sc, which), cx in zip(cols, xs):
+        d.text((cx, 24), "%s %dx" % (which, sc), fill=(240, 200, 120) if which == "DRAFT" else (160, 160, 170),
+               font=label)
     for i, k in enumerate(keys):
         y = 40 + i * ROW
         it = engine_items[k]
         d.text((8, y + 4), it["english"], fill=(230, 230, 234), font=label)
         d.text((8, y + 20), k.replace("ITEM_", ""), fill=(140, 140, 150), font=label)
-        now = it["description_english"].split("\\n")
         new = T526[k][0]
+        #  the engine's words before T-526 wrote them: once written, NOW would show the draft twice
+        now = T526_BEFORE.get(k, it["description_english"].split("\\n"))
         d.text((8, y + 36), "%dpx max" % max(measure(l) for l in new), fill=(140, 140, 150), font=label)
-        sheet.paste(pane(now).resize((200 * S, 48 * S), Image.NEAREST), (LEFT, y))
-        sheet.paste(pane(new).resize((200 * S, 48 * S), Image.NEAREST), (LEFT + 200 * S + 16, y))
+        for (sc, which), cx in zip(cols, xs):
+            sheet.paste(pane(now if which == "NOW" else new).resize((200 * sc, H * sc), Image.NEAREST), (cx, y))
     sheet.save(out)
     print("  sheet: %s (%d rows)" % (out, len(keys)))
 
@@ -854,90 +910,119 @@ def _pixels():
         sys.argv = argv
 
 BUDGET = 198
-textwidth = _pixels()
+textwidth = None
 
-TEXT.update({k: v[1] for k, v in NAMED.items()})
+def main():
+    global textwidth
+    textwidth = _pixels()
+    rc = 0
+    TEXT.update({k: v[1] for k, v in NAMED.items()})
 
-raw = open(PATH).read()
-rc = 0
-widest = 0
-for item_id, lines in TEXT.items():
-    for ln in lines:
-        w = textwidth(ln) if textwidth else None
-        if w is not None:
-            widest = max(widest, w)
-            if w > BUDGET:
-                print("  !! %s: %dpx > %d -- %s" % (item_id, w, BUDGET, ln)); rc = 1
-        elif len(ln) > WIDTH:
-            print("  !! %s: %d chars > %d -- %s" % (item_id, len(ln), WIDTH, ln)); rc = 1
-    body = json.dumps("\\n".join(lines))[1:-1]
-    # Rewrite the description that follows this itemId, and only that one.
-    pat = re.compile(r'("itemId": "%s".*?"description_english": ")(.*?)(")' % re.escape(item_id), re.S)
-    raw, n = pat.subn(lambda m: m.group(1) + body + m.group(3), raw, count=1)
-    if not n:
-        print("  !! %s not found" % item_id); rc = 1
-#  Names are thirteen characters -- ITEM_NAME_LENGTH is 14 and the terminator
-#  takes one. check_lexicon.py owns the collision half; this owns the budget.
-NAME_MAX = 13
-for item_id, (name, _lines) in NAMED.items():
-    if len(name) > NAME_MAX:
-        print("  !! %s: name %d chars > %d -- %s" % (item_id, len(name), NAME_MAX, name)); rc = 1
-        continue
-    pat = re.compile(r'("english": ")([^"]*)("(?:[^{}]*?)"itemId": "%s")' % re.escape(item_id))
-    raw, n = pat.subn(lambda m: m.group(1) + name + m.group(3), raw, count=1)
-    if not n:
-        print("  !! %s name anchor not found" % item_id); rc = 1
-
-print("  %d descriptions, widest %dpx of %d" % (len(TEXT), widest, BUDGET))
-print("  %d held items named" % len(NAMED))
-
-#  T-526: the drafts are measured on every run, and written only as --write --approved names them.
-engine_items = {it["itemId"]: it for it in json.loads(open(PATH).read())["items"]}
-def _measure(ln):
-    return textwidth(ln) if textwidth else len(ln) * 6
-for item_id, (lines, _why) in T526.items():
-    if item_id not in engine_items:
-        print("  !! T-526 %s not in items.json" % item_id); rc = 1
-    if len(lines) > 3:
-        print("  !! T-526 %s: %d lines > 3" % (item_id, len(lines))); rc = 1
-    for ln in lines:
-        if _measure(ln) > BUDGET:
-            print("  !! T-526 %s: %dpx > %d -- %s" % (item_id, _measure(ln), BUDGET, ln)); rc = 1
-held = [k for k in T526 if engine_items.get(k, {}).get("description_english") == "\\n".join(T526[k][0])]
-print("  T-526: %d DRAFT descriptions, %d approved, %d in the engine" % (len(T526), len(T526_APPROVED), len(held)))
-if "--sheet" in sys.argv:
-    _t526_sheet(sys.argv[sys.argv.index("--sheet") + 1], engine_items, _measure)
-
-if "--approved" in sys.argv:
-    named = []
-    for a in sys.argv[sys.argv.index("--approved") + 1:]:
-        if a.startswith("--"):
-            break
-        named.append(a if a.startswith("ITEM_") else "ITEM_" + a)
-    named = named or list(T526_APPROVED)
-    unknown = [k for k in named if k not in T526]
-    if unknown:
-        print("  !! --approved names rows T-526 does not hold: %s" % " ".join(unknown)); sys.exit(1)
-    if not named:
-        print("  --approved names no rows, and none is approved yet: nothing written.")
-        sys.exit(rc)
-    if "--write" not in sys.argv or rc:
-        print("  would write %d T-526 rows: %s" % (len(named), " ".join(named)))
-        sys.exit(rc)
-    #  ONLY those rows' descriptions, read fresh from the engine, so nothing else in the file moves.
     raw = open(PATH).read()
-    for item_id in named:
-        body = json.dumps("\\n".join(T526[item_id][0]))[1:-1]
+    rc = 0
+    widest = 0
+    for item_id, lines in TEXT.items():
+        for ln in lines:
+            w = textwidth(ln) if textwidth else None
+            if w is not None:
+                widest = max(widest, w)
+                if w > BUDGET:
+                    print("  !! %s: %dpx > %d -- %s" % (item_id, w, BUDGET, ln)); rc = 1
+            elif len(ln) > WIDTH:
+                print("  !! %s: %d chars > %d -- %s" % (item_id, len(ln), WIDTH, ln)); rc = 1
+        body = json.dumps("\\n".join(lines))[1:-1]
+        # Rewrite the description that follows this itemId, and only that one.
         pat = re.compile(r'("itemId": "%s".*?"description_english": ")(.*?)(")' % re.escape(item_id), re.S)
         raw, n = pat.subn(lambda m: m.group(1) + body + m.group(3), raw, count=1)
         if not n:
-            print("  !! %s not found" % item_id); sys.exit(1)
-    tmp = PATH + ".tmp"
-    open(tmp, "w").write(raw)
-    os.replace(tmp, PATH)
-    print("  written: %d T-526 rows -- add them to T526_APPROVED so a whole-table --write keeps them" % len(named))
-    sys.exit(0)
+            print("  !! %s not found" % item_id); rc = 1
+    #  Names are thirteen characters -- ITEM_NAME_LENGTH is 14 and the terminator
+    #  takes one. check_lexicon.py owns the collision half; this owns the budget.
+    NAME_MAX = 13
+    for item_id, (name, _lines) in NAMED.items():
+        if len(name) > NAME_MAX:
+            print("  !! %s: name %d chars > %d -- %s" % (item_id, len(name), NAME_MAX, name)); rc = 1
+            continue
+        pat = re.compile(r'("english": ")([^"]*)("(?:[^{}]*?)"itemId": "%s")' % re.escape(item_id))
+        raw, n = pat.subn(lambda m: m.group(1) + name + m.group(3), raw, count=1)
+        if not n:
+            print("  !! %s name anchor not found" % item_id); rc = 1
 
-if "--write" in sys.argv and rc == 0:
-    open(PATH, "w").write(raw); print("  written")
-sys.exit(rc)
+    print("  %d descriptions, widest %dpx of %d" % (len(TEXT), widest, BUDGET))
+    print("  %d held items named" % len(NAMED))
+
+    #  T-526: the drafts are measured on every run, and written only as --write --approved names them.
+    engine_items = {it["itemId"]: it for it in json.loads(open(PATH).read())["items"]}
+    def _measure(ln):
+        return textwidth(ln) if textwidth else len(ln) * 6
+    for item_id, (lines, _why) in T526.items():
+        if item_id not in engine_items:
+            print("  !! T-526 %s not in items.json" % item_id); rc = 1
+        if len(lines) > 3:
+            print("  !! T-526 %s: %d lines > 3" % (item_id, len(lines))); rc = 1
+        if item_id in T526_TWO_LINES and len(lines) > 2:
+            print("  !! T-526 %s: %d lines > 2, and the TRAP TABLE shows two" % (item_id, len(lines))); rc = 1
+        for ln in lines:
+            if _measure(ln) > BUDGET:
+                print("  !! T-526 %s: %dpx > %d -- %s" % (item_id, _measure(ln), BUDGET, ln)); rc = 1
+    held = [k for k in T526 if engine_items.get(k, {}).get("description_english") == "\\n".join(T526[k][0])]
+    print("  T-526: %d DRAFT descriptions, %d approved, %d in the engine" % (len(T526), len(T526_APPROVED), len(held)))
+    if "--sheet" in sys.argv:
+        _t526_sheet(sys.argv[sys.argv.index("--sheet") + 1], engine_items, _measure)
+    if "--trap-sheet" in sys.argv:
+        _t526_sheet(sys.argv[sys.argv.index("--trap-sheet") + 1], engine_items, _measure, trap=True)
+
+    if "--approved" in sys.argv:
+        named = []
+        for a in sys.argv[sys.argv.index("--approved") + 1:]:
+            if a.startswith("--"):
+                break
+            named.append(a if a.startswith("ITEM_") else "ITEM_" + a)
+        named = named or list(T526_APPROVED)
+        unknown = [k for k in named if k not in T526]
+        if unknown:
+            print("  !! --approved names rows T-526 does not hold: %s" % " ".join(unknown)); sys.exit(1)
+        if not named:
+            print("  --approved names no rows, and none is approved yet: nothing written.")
+            sys.exit(rc)
+        if "--write" not in sys.argv or rc:
+            print("  would write %d T-526 rows: %s" % (len(named), " ".join(named)))
+            sys.exit(rc)
+        #  ONLY those rows' descriptions, read fresh from the engine, so nothing else in the file moves.
+        raw = open(PATH).read()
+        for item_id in named:
+            body = json.dumps("\\n".join(T526[item_id][0]))[1:-1]
+            pat = re.compile(r'("itemId": "%s".*?"description_english": ")(.*?)(")' % re.escape(item_id), re.S)
+            raw, n = pat.subn(lambda m: m.group(1) + body + m.group(3), raw, count=1)
+            if not n:
+                print("  !! %s not found" % item_id); sys.exit(1)
+        tmp = PATH + ".tmp"
+        open(tmp, "w").write(raw)
+        os.replace(tmp, PATH)
+        print("  written: %d T-526 rows -- add them to T526_APPROVED so a whole-table --write keeps them" % len(named))
+        sys.exit(0)
+
+    #  T-526: the whole-table write is level with the engine (the TM lines, the 'they' pass, the species renames and
+    #  POOL were brought back into the tables above, 2026-11-07), so it changes nothing when the engine is right -- and
+    #  a report says so, exiting 1 when it would not, which is how check_generators sees this tool drift again.
+    current = open(PATH).read()
+    if "--write" in sys.argv and rc == 0:
+        if raw != current:
+            tmp = PATH + ".tmp"
+            open(tmp, "w").write(raw)
+            os.replace(tmp, PATH)
+            print("  written")
+        else:
+            print("  nothing to write: the engine is what this table makes")
+    elif raw != current and rc == 0:
+        now = {it["itemId"]: it for it in json.loads(current)["items"]}
+        made = {it["itemId"]: it for it in json.loads(raw)["items"]}
+        moved = sorted(k for k in made if made[k] != now.get(k))
+        print("  !! the engine is not what this table makes: %d row%s would change (%s) -- bring the table level, or --write"
+              % (len(moved), "" if len(moved) == 1 else "s", " ".join(moved[:8]) + (" ..." if len(moved) > 8 else "")))
+        rc = 1
+    return rc
+
+
+if __name__ == "__main__":
+    sys.exit(main())

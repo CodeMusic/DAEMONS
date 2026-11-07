@@ -54,7 +54,7 @@ from PIL import Image, ImageDraw  # noqa: E402
 BOOKS = {
     "guide": {"file": "guide.pdf", "title": "The Programmer's Guide to the Human Mind", "by": "Christopher Art Hicks",
               "src": "docs/guide.md", "night": "#16212b", "accent": "#2f6f8f", "foot": "THE PROGRAMMER'S GUIDE"},
-    "subtle": {"file": "the-subtle-layer.pdf", "title": "The Subtle Layer", "sub": "a trainer's handbook",
+    "subtle": {"file": "the-subtle-layer.pdf", "title": "The Subtle Layer", "sub": "a USER's handbook",
                "src": "docs/subtle-layer.md", "night": "#1d1424", "accent": "#8a5cc8", "foot": "THE SUBTLE LAYER"},
     "hermetic": {"file": "the-vault.zip", "title": "The Hermetic Layer", "sub": "SPELLCRAFT",
                  "src": "docs/hermetic-layer.md", "night": "#0c1712", "accent": "#1f8f5f", "foot": "THE HERMETIC LAYER"},

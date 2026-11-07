@@ -33,7 +33,7 @@ THE TEAR (T-519 item 2, the user 2026-11-05): before the mending, a half opened 
 mid-sentence at the spine. TORN holds, for each half, the entry, the sentence its last page ends on and the words left
 of it; the header gets that entry's whole text torn (s<P>Torn, <D>_TORN_ENTRY), measured like every other reading.
 
-WHAT IT IS. The user's own book, *Developing Psychic Routines*, rewritten for the game as a trainer's handbook
+WHAT IT IS. The user's own book, *Developing Psychic Routines*, rewritten for the game as a USER's handbook
 (docs/subtle-layer.md). It is read as an OPEN BOOK (the user, 2026-10-18): a contents spread, then each entry opens
 with its picture on the left page and its text on the right, continuing over both pages -- book_reader.c's textbook
 geometry, two 110px pages with a 94px column. Every line is measured against that column with genguide's own font
@@ -197,7 +197,7 @@ UNITY_PALETTE = [
 SUBTLE_RULES, SUBTLE_PALETTE = RULES, PALETTE
 BOOKS = {
     "subtle":   {"src": "docs/subtle-layer.md", "prefix": "Subtle", "define": "SUBTLE", "header": "subtle_layer.h",
-                 "gfx": "subtle", "icon": "subtle_layer", "title": "THE SUBTLE LAYER", "subtitle": "a trainer's handbook"},
+                 "gfx": "subtle", "icon": "subtle_layer", "title": "THE SUBTLE LAYER", "subtitle": "a USER's handbook"},
     "hermetic": {"src": "docs/hermetic-layer.md", "prefix": "Hermetic", "define": "HERMETIC", "header": "hermetic_layer.h",
                  "gfx": "hermetic", "icon": "hermetic_layer", "title": "THE HERMETIC LAYER", "subtitle": "SPELLCRAFT"},
     "eudaimon": {"src": "docs/eudaimon-layer.md", "prefix": "Eudaimon", "define": "EUDAIMON", "header": "eudaimon_layer.h",
@@ -444,7 +444,7 @@ def cover(letters=True):
     d.rectangle((48, 4, 188, 152), fill=RGB8["C_SLATE"])                     # the boards
     d.rectangle((48, 4, 53, 152), fill=RGB8["C_EDGE_DARK"])                  # the spine
     d.rectangle((58, 8, 184, 148), outline=RGB8["C_RULE"])
-    title, sub = "THE SUBTLE LAYER", "a trainer's handbook"
+    title, sub = "THE SUBTLE LAYER", "a USER's handbook"
     if letters:                                   # the companion sets its own title: the font is FireRed's
         glyphs(im, title, 121 - g.width(title) // 2, 12, False, RGB8["C_CHALK"])
         glyphs(im, sub, 121 - g.width(sub, True) // 2, 27, True, RGB8["C_CHALK_FAINT"])
@@ -755,7 +755,7 @@ def subtle_book():
                             for k, p in enumerate(e["paras"])],
              **({"labels": list("CDEFGAB")} if e["sprite"] == "stairs" else {})}
             for e in s["entries"]]})
-    return {"title": "THE SUBTLE LAYER", "subtitle": "a trainer's handbook", "draft": True, "sections": out}
+    return {"title": "THE SUBTLE LAYER", "subtitle": "a USER's handbook", "draft": True, "sections": out}
 
 
 def subtle_images():
