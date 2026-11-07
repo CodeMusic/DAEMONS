@@ -55,3 +55,27 @@ T-525 batch 2 DRAFT (47 icons, nothing in the engine): each beside the engine's 
 T-525 batch 2 DRAFT (47 icons, nothing in the engine): each beside the engine's icon now, and in the BAG at 240x160, ours above the engine's
 
 ![7Nov2026 - T525 - batch 2 drafted - 9](7Nov2026%20-%20T525%20-%20batch%202%20drafted%20-%209.png)
+
+### 7Nov2026 - T525 - batch 2 built in the BAG - 10
+
+T-525 batch 2 built (engine 04fd4b517, the user: Build all 47), filmed in the theatre: the ITEMS pocket in two sheets -- the TUNE dials, LOCK STATS, the six components, INCREMENT, MP UP and MP MAX; then the six inputs, the five TONEs, CHARGE ALL, FULL RECHARGE, the drinks and RESERVE -- and the KEY ITEMS pocket: TOKEN CASE, LIFT KEY, RESOLVER, TRAP TABLE, the tickets and passes, the three CORES and the two KEYS. Every one of the 47 is on screen with its description.
+
+![7Nov2026 - T525 - batch 2 built in the BAG - 10](7Nov2026%20-%20T525%20-%20batch%202%20built%20in%20the%20BAG%20-%2010.png)
+
+### 7Nov2026 - T525 - batch 2 built in the BAG - 11
+
+T-525 batch 2 built (engine 04fd4b517, the user: Build all 47), filmed in the theatre: the ITEMS pocket in two sheets -- the TUNE dials, LOCK STATS, the six components, INCREMENT, MP UP and MP MAX; then the six inputs, the five TONEs, CHARGE ALL, FULL RECHARGE, the drinks and RESERVE -- and the KEY ITEMS pocket: TOKEN CASE, LIFT KEY, RESOLVER, TRAP TABLE, the tickets and passes, the three CORES and the two KEYS. Every one of the 47 is on screen with its description.
+
+![7Nov2026 - T525 - batch 2 built in the BAG - 11](7Nov2026%20-%20T525%20-%20batch%202%20built%20in%20the%20BAG%20-%2011.png)
+
+### 7Nov2026 - T525 - batch 2 built in the BAG - 12
+
+T-525 batch 2 built (engine 04fd4b517, the user: Build all 47), filmed in the theatre: the ITEMS pocket in two sheets -- the TUNE dials, LOCK STATS, the six components, INCREMENT, MP UP and MP MAX; then the six inputs, the five TONEs, CHARGE ALL, FULL RECHARGE, the drinks and RESERVE -- and the KEY ITEMS pocket: TOKEN CASE, LIFT KEY, RESOLVER, TRAP TABLE, the tickets and passes, the three CORES and the two KEYS. Every one of the 47 is on screen with its description.
+
+![7Nov2026 - T525 - batch 2 built in the BAG - 12](7Nov2026%20-%20T525%20-%20batch%202%20built%20in%20the%20BAG%20-%2012.png)
+
+### 7Nov2026 - T525 - the PLUGIN counter shows no icon - 13
+
+T-525: VERDIGRIS DEPT. STORE 2F's PLUGIN counter (PLUGIN15, 28, 31). Its BUY list shows the routine's number and name at the bottom left, not the item icon, so the PLUGIN card is not seen in a MART; the card is shown decoded from the ROM in the batch 1 sheets.
+
+![7Nov2026 - T525 - the PLUGIN counter shows no icon - 13](7Nov2026%20-%20T525%20-%20the%20PLUGIN%20counter%20shows%20no%20icon%20-%2013.png)

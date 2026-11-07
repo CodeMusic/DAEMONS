@@ -60,8 +60,9 @@ ARGS = {
     #  T-524: the same shape; the user chose 2 Readout on 2026-11-06. The write copies gfx/drafts/t524_battle_ui/2 and
     #  splices tiles 66-70 into the elements sheet, so a sandboxed write changes nothing when the engine is right.
     "gbabattleui": [["--approved", "--main", "2"]],
-    #  T-525: --write refuses without --approved; the user said "Build all 41" on 2026-11-07 (APPROVED is every icon in
-    #  batch 1), and the report exits 1 when the engine is not what that write makes.
+    #  T-525: --write refuses without --approved; the user said "Build all 41" and then "Build all 47" on 2026-11-07
+    #  (APPROVED is every icon in batches 1 and 2, and --all writes both), and the report exits 1 when the engine is not
+    #  what that write makes.
     "gbaitemicons": [["--approved", "--all"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.

@@ -11,7 +11,8 @@
     python3 tools/gbaitemicons.py --write --approved --all             #   (or every one); refuses without --approved
 
 DRAFT, 2026-11-07, the user away ("Item icons" next, from the vanilla-art census, gap 4). BUILT the same day: the user, "Build all
-41" -- APPROVED holds every icon, and the report exits 1 when the engine is not what that write makes. Every pixel here is drawn in
+41" -- and batch 2's forty-seven the same day too: the user, "Build all 47". APPROVED holds every icon of both batches, `--all`
+writes both, and the report exits 1 when the engine is not what that write makes. Every pixel here is drawn in
 code, by hand, on the 24x24 grid: no AI image, nothing traced. The engine's own icons are read only to show them
 beside ours on the sheet.
 
@@ -72,7 +73,7 @@ ap.add_argument("--draft", nargs="?", const=DRAFT_DEFAULT)
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--all", action="store_true")
-ap.add_argument("--batch", type=int, default=1)               # --draft --batch 2: batch 2's drafts (not approved)
+ap.add_argument("--batch", type=int, default=1)               # --draft --batch 2: batch 2's drafts
 ap.add_argument("--over-later-work", action="store_true")    # check_generators passes it to every --write; unused
 ap.add_argument("items", nargs="*")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
@@ -951,9 +952,9 @@ ICONS = [
 APPROVED = [e[0] for e in ICONS]      # the user, 2026-11-07: "Build all 41"
 
 
-# ================================================================================================= batch 2 (DRAFT)
-#  Drafted 2026-11-07, the user away, after batch 1 was built. NOTHING here is in APPROVED: `--draft --batch 2` draws
-#  them, and a --write writes one only when it is named (--write --approved ITEM ...). `--all` is batch 1 alone.
+# ================================================================================================= batch 2
+#  Drafted 2026-11-07, the user away, after batch 1 was built; `--draft --batch 2` draws them. APPROVED the same day
+#  (the user, 2026-11-07: "Build all 47"), so `--all` and the report cover both batches.
 GOLD_L, GOLD, GOLD_D = (255, 222, 74), (213, 172, 32), (131, 98, 0)        # brass and amber (npc_blue's, T-167)
 COPPER_L, COPPER, COPPER_D = (232, 160, 110), (190, 112, 66), (120, 66, 36)
 PAPER, PAPER2 = (240, 236, 222), (204, 198, 180)
@@ -1637,6 +1638,9 @@ ICONS2 = [
     ("private_key", "PRIVATE KEY", ["ITEM_SAPPHIRE"], i_private_key, "own", "the same key in purple, cut 11011"),
     ("reserve", "RESERVE", ["ITEM_BERRY_JUICE"], i_reserve, "own", "a sealed can set by, a little HP green in its window"),
 ]
+
+
+APPROVED = APPROVED + [e[0] for e in ICONS2]      # the user, 2026-11-07: "Build all 47"
 #  Not drawn: MYSTICTICKET and AURORATICKET -- only a Mystery Gift gives them, and nothing in this game does.
 
 
@@ -1994,8 +1998,9 @@ def mocks2(out, made, texts):
 
 def report():
     rows, files, vfiles = table_rows(), symbol_files(), vanilla_files()
-    print("  T-525 item icons, batch 1: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\")" % (len(ICONS), len(APPROVED)))
-    for e in ICONS:
+    print("  T-525 item icons, batches 1 and 2: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\")"
+          % (len(ICONS) + len(ICONS2), len(APPROVED)))
+    for e in ICONS + ICONS2:
         key, name, items, _, mode, what = e
         idx, pal = make(e)
         stem = files[rows[items[0]][0]]
@@ -2092,7 +2097,7 @@ def main():
         if not A.approved:
             print("  --write refuses without --approved: the user picks from the sheet first (T-525).")
             return 0
-        keys = [e[0] for e in ICONS] if A.all else (A.items or APPROVED)
+        keys = [e[0] for e in ICONS + ICONS2] if A.all else (A.items or APPROVED)
         if not keys:
             print("  --write --approved names no items, and none is approved yet: nothing written.")
             return 0
@@ -2107,7 +2112,7 @@ def main():
             print("  the engine is NOT what the approved write makes: %d files (%s%s) -- run --write --approved --all"
                   % (len(d), ", ".join(d[:4]), " ..." if len(d) > 4 else ""))
             return 1
-        print("  the engine holds every approved icon (%d of %d)" % (len(APPROVED), len(ICONS)))
+        print("  the engine holds every approved icon (%d of %d)" % (len(APPROVED), len(ICONS) + len(ICONS2)))
     return 0
 
 
