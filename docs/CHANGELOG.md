@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.343 — 2026-11-07
+
+- **4.40, the aurora: the dawn that comes at night (T-528, the user, by multiple choice; brought by the game lane).** Once the book is mended, the light hangs over DAEMON TOWER every night: CONTENT in oxygen's red line, CONTEXT in its green. On some nights (about one in three, picked from the date) it shows beyond the tower, spreading grove by grove, and each mainland grove lights its conjugate grove on the islands. The mainland is the north wind's side and the islands the south's, in both editions. The dawn chorus plays in the groves at dawn after a night of light; TULIKKO, an arctic fox, sweeps the sparks up at STILLFALL CAVE. With a daemon from the other edition in the party the sky shows both lines, green below and red above, and PLAY gains a duet. The names were checked: Galileo's 1619 "boreale aurora", the Sámi guovssahas (its "heard" gloss popular, not settled), the Māori Tahu-nui-a-rangi (kept out of the game), the Finnish revontulet.
+- **4.40, the mended book's lens (T-529, the user, by multiple choice).** Once mended, every page of THE UNITY BOOK turns between its night, whole and dawn readings in place, the tone turning with it; L and R in the game, a three-way switch in the companion.
+- **Open log**: the aurora, entered and decided the same day.
+
 ## v11.342 — 2026-11-06
 
 - **4.2, the record is read and the telling is only heard (T-522, the user's design).** The tellings are approved as drafted. In the companion a card shows the INDEX entry, and LISTEN (a play mark in a cog) reads it in the device's voice: flat, robotic, a little glitchy. The daemon's own words are never printed: its sprite shimmers, and a tap brings the daemon forward over its card, in its type's den, to say it is thinking and then tell of itself in its own voice, its mouth moving, before it shrinks back (C-303).
