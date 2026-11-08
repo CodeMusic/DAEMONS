@@ -163,3 +163,45 @@ T-532: SEEKMUSAI autumn, CAREMUSAI summer, LENSMUSAI spring, MASKMUSAI winter in
 T-532: all 24 seasonal fronts of the MUSAI branch (MUSAI's summer is today's ROM art)
 
 ![8Nov2026 - T532 - all 24 seasonal fronts - 28](8Nov2026%20-%20T532%20-%20all%2024%20seasonal%20fronts%20-%2028.png)
+
+### 8Nov2026 - T532 - the six by season as built - 29
+
+T-532 final art as built (engine 3ce5d9790): each MUSAI's four seasons, front and back decoded from the ROM, the red line the feet row its own coords put on the platform; green final, red placeholder waiting for the redraw
+
+![8Nov2026 - T532 - the six by season as built - 29](8Nov2026%20-%20T532%20-%20the%20six%20by%20season%20as%20built%20-%2029.png)
+
+### 8Nov2026 - T532 - four new summers - 30
+
+T-532: CODEMUSAI, SEEKMUSAI, CAREMUSAI and LENSMUSAI's new summer art (their own art now), built through gbasprite
+
+![8Nov2026 - T532 - four new summers - 30](8Nov2026%20-%20T532%20-%20four%20new%20summers%20-%2030.png)
+
+### 8Nov2026 - T532 - WINTER follower party battle - 31
+
+T-532 final art, WINTER (DEBUG season): the party of six, then each MUSAI as the follower and in battle against its own kind (back as lead, front as foe); names are the debug kit's nicknames
+
+![8Nov2026 - T532 - WINTER follower party battle - 31](8Nov2026%20-%20T532%20-%20WINTER%20follower%20party%20battle%20-%2031.png)
+
+### 8Nov2026 - T532 - SPRING follower party battle - 32
+
+T-532 final art, SPRING (DEBUG season): the party of six, then each MUSAI as the follower and in battle against its own kind (back as lead, front as foe); names are the debug kit's nicknames
+
+![8Nov2026 - T532 - SPRING follower party battle - 32](8Nov2026%20-%20T532%20-%20SPRING%20follower%20party%20battle%20-%2032.png)
+
+### 8Nov2026 - T532 - SUMMER follower party battle - 33
+
+T-532 final art, SUMMER (DEBUG season): the party of six, then each MUSAI as the follower and in battle against its own kind (back as lead, front as foe); names are the debug kit's nicknames
+
+![8Nov2026 - T532 - SUMMER follower party battle - 33](8Nov2026%20-%20T532%20-%20SUMMER%20follower%20party%20battle%20-%2033.png)
+
+### 8Nov2026 - T532 - AUTUMN follower party battle - 34
+
+T-532 final art, AUTUMN (DEBUG season): the party of six, then each MUSAI as the follower and in battle against its own kind (back as lead, front as foe); names are the debug kit's nicknames
+
+![8Nov2026 - T532 - AUTUMN follower party battle - 34](8Nov2026%20-%20T532%20-%20AUTUMN%20follower%20party%20battle%20-%2034.png)
+
+### 8Nov2026 - T532 - CODEMUSAI spring INDEX entry - 35
+
+T-532: CODEMUSAI in the INDEX in spring, the spring form beside its spring entry
+
+![8Nov2026 - T532 - CODEMUSAI spring INDEX entry - 35](8Nov2026%20-%20T532%20-%20CODEMUSAI%20spring%20INDEX%20entry%20-%2035.png)

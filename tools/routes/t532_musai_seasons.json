@@ -1,6 +1,6 @@
 {
   "rom": "debug",
-  "about": "T-532 (DRAFT): the MUSAI branch's seasonal forms and CRYPTOPHASIA. Filmed on a PROOF build whose placeholder forms are tinted by season (winter blue, spring green, autumn orange; summer is the species' own) and whose icons carry a season dot, so the swap shows; the committed forms are untinted copies of today's art. DEBUG's season forced through gDaemonsSeasonOverride.",
+  "about": "T-532 (DRAFT): the MUSAI branch's seasonal forms and CRYPTOPHASIA. Filmed on a PROOF build whose placeholder forms are tinted by season (winter blue, spring green, autumn orange; summer is the species' own) and whose icons carry a season dot, so the swap shows; the committed forms are untinted copies of today's art. DEBUG's season forced through gDaemonsSeasonOverride. FINALS (stops 'FINAL ...', T-532 final art, 2026-11-08): the six in each season on the shipped build (the GLOBAL INDEX switched on, so the debug ENCOUNTER reaches ESPEON's and UMBREON's numbers) -- each the follower, then in battle against its own kind (its back as the lead, its front as the foe), and the party; run them with --from at the first FINAL stop.",
   "stop_timeout": 900,
   "stops": [
     {
@@ -361,6 +361,829 @@
         "to 15 9",
         "wait 30",
         "shot \"after the battle: the field in WINTER\""
+      ]
+    },
+    {
+      "stop": "FINAL setup: the six MUSAI in the party (MUSAI leads), the follower on, ROUTE 22",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_SYS_NATIONAL_DEX 1",
+        "var VAR_NATIONAL_DEX 25176",
+        "poke *gSaveBlock2Ptr+27 8 185",
+        "mon 0 species SPECIES_EEVEE",
+        "mon 1 species SPECIES_FLAREON",
+        "mon 2 species SPECIES_JOLTEON",
+        "mon 3 species SPECIES_VAPOREON",
+        "mon 4 species SPECIES_ESPEON",
+        "mon 5 species SPECIES_UMBREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "savestate t532_six"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: the party of six",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "open DAEMON",
+        "wait 60",
+        "shot \"WINTER: the party\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: MUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_EEVEE",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: MUSAI follows\"",
+        "poke sDbgDex 16 133",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: MUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: MUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: MUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: CODEMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: CODEMUSAI follows\"",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: CODEMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: SEEKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_JOLTEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: SEEKMUSAI follows\"",
+        "poke sDbgDex 16 135",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: SEEKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: SEEKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: SEEKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: CAREMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_VAPOREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: CAREMUSAI follows\"",
+        "poke sDbgDex 16 134",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: CAREMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: CAREMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: CAREMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: LENSMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_ESPEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: LENSMUSAI follows\"",
+        "poke sDbgDex 16 196",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: LENSMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: LENSMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: LENSMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: MASKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_UMBREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: MASKMUSAI follows\"",
+        "poke sDbgDex 16 197",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL WINTER: MASKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: MASKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: MASKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: the party of six",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "open DAEMON",
+        "wait 60",
+        "shot \"SPRING: the party\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: MUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_EEVEE",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: MUSAI follows\"",
+        "poke sDbgDex 16 133",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: MUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: MUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: MUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: CODEMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: CODEMUSAI follows\"",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: CODEMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: SEEKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_JOLTEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: SEEKMUSAI follows\"",
+        "poke sDbgDex 16 135",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: SEEKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: SEEKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: SEEKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: CAREMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_VAPOREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: CAREMUSAI follows\"",
+        "poke sDbgDex 16 134",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: CAREMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: CAREMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: CAREMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: LENSMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_ESPEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: LENSMUSAI follows\"",
+        "poke sDbgDex 16 196",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: LENSMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: LENSMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: LENSMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: MASKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_UMBREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: MASKMUSAI follows\"",
+        "poke sDbgDex 16 197",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: MASKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: MASKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: MASKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: the party of six",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "open DAEMON",
+        "wait 60",
+        "shot \"SUMMER: the party\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: MUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_EEVEE",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: MUSAI follows\"",
+        "poke sDbgDex 16 133",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: MUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: MUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: MUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: CODEMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: CODEMUSAI follows\"",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: CODEMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: SEEKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_JOLTEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: SEEKMUSAI follows\"",
+        "poke sDbgDex 16 135",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: SEEKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: SEEKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: SEEKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: CAREMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_VAPOREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: CAREMUSAI follows\"",
+        "poke sDbgDex 16 134",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: CAREMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: CAREMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: CAREMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: LENSMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_ESPEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: LENSMUSAI follows\"",
+        "poke sDbgDex 16 196",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: LENSMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: LENSMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: LENSMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: MASKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_UMBREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: MASKMUSAI follows\"",
+        "poke sDbgDex 16 197",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL SUMMER: MASKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: MASKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: MASKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: the party of six",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "open DAEMON",
+        "wait 60",
+        "shot \"AUTUMN: the party\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: MUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_EEVEE",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: MUSAI follows\"",
+        "poke sDbgDex 16 133",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: MUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: MUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: MUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: CODEMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: CODEMUSAI follows\"",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: CODEMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: SEEKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_JOLTEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: SEEKMUSAI follows\"",
+        "poke sDbgDex 16 135",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: SEEKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: SEEKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: SEEKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: CAREMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_VAPOREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: CAREMUSAI follows\"",
+        "poke sDbgDex 16 134",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: CAREMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: CAREMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: CAREMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: LENSMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_ESPEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: LENSMUSAI follows\"",
+        "poke sDbgDex 16 196",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: LENSMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: LENSMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: LENSMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: MASKMUSAI follows, then meets its own kind",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_UMBREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: MASKMUSAI follows\"",
+        "poke sDbgDex 16 197",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "FINAL AUTUMN: MASKMUSAI in battle, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: MASKMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: MASKMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "FINAL SPRING: CODEMUSAI's INDEX page",
+      "steps": [
+        "loadstate t532_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 10",
+        "press A",
+        "wait 200",
+        "press RIGHT 7",
+        "wait 30",
+        "press DOWN 2",
+        "wait 30",
+        "press A",
+        "wait 150",
+        "press A",
+        "wait 150",
+        "shot \"SPRING: CODEMUSAI's INDEX entry\"",
+        "close"
       ]
     }
   ]
