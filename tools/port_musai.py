@@ -60,6 +60,9 @@ CODEMUSAI = [
                                # into a black box and being worse at it:
                                # OPAQUE is the one thing step-by-step proof
                                # cannot open
+    (30, "CRYPTOPHASIA"),      # T-532 (the user, 2026-11-08): the branch's
+                               # shared tongue, CODEMUSAI's own -- stronger
+                               # for each sibling in the party (vision 9.34)
     (36, "ROCK_SMASH"),        # CRACK -- you crack a rock and a problem
     (42, "BRICK_BREAK"),       # FALSIFY -- ***the best-placed routine in this
                                # pass.*** It breaks STEELMAN and PARAPHRASE,
@@ -165,7 +168,8 @@ def main():
         #  2.7a's first rule, checked rather than trusted: every level that had
         #  a move still has one. Silently dropping a level is a balance change
         #  wearing a naming change's clothes.
-        if [lv for lv, _ in old] != [lv for lv, _ in entries]:
+        #  T-532: a routine ADDED at a level that already had one (CRYPTOPHASIA beside OCCLUDE at 30) keeps the curve.
+        if sorted(set(lv for lv, _ in old)) != sorted(set(lv for lv, _ in entries)) or len(entries) < len(old):
             print("  !! %s: the level curve moved -- %s vs %s"
                   % (nm, [lv for lv, _ in old], [lv for lv, _ in entries])); rc = 1; continue
         for _, mid in entries:

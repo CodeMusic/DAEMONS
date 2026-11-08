@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.344, working |
-| [`CONTEXT-CONTENT-design-bible-v11.344.pdf`](CONTEXT-CONTENT-design-bible-v11.344.pdf) | Typeset **snapshot** at v11.344 — a day's symbol: the centre's petal ring in ink, the virtue above a level line in the day's colour, its shadow the same mark reflected below | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.345, working |
+| [`CONTEXT-CONTENT-design-bible-v11.345.pdf`](CONTEXT-CONTENT-design-bible-v11.345.pdf) | Typeset **snapshot** at v11.345 — the MUSAI branch keeps the seasons: four forms each, worn by the edition's season, and CODEMUSAI's CRYPTOPHASIA | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

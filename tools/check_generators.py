@@ -77,6 +77,10 @@ ARGS = {
     #  PC's box menu/arrows/waveform/DATA panel). APPROVED holds the picks, --all writes them, and the report exits 1
     #  when the engine is not what that write makes.
     "gbamenus2": [["--approved", "--all"]],
+    #  T-532: genmusaiseasons needs no flag (the user decided the build 2026-11-08): it writes the 18 seasonal forms --
+    #  copies of today's art until gfx/drafts/t532_musai_seasons/finals/ holds a drawing -- and its table blocks, and
+    #  its report exits 0. port_index's whole-tree --write is not drift-safe; its seasonal header is --write --seasons.
+    "genmusaiseasons": [[]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

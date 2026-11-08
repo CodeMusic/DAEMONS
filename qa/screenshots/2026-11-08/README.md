@@ -103,3 +103,15 @@ T-532 DRAFT: the six MUSAI x four seasons, concept fronts by arm C from each ROM
 T-532 DRAFT: the six MUSAI x four seasons, concept fronts by arm C from each ROM front, reduced to 64x64/16 colours in each type's ramp; home seasons starred; nothing in the ROM
 
 ![8Nov2026 - T532 - MUSAI branch seasons concepts - 17](8Nov2026%20-%20T532%20-%20MUSAI%20branch%20seasons%20concepts%20-%2017.png)
+
+### 8Nov2026 - T532 - MUSAI seasons proof build - 19
+
+T-532 plumbing on a PROOF build (placeholder forms tinted by season, icons dotted): CODEMUSAI's follower, party, summary, battle (with the season's background) and INDEX entry in each of the four seasons; summer is the species' own art
+
+![8Nov2026 - T532 - MUSAI seasons proof build - 19](8Nov2026%20-%20T532%20-%20MUSAI%20seasons%20proof%20build%20-%2019.png)
+
+### 8Nov2026 - T532 - CRYPTOPHASIA and the battles season - 20
+
+T-532: CRYPTOPHASIA from one saved moment -- foe 999->969 with two siblings able to fight (power 80), 999->982 with none (40); a battle begun in summer stays summer's when the season is forced to winter mid-battle, and the field is winter after
+
+![8Nov2026 - T532 - CRYPTOPHASIA and the battles season - 20](8Nov2026%20-%20T532%20-%20CRYPTOPHASIA%20and%20the%20battles%20season%20-%2020.png)

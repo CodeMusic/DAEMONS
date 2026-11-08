@@ -282,6 +282,48 @@ def moves_table():
     return out
 
 
+def musai_seasons(species):
+    """T-532 (vision 9.34): the MUSAI branch's four seasonal forms. Each of the six gets "seasons": the season's picture
+    (art/species/<name>_<season>.png, decoded from the built form -- summer is the species' own front) and its INDEX
+    entry (both editions share the 24, src/data/pokemon/pokedex_text_seasons.h). The companion shows the form the
+    season gives it, by the game's own rule: seasons.json's season(edition, date) with a clock, and without one the
+    play-time year, (summer + playTimeHours / 7) % 4 (daemons_time.c). Returns the pictures to write."""
+    from PIL import Image
+    import genmusaiseasons as gm
+    texts = {m.group(1): gba_string(m.group(2)) for m in
+             re.finditer(r"static const u8 (\w+)\[\]\s*=\s*_\((.*?)\);", read("src/data/pokemon/pokedex_text_seasons.h"), re.S)}
+    art = {}
+    for name, d, const, sym, _t in gm.BRANCH:
+        row = next((r for r in species.values() if r["constant"] == const), None)
+        if row is None:
+            continue
+        forms = {}
+        for season in gm.SEASONS:
+            folder = os.path.join(GBA, "graphics/pokemon", d) if season == "summer" else \
+                os.path.join(GBA, "graphics/pokemon", d, season)
+            tiles, pal = os.path.join(folder, "front.4bpp"), os.path.join(folder, "normal.gbapal")
+            key = "species/%s_%s.png" % (name.lower(), season)
+            if os.path.exists(tiles) and os.path.exists(pal):
+                raw, praw = open(tiles, "rb").read(), open(pal, "rb").read()
+                colours = []
+                for i in range(16):
+                    c = int.from_bytes(praw[2 * i:2 * i + 2], "little")
+                    colours += rgb8(c & 31, (c >> 5) & 31, (c >> 10) & 31)
+                im = Image.new("P", (64, 64), 0)
+                px = im.load()
+                for t in range(64):
+                    for y in range(8):
+                        for x in range(8):
+                            b = raw[t * 32 + y * 4 + x // 2]
+                            px[(t % 8) * 8 + x, (t // 8) * 8 + y] = (b >> 4) if x & 1 else b & 15
+                im.putpalette(colours + [0] * (768 - len(colours)))
+                art[key] = im
+            forms[season] = {"art": key, "entry": texts.get("s%sIndexText_%s" % (sym, season.capitalize())),
+                             "final": season == "summer" or gm.final_front(name, season) is not None}
+        row["seasons"] = forms
+    return art
+
+
 def routines_table():
     """C-68: the names the game prints for each move (a routine) and each type, for GAME ROUTINES on the handhelds."""
     ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define MOVE_(\w+)\s+(\d+)\b", read("include/constants/moves.h"))}
@@ -918,7 +960,12 @@ def seasons_table():
             "order": list(seasons.SEASONS),
             "north_starts": {k: {"month": m, "day": d} for k, (m, d) in seasons.NORTH_STARTS.items()},
             "edition_hemisphere": seasons.EDITION_HEMISPHERE,
-            "play_hours_per_season": seasons.PLAY_HOURS_PER_SEASON}
+            "play_hours_per_season": seasons.PLAY_HOURS_PER_SEASON,
+            #  T-532: the MUSAI branch's forms follow this rule too (species.json's "seasons")
+            "forms": "T-532: MUSAI, CODEMUSAI, SEEKMUSAI, CAREMUSAI, LENSMUSAI and MASKMUSAI wear the season's form: "
+                     "season(edition, date) with a clock; with none, the play-time year, order[(2 + playTimeHours // 7) "
+                     "% 4] (from summer), then the edition's hemisphere. A battle keeps the season it began in. "
+                     "species.json's \"seasons\" holds each form's picture and INDEX entry."}
 
 
 
@@ -2217,6 +2264,7 @@ def main():
              "unity.json": unity_table(),                                       # T-519 item 3: the third book mended
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
+    season_art = musai_seasons(files["species.json"])                  # T-532: before species.json is written
     #  T-453; the GUIDE's chapters as guide.json has them (gensubtle, imported since, reuses genguide's parser)
     files["index_cards.json"] = index_cards_table(files["species.json"], files["margins.json"],
                                                   files["marks.json"], files["guide.json"])
@@ -2241,6 +2289,7 @@ def main():
                 open(path, "w", encoding="utf-8").write(text)
     import io
     art = party_art(files["species.json"])
+    art.update(season_art)                                             # T-532
     art.update(player_art())                                           # C-125
     art.update(mark_art())                                             # C-126
     art.update(play_art())                                             # T-426
@@ -2253,7 +2302,7 @@ def main():
         if not os.path.exists(path) or open(path, "rb").read() != buf.getvalue():
             art_changed += 1
             if WRITE:
-                os.makedirs(art_dir, exist_ok=True)
+                os.makedirs(os.path.dirname(path), exist_ok=True)   # T-532: art/species/
                 open(path, "wb").write(buf.getvalue())
     #  The cover is RGB, not a palette with a clear index 0: written on its own, nothing made transparent.
     buf = io.BytesIO()

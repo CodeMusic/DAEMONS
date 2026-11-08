@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.345 — 2026-11-08
+
+- **9.34, the MUSAI branch keeps the seasons (T-532, the user, by multiple choice).** Each of the six MUSAI has four seasonal forms and wears the one `DaemonsSeason()` gives it -- CONTENT on the northern year, CONTEXT on the southern -- in battle, the party, the PC, the follower, the summary and the INDEX: a display swap, Unown's way (18 picture-only ids; summer is today's art), look only, silent, a battle keeping the season it began in. MASKMUSAI's home season is winter, LENSMUSAI's spring, CAREMUSAI's summer, SEEKMUSAI's autumn; the machines are part of each body, never ridden. 24 INDEX entries, one per form, both editions sharing them. **CRYPTOPHASIA**, CODEMUSAI's own at 30: a LOGIC special hit, 40 and +20 for each other MUSAI in the party still able to fight (to 140). The plumbing is built with placeholder art (copies of today's); the drawings follow. DRAFT words.
+
 ## v11.344 — 2026-11-08
 
 - **9.21, a day's symbol (T-531, the user, by multiple choice; the seven marks approved as drawn).** Each weekday gets one wordless symbol: its centre as a ring of its traditional petal count, in ink; a level line through it, the word *over* made visible; the virtue's mark above in the day's colour, and its shadow below as the same mark reflected, faint and dashed. Chastity a closed dome, Temperance a level beam, Charity an open bowl, Diligence a climb, Forgiveness a knot opening, Kindness an arc sheltering a point, Humility a stem bowing. 4.38's "the seven centres never coloured" holds. First use: a daemon's dream, with a title of its own (still open).

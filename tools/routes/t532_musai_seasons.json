@@ -1,0 +1,367 @@
+{
+  "rom": "debug",
+  "about": "T-532 (DRAFT): the MUSAI branch's seasonal forms and CRYPTOPHASIA. Filmed on a PROOF build whose placeholder forms are tinted by season (winter blue, spring green, autumn orange; summer is the species' own) and whose icons carry a season dot, so the swap shows; the committed forms are untinted copies of today's art. DEBUG's season forced through gDaemonsSeasonOverride.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "setup: CODEMUSAI (made one: slot 0) leads, CAREMUSAI and SEEKMUSAI in the party, the follower on, ROUTE 22",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "savestate t532_field"
+      ]
+    },
+    {
+      "stop": "WINTER forced: the follower, the party, the summary, the battle",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 1",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"WINTER: CODEMUSAI follows\"",
+        "open DAEMON",
+        "wait 60",
+        "shot \"WINTER: the party\"",
+        "close",
+        "summary 0",
+        "shot \"WINTER: CODEMUSAI's summary\"",
+        "close",
+        "poke sDbgDex 16 130",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "WINTER forced: in the battle",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: the battle opens\"",
+        "wait 200",
+        "shot \"WINTER: CODEMUSAI sent out\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "WINTER forced: CODEMUSAI's INDEX page",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 10",
+        "press A",
+        "wait 200",
+        "press RIGHT 7",
+        "wait 30",
+        "press DOWN 2",
+        "wait 30",
+        "shot \"A-Z: CODEMUSAI\"",
+        "press A",
+        "wait 150",
+        "shot \"WINTER: the family page\"",
+        "press A",
+        "wait 150",
+        "shot \"WINTER: CODEMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "SPRING forced: the follower, the party, the summary, the battle",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 2",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SPRING: CODEMUSAI follows\"",
+        "open DAEMON",
+        "wait 60",
+        "shot \"SPRING: the party\"",
+        "close",
+        "summary 0",
+        "shot \"SPRING: CODEMUSAI's summary\"",
+        "close",
+        "poke sDbgDex 16 130",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "SPRING forced: in the battle",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: the battle opens\"",
+        "wait 200",
+        "shot \"SPRING: CODEMUSAI sent out\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "SPRING forced: CODEMUSAI's INDEX page",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 10",
+        "press A",
+        "wait 200",
+        "press RIGHT 7",
+        "wait 30",
+        "press DOWN 2",
+        "wait 30",
+        "shot \"A-Z: CODEMUSAI\"",
+        "press A",
+        "wait 150",
+        "shot \"SPRING: the family page\"",
+        "press A",
+        "wait 150",
+        "shot \"SPRING: CODEMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "SUMMER forced: the follower, the party, the summary, the battle",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 3",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"SUMMER: CODEMUSAI follows\"",
+        "open DAEMON",
+        "wait 60",
+        "shot \"SUMMER: the party\"",
+        "close",
+        "summary 0",
+        "shot \"SUMMER: CODEMUSAI's summary\"",
+        "close",
+        "poke sDbgDex 16 130",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "SUMMER forced: in the battle",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: the battle opens\"",
+        "wait 200",
+        "shot \"SUMMER: CODEMUSAI sent out\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "SUMMER forced: CODEMUSAI's INDEX page",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 10",
+        "press A",
+        "wait 200",
+        "press RIGHT 7",
+        "wait 30",
+        "press DOWN 2",
+        "wait 30",
+        "shot \"A-Z: CODEMUSAI\"",
+        "press A",
+        "wait 150",
+        "shot \"SUMMER: the family page\"",
+        "press A",
+        "wait 150",
+        "shot \"SUMMER: CODEMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "AUTUMN forced: the follower, the party, the summary, the battle",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 4",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "follower shown",
+        "shot \"AUTUMN: CODEMUSAI follows\"",
+        "open DAEMON",
+        "wait 60",
+        "shot \"AUTUMN: the party\"",
+        "close",
+        "summary 0",
+        "shot \"AUTUMN: CODEMUSAI's summary\"",
+        "close",
+        "poke sDbgDex 16 130",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "AUTUMN forced: in the battle",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: the battle opens\"",
+        "wait 200",
+        "shot \"AUTUMN: CODEMUSAI sent out\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "AUTUMN forced: CODEMUSAI's INDEX page",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 4",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 10",
+        "press A",
+        "wait 200",
+        "press RIGHT 7",
+        "wait 30",
+        "press DOWN 2",
+        "wait 30",
+        "shot \"A-Z: CODEMUSAI\"",
+        "press A",
+        "wait 150",
+        "shot \"AUTUMN: the family page\"",
+        "press A",
+        "wait 150",
+        "shot \"AUTUMN: CODEMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "CRYPTOPHASIA: a GYARADOS that cannot hurt; the battle kept",
+      "steps": [
+        "loadstate t532_field",
+        "poke gDaemonsSeasonOverride 8 3",
+        "poke sDbgDex 16 130",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "CRYPTOPHASIA: a GYARADOS that cannot hurt; the battle kept (the battle)",
+      "steps": [
+        "foe SPECIES_GYARADOS",
+        "wait 200",
+        "poke gBattleMons+128 16 999",
+        "poke gBattleMons+132 16 999",
+        "poke gBattleMons+134 16 0",
+        "poke gBattleMons+120 8 0",
+        "poke gBattleMons+94 16 1",
+        "poke gBattleMons+92 16 100",
+        "poke gBattleMons+98 16 100",
+        "poke gBattleMons+100 32 9830550",
+        "poke gBattleMons+104 32 9830550",
+        "poke gBattleMons+6 16 999",
+        "poke gBattleMons+46 16 0",
+        "poke gBattleMons+32 8 0",
+        "poke gBattleMons+24 32 101058054",
+        "poke gBattleMons+28 32 101058054",
+        "savestate t532_battle"
+      ]
+    },
+    {
+      "stop": "CRYPTOPHASIA with TWO siblings able to fight (CAREMUSAI, SEEKMUSAI): power 80",
+      "steps": [
+        "loadstate t532_battle",
+        "wait 10",
+        "press START",
+        "wait 40",
+        "poke sTheatreSlot 8 0",
+        "poke sTheatreMove 16 383",
+        "press SELECT",
+        "wait 30",
+        "press B",
+        "wait 40",
+        "press A",
+        "wait 30",
+        "shot \"the routine: CRYPTOPHASIA\"",
+        "press A",
+        "burst \"CRYPTOPHASIA\" 10 20",
+        "wait 60",
+        "remember hp2 gBattleMons+128 16"
+      ]
+    },
+    {
+      "stop": "CRYPTOPHASIA with NO sibling (both made PIDGEY, the same moment): power 40",
+      "steps": [
+        "loadstate t532_battle",
+        "wait 10",
+        "mon 1 species SPECIES_PIDGEY",
+        "mon 4 species SPECIES_PIDGEY",
+        "press START",
+        "wait 40",
+        "poke sTheatreSlot 8 0",
+        "poke sTheatreMove 16 383",
+        "press SELECT",
+        "wait 30",
+        "press B",
+        "wait 40",
+        "press A",
+        "wait 30",
+        "shot \"the routine: CRYPTOPHASIA\"",
+        "press A",
+        "burst \"CRYPTOPHASIA\" 10 20",
+        "wait 60",
+        "remember hp0 gBattleMons+128 16"
+      ]
+    },
+    {
+      "stop": "mid-battle: begun in SUMMER, the season forced to WINTER, CODEMUSAI called back and sent again -- still SUMMER's",
+      "steps": [
+        "loadstate t532_battle",
+        "wait 10",
+        "shot \"begun in SUMMER\"",
+        "poke gDaemonsSeasonOverride 8 1",
+        "wait 10",
+        "press DOWN",
+        "press A",
+        "wait 90",
+        "shot \"the party in battle, season now WINTER\"",
+        "press DOWN",
+        "press A",
+        "wait 30",
+        "press A",
+        "wait 400",
+        "shot \"CAREMUSAI sent in: still SUMMER's\"",
+        "win",
+        "wait 120",
+        "close",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "shot \"after the battle: the field in WINTER\""
+      ]
+    }
+  ]
+}

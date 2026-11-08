@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.344**
+**A total conversion — the living design bible, v11.345**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9087,6 +9087,53 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 ***The user's words and choices (2026-10-31, by multiple choice).*** **The painting reads IT'S REAL. IT'S YOURS.** *(the closing promise of an assignment, returned)*; **the card reads IT GOT THERE.** *(her own words on the deck, handed back)*; **at the gangway she passes the teacher's line on** -- *"Somebody told me once: it isn't hard. It's unfamiliar. They were right."*; **and on the deck, only there, she holds an orange ball, the same in both editions** -- *her own sheet, the game's first graphics id past 255 (OBJ_EVENT_GFX_LIONESS_BALL, 256; the recap shows her plain sheet in its place).* *Her other lines stay DRAFT.*
 
 *Four flags at the top of the game lane's block (0x3F7-0x3FA), two LOOSE PAGES (SEEN 107 and 108), two graphics ids (the lioness took FREE 104, the easel FREE 140; the easel is in npc_pink because THE PHOENIX holds slot 1 in THE NEXUS). Played in the theatre: `tools/routes/film_t493_lioness.json`.*
+
+### 9.34 The MUSAI branch keeps the seasons -- *decided 2026-11-08 (T-532); the plumbing built with placeholder art, the 24 forms' drawings to come*
+
+***The six MUSAI already share one chassis*** (8.2): **MUSAI is undifferentiated CONTENT, and AXIOM, EMBEDDING and
+AFFECT, the day and the night, decide what it specialises into.** *Now the branch answers to the calendar too.*
+**Each of the six has four seasonal forms, 24 looks in all, and wears the one the season gives it** -- *the season
+`DaemonsSeason()` already keeps (9.21): CONTENT on the northern year, CONTEXT on the southern, so the same daemon on the
+same day wears winter in one edition and summer in the other.*
+
+***This is OVERLOADED's idea, moved from the weather to the year.*** **OVERLOADED changes shape with the sky in a
+battle; the MUSAI change with the season everywhere -- in battle, in the party, in the box, on the road behind the
+player and in the INDEX.** *It is separate from evolution: a MUSAI in winter that is given AXIOM becomes a CODEMUSAI in
+winter.*
+
+| | type | its seasons | its home season |
+|---|---|---|---|
+| **MUSAI** | CONTENT | *the season itself: snow on its helmet, a sprout, a sun charm, the leaves that land on it* | -- (it has not chosen) |
+| **CODEMUSAI** | LOGIC | ***the shared tongue***: *in each season it carries a small piece of the sibling whose season it is, and the glyph lights the others answer* | -- (all four are its) |
+| **MASKMUSAI** | OPAQUE | **runners and a windscreen crest** | **winter** |
+| **LENSMUSAI** | CONTEXT | **model-plane wings and a propeller** | **spring** |
+| **CAREMUSAI** | CONTEXT | **pontoon floats and a canopy** | **summer** |
+| **SEEKMUSAI** | VECTOR | **knobby wheels and a roll-bar frame, ranging all around** | **autumn** |
+
+***Under the fable rule the machines are part of the body, never something ridden*** (9.4): *the snowmobile is
+MASKMUSAI's runners and its crest, the pontoon is CAREMUSAI's lower half, the model plane is LENSMUSAI's wings.* **A
+daemon in its home season is its fullest form; in the other three it carries a smaller piece of the same body** --
+*runners lifted in summer, floats frozen in winter, wings with leaves caught in them in autumn.* **Nobody rides
+anything, and nobody says whose seasons these are.**
+
+***Colour still carries the argument*** (invariant 5): **each form is drawn in its type's ramp**, *and the season is
+only what it wears -- frost, blossom, sun, leaves -- in small accents.* ***The type never changes with the season***:
+**an argument that changed by date would change by cartridge, since the editions keep opposite halves of the year**
+(invariant 3's spirit).
+
+***And the tongue is a routine.*** **CODEMUSAI knows CRYPTOPHASIA**, *a LOGIC routine that grows stronger for every
+other MUSAI in the party that can still fight.* **Its description says only that its own family can follow it.**
+*Nothing says why, or who first spoke it.*
+
+| routine | type | power | acc | PP | effect |
+|---|---|---|---|---|---|
+| **CRYPTOPHASIA** | LOGIC (special) | **40, +20 for each other MUSAI-branch daemon in the party still able to fight** (40 to 140) | 100 | 10 | *CODEMUSAI's own; learned at 30* |
+
+***How it is built*** (T-532, 2026-11-08): **the INDEX's Unown letters are the precedent** -- *one
+species, its picture chosen when it is drawn* -- **keyed by the season instead of the personality.** *The species
+never changes, so the save, the INDEX's counts, trades, evolution, stats and the companion's ids are untouched;
+only what is drawn changes.* **A battle reads the season once, as it begins, and keeps it to the end** -- *its background too.* **Look only**: *no stat, no type moves with the date.* **24 INDEX entries, one per form, both editions sharing them**: *a MUSAI's page shows its season's.* ***Still never
+stated***: *no line says the daemon changed with the season; the player notices, or does not (craft rule 1).*
 
 ## 10. DECISION LOG
 

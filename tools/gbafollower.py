@@ -186,9 +186,29 @@ def plan():
     names = species_names()
     pals = icon_palettes()
     out = {}
+    import genmusaiseasons                   # T-532: the MUSAI branch's seasonal forms meet us in gMonIconTable
+    seasonal = genmusaiseasons.form_species()
     for sp, icon, pi in icon_rows():
         p = os.path.join(GBA, icon)
         if not os.path.exists(p):
+            continue
+        if sp in seasonal:
+            #  T-532: a form with no final drawing is a copy of its species' picture, so its follower is its species'
+            #  follower (the same grid, in its own folder); a FINAL form's is reduced from that drawing, as a redrawn
+            #  daemon's is. Either way it walks at the follower's size, under its own sFollowerPics entry.
+            base = seasonal[sp][0]
+            final = genmusaiseasons.final_of(sp)
+            if final is None:
+                if base in out:
+                    out[sp] = (os.path.dirname(icon), out[base][1], out[base][2], pi)
+                continue
+            g = frame0(p)
+            if not needs(g):
+                continue
+            import gbs, icon3
+            r = icon3.reduce(gbs.primary_type(base[len("SPECIES_"):].lower()), final, fit=(MAX_H, MAX_W), pal_index=pi)
+            out[sp] = (os.path.dirname(icon), place([[int(v) for v in row] for row in r["grid"]]) if r else
+                       voted(g, pals[pi]), "reduced" if r else "voted", pi)
             continue
         g = frame0(p)
         if not needs(g):
@@ -217,7 +237,8 @@ def render(p):
         out.append('static const u8 %s[] = INCBIN_U8("%s/follower.4bpp");' % (sym(sp), p[sp][0]))
     #  past NUM_SPECIES: SYMBOL's letters are SPECIES_UNOWN_B..QMARK (NUM_SPECIES + 1..27), and FollowerPic bounds the
     #  look-up by ARRAY_COUNT, so a table sized NUM_SPECIES would never find them
-    out += ["", "static const u8 *const sFollowerPics[SPECIES_UNOWN_QMARK + 1] = {"]
+    #  T-532: and past SPECIES_UNOWN_QMARK, the MUSAI branch's seasonal forms -- so the table is sized by its rows
+    out += ["", "static const u8 *const sFollowerPics[] = {"]
     out += ["    [%s] = %s," % (sp, sym(sp)) for sp in sorted(p)]
     out.append("};")
     return "\n".join(out) + "\n"
