@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.344 — 2026-11-08
+
+- **9.21, a day's symbol (T-531, the user, by multiple choice; the seven marks approved as drawn).** Each weekday gets one wordless symbol: its centre as a ring of its traditional petal count, in ink; a level line through it, the word *over* made visible; the virtue's mark above in the day's colour, and its shadow below as the same mark reflected, faint and dashed. Chastity a closed dome, Temperance a level beam, Charity an open bowl, Diligence a climb, Forgiveness a knot opening, Kindness an arc sheltering a point, Humility a stem bowing. 4.38's "the seven centres never coloured" holds. First use: a daemon's dream, with a title of its own (still open).
+
 ## v11.343 — 2026-11-07
 
 - **4.40, the aurora: the dawn that comes at night (T-528, the user, by multiple choice; brought by the game lane).** Once the book is mended, the light hangs over DAEMON TOWER every night: CONTENT in oxygen's red line, CONTEXT in its green. On some nights (about one in three, picked from the date) it shows beyond the tower, spreading grove by grove, and each mainland grove lights its conjugate grove on the islands. The mainland is the north wind's side and the islands the south's, in both editions. The dawn chorus plays in the groves at dawn after a night of light; TULIKKO, an arctic fox, sweeps the sparks up at STILLFALL CAVE. With a daemon from the other edition in the party the sky shows both lines, green below and red above, and PLAY gains a duet. The names were checked: Galileo's 1619 "boreale aurora", the Sámi guovssahas (its "heard" gloss popular, not settled), the Māori Tahu-nui-a-rangi (kept out of the game), the Finnish revontulet.

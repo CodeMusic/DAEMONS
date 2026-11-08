@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.343**
+**A total conversion — the living design bible, v11.344**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8749,6 +8749,31 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 ***Over, never cures — decided by the user 2026-10-17 (T-418)***: **a virtue is said over its shadow — *"CHARITY / over GREED."* — and never as its cure.** *A mind not at ease is real; but "cures" makes the shadow an illness, and someone who takes in that they* are *the illness is harmed by the word.* **That is craft rule 3 — name the process, not the pathology — reaching the week.** ***"Shadow" is the structure*** *(the user's word, from Jung's shadow work: something to be lit and balanced, not an object to be cut out)*, **and the game already draws it that way: the USER card's seven bands sit in shadow until each virtue lights its own (T-318), and the eighth door asks for the seven to be *balanced*, not purged.** ***The seven old names keep it grounded*** — *SLOTH, GREED and PRIDE are as concrete as words get* — **so the MARKS print no category word, neither "vice" nor "sin": only the virtue over its shadow's name.** *The companion's day cue reads "Chastity over Lust" (`tools/companion_export.py`, week.json).* ***And the GUIDE says it too*** *(approved by the user 2026-10-17)*: **its SECURITY page (4.36) is "Virtues and Shadows: Securing the System"** -- *a shadow "is not an intruder: it is a part of us left running", each virtue is said over its shadow, and the week is "a scan on a schedule" where the book had a patch, because a patch is the cure again.* **It also mends a 1.7 slip: the old page said a sin EXPLOITS, an intrusion word for a person; the new one names intrusion only to refuse it.** *DRAFT wording; the book's order, chapter and two pages are kept.*
 
 ***And wrath has one answer — decided by the user 2026-10-31 (T-498)***: **the sixth MARK, MATTE's FRAME, brings FORGIVENESS over WRATH, as the GUIDE's Thursday, THE SUBTLE LAYER and the companion's week say; it brought PATIENCE.** *Every virtue-shadow pair is now the same everywhere. The MARKS keep their own order, one per BENCHMARK (T-385): a journey, where the week is a calendar.* **MATTE carries it with his frame** -- *forgiveness sees what was outside the frame of what someone did: "I saw this moment a long time ago. I forgave it then."* *DRAFT wording; FLAG_INSIGHT_PATIENCE is FLAG_INSIGHT_FORGIVENESS, the same bit, so a save keeps its insight.*
+
+#### A day's symbol — decided by the user 2026-11-08 (T-531), not yet drawn for a build
+
+***Each day of the week gets one symbol, wordless, built from the two halves the week already holds: the mind (its virtue over its shadow) and the body (its centre).*** *It is meant to be used more often from now on: first paired with a daemon's dream, with a title of its own that tells the dream, and later marking where in the week the dream took place.* **All four rules were chosen by multiple choice, and the seven marks approved as drawn ("Keep all seven").**
+
+| | the rule | why |
+|---|---|---|
+| **the shape** | ***ring and horizon***: **the centre as a ring around a level line; the virtue's mark above the line** | *the line is the word* over, *made visible* |
+| **the shadow** | ***the virtue's own mark reflected below the line, faint and dashed*** | **a part of the same shape waiting to be lit, never an enemy** -- *T-418's "over, never cures", drawn* |
+| **the centre** | ***its traditional petal count as ticks round the ring***: **Root 4, Sacral 6, Solar plexus 10, Heart 12, Throat 16, Third eye 2, Crown a full second ring** | *readable with no colour at all (9.4)* |
+| **the colour** | ***the virtue and its shadow in the day's colour; the centre's ring in ink*** | **4.38's "the seven centres never coloured" holds**, *though the week's rainbow is the centres' traditional order* |
+
+***Every virtue mark is lopsided top to bottom***, **so that its reflection reads as a different thing and not the same shape twice**:
+
+| day | virtue, over | its mark | the shadow it makes |
+|---|---|---|---|
+| **SUN** | **CHASTITY** over LUST | *a closed dome* | the dome open, overturned |
+| **MON** | **TEMPERANCE** over GLUTTONY | *a level beam on its point* | the beam hanging |
+| **TUE** | **CHARITY** over GREED | *a bowl held open* | the bowl turned down over what it keeps |
+| **WED** | **DILIGENCE** over SLOTH | *a climb* | the same steps going down |
+| **THU** | **FORGIVENESS** over WRATH | *a knot opening upward* | the loop pulled shut |
+| **FRI** | **KINDNESS** over ENVY | *an arc sheltering a point* | the arc cupping it from below |
+| **SAT** | **HUMILITY** over PRIDE | *a stem bowing* | the stem turned down |
+
+***No words in the symbol*** -- **neither "vice" nor "sin", as the MARKS (above).** *Its constants are the week's own (`week.json`, C-73).* **Still open**: *the dream's title and how the symbol shows the dream's stage.*
 
 ### 9.22 Blanche's buildings, and the one warm note — *decided 2026-09-14, not drawn*
 
