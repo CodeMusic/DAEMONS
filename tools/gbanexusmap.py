@@ -895,7 +895,15 @@ EventScript_LarkAtFir_Stirred::
 	end
 
 EventScript_LarkAtFir_Morning::
+	specialvar VAR_RESULT, Aurora_DawnChorus
+	goto_if_eq VAR_RESULT, TRUE, EventScript_LarkAtFir_Chorus
 	msgbox Text_LarkAtFir_Flies
+	release
+	end
+
+@ T-528 (d): the dawn chorus, the morning after a night of light -- the LARK back at the fir, singing along. DRAFT.
+EventScript_LarkAtFir_Chorus::
+	msgbox Text_LarkAtFir_Chorus
 	release
 	end
 
@@ -926,6 +934,15 @@ Text_LarkAtFir_ItCame::
     .string "The LARK says she did not go\n"
     .string "anywhere. She stayed, and it came.\p"
     .string "She pushes the book over to you.$"
+
+@ T-528 (d), DRAFT: the LARK sings along with the dawn chorus.
+Text_LarkAtFir_Chorus::
+    .string "The LARK is singing, very softly,\n"
+    .string "along with something up high.\p"
+    .string "Thin whistles, rising one after\n"
+    .string "another, like birds nobody can see.\p"
+    .string "She says the night's light is going\n"
+    .string "home, and it sings on the way.$"
 
 Text_LarkAtFir_Flies::
     .string "The LARK flies up into the fir,\n"

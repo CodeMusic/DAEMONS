@@ -103,6 +103,18 @@ def save_png(p, px, pal, bd=4):
     import gbafont
     n = 1 << bd
     pal = (list(pal) + [(0, 0, 0)] * n)[:n]
+    #  a file whose pixels and palette already match is left alone: other tools (genthrashicon) write the same sheet
+    #  with their own PNG encoder, and rewriting identical pixels only flips its bytes back and forth (2026-11-07)
+    if os.path.exists(p):
+        try:
+            from PIL import Image
+            im = Image.open(p)
+            if (im.mode == "P" and im.size == (len(px[0]), len(px))
+                    and [tuple(im.getpalette()[3 * i:3 * i + 3]) for i in range(n)] == [q5(c) for c in pal]
+                    and list(im.getdata()) == [v for row in px for v in row]):
+                return
+        except Exception:
+            pass
     gbafont.png_save(p, len(px[0]), len(px), bd, b"".join(bytes(q5(c)) for c in pal), px)
 
 

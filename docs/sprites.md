@@ -4,7 +4,7 @@
 
 | sprites | vanilla shipped | redrawn | recoloured | still vanilla | added | done |
 |---|---|---|---|---|---|---|
-| overworld people | 96 | 96 | 0 | 0 | 64 | **100%** |
+| overworld people | 96 | 96 | 0 | 0 | 65 | **100%** |
 | trainer portraits | 146 | 146 | 0 | 0 | 10 | **100%** |
 | trainer back pics | 6 | 6 | 0 | 0 | 0 | **100%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
@@ -14,8 +14,8 @@
 | daemon icons | 387 | 385 | 0 | 2 | 12 | **99%** |
 | overworld daemons | 42 | 42 | 0 | 0 | 0 | **100%** |
 | overworld objects | 19 | 19 | 0 | 0 | 6 | **100%** |
-| ***the people*** | 258 | 258 | 0 | 0 | 74 | ***100.0%*** |
-| ***every sprite*** | 1476 | 1473 | 0 | 3 | 118 | ***99.8%*** |
+| ***the people*** | 258 | 258 | 0 | 0 | 75 | ***100.0%*** |
+| ***every sprite*** | 1476 | 1473 | 0 | 3 | 119 | ***99.8%*** |
 
 ## The towns
 
