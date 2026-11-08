@@ -72,6 +72,11 @@ ARGS = {
     #  wallpapers) on 2026-11-07. APPROVED holds the picks, --all writes them, and the report exits 1 when the engine is
     #  not what that write makes.
     "gbamenus": [["--approved", "--all"]],
+    #  T-530's second pass: the same shape; the user said "Build all in A", with B SCORE for the INDEX's area map, on
+    #  2026-11-08 (the TOOLKIT, the MART, the INDEX's icons and area map, the TRAP TABLE's pocket, the hold marks, the
+    #  PC's box menu/arrows/waveform/DATA panel). APPROVED holds the picks, --all writes them, and the report exits 1
+    #  when the engine is not what that write makes.
+    "gbamenus2": [["--approved", "--all"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

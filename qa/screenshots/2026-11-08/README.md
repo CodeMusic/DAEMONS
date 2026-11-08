@@ -43,3 +43,51 @@ T-530 second pass, DRAFT: the party's hold marks -- engine now | A TERMINAL: a t
 T-530 second pass, DRAFT: the PC's DATA panel, scroll arrows, waveform and box menu -- engine now | A TERMINAL
 
 ![8Nov2026 - T530 - pass 2 PC parts draft - 7](8Nov2026%20-%20T530%20-%20pass%202%20PC%20parts%20draft%20-%207.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 8
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 8](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%208.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 9
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 9](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%209.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 10
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 10](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2010.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 11
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 11](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2011.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 12
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 12](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2012.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 13
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 13](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2013.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 14
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 14](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2014.png)
+
+### 8Nov2026 - T530 - pass 2 built in play - 15
+
+T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
+
+![8Nov2026 - T530 - pass 2 built in play - 15](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2015.png)

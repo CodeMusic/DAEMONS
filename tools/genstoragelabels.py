@@ -25,6 +25,10 @@ REL = "graphics/pokemon_storage/menu.png"
 WRITE = "--write" in sys.argv
 
 
+#  The pixels this tool owns (x0, x1, y0, y1, inclusive): the DATA label, the PARTY button, and the N's two tiles.
+OURS = ((8, 79, 4, 13), (68, 127, 18, 27), (48, 63, 48, 55))
+
+
 def move(px, x0, x1, y0, y1, dx, fill):
     band = {(x, y): px[x, y] for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)}
     for (x, y) in band:
@@ -58,11 +62,20 @@ def main():
     button = (127 - 68 + 1) + 7
     move(px, 70, 92, 18, 27, (68 + (button - width) // 2) - 70, 30)
 
+    #  T-530's second pass (tools/gbamenus2.py, 2026-11-08) redrew the DATA panel's tiles and the sheet's palette row 0
+    #  around these labels. So only the LABELS' pixels are this tool's: they are laid onto the sheet as it stands, its
+    #  palette and every other tile kept -- a whole-sheet write from upstream would undo that pass.
     path = os.path.join(GBA, REL)
-    same = list(Image.open(path).getdata()) == list(im.getdata())
+    cur = Image.open(path); cur.load()
+    out = cur.copy(); op = out.load()
+    for x0, x1, y0, y1 in OURS:
+        for y in range(y0, y1 + 1):
+            for x in range(x0, x1 + 1):
+                op[x, y] = px[x, y]
+    same = list(cur.getdata()) == list(out.getdata())
     print("  storage labels: %s" % ("unchanged" if same else "written" if WRITE else "would change"))
     if WRITE and not same:
-        im.save(path)
+        out.save(path)
     return 0
 
 

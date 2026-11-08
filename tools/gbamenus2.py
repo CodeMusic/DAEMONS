@@ -8,11 +8,12 @@ TRAP TABLE's pocket picture, the party's hold marks and the PC's box menu, scrol
                                                     #   files as the engine takes them (A/, B/) and a contact sheet
                                                     #   per screen -- the engine now, A (and B where one is offered),
                                                     #   each a 240x160 mock at real size with real content
-    python3 tools/gbamenus2.py --write --approved --pick toolkit=A,shop=A,index=A,area=B,pouch=A,holds=A,pcparts=A
-                                                    # write the chosen directions into the engine. Refuses without
-                                                    #   --approved and a pick for each screen named.
+    python3 tools/gbamenus2.py --write --approved --all
+                                                    # write APPROVED, the user's picks ("Build all in A", area B SCORE,
+                                                    #   2026-11-08). Refuses without --approved; --pick screen=A|B,...
+                                                    #   writes a pick of its own instead.
 
-DRAFT, 2026-11-08, the second pass of T-530 (the user picked "Menus, second pass"). The sibling of tools/gbamenus.py
+APPROVED and BUILT 2026-11-08 (the user: "Build all in A", with B SCORE for the area map). DRAFTED 2026-11-08, the second pass of T-530 (the user picked "Menus, second pass"). The sibling of tools/gbamenus.py
 (the first pass, built and released in v11.343.5) and drawn in its family, A TERMINAL: slate rule, 45-degree corners,
 the teal bracket, paper, graph paper. Every pixel is drawn in code here: no AI image, nothing traced. The engine's
 files are read for their SHAPE only -- which tile id each tilemap puts where, which palette slot the code swaps or
@@ -89,7 +90,9 @@ ARGS = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 #  Only the AREA map offers a B: the INDEX's map can look like the TOWN MAP (B SCORE) or like the other menus (A).
 OFFERED = {"toolkit": "A", "shop": "A", "index": "A", "area": "AB", "pouch": "A", "holds": "A", "pcparts": "A"}
 RECOMMENDED = {"toolkit": "A", "shop": "A", "index": "A", "area": "B", "pouch": "A", "holds": "A", "pcparts": "A"}
-APPROVED = {}                                       # nothing yet: the user picks from the sheets
+#  The user, 2026-11-08: "Build all in A", with B SCORE for the INDEX's area map. --write --approved --all writes these,
+#  and the report exits 1 when the engine is not what that write makes (decoded, as tools/gbamenus.py compares).
+APPROVED = {"toolkit": "A", "shop": "A", "index": "A", "area": "B", "pouch": "A", "holds": "A", "pcparts": "A"}
 
 GRAPH, GRID = (232, 236, 240), (206, 214, 222)      # the ground: graph paper, its rule every 8px
 STRIP, STRIP_LN, STRIP_DK = (44, 54, 68), (56, 68, 84), (24, 30, 40)
@@ -1529,6 +1532,40 @@ NOTES = {
 }
 
 
+def _decoded(p):
+    """A .png's pixels and colours: gbafont's reading for a paletted one; vanilla's grey disc.png is not one, so a
+    file gbafont refuses is read by PIL instead (and differs from any paletted write, as it should)."""
+    import gbafont
+    try:
+        return gbafont.png_load(p)
+    except (SystemExit, Exception):
+        im = Image.open(p)
+        return (im.mode, im.size, im.getpalette(), list(im.getdata()))
+
+
+def differs(picks):
+    """The engine files the approved write would change: each payload written to a scratch dir and compared with the
+    engine's file DECODED (pixels and colours for a .png, colours for a .pal), as tools/gbamenus.py does."""
+    out = []
+    with tempfile.TemporaryDirectory() as tmp:
+        for screen, d in picks.items():
+            files = outputs(screen, d)
+            put_files(files, tmp)
+            for rel in files:
+                a, b = os.path.join(tmp, rel), os.path.join(G, rel)
+                if not os.path.exists(b):
+                    out.append(rel)
+                elif rel.endswith(".png"):
+                    if _decoded(a) != _decoded(b):
+                        out.append(rel)
+                elif rel.endswith(".pal"):
+                    if M.jasc(a, True) != M.jasc(b, True):
+                        out.append(rel)
+                elif open(a, "rb").read() != open(b, "rb").read():
+                    out.append(rel)
+    return out
+
+
 def report():
     print("T-530 second pass: APPROVED = %r" % APPROVED)
     for d in ("A",):
@@ -1562,6 +1599,13 @@ def report():
     print("  PCPARTS A: box name %3.0f on %3.0f; misc2 8/15 kept %s/%s" % (lum(m1[15]), lum(m1[4]), m2[8], m2[15]))
     print("  RUN-TIME: HALFTONE greys all of these; TOOLKIT rows 1/3 swap (shade); SHOP rows 0/1 as palettes 11/6; "
           "INDEX row 0 slots 7/8 (T-481 B); misc1/misc2 shared with the PAW")
+    if APPROVED:
+        d = differs(APPROVED)
+        if d:
+            print("  the engine is NOT what the approved write makes: %d files (%s%s) -- run --write --approved --all"
+                  % (len(d), ", ".join(d[:4]), ", ..." if len(d) > 4 else ""))
+            return 1
+        print("  the engine holds the approved menus (%s)" % ", ".join("%s=%s" % kv for kv in APPROVED.items()))
     return 0
 
 
