@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t532_finals/raw/seekmusai_winter_icon_5342",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image drawn as a tiny party menu icon: its head and upper body, a little astronaut robot, a round helmet with a dark visor and two glowing eyes, two wide flat fins sticking out sideways from its helmet, with the roll-bar frame over its helmet and the knobby tyres clearly showing, its big head filling the picture, bold simple shapes, strong contrast between light, mid and dark grey, only small touches of colour, a thick black outline, facing the viewer, pure white background, centered, no text, game asset",
+ "negative": "",
+ "seed": 5342,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t532_finals/raw/seekmusai_winter_front_5321.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.1,
+ "comfyui": "0.19.1",
+ "made": "2026-11-08 15:56:58"
+}

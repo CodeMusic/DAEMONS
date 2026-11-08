@@ -1,0 +1,2970 @@
+{
+ "musai_winter_5321": {
+  "daemon": "musai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "NORMAL",
+  "front_folded": 0,
+  "front_px": 1103,
+  "front_acc": 4.7,
+  "front_typ": 95.3,
+  "front_box": [
+   15,
+   8,
+   48,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.94,
+  "back_px": 1108,
+  "back_acc": 4.0,
+  "back_typ": 96.0,
+  "back_box": [
+   15,
+   8,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.18
+ },
+ "musai_winter_5322": {
+  "daemon": "musai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "NORMAL",
+  "front_folded": 0,
+  "front_px": 1083,
+  "front_acc": 1.8,
+  "front_typ": 98.2,
+  "front_box": [
+   15,
+   8,
+   48,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.98,
+  "back_px": 1069,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   15,
+   8,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.1
+ },
+ "musai_winter_icon_5341": {
+  "daemon": "musai",
+  "season": "winter",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 7,
+  "icon_dom": 0.62,
+  "icon_sd": 71.1,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "musai_winter_icon_5342": {
+  "daemon": "musai",
+  "season": "winter",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.62,
+  "icon_sd": 72.4,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "musai_spring_5321": {
+  "daemon": "musai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "NORMAL",
+  "front_folded": 0,
+  "front_px": 793,
+  "front_acc": 3.5,
+  "front_typ": 96.5,
+  "front_box": [
+   16,
+   10,
+   47,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.49,
+  "back_px": 604,
+  "back_acc": 7.0,
+  "back_typ": 93.0,
+  "back_box": [
+   16,
+   7,
+   47,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.76,
+  "score": 2.49
+ },
+ "musai_spring_5322": {
+  "daemon": "musai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "NORMAL",
+  "front_folded": 0,
+  "front_px": 1016,
+  "front_acc": 6.5,
+  "front_typ": 93.5,
+  "front_box": [
+   16,
+   7,
+   47,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.97,
+  "back_px": 992,
+  "back_acc": 5.1,
+  "back_typ": 94.9,
+  "back_box": [
+   16,
+   7,
+   47,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.98,
+  "score": 0.17
+ },
+ "musai_spring_icon_5341": {
+  "daemon": "musai",
+  "season": "spring",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   20,
+   28
+  ],
+  "icon_cols": 8,
+  "icon_dom": 0.57,
+  "icon_sd": 72.8,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "musai_spring_icon_5342": {
+  "daemon": "musai",
+  "season": "spring",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   20,
+   28
+  ],
+  "icon_cols": 9,
+  "icon_dom": 0.69,
+  "icon_sd": 55.4,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "musai_autumn_5321": {
+  "daemon": "musai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "NORMAL",
+  "front_folded": 0,
+  "front_px": 1078,
+  "front_acc": 10.6,
+  "front_typ": 89.4,
+  "front_box": [
+   14,
+   8,
+   48,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 1084,
+  "back_acc": 10.1,
+  "back_typ": 89.9,
+  "back_box": [
+   14,
+   8,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.4
+ },
+ "musai_autumn_5322": {
+  "daemon": "musai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "NORMAL",
+  "front_folded": 0,
+  "front_px": 1082,
+  "front_acc": 9.7,
+  "front_typ": 90.3,
+  "front_box": [
+   14,
+   9,
+   48,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.98,
+  "back_px": 1090,
+  "back_acc": 8.2,
+  "back_typ": 91.8,
+  "back_box": [
+   14,
+   9,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.1
+ },
+ "musai_autumn_icon_5341": {
+  "daemon": "musai",
+  "season": "autumn",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 8,
+  "icon_dom": 0.6,
+  "icon_sd": 67.2,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "musai_autumn_icon_5342": {
+  "daemon": "musai",
+  "season": "autumn",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 8,
+  "icon_dom": 0.61,
+  "icon_sd": 67.4,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "codemusai_winter_5321": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "FIGHTING",
+  "front_folded": 19,
+  "front_px": 1120,
+  "front_acc": 7.6,
+  "front_typ": 48.8,
+  "front_box": [
+   14,
+   8,
+   48,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 22,
+  "sil": 0.93,
+  "back_px": 1117,
+  "back_acc": 2.9,
+  "back_typ": 43.1,
+  "back_box": [
+   14,
+   8,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.21
+ },
+ "codemusai_winter_5322": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "FIGHTING",
+  "front_folded": 11,
+  "front_px": 1047,
+  "front_acc": 6.1,
+  "front_typ": 52.5,
+  "front_box": [
+   15,
+   9,
+   48,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 18,
+  "sil": 0.85,
+  "back_px": 986,
+  "back_acc": 2.5,
+  "back_typ": 71.5,
+  "back_box": [
+   15,
+   10,
+   47,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 0.94,
+  "score": 0.69
+ },
+ "codemusai_winter_5323": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5323,
+  "type": "FIGHTING",
+  "front_folded": 2,
+  "front_px": 1120,
+  "front_acc": 7.1,
+  "front_typ": 55.3,
+  "front_box": [
+   15,
+   8,
+   48,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 1076,
+  "back_acc": 3.0,
+  "back_typ": 37.8,
+  "back_box": [
+   14,
+   8,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.96,
+  "score": 0.52
+ },
+ "codemusai_winter_5324": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5324,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1187,
+  "front_acc": 5.9,
+  "front_typ": 54.6,
+  "front_box": [
+   14,
+   7,
+   49,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.89,
+  "back_px": 1230,
+  "back_acc": 2.3,
+  "back_typ": 69.9,
+  "back_box": [
+   12,
+   7,
+   50,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 1.04,
+  "score": 0.49
+ },
+ "codemusai_winter_icon_5341": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 8,
+  "icon_dom": 0.63,
+  "icon_sd": 69.8,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "codemusai_winter_icon_5342": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.54,
+  "icon_sd": 79.7,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "codemusai_spring_5321": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1085,
+  "front_acc": 5.7,
+  "front_typ": 52.8,
+  "front_box": [
+   12,
+   10,
+   51,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.99,
+  "back_px": 1093,
+  "back_acc": 3.8,
+  "back_typ": 60.6,
+  "back_box": [
+   12,
+   10,
+   51,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.07
+ },
+ "codemusai_spring_5322": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1086,
+  "front_acc": 4.3,
+  "front_typ": 49.0,
+  "front_box": [
+   13,
+   10,
+   50,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 1058,
+  "back_acc": 2.5,
+  "back_typ": 69.8,
+  "back_box": [
+   12,
+   11,
+   50,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.48
+ },
+ "codemusai_spring_5323": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5323,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1157,
+  "front_acc": 4.7,
+  "front_typ": 48.3,
+  "front_box": [
+   4,
+   10,
+   59,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.96,
+  "back_px": 1136,
+  "back_acc": 2.2,
+  "back_typ": 73.3,
+  "back_box": [
+   4,
+   10,
+   59,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.98,
+  "score": 0.2
+ },
+ "codemusai_spring_5324": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5324,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1252,
+  "front_acc": 3.8,
+  "front_typ": 47.8,
+  "front_box": [
+   3,
+   7,
+   60,
+   56
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.97,
+  "back_px": 1260,
+  "back_acc": 2.9,
+  "back_typ": 36.0,
+  "back_box": [
+   3,
+   7,
+   60,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.13
+ },
+ "codemusai_spring_icon_5341": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   22
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.62,
+  "icon_sd": 70.8,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "codemusai_spring_icon_5342": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   23
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.61,
+  "icon_sd": 79.8,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "codemusai_summer_5321": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "FIGHTING",
+  "front_folded": 19,
+  "front_px": 1070,
+  "front_acc": 3.6,
+  "front_typ": 63.4,
+  "front_box": [
+   15,
+   10,
+   48,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 21,
+  "sil": 0.98,
+  "back_px": 1061,
+  "back_acc": 3.9,
+  "back_typ": 71.3,
+  "back_box": [
+   15,
+   10,
+   48,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.1
+ },
+ "codemusai_summer_5322": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1054,
+  "front_acc": 3.0,
+  "front_typ": 61.2,
+  "front_box": [
+   15,
+   11,
+   48,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.98,
+  "back_px": 1036,
+  "back_acc": 2.8,
+  "back_typ": 66.3,
+  "back_box": [
+   15,
+   11,
+   48,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.98,
+  "score": 0.14
+ },
+ "codemusai_summer_5323": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5323,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1331,
+  "front_acc": 3.5,
+  "front_typ": 58.7,
+  "front_box": [
+   9,
+   9,
+   54,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.99,
+  "back_px": 1340,
+  "back_acc": 3.4,
+  "back_typ": 66.9,
+  "back_box": [
+   9,
+   9,
+   54,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.07
+ },
+ "codemusai_summer_5324": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5324,
+  "type": "FIGHTING",
+  "front_folded": 5,
+  "front_px": 1294,
+  "front_acc": 2.4,
+  "front_typ": 63.4,
+  "front_box": [
+   10,
+   8,
+   53,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 3,
+  "sil": 0.87,
+  "back_px": 1282,
+  "back_acc": 2.7,
+  "back_typ": 69.8,
+  "back_box": [
+   10,
+   8,
+   52,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.43
+ },
+ "codemusai_summer_icon_5341": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   27
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.57,
+  "icon_sd": 65.8,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "codemusai_summer_icon_5342": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   27
+  ],
+  "icon_cols": 7,
+  "icon_dom": 0.5,
+  "icon_sd": 74.8,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "codemusai_autumn_5321": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1108,
+  "front_acc": 7.0,
+  "front_typ": 54.8,
+  "front_box": [
+   15,
+   10,
+   48,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.99,
+  "back_px": 1111,
+  "back_acc": 3.2,
+  "back_typ": 62.6,
+  "back_box": [
+   15,
+   10,
+   48,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.03
+ },
+ "codemusai_autumn_5322": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1014,
+  "front_acc": 7.5,
+  "front_typ": 54.8,
+  "front_box": [
+   15,
+   11,
+   48,
+   51
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.87,
+  "back_px": 1022,
+  "back_acc": 3.8,
+  "back_typ": 68.3,
+  "back_box": [
+   15,
+   11,
+   48,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.43
+ },
+ "codemusai_autumn_5323": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5323,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1138,
+  "front_acc": 8.2,
+  "front_typ": 50.8,
+  "front_box": [
+   15,
+   10,
+   47,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.87,
+  "back_px": 1186,
+  "back_acc": 2.6,
+  "back_typ": 65.9,
+  "back_box": [
+   15,
+   10,
+   48,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 1.04,
+  "score": 0.55
+ },
+ "codemusai_autumn_5324": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5324,
+  "type": "FIGHTING",
+  "front_folded": 0,
+  "front_px": 1107,
+  "front_acc": 5.7,
+  "front_typ": 51.2,
+  "front_box": [
+   14,
+   9,
+   48,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.85,
+  "back_px": 1091,
+  "back_acc": 1.1,
+  "back_typ": 65.6,
+  "back_box": [
+   14,
+   10,
+   48,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.49
+ },
+ "codemusai_autumn_icon_5341": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 8,
+  "icon_dom": 0.53,
+  "icon_sd": 76.6,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "codemusai_autumn_icon_5342": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 7,
+  "icon_dom": 0.56,
+  "icon_sd": 76.3,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "seekmusai_winter_5321": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "FLYING",
+  "front_folded": 4,
+  "front_px": 1241,
+  "front_acc": 0.0,
+  "front_typ": 53.2,
+  "front_box": [
+   7,
+   8,
+   55,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.89,
+  "back_px": 1278,
+  "back_acc": 0.0,
+  "back_typ": 69.2,
+  "back_box": [
+   7,
+   8,
+   56,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 1.03,
+  "score": 0.45
+ },
+ "seekmusai_winter_5322": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "FLYING",
+  "front_folded": 15,
+  "front_px": 1246,
+  "front_acc": 0.0,
+  "front_typ": 55.5,
+  "front_box": [
+   7,
+   8,
+   55,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.89,
+  "back_px": 1170,
+  "back_acc": 0.0,
+  "back_typ": 67.8,
+  "back_box": [
+   7,
+   8,
+   55,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.94,
+  "score": 0.57
+ },
+ "seekmusai_winter_5323": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5323,
+  "type": "FLYING",
+  "front_folded": 4,
+  "front_px": 1313,
+  "front_acc": 0.0,
+  "front_typ": 63.5,
+  "front_box": [
+   7,
+   7,
+   56,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.81,
+  "back_px": 1370,
+  "back_acc": 0.0,
+  "back_typ": 75.3,
+  "back_box": [
+   7,
+   6,
+   56,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 1.04,
+  "score": 0.73
+ },
+ "seekmusai_winter_5324": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5324,
+  "type": "FLYING",
+  "front_folded": 10,
+  "front_px": 1195,
+  "front_acc": 0.0,
+  "front_typ": 54.8,
+  "front_box": [
+   7,
+   6,
+   55,
+   56
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.85,
+  "back_px": 1284,
+  "back_acc": 0.0,
+  "back_typ": 64.0,
+  "back_box": [
+   7,
+   6,
+   55,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 1.07,
+  "score": 0.73
+ },
+ "seekmusai_winter_icon_5341": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   27
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.7,
+  "icon_sd": 67.9,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "seekmusai_winter_icon_5342": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   26
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.66,
+  "icon_sd": 65.9,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "seekmusai_spring_5321": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "FLYING",
+  "front_folded": 8,
+  "front_px": 1113,
+  "front_acc": 2.1,
+  "front_typ": 61.0,
+  "front_box": [
+   8,
+   9,
+   55,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 5,
+  "sil": 0.58,
+  "back_px": 677,
+  "back_acc": 2.5,
+  "back_typ": 67.7,
+  "back_box": [
+   8,
+   9,
+   55,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.61,
+  "score": 2.82
+ },
+ "seekmusai_spring_5322": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "FLYING",
+  "front_folded": 11,
+  "front_px": 1039,
+  "front_acc": 2.5,
+  "front_typ": 58.1,
+  "front_box": [
+   8,
+   9,
+   55,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.85,
+  "back_px": 968,
+  "back_acc": 2.4,
+  "back_typ": 76.3,
+  "back_box": [
+   8,
+   10,
+   54,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 0.93,
+  "score": 0.73
+ },
+ "seekmusai_spring_5323": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5323,
+  "type": "FLYING",
+  "front_folded": 8,
+  "front_px": 911,
+  "front_acc": 1.9,
+  "front_typ": 63.7,
+  "front_box": [
+   8,
+   10,
+   55,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 5,
+  "sil": 0.71,
+  "back_px": 1104,
+  "back_acc": 1.1,
+  "back_typ": 76.9,
+  "back_box": [
+   7,
+   9,
+   55,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 1.21,
+  "score": 1.71
+ },
+ "seekmusai_spring_5324": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5324,
+  "type": "FLYING",
+  "front_folded": 7,
+  "front_px": 1069,
+  "front_acc": 1.0,
+  "front_typ": 56.8,
+  "front_box": [
+   8,
+   9,
+   55,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.84,
+  "back_px": 983,
+  "back_acc": 1.1,
+  "back_typ": 78.1,
+  "back_box": [
+   7,
+   9,
+   55,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.92,
+  "score": 0.8
+ },
+ "seekmusai_spring_icon_5341": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   27
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.62,
+  "icon_sd": 67.4,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "seekmusai_spring_icon_5342": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   24
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.6,
+  "icon_sd": 72.6,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "seekmusai_summer_5321": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "FLYING",
+  "front_folded": 1,
+  "front_px": 1095,
+  "front_acc": 0.4,
+  "front_typ": 58.4,
+  "front_box": [
+   8,
+   9,
+   54,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.72,
+  "back_px": 830,
+  "back_acc": 0.0,
+  "back_typ": 69.9,
+  "back_box": [
+   8,
+   9,
+   54,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.76,
+  "score": 1.8
+ },
+ "seekmusai_summer_5322": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "FLYING",
+  "front_folded": 3,
+  "front_px": 1110,
+  "front_acc": 0.4,
+  "front_typ": 54.7,
+  "front_box": [
+   8,
+   9,
+   54,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.74,
+  "back_px": 1000,
+  "back_acc": 0.0,
+  "back_typ": 77.5,
+  "back_box": [
+   9,
+   11,
+   54,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.9,
+  "score": 1.18
+ },
+ "seekmusai_summer_5323": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5323,
+  "type": "FLYING",
+  "front_folded": 70,
+  "front_px": 1055,
+  "front_acc": 0.6,
+  "front_typ": 63.2,
+  "front_box": [
+   9,
+   7,
+   54,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 79,
+  "sil": 0.77,
+  "back_px": 1243,
+  "back_acc": 0.1,
+  "back_typ": 79.6,
+  "back_box": [
+   8,
+   7,
+   55,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 1.18,
+  "score": 1.41
+ },
+ "seekmusai_summer_5324": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5324,
+  "type": "FLYING",
+  "front_folded": 2,
+  "front_px": 1141,
+  "front_acc": 0.4,
+  "front_typ": 56.9,
+  "front_box": [
+   8,
+   9,
+   54,
+   54
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.89,
+  "back_px": 1088,
+  "back_acc": 0.3,
+  "back_typ": 77.8,
+  "back_box": [
+   8,
+   9,
+   54,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.95,
+  "score": 0.53
+ },
+ "seekmusai_summer_icon_5341": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   27
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.59,
+  "icon_sd": 76.7,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "seekmusai_summer_icon_5342": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   24,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.56,
+  "icon_sd": 79.2,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "seekmusai_autumn_5321": {
+  "daemon": "seekmusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "FLYING",
+  "front_folded": 62,
+  "front_px": 1543,
+  "front_acc": 4.8,
+  "front_typ": 52.8,
+  "front_box": [
+   4,
+   5,
+   59,
+   57
+  ],
+  "front_edge": 0,
+  "back_folded": 115,
+  "sil": 0.73,
+  "back_px": 1317,
+  "back_acc": 2.4,
+  "back_typ": 69.9,
+  "back_box": [
+   5,
+   6,
+   58,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 0.85,
+  "score": 1.41
+ },
+ "seekmusai_autumn_5322": {
+  "daemon": "seekmusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "FLYING",
+  "front_folded": 40,
+  "front_px": 1503,
+  "front_acc": 5.4,
+  "front_typ": 50.5,
+  "front_box": [
+   4,
+   6,
+   59,
+   57
+  ],
+  "front_edge": 0,
+  "back_folded": 45,
+  "sil": 0.84,
+  "back_px": 1390,
+  "back_acc": 5.0,
+  "back_typ": 64.3,
+  "back_box": [
+   4,
+   7,
+   59,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 0.92,
+  "score": 0.8
+ },
+ "seekmusai_autumn_icon_5341": {
+  "daemon": "seekmusai",
+  "season": "autumn",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   20
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.68,
+  "icon_sd": 64.6,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "seekmusai_autumn_icon_5342": {
+  "daemon": "seekmusai",
+  "season": "autumn",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 0,
+  "size": [
+   28,
+   25
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.67,
+  "icon_sd": 61.1,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "caremusai_winter_5321": {
+  "daemon": "caremusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1269,
+  "front_acc": 0.6,
+  "front_typ": 50.3,
+  "front_box": [
+   11,
+   7,
+   51,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.91,
+  "back_px": 1258,
+  "back_acc": 1.3,
+  "back_typ": 68.0,
+  "back_box": [
+   11,
+   7,
+   51,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.31
+ },
+ "caremusai_winter_5322": {
+  "daemon": "caremusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1177,
+  "front_acc": 5.8,
+  "front_typ": 44.0,
+  "front_box": [
+   12,
+   7,
+   51,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.92,
+  "back_px": 1101,
+  "back_acc": 6.2,
+  "back_typ": 66.8,
+  "back_box": [
+   12,
+   7,
+   51,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.94,
+  "score": 0.48
+ },
+ "caremusai_winter_icon_5341": {
+  "daemon": "caremusai",
+  "season": "winter",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   24,
+   28
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.63,
+  "icon_sd": 68.3,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "caremusai_winter_icon_5342": {
+  "daemon": "caremusai",
+  "season": "winter",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   24,
+   28
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.59,
+  "icon_sd": 69.6,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "caremusai_spring_5321": {
+  "daemon": "caremusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 25,
+  "front_px": 1255,
+  "front_acc": 2.1,
+  "front_typ": 56.2,
+  "front_box": [
+   14,
+   8,
+   48,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 30,
+  "sil": 0.81,
+  "back_px": 1145,
+  "back_acc": 2.4,
+  "back_typ": 63.9,
+  "back_box": [
+   14,
+   8,
+   48,
+   54
+  ],
+  "back_edge": 0,
+  "ratio": 0.91,
+  "score": 0.93
+ },
+ "caremusai_spring_5322": {
+  "daemon": "caremusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 3,
+  "front_px": 1277,
+  "front_acc": 0.9,
+  "front_typ": 58.4,
+  "front_box": [
+   14,
+   8,
+   49,
+   55
+  ],
+  "front_edge": 0,
+  "back_folded": 4,
+  "sil": 0.91,
+  "back_px": 1225,
+  "back_acc": 1.5,
+  "back_typ": 76.2,
+  "back_box": [
+   14,
+   8,
+   49,
+   55
+  ],
+  "back_edge": 0,
+  "ratio": 0.96,
+  "score": 0.43
+ },
+ "caremusai_spring_icon_5341": {
+  "daemon": "caremusai",
+  "season": "spring",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 7,
+  "icon_dom": 0.62,
+  "icon_sd": 63.8,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "caremusai_spring_icon_5342": {
+  "daemon": "caremusai",
+  "season": "spring",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.65,
+  "icon_sd": 63.5,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "caremusai_summer_5321": {
+  "daemon": "caremusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 17,
+  "front_px": 1506,
+  "front_acc": 10.2,
+  "front_typ": 55.8,
+  "front_box": [
+   10,
+   6,
+   53,
+   57
+  ],
+  "front_edge": 0,
+  "back_folded": 3,
+  "sil": 0.83,
+  "back_px": 1361,
+  "back_acc": 6.8,
+  "back_typ": 71.3,
+  "back_box": [
+   12,
+   6,
+   51,
+   56
+  ],
+  "back_edge": 0,
+  "ratio": 0.9,
+  "score": 0.91
+ },
+ "caremusai_summer_5322": {
+  "daemon": "caremusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 17,
+  "front_px": 1469,
+  "front_acc": 9.6,
+  "front_typ": 57.8,
+  "front_box": [
+   10,
+   6,
+   52,
+   57
+  ],
+  "front_edge": 0,
+  "back_folded": 17,
+  "sil": 0.98,
+  "back_px": 1482,
+  "back_acc": 10.8,
+  "back_typ": 66.3,
+  "back_box": [
+   10,
+   6,
+   52,
+   57
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.1
+ },
+ "caremusai_summer_icon_5341": {
+  "daemon": "caremusai",
+  "season": "summer",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   25,
+   28
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.58,
+  "icon_sd": 71.5,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "caremusai_summer_icon_5342": {
+  "daemon": "caremusai",
+  "season": "summer",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   23,
+   28
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.58,
+  "icon_sd": 70.3,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "caremusai_autumn_5321": {
+  "daemon": "caremusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 6,
+  "front_px": 1238,
+  "front_acc": 19.6,
+  "front_typ": 43.1,
+  "front_box": [
+   12,
+   9,
+   51,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.96,
+  "back_px": 1211,
+  "back_acc": 24.4,
+  "back_typ": 47.6,
+  "back_box": [
+   12,
+   9,
+   51,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 0.98,
+  "score": 3.0
+ },
+ "caremusai_autumn_5322": {
+  "daemon": "caremusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1284,
+  "front_acc": 5.1,
+  "front_typ": 57.7,
+  "front_box": [
+   12,
+   9,
+   51,
+   53
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.9,
+  "back_px": 1242,
+  "back_acc": 4.5,
+  "back_typ": 72.4,
+  "back_box": [
+   12,
+   9,
+   50,
+   53
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.42
+ },
+ "caremusai_autumn_icon_5341": {
+  "daemon": "caremusai",
+  "season": "autumn",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   25,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.62,
+  "icon_sd": 65.3,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "caremusai_autumn_icon_5342": {
+  "daemon": "caremusai",
+  "season": "autumn",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   25,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.59,
+  "icon_sd": 64.2,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "lensmusai_winter_5321": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1088,
+  "front_acc": 0.5,
+  "front_typ": 53.8,
+  "front_box": [
+   9,
+   10,
+   54,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 2,
+  "sil": 0.77,
+  "back_px": 1048,
+  "back_acc": 1.2,
+  "back_typ": 43.0,
+  "back_box": [
+   6,
+   11,
+   56,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.96,
+  "score": 0.85
+ },
+ "lensmusai_winter_5322": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 1,
+  "front_px": 1048,
+  "front_acc": 0.1,
+  "front_typ": 45.5,
+  "front_box": [
+   10,
+   10,
+   52,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 5,
+  "sil": 0.83,
+  "back_px": 1016,
+  "back_acc": 0.1,
+  "back_typ": 72.9,
+  "back_box": [
+   10,
+   11,
+   53,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.63
+ },
+ "lensmusai_winter_5323": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5323,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1138,
+  "front_acc": 0.0,
+  "front_typ": 61.6,
+  "front_box": [
+   7,
+   10,
+   56,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.84,
+  "back_px": 1160,
+  "back_acc": 0.0,
+  "back_typ": 72.2,
+  "back_box": [
+   6,
+   10,
+   57,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 1.02,
+  "score": 0.56
+ },
+ "lensmusai_winter_5324": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5324,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1059,
+  "front_acc": 0.3,
+  "front_typ": 63.2,
+  "front_box": [
+   9,
+   10,
+   54,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.75,
+  "back_px": 1031,
+  "back_acc": 1.2,
+  "back_typ": 77.8,
+  "back_box": [
+   8,
+   11,
+   55,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.87
+ },
+ "lensmusai_winter_icon_5341": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   24
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.67,
+  "icon_sd": 61.2,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "lensmusai_winter_icon_5342": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   25
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.64,
+  "icon_sd": 68.9,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "lensmusai_spring_5321": {
+  "daemon": "lensmusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 4,
+  "front_px": 1143,
+  "front_acc": 15.5,
+  "front_typ": 37.0,
+  "front_box": [
+   4,
+   10,
+   58,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 7,
+  "sil": 0.78,
+  "back_px": 1121,
+  "back_acc": 24.0,
+  "back_typ": 27.1,
+  "back_box": [
+   4,
+   11,
+   59,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 0.98,
+  "score": 2.64
+ },
+ "lensmusai_spring_5322": {
+  "daemon": "lensmusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 5,
+  "front_px": 1083,
+  "front_acc": 16.8,
+  "front_typ": 36.1,
+  "front_box": [
+   4,
+   11,
+   58,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 5,
+  "sil": 0.82,
+  "back_px": 1130,
+  "back_acc": 24.1,
+  "back_typ": 56.2,
+  "back_box": [
+   3,
+   11,
+   59,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 1.04,
+  "score": 2.88
+ },
+ "lensmusai_spring_icon_5341": {
+  "daemon": "lensmusai",
+  "season": "spring",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   24
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.67,
+  "icon_sd": 70.7,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "lensmusai_spring_icon_5342": {
+  "daemon": "lensmusai",
+  "season": "spring",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   23
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.6,
+  "icon_sd": 74.0,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "lensmusai_summer_5321": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 994,
+  "front_acc": 2.0,
+  "front_typ": 37.7,
+  "front_box": [
+   12,
+   11,
+   50,
+   51
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 980,
+  "back_acc": 0.5,
+  "back_typ": 33.7,
+  "back_box": [
+   12,
+   12,
+   50,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.4
+ },
+ "lensmusai_summer_5322": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 954,
+  "front_acc": 0.0,
+  "front_typ": 41.5,
+  "front_box": [
+   14,
+   11,
+   49,
+   51
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.86,
+  "back_px": 948,
+  "back_acc": 0.0,
+  "back_typ": 74.4,
+  "back_box": [
+   13,
+   12,
+   50,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.46
+ },
+ "lensmusai_summer_5323": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5323,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1004,
+  "front_acc": 0.8,
+  "front_typ": 36.8,
+  "front_box": [
+   12,
+   10,
+   51,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.84,
+  "back_px": 1002,
+  "back_acc": 0.9,
+  "back_typ": 31.6,
+  "back_box": [
+   11,
+   10,
+   52,
+   52
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.48
+ },
+ "lensmusai_summer_5324": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5324,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1048,
+  "front_acc": 1.6,
+  "front_typ": 40.1,
+  "front_box": [
+   4,
+   11,
+   58,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.85,
+  "back_px": 1016,
+  "back_acc": 0.3,
+  "back_typ": 33.5,
+  "back_box": [
+   4,
+   11,
+   58,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.57
+ },
+ "lensmusai_summer_icon_5341": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   22
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.7,
+  "icon_sd": 64.3,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "lensmusai_summer_icon_5342": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   22
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.68,
+  "icon_sd": 68.7,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "lensmusai_autumn_5321": {
+  "daemon": "lensmusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1111,
+  "front_acc": 10.5,
+  "front_typ": 36.3,
+  "front_box": [
+   9,
+   11,
+   54,
+   52
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 1096,
+  "back_acc": 19.2,
+  "back_typ": 25.7,
+  "back_box": [
+   8,
+   12,
+   54,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 1.24
+ },
+ "lensmusai_autumn_5322": {
+  "daemon": "lensmusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "PSYCHIC",
+  "front_folded": 0,
+  "front_px": 1062,
+  "front_acc": 11.2,
+  "front_typ": 36.2,
+  "front_box": [
+   9,
+   11,
+   53,
+   51
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.82,
+  "back_px": 1034,
+  "back_acc": 18.2,
+  "back_typ": 58.7,
+  "back_box": [
+   9,
+   12,
+   54,
+   51
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 1.3
+ },
+ "lensmusai_autumn_icon_5341": {
+  "daemon": "lensmusai",
+  "season": "autumn",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   26
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.64,
+  "icon_sd": 65.9,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "lensmusai_autumn_icon_5342": {
+  "daemon": "lensmusai",
+  "season": "autumn",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 1,
+  "size": [
+   28,
+   26
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.6,
+  "icon_sd": 65.5,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_winter_5321": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1163,
+  "front_acc": 3.9,
+  "front_typ": 96.1,
+  "front_box": [
+   10,
+   5,
+   52,
+   57
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.66,
+  "back_px": 1188,
+  "back_acc": 4.5,
+  "back_typ": 95.5,
+  "back_box": [
+   12,
+   5,
+   50,
+   57
+  ],
+  "back_edge": 0,
+  "ratio": 1.02,
+  "score": 1.1
+ },
+ "maskmusai_winter_5322": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1233,
+  "front_acc": 4.2,
+  "front_typ": 95.8,
+  "front_box": [
+   10,
+   4,
+   53,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.74,
+  "back_px": 1085,
+  "back_acc": 1.5,
+  "back_typ": 98.5,
+  "back_box": [
+   17,
+   4,
+   46,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 0.88,
+  "score": 1.26
+ },
+ "maskmusai_winter_5323": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5323,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1200,
+  "front_acc": 0.4,
+  "front_typ": 99.6,
+  "front_box": [
+   12,
+   4,
+   50,
+   58
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.79,
+  "back_px": 1145,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   14,
+   4,
+   49,
+   59
+  ],
+  "back_edge": 0,
+  "ratio": 0.95,
+  "score": 0.83
+ },
+ "maskmusai_winter_5324": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5324,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1144,
+  "front_acc": 0.0,
+  "front_typ": 100.0,
+  "front_box": [
+   13,
+   4,
+   50,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.71,
+  "back_px": 1118,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   16,
+   4,
+   46,
+   59
+  ],
+  "back_edge": 0,
+  "ratio": 0.98,
+  "score": 0.95
+ },
+ "maskmusai_winter_icon_5341": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   18,
+   28
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.56,
+  "icon_sd": 58.3,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_winter_icon_5342": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.54,
+  "icon_sd": 79.5,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_spring_5321": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1321,
+  "front_acc": 1.4,
+  "front_typ": 98.6,
+  "front_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.93,
+  "back_px": 1314,
+  "back_acc": 0.8,
+  "back_typ": 99.2,
+  "back_box": [
+   14,
+   4,
+   48,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.25
+ },
+ "maskmusai_spring_5322": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1289,
+  "front_acc": 0.6,
+  "front_typ": 99.4,
+  "front_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.85,
+  "back_px": 1238,
+  "back_acc": 0.6,
+  "back_typ": 99.4,
+  "back_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "back_edge": 0,
+  "ratio": 0.96,
+  "score": 0.61
+ },
+ "maskmusai_spring_5323": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5323,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1298,
+  "front_acc": 0.4,
+  "front_typ": 99.6,
+  "front_box": [
+   15,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.83,
+  "back_px": 1303,
+  "back_acc": 0.8,
+  "back_typ": 99.2,
+  "back_box": [
+   15,
+   5,
+   48,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.51
+ },
+ "maskmusai_spring_5324": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5324,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1293,
+  "front_acc": 0.7,
+  "front_typ": 99.3,
+  "front_box": [
+   13,
+   4,
+   50,
+   58
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.82,
+  "back_px": 1301,
+  "back_acc": 0.9,
+  "back_typ": 99.1,
+  "back_box": [
+   14,
+   4,
+   48,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 1.01,
+  "score": 0.58
+ },
+ "maskmusai_spring_icon_5341": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.5,
+  "icon_sd": 78.7,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_spring_icon_5342": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 5,
+  "icon_dom": 0.52,
+  "icon_sd": 73.9,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_summer_5321": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1292,
+  "front_acc": 0.0,
+  "front_typ": 100.0,
+  "front_box": [
+   14,
+   4,
+   48,
+   58
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.91,
+  "back_px": 1249,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   14,
+   4,
+   48,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.39
+ },
+ "maskmusai_summer_5322": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1301,
+  "front_acc": 0.0,
+  "front_typ": 100.0,
+  "front_box": [
+   15,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.87,
+  "back_px": 1206,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   15,
+   4,
+   48,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 0.93,
+  "score": 0.67
+ },
+ "maskmusai_summer_5323": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5323,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1319,
+  "front_acc": 0.0,
+  "front_typ": 100.0,
+  "front_box": [
+   13,
+   4,
+   49,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 1283,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   15,
+   4,
+   48,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 0.97,
+  "score": 0.48
+ },
+ "maskmusai_summer_5324": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5324,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1188,
+  "front_acc": 0.0,
+  "front_typ": 100.0,
+  "front_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.8,
+  "back_px": 1210,
+  "back_acc": 0.0,
+  "back_typ": 100.0,
+  "back_box": [
+   16,
+   5,
+   47,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 1.02,
+  "score": 0.68
+ },
+ "maskmusai_summer_icon_5341": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.61,
+  "icon_sd": 66.4,
+  "icon_edge": 0,
+  "muddy": true
+ },
+ "maskmusai_summer_icon_5342": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   21,
+   28
+  ],
+  "icon_cols": 4,
+  "icon_dom": 0.54,
+  "icon_sd": 71.6,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_autumn_5321": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1327,
+  "front_acc": 7.1,
+  "front_typ": 92.9,
+  "front_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.88,
+  "back_px": 1330,
+  "back_acc": 5.2,
+  "back_typ": 94.8,
+  "back_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.36
+ },
+ "maskmusai_autumn_5322": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1306,
+  "front_acc": 7.0,
+  "front_typ": 93.0,
+  "front_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.92,
+  "back_px": 1291,
+  "back_acc": 5.8,
+  "back_typ": 94.2,
+  "back_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "back_edge": 0,
+  "ratio": 0.99,
+  "score": 0.28
+ },
+ "maskmusai_autumn_5323": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5323,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1297,
+  "front_acc": 4.3,
+  "front_typ": 95.7,
+  "front_box": [
+   14,
+   4,
+   48,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.85,
+  "back_px": 1293,
+  "back_acc": 6.9,
+  "back_typ": 93.1,
+  "back_box": [
+   14,
+   4,
+   49,
+   58
+  ],
+  "back_edge": 0,
+  "ratio": 1.0,
+  "score": 0.45
+ },
+ "maskmusai_autumn_5324": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5324,
+  "type": "DARK",
+  "front_folded": 0,
+  "front_px": 1325,
+  "front_acc": 5.1,
+  "front_typ": 94.9,
+  "front_box": [
+   12,
+   4,
+   50,
+   59
+  ],
+  "front_edge": 0,
+  "back_folded": 0,
+  "sil": 0.7,
+  "back_px": 1375,
+  "back_acc": 8.4,
+  "back_typ": 91.6,
+  "back_box": [
+   10,
+   4,
+   53,
+   59
+  ],
+  "back_edge": 0,
+  "ratio": 1.04,
+  "score": 1.06
+ },
+ "maskmusai_autumn_icon_5341": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5341,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   22,
+   28
+  ],
+  "icon_cols": 7,
+  "icon_dom": 0.52,
+  "icon_sd": 73.4,
+  "icon_edge": 0,
+  "muddy": false
+ },
+ "maskmusai_autumn_icon_5342": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5342,
+  "kind": "icon",
+  "icon_palette": 2,
+  "size": [
+   20,
+   28
+  ],
+  "icon_cols": 6,
+  "icon_dom": 0.49,
+  "icon_sd": 70.7,
+  "icon_edge": 0,
+  "muddy": false
+ }
+}

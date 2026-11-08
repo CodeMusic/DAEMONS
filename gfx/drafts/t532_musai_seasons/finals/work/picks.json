@@ -1,0 +1,278 @@
+{
+ "musai_winter": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.1,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   15,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "musai_spring": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.17,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   14,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "musai_autumn": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.1,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   16,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "codemusai_winter": {
+  "seed": 5321,
+  "by": "score",
+  "score": 0.21,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   15,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "codemusai_spring": {
+  "seed": 5323,
+  "by": "eye",
+  "score": 0.07,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   22,
+   17
+  ],
+  "icon_palette": 0
+ },
+ "codemusai_summer": {
+  "seed": 5323,
+  "by": "score",
+  "score": 0.07,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   20,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "codemusai_autumn": {
+  "seed": 5321,
+  "by": "score",
+  "score": 0.03,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   16,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "seekmusai_winter": {
+  "seed": 5321,
+  "by": "score",
+  "score": 0.45,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   20,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "seekmusai_spring": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.73,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   21,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "seekmusai_summer": {
+  "seed": 5324,
+  "by": "score",
+  "score": 0.53,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   20,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "seekmusai_autumn": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.8,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   21,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "caremusai_winter": {
+  "seed": 5321,
+  "by": "score",
+  "score": 0.31,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   17,
+   20
+  ],
+  "icon_palette": 1
+ },
+ "caremusai_spring": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.43,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   16,
+   20
+  ],
+  "icon_palette": 1
+ },
+ "caremusai_summer": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.1,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   17,
+   20
+  ],
+  "icon_palette": 1
+ },
+ "caremusai_autumn": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.42,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   18,
+   20
+  ],
+  "icon_palette": 1
+ },
+ "lensmusai_winter": {
+  "seed": 5323,
+  "by": "score",
+  "score": 0.56,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   22,
+   19
+  ],
+  "icon_palette": 1
+ },
+ "lensmusai_spring": {
+  "seed": 5321,
+  "by": "score",
+  "score": 2.64,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   22,
+   18
+  ],
+  "icon_palette": 1
+ },
+ "lensmusai_summer": {
+  "seed": 5324,
+  "by": "eye",
+  "score": 0.4,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   22,
+   17
+  ],
+  "icon_palette": 1
+ },
+ "lensmusai_autumn": {
+  "seed": 5321,
+  "by": "score",
+  "score": 1.24,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   22,
+   20
+  ],
+  "icon_palette": 1
+ },
+ "maskmusai_winter": {
+  "seed": 5323,
+  "by": "score",
+  "score": 0.83,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   15,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "maskmusai_spring": {
+  "seed": 5321,
+  "by": "score",
+  "score": 0.25,
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   13,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "maskmusai_summer": {
+  "seed": 5321,
+  "by": "score",
+  "score": 0.39,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   13,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "maskmusai_autumn": {
+  "seed": 5322,
+  "by": "score",
+  "score": 0.28,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   13,
+   20
+  ],
+  "icon_palette": 2
+ }
+}

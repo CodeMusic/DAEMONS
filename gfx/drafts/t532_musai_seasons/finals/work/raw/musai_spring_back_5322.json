@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t532_finals/raw/musai_spring_back_5322",
+ "prompt": "pixel art sprite, chibi, Turn this exact creature around: the same creature seen from directly behind, rear view, facing away from the viewer, the back of its head, no face visible, still with a small green sprout growing from the top of its helmet, the same size in the frame, the same proportions, the same grey body and colours, the same pixel art style, black outline, centered on a plain white background, full body, no shadow, game asset",
+ "negative": "",
+ "seed": 5322,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/t532_finals/raw/musai_spring_front_5322.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 22.6,
+ "comfyui": "0.19.1",
+ "made": "2026-11-08 15:31:37"
+}
