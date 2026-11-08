@@ -10,6 +10,9 @@
     python3 tools/gbamenus.py --write --approved --pick party=A,summary=B,items=A,pc=A
                                                     # write the chosen directions into the engine. Refuses without
                                                     #   --approved, and without a direction for each screen named.
+    python3 tools/gbamenus.py --write --approved --all
+                                                    # write APPROVED, the user's picks (A for all four, 2026-11-07).
+                                                    #   The report exits 1 when the engine is not what this makes.
 
 DRAFT, 2026-11-07, from the vanilla-art census's gap 9 ("Menus", the user's pick). Every pixel is drawn in code here, on
 the engine's own tile grids: no AI image, nothing traced. The engine's files are read for their SHAPE only -- which tile
@@ -63,11 +66,13 @@ ap.add_argument("--draft", nargs="?", const=DRAFT_DEFAULT)
 ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--pick", help="screen=A|B,... for --write")
+ap.add_argument("--all", action="store_true", help="--write the APPROVED picks")
 ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes runs the write")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
 RECOMMENDED = {"party": "A", "summary": "A", "items": "A", "pc": "A"}
-APPROVED = {}                         # nothing yet: the user picks from the sheets
+#  The user, 2026-11-07: A for all four, the paw, all 16 wallpapers ("A for all four", "A paw", "Build all 16").
+APPROVED = {"party": "A", "summary": "A", "items": "A", "pc": "A"}
 
 
 def q5(c):
@@ -79,9 +84,42 @@ def lum(c):
 
 
 # ================================================================================================ files
+#  The SHAPE is read from the engine as it stood before T-530 was written (engine dcc58f014), not from the working tree:
+#  every screen here is redrawn IN PLACE from the files it replaces (the tile votes, the HP track, the palettes kept), so
+#  reading its own output back would make each write the input of the next. Files outside these folders are read as
+#  they are now. A .gbapal (generated, gitignored) is read from its source: the .pal of that name, else the .png's.
+BASE_REV = "dcc58f014"
+OWN = ("party_menu", "summary_screen", "pokemon_storage", "item_pc", "berry_pouch")
+_BASE = {}
+
+
+def _src(p):
+    rel = os.path.relpath(os.path.abspath(p), os.path.abspath(G))
+    if rel.startswith("..") or rel.split(os.sep)[0] not in OWN:
+        return p
+    if rel not in _BASE:
+        import subprocess, tempfile, atexit, shutil
+        if "dir" not in _BASE:
+            if subprocess.run(["git", "-C", GBA, "cat-file", "-e", BASE_REV + "^{commit}"], capture_output=True).returncode:
+                sys.exit("gbamenus: the engine has no commit %s to read the menus' shape from (a shallow clone?); "
+                         "reading the working tree instead would read this tool's own output back" % BASE_REV)
+            _BASE["dir"] = tempfile.mkdtemp(prefix="gbamenus_base_")
+            atexit.register(shutil.rmtree, _BASE["dir"], True)
+        r = subprocess.run(["git", "-C", GBA, "show", "%s:graphics/%s" % (BASE_REV, rel.replace(os.sep, "/"))],
+                           capture_output=True)
+        if r.returncode:
+            _BASE[rel] = p                                 # not in that commit (a fresh file): read it as it is
+        else:
+            q = os.path.join(_BASE["dir"], rel)
+            os.makedirs(os.path.dirname(q), exist_ok=True)
+            open(q, "wb").write(r.stdout)
+            _BASE[rel] = q
+    return _BASE[rel]
+
+
 def load_png(p):
     import gbafont
-    w, h, bd, plte, px = gbafont.png_load(p)
+    w, h, bd, plte, px = gbafont.png_load(_src(p))
     pal = [tuple(plte[i:i + 3]) for i in range(0, len(plte), 3)]
     return w, h, bd, pal, [list(r) for r in px]
 
@@ -104,6 +142,13 @@ def save_png_rows(p, px, rows):
 
 
 def gbapal(p, n=None):
+    stem = p[:-len(".gbapal")]
+    if p.endswith(".gbapal") and os.path.exists(_src(stem + ".pal")):
+        c = jasc(stem + ".pal")
+        return c[:n] if n else c
+    if p.endswith(".gbapal") and os.path.exists(_src(stem + ".png")):
+        c = load_png(stem + ".png")[3]
+        return c[:n] if n else c
     d = open(p, "rb").read()
     k = len(d) // 2 if n is None else n
     out = []
@@ -113,8 +158,8 @@ def gbapal(p, n=None):
     return out
 
 
-def jasc(p):
-    w = open(p).read().split()
+def jasc(p, raw=False):
+    w = open(p if raw else _src(p)).read().split()
     n = int(w[2])
     v = list(map(int, w[3:3 + 3 * n]))
     return [tuple(v[3 * i:3 * i + 3]) for i in range(n)]
@@ -128,12 +173,12 @@ def write_jasc(cols, p):
 
 
 def map16(p):
-    d = open(p, "rb").read()
+    d = open(_src(p), "rb").read()
     return [(e & 0x3FF, (e >> 10) & 1, (e >> 11) & 1, e >> 12) for e in struct.unpack("<%dH" % (len(d) // 2), d)]
 
 
 def map8(p):
-    return [(b, 0, 0, None) for b in open(p, "rb").read()]
+    return [(b, 0, 0, None) for b in open(_src(p), "rb").read()]
 
 
 def get_tile(px, t, per):
@@ -1499,6 +1544,7 @@ def outputs(screen, direction):
                 for y in range(8):
                     for x in range(8):
                         sheet[(t // per) * 8 + y][(t % per) * 8 + x] = blk[y][x]
+            NUM_TILES[d] = len(tiles)
             row = wallpaper_pal(name, direction)
             out["pokemon_storage/wallpapers/%s/tiles.png" % d] = _png(sheet, row + row, 8)
             out["pokemon_storage/wallpapers/%s/tilemap.bin" % d] = (
@@ -1513,6 +1559,21 @@ def outputs(screen, direction):
             mi[k] = tuple(min(255, int(c * 0.8 + a * 0.2)) for c, a in zip(q[k], AMBER))
         out["pokemon_storage/scrolling_bg_move_items.pal"] = ("pal", mi)
     return out
+
+
+#  A wallpaper's tile count is fixed in graphics_file_rules.mk (`-num_tiles N -Wnum_tiles`, gbagfx fails on any other
+#  count), so the PC's write sets each one to what its plate uses. outputs("pc") fills this.
+NUM_TILES = {}
+RULES_MK = os.path.join(GBA, "graphics_file_rules.mk")
+
+
+def rules_with_num_tiles(text):
+    for d, n in NUM_TILES.items():
+        pat = r"(\$\(WALLPAPERGFXDIR\)/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+" % d
+        text, k = re.subn(pat, lambda m: m.group(1) + str(n), text)
+        if k != 1:
+            sys.exit("gbamenus: graphics_file_rules.mk has no single -num_tiles rule for wallpapers/%s" % d)
+    return text
 
 
 def put_files(files, root):
@@ -1559,8 +1620,37 @@ def sheet_notes(screen, dirs):
                 + RECOMMENDED[screen]]
 
 
+def differs(picks):
+    """The engine files the approved write would change: each payload written to a scratch dir and compared with the
+    engine's file DECODED (pixels and colours for a .png, colours for a .pal, bytes for a .bin)."""
+    import tempfile
+    out = []
+    with tempfile.TemporaryDirectory() as tmp:
+        for screen, dname in picks.items():
+            files = outputs(screen, dname)
+            put_files(files, tmp)
+            for rel in files:
+                a, b = os.path.join(tmp, rel), os.path.join(G, rel)
+                if not os.path.exists(b):
+                    out.append(rel)
+                elif rel.endswith(".png"):
+                    import gbafont
+                    if gbafont.png_load(a) != gbafont.png_load(b):
+                        out.append(rel)
+                elif rel.endswith(".pal"):
+                    if jasc(a, True) != jasc(b, True):
+                        out.append(rel)
+                elif open(a, "rb").read() != open(b, "rb").read():
+                    out.append(rel)
+    if "pc" in picks:
+        mk = open(RULES_MK).read()
+        if rules_with_num_tiles(mk) != mk:
+            out.append("graphics_file_rules.mk (the wallpapers' -num_tiles)")
+    return out
+
+
 def report():
-    print("T-530 the menus: drafts only until the user picks (APPROVED = %r)" % APPROVED)
+    print("T-530 the menus: APPROVED = %r" % APPROVED)
     for dname in ("A", "B"):
         sheet, per, rows, maps, (miss, n) = party_build(dname)
         print("  PARTY %s %s: %d tile ids redrawn in place, %d uses that differ from their vote" %
@@ -1583,6 +1673,14 @@ def report():
                   % (dname, key, n, miss))
     print("  RUN-TIME: HALFTONE greys menus too; T-481 B writes SUMMARY row 0 (6/14, hour 0x454C); the party's state "
           "buffer rows 3-10; the strip's row 2 (item PC, TRAP TABLE); the PC cursor in misc1/misc2's slots")
+    if APPROVED:
+        d = differs(APPROVED)
+        if d:
+            print("  the engine is NOT what the approved write makes: %d files (%s%s) -- run --write --approved --all"
+                  % (len(d), ", ".join(d[:4]), ", ..." if len(d) > 4 else ""))
+            return 1
+        print("  the engine holds the approved menus (%s)" % ", ".join("%s=%s" % kv for kv in APPROVED.items()))
+    return 0
 
 
 def draft(out):
@@ -1619,22 +1717,29 @@ def draft(out):
 
 def main():
     if A.write:
-        if not A.approved or not A.pick:
-            sys.exit("gbamenus: --write needs --approved and --pick screen=A|B,... (the user's picks)")
-        picks = dict(kv.split("=") for kv in A.pick.split(","))
+        if not A.approved or not (A.pick or A.all):
+            sys.exit("gbamenus: --write needs --approved and --all or --pick screen=A|B,... (the user's picks)")
+        picks = dict(kv.split("=") for kv in A.pick.split(",")) if A.pick else dict(APPROVED)
         for screen, dname in picks.items():
             if screen not in ("party", "summary", "items", "pc") or dname not in ("A", "B"):
                 sys.exit("gbamenus: unknown pick %s=%s" % (screen, dname))
             for p in put_files(outputs(screen, dname), G):
                 print("  wrote", os.path.relpath(p, ROOT))
+            if screen == "pc":
+                mk = open(RULES_MK).read()
+                new = rules_with_num_tiles(mk)
+                if new != mk:
+                    open(RULES_MK, "w").write(new)
+                    print("  wrote", os.path.relpath(RULES_MK, ROOT), "(the wallpapers' -num_tiles)")
         print("  now: build all four ROMs; summary_screen/bg.png's palette changed, so re-run gbacalendar_ui.py "
               "(report) to see the SUMMARY's measured slots still hold")
+        return 0
     if A.draft:
         for p in draft(A.draft):
             print("  wrote", os.path.relpath(p, ROOT))
-        return
-    report()
+        return 0
+    return report()
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

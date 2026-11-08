@@ -68,6 +68,10 @@ ARGS = {
     #  and --all writes them). The write copies each pick into graphics/battle_terrain and reruns gbabattlebg's write,
     #  and the report exits 1 when the engine is not what that write makes.
     "gbabattleart": [["--approved", "--all"]],
+    #  T-530: the same shape; the user said "A for all four" (party, SUMMARY, item screens, PC: the paw, all 16
+    #  wallpapers) on 2026-11-07. APPROVED holds the picks, --all writes them, and the report exits 1 when the engine is
+    #  not what that write makes.
+    "gbamenus": [["--approved", "--all"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

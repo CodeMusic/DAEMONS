@@ -313,3 +313,69 @@ T-530 DRAFT: the PC -- BOX 1 on FOREST and CHECKPOINT, the PAW cursor (A) and th
 T-530 DRAFT: all sixteen PC wallpapers at real size -- engine now, A TERMINAL, B READOUT, with their tile counts
 
 ![7Nov2026 - T530 - PC wallpapers draft - 55](7Nov2026%20-%20T530%20-%20PC%20wallpapers%20draft%20-%2055.png)
+
+### 7Nov2026 - T530 - party screen choosing and move to where - 56
+
+T-530 A TERMINAL in play: the party screen, choosing, the menu, MOVE TO WHERE? (amber switch rim, teal current)
+
+![7Nov2026 - T530 - party screen choosing and move to where - 56](7Nov2026%20-%20T530%20-%20party%20screen%20choosing%20and%20move%20to%20where%20-%2056.png)
+
+### 7Nov2026 - T530 - party zoom - 57
+
+T-530: the party screen at 3x -- the grey slab over CANCEL's C and the grey/orange blocks at each card's left are the party's ball sprites (not redrawn by T-530)
+
+![7Nov2026 - T530 - party zoom - 57](7Nov2026%20-%20T530%20-%20party%20zoom%20-%2057.png)
+
+### 7Nov2026 - T530 - halted card and hp colours - 58
+
+T-530: a HALTED daemon's rose card (HLT) and the HP bar green, yellow and red
+
+![7Nov2026 - T530 - halted card and hp colours - 58](7Nov2026%20-%20T530%20-%20halted%20card%20and%20hp%20colours%20-%2058.png)
+
+### 7Nov2026 - T530 - item storage - 59
+
+T-530: ITEM STORAGE at the PC, and an item's menu open so the strip dims
+
+![7Nov2026 - T530 - item storage - 59](7Nov2026%20-%20T530%20-%20item%20storage%20-%2059.png)
+
+### 7Nov2026 - T530 - item storage title badge - 60
+
+T-530: ITEM STORAGE's badge at 4x -- the drawn drawers sit under the printed WITHDRAW ITEM title
+
+![7Nov2026 - T530 - item storage title badge - 60](7Nov2026%20-%20T530%20-%20item%20storage%20title%20badge%20-%2060.png)
+
+### 7Nov2026 - T530 - trap table - 61
+
+T-530: the TRAP TABLE, and a TRAP's menu open so the strip dims
+
+![7Nov2026 - T530 - trap table - 61](7Nov2026%20-%20T530%20-%20trap%20table%20-%2061.png)
+
+### 7Nov2026 - T530 - pc paw point grab shift - 62
+
+T-530: the PC box -- the PAW pointing, MOVE, holding, SHIFT, placing
+
+![7Nov2026 - T530 - pc paw point grab shift - 62](7Nov2026%20-%20T530%20-%20pc%20paw%20point%20grab%20shift%20-%2062.png)
+
+### 7Nov2026 - T530 - pc wallpapers box by box - 63
+
+T-530: the survey-plate wallpapers box by box (BOX 4-14; full boxes hide most of each plate, BOX 14 empty)
+
+![7Nov2026 - T530 - pc wallpapers box by box - 63](7Nov2026%20-%20T530%20-%20pc%20wallpapers%20box%20by%20box%20-%2063.png)
+
+### 7Nov2026 - T530 - pc etcetera wallpapers - 64
+
+T-530: the ETCETERA plates on BOX 1-4 and a boxed daemon's SUMMARY
+
+![7Nov2026 - T530 - pc etcetera wallpapers - 64](7Nov2026%20-%20T530%20-%20pc%20etcetera%20wallpapers%20-%2064.png)
+
+### 7Nov2026 - T530 - halftone party and summary - 65
+
+T-530: HALFTONE -- the party screen and SUMMARY grey; HP bars read by length only
+
+![7Nov2026 - T530 - halftone party and summary - 65](7Nov2026%20-%20T530%20-%20halftone%20party%20and%20summary%20-%2065.png)
+
+### 7Nov2026 - T530 - summary screens - 66
+
+T-530: the SUMMARY -- INFO, SKILLS (HP bar yellow, EXP bar), KNOWN ROUTINES and the move cursor
+
+![7Nov2026 - T530 - summary screens - 66](7Nov2026%20-%20T530%20-%20summary%20screens%20-%2066.png)
