@@ -36,6 +36,7 @@ gbagfx builds their .gbapal from the PNG itself.
           graphics/trade/pokeball.png                                     16x192
           graphics/interface/ball_open.png                                16x16
           graphics/pokedex/caught_marker.png                              8x8
+          graphics/party_menu/pokeball{,_small}.png                       32x64, 16x96 (+ their palette: T-530's TERMINAL)
 """
 import os, sys, math, struct, daemonslib
 import numpy as np
@@ -187,8 +188,9 @@ def marker(lit):
 
 # ------------------------------------------------- the boxes drawn IN PLACE
 #
-# THREE FILES CARRY INDICES ONLY. party_menu's two and the battle transition's
-# take their colours from palettes loaded elsewhere, so a box here has to be
+# THESE FILES CARRY INDICES ONLY. The battle transition's and the battle anim's
+# take their colours from palettes loaded elsewhere (party_menu's two did too, until
+# T-530 gave them their own -- see PARTY_PAL below), so a box here has to be
 # written in each file's OWN index vocabulary or it renders as confetti -- the
 # same trap the overworld box fell into against npc_white. All three palettes
 # already carry a dark, a mid and a pale, so the machine needs no new colour.
@@ -218,21 +220,46 @@ def box_in(w, h, ink, body, bevel, glass, foot, inset=2):
             g[y1 + 1][x] = foot
     return g
 
+# THE PARTY SCREEN'S TWO ARE THE EXCEPTION (T-530, 2026-11-07). party_menu/pokeball.gbapal is built from
+# pokeball.png itself (no .pal, no rule of its own; the CANCEL box and every slot's box load it under tag
+# 0x04b0, and nothing else does), so these two carry their OWN palette: the A TERMINAL family gbamenus.py drew the
+# party screen in (slate, paper, teal -- its SLATE_OUT / SLATE_MID / SLATE_LIGHT / TEAL, restated here). The first
+# T-530 pass left them as 22x20 grey and amber chassis on vanilla's ball palette, a slab over CANCEL's C and a
+# block at every card's left. Now a small USERBOX, 12x11 on its feet, high in the frame's left: behind a daemon's
+# icon on its slot (the icon is drawn over it) and inside the CANCEL plate's left end, clear of the word (the
+# frame is at 182,132; the box spans x 186-197, the word starts at 203). Closed: the glass dark with its one pip.
+# Open (the slot or CANCEL chosen): the box OPEN as ball_open.png draws it -- the seam spilling light, the glass
+# lit -- in teal, the colour the TERMINAL gives the one chosen.
+TEAL_LIT, TEAL_EDGE = 7, 8
+PARTY_PAL = {KEY: (41, 131, 205), INK: (32, 40, 52), DARK: (64, 76, 92), FACE: (88, 104, 120),
+             LIT: (176, 192, 204), GLASS: (48, 58, 72), PIP: (248, 248, 244),
+             TEAL_LIT: (112, 208, 184), TEAL_EDGE: (40, 136, 116)}
+
+def party_box(g, x0, y0, opened_):
+    """The USERBOX on the party screen: 12 wide, 11 tall, feet below."""
+    x1, y1 = x0 + 11, y0 + 10
+    box(g, x0, y0, x1, y1, pips=1, sw=6, sh=3, vent=None)
+    if opened_:
+        sx0, sy0 = x0 + 3, y0 + 3
+        g[sy0:sy0+3, sx0:sx0+6] = TEAL_LIT                 # the glass lit
+        g[sy0+1, sx0+2] = PIP
+        g[y0+7, x0+1:x1] = PIP                             # the gap, spilling
+        g[y0+8, x0+1:x1] = TEAL_LIT
+        g[y0+7, x0] = g[y0+7, x1] = TEAL_EDGE
+    feet(g, x0, x1, y1 + 1)
+
 def party_small():
-    """16x96 -- six 16x16 slots. Frame 0 is the one you see six of."""
+    """16x96 -- six 16x16 frames: 0 closed, 1 open (sSmallPokeballAnim's 0 and 4); the rest stay blank."""
     g = blank(16, 96)
-    a = np.array(box_in(16, 16, ink=0xF, body=0xD, bevel=0xA, glass=0x6, foot=0xF))
-    g[0:16] = a
-    b = np.array(box_in(16, 16, ink=0x6, body=0x8, bevel=0x8, glass=0x6, foot=0x6))
-    g[16:32] = b
+    party_box(g[0:16], 2, 2, False)
+    party_box(g[16:32], 2, 2, True)
     return g
 
 def party_big():
-    """32x64 -- two 32x32."""
+    """32x64 -- two 32x32 frames, closed and open: a slot's box, and CANCEL's when CONFIRM is not shown."""
     g = blank(32, 64)
-    a = np.array(box_in(32, 32, ink=0xF, body=0xD, bevel=0xA, glass=0x6, foot=0xF, inset=5))
-    g[0:32] = a
-    g[32:64] = np.array(box_in(32, 32, ink=0x6, body=0x8, bevel=0x8, glass=0x6, foot=0x6, inset=5))
+    party_box(g[0:32], 4, 6, False)
+    party_box(g[32:64], 4, 6, True)
     return g
 
 def transition():
@@ -518,10 +545,16 @@ def main():
             png(None, g).save(os.path.join(GBA, rel))
             if pal: jasc(os.path.join(GBA, pal), PAL)
 
-    # These three keep their own palettes; only the indices change.
+    # The party screen's two carry their own palette (T-530: the A TERMINAL family); gbagfx builds
+    # party_menu/pokeball.gbapal from pokeball.png, and the small sheet shares that palette.
     for rel, grid in (("graphics/party_menu/pokeball_small.png", party_small()),
-                      ("graphics/party_menu/pokeball.png", party_big()),
-                      ("graphics/battle_transitions/sliding_pokeball.png", transition()),
+                      ("graphics/party_menu/pokeball.png", party_big())):
+        print("  %-52s %dx%d (its own palette: the TERMINAL's)" % (rel, grid.shape[1], grid.shape[0]))
+        if WRITE:
+            png(None, grid, PARTY_PAL).save(os.path.join(GBA, rel))
+
+    # These keep their own palettes; only the indices change.
+    for rel, grid in (("graphics/battle_transitions/sliding_pokeball.png", transition()),
                       ("graphics/battle_anims/sprites/pokeball.png", battle_anim())):
         src = Image.open(os.path.join(GBA, rel))
         print("  %-52s %dx%d (its own palette, indices only)"

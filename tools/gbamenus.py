@@ -1343,15 +1343,19 @@ def item_target(key, direction):
         a, b, c, d = sc["scroll"]
         cut_box(g, a, b, c - a, d - b, 2, [3], 10)
         fill(g, a + 2, b + 4, c - 2, b + 24, 13)
-    if sc["badge"]:                                      # the storage's badge: a slate case, two drawers, a lamp
+    if sc["badge"]:                                      # the storage's badge: a slate plate, a small cabinet, a lamp
         a, b, c, d = sc["badge"]
         cut_box(g, a - 6, b - 6, c - a + 6, d - b + 6, 5, [3, 4], 4)
-        for yy in (17, 27):
-            cut_box(g, 18, yy, 24, 8, 2, [3], 15)
-            fill(g, 27, yy + 3, 33, yy + 5, 3)
-        for xx in (35, 36):
-            put(g, xx, 11, 6)
-            put(g, xx, 12, 6)
+        # The title (item_pc.c window 2: tiles 1,1 5x4, FONT_SMALL, "WITHDRAW" over "ITEM") is printed on this plate
+        # in white, so the plate stays plain under it: x 11-49 on the first line (y 12-21), 11-28 on the second
+        # (y 26-34). The cabinet sits after ITEM, on the second line, in tiles that are the map's alone (row 3-4,
+        # cols 4-5: 21 22 / 25 26); the two drawers drawn under the title before (T-530 first pass) hid it.
+        for yy in (25, 31):
+            cut_box(g, 33, yy, 12, 5, 1, [3], 15)
+            fill(g, 37, yy + 2, 41, yy + 3, 3)
+        for xx in (43, 44):                              # the lamp: top right, clear of WITHDRAW
+            put(g, xx, 3, 6)
+            put(g, xx, 4, 6)
     if sc["title"]:                                      # the pocket's name, printed in the menu's dark ink
         a, b, c, d = sc["title"]
         cut_box(g, a, b, c - a, d - b, 3, [3, 5], 14)

@@ -379,3 +379,15 @@ T-530: HALFTONE -- the party screen and SUMMARY grey; HP bars read by length onl
 T-530: the SUMMARY -- INFO, SKILLS (HP bar yellow, EXP bar), KNOWN ROUTINES and the move cursor
 
 ![7Nov2026 - T530 - summary screens - 66](7Nov2026%20-%20T530%20-%20summary%20screens%20-%2066.png)
+
+### 7Nov2026 - T530 - party boxes before and after - 67
+
+T-530 second pass: the party screen's per-slot boxes and CANCEL's, before (a grey slab over CANCEL's C, grey and amber blocks at each card's left) and after (a small slate USERBOX behind each icon and in CANCEL's plate, clear of the word; chosen, it opens lit teal)
+
+![7Nov2026 - T530 - party boxes before and after - 67](7Nov2026%20-%20T530%20-%20party%20boxes%20before%20and%20after%20-%2067.png)
+
+### 7Nov2026 - T530 - item storage badge before and after - 68
+
+T-530 second pass: ITEM STORAGE's title badge, before (two drawers under WITHDRAW / ITEM) and after (a plain slate plate, the small cabinet after ITEM, the lamp top right); the TRAP TABLE's title plate was already clear
+
+![7Nov2026 - T530 - item storage badge before and after - 68](7Nov2026%20-%20T530%20-%20item%20storage%20badge%20before%20and%20after%20-%2068.png)
