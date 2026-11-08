@@ -1,0 +1,323 @@
+{
+ "_": "T-532 DRAFT: one INDEX entry per seasonal form (CONTENT voice), as split and measured (Index line 234px; routine pane 113px)",
+ "index": {
+  "musai_winter": {
+   "lines": [
+    "Frost settles on it and it lets it stay.",
+    "It has not decided what to be. It waits",
+    "for the thaw to decide for it."
+   ],
+   "px": [
+    215,
+    220,
+    167
+   ]
+  },
+  "musai_spring": {
+   "lines": [
+    "Something grows from the top of it every",
+    "spring. It does not know what. Nobody",
+    "has shown it yet."
+   ],
+   "px": [
+    225,
+    208,
+    94
+   ]
+  },
+  "musai_summer": {
+   "lines": [
+    "It warms to whatever is near. In summer",
+    "that is everything, so it cannot tell",
+    "which thing it warmed to."
+   ],
+   "px": [
+    219,
+    201,
+    138
+   ]
+  },
+  "musai_autumn": {
+   "lines": [
+    "It keeps the leaves that land on it. It",
+    "did not choose them. They are filed as",
+    "its own."
+   ],
+   "px": [
+    218,
+    215,
+    42
+   ]
+  },
+  "codemusai_winter": {
+   "lines": [
+    "Its chest lights blink a pattern nothing",
+    "else in the cold can read. Something on",
+    "runners blinks back."
+   ],
+   "px": [
+    217,
+    219,
+    107
+   ]
+  },
+  "codemusai_spring": {
+   "lines": [
+    "Its lights blink faster in spring. The",
+    "answer comes from overhead, a little",
+    "late, in the same pattern."
+   ],
+   "px": [
+    203,
+    202,
+    143
+   ]
+  },
+  "codemusai_summer": {
+   "lines": [
+    "In summer its lights are answered from",
+    "the water. The pattern has no grammar",
+    "anyone else has written down."
+   ],
+   "px": [
+    210,
+    210,
+    161
+   ]
+  },
+  "codemusai_autumn": {
+   "lines": [
+    "Its lights blink across a field and are",
+    "answered from somewhere moving. Nobody",
+    "else knows what was agreed."
+   ],
+   "px": [
+    213,
+    217,
+    153
+   ]
+  },
+  "seekmusai_autumn": {
+   "lines": [
+    "Ranges every track in reach and some",
+    "that are not. Finds the nearest field.",
+    "Nearest is not the same as right."
+   ],
+   "px": [
+    204,
+    208,
+    182
+   ]
+  },
+  "seekmusai_winter": {
+   "lines": [
+    "It keeps to tracks it has already made.",
+    "The snow fills the others in. It finds",
+    "the nearest one still there."
+   ],
+   "px": [
+    219,
+    206,
+    153
+   ]
+  },
+  "seekmusai_spring": {
+   "lines": [
+    "Comes back from every outing in mud. It",
+    "was looking for something it had seen",
+    "before. It found something close."
+   ],
+   "px": [
+    220,
+    204,
+    184
+   ]
+  },
+  "seekmusai_summer": {
+   "lines": [
+    "In summer it ranges the dry tracks and",
+    "comes back dusty. Asked what it found,",
+    "it names the nearest thing."
+   ],
+   "px": [
+    212,
+    214,
+    147
+   ]
+  },
+  "caremusai_summer": {
+   "lines": [
+    "Floats on two hulls and takes everyone",
+    "who fits. Reads the water before it",
+    "reads the problem. Often correct."
+   ],
+   "px": [
+    214,
+    195,
+    185
+   ]
+  },
+  "caremusai_winter": {
+   "lines": [
+    "Its floats freeze in and it stays put.",
+    "It keeps the canopy folded and the room",
+    "warm. Nobody asks how."
+   ],
+   "px": [
+    208,
+    224,
+    126
+   ]
+  },
+  "caremusai_spring": {
+   "lines": [
+    "Sets out at the first thaw. Turns back",
+    "for anyone left on the shore. Cannot",
+    "say why it turned."
+   ],
+   "px": [
+    211,
+    201,
+    100
+   ]
+  },
+  "caremusai_autumn": {
+   "lines": [
+    "Takes the last trips of the year slowly.",
+    "Leaves land on its deck and it lets",
+    "them ride."
+   ],
+   "px": [
+    222,
+    194,
+    55
+   ]
+  },
+  "lensmusai_spring": {
+   "lines": [
+    "Flies circles over one field on a line",
+    "held from below. Sees the field very",
+    "clearly. Has never seen the line."
+   ],
+   "px": [
+    208,
+    204,
+    183
+   ]
+  },
+  "lensmusai_summer": {
+   "lines": [
+    "Climbs while the light holds. All it",
+    "was pointed at is recorded. The record",
+    "calls it very clear."
+   ],
+   "px": [
+    196,
+    214,
+    110
+   ]
+  },
+  "lensmusai_autumn": {
+   "lines": [
+    "Flies low in autumn, under the wind. It",
+    "records the leaves. It has never",
+    "recorded the tree."
+   ],
+   "px": [
+    215,
+    181,
+    102
+   ]
+  },
+  "lensmusai_winter": {
+   "lines": [
+    "Lands on skis and waits for a still day.",
+    "It has never once turned round. The",
+    "lake is behind it."
+   ],
+   "px": [
+    218,
+    199,
+    96
+   ]
+  },
+  "maskmusai_winter": {
+   "lines": [
+    "Crosses the frozen lake at speed, its",
+    "screen up. Its track covers the last",
+    "one. What is covered goes on."
+   ],
+   "px": [
+    205,
+    201,
+    164
+   ]
+  },
+  "maskmusai_spring": {
+   "lines": [
+    "Its runners drip. It covers the thaw for",
+    "as long as it can. What it covers is",
+    "not removed."
+   ],
+   "px": [
+    222,
+    198,
+    68
+   ]
+  },
+  "maskmusai_summer": {
+   "lines": [
+    "Keeps its runners off the hot ground",
+    "and its screen dark. It is not hiding.",
+    "It is waiting for the cold."
+   ],
+   "px": [
+    200,
+    205,
+    147
+   ]
+  },
+  "maskmusai_autumn": {
+   "lines": [
+    "Watches the first frost from under its",
+    "screen. It knows before anyone what",
+    "the lake will do."
+   ],
+   "px": [
+    207,
+    197,
+    94
+   ]
+  }
+ },
+ "cryptophasia": {
+  "move A": {
+   "lines": [
+    "Words only its own",
+    "family can follow.",
+    "It hits harder for",
+    "each of them near."
+   ],
+   "px": [
+    99,
+    99,
+    99,
+    103
+   ]
+  },
+  "move B": {
+   "lines": [
+    "A tongue that only",
+    "its own kind speaks.",
+    "Each one in the",
+    "party adds to it."
+   ],
+   "px": [
+    102,
+    107,
+    85,
+    94
+   ]
+  }
+ }
+}

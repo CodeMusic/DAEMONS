@@ -1,0 +1,482 @@
+{
+ "musai_winter_5321": {
+  "daemon": "musai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 833,
+  "colours": 12,
+  "edge": 0
+ },
+ "musai_winter_5322": {
+  "daemon": "musai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 1078,
+  "colours": 9,
+  "edge": 0
+ },
+ "musai_spring_5321": {
+  "daemon": "musai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 747,
+  "colours": 13,
+  "edge": 0
+ },
+ "musai_spring_5322": {
+  "daemon": "musai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 1013,
+  "colours": 13,
+  "edge": 0
+ },
+ "musai_summer_5321": {
+  "daemon": "musai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 1045,
+  "colours": 13,
+  "edge": 0
+ },
+ "musai_summer_5322": {
+  "daemon": "musai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 1078,
+  "colours": 13,
+  "edge": 0
+ },
+ "musai_autumn_5321": {
+  "daemon": "musai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 1004,
+  "colours": 13,
+  "edge": 0
+ },
+ "musai_autumn_5322": {
+  "daemon": "musai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "CONTENT",
+  "folded": 0,
+  "px": 1080,
+  "colours": 13,
+  "edge": 0
+ },
+ "codemusai_winter_5321": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "LOGIC",
+  "folded": 19,
+  "px": 1120,
+  "colours": 12,
+  "edge": 0
+ },
+ "codemusai_winter_5322": {
+  "daemon": "codemusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 1041,
+  "colours": 13,
+  "edge": 0
+ },
+ "codemusai_spring_5321": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 1080,
+  "colours": 12,
+  "edge": 0
+ },
+ "codemusai_spring_5322": {
+  "daemon": "codemusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 1064,
+  "colours": 12,
+  "edge": 0
+ },
+ "codemusai_summer_5321": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 1044,
+  "colours": 11,
+  "edge": 0
+ },
+ "codemusai_summer_5322": {
+  "daemon": "codemusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 1047,
+  "colours": 13,
+  "edge": 0
+ },
+ "codemusai_autumn_5321": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 1041,
+  "colours": 13,
+  "edge": 0
+ },
+ "codemusai_autumn_5322": {
+  "daemon": "codemusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "LOGIC",
+  "folded": 0,
+  "px": 953,
+  "colours": 12,
+  "edge": 0
+ },
+ "seekmusai_winter_5321": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "VECTOR",
+  "folded": 1,
+  "px": 938,
+  "colours": 6,
+  "edge": 0
+ },
+ "seekmusai_winter_5322": {
+  "daemon": "seekmusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "VECTOR",
+  "folded": 4,
+  "px": 1071,
+  "colours": 9,
+  "edge": 0
+ },
+ "seekmusai_spring_5321": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "VECTOR",
+  "folded": 7,
+  "px": 1113,
+  "colours": 12,
+  "edge": 0
+ },
+ "seekmusai_spring_5322": {
+  "daemon": "seekmusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "VECTOR",
+  "folded": 2,
+  "px": 1071,
+  "colours": 13,
+  "edge": 0
+ },
+ "seekmusai_summer_5321": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "VECTOR",
+  "folded": 0,
+  "px": 1137,
+  "colours": 11,
+  "edge": 0
+ },
+ "seekmusai_summer_5322": {
+  "daemon": "seekmusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "VECTOR",
+  "folded": 4,
+  "px": 1086,
+  "colours": 11,
+  "edge": 0
+ },
+ "seekmusai_autumn_5321": {
+  "daemon": "seekmusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "VECTOR",
+  "folded": 15,
+  "px": 1293,
+  "colours": 13,
+  "edge": 0
+ },
+ "seekmusai_autumn_5322": {
+  "daemon": "seekmusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "VECTOR",
+  "folded": 42,
+  "px": 1433,
+  "colours": 12,
+  "edge": 0
+ },
+ "caremusai_winter_5321": {
+  "daemon": "caremusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 914,
+  "colours": 12,
+  "edge": 0
+ },
+ "caremusai_winter_5322": {
+  "daemon": "caremusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 1138,
+  "colours": 12,
+  "edge": 0
+ },
+ "caremusai_spring_5321": {
+  "daemon": "caremusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 994,
+  "colours": 9,
+  "edge": 0
+ },
+ "caremusai_spring_5322": {
+  "daemon": "caremusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 1251,
+  "colours": 9,
+  "edge": 0
+ },
+ "caremusai_summer_5321": {
+  "daemon": "caremusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 1364,
+  "colours": 14,
+  "edge": 0
+ },
+ "caremusai_summer_5322": {
+  "daemon": "caremusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 15,
+  "px": 1470,
+  "colours": 14,
+  "edge": 0
+ },
+ "caremusai_autumn_5321": {
+  "daemon": "caremusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 3,
+  "px": 1230,
+  "colours": 12,
+  "edge": 0
+ },
+ "caremusai_autumn_5322": {
+  "daemon": "caremusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 1214,
+  "colours": 13,
+  "edge": 0
+ },
+ "lensmusai_winter_5321": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 790,
+  "colours": 13,
+  "edge": 0
+ },
+ "lensmusai_winter_5322": {
+  "daemon": "lensmusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 3,
+  "px": 982,
+  "colours": 10,
+  "edge": 0
+ },
+ "lensmusai_spring_5321": {
+  "daemon": "lensmusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 951,
+  "colours": 12,
+  "edge": 0
+ },
+ "lensmusai_spring_5322": {
+  "daemon": "lensmusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 6,
+  "px": 1082,
+  "colours": 8,
+  "edge": 0
+ },
+ "lensmusai_summer_5321": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 1,
+  "px": 786,
+  "colours": 13,
+  "edge": 0
+ },
+ "lensmusai_summer_5322": {
+  "daemon": "lensmusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 952,
+  "colours": 11,
+  "edge": 0
+ },
+ "lensmusai_autumn_5321": {
+  "daemon": "lensmusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 1025,
+  "colours": 12,
+  "edge": 0
+ },
+ "lensmusai_autumn_5322": {
+  "daemon": "lensmusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "CONTEXT",
+  "folded": 0,
+  "px": 1062,
+  "colours": 12,
+  "edge": 0
+ },
+ "maskmusai_winter_5321": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5321,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1190,
+  "colours": 11,
+  "edge": 0
+ },
+ "maskmusai_winter_5322": {
+  "daemon": "maskmusai",
+  "season": "winter",
+  "seed": 5322,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1202,
+  "colours": 10,
+  "edge": 0
+ },
+ "maskmusai_spring_5321": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5321,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1319,
+  "colours": 12,
+  "edge": 0
+ },
+ "maskmusai_spring_5322": {
+  "daemon": "maskmusai",
+  "season": "spring",
+  "seed": 5322,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1293,
+  "colours": 11,
+  "edge": 0
+ },
+ "maskmusai_summer_5321": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5321,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1298,
+  "colours": 9,
+  "edge": 0
+ },
+ "maskmusai_summer_5322": {
+  "daemon": "maskmusai",
+  "season": "summer",
+  "seed": 5322,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1137,
+  "colours": 11,
+  "edge": 0
+ },
+ "maskmusai_autumn_5321": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5321,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1309,
+  "colours": 12,
+  "edge": 0
+ },
+ "maskmusai_autumn_5322": {
+  "daemon": "maskmusai",
+  "season": "autumn",
+  "seed": 5322,
+  "type": "OPAQUE",
+  "folded": 0,
+  "px": 1318,
+  "colours": 12,
+  "edge": 0
+ }
+}

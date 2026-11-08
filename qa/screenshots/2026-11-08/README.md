@@ -91,3 +91,15 @@ T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN 
 T-530 pass 2 built (engine, DRAFT): the TOOLKIT's type-coloured cards, VIRIDIAN MART and the PLUGIN shop, the INDEX's category icons, an AREA screen on the SCORE map, the TRAP TABLE's pocket, the party's hold marks, the PC's box menu, scroll arrows, waveform and DATA panel -- route tools/routes/t530_menus_pass2.json 8/8
 
 ![8Nov2026 - T530 - pass 2 built in play - 15](8Nov2026%20-%20T530%20-%20pass%202%20built%20in%20play%20-%2015.png)
+
+### 8Nov2026 - T532 - MUSAI branch seasons concepts - 16
+
+T-532 DRAFT: the six MUSAI x four seasons, concept fronts by arm C from each ROM front, reduced to 64x64/16 colours in each type's ramp; home seasons starred; nothing in the ROM
+
+![8Nov2026 - T532 - MUSAI branch seasons concepts - 16](8Nov2026%20-%20T532%20-%20MUSAI%20branch%20seasons%20concepts%20-%2016.png)
+
+### 8Nov2026 - T532 - MUSAI branch seasons concepts - 17
+
+T-532 DRAFT: the six MUSAI x four seasons, concept fronts by arm C from each ROM front, reduced to 64x64/16 colours in each type's ramp; home seasons starred; nothing in the ROM
+
+![8Nov2026 - T532 - MUSAI branch seasons concepts - 17](8Nov2026%20-%20T532%20-%20MUSAI%20branch%20seasons%20concepts%20-%2017.png)

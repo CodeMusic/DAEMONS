@@ -1,0 +1,99 @@
+{
+ "musai_winter": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "musai_spring": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "musai_summer": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "musai_autumn": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "codemusai_winter": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "codemusai_spring": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "codemusai_summer": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "codemusai_autumn": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "seekmusai_winter": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "seekmusai_spring": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "seekmusai_summer": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "seekmusai_autumn": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "caremusai_winter": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "caremusai_spring": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "caremusai_summer": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "caremusai_autumn": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "lensmusai_winter": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "lensmusai_spring": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "lensmusai_summer": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "lensmusai_autumn": {
+  "seed": 5322,
+  "by": "score"
+ },
+ "maskmusai_winter": {
+  "seed": 5321,
+  "by": "eye",
+  "why": "its track tread under the body: the fuller snowmobile"
+ },
+ "maskmusai_spring": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "maskmusai_summer": {
+  "seed": 5321,
+  "by": "score"
+ },
+ "maskmusai_autumn": {
+  "seed": 5322,
+  "by": "score"
+ }
+}

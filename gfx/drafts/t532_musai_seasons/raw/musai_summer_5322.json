@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t532_musai_seasons/raw/musai_summer_5322",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image redrawn as its summer form: a little white astronaut robot, a big round white helmet with a dark visor face, two glowing eyes, two thin antennae, keeping its face and its shape; a small sun-visor brim on its helmet, a tiny yellow sun charm on one antenna, a warm glow, facing left three-quarter view, full body, chibi proportions, big round head, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no rider, no person, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 5322,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t532_musai_seasons/src/musai_romfront_512.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.5,
+ "comfyui": "0.19.1",
+ "made": "2026-11-08 10:38:46"
+}
