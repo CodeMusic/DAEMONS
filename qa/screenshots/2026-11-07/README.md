@@ -283,3 +283,33 @@ T-528 part 2 (e), DRAFT: TULIKKO's nine 32x32 frames at 6x, drawn by hand in cod
 C-306 (T-528 part 2) DRAFT: the companion's den with the book mended and its carried daemon met in LeafGreen, read from the save's party -- the red crowning the top band, the green below, one line to a band -- and the same den with no daemon from the other side, CONTENT's red alone; on the site with a test save
 
 ![7Nov2026 - T528 - the conjugate light in the companion den - 48](7Nov2026%20-%20T528%20-%20the%20conjugate%20light%20in%20the%20companion%20den%20-%2048.png)
+
+### 7Nov2026 - T530 - party screen draft A and B - 51
+
+T-530 DRAFT: the party screen -- the engine now, A TERMINAL, B READOUT, choosing and MOVE TO WHERE?, real size
+
+![7Nov2026 - T530 - party screen draft A and B - 51](7Nov2026%20-%20T530%20-%20party%20screen%20draft%20A%20and%20B%20-%2051.png)
+
+### 7Nov2026 - T530 - summary bars and cursor draft A and B - 52
+
+T-530 DRAFT: the SUMMARY -- the HP and EXP bars, the move cursor, the star and the mark, and the backdrop retinted; engine now, A, B
+
+![7Nov2026 - T530 - summary bars and cursor draft A and B - 52](7Nov2026%20-%20T530%20-%20summary%20bars%20and%20cursor%20draft%20A%20and%20B%20-%2052.png)
+
+### 7Nov2026 - T530 - item screens draft A and B - 53
+
+T-530 DRAFT: ITEM STORAGE (at rest and dimmed) and the TRAP TABLE -- engine now, A, B
+
+![7Nov2026 - T530 - item screens draft A and B - 53](7Nov2026%20-%20T530%20-%20item%20screens%20draft%20A%20and%20B%20-%2053.png)
+
+### 7Nov2026 - T530 - PC storage draft A and B - 54
+
+T-530 DRAFT: the PC -- BOX 1 on FOREST and CHECKPOINT, the PAW cursor (A) and the pointer (B), the sixteen wallpapers; engine now, A, B
+
+![7Nov2026 - T530 - PC storage draft A and B - 54](7Nov2026%20-%20T530%20-%20PC%20storage%20draft%20A%20and%20B%20-%2054.png)
+
+### 7Nov2026 - T530 - PC wallpapers draft - 55
+
+T-530 DRAFT: all sixteen PC wallpapers at real size -- engine now, A TERMINAL, B READOUT, with their tile counts
+
+![7Nov2026 - T530 - PC wallpapers draft - 55](7Nov2026%20-%20T530%20-%20PC%20wallpapers%20draft%20-%2055.png)
